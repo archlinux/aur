@@ -1,0 +1,20 @@
+pkgbase = pydeptree
+	pkgdesc = A Python dependency tree analyzer with rich terminal output, and code quality features
+	pkgver = 0.3.21
+	pkgrel = 1
+	url = https://github.com/tfaucheux/pydeptree
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python-click
+	depends = python-rich
+	provides = pydeptree
+	options = !emptydirs
+	source = pydeptree-0.3.21.tar.gz::https://github.com/tfaucheux/pydeptree/archive/v0.3.21.tar.gz
+	sha256sums = d32baca7cd94309f6819305f6fc698678e29b434500515dfe3463fa08e123df8
+
+pkgname = pydeptree
