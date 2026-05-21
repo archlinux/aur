@@ -5,8 +5,8 @@ diff --color -ura package.orig/setup.py package.new/setup.py
      keywords='git',
      # Non-python directories are only included in `packages` for the sake of bdist_wheel;
      # they have apparently no effect on sdists (only MANIFEST.in matters).
--    packages=['git_machete', 'git_machete/client', 'completion', 'docs/man'],
-+    packages=['git_machete', 'git_machete/client'],
+-    packages=['git_machete', 'git_machete/client', 'git_machete/utils', 'completion', 'docs/man'],
++    packages=['git_machete', 'git_machete/client', 'git_machete/utils'],
      entry_points={
          'console_scripts': [
              'git-machete = git_machete.bin:main'
