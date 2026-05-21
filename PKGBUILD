@@ -7,7 +7,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="A fast TUI and CLI for browsing AI models, benchmarks, and coding agents"
 
-pkgver=0.11.51
+pkgver=0.11.52
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -29,8 +29,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('6c95c74e0058a0d56c0e93abd4c265b0c911dc77bad1537c443eaf59b0e78bfe'
   '655afc9320c8924f037bfe9b00b2d95c7dd085f6626a9f2ec30143929d192a4d')
-sha256sums_x86_64=('78e1330e8470c3b29611f38c37db20554788431acc9087db44411c60c1e22296')
-sha256sums_aarch64=('f611356868b1151a745407f103066ff7ff7d8356b18568c278cda4d72c2646fc')
+sha256sums_x86_64=('99101d56606604349c402ee7912c5eae36c50c26e042cb42974ca2ce46c7edbb')
+sha256sums_aarch64=('f5f9279e9da2c2a38a566a8a752ee1dbd0d0e9f0b064ae3fdae6ee9602ac97a6')
 
 
 package() {
