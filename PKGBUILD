@@ -1,7 +1,7 @@
 # Maintainer: Tokit Auhid <tokitauhidmim12@gmail.com>
 
 pkgname=synkromium-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Keep your Chromium browser settings and extensions in sync across all your devices, privately and automatically."
 arch=('x86_64')

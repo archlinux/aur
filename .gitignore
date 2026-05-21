@@ -1,0 +1,9 @@
+# SSH keys — never push these to public AUR
+aur_key
+aur_key.pub
+
+# makepkg artifacts
+*.tar.*
+*.deb
+pkg/
+src/
