@@ -1,4 +1,5 @@
-/pkg
-/src
-/bettercap-ui-*.pkg.tar.xz
-/ui.zip
+pkg
+src
+*.tar.xz
+*.tar.gz
+*.zst

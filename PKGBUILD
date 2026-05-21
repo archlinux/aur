@@ -2,16 +2,15 @@
 
 pkgname=bettercap-ui
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Bettercap's Web UI."
 arch=('any')
 url='https://github.com/bettercap/ui'
 license=('GPL3')
-source=("https://github.com/bettercap/ui/releases/download/v$pkgver/ui.zip")
-sha512sums=('c1b61c3b2c0fbbc3a2328fef96608a128b2af3d8f2f947b56c12a2644c6b4dce022f95d2bb68144a3ff65c9c49460ca29ba443886d5e46ed492b4fe37b8c539d')
+source=("https://github.com/bettercap/ui/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('414365f9f74505fd5bccab9542dd64c64b5c1d675120bc66cdd1de5899ad0ed7721ccd2026d532826c456b578447930fec2cc0ad003bc2f73d400df18ef4c339')
 
 package() {
-	install -dm 755 "$pkgdir/usr/share/bettercap"
-
-	cp -aR ui "$pkgdir/usr/share/bettercap/ui"
+  install -dm 755 "$pkgdir/usr/share/bettercap"
+  cp -aR ui-$pkgver/dist/ui "$pkgdir/usr/share/bettercap/ui"
 }
