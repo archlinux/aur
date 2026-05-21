@@ -3,184 +3,78 @@ import json
 import re
 
 CSS = """
+/* Chat Bubble Polish */
+.user-bubble, .assistant-bubble {
+    padding: 12px 16px;
+    margin: 6px 12px;
+    border-radius: 12px;
+}
+
 .user-bubble {
     background-color: @accent_bg_color;
     color: @accent_fg_color;
-    border-radius: 18px 18px 4px 18px;
-    padding: 12px 16px;
-    margin: 6px 20px 6px 80px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .assistant-bubble {
     background-color: @view_bg_color;
     color: @window_fg_color;
-    border-radius: 18px 18px 18px 4px;
-    padding: 12px 16px;
-    margin: 6px 80px 6px 20px;
-    border: 1px solid alpha(@window_fg_color, 0.05);
+    border: 1px solid alpha(@window_fg_color, 0.1);
+    border-bottom-left-radius: 4px;
 }
 
-/* Modern Headerbar and Menus */
-headerbar {
-    padding: 6px 12px;
-    background-color: transparent;
-    border-bottom: 1px solid alpha(@window_fg_color, 0.08);
-}
-
-popover contents {
-    padding: 8px;
-    border-radius: 20px;
-    background-color: @window_bg_color;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-}
-
-popover list {
-    background-color: transparent;
-}
-
-popover row {
-    padding: 8px 12px;
-    border-radius: 12px;
-    margin: 2px 0;
-}
-
-popover row:hover {
-    background-color: alpha(@window_fg_color, 0.05);
-}
-
-/* Base styles for all elements */
-.accent-btn {
-    background-color: @accent_bg_color;
-    color: @accent_fg_color;
-    border-radius: 12px;
-    border: none;
-    padding: 6px 16px;
-}
-
-.accent-btn:hover {
-    background-color: shade(@accent_bg_color, 1.1);
-}
-
-.accent-btn:active {
-    background-color: shade(@accent_bg_color, 0.9);
-}
-
-/* Force dialog suggested buttons to use our theme accent */
-button.suggested-action {
-    background-color: @accent_bg_color;
-    color: @accent_fg_color;
-}
-
-button.suggested-action:hover {
-    background-color: shade(@accent_bg_color, 1.1);
-}
-
-.rounded-image {
-    border-radius: 12px;
-}
-
-progressbar.suggested-action > trough > progress {
-    background-color: @accent_bg_color;
-    border-radius: 10px;
-}
-
-.chat-scroll {
+/* Sidebar Polish */
+.sidebar-list {
     background-color: @window_bg_color;
 }
 
+.boxed-list {
+    margin: 12px;
+    border-radius: 12px;
+    border: 1px solid alpha(@window_fg_color, 0.1);
+    background-color: @view_bg_color;
+}
+
+.boxed-list row {
+    padding: 10px;
+}
+
+.boxed-list row:selected {
+    background-color: alpha(@accent_bg_color, 0.2);
+}
+
+/* Input Area Polish */
 .input-area {
-    padding: 16px 24px;
-    background-color: transparent;
+    padding: 12px 20px;
+    background-color: @window_bg_color;
+    border-top: 1px solid @borders;
 }
 
 .input-view {
-    border-radius: 24px;
-    padding: 8px 16px;
+    border-radius: 20px;
+    padding: 6px 14px;
     background-color: @view_bg_color;
-    border: 1px solid alpha(@window_fg_color, 0.1);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid alpha(@window_fg_color, 0.15);
 }
 
-.uninstalled-model-label {
-    opacity: 0.5;
+/* Button & Accent Polish */
+.accent-btn, button.suggested-action {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
 }
 
-.installed-model-label {
-    font-weight: 500;
+.accent-btn:hover, button.suggested-action:hover {
+    background-color: shade(@accent_bg_color, 1.1);
 }
 
-.sidebar-title {
-    font-weight: 600;
-    font-size: 0.95em;
-}
-
-.sidebar-subtitle {
-    opacity: 0.7;
-    font-size: 0.85em;
-}
-
-.sidebar-list {
-    background-color: @window_bg_color;
-    border-right: 1px solid @borders;
-}
-
-.sidebar-list list {
-    background-color: transparent;
-}
-
-.sidebar-list row {
-    border-radius: 12px;
-    margin: 2px 8px;
-    transition: all 200ms ease;
-}
-
-.sidebar-list row:hover {
-    background-color: alpha(@window_fg_color, 0.05);
-}
-
-.sidebar-list row:selected {
-    background-color: alpha(@accent_bg_color, 0.2);
-    color: @accent_bg_color;
-}
-
-.sidebar-list row:selected .sidebar-title,
-.sidebar-list row:selected .sidebar-subtitle {
-    color: @accent_bg_color;
-}
-
-.delete-btn {
-    opacity: 0;
-    transition: opacity 200ms ease;
-}
-
-row:hover .delete-btn {
-    opacity: 0.6;
-}
-
-.delete-btn:hover {
-    opacity: 1;
-    color: @error_color;
-}
-
-.dim-label {
-    opacity: 0.6;
-    font-size: 0.9em;
-    font-style: italic;
-}
-
-.system-status {
-    font-weight: 500;
-    font-size: 0.9em;
-    padding: 8px;
-}
-
+/* Code Block Polish */
 .code-block {
     font-family: 'monospace';
-    background-color: @view_bg_color;
-    border: 1px solid alpha(@window_fg_color, 0.1);
+    background-color: alpha(@window_fg_color, 0.05);
     border-radius: 8px;
-    padding: 8px;
+    padding: 10px;
+    margin: 4px 0;
 }
 """
 

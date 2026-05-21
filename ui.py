@@ -76,44 +76,54 @@ def show_welcome_message(app):
     # Center the box inside the chat area
     app.chat_box.append(welcome_box)
 
-def build_sidebar(app) -> Gtk.Box:
-    """Builds the sidebar UI, including history and search."""
-    sidebar_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-    sidebar_box.add_css_class("sidebar-list")
+def build_sidebar(app) -> Gtk.Widget:
+    """Builds the sidebar UI using modern Libadwaita widgets."""
     
-    sidebar_header = Adw.HeaderBar()
-    sidebar_header.set_show_end_title_buttons(False)
-    sidebar_box.append(sidebar_header)
+    # Root container for the sidebar page
+    sidebar_page = Adw.ToolbarView()
+    
+    # Sidebar Header
+    header = Adw.HeaderBar()
+    header.set_show_end_title_buttons(False)
+    sidebar_page.add_top_bar(header)
+    
+    # Search & History Container
+    content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
     
     search_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-    search_box.set_margin_start(16)
-    search_box.set_margin_end(16)
-    search_box.set_margin_bottom(16)
-    search_box.set_margin_top(8)
+    search_box.set_margin_start(12)
+    search_box.set_margin_end(12)
+    search_box.set_margin_top(12)
     
     app.search_entry = Gtk.SearchEntry()
     app.search_entry.set_placeholder_text("Search chats...")
     app.search_entry.connect("search-changed", app.on_search_changed)
     search_box.append(app.search_entry)
-    sidebar_box.append(search_box)
+    content_box.append(search_box)
 
+    # History Listbox
     app.history_list = Gtk.ListBox()
     app.history_list.set_selection_mode(Gtk.SelectionMode.SINGLE)
-    app.history_list.add_css_class("navigation-sidebar")
     app.history_list.add_css_class("boxed-list")
     app.history_list.connect("row-activated", app.on_history_row_activated)
     
     sidebar_scrolled = Gtk.ScrolledWindow()
     sidebar_scrolled.set_vexpand(True)
+    sidebar_scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
     sidebar_scrolled.set_child(app.history_list)
-    sidebar_box.append(sidebar_scrolled)
-    return sidebar_box
+    content_box.append(sidebar_scrolled)
+    
+    sidebar_page.set_content(content_box)
+    return sidebar_page
 
-def build_main_content(app) -> Gtk.Box:
-    """Builds the main chat interface structure."""
-    main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+def build_main_content(app) -> Gtk.Widget:
+    """Builds the main chat interface structure using Libadwaita widgets."""
+    
+    # Root container for the content page
+    content_page = Adw.ToolbarView()
+    
     app.header = Adw.HeaderBar()
-    main_box.append(app.header)
+    content_page.add_top_bar(app.header)
     
     app.btn_sidebar = Gtk.ToggleButton(icon_name="sidebar-show-symbolic")
     app.btn_sidebar.set_active(True)
@@ -135,22 +145,32 @@ def build_main_content(app) -> Gtk.Box:
     app.model_btn = Gtk.MenuButton()
     app.header.set_title_widget(app.model_btn)
     
+    # Content Area
+    content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+    
+    # Clamp chat bubbles to a reasonable width
+    clamp = Adw.Clamp()
+    clamp.set_maximum_size(800)
+    clamp.set_tightening_threshold(400)
+    
     app.scrolled = Gtk.ScrolledWindow()
     app.scrolled.set_vexpand(True)
-    app.scrolled.set_kinetic_scrolling(True)
     app.scrolled.add_css_class("chat-scroll")
+    
     app.chat_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
     app.chat_box.set_margin_top(18)
     app.chat_box.set_margin_bottom(18)
     
     app.scrolled.set_child(app.chat_box)
-    main_box.append(app.scrolled)
+    clamp.set_child(app.scrolled)
+    content_box.append(clamp)
 
     app.thumb_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     app.thumb_box.set_margin_start(32)
     app.thumb_box.set_margin_end(32)
-    main_box.append(app.thumb_box)
+    content_box.append(app.thumb_box)
 
+    # Input Area
     app.input_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     app.input_box.add_css_class("input-area")
     
@@ -191,5 +211,7 @@ def build_main_content(app) -> Gtk.Box:
     app.btn_send.connect("clicked", app.on_send)
     app.input_box.append(app.btn_send)
     
-    main_box.append(app.input_box)
-    return main_box
+    content_box.append(app.input_box)
+    content_page.set_content(content_box)
+    
+    return content_page

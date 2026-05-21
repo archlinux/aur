@@ -92,6 +92,7 @@ class FlmChatApp(Adw.Application):
         
         self.css_provider.load_from_data(utils.CSS.encode())
         theme.apply_theme(self, self.theme_color)
+        # Apply globally to ensure dialogs pick it up
         Gtk.StyleContext.add_provider_for_display(
             Gdk.Display.get_default(),
             self.css_provider,
