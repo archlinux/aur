@@ -1,0 +1,17 @@
+pkgbase = web-archer-bin
+	pkgdesc = A bug-fixed, multi-threaded text scraper and website crawling tool. (Pre-packaged Source)
+	pkgver = 1.4.stable
+	pkgrel = 1
+	url = https://github.com/32archusers/web-archer
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-curl_cffi
+	depends = python-ddgs
+	provides = web-archer
+	conflicts = web-archer
+	conflicts = web-archer-git
+	source = https://github.com/32archusers/web-archer/archive/refs/tags/v1.4.stable.tar.gz
+	sha256sums = SKIP
+
+pkgname = web-archer-bin
