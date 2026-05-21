@@ -1,7 +1,7 @@
 # Maintainer: Goldbro233 <bowensun_06@outlook.com>
 
 pkgname=floral-notepaper
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A lightweight cross-platform desktop note app'
 arch=('x86_64')
@@ -29,7 +29,7 @@ makedepends=(
 conflicts=('floral-notepaper-bin')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Achilng/floral-notepaper/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('86a20b48f385dfc2c4517e54ae854f45d10bf3d980e5453002b1519793a86147c46d4954a6dd748653f79e5331980dad6dd1920cbcde5f71d2d6f7db8e8c7902')
+b2sums=('ce49d4cc25f7f1bbd55aa150126379396d2f7dd327df7d79c876bc315e39ffc64f0baab69739cde6de53df9243b12d0f2f9b100812a952f46c7c8f6575c5f332')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

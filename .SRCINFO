@@ -1,6 +1,6 @@
 pkgbase = floral-notepaper
 	pkgdesc = A lightweight cross-platform desktop note app
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/Achilng/floral-notepaper
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = floral-notepaper
 	depends = webkit2gtk-4.1
 	conflicts = floral-notepaper-bin
 	options = !debug
-	source = floral-notepaper-1.0.3.tar.gz::https://github.com/Achilng/floral-notepaper/archive/refs/tags/v1.0.3.tar.gz
-	b2sums = 86a20b48f385dfc2c4517e54ae854f45d10bf3d980e5453002b1519793a86147c46d4954a6dd748653f79e5331980dad6dd1920cbcde5f71d2d6f7db8e8c7902
+	source = floral-notepaper-1.0.4.tar.gz::https://github.com/Achilng/floral-notepaper/archive/refs/tags/v1.0.4.tar.gz
+	b2sums = ce49d4cc25f7f1bbd55aa150126379396d2f7dd327df7d79c876bc315e39ffc64f0baab69739cde6de53df9243b12d0f2f9b100812a952f46c7c8f6575c5f332
 
 pkgname = floral-notepaper
