@@ -1,30 +1,30 @@
 # Maintainer: Hans-Dieter Buddenberg <hbuddenberg@gmail.com>
 pkgname=hyprcaffeine
-pkgver=0.7.4
-pkgrel=2
+pkgver=0.7.7
+pkgrel=1
 pkgdesc='☕ Idle inhibition utility for Hyprland — caffeine for your Wayland compositor'
 arch=(any)
 url='https://github.com/hbuddenberg/hyprcaffeine'
 license=(MIT)
-depends=(bash jq hyprland socat)
+depends=(bash jq hyprland hypridle socat)
 optdepends=(
     'gum: interactive menu and styled prompts'
     'libnotify: desktop notifications'
     'walker: menu frontend'
 )
 install=hyprcaffeine.install
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/hyprcaffeine-0.7.4.tar.gz")
-sha256sums=('dce37f23dee6d74f4bba2cf5619c6785bbb7f0fda762bbec25b59ba6bca35900')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=("025dceb89f921193d4a18326449c3b2668fb486cb7491798b76c973da031e7b2")
 
 prepare() {
-    cd "$(find "$srcdir" -maxdepth 1 -type d -name 'hyprcaffeine*' | head -1)" || return
+    cd "$srcdir/$pkgname-$pkgver" || return
 
     # Patch LIB_DIR in the binary to use the installed data path
     sed -i "s|LIB_DIR=\"\${SCRIPT_DIR}/../scripts\"|LIB_DIR=\"/usr/share/hyprcaffeine/scripts\"|" bin/hyprcaffeine
 }
 
 package() {
-    cd "$(find "$srcdir" -maxdepth 1 -type d -name 'hyprcaffeine*' | head -1)" || return
+    cd "$srcdir/$pkgname-$pkgver" || return
 
     # CLI binary
     install -Dm755 bin/hyprcaffeine "${pkgdir}/usr/bin/hyprcaffeine"

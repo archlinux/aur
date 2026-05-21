@@ -19,11 +19,12 @@ post_install() {
 
     echo "  Auto-configuring for: $_user"
 
-    # 1. Polkit rule
-    if [ ! -f /etc/polkit-1/rules.d/50-hyprcaffeine.rules ] && [ -f /usr/share/hyprcaffeine/polkit.rules ]; then
+    # 1. Polkit rule (ALWAYS install/overwrite — mandatory for sleep/lid inhibition)
+    if [ -f /usr/share/hyprcaffeine/polkit.rules ]; then
         sed "s/USER_PLACEHOLDER/$_user/g" /usr/share/hyprcaffeine/polkit.rules \
             > /etc/polkit-1/rules.d/50-hyprcaffeine.rules 2>/dev/null && \
-            echo "  ✅ Polkit rule installed" || true
+            echo "  ✅ Polkit rule installed → /etc/polkit-1/rules.d/50-hyprcaffeine.rules" || \
+            echo "  ⚠️  Polkit rule install failed — sleep/lid inhibition may require auth prompts"
     fi
 
     # 2. Waybar + 3. Systemd — run as the user
