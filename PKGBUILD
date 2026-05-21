@@ -2,13 +2,14 @@
 
 pkgname=shim-msft2023sig
 pkgver=16.1
-pkgrel=7
+pkgrel=8
 _fedora_pkgrel=7
-_fedora_pkg="shim-x64-${pkgver}-${_fedora_pkgrel}.x86_64.rpm"
-pkgdesc='Fedora-signed x64 shim with Microsoft UEFI CA 2023 signature support'
-arch=('x86_64')
+pkgdesc='Fedora-signed x64 and aa64 shim with Microsoft UEFI CA 2023 signature support'
 url='https://github.com/rhboot/shim/'
+arch=('x86_64' 'aarch64')
 license=('BSD-3-Clause')
+options=('!strip' '!debug')
+install="${pkgname}.install"
 makedepends=('rpmextract')
 optdepends=(
   'shim-msft2023sig-helper: deploy shim to an ESP safely'
@@ -16,50 +17,65 @@ optdepends=(
   'binutils: inspect SBAT sections with objdump'
   'mokutil: inspect Secure Boot and MOK state'
 )
-install='shim-msft2023sig.install'
-source_x86_64=("${_fedora_pkg}::https://mirror.de.leaseweb.net/fedora/development/rawhide/Everything/x86_64/os/Packages/s/${_fedora_pkg}")
-# TODO before AUR upload: run `updpkgsums` on an Arch host with network access.
-# Keeping SKIP here makes the first draft buildable, but AUR release should pin the real SHA-256.
+
+source_x86_64=(
+  "shim-x64-${pkgver}-${_fedora_pkgrel}.x86_64.rpm::https://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s/shim-x64-${pkgver}-${_fedora_pkgrel}.x86_64.rpm"
+)
+source_aarch64=(
+  "shim-aa64-${pkgver}-${_fedora_pkgrel}.aarch64.rpm::https://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/s/shim-aa64-${pkgver}-${_fedora_pkgrel}.aarch64.rpm"
+)
+
 sha256sums_x86_64=('04b7132d6316bff71427120b6aba85eb4490b2621ccb2f2559bd321ccb25f028')
+sha256sums_aarch64=('33758c9391c0ea1cada0a4d2ad04ecf76506b7a820fc87d56dc7a4c75f1ca0f0')
 
 package() {
-  cd "${srcdir}"
-  rm -rf usr
-  rpmextract.sh "${_fedora_pkg}"
+  local verdir="${pkgver}-${_fedora_pkgrel}"
+  local srcroot="${srcdir}/usr/lib/efi/shim/${verdir}"
+  local dest="${pkgdir}/usr/share/${pkgname}/${verdir}"
 
-  local dest="${pkgdir}/usr/share/${pkgname}/${pkgver}-${pkgrel}"
-  install -d "${dest}"
+  install -dm0755 "${dest}"
 
-  install -Dm0644 "usr/lib/efi/shim/${pkgver}-${pkgrel}/EFI/fedora/shimx64.efi" "${dest}/shimx64.efi"
-  install -Dm0644 "usr/lib/efi/shim/${pkgver}-${pkgrel}/EFI/fedora/shim.efi" "${dest}/shim.efi"
-  install -Dm0644 "usr/lib/efi/shim/${pkgver}-${pkgrel}/EFI/fedora/mmx64.efi" "${dest}/mmx64.efi"
-  install -Dm0644 "usr/lib/efi/shim/${pkgver}-${pkgrel}/EFI/BOOT/fbx64.efi" "${dest}/fbx64.efi"
-  install -Dm0644 "usr/lib/efi/shim/${pkgver}-${pkgrel}/EFI/BOOT/BOOTX64.EFI" "${dest}/BOOTX64.EFI"
-  install -Dm0644 "usr/lib/efi/shim/${pkgver}-${pkgrel}/EFI/fedora/BOOTX64.CSV" "${dest}/BOOTX64.CSV"
+  if [[ "${CARCH}" == "x86_64" ]]; then
+    install -Dm0644 "${srcroot}/EFI/fedora/shimx64.efi" "${dest}/shimx64.efi"
+    install -Dm0644 "${srcroot}/EFI/fedora/shim.efi"    "${dest}/shim.efi"
+    install -Dm0644 "${srcroot}/EFI/fedora/mmx64.efi"   "${dest}/mmx64.efi"
+    install -Dm0644 "${srcroot}/EFI/BOOT/fbx64.efi"     "${dest}/fbx64.efi"
+    install -Dm0644 "${srcroot}/EFI/BOOT/BOOTX64.EFI"   "${dest}/BOOTX64.EFI"
+    install -Dm0644 "${srcroot}/EFI/fedora/BOOTX64.CSV" "${dest}/BOOTX64.CSV"
+  elif [[ "${CARCH}" == "aarch64" ]]; then
+    install -Dm0644 "${srcroot}/EFI/fedora/shimaa64.efi" "${dest}/shimaa64.efi"
+    install -Dm0644 "${srcroot}/EFI/fedora/shim.efi"     "${dest}/shim.efi"
+    install -Dm0644 "${srcroot}/EFI/fedora/mmaa64.efi"   "${dest}/mmaa64.efi"
+    install -Dm0644 "${srcroot}/EFI/BOOT/fbaa64.efi"     "${dest}/fbaa64.efi"
+    install -Dm0644 "${srcroot}/EFI/BOOT/BOOTAA64.EFI"   "${dest}/BOOTAA64.EFI"
+    install -Dm0644 "${srcroot}/EFI/fedora/BOOTAA64.CSV" "${dest}/BOOTAA64.CSV"
+  fi
 
-  install -d "${pkgdir}/usr/share/doc/${pkgname}"
+  ln -s "${verdir}" "${pkgdir}/usr/share/${pkgname}/current"
+
+  install -dm0755 "${pkgdir}/usr/share/doc/${pkgname}"
   cat > "${pkgdir}/usr/share/doc/${pkgname}/README.md" <<README
 # shim-msft2023sig
 
-This package redistributes Fedora's Microsoft-signed x64 shim binaries under:
+This package redistributes Fedora-signed shim EFI binaries.
 
-\`/usr/share/shim-msft2023sig/${pkgver}-${pkgrel}/\`
+It does not modify the EFI System Partition.
 
-It intentionally does not modify the EFI System Partition.
+Installed files:
 
-Suggested validation after install:
+- /usr/share/${pkgname}/${verdir}/
+- /usr/share/${pkgname}/current
+
+Supported Arch Linux package architectures:
+
+- x86_64
+- aarch64
+
+Suggested verification:
 
 \`\`\`bash
-sbverify --list /usr/share/shim-msft2023sig/current/shimx64.efi
-objdump -s -j .sbat /usr/share/shim-msft2023sig/current/shimx64.efi
-\`\`\`
-
-Deploy manually or install \`shim-msft2023sig-helper\` and run:
-
-\`\`\`bash
-sudo shim-msft2023sig-install --esp /boot/efi --target arch
+sbverify --list /usr/share/${pkgname}/current/shim*.efi
+objdump -s -j .sbat /usr/share/${pkgname}/current/shim*.efi
 \`\`\`
 README
-
-  ln -sfn "${pkgver}-${pkgrel}" "${pkgdir}/usr/share/${pkgname}/current"
 }
