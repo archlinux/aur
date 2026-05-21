@@ -2,7 +2,7 @@
 
 pkgname=rmux
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Universal Rust multiplexer with a typed SDK'
 arch=('x86_64' 'aarch64')
 options=(!lto)
@@ -31,5 +31,8 @@ build() {
 package() {
   cd $pkgname-$pkgver
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-  install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
