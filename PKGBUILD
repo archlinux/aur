@@ -2,24 +2,24 @@
 
 pkgname=betterleaks
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Go-based secret scanner offering CEL rule evaluation and Gitleaks compatibility"
 arch=('x86_64' 'aarch64')
 url="https://github.com/betterleaks/betterleaks"
 license=('MIT')
 depends=('glibc')
-makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a3df6a7a21bef08684896271b7e25284299c678804be5cad682a8d56745b422e')
+makedepends=('go' 'git')
+source=("git+$url.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   export GOPATH="${srcdir}/gopath"
   go mod download
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -32,9 +32,9 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   install -Dm755 "$pkgname" -t "$pkgdir/usr/bin/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  # install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
