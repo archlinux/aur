@@ -1,7 +1,7 @@
 # Maintainer: unassignedthread <unassignedthread@github.com>
 pkgname=fluxpass
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI password manager for pass (passwordstore.org) with type-based entries"
 arch=('any')
 url="https://github.com/unassignedthread/FluxPass"
