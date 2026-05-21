@@ -1,0 +1,15 @@
+pkgbase = alsa-ucm-xiaomi-pipa
+	pkgdesc = ALSA UCM2 configuration for Xiaomi Pad 6 (pipa)
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.postmarketos.org/postmarketOS/pmaports
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = alsa-ucm-conf
+	source = pipa.conf::https://gitlab.postmarketos.org/postmarketOS/pmaports/-/raw/master/device/testing/device-xiaomi-pipa/pipa.conf
+	source = HiFi.conf::https://gitlab.postmarketos.org/postmarketOS/pmaports/-/raw/master/device/testing/device-xiaomi-pipa/HiFi.conf
+	sha256sums = 4b22e4c346f465f454340d78f319012bc7778c90f953f6c0148713cf4b5f2034
+	sha256sums = 5d54ed9a33f67fbfde7996f42ddc7e5c02837ed3e94b5678f057cc5358abeac8
+
+pkgname = alsa-ucm-xiaomi-pipa
