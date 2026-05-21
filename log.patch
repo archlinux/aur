@@ -1,0 +1,16 @@
+--- ./ntfyme/utils/log/log.py	2024-08-05 16:49:55.000000000 -0300
++++ ./ntfyme/utils/log/log.py	2024-08-05 16:49:55.000000000 -0300
+@@ -19,9 +19,12 @@
+     if system not in ["Windows", "Linux"]:
+         system = "Macos"
+ 
+-    log_dir = os.path.dirname(__file__)
++    home_dir = os.path.expanduser("~")
++    log_dir = os.path.join(home_dir, ".ntfyme/")
+     log_file = os.path.join(log_dir, "ntfyme.log")
+ 
++    os.makedirs(log_dir, exist_ok=True)
++
+     with open(log_file, "a") as lg:
+         status = "Successful" if return_code == 0 else "Error"
+         lg.write(f"{log_time} :: PID: {pid} :: Status: {status}\n")
