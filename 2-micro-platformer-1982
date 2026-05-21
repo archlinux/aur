@@ -1,0 +1,2 @@
+#!/bin/sh
+exec python3 /usr/share/2-micro-platformer-1982/retro_game.py "$@"

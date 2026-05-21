@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=2-micro-Platformer-1982
+Comment=Atari 2600 style 2-bit platformer game
+Exec=2-micro-platformer-1982
+Icon=applications-games
+Terminal=false
+Categories=Game;ArcadeGame;
