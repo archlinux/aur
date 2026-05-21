@@ -1,6 +1,6 @@
 pkgbase = wine-tkg-staging-wow64-bin
 	pkgdesc = A compatibility layer for running Windows programs (WOW64 with TkG-Staging patches)
-	pkgver = 11.5
+	pkgver = 11.9
 	pkgrel = 1
 	url = https://github.com/Kron4ek/Wine-Builds
 	arch = x86_64
@@ -28,11 +28,11 @@ pkgbase = wine-tkg-staging-wow64-bin
 	depends = desktop-file-utils
 	depends = libgphoto2
 	depends = glibc
-	provides = wine=11.5
-	provides = wine-staging=11.5
-	provides = wine-wow64=11.5
+	provides = wine=11.9
+	provides = wine-staging=11.9
+	provides = wine-wow64=11.9
 	conflicts = wine
-	source = https://github.com/Kron4ek/Wine-Builds/releases/download/11.5/wine-11.5-staging-tkg-amd64-wow64.tar.xz
-	sha256sums = 10a175c30cc179dd94b7b66cefaf8f3cba9a4a8f7038a3efce46fd9b0e31afe1
+	source = https://github.com/Kron4ek/Wine-Builds/releases/download/11.9/wine-11.9-staging-tkg-amd64-wow64.tar.xz
+	sha256sums = df996366429d7a3329543b3abd27083d2c64adbb3cb915b9d4b3db86a1a322fd
 
 pkgname = wine-tkg-staging-wow64-bin
