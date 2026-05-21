@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=smolvm
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/smol-machines/smolvm'
@@ -20,7 +20,6 @@ makedepends=(
     'cargo'
     'curl'
     'tar'
-    'rustup'
     'busybox'
     'alpine-sdk'
 )
@@ -35,10 +34,10 @@ sha256sums=('f431a705013738267cd837d21cac602414e05cfd3d3ac5dd53fb7fcb4bc7fdf0'
             '78083b2b2685855c1d366b89851bbe6c7a5c844ae6048fa120fc3ccadbdd133c')
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    cp "$srcdir/Cargo.lock" .
-
+    cd "$pkgname-$pkgver"
+    cp "../Cargo.lock" .
     export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
     case "$CARCH" in
         x86_64)
@@ -50,8 +49,6 @@ prepare() {
             export CRANE_ARCH="arm64"
             ;;
     esac
-
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
     mkdir -p target/agent-rootfs
 
@@ -107,7 +104,7 @@ EOF
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
@@ -136,39 +133,15 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    install -Dm755 \
-        target/release/smolvm \
-        "$pkgdir/usr/bin/smolvm"
-
-    install -Dm644 \
-        LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    install -Dm644 \
-        README.md \
-        "$pkgdir/usr/share/doc/$pkgname/README.md"
-
+    cd "$pkgname-$pkgver"
+    install -Dm755 target/release/smolvm "$pkgdir/usr/bin/smolvm"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     mkdir -p "$pkgdir/usr/share/smolvm"
-
-    cp -a \
-        target/agent-rootfs \
-        "$pkgdir/usr/share/smolvm/"
-
-    install -Dm644 \
-        storage-template.ext4 \
-        "$pkgdir/usr/share/smolvm/storage-template.ext4"
-
-    install -Dm644 \
-        overlay-template.ext4 \
-        "$pkgdir/usr/share/smolvm/overlay-template.ext4"
-
-    if [[ -f "/usr/share/libkrun/init.krun" ]]; then
-        install -Dm755 \
-            /usr/share/libkrun/init.krun \
-            "$pkgdir/usr/share/smolvm/init.krun"
-    fi
+    cp -a target/agent-rootfs "$pkgdir/usr/share/smolvm/"
+    install -Dm644 storage-template.ext4 "$pkgdir/usr/share/smolvm/storage-template.ext4"
+    install -Dm644 overlay-template.ext4 "$pkgdir/usr/share/smolvm/overlay-template.ext4"
+    # install -Dm755  "$pkgdir/usr/share/smolvm/init.krun" /usr/share/libkrun/init.krun
 }
 
 # vim: ts=4 sw=4 et:

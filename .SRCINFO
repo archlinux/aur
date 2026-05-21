@@ -1,7 +1,7 @@
 pkgbase = smolvm
 	pkgdesc = Tool to build & run portable, lightweight, self-contained virtual machines.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/smol-machines/smolvm
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,6 @@ pkgbase = smolvm
 	makedepends = cargo
 	makedepends = curl
 	makedepends = tar
-	makedepends = rustup
 	makedepends = busybox
 	makedepends = alpine-sdk
 	depends = libkrun
