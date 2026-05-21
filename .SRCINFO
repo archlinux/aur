@@ -1,6 +1,6 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
-	pkgver = 671
+	pkgver = 672
 	pkgrel = 1
 	url = http://hydrusnetwork.github.io/hydrus/
 	arch = any
@@ -48,7 +48,7 @@ pkgbase = hydrus
 	optdepends = python-pillow-jpegxl-plugin: to display JXL images
 	conflicts = hydrus-docs-dummy
 	options = !strip
-	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=1a6184a4e93f703b8c485c42d4e4e87482f9cc4b
+	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=7b12bea769e7c5e5a518dbdfdcdc58d792fa9fda
 	source = paths-in-opt.patch
 	source = hydrus-client
 	source = hydrus-server
