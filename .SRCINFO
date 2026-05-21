@@ -11,4 +11,3 @@ pkgbase = firefox-extension-canvasblocker
 	sha256sums = d47b74c5413e01026ae4b16097b2442febcdfec83068e3984567cb6ed2c3ef7c
 
 pkgname = firefox-extension-canvasblocker
-
