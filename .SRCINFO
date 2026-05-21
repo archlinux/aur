@@ -1,0 +1,15 @@
+pkgbase = dumpr
+	pkgdesc = Rust CLI tool for generating repository dumps with directory trees and concatenated source output.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/iktrnch/dumpr
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	source = dumpr-0.2.0.tar.gz::https://github.com/iktrnch/dumpr/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 86b0c1a5e50cf8fdfa5239411b304c1e4c715df63aee4623cda0559d91742f8e
+
+pkgname = dumpr
