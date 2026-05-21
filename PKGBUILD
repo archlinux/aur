@@ -1,60 +1,30 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: maksim Kononykhin <kononelder@gmail.com>
+# Maintainer: WindowsKonon1337 <https://github.com/WindowsKonon1337>
 pkgname=trackpointsound
 pkgver=1.0.0
-pkgrel=3
-epoch=
-pkgdesc="adds the ability to play sound when you touch a trackpoint"
-arch=("x86_64")
+pkgrel=1
+pkgdesc="Play a random sound when the trackpoint moves"
+arch=('x86_64' 'aarch64')
 url="https://github.com/WindowsKonon1337/TrackPointSound"
 license=('MIT')
-groups=()
-depends=("sfml<3")
-makedepends=("cmake" "base-devel" "systemd" "git")
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/WindowsKonon1337/TrackPointSound.git")
-
-noextract=()
-sha256sums=('SKIP')
-validpgpkeys=()
-
-prepare() {
-	mkdir "$pkgname-$pkgver"
-	cd "$pkgname-$pkgver"
-	git clone $source
-
-	cd ./TrackPointSound/TrackpointSound
-	mkdir -p "$HOME/.trackpointsound/audio/"
-	install -Dm644 ./audio/* "$HOME/.trackpointsound/audio/"
-
-	#patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
+depends=('alsa-lib' 'systemd-libs')
+makedepends=('cargo' 'pkgconf' 'systemd-libs')
+source=("https://github.com/WindowsKonon1337/TrackPointSound/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('4850ff39cd4b50f6e6fe15b79215190efec5862a7b6f8221c8e62b38cb97605f')
+options=(!lto)
+install=trackpointsound.install
 
 build() {
-	cd "$pkgname-$pkgver/TrackPointSound"
-	cmake -B ../build -S .
-	cd ../build/TrackpointSound
-	make
+  cd "TrackPointSound-$pkgver"
+  export CARGO_TARGET_DIR=target
+  cargo build --release --locked
 }
-
-# check() {
-# 	cd "$pkgname-$pkgver"
-# 	make -k check
-# }
 
 package() {
-    cd "$pkgname-$pkgver"/build/TrackpointSound
-	install -Dm755 TrackpointSound "$pkgdir/usr/bin/trackpointsound"
+  cd "TrackPointSound-$pkgver"
+  install -Dm755 target/release/trackpointsound "$pkgdir/usr/bin/trackpointsound"
+  install -dm755 "$pkgdir/usr/share/trackpointsound/audio"
+  install -m644 audio/* "$pkgdir/usr/share/trackpointsound/audio/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+

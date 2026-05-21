@@ -1,0 +1,17 @@
+post_install() {
+  echo ""
+  echo "==> trackpointsound"
+  echo "    System samples: /usr/share/trackpointsound/audio/"
+  echo "    Custom samples: ~/.trackpointsound/audio/"
+  echo ""
+  echo "    For trackpoint device access, add your user to the input group"
+  echo "    and log in again:  sudo usermod -aG input \$USER"
+  echo ""
+  echo "    Run: trackpointsound"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
+
