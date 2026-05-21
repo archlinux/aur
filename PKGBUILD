@@ -33,13 +33,13 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/xmm7360-pci/tool"
-    make clean 2>/dev/null || true
+    cd "$srcdir/xmm7360-pci/rpc"
+    make -f ../Makefile.tool clean 2>/dev/null || true
 }
 
 build() {
-    cd "$srcdir/xmm7360-pci/tool"
-    make
+    cd "$srcdir/xmm7360-pci/rpc"
+    make -f ../Makefile.tool
 }
 
 package() {
