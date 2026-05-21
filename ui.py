@@ -19,17 +19,19 @@ import display
 
 def show_welcome_message(app):
     display.chat_box_remove_all(app)
-    # Disable model selection on welcome screen
+
+    # Strictly disable all interactive elements
     app.model_btn.set_sensitive(False)
     app.model_btn.set_tooltip_text("Start a new chat to select a model.")
-    
-    # Disable interaction
     app.entry.set_sensitive(False)
     app.btn_send.set_sensitive(False)
     app.btn_repair.set_sensitive(False)
     app.btn_attach.set_sensitive(False)
 
+    # Create the welcome content
     welcome_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=24)
+    # ... (rest of the UI construction)
+
     welcome_box.set_valign(Gtk.Align.CENTER)
     welcome_box.set_halign(Gtk.Align.CENTER)
     welcome_box.set_margin_top(40)
