@@ -1,0 +1,61 @@
+#!/bin/bash
+# xmm7360-dkms.install
+
+_pkgname="xmm7360"
+
+post_install() {
+    local ver
+    ver=$(ls /usr/src | grep "^${_pkgname}-" | sort -V | tail -1 | sed "s/${_pkgname}-//")
+
+    echo ">>> Registering xmm7360 ${ver} with DKMS..."
+    dkms install "${_pkgname}/${ver}" --no-depmod
+    depmod -a
+
+    echo ">>> Reloading udev rules..."
+    udevadm control --reload-rules
+
+    echo ">>> Enabling xmm7360 services..."
+    systemctl daemon-reload
+    systemctl enable xmm7360-init.service
+    systemctl enable xmm7360-signal.service
+    systemctl enable --now xmm7360-rescan.service
+
+    echo ""
+    echo ">>> NOTE: iosm is now blacklisted. A reboot is needed for xmm7360"
+    echo ">>>       to load in place of iosm. After reboot, the modem will"
+    echo ">>>       initialise automatically and appear in NetworkManager."
+}
+
+post_upgrade() {
+    local ver
+    ver=$(ls /usr/src | grep "^${_pkgname}-" | sort -V | tail -1 | sed "s/${_pkgname}-//")
+
+    echo ">>> Rebuilding xmm7360 ${ver} DKMS module..."
+    dkms install "${_pkgname}/${ver}" --force --no-depmod
+    depmod -a
+
+    systemctl daemon-reload
+    systemctl restart xmm7360-init.service 2>/dev/null || true
+}
+
+pre_remove() {
+    local ver
+    ver=$(ls /usr/src | grep "^${_pkgname}-" | sort -V | tail -1 | sed "s/${_pkgname}-//")
+
+    systemctl disable xmm7360-signal.service 2>/dev/null || true
+    systemctl stop    xmm7360-signal.service 2>/dev/null || true
+    systemctl disable xmm7360-rescan.service 2>/dev/null || true
+    systemctl stop    xmm7360-rescan.service 2>/dev/null || true
+
+    echo ">>> Removing xmm7360 ${ver} from DKMS..."
+    dkms remove "${_pkgname}/${ver}" --all --no-depmod 2>/dev/null || true
+    depmod -a
+
+    systemctl disable xmm7360-init.service 2>/dev/null || true
+
+    echo ">>> Unloading xmm7360 module..."
+    modprobe -r xmm7360 2>/dev/null || true
+
+
+    echo ">>> NOTE: iosm blacklist removed. Reboot to restore iosm."
+}
