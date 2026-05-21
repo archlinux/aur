@@ -5,6 +5,7 @@ pkgbase = fastflowlm-gtk
 	url = https://github.com/marleylinux/FastFlowLM-GTK
 	arch = any
 	license = MIT
+	makedepends = imagemagick
 	depends = python
 	depends = python-gobject
 	depends = gtk4

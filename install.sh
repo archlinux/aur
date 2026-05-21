@@ -30,7 +30,7 @@ chmod 644 "$INSTALL_DIR"/*.py
 chmod 755 "$INSTALL_DIR/app.py"
 
 # Install Icon
-cp flm-gtk.webp "$ICON_DIR/fastflowlm-gtk.png"
+magick "$srcdir/flm-gtk.webp" "$ICON_DIR/fastflowlm-gtk.png"
 chmod 644 "$ICON_DIR/fastflowlm-gtk.png"
 
 # Install Desktop file

@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/marleylinux/FastFlowLM-GTK"
 license=('MIT')
 depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'libsoup3' 'gtksourceview5' 'python-psutil' 'fastflowlm')
+makedepends=('imagemagick')
 source=("fastflowlm-gtk.desktop"
         "flm-gtk.webp"
         "app.py"
@@ -28,8 +29,9 @@ package() {
   install -m644 "$srcdir/"*.py "$pkgdir/usr/share/fastflowlm-gtk/"
   chmod 755 "$pkgdir/usr/share/fastflowlm-gtk/app.py"
 
-  # Install Icon
-  install -Dm644 "$srcdir/flm-gtk.webp" "$pkgdir/usr/share/icons/hicolor/256x256/apps/fastflowlm-gtk.png"
+  # Install Icon (Convert to PNG with transparency preservation)
+  install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+  magick "$srcdir/flm-gtk.webp" "$pkgdir/usr/share/icons/hicolor/256x256/apps/fastflowlm-gtk.png"
 
   # Install Desktop file
   install -Dm644 "$srcdir/fastflowlm-gtk.desktop" "$pkgdir/usr/share/applications/fastflowlm-gtk.desktop"
