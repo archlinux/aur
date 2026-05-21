@@ -1,6 +1,6 @@
 pkgbase = argonaut-git
 	pkgdesc = A GitOps CLI tool for managing ArgoCD applications (git version)
-	pkgver = 2.17.0.r5.g35bc8d1
+	pkgver = 2.17.0.r6.g90bae46
 	pkgrel = 1
 	url = https://github.com/darksworm/argonaut
 	arch = x86_64
