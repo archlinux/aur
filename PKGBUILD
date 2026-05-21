@@ -2,7 +2,7 @@
 
 _pkgname=opencloud
 pkgname=opencloud-git
-pkgver=4.1.0.r123.g1e369e4
+pkgver=7.0.0.r5.gbdff962
 pkgrel=1
 pkgdesc="secure and private way to store, access, and share your files - git build"
 url="https://github.com/opencloud-eu/opencloud"
@@ -16,12 +16,14 @@ backup=('etc/opencloud/opencloud.env')
 conflicts=('opencloud' 'opencloud-bin')
 provides=('opencloud')
 source=("git+https://github.com/opencloud-eu/opencloud.git"
+        "0001_fix-build.patch"
         "go.mk.patch"
         "opencloud.env"
         "opencloud.service"
         "opencloud.sysusers"
         "opencloud.tmpfiles")
 sha512sums=('SKIP'
+            'd3719d83bb14e66ae125ec1939ac834ed3e7f9dd77647274193e4fc532f9a03b48c2bcece796dfbe617765c08f7c338e0ebda4b98c3df0ef52c40a89e275f6c5'
             'da70b77bf25c87d75f1a662d00a339f9b8756e6f8e33e17dcc0663d2dcd7d4981720a93fe1ba6c788d8a5e7f484f8e292e59273793106d496955c5a670862318'
             'a8d58020e085b0027bb27226d05d36eb0c1f52c3813f67a3a69cadbbf51bcff8d1a5341057f7a88d0961e3430b1cc9416f4d25e087d1512f3319fd194804c15e'
             'af6b2e80ebaf130fb3e8f6038580bea4db811499d06f2962604941f75d1f8ef0dd3692bf21e54c0611864c49217c8fa457cb6773775a1aa47c7254330f83ba7f'
@@ -38,6 +40,7 @@ prepare() {
     cd "${_pkgname}"
 
     patch .make/go.mk ${srcdir}/go.mk.patch
+    patch .make/protobuf.mk ${srcdir}/0001_fix-build.patch
 }
 
 build() {
