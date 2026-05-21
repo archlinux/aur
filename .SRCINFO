@@ -1,0 +1,18 @@
+pkgbase = eden-pgo-bin
+	pkgdesc = The Eden Nintendo Switch emulator AppImage (PGO build).
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://git.eden-emu.dev/eden-emu/eden
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = eden
+	conflicts = eden
+	conflicts = eden-bin
+	conflicts = eden-git
+	options = !strip
+	source_x86_64 = Eden-Linux-0.2.0-amd64.AppImage::https://git.eden-emu.dev/eden-emu/eden/releases/download/v0.2.0/Eden-Linux-v0.2.0-amd64-clang-pgo.AppImage
+	sha256sums_x86_64 = 68c8b5ace9772b0016a73c77089968b84708dace06ae5c9a472e21fab030465f
+
+pkgname = eden-pgo-bin
