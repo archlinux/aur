@@ -1,15 +1,14 @@
 # Maintainer: FXS <admin@fxs.life>
 pkgname=rustle
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A modern music player built with Rust and iced, supporting NetEase Cloud Music"
 arch=('x86_64')
-url="https://github.com/ArcticFoxNetwork/Rustle"
+url="https://github.com/Fei-xiangShi/Rustle"
 license=('AGPL-3.0-or-later')
 depends=(
     'dbus'
     'alsa-lib'
-    'libayatana-appindicator'
 )
 makedepends=(
     'rust'
@@ -33,13 +32,13 @@ build() {
     cd "Rustle-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release
 }
 
 check() {
     cd "Rustle-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    cargo test --frozen
 }
 
 package() {
@@ -48,21 +47,13 @@ package() {
     # Install binary
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-    # Install desktop file
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" << EOF
-[Desktop Entry]
-Name=Rustle
-Comment=A modern music player
-Exec=rustle
-Icon=rustle
-Type=Application
-Categories=Audio;Music;Player;AudioVideo;
-Keywords=music;player;netease;cloud;
-EOF
-
-    # Install icon
+    # Install desktop metadata and icon
+    install -Dm644 "packaging/linux/life.fxs.rustle.desktop" \
+        "$pkgdir/usr/share/applications/life.fxs.rustle.desktop"
+    install -Dm644 "packaging/linux/life.fxs.rustle.metainfo.xml" \
+        "$pkgdir/usr/share/metainfo/life.fxs.rustle.metainfo.xml"
     install -Dm644 "assets/icons/icon_256.png" \
-        "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/life.fxs.rustle.png"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
