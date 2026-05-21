@@ -1,6 +1,6 @@
 pkgbase = r-treedist
 	pkgdesc = Calculate and Map Distances Between Phylogenetic Trees
-	pkgver = 2.9.2
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=TreeDist
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = r-treedist
 	depends = r-ape
 	depends = r-cli
 	depends = r-colorspace
-	depends = r-memoise
 	depends = r-rdpack
 	depends = r-shiny
 	depends = r-shinyjs
@@ -30,15 +29,16 @@ pkgbase = r-treedist
 	optdepends = r-rmarkdown
 	optdepends = r-rogue
 	optdepends = r-spelling
+	optdepends = r-tbrdist
 	optdepends = r-ternary
 	optdepends = r-testthat
 	optdepends = r-treedistdata
 	optdepends = r-treesearch
 	optdepends = r-umatrix
-	optdepends = r-uwot
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/TreeDist_2.9.2.tar.gz
-	md5sums = 9f60294fb179e32c34cfc9ab18665344
-	b2sums = 304143d79c7ecea7ac7107d957260c8b55b6dea28dcf93f6d303d5356cc75647729a085d9dbd5e52d0986bf2936ca2b78d58a8e501d14e05e722bf69a19bf38a
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/TreeDist_2.14.0.tar.gz
+	md5sums = 8a26cdb842eea25c1fe96e52e9d860ef
+	b2sums = 9a327b62f2fd45cc237940026f58e802368d5560e0c706d9886b640607c92c1350527f2e69608210806b543e458d009fbeb4e0807d74cbdef5320e0a5b47db60
 
 pkgname = r-treedist

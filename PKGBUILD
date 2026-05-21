@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TreeDist
-_pkgver=2.9.2
+_pkgver=2.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,7 +13,6 @@ depends=(
   r-ape
   r-cli
   r-colorspace
-  r-memoise
   r-rdpack
   r-shiny
   r-shinyjs
@@ -39,17 +38,18 @@ optdepends=(
   r-rmarkdown
   r-rogue
   r-spelling
+  r-tbrdist
   r-ternary
   r-testthat
   r-treedistdata
   r-treesearch
   r-umatrix
-  r-uwot
   r-vdiffr
+  r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9f60294fb179e32c34cfc9ab18665344')
-b2sums=('304143d79c7ecea7ac7107d957260c8b55b6dea28dcf93f6d303d5356cc75647729a085d9dbd5e52d0986bf2936ca2b78d58a8e501d14e05e722bf69a19bf38a')
+md5sums=('8a26cdb842eea25c1fe96e52e9d860ef')
+b2sums=('9a327b62f2fd45cc237940026f58e802368d5560e0c706d9886b640607c92c1350527f2e69608210806b543e458d009fbeb4e0807d74cbdef5320e0a5b47db60')
 
 build() {
   mkdir build
