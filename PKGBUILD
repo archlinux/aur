@@ -22,7 +22,7 @@ makedepends=(
 )
 provides=('dsd-neo')
 conflicts=('dsd-neo')
-source=("${pkgname}::git+https://github.com/arancormonk/dsd-neo.git")
+source=("${pkgname}::git+https://github.com/arancormonk/dsd-neo.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {

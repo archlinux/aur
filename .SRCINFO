@@ -19,7 +19,7 @@ pkgbase = dsd-neo-git
 	depends = curl
 	provides = dsd-neo
 	conflicts = dsd-neo
-	source = dsd-neo-git::git+https://github.com/arancormonk/dsd-neo.git
+	source = dsd-neo-git::git+https://github.com/arancormonk/dsd-neo.git#branch=main
 	sha256sums = SKIP
 
 pkgname = dsd-neo-git
