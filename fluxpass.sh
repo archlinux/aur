@@ -1,17 +1,12 @@
 #!/bin/bash
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-JFX_MODS=""
-for dir in /usr/lib/jvm/*/lib /usr/share/java/openjfx/lib /opt/javafx-sdk/lib; do
-    if [ -f "$dir/javafx-controls.jar" ]; then
-        JFX_MODS="--module-path $dir --add-modules javafx.controls,javafx.fxml"
-        break
-    fi
-done
-
 JAR=""
+LIB=""
+
 if [ -f /usr/share/java/fluxpass/fluxpass.jar ]; then
     JAR=/usr/share/java/fluxpass/fluxpass.jar
+    LIB=/usr/share/java/fluxpass/lib
 elif [ -f "$(dirname "$0")/target/fluxpass.jar" ]; then
     JAR="$(dirname "$0")/target/fluxpass.jar"
 fi
@@ -23,4 +18,13 @@ if [ -z "$JAR" ]; then
     JAR="$SCRIPT_DIR/target/fluxpass.jar"
 fi
 
-exec java $JFX_MODS -jar "$JAR" "$@"
+if [ -d "$LIB" ]; then
+    exec java --module-path "$LIB" --add-modules javafx.controls,javafx.fxml -jar "$JAR" "$@"
+else
+    for dir in /usr/lib/jvm/*/lib /usr/share/java/openjfx/lib /opt/javafx-sdk/lib; do
+        if [ -f "$dir/javafx-controls.jar" ]; then
+            exec java --module-path "$dir" --add-modules javafx.controls,javafx.fxml -jar "$JAR" "$@"
+        fi
+    done
+    exec java -jar "$JAR" "$@"
+fi
