@@ -1,22 +1,9 @@
 pkgbase = gospeed-bin
-	pkgdesc = Fast, zero-dependency network speed testing tool
-	pkgver = 1.4.0_rc3
+	pkgdesc = Placeholder — replaced by GoReleaser on the next tag.
+	pkgver = 0.0.0
 	pkgrel = 1
 	url = https://gospeed.goozt.org
-	license = MIT
-	conflicts = gospeed
-	provides = gospeed
-	arch = aarch64
-	source_aarch64 = https://github.com/goozt/gospeed/releases/download/v1.4.0-rc3/gospeed_1.4.0-rc3_linux_arm64.tar.gz
-	sha256sums_aarch64 = 06fe6ffc5b60addb08738960ffa881d82fcd4003ae6dc60c41f598de545b26de
-	arch = armv7h
-	source_armv7h = https://github.com/goozt/gospeed/releases/download/v1.4.0-rc3/gospeed_1.4.0-rc3_linux_armv7.tar.gz
-	sha256sums_armv7h = a0a5924a3a0d5ec957407f7d490ff2e654b102b6ff9e7a79a9379de70f0eb047
-	arch = i686
-	source_i686 = https://github.com/goozt/gospeed/releases/download/v1.4.0-rc3/gospeed_1.4.0-rc3_linux_386.tar.gz
-	sha256sums_i686 = 48fe5fb694df94554e68ac37fef8c26b292786c9915aead7425a3844d611b7b3
 	arch = x86_64
-	source_x86_64 = https://github.com/goozt/gospeed/releases/download/v1.4.0-rc3/gospeed_1.4.0-rc3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6a39e24760236b40ff120303bfc5efad00d246f30b2d47f89bf913269ca42729
-	
+	license = MIT
+
 pkgname = gospeed-bin
