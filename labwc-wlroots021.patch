@@ -1,5 +1,18 @@
+diff --git a/include/labwc.h b/include/labwc.h
+index 87a42198..df293d7c 100644
+--- a/include/labwc.h
++++ b/include/labwc.h
+@@ -197,7 +197,7 @@ struct server {
+ 	struct {
+ 		struct wlr_ext_foreign_toplevel_image_capture_source_manager_v1 *manager;
+ 		struct {
+-			struct wl_listener new_request;
++			struct wl_listener capture_request;
+ 		} on;
+ 	} toplevel_capture;
+ 
 diff --git a/meson.build b/meson.build
-index 7e345ba6..a6e39a5b 100644
+index 22dc5bdc..a6e39a5b 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -51,9 +51,9 @@ endif
@@ -9,16 +22,25 @@ index 7e345ba6..a6e39a5b 100644
 -  'wlroots-0.20',
 +  'wlroots-0.21',
    default_options: ['default_library=static', 'examples=false'],
--  version: ['>=0.20.0', '<0.21.0'],
+-  version: ['>=0.20.1', '<0.21.0'],
 +  version: ['>=0.21.0', '<0.22.0'],
  )
  
  wlroots_has_xwayland = wlroots.get_variable('have_xwayland') == 'true'
 diff --git a/src/server.c b/src/server.c
-index c792d8b4..aab429ed 100644
+index d0c8c04c..444fc5ed 100644
 --- a/src/server.c
 +++ b/src/server.c
-@@ -593,6 +593,8 @@ server_init(void)
+@@ -424,7 +424,7 @@ handle_toplevel_capture_source_destroy(struct wl_listener *listener, void *data)
+ static void
+ handle_toplevel_capture_request(struct wl_listener *listener, void *data)
+ {
+-	struct wlr_ext_foreign_toplevel_image_capture_source_manager_v1_request *request = data;
++	struct wlr_ext_foreign_toplevel_image_capture_source_manager_v1_request_event *request = data;
+ 	struct view *view = request->toplevel_handle->data;
+ 	assert(view);
+ 	wlr_log(WLR_INFO, "Capturing toplevel %s", view->app_id);
+@@ -627,6 +627,8 @@ server_init(void)
  				.features = {
  					.parametric = true,
  					.set_mastering_display_primaries = true,
@@ -27,6 +49,32 @@ index c792d8b4..aab429ed 100644
  				},
  				.render_intents = render_intents,
  				.render_intents_len = ARRAY_SIZE(render_intents),
+@@ -728,12 +730,12 @@ server_init(void)
+ 		wlr_ext_foreign_toplevel_image_capture_source_manager_v1_create(
+ 			server.wl_display, 1);
+ 	if (server.toplevel_capture.manager) {
+-		server.toplevel_capture.on.new_request.notify = handle_toplevel_capture_request;
+-		wl_signal_add(&server.toplevel_capture.manager->events.new_request,
+-			&server.toplevel_capture.on.new_request);
++		server.toplevel_capture.on.capture_request.notify = handle_toplevel_capture_request;
++		wl_signal_add(&server.toplevel_capture.manager->events.capture_request,
++			&server.toplevel_capture.on.capture_request);
+ 	} else {
+ 		/* Allow safe removal on shutdown */
+-		wl_list_init(&server.toplevel_capture.on.new_request.link);
++		wl_list_init(&server.toplevel_capture.on.capture_request.link);
+ 	}
+ 
+ 	wlr_data_control_manager_v1_create(server.wl_display);
+@@ -870,7 +872,7 @@ server_finish(void)
+ 		server.drm_lease_request.notify = NULL;
+ 	}
+ 
+-	wl_list_remove(&server.toplevel_capture.on.new_request.link);
++	wl_list_remove(&server.toplevel_capture.on.capture_request.link);
+ 
+ 	wlr_backend_destroy(server.backend);
+ 	wlr_allocator_destroy(server.allocator);
 diff --git a/subprojects/wlroots.wrap b/subprojects/wlroots.wrap
 index eb797ad5..cdae8b40 100644
 --- a/subprojects/wlroots.wrap
