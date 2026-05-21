@@ -3,7 +3,7 @@
 pkgname=miasma
 pkgdesc='Trap AI web scrapers in an endless poison pit.'
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 license=('GPLv3-only')
 url='https://github.com/austin-weeks/miasma'
@@ -11,11 +11,11 @@ makedepends=('cargo')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   miasma.service
+	sysusers-file
 )
-sha256sums=(
-  '99ff844fa2bd24bdf31d61b4739e5b8935db2b475732056fd0c6b4a4ae80e6d6'
-  '1b76fef7f73770a12bb8cfda4de94aff51bb3a5be76309d6546f0bb3d7567381'
-)
+sha256sums=('99ff844fa2bd24bdf31d61b4739e5b8935db2b475732056fd0c6b4a4ae80e6d6'
+            'a4f1c8c7f115012dbbd4727845bfd0184020d7c528b88a41051b322295bfd87b'
+            '211d658368c51a2dce6ad5f117d7159fe775516e392b7209df1304154c0a36d9')
 options=(!lto)
 
 prepare() {
@@ -40,6 +40,7 @@ check() {
 package() {
   cd ${pkgname}-${pkgver}
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-  install -vDm644 $srcdir/miasma.service "$pkgdir/usr/lib/systemd/system/miasma.service"
+  install -Dm644 "$srcdir/miasma.service" "$pkgdir/usr/lib/systemd/system/miasma.service"
+	install -Dm644 "$srcdir/sysusers-file" "$pkgdir/usr/lib/sysusers.d/miasma.conf"
 }
 
