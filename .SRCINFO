@@ -1,0 +1,23 @@
+pkgbase = asteria
+	pkgdesc = Astrological chart calculator and analyzer with AI interpretations
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://github.com/alamahant/Asteria
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-webengine
+	depends = qt6-positioning
+	depends = hicolor-icon-theme
+	source = Asteria-2.1.5.tar.gz::https://github.com/alamahant/Asteria/archive/refs/tags/v2.1.5.tar.gz
+	source = swisseph-2.10.3final.tar.gz::https://github.com/aloistr/swisseph/archive/refs/tags/v2.10.3final.tar.gz
+	sha256sums = 4189b02855ea4350db81a99d12c153d8fd1e9cae7dfac5157e14326317929c88
+	sha256sums = 032a71d18cff92c9bf960020abda28d44c8f0c678072dcbab561e9aeb0399fbc
+
+pkgname = asteria
