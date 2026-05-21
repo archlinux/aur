@@ -1,7 +1,7 @@
 pkgbase = shim-msft2023sig
-	pkgdesc = Fedora-signed x64 and aa64 shim with Microsoft UEFI CA 2023 signature support
-	pkgver = 16.1
-	pkgrel = 8
+	pkgdesc = Fedora Rawhide-signed x64 and aa64 shim with Microsoft UEFI CA 2023 signature support
+	pkgver = 16.1+fedora+7
+	pkgrel = 1
 	url = https://github.com/rhboot/shim/
 	install = shim-msft2023sig.install
 	arch = x86_64

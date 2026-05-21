@@ -1,10 +1,11 @@
 # Maintainer: AoiNyanko <AoiNyanko@outlook.jp>, Hanahime King <hanahimeking@gmail.com>
 
 pkgname=shim-msft2023sig
-pkgver=16.1
-pkgrel=8
-_fedora_pkgrel=7
-pkgdesc='Fedora-signed x64 and aa64 shim with Microsoft UEFI CA 2023 signature support'
+pkgver=16.1+fedora+7
+pkgrel=1
+_shimver="${pkgver%%+fedora+*}"
+_fedora_pkgrel="${pkgver##*+fedora+}" 
+pkgdesc='Fedora Rawhide-signed x64 and aa64 shim with Microsoft UEFI CA 2023 signature support'
 url='https://github.com/rhboot/shim/'
 arch=('x86_64' 'aarch64')
 license=('BSD-3-Clause')
@@ -19,17 +20,17 @@ optdepends=(
 )
 
 source_x86_64=(
-  "shim-x64-${pkgver}-${_fedora_pkgrel}.x86_64.rpm::https://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s/shim-x64-${pkgver}-${_fedora_pkgrel}.x86_64.rpm"
+  "shim-x64-${_shimver}-${_fedora_pkgrel}.x86_64.rpm::https://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s/shim-x64-${_shimver}-${_fedora_pkgrel}.x86_64.rpm"
 )
 source_aarch64=(
-  "shim-aa64-${pkgver}-${_fedora_pkgrel}.aarch64.rpm::https://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/s/shim-aa64-${pkgver}-${_fedora_pkgrel}.aarch64.rpm"
+  "shim-aa64-${_shimver}-${_fedora_pkgrel}.aarch64.rpm::https://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/s/shim-aa64-${_shimver}-${_fedora_pkgrel}.aarch64.rpm"
 )
 
 sha256sums_x86_64=('04b7132d6316bff71427120b6aba85eb4490b2621ccb2f2559bd321ccb25f028')
 sha256sums_aarch64=('33758c9391c0ea1cada0a4d2ad04ecf76506b7a820fc87d56dc7a4c75f1ca0f0')
 
 package() {
-  local verdir="${pkgver}-${_fedora_pkgrel}"
+  local verdir="${_shimver}-${_fedora_pkgrel}"
   local srcroot="${srcdir}/usr/lib/efi/shim/${verdir}"
   local dest="${pkgdir}/usr/share/${pkgname}/${verdir}"
 
