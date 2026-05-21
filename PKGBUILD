@@ -1,6 +1,6 @@
 # Maintainer: quonaro <quonaro@gmail.com>
 pkgname=lota-bin
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="A configurable task runner for rapid development (binary release)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('lota')
 
 source_x86_64=("$pkgname-$pkgver::https://github.com/quonaro/Lota/releases/download/v$pkgver/lota-linux-amd64")
 source_aarch64=("$pkgname-$pkgver::https://github.com/quonaro/Lota/releases/download/v$pkgver/lota-linux-arm64")
-sha256sums_x86_64=('6c30f0b13b20fd00f63bc06e92724dfe3d925b2e9a20d4542729e6306e6546b9')
-sha256sums_aarch64=('c71413ffb1823e0ab4664abc3f0c05788e18227aa7ca0121b1a1fd52a4f99ee7')
+sha256sums_x86_64=('f7d0cbdd2263fa326c9287304205a036a8b4eeeba8181f7f1b90cb0f3d3bae2a')
+sha256sums_aarch64=('3b4e36351b4d61aae5b3f7301779a1ff6e0dacd54c6c23591ed818dc4975b118')
 
 build() {
     chmod +x "$pkgname-$pkgver"
