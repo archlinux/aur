@@ -1,6 +1,7 @@
 # Maintainer: djugei <ddjugei@gmail.com>
+# shellcheck disable=SC2034,SC2154
 pkgname=deltaclient-git
-pkgver=r158.5a09900
+pkgver=r161.78253f4
 pkgrel=1
 pkgdesc="Delta upgrades for archlinux"
 arch=(x86_64)
@@ -21,27 +22,28 @@ options=(!lto !debug)
 # }
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}" || exit 1
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	cd client
+	cd "$srcdir/${pkgname%-git}" || exit 1
+	cd client || exit 1
 	cargo fetch --target "$(rustc -vV | sed -n 's|host: ||p')"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	cd client
+	cd "$srcdir/${pkgname%-git}" || exit 1
+	cd client || exit 1
 	cargo build --offline --release
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	local TARGET_DIR="$(cargo metadata --format-version 1 --no-deps --offline | jq -r '.target_directory')"
-	install -D -m755 ${TARGET_DIR}/release/deltaclient ${pkgdir}/usr/bin/deltaclient
-	cd client
-	install -D -m644 deltaclient.service ${pkgdir}/usr/lib/systemd/system/deltaclient.service
-	install -D -m644 deltaclient.timer ${pkgdir}/usr/lib/systemd/system/deltaclient.timer
+	cd "$srcdir/${pkgname%-git}" || exit 1
+	local TARGET_DIR
+	TARGET_DIR="$(cargo metadata --format-version 1 --no-deps --offline | jq -r '.target_directory')"
+	install -D -m755 "${TARGET_DIR}"/release/deltaclient "${pkgdir}"/usr/bin/deltaclient
+	cd client || exit 1
+	install -D -m644 deltaclient.service "${pkgdir}"/usr/lib/systemd/system/deltaclient.service
+	install -D -m644 deltaclient.timer "${pkgdir}"/usr/lib/systemd/system/deltaclient.timer
 }
