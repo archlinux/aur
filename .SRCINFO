@@ -1,7 +1,7 @@
 pkgbase = vksumi
 	pkgdesc = Vulkan layer for runtime color grading on Linux (Adrenalin / Freestyle equivalent)
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reakjra/vkSumi
 	arch = x86_64
 	license = MIT
