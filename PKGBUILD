@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=(
   'python'
   'python-fastapi'
-  'python-uvicorn'
+  'uvicorn'
   'python-httpx'
   'python-aiosqlite'
   'python-pydantic'
