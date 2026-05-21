@@ -26,6 +26,8 @@ def show_welcome_message(app):
     # Disable interaction
     app.entry.set_sensitive(False)
     app.btn_send.set_sensitive(False)
+    app.btn_repair.set_sensitive(False)
+    app.btn_attach.set_sensitive(False)
 
     welcome_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=24)
     welcome_box.set_valign(Gtk.Align.CENTER)
