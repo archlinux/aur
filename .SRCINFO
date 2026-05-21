@@ -1,0 +1,13 @@
+pkgbase = wireshare
+	pkgdesc = Peer-to-peer sharing for Gnutella, BitTorrent, magnet, and eD2k
+	pkgver = 7.0
+	pkgrel = 1
+	url = https://github.com/nmatavka/hermes-wireshare
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = jdk21-openjdk
+	depends = java-runtime>=21
+	source = wireshare-7.0.tar.gz::https://github.com/nmatavka/hermes-wireshare/releases/download/release/7.0/WireShare-7.0-source.tar.gz
+	sha256sums = SKIP
+
+pkgname = wireshare
