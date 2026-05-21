@@ -1,0 +1,45 @@
+#!/bin/sh
+# JavaFX on Linux doesn't auto-detect compositor HiDPI scaling. This wrapper
+# resolves the user's UI scale and passes it to JavaFX via -Dglass.gtk.uiScale.
+#
+# Upstream tracking: https://bugs.openjdk.org/browse/JDK-8238077
+#   "[Linux] Automatically detect screen scale when running on Wayland"
+#   Open, P4, no fix version assigned. When this ships in a JavaFX release
+#   that bisq builds against, this wrapper can be removed.
+#
+# Resolution order:
+#   1. BISQ_UI_SCALE  (explicit override)
+#   2. GDK_SCALE      (env, typical for X11)
+#   3. GNOME Mutter D-Bus, if gdbus is available
+#   4. Sway IPC,           if $SWAYSOCK and swaymsg are available
+#   5. Hyprland IPC,       if $HYPRLAND_INSTANCE_SIGNATURE and hyprctl available
+#   6. None             -> no override (default JavaFX behavior)
+#
+# No hard runtime deps; each detection branch is opportunistic.
+
+[ -z "$JAVA_HOME" ] && export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+
+scale="${BISQ_UI_SCALE:-${GDK_SCALE:-}}"
+
+if [ -z "$scale" ] && command -v gdbus >/dev/null 2>&1; then
+  state=$(gdbus call --session \
+    --dest org.gnome.Mutter.DisplayConfig \
+    --object-path /org/gnome/Mutter/DisplayConfig \
+    --method org.gnome.Mutter.DisplayConfig.GetCurrentState 2>/dev/null) || :
+  scale=$(printf '%s' "$state" | grep -oE '\([0-9]+, [0-9]+, [0-9.]+, uint32 [0-9]+, true,' | head -n1 | awk -F', ' '{print $3}')
+fi
+
+if [ -z "$scale" ] && [ -n "$SWAYSOCK" ] && command -v swaymsg >/dev/null 2>&1; then
+  scale=$(swaymsg -t get_outputs 2>/dev/null | sed -nE 's/.*"scale": *([0-9.]+).*/\1/p' | head -n1)
+fi
+
+if [ -z "$scale" ] && [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ] && command -v hyprctl >/dev/null 2>&1; then
+  scale=$(hyprctl monitors 2>/dev/null | sed -nE 's/.*scale: *([0-9.]+).*/\1/p' | head -n1)
+fi
+
+case "$scale" in
+  ""|1|1.0|1.00) ;;
+  *) JAVA_OPTS="-Dglass.gtk.uiScale=$scale ${JAVA_OPTS:-}"; export JAVA_OPTS ;;
+esac
+
+exec /opt/bisq-desktop/bin/desktop "$@"
