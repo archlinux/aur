@@ -2,7 +2,7 @@
 
 _pkgname=python-libpulse
 pkgname="${_pkgname}-git"
-pkgver=0.7.r56.20250223.f900adf
+pkgver=0.7+2.r58.20260521.f224546
 pkgrel=1
 pkgdesc="Asyncio interface to the Pulseaudio and Pipewire pulse library."
 arch=(
@@ -24,7 +24,7 @@ makedepends=(
   'git'
   'python-build'
   'python-flit-core>=3.2'
-  'python-flit-core<4'
+  'python-flit-core<5'
   'python-installer'
   'python-setuptools'
   'python-wheel'
