@@ -1,6 +1,6 @@
 pkgbase = milkup
 	pkgdesc = Cross-platform instant-rendering desktop Markdown editor
-	pkgver = 1.0.16
+	pkgver = 1.0.17
 	pkgrel = 1
 	url = https://github.com/Auto-Plugin/milkup
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = milkup
 	depends = hicolor-icon-theme
 	conflicts = milkup-git
 	conflicts = milkup-bin
-	source = milkup-1.0.16.tar.gz::https://github.com/Auto-Plugin/milkup/archive/refs/tags/v1.0.16.tar.gz
-	sha256sums = a65f550727488c34b8d4c3eba5b52226f0aa2e77728659688deffd4ea95baa12
+	source = milkup-1.0.17.tar.gz::https://github.com/Auto-Plugin/milkup/archive/refs/tags/v1.0.17.tar.gz
+	sha256sums = f75c4a0e6f64c5f46a844600a429c93df76190cbe3c7dc63a4584f9f80421aad
 
 pkgname = milkup
