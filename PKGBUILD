@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Powerful HTTP Benchmarking Tool"
 
-pkgver=3.2.0
+pkgver=4.0.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
-sha256sums=('90eb691d1ac5fd3ff6095b3b8eb47d121cba904f15053c3be7225cd6bdefba91'
+sha256sums=('0747f3c3c8fe473bd9740e4c9759f7d880cbf9f8448730ec2754889ec7414ef4'
             'b40b8f9f325747655be5597be3864c289584e3bac44f2d03a368c26e69434ee1')
-sha256sums_x86_64=('ede76f4107834f977c8f40d089fb19c6f88e928d62be293dd5e39710df683492')
+sha256sums_x86_64=('9b225b249d9aac1814764afea12848677f4e710993647939f0fd763f25fbd111')
 
 
 package() {

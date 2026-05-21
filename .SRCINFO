@@ -1,6 +1,6 @@
 pkgbase = cryload-bin
 	pkgdesc = Powerful HTTP Benchmarking Tool
-	pkgver = 3.2.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/sdogruyol/cryload
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = cryload-bin
 	provides = cryload
 	conflicts = cryload
 	options = !strip
-	source = README-3.2.0.md::https://raw.githubusercontent.com/sdogruyol/cryload/v3.2.0/README.md
-	source = LICENSE-3.2.0::https://raw.githubusercontent.com/sdogruyol/cryload/v3.2.0/LICENSE
-	sha256sums = 90eb691d1ac5fd3ff6095b3b8eb47d121cba904f15053c3be7225cd6bdefba91
+	source = README-4.0.0.md::https://raw.githubusercontent.com/sdogruyol/cryload/v4.0.0/README.md
+	source = LICENSE-4.0.0::https://raw.githubusercontent.com/sdogruyol/cryload/v4.0.0/LICENSE
+	sha256sums = 0747f3c3c8fe473bd9740e4c9759f7d880cbf9f8448730ec2754889ec7414ef4
 	sha256sums = b40b8f9f325747655be5597be3864c289584e3bac44f2d03a368c26e69434ee1
-	source_x86_64 = cryload-x86_64-3.2.0::https://github.com/sdogruyol/cryload/releases/download/v3.2.0/cryload-linux
-	sha256sums_x86_64 = ede76f4107834f977c8f40d089fb19c6f88e928d62be293dd5e39710df683492
+	source_x86_64 = cryload-x86_64-4.0.0::https://github.com/sdogruyol/cryload/releases/download/v4.0.0/cryload-linux
+	sha256sums_x86_64 = 9b225b249d9aac1814764afea12848677f4e710993647939f0fd763f25fbd111
 
 pkgname = cryload-bin
