@@ -1,7 +1,7 @@
 # Maintainer: Andy Alt <arch_stanton5995@proton.me>
 
 pkgname=mesonfe
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='PyQt5 GUI frontend for the Meson build system'
 arch=('any')
@@ -19,7 +19,7 @@ checkdepends=(
   'ruff'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andy5995/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('caa23bb637b1fd2ed52ddfdf87ec573cf46723d8aa78c50ce37f18e50f32d0f4')
+sha256sums=('4199f092300413afe16d5692f25af280aca6f0959ecc5e5584ee9d8372feab06')
 
 build() {
   cd "${pkgname}-${pkgver}"
