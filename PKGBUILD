@@ -17,4 +17,5 @@ build() {
 package() {
   cd "$srcdir/$_gitname"
   python -m installer --overwrite-existing --destdir="$pkgdir" dist/*.whl
+  install -Dm755 cli/helium "$pkgdir/usr/bin/helium"
 }
