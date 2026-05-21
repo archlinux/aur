@@ -1,0 +1,20 @@
+pkgbase = selene-p2p
+	pkgdesc = Selene is a Tor-based P2P chat and encrypted file sharing
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/alamahant/Selene
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = hicolor-icon-theme
+	depends = tor
+	source = Selene-1.0.6.tar.gz::https://github.com/alamahant/Selene/archive/refs/tags/v1.0.6.tar.gz
+	sha256sums = d9d3398569f093ade892c7eace002efc0a0dde52dd8337285a2bd9b1e76d1fe1
+
+pkgname = selene-p2p
