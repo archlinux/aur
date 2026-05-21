@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=backbone
-_pkgver=3.0.3
+_pkgver=3.0.4
 pkgname=r-${_pkgname,,}
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc='Extracts the Backbone from Graphs'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7a5c0f198f56b357679eb1ba117598466a4916100b1472f22a7e23fd4c15f15c')
+sha256sums=('abaf5475e19dc1421d5b521544e12b30d14e6ae279f0995a13e4278796f06c00')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
