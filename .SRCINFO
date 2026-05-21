@@ -1,0 +1,12 @@
+pkgbase = temperature-converter-cli
+	pkgdesc = Simple and lightweight CLI temperature converter with RU/EN localization
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/KIRILL100-10/temperature-converter-cli
+	arch = any
+	license = MIT
+	depends = python
+	source = temperature-converter-cli-1.0.tar.gz::https://github.com/KIRILL100-10/temperature-converter-cli/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 9366951a7ab64d0fb72dc378e142e54a7671acac8ee80d377aef455d5a3c3ed8
+
+pkgname = temperature-converter-cli
