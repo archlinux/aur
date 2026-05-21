@@ -2,15 +2,19 @@ _venv=/opt/tapeback
 
 post_install() {
     echo "==> Installing tray dependencies into tapeback venv..."
-    "$_venv/bin/pip" install --no-cache-dir "pystray>=0.19.0" "Pillow>=10.0.0"
+    "$_venv/bin/pip" install --no-cache-dir "dbus-next>=0.2.3"
     echo "==> Done. Run 'tapeback tray' to start the system tray icon."
+    echo "    GNOME users: install gnome-shell-extension-appindicator"
+    echo "    and enable 'Ubuntu AppIndicators' for the icon to appear."
 }
 
 post_upgrade() {
     post_install
+    # Old (<= 0.9.3) installs put pystray + Pillow here; cleanup just in case.
+    "$_venv/bin/pip" uninstall -y pystray Pillow 2>/dev/null || true
 }
 
 pre_remove() {
     echo "==> Removing tray dependencies from tapeback venv..."
-    "$_venv/bin/pip" uninstall -y pystray Pillow 2>/dev/null || true
+    "$_venv/bin/pip" uninstall -y dbus-next pystray Pillow 2>/dev/null || true
 }
