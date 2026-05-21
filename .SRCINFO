@@ -1,0 +1,15 @@
+pkgbase = baton
+	pkgdesc = A mixer for the PreSonus Studio 1824c audio interface
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/royvegard/baton
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = alsa-lib
+	source = baton-0.2.0::https://github.com/royvegard/baton/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 271c88a343097d017e8721b033dddb72b59a9a9ce5b5b664dd3cb1e7b56cc17a
+
+pkgname = baton
