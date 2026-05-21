@@ -1,0 +1,6 @@
+[antigravity-cli]
+source = "jq"
+url = "https://antigravity-cli-auto-updater-974169037036.us-central1.run.app/manifests/linux_amd64.json"
+filter = ".url | split(\"/\")[5]"
+from_pattern = "-"
+to_pattern = "_"
