@@ -2,7 +2,7 @@ pkgbase = zish-git
 	pkgdesc = A blazing-fast, fully customizable Linux shell written in Rust
 	pkgver = 0.1.0.r0.g0000000
 	pkgrel = 1
-	url = https://github.com/yourusername/zish
+	url = https://github.com/strayfodanator/zish
 	arch = x86_64
 	arch = aarch64
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = zish-git
 	depends = sqlite
 	provides = zish
 	conflicts = zish
-	source = git+https://github.com/yourusername/zish.git
+	source = git+https://github.com/strayfodanator/zish.git
 	sha256sums = SKIP
 
 pkgname = zish-git
