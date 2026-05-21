@@ -2,7 +2,7 @@
 # Contributor: Berke Oruc <berke@oruc.dev>
 
 pkgname=oplire
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="OpenCode Limit Reset + Anthropic Proxy Bridge - Reverse proxy for Claude Code with auto WARP rate limit reset"
 arch=('x86_64')
