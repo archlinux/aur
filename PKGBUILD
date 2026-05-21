@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Nobel <jeremynobel16@gmail.com>
 pkgname=kls
-pkgver=0.1.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="A security-focused directory listing tool"
 arch=('x86_64')
 url="https://github.com/NobelC/kls"
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NobelC/kls/archive/refs/tags/v$pkgver.tar.gz")
 # Note: For new releases, the maintainer should update this hash using 'updpkgsums'
-sha256sums=('513f2b09ebd4e0626ff2b2c7eb42b4a54bbfa838c8fc575bbce4906e5288a1fc')
+sha256sums=('290a1fbdc21e1711215e6d5468fb072ea0965fce4ff314b761e369e9aecfd9c6')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
