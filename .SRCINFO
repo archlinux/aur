@@ -1,0 +1,19 @@
+pkgbase = chatmixd-git
+	pkgdesc = SteelSeries ChatMix daemon for Linux (hardened fork of linuxmix)
+	pkgver = 0.2.0.r1.gac152d0
+	pkgrel = 1
+	url = https://github.com/UMCEKO/chatmixd
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = pipewire-pulse
+	provides = chatmixd
+	conflicts = chatmixd
+	conflicts = linuxmix
+	conflicts = linuxmix-git
+	options = !lto
+	source = chatmixd::git+https://github.com/UMCEKO/chatmixd.git
+	sha256sums = SKIP
+
+pkgname = chatmixd-git
