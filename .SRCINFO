@@ -1,0 +1,32 @@
+pkgbase = meshy-git
+	pkgdesc = GTK4/libadwaita client for MeshCore
+	pkgver = 20260521.69eeb78
+	pkgrel = 1
+	url = https://codeberg.org/sesivany/meshy
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = appstream
+	makedepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = git
+	makedepends = glib2
+	makedepends = meson
+	makedepends = ninja
+	depends = bluez
+	depends = geoclue
+	depends = gstreamer
+	depends = gtk4
+	depends = libadwaita
+	depends = libshumate
+	depends = python>=3.11
+	depends = python-gobject
+	depends = python-pycryptodome
+	depends = python-pyserial
+	depends = python-segno
+	depends = pyzbar
+	provides = meshy
+	conflicts = meshy
+	source = git+https://codeberg.org/sesivany/meshy.git#branch=main
+	sha256sums = SKIP
+
+pkgname = meshy-git
