@@ -1,8 +1,10 @@
 [Unit]
-Description=Tarpit to trap web scrapers
+Description=Miasma headless server
 
 [Service]
-ExecStart=/usr/bin/miasma
+RuntimeDirectory=miasma
+ExecStart=/usr/bin/miasma --unix-socket /run/miasma/miasma.sock --link-prefix bots
+ExecStop=/usr/bin/kill -INT $MAINPID
 User=miasma
 
 [Install]

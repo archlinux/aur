@@ -14,7 +14,7 @@ source=(
 	sysusers-file
 )
 sha256sums=('99ff844fa2bd24bdf31d61b4739e5b8935db2b475732056fd0c6b4a4ae80e6d6'
-            'a4f1c8c7f115012dbbd4727845bfd0184020d7c528b88a41051b322295bfd87b'
+            'c7482df8d5362ce914e06e67fde051abbe34d38dc78808e25aac4a1f299e30ff'
             '211d658368c51a2dce6ad5f117d7159fe775516e392b7209df1304154c0a36d9')
 options=(!lto)
 
