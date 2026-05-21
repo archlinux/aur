@@ -1,6 +1,6 @@
 pkgbase = crystal-dock-git
 	pkgdesc = A cool desktop panel for Linux desktop
-	pkgver = r612.g14e7d88
+	pkgver = v2.16.r612.g14e7d88
 	pkgrel = 1
 	url = https://github.com/dangvd/crystal-dock
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = crystal-dock-git
 	depends = wayland
 	depends = layer-shell-qt
 	optdepends = kwin
+	optdepends = qt6-svg
+	optdepends = qt6-declarative
 	provides = crystal-dock
 	conflicts = crystal-dock
 	source = crystal-dock::git+https://github.com/dangvd/crystal-dock.git
