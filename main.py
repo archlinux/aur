@@ -334,6 +334,12 @@ class FlmChatApp(Adw.Application):
         sessions.save_session(self)
 
     async def load_session(self, session_id):
+        # 1. Purge current state completely before loading new one
+        self.history = []
+        self.current_session_id = None
+        self.current_model = None
+        display.chat_box_remove_all(self)
+
         self.models = flm.get_all_models()
         path = os.path.join(self.history_dir, f"{session_id}.json")
         try:
@@ -343,8 +349,7 @@ class FlmChatApp(Adw.Application):
                 self.history = data.get("messages", [])
                 self.current_model = data.get("model")
                 
-                display.chat_box_remove_all(self)
-                
+                # Display messages
                 for msg in self.history:
                     display.add_message(self, msg.get("content", ""), msg["role"] == "user", msg.get("image"))
                 
