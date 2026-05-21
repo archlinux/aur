@@ -1,7 +1,7 @@
 pkgbase = say
 	pkgdesc = Terminal based voice and video call utility written in go
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/svanichkin/say
 	arch = x86_64
 	license = MIT

@@ -3,13 +3,13 @@
 pkgname=say
 pkgdesc='Terminal based voice and video call utility written in go'
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=('MIT')
 url='https://github.com/svanichkin/say'
 depends=("glibc")
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/svanichkin/say/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('8eb494f4ef27dca7488c71adf226e744bc98cc18b4b7026daaf744658146f997')
 
 prepare() {
@@ -31,5 +31,6 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
 }
