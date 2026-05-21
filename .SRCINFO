@@ -1,6 +1,6 @@
 pkgbase = r-treeandleaf
 	pkgdesc = Displaying binary trees with focus on dendrogram leaves
-	pkgver = 1.22.2
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TreeAndLeaf
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-treeandleaf
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-stringr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TreeAndLeaf_1.22.2.tar.gz
-	sha256sums = b6e3af3cc807a4fd93ef4339687ef568fd37c2f5bfa69c93f1816c4cca1f149c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TreeAndLeaf_1.24.0.tar.gz
+	sha256sums = 983b94c4a9a8bd7947f397cf5024d1068972d1c67136ca23dc74f12701290a19
 
 pkgname = r-treeandleaf
