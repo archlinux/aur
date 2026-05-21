@@ -2,7 +2,7 @@
 pkgname="parsec-sdk-bin"
 pkgdesc="Parsec SDK to build interactive and low-latency peer-to-peer connections for game streaming"
 pkgver="6.0"
-pkgrel="1"
+pkgrel="2"
 arch=("x86_64")
 url="https://parsec.app/"
 license=("custom")
@@ -11,7 +11,7 @@ optdepends=(
   "sdl2: for compiling the example client"
 )
 source=(
-  "https://github.com/parsec-cloud/parsec-sdk/archive/${pkgver}.tar.gz"
+  "https://github.com/mbroemme/parsec-sdk/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
   "2cfb06ab4c38b2dd02baa4b5b335bbf182268891606fb61fc97105c95ee67ea0"
