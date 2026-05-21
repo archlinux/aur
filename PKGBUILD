@@ -1,15 +1,15 @@
 # Maintainer: Network_Jack <Network_Jack@null.net>
 
 pkgname=thunar-secure-delete
-pkgver=0.9.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Secure Erase Menu Item for Thunar"
 arch=('any')
 url="https://github.com/NetworkJack2/secure_delete_thunar"
 license=('GPLv3')
-depends=('xdialog' 'libnotify')
+depends=('yad' 'libnotify')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/GIJack/secure_delete_thunar/archive/${pkgver}.tar.gz")
-sha256sums=('09de75f8e706840ee854b751fbc92249e1061e70636a95b7b7acdffa5b8e13da')
+sha256sums=('9a11f717cd48084c57848186ebc71a443931de1f7ad5e4f01f32060a9b3ff92a')
 
 package() {
   cd "secure_delete_thunar-${pkgver}"
