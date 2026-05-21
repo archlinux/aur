@@ -15,17 +15,12 @@ pkgver() {
 }
 
 package() {
-    # Создаем директорию для установки
     install -d "$pkgdir/opt/jacket"
-    
-    # Копируем скрипт запуска, явно указывая путь из src
-    # Так как мы находимся в src/ при выполнении, используем путь от него
-    install -Dm755 "JacketVoice/jacket_run.sh" "$pkgdir/opt/jacket/jacket_run.sh"
-    
-    # Копируем остальные файлы проекта
+    # Копируем файл из корня репозитория
+    install -Dm755 jacket_run.sh "$pkgdir/opt/jacket/jacket_run.sh"
+    # Копируем остальные файлы (кроме тех, что не нужны)
     cp -r JacketVoice/* "$pkgdir/opt/jacket/"
     
-    # Создаем симлинк, чтобы команда 'jacket' работала в терминале
     install -d "$pkgdir/usr/bin"
     ln -s /opt/jacket/jacket_run.sh "$pkgdir/usr/bin/jacket"
 }
