@@ -178,9 +178,8 @@ def update_model_ui(app) -> None:
         m_data = next((m for m in app.models if m['model'] == app.current_model), None)
         is_current_installed = m_data is not None and m_data.get('installed', False)
 
-    # Input is allowed if we have a session, a model, it's installed, and not downloading
-    is_input_allowed = (app.current_session_id is not None and 
-                        has_model and 
+    # Input is allowed if a model is selected, it's installed, and not downloading
+    is_input_allowed = (has_model and 
                         is_current_installed and 
                         not is_downloading_any)
     
