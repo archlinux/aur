@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 source=("https://github.com/ghostp13409/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.tar.xz")
 
 # Leave this as 'SKIP' for a brief second; we will auto-generate this hash in Step 2
-sha256sums=('c9fbd0af157aef6995612a0412bfd8a5931957dfe557db670c1ca33e6ac01f45')
+sha256sums=('d8acf91f8b22724e432183362b23a766ca63443512833e6b2ea0218d966f5698')
 
 package() {
     # Extract the binary from the tar.gz and install it to /usr/bin/toss-api
