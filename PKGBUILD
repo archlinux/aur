@@ -1,7 +1,7 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiorii-git
 _pkgname=Shiori
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust"
 arch=('x86_64')
@@ -12,7 +12,6 @@ depends=(
     'gtk3'
     'libayatana-appindicator'
     'librsvg'
-    'speech-dispatcher'
     'sqlite'
     'zstd'
 )
@@ -28,9 +27,7 @@ makedepends=(
     'wget'
     'file'
     'openssl'
-    'appmenu-gtk-module'
     'gtk3'
-    'libappindicator-gtk3'
     'librsvg'
     'sqlite'
     'zstd'
@@ -91,7 +88,24 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    install -Dm755 "src-tauri/target/release/shiori" "${pkgdir}/usr/bin/shiori"
+    # Install real binary to /usr/lib/shiori/
+    install -Dm755 "src-tauri/target/release/shiori" "${pkgdir}/usr/lib/shiori/shiori"
+
+    # Wrapper script: sets WEBKIT_DISABLE_DMABUF_RENDERER=1 unconditionally.
+    # This fixes the blank white screen on Arch Linux with webkit2gtk-4.1.
+    # Users who need DMA-BUF can override by setting SHIORI_WEBKIT_DMABUF=1.
+    install -dm755 "${pkgdir}/usr/bin"
+    cat > "${pkgdir}/usr/bin/shiori" <<'EOF'
+#!/bin/sh
+# Shiori launcher — disables broken DMA-BUF renderer on webkit2gtk-4.1
+# to prevent blank/white screen on Arch Linux (both X11 and Wayland).
+# Set SHIORI_WEBKIT_DMABUF=1 to opt back in to DMA-BUF rendering.
+if [ -z "${SHIORI_WEBKIT_DMABUF}" ]; then
+    export WEBKIT_DISABLE_DMABUF_RENDERER=1
+fi
+exec /usr/lib/shiori/shiori "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/shiori"
 
     install -Dm644 "src-tauri/icons/128x128.png" \
         "${pkgdir}/usr/share/icons/hicolor/128x128/apps/shiori.png"
