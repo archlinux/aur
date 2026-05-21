@@ -1,6 +1,6 @@
 pkgbase = python-openlist
 	pkgdesc = Python wrapper for openlist.
-	pkgver = 0.0.0
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://pypi.org/project/python-openlist
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = python-openlist
 	conflicts = python-openlist
 	options = !strip
 	options = !debug
-	source = python_openlist-0.0.0.tar.gz::https://files.pythonhosted.org/packages/source/p/python_openlist/python_openlist-0.0.0.tar.gz
-	sha256sums = a7cd528bcdc4aa217fb273d069fccd09d63cd2e8b8248d6853b35de51a05300d
+	source = python_openlist-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_openlist/python_openlist-0.0.1.tar.gz
+	sha256sums = a39ced4ded3721318d68d89ffa5aed924a0ad1fa4c1bfc15744c228113955f4f
 
 pkgname = python-openlist

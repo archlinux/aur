@@ -2,7 +2,7 @@
 
 pkgname=python-openlist
 _name=${pkgname//-/_}
-pkgver=0.0.0
+pkgver=0.0.1
 pkgrel=1
 epoch=
 pkgdesc="Python wrapper for openlist."
@@ -45,7 +45,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('a7cd528bcdc4aa217fb273d069fccd09d63cd2e8b8248d6853b35de51a05300d')
+sha256sums=('a39ced4ded3721318d68d89ffa5aed924a0ad1fa4c1bfc15744c228113955f4f')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
