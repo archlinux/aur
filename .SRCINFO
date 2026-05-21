@@ -1,6 +1,6 @@
 pkgbase = sharey
 	pkgdesc = Modern screen capturing tool
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://codeberg.org/cohae/ShareY
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sharey
 	depends = pipewire
 	depends = ffmpeg
 	options = !lto
-	source = sharey::git+https://codeberg.org/cohae/ShareY#tag=v0.1.3
-	sha256sums = a4c91206201d95e4ee6a2db4704aba4f7529e44c35ea3d2c8216cedcbe786701
+	source = sharey::git+https://codeberg.org/cohae/ShareY#tag=v0.2.0
+	sha256sums = 17cf70eb2e4f951b9f807b1a8c439547a38dd60516937682c4e88eaf83e72053
 
 pkgname = sharey
