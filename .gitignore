@@ -1,0 +1,10 @@
+# Build outputs from makepkg
+src/
+pkg/
+*.pkg.tar
+*.pkg.tar.*
+*.src.tar.gz
+
+# Downloaded source artifacts
+*.tar.gz
+*.deb
