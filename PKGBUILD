@@ -1,14 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove-flatpak
-pkgver=202604271
+pkgver=202605211
 pkgrel=1
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://dove.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/7a25051234df701ac40967242ccd65569db4a084/archives/dove-flatpak.zip")
-sha512sums=('2d2026a36d4f5a4c90e0064dad76752a5a77ed9f2113c3ad2d85fbff8cc793aac9d0a846aaeeb84fda1355cbe401fa6363874572852ec327aac28625ca628507')
-makedepends=('unzip')
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.xz::https://releases.celenity.dev/dove/releases/2026.05.21.1/linux-flatpak/dove-2026.05.21.1-linux-flatpak.tar.xz")
+sha512sums=('ee952ece10a6d05e9607fcb4be445ff3dc59e6b83a00ff52f74977ca2abfaf6a8ad392e3e63a0587921ee9e5c56e02bc7ff14e962dcfb799d9076ae71fe9cf6f')
 
 pkgver() {
     echo "$pkgver"
@@ -17,7 +16,7 @@ pkgver() {
 package() {
     local tmpdir=$(mktemp -d)
 
-    unzip "$srcdir/${pkgname}-${pkgver}.zip" -d "$tmpdir"
+    tar xJf "$srcdir/${pkgname}-${pkgver}-${pkgrel}.tar.xz" -C "$tmpdir"
 
     install -Dm644 "$tmpdir/defaults/pref/dove.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/defaults/pref/dove.js"
     install -Dm644 "$tmpdir/dove.cfg" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/lib/thunderbird/dove.cfg"
