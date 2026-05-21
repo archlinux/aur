@@ -1,17 +1,26 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=tuicr
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='a terminal UI for local code review'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(
+    'x86_64'
+    'aarch64'
+    'riscv64'
+)
 url='https://github.com/agavra/tuicr'
 license=('MIT')
-makedepends=('cargo')
+makedepends=(
+    'cargo'
+)
 options=(!lto !debug)
 provides=('tuicr')
-conflicts=('tuicr-git' 'tuicr-bin')
+conflicts=(
+    'tuicr-git'
+    'tuicr-bin'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5fe1c3881ba58ff87ee772d4b938aa8e77cd4d648806e3e09dc698f26673145f')
+sha256sums=('6c50ea6c4b48f76dc96b83b23c0efe945aebb92d37c3181c3f8852b2e059d346')
 
 prepare() {
     cd "$pkgname-$pkgver"
