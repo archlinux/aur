@@ -1,6 +1,6 @@
 pkgbase = kctrl
 	pkgdesc = Continuous delivery and package management for Kubernetes.
-	pkgver = 0.59.8
+	pkgver = 0.60.0
 	pkgrel = 1
 	url = https://carvel.dev/kapp-controller
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = kctrl
 	makedepends = bash
 	makedepends = go
 	provides = kctrl
-	source = kctrl-0.59.8::https://github.com/carvel-dev/kapp-controller/archive/v0.59.8.tar.gz
-	sha256sums = 8b0a2bbf7330b739dadd3748bc4e92b69b9bff2061eaa28109ce5a4c54152bd9
+	source = kctrl-0.60.0::https://github.com/carvel-dev/kapp-controller/archive/v0.60.0.tar.gz
+	sha256sums = 5a0829869b1e5a130d65e275f9e5ea25ed547d01c93dd1349c5d8a3268fc5284
 
 pkgname = kctrl
