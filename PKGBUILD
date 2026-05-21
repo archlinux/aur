@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-color-parser-py
 _name=${pkgname#python-}
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Python bindings for CSS color parser using PyO3. Parse and convert colors between different formats."
 arch=('x86_64')
@@ -16,25 +16,26 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c50fda032977bd69a6f06cbbe692ad65483e63165e1a08aad3adeacbe681a9d9')
+sha256sums=('412972305eea55bf7c5af3d1da3e632456f6c7128c676a0472c723dfbd7509c1')
 
 prepare() {
   cd "$_name-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target host-tuple
 }
 
 build() {
   cd "$_name-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
   python -m build --wheel --no-isolation
 }
 
-#check() {
-#  cd "$_name-$pkgver"
-#  pytest
-#}
+check() {
+  cd "$_name-$pkgver"
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest
+}
 
 package() {
   cd "$_name-$pkgver"
