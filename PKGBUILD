@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Msty Claw is an autonomous AI agent application designed for complex task orchestration (Beta)"
 arch=('x86_64')
 url="https://msty.ai/claw"
-license=('proprietary')
+license=('custom:proprietary')
 depends=('gtk3' 'webkit2gtk-4.1' 'openssl' 'libdbus' 'libglvnd' 'hicolor-icon-theme')
 optdepends=('cuda: NVIDIA GPU acceleration'
             'rocm-core: AMD GPU acceleration'
@@ -33,10 +33,13 @@ check() {
 }
 
 package() {
-  # Copy extracted files to pkgdir
-  cp -a "$srcdir/pkg-contents/." "$pkgdir/"
+  # Copy extracted files to pkgdir (do not preserve ownership to support container builds)
+  cp -a --no-preserve=ownership "$srcdir/pkg-contents/." "$pkgdir/"
 
   # Create symlink for terminal access
   install -d "$pkgdir/usr/bin"
   ln -sf /usr/bin/MstyClaw "$pkgdir/usr/bin/msty-claw"
+
+  # Install Licenses
+  install -Dm644 "$pkgdir/usr/lib/Msty Claw/_up_/THIRD_PARTY_NOTICES.txt" "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_NOTICES.txt"
 }
