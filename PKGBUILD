@@ -1,7 +1,7 @@
 # Maintainer: Yakov P potapovj(at)gmail(dot)com
-# Maintainer: KUHTOXO oxomhuk@gmail.com
+# Maintainer: KUHTOXO https://aur.archlinux.org/account/kuhtoxo
 pkgname=sreda
-pkgver=24.11.4.55437
+pkgver=26.1.10.85335
 pkgrel=1
 pkgdesc="Service for interaction between employees in organizations."
 arch=('x86_64')
@@ -18,10 +18,8 @@ source=(
 	"${pkgname}-${pkgver}.tar.xz::https://dl.armgs.team/downloads/linux/x64/${pkgver}/${_app_name}"
 	"sreda.desktop"
 )
-sha256sums=(
-	'ef25495acd90d471ae8a31426b0529be52740a65925a5056ed95f29a8daa1ee9'
-	'4cd9a7f70e029a3501af880f4839ad1a52de104ad989e1b0aa1817bfa90675aa'
-)
+sha256sums=('74c29b8bd1b5322d9784c73c221a948f6af30f788649654837c8f18bac0aecc1'
+            '4cd9a7f70e029a3501af880f4839ad1a52de104ad989e1b0aa1817bfa90675aa')
 
 package() {
 	mkdir -p "${pkgdir}/opt/${pkgname}"

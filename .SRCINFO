@@ -1,15 +1,15 @@
 pkgbase = sreda
-	pkgdesc = Service for interaction between employees in organizations
-	pkgver = 24.11.4.55437
+	pkgdesc = Service for interaction between employees in organizations.
+	pkgver = 26.1.10.85335
 	pkgrel = 1
 	url = https://sreda.digital.gov.ru/
 	arch = x86_64
 	license = proprietary
+	replaces = armgs
 	options = !strip
-	replaces=('armgs')
-	source = https://dl.armgs.team/downloads/linux/x64/${pkgver}/sreda.tar.xz
+	source = sreda-26.1.10.85335.tar.xz::https://dl.armgs.team/downloads/linux/x64/26.1.10.85335/sreda.tar.xz
 	source = sreda.desktop
-	sha256sums = ef25495acd90d471ae8a31426b0529be52740a65925a5056ed95f29a8daa1ee9
+	sha256sums = 74c29b8bd1b5322d9784c73c221a948f6af30f788649654837c8f18bac0aecc1
 	sha256sums = 4cd9a7f70e029a3501af880f4839ad1a52de104ad989e1b0aa1817bfa90675aa
 
 pkgname = sreda
