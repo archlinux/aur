@@ -1,6 +1,6 @@
 pkgbase = matchmaker
 	pkgdesc = A fast, configurable and intuitive fuzzy searcher.
-	pkgver = 0.0.25
+	pkgver = 0.0.29
 	pkgrel = 1
 	url = https://github.com/Squirreljetpack/matchmaker
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = matchmaker
 	conflicts = matchmaker-git
 	conflicts = matchmaker-bin
 	options = !lto
-	source = matchmaker-0.0.25.tar.gz::https://github.com/Squirreljetpack/matchmaker/archive/refs/tags/0.0.25.tar.gz
-	sha256sums = 0b627949c690c8dfe9edf7fa5f802bfd1f1efab6ab2b7658b809df716bb02ccf
+	source = matchmaker-0.0.29.tar.gz::https://github.com/Squirreljetpack/matchmaker/archive/refs/tags/0.0.29.tar.gz
+	sha256sums = be85aeaf926573eece67d650c37d13bd0290dab0dcd13419bda0107add46917e
 
 pkgname = matchmaker
