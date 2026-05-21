@@ -2,13 +2,12 @@
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 JFX_MODS=""
-if [ -d /usr/lib/jvm/java-21-openjfx/lib ]; then
-    JFX_MODS="--module-path /usr/lib/jvm/java-21-openjfx/lib --add-modules javafx.controls,javafx.fxml"
-elif [ -d /usr/lib/jvm/java-17-openjfx/lib ]; then
-    JFX_MODS="--module-path /usr/lib/jvm/java-17-openjfx/lib --add-modules javafx.controls,javafx.fxml"
-elif [ -d /usr/share/java/openjfx/lib ]; then
-    JFX_MODS="--module-path /usr/share/java/openjfx/lib --add-modules javafx.controls,javafx.fxml"
-fi
+for dir in /usr/lib/jvm/*/lib /usr/share/java/openjfx/lib /opt/javafx-sdk/lib; do
+    if [ -f "$dir/javafx-controls.jar" ]; then
+        JFX_MODS="--module-path $dir --add-modules javafx.controls,javafx.fxml"
+        break
+    fi
+done
 
 JAR=""
 if [ -f /usr/share/java/fluxpass/fluxpass.jar ]; then
