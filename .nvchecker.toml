@@ -1,0 +1,4 @@
+[python-qh3]
+source = "git"
+git = "https://github.com/jawah/qh3.git"
+prefix = "v"
