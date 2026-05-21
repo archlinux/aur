@@ -1,5 +1,4 @@
 import os
-# Скрываем предупреждение Pygame об AVX2 / поддержке до инициализации
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 
 import pygame
@@ -68,21 +67,17 @@ def save_highscore(new_score):
 
 load_highscore()
 
-# ФИЧА: Процедурный генератор уровней
 def generate_procedural_level():
     global LEVEL_MAP, enemies, player_tile_x, player_tile_y, score
-    score = 0  # ЖЕЛЕЗНО ИСПРАВЛЕНО: Счётчик уровня теперь сбрасывается!
+    score = 0  # Принудительное обнуление монет текущего уровня
     
-    # Заполняем пустотой
     LEVEL_MAP = [[0 for _ in range(GRID_WIDTH)] for _ in range(GRID_HEIGHT)]
     
-    # Стены вокруг
     for r in range(GRID_HEIGHT):
         for c in range(GRID_WIDTH):
             if r == 0 or r == GRID_HEIGHT - 1 or c == 0 or c == GRID_WIDTH - 1:
                 LEVEL_MAP[r][c] = 1
 
-    # Генерируем случайные этажи/платформы
     floors = [4, 7, 10]
     for f_row in floors:
         gap_start = random.randint(2, GRID_WIDTH - 5)
@@ -94,11 +89,9 @@ def generate_procedural_level():
                 continue 
             LEVEL_MAP[f_row][c] = 1
 
-    # Безопасный спавн игрока под потолком
     player_tile_x, player_tile_y = 8, 2
     LEVEL_MAP[player_tile_y][player_tile_x] = 0
 
-    # Спавн кристаллов (5 штук на платформах)
     coins_spawned = 0
     while coins_spawned < max_coins:
         rx = random.randint(1, GRID_WIDTH - 2)
@@ -107,7 +100,6 @@ def generate_procedural_level():
             LEVEL_MAP[ry][rx] = 2
             coins_spawned += 1
 
-    # Спавн врагов (количество растет с уровнем)
     enemies = []
     num_enemies = min(4, 1 + current_level // 2)
     for _ in range(num_enemies):
@@ -149,13 +141,17 @@ while True:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE: 
                 sys.exit()
+            
             if game_state == 'MENU' and event.key == pygame.K_SPACE:
                 current_level = 1
                 total_score = 0
+                score = 0  # Обнуление перед стартом
                 generate_procedural_level()
                 game_state = 'GAME'
+                
             elif game_state == 'WIN_SCREEN' and event.key == pygame.K_SPACE:
                 current_level += 1
+                score = 0  # Обнуление перед следующим уровнем
                 generate_procedural_level()
                 game_state = 'GAME'
 
@@ -229,7 +225,7 @@ while True:
             game_surface.blit(font.render("PRESS SPACE TO START", True, COLOR_COIN), (45, 105))
     elif game_state == 'WIN_SCREEN':
         game_surface.blit(font.render("LEVEL COMPLETE!", True, COLOR_PLAYER), (65, 40))
-        game_surface.blit(font.render(f"CURRENT SCORE: {total_score}", True, COLOR_COIN), (55, 70))
+        game_surface.blit(font.render(f"CURRENT SCORE: {score}", True, COLOR_COIN), (55, 70))
         game_surface.blit(font.render("PRESS SPACE TO CONTINUE", True, COLOR_PLAYER), (25, 110))
     elif game_state == 'GAME':
         for r in range(GRID_HEIGHT):
@@ -246,7 +242,7 @@ while True:
         pygame.draw.rect(game_surface, COLOR_BG, (player_tile_x*16+6, player_tile_y*16+4, 4, 2))
         
         turbo = " [TURBO]" if (pygame.key.get_mods() & pygame.KMOD_SHIFT) else ""
-        game_surface.blit(font.render(f"LVL {current_level} SCORE: {total_score}{turbo}", True, COLOR_COIN), (8, 6))
+        game_surface.blit(font.render(f"LVL {current_level} SCORE: {score}/{max_coins}{turbo}", True, COLOR_COIN), (8, 6))
 
     scaled = pygame.transform.scale(game_surface, (WINDOW_WIDTH, WINDOW_HEIGHT))
     for y in range(0, WINDOW_HEIGHT, 3):
