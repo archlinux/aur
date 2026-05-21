@@ -69,7 +69,7 @@ load_highscore()
 
 def generate_procedural_level():
     global LEVEL_MAP, enemies, player_tile_x, player_tile_y, score
-    score = 0  # Принудительное обнуление монет текущего уровня
+    score = 0  
     
     LEVEL_MAP = [[0 for _ in range(GRID_WIDTH)] for _ in range(GRID_HEIGHT)]
     
@@ -145,27 +145,30 @@ while True:
             if game_state == 'MENU' and event.key == pygame.K_SPACE:
                 current_level = 1
                 total_score = 0
-                score = 0  # Обнуление перед стартом
+                score = 0  
                 generate_procedural_level()
                 game_state = 'GAME'
                 
             elif game_state == 'WIN_SCREEN' and event.key == pygame.K_SPACE:
                 current_level += 1
-                score = 0  # Обнуление перед следующим уровнем
+                score = 0  
                 generate_procedural_level()
                 game_state = 'GAME'
 
-            elif game_state == 'GAME':
-                step = 2 if (pygame.key.get_mods() & pygame.KMOD_SHIFT) else 1
-                if event.key in [pygame.K_LEFT, pygame.K_a]:
+            elif event.key in [pygame.K_LEFT, pygame.K_a]:
+                if game_state == 'GAME':
+                    step = 2 if (pygame.key.get_mods() & pygame.KMOD_SHIFT) else 1
                     tx = max(1, player_tile_x - step)
                     if LEVEL_MAP[player_tile_y][tx] != 1: 
                         player_tile_x = tx
-                elif event.key in [pygame.K_RIGHT, pygame.K_d]:
+            elif event.key in [pygame.K_RIGHT, pygame.K_d]:
+                if game_state == 'GAME':
+                    step = 2 if (pygame.key.get_mods() & pygame.KMOD_SHIFT) else 1
                     tx = min(GRID_WIDTH - 2, player_tile_x + step)
                     if LEVEL_MAP[player_tile_y][tx] != 1: 
                         player_tile_x = tx
-                if event.key in [pygame.K_SPACE, pygame.K_w, pygame.K_UP]:
+            elif event.key in [pygame.K_SPACE, pygame.K_w, pygame.K_UP]:
+                if game_state == 'GAME':
                     if player_tile_y + 1 < GRID_HEIGHT and LEVEL_MAP[player_tile_y + 1][player_tile_x] == 1:
                         is_jumping, jump_stage = True, 0
                         sound_jump.play()
@@ -210,6 +213,7 @@ while True:
             score += 1
             total_score += 1
             sound_coin.play()
+            # ИСПРАВЛЕНО: Проверяем локальный счёт текущего уровня, а не глобальный!
             if score >= max_coins:
                 sound_win.play()
                 game_state = 'WIN_SCREEN'
@@ -225,7 +229,7 @@ while True:
             game_surface.blit(font.render("PRESS SPACE TO START", True, COLOR_COIN), (45, 105))
     elif game_state == 'WIN_SCREEN':
         game_surface.blit(font.render("LEVEL COMPLETE!", True, COLOR_PLAYER), (65, 40))
-        game_surface.blit(font.render(f"CURRENT SCORE: {score}", True, COLOR_COIN), (55, 70))
+        game_surface.blit(font.render(f"TOTAL SCORE: {total_score}", True, COLOR_COIN), (55, 70))
         game_surface.blit(font.render("PRESS SPACE TO CONTINUE", True, COLOR_PLAYER), (25, 110))
     elif game_state == 'GAME':
         for r in range(GRID_HEIGHT):
