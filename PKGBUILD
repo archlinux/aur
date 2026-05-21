@@ -6,7 +6,7 @@ pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozil
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://phoenix.celenity.dev"
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.xz::https://releases.celenity.dev/phoenix/releases/202605211/linux/phoenix-{PHOENIX_VERSION}-linux.tar.xz")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.xz::https://releases.celenity.dev/phoenix/releases/2026.05.21.1/linux/phoenix-2026.05.21.1-linux.tar.xz")
 sha512sums=('440ada88c26936731d3205aacf6ff344ed62511556d58ec83a868d6ae3c1180f49b9b4e979f29969c1f846929255e26ff6842098d2928daf9294081d0a041e13')
 
 pkgver() {
