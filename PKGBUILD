@@ -9,7 +9,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/1.0.0/tunedesk_1.0.0_amd64.deb")
-sha256sums_x86_64=('ab237fadcfe67eedd9c8659ee1db60eb069cf8848734646955d54c7ca355b630')
+sha256sums_x86_64=('533d3e64f4fd0425d9579862ea1815486f92d85345884de8ec54413a756bb8bb')
 package() {
 	tar -xvf data.tar.gz -C "${pkgdir}"
 }
