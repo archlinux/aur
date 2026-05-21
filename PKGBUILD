@@ -1,14 +1,14 @@
 #!/bin/bash
 # Maintainer: czjstmax : <jstmaxlol@disroot.org>
 pkgname=rf
-pkgver=1.3.4
-pkgrel=6
+pkgver=latest
+pkgrel=7
 pkgdesc="a suckless and minimal, POSIX C99 alternative to Makefiles!"
 arch=('any')
-url="https://kuronavipad.xantu-ling.ts.net/cgit/rfile.git"
+url="https://git.czkove.cc/rfile"
 license=('MIT')
 makedepends=('gcc')
-source=("git+https://kuronavipad.xantu-ling.ts.net/cgit/rfile.git")
+source=("git+https://git.czkove.cc/rfile")
 md5sums=('SKIP')
 
 build() {
