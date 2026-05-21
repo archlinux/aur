@@ -1,6 +1,6 @@
 pkgbase = r-bayestestr
 	pkgdesc = Understand and Describe Bayesian Models and Posterior Distributions
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bayestestR
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = r-bayestestr
 	optdepends = r-see
 	optdepends = r-testthat
 	optdepends = r-tweedie
-	source = https://cran.r-project.org/src/contrib/bayestestR_0.17.0.tar.gz
-	sha256sums = 28722fa8d91f714ac961b9fc6106916406d4f7b84e9c9babb475ba3bd69a115a
+	source = https://cran.r-project.org/src/contrib/bayestestR_0.18.0.tar.gz
+	sha256sums = 14f8976b1d98060ea9788d1c35bba106ed87cf4ea8b2bd7db8992b09c24482ff
 
 pkgname = r-bayestestr
