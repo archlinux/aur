@@ -1,7 +1,7 @@
 pkgbase = perl-app-cpan2arch
 	pkgdesc = generate PKGBUILD from CPAN metadata
-	pkgver = v1.0.2
-	pkgrel = 2
+	pkgver = v1.1.0
+	pkgrel = 1
 	url = https://metacpan.org/dist/App-cpan2arch
 	arch = any
 	license = MIT-0
@@ -14,15 +14,10 @@ pkgbase = perl-app-cpan2arch
 	depends = pacman
 	depends = perl-archive-tar
 	depends = perl-capture-tiny>=0.50
-	depends = perl-chi>=0.61
-	depends = perl-cpanel-json-xs>=4.40
 	depends = perl-devel-checkbin>=0.04
-	depends = perl-encode
-	depends = perl-encode-locale>=1.05
 	depends = perl-io-socket-ssl>=2.098
 	depends = perl-list-compare>=0.55
 	depends = perl-module-corelist
-	depends = perl-mojo-useragent-cached>=1.25
 	depends = perl-mojolicious
 	depends = perl-object-pad>=0.825
 	depends = perl-path-tiny>=0.150
@@ -30,16 +25,19 @@ pkgbase = perl-app-cpan2arch
 	depends = perl-pod-usage
 	depends = perl-scalar-list-utils
 	depends = perl-software-license>=0.104007
-	depends = perl-term-readkey>=2.38
 	depends = perl-term-table
 	depends = perl-time-piece
 	depends = perl-version
 	depends = perl>=5.42.0
 	optdepends = licenses: use system licenses from /usr/share/licenses/spdx
+	optdepends = perl-chi>=0.61: caching support
+	optdepends = perl-cpanel-json-xs>=4.40: faster JSON serialization
 	optdepends = perl-data-printer>=1.002001: debug support
 	optdepends = perl-getopt-long-more>=0.007: Bash completion support
+	optdepends = perl-mojo-useragent-cached>=1.25: caching support
+	optdepends = perl-term-readkey>=2.38: set comparison table size based on TTY (--update)
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/R/RY/RYOSKZYPU/App-cpan2arch-v1.0.2.tar.gz
-	sha256sums = 98ee6d122f0ca72b3e28034e65542f6b6cfbac1216496fa6095855228a8867ff
+	source = https://cpan.metacpan.org/authors/id/R/RY/RYOSKZYPU/App-cpan2arch-v1.1.0.tar.gz
+	sha256sums = a2160cb7ab1a8c4cefa771f09130e28ea16e367ce3fbb8a2d55f1e578a97f44a
 
 pkgname = perl-app-cpan2arch

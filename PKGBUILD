@@ -3,8 +3,8 @@
 _author=RYOSKZYPU
 _dist=App-cpan2arch
 pkgname=perl-${_dist@L}
-pkgver=v1.0.2
-pkgrel=2
+pkgver=v1.1.0
+pkgrel=1
 pkgdesc='generate PKGBUILD from CPAN metadata'
 arch=('any')
 url=https://metacpan.org/dist/$_dist
@@ -13,15 +13,10 @@ depends=(
     'pacman'
     'perl-archive-tar'
     'perl-capture-tiny>=0.50'
-    'perl-chi>=0.61'
-    'perl-cpanel-json-xs>=4.40'
     'perl-devel-checkbin>=0.04'
-    'perl-encode'
-    'perl-encode-locale>=1.05'
     'perl-io-socket-ssl>=2.098'
     'perl-list-compare>=0.55'
     'perl-module-corelist'
-    'perl-mojo-useragent-cached>=1.25'
     'perl-mojolicious'
     'perl-object-pad>=0.825'
     'perl-path-tiny>=0.150'
@@ -29,7 +24,6 @@ depends=(
     'perl-pod-usage'
     'perl-scalar-list-utils'
     'perl-software-license>=0.104007'
-    'perl-term-readkey>=2.38'
     'perl-term-table'
     'perl-time-piece'
     'perl-version'
@@ -45,12 +39,16 @@ checkdepends=(
 )
 optdepends=(
     'licenses: use system licenses from /usr/share/licenses/spdx'
+    'perl-chi>=0.61: caching support'
+    'perl-cpanel-json-xs>=4.40: faster JSON serialization'
     'perl-data-printer>=1.002001: debug support'
     'perl-getopt-long-more>=0.007: Bash completion support'
+    'perl-mojo-useragent-cached>=1.25: caching support'
+    'perl-term-readkey>=2.38: set comparison table size based on TTY (--update)'
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('98ee6d122f0ca72b3e28034e65542f6b6cfbac1216496fa6095855228a8867ff')
+sha256sums=('a2160cb7ab1a8c4cefa771f09130e28ea16e367ce3fbb8a2d55f1e578a97f44a')
 
 build()
 {
