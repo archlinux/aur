@@ -1,6 +1,6 @@
 pkgbase = whosthere-bin
 	pkgdesc = Local Area Network discovery tool with a modern Terminal User Interface
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/ramonvermeulen/whosthere
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = whosthere-bin
 	license = MIT
 	provides = whosthere
 	conflicts = whosthere
-	source_x86_64 = whosthere-bin-0.8.1-x86_64.tar.gz::https://github.com/ramonvermeulen/whosthere/releases/download/v0.8.1/whosthere_0.8.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 88afbb36c41d4daff8300b6e739250cebcdc7b8c21e7307b1e864b0712b96f21
-	source_aarch64 = whosthere-bin-0.8.1-aarch64.tar.gz::https://github.com/ramonvermeulen/whosthere/releases/download/v0.8.1/whosthere_0.8.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = bfacb02eefa67172df7ee9d51dca81daacc4093e8a219e0caf41b22bd6fbd332
-	source_i686 = whosthere-bin-0.8.1-i686.tar.gz::https://github.com/ramonvermeulen/whosthere/releases/download/v0.8.1/whosthere_0.8.1_linux_386.tar.gz
+	source_x86_64 = whosthere-bin-0.8.2-x86_64.tar.gz::https://github.com/ramonvermeulen/whosthere/releases/download/v0.8.2/whosthere_0.8.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = aab98cd9eab459577bfc13e14b7cd9a17354974bf71c3bd8928d0ab2c6e0aa62
+	source_aarch64 = whosthere-bin-0.8.2-aarch64.tar.gz::https://github.com/ramonvermeulen/whosthere/releases/download/v0.8.2/whosthere_0.8.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = bd1ce771b60c92024c95f7dc83b8bbc75a5b8ef632e6acd800fa7884626c7ade
+	source_i686 = whosthere-bin-0.8.2-i686.tar.gz::https://github.com/ramonvermeulen/whosthere/releases/download/v0.8.2/whosthere_0.8.2_linux_386.tar.gz
 	sha256sums_i686 = d8fc789edfd95fc96ba48320615e51a74001e6d28fd8572f6bf1b7d0be43851f
 
 pkgname = whosthere-bin
