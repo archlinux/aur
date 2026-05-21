@@ -1,7 +1,7 @@
 # Maintainer: RRRRRm <isxiongzj@gmail.com>
 pkgname=beslyric-for-x-git
-pkgver=v3.2.0.r2.g8b06a38
-pkgrel=4
+pkgver=3.2.0.r5.g5d9dc2a
+pkgrel=1
 pkgdesc="A simple but useful lyrics generator, mainly for Netease Cloud Music."
 arch=('i686' 'x86_64')
 url="https://github.com/BesLyric-for-X/BesLyric-for-X"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/BesLyric-for-X"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

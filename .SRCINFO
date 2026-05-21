@@ -1,8 +1,8 @@
 pkgbase = beslyric-for-x-git
-	pkgdesc = An simple but useful lyrics generator, mainly for Netease Cloud Music.
-	pkgver = v3.2.0.r2.g8b06a38
-	pkgrel = 4
-	url = https://github.com/Beslyric-for-X/Beslyric-for-X
+	pkgdesc = A simple but useful lyrics generator, mainly for Netease Cloud Music.
+	pkgver = 3.2.0.r5.g5d9dc2a
+	pkgrel = 1
+	url = https://github.com/BesLyric-for-X/BesLyric-for-X
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = beslyric-for-x-git
 	depends = openssl
 	provides = beslyric-for-x
 	conflicts = beslyric-for-x
-	source = beslyric-for-x::git+https://github.com/BesLyric-for-X/BesLyric-for-X.git
+	source = git+https://github.com/BesLyric-for-X/BesLyric-for-X.git
 	md5sums = SKIP
 
 pkgname = beslyric-for-x-git
