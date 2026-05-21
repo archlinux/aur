@@ -2,7 +2,7 @@
 # Maintainer: goozt <goozt@users.noreply.github.com>
 
 pkgname='gospeed-bin'
-pkgver=1.4.0_rc2
+pkgver=1.4.0_rc3
 pkgrel=1
 pkgdesc='Fast, zero-dependency network speed testing tool'
 url='https://gospeed.goozt.org'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('gospeed')
 conflicts=('gospeed')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/goozt/gospeed/releases/download/v1.4.0-rc2/gospeed_1.4.0-rc2_linux_arm64.tar.gz")
-sha256sums_aarch64=('c5efcdf6fdc661d573f7b75f41a7d5d98ca762e36e20a00ee551174b41b610ca')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/goozt/gospeed/releases/download/v1.4.0-rc3/gospeed_1.4.0-rc3_linux_arm64.tar.gz")
+sha256sums_aarch64=('06fe6ffc5b60addb08738960ffa881d82fcd4003ae6dc60c41f598de545b26de')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/goozt/gospeed/releases/download/v1.4.0-rc2/gospeed_1.4.0-rc2_linux_armv7.tar.gz")
-sha256sums_armv7h=('bbe3953721b5229dc6d63dd3f75743aa77b7dd608458944c8baaf6074bbb913d')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/goozt/gospeed/releases/download/v1.4.0-rc3/gospeed_1.4.0-rc3_linux_armv7.tar.gz")
+sha256sums_armv7h=('a0a5924a3a0d5ec957407f7d490ff2e654b102b6ff9e7a79a9379de70f0eb047')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/goozt/gospeed/releases/download/v1.4.0-rc2/gospeed_1.4.0-rc2_linux_386.tar.gz")
-sha256sums_i686=('abc07e7683a1ac937cfa20cc61f5183294cf0b96bc49d66c453341569d883588')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/goozt/gospeed/releases/download/v1.4.0-rc3/gospeed_1.4.0-rc3_linux_386.tar.gz")
+sha256sums_i686=('48fe5fb694df94554e68ac37fef8c26b292786c9915aead7425a3844d611b7b3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/goozt/gospeed/releases/download/v1.4.0-rc2/gospeed_1.4.0-rc2_linux_amd64.tar.gz")
-sha256sums_x86_64=('80edc841eb6cc85da030ad6e2dd990dfa53b5973ad70ee56ede29c40d0601dad')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/goozt/gospeed/releases/download/v1.4.0-rc3/gospeed_1.4.0-rc3_linux_amd64.tar.gz")
+sha256sums_x86_64=('6a39e24760236b40ff120303bfc5efad00d246f30b2d47f89bf913269ca42729')
 
 package() {
   install -Dm755 "./gospeed" "${pkgdir}/usr/bin/gospeed"
