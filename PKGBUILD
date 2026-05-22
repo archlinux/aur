@@ -1,21 +1,21 @@
 # Maintainer: KevinCrrl
 
 pkgname=evillimiter-ng
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Evil Limiter Next Generation.'
 arch=('any')
 url='https://github.com/KevinCrrl/evillimiter-ng'
-license=('MIT')
+license=('GPL-2.0-only')
 depends=(
-  'python' 'python-scapy' 'python-rich' 'python-netaddr' 'python-netifaces'
+  'python' 'python-scapy' 'python-rich' 'python-netaddr' 'python-netifaces2'
   'python-prompt_toolkit' 'iptables'
 )
 makedepends=(
   'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
 )
 source=("${url}/archive/refs/tags/${pkgver}/${pkgver}.tar.gz")
-sha512sums=('d1e41e5d3fbd4be47989edd1f8ffd68c8d2dffcb086144e6cb864f7f84ef41c2db0fc9e76ea1d4000ff304471c3478f1a134b0e33f43e6d8917c1b1a81b737a2')
+sha512sums=('9243920249e5f21aea0b256deaca00fce5f41717e4747642c7782fbf53b43f89ab50f994c0d21734a30e35c33da7ada658d8c1497a5d9ce0888562dd794d9bae')
 
 build() {
   cd "$pkgname-$pkgver"
