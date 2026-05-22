@@ -1,48 +1,59 @@
 # Maintainer: DolbyDAX2 <dolbydax2@fatihdurdu.xyz>
-pkgname=llamatray
-pkgver=1.0.0
+pkgname=llamatray-git
+pkgver=1.0.0.r0.g6bddcba # Bu değer ilk push için taslaktır, makepkg bunu otomatik güncelleyecek
 pkgrel=1
 pkgdesc="PyQt6 based Llama.cpp Tray Manager for Linux"
 arch=('any')
 url="https://github.com/DolbyDAX2/LlamaTray"
 license=('MIT')
 depends=('python' 'python-pyqt6' 'python-psutil' 'python-requests')
+makedepends=('git') # Git deposundan çekim yapabilmek için şart
 optdepends=('nvidia-ml-py: NVIDIA GPU monitoring support')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DolbyDAX2/LlamaTray/archive/refs/tags/v${pkgver}.tar.gz")
+provides=('llamatray')
+conflicts=('llamatray')
+
+# Sabit tar.gz yerine doğrudan projenin ana Git deposunu kaynak alıyoruz
+source=("${pkgname}::git+https://github.com/DolbyDAX2/LlamaTray.git")
 md5sums=('SKIP')
 
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    # Git geçmişine bakarak otomatik sürüm numarası üretir (Örn: 1.0.0.r15.g2a1r6h8)
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-\)*g/r\1g/;s/-/./g' || \
+    printf "1.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
-    cd "${srcdir}/LlamaTray-${pkgver}"
+    cd "${srcdir}/${pkgname}"
 
     # Python modüllerini /opt/LlamaTray altına kopyala
     install -d "${pkgdir}/opt/LlamaTray"
-    
-    # Sadece gerekli dosyaları kopyala
+
+    # .git ve arch-package klasörlerini hariç tutarak tertemiz kopyalama yapalım
     cp -r LlamaTray "${pkgdir}/opt/LlamaTray/"
     cp requirements.txt "${pkgdir}/opt/LlamaTray/" 2>/dev/null || true
     cp README.md "${pkgdir}/opt/LlamaTray/" 2>/dev/null || true
 
-    # Sistemin global olarak çalıştırabilmesi için /usr/bin altına başlatıcı ekle
+    # Global çalıştırıcı wrapper script oluştur
     install -d "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/LlamaTray" << 'EOF'
 #!/bin/bash
-# Temizlik fonksiyonu
 cleanup() {
     killall -9 llama-server 2>/dev/null || true
 }
 trap cleanup EXIT INT TERM
 
 cd /opt/LlamaTray
-python -m LlamaTray "$@"
+python -m LlamaTray.main "$@"
 EOF
     chmod +x "${pkgdir}/usr/bin/LlamaTray"
 
-    # İkon dosyasını sistem ikon dizinine kopyala
+    # İkon dosyasını yerleştir
     install -d "${pkgdir}/usr/share/pixmaps"
     cp LlamaTray/assets/icon.png "${pkgdir}/usr/share/pixmaps/LlamaTray.png" 2>/dev/null || \
     cp LlamaTray/icon.png "${pkgdir}/usr/share/pixmaps/LlamaTray.png" 2>/dev/null || true
 
-    # Masaüstü kısayolunu menüye yerleştir
+    # Masaüstü kısayolu
     install -d "${pkgdir}/usr/share/applications"
     cat > "${pkgdir}/usr/share/applications/LlamaTray.desktop" << 'EOF'
 [Desktop Entry]
