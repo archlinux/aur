@@ -3,35 +3,34 @@ post_install() {
     echo "  ☕ HyprCaffeine installed!"
     echo ""
 
-    # Detect desktop user
+    # 1. Polkit rule — runs as root here, so install directly using wheel-group rule
+    #    (no user detection needed: any 'wheel' group member can inhibit)
+    if [ -f /usr/share/hyprcaffeine/scripts/polkit-setup.sh ]; then
+        bash /usr/share/hyprcaffeine/scripts/polkit-setup.sh 2>/dev/null && \
+            echo "  ✅ Polkit rule installed → /etc/polkit-1/rules.d/50-hyprcaffeine.rules" || \
+            echo "  ⚠️  Polkit install failed — run: sudo hyprcaffeine polkit install"
+    fi
+
+    # 2. Per-user setup (waybar, systemd, keybinds)
+    #    Detect desktop user by Hyprland config presence
     _user=""
     for d in /home/*; do
-        if [ -d "$d/.config/waybar" ] && [ -d "$d/.config/hypr" ]; then
+        if [ -d "$d/.config/hypr" ]; then
             _user="$(basename "$d")"
             break
         fi
     done
 
     if [ -z "$_user" ] || [ "$_user" = "root" ]; then
-        echo "  Run 'hyprcaffeine setup' as your user to configure."
+        echo "  Run 'hyprcaffeine setup' as your user to finish configuration."
+        echo ""
         return 0
     fi
 
-    echo "  Auto-configuring for: $_user"
-
-    # 1. Polkit rule (ALWAYS install/overwrite — mandatory for sleep/lid inhibition)
-    if [ -f /usr/share/hyprcaffeine/polkit.rules ]; then
-        sed "s/USER_PLACEHOLDER/$_user/g" /usr/share/hyprcaffeine/polkit.rules \
-            > /etc/polkit-1/rules.d/50-hyprcaffeine.rules 2>/dev/null && \
-            echo "  ✅ Polkit rule installed → /etc/polkit-1/rules.d/50-hyprcaffeine.rules" || \
-            echo "  ⚠️  Polkit rule install failed — sleep/lid inhibition may require auth prompts"
-    fi
-
-    # 2. Waybar + 3. Systemd — run as the user
-    if [ -x /usr/share/hyprcaffeine/scripts/post-install.sh ]; then
-        su - "$_user" -c "bash /usr/share/hyprcaffeine/scripts/post-install.sh" 2>/dev/null
-    fi
-
+    echo "  Running user setup for: $_user"
+    # hyprcaffeine setup skips polkit if already installed (avoids sudo prompt)
+    runuser -l "$_user" -c "hyprcaffeine setup" 2>/dev/null || \
+        echo "  Run 'hyprcaffeine setup' to complete configuration."
     echo ""
 }
 
@@ -42,9 +41,9 @@ post_upgrade() {
 post_remove() {
     echo ""
     echo "  ☕ HyprCaffeine uninstalled."
-    echo "  Config left at ~/.config/hyprcaffeine/ (remove manually if desired)"
+    echo "  Config left at ~/.config/hyprcaffeine/ (remove manually or run 'hyprcaffeine uninstall')"
     echo ""
-    rm -f /etc/polkit-1/rules.d/50-hyprcaffeine.rules 2>/dev/null
-    echo "  Polkit rule removed. Remove waybar module manually if needed."
+    rm -f /etc/polkit-1/rules.d/50-hyprcaffeine.rules 2>/dev/null && \
+        echo "  Polkit rule removed."
     echo ""
 }
