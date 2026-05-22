@@ -2,8 +2,8 @@
 
 _pkgname="redot-mono"
 pkgname="$_pkgname-bin"
-_pkgver=26.1-stable
-pkgver=26.1_stable
+_pkgver=26.2-beta.1
+pkgver=26.2_beta.1
 _pkgfmt=_linux_mono_
 pkgrel=1
 pkgdesc="A multi-platform 2D and 3D game engine"
@@ -53,8 +53,8 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 source_x86_64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}${_pkgfmt}${_arch}.zip")
 source_aarch64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}${_pkgfmt}${_arch}.zip")
 
-sha256sums_x86_64=('1b784c6a1d130ff7571eaf8fc6a5458b830b3ed90f57503a40c430d5c70fee86')
-sha256sums_aarch64=('5aa2befc2e55f1d42ac511d0845f8146817ebe7704de0f5bcf922cf1f26c0efc')
+sha256sums_x86_64=('0888ff5a9cd3613c2899929ff58b1ea725e01f4037ec73ec4dbd4ebc165fa3b4')
+sha256sums_aarch64=('0a4760c5400c5b93d51cacb1477dcf99503de4169a98ff22e832292b4399e857')
 
 package() {
   mkdir -p ${pkgdir}/opt/${_pkgname}

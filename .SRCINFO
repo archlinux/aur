@@ -1,6 +1,6 @@
 pkgbase = redot-mono-bin
 	pkgdesc = A multi-platform 2D and 3D game engine
-	pkgver = 26.1_stable
+	pkgver = 26.2_beta.1
 	pkgrel = 1
 	url = https://www.redotengine.org/
 	arch = x86_64
@@ -38,9 +38,9 @@ pkgbase = redot-mono-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/Redot-Engine/redot-engine/releases/download/redot-26.1-stable/Redot_v26.1-stable_linux_mono_x64.zip
-	sha256sums_x86_64 = 1b784c6a1d130ff7571eaf8fc6a5458b830b3ed90f57503a40c430d5c70fee86
-	source_aarch64 = https://github.com/Redot-Engine/redot-engine/releases/download/redot-26.1-stable/Redot_v26.1-stable_linux_mono_x64.zip
-	sha256sums_aarch64 = 5aa2befc2e55f1d42ac511d0845f8146817ebe7704de0f5bcf922cf1f26c0efc
+	source_x86_64 = https://github.com/Redot-Engine/redot-engine/releases/download/redot-26.2-beta.1/Redot_v26.2-beta.1_linux_mono_x64.zip
+	sha256sums_x86_64 = 0888ff5a9cd3613c2899929ff58b1ea725e01f4037ec73ec4dbd4ebc165fa3b4
+	source_aarch64 = https://github.com/Redot-Engine/redot-engine/releases/download/redot-26.2-beta.1/Redot_v26.2-beta.1_linux_mono_x64.zip
+	sha256sums_aarch64 = 0a4760c5400c5b93d51cacb1477dcf99503de4169a98ff22e832292b4399e857
 
 pkgname = redot-mono-bin
