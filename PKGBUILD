@@ -12,7 +12,7 @@ conflicts=('neve' 'neve-git')
 
 source_x86_64=("neve-3.13.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/MCB-SMART-BOY/Neve/releases/download/v3.13.0/neve-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("neve-3.13.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/MCB-SMART-BOY/Neve/releases/download/v3.13.0/neve-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
+sha256sums_x86_64=("3afed1841b43a540fbfb715c85e6f93c8ffdc7bc1739d8665dbdda8c4fb2c2f6")
 sha256sums_aarch64=('dbe0c7fe11c1243d64db1ff31c98bb553a05735a631c14940a3f1c9228afce59')
 
 package() {
