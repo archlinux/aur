@@ -1,0 +1,9 @@
+pkgname="placeholder-for-python"
+pkgdesc="Placeholder package for a local installation of python"
+pkgver=1.0
+pkgrel=1
+epoch=1
+arch=(any)
+provides=(
+	"python"
+)
