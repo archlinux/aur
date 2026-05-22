@@ -1,7 +1,7 @@
 # Maintainer: ABOhiccups <info@abohiccups.com>
 pkgname=slippi-launcher
-_tagname='2.14.0'
-pkgver='v2.14.0.r0.ga7c8f43f'
+_tagname='2.14.1'
+pkgver='v2.14.1.r0.g42d91324'
 pkgrel=2
 pkgdesc="The way to play Slippi Online and watch replays."
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip')
 _url="https://github.com/project-slippi/$pkgname/releases"
 _package="Slippi-Launcher-$_tagname-$arch.AppImage"
 source=("$_package::$_url/download/v$_tagname/$_package")
-sha512sums=('46dfe57284ad946d215899f37495df146ba5099643f6ecb0d6d874c160dade28515ec9d5b65a719872d6af9169900a760f01264d75e764c165f843dca184f9c6')
+sha512sums=('9babde1bed8ee5df6554cc8853b1e425ec0ea21f678209274b021d060f9d190c719ba4842c821b8b55a7b50e9c6f73a63abdd302353b65cc671417e76b293bdb')
 
 prepare() {
 	chmod +x "$srcdir/$_package"
