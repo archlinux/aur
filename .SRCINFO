@@ -1,0 +1,22 @@
+pkgbase = tensaku-bin
+	pkgdesc = Modern screenshot annotation tool for Wayland (prebuilt binary)
+	pkgver = 0.25.2
+	pkgrel = 1
+	url = https://github.com/jondkinney/tensaku
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libadwaita
+	depends = libepoxy
+	depends = fontconfig
+	provides = tensaku=0.25.2
+	conflicts = tensaku
+	conflicts = tensaku-git
+	source_x86_64 = tensaku-v0.25.2-x86_64.tar.gz::https://github.com/jondkinney/tensaku/releases/download/v0.25.2/tensaku-v0.25.2-x86_64.tar.gz
+	sha256sums_x86_64 = 1119f99c11c99b0df27acd5292aaf665fe5c38443f17da2c2ed468e84ce0d233
+	source_aarch64 = tensaku-v0.25.2-aarch64.tar.gz::https://github.com/jondkinney/tensaku/releases/download/v0.25.2/tensaku-v0.25.2-aarch64.tar.gz
+	sha256sums_aarch64 = 2dc02063138c293f0fb33d4233454c7b4f5e67899621ad323d03651418466002
+
+pkgname = tensaku-bin
