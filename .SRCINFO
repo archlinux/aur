@@ -1,0 +1,18 @@
+pkgbase = sensindicator-git
+	pkgdesc = Small GTK3 tray sensor monitor with SNI support
+	pkgver = 0.1.0.r.g
+	pkgrel = 1
+	url = https://local/sensindicator
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	makedepends = pkgconf
+	makedepends = git
+	depends = gtk3
+	depends = lm_sensors
+	source = git+https://github.com/sfs-pra/sensindicator.git
+	sha256sums = SKIP
+
+pkgname = sensindicator-git
