@@ -9,6 +9,7 @@ pkgbase = plasma6-applets-quickbar
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = gcc
+	makedepends = kitemmodels
 	depends = libplasma
 	depends = plasma-workspace
 	depends = qt6-base
