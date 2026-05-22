@@ -1,0 +1,35 @@
+# ssh-agent-mux — przykładowa konfiguracja
+#
+# Skopiuj do ~/.config/ssh-agent-mux/ssh-agent-mux.toml i dostosuj ścieżki.
+# Format: TOML. Pełna dokumentacja opcji:
+#   https://github.com/overhacked/ssh-agent-mux#configuration
+
+# listen_path — własny socket ssh-agent-mux. Ustaw na niego SSH_AUTH_SOCK
+# klienta SSH (lub IdentityAgent w ~/.ssh/config).
+# Domyślnie: ~/.ssh/ssh-agent-mux.sock
+listen_path = "~/.ssh/ssh-agent-mux.sock"
+
+# log_level — error | warn | info | debug. Domyślnie: warn.
+log_level = "info"
+
+# agent_sock_paths — sockety upstream agentów do połączenia w jeden.
+# Kolejność = kolejność oferowania kluczy serwerowi (pierwszy wygrywa,
+# gdy serwer zna klucze z kilku agentów). Ścieżki muszą być absolutne.
+agent_sock_paths = [
+  # gpg-agent z włączonym SSH support (klucze OpenPGP, smartcard, YubiKey OpenPGP)
+  "/run/user/1000/gnupg/S.gpg-agent.ssh",
+
+  # klasyczny OpenSSH ssh-agent (klucze plikowe, FIDO2 -sk)
+  "/run/user/1000/ssh-agent.socket",
+
+  # --- inne typowe źródła — odkomentuj wg potrzeb ---
+
+  # Bitwarden Desktop (Flatpak) SSH agent:
+  # "~/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock",
+
+  # 1Password SSH agent:
+  # "~/.1password/agent.sock",
+
+  # yubikey-agent:
+  # "~/.ssh/yubikey-agent.sock",
+]

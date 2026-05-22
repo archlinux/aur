@@ -11,7 +11,11 @@ Type=simple
 # Dotyczy domyślnej ścieżki; przy własnym listen_path dostosuj poniższą linię.
 ExecStartPre=-/usr/bin/rm -f %h/.ssh/ssh-agent-mux.sock
 ExecStart=/usr/bin/ssh-agent-mux
-Restart=on-failure
+# Restart=always (nie on-failure): mux potrafi zakończyć się czystym exit 0
+# (np. race przy starcie sesji), a on-failure NIE podnosi go po exit 0.
+# Jako daemon-multiplekser mux ma zawsze żyć — always podnosi go z każdego
+# padnięcia, a ExecStartPre powyżej czyści stale socket przed bind().
+Restart=always
 RestartSec=5s
 
 [Install]

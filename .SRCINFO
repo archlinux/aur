@@ -1,7 +1,7 @@
 pkgbase = ssh-agent-mux
 	pkgdesc = Combine keys from multiple SSH agents into a single agent socket
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/overhacked/ssh-agent-mux
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,9 @@ pkgbase = ssh-agent-mux
 	depends = gcc-libs
 	source = ssh-agent-mux-0.2.0.tar.gz::https://github.com/overhacked/ssh-agent-mux/archive/v0.2.0.tar.gz
 	source = ssh-agent-mux.service
+	source = ssh-agent-mux.toml.example
 	sha256sums = 88f89db4a34a46d132f33bff5e33929b909c5f51efb398ab1eb204f4dcd46780
-	sha256sums = d9df1e2e06b3d30a4fccac9c5e86dc77b36585915c9239c23e576ff526fc3238
+	sha256sums = e7999e79aa33c3fd08616ba60af3ce349b8e4ca1864571231accb89d9006215f
+	sha256sums = 6d5ee662f0a38f01575c388bf327822c59fbd4f258963e816a3e617c9beccaf1
 
 pkgname = ssh-agent-mux
