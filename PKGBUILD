@@ -25,7 +25,7 @@ source=(antigravity.sh
   LICENSE)
 source_x86_64=("Antigravity-$pkgver-$CARCH.AppImage::https://storage.googleapis.com/antigravity-public/antigravity-hub/${pkgver}-${_execution_id}/linux-x64/Antigravity.AppImage")
 source_aarch64=("Antigravity-$pkgver-$CARCH.AppImage::https://storage.googleapis.com/antigravity-public/antigravity-hub/${pkgver}-${_execution_id}/linux-arm/Antigravity.AppImage")
-md5sums=('cf101157ed9026a6a1cf0f3e898cca23'
+md5sums=('6d13547dc860f5744b2e854cff2226dc'
   '711aba6dead2c6a1e02aea448e5d864d'
   'ec7b359462946788fce916772dea4bd1'
   '42d3a4dcc64aade1a8dc9f00cad9c5e6'
