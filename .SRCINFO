@@ -1,0 +1,17 @@
+pkgbase = mind-elixir-bin
+	pkgdesc = Lightweight privacy-focused mind mapping tool (prebuilt binary)
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://app.mind-elixir.com/
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = webkit2gtk-4.1
+	provides = mind-elixir
+	conflicts = mind-elixir
+	options = !strip
+	source = Mind.Elixir_1.8.0_amd64.deb::https://github.com/SSShooter/Mind-Elixir-Desktop-Release/releases/download/app-v1.8.0/Mind.Elixir_1.8.0_amd64.deb
+	sha256sums = d19a98c34953ee8fa22e57856e2eb34dbc53fa39bb7fffe342c209d27e221868
+
+pkgname = mind-elixir-bin
