@@ -16,12 +16,12 @@ sha256sums=('83120fd2300030d1e042c421daa783636f512fec436b1886e3c4d72b1352058a')
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    # Install the main Python executable (renaming it without the .py extension)
-    install -Dm755 "battery-notify.py" "$pkgdir/usr/bin/battery-notify"
-    
-    # Install the default configuration (renaming config.json to battery-notify.json)
-    install -Dm644 "config.json" "$pkgdir/etc/battery-notify.json"
-    
+    # Install the main Python executable
+    install -Dm755 "battery-notify" "$pkgdir/usr/bin/battery-notify"
+
+    # Install the default configuration
+    install -Dm644 "battery-notify.json" "$pkgdir/etc/battery-notify.json"
+
     # Install the systemd user service
     install -Dm644 "battery-notify.service" "$pkgdir/usr/lib/systemd/user/battery-notify.service"
 }
