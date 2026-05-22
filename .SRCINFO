@@ -9,6 +9,6 @@ pkgbase = streambert-bin
 	provides = streambert
 	conflicts = streambert
 	source_x86_64 = https://github.com/truelockmc/streambert/releases/download/2.5.0/streambert-2.5.0.pacman
-	sha256sums_x86_64 = ae320007ba22b2b8c75dafc22052cae0488fbc7e7b76fdca2875282d9bacadf7
+	sha256sums_x86_64 = bfe2e53697644859c8af30d842da33842c1af6b12c08dc5c5de6cadef84b2d23
 
 pkgname = streambert-bin
