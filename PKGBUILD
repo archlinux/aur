@@ -2,7 +2,7 @@
 # AUR: https://aur.archlinux.org/packages/xmm7360-dkms-git
 
 pkgname=xmm7360-dkms-git
-pkgver=r314.g89f77e8   # updated by pkgver() below
+pkgver=r315.gec4c27b   # updated by pkgver() below
 pkgrel=1
 pkgdesc="Intel XMM7360 / Fibocom L850 LTE modem driver (DKMS) with RPC init tool"
 arch=('x86_64')
