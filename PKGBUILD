@@ -25,8 +25,7 @@ package() {
     install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
     cp -dr --no-preserve=ownership \
-        main.js timer.js package.json package-lock.json \
-        pages/ img/ sounds/ \
+        src/ package.json package-lock.json \
         "$pkgdir$install_dir/"
 
     # Binaries (yt-dlp bundled for Windows only — Linux uses system package)
@@ -47,7 +46,7 @@ StartupWMClass=NihongoLofi
 EOF
 
     # Icon
-    install -Dm644 celeste.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+    install -Dm644 build/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
 
     # Launcher
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<'EOF'
