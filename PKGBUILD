@@ -1,13 +1,13 @@
 # Maintainer: 0bCdian <diegoparranava@protonmail.com>
 pkgname='waypaper-engine-git'
-pkgver=3.0.0.r0.g0000000
+pkgver=3.0.0.r1.b7585ed
 pkgrel=1
 pkgdesc="A wallpaper setter GUI with playlist functionality for Wayland and X11 (git)"
 arch=('x86_64')
 url="https://github.com/0bCdian/Waypaper-Engine"
 license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme')
-makedepends=('go' 'npm' 'nodejs' 'git')
+makedepends=('go' 'pnpm' 'nodejs' 'git')
 conflicts=('waypaper-engine')
 provides=('waypaper-engine')
 optdepends=(
@@ -15,7 +15,7 @@ optdepends=(
   'hyprpaper: static image wallpapers on Hyprland'
   'mpvpaper: video wallpapers on wlroots compositors'
   'feh: static image wallpapers on X11'
-  'wayland-utauri: HTML/web wallpapers on Wayland (first-party)'
+  'wal-qt: HTML / WebEngine wallpaper backend'
   'xorg-xrandr: monitor detection on X11'
 )
 _archive="Waypaper-Engine"
