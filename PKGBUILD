@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=deeplx-git
-pkgver=1.0.1.r1.gf2fa902
+pkgver=1.2.2.r0.g432c0a2
 pkgrel=1
 pkgdesc="DeepL Free API (No TOKEN required)"
 arch=($CARCH)
@@ -42,6 +42,13 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GO111MODULE=on
+    export GOPROXY=https://goproxy.cn,direct
 
     mkdir -pv build/
     go build -o build
