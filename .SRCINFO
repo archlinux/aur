@@ -1,0 +1,16 @@
+pkgbase = rockutil-git
+	pkgdesc = Most feature complete Rockchip SoC Flashing Utility
+	pkgver = r36.123597f
+	pkgrel = 1
+	url = https://github.com/mkschreder/rockutil
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = glibc
+	depends = libusb
+	provides = rockutil
+	conflicts = rockutil
+	source = rockutil-git::git+https://github.com/mkschreder/rockutil.git
+	sha256sums = SKIP
+
+pkgname = rockutil-git
