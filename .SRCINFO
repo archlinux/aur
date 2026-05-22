@@ -1,0 +1,18 @@
+pkgbase = bambu-studio-bin
+	pkgdesc = BambuStudio slicer for Bambu Lab 3D printers
+	pkgver = 02.07.00.55
+	pkgrel = 1
+	url = https://github.com/BenJule/BambuStudio
+	arch = x86_64
+	license = AGPL3
+	depends = gtk3
+	depends = glib2
+	depends = glibc
+	depends = libsecret
+	depends = webkit2gtk
+	provides = bambu-studio
+	conflicts = bambu-studio
+	source = BambuStudio.AppImage::https://github.com/BenJule/BambuStudio/releases/download/v02.07.00.55/Bambu_Studio_ubuntu-24.04_V02.07.00.55.AppImage
+	sha256sums = c68dd2c75bfa45227651045e83adffbe4a9b55c7975eba9e2511a79d65113887
+
+pkgname = bambu-studio-bin
