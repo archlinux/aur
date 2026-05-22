@@ -1,19 +1,20 @@
 pkgbase = nook-beta-bin
 	pkgdesc = Nook beta desktop app
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nook.cloudylake.io
 	arch = x86_64
 	license = proprietary
-	depends = fuse2
+	depends = alsa-lib
+	depends = gtk3
 	depends = libayatana-appindicator
 	depends = webkit2gtk-4.1
 	optdepends = libpulse: PulseAudio audio support
-	optdepends = alsa-lib: ALSA audio support
 	provides = nook
 	conflicts = nook
 	conflicts = nook-bin
-	source = nook-0.1.1.AppImage::https://nook.cloudylake.io/download/nook-0.1.1-linux.AppImage
-	sha256sums = 90d563c52e9db1139be98babc07bed64e63116a873282822aa0381d14662747e
+	options = !strip
+	source = nook-0.1.1.deb::https://nook.cloudylake.io/download/nook-0.1.1-linux.deb
+	sha256sums = 7b8a307a1592f784224681913e71ccff54b6b5f00a33fc74e896506ddbd6fa2c
 
 pkgname = nook-beta-bin
