@@ -18,9 +18,11 @@ provides=('equibop')
 conflicts=('equibop' 'equibop-bin' 'vesktop' 'vencord-desktop')
 
 source=("equibop-${pkgver}.tar.gz::https://github.com/Equicord/Equibop/releases/download/v${pkgver}/equibop-${pkgver}.tar.gz"
-        "equibop.desktop")
+        "equibop.desktop"
+        "icon.png::https://raw.githubusercontent.com/Equicord/Equibop/v${pkgver}/static/icon.png")
 sha256sums=('fd4c881917cd8d81a9c088cd2619958acab44538447506790e3e5a2cff94f70c'
-            'SKIP')
+            '4334a26a7264fdedfaf024f17a4fe8be010043a5a3a8cace9221f040a5d636c0'
+            '280156676d268d80f65ea3e592bacdd0df5bd78e69872211c624fa07ea062cb8')
 
 prepare() {
   # The tarball contains a directory named "equibop-${pkgver}"
@@ -51,13 +53,9 @@ package() {
   # Install our opinionated, clean desktop file (fixes notification/icon issues on Plasma/Hyprland)
   install -Dm644 "$srcdir/equibop.desktop" "$pkgdir/usr/share/applications/equibop.desktop"
 
-  # Install icons from the package if present
-  for size in 16 32 48 64 128 256 512; do
-    icon_path="usr/share/icons/hicolor/${size}x${size}/apps"
-    if [ -f "$icon_path/equibop.png" ] || [ -f "$icon_path/org.equicord.equibop.png" ]; then
-      install -Dm644 "$icon_path/"*.png "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/equibop.png" 2>/dev/null || true
-    fi
-  done
+  # Install the downloaded icon
+  install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/pixmaps/equibop.png"
+  install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/equibop.png"
 
   # Create wrapper binary with modern Wayland + Ozone flags (opinionated but safe)
   install -dm755 "$pkgdir/usr/bin"

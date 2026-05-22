@@ -43,7 +43,9 @@ pkgbase = equibop-client-bin
 	conflicts = vencord-desktop
 	source = equibop-3.2.0.tar.gz::https://github.com/Equicord/Equibop/releases/download/v3.2.0/equibop-3.2.0.tar.gz
 	source = equibop.desktop
+	source = icon.png::https://raw.githubusercontent.com/Equicord/Equibop/v3.2.0/static/icon.png
 	sha256sums = fd4c881917cd8d81a9c088cd2619958acab44538447506790e3e5a2cff94f70c
-	sha256sums = SKIP
+	sha256sums = 4334a26a7264fdedfaf024f17a4fe8be010043a5a3a8cace9221f040a5d636c0
+	sha256sums = 280156676d268d80f65ea3e592bacdd0df5bd78e69872211c624fa07ea062cb8
 
 pkgname = equibop-client-bin
