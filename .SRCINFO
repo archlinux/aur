@@ -1,5 +1,5 @@
 pkgbase = cosmostrix-bin
-	pkgdesc = A cosmic Matrix-style terminal rain written in Rust
+	pkgdesc = High-performance cinematic terminal renderer
 	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/oxyzenQ/cosmostrix
