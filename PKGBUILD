@@ -2,7 +2,7 @@
 pkgname=singcast
 epoch=1
 pkgver=1.1.0_beta3
-pkgrel=1
+pkgrel=2
 pkgdesc="A clash GUI client based on Flutter"
 arch=('x86_64')
 url="https://github.com/mapleafgo/clash-for-flutter"
@@ -20,7 +20,8 @@ package() {
 
   cp -a "${srcdir}/lib" "${pkgdir}${_install_path}/lib"
   cp -a "${srcdir}/data" "${pkgdir}${_install_path}/data"
-  install -Dm755 "${srcdir}/singcast" "${pkgdir}/${_install_path}/singcast"
+  install -Dm755 "${srcdir}/singcast" "${pkgdir}${_install_path}/singcast"
+  install -Dm755 "${srcdir}/singcast-core" "${pkgdir}${_install_path}/singcast-core"
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -snf "${pkgdir}/${_install_path}/singcast" "${pkgdir}/usr/bin/${pkgname}"
