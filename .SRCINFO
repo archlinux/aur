@@ -1,6 +1,6 @@
 pkgbase = docking-bin
 	pkgdesc = A lightweight, feature-rich dock for Linux written in Python with GTK 3 and Cairo
-	pkgver = 1.23.1
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://github.com/edumucelli/docking
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = docking-bin
 	depends = adwaita-icon-theme
 	provides = docking
 	conflicts = docking
-	source_x86_64 = docking-1.23.1-x86_64.pkg.tar.zst::https://github.com/edumucelli/docking/releases/download/v1.23.1/docking-1.23.1-linux-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = e72ba6cf5d068cbfbfea1e755d0f9cef4a612a274c31fdbdba1ecd9b54a08e9a
-	source_aarch64 = docking-1.23.1-aarch64.pkg.tar.xz::https://github.com/edumucelli/docking/releases/download/v1.23.1/docking-1.23.1-linux-aarch64.pkg.tar.xz
-	sha256sums_aarch64 = d4e70c50fceda2624a72d9345fa2527cdabbb3a6cf16669c51ccdb202b6a019b
+	source_x86_64 = docking-1.24.0-x86_64.pkg.tar.zst::https://github.com/edumucelli/docking/releases/download/v1.24.0/docking-1.24.0-linux-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 5bc7e1e4ca21c1ad559aeac972c7089b24790fe43f522a616c7a4f36d69dec7f
+	source_aarch64 = docking-1.24.0-aarch64.pkg.tar.xz::https://github.com/edumucelli/docking/releases/download/v1.24.0/docking-1.24.0-linux-aarch64.pkg.tar.xz
+	sha256sums_aarch64 = a46bd95f79483c7087465f4d215b83c74cf2a95d2c0a37990b04deddb9836087
 
 pkgname = docking-bin
