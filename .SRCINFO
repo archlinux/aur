@@ -1,0 +1,12 @@
+pkgbase = cdecrypt
+	pkgdesc = Decrypt Wii U NUS content
+	pkgver = 4.8
+	pkgrel = 1
+	url = https://github.com/VitaSmith/cdecrypt
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	source = cdecrypt-4.8.tar.gz::https://github.com/VitaSmith/cdecrypt/archive/refs/tags/v4.8.tar.gz
+	sha256sums = 08ec85d81adcafb2e55fde18e5c095603a35b72b7ef781723de5ceb20d7ffbaf
+
+pkgname = cdecrypt

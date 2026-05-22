@@ -1,0 +1,5 @@
+[cdecrypt]
+source = "github"
+github = "VitaSmith/cdecrypt"
+prefix = "v"
+use_max_tag = true
