@@ -2,7 +2,7 @@
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 # Contributor: TheCyberArcher <TheCyberArcher@protonmail.ch>
 pkgname=music-assistant-desktop-bin
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=(
 )
 conflicts=('music-assistant-desktop' 'music-assistant-desktop-git' 'music-assistant-companion-git' 'music-assistant-app-git' 'music-assistant-desktop-app-git')
 source=("$pkgname-$pkgver.deb::$url/releases/download/$pkgver/Music.Assistant_${pkgver}_amd64.deb")
-sha256sums=('8890620e098bdebd9aec263b3b01146fe7e1ca2265f3592ab09cd77d77cd27eb')
+sha256sums=('7a5b2fdf99c05fad9f95c5d214fa91e2872c795faf1197883936bd2c2fcc4891')
 
 package() {
     cd "$srcdir"
