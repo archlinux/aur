@@ -1,6 +1,6 @@
 pkgname=hpe-scripting-toolkit
 pkgver=11.60
-pkgrel=4
+pkgrel=5
 pkgdesc="Command-line tools for scripting HP ProLiant BIOS configuration"
 arch=(x86_64)
 url='https://downloads.linux.hpe.com/SDR/project/stk/'
@@ -8,7 +8,7 @@ depends=(
 	dmidecode	# according to .deb/control
 	pciutils	# according to .deb/control
 	libgcc		# libgcc_s.so.1
-	libxml2		# libxml2.so.2
+	libxml2-legacy	# libxml2.so.2
 	libstdc++	# libstdc++.so.6
 )
 provides=(hp-scripting-tools=$pkgver)
