@@ -14,7 +14,7 @@ optdepends=('wl-clipboard: Wayland clipboard support'
 provides=('himitsu-bako')
 conflicts=('himitsu-bako-bin' 'himitsu-bako-git')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('920a876917deacd602dd6ea3e3b1726e54a829e63c9c5072b6ebaebebdc8dfe6')
+sha256sums=('99c0aae63c90920ff3624c259b6cb7c1a17fe9eb3cb5c1a6372031a7cd26e5a2')
 
 prepare() {
   cd "$pkgname-$pkgver"

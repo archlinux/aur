@@ -14,6 +14,6 @@ pkgbase = himitsu-bako
 	conflicts = himitsu-bako-bin
 	conflicts = himitsu-bako-git
 	source = himitsu-bako-1.0.0.tar.gz::https://github.com/shichirouji21/himitsu-bako/archive/v1.0.0.tar.gz
-	sha256sums = 920a876917deacd602dd6ea3e3b1726e54a829e63c9c5072b6ebaebebdc8dfe6
+	sha256sums = 99c0aae63c90920ff3624c259b6cb7c1a17fe9eb3cb5c1a6372031a7cd26e5a2
 
 pkgname = himitsu-bako
