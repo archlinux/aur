@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-keygen-unstable-bin
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Asymmetric key generation and inspection tool for moshpit — X25519, P-384, P-256, and ML-DSA post-quantum identity keys (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,9 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mp-keygen.tar.gz")
 source_x86_64=("mp-keygen-unstable-x86_64::${_base}/mp-keygen-unstable-x86_64-unknown-linux-musl")
 source_aarch64=("mp-keygen-unstable-aarch64::${_base}/mp-keygen-unstable-aarch64-unknown-linux-musl")
-sha256sums=('80843183558ee99f0384b600899431e5e22a9941ef7916c886953a1e118afafa')
-sha256sums_x86_64=('3e479c95e1cf9bbbaefc243a333e228cf52a7cca9336b3d018a522bdced4e963')
-sha256sums_aarch64=('70382f699d3d7cc8032247d0da7027fb631785ed53d352ae8c764ae9b1d49941')
+sha256sums=('96c5f1d69e8df549c0ea7ae22c02efc66638de1cdd9cf0ee352284b6e70ac9a8')
+sha256sums_x86_64=('a40a64badf948ed398ea4fc9f494d96a6de19620180095e8ff6160e24f11f420')
+sha256sums_aarch64=('a077a859d4b0a5f99671be2edf8fc6a36f8598ab7869f6554f0a13e9cf22ce56')
 
 package() {
     install -Dm755 "mp-keygen-unstable-${CARCH}" "$pkgdir/usr/bin/mp-keygen"
