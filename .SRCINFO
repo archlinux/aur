@@ -1,6 +1,6 @@
 pkgbase = sdctl
 	pkgdesc = An easy-to-use TUI for managing systemd units
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/ruiiiijiiiiang/sdctl
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sdctl
 	depends = glibc
 	depends = systemd
 	depends = polkit
-	source = sdctl-0.1.0.tar.gz::https://github.com/ruiiiijiiiiang/sdctl/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 81fb5650f474db639c5181e466117bee0cc348248c2786e52a201290ed9da2c5
+	source = sdctl-0.1.1.tar.gz::https://github.com/ruiiiijiiiiang/sdctl/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 4d02651a710812667126e8efbc926ce0a0918272b4de02e9f408a10831b72989
 
 pkgname = sdctl

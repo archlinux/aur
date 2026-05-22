@@ -1,6 +1,6 @@
 # Maintainer: Rui Jiang <ruidofm at gmail dot com>
 pkgname=sdctl
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="An easy-to-use TUI for managing systemd units"
 arch=('x86_64')
@@ -9,24 +9,24 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'systemd' 'polkit')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('81fb5650f474db639c5181e466117bee0cc348248c2786e52a201290ed9da2c5')
+sha256sums=('4d02651a710812667126e8efbc926ce0a0918272b4de02e9f408a10831b72989')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo build --frozen --release --all-features
+  cargo build --release --all-features
 }
 
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --release --all-features
+  cargo test --release --all-features
 }
 
 package() {
