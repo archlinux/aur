@@ -1,0 +1,2 @@
+#Type  Name       ID   GECOS          Home             Shell
+u      zeroclaw   -    "ZeroClaw AI"  /var/lib/zeroclaw /usr/bin/nologin
