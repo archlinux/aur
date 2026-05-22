@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "Dark-Dream"
-  gcc -O3 dark_dream.zig -o dark-dream \
+  gcc -O3 dark_dream.c -o dark-dream \
       -lSDL2 -lSDL2_mixer -lGL -lGLU -lm \
       -DUSE_SDL_MIXER
 }
