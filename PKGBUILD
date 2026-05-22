@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/0bCdian/Waypaper-Engine"
 license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme')
-makedepends=('go' 'npm' 'nodejs' 'git')
+makedepends=('go' 'pnpm' 'nodejs' 'git')
 provides=('waypaper-engine')
 conflicts=('waypaper-engine-git')
 optdepends=(
@@ -15,12 +15,12 @@ optdepends=(
   'hyprpaper: static image wallpapers on Hyprland'
   'mpvpaper: video wallpapers on wlroots compositors'
   'feh: static image wallpapers on X11'
-  'wayland-utauri: HTML/web wallpapers on Wayland (first-party)'
+  'wal-qt: HTML / WebEngine wallpaper backend'
   'xorg-xrandr: monitor detection on X11'
 )
 _archive="Waypaper-Engine-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('a333fe9f6d9b9599db23587df96b2ba198c88a98ffcc69908bbb9e02f8e93725')
 
 prepare() {
   cd "$_archive"
@@ -29,7 +29,10 @@ prepare() {
 
 build() {
   cd "$_archive"
-  make electron
+  # The release tarball has no .git, so the Makefile's `git describe` version
+  # detection fails (and would otherwise pick up an unrelated parent repo).
+  # Pass the version explicitly so the daemon binary is stamped correctly.
+  make electron DAEMON_VERSION="v$pkgver"
 }
 
 package() {
