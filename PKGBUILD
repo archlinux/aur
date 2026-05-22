@@ -2,7 +2,7 @@
 pkgname=linux-wallpaper-engine-ux
 _pkgname=linux-wallpaper-engine
 pkgver=0.4.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern desktop GUI for linux-wallpaperengine"
 arch=('x86_64')
 url="https://github.com/jagrat7/linux-wallpaper-engine"
@@ -65,7 +65,7 @@ build() {
   export TMPDIR="$forge_tmpdir"
 
   mkdir -p "$TMPDIR"
-  bun run package
+  bun node_modules/.bin/electron-forge package
 
   if [[ ! -d "$forge_out_dir" ]]; then
     echo "error: electron-forge finished but produced no output directory" >&2
