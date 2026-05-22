@@ -1,7 +1,7 @@
 # Maintainer: Lena Pastwa <aur@lnps.me>
 pkgname=tlrc
-pkgver=1.13.0
-pkgrel=2
+pkgver=1.13.1
+pkgrel=1
 pkgdesc="Official tldr client written in Rust"
 arch=('x86_64')
 url="https://github.com/tldr-pages/$pkgname"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=('tldr')
 conflicts=('tldr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('4b6ef4e2c1d64fa4fbe0355ace4eb7d3836d4544cb658037dcda733b359b52fe65db0bed7d382c8c0c21625c32e6cd1c0007186a47532ba1bc68538dc547bf97')
+b2sums=('d1232d8a0e4b4ea310f5e7ea7b2868d9213e30ead7ec90f93005ce5d9512ffd9f3bc528d96f86b853dc4ff72de7de3b4c561dc52ead301888247d68ab2c0c297')
 # This is needed for `ring` to compile. See https://github.com/briansmith/ring/issues/1444
 options=('!lto')
 
