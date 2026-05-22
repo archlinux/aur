@@ -1,12 +1,12 @@
 pkgbase = weylus-community-git
 	pkgdesc = Use your tablet as graphic tablet/touch screen on your computer.
 	pkgver = 2026.5.21.r0.g1655735
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/electronstudio/WeylusCommunityEdition
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = rust
-	makedepends = typescript<6.0.0
+	makedepends = pnpm
 	makedepends = libx11
 	makedepends = pkg-config
 	makedepends = git
@@ -35,6 +35,6 @@ pkgbase = weylus-community-git
 	source = weylus::git+https://github.com/electronstudio/WeylusCommunityEdition.git
 	source = community.patch
 	sha256sums = SKIP
-	sha256sums = e066e4eeca91540056fb56bb5a8f763abf5c224ee4443212cb02969e0828dfff
+	sha256sums = 89147a45d3357ba4ea5643ecd55546004815b9381c4dbfd46ddf6ed277a102ef
 
 pkgname = weylus-community-git
