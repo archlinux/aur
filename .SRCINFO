@@ -1,5 +1,5 @@
 pkgbase = klyppd-bin
-	pkgdesc = Medal-style clip manager for Linux — gpu-screen-recorder + Cloudflare R2 (prebuilt binary)
+	pkgdesc = Performance-first Linux clipping app with instant replay, trimming, and cloud uploads.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/brookerslyn/klyppd
