@@ -1,0 +1,16 @@
+pkgbase = fnaf-cli
+	pkgdesc = Five Nights at Freddy's - Terminal Edition for Linux (Bash port)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MCookinho/fnaf-cli
+	install = 
+	arch = any
+	license = Unlicense
+	depends = bash
+	depends = mpg123
+	depends = coreutils
+	makedepends = git
+	source = fnaf-cli::git+https://github.com/peuborges/fnaf-cli.git
+	sha256sums = SKIP
+
+pkgname = fnaf-cli
