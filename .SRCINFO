@@ -1,10 +1,16 @@
 pkgbase = python-langgraph-checkpoint-postgres
 	pkgdesc = Library with a Postgres implementation of LangGraph checkpoint saver.
-	pkgver = 3.0.4
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langgraph/tree/main/libs/checkpoint-postgres
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-anyio
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-mock
+	checkdepends = postgresql
+	checkdepends = pgvector
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
@@ -14,7 +20,7 @@ pkgbase = python-langgraph-checkpoint-postgres
 	depends = python-orjson
 	depends = python-psycopg
 	depends = python-psycopg-pool
-	source = https://files.pythonhosted.org/packages/source/l/langgraph-checkpoint-postgres/langgraph_checkpoint_postgres-3.0.4.tar.gz
-	sha256sums = 83e6a1097563369173442de2a66e6d712d60a1a6de07c98c5130d476bb2b76ae
+	source = https://files.pythonhosted.org/packages/source/l/langgraph-checkpoint-postgres/langgraph_checkpoint_postgres-3.1.0.tar.gz
+	sha256sums = 02bff4ab63d9dae8eab3a9640fce1d479da8965c9fba7b0dc04cb1f7c56f0a55
 
 pkgname = python-langgraph-checkpoint-postgres
