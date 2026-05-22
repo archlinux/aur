@@ -1,27 +1,27 @@
-# Maintainer: Morten Linderud <morten@linderud.pw>
-# Contributor: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
-
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
 pkgname=dmenu-extended
-pkgver=r280.4f0395f
+_name=${pkgname//-/_}
+pkgver=1.4.1
 pkgrel=1
-pkgdesc='An extension to dmenu for quickly opening files and folders.'
-url='https://github.com/markjones112358/dmenu-extended'
-license=('MIT')
+pkgdesc="An extension to dmenu for quickly opening files and folders."
 arch=('any')
-depends=('dmenu' 'python')
-makedepends=('python' 'git')
-source=("git+https://github.com/markjones112358/dmenu-extended.git")
-sha256sums=('SKIP')
+url="https://github.com/markhedleyjones/dmenu-extended"
+license=('MIT')
+depends=(python dmenu)
+makedepends=(python-build python-installer python-wheel python-setuptools)
+conflicts=(dmenu-extended-git)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
+	"LICENSE::https://raw.githubusercontent.com/markhedleyjones/dmenu-extended/$pkgver/LICENSE")
+sha256sums=('f14544a81d28a9980610d612cab49c0155de7067d320ca90a7565d1f01e206cf'
+            '40c707dbb656d7507154510dee54b3a0aeefdd0331aa1736c94d6aa4d4049b6b')
 
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+build() {
+	cd "${_name}-${pkgver}"
+	python3 -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd "${_name}-${pkgver}"
+	python -m installer --destdir="${pkgdir}" dist/*.whl
+	install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-
-# vim:set ts=2 sw=2 et:
