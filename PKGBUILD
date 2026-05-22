@@ -1,6 +1,6 @@
 # Maintainer: ParticleG <particle_g at outlook dot com>
 pkgname=gpu-select
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Per-app GPU selection tool for Linux hybrid GPU laptops"
 arch=('any')
