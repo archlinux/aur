@@ -1,8 +1,8 @@
 pkgname=openvox-agent-bin
 _pkgname=openvox-agent
-pkgver=8.26.2
-pkgrel=2
-pkgdesc='Agent of the OpenVox Automation Framework'
+pkgver=8.27.0
+pkgrel=1
+pkgdesc='Agent of the OpenVox Automation Framework (non-modular)'
 arch=('x86_64')
 url='https://voxpupuli.org/openvox/'
 license=('Apache-2.0')
@@ -24,4 +24,4 @@ package() {
     cp -a  "${srcdir}/data/etc" "${pkgdir}/"
     install -Dm 644 "${srcdir}/data/lib/systemd/system/puppet.service" "${pkgdir}/usr/lib/systemd/system/puppet.service"
 }
-b2sums_x86_64=('d83bd3eec9e568a084a29719b498a21241d3af81bf16497f8dee6de069862424b3177c4b5c498e42a62208f847e7e697ce212a48265cbeee506556874b51a155')
+b2sums_x86_64=('965f11996f4c2a4364d04490be3f9d3eadbf0ad0a4c1de312e7a9afd2979cc0b7e513d0d9bfa02539dcf23332858fdb9091b947820b9b54d4f81e3e05e92700c')
