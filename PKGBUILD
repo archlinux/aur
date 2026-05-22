@@ -6,7 +6,7 @@
 pkgname='treegrep-bin'
 _pkgname="${pkgname/-bin}"
 pkgdesc='Frontend for ripgrep that presents results in a tree format (pre-compiled)'
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 url='https://github.com/4imothy/treegrep'
 changelog="$pkgname.changelog"
@@ -64,11 +64,11 @@ package() {
 }
 
 sha256sums_aarch64=(
-  '6aeeee797a587974c16ca756fef0b3156e3f3af8a1ea0baecd6e8205af2234af'
+  '20da908b555cab655500e9ba21479bca597d7cdab6bf7fe1a0f9c10ceafea43f'
   'SKIP'
 )
 sha256sums_x86_64=(
-  'c4ed334dcbc2952a1084ece9d0149d377522f154fd8f3bd884aba018ad85135c'
+  '77104024ccc2080c914c73ee0177c723ebd2aeaccdfc03edca45e495ffad790d'
   'SKIP'
 )
 
