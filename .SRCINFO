@@ -1,6 +1,6 @@
 pkgbase = golden-cheetah-appimage
 	pkgdesc = Performance Software for Cyclists, Runners and Triathletes
-	pkgver = 3.6
+	pkgver = 3.7
 	pkgrel = 1
 	url = http://www.goldencheetah.org/
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = golden-cheetah-appimage
 	depends = fuse
 	provides = golden-cheetah
 	conflicts = golden-cheetah
-	noextract = GoldenCheetah_3.6.AppImage
+	noextract = GoldenCheetah_3.7.AppImage
 	options = !strip
-	source = GoldenCheetah_3.6.AppImage::https://github.com/GoldenCheetah/GoldenCheetah/releases/download/v3.6/GoldenCheetah_v3.6_x64.AppImage
+	source = GoldenCheetah_3.7.AppImage::https://github.com/GoldenCheetah/GoldenCheetah/releases/download/v3.7/GoldenCheetah_v3.7_x64.AppImage
 	source = golden-cheetah.desktop
 	source = golden-cheetah.png
-	sha256sums = 3cc4540d0490c5b1026c5f523cea34dede17c63d4eb582403d710ccb2cba1156
+	sha256sums = b5e58c0c28660b6a161b7509593b47557cc8ce2da485d9333243031534c8eb0f
 	sha256sums = 387b614023f0ef2fded447b6b9261311a23ef7253709e11c3a6c4db9dc8ca43c
 	sha256sums = 7056af2950caf59fba846b4f314a78898fef74e75b9c0915abb3d305f9918d48
 
