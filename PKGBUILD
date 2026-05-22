@@ -1,7 +1,7 @@
 # Maintainer: MCookinho <peuborges@proton.me>
 pkgname=fnaf-cli
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Five Nights at Freddy's - Terminal Edition for Linux (Bash port)"
 arch=('any')
 url="https://github.com/MCookinho/fnaf-cli"
