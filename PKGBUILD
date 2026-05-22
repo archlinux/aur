@@ -2,13 +2,13 @@
 #
 # shellcheck shell=bash disable=SC2034 disable=SC2154 disable=SC2164
 
-_commit=ee36f75d0593e243b56e5035dc92ad486befb70d
+_commit=657ac9a6c1423686c7c2facc8e4519a43ba1e6b6
 pkgname=radicle-desktop
-pkgver='0.10.0'
+pkgver='0.11.0'
 pkgrel='1'
 pkgdesc='Radicle desktop app'
 arch=('x86_64')
-url='https://www.radworks.garden/'
+url='https://radicle.dev/'
 license=('GPL-3.0-only')
 depends=(
   'radicle-node'
@@ -35,7 +35,7 @@ makedepends=(
   'nodejs'
 )
 options=('!strip' '!emptydirs' '!lto')
-source=("$pkgname::git+https://seed.radicle.xyz/z4D5UCArafTzTQpDZNQRuqswh3ury.git#commit=$_commit")
+source=("$pkgname::git+https://seed.radicle.dev/z4D5UCArafTzTQpDZNQRuqswh3ury.git#commit=$_commit")
 sha256sums=('SKIP')
 
 prepare() {
