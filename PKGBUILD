@@ -3,7 +3,7 @@
 
 pkgname=omniroute-bin
 pkgver=3.8.1 # renovate: datasource=github-tags depName=diegosouzapw/OmniRoute
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenAI-compatible AI gateway with routing, retries, caching, and observability"
 arch=('x86_64')
 url="https://github.com/diegosouzapw/OmniRoute"
@@ -27,22 +27,31 @@ sha512sums=('SKIP'
 _omniroute_pkgroot() {
   local _candidate
   local -a _candidates=()
+  local -a _preferred=()
 
   for _candidate in "${srcdir}"/*; do
     [[ -d "${_candidate}" ]] || continue
     [[ "${_candidate}" == "${srcdir}/npm-home" ]] && continue
     [[ "${_candidate}" == "${srcdir}/npm-cache" ]] && continue
     [[ -f "${_candidate}/package.json" ]] || continue
+
     _candidates+=("${_candidate}")
+    [[ "${_candidate##*/}" == OmniRoute-* ]] && _preferred+=("${_candidate}")
   done
 
-  if (( ${#_candidates[@]} != 1 )); then
-    printf 'Expected one extracted omniroute package root, found %d:\n' "${#_candidates[@]}" >&2
-    printf '  %s\n' "${_candidates[@]}" >&2
-    return 1
+  if (( ${#_preferred[@]} == 1 )); then
+    printf '%s\n' "${_preferred[0]}"
+    return 0
   fi
 
-  printf '%s\n' "${_candidates[0]}"
+  if (( ${#_candidates[@]} == 1 )); then
+    printf '%s\n' "${_candidates[0]}"
+    return 0
+  fi
+
+  printf 'Expected one extracted omniroute package root, found %d:\n' "${#_candidates[@]}" >&2
+  printf '  %s\n' "${_candidates[@]}" >&2
+  return 1
 }
 
 build() {
@@ -58,7 +67,6 @@ build() {
 
   export HOME="${srcdir}/npm-home"
   export npm_config_cache="${srcdir}/npm-cache"
-  export npm_config_build_from_source=true
   export npm_config_audit=false
   export npm_config_fund=false
   export npm_config_update_notifier=false
@@ -68,20 +76,20 @@ build() {
   npm install --omit=dev --ignore-scripts --no-audit --no-fund
   rm -rf "${_app_wreq_js_dir}"
   npm install --prefix app --omit=dev --ignore-scripts --no-audit --no-fund wreq-js
-  npm rebuild better-sqlite3 --build-from-source
+
   if [[ -f scripts/postinstall.mjs ]]; then
     node scripts/postinstall.mjs
   fi
-
-  [[ -f "${_app_binary}" ]] || {
-    printf 'Missing repaired better-sqlite3 binary at %s\n' "${_app_binary}" >&2
-    return 1
-  }
 
   [[ -f "${_app_wreq_js_dir}/dist/wreq-js.js" ]] || {
     printf 'Missing required wreq-js ESM entrypoint at %s\n' "${_app_wreq_js_dir}/dist/wreq-js.js" >&2
     return 1
   }
+
+  if [[ -d "${_pkgroot}/app/node_modules/better-sqlite3" && ! -f "${_app_binary}" ]]; then
+    printf 'better-sqlite3 directory exists but binary is missing at %s\n' "${_app_binary}" >&2
+    return 1
+  fi
 
   rm -rf "${_pkgroot}/node_modules"
 }
