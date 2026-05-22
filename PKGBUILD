@@ -2,9 +2,9 @@
 
 _pkgname=zoitechat
 pkgname=$_pkgname-git
-pkgver=r4771.4ed4eaf8
+pkgver=r4799.479f1649
 pkgrel=1
-pkgdesc="HexChat based IRC client for Windows and UNIX-like operating systems"
+pkgdesc="GTK3 IRC client based on HexChat"
 arch=('x86_64')
 url="https://github.com/ZoiteChat/zoitechat"
 license=('GPL-2.0-or-later')

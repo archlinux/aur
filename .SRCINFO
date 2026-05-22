@@ -1,6 +1,6 @@
 pkgbase = zoitechat-git
-	pkgdesc = HexChat based IRC client for Windows and UNIX-like operating systems
-	pkgver = r4771.4ed4eaf8
+	pkgdesc = GTK3 IRC client based on HexChat
+	pkgver = r4799.479f1649
 	pkgrel = 1
 	url = https://github.com/ZoiteChat/zoitechat
 	arch = x86_64
