@@ -6,9 +6,13 @@ post_install() {
     # 1. Polkit rule — runs as root here, so install directly using wheel-group rule
     #    (no user detection needed: any 'wheel' group member can inhibit)
     if [ -f /usr/share/hyprcaffeine/scripts/polkit-setup.sh ]; then
-        bash /usr/share/hyprcaffeine/scripts/polkit-setup.sh 2>/dev/null && \
-            echo "  ✅ Polkit rule installed → /etc/polkit-1/rules.d/50-hyprcaffeine.rules" || \
+        if bash /usr/share/hyprcaffeine/scripts/polkit-setup.sh; then
+            echo "  ✅ Polkit rule installed → /etc/polkit-1/rules.d/50-hyprcaffeine.rules"
+        else
             echo "  ⚠️  Polkit install failed — run: sudo hyprcaffeine polkit install"
+        fi
+    else
+        echo "  ⚠️  polkit-setup.sh not found — run: sudo hyprcaffeine polkit install"
     fi
 
     # 2. Per-user setup (waybar, systemd, keybinds)
