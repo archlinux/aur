@@ -1,7 +1,7 @@
 pkgbase = ros2-lyrical-base
 	pkgdesc = A set of software libraries and tools for building robot applications (Lyrical Luth, base variant)
 	pkgver = 2026.04.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/ros_base/#lyrical
 	arch = any
 	license = Apache-2.0

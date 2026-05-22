@@ -2,7 +2,7 @@
 
 pkgname=ros2-lyrical-base
 pkgver=2026.04.30
-pkgrel=1
+pkgrel=2
 _rosdist="Lyrical Luth"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -66,6 +66,7 @@ build() {
     CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CXXFLAGS))
 
     export CMAKE_POLICY_VERSION_MINIMUM=3.5
+    export CXXFLAGS="${CXXFLAGS} -w"
 
     # Build
     colcon build --metas $srcdir/colcon.meta --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF -Wno-dev
