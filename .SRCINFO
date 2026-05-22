@@ -1,0 +1,33 @@
+pkgbase = jupiter-hw-support
+	pkgdesc = Steam Deck (Jupiter) hardware support: scripts, udev rules, polkit, services, BIOS/controller firmware
+	pkgver = 20250728.1
+	pkgrel = 1
+	url = https://gitlab.com/evlaV/jupiter-hw-support
+	install = jupiter-hw-support.install
+	arch = x86_64
+	license = LicenseRef-jupiter-hw-support
+	makedepends = git
+	makedepends = rsync
+	depends = bash
+	depends = systemd
+	depends = polkit
+	depends = dmidecode
+	depends = efibootmgr
+	depends = util-linux
+	depends = python
+	depends = python-click
+	depends = python-crcmod
+	depends = python-hid
+	depends = python-progressbar
+	optdepends = plymouth: 启用 SteamOS 主题的开机动画（usr/share/plymouth/themes/steamos）
+	optdepends = grub: 仅当你手动让 /etc/default/grub-steamos 生效时才需要
+	optdepends = libusb: hidapi 的 libusb 后端（默认 hidraw 后端通常已够用）
+	optdepends = jupiter-fan-control: 让 polkit 助手 jupiter-fan-control 真正能启停风扇曲线服务
+	options = !strip
+	options = !lto
+	options = !debug
+	backup = etc/default/grub-steamos
+	source = git+https://gitlab.com/evlaV/jupiter-hw-support.git#tag=jupiter-20250728.1
+	sha512sums = SKIP
+
+pkgname = jupiter-hw-support

@@ -1,0 +1,40 @@
+_show_notes() {
+  cat <<'EOF'
+
+==============================================================================
+ jupiter-hw-support 安装完成
+==============================================================================
+
+预启用的 systemd unit（来自上游 multi-user.target.wants 软链）：
+  - jupiter-biosupdate.service        → 开机会尝试刷写 /usr/share/jupiter_bios/
+  - jupiter-controller-update.service → 开机会尝试刷写控制器固件
+
+【强烈建议】先 mask BIOS 自动升级，确认本仓库的 fd 文件版本与你的设备一致后
+再解除：
+
+    sudo systemctl mask jupiter-biosupdate.service
+
+如要立即体检硬件支持状态：
+
+    jupiter-check-support; echo exit=$?
+
+注意：本包与 SteamOS 官方仓库的 jupiter-hw-support 同名。
+请勿同时启用 steamdeck-packages.steamos.cloud 的相应仓库，
+否则升级时会因来源不同被替换，引发版本来回跳。
+
+若你不在 Steam Deck（Jupiter / Galileo）上安装本包，绝大多数功能都不会工作，
+且某些服务可能产生噪声日志，请按需 mask。
+
+==============================================================================
+EOF
+}
+
+post_install() { _show_notes; }
+post_upgrade() { _show_notes; }
+
+pre_remove() {
+  for u in jupiter-biosupdate.service jupiter-controller-update.service; do
+    systemctl --no-reload disable "$u" 2>/dev/null || true
+    systemctl stop "$u"               2>/dev/null || true
+  done
+}
