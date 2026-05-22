@@ -3,7 +3,7 @@
 pkgname=mind-elixir-bin
 _pkgname=mind-elixir
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight privacy-focused mind mapping tool (prebuilt binary)'
 arch=('x86_64')
 url='https://app.mind-elixir.com/'
@@ -23,8 +23,19 @@ package() {
   bsdtar -C "${_extractdir}" -xf "${srcdir}/Mind.Elixir_${pkgver}_amd64.deb"
   bsdtar -C "${pkgdir}" -xf "${_extractdir}/data.tar.gz"
 
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -sf MindElixir "${pkgdir}/usr/bin/mind-elixir"
+  install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
+  mv "${pkgdir}/usr/bin/MindElixir" "${pkgdir}/usr/lib/${_pkgname}/MindElixir"
+
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/mind-elixir" <<'SCRIPT'
+#!/bin/sh
+export WEBKIT_DISABLE_DMABUF_RENDERER="${WEBKIT_DISABLE_DMABUF_RENDERER:-1}"
+exec /usr/lib/mind-elixir/MindElixir "$@"
+SCRIPT
+
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/MindElixir" <<'SCRIPT'
+#!/bin/sh
+exec /usr/bin/mind-elixir "$@"
+SCRIPT
 
   sed -i \
     -e 's|^Exec=.*|Exec=mind-elixir %U|' \

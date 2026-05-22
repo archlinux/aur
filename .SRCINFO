@@ -1,7 +1,7 @@
 pkgbase = mind-elixir-bin
 	pkgdesc = Lightweight privacy-focused mind mapping tool (prebuilt binary)
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://app.mind-elixir.com/
 	arch = x86_64
 	license = unknown
