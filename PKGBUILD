@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=8.2.r123827.ge33b3962e5
+pkgver=8.2.r124592.g268c37fdae
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_whispercpp_ver='1.8.3'
+_whispercpp_ver='1.8.4'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -16,7 +16,6 @@ depends=(
     'avisynthplus' # loaded on-demand by dlopen()
     'bzip2'
     'cairo'
-    'celt'
     'chromaprint-fftw'
     'codec2'
     'dav1d'
@@ -177,12 +176,12 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
             'SKIP'
-            '870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a'
-            '3ad966d641276cca39a94732b8e22f3d8ae266e51eeafa28b5a82b8ef11f0b23'
+            'b26f30e52c095ccb75da40b168437736605eb280de57381887bf9e2b65f31e66'
+            'fb7e7a831722d6de684d0e1c441819d2af68b58998f5ba3953530b00031ff83a'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '25f93f6d1cc07863d8569abf666ebc1d646559ac76db07379eb7ec0ebba3302e'
-            '95223dda645c15b3daf79cd4d55df5d4ac46207f749973396bb761b743586ed6'
-            '3dd2da40d23375cddaa5b634ecf0eecd9fa1e7d5af8c2dac33521559e56e9941'
+            '4faaff961565503d2b3b2c1ec12081ce5b48d740a0b896de9e0dae24f1c48815'
+            'd0a94e18cd8e17a8c4630a711a5f3563ab091f3eaee89df24a3566ed6496f734'
+            '2073552433e4da109df8c23d49c9dd91fc7086d1f28dc863ef398eede6b0eb76'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
@@ -278,7 +277,6 @@ build() {
         --enable-libbluray \
         --enable-libbs2b \
         --enable-libcaca \
-        --enable-libcelt \
         --enable-libcdio \
         --enable-libcodec2 \
         --enable-libdav1d \
@@ -291,10 +289,10 @@ build() {
         --enable-libfontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
-        --enable-libharfbuzz \
         --enable-libglslang \
         --enable-libgme \
         --enable-libgsm \
+        --enable-libharfbuzz \
         --enable-libiec61883 \
         --enable-libilbc \
         --enable-libjack \
@@ -307,6 +305,7 @@ build() {
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libmpeghdec \
+        --enable-libmysofa \
         --enable-liboapv \
         --enable-libopencolorio \
         --enable-libopencore-amrnb \
@@ -371,21 +370,18 @@ build() {
         --enable-libzvbi \
         --enable-lv2 \
         --enable-lzma \
-        --enable-decklink \
         --disable-mbedtls \
-        --enable-libmysofa \
-        --enable-openal \
-        --enable-opencl \
-        --enable-opengl \
         --disable-openssl \
         --disable-pocketsphinx \
-        --enable-sndio \
-        --enable-sdl2 \
         --enable-vapoursynth \
-        --enable-vulkan \
         --enable-whisper \
         --enable-xlib \
         --enable-zlib \
+        \
+        --enable-decklink \
+        --enable-openal \
+        --enable-sndio \
+        --enable-sdl2 \
         \
         --enable-amf \
         --enable-cuda-nvcc \
@@ -399,10 +395,13 @@ build() {
         --enable-nvenc \
         --disable-ohcodec \
         --enable-omx \
+        --enable-opencl \
+        --enable-opengl \
         --enable-rkmpp \
         --enable-v4l2-m2m \
+        --enable-vdpau \
         --enable-vaapi \
-        --enable-vdpau
+        --enable-vulkan
     make
     make tools/qt-faststart
 }
