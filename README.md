@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 1:2.0.1-8
+- **Versión:** 1:2.0.1-10
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Probado en:** Arch Linux (kernel 7.0.8-1-cachyos)
@@ -51,34 +51,32 @@ filters:[{name:"Images",...},{name:"Executables",extensions:"linux"===process.pl
 
 ---
 
-### Patch 2 — Validador `requiredFiles`: fallback `.exe` → `.x86_64`
+### Patch 2 — `verifyToolDir` + `verifyGamePath`: fallback `.exe` → `.x86_64`
 
-**Problema:** Vortex verifica que los archivos declarados en `requiredFiles` existan en disco.
-Los plugins declaran `.exe`. En Linux los juegos nativos usan `.x86_64`, y la validación falla.
+**Problema:** Vortex verifica que los archivos en `requiredFiles` existan en disco en dos funciones distintas:
 
-**Fix:** En Linux, si `stat()` falla para una ruta `.exe`, reintenta con `.x86_64`.
+- `verifyToolDir` — se llama **cada vez que cambia el game mode** (al cambiar de perfil o abrir la pestaña de un juego). Sin este fix, los juegos con binario Linux nativo generan "Failed to set game mode" en cada cambio de pestaña/perfil.
+- `verifyGamePath` — se llama al buscar manualmente la carpeta del juego.
+
+Ambas funciones comprueban `.exe`. En Linux los juegos nativos usan `.x86_64`, y la validación falla.
+
+**Fix:** En Linux, si `stat()` falla para una ruta `.exe`, reintenta con `.x86_64` en ambas funciones.
 
 ```js
-// antes
-bluebird.map(requiredFiles, file =>
-  fsExtra.stat(path.join(gamePath, file))
-).then(()=>{}).catch(err => { if ("ENOENT" === err.code) return bluebird.reject(err) })
-
-// después
-bluebird.map(requiredFiles, file =>
-  bluebird.resolve(
-    "linux" === process.platform
-      ? fsExtra.stat(path.join(gamePath, file))
-          .catch(() => fsExtra.stat(path.join(gamePath, file.replace(/\.exe$/i, ".x86_64"))))
-      : fsExtra.stat(path.join(gamePath, file))
-  )
-).then(()=>{}).catch(err => { if ("ENOENT" === err.code) return bluebird.reject(err) })
+// verifyToolDir — después
+bluebird.mapSeries(requiredFiles, fileName =>
+  "linux" === process.platform
+    ? fsExtra.stat(path.join(testPath, fileName))
+             .catch(() => fsExtra.stat(path.join(testPath, fileName.replace(/\.exe$/i, ".x86_64"))))
+    : fsExtra.stat(path.join(testPath, fileName))
+             .catch(err => bluebird.reject(err))
+).then(() => {})
 ```
 
-| Escenario                     | Sin patch        | Con patch |
-| ----------------------------- | ---------------- | --------- |
-| Proton/Wine (`.exe` presente) | ✓                | ✓         |
-| Nativo Linux (`.x86_64`)      | ✗ Game not found | ✓         |
+| Escenario                     | Sin patch (verifyToolDir)              | Con patch |
+| ----------------------------- | -------------------------------------- | --------- |
+| Proton/Wine (`.exe` presente) | ✓                                      | ✓         |
+| Nativo Linux (`.x86_64`)      | ✗ "Failed to set game mode" al cambiar | ✓         |
 
 ---
 
@@ -511,6 +509,7 @@ Probado en Arch Linux (kernel 7.0.8-1-cachyos):
 | **1:2.0.1-6** | Patch 8 — `appDataPath` en `gamebryo-plugin-management`: en Linux resuelve `Plugins.txt` y `loadorder.txt` al prefijo Proton en lugar de `~/.config/Local/<game>/`. Script de parche runtime `patch-ext-gamebryo.py`; misma lógica de búsqueda Steam que Patch 6. Reportado por Garecrow. |
 | **1:2.0.1-7** | Patches 9 y 10 — Detección genérica de versión de juego en Linux: `testExecProvider` y `getExecGameVersion` buscan `.deps.json` de .NET si el ejecutable no tiene versión PE. Arregla el diálogo "Game version mismatch" vacío en colecciones de Nexus para juegos .NET (Stardew Valley, etc.). Solución genérica — funciona para cualquier juego .NET sin parche por juego. |
 | **1:2.0.1-8** | Patches 9 y 10 v6 — Normalización del nombre del ejecutable al buscar en `.deps.json`: minúsculas, sin espacios/puntos/guiones/subrayados, con puntuación (exacto=2, prefijo=1). Arregla falsos positivos cuando hay varios `.deps.json` en el directorio del juego (p.ej. `BmFont.deps.json` devolvía versión errónea antes que `Stardew Valley.deps.json`). Incluye parches de migración v5→v6 para asars ya instalados. |
+| **1:2.0.1-9** | Patches 9 y 10 v7 — Fix crítico: `exeVersion.default()` devuelve `undefined` (no lanza excepción) para binarios ELF en Linux. El operador `\|\|"0.0.0"` garantiza que `_ev`/`_ver` nunca quede `undefined`, activando correctamente el fallback a `.deps.json`. Arregla campo "Tu versión del juego:" vacío en el diálogo de incompatibilidad de colecciones. Incluye parches de migración v6→v7 para asars ya instalados. |
 
 ---
 

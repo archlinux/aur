@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 1:2.0.1-8
+**Current release:** 1:2.0.1-10
 
 ---
 
@@ -45,7 +45,7 @@ The patch logic lives in two external source files verified by sha256:
    `update_offsets()` adjusts all entries after the pivot, already-adjusted entries
    are correctly shifted again. The asar is written once at the end.
 
-3. The marker `// vortex-linux-fix-v5` is prepended to `renderer.js`. On re-runs,
+3. The marker `// vortex-linux-fix-v8` is prepended to `renderer.js`. On re-runs,
    the old marker is stripped before patches are re-applied (idempotent).
 
 ---
@@ -71,21 +71,47 @@ filters:[{name:"Images",extensions:["png","jpg","ico"]},{name:"Executables",exte
 
 ---
 
-### 2 — `requiredFiles` validator: `.exe` → `.x86_64` fallback
+### 2 — `verifyToolDir` + `requiredFiles` validator: `.exe` → `.x86_64` fallback
 
-**Problem:** Vortex validates game installations by `stat`-ing each path in `requiredFiles`.
-Game extensions declare `.exe` paths (e.g. `Cyberpunk2077.exe`). On Linux, games with
-native clients use `.x86_64` binaries, so validation fails even when the game is installed.
+**Problem:** Vortex validates game installations in two places by `stat`-ing each path in `requiredFiles`:
 
-**Fix:** On Linux, if `stat()` fails for a `.exe` path, retry with `.x86_64`.
+- `verifyToolDir(tool, testPath)` — called by `assertToolDir` every time the active game mode
+  changes (i.e. when switching profiles or clicking a game tab). Uses `bluebird.mapSeries`.
+- `verifyGamePath(game, gamePath)` — called from `browseGameLocation` when browsing for a game
+  manually. Uses `bluebird.map`.
+
+Both functions check for `.exe` files. On Linux, games with native clients ship `.x86_64`
+binaries instead, so validation fails with "game directory not valid" → "Failed to set game
+mode", preventing the game tab and profile from loading.
+
+**Fix:** On Linux, if `stat()` fails for a `.exe` path, retry with `.x86_64` in both functions.
 
 ```js
-// before
+// verifyToolDir — before
+function verifyToolDir(tool, testPath) {
+  return bluebird_1.default.mapSeries(tool.requiredFiles,
+    fileName => fsExtra.stat(path.join(testPath, fileName))
+                       .catch(err => bluebird_1.default.reject(err))
+  ).then(() => {})
+}
+
+// verifyToolDir — after
+function verifyToolDir(tool, testPath) {
+  return bluebird_1.default.mapSeries(tool.requiredFiles,
+    fileName => "linux" === process.platform
+      ? fsExtra.stat(path.join(testPath, fileName))
+               .catch(() => fsExtra.stat(path.join(testPath, fileName.replace(/\.exe$/i, ".x86_64"))))
+      : fsExtra.stat(path.join(testPath, fileName))
+               .catch(err => bluebird_1.default.reject(err))
+  ).then(() => {})
+}
+
+// verifyGamePath — before
 requiredFiles||[],file=>bluebird_1.default.resolve(
   fsExtra.stat(path.join(gamePath,file))
 )).then(()=>{}).catch(err=>{if("ENOENT"===err.code)return bluebird_1.default.reject(err)})
 
-// after
+// verifyGamePath — after
 requiredFiles||[],file=>bluebird_1.default.resolve(
   "linux"===process.platform
     ?fsExtra.stat(path.join(gamePath,file))
@@ -94,10 +120,10 @@ requiredFiles||[],file=>bluebird_1.default.resolve(
 )).then(()=>{}).catch(err=>{if("ENOENT"===err.code)return bluebird_1.default.reject(err)})
 ```
 
-| Scenario                     | Without patch    | With patch |
-| ---------------------------- | ---------------- | ---------- |
-| Proton/Wine (`.exe` present) | ✓                | ✓          |
-| Native Linux (`.x86_64`)     | ✗ Game not found | ✓          |
+| Scenario                     | Without patch (verifyToolDir)         | With patch |
+| ---------------------------- | ------------------------------------- | ---------- |
+| Proton/Wine (`.exe` present) | ✓                                     | ✓          |
+| Native Linux (`.x86_64`)     | ✗ "Failed to set game mode" on switch | ✓          |
 
 ---
 
@@ -189,6 +215,14 @@ ELF binary or a shell script — neither of which has PE version metadata. As a 
 fallback that normalizes names before matching, fixing false positives when multiple
 `.deps.json` files are present (e.g. `BmFont.deps.json` being read before
 `Stardew Valley.deps.json` alphabetically and returning the wrong version).
+
+**Fix (v7 — 1:2.0.1-9):** Critical fix for the v6 code: `exeVersion.default()` returns
+`undefined` (does not throw) for ELF binaries on Linux. The try-catch only set `_ev`/`_ver`
+to `"0.0.0"` on exceptions; when the return value was `undefined`, both variables stayed
+`undefined`. As a result `"0.0.0" === undefined` was `false`, the `.deps.json` fallback was
+never reached, and `getInstalledVersion()` returned `undefined` — displayed as an empty
+"Your game version:" field in the collection mismatch dialog. Fix: `||"0.0.0"` on the return
+value of `exeVersion.default()` in both functions. Includes v6→v7 migration patches.
 
 The algorithm:
 
@@ -630,6 +664,7 @@ These patches target minified build output. The corresponding source locations i
 
 | Patch                    | Source file                                                     |
 | ------------------------ | --------------------------------------------------------------- |
+| verifyToolDir validator  | `src/extensions/gamemode_management/util/discovery.ts`          |
 | requiredFiles validator  | `src/extensions/gamemode_management/util/verifyGamePath.ts`     |
 | StarterInfo.initFromGame | `src/util/StarterInfo.ts`                                       |
 | browseGameLocation       | `src/extensions/gamemode_management/util/browseGameLocation.ts` |
@@ -675,6 +710,8 @@ makepkg -si
 | **1:2.0.1-6** | Patch 8 — `appDataPath()` runtime patch for `gamebryo-plugin-management`: resolves `Plugins.txt` and `loadorder.txt` to the correct Proton compatdata path on Linux. Deployed as `patch-ext-gamebryo.py` (same runtime mechanism as the Cyberpunk 2077 patch). Reported by AUR user Garecrow. |
 | **1:2.0.1-7** | Patches 9 & 10 — Generic .NET game version detection on Linux: `testExecProvider` and `getExecGameVersion` now fall back to scanning `*.deps.json` (the .NET Core dependency manifest) when the executable has no PE version info. Fixes the empty "Your game version:" field in Nexus Collections for .NET-based games (Stardew Valley, etc.). Generic solution — no per-game patches needed. |
 | **1:2.0.1-8** | Patches 9 & 10 v6 — Normalize exe name when matching `.deps.json` library keys (lowercase, strip spaces/dots/hyphens/underscores + scoring: exact=2, prefix=1). Fixes false positives when multiple `.deps.json` files exist in the game dir (e.g. `BmFont.deps.json` returned wrong version before `Stardew Valley.deps.json`). Includes v5→v6 migration patches for locally-installed asars. |
+| **1:2.0.1-9** | Patches 9 & 10 v7 — Critical fix: `exeVersion.default()` returns `undefined` (not throws) for ELF binaries on Linux. Added `\|\|"0.0.0"` to both `testExecProvider` and `getExecGameVersion` so `_ev`/`_ver` never stays `undefined`, ensuring the `.deps.json` fallback is always triggered on Linux. Fixes the empty "Your game version:" field in the Nexus Collections mismatch dialog. Includes v6→v7 migration patches for locally-installed asars. |
+| **1:2.0.1-10** | Patch 2 extended — `verifyToolDir` now also has the `.exe`→`.x86_64` fallback on Linux. This function validates the game directory every time a profile or game tab is activated (`assertToolDir` → `verifyToolDir`). Without this fix, games with native Linux binaries (e.g. Graveyard Keeper, any `.x86_64` game) get "Failed to set game mode" on every profile/tab switch even though the game is installed correctly. Previously only `verifyGamePath` (browse-for-game flow) had the fallback. |
 
 ---
 

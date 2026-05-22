@@ -50,13 +50,26 @@ def patch_asar_file(raw, header, dss, entry, patches, marker=None):
 
 # ── asar patch definitions ─────────────────────────────────────────────────
 
-PATCH_MARKER = "// vortex-linux-fix-v6\n"
+PATCH_MARKER = "// vortex-linux-fix-v8\n"
 
 RENDERER_PATCHES = [
     {
         "name": "File browser filter — accept Linux executables alongside .exe",
         "old": 'filters:[{name:"Images",extensions:["png","jpg","ico"]},{name:"Executables",extensions:["exe"]}]',
         "new": 'filters:[{name:"Images",extensions:["png","jpg","ico"]},{name:"Executables",extensions:"linux"===process.platform?["x86_64","x86","sh","*"]:["exe"]}]',
+    },
+    {
+        "name": "verifyToolDir — .exe → .x86_64 fallback on Linux (profile/game-mode validation)",
+        "old": (
+            'function verifyToolDir(tool,testPath){return bluebird_1.default.mapSeries(tool.requiredFiles,'
+            'fileName=>fsExtra.stat(path.join(testPath,fileName)).catch(err=>bluebird_1.default.reject(err))).then(()=>{})}'
+        ),
+        "new": (
+            'function verifyToolDir(tool,testPath){return bluebird_1.default.mapSeries(tool.requiredFiles,'
+            'fileName=>"linux"===process.platform'
+            '?fsExtra.stat(path.join(testPath,fileName)).catch(()=>fsExtra.stat(path.join(testPath,fileName.replace(/\\.exe$/i,".x86_64"))))'
+            ':fsExtra.stat(path.join(testPath,fileName)).catch(err=>bluebird_1.default.reject(err))).then(()=>{})}'
+        ),
     },
     {
         "name": "requiredFiles validator — .exe → .x86_64 fallback on Linux",
@@ -184,7 +197,7 @@ RENDERER_PATCHES = [
             'if(void 0===discovery?.path||void 0===exeName)return Promise.resolve(!1);'
             'const exePath=path_1.default.join(discovery.path,exeName);'
             'try{await(0,fs_1.statAsync)(exePath);'
-            'let _ev;try{_ev=exeVersion.default(exePath)}catch(e){_ev="0.0.0"}'
+            'let _ev;try{_ev=exeVersion.default(exePath)||"0.0.0"}catch(e){_ev="0.0.0"}'
             'if("0.0.0"!==_ev)return Promise.resolve(!0);'
             'if("linux"===process.platform){'
             'const _lfs=require("fs");'
@@ -217,7 +230,7 @@ RENDERER_PATCHES = [
         "new": (
             'exports.getExecGameVersion=async function getExecGameVersion(game,discovery){'
             'const exePath=path_1.default.join(discovery.path,discovery.executable||game.executable());'
-            'let _ver;try{_ver=exeVersion.default(exePath)}catch(err){_ver="0.0.0"}'
+            'let _ver;try{_ver=exeVersion.default(exePath)||"0.0.0"}catch(err){_ver="0.0.0"}'
             'if("linux"===process.platform&&"0.0.0"===_ver){'
             'const _lfs=require("fs");'
             'try{'
@@ -328,6 +341,123 @@ RENDERER_PATCHES = [
             'exports.getExecGameVersion=async function getExecGameVersion(game,discovery){'
             'const exePath=path_1.default.join(discovery.path,discovery.executable||game.executable());'
             'let _ver;try{_ver=exeVersion.default(exePath)}catch(err){_ver="0.0.0"}'
+            'if("linux"===process.platform&&"0.0.0"===_ver){'
+            'const _lfs=require("fs");'
+            'try{'
+            'const _norm=s=>s.toLowerCase().replace(/[\\s.\\-_]/g,"");'
+            'const _en=_norm(path_1.default.basename(exePath).replace(/\\.[^.]+$/,""));'
+            'const _fls=_lfs.readdirSync(discovery.path).filter(f=>f.endsWith(".deps.json"));'
+            'let _best=null,_bsc=-1,_done=!1;'
+            'for(const _f of _fls){'
+            'if(_done)break;'
+            'try{'
+            'const _d=JSON.parse(_lfs.readFileSync(path_1.default.join(discovery.path,_f),"utf8"));'
+            'for(const _lib of Object.keys(_d.libraries||{})){'
+            'const _si=_lib.indexOf("/");if(_si<0)continue;'
+            'const _lv=_lib.substring(_si+1);if(!_lv||"0.0.0"===_lv)continue;'
+            'const _ln=_norm(_lib.substring(0,_si));'
+            'const _sc=_ln===_en?2:_ln.startsWith(_en)||_en.startsWith(_ln)?1:0;'
+            'if(_sc>_bsc){_bsc=_sc;_best=_lv}'
+            'if(_bsc>=2){_done=!0;break}'
+            '}}catch(e){}}'
+            'if(_best&&_bsc>=1)_ver=_best'
+            '}catch(e){}}'
+            'return Promise.resolve(_ver)};'
+        ),
+    },
+    # Migration patches: v6→v7 for locally installed asars that already have v6 code.
+    # On fresh AUR builds these will be [SKIP] (v6 old not found, v7 new already present).
+    # On a locally v6-patched asar these fire as [OK].
+    {
+        "name": "testExecProvider — v6→v7 migration: handle exeVersion returning undefined on Linux",
+        "old": (
+            'exports.testExecProvider=async function testExecProvider(game,discovery){'
+            'const exeName=discovery.executable||game.executable();'
+            'if(void 0===discovery?.path||void 0===exeName)return Promise.resolve(!1);'
+            'const exePath=path_1.default.join(discovery.path,exeName);'
+            'try{await(0,fs_1.statAsync)(exePath);'
+            'let _ev;try{_ev=exeVersion.default(exePath)}catch(e){_ev="0.0.0"}'
+            'if("0.0.0"!==_ev)return Promise.resolve(!0);'
+            'if("linux"===process.platform){'
+            'const _lfs=require("fs");'
+            'try{'
+            'const _norm=s=>s.toLowerCase().replace(/[\\s.\\-_]/g,"");'
+            'const _en=_norm(path_1.default.basename(exePath).replace(/\\.[^.]+$/,""));'
+            'const _fls=_lfs.readdirSync(discovery.path).filter(f=>f.endsWith(".deps.json"));'
+            'for(const _f of _fls){'
+            'try{'
+            'const _d=JSON.parse(_lfs.readFileSync(path_1.default.join(discovery.path,_f),"utf8"));'
+            'for(const _lib of Object.keys(_d.libraries||{})){'
+            'const _si=_lib.indexOf("/");if(_si<0)continue;'
+            'const _lv=_lib.substring(_si+1);if(!_lv||"0.0.0"===_lv)continue;'
+            'const _ln=_norm(_lib.substring(0,_si));'
+            'if(_ln===_en||_ln.startsWith(_en)||_en.startsWith(_ln))return Promise.resolve(!0)'
+            '}}catch(e){}}'
+            '}catch(e){}}'
+            'return Promise.resolve(!1)}'
+            'catch(err){return(0,log_1.log)("error","unable to test executable version fields",err),Promise.resolve(!1)}}'
+        ),
+        "new": (
+            'exports.testExecProvider=async function testExecProvider(game,discovery){'
+            'const exeName=discovery.executable||game.executable();'
+            'if(void 0===discovery?.path||void 0===exeName)return Promise.resolve(!1);'
+            'const exePath=path_1.default.join(discovery.path,exeName);'
+            'try{await(0,fs_1.statAsync)(exePath);'
+            'let _ev;try{_ev=exeVersion.default(exePath)||"0.0.0"}catch(e){_ev="0.0.0"}'
+            'if("0.0.0"!==_ev)return Promise.resolve(!0);'
+            'if("linux"===process.platform){'
+            'const _lfs=require("fs");'
+            'try{'
+            'const _norm=s=>s.toLowerCase().replace(/[\\s.\\-_]/g,"");'
+            'const _en=_norm(path_1.default.basename(exePath).replace(/\\.[^.]+$/,""));'
+            'const _fls=_lfs.readdirSync(discovery.path).filter(f=>f.endsWith(".deps.json"));'
+            'for(const _f of _fls){'
+            'try{'
+            'const _d=JSON.parse(_lfs.readFileSync(path_1.default.join(discovery.path,_f),"utf8"));'
+            'for(const _lib of Object.keys(_d.libraries||{})){'
+            'const _si=_lib.indexOf("/");if(_si<0)continue;'
+            'const _lv=_lib.substring(_si+1);if(!_lv||"0.0.0"===_lv)continue;'
+            'const _ln=_norm(_lib.substring(0,_si));'
+            'if(_ln===_en||_ln.startsWith(_en)||_en.startsWith(_ln))return Promise.resolve(!0)'
+            '}}catch(e){}}'
+            '}catch(e){}}'
+            'return Promise.resolve(!1)}'
+            'catch(err){return(0,log_1.log)("error","unable to test executable version fields",err),Promise.resolve(!1)}}'
+        ),
+    },
+    {
+        "name": "getExecGameVersion — v6→v7 migration: handle exeVersion returning undefined on Linux",
+        "old": (
+            'exports.getExecGameVersion=async function getExecGameVersion(game,discovery){'
+            'const exePath=path_1.default.join(discovery.path,discovery.executable||game.executable());'
+            'let _ver;try{_ver=exeVersion.default(exePath)}catch(err){_ver="0.0.0"}'
+            'if("linux"===process.platform&&"0.0.0"===_ver){'
+            'const _lfs=require("fs");'
+            'try{'
+            'const _norm=s=>s.toLowerCase().replace(/[\\s.\\-_]/g,"");'
+            'const _en=_norm(path_1.default.basename(exePath).replace(/\\.[^.]+$/,""));'
+            'const _fls=_lfs.readdirSync(discovery.path).filter(f=>f.endsWith(".deps.json"));'
+            'let _best=null,_bsc=-1,_done=!1;'
+            'for(const _f of _fls){'
+            'if(_done)break;'
+            'try{'
+            'const _d=JSON.parse(_lfs.readFileSync(path_1.default.join(discovery.path,_f),"utf8"));'
+            'for(const _lib of Object.keys(_d.libraries||{})){'
+            'const _si=_lib.indexOf("/");if(_si<0)continue;'
+            'const _lv=_lib.substring(_si+1);if(!_lv||"0.0.0"===_lv)continue;'
+            'const _ln=_norm(_lib.substring(0,_si));'
+            'const _sc=_ln===_en?2:_ln.startsWith(_en)||_en.startsWith(_ln)?1:0;'
+            'if(_sc>_bsc){_bsc=_sc;_best=_lv}'
+            'if(_bsc>=2){_done=!0;break}'
+            '}}catch(e){}}'
+            'if(_best&&_bsc>=1)_ver=_best'
+            '}catch(e){}}'
+            'return Promise.resolve(_ver)};'
+        ),
+        "new": (
+            'exports.getExecGameVersion=async function getExecGameVersion(game,discovery){'
+            'const exePath=path_1.default.join(discovery.path,discovery.executable||game.executable());'
+            'let _ver;try{_ver=exeVersion.default(exePath)||"0.0.0"}catch(err){_ver="0.0.0"}'
             'if("linux"===process.platform&&"0.0.0"===_ver){'
             'const _lfs=require("fs");'
             'try{'
