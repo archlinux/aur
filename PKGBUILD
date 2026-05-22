@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname=marimo
-pkgver=0.23.6
+pkgver=0.23.7
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -77,7 +77,7 @@ optdepends=(
 
 # PyPI source release
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-b2sums=('d5d1f08368ee0d49d7e2a31711b73f017c93738d3d3cbe526b83bf50fb3342b4c3c6dcc9da5d25dff9051b12e76cbf077b18a8417ba0ee6a733884d8de803ac7')
+b2sums=('4366efc7569d3fe567564dfea69f2a726614d87dedad5d3499f7dd02c39b0223caeea88aee6db85a473285caafea502b62cf4c9628d334172e23c0f10d02b17f')
 
 build() {
     cd $pkgname-$pkgver

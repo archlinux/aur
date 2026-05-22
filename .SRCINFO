@@ -1,6 +1,6 @@
 pkgbase = marimo
 	pkgdesc = A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps
-	pkgver = 0.23.6
+	pkgver = 0.23.7
 	pkgrel = 1
 	url = https://github.com/marimo-team/marimo
 	arch = any
@@ -42,7 +42,7 @@ pkgbase = marimo
 	optdepends = jupyter-nbformat: Export as IPYNB
 	optdepends = ruff: Formatting
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.23.6.tar.gz
-	b2sums = d5d1f08368ee0d49d7e2a31711b73f017c93738d3d3cbe526b83bf50fb3342b4c3c6dcc9da5d25dff9051b12e76cbf077b18a8417ba0ee6a733884d8de803ac7
+	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.23.7.tar.gz
+	b2sums = 4366efc7569d3fe567564dfea69f2a726614d87dedad5d3499f7dd02c39b0223caeea88aee6db85a473285caafea502b62cf4c9628d334172e23c0f10d02b17f
 
 pkgname = marimo
