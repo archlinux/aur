@@ -2,16 +2,18 @@
 # Contributor: Lloyd <lloydzhou@qq.com>
 
 pkgname=bash-agent
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
-pkgdesc="A lightweight coding agent that runs in your terminal - Bash/Go/Rust editions"
+pkgdesc="A lightweight coding agent that runs in your terminal - Bash/Go/Rust editions + tcode tmux UI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lloydzhou/bash-agent"
 license=('MIT')
 depends=('bash' 'curl' 'gawk')
 makedepends=('go' 'rust' 'make' 'nasm')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lloydzhou/bash-agent/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('30a5c25ba6b50ef24c126249241c92ad15e2c2a46966fcb7385b6d551a686721')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lloydzhou/bash-agent/archive/refs/tags/v${pkgver}.tar.gz"
+        "tcode::https://github.com/lloydzhou/bash-agent/releases/download/v${pkgver}/tcode")
+sha256sums=('d2b7af974a43bee99b88bd5ba3bf97838451db06d45edf7441f2c73cdbb4f688'
+            '74aabd0135a1a8e2d0d399e372df8023f257552f84bba7fb3a459ba5f3962ae7')
 options=('!strip')
 
 prepare() {
@@ -58,6 +60,9 @@ package() {
 
   # Rust agent
   install -Dm755 dist/rustagent "${pkgdir}/usr/bin/rustagent"
+
+  # tcode tmux UI wrapper
+  install -Dm755 "${srcdir}/tcode" "${pkgdir}/usr/bin/tcode"
 
   # Documentation
   install -Dm644 README.md "${pkgdir}/usr/share/doc/bash-agent/README.md"

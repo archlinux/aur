@@ -1,6 +1,6 @@
 pkgbase = bash-agent
-	pkgdesc = A lightweight coding agent that runs in your terminal - Bash/Go/Rust editions
-	pkgver = 3.0.4
+	pkgdesc = A lightweight coding agent that runs in your terminal - Bash/Go/Rust editions + tcode tmux UI
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://github.com/lloydzhou/bash-agent
 	arch = x86_64
@@ -14,7 +14,9 @@ pkgbase = bash-agent
 	depends = curl
 	depends = gawk
 	options = !strip
-	source = bash-agent-3.0.4.tar.gz::https://github.com/lloydzhou/bash-agent/archive/refs/tags/v3.0.4.tar.gz
-	sha256sums = 30a5c25ba6b50ef24c126249241c92ad15e2c2a46966fcb7385b6d551a686721
+	source = bash-agent-3.0.5.tar.gz::https://github.com/lloydzhou/bash-agent/archive/refs/tags/v3.0.5.tar.gz
+	source = tcode::https://github.com/lloydzhou/bash-agent/releases/download/v3.0.5/tcode
+	sha256sums = d2b7af974a43bee99b88bd5ba3bf97838451db06d45edf7441f2c73cdbb4f688
+	sha256sums = 74aabd0135a1a8e2d0d399e372df8023f257552f84bba7fb3a459ba5f3962ae7
 
 pkgname = bash-agent
