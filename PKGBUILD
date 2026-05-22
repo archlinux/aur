@@ -1,6 +1,6 @@
 # Maintainer: kohii <kohii.tokyo@gmail.com>
 pkgname=smoothcsv-bin
-pkgver=3.20.1
+pkgver=3.20.2
 pkgrel=1
 pkgdesc="A powerful and intuitive CSV editor built for real work"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ source=("LICENSE-SmoothCSV.md")
 source_x86_64=("SmoothCSV_${pkgver}_amd64.deb::https://github.com/kohii/smoothcsv3/releases/download/v${pkgver}/SmoothCSV_${pkgver}_amd64.deb")
 source_aarch64=("SmoothCSV_${pkgver}_arm64.deb::https://github.com/kohii/smoothcsv3/releases/download/v${pkgver}/SmoothCSV_${pkgver}_arm64.deb")
 sha256sums=('b6a5ef347dba58db0b247e5d0e51aa8996a9668fe70171cc8624177af5e297a9')
-sha256sums_x86_64=('6aff29bafd4bfe95d0fc9358983eac153dcdd2377214d65a21ac59986f39257e')
-sha256sums_aarch64=('9abbd2eabfc391e42a7de7c41ba076e4fb4b1cf2bf345ba4f315b6f34724eeae')
+sha256sums_x86_64=('f71a5c796c90f0e85028616578dd98bdfaa3a789bef669c9f366005c49d92119')
+sha256sums_aarch64=('d4adca4c19adf09ae8dcd5a1da9788073af374440d105a6a4fd3cc8f524d3843')
 
 package() {
   local deb_arch
