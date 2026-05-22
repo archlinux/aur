@@ -11,8 +11,8 @@ optdepends=('libpulse: PulseAudio audio support'
             'alsa-lib: ALSA audio support')
 provides=('nook')
 conflicts=('nook' 'nook-bin')
-source=("nook-${pkgver}.AppImage::https://nook.cloudylake.io/download/nook-${pkgver}-linux.AppImage")
-sha256sums=('SKIP')
+source=("nook-${pkgver}.AppImage::https://nook.cloudylake.io/download/nook-0.1.0-linux.AppImage")
+sha256sums=("170970e194cac3cd6b7dd30802733cd5294c40f1b2304cc1521d3b6af4bf04d0")
 
 package() {
     install -Dm755 "nook-${pkgver}.AppImage" "${pkgdir}/opt/nook/nook.AppImage"
