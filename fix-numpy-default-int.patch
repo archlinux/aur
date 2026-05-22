@@ -1,0 +1,5 @@
+--- a/tests/test_readme.py
++++ b/tests/test_readme.py
+@@ -46,1 +46,1 @@
+-    assert spookyhash.Hash64(np.arange(100)).hexdigest() == '43ab5363ad362c74'
++    assert spookyhash.Hash64(np.arange(100, dtype=np.int32)).hexdigest() == '43ab5363ad362c74'

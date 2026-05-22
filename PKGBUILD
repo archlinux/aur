@@ -2,7 +2,7 @@
 
 pkgname=python-spookyhash-git
 pkgver=r50.0278a00
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python wrapper for SpookyHash version 2."
 arch=('x86_64')
 url="https://github.com/buhanec/spookyhash"
@@ -12,8 +12,15 @@ conflicts=('python-spookyhash')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 checkdepends=('python-pytest' 'python-psutil')
 depends=('python')
-source=("git+https://github.com/buhanec/spookyhash.git")
-md5sums=('SKIP')
+source=("git+https://github.com/buhanec/spookyhash.git"
+        "fix-numpy-default-int.patch")
+md5sums=('SKIP'
+    '39f81e3f9930dd3fbfe0c574ff61ac69')
+
+prepare() {
+  cd spookyhash
+  patch -Np1 -i "${srcdir}/fix-numpy-default-int.patch"
+}
 
 pkgver() {
   cd spookyhash
@@ -22,7 +29,8 @@ pkgver() {
 
 check() {
   cd spookyhash
-  PYTHONPATH="$PWD" pytest -v || true
+  python setup.py build_ext --inplace
+  PYTHONPATH="$PWD" pytest -v
 }
 
 

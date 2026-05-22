@@ -1,7 +1,7 @@
 pkgbase = python-spookyhash-git
 	pkgdesc = A Python wrapper for SpookyHash version 2.
 	pkgver = r50.0278a00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/buhanec/spookyhash
 	arch = x86_64
 	license = BSD
@@ -16,6 +16,8 @@ pkgbase = python-spookyhash-git
 	provides = python-spookyhash
 	conflicts = python-spookyhash
 	source = git+https://github.com/buhanec/spookyhash.git
+	source = fix-numpy-default-int.patch
 	md5sums = SKIP
+	md5sums = 39f81e3f9930dd3fbfe0c574ff61ac69
 
 pkgname = python-spookyhash-git
