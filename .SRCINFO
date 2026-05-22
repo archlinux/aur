@@ -1,6 +1,6 @@
 pkgbase = python-girder-client
 	pkgdesc = Python client for interacting with Girder servers
-	pkgver = 5.0.7
+	pkgver = 5.0.8
 	pkgrel = 1
 	url = https://pypi.org/project/girder-client
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-girder-client
 	depends = python-diskcache
 	depends = python-requests
 	depends = python-requests-toolbelt
-	source = girder-client-5.0.7.tar.gz::https://files.pythonhosted.org/packages/source/g/girder-client/girder_client-5.0.7.tar.gz
-	sha512sums = e42daccb8cf7f5b29f4b4edb8efdc8aff6356fa851e30b31d347cdce9fd2147248b43622eabfee9779271c2814ddce8ee23db4856162081102de926173aa35c6
+	source = girder-client-5.0.8.tar.gz::https://files.pythonhosted.org/packages/source/g/girder-client/girder_client-5.0.8.tar.gz
+	sha512sums = e45c0885b4d6e690077adfe76ac22f4a79ce5634741a219e3fe5ddf1831dee15083ee38739f66fac33be784aed4a268e6994d7ff8ac9293376c7600204ec1674
 
 pkgname = python-girder-client
