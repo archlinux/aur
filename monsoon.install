@@ -1,0 +1,12 @@
+post_install() {
+    echo "monsoon user service installed."
+    echo "  to start now and on login:"
+    echo "    systemctl --user enable --now monsoon"
+    echo "  to survive logouts without an active session:"
+    echo "    loginctl enable-linger \$USER"
+}
+
+post_upgrade() {
+    echo "monsoon upgraded — restarting user service if running:"
+    echo "    systemctl --user restart monsoon"
+}

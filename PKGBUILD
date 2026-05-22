@@ -12,7 +12,7 @@ depends=('libtorrent-rasterbar' 'gcc-libs' 'glibc')
 makedepends=('git' 'cargo' 'boost' 'clang')
 optdepends=(
     'curl: fetch torrents from http(s)/ftp(s) URLs and refresh ip filter blocklists'
-    'systemd: for the user service (monsoon service install)'
+    'systemd: user service included — enable with: systemctl --user enable --now monsoon'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -88,4 +88,6 @@ package() {
     install -Dm755 "${HOME}/.cache/cargo-builds/monsoon-git/release/${_pkgname}" \
         "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 contrib/systemd/monsoon.service \
+        "${pkgdir}/usr/lib/systemd/user/monsoon.service"
 }
