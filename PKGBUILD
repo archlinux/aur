@@ -2,8 +2,8 @@
 # Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/omniroute-bin
 
 pkgname=omniroute-bin
-pkgver=3.7.9 # renovate: datasource=github-tags depName=diegosouzapw/OmniRoute
-pkgrel=1
+pkgver=3.8.1 # renovate: datasource=github-tags depName=diegosouzapw/OmniRoute
+pkgrel=2
 pkgdesc="OpenAI-compatible AI gateway with routing, retries, caching, and observability"
 arch=('x86_64')
 url="https://github.com/diegosouzapw/OmniRoute"
@@ -14,12 +14,12 @@ optdepends=('systemd: user service management via systemctl --user')
 install="${pkgname}.install"
 options=('!strip')
 source=(
-  "${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/omniroute/-/omniroute-${pkgver}.tgz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/diegosouzapw/OmniRoute/archive/refs/tags/v${pkgver}.tar.gz"
   'omniroute.sh'
   'omniroute.service'
   '.env.example'
 )
-sha512sums=('ba2e2623d56a03d051b6885254395f36fdce118030f613602607738fec5790dcd508d747b87dd36c08ac3008e7ae94bb8233dbd6656a636d0a7dc752a172ffe5'
+sha512sums=('SKIP'
             '1ea7cea23b87ea3eeb4a204ce54d9a32f666a365570b40d5b7c5a1bb2b85820f40d49b29d91bc1774351b4c82a83cdaa26a693e2f3a23752da3b53bea758e8fe'
             'f0097170061b862d53f82efa17534e10ad2d8e5666b25ad1011f0908a688099f374c8fb752fe313d12b7523886b4b5b11247c04b2850f08edbb88f1cf7a71502'
             '50256ea8d6eaed68e90c877776df8203954af174d9dabe451b1e23543f7704bf90be785dcf62b34f9cf6afc4e2702fee68109d60686e3343575b78605034f685')
