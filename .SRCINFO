@@ -1,6 +1,6 @@
 pkgbase = nihongolofi
 	pkgdesc = Pomodoro timer with live Japanese lofi music
-	pkgver = 1.2.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/kurojs/NihongoLofi
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nihongolofi
 	depends = electron>=28
 	depends = yt-dlp
 	depends = hicolor-icon-theme
-	source = nihongolofi-1.2.0.tar.gz::https://github.com/kurojs/NihongoLofi/archive/refs/tags/v1.2.0.tar.gz
+	source = nihongolofi-1.0.0.tar.gz::https://github.com/kurojs/NihongoLofi/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = nihongolofi
