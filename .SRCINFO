@@ -1,6 +1,6 @@
 pkgbase = foolhammer-mod-manager-bin
 	pkgdesc = A straightforward mod manager for Total War games.
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/tpkee/foolhammer-mod-manager
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = foolhammer-mod-manager-bin
 	provides = foolhammer-mod-manager-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/tpkee/foolhammer-mod-manager/releases/download/v0.1.3/Foolhammer.Mod.Manager_0.1.3_amd64.deb
-	sha256sums_x86_64 = 9542ecf2e51111f154602e9d636b778d7e75e906008e327ce5527fa9d7aa24f6
+	source_x86_64 = https://github.com/tpkee/foolhammer-mod-manager/releases/download/v0.1.4/Foolhammer.Mod.Manager_0.1.4_amd64.deb
+	sha256sums_x86_64 = 79a86817b20ed162da15ccd465d02a5195f1e929b4c3486752b56626f2b74094
 
 pkgname = foolhammer-mod-manager-bin
