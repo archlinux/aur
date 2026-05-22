@@ -2,7 +2,7 @@
 
 _name=langgraph-checkpoint
 pkgname=python-$_name
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Library with base interfaces for LangGraph checkpoint savers."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-langchain-core' 'python-ormsgpack')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-numpy' 'python-pandas' 'python-redis' 'python-pycryptodome' 'valkey')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('e5bb304e30fc1363ac8fcb5f7dee5ca2185d77fe475b0d01de2c5f91324c2c21')
+sha256sums=('6c2bdb530c91f91d7d9c1bd100925d0fc4f498d418c17f3587d1526279482a25')
 
 prepare(){
   cd "$srcdir"/${_name//-/_}-$pkgver

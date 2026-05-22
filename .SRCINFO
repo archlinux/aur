@@ -1,6 +1,6 @@
 pkgbase = python-langgraph-checkpoint
 	pkgdesc = Library with base interfaces for LangGraph checkpoint savers.
-	pkgver = 4.1.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langgraph/tree/main/libs/checkpoint
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-langgraph-checkpoint
 	depends = python
 	depends = python-langchain-core
 	depends = python-ormsgpack
-	source = https://files.pythonhosted.org/packages/source/l/langgraph-checkpoint/langgraph_checkpoint-4.1.0.tar.gz
-	sha256sums = e5bb304e30fc1363ac8fcb5f7dee5ca2185d77fe475b0d01de2c5f91324c2c21
+	source = https://files.pythonhosted.org/packages/source/l/langgraph-checkpoint/langgraph_checkpoint-4.1.1.tar.gz
+	sha256sums = 6c2bdb530c91f91d7d9c1bd100925d0fc4f498d418c17f3587d1526279482a25
 
 pkgname = python-langgraph-checkpoint
