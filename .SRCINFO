@@ -1,0 +1,20 @@
+pkgbase = psleep
+	pkgdesc = A tiny, fast CLI utility written in Rust that works just like sleep but shows a live progress bar
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/Yesh-02/psleep
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = openssl
+	makedepends = libgit2
+	depends = glibc
+	depends = libgcc
+	provides = psleep
+	conflicts = psleep
+	source = psleep-0.2.4.tgz::https://github.com/Yesh-02/psleep/archive/v0.2.4.tar.gz
+	sha256sums = e65f475a6824ce860c78d71095cf8e9bf122e69917868625b57ca4783c787904
+
+pkgname = psleep
