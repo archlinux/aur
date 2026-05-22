@@ -1,60 +1,46 @@
-# Maintainer:  Ben Schneider    <ben@bens.haus>
-# Contributor: Patrick D. Lloyd <archlinux.org@pdlloyd.com>
-# Contributor: David P.         <megver83@parabola.nu>
-
 _target=arm-linux-gnueabi
 pkgname=$_target-gcc
-_pkgver=15.2.0
+_pkgver=16.1.0
 pkgver=$_pkgver
-_islver=0.27
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM GNU EABI little-endian target'
-arch=(x86_64 i686 armv7h)
+arch=(aarch64 x86_64)
 url='http://gcc.gnu.org/'
-license=(GPL LGPL FDL)
-depends=($_target-binutils libmpc zlib)
+license=(
+  'GPL-3.0-or-later WITH GCC-exception-3.1'
+  GFDL-1.3-or-later
+)
+depends=($_target-binutils libisl libmpc zlib zstd)
 makedepends=(gmp mpfr)
 options=(!emptydirs !strip)
-source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgver/gcc-$_pkgver.tar.xz{,.sig}
-        https://libisl.sourceforge.io/isl-$_islver.tar.xz)
+source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgver/gcc-$_pkgver.tar.xz{,.sig})
+b2sums=('ceb07866b6b17eb4c69a6b51241b275bc5ec506603a7c1a4c1e2585091a09fc647be945beeff76700bffd9018bda81b072d84f909fd7998baa0cfe3f0eb550b4'
+        'SKIP')
 validpgpkeys=(D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
-if [ -n "$_snapshot" ]; then
-  _basedir=gcc-$_snapshot
-else
-  _basedir=gcc-$_pkgver
-fi
 
 prepare() {
-  cd $_basedir
+  [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
+  cd gcc
 
-  # link isl for in-tree builds
-  ln -sf ../isl-$_islver isl
+  # Arch Linux installs libraries /lib
+  sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+  sed -i '/lp64=/s/lib64/lib/' gcc/config/aarch64/t-aarch64-linux
 
-  echo $_pkgver > gcc/BASE-VER
-
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" "$srcdir"/$_basedir/{libiberty,gcc}/configure
-
-  mkdir $srcdir/gcc-build
+  mkdir -p "$srcdir/gcc-build"
 }
 
 build() {
   cd gcc-build
 
-  # using -pipe causes spurious test-suite failures
-  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-  CFLAGS=${CFLAGS/-pipe/}
-  CXXFLAGS=${CXXFLAGS/-pipe/}
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+  unset FFLAGS FCFLAGS
 
-  export CFLAGS=${CFLAGS/-Werror=format-security/}
-  export CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
-
-  $srcdir/$_basedir/configure \
+  $srcdir/gcc/configure \
     --target=$_target \
     --prefix=/usr \
     --libexecdir=/usr/lib \
-    --enable-languages=c,c++ \
     --enable-plugins \
     --enable-shared \
     --disable-decimal-float \
@@ -98,7 +84,4 @@ package() {
   # Remove files that conflict with host gcc package
   rm -r "$pkgdir/usr/share/"{man/man7,info}
 }
-sha512sums=('89047a2e07bd9da265b507b516ed3635adb17491c7f4f67cf090f0bd5b3fc7f2ee6e4cc4008beef7ca884b6b71dffe2bb652b21f01a702e17b468cca2d10b2de'
-            'SKIP'
-            '6d6f50c3f6f26e0d3f67586dee6427d87999c426c94069a6f3012ec3c9a41adeebd50f43b5d2705db6abc12e38eb01c19f55dba113c0799da5f667eef46b2be0')
 
