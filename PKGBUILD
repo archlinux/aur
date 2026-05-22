@@ -2,18 +2,18 @@
 
 _name=langgraph-cli
 pkgname=python-$_name
-pkgver=0.4.14
+pkgver=0.4.26
 pkgrel=1
 pkgdesc='CLI for interacting with LangGraph API.'
 arch=('any')
 url='https://github.com/langchain-ai/langgraph/tree/main/libs/cli'
 license=('MIT')
-depends=('python' 'python-click' 'python-langgraph-sdk')
+depends=('python' 'python-click' 'python-httpx' 'python-langgraph-sdk' 'python-pathspec' 'python-dotenv')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-msgspec')
-optdepends=('python-langgraph-api: inmem' 'python-langgraph-runtime-inmem: inmem' 'python-dotenv: inmem')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-msgspec' 'python-requests')
+optdepends=('python-langgraph-api: inmem' 'python-langgraph-runtime-inmem: inmem')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('ba6bc715651d85ba94d14d6c53db87b4bf478cf45d61a28af9c8dee629f3cf1f')
+sha256sums=('d81867e45bc198f4c61a4064e8f347aba9e6ffa256db387d8daae594c59bf0f6')
 
 prepare(){
   # Fix tests
