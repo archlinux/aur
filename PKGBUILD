@@ -2,7 +2,7 @@
 # Maintainer: Nylas <support@nylas.com>
 
 pkgname='nylas-bin'
-pkgver=3.1.14
+pkgver=3.1.15
 pkgrel=1
 pkgdesc='CLI for Nylas API - manage email, calendar, and contacts'
 url='https://cli.nylas.com/'
@@ -14,10 +14,10 @@ depends=('glibc')
 optdepends=('bash-completion: for bash completions' 'zsh: for zsh completions' 'fish: for fish completions')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nylas/cli/releases/download/v${pkgver}/nylas_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('47670b6ca2106b612c1188175cf9f176a4c7c088cb780d2d42c6e4b32d5300f0')
+sha256sums_aarch64=('090f1a5b8e227d9d418749a4635130f7456ef485903482e40504c17fa5a2c57f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nylas/cli/releases/download/v${pkgver}/nylas_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('246b58c570f79d05cefdeb44210e6b3770a2c329a3e6d8a8c09f571d939d5dc0')
+sha256sums_x86_64=('eaad1a7a860a7a229d1af20961ea16359688231860d9035e4221416b98c5b769')
 
 package() {
   install -Dm755 nylas "${pkgdir}/usr/bin/nylas"
