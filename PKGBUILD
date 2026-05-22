@@ -59,20 +59,29 @@ install=astrbot-git.install
 check() {
     cd "$srcdir/$_srcname"
     local _errcnt=0
+    local _prompt_file="astrbot/core/astr_main_agent_resources.py"
+
+    if [ -f astrbot/core/tools/prompts.py ]; then
+        _prompt_file="astrbot/core/tools/prompts.py"
+    fi
 
     # Syntax check: compile all .py files in key modules
     python -m py_compile astrbot/core/astr_main_agent_resources.py || _errcnt=$((_errcnt + 1))
     python -m py_compile astrbot/dashboard/server.py || _errcnt=$((_errcnt + 1))
     python -m py_compile astrbot/core/astr_agent_tool_exec.py || _errcnt=$((_errcnt + 1))
-    python -m py_compile astrbot/core/tools/prompts.py || _errcnt=$((_errcnt + 1))
+    python -m py_compile "$_prompt_file" || _errcnt=$((_errcnt + 1))
     python -m py_compile astrbot/core/core_lifecycle.py || _errcnt=$((_errcnt + 1))
     python -m py_compile astrbot/core/db/sqlite.py || _errcnt=$((_errcnt + 1))
 
     # Symbol checks (曾炸过的 import 路径)
-    grep -q 'class AstrBotDashboard' astrbot/dashboard/server.py || _errcnt=$((_errcnt + 1))
-    grep -q 'BACKGROUND_TASK_WOKE_USER_PROMPT' astrbot/core/tools/prompts.py || _errcnt=$((_errcnt + 1))
-    grep -q 'CONVERSATION_HISTORY_INJECT_PREFIX' astrbot/core/tools/prompts.py || _errcnt=$((_errcnt + 1))
-    grep -q 'class AstrBotCoreLifecycle' astrbot/core/core_lifecycle.py || _errcnt=$((_errcnt + 1))
+    grep -q "class AstrBotDashboard" astrbot/dashboard/server.py || _errcnt=$((_errcnt + 1))
+    if grep -R --include="*.py" -q "BACKGROUND_TASK_WOKE_USER_PROMPT" astrbot/core; then
+        grep -q "BACKGROUND_TASK_WOKE_USER_PROMPT" "$_prompt_file" || _errcnt=$((_errcnt + 1))
+    fi
+    if grep -R --include="*.py" -q "CONVERSATION_HISTORY_INJECT_PREFIX" astrbot/core; then
+        grep -q "CONVERSATION_HISTORY_INJECT_PREFIX" "$_prompt_file" || _errcnt=$((_errcnt + 1))
+    fi
+    grep -q "class AstrBotCoreLifecycle" astrbot/core/core_lifecycle.py || _errcnt=$((_errcnt + 1))
 
     [ "$_errcnt" -eq 0 ] || {
         echo "❌ check() failed with $_errcnt error(s)"
