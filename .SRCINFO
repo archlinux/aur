@@ -1,6 +1,6 @@
 pkgbase = music-assistant-desktop-git
 	pkgdesc = Music Assistant Desktop Companion App
-	pkgver = 0.3.6.r0.g1d0ce1b
+	pkgver = 0.3.7.r0.g965ecd3
 	pkgrel = 1
 	url = https://github.com/music-assistant/desktop-app
 	arch = x86_64
