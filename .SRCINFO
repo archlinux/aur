@@ -1,6 +1,6 @@
 pkgbase = elio
 	pkgdesc = Snappy, batteries-included terminal file manager with rich previews, inline images, bulk actions, and trash support
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://elio-fm.github.io/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = elio
 	optdepends = libarchive: archive and ISO listing fallback through bsdtar
 	conflicts = elio-bin
 	options = !lto
-	source = elio-1.5.1.tar.gz::https://crates.io/api/v1/crates/elio/1.5.1/download
-	sha256sums = fbae5634ac12186bbdf92f049d3866841ecaebd01457afceb34d99d1160ca960
+	source = elio-1.6.0.tar.gz::https://crates.io/api/v1/crates/elio/1.6.0/download
+	sha256sums = de4be2bcea7e6218a39a0f8eff49e99c3d1af93de847ec6f98e5575e410eba88
 
 pkgname = elio
