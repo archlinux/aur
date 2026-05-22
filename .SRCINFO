@@ -1,6 +1,6 @@
 pkgbase = psutilsql-bin
 	pkgdesc = Use the gopsutil library to retrieve information and process it with SQL
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/noborus/psutilsql
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = psutilsql-bin
 	provides = psutilsql
 	conflicts = psutilsql
 	conflicts = psutilsql-git
-	source_x86_64 = psutilsql-x86_64-0.1.0.zip::https://github.com/noborus/psutilsql/releases/download/v0.1.0/psutilsql_0.1.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 741ad77901cbfebd5fb881db5b7f5bd4d17e75183e7d5ba9d5679d90e8c94e96
-	source_i686 = psutilsql-i686-0.1.0.tar.gz::https://github.com/noborus/psutilsql/releases/download/v0.1.0/psutilsql_0.1.0_Linux_i386.tar.gz
-	sha256sums_i686 = 3903125e4ca33450cded5bb77851c1f83c355af553be0e92a4641e58373abd93
-	source_aarch64 = psutilsql-aarch64-0.1.0.tar.gz::https://github.com/noborus/psutilsql/releases/download/v0.1.0/psutilsql_0.1.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 054e6e6812908c5e30e8654d09bc0bc373243912fcfe1fbdbdf9cf4b22182a56
+	source_x86_64 = psutilsql-x86_64-0.1.1.zip::https://github.com/noborus/psutilsql/releases/download/v0.1.1/psutilsql_0.1.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c13400ac76e8294c6f6e45661ba0a98f6a1f7c02305395f4fb28c2744b14c3b1
+	source_i686 = psutilsql-i686-0.1.1.tar.gz::https://github.com/noborus/psutilsql/releases/download/v0.1.1/psutilsql_0.1.1_Linux_i386.tar.gz
+	sha256sums_i686 = f4390a94b88fedb18260f6fd358c036a180c192175ef1a5c1ce16aa6fd443ee6
+	source_aarch64 = psutilsql-aarch64-0.1.1.tar.gz::https://github.com/noborus/psutilsql/releases/download/v0.1.1/psutilsql_0.1.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = bcfbbf6dea5f11a3209c09efe3a073c8c11e1d188c1b82c351d148102646582d
 
 pkgname = psutilsql-bin

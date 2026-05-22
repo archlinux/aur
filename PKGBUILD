@@ -3,7 +3,7 @@
 _pkgauthor=noborus
 _pkgname=psutilsql
 pkgname=${_pkgname}-bin
-pkgver=0.1.0
+pkgver=0.1.1
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Use the gopsutil library to retrieve information and process it with SQL"
@@ -19,9 +19,9 @@ conflicts=("${_pkgname}"{,-git})
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('741ad77901cbfebd5fb881db5b7f5bd4d17e75183e7d5ba9d5679d90e8c94e96')
-sha256sums_i686=('3903125e4ca33450cded5bb77851c1f83c355af553be0e92a4641e58373abd93')
-sha256sums_aarch64=('054e6e6812908c5e30e8654d09bc0bc373243912fcfe1fbdbdf9cf4b22182a56')
+sha256sums_x86_64=('c13400ac76e8294c6f6e45661ba0a98f6a1f7c02305395f4fb28c2744b14c3b1')
+sha256sums_i686=('f4390a94b88fedb18260f6fd358c036a180c192175ef1a5c1ce16aa6fd443ee6')
+sha256sums_aarch64=('bcfbbf6dea5f11a3209c09efe3a073c8c11e1d188c1b82c351d148102646582d')
 
 
 package() {
