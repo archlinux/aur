@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Antigravity IDE
+Exec=antigravity-ide
+Icon=/usr/share/pixmaps/antigravity-ide.png
+Type=Application
+Categories=Development;IDE;
+Terminal=false
