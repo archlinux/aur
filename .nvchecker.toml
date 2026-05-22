@@ -5,5 +5,6 @@ newver = "newver.json"
 ["pi-ext-usage"]
 source = "github"
 github = "tmustier/pi-extensions"
-use_latest_release = true
+use_max_tag = true
+include_regex = "usage-extension/v.*"
 prefix = "usage-extension/v"
