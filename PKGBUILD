@@ -1,7 +1,7 @@
 # Maintainer: Asset Hoard <support@assethoard.com>
 pkgname=asset-hoard-bin
 _pkgname=asset-hoard
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="Game asset manager for organizing models, textures, sprites, and audio"
 arch=('x86_64')
@@ -11,15 +11,15 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'openssl' 'gli
 provides=('asset-hoard')
 conflicts=('asset-hoard')
 source=(
-  "https://releases.assethoard.com/v${pkgver}/Asset%20Hoard_${pkgver}_x86_64.pkg.tar.zst"
-  "https://releases.assethoard.com/v${pkgver}/Asset%20Hoard_${pkgver}_x86_64.pkg.tar.zst.sig"
+  "https://releases.assethoard.com/v${pkgver}/asset-hoard_${pkgver}_x86_64.pkg.tar.zst"
+  "https://releases.assethoard.com/v${pkgver}/asset-hoard_${pkgver}_x86_64.pkg.tar.zst.sig"
 )
-sha256sums=('89bd438158cbac48a5f8c9ff00c80fa001942e2781b717eda0c3f9347ebeacb3' 'SKIP')
+sha256sums=('42a26023bc3667bf3287968e01016b8187c76690500cc3c0c132237638d1a97c' 'SKIP')
 validpgpkeys=('2FE350A912F4525659E418CAA9B027A1392E7305')
 options=('!strip')
 
 package() {
   cd "$srcdir"
-  bsdtar -x -f "Asset Hoard_${pkgver}_x86_64.pkg.tar.zst" -C "$pkgdir" \
+  bsdtar -x -f "asset-hoard_${pkgver}_x86_64.pkg.tar.zst" -C "$pkgdir" \
     --exclude .BUILDINFO --exclude .MTREE --exclude .PKGINFO
 }
