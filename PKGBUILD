@@ -11,8 +11,7 @@ url="https://www.3u.com/"
 license=('custom')
 options=('!debug' '!strip')
 provides=("3utools")
-conflicts=("3utools-desktop-bin")
-replaces=("3utools-desktop-bin")
+replaces=("3utools-bin")
 source=("${pkgname}-${pkgver}.deb::https://dl.3u.com/update/v900/dl/linux/x64/com.3u.3utools_${pkgver}_amd64.deb")
 b2sums=("a8faef1ae606cd531a1873ca2e68a8698aa89ce351f49dfb25eb46457a363814f8208c9f6b9d3df0a40d3808d5018ecb170f29ebc278bafee4daff27c3e5ba22")
 
