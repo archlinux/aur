@@ -2,7 +2,7 @@
 # Contributor: Abhiram Shibu <abhiramshibu1998 at gmail dot com>
 
 pkgname=aocl-utils
-pkgver=5.2.2
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="AOCL-Utils provides a uniform interface to all the AOCL libraries to access the CPU features for AMD CPUs."
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(staticlibs !lto)
 depends=()
 makedepends=('cmake' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e84c242772ff433f0264adeaf280bf25e52c61c9508eb61f7d338c5afb1faeb3')
+sha256sums=('3d2fcad3a27d90e50dddbdcef55edbf9f73bb58096f9f682cf5ea6b4f9bd4bfa')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
