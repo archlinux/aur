@@ -1,0 +1,21 @@
+pkgbase = zerolink
+	pkgdesc = Secure P2P Messenger with ZeroTier network
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/secureNqwer/messenger-core
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = base-devel
+	depends = glibc
+	depends = gcc-libs
+	provides = zerolink
+	conflicts = zerolink-bin
+	source = zerolink-1.0.0.tar.gz::https://github.com/secureNqwer/messenger-core/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = zerolink
