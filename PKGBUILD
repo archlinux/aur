@@ -2,7 +2,7 @@
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=eloquent
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Your proofreading assistant"
 arch=('any')
 url="https://github.com/sonnyp/Eloquent"
@@ -18,7 +18,6 @@ depends=(
 makedepends=(
   'blueprint-compiler'
   'git'
-  'gobject-introspection'
   'meson'
 )
 source=("git+https://github.com/sonnyp/Eloquent.git#tag=v$pkgver"

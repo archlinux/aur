@@ -1,13 +1,12 @@
 pkgbase = eloquent
 	pkgdesc = Your proofreading assistant
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sonnyp/Eloquent
 	arch = any
 	license = GPL-3.0-only
 	makedepends = blueprint-compiler
 	makedepends = git
-	makedepends = gobject-introspection
 	makedepends = meson
 	depends = fasttext
 	depends = fasttext-langid-models
