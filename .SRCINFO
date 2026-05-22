@@ -1,0 +1,17 @@
+pkgbase = bazel-compile-commands
+	pkgdesc = Compile databases from a Bazel workspace.
+	pkgver = 0.22.4
+	pkgrel = 1
+	url = https://github.com/kiron1/bazel-compile-commands
+	arch = aarch64
+	arch = x86_64
+	license = Custom
+	makedepends = bazel
+	makedepends = gcc
+	depends = gcc-libs
+	source = bazel-compile-commands-0.22.4.tar.gz::https://github.com/kiron1/bazel-compile-commands/archive/refs/tags/bazel-compile-commands-v0.22.4.tar.gz
+	source = https://github.com/bazelbuild/bazel/releases/download/8.6.0/bazel-8.6.0-linux-x86_64
+	sha256sums = a6065041d99f2621bbb842b935a299eda9a660febeeda279f38109e427815ee5
+	sha256sums = 9860da9c9386bbc023feed8f43af3105d338727d77b644fa6aeca45a4a11957c
+
+pkgname = bazel-compile-commands
