@@ -17,9 +17,9 @@ pkgbase = perry-bin
 	sha256sums = c97ece8dd2230225d3b2a8590837c0d9d966e08f9fc6d1cb37180c52df612e7d
 	sha256sums = c871483477d7105432645affac5be5edbd92b41a6faedb4c692e0681e46ada09
 	sha256sums = 44603f704684f21e930eb39da6fca39f5e90efd101e27218aaf06255e5bada9b
-	source_x86_64 = perry-x86_64-0.5.1022.tgz::https://github.com/PerryTS/perry/releases/download/v0.5.1022/perry-linux-x86_64-musl.tar.gz
-	sha256sums_x86_64 = 62a21e88523806b48d96361877e67065bbbf9690d6149884b2735e6fa5cda8b8
-	source_aarch64 = perry-aarch64-0.5.1022.tgz::https://github.com/PerryTS/perry/releases/download/v0.5.1022/perry-linux-aarch64-musl.tar.gz
-	sha256sums_aarch64 = f5895e4bcb03f1ec7b0b03920cb01343281da7c0f4f29d94d9eb6dd99f5eef22
+	source_x86_64 = perry-x86_64-0.5.1022.tgz::https://github.com/PerryTS/perry/releases/download/v0.5.1022/perry-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 411c4d23b404c9b84846ef50bb5b05bc27e0e716502937b50ea5d4d18ee32809
+	source_aarch64 = perry-aarch64-0.5.1022.tgz::https://github.com/PerryTS/perry/releases/download/v0.5.1022/perry-linux-aarch64.tar.gz
+	sha256sums_aarch64 = bd9171cd565101948031083a57bb29dff4f9699a4b38a7763b108511571e8b27
 
 pkgname = perry-bin

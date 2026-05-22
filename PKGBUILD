@@ -10,7 +10,7 @@ pkgrel=1
 _pkgvername=v${pkgver}
 
 arch=('x86_64' 'aarch64')
-_barch=('linux-x86_64-musl' 'linux-aarch64-musl')
+_barch=('linux-x86_64' 'linux-aarch64')
 
 url="https://www.perryts.com/"
 _ghurl="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -34,8 +34,8 @@ source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/downlo
 sha256sums=('c97ece8dd2230225d3b2a8590837c0d9d966e08f9fc6d1cb37180c52df612e7d'
             'c871483477d7105432645affac5be5edbd92b41a6faedb4c692e0681e46ada09'
             '44603f704684f21e930eb39da6fca39f5e90efd101e27218aaf06255e5bada9b')
-sha256sums_x86_64=('62a21e88523806b48d96361877e67065bbbf9690d6149884b2735e6fa5cda8b8')
-sha256sums_aarch64=('f5895e4bcb03f1ec7b0b03920cb01343281da7c0f4f29d94d9eb6dd99f5eef22')
+sha256sums_x86_64=('411c4d23b404c9b84846ef50bb5b05bc27e0e716502937b50ea5d4d18ee32809')
+sha256sums_aarch64=('bd9171cd565101948031083a57bb29dff4f9699a4b38a7763b108511571e8b27')
 
 
 prepare() {
