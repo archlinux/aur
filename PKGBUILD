@@ -24,9 +24,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-  cp -r ../iproute2 ./
-  rm -r ../iproute2
-  sed -ni '/int netns_id_from_name/q;p' iproute2/lib/namespace.c
+  sed -i 's|-iquote|-I|g;s|^IPROUTE2_DIR.*|IPROUTE2_DIR = \.\./iproute2|' Makefile
+  sed -ni '/int netns_id_from_name/q;p' ../iproute2/lib/namespace.c
 }
 
 build() {
