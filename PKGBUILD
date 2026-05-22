@@ -2,7 +2,7 @@
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=eloquent
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Your proofreading assistant"
 arch=('any')
 url="https://github.com/sonnyp/Eloquent"
@@ -14,6 +14,8 @@ depends=(
   'gtk4'
   'languagetool'
   'libadwaita'
+  'libportal'
+  'libportal-gtk4'
 )
 makedepends=(
   'blueprint-compiler'

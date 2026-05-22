@@ -1,7 +1,7 @@
 pkgbase = eloquent
 	pkgdesc = Your proofreading assistant
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sonnyp/Eloquent
 	arch = any
 	license = GPL-3.0-only
@@ -14,6 +14,8 @@ pkgbase = eloquent
 	depends = gtk4
 	depends = languagetool
 	depends = libadwaita
+	depends = libportal
+	depends = libportal-gtk4
 	source = git+https://github.com/sonnyp/Eloquent.git#tag=v1.4
 	source = git+https://github.com/sonnyp/troll.git
 	source = Adjust-paths-and-commands-for-nonflatpak-environment.diff
