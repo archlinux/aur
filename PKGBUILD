@@ -1,7 +1,7 @@
 # Maintainer: gurg <gurg@noreply.codeberg.org>
 
 pkgname=bigkis-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Declarative package bundle manager for Arch Linux'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
   "upstream-LICENSE::${url}/raw/tag/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  'dbe05b70af4d95e25f16e7fdd6ae13b1a62553f57ddda8ce9ef0e8ea80180e19'
+  '237f3cc7c6e469f639649d7493fbfcfad866d3cc626131c0cd63dd77defa9cab'
   '9be548f8ac17e571d7a82ab7931d4c761d75855cba77f2f58d50018e6faf1f1b'
 )
 
