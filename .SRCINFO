@@ -1,11 +1,10 @@
 pkgbase = nx-hyprinstall
 	pkgdesc = Nordix Installer for the frozen Hyprland stack Pree LUA - For Nordix DE Yggdrasil
-	pkgver = 1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/jimmykallhagen/nx-hyprinstall.git
-	arch = x86_64
-	arch = aarch64
-	license = GPL v3
+	arch = any
+	license = GPL v3 or later
 	depends = bash
 	depends = git
 	depends = base-devel
