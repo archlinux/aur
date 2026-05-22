@@ -1,8 +1,8 @@
 # Maintainer: Mohammadreza Khani
 
 pkgname=dicto
-pkgver=0.1.3
-pkgrel=3
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="Minimal native dictionary app for MDX/MDD files"
 arch=('x86_64')
 url="https://github.com/mohamadkhani/dicto"
@@ -11,6 +11,7 @@ depends=(
   'gtk3'
   'alsa-lib'
   'libxkbcommon'
+  'xdotool'
   'hicolor-icon-theme'
 )
 makedepends=(

@@ -1,7 +1,7 @@
 pkgbase = dicto
 	pkgdesc = Minimal native dictionary app for MDX/MDD files
-	pkgver = 0.1.3
-	pkgrel = 3
+	pkgver = 0.1.4
+	pkgrel = 1
 	url = https://github.com/mohamadkhani/dicto
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -13,11 +13,12 @@ pkgbase = dicto
 	depends = gtk3
 	depends = alsa-lib
 	depends = libxkbcommon
+	depends = xdotool
 	depends = hicolor-icon-theme
 	optdepends = vulkan-driver: GPU rendering
 	optdepends = vulkan-intel: Intel GPU support
 	options = !lto
-	source = dicto-0.1.3.tar.gz::https://github.com/mohamadkhani/dicto/archive/refs/tags/v0.1.3.tar.gz
+	source = dicto-0.1.4.tar.gz::https://github.com/mohamadkhani/dicto/archive/refs/tags/v0.1.4.tar.gz
 	b2sums = SKIP
 
 pkgname = dicto
