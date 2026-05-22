@@ -1,5 +1,13 @@
 post_install() {
-  desktop-file-edit --add-category="Game" /usr/share/applications/PD2\ Trader.desktop #missing Category
+  desktop-file-edit \
+  --set-name="PD2 Trader" \
+  --set-comment="Price check app for Project Diablo 2" \
+  --set-icon="pd2-trader-installer" \
+  --add-category="Game;" \
+  --set-key="Exec" --set-value="pd2-trader-installer" \
+  --set-key="Type" --set-value="Application" \
+  /usr/share/applications/PD2\ Trader.desktop
+
   gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
   update-desktop-database -q
 }
