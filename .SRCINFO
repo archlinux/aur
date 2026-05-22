@@ -1,0 +1,23 @@
+pkgbase = splashboard
+	pkgdesc = A customizable terminal splash screen with plugin-based data sources
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/unhappychoice/splashboard
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = ISC
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	depends = git
+	provides = splashboard
+	conflicts = splashboard-git
+	conflicts = splashboard-bin
+	options = !lto
+	options = !debug
+	source = splashboard-2.6.0.tar.gz::https://github.com/unhappychoice/splashboard/archive/refs/tags/v2.6.0.tar.gz
+	sha256sums = 23e71af3635815860228ef8b2e65f9088578fff360e22ef8f1afd50a19443e0e
+
+pkgname = splashboard
