@@ -1,6 +1,6 @@
 # Maintainer: secureNqwer
 pkgname=zerolink
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Secure P2P Messenger with ZeroTier network"
 arch=("x86_64" "aarch64")
