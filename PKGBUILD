@@ -2,7 +2,7 @@
 # AUR: https://aur.archlinux.org/packages/xmm7360-dkms-git
 
 pkgname=xmm7360-dkms-git
-pkgver=r316.g7bb9e75   # updated by pkgver() below
+pkgver=r309.g797c60c   # updated by pkgver() below
 pkgrel=1
 pkgdesc="Intel XMM7360 / Fibocom L850 LTE modem driver (DKMS) with RPC init tool"
 arch=('x86_64')
@@ -61,6 +61,12 @@ package() {
     # Manual recovery tool (escape hatch for total wedge)
     install -Dm755 "$_src/scripts/xmm7360-reset" \
         "${pkgdir}/usr/bin/xmm7360-reset"
+
+    # Pre-sleep hook: disconnect the modem before S3/S4 so suspend
+    # always happens from the idle state (active-connection suspend
+    # faults on resume — live DMA rings do not survive power cycle).
+    install -Dm755 "$_src/scripts/xmm7360-sleep" \
+        "${pkgdir}/usr/lib/systemd/system-sleep/xmm7360"
 
     # ── Man page ─────────────────────────────────────────────────────────
     install -Dm644 "$_src/tool/open_xdatachannel.8" \
