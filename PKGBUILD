@@ -1,7 +1,7 @@
 # Maintainer: Ethan Stokes <erstokes10@gmail.com>
 
 pkgname=macros-git
-pkgver=0.1.0.r86.2d1d847
+pkgver=0.2.0.r94.477f0b7
 pkgrel=1
 pkgdesc='A libcosmic app to manage and run macros on Linux.'
 url='https://github.com/EthanRStokes/macros'
@@ -11,6 +11,7 @@ makedepends=('rust' 'git' 'gcc' 'glibc')
 depends=(
     'expat' 'fontconfig' 'libxkbcommon' 'freetype2' 'hicolor-icon-theme'
     'libgcc' 'glibc'
+    "libx11" "libxi" "libxtst"
 )
 conflicts=('macros')
 provides=('macros')
