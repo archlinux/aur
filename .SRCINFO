@@ -1,7 +1,7 @@
 pkgbase = froststrap
 	pkgdesc = A fork of Fishstrap/Bloxstrap, focused on performance and customization
-	pkgver = 2.0.0.beta.7.r43.g883f796
-	pkgrel = 1
+	pkgver = 2.0.0.beta.7
+	pkgrel = 2
 	url = https://github.com/Froststrap/Froststrap
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -13,7 +13,7 @@ pkgbase = froststrap
 	depends = icu
 	depends = fontconfig
 	depends = hicolor-icon-theme
-	source = git+https://github.com/Froststrap/Froststrap.git#branch=feat/crossplatform
+	source = git+https://github.com/Froststrap/Froststrap.git#tag=v2.0.0-beta.7
 	source = git+https://github.com/Froststrap/ColorPicker-Avalonia.git
 	sha256sums = SKIP
 	sha256sums = SKIP

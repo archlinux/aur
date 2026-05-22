@@ -1,22 +1,18 @@
 # Maintainer: blazebsc <blakeisfruity@proton.me>
 pkgname=froststrap
-pkgver=2.0.0.beta.7.r43.g883f796
-pkgrel=1
+_tag='v2.0.0-beta.7'
+pkgver=2.0.0.beta.7
+pkgrel=2
 pkgdesc="A fork of Fishstrap/Bloxstrap, focused on performance and customization"
 arch=('x86_64')
 url="https://github.com/Froststrap/Froststrap"
 license=('AGPL-3.0-or-later' 'MIT' 'Unlicense')
 depends=('dotnet-runtime-10.0' 'icu' 'fontconfig' 'hicolor-icon-theme')
 makedepends=('dotnet-sdk-10.0' 'git')
-source=("git+https://github.com/Froststrap/Froststrap.git#branch=feat/crossplatform"
+source=("git+${url}.git#tag=${_tag}"
         "git+https://github.com/Froststrap/ColorPicker-Avalonia.git")
 sha256sums=('SKIP'
             'SKIP')
-
-pkgver() {
-  cd Froststrap
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare() {
   cd Froststrap
