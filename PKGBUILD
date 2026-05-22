@@ -1,3 +1,4 @@
+# Maintainer: shichirouji21 <shichirouji21@users.noreply.github.com>
 pkgname=himitsu-bako-bin
 pkgver=1.0.0
 pkgrel=1
