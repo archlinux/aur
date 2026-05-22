@@ -1,7 +1,7 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
 pkgname=luffy-bin
 _pkgname=luffy
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Watch movies and series from your commandline"
 arch=('x86_64' 'aarch64')
