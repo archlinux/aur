@@ -1,6 +1,6 @@
 # Maintainer: Kuro <kuro@kuro.sh>
 pkgname=nihongolofi
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Pomodoro timer with live Japanese lofi music"
 arch=('x86_64')
