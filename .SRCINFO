@@ -1,6 +1,6 @@
 pkgbase = jottr-bin
 	pkgdesc = Simple text editor for writers, journalists and researchers
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/mfat/jottr
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = jottr-bin
 	provides = jottr
 	conflicts = jottr
 	options = !strip
-	source = https://github.com/mfat/jottr/releases/download/v2.1.1/jottr_2.1.1-1_all.deb
-	sha256sums = 67e7893a441b019b0898b52078565d29c52cd98114301a806d66e8536dbe74b1
+	source = https://github.com/mfat/jottr/releases/download/v2.1.2/jottr_2.1.2-1_all.deb
+	sha256sums = b8704a26298950f0eefd9de47e1dd0760b923df315c7688127189efd91a812d2
 
 pkgname = jottr-bin
