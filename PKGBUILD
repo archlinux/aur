@@ -1,7 +1,8 @@
 # Maintainer: Yueyuri <lxf74663@gmail.com>
 
 pkgname=mcloud-electron
-pkgver=1.1.0
+pkgver=1.1.1
+kylinv=111
 pkgrel=1
 pkgdesc="中国移动云盘"
 arch=('x86_64')
@@ -10,13 +11,13 @@ license=('custom')
 depends=('qt5-base' 'qt5-multimedia' 'icu66-bin')
 provides=('mcloud-bin')
 conflicts=('mcloud-bin')
-source=("https://yun.mcloud.139.com/mCloudPc/kylinV110/com.cmic.mcloud_${pkgver}_amd64.deb"
+source=("https://yun.mcloud.139.com/mCloudPc/kylinV${kylinv}/com.cmic.mcloud_${pkgver}_amd64.deb"
         "com.cmic.mcloud.desktop"
         "mcloud-wrapper"
         "mcloud.install")
-sha512sums=('74198a2742840ee5e99aa4ecade2352b63ab0ecf4f1d8e721230a13ac609257cc70a369731356098f7f782f5720de4d0619e2c12930d3daba419e60280935f0b'
+sha512sums=('9814378a00bb987050b7a5fe62b452cb0c87d0eb79034e4bd86355eb53e4ae9b2e36218819c43388552a41ee3f35134f2667ba75d519ddf395707169de22f0fe'
             '9e1a481375fccd089823eb5dec5c34868835c9cfdcdb558ccaf616db45c0ca391f11ebbcb3fd1126b8fad59bcb983da5826e409809a24520b3b73b5634d367d6'
-            '4366022963ed5eabfd55976f5994b170906762c9b9773333a8168af6cdd505bea624f60e13b1e248261ccbf0808c8cbd60fd43b7532e4f0762abba21de8d3e12'
+            '109eddd56b91e4b16a8638632d9fe0b20baead6d5e5c1764bd482fd44da4c9826b90735bcdca32a80735e97ad38e824610325d8f6c9fc3a8df5a0897808abfbd'
             '3a25816a6695e7028c0cb907622c217d50624bd3a11bdf4600614a3d8e20e09f05e87a063d440a217aedf1c01d4d0fa614f47957940fd1ee22c858befb268431')
 
 install="mcloud.install"

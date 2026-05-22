@@ -10,8 +10,4 @@ export XDG_CONFIG_HOME="$MCLOUD_SANDBOX/.config"
 export XDG_DATA_HOME="$MCLOUD_SANDBOX/.local/share"
 export XDG_CACHE_HOME="$MCLOUD_SANDBOX/.cache"
 
-if [ ! -L "$MCLOUD_SANDBOX/RealHome" ]; then
-    ln -s "$REAL_HOME" "$MCLOUD_SANDBOX/RealHome"
-fi
-
 exec /opt/apps/com.cmic.mcloud/mcloud "$@"
