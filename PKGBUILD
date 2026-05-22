@@ -3,7 +3,7 @@
 _pkgauthor=noborus
 _pkgname=xlsxsql
 pkgname=${_pkgname}-bin
-pkgver=0.5.2
+pkgver=0.5.3
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A CLI tool that executes SQL queries on various files including xlsx files and outputs the results to various files"
@@ -19,9 +19,9 @@ conflicts=("${_pkgname}"{,-git})
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('08eb0e0ae612ae4c626414f8b5045184b4e0ade804124dbe4cf77ccb52ee7845')
-sha256sums_i686=('c6a59ce513d1e4110da73851df1d924fca8ede73b23d7a128cf560df02dfad8c')
-sha256sums_aarch64=('a2abd5e620d85237a81dde8e12a0f2c7aee342168c58bf18c61196004bc0207c')
+sha256sums_x86_64=('b8449eebd9b9ee5b225f95b70416f5bc6b65f78f65e5e7fd7eda532fdc641446')
+sha256sums_i686=('63ea63217a1aaa4025aa13a1f8063840470dd8fdde64dbe8ea8d9a22a30c1ed9')
+sha256sums_aarch64=('3af083d2c81e40846fa9fab7bc889acb3cfac402e940c275cdc9dc5f1da02c2f')
 
 
 package() {
