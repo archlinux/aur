@@ -1,0 +1,18 @@
+pkgbase = nook-bin
+	pkgdesc = Calm collaboration for teams and communities — self-hosted messaging, voice, and meetings
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://nook.cloudylake.io
+	arch = x86_64
+	license = proprietary
+	depends = fuse2
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	optdepends = libpulse: PulseAudio audio support
+	optdepends = alsa-lib: ALSA audio support
+	provides = nook
+	conflicts = nook
+	source = nook-0.1.0.AppImage::https://nook.cloudylake.io/download/nook-0.1.0-linux.AppImage
+	sha256sums = SKIP
+
+pkgname = nook-bin
