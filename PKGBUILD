@@ -4,8 +4,8 @@
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=hplip-plugin
-pkgver=3.25.8
-pkgrel=2
+pkgver=3.26.4
+pkgrel=1
 pkgdesc="Binary plugin for HPs hplip printer driver library"
 arch=(x86_64 aarch64 armv6h armv7h i686)
 url="https://developers.hp.com/hp-linux-imaging-and-printing/binary_plugin.html"
@@ -15,12 +15,13 @@ backup=(var/lib/hp/hplip.state)
 # specifying such a requirement breaks the ability to upgrade hplip.
 depends=("hplip>=$pkgver")
 makedepends=(python)
+options=(!debug) # Binary package cannot produce correct debug information
 # https://developers.hp.com/hp-linux-imaging-and-printing/plugins
-_date=2025-11
+_date=2026-05
 source=("$pkgname-$pkgver.run::https://developers.hp.com/sites/default/files/$_date/hplip-$pkgver-plugin.run"
         "$pkgname-$pkgver.run.asc::https://developers.hp.com/sites/default/files/$_date/hplip-$pkgver-plugin.run.asc"
         "scan-plugin-spec.py")
-sha256sums=('69151006c59a4dbdd5469df5eb97c253b5fcfeafe297360850c5a03c1ce68f95'
+sha256sums=('199f78f8af7f36894d7180e9090963ce2550a75ec701f8a4ba37665a9746fdf0'
             'SKIP'
             'c6da101f46546f2145ecc0bf9b7bbb3fb5ecb40e799274e62a7e9bc435924d25')
 validpgpkeys=('82FFA7C6AA7411D934BDE173AC69536A2CF3A243') # HPLIP (HP Linux Imaging and Printing) <hplip@hp.com>
@@ -34,7 +35,7 @@ prepare() {
 }
 
 package() {
-  depends+=(gcc-libs glibc sane libusb-compat)
+  depends+=(libgcc libstdc++ glibc sane libusb-compat)
 
   cd "$srcdir/$pkgname-$pkgver"
 

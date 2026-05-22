@@ -1,7 +1,7 @@
 pkgbase = hplip-plugin
 	pkgdesc = Binary plugin for HPs hplip printer driver library
-	pkgver = 3.25.8
-	pkgrel = 2
+	pkgver = 3.26.4
+	pkgrel = 1
 	url = https://developers.hp.com/hp-linux-imaging-and-printing/binary_plugin.html
 	arch = x86_64
 	arch = aarch64
@@ -10,19 +10,21 @@ pkgbase = hplip-plugin
 	arch = i686
 	license = LicenseRef-HPLIP-LICENSE
 	makedepends = python
-	depends = hplip>=3.25.8
+	depends = hplip>=3.26.4
+	options = !debug
 	backup = var/lib/hp/hplip.state
-	source = hplip-plugin-3.25.8.run::https://developers.hp.com/sites/default/files/2025-11/hplip-3.25.8-plugin.run
-	source = hplip-plugin-3.25.8.run.asc::https://developers.hp.com/sites/default/files/2025-11/hplip-3.25.8-plugin.run.asc
+	source = hplip-plugin-3.26.4.run::https://developers.hp.com/sites/default/files/2026-05/hplip-3.26.4-plugin.run
+	source = hplip-plugin-3.26.4.run.asc::https://developers.hp.com/sites/default/files/2026-05/hplip-3.26.4-plugin.run.asc
 	source = scan-plugin-spec.py
 	validpgpkeys = 82FFA7C6AA7411D934BDE173AC69536A2CF3A243
-	sha256sums = 69151006c59a4dbdd5469df5eb97c253b5fcfeafe297360850c5a03c1ce68f95
+	sha256sums = 199f78f8af7f36894d7180e9090963ce2550a75ec701f8a4ba37665a9746fdf0
 	sha256sums = SKIP
 	sha256sums = c6da101f46546f2145ecc0bf9b7bbb3fb5ecb40e799274e62a7e9bc435924d25
 
 pkgname = hplip-plugin
-	depends = hplip>=3.25.8
-	depends = gcc-libs
+	depends = hplip>=3.26.4
+	depends = libgcc
+	depends = libstdc++
 	depends = glibc
 	depends = sane
 	depends = libusb-compat
