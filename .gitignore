@@ -5,3 +5,4 @@ knossos
 
 # generated packages
 *.tar.*
+*.log

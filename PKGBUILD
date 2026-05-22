@@ -3,15 +3,15 @@
 # KNOSSOS saves its user preferences in $HOME/.config/MPIN/
 
 pkgname=knossos-git
-pkgver=5.1+950
+pkgver=5.1+951
 pkgrel=1
 arch=(x86_64)
 pkgdesc='A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity.'
 url='https://knossos.app'
 license=(GPL2)
-depends=(glu qt5-base pythonqt-knossos-git quazip-qt5 snappy)
-makedepends=(boost cmake git ninja)
-checkdepends=(xwayland-run weston xorg-xwayland xorg-xauth)
+depends=(glu pythonqt-knossos-git qt5-base qtkeychain-qt5 quazip-qt5 snappy)
+makedepends=(boost cmake git ninja toml11)
+checkdepends=(xorg-xauth xorg-xwayland xwayland-run weston)
 optdepends=(qt5-imageformats) # Jp2
 source=('git+https://github.com/knossos-project/knossos.git' 'knossos-git.desktop')
 md5sums=('SKIP'
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 prepare() {
-  pythonqt="Qt5Python$(pacman -Q python | cut -d' ' -f2 | cut -d. -f1-2 --output-delimiter '')"
+  pythonqt="Qt5Python$(pacman -Q python | cut -d' ' -f2 | cut -d. -f1,2 | tr -d .)"
   echo using $pythonqt
   cmake -G Ninja -Dpythonqt="$pythonqt" -S knossos -B "build-$CHOST-$pkgname"
 }
@@ -33,11 +33,14 @@ build() {
 }
 
 check() {
+  # X11 client
   xwfb-run "build-$CHOST-$pkgname/knossos" exit
+  # wayland client
+  wlheadless-run -- "build-$CHOST-$pkgname/knossos" exit
 }
 
 package() {
-  env DESTDIR="$pkgdir" cmake --install "build-$CHOST-$pkgname"
+#  env DESTDIR="$pkgdir" cmake --install "build-$CHOST-$pkgname"
   install -Dm755 "build-$CHOST-$pkgname/knossos" "$pkgdir/usr/bin/knossos-git"
   install -Dm644 "knossos/resources/icons/knossos.png" "$pkgdir/usr/share/pixmaps/knossos-git.png"
   install -Dm644 "knossos-git.desktop" "$pkgdir/usr/share/applications/knossos-git.desktop"
