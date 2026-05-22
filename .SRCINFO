@@ -1,0 +1,16 @@
+pkgbase = llamatray
+	pkgdesc = PyQt6 based Llama.cpp Tray Manager for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/DolbyDAX2/LlamaTray
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyqt6
+	depends = python-psutil
+	depends = python-requests
+	optdepends = nvidia-ml-py: NVIDIA GPU monitoring support
+	source = llamatray-1.0.0.tar.gz::https://github.com/DolbyDAX2/LlamaTray/archive/refs/tags/v1.0.0.tar.gz
+	md5sums = SKIP
+
+pkgname = llamatray
