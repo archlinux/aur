@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.22.r289.g9a29a95
+pkgver=0.5.22.r299.ga69bfe2
 pkgrel=1
 pkgdesc="Open Gaming Platform"
 arch=('any')
@@ -22,6 +22,7 @@ depends=(
   'hicolor-icon-theme'
   'libnotify'
   'mesa-utils'
+  'pciutils'
   'psmisc'
   'python-cairo'
   'python-certifi'
@@ -66,7 +67,7 @@ optdepends=(
   'lib32-mesa-libgl: OpenGL support'
   'lib32-vkd3d: DirectX 12 support'
   'lib32-vulkan-icd-loader: Vulkan support'
-  'libayatana-appindicator: tray icon support'
+  'libayatana-appindicator: Tray icon support'
   "mangohud: Display the games' FPS + other information"
   'python-evdev: Controller support'
   'python-pefile: Extract icons from Windows executables'
@@ -76,7 +77,7 @@ optdepends=(
   'vulkan-icd-loader: Vulkan support'
   'vulkan-tools: Vulkan support'
   'wine: Easiest way to get all the libraries missing from the Lutris runtime'
-  'winetricks: use system winetricks'
+  'winetricks: Use system winetricks'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
