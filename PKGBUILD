@@ -1,7 +1,7 @@
 # Maintainer: Mikhail <efklid@gmail.com>
 # shellcheck disable=SC2034,SC2154
 pkgname=refract
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="GUI tool for ranking pacman mirrors on Arch Linux and Arch-based distributions"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
     'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Labaman/refract/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c5381597c675138f9459c11f436205cc12631afb85a7bce5a964e6c555a77d86')
+sha256sums=('64dcf64d5aefe413049f608574ffebc67335c34256c0fc8edbc923d4bd2af8da')
 
 build() {
     cd "$pkgname-$pkgver" || return 1
