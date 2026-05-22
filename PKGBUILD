@@ -1,5 +1,5 @@
 pkgname=ioruba-desktop-bin
-pkgver=0.6.9
+pkgver=0.6.10
 pkgrel=1
 pkgdesc="Tactile audio mixer for Arduino-based Linux control (prebuilt AppImage)"
 arch=('x86_64')
@@ -10,15 +10,15 @@ provides=('ioruba-desktop' 'ioruba')
 conflicts=('ioruba-desktop' 'ioruba')
 replaces=('ioruba')
 source=(
-  "Ioruba_0.6.9_amd64.AppImage::https://github.com/bernardopg/ioruba/releases/download/v${pkgver}/Ioruba_0.6.9_amd64.AppImage"
+  "Ioruba_0.6.10_amd64.AppImage::https://github.com/bernardopg/ioruba/releases/download/v${pkgver}/Ioruba_0.6.10_amd64.AppImage"
   "ioruba.png::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/apps/desktop/src-tauri/icons/128x128.png"
   "ioruba.svg::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/apps/desktop/src-tauri/icons/app-icon.svg"
   "run-appimage-compat.sh::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/scripts/run-appimage-compat.sh"
 )
-sha256sums=('c0eade23872847d91b0a00a3cad879f3602f6cfa318bad4255dc5bd26f21923d' '7aff3ecc3a0cbc1fed8559ae0464d2af330372514c39edfaefd31c2119a2db63' 'cf1b733eb5dbf61daab65b83e825387efdb1bec1bea5daf52864514ee8e4511a' '18703c7f9b4f15c5885fc38214060cdf8abeeea7cc84aef51d42376bc34a16f3')
+sha256sums=('b3d132b94059a7f8eaa8d8547adb739ffd1bcf6e745f45d4d6ce5b7c0b3da492' '7aff3ecc3a0cbc1fed8559ae0464d2af330372514c39edfaefd31c2119a2db63' 'cf1b733eb5dbf61daab65b83e825387efdb1bec1bea5daf52864514ee8e4511a' '18703c7f9b4f15c5885fc38214060cdf8abeeea7cc84aef51d42376bc34a16f3')
 
 package() {
-  install -Dm755 "${srcdir}/Ioruba_0.6.9_amd64.AppImage" "${pkgdir}/opt/ioruba/ioruba.AppImage"
+  install -Dm755 "${srcdir}/Ioruba_0.6.10_amd64.AppImage" "${pkgdir}/opt/ioruba/ioruba.AppImage"
   install -Dm755 "${srcdir}/run-appimage-compat.sh" "${pkgdir}/opt/ioruba/run-appimage-compat.sh"
   install -Dm644 "${srcdir}/ioruba.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/ioruba.png"
   install -Dm644 "${srcdir}/ioruba.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ioruba.svg"
