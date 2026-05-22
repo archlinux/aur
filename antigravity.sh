@@ -8,4 +8,4 @@ if [[ -f $XDG_CONFIG_HOME/antigravity-flags.conf ]]; then
 fi
 
 # Launch
-exec /opt/antigravity-appimage-bin/Antigravity.AppImage "$@" $ANTIGRAVITY_USER_FLAGS
+exec /opt/antigravity-appimage/Antigravity.AppImage "$@" $ANTIGRAVITY_USER_FLAGS

@@ -1,4 +1,4 @@
-pkgbase = antigravity-appimage-bin
+pkgbase = antigravity-appimage
 	pkgdesc = An agentic development platform from Google, evolving the IDE into the agent-first era.(AppImage)
 	pkgver = 2.0.1
 	pkgrel = 1
@@ -11,7 +11,9 @@ pkgbase = antigravity-appimage-bin
 	depends = fuse2
 	depends = zlib-ng-compat
 	provides = antigravity
+	provides = antigravity-appimage-bin
 	conflicts = antigravity
+	conflicts = antigravity-appimage-bin
 	options = !strip
 	options = !debug
 	source = antigravity.sh
@@ -37,4 +39,4 @@ pkgbase = antigravity-appimage-bin
 	source_aarch64 = Antigravity-2.0.1-x86_64.AppImage::https://storage.googleapis.com/antigravity-public/antigravity-hub/2.0.1-6566078776737792/linux-arm/Antigravity.AppImage
 	md5sums_aarch64 = 1cdbbe2bfb64c2ea7de6990c4519fa97
 
-pkgname = antigravity-appimage-bin
+pkgname = antigravity-appimage

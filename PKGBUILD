@@ -1,6 +1,6 @@
 # Maintainer: Alexandru Spinu <spinualexandru@outlook.com>
 
-pkgname=antigravity-appimage-bin
+pkgname=antigravity-appimage
 _pkgname=antigravity
 pkgver=2.0.1
 _execution_id=6566078776737792
@@ -10,8 +10,8 @@ arch=(x86_64 aarch64)
 url='https://antigravity.google/'
 license=(LicenseRef-Google-Antigravity)
 depends=(bash fuse2 zlib-ng-compat)
-provides=(antigravity)
-conflicts=(antigravity)
+provides=(antigravity antigravity-appimage-bin)
+conflicts=(antigravity antigravity-appimage-bin)
 options=(!strip !debug)
 install=$_pkgname.install
 source=(antigravity.sh
