@@ -15,7 +15,7 @@ source=(
   "ioruba.svg::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/apps/desktop/src-tauri/icons/app-icon.svg"
   "run-appimage-compat.sh::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/scripts/run-appimage-compat.sh"
 )
-sha256sums=('b3d132b94059a7f8eaa8d8547adb739ffd1bcf6e745f45d4d6ce5b7c0b3da492' '7aff3ecc3a0cbc1fed8559ae0464d2af330372514c39edfaefd31c2119a2db63' 'cf1b733eb5dbf61daab65b83e825387efdb1bec1bea5daf52864514ee8e4511a' '18703c7f9b4f15c5885fc38214060cdf8abeeea7cc84aef51d42376bc34a16f3')
+sha256sums=('d3995a714ae8b8247daab32f2f3e9a0e14b3973e337a174c338e9afd586ad6f3' '7aff3ecc3a0cbc1fed8559ae0464d2af330372514c39edfaefd31c2119a2db63' 'cf1b733eb5dbf61daab65b83e825387efdb1bec1bea5daf52864514ee8e4511a' '18703c7f9b4f15c5885fc38214060cdf8abeeea7cc84aef51d42376bc34a16f3')
 
 package() {
   install -Dm755 "${srcdir}/Ioruba_0.6.10_amd64.AppImage" "${pkgdir}/opt/ioruba/ioruba.AppImage"
