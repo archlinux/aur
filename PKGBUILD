@@ -5,7 +5,7 @@
 
 pkgname=subtui
 _pkgname=SubTUI
-pkgver=2.14.2
+pkgver=2.14.3
 pkgrel=1
 pkgdesc="Lightweight TUI music player for Subsonic-compatible servers"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ license=('MIT')
 depends=('mpv')
 makedepends=('go')
 provides=('subtui')
-source=("https://github.com/MattiaPun/SubTUI/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('86a32a76a4f57bb985a4598c6734367a4f664bc014af2c275a0206e9e770c05d0a0493fd33afc4d919fdcf168303505333b0fe58685dba910a7bb052b1fef69f')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MattiaPun/SubTUI/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('5b42f73f438ad42327e3022fcffbbe4685c6a5414be56d5001f920fc5a8d0ccb0e9c501f66e1ae0c77ba1ea53859c55c250e9812f5be24127b5da432429ead48')
 
 prepare() {
   cd "$srcdir/$_pkgname-${pkgver}"
