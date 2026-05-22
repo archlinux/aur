@@ -1,6 +1,12 @@
 # Maintainer: Jon Kinney
+#
+# Source of truth for the AUR `tensaku` package. The aur-publish.yml
+# workflow copies this file, pins pkgver/pkgrel to the release,
+# refreshes sha256sums with updpkgsums, regenerates .SRCINFO, and
+# pushes to the AUR. Edit depends / package() etc. here — never in the
+# AUR repo directly.
 pkgname=tensaku
-pkgver=0.25.0
+pkgver=0.25.2
 pkgrel=1
 pkgdesc='Modern screenshot annotation tool for Wayland'
 arch=('x86_64')
@@ -9,7 +15,7 @@ license=('MPL-2.0')
 depends=('gtk4' 'gtk4-layer-shell' 'libadwaita' 'libepoxy' 'fontconfig')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('52762f03a109afa1749e941d2ce2ba9e1956e4fd1975347c0cd92ddfb6e35968')
+sha256sums=('4d18cea82087b58030ebc64f52c43cbba6989ee32e31f1e874543b2bdaeb1897')
 
 prepare() {
   cd "$pkgname-$pkgver"

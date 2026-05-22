@@ -1,6 +1,6 @@
 pkgbase = tensaku
 	pkgdesc = Modern screenshot annotation tool for Wayland
-	pkgver = 0.25.0
+	pkgver = 0.25.2
 	pkgrel = 1
 	url = https://github.com/jondkinney/tensaku
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tensaku
 	depends = libadwaita
 	depends = libepoxy
 	depends = fontconfig
-	source = tensaku-0.25.0.tar.gz::https://github.com/jondkinney/tensaku/archive/refs/tags/v0.25.0.tar.gz
-	sha256sums = 52762f03a109afa1749e941d2ce2ba9e1956e4fd1975347c0cd92ddfb6e35968
+	source = tensaku-0.25.2.tar.gz::https://github.com/jondkinney/tensaku/archive/refs/tags/v0.25.2.tar.gz
+	sha256sums = 4d18cea82087b58030ebc64f52c43cbba6989ee32e31f1e874543b2bdaeb1897
 
 pkgname = tensaku
