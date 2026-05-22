@@ -1,0 +1,9 @@
+pkgbase = placeholder-for-ruby
+	pkgdesc = Placeholder package for a local installation of ruby
+	pkgver = 1.0
+	pkgrel = 1
+	epoch = 1
+	arch = any
+	provides = ruby
+
+pkgname = placeholder-for-ruby
