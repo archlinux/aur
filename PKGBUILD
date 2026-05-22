@@ -1,7 +1,7 @@
 # Maintainer: Rigel Kent <sendmemail at rigelk dot eu>
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret at protonmail dot com>
 pkgname=peertube
-pkgver=8.1.5
+pkgver=8.1.7
 pkgrel=1
 pkgdesc="ActivityPub-federated video streaming platform using P2P directly in your web browser"
 arch=("x86_64")
@@ -16,8 +16,8 @@ source=("https://github.com/Chocobozzz/PeerTube/releases/download/v$pkgver/$pkgn
         "$pkgname.tmpfiles"
         "$pkgname.sysusers"
         "$pkgname")
-b2sums=('25106e8b9cc6e96abf7545d8acc990c63b51d5f55481cd0e22782f028b763bce31ae3bbdf41abc7ad12f7c960a6f720b3ccf43a6c1284795124eb5a880314f0c'
-        '8b7f32037f9d73758d5e0aa3ee94faf345bb5ca03480d6ca0f3d275d59e0bd37e230ebd409a9f06274f31b50b8c6ce4a6fed91d02ae71821087ab15c2d0b589a'
+b2sums=('88a17448e03d000ac8bb0bdf24dd22ad91c860fddf49041a8390e095e1fa3c05e86cbc0b2341fc281b12dfa21d41c7073980a87f58125c57b6b3f21a2a8223c1'
+        'SKIP'
         '10531710848bf58892fb0cefc3bc08b63b05231ece16cb143c2eae48d2d6d6c64613cf72303116701ece32b64cdbe64acffeca25030a4f2edde26f29de0360d0'
         '287a1a1b8f279b4f50d02f73b8069c39c49e6d79917f912f6f57db900064b34de91af0a5c0ee2fd743d130dc07e557b582222351491b605c7f5982c03b84b4c3'
         '8c90b7433651fc7e21bb641ec1771bd9a4186b4c88502ab7a74becfe3515f0fd84e8dfccdb5e450a3580f5bc3a9722c4a9246d0233218b47307c6ac542170171')
