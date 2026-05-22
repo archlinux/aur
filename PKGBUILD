@@ -1,10 +1,10 @@
 # Maintainer: Mohammadreza Khani
 
 pkgname=dicto
-pkgver=0.1.0
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Minimal native dictionary app for MDX/MDD files"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/mohamadkhani/dicto"
 license=('AGPL-3.0-or-later')
 depends=(
@@ -22,6 +22,7 @@ makedepends=(
 )
 optdepends=(
   'vulkan-driver: GPU rendering'
+  'vulkan-intel: Intel GPU support'
 )
 options=(!lto)
 
