@@ -1,8 +1,8 @@
 pkgbase = spritz-wine-bin
 	pkgdesc = A compatibility layer for running Windows programs, with experimental custom patches for games (doesn't conflict with other Wine installations)
-	pkgver = 11.8
-	pkgrel = 1
-	url = https://github.com/NelloKudo/spritz-wine-aur
+	pkgver = 11.9
+	pkgrel = 2
+	url = https://github.com/NelloKudo/spritz-wine
 	install = spritz-wine-bin.install
 	arch = x86_64
 	license = LGPL
@@ -25,9 +25,9 @@ pkgbase = spritz-wine-bin
 	depends = systemd-libs
 	depends = wayland
 	depends = base-devel
-	source = https://github.com/NelloKudo/spritz-wine-aur/releases/download/spritz-wine-tkg-11.8-1/spritz-wine-tkg-staging-wow64-11.8-1-x86_64.tar.xz
+	source = https://github.com/NelloKudo/spritz-wine/releases/download/spritz-wine-11.9-2/spritz-wine-tkg-staging-wow64-11.9-2-x86_64.tar.xz
 	source = winestart.c
-	sha256sums = 317e2ff104e08423806e712afcadbd35354f3525836a357406e5dd40f52bb28d
+	sha256sums = c33eacb38b5683eaa1d55ce175505efefc8c9a221974dd6514653e1c26d2bf62
 	sha256sums = ebe0fd2eb64c01c561fd9cba40f3488f2c8df3fbf60c819915491a7cad0bd237
 
 pkgname = spritz-wine-bin
