@@ -1,7 +1,7 @@
 pkgbase = libosal
 	pkgdesc = Write os-independent code for easy portability between different systems and architectures
-	pkgver = 0.2.1
-	pkgrel = 1
+	pkgver = 0.2.2
+	pkgrel = 2
 	url = https://github.com/robert-burger/libosal
 	arch = x86_64
 	license = LGPL-3.0-only
@@ -10,8 +10,10 @@ pkgbase = libosal
 	makedepends = pkgconf
 	depends = glibc
 	provides = libosal
+	provides = libosal.so
 	conflicts = libosal
-	source = libosal::git+https://github.com/robert-burger/libosal.git#tag=0.2.1
-	sha256sums = e1db7e29d34bb88177b30f81d7f4a079ae0c33f3ea130de9482c1d324bb1858d
+	conflicts = libosal.so
+	source = libosal::git+https://github.com/robert-burger/libosal.git#tag=0.2.2
+	sha256sums = 9c82e020e85edf0d7e113547523b1be72ba6ce07b11bfe306c2687377e2bd95b
 
 pkgname = libosal
