@@ -1,7 +1,7 @@
 # Maintainer: Goodarz <1831847+a-goodarzi@users.noreply.github.com>
 
 pkgname=jottr
-pkgver=1.4.3
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Simple text editor for writers, journalists and researchers'
 arch=('any')
@@ -22,7 +22,7 @@ depends=(
 conflicts=('jottr-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=(
-  '9a3c89e738b92c455aec5080558b7936b25ba66da51028a1fdde6d81a683fe22'
+  'b085b68ee7acf0a2693e64801498b4f7b06444e505bc3423ae3735261a3de670'
 )
 
 package() {
