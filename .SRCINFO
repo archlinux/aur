@@ -1,0 +1,25 @@
+pkgbase = moshpit-agent-secret-service
+	pkgdesc = Moshpit agent daemon — GNOME Keyring / KWallet (Secret Service) unlock backend
+	pkgver = 0.8.6
+	pkgrel = 1
+	url = https://github.com/rustyhorde/moshpit
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = dbus
+	depends = dbus
+	provides = moshpit-agent
+	conflicts = moshpit-agent
+	conflicts = moshpit-agent-fido2
+	conflicts = moshpit-agent-systemd-creds
+	conflicts = moshpit-agent-ssh-agent-piggyback
+	conflicts = moshpit-agent-tpm
+	conflicts = moshpit-agent-fprintd
+	conflicts = moshpit-agent-full
+	source = moshpit-agent-secret-service-0.8.6.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.6.tar.gz
+	sha256sums = e313af5f66fbbafae599357d585f39001165f73a1319a40135fa15620535178d
+
+pkgname = moshpit-agent-secret-service
