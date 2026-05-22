@@ -1,7 +1,7 @@
 pkgbase = autorandr-git
 	pkgdesc = Auto-detect connected display hardware and load appropiate X11 setup using xrandr
-	pkgver = 1.15.r3.g770dc86
-	pkgrel = 2
+	pkgver = 1.15.r6.ge459be7
+	pkgrel = 1
 	url = https://github.com/phillipberndt/autorandr
 	arch = any
 	license = GPL-3.0-only

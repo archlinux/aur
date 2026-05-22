@@ -3,8 +3,8 @@
 
 _pkgname=autorandr
 pkgname="$_pkgname-git"
-pkgver=1.15.r3.g770dc86
-pkgrel=2
+pkgver=1.15.r6.ge459be7
+pkgrel=1
 pkgdesc="Auto-detect connected display hardware and load appropiate X11 setup using xrandr"
 arch=(any)
 url="https://github.com/phillipberndt/$_pkgname"
