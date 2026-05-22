@@ -1,7 +1,7 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=shopify-cli
 _npmname=@shopify/cli
-pkgver=3.94.3
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A CLI tool to build for the Shopify platform"
 arch=('x86_64')
@@ -11,11 +11,20 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/@shopify/cli/-/cli-${pkgver}.tgz")
 noextract=("cli-${pkgver}.tgz")
-sha256sums=('1bd7fc52c8baf3f1c279478d3954c74359cc868e877046fbb83823ced3595a22')
+sha256sums=('87b7f5dc3fcc210c41b742da36ccd9577331cd256ad527eaab821f4a17daaabd')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
         "${srcdir}/cli-${pkgver}.tgz"
+
+    # Fix cross-directory hardlinks (esbuild may create hardlinks across folders)
+    esbuild_dir="$pkgdir/usr/lib/node_modules/@shopify/cli/node_modules"
+    if [ -f "$esbuild_dir/esbuild/bin/esbuild" ] && [ -f "$esbuild_dir/@esbuild/linux-x64/bin/esbuild" ]; then
+        if [ "$(stat -c %i "$esbuild_dir/esbuild/bin/esbuild")" = "$(stat -c %i "$esbuild_dir/@esbuild/linux-x64/bin/esbuild")" ]; then
+            rm -f "$esbuild_dir/esbuild/bin/esbuild"
+            cp -p "$esbuild_dir/@esbuild/linux-x64/bin/esbuild" "$esbuild_dir/esbuild/bin/esbuild"
+        fi
+    fi
 
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +
     chown -R root:root "${pkgdir}"
@@ -28,7 +37,13 @@ package() {
     mv "$tmppackage" "$pkgjson"
     chmod 644 "$pkgjson"
 
-    license_files=( "$pkgdir/usr/lib/node_modules/@shopify/cli/LICENSE" "$pkgdir/usr/lib/node_modules/@shopify/cli/license" "$pkgdir/usr/lib/node_modules/@shopify/cli/LICENSE.md" )
+    # Install license file (try several common names)
+    license_files=( "$pkgdir/usr/lib/node_modules/@shopify/cli/LICENSE" \
+                    "$pkgdir/usr/lib/node_modules/@shopify/cli/license" \
+                    "$pkgdir/usr/lib/node_modules/@shopify/cli/LICENSE.md" \
+                    "$pkgdir/usr/lib/node_modules/@shopify/cli/LICENSE.txt" \
+                    "$pkgdir/usr/lib/node_modules/@shopify/cli/COPYING" \
+                    "$pkgdir/usr/lib/node_modules/@shopify/cli/LICENSES" )
     for lf in "${license_files[@]}"; do
       if [ -f "$lf" ]; then
         install -Dm644 "$lf" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
