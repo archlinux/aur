@@ -18,9 +18,9 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mp.tar.gz")
 source_x86_64=("mp-unstable-x86_64::${_base}/mp-unstable-x86_64-unknown-linux-musl")
 source_aarch64=("mp-unstable-aarch64::${_base}/mp-unstable-aarch64-unknown-linux-musl")
-sha256sums=('01fe2c64dd041bb23abdd1eb4d44a4946011d98c3ec7423c85cf3aa875e69365')
-sha256sums_x86_64=('4d36d45e0979a7a9bcf502d54f6efc006674a80ad19890fb82ef49161567a1ae')
-sha256sums_aarch64=('8e87275553cb716e170cac822af94e85f1f7af5b947842079eac8f2874e7e374')
+sha256sums=('51b3006775a30a24dd7be80257ce5c1fa716da74855c0ae7968571c6a0d2c459')
+sha256sums_x86_64=('122207e8ea2aa91c70839678b9a236c6f7b6d078eee5ab9d7a7486961f141fe7')
+sha256sums_aarch64=('b014d8f8aae3db4bca3a55c459b7072fd438dcfeb7456507bba5ce75156920e8')
 
 package() {
     install -Dm755 "mp-unstable-${CARCH}" "$pkgdir/usr/bin/mp"
