@@ -1,0 +1,16 @@
+pkgbase = baml
+	pkgdesc = BAML - the language for agents (built from source)
+	pkgver = 0.11.0.alpha.4116
+	pkgrel = 1
+	url = https://github.com/BoundaryML/baml
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	provides = baml
+	conflicts = baml-bin
+	source = baml-0.11.0.alpha.4116.tar.gz::https://github.com/BoundaryML/baml/archive/refs/tags/baml-language-0.11.0-alpha.4116.tar.gz
+	sha256sums = 4e9132c38d4d0134eea74f61335ae8b406056d43ae729542cfabe3befdece8aa
+
+pkgname = baml
