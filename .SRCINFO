@@ -1,6 +1,6 @@
 pkgbase = letta-code-desktop-bin
 	pkgdesc = Letta lets you build agents that learn
-	pkgver = 0.25.8
+	pkgver = 0.25.10
 	pkgrel = 1
 	url = https://www.letta.com
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = letta-code-desktop-bin
 	options = !strip
 	source = latest-linux.yml::https://download.todesktop.com/260305dtu2nh5/latest-linux.yml
 	source = patch-safestorage.sh
-	sha256sums = 70f1b3394dea97e75d06efc487f7c9622328116154b3223ac7878f4544ab3442
+	sha256sums = SKIP
 	sha256sums = e1327529ac049a94d70c39ef5c1a2de21c5bb91e031b293cff73588ead7a8753
 
 pkgname = letta-code-desktop-bin
