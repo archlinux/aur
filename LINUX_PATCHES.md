@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 1:2.0.1-10
+**Current release:** 1:2.0.1-11
 
 ---
 
@@ -712,6 +712,61 @@ makepkg -si
 | **1:2.0.1-8** | Patches 9 & 10 v6 — Normalize exe name when matching `.deps.json` library keys (lowercase, strip spaces/dots/hyphens/underscores + scoring: exact=2, prefix=1). Fixes false positives when multiple `.deps.json` files exist in the game dir (e.g. `BmFont.deps.json` returned wrong version before `Stardew Valley.deps.json`). Includes v5→v6 migration patches for locally-installed asars. |
 | **1:2.0.1-9** | Patches 9 & 10 v7 — Critical fix: `exeVersion.default()` returns `undefined` (not throws) for ELF binaries on Linux. Added `\|\|"0.0.0"` to both `testExecProvider` and `getExecGameVersion` so `_ev`/`_ver` never stays `undefined`, ensuring the `.deps.json` fallback is always triggered on Linux. Fixes the empty "Your game version:" field in the Nexus Collections mismatch dialog. Includes v6→v7 migration patches for locally-installed asars. |
 | **1:2.0.1-10** | Patch 2 extended — `verifyToolDir` now also has the `.exe`→`.x86_64` fallback on Linux. This function validates the game directory every time a profile or game tab is activated (`assertToolDir` → `verifyToolDir`). Without this fix, games with native Linux binaries (e.g. Graveyard Keeper, any `.x86_64` game) get "Failed to set game mode" on every profile/tab switch even though the game is installed correctly. Previously only `verifyGamePath` (browse-for-game flow) had the fallback. |
+| **1:2.0.1-11** | Patch 11 — Generic BepInEx Linux fixer (`patch-ext-bepinex.py`): scans all Steam libraries for Unity games with BepInEx deployed as a Windows install on a Linux native binary. Automatically copies bundled `libdoorstop.so` (from BepInEx Linux release, sha256-verified), fixes `doorstop_config.ini` backslash paths, and sets the required `LD_PRELOAD` Steam launch option via `localconfig.vdf` (or writes `BEPINEX-LINUX.txt` reminder if Steam is running). Generic — covers any Unity+BepInEx game without per-game patches. |
+
+---
+
+---
+
+## Patch 11 — Generic BepInEx Linux fixer (runtime patch)
+
+**Problem:** BepInEx for Unity games ships a Windows-only hook mechanism (`winhttp.dll` +
+`doorstop_config.ini`) that does nothing on Linux native binaries. When Vortex (or any
+mod manager) deploys a BepInEx pack to a game with a native Linux executable (`.x86_64`),
+the game launches but BepInEx never loads — silently. Two concrete failures:
+
+1. **`libdoorstop.so` missing** — the Linux equivalent of the Windows doorstop hook is not
+   included in BepInEx Windows distributions. Without it, `LD_PRELOAD` has nothing to load.
+2. **`doorstop_config.ini` uses Windows paths** — `target_assembly=BepInEx\core\BepInEx.Preloader.dll`
+   uses backslashes, which Linux treats as literal characters, breaking the assembly path.
+
+**Fix:** Runtime patch script `patch-ext-bepinex.py`, deployed to `/opt/Vortex/` and
+executed by `vortex.sh` on every Vortex launch. The script:
+
+1. Reads `~/.local/share/Steam/steamapps/libraryfolders.vdf` to discover all Steam
+   library roots (covers multi-drive setups).
+2. For each library, scans `steamapps/common/` for game directories containing
+   `BepInEx/core/BepInEx.Preloader.dll` **and** `winhttp.dll` (confirms Windows BepInEx
+   install) **and** a Linux-native executable (`.x86_64` suffix or `UnityPlayer.so`).
+3. If not already fixed:
+   - Copies `libdoorstop.so` from `/opt/Vortex/resources/libdoorstop.so` (bundled in package)
+     to the game directory.
+   - Fixes `doorstop_config.ini`: replaces `BepInEx\core\BepInEx.Preloader.dll` →
+     `BepInEx/core/BepInEx.Preloader.dll`.
+   - If Steam is **not** running: sets the required Steam launch option directly in
+     `localconfig.vdf` for all user accounts found under `~/.local/share/Steam/userdata/`.
+   - If Steam **is** running: writes `BEPINEX-LINUX.txt` in the game directory with the
+     exact launch option string to copy-paste.
+4. Idempotent: skips games already fixed (libdoorstop.so present + ini path clean).
+
+The required Steam launch option (shown in `BEPINEX-LINUX.txt` and set automatically
+when Steam is not running):
+
+```
+DOORSTOP_ENABLED=1 DOORSTOP_TARGET_ASSEMBLY="BepInEx/core/BepInEx.Preloader.dll" LD_PRELOAD="./libdoorstop.so" %command%
+```
+
+`libdoorstop.so` is bundled from the official BepInEx Linux release
+(`BepInEx_linux_x64_5.4.23.2.zip`, sha256-verified) and installed at
+`/opt/Vortex/resources/libdoorstop.so`.
+
+**Scope:** Generic — works for **any** Unity game with BepInEx deployed by any mod manager
+or manually. Tested with Graveyard Keeper (AppID 599140). Also covers Valheim, Risk of Rain 2,
+Subnautica, and any other Unity+BepInEx title with a Linux native binary.
+
+**Why runtime and not PKGBUILD:** The fix must be applied to user game directories that
+are not known at package build time. The same `patch-ext-*.py` mechanism used by other
+runtime patches is the correct approach.
 
 ---
 
@@ -739,5 +794,6 @@ makepkg -si
 - [x] A Hat in Time: no native Linux binary; Proton-only, `.exe` present in game dir — no patch needed
 - [x] `Plugins.txt` / `loadorder.txt` for Bethesda games via Proton prefix (`gamebryo-plugin-management`)
 - [x] Generic .NET game version detection on Linux via `deps.json` fallback (Stardew Valley and similar)
+- [x] Generic BepInEx Linux fixer: `libdoorstop.so` copy + `doorstop_config.ini` fix + Steam launch option (all Unity+BepInEx games)
 - [ ] Upstream PRs to Nexus-Mods/Vortex with the Linux fixes
 - [ ] Automatic re-patch of user extensions after update
