@@ -1,13 +1,13 @@
 pkgbase = rustxo
 	pkgdesc = Fast-paced Tic Tac Toe game written in Rust
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Real-Yash/rustxo
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = rustxo-0.1.0.tar.gz::https://github.com/Real-Yash/rustxo/archive/refs/tags/v0.1.0.tar.gz
+	source = rustxo-0.1.1.tar.gz::https://github.com/Real-Yash/rustxo/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = rustxo

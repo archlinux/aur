@@ -1,5 +1,5 @@
 pkgname=rustxo
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Fast-paced Tic Tac Toe game written in Rust"
 arch=('x86_64')
