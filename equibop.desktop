@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Equibop
+GenericName=Equicord Discord Client
+Comment=Equicord-enabled Discord client with improved Wayland support
+Exec=equibop %U
+Icon=equibop
+Terminal=false
+StartupNotify=true
+Categories=Network;InstantMessaging;Chat;
+MimeType=x-scheme-handler/discord;x-scheme-handler/equibop;
+Keywords=discord;chat;voice;equicord;vencord;
+StartupWMClass=Equibop

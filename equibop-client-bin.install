@@ -1,0 +1,10 @@
+post_install() {
+  echo ">>> Equibop installed successfully."
+  echo ">>> Launch with: equibop"
+  echo ">>> For best Wayland experience on Hyprland/Plasma, the package enables ozone-platform-hint=auto."
+  update-desktop-database -q
+}
+
+post_upgrade() {
+  post_install
+}
