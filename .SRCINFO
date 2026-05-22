@@ -1,6 +1,6 @@
 pkgbase = purple-bin
 	pkgdesc = Terminal SSH manager with provider sync, tunnels, file transfer and containers
-	pkgver = 3.15.10
+	pkgver = 3.15.11
 	pkgrel = 1
 	url = https://github.com/erickochen/purple
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = purple-bin
 	conflicts = purple
 	options = !strip
 	options = !debug
-	source = LICENSE::https://raw.githubusercontent.com/erickochen/purple/refs/tags/v3.15.10/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/erickochen/purple/refs/tags/v3.15.11/LICENSE
 	sha256sums = 7ffe3e49f530418a8e37f4546534f20ddbd1109a5a3e3b2ae7fde09d27dae1dc
-	source_x86_64 = purple-3.15.10-bin.tar.gz::https://github.com/erickochen/purple/releases/download/v3.15.10/purple-3.15.10-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 4d21c68b9b4bce6d16b73c19ebd42332a5a69e0b08532c9bfc6a09ac1966885e
-	source_aarch64 = purple-3.15.10-bin.tar.gz::https://github.com/erickochen/purple/releases/download/v3.15.10/purple-3.15.10-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = d52521a14f7c62f2041dd24ff32ff85a9b5382d545a44c5c0f9d3d382f5c3a43
+	source_x86_64 = purple-3.15.11-bin.tar.gz::https://github.com/erickochen/purple/releases/download/v3.15.11/purple-3.15.11-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2ef2b30634a746cda04fb1d2bd841779b6eca79162eb4964ca47d5cbd44bd682
+	source_aarch64 = purple-3.15.11-bin.tar.gz::https://github.com/erickochen/purple/releases/download/v3.15.11/purple-3.15.11-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e8a00417e27be28dab070442c3ca06cb54a78a0a6007c65244dba87d88ab8b36
 
 pkgname = purple-bin
