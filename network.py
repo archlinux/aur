@@ -1,21 +1,18 @@
-"""
-Module for API network interactions.
-Manages asynchronous communication with the local LLM server.
-"""
+# talk to the local llm
 import json
 import init_gi
 from gi.repository import Soup, GLib
 from typing import List
 
 async def get_ai_response(app, bubble, thinking_label, messages: List[dict]):
-    """Prepares and executes the chat completion request with connection retry."""
+    # send prompt
     payload = {
         "model": app.current_model,
         "messages": messages,
         "stream": True
     }
     
-    # Try multiple times to connect, as some models take time to bind the port
+    # retry loop
     for attempt in range(5):
         try:
             msg = Soup.Message.new("POST", f"{app.BASE_URL}/chat/completions")
@@ -28,7 +25,7 @@ async def get_ai_response(app, bubble, thinking_label, messages: List[dict]):
                 return stream
             
             print(f"Server returned status {status} on attempt {attempt + 1}")
-            # If it's a 404 or other non-retriable error, we might want to break early
+            # hard error
             if status != Soup.Status.NONE and status < 500:
                 break
                 

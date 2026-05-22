@@ -1,7 +1,4 @@
-"""
-Module for chat display management.
-Handles UI rendering, message bubble construction, and visual status updates.
-"""
+# render chat bubbles, code blocks, attachments, etc.
 import init_gi
 from gi.repository import Gtk, Gdk, GLib, GtkSource, Pango
 import utils
@@ -9,10 +6,10 @@ import logging
 from typing import Optional
 
 def create_code_block(code: str, language_id: str) -> Gtk.ScrolledWindow:
-    """Creates a GtkSourceView widget for syntax highlighting with theme support."""
+    # code block with syntax highlighting
     lang_manager = GtkSource.LanguageManager.get_default()
     
-    # Map common markdown tags to GtkSource identifiers
+    # map markdown langs
     lang_map = {
         "python": "python",
         "py": "python",
@@ -38,7 +35,7 @@ def create_code_block(code: str, language_id: str) -> Gtk.ScrolledWindow:
     buffer = GtkSource.Buffer.new_with_language(lang) if lang else GtkSource.Buffer.new()
     buffer.set_text(code)
     
-    # Apply a dark-friendly style scheme
+    # dark mode code scheme
     scheme_manager = GtkSource.StyleSchemeManager.get_default()
     scheme = scheme_manager.get_scheme("Adwaita-dark") or scheme_manager.get_scheme("oblivion")
     if scheme:
@@ -48,27 +45,55 @@ def create_code_block(code: str, language_id: str) -> Gtk.ScrolledWindow:
     view.set_editable(False)
     view.set_show_line_numbers(True)
     view.set_monospace(True)
-    view.set_wrap_mode(Gtk.WrapMode.WORD) # Enable wrapping
+    view.set_wrap_mode(Gtk.WrapMode.WORD)
     view.add_css_class("code-block")
     
     scrolled = Gtk.ScrolledWindow()
-    scrolled.set_hexpand(True) # Force horizontal expansion
+    scrolled.set_hexpand(True)
     scrolled.set_vexpand(False)
     scrolled.set_propagate_natural_height(True)
-    scrolled.set_min_content_height(100) # Increased min height
-    scrolled.set_min_content_width(350)  # Ensure a base width
+    scrolled.set_min_content_height(100)
+    scrolled.set_min_content_width(650)  # make it readable
     scrolled.set_max_content_height(600)
     scrolled.set_child(view)
     return scrolled
 
 def add_message(app, text: str, is_user: bool, attachments = None) -> Gtk.Label:
-    """
-    Renders a chat bubble, handling both plain text and code blocks, and visual attachments.
-    """
+    # chat bubble with avatar and stuff
     bubble_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
     bubble_box.add_css_class("user-bubble" if is_user else "assistant-bubble")
+    if is_user:
+        bubble_box.set_halign(Gtk.Align.END)
+    else:
+        bubble_box.set_halign(Gtk.Align.START)
     
-    # Process attachments (backward compatibility)
+    # top of bubble
+    header = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+    header.add_css_class("bubble-header")
+    
+    if is_user:
+        sender_label = Gtk.Label(label="You")
+        sender_label.add_css_class("bubble-user-label")
+    else:
+        model_name = getattr(app, "current_model", None) or "Assistant"
+        sender_label = Gtk.Label(label=model_name)
+        sender_label.add_css_class("bubble-model-label")
+        
+    sender_label.set_xalign(0.0)
+    header.append(sender_label)
+    header.append(Gtk.Box(hexpand=True))
+    
+    if text:
+        copy_btn = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
+        copy_btn.add_css_class("flat")
+        copy_btn.add_css_class("bubble-action-btn")
+        copy_btn.set_tooltip_text("Copy Response" if not is_user else "Copy Message")
+        copy_btn.connect("clicked", lambda b: copy_to_clipboard(text))
+        header.append(copy_btn)
+        
+    bubble_box.append(header)
+    
+    # deal with attachments
     att_list = []
     if attachments:
         if isinstance(attachments, str):
@@ -76,7 +101,7 @@ def add_message(app, text: str, is_user: bool, attachments = None) -> Gtk.Label:
         elif isinstance(attachments, list):
             att_list = attachments
 
-    # If user message, render all attached images inline
+    # show images
     for att in att_list:
         if isinstance(att, dict) and att.get("type") == "image":
             path = att.get("path")
@@ -111,36 +136,49 @@ def add_message(app, text: str, is_user: bool, attachments = None) -> Gtk.Label:
             bubble.set_markup(utils.markdown_to_pango(content))
             bubble_box.append(bubble)
             last_bubble = bubble
+            
+    # avatar box
+    avatar_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+    avatar_box.add_css_class("avatar-box")
+    avatar_box.set_size_request(32, 32)
+    avatar_box.set_halign(Gtk.Align.CENTER)
+    avatar_box.set_valign(Gtk.Align.START) # align top
     
-    if text:
-        copy_btn = Gtk.Button(icon_name="edit-copy-symbolic")
-        copy_btn.add_css_class("flat")
-        copy_btn.add_css_class("dim-label")
-        copy_btn.add_css_class("copy-btn")
-        copy_btn.set_halign(Gtk.Align.END)
-        copy_btn.connect("clicked", lambda b: copy_to_clipboard(text))
-        bubble_box.append(copy_btn)
-    
-    align = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
     if is_user:
-        align.append(Gtk.Box(hexpand=True))
-        align.append(bubble_box)
+        avatar_box.add_css_class("avatar-user")
+        avatar_img = Gtk.Image.new_from_icon_name("avatar-default-symbolic")
     else:
+        avatar_img = Gtk.Image.new_from_icon_name("computer-symbolic")
+        
+    avatar_img.set_halign(Gtk.Align.CENTER)
+    avatar_img.set_valign(Gtk.Align.CENTER)
+    avatar_img.set_hexpand(True)
+    avatar_img.set_vexpand(True)
+    avatar_box.append(avatar_img)
+    
+    # layout avatar and bubble
+    align = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+    if is_user:
+        align.set_halign(Gtk.Align.END)
         align.append(bubble_box)
-        align.append(Gtk.Box(hexpand=True))
+        align.append(avatar_box)
+    else:
+        align.set_halign(Gtk.Align.START)
+        align.append(avatar_box)
+        align.append(bubble_box)
         
     app.chat_box.append(align)
     GLib.idle_add(scroll_to_bottom, app)
     return last_bubble
 
 def copy_to_clipboard(text: str) -> None:
-    """Copies the provided text to the system clipboard using GTK 4's ContentProvider."""
+    # copy to clipboard
     clipboard = Gdk.Display.get_default().get_clipboard()
     content = Gdk.ContentProvider.new_for_value(text)
     clipboard.set_content(content)
 
 def add_system_message(app, text: str) -> None:
-    """Adds a system status message to the chat view."""
+    # show status message
     label = Gtk.Label(label=text)
     label.add_css_class("system-status")
     label.set_margin_top(10)
@@ -150,7 +188,7 @@ def add_system_message(app, text: str) -> None:
     GLib.idle_add(scroll_to_bottom, app)
 
 def add_spinner(app) -> Gtk.Spinner:
-    """Adds a spinner for loading/thinking states."""
+    # show thinking spinner
     box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     box.set_margin_top(10)
     box.set_margin_bottom(10)
@@ -162,7 +200,7 @@ def add_spinner(app) -> Gtk.Spinner:
     return box
 
 def clear_status_labels(app) -> bool:
-    """Removes all transient system messages from the view."""
+    # clear status text
     for label in app.status_labels:
         if label.get_parent() == app.chat_box:
             app.chat_box.remove(label)
@@ -170,19 +208,19 @@ def clear_status_labels(app) -> bool:
     return False
 
 def scroll_to_bottom(app) -> None:
-    """Scrolls the chat view to the latest entry."""
+    # scroll down
     adj = app.scrolled.get_vadjustment()
     adj.set_value(adj.get_upper() - adj.get_page_size())
 
 def chat_box_remove_all(app) -> None:
-    """Clears all messages from the chat box."""
+    # clear chat
     child = app.chat_box.get_first_child()
     while child:
         app.chat_box.remove(child)
         child = app.chat_box.get_first_child()
 
 def cancel_ai_task(app) -> None:
-    """Cancels the current AI response task and clears 'Thinking' indicators."""
+    # cancel ai response
     if app.ai_task and not app.ai_task.done():
         app.ai_task.cancel()
     
@@ -207,13 +245,13 @@ def cancel_ai_task(app) -> None:
     if hasattr(app, "unlock_ui"):
         GLib.idle_add(app.unlock_ui)
     else:
-        # Fallback if unlock_ui is somehow not found
+        # fallback
         app.input_box.set_sensitive(True)
         app.set_entry_locked(False)
         app.entry.grab_focus()
 
 def update_thumbnail(app) -> None:
-    """Refreshes the thumbnail preview area for selected attachments."""
+    # update attachment preview
     child = app.thumb_box.get_first_child()
     while child:
         app.thumb_box.remove(child)
@@ -273,12 +311,12 @@ def update_thumbnail(app) -> None:
         app.thumb_box.append(card_box)
 
 def on_remove_attachment(app, index: int) -> None:
-    """Removes a specific attachment from the selection list."""
+    # drop one attachment
     if hasattr(app, "selected_attachments") and 0 <= index < len(app.selected_attachments):
         app.selected_attachments.pop(index)
     update_thumbnail(app)
 
 def on_remove_thumbnail(app) -> None:
-    """Removes all attachments (fallback for single image removal)."""
+    # clear all attachments
     app.selected_attachments = []
     update_thumbnail(app)

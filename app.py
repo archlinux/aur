@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
 import sys
 import warnings
-# Silence DeprecationWarnings (e.g. asyncio.set_event_loop_policy in Python 3.14+)
+# hide annoying warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 import asyncio
 import init_gi
-from gi.repository import Gio
+from gi.repository import Gio, GLib
 from gi.events import GLibEventLoopPolicy
 from main import FlmChatApp
 
-# Set the policy BEFORE creating any loops
+# set app name so taskbar icon works
+GLib.set_prgname("com.marley.FastFlowLM-gtk")
+GLib.set_application_name("FastFlowLM-gtk")
+
+# policy setup before loops
 asyncio.set_event_loop_policy(GLibEventLoopPolicy())
 
 if __name__ == "__main__":

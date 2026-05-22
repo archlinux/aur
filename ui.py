@@ -1,13 +1,10 @@
-"""
-Module for UI components and structure.
-Handles initial widget layout construction using modern GTK4 & Libadwaita standards.
-"""
+# build gtk ui stuff
 import init_gi
 from gi.repository import Gtk, Adw
 import display
 
 def _get_new_chat_icon() -> str:
-    """Helper to safely query and return the best symbolic new tab/chat icon name."""
+    # get new chat icon
     from gi.repository import Gdk
     display_default = Gdk.Display.get_default()
     if display_default:
@@ -17,10 +14,10 @@ def _get_new_chat_icon() -> str:
     return "document-new-symbolic"
 
 def show_welcome_message(app):
-    """Shows a modern, beautiful native welcome status page."""
+    # welcome screen
     display.chat_box_remove_all(app)
 
-    # Strictly disable all interactive elements
+    # lock ui
     app.model_btn.set_sensitive(False)
     app.model_btn.set_popover(None)
     app.model_btn.set_tooltip_text("Start a new chat to select a model.")
@@ -75,19 +72,19 @@ def show_welcome_message(app):
     app.chat_box.append(status_page)
 
 def build_sidebar(app) -> Adw.ToolbarView:
-    """Builds a modern edge-to-edge sidebar with a separate HeaderBar."""
+    # build sidebar
     toolbar_view = Adw.ToolbarView()
     
     sidebar_header = Adw.HeaderBar()
     sidebar_header.set_show_end_title_buttons(False)
     
-    # New chat button in sidebar header where it naturally belongs
+    # new chat btn
     app.btn_new = Gtk.Button(icon_name=_get_new_chat_icon())
     app.btn_new.set_tooltip_text("New Chat")
     app.btn_new.connect("clicked", app.on_new_chat)
     sidebar_header.pack_start(app.btn_new)
     
-    # Options menu button in sidebar header
+    # options btn
     app.options_btn = Gtk.MenuButton(icon_name="view-more-symbolic")
     app.options_btn.set_tooltip_text("Options")
     sidebar_header.pack_end(app.options_btn)
@@ -122,42 +119,50 @@ def build_sidebar(app) -> Adw.ToolbarView:
     return toolbar_view
 
 def build_main_content(app) -> Adw.ToolbarView:
-    """Builds the main chat interface using a modern clamped ToolbarView layout."""
+    # build main chat ui
     toolbar_view = Adw.ToolbarView()
     
     app.header = Adw.HeaderBar()
     
-    # Sidebar toggle button
+    # sidebar toggle
     app.btn_sidebar = Gtk.ToggleButton(icon_name="sidebar-show-symbolic")
     app.btn_sidebar.set_active(True)
     app.btn_sidebar.set_tooltip_text("Toggle Sidebar")
     app.btn_sidebar.connect("toggled", lambda b: app.split_view.set_show_sidebar(b.get_active()))
     app.header.pack_start(app.btn_sidebar)
     
-    # Model Repair button packed to the end of main header
+    # repair btn
     app.btn_repair = Gtk.Button(icon_name="view-refresh-symbolic")
     app.btn_repair.set_tooltip_text("Repair Model")
     app.btn_repair.connect("clicked", app.on_repair_clicked)
     app.header.pack_end(app.btn_repair)
+
+    # eject btn
+    app.btn_eject = Gtk.Button(icon_name="media-eject-symbolic")
+    app.btn_eject.set_tooltip_text("Eject Model")
+    app.btn_eject.connect("clicked", app.on_eject_clicked)
+    app.header.pack_end(app.btn_eject)
     
-    # Model selection menu in the center of the header bar
+    # model picker
     app.model_btn = Gtk.MenuButton()
     app.header.set_title_widget(app.model_btn)
     
     toolbar_view.add_top_bar(app.header)
     
-    # Content scroll area
+    # scroll
     app.scrolled = Gtk.ScrolledWindow()
     app.scrolled.set_vexpand(True)
     app.scrolled.set_kinetic_scrolling(True)
     app.scrolled.add_css_class("chat-scroll")
     
-    # Clamped chat box for consistent 800px readable content column
+    # clamp chat
     clamp_chat = Adw.Clamp()
-    clamp_chat.set_maximum_size(800)
-    clamp_chat.set_tightening_threshold(600)
+    clamp_chat.set_maximum_size(1100)
+    clamp_chat.set_tightening_threshold(800)
     
     app.chat_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+    app.chat_box.set_hexpand(True)
+    app.chat_box.set_halign(Gtk.Align.FILL)
     app.chat_box.set_margin_top(18)
     app.chat_box.set_margin_bottom(18)
     app.chat_box.set_margin_start(16)
@@ -167,12 +172,12 @@ def build_main_content(app) -> Adw.ToolbarView:
     app.scrolled.set_child(clamp_chat)
     toolbar_view.set_content(app.scrolled)
     
-    # Bottom bar layout - handles clamped thumbnail queue and input area together
+    # bottom bar
     bottom_bar_layout = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
     
     clamp_bottom = Adw.Clamp()
-    clamp_bottom.set_maximum_size(800)
-    clamp_bottom.set_tightening_threshold(600)
+    clamp_bottom.set_maximum_size(1100)
+    clamp_bottom.set_tightening_threshold(800)
     
     bottom_content = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
     bottom_content.set_margin_start(16)
@@ -180,12 +185,12 @@ def build_main_content(app) -> Adw.ToolbarView:
     bottom_content.set_margin_bottom(16)
     bottom_content.set_margin_top(8)
     
-    # Attachment previews
+    # attachment previews
     app.thumb_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     app.thumb_box.set_margin_bottom(4)
     bottom_content.append(app.thumb_box)
     
-    # Message typing area
+    # typing area
     app.input_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     app.input_box.add_css_class("input-area")
     
@@ -211,7 +216,7 @@ def build_main_content(app) -> Adw.ToolbarView:
     app.input_scroll.set_child(app.entry)
     input_container.append(app.input_scroll)
     
-    # Attachment paperclip button
+    # paperclip btn
     app.btn_attach = Gtk.Button(icon_name="paperclip-symbolic")
     app.btn_attach.add_css_class("flat")
     app.btn_attach.set_valign(Gtk.Align.CENTER)
@@ -220,7 +225,7 @@ def build_main_content(app) -> Adw.ToolbarView:
     
     app.input_box.append(input_container)
     
-    # Send button
+    # send btn
     app.btn_send = Gtk.Button(icon_name="mail-send-symbolic")
     app.btn_send.add_css_class("circular")
     app.btn_send.add_css_class("accent-btn")

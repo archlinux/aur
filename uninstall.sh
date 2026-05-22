@@ -12,8 +12,8 @@ echo "Uninstalling FastFlowLM-gtk..."
 
 INSTALL_DIR="/usr/share/fastflowlm-gtk"
 BIN_PATH="/usr/bin/fastflowlm-gtk"
-ICON_PATH="/usr/share/icons/hicolor/256x256/apps/fastflowlm-gtk.png"
-DESKTOP_PATH="/usr/share/applications/fastflowlm-gtk.desktop"
+ICON_PATH="/usr/share/icons/hicolor/256x256/apps/com.marley.FastFlowLM-gtk.png"
+DESKTOP_PATH="/usr/share/applications/com.marley.FastFlowLM-gtk.desktop"
 
 # Remove files
 rm -f "$BIN_PATH"

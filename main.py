@@ -27,10 +27,7 @@ DEFAULT_PORT = 52625
 BASE_URL = f"http://127.0.0.1:{DEFAULT_PORT}/v1"
 
 class FlmChatApp(Adw.Application):
-    """
-    Main application controller for FastFlowLM-gtk.
-    Manages application state, lifecycle, and coordinates between UI/data modules.
-    """
+    # main app class
     def __init__(self):
         super().__init__(application_id=APP_ID, flags=Gio.ApplicationFlags.FLAGS_NONE)
         self.server_process: Optional[subprocess.Popen] = None
@@ -54,13 +51,42 @@ class FlmChatApp(Adw.Application):
         self.allow_mid_chat_switch = False
         self.is_sending = False
         self.is_welcome_screen = True
+        self.model_loading = False
         self.BASE_URL = BASE_URL
+        self.favourited_chat = None
+        self.load_config()
         
         self.lock_fd = None
         self.acquire_system_lock()
 
+    def load_config(self):
+        config_path = os.path.expanduser("~/.config/flm/theme.json")
+        if os.path.exists(config_path):
+            try:
+                with open(config_path, "r") as f:
+                    config_data = json.load(f)
+                    self.favourited_chat = config_data.get("favourited_chat", None)
+            except Exception as e:
+                logging.error(f"Error loading config: {e}")
+
+    def save_config(self):
+        config_path = os.path.expanduser("~/.config/flm/theme.json")
+        try:
+            config_data = {}
+            if os.path.exists(config_path):
+                with open(config_path, "r") as f:
+                    config_data = json.load(f)
+            
+            config_data["accent_color"] = self.theme_color
+            config_data["favourited_chat"] = self.favourited_chat
+            
+            with open(config_path, "w") as f:
+                json.dump(config_data, f)
+        except Exception as e:
+            logging.error(f"Error saving config: {e}")
+
     def acquire_system_lock(self) -> None:
-        """Acquires a file lock to manage system model resource usage."""
+        # file lock
         lock_path = os.path.expanduser("~/.config/flm/model_ram.lock")
         try:
             self.lock_fd = open(lock_path, 'w')
@@ -69,7 +95,7 @@ class FlmChatApp(Adw.Application):
             print("Warning: Another instance is managing the system models.")
 
     def do_activate(self) -> None:
-        """Initializes the main window and UI components."""
+        # setup app
         Adw.StyleManager.get_default().set_color_scheme(Adw.ColorScheme.PREFER_DARK)
         
         self.models = flm.get_all_models()
@@ -89,8 +115,9 @@ class FlmChatApp(Adw.Application):
         self.win = Adw.ApplicationWindow(application=self)
         self.win.set_default_size(900, 800)
         self.win.set_title("FastFlowLM-gtk")
+        self.win.set_icon_name("com.marley.FastFlowLM-gtk")
 
-        # Setup native keyboard actions & accelerators
+        # shortcuts
         self.action_new_chat = Gio.SimpleAction.new("new_chat", None)
         self.action_new_chat.connect("activate", lambda a, p: self.on_new_chat(None))
         self.add_action(self.action_new_chat)
@@ -116,12 +143,12 @@ class FlmChatApp(Adw.Application):
         self.add_action(self.action_show_shortcuts)
         self.set_accels_for_action("app.show_shortcuts", ["<Ctrl>question", "<Ctrl>slash"])
 
-        # Initial shortcuts sensitivity update
+        # shortcut toggles
         self.update_shortcuts_sensitivity()
         
         self.css_provider.load_from_data(utils.CSS.encode())
         theme.apply_theme(self, self.theme_color)
-        # Apply globally to ensure dialogs pick it up
+        # global css
         Gtk.StyleContext.add_provider_for_display(
             Gdk.Display.get_default(),
             self.css_provider,
@@ -161,7 +188,7 @@ class FlmChatApp(Adw.Application):
         import re
         text = entry.get_text().lower().strip()
         
-        # Build search cache if not present or needs refresh (preserves original casing)
+        # lazy search cache
         if not hasattr(self, '_search_cache'):
             self._search_cache = {}
             for meta in self.sessions_metadata:
@@ -176,12 +203,12 @@ class FlmChatApp(Adw.Application):
                     logging.error(f"Failed to cache session {session_id}: {e}")
                     self._search_cache[session_id] = ""
         
-        # Helper to escape HTML tags in text for safe Pango markup
+        # pango helpers
         def escape_pango(t: str) -> str:
             return t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
             
-        # Helper to highlight occurrences of the query using bold tags case-insensitively
         def highlight_match(t: str, query: str) -> str:
+            # bold matching text
             escaped_t = escape_pango(t)
             if not query:
                 return escaped_t
@@ -203,17 +230,17 @@ class FlmChatApp(Adw.Application):
             title_text = meta.get("title", "")
             model_text = meta.get("model", "")
             
-            # Find labels inside the list row layout
+            # get labels
             main_box = row.get_child()
             txt_box = main_box.get_first_child()
             title_label = txt_box.get_first_child()
             model_label = title_label.get_next_sibling()
             
-            # Make sure labels support markup
+            # enable markup
             title_label.set_use_markup(True)
             model_label.set_use_markup(True)
             
-            # Determine base model label prefixing for VLM indicator
+            # vlm emoji
             model_display_text = model_text
             model_data = next((m for m in self.models if m['model'] == model_text), None)
             if model_data and model_data.get('vlm', False):
@@ -225,7 +252,7 @@ class FlmChatApp(Adw.Application):
                 model_label.set_markup(escape_pango(model_display_text))
                 continue
                 
-            # Perform search check on Title, Model, and Content
+            # check stuff
             matches_title = text in title_text.lower()
             matches_model = text in model_text.lower()
             matches_content = text in content_lower
@@ -233,17 +260,17 @@ class FlmChatApp(Adw.Application):
             if matches_title or matches_model or matches_content:
                 row.set_visible(True)
                 
-                # The model name always stays in the subtitle position, highlighted if matched
+                # keep model label
                 model_label.set_markup(highlight_match(model_display_text, text))
                 
-                # Show highlighted content snippet inside the Title position if matched, otherwise show standard title
+                # show snippet
                 if matches_content:
                     start_idx = content_lower.find(text)
-                    # Start preview EXACTLY at the matching text, going forward 50 characters
+                    # grab 50 chars
                     slice_end = min(len(original_content), start_idx + 50)
                     preview_slice = original_content[start_idx:slice_end]
                     
-                    # Clean and sanitize whitespace/newlines
+                    # flatten text
                     preview_clean = " ".join(preview_slice.replace("\n", " ").replace("\r", " ").replace("\t", " ").split())
                     
                     suffix = "..." if slice_end < len(original_content) else ""
@@ -293,9 +320,65 @@ class FlmChatApp(Adw.Application):
         if model_data:
             models.confirm_download(self, model_data)
 
+    def on_eject_clicked(self, btn):
+        if not self.current_model or self.current_model == "none":
+            return
+            
+        is_running = flm.is_server_ready(self.current_model, server_process=self.server_process)
+        if is_running:
+            display.add_system_message(self, f"Ejecting {self.current_model} from memory...")
+            if self.server_process:
+                self.server_process.terminate()
+                try:
+                    self.server_process.wait(timeout=2)
+                except:
+                    self.server_process.kill()
+                self.server_process = None
+            else:
+                flm.kill_existing_servers()
+                
+            self.set_entry_locked(True)
+            self.btn_send.set_sensitive(False)
+            self.btn_attach.set_sensitive(False)
+            self.update_model_ui()
+            display.add_system_message(self, f"{self.current_model} ejected.")
+        else:
+            display.add_system_message(self, f"Starting process matrix for {self.current_model}...")
+            model_data = next((m for m in self.models if m['model'] == self.current_model), None)
+            if model_data:
+                self.server_process = flm.start_flm_serve(self.current_model, self.server_process)
+                self.run_task(self.wait_for_server())
+                self.update_model_ui()
+
     def update_model_ui(self):
         models.update_model_ui(self)
-        self.btn_repair.set_sensitive(self.current_model is not None and self.current_model != "none")
+        has_model = self.current_model is not None and self.current_model != "none"
+        self.btn_repair.set_sensitive(has_model)
+        
+        if hasattr(self, "btn_eject"):
+            is_current_installed = False
+            if has_model:
+                m_data = next((m for m in self.models if m['model'] == self.current_model), None)
+                is_current_installed = m_data is not None and m_data.get('installed', False)
+
+            if has_model and is_current_installed:
+                self.btn_eject.set_sensitive(False)
+                if getattr(self, 'model_loading', False):
+                    self.btn_eject.set_icon_name("emblem-synchronizing-symbolic")
+                    self.btn_eject.set_tooltip_text("Loading model...")
+                else:
+                    self.btn_eject.set_sensitive(True)
+                    is_running = flm.is_server_ready(self.current_model, server_process=self.server_process)
+                    if is_running:
+                        self.btn_eject.set_icon_name("media-eject-symbolic")
+                        self.btn_eject.set_tooltip_text("Eject model")
+                    else:
+                        self.btn_eject.set_icon_name("media-playback-start-symbolic")
+                        self.btn_eject.set_tooltip_text("Load model")
+            else:
+                self.btn_eject.set_sensitive(False)
+                self.btn_eject.set_icon_name("media-eject-symbolic")
+                self.btn_eject.set_tooltip_text("No active model")
 
     def on_row_activated(self, listbox, row, popover):
         return models.on_row_activated(self, listbox, row, popover)
@@ -319,7 +402,7 @@ class FlmChatApp(Adw.Application):
         return models.download_model(self, model_name)
 
     def update_history_ui(self):
-        # Clear search cache when UI updates to prevent indexing out of sync
+        # drop cache
         if hasattr(self, '_search_cache'):
             del self._search_cache
             
@@ -329,9 +412,15 @@ class FlmChatApp(Adw.Application):
             self.history_list.remove(child)
             child = next_child
         
-        for meta in self.sessions_metadata:
+        # favs to top
+        sorted_meta = sorted(
+            self.sessions_metadata,
+            key=lambda m: 0 if (self.favourited_chat is not None and str(m["id"]) == str(self.favourited_chat)) else 1
+        )
+        
+        for meta in sorted_meta:
             row = Gtk.ListBoxRow()
-            # Store session_id and metadata directly on row to guarantee search safety
+            # stash metadata
             row.session_id = meta["id"]
             row.session_meta = meta
             
@@ -369,6 +458,23 @@ class FlmChatApp(Adw.Application):
             txt_box.append(model)
             main_box.append(txt_box)
             
+            # fav button
+            fav_btn = Gtk.Button()
+            fav_btn.set_has_frame(False)
+            fav_btn.add_css_class("favorite-btn")
+            
+            is_fav = (self.favourited_chat is not None and str(self.favourited_chat) == str(meta["id"]))
+            if is_fav:
+                fav_btn.set_icon_name("starred-symbolic")
+                fav_btn.add_css_class("active")
+                fav_btn.set_tooltip_text("Unfavourite Chat")
+            else:
+                fav_btn.set_icon_name("non-starred-symbolic")
+                fav_btn.set_tooltip_text("Favourite Chat")
+                
+            fav_btn.connect("clicked", self.on_favorite_clicked, meta["id"])
+            main_box.append(fav_btn)
+            
             del_btn = Gtk.Button(icon_name="user-trash-symbolic")
             del_btn.add_css_class("delete-btn")
             del_btn.set_has_frame(False)
@@ -378,6 +484,10 @@ class FlmChatApp(Adw.Application):
             
             row.set_child(main_box)
             self.history_list.append(row)
+            
+            # highlight active row
+            if self.current_session_id is not None and str(meta["id"]) == str(self.current_session_id):
+                self.history_list.select_row(row)
 
     def execute_new_chat(self):
         self.save_session()
@@ -398,16 +508,30 @@ class FlmChatApp(Adw.Application):
         self.btn_send.set_sensitive(True)
         self.update_model_ui()
         display.add_system_message(self, "Ready. Select a model and send a message to start.")
+        
+        # deselect row
+        self.history_list.select_row(None)
 
     def execute_eject(self):
+        # kill server and reset
         if self.server_process:
             self.server_process.terminate()
             self.server_process = None
+        # kill orphans
+        flm.kill_existing_servers()
         self.current_model = None
         self.set_entry_locked(True)
         self.btn_send.set_sensitive(False)
         self.model_btn.set_label("Select a model to start")
         self.update_model_ui()
+
+    def on_favorite_clicked(self, btn, session_id):
+        if self.favourited_chat is not None and str(self.favourited_chat) == str(session_id):
+            self.favourited_chat = None
+        else:
+            self.favourited_chat = str(session_id)
+        self.save_config()
+        self.update_history_ui()
 
     def on_delete_clicked(self, btn, session_id):
         handlers.on_delete_clicked(self, btn, session_id)
@@ -506,6 +630,7 @@ class FlmChatApp(Adw.Application):
     def on_new_chat_response(self, dialog, response):
         if response == "new":
             self.execute_new_chat()
+        dialog.destroy()
 
     def show_welcome_message(self):
         ui.show_welcome_message(self)
@@ -542,7 +667,7 @@ class FlmChatApp(Adw.Application):
             display.add_system_message(self, "Please select a model first.")
             return
 
-        if not flm.is_server_ready(self.current_model):
+        if not flm.is_server_ready(self.current_model, server_process=self.server_process):
             display.add_system_message(self, "Error: Model server is not responding. Try reloading the model.")
             return
 
@@ -581,7 +706,7 @@ class FlmChatApp(Adw.Application):
                     try:
                         pixbuf = GdkPixbuf.Pixbuf.new_from_file(img_path)
                         
-                        # Handle transparency by compositing onto white
+                        # handle transparent images
                         if pixbuf.get_has_alpha():
                             white_pixbuf = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, False, 8, pixbuf.get_width(), pixbuf.get_height())
                             white_pixbuf.fill(0xffffffff)
@@ -644,15 +769,16 @@ class FlmChatApp(Adw.Application):
                         new_bubble.set_markup(utils.markdown_to_pango(content))
                         parent.append(new_bubble)
                 
-                # Append copy button to the bottom of the assistant message box
+                # copy button
                 if full_content:
-                    copy_btn = Gtk.Button(icon_name="edit-copy-symbolic")
-                    copy_btn.add_css_class("flat")
-                    copy_btn.add_css_class("dim-label")
-                    copy_btn.add_css_class("copy-btn")
-                    copy_btn.set_halign(Gtk.Align.END)
-                    copy_btn.connect("clicked", lambda b: display.copy_to_clipboard(full_content))
-                    parent.append(copy_btn)
+                    header = parent.get_first_child()
+                    if header:
+                        copy_btn = Gtk.Button.new_from_icon_name("edit-copy-symbolic")
+                        copy_btn.add_css_class("flat")
+                        copy_btn.add_css_class("bubble-action-btn")
+                        copy_btn.set_tooltip_text("Copy Response")
+                        copy_btn.connect("clicked", lambda b: display.copy_to_clipboard(full_content))
+                        header.append(copy_btn)
             
             self.history.append({"role": "assistant", "content": full_content})
             self.save_session()
@@ -686,11 +812,9 @@ class FlmChatApp(Adw.Application):
         try:
             color = dialog.choose_rgba_finish(result)
             hex_color = "#{:02x}{:02x}{:02x}".format(int(color.red * 255), int(color.green * 255), int(color.blue * 255))
+            self.theme_color = hex_color
             theme.apply_theme(self, hex_color)
-            
-            config_path = os.path.expanduser("~/.config/flm/theme.json")
-            with open(config_path, "w") as f:
-                json.dump({"accent_color": hex_color}, f)
+            self.save_config()
         except Exception as e:
             logging.error(f"Error applying color: {e}")
 
@@ -730,6 +854,7 @@ class FlmChatApp(Adw.Application):
         shortcuts_win.present()
 
     def update_shortcuts_sensitivity(self):
+        # lock shortcuts
         if not hasattr(self, 'action_new_chat'):
             return
         is_locked = len(self.downloading_models) > 0 or self.is_sending

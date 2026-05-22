@@ -1,13 +1,10 @@
-"""
-Module for session persistence.
-Handles saving, loading, and metadata tracking of chat conversations.
-"""
+# chat history json stuff
 import json
 import os
 import time
 
 def save_session(app) -> None:
-    """Persists current chat history to a JSON file."""
+    # save chat to disk
     if not app.history:
         return
         
@@ -17,10 +14,11 @@ def save_session(app) -> None:
     title = "Untitled Chat"
     for msg in app.history:
         if msg["role"] == "user":
-            title = msg["content"][:40].replace("\n", " ") + (len(msg["content"]) > 40 and "..." or "")
+            content = msg["content"]
+            title = content[:40].replace("\n", " ") + ("..." if len(content) > 40 else "")
             break
     
-    # Preserve existing model if we have one, otherwise fallback
+    # keep model
     existing_model = app.current_model if app.current_model else "none"
     
     data = {
@@ -48,12 +46,12 @@ def save_session(app) -> None:
         print(f"Error saving session: {e}")
 
 def load_history_metadata(app) -> None:
-    """Scans history directory and loads metadata for the sidebar."""
+    # read saved chats
     app.sessions_metadata = []
     if not os.path.exists(app.history_dir):
         return
     files = [f for f in os.listdir(app.history_dir) if f.endswith(".json")]
-    files.sort(reverse=True)
+    files.sort(reverse=True)  # newest first
     for f in files:
         try:
             path = os.path.join(app.history_dir, f)

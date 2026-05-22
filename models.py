@@ -1,7 +1,4 @@
-"""
-Module for model management and installation.
-Handles server lifecycle, model downloads, and UI synchronization.
-"""
+# model lifecycle and ui sync
 import init_gi
 from gi.repository import Gtk, Adw, GLib
 import asyncio
@@ -14,28 +11,32 @@ import display
 from typing import Optional
 
 async def init_server(app) -> None:
-    """Initializes available models and updates UI."""
+    # load models
     app.models = flm.get_all_models()
-    update_model_ui(app)
+    app.update_model_ui()
 
 async def wait_for_server(app) -> None:
-    """Polls server process until it is active or times out, checking for crashes."""
+    # wait for server
+    app.model_loading = True
     app.set_entry_locked(True)
     app.btn_send.set_sensitive(False)
+    app.update_model_ui()
     
     for i in range(45):
-        # Check if process died unexpectedly
+        # process died
         if app.server_process and app.server_process.poll() is not None:
             rc = app.server_process.poll()
             display.add_system_message(app, f"Error: Server process exited with code {rc}.")
             display.add_system_message(app, "Check ~/.config/flm/server.log for details.")
-            update_model_ui(app)
+            app.model_loading = False
+            app.update_model_ui()
             return
 
-        if flm.is_server_ready(app.current_model):
+        if flm.is_server_ready(app.current_model, server_process=app.server_process):
             display.add_system_message(app, f"{app.current_model} is ready.")
             GLib.timeout_add_seconds(2, lambda: display.clear_status_labels(app))
-            update_model_ui(app)
+            app.model_loading = False
+            app.update_model_ui()
             return
             
         if i % 5 == 0:
@@ -44,10 +45,12 @@ async def wait_for_server(app) -> None:
         await asyncio.sleep(1)
             
     display.add_system_message(app, "Error: Runtime server failed to stabilize.")
-    update_model_ui(app)
+    app.model_loading = False
+    app.update_model_ui()
+
 
 def confirm_download(app, model_data: dict) -> None:
-    """Shows confirmation dialog before starting model download."""
+    # download confirm
     if len(app.downloading_models) > 0:
         display.add_system_message(app, "A download is already in progress. Please wait.")
         return
@@ -66,14 +69,13 @@ def confirm_download(app, model_data: dict) -> None:
     dialog.present()
 
 def on_download_response(app, dialog: Adw.MessageDialog, response: str, model_name: str) -> None:
-    """Callback for download confirmation."""
     if response == "download":
         display.add_system_message(app, f"Starting download: {model_name}")
         app.run_task(download_model(app, model_name))
     dialog.destroy()
 
 async def download_model(app, model_name: str) -> None:
-    """Executes model download with real-time progress parsing."""
+    # run download
     app.downloading_models.add(model_name)
     
     progress = Gtk.ProgressBar()
@@ -84,7 +86,7 @@ async def download_model(app, model_name: str) -> None:
     progress.add_css_class("suggested-action")
     
     app.chat_box.append(progress)
-    update_model_ui(app)
+    app.update_model_ui()
     
     try:
         process = await asyncio.create_subprocess_exec(
@@ -128,16 +130,16 @@ async def download_model(app, model_name: str) -> None:
         app.chat_box.remove(progress)
         app.downloading_models.discard(model_name)
         app.models = flm.get_all_models()
-        update_model_ui(app)
+        app.update_model_ui()
 
 def update_model_ui(app) -> None:
-    """Refreshes the model selector button UI state."""
+    # update model ui
     app.models = flm.get_all_models()
     
     is_downloading_any = len(app.downloading_models) > 0
     download_msg = "Please wait for the current download to complete."
     
-    # Global UI Lock during download
+    # lock stuff during dl
     app.btn_new.set_sensitive(not is_downloading_any)
     app.history_list.set_sensitive(not is_downloading_any)
     if is_downloading_any:
@@ -158,7 +160,7 @@ def update_model_ui(app) -> None:
     else:
         app.model_btn.set_label("Select a model to start")
     
-    # Model button enabled if not downloading and not on welcome screen
+    # toggle model btn
     app.model_btn.set_sensitive(not is_downloading_any and not getattr(app, 'is_welcome_screen', False))
     if is_downloading_any:
         app.model_btn.set_tooltip_text(download_msg)
@@ -167,29 +169,33 @@ def update_model_ui(app) -> None:
     else:
         app.model_btn.set_tooltip_text("Select Model")
 
-    is_running = flm.is_server_ready(app.current_model) if app.current_model else False
+    is_running = flm.is_server_ready(app.current_model, server_process=getattr(app, 'server_process', None)) if app.current_model else False
     ram_ok = flm.has_sufficient_ram()
     
     has_model = app.current_model is not None and app.current_model != "none"
     
-    # Check if the currently selected model is actually installed
+    # check if installed
     is_current_installed = False
     if has_model:
         m_data = next((m for m in app.models if m['model'] == app.current_model), None)
         is_current_installed = m_data is not None and m_data.get('installed', False)
 
-    # Input is allowed if a model is selected, it's installed, and not downloading
+    # input toggle rules
     is_input_allowed = (has_model and 
                         is_current_installed and 
-                        not is_downloading_any)
+                        not is_downloading_any and
+                        is_running)
     
     app.set_entry_locked(not is_input_allowed)
     app.btn_send.set_sensitive(is_input_allowed)
-    app.btn_attach.set_sensitive(app.is_current_model_capable() and is_current_installed and not is_downloading_any)
+    app.btn_attach.set_sensitive(app.is_current_model_capable() and is_current_installed and not is_downloading_any and is_running)
     
     if is_downloading_any:
         app.entry.set_tooltip_text(download_msg)
         app.btn_send.set_tooltip_text(download_msg)
+    elif has_model and is_current_installed and not is_running:
+        app.entry.set_tooltip_text("Model is unloaded. Click the Load button in the header bar to load it.")
+        app.btn_send.set_tooltip_text("Load model to send messages")
     else:
         app.entry.set_tooltip_text("Type your message here")
         app.btn_send.set_tooltip_text("Send message")
@@ -202,76 +208,160 @@ def update_model_ui(app) -> None:
         app.model_btn.set_tooltip_text("System RAM is critically low. Free memory to load models.")
 
     popover = Gtk.Popover()
+    
+    # popover layout
+    main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+    
+    # header
+    header_label = Gtk.Label(label="AVAILABLE MODELS")
+    header_label.add_css_class("model-picker-header")
+    header_label.set_xalign(0.0)
+    main_box.append(header_label)
+    
+    # line
+    separator = Gtk.Separator()
+    main_box.append(separator)
+    
+    # scroll
     scrolled = Gtk.ScrolledWindow()
     scrolled.set_min_content_height(350)
-    scrolled.set_min_content_width(300)
+    scrolled.set_min_content_width(320)
+    main_box.append(scrolled)
     
     listbox = Gtk.ListBox()
+    listbox.add_css_class("model-picker-list")
     listbox.set_selection_mode(Gtk.SelectionMode.NONE)
     
     for m in app.models:
         model_name = m['model']
         is_installed = m.get('installed', False)
         is_downloading = model_name in app.downloading_models
+        is_vlm = m.get('vlm', False)
+        is_active = (app.current_model == model_name)
         
         row = Gtk.ListBoxRow()
+        row.add_css_class("model-picker-row")
+        if is_active:
+            row.add_css_class("selected-model-row")
+            
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         box.set_margin_start(12)
         box.set_margin_end(12)
         box.set_margin_top(8)
         box.set_margin_bottom(8)
 
-        label_text = f"⬇ Downloading {model_name}..." if is_downloading else model_name
-        if m.get('vlm', False):
-            label_text = "👁 " + label_text
-        label = Gtk.Label(label=label_text)
-        label.set_xalign(0)
-        label.set_hexpand(True)
-        box.append(label)
+        # left icon
+        icon_name = "view-reveal-symbolic" if is_vlm else "cpu-symbolic"
+        icon = Gtk.Image.new_from_icon_name(icon_name)
+        icon.add_css_class("model-icon")
+        box.append(icon)
+        
+        # info box
+        content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+        content_box.set_hexpand(True)
+        
+        name_label = Gtk.Label(label=model_name)
+        name_label.add_css_class("model-name-label")
+        name_label.set_xalign(0.0)
+        content_box.append(name_label)
+        
+        # badges
+        badges_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=4)
+        
+        if is_active:
+            active_badge = Gtk.Label(label="Active")
+            active_badge.add_css_class("model-badge")
+            active_badge.add_css_class("badge-active")
+            badges_box.append(active_badge)
             
-        if is_downloading:
-            row.set_sensitive(False)
-            label.add_css_class("dim-label")
-        elif not is_installed:
-            label.add_css_class("uninstalled-model-label")
-            label.add_css_class("dim-label")
+        if is_installed:
+            inst_badge = Gtk.Label(label="Installed")
+            inst_badge.add_css_class("model-badge")
+            inst_badge.add_css_class("badge-installed")
+            badges_box.append(inst_badge)
+        elif is_downloading:
+            dl_badge = Gtk.Label(label="Downloading...")
+            dl_badge.add_css_class("model-badge")
+            dl_badge.add_css_class("badge-downloading")
+            badges_box.append(dl_badge)
         else:
-            label.add_css_class("installed-model-label")
-            # Container for actions
-            actions = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=4)
+            avail_badge = Gtk.Label(label="Available")
+            avail_badge.add_css_class("model-badge")
+            avail_badge.add_css_class("badge-available")
+            badges_box.append(avail_badge)
             
-            # Info Button
-            info_btn = Gtk.Button(icon_name="dialog-information-symbolic")
-            info_btn.add_css_class("flat")
-            info_btn.add_css_class("dim-label")
-            info_btn.set_tooltip_text("Model Details")
-            info_btn.connect("clicked", lambda b, m=m: show_model_info(app, m))
-            actions.append(info_btn)
-
-            # Trash Button
-            del_btn = Gtk.Button(icon_name="user-trash-symbolic")
-            del_btn.add_css_class("flat")
-            del_btn.add_css_class("delete-btn")
-            del_btn.set_tooltip_text("Delete Model")
-            del_btn.connect("clicked", lambda b, m_data=m: confirm_delete(app, m_data, popover))
-            actions.append(del_btn)
+        if is_vlm:
+            vlm_badge = Gtk.Label(label="👁 Vision")
+            vlm_badge.add_css_class("model-badge")
+            vlm_badge.add_css_class("badge-vlm")
+            badges_box.append(vlm_badge)
             
-            box.append(actions)
-            
+        content_box.append(badges_box)
+        box.append(content_box)
+        
+        # actions
+        right_area = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        right_area.set_valign(Gtk.Align.CENTER)
+        
+        if is_downloading:
+            # spinner
+            spinner = Gtk.Spinner()
+            spinner.start()
+            right_area.append(spinner)
+            row.set_sensitive(False)
+            name_label.add_css_class("dim-label")
+        elif is_active:
+            # checkmark
+            check_icon = Gtk.Image.new_from_icon_name("object-select-symbolic")
+            check_icon.add_css_class("model-check-icon")
+            right_area.append(check_icon)
+        else:
+            if is_installed:
+                # info btn
+                info_btn = Gtk.Button.new_from_icon_name("dialog-information-symbolic")
+                info_btn.add_css_class("flat")
+                info_btn.add_css_class("info-btn")
+                info_btn.set_tooltip_text("Model Details")
+                info_btn.connect("clicked", lambda b, m=m: show_model_info(app, m))
+                right_area.append(info_btn)
+                
+                # del btn
+                del_btn = Gtk.Button.new_from_icon_name("user-trash-symbolic")
+                del_btn.add_css_class("flat")
+                del_btn.add_css_class("delete-btn")
+                del_btn.set_tooltip_text("Delete Model")
+                del_btn.connect("clicked", lambda b, m_data=m: confirm_delete(app, m_data, popover))
+                right_area.append(del_btn)
+            else:
+                # dl btn
+                dl_btn = Gtk.Button.new_from_icon_name("emblem-downloads-symbolic")
+                dl_btn.add_css_class("flat")
+                dl_btn.add_css_class("download-btn")
+                dl_btn.set_tooltip_text("Download Model")
+                dl_btn.connect("clicked", lambda b, m_data=m: confirm_download_from_btn(app, m_data, popover))
+                right_area.append(dl_btn)
+                name_label.add_css_class("uninstalled-model-label")
+                
+        box.append(right_area)
         row.set_child(box)
         listbox.append(row)
         
     listbox.connect("row-activated", lambda lb, row: on_row_activated(app, lb, row, popover))
     
     scrolled.set_child(listbox)
-    popover.set_child(scrolled)
+    popover.set_child(main_box)
     app.model_btn.set_popover(popover)
     
     if hasattr(app, "update_shortcuts_sensitivity"):
         app.update_shortcuts_sensitivity()
 
+def confirm_download_from_btn(app, model_data: dict, popover: Gtk.Popover) -> None:
+    # inline dl
+    popover.popdown()
+    confirm_download(app, model_data)
+
 def show_model_info(app, model_data: dict) -> None:
-    """Shows a dialog with details about the selected model."""
+    # model info
     details = (
         f"Model: {model_data.get('model', 'Unknown')}\n"
         f"Installed: {'Yes' if model_data.get('installed') else 'No'}\n"
@@ -286,7 +376,7 @@ def show_model_info(app, model_data: dict) -> None:
     dialog.present()
 
 def confirm_delete(app, model_data: dict, popover: Gtk.Popover) -> None:
-    """Shows confirmation dialog before deleting a model, closing popover first."""
+    # delete confirm
     popover.popdown()
     model_name = model_data['model']
     
@@ -306,24 +396,24 @@ def confirm_delete(app, model_data: dict, popover: Gtk.Popover) -> None:
     dialog.present()
 
 def on_delete_response(app, dialog: Adw.MessageDialog, response: str, model_data: dict) -> None:
-    """Callback for deletion confirmation with force-refresh and folder cleanup."""
+    # delete callback
     if response == "delete":
         model_name = model_data['model']
-        # Always eject first if it's the current model to stop the server
+        # stop server first
         if app.current_model == model_name:
             app.execute_eject()
 
         display.add_system_message(app, f"Removing {model_name}...")
         try:
-            # 1. Standard CLI removal
+            # cli remove
             subprocess.run(["flm", "remove", model_name], check=True)
             
-            # 2. Proactive folder cleanup in ~/.config/flm/models/
+            # cleanup files
             repo_folder = None
             url = model_data.get('url') or model_data.get('file_url')
             if url:
                 parts = url.split('/')
-                # Usually: https://huggingface.co/FastFlowLM/FolderName/...
+                # guess folder
                 if "huggingface.co" in url and len(parts) >= 5:
                     repo_folder = parts[4]
             
@@ -340,19 +430,19 @@ def on_delete_response(app, dialog: Adw.MessageDialog, response: str, model_data
         except Exception as e:
             display.add_system_message(app, f"Deletion error: {str(e)}")
         
-        # Force model list refresh
+        # force refresh
         app.models = flm.get_all_models()
-        update_model_ui(app)
+        app.update_model_ui()
     dialog.destroy()
 
 def on_row_activated(app, listbox: Gtk.ListBox, row: Gtk.ListBoxRow, popover: Gtk.Popover) -> None:
-    """Activated when a model row is selected."""
+    # row clicked
     index = row.get_index()
     if index < len(app.models):
         on_model_selected(app, None, app.models[index], popover)
 
 def on_model_selected(app, btn: Optional[Gtk.Button], model_data: dict, popover: Gtk.Popover) -> None:
-    """Handles model selection and server initialization."""
+    # select model
     model_name = model_data['model']
     is_installed = model_data.get('installed', False)
     popover.popdown()
@@ -369,4 +459,4 @@ def on_model_selected(app, btn: Optional[Gtk.Button], model_data: dict, popover:
         app.server_process = flm.start_flm_serve(model_name, app.server_process)
         app.run_task(wait_for_server(app))
 
-    update_model_ui(app)
+    app.update_model_ui()

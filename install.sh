@@ -30,12 +30,12 @@ chmod 644 "$INSTALL_DIR"/*.py
 chmod 755 "$INSTALL_DIR/app.py"
 
 # Install Icon
-magick flm-gtk.webp "$ICON_DIR/fastflowlm-gtk.png"
-chmod 644 "$ICON_DIR/fastflowlm-gtk.png"
+magick flm-gtk.webp "$ICON_DIR/com.marley.FastFlowLM-gtk.png"
+chmod 644 "$ICON_DIR/com.marley.FastFlowLM-gtk.png"
 
 # Install Desktop file
-cp fastflowlm-gtk.desktop "$APP_DIR/fastflowlm-gtk.desktop"
-chmod 644 "$APP_DIR/fastflowlm-gtk.desktop"
+cp com.marley.FastFlowLM-gtk.desktop "$APP_DIR/com.marley.FastFlowLM-gtk.desktop"
+chmod 644 "$APP_DIR/com.marley.FastFlowLM-gtk.desktop"
 
 # Create executable wrapper
 cat <<EOF > "$BIN_DIR/fastflowlm-gtk"

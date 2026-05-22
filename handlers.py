@@ -8,10 +8,10 @@ import time
 from typing import Optional
 
 def on_key_pressed(app, ctrl: Gtk.EventControllerKey, keyval: int, keycode: int, state: Gdk.ModifierType) -> bool:
-    """Handles Enter key press to send messages, and Shift+Enter to insert a newline."""
+    # handle enter/shift+enter
     if keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter):
         if state & Gdk.ModifierType.SHIFT_MASK:
-            # Explicitly insert a newline at the cursor position
+            # add newline
             buffer = app.entry.get_buffer()
             buffer.insert_at_cursor("\n")
             return True
@@ -21,7 +21,7 @@ def on_key_pressed(app, ctrl: Gtk.EventControllerKey, keyval: int, keycode: int,
     return False
 
 def on_send(app, widget: Optional[Gtk.Widget]) -> None:
-    """Handles the send action triggered by the button or Enter key."""
+    # send message
     import logging
     if app.is_sending:
         return
@@ -33,23 +33,23 @@ def on_send(app, widget: Optional[Gtk.Widget]) -> None:
     if not text and not app.selected_attachments:
         return
     
-    # Initialize session ID if not set
+    # new session id
     if not app.current_session_id:
         app.current_session_id = str(int(time.time()))
         
     app.is_sending = True
     
-    # Immediate UI lock
+    # lock ui
     app.input_box.set_sensitive(False)
     app.set_entry_locked(True)
     if hasattr(app, "update_shortcuts_sensitivity"):
         app.update_shortcuts_sensitivity()
     
-    # Process attachments
+    # attachments
     attachments_for_history = []
     text_blocks = []
     
-    # Map extensions to markdown language tags
+    # file extensions
     ext_map = {
         '.py': 'python',
         '.cpp': 'cpp',
@@ -119,11 +119,11 @@ def on_attach_clicked(app, btn):
     dialog = Gtk.FileChooserNative.new("Select Files", app.win, Gtk.FileChooserAction.OPEN, "Open", "Cancel")
     dialog.set_select_multiple(True)
     
-    # Supported Files Filter
+    # allow these files
     filter = Gtk.FileFilter()
     filter.set_name("All Supported Files")
     
-    # If the model is a VLM, allow images
+    # allow images for vlm
     if app.is_current_model_vlm():
         filter.add_mime_type("image/png")
         filter.add_mime_type("image/jpeg")
@@ -133,7 +133,7 @@ def on_attach_clicked(app, btn):
         filter.add_pattern("*.jpeg")
         filter.add_pattern("*.webp")
         
-    # Text / Code files
+    # text and code
     filter.add_mime_type("text/plain")
     filter.add_pattern("*.txt")
     filter.add_pattern("*.py")
@@ -269,6 +269,11 @@ def on_delete_response(app, dialog, response, session_id):
         
         app.sessions_metadata = [m for m in app.sessions_metadata if m["id"] != session_id]
         
+        fav = getattr(app, "favourited_chat", None)
+        if fav is not None and str(fav) == str(session_id):
+            app.favourited_chat = None
+            app.save_config()
+            
         if app.current_session_id == session_id:
             app.current_session_id = None
             app.history = []
@@ -300,6 +305,8 @@ def on_clear_history_response(app, dialog, response):
                     os.remove(os.path.join(app.history_dir, f))
             app.sessions_metadata = []
             app.current_session_id = None
+            app.favourited_chat = None
+            app.save_config()
             app.history = []
             # Invalidate search cache
             if hasattr(app, '_search_cache'):

@@ -1,13 +1,10 @@
-"""
-Module for theme management.
-Handles dynamic CSS application and user preference saving.
-"""
+# load and apply accent color
 import os
 import json
 import utils
 
 def load_theme_color() -> str:
-    """Loads the user's saved accent color from the config file."""
+    # get color
     config_path = os.path.expanduser("~/.config/flm/theme.json")
     if os.path.exists(config_path):
         try:
@@ -17,7 +14,7 @@ def load_theme_color() -> str:
     return "#3584e4"
 
 def apply_theme(app, hex_color: str) -> None:
-    """Applies the custom accent color CSS to the application."""
+    # apply css
     full_css = f"""
     @define-color accent_bg_color {hex_color};
     {utils.CSS}
