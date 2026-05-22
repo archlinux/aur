@@ -3,7 +3,7 @@
 pkgbase='pyazo-cli'
 pkgname=('pyazo-cli')
 _module='pyazo_cli'
-pkgver='0.5.1'
+pkgver='0.5.2'
 pkgrel=2
 pkgdesc='Pyazo screenshot hosting command line interface'
 url='https://github.com/pyazo-screenshot/cli'
@@ -11,8 +11,8 @@ depends=('python' 'python-click' 'python-requests' 'python-pyperclip')
 makedepends=('python-pip')
 license=('BSD')
 arch=('any')
-source=('https://files.pythonhosted.org/packages/7f/3a/846774d2a08cca508ce8091177d252227473f70bbbe451007660cf6a23b6/pyazo_cli-0.5.1-py3-none-any.whl')
-sha256sums=('2385a5ae567a59fb4a6c8dcf38897330933908c50a946dbf889c55f79331243c')
+source=('https://files.pythonhosted.org/packages/13/34/571137ff6775ac65f2f4333b272547b22d539b373b3baa4b29571e6b86c2/pyazo_cli-0.5.2-py3-none-any.whl')
+sha256sums=('7e699b36d37df50c56d53ad2d4057c7cf1d485516e7776db86b52092370ee190')
 noextract=(${_module}-${pkgver}-py3-none-any.whl)
 
 package() {
