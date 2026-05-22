@@ -4,7 +4,7 @@
 
 pkgname=audacity-openvino
 pkgver=3.7.7
-pkgrel=1
+pkgrel=2
 epoch=1
 
 # Auto-track latest 3.7.x release tag; override with explicit pkgver if needed
@@ -125,6 +125,10 @@ EOF
   # torch::from_blob takes void*, not const void*
   sed -i 's/torch::from_blob(pXTensor_Out,/torch::from_blob(const_cast<float*>(pXTensor_Out),/g' modules/openvino-plugins-ai-audacity/mod-openvino/htdemucs.cpp
   sed -i 's/torch::from_blob(pXTTensor_Out,/torch::from_blob(const_cast<float*>(pXTTensor_Out),/g' modules/openvino-plugins-ai-audacity/mod-openvino/htdemucs.cpp
+
+  echo "==> Patching Audacity for GCC 16 deprecated API..."
+  # std::not1 was removed in C++20; replace with std::not_fn
+  sed -i 's/std::not1( std::mem_fn( pmf ) )/std::not_fn( std::mem_fn( pmf ) )/g' libraries/lib-track/Track.h
 }
 
 build() {
@@ -150,7 +154,8 @@ build() {
       -D audacity_lib_preference=system
       -D audacity_obey_system_dependencies=ON
       -W no-dev
-      -D CMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -Wno-error=deprecated-declarations"
+      -D CMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations"
+      --log-level=WARNING
     )
 
     export CFLAGS+=" -DNDEBUG -std=gnu11"
@@ -158,7 +163,7 @@ build() {
     export VST3SDK="/usr/src/vst3sdk"
 
     cmake "${cmake_options[@]}"
-    cmake --build build --verbose
+    cmake --build build
 }
 
 package() {
