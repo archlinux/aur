@@ -7,13 +7,13 @@ _vcpkg_sha=b02e341c927f16d991edbd915d8ea43eac52096c
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 pkgver=1.92.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Bloat-free Graphical User interface for C++"
 license=('MIT')
 arch=('x86_64')
 url="https://github.com/ocornut/imgui"
 depends=('gcc-libs')
-makedepends=('cmake' 'glu' 'freeglut' 'sdl3' 'glfw' 'vulkan-headers')
+makedepends=('cmake' 'glu' 'freeglut' 'sdl3' 'glfw' 'vulkan-headers' 'vulkan-icd-loader')
 source=("$_pkgname-$pkgver.tar.gz::https://codeload.github.com/ocornut/imgui/tar.gz/v${pkgver}"
   "CMakeLists.v${pkgver}-${pkgrel}.txt::https://raw.githubusercontent.com/microsoft/vcpkg/${_vcpkg_sha}/ports/imgui/CMakeLists.txt"
   "imgui-config.v${pkgver}-${pkgrel}.cmake.in::https://raw.githubusercontent.com/microsoft/vcpkg/${_vcpkg_sha}/ports/imgui/imgui-config.cmake.in")
