@@ -1,0 +1,48 @@
+--- a/source/pcraster_dal/dal_GDALRasterDriver.cc
++++ b/source/pcraster_dal/dal_GDALRasterDriver.cc
+@@ -702,7 +702,7 @@
+          DAL_DRIVER_GENERAL);
+   properties |= Reader;
+ 
+-  char** metadata = d_driver->GetMetadata();
++  char** metadata = const_cast<char**>(d_driver->GetMetadata());
+ 
+   if(CSLFetchBoolean(metadata, GDAL_DCAP_CREATECOPY, FALSE)) {
+     properties |= Writer;
+--- a/source/pcraster_dal/dal_OgrFeatureDriver.cc
++++ b/source/pcraster_dal/dal_OgrFeatureDriver.cc
+@@ -450,7 +450,7 @@
+          DAL_DRIVER_GENERAL);
+   properties |= Reader;
+ 
+-  char** metadata = _driver->GetMetadata();
++  char** metadata = const_cast<char**>(_driver->GetMetadata());
+ 
+   // GDAL_DCAP_CREATECOPY?
+   if(CSLFetchBoolean(metadata, ODrCCreateDataSource, FALSE)) {
+--- a/source/pcrcom/com_math.h
++++ b/source/pcrcom/com_math.h
+@@ -23,6 +23,10 @@
+ #include <limits>
+ #define INCLUDED_LIMITS
+ #endif
++#ifndef INCLUDED_BOOST_STATIC_ASSERT
++#include <boost/static_assert.hpp>
++#define INCLUDED_BOOST_STATIC_ASSERT
++#endif
+ // PCRaster library headers.
+ 
+ // Module headers.
+--- a/source/pcraster_aguila/ag_Map2DView.cc
++++ b/source/pcraster_aguila/ag_Map2DView.cc
+@@ -1,5 +1,10 @@
+ #include "ag_Map2DView.h"
+ 
++#ifndef INCLUDED_STDDEFX
++#include "stddefx.h"
++#define INCLUDED_STDDEFX
++#endif
++
+ // Library headers.
+ #include <QMessageBox>
+ #include <QMouseEvent>

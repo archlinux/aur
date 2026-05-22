@@ -1,7 +1,7 @@
 pkgbase = pcraster
 	pkgdesc = Environmental modelling software
 	pkgver = 4.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pcraster.geo.uu.nl
 	arch = x86_64
 	license = GPL3
@@ -15,6 +15,8 @@ pkgbase = pcraster
 	depends = python-pyqt5-chart
 	depends = xerces-c
 	source = pcraster-4.4.2.tar.gz::https://github.com/pcraster/pcraster/archive/refs/tags/pcraster-4.4.2.tar.gz
+	source = fix-pcraster-4.4.2-gcc16-gdal313.patch
 	sha512sums = 47ff5c2d551022409e2cd8eeed32edbc40fc74bcf232e1df0e921de61e769c1e9df91ba3fa710a8abdd92d6c46d6ecbac5173539b6e7827b785b2138d7c21ca9
+	sha512sums = 1440e529749a379a52d6b6766642dac54a728e4e21cfcdb52c777862c3551f5704e34e50163f43809a0909365e8ceedd943edc0c3ee16b06326f31dca02d5249
 
 pkgname = pcraster
