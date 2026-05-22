@@ -1,5 +1,5 @@
 pkgname=smart-updater
-pkgver=1.2.0_alpha
+pkgver=1.2.1_alpha
 pkgrel=1
 pkgdesc="A lightweight, intelligent, and beautiful GUI update tool for CachyOS"
 arch=('any')
@@ -8,7 +8,7 @@ license=('GPL')
 depends=('python' 'python-pyqt6' 'pacman-contrib')
 # Zieht jetzt das feste Release, nicht den flexiblen Main-Branch
 source=("${pkgname}-${pkgver}.zip::$url/archive/refs/tags/v1.2.0-alpha.zip")
-sha256sums=('fa929852cd60be4cd59d7d3c38d7a99d40e44aabd1d30358ec537b6b36c83a56')
+sha256sums=('814075506f083a49e6e3a2aeb31e40514f1a10bd4b96704ef51a91d2a18288f6')
 
 package() {
     # 1. Den Hauptordner im System erstellen (/opt/smart-updater)
