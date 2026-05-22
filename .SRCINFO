@@ -11,6 +11,7 @@ pkgbase = zerolink
 	makedepends = cmake
 	makedepends = make
 	makedepends = base-devel
+	makedepends = webkit2gtk
 	depends = glibc
 	depends = gcc-libs
 	depends = hicolor-icon-theme
