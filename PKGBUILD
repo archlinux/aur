@@ -1,6 +1,6 @@
 # Maintainer: truelockmc <anonyson@proton.me>
 pkgname=streambert-bin
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Cross-platform Desktop App to stream and download Movies, TV Series and Anime"
 arch=('x86_64')
@@ -9,8 +9,7 @@ license=('GPL3')
 depends=('ffmpeg')
 provides=('streambert')
 conflicts=('streambert')
-_pkgtag="2.4" # Needs to be updated too when changing version
-source_x86_64=("https://github.com/truelockmc/streambert/releases/download/${_pkgtag}/streambert-${pkgver}.pacman")
+source_x86_64=("https://github.com/truelockmc/streambert/releases/download/${pkgver}/streambert-${pkgver}.pacman")
 sha256sums_x86_64=('ae320007ba22b2b8c75dafc22052cae0488fbc7e7b76fdca2875282d9bacadf7')
 
 package() {
