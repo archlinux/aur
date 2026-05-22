@@ -1,11 +1,23 @@
 """
 Module for UI components and structure.
-Handles initial widget layout construction.
+Handles initial widget layout construction using modern GTK4 & Libadwaita standards.
 """
 import init_gi
 from gi.repository import Gtk, Adw
 import display
+
+def _get_new_chat_icon() -> str:
+    """Helper to safely query and return the best symbolic new tab/chat icon name."""
+    from gi.repository import Gdk
+    display_default = Gdk.Display.get_default()
+    if display_default:
+        icon_theme = Gtk.IconTheme.get_for_display(display_default)
+        if icon_theme.has_icon("tab-new-symbolic"):
+            return "tab-new-symbolic"
+    return "document-new-symbolic"
+
 def show_welcome_message(app):
+    """Shows a modern, beautiful native welcome status page."""
     display.chat_box_remove_all(app)
 
     # Strictly disable all interactive elements
@@ -13,42 +25,28 @@ def show_welcome_message(app):
     app.model_btn.set_popover(None)
     app.model_btn.set_tooltip_text("Start a new chat to select a model.")
 
-    app.entry.set_sensitive(False)
+    app.set_entry_locked(True, "Start a new chat to begin")
     app.btn_send.set_sensitive(False)
     app.btn_repair.set_sensitive(False)
-    app.btn_attach.set_sensitive(False)    # Create the welcome content
-    welcome_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=24)
-    # ... (rest of the UI construction)
+    app.btn_attach.set_sensitive(False)
 
-    welcome_box.set_valign(Gtk.Align.CENTER)
-    welcome_box.set_halign(Gtk.Align.CENTER)
-    welcome_box.set_margin_top(40)
-    welcome_box.set_margin_bottom(40)
+    status_page = Adw.StatusPage()
+    status_page.set_icon_name(_get_new_chat_icon())
+        
+    status_page.set_title("FastFlowLM")
     
-    icon = Gtk.Image(icon_name="com.marley.FastFlowLM-gtk-symbolic")
-    # Fallback to document-new if custom icon not found in system
-    if not icon.get_paintable():
-        icon.set_from_icon_name("document-new-symbolic")
-    icon.set_pixel_size(96)
-    icon.add_css_class("dim-label")
-    welcome_box.append(icon)
-    
-    title = Gtk.Label(label="FastFlowLM")
-    title.add_css_class("title-1")
-    welcome_box.append(title)
-
     info_text = (
-        "A modern, native interface for local LLMs.\n\n"
-        "• Optimized for GTK 4 & Libadwaita\n"
-        "• Advanced session & history management\n"
-        "• Real-time NPU-accelerated performance\n"
-        "• Local-first privacy and control"
+        "A premium native interface for local LLMs.\n\n"
+        "• Crafted using modern GTK 4 &amp; Libadwaita standards\n"
+        "• Dynamic multi-format attachments (Images &amp; Code/Text)\n"
+        "• Keyboard-driven with advanced lock integration\n"
+        "• Lightweight, lightning-fast native desktop performance\n"
+        "• Real-time session and chat history management"
     )
+    status_page.set_description(info_text)
     
-    label = Gtk.Label(label=info_text)
-    label.set_justify(Gtk.Justification.CENTER)
-    label.add_css_class("dim-label")
-    welcome_box.append(label)
+    action_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=16)
+    action_box.set_halign(Gtk.Align.CENTER)
     
     btn_start = Gtk.Button(label="Start New Chat")
     btn_start.add_css_class("pill")
@@ -56,7 +54,7 @@ def show_welcome_message(app):
     btn_start.set_halign(Gtk.Align.CENTER)
     btn_start.set_size_request(200, -1)
     btn_start.connect("clicked", lambda b: app.on_new_chat(None))
-    welcome_box.append(btn_start)
+    action_box.append(btn_start)
 
     credits_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
     credits_box.set_halign(Gtk.Align.CENTER)
@@ -71,29 +69,38 @@ def show_welcome_message(app):
     link_engine.set_halign(Gtk.Align.CENTER)
     credits_box.append(link_engine)
     
-    welcome_box.append(credits_box)
+    action_box.append(credits_box)
+    status_page.set_child(action_box)
     
-    # Center the box inside the chat area
-    app.chat_box.append(welcome_box)
+    app.chat_box.append(status_page)
 
-def build_sidebar(app) -> Gtk.Widget:
-    """Builds the sidebar UI using modern Libadwaita widgets."""
+def build_sidebar(app) -> Adw.ToolbarView:
+    """Builds a modern edge-to-edge sidebar with a separate HeaderBar."""
+    toolbar_view = Adw.ToolbarView()
     
-    # Root container for the sidebar page
-    sidebar_page = Adw.ToolbarView()
+    sidebar_header = Adw.HeaderBar()
+    sidebar_header.set_show_end_title_buttons(False)
     
-    # Sidebar Header
-    header = Adw.HeaderBar()
-    header.set_show_end_title_buttons(False)
-    sidebar_page.add_top_bar(header)
+    # New chat button in sidebar header where it naturally belongs
+    app.btn_new = Gtk.Button(icon_name=_get_new_chat_icon())
+    app.btn_new.set_tooltip_text("New Chat")
+    app.btn_new.connect("clicked", app.on_new_chat)
+    sidebar_header.pack_start(app.btn_new)
     
-    # Search & History Container
-    content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+    # Options menu button in sidebar header
+    app.options_btn = Gtk.MenuButton(icon_name="view-more-symbolic")
+    app.options_btn.set_tooltip_text("Options")
+    sidebar_header.pack_end(app.options_btn)
+    
+    toolbar_view.add_top_bar(sidebar_header)
+    
+    content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
     
     search_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-    search_box.set_margin_start(12)
-    search_box.set_margin_end(12)
-    search_box.set_margin_top(12)
+    search_box.set_margin_start(16)
+    search_box.set_margin_end(16)
+    search_box.set_margin_bottom(12)
+    search_box.set_margin_top(8)
     
     app.search_entry = Gtk.SearchEntry()
     app.search_entry.set_placeholder_text("Search chats...")
@@ -101,76 +108,84 @@ def build_sidebar(app) -> Gtk.Widget:
     search_box.append(app.search_entry)
     content_box.append(search_box)
 
-    # History Listbox
     app.history_list = Gtk.ListBox()
     app.history_list.set_selection_mode(Gtk.SelectionMode.SINGLE)
-    app.history_list.add_css_class("boxed-list")
+    app.history_list.add_css_class("navigation-sidebar")
     app.history_list.connect("row-activated", app.on_history_row_activated)
     
     sidebar_scrolled = Gtk.ScrolledWindow()
     sidebar_scrolled.set_vexpand(True)
-    sidebar_scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
     sidebar_scrolled.set_child(app.history_list)
     content_box.append(sidebar_scrolled)
     
-    sidebar_page.set_content(content_box)
-    return sidebar_page
+    toolbar_view.set_content(content_box)
+    return toolbar_view
 
-def build_main_content(app) -> Gtk.Widget:
-    """Builds the main chat interface structure using Libadwaita widgets."""
-    
-    # Root container for the content page
-    content_page = Adw.ToolbarView()
+def build_main_content(app) -> Adw.ToolbarView:
+    """Builds the main chat interface using a modern clamped ToolbarView layout."""
+    toolbar_view = Adw.ToolbarView()
     
     app.header = Adw.HeaderBar()
-    content_page.add_top_bar(app.header)
     
+    # Sidebar toggle button
     app.btn_sidebar = Gtk.ToggleButton(icon_name="sidebar-show-symbolic")
     app.btn_sidebar.set_active(True)
+    app.btn_sidebar.set_tooltip_text("Toggle Sidebar")
     app.btn_sidebar.connect("toggled", lambda b: app.split_view.set_show_sidebar(b.get_active()))
     app.header.pack_start(app.btn_sidebar)
-
-    app.btn_new = Gtk.Button(icon_name="document-new-symbolic")
-    app.btn_new.connect("clicked", app.on_new_chat)
-    app.header.pack_start(app.btn_new)
     
+    # Model Repair button packed to the end of main header
     app.btn_repair = Gtk.Button(icon_name="view-refresh-symbolic")
     app.btn_repair.set_tooltip_text("Repair Model")
     app.btn_repair.connect("clicked", app.on_repair_clicked)
-    app.header.pack_start(app.btn_repair)
+    app.header.pack_end(app.btn_repair)
     
-    app.options_btn = Gtk.MenuButton(icon_name="view-more-symbolic")
-    app.header.pack_start(app.options_btn)
-
+    # Model selection menu in the center of the header bar
     app.model_btn = Gtk.MenuButton()
     app.header.set_title_widget(app.model_btn)
     
-    # Content Area
-    content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+    toolbar_view.add_top_bar(app.header)
     
-    # Clamp chat bubbles to a reasonable width
-    clamp = Adw.Clamp()
-    clamp.set_maximum_size(800)
-    clamp.set_tightening_threshold(400)
-    
+    # Content scroll area
     app.scrolled = Gtk.ScrolledWindow()
     app.scrolled.set_vexpand(True)
+    app.scrolled.set_kinetic_scrolling(True)
     app.scrolled.add_css_class("chat-scroll")
+    
+    # Clamped chat box for consistent 800px readable content column
+    clamp_chat = Adw.Clamp()
+    clamp_chat.set_maximum_size(800)
+    clamp_chat.set_tightening_threshold(600)
     
     app.chat_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
     app.chat_box.set_margin_top(18)
     app.chat_box.set_margin_bottom(18)
+    app.chat_box.set_margin_start(16)
+    app.chat_box.set_margin_end(16)
     
-    app.scrolled.set_child(app.chat_box)
-    clamp.set_child(app.scrolled)
-    content_box.append(clamp)
-
+    clamp_chat.set_child(app.chat_box)
+    app.scrolled.set_child(clamp_chat)
+    toolbar_view.set_content(app.scrolled)
+    
+    # Bottom bar layout - handles clamped thumbnail queue and input area together
+    bottom_bar_layout = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+    
+    clamp_bottom = Adw.Clamp()
+    clamp_bottom.set_maximum_size(800)
+    clamp_bottom.set_tightening_threshold(600)
+    
+    bottom_content = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+    bottom_content.set_margin_start(16)
+    bottom_content.set_margin_end(16)
+    bottom_content.set_margin_bottom(16)
+    bottom_content.set_margin_top(8)
+    
+    # Attachment previews
     app.thumb_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-    app.thumb_box.set_margin_start(32)
-    app.thumb_box.set_margin_end(32)
-    content_box.append(app.thumb_box)
-
-    # Input Area
+    app.thumb_box.set_margin_bottom(4)
+    bottom_content.append(app.thumb_box)
+    
+    # Message typing area
     app.input_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     app.input_box.add_css_class("input-area")
     
@@ -196,14 +211,16 @@ def build_main_content(app) -> Gtk.Widget:
     app.input_scroll.set_child(app.entry)
     input_container.append(app.input_scroll)
     
+    # Attachment paperclip button
     app.btn_attach = Gtk.Button(icon_name="paperclip-symbolic")
     app.btn_attach.add_css_class("flat")
     app.btn_attach.set_valign(Gtk.Align.CENTER)
     app.btn_attach.connect("clicked", app.on_attach_clicked)
     input_container.append(app.btn_attach)
-
+    
     app.input_box.append(input_container)
     
+    # Send button
     app.btn_send = Gtk.Button(icon_name="mail-send-symbolic")
     app.btn_send.add_css_class("circular")
     app.btn_send.add_css_class("accent-btn")
@@ -211,7 +228,9 @@ def build_main_content(app) -> Gtk.Widget:
     app.btn_send.connect("clicked", app.on_send)
     app.input_box.append(app.btn_send)
     
-    content_box.append(app.input_box)
-    content_page.set_content(content_box)
+    bottom_content.append(app.input_box)
+    clamp_bottom.set_child(bottom_content)
+    bottom_bar_layout.append(clamp_bottom)
     
-    return content_page
+    toolbar_view.add_bottom_bar(bottom_bar_layout)
+    return toolbar_view

@@ -58,6 +58,21 @@ CSS = """
     border: 1px solid alpha(@window_fg_color, 0.15);
 }
 
+.input-view textview,
+.input-view textview text,
+.input-view textview border,
+.input-view scrolledwindow {
+    background-color: transparent;
+    background-image: none;
+    border-style: none;
+    box-shadow: none;
+}
+
+textview.locked-entry text {
+    color: alpha(@window_fg_color, 0.4);
+    font-style: italic;
+}
+
 /* Button & Accent Polish */
 .accent-btn, button.suggested-action {
     background-color: @accent_bg_color;
@@ -75,6 +90,68 @@ CSS = """
     border-radius: 8px;
     padding: 10px;
     margin: 4px 0;
+}
+
+/* Attach Button Active Highlight */
+.input-view button {
+    color: @accent_bg_color;
+    transition: color 0.2s ease;
+}
+.input-view button:disabled {
+    color: alpha(@window_fg_color, 0.4);
+}
+.input-view button:hover {
+    color: shade(@accent_bg_color, 1.2);
+}
+
+/* Attachment Grid Polish */
+.rounded-image-thumbnail, .rounded-file-thumbnail {
+    border-radius: 8px;
+    border: 1px solid alpha(@window_fg_color, 0.15);
+    background-color: @view_bg_color;
+    padding: 2px;
+}
+.thumbnail-container {
+    border-radius: 8px;
+    background-color: alpha(@window_fg_color, 0.05);
+    padding: 4px;
+}
+.remove-attachment-btn {
+    opacity: 0.7;
+}
+.remove-attachment-btn:hover {
+    opacity: 1.0;
+    color: @error_color;
+}
+
+/* Progress Bar Polish */
+progressbar progress {
+    background-color: @accent_bg_color;
+    border-radius: 6px;
+}
+progressbar trough {
+    background-color: alpha(@window_fg_color, 0.15);
+    border-radius: 6px;
+    min-height: 12px;
+}
+progressbar text {
+    color: @window_fg_color;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+/* Copy Button & Bubble Polish */
+.copy-btn {
+    margin-top: 2px;
+    margin-bottom: -6px;
+    padding: 4px;
+    min-height: 24px;
+    min-width: 24px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+.copy-btn:hover {
+    background-color: alpha(@window_fg_color, 0.08);
 }
 """
 

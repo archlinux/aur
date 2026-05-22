@@ -3,7 +3,7 @@ Module for chat display management.
 Handles UI rendering, message bubble construction, and visual status updates.
 """
 import init_gi
-from gi.repository import Gtk, Gdk, GLib, GtkSource
+from gi.repository import Gtk, Gdk, GLib, GtkSource, Pango
 import utils
 import logging
 from typing import Optional
@@ -61,25 +61,40 @@ def create_code_block(code: str, language_id: str) -> Gtk.ScrolledWindow:
     scrolled.set_child(view)
     return scrolled
 
-def add_message(app, text: str, is_user: bool, image_path: Optional[str] = None) -> Gtk.Label:
+def add_message(app, text: str, is_user: bool, attachments = None) -> Gtk.Label:
     """
-    Renders a chat bubble, handling both plain text and code blocks.
+    Renders a chat bubble, handling both plain text and code blocks, and visual attachments.
     """
     bubble_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
     bubble_box.add_css_class("user-bubble" if is_user else "assistant-bubble")
     
-    if image_path:
-        try:
-            texture = Gdk.Texture.new_from_filename(image_path)
-            img = Gtk.Image.new_from_paintable(texture)
-            img.set_pixel_size(240)
-            img.add_css_class("rounded-image")
-            bubble_box.append(img)
-        except Exception as e:
-            logging.error(f"Failed to load image {image_path}: {e}")
-            img = Gtk.Image.new_from_icon_name("image-missing-symbolic")
-            img.set_pixel_size(64)
-            bubble_box.append(img)
+    # Process attachments (backward compatibility)
+    att_list = []
+    if attachments:
+        if isinstance(attachments, str):
+            att_list = [{"path": attachments, "type": "image"}]
+        elif isinstance(attachments, list):
+            att_list = attachments
+
+    # If user message, render all attached images inline
+    for att in att_list:
+        if isinstance(att, dict) and att.get("type") == "image":
+            path = att.get("path")
+            if path:
+                try:
+                    texture = Gdk.Texture.new_from_filename(path)
+                    img = Gtk.Image.new_from_paintable(texture)
+                    img.set_pixel_size(240)
+                    img.add_css_class("rounded-image")
+                    bubble_box.append(img)
+                except Exception as e:
+                    logging.error(f"Failed to load image {path}: {e}")
+                    img = Gtk.Image.new_from_icon_name("image-missing-symbolic")
+                    img.set_pixel_size(64)
+                    bubble_box.append(img)
+        
+    if text:
+        text = text.strip()
         
     chunks = utils.parse_message(text)
     
@@ -97,10 +112,11 @@ def add_message(app, text: str, is_user: bool, image_path: Optional[str] = None)
             bubble_box.append(bubble)
             last_bubble = bubble
     
-    if not is_user:
+    if text:
         copy_btn = Gtk.Button(icon_name="edit-copy-symbolic")
         copy_btn.add_css_class("flat")
         copy_btn.add_css_class("dim-label")
+        copy_btn.add_css_class("copy-btn")
         copy_btn.set_halign(Gtk.Align.END)
         copy_btn.connect("clicked", lambda b: copy_to_clipboard(text))
         bubble_box.append(copy_btn)
@@ -193,34 +209,76 @@ def cancel_ai_task(app) -> None:
     else:
         # Fallback if unlock_ui is somehow not found
         app.input_box.set_sensitive(True)
-        app.entry.set_editable(True)
+        app.set_entry_locked(False)
         app.entry.grab_focus()
 
 def update_thumbnail(app) -> None:
-    """Refreshes the image thumbnail preview area."""
+    """Refreshes the thumbnail preview area for selected attachments."""
     child = app.thumb_box.get_first_child()
     while child:
         app.thumb_box.remove(child)
         child = app.thumb_box.get_first_child()
 
-    if app.selected_image_path:
-        try:
-            texture = Gdk.Texture.new_from_filename(app.selected_image_path)
-            img = Gtk.Image.new_from_paintable(texture)
-            img.set_pixel_size(100)
-            img.set_hexpand(True)
-            app.thumb_box.append(img)
-        except Exception as e:
-            logging.error(f"Thumbnail load failed: {e}")
-            img = Gtk.Image.new_from_icon_name("image-missing-symbolic")
-            img.set_pixel_size(64)
-            app.thumb_box.append(img)
+    if not hasattr(app, "selected_attachments") or not app.selected_attachments:
+        app.thumb_box.set_visible(False)
+        return
 
-        btn = Gtk.Button(icon_name="window-close-symbolic")
-        btn.connect("clicked", lambda b: on_remove_thumbnail(app))
-        app.thumb_box.append(btn)
+    app.thumb_box.set_visible(True)
+    
+    for i, att in enumerate(app.selected_attachments):
+        card_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+        card_box.add_css_class("thumbnail-container")
+        card_box.set_size_request(80, 95)
+        
+        overlay = Gtk.Overlay()
+        overlay.set_halign(Gtk.Align.CENTER)
+        overlay.set_valign(Gtk.Align.CENTER)
+        
+        if att["type"] == "image":
+            try:
+                texture = Gdk.Texture.new_from_filename(att["path"])
+                img = Gtk.Image.new_from_paintable(texture)
+                img.set_pixel_size(64)
+                img.add_css_class("rounded-image-thumbnail")
+            except Exception as e:
+                logging.error(f"Failed to load thumbnail for {att['path']}: {e}")
+                img = Gtk.Image.new_from_icon_name("image-missing-symbolic")
+                img.set_pixel_size(64)
+                img.add_css_class("rounded-image-thumbnail")
+        else:
+            img = Gtk.Image.new_from_icon_name("text-x-generic-symbolic")
+            img.set_pixel_size(64)
+            img.add_css_class("rounded-file-thumbnail")
+            
+        overlay.set_child(img)
+        
+        remove_btn = Gtk.Button(icon_name="window-close-symbolic")
+        remove_btn.add_css_class("flat")
+        remove_btn.add_css_class("remove-attachment-btn")
+        remove_btn.set_halign(Gtk.Align.END)
+        remove_btn.set_valign(Gtk.Align.START)
+        
+        remove_btn.connect("clicked", lambda b, idx=i: on_remove_attachment(app, idx))
+        overlay.add_overlay(remove_btn)
+        
+        card_box.append(overlay)
+        
+        name_label = Gtk.Label(label=att["name"])
+        name_label.set_halign(Gtk.Align.CENTER)
+        name_label.set_max_width_chars(12)
+        name_label.set_ellipsize(Pango.EllipsizeMode.END)
+        name_label.add_css_class("caption")
+        card_box.append(name_label)
+        
+        app.thumb_box.append(card_box)
+
+def on_remove_attachment(app, index: int) -> None:
+    """Removes a specific attachment from the selection list."""
+    if hasattr(app, "selected_attachments") and 0 <= index < len(app.selected_attachments):
+        app.selected_attachments.pop(index)
+    update_thumbnail(app)
 
 def on_remove_thumbnail(app) -> None:
-    """Removes the selected image attachment."""
-    app.selected_image_path = None
+    """Removes all attachments (fallback for single image removal)."""
+    app.selected_attachments = []
     update_thumbnail(app)

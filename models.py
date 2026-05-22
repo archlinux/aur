@@ -20,7 +20,7 @@ async def init_server(app) -> None:
 
 async def wait_for_server(app) -> None:
     """Polls server process until it is active or times out, checking for crashes."""
-    app.entry.set_sensitive(False)
+    app.set_entry_locked(True)
     app.btn_send.set_sensitive(False)
     
     for i in range(45):
@@ -183,7 +183,7 @@ def update_model_ui(app) -> None:
                         is_current_installed and 
                         not is_downloading_any)
     
-    app.entry.set_sensitive(is_input_allowed)
+    app.set_entry_locked(not is_input_allowed)
     app.btn_send.set_sensitive(is_input_allowed)
     app.btn_attach.set_sensitive(app.is_current_model_capable() and is_current_installed and not is_downloading_any)
     
@@ -227,6 +227,7 @@ def update_model_ui(app) -> None:
         label = Gtk.Label(label=label_text)
         label.set_xalign(0)
         label.set_hexpand(True)
+        box.append(label)
             
         if is_downloading:
             row.set_sensitive(False)
@@ -257,7 +258,6 @@ def update_model_ui(app) -> None:
             
             box.append(actions)
             
-        box.append(label)
         row.set_child(box)
         listbox.append(row)
         
@@ -266,6 +266,9 @@ def update_model_ui(app) -> None:
     scrolled.set_child(listbox)
     popover.set_child(scrolled)
     app.model_btn.set_popover(popover)
+    
+    if hasattr(app, "update_shortcuts_sensitivity"):
+        app.update_shortcuts_sensitivity()
 
 def show_model_info(app, model_data: dict) -> None:
     """Shows a dialog with details about the selected model."""

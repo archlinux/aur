@@ -45,7 +45,7 @@ class FlmChatApp(Adw.Application):
         self.session = Soup.Session()
         self.history = []
         self.status_labels = []
-        self.selected_image_path: Optional[str] = None
+        self.selected_attachments: List[dict] = []
         
         self.history_dir = os.path.expanduser("~/.config/flm/history")
         os.makedirs(self.history_dir, exist_ok=True)
@@ -89,6 +89,35 @@ class FlmChatApp(Adw.Application):
         self.win = Adw.ApplicationWindow(application=self)
         self.win.set_default_size(900, 800)
         self.win.set_title("FastFlowLM-gtk")
+
+        # Setup native keyboard actions & accelerators
+        self.action_new_chat = Gio.SimpleAction.new("new_chat", None)
+        self.action_new_chat.connect("activate", lambda a, p: self.on_new_chat(None))
+        self.add_action(self.action_new_chat)
+        self.set_accels_for_action("app.new_chat", ["<Ctrl>n"])
+
+        self.action_search_chats = Gio.SimpleAction.new("search_chats", None)
+        self.action_search_chats.connect("activate", self.on_search_chats_activated)
+        self.add_action(self.action_search_chats)
+        self.set_accels_for_action("app.search_chats", ["<Ctrl>f"])
+
+        self.action_copy_last = Gio.SimpleAction.new("copy_last", None)
+        self.action_copy_last.connect("activate", self.on_copy_last_activated)
+        self.add_action(self.action_copy_last)
+        self.set_accels_for_action("app.copy_last", ["<Ctrl><Shift>c"])
+
+        self.action_toggle_sidebar = Gio.SimpleAction.new("toggle_sidebar", None)
+        self.action_toggle_sidebar.connect("activate", lambda a, p: self.btn_sidebar.set_active(not self.btn_sidebar.get_active()))
+        self.add_action(self.action_toggle_sidebar)
+        self.set_accels_for_action("app.toggle_sidebar", ["F9"])
+
+        self.action_show_shortcuts = Gio.SimpleAction.new("show_shortcuts", None)
+        self.action_show_shortcuts.connect("activate", self.on_show_shortcuts_activated)
+        self.add_action(self.action_show_shortcuts)
+        self.set_accels_for_action("app.show_shortcuts", ["<Ctrl>question", "<Ctrl>slash"])
+
+        # Initial shortcuts sensitivity update
+        self.update_shortcuts_sensitivity()
         
         self.css_provider.load_from_data(utils.CSS.encode())
         theme.apply_theme(self, self.theme_color)
@@ -115,6 +144,7 @@ class FlmChatApp(Adw.Application):
         menu.append("Allow Mid-Chat Switch", "app.allow_switch")
         menu.append("Clear All History", "app.clear_history")
         menu.append("Choose Accent Color", "app.choose_color")
+        menu.append("Keyboard Shortcuts", "app.show_shortcuts")
         self.options_btn.set_menu_model(menu)
 
         self.update_model_ui()
@@ -128,7 +158,10 @@ class FlmChatApp(Adw.Application):
         GLib.idle_add(lambda: self.run_task(self.init_server()))
 
     def on_search_changed(self, entry):
-        text = entry.get_text().lower()
+        import re
+        text = entry.get_text().lower().strip()
+        
+        # Build search cache if not present or needs refresh (preserves original casing)
         if not hasattr(self, '_search_cache'):
             self._search_cache = {}
             for meta in self.sessions_metadata:
@@ -138,30 +171,87 @@ class FlmChatApp(Adw.Application):
                     with open(path, 'r') as f:
                         data = json.load(f)
                         full_text = " ".join([msg.get("content", "") for msg in data.get("messages", [])])
-                        self._search_cache[session_id] = full_text.lower()
+                        self._search_cache[session_id] = full_text
                 except Exception as e:
                     logging.error(f"Failed to cache session {session_id}: {e}")
                     self._search_cache[session_id] = ""
         
-        for i, row in enumerate(self.history_list):
-            session_id = self.sessions_metadata[i]["id"]
-            content = self._search_cache.get(session_id, "")
+        # Helper to escape HTML tags in text for safe Pango markup
+        def escape_pango(t: str) -> str:
+            return t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
             
+        # Helper to highlight occurrences of the query using bold tags case-insensitively
+        def highlight_match(t: str, query: str) -> str:
+            escaped_t = escape_pango(t)
+            if not query:
+                return escaped_t
+            escaped_query = escape_pango(query)
+            try:
+                pattern = re.compile(re.escape(escaped_query), re.IGNORECASE)
+                return pattern.sub(lambda m: f"<b>{m.group(0)}</b>", escaped_t)
+            except Exception:
+                return escaped_t
+        
+        for row in self.history_list:
+            session_id = getattr(row, 'session_id', None)
+            meta = getattr(row, 'session_meta', None)
+            if not session_id or not meta:
+                continue
+                
+            original_content = self._search_cache.get(session_id, "")
+            content_lower = original_content.lower()
+            title_text = meta.get("title", "")
+            model_text = meta.get("model", "")
+            
+            # Find labels inside the list row layout
             main_box = row.get_child()
             txt_box = main_box.get_first_child()
             title_label = txt_box.get_first_child()
             model_label = title_label.get_next_sibling()
             
+            # Make sure labels support markup
+            title_label.set_use_markup(True)
+            model_label.set_use_markup(True)
+            
+            # Determine base model label prefixing for VLM indicator
+            model_display_text = model_text
+            model_data = next((m for m in self.models if m['model'] == model_text), None)
+            if model_data and model_data.get('vlm', False):
+                model_display_text = "👁 " + model_display_text
+                
             if not text:
                 row.set_visible(True)
-                model_label.set_label(self.sessions_metadata[i]["model"])
+                title_label.set_markup(escape_pango(title_text))
+                model_label.set_markup(escape_pango(model_display_text))
                 continue
                 
-            if text in content:
+            # Perform search check on Title, Model, and Content
+            matches_title = text in title_text.lower()
+            matches_model = text in model_text.lower()
+            matches_content = text in content_lower
+            
+            if matches_title or matches_model or matches_content:
                 row.set_visible(True)
-                start_idx = content.find(text)
-                preview = content[max(0, start_idx-20):start_idx+20]
-                model_label.set_label(f"...{preview}...")
+                
+                # The model name always stays in the subtitle position, highlighted if matched
+                model_label.set_markup(highlight_match(model_display_text, text))
+                
+                # Show highlighted content snippet inside the Title position if matched, otherwise show standard title
+                if matches_content:
+                    start_idx = content_lower.find(text)
+                    # Start preview EXACTLY at the matching text, going forward 50 characters
+                    slice_end = min(len(original_content), start_idx + 50)
+                    preview_slice = original_content[start_idx:slice_end]
+                    
+                    # Clean and sanitize whitespace/newlines
+                    preview_clean = " ".join(preview_slice.replace("\n", " ").replace("\r", " ").replace("\t", " ").split())
+                    
+                    suffix = "..." if slice_end < len(original_content) else ""
+                    preview_formatted = f"{preview_clean}{suffix}"
+                    
+                    title_label.set_markup(highlight_match(preview_formatted, text))
+                else:
+                    title_label.set_markup(highlight_match(title_text, text))
             else:
                 row.set_visible(False)
 
@@ -189,7 +279,7 @@ class FlmChatApp(Adw.Application):
         task.add_done_callback(self.tasks.discard)
 
     def is_current_model_capable(self) -> bool:
-        return self.is_current_model_vlm()
+        return self.current_model is not None
 
     def is_current_model_vlm(self) -> bool:
         if not self.current_model: return False
@@ -229,6 +319,10 @@ class FlmChatApp(Adw.Application):
         return models.download_model(self, model_name)
 
     def update_history_ui(self):
+        # Clear search cache when UI updates to prevent indexing out of sync
+        if hasattr(self, '_search_cache'):
+            del self._search_cache
+            
         child = self.history_list.get_first_child()
         while child:
             next_child = child.get_next_sibling()
@@ -237,6 +331,10 @@ class FlmChatApp(Adw.Application):
         
         for meta in self.sessions_metadata:
             row = Gtk.ListBoxRow()
+            # Store session_id and metadata directly on row to guarantee search safety
+            row.session_id = meta["id"]
+            row.session_meta = meta
+            
             main_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
             main_box.set_margin_start(10)
             main_box.set_margin_end(5)
@@ -246,7 +344,9 @@ class FlmChatApp(Adw.Application):
             txt_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
             txt_box.set_hexpand(True)
             
-            title = Gtk.Label(label=meta["title"])
+            title = Gtk.Label()
+            title.set_use_markup(True)
+            title.set_markup(meta["title"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
             title.set_halign(Gtk.Align.START)
             title.set_ellipsize(3)
             title.set_max_width_chars(24)
@@ -257,7 +357,9 @@ class FlmChatApp(Adw.Application):
             if model_data and model_data.get('vlm', False):
                 model_label = "👁 " + model_label
             
-            model = Gtk.Label(label=model_label)
+            model = Gtk.Label()
+            model.set_use_markup(True)
+            model.set_markup(model_label.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
             model.set_halign(Gtk.Align.START)
             model.set_ellipsize(3)
             model.add_css_class("sidebar-subtitle")
@@ -292,7 +394,7 @@ class FlmChatApp(Adw.Application):
 
         self.model_btn.set_sensitive(True)
         models.update_model_ui(self)
-        self.entry.set_sensitive(True)
+        self.set_entry_locked(False)
         self.btn_send.set_sensitive(True)
         self.update_model_ui()
         display.add_system_message(self, "Ready. Select a model and send a message to start.")
@@ -302,7 +404,7 @@ class FlmChatApp(Adw.Application):
             self.server_process.terminate()
             self.server_process = None
         self.current_model = None
-        self.entry.set_sensitive(False)
+        self.set_entry_locked(True)
         self.btn_send.set_sensitive(False)
         self.model_btn.set_label("Select a model to start")
         self.update_model_ui()
@@ -344,7 +446,10 @@ class FlmChatApp(Adw.Application):
                 self.current_model = data.get("model")
                 
                 for msg in self.history:
-                    display.add_message(self, msg.get("content", ""), msg["role"] == "user", msg.get("image"))
+                    attachments = msg.get("attachments", [])
+                    if not attachments and msg.get("image"):
+                        attachments = [{"path": msg.get("image"), "type": "image"}]
+                    display.add_message(self, msg.get("content", ""), msg["role"] == "user", attachments)
                 
                 model_data = next((m for m in self.models if m['model'] == self.current_model), None)
                 
@@ -411,9 +516,23 @@ class FlmChatApp(Adw.Application):
     def on_send(self, widget):
         handlers.on_send(self, widget)
 
+    def set_entry_locked(self, locked: bool, message: str = "Please wait..."):
+        self.entry.set_sensitive(not locked)
+        self.entry.set_editable(not locked)
+        
+        buffer = self.entry.get_buffer()
+        if locked:
+            buffer.set_text(message)
+            self.entry.set_justification(Gtk.Justification.CENTER)
+            self.entry.add_css_class("locked-entry")
+        else:
+            buffer.set_text("")
+            self.entry.set_justification(Gtk.Justification.LEFT)
+            self.entry.remove_css_class("locked-entry")
+
     def unlock_ui(self):
         self.input_box.set_sensitive(True)
-        self.entry.set_editable(True)
+        self.set_entry_locked(False)
         self.btn_attach.set_sensitive(self.is_current_model_capable())
         self.entry.grab_focus()
         self.is_sending = False
@@ -448,9 +567,19 @@ class FlmChatApp(Adw.Application):
                     content = [{"type": "text", "text": text_content}]
                     messages.append({"role": role, "content": content})
 
+                images_to_encode = []
                 if msg.get("image"):
+                    images_to_encode.append(msg["image"])
+                if msg.get("attachments"):
+                    for att in msg["attachments"]:
+                        if isinstance(att, dict) and att.get("type") == "image":
+                            path = att.get("path")
+                            if path and path not in images_to_encode:
+                                images_to_encode.append(path)
+
+                for img_path in images_to_encode:
                     try:
-                        pixbuf = GdkPixbuf.Pixbuf.new_from_file(msg["image"])
+                        pixbuf = GdkPixbuf.Pixbuf.new_from_file(img_path)
                         
                         # Handle transparency by compositing onto white
                         if pixbuf.get_has_alpha():
@@ -467,7 +596,7 @@ class FlmChatApp(Adw.Application):
                                 "image_url": {"url": f"data:image/jpeg;base64,{encoded}"}
                             })
                         else:
-                            logging.error(f"Failed to convert image: {msg['image']}")
+                            logging.error(f"Failed to convert image: {img_path}")
                     except Exception as e:
                         logging.error(f"Error encoding image: {e}")
 
@@ -514,6 +643,16 @@ class FlmChatApp(Adw.Application):
                         new_bubble.set_use_markup(True)
                         new_bubble.set_markup(utils.markdown_to_pango(content))
                         parent.append(new_bubble)
+                
+                # Append copy button to the bottom of the assistant message box
+                if full_content:
+                    copy_btn = Gtk.Button(icon_name="edit-copy-symbolic")
+                    copy_btn.add_css_class("flat")
+                    copy_btn.add_css_class("dim-label")
+                    copy_btn.add_css_class("copy-btn")
+                    copy_btn.set_halign(Gtk.Align.END)
+                    copy_btn.connect("clicked", lambda b: display.copy_to_clipboard(full_content))
+                    parent.append(copy_btn)
             
             self.history.append({"role": "assistant", "content": full_content})
             self.save_session()
@@ -527,6 +666,17 @@ class FlmChatApp(Adw.Application):
             GLib.idle_add(self.unlock_ui)
             if thinking_box and thinking_box.get_parent() == self.chat_box:
                 GLib.idle_add(self.chat_box.remove, thinking_box)
+            if not full_content:
+                def cleanup_empty_bubble():
+                    try:
+                        p1 = bubble.get_parent()
+                        if p1:
+                            p2 = p1.get_parent()
+                            if p2 and p2.get_parent() == self.chat_box:
+                                self.chat_box.remove(p2)
+                    except Exception as e:
+                        logging.error(f"Error cleaning up empty bubble: {e}")
+                GLib.idle_add(cleanup_empty_bubble)
 
     def on_choose_color(self, action, value):
         dialog = Gtk.ColorDialog.new()
@@ -543,6 +693,51 @@ class FlmChatApp(Adw.Application):
                 json.dump({"accent_color": hex_color}, f)
         except Exception as e:
             logging.error(f"Error applying color: {e}")
+
+    def on_search_chats_activated(self, action, param):
+        if not self.btn_sidebar.get_active():
+            self.btn_sidebar.set_active(True)
+        self.search_entry.grab_focus()
+
+    def on_copy_last_activated(self, action, param):
+        for msg in reversed(self.history):
+            if msg.get("role") == "assistant" and msg.get("content"):
+                display.copy_to_clipboard(msg["content"])
+                return
+
+    def on_show_shortcuts_activated(self, action, param):
+        shortcuts_win = Gtk.ShortcutsWindow(transient_for=self.win)
+        
+        nav_group = Gtk.ShortcutsGroup(title="Navigation")
+        nav_group.append(Gtk.ShortcutsShortcut(title="Toggle Sidebar", accelerator="F9"))
+        nav_group.append(Gtk.ShortcutsShortcut(title="Search Chats", accelerator="<Ctrl>f"))
+        
+        chat_group = Gtk.ShortcutsGroup(title="Chat Actions")
+        chat_group.append(Gtk.ShortcutsShortcut(title="Start New Chat", accelerator="<Ctrl>n"))
+        chat_group.append(Gtk.ShortcutsShortcut(title="Send Message", accelerator="Return"))
+        chat_group.append(Gtk.ShortcutsShortcut(title="Insert Newline", accelerator="<Shift>Return"))
+        chat_group.append(Gtk.ShortcutsShortcut(title="Copy Last AI Response", accelerator="<Ctrl><Shift>c"))
+        
+        app_group = Gtk.ShortcutsGroup(title="Application")
+        app_group.append(Gtk.ShortcutsShortcut(title="Keyboard Shortcuts Help", accelerator="<Ctrl>question"))
+        
+        section = Gtk.ShortcutsSection(title="General", section_name="general")
+        section.append(nav_group)
+        section.append(chat_group)
+        section.append(app_group)
+        
+        shortcuts_win.add_section(section)
+        shortcuts_win.present()
+
+    def update_shortcuts_sensitivity(self):
+        if not hasattr(self, 'action_new_chat'):
+            return
+        is_locked = len(self.downloading_models) > 0 or self.is_sending
+        has_history = len(self.history) > 0
+        
+        self.action_new_chat.set_enabled(not is_locked)
+        self.action_search_chats.set_enabled(not is_locked)
+        self.action_copy_last.set_enabled(not is_locked and has_history)
 
     def do_shutdown(self):
         self.save_session()

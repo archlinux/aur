@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 import sys
+import warnings
+# Silence DeprecationWarnings (e.g. asyncio.set_event_loop_policy in Python 3.14+)
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 import asyncio
 import init_gi
 from gi.repository import Gio
