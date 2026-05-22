@@ -1,6 +1,6 @@
 # Maintainer: Pranav <your@email.com>
 pkgname=hubfetch
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A CLI ricing tool designed to fetch GitHub user stats"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-click' 'python-requests' 'python-rich')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/h/hubfetch/hubfetch-$pkgver.tar.gz")
-sha256sums=('fc737855e34d5c2d70290f261460cf41d6228d1d0c3fd374679517836ec8022e')
+sha256sums=('4ac742d874f843adb71337cbf9910107317d1597c838468bef3b91bcd3e8f170')
 
 build() {
   cd "hubfetch-$pkgver"

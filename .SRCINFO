@@ -1,6 +1,6 @@
 pkgbase = hubfetch
 	pkgdesc = A CLI ricing tool designed to fetch GitHub user stats
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/PranavU-Coder/hubfetch
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = hubfetch
 	depends = python-click
 	depends = python-requests
 	depends = python-rich
-	source = https://files.pythonhosted.org/packages/source/h/hubfetch/hubfetch-1.0.4.tar.gz
-	sha256sums = fc737855e34d5c2d70290f261460cf41d6228d1d0c3fd374679517836ec8022e
+	source = https://files.pythonhosted.org/packages/source/h/hubfetch/hubfetch-1.0.5.tar.gz
+	sha256sums = 4ac742d874f843adb71337cbf9910107317d1597c838468bef3b91bcd3e8f170
 
 pkgname = hubfetch
