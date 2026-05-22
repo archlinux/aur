@@ -1,6 +1,6 @@
 pkgbase = mousehop
 	pkgdesc = Software KVM Switch / mouse & keyboard sharing software for Local Area Networks
-	pkgver = 0.11.6
+	pkgver = 0.11.7
 	pkgrel = 1
 	url = https://github.com/jondkinney/mousehop
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = mousehop
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	options = !lto
-	source = mousehop-0.11.6.tar.gz::https://github.com/jondkinney/mousehop/archive/refs/tags/v0.11.6.tar.gz
-	sha256sums = ff3eda1f695ddd8c40c11ad3f991d7ac1a6528665ecf85c495ba69cb6b7fe57e
+	source = mousehop-0.11.7.tar.gz::https://github.com/jondkinney/mousehop/archive/refs/tags/v0.11.7.tar.gz
+	sha256sums = 4433f95902984248258f86228a158c4fd131acf834c5149315c3361783ccc162
 
 pkgname = mousehop
