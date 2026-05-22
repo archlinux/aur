@@ -1,11 +1,11 @@
 pkgbase = scst-dkms
 	pkgdesc = Generic SCSI Target Subsystem For Linux
-	pkgver = 3.10.4.7
+	pkgver = 3.10.5.7
 	pkgrel = 0
 	url = https://github.com/SCST-project/scst
 	arch = x86_64
 	license = GPL-2.0-only
-	source = git+https://github.com/SCST-project/scst.git#commit=d18c8fc718ef8d9b017997597713b5feedea046b
+	source = git+https://github.com/SCST-project/scst.git#commit=e2c57de2d5c10425cc35f76170928946bbef727c
 	source = pr_dif_vmp_files_location.patch
 	source = servicing.patch.generated
 	source = scstadmin.service
@@ -34,52 +34,52 @@ pkgname = scst-dkms
 	pkgdesc = Generic SCSI Target Subsystem For Linux (SCST) kernel modules (dkms)
 	license = GPL-2.0-only
 	depends = dkms
-	provides = scst=3.10.4.7
+	provides = scst=3.10.5.7
 	conflicts = scst
 
 pkgname = scst-local-dkms
 	pkgdesc = SCST local target support kernel module (dkms)
 	license = GPL-2.0-or-later
-	depends = scst-dkms=3.10.4.7
+	depends = scst-dkms=3.10.5.7
 	depends = dkms
-	provides = scst-local=3.10.4.7
+	provides = scst-local=3.10.5.7
 	conflicts = scst-local
 
 pkgname = scst-fc-dkms
 	pkgdesc = SCST fibre-channel target support kernel module (dkms)
 	license = GPL-2.0-only
-	depends = scst-dkms=3.10.4.7
+	depends = scst-dkms=3.10.5.7
 	depends = dkms
-	provides = scst-fc=3.10.4.7
+	provides = scst-fc=3.10.5.7
 	conflicts = scst-fc
 
 pkgname = scst-iscsi-dkms
 	pkgdesc = SCST iscsi/iser target support kernel modules (dkms) and daemon
 	license = GPL-2.0-only
-	depends = scst-dkms=3.10.4.7
+	depends = scst-dkms=3.10.5.7
 	depends = dkms
-	provides = scst-iscsi=3.10.4.7
+	provides = scst-iscsi=3.10.5.7
 	conflicts = scst-iscsi
 
 pkgname = scst-rdma-dkms
 	pkgdesc = SCST rdma srp target support kernel module (dkms)
 	license = GPL-2.0-only
-	depends = scst-dkms=3.10.4.7
+	depends = scst-dkms=3.10.5.7
 	depends = dkms
-	provides = scst-rdma=3.10.4.7
+	provides = scst-rdma=3.10.5.7
 	conflicts = scst-rdma
 
 pkgname = scst-qla2x-dkms
 	pkgdesc = SCST qla2x00 appliance target support kernel modules (dkms)
 	license = GPL-2.0-only
-	depends = scst-dkms=3.10.4.7
+	depends = scst-dkms=3.10.5.7
 	depends = dkms
-	provides = scst-qla2x=3.10.4.7
+	provides = scst-qla2x=3.10.5.7
 	conflicts = scst-qla2x
 
 pkgname = scst-admin-util
 	pkgdesc = SCST scstadmin administration utility
 	license = GPL-2.0-only
-	depends = scst=3.10.4.7
+	depends = scst=3.10.5.7
 	depends = perl
 	conflicts = scst-admin-util
