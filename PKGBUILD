@@ -5,7 +5,7 @@
 _pkgname=hearthstone-linux-gui
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Native GTK4 desktop manager for installing, updating, logging into, and launching Hearthstone"
 arch=('x86_64')
