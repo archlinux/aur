@@ -19,9 +19,9 @@ source=("${_base}/dist-mps.tar.gz" "mps.service")
 source_x86_64=("mps-x86_64::${_base}/mps-x86_64-unknown-linux-musl")
 source_aarch64=("mps-aarch64::${_base}/mps-aarch64-unknown-linux-musl")
 # First entry is the release dist tarball; local sidecar file is intentionally SKIP.
-sha256sums=('a255a58c6ba48f519519b1f6a15e5335d0b170778e49497bdc9e7d0d5b1ede17' 'SKIP')
-sha256sums_x86_64=('58bd8442fc89633ab834e0840282cbc67b728332e391647e0b4a14f0442c99d3')
-sha256sums_aarch64=('1f33e58aebdc75b20cb20db88f23194ee892ad6387a455aeba6919b34e5ffa68')
+sha256sums=('31038dd5acc81e8ced394aeab8078a62d65aeb0b3f8697cecb44f6c5239a27b4' 'SKIP')
+sha256sums_x86_64=('9495158dfb9046d88be45260f669dd955622e20a15f4464cd3a7825847de87bd')
+sha256sums_aarch64=('817fe68967e0592a6b3b7b65306f9843611c355c5cd484287c7ded507c5ef3b1')
 
 package() {
     install -Dm755 "mps-${CARCH}" "$pkgdir/usr/bin/mps"
