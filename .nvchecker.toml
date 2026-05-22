@@ -1,0 +1,5 @@
+[xlsxsql-bin]
+source = "github"
+github = "noborus/xlsxsql"
+use_latest_release = true
+prefix = "v"
