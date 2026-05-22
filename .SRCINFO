@@ -1,9 +1,10 @@
 pkgbase = gtk2-ng-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (community-maintained fork)
 	pkgver = r22068.0675b80da
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gtk.org/
 	arch = x86_64
+	arch = aarch64
 	license = LGPL-2.1-or-later
 	makedepends = git
 	makedepends = glib2-devel
