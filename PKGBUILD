@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=logging
-_pkgver=0.10-108
+_pkgver=0.10-111
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=10
+pkgrel=1
 pkgdesc="R Logging Package"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b72368fc427dc461d30ad6b8b4ba9482')
-b2sums=('f50a7a40e9564f13c756d1b1e216e53bf5eacdff391ab0e49624103ee7d87296bfee3b6acde8e9964be46568ad8f77264d4f1107ea954f5b3aece49274afac1a')
+md5sums=('d8158871979c5ed3b7bd8b9c432bc468')
+b2sums=('13b35f4262080126be380a87606102c873e6451bce490013178d182837a861b6af5064cb118b27c3e502178ba75d6785dc2f476554b98200a3ae9985c10608b7')
 
 build() {
   mkdir build
