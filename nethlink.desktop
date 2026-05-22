@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=NethLink
+Exec=nethlink %U
+Terminal=false
+Type=Application
+Icon=nethlink
+StartupWMClass=NethLink
+Comment=NethLink is a tool designed to link NethServer systems and provide remote access tools. This project aims to offer a simple yet powerful user interface for managing NethServer systems more efficiently.
+MimeType=x-scheme-handler/tel;x-scheme-handler/callto;x-scheme-handler/nethlink;
+Categories=Utility;
