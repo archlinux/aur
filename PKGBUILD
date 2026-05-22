@@ -1,8 +1,8 @@
 # Maintainer: bobi
 
 pkgname=germinal
-pkgver=26
-pkgrel=2
+pkgver=27
+pkgrel=1
 pkgdesc="Minimalist terminal emulator based on vte and tmux"
 gdeskpatch="gnome-desktop.patch"
 
@@ -11,14 +11,14 @@ url="https://github.com/Keruspe/Germinal"
 source=("http://www.imagination-land.org/files/$pkgname/$pkgname-$pkgver.tar.xz"
 	"$gdeskpatch")
 
-makedepends=('intltool' 'appstream-glib')
+makedepends=('intltool' 'appstream-glib' 'meson' 'cmake')
 
-depends=('glib2' 'vte3' 'pango' 'tmux' 'pcre2')
+depends=('glib2' 'vte4' 'pango' 'tmux' 'pcre2' 'libadwaita')
 
 install=$pkgname.install
 
 arch=('i686' 'x86_64')
-md5sums=('8d22320954de55a098b772b2037a1455'
+md5sums=('2b5ab945370121d76b4d5a89b60854b7'
          'f5b9996bcb2856ce3e2f91d739f81612')
 
 build () {
@@ -26,13 +26,11 @@ build () {
     cd "$srcdir/$pkgname-$pkgver"
     patch -p0 < $gdeskpatch
 
-    ./configure --sysconfdir=/etc       \
-		--libexecdir=/usr/lib
-    make
+    meson setup _build --prefix=/usr
+    ninja -C _build
 }
 
 package () {
     cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" ninja -C _build install
 }
-# expandtab:tabstop=4:shiftwidth=4
