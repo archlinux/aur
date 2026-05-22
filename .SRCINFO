@@ -1,7 +1,7 @@
 pkgbase = jupiter-hw-support
 	pkgdesc = Steam Deck (Jupiter) hardware support: scripts, udev rules, polkit, services, BIOS/controller firmware
 	pkgver = 20250728.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/evlaV/jupiter-hw-support
 	arch = x86_64
 	license = LicenseRef-jupiter-hw-support
