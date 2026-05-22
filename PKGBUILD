@@ -1,7 +1,7 @@
 # Maintainer: Rui Jiang <https://github.com/ruiiiijiiiiang>
 pkgname=rs-top
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, agentless, and read-only remote system monitor with a TUI dashboard"
 arch=('x86_64')
 url="https://github.com/ruiiiijiiiiang/rs-top"
@@ -14,20 +14,20 @@ sha256sums=('20e45f2cad11c530e3c5ffd6285f0aa8af27b3a182ae819304ce644bfd9eb31e')
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --release --all-features
 }
 
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --release --all-features
+  cargo test --release --all-features
 }
 
 package() {
