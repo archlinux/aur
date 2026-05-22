@@ -1,7 +1,7 @@
 # Maintainer: David Mulder <dmulder@suse.com>
 pkgname=himmelblau-git
 _reponame=himmelblau
-pkgver=r2077.d700f392
+pkgver=r2187.1f848d27
 pkgrel=1
 pkgdesc="Entra ID / Azure AD authentication for Linux (PAM, NSS, broker, SSO)"
 arch=('x86_64' 'aarch64')
@@ -96,7 +96,7 @@ package() {
         "${pkgdir}/usr/share/dbus-1/services/com.microsoft.identity.broker1.service"
 
     # ── Configuration ─────────────────────────────────────────────────────────
-    install -Dm644 src/config/himmelblau.conf.example \
+    install -Dm644 target/config/himmelblau.conf.example \
         "${pkgdir}/etc/himmelblau/himmelblau.conf"
 
     # ── tmpfiles.d ────────────────────────────────────────────────────────────
@@ -131,6 +131,6 @@ package() {
     # ── Documentation ─────────────────────────────────────────────────────────
     install -Dm644 README.md \
         "${pkgdir}/usr/share/doc/${_reponame}/README.md"
-    install -Dm644 src/config/himmelblau.conf.example \
+    install -Dm644 target/config/himmelblau.conf.example \
         "${pkgdir}/usr/share/doc/${_reponame}/himmelblau.conf.example"
 }

@@ -1,6 +1,6 @@
 pkgbase = himmelblau-git
 	pkgdesc = Entra ID / Azure AD authentication for Linux (PAM, NSS, broker, SSO)
-	pkgver = r2077.d700f392
+	pkgver = r2187.1f848d27
 	pkgrel = 1
 	url = https://github.com/himmelblau-idm/himmelblau
 	arch = x86_64
