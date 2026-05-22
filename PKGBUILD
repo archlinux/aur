@@ -1,20 +1,15 @@
 # Maintainer: director <noreply@devbulle>
 #
-# Binary release PKGBUILD — publish as lafifi-bin on AUR.
-# Update source=, sha256sums, and b2sums with each new release.
-#
-# To create a release tarball:
-#   make release
-#
-# Upload dist/lafifi-<ver>-linux-x86_64.tar.zst and .tar.zst.sig
-# to a stable URL, then update source=, sha256sums, and b2sums below.
+# Binary release PKGBUILD for lafifi-bin on AUR.
+# Source URLs use buildhut stable redirect endpoints.
+# The CI publish-aur-bin task updates pkgver before pushing to AUR.
 
 pkgname=lafifi-bin
 pkgver=0.4.0
 pkgrel=1
 pkgdesc="Multi-chain, multi-wallet crypto portfolio tracker – prebuilt binary"
 arch=('x86_64')
-url="https://git.sr.ht/~drzoidberg/Lafifi"
+url="https://buildhut.fly.dev/apps/lafifi"
 license=('MIT')
 depends=('gtk3' 'libepoxy' 'xz' 'sqlite' 'libsecret'
          'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav'
@@ -23,12 +18,11 @@ makedepends=('patchelf')
 provides=('lafifiv3')
 conflicts=('lafifiv3' 'lafifi-flutter-git')
 validpgpkeys=('EF27591A48D4B6F7C7E55F49EC8E0E98E7C13D19')
-# TODO: replace with your stable artifact URL and checksums
-source=("lafifi-${pkgver}-linux-x86_64.tar.zst::https://todo.example.com/lafifi-${pkgver}-linux-x86_64.tar.zst"
-        "lafifi-${pkgver}-linux-x86_64.tar.zst.sig::https://todo.example.com/lafifi-${pkgver}-linux-x86_64.tar.zst.sig")
-sha256sums=('0000000000000000000000000000000000000000000000000000000000000000'
+source=("lafifi-${pkgver}-linux-x86_64.tar.zst::https://buildhut.fly.dev/api/apps/lafifi/latest/linux/x86_64/tar.zst"
+        "lafifi-${pkgver}-linux-x86_64.tar.zst.sig::https://buildhut.fly.dev/api/apps/lafifi/latest/linux/x86_64/tar.zst/signature")
+sha256sums=('SKIP'
             'SKIP')
-b2sums=('00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'
+b2sums=('SKIP'
         'SKIP')
 
 # Expected tarball layout (from make release):
