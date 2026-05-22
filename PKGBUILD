@@ -14,6 +14,6 @@ source=("https://github.com/32archusers/web-archer/archive/refs/tags/v1.2.0.tar.
 sha256sums=('83c7778725fe952cbffe4259cba4e8d48fa49a2d0082bc31d809ccb22710b156')
 
 package() {
-    cd "${srcdir}/web-archer-1.4.1.stable"
+    cd "${srcdir}/web-archer-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
 }
