@@ -1,0 +1,3 @@
+[minesweeper-tui]
+source = "npm"
+npm = "minesweeper-tui"
