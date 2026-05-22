@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # Query version information and update PKGBUILD for the AppImage release.
-# md5sums for the AppImages are pulled from the Google Cloud Storage ETag
-# header (which is the hex MD5 for non-composite objects), so the binaries
-# are not downloaded.
+# md5sums for the AppImages are pulled from the Google Cloud Storage XML
+# listing ETags (the hex MD5 for non-composite objects), so the binaries are
+# not downloaded.
 set -euo pipefail
+
+listing_url='https://storage.googleapis.com/antigravity-public?prefix=antigravity-hub/'
 
 pkgbuild_var() {
     grep "^$1=" PKGBUILD | cut -d= -f2- || { echo "error: $1 not found in PKGBUILD" >&2; exit 1; }
@@ -16,44 +18,77 @@ show_change() {
     fi
 }
 
-# Pulls md5 from the ETag header. GCS returns the hex MD5 for non-composite
-# objects, which both AppImage builds are.
-fetch_md5() {
-    local url=$1
-    local etag
-    etag=$(curl -fsSLI "$url" | awk -F'"' 'tolower($0) ~ /^etag:/ {print $2; exit}' | tr -d '\r')
-    if [[ ! $etag =~ ^[0-9a-f]{32}$ ]]; then
-        echo "error: could not extract md5 from ETag for $url (got: '$etag')" >&2
-        return 1
-    fi
-    printf '%s' "$etag"
-}
+release_listing=$(
+    curl -fsSL "$listing_url"
+) || { echo "error: failed to fetch release listing" >&2; exit 1; }
+
+if grep -q '<IsTruncated>true</IsTruncated>' <<<"$release_listing"; then
+    echo "error: release listing is truncated; update pagination before continuing" >&2
+    exit 1
+fi
 
 current_pkgver=$(pkgbuild_var pkgver)
 current_execution_id=$(pkgbuild_var _execution_id)
 current_md5_x86_64=$(pkgbuild_var md5sums_x86_64 | sed "s/[^']*'\([^']*\)'.*/\1/")
 current_md5_aarch64=$(pkgbuild_var md5sums_aarch64 | sed "s/[^']*'\([^']*\)'.*/\1/")
 
-releases_json=$(
-    curl -fsSL 'https://antigravity-auto-updater-974169037036.us-central1.run.app/releases'
-) || { echo "error: failed to fetch releases" >&2; exit 1; }
+declare -A release_version release_execution_id release_last_modified release_md5_x86_64 release_md5_aarch64
 
+while IFS= read -r block; do
+    key=$(sed -n 's:.*<Key>\([^<]*\)</Key>.*:\1:p' <<<"$block")
+    [[ $key =~ ^antigravity-hub/([0-9]+)\.([0-9]+)\.([0-9]+)-([0-9]+)/(linux-x64|linux-arm)/Antigravity\.AppImage$ ]] || continue
+
+    major=${BASH_REMATCH[1]}
+    if (( major >= 100 )); then
+        continue
+    fi
+
+    version="${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.${BASH_REMATCH[3]}"
+    execution_id="${BASH_REMATCH[4]}"
+    arch="${BASH_REMATCH[5]}"
+    release="${version}-${execution_id}"
+    etag=$(sed -n 's:.*<ETag>"\([0-9a-f]\{32\}\)"</ETag>.*:\1:p' <<<"$block")
+    last_modified=$(sed -n 's:.*<LastModified>\([^<]*\)</LastModified>.*:\1:p' <<<"$block")
+
+    if [[ -z $etag ]]; then
+        echo "error: could not extract md5 from ETag for $key" >&2
+        exit 1
+    fi
+
+    release_version[$release]=$version
+    release_execution_id[$release]=$execution_id
+    if [[ -z ${release_last_modified[$release]:-} || $last_modified > ${release_last_modified[$release]} ]]; then
+        release_last_modified[$release]=$last_modified
+    fi
+
+    case $arch in
+        linux-x64) release_md5_x86_64[$release]=$etag ;;
+        linux-arm) release_md5_aarch64[$release]=$etag ;;
+    esac
+done < <(sed 's:</Contents>:</Contents>\n:g' <<<"$release_listing")
+
+latest_release=''
 latest=''
-while IFS= read -r ver; do
-    if [[ -z $latest ]] || (( $(vercmp "$ver" "$latest") > 0 )); then
+for release in "${!release_version[@]}"; do
+    [[ -n ${release_md5_x86_64[$release]:-} && -n ${release_md5_aarch64[$release]:-} ]] || continue
+
+    ver=${release_version[$release]}
+    if [[ -z $latest_release ]] \
+        || (( $(vercmp "$ver" "$latest") > 0 )) \
+        || { (( $(vercmp "$ver" "$latest") == 0 )) && [[ ${release_last_modified[$release]} > ${release_last_modified[$latest_release]} ]]; }; then
+        latest_release=$release
         latest=$ver
     fi
-done < <(echo "$releases_json" | jq -r '.[].version')
+done
 
-execution_id=$(echo "$releases_json" \
-    | jq -r --arg v "$latest" '.[] | select(.version == $v) | .execution_id')
+if [[ -z $latest_release ]]; then
+    echo "error: no complete Linux AppImage release found in listing" >&2
+    exit 1
+fi
 
-base_url="https://storage.googleapis.com/antigravity-public/antigravity-hub/${latest}-${execution_id}"
-url_x86_64="$base_url/linux-x64/Antigravity.AppImage"
-url_aarch64="$base_url/linux-arm/Antigravity.AppImage"
-
-md5_x86_64=$(fetch_md5 "$url_x86_64")
-md5_aarch64=$(fetch_md5 "$url_aarch64")
+execution_id=${release_execution_id[$latest_release]}
+md5_x86_64=${release_md5_x86_64[$latest_release]}
+md5_aarch64=${release_md5_aarch64[$latest_release]}
 
 vcmp=$(vercmp "$latest" "$current_pkgver")
 
