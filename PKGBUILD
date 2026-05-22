@@ -10,6 +10,7 @@ url="https://pgmodeler.io"
 license=('GPL3')
 arch=('x86_64')
 depends=('qt6-svg' 'postgresql-libs' 'libxml2')
+makedepends=('cmake' 'clang')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v${pkgver//_/-}.tar.gz"
         'mimetype.xml'
