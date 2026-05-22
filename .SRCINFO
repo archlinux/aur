@@ -1,5 +1,5 @@
 pkgbase = nihongolofi
-	pkgdesc = Temporizador Pomodoro con musica lofi japonesa en vivo
+	pkgdesc = Pomodoro timer with live Japanese lofi music
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/kurojs/NihongoLofi

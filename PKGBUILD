@@ -2,7 +2,7 @@
 pkgname=nihongolofi
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="Temporizador Pomodoro con musica lofi japonesa en vivo"
+pkgdesc="Pomodoro timer with live Japanese lofi music"
 arch=('x86_64')
 url="https://github.com/kurojs/NihongoLofi"
 license=('MIT')
@@ -36,7 +36,7 @@ package() {
     # Desktop entry
     cat > "$pkgdir/usr/share/applications/$pkgname.desktop" << EOF
 [Desktop Entry]
-Name=日本語
+Name=NihongoLofi
 Comment=$pkgdesc
 Exec=/usr/bin/$pkgname
 Icon=$pkgname
