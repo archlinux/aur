@@ -7,7 +7,7 @@ url="https://github.com/UniqueSpirit/smart-updater"
 license=('GPL')
 depends=('python' 'python-pyqt6' 'pacman-contrib')
 # Zieht jetzt das feste Release, nicht den flexiblen Main-Branch
-source=("${pkgname}-${pkgver}.zip::$url/archive/refs/tags/v1.2.0-alpha.zip")
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v1.2.1-alpha.tar.gz")
 sha256sums=('814075506f083a49e6e3a2aeb31e40514f1a10bd4b96704ef51a91d2a18288f6')
 
 package() {
@@ -15,8 +15,8 @@ package() {
     mkdir -p "$pkgdir/opt/$pkgname"
 
     # 2. Alle Dateien aus deinem GitHub-Zip dorthin kopieren
-    # ACHTUNG: Da wir das Release laden, heißt der Ordner jetzt -1.2.0-alpha
-    cp -r "$srcdir/$pkgname-1.2.0-alpha/"* "$pkgdir/opt/$pkgname/"
+    # ACHTUNG: Da wir das Release laden, heißt der Ordner jetzt -1.2.1-alpha
+    cp -r "$srcdir/$pkgname-1.2.1-alpha/"* "$pkgdir/opt/$pkgname/"
 
     # 3. Einen ausführbaren Befehl für das Terminal erstellen
     mkdir -p "$pkgdir/usr/bin"
