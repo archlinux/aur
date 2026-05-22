@@ -3,14 +3,12 @@ pkgbase = fnaf-cli
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/MCookinho/fnaf-cli
-	install = 
 	arch = any
 	license = Unlicense
 	depends = bash
 	depends = mpg123
 	depends = coreutils
-	makedepends = git
-	source = fnaf-cli::git+https://github.com/peuborges/fnaf-cli.git
+	source = https://github.com/MCookinho/fnaf-cli/archive/v1.0.0/fnaf-cli-1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = fnaf-cli
