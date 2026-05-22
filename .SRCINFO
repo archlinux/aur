@@ -3,7 +3,6 @@ pkgbase = jupiter-hw-support
 	pkgver = 20250728.1
 	pkgrel = 1
 	url = https://gitlab.com/evlaV/jupiter-hw-support
-	install = jupiter-hw-support.install
 	arch = x86_64
 	license = LicenseRef-jupiter-hw-support
 	makedepends = git

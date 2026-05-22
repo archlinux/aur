@@ -46,8 +46,6 @@ backup=(
   'etc/default/grub-steamos'
 )
 
-install=${pkgname}.install
-
 source=("git+https://gitlab.com/evlaV/jupiter-hw-support.git#tag=${_srctag}")
 sha512sums=('SKIP')
 
