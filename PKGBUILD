@@ -1,21 +1,23 @@
 # Maintainer: DBeidachazi <a269502169@gmail.com>
 pkgname=apifox-appimage
-pkgver=2.8.30.1
+pkgver=2.8.30.2
 pkgrel=1
 pkgdesc="Apifox - API documentation, debugging, mocking, and testing tool (AppImage in Zip) API 文档、API 调试、API Mock、API 自动化测试"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://apifox.com"
 license=('Proprietary')
 # AppImage 运行通常依赖 fuse2，图形界面依赖标准库
-depends=('fuse2' 'zlib' 'hicolor-icon-theme' 'desktop-file-utils') 
+depends=('fuse2' 'zlib' 'hicolor-icon-theme' 'desktop-file-utils')
 conflicts=('apifox' 'apifox-bin' 'apifox-appimage')
 provides=('apifox')
 options=('!strip')
 
-# 使用官方 latest 链接
-source=("Apifox-linux-${pkgver}.zip::https://file-assets.apifox.com/download/Apifox-linux-latest.zip")
+# 使用官方 latest 链接（分架构）
+source_x86_64=("Apifox-linux-${pkgver}.zip::https://file-assets.apifox.com/download/Apifox-linux-latest.zip")
+source_aarch64=("Apifox-linux-${pkgver}-arm64.zip::https://file-assets.apifox.com/download/Apifox-linux-arm64-latest.zip")
 # 跳过校验，因为 latest 文件内容会变
-sha256sums=('SKIP') 
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 prepare() {
     # 1. 自动解压后，我们需要找到那个 AppImage 文件
