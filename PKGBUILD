@@ -1,6 +1,6 @@
 # Maintainer: DolbyDAX2 <dolbydax2@fatihdurdu.xyz>
 pkgname=llamatray-git
-pkgver=1.0.0.r0.g6bddcba # Bu değer ilk push için taslaktır, makepkg bunu otomatik güncelleyecek
+pkgver=r2.g1760f93 # Bu değer ilk push için taslaktır, makepkg bunu otomatik güncelleyecek
 pkgrel=1
 pkgdesc="PyQt6 based Llama.cpp Tray Manager for Linux"
 arch=('any')
