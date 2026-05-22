@@ -1,0 +1,23 @@
+pkgbase = quark
+	pkgdesc = Train and run your own Llama 4-style MoE coding LLM on your own hardware
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/0xnullsect0r/Quark
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk3
+	depends = openssl
+	depends = hicolor-icon-theme
+	optdepends = cuda: NVIDIA GPU acceleration
+	provides = quark
+	provides = quark-chat
+	provides = quark-code
+	conflicts = quark-git
+	conflicts = quark-bin
+	options = !lto
+	source = quark-1.1.0.tar.gz::https://github.com/0xnullsect0r/Quark/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = c83f345357ee96d1634f995540468d679041c3a04c538bd4663a6a2f9a04f394
+
+pkgname = quark
