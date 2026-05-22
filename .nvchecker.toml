@@ -1,0 +1,5 @@
+[minesweeper-tui-bin]
+source = "github"
+github = "Pansther/minesweeper-tui"
+use_latest_release = true
+prefix = "v"
