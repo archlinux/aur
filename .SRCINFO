@@ -1,0 +1,19 @@
+pkgbase = python-langgraph-checkpoint-conformance
+	pkgdesc = Conformance test suite for LangGraph checkpointer implementations.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/langchain-ai/langgraph/tree/main/libs/checkpoint-conformance
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-langgraph-checkpoint
+	source = https://files.pythonhosted.org/packages/source/l/langgraph-checkpoint-conformance/langgraph_checkpoint_conformance-0.0.2.tar.gz
+	sha256sums = 6718e00937bf2f04cdfd2cdfabea23e1dabb79a534ff4c127f305f6b40dad4e0
+
+pkgname = python-langgraph-checkpoint-conformance
