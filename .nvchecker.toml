@@ -1,0 +1,5 @@
+[psutilsql-bin]
+source = "github"
+github = "noborus/psutilsql"
+use_latest_release = true
+prefix = "v"
