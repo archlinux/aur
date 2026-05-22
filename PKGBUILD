@@ -2,7 +2,7 @@
 # Contributor: Celogeek <private-4zokpdq6@mrhyde.xyz>
 
 _basename=jicofo
-_version=1.0+1174
+_version=1.0+1180
 
 _pkgbase=${_basename}
 pkgname=${_pkgbase}-bin
@@ -63,8 +63,8 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('24e5a6e44eb2e0e4b6ffafcbd3abbd4da47ea5780d681852f141cf45e6fcb81e'
-            '034be96e0dfcd0cf00fc05e697bd2e8413267007932277c42bdf13cc1598ccca'
+sha256sums=('075cb47738f64978af94682cfad9b6165cbf31f37902c9580bc90eb3929ddb66'
+            '363dfa979fb360ef728cb755da73cf0c20b97c5233d6b793aa7c36cf9a53fa96'
             'b69f9485ba55b53fe6d1a8b5e4a37c542641cb205c6f5c0b2cf89d236cc6b562'
             '902229d135e9b949da318f539cbe8f266bdd4e32e514f37d8782ad4562dc791b'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
