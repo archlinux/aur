@@ -14,7 +14,7 @@ conflicts=('moshpit-agent' 'moshpit-agent-systemd-creds' 'moshpit-agent-ssh-agen
 depends=('libfido2')
 makedepends=('cargo' 'cmake' 'gcc' 'libfido2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/moshpit/archive/v$pkgver.tar.gz")
-sha256sums=('e313af5f66fbbafae599357d585f39001165f73a1319a40135fa15620535178d')
+sha256sums=('16ed1c5509c97fdade85546de91fd4a554c1019cb2e0d2bea7ff8294109fdfa4')
 
 prepare() {
     cd "moshpit-$pkgver"
