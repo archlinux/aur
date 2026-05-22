@@ -1,3 +1,0 @@
-post_install() {
-    /usr/bin/nx-hyprinstall -a
-}

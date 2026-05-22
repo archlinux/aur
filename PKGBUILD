@@ -10,8 +10,7 @@ conflicts=('Microsoft-Windows')
 provides=('nx-hyprinstall')
 
 pkgver() {
-  cd "$_pkgname"
-  # Detta kräver att du har gjort minst en 'git tag' i din repo
+  cd "$pkgname"
   git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
