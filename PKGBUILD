@@ -4,8 +4,8 @@ _electron="electron35"
 _reponame=ChatLab
 pkgbase="${_reponame,,}"
 pkgname=("${pkgbase}-cli" "${pkgbase}-desktop")
-pkgver=0.20.0
-pkgrel=2
+pkgver=0.20.1
+pkgrel=1
 pkgdesc="Rediscover your social memories with local, AI-powered analysis"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hellodigua/${_reponame}"
@@ -14,7 +14,7 @@ makedepends=("npm" "pnpm" "python")
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgbase}.desktop"
         "${pkgbase}.sh")
-sha256sums=('b2d306e957e9d5d8dd4b0a7f2f9fa055ad764441bd805ff2fb2db01c2607e5be'
+sha256sums=('c9cf7b3f1152ec83dc5c1a9f91e0b59c4f1f039e83085b31f68abde233bae012'
             '349a64162923e2fcea32cde43af8e5da44d864b31e3050f3c4031c75744e60b0'
             '018864695044b9188a291a0c30db9322cba764f29198fd2014fbb0c43b1c0103')
 
@@ -33,7 +33,7 @@ prepare() {
     cd ../..
     rm -rf "${pkgbase}-cli" 2>/dev/null || true
     NODE_ENV="development" pnpm install
-    find node_modules -type f \( -name "*.js.map" -o -name "*.mjs.map" -o -name "*.css.map" \) -delete
+    find node_modules -type f -name "*.map" -delete
 }
 
 build() {
@@ -42,7 +42,7 @@ build() {
     # build cli
     pnpm --prefix="apps/cli" run build:full
     pnpm deploy --filter "${pkgbase}-cli" --prod "${pkgbase}-cli"
-    find "${pkgbase}-cli" -type f \( -name "*.js.map" -o -name "*.mjs.map" -o -name "*.css.map" \) -delete
+    find "${pkgbase}-cli" -type f -name "*.map" -delete
     sed -i "s|#!/usr/bin/env node|#!/usr/bin/node|" "${pkgbase}-cli/bin/${pkgbase}.mjs"
     grep -rl "${srcdir}/${_reponame}-${pkgver}/${pkgbase}-cli" "${pkgbase}-cli" | xargs -I {} sed -i "s|${srcdir}/${_reponame}-${pkgver}/${pkgbase}-cli|/usr/lib/${pkgbase}/cli|g" {} 
     grep -rl "${srcdir}/${_reponame}-${pkgver}/apps/cli" "${pkgbase}-cli" | xargs -I {} sed -i "s|${srcdir}/${_reponame}-${pkgver}/apps/cli|/usr/lib/${pkgbase}/cli|g" {} 

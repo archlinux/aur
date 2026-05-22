@@ -1,7 +1,7 @@
 pkgbase = chatlab
 	pkgdesc = Rediscover your social memories with local, AI-powered analysis
-	pkgver = 0.20.0
-	pkgrel = 2
+	pkgver = 0.20.1
+	pkgrel = 1
 	url = https://github.com/hellodigua/ChatLab
 	arch = x86_64
 	arch = aarch64
@@ -9,10 +9,10 @@ pkgbase = chatlab
 	makedepends = npm
 	makedepends = pnpm
 	makedepends = python
-	source = chatlab-0.20.0.tar.gz::https://github.com/hellodigua/ChatLab/archive/refs/tags/v0.20.0.tar.gz
+	source = chatlab-0.20.1.tar.gz::https://github.com/hellodigua/ChatLab/archive/refs/tags/v0.20.1.tar.gz
 	source = chatlab.desktop
 	source = chatlab.sh
-	sha256sums = b2d306e957e9d5d8dd4b0a7f2f9fa055ad764441bd805ff2fb2db01c2607e5be
+	sha256sums = c9cf7b3f1152ec83dc5c1a9f91e0b59c4f1f039e83085b31f68abde233bae012
 	sha256sums = 349a64162923e2fcea32cde43af8e5da44d864b31e3050f3c4031c75744e60b0
 	sha256sums = 018864695044b9188a291a0c30db9322cba764f29198fd2014fbb0c43b1c0103
 
