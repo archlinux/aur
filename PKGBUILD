@@ -2,7 +2,7 @@
 
 _gpuarch=gfx110X
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
-pkgver=7.14.0a20260521
+pkgver=7.14.0a20260522
 pkgrel=1
 pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('glibc' 'gcc-libs' 'python-pyelftools' 'python')
 _rocm_packages=(
     'amdsmi'
     'rocm-core' 'rocm-cmake' 'rocm-llvm' 'rocm-device-libs'
-    'hsa-rocr' 'hsakmt-roct' 'comgr' 'rocminfo' 'rocwmma'
+    'hsa-rocr' 'hsa-amd-aqlprofile' 'hsakmt-roct' 'comgr' 'rocminfo' 'rocwmma'
     'hip-runtime-amd' 'hip-runtime-nvidia'
     'rocm-smi-lib' 'rocm-gdb' 'rocm-dbgapi'
     'rocprofiler' 'rocprofiler-register' 'roctracer' 'rocm-bandwidth-test' 'composable-kernel'
@@ -34,7 +34,7 @@ provides=("${_rocm_packages[@]}" "rocm=${pkgver}" "opencl-driver")
 conflicts=("${_rocm_packages[@]}" "rocm")
 options=('!strip' '!debug')
 source=("${url}/tarball/therock-dist-linux-${_gpuarch}-all-${pkgver}.tar.gz")
-sha256sums=('af5c18b8b71e6f77ccda2e4e2f7a9148cf85eac1e085f5e10d69ef78b2b424dc')
+sha256sums=('5ea09e2051220a348ad8000bb6480a253255e2ac493f04b27342d933179aabfb')
 
 package() {
     local _tarball_name=$(basename "${source[0]}")
