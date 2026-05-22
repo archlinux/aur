@@ -1,0 +1,5 @@
+[scrutiny-bin]
+source = "github"
+github = "AnalogJ/scrutiny"
+use_latest_release = true
+prefix = "v"

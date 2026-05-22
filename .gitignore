@@ -1,5 +1,11 @@
-example.collector.yaml
-example.scrutiny.yaml
-scrutiny-collector-metrics-linux-*
-scrutiny-web-frontend.tar.gz
-scrutiny-web-linux-*
+*
+!PKGBUILD
+!.SRCINFO
+!*.install
+!*.timer
+!*.service
+!*.sysusers
+!*.tmpfiles
+!.gitignore
+!.nvchecker.toml
+
