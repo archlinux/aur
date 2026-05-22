@@ -1,6 +1,6 @@
 pkgbase = jottr
 	pkgdesc = Simple text editor for writers, journalists and researchers
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/mfat/jottr
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = jottr
 	depends = python-requests
 	depends = qt5-svg
 	conflicts = jottr-bin
-	source = jottr-2.1.1.tar.gz::https://github.com/mfat/jottr/archive/refs/tags/v2.1.1.tar.gz
-	sha256sums = b085b68ee7acf0a2693e64801498b4f7b06444e505bc3423ae3735261a3de670
+	source = jottr-2.1.2.tar.gz::https://github.com/mfat/jottr/archive/refs/tags/v2.1.2.tar.gz
+	sha256sums = 474440588ea383efe1d94526d1e447042784a407ee3f2fd1076d9412a16b08e4
 
 pkgname = jottr
