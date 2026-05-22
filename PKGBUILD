@@ -14,7 +14,7 @@ source=(
   "https://releases.assethoard.com/v${pkgver}/asset-hoard_${pkgver}_x86_64.pkg.tar.zst"
   "https://releases.assethoard.com/v${pkgver}/asset-hoard_${pkgver}_x86_64.pkg.tar.zst.sig"
 )
-sha256sums=('42a26023bc3667bf3287968e01016b8187c76690500cc3c0c132237638d1a97c' 'SKIP')
+sha256sums=('0cd85d09f292847ee07de741e46ca8499beb04d36111899ddad0e53701acb59b' 'SKIP')
 validpgpkeys=('2FE350A912F4525659E418CAA9B027A1392E7305')
 options=('!strip')
 
