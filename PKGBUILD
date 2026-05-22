@@ -2,7 +2,7 @@
 # Maintainer: Luke Labrie-Cleary <luke dot cleary at copenhagenatomics dot com>
 pkgname=openmc-git
 pkgver=v0.15.3.r151.gfd1bc26af
-pkgrel=1
+pkgrel=2
 pkgdesc="The OpenMC project aims to provide a fully-featured Monte Carlo particle 
 		 transport code based on modern methods."
 arch=('x86_64')
@@ -40,7 +40,7 @@ depends=(
 	python-endf
 	anari-sdk
 	viskores
-	albemic
+	alembic
 	onnxruntime
 )
 makedepends=(

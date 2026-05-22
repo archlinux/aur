@@ -1,7 +1,7 @@
 pkgbase = openmc-git
 	pkgdesc = The OpenMC project aims to provide a fully-featured Monte Carlo particle transport code based on modern methods.
 	pkgver = v0.15.3.r151.gfd1bc26af
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openmc-dev/openmc
 	install = post.install
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = openmc-git
 	depends = python-endf
 	depends = anari-sdk
 	depends = viskores
-	depends = albemic
+	depends = alembic
 	depends = onnxruntime
 	provides = openmc-git
 	source = openmc-git::git+https://github.com/openmc-dev/openmc.git
