@@ -1,0 +1,70 @@
+# Maintainer: 7White <sevenwhite10@gmail.com>
+
+pkgname=netcatty-bin
+_pkgname=netcatty
+pkgver=1.1.7
+pkgrel=1
+pkgdesc='AI-Powered SSH Client, SFTP Browser & Terminal Manager'
+arch=('x86_64' 'aarch64')
+url='https://github.com/binaricat/Netcatty'
+license=('GPL-3.0-or-later')
+depends=('hicolor-icon-theme' 'fuse2')
+optdepends=(
+    'libnotify: Desktop notification support'
+    'xdg-utils: XDG integration for opening URLs'
+)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+options=('!strip' '!debug')
+
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::https://github.com/binaricat/Netcatty/releases/download/v${pkgver}/Netcatty-${pkgver}-linux-x86_64.AppImage")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::https://github.com/binaricat/Netcatty/releases/download/v${pkgver}/Netcatty-${pkgver}-linux-arm64.AppImage")
+
+sha256sums_x86_64=('4142845e8c793d7b9a490c1925ef59332c8e2a82d00f6ca85efb5f1b4c1a7812')
+sha256sums_aarch64=('c22326d4587998ff540609f823458731e77dad020c24da021078d3b617dfa527')
+
+prepare() {
+    chmod +x "${_pkgname}-${pkgver}-"*.AppImage
+    "./${_pkgname}-${pkgver}-"*.AppImage --appimage-extract 'usr/share/icons/*' 2>/dev/null || true
+    "./${_pkgname}-${pkgver}-"*.AppImage --appimage-extract '*.png' 2>/dev/null || true
+}
+
+package() {
+    install -Dm755 "${_pkgname}-${pkgver}-"*.AppImage \
+        "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
+
+    install -dm755 "${pkgdir}/usr/bin"
+    cat > "${pkgdir}/usr/bin/${_pkgname}" << 'EOF'
+#!/bin/bash
+exec /opt/netcatty/netcatty.AppImage --no-sandbox "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
+
+    install -dm755 "${pkgdir}/usr/share/applications"
+    cat > "${pkgdir}/usr/share/applications/${_pkgname}.desktop" << EOF
+[Desktop Entry]
+Name=Netcatty
+Comment=AI-Powered SSH Client, SFTP Browser & Terminal Manager
+Exec=/usr/bin/${_pkgname} %U
+Icon=${_pkgname}
+Type=Application
+Terminal=false
+Categories=Development;Network;System;TerminalEmulator;
+Keywords=SSH;SFTP;Terminal;AI;
+StartupNotify=true
+StartupWMClass=Netcatty
+MimeType=x-scheme-handler/ssh;
+EOF
+
+    if [ -d squashfs-root/usr/share/icons ]; then
+        cp -r squashfs-root/usr/share/icons "${pkgdir}/usr/share/"
+        find "${pkgdir}/usr/share/icons" -name 'netcatty.png' -exec true \; 2>/dev/null
+    fi
+
+    if [ -z "$(find "${pkgdir}/usr/share/icons" -name '*.png' 2>/dev/null)" ]; then
+        if [ -f squashfs-root/netcatty.png ]; then
+            install -Dm644 squashfs-root/netcatty.png \
+                "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
+        fi
+    fi
+}
