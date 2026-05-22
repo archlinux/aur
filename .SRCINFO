@@ -1,6 +1,6 @@
 pkgbase = ccat-rs
 	pkgdesc = Universal file viewer — markdown, docx, images, PDF, audio, video, JSON, YAML, logs, ELF disasm, diff, gz, archives
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/zhiyuHD/ccat
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ccat-rs
 	makedepends = pkg-config
 	depends = gcc-libs
 	depends = oniguruma
-	source = ccat-rs-0.2.2.tar.gz::https://github.com/zhiyuHD/ccat/releases/download/v0.2.2/ccat-rs-0.2.2.tar.gz
-	sha256sums = bf673f9430d48e2c9abbbdceaf12f350fe71b71a05c3eba3c5a3899c2e566ce0
+	source = ccat-rs-0.2.3.tar.gz::https://github.com/zhiyuHD/ccat/releases/download/v0.2.3/ccat-rs-0.2.3.tar.gz
+	sha256sums = 7f4452b7cfd09188669664767f57bbca697cb5d8eb8c86826246769365ed06c7
 
 pkgname = ccat-rs
