@@ -1,0 +1,19 @@
+pkgbase = himitsu-bako
+	pkgdesc = Encrypted clipboard-backed secret storage using age
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shichirouji21/himitsu-bako
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = go
+	depends = fzf
+	optdepends = wl-clipboard: Wayland clipboard support
+	optdepends = xclip: X11 clipboard support
+	optdepends = xsel: alternative X11 clipboard support
+	provides = himitsu-bako
+	conflicts = himitsu-bako-bin
+	conflicts = himitsu-bako-git
+	source = himitsu-bako-1.0.0.tar.gz::https://github.com/shichirouji21/himitsu-bako/archive/v1.0.0.tar.gz
+	sha256sums = 920a876917deacd602dd6ea3e3b1726e54a829e63c9c5072b6ebaebebdc8dfe6
+
+pkgname = himitsu-bako
