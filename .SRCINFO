@@ -1,6 +1,6 @@
 pkgbase = ratune-bin
 	pkgdesc = Terminal music player for Subsonic-compatible servers (prebuilt binary)
-	pkgver = 0.9.7
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/acmagn/ratune
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = ratune-bin
 	conflicts = ratune
 	options = !strip
 	options = !debug
-	source = ratune-0.9.7-x86_64.tar.gz::https://github.com/acmagn/ratune/releases/download/v0.9.7/ratune-v0.9.7-x86_64-unknown-linux-gnu.tar.gz
-	source = ratune-LICENSE::https://raw.githubusercontent.com/acmagn/ratune/v0.9.7/LICENSE
-	sha256sums = 8616f03ef144808958ef7b3148ccb0a7162e3835ee18ef41f8ba6c11f4c91187
+	source = ratune-0.9.8-x86_64.tar.gz::https://github.com/acmagn/ratune/releases/download/v0.9.8/ratune-v0.9.8-x86_64-unknown-linux-gnu.tar.gz
+	source = ratune-LICENSE::https://raw.githubusercontent.com/acmagn/ratune/v0.9.8/LICENSE
+	sha256sums = 7b38fcda83cbb9d2cdfc3b1f7445528665d80f5f219ca76dc0851f0cea28dca4
 	sha256sums = 553ae423a213082d16544f2ba650ac94275097dcce94609054e879a31a526950
 
 pkgname = ratune-bin
