@@ -1,3 +1,4 @@
 [fastcompmgr]
 source = "git"
 git = "https://github.com/tycho-kirchner/fastcompmgr.git"
+prefix = "v"
