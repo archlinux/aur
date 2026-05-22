@@ -1,6 +1,6 @@
 # Maintainer: Rob Zolkos <rob@zolkos.com>
 pkgname=shout
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Lightweight speech-to-text for Wayland/Hyprland, optimized for AI coding agents"
 arch=('any')
@@ -12,7 +12,7 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 shout "$pkgdir/usr/bin/shout"
+    install -Dm755 shout-stt "$pkgdir/usr/bin/shout-stt"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
