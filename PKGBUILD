@@ -36,6 +36,6 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/$_pkgsrc"
-    install -Dm755 pacman-bulk-rns "$pkgdir/usr/bin/pacman-bulk-Rns"
+    install -Dm755 pacman-bulk-Rns "$pkgdir/usr/bin/pacman-bulk-Rns"
 }
 
