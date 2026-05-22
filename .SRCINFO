@@ -1,6 +1,6 @@
 pkgbase = dmnotifier-bin
 	pkgdesc = Cross-platform live-stream danmaku notifier client based on UniBarrage
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/xifan2333/dmnotifier
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = dmnotifier-bin
 	provides = dmnotifier
 	conflicts = dmnotifier
 	options = !strip
-	source_x86_64 = dmnotifier-linux-amd64-1.0.8::https://github.com/xifan2333/dmnotifier/releases/download/v1.0.8/dmnotifier-linux-amd64
-	sha256sums_x86_64 = 6ab50108c0c1c5edfe029423170dc92435138c487f7d560d4f07618ff6d4e06b
-	source_aarch64 = dmnotifier-linux-arm64-1.0.8::https://github.com/xifan2333/dmnotifier/releases/download/v1.0.8/dmnotifier-linux-arm64
+	source_x86_64 = dmnotifier-linux-amd64-1.0.9::https://github.com/xifan2333/dmnotifier/releases/download/v1.0.9/dmnotifier-linux-amd64
+	sha256sums_x86_64 = 7ec4a54478e00b1a41bb7444c0c8317b4dd3a40529470880ca66e6d9c6fca58f
+	source_aarch64 = dmnotifier-linux-arm64-1.0.9::https://github.com/xifan2333/dmnotifier/releases/download/v1.0.9/dmnotifier-linux-arm64
 	sha256sums_aarch64 = SKIP
 
 pkgname = dmnotifier-bin
