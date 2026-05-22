@@ -22,7 +22,8 @@ makedepends=('rust' 'pkgconf' 'openssl' 'libgit2')
 depends=('glibc' 'libgcc')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
+
+options=(!strip)
 
 source=("${_appname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
 sha256sums=('e65f475a6824ce860c78d71095cf8e9bf122e69917868625b57ca4783c787904')
