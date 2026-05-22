@@ -50,10 +50,8 @@ EOF
     install -Dm644 celeste.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
 
     # Launcher
-    install -dm755 "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/$pkgname" << EOF
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<'EOF'
 #!/bin/sh
-exec /usr/bin/electron /usr/lib/$pkgname "\$@"
+exec /usr/bin/electron /usr/lib/nihongolofi "$@"
 EOF
-    chmod 755 "$pkgdir/usr/bin/$pkgname"
 }
