@@ -1,6 +1,6 @@
 pkgbase = aerion-bin
 	pkgdesc = An Open Source Lightweight E-Mail Client
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://aerion.3df.io
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = aerion-bin
 	depends = zlib
 	provides = aerion
 	conflicts = aerion
-	source_x86_64 = aerion-bin-0.2.3-x86_64.tar.gz::https://github.com/hkdb/aerion/releases/download/v0.2.3/aerion-linux-amd64.tar.gz
-	sha256sums_x86_64 = 19edb9c9b92b827cefd1e2cd12500146364681f060b43c08dee6828f50f51c37
-	source_aarch64 = aerion-bin-0.2.3-aarch64.tar.gz::https://github.com/hkdb/aerion/releases/download/v0.2.3/aerion-linux-arm64.tar.gz
-	sha256sums_aarch64 = f134794e52396592d8fbe21ef8c181052851231963e2331122794b56c5090f25
+	source_x86_64 = aerion-bin-0.2.4-x86_64.tar.gz::https://github.com/hkdb/aerion/releases/download/v0.2.4/aerion-linux-amd64.tar.gz
+	sha256sums_x86_64 = 5ee1f0175ac6bdff42a1747715d3fd72dc0d2b01ede83898ee7b8864405914e9
+	source_aarch64 = aerion-bin-0.2.4-aarch64.tar.gz::https://github.com/hkdb/aerion/releases/download/v0.2.4/aerion-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4d31935f9e2f9139a85c68976695825e6ddfe7a569f39600d2f846ea8839d76e
 
 pkgname = aerion-bin
