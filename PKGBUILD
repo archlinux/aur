@@ -1,7 +1,7 @@
 # Maintainer: OneZ3r0 <onez3r0@outlook.com>
 pkgname=yakit-bin
-pkgver=1.4.7_0429
-pkgrel=2
+pkgver=1.4.7_0522
+pkgrel=1
 pkgdesc="Cyber Security ALL-IN-ONE Platform (official AppImage release)"
 arch=('x86_64')
 url="https://github.com/yaklang/yakit"
@@ -18,7 +18,7 @@ source=(
   "${_appimage}::https://github.com/yaklang/yakit/releases/download/v${_upstream_ver}/${_appimage}"
 )
 noextract=("${_appimage}")
-sha256sums=('28be30eb1fd639426e1f1db4aaca2cb0cc7fce090bbeba469d76bffa55e1ed95')
+sha256sums=('e66638d51a7afea202a311233d1a392a2ea8dd51e646ea909ca6bd411066e659')
 
 prepare() {
     chmod +x "${srcdir}/${_appimage}"

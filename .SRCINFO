@@ -1,7 +1,7 @@
 pkgbase = yakit-bin
 	pkgdesc = Cyber Security ALL-IN-ONE Platform (official AppImage release)
-	pkgver = 1.4.7_0429
-	pkgrel = 2
+	pkgver = 1.4.7_0522
+	pkgrel = 1
 	url = https://github.com/yaklang/yakit
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -13,9 +13,9 @@ pkgbase = yakit-bin
 	provides = yakit
 	conflicts = yakit
 	conflicts = yakit-appimage
-	noextract = Yakit-1.4.7-0429-linux-amd64.AppImage
+	noextract = Yakit-1.4.7-0522-linux-amd64.AppImage
 	options = !strip
-	source = Yakit-1.4.7-0429-linux-amd64.AppImage::https://github.com/yaklang/yakit/releases/download/v1.4.7-0429/Yakit-1.4.7-0429-linux-amd64.AppImage
-	sha256sums = 28be30eb1fd639426e1f1db4aaca2cb0cc7fce090bbeba469d76bffa55e1ed95
+	source = Yakit-1.4.7-0522-linux-amd64.AppImage::https://github.com/yaklang/yakit/releases/download/v1.4.7-0522/Yakit-1.4.7-0522-linux-amd64.AppImage
+	sha256sums = e66638d51a7afea202a311233d1a392a2ea8dd51e646ea909ca6bd411066e659
 
 pkgname = yakit-bin
