@@ -7,7 +7,8 @@ arch=("x86_64" "aarch64")
 url="https://github.com/secureNqwer/zerolink"
 license=("MIT")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme")
-makedepends=("go" "git" "cmake" "make" "base-devel" "webkit2gtk")
+makedepends=("go" "git" "cmake" "make" "base-devel")
+optdepends=("webkit2gtk: for native desktop GUI (zerolink -gui)")
 provides=("zerolink")
 conflicts=("zerolink-bin")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -16,7 +17,14 @@ sha256sums=("SKIP")
 build() {
   cd "$srcdir/zerolink-$pkgver"
   bash scripts/build_libzt.sh
-  make client
+  # Create webkit2gtk-4.0 alias if only 4.1 is available
+  if ! pkg-config --exists webkit2gtk-4.0 2>/dev/null; then
+    export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$(pwd)/.pkgconfig"
+    mkdir -p .pkgconfig
+    pc=$(pkg-config --path webkit2gtk-4.1 2>/dev/null)
+    [ -n "$pc" ] && ln -sf "$pc" .pkgconfig/webkit2gtk-4.0.pc
+  fi
+  make client 2>/dev/null || make client
 }
 
 package() {
