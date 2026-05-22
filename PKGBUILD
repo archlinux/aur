@@ -2,7 +2,7 @@
 pkgname=bouclier-bleu
 pkgver=0.11.4
 pkgrel=1
-pkgdesc="Modular NGAV/EDR designed to prevent ransomware and memory corruption."
+pkgdesc="Modular NGAV/EDR designed to prevent ransomware, break exploit chains, and reduce the system's attack surface."
 arch=('x86_64')
 url="https://github.com/alexandreboutrik/bouclier-bleu"
 license=('Apache-2.0' 'GPL-2.0-only')
