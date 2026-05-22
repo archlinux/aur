@@ -1,0 +1,13 @@
+pkgbase = hypr-layout-bin
+	pkgdesc = CLI tool to launch and arrange tiled window layouts in Hyprland using a simple DSL
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sim590/hypr-layout
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = hypr-layout
+	conflicts = hypr-layout
+	source = hypr-layout-0.1.0::https://github.com/sim590/hypr-layout/releases/download/0.1.0/hypr-layout-0.1.0-x86_64-unknown-linux-gnu
+	sha256sums = bc60d797f30ab61c17848a91a97f0f598ad5e3d4644a576e15aedacd6f9e1701
+
+pkgname = hypr-layout-bin
