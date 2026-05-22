@@ -1,7 +1,7 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-_srcdir=Tide-island-1.0.9
-pkgver=1.0.9
+_srcdir=Tide-island-1.0.10
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="A dynamic island for Hyprland using Quickshell"
 arch=('x86_64')
@@ -44,7 +44,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm755 "$_srcdir/bin/tide-island-setup" "$pkgdir/usr/bin/tide-island-setup"
   chmod +x "$pkgdir/usr/bin/tide-island"
   chmod +x "$pkgdir/usr/share/tide-island/bin/lyricsmpris"
-  chmod +x "$pkgdir/usr/share/tide-island/bin/tide-island-setup"
 }
