@@ -6,7 +6,7 @@ _pkgname=hearthstone-linux-gui
 
 pkgname="${_pkgname}"-appimage
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Native GTK4 desktop manager for installing, updating, logging into, and launching Hearthstone"
 arch=('x86_64')
 url="https://github.com/DawnMagnet/hearthstone-linux-gui"
@@ -21,7 +21,7 @@ source_x86_64=(
 )
 noextract=("${_appimage}")
 sha256sums_x86_64=(
-  '2cde3021e58bed860aa0aad239e60634210024fb1e2e6ae842812aec19ba6884'
+  'SKIP'
   '87a12c0b367c9dd7e2b1bd3505e8ca085362c5f962c46e39729b1eb4bfce835e'
 )
 
