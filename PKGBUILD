@@ -1,12 +1,12 @@
-# Maintainer: Eisuke Kawashima <e DOT kawaschima+arch AT gmail DOT com>
+# Maintainer: Eisuke Kawashima <e DOT kawaschima+archlinux AT gmail DOT com>
 # Contributor: Wu Junyu <wu DOT junyu DOT aur AT outlook DOT com>
 
 pkgname=gau2grid
+pkgdesc='Fast computation of a gaussian and its derivative on a grid.'
 pkgver=2.0.9
 pkgrel=1
-pkgdesc='Fast computation of a gaussian and its derivative on a grid.'
-arch=('x86_64')
 url='https://github.com/psi4/gau2grid'
+arch=('x86_64')
 license=(BSD-3-Clause)
 makedepends=(cmake python python-numpy python-setuptools)
 depends=(glibc)
