@@ -2,7 +2,7 @@
 : ${aur_llamacpp_build_universal:=false}
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b9050.r5.8e52631d55
+pkgver=b9276.r6.4f0e43da6f
 pkgrel=1
 _build_number=0
 _commit_id=
@@ -103,7 +103,7 @@ build() {
     -DGGML_RPC=ON
     -DGGML_CUDA=ON
     -DGGML_CUDA_FA_ALL_QUANTS=ON
-    -DGGML_CUDNN=ON
+    -DGGML_CUDNN=ON    
     -DGGML_CUDA_COMPRESSION_MODE=speed
     -DLLAMA_BUILD_SERVER=ON
     -DLLAMA_BUILD_NUMBER="${_build_number}"
@@ -118,12 +118,14 @@ build() {
       -DGGML_BACKEND_DL=ON
       -DGGML_NATIVE=OFF
       -DGGML_CPU_ALL_VARIANTS=ON
+      -DCMAKE_CUDA_ARCHITECTURES=all-major
     )
   else
     # we lose GGML_NATIVE_DEFAULT due to how makepkg includes
     # $SOURCE_DATE_EPOCH in ENV
     _cmake_options+=(
       -DGGML_NATIVE=ON
+      -DCMAKE_CUDA_ARCHITECTURES=native
     )
   fi
 
