@@ -1,6 +1,6 @@
 pkgbase = falcond
 	pkgdesc = Advanced Linux gaming performance daemon
-	pkgver = 2.0.7
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://git.pika-os.com/general-packages/falcond
 	install = falcond.install
@@ -14,8 +14,8 @@ pkgbase = falcond
 	optdepends = dmemcg-booster: dmem cgroup profile protection
 	optdepends = scx-tools: SCX Scheduler Integration
 	conflicts = gamemode
-	noextract = falcond-2.0.7.tar.gz
-	source = falcond-2.0.7.tar.gz::https://git.pika-os.com/general-packages/falcond/archive/refs/tags/v2.0.7.tar.gz
-	sha256sums = eb02f777d316fa3c146bb4fc7093a830f491133bc2de0823b653dd6e92345a7c
+	noextract = falcond-2.0.8.tar.gz
+	source = falcond-2.0.8.tar.gz::https://git.pika-os.com/general-packages/falcond/archive/refs/tags/v2.0.8.tar.gz
+	sha256sums = 0fc81d651bda5765f923a998d3ce592a948b3be21b7bd0fc3ac74d1fd6a34c17
 
 pkgname = falcond
