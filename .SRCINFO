@@ -1,13 +1,14 @@
 pkgbase = firefox-extension-canvasblocker
 	pkgdesc = A Firefox extension to protect from being fingerprinted
-	pkgver = 1.5
+	pkgver = 1.12
 	pkgrel = 1
 	url = https://github.com/kkapsner/CanvasBlocker
 	arch = any
-	groups = firefox-addons
-	license = MPL2
+	license = MPL-2.0
+	makedepends = web-ext
+	makedepends = jq
 	depends = firefox
-	source = firefox-extension-canvasblocker-1.5.tar.gz::https://github.com/kkapsner/CanvasBlocker/archive/1.5.tar.gz
-	sha256sums = d47b74c5413e01026ae4b16097b2442febcdfec83068e3984567cb6ed2c3ef7c
+	source = https://github.com/kkapsner/CanvasBlocker/archive/refs/tags/1.12.tar.gz
+	sha256sums = c95d073795e376ce53b66e568c0d215e56c2dcefc962ddc650b7fb5492828d4b
 
 pkgname = firefox-extension-canvasblocker

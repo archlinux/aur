@@ -2,21 +2,33 @@
 # Co-Maintainer: Robert Cegliński <rob.ceglinski@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Franck Stauffer
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-pkgname='firefox-extension-canvasblocker'
-pkgver=1.5
+_name=CanvasBlocker
+pkgname=firefox-extension-${_name,,}
+pkgver=1.12
 pkgrel=1
-pkgdesc="A Firefox extension to protect from being fingerprinted"
-license=('MPL2')
+pkgdesc='A Firefox extension to protect from being fingerprinted'
+license=('MPL-2.0')
+url='https://github.com/kkapsner/CanvasBlocker'
 arch=('any')
-url="https://github.com/kkapsner/CanvasBlocker"
-depends=("firefox")
-groups=('firefox-addons')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kkapsner/CanvasBlocker/archive/$pkgver.tar.gz")
-sha256sums=('d47b74c5413e01026ae4b16097b2442febcdfec83068e3984567cb6ed2c3ef7c')
+depends=('firefox')
+makedepends=('web-ext' 'jq')
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('c95d073795e376ce53b66e568c0d215e56c2dcefc962ddc650b7fb5492828d4b')
+
+build() {
+  cd "$srcdir"/$_name-$pkgver
+  web-ext build \
+      --overwrite-dest \
+      --ignore-files test \
+      --ignore-files versions \
+      --ignore-files crowdin.yml \
+      --ignore-files "package*"
+}
 
 package() {
-  cd "CanvasBlocker-$pkgver"
-  install -Dm644 canvasblocker.xpi "$pkgdir/usr/lib/firefox/browser/extensions/CanvasBlocker@kkapsner.de.xpi"
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir"/$_name-$pkgver
+  _extension_id=$(jq -r '(.applications // .browser_specific_settings).gecko.id' manifest.json)
+  install -Dm644 web-ext-artifacts/${_name,,}-$pkgver.zip "$pkgdir"/usr/lib/firefox/browser/extensions/$_extension_id.xpi
 }
