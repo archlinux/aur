@@ -1,0 +1,13 @@
+[Unit]
+Description=ChatLab API Service (user)
+Documentation=https://chatlab.fun
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/chatlab serve
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

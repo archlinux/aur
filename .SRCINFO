@@ -1,6 +1,6 @@
 pkgbase = chatlab
 	pkgdesc = Rediscover your social memories with local, AI-powered analysis
-	pkgver = 0.20.1
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/hellodigua/ChatLab
 	arch = x86_64
@@ -9,15 +9,23 @@ pkgbase = chatlab
 	makedepends = npm
 	makedepends = pnpm
 	makedepends = python
-	source = chatlab-0.20.1.tar.gz::https://github.com/hellodigua/ChatLab/archive/refs/tags/v0.20.1.tar.gz
+	source = chatlab-0.21.0.tar.gz::https://github.com/hellodigua/ChatLab/archive/refs/tags/v0.21.0.tar.gz
+	source = chatlab-api.service
+	source = chatlab-api@.service
+	source = chatlab-web.service
+	source = chatlab-web@.service
 	source = chatlab.desktop
 	source = chatlab.sh
-	sha256sums = c9cf7b3f1152ec83dc5c1a9f91e0b59c4f1f039e83085b31f68abde233bae012
+	sha256sums = ca113afa7e520f99034d732d30eb64f58c63e099a722e400edfe9e024ee0eb40
+	sha256sums = bbe53c1659dfc9a2358ddf20437aa65c0f673b8a8545f3a1edc8a6eb180bf8d6
+	sha256sums = 69b628fb8cacf2d56d41bd0c524b9e68524022881a5dd9b7e2f48982515cef59
+	sha256sums = f7984b4d7e5f551d1e01874fe5a0f0baab7f3da3f9790902ced56eb4c53d7109
+	sha256sums = 70e21df1fdae8d11f22c5dac69686daa9bcbbf5b6590e66683a67bc7f207752e
 	sha256sums = 349a64162923e2fcea32cde43af8e5da44d864b31e3050f3c4031c75744e60b0
 	sha256sums = 018864695044b9188a291a0c30db9322cba764f29198fd2014fbb0c43b1c0103
 
 pkgname = chatlab-cli
-	pkgdesc = Rediscover your social memories with local, AI-powered analysis (cli tool)
+	pkgdesc = Rediscover your social memories with local, AI-powered analysis (cli & service)
 	depends = nodejs
 
 pkgname = chatlab-desktop
