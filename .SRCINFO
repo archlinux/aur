@@ -1,6 +1,6 @@
 pkgbase = synkromium-git
 	pkgdesc = Keep your Chromium browser settings and extensions in sync across all your devices, privately and automatically.
-	pkgver = 0.1.4.r1.g640bd5b
+	pkgver = 0.1.5.r0.g493988e
 	pkgrel = 1
 	url = https://github.com/tokitauhid/Synkromium
 	arch = x86_64
