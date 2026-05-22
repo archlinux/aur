@@ -1,6 +1,6 @@
 pkgbase = stelliberty-bin
 	pkgdesc = Modern Clash/Mihomo 客户端的二进制发行版
-	pkgver = 1.2.284
+	pkgver = 1.2.285
 	pkgrel = 1
 	url = https://github.com/Kindness-Kismet/Stelliberty
 	install = stelliberty-bin.install
@@ -15,20 +15,20 @@ pkgbase = stelliberty-bin
 	depends = rsync
 	optdepends = xdg-utils: for xdg-open support
 	optdepends = polkit: for pkexec-based service installation from the UI
-	provides = stelliberty=1.2.284
+	provides = stelliberty=1.2.285
 	conflicts = stelliberty
-	noextract = Stelliberty-v1.2.284-linux-x64.zip
-	noextract = Stelliberty-v1.2.284-linux-arm64.zip
+	noextract = Stelliberty-v1.2.285-linux-x64.zip
+	noextract = Stelliberty-v1.2.285-linux-arm64.zip
 	options = !strip
-	source = app_icon.png::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.2.284/linux/runner/resources/app_icon.png
-	source = stelliberty.desktop::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.2.284/linux/stelliberty.desktop
-	source = LICENSE-v1.2.284::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.2.284/LICENSE
+	source = app_icon.png::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.2.285/linux/runner/resources/app_icon.png
+	source = stelliberty.desktop::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.2.285/linux/stelliberty.desktop
+	source = LICENSE-v1.2.285::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.2.285/LICENSE
 	sha256sums = fa89e84a3090b5a566b0ddf4d8e11adec3785b66d660746774fb6197173bf9d8
 	sha256sums = ca2f07aef3208f38d47eee1bdc163b2699362432e050e0127b744163d6dc9eca
 	sha256sums = 6f6fc60debd655040216a90ce3a87071ede50c392f6eba3642f169891c638e10
-	source_x86_64 = Stelliberty-v1.2.284-linux-x64.zip::https://github.com/Kindness-Kismet/Stelliberty/releases/download/v1.2.284/Stelliberty-v1.2.284-linux-x64.zip
-	sha256sums_x86_64 = 91f8cee95842f25bb128d7f51b4a75e04f1629aa095d3d29c98d605bff100b65
-	source_aarch64 = Stelliberty-v1.2.284-linux-arm64.zip::https://github.com/Kindness-Kismet/Stelliberty/releases/download/v1.2.284/Stelliberty-v1.2.284-linux-arm64.zip
-	sha256sums_aarch64 = 7fe052c5bed27cb1a164119e687a4ee4fd0a60353fdca7b794894be0cffb3ab4
+	source_x86_64 = Stelliberty-v1.2.285-linux-x64.zip::https://github.com/Kindness-Kismet/Stelliberty/releases/download/v1.2.285/Stelliberty-v1.2.285-linux-x64.zip
+	sha256sums_x86_64 = d6ec1ef7aaee830d695707c8b0412e8e6e70a61c76bb6cd9696fe6cb3909044b
+	source_aarch64 = Stelliberty-v1.2.285-linux-arm64.zip::https://github.com/Kindness-Kismet/Stelliberty/releases/download/v1.2.285/Stelliberty-v1.2.285-linux-arm64.zip
+	sha256sums_aarch64 = dddb5dcf484b5e69a2b18da5f0e20fd29f92c90d7ede1a3e569662277c7aa0cc
 
 pkgname = stelliberty-bin
