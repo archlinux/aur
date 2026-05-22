@@ -2,44 +2,47 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=pcraster
-pkgver=4.4.1
-pkgrel=2
+pkgver=4.4.2
+pkgrel=1
 pkgdesc='Environmental modelling software'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://pcraster.geo.uu.nl'
 license=('GPL3')
-depends=('python-pyqt5-chart' 'boost' 'python-numpy' 'xerces-c' 'gdal' 'ncurses')
-makedepends=('cmake')
-source=("https://github.com/pcraster/pcraster/archive/refs/tags/pcraster-$pkgver.tar.gz")
-sha512sums=('3e4bd50476166320c0add15b2e972242fe07fc5750fa7ed550b46bd12751258deede30eb2b6c0d139aba9ae3468971f846416eafbea74866113ef23b084105fd')
-#Get Python version
-_pyver=$(python --version | awk '{print $2}' | cut -d '.' -f 1,2)
+depends=('boost' 'gdal' 'ncurses' 'python-numpy' 'python-pyqt5-chart' 'xerces-c')
+makedepends=('cmake' 'make' 'python3')
+source=("pcraster-$pkgver.tar.gz::https://github.com/pcraster/pcraster/archive/refs/tags/pcraster-$pkgver.tar.gz")
+sha512sums=('47ff5c2d551022409e2cd8eeed32edbc40fc74bcf232e1df0e921de61e769c1e9df91ba3fa710a8abdd92d6c46d6ecbac5173539b6e7827b785b2138d7c21ca9')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  cd "${srcdir}/pcraster-pcraster-${pkgver}"
 
-  [[ -d build ]] || mkdir build
+  mkdir -p build
+  cd build
 
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}/build"
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DPCRASTER_WITH_PYTHON_MULTICORE=TRUE \
+    -DPCRASTER_BUILD_TEST=FALSE \
+    -DFERN_BUILD_ALGORITHM=TRUE \
+    -DPCRASTER_PACKAGE_BOOST=ON \
+    -DPCRASTER_PACKAGE_NCURSES=ON \
+    -DPython3_EXECUTABLE=/usr/bin/python3
 
-  cmake -G "Unix Makefiles" .. \
-  -DCMAKE_BUILD_TYPE="Release" \
-  -DPython3_EXECUTABLE:FILEPATH=/usr/bin/python${_pyver} \
-  -DPython_ADDITIONAL_VERSIONS=${_pyver} \
-  -DPCRASTER_PYTHON_INSTALL_DIR=/usr/lib/python${_pyver}/site-packages \
-  -DPCRASTER_WITH_PYTHON_MULTICORE:BOOL=TRUE \
-  -DPCRASTER_BUILD_TEST:BOOL=TRUE \
-  -DFERN_BUILD_ALGORITHM:BOOL=TRUE \
-  -DPCRASTER_PACKAGE_BOOST:BOOL=ON \
-  -DPCRASTER_PACKAGE_NCURSES:BOOL=ON \
-  -DCMAKE_INSTALL_PREFIX:PATH=/usr/
-  make
+  make -j1
+}
+
+check() {
+  cd "${srcdir}/pcraster-pcraster-${pkgver}/build"
+  ctest --output-on-failure
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}/build"
+  cd "${srcdir}/pcraster-pcraster-${pkgver}/build"
 
   make DESTDIR="${pkgdir}" install
 
+  # Strip debug symbols
+  find "${pkgdir}" -depth -type f \( -name '*.so*' -o -name '*.a' \) -exec strip --strip-unneeded {} + 2>/dev/null || true
 }
 
