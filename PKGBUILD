@@ -1,8 +1,8 @@
 # Maintainer: Lena Pastwa <aur@lnps.me>
 pkgname=tlrc-bin
 _pkgname=tlrc
-pkgver=1.13.0
-pkgrel=2
+pkgver=1.13.1
+pkgrel=1
 pkgdesc="Official tldr client written in Rust"
 arch=('x86_64')
 url="https://github.com/tldr-pages/$_pkgname"
@@ -11,7 +11,7 @@ depends=('glibc' 'libgcc')
 provides=('tldr')
 conflicts=('tldr')
 source=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-b2sums=('6094ad1471b94552670fc45ec783b90fd4a8c02ab76af56bf116b9116618b44884c422121d01e14f9e843a9ed2d6403f98bb8252753f78a59e140b7801660806')
+b2sums=('fcf6a86d7e855f38e8c9329d8df6effdf35bd7e635971f000b0c9067c0a32efc5bc50c0fa214795c0de35b657f5bd92b8b97a10fc6e39538753cbd55af9c9567')
 
 package() {
     install -Dm755 tldr -t "$pkgdir/usr/bin"
