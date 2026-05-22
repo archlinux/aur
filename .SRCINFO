@@ -1,0 +1,16 @@
+pkgbase = simple-battery-notify
+	pkgdesc = A customizable, D-Bus driven battery notification daemon and CLI
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Davi-S/simple-battery-notify
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-gobject
+	depends = python-pydbus
+	depends = libnotify
+	depends = upower
+	source = simple-battery-notify-1.0.1.tar.gz::https://github.com/Davi-S/simple-battery-notify/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = da0c7b204f6866148145c96730d3db2922444ff6ed8ac9bfb550977f39e17bfb
+
+pkgname = simple-battery-notify
