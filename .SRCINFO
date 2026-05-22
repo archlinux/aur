@@ -1,6 +1,6 @@
 pkgbase = zensical
 	pkgdesc = A modern static site generator designed to simplify building and maintaining project documentation
-	pkgver = 0.0.37
+	pkgver = 0.0.43
 	pkgrel = 1
 	url = https://github.com/zensical/zensical
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = zensical
 	depends = python-yaml
 	depends = python-tomli
 	options = !strip
-	source = https://files.pythonhosted.org/packages/source/z/zensical/zensical-0.0.37.tar.gz
-	sha256sums = e43a59e939fbddb50d218aa5b643c24d0e7259155e9e36fb791e5f865af588d5
+	source = https://files.pythonhosted.org/packages/source/z/zensical/zensical-0.0.43.tar.gz
+	sha256sums = dc2d3804ff562795c1024130e0c3ce79736467930729dda314f096d0e35b98c8
 
 pkgname = zensical
