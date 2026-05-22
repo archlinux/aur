@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IPTV直播播放器
+Comment=基于 mpv在线直播
+Exec=LivePlayer
+Icon=LivePlayer
+Terminal=false
+Type=Application
+Categories=Video;Network;
+StartupWMClass=LivePlayer
