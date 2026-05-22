@@ -1,6 +1,6 @@
 # Maintainer: MrRedstonia <contact@mrredstonia.com>
 pkgname=armbian-imager-bin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Utility for flashing Armbian OS images to SD cards and USB drives."
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('armbian-imager')
 options=('!strip')
 
 source=("https://github.com/armbian/imager/releases/download/v${pkgver}/Armbian.Imager_${pkgver}_amd64.deb")
-sha256sums=('d2c9aa36677f2b1fb383ad7195aa5a93127cadbba91769b594897aed78e38892')
+sha256sums=('77d18105dd02244b95a20629edfa19475c7e16e4e4d14c98a6002f8066063582')
 
 prepare() {
   ar x "Armbian.Imager_${pkgver}_amd64.deb"
@@ -23,8 +23,13 @@ prepare() {
 
 package() {
   cp -a usr "${pkgdir}/"
-  
+
   if [ -d "opt" ]; then
     cp -a opt "${pkgdir}/"
+  fi
+
+  local desktop_file="${pkgdir}/usr/share/applications/Armbian Imager.desktop"
+  if [ -f "${desktop_file}" ]; then
+    sed -i 's/^Exec=/Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 /' "${desktop_file}"
   fi
 }
