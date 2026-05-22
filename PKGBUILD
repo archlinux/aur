@@ -9,7 +9,7 @@ pkgname=jupiter-hw-support
 _pkgver=20250728.1
 _srctag=jupiter-${_pkgver}
 pkgver=${_pkgver}
-pkgrel=3
+pkgrel=4
 pkgdesc="Steam Deck (Jupiter) hardware support: scripts, udev rules, polkit, services, BIOS/controller firmware"
 arch=('x86_64')
 url="https://gitlab.com/evlaV/jupiter-hw-support"
@@ -78,11 +78,7 @@ This package redistributes files from:
     ${url}
     tag: ${_srctag}
 
-Upstream does not currently ship a LICENSE file in this tree. Files originate
-from Valve's SteamOS / jupiter-hw-support and are repackaged here as-is for
-use on non-SteamOS Arch Linux installations. For licensing of individual
-components (BIOS images, controller firmware, vendor binaries such as h2offt /
-rfp-cli), refer to upstream and the respective vendors.
+Upstream does not currently ship a LICENSE file in this tree. Files originate from Valve's SteamOS / jupiter-hw-support and are repackaged here as-is for use on non-SteamOS Arch Linux installations. For licensing of individual components (BIOS images, controller firmware, vendor binaries such as h2offt / rfp-cli), refer to upstream and the respective vendors.
 EOF
   fi
 }
