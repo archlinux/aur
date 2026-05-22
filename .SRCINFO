@@ -1,6 +1,6 @@
 pkgbase = fluster
     pkgdesc = Testing framework for decoders conformance
-    pkgver = 0.6.0
+    pkgver = 0.7.1
     pkgrel = 1
     url = https://github.com/fluster/fluster
     arch = any

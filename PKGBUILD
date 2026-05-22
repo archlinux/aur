@@ -1,7 +1,7 @@
 # Maintainer: Ruben Gonzalez <rgonzalez@fluendo.com> and Carlos Falgueras <cfalgueras@fluendo.com>
 
 pkgname=fluster
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Testing framework for decoders conformance"
 arch=(any)
