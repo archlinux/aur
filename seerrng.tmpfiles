@@ -1,0 +1,2 @@
+d /var/lib/seerrng 0750 seerrng seerrng -
+d /etc/seerrng 0755 root root -

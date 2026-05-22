@@ -1,0 +1,8 @@
+post_install() {
+  systemd-sysusers seerrng.conf
+  systemd-tmpfiles --create seerrng.conf
+}
+
+post_upgrade() {
+  post_install
+}

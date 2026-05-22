@@ -1,0 +1,20 @@
+[Unit]
+Description=SeerrNG
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=seerrng
+Group=seerrng
+EnvironmentFile=-/etc/seerrng/seerrng.env
+Environment=NODE_ENV=production
+Environment=CONFIG_DIRECTORY=/var/lib/seerrng
+WorkingDirectory=/usr/lib/seerrng
+ExecStart=/usr/bin/node /usr/lib/seerrng/dist/index.js
+Restart=on-failure
+RestartSec=5
+StateDirectory=seerrng
+LogsDirectory=seerrng
+
+[Install]
+WantedBy=multi-user.target
