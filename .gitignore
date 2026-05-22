@@ -1,0 +1,5 @@
+pkg/
+src/
+audacity/
+openvino-plugins-ai-audacity/
+*.tar.zst

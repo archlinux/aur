@@ -7,6 +7,8 @@ libtorch_cpu="/opt/libtorch-cpu"
 
 if [ -d "$libtorch_cuda" ]; then
 	export LD_LIBRARY_PATH="/opt/libtorch-cuda/lib:/usr/lib"
+elif [ -d "/opt/libtorch" ]; then
+	export LD_LIBRARY_PATH="/opt/libtorch/lib:/usr/lib"
 elif [ -d "$libtorch_cpu" ]; then
 	export LD_LIBRARY_PATH="/opt/libtorch-cpu/lib:/usr/lib"
 fi

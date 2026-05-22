@@ -1,6 +1,6 @@
 pkgbase = audacity-openvino
 	pkgdesc = Audacity - Digital audio editor with AI support via openvino (mod-openvino)
-	pkgver = 3.7.5
+	pkgver = 3.7.7
 	pkgrel = 1
 	epoch = 1
 	url = https://audacityteam.org
@@ -13,9 +13,9 @@ pkgbase = audacity-openvino
 	makedepends = rapidjson
 	makedepends = wxwidgets-gtk3
 	makedepends = vst3sdk
-	depends = libtorch-cxx11abi-cpu
-	depends = gcc13-libs
-	depends = gcc13
+	makedepends = opencl-clhpp
+	depends = libtorch
+	depends = whisper.cpp-openvino
 	depends = alsa-lib
 	depends = expat
 	depends = flac
@@ -52,6 +52,9 @@ pkgbase = audacity-openvino
 	depends = twolame
 	depends = util-linux-libs
 	depends = wxwidgets-gtk3
+	optdepends = intel-compute-runtime: Intel GPU acceleration for OpenVINO
+	optdepends = level-zero-loader: Level Zero GPU API support
+	optdepends = libtorch-cuda: CUDA GPU tensor operations (replaces libtorch)
 	provides = ladspa-host
 	provides = lv2-host
 	provides = vamp-host
@@ -59,13 +62,15 @@ pkgbase = audacity-openvino
 	provides = vst3-host
 	provides = audacity
 	conflicts = audacity
-	source = git+https://github.com/audacity/audacity.git#tag=Audacity-3.7.5
-	source = git+https://github.com/intel/openvino-plugins-ai-audacity.git
+	source = git+https://github.com/audacity/audacity.git#tag=Audacity-3.7.7
+	source = git+https://github.com/intel/openvino-plugins-ai-audacity.git#tag=v3.7.1-R4.2
 	source = audacity-openvino
 	source = audacity-openvino.desktop
+	source = CHANGELOG
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 852fce50425d748e34a13466294c2d12c78ea7ebb0ac18ae294da0c7a806a8f9
-	sha256sums = 3319462d2f642af6f9806c256b8af7e4bceaa03e40fee4fe0131fa97482027a1
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = audacity-openvino

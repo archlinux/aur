@@ -1,8 +1,9 @@
-# Maintainer: Felipe Facundes
+# Maintainer: selebray1998
+# Contributor: Felipe Facundes
+# Changelog: CHANGELOG
 
-# Modified Audacity for OpenVINO support
 pkgname=audacity-openvino
-pkgver=3.7.5
+pkgver=3.7.7
 pkgrel=1
 epoch=1
 pkgdesc="Audacity - Digital audio editor with AI support via openvino (mod-openvino)"
@@ -10,12 +11,18 @@ arch=(x86_64)
 url="https://audacityteam.org"
 license=(GPL-3.0-or-later)
 depends=(
-  libtorch-cxx11abi-cpu gcc13-libs gcc13
+  libtorch whisper.cpp-openvino
   alsa-lib expat flac gcc-libs glibc gdk-pixbuf2 glib2 gtk3
   jack lame libid3tag libmad libogg libsbsms libsndfile libsoxr
   libvorbis libx11 lilv mpg123 opusfile portaudio portmidi portsmf
   vamp-plugin-sdk wavpack wxwidgets-common openvino openvino-models
   python soundtouch sqlite suil twolame util-linux-libs wxwidgets-gtk3
+)
+optdepends=(
+  'intel-compute-runtime: Intel GPU acceleration for OpenVINO'
+  'level-zero-loader: Level Zero GPU API support'
+  'libtorch-cuda: CUDA GPU tensor operations (replaces libtorch)'
+  'opencl-clhpp: OpenCL C++ headers for GPU inference'
 )
 conflicts=(audacity)
 provides=(
@@ -27,19 +34,21 @@ provides=(
 	audacity
 )
 makedepends=(
-  git cmake chrpath ffmpeg rapidjson wxwidgets-gtk3 vst3sdk
+  git cmake chrpath ffmpeg rapidjson wxwidgets-gtk3 vst3sdk opencl-clhpp
 )
 source=(
-  "git+https://github.com/audacity/audacity.git#tag=Audacity-$pkgver"
-  "git+https://github.com/intel/openvino-plugins-ai-audacity.git"
-  "audacity-openvino"
-  "audacity-openvino.desktop"
+   "git+https://github.com/audacity/audacity.git#tag=Audacity-$pkgver"
+   "git+https://github.com/intel/openvino-plugins-ai-audacity.git#tag=v3.7.1-R4.2"
+   "audacity-openvino"
+   "audacity-openvino.desktop"
+   "CHANGELOG"
 )
 sha256sums=(
-	'SKIP' 
 	'SKIP'
-	'852fce50425d748e34a13466294c2d12c78ea7ebb0ac18ae294da0c7a806a8f9'
-	'3319462d2f642af6f9806c256b8af7e4bceaa03e40fee4fe0131fa97482027a1'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
 )
 
 prepare() {
@@ -74,35 +83,58 @@ EOF
 
   echo "==> CMakeLists.txt updated:"
   grep openvino-plugins-ai-audacity modules/CMakeLists.txt
+
+  echo "==> Patching OpenVINO module for API incompatibilities..."
+
+  # whisper.cpp 1.8.3 removed speed_up from whisper_full_params
+  sed -i '/wparams\.speed_up = params\.speed_up;/d' modules/openvino-plugins-ai-audacity/mod-openvino/OVWhisperTranscription.cpp
+  sed -i '/bool speed_up = false;/d' modules/openvino-plugins-ai-audacity/mod-openvino/OVWhisperTranscription.cpp
+
+  # Newer OpenVINO API: data<T>() returns const T* for const tensors
+  sed -i 's/float\* pXTensor = x_tensor\.data<float>()/const float* pXTensor = x_tensor.data<float>()/g' modules/openvino-plugins-ai-audacity/mod-openvino/htdemucs.cpp
+  sed -i 's/float\* pXTTensor = xt_tensor\.data<float>()/const float* pXTTensor = xt_tensor.data<float>()/g' modules/openvino-plugins-ai-audacity/mod-openvino/htdemucs.cpp
+  sed -i 's/float\* pXTensor_Out = x_out_tensor\.data<float>()/const float* pXTensor_Out = x_out_tensor.data<float>()/g' modules/openvino-plugins-ai-audacity/mod-openvino/htdemucs.cpp
+  sed -i 's/float\* pXTTensor_Out = xt_out_tensor\.data<float>()/const float* pXTTensor_Out = xt_out_tensor.data<float>()/g' modules/openvino-plugins-ai-audacity/mod-openvino/htdemucs.cpp
+  # std::memcpy destination needs non-const void*; data_ptr() returns void* for writes
+  sed -i 's/std::memcpy(pXTensor, x\.data_ptr()/std::memcpy(const_cast<float*>(pXTensor), x.data_ptr()/g' modules/openvino-plugins-ai-audacity/mod-openvino/htdemucs.cpp
+  sed -i 's/std::memcpy(pXTTensor, xt\.data_ptr()/std::memcpy(const_cast<float*>(pXTTensor), xt.data_ptr()/g' modules/openvino-plugins-ai-audacity/mod-openvino/htdemucs.cpp
+  # torch::from_blob takes void*, not const void*
+  sed -i 's/torch::from_blob(pXTensor_Out,/torch::from_blob(const_cast<float*>(pXTensor_Out),/g' modules/openvino-plugins-ai-audacity/mod-openvino/htdemucs.cpp
+  sed -i 's/torch::from_blob(pXTTensor_Out,/torch::from_blob(const_cast<float*>(pXTTensor_Out),/g' modules/openvino-plugins-ai-audacity/mod-openvino/htdemucs.cpp
 }
 
 build() {
-  cd "${srcdir}/audacity"
+    cd "${srcdir}/audacity"
 
-  export LIBTORCH_ROOTDIR="/opt/libtorch-cpu/"
-  export CC=gcc-13
-  export CXX=g++-13
+    # Use CUDA libtorch if available, fall back to CPU
+    if [ -d "/opt/libtorch-cuda" ]; then
+      export LIBTORCH_ROOTDIR="/opt/libtorch-cuda/"
+    elif [ -d "/opt/libtorch" ]; then
+      export LIBTORCH_ROOTDIR="/opt/libtorch/"
+    else
+      export LIBTORCH_ROOTDIR="/opt/libtorch-cpu/"
+    fi
 
-  local cmake_options=(
-    -B build
-    -S .
-    -D CMAKE_BUILD_TYPE=Release
-    -D CMAKE_INSTALL_PREFIX=/usr
-    -D audacity_use_openvino=ON
-    -D audacity_conan_enabled=OFF
-    -D audacity_has_tests=OFF
-    -D audacity_lib_preference=system
-    -D audacity_obey_system_dependencies=ON
-    -W no-dev
-	-D CMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -Wno-error=deprecated-declarations"
-  )
+    local cmake_options=(
+      -B build
+      -S .
+      -D CMAKE_BUILD_TYPE=Release
+      -D CMAKE_INSTALL_PREFIX=/usr
+      -D audacity_use_openvino=ON
+      -D audacity_conan_enabled=OFF
+      -D audacity_has_tests=OFF
+      -D audacity_lib_preference=system
+      -D audacity_obey_system_dependencies=ON
+      -W no-dev
+      -D CMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -Wno-error=deprecated-declarations"
+    )
 
-  export CFLAGS+=" -DNDEBUG -std=gnu11"
-  export CXXFLAGS+=" -DNDEBUG"
-  export VST3SDK="/usr/src/vst3sdk"
+    export CFLAGS+=" -DNDEBUG -std=gnu11"
+    export CXXFLAGS+=" -DNDEBUG"
+    export VST3SDK="/usr/src/vst3sdk"
 
-  cmake "${cmake_options[@]}"
-  cmake --build build --verbose
+    cmake "${cmake_options[@]}"
+    cmake --build build --verbose
 }
 
 package() {
@@ -118,4 +150,6 @@ package() {
   	rm -f "$shortcut"
   fi
   install -Dm644 "$srcdir/audacity-openvino.desktop" "$shortcut"
+  # Install changelog
+  install -Dm644 "$srcdir/CHANGELOG" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG"
 }
