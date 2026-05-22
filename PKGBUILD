@@ -3,7 +3,7 @@
 
 pkgname=dosbox-staging-git
 _pkgname=dosbox-staging
-pkgver=0.82.0.alpha.3898.gc8386c74d
+pkgver=0.84.0.alpha.70.gdf9bb2f13
 pkgrel=1
 pkgdesc="A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems"
 arch=('x86_64')
@@ -27,7 +27,7 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe | sed -e 's/-/./g' -e 's/^v//g'
+  git describe --tags | sed -e 's/-/./g' -e 's/^v//g'
 }
 
 build() {
@@ -47,7 +47,6 @@ package() {
 
   # dosbox-staging documents
   install -Dm 644 "${srcdir}/${_pkgname}/docs/README.template" "${pkgdir}/usr/share/doc/${_pkgname}/README"
-  install -Dm 644 "${srcdir}/${_pkgname}/docs/README.video" "${pkgdir}/usr/share/doc/${_pkgname}/video.txt"
   install -Dm 644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/manual.txt"
   mv "${pkgdir}/usr/share/${_pkgname}/resources/"* "${pkgdir}/usr/share/${_pkgname}/"
   rmdir "${pkgdir}/usr/share/${_pkgname}/resources"
