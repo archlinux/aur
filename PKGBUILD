@@ -6,6 +6,9 @@ pkgname=audacity-openvino
 pkgver=3.7.7
 pkgrel=1
 epoch=1
+
+# Auto-track latest 3.7.x release tag; override with explicit pkgver if needed
+_audacity_tag_prefix=Audacity-3.7
 pkgdesc="Audacity - Digital audio editor with AI support via openvino (mod-openvino)"
 arch=(x86_64)
 url="https://audacityteam.org"
@@ -37,7 +40,7 @@ makedepends=(
   git cmake chrpath ffmpeg rapidjson wxwidgets-gtk3 vst3sdk opencl-clhpp
 )
 source=(
-   "git+https://github.com/audacity/audacity.git#tag=Audacity-$pkgver"
+   "git+https://github.com/audacity/audacity.git"
    "git+https://github.com/intel/openvino-plugins-ai-audacity.git#tag=v3.7.1-R4.2"
    "audacity-openvino"
    "audacity-openvino.desktop"
@@ -51,8 +54,29 @@ sha256sums=(
 	'SKIP'
 )
 
+pkgver() {
+  cd "${srcdir}/audacity"
+  local tag
+  tag=$(git tag -l "${_audacity_tag_prefix}.*" --sort=-v:refname | head -1)
+  if [ -n "$tag" ]; then
+    echo "${tag#Audacity-}"
+  else
+    echo "${pkgver}"
+  fi
+}
+
 prepare() {
   cd "${srcdir}/audacity"
+
+   # Checkout the latest matching tag
+   local latest_tag
+   latest_tag=$(git tag -l "${_audacity_tag_prefix}.*" --sort=-v:refname | head -1 || true)
+   if [ -n "$latest_tag" ]; then
+     git -c advice.detachedHead=false checkout "$latest_tag"
+    echo "==> Checked out ${latest_tag}"
+  else
+    echo "==> WARNING: no tag matching ${_audacity_tag_prefix}.* found, using HEAD"
+  fi
 
   echo "==> Copying OpenVINO module to modules/..."
   rm -rf modules/openvino-plugins-ai-audacity

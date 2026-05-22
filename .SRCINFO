@@ -55,6 +55,7 @@ pkgbase = audacity-openvino
 	optdepends = intel-compute-runtime: Intel GPU acceleration for OpenVINO
 	optdepends = level-zero-loader: Level Zero GPU API support
 	optdepends = libtorch-cuda: CUDA GPU tensor operations (replaces libtorch)
+	optdepends = opencl-clhpp: OpenCL C++ headers for GPU inference
 	provides = ladspa-host
 	provides = lv2-host
 	provides = vamp-host
@@ -62,7 +63,7 @@ pkgbase = audacity-openvino
 	provides = vst3-host
 	provides = audacity
 	conflicts = audacity
-	source = git+https://github.com/audacity/audacity.git#tag=Audacity-3.7.7
+	source = git+https://github.com/audacity/audacity.git
 	source = git+https://github.com/intel/openvino-plugins-ai-audacity.git#tag=v3.7.1-R4.2
 	source = audacity-openvino
 	source = audacity-openvino.desktop
