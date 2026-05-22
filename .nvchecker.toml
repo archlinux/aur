@@ -1,0 +1,4 @@
+[eloquent]
+source = "git"
+git = "https://github.com/sonnyp/Eloquent.git"
+prefix = "v"

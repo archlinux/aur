@@ -1,23 +1,32 @@
-# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=eloquent
-pkgver=1.2
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="Your proofreading assistant"
-arch=(any)
+arch=('any')
 url="https://github.com/sonnyp/Eloquent"
-license=(GPL-3.0-only)
-depends=(gjs libadwaita languagetool fasttext fasttext-langid-models)
-makedepends=(gobject-introspection blueprint-compiler git meson)
-checkdepends=(appstream-glib)
+license=('GPL-3.0-only')
+depends=(
+  'fasttext'
+  'fasttext-langid-models'
+  'gjs'
+  'gtk4'
+  'languagetool'
+  'libadwaita'
+)
+makedepends=(
+  'blueprint-compiler'
+  'git'
+  'gobject-introspection'
+  'meson'
+)
 source=("git+https://github.com/sonnyp/Eloquent.git#tag=v$pkgver"
-        "git+https://github.com/sonnyp/troll.git#commit=53155a0" # submodule commit for this tag so far
-        "Adjust-paths-and-commands-for-nonflatpak-environment.diff"
-        "fix-metainfo-syntax.diff")
-b2sums=('fc946c026b7c8f041ba690e227237c56864906be993f84037e27a3b08f460cd04050091b43a8adf68ff039312a949adafe73e1ca6c01df3243139c6883d98609'
-        '4321bc52b2fa758a55e8f49bd14b58b1ba13b2f67f7dcdfec453e5b8ae6fc946fb61b3efe3790e3c7531b056116a1118d22d360e0a04fb90b0017fce58457d84'
-        'aff8f2193330aed1205bc3f45d9eeb901588ad89b27db05b6de72ff9af5797c675ca8904ec170cf55c7cf564bd201fc5e1a44ff665aaccb479bfb5a96f4ab8c6'
-        '64d7725b6a5ccb727dca3a77682960e4ac7a0eee3ad835ddccbf4abfd8a0c25c87af157f2650dd17eee923fcecfc93ee22563eaf41f0b6e7737b199d09319dd6')
+        'git+https://github.com/sonnyp/troll.git'
+        'Adjust-paths-and-commands-for-nonflatpak-environment.diff')
+sha256sums=('d59c4b53432693919343bd43ccdc81c4e8da4738e73ab1ee92620ab5fc5e8fcf'
+            'SKIP'
+            'c1e5ee00bd7b38263d7fc64b319fcb95a2cdfb1f2517b15ed6bb6622934ce373')
 
 prepare() {
   cd Eloquent
@@ -25,8 +34,7 @@ prepare() {
   git config submodule.troll.url "$srcdir/troll"
   git -c protocol.file.allow=always submodule update
 
-  git apply ../Adjust-paths-and-commands-for-nonflatpak-environment.diff
-  git apply ../fix-metainfo-syntax.diff
+  git apply -3 ../Adjust-paths-and-commands-for-nonflatpak-environment.diff
 }
 
 build() {
@@ -34,11 +42,12 @@ build() {
   meson compile -C build
 }
 
-# https://github.com/sonnyp/Eloquent/issues/13
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
+
+  ln -s /usr/bin/re.sonny.Eloquent "$pkgdir/usr/bin/$pkgname"
 }
