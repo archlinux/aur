@@ -58,7 +58,10 @@ EOF
 
     if [ -d squashfs-root/usr/share/icons ]; then
         cp -r squashfs-root/usr/share/icons "${pkgdir}/usr/share/"
-        find "${pkgdir}/usr/share/icons" -name 'netcatty.png' -exec true \; 2>/dev/null
+        find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 {} +
+        find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 {} +
+        install -dm755 "${pkgdir}/usr/share/pixmaps"
+        find "${pkgdir}/usr/share/icons" -name 'netcatty.png' -exec cp {} "${pkgdir}/usr/share/pixmaps/" \; 2>/dev/null || true
     fi
 
     if [ -z "$(find "${pkgdir}/usr/share/icons" -name '*.png' 2>/dev/null)" ]; then
