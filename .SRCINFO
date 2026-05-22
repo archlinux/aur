@@ -1,0 +1,27 @@
+pkgbase = moltis-git
+	pkgdesc = A personal AI gateway written in Rust. One binary, sandboxed, secure. (Git VCS version)
+	pkgver = 20260519.01.r15.g451e1e4ad
+	pkgrel = 1
+	url = https://github.com/moltis-org/moltis
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = clang
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = just
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = systemd-libs
+	provides = moltis
+	conflicts = moltis
+	options = !lto
+	options = !debug
+	source = moltis::git+https://github.com/moltis-org/moltis.git
+	sha256sums = SKIP
+
+pkgname = moltis-git
