@@ -1,10 +1,10 @@
 # Maintainer: Mohammadreza Khani
 
 pkgname=dicto-bin
-pkgver=0.1.0
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Minimal native dictionary app for MDX/MDD files"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/mohamadkhani/dicto"
 license=('AGPL-3.0-or-later')
 depends=(
@@ -15,13 +15,12 @@ depends=(
 )
 optdepends=(
   'vulkan-driver: GPU rendering'
+  'vulkan-intel: Intel GPU support'
 )
 provides=('dicto')
 conflicts=('dicto')
 source_x86_64=("https://github.com/mohamadkhani/dicto/releases/download/v${pkgver}/dicto-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("https://github.com/mohamadkhani/dicto/releases/download/v${pkgver}/dicto-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 b2sums_x86_64=('SKIP')
-b2sums_aarch64=('SKIP')
 
 package() {
   install -Dm755 "$srcdir/dicto" \
