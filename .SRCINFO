@@ -1,6 +1,6 @@
 pkgbase = prysm-beacon-chain
 	pkgdesc = Prysm Ethereum consensus client (beacon chain node)
-	pkgver = 7.1.3
+	pkgver = 7.1.4
 	pkgrel = 1
 	url = https://github.com/OffchainLabs/prysm
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = prysm-beacon-chain
 	conflicts = prysm-bin
 	options = !strip
 	options = !buildflags
-	source = prysm::git+https://github.com/OffchainLabs/prysm.git#tag=v7.1.3
-	sha256sums = 3dec70265d257fcc7dfad12e0296d587ad43a3af68d14e924e70b7eb6756cc24
+	source = prysm::git+https://github.com/OffchainLabs/prysm.git#tag=v7.1.4
+	sha256sums = a97013b58d75b55780f5789f64a25316e10c7753f80cee0e513733e787b0ac42
 
 pkgname = prysm-beacon-chain
