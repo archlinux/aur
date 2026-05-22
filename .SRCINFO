@@ -1,6 +1,6 @@
 pkgbase = grimoire-bin
 	pkgdesc = Mod manager and companion tool for Deadlock (GameBanana browser, hero locker, crosshair designer)
-	pkgver = 1.11.1
+	pkgver = 1.11.2
 	pkgrel = 1
 	url = https://github.com/Slush97/grimoire
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = grimoire-bin
 	depends = alsa-lib
 	depends = libxss
 	depends = libnotify
-	provides = grimoire=1.11.1
+	provides = grimoire=1.11.2
 	conflicts = grimoire
 	options = !strip
 	options = !debug
 	options = !emptydirs
-	source = grimoire-1.11.1.deb::https://github.com/Slush97/grimoire/releases/download/v1.11.1/grimoire_1.11.1_amd64.deb
-	sha256sums = 35216c3ba3f236e4bb49bff975d46e222d0bb36427900d8c74440660a47d52c8
+	source = grimoire-1.11.2.deb::https://github.com/Slush97/grimoire/releases/download/v1.11.2/grimoire_1.11.2_amd64.deb
+	sha256sums = bb2eb71bd34579b11930f7c665118344215782409f1ba2734b4042429e71589d
 
 pkgname = grimoire-bin
