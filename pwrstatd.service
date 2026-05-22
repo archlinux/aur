@@ -1,0 +1,16 @@
+[Unit]
+Description=The monitor UPS software.
+After=network.target network-online.target nss-lookup.target
+
+[Service]
+User=root
+Group=power
+UMask=0002
+Type=simple
+ExecStart=/usr/sbin/pwrstatd
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
+

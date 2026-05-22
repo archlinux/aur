@@ -6,7 +6,7 @@
 
 pkgname=powerpanel
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="CyberPower UPS daemon"
 arch=("x86_64" "i686")
 url="https://www.cyberpowersystems.com/product/software/power-panel-personal/powerpanel-personal-linux/"
@@ -16,11 +16,13 @@ backup=(etc/powerpanel/pwrstatd-{powerfail,lowbatt,email}.sh
         etc/powerpanel/{hibernate,shutdown}.sh
         etc/pwrstatd.conf)
 source=('hibernate.sh'
-        'shutdown.sh')
+        'shutdown.sh'
+        'pwrstatd.service')
 source_x86_64=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL_64bit_v${pkgver}.tar.gz")
 source_i686=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL_32bit_v${pkgver}.tar.gz")
 sha256sums=('c710ea7765a24fb469adf601f44c8d3857634336bdfc263434ce86c3d67a4a80'
-            '10badc96b0ac990959ddc53d1d1cbba6b904e648b54d0eea085194e48d6a0998')
+            '10badc96b0ac990959ddc53d1d1cbba6b904e648b54d0eea085194e48d6a0998'
+            '9a9e8d4156351542acc55c74ca37aa34297709ac000dccd9e370c731591e0d2e')
 sha256sums_x86_64=('f257af0fcb5c5df8ba2732b1e0a8a427608f6cef9a7c6ce8ed83d2db2078b859')
 sha256sums_i686=('d7ae8ec3c27cb5525fb5cdd840c8e17785294084296b3277f5218d18e97f3f25')
 
@@ -28,8 +30,8 @@ package() {
   cd "${srcdir}/$pkgname-$pkgver"
 
   # PowerPanel for Linux client program
-  install -Dm700 bin/pwrstat "${pkgdir}/usr/bin/pwrstat"
-
+  install -g power -Dm750 bin/pwrstat "${pkgdir}/usr/bin/pwrstat"
+  
   # PowerPanel for Linux daemon program
   install -Dm700 bin/pwrstatd "${pkgdir}/usr/bin/pwrstatd"
 
@@ -71,8 +73,8 @@ package() {
   ln -s powerpanel/shutdown.sh "${pkgdir}/etc/shutdown.sh"
 
   # Systemd unit
-  install -Dm644 script/pwrstatd.service "${pkgdir}/usr/lib/systemd/system/pwrstatd.service"
-
+  install -Dm644 "${srcdir}/pwrstatd.service" "${pkgdir}/usr/lib/systemd/system/pwrstatd.service"
+  
   # PowerPanel for Linux client man-page
   install -Dm644 doc/pwrstat.8 "${pkgdir}/usr/share/man/man8/pwrstat.8"
 
