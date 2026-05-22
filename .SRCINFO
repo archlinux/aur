@@ -1,8 +1,9 @@
 pkgbase = gpu-select
 	pkgdesc = Per-app GPU selection tool for Linux hybrid GPU laptops
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/ParticleG/gpu-select
+	install = gpu-select.install
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -12,7 +13,7 @@ pkgbase = gpu-select
 	depends = python>=3.11
 	depends = python-tomlkit
 	depends = switcheroo-control
-	source = gpu-select-0.1.4.tar.gz::https://github.com/ParticleG/gpu-select/archive/v0.1.4.tar.gz
+	source = gpu-select-0.1.5.tar.gz::https://github.com/ParticleG/gpu-select/archive/v0.1.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = gpu-select
