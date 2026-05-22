@@ -1,5 +1,5 @@
 pkgname=hardwaremon-bin
-pkgver=14.6.0
+pkgver=14.6.2
 pkgrel=1
 pkgdesc="Modern hardware monitoring application"
 arch=('x86_64')
