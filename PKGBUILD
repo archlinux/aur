@@ -1,6 +1,7 @@
-# Maintainer: tercean <cg@zknt.org>
+# Maintainer: umoqnier <umoqnier@riseup.net>
+# Contributor: tercean <cg@zknt.org>
 pkgname=golden-cheetah-appimage
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc='Performance Software for Cyclists, Runners and Triathletes'
 arch=('x86_64')
@@ -17,7 +18,7 @@ source=(
     "golden-cheetah.png"
     )
 noextract=("${_appimage}")
-sha256sums=('3cc4540d0490c5b1026c5f523cea34dede17c63d4eb582403d710ccb2cba1156'
+sha256sums=('b5e58c0c28660b6a161b7509593b47557cc8ce2da485d9333243031534c8eb0f'
             '387b614023f0ef2fded447b6b9261311a23ef7253709e11c3a6c4db9dc8ca43c'
             '7056af2950caf59fba846b4f314a78898fef74e75b9c0915abb3d305f9918d48')
 
