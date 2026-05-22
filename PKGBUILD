@@ -18,8 +18,8 @@ makedepends=('patchelf')
 provides=('lafifiv3')
 conflicts=('lafifiv3' 'lafifi-flutter-git')
 validpgpkeys=('EF27591A48D4B6F7C7E55F49EC8E0E98E7C13D19')
-source=("lafifi-${pkgver}-linux-x86_64.tar.zst::https://buildhut.fly.dev/api/apps/lafifi/latest/linux/x86_64/tar.zst"
-        "lafifi-${pkgver}-linux-x86_64.tar.zst.sig::https://buildhut.fly.dev/api/apps/lafifi/latest/linux/x86_64/tar.zst/signature")
+source=("lafifi-${pkgver}-linux-x86_64.tar.zst::https://buildhut.fly.dev/api/apps/Lafifi/latest/linux/x86_64/tar.zst"
+        "lafifi-${pkgver}-linux-x86_64.tar.zst.sig::https://buildhut.fly.dev/api/apps/Lafifi/latest/linux/x86_64/tar.zst/signature")
 sha256sums=('SKIP'
             'SKIP')
 b2sums=('SKIP'
