@@ -1,4 +1,4 @@
-# Maintainer: David Gonzalez <neko.eth0 AT gmail DOT com>
+# Maintainer: 0x2501 <0x2501 [at] sol740.net>
 # Contributor: 10101000 <10101000_proton [at] pm.me>
 # Contributor: Jeff Henson <jeff [at] henson.io>
 # Contributor: Justin Settle <jus10 [at] partlycloudy.org>
@@ -6,60 +6,68 @@
 
 pkgname=powerpanel
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CyberPower UPS daemon"
 arch=("x86_64" "i686")
 url="https://www.cyberpowersystems.com/product/software/power-panel-personal/powerpanel-personal-linux/"
-license=("custom:CyberPower")
-depends=('libusb' 'openssl' 'paho-mqtt-c' 'json-c')
+license=("LicenseRef-CyberPower")
+options=('staticlibs')
 backup=(etc/powerpanel/pwrstatd-{powerfail,lowbatt,email}.sh
         etc/powerpanel/{hibernate,shutdown}.sh
-        etc/pwrstatd.conf
-        usr/lib/systemd/system/pwrstatd.service)
+        etc/pwrstatd.conf)
 source=('hibernate.sh'
         'shutdown.sh')
+source_x86_64=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL_64bit_v${pkgver}.tar.gz")
+source_i686=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL_32bit_v${pkgver}.tar.gz")
 sha256sums=('c710ea7765a24fb469adf601f44c8d3857634336bdfc263434ce86c3d67a4a80'
-            '10badc96b0ac990959ddc53d1d1cbba6b904e648b54d0eea085194e48d6a0998'
-            'f257af0fcb5c5df8ba2732b1e0a8a427608f6cef9a7c6ce8ed83d2db2078b859')
-
-if [[ $CARCH = 'x86_64' ]]; then
-  source+=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL_64bit_v${pkgver}.tar.gz")
-fi
-
-if [[ $CARCH = 'i686' ]]; then
-  source+=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL_32bit_v${pkgver}.tar.gz")
-fi
+            '10badc96b0ac990959ddc53d1d1cbba6b904e648b54d0eea085194e48d6a0998')
+sha256sums_x86_64=('f257af0fcb5c5df8ba2732b1e0a8a427608f6cef9a7c6ce8ed83d2db2078b859')
+sha256sums_i686=('d7ae8ec3c27cb5525fb5cdd840c8e17785294084296b3277f5218d18e97f3f25')
 
 package() {
   cd "${srcdir}/$pkgname-$pkgver"
 
   # PowerPanel for Linux client program
-  install -Dm755 bin/pwrstat "${pkgdir}/usr/bin/pwrstat"
+  install -Dm700 bin/pwrstat "${pkgdir}/usr/bin/pwrstat"
 
   # PowerPanel for Linux daemon program
-  install -Dm755 bin/pwrstatd "${pkgdir}/usr/bin/pwrstatd"
+  install -Dm700 bin/pwrstatd "${pkgdir}/usr/bin/pwrstatd"
+
+  # json-c shared library
+  install -Dm644 lib/libjson-c.so.5.1.0 "${pkgdir}/usr/local/lib/powerpanel/libjson-c.so.5.1.0"
+  ln -s libjson-c.so.5.1.0 "${pkgdir}/usr/local/lib/powerpanel/libjson-c.so.5"
+  
+  # paho-mqtt-c shared library
+  install -Dm644 lib/libpaho-mqtt3cs.so.1.3.1 "${pkgdir}/usr/local/lib/powerpanel/libpaho-mqtt3cs.so.1.3.1"
+  ln -s libpaho-mqtt3cs.so.1.3.1 "${pkgdir}/usr/local/lib/powerpanel/libpaho-mqtt3cs.so.1"
+
+  # crypto shared library
+  install -Dm644 lib/libcrypto.so.1.1 "${pkgdir}/usr/local/lib/powerpanel/libcrypto.so.1.1"
+
+  # ssl shared library
+  install -Dm644 lib/libssl.so.1.1 "${pkgdir}/usr/local/lib/powerpanel/libssl.so.1.1"
 
   # PowerPanel for Linux daemon configuration
-  install -Dm600 conf/pwrstatd.conf "${pkgdir}/etc/pwrstatd.conf"
+  install -Dm644 conf/pwrstatd.conf "${pkgdir}/etc/pwrstatd.conf"
   sed -e 's#/etc#/etc/powerpanel#' -i "${pkgdir}/etc/pwrstatd.conf"
 
   # Script command for event of power failure
-  install -Dm755 script/pwrstatd-powerfail.sh "${pkgdir}/etc/powerpanel/pwrstatd-powerfail.sh"
+  install -Dm700 script/pwrstatd-powerfail.sh "${pkgdir}/etc/powerpanel/pwrstatd-powerfail.sh"
   sed -e 's#/etc#/etc/powerpanel#' -i "${pkgdir}/etc/powerpanel/pwrstatd-powerfail.sh"
 
   # Script command for event of battery low
-  install -Dm755 script/pwrstatd-lowbatt.sh "${pkgdir}/etc/powerpanel/pwrstatd-lowbatt.sh"
+  install -Dm700 script/pwrstatd-lowbatt.sh "${pkgdir}/etc/powerpanel/pwrstatd-lowbatt.sh"
   sed -e 's#/etc#/etc/powerpanel#' -i "${pkgdir}/etc/powerpanel/pwrstatd-lowbatt.sh"
 
   # Script command for e-mail notification
-  install -Dm755 script/pwrstatd-email.sh "${pkgdir}/etc/powerpanel/pwrstatd-email.sh"
+  install -Dm700 script/pwrstatd-email.sh "${pkgdir}/etc/powerpanel/pwrstatd-email.sh"
 
   # Script for hibernate support
-  install -Dm755 "${srcdir}/hibernate.sh" "${pkgdir}/etc/powerpanel/hibernate.sh"
+  install -Dm700 "${srcdir}/hibernate.sh" "${pkgdir}/etc/powerpanel/hibernate.sh"
   ln -s powerpanel/hibernate.sh "${pkgdir}/etc/hibernate.sh"
 
   # Script for shutdown support
-  install -Dm755 "${srcdir}/shutdown.sh" "${pkgdir}/etc/powerpanel/shutdown.sh"
+  install -Dm700 "${srcdir}/shutdown.sh" "${pkgdir}/etc/powerpanel/shutdown.sh"
   ln -s powerpanel/shutdown.sh "${pkgdir}/etc/shutdown.sh"
 
   # Systemd unit
