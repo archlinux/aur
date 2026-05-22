@@ -5,8 +5,8 @@
 _pkgname=hearthstone-linux-gui
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.1.4
-pkgrel=3
+pkgver=0.1.5
+pkgrel=1
 pkgdesc="Native GTK4 desktop manager for installing, updating, logging into, and launching Hearthstone"
 arch=('x86_64')
 url="https://github.com/DawnMagnet/hearthstone-linux-gui"
@@ -14,7 +14,7 @@ license=('MIT')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 provides=("$pkgname")
-conflicts=("$pkgname")
+conflicts=("$pkgname" "$pkgname-bin")
 source_x86_64=(
   "${_appimage}::https://github.com/DawnMagnet/hearthstone-linux-gui/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage"
   "https://raw.githubusercontent.com/DawnMagnet/hearthstone-linux-gui/v${pkgver}/LICENSE"
