@@ -1,8 +1,8 @@
 # Maintainer: x70b1
-pkgname=('hyprland-plugin-borders-plus-plus' 'hyprland-plugin-csgo-vulkan-fix' 'hyprland-plugin-hyprbars' 'hyprland-plugin-hyprexpo' 'hyprland-plugin-hyprfocus' 'hyprland-plugin-hyprscrolling' 'hyprland-plugin-hyprtrails' 'hyprland-plugin-hyprwinwrap' 'hyprland-plugin-xtra-dispatchers')
+pkgname=('hyprland-plugin-borders-plus-plus' 'hyprland-plugin-csgo-vulkan-fix' 'hyprland-plugin-hyprbars' 'hyprland-plugin-hyprfocus')
 pkgbase='hyprland-plugins'
-pkgver='0.53.3'
-pkgrel=2
+pkgver='0.55.2'
+pkgrel=1
 pkgdesc='Official plugins for Hyprland'
 arch=('x86_64' 'aarch64')
 url='https://github.com/hyprwm/hyprland-plugins'
@@ -46,50 +46,10 @@ package_hyprland-plugin-hyprbars() {
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-hyprbars/LICENSE"
 }
 
-package_hyprland-plugin-hyprexpo() {
-    pkgdesc="A Hyprland plugin that adds an expo-like workspace overview"
-
-    cd "$srcdir/$pkgbase/hyprexpo"
-    install -Dm755 hyprexpo.so "$pkgdir/usr/lib/libhyprexpo.so"
-    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-hyprexpo/LICENSE"
-}
-
 package_hyprland-plugin-hyprfocus() {
     pkgdesc="A Hyprland plugin that adds a flashfocus"
 
     cd "$srcdir/$pkgbase/hyprfocus"
     install -Dm755 hyprfocus.so "$pkgdir/usr/lib/libhyprfocus.so"
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-hyprfocus/LICENSE"
-}
-
-package_hyprland-plugin-hyprscrolling() {
-    pkgdesc="A Hyprland plugin that adds a scrolling layout"
-
-    cd "$srcdir/$pkgbase/hyprscrolling"
-    install -Dm755 hyprscrolling.so "$pkgdir/usr/lib/libhyprscrolling.so"
-    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-hyprscrolling/LICENSE"
-}
-
-package_hyprland-plugin-hyprtrails() {
-    pkgdesc="A Hyprland plugin that adds smooth trails behind moving windows"
-
-    cd "$srcdir/$pkgbase/hyprtrails"
-    install -Dm755 hyprtrails.so "$pkgdir/usr/lib/libhyprtrails.so"
-    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-hyprtrails/LICENSE"
-}
-
-package_hyprland-plugin-hyprwinwrap() {
-    pkgdesc="A Hyprland clone of xwinwrap that allows you to put any app as a wallpaper"
-
-    cd "$srcdir/$pkgbase/hyprwinwrap"
-    install -Dm755 hyprwinwrap.so "$pkgdir/usr/lib/libhyprwinwrap.so"
-    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-hyprwinwrap/LICENSE"
-}
-
-package_hyprland-plugin-xtra-dispatchers() {
-    pkgdesc="A Hyprland plugin that adds some additional dispatchers."
-
-    cd "$srcdir/$pkgbase/xtra-dispatchers"
-    install -Dm755 xtra-dispatchers.so "$pkgdir/usr/lib/libxtradispatchers.so"
-    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-xtra-dispatchers/LICENSE"
 }
