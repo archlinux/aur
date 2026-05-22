@@ -3,8 +3,8 @@
 
 # should be renamed to arduino-core-avr to match upstream and Debian.
 pkgname=arduino-avr-core
-pkgver=1.8.7
-pkgrel=3
+pkgver=1.8.8
+pkgrel=1
 pkgdesc="Arduino AVR core with upstream avr-gcc and avrdude"
 arch=('any') # binaries are for avr
 url="https://github.com/arduino/ArduinoCore-avr"
@@ -17,7 +17,7 @@ depends=('avrdude' 'avr-gcc' 'avr-libc')
 makedepends=('git')
 options=(!strip)
 source=("git+$url#tag=$pkgver")
-sha512sums=('f62044fc440445eb7f357bde19512f811441b9b4522a1bde8463342ec1484de2f14ca3692430505d8ce05402532dfa16f403de0a9b249b2d21f6d8285ec4bbaf')
+sha512sums=('fbab58707402f4be5afacb84ff1ee1bc872dc9c23086a3be3d0074de8262a8882d1a2aab015211c5938f0dcca22d7a40fd4c4517e55fcb494d0a9a423a58e36e')
 
 prepare() {
 	cd ArduinoCore-avr
