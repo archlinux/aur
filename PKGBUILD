@@ -14,8 +14,12 @@ source=($_pkgname-$pkgver.tar.gz::https://github.com/stachenov/quazip/archive/v$
 sha256sums=('405b72b6e76c8987ff41a762523b8f64876ba406d8a831d268ee0b63f1369582')
 
 build() {
-  cmake -S $_pkgname-$pkgver -B build -G Ninja -DQUAZIP_QT_MAJOR_VERSION=5 -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -S $_pkgname-$pkgver -B build -G Ninja -DQUAZIP_QT_MAJOR_VERSION=5 -DQUAZIP_ENABLE_TESTS=TRUE -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
