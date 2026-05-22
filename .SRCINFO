@@ -1,6 +1,6 @@
 pkgbase = sqlit
 	pkgdesc = The lazygit of SQL databases - a lightweight TUI for SQL Server, PostgreSQL, MySQL, SQLite, and more
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/Maxteabag/sqlit
 	arch = any
@@ -17,8 +17,7 @@ pkgbase = sqlit
 	depends = python-docker
 	optdepends = python-psycopg2: PostgreSQL, CockroachDB and Supabase support
 	optdepends = python-pyodbc: SQL Server support
-	optdepends = python-pymysql: MySQL support
-	optdepends = python-mariadb-connector: MariaDB support
+	optdepends = python-pymysql: MySQL and MariaDB support
 	optdepends = python-oracledb: Oracle support
 	optdepends = python-duckdb: DuckDB support
 	optdepends = python-clickhouse-connect: ClickHouse support
@@ -29,7 +28,7 @@ pkgbase = sqlit
 	provides = python-sqlit-tui
 	conflicts = python-sqlit-tui
 	replaces = python-sqlit-tui
-	source = https://files.pythonhosted.org/packages/source/s/sqlit-tui/sqlit_tui-1.4.0.tar.gz
-	sha256sums = fc100bb5527aedc14f5d0bbfc46a27bbbacde6e7ff602bc57dd8bbefbe7f68c4
+	source = https://files.pythonhosted.org/packages/source/s/sqlit-tui/sqlit_tui-1.4.1.tar.gz
+	sha256sums = 87a3aa78e2a321cf8bd9984d74fbc1405e91733c1248213b5bba9e0569f5cd7a
 
 pkgname = sqlit
