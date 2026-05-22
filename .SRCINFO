@@ -17,7 +17,7 @@ pkgbase = dicto
 	depends = hicolor-icon-theme
 	optdepends = vulkan-driver: GPU rendering
 	options = !lto
-	source = git+file:///home/mohamad/Projects/mdict-rs
+	source = dicto-0.1.0.tar.gz::https://github.com/mohamadkhani/dicto/archive/refs/tags/v0.1.0.tar.gz
 	b2sums = SKIP
 
 pkgname = dicto

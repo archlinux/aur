@@ -1,5 +1,4 @@
 # Maintainer: Mohammadreza Khani
-# Build from repository root: cd packaging/arch && makepkg -si
 
 pkgname=dicto
 pkgver=0.1.0
@@ -26,24 +25,23 @@ optdepends=(
 )
 options=(!lto)
 
-_repo_root="$(cd "${startdir}/../.." && pwd)"
-source=("git+file://${_repo_root}")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mohamadkhani/dicto/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('SKIP')
 
 build() {
-  cd "$srcdir/mdict-rs"
+  cd "$srcdir/dicto-${pkgver}"
 
-  export CARGO_TARGET_DIR="$srcdir/mdict-rs/target"
+  export CARGO_TARGET_DIR="$srcdir/dicto-${pkgver}/target"
   cargo build --release --package dicto
 }
 
 package() {
-  cd "$srcdir/mdict-rs"
+  cd "$srcdir/dicto-${pkgver}"
 
-  install -Dm755 "$srcdir/mdict-rs/target/release/dicto" \
+  install -Dm755 "$srcdir/dicto-${pkgver}/target/release/dicto" \
     "$pkgdir/usr/bin/dicto"
 
-  install -Dm644 "$startdir/dicto.desktop" \
+  install -Dm644 "$srcdir/dicto-${pkgver}/packaging/arch/dicto.desktop" \
     "$pkgdir/usr/share/applications/dicto.desktop"
 
   install -Dm644 assets/icon.svg \
