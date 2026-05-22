@@ -1,0 +1,16 @@
+pkgbase = placeholder-for-rust
+	pkgdesc = Placeholder package for a local installation of rust
+	pkgver = 1.0
+	pkgrel = 1
+	epoch = 1
+	arch = any
+	provides = rust=1:1.0
+	provides = cargo=1:1.0
+	provides = rustfmt=1:1.0
+	provides = rustup=1:1.0
+	conflicts = rust
+	conflicts = cargo
+	conflicts = rustfmt
+	conflicts = rustup
+
+pkgname = placeholder-for-rust
