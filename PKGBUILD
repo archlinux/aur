@@ -10,17 +10,20 @@ license=("AGPL-3.0-or-later")
 conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-git")
 provides=("$_pkgname=${pkgver/\.r*/}")
 options=(!debug !lto) # Disabled for rust build
-makedepends=(rust 'typescript<6.0.0' libx11 pkg-config git cmake nasm)
+makedepends=(rust pnpm libx11 pkg-config git cmake nasm)
 depends=(cairo dbus gst-plugins-base-libs libdrm libva libxcomposite libxcursor libxinerama libxkbcommon libxrandr libxtst pango ffmpeg)
 optdepends=("gst-plugin-pipewire: Wayland and or pipewire support")
 source=("$_pkgname::git+$url.git" "community.patch")
-sha256sums=("SKIP" "e066e4eeca91540056fb56bb5a8f763abf5c224ee4443212cb02969e0828dfff")
+sha256sums=("SKIP" "89147a45d3357ba4ea5643ecd55546004815b9381c4dbfd46ddf6ed277a102ef")
 
 prepare() {
   export CARGO_HOME=$SRCDEST/.cargo
   export RUSTUP_TOOLCHAIN=stable
   cd "$_pkgname" || return
   patch -Np1 -i ../community.patch
+  # BUG: Arch typescript package is 6.0
+  # FIX: Use locally installed tsc instead
+  pnpm install typescript@5.5.4
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
