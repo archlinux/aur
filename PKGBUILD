@@ -1,6 +1,6 @@
 # Maintainer: DolbyDAX2 <dolbydax2@fatihdurdu.xyz>
 pkgname=llamatray-git
-pkgver=r2.g1760f93 # Bu değer ilk push için taslaktır, makepkg bunu otomatik güncelleyecek
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="PyQt6 based Llama.cpp Tray Manager for Linux"
 arch=('any')
@@ -15,13 +15,6 @@ conflicts=('llamatray')
 # Sabit tar.gz yerine doğrudan projenin ana Git deposunu kaynak alıyoruz
 source=("${pkgname}::git+https://github.com/DolbyDAX2/LlamaTray.git")
 md5sums=('SKIP')
-
-pkgver() {
-    cd "${srcdir}/${pkgname}"
-    # Git geçmişine bakarak otomatik sürüm numarası üretir (Örn: 1.0.0.r15.g2a1r6h8)
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-\)*g/r\1g/;s/-/./g' || \
-    printf "1.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
     cd "${srcdir}/${pkgname}"
