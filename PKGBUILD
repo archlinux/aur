@@ -1,5 +1,5 @@
 pkgname=mark-shot
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Qt 6 Wayland screenshot selection and annotation tool'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('qt6-base' 'qt6-wayland' 'layer-shell-qt' 'grim' 'wl-clipboard')
 makedepends=('cmake' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7c197f321d70c420b4e639a049877175824dc76bf0a15027b61b33de80548f20')
+sha256sums=('13bd459af62500b5f24aecd7605f12c58e042b8ef3022dc461bc04c15f11ca62')
 
 build() {
     cmake -S "${pkgname}-${pkgver}" -B build -G Ninja \
