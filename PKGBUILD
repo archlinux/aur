@@ -1,7 +1,7 @@
 # Maintainer: HitCoder <hitcoder9768@gmail.com>
 
 pkgname=vlabeler-bin
-pkgver=1.3.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Open source voice labeling application'
 arch=('x86_64')
@@ -9,9 +9,9 @@ license=('Apache')
 url='https://github.com/sdercolin/vlabeler'
 depends=('java-runtime=17')
 makedepends=('java-environment=17')
-source=("https://github.com/sdercolin/vlabeler/releases/download/1.3.1/vlabeler-1.3.1-amd64.deb"
+source=("https://github.com/sdercolin/vlabeler/releases/download/1.5.0/vlabeler-1.5.0-amd64.deb"
         "vLabeler.desktop")
-sha256sums=('d11850bb5040a5ca8a01bba62c20652caa7b62175b2b3230eb2321db00bd7771'
+sha256sums=('dbc9b7950ae61c9bcdcd3184bf7c325ea6182ae58452b81986a724397f74fa46'
            'cb3e245702507f620545e1d442792427cdbb8a51d2c6f185238e9d3114398b76')
 
 package() {
