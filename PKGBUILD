@@ -1,7 +1,7 @@
 # Maintainer: Davi Alves Sampaio <davialvessampaio00@gmail.com>
 pkgname=simple-battery-notify
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A customizable, D-Bus driven battery notification daemon and CLI"
 arch=('any')
 url="https://github.com/Davi-S/simple-battery-notify"
