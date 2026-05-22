@@ -3,7 +3,7 @@
 _pkgauthor=noborus
 _pkgname=mdtsql
 pkgname=${_pkgname}-bin
-pkgver=0.1.0
+pkgver=0.2.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Execute SQL to markdown table and convert to other formats"
@@ -20,9 +20,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('0911dab1c834ac0a863f22aa91c7718b725af7962aae537fdbb301b9f71e43a2')
-sha256sums_i686=('d4810bf2ad3bf38e13b9a5b1d5948bb30ca1a2494abeac78437853b851c7ced5')
-sha256sums_aarch64=('ceca8f52e4026a06fd4f2be101e649b958f2e99c898fd80508a32bc4924d8476')
+sha256sums_x86_64=('8313426e00317dccbaf8640d4d9b44b29b62e6f41813fb110452cd38c4d688ed')
+sha256sums_i686=('12e3d379b20c1e080c683df0c58397d4e7491d04673d237b9aec884ef43ae542')
+sha256sums_aarch64=('9463c7a419a992caea146367a0b1d74361da575e9d28ec48ce30825ed9327151')
 
 
 package() {

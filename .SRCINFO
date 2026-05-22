@@ -1,6 +1,6 @@
 pkgbase = mdtsql-bin
 	pkgdesc = Execute SQL to markdown table and convert to other formats
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/noborus/mdtsql
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = mdtsql-bin
 	depends = glibc
 	provides = mdtsql
 	conflicts = mdtsql
-	source_x86_64 = mdtsql-x86_64-0.1.0.tar.gz::https://github.com/noborus/mdtsql/releases/download/v0.1.0/mdtsql_0.1.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 0911dab1c834ac0a863f22aa91c7718b725af7962aae537fdbb301b9f71e43a2
-	source_i686 = mdtsql-i686-0.1.0.tar.gz::https://github.com/noborus/mdtsql/releases/download/v0.1.0/mdtsql_0.1.0_Linux_i386.tar.gz
-	sha256sums_i686 = d4810bf2ad3bf38e13b9a5b1d5948bb30ca1a2494abeac78437853b851c7ced5
-	source_aarch64 = mdtsql-aarch64-0.1.0.tar.gz::https://github.com/noborus/mdtsql/releases/download/v0.1.0/mdtsql_0.1.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = ceca8f52e4026a06fd4f2be101e649b958f2e99c898fd80508a32bc4924d8476
+	source_x86_64 = mdtsql-x86_64-0.2.0.tar.gz::https://github.com/noborus/mdtsql/releases/download/v0.2.0/mdtsql_0.2.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8313426e00317dccbaf8640d4d9b44b29b62e6f41813fb110452cd38c4d688ed
+	source_i686 = mdtsql-i686-0.2.0.tar.gz::https://github.com/noborus/mdtsql/releases/download/v0.2.0/mdtsql_0.2.0_Linux_i386.tar.gz
+	sha256sums_i686 = 12e3d379b20c1e080c683df0c58397d4e7491d04673d237b9aec884ef43ae542
+	source_aarch64 = mdtsql-aarch64-0.2.0.tar.gz::https://github.com/noborus/mdtsql/releases/download/v0.2.0/mdtsql_0.2.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9463c7a419a992caea146367a0b1d74361da575e9d28ec48ce30825ed9327151
 
 pkgname = mdtsql-bin
