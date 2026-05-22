@@ -1,10 +1,10 @@
 pkgbase = pacman-bulk-rns
 	pkgdesc = Nordix pacman wrapper - Search and bulk remove package
-	pkgver = 1.0
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/jimmykallhagen/pacman-bulk-Rns.git
 	arch = any
-	license = GPL v3 or later
+	license = GPL3
 	depends = bash
 	depends = git
 	depends = base-devel

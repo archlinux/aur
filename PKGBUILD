@@ -15,12 +15,12 @@
 #   ##=================================================================##
 
 pkgname=pacman-bulk-rns
-pkgver=1.0
+pkgver=0
 pkgrel=1
 pkgdesc="Nordix pacman wrapper - Search and bulk remove package"
 arch=('any')
 url="https://github.com/jimmykallhagen/pacman-bulk-Rns.git"
-license=('GPL v3 or later')
+license=('GPL3')
 depends=('bash' 'git' 'base-devel')
 conflicts=('Microsoft-Windows')
 provides=('pacman-bulk-Rns')
