@@ -22,6 +22,6 @@ pkgbase = plasma6-applets-quickbar
 	depends = kirigami
 	optdepends = dolphin: Finder-style desktop menu (Dolphin menu bar on desktop)
 	source = https://github.com/kevinbudz/quickbar/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = 984e17d580aa6ad80abd32f313fb38d8a1458b7c3e7b63007f3b40f846d27962
 
 pkgname = plasma6-applets-quickbar
