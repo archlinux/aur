@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Templar Arena
+Comment=90s-inspired multiplayer arena shooter
+Exec=templar-arena
+Icon=templar-arena
+Terminal=false
+Type=Application
+Categories=Game;ActionGame;

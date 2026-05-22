@@ -1,0 +1,19 @@
+pkgbase = templar-arena-bin
+	pkgdesc = 90s-inspired free-to-play multiplayer arena shooter set in a dark fantasy world
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://magic-squirrel-games.itch.io/templar-arena-pre-release-v01
+	arch = x86_64
+	license = custom
+	depends = libgl
+	depends = libx11
+	depends = libxcursor
+	options = !strip
+	source = templar-arena-v0.1.2-linux.zip::https://github.com/taxin-404/templar-arena-bin/releases/download/v0.1.2/templar-arena-v0.1.2-linux.zip
+	source = templar-arena.png
+	source = templar-arena.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = templar-arena-bin
