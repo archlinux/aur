@@ -1,0 +1,24 @@
+pkgbase = wal-qt
+	pkgdesc = Qt6 WebEngine Wayland wallpaper host driven by an HTTP control socket (ships wal-qt-host and wal-qt CLI)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/0bCdian/wal-qt
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = go
+	makedepends = git
+	depends = qt6-webengine
+	depends = qt6-webchannel
+	depends = layer-shell-qt
+	depends = pipewire
+	depends = hicolor-icon-theme
+	provides = wal-qt
+	conflicts = wal-qt-git
+	source = wal-qt-0.1.0.tar.gz::https://github.com/0bCdian/wal-qt/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 559ea1fd692c24fcf316b2eefbed463445e62a72ea6a33201481413cf8f9e1de
+
+pkgname = wal-qt
