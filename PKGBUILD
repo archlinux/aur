@@ -15,9 +15,9 @@ source=(
     "mps.service"
 )
 sha256sums=(
-    '16ed1c5509c97fdade85546de91fd4a554c1019cb2e0d2bea7ff8294109fdfa4'
+    '38d92f0d9f69e572a92d80c15fc22da2cacaf3f1c7df81c6e98854312352962f'
     # Local repo-tracked sidecar file; checksum is intentionally unmanaged in CI.
-    '16ed1c5509c97fdade85546de91fd4a554c1019cb2e0d2bea7ff8294109fdfa4'
+    '38d92f0d9f69e572a92d80c15fc22da2cacaf3f1c7df81c6e98854312352962f'
 )
 
 prepare() {
