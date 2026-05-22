@@ -1,7 +1,7 @@
 pkgbase = simple-battery-notify
 	pkgdesc = A customizable, D-Bus driven battery notification daemon and CLI
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Davi-S/simple-battery-notify
 	arch = any
 	license = GPL3
