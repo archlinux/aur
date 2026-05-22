@@ -1,0 +1,17 @@
+pkgbase = aur-taw
+	pkgdesc = A minimalist, RAM-safe, opt-in AUR helper written in pure bash
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Costa-exe/aur-taw
+	arch = any
+	license = MIT
+	depends = bash
+	depends = pacman
+	depends = git
+	depends = curl
+	depends = jq
+	depends = less
+	source = aur-taw-1.0.0.tar.gz::https://github.com/Costa-exe/aur-taw/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = b1ca8a33008b41503d702bee06664382e2c34d250154bc357bebf67897bb745c
+
+pkgname = aur-taw
