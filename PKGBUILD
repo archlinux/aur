@@ -8,7 +8,7 @@ license=('MIT')
 depends=('qt6-base' 'qt6-wayland' 'layer-shell-qt' 'grim' 'wl-clipboard')
 makedepends=('cmake' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('13bd459af62500b5f24aecd7605f12c58e042b8ef3022dc461bc04c15f11ca62')
+sha256sums=('52c3f6af7494c4995d6cb659affdce33961c3a4a9fb88433a7b2b466d6a0eb09')
 
 build() {
     cmake -S "${pkgname}-${pkgver}" -B build -G Ninja \
