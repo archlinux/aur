@@ -15,7 +15,7 @@
 #   ##=================================================================##
 
 pkgname=pacman-bulk-rns
-pkgver=0
+pkgver=1.0
 pkgrel=1
 pkgdesc="Nordix pacman wrapper - Search and bulk remove package"
 arch=('any')
