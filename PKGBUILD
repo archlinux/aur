@@ -1,8 +1,8 @@
 # Maintainer: Mohammadreza Khani
 
 pkgname=dicto-bin
-pkgver=0.1.3
-pkgrel=4
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="Minimal native dictionary app for MDX/MDD files"
 arch=('x86_64')
 url="https://github.com/mohamadkhani/dicto"
@@ -11,6 +11,7 @@ depends=(
   'gtk3'
   'alsa-lib'
   'libxkbcommon'
+  'xdotool'
   'hicolor-icon-theme'
 )
 optdepends=(
@@ -19,7 +20,7 @@ optdepends=(
 )
 provides=('dicto')
 conflicts=('dicto')
-source_x86_64=("https://github.com/logi-camp/dicto/releases/download/v${pkgver}/dicto-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+source_x86_64=("https://github.com/mohamadkhani/dicto/releases/download/v${pkgver}/dicto-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 b2sums_x86_64=('SKIP')
 
 package() {
