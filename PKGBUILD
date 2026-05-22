@@ -6,8 +6,8 @@
 
 pkgname=qgpgme-qt5
 _pkgbase=gpgme
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Qt5 bindings for GPGme"
 arch=('x86_64')
 url='https://gnupg.org/software/gpgme/index.html'
@@ -20,8 +20,8 @@ depends=(gcc-libs
          qt5-base)
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA'  # Werner Koch (dist signing 2020)
               'AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD') # Niibe Yutaka (GnuPG Release Key)
-source=(git+https://dev.gnupg.org/source/gpgmeqt#tag=gpgmeqt-$pkgver)
-sha256sums=('d48db1e5c6cb36eeff4379169a9a7558da8e134a5ce6b88409ecbc70e3183afc')
+source=(git+https://github.com/gpg/gpgmeqt#tag=gpgmeqt-$pkgver)
+sha256sums=('2601b9fafa0b974768d24112613d839e1b6828ec5a7f2fb8b02fb601fcef6e39')
 
 build() {
   cmake -B build -S gpgmeqt \
