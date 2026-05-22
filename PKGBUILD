@@ -17,9 +17,9 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mp-keygen.tar.gz")
 source_x86_64=("mp-keygen-x86_64::${_base}/mp-keygen-x86_64-unknown-linux-musl")
 source_aarch64=("mp-keygen-aarch64::${_base}/mp-keygen-aarch64-unknown-linux-musl")
-sha256sums=('96c5f1d69e8df549c0ea7ae22c02efc66638de1cdd9cf0ee352284b6e70ac9a8')
-sha256sums_x86_64=('52db1b07929f4ae7eed3fa9936d31801664cd0264bd4ab6946f402b3f319d288')
-sha256sums_aarch64=('8e112c6ef3a5ce5299d14341578b54f55fad62089251d1464d99c9be234733cd')
+sha256sums=('4de2a63136e04c4cdb5fccadf64aa0aae83cd796eb00381bfd020fc1894a7aae')
+sha256sums_x86_64=('0f24eb2e5a339426606ba3a56599875bea2a8cd869c472e6d28c23aeab64fd7d')
+sha256sums_aarch64=('8381ec508c9dae515023c4cc9b8dcf995fa53a2a4a24a14f468be13301aea235')
 
 package() {
     install -Dm755 "mp-keygen-${CARCH}" "$pkgdir/usr/bin/mp-keygen"
