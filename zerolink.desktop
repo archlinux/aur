@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Zerolink
+Comment=Secure P2P Messenger
+Exec=EXEC -gui
+Icon=zerolink
+Terminal=false
+Type=Application
+Categories=Network;Chat;InstantMessaging;
