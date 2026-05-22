@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=libpldm-git
-pkgver=0.15.0.r46.g969fe63
+pkgver=0.15.0.r97.g6104805
 pkgrel=1
 epoch=
 pkgdesc="This is a library which deals with the encoding and decoding of PLDM messages."
@@ -45,6 +45,7 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    sed -i '/^#include "environ\/time.h"$/a #include <climits>' "${srcdir}/${pkgname}/tests/unit/transport/send_recv_one.cpp"
 }
 
 build() {
