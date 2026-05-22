@@ -1,0 +1,33 @@
+[Unit]
+Description=Telegram XMPP gateway
+After=network.target
+Wants=network.target
+#Requires=prosody.service
+
+[Service]
+Type=simple
+User=slidge
+Group=slidge
+UMask=0027
+DynamicUser=yes
+RuntimeDirectory=slidgram
+StateDirectory=slidgram
+
+Environment=PYTHONPATH=/opt/slidgram/usr/lib/python3.14/site-packages/
+ExecStart=/opt/slidgram/usr/bin/slidgram -c /etc/slidgram.ini
+
+StandardOutput=journal
+StandardError=journal
+ProtectSystem=strict
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+PrivateTmp=true
+MountFlags=private
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target

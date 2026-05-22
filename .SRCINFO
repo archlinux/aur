@@ -1,0 +1,20 @@
+pkgbase = slidgram
+	pkgdesc = A feature-rich Telegram to XMPP puppeteering gateway, based on slidge and Pyrofork.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://codeberg.org/slidge/slidgram
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	backup = etc/slidgram.ini
+	source = slidgram-0.3.1.tar.gz::https://codeberg.org/slidge/slidgram/archive/v0.3.1.tar.gz
+	source = https://codeberg.org/slidge/slidge/raw/tag/v0.3.1/dev/confs/slidge-example.ini
+	source = slidgram.service
+	md5sums = cf71d151b8296790bb7d9f8edaf4aa17
+	md5sums = d44db4d0f3adc01f2fd43db7cbed1d40
+	md5sums = dca29fcd84011b5c5b8ddf6ff421b827
+
+pkgname = slidgram

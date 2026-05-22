@@ -1,0 +1,4 @@
+[slidgram]
+source = "git"
+git = "https://codeberg.org/slidge/slidgram.git"
+prefix = "v"
