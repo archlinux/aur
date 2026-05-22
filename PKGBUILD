@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-keygen
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Asymmetric key generation and inspection tool for moshpit"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT' 'Apache-2.0')
 depends=()
 makedepends=('cargo' 'cmake' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/moshpit/archive/v$pkgver.tar.gz")
-sha256sums=('c07f838abbf815ea9c2de6d194e93bfaa01f11b5462285bce85ac015a3b0f920')
+sha256sums=('e313af5f66fbbafae599357d585f39001165f73a1319a40135fa15620535178d')
 
 prepare() {
     cd "moshpit-$pkgver"
