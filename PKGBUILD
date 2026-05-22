@@ -2,8 +2,8 @@
 
 _pkgbase=unsloth
 pkgname="$_pkgbase"
-pkgver=0.1.39.beta
-pkgrel=3
+pkgver=0.1.41.beta
+pkgrel=1
 pkgdesc='Web UI for training and running open models locally'
 arch=('x86_64')
 url='https://github.com/unslothai/unsloth'
@@ -28,7 +28,7 @@ source=(
 	"$_pkgbase::git+https://github.com/unslothai/unsloth.git#tag=v${pkgver/.beta/-beta}"
 	"unsloth-setup"
 )
-sha256sums=('d3b04de1e5611421ef210dc06c5bb665edd312fc37e4916925a6a4e41d48a321'
+sha256sums=('a5f05790dadb0fde2abdac9ddbccd36ce1f5bdc9b9435ce6497dd2527675acfe'
             '14444b022bd50269d474df655e74c3309959c1bd312214b7b431ed341b26a222')
 
 build() {
