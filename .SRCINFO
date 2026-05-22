@@ -1,0 +1,24 @@
+pkgbase = synkromium-git
+	pkgdesc = Keep your Chromium browser settings and extensions in sync across all your devices, privately and automatically.
+	pkgver = 0.1.4.r1.g640bd5b
+	pkgrel = 1
+	url = https://github.com/tokitauhid/Synkromium
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = nodejs
+	depends = nss
+	depends = libxss
+	depends = libsecret
+	depends = gtk3
+	depends = alsa-lib
+	provides = synkromium
+	conflicts = synkromium
+	conflicts = synkromium-bin
+	source = git+https://github.com/tokitauhid/Synkromium.git
+	source = synkromium.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = synkromium-git

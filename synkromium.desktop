@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Synkromium
+Comment=Keep your Chromium browser settings and extensions in sync across all your devices, privately and automatically.
+Exec=synkromium %U
+Terminal=false
+Type=Application
+Icon=synkromium
+Categories=Utility;
