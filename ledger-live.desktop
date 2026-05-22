@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Ledger Wallet
+GenericName=Crypto Hardware Wallet Client
+Comment=Official Ledger Wallet desktop application - securely manage your crypto assets
+Exec=ledger-live %U
+Icon=ledger-live
+Terminal=false
+StartupNotify=true
+Categories=Office;Finance;Utility;
+MimeType=x-scheme-handler/ledgerlive;x-scheme-handler/ledger;
+Keywords=ledger;crypto;bitcoin;wallet;hardware;
+StartupWMClass=Ledger Wallet

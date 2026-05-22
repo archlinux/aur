@@ -1,0 +1,11 @@
+post_install() {
+  echo ">>> Ledger Wallet installed successfully."
+  echo ">>> Launch with: ledger-live"
+  echo ">>> To use your Ledger hardware device, install udev rules:"
+  echo ">>>   sudo pacman -S ledger-udev"
+  update-desktop-database -q
+}
+
+post_upgrade() {
+  post_install
+}

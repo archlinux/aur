@@ -1,0 +1,23 @@
+pkgbase = ledger-live-client-bin
+	pkgdesc = Official Ledger Wallet desktop application (client-bin, verified with clean chroot + ldd checks)
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://www.ledger.com/ledger-wallet
+	arch = x86_64
+	license = custom:MIT
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	optdepends = udev: Ledger hardware device access (recommended)
+	optdepends = libusb: Alternative hardware access
+	provides = ledger-live
+	provides = ledger-live-desktop
+	conflicts = ledger-live
+	conflicts = ledger-live-bin
+	conflicts = ledger-live-desktop
+	source = ledger-live-desktop-4.4.0-linux-x86_64.AppImage::https://download.live.ledger.com/ledger-live-desktop-4.4.0-linux-x86_64.AppImage
+	source = ledger-live.desktop
+	sha512sums = Wd6/tUJQYyUgAftczw5Dh0RDhkVuz8HRM+T+wPo3VEGuFo0Q5bdPfHUSz+dWUgbxINrJF31JPBs5Xus4vPigNg==
+	sha512sums = SKIP
+
+pkgname = ledger-live-client-bin
