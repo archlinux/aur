@@ -1,6 +1,6 @@
 pkgbase = pulsesync-bin
 	pkgdesc = PulseSync desktop app
-	pkgver = 2.15.1
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://pulsesync.dev
 	install = pulsesync-bin.install
@@ -23,7 +23,7 @@ pkgbase = pulsesync-bin
 	source = pulsesync.xml
 	sha256sums = 40712fd6e126ebe51de9f7aaa055c044390ab18ab3984048419b7f20c7df9410
 	sha256sums = fb0b48d037e98bdd70c3a5cf0f9587df0a72450245c786f6da80525523c982e1
-	source_x86_64 = pulsesync-app-2.15.1-beta-linux-x64.tar.gz::https://s3.pulsesync.dev/builds/app/beta/pulsesync-app-2.15.1-beta-linux-x64.tar.gz
-	sha256sums_x86_64 = 23a40f82404e5ede0fcdc061ef5422ce0eeba3c0148afb5e2fd8f39aae728556
+	source_x86_64 = pulsesync-app-2.16.0-beta-linux-x64.tar.gz::https://s3.pulsesync.dev/builds/app/beta/pulsesync-app-2.16.0-beta-linux-x64.tar.gz
+	sha256sums_x86_64 = 5283412de2d9bb3d342a782006c5e01f50fb6b18bded93656f54f4af274adefa
 
 pkgname = pulsesync-bin
