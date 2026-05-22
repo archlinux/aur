@@ -1,0 +1,23 @@
+pkgbase = psleep-bin
+	pkgdesc = A tiny, fast CLI utility written in Rust that works just like sleep but shows a live progress bar
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/Yesh-02/psleep
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = psleep
+	conflicts = psleep
+	options = !strip
+	source = README-0.2.4.md::https://raw.githubusercontent.com/Yesh-02/psleep/v0.2.4/README.md
+	source = LICENSE-0.2.4::https://raw.githubusercontent.com/Yesh-02/psleep/v0.2.4/LICENSE
+	sha256sums = bc81b7eed54e780e83b4664840ef84ab25f54e6deb616d363fa2ce517a8946b6
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = psleep-x86_64-0.2.4.tgz::https://github.com/Yesh-02/psleep/releases/download/v0.2.4/psleep-v0.2.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 150968133de4b8ea23ee754c5a9a54b808d74e3c78af89150dbbe8baf1b04c97
+	source_aarch64 = psleep-aarch64-0.2.4.tgz::https://github.com/Yesh-02/psleep/releases/download/v0.2.4/psleep-v0.2.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2bba8f7ce703365b0ddd104808bd04360a3de66b6dc0f457e481ac516320796a
+
+pkgname = psleep-bin

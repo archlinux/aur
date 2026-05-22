@@ -1,0 +1,5 @@
+[psleep-bin]
+source = "github"
+github = "Yesh-02/psleep"
+use_latest_release = true
+prefix = "v"
