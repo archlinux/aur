@@ -1,0 +1,31 @@
+pkgbase = maybar-git
+	pkgdesc = Simplistic and highly configurable status panel for Wayland (fork of yambar)
+	pkgver = 1.11.0.r112.ga0ebf48
+	pkgrel = 1
+	url = https://codeberg.org/mathstuf/maybar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
+	makedepends = tllist>=1.0.1
+	depends = wayland
+	depends = pixman
+	depends = libyaml
+	depends = alsa-lib
+	depends = json-c
+	depends = libmpdclient
+	depends = libpulse
+	depends = pipewire
+	depends = curl
+	depends = fcft>=3.0.0
+	depends = fcft<4.0.0
+	provides = maybar
+	conflicts = maybar
+	options = !debug
+	source = git+https://codeberg.org/mathstuf/maybar.git
+	sha256sums = SKIP
+
+pkgname = maybar-git
