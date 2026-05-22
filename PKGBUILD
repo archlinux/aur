@@ -25,7 +25,7 @@ conflicts=('Microsoft-Windows')
 provides=('nordix-cli-arch')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
   git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
