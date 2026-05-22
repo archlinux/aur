@@ -1,7 +1,7 @@
 # Maintainer: João Dias <joaovodias at gmail dot com>
 # SPDX-FileCopyrightText: 2026 João Dias <joaovodias at gmail dot com>
 #
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: 0BSD
 
 
 pkgname="colorshell-git"
