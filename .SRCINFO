@@ -1,6 +1,6 @@
 pkgbase = roseate-bin
 	pkgdesc = 🌹 A fancy yet simple image viewer — highly configurable, cross-platform, GPU-accelerated and fast.
-	pkgver = 0.1.0.alpha.21
+	pkgver = 0.1.0.alpha.22
 	pkgrel = 1
 	url = https://github.com/cloudy-org/roseate
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = roseate-bin
 	depends = glibc
 	provides = roseate
 	conflicts = roseate
-	source = roseate::https://github.com/cloudy-org/roseate/releases/download/v0.1.0-alpha.21/roseate-linux-x86_64
+	source = roseate::https://github.com/cloudy-org/roseate/releases/download/v0.1.0-alpha.22/roseate-linux-x86_64
 	source = roseate.png::https://github.com/cloudy-org/roseate/blob/main/app/assets/rose_emojis/google_noto.png?raw=true
 	source = roseate.desktop::https://raw.githubusercontent.com/cloudy-org/roseate/refs/heads/main/app/assets/roseate.desktop
-	sha256sums = 7e8ebdfb9d43ad25617196e6705b35769bb22bb15ec0de331547cc4cdff069a4
+	sha256sums = 7c3fa3a75df98bc6f9fa21b78a0bbb53e1febafa573f4cd4d277d1f20eee4a59
 	sha256sums = 168c0217ee4dd6c6d9ddea1c3c3452df99a0bae16c7d97e85a34977e09556e60
-	sha256sums = d069ce62715dc57ee50542ceab83ebc25dac4f302f08c3c697be32c95df2d728
+	sha256sums = 895a52c3ecd71cbabd4e4e2f8f1b40529571acf9406b5d8c68cb5d3ab741ab72
 
 pkgname = roseate-bin
