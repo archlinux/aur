@@ -1,7 +1,7 @@
 pkgbase = animecix-desktop
 	pkgdesc = Animecix Desktop Application
 	pkgver = 0.1.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CaptainSP/animecix-desktop-2
 	arch = x86_64
 	license = MIT

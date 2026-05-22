@@ -2,7 +2,7 @@
 
 pkgname=animecix-desktop
 pkgver=0.1.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Animecix Desktop Application"
 arch=('x86_64')
 url="https://github.com/CaptainSP/animecix-desktop-2"
