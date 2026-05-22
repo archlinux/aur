@@ -24,6 +24,11 @@ depends=('bash' 'git' 'base-devel')
 conflicts=('Microsoft-Windows')
 provides=('nordix-cli-arch')
 
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 _pkgsrc="nordix-cli-arch"
 source=("$_pkgsrc::git+$url")
 sha256sums=('SKIP')
