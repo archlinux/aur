@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Sergey A <murlakatamenka@disroot.org>
 pkgname=falcond
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="Advanced Linux gaming performance daemon"
 arch=('x86_64')
@@ -14,12 +14,15 @@ depends=(
   'sudo'
 )
 makedepends=('zig>=0.16.0')
-optdepends=('scx-tools: SCX Scheduler Integration')
+optdepends=(
+  'dmemcg-booster: dmem cgroup profile protection'
+  'scx-tools: SCX Scheduler Integration'
+)
 conflicts=('gamemode')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('0e8568af552f2f4e8d3c1c77f8e34b5f0ffc8fc8da65b09fb0558ae7e4b1ae39')
+sha256sums=('eb02f777d316fa3c146bb4fc7093a830f491133bc2de0823b653dd6e92345a7c')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
