@@ -1,6 +1,6 @@
 pkgbase = xenon-mdt
 	pkgdesc = A Mindustry Launcher built on the HMCL UI - supports 5 client variants, mods, saves, servers and ScriptAgent
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/DeterMination-Wind/Xenon
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = xenon-mdt
 	depends = java-runtime>=17
 	depends = java-openjfx>=17
 	optdepends = xdg-utils: for opening URLs and files
-	source = xenon-mdt-0.1.0.jar::https://github.com/DeterMination-Wind/Xenon/releases/download/v0.1.0/Xenon-0.1.0.jar
+	source = xenon-mdt-0.2.0.jar::https://github.com/DeterMination-Wind/Xenon/releases/download/v0.2.0/Xenon-0.2.0.jar
 	sha256sums = SKIP
 
 pkgname = xenon-mdt
