@@ -25,3 +25,4 @@ package() {
     # Install the systemd user service
     install -Dm644 "battery-notify.service" "$pkgdir/usr/lib/systemd/user/battery-notify.service"
 }
+
