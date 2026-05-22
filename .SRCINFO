@@ -1,6 +1,6 @@
 pkgbase = config-file-validator
 	pkgdesc = A tool to validate the syntax and schema of configuration files
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/Boeing/config-file-validator
 	arch = x86_64
