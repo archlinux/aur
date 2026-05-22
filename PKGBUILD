@@ -11,7 +11,7 @@ depends=('python' 'python-gobject' 'python-pydbus' 'libnotify' 'upower')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Davi-S/simple-battery-notify/archive/refs/tags/${pkgver}.tar.gz")
 
 # Remember to run updpkgsums or makepkg -g to replace this SKIP!
-sha256sums=('da0c7b204f6866148145c96730d3db2922444ff6ed8ac9bfb550977f39e17bfb')
+sha256sums=('83120fd2300030d1e042c421daa783636f512fec436b1886e3c4d72b1352058a')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"

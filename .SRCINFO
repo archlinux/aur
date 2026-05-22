@@ -11,6 +11,6 @@ pkgbase = simple-battery-notify
 	depends = libnotify
 	depends = upower
 	source = simple-battery-notify-1.0.3.tar.gz::https://github.com/Davi-S/simple-battery-notify/archive/refs/tags/1.0.3.tar.gz
-	sha256sums = da0c7b204f6866148145c96730d3db2922444ff6ed8ac9bfb550977f39e17bfb
+	sha256sums = 83120fd2300030d1e042c421daa783636f512fec436b1886e3c4d72b1352058a
 
 pkgname = simple-battery-notify
