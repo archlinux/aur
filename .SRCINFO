@@ -1,0 +1,9 @@
+pkgbase = placeholder-for-go
+	pkgdesc = Placeholder package for a local installation of go
+	pkgver = 1.0
+	pkgrel = 1
+	epoch = 1
+	arch = any
+	provides = go
+
+pkgname = placeholder-for-go
