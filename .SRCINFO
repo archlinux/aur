@@ -1,6 +1,6 @@
 pkgbase = qmd
 	pkgdesc = On-device search engine for markdown files with BM25, vector, and LLM-powered search
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/tobi/qmd
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = qmd
 	depends = libgcc
 	optdepends = vulkan-icd-loader: GPU-accelerated inference via Vulkan backend
 	options = !debug
-	source = qmd-2.5.1.tgz::https://registry.npmjs.org/@tobilu/qmd/-/qmd-2.5.1.tgz
-	sha256sums = c701cc9a92eff7346ecb041ea053831efd705a176bbdc9727e43c4dfa1a4ec44
+	source = qmd-2.5.2.tgz::https://registry.npmjs.org/@tobilu/qmd/-/qmd-2.5.2.tgz
+	sha256sums = 5f09786cff19e7c5c8e3fa51035649bc18018d642cfeb60a32260de708e6ecc5
 
 pkgname = qmd

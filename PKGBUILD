@@ -2,7 +2,7 @@
 
 pkgname=qmd
 _npmname="@tobilu/qmd"
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="On-device search engine for markdown files with BM25, vector, and LLM-powered search"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('npm' 'patchelf')
 optdepends=('vulkan-icd-loader: GPU-accelerated inference via Vulkan backend')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/qmd-${pkgver}.tgz")
-sha256sums=('c701cc9a92eff7346ecb041ea053831efd705a176bbdc9727e43c4dfa1a4ec44')
+sha256sums=('5f09786cff19e7c5c8e3fa51035649bc18018d642cfeb60a32260de708e6ecc5')
 
 latestver() {
   curl -s "https://registry.npmjs.org/${_npmname}" | jq -r '.["dist-tags"].latest'
