@@ -2,15 +2,16 @@
 
 _pkgbase='nsproxy'
 pkgname="${_pkgbase}-git"
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='A tool to force applications to use a specific SOCKS5 or HTTP proxy (git version to track dev branch)'
 url="https://github.com/nlzy/${_pkgbase}"
 license=('GPL-2.0-or-later')
 source=("git+${url}.git#branch=dev")
 sha256sums=('SKIP')
-arch=('any')
-makedepends=('cmake' 'linux-api-headers')
+arch=('x86_64' 'aarch64')
+depends=('glibc')
+makedepends=('cmake' 'linux-api-headers' 'git')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}=${pkgver}")
 
