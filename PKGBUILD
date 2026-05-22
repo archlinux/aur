@@ -2,7 +2,7 @@
 
 pkgname=dicto-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal native dictionary app for MDX/MDD files"
 arch=('x86_64')
 url="https://github.com/mohamadkhani/dicto"
@@ -19,7 +19,7 @@ optdepends=(
 )
 provides=('dicto')
 conflicts=('dicto')
-source_x86_64=("https://github.com/mohamadkhani/dicto/releases/download/v${pkgver}/dicto-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+source_x86_64=("https://github.com/mohamadkhani/dicto/releases/download/v${pkgver}/dicto-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 b2sums_x86_64=('SKIP')
 
 package() {
