@@ -1,6 +1,6 @@
 pkgbase = decibell-bin
 	pkgdesc = Decentralized text, voice chat, and streaming app
-	pkgver = 0.6.7
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://github.com/sunkhan/decibell
 	arch = x86_64
@@ -13,11 +13,16 @@ pkgbase = decibell-bin
 	depends = libsecret
 	depends = pipewire
 	depends = libpipewire
+	depends = libva
+	depends = libvdpau
+	depends = libdrm
+	depends = opus
+	optdepends = nvidia-utils: NVENC hardware video encoding for screen sharing (libnvidia-encode, dlopened at runtime)
 	provides = decibell
 	conflicts = decibell
 	conflicts = decibell-git
 	options = !strip
-	source = decibell-0.6.7.pacman::https://github.com/sunkhan/decibell/releases/download/ev0.6.7/Decibell-0.6.7-x64.pacman
+	source = decibell-0.6.8.pacman::https://github.com/sunkhan/decibell/releases/download/ev0.6.8/Decibell-0.6.8-x64.pacman
 	sha256sums = SKIP
 
 pkgname = decibell-bin

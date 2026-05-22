@@ -6,7 +6,7 @@
 # electron-builder produces in CI.
 pkgname=decibell-bin
 _pkgname=decibell
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="Decentralized text, voice chat, and streaming app"
 arch=('x86_64')
@@ -21,6 +21,14 @@ depends=(
     'libsecret'
     'pipewire'
     'libpipewire'
+    # Native stream encoder (static FFmpeg) runtime libs: VAAPI stack + opus.
+    'libva'
+    'libvdpau'
+    'libdrm'
+    'opus'
+)
+optdepends=(
+    'nvidia-utils: NVENC hardware video encoding for screen sharing (libnvidia-encode, dlopened at runtime)'
 )
 provides=('decibell')
 conflicts=('decibell' 'decibell-git')
