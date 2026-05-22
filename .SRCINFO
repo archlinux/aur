@@ -21,7 +21,8 @@ pkgbase = ender-dots
 	optdepends = python: For custom scripts (OCR, Spotify, etc.)
 	optdepends = manga-ocr: Japanese OCR scripts
 	optdepends = ffmpeg: Audio playback for TTS scripts
-	source = ender-dots-2026.05.19.tar.gz::https://github.com/kurojs/EnderDots/archive/master.tar.gz
+	optdepends = go: Build installer from source
+	source = main.tar.gz::https://github.com/kurojs/EnderDots/archive/main.tar.gz
 	sha256sums = SKIP
 
 pkgname = ender-dots

@@ -26,18 +26,19 @@ optdepends=(
   'python: For custom scripts (OCR, Spotify, etc.)'
   'manga-ocr: Japanese OCR scripts'
   'ffmpeg: Audio playback for TTS scripts'
+  'go: Build installer from source'
 )
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kurojs/EnderDots/archive/master.tar.gz")
+source=("main.tar.gz::https://github.com/kurojs/EnderDots/archive/main.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/EnderDots-master/installer"
+  cd "$srcdir/EnderDots-main/installer"
   go build -o ender-dots-installer -ldflags="-s -w" .
 }
 
 package() {
-  cd "$srcdir/EnderDots-master"
+  cd "$srcdir/EnderDots-main"
 
   install -dm755 "$pkgdir/usr/share/$pkgname/.config"
   install -dm755 "$pkgdir/usr/share/$pkgname/.local"
