@@ -1,6 +1,6 @@
 # Maintainer: Ondrej Polak <ondrej.polak@cloudylake.io>
 pkgname=nook-beta-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Nook beta desktop app"
 arch=('x86_64')
@@ -11,8 +11,8 @@ optdepends=('libpulse: PulseAudio audio support'
             'alsa-lib: ALSA audio support')
 provides=('nook')
 conflicts=('nook' 'nook-bin')
-source=("nook-${pkgver}.AppImage::https://nook.cloudylake.io/download/nook-0.1.0-linux.AppImage")
-sha256sums=("170970e194cac3cd6b7dd30802733cd5294c40f1b2304cc1521d3b6af4bf04d0")
+source=("nook-${pkgver}.AppImage::https://nook.cloudylake.io/download/nook-0.1.1-linux.AppImage")
+sha256sums=("90d563c52e9db1139be98babc07bed64e63116a873282822aa0381d14662747e")
 
 package() {
     install -Dm755 "nook-${pkgver}.AppImage" "${pkgdir}/opt/nook/nook.AppImage"
