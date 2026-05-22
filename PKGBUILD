@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=falcond-gui
 _app_id=com.pikaos.falcondgui
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="A GTK4/LibAdwaita application to control and monitor the Falcond gaming optimization daemon."
 arch=('x86_64')
 url="https://git.pika-os.com/custom-gui-packages/falcond-gui"
@@ -15,7 +15,7 @@ depends=(
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('11ea44718e44701ef6e36e626d3d804273e670252cd7cb3eea49d762978c1914')
+sha256sums=('2505d365bbccf3a4d170c4ba333aa4378b699520232411ceb2193cd10474b913')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
@@ -23,7 +23,7 @@ prepare() {
 
   cd "$pkgname-$pkgver/$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
