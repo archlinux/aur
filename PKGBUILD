@@ -2,10 +2,8 @@
 : ${aur_llamacpp_build_universal:=false}
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b9276.r6.4f0e43da6f
-pkgrel=1
-_build_number=0
-_commit_id=
+pkgver=b9279.r3.4f0e43da6f
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
 url='https://github.com/ggml-org/llama.cpp'
@@ -67,14 +65,6 @@ pkgver() {
   printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-prepare() {
-  cd "${_pkgname}" || exit
-  # Get the latest commit hash
-  _commit_id=$(git rev-parse HEAD)
-  _build_number=$(git rev-list --count HEAD)
-  cd ..
-}
-
 build() {
   if ! type -P nvcc &>/dev/null && [[ -d /opt/cuda/bin ]]; then
     export PATH="/opt/cuda/bin:$PATH"
@@ -83,6 +73,11 @@ build() {
   # Use GCC 15 as host compiler for nvcc (CUDA does not yet support GCC 16)
   # Override via: aur_llamacpp_cmakeopts="-DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-XX"
   local _nvcc_host_cxx="${CUDAHOSTCXX:-/usr/bin/g++-15}"
+
+  # Grab commit ID and build number.
+  local _commit_id _build_number
+  _commit_id=$(git -C "${_pkgname}" rev-parse HEAD)
+  _build_number=$(git -C "${_pkgname}" rev-list --count HEAD)
 
   local _cmake_options=(
     -G Ninja
@@ -142,6 +137,10 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
+
+  # Helper libraries.
+  install -Dm755 -t "${pkgdir}/usr/lib/" build/bin/lib*-impl.so
+
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "llama.cpp.conf" "${pkgdir}/etc/conf.d/llama.cpp"
   install -Dm644 "llama.cpp.service" "${pkgdir}/usr/lib/systemd/system/llama.cpp.service"
