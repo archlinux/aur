@@ -1,6 +1,6 @@
 pkgbase = python-hyprland-config
 	pkgdesc = Round-trip parser and editor for Hyprland configuration files
-	pkgver = 0.6.6
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/BlueManCZ/hyprland-config
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-hyprland-config
 	makedepends = python-hatchling
 	depends = python
 	depends = hyprland
-	source = python-hyprland-config-0.6.6.tar.gz::https://github.com/BlueManCZ/hyprland-config/archive/v0.6.6.tar.gz
-	sha256sums = 01a52f82721485dade74705fff7dc846f754b1027656126a4d0266f6ec5ce4e3
+	source = python-hyprland-config-0.9.2.tar.gz::https://github.com/BlueManCZ/hyprland-config/archive/v0.9.2.tar.gz
+	sha256sums = e4a2fd64281e5a0c98f5ef7dff9b6f76fe40d0be989ef8e0c9824ed81c7411ee
 
 pkgname = python-hyprland-config
