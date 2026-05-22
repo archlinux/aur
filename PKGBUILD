@@ -45,7 +45,6 @@ backup=(etc/default/icinga2
         etc/icinga2/zones.conf
         etc/logrotate.d/icinga2)
 install='icinga2.install'
-changelog="icinga2.changelog"
 source=("https://github.com/Icinga/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.tmpfiles"
         "$pkgname.sysusers")
