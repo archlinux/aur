@@ -1,6 +1,6 @@
 pkgbase = drm-colortemp
 	pkgdesc = DRM color temperature control for COSMIC DE (Rust rewrite, wlr-gamma-control workaround)
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/jjo/drm-colortemp
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = drm-colortemp
 	depends = gcc-libs
 	optdepends = libnotify: desktop notifications
 	backup = etc/default/drm-colortemp.conf
-	source = drm-colortemp-2.0.0.tar.gz::https://github.com/jjo/drm-colortemp/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = dfc461669c5c2e4870921cc1ba2316e5dc3682b23bb801737d55cfd3020bdccb
+	source = drm-colortemp-2.0.1.tar.gz::https://github.com/jjo/drm-colortemp/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 6ca11dde47f9e8580644cbe1a3e4b1894a1b37a2e8704b920cac962a97d6f6f0
 
 pkgname = drm-colortemp
