@@ -1,0 +1,5 @@
+src/
+pkg/
+cf-units/
+python-cf-units-*.pkg*
+*.log

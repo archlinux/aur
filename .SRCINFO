@@ -1,0 +1,25 @@
+pkgbase = python-cf-units
+	pkgdesc = Units of measure from the CF Metadata Conventions
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = https://cf-units.readthedocs.io/
+	arch = x86_64
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-tomli
+	makedepends = cython
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = glibc
+	depends = python-cftime
+	depends = python-jinja
+	depends = python-numpy
+	depends = udunits
+	source = git+https://github.com/SciTools/cf-units.git?signed#commit=26f7831
+	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
+	sha256sums = 9f1a3c52c291c30827a418cae137a875c978fce754933d8f58f898b8a638a217
+
+pkgname = python-cf-units
