@@ -1,7 +1,7 @@
 # Maintainer: kurojs <kuro@kurojs.com>
 pkgname=jotoba-tui
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Japanese dictionary TUI — word, kanji, and sentence search with language selector"
 arch=('x86_64')
 url="https://github.com/kurojs/jotoba-tui"
