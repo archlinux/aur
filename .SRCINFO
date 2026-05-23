@@ -1,7 +1,8 @@
 pkgbase = greprip-git
 	pkgdesc = Transparent grep/find to rg/fd translators for LLM coding agents
-	pkgver = r36.70908b1
+	pkgver = r11.70908b1
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/kaofelix/greprip
 	arch = any
 	license = MIT

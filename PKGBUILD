@@ -2,8 +2,9 @@
 
 _pkgname=greprip
 pkgname=$_pkgname-git
-pkgver=r36.70908b1
+pkgver=r11.70908b1
 pkgrel=1
+epoch=1
 pkgdesc="Transparent grep/find to rg/fd translators for LLM coding agents"
 arch=('any')
 url="https://github.com/kaofelix/$_pkgname"
@@ -32,4 +33,5 @@ build() {
 package() {
   cd "$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
