@@ -10,7 +10,6 @@ pkgbase = tapauth-git
 	makedepends = protobuf
 	makedepends = git
 	depends = dbus
-	depends = gtk4
 	depends = pam
 	provides = tapauth
 	conflicts = tapauth

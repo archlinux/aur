@@ -6,7 +6,7 @@ pkgdesc="Local smartphone-based authentication framework engine (Development/Git
 arch=('x86_64')
 url="https://github.com/lolle2000la/tapauth"
 license=('Apache-2.0')
-depends=('dbus' 'gtk4' 'pam')
+depends=('dbus' 'pam')
 makedepends=('cargo' 'rust' 'protobuf' 'git')
 provides=('tapauth')
 conflicts=('tapauth')
@@ -42,4 +42,9 @@ package() {
   # Declarative Infrastructure
   install -Dm0644 packaging/sysusers.conf "${pkgdir}/usr/lib/sysusers.d/tapauth.conf"
   install -Dm0644 packaging/tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/tapauth.conf"
+
+  # Desktop Integration
+  install -Dm0644 client-config-gui/tapauth-config.desktop "${pkgdir}/usr/share/applications/tapauth-config.desktop"
+  install -Dm0644 client-config-gui/assets/tapauth-config.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/tapauth-config.svg"
+  install -Dm0644 client-config-gui/dev.rourunisen.tapauth.policy "${pkgdir}/usr/share/polkit-1/actions/dev.rourunisen.tapauth.policy"
 }
