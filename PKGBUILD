@@ -55,9 +55,9 @@ fi
 
 pkgbase="solara-kernel"
 _major=7.0
-_minor=8
+_minor=10
 pkgver=${_major}.${_minor}
-_tagrel=1
+_tagrel=2
 pkgrel=1
 _stable=${_major}
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
