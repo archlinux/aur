@@ -1,0 +1,16 @@
+pkgbase = view-launcher-git
+	pkgdesc = A minimalist, high-performance terminal TUI app & file launcher in Rust for Sway/Wayland/X11
+	pkgver = r4.7a1b2c3
+	pkgrel = 1
+	url = https://github.com/hieunx1024/view-launcher
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = view-launcher
+	conflicts = view-launcher
+	source = git+https://github.com/hieunx1024/view-launcher.git
+	sha256sums = SKIP
+
+pkgname = view-launcher-git
