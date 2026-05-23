@@ -1,6 +1,6 @@
 # Maintainer: Martin Etchebarne <martin@etchebarne.net>
 pkgname=kosmos
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A modern code editor."
 arch=('x86_64')
@@ -12,7 +12,9 @@ depends=(
     'libxcb'
     'libxkbcommon'
     'libxkbcommon-x11'
+    'vulkan-driver'
     'vulkan-icd-loader'
+    'ttf-dejavu'
     'wayland'
 )
 makedepends=('cargo' 'pkgconf' 'rust' 'vulkan-headers')
