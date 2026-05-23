@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=docking-bin
-pkgver=1.24.0
+pkgver=1.24.1
 pkgrel=1
 pkgdesc="A lightweight, feature-rich dock for Linux written in Python with GTK 3 and Cairo"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ depends=(
 )
 source_x86_64=("docking-${pkgver}-x86_64.pkg.tar.zst::https://github.com/edumucelli/docking/releases/download/v${pkgver}/docking-${pkgver}-linux-x86_64.pkg.tar.zst")
 source_aarch64=("docking-${pkgver}-aarch64.pkg.tar.xz::https://github.com/edumucelli/docking/releases/download/v${pkgver}/docking-${pkgver}-linux-aarch64.pkg.tar.xz")
-sha256sums_x86_64=('5bc7e1e4ca21c1ad559aeac972c7089b24790fe43f522a616c7a4f36d69dec7f')
-sha256sums_aarch64=('a46bd95f79483c7087465f4d215b83c74cf2a95d2c0a37990b04deddb9836087')
+sha256sums_x86_64=('3ac0a61802a9e35fdaab58ff1ca0fed538d5ed7ef8f79ab3e7d1d3505af85594')
+sha256sums_aarch64=('81a449f9ec8e27c69c7570e44ca6e119eb77c65c21c5ef46f119cb642e62fb67')
 
 package() {
     # Extract the prebuilt Arch package directly
