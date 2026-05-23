@@ -3,7 +3,7 @@
 
 _pkgname=onetalker
 pkgname=$_pkgname-git
-pkgver=2026.4.r8.g44df400
+pkgver=2026.4.r39.g967c044
 pkgrel=1
 pkgdesc='An Augmentative and Alternative Communication (AAC) Aid'
 arch=(x86_64)
@@ -34,7 +34,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '53b84e88eedc5ce120b9fb7b4a14de7b5cbe181820c69007bb6782dbb1ee7aaa'
+  'b5e568db1798812001a8c495b8049a5bb23a9434df933548c0e6762c49f1c9b3'
 )
 
 prepare() {

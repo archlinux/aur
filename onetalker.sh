@@ -14,4 +14,4 @@ if [ "$1" = "--sync-assets" ]; then
   exit
 fi
 
-RUST_LOG=onetalker=warn exec /opt/onetalker/onetalker "$@"
+exec /opt/onetalker/onetalker "$@"
