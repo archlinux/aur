@@ -1,10 +1,11 @@
 pkgbase = gimp-openvino
 	pkgdesc = Intel OpenVINO AI Plugins for GIMP
-	pkgver = rXXX.XXXXXX
+	pkgver = r381.c9fb13e
 	pkgrel = 1
 	url = https://github.com/intel/openvino-ai-plugins-gimp
 	arch = x86_64
 	license = Apache-2.0
+	license = MIT
 	makedepends = git
 	makedepends = python-pip
 	depends = gimp
@@ -28,7 +29,7 @@ pkgbase = gimp-openvino
 	depends = python-hf-xet
 	optdepends = intel-compute-runtime: Intel GPU acceleration for OpenVINO
 	optdepends = intel-npu-driver: NPU acceleration support
-	source = git+https://github.com/intel/openvino-ai-plugins-gimp.git
+	source = gimp-openvino::git+https://github.com/intel/openvino-ai-plugins-gimp.git
 	sha256sums = SKIP
 
-pkgname = gimp-openvino-ai-plugins
+pkgname = gimp-openvino
