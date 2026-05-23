@@ -5,3 +5,6 @@
 !Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf
 !update_version.sh
 !microsoft-edge-beta.install
+!docker-compose.yml
+!Dockerfile
+!.dockerignore

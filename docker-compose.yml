@@ -1,0 +1,9 @@
+services:
+  aur-builder:
+    build: .
+    volumes:
+      - .:/build
+    working_dir: /build
+    stdin_open: true
+    tty: true
+    entrypoint: ["bash", "update_version.sh"]

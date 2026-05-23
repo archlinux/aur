@@ -14,7 +14,9 @@ grep -A6 "Package: ${PKG}" |
      awk '/Version/{print $2}' |
      cut -d '-' -f1 |
      sort -V -r |
-     head -n1)	
+     head -n1)
+
+echo "Latest version: ${VER}"
 
 # Insert latest version into PKGBUILD and update hashes
 sed -i \
@@ -29,17 +31,16 @@ fi
 
 # updpkgsums
 SUM256=$(curl -sSf https://packages.microsoft.com/repos/edge/dists/stable/main/binary-amd64/Packages |
-    grep -A15 "Package: ${PKG}" |
+    grep -A15 "Version: ${VER}" |
     awk '/SHA256/{print $2}' |
     head -n1)
 
+echo "SHA256: ${SUM256}"
+
 # Insert latest shasum into PKGBUILD and update hashes
-SUM256=$(curl -sSf https://packages.microsoft.com/repos/edge/dists/stable/main/binary-amd64/Packages |
-     grep -A15 "Package: ${PKG}" |
-     awk '/SHA256/{print $2}' |
-    sort -V -r |
-    head -n1)
-    
+sed -i \
+    -e "s/^sha256sums=('.*/sha256sums=('${SUM256}'/" \
+    PKGBUILD
 
 # Reset pkgrel
 sed -i \
@@ -52,6 +53,6 @@ makepkg --printsrcinfo >.SRCINFO
 # Start generate package
 makepkg -Acsf .
 
-# Commit changes
-git add PKGBUILD .SRCINFO
-git commit -m "Update ${PKG} to v${VER}"
+# # Commit changes
+# git add PKGBUILD .SRCINFO
+# git commit -m "Update ${PKG} to v${VER}"
