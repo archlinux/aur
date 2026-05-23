@@ -1,8 +1,8 @@
 # Maintainer: Jesse R Codling <codling at umich dot edu>
 
 pkgname=aocl-libflame
-pkgver=5.2.2
-pkgrel=2
+pkgver=5.3
+pkgrel=1
 pkgdesc="High-performance object-based library for DLA computations, AOCL branding"
 arch=('x86_64')
 url="https://github.com/amd/libflame"
@@ -13,7 +13,7 @@ provides=('lapack' 'lapacke')
 conflicts=('lapack' 'lapacke')
 _lapackver=3
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amd/libflame/archive/$pkgver.tar.gz")
-sha256sums=('f0200411c2ee0b2490810a837347bd706c878c8ca2c6511e572235be24ef64df')
+sha256sums=('ecb74c879b4d6bb33e159300304a9b48206d2c2b546dceb7d097b339eb127b9c')
 
 # specified generic -march causes build issues
 export CFLAGS="${CFLAGS/-march=x86-64/}"
@@ -25,11 +25,11 @@ prepare() {
     cd "$srcdir/libflame-$pkgver"
 
     # remove AMD's fortify flag, which duplicate's Arch's
-    sed -i '/-D_FORTIFY_SOURCE/d' -s CMakeLists.txt 
+    sed -i '/-D_FORTIFY_SOURCE/d' -s CMakeLists.txt cmake/CompilerFlags.cmake
     # don't override -mtune from Arch's build flags
-    sed -i 's/-mtune=native //' -s CMakeLists.txt
+    sed -i 's/-mtune=native //' -s CMakeLists.txt cmake/CompilerFlags.cmake
     # remove "-pie" flag, which breaks shared library builds with newer CMake. see #6
-    sed -i 's/-pie //' -s CMakeLists.txt
+    sed -i 's/-pie //' -s CMakeLists.txt cmake/CompilerFlags.cmake
 
     cmake -B newbuild -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
