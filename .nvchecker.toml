@@ -1,0 +1,4 @@
+[mattermost-push-proxy]
+source = "git"
+git = "https://github.com/mattermost/mattermost-push-proxy.git"
+prefix = "v"
