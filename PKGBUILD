@@ -7,7 +7,7 @@
 
 pkgname=binaryninja-personal
 _pkgname=binaryninja
-pkgver=5.2.8722
+pkgver=5.3.9434
 pkgrel=1
 pkgdesc="An interactive decompiler, disassembler, debugger, and binary analysis platform. This package is for the Personal Edition and requires both an installer zip (x86 or ARM) and a license."
 arch=('x86_64' 'arm')
@@ -22,13 +22,26 @@ depends=(
 optdepends=('gtk-update-icon-cache: icon support')
 provides=(binaryninja)
 source=(
-	"binaryninja_linux_${pkgver}_personal.zip" # https://binary.ninja/recover/
 	"${_pkgname}.png"
 	"${_pkgname}.desktop"
 )
-sha256sums=('SKIP'
+sha256sums=(
 	'4f318001e7d39279ce063ef42077bae03e95c112aa203a4be3ea3d913c34327e'
 	'a1e20e8176292c67fcc50d3444e95e31ee91ff6cf861f8529554152ed7bd8139')
+
+prepare() {
+	local _zip="binaryninja_linux_${pkgver}_personal.zip"
+	# Download from https://portal.binary.ninja with a valid Personal license
+	local _zippath="${SRCDEST}/${_zip}"
+	if [[ ! -f "${_zippath}" ]]; then
+		echo "ERROR: ${_zip} not found."
+		echo "Download it from https://portal.binary.ninja and place it in the same directory as this PKGBUILD."
+		return 1
+	fi
+	cp "${_zippath}" "${srcdir}/"
+	cd "${srcdir}"
+	bsdtar -xf "${_zip}"
+}
 
 package() {
 	mkdir "${pkgdir}/opt"
