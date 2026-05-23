@@ -23,6 +23,7 @@ pkgbase = python-vllm-rocm
 	depends = python-einops
 	depends = python-fastapi
 	depends = python-gguf
+	depends = python-xgrammar
 	depends = python-huggingface-hub
 	depends = python-ijson
 	depends = python-importlib-metadata

@@ -18,6 +18,7 @@ depends=(
   python-einops
   python-fastapi
   python-gguf
+  python-xgrammar
   python-huggingface-hub
   python-ijson
   python-importlib-metadata
