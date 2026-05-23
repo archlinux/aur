@@ -9,6 +9,7 @@ pkgbase = hyprclock
 	depends = gtk4
 	depends = gstreamer
 	depends = gst-plugins-base
+	provides = hyprclock
 	conflicts = hyprclock-bin
 	conflicts = hyprclock-git
 	conflicts = hyprclock-bin-debug
