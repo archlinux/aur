@@ -1,7 +1,7 @@
 # Maintainer: w1zx1
 pkgname=screentaker
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="a lightweight and reliable screenshooter for X11 written in Rust"
 arch=('x86_64')
 options=('!debug')
