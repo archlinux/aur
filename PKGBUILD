@@ -3,7 +3,7 @@
 # pkgbase must match the AUR repository name
 pkgbase=gimp-openvino
 pkgname=gimp-openvino
-pkgver=r381.c9fb13e  # auto-set by pkgver()
+pkgver=3.2.1.0  # auto-set by pkgver()
 pkgrel=1
 pkgdesc="Intel OpenVINO AI Plugins for GIMP"
 arch=('x86_64')
