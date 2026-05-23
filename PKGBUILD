@@ -10,7 +10,7 @@ _vlcver=3.0.22
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=$_vlcver${_vlcfixupver//-/.r}
-pkgrel=26
+pkgrel=27
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url=https://www.videolan.org/vlc/
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,6 @@ makedepends=(
   fontconfig
   freetype2
   fribidi
-  gcc-libs
   gdk-pixbuf2
   glib2
   glibc
@@ -60,6 +59,7 @@ makedepends=(
   libdvdcss
   libdvdnav
   libdvdread
+  libgcc
   libglvnd
   libgme
   libgoom2
@@ -84,6 +84,7 @@ makedepends=(
   libshout
   libsoxr
   libssh2
+  libstdc++
   libtheora
   libtiger
   libupnp
@@ -142,9 +143,6 @@ prepare() {
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
-
-  # libupnp callback typedef now uses non-const event pointer
-  sed -i 's/typedef const void\* UpnpEventPtr;/typedef void* UpnpEventPtr;/' modules/services_discovery/upnp.hpp
 
   # Fix build with gstreamer 1.28
   sed -i '/#include <gst\/gstbufferpool.h>/d; /#include <gst\/video\/gstvideopool.h>/d' modules/codec/gstreamer/gstvlcvideopool.h
@@ -339,7 +337,8 @@ package_libvlc-luajit() {
 package_vlc-plugin-luajit() {
   pkgdesc+=" - LuaJIT scripting plugins"
   depends=(
-    gcc-libs
+    libgcc
+    libstdc++
     glibc
     libvlc libvlccore.so
     luajit
