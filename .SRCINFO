@@ -1,0 +1,16 @@
+pkgbase = picori-bin
+	pkgver = v0.2.2.0
+	pkgrel = 1
+	url = https://github.com/999sian/tmc
+	arch = x86_64
+	license = GPL
+	depends = sdl3
+	depends = git
+	depends = zenity
+	depends = yad
+	source = https://gitlab.com/linuxbombay/picori/-/archive/1.0.0/picori-1.0.0.tar.bz2
+	sha256sums = f88044425f155c8fc57ac3878865d8b22e1fc206c75bfb5e0a134310a5cbc442
+	source_x86_64 = https://github.com/999sian/tmc/releases/download/v0.2.2.0/tmc-usa-linux-x86_64-v0.2.2.0.tar.gz
+	sha256sums_x86_64 = b5c40128e677ebbc1ef8d6b839a54650569435132fa941376691d786a59b9c61
+
+pkgname = picori-bin
