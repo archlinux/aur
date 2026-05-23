@@ -1,0 +1,18 @@
+pkgbase = mkdev-bin
+	pkgdesc = Real HTTPS for local dev — with a TUI and LAN sharing
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/venkatkrishna07/mkdev
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = BSD-3-Clause
+	provides = mkdev
+	conflicts = mkdev
+	options = !strip
+	source_x86_64 = mkdev-x86_64-0.2.0.tgz::https://github.com/venkatkrishna07/mkdev/releases/download/v0.2.0/mkdev_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8167377ffba1dba30151de2f09dce66367d501ce8a90efe4d68c8166fe3cd46b
+	source_aarch64 = mkdev-aarch64-0.2.0.tgz::https://github.com/venkatkrishna07/mkdev/releases/download/v0.2.0/mkdev_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4964faece0b2814dec1f839c5490ce927955e9ae405aae06d87f4b3d5e3dd4be
+
+pkgname = mkdev-bin

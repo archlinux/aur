@@ -1,0 +1,5 @@
+[mkdev-bin]
+source = "github"
+github = "venkatkrishna07/mkdev"
+use_latest_release = true
+prefix = "v"
