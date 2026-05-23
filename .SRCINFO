@@ -1,6 +1,6 @@
 pkgbase = asus-sound-fix
 	pkgdesc = Fix no sound issue on ASUS Vivobook S14 Flip TP3407SA
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 2
 	url = https://github.com/Karso2023/vivobook_sound_fix
 	install = asus-sound-fix.install
@@ -8,7 +8,7 @@ pkgbase = asus-sound-fix
 	license = GPL3
 	makedepends = cargo
 	makedepends = rust
-	source = asus-sound-fix-0.1.1.tar.gz::https://github.com/Karso2023/vivobook_sound_fix/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 5171f0cea89e69e8ba7d34485dfb6600b9f7e53d2f72ccf6922bbca9089ef753
+	source = asus-sound-fix-0.1.2.tar.gz::https://github.com/Karso2023/vivobook_sound_fix/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 51b3fd83bfc33b413673a3044f272a102afa7c38b4f99b8acd544cdf31802b75
 
 pkgname = asus-sound-fix
