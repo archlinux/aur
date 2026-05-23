@@ -71,18 +71,15 @@ prepare() {
    # Checkout the latest matching tag
    local latest_tag
    latest_tag=$(git tag -l "${_audacity_tag_prefix}.*" --sort=-v:refname | head -1 || true)
-   if [ -n "$latest_tag" ]; then
-     git -c advice.detachedHead=false checkout "$latest_tag"
-    echo "==> Checked out ${latest_tag}"
-  else
-    echo "==> WARNING: no tag matching ${_audacity_tag_prefix}.* found, using HEAD"
-  fi
+    if [ -n "$latest_tag" ]; then
+      git -c advice.detachedHead=false checkout "$latest_tag"
+   else
+     echo "==> WARNING: no tag matching ${_audacity_tag_prefix}.* found, using HEAD"
+   fi
 
-  echo "==> Copying OpenVINO module to modules/..."
   rm -rf modules/openvino-plugins-ai-audacity
   cp -r "${srcdir}/openvino-plugins-ai-audacity" modules/openvino-plugins-ai-audacity
 
-  echo "==> Criando CMakeLists.txt para o módulo OpenVINO..."
   cat > modules/openvino-plugins-ai-audacity/CMakeLists.txt <<'EOF'
 #[[
 A directory of module targets
@@ -99,16 +96,9 @@ set( MODULES
 audacity_module_subdirectory("${MODULES}")
 EOF
 
-  echo "==> Inserting openvino-plugins-ai-audacity module in CMakeLists.txt..."
-  # Insert the add_subdirectory line if it is not already present
   if ! grep -q "openvino-plugins-ai-audacity" modules/CMakeLists.txt; then
     sed -i '/foreach( FOLDER ${FOLDERS} )/i add_subdirectory("openvino-plugins-ai-audacity")' modules/CMakeLists.txt
   fi
-
-  echo "==> CMakeLists.txt updated:"
-  grep openvino-plugins-ai-audacity modules/CMakeLists.txt
-
-  echo "==> Patching OpenVINO module for API incompatibilities..."
 
   # whisper.cpp 1.8.3 removed speed_up from whisper_full_params
   sed -i '/wparams\.speed_up = params\.speed_up;/d' modules/openvino-plugins-ai-audacity/mod-openvino/OVWhisperTranscription.cpp
@@ -126,7 +116,6 @@ EOF
   sed -i 's/torch::from_blob(pXTensor_Out,/torch::from_blob(const_cast<float*>(pXTensor_Out),/g' modules/openvino-plugins-ai-audacity/mod-openvino/htdemucs.cpp
   sed -i 's/torch::from_blob(pXTTensor_Out,/torch::from_blob(const_cast<float*>(pXTTensor_Out),/g' modules/openvino-plugins-ai-audacity/mod-openvino/htdemucs.cpp
 
-  echo "==> Patching Audacity for GCC 16 deprecated API..."
   # std::not1 was removed in C++20; replace with std::not_fn
   sed -i 's/std::not1( std::mem_fn( pmf ) )/std::not_fn( std::mem_fn( pmf ) )/g' libraries/lib-track/Track.h
 }
@@ -155,7 +144,8 @@ build() {
       -D audacity_obey_system_dependencies=ON
       -W no-dev
       -D CMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations"
-      --log-level=WARNING
+      -D CMAKE_RULE_MESSAGES=OFF
+      --log-level=ERROR
     )
 
     export CFLAGS+=" -DNDEBUG -std=gnu11"
@@ -163,7 +153,7 @@ build() {
     export VST3SDK="/usr/src/vst3sdk"
 
     cmake "${cmake_options[@]}"
-    cmake --build build
+    cmake --build build -- -j$(nproc)
 }
 
 package() {
