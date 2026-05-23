@@ -5,7 +5,7 @@
 
 # Maintainer: TRBN <turbine@trbn.net>
 pkgname=tmsay
-pkgver=0.2.r11.79d9fde
+pkgver=0.2.r12.529ddf8
 pkgrel=1
 epoch=
 pkgdesc="like cowsay, but with anything or anyone you want."
@@ -30,7 +30,7 @@ sha256sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd "${_pkgname}"
+	cd "${pkgname}"
 	printf "0.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
@@ -44,6 +44,5 @@ package() {
 	cd $srcdir/tmsay
 	install -Dm755 "tmsay" "${pkgdir}/usr/share/${pkgname}/tmsay"
 	install -Dm755 "default" "${pkgdir}/usr/share/${pkgname}/default"
-	#install -Dm755 "tmsay" "${pkgdir}/usr/bin/tmsay"
-	
+	install -Dm755 "tmsay" "${pkgdir}/usr/bin/tmsay"
 }
