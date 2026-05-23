@@ -12,6 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  export MISE_TRUSTED_CONFIG_PATHS="$PWD"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
