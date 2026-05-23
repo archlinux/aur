@@ -76,9 +76,21 @@ build() {
     # Build aqueous-compositor (in-tree at compositor/)
     msg2 "Building aqueous-compositor..."
     cd "$srcdir/aqueous/compositor"
+    # Ensure a clean build so that stale artifacts from prior names
+    # (e.g. a `riverdelta` binary cached from before the rename) cannot
+    # cause the renamed `aqueous-compositor` executable to be missing
+    # from `$srcdir/river-dist/bin/` at package() time.
+    rm -rf .zig-cache zig-out
     # -Dllvm forces the LLVM backend + LLD linker. Zig 0.16.0's self-hosted
     # ELF linker can't handle R_X86_64_PC64 in .sframe emitted by gcc >= 16.
     zig build -Doptimize=ReleaseSafe -Dxwayland -Dllvm --prefix "$srcdir/river-dist" install
+
+    # Fail loudly if the expected binary did not land where package() expects.
+    if [[ ! -f "$srcdir/river-dist/bin/aqueous-compositor" ]]; then
+        error "aqueous-compositor binary not found at \$srcdir/river-dist/bin/aqueous-compositor after zig build"
+        ls -la "$srcdir/river-dist/bin" >&2 || true
+        return 1
+    fi
 }
 
 package() {
