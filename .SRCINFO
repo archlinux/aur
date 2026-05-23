@@ -1,0 +1,12 @@
+pkgbase = jotoba-tui
+	pkgdesc = Japanese dictionary TUI powered by the Jotoba API — word, kanji, and sentence search
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kurojs/jotoba-tui
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/kurojs/jotoba-tui/archive/v1.0.0/jotoba-tui-1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = jotoba-tui
