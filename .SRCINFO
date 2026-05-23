@@ -1,0 +1,14 @@
+pkgbase = planner-app-bin
+	pkgdesc = Prebuilt Planner App v1.2 with Habit Dashboard and minimal dependencies
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://gitflic.ru/project/en3/planner-app
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	options = !debug
+	source = file:///home/mmm/Downloads/planner-app-1.2.0-linux-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = planner-app-bin
