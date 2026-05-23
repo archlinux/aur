@@ -829,15 +829,16 @@ gather_aur_package_info() {
 	local PACKAGE_INFORMATION
 	local TARGET_PACKAGE="${1}"
 	if ! PACKAGE_INFORMATION=$(curl --connect-timeout 60 --max-time 180 "${CURL_OPTS[@]}" \
-		"https://aur.archlinux.org/rpc/v5/info?arg[]=${TARGET_PACKAGE}" 2> /dev/null \
-		| jq -cr --arg PACKAGE_NAME "${TARGET_PACKAGE}" \
-			'.results.[0] + {AUR_WEB_URL: "https://aur.archlinux.org/packages/" + $PACKAGE_NAME}'); then
+		"https://aur.archlinux.org/rpc/v5/info?arg[]=${TARGET_PACKAGE}" 2> /dev/null); then
 		print_error 74
 		exit 74
 	fi
-	if [[ "null" == "${PACKAGE_INFORMATION}" ]] \
-		|| [[ -z "${PACKAGE_INFORMATION}" ]]; then
+	if [[ $(echo ${PACKAGE_INFORMATION} | jq -cr '.resultcount') == 0 ]]; then
 		return 1
+	else
+		PACKAGE_INFORMATION=$( echo ${PACKAGE_INFORMATION} \
+		| jq -cr --arg PACKAGE_NAME "${TARGET_PACKAGE}" \
+			'.results.[0] + {AURWebURL: "https://aur.archlinux.org/packages/" + $PACKAGE_NAME}')
 	fi
 	echo "${PACKAGE_INFORMATION}"
 }
@@ -1346,7 +1347,7 @@ METADATA_ARRAYS=("INTERNAL_VARIABLES" "INTERNAL_ARRAYS" "POSSIBLE_OPERATIONS" "G
 declare "${METADATA_VARIABLES[@]}"
 declare -a "${METADATA_ARRAYS[@]}"
 
-INTERNAL_VERSION="1.0.8-3"
+INTERNAL_VERSION="1.0.8-4"
 INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" "CONFIG" \
 	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "GIT_CONNECTION" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" \
 	"MAINTAINED" "NO_MARK_INSTALLED" "NO_MARK_UPDATE" "NO_OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
