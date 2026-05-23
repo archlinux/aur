@@ -3,7 +3,7 @@
 
 _name="aom"
 pkgname="lib32-${_name}"
-pkgver=3.14.0
+pkgver=3.14.1
 pkgrel=1
 pkgdesc="Alliance for Open Media video codec (32-bit)"
 arch=(
@@ -30,7 +30,7 @@ source=(
   "https://storage.googleapis.com/aom-releases/${_pkgsrc}.tar.gz"
   "https://storage.googleapis.com/aom-releases/${_pkgsrc}.tar.gz.asc"
 )
-b2sums=('a16fa855ac9081d901f3b27318f47c186a15a0841ea1e9f0230a31d90bf265d75ed8f152a07635c3caf38735cceb57f95197fad4efbf8728aba31324d02a5f5b'
+b2sums=('b88e6868a9dcf3c91f20a49520884268f961c54e6c5890467505ce6b7086faee191db021d46dbdbb9e0da57ddc482263ac6e8e816afd5319e6d072ada42b28eb'
         'SKIP')
 validpgpkeys=(
   'B002F08B74A148DAA01F7123A48E86DB0B830498' # AOMedia release signing key <av1-discuss@aomedia.org>
