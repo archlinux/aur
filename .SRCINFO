@@ -1,5 +1,5 @@
 pkgbase = playit-bin
-	pkgdesc = The playit program
+	pkgdesc = A tunneling tool to host a game server without port forwarding or sharing public IP (Binary version)
 	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/playit-cloud/playit-agent
