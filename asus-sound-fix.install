@@ -1,0 +1,13 @@
+post_install() {
+    systemctl daemon-reload
+    systemctl enable --now asus-sound-fix.service
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl restart asus-sound-fix.service
+}
+
+pre_remove() {
+    systemctl disable --now asus-sound-fix.service
+}
