@@ -10,6 +10,7 @@ pkgbase = vkcheck-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = meson
+	makedepends = argparse
 	makedepends = vulkan-headers
 	makedepends = vulkan-profiles
 	makedepends = vulkan-utility-libraries

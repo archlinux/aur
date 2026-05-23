@@ -20,6 +20,7 @@ makedepends=(
     'git'
     'cmake'
     'meson'
+    'argparse'
     'vulkan-headers'
     'vulkan-profiles'
     'vulkan-utility-libraries'
