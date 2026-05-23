@@ -1,0 +1,4 @@
+[nextcloud-app-tables]
+source = "git"
+git = "https://github.com/nextcloud-releases/tables.git"
+prefix = "v"

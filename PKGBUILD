@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-tables
-pkgver=1.0.4
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Tables app for Nextcloud"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/nextcloud/tables"
 license=('AGPL3')
 depends=('nextcloud')
 source=("https://github.com/nextcloud-releases/tables/releases/download/v$pkgver/tables-v$pkgver.tar.gz")
-sha512sums=('fd001c98449c7755787a5f7a3c36b10c65e512b0140882e643f492e67ee3d97f65c3124ce662751d506c0033e58be273a1626ec98ff4ff457375586a6d9243e9')
+sha512sums=('14aad60a4326d53cdabc2335667e2070be4a7b7951349ac8920b81eaf849b936824340947c861fda0377230f15cfb82b9a1dd22eb81f3decf648ea0c4285c31d')
 
 package() {
     install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
