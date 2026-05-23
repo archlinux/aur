@@ -2,9 +2,9 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.1.0.r101.g6d62a7e # Will be updated by pkgver()
+pkgver=0.1.0.r110.g41e9f4f # Will be updated by pkgver()
 pkgrel=1
-pkgdesc="Aqueous Wayland window manager bundled with aqueous-compositor"
+pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
 license=('GPL3')
@@ -13,14 +13,14 @@ depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'noctalia-shell' 'libdecor' 'grim' 'xwayland-satellite'
          'xdg-desktop-portal-wlr' 'wlroots0.20')
 makedepends=('dotnet-sdk-10.0' 'clang' 'zlib' 'krb5' 'git' 'wayland-protocols')
-optdepends=('Ly: login manager'
+optdepends=('tuigreet: TUI greeter for greetd (recommended login path)'
             'greetd: minimal login manager for tuigreet'
             'aqueous-greetd-config: opinionated greetd+tuigreet preset for Aqueous'
             'ghostty: recommended terminal emulator'
             'nemo: recommended file manager'
             'firefox: web browser')
-provides=('aqueous' 'aqueous-compositor' 'riverdelta')
-conflicts=('aqueous' 'aqueous-compositor' 'riverdelta')
+provides=('aqueous' 'riverdelta')
+conflicts=('aqueous' 'riverdelta')
 install=aqueous.install
 source=(
     "aqueous::git+${url}.git"
@@ -46,7 +46,7 @@ pkgver() {
 }
 
 build() {
-    # Verify zig is new enough (aqueous-compositor requires >= 0.16.0).
+    # Verify zig is new enough (RiverDelta requires >= 0.16.0).
     # We enforce this here instead of via a pacman version constraint because
     # the repo `zig` package is currently 0.15.x and Zig 0.16 is only available
     # via `zig-master-bin` (AUR), which provides unversioned `zig`.
@@ -73,24 +73,12 @@ build() {
         dotnet publish "$proj" -c Release -r "$rid" --self-contained true /p:PublishAot=true -o "$srcdir/publish/$name"
     done
 
-    # Build aqueous-compositor (in-tree at compositor/)
-    msg2 "Building aqueous-compositor..."
+    # Build RiverDelta (in-tree at compositor/)
+    msg2 "Building RiverDelta..."
     cd "$srcdir/aqueous/compositor"
-    # Ensure a clean build so that stale artifacts from prior names
-    # (e.g. a `riverdelta` binary cached from before the rename) cannot
-    # cause the renamed `aqueous-compositor` executable to be missing
-    # from `$srcdir/river-dist/bin/` at package() time.
-    rm -rf .zig-cache zig-out
     # -Dllvm forces the LLVM backend + LLD linker. Zig 0.16.0's self-hosted
     # ELF linker can't handle R_X86_64_PC64 in .sframe emitted by gcc >= 16.
     zig build -Doptimize=ReleaseSafe -Dxwayland -Dllvm --prefix "$srcdir/river-dist" install
-
-    # Fail loudly if the expected binary did not land where package() expects.
-    if [[ ! -f "$srcdir/river-dist/bin/aqueous-compositor" ]]; then
-        error "aqueous-compositor binary not found at \$srcdir/river-dist/bin/aqueous-compositor after zig build"
-        ls -la "$srcdir/river-dist/bin" >&2 || true
-        return 1
-    fi
 }
 
 package() {
@@ -98,12 +86,10 @@ package() {
     install -Dm755 "$srcdir/publish/Aqueous/aqueous" "$pkgdir/usr/bin/aqueous"
     install -Dm755 "$srcdir/publish/Aqueous.OutputDaemon/aqueous-outputd" "$pkgdir/usr/bin/aqueous-outputd"
 
-    # Install aqueous-compositor binary.
-    install -Dm755 "$srcdir/river-dist/bin/aqueous-compositor" "$pkgdir/usr/bin/aqueous-compositor"
-    # Legacy `riverdelta` symlink for one release of back-compat.
-    ln -sf aqueous-compositor "$pkgdir/usr/bin/riverdelta"
+    # Install RiverDelta binary as 'riverdelta' instead of 'river'
+    install -Dm755 "$srcdir/river-dist/bin/riverdelta" "$pkgdir/usr/bin/riverdelta"
 
-    # Install aqueous-compositor share data (man pages, etc.)
+    # Install RiverDelta share data (man pages, etc.)
     if [ -d "$srcdir/river-dist/share" ]; then
         install -d "$pkgdir/usr/share"
         cp -dr --no-preserve=ownership "$srcdir/river-dist/share/"* "$pkgdir/usr/share/"
@@ -150,13 +136,12 @@ package() {
             "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
 
-    # In-tree compositor licenses (aqueous-compositor is a RiverDelta fork and
-    # is multi-licensed; ship the license texts alongside Aqueous's own
-    # license for attribution).
+    # In-tree compositor licenses (RiverDelta is multi-licensed; ship the
+    # license texts alongside Aqueous's own license for attribution).
     if [[ -d "$srcdir/aqueous/compositor/LICENSES" ]]; then
-        install -d "$pkgdir/usr/share/licenses/$pkgname/aqueous-compositor"
+        install -d "$pkgdir/usr/share/licenses/$pkgname/riverdelta"
         cp -dr --no-preserve=ownership \
             "$srcdir/aqueous/compositor/LICENSES/." \
-            "$pkgdir/usr/share/licenses/$pkgname/aqueous-compositor/"
+            "$pkgdir/usr/share/licenses/$pkgname/riverdelta/"
     fi
 }
