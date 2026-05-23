@@ -1,0 +1,4 @@
+[chiaki-ng]
+source = "git"
+git = "https://github.com/streetpea/chiaki-ng.git"
+prefix = "v"
