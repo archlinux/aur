@@ -14,9 +14,15 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/LuminaHUD"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+  local rev_count=$(git rev-list --count HEAD 2>/dev/null)
+  local short_rev=$(git rev-parse --short HEAD 2>/dev/null)
 
+  if [ -n "$rev_count" ] && [ -n "$short_rev" ]; then
+    printf "r%s.%s" "$rev_count" "$short_rev"
+  else
+    printf "r%s.%s" "$(git log -1 --format=%ct 2>/dev/null || date +%s)" "unknown"
+  fi
+}
 build() {
   cd "$srcdir/LuminaHUD"
   make
