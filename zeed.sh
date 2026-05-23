@@ -26,5 +26,14 @@ if [[ -d "$ZEED_BUNDLED_EXT" && -z "${ZEED_SKIP_BUNDLED_EXTENSION:-}" ]]; then
   ZEED_EXT_FLAGS="--load-extension=${ZEED_BUNDLED_EXT}"
 fi
 
+# Default chromium flags applied before user flags so users can override
+# them via ~/.config/zeed-flags.conf.
+#
+# --disable-features=TreesInViz: works around an upstream Chromium 147
+# GPU-process FATAL (cc/trees/layer_tree_host_impl.cc CHECK
+# viz_damage_rect.Contains(root_layer_damage_rect_), crbug.com/454680865).
+# Remove once JellyMander Phase 1a stabilizes upstream.
+ZEED_DEFAULT_FLAGS="--disable-features=TreesInViz"
+
 # shellcheck disable=SC2086
-exec /opt/zeed-browser/zeed $ZEED_EXT_FLAGS $ZEED_USER_FLAGS "$@"
+exec /opt/zeed-browser/zeed $ZEED_EXT_FLAGS $ZEED_DEFAULT_FLAGS $ZEED_USER_FLAGS "$@"
