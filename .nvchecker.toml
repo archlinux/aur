@@ -1,0 +1,4 @@
+[cloak-obfuscation]
+source = "git"
+git = "https://github.com/cbeuw/Cloak.git"
+prefix = "v"
