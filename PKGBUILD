@@ -1,7 +1,7 @@
 # Maintainer: AImixAE <AImixAE[at]outlook[dot]com>
 
 pkgname=openscreen-bin
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
 arch=('any')
@@ -19,19 +19,29 @@ source=(
     "$url/raw/refs/heads/main/LICENSE"
     "openscreen.desktop"
     "openscreen"
+    "Build_AppImage_Only.patch"
 )
-sha256sums=('d9bc4d43242533cf15a0c10f8d2e527c95bccf8a2a28b7b88f39a632adfbc327' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('bcf638edc983a3b23c0c39ac422108348ea6efc24b7faa29912d62b6f86d0572' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+_find_appimage() {
+    app="release/$pkgver/Openscreen-Linux-$pkgver.AppImage"
+    [[ ! -f "$app" ]] && app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
+
+    echo $app
+}
 
 prepare() {
+    patch -p0 < Build_AppImage_Only.patch
+
     (
         cd "openscreen-$pkgver"
         npm i
     )
 
-    if [[ -d "openscreen-$pkgver/release" ]]; then
-        echo "==> Clearing release dir"
-        rm -r "openscreen-$pkgver/release"
-    fi
+    # if [[ -d "openscreen-$pkgver/release" ]]; then
+    #     echo "==> Clearing release dir"
+    #     rm -r "openscreen-$pkgver/release"
+    # fi
 }
 
 build() {
@@ -40,25 +50,26 @@ build() {
         npm run build
     )
 
-    app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
+    app=$(_find_appimage)
     appdir=$(dirname $app)
 
+    echo "==> Extracting AppImage..."
     chmod +x "$app"
     (
         cd "$appdir"
-        "$app" --appimage-extract
+        "$app" --appimage-extract > /dev/null
     )
 }
 
 check() {
-    app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
+    app=$(_find_appimage)
     appdir=$(dirname $app)
 
     [[ -f "$app" ]]
 }
 
 package() {
-    app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
+    app=$(_find_appimage)
     appdir=$(dirname $app)
 
     install -Dm755 "$srcdir/openscreen" "$pkgdir/usr/bin/openscreen"
