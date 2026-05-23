@@ -3,7 +3,7 @@
 pkgname="astra-music-git"
 pkgdesc="Audiophile music player with advanced visualization"
 pkgrel=1
-pkgver="v0.6.0_beta_2_gcdf3ad6"
+pkgver="v0.6.0_beta_9_g9cf6bfb"
 
 url="https://github.com/Boof2015/astra"
 arch=('x86_64')
@@ -21,7 +21,7 @@ prepare() {
 
   npm install
 
-  cat > "${srcdir}/astra.desktop" << EOF
+  cat >"${srcdir}/astra.desktop" <<EOF
 [Desktop Entry]
 Name=Astra
 Comment=Audiophile music player with advanced visualization
