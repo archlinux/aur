@@ -10,7 +10,6 @@ pkgbase = luminahud-git
 	depends = glfw-x11
 	depends = libx11
 	depends = mesa
-	depends = imgui-backends-git
 	source = git+https://github.com/delmath/LuminaHUD.git
 	sha256sums = SKIP
 
