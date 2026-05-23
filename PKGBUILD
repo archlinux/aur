@@ -2,7 +2,7 @@
 
 pkgname=python-torchprofile
 _pkgname=torchprofile
-pkgver=0.0.4
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Profiler to count the number of MACs / FLOPs of PyTorch models"
 arch=('any')
@@ -10,9 +10,7 @@ url="https://github.com/zhijian-liu/torchprofile"
 license=('MIT')
 depends=(
   'python'
-  'python-numpy'
   'python-pytorch'
-  'python-torchvision'
 )
 makedepends=(
   'python-build'
@@ -21,7 +19,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zhijian-liu/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eceb3826ffed31781ce18d2cef6741406596ef56afeca0d8934bb1db49bd9d58')
+sha256sums=('ce1c4838cc70ce5e1f6d46913357bc302d49d80a45e0bf0fdf98213b34ee28de')
 
 build() {
   cd "$_pkgname-$pkgver"
