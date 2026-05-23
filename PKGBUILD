@@ -1,9 +1,9 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 
 pkgname=signal-cli-rest-api-git
-pkgver=0.99.r8.gdb63fd1
+pkgver=0.99.r38.g5c0bd05
 pkgrel=1
-pkgdesc="A small REST API around signal-cli (Go implementation)"
+pkgdesc="A small REST API around signal-cli (GIT VCS version with unix socket, token auth and polling support)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bbernhard/signal-cli-rest-api"
 license=('MIT')
@@ -16,12 +16,14 @@ source=(
   "signal-api.service"
   "signal-api.env"
   "polling-support.patch"
+  "token-auth-and-unix-socket.patch"
 )
 
 sha256sums=('SKIP'
-            'bf7360e70cfa83e47408fdadcb5b19177fcf4c8d9bf5c67bda97b3e356edb7fe'
-            '047a2ab37457609eea76d47c8db2df0f0148990b9ea50946f7168d13ef8da15f'
-            'bf9645023b0f23df716ddd5ae3dab241de8a8d9ddea0951f84a917e3cafdbdaa')
+            'f56566ef6c1138fc2cf1a789b7c1b49c63c9a5831368a3ca5468de6844d78c80'
+            'd80fb0030270f710ca6567e35ff31366b0bf7926792a61afa174c887c9745be7'
+            'bf9645023b0f23df716ddd5ae3dab241de8a8d9ddea0951f84a917e3cafdbdaa'
+            '6d3a7b54474c0a69cc2aacd206a2a78fbb27e88c2c59d6234ec6bd5bc011b7be')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -34,6 +36,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   patch -p1 -i "${srcdir}/polling-support.patch"
+  patch -p1 -i "${srcdir}/token-auth-and-unix-socket.patch"
 }
 
 build() {

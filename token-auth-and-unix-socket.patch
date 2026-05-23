@@ -1,0 +1,120 @@
+diff --git a/src/client/client.go b/src/client/client.go
+index 5dc5985..493ec10 100644
+--- a/src/client/client.go
++++ b/src/client/client.go
+@@ -441,7 +441,14 @@ func (s *SignalClient) Init(maxRetries int) error {
+ 		tcpPortsNumberMapping := s.jsonRpc2ClientConfig.GetTcpPortsForNumbers()
+ 		for number, tcpPort := range tcpPortsNumberMapping {
+ 			s.jsonRpc2Clients[number] = NewJsonRpc2Client(s.signalCliApiConfig, number)
+-			err := s.jsonRpc2Clients[number].Dial("127.0.0.1:"+strconv.FormatInt(tcpPort, 10), maxRetries)
++			var dialAddr string
++			socketPath, err := s.jsonRpc2ClientConfig.GetSocketPathForNumber(number)
++			if err == nil && socketPath != "" {
++				dialAddr = socketPath
++			} else {
++				dialAddr = "127.0.0.1:" + strconv.FormatInt(tcpPort, 10)
++			}
++			err = s.jsonRpc2Clients[number].Dial(dialAddr, maxRetries)
+ 			if err != nil {
+ 				return err
+ 			}
+diff --git a/src/client/jsonrpc2.go b/src/client/jsonrpc2.go
+index ef00633..79a6b62 100644
+--- a/src/client/jsonrpc2.go
++++ b/src/client/jsonrpc2.go
+@@ -7,7 +7,9 @@ import (
+ 	"errors"
+ 	"net"
+ 	"net/http"
++	"os"
+ 	"strconv"
++	"strings"
+ 	"sync"
+ 	"time"
+ 
+@@ -78,10 +80,21 @@ func NewJsonRpc2Client(signalCliApiConfig *utils.SignalCliApiConfig, number stri
+ 
+ func (r *JsonRpc2Client) Dial(address string, maxRetries int) error {
+ 	var err error
++	if len(address) >= 2 && address[:2] == "%h" {
++		address = os.Getenv("HOME") + address[2:]
++	} else if len(address) >= 5 && address[:5] == "$HOME" {
++		address = os.Getenv("HOME") + address[5:]
++	}
++
+ 	r.address = address
+ 	connected := false
++	network := "tcp"
++	if strings.Contains(address, "/") || strings.HasSuffix(address, ".sock") {
++		network = "unix"
++	}
++
+ 	for i := 0; i < maxRetries; i++ {
+-		r.conn, err = net.Dial("tcp", address)
++		r.conn, err = net.Dial(network, address)
+ 		if err != nil {
+ 			log.Info("Waiting for signal-cli to start up in daemon mode...")
+ 			time.Sleep(2 * time.Second)
+diff --git a/src/main.go b/src/main.go
+index 2450496..40918f5 100644
+--- a/src/main.go
++++ b/src/main.go
+@@ -93,6 +93,29 @@ func main() {
+ 
+ 	router.Use(gin.Recovery())
+ 
++	authToken := os.Getenv("AUTH_TOKEN")
++	if authToken != "" {
++		router.Use(func(c *gin.Context) {
++			path := c.Request.URL.Path
++			if path == "/v1/health" || (len(path) >= 8 && path[:8] == "/swagger") {
++				c.Next()
++				return
++			}
++			authHeader := c.GetHeader("Authorization")
++			var token string
++			if len(authHeader) > 7 && authHeader[:7] == "Bearer " {
++				token = authHeader[7:]
++			} else {
++				token = c.Query("token")
++			}
++			if token != authToken {
++				c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
++				return
++			}
++			c.Next()
++		})
++	}
++
+ 	port := utils.GetEnv("PORT", "8080")
+ 	if _, err := strconv.Atoi(port); err != nil {
+ 		log.Fatal("Invalid PORT ", port, " set. PORT needs to be a number")
+diff --git a/src/utils/config.go b/src/utils/config.go
+index 9163b2c..cc66cc8 100644
+--- a/src/utils/config.go
++++ b/src/utils/config.go
+@@ -10,7 +10,8 @@ import (
+ const MULTI_ACCOUNT_NUMBER string = "<multi-account>"
+ 
+ type JsonRpc2ClientConfigEntry struct {
+-	TcpPort int64 `yaml:"tcp_port"`
++	TcpPort    int64  `yaml:"tcp_port"`
++	SocketPath string `yaml:"socket_path"`
+ }
+ 
+ type JsonRpc2ClientConfigEntries struct {
+@@ -39,6 +40,14 @@ func (c *JsonRpc2ClientConfig) Load(path string) error {
+ 	return nil
+ }
+ 
++func (c *JsonRpc2ClientConfig) GetSocketPathForNumber(number string) (string, error) {
++	if val, ok := c.config.Entries[number]; ok {
++		return val.SocketPath, nil
++	}
++
++	return "", errors.New("Number " + number + " not found in local map")
++}
++
+ func (c *JsonRpc2ClientConfig) GetTcpPortForNumber(number string) (int64, error) {
+ 	if val, ok := c.config.Entries[number]; ok {
+ 		return val.TcpPort, nil
