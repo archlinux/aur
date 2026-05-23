@@ -1,6 +1,6 @@
 pkgbase = klyppd-bin
 	pkgdesc = Performance-first Linux clipping app with instant replay, trimming, and cloud uploads.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/brookerslyn/klyppd
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = klyppd-bin
 	depends = gst-plugins-bad
 	depends = gst-libav
 	optdepends = libnotify: desktop notifications for clip events
-	provides = klyppd=0.1.0
+	provides = klyppd=0.2.0
 	conflicts = klyppd
-	noextract = klyppd-0.1.0.deb
-	source = klyppd-0.1.0.deb::https://github.com/brookerslyn/klyppd/releases/download/v0.1.0/klyppd_0.1.0_amd64.deb
+	noextract = klyppd-0.2.0.deb
+	source = klyppd-0.2.0.deb::https://github.com/brookerslyn/klyppd/releases/download/v0.2.0/klyppd_0.2.0_amd64.deb
 	sha256sums = SKIP
 
 pkgname = klyppd-bin
