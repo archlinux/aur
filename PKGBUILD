@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://www.valentina-db.com"
 license=('custom')
 source_x86_64=("${pkgname}-${pkgver}-${CARCH}.rpm::http://valentina-db.com/download/prev_releases/${pkgver}/lin_64/vstudio_x64_17_lin.rpm")
-sha256sums_x86_64=('acea239ab643baf155d83cc55861df98b8c3d0b3632496a0a394eed6f6e305f9')
+sha256sums_x86_64=('61d6cf095ecf6c4b1d4cfb5c6a634dae771c79f348ed2dea7383b77afa1fb119')
 options=(!debug)
 package() {
 	install -d "${pkgdir}"/opt/VStudio
