@@ -2,7 +2,7 @@
 
 _pkgname=OpenBoardView
 pkgname=${_pkgname,,}
-pkgver=9.95.2
+pkgver=10.0.0
 pkgrel=1
 pkgdesc='Linux SDL/ImGui edition software for viewing .brd files'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("git+https://github.com/OpenBoardView/OpenBoardView.git#tag=${pkgver}"
         'git+https://github.com/sheredom/utf8.h.git'
         'git+https://github.com/madler/zlib.git'
 )
-b2sums=('ec3d0fe70350a429d0916774bcce4e77d2e91e326f7862e8746f27f1648dd795363cc9bf22ee288525e82db1af7d7ab0464cd25fd8929eac3bdc17ce76f0acd9'
+b2sums=('9a3ca60f9b030e1f2dbb2f37f409e2713fc959a5cdee4ec1b3becaa4725b603a5d579ff48ac278b8bb0199e2aa098e97f898ce34634d9478b44bbcf0339eb591'
         'SKIP'
         'SKIP'
         'SKIP'
