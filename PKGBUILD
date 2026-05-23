@@ -1,6 +1,6 @@
 # Maintainer: Lolle2000la
 pkgname=tapauth-git
-pkgver=ra4f28b0
+pkgver=0.1.16.r0.ga4f28b0
 pkgrel=1
 pkgdesc="Local smartphone-based authentication framework engine (Development/Git version)"
 arch=('x86_64')
