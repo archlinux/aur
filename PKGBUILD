@@ -1,6 +1,8 @@
+# Maintainer: smiley <smiley@archlinux.org>
+
 _pkgname=hyprlogin
 pkgname=hyprlogin-git
-pkgver=0.0.0.r418.5d39566
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Work-in-progress greetd greeter forked from hyprlock'
 arch=('x86_64')
