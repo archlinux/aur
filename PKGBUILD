@@ -5,7 +5,7 @@
 
 # Maintainer: TRBN <turbine@trbn.net>
 pkgname=tmsay
-pkgver=0.2.r12.529ddf8
+pkgver=0.2.r14.ac41be1
 pkgrel=1
 epoch=
 pkgdesc="like cowsay, but with anything or anyone you want."
@@ -38,11 +38,8 @@ package() {
 	mkdir -p $pkgdir/usr/share/$pkgname
 	mkdir -p $pkgdir/usr/bin
 	cp default $pkgdir/usr/share/$pkgname/default
-	cp tmsay $pkgdir/usr/share/$pkgname/tmsay
-	cd $pkgdir/usr/bin
-	ln -s ../share/tmsay/tmsay tmsay
+	cp tmsay $pkgdir/usr/bin/tmsay
 	cd $srcdir/tmsay
-	install -Dm755 "tmsay" "${pkgdir}/usr/share/${pkgname}/tmsay"
 	install -Dm755 "default" "${pkgdir}/usr/share/${pkgname}/default"
 	install -Dm755 "tmsay" "${pkgdir}/usr/bin/tmsay"
 }
