@@ -11,6 +11,7 @@ arch=('x86_64')
 url="https://github.com/DoubleStyx/Renderide"
 license=('MIT')
 depends=('gstreamer' 'gst-plugins-base-libs' 'zenity')
+optdepends=('openxr: VR support')
 makedepends=('cargo' 'git')
 provides=('renderide')
 options=(!lto)
@@ -43,7 +44,10 @@ package() {
 	cd "$pkgname"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname-renderer"
-	cp -r "crates/renderide/assets/xr" "$pkgdir/usr/bin/"
+	mkdir -p -m 755 "$pkgdir/usr/share/$_pkgname/"
+	cp -r "crates/renderide/assets/models" "$pkgdir/usr/share/$_pkgname/"
+	cp -r "crates/renderide/assets/xr" "$pkgdir/usr/share/$_pkgname/"
+	chmod -R a=rX,u+w "$pkgdir/usr/share/$_pkgname/"
 	install -Dm0755 -t "$pkgdir/usr/share/applications" "$srcdir/renderide.desktop"
 	install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
