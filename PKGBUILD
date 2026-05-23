@@ -8,7 +8,7 @@ _appname=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Single-host, read-only disk diagnostics TUI - eight tabs across devices, volumes, filesystems, IO, SMART, hot files, and insights"
 
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -27,7 +27,7 @@ provides=("${_appname}")
 options=('!lto' '!strip')
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('335266bce4d6e529b9297c3be11d3b37cc8000daae2a0dac253e201411d11f6b')
+sha256sums=('452cc2e709b1e2d2d8cea56bf00b7ed65d3e6a2735f343523f010686897ed90d')
 
 prepare() {
   cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
