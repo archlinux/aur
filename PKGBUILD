@@ -4,9 +4,9 @@ _corever=0.0.1
 
 pkgname=fvs2
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone CLI for FVS v2'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/fvs-lab/fvs2'
 license=('MIT')
 makedepends=('go')
