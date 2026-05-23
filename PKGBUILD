@@ -2,8 +2,8 @@
 
 pkgname=aerion-oauth-git
 pkgver=0.2.4.r2.g839a498
-pkgrel=2
-pkgdesc="An Open Source Lightweight E-Mail Client (OAuth Support via env variables)"
+pkgrel=3
+pkgdesc="An Open Source Lightweight E-Mail Client (OAuth support via env variables)"
 arch=(x86_64)
 url="https://github.com/hkdb/aerion"
 license=("Apache-2.0")
