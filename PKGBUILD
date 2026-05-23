@@ -3,7 +3,7 @@
 
 pkgname=valentina-studio
 pkgver=17.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Create, administer, query and explore DuckDB, ValentinaDB, MongoDB, MySQL, MariaDB, PostgreSQL, MS SQL Server & SQLite databases for FREE."
 arch=('x86_64')
 url="http://www.valentina-db.com"
