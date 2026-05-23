@@ -1,8 +1,8 @@
 # Maintainer: gustavojoaquin <gustavojoaquincalizayaleon2@gmail.com>
 pkgname=lm-studio
-pkgver=0.4.13
+pkgver=0.4.14
 pkgrel=1
-pkgdesc="LM Studio - .deb based version"
+pkgdesc="LM Studio - Run AI models, locally and privately (.deb)"
 arch=('x86_64')
 url="https://lmstudio.ai"
 license=('0BSD')
@@ -10,7 +10,7 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 options=('!strip')
 _pkgver=${pkgver}-${pkgrel}
 source=("https://installers.lmstudio.ai/linux/x64/${_pkgver}/LM-Studio-${_pkgver}-x64.deb")
-sha256sums=('6c4f4c2ce66b1ddd92d91802560b1555c0d4a3483fb72400367464a6d819fcdd')
+sha256sums=('b6a5a61f0058f72f8ad77ceaa6a669b473303f304574ea8f0ba54ccf60e68ee2')
 
 package() {
   tar -xJf data.tar.xz -C "${pkgdir}"
