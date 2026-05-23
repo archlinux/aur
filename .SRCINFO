@@ -1,6 +1,6 @@
 pkgbase = oopsmate-git
 	pkgdesc = UCI chess engine in Rust (git)
-	pkgver = r185.32179b9
+	pkgver = r0.0000000
 	pkgrel = 1
 	url = https://github.com/PS-Wizard/oopsmate
 	arch = x86_64
@@ -10,6 +10,10 @@ pkgbase = oopsmate-git
 	provides = oopsmate
 	conflicts = oopsmate
 	source = git+https://github.com/PS-Wizard/oopsmate.git
+	source = nn-1c0000000000.nnue::https://data.stockfishchess.org/nn/nn-1c0000000000.nnue
+	source = nn-37f18f62d772.nnue::https://data.stockfishchess.org/nn/nn-37f18f62d772.nnue
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = oopsmate-git
