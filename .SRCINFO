@@ -1,0 +1,21 @@
+pkgbase = hyprclock-git
+	pkgdesc = Git release of Hyprclock, a clock utility made for the Hyprland window manager.
+	pkgver = 0.1.0a.23.g3fd6a91
+	pkgrel = 1
+	url = https://github.com/cvusmo/hyprclock
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = gstreamer
+	depends = gst-plugins-base
+	provides = hyprclock
+	conflicts = hyprclock
+	conflicts = hyprclock-bin
+	conflicts = hyprclock-debug
+	conflicts = hyprclock-bin-debug
+	source = git+https://github.com/cvusmo/hyprclock.git
+	sha256sums = SKIP
+
+pkgname = hyprclock-git
