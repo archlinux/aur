@@ -4,7 +4,7 @@ _pkgauthor=BinaryHarbinger
 _pkgname=riftbar
 
 pkgname=${_pkgname}-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=0
 _pkgvername=v${pkgver}
 
@@ -30,7 +30,7 @@ source=(
 )
 
 
-sha256sums=('a9a6afa4e207bb5da067b4d02c260f0df21eb31988511a199b3c01c12ee2d819'
+sha256sums=('4936aea053807f8444b6a0b3b1ed7918fc5a56a5cf808b33a7c929bf47979b9f'
             'SKIP'
             'SKIP')
 
