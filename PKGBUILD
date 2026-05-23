@@ -1,6 +1,6 @@
 # Maintainer: en3 <ivanyalyshev@yandex.ru>
 pkgname=planner-app
-pkgver=0.1.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Clean weekly planner desktop app built with Next.js and Tauri"
 arch=("x86_64")
