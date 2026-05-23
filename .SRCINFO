@@ -1,0 +1,26 @@
+pkgbase = medley-bin
+	pkgdesc = Interlisp programming environment
+	pkgver = 260521
+	pkgrel = 1
+	url = https://interlisp.org/
+	arch = x86_64
+	license = MIT
+	depends = libbsd
+	depends = libx11
+	optdepends = man-db: show help with medley --man
+	optdepends = perl: developer scripts
+	optdepends = tigervnc: VNC display mode support
+	provides = medley
+	conflicts = medley
+	source = https://github.com/Interlisp/medley/releases/download/medley-260521-db8a7f4a/medley-full-linux-x86_64-260521-db8a7f4a_260319-9259716e.tgz
+	source = medley.sh
+	source = medley-LICENSE::https://raw.githubusercontent.com/Interlisp/medley/medley-260521-db8a7f4a/LICENSE
+	source = maiko-LICENSE::https://raw.githubusercontent.com/Interlisp/maiko/maiko-260319-9259716e/LICENSE
+	source = maiko-NOTICE::https://raw.githubusercontent.com/Interlisp/maiko/maiko-260319-9259716e/NOTICE
+	sha256sums = 79ab6960f45561ebecae66a89482742081ffa151f05409f1683f388a1dd4f071
+	sha256sums = 8ca860d7bc93ff9ecedce44ad46e7fb934d7037b9b80d2b6dafb500880c87ed9
+	sha256sums = 8f008511a3fb13e72b3f994886bba2781af79dfe57a6a56496c7c5c5ecfd8766
+	sha256sums = 2ce0363740d15460535f78ae70ab96cbe00e1053e3a81346873b2f7dfb877ced
+	sha256sums = 28fd0f03d8b2e976ea7bbfe103ac15c1a1a3bc7b8a0626b9141342205da7bba0
+
+pkgname = medley-bin
