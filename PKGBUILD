@@ -16,7 +16,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/JGH0/$pkgname/archive/v$pkg
 sha256sums=('cc5899decfd89fef50fc415e21ef50c635c7fe277e5adf70b0a7e6564d6e350f')
 
 package() {
-    install -Dm755 "$srcdir/waifu" "$pkgdir/usr/bin/waifu"
-    install -Dm755 "$srcdir/waifufetch" "$pkgdir/usr/bin/waifufetch"
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir/$pkgname-$pkgver"
+    install -Dm755 waifu "$pkgdir/usr/bin/waifu"
+    install -Dm755 waifufetch "$pkgdir/usr/bin/waifufetch"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
