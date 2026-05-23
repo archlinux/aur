@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Maintainer: Mohamed Hammad <Mohamed.Hammad@Steelbore.com>
+# Maintainer: Mohamed Hammad <Mohamed.Hammad@SpacecraftSoftware.org>
 #
 # gitway-git — builds gitway from the latest git HEAD.
 # Use this package if you want the cutting edge, or if your architecture
@@ -8,20 +8,20 @@
 # Build dependencies: rust (stable), cargo, perl (required by aws-lc-rs),
 #                     gcc, pkg-config, git
 #
-# Project page: https://gitway.steelbore.com/
+# Project page: https://SpacecraftSoftware.org/gitway/
 
 pkgname=gitway-git
 pkgver=r0.HEAD
 pkgrel=1
 pkgdesc="Pure-Rust SSH toolkit for Git: transport, keys, signing, agent — git HEAD"
 arch=('x86_64' 'aarch64')
-url="https://github.com/steelbore/gitway"
+url="https://github.com/Spacecraft-Software/Gitway"
 license=('GPL-3.0-or-later')
 provides=('gitway')
 conflicts=('gitway' 'gitway-bin')
 makedepends=('git' 'rust' 'cargo' 'perl' 'gcc' 'pkg-config')
 
-source=("${pkgname}::git+https://github.com/steelbore/gitway.git")
+source=("${pkgname}::git+https://github.com/Spacecraft-Software/Gitway.git")
 sha256sums=('SKIP')
 
 pkgver() {
