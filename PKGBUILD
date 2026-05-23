@@ -28,3 +28,4 @@ package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 ddev-clim.service "$pkgdir/usr/lib/systemd/user/ddev-clim.service"
 }
+sha256sums=('9176314875e164abc16ea30399a6a519a73f5fdf36f6e6fd727f6778bdf19be6')
