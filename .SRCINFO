@@ -1,8 +1,8 @@
 pkgbase = codex-desktop-linux
-	pkgdesc = Codex Desktop for Linux — community rebuild of the macOS OpenAI Codex Desktop app (all Linux features, no auto-updater)
-	pkgver = 26.513.31313.dev.r626.g33395586
+	pkgdesc = Codex Desktop for Linux — distsystem soft-fork (versioned-zip pinned, no auto-updater)
+	pkgver = 26.513.31313
 	pkgrel = 1
-	url = https://github.com/ilysenko/codex-desktop-linux
+	url = https://github.com/distsystem/codex-desktop-linux
 	install = codex-desktop-linux.install
 	arch = x86_64
 	license = MIT
@@ -45,12 +45,11 @@ pkgbase = codex-desktop-linux
 	optdepends = alsa-utils: audio playback for Read Aloud
 	optdepends = speech-dispatcher: system TTS bridge for Read Aloud
 	optdepends = espeak-ng: offline TTS fallback for Read Aloud
-	optdepends = python-pip: bootstrap the Kokoro voice runtime for Read Aloud
 	provides = codex-desktop
 	conflicts = codex-desktop
 	options = !debug
 	options = !strip
-	source = codex-desktop-linux::git+https://github.com/ilysenko/codex-desktop-linux.git
+	source = codex-desktop-linux::git+https://github.com/distsystem/codex-desktop-linux.git#branch=main
 	source = Codex-26.513.31313.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-26.513.31313.zip
 	sha256sums = SKIP
 	sha256sums = 6001ed876cc8b62e1ae41b7c9e1246c31e7bd13eb11aa5ba7ff163bd9ef88c80

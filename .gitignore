@@ -4,10 +4,8 @@ src/
 *.pkg.tar.zst
 *.pkg.tar.xz
 
-# downloaded macOS app payload (pinned arm64 zip; legacy unversioned dmg)
+# downloaded macOS app payload (pinned arm64 zip)
 Codex-*.zip
-Codex.dmg
 
-# makepkg VCS source mirror: a bare clone the git+ source caches next to the
-# PKGBUILD; it shares the package name. The build working copy lives in src/.
+# makepkg VCS source mirror (bare clone the git+ source caches next to PKGBUILD)
 /codex-desktop-linux/

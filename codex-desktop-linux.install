@@ -11,7 +11,7 @@ post_install() {
     _refresh_desktop
     cat <<'EOF'
 
-==> Codex Desktop (community Linux build). The in-app auto-updater is OFF;
+==> Codex Desktop (distsystem soft-fork). The in-app auto-updater is OFF;
     update with:  sudo pacman -Syu
 
 ==> Computer Use lets the Codex agent control your desktop. The MCP backend and

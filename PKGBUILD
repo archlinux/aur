@@ -1,21 +1,27 @@
-# Maintainer: fecet <xiezej@gmail.com>
+# Maintainer: distsystem <dev@dist.systems>
 
-# Community Linux rebuild of the macOS OpenAI Codex Desktop app. The packaging
-# logic lives upstream at https://github.com/ilysenko/codex-desktop-linux and
-# converts the proprietary Codex.dmg into a runnable Linux Electron tree.
+# Codex Desktop for Linux — distsystem soft-fork.
 #
-# The macOS app payload is pinned to the appcast-versioned arm64 zip
-# (Codex-darwin-arm64-$_appver.zip) and checksummed, so the build is reproducible.
-# _appver tracks the Sparkle appcast shortVersionString (bumped by apply.sh/
-# nvchecker); pkgver() appends the git rev so patch-logic changes also bump pkgver.
+# Converts OpenAI's macOS Codex payload into a Linux Electron tree. Pinned to a
+# patch-validated version (the appcast-versioned arm64 zip; _appver is kept in
+# sync with flake.nix's codexVersion). Sourced from main (rolling): the
+# distsystem fork stays rebased on upstream/main, and main is force-pushed only
+# after CI validates the cross-combination, so main is always last-known-good
+# — no separate tag needed.
+#
+# This is NOT the PKGBUILD.template path: that template is the updater-rebuild
+# shell (rendered by build-pacman.sh, bundled into the update-builder and
+# referenced by updater/src/builder.rs). This file is a standalone PKGBUILD
+# for the no-updater pacman/AUR install path; updates come from pacman.
 
 pkgname=codex-desktop-linux
-_appver=26.513.31313   # Sparkle appcast shortVersionString; bumped by apply.sh/nvchecker
-pkgver=26.513.31313.dev.r626.g33395586   # placeholder; pkgver() derives the real value
+# _appver MUST match flake.nix's codexVersion — same versioned zip.
+_appver=26.513.31313
+pkgver=26.513.31313
 pkgrel=1
-pkgdesc="Codex Desktop for Linux — community rebuild of the macOS OpenAI Codex Desktop app (all Linux features, no auto-updater)"
+pkgdesc="Codex Desktop for Linux — distsystem soft-fork (versioned-zip pinned, no auto-updater)"
 arch=('x86_64')
-url="https://github.com/ilysenko/codex-desktop-linux"
+url="https://github.com/distsystem/codex-desktop-linux"
 license=('MIT')
 depends=(
     'python'
@@ -43,12 +49,12 @@ depends=(
     'pango'
 )
 makedepends=(
-    'git'     # source clone
-    '7zip'    # modern 7z/7zz for the APFS DMG (old p7zip is rejected by check_deps)
-    'nodejs'  # asar patch, electron-rebuild, feature stage hooks
+    'git'     # clone the distsystem fork (rolling main)
+    '7zip'    # extract the macOS app payload
+    'nodejs'  # asar patch, electron-rebuild, feature stage hooks, validate-patch-report
     'npm'     # native module install (better-sqlite3, node-pty)
     'rust'    # cargo: Computer Use + read-aloud-mcp backends
-    'curl'    # DMG / Electron / managed Node downloads
+    'curl'    # Electron / managed Node downloads
     'unzip'   # Electron runtime extraction
 )
 optdepends=(
@@ -62,34 +68,31 @@ optdepends=(
     'alsa-utils: audio playback for Read Aloud'
     'speech-dispatcher: system TTS bridge for Read Aloud'
     'espeak-ng: offline TTS fallback for Read Aloud'
-    'python-pip: bootstrap the Kokoro voice runtime for Read Aloud'
 )
 provides=('codex-desktop')
 conflicts=('codex-desktop')
 options=('!debug' '!strip')
 install="$pkgname.install"
 source=(
-    "$pkgname::git+https://github.com/ilysenko/codex-desktop-linux.git"
+    "$pkgname::git+https://github.com/distsystem/codex-desktop-linux.git#branch=main"
     "Codex-$_appver.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-$_appver.zip"
 )
 sha256sums=('SKIP'
             '6001ed876cc8b62e1ae41b7c9e1246c31e7bd13eb11aa5ba7ff163bd9ef88c80')
 
-# Installed app identity stays "codex-desktop": it matches the Electron app's
-# WM_CLASS and settings dir (~/.config/codex-desktop) and the upstream native
-# package, so the desktop entry binds the taskbar icon correctly.
+# Installed app identity stays "codex-desktop": matches the Electron WM_CLASS,
+# the ~/.config/codex-desktop settings dir, and provides/conflicts.
 _appname=codex-desktop
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    printf '%s.dev.r%s.g%s' "$_appver" "$(git rev-list --count HEAD)" "$(git rev-parse --short=8 HEAD)"
+    printf '%s.r%s.g%s' "$_appver" "$(git rev-list --count HEAD)" "$(git rev-parse --short=8 HEAD)"
 }
 
 prepare() {
     cd "$srcdir/$pkgname"
-
-    # Enable every Linux feature except the no-op example; the in-app Computer
-    # Use UI is opened separately via an env flag in build().
+    # Enable every Linux feature; the in-app Computer Use UI is opened via the
+    # env flag in build().
     cat > linux-features/features.json <<'JSON'
 {"enabled":["open-target-discovery","zed-opener","copilot-reasoning-effort","read-aloud","read-aloud-mcp","conversation-mode","remote-control-ui","remote-mobile-control"]}
 JSON
@@ -97,32 +100,35 @@ JSON
 
 build() {
     cd "$srcdir/$pkgname"
-
-    # Let the upstream toolchain (electron-rebuild, cargo, node-gyp) own its
-    # compile flags; makepkg defaults can break the prebuilt-runtime ABI.
+    # Let the upstream toolchain own its compile flags; makepkg defaults can
+    # break the prebuilt-runtime ABI.
     unset CFLAGS CXXFLAGS LDFLAGS
 
-    export PACKAGE_WITH_UPDATER=0                 # updates come from pacman/AUR
+    export PACKAGE_WITH_UPDATER=0                 # updates come from pacman
     export CODEX_LINUX_ENABLE_COMPUTER_USE_UI=1   # expose the in-app Computer Use UI
-
-    # Pin the macOS app payload to the appcast-versioned arm64 zip (no versioned
-    # .dmg exists); 7z extracts the .app and only the JS asar + webview are used
-    # (native modules are rebuilt for Linux), so the macOS arch is irrelevant.
     export PROVIDED_DMG_PATH="$srcdir/Codex-$_appver.zip"
+    # Have install.sh write the patch report so check() can validate it.
+    export CODEX_PATCH_REPORT_JSON="$srcdir/patch-report.json"
 
-    # codex-app/: patches app.asar, rebuilds native modules, builds Rust backends,
+    # Patches app.asar, rebuilds native modules, builds the Rust backends,
     # runs feature stage hooks. --fresh is non-interactive.
     ./install.sh --fresh
 }
 
+check() {
+    # Patch gate: every makepkg (CI + AUR users) validates that the
+    # required-upstream patches actually applied against the pinned versioned
+    # zip. Fails if a required patch was skipped or failed.
+    cd "$srcdir/$pkgname"
+    node scripts/ci/validate-patch-report.js "$srcdir/patch-report.json" --profile upstream-build
+}
+
 package() {
     cd "$srcdir/$pkgname"
-
     export PACKAGE_WITH_UPDATER=0
 
-    # Variables build-pacman.sh sets before sourcing the staging helpers; we
-    # stage straight into $pkgdir instead of rendering a template + nesting
-    # makepkg. The updater-off path skips polkit/systemd/update-builder.
+    # Variables the staging helpers expect; stage straight into $pkgdir. The
+    # updater-off path skips polkit/systemd/update-builder.
     export REPO_DIR="$PWD"
     export APP_DIR="$PWD/codex-app"
     export PACKAGE_NAME="$_appname"
