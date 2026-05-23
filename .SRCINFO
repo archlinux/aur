@@ -1,6 +1,6 @@
 pkgbase = hpr
 	pkgdesc = Offline zero-account activity tracker
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/plexescor/HPR
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hpr
 	makedepends = curl
 	makedepends = tar
 	depends = glibc
-	source = hpr-0.4.tar.gz::https://github.com/plexescor/HPR/archive/refs/tags/v0.4.tar.gz
+	source = hpr-0.5.tar.gz::https://github.com/plexescor/HPR/archive/refs/tags/v0.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = hpr
