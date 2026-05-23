@@ -1,6 +1,6 @@
 pkgbase = file_clipper
 	pkgdesc = Command line utility for copying/moving files
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/ruiiiijiiiiang/file_clipper
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = file_clipper
 	depends = glibc
 	provides = clp
 	conflicts = clp
-	source = file_clipper-0.1.4.tar.gz::https://github.com/ruiiiijiiiiang/file_clipper/archive/v0.1.4.tar.gz
-	sha256sums = ccf0ea03bd9e743258574725d09f5ab80934f4efd4a44e0e8ef953a88710cdc3
+	source = file_clipper-0.1.5.tar.gz::https://github.com/ruiiiijiiiiang/file_clipper/archive/v0.1.5.tar.gz
+	sha256sums = 0c95290fda94fac33c3d17c6a000a79aa28dad25b45acd50d2f4dc97e036ce77
 
 pkgname = file_clipper

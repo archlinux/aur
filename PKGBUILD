@@ -1,6 +1,6 @@
 # Maintainer: Rui Jiang <me@ruijiang.me>
 pkgname=file_clipper
-pkgver=0.1.4
+pkgver=0.1.5
 _binname=clp
 pkgrel=1
 pkgdesc="Command line utility for copying/moving files"
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('cargo' 'rust')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ruiiiijiiiiang/file_clipper/archive/v$pkgver.tar.gz")
-sha256sums=('ccf0ea03bd9e743258574725d09f5ab80934f4efd4a44e0e8ef953a88710cdc3')
+sha256sums=('0c95290fda94fac33c3d17c6a000a79aa28dad25b45acd50d2f4dc97e036ce77')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
