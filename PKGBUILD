@@ -2,8 +2,8 @@
 
 pkgname=ffmpeg-dektec
 pkgver=2025.04.0
-pkgrel=3
-_sdkver=2026.02.0
+pkgrel=4
+_sdkver=2026.05.0
 pkgdesc="FFmpeg Integration for DekTec Devices"
 arch=('x86_64')
 url="https://www.dektec.com/products/SDK/ffmpeg/"
@@ -22,6 +22,7 @@ depends=(
   'libxv'
   'libxcb'
   'sdl2'
+  'sndio'
   'xz'
   'zlib'
 )
@@ -29,13 +30,14 @@ makedepends=(
   'pkg-config'
   'yasm'
 )
+options=('!lto' '!debug')
 source=(
   "FFmpeg_v${pkgver}.tar.gz::https://www.dektec.com/products/SDK/ffmpeg/linux/downloads/FFmpeg_v${pkgver}.tar.gz"
   "LinuxSDK_v${_sdkver}.tar.gz::https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz"
 )
 noextract=("FFmpeg_v${pkgver}.tar.gz")
 sha256sums=('b1f83ddcbf602a2a4b7b29864a54e21cfa4ff86c4707c9c945629359027afd69'
-            '38f93040201082ce9b5109c386b25785068e24db426f9206540a03724836b3a5')
+            'de710978c419ce7a5c5cfd387d8fa68a1529cd29017d23bbdcc84fdb29e48c7f')
 
 prepare() {
   # Extract all files from DekTec upstream
@@ -58,25 +60,21 @@ build() {
     --disable-doc \
     --disable-asm \
     --disable-vulkan \
-    --disable-ffprobe \
     --enable-static \
+    --enable-ffplay \
+    --enable-ffprobe \
     --enable-small \
     --enable-dektec \
     --enable-nonfree
   make
-  # Fasttools
-  # make tools/qt-faststart
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  # Custom standalone installation
+  # Install binaries
   install -vDm 755 "ffmpeg" "${pkgdir}/usr/bin/ffmpeg-dektec"
   install -vDm 755 "ffplay" "${pkgdir}/usr/bin/ffplay-dektec"
-
-  # Standard installation method
-  # make DESTDIR="$pkgdir" install install-man
-  # install -Dm 755 "tools/qt-faststart" -t "${pkgdir}/usr/bin"
+  install -vDm 755 "ffprobe" "${pkgdir}/usr/bin/ffprobe-dektec"
 
   # Licenses
   install -vDm 644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.FFmpeg"
