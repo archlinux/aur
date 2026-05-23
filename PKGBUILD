@@ -4,7 +4,7 @@
 # Contributor: Andrey Kolchenko <andrey@kolchenko.me>
 pkgname=pam-python
 pkgver=1.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc='Python for PAM'
 arch=('x86_64')
 url='http://pam-python.sourceforge.net/'
@@ -25,12 +25,16 @@ sha256sums=('fc69d7717db0509111500a81053487fa7684e1be3b7d0ae2b51970b6fdc918f6')
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   sed -i'' 's|LIBDIR ?= /lib/security|LIBDIR ?= /usr/lib/security|g' src/Makefile
+  sed -i 's/-Werror//g' src/Makefile
   # sed -n '/^License/,/^--$/p' README.txt | grep -v -e '^License' -e '^-\+' > LICENSE
-  sed -n '/^License/,/^--$/p' README.txt | grep -v -e '^License' -e '^-\+' | awk '{sub(/^[ \t]+/, ""); lines[NR]=$0} END {for(i=2; i<=NR-2; i++) print lines[i]}' >LICENSE
+  sed -n '/^License/,/^--$/p' README.txt | awk '{sub(/^[ \t]+/, ""); lines[NR]=$0} END {for(i=3; i<=NR-3; i++) print lines[i]}' >LICENSE
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  export CFLAGS+=" -D_GNU_SOURCE -Wno-error"
+
   PREFIX=/usr make
 }
 
