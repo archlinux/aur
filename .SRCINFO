@@ -1,0 +1,37 @@
+pkgbase = caddy-ratelimit
+	pkgdesc = Fast web server with automatic HTTPS with ratelimit support
+	pkgver = 2.11.3
+	pkgrel = 1
+	url = https://github.com/caddyserver/caddy
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	makedepends = xcaddy
+	depends = glibc
+	depends = mailcap
+	provides = caddy
+	conflicts = caddy
+	options = !lto
+	backup = etc/caddy/Caddyfile
+	source = git+https://github.com/caddyserver/caddy.git#tag=v2.11.3
+	source = caddy-dist::git+https://github.com/caddyserver/dist.git#tag=v2.11.3
+	source = caddy.service
+	source = caddy-api.service
+	source = caddy.tmpfiles
+	source = caddy.sysusers
+	source = Caddyfile
+	source = use-data-dir-for-autosave.patch
+	source = caddy-disable-executable-altering-commands.patch::https://src.fedoraproject.org/rpms/caddy/raw/rawhide/f/0001-Disable-commands-that-can-alter-the-binary.patch
+	validpgpkeys = 29D0817A67156E4F25DC24782A349DD577D586A5
+	sha512sums = ba086524507cf013b143305bfdaf87402d326f76b4b9451d68b15415b37eb1418126a3f80e842bb79331564302c67198353eaa6e6968591805d7321a64745db6
+	sha512sums = f379a8249ebf4ac315ece606ba60cb66b6f1edc67c560cd29a847d1a05f8175583c3b0b8b8de50cb7cea41cb3186fd2f6d81d87f45eb76f5912eb37a84522362
+	sha512sums = e6cdf5f81af01d0a6290ef9503d0bd90244684a6305e5638f079c234b2bc6454688daea3ea9d1b6a6f00eeba0375e9c4372e64c5cb49b5d1206384d2a7201273
+	sha512sums = 6c9d5dce22f1f0f4e222d4adeccd93c486b3be2ac221a7f8a58933b22ce91fe3da8ad38e6db7212846e4ab6336ebc058df16215a43636b965dfed469b3aaa2f6
+	sha512sums = 55ee8d3f8b14f9adddc7a1026addcea4f85b4bae4cd512fd4da2a5e8adaae4b6fd0f486d2e3847f75518f4710a897b4fca84e48ee15700b968bad762125c4742
+	sha512sums = b24ff0fc8df05ac92ba6860ce1b9975ecce48492b08c1b03545e7b20d2956f130cdee215fc78c751f9ab4869008e2b9bf7f861311fe16c8f5a85a42e347337c6
+	sha512sums = 4be1ed23e6600d8072c7f4fabd2bd926708502a55d84ae4f62aff9885c7b8e45ad0554503d0fc796338577adfca9e467c468a82ba56ffd69e4ec2778d69bc198
+	sha512sums = 563d6b45e91fc584fb5a27caaa382f59c140cb0a1b28b8d8faced4f7c7cad86d8671eb6ac10056f41518a842c8f606130d7e0c71df2b731d5eb0b4c868ea5d41
+	sha512sums = 42384fa3314e367c4d7ac3e07af66cf7000f68b6d6354183c5ee1579bd46ea6a29edfa84f9cdf5084d99d74af50ea5b14e3979d38ff806232756991bcac2e8db
+
+pkgname = caddy-ratelimit
