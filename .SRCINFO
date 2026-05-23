@@ -1,0 +1,19 @@
+pkgbase = python-touying
+	pkgdesc = A powerful package for creating presentation slides in Typst
+	pkgver = 0.14.4
+	pkgrel = 1
+	url = https://github.com/touying-typ/touying-exporter
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pptx>=0.6
+	depends = python-pillow
+	depends = python-jinja
+	source = python-touying-0.14.4.tar.gz::https://github.com/touying-typ/touying-exporter/archive/0.14.4.tar.gz
+	sha256sums = e27a7491190264fcc6f4b6eaa34feef7c0f605949ea52b54d001238456f158a8
+
+pkgname = python-touying
