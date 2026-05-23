@@ -43,9 +43,9 @@ Categories=Game;Emulator;
 Comment=Nintendo Switch Emulator - Nightly build
 EOF
 
-    # Icon
-    if [ -f squashfs-root/AppImageBuilder/assets/citron.svg ]; then
-        install -Dm644 squashfs-root/AppImageBuilder/assets/citron.svg \
+        # Icon
+    if [ -f squashfs-root/org.citron_emu.citron.svg ]; then
+        install -Dm644 squashfs-root/org.citron_emu.citron.svg \
             "${pkgdir}/usr/share/icons/hicolor/scalable/apps/citron-neo.svg"
     fi
 }
