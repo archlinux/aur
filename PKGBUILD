@@ -1,6 +1,6 @@
 # Maintainer: louis4545 <la.programmations@gmail.com>
 pkgname=superset-desktop-bin
-pkgver=1.11.1
+pkgver=1.11.2
 pkgrel=1
 pkgdesc="IDE for the AI Agents Era - Run an army of Claude Code, Codex, etc. on your machine"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('fuse2' 'hicolor-icon-theme')
 options=(!strip !debug)
 _appimage="superset-${pkgver}-x86_64.AppImage"
 source=("${_appimage}::https://github.com/superset-sh/superset/releases/download/desktop-v${pkgver}/${_appimage}")
-sha256sums=('ff134f59d6076695687b898f23b51f2f4afe83cfe71501cd9e8cf9d5c1f1953e')
+sha256sums=('cf66c9ce6003ab60e5614a379e337afd7c10963b4b7b3c9dc3a846bd9fd43a7c')
 noextract=("${_appimage}")
 
 prepare() {
