@@ -4,7 +4,7 @@
 
 pkgname=audacity-openvino
 pkgver=3.7.7
-pkgrel=4
+pkgrel=5
 epoch=2
 
 # Auto-track latest 3.7.x release tag; override with explicit pkgver if needed
@@ -37,7 +37,7 @@ provides=(
 	audacity
 )
 makedepends=(
-  git cmake chrpath ffmpeg rapidjson wxwidgets-gtk3 vst3sdk opencl-clhpp
+  git cmake chrpath ffmpeg rapidjson wxwidgets-gtk3 vst3sdk opencl-clhpp python
 )
 source=(
    "git+https://github.com/audacity/audacity.git"
@@ -130,6 +130,28 @@ build() {
       export LIBTORCH_ROOTDIR="/opt/libtorch/"
     else
       export LIBTORCH_ROOTDIR="/opt/libtorch-cpu/"
+    fi
+
+    # Fix ELF load command alignment in libtorch_cpu.so at the selected path.
+    # Pre-built ROCm binaries sometimes ship zero-length LOAD segments with
+    # misaligned p_offset, glibc rejects with "not page-aligned" (bug #2).
+    if [ -f "${LIBTORCH_ROOTDIR}/lib/libtorch_cpu.so" ]; then
+      python3 -c "
+import struct
+with open('${LIBTORCH_ROOTDIR}/lib/libtorch_cpu.so', 'r+b') as f:
+    f.seek(32); e_phoff = struct.unpack('<Q', f.read(8))[0]
+    f.seek(56); e_phnum = struct.unpack('<H', f.read(2))[0]
+    fixed = 0
+    for i in range(e_phnum):
+        entry_off = e_phoff + i * 56; f.seek(entry_off)
+        p_type, p_flags, p_offset, p_vaddr, p_paddr, p_filesz, p_memsz, p_align = struct.unpack('<IIQQQQQQ', f.read(56))
+        if p_type != 1 or p_filesz or p_memsz: continue
+        if (p_vaddr - p_offset) & (p_align - 1) == 0: continue
+        f.seek(entry_off + 8); f.write(struct.pack('<Q', p_vaddr))
+        print(f'Fixed segment {i}: p_offset 0x{p_offset:x} -> 0x{p_vaddr:x}'); fixed += 1
+    if fixed: print(f'Fixed {fixed} ELF segment(s) in libtorch_cpu.so')
+    else: print('No ELF alignment issues in libtorch_cpu.so')
+"
     fi
 
     local cmake_options=(

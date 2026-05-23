@@ -1,3 +1,13 @@
+2026-05-23  audacity-openvino 2:3.7.7-5
+
+  * Fix ELF load command alignment in libtorch_cpu.so at build time.
+    Pre-built ROCm libtorch binaries sometimes contain a zero-length
+    LOAD segment with misaligned p_offset, which glibc's dlopen()
+    rejects with "not page-aligned".  The build now patches the
+    system libtorch_cpu.so before linking, fixing the misleading
+    "Inappropriate ioctl for device" error when loading mod-openvino.
+  * Add python to makedepends for the ELF repair step.
+
 2026-05-23  audacity-openvino 1:3.7.7-4
 
   * Update maintainer to Selene Bray-Hernandez <selebray1998@gmail.com>.

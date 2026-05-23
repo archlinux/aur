@@ -1,7 +1,7 @@
 pkgbase = audacity-openvino
 	pkgdesc = Audacity - Digital audio editor with AI support via openvino (mod-openvino)
 	pkgver = 3.7.7
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 2
 	url = https://audacityteam.org
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = audacity-openvino
 	makedepends = wxwidgets-gtk3
 	makedepends = vst3sdk
 	makedepends = opencl-clhpp
+	makedepends = python
 	depends = libtorch
 	depends = whisper.cpp-openvino
 	depends = alsa-lib
