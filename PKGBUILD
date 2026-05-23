@@ -2,7 +2,7 @@
 
 pkgname=zen-browser-twilight-bin
 pkgver=1.21t
-pkgrel=1
+pkgrel=2
 pkgdesc="Zen Browser - Twilight nightly build, a Firefox-based browser focused on privacy"
 arch=('x86_64' 'aarch64')
 url="https://zen-browser.app/"
@@ -25,8 +25,8 @@ source_aarch64=('https://github.com/zen-browser/desktop/releases/download/twilig
 sha512sums=('dae4133154524cca0ed0bed47b9c2a6070be2e9aba603442e3050c40a15fd04b00dd502eeab89b8a0f51ee27020a19b0ee5f2ac87cd4ae9c0694fd21d330c749'
             '5f16ff2b8b84402b19b735e2b627d8290bdf9289e7ea26973aa6dc339ce6c9835ce6c4c12df881436108894bcee5623e43b5ef090c641031369ac28975b6107e'
             'f17d02c67f731ea27401176d2fb320a093367d94c8cbfd18a3b76c6f516994b8c547cee970b7bbf0422767064d62410884e07ae6e95b59007b48869e750fdcd9')
-sha512sums_x86_64=('5aa164745b4dd3e24db46cdeb7cff7eddb53fb48eed1297011dbfbc6c008cd3b1c27021ebe8de25ebab736650ee3495a8ebf3d83e8a7032701dfafe1a9f984bb')
-sha512sums_aarch64=('0015e36dd2518d2569002e0083c90e38ab05d78152fcf4afb05e6f2846b2343ef67fc20cb335bbf6b13426a76ac638842ac933cd672c481c252513f676ee5794')
+sha512sums_x86_64=('66840ee5e5bee3bc18799fa9a9cc71a419dbe30d5675738e9b02862bbb1652deeab41fa20b9489c474a38b77d64d340a8744c5a8e4dd450e739cc2f01a997108')
+sha512sums_aarch64=('2dd67fdc79eaafe49312954e44bf8bd2e2b504eb12d9504d9a099afef4372f0d9272b61508810c04d5ae7c216c2c9a861e239239434df1485ea92a45e65ba9e4')
 
 package() {
     install -d "${pkgdir}/opt/${pkgname}"
