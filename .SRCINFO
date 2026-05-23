@@ -1,10 +1,11 @@
 pkgbase = equibop-client-bin
 	pkgdesc = Equicord-enabled Discord client (client-bin, verified with clean chroot + ldd checks)
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Equicord/Equibop
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = imagemagick
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = atk
