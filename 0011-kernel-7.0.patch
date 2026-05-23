@@ -1,0 +1,69 @@
+Based on https://aur.archlinux.org/cgit/aur.git/tree/0007-kernel-nvidia-linux-7-0-0-remove-return-code-of-signaling-functions.patch?h=nvidia-550xx-dkms
+
+diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
+index 792287b..738a9ae 100644
+--- a/common/inc/nv-linux.h
++++ b/common/inc/nv-linux.h
+@@ -222,6 +222,10 @@
+ #include <linux/fb.h>               /* fb_info struct                   */
+ #include <linux/screen_info.h>      /* screen_info                      */
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 20, 0)
++#include <linux/sysfb.h>            /* sysfb_primary_display            */
++#endif
++
+ #if !defined(CONFIG_PCI)
+ #warning "Attempting to build driver for a platform with no PCI support!"
+ #include <asm-generic/pci-dma-compat.h>
+diff --git a/nvidia-drm/nvidia-dma-fence-helper.h b/nvidia-drm/nvidia-dma-fence-helper.h
+index a09ab76..e46260c 100644
+--- a/nvidia-drm/nvidia-dma-fence-helper.h
++++ b/nvidia-drm/nvidia-dma-fence-helper.h
+@@ -7,7 +7,7 @@
+  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+  * and/or sell copies of the Software, and to permit persons to whom the
+  * Software is furnished to do so, subject to the following conditions:
+- *
++OB *
+  * The above copyright notice and this permission notice shall be included in
+  * all copies or substantial portions of the Software.
+  *
+@@ -40,6 +40,8 @@
+ #include <linux/dma-fence.h>
+ #endif
+ 
++#include <linux/version.h>
++
+ #if defined(NV_LINUX_FENCE_H_PRESENT)
+ typedef struct fence nv_dma_fence_t;
+ typedef struct fence_ops nv_dma_fence_ops_t;
+@@ -89,14 +91,26 @@ nv_dma_fence_default_wait(nv_dma_fence_t *fence,
+ #endif
+ }
+ 
+-static inline int nv_dma_fence_signal(nv_dma_fence_t *fence) {
++// Rel. commit "dma-buf/dma-fence: Remove return code of signaling-functions" (Philipp Stanner, 1 Dec 2025)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 20, 0)
++    #define DMA_FENCE_RETURN_TYPE void
++    #define DMA_FENCE_RETURNING
++#else
++    #define DMA_FENCE_RETURN_TYPE int
++    #define DMA_FENCE_RETURNING return
++#endif
++
++static inline DMA_FENCE_RETURN_TYPE nv_dma_fence_signal(nv_dma_fence_t *fence) {
+ #if defined(NV_LINUX_FENCE_H_PRESENT)
+-    return fence_signal(fence);
++    DMA_FENCE_RETURNING fence_signal(fence);
+ #else
+-    return dma_fence_signal(fence);
++    DMA_FENCE_RETURNING dma_fence_signal(fence);
+ #endif
+ }
+ 
++#undef DMA_FENCE_RETURN_TYPE
++#undef DMA_FENCE_RETURNING
++
+ static inline u64 nv_dma_fence_context_alloc(unsigned num) {
+ #if defined(NV_LINUX_FENCE_H_PRESENT)
+     return fence_context_alloc(num);
