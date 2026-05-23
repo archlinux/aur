@@ -1,0 +1,34 @@
+#!/bin/sh
+
+pre_install() {
+  VAR1="AERION_MICROSOFT_CLIENT_ID"
+  VAR2="AERION_GOOGLE_CLIENT_SECRET"
+  VAR3="AERION_MICROSOFT_CLIENT_ID"
+
+  if [ -z "${!VAR1}" ] && [ -z "${!VAR2}" ] && [ -z "${!VAR3}" ]; then
+    echo "======================================================================="
+    echo "  OAuth: No Google or Microsoft config found."
+    echo "======================================================================="
+  fi
+}
+
+pre_upgrade() {
+  pre_install
+}
+
+post_install() {
+  echo "  In case Aerion does not start, try setting"
+  echo "  WEBKIT_DISABLE_COMPOSITING_MODE=1."
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+  echo "  If you don't need them anymore, consider removing the Aerion OAuth"
+  echo "  environment variables:
+  echo "   - AERION_GOOGLE_CLIENT_ID
+  echo "   - AERION_GOOGLE_CLIENT_SECRET
+  echo "   - AERION_MICROSOFT_CLIENT_ID
+}

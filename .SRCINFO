@@ -1,0 +1,30 @@
+pkgbase = aerion-oauth-git
+	pkgdesc = An Open Source Lightweight E-Mail Client (OAuth Support via env variables)
+	pkgver = 0.2.4.r2.g839a498
+	pkgrel = 1
+	url = https://github.com/hkdb/aerion
+	install = aerion-oauth-git.install
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	makedepends = wails
+	depends = at-spi2-core
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = harfbuzz
+	depends = libsoup3
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = zlib
+	provides = aerion=0.2.4.r2.g839a498
+	conflicts = aerion
+	options = !debug
+	options = !lto
+	source = aerion-oauth-git::git+https://github.com/hkdb/aerion.git
+	b2sums = SKIP
+
+pkgname = aerion-oauth-git
