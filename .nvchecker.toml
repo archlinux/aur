@@ -1,0 +1,5 @@
+[slidge-whatsapp]
+source = "git"
+git = "https://codeberg.org/slidge/slidge-whatsapp.git"
+prefix = "v"
+exclude_regex=".*(rc|alpha|beta).*"

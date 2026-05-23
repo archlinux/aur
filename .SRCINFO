@@ -1,0 +1,20 @@
+pkgbase = slidge-whatsapp
+	pkgdesc = A feature-rich Telegram to XMPP puppeteering gateway, based on slidge and Pyrofork.
+	pkgver = 0.3.10
+	pkgrel = 1
+	url = https://codeberg.org/slidge/slidge-whatsapp
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	backup = etc/slidge-whatsapp.ini
+	source = slidge-whatsapp-0.3.10.tar.gz::https://codeberg.org/slidge/slidge-whatsapp/archive/v0.3.10.tar.gz
+	source = https://codeberg.org/slidge/slidge/raw/tag/v0.3.10/dev/confs/slidge-example.ini
+	source = slidge-whatsapp.service
+	md5sums = 2ea79960f18933c0b23b9bb4ee7613cd
+	md5sums = d44db4d0f3adc01f2fd43db7cbed1d40
+	md5sums = b20edb817bc9d59e5b91fb87a3e978b1
+
+pkgname = slidge-whatsapp
