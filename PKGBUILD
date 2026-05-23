@@ -2,7 +2,7 @@
 
 pkgname=python-roboflow
 _pkgname=roboflow
-pkgver=1.2.13
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="Official Python package for working with the Roboflow API"
 arch=('any')
@@ -28,6 +28,7 @@ depends=(
   'python-packaging'
   'python-requests-toolbelt'
   'python-filetype'
+  'python-typer'
   'python-pi-heif'
   'python-pillow-avif-plugin'
 )
@@ -41,7 +42,7 @@ checkdepends=(
   'python-pytest'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/roboflow/roboflow-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('017863e73242b4c52961dad2bdc741f41bfb81d719d4769dc341b08193f70aea')
+sha256sums=('1bfe273ccdda3287dd0ea1d9880e53a0d7cea2f113eca60986b249d2f9ee029a')
 
 build() {
   cd "$_pkgname-python-$pkgver"
