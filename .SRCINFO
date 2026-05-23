@@ -1,6 +1,6 @@
 pkgbase = oopsmate-git
 	pkgdesc = UCI chess engine in Rust (git)
-	pkgver = r0.0000000
+	pkgver = r185.32179b9
 	pkgrel = 1
 	url = https://github.com/PS-Wizard/oopsmate
 	arch = x86_64

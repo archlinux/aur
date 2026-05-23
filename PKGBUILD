@@ -1,7 +1,7 @@
 # Maintainer: PS-Wizard (packaged for AUR)
 
 pkgname=oopsmate-git
-pkgver=r0.0000000
+pkgver=r185.32179b9
 pkgrel=1
 pkgdesc='UCI chess engine in Rust (git)'
 arch=('x86_64')
@@ -20,11 +20,18 @@ pkgver() {
 
 build() {
   cd "$srcdir/oopsmate"
+
+  # strikes requires BMI2 (PEXT) for slider lookups.
+  export RUSTFLAGS="${RUSTFLAGS} -C target-feature=+bmi2"
+
   cargo build --release --locked --bins
 }
 
 check() {
   cd "$srcdir/oopsmate"
+
+  export RUSTFLAGS="${RUSTFLAGS} -C target-feature=+bmi2"
+
   cargo test --release --locked
 }
 
