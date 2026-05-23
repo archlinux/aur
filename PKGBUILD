@@ -6,7 +6,7 @@
 pkgname=web-ext
 # https://github.com/mozilla/web-ext/releases
 pkgver=10.2.0
-pkgrel=2
+pkgrel=1
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
 url='https://developer.mozilla.org/en-US/Add-ons/WebExtensions'
