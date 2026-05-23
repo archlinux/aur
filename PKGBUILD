@@ -1,5 +1,4 @@
 # Maintainer: Mohan Raman <mohan43u@gmail.com>
-# url: https://codeberg.org/mohan43u/machi/src/branch/pkgbuild/PKGBUILD
 
 pkgname=machi
 pkgver=v0.5.0
