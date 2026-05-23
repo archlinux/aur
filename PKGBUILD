@@ -1,6 +1,6 @@
 # Maintainer: temidaradev <temidaradev@proton.me>
 pkgname=kopuz
-pkgver=0.6.0
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="A modern music player"
 arch=('x86_64')
@@ -28,7 +28,7 @@ options=(!lto !debug)
 # dioxus-cli must be installed manually or from AUR at version matching dioxus 0.7.x:
 #   cargo install dioxus-cli --version "^0.7"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/temidaradev/kopuz/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ace51aed719e114271e083210c222bf6078c6e47e4d0c0b692e8834d2bd525bf')
+sha256sums=('7c2fe94e34a7e7d0ca8a7e5d765c389f324bd37e8b6ccecd8f79ab30405db5eb')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -57,7 +57,7 @@ package() {
     sed -i "s|Exec=kopuz|Exec=/usr/bin/kopuz|" \
         "$pkgdir/usr/share/applications/com.temidaradev.kopuz.desktop"
 
-    install -Dm644 "kopuz/assets/logo.png" \
+    install -Dm644 "crates/kopuz/assets/logo.png" \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.temidaradev.kopuz.png"
 
     install -Dm644 "data/com.temidaradev.kopuz.metainfo.xml" \
