@@ -1,18 +1,20 @@
 pkgbase = fzf-vjour-git
 	pkgdesc = A fzf-based journaling and notes application with CalDav support.
-	pkgver = r54.c65d8ae
+	pkgver = r90.ea9489c
 	pkgrel = 1
 	url = https://github.com/baumea/fzf-vjour
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = scdoc
+	makedepends = make
 	depends = fzf
 	depends = awk
 	depends = vdirsyncer
 	depends = bash
 	optdepends = bat: for colorful previews
 	optdepends = noto-fonts-emoji: for display emoji in fzf
-	source = fzf-vjour::git+https://github.com/baumea/fzf-vjour
+	source = fzf-vjour::git+https://github.com/blueingreen68/fzf-vjour
 	sha256sums = SKIP
 
 pkgname = fzf-vjour-git
