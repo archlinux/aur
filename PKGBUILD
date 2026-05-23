@@ -24,6 +24,7 @@ depends=(
 	'libcurl-gnutls'
 	'sdl3'
     'qt6-base'
+    'qt6-multimedia'
     'qt6-tools'
     'qt6-svg'
 )
