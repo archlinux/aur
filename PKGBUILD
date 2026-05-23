@@ -1,8 +1,8 @@
 # Maintainer: JGH0 <jgh0@users.noreply.github.com>
 
 pkgname=waifufetch
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="System info with a random waifu decoration -- like fastfetch with anime"
 arch=('any')
 url="https://github.com/JGH0/waifufetch"

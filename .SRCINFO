@@ -1,7 +1,7 @@
 pkgbase = waifufetch
 	pkgdesc = System info with a random waifu decoration -- like fastfetch with anime
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/JGH0/waifufetch
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = waifufetch
 	optdepends = chafa: terminal image display in any terminal
 	optdepends = jp2a: black and white ASCII art fallback
 	optdepends = img2txt: colored ASCII art fallback (caca-utils)
-	source = waifufetch-1.0.0.tar.gz::https://github.com/JGH0/waifufetch/archive/v1.0.0.tar.gz
+	source = waifufetch-1.0.1.tar.gz::https://github.com/JGH0/waifufetch/archive/v1.0.1.tar.gz
 	sha256sums = cc5899decfd89fef50fc415e21ef50c635c7fe277e5adf70b0a7e6564d6e350f
 
 pkgname = waifufetch
