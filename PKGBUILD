@@ -1,5 +1,5 @@
 pkgname=luminahud-git
-pkgver=r6.b911eac
+pkgver=r7.04952ab
 pkgrel=1
 pkgdesc="IMGUI BACKGROUND HUD"
 arch=('x86_64')

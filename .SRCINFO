@@ -1,6 +1,6 @@
 pkgbase = luminahud-git
 	pkgdesc = IMGUI BACKGROUND HUD
-	pkgver = r6.b911eac
+	pkgver = r7.04952ab
 	pkgrel = 1
 	url = https://github.com/delmath/LuminaHUD
 	arch = x86_64
