@@ -1,6 +1,6 @@
 # Maintainer: Antonio Leal <antonioleal@yahoo.com>
 pkgname=zxbasic
-pkgver=1.18.5
+pkgver=1.18.7
 pkgrel=1
 pkgdesc="Basic compiler for ZX Spectrum"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!debug)
 install=
 source=(https://github.com/boriel-basic/zxbasic/archive/v${pkgver}/zxbasic-${pkgver}.tar.gz)
 noextract=()
-sha256sums=('d24bc6f63b72ef6c5b7f5603a3a7e365fe0220c6f1945c62901f1dc9b8fae169')
+sha256sums=('e8e04a3d1327fd8473d9ed6e698b599182119980bdbfb74afba884e224c6be51')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
