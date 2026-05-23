@@ -8,6 +8,6 @@ pkgbase = apothem
 	depends = bash
 	depends = python
 	source = apothem-v0.1.0-linux.tar.gz::https://github.com/Gad360/apothem/releases/download/v0.1.0/apothem-v0.1.0-linux.tar.gz
-	sha256sums = ff4ca8f7b6563f30aa3fc5c1d31422df9c0a882fd15b3527486fd37cdc272a66
+	sha256sums = 7e543c1dfc3234e5114add6f6c6fc09c6ad54616e5a81f6436f6e12fa6f1cb50
 
 pkgname = apothem
