@@ -1,0 +1,5 @@
+[zor-bin]
+source = "github"
+github = "OmkarVijayBagade/zor"
+use_latest_release = true
+prefix = "v"

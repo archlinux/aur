@@ -1,0 +1,18 @@
+pkgbase = zor-bin
+	pkgdesc = A terminal-based TUI animation showcase built in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/OmkarVijayBagade/zor
+	arch = x86_64
+	license = Unlincense
+	depends = glibc
+	depends = libgcc
+	provides = zor
+	conflicts = zor
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/OmkarVijayBagade/zor/v0.1.0/README.md
+	sha256sums = ea8fc56ef5c406f28bf64c0ac9b4e1d59cee0d5c5024f9f664690576fe189a44
+	source_x86_64 = zor-x86_64-0.1.0::https://github.com/OmkarVijayBagade/zor/releases/download/v0.1.0/zor-linux-x86_64
+	sha256sums_x86_64 = dfff1e3871d250fbba7433ae4be1e54eeaa386ab000d762bb2e7439ab9d1902b
+
+pkgname = zor-bin
