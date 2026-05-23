@@ -1,6 +1,6 @@
 # Maintainer: MrGodzilla38 <oyunustasigodzilla@gmail.com>
 pkgname=rivalcfg-gui
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="GTK3 GUI configuration tool for SteelSeries mice (via rivalcfg)"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('python' 'python-gobject' 'python-cairo')
 optdepends=('rivalcfg: SteelSeries CLI tool')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MrGodzilla38/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6f3fdd335bae4281384dbafa7e863d923ea517a8bdaad6562295e7f47bffeb5b')
+sha256sums=('1298b389e9f5a41cd29d87809a1395bf38e3b0761c2046501b3315aa796c9a13')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
