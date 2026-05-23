@@ -1,6 +1,6 @@
 pkgbase = md-viewer-git
 	pkgdesc = Fast, lightweight markdown viewer for Linux with tabs, file explorer, and live reload
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/aydiler/md-viewer
 	arch = x86_64
