@@ -44,4 +44,6 @@ package() {
     DESTDIR="$pkgdir" PREFIX="/usr" \
     GOOGLE_CLIENT_ID="$AERION_GOOGLE_CLIENT_ID" GOOGLE_CLIENT_SECRET="$AERION_GOOGLE_CLIENT_SECRET" \
     MICROSOFT_CLIENT_ID="$AERION_MICROSOFT_CLIENT_ID"
+
+  rm -f "$pkgdir/usr/share/icons/hicolor/icon-theme.cache"
 }
