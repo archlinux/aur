@@ -2,7 +2,7 @@
 
 pkgname=takoyomi
 _realname=Takoyomi
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Real-time Japanese overlay translator for KDE Plasma"
 arch=('any')

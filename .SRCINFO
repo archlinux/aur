@@ -1,6 +1,6 @@
 pkgbase = takoyomi
 	pkgdesc = Real-time Japanese overlay translator for KDE Plasma
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/kurojs/Takoyomi
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = takoyomi
 	depends = pyside6
 	depends = wl-clipboard
 	depends = python
-	source = takoyomi-1.0.0.tar.gz::https://github.com/kurojs/Takoyomi/archive/v1.0.0.tar.gz
+	source = takoyomi-1.0.1.tar.gz::https://github.com/kurojs/Takoyomi/archive/v1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = takoyomi
