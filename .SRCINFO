@@ -25,6 +25,6 @@ pkgbase = arctis-sound-manager
 	depends = swh-plugins
 	depends = noise-suppression-for-voice
 	source = arctis-sound-manager-1.1.42.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v1.1.42/arctis-sound-manager-1.1.42.tar.gz
-	sha256sums = b9c5a0704b2b8d5c2e64be89546b95e290b83c26a82b2bfbb1db4e4ab1123617
+	sha256sums = 8643a9d735c48694c9b8c0de8a3e8d6517af38fe97ec2e26e4332810b4b75d37
 
 pkgname = arctis-sound-manager
