@@ -1,6 +1,6 @@
 pkgbase = dotkeeper-bin
 	pkgdesc = P2P file sync with git history — embedded Syncthing + staggered git auto-backup
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://dotkeeper.corbet.ch
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = dotkeeper-bin
 	provides = dotkeeper
 	conflicts = dotkeeper
 	conflicts = dotkeeper-git
-	source_x86_64 = dotkeeper_1.0.2_linux_amd64.tar.gz::https://github.com/julian-corbet/dotkeeper/releases/download/v1.0.2/dotkeeper_1.0.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 15df3648115a5ca89d750c819d132f9bcca84fe5b33cba8f94eb978672763764
-	source_aarch64 = dotkeeper_1.0.2_linux_arm64.tar.gz::https://github.com/julian-corbet/dotkeeper/releases/download/v1.0.2/dotkeeper_1.0.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = e84e7d5af1f7475e2b284ac398a19e30cb4e6f7939da052ad0b9cb5421401b8b
+	source_x86_64 = dotkeeper_1.0.3_linux_amd64.tar.gz::https://github.com/julian-corbet/dotkeeper/releases/download/v1.0.3/dotkeeper_1.0.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0f78d6a9e641bea72f124966be62cbf82217c2f3327849aa238cb6e09689920f
+	source_aarch64 = dotkeeper_1.0.3_linux_arm64.tar.gz::https://github.com/julian-corbet/dotkeeper/releases/download/v1.0.3/dotkeeper_1.0.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 927529414294cc34f3d0ee238060353b3da83d396a18e5541a604e8bcfd234b3
 
 pkgname = dotkeeper-bin
