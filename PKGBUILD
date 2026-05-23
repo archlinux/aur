@@ -1,6 +1,6 @@
 # Maintainer: robinpie <robin413@protonmail.com>
 pkgname=dinky
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A terminal text editor for those who just want to edit some text'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 conflicts=('dinky-git')
 makedepends=('go>=1.24')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3fae944e4b676d6e7dfc6828b32ac5c033d9021650f9ce5e770df2b93d80a76d')
+sha256sums=('d4529dbdcc927f25e6197dbad2a1964bfe186671631bf6ebef8ece8371644512')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
