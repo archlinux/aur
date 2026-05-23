@@ -1,7 +1,7 @@
 # Maintainer: Karso Cheung <karsoo2023@gmail.com>
 pkgname=asus-sound-fix
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fix no sound issue on ASUS Vivobook S14 Flip TP3407SA"
 arch=('x86_64')
 url="https://github.com/Karso2023/vivobook_sound_fix"
@@ -17,7 +17,7 @@ _srcdir="vivobook_sound_fix-$pkgver"
 prepare() {
     cd "$srcdir/$_srcdir/sound-fix"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
