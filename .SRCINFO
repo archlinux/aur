@@ -1,6 +1,6 @@
 pkgbase = rumus
 	pkgdesc = Next-generation terminal
-	pkgver = 0.1.17
+	pkgver = 0.1.18
 	pkgrel = 1
 	url = https://rumus.ai
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = rumus
 	license = Proprietary
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	source_x86_64 = rumus.deb::https://bucket.rumus.ai/rumus-releases/v0.1.17/linux-x64/rumus.deb
+	source_x86_64 = rumus.deb::https://bucket.rumus.ai/rumus-releases/v0.1.18/linux-x64/rumus.deb
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = rumus.deb::https://bucket.rumus.ai/rumus-releases/v0.1.17/linux-arm64/rumus.deb
+	source_aarch64 = rumus.deb::https://bucket.rumus.ai/rumus-releases/v0.1.18/linux-arm64/rumus.deb
 	sha256sums_aarch64 = SKIP
 
 pkgname = rumus

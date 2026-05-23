@@ -1,7 +1,7 @@
 # Maintainer: $MAINTAINER
 
 pkgname=rumus
-pkgver=0.1.17
+pkgver=0.1.18
 pkgver() {
   curl -s --connect-timeout 5 "https://bucket.rumus.ai/rumus-releases/latest.json" \
   | sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\?v\?\([0-9\.]*\)"\?.*/\1/p' \
