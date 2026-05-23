@@ -44,6 +44,10 @@ package() {
 
     install -Dm644 /dev/stdin \
         "$pkgdir/usr/share/applications/hpr.desktop" << EOF
+    
+    install -Dm755 "$srcdir/Slint-cpp-${_slint_ver}-Linux-x86_64/lib/libslint_cpp.so" \
+    "$pkgdir/usr/lib/libslint_cpp.so"
+    
 [Desktop Entry]
 Version=1.0
 Type=Application
