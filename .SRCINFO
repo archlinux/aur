@@ -1,6 +1,6 @@
 pkgbase = afptool-rs
 	pkgdesc = A Rust tool for unpacking and packing RockChip firmware images (RKFW and RKAF formats).
-	pkgver = 1.2.2
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://github.com/suyulin/apftool-rs
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = afptool-rs
 	options = !lto
 	options = !debug
 	options = !strip
-	source = afptool-rs::git+https://github.com/suyulin/apftool-rs.git#tag=v1.2.2
-	sha256sums = dbf7413de3cf742554399caecea1e8fc0ab8569fcfe61d542ffd33a2721d071a
+	source = afptool-rs::git+https://github.com/suyulin/apftool-rs.git#tag=v5.0
+	sha256sums = 023715134f89931b51b07e55da4f506b307a8a0ecd6db5bc47ef66712d674ea8
 
 pkgname = afptool-rs
