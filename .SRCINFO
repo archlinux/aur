@@ -1,6 +1,6 @@
 pkgbase = fren-git
 	pkgdesc = A TUI file manager that lets you open files and directories with any app
-	pkgver = 2.1
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/TheCrabevariable/fren
 	arch = x86_64
