@@ -1,6 +1,6 @@
 pkgbase = termframe-bin
 	pkgdesc = Convert terminal output into an SVG file
-	pkgver = 0.8.4
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://github.com/pamburus/termframe
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = termframe-bin
 	provides = termframe
 	conflicts = termframe
 	options = !strip
-	source = LICENSE-0.8.4::https://raw.githubusercontent.com/pamburus/termframe/v0.8.4/LICENSE
-	source = README-0.8.4.md::https://raw.githubusercontent.com/pamburus/termframe/v0.8.4/README.md
+	source = LICENSE-0.8.5::https://raw.githubusercontent.com/pamburus/termframe/v0.8.5/LICENSE
+	source = README-0.8.5.md::https://raw.githubusercontent.com/pamburus/termframe/v0.8.5/README.md
 	sha256sums = ff7169dd7f49cfd2491e92944b22d3c0ffb9eb738f16d221cc3d3ce6fc839fd5
 	sha256sums = c6e49bc1727eaa0b08247fab16baf90c491d2ea7a24258d01d2231ae1c2689b6
-	source_x86_64 = termframe-x86_64-0.8.4.tgz::https://github.com/pamburus/termframe/releases/download/v0.8.4/termframe-linux-x86_64-gnu.tar.gz
-	sha256sums_x86_64 = 7f6dd0f9202211d4d0c45be97fd41058b70944aff44b444fe32eb0207f679867
-	source_aarch64 = termframe-aarch64-0.8.4.tgz::https://github.com/pamburus/termframe/releases/download/v0.8.4/termframe-linux-arm64-gnu.tar.gz
-	sha256sums_aarch64 = 5f651b970f789c0344c76d5c8e4055bb9515d3a8dd8bc1733ffc987abc057f23
+	source_x86_64 = termframe-x86_64-0.8.5.tgz::https://github.com/pamburus/termframe/releases/download/v0.8.5/termframe-linux-x86_64-gnu.tar.gz
+	sha256sums_x86_64 = e4d9592e013f514e32a8a7e0efbc8e9820763da51ed3304125fb0cbaba14fef9
+	source_aarch64 = termframe-aarch64-0.8.5.tgz::https://github.com/pamburus/termframe/releases/download/v0.8.5/termframe-linux-arm64-gnu.tar.gz
+	sha256sums_aarch64 = 78a09e2592fb7ed9347119cd1ef1e04e6d36667d1e64312f03ab15721a682d69
 
 pkgname = termframe-bin
