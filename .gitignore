@@ -1,4 +1,3 @@
-src/
-pkg/
-*.pkg.tar.*
-*.log
+jupiter-hw-support*
+src
+pkg
