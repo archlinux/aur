@@ -1,10 +1,10 @@
-# Maintainer: selebray1998
+# Maintainer: Selene Bray-Hernandez <selebray1998@gmail.com>
 # Contributor: Felipe Facundes
 # Changelog: CHANGELOG
 
 pkgname=audacity-openvino
 pkgver=3.7.7
-pkgrel=3
+pkgrel=4
 epoch=2
 
 # Auto-track latest 3.7.x release tag; override with explicit pkgver if needed
