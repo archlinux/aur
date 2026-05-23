@@ -4,7 +4,7 @@
 pkgname=whatsapp-nativefier
 pkgver=2.3000.1019818867
 pkgrel=1
-pkgdesc="WhatsApp desktop built with nativefier (electron)"
+pkgdesc="WhatsApp desktop (nativefier/Electron) with save-as download dialog, single instance, tray, menu bar, spell checker"
 arch=("armv7l" "i686" "x86_64")
 url="https://web.whatsapp.com/"
 license=("custom")
