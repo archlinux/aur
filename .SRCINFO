@@ -1,0 +1,21 @@
+pkgbase = whoa-bin
+	pkgdesc = A terminal screensaver with some cool animations
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/km-clay/whoa
+	arch = x86_64
+	license = MIT
+	makedepends = patchelf
+	depends = glibc
+	depends = libgcc
+	provides = whoa
+	conflicts = whoa
+	options = !strip
+	source = README-0.2.0.md::https://raw.githubusercontent.com/km-clay/whoa/v0.2.0/README.md
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/km-clay/whoa/v0.2.0/LICENSE
+	sha256sums = a6f4ed8dda8d30d4487e672387b960fdc569e69b2b7c3433635c09fc48bcf96e
+	sha256sums = ccfe6c523914307ac9282e9554940bb5e04c7429802b2383652370caf14e8253
+	source_x86_64 = whoa-x86_64-0.2.0::https://github.com/km-clay/whoa/releases/download/v0.2.0/whoa.v0.2.0
+	sha256sums_x86_64 = 214b2ed14dbf9dfa06d9d73c0e9c7cbe27faded449dbb45dfd27a6138cdb90f0
+
+pkgname = whoa-bin

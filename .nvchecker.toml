@@ -1,0 +1,5 @@
+[whoa-bin]
+source = "github"
+github = "km-clay/whoa"
+use_latest_release = true
+prefix = "v"
