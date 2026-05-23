@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 1:2.0.1-11
+**Current release:** 1:2.0.1-13
 
 ---
 
@@ -362,6 +362,42 @@ const defaultLocation = process.platform === 'linux'
   : 'win64/starbound.exe';
 ```
 
+### `gamebryo-ba2-support` and `gamebryo-bsa-support`: native Linux build
+
+**Problem:** Both extensions use native Node.js modules (`ba2tk` for Fallout 4 BA2 archives,
+`bsatk` for Skyrim/Fallout 3/NV BSA archives). Their upstream `package.json` build scripts
+contain an inverted Windows-only guard:
+
+```js
+"dist": "node -e \"if(process.platform==='win32')process.exit(1)\" || (pnpm run _build ...)"
+```
+
+On Linux, `process.platform` is `'linux'`, the node command exits 0, and the `||` short-circuits
+— the build is silently skipped. The extensions never appear in `bundledPlugins`.
+
+**Fix:** In `prepare()` of the PKGBUILD, a Python heredoc strips that guard from both
+`package.json` files so `pnpm run dist:extensions` builds them normally on Linux:
+
+```python
+for ext in ['gamebryo-ba2-support', 'gamebryo-bsa-support']:
+    p = pathlib.Path(f'extensions/{ext}/package.json')
+    pkg = json.loads(p.read_text())
+    for s in ['build', 'dist']:
+        old = pkg['scripts'][s]
+        if '|| ' in old:
+            pkg['scripts'][s] = old.split('|| ', 1)[1].strip('()')
+    p.write_text(json.dumps(pkg, indent=2) + '\n')
+```
+
+Both `ba2tk` and `bsatk` compile on Linux without modifications. `bsatk` officially
+declares `"os": ["win32", "linux"]` in its `package.json`. The resulting `.node` binaries
+are included in `bundledPlugins/gamebryo-ba2-support/` and `bundledPlugins/gamebryo-bsa-support/`.
+
+`gamebryo-savegame-management` is intentionally excluded — it uses `_wstat()` and
+`toWC()` (Win32 wide-character API), which require a full C++ port to support Linux.
+
+---
+
 ### `gamebryo-plugin-management` missing extension
 
 `gamebryo-plugin-indexlock` and `gamebryo-archive-check` both call
@@ -713,6 +749,7 @@ makepkg -si
 | **1:2.0.1-9** | Patches 9 & 10 v7 — Critical fix: `exeVersion.default()` returns `undefined` (not throws) for ELF binaries on Linux. Added `\|\|"0.0.0"` to both `testExecProvider` and `getExecGameVersion` so `_ev`/`_ver` never stays `undefined`, ensuring the `.deps.json` fallback is always triggered on Linux. Fixes the empty "Your game version:" field in the Nexus Collections mismatch dialog. Includes v6→v7 migration patches for locally-installed asars. |
 | **1:2.0.1-10** | Patch 2 extended — `verifyToolDir` now also has the `.exe`→`.x86_64` fallback on Linux. This function validates the game directory every time a profile or game tab is activated (`assertToolDir` → `verifyToolDir`). Without this fix, games with native Linux binaries (e.g. Graveyard Keeper, any `.x86_64` game) get "Failed to set game mode" on every profile/tab switch even though the game is installed correctly. Previously only `verifyGamePath` (browse-for-game flow) had the fallback. |
 | **1:2.0.1-11** | Patch 11 — Generic BepInEx Linux fixer (`patch-ext-bepinex.py`): scans all Steam libraries for Unity games with BepInEx deployed as a Windows install on a Linux native binary. Automatically copies bundled `libdoorstop.so` (from BepInEx Linux release, sha256-verified), fixes `doorstop_config.ini` backslash paths, and sets the required `LD_PRELOAD` Steam launch option via `localconfig.vdf` (or writes `BEPINEX-LINUX.txt` reminder if Steam is running). Generic — covers any Unity+BepInEx game without per-game patches. |
+| **1:2.0.1-13** | `gamebryo-ba2-support` and `gamebryo-bsa-support` now compiled natively for Linux. Upstream `package.json` build scripts had an inverted Windows-only guard (`if(platform==='win32')exit(1) \|\|`) that silently skipped the build on Linux. Fixed in `prepare()` with an inline Python heredoc. `ba2tk` and `bsatk` compile on Linux without modification; `bsatk` has official `"os": ["win32", "linux"]` support. `gamebryo-savegame-management` remains excluded (Win32 `_wstat` / wide-char API). |
 
 ---
 
@@ -795,5 +832,7 @@ runtime patches is the correct approach.
 - [x] `Plugins.txt` / `loadorder.txt` for Bethesda games via Proton prefix (`gamebryo-plugin-management`)
 - [x] Generic .NET game version detection on Linux via `deps.json` fallback (Stardew Valley and similar)
 - [x] Generic BepInEx Linux fixer: `libdoorstop.so` copy + `doorstop_config.ini` fix + Steam launch option (all Unity+BepInEx games)
+- [x] `gamebryo-ba2-support` and `gamebryo-bsa-support` compiled natively for Linux (ba2tk, bsatk)
 - [ ] Upstream PRs to Nexus-Mods/Vortex with the Linux fixes
 - [ ] Automatic re-patch of user extensions after update
+- [ ] `gamebryo-savegame-management`: C++ port of `_wstat` / wide-char Win32 API

@@ -1,6 +1,5 @@
 src/
 pkg/
-Vortex/
-__pycache__/
 *.pkg.tar.zst
 *.pkg.tar.xz
+BepInEx_linux_x64_*.zip

@@ -2,7 +2,7 @@
 # Forked from: https://aur.archlinux.org/packages/vortex-linux by Tymon3310
 pkgname=vortex-linux-fix
 pkgver=2.0.1
-pkgrel=11
+pkgrel=13
 epoch=1
 pkgdesc="Nexus Mods' mod manager - unofficial fix fork of Tymon3310's vortex-linux with native Linux compatibility patches"
 arch=('x86_64')
@@ -26,16 +26,20 @@ source=("git+https://github.com/Nexus-Mods/Vortex.git#tag=v${pkgver}"
   "patch-ext-cp2077.py"
   "patch-ext-gamebryo.py"
   "patch-ext-bepinex.py"
+  "gamebryo-pm-index.js"
+  "gamebryo-pm-info.json"
   "https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.2/BepInEx_linux_x64_5.4.23.2.zip")
 
 sha256sums=('ea217e24864525a323a848e0b3ff15a4f04dfeccaacf1ef885afe57d0ce61f65'
   '7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5'
   '19420a1af334187b2ba68f0fab3b5170bff5b6096f9e2a30000e712013fd378b'
   'd261f1ef78bb21d72cedeedfd935b099e3d707be709404e894d4aeb47254f1ef'
-  '6ec93c2cf3d25a861d53de2dcb187e2e4f5f4279feda23eb9ca1847d8c95357a'
+  'be631151db42a4b9860a80d828697e28d08b7d9571419b61186d550fec494c14'
   '014b52e419cd627044d6e7ceed3735243ce001ad8c611672e4f972be91a216cc'
   '32004e0074ea72ee005f5730961ed7e5923645d1bbec9db3f0ba9976633a29cb'
   '02dfb85811f023ed0b63d0b909a806cd23cdabc81e19965722bc8de1f4d48a9d'
+  'df91e09151bff8c55a5a29f79659c7560f275cca370d644603aec3e2e48b2757'
+  'd5333c97079ccf7108c3906bdd929fea408792b7729a3b730f25d7c325bac67f'
   'ddc446143a0a277ed92eb7a1f5bf794ff4fdd0023bddc0491f85eafd1898225b')
 
 options=('!strip' '!debug')
@@ -45,6 +49,19 @@ prepare() {
 
   msg2 "Injecting compiler and TypeScript overrides..."
   node "$srcdir/patch-pkg.js"
+
+  msg2 "Enabling gamebryo archive extensions for Linux build..."
+  python3 - <<'EOF'
+import json, pathlib
+for ext in ['gamebryo-ba2-support', 'gamebryo-bsa-support']:
+    p = pathlib.Path(f'extensions/{ext}/package.json')
+    pkg = json.loads(p.read_text())
+    for s in ['build', 'dist']:
+        old = pkg['scripts'][s]
+        if '|| ' in old:
+            pkg['scripts'][s] = old.split('|| ', 1)[1].strip('()')
+    p.write_text(json.dumps(pkg, indent=2) + '\n')
+EOF
 
   if [ -f "pnpm-workspace.yaml" ]; then
     sed -i 's/engineStrict: true/engineStrict: false/g' pnpm-workspace.yaml
@@ -109,8 +126,13 @@ package() {
 
   chmod 4755 "$pkgdir/opt/Vortex/chrome-sandbox" 2>/dev/null || true
 
-  msg2 "Patching bundled plugins — Linux compatibility..."
+  msg2 "Installing gamebryo-plugin-management Linux stub..."
   local _bp="$pkgdir/opt/Vortex/resources/app.asar.unpacked/bundledPlugins"
+  install -dm755 "$_bp/gamebryo-plugin-management"
+  install -Dm644 "$srcdir/gamebryo-pm-index.js" "$_bp/gamebryo-plugin-management/index.js"
+  install -Dm644 "$srcdir/gamebryo-pm-info.json" "$_bp/gamebryo-plugin-management/info.json"
+
+  msg2 "Patching bundled plugins — Linux compatibility..."
   export _VORTEX_BP="$_bp"
   export _VORTEX_ASAR="$pkgdir/opt/Vortex/resources/app.asar"
 

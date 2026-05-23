@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 1:2.0.1-11
+- **Versión:** 1:2.0.1-13
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Probado en:** Arch Linux (kernel 7.0.8-1-cachyos)
@@ -408,6 +408,29 @@ const defaultLocation = process.platform === 'linux' ? 'linux/starbound' : 'win6
 
 ---
 
+## Plugins bundled: extensiones de archivos Gamebryo compiladas para Linux
+
+**Problema:** `gamebryo-ba2-support` (Fallout 4, archivos BA2) y `gamebryo-bsa-support`
+(Skyrim/Fallout 3/NV, archivos BSA) usan módulos nativos (`ba2tk`, `bsatk`).
+Sus `package.json` tienen una condición invertida que salta el build en Linux y solo
+compila en Windows:
+
+```json
+"dist": "node -e \"if(process.platform==='win32')process.exit(1)\" || (pnpm run _build ...)"
+```
+
+En Linux `process.platform` no es `win32`, el node sale con código 0 y el `||` cortocircuita.
+El resultado: los plugins no se compilan y no aparecen en los bundledPlugins.
+
+**Fix:** En `prepare()` del PKGBUILD, un heredoc Python elimina ese guard de los dos
+`package.json`. `ba2tk` y `bsatk` compilan correctamente en Linux (confirmado; `bsatk`
+tiene `"os": ["win32", "linux"]` oficial). El `.node` nativo queda incluido en el paquete.
+
+`gamebryo-savegame-management` sigue excluido — usa `_wstat()` y funciones de wide char
+Win32 que requieren portación C++ completa.
+
+---
+
 ## Plugins bundled: dependencias inexistentes
 
 **Problema:** `gamebryo-plugin-indexlock` y `gamebryo-archive-check` llaman a
@@ -510,6 +533,8 @@ Probado en Arch Linux (kernel 7.0.8-1-cachyos):
 | **1:2.0.1-7** | Patches 9 y 10 — Detección genérica de versión de juego en Linux: `testExecProvider` y `getExecGameVersion` buscan `.deps.json` de .NET si el ejecutable no tiene versión PE. Arregla el diálogo "Game version mismatch" vacío en colecciones de Nexus para juegos .NET (Stardew Valley, etc.). Solución genérica — funciona para cualquier juego .NET sin parche por juego. |
 | **1:2.0.1-8** | Patches 9 y 10 v6 — Normalización del nombre del ejecutable al buscar en `.deps.json`: minúsculas, sin espacios/puntos/guiones/subrayados, con puntuación (exacto=2, prefijo=1). Arregla falsos positivos cuando hay varios `.deps.json` en el directorio del juego (p.ej. `BmFont.deps.json` devolvía versión errónea antes que `Stardew Valley.deps.json`). Incluye parches de migración v5→v6 para asars ya instalados. |
 | **1:2.0.1-9** | Patches 9 y 10 v7 — Fix crítico: `exeVersion.default()` devuelve `undefined` (no lanza excepción) para binarios ELF en Linux. El operador `\|\|"0.0.0"` garantiza que `_ev`/`_ver` nunca quede `undefined`, activando correctamente el fallback a `.deps.json`. Arregla campo "Tu versión del juego:" vacío en el diálogo de incompatibilidad de colecciones. Incluye parches de migración v6→v7 para asars ya instalados. |
+| **1:2.0.1-11** | Patch 11 — Generic BepInEx Linux fixer (`patch-ext-bepinex.py`): detecta juegos Unity con BepInEx Windows desplegado sobre binario nativo Linux. Copia `libdoorstop.so` (bundled), corrige rutas backslash en `doorstop_config.ini` y establece `LD_PRELOAD` en `localconfig.vdf`. Genérico — cubre cualquier juego Unity+BepInEx sin parches por juego. |
+| **1:2.0.1-13** | `gamebryo-ba2-support` (BA2, Fallout 4) y `gamebryo-bsa-support` (BSA, Skyrim/Fallout 3/NV) compilados nativamente para Linux. Los `package.json` upstream tienen un guard `if(platform==='win32')…exit(1) \|\|` que salta el build en Linux; se elimina en `prepare()` con un heredoc Python. `ba2tk` y `bsatk` compilan en Linux sin modificaciones (`bsatk` tiene soporte Linux oficial). |
 
 ---
 
@@ -628,5 +653,7 @@ Enderal, Enderal SE, Starfield, Oblivion.
 - [x] A Hat in Time: sin binario Linux nativo, funciona vía Proton sin patch
 - [x] `Plugins.txt` / `loadorder.txt` de juegos Bethesda vía prefijo Proton (`gamebryo-plugin-management`)
 - [x] Detección genérica de versión para juegos .NET en Linux (Stardew Valley y similares): `deps.json` fallback
+- [x] `gamebryo-ba2-support` y `gamebryo-bsa-support` compilados nativamente para Linux (ba2tk, bsatk)
 - [ ] PR upstream a Nexus-Mods/Vortex con los fixes de Linux
 - [ ] Mecanismo automático de re-parche de extensiones de usuario tras actualización
+- [ ] `gamebryo-savegame-management`: portación C++ (`_wstat`, wide-char Win32)
