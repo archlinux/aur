@@ -25,29 +25,35 @@ pkgver() {
   fi
 }
 
+prepare() {
+  cd "${srcdir}/tapauth"
+  export CARGO_HOME="${srcdir}/cargo-home"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "${srcdir}/tapauth"
-  cargo build --workspace --release
+  export CARGO_HOME="${srcdir}/cargo-home"
+  export CARGO_PROFILE_RELEASE_STRIP=true
+  cargo build --frozen --workspace --release
 }
 
 package() {
   cd "${srcdir}/tapauth"
-  
-  # Binaries & Shared Objects
+
   install -Dm0755 target/release/tapauthd "${pkgdir}/usr/bin/tapauthd"
   install -Dm0755 target/release/tapauth-config "${pkgdir}/usr/bin/tapauth-config"
   install -Dm0755 target/release/libclient_pam.so "${pkgdir}/usr/lib/security/pam_tapauth.so"
-  
-  # System Services
+
   install -Dm0644 systemd/tapauthd.service "${pkgdir}/usr/lib/systemd/system/tapauthd.service"
   install -Dm0644 systemd/tapauthd.socket "${pkgdir}/usr/lib/systemd/system/tapauthd.socket"
-  
-  # Declarative Infrastructure
+
   install -Dm0644 packaging/sysusers.conf "${pkgdir}/usr/lib/sysusers.d/tapauth.conf"
   install -Dm0644 packaging/tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/tapauth.conf"
 
-  # Desktop Integration
   install -Dm0644 client-config-gui/tapauth-config.desktop "${pkgdir}/usr/share/applications/tapauth-config.desktop"
   install -Dm0644 client-config-gui/assets/tapauth-config.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/tapauth-config.svg"
   install -Dm0644 client-config-gui/dev.rourunisen.tapauth.policy "${pkgdir}/usr/share/polkit-1/actions/dev.rourunisen.tapauth.policy"
+
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
