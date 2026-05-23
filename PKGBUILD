@@ -3,7 +3,7 @@ pkgname=neo-mofox-launcher-git
 _pkgname='Neo-MoFox Launcher'
 _appname=neo-mofox-launcher
 _zhsname='Neo-MoFox 启动器'
-pkgver=r199.ed0df34
+pkgver=r203.2fe45d5
 _electronversion=39
 pkgrel=1
 pkgdesc="An elegant instance management launcher for Neo-MoFox QQ Bot. - 一个优雅的 Neo-MoFox QQ 机器人实例管理启动器"
@@ -31,10 +31,8 @@ optdepends=(
 )
 source=(
     "${_appname}::git+${url}.git"
-    "${_appname}.sh"
 )
 sha256sums=(
-    'SKIP'
     'SKIP'
 )
 
@@ -52,15 +50,6 @@ _get_electron_version() {
 prepare() {
     cd "${srcdir}/${_appname}"
     _get_electron_version
-    
-    # 配置启动脚本
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${_appname}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " "${srcdir}/${_appname}.sh"
     
     # 生成桌面文件
     gendesk -q -f -n \
@@ -110,23 +99,28 @@ build() {
 }
 
 package() {
-    # 安装启动脚本
-    install -Dm755 "${srcdir}/${_appname}.sh" "${pkgdir}/usr/bin/${_appname}"
+    # 安装 GUI 启动脚本
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_appname}" <<EOF
+#!/usr/bin/env bash
+# /usr/bin/neo-mofox-launcher — Neo-MoFox Launcher GUI 入口
+exec env ELECTRON_OZONE_PLATFORM_HINT=auto electron${_electronversion} /usr/lib/${_appname}/app.asar "\$@"
+EOF
 
-    # 安装 CLI 命令行包装脚本（无桌面环境亦可使用）
+    # 安装 CLI 命令行入口（复用同一 app.asar，通过 --cli 参数触发 CLI 模式）
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/neo-mofox-cli" <<'CLI_EOF'
 #!/usr/bin/env bash
 # /usr/bin/neo-mofox-cli — Neo-MoFox Launcher 命令行入口
 INSTALL_DIR="/usr/lib/neo-mofox-launcher"
-CLI_ENTRY="${INSTALL_DIR}/app.asar/src/cli/index.js"
-[ -f "${CLI_ENTRY}" ] || CLI_ENTRY="${INSTALL_DIR}/resources/app.asar/src/cli/index.js"
+APP_ASAR="${INSTALL_DIR}/app.asar"
 
+# 优先使用 ELECTRON_RUN_AS_NODE 模式直接运行 CLI（更轻量，无需 GPU）
 if command -v node >/dev/null 2>&1; then
-    exec node "${CLI_ENTRY}" "$@"
+    exec node -e "require('${APP_ASAR}/src/cli/index.js').main().catch(e=>{console.error(e.message);process.exit(1)})" -- "$@"
 fi
+# 回退：通过 electron --cli 参数触发 CLI 模式
 for v in 39 38 37 36 35; do
     if command -v "electron${v}" >/dev/null 2>&1; then
-        exec env ELECTRON_RUN_AS_NODE=1 "electron${v}" "${CLI_ENTRY}" "$@"
+        exec env ELECTRON_RUN_AS_NODE=1 "electron${v}" -e "require('${APP_ASAR}/src/cli/index.js').main().catch(e=>{console.error(e.message);process.exit(1)})" -- "$@"
     fi
 done
 echo "错误: 未找到可用的 node 或 electron 运行时" >&2

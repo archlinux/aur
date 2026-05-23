@@ -1,6 +1,6 @@
 pkgbase = neo-mofox-launcher-git
 	pkgdesc = An elegant instance management launcher for Neo-MoFox QQ Bot. - 一个优雅的 Neo-MoFox QQ 机器人实例管理启动器
-	pkgver = r196.bace2bb
+	pkgver = r203.2fe45d5
 	pkgrel = 1
 	url = https://github.com/MoFox-Studio/Neo-MoFox-Launcher
 	arch = x86_64
@@ -17,8 +17,6 @@ pkgbase = neo-mofox-launcher-git
 	provides = neo-mofox-launcher
 	conflicts = neo-mofox-launcher
 	source = neo-mofox-launcher::git+https://github.com/MoFox-Studio/Neo-MoFox-Launcher.git
-	source = neo-mofox-launcher.sh
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = neo-mofox-launcher-git
