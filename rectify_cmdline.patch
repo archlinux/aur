@@ -1,0 +1,6 @@
+--- a/word-sys-pdf-editor	2026-05-22 11:58:00.000000000 +0200
++++ b/word-sys-pdf-editor	2026-05-23 09:28:16.888541122 +0200
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-exec /opt/word-sys-pdf-editor/.venv/bin/python3 /opt/word-sys-pdf-editor/run_pardf.py "$@"
++exec python3 /opt/word-sys-pdf-editor/run_pardf.py "$@"
