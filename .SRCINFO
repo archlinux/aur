@@ -1,0 +1,14 @@
+pkgbase = perplexityai-bumblebee
+	pkgdesc = Read-only inventory collector for package, extension, and developer-tool metadata on developer endpoints, built for fast supply-chain exposure checks
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/perplexityai/bumblebee
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = perplexityai-bumblebee-0.1.1.tar.gz::https://github.com/perplexityai/bumblebee/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 559a5fa9ca48128fb113644e7800048b0b6c2ff3a33bc56fe5236582ba1686b0
+
+pkgname = perplexityai-bumblebee
