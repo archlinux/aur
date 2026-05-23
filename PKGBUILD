@@ -1,8 +1,8 @@
 # Maintainer: kurojs <kuro@kurojs.com>
 pkgname=jotoba-tui
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Japanese dictionary TUI powered by the Jotoba API — word, kanji, and sentence search"
+pkgdesc="Japanese dictionary TUI — word, kanji, and sentence search with language selector"
 arch=('x86_64')
 url="https://github.com/kurojs/jotoba-tui"
 license=('MIT')
