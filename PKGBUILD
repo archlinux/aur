@@ -1,6 +1,6 @@
 # Maintainer: Alexander Björk <aur.operator320@passmail.net>
 pkgname=viiper
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=3
 pkgdesc="Virtual Input over IP Emulator - VIIPER is a tool to create virtual input devices using USBIP"
 arch=('x86_64')
@@ -14,7 +14,7 @@ install=viiper.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "viiper.service"
         "viiper.install")
-sha256sums=('44112fee78636426c1c32ca2aad76c38e89cef213d400c05999dcec09f743ad3'
+sha256sums=('6d6e66d4b59a434998a4a569c4d01bd9251db9405753f98ea3457a52cc85b522'
             '4944a90179737bde276ba88e3d6ebc2d6e47afb255f14afd454bbf5d5d06f18d'
             '77b1ca9502d662c52607d5af4ed3ec16b38457e63ba7216dd8fc1d01fef52608')
 
