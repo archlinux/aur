@@ -4,7 +4,7 @@ pkgname=libsignal-client
 _pkgname=libsignal
 _libname=libsignal_jni
 _java_version=17
-pkgver=0.92.1
+pkgver=0.94.1
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${_pkgname}"
@@ -22,7 +22,7 @@ source=(
     #"boringssl::git+https://github.com/google/boringssl.git"
 )
 
-sha512sums=('f72bdaa2e9e9fe90cab0d30e51f3876efdcf7a3280f5d4c56c6065fbeed088afa5a168f33a2bc6a44b820290065572285baa5cb46445b8d3bd9d122b9d113500'
+sha512sums=('7f4f236be55923feca09ee837473fcaf8c3fcea80a425899e60ad971466a2ce6b9f6a56f750f81636f5c95ffa818aac87e9e944c8a2e5730322e612b3a0a7bf4'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -37,7 +37,7 @@ prepare() {
   sed -i 's/exit 2/suffix=""/' java/build_jni.sh
   sed -i 's/-Xmx4g//' java/gradle.properties
   sed -i "s/echo_then_run cargo build/__CARGO_TEST_CHANNEL_OVERRIDE_DO_NOT_USE_THIS=nightly cargo build --frozen -Zgit=shallow-deps -Zgitoxide/" java/build_jni.sh
-  sed -i "s/cargo fetch//" java/build_jni.sh
+  sed -i "s/cargo fetch.*//" java/build_jni.sh
 
   for repo in boring curve25519-dalek SparsePostQuantumRatchet.git; do
     sed -i "s|https://github.com/signalapp/${repo}|file://${srcdir}/${repo}|g" Cargo.toml Cargo.lock
