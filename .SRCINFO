@@ -1,0 +1,21 @@
+pkgbase = livefetch-git
+	pkgdesc = Animated fastfetch-style system info with a live refreshing dashboard
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/prietus/livefetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = libwebp
+	depends = gcc-libs
+	optdepends = pciutils: GPU detection
+	optdepends = iproute2: local IP detection
+	optdepends = lm_sensors: CPU temperature on systems without hwmon labels
+	provides = livefetch
+	conflicts = livefetch
+	source = livefetch::git+https://github.com/prietus/livefetch.git
+	sha256sums = SKIP
+
+pkgname = livefetch-git
