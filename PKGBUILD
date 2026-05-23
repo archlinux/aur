@@ -8,7 +8,7 @@ url="https://github.com/bethropolis/kcd"
 license=('MIT')
 depends=('glibc')
 options=('!strip' '!debug')
-install=${pkgname}.install
+install=kcd.install
 optdepends=(
   'libnotify: for desktop notifications'
   'wl-clipboard: for Wayland clipboard sync'
