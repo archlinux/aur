@@ -1,0 +1,5 @@
+[shed-sh-bin]
+source = "github"
+github = "km-clay/shed"
+use_latest_release = true
+prefix = "v"
