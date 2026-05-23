@@ -2,7 +2,7 @@
 
 pkgname=python-nvidia-modelopt
 _pkgname=Model-Optimizer
-pkgver=0.41.0
+pkgver=0.44.0
 pkgrel=1
 pkgdesc="NVIDIA Model Optimizer: a unified model optimization and deployment toolkit"
 arch=('any')
@@ -22,6 +22,9 @@ depends=(
   'python-regex'
   'python-safetensors'
   'python-pytorch'
+  'python-yaml'
+  'python-omegaconf'
+  'python-setuptools'
 )
 makedepends=(
   'python-build'
@@ -40,7 +43,15 @@ optdepends=(
   'python-onnxruntime: for ONNX runtime support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NVIDIA/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a97852c230231fccaa36fe9817646d6c8d062d8a85790547536508506f5d26fc')
+sha256sums=('e69de4f56ec7eaf77b9508c53a9c6127fcd9200549ef478a57357c271062ba7e')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+
+  # Arch ships setuptools-scm 10.x; upstream pins <10. The version is supplied
+  # via SETUPTOOLS_SCM_PRETEND_VERSION below, so the upper bound is unneeded.
+  sed -i 's/setuptools-scm>=8,<10/setuptools-scm>=8/' pyproject.toml
+}
 
 build() {
   cd "$_pkgname-$pkgver"

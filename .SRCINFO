@@ -1,6 +1,6 @@
 pkgbase = python-nvidia-modelopt
 	pkgdesc = NVIDIA Model Optimizer: a unified model optimization and deployment toolkit
-	pkgver = 0.41.0
+	pkgver = 0.44.0
 	pkgrel = 1
 	url = https://github.com/NVIDIA/Model-Optimizer
 	arch = any
@@ -24,13 +24,16 @@ pkgbase = python-nvidia-modelopt
 	depends = python-regex
 	depends = python-safetensors
 	depends = python-pytorch
+	depends = python-yaml
+	depends = python-omegaconf
+	depends = python-setuptools
 	optdepends = python-torchprofile: for FastNAS pruning on computer vision models
 	optdepends = python-accelerate: for Hugging Face integration
 	optdepends = python-transformers: for Hugging Face integration
 	optdepends = python-diffusers: for diffusion model optimization
 	optdepends = python-onnx: for ONNX export
 	optdepends = python-onnxruntime: for ONNX runtime support
-	source = python-nvidia-modelopt-0.41.0.tar.gz::https://github.com/NVIDIA/Model-Optimizer/archive/refs/tags/0.41.0.tar.gz
-	sha256sums = a97852c230231fccaa36fe9817646d6c8d062d8a85790547536508506f5d26fc
+	source = python-nvidia-modelopt-0.44.0.tar.gz::https://github.com/NVIDIA/Model-Optimizer/archive/refs/tags/0.44.0.tar.gz
+	sha256sums = e69de4f56ec7eaf77b9508c53a9c6127fcd9200549ef478a57357c271062ba7e
 
 pkgname = python-nvidia-modelopt
