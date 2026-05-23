@@ -1,13 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.94.0'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='agent-cli'
-
-
-pkgname="${_pypi_package}"
-pkgver="${_upstreamver}"
+pkgname=agent-cli
+pkgver=0.94.2
 pkgrel=1
 pkgdesc="A suite of local AI-powered command-line tools"
 
@@ -18,24 +12,27 @@ _url_pypi='https://pypi.org/project/agent-cli/'
 _url_github='https://github.com/basnijholt/agent-cli'
 url="${_url_github}"
 
+_pypi_package=${pkgname}
+_pypi_version=${pkgver}
+
 provides=("${_pypi_package}")
 replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-versioningit')
 depends=('bash' 'python' 'uvicorn' 'python-onnxruntime' 'python-yaml' 'python-rich' 'python-openai' 'python-pydantic' 'python-httpx' 'python-numpy' 'python-dotenv' 'python-psutil' 'python-huggingface-hub' 'python-pyperclip' 'python-google-genai' 'python-sounddevice' 'python-click' 'python-typer' 'python-fastapi' 'python-watchfiles' 'python-transformers' 'python-wyoming' 'python-pydantic-ai-slim')
 
-# source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3965adbd710b1d6b3b620d01a5a1ed6cce74f3ff6ee9c0d703c33c95e941e458')
+# source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('c076b2c22266bde9aa4a2e615edf0ccc07fad8fc9fc1fe44615f2f7f47f3e6cf')
 
 build() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
