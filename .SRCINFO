@@ -8,11 +8,11 @@ pkgbase = ttf-smile-nerd
 	provides = ttf-smile-nerd
 	conflicts = ttf-smile-nerd-git
 	conflicts = ttf-smile-nerd-font
-	source = SmileNerdFontMono-Regular-1.0.3.ttf::https://github.com/SOV710/smile-nerd-font/releases/download/v1.0.3/SmileNerdFontMono-Regular.ttf
-	source = SmileNerdFontMono-Light-1.0.3.ttf::https://github.com/SOV710/smile-nerd-font/releases/download/v1.0.3/SmileNerdFontMono-Light.ttf
-	source = LICENSE-1.0.3::https://raw.githubusercontent.com/SOV710/smile-nerd-font/refs/heads/main/LICENSE
-	sha256sums = 1cb5d56c165deaa230c7292d9a68e03791cb5a4d1cc797f0262d4ac4e54fc0bd
-	sha256sums = 696585d460abd3a0e5818f745b97e4a70f00ffb2bc0ebb364d0f5b75c3f8d4c7
+	source = SmileNerdFontMono-Regular.ttf::https://github.com/SOV710/smile-nerd-font/releases/download/v1.0.3/SmileNerdFontMono-Regular.ttf
+	source = SmileNerdFontMono-Light.ttf::https://github.com/SOV710/smile-nerd-font/releases/download/v1.0.3/SmileNerdFontMono-Light.ttf
+	source = LICENSE::https://raw.githubusercontent.com/SOV710/smile-nerd-font/refs/heads/main/LICENSE
+	sha256sums = 4e8ecf0a080310e5039198c4cc20c1e5797e832ef1e017910e23c4cdf57d3ecd
+	sha256sums = 62964b54e2f1ac020ebf799ab9212274ab02829325fea06561ae3b4ba39fb370
 	sha256sums = af3cb2ff48b5dffc4d0095116cf4b3b459597d384b6c46604f39c7b71408524e
 
 pkgname = ttf-smile-nerd
