@@ -4,7 +4,7 @@
 
 pkgbase=pm-netlink-client
 pkgname=('pm-netlink-client' 'pm-netlink-client-gui')
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Linux whitelist split tunneling controller for Xray-core, nftables, policy routing, and systemd'
 arch=('any')
@@ -17,7 +17,13 @@ makedepends=(
   'python-hatchling'
   'python-wheel'
 )
-checkdepends=('python-pytest')
+checkdepends=(
+  'python-pytest'
+  'python-pydantic'
+  'python-yaml'
+  'python-rich'
+  'python-typer'
+)
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -83,6 +89,10 @@ package_pm-netlink-client-gui() {
     "$pkgdir/usr/share/man/ru/man1/pm-netlink-client-gui.1"
   install -Dm644 packaging/pm-netlink-client-gui.desktop \
     "$pkgdir/usr/share/applications/pm-netlink-client-gui.desktop"
+  install -Dm644 icons/app-icon.png \
+    "$pkgdir/usr/share/icons/hicolor/600x600/apps/pm-netlink-client.png"
+  install -Dm644 icons/app-icon.png \
+    "$pkgdir/usr/share/pixmaps/pm-netlink-client.png"
   install -Dm644 packaging/polkit/org.pm-netlink-client.gui-helper.policy \
     "$pkgdir/usr/share/polkit-1/actions/org.pm-netlink-client.gui-helper.policy"
   install -Dm644 packaging/polkit/49-pm-netlink-client-gui.rules \
