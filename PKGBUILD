@@ -23,9 +23,11 @@ sha256sums=('86512c530b7fc9f096784f4a7ee38f75b9bc70afe8e32f4bbc2439d67b047737' '
 
 prepare() {
   chmod +x $srcdir/Openscreen-$pkgver.AppImage
+
+  echo "==> Extracting AppImage..."
   (
     cd $srcdir
-    $srcdir/Openscreen-$pkgver.AppImage --appimage-extract
+    $srcdir/Openscreen-$pkgver.AppImage --appimage-extract > /dev/null
   )
 }
 
