@@ -1,14 +1,13 @@
 pkgbase = beets-check
 	pkgdesc = Verify and store checksums in your beets library
-	pkgver = 0.13.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/geigerzaehler/beets-check
 	arch = any
 	license = MIT
-	depends = python>=3.7
+	depends = python
 	depends = beets>=1.4.7
-	source = https://github.com/geigerzaehler/beets-check/archive/v0.13.0.tar.gz
-	md5sums = 8343240c1e4e4c2496f924b8c2faf042
+	source = https://github.com/geigerzaehler/beets-check/archive/v0.15.0.tar.gz
+	md5sums = 0f344c245196ba0e0abd70cad24c98cc
 
 pkgname = beets-check
-
