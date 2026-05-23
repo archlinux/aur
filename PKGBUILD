@@ -2,7 +2,7 @@
 # Contributor: ARKye03 <rafa03-dev@proton.me>
 
 pkgname=lumen
-pkgver=2.22.0
+pkgver=2.24.0
 pkgrel=1
 pkgdesc="Instant AI Git Commit message, Git changes summary from the CLI (no API key required)"
 url="https://github.com/jnsahaj/lumen"
@@ -18,7 +18,7 @@ optdepends=(
     'ollama-cuda: Local AI provider with CUDA'
     'ollama-rocm: Local AI provider with ROCm'
 )
-sha256sums=('2ff20a19517efb302af25cf6b36cf82fea72dc48a38ba3bdbb868a390916928c')
+sha256sums=('2565a358c808875e1d13d628528b35fca5b3bb1186161fb04965b56737b1213b')
 options=(!debug !lto)
 
 prepare() {
