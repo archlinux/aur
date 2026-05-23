@@ -1,8 +1,8 @@
-pkgbase = shorin-contrib-git
+pkgbase = shorin-contrib-gitee-git
 	pkgdesc = Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)
-	pkgver = r59.6ff18ab
+	pkgver = r61.fe88d7d
 	pkgrel = 1
-	url = https://github.com/SHORiN-KiWATA/shorin-contrib
+	url = https://gitee.com/jxc20120414/shorin-contrib
 	install = shorin-contrib.install
 	arch = any
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = shorin-contrib-git
 	optdepends = timg: for lsi image preview
 	provides = shorin-contrib
 	conflicts = shorin-contrib
-	source = git+https://github.com/SHORiN-KiWATA/shorin-contrib.git
+	source = git+https://gitee.com/jxc20120414/shorin-contrib.git
 	sha256sums = SKIP
 
-pkgname = shorin-contrib-git
+pkgname = shorin-contrib-gitee-git

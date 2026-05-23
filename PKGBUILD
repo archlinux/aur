@@ -1,12 +1,13 @@
+#我经过shorin本人同意后，把本aur包需要的源代码上传至gitee，并且修改了源代码获取的地址，其他无改动，我的邮箱：3824280949@qq.com
 # Maintainer: Shorin <2433516202@qq.com>
 
-pkgname=shorin-contrib-git
+pkgname=shorin-contrib-gitee-git
 _pkgname=shorin-contrib
-pkgver=r59.6ff18ab
+pkgver=r61.fe88d7d
 pkgrel=1
 pkgdesc="Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)"
 arch=('any')
-url="https://github.com/SHORiN-KiWATA/shorin-contrib"
+url="https://gitee.com/jxc20120414/shorin-contrib"
 license=('GPL3')
 depends=('bash' 'fzf')
 makedepends=('git')
@@ -25,7 +26,7 @@ optdepends=(
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("git+https://github.com/SHORiN-KiWATA/shorin-contrib.git")
+source=("git+https://gitee.com/jxc20120414/shorin-contrib.git")
 sha256sums=('SKIP')
 
 # 自动获取最新的 Git commit 数量作为版本号
