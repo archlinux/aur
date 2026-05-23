@@ -1,5 +1,5 @@
 pkgname=luminahud-git
-pkgver=1.0.0
+pkgver=r6.b911eac
 pkgrel=1
 pkgdesc="IMGUI BACKGROUND HUD"
 arch=('x86_64')
@@ -14,7 +14,6 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/LuminaHUD"
-  git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-\)g/r\1/;s/-/./g' ||
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
