@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-calendar_resource_management
 	pkgdesc = Resource manager for nextcloud calendar app
-	pkgver = 0.11.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/nextcloud/calendar_resource_management
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = nextcloud-app-calendar_resource_management
 	makedepends = yq
 	depends = nextcloud
 	options = !strip
-	source = nextcloud-app-calendar_resource_management-0.11.0.tar.gz::https://github.com/nextcloud-releases/calendar_resource_management/releases/download/v0.11.0/calendar_resource_management-v0.11.0.tar.gz
-	sha256sums = 9819a789a459930645c076b598a2881360acc33d5e435247708d9e983a56e512
+	source = nextcloud-app-calendar_resource_management-0.12.1.tar.gz::https://github.com/nextcloud-releases/calendar_resource_management/releases/download/v0.12.1/calendar_resource_management-v0.12.1.tar.gz
+	sha256sums = fc5b7d18b28b42f0b246dea0391d7473873ad2ec1d9f9c9c551945ab37f872f6
 
 pkgname = nextcloud-app-calendar_resource_management
 	depends = nextcloud>=
