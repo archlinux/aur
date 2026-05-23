@@ -1,3 +1,4 @@
+# Maintainer: Selene Bray-Hernandez <selebray1998@gmail.com>
 # Maintainer: Aaron Liu
 # Contributor: Zhirui Dai <daizhirui at hotmail dot com>
 
