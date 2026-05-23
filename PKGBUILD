@@ -4,7 +4,7 @@
 pkgbase=gimp-openvino
 pkgname=gimp-openvino
 pkgver=3.2.1.0  # auto-set by pkgver()
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel OpenVINO AI Plugins for GIMP"
 arch=('x86_64')
 url="https://github.com/intel/openvino-ai-plugins-gimp"
@@ -17,7 +17,6 @@ depends=(
   'gimp'
   'python'
   'openvino-models'
-  'openvino'
   'python-numpy'
   'python-scipy'
   'python-requests'
