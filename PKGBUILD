@@ -8,7 +8,7 @@ options=('!debug')
 url="https://github.com/w1zx1/screentaker"
 license=('MIT')
 makedepends=('rust')
-source=("https://github.com/w1zx1/screentaker/archive/refs/heads/main.tar.gz")
+source=("https://github.com/w1zx1/screentaker/archive/refs/heads/v0.2.1.tar.gz")
 sha512sums=('SKIP')
 
 build() {
