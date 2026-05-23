@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/delmath/LuminaHUD"
 license=('MIT')
 
-depends=('glfw-x11' 'libx11' 'mesa' 'imgui')
+depends=('glfw-x11' 'libx11' 'mesa' 'imgui-backends-git')
 makedepends=('git' 'gcc')
 
 source=("git+${url}.git")
