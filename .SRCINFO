@@ -1,7 +1,7 @@
 pkgbase = autodock4
 	pkgdesc = Automated docking of flexible ligands to proteins
 	pkgver = 4.2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ccsb-scripps/AutoDock4
 	arch = x86_64
 	arch = i686

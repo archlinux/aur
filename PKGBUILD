@@ -1,7 +1,7 @@
 # Maintainer: Andrew <andrewforlua@gmail.com>
 pkgname=autodock4
 pkgver=4.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Automated docking of flexible ligands to proteins"
 arch=('x86_64' 'i686')
 url="https://github.com/ccsb-scripps/AutoDock4"
