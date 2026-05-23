@@ -21,8 +21,9 @@ pkgver() {
 build() {
   cd "$srcdir/oopsmate"
 
-  # strikes requires BMI2 (PEXT) for slider lookups.
-  export RUSTFLAGS="${RUSTFLAGS} -C target-feature=+bmi2"
+  # Match the engine's local build flags and satisfy strikes' BMI2 requirement.
+  # AUR builds from source on the user's machine; `native` is intentional.
+  export RUSTFLAGS="${RUSTFLAGS} -C target-cpu=native -C target-feature=+avx2,+bmi2,-avx512f,-avx512vl,-avx512bw"
 
   cargo build --release --locked --bins
 }
@@ -30,7 +31,7 @@ build() {
 check() {
   cd "$srcdir/oopsmate"
 
-  export RUSTFLAGS="${RUSTFLAGS} -C target-feature=+bmi2"
+  export RUSTFLAGS="${RUSTFLAGS} -C target-cpu=native -C target-feature=+avx2,+bmi2,-avx512f,-avx512vl,-avx512bw"
 
   cargo test --release --locked
 }
