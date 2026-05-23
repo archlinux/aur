@@ -3,7 +3,7 @@
 _pkgauthor=Dark-Alex-17
 _pkgname=loki
 pkgname=${_pkgname}-ai-bin
-pkgver=0.3.0
+pkgver=0.4.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="An all-in-one, batteries included LLM CLI tool"
@@ -29,13 +29,13 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
 sha256sums=('16d0b134f225596b5046ab790bcf7b516039826c01dce6b92f3e404c5eabfa3d'
-            '082d0086f0eb944fb6dae0624ba98da526f201feb1536640dd73c0978c938dad'
-            'bc71e0b2d4e7ec3110be5c2556d001f5e6ead5282c8df819fcef9bf9d6a88682'
+            '079fc0544df2d664bd3a4a09ee483d6d0bd7b769de55acb7b8720c2b0f56579e'
+            'dbc4776c7ea08e85b3072f3deb0cca13b41b5498e82c65172c747e7caaf9fb44'
             'b1c4b6167087a6c3ce10ba87de339dbf4e0e04acd65533e8491870b0fbd1b57f'
             '571861178130b8349363afb29c1afab4a6d54cbe5ff5ea73c2f7299e58bb9a0b'
             'c27dba4a296182a8c6033dbe563c89b674d830f763c93d82a4cbdc9825ed8662')
-sha256sums_x86_64=('51374a308d0b587ec2f4f1649c4e74ea4ea40bd5157bdbe339312091a6f4be97')
-sha256sums_aarch64=('977f7ba34bd8f14b1c8705996348fd8b71aa2df24cda6739c686820898fd52e8')
+sha256sums_x86_64=('47ea1e4cca8ea9e7a6c70ae2c6078dec9dfd6d9c1330c5c846f65b33733aaeaa')
+sha256sums_aarch64=('ce54ae82c1e4a3ca7e65eb67cb27b9fabeccf06f5bcef1fa017a414472e60fad')
 
 
 package() {
