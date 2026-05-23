@@ -24,8 +24,8 @@ _GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
 
 pkgname="grub-silent"
 pkgdesc="GNU GRand Unified Bootloader (2) [without welcome and kernel messages]"
-pkgver=2.12
-pkgrel=9
+pkgver=2.14
+pkgrel=1
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -38,7 +38,8 @@ conflicts=('grub' 'grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}" '
 provides=('grub' 'grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}")
 
 makedepends=('autogen' 'bdf-unifont' 'git' 'help2man'
-             'python' 'rsync' 'texinfo' 'ttf-dejavu')
+             'python' 'rsync' 'texinfo' 'ttf-dejavu'
+			 'autoconf-archive')
 depends=('device-mapper' 'gettext' 'efibootmgr' 'fuse2')
 optdepends=('freetype2: For grub-mkfont usage'
             'dosfstools: For grub-mkrescue FAT FS and EFI support'
@@ -63,15 +64,15 @@ source=("https://ftp.gnu.org/gnu/${pkgname%-*}/${pkgname%-*}-${pkgver}.tar.xz"
         '07-quick_boot.patch'
         'grub.silent')
 
-sha256sums=('f3c97391f7c4eaa677a78e090c7e97e6dc47b16f655f04683ebd37bef7fe0faa'
-            'SKIP'
+sha256sums=('bc8d3c73535b8838d8c8e2654d73edc4e6ae8c8acdb45d5df5dc9a1547446d43'
+            '0a85e3691398b897a8f087c99757d67269a5ced0b51bd52b810d195aa125af10'
             'd101e9d33fbc67f7aaf6fb1191ec1315e8e5572c1d0538b95746ee194b8860db'
             '21153ab7f020d9f819a70b9c879b29e9709996c5b0304816123c09b6849f95a3'
             '6fa180674094f9e1723f736d458f1fe0b5740ea7cf5db5064139defc17ce0e94'
-            '39d7843dfe1e10ead912a81be370813b8621794a7967b3cc5e4d4188b5bf7264'
-            'c4cb3aa5ed535c7f3a3f784a779ea0a02bfed0ac54f202387a18de04dda8297f'
-            'a7ee21096fa9255265d69517d332ca36b4f275d233aab785c5d15640e177a293'
-            '7769a65321d1611217d6af47c1c3fe91ce2f97adcfd58c4e0d2e0bb06b39100e'
+            'bfab74bdc8c02f726d4e9430cb7b5b0688445ce6e34cb6f4a10eba51b451ab9f'
+            '55de3e428a56cd770a49a345da53726eccd493e5bce50a86f9810972524ff489'
+            '34ff4bdfad60590a944c660f085a0aff6587e4d7295e539f6a198e0851964b6d'
+            '943744e3cdd50ab825af54cbf5a764dc429ecec99aefab53f809ca54ff8c4d3d'
             '4f2e9d585b7b0ef8ce0d09e88391d1397b50883c7cb1516dc99785934abe15a2')
 
 prepare() {
@@ -110,14 +111,9 @@ prepare() {
 	./linguas.sh
 	echo
 
-    # Remove lua module from grub-extras as it is incompatible with changes to grub_file_open   
+    # Remove lua module from grub-extras as it is incompatible with changes to grub_file_open
     # http://git.savannah.gnu.org/cgit/grub.git/commit/?id=ca0a4f689a02c2c5a5e385f874aaaa38e151564e
     rm -rf "$srcdir"/grub-extras/lua
-
-	# Fix extra_deps.lst lost error
-	# https://lists.gnu.org/archive/html/grub-devel/2023-12/msg00010.html
-	# Original file in https://elixir.bootlin.com/grub/grub-2.12/source/grub-core/extra_deps.lst
-	echo "depends bli part_gpt" > "${srcdir}/grub-${pkgver}/grub-core/extra_deps.lst"
 }
 
 _build_grub-common_and_bios() {

@@ -16,7 +16,7 @@ diff --git a/grub-core/gettext/gettext.c b/grub-core/gettext/gettext.c
 index 4880cefe3..3098e8918 100644
 --- a/grub-core/gettext/gettext.c
 +++ b/grub-core/gettext/gettext.c
-@@ -427,6 +427,11 @@ grub_gettext_init_ext (struct grub_gettext_context *ctx,
+@@ -432,6 +432,11 @@ grub_gettext_init_ext (struct grub_gettext_context *ctx,
    if (locale[0] == 'e' && locale[1] == 'n'
        && (locale[2] == '\0' || locale[2] == '_'))
      grub_errno = err = GRUB_ERR_NONE;
@@ -27,4 +27,4 @@ index 4880cefe3..3098e8918 100644
 +
    return err;
  }
- 
+
