@@ -1,8 +1,8 @@
 # Maintainer: Cyole <i@cyole.me>
 
 pkgname=pebble-bin
-pkgver=0.0.8
-pkgrel=3
+pkgver=0.0.9
+pkgrel=1
 pkgdesc="Local-first desktop email client built with Tauri"
 arch=("x86_64")
 url="https://github.com/QingJ01/Pebble"
@@ -38,7 +38,7 @@ sha256sums=(
   "SKIP"
   "SKIP"
 )
-sha256sums[0]=e0a6d28759fb9966370a858911e19ae6bd5c48fd986ebebfd54d8379d687a5e3
+sha256sums[0]=1ea1cdcc9fa4ba1fe2de6f66fdfa7902e5eea48696445dc2f9da888ee895c4e0
 sha256sums[1]=2b1160e0656b1f61b4c88e84e040af8f2f1100f81845ec5d8ffeb04ea8544ae6
 sha256sums[2]=3cbe399effb8a4e2c3ed81e755d658a1c91bf4acde14a62da080fcd68759e531
 sha256sums[3]=3190ee5ee94568f0fe7adb73aaa01b9423a89536d0004308cc61b137b0db9e7c
