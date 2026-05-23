@@ -1,6 +1,6 @@
 pkgbase = markdown2pdf
 	pkgdesc = Convert markdown to pdf (a md to pdf transpiler)
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/theiskaa/markdown2pdf
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = markdown2pdf
 	makedepends = cargo
 	depends = gcc-libs
 	depends = openssl
-	source = markdown2pdf-1.3.0.tar.gz::https://github.com/theiskaa/markdown2pdf/archive/v1.3.0.tar.gz
-	sha512sums = d7f72eefd70ab6c2ac0e608f84e33d8d0050e5e8552ee7b8daab0c3f44eea7b38a16f132ff79912490cd522911d7b6434656b9bce9011400cfd1a12a9e5c1468
+	source = markdown2pdf-1.4.0.tar.gz::https://github.com/theiskaa/markdown2pdf/archive/v1.4.0.tar.gz
+	sha512sums = e01a3b56a1f53cbabcacdd31615f7991e0329ef39d437e191e0030d72022fa0994dbd274acae507f21ff980671cf38bc428182ffb9532c44cf1ae7e85f00da68
 
 pkgname = markdown2pdf
