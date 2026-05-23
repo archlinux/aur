@@ -1,6 +1,6 @@
 pkgbase = shelly-git
 	pkgdesc = Shelly: A Modern Arch Package Manager (git version)
-	pkgver = 2.3.0.2.r0.g761c0fd
+	pkgver = 2.3.0.2.r134.g09615bf
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
@@ -22,13 +22,14 @@ pkgbase = shelly-git
 	depends = libarchive
 	depends = dconf
 	depends = gnupg
+	depends = zstd
 	optdepends = flatpak: For supporting flatpak implementation.
 	optdepends = archlinux-appstream-data: package icons and metadata
 	optdepends = fish: Fish shell completions
 	provides = shelly
 	conflicts = shelly
 	conflicts = shelly-bin
-	source = shelly-git::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git
+	source = shelly-git::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development
 	sha256sums = SKIP
 
 pkgname = shelly-git
