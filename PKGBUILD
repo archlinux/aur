@@ -8,7 +8,7 @@ url="https://gitflic.ru/project/en3/planner-app"
 license=("MIT")
 depends=("webkit2gtk-4.1" "gtk3" "libayatana-appindicator")
 makedepends=("git" "nodejs" "npm" "rust" "cargo")
-source=("git+ssh://git@gitflic.ru/en3/planner-app.git#tag=v${pkgver}")
+source=("git+https://gitflic.ru/project/en3/planner-app.git#tag=v${pkgver}")
 sha256sums=("SKIP")
 
 build() {
