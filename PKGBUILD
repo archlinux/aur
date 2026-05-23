@@ -9,9 +9,9 @@
 # Contributor: a32633 <brunofernandes@ua.pt>
 
 pkgname='omnetpp'
-pkgver=6.3.0
-_pkgver=6.3.0
-pkgrel=2
+pkgver=6.4.0
+_pkgver=6.4.0
+pkgrel=1
 pkgdesc='Component-based simulation package designed for modeling communication networks'
 arch=('x86_64')
 url='http://www.omnetpp.org'
@@ -28,7 +28,7 @@ depends=('libxml2'
          'openscenegraph'
          'python-setuptools'
          'python-matplotlib'
-         'python-numpy1'
+         'python-numpy>=2.0.0'
          'python-pandas'
          'python-scipy'
          'python-tzdata'
@@ -41,7 +41,7 @@ makedepends=('wget'
              'llvm-libs>=17.0.6'
              'python-setuptools'
              'python-matplotlib'
-             'python-numpy1'
+             'python-numpy>=2.0.0'
              'python-pandas'
              'python-scipy'
              'python-tzdata'
@@ -60,7 +60,7 @@ source=(
   OMNeT++.desktop
   omnetpp.sh)
 
-sha512sums=('0e2aec0447b1cf394966f0adb90c4e4571a9ba3c52777d49f7be0fbf4800aedfbb638617b2e35c28569c8b651a4da452cb37b871472b74d740d09b1f3c034300'
+sha512sums=('364c647884090af38b3f0ced1355e4d606b6bf6bb063b6bdfe3677d5308556bcacf757a82a015d68a4bc130dd89aec53617c097c7852da112c35d50b20963a2a'
   '064bb4747e9985dab8480de69978e2258111a38a7d49bb24c36f1ac070058bb2149bb4d2b2fd15d5a35f0ce02bf47e1d212a74397afd07a40a68b5eab7decfd1'
   'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1')
 

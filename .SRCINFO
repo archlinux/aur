@@ -1,7 +1,7 @@
 pkgbase = omnetpp
 	pkgdesc = Component-based simulation package designed for modeling communication networks
-	pkgver = 6.3.0
-	pkgrel = 2
+	pkgver = 6.4.0
+	pkgrel = 1
 	url = http://www.omnetpp.org
 	install = omnetpp.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = omnetpp
 	makedepends = llvm-libs>=17.0.6
 	makedepends = python-setuptools
 	makedepends = python-matplotlib
-	makedepends = python-numpy1
+	makedepends = python-numpy>=2.0.0
 	makedepends = python-pandas
 	makedepends = python-scipy
 	makedepends = python-tzdata
@@ -34,7 +34,7 @@ pkgbase = omnetpp
 	depends = openscenegraph
 	depends = python-setuptools
 	depends = python-matplotlib
-	depends = python-numpy1
+	depends = python-numpy>=2.0.0
 	depends = python-pandas
 	depends = python-scipy
 	depends = python-tzdata
@@ -43,10 +43,10 @@ pkgbase = omnetpp
 	optdepends = osgearth: geospatial API with 3D rendering
 	provides = omnetpp
 	conflicts = omnetpp
-	source = omnetpp-6.3.0-src-linux.tgz::https://github.com/omnetpp/omnetpp/releases/download/omnetpp-6.3.0/omnetpp-6.3.0-linux-x86_64.tgz
+	source = omnetpp-6.4.0-src-linux.tgz::https://github.com/omnetpp/omnetpp/releases/download/omnetpp-6.4.0/omnetpp-6.4.0-linux-x86_64.tgz
 	source = OMNeT++.desktop
 	source = omnetpp.sh
-	sha512sums = 0e2aec0447b1cf394966f0adb90c4e4571a9ba3c52777d49f7be0fbf4800aedfbb638617b2e35c28569c8b651a4da452cb37b871472b74d740d09b1f3c034300
+	sha512sums = 364c647884090af38b3f0ced1355e4d606b6bf6bb063b6bdfe3677d5308556bcacf757a82a015d68a4bc130dd89aec53617c097c7852da112c35d50b20963a2a
 	sha512sums = 064bb4747e9985dab8480de69978e2258111a38a7d49bb24c36f1ac070058bb2149bb4d2b2fd15d5a35f0ce02bf47e1d212a74397afd07a40a68b5eab7decfd1
 	sha512sums = facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1
 
