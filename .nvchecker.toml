@@ -1,0 +1,5 @@
+[lsdesktop-bin]
+source = "github"
+github = "FLchs/lsdesktop"
+use_latest_release = true
+prefix = "v"

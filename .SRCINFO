@@ -1,0 +1,22 @@
+pkgbase = lsdesktop-bin
+	pkgdesc = Small utilities for working with XDG desktop entries
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/FLchs/lsdesktop
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	provides = lsdesktop
+	provides = desklaunch
+	conflicts = lsdesktop
+	options = !strip
+	source = README-0.0.1.md::https://raw.githubusercontent.com/FLchs/lsdesktop/v0.0.1/README.md
+	source = LICENSE-0.0.1::https://raw.githubusercontent.com/FLchs/lsdesktop/v0.0.1/LICENSE
+	sha256sums = 5caa0f8c2fa818a896838f5b9d6bd51915a65c44bce1bef55ea71154f3366eb7
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = lsdesktop-x86_64-0.0.1.tgz::https://github.com/FLchs/lsdesktop/releases/download/v0.0.1/lsdesktop-linux-amd64.tar.gz
+	sha256sums_x86_64 = de446ce80dab02144d7944a9c52243004ccf67805d3ecc5c85a9639fcf6e7ffc
+	source_aarch64 = lsdesktop-aarch64-0.0.1.tgz::https://github.com/FLchs/lsdesktop/releases/download/v0.0.1/lsdesktop-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3cd5b24566bb0d01840cb5e6d35c169f36e6634d7631e09edd5af94072893a5e
+
+pkgname = lsdesktop-bin
