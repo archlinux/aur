@@ -1,0 +1,16 @@
+==> ERROR: BUILDENV array contains unknown option 'fakeroot'
+==> ERROR: OPTIONS array contains unknown option '!upx'
+pkgbase = bun-profile-bin
+	pkgdesc = Bun JavaScript runtime - PROFILE build with debug symbols + linker map for use with perf/Instruments. Side-by-side install with extra/bun.
+	pkgver = 1.3.14
+	pkgrel = 1
+	url = https://github.com/oven-sh/bun
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	options = !debug
+	options = !strip
+	source_x86_64 = bun-linux-x64-profile-1.3.14.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x64-profile.zip
+	sha256sums_x86_64 = f51a04e19e59a256fc82e8612c2996e0fefef6c16dbb7f9395cbd5dad9bdbf3e
+
+pkgname = bun-profile-bin
