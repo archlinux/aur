@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=kasetto
-pkgver=2.4.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="A declarative AI agent environment manager, written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT' 'Apache-2.0')
 depends=('glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pivoshenko/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('520cde19a1feb33937f22e9c070d1be0aab015809b7a3aab96650322708037b2')
+sha256sums=('7b4a6587d2e23229193b9729d707d0fe034accc4f2e43336f8bda58098695ec1')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -22,6 +22,10 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # ring's C/asm objects produce undefined symbols when CFLAGS has -flto=auto
+  # (Arch makepkg default). Disable LTO for ring's native compilation.
+  export CFLAGS="${CFLAGS} -fno-lto"
+  export CXXFLAGS="${CXXFLAGS} -fno-lto"
   cargo build --release
 }
 
