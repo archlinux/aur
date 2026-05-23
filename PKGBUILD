@@ -11,9 +11,10 @@ license=('MIT' 'unknown' 'unknown')
 depends=()
 makedepends=()
 options=("!strip")
-source=("local://sfd_ClientesLinux_RPM64_rev26_02.zip")
+source=("local://sfd_ClientesLinux_RPM64_rev26_02.zip" "local://idocachesrv.service")
 noextract=()
-sha256sums=('6b034f1d2c8411ed665c3ca0dffea852fa6bd9097be5e1d48762927655b7eda5')
+sha256sums=('6b034f1d2c8411ed665c3ca0dffea852fa6bd9097be5e1d48762927655b7eda5'
+            '463db4a2c758e42702373771fe96b7d84c7eb3668b3b220218ce429f6670cd8a')
 
 build() {
     bsdtar -xf "${srcdir}/sfd_ClientesLinux_RPM64_26_02/Firma Digital/Idopte/scmiddleware-costa-rica-user_idopte_6.23.44.0_rh9_amd64.rpm" -C "${srcdir}/sfd_ClientesLinux_RPM64_26_02/Firma Digital/Idopte"
@@ -87,6 +88,9 @@ package_firma-digital-middleware-idopte() {
 
     install -d "${srcdir}/sfd_ClientesLinux_RPM64_26_02/Firma Digital/Idopte/etc" "${pkgdir}/etc" 2> >(read err; error "$err")
     cp -r "${srcdir}/sfd_ClientesLinux_RPM64_26_02/Firma Digital/Idopte/etc/"* "${pkgdir}/etc/" 2> >(read err; error "$err") 
+
+    install -Dm644 "${srcdir}/idocachesrv.service" "${pkgdir}/usr/lib/systemd/system/idocachesrv.service"
+
 }
 
 package_firma-digital-middleware-smartcard() {

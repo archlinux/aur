@@ -1,0 +1,17 @@
+; vim:ft=systemd
+[Unit]
+Description=Idopte Smart Card Cache Service
+After=pcscd.service
+Wants=pcscd.service
+
+[Service]
+Type=forking
+ExecStart=/usr/lib/SCMiddleware/idocachesrv
+Restart=on-failure
+RestartSec=3
+TasksMax=20
+CPUQuota=50%
+MemoryMax=256M
+
+[Install]
+WantedBy=multi-user.target
