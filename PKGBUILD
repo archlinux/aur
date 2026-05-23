@@ -1,27 +1,27 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Maintainer: Mohamed Hammad <Mohamed.Hammad@Steelbore.com>
+# Maintainer: Mohamed Hammad <Mohamed.Hammad@SpacecraftSoftware.org>
 #
 # gitway-bin — installs the pre-built static musl binary from the GitHub
 # Release page.  This is the recommended package for most users.
 #
 # To build from source instead, use the companion gitway-git AUR package.
 #
-# Project page: https://gitway.steelbore.com/
+# Project page: https://SpacecraftSoftware.org/gitway/
 
 pkgname=gitway-bin
-pkgver=0.9.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Pure-Rust SSH toolkit for Git: transport, keys, signing, agent"
 arch=('x86_64')
-url="https://github.com/steelbore/gitway"
+url="https://github.com/Spacecraft-Software/Gitway"
 license=('GPL-3.0-or-later')
 provides=('gitway')
 conflicts=('gitway' 'gitway-git')
 
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/steelbore/gitway/releases/download/v${pkgver}/gitway-v${pkgver}-linux-x86_64.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/Spacecraft-Software/Gitway/releases/download/v${pkgver}/gitway-v${pkgver}-linux-x86_64.tar.gz"
 )
-sha256sums=('b54e51c7d686cd45ff13989f04a8036882d4ec67d08998986e7f39804a4e9f3c')
+sha256sums=('bc11d2a81157b44e62679926cbcbe635695604491ce8454c4a2b569e83d3670d')
 
 package() {
   cd "${srcdir}"
