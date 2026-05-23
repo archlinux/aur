@@ -3,7 +3,7 @@ pkgname=neo-mofox-launcher-git
 _pkgname='Neo-MoFox Launcher'
 _appname=neo-mofox-launcher
 _zhsname='Neo-MoFox 启动器'
-pkgver=r196.bace2bb
+pkgver=r199.ed0df34
 _electronversion=39
 pkgrel=1
 pkgdesc="An elegant instance management launcher for Neo-MoFox QQ Bot. - 一个优雅的 Neo-MoFox QQ 机器人实例管理启动器"
@@ -91,8 +91,12 @@ prepare() {
     # 更新 package.json 中的 electron 版本
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     
-    # 安装依赖
-    NODE_ENV=development npm install
+    # 安装依赖（跳过 postinstall，下面会显式重编 node-pty）
+    NODE_ENV=development npm install --ignore-scripts
+    
+    # 按系统 Electron 版本重新编译 node-pty 的原生扩展。
+    # SYSTEM_ELECTRON_VERSION 已在前面导出，rebuild-node-pty.js 会自动采用它。
+    node scripts/rebuild-node-pty.js --force
 }
 
 build() {
