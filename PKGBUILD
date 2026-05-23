@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=elephc
-pkgver=0.22.3
+pkgver=0.22.4
 pkgrel=1
 pkgdesc="A PHP-to-native compiler. Takes a subset of PHP and compiles it directly to native assembly, producing standalone binaries."
 url="https://elephc.dev/"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libgcc' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/illegalstudio/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('073a17ea1b09641d29ab4469f953763a5fa6d21142e0e92842aca8ca5a962377f3124f3274a3bd3769520233e0994f0e4d58d6553a5e11ac2b5c4bbefe9c5d01')
+b2sums=('38bbe1445fef2d721df0823c7d3af9f31e33bd78cc4d4240355447a8b65bc533ab2d82e1f7c57a9a575e5ac914acd5c5d9e4b5b1ed289f2443b1e6c6426e9128')
 
 prepare() {
   cd "${srcdir}/${pkgname}-$pkgver"
