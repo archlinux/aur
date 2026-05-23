@@ -1,6 +1,6 @@
 pkgbase = bdcli-bin
 	pkgdesc = CLI for installing and managing BetterDiscord
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/BetterDiscord/cli
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = bdcli-bin
 	conflicts = bdcli
 	conflicts = bdcli-git
 	options = !strip
-	source_x86_64 = https://github.com/BetterDiscord/cli/releases/download/v0.3.0/bdcli_0.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = b4eaad572c0d0445d7e305cb045122a27aacb2c2b6e862130a6def00580b5268
-	source_aarch64 = https://github.com/BetterDiscord/cli/releases/download/v0.3.0/bdcli_0.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 530628185609a121f57c7af9818000ce2735b611d432f936b2a55e595b9dc1bc
+	source_x86_64 = https://github.com/BetterDiscord/cli/releases/download/v0.3.1/bdcli_0.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 77c39eecd4b3eba0a27f5a3806a23d6be7a21f961afda661374ff8223ffefeab
+	source_aarch64 = https://github.com/BetterDiscord/cli/releases/download/v0.3.1/bdcli_0.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 84eb6b8c4d3037e3890638d583d7c10f0c40f8eebe2b0a680c5c30fddea757f4
 
 pkgname = bdcli-bin
