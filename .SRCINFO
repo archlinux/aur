@@ -11,7 +11,7 @@ pkgbase = gimp-openvino
 	depends = gimp
 	depends = python
 	depends = openvino-models
-	depends = python-openvino
+	depends = openvino
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-requests
@@ -29,6 +29,7 @@ pkgbase = gimp-openvino
 	depends = python-hf-xet
 	optdepends = intel-compute-runtime: Intel GPU acceleration for OpenVINO
 	optdepends = intel-npu-driver: NPU acceleration support
+	optdepends = openvino-intel-gpu-plugin: Intel GPU plugin for OpenVINO
 	source = gimp-openvino::git+https://github.com/intel/openvino-ai-plugins-gimp.git
 	sha256sums = SKIP
 

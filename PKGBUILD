@@ -9,11 +9,15 @@ pkgdesc="Intel OpenVINO AI Plugins for GIMP"
 arch=('x86_64')
 url="https://github.com/intel/openvino-ai-plugins-gimp"
 license=('Apache-2.0' 'MIT')
+# Note: This package only installs the GIMP OpenVINO plugins. GPU acceleration depends on the
+# OpenVINO runtime (openvino package) and the system's hardware drivers (e.g., intel-compute-runtime for Intel GPUs,
+# NVIDIA CUDA drivers for NVIDIA GPUs, ROCm stack for AMD GPUs). Ensure that the openvino package
+# is installed with the desired backend support and that the corresponding drivers are present.
 depends=(
   'gimp'
   'python'
   'openvino-models'
-  'python-openvino'
+  'openvino'
   'python-numpy'
   'python-scipy'
   'python-requests'
@@ -33,6 +37,11 @@ depends=(
 optdepends=(
   'intel-compute-runtime: Intel GPU acceleration for OpenVINO'
   'intel-npu-driver: NPU acceleration support'
+  'openvino-intel-gpu-plugin: Intel GPU plugin for OpenVINO'
+  # For NVIDIA GPU acceleration: Install NVIDIA CUDA drivers
+  #   and ensure the openvino package has CUDA support
+  # For AMD GPU acceleration: Install AMD ROCm drivers
+  #   and ensure the openvino package has ROCm support
 )
 makedepends=('git' 'python-pip')
 source=("$pkgname::git+https://github.com/intel/openvino-ai-plugins-gimp.git")
@@ -60,14 +69,14 @@ package() {
   local site_packages="$pkgdir/usr/lib/python$pyver/site-packages"
   local models_dir="$pkgdir/usr/share/$pkgname"
 
-  # Install pip-only deps not available in Arch repos or AUR
-  PIP_REQUIRE_VIRTUALENV=0 python -m pip install \
-    gdown controlnet-aux openvino-genai optimum-intel tomesd \
-    --root="$pkgdir" --prefix=/usr --no-deps 2>/dev/null || true
+   # Install pip-only deps not available in Arch repos or AUR
+   PIP_REQUIRE_VIRTUALENV=0 python -m pip install \
+     gdown controlnet-aux openvino-genai optimum-intel tomesd \
+     --root="$pkgdir" --prefix=/usr --no-deps --prefer-binary 2>/dev/null || true
 
-  # Install the main package (deps handled by system packages)
-  PIP_REQUIRE_VIRTUALENV=0 python -m pip install . \
-    --root="$pkgdir" --prefix=/usr --no-deps
+   # Install the main package (deps handled by system packages)
+   PIP_REQUIRE_VIRTUALENV=0 python -m pip install . \
+     --root="$pkgdir" --prefix=/usr --no-deps --prefer-binary
 
   # Set up config and install bundled weights
   GIMP_OPENVINO_MODELS_PATH="$models_dir" \
