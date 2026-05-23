@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your-email at domain dot tld>
+# Maintainer: hikari <me at metantesan dot com>
 pkgname=kubit-cli-bin
 pkgver=0.3.82
 pkgrel=1

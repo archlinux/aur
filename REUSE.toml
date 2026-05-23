@@ -1,0 +1,7 @@
+version = "1.0"
+
+[[annotations]]
+path = ["PKGBUILD", ".SRCINFO"]
+precedence = "override"
+SPDX-FileCopyrightText = "2025 hikari"
+SPDX-License-Identifier = "0BSD"
