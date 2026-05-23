@@ -2,7 +2,7 @@ pkgbase = luminahud-git
 	pkgdesc = IMGUI BACKGROUND HUD
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/delmath/LuminaHUD.git
+	url = https://github.com/delmath/LuminaHUD
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = luminahud-git
 	depends = libx11
 	depends = mesa
 	depends = imgui
-	source = git+https://github.com/delmath/LuminaHUD.git.git
+	source = git+https://github.com/delmath/LuminaHUD.git
 	sha256sums = SKIP
 
 pkgname = luminahud-git
