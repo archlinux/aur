@@ -1,6 +1,6 @@
 pkgbase = python-primp
 	pkgdesc = HTTP client that can impersonate web browsers.
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/deedy5/primp
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = python-primp
 	depends = gcc-libs
 	options = !strip
 	options = lto
-	source = https://github.com/deedy5/primp/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = 11ba37857e35f750f2ccc8f83cefb6b264bd06bce15c35fe349869f16c514575
+	source = https://github.com/deedy5/primp/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 8ef11a1bdb828586925c7aa0acae1ac9b8d1c8b8dd5e34e5b04c7ad947d16fa1
 
 pkgname = python-primp
