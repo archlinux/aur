@@ -1,7 +1,7 @@
 # Maintainer: Archisman Panigrahi <apandada1 AT gmail DOT com>
 
 pkgname=tomatillo
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=2
 pkgdesc='Tomatillo is a Pomodoro Timer app for your productivity tasks'
 arch=(any)
@@ -15,6 +15,7 @@ depends=(
 makedepends=(
   git
   meson
+  blueprint-compiler
 )
 source=("git+$url.git#tag=v$pkgver")
 sha1sums=('SKIP')
