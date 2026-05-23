@@ -4,7 +4,7 @@
 # Contributor: Nassim Kacha <nassim.kacha@gmail.com>
 
 pkgname=innotop
-pkgver=1.15.2
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="A powerful "top" clone for MySQL (MariaDB)"
 arch=(any)
@@ -13,7 +13,7 @@ license=(GPL-2.0-or-later)
 depends=(perl-dbd-mysql perl-term-readkey)
 options=('!emptydirs')
 source=(https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('cfedf31ba5617a5d53ff0fedc86a8578f805093705a5e96a5571d86f2d8457c0')
+sha256sums=('45645f20e70d54adc5208b5098beb378f5f29fc5e0447237351311418cc9933b')
 
 build() {
   cd ${pkgname}-${pkgver}
