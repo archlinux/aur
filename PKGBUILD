@@ -2,7 +2,7 @@
 
 _pkgname="figurine"
 pkgname="${_pkgname}-bin"
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Print your text in style"
 arch=(
@@ -36,9 +36,9 @@ source_x86_64=(
 )
 sha256sums=('1fa417a9f62603dc5b70041d15a3a73cb4301bda6a39c7ddf1905823910a4c85'
             '07944e5d027ada147fa405b891016d1c180a22b7bed0a306a4019157725dac1e')
-sha256sums_aarch64=('f8738fb7945ccd6161e6b6d6acaa32d744b2dafff17205bd899f551746f09521')
-sha256sums_armv7h=('bd42cd763c76a30517f113776c105499d68477c55ceb624b7c3180d3900551ba')
-sha256sums_x86_64=('01f125d9aa9f4a87f9f86f7eb1322b586869b3ba9b94a90af57cb7a8f03f8674')
+sha256sums_aarch64=('160b3cbd2c3788e492f6ab60f67a24e3fccce2117a07b0189296997d0e566e2e')
+sha256sums_armv7h=('adc23dea214f471ca9e583c3493e9c3396bbc30d6d4049ddeb869e1d22a4dbfe')
+sha256sums_x86_64=('2b5d5307f3260ef00b58790015de9c61af61fc5a6ff6bbc173075b5f5bb25adb')
 
 package() {
   cd "${srcdir}"
