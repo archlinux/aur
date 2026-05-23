@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-oidc
 	pkgdesc = Nextcloud as OpenID Connect Identity Provider
-	pkgver = 1.15.0
+	pkgver = 1.16.6
 	pkgrel = 1
 	url = https://github.com/H2CK/oidc
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-oidc
 	makedepends = nextcloud
 	makedepends = yq
 	options = !strip
-	source = nextcloud-app-oidc-1.15.0.tar.gz::https://github.com/H2CK/oidc/releases/download/1.15.0/oidc-1.15.0.tar.gz
-	sha512sums = da0012de0bd247267fe8f9e172b65119e3ce269bb615e2c9ec7df318c269c84e72371c704945de28d341dee27cc011e5278a4bcbd7f8a02b2eafd771ffc234df
+	source = nextcloud-app-oidc-1.16.6.tar.gz::https://github.com/H2CK/oidc/releases/download/1.16.6/oidc-1.16.6.tar.gz
+	sha512sums = 389a6e186201d0b297157c11676766a17d974845f3ea2cc02e984e6b3ff60467cc3616a4f31f266f383723d965cba5400c77c4524503adaf10e965098b9ef1ef
 
 pkgname = nextcloud-app-oidc
