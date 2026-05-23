@@ -10,7 +10,7 @@ depends=()
 makedepends=('cargo' 'rust')
 install=asus-sound-fix.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Karso2023/vivobook_sound_fix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('51b3fd83bfc33b413673a3044f272a102afa7c38b4f99b8acd544cdf31802b75')
+sha256sums=('2325825f8190eae7cefda32a29de313a8c90457c0867a438c27fbea6612af046')
 
 _srcdir="vivobook_sound_fix-$pkgver"
 
