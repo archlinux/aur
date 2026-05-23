@@ -1,6 +1,6 @@
 # Maintainer: Snemc-s <snemc@snemc.cn>
 pkgname=wayscrollshot-bin
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A scrolling screenshot tool for Wayland"
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=(
 )
 provides=("wayscrollshot=${pkgver}")
 conflicts=('wayscrollshot' 'wayscrollshot-git')
-source=("wayscrollshot-bin-0.1.7.tar.gz::${url}/releases/download/v${pkgver}/wayscrollshot-archlinux-x86_64.tar.gz")
-sha256sums=('c2771a6176a812c09b164872198ac371d0f95d5c9c93ee8982afe09cc3a8b4e3')
+source=("wayscrollshot-bin-0.1.8.tar.gz::${url}/releases/download/v${pkgver}/wayscrollshot-archlinux-x86_64.tar.gz")
+sha256sums=('8f87d8349f1174191bbe5a6820702dcfea8309b7b8b3928b4825c9d5564a12c9')
 
 package() {
     install -Dm755 wayscrollshot "${pkgdir}/usr/bin/wayscrollshot"
