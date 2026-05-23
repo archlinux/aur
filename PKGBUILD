@@ -20,9 +20,9 @@ source=("${_base}/dist-mps.tar.gz" "mps.service")
 source_x86_64=("mps-unstable-x86_64::${_base}/mps-unstable-x86_64-unknown-linux-musl")
 source_aarch64=("mps-unstable-aarch64::${_base}/mps-unstable-aarch64-unknown-linux-musl")
 # First entry is the release dist tarball; local sidecar file is intentionally SKIP.
-sha256sums=('7a5d6e45cffb1a0be0a4186aaa0fb23c62b1a43a45eecea1be01285d6fa5eac2' 'SKIP')
-sha256sums_x86_64=('a6c2eab0113e215ed2439f9e8c43e8f3187b5e8475ea0e8d4d3196f2ce51407d')
-sha256sums_aarch64=('27de2dc2f8b79a6822704bc6121ce952ba4d48db93b9bd6a7cd849d96c96c330')
+sha256sums=('bc77f2cea93905cbde037be50c46e3992311d615d7ef263811a430579b53a37a' 'SKIP')
+sha256sums_x86_64=('636396ebfb256f62e2990a659beb352a0eb7628f6f4f8f24e2421036b9933c36')
+sha256sums_aarch64=('1430815fae7bac7dc3660729ab4ce3c0f1324772204b99a3ede9868408a253f7')
 
 package() {
     install -Dm755 "mps-unstable-${CARCH}" "$pkgdir/usr/bin/mps"
