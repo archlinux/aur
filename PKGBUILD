@@ -8,15 +8,15 @@
 # Maintainer: Ahmed G. Gad <me@ahmedgad.com>
 
 pkgname=apothem
-pkgver=1.1.0
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="One shared profile · materialized into eleven AI-coding-tool harnesses."
+pkgdesc="Host-agnostic AI-harness configuration manager."
 arch=('any')
 url="https://apothem.ahmedgad.com"
 license=('MIT')
 depends=('bash' 'python')
 source=("${pkgname}-v${pkgver}-linux.tar.gz::https://github.com/Gad360/apothem/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux.tar.gz")
-sha256sums=('f7ca4cd997e556902e05857b319247385261b6b4f200fdfb61798300fd9ff2de')
+sha256sums=('ff4ca8f7b6563f30aa3fc5c1d31422df9c0a882fd15b3527486fd37cdc272a66')
 
 package() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
