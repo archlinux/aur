@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=licensee
-pkgver=9.19.0
+pkgver=10.0.0
 pkgrel=1
 pkgdesc="Detect under what license a project is distributed"
 arch=(any)
@@ -13,7 +13,6 @@ depends=(
   ruby-dotenv
   ruby-octokit
   ruby-reverse_markdown
-  ruby-rugged
   ruby-thor
 )
 makedepends=(
@@ -23,12 +22,14 @@ makedepends=(
 checkdepends=(
   ruby-mustache
   ruby-rspec
+  ruby-rugged
   ruby-simplecov
   ruby-webmock
 )
+optdepends=('ruby-rugged: Git repository scanning')
 options=(!emptydirs)
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('171f0c99f02ac2786078a0c54ea43b7126cc7c99d9ff510a2a0e5fb0c39f5b4a')
+sha256sums=('cdd29a9d7b13b9491992338817d3389d8ef0eccbf770cea52285553ffabd9184')
 
 _archive="$pkgname"
 
