@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# License: MIT (packaging code); upstream Audacity is GPL-3.0-or-later
-# Credits: Felipe Facundes, Selene Bray-Hernandez
+# Original code (C) Felipe Facundes — GPL-3.0-only
+# Modifications (C) Selene Bray-Hernandez — MIT
+# SPDX-License-Identifier: GPL-3.0-only AND MIT
 
 libtorch_cuda="/opt/libtorch-cuda"
 libtorch_cpu="/opt/libtorch-cpu"

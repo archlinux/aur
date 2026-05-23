@@ -1,5 +1,5 @@
 # Maintainer: Selene Bray-Hernandez <selebray1998@gmail.com>
-# Contributor: Felipe Facundes
+# Previous Maintainer: Felipe Facundes
 # Changelog: CHANGELOG
 
 pkgname=audacity-openvino
