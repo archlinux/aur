@@ -1,4 +1,4 @@
-pkgbase = gimp-openvino-ai-plugins
+pkgbase = gimp-openvino
 	pkgdesc = Intel OpenVINO AI Plugins for GIMP
 	pkgver = rXXX.XXXXXX
 	pkgrel = 1

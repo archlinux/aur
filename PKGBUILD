@@ -1,5 +1,7 @@
 # Maintainer: Selene Bray-Hernandez <selebray1998@gmail.com>
 
+# pkgbase must match the AUR repository name
+pkgbase=gimp-openvino
 pkgname=gimp-openvino-ai-plugins
 pkgver=rXXX.XXXXXX  # auto-set by pkgver()
 pkgrel=1
