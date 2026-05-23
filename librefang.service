@@ -1,0 +1,34 @@
+[Unit]
+Description=LibreFang Agent OS Daemon
+Documentation=https://github.com/librefang/librefang
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=librefang
+Group=librefang
+ExecStart=/usr/bin/librefang start
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+
+# Environment
+EnvironmentFile=-/etc/librefang/env
+WorkingDirectory=/var/lib/librefang
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/librefang
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+MemoryDenyWriteExecute=false
+RestrictRealtime=true
+
+[Install]
+WantedBy=multi-user.target

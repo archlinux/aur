@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=LibreFang
+GenericName=Agent Operating System
+Comment=Libre-source Agent Operating System built in Rust (Community Fork)
+Exec=librefang-desktop
+Icon=librefang-desktop
+Categories=Utility;Productivity;
+Keywords=ai;agent;librefang;
+StartupNotify=true
+StartupWMClass=librefang-desktop

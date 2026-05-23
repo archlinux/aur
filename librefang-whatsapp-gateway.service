@@ -1,0 +1,25 @@
+[Unit]
+Description=LibreFang WhatsApp Gateway
+Documentation=https://github.com/librefang/librefang
+After=network-online.target librefang.service
+Wants=network-online.target
+BindsTo=librefang.service
+
+[Service]
+Type=simple
+User=librefang
+Group=librefang
+EnvironmentFile=-/etc/librefang/env
+ExecStart=/usr/bin/librefang-whatsapp-gateway
+Restart=on-failure
+RestartSec=5s
+
+# Sandboxing
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/librefang
+
+[Install]
+WantedBy=multi-user.target
