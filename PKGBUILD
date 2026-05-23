@@ -1,17 +1,17 @@
-# Maintainer: Aleksey Stepanov <blueingreen@bluig.space>
+# Maintainer: Stepanov Aleksey <base64 -d <<< "Ymx1ZWluZ3JlZW5AYmx1aWcuc3BhY2UK">
 
 _pkgname=fzf-vjour
 pkgname="${_pkgname}-git"
-pkgver=r54.c65d8ae
+pkgver=r90.ea9489c
 pkgrel=1
 pkgdesc='A fzf-based journaling and notes application with CalDav support.'
 arch=('any')
 url="https://github.com/baumea/fzf-vjour"
 license=('MIT')
 depends=('fzf' 'awk' 'vdirsyncer' 'bash')
-makedepends=('git')
+makedepends=('git' 'scdoc' 'make')
 optdepends=('bat: for colorful previews' 'noto-fonts-emoji: for display emoji in fzf')
-source=("${_pkgname}::git+https://github.com/baumea/fzf-vjour")
+source=("${_pkgname}::git+https://github.com/blueingreen68/fzf-vjour")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -25,12 +25,13 @@ pkgver() {
 
 build() {
 	cd "${_pkgname}"
-	bash -O xpg_echo ./scripts/build.sh
+
+	make build
 }
 
 package() {
 	cd "${_pkgname}"
 
+	make install ARCH_PKGDIR="$pkgdir"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
