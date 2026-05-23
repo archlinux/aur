@@ -1,33 +1,16 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: seja-arcticfox <seja.czstudio@gmail.com>
 pkgname=vidcom
-pkgver=0.81
+pkgver=0.82
 pkgrel=1
-epoch=
-pkgdesc="Archive and compress videos easily"
+pkgdesc="Archive your videos"
 arch=('x86_64')
 url="https://github.com/seja-arctic-fox/vidcom"
 license=('GPL-3.0-only')
-groups=()
 depends=('gtkmm-4.0' 'libadwaita' 'jsoncpp' 'ffmpeg')
 makedepends=('meson' 'ninja')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/seja-arctic-fox/vidcom/archive/refs/tags/$pkgver.tar.gz")
-noextract=()
-sha256sums=('9a4f17208897d14d06c82339900ed2f34a980dd4e926f1838adffc686e044d71')
-validpgpkeys=()
+changelog="https://github.com/seja-arctic-fox/vidcom/releases/tag/v0.82"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/seja-arctic-fox/vidcom/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('c4dd2fc558b0ff34507a59431bbb3bd94a2f6749b9bf41693c3d278a2624e6bd')
 
 build() {
 	cd "$pkgname-$pkgver"
