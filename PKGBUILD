@@ -1,26 +1,50 @@
 # Maintainer: buzz <buzz@users.noreply.github.com>
 pkgname=volctl
-pkgver=0.9.5
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Per-application volume control and OSD for Linux desktops."
-arch=("any")
+pkgdesc="Per-application volume control for GNU/Linux desktops"
+arch=("x86_64" "aarch64")
 url="https://buzz.github.io/volctl/"
-license=("GPL")
-depends=("python" "python-gobject" "python-cairo" "pulse-native-provider" "desktop-file-utils" "python-pulsectl")
-optdepends=("pavucontrol: mixer support", "statusnotifier-introspection-dbus-menu: SNI support")
-makedepends=("python-build" "python-installer" "python-setuptools")
+license=("GPL3")
+makedepends=("cargo")
+depends=("gtk4" "gtk4-layer-shell" "glib2" "cairo" "libpulse")
+optdepends=("pavucontrol: mixer support"
+            "statusnotifier-introspection-dbus-menu: SNI support")
 options=(!emptydirs)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/buzz/volctl/archive/v${pkgver}.tar.gz")
-b2sums=("a5ba6aa2c31fc344fbf8a77079b53149cea78257204d37ccb9a5aea1df7849e2e423fafb8def906d9e0e37835a062a31cea78aaf5e0a1005bea68e253094ac41")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/buzz/volctl/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=("3aecd023da390caff8a4238642efc2fd36e7ba58a22d29769a1c277facea7af3565c7280a9bd8e31bc59f3ed2986d34bbf57d94bdcc9d7f0e1212fc37839f3fa")
+
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd "${pkgname}-${pkgver}"
+    cargo fetch --locked --target "${CARGO_BUILD_TARGET:-host-tuple}"
+}
 
 build() {
-    cd "$pkgname-$pkgver"
-    python -m build --wheel --no-isolation
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cd "${pkgname}-${pkgver}"
+    cargo build --frozen --release
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    local src="${srcdir}/${pkgname}-${pkgver}"
+
+    # Install binary
+    install -Dm0755 "${src}/target/release/${pkgname}" \
+        "${pkgdir}/usr/bin/${pkgname}"
+
+    # Install GSettings schema
+    install -Dm644 "${src}/data/apps.${pkgname}.gschema.xml" \
+        "${pkgdir}/usr/share/glib-2.0/schemas/apps.${pkgname}.gschema.xml"
+
+    # Install desktop file
+    install -Dm644 "${src}/data/${pkgname}.desktop" \
+        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+    # Install license
+    install -Dm644 "${src}/LICENSE.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
