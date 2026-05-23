@@ -2,8 +2,8 @@
 
 pkgname=python-torch-tensorrt
 _pkgname=torch-tensorrt
-pkgver=2.9.0
-pkgrel=5
+pkgver=2.12.0
+pkgrel=1
 pkgdesc="Easily achieve the best inference performance for any PyTorch model on the NVIDIA platform"
 arch=('x86_64')
 url="https://github.com/pytorch/TensorRT"
@@ -38,7 +38,7 @@ optdepends=(
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/TensorRT/archive/refs/tags/v${pkgver}.tar.gz"
         "fix-glog-0.7.patch")
 source_x86_64=("bazel-8.1.1::https://github.com/bazelbuild/bazel/releases/download/8.1.1/bazel-8.1.1-linux-x86_64")
-sha256sums=('9d1db6aa671d73be102ecd79e7045bc1dad9e20b97b7a5b4992f94d3642c904e'
+sha256sums=('7276b1098638e293da27a978046c2ac6ee455e8656a7692061fc19167e475e64'
             '4a7413873885f73d7e3fa142308953225a6b3af4d0969707e75bfcadf046e9b8')
 sha256sums_x86_64=('a2a095d7006ea70bdfdbe90a71f99f957fee1212d4614cfcfdbe3aadae681def')
 
@@ -76,13 +76,33 @@ prepare() {
     ln -sf /usr/include/NvCaffeParser.h "tensorrt_local/include/${_trt_arch}/" 2>/dev/null || true
     ln -sf /usr/include/NvUffParser.h "tensorrt_local/include/${_trt_arch}/" 2>/dev/null || true
 
-    # Modify MODULE.bazel to use local TensorRT instead of downloading
-    # Comment out the http_archive for tensorrt (lines 101-108)
-    sed -i '101,108s/^/#/' MODULE.bazel
-
-    # Uncomment the new_local_repository for tensorrt (lines 167-171) and set correct path
-    sed -i '167,171s/^#//' MODULE.bazel
-    sed -i 's|path = "/usr/"|path = "'"${srcdir}/TensorRT-${pkgver}/tensorrt_local"'"|' MODULE.bazel
+    # Modify MODULE.bazel to use system TensorRT instead of downloading it.
+    # Block positions shift between releases, so match by content (not line
+    # numbers): comment out the active http_archive(name="tensorrt") and
+    # uncomment the new_local_repository(name="tensorrt"), pointing it at the
+    # symlink tree created above. tensorrt_rtx blocks are left untouched.
+    python - "MODULE.bazel" "${srcdir}/TensorRT-${pkgver}/tensorrt_local" << 'PYEOF'
+import re, sys
+path, trt = sys.argv[1], sys.argv[2]
+src = open(path).read().splitlines(keepends=True)
+out, i = [], 0
+while i < len(src):
+    if src[i].strip() == 'http_archive(' and i+1 < len(src) \
+       and re.match(r'\s*name = "tensorrt",\s*$', src[i+1]):
+        while True:
+            out.append('#' + src[i]); end = src[i].strip() == ')'; i += 1
+            if end: break
+        continue
+    if src[i].lstrip('#').strip() == 'new_local_repository(' and i+1 < len(src) \
+       and 'name = "tensorrt"' in src[i+1]:
+        while True:
+            u = re.sub(r'^#\s?', '', src[i]).replace('path = "/usr/"', f'path = "{trt}"')
+            out.append(u); end = src[i].lstrip('#').strip() == ')'; i += 1
+            if end: break
+        continue
+    out.append(src[i]); i += 1
+open(path, 'w').writelines(out)
+PYEOF
 
     # Also update CUDA path in MODULE.bazel to use /opt/cuda
     sed -i 's|path = "/usr/local/cuda-13.0/"|path = "/opt/cuda/"|' MODULE.bazel
@@ -133,8 +153,8 @@ check() {
     cd "TensorRT-${pkgver}"
 
     # Basic import test (may fail if CUDA/TensorRT not available during build)
-    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-    PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-cpython-313:${PYTHONPATH}" \
+    local _pyver=$(python -c 'import sys; print(f"{sys.version_info[0]}{sys.version_info[1]}")')
+    PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-cpython-${_pyver}:${PYTHONPATH}" \
         python -c "import torch_tensorrt; print(torch_tensorrt.__version__)" || \
         echo "Warning: Import test failed - this is expected if CUDA/TensorRT are not available"
 }
