@@ -22,10 +22,10 @@ post_install() {
     else
         USER_HOME="$HOME"
     fi
-    
+
     # Remove any deprecated patches from the Steam binary
     remove_deprecated_patches
-    
+
     # Link millennium to the Steam runtime
     rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_32/libXtst.so.6"
     ln -s /usr/lib/millennium/libmillennium_bootstrap_86x.so "${USER_HOME}/.local/share/Steam/ubuntu12_32/libXtst.so.6"
@@ -44,16 +44,9 @@ post_remove() {
     else
         USER_HOME="$HOME"
     fi
-    
+
     # Remove the symlink created during post_install
     rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_32/libXtst.so.6"
-
-    # Disable Steam remote debugging
-    rm -f "${USER_HOME}/.steam/steam/.cef-enable-remote-debugging"
-}d: -f6)
-    else
-        USER_HOME="$HOME"
-    fi
 
     # Remove the symlinks created during post_install
     rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_32/libXtst.so.6"
