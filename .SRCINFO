@@ -1,0 +1,17 @@
+pkgbase = hypragent
+	pkgdesc = AI chat agent for Hyprland - GTK4, multi-agent conversations, persistent RAG memory, Waybar integration
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hbuddenberg/hypragent
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = hyprland
+	depends = waybar
+	source = hypragent-0.1.0.tar.gz::https://github.com/hbuddenberg/hypragent/archive/v0.1.0.tar.gz
+	sha256sums = fa054027583a8bae418a0722d9d115bac5fa021c44a06c8be97f39cf51ebf985
+
+pkgname = hypragent
