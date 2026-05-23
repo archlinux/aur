@@ -4,8 +4,8 @@
 
 pkgname=audacity-openvino
 pkgver=3.7.7
-pkgrel=2
-epoch=1
+pkgrel=3
+epoch=2
 
 # Auto-track latest 3.7.x release tag; override with explicit pkgver if needed
 _audacity_tag_prefix=Audacity-3.7
@@ -15,17 +15,17 @@ url="https://audacityteam.org"
 license=(GPL-3.0-or-later)
 depends=(
   libtorch whisper.cpp-openvino
-  alsa-lib expat flac gcc-libs glibc gdk-pixbuf2 glib2 gtk3
+  alsa-lib expat flac gcc-libs glibc gtk3
   jack lame libid3tag libmad libogg libsbsms libsndfile libsoxr
-  libvorbis libx11 lilv mpg123 opusfile portaudio portmidi portsmf
-  vamp-plugin-sdk wavpack wxwidgets-common openvino openvino-models
+  libvorbis lilv mpg123 opusfile portaudio portmidi portsmf
+  vamp-plugin-sdk wavpack openvino-models
   python soundtouch sqlite suil twolame util-linux-libs wxwidgets-gtk3
 )
 optdepends=(
   'intel-compute-runtime: Intel GPU acceleration for OpenVINO'
   'level-zero-loader: Level Zero GPU API support'
   'libtorch-cuda: CUDA GPU tensor operations (replaces libtorch)'
-  'opencl-clhpp: OpenCL C++ headers for GPU inference'
+  'libtorch-rocm: ROCM GPU tensor operations (replaces libtorch)'
 )
 conflicts=(audacity)
 provides=(
