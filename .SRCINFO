@@ -1,7 +1,7 @@
 pkgbase = aerion-oauth-git
 	pkgdesc = An Open Source Lightweight E-Mail Client (OAuth Support via env variables)
 	pkgver = 0.2.4.r2.g839a498
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hkdb/aerion
 	install = aerion-oauth-git.install
 	arch = x86_64
