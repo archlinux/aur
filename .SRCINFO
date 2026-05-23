@@ -1,7 +1,7 @@
 pkgbase = onetalker-bin
 	pkgdesc = An Augmentative and Alternative Communication (AAC) Aid
 	pkgver = 2026.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://onetalker.org
 	install = onetalker.install
 	arch = x86_64
@@ -20,6 +20,6 @@ pkgbase = onetalker-bin
 	source = https://downloads.onetalker.org/v2026.4/OneTalker-2026.4-x86_64-linux.tar.gz
 	source = onetalker.sh
 	sha256sums = 4772262e870088fa0c6b0431870b831fc0eee5c6264ae96158906c1b3e0025d0
-	sha256sums = 53b84e88eedc5ce120b9fb7b4a14de7b5cbe181820c69007bb6782dbb1ee7aaa
+	sha256sums = b5e568db1798812001a8c495b8049a5bb23a9434df933548c0e6762c49f1c9b3
 
 pkgname = onetalker-bin

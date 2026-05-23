@@ -5,7 +5,7 @@ _pkgname=onetalker
 pkgname=$_pkgname-bin
 _pkgver=2026.4
 pkgver=$_pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc='An Augmentative and Alternative Communication (AAC) Aid'
 arch=(x86_64)
 url='https://onetalker.org'
@@ -28,7 +28,7 @@ source=(
   "onetalker.sh"
 )
 sha256sums=('4772262e870088fa0c6b0431870b831fc0eee5c6264ae96158906c1b3e0025d0'
-            '53b84e88eedc5ce120b9fb7b4a14de7b5cbe181820c69007bb6782dbb1ee7aaa')
+            'b5e568db1798812001a8c495b8049a5bb23a9434df933548c0e6762c49f1c9b3')
 
 package() {
   install -Dm755 "${_pkgname}" "${pkgdir}/opt/${_pkgname}/${_pkgname}"
