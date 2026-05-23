@@ -1,17 +1,17 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=stagereview
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="AI-powered code review tool that organizes local code changes into logical chapters"
 arch=('x86_64')
 url="https://github.com/ReviewStage/stage-cli"
 license=('MIT')
-depends=('nodejs' 'bash' 'sh')
-makedepends=('npm' 'jq' 'gdb')
+depends=('nodejs' 'xdg-utils')
+makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
         "LICENSE::https://raw.githubusercontent.com/ReviewStage/stage-cli/main/LICENSE")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('168bffc4487166a5419fc7b5a7de1705dba9d5c83759ffeb18700bdee6f9db90'
+sha256sums=('02dba9baa15e40579b7fdacd5e00b7a15d66c5a8dd36000d3797027aa4fbd0d8'
             'f3c40b30c0a39199c3da204c53ac2c27166bf976cf5e526edce2c0154ce780d7')
 
 package() {
