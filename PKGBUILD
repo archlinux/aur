@@ -1,5 +1,5 @@
 pkgname=tapauth
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="Local smartphone-based authentication framework engine"
 arch=('x86_64' 'aarch64')
@@ -8,11 +8,19 @@ license=('Apache-2.0')
 depends=('dbus' 'pam')
 makedepends=('cargo' 'rust' 'protobuf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lolle2000la/tapauth/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e6cf943657e902ad52874c1b7c36ad3b8b624063b596378efecb73dcbba8400d')
+sha256sums=('71c518a4b25ba4c3af2d7dc8b6016ea6445514edf083831d79aae7e3462b2d5c')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  export CARGO_HOME="${srcdir}/cargo-home"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --workspace --release
+  export CARGO_HOME="${srcdir}/cargo-home"
+  export CARGO_PROFILE_RELEASE_STRIP=true
+  cargo build --frozen --workspace --release
 }
 
 package() {
