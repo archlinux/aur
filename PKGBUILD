@@ -1,6 +1,6 @@
 # Maintainer: Alexander Björk <aur.operator320@passmail.net>
 pkgname=sisr-bin
-pkgver=0.3.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Steam Input System Redirector - Binary"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/SISR-${CARCH}-
         "sisr.desktop"
         "sisr.conf"
         "99-sisr.rules")
-sha256sums=('1de83eb5532a30e3208f556ab123482e2f2b08403e2d46e43f28fa38092e67fe'
+sha256sums=('f65846d266831822dd35f02364a9018275bd79dea77189331c51b7623383f4e0'
             '48e579cace9e1bc0442fb80b8892d2dce32c8a1230c79fbb84c70929761ec67d'
             '8bd30d12950f630623b954da8caee6198d89f03d7ba16a25a0e8e96624b7a559'
             'e6484bcff94b3b10464e6bd69f6f75809382b0332db7008a6cfab06d18f5e829')
