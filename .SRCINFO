@@ -1,12 +1,16 @@
 pkgbase = jrl-cmakemodules
 	pkgdesc = CMake utility toolbox
-	pkgver = 1.1.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/jrl-umi3218/jrl-cmakemodules
 	arch = any
 	license = LGPL-3.0-or-later
 	makedepends = cmake
-	source = jrl-cmakemodules-1.1.0.tar.gz::https://github.com/jrl-umi3218/jrl-cmakemodules/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 3b32110db4dae4eaa78d35b870988c1539d9c92de3e96c3894f1e85f7f94d5f4
+	makedepends = python
+	makedepends = python-numpy
+	makedepends = perl
+	makedepends = bash
+	source = jrl-cmakemodules-1.1.2.tar.gz::https://github.com/jrl-umi3218/jrl-cmakemodules/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = 66cc65863d2f40fcf80881ba6053cb6d7b73f673d46e16c7d1a5eee8b158b897
 
 pkgname = jrl-cmakemodules
