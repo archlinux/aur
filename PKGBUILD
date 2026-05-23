@@ -2,7 +2,7 @@
 
 pkgname=bigtube
 _pkgname=python-bigtube
-pkgver=2.0.6
+pkgver=2.0.21
 pkgrel=1
 pkgdesc="Universal Multimedia Downloader"
 arch=('any')
