@@ -1,6 +1,6 @@
 pkgbase = qemu-git
 	pkgdesc = A generic and open source machine emulator and virtualizer. Git version.
-	pkgver = 11.0.0.r60.gbb230769b4
+	pkgver = 11.0.0.r1188.gf5a2438405
 	pkgrel = 1
 	epoch = 28
 	url = https://wiki.qemu.org/
@@ -12,6 +12,7 @@ pkgbase = qemu-git
 	makedepends = brltty
 	makedepends = bzip2
 	makedepends = cairo
+	makedepends = capstone
 	makedepends = curl
 	makedepends = cdrtools
 	makedepends = dtc
@@ -20,7 +21,6 @@ pkgbase = qemu-git
 	makedepends = gdk-pixbuf2
 	makedepends = git
 	makedepends = glib2
-	makedepends = glusterfs
 	makedepends = gnutls
 	makedepends = gtk3
 	makedepends = jack
@@ -331,13 +331,6 @@ pkgname = qemu-block-iscsi-git
 	depends = libiscsi
 	provides = qemu-block-iscsi
 	conflicts = qemu-block-iscsi
-
-pkgname = qemu-block-gluster-git
-	pkgdesc = QEMU GlusterFS block module. Git version.
-	depends = glibc
-	depends = glusterfs
-	provides = qemu-block-gluster
-	conflicts = qemu-block-gluster
 
 pkgname = qemu-guest-agent-git
 	pkgdesc = QEMU Guest Agent. Git version.
