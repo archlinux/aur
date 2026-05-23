@@ -1,0 +1,34 @@
+version = 1
+SPDX-PackageName = dektec-drivers-dkms
+SPDX-PackageSupplier = Nikos Toutountzoglou
+SPDX-PackageDownloadLocation = https://aur.archlinux.org/packages/dektec-drivers-dkms
+
+[[annotations]]
+path = PKGBUILD
+precedence = override
+SPDX-ID = 0BSD
+
+[[annotations]]
+path = .SRCINFO
+precedence = override
+SPDX-ID = 0BSD
+
+[[annotations]]
+path = .gitignore
+precedence = override
+SPDX-ID = 0BSD
+
+[[annotations]]
+path = REUSE.toml
+precedence = override
+SPDX-ID = 0BSD
+
+[[annotations]]
+path = dkms.conf
+precedence = override
+SPDX-ID = 0BSD
+
+[[annotations]]
+path = Makefile
+precedence = override
+SPDX-ID = 0BSD
