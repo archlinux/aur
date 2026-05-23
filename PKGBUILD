@@ -1,7 +1,7 @@
 # Maintainer: Alexander Björk <aur.operator320@passmail.net>
 pkgname=sisr
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam Input System Redirector"
 arch=('x86_64')
 url="https://github.com/Alia5/SISR"
@@ -10,6 +10,7 @@ depends=('gdk-pixbuf2' 'sdl3' 'gtk3' 'openssl' 'xdotool' 'glib2' 'glibc' 'viiper
 makedepends=('rust' 'git' 'cmake' 'libxss' 'alsa-lib' 'npm')
 provides=('sisr')
 conflicts=('sisr-bin' 'sisr-git')
+options=('!lto')
 install=sisr.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "sisr.desktop"
@@ -24,22 +25,34 @@ sha256sums=('9f84c441dd1be6104e50f54f1f63c65107c035ca4bc14973f4a232824bfb4979'
 
 prepare() {
     cd "SISR-$pkgver"
+    
+    # Cargo.toml says version 0.0.1 so we hack this a little bit so SISR stops complaining
+    sed -i "s/version = \"0.0.1\"/version = \"$pkgver\"/" Cargo.toml
 
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 
-    cd cef_injectee
+    cd CEF_Payloads
+    npm install
+    cd ..
+
+    cd UI
+    echo "PUBLIC_LOG_LEVEL=info" > .env
     npm install
 }
 
 build() {
     cd "SISR-$pkgver"
 
-    cd cef_injectee
+    cd CEF_Payloads
+    npm run build
+    cd ..
+
+    cd UI
     npm run build
     cd ..
 
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --release --all-features
 }
 
 package() {

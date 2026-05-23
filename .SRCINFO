@@ -1,7 +1,7 @@
 pkgbase = sisr
 	pkgdesc = Steam Input System Redirector
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Alia5/SISR
 	install = sisr.install
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = sisr
 	provides = sisr
 	conflicts = sisr-bin
 	conflicts = sisr-git
+	options = !lto
 	source = sisr-0.4.2.tar.gz::https://github.com/Alia5/SISR/archive/refs/tags/v0.4.2.tar.gz
 	source = sisr.desktop
 	source = sisr.conf
