@@ -32,6 +32,7 @@ depends=(
   'libsixel'
   'libraw'
   'openexr'
+  'openjpeg2'
   )
 optdepends=('bash-completion: Bash completions')
 provides=("${_pkgname}")
@@ -53,6 +54,7 @@ build() {
     -D exr=enabled
     -D gif=enabled
     -D jpeg=enabled
+    -D jp2=enabled
     -D jxl=enabled
     -D svg=enabled
     -D tiff=enabled
