@@ -4,8 +4,8 @@ _electron="electron35"
 _reponame=ChatLab
 pkgbase="${_reponame,,}"
 pkgname=("${pkgbase}-cli" "${pkgbase}-desktop")
-pkgver=0.21.0
-pkgrel=2
+pkgver=0.21.1
+pkgrel=1
 pkgdesc="Rediscover your social memories with local, AI-powered analysis"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hellodigua/${_reponame}"
@@ -18,7 +18,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgbase}-web@.service"
         "${pkgbase}-desktop.sh"
         "${pkgbase}.desktop")
-sha256sums=('ca113afa7e520f99034d732d30eb64f58c63e099a722e400edfe9e024ee0eb40'
+sha256sums=('d85c2c2df8ca516378efc101339d4349a53bd0307f06a55cf47aa91fa9310eba'
             'bbe53c1659dfc9a2358ddf20437aa65c0f673b8a8545f3a1edc8a6eb180bf8d6'
             '69b628fb8cacf2d56d41bd0c524b9e68524022881a5dd9b7e2f48982515cef59'
             'f7984b4d7e5f551d1e01874fe5a0f0baab7f3da3f9790902ced56eb4c53d7109'
@@ -85,16 +85,16 @@ package_chatlab-desktop() {
     replaces=("${pkgbase}")
     install="${pkgbase}.install"
 
-    install -Dm644 "${pkgbase}.desktop"    "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
-    install -Dm755 "${pkgbase}-desktop.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${pkgbase}.desktop"   "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
+    install -Dm755 "${pkgname}.sh"        "${pkgdir}/usr/bin/${pkgname}"
 
     cd "${_reponame}-${pkgver}"
-    install -Dm644 "README.md"             "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "README.md"            "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
     cd apps/desktop
-    install -Dm644 "build/icon.png"        "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
-    install -dm755                         "${pkgdir}/usr/lib/${pkgbase}"
-    cp -r "dist/linux-unpacked/resources"  "${pkgdir}/usr/lib/${pkgbase}/desktop"
+    install -Dm644 "build/icon.png"       "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
+    install -dm755                        "${pkgdir}/usr/lib/${pkgbase}"
+    cp -r "dist/linux-unpacked/resources" "${pkgdir}/usr/lib/${pkgbase}/desktop"
 
     cd ../../docs
     find . -type f -name "*.md" -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
