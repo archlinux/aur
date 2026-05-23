@@ -3,7 +3,7 @@
 
 pkgname=onetalker
 pkgver=2026.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An Augmentative and Alternative Communication (AAC) Aid'
 arch=(x86_64)
 url='https://onetalker.org'
@@ -31,7 +31,7 @@ source=(
   "onetalker.sh"
 )
 sha256sums=('e4c1741082acc6f7ef88685cf3b7023cab46d77f7e99863f0e1f513b7d4484e4'
-            '53b84e88eedc5ce120b9fb7b4a14de7b5cbe181820c69007bb6782dbb1ee7aaa')
+            'b5e568db1798812001a8c495b8049a5bb23a9434df933548c0e6762c49f1c9b3')
 
 prepare() {
   cd "${pkgname}"
