@@ -7,7 +7,6 @@ pkgbase = oopsmate-git
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = rust
-	makedepends = cargo
 	provides = oopsmate
 	conflicts = oopsmate
 	source = git+https://github.com/PS-Wizard/oopsmate.git
