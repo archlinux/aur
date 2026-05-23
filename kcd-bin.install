@@ -1,0 +1,21 @@
+post_install() {
+  echo "================================================================="
+  echo "  kcd installed successfully."
+  echo "================================================================="
+  echo ""
+  echo "  To enable the user-level service (recommended), run:"
+  echo "    systemctl --user enable --now kcd"
+  echo ""
+  echo "  To enable the system-level service template, run:"
+  echo "    sudo systemctl enable --now kcd@\$USER"
+  echo ""
+  echo "  If you use a firewall, allow the KDE Connect service by name:"
+  echo "    UFW:       sudo ufw allow kcd"
+  echo "    Firewalld: sudo firewall-cmd --permanent --add-service=kcd"
+  echo "               sudo firewall-cmd --reload"
+  echo "================================================================="
+}
+
+post_upgrade() {
+  post_install
+}

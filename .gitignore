@@ -1,0 +1,21 @@
+# Output and generated files
+*.pkg.tar.*
+*.src.tar.*
+pkg/
+src/
+
+# Downloaded source files
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.zip
+
+# Arch Linux specific
+*.part
+*.sig
+
+# Editor/OS specific
+.DS_Store
+*~
+*.swp
+*.swo
