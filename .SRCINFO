@@ -1,6 +1,6 @@
 pkgbase = zerolink
 	pkgdesc = Secure P2P Messenger with ZeroTier network
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/secureNqwer/zerolink
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = zerolink
 	optdepends = webkit2gtk: for native desktop GUI (zerolink -gui)
 	provides = zerolink
 	conflicts = zerolink-bin
-	source = zerolink-1.3.0.tar.gz::https://github.com/secureNqwer/zerolink/archive/v1.3.0.tar.gz
+	source = zerolink-1.3.1.tar.gz::https://github.com/secureNqwer/zerolink/archive/v1.3.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = zerolink
