@@ -2,27 +2,28 @@
 # Maintainer: bethropolis <bethropolis at gmail dot com>
 
 pkgname='kcd-bin'
-pkgver=1.11.1
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='Lightweight, headless implementation of the KDE Connect protocol (v8) written in Go
 '
 url='https://github.com/bethropolis/kcd'
 arch=('aarch64' 'armv7h' 'x86_64')
 license=('MIT')
+options=('!strip' '!debug')
 provides=('kcd')
 conflicts=('kcd')
 depends=('glibc')
-optdepends=('libnotify: for desktop notifications' 'wl-clipboard: for Wayland clipboard sync' 'xclip: for X11 clipboard sync' 'sshfs: for SFTP mounting support' 'playerctl: for MPRIS media control' 'ydotool: for Wayland mousepad support' 'xdotool: for X11 mousepad support' 'wtype: for Wayland keyboard emulation' 'python-nautilus: for Nautilus file manager integration')
+optdepends=('libnotify: for desktop notifications' 'wl-clipboard: for Wayland clipboard sync' 'xclip: for X11 clipboard sync' 'sshfs: for SFTP mounting support' 'ydotool: for Wayland mousepad support' 'xdotool: for X11 mousepad support' 'wtype: for Wayland keyboard emulation' 'python-nautilus: for Nautilus file manager integration')
 install=kcd.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bethropolis/kcd/releases/download/v${pkgver}/kcd_${pkgver}_linux_aarch64.tar.gz")
-sha256sums_aarch64=('e6c8c1e4ae9928dedfa0c801497adfa137b0a37025852c2a53e5a570a580c356')
+sha256sums_aarch64=('80b39608a71de140626ff9cff3855d305af6d0a9ff8a530c15f6b43e928f902e')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/bethropolis/kcd/releases/download/v${pkgver}/kcd_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('0812946990d4be7743aba915984965e35df6cfe16e943d64a2b574039939a1ac')
+sha256sums_armv7h=('cd83b69b4e919a14522075534a77da5840ab26b1a5d9ad721d564ba7ba1ab3bd')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bethropolis/kcd/releases/download/v${pkgver}/kcd_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('9160acadae63b43602134f4874e3dd1bbd5a13d0c45e91a29f0f3d93f270d743')
+sha256sums_x86_64=('56050583e0dfaa9c556110b462ea6b4e2fe22fa9ab6c85cb8f5819a11b1b5314')
 
 package() {
   install -Dm755 "./kcd" "${pkgdir}/usr/bin/kcd"
