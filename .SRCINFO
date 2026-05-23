@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-wallpaper-effects
 	pkgdesc = Plasma Widget to enable Active Blur and other cool effects for all wallpaper plugins
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/luisbocanegra/plasma-wallpaper-effects
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = plasma6-applets-wallpaper-effects
 	makedepends = gcc
 	makedepends = extra-cmake-modules
 	depends = libplasma
-	source = plasma-wallpaper-effects-2.1.0.tar.gz::https://github.com/luisbocanegra/plasma-wallpaper-effects/archive/v2.1.0/plasma-wallpaper-effects-2.1.0.tar.gz
-	sha256sums = 73054f617a4f47412bb783cfb4d596dd0b780286954ebcca69102c42442e56b3
+	source = plasma-wallpaper-effects-2.1.1.tar.gz::https://github.com/luisbocanegra/plasma-wallpaper-effects/archive/v2.1.1/plasma-wallpaper-effects-2.1.1.tar.gz
+	sha256sums = 2b92f71a869db3325d4d112b50c1fad3ed28fcaf5e7981e78f34c147162b19d2
 
 pkgname = plasma6-applets-wallpaper-effects
