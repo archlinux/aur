@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-systemd-creds-unstable-bin
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="Moshpit agent daemon — systemd credentials unlock with post-quantum ML-DSA support (pre-compiled MUSL static binary)"
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mpa.tar.gz")
 source_x86_64=("mpa-systemd-creds-unstable-x86_64::${_base}/mpa-systemd-creds-unstable-x86_64-unknown-linux-musl")
 source_aarch64=("mpa-systemd-creds-unstable-aarch64::${_base}/mpa-systemd-creds-unstable-aarch64-unknown-linux-musl")
-sha256sums=('8949c26da8e10e43bb7409b2ee7ed0cc3c06b37347285c8f6945520b8ca3509f')
-sha256sums_x86_64=('9a7228c6c90a2c3bc0b4377bace22cd737faea6dc3ecd3110f220bde632e8027')
-sha256sums_aarch64=('69b133f9fe9affd33ce0cbb7cea7b23668bd59661e2c112c643f211a267edf3a')
+sha256sums=('6c2ced77cbc4051cd55c28ed03a540572971039f2fa5faab6269fbec0d54e434')
+sha256sums_x86_64=('73bcd8e0c965e6bf5dc4d6ccd1e70df65fb8a74cb22e2fd8d3a73445031e0d95')
+sha256sums_aarch64=('929390375ef12c868a88ddd8a0062ce9e28bd0e4cb7e90df144ac91bafc84fb9')
 
 package() {
     install -Dm755 "mpa-systemd-creds-unstable-${CARCH}" "$pkgdir/usr/bin/mpa"
