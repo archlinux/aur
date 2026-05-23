@@ -14,7 +14,7 @@ options=(!strip !debug)
 _appimage="pluto-photos-${pkgver}.AppImage"
 source=("${_appimage}::https://plutophotos.com/downloads/${_appimage}"
         'pluto-photos.desktop')
-sha256sums=('cc4d6645101019d00f5d003a051745340e4fbbf95d1171afac791efd4e929168'
+sha256sums=('6104a13d5c23a2968646ae795e285379acb66b38d9b67ae002a6e415d2949ccf'
             '39dbd52edef2592f66dfb7fbbf471b62f547457288565e23759584f74606b46b')
 noextract=("${_appimage}")
 
