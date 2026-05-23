@@ -5,7 +5,7 @@ _reponame=ChatLab
 pkgbase="${_reponame,,}"
 pkgname=("${pkgbase}-cli" "${pkgbase}-desktop")
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Rediscover your social memories with local, AI-powered analysis"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hellodigua/${_reponame}"
@@ -16,18 +16,18 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgbase}-api@.service"
         "${pkgbase}-web.service"
         "${pkgbase}-web@.service"
-        "${pkgbase}.desktop"
-        "${pkgbase}.sh")
+        "${pkgbase}-desktop.sh"
+        "${pkgbase}.desktop")
 sha256sums=('ca113afa7e520f99034d732d30eb64f58c63e099a722e400edfe9e024ee0eb40'
             'bbe53c1659dfc9a2358ddf20437aa65c0f673b8a8545f3a1edc8a6eb180bf8d6'
             '69b628fb8cacf2d56d41bd0c524b9e68524022881a5dd9b7e2f48982515cef59'
             'f7984b4d7e5f551d1e01874fe5a0f0baab7f3da3f9790902ced56eb4c53d7109'
             '70e21df1fdae8d11f22c5dac69686daa9bcbbf5b6590e66683a67bc7f207752e'
-            '349a64162923e2fcea32cde43af8e5da44d864b31e3050f3c4031c75744e60b0'
-            '018864695044b9188a291a0c30db9322cba764f29198fd2014fbb0c43b1c0103')
+            '018864695044b9188a291a0c30db9322cba764f29198fd2014fbb0c43b1c0103'
+            '349a64162923e2fcea32cde43af8e5da44d864b31e3050f3c4031c75744e60b0')
 
 prepare() {
-    sed -i "s|_ELECTRON_VERSION_|$_electron|" "${pkgbase}.sh"
+    sed -i "s|_ELECTRON_VERSION_|$_electron|" "${pkgbase}-desktop.sh"
 
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electron"
@@ -47,7 +47,7 @@ build() {
     sed -i 's|#!/usr/bin/env node|#!/usr/bin/node|' "bin/${pkgbase}.mjs"
     pnpm pack --pack-destination "${srcdir}"
     rm -rf "${srcdir}/${pkgbase}-cli" &>/dev/null || true
-    npm install --prefix="${srcdir}/${pkgbase}-cli" "${srcdir}/${pkgname}-${pkgver}.tgz"
+    npm install --prefix="${srcdir}/${pkgbase}-cli" "${srcdir}/${pkgbase}-cli-${pkgver}.tgz"
     find "${srcdir}/${pkgbase}-cli" -type f -name "*.map" -delete
 
     # build desktop
@@ -64,8 +64,8 @@ package_chatlab-cli() {
 
     install -Dm644 "${pkgbase}-api.service"  "${pkgdir}/usr/lib/systemd/user/${pkgbase}-api.service"
     install -Dm644 "${pkgbase}-web.service"  "${pkgdir}/usr/lib/systemd/user/${pkgbase}-web.service"
-    install -Dm644 "${pkgbase}-api@.service" "${pkgdir}/usr/lib/systemd/system/${pkgbase}-api.service"
-    install -Dm644 "${pkgbase}-web@.service" "${pkgdir}/usr/lib/systemd/system/${pkgbase}-web.service"
+    install -Dm644 "${pkgbase}-api@.service" "${pkgdir}/usr/lib/systemd/system/${pkgbase}-api@.service"
+    install -Dm644 "${pkgbase}-web@.service" "${pkgdir}/usr/lib/systemd/system/${pkgbase}-web@.service"
     install -dm755 "${pkgdir}/usr/bin"       "${pkgdir}/usr/lib/${pkgbase}"
     cp -ar --preserve=mode "${pkgbase}-cli"  "${pkgdir}/usr/lib/${pkgbase}/cli"
     ln -s "${_tgtbin}"                       "${pkgdir}/usr/bin/${pkgbase}"
@@ -85,16 +85,16 @@ package_chatlab-desktop() {
     replaces=("${pkgbase}")
     install="${pkgbase}.install"
 
-    install -Dm644 "${pkgbase}.desktop"   "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
-    install -Dm755 "${pkgbase}.sh"        "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${pkgbase}.desktop"    "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
+    install -Dm755 "${pkgbase}-desktop.sh" "${pkgdir}/usr/bin/${pkgname}"
 
     cd "${_reponame}-${pkgver}"
-    install -Dm644 "README.md"            "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "README.md"             "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
     cd apps/desktop
-    install -Dm644 "build/icon.png"       "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
-    install -dm755                        "${pkgdir}/usr/lib/${pkgbase}"
-    cp -r "dist/linux-unpacked/resources" "${pkgdir}/usr/lib/${pkgbase}/desktop"
+    install -Dm644 "build/icon.png"        "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
+    install -dm755                         "${pkgdir}/usr/lib/${pkgbase}"
+    cp -r "dist/linux-unpacked/resources"  "${pkgdir}/usr/lib/${pkgbase}/desktop"
 
     cd ../../docs
     find . -type f -name "*.md" -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
