@@ -1,7 +1,7 @@
 # Maintainer: xifan <xifan2333@gmail.com>
 pkgname=dmnotifier-bin
 _pkgname=dmnotifier
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Cross-platform live-stream danmaku notifier client based on UniBarrage"
 arch=('x86_64' 'aarch64')
@@ -11,9 +11,9 @@ depends=('mpv')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
-source_x86_64=("dmnotifier-linux-amd64-${pkgver}::https://github.com/xifan2333/dmnotifier/releases/download/v1.0.9/dmnotifier-linux-amd64")
-source_aarch64=("dmnotifier-linux-arm64-${pkgver}::https://github.com/xifan2333/dmnotifier/releases/download/v1.0.9/dmnotifier-linux-arm64")
-sha256sums_x86_64=('7ec4a54478e00b1a41bb7444c0c8317b4dd3a40529470880ca66e6d9c6fca58f')
+source_x86_64=("dmnotifier-linux-amd64-${pkgver}::https://github.com/xifan2333/dmnotifier/releases/download/v1.0.10/dmnotifier-linux-amd64")
+source_aarch64=("dmnotifier-linux-arm64-${pkgver}::https://github.com/xifan2333/dmnotifier/releases/download/v1.0.10/dmnotifier-linux-arm64")
+sha256sums_x86_64=('f9df0d59cae0b54cd01145dd6cd9ca291291e1df9bb2417beea80edfff6ccf78')
 sha256sums_aarch64=('SKIP')
 
 package() {
