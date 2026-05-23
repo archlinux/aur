@@ -1,6 +1,6 @@
 pkgbase = xmm7360-dkms-git
 	pkgdesc = Intel XMM7360 / Fibocom L850 LTE modem driver (DKMS) with RPC init tool
-	pkgver = r318.ge210929
+	pkgver = r309.g797c60c
 	pkgrel = 1
 	url = https://github.com/Andron338/xmm7360-pci
 	install = xmm7360-dkms.install
