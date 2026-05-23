@@ -1,6 +1,6 @@
 pkgbase = moshpits-bin
 	pkgdesc = moshpits server — SSH and Mosh inspired remote terminal server (pre-compiled binary)
-	pkgver = 0.8.6
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	install = moshpits.install
@@ -11,13 +11,13 @@ pkgbase = moshpits-bin
 	depends = moshpit-keygen
 	provides = moshpits
 	conflicts = moshpits
-	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.6/dist-mps.tar.gz
+	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.7/dist-mps.tar.gz
 	source = mps.service
-	sha256sums = a255a58c6ba48f519519b1f6a15e5335d0b170778e49497bdc9e7d0d5b1ede17
+	sha256sums = 4bd539e6b86378b2814481d4894fe562324cab46bff1b0fdf4597c21220b040d
 	sha256sums = SKIP
-	source_x86_64 = mps-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.6/mps-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 58bd8442fc89633ab834e0840282cbc67b728332e391647e0b4a14f0442c99d3
-	source_aarch64 = mps-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.6/mps-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = 1f33e58aebdc75b20cb20db88f23194ee892ad6387a455aeba6919b34e5ffa68
+	source_x86_64 = mps-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.7/mps-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 0ef48b869ae0eec4ba6a7fdb1093c55fcfa9456fc5679e3dea6741b4af2d2215
+	source_aarch64 = mps-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.7/mps-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 600754b20585cafd2743e310e2a3764e359f9d82ae5fbd7cbffb7785a347e09a
 
 pkgname = moshpits-bin
