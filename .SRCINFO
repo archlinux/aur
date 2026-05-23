@@ -8,6 +8,11 @@ pkgbase = hyprclock-bin
 	depends = gtk4
 	depends = gstreamer
 	depends = gst-plugins-base
+	provides = hyprclock
+	conflicts = hyprclock-bin
+	conflicts = hyprclock-git
+	conflicts = hyprclock-bin-debug
+	conflicts = hyprclock-git-debug
 	source = https://github.com/cvusmo/hyprclock/releases/download/v0.1.0a/hyprclock-0.1.0a.tar.gz
 	sha256sums = 3456f9dee5b7d67b8ba75a33cd87e540857049a66d58200f350c8e5c3e700e73
 
