@@ -1,4 +1,4 @@
-# Maintainer: brookerslyn <brookerslyn at REPLACE-WITH-YOUR-EMAIL-DOMAIN dot com>
+# Maintainer: brookerslyn <brookerslyn at proton dot me>
 pkgname=klyppd-bin
 _pkgname=klyppd
 pkgver=0.2.0
