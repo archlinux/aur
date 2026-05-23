@@ -2,8 +2,8 @@
 
 pkgname=python-tensorrt-llm
 _pkgname=TensorRT-LLM
-pkgver=1.2.0rc4
-pkgrel=3
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="TensorRT LLM provides users with an easy-to-use Python API to define Large Language Models (LLMs) and supports state-of-the-art optimizations to perform inference efficiently on NVIDIA GPUs"
 arch=('x86_64')
 url="https://github.com/NVIDIA/TensorRT-LLM"
@@ -81,7 +81,7 @@ optdepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/NVIDIA/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "glog-0.7-compatibility.patch")
-sha256sums=('295dffddbd57f6a6b815969e42d171bd42140c3f2b15f68323fc4cac3e97d39a'
+sha256sums=('f48d634e87546de3596e01257d789d856d006d0d558583ab8064a732c3cbc11e'
             '8227c455479f0013ebf65b2fd7541e19e66b323cdb6e2a65d5f4486622484e0e')
 
 prepare() {
