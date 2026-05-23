@@ -1,6 +1,6 @@
 pkgbase = transcode.sh
 	pkgdesc = Batch transcode helper for media files using ffmpeg.
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://codeberg.org/metalgamer/transcode.sh
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = transcode.sh
 	depends = coreutils
 	depends = ffmpeg
 	optdepends = yq: for tomlq support when reading TOML configuration files
-	source = transcode.sh-2.0.0.tar.gz::https://codeberg.org/metalgamer/transcode.sh/releases/download/v2.0.0/transcode-sh-2.0.0.tar.gz
-	sha256sums = d07c7e196f56710ae2aff0358fb3014b226e2ec7672d97ee6082f1872229b79c
+	source = transcode.sh-2.1.0.tar.gz::https://codeberg.org/metalgamer/transcode.sh/releases/download/v2.1.0/transcode-sh-2.1.0.tar.gz
+	sha256sums = 1426b9f134debde2fc0dafa172ea737f77ea7148d02e8d53809e0c0e05b7c78d
 
 pkgname = transcode.sh
