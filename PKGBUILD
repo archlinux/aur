@@ -23,7 +23,7 @@
 pkgname=margo-git
 pkgver=r910.11de780
 pkgrel=1
-pkgdesc="Rust/Smithay Wayland tiling compositor + first-party mshell desktop (mango heritage)"
+pkgdesc="Modern Rust/Smithay Wayland compositor with a first-party desktop shell"
 url="https://github.com/kenanpelit/margo"
 arch=("x86_64")
 license=("GPL-3.0-or-later")
@@ -40,27 +40,27 @@ depends=(
   libinput
   libxkbcommon
   wayland
-  mesa            # libgbm / libEGL / libGLESv2 for DRM/KMS
-  seatd           # libseat.so.1
+  mesa  # libgbm / libEGL / libGLESv2 for DRM/KMS
+  seatd # libseat.so.1
   pixman
   libdrm
-  systemd-libs    # libudev, libsystemd, sd-bus
+  systemd-libs # libudev, libsystemd, sd-bus
   libgudev
   glib2
-  pcre2           # `regex` crate's PCRE backend → window-rule regexes
-  pam             # `mlock` authenticates the session owner
-  cairo           # `mlock` software renderer
-  pango           # `mlock` + mshell text shaping
-  dbus            # screencast / portal D-Bus shims
-  uwsm            # the installed wayland-session entry launches margo via uwsm
+  pcre2 # `regex` crate's PCRE backend → window-rule regexes
+  pam   # `mlock` authenticates the session owner
+  cairo # `mlock` software renderer
+  pango # `mlock` + mshell text shaping
+  dbus  # screencast / portal D-Bus shims
+  uwsm  # the installed wayland-session entry launches margo via uwsm
   # ── Portals (gnome-free) ────────────────────────────────────────
   # Frontend daemon reads our margo.portal + margo-portals.conf and
   # activates margo-portal for ScreenCast/Screenshot; the gtk backend
   # serves the FileChooser/OpenURI/Notification/etc routes.
   xdg-desktop-portal
   xdg-desktop-portal-gtk
-  libnotify       # `notify-send` from the config-reload toast path
-  grim            # `mscreenshot` capture pipeline
+  libnotify # `notify-send` from the config-reload toast path
+  grim      # `mscreenshot` capture pipeline
   slurp
   wl-clipboard
   # ── mshell (gtk4 + relm4) ───────────────────────────────────────
@@ -83,7 +83,7 @@ depends=(
 makedepends=(
   rust
   cargo
-  clang           # bindgen for some C-FFI crates (lutgen, pam)
+  clang # bindgen for some C-FFI crates (lutgen, pam)
   pkg-config
   git
   wayland-protocols
@@ -243,9 +243,9 @@ package() {
   # hashes, and each binary links against the right one.
   local bin
   for bin in \
-      margo start-margo \
-      mctl mlock mlayout mscreenshot mvisual \
-      mshell mshellctl mshellshare mpicker mwizard; do
+    margo start-margo \
+    mctl mlock mlayout mscreenshot mvisual \
+    mshell mshellctl mshellshare mpicker mwizard; do
     install -Dm755 "$CARGO_TARGET_DIR/release/$bin" "$pkgdir/usr/bin/$bin"
   done
 
@@ -274,7 +274,7 @@ package() {
   install -Dm755 "contrib/sessions/margo-session" \
     "$pkgdir/usr/bin/margo-session"
   sed 's|/usr/local/bin/|/usr/bin/|' "contrib/sessions/margo-uwsm.desktop" \
-    > "margo-uwsm.desktop.pkg"
+    >"margo-uwsm.desktop.pkg"
   install -Dm644 "margo-uwsm.desktop.pkg" \
     "$pkgdir/usr/share/wayland-sessions/margo-uwsm.desktop"
 
@@ -428,9 +428,9 @@ package() {
   # material, not load-bearing.
   local mshell_profile_example=""
   for candidate in \
-      "mshell-crates/mshell-config/profiles/default.yaml" \
-      "mshell/profiles/default.yaml" \
-      "contrib/mshell/profiles/default.yaml"; do
+    "mshell-crates/mshell-config/profiles/default.yaml" \
+    "mshell/profiles/default.yaml" \
+    "contrib/mshell/profiles/default.yaml"; do
     if [[ -f "$candidate" ]]; then
       mshell_profile_example="$candidate"
       break
@@ -447,9 +447,9 @@ package() {
   # choose to wire autostart vs leave it to margo. NOT installed
   # under /etc/xdg/autostart by default.
   for entry in \
-      "mshell/contrib/mshell.desktop" \
-      "contrib/mshell/mshell.desktop" \
-      "mshell-crates/mshell-session/assets/mshell.desktop"; do
+    "mshell/contrib/mshell.desktop" \
+    "contrib/mshell/mshell.desktop" \
+    "mshell-crates/mshell-session/assets/mshell.desktop"; do
     if [[ -f "$entry" ]]; then
       install -Dm644 "$entry" \
         "$pkgdir/usr/share/doc/$pkgname/mshell/mshell.desktop"
@@ -467,8 +467,8 @@ package() {
   # mshell-specific docs — surface them under the main package doc
   # tree so `pacman -Qpl` shows them.
   for mshell_doc in \
-      "mshell/README.md" \
-      "mshell-crates/mshell-core/README.md"; do
+    "mshell/README.md" \
+    "mshell-crates/mshell-core/README.md"; do
     [[ -f "$mshell_doc" ]] || continue
     install -Dm644 "$mshell_doc" \
       "$pkgdir/usr/share/doc/$pkgname/mshell/$(basename "$mshell_doc")"
