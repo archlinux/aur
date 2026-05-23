@@ -3,29 +3,53 @@
 pkgname=headroom-ai-bin
 _pyname=headroom_ai
 pkgver=0.22.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Context optimization layer for LLM applications - cut token costs by 50-90% (binary wheel, Python 3.12)"
 arch=('x86_64')
 url="https://github.com/chopratejas/headroom"
 license=('Apache-2.0')
-depends=('python312')
+depends=('python312' 'ast-grep')
 provides=("headroom-ai=$pkgver")
 conflicts=('headroom-ai')
 
 # Upstream switched from pure-Python (hatchling) to Rust+maturin in 0.21.x.
 # 0.22.3 ships only platform-specific wheels (no sdist); the highest cp* wheel
 # available for x86_64 Linux is cp312, so this package targets python312.
+#
+# Arch's python-* ecosystem (tiktoken/pydantic/litellm/...) is built against
+# /usr/bin/python (3.14) and is invisible to /usr/bin/python3.12, so we can't
+# satisfy headroom's Python deps via regular Arch packages. We vendor them
+# into /usr/lib/python3.12/site-packages/ via pip in a transient venv.
+#
+# The wheel declares fastapi/uvicorn/openai/mcp/onnxruntime/transformers/etc.
+# as the `proxy` extra, but headroom.cli imports headroom.proxy unconditionally
+# so the [proxy] set is effectively required just for `headroom --help` to load.
 _pytag=cp312-cp312-manylinux_2_28_x86_64
 _wheel="$_pyname-$pkgver-$_pytag.whl"
 source=("$_wheel::https://files.pythonhosted.org/packages/ab/c6/7e224ca5b3de2cb54eb2117d1d0b1160687eff6e13ef19fbb81b10b527ae/$_wheel")
 noextract=("$_wheel")
 sha256sums=('dc5fff2cd99380f9229477cc5957e97661cb5a71bfbbe25a6ae225acfd97cddb')
-install="$pkgname.install"
+
+build() {
+  rm -rf venv
+  /usr/bin/python3.12 -m venv venv
+  ./venv/bin/python -m pip install --quiet --no-cache-dir --upgrade pip
+  ./venv/bin/python -m pip install --no-cache-dir --no-compile "$srcdir/$_wheel[proxy]"
+}
 
 package() {
   local sitepkg="$pkgdir/usr/lib/python3.12/site-packages"
   install -dm755 "$sitepkg"
-  bsdtar -xf "$srcdir/$_wheel" -C "$sitepkg"
+
+  # Copy the venv's vendored deps, then strip bootstrap + bytecode noise.
+  cp -a venv/lib/python3.12/site-packages/. "$sitepkg/"
+  rm -rf \
+    "$sitepkg"/pip "$sitepkg"/pip-*.dist-info \
+    "$sitepkg"/setuptools "$sitepkg"/setuptools-*.dist-info \
+    "$sitepkg"/wheel "$sitepkg"/wheel-*.dist-info \
+    "$sitepkg"/_distutils_hack "$sitepkg"/pkg_resources \
+    "$sitepkg"/distutils-precedence.pth
+  find "$sitepkg" -depth -type d -name __pycache__ -exec rm -rf {} +
 
   install -dm755 "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/headroom" <<'EOF'

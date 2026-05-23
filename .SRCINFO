@@ -1,12 +1,12 @@
 pkgbase = headroom-ai-bin
 	pkgdesc = Context optimization layer for LLM applications - cut token costs by 50-90% (binary wheel, Python 3.12)
 	pkgver = 0.22.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chopratejas/headroom
-	install = headroom-ai-bin.install
 	arch = x86_64
 	license = Apache-2.0
 	depends = python312
+	depends = ast-grep
 	provides = headroom-ai=0.22.3
 	conflicts = headroom-ai
 	noextract = headroom_ai-0.22.3-cp312-cp312-manylinux_2_28_x86_64.whl
