@@ -1,0 +1,21 @@
+pkgbase = machi
+	pkgdesc = Window Manager for river wayland compositor
+	pkgver = v0.5.0
+	pkgrel = 1
+	url = https://codeberg.org/machi/machi
+	arch = x86_64
+	license = ISC
+	makedepends = curl
+	makedepends = wayland-protocols
+	makedepends = wayland
+	makedepends = libxkbcommon
+	makedepends = zig
+	makedepends = scdoc
+	depends = libwayland-client.so
+	depends = libwayland-server.so
+	depends = libxkbcommon.so
+	options = zipman
+	source = git+https://codeberg.org/machi/machi.git
+	sha256sums = SKIP
+
+pkgname = machi
