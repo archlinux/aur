@@ -1,7 +1,7 @@
 pkgbase = refract
 	pkgdesc = GUI tool for ranking pacman mirrors on Arch Linux and Arch-based distributions
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Labaman/refract
 	arch = any
 	license = MIT

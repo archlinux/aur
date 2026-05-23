@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=refract
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI tool for ranking pacman mirrors on Arch Linux and Arch-based distributions"
 arch=('any')
 url="https://github.com/Labaman/refract"
