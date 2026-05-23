@@ -1,0 +1,12 @@
+pkgbase = braces
+	pkgdesc = Count number of braces in code
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/maandree/braces
+	arch = x86_64
+	arch = aarch64
+	license = custom:ISC
+	source = braces-1.0.tar.gz::https://codeberg.org/maandree/braces/archive/1.0.tar.gz
+	sha256sums = 714333fe3718ac1c9af4a066eee76620f9aad192d22891ad0373330855c3d185
+
+pkgname = braces
