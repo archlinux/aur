@@ -10,7 +10,9 @@ pkgbase = firma-digital
 	license = unknown
 	options = !strip
 	source = local://sfd_ClientesLinux_RPM64_rev26_02.zip
+	source = local://idocachesrv.service
 	sha256sums = 6b034f1d2c8411ed665c3ca0dffea852fa6bd9097be5e1d48762927655b7eda5
+	sha256sums = f26454cecdba0bb62d53aeb86b902dc416e923c7965bc50e1d62445c86a21015
 
 pkgname = firma-digital-agente-gaudi
 	pkgdesc = Agente GAUDI para Firma Digital de Costa Rica
