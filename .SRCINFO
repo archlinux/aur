@@ -1,6 +1,6 @@
 pkgbase = netwatch-tui
 	pkgdesc = Real-time network diagnostics TUI — like htop for your network
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/matthart1983/netwatch
 	install = netwatch.install
@@ -17,7 +17,7 @@ pkgbase = netwatch-tui
 	provides = netwatch
 	options = !lto
 	options = !strip
-	source = netwatch-0.17.0.crate::https://crates.io/api/v1/crates/netwatch-tui/0.17.0/download
-	sha256sums = 9714f9a45cd4ed77a07d9b0e59287c7c8a13270f5eda782cbfab4b7bacb20698
+	source = netwatch-0.17.1.crate::https://crates.io/api/v1/crates/netwatch-tui/0.17.1/download
+	sha256sums = ecee692fa774b3486e0d8d21dd3b8e28873db34a795522f8fa58fac8aa21c6ce
 
 pkgname = netwatch-tui
