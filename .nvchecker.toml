@@ -1,0 +1,4 @@
+[nextcloud-app-gpxpod]
+source = "git"
+git = "https://github.com/julien-nc/gpxpod.git"
+prefix = "v"
