@@ -1,7 +1,7 @@
 pkgbase = firma-digital
 	pkgdesc = Instalador de suite para Firma Digital de Costa Rica
 	pkgver = Rev26_02
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://soportefirmadigital.com/sfdj/dl.aspx
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgname = firma-digital-agente-gaudi
 
 pkgname = firma-digital-middleware-idopte
 	pkgdesc = Middleware PKCS#11 Idopte para Firma Digital de Costa Rica
+	install = idocachesrv.install
 	depends = aom
 	depends = at-spi2-core
 	depends = brotli
