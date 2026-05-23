@@ -3,7 +3,7 @@
 _pkgauthor=ameshkov
 _pkgname=gocurl
 pkgname=${_pkgname}-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Simplified version of curl written in pure Go with additional features"
 arch=('x86_64' 'i686' 'aarch64')
@@ -18,9 +18,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-${_barch[0]}-v${pkgver}.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-${_barch[1]}-v${pkgver}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-${_barch[2]}-v${pkgver}.tar.gz")
-sha256sums_x86_64=('50e6a04d7b92deb0ef87cc9e013d1727df8f0105574b2bcab3c9070c8eb2ff9a')
-sha256sums_i686=('2b39fe672ef804332473b65a74589e8054666c49bd7f1374d9ac4ce74993f980')
-sha256sums_aarch64=('f7f34351d87d1ca7acb9490fcd3f0c9cdec8ad418d8560cab398a3fad0226492')
+sha256sums_x86_64=('59b3e2323fd88cd8959c7e82471bb6c1fdcc04504f44bbf1cf9d42de1152af47')
+sha256sums_i686=('073954986738a879535dc0847c19db80a0a744033555f6e8cc44093589d8df96')
+sha256sums_aarch64=('0200021420d0f1a258b2b0f7e66e68a77a2b2325d7ec4982d3237ca6fb659a55')
 
 
 package() {
