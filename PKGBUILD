@@ -7,22 +7,25 @@
 
 pkgname=python-pyfltk
 _srcname='pyfltk'
-pkgver=1.4.4.0
+pkgver=1.4.5.0
 pkgrel=1
 pkgdesc="A Python wrapper for the Fast Light Tool Kit library"
 arch=('x86_64')
 url="https://pyfltk.sourceforge.io"
 license=('LGPL-2.0-only')
-depends=('fltk>=1.4.4' 'python>=3.13')
-makedepends=('swig>=4.4' 'python-setuptools')
+depends=('fltk>=1.4.5' 'python>=3.13')
+makedepends=('swig>=4.4' 'python-setuptools' 'python-build' 'python-installer')
 source=("https://downloads.sourceforge.net/pyfltk/${_srcname}-${pkgver}.tar.gz")
-sha1sums=('1a8877dba50d1cb213dbd9228f62b0cb5c05ce0c')
+sha1sums=('8dd8bcd17a31297f3a10ac01127f4a880b3d648d')
+
+build(){
+  cd "${srcdir}/${_srcname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
 
 package() {
   cd "${srcdir}/${_srcname}-${pkgver}"
-  python setup.py swig
-  python setup.py build
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="${pkgdir}/" dist/*.whl
 }
 
 
