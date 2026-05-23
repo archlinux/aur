@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="A tiny, fast CLI utility written in Rust that works just like sleep but shows a live progress bar"
 
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ provides=("${_appname}")
 options=(!strip)
 
 source=("${_appname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('e65f475a6824ce860c78d71095cf8e9bf122e69917868625b57ca4783c787904')
+sha256sums=('c154df5855155698013976d5dd623df668352930bc6874cac44eef06bdc268fc')
 
 prepare() {
 	cd "${pkgname}-${pkgver}/" || exit
