@@ -1,5 +1,5 @@
 pkgname=lwe
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Linux dynamic wallpaper shell for Wallpaper Engine content"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 provides=('lwe')
 conflicts=('lwe-git')
-source=("lwe_0.6.1_amd64.deb::https://github.com/YangYuS8/lwe/releases/download/v0.6.1/lwe_0.6.1_amd64.deb")
+source=("lwe_0.7.0_amd64.deb::https://github.com/YangYuS8/lwe/releases/download/v0.7.0/lwe_0.7.0_amd64.deb")
 sha256sums=('SKIP')
 
 package() {
