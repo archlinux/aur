@@ -1,6 +1,6 @@
 pkgbase = kosmos-bin
 	pkgdesc = A modern code editor.
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/etchebarne/kosmos
 	arch = x86_64
@@ -10,11 +10,13 @@ pkgbase = kosmos-bin
 	depends = libxcb
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
+	depends = vulkan-driver
 	depends = vulkan-icd-loader
+	depends = ttf-dejavu
 	depends = wayland
 	provides = kosmos
 	conflicts = kosmos
-	source = kosmos-linux-x86_64-0.4.0.tar.gz::https://github.com/etchebarne/kosmos/releases/download/v0.4.0/kosmos-linux-x86_64.tar.gz
-	sha256sums = 823d1ea4cdd0a48bc19346eabf180a45f834edbe6c72587d23ccbb950466287f
+	source = kosmos-linux-x86_64-0.4.1.tar.gz::https://github.com/etchebarne/kosmos/releases/download/v0.4.1/kosmos-linux-x86_64.tar.gz
+	sha256sums = 8d2dfff594c01b2ebd43c1aaba6216a4e14f9f5521f7861ee48729226fa44dfa
 
 pkgname = kosmos-bin

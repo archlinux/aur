@@ -1,6 +1,6 @@
 # Maintainer: Martin Etchebarne <martin@etchebarne.net>
 pkgname=kosmos-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A modern code editor."
 arch=('x86_64')
@@ -12,13 +12,15 @@ depends=(
     'libxcb'
     'libxkbcommon'
     'libxkbcommon-x11'
+    'vulkan-driver'
     'vulkan-icd-loader'
+    'ttf-dejavu'
     'wayland'
 )
 provides=('kosmos')
 conflicts=('kosmos')
 source=("kosmos-linux-${arch}-${pkgver}.tar.gz::https://github.com/etchebarne/kosmos/releases/download/v${pkgver}/kosmos-linux-${arch}.tar.gz")
-sha256sums=('823d1ea4cdd0a48bc19346eabf180a45f834edbe6c72587d23ccbb950466287f')
+sha256sums=('8d2dfff594c01b2ebd43c1aaba6216a4e14f9f5521f7861ee48729226fa44dfa')
 
 package() {
     local appdir="$pkgdir/opt/kosmos"
