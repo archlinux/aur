@@ -1,5 +1,5 @@
 pkgname=tapauth
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Local smartphone-based authentication framework engine"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('Apache-2.0')
 depends=('dbus' 'gtk4' 'pam')
 makedepends=('cargo' 'rust' 'protobuf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lolle2000la/tapauth/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('14c8a34d7b57256acf89aff291168d85d353fa459e263b8d6d219db8cf0dfdba')
+sha256sums=('1753d0481cbb2e2373d39a226904f40881ef86b6430c12ce5f6711cf43282138')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
