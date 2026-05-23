@@ -4,7 +4,7 @@
 pkgbase=gimp-openvino
 pkgname=gimp-openvino
 pkgver=3.2.1.0  # auto-set by pkgver()
-pkgrel=3
+pkgrel=4
 pkgdesc="Intel OpenVINO AI Plugins for GIMP"
 arch=('x86_64')
 url="https://github.com/intel/openvino-ai-plugins-gimp"
@@ -70,7 +70,7 @@ package() {
 
    # Install pip-only deps not available in Arch repos or AUR
    PIP_REQUIRE_VIRTUALENV=0 python -m pip install \
-     gdown peft controlnet-aux openvino-genai optimum-intel tomesd \
+     gdown peft openvino controlnet-aux openvino-genai optimum-intel tomesd \
      --root="$pkgdir" --prefix=/usr --no-deps --prefer-binary 2>/dev/null || true
 
    # Install the main package (deps handled by system packages)
