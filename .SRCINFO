@@ -1,6 +1,6 @@
 pkgbase = git-side
 	pkgdesc = A Git subcommand that versions files that should not live in the main repository
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Solexma/git-side
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = git-side
 	makedepends = cargo
 	depends = git
 	depends = gcc-libs
-	source = git-side-0.2.3.tar.gz::https://github.com/Solexma/git-side/archive/v0.2.3.tar.gz
-	sha256sums = 2338431bed14cf06f3966df6a7c39087d4536d3807b277a4a4ca87485a8a5809
+	source = git-side-0.3.0.tar.gz::https://github.com/Solexma/git-side/archive/v0.3.0.tar.gz
+	sha256sums = e7a50bc32d9283ddb5451be38e3998fd691a0514e4e36107d4aea97b0362b550
 
 pkgname = git-side
