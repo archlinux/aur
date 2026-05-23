@@ -1,0 +1,16 @@
+pkgbase = python-cloudtips
+	pkgdesc = Unofficial async Python library for CloudTips — receive donations and listen to new payments in real time
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/IRRatium/cloudtips-api
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-aiohttp
+	source = https://files.pythonhosted.org/packages/source/c/cloudtips/cloudtips-0.4.1.tar.gz
+	sha256sums = 3e4bcc79928c5b28c42c44d6539d3260a78ceae5d202e056a77313a38230eaa3
+
+pkgname = python-cloudtips
