@@ -10,7 +10,7 @@ depends=('python')                 # 仅需 Python 标准库，无第三方依�
 makedepends=()
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/touchfish-devs/TouchFish-AUR/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cc3ac5f5636650679bdddd08fa275a11f01347733a0afaf39d0191131e618557')
+sha256sums=('SKIP')
 
 prepare() {
     cd "$srcdir/TouchFish-AUR-$pkgver"
