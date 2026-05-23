@@ -1,7 +1,7 @@
 # Maintainer: CriticalRange
 
 pkgname=coresound-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Desktop Bluetooth audio controller for Soundcore/Anker devices"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=('fuse2' 'bluez')
 options=('!strip')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/CriticalRange/CoreSound/releases/download/v${pkgver}/CoreSound-${pkgver}.AppImage")
-sha256sums=('77eef5b3b079da481b334f1073cc3381b4b9d0ed3a86efa31c697017298cbc95')
+sha256sums=('0277f9abe3b3440d074a9a7ff3f2c74f243db8def35905957f68dfd25d67c543')
 
 prepare() {
     chmod +x "${pkgname}-${pkgver}.AppImage"
