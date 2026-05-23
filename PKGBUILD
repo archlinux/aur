@@ -2,8 +2,8 @@
 # Contributor: Based on mmtrt's snap package
 
 pkgname=acroread-dc-wine
-pkgver=25.001.20997
-pkgrel=7
+pkgver=26.001.21529
+pkgrel=1
 pkgdesc="Adobe Acrobat Reader DC - PDF viewer (via Wine)"
 arch=('x86_64')
 url="https://www.adobe.com/products/reader.html"
