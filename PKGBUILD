@@ -3,7 +3,7 @@
 
 pkgbase=cutlass
 pkgname=('cutlass' 'python-cutlass')
-pkgver=4.3.5
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='CUDA Templates for Linear Algebra Subroutines'
 arch=('x86_64')
@@ -13,13 +13,19 @@ depends=('cuda' 'cudnn')
 makedepends=('cmake' 'git' 'ninja' 'pybind11' 'python-build'
              'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/NVIDIA/$pkgbase/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('73d8c3914a6049ff5c43b7dfb9d70f26e44dc9e10e36049db5a999b9faf6dbf0')
+sha256sums=('d1ce5d785ba45e2ec1bbfc0fad64b5542878b8329a7d7dfdbfa681a545d35295')
 
 prepare() {
     cd "$pkgbase-$pkgver/python"
     # Remove bfloat16 from install_requires as it's incompatible with numpy 2.x
     # bfloat16 support is optional and handled gracefully at runtime
     sed -i "/'bfloat16',/d" setup_cutlass.py
+
+    # setup_cutlass.py rebuilds pycute and cutlass_library via perform_setup()
+    # before its own setup(); that pollutes build/lib and breaks the
+    # cutlass_cppgen bdist_wheel. Those two wheels are built separately below,
+    # so drop the perform_setup() calls and build only cutlass_cppgen here.
+    sed -i '/^setup_library\.perform_setup()/d; /^setup_pycute\.perform_setup()/d' setup_cutlass.py
 }
 
 build() {
@@ -32,7 +38,16 @@ build() {
         _jobs=4
     fi
 
+    # CUDA 13.x cannot use GCC 16+ as its host compiler. Arch's cuda package
+    # depends on gcc15, so fall back to g++-15 when the system g++ is too new.
+    local _ccbin=()
+    if (( $(gcc -dumpversion | cut -d. -f1) >= 16 )) && [[ -x /usr/bin/g++-15 ]]; then
+        export NVCC_CCBIN=/usr/bin/g++-15
+        _ccbin=(-DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-15)
+    fi
+
     cmake -S $pkgbase-$pkgver -B $pkgbase-$pkgver/build -G Ninja \
+        "${_ccbin[@]}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCUTLASS_NVCC_ARCHS='75;80;86;89;90;90a' \
         -DCUTLASS_ENABLE_GTEST_UNIT_TESTS=OFF \
@@ -57,7 +72,7 @@ build() {
 
     # Build cutlass_cppgen wheel (formerly cutlass)
     rm -rf build *.egg-info
-    python -m build -nw .
+    python setup_cutlass.py bdist_wheel
 }
 
 package_cutlass() {
