@@ -1,0 +1,20 @@
+pkgbase = logwatch-tui
+	pkgdesc = Single-host, read-only log introspection TUI - twelve tabs covering live tail, sources, novel-pattern detection, errors, services, kernel ring, audit, timeline scrubber, and an Insights anomaly engine
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/matthart1983/logwatch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nasm
+	depends = glibc
+	depends = libgcc
+	provides = logwatch
+	options = !lto
+	options = !strip
+	source = logwatch-0.1.0.crate::https://crates.io/api/v1/crates/logwatch-tui/0.1.0/download
+	sha256sums = 79e2ffea398cf2578c3069a109a57e31a8f957a3dd28545aad2d118c01999b40
+
+pkgname = logwatch-tui

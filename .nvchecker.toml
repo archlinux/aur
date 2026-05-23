@@ -1,0 +1,3 @@
+[logwatch-tui]
+source = "cratesio"
+cratesio = "logwatch-tui"
