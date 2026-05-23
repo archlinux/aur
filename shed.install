@@ -1,11 +1,11 @@
 post_install()
 {
-  if ! grep -q '/usr/bin/shed' /etc/shells; then
+  if ! grep -qx '/usr/bin/shed' /etc/shells; then
     echo "/usr/bin/shed" >> /etc/shells
   fi
 }
 
 post_remove()
 {
-  sed -i '/\/usr\/bin\/shed/d' /etc/shells
+  sed -i '/^\/usr\/bin\/shed$/d' /etc/shells
 }
