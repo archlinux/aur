@@ -3,7 +3,8 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 1:2.0.1-13
+**Current release:** 1:2.0.1-13  
+**Linux Compatibility extension:** https://www.nexusmods.com/site/mods/1924
 
 ---
 
