@@ -6,7 +6,7 @@ export GIT_LFS_SKIP_SMUDGE=1
 export GIT_CLONE_PROTECTION_ACTIVE=false
 
 pkgname=tahoma2d
-pkgver=1.5.1
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Software for producing a 2D animation"
 arch=(x86_64)
@@ -16,7 +16,7 @@ depends=(cblas cblas ffmpeg freeglut glew hicolor-icon-theme libmypaint qt5-mult
 makedepends=(git git-lfs boost cmake qt5-tools)
 source=("git+https://github.com/tahoma2d/tahoma2d.git#tag=v${pkgver}"
          0001-cmake-fix.patch)
-sha256sums=('bfefe2f08cdf732a22f0d0f6172f37a1c5a033c50a6fdb3d800a3dc72f7dad01'
+sha256sums=('94df494c17111f70bba79ac8b3e0077395931f85d6226f6ac6adac89d176df99'
             '238d8e73554cc6751bbcb50ba054f3a335b767277cfbf36adae4c8bb73c6a10b')
 
 prepare() {
@@ -27,10 +27,16 @@ prepare() {
   #sed -i 's|"ffmpegPath", QMetaType::QString, ""|"ffmpegPath", QMetaType::QString, "/usr/bin"|' toonz/sources/toonzlib/preferences.cpp
 
   # https://github.com/tahoma2d/tahoma2d/issues/1600#issuecomment-2408657568
-  patch -Np1 -i ../0001-cmake-fix.patch
+  #patch -Np1 -i ../0001-cmake-fix.patch
 }
 
 build() {
+  export CFLAGS+=" -Wno-incompatible-pointer-types"
+
+  # This disable showing all warning which are quite a lot for this project
+  export CFLAGS+=" -w"
+  export CXXFLAGS+=" -w"
+
   pushd  "tahoma2d/thirdparty/tiff-4.2.0"
   ./configure --with-pic --disable-jbig --disable-webp
   make
@@ -51,6 +57,7 @@ build() {
 
   cd build
   cmake -G "Unix Makefiles" ../tahoma2d/toonz/sources -Wno-dev \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=YES \
     -DWITH_TRANSLATION=OFF
