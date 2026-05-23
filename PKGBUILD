@@ -1,6 +1,6 @@
 # Maintainer: Lolle2000la
 pkgname=tapauth-git
-pkgver=0.1.0.r3.80e2c50
+pkgver=ra4f28b0
 pkgrel=1
 pkgdesc="Local smartphone-based authentication framework engine (Development/Git version)"
 arch=('x86_64')
@@ -16,9 +16,9 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/tapauth"
   if git describe --long --tags >/dev/null 2>&1; then
-    git describe --long --tags | sed 's/\([^-]*-\)*g/r/;s/-/./g'
+    git describe --long --tags | sed -E 's/^v//;s/-([0-9]+)-g([0-9a-f]+)$/.r\1.g\2/'
   else
-    printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.1.12.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 }
 
