@@ -19,7 +19,7 @@ index 5dc5985..493ec10 100644
  				return err
  			}
 diff --git a/src/client/jsonrpc2.go b/src/client/jsonrpc2.go
-index ef00633..79a6b62 100644
+index ef00633..b2cbb69 100644
 --- a/src/client/jsonrpc2.go
 +++ b/src/client/jsonrpc2.go
 @@ -7,7 +7,9 @@ import (
@@ -32,7 +32,7 @@ index ef00633..79a6b62 100644
  	"sync"
  	"time"
  
-@@ -78,10 +80,21 @@ func NewJsonRpc2Client(signalCliApiConfig *utils.SignalCliApiConfig, number stri
+@@ -78,12 +80,23 @@ func NewJsonRpc2Client(signalCliApiConfig *utils.SignalCliApiConfig, number stri
  
  func (r *JsonRpc2Client) Dial(address string, maxRetries int) error {
  	var err error
@@ -53,8 +53,11 @@ index ef00633..79a6b62 100644
 -		r.conn, err = net.Dial("tcp", address)
 +		r.conn, err = net.Dial(network, address)
  		if err != nil {
- 			log.Info("Waiting for signal-cli to start up in daemon mode...")
+-			log.Info("Waiting for signal-cli to start up in daemon mode...")
++			log.Infof("Waiting for signal-cli to start up in daemon mode (address: %s, error: %s)...", address, err.Error())
  			time.Sleep(2 * time.Second)
+ 			continue
+ 		}
 diff --git a/src/main.go b/src/main.go
 index 2450496..40918f5 100644
 --- a/src/main.go
