@@ -1,6 +1,6 @@
 pkgbase = robotraconteur
 	pkgdesc = Robot Raconteur is a communication framework for Robotics and Automation
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://github.com/robotraconteur/robotraconteur
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = robotraconteur
 	makedepends = python-pip
 	makedepends = gtest
 	makedepends = base-devel
-	source = https://github.com/robotraconteur/robotraconteur/releases/download/v1.2.7/RobotRaconteur-1.2.7-Source.tar.gz
-	sha256sums = 7d29e084f92691f58d809e26fb035465fb5df4e0c13f13c0e46fcf7eba030605
+	source = https://github.com/robotraconteur/robotraconteur/releases/download/v1.2.8/RobotRaconteur-1.2.8-Source.tar.gz
+	sha256sums = f77bbaa1f31cd1ee96db62926bba468e92edf35be8fd483139444f6a2dc956bc
 
 pkgname = librobotraconteurcore1
 	pkgdesc = Robot Raconteur runtime library

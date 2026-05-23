@@ -1,14 +1,14 @@
 # Maintainer: John Wason <wason@wasontech.com>
 pkgbase=robotraconteur
 pkgname=(librobotraconteurcore1 librobotraconteur-devel python-robotraconteur robotraconteurgen)
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Robot Raconteur is a communication framework for Robotics and Automation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/robotraconteur/robotraconteur"
 license=('Apache-2.0')
 source=("https://github.com/robotraconteur/robotraconteur/releases/download/v${pkgver}/RobotRaconteur-${pkgver}-Source.tar.gz")
-sha256sums=('7d29e084f92691f58d809e26fb035465fb5df4e0c13f13c0e46fcf7eba030605')
+sha256sums=('f77bbaa1f31cd1ee96db62926bba468e92edf35be8fd483139444f6a2dc956bc')
 makedepends=(
   'cmake>=3.5.1'
   'boost>=1.58.0'
