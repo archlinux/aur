@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-widevine-bin
 	pkgdesc = A lightweight approach to removing Google web service dependency (with Widevine)
-	pkgver = 148.0.7778.167
-	pkgrel = 3
+	pkgver = 148.0.7778.178
+	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
 	license = BSD
@@ -40,15 +40,15 @@ pkgbase = ungoogled-chromium-widevine-bin
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=148.0.7778.167
-	provides = chromedriver=148.0.7778.167
+	provides = chromium=148.0.7778.178
+	provides = chromedriver=148.0.7778.178
 	conflicts = chromium
 	conflicts = chromedriver
-	noextract = google-chrome-stable_148.0.7778.167-1_amd64.deb
+	noextract = google-chrome-stable_148.0.7778.178-1_amd64.deb
 	options = !strip
-	source = ungoogled-chromium-148.0.7778.167-3-x86_64.pkg.tar.zst::https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/148.0.7778.167-3/ungoogled-chromium-148.0.7778.167-3-x86_64.pkg.tar.zst
-	source = google-chrome-stable_148.0.7778.167-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_148.0.7778.167-1_amd64.deb
-	sha256sums = e5945b2ad4d33112fead50f8bcfdecdf733a9e392dd3eb621ebdf125c946a2e6
-	sha256sums = d64f4facad66a5424527a45b0b76443740aa38b5f825b1a99a95d0ac3a594d55
+	source = ungoogled-chromium-148.0.7778.178-1-x86_64.pkg.tar.zst::https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/148.0.7778.178-1/ungoogled-chromium-148.0.7778.178-1-x86_64.pkg.tar.zst
+	source = google-chrome-stable_148.0.7778.178-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_148.0.7778.178-1_amd64.deb
+	sha256sums = 73d7fcf8fdeabd61c6c0c543b7b9336ea2271082378d09c73a7a48e14eecddf3
+	sha256sums = de2b8ac5cbb0b7ff8121c52a0bbd7985b7912e15237a9354d466c1ddd688a242
 
 pkgname = ungoogled-chromium-widevine-bin

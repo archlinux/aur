@@ -1,8 +1,8 @@
 # Maintainer: Ahmet Arda Kavakcı <ahmetardakavakci@gmail.com>
 
 pkgname=ungoogled-chromium-widevine-bin
-pkgver=148.0.7778.167
-pkgrel=3
+pkgver=148.0.7778.178
+pkgrel=1
 _upstream_rel=$pkgrel
 pkgdesc="A lightweight approach to removing Google web service dependency (with Widevine)"
 arch=('x86_64')
@@ -31,8 +31,8 @@ source=(
   "google-chrome-stable_${pkgver}-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${pkgver}-1_amd64.deb"
 )
 noextract=("google-chrome-stable_${pkgver}-1_amd64.deb")
-sha256sums=('e5945b2ad4d33112fead50f8bcfdecdf733a9e392dd3eb621ebdf125c946a2e6'
-            'd64f4facad66a5424527a45b0b76443740aa38b5f825b1a99a95d0ac3a594d55')
+sha256sums=('73d7fcf8fdeabd61c6c0c543b7b9336ea2271082378d09c73a7a48e14eecddf3'
+            'de2b8ac5cbb0b7ff8121c52a0bbd7985b7912e15237a9354d466c1ddd688a242')
 
 prepare() {
   mkdir -p "$srcdir/chrome_extract"
