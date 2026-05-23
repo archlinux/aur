@@ -1,0 +1,13 @@
+# makepkg build paths
+/src/
+/pkg/
+
+# makepkg local git source caches
+/tapauth/
+
+# Compiled Arch packages
+*.pkg.tar.zst
+*.pkg.tar.gz
+
+# Source packages
+*.src.tar.gz
