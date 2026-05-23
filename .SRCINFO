@@ -17,11 +17,10 @@ pkgbase = xembed-sni-proxy-standalone-git
 	depends = xcb-util
 	depends = libxcb
 	depends = libgcc
-	provides = xembed-sni-proxy-standalone
 	conflicts = xembedsniproxy
 	source = xembed-sni-proxy-standalone-git::git+https://github.com/BLumia/xembed-sni-proxy.git
 	source = 0001-cmake.patch
 	sha256sums = SKIP
-	sha256sums = 4b249947d2f95723aeba0f4dc0c75b5250a59be012c6505689a372984d06bdd3
+	sha256sums = 5022eea97a03e4b3e54954d544b9a5ea9d6eb46cf7f8df4340488161227dac94
 
 pkgname = xembed-sni-proxy-standalone-git

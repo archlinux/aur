@@ -16,7 +16,7 @@ _pkgsrc="${pkgname}"
 source=("${_pkgsrc}::git+${url}.git"
   '0001-cmake.patch')
 sha256sums=('SKIP'
-  '4b249947d2f95723aeba0f4dc0c75b5250a59be012c6505689a372984d06bdd3')
+            '5022eea97a03e4b3e54954d544b9a5ea9d6eb46cf7f8df4340488161227dac94')
 
 pkgver() {
   cd "${_pkgsrc}"
