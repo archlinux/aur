@@ -1,0 +1,14 @@
+pkgbase = vtzero
+	pkgdesc = Minimalist vector tile decoder and encoder in C++
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/mapbox/vtzero
+	arch = any
+	license = BSD-2-Clause
+	makedepends = boost
+	makedepends = cmake
+	makedepends = protozero
+	source = vtzero-1.2.0.tar.gz::https://github.com/mapbox/vtzero/archive/v1.2.0.tar.gz
+	b2sums = 5406b80b0da245d6163d675d4b4291226cfc446df93e9c9fd7af948c29b25fe9c0c64ad7d0db30cf9fbf001ff68f741d9b1fbe819b437d7129a2332440f9a308
+
+pkgname = vtzero
