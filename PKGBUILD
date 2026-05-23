@@ -5,7 +5,7 @@
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname=lightzone
-pkgver=5.0.0beta3
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Open-source professional-level digital darkroom software"
 url="https://github.com/ktgw0316/LightZone/"
@@ -38,9 +38,9 @@ makedepends=('java-environment>=17'
 )
 
 _git_url=${url}
-_git_rev=dcd9a3ff46e761db5af3db4b7553e3187c5ced23
+_git_rev=ffcc912a2fb20bf3ad434b4197d6f0e7ee863696
 source=("${_git_url}/archive/${_git_rev}.zip")
-sha256sums=('c7ef4b706cda7432a42571c1400cd1c42328a63b1dada1d2911ef424e47c5b9b')
+sha256sums=('3946001c7f112a33cd0c510f454f17b06179e30616a3d1e74c3201110dbc7b38')
 
 prepare() {
   cd "${srcdir}/LightZone-${_git_rev}/"
@@ -64,15 +64,7 @@ package() {
   _javadir=/usr/share/java
   _jardir="${pkgdir}/${_javadir}/${pkgname}"
   install -dm 0755 "${_jardir}"
-  cp -pH linux/build/install/LightZone/lib/ejml-*.jar "${_jardir}"
-  cp -pH linux/build/install/LightZone/lib/flatlaf-*.jar "${_jardir}"
-  cp -pH linux/build/install/LightZone/lib/imagen-*.jar "${_jardir}"
-  cp -pH linux/build/install/LightZone/lib/jiconfont-*.jar "${_jardir}"
-  cp -pH linux/build/install/LightZone/lib/lightcrafts-*.jar "${_jardir}"
-  cp -pH linux/build/install/LightZone/lib/linux-*.jar "${_jardir}"
-  cp -pH linux/build/install/LightZone/lib/logback-*.jar "${_jardir}"
-  cp -pH linux/build/install/LightZone/lib/openjson-*.jar "${_jardir}"
-  cp -pH linux/build/install/LightZone/lib/slf4j-*.jar "${_jardir}"
+  cp -pH linux/build/install/LightZone/lib/*.jar "${_jardir}"
 
   # create icons and shortcuts
   _datadir=/usr/share

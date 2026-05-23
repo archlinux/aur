@@ -1,6 +1,6 @@
 pkgbase = lightzone
 	pkgdesc = Open-source professional-level digital darkroom software
-	pkgver = 5.0.0beta3
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/ktgw0316/LightZone/
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = lightzone
 	depends = libxtst
 	provides = lightzone
 	conflicts = lightzone-git
-	source = https://github.com/ktgw0316/LightZone//archive/dcd9a3ff46e761db5af3db4b7553e3187c5ced23.zip
-	sha256sums = c7ef4b706cda7432a42571c1400cd1c42328a63b1dada1d2911ef424e47c5b9b
+	source = https://github.com/ktgw0316/LightZone//archive/ffcc912a2fb20bf3ad434b4197d6f0e7ee863696.zip
+	sha256sums = 3946001c7f112a33cd0c510f454f17b06179e30616a3d1e74c3201110dbc7b38
 
 pkgname = lightzone
