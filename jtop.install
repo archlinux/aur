@@ -1,0 +1,7 @@
+post_install() {
+    echo "jtop installed successfully!"
+    echo ""
+    echo "  Run:  jtop"
+    echo ""
+    echo "  Navigate:  j/k = scroll, Enter = scroll row, q/Ctrl+C = quit"
+}

@@ -1,0 +1,18 @@
+pkgbase = jtop
+	pkgdesc = A lightweight, terminal-based system monitoring tool written in Java
+	pkgver = 0.1.0.r46.g5f1cb85
+	pkgrel = 1
+	url = https://github.com/JGH0/jtop
+	install = jtop.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = java-environment>=21
+	makedepends = git
+	depends = java-runtime>=21
+	provides = jtop
+	source = jtop::git+https://github.com/JGH0/jtop.git
+	sha256sums = SKIP
+	b2sums = SKIP
+
+pkgname = jtop
