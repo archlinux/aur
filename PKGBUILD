@@ -1,7 +1,7 @@
 # Maintainer: Alberto OS <https://github.com/AlbertoOS>
 
 pkgname=i3lock-color-albertoos-git
-pkgver=2.13.c.5.albertoos.6.r0.3ea8a81
+pkgver=2.13.c.5.albertoos.7.r0.6403710
 pkgrel=1
 pkgdesc="i3lock-color fork: constant-time blur, SSE2, bg cache, async lock, security hardening"
 arch=('x86_64')
