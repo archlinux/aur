@@ -2,7 +2,7 @@
 # Co-Maintainer: LunarEclipse <luna@lunareclipse.zone>
 
 pkgname=veloren-nightly
-pkgver=0.16.0.r410.5ec99290f
+pkgver=0.18.0.r232.91b6ece408
 pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG. Version matches official server."
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ optdepends=(
     'pulseaudio-alsa: audio support on pulseaudio'
     'pipewire-alsa: audio support on pipewire'
 )
-makedepends=('git' 'git-lfs' 'rustup' 'cairo' 'pango' 'atk' 'gdk-pixbuf2' 'python' 'openssl' 'cmake' 'udev')
+makedepends=('git' 'git-lfs' 'rustup' 'cairo' 'pango' 'atk' 'gdk-pixbuf2' 'python' 'openssl' 'cmake' 'udev' 'mold')
 provides=('veloren')
 conflicts=('veloren')
 _repo='https://gitlab.com/veloren/veloren.git'
@@ -28,7 +28,7 @@ prepare() {
     cd "$pkgname"
     git fetch
     git checkout $(wget -qO - https://download.veloren.net/version/linux/x86_64/weekly)
-    git lfs install
+    git lfs install --local
     git lfs fetch
     git lfs checkout
 }
