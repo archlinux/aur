@@ -1,6 +1,6 @@
 pkgbase = hardwaremon-bin
 	pkgdesc = Modern hardware monitoring application
-	pkgver = 14.7.3
+	pkgver = 14.8.0
 	pkgrel = 1
 	url = https://github.com/louisboii747/HardwareMon
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hardwaremon-bin
 	depends = python-flask-cors
 	depends = python-psutil
 	options = !debug
-	source = https://github.com/louisboii747/HardwareMon/releases/download/v14.7.3/hardwaremon-linux-x86_64.tar.gz
+	source = https://github.com/louisboii747/HardwareMon/releases/download/v14.8.0/hardwaremon-linux-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = hardwaremon-bin
