@@ -1,0 +1,217 @@
+From 3ccf859d8a56c666c36d309f55fdad0edc67bb1a Mon Sep 17 00:00:00 2001
+From: Joris Vaillant <joris.vaillant@inria.fr>
+Date: Tue, 19 May 2026 13:34:53 +0200
+Subject: [PATCH 1/2] Add Eigen5 support to FindEigen3.cmake
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Inspired from casadi FindEigen3.cmake: https://github.com/casadi/casadi/blob/main/cmake/FindEigen3.cmake
+---
+ cmake/FindEigen3.cmake | 23 +++++++++++++++--------
+ 1 file changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/cmake/FindEigen3.cmake b/cmake/FindEigen3.cmake
+index 0116f6a3..cd0919e3 100644
+--- a/cmake/FindEigen3.cmake
++++ b/cmake/FindEigen3.cmake
+@@ -15,6 +15,8 @@
+ # Copyright (c) 2009 Benoit Jacob <jacob.benoit.1@gmail.com>
+ # Redistribution and use is allowed according to the terms of the 2-clause BSD license.
+ 
++find_package(Eigen3 NO_MODULE QUIET)
++
+ if(NOT Eigen3_FIND_VERSION)
+   if(NOT Eigen3_FIND_VERSION_MAJOR)
+     set(Eigen3_FIND_VERSION_MAJOR 2)
+@@ -30,16 +32,21 @@ if(NOT Eigen3_FIND_VERSION)
+ endif(NOT Eigen3_FIND_VERSION)
+ 
+ macro(_eigen3_check_version)
+-  file(READ "${EIGEN3_INCLUDE_DIR}/Eigen/src/Core/util/Macros.h" _eigen3_version_header)
++  if(DEFINED Eigen3_VERSION)
++    set(EIGEN3_VERSION Eigen3_VERSION)
++  else(DEFINED Eigen3_VERSION)
++    file(READ "${EIGEN3_INCLUDE_DIR}/Eigen/src/Core/util/Macros.h" _eigen3_version_header)
++
++    string(REGEX MATCH "define[ \t]+EIGEN_WORLD_VERSION[ \t]+([0-9]+)" _eigen3_world_version_match "${_eigen3_version_header}")
++    set(EIGEN3_WORLD_VERSION "${CMAKE_MATCH_1}")
++    string(REGEX MATCH "define[ \t]+EIGEN_MAJOR_VERSION[ \t]+([0-9]+)" _eigen3_major_version_match "${_eigen3_version_header}")
++    set(EIGEN3_MAJOR_VERSION "${CMAKE_MATCH_1}")
++    string(REGEX MATCH "define[ \t]+EIGEN_MINOR_VERSION[ \t]+([0-9]+)" _eigen3_minor_version_match "${_eigen3_version_header}")
++    set(EIGEN3_MINOR_VERSION "${CMAKE_MATCH_1}")
+ 
+-  string(REGEX MATCH "define[ \t]+EIGEN_WORLD_VERSION[ \t]+([0-9]+)" _eigen3_world_version_match "${_eigen3_version_header}")
+-  set(EIGEN3_WORLD_VERSION "${CMAKE_MATCH_1}")
+-  string(REGEX MATCH "define[ \t]+EIGEN_MAJOR_VERSION[ \t]+([0-9]+)" _eigen3_major_version_match "${_eigen3_version_header}")
+-  set(EIGEN3_MAJOR_VERSION "${CMAKE_MATCH_1}")
+-  string(REGEX MATCH "define[ \t]+EIGEN_MINOR_VERSION[ \t]+([0-9]+)" _eigen3_minor_version_match "${_eigen3_version_header}")
+-  set(EIGEN3_MINOR_VERSION "${CMAKE_MATCH_1}")
++    set(EIGEN3_VERSION ${EIGEN3_WORLD_VERSION}.${EIGEN3_MAJOR_VERSION}.${EIGEN3_MINOR_VERSION})
++  endif(DEFINED Eigen3_VERSION)
+ 
+-  set(EIGEN3_VERSION ${EIGEN3_WORLD_VERSION}.${EIGEN3_MAJOR_VERSION}.${EIGEN3_MINOR_VERSION})
+   if(${EIGEN3_VERSION} VERSION_LESS ${Eigen3_FIND_VERSION})
+     set(EIGEN3_VERSION_OK FALSE)
+   else(${EIGEN3_VERSION} VERSION_LESS ${Eigen3_FIND_VERSION})
+
+From 9621a83c60f2a8f6207a9c2ad3de7c4eb578d190 Mon Sep 17 00:00:00 2001
+From: Joris Vaillant <joris.vaillant@inria.fr>
+Date: Tue, 19 May 2026 13:41:38 +0200
+Subject: [PATCH 2/2] Add new mandatory methods to `Eigen::NumTraits`
+ specialization
+
+---
+ include/cppad/cg/support/cppadcg_eigen.hpp | 83 ++++++++++++++++++++++
+ test/cppad/cg/support/cppadcg_eigen.cpp    | 16 ++++-
+ 2 files changed, 97 insertions(+), 2 deletions(-)
+
+diff --git a/include/cppad/cg/support/cppadcg_eigen.hpp b/include/cppad/cg/support/cppadcg_eigen.hpp
+index bdb867d4..e3c6dfa6 100644
+--- a/include/cppad/cg/support/cppadcg_eigen.hpp
++++ b/include/cppad/cg/support/cppadcg_eigen.hpp
+@@ -91,6 +91,47 @@ struct NumTraits<CppAD::cg::CG<Base> > {
+         return CppAD::numeric_limits<CppAD::cg::CG<Base> >::digits10;
+     }
+ 
++    /**
++     * the number of radix digits
++     */
++    static int digits() {
++      return std::numeric_limits<Base>::digits;
++    }
++
++    /**
++     * the number of decimal digits required to uniquely represent all distinct values of the type
++     */
++    static int max_digits10() {
++      return std::numeric_limits<Base>::max_digits10;
++    }
++
++    /**
++     * the lowest possible value, such that the radix raised to the power exponent-1 is a normalized floating-point number
++     */
++    static int min_exponent() {
++      return std::numeric_limits<Base>::min_exponent;
++    }
++
++    /**
++     * the highest possible value, such that the radix raised to the power exponent-1 is a normalized floating-point number
++     */
++    static int max_exponent() {
++      return std::numeric_limits<Base>::max_exponent;
++    }
++
++    /**
++     * representation of positive infinity
++     */
++    static CppAD::cg::CG<Base> infinity() {
++      return CppAD::numeric_limits<CppAD::cg::CG<Base> >::infinity();
++    }
++
++    /**
++     * a non-signaling "not-a-number"
++     */
++    static CppAD::cg::CG<Base> quiet_NaN() {
++      return CppAD::numeric_limits<CppAD::cg::CG<Base> >::quiet_NaN();
++    }
+ };
+ 
+ /**
+@@ -162,6 +203,48 @@ struct NumTraits<CppAD::AD<CppAD::cg::CG<Base> > > {
+         return CppAD::numeric_limits<CGBase>::digits10;
+     }
+ 
++    /**
++     * the number of radix digits
++     */
++    static int digits() {
++      return std::numeric_limits<Base>::digits;
++    }
++
++    /**
++     * the number of decimal digits required to uniquely represent all distinct values of the type
++     */
++    static int max_digits10() {
++      return std::numeric_limits<Base>::max_digits10;
++    }
++
++    /**
++     * the lowest possible value, such that the radix raised to the power exponent-1 is a normalized floating-point number
++     */
++    static int min_exponent() {
++      return std::numeric_limits<Base>::min_exponent;
++    }
++
++    /**
++     * the highest possible value, such that the radix raised to the power exponent-1 is a normalized floating-point number
++     */
++    static int max_exponent() {
++      return std::numeric_limits<Base>::max_exponent;
++    }
++
++    /**
++     * representation of positive infinity
++     */
++    static CppAD::AD<CGBase> infinity() {
++      return CppAD::numeric_limits<CppAD::AD<CGBase>>::infinity();
++    }
++
++    /**
++     * a non-signaling "not-a-number"
++     */
++    static CppAD::AD<CGBase> quiet_NaN() {
++      return CppAD::numeric_limits<CppAD::AD<CGBase>>::quiet_NaN();
++    }
++
+ };
+ 
+ #if EIGEN_VERSION_AT_LEAST(3,2,93)
+diff --git a/test/cppad/cg/support/cppadcg_eigen.cpp b/test/cppad/cg/support/cppadcg_eigen.cpp
+index 51fb3264..50deff00 100644
+--- a/test/cppad/cg/support/cppadcg_eigen.cpp
++++ b/test/cppad/cg/support/cppadcg_eigen.cpp
+@@ -38,6 +38,11 @@ TEST_F(CppADCGTest, EigenCGD) {
+     ASSERT_EQ(traits::dummy_precision(), 100. * CppAD::numeric_limits<CGD>::epsilon());
+     ASSERT_EQ(traits::highest(), CppAD::numeric_limits<CGD>::max());
+     ASSERT_EQ(traits::lowest(), CppAD::numeric_limits<CGD>::min());
++    ASSERT_EQ(traits::digits(), std::numeric_limits<double>::digits);
++    ASSERT_EQ(traits::min_exponent(), std::numeric_limits<double>::min_exponent);
++    ASSERT_EQ(traits::max_exponent(), std::numeric_limits<double>::max_exponent);
++    ASSERT_EQ(traits::infinity(), CppAD::numeric_limits<CGD>::infinity());
++    ASSERT_NE(traits::quiet_NaN(), traits::quiet_NaN());
+ 
+     CGD x = 2.0;
+     ASSERT_EQ(conj(x), x);
+@@ -45,7 +50,8 @@ TEST_F(CppADCGTest, EigenCGD) {
+     ASSERT_EQ(imag(x), 0.0);
+     ASSERT_EQ(abs2(x), 4.0);
+ 
+-    // Outputing a matrix
++    // Outputting a matrix
++    // On Eigen5 this test call Eigen::NumTraits::max_digits10 method
+     Matrix<CGD, 1, 1> X;
+     X(0, 0) = 1;
+     std::stringstream stream_out;
+@@ -91,6 +97,11 @@ TEST_F(CppADCGTest, EigenADCGD) {
+     ASSERT_EQ(traits::dummy_precision(), 100. * std::numeric_limits<double>::epsilon());
+     ASSERT_EQ(traits::highest(), (std::numeric_limits<double>::max)());
+     ASSERT_EQ(traits::lowest(), (std::numeric_limits<double>::min)());
++    ASSERT_EQ(traits::digits(), std::numeric_limits<double>::digits);
++    ASSERT_EQ(traits::min_exponent(), std::numeric_limits<double>::min_exponent);
++    ASSERT_EQ(traits::max_exponent(), std::numeric_limits<double>::max_exponent);
++    ASSERT_EQ(traits::infinity(), CppAD::numeric_limits<CGD>::infinity());
++    ASSERT_NE(traits::quiet_NaN(), traits::quiet_NaN());
+ 
+     ADCGD x = CGD(2.0);
+     ASSERT_EQ(conj(x), x);
+@@ -98,7 +109,8 @@ TEST_F(CppADCGTest, EigenADCGD) {
+     ASSERT_EQ(imag(x), 0.0);
+     ASSERT_EQ(abs2(x), 4.0);
+ 
+-    // Outputing a matrix
++    // Outputting a matrix
++    // On Eigen5 this test call Eigen::NumTraits::max_digits10 method
+     Matrix<ADCGD, 1, 1> X;
+     X(0, 0) = ADCGD(1);
+     std::stringstream stream_out;

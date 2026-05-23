@@ -1,0 +1,145 @@
+From a42cc5aa10e2ca4cd7378ed47c2f720502dd7717 Mon Sep 17 00:00:00 2001
+From: Joris Vaillant <joris.vaillant@inria.fr>
+Date: Wed, 30 Apr 2025 10:54:03 +0200
+Subject: [PATCH 1/2] Workaround to avoid GCC bug
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Avoid `redefinition of ‘bool __tls_guard’` GCC build error.
+See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66944.
+---
+ include/cppad/cg/cg.hpp                           | 15 +++++++++------
+ .../cppad/cg/operation_node_name_streambuf.hpp    |  6 +++---
+ 2 files changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/include/cppad/cg/cg.hpp b/include/cppad/cg/cg.hpp
+index 1d283135..665c862f 100644
+--- a/include/cppad/cg/cg.hpp
++++ b/include/cppad/cg/cg.hpp
+@@ -267,12 +267,15 @@ class CG {
+  */
+ template<class Base>
+ struct CGOStreamFunc {
+-    static thread_local std::function<std::ostream& (std::ostream&, const CG<Base>&)> FUNC;
++    // Because of a GCC bug (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66944)
++    // FUNC_OBJ can't be a CGOStreamFunc static member.
++    // Instead, we store it as CGOStreamFunc::FUNC method static variable.
++    static std::function<std::ostream& (std::ostream&, const CG<Base>&)>& FUNC () {
++        static thread_local std::function<std::ostream& (std::ostream&, const CG<Base>&)> FUNC_OBJ = nullptr;
++        return FUNC_OBJ;
++    }
+ };
+ 
+-template<class Base>
+-thread_local std::function<std::ostream& (std::ostream&, const CG<Base>&)> CGOStreamFunc<Base>::FUNC = nullptr;
+-
+ /**
+  * Output stream operator for CG objects.
+  * Default behavior can be overridden using CGOStreamFunc::FUN.
+@@ -282,8 +285,8 @@ inline std::ostream& operator<<(
+         std::ostream& os, //< stream to write to
+         const CG<Base>& v//< vector that is output
+         ) {
+-    if(CGOStreamFunc<Base>::FUNC != nullptr) {
+-        return CGOStreamFunc<Base>::FUNC(os, v);
++    if(CGOStreamFunc<Base>::FUNC() != nullptr) {
++        return CGOStreamFunc<Base>::FUNC()(os, v);
+     }
+ 
+     if (v.isParameter()) {
+diff --git a/include/cppad/cg/operation_node_name_streambuf.hpp b/include/cppad/cg/operation_node_name_streambuf.hpp
+index 620964fe..b7ce6236 100644
+--- a/include/cppad/cg/operation_node_name_streambuf.hpp
++++ b/include/cppad/cg/operation_node_name_streambuf.hpp
+@@ -44,16 +44,16 @@ class OperationNodeNameStreambuf : public std::streambuf {
+         if (BUF != nullptr) {
+             throw CGException("Only one OperationNodeNameStreambuf can exist at a time in each thread");
+         }
+-        if (CGOStreamFunc<Base>::FUNC != nullptr) {
++        if (CGOStreamFunc<Base>::FUNC() != nullptr) {
+             throw CGException("CGOStreamFunc<Base>::FUNC already defined in this thread");
+         }
+         BUF = this;
+-        CGOStreamFunc<Base>::FUNC = registerNode;
++        CGOStreamFunc<Base>::FUNC() = registerNode;
+     }
+ 
+     virtual ~OperationNodeNameStreambuf() {
+         BUF = nullptr;
+-        CGOStreamFunc<Base>::FUNC = nullptr;
++        CGOStreamFunc<Base>::FUNC() = nullptr;
+     }
+ 
+     std::streamsize xsputn(const char_type* s,
+
+From eae38a5225f0f7df38bb110f98ac09fc98bec8ae Mon Sep 17 00:00:00 2001
+From: Joris Vaillant <joris.vaillant@inria.fr>
+Date: Wed, 30 Apr 2025 11:18:59 +0200
+Subject: [PATCH 2/2] Add a regression test
+
+---
+ test/cppad/cg/CMakeLists.txt      |  1 +
+ test/cppad/cg/gcc_build_issue.cpp | 41 +++++++++++++++++++++++++++++++
+ 2 files changed, 42 insertions(+)
+ create mode 100644 test/cppad/cg/gcc_build_issue.cpp
+
+diff --git a/test/cppad/cg/CMakeLists.txt b/test/cppad/cg/CMakeLists.txt
+index 5a5ce5ea..9c5de3e0 100644
+--- a/test/cppad/cg/CMakeLists.txt
++++ b/test/cppad/cg/CMakeLists.txt
+@@ -22,6 +22,7 @@ add_cppadcg_test(inputstream.cpp)
+ add_cppadcg_test(temporary.cpp)
+ add_cppadcg_test(mult_sparsity_pattern.cpp)
+ add_cppadcg_test(multi_object_1.cpp multi_object.cpp)
++add_cppadcg_test(gcc_build_issue.cpp)
+ 
+ ADD_SUBDIRECTORY(extra)
+ ADD_SUBDIRECTORY(operations)
+diff --git a/test/cppad/cg/gcc_build_issue.cpp b/test/cppad/cg/gcc_build_issue.cpp
+new file mode 100644
+index 00000000..6c2941a1
+--- /dev/null
++++ b/test/cppad/cg/gcc_build_issue.cpp
+@@ -0,0 +1,41 @@
++/* --------------------------------------------------------------------------
++ *  CppADCodeGen: C++ Algorithmic Differentiation with Source Code Generation:
++ *    Copyright (C) 2012 Joris Vaillant
++ *
++ *  CppADCodeGen is distributed under multiple licenses:
++ *
++ *   - Eclipse Public License Version 1.0 (EPL1), and
++ *   - GNU General Public License Version 3 (GPL3).
++ *
++ *  EPL1 terms and conditions can be found in the file "epl-v10.txt", while
++ *  terms and conditions for the GPL3 can be found in the file "gpl3.txt".
++ * ----------------------------------------------------------------------------
++ * Author: Joris Vaillant
++ */
++#include "CppADCGTest.hpp"
++
++using namespace CppAD;
++using namespace CppAD::cg;
++
++// Test GCC compilation bug issue: https://github.com/joaoleal/CppADCodeGen/issues/92
++// This test only have to build to pass
++
++struct A {};
++struct B {};
++
++template <typename T>
++struct Wrapper {
++  virtual void foo() { 
++    v.FUNC();
++  }
++  CppAD::cg::CGOStreamFunc<T> v;
++};
++
++int main() {
++};
++
++TEST_F(CppADCGTest, TestGCCBuildIssue) {
++  Wrapper<A> a;
++  Wrapper<B> b;
++  a.v.FUNC();
++}

@@ -1,7 +1,7 @@
 pkgbase = cppadcodegen
 	pkgdesc = Source Code Generation for Automatic Differentiation using Operator Overloading
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joaoleal/CppADCodeGen
 	arch = any
 	license = GPL-3.0-only
@@ -12,6 +12,12 @@ pkgbase = cppadcodegen
 	optdepends = clang: only required for JIT compilation
 	optdepends = llvm: only required for JIT compilation
 	source = cppadcodegen-2.5.0.tar.gz::https://github.com/joaoleal/CppADCodeGen/archive/v2.5.0.tar.gz
+	source = 90.patch
+	source = 93.patch
+	source = 95.patch
 	sha256sums = a53d3e91cfa17381f31819d549de71767b90d05e671fa848043694b0f53d6c18
+	sha256sums = 709b811403825959a9d17e52f2132c31b92e1cd34ed653b0fd6ffa384291c1d0
+	sha256sums = f766cd866294335326014ea023483a61c5668d3f2dadaeedd069ffae1aad8e3a
+	sha256sums = e682d1d9320fb1988ac3c041d4c89c01d6da04310baf8ff7165353cc64c6d753
 
 pkgname = cppadcodegen
