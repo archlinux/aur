@@ -24,7 +24,8 @@ build() {
         -DBUILD_TESTING=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -Wno-dev
     cmake --build "build-$pkgver"
 }
 
