@@ -1,0 +1,13 @@
+pkgbase = jupiter-dock-updater-bin
+	pkgdesc = Firmware updater for the Steam Deck Dock
+	pkgver = 20250220.02
+	pkgrel = 1
+	url = https://gitlab.steamos.cloud/jupiter/jupiter-dock-updater-bin
+	arch = x86_64
+	license = proprietary
+	makedepends = git
+	makedepends = openssh
+	source = git+https://gitlab.com/evlaV/jupiter-dock-updater-bin.git#tag=jupiter-20250220.02
+	sha256sums = f4008f72c6a6557e74f25b75060f1064d5c95e4e8cbb4f057924845fd0df6485
+
+pkgname = jupiter-dock-updater-bin
