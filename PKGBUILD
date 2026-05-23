@@ -79,6 +79,8 @@ source=(
 )
 sha256sums=('SKIP'
             '6001ed876cc8b62e1ae41b7c9e1246c31e7bd13eb11aa5ba7ff163bd9ef88c80')
+# install.sh runs 7z on the payload itself; let it own the extraction.
+noextract=("Codex-$_appver.zip")
 
 # Installed app identity stays "codex-desktop": matches the Electron WM_CLASS,
 # the ~/.config/codex-desktop settings dir, and provides/conflicts.
@@ -106,13 +108,16 @@ build() {
 
     export PACKAGE_WITH_UPDATER=0                 # updates come from pacman
     export CODEX_LINUX_ENABLE_COMPUTER_USE_UI=1   # expose the in-app Computer Use UI
-    export PROVIDED_DMG_PATH="$srcdir/Codex-$_appver.zip"
     # Have install.sh write the patch report so check() can validate it.
     export CODEX_PATCH_REPORT_JSON="$srcdir/patch-report.json"
 
+    # Pin the payload via positional arg — install-helpers.sh resets the env
+    # var to empty, so $PROVIDED_DMG_PATH does nothing. Without this the
+    # script falls back to downloading the rolling Codex.dmg, defeating the
+    # whole versioned-zip pin.
     # Patches app.asar, rebuilds native modules, builds the Rust backends,
     # runs feature stage hooks. --fresh is non-interactive.
-    ./install.sh --fresh
+    ./install.sh --fresh "$srcdir/Codex-$_appver.zip"
 }
 
 check() {

@@ -47,6 +47,7 @@ pkgbase = codex-desktop-linux
 	optdepends = espeak-ng: offline TTS fallback for Read Aloud
 	provides = codex-desktop
 	conflicts = codex-desktop
+	noextract = Codex-26.513.31313.zip
 	options = !debug
 	options = !strip
 	source = codex-desktop-linux::git+https://github.com/distsystem/codex-desktop-linux.git#branch=main
