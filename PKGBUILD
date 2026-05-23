@@ -6,13 +6,14 @@
 # under GPL-3.0-only by its upstream author (declared in license= below).
 pkgname=modulejail
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Proactively shrink Linux kernel-module attack surface by blacklisting unused modules'
 arch=('any')
 url='https://github.com/jnuyens/modulejail'
 license=('GPL-3.0-only')
 depends=('kmod')
 optdepends=('util-linux: logger(1) for syslog integration')
+conflicts=('modulejail-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ceee816e24b7dcf971f7ed49f8415a0cb77c06ecd0b4ac9c2cabf91463d32597')
 
