@@ -41,13 +41,10 @@ build() {
 }
 
 package() {
-    # Install AutoDock binary
-    install -Dm755 "$srcdir/AutoDock4-$_ad4_commit" "$pkgdir/usr/bin/autodock4"
+    install -Dm755 "$srcdir/AutoDock4-$_ad4_commit/autodock4" "$pkgdir/usr/bin/autodock4"
+
+    install -Dm755 "$srcdir/AutoGrid-$_ag4_commit/autogrid4" "$pkgdir/usr/bin/autogrid4"
     
-    # Install AutoGrid binary
-    install -Dm755 "$srcdir/AutoGrid-$_ag4_commit" "$pkgdir/usr/bin/autogrid4"
-    
-    # Install documentation
     install -Dm644 "$srcdir/AutoDock4-$_ad4_commit/README" "$pkgdir/usr/share/doc/$pkgname/README"
-    install -Dm644 "$srcdir/AutoDock4-$_ag4_commit/COPYING" "$pkgdir/usr/share/doc/$pkgname/COPYING"
+    install -Dm644 "$srcdir/AutoDock4-$_ad4_commit/COPYING" "$pkgdir/usr/share/doc/$pkgname/COPYING"
 }
