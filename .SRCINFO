@@ -1,6 +1,6 @@
 pkgbase = moshpit-agent
 	pkgdesc = Moshpit agent daemon — holds identity keys in memory and serves them over a Unix socket (passphrase unlock)
-	pkgver = 0.8.8
+	pkgver = 0.8.9
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = moshpit-agent
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = gcc
-	source = moshpit-agent-0.8.8.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.8.tar.gz
-	sha256sums = 89b4b4e5be86bf1494d55151ee595aa9cbb9ac33acdebca140ab574fb1d05bc5
+	source = moshpit-agent-0.8.9.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.9.tar.gz
+	sha256sums = d48b7b1d3ada50576889d0215fce78737e08f5c6ac516abf7bb2cc6511c32ee8
 
 pkgname = moshpit-agent
