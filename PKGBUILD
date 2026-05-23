@@ -19,10 +19,10 @@ url=${_ghurl}
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${pkgname%-bin}")
 
 makedepends=('git')
-depends=('glibc' 'libgcc')
+depends=('glibc' 'libgcc' 'sqlite')
 
 install=shed.install
 
