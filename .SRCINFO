@@ -1,6 +1,6 @@
 pkgbase = figurine
 	pkgdesc = Print your text in style
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/arsham/figurine
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = figurine
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = figurine::git+https://github.com/arsham/figurine.git#tag=v2.0.0
-	sha256sums = c3b0d02296de331d8c083373c42c6b667748c705e2aa335798ffd89e411d049d
+	source = figurine::git+https://github.com/arsham/figurine.git#tag=v2.1.0
+	sha256sums = a68507a6e28e4f40fe8ddf139bd356e3f89eb9eb7c17659da36bf1f6ae4791d4
 
 pkgname = figurine
