@@ -1,15 +1,15 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_npmname=tuistory
-_npmver=0.7.0
-
-pkgname=${_npmname}
+pkgname=tuistory
 pkgdesc="Playwright for terminal user interfaces"
-pkgver=${_npmver}
+pkgver=0.8.0
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/remorses/tuistory"
 license=("MIT")
+
+_npmname=${pkgname}
+_npmver=${pkgver}
 
 depends=('glibc' 'libgcc' 'libstdc++' 'bash' 'nodejs' 'python')
 makedepends=("npm" "jq")
@@ -19,7 +19,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('f176473661ca2e048fbb3f933603e129a1e555a92c7d2b58fc60af4a3c82730cea4ea3f3eeb6aadc8157bfd97f122d3318236c81bf695e026bd38c6accc175d2')
+b2sums=('a761037c8ca189442579cd464ce5d4d22ff1cf6ac909f1fe36787ceb5e701e432d84086d8dbe451846a31813a7098fadbae88edf3e754c6ae51f8d1dee22fd4e')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
