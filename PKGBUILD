@@ -1,6 +1,6 @@
 # Maintainer: Matthew Cushing <cushing.matt@gmail.com>
 pkgname=wflow
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A workflow engine for Wayland automation, Shortcuts-style GUI + CLI"
 arch=('x86_64')
