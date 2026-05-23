@@ -1,0 +1,26 @@
+pkgbase = moshpit-agent-fprintd
+	pkgdesc = Moshpit agent daemon — fingerprint (fprintd) unlock backend
+	pkgver = 0.8.7
+	pkgrel = 1
+	url = https://github.com/rustyhorde/moshpit
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = dbus
+	depends = fprintd
+	depends = dbus
+	provides = moshpit-agent
+	conflicts = moshpit-agent
+	conflicts = moshpit-agent-fido2
+	conflicts = moshpit-agent-systemd-creds
+	conflicts = moshpit-agent-ssh-agent-piggyback
+	conflicts = moshpit-agent-secret-service
+	conflicts = moshpit-agent-tpm
+	conflicts = moshpit-agent-full
+	source = moshpit-agent-fprintd-0.8.7.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.7.tar.gz
+	sha256sums = 0d027521259379ff6e56d9c6d55c8cfe36e768ca1932375a2d54103a1e0218f0
+
+pkgname = moshpit-agent-fprintd
