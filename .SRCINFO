@@ -1,6 +1,6 @@
 pkgbase = github-desktop-plus-bin
 	pkgdesc = Fork of GitHub Desktop with extra features and improvements (binary release).
-	pkgver = 3.5.9.2
+	pkgver = 3.5.9.3
 	pkgrel = 1
 	url = https://github.com/pol-rivero/github-desktop-plus
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = github-desktop-plus-bin
 	source = launch-app.sh
 	sha256sums = 93847b4cc1e967eae041284e9c7ed3d1a48df38482ff89b681ede79de03e342e
 	sha256sums = 2fb026db6ac25ade0535ec1fffec415fd1d023fbfd28b452f29523e51921083a
-	source_x86_64 = https://github.com/pol-rivero/github-desktop-plus/releases/download/v3.5.9.2/GitHubDesktopPlus-v3.5.9.2-linux-x86_64.deb
-	sha256sums_x86_64 = cf9fddfb175dfc425923634e697de501376f50e1e55f2fc5a56d0c05c8e01c73
-	source_aarch64 = https://github.com/pol-rivero/github-desktop-plus/releases/download/v3.5.9.2/GitHubDesktopPlus-v3.5.9.2-linux-arm64.deb
-	sha256sums_aarch64 = 48fbc3537864d24c7bf6c001a782ccced707b1fa94b0d778692263ef97c1751c
+	source_x86_64 = https://github.com/pol-rivero/github-desktop-plus/releases/download/v3.5.9.3/GitHubDesktopPlus-v3.5.9.3-linux-x86_64.deb
+	sha256sums_x86_64 = 1d72330467e0229b2a73e152707d979658b5d94ad815a8ec12821bde05851f5b
+	source_aarch64 = https://github.com/pol-rivero/github-desktop-plus/releases/download/v3.5.9.3/GitHubDesktopPlus-v3.5.9.3-linux-arm64.deb
+	sha256sums_aarch64 = 902277e8d08c19bbdf12036ed0bd51d0895eb855738e19fdbf218706fba1e8d0
 
 pkgname = github-desktop-plus-bin
