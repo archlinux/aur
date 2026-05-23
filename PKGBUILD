@@ -1,11 +1,12 @@
 # Maintainer: kurojs <kuro@kurojs.dev>
 
 pkgname=takoyomi
+_realname=Takoyomi
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Real-time Japanese overlay translator for KDE Plasma"
 arch=('any')
-url="https://github.com/kurojs/takoyomi"
+url="https://github.com/kurojs/Takoyomi"
 license=('MIT')
 depends=(
     'pyside6'
@@ -19,16 +20,16 @@ makedepends=(
     'python-pip'
     'git'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kurojs/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kurojs/${_realname}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_realname}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_realname}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     pip install --root="$pkgdir" --prefix=/usr --no-deps deep-translator
