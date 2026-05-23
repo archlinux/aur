@@ -4,7 +4,7 @@
 
 pkgname=audacity-openvino
 pkgver=3.7.7
-pkgrel=5
+pkgrel=6
 epoch=2
 
 # Auto-track latest 3.7.x release tag; override with explicit pkgver if needed
