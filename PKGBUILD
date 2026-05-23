@@ -1,10 +1,10 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=headroom-ai
-pkgver=0.20.15
+pkgver=0.22.2
 pkgrel=1
 pkgdesc="Context optimization layer for LLM applications - cut token costs by 50-90%"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/chopratejas/headroom"
 license=('Apache-2.0')
 depends=(
@@ -17,7 +17,7 @@ depends=(
   'ast-grep'
   'litellm'
 )
-makedepends=('python-build' 'python-installer' 'python-hatchling')
+makedepends=('rust' 'maturin' 'python-installer')
 optdepends=(
   'python-fastapi: proxy server support'
   'uvicorn: proxy server support'
@@ -29,14 +29,21 @@ optdepends=(
   'python-huggingface-hub: Kompress model downloads'
 )
 source=("https://files.pythonhosted.org/packages/source/h/$pkgname/${pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('569468c62a7329a1abefd496a6d595544c26b46e9b2bffd80916d04d33530cc0')
+sha256sums=('ce1e5b5968a70a78591d36f248876e91e06b9fc3b5cd48cdf8216a5cfd28703b')
 
 build() {
   cd "${pkgname//-/_}-$pkgver"
-  python -m build --wheel --no-isolation
+  # ring 0.17.14 fails to link under Arch's default LTO settings (undefined
+  # references to ring_core_0_17_14__* symbols); disable LTO for the C/C++
+  # bits it pulls in via cc-rs.
+  # PYO3_USE_ABI3_FORWARD_COMPATIBILITY: the bundled PyO3 0.22 supports up to
+  # cp313, but Arch ships Python 3.14; this flag suppresses the cap check.
+  CFLAGS+=" -fno-lto" CXXFLAGS+=" -fno-lto" \
+    PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 \
+    maturin build --release --strip --interpreter python3
 }
 
 package() {
   cd "${pkgname//-/_}-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" target/wheels/*.whl
 }
