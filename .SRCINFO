@@ -1,13 +1,13 @@
 pkgbase = screentaker
 	pkgdesc = a lightweight and reliable screenshooter for X11 written in Rust
 	pkgver = 0.2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/w1zx1/screentaker
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	options = !debug
-	source = https://github.com/w1zx1/screentaker/archive/refs/tags/0.2.1.tar.gz
+	source = https://github.com/w1zx1/screentaker/archive/refs/tags/v0.2.1.tar.gz
 	sha512sums = SKIP
 
 pkgname = screentaker
