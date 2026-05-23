@@ -1,13 +1,13 @@
 pkgbase = casadi
 	pkgdesc = Symbolic framework for automatic differentiation and numeric optimization
 	pkgver = 3.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/casadi/casadi
 	arch = i686
 	arch = x86_64
 	license = LGPL-3.0-only
 	makedepends = cmake
-	makedepends = eigen3
+	makedepends = eigen
 	makedepends = simde
 	makedepends = python-setuptools
 	depends = python
@@ -27,7 +27,9 @@ pkgbase = casadi
 	depends = coin-or-qpoases
 	source = casadi-3.7.2.tar.gz::https://github.com/casadi/casadi/archive/3.7.2.tar.gz
 	source = 4105.patch
+	source = 4230.patch
 	sha256sums = 5995d915ae97d3ef0f3f8e785797ba0131e1ceea14e1246a063dcf3c46b37b2c
 	sha256sums = 0bb00512f12a1226aa01aa967fe34b45d21a96bb893e6ab644c51df76ce5c65c
+	sha256sums = 613df923d6a244b5f6e5f1ed194d1a6d171385b38a051091bd37a7ebfa2deada
 
 pkgname = casadi
