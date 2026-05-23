@@ -7,7 +7,7 @@ pkgbase = apothem
 	license = MIT
 	depends = bash
 	depends = python
-	source = apothem-v0.1.0-linux.tar.gz::https://github.com/Gad360/apothem/releases/download/v0.1.0/apothem-v0.1.0-linux.tar.gz
-	sha256sums = 7e543c1dfc3234e5114add6f6c6fc09c6ad54616e5a81f6436f6e12fa6f1cb50
+	source = apothem-v0.1.0-linux.tar.gz::https://github.com/ahmed-g-gad/apothem/releases/download/v0.1.0/apothem-v0.1.0-linux.tar.gz
+	sha256sums = d24549a89d7333d22c78b3d88eb4937d75f98bd0b1c20438f71bb1253ce45d24
 
 pkgname = apothem

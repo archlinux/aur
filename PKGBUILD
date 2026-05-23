@@ -2,8 +2,8 @@
 #  Copyright (c) Ahmed G. Gad ----------------------  #
 #      Website:   https://ahmedgad.com                #
 #      Email:     mailto:me@ahmedgad.com              #
-#      Github:    https://github.com/Gad360           #
-#  Licensed under MIT; see LICENSE for terms ------  #
+#      Github:    https://github.com/ahmed-g-gad      #
+#  Licensed under MIT; see LICENSE for terms -------  #
 
 # Maintainer: Ahmed G. Gad <me@ahmedgad.com>
 
@@ -15,14 +15,15 @@ arch=('any')
 url="https://apothem.ahmedgad.com"
 license=('MIT')
 depends=('bash' 'python')
-source=("${pkgname}-v${pkgver}-linux.tar.gz::https://github.com/Gad360/apothem/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux.tar.gz")
-sha256sums=('7e543c1dfc3234e5114add6f6c6fc09c6ad54616e5a81f6436f6e12fa6f1cb50')
+source=("${pkgname}-v${pkgver}-linux.tar.gz::https://github.com/ahmed-g-gad/apothem/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux.tar.gz")
+sha256sums=('d24549a89d7333d22c78b3d88eb4937d75f98bd0b1c20438f71bb1253ce45d24')
 
 package() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
 
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   cp -a . "${pkgdir}/usr/share/${pkgname}/"
+  chmod 0755 "${pkgdir}/usr/share/${pkgname}/bin/${pkgname}"
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
