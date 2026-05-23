@@ -1,0 +1,17 @@
+pkgbase = hyprminimizer-git
+	pkgdesc = Minimize windows to tray for Hyprland using D-Bus StatusNotifierItem
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Muhammad95959/hyprminimizer
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	makedepends = npm
+	depends = nodejs>=16
+	provides = hyprminimizer
+	conflicts = hyprminimizer
+	source = hyprminimizer-git::git+https://github.com/Muhammad95959/hyprminimizer.git
+	sha256sums = SKIP
+
+pkgname = hyprminimizer-git
