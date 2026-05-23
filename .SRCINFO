@@ -1,11 +1,12 @@
 pkgbase = libtorch-rocm
 	pkgdesc = PyTorch but C++ as an isolated folder, with ROCm included
 	pkgver = 2.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.pytorch.org/cppdocs/installing.html
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = curl
+	makedepends = python
 	depends = pybind11
 	depends = rocm-core
 	provides = libtorch=2.12.0

@@ -1,0 +1,11 @@
+2026-05-23  libtorch-rocm 2.12.0-2
+
+  * Fix ELF load command alignment in pre-built libtorch_cpu.so.
+    Upstream PyTorch ROCm binaries ship a zero-length LOAD segment
+    with misaligned p_offset, causing glibc's dlopen() to fail with
+    "ELF load command address/offset not page-aligned".  The fix
+    realigns the segment's p_offset to p_vaddr at build time in
+    prepare().  This resolves Audacity's mod-openvino loading failure
+    (previously visible as misleading "Inappropriate ioctl for device"
+    error due to stale errno reporting).
+  * Add python to makedepends for the ELF repair step.
