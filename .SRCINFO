@@ -1,14 +1,10 @@
 pkgbase = kcd-bin
 	pkgdesc = Lightweight, headless implementation of the KDE Connect protocol (v8) written in Go
-	pkgver = 1.11.0
+
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/bethropolis/kcd
-	install = kcd.install
-	arch = x86_64
-	arch = aarch64
-	arch = armv7h
 	license = MIT
-	depends = glibc
 	optdepends = libnotify: for desktop notifications
 	optdepends = wl-clipboard: for Wayland clipboard sync
 	optdepends = xclip: for X11 clipboard sync
@@ -18,15 +14,17 @@ pkgbase = kcd-bin
 	optdepends = xdotool: for X11 mousepad support
 	optdepends = wtype: for Wayland keyboard emulation
 	optdepends = python-nautilus: for Nautilus file manager integration
-	provides = kcd
+	depends = glibc
 	conflicts = kcd
-	options = !strip
-	options = !debug
-	source_x86_64 = https://github.com/bethropolis/kcd/releases/download/v1.11.0/kcd_1.11.0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = afb1179add1cb744ccc631b486b140469a0bae3cbc3ad2ac088103d28314b5d1
-	source_aarch64 = https://github.com/bethropolis/kcd/releases/download/v1.11.0/kcd_1.11.0_linux_aarch64.tar.gz
-	sha256sums_aarch64 = 66c350eda1cf12f39d6f035d0f6a4b5f7c0f88aa6522f10484226c0476e8e283
-	source_armv7h = https://github.com/bethropolis/kcd/releases/download/v1.11.0/kcd_1.11.0_linux_armv7.tar.gz
-	sha256sums_armv7h = 0cef37770753e40b7d983f4636dd542cacfcdfe54ab5a6d60310cdf3ce25bbaf
-
+	provides = kcd
+	arch = aarch64
+	source_aarch64 = https://github.com/bethropolis/kcd/releases/download/v1.11.1/kcd_1.11.1_linux_aarch64.tar.gz
+	sha256sums_aarch64 = e6c8c1e4ae9928dedfa0c801497adfa137b0a37025852c2a53e5a570a580c356
+	arch = armv7h
+	source_armv7h = https://github.com/bethropolis/kcd/releases/download/v1.11.1/kcd_1.11.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 0812946990d4be7743aba915984965e35df6cfe16e943d64a2b574039939a1ac
+	arch = x86_64
+	source_x86_64 = https://github.com/bethropolis/kcd/releases/download/v1.11.1/kcd_1.11.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 9160acadae63b43602134f4874e3dd1bbd5a13d0c45e91a29f0f3d93f270d743
+	
 pkgname = kcd-bin
