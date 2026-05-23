@@ -1,6 +1,6 @@
 pkgbase = pnpm-bin
 	pkgdesc = Fast, disk space efficient package manager (No dependency on nodejs)
-	pkgver = 11.1.2
+	pkgver = 11.2.2
 	pkgrel = 1
 	url = https://github.com/pnpm/pnpm
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = pnpm-bin
 	provides = pnpm
 	conflicts = pnpm
 	options = !strip
-	source_x86_64 = pnpm-11.1.2-x86_64::https://github.com/pnpm/pnpm/releases/download/v11.1.2/pnpm-linux-x64.tar.gz
-	sha256sums_x86_64 = f82f761572d9621c5a646ccc00a1ecec4cf5839d66b714497e6ca10cd2e086ee
-	source_aarch64 = pnpm-11.1.2-aarch64::https://github.com/pnpm/pnpm/releases/download/v11.1.2/pnpm-linux-arm64.tar.gz
-	sha256sums_aarch64 = a62ca954f27cb0494d29f1a632d1d7a8a06d2c3608a4645f5c0714a3204da02b
+	source_x86_64 = pnpm-11.2.2-x86_64::https://github.com/pnpm/pnpm/releases/download/v11.2.2/pnpm-linux-x64.tar.gz
+	sha256sums_x86_64 = a35b592d85a208222fc354f15e9f04d08add1aff1382a30b48094ea8b618a302
+	source_aarch64 = pnpm-11.2.2-aarch64::https://github.com/pnpm/pnpm/releases/download/v11.2.2/pnpm-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8c5da2d27cd86ac0ce0cee6d0b8d79b6353612351f761de3707dbc9d09d303fc
 
 pkgname = pnpm-bin
