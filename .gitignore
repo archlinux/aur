@@ -8,3 +8,6 @@ pkg/
 # Downloaded source artifacts
 *.tar.gz
 *.deb
+
+# Cached upstream VCS clone (created by makepkg for git+ sources)
+nostr-vpn/
