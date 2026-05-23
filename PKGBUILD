@@ -2,7 +2,7 @@
 
 pkgname=waifufetch
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="System info with a random waifu decoration -- like fastfetch with anime"
 arch=('any')
 url="https://github.com/JGH0/waifufetch"
@@ -13,7 +13,7 @@ optdepends=('kitty: native image display in kitty terminal'
             'jp2a: black and white ASCII art fallback'
             'img2txt: colored ASCII art fallback (caca-utils)')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JGH0/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('0921b4a96f6234246afecc4e30d39099feda10b34f8dd505bf71fbe38b6693ad')
+sha256sums=('cc5899decfd89fef50fc415e21ef50c635c7fe277e5adf70b0a7e6564d6e350f')
 
 package() {
     install -Dm755 "$srcdir/waifu" "$pkgdir/usr/bin/waifu"
