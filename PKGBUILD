@@ -3,7 +3,7 @@
 pkgname=python-torch-tensorrt
 _pkgname=torch-tensorrt
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily achieve the best inference performance for any PyTorch model on the NVIDIA platform"
 arch=('x86_64')
 url="https://github.com/pytorch/TensorRT"
@@ -27,6 +27,7 @@ makedepends=(
     'python-installer'
     'python-wheel'
     'python-setuptools'
+    'python-cffi'
     'pybind11'
     'python-ninja'
 )
@@ -113,6 +114,11 @@ PYEOF
     sed -i '/tensorrt_rtx_external_dir = (/,/^    )$/c\    tensorrt_rtx_external_dir = lambda: "/usr"' setup.py
     sed -i '/tensorrt_sbsa_external_dir = (/,/^    )$/c\    tensorrt_sbsa_external_dir = lambda: "/usr"' setup.py
     sed -i '/tensorrt_jetpack_external_dir = (/,/^    )$/c\    tensorrt_jetpack_external_dir = lambda: "/usr"' setup.py
+
+    # glog 0.7 needs GLOG_USE_GLOG_EXPORT defined for every Bazel compile,
+    # including the one setup.py runs during the wheel build (which doesn't get
+    # our command-line --copt). Put it in .bazelrc so all invocations inherit it.
+    printf '\nbuild --copt=-DGLOG_USE_GLOG_EXPORT --host_copt=-DGLOG_USE_GLOG_EXPORT\n' >> .bazelrc
 }
 
 build() {
@@ -132,11 +138,21 @@ build() {
     # Set compilation mode to optimized
     export COMPILATION_MODE=opt
 
-    # Fix glog compilation issue - ensure GLOG_USE_GLOG_EXPORT is defined
+    # Fix glog 0.7 compilation issue - ensure GLOG_USE_GLOG_EXPORT is defined.
+    # Bazel ignores the shell CXXFLAGS, so the define must also be passed to its
+    # C++ compiles via --copt/--host_copt or glog/logging.h fails to compile
+    # (GLOG_EXPORT undefined -> "two or more data types").
     export CXXFLAGS="${CXXFLAGS} -DGLOG_USE_GLOG_EXPORT"
 
+    # Keep Bazel's output base off the (quota'd / NFS) home cache by rooting it
+    # under $srcdir; otherwise it defaults to ~/.cache/bazel and can fail with
+    # "Disk quota exceeded" on networked homes.
+    export HOME="${srcdir}"
+
     # First, build the C++ library with Bazel
-    "${srcdir}/bazel-8.1.1" build //:libtorchtrt --compilation_mode=opt
+    "${srcdir}/bazel-8.1.1" --output_user_root="${srcdir}/.bazelroot" \
+        build //:libtorchtrt --compilation_mode=opt \
+        --copt=-DGLOG_USE_GLOG_EXPORT --host_copt=-DGLOG_USE_GLOG_EXPORT
 
     # Extract libraries from the tarball built by Bazel
     tar -xzf bazel-bin/libtorchtrt.tar.gz
