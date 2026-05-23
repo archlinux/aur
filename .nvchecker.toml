@@ -1,0 +1,4 @@
+[nextcloud-app-calendar_resource_management]
+source = "git"
+git = "https://github.com/nextcloud-releases/calendar_resource_management.git"
+prefix = "v"
