@@ -1,0 +1,11 @@
+pkgbase = hyprclock-bin
+	pkgdesc = Binary release of Hyprclock, a clock utility made for the Hyprland window manager.
+	pkgver = 0.1.0a
+	pkgrel = 1
+	url = https://github.com/cvusmo/hyprclock
+	arch = x86_64
+	license = GPL-3.0-only
+	source = https://github.com/cvusmo/hyprclock/releases/download/v0.1.0a/hyprclock-0.1.0a.tar.gz
+	sha256sums = 3456f9dee5b7d67b8ba75a33cd87e540857049a66d58200f350c8e5c3e700e73
+
+pkgname = hyprclock-bin
