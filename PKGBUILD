@@ -2,7 +2,7 @@
 _mainver=5
 pkgname=firebot-beta-bin
 _appname=firebot
-pkgver="${_mainver}.66.2"
+pkgver="${_mainver}.66.3"
 #_appver="${pkgver}-beta2"
 _appver="${pkgver}"
 pkgrel=1
@@ -21,7 +21,7 @@ source=("${url}/releases/download/v${_appver}/${_appname}-v${_appver}-linux-x64.
         "logo128.png"
         "logo256.png"
         "${_appname}.desktop")
-sha256sums=('016abeda31dadd98c743c8ca5209d90841508bbb1e6b733254183bf16a82972b'
+sha256sums=('fda83ed1ccd8c2220d4d03c9737af348ccd51829526794594be1e3360e60821f'
             'c5e406b6f05e6cb2d276430c5e53a12581a580c16ca1a4c1258d2a168524ac65'
             '6d734f9ea57fcb04ebbc458fc0b222521d209ac587dffd6127f449a7bb73817e'
             '341c0df9578fc568b14e798ed6a16771a5af280e3a69dbb96364c40f4dc37e08'
