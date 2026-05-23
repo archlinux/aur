@@ -1,14 +1,14 @@
 # Maintainer: w1zx1
 pkgname=screentaker
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a lightweight and reliable screenshooter for X11 written in Rust"
 arch=('x86_64')
 options=('!debug')
 url="https://github.com/w1zx1/screentaker"
 license=('MIT')
 makedepends=('rust')
-source=("https://github.com/w1zx1/screentaker/archive/refs/heads/v0.2.1.tar.gz")
+source=("https://github.com/w1zx1/screentaker/archive/refs/tags/v0.2.1.tar.gz")
 sha512sums=('SKIP')
 
 build() {
