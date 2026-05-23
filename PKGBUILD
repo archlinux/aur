@@ -2,7 +2,7 @@
 
 pkgname=python-pi-heif
 _pkgname=pillow_heif
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Python interface for libheif library (lightweight version without encoding)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ checkdepends=(
   'python-pytest'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bigcat88/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dff8da52f315a500859d5cd173fd01afe036e4df9d0578a15918fc135028692a')
+sha256sums=('2e435f773d57c405f4cc07ab3758f849d45eef0cd9ba6dfd55cee5b340507fca')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -33,6 +33,13 @@ prepare() {
   rm -rf pi_heif pi_heif.egg-info
   cp -r pi-heif/* .
   python .github/transform_to-pi_heif.py
+
+  # Workaround for libheif 1.22.0 header bug: heif_properties.h declares a
+  # parameter as 'const heif_bad_pixel*' without the 'struct' keyword, which
+  # is invalid in C and breaks the -Werror C extension build. Forward-declare
+  # the typedef so the bare tag resolves. Harmless on libheif without the bug.
+  sed -i 's|\(#include "libheif/heif_properties.h"\)|typedef struct heif_bad_pixel heif_bad_pixel;\n    \1|' \
+    pi_heif/_pi_heif.c
 }
 
 build() {
