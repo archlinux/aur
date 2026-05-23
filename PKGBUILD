@@ -2,13 +2,13 @@
 
 # pkgbase must match the AUR repository name
 pkgbase=gimp-openvino
-pkgname=gimp-openvino-ai-plugins
-pkgver=rXXX.XXXXXX  # auto-set by pkgver()
+pkgname=gimp-openvino
+pkgver=r381.c9fb13e  # auto-set by pkgver()
 pkgrel=1
 pkgdesc="Intel OpenVINO AI Plugins for GIMP"
 arch=('x86_64')
 url="https://github.com/intel/openvino-ai-plugins-gimp"
-license=('Apache-2.0')
+license=('Apache-2.0' 'MIT')
 depends=(
   'gimp'
   'python'
@@ -35,12 +35,14 @@ optdepends=(
   'intel-npu-driver: NPU acceleration support'
 )
 makedepends=('git' 'python-pip')
-source=("git+https://github.com/intel/openvino-ai-plugins-gimp.git")
+source=("$pkgname::git+https://github.com/intel/openvino-ai-plugins-gimp.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  local ver="$(git describe --tags --long 2>/dev/null || echo '0.0.0-0-g0000000')"
+  ver="${ver%-g*}"
+  echo "${ver//-/.}"
 }
 
 prepare() {

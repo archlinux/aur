@@ -15,15 +15,18 @@ All plugin source lives at: https://github.com/intel/openvino-ai-plugins-gimp
 - **Build:** git, python-pip
 - **Optional:** intel-compute-runtime (GPU), intel-npu-driver (NPU)
 
+## Key quirks
+- `pkgbase=gimp-openvino` (AUR repo name) differs from `pkgname=gimp-openvino-ai-plugins` — do not change.
+- `build()` is a no-op (`:`); all work happens in `package()`.
+- `PIP_REQUIRE_VIRTUALENV=0` bypasses pip's venv enforcement (no venv used).
+- `2>/dev/null || true` silences errors from niche pip-only deps; their deps are satisfied by system packages in `depends=()`.
+
 ## How packaging works
-No venv — uses system Python directly. `pip install --root="$pkgdir" --no-deps .` places the package in `$pkgdir/usr/lib/python/site-packages/`. Niche deps not in Arch repos/AUR (`gdown`, `controlnet-aux`, `openvino-genai`, `optimum-intel`, `tomesd`) are pip-installed to the same root with `--no-deps` (their deps are satisfied by system/AUR packages listed in `depends`).
+No venv — uses system Python. `pip install --root="$pkgdir" --prefix=/usr --no-deps .` installs the package; niche deps (`gdown`, `controlnet-aux`, `openvino-genai`, `optimum-intel`, `tomesd`) are installed the same way.
 
-`complete_install()` is called during packaging (with `GIMP_OPENVINO_MODELS_PATH` set) to generate `gimp_openvino_config.json` and copy bundled weights from the repo to `/usr/share/$pkgname/`.
+`complete_install()` (with `GIMP_OPENVINO_MODELS_PATH` set) generates `gimp_openvino_config.json` and copies bundled weights to `/usr/share/$pkgname/`.
 
-Plugins are copied to `/usr/lib/gimp/3.0/plug-ins/`:
-- `openvino_utils`, `semseg_ov`, `stable_diffusion_ov`, `superresolution_ov`, `fastsd_ov`
-
-Installs wrapper script `openvino-ai-gimp` that sets `GI_TYPELIB_PATH` and `LD_LIBRARY_PATH`, then runs `gimp-3`.
+Plugins are copied from `$site_packages/gimpopenvino/plugins/*` to `/usr/lib/gimp/3.0/plug-ins/`. Installs wrapper script `openvino-ai-gimp` that sets `GI_TYPELIB_PATH` and `LD_LIBRARY_PATH`, then runs `gimp-3`.
 
 ## Maintainer
 Selene Bray-Hernandez <selebray1998@gmail.com>
