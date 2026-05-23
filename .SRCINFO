@@ -8,6 +8,7 @@ pkgbase = vita3k-bin
 	depends = gtk3
 	depends = sdl3
 	depends = qt6-base
+	depends = qt6-multimedia
 	depends = qt6-tools
 	depends = qt6-svg
 	depends = unzip
