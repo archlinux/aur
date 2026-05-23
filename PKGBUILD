@@ -3,7 +3,7 @@
 pkgname=ashrwm
 _pkgname=ashrwm
 
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="a minimal yet functional river window manager with tiling/grid layout and more!"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('zig' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7b870cc743931fc7a93216c9e3be27452a0ca9b93152c6a7380db1fd141b20d8')
+sha256sums=('b87bf9d0b0cb36c424ab1e7194e63b649983f568229cfd496fb20a420dd20838')
 install="${pkgname}.install"
 backup=("etc/ashrwm/config.janet")
 
