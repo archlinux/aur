@@ -7,7 +7,7 @@ url="https://github.com/cvusmo/hyprclock"
 license=('GPL-3.0-only')
 
 depends=('gtk4' 'gstreamer' 'gst-plugins-base')
-conflicts=('hyprclock-bin' 'hyprclock-git' 'hyprclock-bin-debug' 'hyprclock-git-debug')
+conflicts=('hyprclock' 'hyprclock-git' 'hyprclock-debug' 'hyprclock-git-debug')
 provides=('hyprclock')
 
 source=("https://github.com/cvusmo/hyprclock/releases/download/v${pkgver}/hyprclock-${pkgver}.tar.gz")
