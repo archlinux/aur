@@ -1,5 +1,5 @@
 pkgname=hagrid-git
-pkgver=r1004.7524add
+pkgver=r1005.ab2b18f
 pkgver() {
 	cd "$srcdir/hagrid"
 #	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
