@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-shell
 pkgdesc="Interactive shell in x86_64 Linux assembly"
 
-pkgver=0.2.35
+pkgver=0.2.36
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,7 +28,7 @@ install="${_appname}.install"
 options=(!strip)
 
 source=("git+${url}.git#tag=v$pkgver")
-sha256sums=('29a4ecaeed126616b352f0688201fa7180f5b929808ca6dc39304603a1d17732')
+sha256sums=('8de0e070d1f2bc58015b5977deb0368b622ca0e29b80ec4792ca5a5f3590695d')
 
 
 build() {
