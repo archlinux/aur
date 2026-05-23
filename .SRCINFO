@@ -1,0 +1,18 @@
+pkgbase = autogrid4
+	pkgdesc = Autogrid4 is a support software for docking programs such as AutoDock4 and Autodock-GPU. Its function is to precalculate the grids used by the docking software.
+	pkgver = 4.2.9
+	pkgrel = 1
+	url = https://github.com/ccsb-scripps/AutoGrid
+	arch = x86_64
+	arch = i686
+	license = GPL-2.0
+	makedepends = gcc
+	makedepends = make
+	makedepends = tcsh
+	makedepends = autoconf
+	makedepends = automake
+	depends = gcc-libs
+	source = autogrid4-4.2.9.tar.gz::https://github.com/ccsb-scripps/AutoGrid/archive/6d2847beaeac8ff43ca99094707fd74e3ca1ff37.tar.gz
+	sha256sums = 4d0bd83a446fd81577f4fc492299e22f131245589e1782e0532aecf3435e772a
+
+pkgname = autogrid4
