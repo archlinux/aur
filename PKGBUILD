@@ -1,24 +1,25 @@
 # Contributor: rapiertg <rapiertg@gmail.com>
 
 pkgname=ccdciel
-pkgver=0.9.92
+_pkgname=ccdciel-qt6
+pkgver=0.9.94
 pkgrel=1
-_pkgcom=3775
+_pkgcom=4104
 pkgdesc="A CCD capture software intended for the amateur astronomer."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.ap-i.net/ccdciel"
 license=('GPL-3.0-or-later')
-depends=('libpasastro' 'qt5pas')
+depends=('libpasastro' 'qt6pas')
 optdepends=('libraw: to open DSLR raw files')
 conflicts=('ccdciel-git')
 source=()
 sha256sums=()
-source_x86_64=("${pkgname}-${pkgver}_${CARCH}.deb::https://sourceforge.net/projects/ccdciel/files/ccdciel_${pkgver}/ccdciel_${pkgver}-${_pkgcom}_amd64.deb")
-sha256sums_x86_64=('7cd9a8a5618c020d65094a9ae891a595e82792a9a079ca4d08b26d744cdc4843')
-source_aarch64=("${pkgname}-${pkgver}_${CARCH}.deb::https://sourceforge.net/projects/ccdciel/files/ccdciel_${pkgver}/ccdciel_${pkgver}-${_pkgcom}_arm64.deb")
-sha256sums_aarch64=('766aea10039c3af125c1b21fa59280a49a09eebb64ed7cc77029cb84d3a1a5e4')
-source_armv7h=("${pkgname}-${pkgver}_${CARCH}.deb::https://sourceforge.net/projects/ccdciel/files/ccdciel_${pkgver}/ccdciel_${pkgver}-${_pkgcom}_armhf.deb")
-sha256sums_armv7h=('be72fbcb768eabbe1584e4da24e12b49926201305723a3969348790ffee09a3b')
+source_x86_64=("${pkgname}-${pkgver}_${CARCH}.deb::https://sourceforge.net/projects/ccdciel/files/${pkgname}_${pkgver}/${_pkgname}_${pkgver}-${_pkgcom}_amd64.deb")
+sha256sums_x86_64=('ef2931ac3da5658f46c68845a81b4c6e1076b22b8736ac9359dcb1a878d0e640')
+source_aarch64=("${pkgname}-${pkgver}_${CARCH}.deb::https://sourceforge.net/projects/ccdciel/files/${pkgname}_${pkgver}/${_pkgname}_${pkgver}-${_pkgcom}_arm64.deb")
+sha256sums_aarch64=('c040cbbffd63f1105eb9d25e5d71428e279088ba9ce4283e6abae971a8c46328')
+source_armv7h=("${pkgname}-${pkgver}_${CARCH}.deb::https://sourceforge.net/projects/ccdciel/files/${pkgname}_${pkgver}/${pkgname}_${pkgver}-${_pkgcom}_armhf.deb")
+sha256sums_armv7h=('2cc715cdcb197cba61f91006d710704d964440eaf546f73198946b8c63868310')
 
 package() {
     tar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
