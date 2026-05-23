@@ -5,7 +5,7 @@ _pkgname=sqlbless
 pkgname=${_pkgname}-bin
 pkgdesc="Safety-Oriented Terminal SQL Client"
 
-pkgver=0.27.7
+pkgver=0.28.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,9 +25,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.zip")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.zip")
 sha256sums=('2c25ca6e12a856628da1ec430e0b6a0c2b17eb7b74939e116d7d96c2cee7e48c'
-            '9dca55c36cc944452f1b780acb8c2f1be3b561ee072381fb69faeb2e76abda1b')
-sha256sums_x86_64=('347513d1bc55d195d90f8997fb1f42800a3095137c938c1485c91560dd8597b5')
-sha256sums_i686=('1118375df39c9a7c97651ea524778c9f0e78a40abccda7b60388bdf1ebab707f')
+            '985ba05a434be86d6da9da465c33090181df21092298f8d275f62bfa40d43152')
+sha256sums_x86_64=('741296fb4387fae6366ca0d39f0487a1012230edf6ff79b17df30d9084bf11d6')
+sha256sums_i686=('ae4b427b2b584f938e0071252f08c1cfe4b168b439b7cb8b4db63baf27acda4d')
 
 
 package() {
