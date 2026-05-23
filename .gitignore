@@ -1,0 +1,5 @@
+pkg/
+src/
+libtorch/
+*.zip
+*.tar.zst

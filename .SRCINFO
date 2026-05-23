@@ -1,18 +1,24 @@
 pkgbase = libtorch-rocm
 	pkgdesc = PyTorch but C++ as an isolated folder, with ROCm included
-	pkgver = 2.10.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://docs.pytorch.org/cppdocs/installing.html
 	arch = x86_64
 	license = BSD-3-Clause
+	makedepends = curl
 	depends = pybind11
-	provides = libtorch=2.10.0
+	depends = rocm-core
+	provides = libtorch=2.12.0
 	conflicts = libtorch
 	replaces = libtorch-cxx11abi-rocm
 	options = !debug
-	source = https://download.pytorch.org/libtorch/rocm7.1/libtorch-shared-with-deps-2.10.0%2Brocm7.1.zip
-	source = https://github.com/pytorch/pytorch/raw/refs/tags/v2.10.0/LICENSE
-	sha256sums = 605532aeea2e22b639c2c4c239d2994f040457adff1a22cfb4c6d12b4b9641f7
-	sha256sums = bd018feef8825e88181c84eb7e3aa4eafb8f08a20d9fd6ef948569610c4a3e43
+	options = !strip
+	options = !libtool
+	options = !staticlibs
+	options = !zipman
+	source = libtorch-shared-with-deps-2.12.0+rocm7.1.zip::https://download.pytorch.org/libtorch/rocm7.1/libtorch-shared-with-deps-2.12.0%2Brocm7.1.zip
+	source = https://github.com/pytorch/pytorch/raw/refs/tags/v2.12.0/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = libtorch-rocm
