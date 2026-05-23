@@ -1,0 +1,9 @@
+*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+doujinshi-dl*
+pkg
+src
+*.tar.zst

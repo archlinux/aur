@@ -1,0 +1,23 @@
+pkgbase = doujinshi-dl-nhentai
+	pkgdesc = nhentai plugin for doujinshi-dl
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/RicterZ/doujinshi-dl-nhentai
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python-requests
+	depends = python-soupsieve
+	depends = python-beautifulsoup4
+	depends = python-tabulate
+	depends = python-iso8601
+	depends = python-httpx
+	conflicts = nhentai-git
+	source = https://github.com/RicterZ/doujinshi-dl-nhentai/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 8ca3817f99b5301a9d92b8917244a37ba1b310dba48c84392921f8df05d91aa0
+
+pkgname = doujinshi-dl-nhentai
