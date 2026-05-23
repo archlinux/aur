@@ -21,7 +21,7 @@ makedepends=(
     'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Labaman/refract/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4f474342ca7c39dc10fd2061da92a506f33c124f49a544f7f1c508f96a58fa5a')
+sha256sums=('95acdabebf783c308f9f0052aa4ec5871a1274132608d0b808a3854919ecd1cb')
 
 build() {
     cd "$pkgname-$pkgver" || return 1
