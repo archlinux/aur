@@ -4,7 +4,7 @@
 pkgname=comaps
 pkgver=2026.05.06_11
 _tag="v${pkgver%%_*}-${pkgver##*_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="CoMaps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
 makedepends=(
@@ -96,8 +96,7 @@ package() {
 	rm -rf "${pkgdir}/usr/share/${pkgname}/data/test_data"
 	rm -rf "${pkgdir}/usr/share/${pkgname}/data/conf"
 
-	# Create map data directory with correct permissions (755, not 777)
-	install -dm755 "${pkgdir}/usr/share/${pkgname}/data/$(jq '.v' ${pkgname}/data/countries.txt)"
+	install -dm777 "${pkgdir}/usr/share/${pkgname}/data/$(jq '.v' ${pkgname}/data/countries.txt)"
 
 	install -Dm644 "${pkgname}/android/.idea/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 	# install -Dm755 "omim-build-debug/CoMaps" "${pkgdir}/usr/bin/comaps"
