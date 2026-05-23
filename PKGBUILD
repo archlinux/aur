@@ -5,7 +5,7 @@ _pkgname=mp3rgain
 pkgname=${_pkgname}-bin
 pkgdesc="Lossless MP3 volume adjustment - A modern 'mp3gain' replacement"
 
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -28,8 +28,8 @@ source_aarch64=("${_pkgname}-aarch64-${pkgver}.tgz::${url}/releases/download/${_
 sha256sums=('8e557208f0bd83f91b38dcc81ccf914c4c84060ab6dbc5072dbf369791ffc135'
             'cc819f0f25b254027784761d691904844bd8123b0d08cade12011364181f7539'
             'af454cef96a4a790f7c773c3e79546120a55791ca89fb1776263f124fd3df1c6')
-sha256sums_x86_64=('7545a95ea84e3cdfe6c5f3cb74a8392efe4467f29b8b64fecebf91fd30df5b4c')
-sha256sums_aarch64=('2ba12b34743c249fe0bb8f69db7235d511c476b8921685fab67e20ece8e62b56')
+sha256sums_x86_64=('ae66607941e63971e3747fe5d1ce90c95e5ed28fd82c1a1392d256570f00b8be')
+sha256sums_aarch64=('eab83d9b3cf8f822591bf6fd12edd13b93be9c37a39639d6918af536ad969bf8')
 
 
 package() {
