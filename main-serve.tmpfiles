@@ -1,0 +1,2 @@
+d /var/lib/main-serve 0750 main-serve main-serve -
+d /etc/main-serve 0755 root root -

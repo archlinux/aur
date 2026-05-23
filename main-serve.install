@@ -1,0 +1,14 @@
+# dist/arch/main-serve.install
+
+post_install() {
+    systemctl daemon-reload >/dev/null 2>&1 || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    systemctl stop main-serve.service >/dev/null 2>&1 || true
+    systemctl disable main-serve.service >/dev/null 2>&1 || true
+}

@@ -1,0 +1,23 @@
+# dist/main-serve.service
+[Unit]
+Description=Main Serve - YAML-configured web server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/main-serve -c /etc/main-serve/config.yaml
+ExecReload=/bin/kill -HUP $MAINPID
+EnvironmentFile=-/etc/main-serve/env
+Restart=on-failure
+RestartSec=5
+User=main-serve
+Group=main-serve
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/main-serve
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
