@@ -1,10 +1,10 @@
 # Maintainer: Gl1tchs <berkeumtbiricik@gmail.com>
-pkgname=glgpu-git
-pkgver=1.0.5.r0.g489be5d
+pkgname=gpukit-git
+pkgver=1.2.0.r2.g8a829fa
 pkgrel=1
 pkgdesc="Low-Level, low dependency rendering interface over the Vulkan API"
 arch=('x86_64')
-url="https://github.com/Gl1tchs/glgpu"
+url="https://github.com/Gl1tchs/gpukit"
 license=('MIT')
 groups=()
 
@@ -12,29 +12,29 @@ depends=('vulkan-icd-loader')
 
 makedepends=('git' 'cmake' 'ninja' 'vulkan-headers')
 
-provides=('glgpu')
-conflicts=('glgpu')
+provides=('gpukit')
+conflicts=('gpukit')
 
-source=("git+https://github.com/Gl1tchs/glgpu.git")
+source=("git+https://github.com/Gl1tchs/gpukit.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "glgpu"
+    cd "gpukit"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cmake -S glgpu -B build -G Ninja \
+    cmake -S gpukit -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \
-        -DGL_BUILD_EXAMPLES=OFF \
-        -DGL_BUILD_TESTS=OFF
+        -DGPUKIT_BUILD_EXAMPLES=OFF \
+        -DGPUKIT_BUILD_TESTS=OFF
 
     cmake --build build
 }
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    install -Dm644 glgpu/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 gpukit/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

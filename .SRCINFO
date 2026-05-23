@@ -1,8 +1,8 @@
-pkgbase = glgpu-git
+pkgbase = gpukit-git
 	pkgdesc = Low-Level, low dependency rendering interface over the Vulkan API
 	pkgver = 1.0.5.r0.g489be5d
 	pkgrel = 1
-	url = https://github.com/Gl1tchs/glgpu
+	url = https://github.com/Gl1tchs/gpukit
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -10,9 +10,9 @@ pkgbase = glgpu-git
 	makedepends = ninja
 	makedepends = vulkan-headers
 	depends = vulkan-icd-loader
-	provides = glgpu
-	conflicts = glgpu
-	source = git+https://github.com/Gl1tchs/glgpu.git
+	provides = gpukit
+	conflicts = gpukit
+	source = git+https://github.com/Gl1tchs/gpukit.git
 	md5sums = SKIP
 
-pkgname = glgpu-git
+pkgname = gpukit-git
