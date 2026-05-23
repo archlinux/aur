@@ -1,0 +1,7 @@
+post_install() {
+    bash /usr/share/hpr/installHPRConfigAndUi.sh
+}
+
+post_upgrade() {
+    bash /usr/share/hpr/installHPRConfigAndUi.sh
+}

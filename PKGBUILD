@@ -1,6 +1,6 @@
 pkgname=hpr
 pkgver=0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Offline zero-account activity tracker"
 arch=('x86_64')
 url="https://github.com/plexescor/HPR"
@@ -10,6 +10,7 @@ _slint_ver="1.16.1"
 
 depends=('glibc')
 makedepends=('cmake' 'curl' 'tar')
+install=hpr.install
 
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
@@ -18,7 +19,6 @@ source=(
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
-    # Extract Slint prebuilt into srcdir
     tar -xzf "$srcdir/Slint-cpp-${_slint_ver}-Linux-x86_64.tar.gz" -C "$srcdir/"
 }
 
@@ -34,7 +34,8 @@ build() {
 package() {
     cd "HPR-$pkgver/build"
 
-    install -Dm755 HPR "$pkgdir/usr/bin/hpr"
+    install -Dm755 HPR \
+        "$pkgdir/usr/bin/hpr"
 
     install -Dm644 ../assets/logo_256png.png \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/hpr.png"
@@ -44,6 +45,24 @@ package() {
 
     install -Dm755 "$srcdir/Slint-cpp-${_slint_ver}-Linux-x86_64/lib/libslint_cpp.so" \
         "$pkgdir/usr/lib/libslint_cpp.so"
+
+    install -Dm755 ../shippedWithBinary/installHPRConfigAndUi.sh \
+        "$pkgdir/usr/share/hpr/installHPRConfigAndUi.sh"
+
+    install -Dm644 ../shippedWithBinary/aliases.csv \
+    "$pkgdir/usr/share/hpr/aliases.csv"
+
+    install -Dm644 ../shippedWithBinary/tabAliases.csv \
+        "$pkgdir/usr/share/hpr/tabAliases.csv"
+
+    install -Dm644 ../shippedWithBinary/config.csv \
+        "$pkgdir/usr/share/hpr/config.csv"
+
+    cp -r ../shippedWithBinary/ui \
+        "$pkgdir/usr/share/hpr/ui"
+
+    cp -r ../shippedWithBinary/assets \
+        "$pkgdir/usr/share/hpr/assets"
 
     install -Dm644 /dev/stdin \
         "$pkgdir/usr/share/applications/hpr.desktop" << EOF
