@@ -1,20 +1,20 @@
 # Maintainer: Kevin <info@borunsky.de>
 
 pkgname=wowusky
-pkgver=0.4.9
+pkgver=0.4.11
 pkgrel=1
 pkgdesc='Minimalist World of Warcraft addon manager for Linux'
 arch=('any')
 url='https://github.com/borunsky/wowusky'
 license=('MIT')
 depends=('python' 'tk')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools>=77' 'python-wheel')
 checkdepends=('python-pytest')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 # 'SKIP' is a placeholder. Before publishing to the AUR, tag and push
 # the v0.4.9 release on GitHub, then run `updpkgsums` in this directory
 # to replace SKIP with the real checksum of the release tarball.
-sha256sums=('e39fbc4c435b594de11e92b46a91c30d5060a9866c3c7a8ff37a6376548fecf5')
+sha256sums=('cfa7bc13bb8bfd7a962d590db09965a9bc3f24ed5d8f6b15b457b6499eac154d')
 
 build() {
   cd "${pkgname}-${pkgver}"
