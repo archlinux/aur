@@ -1,13 +1,13 @@
 pkgbase = qzdl-git
 	pkgdesc = A ZDoom launcher using Qt - git version
-	pkgver = 491.68668f1
+	pkgver = 541.82cd0a2
 	pkgrel = 1
 	url = http://zdl.vectec.net
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = qt5-base
+	depends = qt6-base
 	depends = hicolor-icon-theme
 	optdepends = gzdoom
 	optdepends = prboom-plus

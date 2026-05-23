@@ -1,13 +1,13 @@
-# Maintainer: Michele Bovo <mbovo@gmx.com>
+# Maintainer: Mike Cuche <mike@cuche.cc>
 
 pkgname=qzdl-git
-pkgver=491.68668f1
+pkgver=541.82cd0a2
 pkgrel=1
 pkgdesc="A ZDoom launcher using Qt - git version"
 arch=('x86_64')
 url="http://zdl.vectec.net"
 license=('GPL')
-depends=('qt5-base' 'hicolor-icon-theme')
+depends=('qt6-base' 'hicolor-icon-theme')
 optdepends=('gzdoom' 'prboom-plus' 'chocolate-doom' 'crispy-doom' 'freedoom')
 conflicts=('qzdl')
 makedepends=('git' 'cmake')
