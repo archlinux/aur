@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A tiny, fast CLI utility written in Rust that works just like sleep but shows a live progress bar"
 
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums=('bc81b7eed54e780e83b4664840ef84ab25f54e6deb616d363fa2ce517a8946b6'
+sha256sums=('123eb680bfd1bbf2ab0407c6a39a8e59a8b225c0b6f5f232fb858319fd5a1035'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('150968133de4b8ea23ee754c5a9a54b808d74e3c78af89150dbbe8baf1b04c97')
-sha256sums_aarch64=('2bba8f7ce703365b0ddd104808bd04360a3de66b6dc0f457e481ac516320796a')
+sha256sums_x86_64=('3c36196693a6e383911a083867fda45a27fca3bb3e2550ff16370ab2fe99d77e')
+sha256sums_aarch64=('405f6bce8f378db059b816dd05eee7053583dc253cecd708d7fd6d0820a1fd24')
 
 
 package() {
