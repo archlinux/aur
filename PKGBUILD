@@ -2,7 +2,7 @@
 # Maintainer: devnullvoid <devnullvoid.space@gmail.com>
 
 pkgname='cftui-bin'
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A terminal user interface (TUI) for managing Cloudflare DNS records'
 url='https://github.com/devnullvoid/cloudflare-tui'
@@ -13,10 +13,10 @@ conflicts=('cftui' 'cftui-git')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/devnullvoid/cloudflare-tui/releases/download/v${pkgver}/cloudflare-tui_linux_arm64.tar.gz")
-sha256sums_aarch64=('4123dfa932f5a0c0360f64731ca9ba7d792dc0977b69dece41afec81707df202')
+sha256sums_aarch64=('563d1284e7375345aedbaf37a87ed65e48c69c5ac1cd2b092613bf882d92ade3')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/devnullvoid/cloudflare-tui/releases/download/v${pkgver}/cloudflare-tui_linux_x86_64.tar.gz")
-sha256sums_x86_64=('ca6ef7cd56667ab9edaf083c0912710fe54a65ade1859e5a67d7c62c83c9d06e')
+sha256sums_x86_64=('a264d5fba3d247de5e7357e19c8907e4573f041343db14c35d6ac50851280fd7')
 
 package() {
   # Install binary
