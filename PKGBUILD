@@ -1,25 +1,17 @@
 # Maintainer: Boris Yumankulov <boriabloger[at]protonmail[dot]com>
 
 pkgname=('portprotonqt' 'portprotonqt-steam-compat')
-pkgver=0.1.12
-pkgrel=2
-pkgdesc="Modern GUI for managing and launching games from PortProton, Steam, and Epic Games Store"
+pkgver=1.0
+pkgrel=1
+pkgdesc="Modern GUI for managing and launching games from PortProton and Steam"
 arch=('any')
-url="https://git.linux-gaming.ru/Boria138/PortProtonQt"
+url="https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt"
 license=('GPL-3.0')
-depends=('python-requests' 'python-babel' 'python-evdev' 'python-pyudev' 'python-orjson'
-    'python-psutil' 'python-tqdm' 'python-vdf' 'python-libarchive-c' 'pyside6' 'python-rapidfuzz' 'icoextract' 'python-pillow' 'perl-image-exiftool' 'python-beautifulsoup4' 'python-websocket-client' 'cabextract' 'unzip' 'curl' 'unrar' 'qt6-svg' 'pciutils' 'mesa-utils' 'vulkan-icd-loader' '7zip')
-depends_aarch64=('muvm')
+depends=('python-requests' 'python-babel' 'python-evdev' 'python-pygame' 'python-orjson'
+    'python-psutil' 'python-tqdm' 'python-vdf' 'python-libarchive-c' 'pyside6' 'python-rapidfuzz' 'python-pefile' 'python-pillow' 'perl-image-exiftool' 'python-websocket-client' 'cabextract' 'unzip' 'curl' 'jq' 'file' 'findutils' 'gawk' 'grep' 'tar' 'xz' 'zstd' 'gzip' 'unrar' 'qt6-svg' 'qt6-imageformats' 'pciutils' 'mesa-utils' 'vulkan-icd-loader' 'procps-ng' 'psmisc' 'squashfs-tools' '7zip' 'python-dbus-fast')
 makedepends=('meson' 'ninja' 'vulkan-headers' 'gettext')
-source=("git+https://git.linux-gaming.ru/Boria138/PortProtonQt#tag=v$pkgver"
-		"dbus-fixes.patch")
-sha256sums=('d6ecab2ad0c39cd26347b71cb72c8a2b0b97e46fed72f058d01707bb150bc9c7'
-            'e413a4970fc97d8c43b39ecfc78aff3e1d9b95a65a924a83dab0fc980eff7146')
-
-prepare() {
-	cd "${srcdir}/PortProtonQt"
-	patch -p1 -i "${srcdir}"/dbus-fixes.patch
-}
+source=("git+https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt#tag=v$pkgver")
+sha256sums=('610c46fcc4ddafecca5827f8f957b8f60107335c507070a52d3997a0131fb04b')
 
 build() {
     arch-meson PortProtonQt build
@@ -27,13 +19,12 @@ build() {
 }
 
 package_portprotonqt() {
-    pkgdesc="Modern GUI for managing and launching games from PortProton, Steam, and Epic Games Store"
+    pkgdesc="Modern GUI for managing and launching games from PortProton and Steam"
     optdepends=(
         'networkmanager: System tab network management'
         'bluez: System tab bluetooth management'
         'upower: System tab bluetooth battery level'
         'libpulse: System tab audio volume/output management'
-        'python-dbus-fast: System tab D-Bus integration'
         'python-qrcode: Wi-Fi QR code generation'
     )
 
