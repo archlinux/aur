@@ -6,30 +6,35 @@ arch=('x86_64')
 url="https://github.com/plexescor/HPR"
 license=('GPL')
 
-depends=('glibc')
-makedepends=('cmake' 'git' 'curl' 'tar')
+_slint_ver="1.16.1"
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+depends=('glibc')
+makedepends=('cmake' 'curl' 'tar')
+
+source=(
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+    "Slint-cpp-${_slint_ver}-Linux-x86_64.tar.gz::https://github.com/slint-ui/slint/releases/download/v${_slint_ver}/Slint-cpp-${_slint_ver}-Linux-x86_64.tar.gz"
+)
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+    # Extract Slint prebuilt into srcdir
+    tar -xzf "$srcdir/Slint-cpp-${_slint_ver}-Linux-x86_64.tar.gz" -C "$srcdir/"
+}
 
 build() {
     cd "HPR-$pkgver"
 
-    chmod +x installDependencies.sh
-    ./installDependencies.sh
+    cmake -B build -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_PREFIX_PATH="$srcdir/Slint-cpp-${_slint_ver}-Linux-x86_64"
 
-    cmake -B build -DCMAKE_BUILD_TYPE=Release
-    cmake --build build -j20
+    cmake --build build -j$(nproc)
 }
 
 package() {
     cd "HPR-$pkgver/build"
 
-    chmod +x installHPRConfigAndUi.sh
-    ./installHPRConfigAndUi.sh || true
-
-    install -Dm755 HPR \
-        "$pkgdir/usr/bin/hpr"
+    install -Dm755 HPR "$pkgdir/usr/bin/hpr"
 
     install -Dm644 ../assets/logo_256png.png \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/hpr.png"
@@ -37,9 +42,8 @@ package() {
     install -Dm644 ../LICENSE.txt \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    mkdir -p "$pkgdir/usr/share/applications"
-
-    cat > "$pkgdir/usr/share/applications/hpr.desktop" << EOF
+    install -Dm644 /dev/stdin \
+        "$pkgdir/usr/share/applications/hpr.desktop" << EOF
 [Desktop Entry]
 Version=1.0
 Type=Application

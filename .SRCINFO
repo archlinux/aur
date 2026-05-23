@@ -6,11 +6,12 @@ pkgbase = hpr
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	makedepends = git
 	makedepends = curl
 	makedepends = tar
 	depends = glibc
 	source = hpr-0.5.tar.gz::https://github.com/plexescor/HPR/archive/refs/tags/v0.5.tar.gz
+	source = Slint-cpp-1.16.1-Linux-x86_64.tar.gz::https://github.com/slint-ui/slint/releases/download/v1.16.1/Slint-cpp-1.16.1-Linux-x86_64.tar.gz
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = hpr
