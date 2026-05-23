@@ -9,6 +9,13 @@ import sys
 import zipfile
 
 
+JAVA_CHECK_STRINGS = (
+    b"java.vendor",
+    b"Eclipse Adoptium",
+    b"alert.java_environment.version.message",
+)
+
+
 def patch_class(data):
     """Patch the class to bypass Java vendor check."""
 
@@ -23,6 +30,10 @@ def patch_class(data):
 
     pos = data.find(old_pattern)
     if pos == -1:
+        if data.find(new_pattern) != -1:
+            print("Class already contains 'iconst_0; ireturn' - check is already patched")
+            return data
+
         raise ValueError("Could not find 'iconst_1; ireturn' pattern in class")
 
     print(f"Found 'iconst_1; ireturn' at byte offset {pos} (0x{pos:04x})")
@@ -34,13 +45,35 @@ def patch_class(data):
     return data
 
 
+def find_class_path(jar):
+    """Find the obfuscated class that performs the Java environment check."""
+
+    matches = []
+    for item in jar.infolist():
+        if not item.filename.endswith(".class"):
+            continue
+
+        data = jar.read(item.filename)
+        if all(needle in data for needle in JAVA_CHECK_STRINGS):
+            matches.append(item.filename)
+
+    if len(matches) == 1:
+        return matches[0]
+
+    if len(matches) > 1:
+        raise ValueError(
+            "Found multiple Java check classes: " + ", ".join(matches)
+        )
+
+    raise ValueError("Could not find Java check class in JAR")
+
+
 def main():
     if len(sys.argv) != 2:
         print(f"Usage: {sys.argv[0]} <path-to-jar>")
         sys.exit(1)
 
     jar_path = sys.argv[1]
-    class_path = "uk/co/screamingfrog/utils/boostrap/id2130757759.class"
 
     if not os.path.exists(jar_path):
         print(f"Error: {jar_path} does not exist")
@@ -48,6 +81,8 @@ def main():
 
     # Read class from JAR
     with zipfile.ZipFile(jar_path, "r") as jar:
+        class_path = find_class_path(jar)
+        print(f"Found Java check class: {class_path}")
         class_data = bytearray(jar.read(class_path))
 
     print(f"Read class file: {len(class_data)} bytes")
