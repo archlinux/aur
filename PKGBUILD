@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libaec
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="Adaptive Entropy Coding library (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 _md5=ea0b7d197a950b0c110da8dfdecbb71f
 source=("${url}/-/archive/v${pkgver}/libaec-v${pkgver}.tar.bz2")
-sha256sums=('41777c62cd109bee692a4976496ad680aa015016840b79ce2f84b8ac0d4d7dac')
+sha256sums=('7cf0034eca8f53449252f2fab863d855aedc0520ceb8d3f3fcd3bd601ce4c85e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
