@@ -1,0 +1,3 @@
+[occ]
+source = "npm"
+npm = "@cesarandreslopez/occ"
