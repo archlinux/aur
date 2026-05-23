@@ -1,0 +1,17 @@
+pkgbase = python-cqgridfinity
+	pkgdesc = A python library to make Gridfinity compatible objects with CadQuery.
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://github.com/michaelgale/cq-gridfinity
+	arch = any
+	license = custom:MIT License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-cadquery
+	depends = python-cqkit
+	source = https://files.pythonhosted.org/packages/c6/4e/9c320a0e51f388cdd74fa9fccd37a7a6d79c0b4a3f614793dfbdc922b656/cqgridfinity-0.5.7.tar.gz
+	sha256sums = 845e87def1ec48182799fc9b8e121d5efcb68e59716fb519889efae65eab9ccc
+
+pkgname = python-cqgridfinity
