@@ -1,0 +1,16 @@
+pkgbase = headroom-ai-bin
+	pkgdesc = Context optimization layer for LLM applications - cut token costs by 50-90% (binary wheel, Python 3.12)
+	pkgver = 0.22.3
+	pkgrel = 1
+	url = https://github.com/chopratejas/headroom
+	install = headroom-ai-bin.install
+	arch = x86_64
+	license = Apache-2.0
+	depends = python312
+	provides = headroom-ai=0.22.3
+	conflicts = headroom-ai
+	noextract = headroom_ai-0.22.3-cp312-cp312-manylinux_2_28_x86_64.whl
+	source = headroom_ai-0.22.3-cp312-cp312-manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/ab/c6/7e224ca5b3de2cb54eb2117d1d0b1160687eff6e13ef19fbb81b10b527ae/headroom_ai-0.22.3-cp312-cp312-manylinux_2_28_x86_64.whl
+	sha256sums = dc5fff2cd99380f9229477cc5957e97661cb5a71bfbbe25a6ae225acfd97cddb
+
+pkgname = headroom-ai-bin

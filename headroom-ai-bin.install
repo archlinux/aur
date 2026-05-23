@@ -1,0 +1,18 @@
+post_install() {
+  cat <<EOF
+==> headroom-ai-bin runs under Python 3.12 (/usr/bin/python3.12).
+==> Install its Python runtime deps into Python 3.12, e.g.:
+==>
+==>   python3.12 -m ensurepip --user
+==>   python3.12 -m pip install --user \\
+==>     'tiktoken>=0.5.0' 'pydantic>=2.0.0' 'litellm==1.82.3' \\
+==>     'click>=8.1.0' 'rich>=13.0.0' 'opentelemetry-api>=1.24.0' \\
+==>     'ast-grep-cli>=0.30.0'
+==>
+==> Then run: headroom --help
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
