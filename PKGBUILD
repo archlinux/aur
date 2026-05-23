@@ -15,10 +15,13 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/tapauth"
-  if git describe --long --tags >/dev/null 2>&1; then
-    git describe --long --tags | sed -E 's/^v//;s/-([0-9]+)-g([0-9a-f]+)$/.r\1.g\2/'
+  local desc
+  if desc=$(git describe --long --tags 2>/dev/null); then
+    echo "$desc" | sed -E 's/^v//;s/-([0-9]+)-g([0-9a-f]+)$/.r\1.g\2/'
   else
-    printf "0.1.12.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    local base
+    base=$(git tag --sort=-version:refname 2>/dev/null | grep -E '^v[0-9]' | head -1 | sed 's/^v//')
+    printf "%s.r%s.%s" "${base:-0.0.0}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 }
 
