@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RSQLite
-_pkgver=3.52.0
+_pkgver=3.53.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -45,9 +45,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-libs.patch")
-md5sums=('d4c9aae296d3269a28189c17e3bbac6e'
+md5sums=('02a79f16b7dcbc87c171d0c759edbcfb'
          'a4e9a6c34e49e6e36edcf7d46e4841af')
-b2sums=('1904e6132d37f02df2ab583e0df6542c556105bc01f65e87a80e9883942b36b8f75ae1a3083265f55aa07a593f64a43eb0f37b1b21de45b80f4443ed21fdf842'
+b2sums=('a6e997a148ce46fe93883da0eee2270347cc86975cb4b3bee061a2643cf27fcd6718b5a06c81f2b23a490124cb4e459b51b661bd702c3fa70d5c4383ab835980'
         '76af4e4ba5f59cd12b616357df87aec8a1906b673b086aac5155a3c0486fddbf8bb7c591f099ce05bbce05e905901d46372a81b01ecd03600fb71df8da0674cd')
 
 prepare() {
