@@ -346,6 +346,7 @@ _package() {
     local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
     echo "Installing boot image..."
     install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+    install -dm755 "$pkgdir/boot"
     ln -s "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-linux"
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
     echo "Installing modules..."
