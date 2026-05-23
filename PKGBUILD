@@ -3,7 +3,7 @@
 _org=coin-or
 _pkgname=CppAD
 pkgname=cppad
-pkgver=20250000.2
+pkgver=20260000.0
 pkgrel=1
 pkgdesc="A C++ Algorithmic Differentiation Package"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('gcc-libs')
 optdepends=()
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d6688c7530913dfd286f7db71b007fd96df10a9e8b43ad74539e4450c9917ebf')
+sha256sums=('41ec617bb1e4163da381aaa5083a152e033631e9b5e135ccdc3466aaa1dc9001')
 
 build() {
     cmake -B "build-$pkgver" -S "$_pkgname-$pkgver" -DCMAKE_INSTALL_PREFIX=/usr
