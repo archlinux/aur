@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=claude-history
-pkgver=0.1.57
+pkgver=0.1.60
 pkgrel=1
 pkgdesc="Fuzzy-search Claude Code conversation history from the terminal"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/raine/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('224b14229ac134e31398f21bb58bf9e67ed1f0cbd50111142fbb077cde60ffaf')
+sha256sums=('44c1b799ad7875a26b8d1d93611ff1d6373ee0dfa971beeb32dbb710a60d2852')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -22,6 +22,10 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # ring's C/asm objects produce undefined symbols when CFLAGS has -flto=auto
+  # (Arch makepkg default). Disable LTO for ring's native compilation.
+  export CFLAGS="${CFLAGS} -fno-lto"
+  export CXXFLAGS="${CXXFLAGS} -fno-lto"
   cargo build --frozen --release --all-features
 }
 
