@@ -1,0 +1,5 @@
+[nextcloud-app-forms]
+source = "git"
+git = "https://github.com/nextcloud-releases/forms.git"
+prefix = "v"
+exclude_regex=".*(alpha|beta|rc).*"
