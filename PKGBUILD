@@ -30,7 +30,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Ch3w3y/tuxbellum/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b349c84c0834456a9c724b8dbb46547f30999f8ad14fce79e1ae622fbd6b8b56')
+sha256sums=('c9aa06493318c92783b3a3d9408892401362db1d124ae23f68c9a2577a7f5ffe')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
