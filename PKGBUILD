@@ -3,7 +3,7 @@
 
 pkgname=v2rayn
 _pkgname=v2rayN
-pkgver=7.22.0
+pkgver=7.22.2
 _bin_commit=61f39cfd2db3fed41eddd899a3b63fb1946f8c33
 pkgrel=1
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
@@ -18,7 +18,7 @@ source=("git+${url}#tag=${pkgver}"
         "git+https://github.com/2dust/GlobalHotKeys.git"
         "${pkgname}-bin-${_bin_commit}.zip::${url}-core-bin/raw/${_bin_commit}/v2rayN-linux-64.zip"
         "${pkgname}.sh")
-sha256sums=('1e12cf12f6b25a48a250b7e8b91886bae0622e50329d3123c89cf5bbda159296'
+sha256sums=('a77c8ad1e09e0572b9ffc8b6b6bbda125823d512fde45bf69e0a22129ceeed49'
             'SKIP'
             '00dafbbcd6a013c97dfff03a95fb1414481b6eb18ad65cfe64247172859a1a9a'
             '0fd5ed368fc6f51f6a8d2507c7cf598edbede076245d5661b06fe4394a6f1390')
