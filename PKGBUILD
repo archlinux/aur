@@ -1,48 +1,53 @@
 # Maintainer: Andrew <andrewforlua@gmail.com>
 pkgname=autodock4
 pkgver=4.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Automated docking of flexible ligands to proteins"
 arch=('x86_64' 'i686')
 url="https://github.com/ccsb-scripps/AutoDock4"
 license=('GPL')
 depends=('gcc-libs')
 makedepends=('gcc' 'make' 'tcsh' 'autoconf' 'automake')
-source=("autodock4-$pkgver.tar.gz::https://github.com/ccsb-scripps/AutoDock4/archive/refs/heads/master.tar.gz"
-        "autogrid4-$pkgver.tar.gz::https://github.com/ccsb-scripps/AutoGrid/archive/refs/heads/master.tar.gz")
-sha256sums=('1c44e7b6f0ea8a59aae8f4701ad5cbaa4c1b55e32549d3189af663349126b834'
-            'd3eed098d75a7d7189e9986f575ab7eff12fd932abb57005831f64b763a450fa')
 
+_ad4_commit="192ecda05d7c566161046f0a1d604f3336e0cf3a"
+_ag4_commit="6d2847beaeac8ff43ca99094707fd74e3ca1ff37"
+
+source=("autodock4-$pkgver.tar.gz::https://github.com/ccsb-scripps/AutoDock4/archive/$_ad4_commit.tar.gz"
+        "autogrid4-$pkgver.tar.gz::https://github.com/ccsb-scripps/AutoGrid/archive/$_ag4_commit.tar.gz")
+sha256sums=('8c59254e214c0fa4de9faf4dcd82da1053bfb9c817dd0973c3b85b1148c9e894'
+            '4d0bd83a446fd81577f4fc492299e22f131245589e1782e0532aecf3435e772a')
+# updpkgsums
+# n.d., To update metadata, you run: makepkg --printsrcinfo > .SRCINFO
+# git clone ssh://aur@aur.archlinux.org/autodock4.git
 build() {
     # Build AutoDock4
-    cd "$srcdir/AutoDock4-master"
+    cd "$srcdir/AutoDock4-$_ad4_commit"
     
-    echo "==> Configuring AutoDock..."
+    echo "--> Configuring AutoDock..."
     autoreconf -i
     ./configure --prefix=/usr
     
-    echo "==> Building AutoDock..."
+    echo "--> Building AutoDock..."
     make
+
+    cd "$srcdir/AutoGrid-$_ag4_commit"
     
-    # Build AutoGrid4
-    cd "$srcdir/AutoGrid-master"
-    
-    echo "==> Configuring AutoGrid..."
+    echo "--> Configuring AutoGrid..."
     autoreconf -i
     ./configure --prefix=/usr
     
-    echo "==> Building AutoGrid..."
+    echo "--> Building AutoGrid..."
     make
 }
 
 package() {
     # Install AutoDock binary
-    install -Dm755 "$srcdir/AutoDock4-master/autodock4" "$pkgdir/usr/bin/autodock4"
+    install -Dm755 "$srcdir/AutoDock4-$_ad4_commit" "$pkgdir/usr/bin/autodock4"
     
     # Install AutoGrid binary
-    install -Dm755 "$srcdir/AutoGrid-master/autogrid4" "$pkgdir/usr/bin/autogrid4"
+    install -Dm755 "$srcdir/AutoGrid-$_ag4_commit" "$pkgdir/usr/bin/autogrid4"
     
     # Install documentation
-    install -Dm644 "$srcdir/AutoDock4-master/README" "$pkgdir/usr/share/doc/$pkgname/README"
-    install -Dm644 "$srcdir/AutoDock4-master/COPYING" "$pkgdir/usr/share/doc/$pkgname/COPYING"
+    install -Dm644 "$srcdir/AutoDock4-$_ad4_commit/README" "$pkgdir/usr/share/doc/$pkgname/README"
+    install -Dm644 "$srcdir/AutoDock4-$_ag4_commit/COPYING" "$pkgdir/usr/share/doc/$pkgname/COPYING"
 }
