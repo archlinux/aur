@@ -1,6 +1,6 @@
 # Maintainer: Quark Contributors <https://github.com/0xnullsect0r/Quark>
 pkgname=quark
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Train and run your own Llama 4-style MoE coding LLM on your own hardware"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('quark-git' 'quark-bin')
 options=('!lto')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/0xnullsect0r/Quark/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('968ccc83a42cc0b4038423d9b7e396ae2460af5dcdf0e988978342d687a68a0a')
+sha256sums=('cb5ad9a8a1a0aacfdbd1c82cca0146f7928e8909e2c3c6f8d3119c107c480ee8')
 
 build() {
   cd "Quark-${pkgver}"
