@@ -1,20 +1,38 @@
 diff --git a/SConstruct b/SConstruct
-index 4988d1b..6cfca85 100644
+index 535b876..6cfca85 100644
 --- a/SConstruct
 +++ b/SConstruct
-@@ -51,6 +51,8 @@ env = Environment(
+@@ -51,6 +51,9 @@ env = Environment(
      "-fPIC",
      "-O2",
      "-Wunused",
 +    "-Wno-deprecated-this-capture",
 +    "-Wno-deprecated-declarations",
-     "-Werror",
++    "-Werror",
      "-Wshadow",
      "-Wno-unknown-warning-option",
+     "-Wno-inconsistent-missing-override",
+@@ -131,6 +134,7 @@ py_include = sysconfig.get_paths()['include']
+ envCython = env.Clone()
+ envCython["CPPPATH"] += [py_include, np.get_include()]
+ envCython["CCFLAGS"] += ["-Wno-#warnings", "-Wno-shadow", "-Wno-deprecated-declarations"]
++envCython["CCFLAGS"].remove("-Werror")
+ 
+ envCython["LIBS"] = []
+ if arch == "Darwin":
 diff --git a/src/SConscript b/src/SConscript
-index c4a3e96..159e491 100644
+index f51123c..159e491 100644
 --- a/src/SConscript
 +++ b/src/SConscript
+@@ -12,7 +12,7 @@ qt_env['QT_MOCFROMHDIR'] = os.path.join(build_dir, 'moc')
+ qt_env['QT_MOCFROMCXXDIR'] = os.path.join(build_dir, 'moc')
+ 
+ qt_env["CPPPATH"] += ["#"]
+-qt_modules = ["Widgets", "Gui", "Core", "Concurrent", "DBus", "Svg", "OpenGL", "OpenGLWidgets", "PrintSupport", "Charts", "SerialBus", "Network"]
++qt_modules = ["Widgets", "Gui", "Core", "Concurrent", "DBus", "Svg", "OpenGL", "OpenGLWidgets", "PrintSupport", "Charts", "SerialBus"]
+ 
+ qt_libs = []
+ qt_host_bins = ""
 @@ -27,15 +27,18 @@ if arch == "Darwin":
      qt_env.AppendENVPath('PATH', os.path.join(qt_env['QTDIR'], "bin"))
      qt_host_bins = os.path.join(qt_env['QTDIR'], "bin")
@@ -43,17 +61,19 @@ index c4a3e96..159e491 100644
  
      qt_env['QTDIR'] = qt_install_prefix
      qt_dirs = [qt_install_headers]
-@@ -58,12 +61,43 @@ else:
+@@ -58,10 +61,42 @@ else:
  qt_env['QT3DIR'] = qt_env['QTDIR']
  qt_env.Tool('qt3')
  
 -# Define absolute paths to binaries
+-moc_bin = '/usr/lib/qt6/moc' if os.path.exists('/usr/lib/qt6/moc') else os.path.join(qt_host_bins, 'moc')
+-uic_bin = '/usr/lib/qt6/uic' if os.path.exists('/usr/lib/qt6/uic') else os.path.join(qt_host_bins, 'uic')
+-rcc_bin = '/usr/lib/qt6/rcc' if os.path.exists('/usr/lib/qt6/rcc') else os.path.join(qt_host_bins, 'rcc')
 +# Define absolute paths to binaries - use /usr/bin as fallback
- moc_bin = os.path.join(qt_host_bins, 'moc')
--
- uic_bin = os.path.join(qt_host_bins, 'uic')
- rcc_bin = os.path.join(qt_host_bins, 'rcc')
- 
++moc_bin = os.path.join(qt_host_bins, 'moc')
++uic_bin = os.path.join(qt_host_bins, 'uic')
++rcc_bin = os.path.join(qt_host_bins, 'rcc')
++
 +# Fallback to /usr/lib/qt6/<tool> for Qt6 tools on Arch Linux
 +def get_moc_version(path):
 +    try:
@@ -85,7 +105,6 @@ index c4a3e96..159e491 100644
 +            uic_bin = alt_path
 +        elif tool_name == 'rcc':
 +            rcc_bin = alt_path
-+
+ 
  # Replace the command templates that SCons uses internally
  qt_env.Replace(
-     QT_MOC = moc_bin,
