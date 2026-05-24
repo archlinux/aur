@@ -6,11 +6,11 @@ pkgver=r4.${_hash::8}
 pkgrel=3
 pkgdesc="A scheduled timer to protect your eyes"
 arch=(any)
-url=https://gitgud.io/uwu/keybind-visualizer
+url=https://gitgud.io/uwu/eww/eyebreak
 license=(MIT)
 depends=(quickshell sh qt6-declarative)
 makedepends=(git)
-source=(git::git+https://gitgud.io/uwu/eyebreak#commit=$_hash)
+source=(git::git+https://gitgud.io/uwu/eww/eyebreak#commit=$_hash)
 sha256sums=('b28fae1e9efd1fc868dd20573255c5bab722298e7ecbcaad3933a7a82b40185e')
 
 package() {
