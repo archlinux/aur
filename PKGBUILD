@@ -2,13 +2,13 @@
 pkgname=linux-wallpaper-engine-ux
 _pkgname=linux-wallpaper-engine
 pkgver=0.4.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Modern desktop GUI for linux-wallpaperengine"
 arch=('x86_64')
 url="https://github.com/jagrat7/linux-wallpaper-engine"
 license=('MIT')
 depends=('electron39' 'linux-wallpaperengine-git')
-makedepends=('bun' 'nodejs' 'zip' 'imagemagick')
+makedepends=('bun' 'nodejs' 'zip' 'imagemagick' 'npm')
 optdepends=(
   'xorg-xrandr: X11 display detection'
   'wlr-randr: wlroots Wayland display detection'

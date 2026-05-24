@@ -1,7 +1,7 @@
 pkgbase = linux-wallpaper-engine-ux
 	pkgdesc = Modern desktop GUI for linux-wallpaperengine
 	pkgver = 0.4.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jagrat7/linux-wallpaper-engine
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = linux-wallpaper-engine-ux
 	makedepends = nodejs
 	makedepends = zip
 	makedepends = imagemagick
+	makedepends = npm
 	depends = electron39
 	depends = linux-wallpaperengine-git
 	optdepends = xorg-xrandr: X11 display detection
