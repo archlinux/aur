@@ -3,12 +3,12 @@
 
 pkgname=omniroute-bin
 pkgver=3.8.1 # renovate: datasource=github-tags depName=diegosouzapw/OmniRoute
-pkgrel=4
+pkgrel=5
 pkgdesc="OpenAI-compatible AI gateway with routing, retries, caching, and observability"
 arch=('x86_64')
 url="https://github.com/diegosouzapw/OmniRoute"
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs-lts-krypton')
 makedepends=('npm' 'python')
 optdepends=('systemd: user service management via systemctl --user')
 install="${pkgname}.install"
@@ -74,6 +74,17 @@ build() {
   mkdir -p "${HOME}" "${npm_config_cache}"
 
   npm install --omit=dev --ignore-scripts --no-audit --no-fund
+
+  [[ -d "${_pkgroot}/node_modules" && ! -L "${_pkgroot}/node_modules" ]] || {
+    printf 'Root node_modules must exist as a real directory at %s\n' "${_pkgroot}/node_modules" >&2
+    return 1
+  }
+
+  [[ -d "${_pkgroot}/node_modules/update-notifier" ]] || {
+    printf 'Missing required root dependency: update-notifier\n' >&2
+    return 1
+  }
+
   rm -rf "${_app_wreq_js_dir}"
   npm install --prefix app --omit=dev --ignore-scripts --no-audit --no-fund wreq-js
 
@@ -90,8 +101,6 @@ build() {
     printf 'better-sqlite3 directory exists but binary is missing at %s\n' "${_app_binary}" >&2
     return 1
   fi
-
-  rm -rf "${_pkgroot}/node_modules"
 }
 
 package() {
@@ -100,7 +109,6 @@ package() {
 
   install -dm755 "${pkgdir}/usr/lib/omniroute"
   cp -a "${_pkgroot}/." "${pkgdir}/usr/lib/omniroute/"
-  ln -s app/node_modules "${pkgdir}/usr/lib/omniroute/node_modules"
 
   install -Dm755 "${srcdir}/omniroute.sh" "${pkgdir}/usr/bin/omniroute"
   install -Dm644 "${srcdir}/omniroute.service" "${pkgdir}/usr/lib/systemd/user/omniroute.service"
