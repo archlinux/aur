@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/NetHack/NetHack'
 license=('LicenseRef-custom')
 depends=('ncurses' 'gzip' 'gdb')
-makedepends=(git)
+makedepends=(git curl)
 _branch=NetHack-5.0
 source=("git+https://github.com/NetHack/NetHack.git#branch=${_branch}" nethack.tmpfiles)
 sha256sums=('SKIP'
