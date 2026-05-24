@@ -1,0 +1,14 @@
+pkgbase = wifi-audio-streaming-desktop
+	pkgdesc = Share your desktop audio in your LAN via WiFi
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/marcomorosi06/WiFiAudioStreaming-Desktop
+	arch = x86_64
+	license = EUPL-1.2
+	depends = glibc
+	depends = alsa-lib
+	depends = libpulse
+	source = https://github.com/marcomorosi06/WiFiAudioStreaming-Desktop/releases/download/v1.0/TAR-WiFiAudioStreaming-v1.0.tar.gz
+	sha256sums = e59371b31d47ee4be43698f7de55ab6f9300ef55dbd926094bbc93fe245420ff
+
+pkgname = wifi-audio-streaming-desktop
