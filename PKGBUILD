@@ -1,6 +1,6 @@
 # Maintainer: metaneutrons
 pkgname=snapdog
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Multi-room audio system with AirPlay, Snapcast, MQTT, and KNX integration"
 arch=('x86_64' 'aarch64')
