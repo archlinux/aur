@@ -1,6 +1,6 @@
 pkgname=twintaillauncher-git
 _pkgname="${pkgname%-git}"
-pkgver=r980.532f877
+pkgver=r1003.7a09664
 pkgrel=1
 pkgdesc='A multi-platform launcher for your anime games'
 arch=('x86_64' 'aarch64')
@@ -40,4 +40,5 @@ package(){
 	install -Dm644 $_pkgname/src-tauri/icons/32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png
 	install -Dm644 $_pkgname/src-tauri/icons/128x128.png $pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png
 	install -Dm644 $_pkgname/src-tauri/icons/128x128@2x.png $pkgdir/usr/share/icons/hicolor/256x256@2/apps/$_pkgname.png
+	cp -r $_pkgname/src-tauri/target/release/resources/locales $pkgdir/usr/lib/twintaillauncher/resources/
 }
