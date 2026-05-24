@@ -1,12 +1,14 @@
 pkgname=icecc3
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Centro de Control para IceWM (herramientas gráficas de configuración)"
 arch=('any')
 license=('GPL-2.0-or-later')
 depends=('python' 'gtk4' 'python-gobject')
+optdepends=('polkit: para editar archivos protegidos'
+            'pkexec: para editar archivos del sistema')
 source=('https://raw.githubusercontent.com/debwuoldirty/icecc3/main/icecc3.tar.gz')
-sha256sums=('38faf27eaf1479ad1a688cce28ca026960b2de45dd6deedd4c76143763ad019a')
+sha256sums=('a9e355acd9635e93da2d0f3fd76a96fc622d9214718081b88ba4a3fc229bfb13')
 package() {
     mkdir -p "$pkgdir/opt/icecc3"
     cp -r "$srcdir/icecc3/"* "$pkgdir/opt/icecc3/"
