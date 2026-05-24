@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=('kwin>=6.4')
 makedepends=('kpackage' 'make' 'zip')
 source=("magnetile-${pkgver}.tar.gz::https://github.com/jcearnal/magnetile/releases/download/v${pkgver}/magnetile-${pkgver}.tar.gz")
-sha256sums=('60ba6a1d9ccd38d13029167658b6d8fd1242ad57459f4f8622a36773ce40aaef')
+sha256sums=('a9969c3584ffad560e7477ad0ec2074879ea8ec662443e899c249932748c31da')
 
 build() {
     cd "magnetile-${pkgver}"

@@ -10,6 +10,6 @@ pkgbase = kwin-scripts-magnetile
 	makedepends = zip
 	depends = kwin>=6.4
 	source = magnetile-0.3.0.tar.gz::https://github.com/jcearnal/magnetile/releases/download/v0.3.0/magnetile-0.3.0.tar.gz
-	sha256sums = 60ba6a1d9ccd38d13029167658b6d8fd1242ad57459f4f8622a36773ce40aaef
+	sha256sums = a9969c3584ffad560e7477ad0ec2074879ea8ec662443e899c249932748c31da
 
 pkgname = kwin-scripts-magnetile
