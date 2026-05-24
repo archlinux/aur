@@ -4,7 +4,7 @@
 pkgbase=gimp-openvino
 pkgname=gimp-openvino
 pkgver=3.2.1.0  # auto-set by pkgver()
-pkgrel=6
+pkgrel=7
 pkgdesc="Intel OpenVINO AI Plugins for GIMP"
 arch=('x86_64')
 url="https://github.com/intel/openvino-ai-plugins-gimp"
@@ -18,19 +18,14 @@ depends=(
   'python'
   'openvino-models'
   'python-numpy'
-  'python-scipy'
   'python-requests'
   'python-opencv'
-  'python-scikit-image'
   'python-transformers'
   'python-diffusers'
   'python-psutil'
-  'python-matplotlib'
   'python-sentencepiece'
   'python-pydantic'
-  'python-pip'
   'python-timm'
-  'python-hf-xet'
 )
 optdepends=(
   'intel-compute-runtime: Intel GPU acceleration for OpenVINO'
