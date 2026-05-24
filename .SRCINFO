@@ -1,0 +1,16 @@
+pkgbase = cargo-cooldown
+	pkgdesc = Cargo wrapper that enforces a cooldown window for freshly published crates on crates.io for improved supply chain security.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/dertin/cargo-cooldown
+	arch = aarch64
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = cargo
+	source = cargo-cooldown-0.3.1.tar.gz::https://static.crates.io/crates/cargo-cooldown/cargo-cooldown-0.3.1.crate
+	b2sums = 48e5f3582eba7f477dbcb8ff53958436d852e389170611aa68999c00c5a3d6fe108ca76b14a28f06eff67a44ec4d9edbfd82c5375f65ea51dbcb954700509961
+
+pkgname = cargo-cooldown
