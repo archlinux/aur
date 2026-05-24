@@ -8,7 +8,7 @@ url="https://github.com/Nix-main/Cogfly"
 license=('GPL-3.0-only')
 depends=('hicolor-icon-theme' 'zenity')
 makedepends=('sed')
-conflicts=('cogfly','cogfly-git')
+conflicts=('cogfly' 'cogfly-git')
 options=(!strip)
 
 _appimage=("Cogfly-${pkgver}.AppImage")
