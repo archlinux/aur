@@ -2,7 +2,7 @@
 # Maintainer: maki <maki@hotmilk.space>
 
 pkgname=czkawka-git
-pkgver=11.0.1.r11.gb5b454af
+pkgver=11.0.1.r13.g612c93a6
 pkgrel=1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
@@ -23,6 +23,7 @@ makedepends=(
   cargo
   git
   rust
+  jq
 
   # GUI (GTK4)
   cairo
@@ -53,15 +54,17 @@ conflicts=(
 )
 
 pkgver() {
-	cd $pkgname/
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $pkgname/ || exit 1
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname || exit 1
+  cargo fetch --target "$(rustc -vV | sed -n 's|host: ||p')"
 }
 
 build() {
-  cd $pkgname/
-
-  # Keep rust/cargo build-dependency management inside the build directory
-  export CARGO_HOME="${srcdir}/cargo"
+  cd $pkgname/ || exit 1
 
   cargo build \
     --bin czkawka_cli \
@@ -72,20 +75,23 @@ build() {
 }
 
 check() {
-  cd $pkgname/
+  cd $pkgname/ || exit 1
 
-  export CARGO_HOME="${srcdir}/cargo"
   cargo test --bin czkawka_cli --release
   dbus-run-session xvfb-run -s '-nolisten local' \
     cargo test --bin czkawka_gui --release
 }
 
 package() {
+  pushd "${srcdir}/${pkgname}" || exit 1
+  CARGO_TARGET_DIR="$(cargo metadata --format-version 1 --no-deps --offline | jq -r '.target_directory')"
+  popd
+
   # cli
 
   install -Dm644 "${srcdir}/${pkgname}/czkawka_cli/LICENSE_MIT" \
         "${pkgdir}/usr/share/licenses/czkawka-cli/LICENSE_MIT"
-  install -Dm755 "${srcdir}/${pkgname}/target/release/czkawka_cli" \
+  install -Dm755 "${CARGO_TARGET_DIR}/release/czkawka_cli" \
         "${pkgdir}/usr/bin/czkawka_cli"
 
   # gui
@@ -97,7 +103,7 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}/czkawka_gui/LICENSE_MIT_WINDOWS_THEME" \
         "${pkgdir}/usr/share/licenses/czkawka-gui/LICENSE_MIT_WINDOWS_THEME"
 
-  install -Dm755 "${srcdir}/${pkgname}/target/release/czkawka_gui" \
+  install -Dm755 "${CARGO_TARGET_DIR}/release/czkawka_gui" \
         "${pkgdir}/usr/bin/czkawka_gui"
 
   install -Dm644 "${srcdir}/${pkgname}/data/com.github.qarmin.czkawka.desktop" \
@@ -124,6 +130,6 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}/krokiet/LICENSE_MIT_CODE" \
         "${pkgdir}/usr/share/licenses/krokiet/LICENSE_MIT_CODE"
 
-  install -Dm755 "${srcdir}/${pkgname}/target/release/krokiet" \
+  install -Dm755 "${CARGO_TARGET_DIR}/release/krokiet" \
         "${pkgdir}/usr/bin/krokiet"
 }
