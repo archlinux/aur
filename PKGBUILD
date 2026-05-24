@@ -11,6 +11,7 @@ depends=(
 	'python'
 	'python-bibtexparser'
 	'python-dotenv'
+	'python-jsonref'
 	'python-fastmcp'
 	'python-markitdown'
 	'python-mcp'

@@ -12,6 +12,7 @@ pkgbase = zotero-mcp-server
 	depends = python
 	depends = python-bibtexparser
 	depends = python-dotenv
+	depends = python-jsonref
 	depends = python-fastmcp
 	depends = python-markitdown
 	depends = python-mcp
