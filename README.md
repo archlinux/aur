@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 1:2.0.1-15
+- **Versión:** 1:2.0.1-21
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Extensión Linux Compatibility:** https://www.nexusmods.com/site/mods/1924
@@ -580,6 +580,12 @@ Probado en Arch Linux (kernel 7.0.8-1-cachyos):
 | **1:2.0.1-13** | `gamebryo-ba2-support` (BA2, Fallout 4) y `gamebryo-bsa-support` (BSA, Skyrim/Fallout 3/NV) compilados nativamente para Linux. Los `package.json` upstream tienen un guard `if(platform==='win32')…exit(1) \|\|` que salta el build en Linux; se elimina en `prepare()` con un heredoc Python. `ba2tk` y `bsatk` compilan en Linux sin modificaciones (`bsatk` tiene soporte Linux oficial). |
 | **1:2.0.1-14** | `gamebryo-savegame-management` (navegador de partidas guardadas para Skyrim/Fallout/Oblivion) compilado para Linux. El addon C++ `GamebryoSave.node` es 100% compatible: `toWC`/`_wstat` tienen `#else` Linux. Tres fixes: guard eliminado, `_native` sin DLLs Windows, `binding.gyp` parchado con `-llz4 -lz`. `node-gamebryo-savegames` añadido como source git pinned; compilado con `node-gyp` + cabeceras Electron en `prepare()`. `lz4` añadido a `depends`. |
 | **1:2.0.1-15** | Patch 6 (`mygamesPath`) generalizado: elimina tabla `_sids` con 11 AppIDs hardcodeados. Ahora usa `vortex_api.getState().persistent.gameMode.discovered[gameMode].path` + appmanifest scan — el mismo patrón que `iniFiles` (Patch 7) y `appDataPath` (Patch 8). Cubre cualquier juego Bethesda sin necesidad de actualizar el paquete. |
+| **1:2.0.1-16** | `patch_asar_file` ahora termina con `sys.exit(1)` si un patch crítico no aplica (ni old ni new encontrados). Wayland: `ELECTRON_OZONE_PLATFORM_HINT=auto` en `vortex.sh` (renderizado nativo Wayland). `vortex.sh`: `--download` solo se inyecta para URLs `nxm://`, no para cualquier argumento. |
+| **1:2.0.1-17** | `patch-ext-cp2077.py` reescrito para localizar la extensión de Cyberpunk 2077 de forma genérica escaneando `info.json` en lugar de usar el nombre de carpeta hardcodeado. `vortex.sh`: toda la salida de `patch-ext-*.py` redirigida a `~/.config/Vortex/vortex-linux-fix.log` (truncado en cada arranque). |
+| **1:2.0.1-18** | Nuevo patch: `browseGameLocation` — la rama Linux ahora detecta la tienda del juego por ruta y contenido del directorio en lugar de devolver `store:"steam"` fijo. Detecta Steam (ruta `steamapps/common/`), GOG/Heroic, ficheros `goggame-*.info` y `steam_api.dll`. `vortex.sh`: registro automático del handler `nxm://` vía `xdg-mime` en cada arranque si no está configurado. |
+| **1:2.0.1-19** | **BUG (no usar):** La rama Linux de `browseGameLocation` se implementó como bloque `{if("linux"===…){…}}` dentro de `.then(corrected=>…)`. El `}` del bloque consumía el `)` que cierra el `.then(` externo → `SyntaxError` en el renderer de Electron → pantalla negra. Arreglado en 1:2.0.1-20. |
+| **1:2.0.1-20** | **Fix para 1:2.0.1-19:** Rama Linux de `browseGameLocation` reescrita como ternario + IIFE: `.then(corrected=>"linux"===process.platform?(()=>{…})():function manualGameStoreSelection…)`. El `)` original que cierra `.then(` queda preservado. Patches de migración añadidos para asars en forma v8 (steam fijo) o v9-broken (bloque). |
+| **1:2.0.1-21** | Nuevo patch: `removeDisappearedGames` — función interna de Vortex que revalida todos los paths de juegos descubiertos en cada arranque. Llamaba a `fsExtra.stat(path.join(discovered[gameId].path, file))` sin fallback `.exe`→`.x86_64`, invalidando juegos con `requiredFiles` que contienen `.exe` (p.ej. Graveyard Keeper: `['Graveyard Keeper.exe']`) aunque el binario nativo Linux exista. `verifyGamePath` (Patch 3) y `verifyToolDir` (Patch 2) ya tenían el fallback; este patch extiende la cobertura al tercer código de validación. |
 
 ---
 

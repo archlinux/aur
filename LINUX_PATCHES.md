@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 (AUR)  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 1:2.0.1-15  
+**Current release:** 1:2.0.1-21  
 **Linux Compatibility extension:** https://www.nexusmods.com/site/mods/1924
 
 ---
@@ -816,6 +816,12 @@ makepkg -si
 | **1:2.0.1-13** | `gamebryo-ba2-support` and `gamebryo-bsa-support` now compiled natively for Linux. Upstream `package.json` build scripts had an inverted Windows-only guard (`if(platform==='win32')exit(1) \|\|`) that silently skipped the build on Linux. Fixed in `prepare()` with an inline Python heredoc. `ba2tk` and `bsatk` compile on Linux without modification; `bsatk` has official `"os": ["win32", "linux"]` support. `gamebryo-savegame-management` remains excluded (Win32 `_wstat` / wide-char API). |
 | **1:2.0.1-14** | `gamebryo-savegame-management` native save browser compiled for Linux. C++ addon `GamebryoSave.node` is 100% Linux-compatible (`toWC`/`_wstat` have `#else` branches). Three blockers fixed: inverted build guard removed, `_native` script stripped of Windows-only DLL args, `binding.gyp` patched with `-llz4 -lz`. `node-gamebryo-savegames` added as a pinned git source; compiled with `node-gyp` + Electron headers in `prepare()`. `lz4` added to runtime depends. |
 | **1:2.0.1-15** | Patch 6 (`mygamesPath`) generalized: hardcoded `_sids` table (11 Steam AppIDs) replaced with appmanifest scan. Reads game install path from `vortex_api.getState().persistent.gameMode.discovered[gameMode].path`, then scans `appmanifest_*.acf` across all Steam libraries to find the AppID dynamically — the same approach already used by Patch 7 (`iniFiles`) and Patch 8 (`appDataPath`). Covers any Bethesda game managed via Proton without requiring package updates. |
+| **1:2.0.1-16** | `patch_asar_file` now exits with `sys.exit(1)` when a critical patch fails to apply (old string not found, new string also absent), instead of silently continuing. Wayland support: `ELECTRON_OZONE_PLATFORM_HINT=auto` added to `vortex.sh` (native Wayland rendering). `vortex.sh`: `--download` flag is now injected only for `nxm://` URLs, not for all command-line arguments. |
+| **1:2.0.1-17** | `patch-ext-cp2077.py` rewritten to locate the Cyberpunk 2077 extension generically by scanning `info.json` (id/name match) instead of using a hardcoded folder name — survives extension updates that rename the directory. `vortex.sh` now redirects all `patch-ext-*.py` output to `~/.config/Vortex/vortex-linux-fix.log` (truncated on each launch) for easier debugging. |
+| **1:2.0.1-18** | New patch: `browseGameLocation` — Linux branch now detects the game store from the install path and directory contents instead of returning a hardcoded `store:"steam"`. Checks for Steam paths (`steamapps/common/`), GOG paths (`GOG Games/`, Heroic), `goggame-*.info` files, and `steam_api.dll`. `vortex.sh`: auto-registers `nxm://` URI scheme via `xdg-mime` on each launch if not already set. |
+| **1:2.0.1-19** | **BUG (do not use):** `browseGameLocation` Linux branch was implemented as a block `{if("linux"===…){…}}` inside `.then(corrected=>…)`. The closing `}` of the block consumed the `)` needed to close the outer `.then(`, causing a `SyntaxError` in Electron renderer → black screen on launch. Fixed in 1:2.0.1-20. |
+| **1:2.0.1-20** | **Fix for 1:2.0.1-19:** `browseGameLocation` Linux branch rewritten as a ternary + IIFE: `.then(corrected=>"linux"===process.platform?(()=>{…})():function manualGameStoreSelection…)`. The original `)` closing `.then(` is now preserved. Migration patches added for asars still on the v8 (steam-only) or v9-broken (block-style) form. |
+| **1:2.0.1-21** | New patch: `removeDisappearedGames` — this internal Vortex function re-validates all discovered game paths on every startup. It was calling `fsExtra.stat(path.join(discovered[gameId].path, file))` with no `.exe`→`.x86_64` fallback, causing games whose `requiredFiles` contain a `.exe` (e.g. Graveyard Keeper: `['Graveyard Keeper.exe']`) to be invalidated on every launch even when the native Linux binary exists. `verifyGamePath` (Patch 3) and `verifyToolDir` (Patch 2) already had the fallback; this extends it to the third code path. |
 
 ---
 
@@ -898,6 +904,7 @@ runtime patches is the correct approach.
 - [x] `Plugins.txt` / `loadorder.txt` for Bethesda games via Proton prefix (`gamebryo-plugin-management`)
 - [x] Generic .NET game version detection on Linux via `deps.json` fallback (Stardew Valley and similar)
 - [x] Generic BepInEx Linux fixer: `libdoorstop.so` copy + `doorstop_config.ini` fix + Steam launch option (all Unity+BepInEx games)
+- [x] `removeDisappearedGames` `.exe`→`.x86_64` fallback: games with Windows-style `requiredFiles` (e.g. Graveyard Keeper) no longer invalidated on every startup
 - [x] `gamebryo-ba2-support` and `gamebryo-bsa-support` compiled natively for Linux (ba2tk, bsatk)
 - [ ] Upstream PRs to Nexus-Mods/Vortex with the Linux fixes
 - [ ] Automatic re-patch of user extensions after update
