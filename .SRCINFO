@@ -8,7 +8,6 @@ pkgbase = kst
 	license = GPL-2.0
 	makedepends = git
 	makedepends = cmake
-	makedepends = qt5-tools
 	depends = hdf5
 	depends = gsl
 	depends = qt6-base
