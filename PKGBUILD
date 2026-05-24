@@ -1,38 +1,42 @@
 # Maintainer: Oleg Shparber <oleg@zealdocs.org>
 
 _appname=zeal
-_builddir=build
 
 pkgname=${_appname}-git
-pkgver=0.7.2.r0.g66b3033
+pkgver=0.8.1.r119.g86e455a7
 pkgrel=1
 pkgdesc='Offline documentation browser'
-arch=('aarch64' 'i686' 'x86_64')
+arch=(aarch64 i686 x86_64)
 url="https://zealdocs.org/"
-license=('GPL3')
+license=(GPL-3.0-or-later)
 depends=(
-  'glibc'
-  'gcc-libs'
-  'hicolor-icon-theme'
-  'qt6-webengine'
-  'qt6-base'
-  'qt6-webchannel'
-  'sqlite'
-  'libarchive'
-  'libxcb'
-  'libx11'
-  'xcb-util-keysyms'
+  gcc-libs
+  glibc
+  hicolor-icon-theme
+  libarchive
+  libgcc
+  libstdc++
+  libx11
+  libxcb
+  qt6-base
+  qt6-svg
+  qt6-webchannel
+  qt6-webengine
+  sqlite
+  xcb-util-keysyms
 )
 makedepends=(
-  'cmake'
-  'extra-cmake-modules'
-  'git'
-  'ninja'
+  cmake
+  extra-cmake-modules
+  git
+  ninja
+  tomlplusplus
+  vulkan-headers
 )
 provides=(${_appname})
 conflicts=(${_appname})
 source=("${_appname}::git+https://github.com/zealdocs/${_appname}#branch=main")
-sha1sums=('SKIP')
+sha1sums=(SKIP)
 
 pkgver() {
   cd ${_appname}
@@ -41,16 +45,20 @@ pkgver() {
 }
 
 build() {
-  cmake \
-    -G Ninja \
-    -B "${_builddir}" \
-    -S "${_appname}" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  local cmake_options=(
+    -G Ninja
+    -B build
+    -S "$_appname"
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX=/usr
+  )
 
-  cmake --build "${_builddir}"
+  cmake "${cmake_options[@]}"
+
+  cmake --build build
 }
 
 package() {
-  cmake --install "${_builddir}" --prefix "${pkgdir}/usr"
+  cmake --install build --prefix "${pkgdir}/usr"
 }
