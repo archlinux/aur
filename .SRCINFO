@@ -1,0 +1,26 @@
+pkgbase = firmium-desktop-git
+	pkgdesc = Lightning fast OpenSubsonic player in Tauri (git version)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/fossisawesome/firmium
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = libxdo
+	makedepends = libxcb
+	makedepends = libxcb-render
+	makedepends = libxcb-shape
+	makedepends = libxcb-xfixes
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = alsa-lib
+	depends = openssl
+	provides = firmium-desktop
+	conflicts = firmium-desktop-bin
+	options = !strip
+	source = git+https://github.com/fossisawesome/firmium.git
+	sha256sums = SKIP
+
+pkgname = firmium-desktop-git
