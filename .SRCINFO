@@ -1,0 +1,19 @@
+pkgbase = maple-saturation-control-git
+	pkgdesc = A screen color saturation and contrast gamma control tool for KDE Plasma Wayland sessions.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MapleProjects/Maple-SaturationControl-WaylandPlasma
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-pyqt6
+	depends = argyllcms
+	depends = colord
+	depends = iccxml
+	provides = maple-saturation-control
+	conflicts = maple-saturation-control
+	source = git+https://github.com/MapleProjects/Maple-SaturationControl-WaylandPlasma.git
+	md5sums = SKIP
+
+pkgname = maple-saturation-control-git
