@@ -7,9 +7,9 @@ pkgdesc="CodeWhale (formerly DeepSeek-TUI) - DeepSeek-first agentic terminal for
 arch=('x86_64' 'aarch64')
 url="https://github.com/Hmbown/CodeWhale"
 license=('MIT')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'dbus')
 makedepends=('rust' 'cargo')
-provides=('codewhale-cli' 'codewhale-tui' 'deepseek' 'deepseek-tui')
+provides=('codewhale-tui' 'deepseek' 'deepseek-tui')
 conflicts=('codewhale-bin' 'codewhale-tui' 'deepseek' 'deepseek-tui' 'deepseek-tui-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -30,14 +30,15 @@ build() {
     export CARGO_HOME="${srcdir}/.cargo"
     export RUSTUP_TOOLCHAIN=stable
 
-    # crates/cli ships two bins: codewhale (main) and deepseek (legacy
-    # shim that exec's codewhale with a deprecation warning, removed in
-    # v0.9.0). crates/tui ships codewhale-tui and the matching deepseek-tui
-    # shim.
+    # crates/cli ships two bins (codewhale + deepseek legacy shim);
+    # crates/tui ships two more (codewhale-tui + deepseek-tui shim).
+    # Build all four in one cargo invocation so they share the dep
+    # compile rather than re-doing it.
     cargo build --frozen --release \
-        --bin codewhale --bin deepseek -p codewhale-cli
-    cargo build --frozen --release \
-        --bin codewhale-tui --bin deepseek-tui -p codewhale-tui
+        --bin codewhale     \
+        --bin codewhale-tui \
+        --bin deepseek      \
+        --bin deepseek-tui
 }
 
 package() {
