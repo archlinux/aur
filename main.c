@@ -61,21 +61,17 @@ static void daemonize() {
 int main(int argc, char **argv) {
     if (geteuid() != 0) {
         fprintf(stderr, "cursorfb: restarting with sudo...\n");
-        
-        char **new_argv = malloc(sizeof(char*) * (argc + 2));
-        new_argv[0] = "sudo";
-        new_argv[1] = "-E";
 
-        for (int i = 0; i < argc; i++) {
-            new_argv[i + 2] = argv[i];
-        }
+        char *args[] = {
+            "sudo",
+            "-E",
+            argv[0],
+            NULL
+        };
 
-        new_argv[argc + 2 - 1] = NULL;
+        execvp("sudo", args);
 
-        execvp("sudo", new_argv);
-
-        perror("cursorfb: failed to escalate privileges");
-        free(new_argv);
+        perror("cursorfb: failed to run sudo");
         return 1;
     }
 
