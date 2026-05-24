@@ -3,7 +3,7 @@
 _appname=zeal
 
 pkgname=${_appname}-git
-pkgver=0.8.1.r119.g86e455a7
+pkgver=0.8.1.r120.gaca2150e
 pkgrel=1
 pkgdesc='Offline documentation browser'
 arch=(aarch64 i686 x86_64)
@@ -23,6 +23,7 @@ depends=(
   qt6-webchannel
   qt6-webengine
   sqlite
+  tomlplusplus
   xcb-util-keysyms
 )
 makedepends=(
@@ -30,7 +31,6 @@ makedepends=(
   extra-cmake-modules
   git
   ninja
-  tomlplusplus
   vulkan-headers
 )
 provides=(${_appname})
