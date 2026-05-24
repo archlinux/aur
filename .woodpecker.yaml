@@ -93,7 +93,7 @@ steps:
         fi
       # Build and test package (always runs)
       - echo "Building and testing package"
-      - sudo -u builduser gpg --recv-keys D4D0D3202FC06849A257B38DE94618334C674B40
+      - sudo -u builduser gpg --import keys/pgp/D4D0D3202FC06849A257B38DE94618334C674B40.asc
       - sudo -u builduser makepkg -si --noconfirm
       - sudo -u builduser sparrow --version
       # Conditional push (only for cron and manual)
