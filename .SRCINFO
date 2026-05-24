@@ -1,7 +1,7 @@
 pkgbase = icecc3
 	pkgdesc = Centro de Control para IceWM (herramientas gráficas de configuración)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL-2.0-or-later
 	depends = python

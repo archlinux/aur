@@ -1,6 +1,6 @@
 pkgname=icecc3
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Centro de Control para IceWM (herramientas gráficas de configuración)"
 arch=('any')
 license=('GPL-2.0-or-later')
