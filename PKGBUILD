@@ -1,6 +1,6 @@
 # Maintainer: Admin12121
 pkgname=decompile
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Docker-isolated static reverse engineering orchestrator'
 arch=('any')
