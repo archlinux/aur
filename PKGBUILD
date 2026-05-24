@@ -19,5 +19,6 @@ package() {
   bsdtar -xf "firmium-desktop_${pkgver}_amd64.deb"
   bsdtar -xf "data.tar.gz" -C "$pkgdir"
   
+  # shitty ass app
   rm -f "$pkgdir/usr/share/applications/firmium-desktop.desktop"
 }
