@@ -1,26 +1,26 @@
-diff -Naur word-sys-pdf-editor-1.9.0.orig/word_sys_pdf_editor/welcome_view.py word-sys-pdf-editor-1.9.0/word_sys_pdf_editor/welcome_view.py
---- word-sys-pdf-editor-1.9.0.orig/word_sys_pdf_editor/welcome_view.py	2026-05-06 22:50:42.000000000 +0200
-+++ word-sys-pdf-editor-1.9.0/word_sys_pdf_editor/welcome_view.py	2026-05-09 20:01:54.254176803 +0200
-@@ -31,7 +31,7 @@
+diff -Naur word-sys-pdf-editor-1.9.2.orig/word_sys_pdf_editor/welcome_view.py word-sys-pdf-editor-1.9.2/word_sys_pdf_editor/welcome_view.py
+--- word-sys-pdf-editor-1.9.2.orig/word_sys_pdf_editor/welcome_view.py	2026-05-23 16:59:08.000000000 +0200
++++ word-sys-pdf-editor-1.9.2/word_sys_pdf_editor/welcome_view.py	2026-05-24 23:15:23.805131429 +0200
+@@ -34,7 +34,7 @@
          main_box.set_margin_bottom(40)
  
          try:
--            icon_path = Path(__file__).resolve().parent / "img" / "f-pv1.png"
-+            icon_path = Path('/usr/share/icons/hicolor/scalable/apps/word-sys-pdf-editor.svg')
-             app_icon = Gtk.Picture.new_for_filename(str(icon_path))
-             app_icon.set_size_request(200, 200)
+-            app_icon = Gtk.Image.new_from_icon_name("f-pv1")
++            app_icon = Gtk.Image.new_from_icon_name("word-sys-pdf-editor")
+             app_icon.set_pixel_size(200)
              app_icon.set_valign(Gtk.Align.END)
-@@ -208,4 +208,4 @@
-     def on_recent_file_activated(self, row, uri):
+             app_icon.set_halign(Gtk.Align.CENTER)
+@@ -225,4 +225,4 @@
+         """Open a recent file when its row is activated."""
          if self.parent_window:
              gfile = Gio.File.new_for_uri(uri)
 -            self.parent_window.load_document(gfile.get_path())
 \ Manca newline alla fine del file
 +            self.parent_window.load_document(gfile.get_path())
-diff -Naur word-sys-pdf-editor-1.9.0.orig/word_sys_pdf_editor/window.py word-sys-pdf-editor-1.9.0/word_sys_pdf_editor/window.py
---- word-sys-pdf-editor-1.9.0.orig/word_sys_pdf_editor/window.py	2026-05-06 22:50:42.000000000 +0200
-+++ word-sys-pdf-editor-1.9.0/word_sys_pdf_editor/window.py	2026-05-09 20:01:00.942003887 +0200
-@@ -29,7 +29,7 @@
+diff -Naur word-sys-pdf-editor-1.9.2.orig/word_sys_pdf_editor/window.py word-sys-pdf-editor-1.9.2/word_sys_pdf_editor/window.py
+--- word-sys-pdf-editor-1.9.2.orig/word_sys_pdf_editor/window.py	2026-05-23 16:59:08.000000000 +0200
++++ word-sys-pdf-editor-1.9.2/word_sys_pdf_editor/window.py	2026-05-24 23:15:39.792998907 +0200
+@@ -31,7 +31,7 @@
          super().__init__(*args, **kwargs)
          self.set_title(constants.APP_NAME)
          self.set_default_size(1200, 800)
@@ -29,12 +29,12 @@ diff -Naur word-sys-pdf-editor-1.9.0.orig/word_sys_pdf_editor/window.py word-sys
  
          self.current_file_path = None
          self.original_file_path = None
-@@ -753,7 +753,7 @@
+@@ -774,7 +774,7 @@
          about_dialog.set_comments(_("about_comments"))
  
          try:
--            app_icon_path = Path(__file__).resolve().parent / "img" / "f-pv1.svg"
-+            app_icon_path = Path("/usr/share/icons/hicolor/scalable/apps/word-sys-pdf-editor.svg")
-             if app_icon_path.exists():
-                 texture = Gdk.Texture.new_from_filename(str(app_icon_path))
-                 about_dialog.set_logo(texture)
+-            about_dialog.set_logo_icon_name("f-pv1")
++            about_dialog.set_logo_icon_name("word-sys-pdf-editor")
+         except Exception as e:
+             print(f"Warning: Could not load application icon for About dialog: {e}")
+             about_dialog.set_logo_icon_name("application-x-executable")
