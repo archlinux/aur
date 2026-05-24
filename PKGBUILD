@@ -150,16 +150,4 @@ package() {
     write_launcher_stub "$pkgdir"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    # Force --x11 in the launcher entry. Codex's avatar overlay floating
-    # window is an Electron transparent:true BrowserWindow; the asar patch in
-    # scripts/patches/avatar-overlay.js gates its X11 compositor-hint
-    # workaround (xwininfo+xprop) on codexLinuxIsI3Session(), which we've
-    # extended to recognize niri/sway/hyprland/river. The hint only actually
-    # runs once codex is on an X server — XWayland satisfies that — so we
-    # force --x11 in the .desktop entry. start.sh's --x11 is a no-op on real
-    # X11 sessions, so unconditional injection is safe.
-    local desktop="$pkgdir/usr/share/applications/$_appname.desktop"
-    sed -i 's|/usr/bin/codex-desktop %u|/usr/bin/codex-desktop --x11 %u|g' "$desktop"
-    sed -i 's|/usr/bin/codex-desktop --new-instance|/usr/bin/codex-desktop --x11 --new-instance|g' "$desktop"
 }
