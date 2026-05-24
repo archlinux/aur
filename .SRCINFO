@@ -1,6 +1,6 @@
 pkgbase = vinmail
 	pkgdesc = Interactive Bash-based mail client for msmtp with multi-account management and GPG support.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/VintellX/vinmail
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = vinmail
 	optdepends = file: accurate MIME type detection for attachments
 	optdepends = neovim: alternative editor
 	optdepends = nano: alternative editor
-	source = git+https://github.com/VintellX/vinmail.git#tag=v1.1.0?signed
+	source = git+https://github.com/VintellX/vinmail.git#tag=v1.1.1?signed
 	validpgpkeys = 06DDA9E2D7EB680B714DFB029891B64986124761
 	sha256sums = SKIP
 
