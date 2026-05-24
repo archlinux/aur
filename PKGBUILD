@@ -2,7 +2,7 @@
 pkgname=musicfree-desktop-wayland-bin
 pkgver=0.0.8
 pkgrel=1
-pkgdesc="Plug-in, customized, ad-free music player. Wayland-adapted prebuilt version."
+pkgdesc="插件化、定制化、无广告的免费音乐播放器，Wayland 适配预构建版本"
 arch=("x86_64")
 url="https://github.com/txgde-space/MusicFreeDesktop"
 license=("GPL")
@@ -14,7 +14,7 @@ sha256sums=("1ebee6e1cefea9084838cb45761eac9759f1294245d91473c2fd6b40430e06a8")
 
 package() {
     install -d "${pkgdir}/opt/musicfree-desktop-wayland"
-    cp -r --no-preserve=ownership "MusicFree-wayland-linux-x64-${pkgver}/." "${pkgdir}/opt/musicfree-desktop-wayland/"
+    cp -r --no-preserve=ownership "MusicFree-Desktop-Linux-Wayland-x64-${pkgver}/." "${pkgdir}/opt/musicfree-desktop-wayland/"
 
     chmod 4755 "${pkgdir}/opt/musicfree-desktop-wayland/chrome-sandbox"
 
