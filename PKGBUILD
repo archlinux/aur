@@ -6,14 +6,14 @@
 
 pkgname=qdl-git
 _pkgname=qdl
-pkgver=r185.2204f90
+pkgver=r403.6792629
 pkgrel=1
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
 arch=('i686' 'x86_64' 'armv6h' 'armv7l' 'aarch64')
 url='https://github.com/linux-msm/qdl'
 license=('BSD3')
-makedepends=('git')
-depends=('libxml2' 'libusb' 'systemd-libs')
+makedepends=('git' 'meson' 'help2man' 'cmocka' 'zip')
+depends=('libxml2' 'libusb' 'libzip' 'systemd-libs')
 provides=("qdl")
 conflicts=("qdl")
 source=("git+${url}.git")
@@ -25,18 +25,18 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  make CFLAGS:="${CFLAGS} -I/usr/include/libxml2 -I/usr/include/libusb-1.0" LDFLAGS:="${LDFLAGS} -lxml2 -lusb-1.0"
+  arch-meson $_pkgname build
+  meson compile -C build
 }
 
 check() {
-  cd "$srcdir/$_pkgname"
-  make tests
+  meson test -C build --print-errorlogs
 }
 
 package() {
+  meson install -C build --destdir "$pkgdir"
+
   cd "$srcdir/$_pkgname"
-  make prefix:="/usr" DESTDIR:="$pkgdir" install
 
   # Package license
   install -d "$pkgdir/usr/share/licenses/$_pkgname"
