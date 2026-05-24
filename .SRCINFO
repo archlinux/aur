@@ -1,6 +1,6 @@
 pkgbase = cursorfb
 	pkgdesc = Framebuffer software cursor overlay
-	pkgver = 1.0.9
+	pkgver = 1.1.0
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
