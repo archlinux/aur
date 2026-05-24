@@ -4,3 +4,4 @@
 !*.cmake.in
 !.SRCINFO
 !.gitignore
+!.nvchecker.toml
