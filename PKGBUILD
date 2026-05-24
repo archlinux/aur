@@ -2,117 +2,55 @@
 # Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/omniroute-bin
 
 pkgname=omniroute-bin
-pkgver=3.8.1 # renovate: datasource=github-tags depName=diegosouzapw/OmniRoute
-pkgrel=5
-pkgdesc="OpenAI-compatible AI gateway with routing, retries, caching, and observability"
+pkgver=3.8.2 # renovate: datasource=github-tags depName=diegosouzapw/OmniRoute
+pkgrel=1
+pkgdesc="OmniRoute desktop app (prebuilt AppImage)"
 arch=('x86_64')
 url="https://github.com/diegosouzapw/OmniRoute"
 license=('MIT')
-depends=('nodejs-lts-krypton')
-makedepends=('npm' 'python')
-optdepends=('systemd: user service management via systemctl --user')
-install="${pkgname}.install"
+depends=('fuse2' 'hicolor-icon-theme' 'libx11' 'libxext' 'nss' 'glib2')
+optdepends=('xdg-utils: open links/files with desktop defaults')
+conflicts=('omniroute')
+provides=('omniroute')
 options=('!strip')
+
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/diegosouzapw/OmniRoute/archive/refs/tags/v${pkgver}.tar.gz"
-  'omniroute.sh'
-  'omniroute.service'
-  '.env.example'
+  "OmniRoute-${pkgver}.AppImage::https://github.com/diegosouzapw/OmniRoute/releases/download/v${pkgver}/OmniRoute-${pkgver}.AppImage"
 )
-sha512sums=('SKIP'
-            '1ea7cea23b87ea3eeb4a204ce54d9a32f666a365570b40d5b7c5a1bb2b85820f40d49b29d91bc1774351b4c82a83cdaa26a693e2f3a23752da3b53bea758e8fe'
-            'f0097170061b862d53f82efa17534e10ad2d8e5666b25ad1011f0908a688099f374c8fb752fe313d12b7523886b4b5b11247c04b2850f08edbb88f1cf7a71502'
-            '50256ea8d6eaed68e90c877776df8203954af174d9dabe451b1e23543f7704bf90be785dcf62b34f9cf6afc4e2702fee68109d60686e3343575b78605034f685')
+sha256sums=('8be052fde210e1f9ae7ad050159d348050564e7f0ddfab50362b8901463af04b')
 
-_omniroute_pkgroot() {
-  local _candidate
-  local -a _candidates=()
-  local -a _preferred=()
-
-  for _candidate in "${srcdir}"/*; do
-    [[ -d "${_candidate}" ]] || continue
-    [[ "${_candidate}" == "${srcdir}/npm-home" ]] && continue
-    [[ "${_candidate}" == "${srcdir}/npm-cache" ]] && continue
-    [[ -f "${_candidate}/package.json" ]] || continue
-
-    _candidates+=("${_candidate}")
-    [[ "${_candidate##*/}" == OmniRoute-* ]] && _preferred+=("${_candidate}")
-  done
-
-  if (( ${#_preferred[@]} == 1 )); then
-    printf '%s\n' "${_preferred[0]}"
-    return 0
-  fi
-
-  if (( ${#_candidates[@]} == 1 )); then
-    printf '%s\n' "${_candidates[0]}"
-    return 0
-  fi
-
-  printf 'Expected one extracted omniroute package root, found %d:\n' "${#_candidates[@]}" >&2
-  printf '  %s\n' "${_candidates[@]}" >&2
-  return 1
-}
-
-build() {
-  local _pkgroot
-  local _app_binary
-  local _app_wreq_js_dir
-
-  _pkgroot="$(_omniroute_pkgroot)"
-  _app_binary="${_pkgroot}/app/node_modules/better-sqlite3/build/Release/better_sqlite3.node"
-  _app_wreq_js_dir="${_pkgroot}/app/node_modules/wreq-js"
-
-  cd "${_pkgroot}"
-
-  export HOME="${srcdir}/npm-home"
-  export npm_config_cache="${srcdir}/npm-cache"
-  export npm_config_audit=false
-  export npm_config_fund=false
-  export npm_config_update_notifier=false
-
-  mkdir -p "${HOME}" "${npm_config_cache}"
-
-  npm install --omit=dev --ignore-scripts --no-audit --no-fund
-
-  [[ -d "${_pkgroot}/node_modules" && ! -L "${_pkgroot}/node_modules" ]] || {
-    printf 'Root node_modules must exist as a real directory at %s\n' "${_pkgroot}/node_modules" >&2
-    return 1
-  }
-
-  [[ -d "${_pkgroot}/node_modules/update-notifier" ]] || {
-    printf 'Missing required root dependency: update-notifier\n' >&2
-    return 1
-  }
-
-  rm -rf "${_app_wreq_js_dir}"
-  npm install --prefix app --omit=dev --ignore-scripts --no-audit --no-fund wreq-js
-
-  if [[ -f scripts/postinstall.mjs ]]; then
-    node scripts/postinstall.mjs
-  fi
-
-  [[ -f "${_app_wreq_js_dir}/dist/wreq-js.js" ]] || {
-    printf 'Missing required wreq-js ESM entrypoint at %s\n' "${_app_wreq_js_dir}/dist/wreq-js.js" >&2
-    return 1
-  }
-
-  if [[ -d "${_pkgroot}/app/node_modules/better-sqlite3" && ! -f "${_app_binary}" ]]; then
-    printf 'better-sqlite3 directory exists but binary is missing at %s\n' "${_app_binary}" >&2
-    return 1
-  fi
+prepare() {
+  chmod +x "${srcdir}/OmniRoute-${pkgver}.AppImage"
+  "${srcdir}/OmniRoute-${pkgver}.AppImage" --appimage-extract >/dev/null
 }
 
 package() {
-  local _pkgroot
-  _pkgroot="$(_omniroute_pkgroot)"
+  install -Dm755 "${srcdir}/OmniRoute-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/OmniRoute.AppImage"
 
-  install -dm755 "${pkgdir}/usr/lib/omniroute"
-  cp -a "${_pkgroot}/." "${pkgdir}/usr/lib/omniroute/"
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/omniroute" <<'EOF'
+#!/usr/bin/env bash
+exec /opt/omniroute-bin/OmniRoute.AppImage "$@"
+EOF
 
-  install -Dm755 "${srcdir}/omniroute.sh" "${pkgdir}/usr/bin/omniroute"
-  install -Dm644 "${srcdir}/omniroute.service" "${pkgdir}/usr/lib/systemd/user/omniroute.service"
-  install -Dm644 "${srcdir}/.env.example" "${pkgdir}/usr/share/doc/${pkgname}/.env.example"
-  install -Dm644 "${_pkgroot}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${_pkgroot}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  if [[ -f "${srcdir}/squashfs-root/omniroute.desktop" ]]; then
+    install -Dm644 "${srcdir}/squashfs-root/omniroute.desktop" "${pkgdir}/usr/share/applications/omniroute.desktop"
+  elif [[ -f "${srcdir}/squashfs-root/OmniRoute.desktop" ]]; then
+    install -Dm644 "${srcdir}/squashfs-root/OmniRoute.desktop" "${pkgdir}/usr/share/applications/omniroute.desktop"
+  else
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/omniroute.desktop" <<'EOF'
+[Desktop Entry]
+Name=OmniRoute
+Exec=omniroute
+Icon=omniroute
+Type=Application
+Categories=Network;
+Terminal=false
+EOF
+  fi
+
+  if [[ -f "${srcdir}/squashfs-root/omniroute.png" ]]; then
+    install -Dm644 "${srcdir}/squashfs-root/omniroute.png" "${pkgdir}/usr/share/pixmaps/omniroute.png"
+  elif [[ -f "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/omniroute.png" ]]; then
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/omniroute.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/omniroute.png"
+  fi
 }
