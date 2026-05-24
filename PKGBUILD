@@ -150,4 +150,16 @@ package() {
     write_launcher_stub "$pkgdir"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Force --x11 in the launcher entry. Codex's floating mascot window is an
+    # Electron transparent:true BrowserWindow; its Linux compositor-hint
+    # workaround (codexLinuxApplyAvatarCompositorHints) only triggers on i3+X11,
+    # so wayland sessions (niri/sway/hyprland) render the transparent surface
+    # as the GTK accent color fallback (gives the bubble a solid blue
+    # rectangle). XWayland's X11 transparent path works natively. start.sh's
+    # --x11 flag is a no-op on real X11 sessions, so applying unconditionally
+    # is safe.
+    local desktop="$pkgdir/usr/share/applications/$_appname.desktop"
+    sed -i 's|/usr/bin/codex-desktop %u|/usr/bin/codex-desktop --x11 %u|g' "$desktop"
+    sed -i 's|/usr/bin/codex-desktop --new-instance|/usr/bin/codex-desktop --x11 --new-instance|g' "$desktop"
 }
