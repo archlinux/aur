@@ -4,7 +4,7 @@
 pkgbase=gimp-openvino
 pkgname=gimp-openvino
 pkgver=3.2.1.0  # auto-set by pkgver()
-pkgrel=9
+pkgrel=10
 pkgdesc="Intel OpenVINO AI Plugins for GIMP"
 arch=('x86_64')
 url="https://github.com/intel/openvino-ai-plugins-gimp"
@@ -74,10 +74,19 @@ package() {
   # Set up config and install bundled weights
   GIMP_OPENVINO_MODELS_PATH="$models_dir" \
     python -c "
-import sys
+import sys, json
 sys.path.insert(0, '$site_packages')
 from gimpopenvino import install_utils
 install_utils.complete_install(repo_weights_dir='$srcdir/$pkgname/weights')
+# Fix weight_path to runtime path instead of build path
+config_file = '$site_packages/gimpopenvino/plugins/openvino_utils/tools/gimp_openvino_config.json'
+with open(config_file) as f:
+    cfg = json.load(f)
+old = '$pkgdir'
+if cfg['weight_path'].startswith(old):
+    cfg['weight_path'] = cfg['weight_path'].replace(old, '', 1)
+with open(config_file, 'w') as f:
+    json.dump(cfg, f, indent=4)
 "
 
   # Copy plugin files to GIMP plugin directory
