@@ -1,6 +1,6 @@
 pkgbase = chatterino2-nightly-bin
 	pkgdesc = A chat client for Twitch.tv. (Nightly build)
-	pkgver = 2.5.5.20260516T020713
+	pkgver = 2.5.5.20260524T021703
 	pkgrel = 1
 	url = https://github.com/chatterino/chatterino2
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = chatterino2-nightly-bin
 	provides = chatterino
 	conflicts = chatterino
 	options = !strip
-	source = chatterino2-nightly-bin-2.5.5.20260516T020713.tar.zst::https://github.com/Chatterino/pkg/releases/download/nightly-20260516T020713/chatterino-arch-linux-x86_64.tar.zst
-	sha256sums = 2cb5368c311b0625d2329abb7d613bd155db9a50c6081c80d5cb72d01743a2c9
+	source = chatterino2-nightly-bin-2.5.5.20260524T021703.tar.zst::https://github.com/Chatterino/pkg/releases/download/nightly-20260524T021703/chatterino-arch-linux-x86_64.tar.zst
+	sha256sums = b8c8c02eb79af88271d3110e562ee28245c21661ec19c10850239defe92f8409
 
 pkgname = chatterino2-nightly-bin
