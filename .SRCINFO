@@ -1,6 +1,6 @@
 pkgbase = kmodel
 	pkgdesc = KDE-native 3D model viewer with Vulkan rendering
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/lukem570/kModel
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kmodel
 	depends = qt6-declarative
 	depends = kirigami
 	depends = vulkan-icd-loader
-	source = kmodel-0.1.0.tar.gz::https://github.com/lukem570/kModel/archive/v0.1.0.tar.gz
+	source = kmodel-0.2.0.tar.gz::https://github.com/lukem570/kModel/archive/v0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = kmodel

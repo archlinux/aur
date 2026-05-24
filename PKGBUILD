@@ -1,6 +1,6 @@
 # Maintainer: lukem570 <https://github.com/lukem570>
 pkgname=kmodel
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='KDE-native 3D model viewer with Vulkan rendering'
 arch=('x86_64')
