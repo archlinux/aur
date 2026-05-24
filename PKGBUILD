@@ -1,7 +1,7 @@
 # Maintainer: Alexander Mezin <mezin.alexander at gmail dot com>
 # Contributor: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 pkgname=gnome-shell-extension-ddterm-git
-pkgver=62.0.2.r55.g10820aad
+pkgver=63.0.1.r28.g7eee45ba
 pkgrel=1
 pkgdesc="Another Drop Down Terminal Extension for GNOME Shell (Github version)."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=('gjs' 'gtk3')
-makedepends=('jq' 'meson' 'git')
+makedepends=('jq' 'meson' 'git' 'libxslt')
 install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')

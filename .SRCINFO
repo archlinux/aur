@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-ddterm-git
 	pkgdesc = Another Drop Down Terminal Extension for GNOME Shell (Github version).
-	pkgver = 62.0.2.r55.g10820aad
+	pkgver = 63.0.1.r28.g7eee45ba
 	pkgrel = 1
 	url = https://github.com/ddterm/gnome-shell-extension-ddterm
 	install = gnome-shell-extension-ddterm.install
@@ -9,6 +9,7 @@ pkgbase = gnome-shell-extension-ddterm-git
 	makedepends = jq
 	makedepends = meson
 	makedepends = git
+	makedepends = libxslt
 	depends = gjs
 	depends = gtk3
 	provides = gnome-shell-extension-ddterm
