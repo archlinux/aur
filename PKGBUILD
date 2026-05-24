@@ -1,7 +1,7 @@
 # Maintainer: Mohan Raman <mohan43u@gmail.com>
 
 pkgname=machi
-pkgver=v0.5.0
+pkgver=0.5.0.r4.gd51761e
 pkgrel=1
 pkgdesc='Window Manager for river wayland compositor'
 arch=('x86_64')
@@ -13,13 +13,18 @@ options=(zipman)
 source=("git+https://codeberg.org/$pkgname/$pkgname.git")
 sha256sums=('SKIP')
 
+pkgver() {
+    cd "$pkgname"
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
-    cd $pkgname
+    cd "$pkgname"
     curl -sfLS 'https://codeberg.org/machi/machi/pulls/29.patch' | git apply -
 }
 
 build() {
-    cd $pkgname
+    cd "$pkgname"
     zig build -Doptimize=ReleaseSafe --prefix "$startdir/zig-out/usr"
 }
 
