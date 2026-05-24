@@ -16,7 +16,7 @@ license=('custom:whatpulse_tos')
 depends=(
     freetype2 xcb-util-image libxkbcommon libxkbcommon-x11 xcb-util-renderutil gcc-libs dbus krb5
     xcb-util-wm glib2 libx11 fontconfig libglvnd xcb-util-keysyms openssl glibc libxcb zlib
-    hicolor-icon-theme qt6-base qt6-httpserver qt6-charts qt6-svg qt6-5compat
+    hicolor-icon-theme qt6-base qt6-httpserver qt6-websockets qt6-charts qt6-svg qt6-5compat
 )
 makedepends=(imagemagick patchelf)
 optdepends=('libpcap: for capturing network statistics')
@@ -29,7 +29,7 @@ source=(
 source_x86_64=("${pkgname}-${pkgver}-amd64.AppImage::https://releases.whatpulse.org/latest/linux/whatpulse-linux-latest_amd64.AppImage")
 
 sha256sums=('5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d'
-            'a57d62d6b70fdb06eb69df7965f5a49327f83c5251ea8de5918b3c61516c2b45'
+            '76cf7a5fc5b7b061733ddaaf7abaf4faf7377e1055c2c363b7d5baf8d3be06a3'
             'cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619')
 sha256sums_x86_64=('f3fa45001e148926ffa46f48c1804db57455e6e8f0efe2c01d3bc990c80dc5be')
 
