@@ -21,18 +21,9 @@ index 535b876..6cfca85 100644
  envCython["LIBS"] = []
  if arch == "Darwin":
 diff --git a/src/SConscript b/src/SConscript
-index f51123c..159e491 100644
+index f51123c..d78f4de 100644
 --- a/src/SConscript
 +++ b/src/SConscript
-@@ -12,7 +12,7 @@ qt_env['QT_MOCFROMHDIR'] = os.path.join(build_dir, 'moc')
- qt_env['QT_MOCFROMCXXDIR'] = os.path.join(build_dir, 'moc')
- 
- qt_env["CPPPATH"] += ["#"]
--qt_modules = ["Widgets", "Gui", "Core", "Concurrent", "DBus", "Svg", "OpenGL", "OpenGLWidgets", "PrintSupport", "Charts", "SerialBus", "Network"]
-+qt_modules = ["Widgets", "Gui", "Core", "Concurrent", "DBus", "Svg", "OpenGL", "OpenGLWidgets", "PrintSupport", "Charts", "SerialBus"]
- 
- qt_libs = []
- qt_host_bins = ""
 @@ -27,15 +27,18 @@ if arch == "Darwin":
      qt_env.AppendENVPath('PATH', os.path.join(qt_env['QTDIR'], "bin"))
      qt_host_bins = os.path.join(qt_env['QTDIR'], "bin")
