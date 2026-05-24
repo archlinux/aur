@@ -1,13 +1,13 @@
 pkgbase = xleak-bin
 	pkgdesc = A fast terminal Excel viewer with interactive TUI, search, formulas, and export capabilities
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/bgreenwell/xleak
 	arch = x86_64
 	license = MIT
 	provides = xleak
 	conflicts = xleak
-	source = https://github.com/bgreenwell/xleak/releases/download/v0.2.5/xleak-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = 99144d1ddc6b28fe12264c1d74a2733e2f2d13185689361d85162eaa6cd5d6ae
+	source = https://github.com/bgreenwell/xleak/releases/download/v0.2.6/xleak-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = f3c7e4177dbec1639763c50b09ba41cf14ff7036f984d24db87658f4e7739437
 
 pkgname = xleak-bin
