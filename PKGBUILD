@@ -11,7 +11,7 @@ provides=('firmium-desktop')
 conflicts=('firmium-desktop-git')
 options=('!strip')
 
-source=("https://github.com/fossisawesome/firmium/releases/download/v${pkgver}/firmium-desktop_${pkgver}_amd64.deb")
+source=("https://github.com/fossisawesome/firmium/releases/download/v${pkgver}/Firmium_${pkgver}_amd64.deb")
 sha256sums=('SKIP')
 
 package() {
