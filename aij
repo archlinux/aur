@@ -1,4 +1,3 @@
 #!/bin/sh
 cd /opt/astroimagej/
-java -Xmx8192m -jar ij.jar
-exit
+exec java -XX:MaxRAMPercentage=75 -jar ij.jar "$@"
