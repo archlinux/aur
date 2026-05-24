@@ -1,4 +1,4 @@
-# Maintainer: Brandon Doornbos <b.doornbos@pm.me>
+# Maintainer: Brandon Doornbos <b.doornbos at pm dot me>
 pkgname=cfait-bin
 pkgver=1.0.2
 pkgrel=1
