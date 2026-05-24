@@ -1,0 +1,15 @@
+post_install() {
+    echo ""
+    echo "==> Linux Chan AI kuruldu!"
+    echo "==> API anahtarlarını yapılandırmak için:"
+    echo "    1. /usr/share/linux-chan-ai/ dizinine gidin"
+    echo "    2. .env dosyası oluşturun:"
+    echo "       Groq_Api_Key=YOUR_GROQ_API_KEY"
+    echo "       Weather_Api_Key=YOUR_WEATHER_API_KEY"
+    echo "    3. linux-chan-ai komutuyla başlatın"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
