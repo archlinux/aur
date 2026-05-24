@@ -59,6 +59,16 @@ static void daemonize() {
 /* ---------- MAIN ---------- */
 
 int main(int argc, char **argv) {
+    if (geteuid() != 0) {
+        char *args[] = {"sudo", "-E", argv[0], NULL};
+
+        fprintf(stderr, "cursorfb: restarting with sudo...\n");
+
+        execvp("sudo", args);
+        perror("cursorfb: failed to escalate privileges");
+        printf("manually run with sudo: sudo -E\n");
+        return 1;
+    }
 
     if (argc > 1 && strcmp(argv[1], "--stop") == 0) {
         stop_daemon();

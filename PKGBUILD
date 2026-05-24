@@ -1,5 +1,5 @@
 pkgname=cursorfb
-pkgver=1.0.2
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Framebuffer software cursor overlay"
 arch=('x86_64')
