@@ -32,6 +32,7 @@ optdepends=(
   'pipewire: audio support'
   'pulseaudio: audio support (fallback)'
 )
+options=('!strip' '!debug')
 provides=('hanako')
 conflicts=('hanako')
 source=("https://github.com/liliMozi/openhanako/releases/download/v${pkgver}/Hanako-${pkgver}-Linux-x86_64.AppImage"
