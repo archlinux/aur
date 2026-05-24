@@ -1,13 +1,16 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=megaglest-data-git
-pkgver=3.13.0.r15.gdf2ae0a5
-pkgrel=1
+pkgver=3.13.0.r28.gf5ab4c1d
+pkgrel=2
 pkgdesc='Fork of Glest, a 3D real-time strategy game in a fantastic world (data files, git version)'
 arch=('any')
 url='https://megaglest.org/'
-license=('custom:CCBYSA3.0')
-makedepends=('git' 'cmake' 'xz')
+license=('CC-BY-SA-3.0')
+makedepends=(
+    'cmake'
+    'git'
+    'xz')
 provides=('megaglest-data')
 conflicts=('megaglest-data')
 source=('git+https://github.com/MegaGlest/megaglest-data.git')
