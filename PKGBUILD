@@ -1,7 +1,7 @@
 # Maintainer: ry2x
 
 pkgname=hyprcrop
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="A fast, Hyprland-native screenshot tool written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('slurp' 'wl-clipboard' 'hyprland' 'libnotify' 'pipewire')
 makedepends=('rust' 'cargo' 'clang' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9faed535509af0c05a9d07279b1ec98e3d4440c2b27c98d7c4c99b2a354fef78')
+sha256sums=('1f2b89f826743aba1dfba2b5ae0a6adcdbf60acb57e49a39e1d58392f5d978f1')
 
 prepare() {
     cd "$pkgname-$pkgver"
