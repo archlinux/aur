@@ -1,6 +1,6 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-git
-pkgver=0.r650.76dd077
+pkgver=0.r807.3f2eb84
 pkgrel=1
 epoch=1
 license=('GPL-2.0-only')
@@ -20,21 +20,17 @@ depends=(
     'xdg-utils'
 )
 makedepends=(
+    'clang'
     'cmake'
     'git'
-    'ninja'
-    'plasma-wayland-protocols'
-    'python'
     'rust'
-    'vulkan-headers'
-    'wayland-protocols'
 )
 provides=('jellyfin-desktop')
 conflicts=('jellyfin-desktop')
 replaces=('jellyfin-desktop-cef-git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
-options=(!debug)
+options=(!debug !lto)
 
 pkgver() {
     cd jellyfin-desktop
@@ -44,11 +40,10 @@ pkgver() {
 build() {
     cd jellyfin-desktop
 
-    cmake -B build -G Ninja \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DEXTERNAL_MPV_DIR=/opt/jellyfin-desktop/libmpv
-
-    cmake --build build
+    cargo xtask build \
+        --system-cef \
+        --external-mpv /opt/jellyfin-desktop/libmpv \
+        --out build
 }
 
 package() {
