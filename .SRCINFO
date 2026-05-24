@@ -1,11 +1,11 @@
 pkgbase = noir
 	pkgdesc = Attack surface detector that identifies endpoints by static analysis.
-	pkgver = 0.30.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/owasp-noir/noir
 	arch = x86_64
 	license = MIT
-	source = noir-0.30.0::https://github.com/owasp-noir/noir/releases/download/v0.30.0/noir-v0.30.0-linux-x86_64
+	source = noir-1.0.0::https://github.com/owasp-noir/noir/releases/download/v1.0.0/noir-v1.0.0-linux-x86_64
 	sha256sums = SKIP
 
 pkgname = noir
