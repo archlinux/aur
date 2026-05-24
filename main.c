@@ -46,8 +46,10 @@ static void daemonize() {
     if (pid > 0) exit(0);
 
     FILE *f = fopen(PID_FILE, "w");
-    fprintf(f, "%d", getpid());
-    fclose(f);
+    if (f) {
+        fprintf(f, "%d", getpid());
+        fclose(f);
+    }
 
     close(STDIN_FILENO);
     close(STDOUT_FILENO);
@@ -61,14 +63,18 @@ int main(int argc, char **argv) {
     if (argc > 1 && strcmp(argv[1], "--stop") == 0) {
         stop_daemon();
         return 0;
-    } else if (argc == 1 || (argc > 1 && strcmp(argv[1], "--help") == 0)) {
-        printf("usage: %s [options]\n", argv[0]);
+    }
+
+    if (argc > 1 && strcmp(argv[1], "--help") == 0) {
+        printf("usage: cursorfb [options]\n");
         printf("options:\n");
-        printf("  --stop    stop the cursorfb daemon\n");
-        printf("  --help    show this help message\n");
-        printf("  (no args) start cursor daemon\n");
+        printf("  --stop    stop daemon\n");
+        printf("  --help    show help\n");
         return 0;
     }
+
+    /* DEFAULT: start daemon */
+    daemonize();
 
     if (curfb_init() != 0)
         return 1;
