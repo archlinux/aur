@@ -2,7 +2,7 @@
 
 pkgname=ai-usagebar-bin
 _pkgname=ai-usagebar
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Waybar widget + TUI for AI plan usage (prebuilt binary)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
-sha256sums=('cbada026a763576b684356f1d38a91d0695d1ba0a839a73417ddae5dff262ac4')
+sha256sums=('c35a78c3e97f7ef62bb49d5ae8b66b05292917ba6064a29b2763da3c3eb43474')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/"                "ai-usagebar"
