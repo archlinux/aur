@@ -1,6 +1,6 @@
 # Maintainer: Dylan <dylanh@aur.archlinux.org>
 pkgname=rune-editor
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="A modern CLI text editor that bridges the gap between nano's simplicity and advanced features"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo' 'pkgconf')
 provides=('rune')
 conflicts=('rune-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/exec/rune/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9572cda654a16461b3b1100d89b89dc18b52304ad24a83c021201231ad12f44d')
+sha256sums=('18a6b066448f0b0da6c3e1801ac9605644f959671005833f5ae2865f5fbf4d2d')
 
 build() {
     cd "rune-$pkgver"
