@@ -1,0 +1,25 @@
+pkgbase = estoys-custom-xfce4-docklike-plugin-git
+pkgdesc = Fork of the docklike plugin with support for notification badges
+pkgver = r1216.258bbe9
+pkgrel = 1
+url = https://gitlab.xfce.org/EstoyAburridowGH/xfce4-docklike-plugin
+arch = x86_64
+license = GPL3
+makedepends = git
+makedepends = meson
+makedepends = xfce4-dev-tools
+depends = cairo
+depends = exo
+depends = glib2
+depends = gtk3
+depends = libxfce4ui
+depends = libxfce4windowing
+depends = xfce4-panel
+optdepends = libunity: Required by some programs to have badge notifications
+provides = xfce4-docklike-plugin
+conflicts = xfce4-docklike-plugin
+source = estoys-custom-xfce4-docklike-plugin::git+https://gitlab.xfce.org/EstoyAburridowGH/xfce4-docklike-plugin.git
+sha256sums = SKIP
+
+pkgname = estoys-custom-xfce4-docklike-plugin-git
+
