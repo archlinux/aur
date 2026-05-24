@@ -1,6 +1,6 @@
 pkgbase = decompile
 	pkgdesc = Docker-isolated static reverse engineering orchestrator
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Admin12121/decompile
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = decompile
 	depends = python
 	depends = docker
 	optdepends = github-cli: passes GitHub authentication for optional AI enhancement
-	source = decompile-0.1.2.tar.gz::https://github.com/Admin12121/decompile/archive/refs/tags/v0.1.2.tar.gz
+	source = decompile-0.1.3.tar.gz::https://github.com/Admin12121/decompile/archive/refs/tags/v0.1.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = decompile
