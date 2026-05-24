@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent
-pkgver=0.8.9
+pkgver=0.8.10
 pkgrel=1
 pkgdesc="Moshpit agent daemon — holds identity keys in memory and serves them over a Unix socket (passphrase unlock)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT' 'Apache-2.0')
 depends=()
 makedepends=('cargo' 'cmake' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/moshpit/archive/v$pkgver.tar.gz")
-sha256sums=('d48b7b1d3ada50576889d0215fce78737e08f5c6ac516abf7bb2cc6511c32ee8')
+sha256sums=('a1ec8ea5a52e9a7e69a57e5e174e4817a25775653fcbac68a4ade445d24477a4')
 
 prepare() {
     cd "moshpit-$pkgver"
