@@ -1,7 +1,7 @@
 #AUR package maintainer: L1oly, Cogfly creator: Nix-main on Github
 pkgname=cogfly
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform mod manager for Hollow Knight: Silksong."
 arch=(x86_64)
 url="https://github.com/Nix-main/Cogfly"
@@ -10,14 +10,17 @@ depends=('hicolor-icon-theme' 'zenity')
 makedepends=('git' 'sed' 'java-environment=25')
 conflicts=('cogfly-bin' 'cogfly-git')
 options=(!strip)
-
 source=("git+https://github.com/Nix-main/Cogfly.git#tag=${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('f2c7df71b1f1571569d915267444912c428faa2330add1da1d9c023e1b6305c2')
 
 prepare() {
   cd "${srcdir}/Cogfly"
   sed -i 's/^Exec=Cogfly$/Exec=cogfly/' Cogfly.desktop
   sed -i 's/^Icon=icon$/Icon=cogfly/' Cogfly.desktop
+}
+
+build() {
+  cd "${srcdir}/Cogfly"
   chmod +x ./gradlew
   ./gradlew clean shadowJar
   mkdir -p out
@@ -29,7 +32,6 @@ prepare() {
             --icon ./icons/icon.png \
             --app-version ${pkgver} \
             --dest out
-
 }
 
 package() {
