@@ -1,13 +1,13 @@
 pkgbase = apothem
 	pkgdesc = Host-agnostic AI-harness configuration manager.
-	pkgver = 0.2.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://apothem.ahmedgad.com
 	arch = any
 	license = MIT
 	depends = bash
 	depends = python
-	source = apothem-v0.2.0-linux.tar.gz::https://github.com/ahmed-g-gad/apothem/releases/download/v0.2.0/apothem-v0.2.0-linux.tar.gz
-	sha256sums = 1a56b99aae5ebd288a2afbc579d8a4f483311d0a4373a6b242552aaca2490b19
+	source = apothem-v0.1.1-linux.tar.gz::https://github.com/ahmed-g-gad/apothem/releases/download/v0.1.1/apothem-v0.1.1-linux.tar.gz
+	sha256sums = 8462e03d3958382e30c43f7932f2bf1323ddb6fe4f44ac98951920edf3c455fd
 
 pkgname = apothem
