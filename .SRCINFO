@@ -1,6 +1,6 @@
 pkgbase = crocoddyl
 	pkgdesc = optimal control library for robot control under contact sequence
-	pkgver = 3.1.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/loco-3d/crocoddyl
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = crocoddyl
 	checkdepends = jupyter-nbformat
 	checkdepends = jupyter-nbconvert
 	makedepends = cmake
-	makedepends = eigen3
+	makedepends = eigen
 	makedepends = jrl-cmakemodules
 	depends = pinocchio
 	depends = eigenpy
@@ -17,12 +17,14 @@ pkgbase = crocoddyl
 	depends = python-scipy
 	depends = coin-or-ipopt
 	optdepends = doxygen
-	source = https://github.com/loco-3d/crocoddyl/releases/download/v3.1.0/crocoddyl-3.1.0.tar.gz
-	source = https://github.com/loco-3d/crocoddyl/releases/download/v3.1.0/crocoddyl-3.1.0.tar.gz.sig
+	source = https://github.com/loco-3d/crocoddyl/releases/download/v3.2.1/crocoddyl-3.2.1.tar.gz
+	source = https://github.com/loco-3d/crocoddyl/releases/download/v3.2.1/crocoddyl-3.2.1.tar.gz.sig
+	source = 0001-fix-Eigen5-build-issue.patch
 	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28
 	validpgpkeys = F182CC432A4752C7A3E4FE02001EB2069D785C81
-	sha256sums = 3c069ce56ad0f9b71343ffe1a1ba24404122f90ad6f37be6d92370e4f36028ab
+	sha256sums = c02fdd4549d035dbc734f30438f91b0ec0e86ab81853871c7ee3f97da9dce19a
 	sha256sums = SKIP
+	sha256sums = 7af0614e2d144f0c775bc723601bb9af2b4d14248cb6b375fc95406393afb753
 
 pkgname = crocoddyl
 

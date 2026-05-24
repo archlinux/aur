@@ -1,0 +1,39 @@
+From 9ea31d76a482e812cf4b1107506aa4daa2c13284 Mon Sep 17 00:00:00 2001
+From: Joris Vaillant <joris.vaillant@inria.fr>
+Date: Wed, 20 May 2026 14:36:57 +0200
+Subject: [PATCH] fix: Eigen5 build issue
+
+---
+ include/crocoddyl/core/actions/diff-lqr.hxx | 2 +-
+ include/crocoddyl/core/actions/lqr.hxx      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/crocoddyl/core/actions/diff-lqr.hxx b/include/crocoddyl/core/actions/diff-lqr.hxx
+index d99cf5a9..de57d116 100644
+--- a/include/crocoddyl/core/actions/diff-lqr.hxx
++++ b/include/crocoddyl/core/actions/diff-lqr.hxx
+@@ -68,7 +68,7 @@ DifferentialActionModelLQRTpl<Scalar>::DifferentialActionModelLQRTpl(
+       N_(MatrixXs::Zero(2 * nq, nu)),
+       G_(MatrixXs::Zero(0, 2 * nq + nu)),
+       H_(MatrixXs::Zero(0, 2 * nq + nu)),
+-      f_(drift_free ? VectorXs::Zero(nq) : VectorXs::Ones(nq)),
++      f_(VectorXs::Constant(nq, drift_free ? Scalar(0) : Scalar(1))),
+       q_(VectorXs::Ones(2 * nq)),
+       r_(VectorXs::Ones(nu)),
+       g_(VectorXs::Zero(0)),
+diff --git a/include/crocoddyl/core/actions/lqr.hxx b/include/crocoddyl/core/actions/lqr.hxx
+index 13f5d003..1d4426fc 100644
+--- a/include/crocoddyl/core/actions/lqr.hxx
++++ b/include/crocoddyl/core/actions/lqr.hxx
+@@ -68,7 +68,7 @@ ActionModelLQRTpl<Scalar>::ActionModelLQRTpl(const std::size_t nx,
+       N_(MatrixXs::Zero(nx, nu)),
+       G_(MatrixXs::Zero(0, nx + nu)),
+       H_(MatrixXs::Zero(0, nx + nu)),
+-      f_(drift_free ? VectorXs::Zero(nx) : VectorXs::Ones(nx)),
++      f_(VectorXs::Constant(nx, drift_free ? Scalar(0) : Scalar(1))),
+       q_(VectorXs::Ones(nx)),
+       r_(VectorXs::Ones(nu)),
+       g_(VectorXs::Zero(0)),
+-- 
+2.52.0
+
