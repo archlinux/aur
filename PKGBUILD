@@ -19,6 +19,11 @@ depends=(
 	'python-pyzotero'
 	'python-requests'
 	'python-unidecode'
+	'python-py-key-value-aio'
+	'python-watchfiles'
+	'python-griffe'
+	'python-cyclopts'
+	'python-opentelemetry-api'
 )
 makedepends=(
 	'python-build'
