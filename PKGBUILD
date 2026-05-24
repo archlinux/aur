@@ -1,8 +1,8 @@
-# Maintainer: h8ray <gofindme at dmc dot chat>
+# Maintainer: h8ray <hiddenforever at elektrine dot com>
 
 pkgname=amneziawg-tools-git
 _pkgname=amneziawg-tools
-pkgver=r515.5c6ffd6
+pkgver=r517.5d6179a
 pkgrel=1
 pkgdesc="AmneziaWG is a contemporary version of the popular VPN protocol, WireGuard"
 arch=("x86_64")
