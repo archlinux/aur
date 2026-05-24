@@ -13,6 +13,11 @@
 #   * `mwizard` first-launch setup wizard (writes the shell profile
 #     YAML + xkb_rules_layout into config.conf the first time the
 #     user runs margo with no existing profile)
+#   * `mlogind` TUI login / display manager (fork of lemurs): a
+#     bare-TTY greeter (PAM auth + session launch) themed from the
+#     margo matugen palette. Binary is shipped; its config / PAM /
+#     systemd templates land under doc/ for deliberate install (a
+#     login manager must not auto-clobber the PAM stack). See NOTE.
 #
 # mshell speaks `dwl-ipc-v2` against `margo`. The bundle replaces
 # the previous "compositor-only" `margo-git` so a single
@@ -118,6 +123,8 @@ optdepends=(
   "mullvad-vpn: needed by the mshell ndns VPN-switcher widget"
   "blocky: local DNS resolver controlled by the ndns widget"
   "curl: used by the nip public-IP widget (already pulled by base)"
+  # mlogind (TUI login manager)
+  "fprintd: opt-in fingerprint login for mlogind (pam_fprintd)"
 )
 # `provides` exposes the legacy compositor- and mshell-only package
 # names that older AUR helpers may pin. `conflicts` makes the
@@ -199,9 +206,12 @@ build() {
   # Putting it in the compositor build group re-contaminates
   # margo via feature unification even though mpicker itself
   # doesn't talk to D-Bus.
+  # mlogind joins the compositor group: it's a TUI (ratatui + pam +
+  # uzers) with NO zbus/tokio in its graph, so it can't contaminate
+  # margo's zbus(async-io) artifact via feature unification.
   cargo build --frozen --release \
     -p margo -p start-margo \
-    -p mctl -p mlock -p mlayout -p mscreenshot -p mvisual
+    -p mctl -p mlock -p mlayout -p mscreenshot -p mvisual -p mlogind
 
   # mshell trio + mpicker + mwizard. mpicker pulls
   # mshell-screenshot (→ wayle-* → zbus/tokio), so it has to
@@ -244,7 +254,7 @@ package() {
   local bin
   for bin in \
     margo start-margo \
-    mctl mlock mlayout mscreenshot mvisual \
+    mctl mlock mlayout mscreenshot mvisual mlogind \
     mshell mshellctl mshellshare mpicker mwizard; do
     install -Dm755 "$CARGO_TARGET_DIR/release/$bin" "$pkgdir/usr/bin/$bin"
   done
@@ -474,6 +484,21 @@ package() {
       "$pkgdir/usr/share/doc/$pkgname/mshell/$(basename "$mshell_doc")"
   done
 
+  # ── mlogind (TUI login manager) reference assets ───────────────
+  # mlogind is a login/display manager: do NOT auto-install its
+  # config / PAM / systemd / session templates to /etc or
+  # wayland-sessions — that would clobber the local PAM stack and
+  # could lock the user out. Ship them under doc/ for the user to
+  # install deliberately (see the NOTE block + mlogind/README.md).
+  if [[ -d "mlogind/extra" ]]; then
+    install -d "$pkgdir/usr/share/doc/$pkgname/mlogind"
+    cp -a mlogind/extra/. "$pkgdir/usr/share/doc/$pkgname/mlogind/"
+  fi
+  if [[ -f "mlogind/README.md" ]]; then
+    install -Dm644 "mlogind/README.md" \
+      "$pkgdir/usr/share/doc/$pkgname/mlogind/README.md"
+  fi
+
   # ── Licenses ───────────────────────────────────────────────────
   # margo's own license at the root; upstream attributions in
   # licenses/ (mango/dwl/dwm — compositor lineage; OkShell — shell
@@ -484,6 +509,13 @@ package() {
   for lic in licenses/*; do
     [[ -f "$lic" ]] || continue
     install -Dm644 "$lic" "$pkgdir/usr/share/licenses/$pkgname/$(basename "$lic")"
+  done
+  # mlogind is a fork of lemurs (MIT OR Apache-2.0 by Gijs Burghoorn);
+  # preserve its dual-license attribution.
+  for lic in mlogind/LICENSE-MIT mlogind/LICENSE-APACHE; do
+    [[ -f "$lic" ]] || continue
+    install -Dm644 "$lic" \
+      "$pkgdir/usr/share/licenses/$pkgname/mlogind-$(basename "$lic")"
   done
 }
 
@@ -499,5 +531,14 @@ package() {
 #   • Autostart: either let margo's `exec_once` in config.conf
 #     spawn `mshell` for you, or symlink the example desktop file
 #     into ~/.config/autostart/.
+#   • mlogind (TUI login manager) — opt-in, replaces your display
+#     manager, so it is NOT auto-enabled. Templates live under
+#     /usr/share/doc/margo-git/mlogind/. To use it:
+#       install -Dm644 .../mlogind/config.toml     /etc/mlogind/config.toml
+#       install -Dm644 .../mlogind/variables.toml  /etc/mlogind/variables.toml
+#       install -Dm644 .../mlogind/mlogind.pam     /etc/pam.d/mlogind
+#       install -Dm644 .../mlogind/mlogind.service /etc/systemd/system/mlogind.service
+#     then disable your current DM and enable mlogind.service. Match
+#     the greeter to your wallpaper with `sudo mlogind sync-theme`.
 
 # vim:set sw=2 et:

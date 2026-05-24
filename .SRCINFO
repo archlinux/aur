@@ -68,6 +68,7 @@ pkgbase = margo-git
 	optdepends = mullvad-vpn: needed by the mshell ndns VPN-switcher widget
 	optdepends = blocky: local DNS resolver controlled by the ndns widget
 	optdepends = curl: used by the nip public-IP widget (already pulled by base)
+	optdepends = fprintd: opt-in fingerprint login for mlogind (pam_fprintd)
 	provides = margo=r910.11de780
 	provides = wayland-compositor
 	provides = mshell=r910.11de780
