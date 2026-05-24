@@ -1,6 +1,6 @@
 pkgbase = yanvim-git
 	pkgdesc = Neovim fork with built-in Helix-style selection-first editing paradigm
-	pkgver = 0.12.2.r0.gDIRTY
+	pkgver = 0.12.2.r7.g0c6c40ca07
 	pkgrel = 1
 	url = https://github.com/Rodericuss/Yet-another-neovim
 	arch = x86_64
