@@ -8,10 +8,9 @@ pkgdesc="bittorrent client (daemon + cli + tui) built on libtorrent-rasterbar"
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/5unekku/monsoon"
 license=('GPL-3.0-only')
-depends=('libtorrent-rasterbar' 'gcc-libs' 'glibc')
+depends=('libtorrent-rasterbar' 'gcc-libs' 'glibc' 'curl')
 makedepends=('git' 'cargo' 'boost' 'clang')
 optdepends=(
-    'curl: fetch torrents from http(s)/ftp(s) URLs and refresh ip filter blocklists'
     'systemd: user service included — enable with: systemctl --user enable --now monsoon'
 )
 provides=("${_pkgname}")
