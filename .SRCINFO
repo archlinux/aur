@@ -1,6 +1,6 @@
 pkgbase = worklog-bin
 	pkgdesc = Local-first desktop project manager for small dev teams
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/regisx001/worklog
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = worklog-bin
 	depends = libsoup3
 	depends = glib2
 	depends = gcc-libs
-	source = https://github.com/regisx001/worklog/releases/download/app-v1.3.5/worklog_1.3.5_amd64.AppImage
-	sha256sums = 62fdf40a86448d2bcfb3f1bb5b763b9a30fa57dfe9e66eb88b980364c52df756
+	source = https://github.com/regisx001/worklog/releases/download/app-v1.3.6/worklog_1.3.6_amd64.AppImage
+	sha256sums = 223b62eb2ee99ffdf81eac4d43f9abe1bd8f3838081ae2194e3331d2e5a0d309
 
 pkgname = worklog-bin
