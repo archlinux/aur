@@ -4,12 +4,12 @@
 # Installs the prebuilt AppImage from GitHub Releases.
 
 pkgname=ardali-bin
-pkgver=3.0.0
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="ArDali multimedia ecosystem for Linux (prebuilt AppImage)"
 arch=('x86_64')
 url="https://ardali.app"
-license=('MIT')
+license=('GPL-3.0-only')
 depends=('fuse2' 'glibc' 'zlib' 'ffmpeg')
 provides=('ardali')
 conflicts=('ardali' 'aurivo-bin')
@@ -25,7 +25,7 @@ source=(
   "com.ardali.mediaplayer.png::https://raw.githubusercontent.com/${_owner}/${_repo}/main/icons/ardali_512.png"
 )
 
-sha256sums=('24b6e59ccde7ac01dc34b058d0d9a15687d7bfd4c54a4eaf2260f7a4f5ccbeab'
+sha256sums=('2075fe312e8e27df334337fcb013eb12c85abaaedd74c1235e7833053c6193fe'
             'da02e29b849870a9852e9020c0df9532a84ae81c53d3f073fa633d679d80b43f')
 
 package() {
@@ -58,8 +58,8 @@ EOF
   <id>com.ardali.mediaplayer</id>
   <name>ArDali Media Player</name>
   <summary>Advanced media player</summary>
-  <metadata_license>MIT</metadata_license>
-  <project_license>MIT</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-only</project_license>
   <url type="homepage">https://ardali.app</url>
   <description>
     <p>ArDali Media Player for Linux.</p>

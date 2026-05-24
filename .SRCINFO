@@ -1,10 +1,10 @@
 pkgbase = ardali-bin
 	pkgdesc = ArDali multimedia ecosystem for Linux (prebuilt AppImage)
-	pkgver = 3.0.0
+	pkgver = 3.1.5
 	pkgrel = 1
 	url = https://ardali.app
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-only
 	depends = fuse2
 	depends = glibc
 	depends = zlib
@@ -14,9 +14,9 @@ pkgbase = ardali-bin
 	conflicts = aurivo-bin
 	options = !strip
 	options = !debug
-	source = ArDali-3.0.0-linux-x86_64.AppImage::https://github.com/Muhammed-Dali/ArDali-WebMedia/releases/download/v3.0.0/ArDali-3.0.0-linux-x86_64.AppImage
+	source = ArDali-3.1.5-linux-x86_64.AppImage::https://github.com/Muhammed-Dali/ArDali-WebMedia/releases/download/v3.1.5/ArDali-3.1.5-linux-x86_64.AppImage
 	source = com.ardali.mediaplayer.png::https://raw.githubusercontent.com/Muhammed-Dali/ArDali-WebMedia/main/icons/ardali_512.png
-	sha256sums = 24b6e59ccde7ac01dc34b058d0d9a15687d7bfd4c54a4eaf2260f7a4f5ccbeab
+	sha256sums = 2075fe312e8e27df334337fcb013eb12c85abaaedd74c1235e7833053c6193fe
 	sha256sums = da02e29b849870a9852e9020c0df9532a84ae81c53d3f073fa633d679d80b43f
 
 pkgname = ardali-bin
