@@ -1,11 +1,11 @@
 pkgname=lumen-journal
-pkgver=1.1.27
+pkgver=1.1.28
 pkgrel=1
 pkgdesc="Encrypted journal app built with Rust and Flutter"
 arch=('x86_64')
 url="https://github.com/crazygiscool/lumen"
 license=('custom')
-depends=()
+depends=('glibc' 'libstdc++5' 'gtk3')
 makedepends=('git' 'cargo' 'flutter')
 
 source=("$pkgname::git+https://github.com/crazygiscool/Lumen.git#tag=v$pkgver"
@@ -45,8 +45,13 @@ package() {
 
     cd "$srcdir/$pkgname/ui/build/linux/x64/release/bundle"
 
-    # Install binary
-    install -Dm755 Lumen "$pkgdir/usr/bin/lumen-journal"
+    # Install the entire bundle to /usr/lib/lumen-journal/
+    install -d "$pkgdir/usr/lib/lumen-journal"
+    cp -r Lumen lib data "$pkgdir/usr/lib/lumen-journal/"
+
+    # Symlink in PATH
+    install -d "$pkgdir/usr/bin"
+    ln -s "/usr/lib/lumen-journal/Lumen" "$pkgdir/usr/bin/lumen-journal"
 
     # Install license
     install -Dm644 "$srcdir/$pkgname/LICENSE" \
