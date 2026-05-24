@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
     if (geteuid() != 0) {
         fprintf(stderr, "cursorfb: restarting with sudo...\n");
 
-        char *args[argc + 2];
+        char **args = malloc(sizeof(char*) * (argc + 3));
 
         args[0] = "sudo";
         args[1] = "-E";
@@ -72,7 +72,7 @@ int main(int argc, char **argv) {
             args[i + 2] = argv[i];
         }
 
-        args[argc + 2 - 1] = NULL;
+        args[argc + 2] = NULL;
 
         execvp("sudo", args);
 
@@ -100,7 +100,7 @@ int main(int argc, char **argv) {
         fbwarn("initialization failed");
         return 1;
     }
-    
+
     curfb_loop();
     curfb_shutdown();
 
