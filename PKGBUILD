@@ -29,7 +29,11 @@ pkgver() {
 
 build() {
     cd yay-sys-tray
-    sed -i "s/^version = \".*\"/version = \"${pkgver}\"/" pyproject.toml
+    # pkgver may be a dev version (tag.count.hash) which isn't valid PEP 440;
+    # convert the trailing .count.hash into a +local segment for the wheel.
+    local wheelver
+    wheelver=$(printf '%s' "$pkgver" | sed -E 's/^([0-9]+(\.[0-9]+)*)\.([0-9]+)\.([0-9a-f]{7,})$/\1+\3.\4/')
+    sed -i "s/^version = \".*\"/version = \"${wheelver}\"/" pyproject.toml
     python -m build --wheel --no-isolation
 }
 
