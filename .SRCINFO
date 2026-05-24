@@ -1,14 +1,14 @@
 pkgbase = otf-inconsolata-lgc
 	pkgdesc = Monospace font for pretty code listings and for the terminal, with Cyrillic and Greek support.
-	pkgver = 2.200
+	pkgver = 2.220
 	pkgrel = 1
 	url = http://github.com/MihailJP/Inconsolata-LGC
 	arch = any
 	license = OFL
-	source = http://github.com/MihailJP/Inconsolata-LGC/releases/download/LGC-2.200/InconsolataLGC-OT-2.200.tar.xz
+	source = http://github.com/MihailJP/Inconsolata-LGC/releases/download/LGC-2.220/InconsolataLGC-OT-2.220.tar.xz
 	source = 45-inconsolata-lgc.conf
 	source = 90-non-tt-inconsolata-lgc.conf
-	sha512sums = a7a5a0ffec6fbf4a6405de1ed64c841b7227e4be88888fa755545572efc13a0b564c1e7eb17bea993f44b8016e5b6f3cf5a0a6f2815e45163a40aac334700697
+	sha512sums = 724d0592e7d09a7ba17293b8726857d547b862888af628cbd3811f6efa574088e53053186447fef99cf9405a1ce6dc4adc13cd5873c7aca02cbf67ea268a0406
 	sha512sums = ce4aa734a2484b3dbde67da47f8a14a86753d74293309214f49b60fe13fe9b6daace94d8ba8f922dc678c04702f3a9c6d090954b90848c5794c5ce3ef91342de
 	sha512sums = 2e689ac81a9650f460748b353fa0bbdc902b1ed33ab1a39de67d4b729b09a2b7e65c896b63d03cfb8444e5babbe60a3d5b62d7fa72c9cafa765073aacff09ee8
 
