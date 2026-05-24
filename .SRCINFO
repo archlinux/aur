@@ -1,6 +1,6 @@
 pkgbase = hyprcrop
 	pkgdesc = A fast, Hyprland-native screenshot tool written in Rust
-	pkgver = 0.5.3
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/ry2x/hyprcrop
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = hyprcrop
 	depends = hyprland
 	depends = libnotify
 	depends = pipewire
-	source = hyprcrop-0.5.3.tar.gz::https://github.com/ry2x/hyprcrop/archive/v0.5.3.tar.gz
-	sha256sums = 1f2b89f826743aba1dfba2b5ae0a6adcdbf60acb57e49a39e1d58392f5d978f1
+	source = hyprcrop-0.5.2.tar.gz::https://github.com/ry2x/hyprcrop/archive/v0.5.2.tar.gz
+	sha256sums = 9faed535509af0c05a9d07279b1ec98e3d4440c2b27c98d7c4c99b2a354fef78
 
 pkgname = hyprcrop
