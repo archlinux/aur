@@ -2,11 +2,11 @@
 # shellcheck shell=bash disable=2034,2154,2164
 pkgname=gdlv
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical frontend for Delve'
 arch=(x86_64)
 url=https://github.com/aarzilli/${pkgname}
-license=(GPL-3.0)
+license=(GPL-3.0-or-later)
 depends=()
 makedepends=(go)
 provides=(gdlv)
@@ -35,7 +35,7 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
