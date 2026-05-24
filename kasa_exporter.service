@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus exporter for TP-Link Kasa devices
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+ExecStart=/usr/bin/kasa_exporter --web.listen-address 127.0.0.1:12345
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
