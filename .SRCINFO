@@ -1,6 +1,6 @@
 pkgbase = i3lock-color-albertoos-git
 	pkgdesc = i3lock-color fork: constant-time blur, SSE2, bg cache, async lock, security hardening
-	pkgver = 2.13.c.5.albertoos.7.r0.6403710
+	pkgver = 2.13.c.5.albertoos.8.r0.228517c
 	pkgrel = 1
 	url = https://github.com/AlbertoOS/i3lock-color
 	arch = x86_64
