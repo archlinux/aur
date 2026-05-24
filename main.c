@@ -26,7 +26,6 @@ static void stop_daemon() {
 
     if (kill(pid, SIGTERM) == 0) {
         printf("cursorfb stopped (pid %d)\n", pid);
-        printf("");
         unlink(PID_FILE);
     } else {
         printf("failed to stop cursorfb\n");
