@@ -1,0 +1,34 @@
+pkgbase = collection-manager-git
+	pkgdesc = osu! Collection Manager, supports Stable and Lazer
+	pkgver = 1.0.0
+	pkgrel = 4
+	url = https://github.com/nyaruku/collection-manager
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = sassc
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = libuv
+	depends = brotli
+	depends = zstd
+	provides = collection-manager
+	conflicts = collection-manager
+	source = collection-manager::git+https://github.com/nyaruku/collection-manager.git
+	source = Crow::git+https://github.com/CrowCpp/Crow.git#tag=v1.3.2
+	source = nlohmann_json::git+https://github.com/nlohmann/json.git#tag=v3.12.0
+	source = libsass::git+https://github.com/sass/libsass.git#tag=3.6.6
+	source = cpprealm::git+https://github.com/nyaruku/cpprealm.git#branch=patched
+	source = cpprealm-realm-core::git+https://github.com/realm/realm-core.git#commit=60867846a0aca0c7da5e482282b293236f730216
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = collection-manager-git
