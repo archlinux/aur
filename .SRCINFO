@@ -1,7 +1,7 @@
 pkgbase = avm
 	pkgdesc = AOM Video Model - the reference software for next codec from Alliance for Open Media
 	pkgver = 15.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/AOMediaCodec/avm/
 	arch = x86_64
 	license = BSD-3-Clause

@@ -2,7 +2,7 @@
 
 pkgname=avm
 pkgver=15.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='AOM Video Model - the reference software for next codec from Alliance for Open Media'
 arch=('x86_64')
 url='https://gitlab.com/AOMediaCodec/avm/'
@@ -32,15 +32,6 @@ build() {
         -DENABLE_DOCS:BOOL='OFF' \
         -DENABLE_EXAMPLES:BOOL='OFF' \
         -DENABLE_TESTS:BOOL='OFF' \
-        -DENABLE_AVX:BOOL='OFF' \
-        -DENABLE_AVX2:BOOL='OFF' \
-        -DENABLE_MMX:BOOL='ON' \
-        -DENABLE_SSE:BOOL='ON' \
-        -DENABLE_SSE2:BOOL='ON' \
-        -DENABLE_SSE3:BOOL='OFF' \
-        -DENABLE_SSSE3:BOOL='OFF' \
-        -DENABLE_SSE4_1:BOOL='OFF' \
-        -DENABLE_SSE4_2:BOOL='OFF' \
         -Wno-dev
     cmake --build build
 }
