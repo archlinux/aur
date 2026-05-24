@@ -4,11 +4,16 @@ _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support'
 pkgver=9.31
-pkgrel=13
+pkgrel=14
 url='https://software.schmorp.de/pkg/rxvt-unicode.html'
 arch=('i686' 'x86_64')
 license=('GPL-3.0-only')
-makedepends=('signify')
+# WORKAROUND: using gcc15 because some features (e.g., daemon/client)
+#             don't work when compiled with gcc16
+makedepends=(
+    'signify'
+    'gcc15'
+)
 depends=(
     'libxft'
     'libxt'
@@ -72,6 +77,10 @@ prepare() {
 
     cd "$_archive"
 
+    # WORKAROUND: force gcc15 for building and linking
+    export CC=gcc-15
+    export CXX=g++-15
+
     # WORKAROUND: multiple-char sequence for 7-bit queries
     # https://lists.schmorp.de/pipermail/rxvt-unicode/2023q1/002640.html
     patch -p1 -i ../7-bit-queries.patch
@@ -100,11 +109,11 @@ prepare() {
     # patch rewritten to work with version ≥ 9.29
     patch -p1 -i ../improve-font-rendering.patch
 
+    # WORKAROUND: reset the terminal bg/fg/cursor colors via OSC 110/111/112
     # https://patch-diff.githubusercontent.com/raw/exg/rxvt-unicode/pull/6.patch
-    # patch to reset the terminal bg/fg/cursor colors via OSC 110/111/112
     patch -p1 -i ../osc-110-112-reset.patch
 
-    # patch to prevent lerp errors during compilation
+    # WORKAROUND: prevent lerp errors during compilation
     # in c++20 (default in gcc16) lerp is declared globally (std::lerp) as float,
     # unlike rxvt lerp which uses int
     patch -p1 -i ../linear-interpolation.patch
