@@ -1,0 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Meven Car <meven@kde.org>
+#
+# SPDX-License-Identifier: 0BSD
+
+# Keychron Q1 HE
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="0b11", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="0b11", TAG+="uaccess"
