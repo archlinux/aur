@@ -1,6 +1,6 @@
 pkgbase = ddev-clim
 	pkgdesc = Advanced Terminal UI for managing DDEV instances
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/lemachinarbo/ddev-clim
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ddev-clim
 	makedepends = go
 	depends = ddev
 	depends = glibc
-	source = ddev-clim-0.4.0.tar.gz::https://github.com/lemachinarbo/ddev-clim/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = e5f452034cb9db2e796ef3fb85e11429fa478ba55ebf8e2d15617b05301690c2
+	source = ddev-clim-0.4.1.tar.gz::https://github.com/lemachinarbo/ddev-clim/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 793a4029add0b8f658bb89087a43b081e4a92dd50d21be9b3fca35f6e05ec566
 
 pkgname = ddev-clim
