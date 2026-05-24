@@ -58,7 +58,7 @@ _major=7.0
 _minor=10
 pkgver=${_major}.${_minor}
 _tagrel=2
-pkgrel=1
+pkgrel=2
 _stable=${_major}
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc="Solara Linux Kernel — BORE scheduler, CachyOS patches, maximum POWER"
@@ -347,7 +347,7 @@ _package() {
     echo "Installing boot image..."
     install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
     install -dm755 "$pkgdir/boot"
-    ln -s "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-linux"
+    ln -s "/usr/lib/modules/$(<version)/vmlinuz" "$pkgdir/boot/vmlinuz-linux"
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
     echo "Installing modules..."
     ZSTD_CLEVEL=19 make "${BUILD_FLAGS[@]}" INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
