@@ -1,0 +1,92 @@
+## chowdy.install — pacman hooks.
+##
+## DESIGN.md §9 says chowdyd never runs as root: we create a system user
+## `chowdy` with supplementary group `video` (for /dev/video2 access).
+
+_chowdy_user() {
+    getent group chowdy >/dev/null \
+        || groupadd --system chowdy
+    getent passwd chowdy >/dev/null \
+        || useradd --system --gid chowdy --groups video \
+                   --home-dir /var/lib/chowdy --no-create-home \
+                   --shell /usr/bin/nologin chowdy
+    # Add chowdy to `video` group if it pre-existed without it.
+    if ! id -nG chowdy | grep -qw video; then
+        usermod -aG video chowdy
+    fi
+}
+
+_chowdy_dirs() {
+    install -d -o root     -g chowdy -m 0750 /var/lib/chowdy
+    install -d -o root     -g chowdy -m 0750 /var/lib/chowdy/models
+    install -d -o chowdy -g chowdy -m 0700 /var/lib/chowdy/users
+}
+
+post_install() {
+    _chowdy_user
+    _chowdy_dirs
+    systemd-tmpfiles --create chowdy.conf 2>/dev/null || true
+    systemctl daemon-reload 2>/dev/null || true
+
+    cat <<MSG
+
+  chowdy установлен. Что нужно сделать ВРУЧНУЮ:
+
+    1. Скачать ONNX модели в /var/lib/chowdy/models/
+       (см. /usr/share/doc/chowdy/MODELS.md)
+         sudo install -m 0640 -o root -g chowdy path/to/scrfd_500m_bnkps.onnx \\
+                              /var/lib/chowdy/models/detector.onnx
+         sudo install -m 0640 -o root -g chowdy path/to/w600k_mbf.onnx \\
+                              /var/lib/chowdy/models/embedder.onnx
+
+    2. Включить и запустить демон (через socket activation):
+         sudo systemctl enable --now chowdyd.socket
+         systemctl status chowdyd
+
+    3. Энроллмент своего лица:
+         chowdy-cli enroll --label main
+
+    4. Проверка:
+         chowdy-cli auth-test
+
+    5. Только когда CLI auth работает — настроить PAM для sudo по
+       чек-листу из /usr/share/doc/chowdy/PAM-INSTALL.md. ОБЯЗАТЕЛЬНО
+       открой второй TTY с root до правки /etc/pam.d/*.
+
+  Config: /etc/chowdy/config.toml (помечен как backup — твои правки
+  переживут upgrade пакета).
+
+MSG
+}
+
+post_upgrade() {
+    _chowdy_user
+    _chowdy_dirs
+    systemd-tmpfiles --create chowdy.conf 2>/dev/null || true
+    systemctl daemon-reload 2>/dev/null || true
+
+    echo
+    echo "  chowdy обновлён. Перезапусти демон:"
+    echo "    sudo systemctl restart chowdyd"
+    echo
+    echo "  Если апдейт включал новую модель — energy все .enc файлы пользователей"
+    echo "  получат embedder_id mismatch при auth, нужен пере-enroll."
+    echo
+}
+
+pre_remove() {
+    systemctl --no-reload disable --now chowdyd.socket 2>/dev/null || true
+    systemctl --no-reload disable --now chowdyd.service 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl daemon-reload 2>/dev/null || true
+
+    echo
+    echo "  chowdy удалён. Дополнительно ВРУЧНУЮ:"
+    echo "    sudo userdel chowdy"
+    echo "    sudo groupdel chowdy"
+    echo "    sudo rm -rf /var/lib/chowdy   # удалит модели и энроллменты"
+    echo "    проверь /etc/pam.d/* — убери строки pam_chowdy.so"
+    echo
+}
