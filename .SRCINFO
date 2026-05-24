@@ -1,0 +1,14 @@
+pkgbase = which-key-wayland
+	pkgdesc = About A key-hint panel for Wayland, inspired by the Neovim plugin which-key.nvim and the Helix editor style
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/liuhq/which-key.wayland
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = libxkbcommon
+	options = !debug
+	source = which-key-wayland-0.1.1.tar.gz::https://github.com/liuhq/which-key.wayland/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = 4c39456d2a71c31012467ab48e42d48db1ad67071afe798c257ced739fcf45b8
+
+pkgname = which-key-wayland
