@@ -1,0 +1,19 @@
+pkgbase = sigrun
+	pkgdesc = A lightweight daemon that runs commands in response to D-Bus events.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://codeberg.org/cryptomilk/sigrun/
+	arch = x86_64
+	license = GPL-2.1
+	makedepends = cargo
+	makedepends = pandoc
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	provides = sigrun
+	conflicts = sigrun
+	conflicts = sigrun-bin
+	source = https://codeberg.org/cryptomilk/sigrun/archive/v0.1.1.zip
+	sha256sums = 775b90bf21f7580da2c6c12aa5c625059c0708b660a5d969534ad33c22f20525
+
+pkgname = sigrun
