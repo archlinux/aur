@@ -32,9 +32,14 @@ source=("${pkgname}::git+${url}.git#branch=stable")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
-  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./g' \
-    || printf "0.12.2.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${pkgname}"
+  local _tag
+  _tag=$(git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./g')
+  if [[ -n "$_tag" ]]; then
+    echo "$_tag"
+  else
+    printf "0.12.2.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
 }
 
 build() {
