@@ -1,9 +1,9 @@
-# Maintainer: h8ray <gofindme at dmc dot chat>
+# Maintainer: h8ray <hiddenforever at elektrine dot com>
 
 pkgname=amneziawg-dkms-git
 _pkgname=amneziawg-linux-kernel-module
-pkgver=r1338.b2e234b
-pkgrel=2
+pkgver=r1344.ac946a9
+pkgrel=1
 pkgdesc="AmneziaWG is a contemporary version of the popular VPN protocol, WireGuard"
 arch=("any")
 url="https://github.com/amnezia-vpn/amneziawg-linux-kernel-module"
