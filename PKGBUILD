@@ -113,7 +113,6 @@ build() {
 
   _build headless \
     --audio-drv-list= \
-    --disable-sdl \
     --disable-gtk \
     --disable-vte \
     --disable-brlapi \
