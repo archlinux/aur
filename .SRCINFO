@@ -1,0 +1,21 @@
+pkgbase = haze
+	pkgdesc = Anonymous encrypted P2P chat over the Tor network
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/berk-kucuk/Haze
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = python-pyqt6
+	depends = python-stem
+	depends = python-cryptography
+	depends = python-python-socks
+	depends = tor
+	source = haze-1.0.0.tar.gz::https://github.com/berk-kucuk/Haze/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 7e1cb5ba49d21aef7888b2b0b6cd576152a501703be95cddfc95c5cf00ca70d1
+
+pkgname = haze
