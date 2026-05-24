@@ -1,0 +1,27 @@
+pkgbase = python-chisp-flasher-git
+	pkgdesc = Cross-platform ISP flasher for WCH CH32, CH5x and CH6x families
+	pkgver = 1.1.0.r0.g7e06f97
+	pkgrel = 1
+	url = https://github.com/jarczakpawel/CHISP-Flasher
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = hicolor-icon-theme
+	depends = pyside6
+	depends = python
+	depends = python-pyelftools
+	depends = python-pyserial
+	depends = python-pyusb
+	depends = python-yaml
+	optdepends = wchisp: WCH ISP Tool in Rust
+	provides = python-chisp-flasher
+	conflicts = python-chisp-flasher
+	options = !debug
+	source = chisp-flasher::git+https://github.com/jarczakpawel/CHISP-Flasher.git
+	sha256sums = SKIP
+
+pkgname = python-chisp-flasher-git
