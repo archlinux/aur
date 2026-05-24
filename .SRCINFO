@@ -1,6 +1,6 @@
 pkgbase = r-gap
 	pkgdesc = Genetic Analysis Package
-	pkgver = 1.14
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gap
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = r-gap
 	optdepends = r-cowplot
 	optdepends = r-coxme
 	optdepends = r-diagrammer
-	optdepends = r-dot
 	optdepends = r-genetics
 	optdepends = r-haplo.stats
+	optdepends = r-htmltools
 	optdepends = r-htmlwidgets
 	optdepends = r-jsonlite
 	optdepends = r-kinship2
@@ -40,9 +40,10 @@ pkgbase = r-gap
 	optdepends = r-reshape
 	optdepends = r-rmarkdown
 	optdepends = r-rms
+	optdepends = r-scales
 	optdepends = r-valr
-	source = https://cran.r-project.org/src/contrib/gap_1.14.tar.gz
-	md5sums = 5a7bc860c8d757401c0fdc2cbd75d234
-	b2sums = 6f42280e1ef7484498a8702d66e9b6a140eb3eb3b1b48ef172d2174f339c5f8d4912660a5c71d797239c21bdff33d1ddce01129ed20423e18ed78397e2fa4022
+	source = https://cran.r-project.org/src/contrib/gap_1.15.1.tar.gz
+	md5sums = 054e74706124805d5ec52ca19d9b3186
+	b2sums = e13f194f8bd8e3c8376fca34764e1afcd3cf64375020d04208bf825c4cd6816d8b1767f6e347b3471e2c7da72af729cb636d66e68ab04c71c64b159e137c1d33
 
 pkgname = r-gap

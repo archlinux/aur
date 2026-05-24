@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gap
-_pkgver=1.14
+_pkgver=1.15.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,9 +30,9 @@ optdepends=(
   r-cowplot
   r-coxme
   r-diagrammer
-  r-dot
   r-genetics
   r-haplo.stats
+  r-htmltools
   r-htmlwidgets
   r-jsonlite
   r-kinship2
@@ -50,11 +50,12 @@ optdepends=(
   r-reshape
   r-rmarkdown
   r-rms
+  r-scales
   r-valr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5a7bc860c8d757401c0fdc2cbd75d234')
-b2sums=('6f42280e1ef7484498a8702d66e9b6a140eb3eb3b1b48ef172d2174f339c5f8d4912660a5c71d797239c21bdff33d1ddce01129ed20423e18ed78397e2fa4022')
+md5sums=('054e74706124805d5ec52ca19d9b3186')
+b2sums=('e13f194f8bd8e3c8376fca34764e1afcd3cf64375020d04208bf825c4cd6816d8b1767f6e347b3471e2c7da72af729cb636d66e68ab04c71c64b159e137c1d33')
 
 build() {
   mkdir build
