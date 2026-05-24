@@ -3,17 +3,16 @@
 _pkgname=ssh-multisession-resume
 pkgname=${_pkgname}-git
 _srcname=${_pkgname}-source
-pkgver=0.r8.g3da2e62
+pkgver=0.r10.g95d47e0
 pkgrel=1
 pkgdesc='Persistent multi-session SSH auto-resume utility backed by tmux'
 arch=('any')
 url="https://github.com/Bit-Loop/${_pkgname}"
 license=('MIT')
-depends=('bash' 'openssh')
+depends=('bash' 'openssh' 'tmux' 'screen')
 makedepends=('git')
+checkdepends=('tmux' 'screen')
 optdepends=(
-  'tmux: preferred persistent terminal backend'
-  'screen: fallback terminal backend'
   'sudo: allow non-root installer runs to apply SSHD changes'
 )
 install=${_pkgname}.install
@@ -32,6 +31,12 @@ pkgver() {
   fi
 }
 
+check() {
+  cd "${_srcname}" || return
+
+  env -u TMUX -u STY ./tests/smoke.sh
+}
+
 package() {
   cd "${_srcname}" || return
 
@@ -46,7 +51,12 @@ package() {
   install -Dm644 server/01-sshd-auto-resume.conf "${pkgdir}/usr/lib/${_pkgname}/server/01-sshd-auto-resume.conf"
   install -Dm755 tests/smoke.sh "${pkgdir}/usr/share/${_pkgname}/tests/smoke.sh"
 
+  # System-wide profile.d hook: enables the SSH menu without per-user setup.
+  install -Dm644 client/profile-entry.sh "${pkgdir}/etc/profile.d/${_pkgname}.sh"
+
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+  install -Dm644 SECURITY.md "${pkgdir}/usr/share/doc/${pkgname}/SECURITY.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -dm755 "${pkgdir}/usr/bin"
