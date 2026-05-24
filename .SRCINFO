@@ -27,6 +27,7 @@ pkgbase = quickshell-allflags-git
 	depends = jemalloc
 	depends = libdrm
 	depends = mesa
+	depends = cpptrace
 	provides = quickshell
 	conflicts = quickshell
 	conflicts = quickshell-git

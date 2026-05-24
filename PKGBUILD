@@ -20,6 +20,7 @@ depends=(
     'jemalloc'
     'libdrm'
     'mesa'
+    'cpptrace'
 )
 makedepends=(
     'git'
