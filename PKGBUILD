@@ -88,6 +88,6 @@ package() {
   local source_artifact_0="${source_url_0##*/}"
 
   cd "${srcdir}/${source_artifact_0%.tar*}"
-  local source_plugin_0="$(ls plugins/*.deb | head -n1)"
+  local source_plugin_0="$(ls plugins/*${_pluginver//_/-}*.deb | head -n1)"
   cp -vaT --no-preserve=ownership "${source_plugin_0%.deb}" "${pkgdir}"
 }
