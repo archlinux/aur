@@ -6,7 +6,7 @@
 # edit the placeholders in-tree.
 
 pkgname=winpodx
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="Windows app integration for Linux desktop (Podman/FreeRDP RemoteApp)"
 arch=('any')
@@ -31,7 +31,8 @@ makedepends=(
   'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kernalix7/winpodx/archive/v$pkgver.tar.gz")
-sha256sums=('f3fc1c41113ab24ee9a6185d0bf956a5de8b4c4fa2665e7135813d5109086153')
+sha256sums=('2b031d918135166bdf2eee0ec2b7ddb59baba8c5131b9a67e63b5b7d5f539751')
+install=winpodx.install
 
 build() {
   cd "$pkgname-$pkgver"
@@ -51,4 +52,13 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/winpodx.svg"
   install -Dm644 data/winpodx.toml.example \
     "$pkgdir/usr/share/winpodx/winpodx.toml.example"
+  # #255 PR 4: post-remove cleanup helper, called from winpodx.install's
+  # post_remove(). Shared with debian/postrm and the rpm %postun.
+  install -Dm755 packaging/scripts/postrm-common.sh \
+    "$pkgdir/usr/share/winpodx/packaging/postrm-common.sh"
+  # #255 consolidation: canonical uninstaller. Same bash script ships
+  # via deb, rpm, aur, pip wheel, and the curl install bundle so the
+  # behaviour is identical regardless of install source.
+  install -Dm755 uninstall.sh \
+    "$pkgdir/usr/share/winpodx/uninstall.sh"
 }
