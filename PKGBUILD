@@ -1,6 +1,6 @@
 # Maintainer: Ron <thefangeddeity>
 pkgname=hls-livecam-server
-pkgver=5.0.12
+pkgver=5.0.13
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
-sha256sums=('effc7608fe2f16d74d8da2a954fc583009de19bc790bcf43f37f9f7a7cc3a3df'
+sha256sums=('c175919e6d1679617a4dfc4a26ecee2b7ec10cc741eafe5a65f6f53fa6d481f8'
             'SKIP')
 
 package() {
