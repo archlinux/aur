@@ -3,7 +3,7 @@
 
 pkgname=fluffychat-bin
 _pkgname=fluffychat
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized."
 arch=('x86_64') # 'aarch64'
@@ -11,20 +11,22 @@ url="https://fluffychat.im/"
 license=('AGPL3')
 depends=(
   'gtk3'
-  'jsoncpp'
   # flutter_secure_storage
   'libsecret'
+  'openssl'
   # path_provider
   'xdg-user-dirs'
-  # flutter_file_picker - see https://github.com/miguelpruivo/flutter_file_picker/blob/master/lib/src/linux/file_picker_linux.dart#L115
-  'zenity'
   'webkit2gtk-4.1'
+)
+optdepends=(
+  'zenity: for flutter_file_picker'
+  'kdialog: for flutter_file_picker'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("fluffychat-v${pkgver}_x86_64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/v${pkgver}/fluffychat-linux-x64.tar.gz")
 #source_aarch64=("fluffychat-v${pkgver}_aarch64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/v${pkgver}/fluffychat-linux-arm64.tar.gz")
-sha256sums_x86_64=('5bad47a6a1275065777a3a829eae25de78a7e1f4c51e531938411c029d4b658e')
+sha256sums_x86_64=('e276a535b4c529b56cdb0811e8dd798016b7f95a901f93a9959ae958a3916a52')
 # sha256sums_aarch64=('f3a25daebf0a4e827268f1005944b8c1b359b946b22ee8a792937e1babc40869')
 
 package() {
