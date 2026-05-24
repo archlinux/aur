@@ -1,5 +1,6 @@
 src/
 pkg/
+openwarp-git/
 *.tar.*
 *.pkg.tar.*
 *.pkg.tar

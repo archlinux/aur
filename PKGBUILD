@@ -1,14 +1,17 @@
 # Maintainer: jinzhongjia <jinzhongjia@manus.ai>
 
 pkgname=openwarp-git
-pkgver=2026.05.20.preview.r0.g3d4eaa4
+pkgver=2026.05.22.preview.r0.g3d4eaa4
 pkgrel=1
 # Upstream renamed releases from "YYYY.MM.DD.preview" to "0.YYYY.MM.DD.HHMM",
 # which sorts lower under pacman vercmp. epoch ensures clean upgrades.
+# Upstream also renamed the project OpenWarp → Zap (2026-05). Binary is
+# now zap-oss; desktop file is dev.zap.Zap.desktop. AUR pkgname stays
+# openwarp-git for continuity.
 epoch=1
-pkgdesc="OpenWarp - open-source fork of Warp, a Rust-based terminal with AI built in (git version)"
+pkgdesc="Zap (formerly OpenWarp) - open-source fork of Warp, a Rust-based terminal with AI built in (git version)"
 arch=('x86_64')
-url="https://github.com/zerx-lab/warp"
+url="https://github.com/zerx-lab/zap"
 license=('AGPL-3.0-only')
 makedepends=(
     'git'
@@ -46,15 +49,15 @@ optdepends=(
     'python: bundled skill scripts (create-skill, pr-comments, feedback)'
     'python-yaml: skill validation script'
 )
-provides=('openwarp' 'warp-terminal-oss')
-conflicts=('openwarp-bin' 'warp-terminal-oss')
+provides=('openwarp' 'zap' 'warp-terminal-oss')
+conflicts=('openwarp-bin' 'zap' 'warp-terminal-oss')
 # '!lto': makepkg 默认会往 CFLAGS/CXXFLAGS/LDFLAGS 注入 -flto=auto。
 #         ring crate 的 build.rs 用这些 CFLAGS 通过 cc-rs 编译 C/asm，
 #         GCC 会产出 slim LTO 对象（.text 段为 0 字节，符号只在 .gnu.lto_.symtab 里）。
 #         rustc 调用的 rust-lld 不识别 GCC 的 GIMPLE LTO plugin，
 #         结果 ring 的全部 C 符号在链接时 undefined。必须关掉 makepkg 的 LTO。
 options=('!strip' '!debug' '!lto')
-source=("${pkgname}::git+https://github.com/zerx-lab/warp.git")
+source=("${pkgname}::git+https://github.com/zerx-lab/zap.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -69,23 +72,23 @@ build() {
 
     # Strip build paths from the binary. Without this, ~30k panic-site file
     # paths under $srcdir (project source, cargo registry, git checkouts)
-    # get baked into warp-oss and makepkg flags them as $srcdir references.
+    # get baked into zap-oss and makepkg flags them as $srcdir references.
     # --remap-path-prefix covers Rust code; -ffile-prefix-map covers the
     # tree-sitter grammar .c files compiled via cc-rs.
     export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}=/build --remap-path-prefix=${HOME}=/build/home"
     export CFLAGS="${CFLAGS} -ffile-prefix-map=${srcdir}=/build"
     export CXXFLAGS="${CXXFLAGS} -ffile-prefix-map=${srcdir}=/build"
 
-    cargo build --release --bin warp-oss --features "gui,nld_improvements"
+    cargo build --release --bin zap-oss --features "gui,nld_improvements"
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
 
-    _optdir="/opt/warpdotdev/warp-terminal-oss"
+    _optdir="/opt/zap"
 
     # Install binary
-    install -Dm755 "target/release/warp-oss" "${pkgdir}${_optdir}/warp-oss"
+    install -Dm755 "target/release/zap-oss" "${pkgdir}${_optdir}/zap-oss"
 
     # Install bundled resources (skills, MCP skills, etc.)
     if [[ -d "resources/bundled" ]]; then
@@ -94,19 +97,20 @@ package() {
 
     # Create symlinks
     install -d "${pkgdir}/usr/bin"
-    ln -s "${_optdir}/warp-oss" "${pkgdir}/usr/bin/warp-terminal-oss"
-    ln -s "${_optdir}/warp-oss" "${pkgdir}/usr/bin/openwarp"
+    ln -s "${_optdir}/zap-oss" "${pkgdir}/usr/bin/zap"
+    # Keep /usr/bin/openwarp for users with launchers from before the rename.
+    ln -s "${_optdir}/zap-oss" "${pkgdir}/usr/bin/openwarp"
 
     # Install desktop file
-    install -Dm644 "app/channels/oss/dev.openwarp.OpenWarp.desktop" \
-        "${pkgdir}/usr/share/applications/dev.openwarp.OpenWarp.desktop"
+    install -Dm644 "app/channels/oss/dev.zap.Zap.desktop" \
+        "${pkgdir}/usr/share/applications/dev.zap.Zap.desktop"
 
     # Install icons
     for _size in 16x16 32x32 48x48 64x64 128x128 256x256 512x512; do
         _icon="app/channels/oss/icon/no-padding/${_size}.png"
         if [[ -f "${_icon}" ]]; then
             install -Dm644 "${_icon}" \
-                "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/dev.openwarp.OpenWarp.png"
+                "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/dev.zap.Zap.png"
         fi
     done
 }
