@@ -1,5 +1,5 @@
 pkgbase = musicfree-desktop-wayland-bin
-	pkgdesc = Plug-in, customized, ad-free music player. Wayland-adapted prebuilt version.
+	pkgdesc = 插件化、定制化、无广告的免费音乐播放器，Wayland 适配预构建版本
 	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/txgde-space/MusicFreeDesktop
