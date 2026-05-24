@@ -1,6 +1,6 @@
 pkgbase = python-jbom
 	pkgdesc = Intelligent KiCad Bill of Materials generator with inventory matching
-	pkgver = 6.60.0
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://github.com/plocher/jBOM
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-jbom
 	optdepends = kicad
 	provides = python-jbom
 	conflicts = python-jbom
-	source = jbom::git+https://github.com/plocher/jBOM.git#tag=v6.60.0
-	sha256sums = 6f0bc7966edb0cc552738597b80222c1e3587b803e3413c1f82657ecc32d04ff
+	source = jbom::git+https://github.com/plocher/jBOM.git#tag=v7.0.0
+	sha256sums = 5669b191b7d5393e15de1d90e46f396af95afcd64b4329a12c9a3f7018f9b483
 
 pkgname = python-jbom
