@@ -1,7 +1,7 @@
 pkgbase = gimp-openvino
 	pkgdesc = Intel OpenVINO AI Plugins for GIMP
 	pkgver = 3.2.1.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/intel/openvino-ai-plugins-gimp
 	arch = x86_64
 	license = Apache-2.0

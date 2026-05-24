@@ -4,7 +4,7 @@
 pkgbase=gimp-openvino
 pkgname=gimp-openvino
 pkgver=3.2.1.0  # auto-set by pkgver()
-pkgrel=10
+pkgrel=11
 pkgdesc="Intel OpenVINO AI Plugins for GIMP"
 arch=('x86_64')
 url="https://github.com/intel/openvino-ai-plugins-gimp"
@@ -88,6 +88,9 @@ if cfg['weight_path'].startswith(old):
 with open(config_file, 'w') as f:
     json.dump(cfg, f, indent=4)
 "
+
+  # Make models directory writable so plugins can write cache images at runtime
+  chmod -R g+w "$models_dir"
 
   # Copy plugin files to GIMP plugin directory
   local plugindir="$pkgdir/usr/lib/gimp/3.0/plug-ins"
