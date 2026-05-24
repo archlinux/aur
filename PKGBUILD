@@ -9,12 +9,6 @@ license=('MIT')
 depends=(
     'python'
     'python-pyqt5'
-    'python-dotenv'
-    'python-requests'
-    'python-pygame'
-    'python-distro'
-    'python-gtts'
-    'python-google-genai'
 )
 install=linux-chan-ai.install
 source=(
@@ -32,7 +26,7 @@ package() {
 
     # Wrapper script
     install -dm755 "$pkgdir/usr/bin"
-    printf '#!/bin/sh\nexec python /usr/share/linux-chan-ai/main.py "$@"\n' \
+    printf '#!/bin/sh\nexec /usr/share/linux-chan-ai/venv/bin/python /usr/share/linux-chan-ai/main.py "$@"\n' \
         > "$pkgdir/usr/bin/$pkgname"
     chmod 755 "$pkgdir/usr/bin/$pkgname"
 

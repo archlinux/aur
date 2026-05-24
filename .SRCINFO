@@ -8,12 +8,6 @@ pkgbase = linux-chan-ai
 	license = MIT
 	depends = python
 	depends = python-pyqt5
-	depends = python-dotenv
-	depends = python-requests
-	depends = python-pygame
-	depends = python-distro
-	depends = python-gtts
-	depends = python-google-genai
 	source = linux-chan-ai-1.0.0.tar.gz::https://github.com/berk-kucuk/Linux-Chan-AI/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = 8d10b2c53d9ecd383569dc488196b13ffad120e6d4ea8871f13ce24c71f9d9ea
 

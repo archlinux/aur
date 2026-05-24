@@ -1,15 +1,29 @@
 post_install() {
+    echo "==> Python sanal ortamı oluşturuluyor..."
+    python -m venv --system-site-packages /usr/share/linux-chan-ai/venv
+    /usr/share/linux-chan-ai/venv/bin/pip install --quiet \
+        -r /usr/share/linux-chan-ai/requirements.txt
+
     echo ""
     echo "==> Linux Chan AI kuruldu!"
-    echo "==> API anahtarlarını yapılandırmak için:"
-    echo "    1. /usr/share/linux-chan-ai/ dizinine gidin"
-    echo "    2. .env dosyası oluşturun:"
-    echo "       Groq_Api_Key=YOUR_GROQ_API_KEY"
-    echo "       Weather_Api_Key=YOUR_WEATHER_API_KEY"
-    echo "    3. linux-chan-ai komutuyla başlatın"
+    echo "==> Kullanmadan önce API anahtarlarını ayarlayın:"
+    echo "    sudo nano /usr/share/linux-chan-ai/.env"
+    echo ""
+    echo "    Dosya içeriği:"
+    echo "    Groq_Api_Key=YOUR_GROQ_API_KEY"
+    echo "    Weather_Api_Key=YOUR_WEATHER_API_KEY"
+    echo ""
+    echo "==> Başlatmak için: linux-chan-ai"
     echo ""
 }
 
 post_upgrade() {
-    post_install
+    echo "==> Bağımlılıklar güncelleniyor..."
+    /usr/share/linux-chan-ai/venv/bin/pip install --quiet \
+        -r /usr/share/linux-chan-ai/requirements.txt
+    echo "==> Güncelleme tamamlandı."
+}
+
+pre_remove() {
+    rm -rf /usr/share/linux-chan-ai/venv
 }
