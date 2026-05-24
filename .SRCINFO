@@ -6,6 +6,7 @@ pkgbase = farmos
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = composer
+	makedepends = pcre
 	depends = bash
 	depends = perl
 	depends = php

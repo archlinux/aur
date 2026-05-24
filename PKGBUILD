@@ -15,7 +15,7 @@ arch=("any")
 url="https://github.com/farmOS/${_pkgname}"
 license=("GPL-2.0-or-later")
 depends=("bash" "perl" "php" "php-gd" "php-sodium")
-makedepends=("composer")
+makedepends=("composer" "pcre")
 optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
     "mariadb: Database."
