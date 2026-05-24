@@ -1,3 +1,4 @@
+# Maintainer HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=cdecrypt-git
 pkgver=4.8.r1.g0ca58c6
 pkgrel=1
