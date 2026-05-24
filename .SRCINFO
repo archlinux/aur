@@ -1,0 +1,22 @@
+pkgbase = opengui-bin
+	pkgdesc = Desktop and web command center for coding agents (OpenCode, Claude Code, Codex, Pi) - prebuilt
+	pkgver = 0.5.12
+	pkgrel = 1
+	url = https://opengui.io
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	depends = libnotify
+	depends = alsa-lib
+	depends = libcups
+	optdepends = bun: web server mode
+	provides = opengui
+	conflicts = opengui
+	source = https://github.com/akemmanuel/OpenGUI/releases/download/v0.5.12/opengui_0.5.12_amd64.deb
+	source = https://raw.githubusercontent.com/akemmanuel/OpenGUI/v0.5.12/LICENSE
+	sha256sums = 89e44977ef4df19a34ade9fa7261a996278a66b6206e8fef72e935dd1c04f675
+	sha256sums = b84e4a4cae4cb52c0b558066609745490514725b0e05afaeee6a7d5ce3278046
+
+pkgname = opengui-bin
