@@ -14,7 +14,7 @@ sha256sums=("1ebee6e1cefea9084838cb45761eac9759f1294245d91473c2fd6b40430e06a8")
 
 package() {
     install -d "${pkgdir}/opt/musicfree-desktop-wayland"
-    cp -r --no-preserve=ownership "MusicFree-Desktop-Linux-Wayland-x64-${pkgver}/." "${pkgdir}/opt/musicfree-desktop-wayland/"
+    cp -r --no-preserve=ownership "MusicFree-wayland-linux-x64-${pkgver}/." "${pkgdir}/opt/musicfree-desktop-wayland/"
 
     chmod 4755 "${pkgdir}/opt/musicfree-desktop-wayland/chrome-sandbox"
 
