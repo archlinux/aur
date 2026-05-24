@@ -1,0 +1,16 @@
+[Unit]
+Description=AMD Gaia Agent UI
+Documentation=https://github.com/amd/gaia
+After=network.target
+
+[Service]
+Type=simple
+User=gaia
+Group=gaia
+Environment=HOME=/var/lib/gaia
+ExecStart=/usr/bin/gaia --ui
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
