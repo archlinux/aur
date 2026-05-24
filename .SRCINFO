@@ -1,6 +1,6 @@
 pkgbase = quark
 	pkgdesc = Train and run your own Llama 4-style MoE coding LLM on your own hardware
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/0xnullsect0r/Quark
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = quark
 	conflicts = quark-git
 	conflicts = quark-bin
 	options = !lto
-	source = quark-1.3.1.tar.gz::https://github.com/0xnullsect0r/Quark/archive/refs/tags/v1.3.1.tar.gz
-	sha256sums = eabc6cc93c8f6e862ab8a6ec9c6b8c506ac3c269f55035446b5ecf1be511e916
+	source = quark-1.3.2.tar.gz::https://github.com/0xnullsect0r/Quark/archive/refs/tags/v1.3.2.tar.gz
+	sha256sums = 6cfc90ca5f8c6fedcec2285959e847dcb2a8128a69e972b72c3bf50a30c33f1b
 
 pkgname = quark
