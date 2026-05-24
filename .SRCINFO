@@ -1,0 +1,22 @@
+pkgbase = inlinea
+	pkgdesc = A native, Linux-first annotation-focused PDF editor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kaurmanjot20/inlinea
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = python-pymupdf
+	depends = gtk4
+	depends = libadwaita
+	depends = poppler-glib
+	source = inlinea-0.1.0.tar.gz::https://github.com/kaurmanjot20/inlinea/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 9cf7722465fc7b910c30b3e58155e9cd22029ca5a31fdd09c7bb8abea7254347
+
+pkgname = inlinea
