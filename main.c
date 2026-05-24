@@ -26,6 +26,7 @@ static void stop_daemon() {
 
     if (kill(pid, SIGTERM) == 0) {
         printf("cursorfb stopped (pid %d)\n", pid);
+        printf("");
         unlink(PID_FILE);
     } else {
         printf("failed to stop cursorfb\n");
@@ -80,6 +81,15 @@ int main(int argc, char **argv) {
         return 1;
     }
 
+    if (argc > 1 && strcmp(argv[1], "--clear") == 0) {
+        if (curfb_init() != 0)
+        return 1;
+
+        curfb_clear(); 
+        curfb_shutdown();
+        return 0;
+    }
+
     if (argc > 1 && strcmp(argv[1], "--stop") == 0) {
         stop_daemon();
         return 0;
@@ -88,8 +98,10 @@ int main(int argc, char **argv) {
     if (argc > 1 && strcmp(argv[1], "--help") == 0) {
         printf("usage: cursorfb [options]\n");
         printf("options:\n");
-        printf("  --stop    stop daemon\n");
-        printf("  --help    show help\n");
+        printf("  --stop                     stop daemon\n");
+        printf("  --help                     show help\n");
+        printf("  --clear                    clear cursor\n");
+        printf(" to start, just run with no options\n");
         return 0;
     }
 
