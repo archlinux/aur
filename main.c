@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <signal.h>
+#include "lwarnlib.h"
 #include <unistd.h>
 #include <fcntl.h>
 
@@ -62,12 +63,16 @@ int main(int argc, char **argv) {
     if (geteuid() != 0) {
         fprintf(stderr, "cursorfb: restarting with sudo...\n");
 
-        char *args[] = {
-            "sudo",
-            "-E",
-            argv[0],
-            NULL
-        };
+        char *args[argc + 2];
+
+        args[0] = "sudo";
+        args[1] = "-E";
+
+        for (int i = 0; i < argc; i++) {
+            args[i + 2] = argv[i];
+        }
+
+        args[argc + 2 - 1] = NULL;
 
         execvp("sudo", args);
 
@@ -91,9 +96,11 @@ int main(int argc, char **argv) {
     /* DEFAULT: start daemon */
     daemonize();
 
-    if (curfb_init() != 0)
+    if (curfb_init() != 0) {
+        fbwarn("initialization failed");
         return 1;
-
+    }
+    
     curfb_loop();
     curfb_shutdown();
 
