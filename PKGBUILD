@@ -7,17 +7,17 @@ pkgver=2.1.2
 pkgrel=1
 pkgdesc="Samsung Firmware Downloader"
 arch=('x86_64' 'aarch64')
-url="https://github.com/zacharee/SamloaderKotlin"
+url="https://github.com/zacharee/Bifrost"
 license=('MIT')
 provides=("${_basename}")
 conflicts=("${_basename}")
 depends=('glibc' 'gcc-libs' 'zlib' 'libglvnd' 'libxi' 'hicolor-icon-theme' 'libxtst' 'libx11' 'libxrender' 'libxext' 'alsa-lib' 'fontconfig' 'freetype2')
-source=("https://raw.githubusercontent.com/zacharee/SamloaderKotlin/refs/tags/${pkgver}/LICENSE.txt"
-    "https://raw.githubusercontent.com/zacharee/SamloaderKotlin/refs/tags/${pkgver}/Bifrost.png"
-    "https://raw.githubusercontent.com/zacharee/SamloaderKotlin/refs/tags/${pkgver}/icon_rounded.svg"
+source=("https://raw.githubusercontent.com/zacharee/Bifrost/refs/tags/${pkgver}/LICENSE.txt"
+    "https://raw.githubusercontent.com/zacharee/Bifrost/refs/tags/${pkgver}/Bifrost.png"
+    "https://raw.githubusercontent.com/zacharee/Bifrost/refs/tags/${pkgver}/icon_rounded.svg"
     "${_basename}.desktop")
-source_x86_64=("https://github.com/zacharee/SamloaderKotlin/releases/download/${pkgver}/${_basename}-${pkgver}-linux-amd64.tar.gz")
-source_aarch64=("https://github.com/zacharee/SamloaderKotlin/releases/download/${pkgver}/${_basename}-${pkgver}-linux-aarch64.tar.gz")
+source_x86_64=("https://github.com/zacharee/Bifrost/releases/download/${pkgver}/${_basename}-${pkgver}-linux-amd64.tar.gz")
+source_aarch64=("https://github.com/zacharee/Bifrost/releases/download/${pkgver}/${_basename}-${pkgver}-linux-aarch64.tar.gz")
 sha256sums=('778075b8a5fb9c5bc6ea65da17ad6adb0b5c69bbebf52a965d285487dafcd316'
     '8b1803cc34aef2900b66398285f6a9a73ef7d90f098483c2e5dab5334dff905a'
     '1fcfd1fd596d8880d66fcbd80645114f60160bafb29139d58901121cd81d9952'
