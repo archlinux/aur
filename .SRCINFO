@@ -1,6 +1,6 @@
 pkgbase = v-analyzer-git
 	pkgdesc = Bring IDE features for V programming languages in VS Code, Vim and other editors
-	pkgver = r488.7e11a6f
+	pkgver = r564.d5f13c0
 	pkgrel = 1
 	url = https://github.com/vlang/v-analyzer
 	arch = x86_64

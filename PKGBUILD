@@ -1,8 +1,8 @@
-# Maintainer: h8ray <gofindme at dmc dot chat>
+# Maintainer: h8ray <hiddenforever at elektrine dot com>
 
 _pkgname=v-analyzer
 pkgname="${_pkgname}-git"
-pkgver=r488.7e11a6f
+pkgver=r564.d5f13c0
 pkgrel=1
 pkgdesc='Bring IDE features for V programming languages in VS Code, Vim and other editors'
 url="https://github.com/vlang/v-analyzer"
