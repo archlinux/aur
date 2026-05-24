@@ -1,4 +1,5 @@
 [zig-bin]
-source = "github"
-github = "ziglang/zig"
-use_latest_release = true
+source = "gitea"
+gitea = "ziglang/zig"
+host = "codeberg.org"
+use_max_tag = true
