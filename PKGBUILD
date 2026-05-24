@@ -3,17 +3,17 @@
 _gitname=cascadia-code
 pkgbase=cascadia-code-git
 pkgname=("otf-${pkgbase}" "ttf-${pkgbase}")
-pkgver=2105.24.r13.gf1a0b0e6
+pkgver=2407.24.r0.g56bcca3f2
 pkgrel=1
 pkgdesc="A new monospaced font that includes programming ligatures"
 url="https://github.com/microsoft/${_gitname}"
 arch=('any')
 license=('custom:OFL')
-makedepends=('git' 'python' 'ttfautohint')
+makedepends=(git python)
 provides=("otf-cascadia-code=${pkgver}" "ttf-cascadia-code=${pkgver}")
 conflicts=('nerd-fonts-cascadia-code' 'ttf-cascadia-code')
 source=("git+${url}.git")
-sha256sums=('SKIP')
+sha256sums=(SKIP)
 
 pkgver() {
     cd "${_gitname}"
@@ -22,10 +22,12 @@ pkgver() {
 
 build() {
     cd "${_gitname}"
-    # Using pip because deps in AUR are broken.
     python -m venv .venv
     source .venv/bin/activate
-    pip install -r requirements.txt
+    # Install from upstream's unpinned manifest, not the stale 2024 lock
+    # file (requirements.txt), so versions compatible with current Python
+    # and build backends resolve. Microsoft hasn't refreshed the lock.
+    pip install -r requirements.in
     python build.py -S
 }
 
