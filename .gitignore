@@ -1,0 +1,11 @@
+# AUR repos must only contain source files. makepkg generates build
+# output in these directories and files; never commit them.
+src/
+pkg/
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.pkg.tar.*
+*.AppImage
+*.deb
+*.rpm
