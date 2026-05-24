@@ -20,20 +20,13 @@ url='https://github.com/cyring/CoreFreq'
 license=('GPL-2.0-only')
 depends=('dkms')
 source=(${pkgbase}-${pkgver}.tar.gz::"${url}/archive/${pkgver}.tar.gz"
-        'dkms.conf'
-        'honor-archlinux-compiler-flags.patch')
+        'dkms.conf')
 b2sums=('e3f59db897a825bdf38ba34e8ee916b03cc44f968736c3aaccc8f76739643a0f9f976a12a8ee9649f883d02613efdf01e90ab714a5fc310cdeab3f314fa359e0'
-        '3ceb7afbeb3c0bb1703e31d2534b23e29282b0d1a539a3792ec14c4131f52d2731917eac91f992ef66ce7a0727d14defca2fa56dc1e537b3c6172339768ccf3f'
-        '8ce775de32701c0fd4d2b59c72b7996f03cd1d2b1148821121f828339cd497b37448122559cf020e3f917fc79d1ac9669d49e25ecc598576f3cd49e96ed66007')
-
-prepare(){
-  cd "${_gitname}-${pkgver}"
-  patch -Np1 < "$srcdir/honor-archlinux-compiler-flags.patch"
-}
+        '3ceb7afbeb3c0bb1703e31d2534b23e29282b0d1a539a3792ec14c4131f52d2731917eac91f992ef66ce7a0727d14defca2fa56dc1e537b3c6172339768ccf3f')
 
 build() {
   cd "${_gitname}-${pkgver}"
-  make corefreqd corefreq-cli -j
+  make corefreqd corefreq-cli -j OPTIM_FLG="$CFLAGS $LDFLAGS"
 }
 
 package_corefreq-dkms() {
