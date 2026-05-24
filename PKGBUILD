@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/Linux-Chan-AI/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('debdaaebd2b0e44a9c9366d0ffa5d8992985a22ddbe991f9855b7807b24c69a7')
+sha256sums=('c25a55f8998e184c120175538aadace912aced128cb52694d10a9c9afd7008d1')
 
 prepare() {
     cd "Linux-Chan-AI-${pkgver}"
