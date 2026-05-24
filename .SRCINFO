@@ -1,0 +1,18 @@
+pkgbase = python-pymupdf4llm
+	pkgdesc = PyMuPDF utilities for LLM/RAG
+	pkgver = 1.27.2.3
+	pkgrel = 1
+	url = https://github.com/pymupdf/pymupdf4llm
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pipcl
+	depends = python-pymupdf=1.27.2.3
+	depends = python-pymupdf-layout=1.27.2.3
+	depends = python-tabulate
+	source = https://files.pythonhosted.org/packages/source/p/pymupdf4llm/pymupdf4llm-1.27.2.3.tar.gz
+	sha256sums = 42ec1a47ddc62be3f4f40c116d27618611c6f9fa366719016d9ddc3f3a3dc22b
+
+pkgname = python-pymupdf4llm
