@@ -1,5 +1,5 @@
 pkgname=me2png
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A cross-platform, lightweight, and simple program for PNGtubing."
 arch=('x86_64')

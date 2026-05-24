@@ -1,6 +1,6 @@
 pkgbase = me2png
 	pkgdesc = A cross-platform, lightweight, and simple program for PNGtubing.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/tinarskii/me2png
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = me2png
 	makedepends = git
 	depends = raylib
 	depends = portaudio
-	source = me2png-0.2.0.tar.gz::https://github.com/tinarskii/me2png/archive/refs/tags/v0.2.0.tar.gz
+	source = me2png-0.3.0.tar.gz::https://github.com/tinarskii/me2png/archive/refs/tags/v0.3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = me2png
