@@ -1,6 +1,6 @@
 pkgbase = yanvim-git
 	pkgdesc = Neovim fork with built-in Helix-style selection-first editing paradigm
-	pkgver = 0.12.2
+	pkgver = 0.12.2.r36107.g0c6c40ca07
 	pkgrel = 1
 	url = https://github.com/Rodericuss/Yet-another-neovim
 	arch = x86_64
@@ -22,7 +22,9 @@ pkgbase = yanvim-git
 	optdepends = xclip: clipboard support on X11
 	optdepends = wl-clipboard: clipboard support on Wayland
 	provides = yanvim
+	provides = neovim
 	conflicts = yanvim
+	conflicts = neovim
 	source = yanvim-git::git+https://github.com/Rodericuss/Yet-another-neovim.git#branch=stable
 	sha256sums = SKIP
 
