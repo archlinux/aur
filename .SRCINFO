@@ -12,6 +12,7 @@ pkgbase = llama.cpp
 	makedepends = git
 	makedepends = shaderc
 	makedepends = ninja
+	makedepends = npm
 	depends = curl
 	depends = gcc-libs
 	depends = glibc
