@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="subprocess"
-pkgver=0.4.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A subprocess library for C++, similar to design of Python subprocess"
 arch=('any')
@@ -13,8 +13,8 @@ source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}_fix_install.patch"
         "${pkgname}Config.cmake.in"
         "${pkgname}ConfigVersion.cmake.in")
-sha256sums=('19d865146d8565969da659ffdf9cf5feac5c36d02b52a6a687e41bd53114645f'
-            'f06960ebe74628dd5039f145a2f8a0d80a04d6f111013572b9d877e2b5004c54'
+sha256sums=('eb976fe5f632760a53398965df4d0ed4780e11cf0b154dc73ba2795585a25414'
+            '1fa9a8dc2a7be89c1f61c088610d6b1faa78355fe39bc3e3f9cbdf72ec9a5c06'
             '9996ac3d10228e5b4e86db4071f009710b4a2cf15e9b8ac450c97f63f0be92fe'
             '85be543b806413728ed7d288843fe407b01073e1ec851ba06fdd2c0585fb5b3e')
 
@@ -33,6 +33,7 @@ build() {
     -G 'Unix Makefiles' \
     -B "${_pkgsrc}/build" \
     -S "${_pkgsrc}" \
+    -DBUILD_TESTING:BOOL=ON \
     -DCMAKE_BUILD_TYPE:STRING='None' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
     -Wno-dev

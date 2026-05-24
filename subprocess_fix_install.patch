@@ -1,19 +1,22 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -38,6 +38,39 @@
+@@ -38,10 +38,40 @@
+     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+ endif()
  
- add_subdirectory(src/cpp subprocess)
++add_subdirectory(src/cpp subprocess)
  
 +# Include CMakePackageConfigHelpers to assist with the config file creation
 +include(CMakePackageConfigHelpers)
-+
+ 
 +# Configure the package config file
 +configure_package_config_file(
 +    "${CMAKE_CURRENT_SOURCE_DIR}/src/cpp/subprocessConfig.cmake.in"
 +    "${CMAKE_CURRENT_BINARY_DIR}/subprocessConfig.cmake"
 +    INSTALL_DESTINATION lib/cmake/subprocess
 +)
-+
+ 
+-add_subdirectory(src/cpp subprocess)
 +# Configure the package version file
 +write_basic_package_version_file(
 +    "${CMAKE_CURRENT_BINARY_DIR}/subprocessConfigVersion.cmake"
@@ -36,8 +39,6 @@
 +    "${CMAKE_CURRENT_BINARY_DIR}/subprocessConfigVersion.cmake"
 +    DESTINATION lib/cmake/subprocess
 +)
-+
- # TODO testing
- enable_testing()
- add_subdirectory(test)
-\ No newline at end of file
+ 
+ if (BUILD_TESTING)
+     enable_testing()
