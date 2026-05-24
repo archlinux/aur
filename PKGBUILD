@@ -30,6 +30,7 @@ depends=(
   'python-pulsectl'
   'python-dbus'
   'ydotool'
+  'wl-clipboard'
   'pipewire' 'pipewire-alsa' 'pipewire-pulse'
 )
 optdepends=('gtk4-layer-shell: for themed Mic-OSD visualization')
