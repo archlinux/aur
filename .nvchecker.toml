@@ -1,0 +1,5 @@
+[inspect-sh]
+source = "github"
+github = "codeprakhar25/inspect"
+use_max_tag = true
+prefix = "v"
