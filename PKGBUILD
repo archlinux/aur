@@ -7,7 +7,7 @@ pkgver=2.30.4+1.1.1_1
 _bundlever="${pkgver%+*}"
 _pluginver="${pkgver##*+}"
 _scanver="6.7.65.0"
-_scanpluginver="1.0.0.6-1"
+_scanpluginver="1.0.0.6_1"
 pkgrel=1
 pkgdesc="EPSON Image Scan! plugin for Epson scanners (DS, EP, ES, ET, EW, L, LX, PX, WF, XP Series, FF-640, GT-S650, Perfection V19, Perfection V39)"
 arch=(
@@ -54,14 +54,14 @@ prepare() {
   local source_artifact_1="${source_url_1##*/}"
 
   cd "${srcdir}/${source_artifact_1%.tar*}"
-  local source_plugin_1="$(ls plugins/*.deb | head -n1)"
+  local source_plugin_1="$(ls plugins/*${_scanpluginver//_/-}*.deb | head -n1)"
   mkdir -p "${source_plugin_1%.deb}"
   bsdtar -xf "${source_plugin_1}" data.tar.*
   bsdtar -xzf data.tar.* --strip-components 1 -C "${source_plugin_1%.deb}"
   rm -f data.tar.*
 
   cd "${srcdir}/${source_artifact_0%.tar*}"
-  local source_plugin_0="$(ls plugins/*.deb | head -n1)"
+  local source_plugin_0="$(ls plugins/*${_pluginver//_/-}*.deb | head -n1)"
   mkdir -p "${source_plugin_0%.deb}"
   bsdtar -xf "${source_plugin_0}" data.tar.*
   bsdtar -xzf data.tar.* --strip-components 1 -C "${source_plugin_0%.deb}"
