@@ -1,13 +1,28 @@
 pkgbase = hexshell-bin
-	pkgdesc = Cyberpunk sci-fi terminal for Linux
+	pkgdesc = Fullscreen sci-fi terminal with its own interactive shell (hexsh)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TSMaitryDotDev/hexshell
 	arch = x86_64
 	license = MIT
-	depends = gtk3
+	depends = libnotify
 	depends = nss
-	source = HexShell-0.1.0.AppImage::https://github.com/TSMaitryDotDev/hexshell/releases/download/v0.1.0/HexShell-0.1.0.AppImage
+	depends = libxtst
+	depends = util-linux-libs
+	depends = at-spi2-core
+	depends = libdrm
+	depends = libxkbcommon
+	depends = libsecret
+	depends = glibc
+	depends = gcc-libs
+	depends = fontconfig
+	depends = libxss
+	depends = alsa-lib
+	provides = hexshell=0.1.0
+	conflicts = hexshell
+	options = !strip
+	options = !debug
+	source = hexshell-0.1.0-x86_64.AppImage::https://github.com/TSMaitryDotDev/hexshell/releases/download/v0.1.0/Hexshell-0.1.0-x86_64.AppImage
 	sha256sums = SKIP
 
 pkgname = hexshell-bin
