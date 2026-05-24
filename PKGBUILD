@@ -5,13 +5,13 @@
 _pkgname='input-overlay'
 pkgname=obs-plugin-${_pkgname}
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 groups=('obs-plugins')
 pkgdesc='obs-studio plugin to show keyboard, gamepad and mouse input on stream.'
 arch=("x86_64")
 url="https://github.com/univrsal/${_pkgname}"
 license=('GPL-2.0-only')
-depends=('obs-studio' 'libxtst' 'libxkbfile' 'sdl2' 'qt6-base')
+depends=('obs-studio' 'libxtst' 'libxkbfile' 'sdl2' 'qt6-base' 'libxt' 'libstdc++' 'libgcc')
 makedepends=('git' 'cmake')
 source=(
 	"git+https://github.com/univrsal/${_pkgname}.git#tag=${pkgver}"
@@ -32,7 +32,8 @@ prepare() {
 }
 
 build() {
-	CXXFLAGS="$CXXFLAGS -msse4.1" cmake -S "${_srcdir}" -B 'build' -DCMAKE_BUILD_TYPE='None' -DCMAKE_INSTALL_PREFIX='/usr'
+	export CXXFLAGS+=' -msse4.1'
+	cmake -S "${_srcdir}" -B 'build' -DCMAKE_BUILD_TYPE='None' -DCMAKE_INSTALL_PREFIX='/usr'
 	cmake --build 'build'
 }
 
