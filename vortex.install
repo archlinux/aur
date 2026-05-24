@@ -20,11 +20,10 @@ post_install() {
   echo "  │  Mantenido por k8rit0 (AUR)                            │"
   echo "  └─────────────────────────────────────────────────────────┘"
   echo ""
-  echo ":: Para gestionar enlaces NXM (botón 'Mod Manager Download'):"
-  echo "   xdg-mime default vortex.desktop x-scheme-handler/nxm"
+  echo ":: Los enlaces NXM se registran automáticamente al primer arranque."
+  echo "   Si no funcionan: xdg-mime default vortex.desktop x-scheme-handler/nxm"
   echo ""
-  echo ":: Log de parches runtime en cada arranque:"
-  echo "   ~/.config/Vortex/vortex-linux-fix.log"
+  echo ":: Log de parches runtime: ~/.config/Vortex/vortex-linux-fix.log"
   echo ""
 }
 

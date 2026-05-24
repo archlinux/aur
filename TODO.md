@@ -46,18 +46,20 @@ Los usuarios de Skyrim/Fallout con muchos mods no pueden ordenar plugins automá
 3. Reemplazar el stub por el wrapper real  
 **Complejidad:** alta. No acometer sin un caso de uso reportado por usuarios.
 
-### [ ] GOG / Heroic / non-Steam: `browseGameLocation` hardcodea `store:"steam"`
-**Estado:** pendiente — prioridad baja  
-En Linux solo se asigna `store:"steam"`. Usuarios con juegos GOG nativos no tienen su
-tienda identificada correctamente.  
-**Impacto real:** bajo — Vortex en Linux es mayoritariamente Steam. Sin casos reportados.
+### [DONE] GOG / Heroic / non-Steam: `browseGameLocation` detecta store inteligentemente
+**Estado:** resuelto en 1:2.0.1-18  
+Reemplazada la asignación fija `store:"steam"` por detección por rutas y ficheros:
+- Path bajo `steamapps/common/` (Steam + Flatpak) → "steam"
+- Path bajo `GOG Games/` o `heroic/GOGGames/` → "gog"
+- Fichero `goggame-*.info` en el directorio → "gog"
+- Fichero `steam_api.dll` en el directorio → "steam" (Proton)
+- Sin coincidencia → `{corrected}` sin store (Vortex lo deja sin tienda asignada)
 
-### [ ] NXM URL scheme: verificar integración xdg-open en Wayland
-**Estado:** pendiente — necesita prueba real  
-`.desktop` tiene `MimeType=x-scheme-handler/nxm` y `vortex.sh` maneja el argumento,
-pero no se ha verificado que `xdg-open nxm://...` invoque correctamente el gestor
-en entornos Wayland puros (sin `update-desktop-database` ejecutado post-install).  
-**Fix potencial:** añadir `update-desktop-database` al `.install` hook `post_install`.
+### [DONE] NXM URL scheme: auto-registro en primer arranque
+**Estado:** resuelto en 1:2.0.1-18  
+`vortex.sh` llama `xdg-mime default vortex.desktop x-scheme-handler/nxm` al arrancar
+si el handler actual no es vortex. El `.install` ya tenía `update-desktop-database -q`.
+El registro de usuario se hace automáticamente en el primer arranque de Vortex.
 
 ---
 
@@ -110,3 +112,5 @@ encontrado), el `.node` no existe pero `package()` no falla explícitamente.
 | 1:2.0.1-17 | vortex.sh: log de patches en ~/.config/Vortex/vortex-linux-fix.log |
 | 1:2.0.1-17 | patch-asar.py: eliminados migration patches v5→v6 (obsoletos desde 1:2.0.1-9) |
 | 1:2.0.1-17 | vortex.install + LINUX_PATCHES.md: email eliminado, reemplazado por handle k8rit0 (AUR) |
+| 1:2.0.1-18 | browseGameLocation: detección de store por ruta y ficheros (Steam/GOG/Heroic) en lugar de "steam" fijo |
+| 1:2.0.1-18 | vortex.sh: auto-registro xdg-mime nxm:// en primer arranque |

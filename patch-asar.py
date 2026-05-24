@@ -121,16 +121,35 @@ RENDERER_PATCHES = [
         ),
     },
     {
-        "name": "browseGameLocation — skip identifyStore on Linux",
+        "name": "browseGameLocation — detect store from path/files on Linux (Steam/GOG/Heroic)",
         "old": (
             '.then(corrected=>function manualGameStoreSelection(api,correctedGamePath)'
             '{const gameStores=(0,getGame_1.getGameStores)();'
             'return GameStoreHelper_1.default.identifyStore(correctedGamePath).then(storeId=>{'
         ),
         "new": (
-            '.then(corrected=>"linux"===process.platform'
-            '?bluebird_1.default.resolve({corrected,store:"steam"})'
-            ':function manualGameStoreSelection(api,correctedGamePath)'
+            '.then(corrected=>{'
+            'if("linux"===process.platform){'
+            'const _pa=require("path"),_fs=require("fs"),_h=require("os").homedir();'
+            'const _c=_pa.normalize(corrected);'
+            'const _sr=[".steam/steam/steamapps/common",'
+            '".local/share/Steam/steamapps/common",'
+            '".var/app/com.valvesoftware.Steam/.steam/steam/steamapps/common"]'
+            '.map(p=>_pa.normalize(_pa.join(_h,p))+"/");'
+            'const _gr=["GOG Games","Games/GOG Games",'
+            '".local/share/heroic/GOGGames",'
+            '".var/app/com.heroicgameslauncher.hgl/config/heroic/GOGGames"]'
+            '.map(p=>_pa.normalize(_pa.join(_h,p))+"/");'
+            'let _st;'
+            'if(_sr.some(r=>_c.startsWith(r)))_st="steam";'
+            'else if(_gr.some(r=>_c.startsWith(r)))_st="gog";'
+            'else{try{'
+            'const _fl=_fs.readdirSync(corrected);'
+            'if(_fl.some(f=>/^goggame-.+\\.info$/.test(f)))_st="gog";'
+            'else if(_fl.some(f=>f==="steam_api.dll"||f==="steam_api64.dll"))_st="steam";'
+            '}catch(_e){}}'
+            'return bluebird_1.default.resolve(_st?{corrected,store:_st}:{corrected});}'
+            'return function manualGameStoreSelection(api,correctedGamePath)'
             '{const gameStores=(0,getGame_1.getGameStores)();'
             'return GameStoreHelper_1.default.identifyStore(correctedGamePath).then(storeId=>{'
         ),
