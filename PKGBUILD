@@ -1,6 +1,6 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64')
@@ -86,51 +86,42 @@ source=(
     "voxtype-configure-$pkgver.desktop::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/voxtype-configure.desktop"
     "voxtype-configure-launcher-$pkgver::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/scripts/voxtype-configure-launcher"
 )
-sha256sums=(
-    # Whisper binaries
-    '095191715ee18d320f319332d47ed98841a09e1927e2d2276634ba7a2d16e4e5'  # voxtype-avx2
-    'SKIP'  # voxtype-avx2.asc
-    'ae72d9105f1e521dfcf2ddf6742a96b8af56b655023d51952b274e11faa2c5d8'  # voxtype-avx512
-    'SKIP'  # voxtype-avx512.asc
-    '3b59c0621de48109c1a63cf5af92ed085bba9d9f7d0a623082d792a2d6c15f6f'  # voxtype-vulkan
-    'SKIP'  # voxtype-vulkan.asc
-    # ONNX CPU binaries
-    '792da58000d692bef61b5255740a098b152ad226366682be7a6e139388a68c12'  # voxtype-onnx-avx2
-    'SKIP'  # voxtype-onnx-avx2.asc
-    '1c55d0ff24d8eb45bff4e88d94f30900ff97fbc908c2a677befb5f5ab46a6c63'  # voxtype-onnx-avx512
-    'SKIP'  # voxtype-onnx-avx512.asc
-    # ONNX CUDA 12
-    '72c3b291760c6ccf3a46793da440dda36cd4de8210101196163d492f0c58becf'  # voxtype-onnx-cuda-12
-    'SKIP'  # voxtype-onnx-cuda-12.asc
-    'a8584727d51ba646ac63fc991c2f36ad6cd5b8cc8b1141896e46938700b888d0'  # voxtype-onnx-cuda-12.libonnxruntime_providers_cuda.so
-    '1b028afc079628d76a28d7eb09700a4baead4a27f9634ba82c35398486134114'  # voxtype-onnx-cuda-12.libonnxruntime_providers_shared.so
-    # ONNX CUDA 13
-    '4e765462ab4a985acbf6e73385af1d9e40aea1873d407239ae6f495588315a36'  # voxtype-onnx-cuda-13
-    'SKIP'  # voxtype-onnx-cuda-13.asc
-    'b6cb7744d0efd2faced5c83ead374c13e7f2630b5a249ffaf393cdb1e092c92b'  # voxtype-onnx-cuda-13.libonnxruntime_providers_cuda.so
-    'c6a12593396095f5670160e284c35d1700b7708cf3037b7042e2a5200ccae772'  # voxtype-onnx-cuda-13.libonnxruntime_providers_shared.so
-    '1aacefdf0b4afa145d410b2381bbc3db3d978c485fb182c42a2b0b09f91f5310'  # voxtype-onnx-cuda-13.libonnxruntime.so.1.24.4
-    # ONNX MIGraphX
-    '87b966bc1303048ab019a559839f829031005da96938a81c0f232602e923573a'  # voxtype-onnx-migraphx
-    'SKIP'  # voxtype-onnx-migraphx.asc
-    'ddd67e6193ade819ee21f1706d1b03b9151f1d2d2843701e2d19d8b183631707'  # voxtype-onnx-migraphx.libonnxruntime_providers_migraphx.so
-    '17f7cf47ad0d7b5ac895ae588fd62c7f85a13842588161b6a24c7d480f062be4'  # voxtype-onnx-migraphx.libonnxruntime_providers_shared.so
-    # OSD launcher + GTK4 frontend
-    '3bdbcc84a5fb1853da75377dd199aad2e151f5e7bf59bfdb9a3e20632d3b96d8'  # voxtype-osd
-    'SKIP'  # voxtype-osd.asc
-    '7d8eda8e4511577cf4bebb5ef56d1a09f7eea9419a5af1da97870289e180ad60'  # voxtype-osd-gtk4
-    'SKIP'  # voxtype-osd-gtk4.asc
-    # Config and support files
-    'aaa36cb5f382e66b2d385c657450629209c5875e29c82370cc190202616a8cbe'  # config.toml
-    '531c3658e229619e56bb01659fb81f401767b85e1d6e2acd1ac67ee3414a168c'  # voxtype.service
-    '65c95805d9b03ccc2fadb9d63a03ab79974b00091df8457ee8ef290ec6bd5b12'  # voxtype.bash
-    'e5e63b3c7f48238cf719e4f2ef90c1f9c5c7e8cd25eaebc9f78bdd34b24b6605'  # voxtype.zsh
-    'f720ddd24ee97c105b448323899c36bca7c63d00c2d42c4a3da70c3d157dccbb'  # voxtype.fish
-    '31123c45b4ff9cb5fd9e01083350fea6ccaf14969013fd48e4c95fdf89e6eb4b'  # LICENSE
-    '744134f77ac3d2134682fef0bf2734aee9a36c6bbbac3c5b633ac500fa06273e'  # README.md
-    '32144a4a5210092b0aa909f6de7a43ebe8bbf82fa3dfb1f3519787512fdf8e4b'  # voxtype-configure.desktop
-    '2001788ae3c087ff2589ff69c9598160da1c783025cc52ca3382736694a97090'  # voxtype-configure-launcher
-)
+sha256sums=('c6634fedcdbe13805cd7b35089ab5223228c9d6dda62401c4c0c0924ffc97175'
+            'SKIP'
+            'c0a224fb883c25d7e9ba923d43994d6197393fe62def342247f85b70cf14663d'
+            'SKIP'
+            '5b3fb2238081771eaf1527c82016e80bf2404b6e363f8a9f4a24a29e771f53e0'
+            'SKIP'
+            'dd6471ed6199c4329b414e56c93c3a0c9ee26d5a8d56ace1f0c5c225e2ece91b'
+            'SKIP'
+            '54ebc8e664bc79a3145b51b8661ee6126015cd2d969703880ebc0a1678de969b'
+            'SKIP'
+            'dcbc4fa4618f5d898b1ec2de0a761af740ced2ede6ab154c2d44db72a9838970'
+            'SKIP'
+            'a8584727d51ba646ac63fc991c2f36ad6cd5b8cc8b1141896e46938700b888d0'
+            '1b028afc079628d76a28d7eb09700a4baead4a27f9634ba82c35398486134114'
+            '8bbf4ecf3dfaa205094913bfdf447b680714dd7bd4165804828956f97cac85c5'
+            'SKIP'
+            'b6cb7744d0efd2faced5c83ead374c13e7f2630b5a249ffaf393cdb1e092c92b'
+            'c6a12593396095f5670160e284c35d1700b7708cf3037b7042e2a5200ccae772'
+            '1aacefdf0b4afa145d410b2381bbc3db3d978c485fb182c42a2b0b09f91f5310'
+            '35a72f9a93d0ae1443360e3142f478cf78859d7f9ebe5f8c745c24ff46e16ad4'
+            'SKIP'
+            'ddd67e6193ade819ee21f1706d1b03b9151f1d2d2843701e2d19d8b183631707'
+            '17f7cf47ad0d7b5ac895ae588fd62c7f85a13842588161b6a24c7d480f062be4'
+            'f666e73d205e7008ccb374e9faf145690f799df465c8049c1304a18500dee106'
+            'SKIP'
+            'cf3c74ada962a63da3475f81699e922f1386ef3242927b07cdd3edb493e7109e'
+            'SKIP'
+            'aaa36cb5f382e66b2d385c657450629209c5875e29c82370cc190202616a8cbe'
+            '531c3658e229619e56bb01659fb81f401767b85e1d6e2acd1ac67ee3414a168c'
+            '65c95805d9b03ccc2fadb9d63a03ab79974b00091df8457ee8ef290ec6bd5b12'
+            'e5e63b3c7f48238cf719e4f2ef90c1f9c5c7e8cd25eaebc9f78bdd34b24b6605'
+            'f720ddd24ee97c105b448323899c36bca7c63d00c2d42c4a3da70c3d157dccbb'
+            '31123c45b4ff9cb5fd9e01083350fea6ccaf14969013fd48e4c95fdf89e6eb4b'
+            '744134f77ac3d2134682fef0bf2734aee9a36c6bbbac3c5b633ac500fa06273e'
+            '32144a4a5210092b0aa909f6de7a43ebe8bbf82fa3dfb1f3519787512fdf8e4b'
+            '2001788ae3c087ff2589ff69c9598160da1c783025cc52ca3382736694a97090')
 
 package() {
     # Install Whisper CPU binaries to /usr/lib/voxtype/

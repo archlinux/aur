@@ -257,7 +257,7 @@ pre_upgrade() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.7.3"
+    echo "==> Voxtype upgraded to 0.7.4"
     echo ""
 
     BACKEND=$(_preserve_or_set_backend)
@@ -271,23 +271,30 @@ post_upgrade() {
     fi
 
     echo ""
-    echo "    What's new in v0.7.3 (two-issue hotfix):"
-    echo "      * Vulkan binary boots on Kaby Lake and older Intel CPUs (#393)."
-    echo "        The 0.7.2 build leaked an SSE4a instruction from the AMD Zen 3"
-    echo "        CI runner; Intel CPUs without SSE4a would SIGILL on daemon"
-    echo "        start. The CI ISA-floor gate is now widened to catch SSE4a,"
-    echo "        GFNI, and AVX-VNNI leakage on top of AVX-512."
-    echo "      * NVIDIA Blackwell (RTX 5090) works on voxtype-onnx-cuda-13 (#386)."
-    echo "        The CUDA 13 binary now ships Microsoft's ORT 1.24.4 prebuilt"
-    echo "        which includes sm_120 kernels, dlopened at runtime via"
-    echo "        ort/load-dynamic. cu13 install layout gains libonnxruntime.so"
-    echo "        alongside the existing libonnxruntime_providers_*.so files."
+    echo "    What's new in v0.7.4 (hotfix):"
+    echo "      * cuda-13 binary no longer rejects Blackwell hosts (#386)."
+    echo "        The EXPECTED_CUDA_MAJOR check in voxtype-onnx-cuda-13 ran"
+    echo "        against the build-time toolkit version and rejected runtime"
+    echo "        driver mismatches on otherwise-supported RTX 5090 hosts."
+    echo "        The check is now gated out under ort/load-dynamic where"
+    echo "        the host-side ORT decides what's runnable."
+    echo "      * TUI auto-downloads the streaming Parakeet model (#423)."
+    echo "        Enabling [parakeet] streaming with a non-streaming model"
+    echo "        now switches to parakeet-unified-en-0.6b and offers to"
+    echo "        download it in the background (press 'd' on the prompt)."
+    echo "        Replacing desktop notifications report start, completion,"
+    echo "        and failure."
+    echo "      * Release archives are PGP-signed end-to-end (#415)."
+    echo "        CI now signs the GitHub-generated source tarball byte-for-"
+    echo "        byte using a dedicated 1-year signing subkey; the source"
+    echo "        AUR package's makepkg verification matches against the"
+    echo "        same bytes makepkg downloads."
     echo ""
     echo "    Restart the daemon to apply updates:"
     echo "      systemctl --user restart voxtype"
     echo ""
     echo "    Full release notes:"
-    echo "      https://github.com/peteonrails/voxtype/releases/tag/v0.7.3"
+    echo "      https://github.com/peteonrails/voxtype/releases/tag/v0.7.4"
     echo ""
 }
 
