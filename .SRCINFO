@@ -1,6 +1,6 @@
 pkgbase = thrive
 	pkgdesc = the evolution game Thrive.
-	pkgver = 1.0.1.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://revolutionarygamesstudio.com/
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = thrive
 	makedepends = ninja
 	makedepends = jq
 	makedepends = python
+	makedepends = godot-mono
 	depends = libxrender
 	depends = libxi
 	depends = libx11
@@ -28,26 +29,22 @@ pkgbase = thrive
 	depends = fontconfig
 	depends = gcc-libs
 	options = !lto
-	source = git+https://github.com/Revolutionary-Games/Thrive.git#tag=v1.0.1.1
+	source = git+https://github.com/Revolutionary-Games/Thrive.git#tag=v1.1.0
 	source = git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git
 	source = git+https://github.com/jrouwe/JoltPhysics.git
 	source = git+https://github.com/cameron314/concurrentqueue.git
 	source = git+https://github.com/godotengine/godot-cpp.git
 	source = git+https://github.com/Revolutionary-Games/Arch.Extended.git
 	source = git+https://github.com/Revolutionary-Games/Arch.git
-	source = godot-mono-export-templates-4.6.zip::https://github.com/godotengine/godot/releases/download/4.6-stable/Godot_v4.6-stable_mono_export_templates.tpz
-	sha256sums = d7f0c166ec5baca7203125f11002aeb088f74fed48eae3609b0322c4210e1a3e
+	source = godot-mono-export-templates-4.6.2.zip::https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_mono_export_templates.tpz
+	sha256sums = c10ceb8dfdc9cf0d9170f55bbe804e8c75f91f702b140dac55d30bc916fe2606
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 46056e8394cd1f1f85ccfaabddffc1a67f595bfd99fbda6cd62afa751dbfc519
-	source_x86_64 = godot-4.6-x86_64.zip::https://github.com/godotengine/godot/releases/download/4.6-stable/Godot_v4.6-stable_mono_linux_x86_64.zip
-	sha256sums_x86_64 = cb4c54e0b74a44f3b3c6c4a6c25e5185f3b715d4a43981342ae7b981af50e271
-	source_aarch64 = godot-4.6-aarch64.zip::https://github.com/godotengine/godot/releases/download/4.6-stable/Godot_v4.6-stable_mono_linux_arm64.zip
-	sha256sums_aarch64 = 38880b68e1028d9b14da5e48c1b32f6615113ded90e8f094fe9b0c4edfc5f82b
+	sha256sums = 4ecf72faf76f96e010d166ddbbe3f0fb8e7df9633282666a3a9afd4ee3e00e7d
 
 pkgname = thrive
 	depends = libxrender

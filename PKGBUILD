@@ -1,10 +1,10 @@
 _godot_repo=https://github.com/godotengine/godot/releases/download
 # See Scripts/GodotVersion.cs
-_godot=4.6
-_system_godot=false
+_godot=4.6.2
+_system_godot=true
 
 pkgname=thrive
-pkgver=1.0.1.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
@@ -23,22 +23,20 @@ source=("git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
         "godot-mono-export-templates-$_godot.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_export_templates.tpz")
 if "$_system_godot"
 then
-    makedepends+=("godot-mono=$_godot")
+    makedepends+=("godot-mono")
 else
     source_x86_64+=("godot-$_godot-x86_64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_x86_64.zip")
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
 fi
 
-sha256sums=('d7f0c166ec5baca7203125f11002aeb088f74fed48eae3609b0322c4210e1a3e'
+sha256sums=('c10ceb8dfdc9cf0d9170f55bbe804e8c75f91f702b140dac55d30bc916fe2606'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '46056e8394cd1f1f85ccfaabddffc1a67f595bfd99fbda6cd62afa751dbfc519')
-sha256sums_x86_64=('cb4c54e0b74a44f3b3c6c4a6c25e5185f3b715d4a43981342ae7b981af50e271')
-sha256sums_aarch64=('38880b68e1028d9b14da5e48c1b32f6615113ded90e8f094fe9b0c4edfc5f82b')
+            '4ecf72faf76f96e010d166ddbbe3f0fb8e7df9633282666a3a9afd4ee3e00e7d')
 
 options=("!lto") # -flto=thin is added in CMakeLists.txt
 
@@ -78,6 +76,16 @@ prepare(){
             "$HOME/.local/bin/godot"
     else
         ln -srfv /usr/bin/godot-mono "$HOME/.local/bin/godot"
+        local installed_godot
+        installed_godot="$(LANG=C pacman -Qi godot-mono | grep Version | cut -d : -f 2 | cut -d - -f 1 | xargs)"
+        if [[ "$installed_godot" != "$_godot" ]]
+        then
+            echo "Installed godot does not match requirements in source. Needs $_godot, but $installed_godot installed."
+            echo "Applying simple substitution to continue anyway..."
+            sed -i "s/$_godot/$installed_godot/g" \
+                Scripts/GodotVersion.cs \
+                Thrive.csproj
+        fi
     fi
     local _build_info_path="$srcdir/Thrive/simulation_parameters/revision.json"
     local _commit _branch _built_at _dev_build
@@ -121,8 +129,20 @@ package(){
         -t  "$pkgdir/usr/share/licenses/$pkgname/"
     install -Dm644 assets/misc/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/Thrive.png"
     install -Dm644 assets/misc/Thrive.desktop "$pkgdir/usr/share/applications/Thrive.desktop"
-    # Hack to fix permission
-    find "$pkgdir/usr/lib/thrive" -type f -perm 666 -exec chmod 644 {} +
     # Hack to fix native lib searching
-    install -Dm644 native_libs/linux/20/release/lib/libthrive_native.so -t "$pkgdir/usr/lib/thrive/data_Thrive_linuxbsd_$_godot_arch"
+    local libbasename
+    for file in native_libs/linux/*/release/lib/libthrive_*.so*
+    do
+        libbasename="$(basename "$file")"
+        if [[ ! -e "$pkgdir/usr/lib/thrive/lib/$libbasename" ]]
+        then
+            install -Dvm755 "$file" "$pkgdir/usr/lib/thrive/lib/$libbasename"
+        fi
+    done
+    # Hack to fix permission
+    find "$pkgdir/usr/lib/thrive" -type f -exec chmod 644 {} +
+    find "$pkgdir/usr/lib/thrive" -type f -name "*.so*" -exec chmod 755 {} +
+    find "$pkgdir/usr/lib/thrive" -type l -exec chmod 777 {} +
+    find "$pkgdir/usr/lib/thrive" -type d -exec chmod 755 {} +
+    chmod 755 "$pkgdir/usr/lib/thrive/Thrive"
 }
