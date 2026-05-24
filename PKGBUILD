@@ -2,22 +2,25 @@
 # Maintainer: Balaji J <balaji.jothi.in@gmail.com>
 
 pkgname='pgxcli-bin'
-pkgver=0.1.0
+pkgver=0.2.2
 pkgrel=1
-pkgdesc='Interactive PostgreSQL command-line client written in Go.'
-url='https://github.com/Balaji01-4D/pgxcli'
+pkgdesc='An interactive PostgreSQL CLI written in Go'
+url='https://github.com/balajz/pgxcli'
 arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('pgxcli')
 conflicts=('pgxcli')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Balaji01-4D/pgxcli/releases/download/v${pkgver}/pgxcli_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('71f49308666e060035d505e27d2cec5309c30d1be1d13c571050dddcedd975e5')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/balajz/pgxcli/releases/download/v${pkgver}/pgxcli_${pkgver}_linux_arm64.tar.gz")
+sha256sums_aarch64=('5a2b5ec5ad1385f05a30b3cc4a2cae17c6b4a17a6044573242e38466f6409a9b')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Balaji01-4D/pgxcli/releases/download/v${pkgver}/pgxcli_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('4ad6f7bc64c905323e99d417cceb6b6ed570332456e05a124eff114e0455538c')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/balajz/pgxcli/releases/download/v${pkgver}/pgxcli_${pkgver}_linux_amd64.tar.gz")
+sha256sums_x86_64=('7ee6ecae2723fd2153495def4a5d13041c06dadaac74e9aa780b2dc064201c28')
 
 package() {
+  # bin
   install -Dm755 "./pgxcli" "${pkgdir}/usr/bin/pgxcli"
+
+  # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/pgxcli/LICENSE"
 }
