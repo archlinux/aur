@@ -1,7 +1,7 @@
 # Source: https://launcher.hytale.com/version/release/launcher.json
 # Maintainer: SCDevel <root@scdevel.net>
 
-_version=2026.05.14-26cebac
+_version=2026.05.22-c731d18
 
 pkgname=hytale-launcher-bin
 pkgver=${_version%-*}
