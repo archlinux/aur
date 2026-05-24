@@ -21,7 +21,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
-    gcc main.c curfblib.c -o cursorfb -O2 -Wall -Wextra -pthread -lm
+    gcc main.c curfblib.c -o cursorfb -Wall -Wextra -pthread -lm
 }
 
 package() {
