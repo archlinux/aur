@@ -1,6 +1,6 @@
 pkgbase = ovpngate
-	pkgdesc = Terminal-based OpenVPN client for VPN Gate with server list, filters, and connection management
-	pkgver = 0.1.0
+	pkgdesc = Terminal-based OpenVPN client for VPN Gate with server list, filters, favorites, and connection management
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/kurojs/ovpngate
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ovpngate
 	makedepends = go
 	depends = openvpn
 	depends = iproute2
-	source = https://github.com/kurojs/ovpngate/archive/v0.1.0.tar.gz
+	source = https://github.com/kurojs/ovpngate/archive/v0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = ovpngate
