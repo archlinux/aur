@@ -1,6 +1,6 @@
 pkgbase = libchronoid
 	pkgdesc = C11 toolkit for time-ordered IDs: KSUID (segmentio wire-compat) + UUIDv7 (RFC 9562)
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/semantic-reasoning/libchronoid
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = libchronoid
 	makedepends = gcc
 	depends = glibc
 	conflicts = libchronoid-git
-	source = https://github.com/semantic-reasoning/libchronoid/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 82e3a7748a09898834425c812e5dffb78b7d8e8864118e67ca96e669aee721a9
+	source = https://github.com/semantic-reasoning/libchronoid/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 0f0e0e0aa87c5f42658b5ba1e23c83b1860657391cc1c4f60c9377012236e69a
 
 pkgname = libchronoid
