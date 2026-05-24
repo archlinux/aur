@@ -20,10 +20,21 @@ sha256sums=(
 	'1b32cc64c00ce92daef1d14bfaf37868f4d0f3b4949f1d5a824cf32aee1c1f87'
 )
 
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	rm -f gradle/gradle-daemon-jvm.properties
+}
+
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	export GRADLE_USER_HOME="${srcdir}/.gradle"
-	gradle -Dorg.gradle.java.installations.auto-download=false commonFiles \
+	export JAVA_HOME="/usr/lib/jvm/java-25-openjdk"
+	export PATH="${JAVA_HOME}/bin:${PATH}"
+
+	gradle \
+		-Porg.gradle.java.installations.auto-download=false \
+		-Porg.gradle.java.installations.paths=/usr/lib/jvm/java-17-openjdk,/usr/lib/jvm/java-25-openjdk \
+		commonFiles \
 		-Pversion="${pkgver}" \
 		-PreleaseType=RELEASE \
 		--no-daemon
