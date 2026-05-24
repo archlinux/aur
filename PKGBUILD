@@ -2,7 +2,7 @@
 # Maintainer: Leonardo Faoro <ssm@leonardofaoro.com>
 
 pkgname='ssm-bin'
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='SSH connection manager with a TUI'
 url='https://github.com/lfaoro/ssm'
@@ -13,10 +13,10 @@ conflicts=('ssm')
 depends=('openssh')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/lfaoro/ssm/releases/download/${pkgver}/ssm_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('71e71e886423f8be9bdd694eeebf42bf273268ae3d47c58c65bb8e49d3397a1b')
+sha256sums_aarch64=('751979aaf4dbdf40cb086b340b177a42034265a6f6a98e4158445cebcb1a187d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/lfaoro/ssm/releases/download/${pkgver}/ssm_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('d2fa5c626e01af29da4729450d86e2db0383e23be26a0a3a4dc9be1608a155e4')
+sha256sums_x86_64=('e4b637be41788cb8ef86ba4af0f3cf682dad3a1173764b29ff8c79a55eabf929')
 
 package() {
   install -Dm755 "./ssm" "${pkgdir}/usr/bin/ssm"
