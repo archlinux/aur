@@ -1,0 +1,767 @@
+#!/usr/bin/env bash
+# waifufetch - system info with a random waifu decoration
+# Like fastfetch/neofetch, but with waifu images instead of ASCII logos
+#
+# Repository: https://github.com/JGH0/waifufetch
+# License: MIT
+
+set -euo pipefail
+
+# ============================================================
+# Tag lists
+# ============================================================
+WIM_SFW=(waifu maid uniform selfies)
+WIM_NSFW=(ero ecchi hentai oppai ass milf oral paizuri)
+WIM_CHARS=(raiden-shogun mori-calliope rem marin-kitagawa genshin-impact kamisato-ayaka)
+NB_STATIC=(waifu neko kitsune husbando)
+NB_GIFS=(lurk shoot sleep clap shrug stare wave poke confused smile \
+         peck wink sip blush smug tickle yeet think highfive feed wag bite \
+         teehee shocked bleh bored nom nya yawn facepalm cuddle kick happy \
+         carry hug kabedon baka bonk pat angry spin shake run nod nope kiss \
+         dance punch handshake slap cry lappillow pout blowkiss handhold \
+         salute thumbsup laugh tableflip)
+KNOWN_RATINGS=(safe suggestive borderline explicit sfw nsfw)
+
+usage() {
+    cat <<EOF
+Usage: waifufetch [category|rating] [tag] [--noLink] [--debug]
+
+Display system info with a random waifu decoration.
+
+  waifufetch                      - default SFW ($DEFAULT_SFW)
+  waifufetch sfw [tag]            - SFW (default rating, cascading)
+  waifufetch nsfw [tag]           - NSFW (borderline + explicit)
+  waifufetch safe [tag]           - exact: safe only
+  waifufetch suggestive [tag]     - exact: suggestive only
+  waifufetch borderline [tag]     - exact: borderline only
+  waifufetch explicit [tag]       - exact: explicit only
+
+  waifufetch --setDefaultSFW <r>  - set default SFW rating
+                                    Valid: safe, suggestive, borderline
+                                    The default CASCADES: borderline
+                                    includes safe+suggestive+borderline
+
+  waifufetch --setDefaultDisplayer <d> - set default image displayer
+                                    Valid: icat, chafa, img2txt, jp2a
+
+  waifufetch --noLink             - suppress image URL output
+  waifufetch --debug              - show detailed debug info
+  waifufetch --help               - show this help
+
+You can prefix any invocation with a displayer name:
+  waifufetch icat                 - force kitty icat display
+  waifufetch chafa suggestive     - force chafa display with rating
+
+Categories: waifu neko kitsune husbando maid uniform selfies
+Characters: raiden-shogun mori-calliope rem ...
+
+APIs: nekosapi.com v4, waifu.im, nekos.best
+Note: Tags and ratings depend on API metadata and are not 100% precise.
+      You may occasionally see unexpected content.
+      Install chafa, img2txt, or jp2a for waifu ASCII art.
+EOF
+    exit 0
+}
+
+# ============================================================
+# Config
+# ============================================================
+WAIFU_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/waifu"
+CONFIG_FILE="$WAIFU_CONFIG_DIR/default_sfw"
+DEFAULT_SFW="safe"
+
+if [[ -f "$CONFIG_FILE" ]]; then
+    read -r READ_VAL < "$CONFIG_FILE" || true
+    READ_VAL="$(printf '%s' "$READ_VAL" | xargs)"
+    case "$READ_VAL" in
+        safe|suggestive|borderline) DEFAULT_SFW="$READ_VAL" ;;
+    esac
+fi
+
+# ============================================================
+# Displayer config
+# ============================================================
+WAIFU_DISPLAYER_FILE="$WAIFU_CONFIG_DIR/default_displayer"
+DEFAULT_DISPLAYER=""
+
+if [[ -f "$WAIFU_DISPLAYER_FILE" ]]; then
+    read -r DISPLAYER_VAL < "$WAIFU_DISPLAYER_FILE" || true
+    DISPLAYER_VAL="$(printf '%s' "$DISPLAYER_VAL" | xargs)"
+    case "$DISPLAYER_VAL" in
+        icat|chafa|img2txt|jp2a) DEFAULT_DISPLAYER="$DISPLAYER_VAL" ;;
+    esac
+fi
+
+# ============================================================
+# Parse --debug and --noLink from anywhere (must be first)
+# ============================================================
+DEBUG=0
+NO_LINK=0
+FILTERED_ARGS=()
+for arg in "$@"; do
+    case "$arg" in
+        --debug)   DEBUG=1 ;;
+        --noLink)  NO_LINK=1 ;;
+        *)         FILTERED_ARGS+=("$arg") ;;
+    esac
+done
+set -- "${FILTERED_ARGS[@]}"
+
+# ============================================================
+# Help (scan all args)
+# ============================================================
+for arg in "$@"; do
+    if [[ "$arg" == "--help" ]]; then
+        usage
+    fi
+done
+
+# ============================================================
+# Set default displayer
+# ============================================================
+if [[ "${1:-}" == "--setDefaultDisplayer" ]]; then
+    if [[ $# -lt 2 ]]; then
+        echo "Usage: waifufetch --setDefaultDisplayer <displayer>"
+        echo "Valid: icat, chafa, img2txt, jp2a"
+        exit 1
+    fi
+    NEW_DISP="$2"
+    case "$NEW_DISP" in
+        icat|chafa|img2txt|jp2a)
+            mkdir -p "$WAIFU_CONFIG_DIR"
+            echo "$NEW_DISP" > "$WAIFU_DISPLAYER_FILE"
+            echo "Default displayer set to: $NEW_DISP"
+            ;;
+        *)
+            echo "Error: Invalid displayer '$NEW_DISP'. Valid: icat, chafa, img2txt, jp2a" >&2
+            exit 1
+            ;;
+    esac
+    exit 0
+fi
+
+# ============================================================
+# Set default SFW
+# ============================================================
+if [[ "${1:-}" == "--setDefaultSFW" ]]; then
+    if [[ $# -lt 2 ]]; then
+        echo "Usage: waifufetch --setDefaultSFW <rating>"
+        echo "Valid: safe, suggestive, borderline"
+        exit 1
+    fi
+    NEW_VAL="$2"
+    case "$NEW_VAL" in
+        safe)
+            mkdir -p "$WAIFU_CONFIG_DIR"
+            echo "safe" > "$CONFIG_FILE"
+            echo "Default SFW rating set to: safe (safe only)"
+            ;;
+        suggestive)
+            mkdir -p "$WAIFU_CONFIG_DIR"
+            echo "suggestive" > "$CONFIG_FILE"
+            echo "Default SFW rating set to: suggestive (safe + suggestive)"
+            ;;
+        borderline)
+            mkdir -p "$WAIFU_CONFIG_DIR"
+            echo "borderline" > "$CONFIG_FILE"
+            echo "Default SFW rating set to: borderline (safe + suggestive + borderline)"
+            ;;
+        explicit)
+            echo "Error: Cannot set default to 'explicit'. Use 'waifu explicit' for one-off." >&2
+            exit 1
+            ;;
+        *)
+            echo "Error: Invalid rating '$NEW_VAL'. Valid: safe, suggestive, borderline" >&2
+            exit 1
+            ;;
+    esac
+    exit 0
+fi
+
+# ============================================================
+# Parse positional displayer from first arg
+# ============================================================
+DISPLAYER="$DEFAULT_DISPLAYER"
+if [[ $# -ge 1 ]]; then
+    case "${1}" in
+        icat|chafa|img2txt|jp2a)
+            DISPLAYER="${1}"
+            shift
+            ;;
+    esac
+fi
+
+# ============================================================
+# Parse mode/category/rating
+# ============================================================
+MODE="sfw"
+RATING_LEVEL="$DEFAULT_SFW"
+CATEGORY="waifu"
+IS_DIRECT_RATING=0
+
+if [[ $# -ge 1 ]]; then
+    case "${1}" in
+        sfw)
+            MODE="sfw"
+            RATING_LEVEL="$DEFAULT_SFW"
+            [[ $# -ge 2 ]] && CATEGORY="$2"
+            ;;
+        nsfw)
+            MODE="nsfw"
+            RATING_LEVEL="explicit"
+            [[ $# -ge 2 ]] && CATEGORY="$2"
+            ;;
+        safe|suggestive|borderline|explicit)
+            RATING_LEVEL="${1}"
+            IS_DIRECT_RATING=1
+            [[ "${1}" == "explicit" ]] && MODE="nsfw" || MODE="sfw"
+            [[ $# -ge 2 ]] && CATEGORY="$2"
+            ;;
+        *)
+            CATEGORY="${1}"
+            ;;
+    esac
+fi
+
+# ============================================================
+# Unknown tag warning
+# ============================================================
+ALL_KNOWN_TAGS=("${WIM_SFW[@]}" "${WIM_NSFW[@]}" "${WIM_CHARS[@]}" "${NB_STATIC[@]}" "${NB_GIFS[@]}")
+TAG_UNKNOWN=1
+for t in "${ALL_KNOWN_TAGS[@]}"; do
+    if [[ "$t" == "$CATEGORY" ]]; then
+        TAG_UNKNOWN=0
+        break
+    fi
+done
+if [[ $TAG_UNKNOWN -eq 1 ]]; then
+    for r in "${KNOWN_RATINGS[@]}"; do
+        [[ "$r" == "$CATEGORY" ]] && { TAG_UNKNOWN=0; break; }
+    done
+fi
+if [[ $TAG_UNKNOWN -eq 1 ]]; then
+    echo "Warning: '$CATEGORY' not in known categories. See 'waifufetch --help'." >&2
+fi
+
+# ============================================================
+# Build API rating param
+# ============================================================
+API_RATING=""
+if [[ "$MODE" == "nsfw" && $IS_DIRECT_RATING -eq 0 ]]; then
+    API_RATING="borderline,explicit"
+elif [[ $IS_DIRECT_RATING -eq 1 ]]; then
+    API_RATING="$RATING_LEVEL"
+else
+    case "$RATING_LEVEL" in
+        safe)       API_RATING="safe" ;;
+        suggestive) API_RATING="safe,suggestive" ;;
+        borderline) API_RATING="safe,suggestive,borderline" ;;
+        explicit)   API_RATING="safe,suggestive,borderline,explicit" ;;
+    esac
+fi
+
+# ============================================================
+# Came easter egg
+# ============================================================
+CAME_USER="$(whoami 2>/dev/null || echo "${USER:-$LOGNAME}")"
+CAME_TRIGGER=0
+if [[ "$CAME_USER" == "came" ]]; then
+    if [[ "$MODE" == "nsfw" || "$RATING_LEVEL" == "borderline" || "$RATING_LEVEL" == "suggestive" ]]; then
+        CAME_TRIGGER=1
+    fi
+fi
+
+# ============================================================
+# Debug output
+# ============================================================
+if [[ $DEBUG -eq 1 ]]; then
+    echo "[debug] mode:         $MODE" >&2
+    echo "[debug] rating_level: $RATING_LEVEL" >&2
+    echo "[debug] is_direct:    $IS_DIRECT_RATING" >&2
+    echo "[debug] api_rating:   $API_RATING" >&2
+    echo "[debug] category:     $CATEGORY" >&2
+    echo "[debug] default_sfw:  $DEFAULT_SFW" >&2
+    echo "[debug] displayer:    ${DISPLAYER:-auto}" >&2
+fi
+
+# ============================================================
+# Collect system info
+# ============================================================
+collect_info() {
+    local -n _ci="$1"
+    local os user host uptime_str uptime_secs days hours mins \
+          shell term de cpu gpu mem pkgs res swap disk
+
+    os=""
+    if [[ -f /etc/os-release ]]; then
+        os="$(grep -oP '(?<=^PRETTY_NAME=").*(?=")' /etc/os-release 2>/dev/null || \
+              grep -oP '(?<=^NAME=").*(?=")' /etc/os-release 2>/dev/null || \
+              grep -oP '(?<=^NAME=)[^"\n]+' /etc/os-release 2>/dev/null)"
+    fi
+    [[ -z "$os" ]] && os="$(uname -s)"
+    _ci+=("OS" "$os")
+
+    user="$(whoami 2>/dev/null || echo "${USER:-unknown}")"
+    host="$(hostname 2>/dev/null || echo "unknown")"
+    _ci+=("Host" "${user}@${host}")
+
+    _ci+=("Kernel" "$(uname -r 2>/dev/null || echo 'unknown')")
+
+    uptime_str=""
+    if [[ -f /proc/uptime ]]; then
+        uptime_secs="$(awk '{print int($1)}' /proc/uptime 2>/dev/null)"
+        days=$((uptime_secs / 86400))
+        hours=$(( (uptime_secs % 86400) / 3600 ))
+        mins=$(( (uptime_secs % 3600) / 60 ))
+        if [[ $days -gt 0 ]]; then
+            uptime_str="${days}d ${hours}h ${mins}m"
+        elif [[ $hours -gt 0 ]]; then
+            uptime_str="${hours}h ${mins}m"
+        else
+            uptime_str="${mins}m"
+        fi
+    else
+        uptime_str="$(uptime -p 2>/dev/null | sed 's/^up //' || echo 'unknown')"
+    fi
+    _ci+=("Uptime" "$uptime_str")
+
+    shell="${SHELL:-unknown}"
+    shell="$(basename "$shell")"
+    _ci+=("Shell" "$shell")
+
+    term="${TERM:-unknown}"
+    _ci+=("Terminal" "$term")
+
+    de="${XDG_CURRENT_DESKTOP:-${XDG_SESSION_DESKTOP:-${DESKTOP_SESSION:-}}}"
+    if [[ -z "$de" ]]; then
+        if command -v wmctrl &>/dev/null; then
+            de="$(wmctrl -m 2>/dev/null | grep -oP '(?<=Name: ).*' || true)"
+        fi
+        [[ -z "$de" ]] && de="$(pgrep -l -x gnome-shell | grep -oP '^\d+ \K.*' || \
+                                 pgrep -l -x kwin_x11 | grep -oP '^\d+ \K.*' || \
+                                 pgrep -l -x kwin_wayland | grep -oP '^\d+ \K.*' || \
+                                 pgrep -l -x sway | grep -oP '^\d+ \K.*' || \
+                                 pgrep -l -x hyprland | grep -oP '^\d+ \K.*' || \
+                                 pgrep -l -x i3 | grep -oP '^\d+ \K.*' || \
+                                 pgrep -l -x bspwm | grep -oP '^\d+ \K.*' || \
+                                 pgrep -l -x dwm | grep -oP '^\d+ \K.*' || \
+                                 pgrep -l -x openbox | grep -oP '^\d+ \K.*' || \
+                                 pgrep -l -x awesome | grep -oP '^\d+ \K.*' || \
+                                 pgrep -l -x herbstluftwm | grep -oP '^\d+ \K.*' || \
+                                 pgrep -l -x qtile | grep -oP '^\d+ \K.*' || \
+                                 pgrep -l -x xfce4-panel | grep -oP '^\d+ \K.*' || true)"
+        [[ -z "$de" ]] && de="Not detected"
+    fi
+    _ci+=("WM/DE" "$de")
+
+    cpu=""
+    if [[ -f /proc/cpuinfo ]]; then
+        cpu="$(grep -m1 'model name' /proc/cpuinfo 2>/dev/null | sed 's/.*: //' || true)"
+    fi
+    [[ -z "$cpu" ]] && cpu="$(lscpu 2>/dev/null | grep 'Model name' | sed 's/.*:\s*//' || echo 'unknown')"
+    cpu="$(printf '%s' "$cpu" | sed 's/(R)//g; s/(TM)//g; s/ CPU @ [0-9.]*GHz//g; s/  */ /g' | xargs)"
+    _ci+=("CPU" "$cpu")
+
+    gpu=""
+    if command -v lspci &>/dev/null; then
+        gpu="$(lspci 2>/dev/null | grep -i 'vga\|3d\|display' | head -1 | sed 's/.*: //; s/ (rev.*)//; s/ \[.*\]//g' || true)"
+    fi
+    [[ -z "$gpu" ]] && gpu="unknown"
+    gpu="$(printf '%s' "$gpu" | sed 's/ \(Corporation\|Technology\|Inc\)//g' | xargs)"
+    _ci+=("GPU" "$gpu")
+
+    mem=""
+    if command -v free &>/dev/null; then
+        mem="$(free -h 2>/dev/null | awk '/^Mem:/ {print $3 "/" $2}')"
+    fi
+    [[ -z "$mem" ]] && mem="unknown"
+    _ci+=("Memory" "$mem")
+
+    swap=""
+    if command -v free &>/dev/null; then
+        swap="$(free -h 2>/dev/null | awk '/^Swap:/ {print $3 "/" $2}')"
+    fi
+    [[ -z "$swap" || "$swap" == "/" ]] && swap="none"
+    _ci+=("Swap" "$swap")
+
+    disk=""
+    if command -v df &>/dev/null; then
+        disk="$(df -h / 2>/dev/null | awk 'NR==2 {print $3 "/" $2 " (" $5 ")"}')"
+    fi
+    [[ -z "$disk" ]] && disk="unknown"
+    _ci+=("Disk" "$disk")
+
+    pkgs=0
+    if command -v pacman &>/dev/null; then
+        pkgs=$((pkgs + $(pacman -Q 2>/dev/null | wc -l)))
+    fi
+    if command -v dpkg &>/dev/null; then
+        pkgs=$((pkgs + $(dpkg -l 2>/dev/null | wc -l)))
+    fi
+    if command -v rpm &>/dev/null; then
+        pkgs=$((pkgs + $(rpm -qa 2>/dev/null | wc -l)))
+    fi
+    if command -v flatpak &>/dev/null; then
+        pkgs=$((pkgs + $(flatpak list 2>/dev/null | wc -l)))
+    fi
+    if [[ $pkgs -gt 0 ]]; then
+        _ci+=("Packages" "$pkgs")
+    fi
+
+    res=""
+    if command -v xrandr &>/dev/null; then
+        res="$(xrandr 2>/dev/null | grep ' connected' | head -1 | grep -oP '\d+x\d+\s*\d+\.\d+\*?' | head -1 | awk '{print $1}' || true)"
+    fi
+    if [[ -z "$res" && -d /sys/class/drm ]]; then
+        res="$(cat /sys/class/drm/*/modes 2>/dev/null | head -1 || true)"
+    fi
+    if command -v wlr-randr &>/dev/null; then
+        res="$(wlr-randr 2>/dev/null | grep -oP '\d+x\d+ px' | head -1 | sed 's/ px//' || true)"
+    fi
+    [[ -n "$res" ]] && _ci+=("Resolution" "$res")
+}
+
+# ============================================================
+# Convert image to text (captured line by line)
+# ============================================================
+image_to_text() {
+    local file="$1"
+    local width="$2"
+    local max_height="${3:-0}"
+    local preferred="${4:-}"
+    local lines=()
+
+    local img_width=$((width / 3))
+    [[ $img_width -lt 15 ]] && img_width=15
+    [[ $img_width -gt 40 ]] && img_width=40
+
+    local img_height=$((img_width * 2 / 3))
+    if [[ $max_height -gt 0 ]]; then
+        local cap=$((max_height * 2))
+        [[ $cap -lt $img_height ]] && img_height=$cap
+        [[ $img_height -lt 8 ]] && img_height=8
+    fi
+
+    if [[ -n "$preferred" ]]; then
+        # User specified a displayer -- only try that one
+        case "$preferred" in
+            chafa)
+                if command -v chafa &>/dev/null; then
+                    mapfile -t lines < <(chafa --format=symbols --symbols=block --relative=off --size="${img_width}x${img_height}" "$file" 2>/dev/null || true)
+                    if [[ ${#lines[@]} -gt 0 ]]; then
+                        printf '%s\n' "${lines[@]}"
+                        return 0
+                    fi
+                fi
+                ;;
+            img2txt)
+                if command -v img2txt &>/dev/null; then
+                    mapfile -t lines < <(img2txt -W "$img_width" "$file" 2>/dev/null | tr -d '\r' | sed $'s/\x1b\[[su]//g' || true)
+                    if [[ ${#lines[@]} -gt 0 ]]; then
+                        printf '%s\n' "${lines[@]}"
+                        return 0
+                    fi
+                fi
+                ;;
+            jp2a)
+                if command -v jp2a &>/dev/null; then
+                    mapfile -t lines < <(jp2a --width="$img_width" "$file" 2>/dev/null || true)
+                    if [[ ${#lines[@]} -gt 0 ]]; then
+                        printf '%s\n' "${lines[@]}"
+                        return 0
+                    fi
+                fi
+                ;;
+            icat)
+                # icat does not output text lines -- handled separately in main()
+                return 1
+                ;;
+        esac
+        return 1
+    fi
+
+    # No preference: auto-detect
+    if command -v chafa &>/dev/null; then
+        mapfile -t lines < <(chafa --format=symbols --symbols=block --relative=off --size="${img_width}x${img_height}" "$file" 2>/dev/null || true)
+        if [[ ${#lines[@]} -gt 0 ]]; then
+            printf '%s\n' "${lines[@]}"
+            return 0
+        fi
+    fi
+
+    if command -v img2txt &>/dev/null; then
+        mapfile -t lines < <(img2txt -W "$img_width" "$file" 2>/dev/null | tr -d '\r' | sed $'s/\x1b\[[su]//g' || true)
+        if [[ ${#lines[@]} -gt 0 ]]; then
+            printf '%s\n' "${lines[@]}"
+            return 0
+        fi
+    fi
+
+    if command -v jp2a &>/dev/null; then
+        mapfile -t lines < <(jp2a --width="$img_width" "$file" 2>/dev/null || true)
+        if [[ ${#lines[@]} -gt 0 ]]; then
+            printf '%s\n' "${lines[@]}"
+            return 0
+        fi
+    fi
+
+    return 1
+}
+
+# ============================================================
+# Side-by-side display
+# ============================================================
+print_side_by_side() {
+    local -n _art="$1"
+    local -n _info="$2"
+    local width="${COLUMNS:-80}"
+
+    local max_art_w=0
+    local line clean len
+    for line in "${_art[@]}"; do
+        clean="$(printf '%s' "$line" | sed 's/\x1b\[[0-9;]*[a-zA-Z]//g')"
+        len=${#clean}
+        [[ $len -gt $max_art_w ]] && max_art_w=$len
+    done
+
+    local info_col=$((max_art_w + 2))
+    local reset=$'\033[0m'
+    local key_color=$'\033[1;36m'
+    local info_lines=()
+    local i=0 total="${#_info[@]}" key val
+    while [[ $i -lt $total ]]; do
+        key="${_info[$i]}"
+        val="${_info[$((i+1))]:-}"
+        info_lines+=("${key_color}${key}:${reset} ${val}")
+        i=$((i + 2))
+    done
+
+    local max_lines=${#_art[@]}
+    local max_info=${#info_lines[@]}
+    local max=$((max_lines > max_info ? max_lines : max_info))
+    local l art_line info_line
+
+    for ((l=0; l<max; l++)); do
+        art_line=""
+        info_line=""
+        [[ $l -lt ${#_art[@]} ]] && art_line="${_art[$l]}"
+        [[ $l -lt ${#info_lines[@]} ]] && info_line="${info_lines[$l]}"
+
+        if [[ -n "$art_line" && -n "$info_line" ]]; then
+            printf '%s\033[%dG%s\n' "$art_line" "$info_col" "$info_line"
+        elif [[ -n "$art_line" ]]; then
+            printf '%s\n' "$art_line"
+        elif [[ -n "$info_line" ]]; then
+            printf '\033[%dG%s\n' "$info_col" "$info_line"
+        fi
+    done
+}
+
+# ============================================================
+# Fallback: plain text info display
+# ============================================================
+print_info_fallback() {
+    local -n _fallback="$1"
+    local i=0 total="${#_fallback[@]}" key val
+    while [[ $i -lt $total ]]; do
+        key="${_fallback[$i]}"
+        val="${_fallback[$((i+1))]:-}"
+        printf "  %-12s %s\n" "${key}:" "$val"
+        i=$((i + 2))
+    done
+}
+
+# ============================================================
+# Fetch waifu image
+# ============================================================
+fetch_waifu() {
+    local rating_param="$1"
+    local category="$2"
+    local outfile="$3"
+
+    local url=""
+    local is_gif=0
+    for t in "${NB_GIFS[@]}"; do
+        [[ "$t" == "$category" ]] && { is_gif=1; break; }
+    done
+
+    # ---- Came: e621 for femboy/trap ----
+    if [[ $CAME_TRIGGER -eq 1 ]]; then
+        local search_tag="$category"
+        [[ "$category" == "waifu" ]] && search_tag="femboy"
+        local ua="WaifuFetchScript/1.0"
+        local file_ext=""
+        local attempts=0
+        while [[ "$file_ext" != "png" && "$file_ext" != "jpg" && "$file_ext" != "jpeg" && "$file_ext" != "gif" ]]; do
+            [[ $attempts -ge 5 ]] && break
+            attempts=$((attempts + 1))
+            local json
+            json="$(curl -sL --max-time 8 -H "User-Agent: $ua" \
+                "https://e621.net/posts/random.json?tags=${search_tag}+rating:explicit")"
+            url="$(printf '%s' "$json" | jq -r '.post.file.url // empty' 2>/dev/null)"
+            file_ext="$(printf '%s' "$json" | jq -r '.post.file.ext // empty' 2>/dev/null)"
+        done
+    fi
+
+    # ---- nekosapi v4 ----
+    if [[ -z "$url" && $is_gif -eq 0 ]]; then
+        local url_param="https://api.nekosapi.com/v4/images/random?limit=1&rating=${rating_param}"
+        [[ "$category" != "waifu" ]] && url_param="${url_param}&included_tags=${category}"
+        url="$(curl -sL --max-time 5 "$url_param" | jq -r '.[0].url // empty' 2>/dev/null)"
+    fi
+
+    # ---- waifu.im fallback ----
+    if [[ -z "$url" && $is_gif -eq 0 ]]; then
+        local wim_nsf="false"
+        [[ "$RATING_LEVEL" == "borderline" || "$RATING_LEVEL" == "explicit" || "$MODE" == "nsfw" ]] && wim_nsf="true"
+        [[ $IS_DIRECT_RATING -eq 1 && "$RATING_LEVEL" == "suggestive" ]] && wim_nsf="true"
+        local json
+        json="$(curl -sL --max-time 5 \
+            "https://api.waifu.im/images?IsNsfw=${wim_nsf}&IncludedTags=${category}")"
+        if ! printf '%s' "$json" | grep -q "Just a moment\|_cf_chl_opt\|challenge-platform"; then
+            url="$(printf '%s' "$json" | jq -r '.items[0].url // empty' 2>/dev/null)"
+        fi
+    fi
+
+    # ---- nekos.best ----
+    if [[ -z "$url" && "$MODE" == "sfw" ]]; then
+        if [[ $is_gif -eq 1 ]]; then
+            url="$(curl -sL --max-time 8 "https://nekos.best/api/v2/${category}" | \
+                jq -r '.results[0].url // empty' 2>/dev/null)"
+        else
+            local nc="waifu"
+            for t in "${NB_STATIC[@]}"; do
+                [[ "$t" == "$category" ]] && { nc="$t"; break; }
+            done
+            url="$(curl -sL --max-time 8 "https://nekos.best/api/v2/${nc}" | \
+                jq -r '.results[0].url // empty' 2>/dev/null)"
+        fi
+    fi
+
+    # ---- nekosapi v4 catch-all ----
+    if [[ -z "$url" && $is_gif -eq 0 ]]; then
+        url="$(curl -sL --max-time 8 \
+            "https://api.nekosapi.com/v4/images/random?limit=1&rating=${rating_param}" | \
+            jq -r '.[0].url // empty' 2>/dev/null)"
+    fi
+
+    if [[ -z "$url" ]]; then
+        return 1
+    fi
+
+    curl -sL --max-time 10 "$url" > "$outfile" 2>/dev/null
+    if [[ ! -s "$outfile" ]]; then
+        rm -f "$outfile"
+        return 1
+    fi
+
+    printf '%s' "$url"
+    return 0
+}
+
+# ============================================================
+# Main
+# ============================================================
+main() {
+    local tmpfile
+    tmpfile="$(mktemp /tmp/waifufetch-XXXXXX 2>/dev/null)"
+    local image_url=""
+
+    # Fetch image
+    image_url="$(fetch_waifu "$API_RATING" "$CATEGORY" "$tmpfile")" || true
+
+    if [[ -z "$image_url" ]]; then
+        # Check if the category is known
+        local found=0
+        for t in "${ALL_KNOWN_TAGS[@]}"; do
+            [[ "$t" == "$CATEGORY" ]] && { found=1; break; }
+        done
+        if [[ $found -eq 0 ]]; then
+            echo "Error: '$CATEGORY' not found in known categories." >&2
+            echo "Run 'waifufetch --help' to see available categories." >&2
+        else
+            echo "Error: No images found for '$CATEGORY' with rating '$API_RATING'." >&2
+        fi
+    fi
+
+    # Collect system info
+    declare -a info_pairs=()
+    collect_info info_pairs
+
+    # Try display
+    if [[ -n "${image_url:-}" && -s "$tmpfile" ]]; then
+        local width="${COLUMNS:-80}"
+        if command -v tput &>/dev/null; then
+            local tput_w
+            tput_w="$(tput cols 2>/dev/null || echo 80)"
+            [[ "$tput_w" -gt 0 ]] && width="$tput_w"
+        fi
+
+        # Check if requested displayer is available
+        DISPLAYER_AVAILABLE=1
+        if [[ -n "$DISPLAYER" ]]; then
+            case "$DISPLAYER" in
+                icat)
+                    if [[ -z "${KITTY_WINDOW_ID:-}" && "${TERM:-}" != *kitty* ]] && ! command -v chafa &>/dev/null; then
+                        echo "Error: '$DISPLAYER' requested but not available (kitty terminal or chafa required)." >&2
+                        DISPLAYER_AVAILABLE=0
+                    fi
+                    ;;
+                chafa)
+                    if ! command -v chafa &>/dev/null; then
+                        echo "Error: '$DISPLAYER' requested but not installed." >&2
+                        echo "Install chafa (e.g., pacman -S chafa)" >&2
+                        DISPLAYER_AVAILABLE=0
+                    fi
+                    ;;
+                img2txt)
+                    if ! command -v img2txt &>/dev/null; then
+                        echo "Error: '$DISPLAYER' requested but not installed." >&2
+                        echo "Install caca-utils (e.g., pacman -S caca-utils)" >&2
+                        DISPLAYER_AVAILABLE=0
+                    fi
+                    ;;
+                jp2a)
+                    if ! command -v jp2a &>/dev/null; then
+                        echo "Error: '$DISPLAYER' requested but not installed." >&2
+                        echo "Install jp2a (e.g., pacman -S jp2a)" >&2
+                        DISPLAYER_AVAILABLE=0
+                    fi
+                    ;;
+            esac
+        fi
+
+        if [[ $DISPLAYER_AVAILABLE -eq 0 ]]; then
+            # Displayer not available -- show system info without waifu
+            echo ""
+            print_info_fallback info_pairs
+            rm -f "$tmpfile"
+            return
+        fi
+
+        # icat for waifufetch uses text-art side-by-side (native icat
+        # is meant for the standalone `waifu` command, not for fetch display)
+        if [[ "$DISPLAYER" == "icat" ]]; then
+            DISPLAYER=""
+        fi
+
+        # ASCII art display (side-by-side or standalone)
+        local info_count=$(( ${#info_pairs[@]} / 2 ))
+        mapfile -t art_lines < <(image_to_text "$tmpfile" "$width" "$info_count" "$DISPLAYER" || true)
+
+        if [[ ${#art_lines[@]} -gt 0 ]]; then
+            print_side_by_side art_lines info_pairs
+            [[ $NO_LINK -eq 0 ]] && echo "$image_url"
+        else
+            echo "  Waifu image unavailable (install chafa, img2txt, or jp2a)" >&2
+            echo ""
+            print_info_fallback info_pairs
+        fi
+
+        rm -f "$tmpfile"
+    else
+        print_info_fallback info_pairs
+    fi
+}
+
+main "$@"

@@ -1,0 +1,757 @@
+#!/usr/bin/env bash
+# waifu - Fetch and display random anime waifu images in kitty terminal
+# Uses: nekosapi.com v4, waifu.im, nekos.best APIs
+# See waifu nsfw --help for NSFW options
+#
+# Repository: https://github.com/JGH0/waifufetch
+# License: MIT
+
+set -euo pipefail
+
+# ============================================================
+# Tag lists (not 100% precise - the APIs decide what fits)
+# ============================================================
+WIM_SFW=(waifu maid uniform selfies)
+WIM_NSFW=(ero ecchi hentai oppai ass milf oral paizuri)
+WIM_CHARS=(raiden-shogun mori-calliope rem marin-kitagawa genshin-impact kamisato-ayaka)
+NB_STATIC=(waifu neko kitsune husbando)
+NB_GIFS=(lurk shoot sleep clap shrug stare wave poke confused smile \
+         peck wink sip blush smug tickle yeet think highfive feed wag bite \
+         teehee shocked bleh bored nom nya yawn facepalm cuddle kick happy \
+         carry hug kabedon baka bonk pat angry spin shake run nod nope kiss \
+         dance punch handshake slap cry lappillow pout blowkiss handhold \
+         salute thumbsup laugh tableflip)
+
+# ============================================================
+# Config: default SFW rating
+# ============================================================
+WAIFU_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/waifu"
+CONFIG_FILE="$WAIFU_CONFIG_DIR/default_sfw"
+DEFAULT_SFW="safe"
+
+if [[ -f "$CONFIG_FILE" ]]; then
+    read -r READ_VAL < "$CONFIG_FILE" || true
+    READ_VAL="$(printf '%s' "$READ_VAL" | xargs)"  # trim
+    case "$READ_VAL" in
+        safe|suggestive|borderline) DEFAULT_SFW="$READ_VAL" ;;
+    esac
+fi
+
+# ============================================================
+# Displayer config
+# ============================================================
+WAIFU_DISPLAYER_FILE="$WAIFU_CONFIG_DIR/default_displayer"
+DEFAULT_DISPLAYER=""
+
+if [[ -f "$WAIFU_DISPLAYER_FILE" ]]; then
+    read -r DISPLAYER_VAL < "$WAIFU_DISPLAYER_FILE" || true
+    DISPLAYER_VAL="$(printf '%s' "$DISPLAYER_VAL" | xargs)"
+    case "$DISPLAYER_VAL" in
+        icat|chafa|img2txt|jp2a) DEFAULT_DISPLAYER="$DISPLAYER_VAL" ;;
+    esac
+fi
+
+# ============================================================
+# Parse --debug and --noLink from anywhere
+# ============================================================
+DEBUG=0
+NO_LINK=0
+FILTERED_ARGS=()
+for arg in "$@"; do
+    case "$arg" in
+        --debug) DEBUG=1 ;;
+        --noLink) NO_LINK=1 ;;
+        *) FILTERED_ARGS+=("$arg") ;;
+    esac
+done
+set -- "${FILTERED_ARGS[@]}"
+
+# ============================================================
+# Help (scan all args for --help)
+# ============================================================
+HELP_REQUESTED=0
+HELP_NSFW=0
+for arg in "$@"; do
+    if [[ "$arg" == "--help" ]]; then
+        HELP_REQUESTED=1
+    fi
+done
+if [[ $HELP_REQUESTED -eq 1 ]]; then
+    # Check if nsfw help was requested ("nsfw" anywhere in args)
+    for arg in "$@"; do
+        if [[ "$arg" == "nsfw" ]]; then
+            HELP_NSFW=1
+            break
+        fi
+    done
+    if [[ $HELP_NSFW -eq 1 ]]; then
+        cat <<EOF
+=== NSFW mode ===
+Tags: ${WIM_NSFW[*]}
+For user 'came': uses e621 with femboy/trap tags
+SFW tags: ${WIM_SFW[*]}    ${NB_STATIC[*]}
+GIFs: ${NB_GIFS[*]}
+Characters: ${WIM_CHARS[*]}
+
+Ratings: safe / suggestive / borderline / explicit
+  Use like: waifu borderline neko
+
+Default SFW rating: $DEFAULT_SFW
+  Set with: waifu --setDefaultSFW <safe|suggestive|borderline>
+
+Default displayer: ${DEFAULT_DISPLAYER:-auto}
+  Set with: waifu --setDefaultDisplayer <icat|chafa|img2txt|jp2a>
+
+APIs used: nekosapi.com v4, waifu.im, nekos.best
+Note: Tag/rating filtering depends on API metadata and is not 100% precise.
+EOF
+        exit 0
+    fi
+    cat <<EOF
+Usage: waifu [category|rating] [tag] [--debug]
+  waifu                      - default SFW ($DEFAULT_SFW)
+  waifu sfw [tag]            - SFW (default rating, cascading)
+  waifu nsfw [tag]           - NSFW (borderline + explicit)
+  waifu safe [tag]           - exact: safe only
+  waifu suggestive [tag]     - exact: suggestive only
+  waifu borderline [tag]     - exact: borderline only
+  waifu explicit [tag]       - exact: explicit only
+
+  waifu --setDefaultSFW <r>  - set default SFW rating
+                               Valid: safe, suggestive, borderline
+                               The default CASCADES: borderline
+                               includes safe+suggestive+borderline
+
+  waifu --setDefaultDisplayer <d> - set default image displayer
+                               Valid: icat, chafa, img2txt, jp2a
+
+  waifu --debug              - show detailed debug info
+  waifu nsfw --help          - show NSFW-specific help
+
+You can prefix any invocation with a displayer name:
+  waifu icat                 - force kitty icat display
+  waifu chafa suggestive     - force chafa with rating
+
+APIs used: nekosapi.com v4, waifu.im, nekos.best
+Note: Tags and ratings depend on API metadata and are not 100% precise.
+      You may occasionally see unexpected content.
+EOF
+    exit 0
+fi
+
+# ============================================================
+# Set default displayer
+# ============================================================
+if [[ "${1:-}" == "--setDefaultDisplayer" ]]; then
+    if [[ $# -lt 2 ]]; then
+        echo "Usage: waifu --setDefaultDisplayer <displayer>"
+        echo "Valid: icat, chafa, img2txt, jp2a"
+        exit 1
+    fi
+    NEW_DISP="$2"
+    case "$NEW_DISP" in
+        icat|chafa|img2txt|jp2a)
+            mkdir -p "$WAIFU_CONFIG_DIR"
+            echo "$NEW_DISP" > "$WAIFU_DISPLAYER_FILE"
+            echo "Default displayer set to: $NEW_DISP"
+            ;;
+        *)
+            echo "Error: Invalid displayer '$NEW_DISP'. Valid: icat, chafa, img2txt, jp2a" >&2
+            exit 1
+            ;;
+    esac
+    exit 0
+fi
+
+# ============================================================
+# Set default SFW
+# ============================================================
+if [[ "${1:-}" == "--setDefaultSFW" ]]; then
+    if [[ $# -lt 2 ]]; then
+        echo "Usage: waifu --setDefaultSFW <rating>"
+        echo "Valid: safe, suggestive, borderline"
+        exit 1
+    fi
+    NEW_VAL="$2"
+    case "$NEW_VAL" in
+        safe)
+            mkdir -p "$WAIFU_CONFIG_DIR"
+            echo "safe" > "$CONFIG_FILE"
+            echo "Default SFW rating set to: safe (safe only)"
+            ;;
+        suggestive)
+            mkdir -p "$WAIFU_CONFIG_DIR"
+            echo "suggestive" > "$CONFIG_FILE"
+            echo "Default SFW rating set to: suggestive (safe + suggestive)"
+            ;;
+        borderline)
+            mkdir -p "$WAIFU_CONFIG_DIR"
+            echo "borderline" > "$CONFIG_FILE"
+            echo "Default SFW rating set to: borderline (safe + suggestive + borderline)"
+            ;;
+        explicit)
+            echo "Error: Cannot set default SFW to 'explicit'. Use 'waifu explicit' for one-off requests." >&2
+            exit 1
+            ;;
+        *)
+            echo "Error: Invalid rating '$NEW_VAL'. Valid: safe, suggestive, borderline" >&2
+            exit 1
+            ;;
+    esac
+    exit 0
+fi
+
+# ============================================================
+# Parse positional displayer from first arg
+# ============================================================
+DISPLAYER="$DEFAULT_DISPLAYER"
+if [[ $# -ge 1 ]]; then
+    case "${1}" in
+        icat|chafa|img2txt|jp2a)
+            DISPLAYER="${1}"
+            shift
+            ;;
+    esac
+fi
+
+# ============================================================
+# Parse mode/category/rating
+# ============================================================
+MODE="sfw"
+RATING_LEVEL="$DEFAULT_SFW"
+CATEGORY="waifu"
+IS_DIRECT_RATING=0
+
+if [[ $# -ge 1 ]]; then
+    case "${1}" in
+        sfw)
+            MODE="sfw"
+            RATING_LEVEL="$DEFAULT_SFW"
+            [[ $# -ge 2 ]] && CATEGORY="$2"
+            ;;
+        nsfw)
+            MODE="nsfw"
+            RATING_LEVEL="explicit"
+            [[ $# -ge 2 ]] && CATEGORY="$2"
+            ;;
+        safe|suggestive|borderline|explicit)
+            RATING_LEVEL="${1}"
+            IS_DIRECT_RATING=1
+            if [[ "${1}" == "explicit" ]]; then
+                MODE="nsfw"
+            else
+                MODE="sfw"
+            fi
+            [[ $# -ge 2 ]] && CATEGORY="$2"
+            ;;
+        *)
+            CATEGORY="${1}"
+            ;;
+    esac
+fi
+
+# ============================================================
+# Unknown tag warning
+# ============================================================
+ALL_KNOWN_TAGS=("${WIM_SFW[@]}" "${WIM_NSFW[@]}" "${WIM_CHARS[@]}" "${NB_STATIC[@]}" "${NB_GIFS[@]}")
+ALL_RATINGS=(safe suggestive borderline explicit sfw nsfw)
+
+TAG_UNKNOWN=1
+for t in "${ALL_KNOWN_TAGS[@]}"; do
+    if [[ "$t" == "$CATEGORY" ]]; then
+        TAG_UNKNOWN=0
+        break
+    fi
+done
+if [[ $TAG_UNKNOWN -eq 1 ]]; then
+    for r in "${ALL_RATINGS[@]}"; do
+        if [[ "$r" == "$CATEGORY" ]]; then
+            TAG_UNKNOWN=0
+            break
+        fi
+    done
+fi
+if [[ $TAG_UNKNOWN -eq 1 ]]; then
+    echo "Warning: '$CATEGORY' not in known categories. See 'waifu --help' for available options." >&2
+fi
+
+# ============================================================
+# Build API rating param
+# ============================================================
+API_RATING=""
+if [[ "$MODE" == "nsfw" && $IS_DIRECT_RATING -eq 0 ]]; then
+    API_RATING="borderline,explicit"
+elif [[ $IS_DIRECT_RATING -eq 1 ]]; then
+    API_RATING="$RATING_LEVEL"
+else
+    case "$RATING_LEVEL" in
+        safe)       API_RATING="safe" ;;
+        suggestive) API_RATING="safe,suggestive" ;;
+        borderline) API_RATING="safe,suggestive,borderline" ;;
+        explicit)   API_RATING="safe,suggestive,borderline,explicit" ;;
+    esac
+fi
+
+# ============================================================
+# Debug output
+# ============================================================
+if [[ $DEBUG -eq 1 ]]; then
+    echo "[debug] mode:         $MODE" >&2
+    echo "[debug] rating_level: $RATING_LEVEL" >&2
+    echo "[debug] is_direct:    $IS_DIRECT_RATING" >&2
+    echo "[debug] api_rating:   $API_RATING" >&2
+    echo "[debug] category:     $CATEGORY" >&2
+    echo "[debug] default_sfw:  $DEFAULT_SFW" >&2
+    echo "[debug] displayer:    ${DISPLAYER:-auto}" >&2
+fi
+
+# ============================================================
+# Check if user is "came" (easter egg)
+# ============================================================
+IS_CAME=0
+CAME_USER="$(whoami 2>/dev/null || echo "${USER:-$LOGNAME}")"
+if [[ "$CAME_USER" == "came" ]]; then
+    IS_CAME=1
+fi
+
+# Came triggers on nsfw mode, borderline, or suggestive (not safe, not explicit-direct)
+# The standard APIs have enough explicit content; came's e621 is useful for the
+# grey-area ratings where nekosapi might be sparse.
+CAME_TRIGGER=0
+if [[ $IS_CAME -eq 1 ]]; then
+    if [[ "$MODE" == "nsfw" || "$RATING_LEVEL" == "borderline" || "$RATING_LEVEL" == "suggestive" ]]; then
+        CAME_TRIGGER=1
+    fi
+fi
+
+# ============================================================
+# Cache setup
+# ============================================================
+CAN_CACHE=0
+CACHE_DIR="/tmp/waifu"
+if mkdir -p "$CACHE_DIR" 2>/dev/null && [[ -w "$CACHE_DIR" ]]; then
+    CAN_CACHE=1
+fi
+CACHE_KEY="${MODE}|${IS_DIRECT_RATING}|${RATING_LEVEL}|${CATEGORY}"
+
+CM="$CACHE_DIR/meta.txt"
+CF="$CACHE_DIR/img"
+IMAGE_URL=""
+IMAGE_FILE=""
+FROM_CACHE=0
+
+# Check cache
+if [[ $CAN_CACHE -eq 1 && -f "$CM" && -f "$CF" ]]; then
+    read -r CK < "$CM" || true
+    CU="$(tail -1 "$CM" 2>/dev/null || true)"
+    if [[ "$CK" == "$CACHE_KEY" && -n "$CU" ]]; then
+        IMAGE_URL="$CU"
+        IMAGE_FILE="$CF"
+        FROM_CACHE=1
+        [[ $DEBUG -eq 1 ]] && echo "[debug] cache HIT: $CACHE_KEY" >&2
+    else
+        rm -f "$CM" "$CF"
+        [[ $DEBUG -eq 1 ]] && echo "[debug] cache MISS: wanted '$CACHE_KEY', had '$CK'" >&2
+    fi
+else
+    [[ $DEBUG -eq 1 ]] && echo "[debug] cache MISS: no cache files" >&2
+fi
+
+# ============================================================
+# Fetch if miss
+# ============================================================
+fetch_start=0
+if [[ -z "$IMAGE_URL" ]]; then
+    fetch_start="$(date +%s%3N 2>/dev/null || echo 0)"
+    SOURCE_USED="none"
+    SOURCE_FAILED=""
+
+    IS_GIF=0
+    for t in "${NB_GIFS[@]}"; do
+        if [[ "$t" == "$CATEGORY" ]]; then
+            IS_GIF=1
+            break
+        fi
+    done
+
+    # ---- Came easter egg: e621 for femboy/trap nsfw ----
+    if [[ $CAME_TRIGGER -eq 1 ]]; then
+        SEARCH_TAG="$CATEGORY"
+        [[ "$CATEGORY" == "waifu" ]] && SEARCH_TAG="femboy"
+        UA="WaifuScript/1.0"
+        FILE_EXT=""
+        ATTEMPTS=0
+        while [[ "$FILE_EXT" != "png" && "$FILE_EXT" != "jpg" && "$FILE_EXT" != "jpeg" && "$FILE_EXT" != "gif" ]]; do
+            [[ $ATTEMPTS -ge 5 ]] && break
+            ATTEMPTS=$((ATTEMPTS + 1))
+            JSON="$(curl -sL --max-time 8 -H "User-Agent: $UA" \
+                "https://e621.net/posts/random.json?tags=${SEARCH_TAG}+rating:explicit")"
+            IMAGE_URL="$(printf '%s' "$JSON" | jq -r '.post.file.url // empty' 2>/dev/null)"
+            FILE_EXT="$(printf '%s' "$JSON" | jq -r '.post.file.ext // empty' 2>/dev/null)"
+        done
+        if [[ -n "$IMAGE_URL" ]]; then
+            SOURCE_USED="e621"
+        else
+            SOURCE_FAILED="${SOURCE_FAILED}e621 "
+        fi
+    fi
+
+    # ---- nekosapi v4 - primary source ----
+    if [[ -z "$IMAGE_URL" && $IS_GIF -eq 0 ]]; then
+        URL_PARAM="https://api.nekosapi.com/v4/images/random?limit=1&rating=$API_RATING"
+        [[ "$CATEGORY" != "waifu" ]] && URL_PARAM="${URL_PARAM}&included_tags=${CATEGORY}"
+        IMAGE_URL="$(curl -sL --max-time 5 "$URL_PARAM" | jq -r '.[0].url // empty' 2>/dev/null)"
+        if [[ -n "$IMAGE_URL" ]]; then
+            SOURCE_USED="nekosapi v4"
+            [[ $DEBUG -eq 1 ]] && echo "[debug] nekosapi v4 OK: $URL_PARAM" >&2
+        else
+            SOURCE_FAILED="${SOURCE_FAILED}nekosapi-v4 "
+            [[ $DEBUG -eq 1 ]] && echo "[debug] nekosapi v4 FAILED: $URL_PARAM" >&2
+        fi
+    fi
+
+    # ---- waifu.im - fallback ----
+    if [[ -z "$IMAGE_URL" && $IS_GIF -eq 0 ]]; then
+        WIM_NSF="false"
+        if [[ "$RATING_LEVEL" == "borderline" || "$RATING_LEVEL" == "explicit" ]]; then
+            WIM_NSF="true"
+        elif [[ $IS_DIRECT_RATING -eq 1 && "$RATING_LEVEL" == "suggestive" ]]; then
+            WIM_NSF="true"
+        elif [[ "$MODE" == "nsfw" ]]; then
+            WIM_NSF="true"
+        fi
+        JSON="$(curl -sL --max-time 5 \
+            "https://api.waifu.im/images?IsNsfw=${WIM_NSF}&IncludedTags=${CATEGORY}")"
+        if ! printf '%s' "$JSON" | grep -q "Just a moment\|_cf_chl_opt\|challenge-platform"; then
+            IMAGE_URL="$(printf '%s' "$JSON" | jq -r '.items[0].url // empty' 2>/dev/null)"
+            if [[ -n "$IMAGE_URL" ]]; then
+                SOURCE_USED="waifu.im"
+                [[ $DEBUG -eq 1 ]] && echo "[debug] waifu.im OK (IsNsfw=$WIM_NSF)" >&2
+            fi
+        else
+            SOURCE_FAILED="${SOURCE_FAILED}waifu.im "
+            [[ $DEBUG -eq 1 ]] && echo "[debug] waifu.im FAILED (cloudflare)" >&2
+        fi
+    fi
+
+    # ---- nekos.best - backup for specific categories (SFW only) ----
+    if [[ -z "$IMAGE_URL" && "$MODE" == "sfw" ]]; then
+        if [[ $IS_GIF -eq 1 ]]; then
+            IMAGE_URL="$(curl -sL --max-time 8 "https://nekos.best/api/v2/${CATEGORY}" | \
+                jq -r '.results[0].url // empty' 2>/dev/null)"
+        else
+            NC="waifu"
+            for t in "${NB_STATIC[@]}"; do
+                if [[ "$t" == "$CATEGORY" ]]; then
+                    NC="$t"
+                    break
+                fi
+            done
+            IMAGE_URL="$(curl -sL --max-time 8 "https://nekos.best/api/v2/${NC}" | \
+                jq -r '.results[0].url // empty' 2>/dev/null)"
+        fi
+        [[ -n "$IMAGE_URL" ]] && SOURCE_USED="nekos.best" || SOURCE_FAILED="${SOURCE_FAILED}nekos.best "
+    fi
+
+    # ---- nekosapi v4 - catch-all fallback (no tag filter) ----
+    if [[ -z "$IMAGE_URL" && $IS_GIF -eq 0 ]]; then
+        IMAGE_URL="$(curl -sL --max-time 8 \
+            "https://api.nekosapi.com/v4/images/random?limit=1&rating=${API_RATING}" | \
+            jq -r '.[0].url // empty' 2>/dev/null)"
+        if [[ -n "$IMAGE_URL" ]]; then
+            SOURCE_USED="nekosapi v4 (catch-all)"
+        else
+            SOURCE_FAILED="${SOURCE_FAILED}nekosapi-catchall "
+        fi
+    fi
+
+    # ---- Debug: fetch summary ----
+    if [[ $DEBUG -eq 1 ]]; then
+        fetch_end="$(date +%s%3N 2>/dev/null || echo 0)"
+        echo "[debug] fetch time: $((fetch_end - fetch_start))ms" >&2
+        echo "[debug] source:     $SOURCE_USED" >&2
+        [[ -n "$SOURCE_FAILED" ]] && echo "[debug] failed:    $SOURCE_FAILED" >&2
+    fi
+
+    # ---- Error if nothing found ----
+    if [[ -z "$IMAGE_URL" ]]; then
+        FOUND=0
+        for t in "${ALL_KNOWN_TAGS[@]}"; do
+            if [[ "$t" == "$CATEGORY" ]]; then
+                FOUND=1
+                break
+            fi
+        done
+        if [[ $FOUND -eq 0 ]]; then
+            echo "Error: '$CATEGORY' not found in known categories." >&2
+            echo "Run 'waifu --help' to see available categories and ratings." >&2
+        else
+            echo "Error: No images found for '$CATEGORY' with rating '$API_RATING'." >&2
+            echo "All sources failed. Try a different tag." >&2
+            echo "Run 'waifu --help' for help." >&2
+        fi
+        exit 1
+    fi
+
+    # ---- Download image ----
+    if [[ $CAN_CACHE -eq 1 ]]; then
+        IMAGE_FILE="$(mktemp "$CACHE_DIR/current-XXXXXX" 2>/dev/null)"
+    fi
+    if [[ -z "$IMAGE_FILE" ]]; then
+        IMAGE_FILE="$(mktemp /tmp/waifu-XXXXXX 2>/dev/null)"
+    fi
+    curl -sL --max-time 10 "$IMAGE_URL" > "$IMAGE_FILE" 2>/dev/null
+    if [[ ! -s "$IMAGE_FILE" ]]; then
+        rm -f "$IMAGE_FILE"
+        echo "Download failed (no internet?)." >&2
+        exit 1
+    fi
+
+    # Save to cache
+    if [[ $CAN_CACHE -eq 1 ]]; then
+        printf '%s\n%s\n' "$CACHE_KEY" "$IMAGE_URL" > "$CM" 2>/dev/null
+        mv "$IMAGE_FILE" "$CF" 2>/dev/null && IMAGE_FILE="$CF"
+    fi
+fi
+
+# ============================================================
+# Check displayer availability
+# ============================================================
+if [[ -n "$DISPLAYER" ]]; then
+    DISP_AVAILABLE=1
+    case "$DISPLAYER" in
+        icat)
+            if [[ -z "${KITTY_WINDOW_ID:-}" && "${TERM:-}" != *kitty* ]] && ! command -v chafa &>/dev/null; then
+                echo "Error: '$DISPLAYER' requested but not available (kitty terminal or chafa required)." >&2
+                DISP_AVAILABLE=0
+            fi
+            ;;
+        chafa)
+            if ! command -v chafa &>/dev/null; then
+                echo "Error: '$DISPLAYER' requested but not installed." >&2
+                echo "Install chafa (e.g., pacman -S chafa)" >&2
+                DISP_AVAILABLE=0
+            fi
+            ;;
+        img2txt)
+            if ! command -v img2txt &>/dev/null; then
+                echo "Error: '$DISPLAYER' requested but not installed." >&2
+                echo "Install caca-utils (e.g., pacman -S caca-utils)" >&2
+                DISP_AVAILABLE=0
+            fi
+            ;;
+        jp2a)
+            if ! command -v jp2a &>/dev/null; then
+                echo "Error: '$DISPLAYER' requested but not installed." >&2
+                echo "Install jp2a (e.g., pacman -S jp2a)" >&2
+                DISP_AVAILABLE=0
+            fi
+            ;;
+    esac
+    if [[ $DISP_AVAILABLE -eq 0 ]]; then
+        exit 1
+    fi
+fi
+
+# ============================================================
+# Display image - supports multiple terminals, falls back to ASCII
+# ============================================================
+display_image() {
+    local file="$1"
+    local url="$2"
+    local preferred="${3:-}"
+    local width
+    if [[ -n "${COLUMNS:-}" ]]; then
+        width="$COLUMNS"
+    else
+        width="$(tput cols 2>/dev/null || echo 80)"
+    fi
+
+    if [[ -n "$preferred" ]]; then
+        # User specified a displayer -- only try that one
+        case "$preferred" in
+            icat)
+                if [[ -n "${KITTY_WINDOW_ID:-}" || "${TERM:-}" == *kitty* ]]; then
+                    if command -v kitty &>/dev/null; then
+                        [[ $DEBUG -eq 1 ]] && echo "[display] kitty icat" >&2
+                        kitty +kitten icat "$file" 2>/dev/null && return 0
+                    fi
+                fi
+                # Fallback: try chafa for icat too (it can display images natively)
+                if command -v chafa &>/dev/null; then
+                    [[ $DEBUG -eq 1 ]] && echo "[display] chafa (icat fallback)" >&2
+                    chafa --symbols=block "$file" 2>/dev/null && return 0
+                fi
+                ;;
+            chafa)
+                if command -v chafa &>/dev/null; then
+                    [[ $DEBUG -eq 1 ]] && echo "[display] chafa" >&2
+                    chafa --symbols=block "$file" 2>/dev/null && return 0
+                fi
+                ;;
+            img2txt)
+                if command -v img2txt &>/dev/null; then
+                    [[ $DEBUG -eq 1 ]] && echo "[display] img2txt" >&2
+                    img2txt -W "$width" "$file" 2>/dev/null | tr -d '\r' | sed \$'s/\x1b\[[su]//g' && return 0
+                fi
+                ;;
+            jp2a)
+                if command -v jp2a &>/dev/null; then
+                    [[ $DEBUG -eq 1 ]] && echo "[display] jp2a" >&2
+                    jp2a --width="$width" "$file" 2>/dev/null && return 0
+                fi
+                ;;
+        esac
+        return 1
+    fi
+
+    # Auto-detect: no preference specified
+    # 1. Kitty native icat
+    if [[ -n "${KITTY_WINDOW_ID:-}" || "${TERM:-}" == *kitty* ]]; then
+        if command -v kitty &>/dev/null; then
+            [[ $DEBUG -eq 1 ]] && echo "[display] kitty icat" >&2
+            kitty +kitten icat "$file" 2>/dev/null && return 0
+        fi
+    fi
+
+    # 2. chafa - auto-detects sixel/kitty/iterm2, falls back to ANSI blocks
+    if command -v chafa &>/dev/null; then
+        [[ $DEBUG -eq 1 ]] && echo "[display] chafa" >&2
+        chafa --symbols=block "$file" 2>/dev/null && return 0
+    fi
+
+    # 3. catimg - block pixel display (works on most terminals)
+    if command -v catimg &>/dev/null; then
+        [[ $DEBUG -eq 1 ]] && echo "[display] catimg" >&2
+        catimg "$file" 2>/dev/null && return 0
+    fi
+
+    # 4. viu - multi-protocol rust tool
+    if command -v viu &>/dev/null; then
+        [[ $DEBUG -eq 1 ]] && echo "[display] viu" >&2
+        viu "$file" 2>/dev/null && return 0
+    fi
+
+    # 5. img2txt (caca-utils) - colored ASCII art
+    # Strip CRLF -> LF + remove cursor save/restore -> no flicker
+    if command -v img2txt &>/dev/null; then
+        [[ $DEBUG -eq 1 ]] && echo "[display] img2txt" >&2
+        img2txt -W "$width" "$file" 2>/dev/null | tr -d '\r' | sed \$'s/\x1b\[[su]//g' && return 0
+    fi
+
+    # 6. jp2a - black & white ASCII art
+    if command -v jp2a &>/dev/null; then
+        [[ $DEBUG -eq 1 ]] && echo "[display] jp2a" >&2
+        jp2a --width="$width" "$file" 2>/dev/null && return 0
+    fi
+
+    # Last resort: print URL
+    [[ $DEBUG -eq 1 ]] && echo "[display] url-only" >&2
+    echo "Image: $url"
+    echo "Tip: Install 'jp2a' or 'chafa' for terminal image display." >&2
+    return 1
+}
+
+display_image "$IMAGE_FILE" "$IMAGE_URL" "$DISPLAYER"
+if [[ $DEBUG -eq 1 ]]; then
+    echo "[debug] url:   $IMAGE_URL" >&2
+    echo "[debug] cache: $FROM_CACHE" >&2
+    echo "[debug] ---" >&2
+fi
+if [[ $NO_LINK -eq 0 ]]; then
+    echo "$IMAGE_URL"
+fi
+
+# ============================================================
+# Invalidate cache so next call gets a fresh image
+# ============================================================
+if [[ $CAN_CACHE -eq 1 ]]; then
+    rm -f "$CM" "$CF"
+fi
+
+# ============================================================
+# Prefetch next in background
+# ============================================================
+if [[ $CAN_CACHE -eq 1 ]]; then
+(
+    # Replicate the rating logic in the sub-shell
+    API_RATING=""
+    if [[ "$MODE" == "nsfw" && $IS_DIRECT_RATING -eq 0 ]]; then
+        API_RATING="borderline,explicit"
+    elif [[ $IS_DIRECT_RATING -eq 1 ]]; then
+        API_RATING="$RATING_LEVEL"
+    else
+        case "$RATING_LEVEL" in
+            safe)       API_RATING="safe" ;;
+            suggestive) API_RATING="safe,suggestive" ;;
+            borderline) API_RATING="safe,suggestive,borderline" ;;
+            explicit)   API_RATING="safe,suggestive,borderline,explicit" ;;
+        esac
+    fi
+
+    pf() {
+        local url=""
+        local isg=0
+        for t in "${NB_GIFS[@]}"; do
+            if [[ "$t" == "$CATEGORY" ]]; then isg=1; break; fi
+        done
+
+        # nekosapi v4
+        if [[ -z "$url" && $isg -eq 0 ]]; then
+            local urlp="https://api.nekosapi.com/v4/images/random?limit=1&rating=${API_RATING}"
+            [[ "$CATEGORY" != "waifu" ]] && urlp="${urlp}&included_tags=${CATEGORY}"
+            url="$(curl -sL --max-time 5 "$urlp" 2>/dev/null | jq -r '.items[0].url // .[0].url // empty' 2>/dev/null)"
+        fi
+
+        # waifu.im
+        if [[ -z "$url" && $isg -eq 0 ]]; then
+            local wim_nsf="false"
+            if [[ "$RATING_LEVEL" == "borderline" || "$RATING_LEVEL" == "explicit" ]]; then
+                wim_nsf="true"
+            elif [[ $IS_DIRECT_RATING -eq 1 && "$RATING_LEVEL" == "suggestive" ]]; then
+                wim_nsf="true"
+            elif [[ "$MODE" == "nsfw" ]]; then
+                wim_nsf="true"
+            fi
+            local j
+            j="$(curl -sL --max-time 5 "https://api.waifu.im/images?IsNsfw=${wim_nsf}&IncludedTags=${CATEGORY}" 2>/dev/null)"
+            if ! printf '%s' "$j" | grep -q "Just a moment|_cf_chl_opt|challenge-platform"; then
+                url="$(printf '%s' "$j" | jq -r '.items[0].url // empty' 2>/dev/null)"
+            fi
+        fi
+
+        # nekos.best
+        if [[ -z "$url" && "$MODE" == "sfw" ]]; then
+            if [[ $isg -eq 1 ]]; then
+                url="$(curl -sL --max-time 8 "https://nekos.best/api/v2/${CATEGORY}" 2>/dev/null | jq -r '.results[0].url // empty' 2>/dev/null)"
+            else
+                local nc="waifu"
+                for t in "${NB_STATIC[@]}"; do
+                    if [[ "$t" == "$CATEGORY" ]]; then nc="$t"; break; fi
+                done
+                url="$(curl -sL --max-time 8 "https://nekos.best/api/v2/${nc}" 2>/dev/null | jq -r '.results[0].url // empty' 2>/dev/null)"
+            fi
+        fi
+
+        # catch-all
+        if [[ -z "$url" && $isg -eq 0 ]]; then
+            url="$(curl -sL --max-time 8 "https://api.nekosapi.com/v4/images/random?limit=1&rating=${API_RATING}" 2>/dev/null | jq -r '.[0].url // empty' 2>/dev/null)"
+        fi
+
+        printf '%s' "$url"
+    }
+
+    URL="$(pf)"
+    if [[ -n "$URL" ]]; then
+        TMP="$(mktemp /tmp/waifu/save-XXXXXX 2>/dev/null)"
+        curl -sL --max-time 10 "$URL" > "$TMP" 2>/dev/null
+        if [[ -s "$TMP" ]]; then
+            printf '%s\n%s\n' "$CACHE_KEY" "$URL" > "$CM" 2>/dev/null
+            mv "$TMP" "$CF" 2>/dev/null
+        else
+            rm -f "$TMP"
+        fi
+    fi
+) &
+disown 2>/dev/null
+fi
