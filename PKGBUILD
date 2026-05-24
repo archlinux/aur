@@ -21,4 +21,5 @@ package() {
     install -Dm755 nullwc "$pkgdir/usr/bin/nullwc"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 wallpaper.jpg "$pkgdir/usr/share/$pkgname/wallpaper.jpg"
 }
