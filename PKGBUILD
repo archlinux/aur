@@ -1,7 +1,7 @@
 # Maintainer: brookerslyn <brookerslyn at REPLACE-WITH-YOUR-EMAIL-DOMAIN dot com>
 pkgname=klyppd-bin
 _pkgname=klyppd
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Performance-first Linux clipping app with instant replay, trimming, and cloud uploads."
 arch=('x86_64')
