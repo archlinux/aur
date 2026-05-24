@@ -32,7 +32,7 @@ package() {
 
     # ── Sources dans /usr/share (read-only, référence) ─────────────────────
     install -dm755 "$pkgdir/usr/share/quickshell-games-launchers"
-    cp -r game-launcher "$pkgdir/usr/share/quickshell-games-launchers/"
+    cp -r . "$pkgdir/usr/share/quickshell-games-launchers/game-launcher"
 
     # ── Licence ────────────────────────────────────────────────────────────
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
