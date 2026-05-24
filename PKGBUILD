@@ -11,7 +11,7 @@ conflicts=('nostrord')
 depends=('libxtst' 'libxrender' 'fontconfig' 'freetype2')
 install=nostrord-bin.install
 source=("nostrord-${pkgver}.deb::https://github.com/Nostrord/nostrord/releases/download/v${pkgver}/nostrord-${pkgver}-linux-amd64.deb")
-sha256sums=('7058100345826fe2d7f4a3b91802aa3b44c90bb739136dfc3064dd8bac14e664')
+sha256sums=('b4dda05692e3d63544476d4af937cb7b4882241eee89e19f0867202cebea13c2')
 
 package() {
   cd "${srcdir}"
