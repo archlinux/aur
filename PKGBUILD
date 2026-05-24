@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('zig')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9ca668633f3b89ac64ff634eb16017ecdffd4d5cccec8daa2887e9c96504db2b')
+sha256sums=('982eab13772c8bcc3b77d0151329fadd33b2bb8b3862a3170c2805b3020e97ca')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
