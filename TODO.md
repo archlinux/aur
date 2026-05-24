@@ -1,12 +1,22 @@
 # vortex-linux-fix — Roadmap de mejoras
 
-Estado actual: **1:2.0.1-15**  
+Estado actual: **1:2.0.1-20**  
 Este archivo documenta los bugs conocidos, mejoras pendientes y limitaciones arquitectónicas.
 Actualizar al cerrar cada issue.
 
 ---
 
 ## Prioridad alta — roto o silenciosamente incorrecto
+
+### [DONE] browseGameLocation: SyntaxError pantalla negra en 1:2.0.1-19
+**Estado:** resuelto en 1:2.0.1-20  
+El patch de detección de store usaba bloque arrow `{if(linux){...}return IIFE}` pero el `)` que
+cerraba el outer `.then(` en el código original ya no tenía `}` que cerrara el bloque.
+Resultado: `SyntaxError: Unexpected token ')'` → pantalla negra al arrancar.  
+**Fix:** cambiar a ternario+IIFE `"linux"===...?(()=>{...detection...})():function MSS...`
+que preserva la expresión arrow y no requiere `}` extra. Añadida migration v9-broken→v9-fixed
+y actualizada la v8→v9 para usar el mismo patrón. Regla: en patches de `.then(expr=>)` usar
+siempre expresión arrow, no bloque, a menos que se capture también el cierre.
 
 ### [DONE] patch-asar.py: fallos silenciosos en patches críticos
 **Estado:** resuelto en 1:2.0.1-15  
@@ -114,3 +124,4 @@ encontrado), el `.node` no existe pero `package()` no falla explícitamente.
 | 1:2.0.1-17 | vortex.install + LINUX_PATCHES.md: email eliminado, reemplazado por handle k8rit0 (AUR) |
 | 1:2.0.1-18 | browseGameLocation: detección de store por ruta y ficheros (Steam/GOG/Heroic) en lugar de "steam" fijo |
 | 1:2.0.1-18 | vortex.sh: auto-registro xdg-mime nxm:// en primer arranque |
+| 1:2.0.1-20 | browseGameLocation: SyntaxError pantalla negra — cambio bloque→ternario+IIFE |
