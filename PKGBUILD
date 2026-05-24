@@ -1,7 +1,7 @@
 # Maintainer: Xuelin Yang <xuelin@adamantyee.cc>
 pkgname=arxiv-mcp-server
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A flexible arXiv search and analysis service with MCP protocol support'
 arch=('any')
 url='https://github.com/blazickjp/arxiv-mcp-server'
@@ -15,6 +15,8 @@ depends=(
 	'python-black>=25.1.0'
 	'python-httpx>=0.24.0'
 	'python-mcp>=1.27.0'
+	'python-pymupdf-layout>=1.26.6'
+	'python-pymupdf4llm>=0.0.17'
 	'python-pydantic>=2.8.0'
 	'python-pydantic-settings>=2.1.0'
 	'python-dateutil>=2.8.2'
@@ -37,8 +39,6 @@ checkdepends=(
 	'python-pytest-mock>=3.10.0'
 )
 optdepends=(
-	'python-pymupdf4llm: PDF fallback support for older arXiv papers'
-	'python-pymupdf-layout: PDF fallback support for older arXiv papers'
 	'python-numpy: semantic search support'
 	'python-sentence-transformers: semantic search support'
 )

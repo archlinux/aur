@@ -1,7 +1,7 @@
 pkgbase = arxiv-mcp-server
 	pkgdesc = A flexible arXiv search and analysis service with MCP protocol support
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blazickjp/arxiv-mcp-server
 	arch = any
 	license = Apache-2.0
@@ -22,6 +22,8 @@ pkgbase = arxiv-mcp-server
 	depends = python-black>=25.1.0
 	depends = python-httpx>=0.24.0
 	depends = python-mcp>=1.27.0
+	depends = python-pymupdf-layout>=1.26.6
+	depends = python-pymupdf4llm>=0.0.17
 	depends = python-pydantic>=2.8.0
 	depends = python-pydantic-settings>=2.1.0
 	depends = python-dateutil>=2.8.2
@@ -29,8 +31,6 @@ pkgbase = arxiv-mcp-server
 	depends = python-sse-starlette>=1.8.2
 	depends = python-starlette>=0.27.0
 	depends = uvicorn>=0.30.0
-	optdepends = python-pymupdf4llm: PDF fallback support for older arXiv papers
-	optdepends = python-pymupdf-layout: PDF fallback support for older arXiv papers
 	optdepends = python-numpy: semantic search support
 	optdepends = python-sentence-transformers: semantic search support
 	source = https://files.pythonhosted.org/packages/source/a/arxiv-mcp-server/arxiv_mcp_server-0.5.0.tar.gz
