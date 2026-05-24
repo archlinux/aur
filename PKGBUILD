@@ -1,8 +1,8 @@
 # Maintainer: zhizhizhiwang <zhizhiwang@proton.me>
 # Contributor: Star_caorui <Star_caorui@hotmail.com>
 pkgname=mcsm-daemon-git
-pkgver=r4055.06bc2a5f
-pkgrel=4
+pkgver=r4162.c685d8ca
+pkgrel=1
 pkgdesc="MCSManager 的守护（daemon）程序模块。"
 arch=(any)
 url="https://github.com/MCSManager/MCSManager"
