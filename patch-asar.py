@@ -15,7 +15,7 @@ def update_offsets(node, pivot, delta):
     if 'offset' in node and int(node['offset']) > pivot:
         node['offset'] = str(int(node['offset']) + delta)
 
-def patch_asar_file(raw, header, dss, entry, patches, marker=None):
+def patch_asar_file(raw, header, dss, entry, patches, marker=None, default_critical=True):
     """Patch one file inside the asar. Returns (new_raw, new_dss)."""
     roff  = int(entry['offset'])
     rsize = int(entry['size'])
@@ -26,13 +26,25 @@ def patch_asar_file(raw, header, dss, entry, patches, marker=None):
     if marker and marker in content:
         content = content.replace(marker, '', 1)
 
+    failed = []
     for p in patches:
         if p['old'] not in content:
-            tag = '[SKIP]' if p['new'] in content else '[WARN] pattern not found:'
-            print(f'    {tag} {p["name"]}')
+            if p['new'] in content:
+                print(f'    [SKIP] {p["name"]}')
+            else:
+                print(f'    [WARN] pattern not found: {p["name"]}', file=sys.stderr)
+                if p.get('critical', default_critical):
+                    failed.append(p['name'])
             continue
         content = content.replace(p['old'], p['new'], 1)
         print(f'    [OK]   {p["name"]}')
+
+    if failed:
+        print(f'\nERROR: {len(failed)} critical patch(es) failed to apply:', file=sys.stderr)
+        for name in failed:
+            print(f'  - {name}', file=sys.stderr)
+        print('The renderer.js compiled output may have changed upstream.', file=sys.stderr)
+        sys.exit(1)
 
     if marker:
         content = marker + content
@@ -255,11 +267,13 @@ RENDERER_PATCHES = [
             'return Promise.resolve(_ver)};'
         ),
     },
-    # Migration patches: v5→v6 for locally installed asars that already have v5 code.
-    # On fresh AUR builds these will be [SKIP] (v5 old not found, v6 new already present).
+    # Migration patches: not critical — expected to [SKIP] on fresh AUR builds.
+    # They only fire [OK] on locally-patched asars that still have old code from a previous
+    # pkgrel. On fresh builds the v5/v6 old strings are gone; the v7/v8 new strings are present.
     # On a locally v5-patched asar these fire as [OK].
     {
         "name": "testExecProvider — v5→v6 migration: normalize exe name for deps.json matching",
+        "critical": False,
         "old": (
             'exports.testExecProvider=async function testExecProvider(game,discovery){'
             'const exeName=discovery.executable||game.executable();'
@@ -315,6 +329,7 @@ RENDERER_PATCHES = [
     },
     {
         "name": "getExecGameVersion — v5→v6 migration: normalize exe name for deps.json matching",
+        "critical": False,
         "old": (
             'exports.getExecGameVersion=async function getExecGameVersion(game,discovery){'
             'const exePath=path_1.default.join(discovery.path,discovery.executable||game.executable());'
@@ -370,6 +385,7 @@ RENDERER_PATCHES = [
     # On a locally v6-patched asar these fire as [OK].
     {
         "name": "testExecProvider — v6→v7 migration: handle exeVersion returning undefined on Linux",
+        "critical": False,
         "old": (
             'exports.testExecProvider=async function testExecProvider(game,discovery){'
             'const exeName=discovery.executable||game.executable();'
@@ -427,6 +443,7 @@ RENDERER_PATCHES = [
     },
     {
         "name": "getExecGameVersion — v6→v7 migration: handle exeVersion returning undefined on Linux",
+        "critical": False,
         "old": (
             'exports.getExecGameVersion=async function getExecGameVersion(game,discovery){'
             'const exePath=path_1.default.join(discovery.path,discovery.executable||game.executable());'
