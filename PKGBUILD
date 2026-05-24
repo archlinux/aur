@@ -25,10 +25,8 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
-    cd "$srcdir"
-
     gcc main.c curfblib.c lwarnlib.c \
-        -I"$srcdir" \
+        -I \
         -o cursorfb \
         -Wall -Wextra -pthread -lm
 }
