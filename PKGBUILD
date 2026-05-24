@@ -9,7 +9,7 @@ license=('GPL2')
 
 depends=(
   'alsa-lib'
-  'jack2'
+  'jack'
   'pipewire'
   'sndio'
   'openssl'
