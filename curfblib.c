@@ -66,7 +66,7 @@ static void sig_handler(int sig) {
 static inline void put_pixel(int px, int py, unsigned int color) {
 
     if (px < 0 || py < 0 ||
-        px >= vinfo.xres || py >= vinfo.yres)
+        px >= (int)vinfo.xres || py >= (int)vinfo.yres)
         return;
 
     long loc =
@@ -151,6 +151,8 @@ static void restore_area(int cx, int cy) {
 ========================= */
 
 static void *mouse_loop(void *arg) {
+
+    (void)arg;
 
     unsigned char data[3];
     const float alpha = 0.25f;
