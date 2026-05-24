@@ -1,0 +1,14 @@
+pkgbase = shortcircuit-xt-bin
+	pkgdesc = Shortcircuit XT is a modern open source software sampler focused on workflow, expressive modulation, and deep sample playback control.
+	pkgver = 2026.05.22.2775946
+	pkgrel = 1
+	url = https://surge-synth-team.org/shortcircuit-xt/
+	arch = x86_64
+	groups = clap-plugins
+	groups = vst3-plugins
+	license = MIT
+	provides = shortcircuit-xt
+	source = https://github.com/surge-synthesizer/shortcircuit-xt/releases/download/Nightly/shortcircuit-xt-linux-2026-05-22-2775946.zip
+	sha256sums = b8893094e1db89492f03e4cbbcc8f0932d72d63410f98e2d958455fe754a761f
+
+pkgname = shortcircuit-xt-bin
