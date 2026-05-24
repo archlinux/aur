@@ -7,7 +7,7 @@ pkgdesc='A GPU powered yet browserless tool to help you quickly view markdown fi
 arch=(x86_64)
 url="https://github.com/Inlyne-Project/$pkgname"
 license=(MIT)
-depends=(fontconfig gcc-libs freetype2 libxcursor libxi libxrandr oniguruma)
+depends=(fontconfig glibc libgcc freetype2 libxcursor libxi libxrandr oniguruma)
 makedepends=(cargo libxcb libxkbcommon wayland)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 b2sums=('b9fca42df8b5b5120b8fe0945f9bb5433eabefe7719796f27ea71cb1fa426cb106d51db4e71020c837ed70a90e4632e84f902ba4f99dae714d93203f9f68a93a')
@@ -15,7 +15,7 @@ b2sums=('b9fca42df8b5b5120b8fe0945f9bb5433eabefe7719796f27ea71cb1fa426cb106d51db
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target="$(rustc --print host-tuple)"
 }
 
 
