@@ -6,22 +6,22 @@ _setup_venv() {
 }
 
 post_install() {
-    echo "==> Python sanal ortamı oluşturuluyor..."
+    echo "==> Setting up Python virtual environment..."
     _setup_venv
     echo ""
-    echo "==> Linux Chan AI kuruldu!"
-    echo "==> Kullanmadan önce Gemini API anahtarınızı ayarlayın:"
+    echo "==> Linux Chan AI installed!"
+    echo "==> Before running, set your Gemini API key:"
     echo "    mkdir -p ~/.config/linux-chan-ai"
     echo "    echo 'GEMINI_API_KEY=your_key_here' > ~/.config/linux-chan-ai/.env"
     echo ""
-    echo "==> Başlatmak için: linux-chan-ai"
+    echo "==> Run with: linux-chan-ai"
     echo ""
 }
 
 post_upgrade() {
-    echo "==> Bağımlılıklar güncelleniyor..."
+    echo "==> Updating dependencies..."
     _setup_venv
-    echo "==> Güncelleme tamamlandı."
+    echo "==> Upgrade complete."
 }
 
 pre_remove() {
