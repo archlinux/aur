@@ -1,0 +1,14 @@
+post_install() {
+    getent group qb64 &> /dev/null || groupadd qb64
+    chgrp -R qb64 /opt/qb64pe
+    echo -e "\e[1;33m"
+    echo 'To use QB64-PE, your user must be a member of the qb64 group.'
+    echo "Run \`usermod $(logname) -aG qb64\` then log out and back in."
+    echo '(If you are already in this group for the qb64 package, do nothing.)'
+    echo "To use immediately without logging out, \`newgrp qb64\`."
+    echo -e "\e[0m"
+}
+
+post_upgrade() {
+    chgrp -R qb64 /opt/qb64pe
+}

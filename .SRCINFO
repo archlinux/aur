@@ -1,0 +1,25 @@
+pkgbase = qb64pe
+	pkgdesc = QB64 Phoenix Edition - modern BASIC+OpenGL language retaining QB4.5/QBasic compatibility
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = https://www.qb64phoenix.com/
+	install = qb64pe.install
+	arch = x86_64
+	license = MIT
+	depends = gcc
+	depends = make
+	depends = curl
+	depends = glu
+	depends = libpng
+	depends = libxcb
+	optdepends = alsa-lib: required to compile programs that use audio
+	options = !strip
+	options = staticlibs
+	options = !lto
+	options = !debug
+	source = qb64pe-4.5.0.tar.gz::https://github.com/QB64-Phoenix-Edition/QB64pe/archive/refs/tags/v4.5.0.tar.gz
+	source = qb64pe.desktop
+	sha256sums = 73cc9b50acfa2d37ad53dd6ce7af28eecfdfc34989f9c3fc1b7e9bc50cdec6ad
+	sha256sums = d1642f5b0d6f14b214d656857c2c166cba879015b167a7912d6c5ebc110125d4
+
+pkgname = qb64pe

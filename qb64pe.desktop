@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=QB64-PE (Phoenix Edition)
+GenericName=BASIC IDE
+Comment=Modern cross-platform BASIC compatible with QBasic and QuickBASIC 4.5
+Exec=qb64pe %F
+Icon=qb64pe
+Terminal=false
+Categories=Development;IDE;
+MimeType=text/x-basic;
+Keywords=basic;qbasic;qb64;qb64pe;programming;compiler;ide;
+StartupNotify=false

@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!qb64pe.desktop
+!qb64pe.install
