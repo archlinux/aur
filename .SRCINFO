@@ -1,0 +1,15 @@
+pkgbase = aelapse-bin
+	pkgdesc = ÆLAPSE is a delay and reverb plugin. The delay is based on tape-delay mechanisms, while the reverb is inspired by (but not limited to) spring reverbs.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/smiarx/aelapse/
+	arch = x86_64
+	groups = vst3-plugins
+	groups = lv2-plugins
+	license = GPLv3
+	makedepends = git
+	provides = aelapse
+	source = https://github.com/smiarx/aelapse/releases/download/v1.0.1/Aelapse-Linux.zip
+	sha256sums = 9e6726d09c2d0cd49d8d4a9f45757dec2913e0ec4003ebd5aa4a0bef149cec77
+
+pkgname = aelapse-bin
