@@ -3,7 +3,7 @@
 
 pkgname=02engine-bin
 provides=('02engine')
-pkgver=1.2.7
+pkgver=1.3.0
 pkgrel=1
 
 source=(".INSTALL::https://github.com/02engine/02engine-aur/releases/download/INSTALL/INSTALL"
@@ -21,7 +21,7 @@ depends=('alsa-lib' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-lib
          'libappindicator' 'xdg-utils')
 
 sha256sums=('2565e60d233d653206f33fc25b35c7b31b42d45c5fb1de7b28be966fae959d58'
-            'd59951c222a6e6284b458996d81dc843e8fbf7ffe73175e2a21ed4fafcf6eb21')
+            'e58af9dc2acb742b5e594a485fc00adad80d2afa6ae7f41c2e18c077b43b8e6a')
 
 build() {
   cd "$srcdir"
