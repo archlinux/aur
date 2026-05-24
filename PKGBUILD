@@ -16,7 +16,6 @@ depends=(
     'python-gtts'
     'python-google-genai'
 )
-keywords=('linux' 'assistant' 'ai' 'chatbot' 'gemini' 'anime' 'pyqt5' 'desktop')
 install=linux-chan-ai.install
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/Linux-Chan-AI/archive/refs/tags/v$pkgver.tar.gz"
