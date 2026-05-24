@@ -1,15 +1,14 @@
 pkgname=lumen-journal
-pkgver=1.1.26
+pkgver=1.1.27
 pkgrel=1
 pkgdesc="Encrypted journal app built with Rust and Flutter"
 arch=('x86_64')
 url="https://github.com/crazygiscool/lumen"
 license=('custom')
 depends=()
-makedepends=()
-DLAGENTS=("https::/usr/bin/curl -L -A 'Mozilla/5.0' -o %o %u")
+makedepends=('git' 'cargo' 'flutter')
 
-source=("$pkgname-$pkgver.tar.gz::https://raw.githubusercontent.com/Crazygiscool/Lumen/main/dist/Lumen-$pkgver.tar.gz"
+source=("$pkgname::git+https://github.com/crazygiscool/Lumen.git#tag=v$pkgver"
         "lumen-journal.desktop"
         "lumen-journal.png"
         "lumen-journal.appdata.xml"
@@ -28,7 +27,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
-    cd "$srcdir"/Lumen-$pkgver*
+    cd "$srcdir/$pkgname"
 
     # Build Rust core
     cd core
@@ -44,13 +43,13 @@ build() {
 
 package() {
 
-    cd "$srcdir"/Lumen-$pkgver*/ui/build/linux/x64/release/bundle
+    cd "$srcdir/$pkgname/ui/build/linux/x64/release/bundle"
 
     # Install binary
     install -Dm755 Lumen "$pkgdir/usr/bin/lumen-journal"
 
     # Install license
-    install -Dm644 "$srcdir/Lumen-$pkgver/LICENSE" \
+    install -Dm644 "$srcdir/$pkgname/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Desktop file
@@ -79,3 +78,5 @@ package() {
     install -Dm644 "$srcdir/lumen-journal.fish" \
         "$pkgdir/usr/share/fish/vendor_completions.d/lumen-journal.fish"
 }
+
+# vim:set ts=2 sw=2 et:
