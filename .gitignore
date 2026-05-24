@@ -1,0 +1,4 @@
+src/
+pkg/
+zap-oss-git/
+*.pkg.tar.*
