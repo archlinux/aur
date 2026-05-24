@@ -1,6 +1,6 @@
 [Unit]
 Description=Arctis Manager
-StartLimitInterval=1min
+StartLimitIntervalSec=1min
 StartLimitBurst=5
 
 [Service]
