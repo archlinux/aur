@@ -1,0 +1,17 @@
+pkgbase = delphitools-cli-bin
+	pkgdesc = indie toolkit for designers — colour, image, PDF, type, calc, all in one offline CLI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/1612elphi/delphitools-cli
+	arch = x86_64
+	arch = aarch64
+	license = 0BSD
+	depends = curl
+	provides = delphitools-cli
+	conflicts = delphitools-cli
+	source_x86_64 = delphitools-cli-0.1.0-x86_64.tar.xz::https://github.com/1612elphi/delphitools-cli/releases/download/v0.1.0/delphitools-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 96a11360914c552282053aa517703b5a6025ce8658b55fd8ed82dcf939c1be08
+	source_aarch64 = delphitools-cli-0.1.0-aarch64.tar.xz::https://github.com/1612elphi/delphitools-cli/releases/download/v0.1.0/delphitools-cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = b07f4eb1820eb41e6a3f7d3ebb547d61399aca446a52562132ddfc8c78da2ab3
+
+pkgname = delphitools-cli-bin
