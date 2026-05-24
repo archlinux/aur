@@ -8,7 +8,7 @@ _OTRExporter_commit=32e088e28c8cdd055d4bb8f3f219d33ad37963f3
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
 pkgver=9.2.3
-pkgrel=2
+pkgrel=3
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://shipofharkinian.com/"
 _depends_soh=("sdl2" "sdl2_net" "zenity" "libzip" "libpng" "libogg" "libvorbis" "opus" "opusfile")
@@ -62,6 +62,11 @@ prepare() {
       return 1
     fi
   fi
+
+  cd "${srcdir}/${_reponame}-${pkgver}"
+
+  # GCC 16 compilation patch
+  sed -i '1a #include <cstdint>' libultraship/include/ship/window/MouseStateManager.h
 }
 
 build() {
