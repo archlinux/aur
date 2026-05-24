@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 1:2.0.1-14
+- **Versión:** 1:2.0.1-15
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Extensión Linux Compatibility:** https://www.nexusmods.com/site/mods/1924
@@ -288,10 +288,10 @@ archivos INI de los juegos Bethesda dentro del prefijo de compatdata del juego, 
 Resultado: Vortex no encuentra ni lee los `.ini` de configuración, el orden de carga,
 la lista de DLC ni los archivos de contenido descargado.
 
-**Fix:** En Linux, si el juego es uno de los Bethesda soportados, se busca el prefijo
-Proton correcto recorriendo todas las librerías Steam (parseando `libraryfolders.vdf`).
-Si lo encuentra, devuelve la ruta dentro del compatdata. Si no, cae al comportamiento
-original con `~/Documents`.
+**Fix:** En Linux, obtiene el path de instalación del juego desde el estado de Vortex
+(`vortex_api.getState().persistent.gameMode.discovered[gameMode].path`) y escanea los
+`appmanifest_*.acf` de todas las librerías Steam para encontrar el AppID dinámicamente.
+Funciona para cualquier juego Bethesda sin tabla de AppIDs hardcodeada.
 
 ```js
 // antes
@@ -303,30 +303,22 @@ function mygamesPath(gameMode) {
 // después (Linux)
 function mygamesPath(gameMode) {
     if (process.platform === 'linux') {
-        const APPIDS = { skyrim:72850, skyrimse:489830, skyrimvr:611670,
-                         enderal:933480, enderalspecialedition:976620,
-                         fallout3:22370, fallout4:377160, fallout4vr:611660,
-                         falloutnv:22380, starfield:1716740, oblivion:22330 };
-        const appId = APPIDS[gameMode];
-        if (appId !== undefined) {
-            // lee libraryfolders.vdf para cubrir librerías Steam externas
-            const libs = [path.join(~, '.steam', 'steam', 'steamapps')];
-            // + libs adicionales del vdf…
-            for (const lib of libs) {
-                const dp = path.join(lib, 'compatdata', String(appId),
-                                     'pfx', 'drive_c', 'users', 'steamuser', 'Documents');
-                if (fs.existsSync(dp))
-                    return path.join(dp, 'My Games', gameSupport.get(gameMode, "mygamesPath"));
+        try {
+            const disc = vortex_api.getState().persistent.gameMode.discovered;
+            const discPath = disc && disc[gameMode] && disc[gameMode].path;
+            if (discPath) {
+                // escanea appmanifest_*.acf para encontrar el AppID por install path
+                // recorre todas las librerías Steam (libraryfolders.vdf)
+                // devuelve Documents/ dentro del prefix Proton si existe
             }
-        }
+        } catch(_e) {}
     }
     return path.join(vortex_api.util.getVortexPath("documents"), "My Games",
                      gameSupport.get(gameMode, "mygamesPath"));
 }
 ```
 
-**Juegos cubiertos:** Fallout 3, Fallout NV, Fallout 4, Fallout 4 VR, Skyrim, Skyrim SE,
-Skyrim VR, Enderal, Enderal SE, Starfield, Oblivion.
+**Juegos cubiertos:** Cualquier juego Bethesda gestionado por Proton — sin lista fija.
 
 ---
 
@@ -587,6 +579,7 @@ Probado en Arch Linux (kernel 7.0.8-1-cachyos):
 | **1:2.0.1-11** | Patch 11 — Generic BepInEx Linux fixer (`patch-ext-bepinex.py`): detecta juegos Unity con BepInEx Windows desplegado sobre binario nativo Linux. Copia `libdoorstop.so` (bundled), corrige rutas backslash en `doorstop_config.ini` y establece `LD_PRELOAD` en `localconfig.vdf`. Genérico — cubre cualquier juego Unity+BepInEx sin parches por juego. |
 | **1:2.0.1-13** | `gamebryo-ba2-support` (BA2, Fallout 4) y `gamebryo-bsa-support` (BSA, Skyrim/Fallout 3/NV) compilados nativamente para Linux. Los `package.json` upstream tienen un guard `if(platform==='win32')…exit(1) \|\|` que salta el build en Linux; se elimina en `prepare()` con un heredoc Python. `ba2tk` y `bsatk` compilan en Linux sin modificaciones (`bsatk` tiene soporte Linux oficial). |
 | **1:2.0.1-14** | `gamebryo-savegame-management` (navegador de partidas guardadas para Skyrim/Fallout/Oblivion) compilado para Linux. El addon C++ `GamebryoSave.node` es 100% compatible: `toWC`/`_wstat` tienen `#else` Linux. Tres fixes: guard eliminado, `_native` sin DLLs Windows, `binding.gyp` parchado con `-llz4 -lz`. `node-gamebryo-savegames` añadido como source git pinned; compilado con `node-gyp` + cabeceras Electron en `prepare()`. `lz4` añadido a `depends`. |
+| **1:2.0.1-15** | Patch 6 (`mygamesPath`) generalizado: elimina tabla `_sids` con 11 AppIDs hardcodeados. Ahora usa `vortex_api.getState().persistent.gameMode.discovered[gameMode].path` + appmanifest scan — el mismo patrón que `iniFiles` (Patch 7) y `appDataPath` (Patch 8). Cubre cualquier juego Bethesda sin necesidad de actualizar el paquete. |
 
 ---
 

@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 1:2.0.1-14  
+**Current release:** 1:2.0.1-15  
 **Linux Compatibility extension:** https://www.nexusmods.com/site/mods/1924
 
 ---
@@ -478,11 +478,12 @@ compatdata prefix instead:
 This means Vortex cannot read or write INI settings, load order, or DLC lists for any
 Bethesda game running via Proton on Linux.
 
-**Fix:** On Linux, look up the game's Steam App ID from a hardcoded table. Parse
-`~/.steam/steam/steamapps/libraryfolders.vdf` to discover all Steam library roots
-(covers multi-drive setups). For each library, check if the compatdata prefix exists.
-If found, return that path. Falls back to `~/Documents` if the prefix is not found
-(covers non-Proton installs or unrecognised games).
+**Fix:** On Linux, read the game's install path from Vortex state
+(`vortex_api.getState().persistent.gameMode.discovered[gameMode].path`) and scan
+`appmanifest_*.acf` files across all Steam libraries to find the AppID dynamically
+(same approach as Patch 7 `iniFiles` and Patch 8 `appDataPath`). Covers **any**
+Bethesda game without a hardcoded AppID table. Falls back to `~/Documents` if
+the game is not discovered or the Proton prefix doesn't exist (non-Proton installs).
 
 ```js
 // before
@@ -494,37 +495,45 @@ function mygamesPath(gameMode) {
 // after (Linux path, simplified)
 function mygamesPath(gameMode) {
     if (process.platform === 'linux') {
-        const APPIDS = {
-            skyrim:72850, skyrimse:489830, skyrimvr:611670,
-            enderal:933480, enderalspecialedition:976620,
-            fallout3:22370, fallout4:377160, fallout4vr:611660,
-            falloutnv:22380, starfield:1716740, oblivion:22330
-        };
-        const appId = APPIDS[gameMode];
-        if (appId !== undefined) {
-            const steamRoot = path.join(os.homedir(), '.steam', 'steam');
-            const libs = [path.join(steamRoot, 'steamapps')];
-            // parse libraryfolders.vdf for additional library roots
-            try {
-                const vdf = fs.readFileSync(path.join(steamRoot, 'steamapps', 'libraryfolders.vdf'), 'utf8');
-                for (const m of vdf.matchAll(/"path"\s+"([^"]+)"/g))
-                    libs.push(path.join(m[1], 'steamapps'));
-            } catch (_e) {}
-            for (const lib of libs) {
-                const dp = path.join(lib, 'compatdata', String(appId),
-                                     'pfx', 'drive_c', 'users', 'steamuser', 'Documents');
-                if (fs.existsSync(dp))
-                    return path.join(dp, 'My Games', gameSupport.get(gameMode, "mygamesPath"));
+        try {
+            const disc = vortex_api.getState().persistent.gameMode.discovered;
+            const discPath = disc && disc[gameMode] && disc[gameMode].path;
+            if (discPath) {
+                const normDisc = path.normalize(discPath);
+                const steamRoot = path.join(os.homedir(), '.steam', 'steam');
+                const libs = [path.join(steamRoot, 'steamapps')];
+                // parse libraryfolders.vdf for additional library roots
+                try {
+                    const vdf = fs.readFileSync(path.join(steamRoot, 'steamapps', 'libraryfolders.vdf'), 'utf8');
+                    for (const m of vdf.matchAll(/"path"\s+"([^"]+)"/g))
+                        libs.push(path.join(m[1], 'steamapps'));
+                } catch (_e) {}
+                for (const lib of [...new Set(libs)]) {
+                    try {
+                        for (const mf of fs.readdirSync(lib).filter(f => f.startsWith('appmanifest_') && f.endsWith('.acf'))) {
+                            const mt = fs.readFileSync(path.join(lib, mf), 'utf8');
+                            const im = mt.match(/"installdir"\s+"([^"]+)"/);
+                            if (im && path.normalize(path.join(lib, 'common', im[1])) === normDisc) {
+                                const idm = mf.match(/appmanifest_(\d+)\.acf/);
+                                if (idm) {
+                                    const dp = path.join(lib, 'compatdata', idm[1],
+                                                         'pfx', 'drive_c', 'users', 'steamuser', 'Documents');
+                                    if (fs.existsSync(dp))
+                                        return path.join(dp, 'My Games', gameSupport.get(gameMode, "mygamesPath"));
+                                }
+                            }
+                        }
+                    } catch (_e) {}
+                }
             }
-        }
+        } catch (_e) {}
     }
     return path.join(vortex_api.util.getVortexPath("documents"), "My Games",
                      gameSupport.get(gameMode, "mygamesPath"));
 }
 ```
 
-**Games covered:** Fallout 3, Fallout New Vegas, Fallout 4, Fallout 4 VR, Skyrim,
-Skyrim Special Edition, Skyrim VR, Enderal, Enderal Special Edition, Starfield, Oblivion.
+**Games covered:** Any Bethesda game managed via Proton — no hardcoded AppID list.
 
 ---
 
@@ -591,9 +600,9 @@ const mygames = (() => {
 })()
 ```
 
-**Difference from Patch 6:** Patch 6 fixes `gamebryo-test-settings` (has `gameMode`, uses
-static AppID table). Patch 7 fixes `renderer.js`'s `iniFiles()` (has `discovery.path`,
-scans appmanifests dynamically). Both are needed for full INI support on Linux.
+**Difference from Patch 6:** Both patches now use appmanifest scan. Patch 6 reads the
+install path from Vortex state via `vortex_api.getState()`. Patch 7 reads `discovery.path`
+passed directly to `iniFiles()`. Both are needed for full INI support on Linux.
 
 **Source location:** `src/extensions/gamebryo_support/gameSupport.ts` → `iniFiles()`
 (minified into `renderer.js`)
@@ -805,6 +814,8 @@ makepkg -si
 | **1:2.0.1-10** | Patch 2 extended — `verifyToolDir` now also has the `.exe`→`.x86_64` fallback on Linux. This function validates the game directory every time a profile or game tab is activated (`assertToolDir` → `verifyToolDir`). Without this fix, games with native Linux binaries (e.g. Graveyard Keeper, any `.x86_64` game) get "Failed to set game mode" on every profile/tab switch even though the game is installed correctly. Previously only `verifyGamePath` (browse-for-game flow) had the fallback. |
 | **1:2.0.1-11** | Patch 11 — Generic BepInEx Linux fixer (`patch-ext-bepinex.py`): scans all Steam libraries for Unity games with BepInEx deployed as a Windows install on a Linux native binary. Automatically copies bundled `libdoorstop.so` (from BepInEx Linux release, sha256-verified), fixes `doorstop_config.ini` backslash paths, and sets the required `LD_PRELOAD` Steam launch option via `localconfig.vdf` (or writes `BEPINEX-LINUX.txt` reminder if Steam is running). Generic — covers any Unity+BepInEx game without per-game patches. |
 | **1:2.0.1-13** | `gamebryo-ba2-support` and `gamebryo-bsa-support` now compiled natively for Linux. Upstream `package.json` build scripts had an inverted Windows-only guard (`if(platform==='win32')exit(1) \|\|`) that silently skipped the build on Linux. Fixed in `prepare()` with an inline Python heredoc. `ba2tk` and `bsatk` compile on Linux without modification; `bsatk` has official `"os": ["win32", "linux"]` support. `gamebryo-savegame-management` remains excluded (Win32 `_wstat` / wide-char API). |
+| **1:2.0.1-14** | `gamebryo-savegame-management` native save browser compiled for Linux. C++ addon `GamebryoSave.node` is 100% Linux-compatible (`toWC`/`_wstat` have `#else` branches). Three blockers fixed: inverted build guard removed, `_native` script stripped of Windows-only DLL args, `binding.gyp` patched with `-llz4 -lz`. `node-gamebryo-savegames` added as a pinned git source; compiled with `node-gyp` + Electron headers in `prepare()`. `lz4` added to runtime depends. |
+| **1:2.0.1-15** | Patch 6 (`mygamesPath`) generalized: hardcoded `_sids` table (11 Steam AppIDs) replaced with appmanifest scan. Reads game install path from `vortex_api.getState().persistent.gameMode.discovered[gameMode].path`, then scans `appmanifest_*.acf` across all Steam libraries to find the AppID dynamically — the same approach already used by Patch 7 (`iniFiles`) and Patch 8 (`appDataPath`). Covers any Bethesda game managed via Proton without requiring package updates. |
 
 ---
 
