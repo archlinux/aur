@@ -1,7 +1,7 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=ai-usagebar
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Waybar widget + TUI for AI plan usage across Anthropic, OpenAI, Z.AI, and OpenRouter"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=(
 # triggers undefined-symbol link errors on x86_64.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3dd6638f667e8a0fb076e1261042a4f6e41e6a649b44a5b6c67a5b36798b3f3b')
+sha256sums=('51ba564f88a450d349933dd6e742ddf38659150ede75f6242dc13ee6a0188f5c')
 
 prepare() {
     cd "$pkgname-$pkgver"
