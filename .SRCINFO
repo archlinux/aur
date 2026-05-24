@@ -1,0 +1,14 @@
+pkgbase = kasa_exporter
+	pkgdesc = Prometheus exporter for TP-Link Kasa smart home products
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/bobrik/kasa_exporter
+	install = kasa_exporter.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	source = kasa_exporter-0.4.0.tar.gz::https://github.com/bobrik/kasa_exporter/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = db8f5a8e1e1f8df660ea4424c2514defc82cb489169feacdd4c1430e034ec655
+
+pkgname = kasa_exporter

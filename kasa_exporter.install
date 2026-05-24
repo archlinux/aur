@@ -1,0 +1,23 @@
+post_install() {
+  cat <<'EOF'
+kasa_exporter installed.
+
+Add this scrape target to prometheus.yml:
+  - job_name: kasa_exporter
+    static_configs:
+      - targets: ['localhost:12345']
+
+Then reload or restart Prometheus.
+EOF
+}
+
+post_remove() {
+  cat <<'EOF'
+kasa_exporter removed.
+
+Remove the kasa_exporter scrape job from prometheus.yml:
+  - job_name: kasa_exporter
+
+Then reload or restart Prometheus.
+EOF
+}
