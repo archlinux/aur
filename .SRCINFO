@@ -1,15 +1,15 @@
 pkgbase = turbowarp-desktop-bin
 	pkgdesc = Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more.
-	pkgver = 1.15.5
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://desktop.turbowarp.org/
 	arch = any
 	license = GPL3
-	depends = electron39
+	depends = electron42
 	provides = turbowarp-desktop
 	conflicts = turbowarp-desktop
-	noextract = turbowarp-desktop-bin-1.15.5.tar.gz
-	source = turbowarp-desktop-bin-1.15.5.tar.gz::https://github.com/TurboWarp/desktop/releases/download/v1.15.5/TurboWarp-linux-armv7l-1.15.5.tar.gz
-	sha256sums = d9d0df5835f406a1f153775fe50c387ce63275a5f439ed58936101d012f0f21b
+	noextract = turbowarp-desktop-bin-1.16.0.tar.gz
+	source = turbowarp-desktop-bin-1.16.0.tar.gz::https://github.com/TurboWarp/desktop/releases/download/v1.16.0/TurboWarp-linux-armv7l-1.16.0.tar.gz
+	sha256sums = 6b58037da7aca2d52871ad7f1326ee1e4ed4ecc4e97ffdead289d4591e48d77a
 
 pkgname = turbowarp-desktop-bin
