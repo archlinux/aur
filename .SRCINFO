@@ -6,9 +6,9 @@ pkgbase = astroimagej
 	arch = x86_64
 	license = GPL
 	makedepends = gradle
-	makedepends = java-environment=17
-	makedepends = java-environment=25
-	depends = java-runtime=25
+	makedepends = jdk17-openjdk
+	makedepends = jdk25-openjdk
+	depends = java-runtime>=25
 	source = astroimagej-6.0.7.02.tar.gz::https://github.com/AstroImageJ/astroimagej/archive/refs/tags/6.0.7.02.tar.gz
 	source = aij
 	source = astroimagej.desktop

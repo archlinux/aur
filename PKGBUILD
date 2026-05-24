@@ -1,6 +1,5 @@
-# Maintainer: adamanteye <ada@adamanteye.cc>
+# Maintainer: Xuelin Yang <xuelin@adamanteye.cc>
 # Contributor: Yigit Dallilar <yigit.dallilar@gmail.com>
-
 pkgname=astroimagej
 pkgver=6.0.7.02
 pkgrel=1
@@ -8,8 +7,8 @@ pkgdesc="A simple and powerful tool for astronomical image analysis and precise 
 arch=('x86_64')
 url="https://github.com/AstroImageJ/astroimagej"
 license=('GPL')
-depends=('java-runtime=25')
-makedepends=('gradle' 'java-environment=17' 'java-environment=25')
+depends=('java-runtime>=25')
+makedepends=('gradle' 'jdk17-openjdk' 'jdk25-openjdk')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 	"aij"
