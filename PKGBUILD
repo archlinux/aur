@@ -1,6 +1,6 @@
 pkgname=hpr
 pkgver=0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Offline zero-account activity tracker"
 arch=('x86_64')
 url="https://github.com/plexescor/HPR"
