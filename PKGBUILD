@@ -1,5 +1,5 @@
 pkgname=gitmun-bin
-pkgver=0.6.0
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A cross-platform Git GUI built with Tauri"
 arch=('x86_64')
@@ -26,13 +26,13 @@ options=('!strip' '!debug' '!emptydirs')
 install=gitmun.install
 
 source=("LICENSE.gitmun")
-source_x86_64=("https://download.opensuse.org/repositories/home:/cst8t:/gitmun/xUbuntu_26.04/amd64/gitmun_0.6.0-1_amd64.deb")
+source_x86_64=("https://download.opensuse.org/repositories/home:/cst8t:/gitmun/xUbuntu_26.04/amd64/gitmun_0.6.2-1_amd64.deb")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('7eaee8731080d9c765cdc3c9a51c1736509572a8e29dcc154677cc8bede0bf42')
+sha256sums_x86_64=('587f916f80a8ca62ab5a6483db9f30889fa44b08f1aeff440ea27c796bbc560e')
 
 package() {
   cd "${srcdir}"
-  ar x "gitmun_0.6.0-1_amd64.deb"
+  ar x "gitmun_0.6.2-1_amd64.deb"
   local _data_tar
   _data_tar=""
   for _candidate in data.tar.zst data.tar.xz data.tar.gz data.tar.bz2; do
@@ -43,7 +43,7 @@ package() {
   done
 
   if [[ -z "${_data_tar}" ]]; then
-    echo "No data.tar.* payload found in gitmun_0.6.0-1_amd64.deb" >&2
+    echo "No data.tar.* payload found in gitmun_0.6.2-1_amd64.deb" >&2
     return 1
   fi
 
