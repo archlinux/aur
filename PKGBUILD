@@ -6,7 +6,7 @@
 _reponame=passwordfile
 pkgname=mingw-w64-passwordfile
 _name=${pkgname#mingw-w64-}
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 arch=('any')
 pkgdesc='C++ library to read/write passwords from/to encrypted files using AES-256-CBC via OpenSSL (mingw-w64)'
