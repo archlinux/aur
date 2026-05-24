@@ -1,9 +1,9 @@
-# Maintainer: jinzhongjia <jinzhongjia@manus.ai>
+# Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=zap-oss-bin
 pkgver=2026.05.22.preview
 _debver=2026.05.22.preview
-pkgrel=1
+pkgrel=2
 # Upstream renamed releases from "YYYY.MM.DD.preview" to "0.YYYY.MM.DD.HHMM",
 # which sorts lower under pacman vercmp. epoch ensures clean upgrades.
 # This package replaces openwarp-bin (project was renamed OpenWarp → Zap).
@@ -51,4 +51,11 @@ package() {
     # Keep the legacy /usr/bin/openwarp symlink so existing launchers,
     # .desktop overrides, and shell aliases keep working after the rename.
     ln -s /opt/zap/zap-oss "${pkgdir}/usr/bin/openwarp"
+
+    # Upstream desktop file ships `Exec=zap %U`, expecting a /usr/bin/zap
+    # wrapper that we deliberately don't install (would collide with the
+    # unrelated `zap-bin` AppImage-manager AUR package). Point Exec at the
+    # symlink we actually provide.
+    sed -i 's|^Exec=zap %U$|Exec=zap-oss %U|' \
+        "${pkgdir}/usr/share/applications/dev.zap.Zap.desktop"
 }

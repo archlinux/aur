@@ -1,7 +1,7 @@
 pkgbase = zap-oss-bin
 	pkgdesc = Zap (formerly OpenWarp) - open-source fork of Warp, a Rust-based terminal with AI built in
 	pkgver = 2026.05.22.preview
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/zerx-lab/zap
 	arch = x86_64
