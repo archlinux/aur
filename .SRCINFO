@@ -1,6 +1,6 @@
 pkgbase = litellm
 	pkgdesc = Library to easily interface with LLM API providers.
-	pkgver = 1.85.1
+	pkgver = 1.86.0
 	pkgrel = 1
 	url = https://github.com/BerriAI/litellm
 	arch = any
@@ -83,7 +83,7 @@ pkgbase = litellm
 	optdepends = python-llm-sandbox: proxy-runtime
 	optdepends = python-detect-secrets: proxy-runtime
 	provides = python-litellm
-	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.85.1.tar.gz
-	sha256sums = 3b8ef0c89ff2736cbd27109f17ff31f1bd0ab59dee9be8cadb28ec3cb167ce0d
+	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.86.0.tar.gz
+	sha256sums = eccab86e0820b60b3f9484b233fb8d818b97afb19d5b4fa08d0d045621350ba4
 
 pkgname = litellm
