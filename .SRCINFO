@@ -1,6 +1,6 @@
 pkgbase = moshpit-agent-ssh-agent-piggyback
 	pkgdesc = Moshpit agent daemon — SSH agent piggyback unlock backend
-	pkgver = 0.8.9
+	pkgver = 0.8.10
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = moshpit-agent-ssh-agent-piggyback
 	conflicts = moshpit-agent-tpm
 	conflicts = moshpit-agent-fprintd
 	conflicts = moshpit-agent-full
-	source = moshpit-agent-ssh-agent-piggyback-0.8.9.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.9.tar.gz
-	sha256sums = d48b7b1d3ada50576889d0215fce78737e08f5c6ac516abf7bb2cc6511c32ee8
+	source = moshpit-agent-ssh-agent-piggyback-0.8.10.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.10.tar.gz
+	sha256sums = a1ec8ea5a52e9a7e69a57e5e174e4817a25775653fcbac68a4ade445d24477a4
 
 pkgname = moshpit-agent-ssh-agent-piggyback
