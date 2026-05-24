@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='VHDL compiler and simulator'
 pkgname=nvc
-pkgver=1.20.1
+pkgver=1.21.0
 pkgrel=1
 url=https://www.nickg.me.uk/nvc
 license=(GPL-3.0-or-later)
@@ -11,7 +11,7 @@ depends=(libelf llvm-libs ncurses zstd tcl capstone tcllib)
 makedepends=(pkgconfig make flex check llvm automake autoconf)
 optdepends=('ruby: for the scripts to download and install VHDL libraries')
 source=("${url%/nvc}/files/${pkgname}-${pkgver}.tar.gz")
-b2sums=('dc6c19bf79a5838573a5bad7b3ad5cad2d492f8fd8d34fd8cb41031038358e64711a1829e26ec2ea66c3e2d6a694ec2945ee61bc1348f57c512a1901edc3b636')
+b2sums=('a792c8bd56ab530077b1bbf9af5c382383797cec677901509fc9fdc46a7f0ab8a802ba32ef90cd6da0c17b113239a8ca2bf6f20342fb63ede82af1246ca13676')
 
 build () {
 	cd "${pkgname}-${pkgver}"
@@ -27,9 +27,8 @@ build () {
 		--prefix=/usr \
 		--disable-dependency-tracking \
 		--enable-silent-rules \
-		--enable-verilog \
+		--enable-llvm \
 		--enable-vital \
-		--enable-server \
 		--enable-tcl \
 		--with-llvm=/usr/bin/llvm-config \
 		--with-bash-completion=/usr/share/bash-completion \
