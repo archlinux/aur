@@ -1,0 +1,20 @@
+pkgbase = cursorfb
+	pkgdesc = Framebuffer software cursor overlay
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = glibc
+	source = main.c
+	source = curfblib.c
+	source = curfblib.h
+	source = stb_image.h
+	source = cursor.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cursorfb
