@@ -3,7 +3,7 @@
 _org='stack-of-tasks'
 _pkgname='tsid'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Efficient Task Space Inverse Dynamics (TSID) based on Pinocchio"
 arch=('i686' 'x86_64')
@@ -11,15 +11,15 @@ url="https://github.com/$_org/$_pkgname"
 license=('BSD')
 depends=('pinocchio' 'eiquadprog')
 optdepends=('doxygen')
-makedepends=('cmake' 'eigen3')
-source=($url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('283ad0374a8f0389976e824f0f47974131abe42dbbd9b2d391a52f353be681be'
-            'SKIP')
-validpgpkeys=(
-    '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'
-    'A031AD35058955293D54DECEC45D22EF408328AD'
-    'F182CC432A4752C7A3E4FE02001EB2069D785C81'
-    )
+makedepends=('cmake' 'eigen')
+# source=($url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz{,.sig})
+source=($url/archive/refs/tags/v${pkgver}.tar.gz)
+sha256sums=('c31f3c61a1a40c9d6e2411ef224da3db51c8a1fdb185425fc6ce84e06fe33862')
+# validpgpkeys=(
+#     '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'
+#     'A031AD35058955293D54DECEC45D22EF408328AD'
+#     'F182CC432A4752C7A3E4FE02001EB2069D785C81'
+#     )
 
 build() {
     cmake -B "build-$pkgver" -S "$_pkgname-$pkgver" \
