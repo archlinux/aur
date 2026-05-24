@@ -2,7 +2,7 @@
 pkgname=cogfly-bin
 pkgver=1.1.2
 pkgrel=1
-pkgdesc="A cross-platform mod manager for Hollow Knight: Silksong."
+pkgdesc="A cross-platform mod manager for Hollow Knight: Silksong. (AppImage)"
 arch=(x86_64)
 url="https://github.com/Nix-main/Cogfly"
 license=('GPL-3.0-only')
