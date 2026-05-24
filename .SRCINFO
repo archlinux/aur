@@ -1,0 +1,22 @@
+pkgbase = musicfree-desktop-wayland-bin
+	pkgdesc = Plug-in, customized, ad-free music player. Wayland-adapted prebuilt version.
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/txgde-space/MusicFreeDesktop
+	arch = x86_64
+	license = GPL
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = libxrandr
+	depends = libxkbcommon
+	depends = mesa
+	depends = hicolor-icon-theme
+	options = !strip
+	options = !debug
+	source = MusicFree-Desktop-Linux-Wayland-x64-0.0.8.tar.gz::https://github.com/txgde-space/MusicFreeDesktop/releases/download/0.0.8/MusicFree-Desktop-Linux-Wayland-x64-0.0.8.tar.gz
+	sha256sums = 1ebee6e1cefea9084838cb45761eac9759f1294245d91473c2fd6b40430e06a8
+
+pkgname = musicfree-desktop-wayland-bin
