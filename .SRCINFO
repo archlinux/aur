@@ -1,0 +1,16 @@
+pkgbase = kissmp-bridge-bin
+	pkgdesc = Bridge for KissMP, a multiplayer mod for BeamNG.drive (precompiled binary)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/TheHellBox/KISS-multiplayer
+	arch = x86_64
+	license = Apache
+	depends = opus
+	depends = alsa-lib
+	provides = kissmp-bridge
+	conflicts = kissmp-bridge
+	options = !strip
+	source = kissmp-bridge-bin-0.8.0.zip::https://github.com/TheHellBox/KISS-multiplayer/releases/download/v0.8.0/KissMP_v0.8.0.zip
+	sha256sums = b0de0d10608e892e2a10faf8fba53177c9dd5a46a2ade5025848bfd59be1a05d
+
+pkgname = kissmp-bridge-bin
