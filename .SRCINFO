@@ -1,0 +1,23 @@
+pkgbase = astroimagej-bin
+	pkgdesc = A simple and powerful tool for astronomical image analysis and precise photometry.
+	pkgver = 6.0.7.02
+	pkgrel = 1
+	url = https://github.com/AstroImageJ/astroimagej
+	arch = x86_64
+	license = GPL
+	depends = alsa-lib
+	depends = glibc
+	depends = libx11
+	depends = libxext
+	depends = libxi
+	depends = libxrender
+	depends = libxtst
+	provides = astroimagej=6.0.7.02
+	conflicts = astroimagej
+	options = !strip
+	source = AstroImageJ-6.0.7.02-linux-x64.tgz::https://github.com/AstroImageJ/astroimagej/releases/download/6.0.7.02/AstroImageJ-6.0.7.02-linux-x64.tgz
+	source = astroimagej.desktop
+	sha256sums = 79a7c296da40201114635a6110d1aca3bb26358240b00d51948b4c3cdb55d6f9
+	sha256sums = af13f0eae5cd27d52dc2a8a2fb574840feafc0ca7d6c7c983bb0123485e0ca8b
+
+pkgname = astroimagej-bin
