@@ -1,6 +1,6 @@
 pkgname=hpr
 pkgver=0.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Offline zero-account activity tracker"
 arch=('x86_64')
 url="https://github.com/plexescor/HPR"
@@ -58,10 +58,10 @@ package() {
     install -Dm644 ../shippedWithBinary/config.csv \
         "$pkgdir/usr/share/hpr/config.csv"
 
-    cp -r ../shippedWithBinary/ui \
+    cp -r ../build/ui \
         "$pkgdir/usr/share/hpr/ui"
 
-    cp -r ../shippedWithBinary/assets \
+    cp -r ../build/assets \
         "$pkgdir/usr/share/hpr/assets"
 
     install -Dm644 /dev/stdin \
