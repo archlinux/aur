@@ -1,3 +1,23 @@
+## Version 7.1.0.0
+
+Fixes:
+
+    Fixed an issue with details subcommand under appaccount command to display appropriate error message when application account is inactive.
+    Fixed an issue with appaccount command for the subcommands details delete exists to work with the last four digits of Application Account IDs.
+    Fixed an issue with rawgetcommand to accept X-Auth-Token.
+    Fixed an issue which is preventing the logconfig command from configuring logging settings on ESXi platforms.
+    Fixed an issue with load command where the operation of setting the ThermalConfiguration and FanPercentMinimum configurations where failing.
+
+Enhancements:
+
+    Enhanced rawgetcommand to reduce the time the command takes to execute from 13 seconds to 4 seconds.
+    Enhanced rawgetcommand to make it work with HPE encoded credentials.
+    Enhanced appaccount command to make it work with HPE encoded credentials.
+    Enhanced appaccount command for handling of orphaned Application Accounts in create subcommand if TPM was cleared.
+    Enhanced the delete subcommand of appaccount command to restrict deletion of other host applications from iLOrest , unless credentials are provided.
+    Enhanced log file management by centralizing log files into the ilorest_logs directory within the current working directory.
+    Enhanced logconfig command by adding an option to completely disable logging using disable-logs parameter.
+
 ## Version 7.0.0.0
 
 Fixes:

@@ -3,19 +3,19 @@
 
 pkgname=ilorest-bin
 _pkgname=ilorest
-pkgver=7.1.0.0_11
+pkgver=7.2.0.0_6
 pkgrel=1
 pkgdesc="HPE RESTful Interface Tool"
 arch=(x86_64)
-url="https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_0b881600776d472b948d163114&tab=releaseNotes"
+url="https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_300a25d73549410c892eacfeab&tab=releaseNotes"
 depends=('bash' 'libxcrypt-compat' 'python')
 makedepends=("python-pip")
 conflicts=('ilorest')
 provides=('ilorest')
 groups=(hpproliant)
 license=("HPE")
-source=("https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1545251609/v279422/RPMS/${arch}/${_pkgname}-${pkgver//_/-}.${arch}.rpm")
-sha256sums=('80c11feb2f08d00427ce939fcbdf9cba370918cb737455d52d649fcbefcecfad')
+source=("https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1545251609/v284046/RPMS/${arch}/${_pkgname}-${pkgver//_/-}.${arch}.rpm")
+sha256sums=('987fa3b5936b16e543e615d7c4e04997881f687cd656a56a9c2da415460e4fd9')
 changelog=ChangeLog
 
 package() {
