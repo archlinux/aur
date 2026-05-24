@@ -1,6 +1,6 @@
 pkgbase = neve-git
 	pkgdesc = Standalone language for system configuration, builds, and shell automation (git version)
-	pkgver = 3.16.0.r168.g514ce7a
+	pkgver = 3.16.0.r291.g514ce7a
 	pkgrel = 1
 	url = https://github.com/MCB-SMART-BOY/Neve
 	arch = x86_64
@@ -16,9 +16,11 @@ pkgbase = neve-git
 	depends = openssl
 	depends = zlib
 	depends = xz
+	depends = zstd
 	provides = neve
 	conflicts = neve
 	conflicts = neve-bin
+	options = !lto
 	source = git+https://github.com/MCB-SMART-BOY/Neve.git
 	sha256sums = SKIP
 
