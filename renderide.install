@@ -6,9 +6,9 @@ post_install() {
 
   # Notify the user that Resonite is needed separately
   echo ""
-  echo "Renderide is a custom renderer for Resonite, which"
-  echo "is not included in this package. Resonite must be"
-  echo "installed via Steam in order for Renderide to work."
+  echo ">>    Renderide is a custom renderer for Resonite, which"
+  echo ">>    is not included in this package. Resonite must be"
+  echo ">>    installed via Steam in order for Renderide to work."
   echo ""
 }
 
