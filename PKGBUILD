@@ -8,8 +8,8 @@
 
 pkgname=hexshell-bin
 _pkgname=hexshell
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Fullscreen sci-fi terminal with its own interactive shell (hexsh)"
 arch=('x86_64')
 url="https://github.com/TSMaitryDotDev/hexshell"

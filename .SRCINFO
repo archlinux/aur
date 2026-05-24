@@ -1,7 +1,7 @@
 pkgbase = hexshell-bin
 	pkgdesc = Fullscreen sci-fi terminal with its own interactive shell (hexsh)
-	pkgver = 0.1.0
-	pkgrel = 4
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/TSMaitryDotDev/hexshell
 	arch = x86_64
 	license = MIT
@@ -18,11 +18,11 @@ pkgbase = hexshell-bin
 	depends = fontconfig
 	depends = libxss
 	depends = alsa-lib
-	provides = hexshell=0.1.0
+	provides = hexshell=0.1.1
 	conflicts = hexshell
 	options = !strip
 	options = !debug
-	source = hexshell-0.1.0-x86_64.AppImage::https://github.com/TSMaitryDotDev/hexshell/releases/download/v0.1.0/Hexshell-0.1.0-x86_64.AppImage
+	source = hexshell-0.1.1-x86_64.AppImage::https://github.com/TSMaitryDotDev/hexshell/releases/download/v0.1.1/Hexshell-0.1.1-x86_64.AppImage
 	sha256sums = SKIP
 
 pkgname = hexshell-bin
