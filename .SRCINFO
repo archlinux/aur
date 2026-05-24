@@ -1,7 +1,7 @@
 pkgbase = ferrum-git
 	pkgdesc = Linux-native GTK frontend + Spring Boot backend for browsing Metal Archives
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prezdev88/ferrum
 	arch = x86_64
 	license = custom

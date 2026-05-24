@@ -2,7 +2,7 @@
 
 pkgname=ferrum-git
 pkgver=0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux-native GTK frontend + Spring Boot backend for browsing Metal Archives"
 arch=('x86_64')
 url="https://github.com/prezdev88/ferrum"
@@ -28,8 +28,19 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags --always 2>/dev/null | sed 's/^v//;s/-/./g' || printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+
+	local d
+	d="$(git describe --tags --long --always 2>/dev/null)" || return 1
+	d="${d#v}"
+
+	if [[ "$d" =~ ^([0-9]+(\.[0-9]+){2})-0-g([0-9a-f]+)$ ]]; then
+		printf '%s\n' "${BASH_REMATCH[1]}"
+	elif [[ "$d" =~ ^([0-9]+(\.[0-9]+){2})-([0-9]+)-g([0-9a-f]+)$ ]]; then
+		printf '%s.r%s.g%s\n' "${BASH_REMATCH[1]}" "${BASH_REMATCH[3]}" "${BASH_REMATCH[4]}"
+	else
+		printf '%s\n' "$d" | sed 's/-/./g'
+	fi
 }
 
 build() {
