@@ -1,0 +1,17 @@
+pkgbase = blupala-git
+	pkgdesc = A TUI Bluetooth manager for Linux, inspired by impala
+	pkgver = r5.1da259d
+	pkgrel = 1
+	url = https://github.com/Ota26228/blupala
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = bluez
+	provides = blupala
+	conflicts = blupala
+	source = blupala-git::git+https://github.com/Ota26228/blupala.git
+	sha256sums = SKIP
+
+pkgname = blupala-git
