@@ -55,7 +55,7 @@ for (const marker of requiredMarkers) {
 }
 
 const codeArgsPattern =
-  /var ([A-Za-z_$][\w$]*)=\(t,n,r,i,a\)=>r!=null&&e\.zt\(r\)&&\(i!=null\|\|a!=null\)\?[A-Za-z_$][\w$]*\(\{hostConfig:r,location:n,remotePath:a,remoteWorkspaceRoot:i\}\):[A-Za-z_$][\w$]*\(t,n\),/;
+  /(?:var |,)([A-Za-z_$][\w$]*)=\(t,n,r,i,a\)=>r!=null&&e\.[A-Za-z_$][\w$]*\(r\)&&\(i!=null\|\|a!=null\)\?[A-Za-z_$][\w$]*\(\{hostConfig:r,location:n,remotePath:a,remoteWorkspaceRoot:i\}\):[A-Za-z_$][\w$]*\(t,n\)[,;]/;
 const codeArgsMatch = source.match(codeArgsPattern);
 
 if (!codeArgsMatch) {
