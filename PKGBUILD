@@ -3,7 +3,7 @@
 _author=RYOSKZYPU
 _dist=App-cpan2arch
 pkgname=perl-${_dist@L}
-pkgver=v1.1.0
+pkgver=v1.1.1
 pkgrel=1
 pkgdesc='generate PKGBUILD from CPAN metadata'
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('a2160cb7ab1a8c4cefa771f09130e28ea16e367ce3fbb8a2d55f1e578a97f44a')
+sha256sums=('6c87690ebe245728e264eb87f37868ad7bee71e66719b58f16e0cfb3138d9b34')
 
 build()
 {
