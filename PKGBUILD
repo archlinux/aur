@@ -9,7 +9,7 @@ pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
 _sticker_creator="sticker-creator"
 _desktop_file='signal beta.desktop'
-pkgver=8.11.0beta1
+pkgver=8.12.0beta1
 pkgrel=1
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
@@ -31,6 +31,7 @@ depends=(
   'libexpat.so'
   'libgio-2.0.so'
   'libpango-1.0.so'
+  'libpulse'
   'libx11'
   'libxcb'
   'libxcomposite'
@@ -49,17 +50,18 @@ makedepends=(
   'git-lfs'
   'libxcrypt-compat'
   'node-gyp'
-  'nodejs-lts-jod'
+  'nodejs-lts-krypton'
   'python'
   'pnpm'
 )
 optdepends=('xdg-desktop-portal: Screensharing with Wayland')
+makedepends_aarch64=('fpm')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${_desktop_file}"
   "${pkgname}.sh"
   )
-sha512sums=('f4db32e8c5ba83691a18e198e0f94d54ae09472e71f91c93b3fc76daedbc117f84c58ce0261114758400d391db2f4473c4e75b397151554e27f681adeef8a53f'
+sha512sums=('7d6e8bd160642b2aad21573b741cb3805086a12ded4d39d8721f50180c5bff4c65b9fa1a4c8a4232ff428bad8618e2b00834d816544fac72271dfb9ada6f43de'
             '5032201efb1089e2e8f78cf5cc06d458f2b068900a4de74b7c2ef87a0a0e7779cc681df7b95ce2d9af131ef9ea148f3621ee1fa2a9812982cdecc7aba9eeb87c'
             'b3d8e56d0524711e13f5ef3770b49c5723ad3d7e50855ae578ea63f653b5e64edd7a9e68b56ba35c0240959f091195ece3580fc8550240ef40b00d0ad7fb97e8')
 
@@ -73,9 +75,6 @@ prepare() {
   # Allow higher Node versions
   sed 's#"node": "#&>=#' -i package.json
 
-  # Upgrade electron-builder so we do not need fpm installed locally when building on aarch64
-  sed -i 's/"electron-builder": "26\.0\.14",/"electron-builder": "26.0.20",/' package.json
-
   # Install dependencies for sticker-creator
   pnpm install -C ./sticker-creator/
 
@@ -87,12 +86,12 @@ build() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
 
   # Build the sticker creator
-  pnpm -C ./sticker-creator/ run build
+  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'pnpm -C ./sticker-creator/ run build'
 
   # Build Signal Desktop Beta
   pnpm run generate
   pnpm run prepare-beta-build
-  pnpm run build:esbuild:prod && pnpm run build:release -- --linux dir
+  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'pnpm run build:esbuild:prod && pnpm run build:release -- --linux dir'
 }
 
 package() {
