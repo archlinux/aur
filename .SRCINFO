@@ -1,0 +1,14 @@
+pkgbase = cartridge-sampler-bin
+	pkgdesc = A versatile sampler/slicer built around four playback modes — from quick one-shots to fully sliced loops with MIDI export. Works in any modern DAW, with extra integration goodies for Reaper.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://dsgdnb.com/plugins/cartridge
+	arch = x86_64
+	groups = vst3-plugins
+	groups = lv2-plugins
+	makedepends = git
+	provides = cartridge-sampler
+	source = Cartridge-v0.7.0-linux.zip::https://drive.usercontent.google.com/download?id=1vjEXgd1LSbT0q8yZcRh2VGB6OmNBu2M3&export=download&authuser=1
+	sha256sums = 0ba19de19c68b708ce9e6313647c00229370d46c9dd338cd51b84562287de965
+
+pkgname = cartridge-sampler-bin
