@@ -1,5 +1,3 @@
-# Maintainer: REDACTED <redacted@localhost>
-
 pkgname=medley-bin
 pkgver=260521
 pkgrel=1
