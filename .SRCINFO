@@ -1,6 +1,6 @@
 pkgbase = nokkvi-git
 	pkgdesc = A native Rust/Iced desktop client for Navidrome music servers (git HEAD)
-	pkgver = 0.5.2.r0.gc14f44a
+	pkgver = 0.5.3.r0.ga7d6f61
 	pkgrel = 1
 	url = https://github.com/f-o-o-g-s/nokkvi
 	arch = x86_64
