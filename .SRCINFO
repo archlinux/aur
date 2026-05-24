@@ -1,6 +1,6 @@
 pkgbase = elegoo-slicer-bin
 	pkgdesc = ElegooSlicer is an open-source slicer compatible with most FDM printers
-	pkgver = 1.3.0.11
+	pkgver = 1.5.0.7
 	pkgrel = 1
 	url = https://github.com/ELEGOO-3D/ElegooSlicer
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = elegoo-slicer-bin
 	options = !strip
 	options = !zipman
 	options = !debug
-	source = elegoo-slicer-bin-1.3.0.11.AppImage::https://github.com/ELEGOO-3D/ElegooSlicer/releases/download/v1.3.0.11/ElegooSlicer_Linux_Ubuntu2404_V1.3.0.11.AppImage
-	sha256sums = 5c3cb581cc101598e8d581270405031edb1ca091e391925dba06c9dc7a7360c8
+	source = elegoo-slicer-bin-1.5.0.7.AppImage::https://github.com/ELEGOO-3D/ElegooSlicer/releases/download/v1.5.0.7/ElegooSlicer_Linux_V1.5.0.7.AppImage
+	sha256sums = f588eec0fd8e0064457ea78abf291101d48fd2a977d7522e8b7a81adc00e9b6d
 
 pkgname = elegoo-slicer-bin
