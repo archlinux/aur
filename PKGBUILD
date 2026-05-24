@@ -1,6 +1,6 @@
 # Maintainer: MCB-SMART-BOY <2720838051@qq.com>
 pkgname=neve-git
-pkgver=3.16.0.r291.g514ce7a
+pkgver=3.16.0.r292.g053ba7f
 pkgrel=1
 pkgdesc="Standalone language for system configuration, builds, and shell automation (git version)"
 arch=('x86_64' 'aarch64')
