@@ -1,11 +1,11 @@
 pkgbase = ttf-lxgw-bright-code-tc
 	pkgdesc = A merged font of Monaspace Argon and LXGW WenKai.
-	pkgver = 2.720
+	pkgver = 2.922
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwBright-Code
 	arch = any
 	license = OFL-1.1
-	source = ttf-lxgw-bright-code-tc-2.720.tar.gz::https://github.com/lxgw/LxgwBright-Code/archive/refs/tags/v2.720.tar.gz
-	sha256sums = c65dfe52303e77ff7d8496c34e444827098ae9562e1320d86dbcb1e2cef0549e
+	source = ttf-lxgw-bright-code-tc-2.922.tar.gz::https://github.com/lxgw/LxgwBright-Code/archive/refs/tags/v2.922.tar.gz
+	sha256sums = b2ca50d8a8ef5c0f5cdf5bde9efafcf3a0e5c03650a428a2e411acc084d1ec95
 
 pkgname = ttf-lxgw-bright-code-tc
