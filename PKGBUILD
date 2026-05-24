@@ -7,15 +7,14 @@ pkgdesc='A cargo-subcommand to speed up Rust Docker builds using Docker layer ca
 arch=('aarch64' 'x86_64')
 url="https://github.com/LukeMathWalker/$pkgname"
 license=(APACHE MIT)
-depends=(gcc-libs)
-makedepends=(cargo)
+depends=(glibc libgcc cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 b2sums=('4a5b98c53d67885251cadee53c2d64008bb6c4e19dea238daf21df51fe1ea8a442af4689de16c6d98885b46621aa2dc1f4bfc189dffe7588beca357c5fb3a10d')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target="$(rustc --print host-tuple)"
 }
 
 build() {
