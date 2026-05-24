@@ -18,7 +18,7 @@ pre_install() {
     # Remove existing symbolic links
     citrix_default_link="/opt/Citrix/ICAClient/ZoomMedia.so"
     if [ -L "$citrix_default_link" ]; then
-        sudo rm -f "$citrix_default_link"
+        rm -f "$citrix_default_link"
     fi
 }
 
@@ -31,12 +31,12 @@ post_install() {
 
         # Create the directory if it doesn't exist
         if [ ! -d "$citrix_default_directory" ]; then
-            sudo mkdir -p "$citrix_default_directory"
+            mkdir -p "$citrix_default_directory"
             echo "auto created directory '$citrix_default_directory'"
         fi
 
         # Create symbolic link for the plugin
-        sudo ln -sf /usr/lib/zoomvdi-universal-plugin/libZoomPlugin.so "$citrix_default_directory/ZoomMedia.so"
+        ln -sf /usr/lib/zoomvdi-universal-plugin/libZoomPlugin.so "$citrix_default_directory/ZoomMedia.so"
 
         # Locate the module.ini configuration file
         CONFIG_LINK_FILE=/opt/Citrix/ICAClient/config/module.ini
@@ -87,12 +87,12 @@ post_install() {
 
         echo "Adding ZoomMedia configuration to $CONFIG_FILE"
 
-        sudo sed -i "/VirtualDriver/s/$/, ZoomMedia/" $CONFIG_FILE
-        sudo sed -i "${FIRST_EMPTY_LINE}i ZoomMedia=On" $CONFIG_FILE
+        sed -i "/VirtualDriver/s/$/, ZoomMedia/" $CONFIG_FILE
+        sed -i "${FIRST_EMPTY_LINE}i ZoomMedia=On" $CONFIG_FILE
         FIRST_EMPTY_LINE=$((FIRST_EMPTY_LINE + 2))
-        sudo sed -i "${FIRST_EMPTY_LINE}i [ZoomMedia]" $CONFIG_FILE
+        sed -i "${FIRST_EMPTY_LINE}i [ZoomMedia]" $CONFIG_FILE
         FIRST_EMPTY_LINE=$((FIRST_EMPTY_LINE + 1))
-        sudo sed -i "${FIRST_EMPTY_LINE}i DriverName=ZoomMedia.so" $CONFIG_FILE
+        sed -i "${FIRST_EMPTY_LINE}i DriverName=ZoomMedia.so" $CONFIG_FILE
     fi
 
     note "Config write completed to $CONFIG_LINK_FILE"
@@ -103,15 +103,15 @@ pre_remove() {
     # Remove configuration entries
     CONFIG_LINK_FILE="/opt/Citrix/ICAClient/config/module.ini"
     if [ -f "$CONFIG_LINK_FILE" ]; then
-        sudo sed -i 's/, ZoomMedia//g' "$CONFIG_LINK_FILE"
-        sudo sed -i '/ZoomMedia=On/d' "$CONFIG_LINK_FILE"
-        sudo sed -i '/\[ZoomMedia\]/d' "$CONFIG_LINK_FILE"
-        sudo sed -i '/ZoomMedia.so/d' "$CONFIG_LINK_FILE"
+        sed -i 's/, ZoomMedia//g' "$CONFIG_LINK_FILE"
+        sed -i '/ZoomMedia=On/d' "$CONFIG_LINK_FILE"
+        sed -i '/\[ZoomMedia\]/d' "$CONFIG_LINK_FILE"
+        sed -i '/ZoomMedia.so/d' "$CONFIG_LINK_FILE"
     fi
     
     # Remove symbolic link
     citrix_default_link="/opt/Citrix/ICAClient/ZoomMedia.so"
     if [ -L "$citrix_default_link" ]; then
-        sudo rm -f "$citrix_default_link"
+        rm -f "$citrix_default_link"
     fi
 }

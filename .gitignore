@@ -1,7 +1,6 @@
-update-script.py
 pkg/
 src/
-venv/
 *.rpm
 *.pkg.tar.zst
 *.src.tar.gz
+PKGBUILD.tmp
