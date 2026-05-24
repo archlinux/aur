@@ -1,7 +1,7 @@
 pkgbase = sparrow-wallet-reproducible
 	pkgdesc = Desktop Bitcoin Wallet focused on security and privacy (reproducible build)
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sparrowwallet.com/
 	arch = x86_64
 	license = Apache-2.0
@@ -13,6 +13,7 @@ pkgbase = sparrow-wallet-reproducible
 	depends = libxrender
 	depends = libxtst
 	optdepends = bitbox-udev: udev rules for BitBox hardware wallets
+	optdepends = bitcoin-daemon: connect to a local Bitcoin Core node
 	optdepends = keepkey-udev: udev rules for KeepKey hardware wallets
 	optdepends = ledger-udev: udev rules for Ledger hardware wallets
 	optdepends = python-ckcc-protocol: Python CLI and udev rules for Coldcard hardware wallets
@@ -20,6 +21,8 @@ pkgbase = sparrow-wallet-reproducible
 	provides = sparrow-wallet
 	conflicts = sparrow-wallet
 	conflicts = sparrow-wallet-git
+	options = !debug
+	options = !strip
 	source = sparrow::git+https://github.com/sparrowwallet/sparrow.git#tag=2.5.1
 	source = sparrow-bin.tar.gz::https://github.com/sparrowwallet/sparrow/releases/download/2.5.1/sparrowwallet-2.5.1-x86_64.tar.gz
 	source = drongo::git+https://github.com/sparrowwallet/drongo.git
