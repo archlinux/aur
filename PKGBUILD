@@ -1,4 +1,5 @@
-# Maintainer: Cleboost <cleboost@protonmail.com>
+# Maintainer: Cleboost <cleboost@protonmail.com> (missing-aur project)
+# Contributor: missing-aur project <https://github.com/Cleboost/missing-aur>
 
 pkgname=temper-git
 pkgver=0.1.0.r44.g3726ed9f
