@@ -11,6 +11,7 @@ pkgbase = skirk-desktop
 	makedepends = npm
 	makedepends = cargo
 	depends = gtk3
+	depends = webkit2gtk-4.1
 	provides = skirk
 	conflicts = skirk
 	source = git+https://github.com/ShahabSL/Skirk.git#tag=v0.1.55

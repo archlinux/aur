@@ -8,7 +8,7 @@ pkgdesc="Socks over Google Drive"
 arch=("any")
 url="https://github.com/ShahabSL/Skirk"
 license=("MIT")
-depends=("gtk3")
+depends=("gtk3" "webkit2gtk-4.1")
 makedepends=("git" "go" "make" "npm" "cargo")
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('d5ca685b2d1f979db1561f4f865bced93cfc1ea843f3fd5cb930b89a73a984d1')
