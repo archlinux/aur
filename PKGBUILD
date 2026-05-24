@@ -2,7 +2,7 @@
 # Maintainer: Amr Saber <amr.m.saber.mail@gmail.com>
 
 pkgname='kv-bin'
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='A lightweight, feature-rich command-line key-value store with encryption, TTL, and version control'
 url='https://github.com/AmrSaber/kv'
@@ -12,10 +12,10 @@ provides=('kv')
 conflicts=('kv')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/AmrSaber/kv/releases/download/v${pkgver}/kv_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('8691a05aa4c4f0524d30c6349358c164b659d1728c03f112f6984b8646606893')
+sha256sums_aarch64=('fce1bd824c612694d50ec67415407c7136105f77fe68e6e0c79ec708dae5ed36')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/AmrSaber/kv/releases/download/v${pkgver}/kv_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('2f3f799ccfc6ece753c2a16b019ee41a388515c65c7f29c9be8de927c646ea0a')
+sha256sums_x86_64=('7fcb573ceae069a7029cebc44ffa3d07cfc622a52cfc022b75507ed002cb0374')
 
 package() {
   # bin
