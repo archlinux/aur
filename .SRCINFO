@@ -1,6 +1,6 @@
 pkgbase = alps-pm
 	pkgdesc = Advanced Linux Package System — customizable package manager frontend with AUR support
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/adrianpriza-ai/alps
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = alps-pm
 	optdepends = git: required for AUR makepkg fallback
 	optdepends = base-devel: required for AUR makepkg fallback
 	optdepends = yay: preferred AUR helper
-	source = alps-pm-0.9.5.tar.gz::https://github.com/adrianpriza-ai/alps/archive/v0.9.5.tar.gz
+	source = alps-pm-0.9.6.tar.gz::https://github.com/adrianpriza-ai/alps/archive/v0.9.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = alps-pm

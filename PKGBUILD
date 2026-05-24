@@ -1,7 +1,7 @@
 # Maintainer: adrianpriza-ai <coreygit1@gmail.com>
 
 pkgname=alps-pm
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Advanced Linux Package System — customizable package manager frontend with AUR support"
 arch=('x86_64' 'aarch64' 'armv7h')
