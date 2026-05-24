@@ -17,7 +17,7 @@ pkgbase = solara-installer
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/celestia-foundation/solara/archive/refs/heads/main.tar.gz
+	source = https://github.com/celestia-foundation/solara/archive/dfb0f0dfc7580c13256b6d6a5ea7c9fbf3b40e38.tar.gz
 	b2sums = SKIP
 
 pkgname = solara-installer

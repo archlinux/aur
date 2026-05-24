@@ -35,16 +35,17 @@ makedepends=(
 )
 options=('!strip' '!debug' '!lto')
 
-source=("https://github.com/celestia-foundation/solara/archive/refs/heads/main.tar.gz")
+_commit=dfb0f0dfc7580c13256b6d6a5ea7c9fbf3b40e38
+source=("https://github.com/celestia-foundation/solara/archive/${_commit}.tar.gz")
 b2sums=('SKIP')
 
 build() {
-    cd solara-main/installer
+    cd "solara-${_commit}/installer"
     LDFLAGS="" cargo build --release -p installer-gui
 }
 
 package() {
-    cd solara-main
+    cd "solara-${_commit}"
     install -Dm755 installer/target/release/solara-installer \
         "$pkgdir/usr/bin/solara-installer"
 
