@@ -1,6 +1,6 @@
 pkgname=ibm-tss
 epoch=1
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A user space TSS for TPM 2.0 by IBM"
 arch=(i686 x86_64)
@@ -10,11 +10,8 @@ depends=('openssl')
 makedepends=('git')
 # someone else's identical package
 provides=("ibm-tpm2-tss=$pkgver")
-# tarbomb
-#source=("https://downloads.sourceforge.net/project/ibmtpm20tss/ibmtss$pkgver.tar.gz")
-#sha256sums=('5242ce5ca8f9aff8d7a5c71dc41dbdac472b0827dafc3a1cdb6e32c16cbb95e3')
 source=("$pkgname::git+https://git.code.sf.net/p/ibmtpm20tss/tss#tag=v$pkgver")
-sha256sums=('604c2ee2bf48faba99acae1cef02e1f74617dd82e77987012dfe41fdff5c22c7')
+sha256sums=('212fcdd93db2e81d7290dad40c802a315192405672efba2a9e04476f9af82dde')
 
 pkgver() {
   cd $pkgname
