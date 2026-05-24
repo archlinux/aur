@@ -1,0 +1,13 @@
+pkgbase = doxx-bin
+	pkgdesc = Terminal document viewer for .docx files
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/bgreenwell/doxx
+	arch = x86_64
+	license = MIT
+	provides = doxx
+	conflicts = doxx
+	source = doxx-0.1.2.tar.gz::https://github.com/bgreenwell/doxx/releases/download/v0.1.2/doxx-linux-x86_64.tar.gz
+	sha256sums = ce7dfc549f2160b218665600bd1f172fd5e0a0d207e2a072d4ccf985dddcb210
+
+pkgname = doxx-bin
