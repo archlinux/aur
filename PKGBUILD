@@ -1,8 +1,9 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-_srcdir=Tide-island-1.0.9
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
+_commit=2b8c2463c4caa59f99091c99d0a73d1e6c6573a8
+_srcdir=Tide-island-$_commit
 pkgdesc="A dynamic island for Hyprland using Quickshell"
 arch=('x86_64')
 url="https://github.com/enhaoswen/Tide-island"
@@ -32,7 +33,7 @@ optdepends=(
 )
 conflicts=('tide-island-git')
 install='tide-island.install'
-source=("$pkgname-$pkgver.tar.gz::https://github.com/enhaoswen/Tide-island/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$_commit.tar.gz::https://github.com/enhaoswen/Tide-island/archive/$_commit.tar.gz")
 sha256sums=('SKIP')
 
 build() {
