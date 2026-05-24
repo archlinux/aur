@@ -1,0 +1,13 @@
+pkgbase = hexshell-bin
+	pkgdesc = Cyberpunk sci-fi terminal for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/TSMaitryDotDev/hexshell
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	source = HexShell-0.1.0.AppImage::https://github.com/TSMaitryDotDev/hexshell/releases/download/v0.1.0/HexShell-0.1.0.AppImage
+	sha256sums = SKIP
+
+pkgname = hexshell-bin
