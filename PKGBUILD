@@ -1,9 +1,9 @@
-# Maintainer: h8ray <gofindme at dmc dot chat>
+# Maintainer: h8ray <hiddenforever at elektrine dot com>
 
 pkgname=ecss-elph-bin
 _pkgname=ecss-elph
 pkgver=2.14.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An application to extend the functionality of an ECSS-10 enabled telephone set and use it as a software SIP client"
 arch=("x86_64")
 url="https://docs.eltex-co.ru/display/doc/Elph+Desktop"
