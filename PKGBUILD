@@ -1,5 +1,5 @@
 pkgname=twintaillauncher
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 _dirname="TwintailLauncher-ttl-v${pkgver}"
 pkgdesc='A multi-platform launcher for your anime games'
@@ -35,4 +35,5 @@ package() {
   install -Dm644 "$_dirname/src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
   install -Dm644 "$_dirname/src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
   install -Dm644 "$_dirname/src-tauri/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256@2/apps/$pkgname.png"
+  cp -r "$_dirname/src-tauri/target/release/resources/locales" "$pkgdir/usr/lib/twintaillauncher/resources/"
 }
