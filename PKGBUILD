@@ -2,8 +2,8 @@
 
 pkgname=collection-manager-git
 _pkgname=collection-manager
-pkgver=1.0.0.r0.gfd2b018
-pkgrel=1
+pkgver=1.0.0
+pkgrel=5
 pkgdesc='osu! Collection Manager, supports Stable and Lazer'
 arch=('x86_64')
 url='https://github.com/nyaruku/collection-manager'
@@ -15,12 +15,14 @@ depends=(
   'libuv'
   'brotli'
   'zstd'
+  'openssl'
 )
 makedepends=(
   'git'
   'cmake'
   'ninja'
   'gcc'
+  'asio'
   'sassc'
 )
 provides=('collection-manager')
