@@ -1,6 +1,6 @@
 # Maintainer: Patrick Li <aur@patrickli.one>
 pkgname=unbill-daemon-nightly-bin
-pkgver=nightly.20260523.022603
+pkgver=nightly.20260524.023553
 pkgrel=1
 pkgdesc="Background daemon for unbill (nightly)"
 arch=('x86_64')
