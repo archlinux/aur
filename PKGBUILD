@@ -28,7 +28,8 @@ build() {
 
 check() {
     cd Neve
-    cargo test --release -p neve-lexer -p neve-parser -p neve-eval -p neve-typeck -p neve-fmt -p neve-lsp --test lsp --test lsp_e2e
+    cargo test --release -p neve-lexer -p neve-parser -p neve-eval -p neve-typeck -p neve-fmt -p neve-lsp
+    cargo test --release --test lsp --test lsp_e2e
 }
 
 package() {
