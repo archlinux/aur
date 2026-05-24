@@ -1,6 +1,6 @@
 pkgbase = moshpit-agent-unstable-bin
 	pkgdesc = Moshpit agent daemon — passphrase unlock with post-quantum ML-DSA support (pre-compiled MUSL static binary)
-	pkgver = 0.8.9
+	pkgver = 0.8.10
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = moshpit-agent-unstable-bin
 	conflicts = moshpit-agent-systemd-creds-unstable-bin
 	conflicts = moshpit-agent-ssh-agent-piggyback-unstable-bin
 	conflicts = moshpit-agent-full-unstable-bin
-	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.9/dist-mpa.tar.gz
-	sha256sums = 6c2ced77cbc4051cd55c28ed03a540572971039f2fa5faab6269fbec0d54e434
-	source_x86_64 = mpa-unstable-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.9/mpa-unstable-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = bff9dba851027341125d9fcf30d5a51e4a9ce411bb761e62e9ec95b735dcd51f
-	source_aarch64 = mpa-unstable-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.9/mpa-unstable-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = e20f8e8517187f42c0303dea1faaa843b66943af84e0bac22917128e7b27291d
+	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.10/dist-mpa.tar.gz
+	sha256sums = d673d7b1f55a10e6204a86fe7d941da2fbe07ef02c8fa419b1df9b9bac1accfe
+	source_x86_64 = mpa-unstable-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.10/mpa-unstable-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 3c7811dedfd576044b9b5ba06cfc3a691417ce05ca01fe813edc8c9ff77fff01
+	source_aarch64 = mpa-unstable-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.10/mpa-unstable-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 8a9bf32efca60092d8d5858e40fee040404ba32c28ea747dd88fca2916effa0f
 
 pkgname = moshpit-agent-unstable-bin
