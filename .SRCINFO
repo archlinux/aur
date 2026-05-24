@@ -1,6 +1,6 @@
 pkgbase = driftwm-git
 	pkgdesc = Trackpad-first infinite canvas Wayland compositor (git)
-	pkgver = 0.8.0.r0.ga8b1be6
+	pkgver = 0.8.1.r0.g4772cf8
 	pkgrel = 1
 	url = https://github.com/malbiruk/driftwm
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = driftwm-git
 	depends = seatd
 	depends = mesa
 	depends = libxkbcommon
-	provides = driftwm=0.8.0.r0.ga8b1be6
+	provides = driftwm=0.8.1.r0.g4772cf8
 	conflicts = driftwm
 	options = !debug
 	options = !lto
