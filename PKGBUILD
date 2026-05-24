@@ -1,6 +1,6 @@
 # Maintainer: ParticleG <particle_g at outlook dot com>
 pkgname=gpu-hotswitch-vfio
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Hot-switch discrete GPU between host and VFIO passthrough without reboot"
 arch=('any')
