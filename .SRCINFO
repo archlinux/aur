@@ -1,0 +1,15 @@
+pkgbase = sirial-bin
+	pkgdesc = Sirial is a Rhythmic Delay where each tap can be placed and configured with different amplitudes and feedback giving total control on how the delay responds and the patterns it creates.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/tiagolr/sirial
+	arch = x86_64
+	groups = vst3-plugins
+	groups = lv2-plugins
+	license = GPLv3
+	makedepends = git
+	provides = sirial
+	source = https://github.com/tiagolr/sirial/releases/download/v1.1.1/sirial-linux-v1.1.1.zip
+	sha256sums = 4937c3c27ba4ffe41a76de4d5020ba4923ac828e6916258916fe329335c4aeff
+
+pkgname = sirial-bin
