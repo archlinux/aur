@@ -1,0 +1,20 @@
+pkgbase = sentinai
+	pkgdesc = AI-powered cybersecurity assistant with OSINT and password wordlist generation
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/berk-kucuk/SentinAI
+	arch = any
+	license = MIT
+	makedepends = python-virtualenv
+	depends = python
+	depends = python-pyqt6
+	depends = geckodriver
+	optdepends = firefox: web automation for OSINT profile verification
+	source = sentinai-1.0.0.tar.gz::https://github.com/berk-kucuk/SentinAI/archive/refs/tags/v1.0.0.tar.gz
+	source = sentinai.sh
+	source = sentinai.desktop
+	sha256sums = 2ca7f45d14544efa494ad59bfd5b4f94481bd44f3e50cfe8652a667dc2a26b7f
+	sha256sums = 5db12655597c6b6530387948447ef5eae1fe43fece1e36219b97d7b8a25aeaeb
+	sha256sums = baf22b376e106d3ed9ec5ef50d9515ffa1d32caf8088b0e8b97ec5cb95ded4ef
+
+pkgname = sentinai

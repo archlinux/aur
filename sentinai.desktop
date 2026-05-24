@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=SentinAI
+GenericName=Cybersecurity Assistant
+Comment=AI-powered OSINT investigation and password wordlist generation
+Exec=sentinai
+Icon=sentinai
+Terminal=false
+Type=Application
+Categories=Network;Security;Utility;
+Keywords=osint;security;password;pentest;ai;gemini;
+StartupWMClass=SentinAI
