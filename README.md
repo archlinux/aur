@@ -2,7 +2,7 @@
 
 Paquete AUR corregido para **Vortex** (gestor de mods de Nexus Mods), con compatibilidad completa para Linux.
 
-- **Versión:** 1:2.0.1-13
+- **Versión:** 1:2.0.1-14
 - **Upstream:** https://github.com/Nexus-Mods/Vortex
 - **AUR:** https://aur.archlinux.org/packages/vortex-linux-fix
 - **Extensión Linux Compatibility:** https://www.nexusmods.com/site/mods/1924
@@ -427,8 +427,58 @@ El resultado: los plugins no se compilan y no aparecen en los bundledPlugins.
 `package.json`. `ba2tk` y `bsatk` compilan correctamente en Linux (confirmado; `bsatk`
 tiene `"os": ["win32", "linux"]` oficial). El `.node` nativo queda incluido en el paquete.
 
-`gamebryo-savegame-management` sigue excluido — usa `_wstat()` y funciones de wide char
-Win32 que requieren portación C++ completa.
+`gamebryo-savegame-management` se compila también para Linux desde 1:2.0.1-14 (ver sección siguiente).
+
+---
+
+## Plugins bundled: `gamebryo-savegame-management` compilado para Linux
+
+**Problema:** La extensión de gestión de partidas guardadas para juegos Gamebryo
+(Skyrim, Fallout, Oblivion) depende de `gamebryo-savegame`, un addon nativo C++
+(`GamebryoSave.node`). Tres bloqueos simultáneos en Linux:
+
+1. El script `dist` tiene el mismo guard invertido que ba2/bsa (build silenciado en Linux).
+2. El script `_native` requiere `liblz4.dll` y `zlib.dll` (solo Windows) — `copy-native.mjs`
+   devuelve código 1 si algún argumento no existe.
+3. `gamebryo-savegame` es `optionalDependency`: cuando su install script falla (por falta
+   de `-llz4 -lz` en `binding.gyp`), pnpm omite el paquete de `node_modules` completamente
+   y rolldown no puede resolver el import.
+
+**Análisis del C++:** `string_cast.h` tiene dos implementaciones:
+```cpp
+#ifdef _WIN32
+// toWC() usa MultiByteToWideChar / WideCharToMultiByte
+#else
+static std::string toWC(const char* s, CodePage, size_t) { return s; }  // no-op
+#endif
+```
+`_wstat()` está en bloque `#ifdef _WIN32` con `else stat()`. El C++ **es 100% compatible con Linux**.
+
+**Fix (tres partes):**
+
+1. Guard + `_native` — el heredoc Python en `prepare()` se extiende a los tres plugins,
+   y se reescribe `_native` para solo copiar el `.node`:
+   ```python
+   pkg['scripts']['_native'] = \
+       "node ../copy-native.mjs ./node_modules/gamebryo-savegame/build/Release/GamebryoSave.node"
+   ```
+
+2. `binding.gyp` — parche Python añade condición Linux antes del bloque Windows:
+   ```
+   ['OS!="win"', { "libraries": ["-llz4", "-lz"] }]
+   ```
+
+3. Build separado — `node-gamebryo-savegames` se añade como fuente git pinned al commit
+   exacto del `pnpm-lock.yaml`. En `prepare()` (después de `pnpm install`):
+   - `npm install --ignore-scripts` instala `node-addon-api`, `node-gyp` y `autogypi`
+   - `autogypi` genera `auto.gypi` / `auto-top.gypi`
+   - `node-gyp configure build` compila con cabeceras Electron (hereda `npm_config_*`)
+   - El paquete compilado se instala en `extensions/gamebryo-savegame-management/node_modules/`
+
+**Dependencia runtime:** `lz4` añadido a `depends` (link dinámico contra `liblz4.so`).
+
+**Resultado:** Los usuarios de Skyrim, Fallout y otros juegos Bethesda bajo Proton tienen
+el navegador de partidas guardadas y aislamiento por perfil funcionando en Vortex.
 
 ---
 
@@ -536,6 +586,7 @@ Probado en Arch Linux (kernel 7.0.8-1-cachyos):
 | **1:2.0.1-9** | Patches 9 y 10 v7 — Fix crítico: `exeVersion.default()` devuelve `undefined` (no lanza excepción) para binarios ELF en Linux. El operador `\|\|"0.0.0"` garantiza que `_ev`/`_ver` nunca quede `undefined`, activando correctamente el fallback a `.deps.json`. Arregla campo "Tu versión del juego:" vacío en el diálogo de incompatibilidad de colecciones. Incluye parches de migración v6→v7 para asars ya instalados. |
 | **1:2.0.1-11** | Patch 11 — Generic BepInEx Linux fixer (`patch-ext-bepinex.py`): detecta juegos Unity con BepInEx Windows desplegado sobre binario nativo Linux. Copia `libdoorstop.so` (bundled), corrige rutas backslash en `doorstop_config.ini` y establece `LD_PRELOAD` en `localconfig.vdf`. Genérico — cubre cualquier juego Unity+BepInEx sin parches por juego. |
 | **1:2.0.1-13** | `gamebryo-ba2-support` (BA2, Fallout 4) y `gamebryo-bsa-support` (BSA, Skyrim/Fallout 3/NV) compilados nativamente para Linux. Los `package.json` upstream tienen un guard `if(platform==='win32')…exit(1) \|\|` que salta el build en Linux; se elimina en `prepare()` con un heredoc Python. `ba2tk` y `bsatk` compilan en Linux sin modificaciones (`bsatk` tiene soporte Linux oficial). |
+| **1:2.0.1-14** | `gamebryo-savegame-management` (navegador de partidas guardadas para Skyrim/Fallout/Oblivion) compilado para Linux. El addon C++ `GamebryoSave.node` es 100% compatible: `toWC`/`_wstat` tienen `#else` Linux. Tres fixes: guard eliminado, `_native` sin DLLs Windows, `binding.gyp` parchado con `-llz4 -lz`. `node-gamebryo-savegames` añadido como source git pinned; compilado con `node-gyp` + cabeceras Electron en `prepare()`. `lz4` añadido a `depends`. |
 
 ---
 

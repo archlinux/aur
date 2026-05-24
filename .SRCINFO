@@ -1,7 +1,7 @@
 pkgbase = vortex-linux-fix
 	pkgdesc = Nexus Mods' mod manager - unofficial fix fork of Tymon3310's vortex-linux with native Linux compatibility patches
 	pkgver = 2.0.1
-	pkgrel = 13
+	pkgrel = 14
 	epoch = 1
 	url = https://github.com/Nexus-Mods/Vortex
 	install = vortex.install
@@ -17,6 +17,7 @@ pkgbase = vortex-linux-fix
 	depends = libsecret
 	depends = dotnet-runtime-9.0
 	depends = python
+	depends = lz4
 	optdepends = libappindicator: system tray icon support
 	optdepends = libnotify: desktop notifications
 	provides = vortex
@@ -36,6 +37,7 @@ pkgbase = vortex-linux-fix
 	source = gamebryo-pm-index.js
 	source = gamebryo-pm-info.json
 	source = https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.2/BepInEx_linux_x64_5.4.23.2.zip
+	source = gamebryo-savegames-src::git+https://github.com/Nexus-Mods/node-gamebryo-savegames.git#commit=9149445e798a632a38337229dd0b60b67efb74bd
 	sha256sums = ea217e24864525a323a848e0b3ff15a4f04dfeccaacf1ef885afe57d0ce61f65
 	sha256sums = 7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5
 	sha256sums = 19420a1af334187b2ba68f0fab3b5170bff5b6096f9e2a30000e712013fd378b
@@ -47,5 +49,6 @@ pkgbase = vortex-linux-fix
 	sha256sums = df91e09151bff8c55a5a29f79659c7560f275cca370d644603aec3e2e48b2757
 	sha256sums = d5333c97079ccf7108c3906bdd929fea408792b7729a3b730f25d7c325bac67f
 	sha256sums = ddc446143a0a277ed92eb7a1f5bf794ff4fdd0023bddc0491f85eafd1898225b
+	sha256sums = SKIP
 
 pkgname = vortex-linux-fix

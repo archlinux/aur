@@ -2,14 +2,14 @@
 # Forked from: https://aur.archlinux.org/packages/vortex-linux by Tymon3310
 pkgname=vortex-linux-fix
 pkgver=2.0.1
-pkgrel=13
+pkgrel=14
 epoch=1
 pkgdesc="Nexus Mods' mod manager - unofficial fix fork of Tymon3310's vortex-linux with native Linux compatibility patches"
 arch=('x86_64')
 url="https://github.com/Nexus-Mods/Vortex"
 license=('GPL-3.0-or-later')
 
-depends=('gtk3' 'nss' 'libxss' 'libsecret' 'dotnet-runtime-9.0' 'python')
+depends=('gtk3' 'nss' 'libxss' 'libsecret' 'dotnet-runtime-9.0' 'python' 'lz4')
 optdepends=('libappindicator: system tray icon support'
             'libnotify: desktop notifications')
 makedepends=('git' 'pnpm' 'npm' 'python-setuptools')
@@ -28,7 +28,8 @@ source=("git+https://github.com/Nexus-Mods/Vortex.git#tag=v${pkgver}"
   "patch-ext-bepinex.py"
   "gamebryo-pm-index.js"
   "gamebryo-pm-info.json"
-  "https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.2/BepInEx_linux_x64_5.4.23.2.zip")
+  "https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.2/BepInEx_linux_x64_5.4.23.2.zip"
+  "gamebryo-savegames-src::git+https://github.com/Nexus-Mods/node-gamebryo-savegames.git#commit=9149445e798a632a38337229dd0b60b67efb74bd")
 
 sha256sums=('ea217e24864525a323a848e0b3ff15a4f04dfeccaacf1ef885afe57d0ce61f65'
   '7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5'
@@ -40,7 +41,8 @@ sha256sums=('ea217e24864525a323a848e0b3ff15a4f04dfeccaacf1ef885afe57d0ce61f65'
   '02dfb85811f023ed0b63d0b909a806cd23cdabc81e19965722bc8de1f4d48a9d'
   'df91e09151bff8c55a5a29f79659c7560f275cca370d644603aec3e2e48b2757'
   'd5333c97079ccf7108c3906bdd929fea408792b7729a3b730f25d7c325bac67f'
-  'ddc446143a0a277ed92eb7a1f5bf794ff4fdd0023bddc0491f85eafd1898225b')
+  'ddc446143a0a277ed92eb7a1f5bf794ff4fdd0023bddc0491f85eafd1898225b'
+  'SKIP')
 
 options=('!strip' '!debug')
 
@@ -50,17 +52,25 @@ prepare() {
   msg2 "Injecting compiler and TypeScript overrides..."
   node "$srcdir/patch-pkg.js"
 
-  msg2 "Enabling gamebryo archive extensions for Linux build..."
+  msg2 "Enabling gamebryo archive/savegame extensions for Linux build..."
   python3 - <<'EOF'
 import json, pathlib
-for ext in ['gamebryo-ba2-support', 'gamebryo-bsa-support']:
+for ext in ['gamebryo-ba2-support', 'gamebryo-bsa-support', 'gamebryo-savegame-management']:
     p = pathlib.Path(f'extensions/{ext}/package.json')
     pkg = json.loads(p.read_text())
     for s in ['build', 'dist']:
-        old = pkg['scripts'][s]
-        if '|| ' in old:
-            pkg['scripts'][s] = old.split('|| ', 1)[1].strip('()')
+        if s in pkg['scripts']:
+            old = pkg['scripts'][s]
+            if '|| ' in old:
+                pkg['scripts'][s] = old.split('|| ', 1)[1].strip('()')
     p.write_text(json.dumps(pkg, indent=2) + '\n')
+
+# Strip Windows-only DLL args from _native — only copy the .node on Linux
+p = pathlib.Path('extensions/gamebryo-savegame-management/package.json')
+pkg = json.loads(p.read_text())
+pkg['scripts']['_native'] = \
+    "node ../copy-native.mjs ./node_modules/gamebryo-savegame/build/Release/GamebryoSave.node"
+p.write_text(json.dumps(pkg, indent=2) + '\n')
 EOF
 
   if [ -f "pnpm-workspace.yaml" ]; then
@@ -72,6 +82,42 @@ EOF
   export npm_config_disturl="https://electronjs.org/headers"
 
   pnpm install --no-frozen-lockfile
+
+  msg2 "Building GamebryoSave.node native addon for Linux..."
+  cd "$srcdir/gamebryo-savegames-src"
+
+  # Install build tools (node-addon-api, node-gyp, autogypi) without running install scripts
+  npm install --ignore-scripts
+
+  # Generate auto.gypi / auto-top.gypi
+  ./node_modules/.bin/autogypi
+
+  # Patch binding.gyp: add Linux lz4+zlib library links (absent in upstream)
+  python3 - <<'EOF'
+import pathlib
+p = pathlib.Path('binding.gyp')
+content = p.read_text()
+linux_cond = "            ['OS!=\"win\"', {\n                    \"libraries\": [\"-llz4\", \"-lz\"]\n                }],\n"
+target = "            ['OS==\"win\"', {"
+content = content.replace(target, linux_cond + target, 1)
+p.write_text(content)
+EOF
+
+  # Build with Electron headers (npm_config_* vars inherited from above)
+  ./node_modules/.bin/node-gyp configure build
+
+  # Populate the extension's node_modules with our compiled package
+  _ext="$srcdir/Vortex/extensions/gamebryo-savegame-management"
+  _pkg="$_ext/node_modules/gamebryo-savegame"
+  rm -rf "$_pkg"
+  install -dm755 "$_pkg/dist" "$_pkg/build/Release"
+  cp package.json "$_pkg/"
+  cp dist/index.js dist/index.d.ts "$_pkg/dist/"
+  cp build/Release/GamebryoSave.node "$_pkg/build/Release/"
+  # dist/index.js does require('./GamebryoSave') — provide it alongside
+  cp build/Release/GamebryoSave.node "$_pkg/dist/GamebryoSave.node"
+
+  cd "$srcdir/Vortex"
 }
 
 build() {

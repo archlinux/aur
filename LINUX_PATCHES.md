@@ -3,7 +3,7 @@
 **Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
-**Current release:** 1:2.0.1-13  
+**Current release:** 1:2.0.1-14  
 **Linux Compatibility extension:** https://www.nexusmods.com/site/mods/1924
 
 ---
@@ -394,8 +394,62 @@ Both `ba2tk` and `bsatk` compile on Linux without modifications. `bsatk` officia
 declares `"os": ["win32", "linux"]` in its `package.json`. The resulting `.node` binaries
 are included in `bundledPlugins/gamebryo-ba2-support/` and `bundledPlugins/gamebryo-bsa-support/`.
 
-`gamebryo-savegame-management` is intentionally excluded — it uses `_wstat()` and
-`toWC()` (Win32 wide-character API), which require a full C++ port to support Linux.
+---
+
+### `gamebryo-savegame-management`: native Linux build (added in 1:2.0.1-14)
+
+**Problem:** `gamebryo-savegame-management` (save game browser/transfer for Bethesda games)
+depends on `gamebryo-savegame`, a native C++ Node.js addon
+(`node-gamebryo-savegames` / `GamebryoSave.node`). Three barriers to Linux support:
+
+1. Same inverted guard in `dist` script — build is silently skipped on Linux.
+2. The `_native` step copies `liblz4.dll` and `zlib.dll` (Windows only) alongside the
+   `.node` file. `copy-native.mjs` exits 1 if any argument file is missing.
+3. `gamebryo-savegame` is an `optionalDependency`. When its install script fails (because
+   `binding.gyp` has no `-llz4 -lz` for Linux), pnpm silently omits the package from
+   `node_modules` — so rolldown can't resolve the import and the build fails.
+
+**C++ compatibility analysis:** `string_cast.h` provides two implementations of `toWC`:
+- Windows: uses `MultiByteToWideChar` / `WideCharToMultiByte`
+- Linux (`#else`): `toWC(src, ...) { return src; }` — identity function
+
+`_wstat()` in `gamebryosavegame.cpp` is inside `#ifdef _WIN32` with a `stat()` fallback.
+The cyrillic-detection heuristic is also `#ifdef _WIN32`. **The C++ is 100% Linux-compatible.**
+
+**Fix (three parts):**
+
+1. **Guard + `_native`** — extend the existing Python heredoc in `prepare()`:
+   ```python
+   for ext in ['gamebryo-ba2-support', 'gamebryo-bsa-support', 'gamebryo-savegame-management']:
+       # strip inverted || guard from build/dist scripts
+
+   # Remove Windows-only DLL arguments from _native
+   pkg['scripts']['_native'] = \
+       "node ../copy-native.mjs ./node_modules/gamebryo-savegame/build/Release/GamebryoSave.node"
+   ```
+
+2. **`binding.gyp` patch** — add Linux library links (lz4 and zlib are external to the
+   addon on Linux; lz4 is a system library, zlib is re-exported by Node.js/Electron):
+   ```python
+   linux_cond = "['OS!=\"win\"', { \"libraries\": [\"-llz4\", \"-lz\"] }],\n"
+   content = content.replace("['OS==\"win\"', {", linux_cond + "['OS==\"win\"', {", 1)
+   ```
+
+3. **Out-of-band native build** — `node-gamebryo-savegames` is added as a pinned git
+   source in PKGBUILD (`#commit=9149445e...`). After `pnpm install`, the PKGBUILD:
+   - Runs `npm install --ignore-scripts` in the source dir to get `node-addon-api`,
+     `node-gyp`, and `autogypi` locally.
+   - Runs `autogypi` to generate `auto.gypi` / `auto-top.gypi`.
+   - Runs `node-gyp configure build` (inherits `npm_config_target=39.8.0` /
+     `npm_config_disturl` Electron headers from the `prepare()` environment).
+   - Populates `extensions/gamebryo-savegame-management/node_modules/gamebryo-savegame/`
+     with the compiled `.node` + JS dist files so rolldown can resolve the import.
+
+**Runtime dependency:** `lz4` is added to `depends` (dynamic link against `liblz4.so`).
+
+**Result:** `gamebryo-savegame-management` is bundled as a native Linux plugin. Users with
+Skyrim, Fallout, or other Bethesda games running via Proton get a working save game browser
+and profile-based save isolation inside Vortex.
 
 ---
 
