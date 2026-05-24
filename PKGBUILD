@@ -1,5 +1,5 @@
 # Maintainer: gamestime102 < >
-pkgname=Hoahppu
+pkgname=hoahppu
 pkgver=1.0
 pkgrel=1
 pkgdesc="Meme Russian roulette: if you lose your user folder it will be deleted, if the computer loses it will try to erase the operating system (SECURITY PIN ACTIVATED)"
