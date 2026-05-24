@@ -1,0 +1,15 @@
+pkgbase = perl-hash-persistent
+	pkgdesc = serializes its data to the single file using Data::Dumper, Storable or JSON
+	pkgver = 1.02
+	pkgrel = 1
+	url = https://metacpan.org/pod/Hash::Persistent1
+	arch = any
+	license = Artistic-2.0
+	depends = perl
+	depends = perl-json
+	depends = perl-lock-file
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MM/MMCLERIC/Hash-Persistent-1.02.tar.gz
+	sha256sums = 2d8cc937aea3373900cc80610c17f875fbdf712eba9089deffbe15644fe059cd
+
+pkgname = perl-hash-persistent
