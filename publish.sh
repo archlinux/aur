@@ -86,7 +86,36 @@ makepkg --printsrcinfo > .SRCINFO
 
 echo "Success! Files updated."
 echo "-----------------------------------"
-echo "Next steps:"
-echo "1. git add PKGBUILD .SRCINFO"
-echo "2. git commit -m \"Update to version $FULL_VER\""
-echo "3. git push"
+
+# Interactive Git workflow
+echo ""
+read -p "Do you want to stage the changes (git add)? [y/N] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    # Stage essential package files and the maintenance script itself
+    git add PKGBUILD .SRCINFO publish.sh zoom-citrix-plugin.install .gitignore
+    echo "Files staged."
+
+    read -p "Do you want to commit the changes? [y/N] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        git commit -m "Update to version $FULL_VER"
+        
+        read -p "Do you want to push to origin? [y/N] " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            git push
+        fi
+    fi
+fi
+
+# Cleanup
+echo ""
+read -p "Do you want to remove temporary build folders (src/, pkg/)? [y/N] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    rm -rf src/ pkg/ *.rpm
+    echo "Cleanup complete."
+fi
+
+echo "Done!"
