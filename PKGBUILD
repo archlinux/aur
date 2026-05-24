@@ -1,6 +1,6 @@
-# Maintainer: Ali Mahmoud <aur.c3rt@gmail.com>
+# Maintainer: c3rt1fiedd <aur.c3rt@gmail.com>
 pkgname=geforcenow-native
-pkgver=2.0.0  # New update! Make sure to bump on major releae
+pkgver=3.0.0  # Bump on major releae (update)
 pkgrel=1
 pkgdesc="NVIDIA GeForce NOW official beta Linux client (Flatpak)"
 install=gfn.install
@@ -12,7 +12,6 @@ source=("geforcenow.flatpakrepo::https://international.download.nvidia.com/GFNLi
 sha256sums=('b1ce93879331a150281247b5239e7f8ab04a46929a78637f9528d58350779dbc')
 
 package() {
-  # No actual files to install; post-install script handles Flatpak setup
   install -Dm644 "${srcdir}/geforcenow.flatpakrepo" \
     "${pkgdir}/usr/share/flatpak/remotes/geforcenow.flatpakrepo"
 }
