@@ -3,6 +3,7 @@
 
 int curfb_init();
 void curfb_loop();
+void curfb_clear();
 void curfb_shutdown();
 
 #endif

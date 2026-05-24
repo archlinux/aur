@@ -31,6 +31,9 @@ static volatile int running = 1;
 float x = 300.0f;
 float y = 200.0f;
 
+static int last_x = 300;
+static int last_y = 200;
+
 /* smoothed */
 static float sx = 300.0f;
 static float sy = 200.0f;
@@ -265,6 +268,9 @@ void curfb_loop() {
         ny = y;
         pthread_mutex_unlock(&input_lock);
 
+        last_x = (int)px;
+        last_y = (int)py;
+
         /* clamp */
         if (nx < 0) nx = 0;
         if (ny < 0) ny = 0;
@@ -311,4 +317,14 @@ void curfb_shutdown() {
 
     if (mouse_fd >= 0)
         close(mouse_fd);
+}
+
+/* =========================
+    CLEAR
+========================= */
+
+void curfb_clear() {
+    restore_area(last_x, last_y);
+    cursor_shutdown();
+    return 0;
 }
