@@ -1,5 +1,5 @@
 pkgname=lumen-journal
-pkgver=1.1.28
+pkgver=1.1.29
 pkgrel=1
 pkgdesc="Encrypted journal app built with Rust and Flutter"
 arch=('x86_64')
@@ -31,7 +31,7 @@ build() {
 
     # Build Rust core
     cd core
-    cargo build --release --locked
+    cargo build --release
 
     # Copy Rust library into Flutter linux/lib
     install -Dm755 target/release/liblumen_core.so ../ui/linux/lib/liblumen_core.so
