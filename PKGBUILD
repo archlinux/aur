@@ -7,6 +7,7 @@ pkgdesc="Terminal-based OpenVPN client for VPN Gate with server list, filters, a
 arch=('x86_64')
 url="https://github.com/kurojs/ovpngate"
 license=('MIT')
+depends=('openvpn' 'iproute2')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
