@@ -1,7 +1,7 @@
 #Maintainer: chrhasse <hasse.christopher at gmail dot com>
 _pkgname=deadlock-api-ingest
 pkgname="${_pkgname}-git"
-pkgver=0.1.187.5bc2879
+pkgver=0.2.9.e3e69d0
 pkgrel=1
 pkgdesc="Client for uploading match data to deadlock-api"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 source=("git+https://github.com/deadlock-api/deadlock-api-ingest.git"
   "deadlock-api-ingest.service")
 sha512sums=('SKIP'
-            '7b8e5ab4cb002134533095f2fd7c07c392efdaa01ec6c60ed180b7331c58c322466f327716c48dcb8068ac9df605e5937f80770d048f486f2906cdb20f47193e')
+            '20caf1996b9bba661e084e75d5cf2b9e0eda5f99839fd5aa153e98a2fd254acc64b5226d5655147ae9e33109d009797442474cc29c5cdb8bbdf458f39ab472a6')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -44,6 +44,6 @@ check() {
 package() {
   cd "${srcdir}/${_pkgname}"
   install -Dm 755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm 644 "../deadlock-api-ingest.service" "${pkgdir}/etc/systemd/system/deadlock-api-ingest.service"
+  install -Dm 644 "../deadlock-api-ingest.service" "${pkgdir}/usr/lib/systemd/user/deadlock-api-ingest.service"
 }
 

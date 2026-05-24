@@ -2,24 +2,14 @@
 Description=Deadlock API Ingest Service
 Documentation=https://github.com/deadlock-api/deadlock-api-ingest
 After=network.target
-Wants=network.target
 
 [Service]
-Type=simple
-User=root
-Group=root
 ExecStart=/usr/bin/deadlock-api-ingest
 Restart=on-failure
 RestartSec=10
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=deadlock-api-ingest
-
-# Security Hardening
-NoNewPrivileges=true
-ProtectSystem=strict
-ProtectHome=true
-PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
