@@ -1,12 +1,12 @@
 # Maintainer: metaneutrons
 pkgname=snapdog-client
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="SnapDog multiroom audio client with F32+LZ4 codec, parametric EQ, and encryption"
 arch=('x86_64' 'aarch64')
 url="https://github.com/metaneutrons/snapdog"
 license=('GPL-3.0-only')
-depends=('alsa-lib')
+depends=('alsa-lib' 'avahi')
 makedepends=('cargo')
 backup=('etc/default/snapdog-client')
 source=("snapdog-$pkgver.tar.gz::https://github.com/metaneutrons/snapdog/archive/refs/tags/v$pkgver.tar.gz")
