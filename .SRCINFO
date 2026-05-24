@@ -1,0 +1,20 @@
+pkgbase = temper-git
+	pkgdesc = A stupidly fast open-source Minecraft server, written in Rust (git version)
+	pkgver = 0.1.0.r44.g3726ed9f
+	pkgrel = 1
+	url = https://github.com/temper-mc/temper
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = temper
+	conflicts = temper
+	conflicts = temper-bin
+	options = !strip
+	source = temper::git+https://github.com/temper-mc/temper.git
+	sha256sums = SKIP
+
+pkgname = temper-git
