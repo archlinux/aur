@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=eDirStat
+Comment=Interactive graphical disk usage analyzer
+Exec=edirstat
+Icon=edirstat
+Terminal=false
+Categories=System;Filesystem;Utility;
