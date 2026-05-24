@@ -1,0 +1,6 @@
+LICENSE-*
+codewhale*
+deepseek*
+src/
+pkg/
+*.pkg.tar.*
