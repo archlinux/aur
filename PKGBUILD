@@ -20,6 +20,7 @@ makedepends=(
   git
   shaderc
   ninja
+  npm
 )
 optdepends=(
   'python-numpy: needed for convert_hf_to_gguf.py'
@@ -51,6 +52,7 @@ sha256sums=('8d7d751205dd46ded28d3853f72586cbf8da9f0f83dde11d695ec8fde0f7416b'
 
 prepare() {
   ln -sf "${pkgname}-${pkgver}" llama.cpp
+  mkdir -p "${pkgname}/.git"
 }
 build() {
   local _cmake_options=(
@@ -62,6 +64,8 @@ build() {
     -DBUILD_SHARED_LIBS=ON
     -DLLAMA_BUILD_TESTS=OFF
     -DLLAMA_USE_SYSTEM_GGML=OFF
+    -DLLAMA_BUILD_UI=ON
+    -DLLAMA_USE_PREBUILT_UI=OFF
     -DGGML_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
     -DGGML_BUILD_EXAMPLES=OFF
