@@ -1,6 +1,6 @@
 pkgbase = meshtastic-desktop-bin
 	pkgdesc = Meshtastic Desktop Application
-	pkgver = 2.7.14beta9
+	pkgver = 2.7.14beta10
 	pkgrel = 1
 	url = https://github.com/meshtastic/Meshtastic-Android
 	arch = any
