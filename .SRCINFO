@@ -1,0 +1,22 @@
+pkgbase = cut-pet
+	pkgdesc = Borderless Hyprland/Wayland desktop AI pet
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/123llyrr/cut-pet
+	arch = x86_64
+	license = MIT
+	depends = quickshell
+	depends = qt6-declarative
+	depends = qt6-wayland
+	depends = grim
+	depends = wl-clipboard
+	depends = procps-ng
+	optdepends = hyprland: target compositor and cursor tracking integration
+	optdepends = slurp: fallback screenshot area selection
+	optdepends = codex: Codex AI backend
+	optdepends = opencode: OpenCode AI backend
+	optdepends = super-claude-code: Super Claude AI backend
+	source = cut-pet::git+https://github.com/123llyrr/cut-pet.git
+	sha256sums = SKIP
+
+pkgname = cut-pet
