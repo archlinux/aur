@@ -1,0 +1,5 @@
+[dblab-bin]
+source = "github"
+github = "danvergara/dblab"
+use_latest_release = true
+prefix = "v"
