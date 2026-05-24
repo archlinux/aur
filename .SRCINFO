@@ -13,6 +13,7 @@ pkgbase = quickshell-allflags-git
 	makedepends = spirv-tools
 	makedepends = wayland-protocols
 	makedepends = cli11
+	makedepends = vulkan-headers
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-svg
