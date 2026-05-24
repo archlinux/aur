@@ -1,7 +1,7 @@
 pkgbase = vortex-linux-fix
 	pkgdesc = Nexus Mods' mod manager - unofficial fix fork of Tymon3310's vortex-linux with native Linux compatibility patches
 	pkgver = 2.0.1
-	pkgrel = 14
+	pkgrel = 15
 	epoch = 1
 	url = https://github.com/Nexus-Mods/Vortex
 	install = vortex.install
@@ -42,7 +42,7 @@ pkgbase = vortex-linux-fix
 	sha256sums = 7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5
 	sha256sums = 19420a1af334187b2ba68f0fab3b5170bff5b6096f9e2a30000e712013fd378b
 	sha256sums = d261f1ef78bb21d72cedeedfd935b099e3d707be709404e894d4aeb47254f1ef
-	sha256sums = be631151db42a4b9860a80d828697e28d08b7d9571419b61186d550fec494c14
+	sha256sums = 97680110ad48d9dee07cd1c1e50dc59e1f54ca25a655510435c594d7fb2c4370
 	sha256sums = 014b52e419cd627044d6e7ceed3735243ce001ad8c611672e4f972be91a216cc
 	sha256sums = 32004e0074ea72ee005f5730961ed7e5923645d1bbec9db3f0ba9976633a29cb
 	sha256sums = 02dfb85811f023ed0b63d0b909a806cd23cdabc81e19965722bc8de1f4d48a9d
