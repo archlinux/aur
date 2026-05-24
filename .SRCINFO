@@ -1,0 +1,17 @@
+pkgbase = nexus4-git
+	pkgdesc = C++ based interpreter for the Nexus-Titan language
+	pkgver = 4.1.1.r1.506bb0f
+	pkgrel = 1
+	url = https://github.com/Nexus-Titan/Nexus-the-programming-language
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	depends = gcc-libs
+	provides = nexus4
+	conflicts = nexus4
+	source = git+https://github.com/Nexus-Titan/Nexus-the-programming-language.git
+	sha256sums = SKIP
+
+pkgname = nexus4-git
