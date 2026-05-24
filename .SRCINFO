@@ -1,6 +1,6 @@
 pkgbase = clean-my-keys
 	pkgdesc = Utility to safely lock and clean your keyboard without breaking your workflow
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/Strawberry-Foundations/clean-my-keys
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = clean-my-keys
 	makedepends = rust
 	depends = gcc-libs
 	options = !lto
-	source = clean-my-keys-1.1.0.tar.gz::https://github.com/Strawberry-Foundations/clean-my-keys/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 311ca670b97aa8e6bf2d567cacf7365fe57298d149aa6fac2a0b4fc50f820936
+	source = clean-my-keys-1.1.1.tar.gz::https://github.com/Strawberry-Foundations/clean-my-keys/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = fb52faa509ed28dcf4b947d0dbfd520f1c6fa04805070d27d5f7172196295a38
 
 pkgname = clean-my-keys
