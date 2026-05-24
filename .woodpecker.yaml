@@ -14,7 +14,7 @@ steps:
     image: archlinux:latest
     commands:
       # Install all required tools
-      - pacman -Syu --noconfirm --needed git base-devel jq pacman-contrib namcap curl sudo
+      - pacman -Syu --noconfirm --needed git base-devel pacman-contrib namcap sudo
       # Allow broken git ownerships
       - git config --global --add safe.directory "$(pwd)"
       # Create build user
@@ -24,18 +24,6 @@ steps:
       # Configure git for builduser
       - sudo -u builduser git config --global user.name "Woodpecker CI"
       - sudo -u builduser git config --global user.email "ci@codeberg.org"
-      # Install jdk25-temurin (AUR) required by PKGBUILD makedepends
-      - |
-        echo "Building and installing jdk25-temurin from AUR..."
-        sudo -u builduser bash -lc '
-          set -euo pipefail
-          rm -rf /tmp/jdk25-temurin
-          git clone --depth 1 https://aur.archlinux.org/jdk25-temurin.git /tmp/jdk25-temurin
-          cd /tmp/jdk25-temurin
-          makepkg -si --noconfirm --needed
-        '
-      - archlinux-java status
-      - java -version
       # Run PKGBUILD Linter (namcap)
       - |
         # Run namcap and save output
@@ -71,4 +59,7 @@ steps:
       # Build and test package
       - echo "Building and testing package"
       - sudo -u builduser makepkg -si --noconfirm
+      - archlinux-java status
+      - java -version
+      - gradle --version
       - sudo -u builduser sparrow --version

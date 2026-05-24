@@ -1,12 +1,13 @@
 pkgbase = sparrow-wallet-git
 	pkgdesc = Desktop Bitcoin Wallet focused on security and privacy (git version)
-	pkgver = 2.4.2.r18.g110f887
+	pkgver = 2.5.1.r3.g287c943
 	pkgrel = 1
 	url = https://sparrowwallet.com/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
-	makedepends = jdk25-temurin
+	makedepends = gradle
+	makedepends = java-environment=25
 	depends = alsa-lib
 	depends = freetype2
 	depends = hicolor-icon-theme

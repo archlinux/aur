@@ -1,8 +1,10 @@
 # Maintainer: tuxxx <nzb_tuxxx@proton.me>
 
 pkgname=sparrow-wallet-git
-pkgver=2.4.2.r18.g110f887
+_pkgname=sparrow-wallet
+pkgver=2.5.1.r3.g287c943
 pkgrel=1
+_jdkver=25
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (git version)"
 arch=('x86_64')
 url="https://sparrowwallet.com/"
@@ -17,7 +19,8 @@ depends=(
 )
 makedepends=(
     'git'
-    'jdk25-temurin'
+    'gradle'
+    "java-environment=${_jdkver}"
 )
 optdepends=(
     'bitbox-udev: udev rules for BitBox hardware wallets'
@@ -54,48 +57,62 @@ prepare() {
     git -c protocol.file.allow=always submodule update
 }
 
-build() {
-    local _temurin_home
+_set_jdk() {
+    local _jdk_home
 
-    _temurin_home="$(find /usr/lib/jvm -maxdepth 1 -type d -name 'java-*-temurin' | sort -V | tail -n1)"
-    if [[ -z "${_temurin_home}" || ! -x "${_temurin_home}/bin/jpackage" ]]; then
-        echo "ERROR: jdk-temurin with jpackage was not found under /usr/lib/jvm" >&2
+    for _jdk_home in "/usr/lib/jvm/java-${_jdkver}-temurin" /usr/lib/jvm/java-"${_jdkver}"-*; do
+        [[ -x "${_jdk_home}/bin/jpackage" ]] && break
+    done
+    if [[ ! -x "${_jdk_home}/bin/jpackage" ]]; then
+        echo "ERROR: JDK ${_jdkver} with jpackage was not found under /usr/lib/jvm" >&2
         return 1
     fi
 
-    export JAVA_HOME="${_temurin_home}"
+    export JAVA_HOME="${_jdk_home}"
     export PATH="${JAVA_HOME}/bin:${PATH}"
+}
 
+build() {
+    _set_jdk
     cd "$srcdir/sparrow"
 
     echo "Building ${pkgname} with Java $(java -version 2>&1 | head -n1)"
 
     echo "Creating jlink runtime image..."
-    ./gradlew jlink
+    gradle --no-daemon jlink
 
     echo "Creating jpackage application image..."
-    ./gradlew jpackageImage
+    gradle --no-daemon jpackageImage
+}
+
+check() {
+    _set_jdk
+    cd "$srcdir/sparrow"
+
+    echo "Testing ${pkgname} with Java $(java -version 2>&1 | head -n1)"
+
+    gradle --no-daemon check
 }
 
 package() {
     cd "$srcdir/sparrow"
 
-    install -dm755 "${pkgdir}/opt/${pkgname%-git}"
+    install -dm755 "${pkgdir}/opt/${_pkgname}"
 
-    cp -a "build/jpackage/Sparrow"/* "${pkgdir}/opt/${pkgname%-git}/"
+    cp -a "build/jpackage/Sparrow"/* "${pkgdir}/opt/${_pkgname}/"
 
     install -dm755 "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/sparrow" << EOF
 #!/bin/bash
-exec /opt/${pkgname%-git}/bin/Sparrow "\$@"
+exec /opt/${_pkgname}/bin/Sparrow "\$@"
 EOF
     chmod +x "${pkgdir}/usr/bin/sparrow"
 
     install -dm755 "${pkgdir}/usr/share/applications"
-    sed "s|/opt/sparrowwallet|/opt/${pkgname%-git}|g" \
+    sed "s|/opt/sparrowwallet|/opt/${_pkgname}|g" \
         "src/main/deploy/package/linux/Sparrow.desktop" > \
-        "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+        "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     install -Dm644 "src/main/deploy/package/linux/sparrowwallet-Sparrow-MimeInfo.xml" \
-        "${pkgdir}/usr/share/mime/packages/${pkgname%-git}.xml"
+        "${pkgdir}/usr/share/mime/packages/${_pkgname}.xml"
 }
