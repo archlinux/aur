@@ -1,16 +1,40 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=megaglest-git
-pkgver=3.13.0.r267.g231c639c7
+pkgver=3.13.0.r433.gf27cfa119
 pkgrel=1
 pkgdesc='Fork of Glest, a 3D real-time strategy game in a fantastic world (git version)'
 arch=('x86_64')
 url='https://megaglest.org/'
-license=('GPL3')
-depends=('curl' 'xerces-c' 'sdl2' 'libvorbis' 'openal' 'libgl' 'lua51' 'icu' 'ftgl' 'glew'
-         'libircclient' 'miniupnpc' 'wxwidgets-gtk3' 'glu' 'libx11' 'libminiupnpc.so'
-         'megaglest-data-git')
-makedepends=('git' 'ftjam' 'cmake' 'mesa')
+license=('GPL-3.0-or-later')
+depends=(
+    'curl'
+    'fontconfig'
+    'fribidi'
+    'ftgl'
+    'glibc'
+    'glu'
+    'megaglest-data-git'
+    'libgcc'
+    'libgl'
+    'libircclient'
+    'libjpeg'
+    'libpng'
+    'libstdc++'
+    'libvorbis'
+    'libx11'
+    'lua51'
+    'miniupnpc'
+    'openal'
+    'sdl2'
+    'sh'
+    'wxwidgets-common'
+    'wxwidgets-gtk3')
+makedepends=(
+    'cmake'
+    'help2man'
+    'git'
+    'mesa')
 provides=('megaglest')
 conflicts=('megaglest')
 source=('git+https://github.com/MegaGlest/megaglest-source.git')
@@ -25,10 +49,7 @@ build() {
        -G 'Unix Makefiles' \
        -DCMAKE_BUILD_TYPE='None' \
        -DCMAKE_INSTALL_PREFIX='/usr' \
-       -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -lX11" \
-       -DWANT_GIT_STAMP='1' \
        -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config' \
-       -DWANT_USE_VLC:BOOL='OFF' \
        -Wno-dev
     
     # use '-j1' if xvfb is installed on your system to prevent errors (will build manpages)
