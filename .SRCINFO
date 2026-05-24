@@ -1,0 +1,36 @@
+pkgbase = python-spotifyscraper
+	pkgdesc = Spotify Scraper to extract all the information from spotify, download mp3 with cover of the song
+	pkgver = v2.1.5
+	pkgrel = 1
+	url = https://spotifyscraper.readthedocs.io
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-lxml
+	makedepends = python-cssselect
+	makedepends = python-soupsieve
+	makedepends = python-filetype
+	makedepends = python-fake-useragent
+	makedepends = python-packaging
+	makedepends = python-tqdm
+	makedepends = python-pyparsing
+	makedepends = python-deprecation
+	makedepends = python-certifi
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-yaml
+	depends = python-eyed3
+	depends = python-urllib3
+	depends = python-click
+	depends = python-rich
+	depends = python-toml
+	optdepends = python-selenium: for JavaScript content
+	optdepends = python-webdriver-manager: automatically downloads and manages browser drivers for Selenium
+	source = git+https://github.com/AliAkhtari78/spotifyscraper#tag=v2.1.5
+	sha256sums = a946a388f28e140640ae6c4975364befc9ef47ff9b2beef5a184687790f3fce2
+
+pkgname = python-spotifyscraper
