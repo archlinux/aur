@@ -512,6 +512,21 @@ RENDERER_PATCHES = [
             'return Promise.resolve(_ver)};'
         ),
     },
+    {
+        "name": "removeDisappearedGames — .exe→.x86_64 fallback for Linux installed games re-validation",
+        "old": (
+            '(requiredFiles,gameId)=>void 0===requiredFiles?bluebird_1.default.resolve():'
+            'bluebird_1.default.map(requiredFiles,file=>fsExtra.stat(path.join(discovered[gameId].path,file)))'
+            '.then(()=>{}).catch(err=>"ENOENT"===err.code?bluebird_1.default.reject(err):bluebird_1.default.resolve())'
+        ),
+        "new": (
+            '(requiredFiles,gameId)=>void 0===requiredFiles?bluebird_1.default.resolve():'
+            'bluebird_1.default.map(requiredFiles,file=>"linux"===process.platform'
+            '?fsExtra.stat(path.join(discovered[gameId].path,file)).catch(()=>fsExtra.stat(path.join(discovered[gameId].path,file.replace(/\\.exe$/i,".x86_64"))))'
+            ':fsExtra.stat(path.join(discovered[gameId].path,file)))'
+            '.then(()=>{}).catch(err=>"ENOENT"===err.code?bluebird_1.default.reject(err):bluebird_1.default.resolve())'
+        ),
+    },
 ]
 
 WINAPI_PATCHES = [
