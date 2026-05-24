@@ -1,0 +1,18 @@
+pkgbase = banban
+	pkgdesc = Rotating shift schedule CLI + TUI — 17 commands, HTTP API, DBus daemon
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/MiniPikka/SimpleShiftScheduler
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = banban
+	conflicts = banban-bin
+	conflicts = banban-git
+	source = shift-cli-0.1.4.tar.gz::https://static.crates.io/crates/shift-cli/shift-cli-0.1.4.crate
+	sha256sums = SKIP
+
+pkgname = banban
