@@ -1,6 +1,6 @@
 pkgbase = neve-git
 	pkgdesc = Standalone language for system configuration, builds, and shell automation (git version)
-	pkgver = 3.15.0.r166.g57941c1
+	pkgver = 3.16.0.r168.g514ce7a
 	pkgrel = 1
 	url = https://github.com/MCB-SMART-BOY/Neve
 	arch = x86_64
