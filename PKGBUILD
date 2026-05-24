@@ -81,7 +81,7 @@ optdepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/NVIDIA/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "glog-0.7-compatibility.patch")
-sha256sums=('f48d634e87546de3596e01257d789d856d006d0d558583ab8064a732c3cbc11e'
+sha256sums=('10cd270b8c1d2e2709d2c57c38b6fa6e50994d47ba9ad9393583a3e879564511'
             '8227c455479f0013ebf65b2fd7541e19e66b323cdb6e2a65d5f4486622484e0e')
 
 prepare() {
