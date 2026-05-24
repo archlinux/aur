@@ -1,7 +1,7 @@
 pkgbase = hexshell-bin
 	pkgdesc = Fullscreen sci-fi terminal with its own interactive shell (hexsh)
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/TSMaitryDotDev/hexshell
 	arch = x86_64
 	license = MIT
