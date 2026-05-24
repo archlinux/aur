@@ -2,7 +2,7 @@
 
 pkgname=oh-my-pi
 pkgver=15.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
@@ -10,8 +10,37 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'icu' 'zlib')
 makedepends=('bun>=1.3.14' 'rustup')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dcfb912c7c8be4496c13d2f730bf49474e1ae4832cedee5cc6838dca76f727c4')
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/refs/tags/v${pkgver}.tar.gz"
+    "tree-sitter-haskell-gcc-no-strict-aliasing.patch"
+)
+sha256sums=(
+    'dcfb912c7c8be4496c13d2f730bf49474e1ae4832cedee5cc6838dca76f727c4'
+    '3eea6cd7fc2e5fa973b81cac109688231e40087f51c3ce4cf01e45e1b7893b17'
+)
+
+# Patch to fix tree-sitter-haskell crash.
+# See:
+# https://github.com/tree-sitter/tree-sitter-haskell/pull/157
+# https://github.com/tree-sitter/tree-sitter-haskell/issues/144
+_patch_tree_sitter_haskell_gcc_workaround() {
+    local _repo_root="$1"
+    local _patch_file="${srcdir}/tree-sitter-haskell-gcc-no-strict-aliasing.patch"
+    local _tsh_dirs=()
+    export CARGO_HOME="${srcdir}/cargo-home"
+
+    cargo fetch --locked --manifest-path "${_repo_root}/Cargo.toml"
+
+    shopt -s nullglob
+    _tsh_dirs=("${CARGO_HOME}"/registry/src/*/tree-sitter-haskell-*)
+    shopt -u nullglob
+    if (( ${#_tsh_dirs[@]} != 1 )); then
+        msg2 "Expected exactly one fetched tree-sitter-haskell source directory, found ${#_tsh_dirs[@]}"
+        return 1
+    fi
+
+    patch --forward -Np1 -d "${_tsh_dirs[0]}" < "${_patch_file}"
+}
 
 build() {
     cd "${srcdir}/oh-my-pi-${pkgver}"
@@ -34,6 +63,7 @@ build() {
     unset CI CC CXX CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
 
     bun install --frozen-lockfile
+    _patch_tree_sitter_haskell_gcc_workaround "${PWD}"
 
     CI=1 TARGET_PLATFORM='linux' TARGET_ARCH='x64' TARGET_VARIANTS='baseline modern' \
         bun run ci:build:native

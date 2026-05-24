@@ -1,0 +1,19 @@
+--- a/bindings/rust/build.rs
++++ b/bindings/rust/build.rs
+@@ -10,6 +10,16 @@
+     #[cfg(target_env = "msvc")]
+     c_config.flag("-utf-8");
+ 
++    let compiler = c_config.get_compiler();
++    // tree-sitter-haskell's external scanner triggers heap corruption under
++    // GCC-optimized release builds on real Haskell sources. Upstream reports
++    // on aarch64/loongarch traced the issue to strict-aliasing-sensitive
++    // scanner code; the same failure reproduces locally on x86_64 glibc.
++    // Clang builds are unaffected, so scope the workaround to GNU C.
++    if compiler.is_like_gnu() && !compiler.is_like_clang() {
++        c_config.flag("-fno-strict-aliasing");
++    }
++
+     let parser_path = src_dir.join("parser.c");
+     c_config.file(&parser_path);
+     println!("cargo:rerun-if-changed={}", parser_path.to_str().unwrap());
