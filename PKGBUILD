@@ -10,7 +10,7 @@ pkgdesc="A super \"coolorful\" shell for Hyprland! (latest-commit version)"
 license=('BSD-3-Clause')
 url="https://github.com/retrozinndev/colorshell"
 pkgrel=1
-pkgver=2.1.2.r109.g4780923
+pkgver=2.1.2.r112.g61e0946
 arch=('any')
 sha256sums=('SKIP')
 provides=("$_pkgname")
@@ -22,7 +22,7 @@ makedepends=(
     'git'
     'pnpm'
     'jq'
-    'bash'
+    'aylurs-gtk-shell'
 )
 depends=(
     'gjs'
@@ -31,14 +31,14 @@ depends=(
     'procps-ng'
     'cliphist'
     'socat'
-    'gobject-introspection'
+    'gobject-introspection-runtime'
     'wireplumber'
     'glycin'
     'glycin-gtk4'
     'networkmanager'
     'pipewire'
     'python-pywal16'
-    'aylurs-gtk-shell'
+    'bash'
     'libastal-4'
     'libastal-io'
     'libastal-apps'
@@ -52,7 +52,7 @@ depends=(
     'libastal-wireplumber'
 )
 optdepends=(
-    'hyprlock: for the colorshell lock command'
+    'hyprlock: for the "colorshell lock" command'
     'hyprpicker: for the color picker in the control center'
     'hyprsunset: apply light filters from the control center'
     'ttf-nerd-fonts-symbols-mono: icon glyphs for hyprlock'
