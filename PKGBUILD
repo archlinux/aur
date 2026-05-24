@@ -1,9 +1,9 @@
-# Maintainer: h8ray <gofindme at dmc dot chat>
+# Maintainer: h8ray <hiddenforever at elektrine dot com>
 
 pkgname=lazyports-git
 _pkgname=lazyports
 _reponame=LazyPorts
-pkgver=r28.0556f8a
+pkgver=r34.84647db
 pkgrel=1
 pkgdesc="A terminal UI tool to visualize and manage network ports"
 arch=("any")

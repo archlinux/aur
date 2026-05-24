@@ -1,6 +1,6 @@
 pkgbase = lazyports-git
 	pkgdesc = A terminal UI tool to visualize and manage network ports
-	pkgver = r28.0556f8a
+	pkgver = r34.84647db
 	pkgrel = 1
 	url = https://github.com/v9mirza/LazyPorts
 	arch = any
