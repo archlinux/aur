@@ -1,7 +1,7 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=ai-usagebar
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Waybar widget + TUI for AI plan usage across Anthropic, OpenAI, Z.AI, and OpenRouter"
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,14 @@ optdepends=(
 # LTO is disabled because ring's C/asm objects (used by reqwest's rustls
 # backend) don't ship LTO bitcode and Arch's default `-flto=auto` in CFLAGS
 # triggers undefined-symbol link errors on x86_64.
-options=('!lto')
+# !debug because Cargo.toml's release profile already strips symbols, so
+# the auto-generated -debug split would be empty AND would collide with
+# `ai-usagebar-bin-debug` if both variants were ever installed.
+options=('!lto' '!debug')
+# Pacman should auto-remove the binary variant when switching to source.
+conflicts=('ai-usagebar-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('51ba564f88a450d349933dd6e742ddf38659150ede75f6242dc13ee6a0188f5c')
+sha256sums=('c0488a0b97b284e8b8eb26f9d13c0238670146020edf145384d4590cecca133f')
 
 prepare() {
     cd "$pkgname-$pkgver"
