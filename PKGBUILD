@@ -1,8 +1,8 @@
 # Maintainer: zhizhizhiwang <zhizhiwang@proton.me>
 # Contributor: Star_caorui <Star_caorui@hotmail.com>
 pkgname=mcsm-web-git
-pkgver=r4055.06bc2a5f
-pkgrel=3
+pkgver=r4162.c685d8ca
+pkgrel=1
 pkgdesc="MCSManager 的面板端（Web）程序模块。"
 arch=(any)
 url="https://github.com/MCSManager/MCSManager"
