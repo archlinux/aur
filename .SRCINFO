@@ -1,6 +1,6 @@
 pkgbase = renderide-git
 	pkgdesc = A modern Rust + wgpu renderer for Resonite
-	pkgver = r2142.b6b042b
+	pkgver = r2482.6f3f062
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/DoubleStyx/Renderide
@@ -12,6 +12,7 @@ pkgbase = renderide-git
 	depends = gstreamer
 	depends = gst-plugins-base-libs
 	depends = zenity
+	optdepends = openxr: VR support
 	provides = renderide
 	options = !lto
 	source = renderide-git::git+https://github.com/DoubleStyx/Renderide
