@@ -1,6 +1,6 @@
 # Maintainer: wypifu <lilington80@gmail.com> <lilington@mail.ru>
 pkgname=blukpast
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Lightweight Vulkan graphics library in C — pipelines, descriptors, buffers, textures, GLTF/OBJ/PLY/STL loaders"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('LGPL2.1')
 depends=('vulkan-icd-loader' 'glfw')
 makedepends=('cmake' 'ninja' 'shaderc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wypifu/blukpast/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d8a66e7a07d58a70d4117d1ec0f20d11991834bcc7bb4f0d47c7562ea9efbc86')
+sha256sums=('8bfdf2017fd4f2e0e5e5002613bf9f14c07fba8e01ab879ae42628ed9e0e1368')
 
 build() {
     cd "${pkgname}-${pkgver}"

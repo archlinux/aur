@@ -1,6 +1,6 @@
 pkgbase = blukpast
 	pkgdesc = Lightweight Vulkan graphics library in C — pipelines, descriptors, buffers, textures, GLTF/OBJ/PLY/STL loaders
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/wypifu/blukpast
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = blukpast
 	makedepends = shaderc
 	depends = vulkan-icd-loader
 	depends = glfw
-	source = blukpast-1.0.5.tar.gz::https://github.com/wypifu/blukpast/archive/refs/tags/v1.0.5.tar.gz
-	sha256sums = d8a66e7a07d58a70d4117d1ec0f20d11991834bcc7bb4f0d47c7562ea9efbc86
+	source = blukpast-1.0.6.tar.gz::https://github.com/wypifu/blukpast/archive/refs/tags/v1.0.6.tar.gz
+	sha256sums = 8bfdf2017fd4f2e0e5e5002613bf9f14c07fba8e01ab879ae42628ed9e0e1368
 
 pkgname = blukpast
