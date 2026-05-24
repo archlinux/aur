@@ -1,7 +1,7 @@
 pkgbase = lafifi-bin
 	pkgdesc = Multi-chain, multi-wallet crypto portfolio tracker – prebuilt binary
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://buildhut.fly.dev/apps/lafifi
 	arch = x86_64
 	license = MIT
