@@ -16,21 +16,21 @@ source=("git+https://github.com/fossisawesome/firmium.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "firmium"
+  cd "Firmium"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "firmium"
+  cd "Firmium"
   npm install
   npm run tauri build -- --bundles deb
 }
 
 package() {
-  cd "firmium"
+  cd "Firmium"
 
   local tauri_bundle_dir="src-tauri/target/release/bundle/deb"
-  local deb_dir=$(find "$tauri_bundle_dir" -maxdepth 1 -type d -name "firmium-desktop*" | head -n 1)
+  local deb_dir=$(find "$tauri_bundle_dir" -maxdepth 1 -type d -name "Firmium*" | head -n 1)
 
   if [ -z "$deb_dir" ] || [ ! -d "$deb_dir" ]; then
     error "Tauri deb bundle directory not found"
@@ -38,7 +38,7 @@ package() {
   fi
 
   # Install binary
-  install -Dm755 "$deb_dir/data/usr/bin/firmium-desktop" "$pkgdir/usr/bin/firmium-desktop"
+  install -Dm755 "$deb_dir/data/usr/bin/Firmium" "$pkgdir/usr/bin/firmium-desktop"
 
   # Install desktop entry
   install -Dm644 "$deb_dir/data/usr/share/applications/Firmium.desktop" "$pkgdir/usr/share/applications/Firmium.desktop"
