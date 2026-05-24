@@ -1,6 +1,6 @@
 pkgbase = bigtube
 	pkgdesc = Universal Multimedia Downloader
-	pkgver = 2.0.41
+	pkgver = 2.0.42
 	pkgrel = 1
 	url = https://github.com/eltonfabricio10/python-bigtube
 	arch = any
@@ -21,8 +21,9 @@ pkgbase = bigtube
 	depends = gst-plugins-bad
 	depends = gst-plugins-ugly
 	depends = gst-libav
+	depends = gst-plugin-gtk4
 	optdepends = ffmpeg: Convert Files
-	source = bigtube-2.0.41.tar.gz::https://github.com/eltonfabricio10/python-bigtube/archive/refs/tags/v2.0.41.tar.gz
-	sha256sums = 4a45995a1960536c604bf2074ae7dc82cdb582e3ef9b25ee8605681c5f68dc55
+	source = bigtube-2.0.42.tar.gz::https://github.com/eltonfabricio10/python-bigtube/archive/refs/tags/v2.0.42.tar.gz
+	sha256sums = 2c290c52ee435fe4d56429da49d75e9bbe2825244923604837a61c04f2430801
 
 pkgname = bigtube
