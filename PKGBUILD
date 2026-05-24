@@ -1,6 +1,6 @@
 # Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=ryzenadj-gtk
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A modern, polished GTK4/Libadwaita graphical wrapper for ryzenadj (AMD power management adjustment tool)."
 arch=('any')
@@ -9,26 +9,32 @@ license=('GPL3')
 install=ryzenadj-gtk.install
 depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'ryzenadj')
 optdepends=('ryzen_smu-dkms-git: enhanced hardware monitoring and control')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/marleylinux/Ryzenadj-gtk/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=("com.marley.ryzenadj-gtk.desktop"
+        "ryzenadj-gtk.svg"
+        "app.py"
+        "main.py"
+        "ryzen.py"
+        "styles.py"
+        "ui.py"
+        "init_gi.py"
+        "ryzenadj-gtk-apply.service")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
-  cd "Ryzenadj-gtk-$pkgver"
-
   # Install Python files
   install -d "$pkgdir/usr/share/ryzenadj-gtk"
-  install -m644 *.py "$pkgdir/usr/share/ryzenadj-gtk/"
+  install -m644 "$srcdir/"*.py "$pkgdir/usr/share/ryzenadj-gtk/"
   chmod 755 "$pkgdir/usr/share/ryzenadj-gtk/app.py"
 
   # Install Icon (SVG is scalable, so it goes to hicolor/scalable)
   install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  install -m644 ryzenadj-gtk.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.marley.ryzenadj-gtk.svg"
+  install -m644 "$srcdir/ryzenadj-gtk.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.marley.ryzenadj-gtk.svg"
 
   # Install Desktop file
-  install -Dm644 com.marley.ryzenadj-gtk.desktop "$pkgdir/usr/share/applications/com.marley.ryzenadj-gtk.desktop"
+  install -Dm644 "$srcdir/com.marley.ryzenadj-gtk.desktop" "$pkgdir/usr/share/applications/com.marley.ryzenadj-gtk.desktop"
 
   # Install systemd service
-  install -Dm644 ryzenadj-gtk-apply.service "$pkgdir/usr/lib/systemd/system/ryzenadj-gtk-apply.service"
+  install -Dm644 "$srcdir/ryzenadj-gtk-apply.service" "$pkgdir/usr/lib/systemd/system/ryzenadj-gtk-apply.service"
 
   # Install sudoers rules
   install -d "$pkgdir/etc/sudoers.d"

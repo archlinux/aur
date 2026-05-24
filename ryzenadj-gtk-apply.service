@@ -1,0 +1,11 @@
+[Unit]
+Description=Apply saved ryzenadj-gtk settings on boot
+After=multi-user.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/python3 /usr/share/ryzenadj-gtk/ryzen.py --apply-saved
+
+[Install]
+WantedBy=multi-user.target

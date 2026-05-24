@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#242424" />
+      <stop offset="100%" stop-color="#121212" />
+    </linearGradient>
+    
+    <!-- Ryzen Accent Gradient -->
+    <linearGradient id="ryzen-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#da291c" />
+      <stop offset="50%" stop-color="#f37021" />
+      <stop offset="100%" stop-color="#ffbe00" />
+    </linearGradient>
+
+    <!-- Libadwaita Blue Accent -->
+    <linearGradient id="blue-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3584e4" />
+      <stop offset="100%" stop-color="#1c71d8" />
+    </linearGradient>
+
+    <!-- Shadow filter -->
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- GNOME App Icon Base shape -->
+  <rect x="12" y="12" width="104" height="104" rx="24" fill="url(#bg-grad)" stroke="#303030" stroke-width="2" filter="url(#shadow)" />
+  
+  <!-- Outer glowing ring fragment -->
+  <path d="M 36 24 A 40 40 0 0 1 92 24" fill="none" stroke="url(#ryzen-grad)" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+
+  <!-- Ryzen stylized Triangle/Symbol -->
+  <path d="M 44 88 L 64 36 L 84 88 Z" fill="none" stroke="url(#ryzen-grad)" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" />
+  
+  <!-- Slider slot (Libadwaita style horizontal slider in the middle) -->
+  <rect x="28" y="72" width="72" height="6" rx="3" fill="#404040" />
+  <rect x="28" y="72" width="44" height="6" rx="3" fill="url(#blue-grad)" />
+  
+  <!-- Slider Knob (white circle with slight shadow) -->
+  <circle cx="72" cy="75" r="7" fill="#ffffff" filter="url(#shadow)" />
+  
+  <!-- Mini lightning bolt for power -->
+  <path d="M 64 48 L 58 60 L 63 60 L 60 70 L 68 56 L 63 56 Z" fill="#ffffff" />
+</svg>

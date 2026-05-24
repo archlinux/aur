@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Ryzenadj-gtk
+Comment=GTK4 graphical interface for ryzenadj AMD power management
+Exec=ryzenadj-gtk
+Icon=com.marley.ryzenadj-gtk
+Terminal=false
+Type=Application
+Categories=Utility;GTK;System;
+Keywords=ryzenadj;AMD;Ryzen;power;TDP;performance;
+StartupNotify=true
+StartupWMClass=com.marley.ryzenadj-gtk
