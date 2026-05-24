@@ -26,7 +26,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r920.2a37adc
+pkgver=r921.9437656
 pkgrel=1
 pkgdesc="Modern Rust/Smithay Wayland compositor with a first-party desktop shell"
 url="https://github.com/kenanpelit/margo"
