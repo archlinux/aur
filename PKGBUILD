@@ -2,7 +2,7 @@
 
 pkgname=edirstat
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, cross-platform disk usage analyzer with work-stealing multithreading, zero-copy snapshots, and an interactive treemap GUI."
 arch=('x86_64')
 url="https://github.com/Xangelix/edirstat"
