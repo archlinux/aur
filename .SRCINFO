@@ -1,18 +1,18 @@
 pkgbase = neve-bin
 	pkgdesc = Standalone language for system configuration, builds, and shell automation (prebuilt binary)
-	pkgver = 3.16.0
+	pkgver = 3.15.0
 	pkgrel = 1
 	url = https://github.com/MCB-SMART-BOY/Neve
 	arch = x86_64
 	arch = aarch64
 	license = MPL-2.0
 	depends = gcc-libs
-	provides = neve=3.16.0
+	provides = neve=3.15.0
 	conflicts = neve
 	conflicts = neve-git
-	source_x86_64 = neve-3.16.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/MCB-SMART-BOY/Neve/releases/download/v3.16.0/neve-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = neve-3.15.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/MCB-SMART-BOY/Neve/releases/download/v3.15.0/neve-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = ee8fbc68a99f9da74f0c34022b82ac2de64ff5b53a57e4281c80c2cd17e20c8f
-	source_aarch64 = neve-3.16.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/MCB-SMART-BOY/Neve/releases/download/v3.16.0/neve-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = neve-3.15.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/MCB-SMART-BOY/Neve/releases/download/v3.15.0/neve-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = 9de51038b0069cf3a9d574b7d7fb025306264ea7efc1fa8a4d7d1beaf8d35bc3
 
 pkgname = neve-bin

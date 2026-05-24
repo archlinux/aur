@@ -1,6 +1,6 @@
 # Maintainer: MCB-SMART-BOY <2720838051@qq.com>
 pkgname=neve-bin
-pkgver=3.16.0
+pkgver=3.15.0
 pkgrel=1
 pkgdesc="Standalone language for system configuration, builds, and shell automation (prebuilt binary)"
 arch=('x86_64' 'aarch64')
