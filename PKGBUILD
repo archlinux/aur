@@ -6,7 +6,7 @@
 # Contributor: gardar <aur@gardar.net>
 
 pkgname=joplin-server
-pkgver=3.6.2
+pkgver=3.6.14
 pkgrel=1
 pkgdesc="Joplin Server for self-hosting Joplin Notes"
 url="https://github.com/laurent22/joplin/tree/v${pkgver}/packages/server"
@@ -20,7 +20,7 @@ options=('!strip')
 source=(
 "joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/refs/tags/v${pkgver}.tar.gz"
 'joplin-server.service' 'joplin-server.sysusers' 'joplin-server.tmpfiles' 'joplin-server.env')
-md5sums=('eeeee6901c60696590e02cc1fd526158'
+md5sums=('2173a5a64f8d7ea34e2ac0cf32d5db0b'
          '8bf105dd516b2e7bd3a8f5e8b5e5551f'
          '08359a65347818382a243a206828f1fa'
          '2534609cd0b3b9cbc6239205e73c9505'
@@ -43,7 +43,9 @@ build() {
 
     export NODE_ENV=production
     export BUILD_SEQUENCIAL=1
-# added --inline-builds to dump logs to screen when building
+    # Otherwise we can get a build failure on systems with libvips installed
+    export SHARP_IGNORE_GLOBAL_LIBVIPS=1 
+    # added --inline-builds to dump logs to screen when building
     yarn install --inline-builds
     yarn cache clean 
     rm -rf .yarn/berry
@@ -81,3 +83,4 @@ package() {
     install -Dm644 joplin-server.env "${pkgdir}/etc/${pkgname}.env"
   
 }
+
