@@ -1,6 +1,6 @@
 pkgbase = coresound-bin
 	pkgdesc = Desktop Bluetooth audio controller for Soundcore/Anker devices
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/CriticalRange/CoreSound
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = coresound-bin
 	depends = fuse2
 	depends = bluez
 	options = !strip
-	source = coresound-bin-0.1.5.AppImage::https://github.com/CriticalRange/CoreSound/releases/download/v0.1.5/CoreSound-0.1.5.AppImage
+	source = coresound-bin-0.1.6.AppImage::https://github.com/CriticalRange/CoreSound/releases/download/v0.1.6/CoreSound-0.1.6.AppImage
 	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
 
 pkgname = coresound-bin

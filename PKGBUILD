@@ -1,7 +1,7 @@
 # Maintainer: CriticalRange
 
 pkgname=coresound-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Desktop Bluetooth audio controller for Soundcore/Anker devices"
 arch=('x86_64')
