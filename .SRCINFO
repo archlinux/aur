@@ -9,6 +9,7 @@ pkgbase = skirk-desktop
 	makedepends = go
 	makedepends = make
 	makedepends = npm
+	makedepends = cargo
 	provides = skirk
 	conflicts = skirk
 	source = git+https://github.com/ShahabSL/Skirk.git#tag=v0.1.55
