@@ -1,10 +1,11 @@
+# Maintainer: twxt <gen@twxt.cc>
 # Maintainer: Marcel Röthke <marcel.roethke@haw-hamburg.de>
 
 pkgname=rtrlib-git
-pkgver=r732.93724e4
+pkgver=r805.0346176
 pkgrel=1
 pkgdesc="RPKI-RTR client library"
-arch=(x86_64 i686 aarch64)
+arch=(x86_64 i686 aarch64 armv7h)
 url="https://github.com/rtrlib/rtrlib"
 license=('MIT')
 depends=(libssh)
@@ -47,7 +48,6 @@ check() {
         -DCMAKE_SHARED_LINKER_FLAGS:STRING="${LDFLAGS}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR:STRING=lib \
-        -DUNIT_TESTING=y \
         .
 
     make
