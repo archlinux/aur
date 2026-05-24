@@ -1,7 +1,7 @@
 # Maintainer: Marcos Gutiérrez Alonso <margual56@gmail.com>
 
 pkgname=twingate-status-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A tray notification for your Twingate status"
 url="https://codeberg.org/marcos56/twingate-status"
@@ -16,8 +16,8 @@ optdepends=('gnome-shell-extension-appindicator: Required to display the tray ic
 # Download the raw plain-text license file
 source=("https://codeberg.org/marcos56/twingate-status/raw/tag/v${pkgver}/LICENSE")
 sha256sums=('2227ff509a59ab58f495ab2121f5a95ddfbf2672cff35219a40d68676e3c3000')
-sha256sums_x86_64=('4bccce4e9768b0301a48563c481b3a8cbdcfff49c69be3fa43d1f73f029ed940')
-sha256sums_aarch64=('7c055fde2cf3ec7f910ba1152143d31dd5c6ca6b16ddcac9f2116f1c7ede47db')
+sha256sums_x86_64=('aa19f5930b327e59a618dbe8b6a394d9f8e8d78d7c33368c6097ac5cdd18913e')
+sha256sums_aarch64=('e77facfb5c25e07493e6dc80010d1a55b8b7b273561ac4a855f3b393d8fdd860')
 
 source_x86_64=("https://codeberg.org/marcos56/twingate-status/releases/download/v${pkgver}/twingate_status-x86_64")
 
