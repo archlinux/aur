@@ -7,12 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Rodericuss/Yet-another-neovim"
 license=('Apache-2.0' 'Vim')
 depends=(
-  'libuv'
-  'luajit'
-  'libvterm>=0.3'
-  'unibilium'
-  'tree-sitter>=0.25.0'
-  'libutf8proc'
+  'neovim'
 )
 makedepends=(
   'git'
@@ -21,13 +16,8 @@ makedepends=(
   'lua51-lpeg'
   'lua51-mpack'
 )
-optdepends=(
-  'python-pynvim: python remote plugin support'
-  'xclip: clipboard support on X11'
-  'wl-clipboard: clipboard support on Wayland'
-)
-provides=('yanvim' 'neovim')
-conflicts=('yanvim' 'neovim')
+provides=('yanvim')
+conflicts=('yanvim')
 source=("${pkgname}::git+${url}.git#branch=stable")
 sha256sums=('SKIP')
 
@@ -54,4 +44,7 @@ build() {
 package() {
   cd "${pkgname}"
   DESTDIR="${pkgdir}" cmake --install build
+  # Remove everything shared with neovim — only keep the yanvim binary
+  rm -rf "${pkgdir}/usr/share" "${pkgdir}/usr/lib"
+  rm -f "${pkgdir}/usr/bin/nvim"
 }
