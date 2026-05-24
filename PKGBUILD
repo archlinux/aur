@@ -2,7 +2,7 @@
 
 pkgname=(gaia-amd gaia-amd-webui)
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered inference engine for AMD hardware"
 arch=(x86_64)
 url="https://github.com/amd/gaia"
@@ -163,6 +163,7 @@ package_gaia-amd() {
 package_gaia-amd-webui() {
     pkgdesc="Electron desktop UI for the AMD Gaia inference engine"
     depends=(gaia-amd electron40 libappindicator)
+    optdepends=('ngrok: mobile access / remote tunnel feature')
 
     local _resources="$srcdir/gaia-$pkgver/src/gaia/apps/webui/dist-app/linux-unpacked/resources"
 
