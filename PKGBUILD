@@ -7,7 +7,7 @@ pkgdesc='Easily add emojis to your git commit messages 🎉'
 arch=(x86_64)
 url="https://github.com/zeenix/$pkgname"
 license=(MIT)
-depends=(gcc-libs)
+depends=(glibc libgcc)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 b2sums=('e7f64f05edad6b6cb18d389c36666b79bfc23b53c9d09fe8b73e09a9a9cea3ee3f6295d15e4373bbc3b91c675ba427948ac2ecb730151a0a7e7b17450156b42f')
@@ -15,7 +15,7 @@ b2sums=('e7f64f05edad6b6cb18d389c36666b79bfc23b53c9d09fe8b73e09a9a9cea3ee3f6295d
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target="$(rustc --print host-tuple)"
 }
 
 build() {
