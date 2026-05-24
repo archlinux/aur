@@ -21,6 +21,7 @@ depends=(
     'libdrm'
     'mesa'
     'cpptrace'
+    'vulkan-headers'
 )
 makedepends=(
     'git'
@@ -31,7 +32,6 @@ makedepends=(
     'spirv-tools'
     'wayland-protocols'
     'cli11'
-    'vulkan-headers'
 )
 provides=('quickshell')
 conflicts=('quickshell' 'quickshell-git')
