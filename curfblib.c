@@ -325,6 +325,5 @@ void curfb_shutdown() {
 
 void curfb_clear() {
     restore_area(last_x, last_y);
-    cursor_shutdown();
-    return 0;
+    curfb_shutdown();
 }
