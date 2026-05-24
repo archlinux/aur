@@ -1,7 +1,7 @@
 pkgbase = qogir-icon-theme-no-apps-git
 	pkgdesc = A colorful design icon theme for linux desktops
 	pkgver = 2025.02.15.r26.gc633057
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/Qogir-icon-theme
 	arch = any
 	license = GPL-3.0-or-later

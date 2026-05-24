@@ -4,17 +4,17 @@
 _pkgname="qogir-icon-theme"
 pkgname="${_pkgname}-no-apps-git"
 pkgver=2025.02.15.r26.gc633057
-pkgrel=1
+pkgrel=2
 pkgdesc='A colorful design icon theme for linux desktops'
-arch=('any')
+arch=(any)
 url='https://github.com/vinceliuice/Qogir-icon-theme'
-license=('GPL-3.0-or-later')
+license=(GPL-3.0-or-later)
 depends=()
-makedepends=('git' 'gtk-update-icon-cache')
+makedepends=(git gtk-update-icon-cache)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}")
-sha256sums=('SKIP')
+sha256sums=(SKIP)
 options=(!strip !debug)
 
 pkgver() {
