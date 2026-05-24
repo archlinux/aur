@@ -24,6 +24,7 @@ pkgbase = hyprwhspr-git
 	depends = python-pulsectl
 	depends = python-dbus
 	depends = ydotool
+	depends = wl-clipboard
 	depends = pipewire
 	depends = pipewire-alsa
 	depends = pipewire-pulse
