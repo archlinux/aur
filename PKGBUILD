@@ -41,7 +41,7 @@ package() {
   install -Dm755 "$deb_dir/data/usr/bin/firmium-desktop" "$pkgdir/usr/bin/firmium-desktop"
 
   # Install desktop entry
-  install -Dm644 "$deb_dir/data/usr/share/applications/firmium.desktop" "$pkgdir/usr/share/applications/firmium.desktop"
+  install -Dm644 "$deb_dir/data/usr/share/applications/Firmium.desktop" "$pkgdir/usr/share/applications/Firmium.desktop"
 
   # Install icons
   find "$deb_dir/data/usr/share/icons" -type f | while read -r icon; do
