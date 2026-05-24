@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=searchmonkey
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Real-time search for real files. No index. No daemon. No stale results."
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cottrela/searchmonkey-III/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('009909fb8465139771b96c3628be9172248ceaa6d8953db0d63e80dfcf3ffcb2'
+sha256sums=('c53f0120041ef216c9c45f149e90784e66f452a81748072ffc250122cb76ebaf'
             '0d0ff90ae4de6eee27b57a3e7706da86fb89df80f3b693554428d76ac797144a')
 
 prepare() {
@@ -33,6 +33,7 @@ prepare() {
 
 build() {
   cd "$pkgname-III-$pkgver"
+  CFLAGS+=" -ffat-lto-objects"
   export PNPM_HOME="$srcdir/pnpm-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
