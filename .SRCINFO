@@ -11,13 +11,13 @@ pkgbase = pvz-hybrid-bin
 	license = custom
 	depends = glibc
 	options = !debug
-	source_x86_64 = https://github.com/cublueer/pvz-hybrid/releases/download/0.21.0/pvz-hybrid_0.21.0_amd64.deb
+	source_x86_64 = https://github.com/cublueer/pvz-hybrid/releases/download/v0.21.0/pvz-hybrid_0.21.0_amd64.deb
 	sha256sums_x86_64 = 44abb21b113df4f4f942286b2d7c04017e897300df592a259a14ec296ea4391e
-	source_i686 = https://github.com/cublueer/pvz-hybrid/releases/download/0.21.0/pvz-hybrid_0.21.0_i386.deb
+	source_i686 = https://github.com/cublueer/pvz-hybrid/releases/download/v0.21.0/pvz-hybrid_0.21.0_i386.deb
 	sha256sums_i686 = e5e1c27d6cb201f4cbfe20aaffe4890744a205f542ad4a7708c55925bd3347d3
-	source_aarch64 = https://github.com/cublueer/pvz-hybrid/releases/download/0.21.0/pvz-hybrid_0.21.0_arm64.deb
+	source_aarch64 = https://github.com/cublueer/pvz-hybrid/releases/download/v0.21.0/pvz-hybrid_0.21.0_arm64.deb
 	sha256sums_aarch64 = 5073a25d06b9eaaaf54f2681701bc78cb5e49a291036dbd5064f37a77a547ca2
-	source_armv7h = https://github.com/cublueer/pvz-hybrid/releases/download/0.21.0/pvz-hybrid_0.21.0_armhf.deb
+	source_armv7h = https://github.com/cublueer/pvz-hybrid/releases/download/v0.21.0/pvz-hybrid_0.21.0_armhf.deb
 	sha256sums_armv7h = 74011097da0f55040662295faf6f1617e4ae75b9f962d22f8a44df199bbd21d1
 
 pkgname = pvz-hybrid-bin

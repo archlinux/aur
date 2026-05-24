@@ -13,7 +13,7 @@ options=(!debug)
 depends=('glibc')
 install=pvz-hybrid-bin.install
 
-_base_url="https://github.com/cublueer/pvz-hybrid/releases/download/${pkgver}"
+_base_url="https://github.com/cublueer/pvz-hybrid/releases/download/v${pkgver}"
 
 source_x86_64=("${_base_url}/pvz-hybrid_${pkgver}_amd64.deb")
 sha256sums_x86_64=('44abb21b113df4f4f942286b2d7c04017e897300df592a259a14ec296ea4391e')
