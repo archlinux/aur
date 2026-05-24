@@ -1,5 +1,5 @@
 pkgbase = linux-chan-ai
-	pkgdesc = AI-powered Linux assistant with anime personality
+	pkgdesc = Linux-themed AI chat assistant with PyQt6 GUI and voice support
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/berk-kucuk/Linux-Chan-AI
@@ -7,8 +7,7 @@ pkgbase = linux-chan-ai
 	arch = any
 	license = MIT
 	depends = python
-	depends = python-pyqt5
 	source = linux-chan-ai-1.0.0.tar.gz::https://github.com/berk-kucuk/Linux-Chan-AI/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 8d10b2c53d9ecd383569dc488196b13ffad120e6d4ea8871f13ce24c71f9d9ea
+	sha256sums = debdaaebd2b0e44a9c9366d0ffa5d8992985a22ddbe991f9855b7807b24c69a7
 
 pkgname = linux-chan-ai
