@@ -12,6 +12,6 @@ post_upgrade() {
 }
 
 pre_remove() {
-    echo "卸载将不会删除存档文件，请手动备份:"
+    echo "卸载将不会删除存档文件，请手动删除:"
     echo "  ~/.local/share/godot/app_userdata/植物大战僵尸杂交版/"
 }

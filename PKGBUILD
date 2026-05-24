@@ -1,7 +1,7 @@
 # shellcheck disable=SC2148,SC2034,SC2154
 # Maintainer: Alvin
 pkgname=pvz-hybrid-bin
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="植物大战僵尸杂交版 (Linux Native) - Godot 原生移植版本"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -16,16 +16,16 @@ install=pvz-hybrid-bin.install
 _base_url="https://github.com/cublueer/pvz-hybrid/releases/download/v${pkgver}"
 
 source_x86_64=("${_base_url}/pvz-hybrid_${pkgver}_amd64.deb")
-sha256sums_x86_64=('97627e37e5fbe13683c0bb1d4064a6e61e3d6a4bf052aa66ca4973d97c2590ab')
+sha256sums_x86_64=('44abb21b113df4f4f942286b2d7c04017e897300df592a259a14ec296ea4391e')
 
 source_i686=("${_base_url}/pvz-hybrid_${pkgver}_i386.deb")
-sha256sums_i686=('1cd6226e77879b5414263393cff4fc4a6e33c63fb5e705375aa330068061d114')
+sha256sums_i686=('e5e1c27d6cb201f4cbfe20aaffe4890744a205f542ad4a7708c55925bd3347d3')
 
 source_aarch64=("${_base_url}/pvz-hybrid_${pkgver}_arm64.deb")
-sha256sums_aarch64=('aedb2640eef2948376b12540a650b2e107e933f02ea1e25f22f32594665acaeb')
+sha256sums_aarch64=('5073a25d06b9eaaaf54f2681701bc78cb5e49a291036dbd5064f37a77a547ca2')
 
 source_armv7h=("${_base_url}/pvz-hybrid_${pkgver}_armhf.deb")
-sha256sums_armv7h=('f84ce1fa9c0bb0ba47c097e67b18304f5d72d52b1e88bf79b412430fd5e78238')
+sha256sums_armv7h=('74011097da0f55040662295faf6f1617e4ae75b9f962d22f8a44df199bbd21d1')
 
 case "$CARCH" in
     x86_64)  _deb_arch="amd64" ;;
