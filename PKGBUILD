@@ -6,11 +6,11 @@ pkgver="r7.${_hash::8}"
 pkgrel=1
 pkgdesc="Interactive visualizer for keymaps"
 arch=("any")
-url="https://gitgud.io/uwu/keybind-visualizer"
+url="https://gitgud.io/uwu/eww/keybind-visualizer"
 license=("MIT")
 depends=("quickshell" "sh" "qt6-declarative")
 makedepends=("git")
-source=("src::git+https://gitgud.io/uwu/keybind-visualizer#commit=ed1663acbc23423f3bf9ec551f0fb2aada467165"
+source=("src::git+https://gitgud.io/uwu/eww/keybind-visualizer#commit=ed1663acbc23423f3bf9ec551f0fb2aada467165"
         "launcher.sh"
         "app.desktop")
 sha256sums=('82616945bea67e581939f8ef5e6df16212652a57d604792fccd138835d2bf159'
