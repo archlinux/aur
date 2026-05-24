@@ -1,6 +1,4 @@
-# Maintainer: adamanteye <ada@adamanteye.cc>
-# Contributor: Yigit Dallilar <yigit.dallilar@gmail.com>
-
+# Maintainer: Xuelin Yang <xuelin@adamanteye.cc>
 pkgname=astroimagej-bin
 pkgver=6.0.7.02
 pkgrel=1
