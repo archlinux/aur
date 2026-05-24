@@ -1,0 +1,5 @@
+[convco-bin]
+source = "github"
+github = "convco/convco"
+use_latest_release = true
+prefix = "v"
