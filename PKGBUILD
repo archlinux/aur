@@ -4,7 +4,7 @@
 pkgbase=gimp-openvino
 pkgname=gimp-openvino
 pkgver=3.2.1.0  # auto-set by pkgver()
-pkgrel=7
+pkgrel=8
 pkgdesc="Intel OpenVINO AI Plugins for GIMP"
 arch=('x86_64')
 url="https://github.com/intel/openvino-ai-plugins-gimp"
@@ -65,11 +65,11 @@ package() {
    # Install pip-only deps not available in Arch repos or AUR
    PIP_REQUIRE_VIRTUALENV=0 python -m pip install \
      gdown peft openvino controlnet-aux openvino-genai tomesd \
-     --root="$pkgdir" --prefix=/usr --no-deps --prefer-binary 2>/dev/null || true
+     --root="$pkgdir" --prefix=/usr --no-deps --prefer-binary --ignore-installed 2>/dev/null || true
 
    # Install the main package (deps handled by system packages)
    PIP_REQUIRE_VIRTUALENV=0 python -m pip install . \
-     --root="$pkgdir" --prefix=/usr --no-deps --prefer-binary
+     --root="$pkgdir" --prefix=/usr --no-deps --prefer-binary --ignore-installed
 
   # Set up config and install bundled weights
   GIMP_OPENVINO_MODELS_PATH="$models_dir" \
