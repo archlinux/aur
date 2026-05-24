@@ -1,7 +1,7 @@
 pkgbase = budget-app-bin
 	pkgdesc = Zarządzanie Budżetem Domowym
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KlapkiSzatana/budget-app
 	arch = x86_64
 	license = GPL-3.0
@@ -10,6 +10,6 @@ pkgbase = budget-app-bin
 	options = !strip
 	options = !debug
 	source = https://github.com/KlapkiSzatana/budget-app/releases/download/v2.1.0/BudgetApp_linux.tar.gz
-	sha256sums = 09863759a2ab8bc5911c09ff54ea9fac9821f4422ae652d505059055781df871
+	sha256sums = fa2d8603928848459f18503d99c78cea1edb944de9e4226d4a666d4ca31e11ef
 
 pkgname = budget-app-bin
