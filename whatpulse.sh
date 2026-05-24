@@ -8,7 +8,7 @@ if [[ -w "${AUTOSTART}" ]]; then
 	chmod 400 "${AUTOSTART}"
 fi
 
-export LD_LIBRARY_PATH="/usr/lib/whatpulse/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}/usr/lib/whatpulse/lib"
 until (($# == 0)); do
 	if [[ $1 =~ ^-[^-] ]]; then
 		args+=("-$1")

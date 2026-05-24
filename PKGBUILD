@@ -6,7 +6,7 @@
 # Contributor: Pieter Kokx <pieter $at$ kokx $dot$ .nl>
 
 pkgname=whatpulse
-pkgver=6.2
+pkgver=6.2.2
 pkgrel=1
 pkgdesc="Measures your keyboard, mouse, app usage, network traffic and uptime."
 arch=('x86_64')
@@ -31,7 +31,7 @@ source_x86_64=("${pkgname}-${pkgver}-amd64.AppImage::https://releases.whatpulse.
 sha256sums=('5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d'
             'a57d62d6b70fdb06eb69df7965f5a49327f83c5251ea8de5918b3c61516c2b45'
             'cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619')
-sha256sums_x86_64=('07a52c709c65672b34ce7058e8702c82644acad932e84d6633e57f872bbe59e8')
+sha256sums_x86_64=('f3fa45001e148926ffa46f48c1804db57455e6e8f0efe2c01d3bc990c80dc5be')
 
 prepare() {
     chmod +x "${pkgname}-${pkgver}-amd64.AppImage"
@@ -42,6 +42,8 @@ prepare() {
     rm -f sfs/usr/lib/libssl.so* sfs/usr/lib/libcrypto.so*
     rm -f sfs/usr/lib/libfreetype.so* sfs/usr/lib/libfontconfig.so*
     rm -f sfs/usr/lib/libglib*.so* sfs/usr/lib/libgio*.so*
+    rm -f sfs/usr/lib/libpcre2-8.so*
+    rm -f sfs/usr/lib/libmount.so* sfs/usr/lib/libblkid.so* sfs/usr/lib/libselinux.so*
     rm -f sfs/usr/lib/libdbus*.so*
     rm -f sfs/usr/lib/libsystemd.so*
     patchelf --set-rpath '/usr/lib/whatpulse/lib:/usr/lib/qt6:/usr/lib' sfs/usr/bin/whatpulse
