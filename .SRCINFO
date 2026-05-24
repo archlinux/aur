@@ -1,6 +1,6 @@
 pkgbase = zoom-citrix-plugin
 	pkgdesc = Zoom VDI Citrix plugin
-	pkgver = 6.6.12
+	pkgver = 6.6.13
 	pkgrel = 1
 	url = https://support.zoom.us/hc/en-us/articles/4415057249549-VDI-releases-and-downloads
 	install = zoom-citrix-plugin.install
@@ -8,7 +8,7 @@ pkgbase = zoom-citrix-plugin
 	license = custom
 	depends = icaclient
 	replaces = zoomcitrixplugin
-	source = https://zoom.us/download/vdi/6.6.12.26920/zoomvdi-universal-plugin-centos_6.6.12.rpm
-	sha512sums = d1c88fc315740998c2730db59ca8a2eb08264cb7c95a037f73fd3997df35a304a626aec097232f0018f94f381e78f4c7ac77ab9e6bf24987a69645c15bc0e2e3
+	source = https://zoom.us/download/vdi/6.6.13.26950/zoomvdi-universal-plugin-centos_6.6.13.rpm
+	sha512sums = e820d42a6620a876355e103dc8adbfd480afc65503f4d351b79ce96388bbd0b68f81cc361b340320c6472e9f01a7269f482edcf7880286e0dd4a8c0495929edc
 
 pkgname = zoom-citrix-plugin
