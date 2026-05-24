@@ -12,12 +12,15 @@ provides=('pgxcli')
 conflicts=('pgxcli')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/balajz/pgxcli/releases/download/v${pkgver}/pgxcli_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('ee82e3fc1970108ce801c75d65ef6d586dcf198ec84dd995a104e84636cad3a9')
+sha256sums_aarch64=('d559ec8d7f762e9d9bc0022aabc31c4e88fb274659c5c9728855b15ce29de849')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/balajz/pgxcli/releases/download/v${pkgver}/pgxcli_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('b38091eb68e33a6b0d1b8cce941267e566fa14032fa53f3f40a606d3a09457b3')
+sha256sums_x86_64=('d5b0f2d570ad02dc0d33452b2b8028b84702f2da40382941f7cd03e8c1729083')
 
 package() {
+  # navigate into the extracted archive directory
+  cd pgxcli_*
+
   # bin
   install -Dm755 "./pgxcli" "${pkgdir}/usr/bin/pgxcli"
 
