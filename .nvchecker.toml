@@ -1,0 +1,3 @@
+[python-sqladmin]
+source="git"
+git="https://github.com/smithyhq/sqladmin"
