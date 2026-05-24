@@ -1,8 +1,8 @@
-# Maintainer: jinzhongjia <jinzhongjia@manus.ai>
+# Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=zap-oss-git
 pkgver=2026.05.22.preview.r0.g3d4eaa4
-pkgrel=1
+pkgrel=2
 # Upstream renamed releases from "YYYY.MM.DD.preview" to "0.YYYY.MM.DD.HHMM",
 # which sorts lower under pacman vercmp. epoch ensures clean upgrades.
 # This package replaces openwarp-git (project was renamed OpenWarp → Zap).
@@ -105,8 +105,13 @@ package() {
     # Keep /usr/bin/openwarp for users with launchers from before the rename.
     ln -s "${_optdir}/zap-oss" "${pkgdir}/usr/bin/openwarp"
 
-    # Install desktop file
+    # Install desktop file. Upstream ships `Exec=zap %U`, expecting a
+    # /usr/bin/zap wrapper that we deliberately don't install (would collide
+    # with the unrelated `zap-bin` AppImage-manager AUR package). Rewrite
+    # Exec to point at the zap-oss symlink we actually provide.
     install -Dm644 "app/channels/oss/dev.zap.Zap.desktop" \
+        "${pkgdir}/usr/share/applications/dev.zap.Zap.desktop"
+    sed -i 's|^Exec=zap %U$|Exec=zap-oss %U|' \
         "${pkgdir}/usr/share/applications/dev.zap.Zap.desktop"
 
     # Install icons
