@@ -2,14 +2,14 @@
 
 _pkgname=warehouse
 pkgname=warehouse-git
-pkgver=1.6.4.r3.g012f823
-pkgrel=2
+pkgver=2.2.0.r1.g007cd80
+pkgrel=1
 pkgdesc='A versatile toolbox for managing flatpak user data, viewing flatpak app info, and batch managing installed flatpaks.'
 url="https://github.com/flattool/warehouse"
 arch=('x86_64')
 license=('GPL3')
-depends=('flatpak-xdg-utils' 'gtk4' 'python-gobject' 'libadwaita' 'gtk-update-icon-cache' 'desktop-file-utils')
-makedepends=('git' 'meson' 'cmake')
+depends=('flatpak-xdg-utils' 'gtk4' 'libadwaita' 'python-gobject')
+makedepends=('appstream-glib' 'blueprint-compiler' 'cmake' 'git' 'meson' 'pkgconf')
 source=("${_pkgname}::git+${url}")
 sha1sums=('SKIP')
 
