@@ -1,15 +1,15 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=vulkan-low-latency-layer
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Implicit Vulkan layer that reduces click-to-photon latency for AMD and NVidia.'
 url='https://github.com/Korthos-Software/low_latency_layer/'
 license=('MIT')
 depends=('libstdc++' 'glibc' 'libgcc')
 makedepends=('cmake' 'vulkan-headers' 'vulkan-utility-libraries')
 arch=('x86_64')
-sha256sums=('425f673fb7cd238231004b2cd39eb5db320c8cac9560b5fcafc99d8a36702fed')
+sha256sums=('197cce2253372b663f8319fe479cc95790a55aa20e87cfb5018ca350f5df735a')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 _srcdir="low_latency_layer-$pkgver"
