@@ -2,6 +2,7 @@ pkgname=picori-bin
 pkgver=v0.2.2.0
 pkgrel=1
 scriptver=1.0.0
+pkgdesc='Decompilation of The Legend of Zelda: The Minish Cap (USA/JP/EU)'
 arch=('x86_64')
 license=('GPL')
 depends=('sdl3' 'git' 'zenity' 'yad')
@@ -22,6 +23,7 @@ package() {
     install -Dm755 "$srcdir/picori-$scriptver/picori.desktop" "$pkgdir/usr/share/applications"
     install -m775 "$srcdir/tmc_pc" "$pkgdir/usr/share/games/Picori"
     cp -r "$srcdir/sounds.json" "$pkgdir/usr/share/games/Picori"
+    cp -r "$srcdir/picori-$scriptver/picori.png" "$pkgdir/usr/share/games/Picori"
     install -m775 "$srcdir/asset_extractor" "$pkgdir/usr/share/games/Picori"
     install -m775 "$srcdir/picori-$scriptver/picori" "$pkgdir/usr/bin"
     printf '%s\n' "$pkgver" > "$pkgdir/usr/share/games/Picori/version.txt"
