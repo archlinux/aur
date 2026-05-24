@@ -1,11 +1,12 @@
 # Maintainer: wypifu <lilington80@gmail.com>
 pkgname=bkpview
-pkgver=0.6.1
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Fast Vulkan-based 3D model viewer for GLTF, OBJ, PLY and STL files. Replaces Microsoft 3D Viewer."
 arch=('x86_64')
 url="https://github.com/wypifu/bkpview"
 license=('MIT')
+install=bkpview.install
 depends=('vulkan-icd-loader' 'glfw' 'blukpast>=1.0.5')
 makedepends=('cmake' 'ninja' 'shaderc')
 
@@ -14,7 +15,7 @@ source=(
     "imgui::git+https://github.com/ocornut/imgui.git"
 )
 sha256sums=(
-    'f55684758c50fc83e7e54fd1963c31a8fc3daa6e35d87dac08ebc9b7753d00af'
+    '2aac93210e6391fb674a87e8924aa7534f7a7f4fc1a349cdaeec2c71097ad745'
     'SKIP'
 )
 
