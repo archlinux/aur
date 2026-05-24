@@ -1,6 +1,6 @@
 # Maintainer: Antoine Gaudreau Simard <antoineg.simard 'at' gmail.com>
 pkgname=python-beaupy
-pkgver=3.11.0
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="A library of elements for interactive TUIs in Python"
 arch=('any')
@@ -19,9 +19,9 @@ makedepends=(
     'python-wheel'
 )
 source=(
-    "https://files.pythonhosted.org/packages/78/b2/1478a56b9669eda5fc6f9fed9e9aa47fbe73b564c5fb5cd55d719cf5b32e/beaupy-${pkgver}.tar.gz"
+    "https://files.pythonhosted.org/packages/80/65/6e501a432db02adb3c974473d73360880878797fbe25405c08024fa76bce/beaupy-${pkgver}.tar.gz"
 )
-sha256sums=('c264d13061c5741ceef5462b3752e572a0a7c3b8bd8dac870d10aec8a7d6b2ee')
+sha256sums=('e0ca6d2356b611ae734c8cf97b28ed9e3bb941d3207af2426e182da836a385d6')
 
 build() {
     cd "beaupy-${pkgver}"
