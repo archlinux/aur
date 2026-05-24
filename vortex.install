@@ -17,11 +17,14 @@ post_install() {
   echo "  │  Este paquete aplica parches de compatibilidad Linux   │"
   echo "  │  no incluidos en el proyecto oficial.                  │"
   echo "  │                                                         │"
-  echo "  │  Mantenido por k8rit0 <angelalvarezferrero@gmail.com>  │"
+  echo "  │  Mantenido por k8rit0 (AUR)                            │"
   echo "  └─────────────────────────────────────────────────────────┘"
   echo ""
-  echo ":: Para gestionar enlaces NXM ejecuta:"
+  echo ":: Para gestionar enlaces NXM (botón 'Mod Manager Download'):"
   echo "   xdg-mime default vortex.desktop x-scheme-handler/nxm"
+  echo ""
+  echo ":: Log de parches runtime en cada arranque:"
+  echo "   ~/.config/Vortex/vortex-linux-fix.log"
   echo ""
 }
 

@@ -26,12 +26,11 @@ Wayland el renderizado era incorrecto.
 `if [ -n "$1" ]; then exec ... --download "$@"` añadía `--download` a cualquier argumento,
 no solo a URLs nxm://. Ahora solo se inyecta si el argumento empieza por `nxm:`.
 
-### [ ] Runtime patches: sin aviso al usuario si el OLD no coincide tras update de extensión
-**Estado:** pendiente  
-`patch-ext-*.py` aplican el marker como idempotencia, pero si la extensión se actualiza
-y el compilado cambia, el script silenciosamente no aplica el patch.  
-**Idea:** escribir un archivo `.vortex-linux-fix-status` en `~/.config/Vortex/` con el
-resultado de cada patch-ext en cada arranque, para que el usuario pueda ver si algo falló.
+### [DONE] Runtime patches: sin aviso al usuario si el OLD no coincide tras update de extensión
+**Estado:** resuelto en 1:2.0.1-17  
+`vortex.sh` ahora guarda stdout+stderr de cada `patch-ext-*.py` en
+`~/.config/Vortex/vortex-linux-fix.log` (truncado en cada arranque).
+El usuario puede consultar el log si algo falla. Ruta mostrada en el mensaje de post_install.
 
 ---
 
@@ -70,11 +69,10 @@ Hay 4 bloques v5→v6 y v6→v7 en `RENDERER_PATCHES`. Con cada cambio de `new` 
 se añade otro par. Limpiar cuando se confirme que nadie tiene un asar anterior a v7
 instalado (aprox. 6 meses desde 1:2.0.1-9).
 
-### [ ] patch-ext-cp2077.py: nombre de carpeta hardcodeado
-**Estado:** pendiente  
-`EXT_PATH` apunta a `"Vortex Extension Update - Cyberpunk 2077/index.js"` literal.
-Si Nexus cambia el nombre del directorio, el patch no aplica silenciosamente.  
-**Fix:** iterar `~/.config/Vortex/plugins/`, buscar `info.json` con `id: "game-cyberpunk2077"`.
+### [DONE] patch-ext-cp2077.py: nombre de carpeta hardcodeado
+**Estado:** resuelto en 1:2.0.1-17  
+Ahora itera `~/.config/Vortex/plugins/`, busca en `info.json` por id/nombre con "cyberpunk",
+y como fallback por nombre de directorio. Misma arquitectura que `patch-ext-gamebryo.py`.
 
 ### [ ] PKGBUILD: heredocs Python inline demasiado grandes
 **Estado:** pendiente — cosmético  
@@ -108,3 +106,7 @@ encontrado), el `.node` no existe pero `package()` no falla explícitamente.
 | 1:2.0.1-15 | patch-asar.py: sys.exit(1) en patches críticos que no aplican |
 | 1:2.0.1-15 | vortex.sh: ELECTRON_OZONE_PLATFORM_HINT=auto (Wayland) |
 | 1:2.0.1-15 | vortex.sh: --download solo para URLs nxm:// |
+| 1:2.0.1-17 | patch-ext-cp2077.py: búsqueda genérica por info.json en lugar de nombre de carpeta hardcodeado |
+| 1:2.0.1-17 | vortex.sh: log de patches en ~/.config/Vortex/vortex-linux-fix.log |
+| 1:2.0.1-17 | patch-asar.py: eliminados migration patches v5→v6 (obsoletos desde 1:2.0.1-9) |
+| 1:2.0.1-17 | vortex.install + LINUX_PATCHES.md: email eliminado, reemplazado por handle k8rit0 (AUR) |

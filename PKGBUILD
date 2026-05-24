@@ -2,7 +2,7 @@
 # Forked from: https://aur.archlinux.org/packages/vortex-linux by Tymon3310
 pkgname=vortex-linux-fix
 pkgver=2.0.1
-pkgrel=16
+pkgrel=17
 epoch=1
 pkgdesc="Nexus Mods' mod manager - unofficial fix fork of Tymon3310's vortex-linux with native Linux compatibility patches"
 arch=('x86_64')
@@ -33,10 +33,10 @@ source=("git+https://github.com/Nexus-Mods/Vortex.git#tag=v${pkgver}"
 
 sha256sums=('ea217e24864525a323a848e0b3ff15a4f04dfeccaacf1ef885afe57d0ce61f65'
   '7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5'
-  '087a069b77778ba72a7eb61bd02c59389062b39786f6492c0d806238670619d9'
+  'c92b6dabe95f5b8dec4edbece6113babed0852dc3c41453596a09f21e8e8a04f'
   'd261f1ef78bb21d72cedeedfd935b099e3d707be709404e894d4aeb47254f1ef'
-  'beb8dca9a97e76d1685e822368a63efafeb3bc10b57ef1768ac9abf64464b2de'
-  '014b52e419cd627044d6e7ceed3735243ce001ad8c611672e4f972be91a216cc'
+  '038ac5e6d7cc169332b1455f47f5abd226ed8bfebd6ee1e3597fb18893bb98fb'
+  '42e4b22545fc1f8dd5755fb964ff356af6ca17462a81674a716907af388eed34'
   '32004e0074ea72ee005f5730961ed7e5923645d1bbec9db3f0ba9976633a29cb'
   '02dfb85811f023ed0b63d0b909a806cd23cdabc81e19965722bc8de1f4d48a9d'
   'df91e09151bff8c55a5a29f79659c7560f275cca370d644603aec3e2e48b2757'

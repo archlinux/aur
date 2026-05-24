@@ -1,6 +1,6 @@
 # Vortex Linux Patches — vortex-linux-fix
 
-**Maintainer:** k8rit0 \<angelalvarezferrero@gmail.com\>  
+**Maintainer:** k8rit0 (AUR)  
 **Based on:** [Nexus-Mods/Vortex](https://github.com/Nexus-Mods/Vortex) v2.0.0  
 **Package name:** `vortex-linux-fix` (AUR)  
 **Current release:** 1:2.0.1-15  
