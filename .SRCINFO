@@ -1,7 +1,7 @@
 pkgbase = skirk-desktop
 	pkgdesc = Socks over Google Drive
 	pkgver = 0.1.55
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ShahabSL/Skirk
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = skirk-desktop
 	makedepends = make
 	makedepends = npm
 	makedepends = cargo
+	depends = gtk3
 	provides = skirk
 	conflicts = skirk
 	source = git+https://github.com/ShahabSL/Skirk.git#tag=v0.1.55
