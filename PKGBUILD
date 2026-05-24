@@ -1,6 +1,6 @@
 # Maintainer: lemachinarbo <your@email.com>
 pkgname=ddev-clim
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Advanced Terminal UI for managing DDEV instances"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,6 @@ license=('MIT')
 depends=('ddev' 'glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -28,4 +27,4 @@ package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 ddev-clim.service "$pkgdir/usr/lib/systemd/user/ddev-clim.service"
 }
-sha256sums=('9176314875e164abc16ea30399a6a519a73f5fdf36f6e6fd727f6778bdf19be6')
+sha256sums=('e5f452034cb9db2e796ef3fb85e11429fa478ba55ebf8e2d15617b05301690c2')
