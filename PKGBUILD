@@ -1,7 +1,7 @@
 # Maintainer: Alberto OS <https://github.com/AlbertoOS>
 
 pkgname=i3lock-color-albertoos-bin
-pkgver=2.13.c.5.albertoos.6
+pkgver=2.13.c.5.albertoos.8
 pkgrel=1
 pkgdesc="i3lock-color fork (prebuilt binary): constant-time blur, SSE2, background cache, async lock, security hardening"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
   "i3lock-zsh::https://raw.githubusercontent.com/AlbertoOS/i3lock-color/main/i3lock-zsh"
 )
 sha256sums=(
-  '3d983527c11bdf60154374e54a5bca9b2cc486722be98e70b5373db7b7983315'
+  '9bd3acfa1bf1077125dd1f4e604ce53c0d127a29c83ac4f4c5437b1c99fdd33f'
   'SKIP'
   'SKIP'
   'SKIP'
