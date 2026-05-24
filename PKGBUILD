@@ -12,7 +12,7 @@ depends=(
   'libvterm>=0.3'
   'unibilium'
   'tree-sitter>=0.25.0'
-  'utf8proc'
+  'libutf8proc'
 )
 makedepends=(
   'git'
