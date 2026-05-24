@@ -9,7 +9,6 @@ license=('GPL-3.0-or-later')
 depends=(
     'qt6-base'
     'qt6-declarative'
-    'qt6-quickcontrols2'
     'kirigami'
     'vulkan-icd-loader'
 )
