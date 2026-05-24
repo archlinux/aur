@@ -18,4 +18,6 @@ package() {
   cd "$srcdir"
   bsdtar -xf "firmium-desktop_${pkgver}_amd64.deb"
   bsdtar -xf "data.tar.gz" -C "$pkgdir"
+  
+  rm -f "$pkgdir/usr/share/applications/firmium-desktop.desktop"
 }
