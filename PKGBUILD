@@ -2,7 +2,7 @@
 
 pkgname=ai-usagebar-bin
 _pkgname=ai-usagebar
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Waybar widget + TUI for AI plan usage (prebuilt binary)"
 arch=('x86_64')
@@ -14,9 +14,16 @@ optdepends=(
     'libnotify: desktop notifications on hard auth failures'
 )
 provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
+# Conflict with both the source variant AND its auto-generated debug split.
+# Without listing `ai-usagebar-debug` explicitly, swapping from source → bin
+# leaves an orphan debug package that fights us over /usr/lib/debug paths.
+conflicts=("$_pkgname" "$_pkgname-debug")
+# The release tarball ships a pre-stripped binary, so re-stripping is a
+# no-op and the auto-generated -debug split would be empty AND would
+# collide with the source variant's `ai-usagebar-debug` package.
+options=('!strip' '!debug')
 source=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
-sha256sums=('c35a78c3e97f7ef62bb49d5ae8b66b05292917ba6064a29b2763da3c3eb43474')
+sha256sums=('25e5fb9a0ebb6140244fe3f8972b31b83c0bcd6692d82d7bc6c095b7ffd290a5')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/"                "ai-usagebar"
