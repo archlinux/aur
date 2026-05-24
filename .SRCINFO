@@ -1,0 +1,21 @@
+pkgbase = pi-gui-bin
+	pkgdesc = Codex-style desktop shell for pi - prebuilt binary
+	pkgver = 0.1.0.beta28
+	pkgrel = 1
+	url = https://github.com/minghinmatthewlam/pi-gui
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	depends = libnotify
+	depends = alsa-lib
+	depends = libcups
+	provides = pi-gui
+	conflicts = pi-gui
+	source = https://github.com/minghinmatthewlam/pi-gui/releases/download/v0.1.0-beta.28/pi-gui-0.1.0-beta.28-x86_64.AppImage
+	source = https://github.com/minghinmatthewlam/pi-gui/raw/v0.1.0-beta.28/LICENSE
+	sha256sums = 57f30da25653ed23bd1d96b00d4690da4df335c3a4f860d62562fe23c7049cc0
+	sha256sums = 887989ae1d3323becad917f0cdc9ca67f6c185416304b65f85c471fdbfbf798c
+
+pkgname = pi-gui-bin
