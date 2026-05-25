@@ -7,3 +7,5 @@
 !mautrix-whatsapp.service
 !mautrix-whatsapp.tmpfiles
 !sysusers-mautrix-whatsapp.conf
+
+!.gitignore
