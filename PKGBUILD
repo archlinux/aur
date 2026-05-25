@@ -1,6 +1,6 @@
 # Maintainer: Donuts Delivery <support@donutsdelivery.online>
 pkgname=arbit-bin
-pkgver=0.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Harmonic composition workstation and MIDI editor"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
 options=('!strip')
 install="${pkgname}.install"
 source=("Arbit-linux-${pkgver}.zip::https://donutsdelivery.online/download-arbit/files/Arbit-linux.zip")
-sha256sums=('7daca3fdba2e355666fb735def5410986b582b4b98b25aa036d1750372d203b9')
+sha256sums=('4ed466f4c2fdadeb6da2fc49699d08cd0564e8b3e6a68f98ecf0f6b7d34606c9')
 
 package() {
   install -dm755 "${pkgdir}/opt/arbit"
