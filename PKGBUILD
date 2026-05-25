@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=taratormusic-bin
 _pkgname=TaratorMusic
-pkgver=1.8.5
+pkgver=1.8.7
 _electronversion=40
 pkgrel=1
 pkgdesc="A music player application with playlist support and Discord integration.(Prebuilt version.Use system-wide electron)"
@@ -21,11 +21,11 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1b7e558ba4c311ecc6222e74387754db8f884fcf422d5ac864f198b58ab3bf9f'
-            '1966359be43411f26de5dc2cd6bd55bfa9f435bba418756524d2c28864a901d8')
+sha256sums=('29507eb1ba6b4a9e2ed21e65f440fdec725f9fcf7778a7e9dad9d1866813b5d8'
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
