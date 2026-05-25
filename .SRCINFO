@@ -1,0 +1,15 @@
+pkgbase = hamirc
+	pkgdesc = Minimal IRC server that can send and receive messages via a KISS TNC
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/sparques/hamirc
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = direwolf: Software KISS TNC
+	source = git+https://github.com/sparques/hamirc#tag=v0.0.2
+	sha256sums = d18b9076e86a6a51866145227d64966af3cb21bdf294a8fbbb6f879f67c8e697
+
+pkgname = hamirc
