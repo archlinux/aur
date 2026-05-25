@@ -2,8 +2,8 @@
 
 pkgname=vrchat-avatar-scaler
 _pkgname=VRChat-Avatar-Scaler
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Control your avatar's scale via OSC"
 arch=("any")
 url="https://github.com/SalbugVR/$_pkgname"
@@ -15,7 +15,7 @@ source=("https://github.com/SalbugVR/${_pkgname}/archive/refs/tags/v${pkgver}.ta
         "vrchat-avatar-scaler.desktop"
 	"vrchat-avatar-scaler"
 	"scaler_config.json")
-sha256sums=('c8914dfcc94b21f7bbff5337591e2b7d11664885ff2d042b0f6b6ea8de0e3044'
+sha256sums=('5c709ef05e5e4cd09a76183d4a32b3b043123d944af9e9bae161dd0cbb4f5bcb'
             'fa49ddd9c951efdf12594ec78271f55606d86474660eea30999971de184cbdc7'
             '9685a2710c75091518e63fcee4a455f8e75dfa204336ca47379b5b290c3aaacb'
             '89dde327e08dc9951f3ea29a440fdbe64b665ea1679328899dc321dcd6a12c69')
