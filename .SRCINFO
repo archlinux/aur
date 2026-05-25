@@ -1,14 +1,14 @@
 pkgbase = gotty-bin
 	pkgdesc = Simple command line tool that turns your CLI tools into web applications.
-	pkgver = 1.7.2
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/sorenisanerd/gotty
 	arch = x86_64
 	arch = arm
 	license = MIT
-	source_x86_64 = https://github.com/sorenisanerd/gotty/releases/download/v1.7.2/gotty_v1.7.2_linux_amd64.tar.gz
-	md5sums_x86_64 = cc03319a4722245e3edef4a0699534da
-	source_arm = https://github.com/sorenisanerd/gotty/releases/download/v1.7.2/gotty_v1.7.2_linux_arm.tar.gz
-	md5sums_arm = e825df789fcf638d205796363c95c2e6
+	source_x86_64 = https://github.com/sorenisanerd/gotty/releases/download/v1.8.0/gotty_v1.8.0_linux_amd64.tar.gz
+	md5sums_x86_64 = a23ccc843d67afec34ce6b448be99037
+	source_arm = https://github.com/sorenisanerd/gotty/releases/download/v1.8.0/gotty_v1.8.0_linux_arm.tar.gz
+	md5sums_arm = 38f231f39e34302bb06a4ad1f7589601
 
 pkgname = gotty-bin

@@ -1,6 +1,6 @@
 # Maintainer: Midov <midov at midov dot pl>
 pkgname=gotty-bin
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Simple command line tool that turns your CLI tools into web applications."
 url="https://github.com/sorenisanerd/gotty"
@@ -13,8 +13,8 @@ source_armv6h=(https://github.com/sorenisanerd/gotty/releases/download/v${pkgver
 source_armv7h=(https://github.com/sorenisanerd/gotty/releases/download/v${pkgver}/gotty_v${pkgver}_linux_arm.tar.gz)
 source_armv7l=(https://github.com/sorenisanerd/gotty/releases/download/v${pkgver}/gotty_v${pkgver}_linux_arm.tar.gz)
 source_armv5=(https://github.com/sorenisanerd/gotty/releases/download/v${pkgver}/gotty_v${pkgver}_linux_arm.tar.gz)
-md5sums_x86_64=('cc03319a4722245e3edef4a0699534da')
-md5sums_arm=('e825df789fcf638d205796363c95c2e6')
+md5sums_x86_64=('a23ccc843d67afec34ce6b448be99037')
+md5sums_arm=('38f231f39e34302bb06a4ad1f7589601')
 
 package() {
   install -Dm755 "${srcdir}/gotty" "${pkgdir}/usr/bin/gotty"
