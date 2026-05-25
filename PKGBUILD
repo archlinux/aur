@@ -1,9 +1,9 @@
 # Maintainer: Evilleader <evilleader91@gmail.com>
-pkgname=vulkan-low-latency-layer-bin
 _pkgname=low_latency_layer
-pkgver=r17.g7797cae
+pkgname=vulkan-low-latency-layer-bin
+pkgver=0.1.0 # This is a placeholder; GitHub will automatically overwrite this!
 pkgrel=1
-pkgdesc="Vulkan layer for hardware agnostic input latency reduction (Reflex & Anti-Lag 2 on any GPU)"
+pkgdesc="Vulkan layer for hardware agnostic input latency reduction (Tracks stable releases)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Korthos-Software/low_latency_layer"
 license=('MIT')
@@ -16,15 +16,20 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # This grabs the latest official tag and strips off any leading 'v'
+  git describe --tags --abbrev=0 | sed 's/^v//'
 }
 
 build() {
-  cmake -B build -S "${_pkgname}" \
+  cd "${_pkgname}"
+  # Safely check out the exact release version found by pkgver()
+  git checkout "v${pkgver}"
+  
+  cmake -B ../build -S . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
-  cmake --build build
+  cmake --build ../build
 }
 
 package() {
