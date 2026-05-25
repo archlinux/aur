@@ -1,6 +1,6 @@
 pkgbase = unocss-language-server-bin
 	pkgdesc = A language server for unocss
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/xna00/unocss-language-server
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = unocss-language-server-bin
 	depends = nodejs
 	provides = unocss-language-server
 	conflicts = unocss-language-server
-	noextract = unocss-language-server-0.1.8.tgz
-	source = https://registry.npmjs.org/unocss-language-server/-/unocss-language-server-0.1.8.tgz
-	sha256sums = d7ac4cd7fe949b614c8f88bc51adee3fbb68d8f8915f867ca039d4c279f6df6b
+	noextract = unocss-language-server-0.1.9.tgz
+	source = https://registry.npmjs.org/unocss-language-server/-/unocss-language-server-0.1.9.tgz
+	sha256sums = 89eb274862ec60c24c719ed5ad927ece6aaa69dcfff23e51050bdb0751a8a4dd
 
 pkgname = unocss-language-server-bin
