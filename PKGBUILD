@@ -1,6 +1,6 @@
 # Maintainer: sineyed
 pkgname=aethertune-bin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A terminal-based internet radio player with real-time audio visualization, built in Rust"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('pipewire-pulse: PipeWire-based audio capture for visualizer'
 provides=('aethertune')
 conflicts=('aethertune' 'aethertune-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nevermore23274/AetherTune/releases/download/v${pkgver}/AetherTune-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('f286fe9827cf4c4a4c39d4519a022216602da4dce2a4611fb233ba5c8f2b63a8')
+sha256sums=('59aa01dbbf53810ed93409ef5a424bc2e97a02b6c40a0b5add3e889ae7fa8c07')
 
 package() {
     cd "AetherTune-v${pkgver}-linux-x86_64"
