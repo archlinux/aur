@@ -1,4 +1,3 @@
-# Maintainer: SoftwareSocialist <nils@reichardt.de>
 pkgname=linux-ryzen-undervolt-git
 _pkgname=ruv-gui
 pkgver=0.0.0.r198.168092b
