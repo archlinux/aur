@@ -2,3 +2,6 @@
 source = "github"
 github = "Squirreljetpack/matchmaker"
 use_latest_release = true
+from_pattern = '[A-Za-z-]*([0-9.]*)'
+to_pattern = '\1'
+

@@ -6,7 +6,7 @@ _execname=mm
 pkgname=${_pkgname}-bin
 pkgdesc="A fast, configurable and intuitive fuzzy searcher"
 
-pkgver=0.0.30
+pkgver=0.0.31
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -26,7 +26,7 @@ source=("README-${pkgver}.md::${_urlraw}/${_pkgname}-cli/README.md"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux.tar.gz")
 sha256sums=('5e2bccaf894567bf4ccdbae065be96c847929ab961861db181d4b541444b4ec2'
             'd0b72bc24eb472035c25af6eff3946409fe62609ce40cfd21746af992cf8a8d4')
-sha256sums_x86_64=('29a13b8a5f8140b5b865f91883e813f1c68c5a037a4b9868d012aa3d4bfb5721')
+sha256sums_x86_64=('84dbcc7d9b773debfa2d4f63f32ed91749258dd386f45c3e82b1c7dc1ac4ef72')
 
 
 package() {
