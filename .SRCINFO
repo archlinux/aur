@@ -1,21 +1,21 @@
 pkgbase = opus-git
-	pkgdesc = codec designed for interactive speech and audio transmission over the Internet (git master)
-	pkgver = 0.0
+	pkgdesc = A codec for interactive speech and audio transmission over the Internet
+	pkgver = 1.6.1.r19.gf8f99516
 	pkgrel = 1
-	url = http://www.opus-codec.org/
+	url = https://www.opus-codec.org/
 	arch = aarch64
 	arch = armv6h
 	arch = armv7h
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
+	makedepends = cmake
 	depends = glibc
-	provides = opus
+	provides = opus=1.6.1.r19.gf8f99516
+	provides = libopus.so
 	conflicts = opus
-	options = !libtool
 	source = git+https://gitlab.xiph.org/xiph/opus.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = opus-git
-
