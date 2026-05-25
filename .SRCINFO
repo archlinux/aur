@@ -1,6 +1,6 @@
 pkgbase = cristalix-wl-fix
 	pkgdesc = Wrapper script to run Cristalix on Wayland/NVIDIA
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/maseckt/cristalix-wl-fix
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = cristalix-wl-fix
 	depends = curl
 	provides = cristalix
 	conflicts = cristalix
-	source = cristalix-wl-fix-1.0.0.tar.gz::https://github.com/maseckt/cristalix-wl-fix/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = edce1e86f8f448bcc4a1fc21df4b3e98d6b315f7f0cdf9987ecaebe264dd30e6
+	source = cristalix-wl-fix-1.0.1.tar.gz::https://github.com/maseckt/cristalix-wl-fix/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = b604299a81df66ecfd8de4272f58d9b9c0d9f20f3e7fdcc68397fba098108477
 
 pkgname = cristalix-wl-fix
