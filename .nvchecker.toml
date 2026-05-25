@@ -1,4 +1,5 @@
 [python-teleprox]
-source = "git"
-git = "https://github.com/campagnola/teleprox.git"
+source = "github"
+github = "campagnola/teleprox"
+use_latest_release = true
 prefix = "v"
