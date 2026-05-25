@@ -1,13 +1,13 @@
 pkgbase = tb-tdl
 	pkgdesc = Terminal based to-do list
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/nicitel3333/tb-tdl
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-textual
-	source = tb-tdl-0.3.0.tar.gz::https://github.com/nicitel3333/tb-tdl/archive/refs/tags/v0.3.0.tar.gz
+	source = tb-tdl-0.4.0.tar.gz::https://github.com/nicitel3333/tb-tdl/archive/refs/tags/v0.4.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = tb-tdl
