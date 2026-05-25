@@ -2,7 +2,7 @@
 pkgsubn=pwsp
 pkgname=pwsp
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lets you play audio files through your microphone"
 arch=('any')
 url="https://github.com/arabianq/pipewire-soundpad"
