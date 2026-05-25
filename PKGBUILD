@@ -2,9 +2,9 @@
 
 _pkgname=hyprosd
 pkgname=hyprosd-git
-pkgver=0.2.0.r9.g1bbda2a
+pkgver=0.2.0.r10.g227d411
 pkgrel=1
-pkgdesc='Hyprland-focused Wayland OSD daemon'
+pkgdesc='Simple OSD for hyprland featuring; volume, brightness and lock-states.'
 arch=('x86_64')
 url='https://github.com/jameswylde/hyprosd'
 license=('MIT')

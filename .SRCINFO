@@ -1,6 +1,6 @@
 pkgbase = hyprosd-git
-	pkgdesc = Hyprland-focused Wayland OSD daemon
-	pkgver = 0.2.0.r9.g1bbda2a
+	pkgdesc = Simple OSD for hyprland featuring; volume, brightness and lock-states.
+	pkgver = 0.2.0.r10.g227d411
 	pkgrel = 1
 	url = https://github.com/jameswylde/hyprosd
 	arch = x86_64
