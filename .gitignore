@@ -14,3 +14,5 @@
 !strip-formatter-deps.patch
 !strip-python-pip-system-certs.patch
 !strip-type-checking-deps.patch
+
+!.gitignore
