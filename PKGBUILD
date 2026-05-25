@@ -5,7 +5,7 @@ pkgver=0.0.0.r192.g836b2e8   # <--- REPLACE WITH YOUR ACTUAL VERSION (e.g., 0.0.
 pkgrel=1
 pkgdesc="Ryzen CPU undervolting tool (GUI) using the ryzen_smu driver"
 arch=('x86_64')
-url="https://github.com/softwaresocialist/linux-ryzen-undervolt-ui"
+url="https://github.com/softwaresocialist/linux-ryzen-undervolt"
 license=('GPL3')
 depends=(
     'python'
