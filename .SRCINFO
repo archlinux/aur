@@ -1,6 +1,6 @@
 pkgbase = tablio-bin
 	pkgdesc = Open-source desktop database client for PostgreSQL, MySQL, MariaDB, SQLite, CockroachDB, TiDB, and Cassandra/ScyllaDB
-	pkgver = 0.4.9
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/dasunNimantha/tablio
 	install = tablio-bin.install
@@ -12,7 +12,7 @@ pkgbase = tablio-bin
 	depends = libayatana-appindicator
 	provides = tablio
 	conflicts = tablio
-	source = https://github.com/dasunNimantha/tablio/releases/download/v0.4.9/Tablio_0.4.9_amd64.deb
+	source = https://github.com/dasunNimantha/tablio/releases/download/v0.5.0/Tablio_0.5.0_amd64.deb
 	source = tablio-bin.install
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -1,6 +1,6 @@
 # Maintainer: Dasun P
 pkgname=tablio-bin
-pkgver=0.4.9
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Open-source desktop database client for PostgreSQL, MySQL, MariaDB, SQLite, CockroachDB, TiDB, and Cassandra/ScyllaDB"
 arch=('x86_64')
