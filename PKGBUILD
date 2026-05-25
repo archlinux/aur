@@ -2,7 +2,7 @@
 
 _pkgname=run-or-raise
 pkgname="gnome-shell-extension-${_pkgname}"
-pkgver=44
+pkgver=45
 pkgrel=1
 pkgdesc='Launch or focus the window or define custom shortcuts in a text file'
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/CZ-NIC/${_pkgname}"
 license=('GPLv3')
 depends=('gnome-shell')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('004ac1ae852b307002dad400d3b35338137fe795ebb819ce99d1d5656344a902')
+sha256sums=('6767ab2aab4771c9bb528a84e01fa38afc64f86f08088fb2dcda0542a24b2972')
 
 package() {
     cd "${_pkgname}-${pkgver}"

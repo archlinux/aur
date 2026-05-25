@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-run-or-raise
 	pkgdesc = Launch or focus the window or define custom shortcuts in a text file
-	pkgver = 44
+	pkgver = 45
 	pkgrel = 1
 	url = https://github.com/CZ-NIC/run-or-raise
 	arch = any
 	license = GPLv3
 	depends = gnome-shell
-	source = run-or-raise-44.tar.gz::https://github.com/CZ-NIC/run-or-raise/archive/v44.tar.gz
-	sha256sums = 004ac1ae852b307002dad400d3b35338137fe795ebb819ce99d1d5656344a902
+	source = run-or-raise-45.tar.gz::https://github.com/CZ-NIC/run-or-raise/archive/v45.tar.gz
+	sha256sums = 6767ab2aab4771c9bb528a84e01fa38afc64f86f08088fb2dcda0542a24b2972
 
 pkgname = gnome-shell-extension-run-or-raise
