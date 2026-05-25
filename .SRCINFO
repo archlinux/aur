@@ -1,10 +1,11 @@
 pkgbase = boscaceoil-blue-bin
 	pkgdesc = A simple and beginner-friendly app for making music
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://yurisizov.itch.io/boscaceoil-blue
 	arch = x86_64
 	license = MIT
+	makedepends = unzip
 	provides = boscaceoil-blue
 	conflicts = boscaceoil-blue-bin
 	conflicts = boscaceoil-blue-git
@@ -13,8 +14,10 @@ pkgbase = boscaceoil-blue-bin
 	source = https://github.com/YuriSizov/boscaceoil-blue/releases/download/3.1.2-stable/boscaceoil-blue-linux-x86_64.zip
 	source = boscaceoil-blue.desktop
 	source = boscaceoil-blue.png
+	source = LICENSE::https://raw.githubusercontent.com/YuriSizov/boscaceoil-blue/main/LICENSE
 	sha256sums = c2474e8f1d0d59fbff45ba986b9e234a5ff5c182ded2c5769d6e30ef0cdc655d
 	sha256sums = 8f54bf50462379958c5a327b16a48e26e77422fc79a1afef2928e1be328af269
 	sha256sums = a3c2c7232b3393c600756ade3b05910f0711581a4237eac4fd76311415244e13
+	sha256sums = SKIP
 
 pkgname = boscaceoil-blue-bin
