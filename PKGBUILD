@@ -1,6 +1,6 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=veila-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Secure, elegant, and fast Wayland screen locker"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/naurissteins/Veila/releases/download/$pkgver/veila-$pkgver-x86_64-linux.tar.gz"
   "veila.pam"
 )
-sha256sums=('f74e9767b153be77d693cef786fa1540cb772f87d3cad3d1fb6698cffb31ede3'
+sha256sums=('351d918ff780a7b2644aa171b85c07cb9cbc3f7a210451e6569c3b96a4d2cdd1'
             '2f9b7a7a8a8583ed40969240ee7d0d42ffba4a44b69a7d241bd60634795a8e84')
 
 package() {
@@ -42,4 +42,7 @@ package() {
   done
 
   install -Dm644 README.md "$pkgdir/usr/share/doc/veila/README.md"
+  if [[ -f share/man/man1/veila.1 ]]; then
+    install -Dm644 share/man/man1/veila.1 "$pkgdir/usr/share/man/man1/veila.1"
+  fi
 }
