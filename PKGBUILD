@@ -2,7 +2,7 @@
 _pkgname=notesnook
 pkgname="${_pkgname}-electron-bin"
 _appname=Notesnook
-pkgver=3.3.19
+pkgver=3.3.20
 _electronversion=37
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('f72582949588ff517c406914402b0f41ca9b02a8c2f893388d703c4a6a6828d4')
-sha256sums_x86_64=('978f9278ce8a5cb2026c7ce8229a2dc1d0a46c268f57cdd34fc9a5bdcf99d10b')
+sha256sums_aarch64=('ae8ca37f0bbc6d4e85258dccd7c7347d1a11a0cd5dc16ce192e7ed759fd729e2')
+sha256sums_x86_64=('e1331002ce28bc17361c53f1bb468d199a40f8dff150181c7e8ac9a93ee34828')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
