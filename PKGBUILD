@@ -10,6 +10,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fitchmultz/pi-cursor-sdk/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('8da62187da52be484e51dac64f6be96732628d8d2fce9eb78b940fdabb610b86')
+options=('!strip' '!debug')
 
 build() {
   cd "${srcdir}/pi-cursor-sdk-${pkgver}"

@@ -7,6 +7,8 @@ pkgbase = pi-ext-cursor-sdk
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	options = !strip
+	options = !debug
 	source = pi-ext-cursor-sdk-0.1.18.tar.gz::https://github.com/fitchmultz/pi-cursor-sdk/archive/refs/tags/v0.1.18.tar.gz
 	sha256sums = 8da62187da52be484e51dac64f6be96732628d8d2fce9eb78b940fdabb610b86
 
