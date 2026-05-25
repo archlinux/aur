@@ -9,9 +9,7 @@ pkgbase = edirstat
 	makedepends = rust-nightly
 	source = edirstat-1.0.4.tar.gz::https://github.com/Xangelix/edirstat/archive/v1.0.4.tar.gz
 	source = edirstat.desktop
-	source = edirstat-1.0.4-icon.png::https://media.githubusercontent.com/media/Xangelix/edirstat/v1.0.4/icon.png
 	sha512sums = 8adb447cd071d3323d4640bbe584f464e9000272255abda90abccf17d911fe01579bd191ff32f2f18abbce57dde831000515d28be7fa4391a31fb6b70ec4a3fd
 	sha512sums = 5cbf9075b721335159eb3317cd3f787ac406fa7c398a2dea114870d362688f67809bbaaede155d8e1ad3a2830c35132ae37a02e24d9dabd60326b2b7e66a02b3
-	sha512sums = 215b2d317a9c92def7a0e1768c04ec0cf6283581563a873e8975746b7033721df2dcb632c59fd2a0b0b6626d56ec412531705af2ebd540a6f50cddf21c89962f
 
 pkgname = edirstat
