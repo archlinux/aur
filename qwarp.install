@@ -1,0 +1,18 @@
+# Post-install hook for QWarp
+# Grants warp-svc the required kernel capabilities for tunnel creation.
+# This CANNOT run during makepkg (fakeroot), so it must be done here.
+
+post_install() {
+    setcap cap_setuid,cap_setgid,cap_net_raw,cap_dac_read_search,cap_net_admin,cap_net_bind_service,cap_sys_ptrace+ei /usr/bin/warp-svc
+    systemctl daemon-reload
+    echo ":: QWarp: warp-svc capabilities granted. Run 'systemctl enable --now warp-svc' to start the daemon."
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    systemctl stop warp-svc 2>/dev/null || true
+    systemctl disable warp-svc 2>/dev/null || true
+}
