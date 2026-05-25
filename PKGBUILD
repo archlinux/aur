@@ -1,17 +1,17 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=faad2-git
-pkgver=2.8.8.r16.gdcb6ce4
+pkgver=2.11.2.r5.gf2f4e8e
 pkgrel=1
 pkgdesc="Freeware Advanced Audio (AAC) Decoder"
 arch=('i686' 'x86_64')
-url="https://faac.sourceforge.net/"
-license=('GPL')
+url="https://sourceforge.net/projects/faac/"
+license=('GPL-2.0-or-later')
 depends=('glibc')
-makedepends=('git')
-provides=("faad2=$pkgver")
+makedepends=('git' 'cmake')
+provides=("faad2=$pkgver" libfaad{,_drm}.so)
 conflicts=('faad2')
-source=("git+https://git.code.sf.net/p/faac/faad2")
+source=("git+https://github.com/knik0/faad2.git")
 sha256sums=('SKIP')
 
 
@@ -24,14 +24,17 @@ pkgver() {
 build() {
   cd "faad2"
 
-  ./bootstrap
-  ./configure \
-    --prefix="/usr"
-  make
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
+    ./
+  cmake --build "_build"
 }
 
 package() {
   cd "faad2"
 
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
 }

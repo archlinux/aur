@@ -1,16 +1,19 @@
 pkgbase = faad2-git
 	pkgdesc = Freeware Advanced Audio (AAC) Decoder
-	pkgver = 2.8.8.r16.gdcb6ce4
+	pkgver = 2.11.2.r5.gf2f4e8e
 	pkgrel = 1
-	url = https://faac.sourceforge.net/
+	url = https://sourceforge.net/projects/faac/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
+	makedepends = cmake
 	depends = glibc
-	provides = faad2=2.8.8.r16.gdcb6ce4
+	provides = faad2=2.11.2.r5.gf2f4e8e
+	provides = libfaad.so
+	provides = libfaad_drm.so
 	conflicts = faad2
-	source = git+https://git.code.sf.net/p/faac/faad2
+	source = git+https://github.com/knik0/faad2.git
 	sha256sums = SKIP
 
 pkgname = faad2-git
