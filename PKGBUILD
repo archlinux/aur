@@ -3,8 +3,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 pkgname=i4tools-bin
 _pkgname=cn.i4Tools
-pkgver=9.0.022
-pkgrel=2
+pkgver=9.01.003
+pkgrel=1
 epoch=1
 pkgdesc='爱思助手是一款集“高效管理 iOS 设备数据”，“智能刷机”和“免费下载海量应用游戏、铃声壁纸”等为一体的 iOS 设备管理工具。'
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
     "${_pkgname}_${pkgver}_amd64.deb::https://d-updater.i4.cn/i4tools9/download/linux/x64/${_pkgname}_${pkgver}_amd64.deb"
     "https://www.i4.cn/copyright.html"
 )
-sha256sums=('b20978c9c5e652a67b87dbb36a8c17731f1937f6cba5f793dc69adac981d90be'
+sha256sums=('aec5ceff17c09bb6ac8741684198702f451c0de14c7bbc250d42b7527bc8fa03'
             '79bf7500e724fda34fb534fe2b1e84e16cf39bb1e661e5368534f004dab729a5')
 
 install=i4Tools.install
