@@ -1,4 +1,4 @@
-# Maintainer: Evilleader <evilleader91@gmail.com>
+# Maintainer: ***REMOVED*** <***REMOVED***>
 _pkgname=server-picker-x
 pkgname=server-picker-x-git
 pkgver=1.0.6
@@ -13,7 +13,8 @@ provides=('server-picker-x')
 conflicts=('server-picker-x')
 # Add "icon.png" here, assuming it's in the same folder as your PKGBUILD
 source=("git+${url}.git" "icon.png::https://raw.githubusercontent.com/NasirA1991/aur-server_picker_x/main/icon.png")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            '723a00a105ffcd843693d2ca7d6b70e7eaa7da284e26704893fce19b1ec1c839')
 
 # CRITICAL: Prevents Arch from mangling self-contained .NET binary structures
 options=('!strip' '!debug')
