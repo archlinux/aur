@@ -1,5 +1,6 @@
 # Maintainer: KOWX712 <leecc0503@gmail.com>
 
+pkgbase=visual2
 pkgname=visual2-bin
 pkgver=1.7.0
 pkgrel=1
