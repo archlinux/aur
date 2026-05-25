@@ -2,49 +2,41 @@
 
 pkgname=codex-plus-plus
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Codex++ auto-injector bridge for openai-codex-desktop'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/BigPizzaV3/CodexPlusPlus'
-license=('NOASSERTION')
+license=('MIT')
+options=('!lto')
 depends=(
   'bash'
   'openai-codex-desktop'
   'python'
-  'python-requests'
-  'python-websocket-client'
 )
 makedepends=(
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
+  'cargo'
 )
 install="${pkgname}.install"
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/BigPizzaV3/CodexPlusPlus/archive/refs/tags/v1.1.7.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/BigPizzaV3/CodexPlusPlus/archive/refs/tags/v${pkgver}.tar.gz"
   'codex-desktop-app-wrapper.sh'
-  'codex-plus-plus-launch.py'
   'codex-plus-plus.sh'
   '90-codex-plus-plus-reapply.hook'
 )
 sha256sums=(
   '7c804f8b5788866fa150ef62b9ec829f8d45af30ad2d3cbd0b8b43a9cd858537'
   '7d8175ab7cb40a919b6fbd58c5b42d912330aa97967544ba2b311bb10e94139b'
-  '2a005b347e4d6314cb25a064c63bfe60f4ed3a946b5a0b5b2b853e8c09ec9420'
-  'c066bed965a86f533c5a63498a26cd5816d617edd9d7e66a4a3a2aeef3b0b04b'
+  '0ff9eda5aa0df8f002bc257beaa30118676a6a6f80ef2e637126299ec55a430e'
   '187f5bada32771e5197506208c362778e98fa63fd6e13151e7675047932172a9'
 )
 
 build() {
   cd "${srcdir}/CodexPlusPlus-${pkgver}"
-  /usr/bin/python -m build --wheel --no-isolation
+  cargo build --release --locked -p codex-plus-launcher
 }
 
 package() {
   cd "${srcdir}/CodexPlusPlus-${pkgver}"
-
-  /usr/bin/python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -dm755 \
     "${pkgdir}/usr/bin" \
@@ -59,8 +51,8 @@ package() {
     "${pkgdir}/usr/lib/${pkgname}/app/codex"
   ln -s codex "${pkgdir}/usr/lib/${pkgname}/app/codex.exe"
 
-  install -Dm755 "${srcdir}/codex-plus-plus-launch.py" \
-    "${pkgdir}/usr/lib/${pkgname}/bin/codex-plus-plus-launch.py"
+  install -Dm755 "target/release/codex-plus-plus" \
+    "${pkgdir}/usr/lib/${pkgname}/bin/codex-plus-plus-upstream"
   install -Dm755 "${srcdir}/codex-plus-plus.sh" \
     "${pkgdir}/usr/bin/codex-plus-plus"
   ln -s /usr/bin/codex-plus-plus \

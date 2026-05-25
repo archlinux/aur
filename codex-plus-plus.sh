@@ -114,7 +114,8 @@ reapply_if_enabled() {
 }
 
 run_injected() {
-  exec /usr/bin/python /usr/lib/${PKGNAME}/bin/codex-plus-plus-launch.py "$@"
+  exec /usr/lib/${PKGNAME}/bin/codex-plus-plus-upstream \
+    --app-path /usr/lib/${PKGNAME}/app "$@"
 }
 
 usage() {
