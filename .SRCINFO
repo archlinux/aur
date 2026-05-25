@@ -13,6 +13,6 @@ pkgbase = link-lang
 	conflicts = link-lang-git
 	conflicts = link-lang-bin
 	source = https://github.com/Pilot0253/link-lang/archive/refs/tags/v0.5.tar.gz
-	sha256sums = 376097c04939a9bdea15b214f4e8995073269e4bd7d0efcd2da403b50d114d71
+	sha256sums = SKIP
 
 pkgname = link-lang

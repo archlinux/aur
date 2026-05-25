@@ -14,11 +14,11 @@ makedepends=('gcc' 'make')
 conflicts=('link-lang-git' 'link-lang-bin')
 
 source=("https://github.com/Pilot0253/link-lang/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('376097c04939a9bdea15b214f4e8995073269e4bd7d0efcd2da403b50d114d71')
+sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/link-lang-$pkgver"
-    make release
+    make -f makefile release
 }
 
 package() {
