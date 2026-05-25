@@ -16,7 +16,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  # This grabs the latest official tag and strips off any leading 'v'
+  # Force git to fetch the live, up-to-date tags from GitHub before checking
+  git fetch --tags
   git describe --tags --abbrev=0 | sed 's/^v//'
 }
 
