@@ -1,0 +1,16 @@
+pkgbase = terraform-mcp-server
+	pkgdesc = Model Context Protocol (MCP) server for the Terraform ecosystem
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/hashicorp/terraform-mcp-server
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	optdepends = terraform: workspace and module operations
+	source = terraform-mcp-server-0.5.2.tar.gz::https://github.com/hashicorp/terraform-mcp-server/archive/refs/tags/v0.5.2.tar.gz
+	sha256sums = 7f1c350360cfed54ab4cb9cc028846e37e9bf76441c7a347cc1037d8374f8990
+
+pkgname = terraform-mcp-server
