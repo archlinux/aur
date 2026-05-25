@@ -1,12 +1,12 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz(rot13)>
 
 : ${_java_ver:=17}
 
 _pkgname="mindustry"
 pkgbase="$_pkgname"
-pkgver=157.4
-pkgrel=2
+pkgver=158.1
+pkgrel=1
 pkgdesc="A sandbox tower defense game"
 url="https://github.com/Anuken/Mindustry"
 license=('GPL-3.0-only')
@@ -26,8 +26,8 @@ source=(
   "$_pkgname-arc-$_build.$_pkgext"::"https://github.com/Anuken/Arc/archive/refs/tags/v$_build.$_pkgext"
 )
 sha256sums=(
-  '980dbf5df8f50791413cd1ef91f36a367818d35648a6a54471d17e862d57976e'
-  '55040b9cb6322f8eab52fa870231e649827f0bf281188596db415795ba9f369e'
+  '56908142cc94d7872afb2aca1f31f8caeff45fe92c6fe063f4d7a850490b3b35'
+  '88210571f52f707065f61c68e21f7b5710dc387947cd045f25ae48210f0d085b'
 )
 
 prepare() {
@@ -82,6 +82,8 @@ done
 if [ -n "\$_best" ]; then
   export JAVA_HOME="\$_best"
 fi
+
+: \${JAVA_HOME:=/usr/lib/jvm/default}
 
 exec "\$JAVA_HOME/bin/java" -jar "/usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar" "\$@"
 END
