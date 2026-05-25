@@ -1,7 +1,7 @@
 pkgbase = mindustry-git
 	pkgdesc = A sandbox tower defense game
-	pkgver = 157.4.r54.g54443b9
-	pkgrel = 2
+	pkgver = 158.1.r0.g05b2ecd
+	pkgrel = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
 	license = GPL-3.0-only
