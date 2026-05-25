@@ -1,10 +1,10 @@
-# Maintainer: Guillaume Quintard <guillaume.quintard@gmail.com>
+# Maintainer: Guillaume Quintard <guillaume.quintard@varnish-software.com>
 
 pkgname=varnish-modules
-pkgver=0.26.0
-pkgrel=3
+pkgver=0.28.0
+pkgrel=1
 pkgdesc="A bundle of commonly useful Varnish vmods"
-depends=('varnish=7.7.3-1')
+depends=('varnish=9.0.3-1')
 makedepends=('autoconf' 'automake' 'gcc' 'libtool' 'make' 'python' 'python-docutils')
 arch=('x86_64')
 url="https://github.com/varnish/varnish-modules"
@@ -21,12 +21,13 @@ build() {
         --mandir=/usr/share/man \
         --infodir=/usr/share/info \
         --localstatedir=/var/lib
-    make
+    # build system is racy
+    make -j1
 }
 
 check() {
     cd "$pkgname-$pkgver"
-    make check -k VERBOSE=1
+    make check -k VERBOSE=1 -j
 }
 
 package() {
@@ -35,4 +36,4 @@ package() {
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('2050ec65ae731bddc74743c9aa6246e41ffba8017c404c32e50d45f72f5a02dd3eb2290f8b8e43e25a385a06819836fb19f8540f1cdae394083729ff6b6aed35')
+sha512sums=('796f95ea6f8b69f6e4fb3daf327c4a6cccc9b6c927d8daace753aad7e443c1f937020465924e472ad65bb0a10e2e5bf85b6228afe3257dbfba0091750fbf300a')
