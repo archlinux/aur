@@ -3,7 +3,7 @@
 pkgname=pake-chatgpt
 _appname=ChatGPT
 _appname_lower=chatgpt
-_pkgver=3.11.5
+_pkgver=3.11.7
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="${_appname} wrapped as a desktop app using Pake"
@@ -17,7 +17,7 @@ source=(
     "${_appname}-${_pkgver}.deb::https://github.com/tw93/Pake/releases/download/V${_pkgver}/${_appname}_${CARCH}.deb"
     "LICENSE-${_pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${_pkgver}/LICENSE"
 )
-sha256sums=('1cef9fe8987055486a1859bbf9c95776a7aae31de09fd28cf0b5651e571a701b'
+sha256sums=('c8e5c73beaa052291e3f9b4909a910c7173c0aacaa619a570eecc7d5f81d419c'
             '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 
 prepare() {
