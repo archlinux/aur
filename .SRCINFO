@@ -1,0 +1,18 @@
+pkgbase = kernelscript-bin
+	pkgdesc = Modern, type-safe, domain-specific programming language for eBPF-centric kernel customization
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/multikernel/kernelscript
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libbpf
+	optdepends = clang: compile generated C to eBPF bytecode
+	optdepends = linux-headers: kernel headers for eBPF compilation
+	provides = kernelscript
+	conflicts = kernelscript
+	options = !debug
+	source = kernelscript-0.1.1::https://github.com/multikernel/kernelscript/releases/download/v0.1.1/kernelscript-linux-x86_64
+	sha256sums = 211e2e73272f65cfd90acf3286cf18df58f0b864c09618a6a24813cb2fd29284
+
+pkgname = kernelscript-bin
