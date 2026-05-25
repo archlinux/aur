@@ -1,7 +1,7 @@
 # Maintainer: Cody Wyatt Neiman (xangelix) <neiman@cody.to>
 
 pkgname=edirstat
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="A fast, cross-platform disk usage analyzer with work-stealing multithreading, zero-copy snapshots, and an interactive treemap GUI."
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "$pkgname.desktop"
 )
-sha512sums=('50de79be9a5ed0feb4e9b66cd75007cac5a2d56bc62a1c80001906a8faa82b966183032ffb143c7210cf0feeead7d3b7f13c2069ff5ec657d6c96e1ed4518667'
+sha512sums=('63d452f012e462f0479359c8c37296bf9e3601d5b3da735982bf21730e988cb86152c9b072ec9a29d5d2e4a664c23623d7f8c7bcd414f99e98e8d60329e6a31c'
             '5cbf9075b721335159eb3317cd3f787ac406fa7c398a2dea114870d362688f67809bbaaede155d8e1ad3a2830c35132ae37a02e24d9dabd60326b2b7e66a02b3')
 
 prepare() {
