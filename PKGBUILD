@@ -3,47 +3,47 @@
 
 _pkgbase='yamagi-quake2-xatrix'
 pkgname="${_pkgbase}-git"
-pkgver='2.14.r0.gb315ef2'
+pkgver='2.17.r8.g5e2e107'
 pkgrel='1'
 arch=('i686' 'x86_64' 'aarch64')
 pkgdesc="Quake II - Mission Pack 1 ('The Reckoning') for yamagi-quake2 (development version)"
 url='https://www.yamagi.org/quake2/'
 license=('GPL-2.0-only')
-depends=('glibc' 'sh' 'yamagi-quake2')
+depends=('bash' 'glibc' 'yamagi-quake2')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 install="${_pkgbase}.install"
 source=(
-    "${_pkgbase}::git+https://github.com/yquake2/xatrix.git"
-    "${_pkgbase}.sh"
-    "${_pkgbase}.desktop"
+	"${_pkgbase}::git+https://github.com/yquake2/xatrix.git"
+	"${_pkgbase}.sh"
+	"${_pkgbase}.desktop"
 )
 b2sums=(
-    'SKIP'
-    'e80203cbda3f903705569b75cf8603dc34a27d43297d987ea7e65334189c978c37ac010e25b9244a2c5f06e20ecaf2df12dbfb644395a522efc9215b468c1b6d'
-    'ba6c2af8cfe5f9aff96d92561f6271496317cdf8dee7c5977a9374b996fd5763075c129cd3dccf96849bdeef793b8c9726a24dc4395bac740ef8682bc9f1d035')
+	'SKIP'
+	'342c3ed0b79d9d155359688f4eecdc1e146620e0d671795376a52167d8d7a7a0a969cf4a6760588f405d0e84bd86cf66a843898f4ad3cb2cbfbd32da8018f56b'
+	'ba6c2af8cfe5f9aff96d92561f6271496317cdf8dee7c5977a9374b996fd5763075c129cd3dccf96849bdeef793b8c9726a24dc4395bac740ef8682bc9f1d035')
 
 pkgver() {
-    cd ${_pkgbase}
-    git describe --long --tags | sed 's/^XATRIX_//;s/_/./;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd ${_pkgbase}
+	git describe --long --tags | sed 's/^XATRIX_//;s/_/./;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    make -C ${_pkgbase}
+	make -C ${_pkgbase}
 }
 
 package() {
-    cd "${_pkgbase}"
+	cd "${_pkgbase}"
 
-    # game library
-    install -Dm644 -t "${pkgdir}/usr/lib/yamagi-quake2/xatrix" 'release/game.so'
+	# game library
+	install -Dm644 -t "${pkgdir}/usr/lib/yamagi-quake2/xatrix" 'release/game.so'
 
-    # game launcher
-    install -Dm755 "../${_pkgbase}.sh" "${pkgdir}/usr/bin/${_pkgbase}"
+	# game launcher
+	install -Dm755 "../${_pkgbase}.sh" "${pkgdir}/usr/bin/${_pkgbase}"
 
-    # doc
-    install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgbase}" 'README.md'
+	# doc
+	install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgbase}" 'README.md'
 
-    # desktop entry
-    install -Dm644 -t "${pkgdir}/usr/share/applications" "../${_pkgbase}.desktop"
+	# desktop entry
+	install -Dm644 -t "${pkgdir}/usr/share/applications" "../${_pkgbase}.desktop"
 }
