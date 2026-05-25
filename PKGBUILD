@@ -2,7 +2,7 @@
 
 pkgname=ledgera
 pkgver=0.1.0rc5
-pkgrel=1
+pkgrel=2
 url="https://github.com/thesmokinator/$pkgname"
 pkgdesc='Just another user interface for managing hledger journal transactions'
 arch=(x86_64)
@@ -21,6 +21,7 @@ depends=(cairo libcairo.so
 makedepends=(atkmm
              cargo
              cargo-tauri
+             gendesk
              nodejs-lts-krypton
              npm)
 options=(!lto)
@@ -37,6 +38,10 @@ _srcenv() {
 }
 
 prepare() {
+	gendesk -q -f -n \
+		--pkgname "$pkgname" \
+		--pkgdesc "$pkgdesc" \
+		--custom StartupWMClass="$pkgname"
 	_srcenv
 	npm install
 	pushd src-tauri
@@ -49,7 +54,9 @@ build() {
 }
 
 package() {
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$pkgname.desktop"
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "src-tauri/target/release/$pkgname"
+	install -Dm0644 src-tauri/icons/128x128@2x.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
 }

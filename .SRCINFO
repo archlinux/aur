@@ -1,13 +1,14 @@
 pkgbase = ledgera
 	pkgdesc = Just another user interface for managing hledger journal transactions
 	pkgver = 0.1.0rc5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thesmokinator/ledgera
 	arch = x86_64
 	license = MIT
 	makedepends = atkmm
 	makedepends = cargo
 	makedepends = cargo-tauri
+	makedepends = gendesk
 	makedepends = nodejs-lts-krypton
 	makedepends = npm
 	depends = cairo
