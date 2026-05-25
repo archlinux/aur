@@ -1,0 +1,3 @@
+[python-nodejs-wheel]
+source="pypi"
+pypi="nodejs-wheel"

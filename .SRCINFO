@@ -1,6 +1,6 @@
 pkgbase = python-nodejs-wheel
 	pkgdesc = Unoffical Node.js wheels
-	pkgver = 22.15.0
+	pkgver = 24.15.0
 	pkgrel = 1
 	url = https://pypi.org/project/nodejs-wheel/
 	arch = x86_64
@@ -12,21 +12,24 @@ pkgbase = python-nodejs-wheel
 	makedepends = python-wheel
 	makedepends = python-hatchling
 	makedepends = python-hatch-vcs
+	makedepends = python-pip
 	depends = python
-	noextract = nodejs-22.15.0.tar.gz
+	depends = python-typing_extensions
 	options = !lto
-	source = python-nodejs-wheel-22.15.0.tar.gz::https://github.com/njzjz/nodejs-wheel/archive/refs/tags/v22.15.0.tar.gz
-	source = nodejs-22.15.0.tar.gz::https://github.com/nodejs/node/archive/refs/tags/v22.15.0.tar.gz
-	sha256sums = cc92fecb821e9ffb878902caa2ed43e4b8e6fd19726147c17c8b1d26e1e12a25
-	sha256sums = 4f2515e143ffd73f069916ecc5daf503e7a05166c0ae4f1c1f8afdc8ab2f8a82
+	source = python-nodejs-wheel-24.15.0.tar.gz::https://github.com/njzjz/nodejs-wheel/archive/refs/tags/v24.15.0.tar.gz
+	sha256sums = 74f8deb98f468644f487e66506620bd9ce008db6214c9a4531512dbcf35bcf44
 
 pkgname = python-nodejs-wheel
 	pkgdesc = Unoffical Node.js wheels (CLI tools)
 	depends = python
+	depends = python-typing_extensions
 	depends = python-nodejs-wheel-binaries
-	provides = nodejs=22.15.0
+	provides = nodejs=24.15.0
 	provides = npm
 	conflicts = nodejs
 	conflicts = npm
 
 pkgname = python-nodejs-wheel-binaries
+	depends = python
+	depends = python-typing_extensions
+	depends = python-typing_extensions
