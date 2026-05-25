@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But not these files...
+!\.gitignore
+!PKGBUILD
+!\.SRCINFO
+!add_host_port_config\.patch
+!dependency_on_unit_never_type_fallback\.patch
+!vod2pod-rss\.env
+!vod2pod-rss\.service
