@@ -1,7 +1,7 @@
 # Maintainer: Keith Raghubar <aur.archlinux.org.buckskin000@passmail.net>
 
 pkgname=sysforge-git
-pkgver=1.1.0.r0.g0000000  # updated dynamically by pkgver()
+pkgver=1.2.0.r0.g0000000  # updated dynamically by pkgver()
 pkgrel=1
 pkgdesc="All-in-one Arch Linux helper for system setup and package management with compiler-optimized builds (git)"
 arch=('any')
@@ -12,11 +12,11 @@ depends=(
     'git'
     'sudo'
     'gnupg'
+    'base-devel'
 )
 makedepends=(
     'uv'
     'python-installer'
-    'python-argparse-manpage'
 )
 optdepends=(
     'bash-completion: bash tab completions'
@@ -26,6 +26,10 @@ optdepends=(
     'zsh: zsh shell support'
     'glow: in-shell markdown rendering for docs'
     'zsh-completions: additional zsh completions'
+    'clang: required for the LLVM build profile and sysforge run toolchain --compiler=llvm'
+    'lld: required for the optimized build profile (-fuse-ld=lld)'
+    'llvm: required for sysforge run toolchain --compiler=llvm (PGO bootstrap)'
+    'compiler-rt: required for sysforge run toolchain --compiler=llvm'
 )
 conflicts=('sysforge')
 provides=('sysforge')
@@ -49,14 +53,6 @@ pkgver() {
 build() {
     cd "$srcdir/$pkgname"
     uv build --wheel
-    PYTHONPATH=. argparse-manpage \
-        --module sysforge.cli \
-        --function _build_parser \
-        --author "Keith Raghubar" \
-        --author-email "aur.archlinux.org.buckskin000@passmail.net" \
-        --project-name "$pkgname" \
-        --url "$url" \
-        --output man/sysforge.1
 }
 
 package() {
@@ -66,7 +62,9 @@ package() {
     # Man page
     install -Dm644 man/sysforge.1 "$pkgdir/usr/share/man/man1/sysforge.1"
 
-    # Zsh completion
+    # Shell completions (bash + zsh; both shells are optdeps)
+    install -Dm644 completions/sysforge.bash \
+        "$pkgdir/usr/share/bash-completion/completions/sysforge"
     install -Dm644 completions/_sysforge \
         "$pkgdir/usr/share/zsh/site-functions/_sysforge"
 
@@ -84,8 +82,22 @@ package() {
     install -Dm644 etc/sysforge/bootstrap.toml \
         "$pkgdir/usr/share/sysforge/bootstrap.toml.example"
 
-    # State directory (pipeline state, build state, logs)
+    # State directory (pipeline state, build state, logs) + sentinel subdir
+    # consumed by `sysforge update` from the libalpm hooks below.
     install -Dm644 /dev/null "$pkgdir/usr/lib/tmpfiles.d/sysforge.conf"
-    printf 'd /var/lib/sysforge 0777 root root -\n' \
-        > "$pkgdir/usr/lib/tmpfiles.d/sysforge.conf"
+    {
+        printf 'd /var/lib/sysforge 0777 root root -\n'
+        printf 'd /var/lib/sysforge/sentinels 0777 root root -\n'
+    } > "$pkgdir/usr/lib/tmpfiles.d/sysforge.conf"
+
+    # Pacman PostTransaction hooks: kernel/toolchain reminders +
+    # build-state staleness signal consumed by `sysforge update`.
+    install -Dm644 etc/pacman.d/hooks/sysforge-kernel.hook \
+        "$pkgdir/usr/share/libalpm/hooks/sysforge-kernel.hook"
+    install -Dm644 etc/pacman.d/hooks/sysforge-toolchain.hook \
+        "$pkgdir/usr/share/libalpm/hooks/sysforge-toolchain.hook"
+    install -Dm644 etc/pacman.d/hooks/sysforge-buildstate.hook \
+        "$pkgdir/usr/share/libalpm/hooks/sysforge-buildstate.hook"
+    install -Dm755 tools/pacman-hook-helper.sh \
+        "$pkgdir/usr/lib/sysforge/pacman-hook-helper.sh"
 }
