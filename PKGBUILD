@@ -2,7 +2,7 @@
 # Maintainer: Adrian Insaurralde <adrianinsaval at gmail dot com>
 
 pkgname=freecad-git
-pkgver=1.1.0.41361.g774ec2cc93
+pkgver=1.2.0.47011.gc083a08b9d
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
@@ -40,7 +40,9 @@ makedepends=(
 boost
 cmake
 eigen
+fast_float
 git
+jq
 ninja
 nlohmann-json
 shiboken6
@@ -63,7 +65,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd FreeCAD
-  read -d$'/n' -r major minor patch < <(grep -Po "set\(PACKAGE_VERSION_(MAJOR|MINOR|PATCH) \"\K[0-9]*" CMakeLists.txt) || true
+  major=$(jq -r ".\"version_major\"" version.json)
+  minor=$(jq -r ".\"version_minor\"" version.json)
+  patch=$(jq -r ".\"version_patch\"" version.json)
   count=$((24266 + $(git rev-list --count d29fd7d..HEAD) ))
   hash=$(git rev-parse --short HEAD)
   printf "%d.%d.%d.%d.g%s" "$major" "$minor" "$patch" "$count" "$hash"
