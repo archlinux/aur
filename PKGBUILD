@@ -3,7 +3,8 @@
 pkgname='python-language-data'
 _proj_name='language_data'
 pkgver=1.4.0
-pkgrel=1
+# Changed on core/python==3.14.*
+pkgrel=2
 pkgdesc='Languages supplementary data for python-langcodes'
 arch=(any)
 url='https://github.com/georgkrause/language_data'
