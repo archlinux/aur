@@ -18,7 +18,7 @@ optdepends=(
 )
 source=("git+${url}#tag=v${pkgver}"
 	"git+https://github.com/magiclen/opencc-rust.git#tag=v${_opencc_rust_ver}")
-sha256sums=('365f4c1cdd94a6eb76d5db68ed1e1405429181cd6d60af5c6d251c9a148d07eb'
+sha256sums=('90a53d39e6328925f85b73f7fc7b1caae52a5cd3d2f0c387b1093d70f12368ac'
             'e707c10ee848d597f009796ca2be9676a3d0dbb12fde90aa47d00def176280fb')
 options=('!lto')
 
