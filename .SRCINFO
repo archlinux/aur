@@ -1,0 +1,12 @@
+pkgbase = mypitch-git
+	pkgdesc = Simple functional ear trainer
+	pkgver = 0.14
+	pkgrel = 1
+	arch = x86_64
+	makedepends = dotnet-sdk
+	depends = fluidsynth
+	options = !debug
+	source = git+https://github.com/saverinonrails/MyPitch
+	sha256sums = SKIP
+
+pkgname = mypitch-git
