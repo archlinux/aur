@@ -1,6 +1,6 @@
 pkgbase = python-underthesea-core
 	pkgdesc = Underthesea Core
-	pkgver = 3.3.0
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://pypi.org/project/underthesea-core
 	arch = x86_64
@@ -11,12 +11,13 @@ pkgbase = python-underthesea-core
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	depends = gcc-libs
 	depends = glibc
-	depends = python
+	depends = libgcc
 	provides = python-underthesea-core
 	conflicts = python-underthesea-core
-	source = underthesea_core-3.3.0.tar.gz::https://files.pythonhosted.org/packages/source/u/underthesea_core/underthesea_core-3.3.0.tar.gz
-	sha256sums = b22e20309cc53ceafedbee344d85367e08d566c4d497cb6e75a19a1b1c4a8259
+	options = !strip
+	options = !debug
+	source = underthesea_core-3.3.2.tar.gz::https://files.pythonhosted.org/packages/source/u/underthesea_core/underthesea_core-3.3.2.tar.gz
+	sha256sums = 7019f8f6d13f14556c032c63a9e5f77e107426654edce5e92d6513bb8ee8141a
 
 pkgname = python-underthesea-core

@@ -2,7 +2,7 @@
 
 pkgname=python-underthesea-core
 _name=${pkgname#python-}
-pkgver=3.3.0
+pkgver=3.3.2
 pkgrel=1
 epoch=
 pkgdesc="Underthesea Core"
@@ -14,9 +14,8 @@ groups=()
 provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
-    gcc-libs
     glibc
-    python
+    libgcc
 )
 makedepends=(
     maturin
@@ -27,16 +26,13 @@ makedepends=(
     python-setuptools
 )
 optdepends=()
-# options=('!strip' '!debug')
+options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('b22e20309cc53ceafedbee344d85367e08d566c4d497cb6e75a19a1b1c4a8259')
+sha256sums=('7019f8f6d13f14556c032c63a9e5f77e107426654edce5e92d6513bb8ee8141a')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
-    #     sed -i 's|0.15.0|0.25.1|g' Cargo.toml
-    #     sed -i -e 's|PyModule)|Bound<PyModule>)|' \
-    #         -e '/use pyo3\s*::.*;/a use pyo3::types::PyModule;' src/lib.rs
     python -m build --wheel --no-isolation
 }
 
