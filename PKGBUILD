@@ -6,7 +6,7 @@ _appname=hmx
 pkgname=${_gitname}-bin
 pkgdesc="A new UX layer for the terminal, built on tmux"
 
-pkgver=0.108.1
+pkgver=0.108.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('47976b36b3716dd7a25174ff7d7b7911a72f3c1ff4e810ee6f76e8e4da8ac3e0'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('77b2c75448a975fbe4ca13a17ba9b23ff0a770a21f444c6d2ebfefae1a1dfdaa')
-sha256sums_aarch64=('28d0b1534ce232c184ab1cca7f68677272b6aa3eed859e2c71ade929d4e0e1e0')
+sha256sums_x86_64=('9c3b918640d1f6eee7cd1c0ea455a57b8e69462480a1d0d45407d16e64cf1a66')
+sha256sums_aarch64=('f490fecbe75532257610b14be8c42b1825130ad7f36800a31ddbc4c24976d7dc')
 
 
 package() {
