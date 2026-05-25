@@ -1,7 +1,7 @@
 pkgbase = beekeeper-studio
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more
 	pkgver = 5.7.3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/beekeeper-studio/beekeeper-studio
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = beekeeper-studio
 	source = fix-argv.diff
 	source = disable-update-checking.diff
 	source = update-dependencies.diff
+	source = missing-log-app-name.diff
 	source = LICENSE.md
 	b2sums = 102348512aa50ef0c42fc6df81dbe86cd85a776c2f1ee9d350560b63212a0d2387eea4f3cb110ebf0fde0ae7fb6600ad51e411fce49eecb9cf178a90395dcdf1
 	b2sums = 54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0
@@ -29,6 +30,7 @@ pkgbase = beekeeper-studio
 	b2sums = c0a054bddc89f05c97ab7637b3fc9d3c787bf34db332e0b07d27d872af25677d5eb01382242e36f7884f09428bf2520bb78e951ebf321280097a55f7e3bd3f73
 	b2sums = e301ba915d5642c55d082352c7e827a732bc27e851280c7b5044b70f899d21861c737042923ae61b6f1995a59259cd69dcf269a3d54df4d8196db02cdaad03a2
 	b2sums = f5cf6e9fb90e8e9aaf52988c43fd4b472981721178584467d6a84608248e48862dff9cdbdef92aab764a9b1a34f4e3f6b6a5f901b2ff0569126b75ba066081e5
+	b2sums = 36e0dab7e6e489a19cb6709a39a0f38f2f9a34200c7af297b94b8aa5e24ecdc3ec9451a0791d79ba72b7c51ad156d9abdb2b52deee7c3b3da3a5faa637480ebc
 	b2sums = e3c500691772f577a9f96b7672ba2f823eae58b9a22bd92bc1d9d0da73620d92a9c503b5d8850b59c6e8bf7126dfb0c23e6e2a738fb10865fc85a4a2a572fbdd
 
 pkgname = beekeeper-studio
