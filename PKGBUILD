@@ -1,17 +1,17 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=faac-git
-pkgver=1.30.r6.g11215a2
-pkgrel=2
+pkgver=faac.1.50.r6.g167b5eb
+pkgrel=1
 pkgdesc="An MPEG-4 and MPEG-2 AAC encoder"
 arch=('i686' 'x86_64')
-url="https://faac.sourceforge.net/"
-license=('GPL' 'BSD' 'custom')
+url="https://sourceforge.net/projects/faac/"
+license=('LGPL-2.0-or-later')
 depends=('glibc')
-makedepends=('git')
-provides=("faac=$pkgver")
+makedepends=('git' 'meson')
+provides=("faac=$pkgver" 'libfaac.so')
 conflicts=('faac')
-source=("git+https://git.code.sf.net/p/faac/faac")
+source=("git+https://github.com/knik0/faac.git")
 sha256sums=('SKIP')
 
 
@@ -24,17 +24,23 @@ pkgver() {
 build() {
   cd "faac"
 
-  ./bootstrap
-  ./configure \
-    --prefix="/usr"
-  make
+  meson setup \
+    --buildtype=plain \
+    --prefix="/usr" \
+    --sbindir="bin" \
+    "_build"
+  meson compile -C "_build"
+}
+
+check() {
+  cd "faac"
+
+  #meson test -C "_build"
 }
 
 package() {
   cd "faac"
 
-  make DESTDIR="$pkgdir" install
-
-  install -Dm644 "README" -t "$pkgdir/usr/share/licenses/faac"
-  install -Dm644 "libfaac/kiss_fft/COPYING" -t "$pkgdir/usr/share/licenses/faac"
+  meson install -C "_build" --destdir "$pkgdir"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/faac"
 }
