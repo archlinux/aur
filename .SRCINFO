@@ -1,16 +1,18 @@
-pkgbase = minisforum-v3-dsdt
-	pkgdesc = Patch ACPI DSDT to support Minisforum v3 accelerometer
+pkgbase = minisforum-v3se-dsdt
+	pkgdesc = Patch ACPI DSDT to support the Minisforum V3 SE accelerometer (ST LSM6DS3TR-C, HID SMO8B30)
 	pkgver = 1.0.0
-	pkgrel = 2
-	url = https://github.com/trijpstra-fourlights/minisforum-v3-dsdt
+	pkgrel = 1
+	url = https://github.com/Keyaku/minisforum-v3se-dsdt
 	install = dsdt.install
 	arch = any
 	license = MIT
 	makedepends = iasl
 	depends = mkinitcpio
+	conflicts = minisforum-v3-dsdt
+	replaces = minisforum-v3-dsdt
 	source = manual://dsdt.dat
 	source = fix-dsdt.patch
 	sha256sums = e1f9721a12205c20676b8ed45670dc03f61bac420955f28aa678d09e08dfbe6f
 	sha256sums = fa87dc5e0121209c22a113717c5ea6e2e8cca24545915334d40d7986f802c523
 
-pkgname = minisforum-v3-dsdt
+pkgname = minisforum-v3se-dsdt
