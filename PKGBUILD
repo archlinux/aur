@@ -2,7 +2,7 @@
 
 pkgname=bigtube
 _pkgname=python-bigtube
-pkgver=2.0.51
+pkgver=2.0.52
 pkgrel=1
 pkgdesc="Universal Multimedia Downloader"
 arch=('any')
@@ -34,7 +34,7 @@ makedepends=(
 
 optdepends=('ffmpeg: Convert Files')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eltonfabricio10/python-bigtube/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('677a6919a558205958461a56f95a506e5b86a6ae478544f8595052914b19cb05')
+sha256sums=('13afe7d32a0afbf9c0312741522402bddea6f2a9efc777fe33e684717dbc4d9c')
 
 build() {
     cd "${_pkgname}-${pkgver}"
