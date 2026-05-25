@@ -2,9 +2,9 @@
   "version": 2,
   "data": {
     "pi-ext-cursor-rules": {
-      "version": "0.1.1",
-      "gitref": "refs/tags/v0.1.1",
-      "url": "https://github.com/dougefresher/pi-ext-cursor-rules/releases/tag/v0.1.1"
+      "version": "1.0.0",
+      "gitref": "refs/tags/v1.0.0",
+      "url": "https://github.com/dougefresher/pi-ext-cursor-rules/releases/tag/v1.0.0"
     }
   }
 }
