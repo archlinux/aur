@@ -1,46 +1,39 @@
 # Maintainer: Jay Thomas <jay@gfax.ch>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=clutch
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A highly customizable TUI RPC interface for the Transmission bittorrent client"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/jay-thomas/clutch"
 license=('GPL-3.0-only')
-depends=()
-makedepends=('gcc-libs' 'git' 'rustup')
+depends=('libgcc')
+makedepends=('git' 'cargo')
 optdepends=('bash-completion: tab completion for bash'
             'fish: tab completion for fish'
             'zsh: tab completion for zsh (requires compinit in ~/.zshrc)')
-options=('!debug')
-source=("git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+options=('!debug' '!lto')
+source=("$pkgname::git+$url#tag=v$pkgver")
+sha256sums=('dc6dddaa6c082c9cfec25ed37eae39f8300b62f89bb905a07745231761c526b5')
 
 prepare() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    export TARGET=$(rustc -vV | sed -n 's/host: //p')
-    cargo fetch --locked --target $TARGET
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export TARGET=$(rustc -vV | sed -n 's/host: //p')
-    # ring's C sources are compiled by GCC via the cc crate, which inherits
-    # CFLAGS. Arch Linux's default -flto=auto produces GCC GIMPLE LTO bitcode
-    # that rust-lld (LLVM) cannot read, causing undefined symbol errors.
-    export CFLAGS="${CFLAGS/-flto=auto/}"
-    export CFLAGS="${CFLAGS/-ffat-lto-objects/}"
-    export LDFLAGS="${LDFLAGS/,-flto=auto/}"
-    rustup show
     cargo build --frozen --release --all-features
 }
 
 check() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --release
+    cargo test --frozen --all-features
 }
 
 package() {
