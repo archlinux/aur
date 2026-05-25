@@ -1,0 +1,24 @@
+pkgbase = torflash-bin
+	pkgdesc = Search torrents, download and auto-copy to USB flash drive with FAT32 splitting
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/steveast/torflash
+	arch = x86_64
+	license = MIT
+	depends = qt5-base
+	depends = glibc
+	depends = openssl
+	depends = mkvtoolnix-cli
+	optdepends = mediainfo: media info in detail panel
+	optdepends = udisks2: safe eject of USB drives
+	provides = torflash
+	conflicts = torflash
+	noextract = TorFlash-1.7.0
+	source = TorFlash-1.7.0::https://github.com/steveast/torflash/releases/download/v1.7.0/TorFlash
+	source = torflash.desktop::https://raw.githubusercontent.com/steveast/torflash/main/torflash.desktop
+	source = torflash.svg::https://raw.githubusercontent.com/steveast/torflash/main/assets/torflash.svg
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = torflash-bin
