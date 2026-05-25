@@ -1,7 +1,7 @@
 # Maintainer: en3 <ivanyalyshev@yandex.ru>
 
 pkgname=planner-app-bin
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Prebuilt Planner App desktop app with habit dashboard"
 arch=("x86_64")
