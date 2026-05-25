@@ -1,6 +1,6 @@
 # Maintainer: rikkichy
 pkgname=openwave
-pkgver=0.1.5
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Linux control application for the Elgato Wave XLR"
 arch=('any')
@@ -17,6 +17,7 @@ package() {
     local site=$(python3 -c "import site; print(site.getsitepackages()[0])")
     install -dm755 "$pkgdir$site/wavexlr"
     install -Dm644 wavexlr/*.py "$pkgdir$site/wavexlr/"
+    install -Dm644 wavexlr/style.css "$pkgdir$site/wavexlr/style.css"
 
     # Launcher script
     install -dm755 "$pkgdir/usr/bin"
@@ -31,4 +32,12 @@ package() {
 
     # Docs
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+    # WirePlumber rule (read by setup.py at first-run, copied to user config)
+    install -Dm644 wireplumber/51-openwave-wave-xlr.conf \
+        "$pkgdir/usr/share/openwave/wireplumber/51-openwave-wave-xlr.conf"
+
+    # PipeWire virtual mix sinks (Personal / Chat / Record)
+    install -Dm644 pipewire/52-openwave-mixes.conf \
+        "$pkgdir/usr/share/openwave/pipewire/52-openwave-mixes.conf"
 }
