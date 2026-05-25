@@ -41,7 +41,7 @@ package() {
   install -Dm755 "target/release/pwsp-gui" "${pkgdir}/usr/bin/pwsp-gui"
 
   install -Dm644 "assets/pwsp-gui.desktop" "${pkgdir}/usr/share/applications/pwsp-gui.desktop"
-  install -Dm644 "assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/icon.png"
+  install -Dm644 "assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pwsp.png"
 
   install -Dm644 "assets/pwsp-daemon.service" "${pkgdir}/usr/lib/systemd/user/pwsp-daemon.service"
 }
