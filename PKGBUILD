@@ -3,7 +3,7 @@
 
 pkgname=parabolic
 _name=org.nickvision.tubeconverter
-pkgver=2026.4.1
+pkgver=2026.5.0
 pkgrel=1
 pkgdesc="Download web video and audio"
 arch=('x86_64')
@@ -26,7 +26,7 @@ provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('0e3556d8e0b2dba3702f18ee11a56a164173f845870aace80826188d5d93d867')
+sha256sums=('d452682ad3b4847f39e61e7701bfcbe47d1aa945459738fcc6e1ed6c3034bc1d')
 
 prepare() {
     cd "${pkgname^}-${pkgver}/resources/linux"
@@ -40,12 +40,14 @@ prepare() {
 
 build() {
     cd "${pkgname^}-${pkgver}"
-    dotnet publish \
-        --configuration Release \
-        --runtime linux-x64 \
-        -p:PublishReadyToRun=true \
-        -p:SelfContained=true \
-        Nickvision.Parabolic.GNOME/Nickvision.Parabolic.GNOME.csproj
+    local publish_args=(
+        --configuration Release
+        --runtime linux-x64
+        -p:PublishAot=false
+        -p:PublishReadyToRun=true
+        -p:SelfContained=false
+    )
+    dotnet publish "${publish_args[@]}" Nickvision.Parabolic.GNOME/Nickvision.Parabolic.GNOME.csproj
 }
 
 package() {
