@@ -25,7 +25,7 @@ install="${pkgname%-bin}.install"
 changelog=
 source=("$url/releases/download/v$pkgver/${pkgname%-bin}-v$pkgver-linux.tar.gz")
 noextract=()
-sha256sums=('61a8c8e1a66aacae733437dc3d2c03e5e577928a9d293d1c9f4a3edea9511cd1')
+sha256sums=('d3bdd1553701c1d921ced7950728f14338fe0f8d55b4c06fc4c81e24dce07258')
 validpgpkeys=()
 
 package() {
