@@ -1,0 +1,4 @@
+[python-coorx]
+source = "git"
+git = "https://github.com/campagnola/coorx.git"
+prefix = "v"

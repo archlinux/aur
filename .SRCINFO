@@ -1,0 +1,23 @@
+pkgbase = python-coorx
+	pkgdesc = Object-oriented linear and nonlinear coordinate system transforms
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/campagnola/coorx
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-pillow
+	checkdepends = jupyter-nbclient
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=42
+	depends = python
+	depends = python-numpy
+	depends = python-pyqtgraph
+	depends = python-scipy
+	depends = python-vispy
+	source = https://github.com/campagnola/coorx/archive/refs/tags/v2.0.1/coorx-2.0.1.tar.gz
+	b2sums = a06185316b18cf9a8498b56e2b09645beee482f0d018f143c6ed31d5910e6fc74bde8094db0b4e327dff6e9779e46b5b364ba3dbd971efccee201accf0a04f07
+
+pkgname = python-coorx
