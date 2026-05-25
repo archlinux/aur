@@ -1,0 +1,24 @@
+pkgbase = libsingularity-git
+	pkgdesc = GTK4 application and widget framework for the Singularity Desktop Environment
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/singularityos-lab/libsingularity
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-only
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	makedepends = gobject-introspection
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libgee
+	depends = json-glib
+	depends = libpeas-2
+	depends = libsoup3
+	provides = libsingularity
+	conflicts = libsingularity
+	source = git+https://github.com/singularityos-lab/libsingularity.git
+	sha256sums = SKIP
+
+pkgname = libsingularity-git
