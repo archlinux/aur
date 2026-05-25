@@ -3,13 +3,13 @@
 # Contributor: Stephen304
 
 pkgname=crowdsec
-pkgver=1.7.6
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="The open-source and collaborative security suite"
 arch=('aarch64' 'x86_64')
 url="https://www.crowdsec.net"
 license=('MIT')
-depends=('bash' 'gcc-libs' 'glibc' 're2')
+depends=('bash' 'glibc')
 makedepends=('git' 'go')
 backup=(etc/crowdsec/{acquis,config,console,profiles,simulation}.yaml
         etc/crowdsec/{local_api_credentials,online_api_credentials}.yaml
@@ -17,7 +17,7 @@ backup=(etc/crowdsec/{acquis,config,console,profiles,simulation}.yaml
         etc/crowdsec/notifications/{email,file,http,sentinel,slack,splunk}.yaml)
 install=crowdsec.install
 source=("git+https://github.com/crowdsecurity/crowdsec.git#tag=v${pkgver}")
-sha256sums=('4e3d7ba489b1959b9d8223baa06a9a22ee157912d6984dd84a43e9833a9ef659')
+sha256sums=('e7ef7f1e7a5814e9a5bbfe9ecb9dcafb958b9a100758870140286e230a4d0bda')
 
 prepare() {
     cd "${pkgname}"
@@ -32,7 +32,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    make -j1 BUILD_VERSION="v${pkgver}" build
+    make -j1 BUILD_RE2_WASM=1 BUILD_VERSION="v${pkgver}" build
 }
 
 package() {
