@@ -1,0 +1,26 @@
+pkgbase = amethystminer
+	pkgdesc = Amethyst Miner is a smart, and fully automated Monero (XMR) background miner.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/C-Yassin/AmethystMiner
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	depends = python
+	depends = python-pyqt6
+	depends = python-requests
+	depends = hwloc
+	depends = libuv
+	depends = openssl
+	depends = polkit
+	source = amethystminer-1.1.tar.gz::https://github.com/C-Yassin/AmethystMiner/archive/refs/tags/v1.1.tar.gz
+	source = xmrig-v6.26.0.tar.gz::https://github.com/xmrig/xmrig/archive/refs/tags/v6.26.0.tar.gz
+	sha256sums = ff03e4a70193c25cd7c53dca08570fcd624b955b5e828a1419f2eb6f4c4a937a
+	sha256sums = 5005144e78571f26586410c2b2ede2b0c72afe22f97f1708ea24cfb253c3939b
+
+pkgname = amethystminer
