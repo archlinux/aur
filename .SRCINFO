@@ -1,6 +1,6 @@
 pkgbase = mangowm-git
 	pkgdesc = A Wayland compositor with smooth animation
-	pkgver = r1201.d6dbb7a
+	pkgver = r1351.94380a3
 	pkgrel = 1
 	url = https://github.com/mangowm/mango
 	arch = x86_64
@@ -9,21 +9,21 @@ pkgbase = mangowm-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = wayland-protocols>=1.41
-	depends = glibc
 	depends = wayland>=1.23.1
 	depends = libinput>=1.27.1
 	depends = libdrm
 	depends = pixman
 	depends = libxkbcommon
 	depends = pcre2
+	depends = cjson
 	depends = libxcb
 	depends = xorg-xwayland
 	depends = libwlroots-0.19.so
 	depends = scenefx0.4
-	provides = mangowc
+	provides = mangowm
 	provides = wayland-compositor
-	conflicts = mangowc
-	conflicts = mangowc-wlonly-git
+	conflicts = mangowm
+	conflicts = mangowm-wlonly-git
 	options = !strip
 	options = !lto
 	source = mangowm-git::git+https://github.com/mangowm/mango.git

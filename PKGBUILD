@@ -8,13 +8,13 @@ url="https://github.com/mangowm/mango"
 arch=("x86_64")
 license=("GPL-3.0")
 depends=(
-  glibc
   'wayland>=1.23.1'
   'libinput>=1.27.1'
   libdrm
   pixman
   libxkbcommon
   pcre2
+  cjson
   libxcb
   xorg-xwayland
   'libwlroots-0.19.so'
