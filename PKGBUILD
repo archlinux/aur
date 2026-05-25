@@ -3,7 +3,7 @@
 _intpkgname=open-webui
 pkgname=$_intpkgname-uv
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -19,7 +19,7 @@ source=("LICENSE::https://raw.githubusercontent.com/open-webui/open-webui/refs/t
 sha256sums=('5f1bd74c48bf13ab0f82e177ad9e637313b92533d20ead2593d49347a47fc232'
             '47382a36a9dc39dbf6cdd0c41bbf8312d93d0f7ff560018f7555114a531ffb12'
             'bff99ba962012babcf1b3f1666c745e99179d34bbe2aebf90c4424a3e606c8e6'
-            'dbf2a9e54801e598ebf9656777318ecb09ceea37c3464b692389f1c900f46f1c'
+            '7a4a9e1f935301105ccded938c1239668e3e77d109d8a9b474892d4c5569e906'
             'c22c0b924ff6ba983091b0b94b645c8fe22012170aa65e616e7c82711fed3821'
             '7ee594b5c323a55851ff79b9addbf303f1e263f68ca66538e20e72694ae2a467')
 options=(!strip !debug)

@@ -3,7 +3,7 @@ post_install() {
     systemd-tmpfiles --create open-webui.conf
     echo ">> Enable and start the service:"
     echo ">> systemctl enable --now open-webui"
-    echo ">> Then open http://localhost:8080"
+    echo ">> Then open http://localhost:80"
 }
 
 post_upgrade() {
