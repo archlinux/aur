@@ -1,5 +1,5 @@
 pkgname=lwe-git
-pkgver=0.8.5.beta.78.61c4f59
+pkgver=0.8.5.beta.90.763f488
 pkgrel=1
 pkgdesc="Linux dynamic wallpaper shell for Wallpaper Engine content"
 arch=('x86_64' 'aarch64')
