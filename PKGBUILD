@@ -1,33 +1,29 @@
+# Maintainer: en3 <ivanyalyshev@yandex.ru>
+
 pkgname=planner-app-bin
 pkgver=1.2.0
 pkgrel=1
-pkgdesc="Prebuilt Planner App v1.2 with Habit Dashboard and minimal dependencies"
+pkgdesc="Prebuilt Planner App desktop app with habit dashboard"
 arch=("x86_64")
 url="https://gitflic.ru/project/en3/planner-app"
 license=("MIT")
-
 depends=("gtk3" "webkit2gtk-4.1")
-makedepends=()
+provides=("planner-app")
+conflicts=("planner-app")
 options=("!debug")
-
-# Источник: только бинарник
-source=("file:///home/mmm/Downloads/planner-app-1.2.0-linux-x86_64.tar.gz")
-sha256sums=("SKIP")
+source=("https://gitflic.ru/project/en3/planner-app/release/9dd65284-e0db-4306-b71a-72659ece68a9/66b20ee9-ad56-42e2-a2da-0d87a8663e1d/download")
+sha256sums=("c12d7a883dea48668c4c2697a98b60fb10e8eece902fa8dedc821da205f2ecd9")
 
 package() {
   cd "$srcdir"
 
-  # Распаковка бинарника
-  tar -xzf "planner-app-1.2.0-linux-x86_64.tar.gz"
-
-  # Установка бинарника
   install -Dm755 "planner-app" "${pkgdir}/usr/bin/planner-app"
 
-  # Установка иконки (абсолютный путь)
-  install -Dm644 "/home/mmm/planner-app/src-tauri/icons/icon.png" "${pkgdir}/usr/share/pixmaps/planner-app.png"
+  install -Dm644 "icons/icon.png" \
+    "${pkgdir}/usr/share/pixmaps/planner-app.png"
 
-  # Создание desktop entry
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/planner-app.desktop" <<EOF
+  install -Dm644 /dev/stdin \
+    "${pkgdir}/usr/share/applications/planner-app.desktop" <<EOF
 [Desktop Entry]
 Name=Planner App
 Comment=Planner App with Tasks and Habit Tracker
