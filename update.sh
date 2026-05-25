@@ -221,16 +221,7 @@ END {
 ' PKGBUILD >"$pkgbuild_tmp"  || fail "unable to update pkgver in PKGBUILD"
 cmd mv "$pkgbuild_tmp" PKGBUILD
 
-new_checksums="$(cmd makepkg -g)" || fail "failed to generate new checksums"
-
-if [[ -z $new_checksums ]]; then
-    fail "makepkg -g returned no checksum data"
-fi
-
-if [[ $new_checksums != *sums=* ]]; then
-    fail "unexpected checksum output from makepkg -g"
-fi
-
+cmd updpkgsums || fail "failed to update checksums in PKGBUILD"
 
 source_archive="${pkgname}-${latest_tag}.tar.gz"
 package_json_path="${pkgname}-${latest_tag}/packages/coding-agent/package.json"
@@ -243,30 +234,6 @@ else
 fi
 
 update_bun_makedepend "$bun_dep"
-pkgbuild_tmp="$(new_tmp)"
-awk -v new_checksums="$new_checksums" '
-function is_integrity_assignment(line) {
-    return line ~ /^(b2sums|sha512sums|sha384sums|sha256sums|sha224sums|sha1sums|md5sums|cksums)(_[[:alnum:]_]+)?=/
-}
-BEGIN {
-    replaced = 0
-}
-{
-    if (is_integrity_assignment($0)) {
-        if (!replaced) {
-            print new_checksums
-            replaced = 1
-        }
-        next
-    }
-
-    print
-}
-END {
-    exit(replaced ? 0 : 1)
-}
-' PKGBUILD >"$pkgbuild_tmp"  || fail "unable to replace checksum block in PKGBUILD"
-cmd mv "$pkgbuild_tmp" PKGBUILD
 
 cmd makepkg || fail "makepkg failed"
 cmd makepkg --printsrcinfo >.SRCINFO  || fail "failed to regenerate .SRCINFO"
