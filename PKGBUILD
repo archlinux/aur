@@ -1,6 +1,6 @@
 # Maintainer: Terrabade <terrabade@protonmail.com>
 pkgname=shelly-gnome
-pkgver=2.3.0.2.gnome1
+pkgver=2.3.1.gnome1
 pkgrel=1
 pkgdesc="Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager."
 arch=('x86_64')
@@ -23,6 +23,7 @@ depends=(
     'libarchive'
     'dconf'
     'gnupg'
+    'zstd'
 )
 optdepends=(
     'flatpak: For supporting flatpak implementation.'
@@ -33,7 +34,7 @@ makedepends=('dotnet-sdk-10.0' 'clang' 'gettext')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v${pkgver}.tar.gz")
 
-sha256sums=('26850b7f31f653288506cbaa0a493b6b28f74fcd108b7d163987ba562b374330')
+sha256sums=('dd40325a72d5806a8b735a711038393618b6b273eb719f2d7829ac7aa81a34dd')
 
 build() {
   cd "$srcdir/Shelly-ALPM-GNOME-${pkgver}"
