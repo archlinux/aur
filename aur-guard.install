@@ -1,0 +1,46 @@
+post_install() {
+    cat << 'EOF'
+
+  aur-guard installed.
+
+  ── Layer 1: pacman PreTransaction hook ───────────────────────────────────────
+  Already active. Every install/upgrade from now on triggers an audit of any
+  AUR (foreign) package's PKGBUILD found in your AUR-helper cache.
+
+  ── Layer 2: makepkg shim (optional, strongly recommended) ────────────────────
+  This is the ONLY checkpoint that runs BEFORE makepkg executes the build,
+  so it is the only one that can prevent a malicious prepare()/build() payload.
+  Activate it once with:
+
+      sudo install -m0755 /usr/share/aur-guard/makepkg-shim /usr/local/bin/makepkg
+
+  Verify:
+      which makepkg          # → /usr/local/bin/makepkg
+      makepkg --version      # should still print the real makepkg version
+
+  ── Disable temporarily ───────────────────────────────────────────────────────
+      AUR_GUARD_DISABLE=1 yay -S <pkg>
+      AUR_GUARD_DISABLE=1 makepkg -si
+
+  ── Docs ──────────────────────────────────────────────────────────────────────
+      /usr/share/doc/aur-guard/README.md
+
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    cat << 'EOF'
+
+  If you installed the makepkg shim manually, remove it now:
+
+      sudo rm /usr/local/bin/makepkg
+
+  The pacman hook in /usr/share/libalpm/hooks/aur-guard.hook was removed
+  with the package.
+
+EOF
+}
