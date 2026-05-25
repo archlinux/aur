@@ -2,7 +2,7 @@
 # Maintainer: cadapur <cadapur@proton.me>
 
 pkgname='coomerdl-bin'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Download from coomer.st'
 url='https://codeberg.org/cadapur/coomerdl'
@@ -12,23 +12,23 @@ provides=('coomerdl')
 conflicts=('coomerdl')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_linux_arm64")
-sha256sums_aarch64=('330d277df5e943daeb8990e07f8eb24a7158ffe56cd69ffe6e37429eee892190')
+sha256sums_aarch64=('bf88b8c1c4498826ec0433731d2da9f0a86e7eaaf996aa22752413e6797e3882')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('886baf5a3c15ef95e9d1dd38fd5532650692fb40fd005f26d6fe2afc042aa6bf')
+sha256sums_aarch64=('6c1a60e3304f7fbdef86aae7d7aee707442355546ca3b27e3819b38e51053c93')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.binary::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_linux_armv7")
-sha256sums_armv7h=('39743bf8443ecec81a0c97bc715d52f95a1841c6ddc5ae11d74b9425301cd93a')
+sha256sums_armv7h=('0d933a2c1f34a0aa5a711d93828a2aef26217510ac8e195e22ff20649977816c')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('9cc67e42a9c320b6a29b98b2f30ef54166c0f3aaec750041d3addf73ccadcd79')
+sha256sums_armv7h=('c4b0ce37ab8b2280111a5c12050641decf7428fb1912b56a6d7868bccdfac0f2')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_linux_amd64")
-sha256sums_x86_64=('d37de70202f0894339cf7946c3a65e982f0d25b3cf9ad492e1eb8efca6e921bc')
+sha256sums_x86_64=('d93609b4691045d359a5cc3618f395a1efac582e036f3db509fbc97ec7d8dc34')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('4d5e3556053a6c64c0ffad241d33211a8ca66e9925701524c105c4f01b82c508')
+sha256sums_x86_64=('0de8e418f770bd543f38795f32e4b96cb8c49b4ee5e31209f3eb8ab4cefeff64')
 
 package() {
-  install -Dm755 "./coomerdl_linux_arm64" "${pkgdir}/usr/bin/coomerdl"
+  install -Dm755 "./coomerdl_linux_armv7" "${pkgdir}/usr/bin/coomerdl"
 }
