@@ -1,0 +1,5 @@
+[ledgera]
+source = "git"
+git = "https://github.com/thesmokinator/ledgera.git"
+from_pattern = 'v(\d+\.\d+\.\d+)-rc.(\d+)'
+to_pattern = '\1rc\2'
