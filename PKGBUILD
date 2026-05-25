@@ -3,7 +3,8 @@
 pkgname='python-khmer-nltk'
 _proj_name="${pkgname#python-}"
 pkgver='1.6'
-pkgrel=1
+# Changed on core/python==3.14.*
+pkgrel=2
 pkgdesc='A Khmer language processing toolkit'
 arch=(any)
 url='https://github.com/VietHoang1512/khmer-nltk'

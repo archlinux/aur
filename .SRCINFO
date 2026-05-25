@@ -1,7 +1,7 @@
 pkgbase = python-khmer-nltk
 	pkgdesc = A Khmer language processing toolkit
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VietHoang1512/khmer-nltk
 	arch = any
 	license = Apache-2.0
