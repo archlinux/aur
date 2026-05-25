@@ -1,7 +1,7 @@
 # Maintainer: Cedric Krause <cedware-dev@protonmail.com>
 pkgname=bountui
-pkgver=0.13.0
-pkgrel=17
+pkgver=0.13.1
+pkgrel=18
 pkgdesc="A terminal-based user interface for interacting with HashiCorp Boundary"
 arch=("any")
 url="https://github.com/Cedware/bountui"
@@ -18,14 +18,15 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/Cedware/bountui/archive/refs/tags/v0.13.0.tar.gz")
+source=("https://github.com/Cedware/bountui/archive/refs/tags/v0.13.1.tar.gz")
 noextract=()
-sha256sums=("721f8fdcf0bce86a1f9a78a738866ea1ce2fd96c1cf11c6b5e2992b472f9f7e7")
+sha256sums=('250e1508479ed2c05304baea96590a1c400ad275e69544ddfb67de5d8660d449')
 validpgpkeys=()
 
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
+    export CFLAGS="" CXXFLAGS=""
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -33,6 +34,7 @@ build(){
     cd "$srcdir/${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export CFLAGS="" CXXFLAGS=""
     cargo build --frozen --release --all-features
 }
 
