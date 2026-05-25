@@ -1,0 +1,28 @@
+pkgbase = strata
+	pkgdesc = A fast, stutter-free clipboard manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Edu4rdSHL/Strata
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = glib2
+	options = !lto
+	source = strata-0.1.0.tar.gz::https://github.com/Edu4rdSHL/Strata/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = 76d5ae9a0fc0d9a8ab6c558bebc9d9dd298c67604d7355dbee068462352437a4cca0e1bd3a14944c45ce9b46042c9e114bd26050584d55fdb7ef63efe39def79
+
+pkgname = strata-daemon
+	pkgdesc = Strata clipboard manager backend daemon
+	depends = dbus
+	depends = wayland
+	provides = strata-daemon
+	conflicts = strata-daemon-git
+
+pkgname = gnome-shell-extension-strata
+	pkgdesc = Strata clipboard manager GNOME Shell extension
+	arch = any
+	depends = gnome-shell>=45
+	depends = strata-daemon
+	provides = gnome-shell-extension-strata
+	conflicts = gnome-shell-extension-strata-git
