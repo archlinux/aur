@@ -1,9 +1,9 @@
 # Maintainer: firlin123 <firlin123@gmail.com>
 
 pkgname=steamdeck-dkms
-_tag='f9c0a828b9c1b6c0ce16311822389b8d1c65eb54' # git rev-parse v${_tag_name}
+_tag='99737c4a54e3140c7148014980c0905d0868d7ba' # git rev-parse v${_tag_name}
 pkgver=6.8.12.valve2
-pkgrel=1
+pkgrel=2
 pkgdesc='Steam Deck EC sensors driver (DKMS)'
 url='https://github.com/firlin123/steamdeck-dkms'
 arch=('x86_64')
