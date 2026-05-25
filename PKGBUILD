@@ -2,14 +2,16 @@
 
 pkgname=osdockx-git
 _pkgname=osdockx
-pkgver=0.1.0.r59.g2e8a7e4
-pkgrel=1
-pkgdesc='A dock for Linux/X11'
+epoch=1
+pkgver=0.1.0.r0
+pkgrel=2
+pkgdesc='A lightweight, customizable OSX-inspired dock for Linux/X11'
 arch=('x86_64')
 url='https://github.com/pruefsumme/osdockx'
 license=('MIT')
 depends=('gtk4')
 makedepends=('cargo' 'git' 'pkgconf')
+options=('!debug')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
@@ -25,7 +27,7 @@ sha256sums=(
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "0.1.0.r%s" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
