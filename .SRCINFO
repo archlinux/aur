@@ -1,6 +1,6 @@
 pkgbase = itrain
 	pkgdesc = iTrain offers an easy to use solution to control your model railroad with your computer.
-	pkgver = 5.1
+	pkgver = 5.1.20
 	pkgrel = 1
 	url = https://berros.eu/
 	install = itrain.install
