@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-secret-service
-pkgver=0.8.10
+pkgver=0.8.11
 pkgrel=1
 pkgdesc="Moshpit agent daemon — GNOME Keyring / KWallet (Secret Service) unlock backend"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('moshpit-agent' 'moshpit-agent-fido2' 'moshpit-agent-systemd-creds'
 depends=('dbus')
 makedepends=('cargo' 'cmake' 'gcc' 'dbus')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/moshpit/archive/v$pkgver.tar.gz")
-sha256sums=('a1ec8ea5a52e9a7e69a57e5e174e4817a25775653fcbac68a4ade445d24477a4')
+sha256sums=('f1f91077df1df8af0ca406d542eab80b37b4b411c05d2e0855765000810af370')
 
 prepare() {
     cd "moshpit-$pkgver"
