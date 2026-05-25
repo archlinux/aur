@@ -1,21 +1,17 @@
 # Maintainer: Berk Kucuk <berkkucukk@proton.me>
 pkgname=linux-chan-ai
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Linux-themed AI chat assistant with PyQt6 GUI and voice support"
+pkgdesc="Linux-themed AI chat assistant with PyQt6 GUI, edge-tts voice, and Gemini AI"
 arch=('any')
 url="https://github.com/berk-kucuk/Linux-Chan-AI"
 license=('MIT')
-depends=('python')
+depends=('python' 'mpg123')
+optdepends=('ffmpeg: alternative audio backend (ffplay)'
+            'mpv: alternative audio backend')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/Linux-Chan-AI/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c25a55f8998e184c120175538aadace912aced128cb52694d10a9c9afd7008d1')
-
-prepare() {
-    cd "Linux-Chan-AI-${pkgver}"
-    sed -i 's|os.makedirs("temp_voice", exist_ok=True)|os.makedirs("/tmp/linux-chan-ai", exist_ok=True)|' linux-chan.py
-    sed -i 's|path = "temp_voice/voice.mp3"|path = "/tmp/linux-chan-ai/voice.mp3"|' linux-chan.py
-}
+sha256sums=('5bf0d4ddec47a283fba7361088a550d41bb4616f4cf5ef8447bbf830e73bdc05')
 
 package() {
     cd "Linux-Chan-AI-${pkgver}"

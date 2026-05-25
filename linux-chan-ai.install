@@ -10,9 +10,8 @@ post_install() {
     _setup_venv
     echo ""
     echo "==> Linux Chan AI installed!"
-    echo "==> Before running, set your Gemini API key:"
-    echo "    mkdir -p ~/.config/linux-chan-ai"
-    echo "    echo 'GEMINI_API_KEY=your_key_here' > ~/.config/linux-chan-ai/.env"
+    echo "==> Run the app and enter your Gemini API key in the Settings page."
+    echo "    Get a free key at: https://aistudio.google.com/apikey"
     echo ""
     echo "==> Run with: linux-chan-ai"
     echo ""
