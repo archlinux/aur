@@ -3,6 +3,7 @@ pkgbase = pi-ext-cursor-rules
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/dougefresher/pi-ext-cursor-rules
+	install = pi-ext.install
 	arch = any
 	license = MIT
 	source = pi-ext-cursor-rules-0.1.1.tar.gz::https://github.com/dougefresher/pi-ext-cursor-rules/archive/refs/tags/v0.1.1.tar.gz
