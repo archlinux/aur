@@ -1,0 +1,18 @@
+pkgbase = apertium-eng-spa
+	pkgdesc = Apertium translation pair for English and Spanish
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-eng-spa
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	depends = apertium
+	depends = lttoolbox
+	depends = apertium-lex-tools
+	replaces = apertium-en-es
+	source = apertium-eng-spa-0.8.1.tar.bz2::https://github.com/apertium/apertium-eng-spa/releases/download/v0.8.1/apertium-eng-spa-0.8.1.tar.bz2
+	sha256sums = 8d7ca3b0595272993342a2ab8f0195b743402aefd2a8143b21cd8dc5317ce55e
+
+pkgname = apertium-eng-spa
