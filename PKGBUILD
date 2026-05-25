@@ -15,15 +15,16 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  # Force git to fetch the live, up-to-date tags from GitHub before checking
-  git fetch --tags
-  git describe --tags --abbrev=0 | sed 's/^v//'
+  # Directly scan the developer's live repository tags over the internet
+  git ls-remote --tags https://github.com/Korthos-Software/low_latency_layer.git | \
+    awk -F/ '{print $3}' | grep -v '\^{}' | sed 's/^v//' | sort -V | tail -n1
 }
 
 build() {
   cd "${_pkgname}"
-  # Safely check out the exact release version found by pkgver()
+  
+  # Clean up any old state, fetch the latest code, and switch to the true live version
+  git fetch --all --tags
   git checkout "v${pkgver}"
   
   cmake -B ../build -S . \
