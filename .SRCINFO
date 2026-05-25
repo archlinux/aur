@@ -1,6 +1,6 @@
 pkgbase = gazan
 	pkgdesc = Browse, upload, download and manage cloud files with a GTK4 interface
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://codeberg.org/subhangadirli/gazan
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = gazan
 	depends = libadwaita
 	depends = rsync
 	depends = python-gobject
-	source = https://files.pythonhosted.org/packages/source/g/gazan/gazan-0.3.0.tar.gz
-	sha256sums = cd0c27ec054f956230cfed1f7e2f42c1c32ba810ff642c34489dd9d10fb9b104
+	source = gazan-0.4.0.tar.gz::https://codeberg.org/subhangadirli/gazan/archive/v0.4.0.tar.gz
+	sha256sums = 99d56dc4a6a2d3e2ae0e5113d14dfbcab18d675dfaea8bfce2bf6aae9b79a1bf
 
 pkgname = gazan

@@ -1,3 +1,4 @@
 [gazan]
-source="pypi"
-pypi="gazan"
+source="git"
+git="https://codeberg.org/subhangadirli/gazan"
+prefix="v"
