@@ -5,7 +5,7 @@
 pkgname=64gram-desktop
 _pkgname=64Gram
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64')
@@ -90,7 +90,7 @@ optdepends=(
   'xdg-desktop-portal: desktop integration'
 )
 
-            
+
 _td_commit=49b3bcbb6bfebf2ed44dd9f25102d2e1a94a58c4
 _td_path=td-${_td_commit}
 source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-full.tar.gz"
@@ -155,10 +155,12 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    mv "$pkgdir/usr/bin/telegram-desktop" "$pkgdir/usr/bin/64gram-desktop"
+    mv "$pkgdir/usr/bin/Telegram" "$pkgdir/usr/bin/64gram-desktop"
     install -Dm644 "$srcdir/io.github.tdesktop_x64.TDesktop.desktop" -t "$pkgdir/usr/share/applications"
-    find "$pkgdir" -type f -name "telegram.png" -exec rename telegram.png 64gram.png {} \;
-    mv "$pkgdir/usr/share/icons/hicolor/symbolic/apps/telegram-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/64gram-symbolic.svg"
+    find "$pkgdir" -type f -name "org.telegram.desktop.png" -exec rename org.telegram.desktop.png 64gram.png {} \;
+    mv "$pkgdir/usr/share/icons/hicolor/symbolic/apps/org.telegram.desktop-attention-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/64gram-attention-symbolic.svg"
+    mv "$pkgdir/usr/share/icons/hicolor/symbolic/apps/org.telegram.desktop-mute-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/64gram-mute-symbolic.svg"
+    mv "$pkgdir/usr/share/icons/hicolor/symbolic/apps/org.telegram.desktop-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/64gram-symbolic.svg"
     mkdir -p "$pkgdir/usr/share/64Gram/externalupdater.d"
     echo "/usr/bin/64gram-desktop" >"$pkgdir/usr/share/64Gram/externalupdater.d/telegram-desktop.conf"
 }
