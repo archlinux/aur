@@ -1,22 +1,22 @@
 # TODO: Use system qmlmaterial, remove qt6-shadertools and git-lfs
 
 # deps.json
-_rstd_commit=9fdc3ebeda7289bd1db7d2fb0b978e6ed0b1a63e
+_rstd_commit=036d65a66790f0635fa22cd31f3a24610b717502
 _ncrequest_commit=404868aa2aa4481e262f25d8f7d053f42b61b7b8
-_wavsen_commit=b6fca590e5b874f4d87ba0ab2a54df580e242439
-_qml_material_commit=ca470c74e51185b0848c29dfb200ba82bf982ce3
-_qextra_commit=e9984a0dc57a4abecf5795a067ff4132bcb9489d
+_wavsen_commit=609676c524e3c2364dfb46c0f0f8c601f346102a
+_qml_material_commit=8072ee668c08f8de59b4286cce56de5e3ea3af59
+_qextra_commit=2b947f16cfba8ba21c16f2a5dd953c152db78c4a
 
 pkgname=waywallen
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen
 license=(MIT)
-depends=(libgcc libstdc++ glibc libglvnd ffmpeg curl mesa sqlite vulkan-icd-loader
-         cubeb qt6-base qt6-declarative qt6-grpc)
-makedepends=(git cmake cargo clang lld vulkan-headers ninja asio pegtl qt6-shadertools git-lfs
+depends=(libgcc libstdc++ glibc ffmpeg curl mesa sqlite vulkan-icd-loader
+         qt6-base qt6-declarative qt6-grpc libpipewire)
+makedepends=(git cmake cargo "clang>=22" lld vulkan-headers ninja asio pegtl qt6-shadertools git-lfs
              corrosion)
 options=(!lto)
 source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
@@ -26,13 +26,13 @@ source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
         "git+https://github.com/hypengw/QmlMaterial.git#commit=$_qml_material_commit"
         "git+https://github.com/hypengw/QExtra.git#commit=$_qextra_commit"
         "0001-use-system-deps.diff")
-sha256sums=('d7e6d25674f1e9c590ca4c95be17f1801e2593e55a9ac117fe97cdad53a5abea'
-            'de3e235c080bd9ddd26bbddab43d64d3ab329b9ce700b267a5a9d6fb143452e8'
+sha256sums=('fc3c388a862fd231a15089b7ad9993d70474de73f6e55c67addb3a70de187f19'
+            '4084a64ce856093b1648792ed9f0c00fea9c61d59997577b2f21128a7fe0a1ec'
             '939c717802fc9e0ef13e54f547d6f7d1b2b99730eb31c6ef06211a3ffd5495e6'
-            'e56b8a07f718b335a8e00c21dd76e3d0e6df7fdf2f367baa33fed8c61b185481'
-            'd6cf31c7d8acce6485b14ca73f9cbaeba98062e4f7334afa766b6ea4d4ab4b7f'
-            'b46ad38f360b5bcd61362aa3ad97df75fc38d2a4e7e4ad3f0bb5f6c9ea42f23e'
-            'a97db557835d8a2c1fc841c2a4a8b579e4a4f890159d8b6132706f723796e9b0')
+            'f39e96c654b7459ab7c8f81df3c2b983636a08a6807fd1bd5b00bcb110bfb7d7'
+            '47d13023405957b2ff893d77e492e5f1c4651b9210fbb836defc67e4e5af773e'
+            '2966fd1c0be043d85a6c9b6b787650bc3585ad4417c808bb696b43f55cb060d5'
+            '8c3d497f311ff6294a931320fcd9a79e445eda24cbaa4857048556c1a1fcc9a2')
 
 prepare() {
     cd "$pkgname"

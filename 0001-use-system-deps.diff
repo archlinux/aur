@@ -11,15 +11,6 @@ index 82b7a2d..d20603e 100644
      # NOTE: no LOCKED here — Cargo.lock is gitignored in this repo, so cargo
      # must be allowed to (re)generate it on a fresh checkout. Flip to FROZEN
      # if a committed Cargo.lock is added later for reproducible builds.
-@@ -45,6 +45,8 @@ if(WAYWALLEN_BUILD_DAEMON)
- endif()
- 
- if(WAYWALLEN_BUILD_PLUGINS)
-+    find_package(cubeb REQUIRED)
-+    add_library(cubeb ALIAS cubeb::cubeb)
-     add_subdirectory(plugins)
- endif()
- 
 diff --git a/deps.json b/deps.json
 index 91cc43b..c8ec931 100644
 --- a/deps.json
