@@ -1,0 +1,5 @@
+[python-rtprofile]
+source = "github"
+github = "campagnola/rtprofile"
+use_latest_release = true
+prefix = "v"

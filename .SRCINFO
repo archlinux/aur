@@ -1,0 +1,24 @@
+pkgbase = python-rtprofile
+	pkgdesc = Real-time function and memory profiling tools for Python
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/campagnola/rtprofile
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=61.0
+	makedepends = cosign
+	depends = python>=3.12
+	optdepends = python-pyqtgraph>=0.13.0: Qt profiling
+	optdepends = python-guppy3: memory profiling
+	source = python-rtprofile-1.0.2.tar.gz::https://github.com/campagnola/rtprofile/archive/refs/tags/v1.0.2/rtprofile-1.0.2.tar.gz
+	source = python-rtprofile-1.0.2-release.tar.gz::https://github.com/campagnola/rtprofile/releases/download/v1.0.2/rtprofile-1.0.2.tar.gz
+	source = python-rtprofile-1.0.2-release.tar.gz.sigstore.json::https://github.com/campagnola/rtprofile/releases/download/v1.0.2/rtprofile-1.0.2.tar.gz.sigstore.json
+	sha256sums = 9d1327a887a2d2f9e6ade0dce8aa0510e01ea841ae7787fea0e4d198fae0e412
+	sha256sums = 4a7db3d8ae39ab44bc13941683cd53e0ff8abda971cd32b2b778ba3e795611f9
+	sha256sums = 59800bee2e4ad1e5eafa88e8527c4753ab9e7451c9edc17fbb3128073aea9f92
+
+pkgname = python-rtprofile
