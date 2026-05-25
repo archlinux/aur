@@ -3,7 +3,7 @@
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.116.02821
+pkgver=1.121.03429
 _electronversion=39
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing.(Prebuilt and System-wide Electron edition)"
@@ -52,9 +52,9 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/downloa
 sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
             '7222e3026ab0eda7d60698a036354a2bae4d0878b1d75fc893c91e30b60804bf'
             'c418b7c5c17b3771f53541b46ed1eff461de5871e2c7c177546e2577d480594f')
-sha256sums_aarch64=('81507e5129835b8884579d6db695188f59f9ff106959004e4aa903da986c97ab')
-sha256sums_armv7h=('0c72bc0618912ab05a5ed898feeaa4df4e4ea22e79994e523e7fa689cdc49be9')
-sha256sums_x86_64=('dd9c592f2f173c3ee803df3cc5ef49bbf7cba188c82a4d7fe3acf4b9b598d4ef')
+sha256sums_aarch64=('d7c9049dbfa0a81a6968cc040419364bfe70733f5b75cba55cafda9a7cbdb7f8')
+sha256sums_armv7h=('bf16cd90a662bae89d160afa3a6867fd7db2cd94f07ed7bec19159da11cc2887')
+sha256sums_x86_64=('8015d0bcafadff27379c1e7d64a675e40e5f922a7449efd7a4d4f4cb9ac954e1')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
