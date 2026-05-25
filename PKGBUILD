@@ -31,11 +31,12 @@ checkdepends=(
   'python-pillow'
   'jupyter-nbclient'
 )
-_pkgsrc="${url##*/}-${pkgver}"
+_pkgsrc="${_pypiname}-${pkgver}"
 source=(
-  "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+  "${url}/releases/download/v${pkgver}/${_pkgsrc}.tar.gz"
+  # "${url}/releases/download/v${pkgver}/${_pkgsrc}.tar.gz.sigstore.json"
 )
-b2sums=('a06185316b18cf9a8498b56e2b09645beee482f0d018f143c6ed31d5910e6fc74bde8094db0b4e327dff6e9779e46b5b364ba3dbd971efccee201accf0a04f07')
+sha256sums=('8552191013cf8473706a5575d03bc525a8d96a197bf3d747370e07bcd04b77fd')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
