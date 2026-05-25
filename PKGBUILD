@@ -4,50 +4,141 @@
 # Contributor: Daniil Kovalev <daniil@kovalev.website>
 pkgname=64gram-desktop
 _pkgname=64Gram
-pkgver=1.1.58
+pkgver=1.2.3
 pkgrel=2
 epoch=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64')
 url="https://github.com/TDesktop-x64/tdesktop"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash' 'ada'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'abseil-cpp' 'libdispatch'
-         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0'
-         'libxcomposite' 'libvpx' 'libxdamage' 'kcoreaddons' 'jemalloc' 'openh264')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
-             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
-             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'python-packaging'
-             'dos2unix' 'glib2-devel')
-optdepends=('webkit2gtk: embedded browser features'
-            'xdg-desktop-portal: desktop integration')
+depends=(
+  'abseil-cpp'
+  'ada'
+  'fcitx5'
+  'ffmpeg'
+  'glib2'
+  'glibc'
+  'hicolor-icon-theme'
+  'hunspell'
+  'jemalloc'
+  'kcoreaddons'
+  'libavif'
+  'libdispatch'
+  'libgcc'
+  'libheif'
+  'libjpeg-turbo'
+  'libjxl'
+  'libpipewire'
+  'libsigc++-3.0'
+  'libstdc++'
+  'libvpx'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxkbcommon'
+  'libxrandr'
+  'libxtst'
+  'lz4'
+  'minizip'
+  'openal'
+  'openh264'
+  'openssl'
+  'pipewire'
+  'protobuf'
+  'qt6-base'
+  'qt6-imageformats'
+  'qt6-svg'
+  'qt6-wayland'
+  'rnnoise'
+  'xxhash'
+  'zlib'
+)
 
+makedepends=(
+  'boost'
+  'boost-libs'
+  'cmake'
+  'dos2unix'
+  'extra-cmake-modules'
+  'fmt'
+  'git'
+  'glib2-devel'
+  'gobject-introspection'
+  'gperf'
+  'libtg_owt'
+  'meson'
+  'microsoft-gsl'
+  'mm-common'
+  'ninja'
+  'perl-xml-parser'
+  'plasma-wayland-protocols'
+  'python'
+  'python-packaging'
+  'range-v3'
+  'tl-expected'
+  'wayland-protocols'
+)
+optdepends=(
+  'geoclue: geoinformation support'
+  'geocode-glib-2: geocoding support'
+  'geocode-glib: geocoding support'
+  'webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1'
+  'webkit2gtk: embedded browser features provided by webkit2gtk'
+  'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)'
+  'xdg-desktop-portal: desktop integration'
+)
+
+            
+_td_commit=49b3bcbb6bfebf2ed44dd9f25102d2e1a94a58c4
+_td_path=td-${_td_commit}
 source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-full.tar.gz"
-        "block-sponsored_messages.patch"
         "fix-lzma-link.patch"
-        "qt-6.9.patch"
-        "io.github.tdesktop_x64.TDesktop.desktop")
-
+        "io.github.tdesktop_x64.TDesktop.desktop"
+        "https://github.com/tdlib/td/archive/${_td_commit}.tar.gz"
+        "tdesktop-fix-minizip-includes.patch")
 noextract=("${_pkgname}-${pkgver}-full.tar.gz")
-
-sha512sums=('e80e33ff847e17ba106d066810e946f628c9af1c90f2035829d7ab8da0b6072639e0480424dd528dc471cc2ce490079b072641519fe704a8ab4d6bb7f37b3d23'
-            '0e0f0dcb99ed6c7566e7a75404e39e16c27658eb5999e041a82aa975447ce8719ce6703cc36efc039e16a3ff3721f4a7c76df24f0ead9aa48ce5e23001142072'
-            'd813a5ac6ff2208b693ecf494d7bf036087e223662f9f34aaaeafea0afe0fe798e867b9610f7221ea80319865502c20b61310d5a31634b888793873d63322463'
-            'c9ed195bec0cad9331d3414941402b11d45455d1a947d02eac718ba9809329b26aca7ed7ee7a7224f820ed7239a2a2da375731f04bcba2482021e3ec32612f96'
-            'ea027bc2d40c74507adf32380444207210a8c31cdba57f3f468d23d8e9c7376647cc8c713f188660f9b1dacd9041227aafd5a27c7889f47ea3985712b6b74b8b')
+sha512sums=('07054a46297d724231370fb4dfc73f13af6880deeac4d544fa0a0112bff85dea672d849e78decef468f267f24b75d19e100bebb838df48639e1553432577bbc2'
+            'e15cdc8513793f17e4b6ca2dfab5b4bbf22d0934c1e88038957b9004865edb4101a3133482708aab6844de3c1dfdac9c98970de684c1508634180d90c84345f7'
+            'ea027bc2d40c74507adf32380444207210a8c31cdba57f3f468d23d8e9c7376647cc8c713f188660f9b1dacd9041227aafd5a27c7889f47ea3985712b6b74b8b'
+            '6a906ccaaf89232ade9977e02c5e27155379d740aac229b3656a9be7cb9b34db26c63e0654c331648248649097845ad5bf60ebd4b4c68160e5021d9b24812c46'
+            'd9765588e92f154d83b95dc2840207bf22b26b6ca37b4d5cdfdb5e27a00c9e1ebcc9cd475a96bbcc5b02c24f6892320e009f843aa6b172a1820814b952a772eb')
 
 prepare() {
+    mv td-${_td_commit} td
     LANG=C.UTF-8 bsdtar -xf ${_pkgname}-${pkgver}-full.tar.gz
     cd $_pkgname-$pkgver-full
-    #patch -Np1 --binary -i ../block-sponsored_messages.patch
-    patch -p1 --binary < ../fix-lzma-link.patch
     find "${srcdir}"/ -type f -exec dos2unix {} \;
-    patch -p1 --binary -d Telegram/lib_base < ../qt-6.9.patch
+
+    # Restore symlinks that were stored as text files in the archive
+    find . -type f ! -path '*/.git*' -size -200c | while read -r f; do
+        if [ -f "$f" ]; then
+            line=$(head -n 1 "$f" 2>/dev/null | tr -d '\r\n')
+            if [[ "$line" =~ ^\.\./ ]] || [[ "$line" =~ ^\./ ]]; then
+                rm "$f"
+                ln -s "$line" "$f"
+            fi
+        fi
+    done
+
+    patch -p1 --binary < ../fix-lzma-link.patch
+    patch -Np1 -d Telegram/lib_base -i "$srcdir"/tdesktop-fix-minizip-includes.patch
+
 }
 
 build() {
     CXXFLAGS+=' -ffat-lto-objects'
+
+  cmake -S td -B td/build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX="$PWD/td/install" \
+    -Wno-dev \
+    -DTD_E2E_ONLY=ON
+  cmake --build td/build
+  cmake --install td/build
+
+
 
     cmake \
         -B build \
@@ -55,6 +146,7 @@ build() {
         -G Ninja \
         -DCMAKE_VERBOSE_MAKEFILE=ON \
         -DCMAKE_INSTALL_PREFIX="/usr" \
+        -Dtde2e_DIR="$PWD/td/install/lib/cmake/tde2e" \
         -DCMAKE_BUILD_TYPE=Release \
         -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON \
         -DTDESKTOP_API_TEST=ON
