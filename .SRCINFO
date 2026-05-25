@@ -1,0 +1,21 @@
+pkgbase = perl-module-cpmfile
+	pkgdesc = Parse cpmfile
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://metacpan.org/dist/Module-cpmfile
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-module-cpanfile>=1.1004
+	checkdepends = perl-test-simple
+	makedepends = perl-module-build-tiny>=0.053
+	depends = perl-cpan-meta
+	depends = perl-cpan-meta-requirements>=2.130
+	depends = perl-exporter>=5.57
+	depends = perl-scalar-list-utils
+	depends = perl-yaml-pp>=0.027
+	depends = perl>=5.24.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SK/SKAJI/Module-cpmfile-v1.0.0.tar.gz
+	sha256sums = bd7fd447382bc34ec0197ece8cee4fcc6fd9b85ae72ecffd3649abe1b26928ad
+
+pkgname = perl-module-cpmfile

@@ -1,0 +1,3 @@
+[perl-module-cpmfile]
+source = "cpan"
+cpan = "Module-cpmfile"
