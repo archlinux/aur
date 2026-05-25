@@ -1,8 +1,8 @@
 # Maintainer: CsiPA0723 <csizipeti0723 at gmail dot com>
 _pkgname=weylus
 pkgname="$_pkgname-community-git"
-pkgver=2026.5.21.r0.g1655735
-pkgrel=2
+pkgver=2026.5.22.r0.g1b21a9b
+pkgrel=1
 pkgdesc="Use your tablet as graphic tablet/touch screen on your computer."
 arch=("x86_64")
 url="https://github.com/electronstudio/WeylusCommunityEdition"
@@ -14,7 +14,7 @@ makedepends=(rust pnpm libx11 pkg-config git cmake nasm)
 depends=(cairo dbus gst-plugins-base-libs libdrm libva libxcomposite libxcursor libxinerama libxkbcommon libxrandr libxtst pango ffmpeg)
 optdepends=("gst-plugin-pipewire: Wayland and or pipewire support")
 source=("$_pkgname::git+$url.git" "community.patch")
-sha256sums=("SKIP" "89147a45d3357ba4ea5643ecd55546004815b9381c4dbfd46ddf6ed277a102ef")
+sha256sums=("SKIP" "48a038ee689b4cf3dc7e342bcde0a1e697d2e674120db20c89e6b3190aa753c7")
 
 prepare() {
   export CARGO_HOME=$SRCDEST/.cargo
