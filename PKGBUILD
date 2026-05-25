@@ -6,7 +6,7 @@
 pkgname=python-spotifyscraper
 _pkgname=spotifyscraper
 pkgver=v2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Spotify Scraper to extract all the information from spotify, download mp3 with cover of the song"
 arch=('any')
 url="https://spotifyscraper.readthedocs.io"

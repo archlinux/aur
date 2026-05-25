@@ -1,7 +1,7 @@
 pkgbase = python-spotifyscraper
 	pkgdesc = Spotify Scraper to extract all the information from spotify, download mp3 with cover of the song
 	pkgver = v2.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spotifyscraper.readthedocs.io
 	arch = any
 	license = MIT
