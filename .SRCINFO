@@ -1,0 +1,13 @@
+pkgbase = itrain
+	pkgdesc = iTrain offers an easy to use solution to control your model railroad with your computer.
+	pkgver = 5.1
+	pkgrel = 1
+	url = https://berros.eu/
+	install = itrain.install
+	arch = x86_64
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://berros.eu/download/5-1/iTrain_5.1_linux_jre_x64.deb
+	sha512sums_x86_64 = SKIP
+
+pkgname = itrain

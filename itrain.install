@@ -1,0 +1,8 @@
+post_install() {
+	desktop-file-install /opt/iTrain/iTrain.desktop
+
+}
+
+post_upgrade() {
+	post_install
+}
