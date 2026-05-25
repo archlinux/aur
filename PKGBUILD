@@ -2,12 +2,13 @@
 
 pkgname=brouter
 pkgver=1.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline-capable OSM bike/foot routing engine with elevation-aware profiles (routing server)"
 arch=('any')
 url="https://github.com/abrensch/brouter"
 license=('MIT')
-depends=('java-runtime-headless')
+# BRouter 1.7.9 jars are compiled for Java 11 (class-file major 55).
+depends=('java-runtime-headless>=11')
 backup=('etc/conf.d/brouter')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.zip::https://github.com/abrensch/brouter/releases/download/v$pkgver/brouter-$pkgver.zip"
@@ -18,8 +19,8 @@ source=("$pkgname-$pkgver.zip::https://github.com/abrensch/brouter/releases/down
         'brouter.tmpfiles')
 sha256sums=('5f8ea4acc72d791589cbd7453c472df12ab955e2ad42e6ac84339ed883ce7987'
             '73408906d3e5226b76a3649051221c7faadb076fac25013feb600821b923f05e'
-            '010b99a52ef8e9ee552b6d40d45ca2ea9dab0b796de10193cc3aafa2f878cdc8'
-            'fd651cc0395f174e061dbe9ce010ae6132e91ebad3f36c521f5f9d48c7a791dd'
+            '74fbe285743d372fc2c92dcd6bd041cbf06e9356dde24f368d75c71092e7ab77'
+            '788f319b1b64f90259f492e426909bd7897d3678e0934099c630650bf8180b78'
             '4846c6f3d7122823623de3d5d078928ce5e1b156f3f1b4d7e6730ee1b8af2541'
             '5b3abbcf2ad4012ad3ce4b8312ac9c15532985a5b90f71dbfbc9a030433bb411')
 

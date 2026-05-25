@@ -15,12 +15,16 @@ Environment=BROUTER_PORT=17777
 Environment=BROUTER_MAXTHREADS=1
 Environment=BROUTER_BIND=127.0.0.1
 Environment="JAVA_OPTS=-Xmx256M -Xms128M -DmaxRunningTime=300"
+# Java launcher. Defaults to the system default (/usr/bin/java); needs Java 11+.
+# Pin a specific JRE here (or in /etc/conf.d/brouter) if it isn't the default,
+# e.g. JAVA=/usr/lib/jvm/java-17-openjdk/bin/java
+Environment=JAVA=/usr/bin/java
 EnvironmentFile=-/etc/conf.d/brouter
 
 # The jar's Main-Class is the CLI router, so the server class is invoked off the
 # classpath. $JAVA_OPTS (single $) is split on whitespace into separate flags;
 # the ${...} args stay single tokens.
-ExecStart=/usr/bin/java $JAVA_OPTS -cp /usr/share/java/brouter/brouter.jar btools.server.RouteServer ${BROUTER_SEGMENTS} ${BROUTER_PROFILES} ${BROUTER_CUSTOMPROFILES} ${BROUTER_PORT} ${BROUTER_MAXTHREADS} ${BROUTER_BIND}
+ExecStart=/usr/bin/env ${JAVA} $JAVA_OPTS -cp /usr/share/java/brouter/brouter.jar btools.server.RouteServer ${BROUTER_SEGMENTS} ${BROUTER_PROFILES} ${BROUTER_CUSTOMPROFILES} ${BROUTER_PORT} ${BROUTER_MAXTHREADS} ${BROUTER_BIND}
 
 Restart=on-failure
 RestartSec=2
