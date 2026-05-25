@@ -1,18 +1,18 @@
 pkgbase = ai-gate-bin
 	pkgdesc = All your AI tools.ChatGPT • Claude • Gemini • Perplexity • Qwen • Grok.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.5.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://aigate.inulute.com/
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron34
-	provides = ai-gate=4.5.0
+	provides = ai-gate=4.6.0
 	conflicts = ai-gate
 	options = !emptydirs
 	options = !strip
-	source = ai-gate-4.5.0.deb::https://github.com/inulute/ai-gate/releases/download/v4.5.0/AI.Gate-4.5.0.deb
+	source = ai-gate-4.6.0.deb::https://github.com/inulute/ai-gate/releases/download/v4.6.0/AI.Gate-4.6.0.deb
 	source = ai-gate.sh
-	sha256sums = b2e14930c3fa86078bea893f81a469d3e0e4a0a90997662eb3d6d646a353b248
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = b98c825be5243dd057acf21d93dbe7b8142115d3f6c8ab1a24b37b02f2a3560a
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = ai-gate-bin
