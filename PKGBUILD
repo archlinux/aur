@@ -2,7 +2,7 @@
 # Maintainer: cadapur <cadapur@proton.me>
 
 pkgname='coomerdl'
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc='Download from coomer.st'
 url='https://codeberg.org/cadapur/coomerdl'
@@ -12,7 +12,7 @@ provides=('coomerdl')
 conflicts=('coomerdl')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://codeberg.org/cadapur/coomerdl/releases/download/${pkgver}/coomerdl-${pkgver}.tar.gz")
-sha256sums=('9c5be3a940b987ac35a6b89bfeb8ba40ebd8e60d6b96f8d2e3da27f54d70f915')
+sha256sums=('ed9737e252408e198eba69ebd512b3454a7a33b0c75520a2663d6915fcea8f2d')
 prepare() {
   cd "${pkgname}_${pkgver}"
   go mod download
