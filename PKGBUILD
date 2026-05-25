@@ -1,6 +1,6 @@
 # Maintainer: Ashutosh Tiwari <contact@ashutoshtiwari.dev>
 pkgname=qwarp
-pkgver=0.8.0
+pkgver=0.8.2
 pkgrel=1
 _warpver=2026.4.1350.0
 pkgdesc="A lightweight, Wayland-native Qt6 wrapper for Cloudflare WARP"
@@ -15,7 +15,7 @@ install=qwarp.install
 # Bash substitution converts "0.6.0_alpha" to "0.6.0-alpha" for GitHub tags
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iashutoshtiwari/qwarp/archive/refs/tags/v${pkgver/_/-}.tar.gz"
         "cloudflare-warp-${_warpver}.deb::https://pkg.cloudflareclient.com/pool/noble/main/c/cloudflare-warp/cloudflare-warp_${_warpver}_amd64.deb")
-sha256sums=('cc9d2488042b0e24b385c261767b9eef091fd9971479f626edb9976b62d8e522'
+sha256sums=('b6ee275298e4c5e142bfe710b9de546045a43505b7f1740ca3ac504e602f8d27'
             'f35ae16dd97e8a78dd970341cb6ae3e8131af1962f79cb7b9d698a874eab7f2a')
 noextract=("cloudflare-warp-${_warpver}.deb")
 
