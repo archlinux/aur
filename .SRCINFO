@@ -1,6 +1,6 @@
 pkgbase = yamagi-quake2-git
 	pkgdesc = Enhanced Quake II engine optimized for modern systems (development version)
-	pkgver = 8.50.r1.ge8e0f678
+	pkgver = 8.70.r12.gbfbb3de9
 	pkgrel = 1
 	url = https://www.yamagi.org/quake2/
 	install = yamagi-quake2.install
