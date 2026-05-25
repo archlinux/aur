@@ -1,6 +1,6 @@
 pkgbase = chia-cli-bin
 	pkgdesc = A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Binary Release, Without GUI
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://www.chia.net/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = chia-cli-bin
 	conflicts = chia-cli
 	replaces = chia-bin-cli
 	options = !strip
-	source_x86_64 = https://github.com/Chia-Network/chia-blockchain/releases/download/2.7.0/chia-blockchain-cli_2.7.0-1_amd64.deb
-	sha256sums_x86_64 = 96dec5d308f44cddeb92b2382f8ec56ed584442cd1f9cf99e4190d0f8f3c9d0c
-	source_aarch64 = https://github.com/Chia-Network/chia-blockchain/releases/download/2.7.0/chia-blockchain-cli_2.7.0-1_arm64.deb
-	sha256sums_aarch64 = 859e16910a44eb61bd15e9a317ee65b57e1e66c73c0fbabf37fc63ce62231ccc
+	source_x86_64 = https://github.com/Chia-Network/chia-blockchain/releases/download/2.7.1/chia-blockchain-cli_2.7.1-1_amd64.deb
+	sha256sums_x86_64 = 2e6addf80c1c9f10c992a43c9df6209f1fcf3eebceef75873eafac155abcdcba
+	source_aarch64 = https://github.com/Chia-Network/chia-blockchain/releases/download/2.7.1/chia-blockchain-cli_2.7.1-1_arm64.deb
+	sha256sums_aarch64 = 4402643891fb23c1add55464d47eb5517e28ed29e889684db2e7f12a2c1fa32b
 
 pkgname = chia-cli-bin
