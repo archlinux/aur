@@ -25,9 +25,6 @@ prepare() {
     # Limit workspace applications to avoid mysterious dependency issues
     sed -i 's@"applications/\*",@"applications/pass*",@' package.json
 
-    # Upgrade out-of-date netlify-cli dependency (fixes build issues down the chain)
-    sed -i 's@17\.38\.1@23.15.1@' packages/atoms/package.json
-
     # Bypass pass-desktop-native build script
     sed -i 's@build:multi@build@' applications/pass-desktop/package.json
 
