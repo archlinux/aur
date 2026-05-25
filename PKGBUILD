@@ -1,6 +1,6 @@
 # Maintainer: indyfive11 <203553604+indyfive11@users.noreply.github.com>
 pkgname=gabagent
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Claude Code-style AI coding assistant built on the Gab AI Developer API"
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f32d461942f87c23f43253f9bbe19ba0abf4ec0043f43899481f595d60cd7dd8')
+sha256sums=('8c3c92ef2c05510b0136d0a639e443a562c9c479d29b6103c97d68d79a55dc5b')
 
 build() {
   cd "$pkgname-$pkgver"
