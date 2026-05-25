@@ -1,0 +1,17 @@
+pkgbase = coomerdl
+	pkgdesc = Download from coomer.st
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://codeberg.org/cadapur/coomerdl
+	arch = aarch64
+	arch = x86_64
+	license = AGPL
+	makedepends = go
+	makedepends = git
+	conflicts = coomerdl
+	provides = coomerdl
+	
+	source = https://codeberg.org/cadapur/coomerdl/releases/1.1.2/coomerdl-1.1.2.tar.gz
+	sha256sums = 183401d2b7ae35ec377d2c3ee18b456473793dbafbeff6294daadccbec8e4e07
+	
+pkgname = coomerdl
