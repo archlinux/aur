@@ -1,6 +1,6 @@
 pkgbase = flowee
 	pkgdesc = Flowee provides the shortest path to Bitcoin Cash
-	pkgver = 2026.05.0
+	pkgver = 2026.05.2
 	pkgrel = 1
 	url = https://flowee.org/
 	install = flowee.install
@@ -19,12 +19,13 @@ pkgbase = flowee
 	provides = flowee-libs
 	options = !lto
 	backup = etc/flowee/flowee.conf
+	backup = etc/flowee/indexer.conf
 	backup = etc/flowee/rest-service.conf
-	source = https://bitcoincashcode.org/Flowee/thehub/archive/2026.05.0.tar.gz
+	backup = etc/flowee/bitcore-proxy.conf
+	backup = etc/flowee/walletStore.conf
+	source = https://bitcoincashcode.org/Flowee/thehub/archive/2026.05.2.tar.gz
 	source = flowee.logrotate
-	source = flowee.conf
-	sha256sums = 86c3a71ac5d02d270361c3eff4318f6598b2fcddfc0d6278cdde5f18adcd7947
+	sha256sums = 764d68246bce6cecef34b6aac1c2b87675ebe4ddaf0f5f88ab8721324e79711f
 	sha256sums = 0438e1a44523aeb3bbecd60fd920ca7b2aacd267b5cf988ab77a44eb7c03929e
-	sha256sums = 59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89
 
 pkgname = flowee
