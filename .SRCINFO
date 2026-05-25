@@ -1,0 +1,13 @@
+pkgbase = pi-ext-cursor-sdk
+	pkgdesc = pi provider extension backed by Cursor SDK local agents
+	pkgver = 0.1.18
+	pkgrel = 1
+	url = https://github.com/fitchmultz/pi-cursor-sdk
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = pi-ext-cursor-sdk-0.1.18.tar.gz::https://github.com/fitchmultz/pi-cursor-sdk/archive/refs/tags/v0.1.18.tar.gz
+	sha256sums = 8da62187da52be484e51dac64f6be96732628d8d2fce9eb78b940fdabb610b86
+
+pkgname = pi-ext-cursor-sdk

@@ -1,0 +1,5 @@
+*.gz
+newver.json
+pkg/
+src/
+*.zst
