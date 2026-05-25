@@ -10,7 +10,7 @@ pkgbase = kvn-tui-bin
 	optdepends = sing-box: VPN backend for connections
 	provides = kvn-tui
 	conflicts = kvn-tui
-	source = https://github.com/yarikov/kvn-tui/releases/download/v{{VERSION}}/kvn-tui-{{VERSION}}-x86_64-linux.tar.gz
-	sha256sums = 9873c8994efea0dedba499a7690aee94fa948463456f5f0e5b28b82c67efecab
+	source = https://github.com/yarikov/kvn-tui/releases/download/v0.1.4/kvn-tui-0.1.4-x86_64-linux.tar.gz
+	sha256sums = 793cda0c64b48e2c868a555abdcc58e4aabacec5040ddef39a5a3c26aab97793
 
 pkgname = kvn-tui-bin
