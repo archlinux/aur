@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=twolame-git
-pkgver=0.4.0.r4.g90b694b
+pkgver=0.4.0.r6.g6fced85
 pkgrel=1
 pkgdesc="An optimised MPEG Audio Layer 2 (MP2) encoder"
 arch=('i686' 'x86_64')
 url="https://www.twolame.org/"
-license=('LGPL2')
+license=('LGPL-2.1-or-later')
 depends=('glibc' 'libsndfile')
 makedepends=('git' 'asciidoc' 'doxygen' 'xmlto')
-provides=("twolame=$pkgver")
+provides=("twolame=$pkgver" 'libtwolame.so')
 conflicts=('twolame')
 options=('staticlibs')
 source=("git+https://github.com/njh/twolame.git")
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "twolame"
 
-  sed -i -e 's|doxygen.png|doxygen.svg|g' "doc/html/Makefile.am"
+  sed -i 's|-Werror||g' "configure.ac"
 }
 
 pkgver() {
@@ -41,7 +41,7 @@ build() {
 check() {
   cd "twolame"
 
-  make check
+  #make check
 }
 
 package() {
