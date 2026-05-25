@@ -2,8 +2,8 @@
 # Contributor: Julie Shapiro <jshapiro at nvidia dot com>
 
 pkgname=p4
-_version=2025.2
-pkgver=2025.2.2907753
+_version=2026.1
+pkgver=2026.1.2951233
 pkgrel=1
 
 pkgdesc="Perforce's Helix command-line client"
@@ -20,7 +20,7 @@ source=(LICENSE
 
 
 sha256sums=('c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32'
-            'f811a905912b7c766d19558e7169c3ec7455b3f23ef2daf08b35372159106c53')
+            'c022340f8b22b46c9379a5fd5192f3ec751b24fb48195a58212052a186b5c874')
 
 # Perforce Software (Package Signing) <support+packaging@perforce.com>
 validpgpkeys=('7123CB760FF18869'
