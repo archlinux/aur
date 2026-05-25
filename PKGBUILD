@@ -6,7 +6,7 @@ pkgdesc="Elgato Stream Deck GUI-Konfigurator und Controller"
 arch=('x86_64')
 url="https://github.com/ricwoh/streamdeck-controller"
 license=('MIT')
-depends=('python' 'hidapi' 'python-pillow' 'python-pyside6')
+depends=('python' 'hidapi')
 makedepends=('python-pip')
 install="$pkgname.install"
 source=("git+https://github.com/ricwoh/streamdeck-controller.git")
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
-    pip install streamdeck --target "$srcdir/pylibs" --quiet
+    pip install streamdeck pillow PySide6 --target "$srcdir/pylibs" --quiet
 }
 
 package() {

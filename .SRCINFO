@@ -9,8 +9,6 @@ pkgbase = streamdeck-controller
 	makedepends = python-pip
 	depends = python
 	depends = hidapi
-	depends = python-pillow
-	depends = python-pyside6
 	source = git+https://github.com/ricwoh/streamdeck-controller.git
 	sha256sums = SKIP
 
