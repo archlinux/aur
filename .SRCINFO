@@ -1,17 +1,18 @@
 pkgbase = link-lang
-	pkgdesc = Link programming language compiler
-	pkgver = 0.4
-	pkgrel = 5
+	pkgdesc = Link programming language interpreter
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://github.com/Pilot0253/link-lang
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = gcc
-	makedepends = raylib
+	makedepends = make
 	depends = gcc-libs
+	depends = raylib
 	conflicts = link-lang-git
 	conflicts = link-lang-bin
-	source = https://github.com/Pilot0253/link-lang/archive/refs/tags/v0.4.tar.gz
-	sha256sums = 347119138e0b75975892a70fe7a38b12bb310cc733900f3238df9f3a49b1da16
+	source = https://github.com/Pilot0253/link-lang/archive/refs/tags/v0.5.tar.gz
+	sha256sums = 376097c04939a9bdea15b214f4e8995073269e4bd7d0efcd2da403b50d114d71
 
 pkgname = link-lang

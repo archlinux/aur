@@ -1,27 +1,29 @@
 # Maintainer: Krzysztof Demir Kuźniak <krzysztofdemirkuzniak@gmail.com>
 
 pkgname=link-lang
-pkgver=0.4
-pkgrel=5
-pkgdesc="Link programming language compiler"
+pkgver=0.5
+pkgrel=1
+pkgdesc="Link programming language interpreter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pilot0253/link-lang"
 license=('MIT')
 
-depends=('gcc-libs')
-makedepends=('gcc' 'raylib')
+depends=('gcc-libs' 'raylib')
+makedepends=('gcc' 'make')
 
 conflicts=('link-lang-git' 'link-lang-bin')
 
 source=("https://github.com/Pilot0253/link-lang/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('347119138e0b75975892a70fe7a38b12bb310cc733900f3238df9f3a49b1da16')
+sha256sums=('376097c04939a9bdea15b214f4e8995073269e4bd7d0efcd2da403b50d114d71')
 
 build() {
     cd "$srcdir/link-lang-$pkgver"
-    g++ -std=c++17 -o link-lang src/*.cpp -I include -lraylib
+    make release
 }
 
 package() {
     cd "$srcdir/link-lang-$pkgver"
-    install -Dm755 link-lang "$pkgdir/usr/bin/link-lang"
+
+    install -Dm755 linklang "$pkgdir/usr/bin/linklang"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
