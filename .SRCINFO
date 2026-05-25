@@ -1,6 +1,6 @@
 pkgbase = nuance-emu
 	pkgdesc = A Nuon emulator resurrecting the late Riff's original Nuance project
-	pkgver = r363.2162dcb
+	pkgver = r367.c8c550a
 	pkgrel = 1
 	url = https://github.com/andkrau/NuanceResurrection
 	arch = x86_64
