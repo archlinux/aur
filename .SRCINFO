@@ -1,0 +1,17 @@
+pkgbase = badapple
+	pkgdesc = Bad Apple!! ASCII art player for the terminal
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://github.com/IRRatium/badapple-aur
+	arch = any
+	license = MIT
+	makedepends = ffmpeg
+	makedepends = curl
+	makedepends = ascii-image-converter
+	depends = bash
+	depends = mpv
+	depends = python
+	source = badapple-1.0.0.tar.gz::https://github.com/IRRatium/badapple-aur/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = badapple
