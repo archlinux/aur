@@ -8,7 +8,9 @@ url="https://github.com/asermax/seemux"
 license=('LicenseRef-unknown')
 depends=('gtk4' 'gtk4-layer-shell' 'vte4' 'glib2' 'pango' 'glibc')
 makedepends=('cargo' 'git')
-optdepends=('socat: Claude Code hook communication')
+optdepends=('socat: Claude Code hook communication'
+            'carbonyl: terminal-based browser for browser pane support'
+            'pi-coding-agent: Pi AI coding agent (for seemux-pi extension)')
 provides=('seemux')
 conflicts=('seemux' 'seemux-bin')
 source=("$pkgname::git+https://github.com/asermax/seemux.git")
@@ -41,4 +43,8 @@ package() {
   install -Dm0644 "extra/logo/seemux-256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/seemux.png"
   install -Dm0644 "extra/logo/seemux-48x48.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/seemux.png"
   install -Dm0644 "extra/logo/seemux-512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/seemux.png"
+
+  # Pi extension
+  install -Dm0644 "plugins/seemux-pi/package.json" "$pkgdir/usr/share/seemux/pi-extension/package.json"
+  install -Dm0644 "plugins/seemux-pi/index.ts" "$pkgdir/usr/share/seemux/pi-extension/index.ts"
 }
