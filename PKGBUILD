@@ -3,7 +3,7 @@
 _pkgname=epy-ereader
 _pkgname_fork=$_pkgname-mcepl
 pkgname=$_pkgname_fork-git
-pkgver=2025.5.27.r4.gf437f59
+pkgver=2025.5.27.r5.g18f3f46
 pkgrel=1
 pkgdesc="fork of wustho/epy with continued development"
 url="https://git.sr.ht/~mcepl/epy"
@@ -20,7 +20,7 @@ _pkgname_short=epy
 pkgver() {
     cd "$_pkgname_short"
     # tag commit is duplicated in src; the tag is not on master, fix
-    git tag v2025.5.27 705a75018d8e7f264c9f03db15fdcf129acabbf0 -f
+    git tag 2025.5.27 fa7f807cf53c5b2a448bf439c2f77978f7521fe4 -f
     git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
