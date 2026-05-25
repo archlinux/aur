@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.1.0.r110.g41e9f4f # Will be updated by pkgver()
+pkgver=0.1.0.r128.g3c6a9d3 # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
 arch=('x86_64' 'aarch64')
@@ -11,12 +11,14 @@ license=('GPL3')
 depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'pixman' 'libdrm' 'libevdev' 'wlr-randr'
          'noctalia-shell' 'libdecor' 'grim' 'xwayland-satellite'
-         'xdg-desktop-portal-wlr' 'wlroots0.20')
-makedepends=('dotnet-sdk-10.0' 'clang' 'zlib' 'krb5' 'git' 'wayland-protocols')
-optdepends=('tuigreet: TUI greeter for greetd (recommended login path)'
+         'xdg-desktop-portal-wlr' 'wlroots0.20'
+         # NativeAOT runtime link targets (BCL dlopens/dynlinks against these).
+         'zlib' 'krb5' 'openssl')
+makedepends=('dotnet-sdk-10.0' 'clang' 'lld' 'llvm' 'zlib' 'krb5' 'openssl'
+             'git' 'wayland-protocols')
+optdepends=('ly: tuigreeter'
             'greetd: minimal login manager for tuigreet'
-            'aqueous-greetd-config: opinionated greetd+tuigreet preset for Aqueous'
-            'ghostty: recommended terminal emulator'
+            'tabby: recommended terminal emulator'
             'nemo: recommended file manager'
             'firefox: web browser')
 provides=('aqueous' 'riverdelta')
@@ -65,12 +67,61 @@ build() {
     fi
     msg2 "Using zig $zig_ver"
 
-    # Build Aqueous components
+    # Build Aqueous components (NativeAOT).
+    #
+    # Notes on the publish flags:
+    #   * PublishAot=true is also set in each csproj; we pass it on the
+    #     command line so an accidental csproj edit can't silently fall
+    #     back to JIT in CI.
+    #   * --self-contained true is redundant under AOT (AOT is implicitly
+    #     self-contained) but harmless; kept to make the publish profile
+    #     explicit.
+    #   * PublishSingleFile is deliberately NOT passed -- it is
+    #     incompatible with PublishAot.
+    #   * StripSymbols + DebugType=none keep the shipped ELF small;
+    #     pacman's check-strip hook is happy.
+    #   * Per-binary IlcOptimizationPreference: WM = Speed (latency in
+    #     the input/render path), OutputDaemon = Size (cold-start
+    #     sidecar).
     local rid; rid=$(_rid_map)
     cd "$srcdir/aqueous"
-    for proj in Aqueous/Aqueous.csproj Aqueous.OutputDaemon/Aqueous.OutputDaemon.csproj; do
-        local name; name=$(basename "$proj" .csproj)
-        dotnet publish "$proj" -c Release -r "$rid" --self-contained true /p:PublishAot=true -o "$srcdir/publish/$name"
+
+    local common_args=(
+        -c Release
+        -r "$rid"
+        --self-contained true
+        -p:PublishAot=true
+        -p:InvariantGlobalization=true
+        -p:StripSymbols=true
+        -p:DebugType=none
+        -p:DebugSymbols=false
+        --nologo
+    )
+
+    msg2 "AOT-publishing Aqueous WM"
+    dotnet publish Aqueous/Aqueous.csproj \
+        "${common_args[@]}" \
+        -p:IlcOptimizationPreference=Speed \
+        -o "$srcdir/publish/Aqueous"
+
+    msg2 "AOT-publishing Aqueous OutputDaemon"
+    dotnet publish Aqueous.OutputDaemon/Aqueous.OutputDaemon.csproj \
+        "${common_args[@]}" \
+        -p:IlcOptimizationPreference=Size \
+        -o "$srcdir/publish/Aqueous.OutputDaemon"
+
+    # Post-publish guard: fail fast if AOT silently fell back to a
+    # managed launcher (which would produce a tiny ELF stub that loads
+    # libcoreclr.so instead of a real native binary).
+    local bin
+    for bin in "$srcdir/publish/Aqueous/aqueous" \
+               "$srcdir/publish/Aqueous.OutputDaemon/aqueous-outputd"; do
+        [[ -x "$bin" ]] || { error "Missing AOT output: $bin"; return 1; }
+        if ! file "$bin" | grep -q 'ELF .* executable'; then
+            error "Not a native AOT binary: $bin"
+            file "$bin"
+            return 1
+        fi
     done
 
     # Build RiverDelta (in-tree at compositor/)
@@ -109,6 +160,11 @@ package() {
     install -Dm644 "$srcdir/aqueous/packaging/aqueous-outputd.service" \
         "$pkgdir/usr/lib/systemd/user/aqueous-outputd.service"
 
+    # tmpfiles snippet: materialises per-user state/cache/config dirs at
+    # login via systemd-tmpfiles --user.
+    install -Dm644 "$srcdir/aqueous/packaging/aqueous.tmpfiles" \
+        "$pkgdir/usr/lib/tmpfiles.d/aqueous.conf"
+
     # Quickshell/Noctalia bridge for the output daemon. Imported as
     #   import "file:///usr/share/aqueous/quickshell" as Aqueous
     install -Dm644 "$srcdir/aqueous/packaging/quickshell/OutputControl.qml" \
@@ -144,4 +200,8 @@ package() {
             "$srcdir/aqueous/compositor/LICENSES/." \
             "$pkgdir/usr/share/licenses/$pkgname/riverdelta/"
     fi
+
+    # Defense-in-depth: drop any stray AOT debug artefacts that
+    # StripSymbols may have left next to the binaries.
+    find "$pkgdir/usr/bin" -maxdepth 1 \( -name '*.dbg' -o -name '*.pdb' \) -delete 2>/dev/null || true
 }

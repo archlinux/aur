@@ -1,20 +1,11 @@
 post_install() {
     cat <<'EOF'
-==> Aqueous installed.
-    Select 'Aqueous' from your display manager's session list, or install
-    'aqueous-greetd-config' (or apply packaging/greetd/config.toml.example)
-    for a preconfigured greetd + tuigreet setup.
+==> Aqueous installed (NativeAOT build -- no .NET runtime required).
 
-    To enable the input daemon as a systemd user service:
-        systemctl --user enable --now aqueous-inputd.socket
-    Otherwise the session launcher will spawn it automatically.
-
-    A udev rule (70-aqueous-uaccess.rules) is installed so the active
-    local session user gets an ACL on /dev/input/event* via logind's
-    'uaccess' tag -- you do NOT need to be in the 'input' group. The
-    rule takes effect on the next device add/replug, on reboot, or
-    after:
-        sudo udevadm control --reload && sudo udevadm trigger --subsystem-match=input
+    Select 'Aqueous' from your display manager's session list (sddm, ly,
+    tuigreet/greetd), or install 'aqueous-greetd-config' (or apply
+    packaging/greetd/config.toml.example) for a preconfigured
+    greetd + tuigreet setup.
 
     The output daemon (aqueous-outputd) drives wlr-randr from inside
     River's control context. It is started automatically by
@@ -23,16 +14,51 @@ post_install() {
     frame (this is what makes the screen come up at the right
     resolution under greetd). To run it as a systemd user service
     instead:
+        systemctl --user daemon-reload
         systemctl --user enable --now aqueous-outputd.service
     Requires the 'wlr-randr' package.
+
+    Per-user state/cache/config directories will be created at first
+    login by systemd-tmpfiles --user.
+
+    Logs:
+        journalctl --user -u aqueous-outputd -f
+        tail -f ~/.local/state/river/river.log
 EOF
-    systemd-tmpfiles --create 2>/dev/null || true
+    systemd-tmpfiles --create /usr/lib/tmpfiles.d/aqueous.conf >/dev/null 2>&1 || true
 }
 
 post_upgrade() {
-    post_install
+    local old_ver="$2"
+    echo "==> Aqueous upgraded from ${old_ver:-unknown}."
+    echo "    Reload user units and restart the output daemon:"
+    echo "        systemctl --user daemon-reload"
+    echo "        systemctl --user try-restart aqueous-outputd.service"
+    systemd-tmpfiles --create /usr/lib/tmpfiles.d/aqueous.conf >/dev/null 2>&1 || true
+}
+
+pre_remove() {
+    # Best-effort stop of running per-user instances.
+    if command -v loginctl >/dev/null 2>&1; then
+        for u in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $2}'); do
+            local uid
+            uid=$(id -u "$u" 2>/dev/null) || continue
+            sudo -u "$u" XDG_RUNTIME_DIR="/run/user/$uid" \
+                systemctl --user stop aqueous-outputd.service 2>/dev/null || true
+        done
+    fi
 }
 
 post_remove() {
-    echo "==> Aqueous removed. User configs in ~/.config/aqueous were left intact."
+    cat <<'EOF'
+==> Aqueous removed.
+
+    Per-user state was left in place:
+        ~/.cache/aqueous
+        ~/.config/aqueous
+        ~/.local/state/aqueous
+        ~/.local/state/river
+
+    Delete manually if no longer wanted.
+EOF
 }
