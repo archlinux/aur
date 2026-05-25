@@ -2,14 +2,14 @@
 
 _pkgname=hyprosd
 pkgname=hyprosd-git
-pkgver=0.2.0.r7.gead0b2a
+pkgver=0.2.0.r9.g1bbda2a
 pkgrel=1
 pkgdesc='Hyprland-focused Wayland OSD daemon'
 arch=('x86_64')
 url='https://github.com/jameswylde/hyprosd'
 license=('MIT')
 depends=('gtk4' 'gtk4-layer-shell')
-makedepends=('cargo' 'clang' 'git' 'pkgconf')
+makedepends=('cargo' 'git' 'pkgconf')
 optdepends=(
   'wireplumber: volume querying via wpctl'
   'pulseaudio-utils: fallback volume querying via pactl'
