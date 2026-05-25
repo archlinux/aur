@@ -1,6 +1,6 @@
 pkgbase = geesefs-git
 	pkgdesc = A high-performance, POSIX-ish S3 (Yandex, Amazon) file system written in Go (Git version).
-	pkgver = 0.41.1.r2.g6d3112c
+	pkgver = 0.43.7.r0.g8da9c52
 	pkgrel = 1
 	url = https://github.com/yandex-cloud/geesefs
 	arch = x86_64
