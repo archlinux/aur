@@ -7,7 +7,7 @@ pkgdesc="Lightweight CS2, Deadlock and Marathon GUI server picker for blocking/u
 arch=('x86_64') # .NET compiled binary targets standard desktop CPUs
 url="https://github.com/FN-FAL113/server-picker-x"
 license=('GPL-3.0')
-depends=('glibc' 'gcc-libs' 'skiasharp' 'fontconfig')
+depends=('glibc' 'gcc-libs' 'fontconfig')
 makedepends=('git' 'dotnet-sdk') # Requires Microsoft's .NET SDK to compile from source
 provides=('server-picker-x')
 conflicts=('server-picker-x')
@@ -19,13 +19,14 @@ options=('!strip' '!debug')
 
 build() {
   cd "${_pkgname}"
-  
-  # Compile the C# project into a single self-contained executable for Linux
+
+  # Tell .NET to include the required native SkiaSharp libraries for Linux
   dotnet publish ServerPickerX/ServerPickerX.csproj \
     -c Release \
     -r linux-x64 \
     --self-contained true \
     -p:PublishSingleFile=true \
+    -p:IncludeNativeLibrariesForSelfExtract=true \
     -o ../build
 }
 
