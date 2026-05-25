@@ -1,5 +1,6 @@
-# Maintainer: Sebastian Lau <slau@slau.info>
-# Maintainer: Dennis Fink <dennis.fink@c3l.lu>
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
+# Contributor: Sebastian Lau <slau@slau.info>
+# Contributor: Dennis Fink <dennis.fink@c3l.lu>
 
 pkgname=python-flask-qrcode
 _pkgname=Flask-QRcode

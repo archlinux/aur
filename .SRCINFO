@@ -12,4 +12,3 @@ pkgbase = python-flask-qrcode
 	sha512sums = f8ceaca3799e9e01c6c68ace8ef909c4e5a6e2133a0f53d8d8221a0cf84352713d53237924d510305ed43755803d5458b4bad4e3bd978f53ebb98ac0b9792d5d
 
 pkgname = python-flask-qrcode
-
