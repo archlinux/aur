@@ -12,11 +12,21 @@ makedepends=('git' 'dotnet-sdk')
 provides=('server-picker-x')
 conflicts=('server-picker-x')
 # Add "icon.png" here, assuming it's in the same folder as your PKGBUILD
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git" "icon.png::https://raw.githubusercontent.com/NasirA1991/aur-server_picker_x/main/icon.png")
+sha256sums=('SKIP'
+            '0c3fe10a24cfeac9c9a4f0d114052fd38e04fd4428262558deba3b41778b8570')
 
 # CRITICAL: Prevents Arch from mangling self-contained .NET binary structures
 options=('!strip' '!debug')
+
+prepare() {
+  # This ensures we are in the correct directory where the files were downloaded
+  # And verifies the icon is present before the build attempts to package it
+  if [ ! -f "${srcdir}/icon.png" ]; then
+    echo "Error: icon.png not found in ${srcdir}"
+    exit 1
+  fi
+}
 
 build() {
   cd "${_pkgname}"
@@ -39,11 +49,13 @@ package() {
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/ServerPickerX" "${pkgdir}/usr/bin/${pkgname}"
 
+  ln -s "/opt/${pkgname}/ServerPickerX" "${pkgdir}/usr/bin/server-picker-x"
+
   # 3. Permissions for logging
   chmod -R 777 "${pkgdir}/opt/${pkgname}"
 
   # 4. Install the icon into the hicolor theme
-  install -Dm644 "${_pkgname}/icon.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
+  install -Dm644 "icon.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
 
   # 5. Create desktop entry
   install -d "${pkgdir}/usr/share/applications"
