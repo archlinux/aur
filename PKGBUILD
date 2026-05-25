@@ -1,6 +1,6 @@
 # Maintainer: yancat <yancat_aur@icloud.com>
 pkgname=zstbund
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=3
 pkgdesc='打包pacman软件包及其依赖以供离线使用'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('pacman' 'zip')
 makedepends=('rust' 'cargo')
 source=("zstbund-${pkgver}.tar.gz")
-sha256sums=('a5a7c2ac281cb74ca03aac6d1648c0847d38e15d0c146936a89196e59d4d379e')
+sha256sums=('a437ebccd5fa00dcadcbcb3c0e974aad2a83f565c1c4ff39ac19c3fac200932b')
 options=('!debug')
 
 build() {

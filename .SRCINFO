@@ -1,6 +1,6 @@
 pkgbase = zstbund
 	pkgdesc = 打包pacman软件包及其依赖以供离线使用
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 3
 	url = https://github.com/yan-cat/zstbund
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = zstbund
 	depends = pacman
 	depends = zip
 	options = !debug
-	source = zstbund-1.0.1.tar.gz
-	sha256sums = a5a7c2ac281cb74ca03aac6d1648c0847d38e15d0c146936a89196e59d4d379e
+	source = zstbund-1.0.2.tar.gz
+	sha256sums = a437ebccd5fa00dcadcbcb3c0e974aad2a83f565c1c4ff39ac19c3fac200932b
 
 pkgname = zstbund
