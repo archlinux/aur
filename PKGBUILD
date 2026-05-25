@@ -3,7 +3,7 @@
 # Contributor: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=meta-package-manager
-pkgver=6.4.3
+pkgver=6.5.0
 pkgrel=1
 pkgdesc='A wrapper around all package managers'
 url='https://kdeldycke.github.io/meta-package-manager/'
@@ -34,7 +34,7 @@ optdepends=('apt: support for apt packages'
 license=('GPL-2.0-only')
 arch=('any')
 source=("git+https://github.com/kdeldycke/${pkgname}.git#tag=v$pkgver")
-sha512sums=('294a7f586a41099a25b1fce1a10bdc537a96bb03a25a1b6fb38c77f8de12251c50bb4c36fb2dea4092c680510921cde2ef4606a9068260cc6b41c633e6f76b2d')
+sha512sums=('570602d255752636a7eb2e581ccabc3aece713fded195a997b867c0f66c76fab7dd1ed073af555cd5ab266837fc65ddb1dadd9363441d7125c53d40e328623c8')
 
 pkgver() {
   cd "$srcdir/$pkgname"
