@@ -1,6 +1,6 @@
 pkgbase = keulim-git
 	pkgdesc = A simple image C library
-	pkgver = r75.b665d79
+	pkgver = r156.ceb9180
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/emersion/keulim
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = keulim-git
 	makedepends = cargo
 	makedepends = clang
 	depends = libpng
+	depends = libjpeg-turbo
 	depends = librsvg
+	depends = libjxl
 	depends = ffmpeg
 	provides = keulim
 	provides = keulim.so

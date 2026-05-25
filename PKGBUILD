@@ -1,7 +1,7 @@
 # Maintainer: Simon Ser <contact@emersion.fr>
 
 pkgname=keulim-git
-pkgver=r75.b665d79
+pkgver=r156.ceb9180
 pkgrel=1
 pkgdesc='A simple image C library'
 url='https://gitlab.freedesktop.org/emersion/keulim'
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('MIT')
 source=("git+$url.git")
 sha1sums=('SKIP')
-depends=(libpng librsvg ffmpeg)
+depends=(libpng libjpeg-turbo librsvg libjxl ffmpeg)
 makedepends=(git meson ninja cargo clang)
 conflicts=(keulim)
 provides=(keulim keulim.so)
@@ -28,7 +28,7 @@ prepare() {
 }
 
 build() {
-  arch-meson keulim build
+  arch-meson keulim build -Dresvg=disabled
   ninja -C build
 }
 
