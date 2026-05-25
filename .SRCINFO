@@ -1,0 +1,18 @@
+pkgbase = enneagram-git
+	pkgdesc = An exploration into the enneagram. (git version)
+	pkgver = 1.1.0.dfde688
+	pkgrel = 1
+	url = https://github.com/sigurd4/enneagram
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = rust
+	makedepends = base-devel
+	provides = enneagram
+	conflicts = enneagram
+	source = git+https://github.com/sigurd4/enneagram.git
+	sha256sums = SKIP
+
+pkgname = enneagram-git
