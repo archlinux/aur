@@ -1,8 +1,8 @@
 # Maintainer: Debjeet Banerjee <debjeet.banerjee2023@uem.edu.in>
 # Co-Maintainer: Imon Chakraborty
 pkgname='kaizen-bin'
-pkgver='2.0.2'
-pkgrel=2
+pkgver='2.0.3'
+pkgrel=1
 pkgdesc="Terminal-based anime streaming & browsing tool"
 arch=('x86_64')
 url="https://github.com/serene-brew/kaizen"
@@ -15,7 +15,7 @@ source=(
   "https://github.com/serene-brew/kaizen/raw/main/VERSION"
 )
 sha256sums=(
-  '4d5a2138ef84b2a6e113987c01df6e9a057af937e34596e22d70609975fec581'
+  '1aef95aee2958433a1be0dbdf01eabe2444d7b0d084bb1bbebc0ca85719ae0f0'
   'SKIP'
   'SKIP'
 )
