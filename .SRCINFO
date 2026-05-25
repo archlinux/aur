@@ -1,0 +1,15 @@
+pkgbase = pidnest-bin
+	pkgdesc = Clean Linux process tree viewer by user or UID
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/oxyzenQ/pidnest
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = pidnest
+	conflicts = pidnest
+	options = !strip
+
+pkgname = pidnest-bin
