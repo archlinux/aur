@@ -23,6 +23,7 @@ pkgver() {
 build() {
   cd "firmium"
   npm install
+  npm run build
   npm run tauri build -- --bundles deb
 }
 
