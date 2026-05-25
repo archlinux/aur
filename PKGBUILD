@@ -11,9 +11,11 @@ pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url='https://microsoft.com/PowerShell'
 license=('MIT')
+options=('!strip')
 depends=(
   dotnet-runtime-10.0
 )
+optdepends=('openssh: PowerShell Remoting over ssh')
 makedepends=(
   dotnet-sdk-10.0
   aspnet-targeting-pack
@@ -24,17 +26,21 @@ makedepends=(
 checkdepends=(
   inetutils
   iputils
+  openssh # Needed for test/powershell/engine/Remoting/SSHRemotingCmdlets.Tests.ps1
   xdg-utils
 )
 install=powershell.install
 
+# Restore-PSPester() installs the latest version of Pester up to 4.99
+# The last release of Pester 4 was 4.10.1, so this is picked
+_pesterversion=4.10.1
 source=(
   "git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   'Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets'
-  'https://globalcdn.nuget.org/packages/pester.4.10.1.nupkg'
+  "https://globalcdn.nuget.org/packages/pester.$_pesterversion.nupkg"
   'nuget-source.patch'
 )
-noextract=('pester.4.10.1.nupkg')
+noextract=("pester.${_pesterversion}.nupkg")
 sha256sums=('ef52fb4858206c9ad300155cb87420b112ebc3a296c942937d6a14f98552ae7f'
             '0c81200e5211a2f63bc8d9941432cbf98b5988249f0ceeb1f118a14adddbaa8e'
             '6c996dc4dc8bef068cefb1680292154f45577c66fb0600dd0fb50939bbf8a3a3'
@@ -122,6 +128,7 @@ build() {
   done
 
   ## Restore-PSModuleToBuild()
+  # The version numbers stem from src/Modules/PSGalleryModules.csproj and need to match the current release
   cp -a "$NUGET_PACKAGES/microsoft.powershell.archive/1.2.5/." lib/Modules/Microsoft.PowerShell.Archive
   cp -a "$NUGET_PACKAGES/microsoft.powershell.psresourceget/1.2.0/." lib/Modules/Microsoft.PowerShell.PSResourceGet
   cp -a "$NUGET_PACKAGES/packagemanagement/1.4.8.1/." lib/Modules/PackageManagement
@@ -137,14 +144,32 @@ check() {
   export DOTNET_NOLOGO=true
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
 
-  # Two failing tests, don't know why
-  rm test/powershell/engine/Help/HelpSystem.Tests.ps1
-
-  # More failing tests
-  rm test/powershell/Modules/Microsoft.PowerShell.Management/TimeZone.Tests.ps1
-  rm test/powershell/engine/Help/UpdatableHelpSystem.Tests.ps1
+  # Test contains a logic error
+  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27503
   rm test/powershell/Host/PSVersionTable.Tests.ps1
+
+  # Test is broken on systems with UTC+2 or greater
+  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27500
+  rm test/powershell/Modules/Microsoft.PowerShell.Utility/ConvertTo-Json.Tests.ps1
+
+  # Test is broken due to a logic error not considering timezone aliases
+  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27502
+  rm test/powershell/Modules/Microsoft.PowerShell.Management/TimeZone.Tests.ps1
+
+  # Test requires DSCv3 being installed
+  # DSCv3 is available as an addon https://github.com/PowerShell/DSC
+  rm test/powershell/dsc/dsc.profileresource.Tests.ps1
+
+  # Test seems to have an incorrect default assembly lists for Linux
+  # It complains about a bunch unexpected of assemblies being loaded,
+  # but all are core dotnet ones. Likely a bug.
   rm test/powershell/Host/Startup.Tests.ps1
+
+  # Test is dependent on the locale of the system
+  # Breaks if culture is Invariant Language (Invariant Country)
+  # this happens if LANG=C.UTF-8, which is the default in chroot builds
+  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27532
+  rm test/powershell/engine/Help/HelpSystem.Tests.ps1
 
   # Opens browser, skipping
   rm test/powershell/Language/Scripting/NativeExecution/NativeCommandProcessor.Tests.ps1
@@ -159,21 +184,19 @@ check() {
   rm test/powershell/engine/Basic/Assembly.LoadNative.Tests.ps1
 
   # Some users report this test failing, cannot reproduce but removing anyway
-  rm test/powershell/Modules/Microsoft.PowerShell.Management/Start-Process.Tests.ps1
+  #rm test/powershell/Modules/Microsoft.PowerShell.Management/Start-Process.Tests.ps1
 
   # Can't figure out why it fails
   # If you want to dig into this, your patch will be appreciated
-  rm test/powershell/Modules/Microsoft.PowerShell.Utility/Format-Table.Tests.ps1
-  rm test/powershell/Language/Parser/RedirectionOperator.Tests.ps1
-  rm test/powershell/Language/Scripting/NativeExecution/NativeWindowsTildeExpansion.Tests.ps1
-  rm test/powershell/Modules/Microsoft.PowerShell.Utility/WebCmdlets.Tests.ps1
-  rm test/powershell/Modules/Microsoft.PowerShell.PSResourceGet/Microsoft.PowerShell.PSResourceGet.Tests.ps1
-  rm test/powershell/dsc/dsc.profileresource.Tests.ps1
-  rm test/powershell/engine/Remoting/SSHRemotingCmdlets.Tests.ps1
-  rm test/powershell/Host/TabCompletion/TabCompletion.Tests.ps1
+  #rm test/powershell/Modules/Microsoft.PowerShell.Utility/Format-Table.Tests.ps1
+  #rm test/powershell/Language/Parser/RedirectionOperator.Tests.ps1
+  #rm test/powershell/Language/Scripting/NativeExecution/NativeWindowsTildeExpansion.Tests.ps1
+  #rm test/powershell/Modules/Microsoft.PowerShell.Utility/WebCmdlets.Tests.ps1
+  #rm test/powershell/Modules/Microsoft.PowerShell.PSResourceGet/Microsoft.PowerShell.PSResourceGet.Tests.ps1
+  #rm test/powershell/Host/TabCompletion/TabCompletion.Tests.ps1
 
   ## Restore-PSPester()
-  unzip -ud temp_pester "$srcdir/pester.4.10.1.nupkg"
+  unzip -ud temp_pester "$srcdir/pester.${_pesterversion}.nupkg"
   cp -a temp_pester/tools lib/Modules/Pester
 
   unzip -ud test/tools/Modules/SelfSignedCertificate \

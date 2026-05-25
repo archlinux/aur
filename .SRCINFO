@@ -8,6 +8,7 @@ pkgbase = powershell
 	license = MIT
 	checkdepends = inetutils
 	checkdepends = iputils
+	checkdepends = openssh
 	checkdepends = xdg-utils
 	makedepends = dotnet-sdk-10.0
 	makedepends = aspnet-targeting-pack
@@ -15,7 +16,9 @@ pkgbase = powershell
 	makedepends = unzip
 	makedepends = jq
 	depends = dotnet-runtime-10.0
+	optdepends = openssh: PowerShell Remoting over ssh
 	noextract = pester.4.10.1.nupkg
+	options = !strip
 	source = git+https://github.com/PowerShell/PowerShell.git#tag=v7.6.2
 	source = Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets
 	source = https://globalcdn.nuget.org/packages/pester.4.10.1.nupkg
