@@ -12,7 +12,7 @@ license=('GPL')
 depends=()
 makedepends=('texinfo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('26b52b77af2855766dd8a43207c88e42a3c9337d2d6164b2f95a4a06963fde00')
 
 build() {
     cd "$PKGname-$pkgver"

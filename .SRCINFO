@@ -7,6 +7,6 @@ pkgbase = yacasl2
 	license = GPL
 	makedepends = texinfo
 	source = yacasl2-0.5p35.tar.gz::https://github.com/j8takagi/yacasl2/archive/v0.5p35.tar.gz
-	sha256sums = SKIP
+	sha256sums = 26b52b77af2855766dd8a43207c88e42a3c9337d2d6164b2f95a4a06963fde00
 
 pkgname = yacasl2
