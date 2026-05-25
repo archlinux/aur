@@ -1,42 +1,63 @@
-# Maintainer: Gabriel Araujo <gabriel_scf@hotmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=gambit-git
-pkgver=16.2.0.r40.gad47d544
+pkgbase=gambit-git
+pkgname=(gambit-git python-pygambit-git)
+pkgver=16.6.0.r12.g00c2d404d
 pkgrel=1
-pkgdesc="Tools for doing computation in game theory - git version"
+pkgdesc="Tools for doing computation in game theory"
 arch=('i686' 'x86_64')
-url="http://www.gambit-project.org"
-license=('GPL')
-depends=('wxwidgets-gtk3' 'python' 'python-build' 'python-installer')
-makedepends=('git' 'cython')
-provides=('gambit')
-conflicts=('gambit')
-source=(git+https://github.com/gambitproject/gambit.git)
-options=('!makeflags')
-md5sums=('SKIP')
+url='https://github.com/gambitproject/gambit'
+license=('GPL-2.0-or-later')
+depends=('gcc-libs')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'cython' 'git')
+checkdepends=(
+    'python-numpy'
+    'python-scipy'
+    'jupyter-nbclient'
+    'jupyter-nbformat'
+    'python-ipykernel'
+    'python-pytest'
+    'python-pandas'
+    'python-pytest-subtests')
+source=("$pkgbase::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "gambit"
-  git describe --tags|sed 's+-+.r+'| sed 's+-+.+' | cut -c2-
+    git -C "$pkgbase" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd "gambit"
-  aclocal
-  libtoolize
-  automake --add-missing
-  autoconf
-  
-  CXXFLAGS+=" -std=c++17 -fpermissive" ./configure --prefix=/usr
-  
-  make
-  
-  CFLAGS+=" -std=c++17 -fpermissive" python -m build --wheel --no-isolation
+    cd "$pkgbase"
+
+    aclocal
+    libtoolize
+    automake --add-missing
+    autoconf
+    ./configure --prefix=/usr --disable-enumpoly
+    make
+
+    python -m build --wheel --no-isolation
 }
 
-package() {
-  cd "gambit"
-  make DESTDIR="$pkgdir/" install
-  
-  python -m installer --destdir="$pkgdir" dist/*.whl
+check() {
+    cd "$pkgbase"
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -P -m pytest
+}
+
+package_gambit-git() {
+    provides=('gambit')
+    conflicts=('gambit')
+    cd "$pkgbase"
+    make DESTDIR="$pkgdir/" install
+}
+
+package_python-pygambit-git() {
+    depends+=('python-numpy' 'python-scipy' 'python-pandas')
+    provides=('python-pygambit')
+    conflicts=('python-pygambit')
+    cd "$pkgbase"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
