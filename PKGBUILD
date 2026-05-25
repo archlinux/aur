@@ -1,41 +1,25 @@
-# Maintainer: Adelmo Junior <noblehelm@gmail.com>
-# Done while using both community:python-scikit-learn and AUR:python-keras as base, so credit goes to them
-# If anything done wrong, please contact me
-
-pkgbase="python-scikit-fuzzy"
-pkgname=("python-scikit-fuzzy")
-_pkgname="scikit-fuzzy"
-pkgver="0.4.2"
-pkgrel="1"
-pkgdesc="A fuzzy logic toolkit for SciPy"
-arch=('any')
-url="https://github.com/scikit-fuzzy/scikit-fuzzy"
-license=('custom')
-makedepends=('python' 'python-setuptools' 'python-numpy' 'python-scipy' 'python-networkx')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b4041e16b0e19a171bae3e830703e55fe17c35d41d81acd0457826b5112e9df3')
-
-prepare() {
-  cd "$srcdir"
-  cp -a "${_pkgname}-${pkgver}" "${_pkgname}-py2-${pkgver}"
-  cd "${_pkgname}-${pkgver}"
-  sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-      -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-      -e "s|#![ ]*/bin/env python$|#!/bin/env python2|" \
-      -i $(find . -name '*.py')
-}
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Adelmo Junior <noblehelm@gmail.com>
+_base=scikit-fuzzy
+pkgname=python-${_base}
+pkgver=0.5.0
+pkgrel=1
+pkgdesc="Fuzzy logic toolkit for SciPy"
+arch=(any)
+url="https://github.com/${_base}/${_base}"
+license=(BSD-3-Clause)
+makedepends=(python-build python-installer python-setuptools)
+depends=(python-networkx)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('0b4756b7657309a6bef5114c43750c67ff2f8c64000ef9c607400714ce17ce543283a62f843d4d07e1ec554c7f7e9c158feb9ea276c8842c3081a675e1643caf')
 
 build() {
-  msg "Building Python 3"
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  python setup.py build
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package_python-scikit-fuzzy() {
-  depends=('python' 'python-numpy' 'python-scipy' 'python-networkx')
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir"/ --optimize=1
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:

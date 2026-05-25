@@ -1,0 +1,5 @@
+[python-scikit-fuzzy]
+source = "github"
+github = "scikit-fuzzy/scikit-fuzzy"
+use_latest_release = "true"
+prefix = "v"
