@@ -1,27 +1,34 @@
 pkgbase = perl-app-cpm
 	pkgdesc = a fast CPAN module installer
-	pkgver = 0.997019
+	pkgver = v1.1.1
 	pkgrel = 1
-	url = https://metacpan.org/release/App-cpm
+	epoch = 1
+	url = https://metacpan.org/dist/App-cpm
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	depends = perl-class-tiny
-	depends = perl-command-runner
-	depends = perl-cpan-common-index
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-module-build-tiny>=0.051
+	depends = perl-command-runner>=v1.0.0
+	depends = perl-cpan-02packages-search>=v1.0.0
 	depends = perl-cpan-distnameinfo
-	depends = perl-cpan-meta
-	depends = perl-extutils-installpaths
+	depends = perl-darwin-initobjc>=v1.0.0
+	depends = perl-extutils-config
+	depends = perl-extutils-helpers
+	depends = perl-extutils-install>=2.20
+	depends = perl-extutils-installpaths>=0.002
 	depends = perl-file-copy-recursive
 	depends = perl-file-pushd
-	depends = perl-http-tinyish
-	depends = perl-json-pp
-	depends = perl-local-lib
-	depends = perl-menlo-legacy
+	depends = perl-file-which
+	depends = perl-http-tinyish>=0.12
+	depends = perl-ipc-run3
 	depends = perl-module-cpanfile
-	depends = perl-parallel-pipes
-	depends = perl-parse-pmfile
-	source = https://cpan.metacpan.org/authors/id/S/SK/SKAJI/App-cpm-0.997019.tar.gz
-	sha256sums = 1be7391d3f30ab2417fb569f971d58941ce623dc23dfa02673b602297588c5cd
+	depends = perl-module-cpmfile>=v1.0.0
+	depends = perl-parallel-pipes>=v1.0.0
+	depends = perl-parse-localdistribution>=0.20
+	depends = perl-proc-forksafe>=v1.0.0
+	depends = perl>=5.24.0
+	optdepends = perl-carton
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SK/SKAJI/App-cpm-v1.1.1.tar.gz
+	sha256sums = d3ce2020167e7e0a185880421abaee2adab5e4378424cb24b5ce11d4a45bf208
 
 pkgname = perl-app-cpm
