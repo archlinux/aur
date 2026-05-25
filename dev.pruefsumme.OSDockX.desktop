@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=OSDockX
+Comment=A dock for Linux/X11
+Exec=osdockx
+Terminal=false
+Categories=Utility;
+StartupNotify=false

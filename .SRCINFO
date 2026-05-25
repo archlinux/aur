@@ -1,0 +1,21 @@
+pkgbase = osdockx-git
+	pkgdesc = A lightweight, customizable OSX-inspired dock for Linux/X11
+	pkgver = 0.1.0.r59.g2e8a7e4
+	pkgrel = 1
+	url = https://github.com/pruefsumme/osdockx
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = gtk4
+	provides = osdockx
+	conflicts = osdockx
+	source = osdockx::git+https://github.com/pruefsumme/osdockx.git
+	source = dev.pruefsumme.OSDockX.desktop
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = f5efd9aafdabc51215987b7ca23ab5d1b2cb63697b70dd1290163d26dd1ade09
+	sha256sums = f3e94904dd4b20fb4ff46c00c1090186c64295ce017fb428433637021a1bf1de
+
+pkgname = osdockx-git
