@@ -1,6 +1,6 @@
-*.un~
-*.swp
-*.rpm
-*.pkg.tar.xz
-pkg
-src
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!*.install

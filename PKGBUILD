@@ -1,40 +1,78 @@
-# Maintainer:  Rafael Vega <contacto rafaelvega co>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Rafael Vega <contacto rafaelvega co>
 
-pkgname=iscan-plugin-gt-x770
-pkgver=2.1.2_1
+_product="gt-x770"
+pkgname="iscan-plugin-${_product}"
+pkgver=2.30.6+2.1.3_1
+_bundlever="${pkgver%+*}"
+_pluginver="${pkgver##*+}"
 pkgrel=1
-pkgdesc="iscan plugin for Epson Perfection v500 Photo / GT-X770"
-arch=('i686' 'x86_64')
-url="http://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=EN&CN2=&DSCMI=15838&DSCCHK=105678c39feae9e43434531f4eb90b8de839d51c#"
-license=('custom')
-depends=('iscan')
-makedepends=('rpmextract')
-install=gt-x770.install
+pkgdesc="EPSON Image Scan! plugin for Epson scanners (GT-X770)"
+arch=(
+  'i686'
+  'x86_64'
+)
+url="https://download-center.epson.com/search"
+license=(
+  'custom:EPSON END USER SOFTWARE LICENSE AGREEMENT'
+)
+depends=(
+  'glibc'
+  'iscan'
+  # 'iscan-data'
+  'libgcc'
+  'libstdc++'
+)
+makedepends=(
+  'gzip'
+)
+install="${pkgname}.install"
+source_i686=(
+  # 2.30.6 is unavailable for x86 but technically they are identical
+  # "https://download-center.epson.com/f/module/455132ee-c39d-4e96-bd25-1d49254fe738/iscan-${_product}-bundle-${_bundlever}.x86.deb.tar.gz"
+  "https://download-center.epson.com/f/module/455132ee-c39d-4e96-bd25-1d49254fe738/iscan-${_product}-bundle-2.30.4.x86.deb.tar.gz"
+)
+source_x86_64=(
+  "https://download-center.epson.com/f/module/6d6a11d5-fc42-4389-84d6-b94ba107ec5c/iscan-${_product}-bundle-${_bundlever}.x64.deb.tar.gz"
+)
+sha256sums_i686=('248bb3bd08cb0f20e74988c1ec9b5a54a49e5b4980a72e40810517a05e0aad40')
+sha256sums_x86_64=('10189b7ff298a1a5d6afff890a56914334b7432ec4dd6d96367d1aab2a09caad')
+DLAGENTS=(
+  "https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u"
+)
 
-if [ "$CARCH" = "i686" ]; then
-  _arch=$CARCH
-  md5sums=('c1653cac46ddc1c927953ffca588bf01')
-  source=(http://a1227.g.akamai.net/f/1227/40484/7d/download.ebz.epson.net/dsc/f/01/00/01/58/38/c8f0ccb2effabe926265d64910118a953e62c67c/iscan-plugin-gt-x770-2.1.2-1.i386.rpm)
-elif [ "$CARCH" = "x86_64" ]; then
-  _arch=$CARCH
-  md5sums=('535cd0f66a17da65fbe3f4e43891785c')
-  source=(http://a1227.g.akamai.net/f/1227/40484/7d/download.ebz.epson.net/dsc/f/01/00/01/58/38/452bf811fca094367e871911a507e739a978489f/iscan-plugin-gt-x770-2.1.2-1.x86_64.rpm)
-fi
+prepare() {
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
+  cd "${srcdir}"
+  chmod -R u+rwX .
+
+  cd "${source_artifact%.tar*}"
+  local source_plugin="$(ls plugins/*${_pluginver//_/-}*.deb | head -n1)"
+  mkdir -p "${source_plugin%.deb}"
+  bsdtar -xf "${source_plugin}" data.tar.*
+  bsdtar -xzf data.tar.* --strip-components 1 -C "${source_plugin%.deb}"
+  rm -f data.tar.*
+
+  cd "${source_plugin%.deb}"
+  find . -type f -name '*.gz' -exec \
+    gzip -fd "{}" \;
+
+  cd "usr/share"
+  mkdir -p "licenses/${pkgname}"
+  mv -f "doc/${pkgname}/COPYING"* "licenses/${pkgname}"
+
+  rm -rf "doc"
+}
 
 package() {
-	cd "$scrdir"
-	rpmextract.sh "$pkgname-${pkgver//_/-}.$_arch.rpm"
-	mv usr "$pkgdir"
-	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
-	cp ${pkgdir}/usr/share/doc/${pkgname}-${pkgver//_*/}/AVASYSPL.en.txt ${pkgdir}/usr/share/licenses/${pkgname}/
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
 
-	if [ "$CARCH" = "x86_64" ]
-	then
-		mv "$pkgdir"/usr/lib{64,}
-	fi
-
-	install -m 644 -D \
-		"$pkgdir"/usr/share/doc/${pkgname}-${pkgver//_*/}/AVASYSPL.en.txt \
-		"$pkgdir"/usr/share/doc/${pkgname}-${pkgver//_*/}/AVASYSPL.ja.txt \
-#		"$pkgdir"/usr/share/licenses/${pkgname}/AVASYSPL.en.txt
+  cd "${srcdir}/${source_artifact%.tar*}"
+  local source_plugin="$(ls plugins/*${_pluginver//_/-}*.deb | head -n1)"
+  cp -vaT --no-preserve=ownership "${source_plugin%.deb}" "${pkgdir}"
 }

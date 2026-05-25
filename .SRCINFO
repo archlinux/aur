@@ -1,14 +1,20 @@
 pkgbase = iscan-plugin-gt-x770
-	pkgdesc = iscan plugin for Epson Perfection v500 Photo / GT-X770
-	pkgver = 2.1.2_1
+	pkgdesc = EPSON Image Scan! plugin for Epson scanners (GT-X770)
+	pkgver = 2.30.6+2.1.3_1
 	pkgrel = 1
-	url = http://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=EN&CN2=&DSCMI=15838&DSCCHK=105678c39feae9e43434531f4eb90b8de839d51c#
-	install = gt-x770.install
+	url = https://download-center.epson.com/search
+	install = iscan-plugin-gt-x770.install
 	arch = i686
 	arch = x86_64
-	license = custom
-	makedepends = rpmextract
+	license = custom:EPSON END USER SOFTWARE LICENSE AGREEMENT
+	makedepends = gzip
+	depends = glibc
 	depends = iscan
+	depends = libgcc
+	depends = libstdc++
+	source_i686 = https://download-center.epson.com/f/module/455132ee-c39d-4e96-bd25-1d49254fe738/iscan-gt-x770-bundle-2.30.4.x86.deb.tar.gz
+	sha256sums_i686 = 248bb3bd08cb0f20e74988c1ec9b5a54a49e5b4980a72e40810517a05e0aad40
+	source_x86_64 = https://download-center.epson.com/f/module/6d6a11d5-fc42-4389-84d6-b94ba107ec5c/iscan-gt-x770-bundle-2.30.6.x64.deb.tar.gz
+	sha256sums_x86_64 = 10189b7ff298a1a5d6afff890a56914334b7432ec4dd6d96367d1aab2a09caad
 
 pkgname = iscan-plugin-gt-x770
-
