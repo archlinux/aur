@@ -1,6 +1,6 @@
 pkgbase = strata
 	pkgdesc = A fast, stutter-free clipboard manager
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Edu4rdSHL/Strata
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = strata
 	makedepends = cargo
 	makedepends = glib2
 	options = !lto
-	source = strata-0.2.0.tar.gz::https://github.com/Edu4rdSHL/Strata/archive/refs/tags/v0.2.0.tar.gz
-	b2sums = fed4712932aa9c2e214302bfd223efc374c7284f03b490d53836fc0b63ab99d7071b621c99924278868ee805eee3396203e26c62899e9058e2d52757ec3f3b7c
+	source = strata-0.3.0.tar.gz::https://github.com/Edu4rdSHL/Strata/archive/refs/tags/v0.3.0.tar.gz
+	b2sums = 600b394ae08329bf49b0180dd5c6767df2005c12f6926dd662dad9c2ccf43d4949ff7231e66ff5e2ba54d1c5dd6075997087592f294df5d596a7188320795e68
 
 pkgname = strata-daemon
 	pkgdesc = Strata clipboard manager backend daemon
