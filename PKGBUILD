@@ -1,7 +1,7 @@
 # Maintainer: Kyler Clay <kylerclay@proton.me>
 
 pkgname=shed-sh
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="A Linux shell with a powerful line editor and IPC socket extensibility"
 arch=('x86_64')
