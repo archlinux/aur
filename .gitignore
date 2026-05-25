@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!mautrix-telegram.service
+!mautrix-telegram.tmpfiles
+!sysusers-mautrix-telegram.conf
+
+!.gitignore
