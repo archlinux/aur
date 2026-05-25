@@ -5,7 +5,7 @@ pkgname=steam-rom-manager-git
 pkgdesc="An app for managing ROMs in Steam (Git version)."
 license=("GPL-3.0-only")
 url="https://github.com/SteamGridDB/steam-rom-manager"
-pkgver=2.5.21.r4.g58718da
+pkgver=2.5.34.r4.g95eb2dc
 pkgrel=1
 arch=("x86_64")
 makedepends=("git" "nodejs" "npm" "nodejs-cross-env" "typescript" "yarn" "libxcrypt-compat" "python-setuptools")
@@ -29,7 +29,14 @@ pkgver() {
 prepare() {
   cd $pkgname
 
-  yarn install --frozen-lockfile
+  # 1. Isolate and bypass host Node v26 compilation crashes by ignoring build scripts.
+  # This prevents better-sqlite3 from trying to map itself to host V8 headers.
+  yarn install --ignore-scripts
+
+  # 2. Force native modules to compile directly against the target Electron headers.
+  # We set a localized cache directory for node-gyp to keep the build clean.
+  export HOME="$srcdir/.electron-gyp"
+  yarn run postinstall
 }
 
 
