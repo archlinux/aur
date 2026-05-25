@@ -1,0 +1,22 @@
+pkgbase = mcomix3
+	pkgdesc = A user-friendly, customizable comic book image viewer (Python 3 / GTK3 port)
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/rippa-the-hutt/mcomix3
+	arch = any
+	license = GPL2
+	makedepends = desktop-file-utils
+	makedepends = shared-mime-info
+	depends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = python-pillow
+	optdepends = unrar: for CBR/RAR archive support
+	optdepends = p7zip: for 7Zip archive support
+	optdepends = lha: for LHA/LZA archive support
+	optdepends = mupdf-tools: for PDF support
+	source = MComix3_v3.2.tar.gz::https://github.com/rippa-the-hutt/mcomix3/releases/download/v3.2/MComix3_v3.2.tar.gz
+	sha256sums = 567bbc609fc32c54b740135f1b7e2c9d35c3d97d7e4ea8c3b80f9abf2ba6352a
+
+pkgname = mcomix3
