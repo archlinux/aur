@@ -1,17 +1,17 @@
 pkgbase = sysforge
 	pkgdesc = All-in-one Arch Linux helper for system setup and package management with compiler-optimized builds
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/KeithRaghubar/sysforge
 	arch = any
 	license = MIT
 	makedepends = uv
 	makedepends = python-installer
-	makedepends = python-argparse-manpage
 	depends = python>=3.11
 	depends = git
 	depends = sudo
 	depends = gnupg
+	depends = base-devel
 	optdepends = bash-completion: bash tab completions
 	optdepends = ccache: compiler cache support
 	optdepends = sccache: Rust compiler cache support
@@ -19,14 +19,17 @@ pkgbase = sysforge
 	optdepends = zsh: zsh shell support
 	optdepends = glow: in-shell markdown rendering for docs
 	optdepends = zsh-completions: additional zsh completions
-	provides = sysforge
+	optdepends = clang: required for the LLVM build profile and sysforge run toolchain --compiler=llvm
+	optdepends = lld: required for the optimized build profile (-fuse-ld=lld)
+	optdepends = llvm: required for sysforge run toolchain --compiler=llvm (PGO bootstrap)
+	optdepends = compiler-rt: required for sysforge run toolchain --compiler=llvm
 	conflicts = sysforge-git
 	backup = etc/sysforge/sysforge.toml
 	backup = etc/sysforge/profiles.toml
 	backup = etc/sysforge/packages.toml
 	backup = etc/sysforge/kernel.toml
 	backup = etc/sysforge/toolchain.toml
-	source = sysforge-1.1.0.tar.gz::https://github.com/KeithRaghubar/sysforge/archive/v1.1.0.tar.gz
-	sha256sums = 4d7ffc98cba7f5f28781724b4afe7ce239368813577b885514bb116451aff216
+	source = sysforge-1.2.0.tar.gz::https://github.com/KeithRaghubar/sysforge/archive/v1.2.0.tar.gz
+	sha256sums = 0c2c6777d9df13d0c5d8fb88ec6ba08887a249c31bc6b197398024a48e8a25a0
 
 pkgname = sysforge
