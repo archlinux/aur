@@ -1,6 +1,6 @@
 # Maintainer: bananasjim <bananasjim1@gmail.com>
 pkgname=padctl-git
-pkgver=r627.gb8ec129
+pkgver=r629.gf910518
 pkgrel=1
 pkgdesc="HID gamepad daemon — declarative TOML device config, uinput output"
 arch=('x86_64' 'aarch64')
