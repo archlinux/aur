@@ -1,6 +1,6 @@
 pkgbase = wuyou-toolkit-bin
 	pkgdesc = Native shell for wuyou-toolkit (prebuilt binary)
-	pkgver = 0.1.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/duanluan/wuyou-toolkit-releases
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wuyou-toolkit-bin
 	provides = wuyou-toolkit
 	conflicts = wuyou-toolkit
 	options = !strip
-	source = wuyou-toolkit-0.1.0.deb::https://github.com/duanluan/wuyou-toolkit-releases/releases/download/v0.1.0/wuyou-toolkit_0.1.0_amd64.deb
-	sha256sums = 9eca4a65dfbc15c6ee8fd42189c8939d8c67333c2bc32c1935f89cd4bb815b64
+	source = wuyou-toolkit_0.3.0_amd64.deb::https://github.com/duanluan/wuyou-toolkit-releases/releases/download/v0.3.0/wuyou-toolkit_0.3.0_amd64.deb
+	sha256sums = 9374eb191bcf741672c2d711081e95919213e4f320e0b49cc302443db6f4555b
 
 pkgname = wuyou-toolkit-bin
