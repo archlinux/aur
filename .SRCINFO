@@ -15,7 +15,6 @@ pkgbase = thrive
 	makedepends = ninja
 	makedepends = jq
 	makedepends = python
-	makedepends = godot-mono
 	depends = libxrender
 	depends = libxi
 	depends = libx11
@@ -28,6 +27,7 @@ pkgbase = thrive
 	depends = libxcursor
 	depends = fontconfig
 	depends = gcc-libs
+	noextract = godot-mono-export-templates-4.6.2.zip
 	options = !lto
 	source = git+https://github.com/Revolutionary-Games/Thrive.git#tag=v1.1.0
 	source = git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git
@@ -45,6 +45,10 @@ pkgbase = thrive
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 4ecf72faf76f96e010d166ddbbe3f0fb8e7df9633282666a3a9afd4ee3e00e7d
+	source_x86_64 = godot-4.6.2-x86_64.zip::https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_mono_linux_x86_64.zip
+	sha256sums_x86_64 = 7d53302c31648ad98b620e8ca5b0c869c1066495770e62b2fa770cfeb004f167
+	source_aarch64 = godot-4.6.2-aarch64.zip::https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_mono_linux_arm64.zip
+	sha256sums_aarch64 = 65ee9699f6112c87bff2191c8e82ed96cf4c48c6e1549b8a9eb2664a8e80c99e
 
 pkgname = thrive
 	depends = libxrender
