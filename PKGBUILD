@@ -1,6 +1,6 @@
 # Maintainer: Matthew Phillips <matthew@matthewphillips.info>
 pkgname=rosie
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="A robot helper for agent skills"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('rust' 'cargo')
 # symbol comes back undefined. Opting out of LTO restores native ELF objects.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/matthewp/rosie/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('532fb12599d3445a18dda8de543ab8b43ea13b11b5b8d7b237ae0b1cdc75512c')
+sha256sums=('1b68dbbdaa29c8118f5b98ce82f134e9413df7640b275af4af841ede8d2391d5')
 
 build() {
     cd "$pkgname-$pkgver"
