@@ -1,10 +1,10 @@
-# Maintainer: h8ray <hiddenforever at elektrine dot com>
+# See contacts at https://aur.archlinux.org/cgit/aur.git/tree/README.md?h=lazyports-git
 
 pkgname=lazyports-git
 _pkgname=lazyports
 _reponame=LazyPorts
 pkgver=r34.84647db
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal UI tool to visualize and manage network ports"
 arch=("any")
 url="https://github.com/v9mirza/LazyPorts"
