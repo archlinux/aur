@@ -1,0 +1,3 @@
+[perl-parse-localdistribution]
+source = "cpan"
+cpan = "Parse-LocalDistribution"

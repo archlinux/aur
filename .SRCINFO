@@ -1,0 +1,23 @@
+pkgbase = perl-parse-localdistribution
+	pkgdesc = parses local .pm files as PAUSE does
+	pkgver = 0.21
+	pkgrel = 1
+	url = https://metacpan.org/dist/Parse-LocalDistribution
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-file-path
+	checkdepends = perl-file-temp
+	checkdepends = perl-test-simple
+	checkdepends = perl-test-useallmodules>=0.10
+	makedepends = perl-extutils-makemaker
+	makedepends = perl-extutils-makemaker-cpanfile>=0.09
+	depends = perl
+	depends = perl-cpan-meta
+	depends = perl-parse-pmfile>=0.37
+	depends = perl-pathtools
+	depends = perl-scalar-list-utils
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/Parse-LocalDistribution-0.21.tar.gz
+	sha256sums = 779ea48113f968d98cf6727607d668b96e8ed98f82a26645daf77820e0ec0acc
+
+pkgname = perl-parse-localdistribution
