@@ -16,6 +16,7 @@ depends=(
   'fuse2')
 makedepends=(
   'tar')
+options=('!strip')
 source=(
   "https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_v${pkgver}.tar.zst"
   "lzc-client-desktop")

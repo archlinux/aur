@@ -14,6 +14,7 @@ pkgbase = lazycat-cloud-client
 	depends = rclone
 	depends = fuse2
 	noextract = lzc-client-desktop_v2.0.3.tar.zst
+	options = !strip
 	source = https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_v2.0.3.tar.zst
 	source = lzc-client-desktop
 	md5sums = 17d9becfbc3be5f7323537b1c09169d4
