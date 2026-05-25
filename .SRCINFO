@@ -1,5 +1,5 @@
 pkgbase = osdockx-git
-	pkgdesc = A lightweight, customizable OSX-inspired dock for Linux/X11
+	pkgdesc = A dock for Linux/X11
 	pkgver = 0.1.0.r59.g2e8a7e4
 	pkgrel = 1
 	url = https://github.com/pruefsumme/osdockx
