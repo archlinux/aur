@@ -1,8 +1,8 @@
 # Contributor: Matthias Fulz < mfulz [at] olznet [dot] de >
 
 pkgname=gvmd
-pkgver=26.27.0
-pkgrel=3
+pkgver=26.28.0
+pkgrel=1
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "archlinux_postgres_headers.patch"
         "0001_include-assert.patch"
         "gvmd.tmpfiles")
-sha512sums=('da5b1e4d002295fd0ebdd13acc91e3bfd614849eb3d3bdf86525e709509cb2eb0e2cb9c526926b96891416599161fb19ad99b9fbbb76d7c0d0bcf559e02cb7f0'
+sha512sums=('654173af16092589a68966136fe888e4170dc7886e073894f38e688a80ba55451b49ce6feda4441ee6a3b7e55e9717c32b3852b78b733357d615738d5c673ef5'
             'SKIP'
             'ec2cbedf87bfd8cc1abfc6be9c566b6d2e6f7b1f902f5596d496b01faf208c9921b502d77ec9281ef3c0d03462f2d49bb973f4f9216a106116cd824e938951c2'
             '369fcefb2c43790fb7e0f23a28bd34510f9730af2c04dc64fcdf329eca2bbebc8f052bff4819c18fc45f81d535c4a4a42f7d628ef76f5f948a0b9605f35c07f9'
