@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=15.2.4
+pkgver=15.3.1
 pkgrel=2
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
@@ -14,10 +14,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/refs/tags/v${pkgver}.tar.gz"
     "tree-sitter-haskell-gcc-no-strict-aliasing.patch"
 )
-sha256sums=(
-    'dcfb912c7c8be4496c13d2f730bf49474e1ae4832cedee5cc6838dca76f727c4'
-    '3eea6cd7fc2e5fa973b81cac109688231e40087f51c3ce4cf01e45e1b7893b17'
-)
+sha256sums=('c0a53c05752c6907eca5f405bd76398b44b627c59a33c074c71055af063aff9c'
+            '3eea6cd7fc2e5fa973b81cac109688231e40087f51c3ce4cf01e45e1b7893b17')
 
 # Patch to fix tree-sitter-haskell crash.
 # See:
@@ -39,7 +37,11 @@ _patch_tree_sitter_haskell_gcc_workaround() {
         return 1
     fi
 
-    patch --forward -Np1 -d "${_tsh_dirs[0]}" < "${_patch_file}"
+    if patch -p1 -R -d "${_tsh_dirs[0]}" -i "${_patch_file}" --dry-run -sf; then
+        msg2 "Ignoring patch: ${_patch_file}"
+    else
+        patch -p1 -d "${_tsh_dirs[0]}" -i "${_patch_file}"
+    fi
 }
 
 build() {
