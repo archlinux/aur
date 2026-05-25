@@ -1,0 +1,15 @@
+pkgbase = xiaohe-bin
+	pkgdesc = CLI for querying the Xiaohe Shuangpin (小鹤双拼) scheme
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/mhpsy/xiaohe
+	arch = x86_64
+	license = MIT
+	provides = xiaohe
+	conflicts = xiaohe
+	source = xiaohe-0.1.1-x86_64.tar.gz::https://github.com/mhpsy/xiaohe/releases/download/v0.1.1/xiaohe-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/mhpsy/xiaohe/v0.1.1/LICENSE
+	sha256sums = 189abfd68a2242c3dacaffda8f7c12c2bb60105775fec7cdaa7e773a146445a7
+	sha256sums = fc3bc58f892ca8b114acf16f65dadf53c7c3887ae5ef9511d97ede3f999136a1
+
+pkgname = xiaohe-bin
