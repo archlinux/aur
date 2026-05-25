@@ -1,6 +1,6 @@
 pkgbase = jre-jetbrains
 	pkgdesc = OpenJDK Java 25 runtime with some fixes and enhancements by JetBrains
-	pkgver = 25.0.3b480.61
+	pkgver = 25.0.3b496.62
 	pkgrel = 1
 	url = https://github.com/JetBrains/JetBrainsRuntime
 	install = jre-jetbrains.install
@@ -18,7 +18,7 @@ pkgbase = jre-jetbrains
 	provides = jetbrains-jre
 	conflicts = jetbrains-jre
 	replaces = jetbrains-jre
-	source = https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-25.0.3-linux-x64-b480.61.tar.gz
-	b2sums = 7115d076556bf3ceb518944c3cfbe2235d2856d242116b6772ccec4b0b4ba072ce7a402dd6387796c9bf7f2bb67baf13c1485ef4588bb2b55836654b240d3f4b
+	source = https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-25.0.3-linux-x64-b496.62.tar.gz
+	b2sums = a2db59015882197bd2d1e43ea0f41e7dd3ec7c7424f132eb8968b7094704c071d7cddc5a6a90f656aaa088de9463931faa8c193e5b34e6a9aba1bf5d213d001f
 
 pkgname = jre-jetbrains
