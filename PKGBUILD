@@ -1,8 +1,8 @@
 # Maintainer: simonlinuxcraft <simonlinuxcraft at users dot noreply dot github dot com>
 pkgname=kyber-launcher-inofficial-appimage
 _pkgname=KyberLinuxPort
-_appver=0.1.0-beta.6
-pkgver=0.1.0_beta.6
+_appver=0.1.0-beta.6.1
+pkgver=0.1.0_beta.6.1
 pkgrel=1
 pkgdesc="Inofficial Linux build of the Kyber mod launcher for Star Wars: Battlefront II (2017). Not endorsed by the Kyber team."
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('zenity: first-start self-install dialog (alternative to kdialog)'
 provides=('kyber-launcher')
 options=('!strip')
 source=("${_pkgname}-${_appver}-x86_64.AppImage::${url}/releases/download/v${_appver}/${_pkgname}-x86_64.AppImage")
-sha256sums=('67ba02ce650ee9bf73e602076d0b6825d9d77e4a59bf4a835aa7c001b15a69d8')
+sha256sums=('7e19eceef53d5d2f360fe64e3e13be4d2de3eec66d9a4793ed164f33aac37682')
 noextract=("${_pkgname}-${_appver}-x86_64.AppImage")
 
 package() {
