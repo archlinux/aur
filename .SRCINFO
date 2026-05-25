@@ -1,6 +1,6 @@
 pkgbase = temper-bin
 	pkgdesc = A stupidly fast open-source Minecraft server, written in Rust (binary version)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/temper-mc/temper
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = temper-bin
 	provides = temper
 	conflicts = temper
 	options = !strip
-	source_x86_64 = temper-bin-0.1.0-x86_64.tar.gz::https://github.com/temper-mc/temper/releases/download/v0.1.0/temper-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 0ee1d07002f95ad1266dea02795114af9c8d94fea70a28e6c342dedf0bb0af06
-	source_aarch64 = temper-bin-0.1.0-aarch64.tar.gz::https://github.com/temper-mc/temper/releases/download/v0.1.0/temper-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a83545dd862fc2217c770aa2ed7fc30ac1357688de9d3fdafc043b50f5e847e5
+	source_x86_64 = temper-bin-0.1.1-x86_64.tar.gz::https://github.com/temper-mc/temper/releases/download/v0.1.1/temper-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 49422315bb551e6c4b560a39eb5a8027566ce8479fa6d3ece59051854a4f6219
+	source_aarch64 = temper-bin-0.1.1-aarch64.tar.gz::https://github.com/temper-mc/temper/releases/download/v0.1.1/temper-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 760fd37e1cfafafd1dc06e2b2e1e9a8a8ea8b7d2f451852ef4f674337be5c334
 
 pkgname = temper-bin
