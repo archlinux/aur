@@ -1,6 +1,6 @@
 pkgbase = dcpomatic
 	pkgdesc = A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images
-	pkgver = 2.18.40
+	pkgver = 2.18.42
 	pkgrel = 1
 	url = https://dcpomatic.com/
 	arch = i686
@@ -36,7 +36,7 @@ pkgbase = dcpomatic
 	depends = cairomm
 	provides = dcpomatic
 	conflicts = dcpomatic
-	source = dcpomatic::git+https://git.carlh.net/git/dcpomatic.git#tag=v2.18.40
-	sha256sums = 1ae9cce559b0ef367a2fe0344f287fd785f78c978aad79254846596d624f9b49
+	source = dcpomatic::git+https://git.carlh.net/git/dcpomatic.git#tag=v2.18.42
+	sha256sums = 73682f422ef99d15d122a37a05aabcda940bd221fbfa496bed3d61d06278c4a7
 
 pkgname = dcpomatic

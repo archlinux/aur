@@ -3,7 +3,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic
 pkgbase=dcpomatic
-pkgver=2.18.40
+pkgver=2.18.42
 provides=('dcpomatic')
 conflicts=('dcpomatic')
 pkgrel=1
@@ -16,7 +16,7 @@ depends=('libsub>=1.6.61' 'libcxml>=0.17.17' 'libdcp>=1.10.56' 'ffmpeg>=7.0' 'gl
 makedepends=('python' 'which' 'boost>=1.91.0' 'git' )
 source=("${pkgname}::git+https://git.carlh.net/git/${pkgbase}.git#tag=v${pkgver}")
 
-sha256sums=('1ae9cce559b0ef367a2fe0344f287fd785f78c978aad79254846596d624f9b49')
+sha256sums=('73682f422ef99d15d122a37a05aabcda940bd221fbfa496bed3d61d06278c4a7')
 
 # Pull fixes until new major release is available
 _cherry_picks=()
