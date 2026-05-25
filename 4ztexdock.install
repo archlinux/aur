@@ -15,10 +15,20 @@ EOF
 
 post_upgrade() {
     _refresh
+    # Eski binary'yi RAM'den at — yeni versiyon disk'te hazır. Running instance
+    # eski binary'yi tutuyor, kill etmezsek user logout'a kadar yeni kodu
+    # göremez. Root context'inden user app'ini relaunch etmek temiz değil
+    # (DBus session, Wayland surface, KWin scope sahipliği vs.), o yüzden
+    # yalnızca kill ederiz — kullanıcı manuel veya logout/login ile geri
+    # getirir. XDG autostart bir sonraki Plasma session'ında otomatik ayağa
+    # kaldırır.
+    pkill -x 4ztexDock 2>/dev/null || true
     cat <<EOF
-==> 4ztexDock upgraded.
-==> To refresh the running instance:  pkill -x 4ztexDock
-    (it will be relaunched by autostart or manually)
+==> 4ztexDock upgraded; the running instance was stopped.
+==> Restart it now with:
+       /usr/bin/4ztexDock & disown
+    Or just log out / log back in — Plasma autostart will pick up the
+    new binary.
 EOF
 }
 
