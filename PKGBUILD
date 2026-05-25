@@ -3,7 +3,7 @@
 pkgbase=visual2
 pkgname=visual2-bin
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='User-friendly Educational Assembler and Simulator for ARM UAL'
 arch=('x86_64')
 url='https://github.com/scc416/Visual2'
@@ -24,9 +24,11 @@ package() {
   # Install main binary
   install -Dm755 squashfs-root/visual "${pkgdir}/usr/lib/visual2/visual"
 
-  # Install Electron resources
+  # Install Electron resources (fix perms: cp -r preserves squashfs's 700)
   cp -r squashfs-root/resources "${pkgdir}/usr/lib/visual2/"
   cp -r squashfs-root/locales "${pkgdir}/usr/lib/visual2/"
+  chmod 755 "${pkgdir}/usr/lib/visual2/resources" "${pkgdir}/usr/lib/visual2/locales"
+  find "${pkgdir}/usr/lib/visual2/resources" "${pkgdir}/usr/lib/visual2/locales" -type f -exec chmod 644 {} +
   for f in icudtl.dat natives_blob.bin snapshot_blob.bin resources.pak \
            chrome_100_percent.pak chrome_200_percent.pak v8_context_snapshot.bin; do
     install -Dm644 "squashfs-root/$f" "${pkgdir}/usr/lib/visual2/$f"

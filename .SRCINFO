@@ -1,7 +1,7 @@
 pkgbase = visual2
 	pkgdesc = User-friendly Educational Assembler and Simulator for ARM UAL
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scc416/Visual2
 	arch = x86_64
 	license = MIT
