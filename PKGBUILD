@@ -1,9 +1,9 @@
-# Maintainer: h8ray <hiddenforever at elektrine dot com>
+# See contacts at https://aur.archlinux.org/cgit/aur.git/tree/README.md?h=v-analyzer-git
 
 _pkgname=v-analyzer
 pkgname="${_pkgname}-git"
 pkgver=r564.d5f13c0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bring IDE features for V programming languages in VS Code, Vim and other editors'
 url="https://github.com/vlang/v-analyzer"
 arch=('x86_64')
