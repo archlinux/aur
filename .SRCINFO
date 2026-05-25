@@ -9,6 +9,6 @@ pkgbase = vocab
 	depends = sqlite
 	depends = python
 	source = vocab-0.4.tar.gz::https://github.com/whyghost/vocab/archive/refs/tags/v0.4.tar.gz
-	sha256sums = 8a6000762c6355c538cc184c61f119319ea8ec0a93c7ec177526747ff10ef016
+	sha256sums = daaca7baf8d9c80aaacd0fbd271510470e214aaee78c6b92310056046b347cff
 
 pkgname = vocab
