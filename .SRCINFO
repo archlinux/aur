@@ -1,7 +1,7 @@
 pkgbase = zl-equalizer
 	pkgdesc = Parametric, dynamic equalizer plugin by ZL Audio
-	pkgver = 1.1.0
-	pkgrel = 3
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://zl-audio.github.io/plugins/zlequalizer2/
 	arch = x86_64
 	groups = zl-audio
@@ -19,10 +19,13 @@ pkgbase = zl-equalizer
 	depends = webkit2gtk
 	depends = glu
 	depends = nlopt
-	source = git+https://github.com/ZL-Audio/ZLEqualizer#tag=1.1.0
+	depends = highway
+	source = git+https://github.com/ZL-Audio/ZLEqualizer#tag=1.1.1
 	source = git+https://github.com/ZL-Audio/JUCE#tag=6bd3353
-	sha256sums = 046e44737dd27df571a9330d709f7edb5406a61919493741844a718d3b330338
+	source = git+https://github.com/ZL-Audio/zldsp_fft.git#tag=455a40b
+	sha256sums = e3b2d23d1fdf731819e9009cde917e5caab371b05740a89984b2f196c171f09d
 	sha256sums = 2adccbf0b7e52a90a16956955dbbef14924af56086157cfbef7607ac83faf4e5
+	sha256sums = ca881fdb227ffa83a02f41bc89121eada4aeb63081a6b7428edb1300ae1de44a
 
 pkgname = zl-equalizer-vst3
 	pkgdesc = Parametric, dynamic equalizer plugin by ZL Audio (VST3 version)
@@ -47,5 +50,6 @@ pkgname = zl-equalizer
 	depends = webkit2gtk
 	depends = glu
 	depends = nlopt
+	depends = highway
 	depends = zl-equalizer-vst3
 	depends = zl-equalizer-lv2
