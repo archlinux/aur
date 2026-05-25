@@ -8,7 +8,7 @@
 
 pkgname=4ztexdock-git
 _pkgname=4ztexdock
-pkgver=0.1.0.r0.g9d54225
+pkgver=0.1.0.r3.g56c6106
 pkgrel=1
 pkgdesc="Wayland layer-shell taskbar/launcher for KDE Plasma (git)"
 arch=('x86_64')
