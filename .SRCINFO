@@ -1,6 +1,6 @@
 pkgbase = vulkan-low-latency-layer-bin
-	pkgdesc = Vulkan layer for hardware agnostic input latency reduction (Tracks stable releases)
-	pkgver = 0.1.0
+	pkgdesc = Vulkan layer for hardware agnostic input latency reduction (Reflex & Anti-Lag 2 on any GPU)
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Korthos-Software/low_latency_layer
 	arch = x86_64

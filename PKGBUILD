@@ -1,9 +1,9 @@
 # Maintainer: Evilleader <evilleader91@gmail.com>
 _pkgname=low_latency_layer
 pkgname=vulkan-low-latency-layer-bin
-pkgver=0.1.0 # This is a placeholder; GitHub will automatically overwrite this!
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Vulkan layer for hardware agnostic input latency reduction (Tracks stable releases)"
+pkgdesc="Vulkan layer for hardware agnostic input latency reduction (Reflex & Anti-Lag 2 on any GPU)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Korthos-Software/low_latency_layer"
 license=('MIT')
@@ -14,17 +14,8 @@ conflicts=('vulkan-low-latency-layer')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  # Directly scan the developer's live repository tags over the internet
-  git ls-remote --tags https://github.com/Korthos-Software/low_latency_layer.git | \
-    awk -F/ '{print $3}' | grep -v '\^{}' | sed 's/^v//' | sort -V | tail -n1
-}
-
 build() {
   cd "${_pkgname}"
-  
-  # Clean up any old state, fetch the latest code, and switch to the true live version
-  git fetch --all --tags
   git checkout "v${pkgver}"
   
   cmake -B ../build -S . \
