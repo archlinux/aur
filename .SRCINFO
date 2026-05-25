@@ -1,0 +1,14 @@
+pkgbase = perl-darwin-initobjc
+	pkgdesc = initializes Objective-C runtime
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://metacpan.org/dist/Darwin-InitObjC
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-module-build-tiny>=0.053
+	depends = perl>=5.24.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SK/SKAJI/Darwin-InitObjC-v1.0.0.tar.gz
+	sha256sums = c24d311a16e43418403a4533a19775663f75143bbefea46056c2b26c0023f088
+
+pkgname = perl-darwin-initobjc

@@ -1,0 +1,3 @@
+[perl-darwin-initobjc]
+source = "cpan"
+cpan = "Darwin-InitObjC"
