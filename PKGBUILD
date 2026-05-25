@@ -14,7 +14,7 @@ conflicts=('server-picker-x')
 # Add "icon.png" here, assuming it's in the same folder as your PKGBUILD
 source=("git+${url}.git" "icon.png::https://raw.githubusercontent.com/NasirA1991/aur-server_picker_x/main/icon.png")
 sha256sums=('SKIP'
-            '0c3fe10a24cfeac9c9a4f0d114052fd38e04fd4428262558deba3b41778b8570')
+            '723a00a105ffcd843693d2ca7d6b70e7eaa7da284e26704893fce19b1ec1c839')
 
 # CRITICAL: Prevents Arch from mangling self-contained .NET binary structures
 options=('!strip' '!debug')
