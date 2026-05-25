@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!fix-env-nodocker.patch
+!borgwarehouse-cron.service
+!borgwarehouse-cron.timer
+!borgwarehouse.service
+
+!.gitignore
