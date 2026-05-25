@@ -1,7 +1,7 @@
 # Maintainer: Tom Hacohen <tom@stosb.com>
 
 pkgname=evolution-etesync
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="EteSync (end-to-end encrypted sync) plugin for Evolution"
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ depends=(libgee json-glib evolution-data-server libetebase)
 makedepends=(cmake meson glib2-devel ninja vala intltool evolution)
 _pkgname_ver="$pkgname-$pkgver"
 source=("https://gitlab.gnome.org/GNOME/$pkgname/-/archive/${pkgver}/$_pkgname_ver.tar.gz")
-sha256sums=('6b7d6b113a4d35307fc1d178f7fc3d2b4143ee5dfebae3f15467a5788cb4316c')
+sha256sums=('56f161e9e1c7faf0bf0a35c3b1e3edb2ff9d32e7a76866f021a4cf90b2923c98')
 
 #prepare() {
 #  cd "$_pkgname_ver"
