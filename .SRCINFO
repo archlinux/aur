@@ -1,8 +1,8 @@
 pkgbase = typr-bin
 	pkgdesc = A modern type system for R
 	pkgver = 0.4.28
-	pkgrel = 1
-	url = https://github.com/eitsupi/arf
+	pkgrel = 2
+	url = https://github.com/we-data-ch/typr
 	arch = x86_64
 	license = Apache-2.0
 	depends = glibc

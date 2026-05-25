@@ -2,10 +2,10 @@
 
 pkgname=typr-bin
 pkgver=0.4.28
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern type system for R"
 arch=('x86_64')
-url="https://github.com/eitsupi/arf"
+url=https://github.com/we-data-ch/typr
 license=('Apache-2.0')
 depends=('glibc' 'libgcc')
 conflicts=('typr')
