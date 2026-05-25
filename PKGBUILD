@@ -2,13 +2,12 @@
 pkgname=yacasl2
 PKGname=YACASL2
 pkgver=0.5p35
-_pkgver=${pkgver/p/p}
 
 pkgrel=1
 pkgdesc="CASL2/COMET2 simulator for Japanese Information Technology examination"
 arch=('x86_64')
 url="https://github.com/j8takagi/yacasl2"
-license=('GPL')
+license=('MIT')
 depends=()
 makedepends=('texinfo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -19,7 +18,13 @@ build() {
     make
 }
 
+check() {
+    cd "$PKGname-$pkgver"
+    make check
+}
+
 package() {
     cd "$PKGname-$pkgver"
     make prefix="$pkgdir/usr" bindir="$pkgdir/usr/bin" install
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
