@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 _pkgname=passless
 pkgname="${_pkgname}-bin"
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Virtual FIDO2 device and client FIDO 2 utility. Passkeys made easy."
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("https://github.com/pando85/passless/releases/download/v${pkgver}/passle
         "passless-${pkgver}.tar.gz::https://github.com/pando85/passless/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/pando85/passless/releases/download/v${pkgver}/passless-completions-${pkgver}.tar.gz"
         "passless.install")
-sha256sums=('fdc41ecc9190b235bb701179d691a345871b494c6af9f15aa127e26a341bea02'
+sha256sums=('2cee7744d57399ebea4de1d067cca9268ae401fdd5d1994333a6fc7f2ea61e7c'
             'SKIP'
             'SKIP'
             'SKIP')
