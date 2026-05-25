@@ -1,6 +1,6 @@
 pkgbase = pm-netlink-client
 	pkgdesc = Linux whitelist split tunneling controller for Xray-core, nftables, policy routing, and systemd
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://gitflic.ru/project/dragonnp/pm-netlink-client
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = pm-netlink-client
 	checkdepends = python-yaml
 	checkdepends = python-rich
 	checkdepends = python-typer
-	source = git+https://gitflic.ru/project/dragonnp/pm-netlink-client.git#tag=v0.1.4
+	source = git+https://gitflic.ru/project/dragonnp/pm-netlink-client.git#tag=v0.1.5
 	sha256sums = SKIP
 
 pkgname = pm-netlink-client
@@ -33,5 +33,5 @@ pkgname = pm-netlink-client
 
 pkgname = pm-netlink-client-gui
 	pkgdesc = Qt GUI add-on for PM-NetLink Client
-	depends = pm-netlink-client=0.1.4-1
+	depends = pm-netlink-client=0.1.5-1
 	depends = pyside6

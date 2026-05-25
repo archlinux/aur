@@ -4,7 +4,7 @@
 
 pkgbase=pm-netlink-client
 pkgname=('pm-netlink-client' 'pm-netlink-client-gui')
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Linux whitelist split tunneling controller for Xray-core, nftables, policy routing, and systemd'
 arch=('any')
