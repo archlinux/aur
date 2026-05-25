@@ -1,7 +1,7 @@
 # Maintainer: Tim Ebbeke <tim 06 tr (at) gmail dot com>
 
 pkgname=nui-sftp
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="NUI-based SFTP application"
 arch=('x86_64')
@@ -39,9 +39,9 @@ source=(
     "https://s3.g.s4.mega.io/jgemkib4a5fte35rktt5wxrwkw4ejk4ybemkf/nui-scp/icons.tar.gz"
 )
 sha256sums=(
-    '9246f4da3d6b9f9d87fe57d2567e92f309f64a523604d89bf31edc794f597ee9'
+    '836af543956c5a2b632fe64d788fb160ed25f2c8bd85b338a04b56a16e80a825'
     'cf0fc442069dfd28bd8b7769da6dfdca92111044ea9817197716ed9bfada3869'
-    '1a967af0ab93e5bac67e79b93b0272f7b79b79de7e4ff46b967d9c09e581969e'
+    '096a57b9d2ecaf3d37cdb7968cddecbf0daf96c180595d83577e9524421d7b68'
     '30ffa48c3a509e878db31a1e5d80376242852e34d9c2aa3b44d2e3d1da2ce32e'
 )
 
