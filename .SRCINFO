@@ -1,6 +1,6 @@
 pkgbase = kishi-shell
 	pkgdesc = A powerful, highly modular, Python-based modern TUI shell
-	pkgver = 2.0.0.5
+	pkgver = 2.0.0.6
 	pkgrel = 1
 	url = https://github.com/ozhangebesoglu/Kishi-Shell
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = kishi-shell
 	depends = python
 	depends = python-prompt_toolkit
 	depends = python-psutil
-	source = kishi-shell-2.0.0.5.tar.gz::https://github.com/ozhangebesoglu/Kishi-Shell/archive/refs/tags/v2.0.0.5.tar.gz
-	sha256sums = f0f2fd6dcb3d07a08fe3b01946c72ca08f8422dd2d4a04003e3acd612a5b425f
+	source = kishi-shell-2.0.0.6.tar.gz::https://github.com/ozhangebesoglu/Kishi-Shell/archive/refs/tags/v2.0.0.6.tar.gz
+	sha256sums = 812c27f93d2921b7a86cfd01c38947d252baa2c951ceecaf97c1a2b90908df97
 
 pkgname = kishi-shell
