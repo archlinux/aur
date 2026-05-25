@@ -1,0 +1,10 @@
+post_install() {
+    echo ">> To activate, symlink themes and icons into your Prism Launcher data dir:"
+    echo ">>   ln -s /usr/share/prismlauncher/themes/Ore\ UI\ -\ * ~/.local/share/PrismLauncher/themes/"
+    echo ">>   ln -s /usr/share/prismlauncher/iconthemes/Ore\ UI ~/.local/share/PrismLauncher/iconthemes/"
+    echo ">> Then select the theme in Prism Launcher → Settings → Launcher → User Interface."
+}
+
+post_upgrade() {
+    post_install
+}
