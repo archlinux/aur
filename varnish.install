@@ -1,0 +1,4 @@
+# remove localstatedir -- compiled VCL and slab files will still be here.
+post_remove() {
+  rm -rf var/lib/varnish
+}
