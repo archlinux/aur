@@ -1,35 +1,53 @@
-# Mantainer: 3ED <krzysztof1987 at gmail dot com>
-#
-pkgname=perl-command-runner
-_lastauthor=S/SK/SKAJI
-_pkgname=Command-Runner
-pkgver=0.200
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: 3ED <krzysztof1987 at gmail dot com>
+
+_author=SKAJI
+_dist=Command-Runner
+pkgname=perl-${_dist@L}
+pkgver=v1.0.0
 pkgrel=1
+epoch=1
 pkgdesc='run external commands and Perl code refs'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-capture-tiny'
+    'perl-file-pushd'
+    'perl-string-shellquote'
+    'perl-win32-shellquote'
+    'perl>=5.24.0'
+)
+makedepends=('perl-module-build-tiny>=0.053')
+checkdepends=('perl-test-simple')
 options=('!emptydirs')
-depends=('perl-capture-tiny' 'perl-string-shellquote' 'perl-file-pushd')
-url="https://metacpan.org/release/${_pkgname}/"
-source=("https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('5ad26d06111bfecd53c8f5bb5dea94bf2025f6c78e95f6d8012e4cfa89e29f26')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('80061e9d5e9d1d7cd61cc47bd0944e69ed8e5bb68e16e159d5caf902e11ebc38')
 
-build() {
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  perl ./Build.PL
-  perl ./Build
-}
-check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  perl ./Build test
-}
-package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  perl ./Build install
+    unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    /usr/bin/perl Build.PL --create_packlist=0
+    ./Build
 }
 
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build test
+}
+
+package()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
+}

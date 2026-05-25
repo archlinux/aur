@@ -1,0 +1,3 @@
+[perl-command-runner]
+source = "cpan"
+cpan = "Command-Runner"
