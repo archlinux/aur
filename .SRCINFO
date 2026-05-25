@@ -1,0 +1,15 @@
+pkgbase = clutch
+	pkgdesc = A highly customizable TUI RPC client for Transmission BitTorrent
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/jay-thomas/clutch
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = git+https://gitlab.com/jay-thomas/clutch.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = clutch
