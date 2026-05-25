@@ -1,36 +1,36 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = The Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 7.0.9.arch2
+	pkgver = 7.0.10.arch1
 	pkgrel = 1
 	url = https://github.com/archlinux/linux
 	arch = x86_64
 	license = GPL2
-	noextract = linux-7.0.9.arch2-1-x86_64.pkg.tar.zst
-	noextract = linux-headers-7.0.9.arch2-1-x86_64.pkg.tar.zst
-	noextract = linux-docs-7.0.9.arch2-1-x86_64.pkg.tar.zst
+	noextract = linux-7.0.10.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-headers-7.0.10.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-docs-7.0.10.arch1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://archive.archlinux.org/packages/.all/linux-7.0.9.arch2-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-headers-7.0.9.arch2-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-docs-7.0.9.arch2-1-x86_64.pkg.tar.zst
-	sha256sums = f7181c17d0167f463b2afdefb8bebc5db2aa818b5af8e67439c4fd9b4fe6845b
-	sha256sums = 4ada20ecfe2d8a0580337d643cbd1a403a46dca394d538dbc9a091c8012be6f0
-	sha256sums = 0306d7ad146d2a040265d8be3791b565a8664647fe3b27b4a01e2df12ca6ff33
+	source = https://archive.archlinux.org/packages/.all/linux-7.0.10.arch1-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-headers-7.0.10.arch1-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-docs-7.0.10.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = 9ac240730c5897520bb7bf04a1f3a63933ab6aa1dd817a7e5553d5ea8a1e3c74
+	sha256sums = cc7f40ecb5eb8d4066a2df60a6bdeb261437b66aaf184a9e79f65ac0d7b76dd0
+	sha256sums = 73c0a70dbd98bfb138d9847d8c03b4d2b8e7896472cc64863293d35aa1140bb2
 
 pkgname = linux-versioned-bin
-	pkgdesc = Metapackage depending on linux7.0.9.arch2-1-bin
-	depends = linux7.0.9.arch2-1-bin
+	pkgdesc = Metapackage depending on linux7.0.10.arch1-1-bin
+	depends = linux7.0.10.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux7.0.9.arch2-1-headers-bin
-	depends = linux7.0.9.arch2-1-headers-bin
+	pkgdesc = Metapackage depending on linux7.0.10.arch1-1-headers-bin
+	depends = linux7.0.10.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux7.0.9.arch2-1-docs-bin
-	depends = linux7.0.9.arch2-1-docs-bin
+	pkgdesc = Metapackage depending on linux7.0.10.arch1-1-docs-bin
+	depends = linux7.0.10.arch1-1-docs-bin
 
-pkgname = linux7.0.9.arch2-1-bin
-	pkgdesc = The Linux kernel and modules, version 7.0.9-arch2-1
+pkgname = linux7.0.10.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 7.0.10-arch1-1
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -46,8 +46,8 @@ pkgname = linux7.0.9.arch2-1-bin
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux7.0.9.arch2-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 7.0.9-arch2-1
+pkgname = linux7.0.10.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 7.0.10-arch1-1
 	depends = binutils
 	depends = glibc
 	depends = libelf
@@ -60,6 +60,6 @@ pkgname = linux7.0.9.arch2-1-headers-bin
 	provides = LINUX-HEADERS
 	conflicts = linux-headers
 
-pkgname = linux7.0.9.arch2-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 7.0.9-arch2-1
+pkgname = linux7.0.10.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 7.0.10-arch1-1
 	conflicts = linux-docs
