@@ -1,0 +1,34 @@
+post_install() {
+    systemd-sysusers open-webui.conf
+    systemd-tmpfiles --create open-webui.conf
+    echo ">> Enable and start the service:"
+    echo ">> systemctl enable --now open-webui"
+    echo ">> Then open http://localhost:8080"
+}
+
+post_upgrade() {
+    echo ">> Restart the service to apply the update:"
+    echo ">> systemctl restart open-webui"
+}
+
+pre_remove() {
+    if systemctl is-active --quiet open-webui.service; then
+        echo ">> Stopping open-webui.service before removal..."
+        systemctl stop open-webui.service
+    fi
+    if systemctl is-enabled --quiet open-webui.service; then
+        echo ">> Disabling open-webui.service before removal..."
+        systemctl disable open-webui.service
+    fi
+}
+
+post_remove() {
+    echo ">> Cleaning up uv cache..."
+    rm -rf /var/cache/open-webui
+
+    echo ">> Removing data directory and user..."
+    userdel -r open-webui 2>/dev/null
+
+    echo ">> If you want to also remove the app data, run"
+    echo ">> rm -rf /var/lib/open-webui"
+}

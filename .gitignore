@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# ...but
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!open-webui.env
+!open-webui.install
+!open-webui.service
+!open-webui.sysusers
+!open-webui.tmpfiles

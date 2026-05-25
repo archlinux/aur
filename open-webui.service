@@ -1,0 +1,17 @@
+[Unit]
+Description=Open WebUI – Self-hosted AI platform
+After=network.target
+
+[Service]
+Type=simple
+User=open-webui
+Group=open-webui
+EnvironmentFile=-/etc/open-webui/environment
+Environment=DATA_DIR=/var/lib/open-webui
+Environment=UV_CACHE_DIR=/var/cache/open-webui
+ExecStart=/usr/bin/open-webui
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,2 @@
+d /var/lib/open-webui  0750 open-webui open-webui -
+d /var/cache/open-webui 0750 open-webui open-webui -
