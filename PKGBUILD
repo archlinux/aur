@@ -1,9 +1,10 @@
 # Maintainer: Jaro Zink <j dot zink at outlook dot com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Jessy Williams <jessy at jessywilliams dot com>
 
 pkgname=mnamer
-pkgver=2.6.0
+pkgver=2.7.2
 pkgrel=1
 pkgdesc='A media organization tool'
 arch=('any')
@@ -16,19 +17,10 @@ depends=(
   'python-guessit'
   'python-requests'
   'python-requests-cache'
-  'python-teletype'
-  'python-typing_extensions')
+  'python-teletype')
 makedepends=('python-build' 'python-setuptools-scm' 'python-wheel')
-source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-  "sessioncache.patch")
-sha256sums=(
-  'af30841941c89a0281481dfb034ba18f3ff9e5fd58a403d86473f26b5f2dc491'
-  '26b3cbbc09772974ff15795db9dd0a60260af1b25ab0c98597fd758c61ed2bc5')
-
-prepare() {
-  patch -d "${pkgname}-${pkgver}" -p1 -i ../sessioncache.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('dd35f6ca1f6424663235e082855993cffabea781b31f897846e798f98ef6b693')
 
 build() {
   cd "${pkgname}-${pkgver}"
