@@ -20,7 +20,14 @@ build() {
 }
 
 package() {
-    # Install the desktop entry
+    # 1. Create the destination directory
+    install -d "${pkgdir}/opt/gameflow-deck"
+
+    # 2. Copy your built files from the source to the system
+    # (Adjust 'dist' to whatever folder your build process creates)
+    cp -r gameflow-deck/dist/* "${pkgdir}/opt/gameflow-deck/"
+
+    # 3. Install your desktop entry (as you did before)
     install -d "${pkgdir}/usr/share/applications"
     cat <<EOF > "${pkgdir}/usr/share/applications/gameflow.desktop"
 [Desktop Entry]
