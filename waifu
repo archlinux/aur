@@ -9,6 +9,12 @@
 set -euo pipefail
 
 # ============================================================
+<<<<<<< HEAD
+=======
+VERSION="1.1.1"
+
+# ============================================================
+>>>>>>> 88b5ed5 (update VERSION in scripts + release.sh auto-bumps version)
 # Tag lists (not 100% precise - the APIs decide what fits)
 # ============================================================
 WIM_SFW=(waifu maid uniform selfies)
