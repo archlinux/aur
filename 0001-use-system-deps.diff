@@ -1,20 +1,18 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index db76e90..52c050b 100644
+index db76e90..52fecc6 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -18,6 +18,11 @@ endif()
+@@ -18,6 +18,9 @@ endif()
  
  find_package(PkgConfig REQUIRED)
  
 +find_package(Eigen3 REQUIRED)
 +find_package(nlohmann_json REQUIRED)
-+find_package(cubeb REQUIRED)
 +find_package(argparse REQUIRED)
-+find_package(Vulkan COMPONENTS dxc REQUIRED)
  
  include_directories(SYSTEM third_party)
  add_subdirectory(third_party)
-@@ -26,7 +31,7 @@ option(BUILD_WESCENE "Build the wescene (Wallpaper Engine *scene*) renderer" ON)
+@@ -26,7 +29,7 @@ option(BUILD_WESCENE "Build the wescene (Wallpaper Engine *scene*) renderer" ON)
  option(BUILD_WEWEB   "Build the weweb (Wallpaper Engine *web*) renderer"     ON)
  
  if(BUILD_WEWEB)
@@ -24,10 +22,10 @@ index db76e90..52c050b 100644
  
  add_subdirectory(src)
 diff --git a/deps.json b/deps.json
-index 24b8ecf..8929f48 100644
+index 9296ced..0b485d5 100644
 --- a/deps.json
 +++ b/deps.json
-@@ -1,40 +1,4 @@
+@@ -1,39 +1,4 @@
  [
 -  {
 -    "dest": "build/_flatpak_deps/eigen-src",
@@ -45,10 +43,9 @@ index 24b8ecf..8929f48 100644
 -  {
 -    "dest": "build/_flatpak_deps/nlohmann_json-src",
 -    "disable-shallow-clone": false,
--    "tag": "v3.11.3",
--    "commit": "9cca280a4d0ccf0c08f47a99aa71d1b0e52f8d03",
--    "type": "git",
--    "url": "https://github.com/nlohmann/json.git",
+-    "type": "archive",
+-    "url": "https://github.com/nlohmann/json/archive/refs/tags/v3.12.0.tar.gz",
+-    "sha256": "4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187",
 -    "x-cmake": {
 -      "name": "nlohmann_json",
 -      "exclude_from_all": true
@@ -68,24 +65,20 @@ index 24b8ecf..8929f48 100644
    {
      "dest": "build/_flatpak_deps/spirv_reflect-src",
      "disable-shallow-clone": false,
-@@ -47,33 +11,6 @@
+@@ -46,29 +11,6 @@
        "exclude_from_all": true
      }
    },
 -  {
--    "dest": "build/_flatpak_deps/dxc-src",
--    "disable-shallow-clone": true,
--    "tag": "v1.10.2605.2",
+-    "dest": "build/_flatpak_deps/glslang-src",
+-    "disable-shallow-clone": false,
+-    "tag": "16.3.0",
+-    "commit": "275822a6261ee689aadb1da5f09a0ec2f058685c",
 -    "type": "git",
--    "url": "https://github.com/microsoft/DirectXShaderCompiler.git",
+-    "url": "https://github.com/KhronosGroup/glslang.git",
 -    "x-cmake": {
--      "name": "dxc",
--      "exclude_from_all": true,
--      "git_submodules": [
--        "external/SPIRV-Headers",
--        "external/SPIRV-Tools",
--        "external/DirectX-Headers"
--      ]
+-      "name": "glslang",
+-      "exclude_from_all": true
 -    }
 -  },
 -  {
@@ -102,7 +95,7 @@ index 24b8ecf..8929f48 100644
    {
      "dest": "build/_flatpak_deps/rstd-src",
      "disable-shallow-clone": false,
-@@ -107,16 +44,5 @@
+@@ -102,16 +44,5 @@
        "name": "quickjs",
        "exclude_from_all": true
      }
@@ -118,43 +111,47 @@ index 24b8ecf..8929f48 100644
 -      "source_subdir": "cmake-noop"
 -    }
    }
- ]
+-]
 \ No newline at end of file
++]
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 4fa2daa..c3a728d 100644
+index 0c922de..9a0f064 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -24,11 +24,6 @@ set(warn_opts
-     -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wno-unused-variable
-     CACHE INTERNAL "")
+@@ -6,6 +6,7 @@ find_package(OpenGL REQUIRED)
+ find_package(Threads REQUIRED)
+ find_package(Vulkan REQUIRED)
+ find_package(Freetype REQUIRED)
++find_package(glslang REQUIRED)
+ pkg_check_modules(LZ4 REQUIRED liblz4)
+ pkg_check_modules(FONTCONFIG REQUIRED IMPORTED_TARGET fontconfig)
  
--# DXC's dxcapi.h sits under <dxc_SOURCE_DIR>/include. The dxcompiler target
--# does not always export this include path correctly when consumed via
--# add_subdirectory; force-republish via FetchContent_GetProperties.
--include(FetchContent)
--FetchContent_GetProperties(dxc SOURCE_DIR _dxc_source_dir)
- 
- add_subdirectory(Core)
- add_subdirectory(Vulkan)
 diff --git a/src/Vulkan/CMakeLists.txt b/src/Vulkan/CMakeLists.txt
-index ca217a4..dac8b66 100644
+index 7731bb3..3ec665e 100644
 --- a/src/Vulkan/CMakeLists.txt
 +++ b/src/Vulkan/CMakeLists.txt
-@@ -7,13 +7,10 @@ target_sources(owe-shader-compile
+@@ -7,7 +7,7 @@ target_sources(owe-shader-compile
    PUBLIC FILE_SET cxx_modules TYPE CXX_MODULES FILES ShaderCompile.cppm)
  target_link_libraries(owe-shader-compile
    PUBLIC rstd::rstd rstd.cppstd owe-types wavsen::ffi::vulkan
--  PRIVATE dxcompiler spirv-reflect-static)
-+  PRIVATE Vulkan::dxc_lib spirv-reflect-static)
+-  PRIVATE glslang SPIRV glslang-default-resource-limits spirv-reflect-static)
++  PRIVATE glslang::glslang glslang::SPIRV glslang::glslang-default-resource-limits spirv-reflect-static)
  target_include_directories(owe-shader-compile
    PUBLIC  .. ../Scene/Utils/include
    PRIVATE ../Scene/Utils ../Scene/Utils/include/Utils .)
--if(_dxc_source_dir)
--  target_include_directories(owe-shader-compile PRIVATE ${_dxc_source_dir}/include)
--endif()
- target_compile_options(owe-shader-compile PRIVATE -Wno-missing-field-initializers)
- set_property(TARGET owe-shader-compile PROPERTY POSITION_INDEPENDENT_CODE ON)
- set_property(TARGET owe-shader-compile PROPERTY CXX_SCAN_FOR_MODULES ON)
+diff --git a/src/Vulkan/Shader.cpp b/src/Vulkan/Shader.cpp
+index 2290f09..dfe9299 100644
+--- a/src/Vulkan/Shader.cpp
++++ b/src/Vulkan/Shader.cpp
+@@ -5,7 +5,7 @@ module;
+ 
+ #include <glslang/Public/ShaderLang.h>
+ #include <glslang/Public/ResourceLimits.h>
+-#include <SPIRV/GlslangToSpv.h>
++#include <glslang/SPIRV/GlslangToSpv.h>
+ 
+ #include "Utils/Sha.hpp"
+ module wescene.shader_compile;
 diff --git a/src/Web/CMakeLists.txt b/src/Web/CMakeLists.txt
 index d429e15..1198b85 100644
 --- a/src/Web/CMakeLists.txt
@@ -170,10 +167,10 @@ index d429e15..1198b85 100644
 +SET_LIBRARY_TARGET_PROPERTIES(owe-web-host)
  set_property(TARGET owe-web-host PROPERTY POSITION_INDEPENDENT_CODE ON)
 diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
-index f06efef..79e2e94 100644
+index b8b6131..0c67101 100644
 --- a/third_party/CMakeLists.txt
 +++ b/third_party/CMakeLists.txt
-@@ -90,10 +90,6 @@ set(USE_WINMM OFF)
+@@ -56,10 +56,6 @@ set(USE_WINMM OFF)
  
  fetchdeps(${CMAKE_SOURCE_DIR}/deps.json)
  
@@ -185,16 +182,17 @@ index f06efef..79e2e94 100644
  # Audio output is now handled by wavsen::audio (cubeb-backed). cubeb
  # itself is fetched via deps.json above and consumed transitively through
 diff --git a/viewer/CMakeLists.txt b/viewer/CMakeLists.txt
-index 97beba1..d4e6048 100644
+index b92f956..f9ee42a 100644
 --- a/viewer/CMakeLists.txt
 +++ b/viewer/CMakeLists.txt
-@@ -41,10 +41,9 @@ if(BUILD_WEWEB)
-         PkgConfig::WEWEB_X11
-         PkgConfig::WEWEB_WLEGL
+@@ -75,11 +75,10 @@ if(BUILD_WEWEB)
+         PkgConfig::GLFW
+         Vulkan::Vulkan
          argparse::argparse
 -        ${CEF_STANDARD_LIBS})
 +        ${CEF_LIBRARIES})
      set_target_properties(WebViewer PROPERTIES
+         CXX_SCAN_FOR_MODULES ON
 -        BUILD_RPATH   "\$ORIGIN"
 -        INSTALL_RPATH "\$ORIGIN"
 +        BUILD_RPATH   "\$ORIGIN:\$ORIGIN/../lib/cef"
@@ -203,10 +201,10 @@ index 97beba1..d4e6048 100644
 -    weweb_stage_cef_runtime(WebViewer)
  endif()
 diff --git a/waywallen/CMakeLists.txt b/waywallen/CMakeLists.txt
-index ada79f9..a6b357c 100644
+index 838fad9..b3ed336 100644
 --- a/waywallen/CMakeLists.txt
 +++ b/waywallen/CMakeLists.txt
-@@ -76,8 +76,8 @@ if(BUILD_WEWEB)
+@@ -94,8 +94,8 @@ if(BUILD_WEWEB)
      # Install layout: <prefix>/share/waywallen/weweb/{bin, libcef.so, ...}.
      set_target_properties(waywallen-weweb-renderer PROPERTIES
          CXX_SCAN_FOR_MODULES ON
@@ -217,7 +215,7 @@ index ada79f9..a6b357c 100644
          BUILD_WITH_INSTALL_RPATH ON
      )
      target_include_directories(waywallen-weweb-renderer
-@@ -105,41 +105,11 @@ if(BUILD_WEWEB)
+@@ -123,41 +123,11 @@ if(BUILD_WEWEB)
      target_compile_options(waywallen-weweb-renderer PRIVATE
          -Wall -Wextra -Wpedantic
      )
@@ -260,14 +258,8 @@ index ada79f9..a6b357c 100644
      install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/renderers/weweb.toml
          DESTINATION share/waywallen/renderers
      )
-@@ -157,5 +127,3 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/renderers/wescene.toml
-     DESTINATION share/waywallen/renderers
- )
- 
--install(FILES $<TARGET_FILE:dxcompiler>
--        DESTINATION ${CMAKE_INSTALL_LIBDIR})
 diff --git a/waywallen/renderers/weweb.toml b/waywallen/renderers/weweb.toml
-index 3030264..a075fef 100644
+index ea25703..5efab44 100644
 --- a/waywallen/renderers/weweb.toml
 +++ b/waywallen/renderers/weweb.toml
 @@ -2,7 +2,7 @@
@@ -278,12 +270,12 @@ index 3030264..a075fef 100644
 +bin  = "../../../bin/waywallen-weweb-renderer"
  types = ["web"]
  priority = 100
- version = "0.1.1"
+ version = "0.1.2"
 diff --git a/waywallen/web_main.cpp b/waywallen/web_main.cpp
-index 5a4cb28..08041d7 100644
+index 9993824..5405828 100644
 --- a/waywallen/web_main.cpp
 +++ b/waywallen/web_main.cpp
-@@ -466,7 +466,7 @@ int main(int argc, char** argv) {
+@@ -479,7 +479,7 @@ int main(int argc, char** argv) {
      });
  
      // BrowserHost::Init wants resources / locales relative to argv[0].
