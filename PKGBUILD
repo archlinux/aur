@@ -8,13 +8,13 @@
 _target=cr16-elf
 pkgname=$_target-gcc-git
 pkgver=16.0.0.r219731
-pkgrel=2
+pkgrel=3
 pkgdesc='The GNU Compiler Collection - cross compiler for cr16 (bare-metal) target'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
 license=("GPL-3.0-with-GCC-exception AND GFDL-1.3-or-later")
 depends=($_target-binutils zlib libmpc libisl zstd)
-makedepends=(git gmp mpfr)
+makedepends=(git gmp mpfr gcc15)
 provides=("$_target-gcc")
 conflicts=("$_target-gcc")
 options=(!emptydirs !strip !lto)
@@ -30,6 +30,8 @@ build() {
 
   cd build-gcc
 
+  export CC=gcc-15
+  export CXX=g++-15
   CFLAGS=${CFLAGS/-Werror=format-security/}
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
