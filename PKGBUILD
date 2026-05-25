@@ -2,10 +2,10 @@
 pkgname=steamachievementnotifier-bin
 _pkgname="Steam Achievement Notifier"
 _mainver=1.9
-_subver=39
+_subver=41
 pkgver="${_mainver}.${_subver}"
-_electronversion=41
-pkgrel=2
+_electronversion=42
+pkgrel=1
 pkgdesc="Shows fully customisable notifications when you unlock any achievement on Steam!(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/SteamAchievementNotifier/SteamAchievementNotifier"
@@ -14,7 +14,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'steam'
+    #'steam'
 )
 makedepends=(
     'asar'
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname// /}_V${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8b22cb4522666ce4aeace9feca5d03ed818dde0d82e4894e968fd14cd19af99d'
+sha256sums=('3b7806b530058c0781b55075f7b543837744635cf7e13129d1f79b3c68032bce'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
