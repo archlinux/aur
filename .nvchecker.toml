@@ -1,0 +1,3 @@
+[perl-win32-shellquote]
+source = "cpan"
+cpan = "Win32-ShellQuote"

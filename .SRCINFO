@@ -1,0 +1,15 @@
+pkgbase = perl-win32-shellquote
+	pkgdesc = Quote argument lists for Win32
+	pkgver = 0.003001
+	pkgrel = 1
+	url = https://metacpan.org/dist/Win32-ShellQuote
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	depends = perl>=5.6.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/H/HA/HAARG/Win32-ShellQuote-0.003001.tar.gz
+	sha256sums = aa74b0e3dc2d41cd63f62f853e521ffd76b8d823479a2619e22edb4049b4c0dc
+
+pkgname = perl-win32-shellquote
