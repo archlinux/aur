@@ -65,7 +65,7 @@ optdepends=(
 )
 
 
-_td_commit=6d74326c5ce53aeb52496f157f0080d9b8515970
+_td_commit=49b3bcbb6bfebf2ed44dd9f25102d2e1a94a58c4
 source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
@@ -84,7 +84,10 @@ sha512sums=(
 prepare() {
   cd tdesktop-$pkgver-full/
   patch -Np1 -d Telegram/lib_base -i "$srcdir"/tdesktop-fix-minizip-includes.patch
-  cat "$srcdir"/yukigram-${pkgver}.${pkgrel}/tdesktop/cur/*.patch | patch -Np1
+
+  for p in "$srcdir"/yukigram-${pkgver}.${pkgrel}/tdesktop/cur/*.patch;do
+    patch -Np1 <"$p"
+  done
 }
 
 build() {

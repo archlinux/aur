@@ -55,7 +55,7 @@ pkgbase = yukigram-desktop
 	optdepends = webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)
 	optdepends = xdg-desktop-portal: desktop integration
 	source = https://github.com/telegramdesktop/tdesktop/releases/download/v6.8.2/tdesktop-6.8.2-full.tar.gz
-	source = git+https://github.com/tdlib/td.git#tag=6d74326c5ce53aeb52496f157f0080d9b8515970
+	source = git+https://github.com/tdlib/td.git#tag=49b3bcbb6bfebf2ed44dd9f25102d2e1a94a58c4
 	source = tdesktop-fix-minizip-includes.patch
 	source = https://github.com/yukigram/yukigram/archive/refs/tags/v6.8.2.2.tar.gz
 	sha512sums = a733992a12268ee4d429ed383f63182c12e3a5d61d78e0f31cbfc705a5a36cb872a2f2dfb6c76d50a22ed46d141b9c13f80da4ab94286fe35b339ca685d954e3
