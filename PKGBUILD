@@ -2,7 +2,7 @@
 
 pkgname=chatmixd-git
 _pkgname=chatmixd
-pkgver=0.2.0.r2.g7711f6b
+pkgver=0.2.0.r3.ge5aba36
 pkgrel=1
 pkgdesc="SteelSeries ChatMix daemon for Linux (hardened fork of linuxmix)"
 arch=('x86_64')
