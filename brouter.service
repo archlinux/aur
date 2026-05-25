@@ -1,0 +1,52 @@
+[Unit]
+Description=BRouter offline routing server
+Documentation=https://github.com/abrensch/brouter
+After=network.target
+
+[Service]
+Type=simple
+
+# Defaults. Override any of these in /etc/conf.d/brouter — it is loaded after
+# these lines, so its values win.
+Environment=BROUTER_SEGMENTS=/var/lib/brouter/segments4
+Environment=BROUTER_PROFILES=/usr/share/brouter/profiles2
+Environment=BROUTER_CUSTOMPROFILES=/var/lib/brouter/customprofiles
+Environment=BROUTER_PORT=17777
+Environment=BROUTER_MAXTHREADS=1
+Environment=BROUTER_BIND=127.0.0.1
+Environment="JAVA_OPTS=-Xmx256M -Xms128M -DmaxRunningTime=300"
+EnvironmentFile=-/etc/conf.d/brouter
+
+# The jar's Main-Class is the CLI router, so the server class is invoked off the
+# classpath. $JAVA_OPTS (single $) is split on whitespace into separate flags;
+# the ${...} args stay single tokens.
+ExecStart=/usr/bin/java $JAVA_OPTS -cp /usr/share/java/brouter/brouter.jar btools.server.RouteServer ${BROUTER_SEGMENTS} ${BROUTER_PROFILES} ${BROUTER_CUSTOMPROFILES} ${BROUTER_PORT} ${BROUTER_MAXTHREADS} ${BROUTER_BIND}
+
+Restart=on-failure
+RestartSec=2
+User=brouter
+Group=brouter
+WorkingDirectory=/var/lib/brouter
+
+# --- Hardening ---
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+# Only the state tree is writable (segments + compiled custom profiles).
+ReadWritePaths=/var/lib/brouter
+# NOTE: MemoryDenyWriteExecute is intentionally left off — the JVM JIT maps
+# executable memory and would crash under it.
+
+[Install]
+WantedBy=multi-user.target

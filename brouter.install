@@ -1,0 +1,21 @@
+post_install() {
+	systemd-sysusers brouter.conf
+	systemd-tmpfiles --create brouter.conf
+	cat <<'MSG'
+==> BRouter needs routing-data segments (*.rd5) — none are shipped.
+==> Download the tile(s) covering your area into /var/lib/brouter/segments4/, e.g.
+==>     curl -O --output-dir /var/lib/brouter/segments4 \
+==>       https://brouter.de/brouter/segments4/E5_N45.rd5
+==> (tiles are 5°x5°, named by their SW corner; Switzerland = E5_N45 + E10_N45)
+==>
+==> Defaults bind 127.0.0.1:17777 (see /etc/conf.d/brouter). Then:
+==>     systemctl enable --now brouter
+==> Test:
+==>     curl 'http://127.0.0.1:17777/brouter?lonlats=8.5,47.0|8.6,47.1&profile=trekking&alternativeidx=0&format=geojson'
+MSG
+}
+
+post_upgrade() {
+	systemd-sysusers brouter.conf
+	systemd-tmpfiles --create brouter.conf
+}

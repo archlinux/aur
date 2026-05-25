@@ -1,0 +1,3 @@
+d /var/lib/brouter 0755 brouter brouter -
+d /var/lib/brouter/segments4 0755 brouter brouter -
+d /var/lib/brouter/customprofiles 0755 brouter brouter -

@@ -1,0 +1,24 @@
+pkgbase = brouter
+	pkgdesc = Offline-capable OSM bike/foot routing engine with elevation-aware profiles (routing server)
+	pkgver = 1.7.9
+	pkgrel = 1
+	url = https://github.com/abrensch/brouter
+	install = brouter.install
+	arch = any
+	license = MIT
+	depends = java-runtime-headless
+	backup = etc/conf.d/brouter
+	source = brouter-1.7.9.zip::https://github.com/abrensch/brouter/releases/download/v1.7.9/brouter-1.7.9.zip
+	source = LICENSE-1.7.9::https://raw.githubusercontent.com/abrensch/brouter/v1.7.9/LICENSE
+	source = brouter.service
+	source = brouter.conf
+	source = brouter.sysusers
+	source = brouter.tmpfiles
+	sha256sums = 5f8ea4acc72d791589cbd7453c472df12ab955e2ad42e6ac84339ed883ce7987
+	sha256sums = 73408906d3e5226b76a3649051221c7faadb076fac25013feb600821b923f05e
+	sha256sums = 010b99a52ef8e9ee552b6d40d45ca2ea9dab0b796de10193cc3aafa2f878cdc8
+	sha256sums = fd651cc0395f174e061dbe9ce010ae6132e91ebad3f36c521f5f9d48c7a791dd
+	sha256sums = 4846c6f3d7122823623de3d5d078928ce5e1b156f3f1b4d7e6730ee1b8af2541
+	sha256sums = 5b3abbcf2ad4012ad3ce4b8312ac9c15532985a5b90f71dbfbc9a030433bb411
+
+pkgname = brouter
