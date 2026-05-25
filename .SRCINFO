@@ -1,21 +1,23 @@
 pkgbase = adw-bluetooth
 	pkgdesc = GNOME Inspired LibAdwaita Bluetooth Applet
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/ezratweaver/adw-bluetooth/
-	arch = any
+	arch = x86_64
 	license = GPL-3.0
 	makedepends = blueprint-compiler
 	makedepends = git
+	makedepends = go
 	makedepends = meson
 	makedepends = typescript
+	depends = bluez
 	depends = dconf
 	depends = gjs
 	depends = glib2
 	depends = gtk4
 	depends = hicolor-icon-theme
 	depends = libadwaita
-	source = https://github.com/ezratweaver/adw-bluetooth/archive/refs/tags/1.0.0.tar.gz
-	b2sums=('603f6708c39eea29f3361265f65d9fab819990fe8aa67d8615785a5bfe2d25e1add28cff135735d4a35c461d51a014ea6c3f3aed05d100bd29cea1f0c5ea915d')
+	source = https://github.com/ezratweaver/adw-bluetooth/archive/refs/tags/1.1.0.tar.gz
+	b2sums = 12d8eaf2cad1ae8fff454b9fd23e62d56202857ef674e9c96d0d53071f68ca43d732e8a9441b74b498b09ae0aec2d0f35ef3d58b5bcd54010fae58f9481f6ea2
 
 pkgname = adw-bluetooth
