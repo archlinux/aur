@@ -3,7 +3,7 @@ pkgname=python-rclone
 _pkgname=${pkgname#python-}
 _name=rclone_python
 pkgver=0.1.24
-pkgrel=1
+pkgrel=2
 pkgdesc="A python wrapper for rclone."
 arch=('any')
 url="https://github.com/Johannes11833/rclone_python"
@@ -23,4 +23,5 @@ build() {
 package() {
 	cd "$srcdir/$_name-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
