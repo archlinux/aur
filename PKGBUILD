@@ -31,15 +31,19 @@ build() {
 }
 
 package() {
-  # 1. Create directory for the binary
-  install -d "${pkgdir}/usr/bin"
+  # 1. Install files to /opt/ (a common place for self-contained, writable apps)
+  install -d "${pkgdir}/opt/${pkgname}"
   
-  # 2. Rename the actual binary (add a 'bin' suffix so it doesn't conflict)
-  install -Dm755 build/ServerPickerX "${pkgdir}/usr/lib/${pkgname}/ServerPickerX"
+  # Copy everything to /opt/
+  cp -r build/* "${pkgdir}/opt/${pkgname}/"
+  
+  # 2. Create the symbolic link in /usr/bin/
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/ServerPickerX" "${pkgdir}/usr/bin/${pkgname}"
 
-  # 3. Create a wrapper script in /usr/bin that executes from a writable home folder
-  echo -e "#!/bin/bash\ncd ~ && /usr/lib/${pkgname}/ServerPickerX" > "${pkgdir}/usr/bin/${pkgname}"
-  chmod +x "${pkgdir}/usr/bin/${pkgname}"
+  # 3. FIX: Grant the world (or your user) permission to write in /opt/
+  # This allows the app to create the log file in its own directory
+  chmod -R 777 "${pkgdir}/opt/${pkgname}"
 
   # 4. Copy the license
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
