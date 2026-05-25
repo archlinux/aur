@@ -1,6 +1,6 @@
 pkgbase = next-ai-draw-io-bin
 	pkgdesc = Next AI Powered Draw.io (Desktop version). Built for system-wide electron.
-	pkgver = 0.4.15
+	pkgver = 0.4.16
 	pkgrel = 1
 	url = https://github.com/DayuanJiang/next-ai-draw-io
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = next-ai-draw-io-bin
 	options = !emptydirs
 	source = next-ai-draw-io.sh
 	sha256sums = 6dec33b7b4169f695f1ff02a9e55a6ce93b421b20177f051b29223911b8d0a8a
-	source_x86_64 = https://github.com/DayuanJiang/next-ai-draw-io/releases/download/v0.4.15/next-ai-draw-io_0.4.15_amd64.deb
-	sha256sums_x86_64 = b6d241e8e2370a766e302e6d7c949c53ffe8958909e210f81bed5a18cd6d0f3a
-	source_aarch64 = https://github.com/DayuanJiang/next-ai-draw-io/releases/download/v0.4.15/next-ai-draw-io_0.4.15_arm64.deb
-	sha256sums_aarch64 = 7c83dc87cd755a5ee7db4cb49aa8ff65c1603270914c0e165c632e34cdcd1bf2
+	source_x86_64 = https://github.com/DayuanJiang/next-ai-draw-io/releases/download/v0.4.16/next-ai-draw-io_0.4.16_amd64.deb
+	sha256sums_x86_64 = 0d3c1989fafca493d89eef8d45e04cbe25afb37d5532d014ce8e70c9c4d9e5fb
+	source_aarch64 = https://github.com/DayuanJiang/next-ai-draw-io/releases/download/v0.4.16/next-ai-draw-io_0.4.16_arm64.deb
+	sha256sums_aarch64 = 35913e14150e1d9e409e2ece4a7b3e10b62a30e2a769d0f231ec2f0452752e83
 
 pkgname = next-ai-draw-io-bin
