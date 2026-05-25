@@ -1,7 +1,7 @@
 pkgbase = ledgera
 	pkgdesc = Just another user interface for managing hledger journal transactions
-	pkgver = 0.1.0rc5
-	pkgrel = 2
+	pkgver = 0.1.0rc6
+	pkgrel = 1
 	url = https://github.com/thesmokinator/ledgera
 	arch = x86_64
 	license = MIT
@@ -37,7 +37,7 @@ pkgbase = ledgera
 	depends = libjavascriptcoregtk-4.1.so
 	depends = libwebkit2gtk-4.1.so
 	options = !lto
-	source = https://github.com/thesmokinator/ledgera/archive/refs/tags/v0.1.0-rc.5/ledgera-0.1.0-rc.5.tar.gz
-	sha256sums = 4e96e3b8257ec8e53c7c9582a77f62456bbe74334314fb76313df66019a2b9a5
+	source = https://github.com/thesmokinator/ledgera/archive/refs/tags/v0.1.0-rc.6/ledgera-0.1.0-rc.6.tar.gz
+	sha256sums = a4dcb4a3fc19297dd62996ac196bc4d7c262712ad7dec0aa42e012af0f7a0bfa
 
 pkgname = ledgera
