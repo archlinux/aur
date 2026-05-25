@@ -1,0 +1,12 @@
+pkgbase = rctl
+	pkgdesc = A small program to help systemd users switch to openrc
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/kirillpolozok843-boop/rctl
+	arch = x86_64
+	license = MIT
+	depends = openrc
+	source = git+https://github.com/kirillpolozok843-boop/rctl.git
+	sha256sums = SKIP
+
+pkgname = rctl
