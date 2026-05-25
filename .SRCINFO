@@ -1,7 +1,7 @@
 pkgbase = hpr
 	pkgdesc = Offline zero-account activity tracker
 	pkgver = 0.5
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/plexescor/HPR
 	install = hpr.install
 	arch = x86_64

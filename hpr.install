@@ -1,7 +1,123 @@
 post_install() {
-    bash /usr/share/hpr/installHPRConfigAndUi.sh
+    _hpr_install_config
 }
 
 post_upgrade() {
-    bash /usr/share/hpr/installHPRConfigAndUi.sh
+    _hpr_install_config
+}
+
+_hpr_install_config() {
+    CONFIG_DIR="$HOME/.config/HPR"
+    DATA_DIR="$HOME/.local/share/HPR"
+    SCRIPT_DIR="/usr/share/hpr"
+
+    echo "================================================"
+    echo "       HPR Configuration Installer"
+    echo "================================================"
+    echo ""
+    echo "This script will copy HPR's required config files"
+    echo "and UI/assets to the correct locations on your system."
+    echo ""
+
+    # Create dirs
+    echo ">> Creating config directories if they don't exist..."
+    mkdir -p "$CONFIG_DIR"
+    mkdir -p "$DATA_DIR"
+    echo "   Config dir : $CONFIG_DIR"
+    echo "   Data dir   : $DATA_DIR"
+    echo ""
+
+    # aliases.csv
+    if [[ -f "$CONFIG_DIR/aliases.csv" ]]; then
+        read -p ">> aliases.csv already exists. Overwrite? (y/N): " confirm_aliases
+        if [[ "$confirm_aliases" == "y" || "$confirm_aliases" == "Y" ]]; then
+            cp "$SCRIPT_DIR/aliases.csv" "$CONFIG_DIR/aliases.csv"
+            echo "   aliases.csv overwritten."
+        else
+            echo "   aliases.csv skipped. Your edits are safe."
+        fi
+    else
+        cp "$SCRIPT_DIR/aliases.csv" "$CONFIG_DIR/aliases.csv"
+        echo ">> aliases.csv copied successfully."
+    fi
+
+    echo ""
+
+    # tabAliases.csv
+    if [[ -f "$CONFIG_DIR/tabAliases.csv" ]]; then
+        read -p ">> tabAliases.csv already exists. Overwrite? (y/N): " confirm_tabaliases
+        if [[ "$confirm_tabaliases" == "y" || "$confirm_tabaliases" == "Y" ]]; then
+            cp "$SCRIPT_DIR/tabAliases.csv" "$CONFIG_DIR/tabAliases.csv"
+            echo "   tabAliases.csv overwritten."
+        else
+            echo "   tabAliases.csv skipped. Your edits are safe."
+        fi
+    else
+        cp "$SCRIPT_DIR/tabAliases.csv" "$CONFIG_DIR/tabAliases.csv"
+        echo ">> tabAliases.csv copied successfully."
+    fi
+
+    echo ""
+
+    # config.csv
+    if [[ -f "$CONFIG_DIR/config.csv" ]]; then
+        read -p ">> config.csv already exists. Overwrite? (y/N): " confirm_config
+        if [[ "$confirm_config" == "y" || "$confirm_config" == "Y" ]]; then
+            cp "$SCRIPT_DIR/config.csv" "$CONFIG_DIR/config.csv"
+            echo "   config.csv overwritten."
+        else
+            echo "   config.csv skipped. Your edits are safe."
+        fi
+    else
+        cp "$SCRIPT_DIR/config.csv" "$CONFIG_DIR/config.csv"
+        echo ">> config.csv copied successfully."
+    fi
+
+    echo ""
+
+    # ui-REFERENCEONLY — ALWAYS overwrite silently
+    if [[ -d "$CONFIG_DIR/ui-REFERENCEONLY" ]]; then
+        rm -rf "$CONFIG_DIR/ui-REFERENCEONLY"
+    fi
+    cp -r "$SCRIPT_DIR/ui" "$CONFIG_DIR/ui-REFERENCEONLY"
+    echo ">> ui-REFERENCEONLY/ updated to latest defaults silently."
+
+    echo ""
+
+    # ui/ — only copy if doesnt exist, ask if it does
+    if [[ -d "$CONFIG_DIR/ui" ]]; then
+        read -p ">> ui/ folder already exists. Overwrite? (y/N): " confirm_ui
+        if [[ "$confirm_ui" == "y" || "$confirm_ui" == "Y" ]]; then
+            rm -rf "$CONFIG_DIR/ui"
+            cp -r "$SCRIPT_DIR/ui" "$CONFIG_DIR/ui"
+            echo "   ui/ overwritten. Your custom UI has been replaced with defaults."
+        else
+            echo "   ui/ skipped. Your custom UI is safe."
+            echo "   Reference the latest default UI at:"
+            echo "   $CONFIG_DIR/ui-REFERENCEONLY/"
+        fi
+    else
+        cp -r "$SCRIPT_DIR/ui" "$CONFIG_DIR/ui"
+        echo ">> ui/ folder copied successfully."
+    fi
+
+    echo ""
+
+    # assets/ — ALWAYS replace silently
+    if [[ -d "$CONFIG_DIR/assets" ]]; then
+        rm -rf "$CONFIG_DIR/assets"
+    fi
+    cp -r "$SCRIPT_DIR/assets" "$CONFIG_DIR/"
+    echo ">> assets/ folder updated silently."
+
+    echo ""
+    echo "================================================"
+    echo "  Done! You can now run HPR."
+    echo ""
+    echo "  Your configuration is located at:"
+    echo "  $CONFIG_DIR"
+    echo ""
+    echo "  Latest default UI is always available at:"
+    echo "  $CONFIG_DIR/ui-REFERENCEONLY/"
+    echo "================================================"
 }

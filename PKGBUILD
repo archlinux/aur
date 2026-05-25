@@ -1,6 +1,6 @@
 pkgname=hpr
 pkgver=0.5
-pkgrel=7
+pkgrel=8
 pkgdesc="Offline zero-account activity tracker"
 arch=('x86_64')
 url="https://github.com/plexescor/HPR"
@@ -46,18 +46,17 @@ package() {
     install -Dm755 "$srcdir/Slint-cpp-${_slint_ver}-Linux-x86_64/lib/libslint_cpp.so" \
         "$pkgdir/usr/lib/libslint_cpp.so"
 
-    install -Dm755 ../shippedWithBinary/installHPRConfigAndUi.sh \
-        "$pkgdir/usr/share/hpr/installHPRConfigAndUi.sh"
-
+    # Default config files
     install -Dm644 ../shippedWithBinary/aliases.csv \
-    "$pkgdir/usr/share/hpr/aliases.csv"
+        "$pkgdir/usr/share/hpr/defaults/aliases.csv"
 
     install -Dm644 ../shippedWithBinary/tabAliases.csv \
-        "$pkgdir/usr/share/hpr/tabAliases.csv"
+        "$pkgdir/usr/share/hpr/defaults/tabAliases.csv"
 
     install -Dm644 ../shippedWithBinary/config.csv \
-        "$pkgdir/usr/share/hpr/config.csv"
+        "$pkgdir/usr/share/hpr/defaults/config.csv"
 
+    # UI + assets
     cp -r ../build/ui \
         "$pkgdir/usr/share/hpr/ui"
 
