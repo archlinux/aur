@@ -1,7 +1,7 @@
 # Maintainer: dougEfresh <dchimento@gmail.com>
 pkgname=pi-ext-cursor-sdk
 pkgver=0.1.18
-pkgrel=2
+pkgrel=3
 pkgdesc='pi provider extension backed by Cursor SDK local agents'
 arch=('any')
 url='https://github.com/fitchmultz/pi-cursor-sdk'
@@ -28,14 +28,14 @@ build() {
 package() {
   cd "${srcdir}/pi-cursor-sdk-${pkgver}"
 
-  install -d "${pkgdir}/usr/lib/pi/extensions/${pkgname}"
+  install -d "${pkgdir}/usr/share/pi/extensions/${pkgname}"
   cp -a \
     src \
     scripts \
     package.json \
     package-lock.json \
     node_modules \
-    "${pkgdir}/usr/lib/pi/extensions/${pkgname}/"
+    "${pkgdir}/usr/share/pi/extensions/${pkgname}/"
 
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
   cp -a \
