@@ -2,7 +2,7 @@
 
 pkgname=link-lang
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Link programming language interpreter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pilot0253/link-lang"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/link-lang-$pkgver"
-    make -f makefile release
+    make
 }
 
 package() {
