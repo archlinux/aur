@@ -5,23 +5,23 @@
 
 pkgbase=bitbake
 pkgname=(bitbake bitbake-vim)
-pkgver=5.3.2
-pkgrel=3
+pkgver=6.0
+pkgrel=1
 pkgdesc="Build tool executing tasks and managing metadata"
 url="https://www.openembedded.org/wiki/Main_Page"
 license=(GPL2)
 arch=(any)
 depends=(python python-beautifulsoup4 python-ply python-codegen
          python-progressbar python-pyinotify python-simplediff chrpath diffstat inetutils rpcsvc-proto)
-source=("https://git.openembedded.org/bitbake/snapshot/bitbake-yocto-${pkgver}.tar.gz")
-sha256sums=('e9a2360f1a2e08f06966425ed2e6dd574211e5c4e81311b2c0b34130fa5af8da')
+source=("git+https://git.openembedded.org/bitbake.git#tag=yocto-$pkgver")
+sha256sums=('7db5c6e3ffe711e6c0cb2659509254579c2ed280d9cdcb734b3947e806a0f11a')
 
 package_bitbake() {
     install=bitbake.install
 
     local _site_packages="${pkgdir}$(python -c "import site; print(site.getsitepackages()[0])")"
    
-    cd "${pkgbase}-yocto-${pkgver}"
+    cd "${pkgbase}"
 
     find . -iname "*.log" -delete
     install -d "${pkgdir}/usr/bin"
@@ -41,7 +41,7 @@ package_bitbake() {
 
 package_bitbake-vim() {
   depends=()
-    cd "${pkgbase}-yocto-${pkgver}"
+    cd "${pkgbase}"
 
     install -d "${pkgdir}/usr/share"
     cp -Ra contrib/vim "${pkgdir}/usr/share"
