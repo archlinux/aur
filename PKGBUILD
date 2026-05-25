@@ -1,28 +1,39 @@
-# Maintainer: Andrew Kozik <andrewkoz at live dot com>
+# Maintainer: Ken <flat at esoteric dot moe>
+# Contributor: Andrew Kozik <andrewkoz at live dot com>
 pkgname=xwin
-pkgver=0.7.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Allows downloading and repacking the MSVC CRT and Windows SDK for cross compilation'
 arch=('x86_64')
-url="https://crates.io/crates/xwin"
+url="https://github.com/Jake-Shadle/xwin"
 license=('Apache' 'MIT')
 depends=('glibc')
 makedepends=('cargo' 'clang' 'lld')
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('b3073d6c618435c74cfde850802e7354648d9706f7549e94a5eecb017257e381')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('6878480d7a4126fb4390fe083ac0509bf43e4d284797e2ddd0a4a01fd614f35b')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
     cd "$pkgname-$pkgver"
     # Clang+LLD needed in place of GCC+BFD if LTO is enabled or else final link fails
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     export CC=clang
     export CFLAGS+=" -fuse-ld=lld"
     export RUSTFLAGS+=" -Clinker=clang -Clink-arg=-fuse-ld=lld"
     cargo build --release --frozen
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    # Skip running tests that download files and require additional targets installed
+    cargo test --frozen --bins --lib --examples
 }
 
 package() {
