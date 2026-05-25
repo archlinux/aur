@@ -1,0 +1,11 @@
+post_install() {
+  echo 'Shaula installed.'
+  if command -v shaula >/dev/null 2>&1 && shaula setup --help >/dev/null 2>&1; then
+    echo 'Run `shaula setup` as your regular user to configure Niri and Noctalia.'
+  fi
+  echo 'Run `shaula settings` for graphical settings.'
+}
+
+post_upgrade() {
+  post_install
+}
