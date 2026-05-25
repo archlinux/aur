@@ -1,8 +1,8 @@
 # Maintainer: Jay Thomas <jay@gfax.ch>
 pkgname=clutch
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="A highly customizable TUI RPC client for Transmission BitTorrent"
+pkgrel=2
+pkgdesc="A highly customizable TUI RPC interface for the Transmission bittorrent client"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/jay-thomas/clutch"
 license=('GPL-3.0-only')
