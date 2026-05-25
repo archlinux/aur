@@ -11,6 +11,8 @@ pkgbase = server-picker-x-git
 	depends = gcc-libs
 	provides = server-picker-x
 	conflicts = server-picker-x
+	options = !strip
+	options = !debug
 	source = git+https://github.com/FN-FAL113/server-picker-x.git
 	sha256sums = SKIP
 

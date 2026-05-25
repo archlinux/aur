@@ -11,8 +11,12 @@ depends=('glibc' 'gcc-libs')
 makedepends=('git' 'dotnet-sdk') # Requires Microsoft's .NET SDK to compile from source
 provides=('server-picker-x')
 conflicts=('server-picker-x')
+# ... base configuration ...
 source=("git+${url}.git")
 sha256sums=('SKIP')
+
+# CRITICAL: Prevents Arch from mangling self-contained .NET binary structures
+options=('!strip' '!debug')
 
 build() {
   cd "${_pkgname}"
