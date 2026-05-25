@@ -4,21 +4,19 @@
 _author=SKAJI
 _dist=Parallel-Pipes
 pkgname=perl-${_dist@L}
-pkgver=0.201
+pkgver=v1.0.0
 pkgrel=1
+epoch=1
 pkgdesc='parallel processing using pipe(2) for communication and synchronization'
 arch=('any')
-url=https://metacpan.org/release/$_author/$_dist-$pkgver
+url=https://metacpan.org/dist/$_dist
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
-depends=('perl>=5.8.1')
-makedepends=(
-    'perl-module-build-tiny>=0.052'
-    'perl>=5.8.1'
-)
+depends=('perl>=5.24.0')
+makedepends=('perl-module-build-tiny>=0.053')
 checkdepends=('perl-test-simple')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('b73cbdd4202b29eab97e0c08dcd59d9273633610e8721cf449078656bd591a7c')
+sha256sums=('0e5efae6e71cf5255b881f0b7fa964913b741d0d085f85b79fb86edc3ba371f7')
 
 build()
 {
