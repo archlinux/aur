@@ -1,6 +1,6 @@
 pkgbase = gitway-bin
 	pkgdesc = Pure-Rust SSH toolkit for Git: transport, keys, signing, agent
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/Spacecraft-Software/Gitway
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gitway-bin
 	provides = gitway
 	conflicts = gitway
 	conflicts = gitway-git
-	source = gitway-bin-1.0.3.tar.gz::https://github.com/Spacecraft-Software/Gitway/releases/download/v1.0.3/gitway-v1.0.3-linux-x86_64.tar.gz
-	sha256sums = bc11d2a81157b44e62679926cbcbe635695604491ce8454c4a2b569e83d3670d
+	source = gitway-bin-1.0.4.tar.gz::https://github.com/Spacecraft-Software/Gitway/releases/download/v1.0.4/gitway-v1.0.4-linux-x86_64.tar.gz
+	sha256sums = ccc78b6e0c74d37b386f3b618bb85ce26ff322b83ba39a61a6c2d80094755724
 
 pkgname = gitway-bin

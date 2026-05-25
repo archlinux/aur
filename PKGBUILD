@@ -9,7 +9,7 @@
 # Project page: https://SpacecraftSoftware.org/gitway/
 
 pkgname=gitway-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Pure-Rust SSH toolkit for Git: transport, keys, signing, agent"
 arch=('x86_64')
@@ -21,7 +21,7 @@ conflicts=('gitway' 'gitway-git')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/Spacecraft-Software/Gitway/releases/download/v${pkgver}/gitway-v${pkgver}-linux-x86_64.tar.gz"
 )
-sha256sums=('bc11d2a81157b44e62679926cbcbe635695604491ce8454c4a2b569e83d3670d')
+sha256sums=('ccc78b6e0c74d37b386f3b618bb85ce26ff322b83ba39a61a6c2d80094755724')
 
 package() {
   cd "${srcdir}"
