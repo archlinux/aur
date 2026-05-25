@@ -113,6 +113,9 @@ _hpr_install_config() {
     cp -r "$SCRIPT_DIR/assets" "$CONFIG_DIR/"
     echo ">> assets/ folder updated silently."
 
+    chown -R "$REAL_USER:$REAL_USER" "$CONFIG_DIR"
+    chown -R "$REAL_USER:$REAL_USER" "$DATA_DIR"
+
     echo ""
     echo "================================================"
     echo "  Done! You can now run HPR."
