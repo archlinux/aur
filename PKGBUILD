@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('python' 'python-prompt_toolkit' 'python-psutil')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ozhangebesoglu/Kishi-Shell/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('812c27f93d2921b7a86cfd01c38947d252baa2c951ceecaf97c1a2b90908df97')
+sha256sums=('f778ea54c0209a136d9e436ccaed19037dc8b7e095286eaf2f1f816e01c31529')
 
 build() {
     cd "Kishi-Shell-$pkgver"

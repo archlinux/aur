@@ -13,6 +13,6 @@ pkgbase = kishi-shell
 	depends = python-prompt_toolkit
 	depends = python-psutil
 	source = kishi-shell-2.0.0.6.tar.gz::https://github.com/ozhangebesoglu/Kishi-Shell/archive/refs/tags/v2.0.0.6.tar.gz
-	sha256sums = 812c27f93d2921b7a86cfd01c38947d252baa2c951ceecaf97c1a2b90908df97
+	sha256sums = f778ea54c0209a136d9e436ccaed19037dc8b7e095286eaf2f1f816e01c31529
 
 pkgname = kishi-shell
