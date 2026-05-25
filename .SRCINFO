@@ -1,0 +1,15 @@
+pkgbase = shield-authenticator-bin
+	pkgdesc = SHIELD Authenticator - Military-grade 2FA desktop app (Tauri wrapper)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://shield.int
+	arch = x86_64
+	license = custom:SHIELD
+	depends = webkit2gtk-4.1
+	depends = libx11
+	depends = gtk3
+	depends = libnotify
+	depends = libxcb
+	depends = libsecret
+
+pkgname = shield-authenticator-bin

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SHIELD Authenticator
+Comment=TOTP 2FA with zero-knowledge vault
+Exec=/usr/bin/shield-authenticator
+Icon=shield-auth
+Terminal=false
+Type=Application
+Categories=Utility;Security;
+StartupWMClass=shield-authenticator
