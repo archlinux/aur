@@ -1,6 +1,6 @@
 pkgbase = coomerdl
 	pkgdesc = Download from coomer.st
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://codeberg.org/cadapur/coomerdl
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = coomerdl
 	conflicts = coomerdl
 	provides = coomerdl
 	
-	source = https://codeberg.org/cadapur/coomerdl/releases/1.1.3/coomerdl-1.1.3.tar.gz
-	sha256sums = 6cf1ce507d4875781dd4bebfa68a05dc741df953b6d563875419e3be260163ed
+	source = https://codeberg.org/cadapur/coomerdl/releases/download/1.1.4/coomerdl-1.1.4.tar.gz
+	sha256sums = 972c5efd57ffb3837d2357a02aee82fb834f08ce1e5c68a84df22805ebc273cb
 	
 pkgname = coomerdl
