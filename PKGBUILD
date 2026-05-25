@@ -6,7 +6,7 @@
 
 pkgname=proton-pass
 pkgver=1.37.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source and secure identity manager"
 arch=('aarch64' 'x86_64')
 url="https://proton.me/pass"
@@ -25,10 +25,10 @@ prepare() {
     # Limit workspace applications to avoid mysterious dependency issues
     sed -i 's@"applications/\*",@"applications/pass*",@' package.json
 
-    # Bypass pass-desktop-native build script
-    sed -i 's@build:multi@build@' applications/pass-desktop/package.json
+    # Bypass pass-desktop-native build script (removes npm/rustup requirement and Rust target hardcoding)
+    sed -i 's@build"@build:napi && yarn run build:host"@' applications/pass-desktop/package.json
 
-    # Skip electron-forge in build step
+    # Skip electron-forge in build step (needed for .asar size improvement below)
     sed -i 's@ && electron-forge package@@' applications/pass-desktop/package.json
 
     # HACK: Make the tray icon work under system Electron
