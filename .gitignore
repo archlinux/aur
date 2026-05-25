@@ -6,3 +6,5 @@
 !.SRCINFO
 !libmodsecurity-git.install
 !libxml-includes.patch
+
+!.gitignore
