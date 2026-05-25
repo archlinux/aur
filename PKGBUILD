@@ -4,7 +4,7 @@
 pkgbase='s3_exporter'
 pkgname='prometheus-s3-exporter'
 pkgver='0.7.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Exports Prometheus metrics about S3 buckets and objects'
 arch=('x86_64' 'aarch64')
 _uri='github.com/qaoru'
@@ -47,6 +47,11 @@ build() {
     -X github.com/prometheus/common/version.Branch=tarball \
     -X github.com/prometheus/common/version.BuildUser=$(whoami)@$(hostnamectl hostname) \
     -X github.com/prometheus/common/version.BuildDate=$(date -u '+%Y%m%d-%H:%M:%S' --date=@${SOURCE_DATE_EPOCH})"
+}
+
+check() {
+  cd "${GOPATH}/src/${_uri}/${pkgbase}"
+  go test -modcacherw ./...
 }
 
 package() {
