@@ -16,18 +16,18 @@ source=("git+https://github.com/fossisawesome/firmium.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "Firmium"
+  cd "firmium"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "Firmium"
+  cd "firmium"
   npm install
   npm run tauri build -- --bundles deb
 }
 
 package() {
-  cd "Firmium"
+  cd "firmium"
 
   local tauri_bundle_dir="src-tauri/target/release/bundle/deb"
   local deb_dir=$(find "$tauri_bundle_dir" -maxdepth 1 -type d -name "*_amd64" | head -n 1)
