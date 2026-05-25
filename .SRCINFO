@@ -1,7 +1,7 @@
 pkgbase = orca-slicer-unstable-bin
 	pkgdesc = G-code generator for 3D printers (versions including beta, release candidates and stable versions)
 	pkgver = 2.4.0alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OrcaSlicer/OrcaSlicer
 	arch = x86_64
 	license = AGPL-3.0-only

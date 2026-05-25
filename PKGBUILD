@@ -4,7 +4,7 @@
 pkgname="orca-slicer-unstable-bin"
 pkgver=2.4.0alpha
 _pkgver=2.4.0-alpha
-pkgrel=1
+pkgrel=2
 pkgdesc="G-code generator for 3D printers (versions including beta, release candidates and stable versions)"
 arch=('x86_64')
 url="https://github.com/OrcaSlicer/OrcaSlicer"
@@ -21,7 +21,7 @@ prepare() {
 	./OrcaSlicer_Linux_AppImage_Ubuntu2404_V${_pkgver}.AppImage --appimage-extract
 
 	sed -i 's|Exec=.*|Exec=/opt/orca-slicer-unstable/bin/orca-slicer %U|g' \
-		"squashfs-root/OrcaSlicer.desktop"
+		squashfs-root/*.desktop
 }
 
 package() {
@@ -30,14 +30,15 @@ package() {
 	install -d "$pkgdir/opt/${pkgname%-bin}/"
 	cp -a squashfs-root/* "$pkgdir/opt/${pkgname%-bin}/"
 	rm -rf "$pkgdir/opt/${pkgname%-bin}/usr/"
-	rm -f "$pkgdir/opt/${pkgname%-bin}"/{OrcaSlicer.desktop,AppRun,OrcaSlicer.png}
+	rm -f "$pkgdir/opt/${pkgname%-bin}"/*.desktop
+	rm -f "$pkgdir/opt/${pkgname%-bin}"/{AppRun,OrcaSlicer.png}
 
 	install -d "$pkgdir/usr/bin"
 	ln -s "/opt/${pkgname%-bin}/bin/orca-slicer" "$pkgdir/usr/bin/orca-slicer"
 
 	install -d "$pkgdir/usr/share/applications"
-	install -Dm644 "squashfs-root/OrcaSlicer.desktop" \
-		"$pkgdir/usr/share/applications/"
+	install -m644 squashfs-root/*.desktop \
+		-t "$pkgdir/usr/share/applications/"
 
 	install -d "$pkgdir/usr/share/icons/"
 	cp -r squashfs-root/usr/share/icons/hicolor/ "$pkgdir/usr/share/icons/"
