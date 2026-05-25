@@ -2,48 +2,32 @@
 
 pkgname=scopy-appimage
 _disname=${pkgname%-appimage}
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A software oscilloscope and signal analysis toolset."
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/analogdevicesinc/scopy"
 license=('GPL-3.0-only')
 provides=('scopy')
 conflicts=('scopy')
-depends=('zlib' 'hicolor-icon-theme' 'glibc')
-
-if [ ${CARCH} = "aarch64" ]; then
-    _arch="arm64"
-else
-    _arch=${CARCH}
-fi
+depends=('glibc' 'zlib' 'fuse2' 'hicolor-icon-theme')
 
 _ver=v${pkgver}
-_zip=Scopy-${_ver}-Linux-${_arch}-AppImage.zip
-source_x86_64=(
-    ${url}/releases/download/${_ver}/${_zip}
-    LICENSE::https://raw.githubusercontent.com/analogdevicesinc/scopy/main/LICENSE
+_appimage=Scopy-${_ver}-Linux-x86_64.AppImage
+source=(
+    ${url}/releases/download/${_ver}/${_appimage}
+    LICENSE::${url}/releases/download/${_ver}/LICENSE.txt
 )
-source_aarch64=(
-    ${url}/releases/download/${_ver}/${_zip}
-    LICENSE::https://raw.githubusercontent.com/analogdevicesinc/scopy/main/LICENSE
-)
-sha256sums_x86_64=('a54525d1527290ba610b08837ddf91a0bc4f2b47d2edef595a6d082b8dadca37'
-                   '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
-sha256sums_aarch64=('a54525d1527290ba610b08837ddf91a0bc4f2b47d2edef595a6d082b8dadca37'
-                    '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
-
+sha256sums=('e09a1903c87a895fb0a6a30e7307523df02f17c12e0a84f1da250162544cdb50'
+            '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
 options=('!strip')
-noextract=(${_zip})
-_appimage=Scopy-${_ver}-Linux-${_arch}.AppImage
 
 
 prepare() {
     cd ${srcdir} && rm -rf "squashfs-root"
-    bsdtar -xf ${_zip} -C ./
     chmod +x ${_appimage}
     ./${_appimage} --appimage-extract > /dev/null
-    sed -i "/^Exec=/c\Exec=/usr/bin/${_disname} %U" "${srcdir}/squashfs-root/${_disname}.desktop"
+    sed -i "/^Exec=/c\Exec=/usr/bin/${_disname} %U" ${srcdir}/squashfs-root/${_disname}.desktop
 }
 
 package() {
@@ -55,6 +39,7 @@ package() {
 
     # Icon images
     install -Dm644 ${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${_disname}.png -t ${pkgdir}/usr/share/icons/hicolor/512x512/apps
+    install -Dm644 ${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/${_disname}.svg -t ${pkgdir}/usr/share/icons/hicolor/scalable/apps
     
     # Symlink executable
     install -dm755 ${pkgdir}/usr/bin && ln -sf /opt/${pkgname}/${_disname}.AppImage ${pkgdir}/usr/bin/${_disname}
