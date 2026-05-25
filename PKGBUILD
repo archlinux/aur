@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname=bandcamp-dl-git
-pkgver=v0.0.17.r42.g0b77700
+pkgver=v0.0.17.r49.ge8170dc
 pkgrel=1
 pkgdesc="Download audio from bandcamp.com"
 arch=('any')
@@ -19,6 +19,7 @@ depends=(
   'python-unicode-slugify'
   'python-setuptools'
   'python-urllib3-future'
+  'python-requests-ratelimiter'
 )
 provides=("${pkgname/-git/}")
 conflicts=("${pkgname/-git/}")

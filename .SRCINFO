@@ -18,6 +18,7 @@ pkgbase = bandcamp-dl-git
 	depends = python-unicode-slugify
 	depends = python-setuptools
 	depends = python-urllib3-future
+	depends = python-requests-ratelimiter
 	provides = bandcamp-dl
 	conflicts = bandcamp-dl
 	options = !emptydirs
