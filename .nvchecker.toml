@@ -1,0 +1,3 @@
+[perl-proc-forksafe]
+source = "cpan"
+cpan = "Proc-ForkSafe"

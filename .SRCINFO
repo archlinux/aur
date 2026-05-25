@@ -1,0 +1,14 @@
+pkgbase = perl-proc-forksafe
+	pkgdesc = help make objects fork safe
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://metacpan.org/dist/Proc-ForkSafe
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-module-build-tiny>=0.053
+	depends = perl>=5.24.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SK/SKAJI/Proc-ForkSafe-v1.0.0.tar.gz
+	sha256sums = 85fcd3b335d6b8cda602d32b4f705617fe9f193e23c63858a9c019d3a4c09856
+
+pkgname = perl-proc-forksafe
