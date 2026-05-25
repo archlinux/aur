@@ -5,7 +5,7 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
-pkgver=7.6.1
+pkgver=7.6.2
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(
   'nuget-source.patch'
 )
 noextract=('pester.4.10.1.nupkg')
-sha256sums=('adedc60689c677d03776d9b73e2b80282bf4d2d669ec22592cb9b9b837f4d828'
+sha256sums=('ef52fb4858206c9ad300155cb87420b112ebc3a296c942937d6a14f98552ae7f'
             '0c81200e5211a2f63bc8d9941432cbf98b5988249f0ceeb1f118a14adddbaa8e'
             '6c996dc4dc8bef068cefb1680292154f45577c66fb0600dd0fb50939bbf8a3a3'
             '84d34a09759271aa7aa614b97ff62642c773b2f81a712ac18d99985cf7a3c3ea')
