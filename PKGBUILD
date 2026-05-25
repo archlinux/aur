@@ -1,9 +1,9 @@
 # Maintainer: Eikano <lcuoin@gmail.com>
-
+# Maintainer: Merrkry <merrkry@tsubasa.moe>
 _pkgname="tsukimi"
 pkgname="${_pkgname}-git"
-pkgver=26.5.3.r1402.g230ce4
-pkgrel=1
+pkgver=26.6.1.r1405.ge77192
+pkgrel=2
 pkgdesc='A simple third-party Emby client'
 arch=('x86_64')
 url="https://github.com/tsukinaha/tsukimi"
@@ -11,35 +11,35 @@ license=('GPL-3.0-or-later')
 provides=('tsukimi')
 conflicts=('tsukimi')
 depends=(
-  'mpv'
-  'ffmpeg'
-  'libadwaita'
-  'gstreamer'
-  'gtk4'
+	'mpv'
+	'ffmpeg'
+	'libadwaita'
+	'gstreamer'
+	'gtk4'
 )
 makedepends=(
-  'cargo'
-  'git'
-  'meson'
+	'cargo'
+	'git'
+	'meson'
 )
 source=(
-  git+https://github.com/tsukinaha/tsukimi.git
+	git+https://github.com/tsukinaha/tsukimi.git
 )
 sha256sums=(
-  'SKIP'
+	'SKIP'
 )
 options=(!lto)
 
 pkgver() {
-  cd "${_pkgname}"
-  echo $(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2).r$(git rev-list --count HEAD).g$(git describe --long --tags --abbrev=7 | tail -c 7)
+	cd "${_pkgname}"
+	echo $(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2).r$(git rev-list --count HEAD).g$(git describe --long --tags --abbrev=7 | tail -c 7)
 }
 
 build() {
-  arch-meson "${srcdir}/${_pkgname}" build
-  meson compile -C build
+	arch-meson "${srcdir}/${_pkgname}" build
+	meson compile -C build
 }
 
 package() {
-  meson install -C build --no-rebuild --destdir "$pkgdir"
+	meson install -C build --no-rebuild --destdir "$pkgdir"
 }
