@@ -2,7 +2,7 @@ Based on https://gist.github.com/fl4tisjustice/71657695a48739779a055c5aa00b37f3
 with minor changes for 525.147.05
 
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index da2b701..e7d880f 100644
+index 256fa11..0682c8c 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
 @@ -20,6 +20,7 @@
@@ -13,7 +13,7 @@ index da2b701..e7d880f 100644
  #include "nvidia-drm-conftest.h" /* NV_DRM_AVAILABLE and NV_DRM_DRM_GEM_H_PRESENT */
  
  #include "nvidia-drm-priv.h"
-@@ -158,6 +159,9 @@ static void nv_drm_output_poll_changed(struct drm_device *dev)
+@@ -155,6 +156,9 @@ static void nv_drm_output_poll_changed(struct drm_device *dev)
  static struct drm_framebuffer *nv_drm_framebuffer_create(
      struct drm_device *dev,
      struct drm_file *file,
@@ -23,7 +23,7 @@ index da2b701..e7d880f 100644
      #if defined(NV_DRM_HELPER_MODE_FILL_FB_STRUCT_HAS_CONST_MODE_CMD_ARG)
      const struct drm_mode_fb_cmd2 *cmd
      #else
-@@ -173,6 +177,9 @@ static struct drm_framebuffer *nv_drm_framebuffer_create(
+@@ -170,6 +174,9 @@ static struct drm_framebuffer *nv_drm_framebuffer_create(
      fb = nv_drm_internal_framebuffer_create(
              dev,
              file,
@@ -34,7 +34,7 @@ index da2b701..e7d880f 100644
  
      #if !defined(NV_DRM_HELPER_MODE_FILL_FB_STRUCT_HAS_CONST_MODE_CMD_ARG)
 diff --git a/nvidia-drm/nvidia-drm-fb.c b/nvidia-drm/nvidia-drm-fb.c
-index 1c84201..f1f3bff 100644
+index d119e7c..89d8532 100644
 --- a/nvidia-drm/nvidia-drm-fb.c
 +++ b/nvidia-drm/nvidia-drm-fb.c
 @@ -20,6 +20,7 @@
