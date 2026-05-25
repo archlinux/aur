@@ -1,0 +1,36 @@
+# Pacman install/upgrade hook — refreshes the KDE sycoca cache so the new
+# .desktop's ScreenShot2 permission is picked up. Auto-start goes through
+# XDG autostart: Plasma launches /etc/xdg/autostart/com.4ztex.dock.desktop
+# when the session opens.
+
+post_install() {
+    _refresh
+    cat <<EOF
+==> 4ztexDock installed.
+==> Log OUT of Plasma → log back IN (Plasma autostart will launch it and
+    KApplicationTrader will refresh its cache).
+==> To start it manually:  /usr/bin/4ztexDock &
+EOF
+}
+
+post_upgrade() {
+    _refresh
+    cat <<EOF
+==> 4ztexDock upgraded.
+==> To refresh the running instance:  pkill -x 4ztexDock
+    (it will be relaunched by autostart or manually)
+EOF
+}
+
+post_remove() {
+    _refresh
+}
+
+_refresh() {
+    if command -v update-desktop-database >/dev/null 2>&1; then
+        update-desktop-database -q /usr/share/applications 2>/dev/null || true
+    fi
+    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+    fi
+}
