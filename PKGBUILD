@@ -32,7 +32,7 @@ build() {
 package() {
     cd "${_pkgname}" || return
 
-    # Get Python version dynamically to prevent hardcoding breakage
+    # Get Python version
     local _py_ver
     _py_ver=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
 
