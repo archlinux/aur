@@ -4,7 +4,6 @@ cat <<INFO
 You are strongly advised to update signature version by executing this command:
 
     systemctl enable --now maldet-update-signatures.timer
-    systemctl start maldet-update-signatures.service
 
 Signatures must be updated at least once before running maldet.
 
