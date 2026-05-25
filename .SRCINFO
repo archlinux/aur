@@ -1,7 +1,7 @@
 pkgbase = terraform-mcp-server
 	pkgdesc = Model Context Protocol (MCP) server for the Terraform ecosystem
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hashicorp/terraform-mcp-server
 	arch = x86_64
 	arch = aarch64
