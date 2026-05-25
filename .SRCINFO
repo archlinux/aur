@@ -1,0 +1,30 @@
+pkgbase = python-teleprox
+	pkgdesc = Simple python object proxies over TCP
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/campagnola/teleprox
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = procps-ng
+	checkdepends = python-pytest
+	checkdepends = python-pyqt6
+	checkdepends = python-numpy
+	checkdepends = xorg-server-xvfb
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=61.0
+	makedepends = cosign
+	depends = python>=3.6
+	depends = python-pyzmq
+	depends = python-msgpack
+	optdepends = python-colorama: colorful logs
+	optdepends = python-numpy: SharedNDArray support
+	source = python-teleprox-2.2.1.tar.gz::https://github.com/campagnola/teleprox/archive/refs/tags/v2.2.1/teleprox-2.2.1.tar.gz
+	source = python-teleprox-2.2.1-release.tar.gz::https://github.com/campagnola/teleprox/releases/download/v2.2.1/teleprox-2.2.1.tar.gz
+	source = python-teleprox-2.2.1-release.tar.gz.sigstore.json::https://github.com/campagnola/teleprox/releases/download/v2.2.1/teleprox-2.2.1.tar.gz.sigstore.json
+	sha256sums = 519fc52991cdd86bbf033638e36482c030c3eca6408735864ae03f319be699a2
+	sha256sums = 2078a92a270a1bf70ca3fe94a6a8c5a750aa35092f789f79451b9636a7bc2190
+	sha256sums = 71ca3d09982ca9ac53c8a2db6b23931488fd095e82b99baa8016160b39140e68
+
+pkgname = python-teleprox
