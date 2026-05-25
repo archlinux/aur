@@ -1,7 +1,7 @@
 # Maintainer: Michael S. <sandersm689@gmail.com>
 pkgname=glogout
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland logout menu themed with real HTML, CSS, and JavaScript — no GTK theme inheritance"
 arch=('x86_64')
 url="https://github.com/synnode/glogout"
@@ -28,7 +28,12 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 contrib/glogout.service "$pkgdir/usr/lib/systemd/user/glogout.service"
+	# The shipped unit's ExecStart points at ~/.cargo/bin/glogout (correct for a
+	# `make install` user-local build). For the packaged binary it must point at
+	# the system path, so rewrite it here.
+	sed 's|%h/\.cargo/bin/glogout|/usr/bin/glogout|' contrib/glogout.service \
+		> glogout.service.pkg
+	install -Dm644 glogout.service.pkg "$pkgdir/usr/lib/systemd/user/glogout.service"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

@@ -1,7 +1,7 @@
 pkgbase = glogout
 	pkgdesc = A Wayland logout menu themed with real HTML, CSS, and JavaScript — no GTK theme inheritance
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/synnode/glogout
 	arch = x86_64
 	license = MIT
