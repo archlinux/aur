@@ -1,0 +1,19 @@
+# makepkg build artifacts
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+*.log
+
+# makepkg working directories
+src/
+pkg/
+
+# Downloaded source tarballs (re-fetched on each clean build via SRCDEST
+# or in-tree by makepkg; not worth committing -- the sha256 in PKGBUILD
+# pins the contents and aurutils / makechrootpkg ignore them anyway).
+*.tar.gz
+
+# Editor swap / backup files
+*~
+*.swp
+.#*
