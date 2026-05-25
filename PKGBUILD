@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=rapidobj
-pkgver=1.0.1
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="A fast, header-only, C++17 library for parsing Wavefront .obj files."
@@ -16,27 +16,18 @@ optdepends=()
 provides=()
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('73eca15cdc583e1f770f51d694b856c5acafd80db521df5e63d95bb17f418114')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-
-	mkdir -p build
-}
+sha256sums=('87640b4d70905081552d31a36e6b68a947e167ba379a7032a056986c16f716d3')
 
 build() {
-	cd "$pkgname-$pkgver/build"
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr
 
-	cmake \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		..
-	make
+	cmake --build build
 }
 
 package() {
-	cd "$pkgname-$pkgver/build"
+	DESTDIR="$pkgdir/" cmake --install build
 
-	make DESTDIR="$pkgdir/" install
-
-	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
