@@ -1,19 +1,19 @@
 pkgbase = coomerdl-bin
 	pkgdesc = Download from coomer.st
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://codeberg.org/cadapur/coomerdl
 	license = AGPL
 	conflicts = coomerdl
 	provides = coomerdl
 	arch = aarch64
-	source_aarch64 = https://codeberg.org/cadapur/coomerdl/releases/download/1.3.2/coomerdl_linux_arm64
-	sha256sums_aarch64 = 3dcafd6c1c5e1ca08b5e3d91799a27252753fc5d2ed4f5d6f9f5b02620379351
+	source_aarch64 = https://codeberg.org/cadapur/coomerdl/releases/download/1.3.3/coomerdl_linux_arm64
+	sha256sums_aarch64 = 7ec888119f56429e8db3e71235e884ebf525f3ded8a273298e6e109f359cde82
 	arch = armv7h
-	source_armv7h = https://codeberg.org/cadapur/coomerdl/releases/download/1.3.2/coomerdl_linux_armv7
-	sha256sums_armv7h = 53422049c323a67f2c37ecb086e7e5747834a0a8f8988b748701ab0cc4855d1d
+	source_armv7h = https://codeberg.org/cadapur/coomerdl/releases/download/1.3.3/coomerdl_linux_armv7
+	sha256sums_armv7h = b3885620c4753ae86ab1e05adb7226c782227de953f6b5962dfb90003afb2a5e
 	arch = x86_64
-	source_x86_64 = https://codeberg.org/cadapur/coomerdl/releases/download/1.3.2/coomerdl_linux_amd64
-	sha256sums_x86_64 = b7a7483cd3403540abee000be1422ffea2108d3f325e088c65b970d3c661a222
+	source_x86_64 = https://codeberg.org/cadapur/coomerdl/releases/download/1.3.3/coomerdl_linux_amd64
+	sha256sums_x86_64 = d9cbb4d0ac8ebcc636125f0f70e5f8c38b70b314e075620c9c36ee59553f1742
 	
 pkgname = coomerdl-bin
