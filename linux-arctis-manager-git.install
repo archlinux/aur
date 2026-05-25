@@ -1,0 +1,114 @@
+# linux-arctis-manager-git.install
+
+# Color Definitions
+_b='\e[1;34m' # Bold Blue
+_y='\e[1;33m' # Bold Yellow
+_c='\e[1;36m' # Bold Cyan
+_r='\e[0m'    # Reset
+
+_check_conflicts() {
+    local user_home="$1"
+
+    # Checking for legacy files or configurations that conflict with the current package
+    if [ -f "$user_home/.config/systemd/user/arctis-manager.service" ] || \
+       [ -f "/etc/udev/rules.d/91-steelseries-arctis.rules" ] || \
+       [ -d "$user_home/.config/arctis_manager/devices/" ] || \
+       [ -f "$user_home/.local/share/icons/arctis-manager.svg" ]; then
+
+        echo -e "${_b}::${_r} ${_y}[ATTENTION]${_r} Configuration conflicts detected:"
+        echo -e "${_b}::${_r}"
+
+        # 1. Legacy Service
+        if [ -f "$user_home/.config/systemd/user/arctis-manager.service" ]; then
+            echo -e "${_b}::${_r} ${_y}[DEPRECATION]${_r} Conflict: Legacy service file found in home directory."
+            echo -e "${_b}::${_r}               The package manager now controls this service globally."
+            echo -e "${_b}::${_r}               Remove the local file to allow system updates:"
+            echo -e "${_b}::${_r}               ${_c}rm ~/.config/systemd/user/arctis-manager.service${_r}"
+            echo -e "${_b}::${_r}"
+        fi
+
+        # 2. Manual Udev
+        if [ -f "/etc/udev/rules.d/91-steelseries-arctis.rules" ]; then
+            echo -e "${_b}::${_r} ${_y}[DEPRECATION]${_r} Conflict: Outdated manual udev rules detected."
+            echo -e "${_b}::${_r}               The package manager now handles device rules natively."
+            echo -e "${_b}::${_r}               Remove the manual rules to avoid conflicts:"
+            echo -e "${_b}::${_r}               ${_c}sudo rm /etc/udev/rules.d/91-steelseries-arctis.rules${_r}"
+            echo -e "${_b}::${_r}"
+        fi
+
+        # 3. Device Overrides
+        if [ -d "$user_home/.config/arctis_manager/devices/" ]; then
+            echo -e "${_b}::${_r} ${_y}[ADVISORY]${_r} Local device overrides found in ~/.config/."
+            echo -e "${_b}::${_r}            These files override built-in device support."
+            echo -e "${_b}::${_r}            Only keep them if you have custom device configurations you rely on."
+            echo -e "${_b}::${_r}            Otherwise, remove this directory:"
+            echo -e "${_b}::${_r}            ${_c}rm -rf ~/.config/arctis_manager/devices/${_r}"
+            echo -e "${_b}::${_r}"
+        fi
+
+        # 4. Legacy Icon
+        if [ -f "$user_home/.local/share/icons/arctis-manager.svg" ]; then
+            echo -e "${_b}::${_r} ${_y}[DEPRECATION]${_r} Conflict: Legacy user-space icon detected."
+            echo -e "${_b}::${_r}               Local icons override the package manager's system theme."
+            echo -e "${_b}::${_r}               Remove it to ensure your app menu updates correctly:"
+            echo -e "${_b}::${_r}               ${_c}rm ~/.local/share/icons/arctis-manager.svg${_r}"
+            echo -e "${_b}::${_r}"
+        fi
+    fi
+}
+
+post_install() {
+    local user_home
+    user_home=$(getent passwd "${SUDO_USER:-$USER}" | cut -d: -f6)
+
+    echo -e ""
+    echo -e "${_b}:: ARCTIS MANAGER: INSTALLED v$1${_r}"
+    echo -e "${_b}::${_r} -----------------------------------------------------------------------"
+    _check_conflicts "$user_home"
+    echo -e "${_b}::${_r} ${_y}[TIP]${_r} To launch the system tray app automatically on login:"
+    echo -e "${_b}::${_r}       ${_c}ln -sf /usr/share/applications/ArctisManagerSystray.desktop ~/.config/autostart/${_r}"
+    echo -e "${_b}::${_r} -----------------------------------------------------------------------"
+    echo -e ""
+}
+
+post_upgrade() {
+    local user_home
+    user_home=$(getent passwd "${SUDO_USER:-$USER}" | cut -d: -f6)
+    local autostart="$user_home/.config/autostart/ArctisManagerSystray.desktop"
+
+    # Evaluate if legacy configurations or pending maintenance require user notification
+    if [ -f "$user_home/.config/systemd/user/arctis-manager.service" ] || \
+       [ -f "/etc/udev/rules.d/91-steelseries-arctis.rules" ] || \
+       [ -d "$user_home/.config/arctis_manager/devices/" ] || \
+       [ -f "$user_home/.local/share/icons/arctis-manager.svg" ] || \
+       { [ -f "$autostart" ] && [ ! -L "$autostart" ]; }; then
+
+        echo -e ""
+        echo -e "${_b}:: ARCTIS MANAGER: ACTION REQUIRED${_r}"
+        echo -e "${_b}::${_r} -----------------------------------------------------------------------"
+
+        _check_conflicts "$user_home"
+
+        # Automated autostart migration
+        if [ -f "$autostart" ] && [ ! -L "$autostart" ]; then
+            echo -e "${_b}::${_r} ${_y}[MAINTENANCE]${_r} Legacy autostart file migrated to system symlink."
+            ln -sf /usr/share/applications/ArctisManagerSystray.desktop "$autostart"
+            echo -e "${_b}::${_r}"
+        fi
+
+        echo -e "${_b}::${_r} -----------------------------------------------------------------------"
+        echo -e ""
+    fi
+}
+
+post_remove() {
+    echo -e ""
+    echo -e "${_b}:: ARCTIS MANAGER: REMOVED${_r}"
+    echo -e "${_b}::${_r} -----------------------------------------------------------------------"
+    echo -e "${_b}::${_r} Personal configurations were preserved. To perform a full cleanup:"
+    echo -e "${_b}::${_r}"
+    echo -e "${_b}::${_r} 1. ${_c}rm -rf ~/.config/arctis_manager${_r}"
+    echo -e "${_b}::${_r} 2. ${_c}rm ~/.config/autostart/ArctisManagerSystray.desktop${_r}"
+    echo -e "${_b}::${_r} -----------------------------------------------------------------------"
+    echo -e ""
+}
