@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=eagle-animation-bin
 _pkgname='Eagle Animation'
-pkgver=2.13.1
+pkgver=2.14.0
 _electronversion=41
 pkgrel=1
 pkgdesc="An awesome, free and open-source animation software.(Prebuilt version.Use system-wide electron)"
@@ -14,12 +14,17 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'ffmpeg'
+    'libexif'
+    'nettle3'
+    'libxml2-legacy'
+    'libtool'
+    'libgphoto2'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fabbae8399ed29a73b6143e33e013edd65189852d8b19db5f95ebbbbd0473b3e'
+sha256sums=('0cd0e4584794a2a5e585dc057721983c60aff7f40abf37a9eff85763f853f153'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
