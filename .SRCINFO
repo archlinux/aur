@@ -1,0 +1,36 @@
+pkgbase = libfprint-goodixtls52xd-git
+	pkgdesc = Library for fingerprint readers with Goodix TLS 52xd support
+	pkgver = 1.94.10.r2010.g39e145b
+	pkgrel = 1
+	url = https://fprint.freedesktop.org/
+	arch = x86_64
+	groups = fprint
+	license = LGPL-2.1-or-later
+	checkdepends = appstream
+	checkdepends = cairo
+	checkdepends = umockdev
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = python-cairo
+	makedepends = python-gobject
+	makedepends = systemd
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = libgudev
+	depends = libgusb
+	depends = openssl
+	depends = pixman
+	provides = libfprint=1.94.10.r2010.g39e145b
+	provides = libfprint-goodixtls52xd
+	provides = libfprint-2.so
+	conflicts = libfprint
+	conflicts = libfprint-goodix-521d
+	conflicts = libfprint-goodixtls52xd
+	source = git+https://github.com/djnz00/libfprint.git#branch=master
+	sha256sums = SKIP
+
+pkgname = libfprint-goodixtls52xd-git
