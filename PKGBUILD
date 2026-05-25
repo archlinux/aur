@@ -1,7 +1,7 @@
 # Maintainer: IRRatium <https://github.com/IRRatium>
 pkgname=badapple
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Bad Apple!! ASCII art player for the terminal"
 arch=('any')
 url="https://github.com/IRRatium/badapple-aur"
@@ -13,7 +13,6 @@ depends=('bash' 'mpv' 'python')
 # Build-time: everything needed to process the video
 makedepends=('ffmpeg' 'curl' 'ascii-image-converter')
 
-# Исправлено имя исходников, чтобы соответствовать стандартному названию архива GitHub
 source=("badapple-$pkgver.tar.gz::https://github.com/IRRatium/badapple-aur/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
@@ -31,19 +30,19 @@ build() {
 
     mkdir -p "$frames_jpg" "$frames_ascii"
 
-    echo "==> [1/4] Downloading video..."
+    echo "==> [1/5] Downloading video..."
     curl -L --progress-bar "$_VIDEO_URL" -o "$video"
 
-    echo "==> [2/4] Downloading audio..."
+    echo "==> [2/5] Downloading audio..."
     curl -L --progress-bar "$_MP3_URL" -o "$mp3"
 
-    echo "==> [3/4] Extracting frames at 30fps..."
+    echo "==> [3/5] Extracting frames at 30fps..."
     ffmpeg -i "$video" -vf fps=30 "$frames_jpg/out%04d.jpg" -y 2>/dev/null
     local count
     count=$(ls "$frames_jpg"/*.jpg | wc -l)
     echo "    Extracted $count frames"
 
-    echo "==> [4/4] Converting to ASCII ($jobs parallel jobs)..."
+    echo "==> [4/5] Converting to ASCII ($jobs parallel jobs)..."
     export frames_ascii
     convert_one() {
         local jpg="$1"
@@ -56,25 +55,31 @@ build() {
     printf '%s\n' "$frames_jpg"/out*.jpg \
         | xargs -P "$jobs" -I{} bash -c 'convert_one "$@"' _ {}
 
-    echo "    Conversion done"
+    echo "==> [5/5] Merging all frames into a single file..."
+    local f
+    > "$work/frames.txt"
+    for f in $(ls "$frames_ascii"/*.txt | sort -V); do
+        cat "$f" >> "$work/frames.txt"
+    done
+
+    echo "    Conversion and merge done"
 
     rm -f "$video"
-    rm -rf "$frames_jpg"
+    rm -rf "$frames_jpg" "$frames_ascii"
 }
 
 package() {
-    # Исправлен путь к распакованному репозиторию GitHub
     cd "$srcdir/badapple-aur-$pkgver"
     local work="$srcdir/_badapple_build"
 
+    # Установка исполняемого скрипта
     install -Dm755 badapple "$pkgdir/usr/bin/badapple"
 
+    # Установка аудио
     install -Dm644 "$work/bad_apple.mp3" \
         "$pkgdir/usr/share/badapple/bad_apple.mp3"
 
-    local total
-    total=$(ls "$work/frames-ascii"/*.txt 2>/dev/null | wc -l)
-    echo "==> Installing $total ASCII frames..."
-    install -dm755 "$pkgdir/usr/share/badapple/frames-ascii"
-    cp "$work/frames-ascii"/*.txt "$pkgdir/usr/share/badapple/frames-ascii/"
+    # Установка одного склеенного файла с кадрами
+    echo "==> Installing merged frames.txt..."
+    install -Dm644 "$work/frames.txt" "$pkgdir/usr/share/badapple/frames.txt"
 }
