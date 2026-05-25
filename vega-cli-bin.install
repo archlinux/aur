@@ -1,0 +1,15 @@
+post_install() {
+    cat <<'EOF'
+==> Vega CLI installed to /usr/bin/vega.
+==> To download and install a Vega SDK into ~/vega/sdk run:
+        vega sdk install
+==> The SDK can take 10–15 minutes and ~20 GB of disk space.
+==> Note: the Vega toolchain expects Python 3.8 (package "python38" in the AUR),
+    plus Node.js 18+, lz4 and watchman. KVM is needed if you plan to use the
+    emulator (install qemu-base and enable the kvm group on your user).
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
