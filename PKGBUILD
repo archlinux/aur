@@ -10,7 +10,7 @@ url="https://github.com/markbus-ai/waybar-switch"
 license=('MIT')
 depends=('quickshell' 'waybar' 'imagemagick')
 makedepends=('cargo')
-source=("$url/archive/v$pkgver.tar.gz")
+source=("https://codeload.github.com/markbus-ai/waybar-switch/tar.gz/v$pkgver")
 sha256sums=('SKIP')
 
 build() {

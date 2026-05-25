@@ -9,7 +9,7 @@ pkgbase = waybar-switch
 	depends = quickshell
 	depends = waybar
 	depends = imagemagick
-	source = https://github.com/markbus-ai/waybar-switch/archive/v0.1.0.tar.gz
+	source = https://codeload.github.com/markbus-ai/waybar-switch/tar.gz/v0.1.0
 	sha256sums = SKIP
 
 pkgname = waybar-switch
