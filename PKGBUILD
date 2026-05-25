@@ -1,6 +1,7 @@
-# Maintainer: bananasjim <bananasjim1@gmail.com>
+# Maintainer: padctl maintainers
+# pkgver/pkgrel/sha256sums: sed-overwritten by .github/workflows/release.yml — local edits have no effect.
 pkgname=padctl-bin
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="HID gamepad daemon — declarative TOML device config, uinput output (prebuilt musl binary)"
 arch=('x86_64' 'aarch64')
@@ -15,8 +16,8 @@ _baseurl="${url}/releases/download/v${pkgver}"
 
 source_x86_64=("padctl-v${pkgver}-x86_64-linux-musl.tar.gz::${_baseurl}/padctl-v${pkgver}-x86_64-linux-musl.tar.gz")
 source_aarch64=("padctl-v${pkgver}-aarch64-linux-musl.tar.gz::${_baseurl}/padctl-v${pkgver}-aarch64-linux-musl.tar.gz")
-sha256sums_x86_64=('3a755ac32b07beb569b646d033d5afc5a47dacd031421a80dd8985451434e9d7')
-sha256sums_aarch64=('a09bd0c717e0eddbcc020d06812dd1e171a6eb9a8e1fe7f3f1c6f4b0ead29428')
+sha256sums_x86_64=('0311bab08b2d0dca4a24885948b2113690f4f340eacc62dc1f14c21ff6d46b79')
+sha256sums_aarch64=('22f80ba8073a52dad71b1ae05032a265294584c676d226200ed3234bfbe13dbd')
 
 package() {
     local _arch
@@ -33,9 +34,13 @@ package() {
     [[ -f bin/padctl-capture ]] && install -Dm755 bin/padctl-capture "${pkgdir}/usr/bin/padctl-capture"
 
     install -Dm644 install/padctl.service \
-        "${pkgdir}/usr/lib/systemd/system/padctl.service"
+        "${pkgdir}/usr/lib/systemd/user/padctl.service"
+    # padctl-resume.service was removed in issue #131 Problem B fix; the
+    # udev padctl-reconnect hook handles post-suspend reconnect. Kept the
+    # conditional guard so older tarballs still package cleanly, but new
+    # tarballs will not ship the file.
     [[ -f install/padctl-resume.service ]] && install -Dm644 install/padctl-resume.service \
-        "${pkgdir}/usr/lib/systemd/system/padctl-resume.service"
+        "${pkgdir}/usr/lib/systemd/user/padctl-resume.service"
     [[ -f install/padctl-reconnect ]] && install -Dm755 install/padctl-reconnect \
         "${pkgdir}/usr/bin/padctl-reconnect"
 
