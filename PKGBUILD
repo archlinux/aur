@@ -2,7 +2,7 @@
 # Maintainer: cadapur <cadapur@proton.me>
 
 pkgname='coomerdl-bin'
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='Download from coomer.st'
 url='https://codeberg.org/cadapur/coomerdl'
@@ -11,14 +11,14 @@ license=('AGPL')
 provides=('coomerdl')
 conflicts=('coomerdl')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_linux_arm64")
-sha256sums_aarch64=('f5cbc35472f2d30052c6b24e04172227629c6e1117b4e7af10be50d033d5f9c6')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://codeberg.org/cadapur/coomerdl/releases/download/${pkgver}/coomerdl_linux_arm64")
+sha256sums_aarch64=('6a80d3999c1b24d6cb5d883c234ba6cf384719381553cbb171dd7f6ab4fbe1b2')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.binary::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_linux_armv7")
-sha256sums_armv7h=('09692c009c060365f7d6059ff4ad5edf91fc1c6b09ff72567cf0ca3acd9d996f')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.binary::https://codeberg.org/cadapur/coomerdl/releases/download/${pkgver}/coomerdl_linux_armv7")
+sha256sums_armv7h=('7f18d8522b38ada5f3da00d41d2909916454359129921fbf9364afcd0084e107')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_linux_amd64")
-sha256sums_x86_64=('66294f5a6749145c393038d13cf95eb37f02b42183e6399a3ec321bf4d85b22d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://codeberg.org/cadapur/coomerdl/releases/download/${pkgver}/coomerdl_linux_amd64")
+sha256sums_x86_64=('b45c4972cf76c8209a8e4c600addcb6bcbcdf0dc38441a5d16fdefa3ba1a4eed')
 
 package() {
   install -Dm755 "./coomerdl" "${pkgdir}/usr/bin/coomerdl"
