@@ -4,7 +4,7 @@
 # Installs the prebuilt AppImage from GitHub Releases.
 
 pkgname=ardali-bin
-pkgver=3.1.5
+pkgver=3.1.7
 pkgrel=1
 pkgdesc="ArDali multimedia ecosystem for Linux (prebuilt AppImage)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   "com.ardali.mediaplayer.png::https://raw.githubusercontent.com/${_owner}/${_repo}/main/icons/ardali_512.png"
 )
 
-sha256sums=('2075fe312e8e27df334337fcb013eb12c85abaaedd74c1235e7833053c6193fe'
+sha256sums=('d6ee29a9f788dc4970761c5dd2c54488cb6b292dccab023da79a485486917823'
             'da02e29b849870a9852e9020c0df9532a84ae81c53d3f073fa633d679d80b43f')
 
 package() {
@@ -36,18 +36,22 @@ package() {
 exec /opt/ardali/ardali.AppImage "$@"
 EOF
 
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/ardali.desktop" <<'EOF'
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/com.ardali.mediaplayer.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
+Version=1.5
 Name=ArDali
-Comment=Advanced multimedia ecosystem
+Comment=Open-source Linux media player for music and video
 Exec=ardali %U
+Icon=com.ardali.mediaplayer
 Terminal=false
 Categories=AudioVideo;Player;
-MimeType=audio/mpeg;audio/flac;audio/x-wav;audio/ogg;video/mp4;video/x-matroska;
-Icon=com.ardali.mediaplayer
+StartupWMClass=ardali
+MimeType=audio/mpeg;audio/wav;audio/flac;audio/aac;audio/ogg;audio/mp4;audio/x-m4a;audio/opus;audio/aiff;audio/x-ms-wma;video/mp4;video/x-matroska;video/x-msvideo;video/quicktime;video/x-ms-wmv;video/webm;video/x-m4v;
+Keywords=Music;Audio;Video;Media;Player;Linux;AppImage;Equalizer;DSP;ArDali;
 StartupNotify=true
 EOF
+  ln -s com.ardali.mediaplayer.desktop "${pkgdir}/usr/share/applications/ardali.desktop"
 
   install -Dm644 "${srcdir}/com.ardali.mediaplayer.png" \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/com.ardali.mediaplayer.png"
@@ -57,7 +61,7 @@ EOF
 <component type="desktop-application">
   <id>com.ardali.mediaplayer</id>
   <name>ArDali Media Player</name>
-  <summary>Advanced media player</summary>
+  <summary>Open-source Linux media player for music and video</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-only</project_license>
   <url type="homepage">https://ardali.app</url>
