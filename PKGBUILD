@@ -2,7 +2,7 @@
 # Maintainer: ploglabs <hello@ploglabs.dev>
 
 pkgname='molly-bin'
-pkgver=0.2.11
+pkgver=0.2.13
 pkgrel=1
 pkgdesc='Terminal-native realtime chat client for Discord'
 url='https://github.com/ploglabs/molly-terminal'
@@ -12,10 +12,10 @@ provides=('molly-terminal')
 conflicts=('molly-terminal')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ploglabs/molly-terminal/releases/download/v${pkgver}/molly-terminal_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('b108ab423d4d21ea954ec7f501c24fb04239db33c358e83e247f5b923ac8de6d')
+sha256sums_aarch64=('0a226ee488c3016402bca5e1fd8aadf61d3ac13a5dcd9d3ad4a4a5de958e8d8f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ploglabs/molly-terminal/releases/download/v${pkgver}/molly-terminal_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('dca232331f9f4ee6de8e515b5454f620151dd93d55e04a23476e5323b85b2158')
+sha256sums_x86_64=('8ac91a6e14df0259572182014d911900d4edca3e5260ebf4099fa6604ea91d9f')
 
 package() {
   install -Dm755 "./molly" "${pkgdir}/usr/bin/molly"
