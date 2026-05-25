@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/link-lang"
-    make release
+    make -f makefile release
 }
 
 package() {
