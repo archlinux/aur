@@ -13,7 +13,6 @@ pkgbase = qwarp
 	makedepends = qt6-tools
 	depends = python
 	depends = python-pyqt6
-	provides = cloudflare-warp-bin
 	conflicts = cloudflare-warp-bin
 	noextract = cloudflare-warp-2026.4.1350.0.deb
 	source = qwarp-0.8.0.tar.gz::https://github.com/iashutoshtiwari/qwarp/archive/refs/tags/v0.8.0.tar.gz

@@ -9,7 +9,6 @@ url="https://github.com/iashutoshtiwari/qwarp"
 license=('MIT')
 depends=('python' 'python-pyqt6')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'qt6-tools')
-provides=('cloudflare-warp-bin')
 conflicts=('cloudflare-warp-bin')
 install=qwarp.install
 
