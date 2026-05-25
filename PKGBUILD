@@ -1,10 +1,11 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-sensors
 _basever=5.15.19
 pkgver=5.15.19
-pkgrel=1
+pkgrel=2
 _commit=8c6d11df60d4d783869c2d81568e3178f5ae75ce
 arch=('x86_64')
 url='https://www.qt.io'
