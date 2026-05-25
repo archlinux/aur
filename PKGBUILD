@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-unstable-bin
-pkgver=0.8.10
+pkgver=0.8.11
 pkgrel=1
 pkgdesc="moshpit client with post-quantum support — SSH and Mosh inspired remote terminal client (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,9 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mp.tar.gz")
 source_x86_64=("mp-unstable-x86_64::${_base}/mp-unstable-x86_64-unknown-linux-musl")
 source_aarch64=("mp-unstable-aarch64::${_base}/mp-unstable-aarch64-unknown-linux-musl")
-sha256sums=('08e3598e57ebcc7ecbb0dbad20cdfb32bcc927eec95b9667306ed555f29607d6')
-sha256sums_x86_64=('45956616fe884b5105acbc459bedd141b6bc8ff85e2339ee0c39a9e7a246911f')
-sha256sums_aarch64=('dc039f417adddd96e0d897ce12e49313418955e7146c6abdcffbd96da4826f3e')
+sha256sums=('c489a3c23de68b12c1af9d86aed1e5c54807635def2e270bff62bd78075f766a')
+sha256sums_x86_64=('fbd3ed5466c930c6dca3194ffc44a722d8a3f3cae1df31188f28f6751ec15a25')
+sha256sums_aarch64=('567f4a849f758286b3b23087afae5573e6b97a1f92b853300c93b0eb1b1b7db9')
 
 package() {
     install -Dm755 "mp-unstable-${CARCH}" "$pkgdir/usr/bin/mp"
