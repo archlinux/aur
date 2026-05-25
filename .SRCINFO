@@ -9,7 +9,6 @@ pkgbase = minisforum-v3se-dsdt
 	makedepends = iasl
 	depends = mkinitcpio
 	conflicts = minisforum-v3-dsdt
-	replaces = minisforum-v3-dsdt
 	source = manual://dsdt.dat
 	source = fix-dsdt.patch
 	sha256sums = e1f9721a12205c20676b8ed45670dc03f61bac420955f28aa678d09e08dfbe6f
