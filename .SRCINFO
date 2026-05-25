@@ -47,6 +47,7 @@ pkgname = nvidia-525xx-utils
 	provides = vulkan-driver
 	provides = opengl-driver
 	provides = nvidia-libgl
+	provides = egl-gbm
 	conflicts = nvidia-utils
 	conflicts = nvidia-libgl
 	conflicts = egl-gbm
