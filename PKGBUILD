@@ -13,6 +13,17 @@ conflicts=('gameflow-deck')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
+prepare() {
+    cd "gameflow-deck"
+    
+    # Initialize and pull LFS objects
+    git lfs install
+    git lfs pull
+    
+    # Existing instructions...
+    bun install
+}
+
 build() {
     cd "gameflow-deck"
     bun install
