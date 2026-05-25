@@ -11,7 +11,7 @@ pkgbase = linux-ryzen-undervolt-git
 	depends = python-requests
 	depends = python-psutil
 	depends = polkit
-	optdepends = ryzen-smu-dkms: required kernel module for accessing SMU registers
+	optdepends = ryzen_smu-dkms-git: required kernel module for accessing SMU registers
 	provides = ruv-gui=0.1.0.r0.g1234567
 	provides = ruv-gui=0.1.0.r0.g1234567
 	conflicts = ruv-gui
