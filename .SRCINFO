@@ -10,7 +10,7 @@ pkgbase = planner-app-bin
 	provides = planner-app
 	conflicts = planner-app
 	options = !debug
-	source = https://gitflic.ru/project/en3/planner-app/release/4731a710-6a3f-4e36-89ac-6af83ce8437d/ce2b04ad-ac7b-4af8-939f-947ce5c7dd58/download
-	sha256sums = 80a47c923a2ca9e71a72cd5d4f71e271077faa192265e096fa97a098b2eb52bb
+	source = https://gitflic.ru/project/en3/planner-app/release/011c2608-ce8f-4bc4-b05f-9a68a8e9a771/8e488bd7-c37b-453d-b8de-46178631c44c/download
+	sha256sums = 89e28a0bd56cb55c1c50648cbf29cd06bdb5932ff57fd82120ffe75ad097365b
 
 pkgname = planner-app-bin
