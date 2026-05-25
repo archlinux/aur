@@ -1,0 +1,13 @@
+pkgbase = visual2-bin
+	pkgdesc = User-friendly Educational Assembler and Simulator for ARM UAL
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/scc416/Visual2
+	arch = x86_64
+	license = MIT
+	provides = visual2-bin
+	conflicts = visual2-bin
+	source = VisUAL2.1.7.0.AppImage::https://github.com/scc416/Visual2/releases/download/1.7.0/VisUAL2.1.7.0.AppImage
+	sha256sums = cb9ed95eae76c8f71636db642642f58f0b4f8d5a66cfa661f0222e1ea71e424a
+
+pkgname = visual2-bin
