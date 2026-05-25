@@ -2,7 +2,7 @@
 
 pkgname=pumpkin-git
 pkgver=dev
-pkgrel=1
+pkgrel=2
 pkgdesc="Empowering everyone to host fast and efficient Minecraft servers"
 arch=('x86_64')
 url="https://github.com/Pumpkin-MC/Pumpkin"
@@ -20,13 +20,19 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd $pkgname
+    git submodule update --init --recursive
+    rm -f rust-toolchain rust-toolchain.toml
+}
+
 build() {
     cd $pkgname
     export RUSTFLAGS="$RUSTFLAGS -C target-cpu=native"
     export CFLAGS="${CFLAGS/-flto=auto/}"
     export CXXFLAGS="${CXXFLAGS/-flto=auto/}"
     export LDFLAGS="${LDFLAGS/-flto=auto/}"
-    cargo build --release
+    cargo build --release --frozen
 }
 
 package() {
