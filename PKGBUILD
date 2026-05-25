@@ -6,7 +6,7 @@ pkgdesc="A tool for managing games on your deck"
 arch=('x86_64')
 url="https://github.com/simeonradivoev/gameflow-deck"
 license=('MIT')
-depends=('nodejs' 'sqlite') # bun usually depends on node or is a standalone binary
+depends=('nodejs' 'bun' 'nwjs' 'chromium' 'sqlite')
 makedepends=('git' 'bun')
 provides=('gameflow-deck')
 conflicts=('gameflow-deck')
@@ -14,22 +14,20 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "gameflow-deck"
-  
-  # Install dependencies
-  bun install
-  
-  # Build the project
-  bun run build:prod
+    cd "gameflow-deck"
+    bun install
+    bun run build:prod:vite
 }
 
 package() {
-  cd "gameflow-deck"
-  
-  # Install the compiled artifacts
-  # Note: Adjust these paths based on where 'bun run build:prod' puts the output
-  install -d "${pkgdir}/opt/${pkgname}"
-  cp -r build/* "${pkgdir}/opt/${pkgname}/"
-  
-  # Symlink and icon logic (same as your previous successful build)
+    # Install the desktop entry
+    install -d "${pkgdir}/usr/share/applications"
+    cat <<EOF > "${pkgdir}/usr/share/applications/gameflow.desktop"
+[Desktop Entry]
+Name=Gameflow
+Exec=/opt/gameflow-deck/gameflow
+Icon=/opt/gameflow-deck/icon.png
+Type=Application
+Categories=Game;
+EOF
 }
