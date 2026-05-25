@@ -7,8 +7,11 @@ post_upgrade() {
 }
 
 _hpr_install_config() {
-    CONFIG_DIR="$HOME/.config/HPR"
-    DATA_DIR="$HOME/.local/share/HPR"
+    REAL_USER="${SUDO_USER:-$USER}"
+    USER_HOME="$(getent passwd "$REAL_USER" | cut -d: -f6)"
+
+    CONFIG_DIR="$USER_HOME/.config/HPR"
+    DATA_DIR="$USER_HOME/.local/share/HPR"
     SCRIPT_DIR="/usr/share/hpr"
 
     echo "================================================"
