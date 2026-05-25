@@ -1,0 +1,21 @@
+pkgbase = fcitx5-voice-input-git
+	pkgdesc = Fcitx5 addon for voice input via Whisper-compatible speech recognition
+	pkgver = r6.386fefd
+	pkgrel = 1
+	url = https://github.com/diginatu/fcitx5-voice-input
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = pkgconf
+	depends = fcitx5
+	depends = libpulse
+	depends = curl
+	provides = fcitx5-voice-input
+	conflicts = fcitx5-voice-input
+	source = git+https://github.com/diginatu/fcitx5-voice-input.git
+	sha256sums = SKIP
+
+pkgname = fcitx5-voice-input-git
