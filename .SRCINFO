@@ -1,6 +1,6 @@
 pkgbase = bandcamp-dl-git
 	pkgdesc = Download audio from bandcamp.com
-	pkgver = v0.0.17.r42.g0b77700
+	pkgver = v0.0.17.r49.ge8170dc
 	pkgrel = 1
 	url = https://github.com/Evolution0/bandcamp-dl
 	arch = any
