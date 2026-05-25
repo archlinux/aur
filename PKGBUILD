@@ -1,3 +1,4 @@
+#我经过shorin本人同意后，把本aur包需要的源代码上传至gitee，并且修改 了源代码获取的地址，其他无改动，我的邮箱：3824280949@qq.com
 # Maintainer: Shorin <2433516202@qq.com>
 _pkgname=cliphist-tui
 _oldpkgname=shorinclip
