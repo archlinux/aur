@@ -2,7 +2,7 @@
 # Maintainer: Paulo Almeida <almeidapaulopt at gmail dot com>
 
 pkgname='tsdproxy-bin'
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Tailscale Docker reverse proxy — expose containers with one label'
 url='https://github.com/almeidapaulopt/tsdproxy'
@@ -12,13 +12,13 @@ provides=('tsdproxy')
 conflicts=('tsdproxy')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/almeidapaulopt/tsdproxy/releases/download/v${pkgver}/tsdproxy_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('54e885e9b7b3d9f4dd50f35bc0d7ba69080cd3c95e9fd14a636256def6f23653')
+sha256sums_aarch64=('15d65797aa021e69ddbfb73c7eb55d82b32645cdb685cf0342f243a19aff47a6')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/almeidapaulopt/tsdproxy/releases/download/v${pkgver}/tsdproxy_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('1118cebb19f8007163c9c812bc6f17fcd14ad93ea5bb53d01cfa541a575aff02')
+sha256sums_armv7h=('5fe2d4c31bc9e9700d04aa6c1ccb15451816e29c95c2a41ef4e9f4200efed19a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/almeidapaulopt/tsdproxy/releases/download/v${pkgver}/tsdproxy_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('6c34a229c722f7001cb3e36feb50e60fab03193dc3d3ba1236620c8afa51f54c')
+sha256sums_x86_64=('6c7d5a3eb578a515959b3722e4d73cee4c0c0a40ffb488c81401f19f26a84f58')
 
 package() {
   install -Dm755 "./tsdproxyd" "${pkgdir}/usr/bin/tsdproxyd"
