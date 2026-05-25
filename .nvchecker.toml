@@ -1,0 +1,5 @@
+[python-guppy3]
+source = "github"
+github = "zhuyifei1999/guppy3"
+use_latest_release = true
+prefix = "v"
