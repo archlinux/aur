@@ -2,13 +2,13 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos
-_srctag=11.0-20260506
+_srctag=11.0-20260519
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=11.0.0
 _xaliaver=0.4.9
-pkgrel=2
+pkgrel=1
 epoch=1
 
 source=(
@@ -218,6 +218,7 @@ prepare() {
     _submodules=(
         d7vk
         dav1d
+        discord-rpc-bridge
         dxvk
         dxvk-llasync
         dxvk-nvapi
@@ -232,6 +233,7 @@ prepare() {
         libsoup
         libwebp
         libxml2
+        low_latency_layer
         meson
         nghttp2
         nvidia-libs/dxvk-nvapi
@@ -250,6 +252,7 @@ prepare() {
         vkd3d-proton
         vkd3d-bratan
         Vulkan-Headers
+        Vulkan-Utility-Libraries
         wine
     )
 
@@ -344,7 +347,7 @@ package() {
         $(find "${_monodir}" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-b2sums=('e8a3fb00f266014c1b57db3ba4227a9fb32bc32a17f1663666bcf91f51b1769048b4b4bd6699c80218c34de7de2c780a2cef7126b78dc40345e5f95e2aa8ef12'
+b2sums=('a2df8641454e0423e2ea5d9f9a35283fadac6c30e20e19bdc0b1d4e602b7da1f1286307c23356a20e901fe57e051dff71578026d9fb57bfd9d8e45c33f7f3910'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         '76bdc625c6c14a6c3e3892649c1fbb7ed127d8ce90079a3f8d317c8e6fd567c763d71dd838f8422c921ed315e9d2735849b223a94a9517ad73d0734d313c1a6f'
