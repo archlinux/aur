@@ -1,12 +1,12 @@
 pkgbase = yacasl2
 	pkgdesc = CASL2/COMET2 simulator for Japanese Information Technology examination
-	pkgver = 0.5p32
+	pkgver = 0.5p35
 	pkgrel = 1
 	url = https://github.com/j8takagi/yacasl2
 	arch = x86_64
 	license = GPL
 	makedepends = texinfo
-	source = yacasl2-0.5p32.tar.gz::https://github.com/j8takagi/yacasl2/archive/v0.5p32.tar.gz
+	source = yacasl2-0.5p35.tar.gz::https://github.com/j8takagi/yacasl2/archive/v0.5p35.tar.gz
 	sha256sums = SKIP
 
 pkgname = yacasl2

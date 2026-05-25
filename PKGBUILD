@@ -1,6 +1,7 @@
 # Maintainer: j8takagi <j8takagi@nifty.com>
 pkgname=yacasl2
-pkgver=0.5p32
+PKGname=YACASL2
+pkgver=0.5p35
 _pkgver=${pkgver/p/p}
 
 pkgrel=1
@@ -14,11 +15,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$PKGname-$pkgver"
     make
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$PKGname-$pkgver"
     make prefix="$pkgdir/usr" bindir="$pkgdir/usr/bin" install
 }
