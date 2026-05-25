@@ -3,6 +3,7 @@ pkgbase = pi-ext-awsdocs
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/dougefresher/pi-ext-awsdocs
+	install = pi-ext.install
 	arch = any
 	license = MIT
 	depends = python
