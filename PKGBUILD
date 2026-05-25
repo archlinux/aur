@@ -1,11 +1,11 @@
 # Maintainer: Benjamin Valdez <b.valdez.0509+aur<at>gmail.com>
 # Contributor: Bruce Zhang <zttt183525594<at>gmail.com>
 pkgname=inputactions-kwin
-pkgver=0.9.1.0
+pkgver=0.9.1.1
 pkgrel=1
-pkgdesc="Mouse and touchpad gestures for Plasma 6 Wayland"
+pkgdesc="Bind keyboard, mouse, touchpad and touchscreen actions to system actions"
 arch=('x86_64')
-url="https://github.com/InputActions/kwin"
+url="https://inputactions.org"
 license=('GPL-3.0-or-later')
 install=$pkgname.install
 backup=("etc/$pkgname/reminder.conf")
@@ -25,15 +25,15 @@ depends=(
 )
 optdepends=('libnotify: to send a reminder when this package needs to be rebuild')
 checkdepends=('gtest' 'cmake')
-makedepends=('cmake' 'pkgconf' 'extra-cmake-modules' 'git')
+makedepends=('cmake' 'pkgconf' 'extra-cmake-modules')
 provides=('inputactions')
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/source.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/InputActions/kwin/releases/download/v$pkgver/source.tar.gz"
   "send-rebuild-reminder"
   "reminder.conf"
   "rebuild-reminder.hook"
 )
-sha256sums=('68c6731d7bf057195e139f1f823ac8e708b431810d57729af11b3c8ca1040d13'
+sha256sums=('028eb76b2a0774d1f4460c4848f1b10166bb501db9d0a449e6c28a82afc6e645'
             '3ae59b5bea1a0100cc8da51c6a810d70bc989462f2f84beaf6a4f9a06395f62f'
             '57a1e6c7c230c9149e85db13c5dc9f76a4e49c643a03f299750ddc977b36548a'
             '72a8f214c4982110feeb778bf5f915436aa47ff071d301078e6a9459e06a0b13')
