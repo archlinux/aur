@@ -13,6 +13,6 @@ pkgbase = amplify
 	depends = pipewire
 	optdepends = pulseaudio: alternative audio backend
 	source = amplify-0.1.3.tar.gz::https://github.com/Sage563/amplify/archive/refs/tags/v0.1.3.tar.gz
-	sha512sums = a95e7746d5995974f01f87f690d5321ee48b5ae964e5b135e647bb105444c7306407aa967758bd638f4bc9ce75d12d7e2606de07c629e403862a0e0ff22830a4
+	sha512sums = aae34fbe1eb3f092b030dea7e24f981f29a3bab104f6743017cf12e3e5edcaf1280378e07fbef6ebe1bd818dc2db0b508c3faefc7e1d3cd6a4801f1ea047e3ab
 
 pkgname = amplify
