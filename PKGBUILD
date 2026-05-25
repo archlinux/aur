@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=aria2-next
-pkgver=2.1.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Maintained aria2 fork with extensive bug fixes and modernized architecture"
 arch=($CARCH)
@@ -11,24 +11,28 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 #replaces=(${pkgname})
 depends=(
-    c-ares
+    boost-libs
+    curl
     glibc
     libgcc
     libstdc++
-    libssh2
-    libxml2
-    sqlite
+    libtorrent-rasterbar
     openssl
     zlib
 )
 makedepends=(
     git
+    boost
+    c-ares
     ca-certificates
     cmake
     cppunit
     gnutls
     gzip
+    libssh2
+    libxml2
     ninja
+    sqlite
     pkgconf
 )
 optdepends=('motrix-next: A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust')
@@ -36,7 +40,7 @@ backup=()
 options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('b9a630fa7b47f03cb4c999cda76da5c0526368f264a682a50fbf32016dddff73')
+sha256sums=('2724becc0598c8ab1622f3b475632f2d538a3ad8a9f7204398094b3166172691')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
