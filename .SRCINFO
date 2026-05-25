@@ -1,0 +1,22 @@
+pkgbase = python-rclone
+	pkgdesc = A python wrapper for rclone.
+	pkgver = 0.1.24
+	pkgrel = 1
+	url = https://github.com/Johannes11833/rclone_python
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-rich
+	depends = rclone
+	provides = python-rclone
+	provides = python-rclone-python
+	conflicts = python-rclone
+	conflicts = python-rclone-python
+	source = rclone_python-0.1.24.tar.gz::https://github.com/Johannes11833/rclone_python/archive/refs/tags/v0.1.24.tar.gz
+	sha256sums = d6d606112121417ed6427eaf489c02ea80240d9cfda8979e37a6ffab5183c012
+
+pkgname = python-rclone
