@@ -1,7 +1,7 @@
 pkgbase = galaxy-flasher
 	pkgdesc = A GUI for Samsung flash-tools
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/ethical_haquer/galaxy-flasher
 	arch = x86_64
 	license = GPL-3.0
@@ -12,7 +12,7 @@ pkgbase = galaxy-flasher
 	depends = python-pexpect
 	depends = odin4-cli
 	depends = thor-flash-utility
-	depends = python-i18n
+	depends = python-i18nice
 	depends = python-gobject
 	depends = python-langcodes
 	depends = python-language-data

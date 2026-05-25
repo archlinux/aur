@@ -3,7 +3,7 @@
 
 pkgname="galaxy-flasher"
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI for Samsung flash-tools"
 url="https://codeberg.org/ethical_haquer/galaxy-flasher"
 license=("GPL-3.0")
@@ -16,7 +16,7 @@ depends=(
   'python-pexpect'
   'odin4-cli'
   'thor-flash-utility'
-  'python-i18n'
+  'python-i18nice'
   'python-gobject'
   'python-langcodes'
   'python-language-data'
@@ -58,5 +58,5 @@ Icon=/usr/share/pixmaps/galaxy-flasher.svg
 Type=Application
 Categories=GNOME;Utility;GTK;
 EOF
-	echo -e "\e[31mNOTE: THE CURRENT INSTALLATION IS FOR THIS USER ONLY. \e[35msowwy ):"
+	echo -e "\e[31mYOU NEED TO SET UP UDEV RULES. \e[35mhttps://galaxy-flasher-docs.readthedocs.io/en/latest/first-time-setup.html"
 }
