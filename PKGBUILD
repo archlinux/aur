@@ -1,6 +1,6 @@
 # Maintainer: paperbenni <paperbenni@gmail.com>
 pkgname=ins
-pkgver=0.13.4
+pkgver=0.13.33
 pkgrel=1
 pkgdesc="A powerful command-line tool for managing dotfiles, system diagnostics, and instantOS configurations"
 arch=('x86_64')
@@ -40,4 +40,8 @@ package() {
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+    for desktop_file in desktop/*.desktop; do
+        install -Dm644 "$desktop_file" "$pkgdir/usr/share/applications/$(basename "$desktop_file")"
+    done
 }
