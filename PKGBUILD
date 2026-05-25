@@ -3,8 +3,8 @@
 pkgname=osdockx-git
 _pkgname=osdockx
 epoch=1
-pkgver=0.1.0.r0
-pkgrel=2
+pkgver=0.1.0.r60
+pkgrel=1
 pkgdesc='A skeuomorphic dock application'
 arch=('x86_64')
 url='https://github.com/pruefsumme/osdockx'
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    'f5efd9aafdabc51215987b7ca23ab5d1b2cb63697b70dd1290163d26dd1ade09'
+    '009651b21f3f5f15c48f06affd56b56fe9ccb6b110135cdcf5aca70794c36836'
     'f3e94904dd4b20fb4ff46c00c1090186c64295ce017fb428433637021a1bf1de'
 )
 

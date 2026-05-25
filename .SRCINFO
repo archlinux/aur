@@ -18,7 +18,7 @@ pkgbase = osdockx-git
 	source = dev.pruefsumme.OSDockX.desktop
 	source = LICENSE
 	sha256sums = SKIP
-	sha256sums = f5efd9aafdabc51215987b7ca23ab5d1b2cb63697b70dd1290163d26dd1ade09
+	sha256sums = 009651b21f3f5f15c48f06affd56b56fe9ccb6b110135cdcf5aca70794c36836
 	sha256sums = f3e94904dd4b20fb4ff46c00c1090186c64295ce017fb428433637021a1bf1de
 
 pkgname = osdockx-git
