@@ -1,0 +1,27 @@
+pkgbase = zenlixem-bin
+	pkgdesc = Linux-focused CLI suite for system introspection
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/oxyzenQ/zenlixem
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = zenlixem
+	provides = whoholds
+	provides = envpath
+	provides = lasttouch
+	provides = whyopen
+	conflicts = zenlixem
+	options = !strip
+	source = README-1.0.2.md::https://raw.githubusercontent.com/oxyzenQ/zenlixem/v1.0.2-stable.1/README.md
+	source = LICENSE-1.0.2::https://raw.githubusercontent.com/oxyzenQ/zenlixem/v1.0.2-stable.1/LICENSE
+	sha256sums = 6bfc3047f4233fc85a3d399824f6a7394e602d1f2d16b0b0b093410112c0711e
+	sha256sums = 283e51023305759523c42e545f8027898166a7b8c6f614b24719491bf62217ad
+	source_x86_64 = zenlixem-x86_64-1.0.2.tgz::https://github.com/oxyzenQ/zenlixem/releases/download/v1.0.2-stable.1/zenlixem-linux-amd64.tar.gz
+	sha256sums_x86_64 = 56cc682d626e1c77be8f83a206c8493080b5fed33b9a23162bfbc5e7c9a0ce01
+	source_aarch64 = zenlixem-aarch64-1.0.2.tgz::https://github.com/oxyzenQ/zenlixem/releases/download/v1.0.2-stable.1/zenlixem-linux-aarch64.tar.gz
+	sha256sums_aarch64 = afebec5e5be8a963dcdd5b2cc4a86848af05c3f3d834e3fe8accd4870e3916ea
+
+pkgname = zenlixem-bin
