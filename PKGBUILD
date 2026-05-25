@@ -10,8 +10,11 @@ depends=('gcc-libs' 'dbus')
 optdepends=('sing-box: VPN backend for connections')
 provides=('kvn-tui')
 conflicts=('kvn-tui')
-source=("https://github.com/yarikov/kvn-tui/releases/download/v${pkgver}/kvn-tui-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('793cda0c64b48e2c868a555abdcc58e4aabacec5040ddef39a5a3c26aab97793')
+options=('!debug')
+source=("https://github.com/yarikov/kvn-tui/releases/download/v${pkgver}/k
+vn-tui-${pkgver}-x86_64-linux.tar.gz")
+sha256sums=('793cda0c64b48e2c868a555abdcc58e4aabacec5040ddef39a5a3c26aab97
+793')
 
 package() {
     cd "kvn-tui-${pkgver}-x86_64-linux"
