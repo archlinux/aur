@@ -18,7 +18,7 @@ makedepends=(
 )
 install="${pkgname}.install"
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/BigPizzaV3/CodexPlusPlus/archive/refs/tags/v${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/BigPizzaV3/CodexPlusPlus/archive/refs/tags/v1.1.7.tar.gz"
   'codex-desktop-app-wrapper.sh'
   'codex-plus-plus.sh'
   '90-codex-plus-plus-reapply.hook'
