@@ -2,8 +2,8 @@
 
 pkgname=antigravity-appimage
 _pkgname=antigravity
-pkgver=2.0.6
-_execution_id=5413878570549248
+pkgver=2.0.7
+_execution_id=4757248736624640
 pkgrel=1
 pkgdesc='An agentic development platform from Google, evolving the IDE into the agent-first era.(AppImage)'
 arch=(x86_64 aarch64)
@@ -34,8 +34,8 @@ md5sums=('6d13547dc860f5744b2e854cff2226dc'
   'd8847ea031513e6915aca4e366e8f071'
   '18aea4c258e91759abb6a0e38eab1a9b'
   '82d4a168a6801c4f87e83aabb7ea1bdf')
-md5sums_x86_64=('df29d1b9864802d01b81ece5647e8ab6')
-md5sums_aarch64=('794e7f087a35d9c0e0d07e86125292b5')
+md5sums_x86_64=('b769295fc77a9753a2b4042dd197f228')
+md5sums_aarch64=('26a3878ada93541a5304696332b3ed99')
 
 package() {
   install -Dm755 "Antigravity-$pkgver-$CARCH.AppImage" "$pkgdir/opt/$pkgname/Antigravity.AppImage"
