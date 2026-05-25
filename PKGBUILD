@@ -2,7 +2,7 @@
 
 pkgname=nping
 _name=Nping
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="🏎 Nping mean NB Ping, A Ping Tool in Rust with Real-Time Data and Visualizations"
 arch=($CARCH)
@@ -16,22 +16,24 @@ depends=(
     glibc
 )
 makedepends=(
+    git
     rust
 )
 backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
-source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('48d46e11cec3c69e6c28e91fefbba47f4773aab1c9d8c1f15e276311f79c43ec')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('bfedc0309bf05b41e656bb691af25901311d887a191cd3c7d883ed0a5a31011e')
 
 prepare() {
-    cd "${srcdir}/${_name}-${pkgver}/"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+    cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}/"
+    cd "${srcdir}/${pkgname}"
     cargo build --release
 }
 
@@ -41,7 +43,7 @@ build() {
 # }
 
 package() {
-    cd "${srcdir}/${_name}-${pkgver}/"
+    cd "${srcdir}/${pkgname}/"
 
     install -vDm755 target/release/nbping -t ${pkgdir}/usr/bin/
     install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
