@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!ddns-updater\.env
+!ddns-updater\.service
+!ddns-updater\.sysusers
+!ddns-updater\.tmpfiles
+
+!.gitignore
