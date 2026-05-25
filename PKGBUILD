@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=linux-ryzen-undervolt-git
 _pkgname=ruv-gui
-pkgver=0.0.0   # dummy, will be overwritten by pkgver()
+pkgver=0.0.0.r192.g836b2e8   # <--- REPLACE WITH YOUR ACTUAL VERSION (e.g., 0.0.0.r192.g836b2e8)
 pkgrel=1
 pkgdesc="Ryzen CPU undervolting tool (GUI) using the ryzen_smu driver"
 arch=('x86_64')
@@ -23,18 +23,7 @@ conflicts=("${_pkgname}" "ruv-gui")
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  local describe=$(git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//; s/-/./g')
-  if [[ -n "$describe" ]]; then
-    echo "$describe"
-  else
-    local date=$(git log -1 --format=%cd --date=format:%Y%m%d)
-    local rev=$(git rev-list --count HEAD)
-    local hash=$(git rev-parse --short HEAD)
-    echo "0.0.0.r$rev.$hash"
-  fi
-}
+# No pkgver() function – version is static and manually updated
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
@@ -59,5 +48,4 @@ package() {
   fi
   install -dm755 "${pkgdir}/etc/ruv/profiles"
   install -dm755 "${pkgdir}/var/cache/ruv"
-  rm -rf "${srcdir}/${_pkgname}"
 }
