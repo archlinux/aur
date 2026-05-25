@@ -1,0 +1,3 @@
+[perl-cpan-02packages-search]
+source = "cpan"
+cpan = "CPAN-02Packages-Search"

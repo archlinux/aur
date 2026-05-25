@@ -1,0 +1,16 @@
+pkgbase = perl-cpan-02packages-search
+	pkgdesc = Search packages in 02packages.details.txt
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://metacpan.org/dist/CPAN-02Packages-Search
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-module-build-tiny>=0.053
+	depends = perl-search-dict>=1.07
+	depends = perl-tie-handle-offset>=0.004
+	depends = perl>=5.24.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SK/SKAJI/CPAN-02Packages-Search-v1.0.0.tar.gz
+	sha256sums = c953c6c919b53380f963fd774c15b798856b54b052a3bf31091f035611d0ce1b
+
+pkgname = perl-cpan-02packages-search
