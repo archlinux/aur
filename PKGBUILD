@@ -2,7 +2,7 @@
 
 _pkgname=enneagram
 pkgname="$_pkgname-git"
-pkgver=1.1.0.dfde688
+pkgver=1.1.2.c5bf0b9
 pkgrel=1
 pkgdesc="An exploration into the enneagram. (git version)"
 url="https://github.com/sigurd4/$_pkgname"
