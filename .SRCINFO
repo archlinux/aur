@@ -1,0 +1,13 @@
+pkgbase = ris-mcp-ts
+	pkgdesc = MCP server for the Austrian Legal Information System (RIS)
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/Honeyfield-Org/ris-mcp-ts
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = ris-mcp-ts-1.1.3.tar.gz::https://github.com/Honeyfield-Org/ris-mcp-ts/archive/refs/tags/v1.1.3.tar.gz
+	sha256sums = f4a2fa467efcf68e37e9b3a1076a5de27e9b063a4ed79ec768b1cdf528df3553
+
+pkgname = ris-mcp-ts
