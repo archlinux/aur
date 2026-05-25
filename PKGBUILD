@@ -7,15 +7,16 @@ _mpi=${_MPI,,}
 pkgname=${_pkgname}-bin
 _pkgver=7.3.1-1
 pkgver="${_pkgver//-/\.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance computational chemistry software (${_MPI} build) — Debian binary build"
 arch=('x86_64')
 url='https://nwchemgit.github.io'
 license=('custom:ECL2.0' 'GPL3')
 depends=(
-  'blas' 'lapack' "$_mpi" 'python'
+  'blas' 'lapack' "$_mpi"
   # AUR
   'nwchem-data'
+  'python313'
   'scalapack'
 )
 provides=("${_pkgname}")
