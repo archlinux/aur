@@ -1,0 +1,25 @@
+pkgbase = gascity-bin
+	pkgdesc = Orchestration-builder SDK for multi-agent coding workflows
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/gastownhall/gascity
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = tmux
+	depends = jq
+	depends = git
+	depends = procps-ng
+	depends = lsof
+	optdepends = dolt: beads data plane
+	optdepends = github-cli: GitHub gate checks
+	provides = gascity
+	conflicts = gascity
+	options = !strip
+	options = !debug
+	source_x86_64 = gascity-bin-1.1.0.tar.gz::https://github.com/gastownhall/gascity/releases/download/v1.1.0/gascity_1.1.0_linux_amd64.tar.gz
+	b2sums_x86_64 = b9411c0131a6042addd9a162ae2ae34c27ea86129ba7f5b4d7c2a219cb079f1c579dc43bda61ceb961eeab8a9210577265f14baf546aee1a082e771e197fef87
+	source_aarch64 = gascity-bin-1.1.0.tar.gz::https://github.com/gastownhall/gascity/releases/download/v1.1.0/gascity_1.1.0_linux_arm64.tar.gz
+	b2sums_aarch64 = b9411c0131a6042addd9a162ae2ae34c27ea86129ba7f5b4d7c2a219cb079f1c579dc43bda61ceb961eeab8a9210577265f14baf546aee1a082e771e197fef87
+
+pkgname = gascity-bin
