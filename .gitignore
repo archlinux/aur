@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!format-security_bug.patch
+!rootpath_bug.patch
+
+!.gitignore
