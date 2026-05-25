@@ -1,6 +1,6 @@
 pkgbase = machi
 	pkgdesc = Window Manager for river wayland compositor
-	pkgver = 0.5.0.r4.gd51761e
+	pkgver = 0.5.0.r9.g401c9b6
 	pkgrel = 1
 	url = https://codeberg.org/machi/machi
 	arch = x86_64
