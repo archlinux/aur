@@ -1,6 +1,6 @@
 pkgbase = pake-lizhi
 	pkgdesc = LiZhi wrapped as a desktop app using Pake
-	pkgver = 3.11.5
+	pkgver = 3.11.7
 	pkgrel = 1
 	url = https://github.com/tw93/Pake
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = pake-lizhi
 	depends = libayatana-appindicator
 	options = !strip
 	options = !debug
-	source = LiZhi-3.11.5.deb::https://github.com/tw93/Pake/releases/download/V3.11.5/LiZhi_x86_64.deb
-	source = LICENSE-3.11.5::https://raw.githubusercontent.com/tw93/Pake/V3.11.5/LICENSE
-	sha256sums = 387c00593e5f7555efe983f2dbf0d92e56a9013e383c74886c70375d7e8d48f3
+	source = LiZhi-3.11.7.deb::https://github.com/tw93/Pake/releases/download/V3.11.7/LiZhi_x86_64.deb
+	source = LICENSE-3.11.7::https://raw.githubusercontent.com/tw93/Pake/V3.11.7/LICENSE
+	sha256sums = aa5042ee9cd96696f558bad3516b956215a27dc41b1b62a834e4066787ac54a6
 	sha256sums = 462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758
 
 pkgname = pake-lizhi
