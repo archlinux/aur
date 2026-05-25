@@ -1,0 +1,21 @@
+pkgbase = gytm-git
+	pkgdesc = Minimal TUI based music streaming app for Youtube Music
+	pkgver = r0.g0
+	pkgrel = 1
+	url = https://github.com/xuannhat999/gytm
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = mpv
+	depends = yt-dlp
+	depends = glibc
+	depends = openssl
+	depends = sqlite
+	provides = gytm
+	conflicts = gytm
+	source = gytm::git+https://github.com/xuannhat999/gytm.git#branch=main
+	sha256sums = SKIP
+
+pkgname = gytm-git
