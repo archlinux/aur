@@ -1,6 +1,6 @@
 pkgbase = warp-refined-bin
 	pkgdesc = Warp Refined is an agentic development environment, born out of the terminal.
-	pkgver = 0.2026.05.18.07.14.oss_00
+	pkgver = 0.2026.05.22.11.32.oss_00
 	pkgrel = 1
 	url = https://github.com/cesaryuan/warp-refined
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = warp-refined-bin
 	provides = warp-terminal
 	conflicts = warp-refined
 	options = !strip
-	source = https://github.com/cesaryuan/warp-refined/releases/download/v0.2026.05.18.07.14.oss_00/warp-terminal-oss-v0.2026.05.18.07.14.oss_00-1-x86_64.pkg.tar.zst
-	sha256sums = 6eb861f6e555f825b5114a61f6283db89a1198edaf94e105de010f109c31049e
+	source = https://github.com/cesaryuan/warp-refined/releases/download/v0.2026.05.22.11.32.oss_00/warp-terminal-oss-v0.2026.05.22.11.32.oss_00-1-x86_64.pkg.tar.zst
+	sha256sums = b30607f2caf871433e17f64df66348fbfd27339dedb7a6fd5a20b0b2ceda0833
 
 pkgname = warp-refined-bin
