@@ -1,4 +1,6 @@
-# Maintainer: Keyaku
+# Maintainer: Keyaku <xbox dash tug dash geography at duck dot com>
+# Contributor: Thomas Rijpstra <thomas at fourlights dot nl>
+
 # Based on the Minisforum V3 patch by Thomas Rijpstra <thomas at fourlights dot nl>
 # and the original fix by eplightning: https://github.com/mudkipme/awesome-minisforum-v3/issues/2#issuecomment-2279282784
 
@@ -12,7 +14,6 @@ license=('MIT')
 makedepends=('iasl')
 depends=('mkinitcpio')
 # Supersedes the generic Minisforum V3 package
-replaces=('minisforum-v3-dsdt')
 conflicts=('minisforum-v3-dsdt')
 
 DLAGENTS+=('manual::/usr/bin/echo Note: as root, dump the current DSDT first: sudo cat /sys/firmware/acpi/tables/DSDT > dsdt.dat -- IMPORTANT: if minisforum-v3se-dsdt is already installed, /sys exposes the PATCHED DSDT (acpi_override is active), so uninstall the package or boot without the override before dumping, otherwise you will be re-patching an already-patched table.')
