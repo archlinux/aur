@@ -1,6 +1,6 @@
 # Maintainer: mc_klatz
 pkgname=sone
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Native Linux TIDAL client — lossless streaming with bit-perfect ALSA output"
 arch=('x86_64')
@@ -23,18 +23,18 @@ depends=(
 makedepends=(
     'rust'
     'nodejs'
-    'npm'
+    'pnpm'
 )
 optdepends=(
     'gst-plugin-pipewire: PipeWire audio support'
     'alsa-plugins: exclusive ALSA output (bit-perfect mode)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lullabyX/sone/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c389502912c21457a91e21e691ddcf2cc9695e116a7ed2e30d331bbd48452c57')
+sha256sums=('59fc500a44571399bd1ac30cf1ba8078e84f818f294d83337128bfacc1543464')
 
 prepare() {
     cd "$srcdir/sone-$pkgver"
-    npm ci
+    pnpm install --frozen-lockfile
     sed -i 's/"active": true/"active": false/' src-tauri/tauri.conf.json
     sed -i 's/^Exec=.*/Exec=sone/' data/io.github.lullabyX.sone.desktop
 }
@@ -46,7 +46,7 @@ build() {
         return 1
     fi
     export CARGO_HOME="$srcdir/cargo-home"
-    npm run tauri build
+    pnpm tauri build
 }
 
 package() {
