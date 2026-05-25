@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!log-path.diff
+!mautrix-meta.service
+!mautrix-meta.tmpfiles
+!sysusers-mautrix-meta.conf
+
+!.gitignore
