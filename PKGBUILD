@@ -3,7 +3,7 @@
 pkgname=pake-programmusic
 _appname=ProgramMusic
 _appname_lower=programmusic
-_pkgver=3.11.5
+_pkgver=3.11.7
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="${_appname} wrapped as a desktop app using Pake"
@@ -17,7 +17,7 @@ source=(
     "${_appname}-${_pkgver}.deb::https://github.com/tw93/Pake/releases/download/V${_pkgver}/${_appname}_${CARCH}.deb"
     "LICENSE-${_pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${_pkgver}/LICENSE"
 )
-sha256sums=('1fc22785b56da4821d1199a44100c9641bc8b80031d0e6247a0c86a4909ea3c4'
+sha256sums=('fcd47c1ccd40bfe047122fcf4780086378842a6f590147ee48059bc6107823a5'
             '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 
 prepare() {

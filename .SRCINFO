@@ -1,6 +1,6 @@
 pkgbase = pake-programmusic
 	pkgdesc = ProgramMusic wrapped as a desktop app using Pake
-	pkgver = 3.11.5
+	pkgver = 3.11.7
 	pkgrel = 1
 	url = https://github.com/tw93/Pake
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = pake-programmusic
 	depends = libayatana-appindicator
 	options = !strip
 	options = !debug
-	source = ProgramMusic-3.11.5.deb::https://github.com/tw93/Pake/releases/download/V3.11.5/ProgramMusic_x86_64.deb
-	source = LICENSE-3.11.5::https://raw.githubusercontent.com/tw93/Pake/V3.11.5/LICENSE
-	sha256sums = 1fc22785b56da4821d1199a44100c9641bc8b80031d0e6247a0c86a4909ea3c4
+	source = ProgramMusic-3.11.7.deb::https://github.com/tw93/Pake/releases/download/V3.11.7/ProgramMusic_x86_64.deb
+	source = LICENSE-3.11.7::https://raw.githubusercontent.com/tw93/Pake/V3.11.7/LICENSE
+	sha256sums = fcd47c1ccd40bfe047122fcf4780086378842a6f590147ee48059bc6107823a5
 	sha256sums = 462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758
 
 pkgname = pake-programmusic
