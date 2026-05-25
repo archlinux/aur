@@ -3,7 +3,7 @@
 pkgname=pake-gemini
 _appname=Gemini
 _appname_lower=gemini
-_pkgver=3.11.5
+_pkgver=3.11.7
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="${_appname} wrapped as a desktop app using Pake"
@@ -17,7 +17,7 @@ source=(
     "${_appname}-${_pkgver}.deb::https://github.com/tw93/Pake/releases/download/V${_pkgver}/${_appname}_${CARCH}.deb"
     "LICENSE-${_pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${_pkgver}/LICENSE"
 )
-sha256sums=('8e6d431c0d51ccea154110c30a09ff0f74c5e8469d45b0555b519da9416dbd93'
+sha256sums=('7f6a68e560544475fb9dabc6ca7fff7a53206f0fd596cffefb199ff384a18bbd'
             '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 
 prepare() {
