@@ -1,0 +1,16 @@
+pkgbase = ipeek-bin
+	pkgdesc = Terminal image viewer (Kitty/Sixel/iTerm2/half-blocks) — prebuilt binary
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/prietus/peek
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	optdepends = ffmpeg: video previews
+	provides = ipeek
+	conflicts = ipeek
+	conflicts = ipeek-git
+	source_x86_64 = https://github.com/prietus/peek/releases/download/v0.1.2/ipeek-v0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 608ac9374a7bbff0f4807cefbd25a5b9ef096ce89b307e167cd08ab817cd2f83
+
+pkgname = ipeek-bin
