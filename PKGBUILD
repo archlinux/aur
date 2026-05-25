@@ -2,7 +2,7 @@
 
 pkgname=constellation-bin
 _pkgname=constellation
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A local web UI to browse and resume every Claude Code chat across all your projects"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.xz::${url}/releases/download/v$
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.xz")
 
 # regenerate after publishing the release: `updpkgsums`
-sha256sums_x86_64=('575719d59bfd032af654150119cd6294579bfc0028c0bcdf16173c22819099a2')
-sha256sums_aarch64=('9ffff144c98f20d2a3ce476769c95483dd93c001a6997b62a97bcaeec2f4dae4')
+sha256sums_x86_64=('4a972742afa873d4841b707a5c161d5f2034aa1aa5c7e18ec0345b9fc9420055')
+sha256sums_aarch64=('117a16ea2d320b99fd6396f88458e4826b673c66b992dd7554e5cf22d6562a05')
 
 package() {
     local _stage_x86="${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu"
