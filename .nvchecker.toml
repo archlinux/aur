@@ -1,4 +1,4 @@
 [zsh-theme-powerlevel10k]
 source = "git"
-git = "https://github.com/romkatv/powerlevel10k.git"
+git = "https://github.com/quantumnic/powerlevel10k.git"
 prefix = "v"
