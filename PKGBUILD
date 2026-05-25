@@ -1,5 +1,5 @@
 pkgname=android-cli
-pkgver=0.7.15303877
+pkgver=1.0.15433482
 pkgrel=1
 pkgdesc='Google Android CLI prebuilt binary'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source_x86_64=(
   'LICENSE'
 )
 sha256sums_x86_64=(
-  '631afc8c92e0406706cfea875d5eba61d2d18c71fc2194da554b6ea82c5d7ce9'
+  'd45f515433ea8b2eb4cecd827d6cad2923ca7910bd2834e8830e0c979f4769e6'
   '65c32078048f3fdb0ab70bd7d287d78c45a0d8e20a71b23b7ac1bf5e2e87729e'
 )
 
@@ -24,7 +24,7 @@ check() {
   out="$(HOME="$tmp_home" "$srcdir/android-cli-$pkgver-x86_64" --version 2>&1)"
   rm -rf "$tmp_home"
 
-  grep -Fqx "$pkgver" <<<"$(tail -n1 <<<"$out")"
+  grep -Fqx "$pkgver" <<<"$out"
   ! grep -Fq 'Downloading Android CLI...' <<<"$out"
 }
 
