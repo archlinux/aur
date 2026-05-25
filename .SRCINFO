@@ -1,0 +1,16 @@
+pkgbase = glogout
+	pkgdesc = A Wayland logout menu themed with real HTML, CSS, and JavaScript — no GTK theme inheritance
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/synnode/glogout
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = webkitgtk-6.0
+	optdepends = systemd: for the glogout daemon user service (contrib/glogout.service)
+	source = glogout-1.0.0.tar.gz::https://github.com/synnode/glogout/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = f3fe986c1816dc4e8ec2e05a69a2706b634867dbe87c64c831eacedb08f90ebf
+
+pkgname = glogout
