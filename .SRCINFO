@@ -1,0 +1,20 @@
+pkgbase = ipeek-git
+	pkgdesc = Terminal image viewer (Kitty/Sixel/iTerm2/half-blocks) — git version
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/prietus/peek
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	optdepends = ffmpeg: video previews
+	provides = ipeek
+	conflicts = ipeek
+	conflicts = ipeek-bin
+	options = !lto
+	source = peek::git+https://github.com/prietus/peek.git
+	sha256sums = SKIP
+
+pkgname = ipeek-git
