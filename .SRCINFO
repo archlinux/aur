@@ -12,7 +12,6 @@ pkgbase = vulkan-low-latency-layer-bin
 	makedepends = vulkan-utility-libraries
 	depends = glibc
 	depends = gcc-libs
-	depends = vulkan-loader
 	provides = vulkan-low-latency-layer
 	conflicts = vulkan-low-latency-layer
 	source = git+https://github.com/Korthos-Software/low_latency_layer.git
