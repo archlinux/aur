@@ -1,5 +1,5 @@
 pkgbase = waywallen-display
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/waywallen/waywallen-display
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = waywallen-display
 	depends = glibc
 	depends = qt6-base
 	depends = qt6-declarative
-	source = waywallen-display-0.2.0.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v0.2.0.tar.gz
+	source = waywallen-display-0.2.1.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v0.2.1.tar.gz
 	source = 0001-install-kde-wallpaper-to-correct-path.diff
-	sha256sums = f7c7a8b93f2d5b096924610625ee9d36f4353c9938f05a8370f150ddf408ad34
+	sha256sums = e44698143484cfc9b547084dd3b980bb7d1527ab93c8614a20be23a2bc81d4f3
 	sha256sums = cce633071ed8aa4fc2f50317dd61a20610a8a25b4160c558f02b7986f8eb2a0f
 
 pkgname = waywallen-display
@@ -41,7 +41,7 @@ pkgname = plasma-wallpaper-waywallen
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = waywallen
-	depends = kdeclarative
 	depends = libplasma
 	depends = kirigami
+	depends = plasma-workspace
 	optdepends = waywallen-display: System rendering backend

@@ -1,6 +1,6 @@
 pkgbase=waywallen-display
 pkgname=(waywallen-display plasma-wallpaper-waywallen)
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen-display
@@ -9,7 +9,7 @@ depends=(libgcc libstdc++ glibc qt6-base qt6-declarative)
 makedepends=(cmake vulkan-headers vulkan-icd-loader libglvnd glib2 gobject-introspection)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v$pkgver.tar.gz"
         "0001-install-kde-wallpaper-to-correct-path.diff")
-sha256sums=('f7c7a8b93f2d5b096924610625ee9d36f4353c9938f05a8370f150ddf408ad34'
+sha256sums=('e44698143484cfc9b547084dd3b980bb7d1527ab93c8614a20be23a2bc81d4f3'
             'cce633071ed8aa4fc2f50317dd61a20610a8a25b4160c558f02b7986f8eb2a0f')
 
 prepare() {
@@ -39,7 +39,7 @@ package_waywallen-display() {
 
 package_plasma-wallpaper-waywallen() {
     pkgdesc="Plasma 6 Wallpaper plugin for waywallen."
-    depends+=(waywallen kdeclarative libplasma kirigami)
+    depends+=(waywallen libplasma kirigami plasma-workspace)
     optdepends=('waywallen-display: System rendering backend')
     DESTDIR="$pkgdir" cmake --install build --component kde_extension
     install -Dm644 "$pkgbase-$pkgver/extensions/kde/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
