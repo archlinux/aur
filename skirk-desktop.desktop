@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Skirk
+GenericName=Drive-Mailbox Tunnel
+Comment=Tunnel TCP streams through a Google Drive mailbox to a remote exit
+Exec=skirk-desktop %U
+Icon=skirk-desktop
+Terminal=false
+Categories=Network;
+StartupWMClass=Skirk
+StartupNotify=true
+Keywords=proxy;socks;vpn;tunnel;drive;

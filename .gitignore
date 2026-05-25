@@ -1,0 +1,8 @@
+*.tar.gz
+*.tar.zst
+*.pkg.tar.zst
+*.zip
+*.png
+src/
+pkg/
+Skirk/
