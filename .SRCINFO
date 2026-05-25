@@ -1,0 +1,18 @@
+pkgbase = server-picker-x-git
+	pkgdesc = Lightweight CS2 and Deadlock GUI server picker for blocking/unblocking server locations
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/FN-FAL113/server-picker-x
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = python
+	depends = python-pillow
+	depends = tk
+	depends = bash
+	provides = server-picker-x
+	conflicts = server-picker-x
+	source = git+https://github.com/FN-FAL113/server-picker-x.git
+	sha256sums = SKIP
+
+pkgname = server-picker-x-git
