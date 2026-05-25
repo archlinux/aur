@@ -1,4 +1,4 @@
-# Maintainer: ***REMOVED*** <***REMOVED***>
+# Maintainer: Evilleader evilleader91@gmail.com
 _pkgname=server-picker-x
 pkgname=server-picker-x-git
 pkgver=1.0.6
