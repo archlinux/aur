@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yet-another-electron-term
 _pkgname=YAET
-pkgver=4.0.3
+pkgver=5.0.0
 _electronversion=39
 _nodeversion=22
 pkgrel=1
