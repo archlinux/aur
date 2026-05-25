@@ -7,7 +7,7 @@
 _electron=electron
 pkgbase=element-desktop-git
 pkgname=(element-web-git element-desktop-git)
-pkgver=1.12.15.r248.g23b11aaf86
+pkgver=1.12.18.r139.g1ffbe66d72
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client — "
 arch=(x86_64)
@@ -37,6 +37,10 @@ pkgver() {
 }
 
 prepare() {
+  # Force non-interactive execution for headless/automated scripts
+  export NX_NON_INTERACTIVE=true
+  export CI=true
+
   # Specify electron version in launcher
   sed -i "s|@ELECTRON@|${_electron}|" element-desktop.sh
 
@@ -49,15 +53,19 @@ prepare() {
 }
 
 build() {
+  # Force non-interactive execution for headless/automated scripts
+  export NX_NON_INTERACTIVE=true
+  export CI=true
+
   # Navigate directly into the webapp directory to build the web target
   cd "$srcdir/element-web/apps/web"
   pnpm build
 
   # Navigate into the desktop directory to build the desktop wrapper
   cd ../desktop
-  pnpm run build:ts
-  pnpm run build:res
-  pnpm exec electron-builder --publish=never
+  
+  # The old build:ts and build:res scripts are now handled implicitly by the main build command
+  pnpm run build --publish never
 }
 
 package_element-web-git() {

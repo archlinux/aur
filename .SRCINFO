@@ -1,6 +1,6 @@
 pkgbase = element-desktop-git
 	pkgdesc = Glossy Matrix collaboration client —
-	pkgver = 1.12.15.r248.g23b11aaf86
+	pkgver = 1.12.18.r139.g1ffbe66d72
 	pkgrel = 1
 	url = https://element.io
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgname = element-web-git
 pkgname = element-desktop-git
 	pkgdesc = Glossy Matrix collaboration client — desktop version.
 	url = https://github.com/element-hq/element-web/tree/develop/apps/desktop
-	depends = element-web-git=1.12.15.r248.g23b11aaf86
+	depends = element-web-git=1.12.18.r139.g1ffbe66d72
 	depends = electron
 	depends = libsecret
 	provides = element-desktop
