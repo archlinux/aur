@@ -3,7 +3,7 @@
 _pkgname="slune"
 pkgname="$_pkgname"
 pkgver=1.0.16
-pkgrel=3
+pkgrel=4
 pkgdesc='A racing game'
 arch=(x86_64)
 url='http://www.lesfleursdunormal.fr/static/informatique/old/slune/index_en.html'
@@ -41,7 +41,7 @@ build() {
     curl https://bootstrap.pypa.io/pip/2.7/get-pip.py | python && \
     pip install 'cython<3' && \
     pip install slune
-    conda pack --ignore-missing-files -f
+    conda-pack --ignore-missing-files -f
 
   # Create a launcher file
 
