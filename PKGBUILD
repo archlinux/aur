@@ -1,5 +1,5 @@
 pkgname=tapauth
-pkgver=0.2.0
+pkgver=0.3.0-preview1
 pkgrel=1
 pkgdesc="Local smartphone-based authentication framework engine"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('Apache-2.0')
 depends=('dbus' 'pam')
 makedepends=('cargo' 'rust' 'protobuf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lolle2000la/tapauth/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3361c4bbcd24ae38cd567016d3bf4c24696cd60a8c28bdf238fb3b619a5a3736')
+sha256sums=('fea08ca871aee6ed9e92b61e8d81c3fd00d8a0337be69fb6da486b892a1c8995')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -34,6 +34,6 @@ package() {
   install -Dm0644 packaging/tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/tapauth.conf"
   install -Dm0644 client-config-gui/tapauth-config.desktop "$pkgdir/usr/share/applications/tapauth-config.desktop"
   install -Dm0644 client-config-gui/assets/tapauth-config.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/tapauth-config.svg"
-  install -Dm0644 client-config-gui/dev.rourunisen.tapauth.policy "$pkgdir/usr/share/polkit-1/actions/dev.rourunisen.tapauth.policy"
+  install -Dm0644 tapauthd/dev.rourunisen.tapauth.config.admin.policy "$pkgdir/usr/share/polkit-1/actions/dev.rourunisen.tapauth.config.admin.policy"
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
