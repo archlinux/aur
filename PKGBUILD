@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='5.6.5'
+pkgver='5.7.3'
 pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
@@ -18,15 +18,15 @@ source=(
 	'electron-builder-config.diff'
 	'fix-argv.diff'
 	'disable-update-checking.diff'
-	'missing-log-app-name.diff'
+	'update-dependencies.diff'
 	'LICENSE.md'
 )
-b2sums=('c2172ef9f6cff09953bb048525504c286daa33e1b8faa03da91a798534336798418c808221a2298e2ad2dc9e6565a0e6c6d1c04b62e4423391383f5472be74f7'
+b2sums=('102348512aa50ef0c42fc6df81dbe86cd85a776c2f1ee9d350560b63212a0d2387eea4f3cb110ebf0fde0ae7fb6600ad51e411fce49eecb9cf178a90395dcdf1'
         '54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0'
-        'f57d293ccf06c6c7903ca498c1cecac3be4d71f2d0ab3607b6b6d790a64a626ef9143d9e9a1613952521e949aea9c7c801d96888ebf1dbbae9ade8696af497cb'
-        '248cf727e04a6aced66d6b51cbecc1d4ed9472f0ba7e096ddcb0cb7160b98c3b396d74b5eadc249d1425d404ab825599335a2aaec0917706e8d317d4d0c5babd'
-        'e7ec8a1e21ea5c52ec8c91a8900ee758c0a93db2e7ff14b2293666fe564e65a34fb1b5e36fc0a9f3d61402ef33e17102167489c5b6b747458562d4f025c4bd79'
-        '36e0dab7e6e489a19cb6709a39a0f38f2f9a34200c7af297b94b8aa5e24ecdc3ec9451a0791d79ba72b7c51ad156d9abdb2b52deee7c3b3da3a5faa637480ebc'
+        'e27ce86d8c00f4809b51fcc580818acaddd6c5c753acbebfdfb69b270cf001ec7ec89d2e59a5dbfdbaf985b6ea4d0fbb95fc2c7ea76e130d0db00d6ec951ba51'
+        'c0a054bddc89f05c97ab7637b3fc9d3c787bf34db332e0b07d27d872af25677d5eb01382242e36f7884f09428bf2520bb78e951ebf321280097a55f7e3bd3f73'
+        'e301ba915d5642c55d082352c7e827a732bc27e851280c7b5044b70f899d21861c737042923ae61b6f1995a59259cd69dcf269a3d54df4d8196db02cdaad03a2'
+        'f5cf6e9fb90e8e9aaf52988c43fd4b472981721178584467d6a84608248e48862dff9cdbdef92aab764a9b1a34f4e3f6b6a5f901b2ff0569126b75ba066081e5'
         'e3c500691772f577a9f96b7672ba2f823eae58b9a22bd92bc1d9d0da73620d92a9c503b5d8850b59c6e8bf7126dfb0c23e6e2a738fb10865fc85a4a2a572fbdd')
 
 _sourcedirectory="$pkgname-$pkgver"
@@ -46,12 +46,15 @@ prepare() {
 	# Replace package name, flag file name and Electron version in launcher script
 	sed -i -e "s/%%PKGNAME%%/$pkgname/g" -e "s/%%ELECTRON%%/$_electronpkg/g" -e 's/%%FLAGFILENAME%%/bks/g' "$srcdir/electron-launcher.sh"
 
-	# Install dependencies
-	HUSKY=0 yarn install --ignore-engines
+	# Set npm overrides for various dependencies to be compatible with current node and Linux versions
+	# (see https://github.com/beekeeper-studio/node-sqlanywhere/pull/3 for node-sqlanywhere fix)
+	patch --forward -p1 < "$srcdir/update-dependencies.diff"
 
-	# Apply electron-log patch
-	cd "$srcdir/$_sourcedirectory/node_modules/electron-log/"
-	patch --forward -p1 < "$srcdir/missing-log-app-name.diff"
+	# Set system Electron version for ABI compatibility
+	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
+
+	# Install dependencies
+	HUSKY=0 yarn install
 }
 
 build() {
@@ -63,11 +66,11 @@ check() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Run unit tests (yarn run test:unit currently calls a non-existent command)
-	yarn workspace beekeeper-studio test:unit --ci
-	yarn workspace @beekeeperstudio/ui-kit test
+	ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electronpkg" yarn workspace beekeeper-studio test:unit --ci
+	ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electronpkg" yarn workspace @beekeeperstudio/ui-kit test
 
 	# Run non-DB integration tests
-	yarn run test:ci --ci
+	ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electronpkg" yarn run test:ci --ci
 }
 
 package() {
@@ -85,6 +88,7 @@ package() {
 	# Copy various resources (runtime dependencies, configs, demo files, etc.)
 	rm -f 'linux-unpacked/resources/app-update.yml'
 	rm -f 'linux-unpacked/resources/package-type'
+	rm -f 'linux-unpacked/resources/bundled_plugins/'*'/'*'/dist/assets/'*'.map'
 	install -dm755 "$pkgdir/usr/lib/"
 	cp -r --no-preserve=ownership --preserve=mode 'linux-unpacked/resources/' "$pkgdir/usr/lib/$pkgname/"
 

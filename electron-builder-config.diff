@@ -1,8 +1,16 @@
 diff --git a/apps/studio/electron-builder-config.js b/apps/studio/electron-builder-config.js
-index d0106225d..0f6393871 100644
+index fd32175be..fb32f7f50 100644
 --- a/apps/studio/electron-builder-config.js
 +++ b/apps/studio/electron-builder-config.js
-@@ -39,6 +39,8 @@ module.exports = {
+@@ -33,12 +33,15 @@ module.exports = {
+     'dist/**/*',
+     'package.json',
+     'public/icons/**/*',
+-    '!**/node_gyp_bins/*'
++    '!**/node_gyp_bins/*',
++    '!**/*.map'
+   ],
+   afterPack: "./build/afterPack.js",
    asarUnpack: [
      'package.json'
    ],
@@ -11,8 +19,8 @@ index d0106225d..0f6393871 100644
    extraResources: [
      {
        from: bksAiShellPath,
-@@ -147,24 +149,11 @@ module.exports = {
-       role: "Editor"
+@@ -152,24 +155,11 @@ module.exports = {
+       "role": "Editor"
      }
    ],
 -  mac: {
@@ -37,7 +45,7 @@ index d0106225d..0f6393871 100644
        'pacman'
      ],
      desktop: {
-@@ -175,66 +164,9 @@ module.exports = {
+@@ -180,66 +170,9 @@ module.exports = {
      publish: ['github']
    },
    pacman: {

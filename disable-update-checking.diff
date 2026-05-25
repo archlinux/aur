@@ -1,12 +1,21 @@
 diff --git a/apps/studio/src/common/menus/MenuBuilder.ts b/apps/studio/src/common/menus/MenuBuilder.ts
-index 538dd04ee..dba80c771 100644
+index a92cf0b16..e309e1432 100644
 --- a/apps/studio/src/common/menus/MenuBuilder.ts
 +++ b/apps/studio/src/common/menus/MenuBuilder.ts
-@@ -53,7 +53,6 @@ export default class extends DefaultMenu {
-       submenu: [
-         this.menuItems.keyboardShortcuts,
-         this.menuItems.enterLicense,
--        this.menuItems.checkForUpdate,
-         this.menuItems.opendocs,
-         this.menuItems.support,
+@@ -63,8 +63,6 @@ export default class extends DefaultMenu {
+         { type: 'separator' },
          this.menuItems.addBeekeeper,
+         this.menuItems.devtools,
+-        // Moved to Beekeeper Studio menu for mac
+-        ...(!this.platformInfo.isMac ? [this.menuItems.checkForUpdate] : []),
+         this.menuItems.restart,
+         { type: 'separator' },
+         // Moved to Beekeeper Studio menu for mac
+@@ -88,7 +86,6 @@ export default class extends DefaultMenu {
+         role: "appMenu",
+         submenu: [
+           this.menuItems.about,
+-          this.menuItems.checkForUpdate,
+           { type: 'separator' },
+           { role: 'services' },
+           { type: 'separator' },
