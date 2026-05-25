@@ -1,7 +1,7 @@
 pkgbase = mossx-bin
 	pkgdesc = MossX desktop client for Claude Code, Codex, Gemini, and Opencode (prebuilt binary)
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mossx.ai/download
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = mossx-bin
 	noextract = ccgui_0.5.2_amd64.AppImage
 	options = !strip
 	source = ccgui_0.5.2_amd64.AppImage::https://github.com/zhukunpenglinyutong/desktop-cc-gui/releases/download/v0.5.2/ccgui_0.5.2_amd64.AppImage
-	source = LICENSE-0.5.2::https://raw.githubusercontent.com/zhukunpenglinyutong/desktop-cc-gui/v0.5.2/LICENSE
+	source = LICENSE
 	sha256sums = ccb921965fc8a256ad8cb670fbf58fb99d9e9a4cd7a09898828d261ce157f508
 	sha256sums = 7ee7adbd9c6ba3df8397de73285eeac6d21f9692482c0dc92d5c3f11884dae49
 

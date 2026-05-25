@@ -4,7 +4,7 @@ pkgname=mossx-bin
 _pkgname=mossx
 _appname=ccgui
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='MossX desktop client for Claude Code, Codex, Gemini, and Opencode (prebuilt binary)'
 arch=('x86_64')
 url='https://www.mossx.ai/download'
@@ -15,7 +15,7 @@ conflicts=('mossx' 'ccgui')
 options=('!strip')
 source=(
   "${_appname}_${pkgver}_amd64.AppImage::https://github.com/zhukunpenglinyutong/desktop-cc-gui/releases/download/v0.5.2/ccgui_0.5.2_amd64.AppImage"
-  "LICENSE-${pkgver}::https://raw.githubusercontent.com/zhukunpenglinyutong/desktop-cc-gui/v0.5.2/LICENSE"
+  'LICENSE'
 )
 noextract=("${_appname}_${pkgver}_amd64.AppImage")
 sha256sums=(
@@ -38,7 +38,7 @@ package() {
 
   install -dm755 "${pkgdir}/opt/${_pkgname}"
   install -Dm755 "${appimage}" "${pkgdir}/opt/${_pkgname}/${_appname}_${pkgver}_amd64.AppImage"
-  install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/mossx" <<SCRIPT
 #!/bin/sh
