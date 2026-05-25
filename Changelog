@@ -1,9 +1,21 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 4.3.0 ➙ 4.7.1
-              : 2026-05-15 ➙ 2026-05-19
+ Tags         : 4.4.0 ➙ 4.7.2
+              : 2026-05-18 ➙ 2026-05-25
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-05-25   : 4.7.2
+              - **4.7.2**
+            
+                * Loaderentry: take "layout" provided by kernel-install since KERNEL_INSTALL_LAYOUT env. can override
+                  /etc/kernel/install.conf. This is more robust approach. The layout is only used to avoid an
+                  unnecessary fork/exec when layout is *uki*.
+                * When kernel is removed, the display message is now more explicit on *remove* vs *add*.
+                * Some code tidy ups.
+                * No functional change.
+ 2026-05-19   ⋯
+              - update Changelog
 
  2026-05-19   : 4.7.1
               - **4.7.1**
@@ -47,15 +59,4 @@
                 * Additional boundary case checks.
                 * Loader entry modifier for efi tools handle "uki" row in addition to "linux"
  2026-05-15   ⋯
-              - update Changelog
-
- 2026-05-15   : 4.3.0
-                  - * Drop the bash code version and sd-boot-set-alternative since its no longer needed.
-                    * Simplify installation.
-                    * When adding a new kernel version, check if previous version still there before
-                      calling *kernel-install remove* to remove the previous version since it may have
-                      already been removed by pacman. No functional impact other than avoiding one
-                      unnecessary fork/exec.
-                    * Remove one unnecessary trigger from kernel update alpm hook.
- 2026-05-07   ⋯
               - update Changelog
