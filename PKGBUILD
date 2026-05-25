@@ -1,9 +1,9 @@
-# Maintainer: h8ray <hiddenforever at elektrine dot com>
+# See contacts at https://aur.archlinux.org/cgit/aur.git/tree/README.md?h=amneziawg-tools-git
 
 pkgname=amneziawg-tools-git
 _pkgname=amneziawg-tools
 pkgver=r517.5d6179a
-pkgrel=1
+pkgrel=2
 pkgdesc="AmneziaWG is a contemporary version of the popular VPN protocol, WireGuard"
 arch=("x86_64")
 url="https://github.com/amnezia-vpn/amneziawg-tools"
