@@ -1,18 +1,24 @@
 pkgbase = libvdpau-git
-	pkgdesc = Nvidia VDPAU library
-	pkgver = 1.4
+	pkgdesc = Video Decode and Presentation API for UNIX
+	pkgver = 1.5.r1.g2afa3f9
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/VDPAU/
+	arch = i686
 	arch = x86_64
-	license = custom
-	makedepends = xorgproto
+	license = MIT
 	makedepends = git
 	makedepends = meson
+	makedepends = xorgproto
+	depends = glibc
+	depends = libx11
 	depends = libxext
-	provides = libvdpau
+	optdepends = libvdpau-va-gl: driver using VAAPI
+	optdepends = nvidia-utils: driver for NVIDIA
+	provides = libvdpau=1.5.r1.g2afa3f9
+	provides = libvdpau.so
 	conflicts = libvdpau
+	backup = etc/vdpau_wrapper.cfg
 	source = git+https://gitlab.freedesktop.org/vdpau/libvdpau.git
 	sha256sums = SKIP
 
 pkgname = libvdpau-git
-
