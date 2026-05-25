@@ -20,8 +20,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_x64.rpm")
-sha256sums_aarch64=('834541b89ec0622282c1d5d8e50f506df148caf36bb91146e7654682f0ac2af4')
-sha256sums_x86_64=('5219848cc0b79dd4f3b2a7c74e8940da3a204a6a270681619bb4143b70d4e72f')
+sha256sums_aarch64=('839ee1a05dd3ff61bb3bc4c20df72109864d9c41df69596a2e47fafe8c72e50f')
+sha256sums_x86_64=('4a41e97fd9f3b5829e0bb1e007719d6d192f427390add2a03b0a6c1bec3b0b05')
 prepare() {
     sed -i "s/Categories=/Categories=Development;System;Utility;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }

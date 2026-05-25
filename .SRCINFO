@@ -12,8 +12,8 @@ pkgbase = oxideterm-bin
 	provides = oxideterm=1.4.5
 	conflicts = oxideterm
 	source_aarch64 = oxideterm-1.4.5-aarch64.rpm::https://github.com/AnalyseDeCircuit/oxideterm/releases/download/v1.4.5/OxideTerm_1.4.5_linux_arm64.rpm
-	sha256sums_aarch64 = 834541b89ec0622282c1d5d8e50f506df148caf36bb91146e7654682f0ac2af4
+	sha256sums_aarch64 = 839ee1a05dd3ff61bb3bc4c20df72109864d9c41df69596a2e47fafe8c72e50f
 	source_x86_64 = oxideterm-1.4.5-x86_64.rpm::https://github.com/AnalyseDeCircuit/oxideterm/releases/download/v1.4.5/OxideTerm_1.4.5_linux_x64.rpm
-	sha256sums_x86_64 = 5219848cc0b79dd4f3b2a7c74e8940da3a204a6a270681619bb4143b70d4e72f
+	sha256sums_x86_64 = 4a41e97fd9f3b5829e0bb1e007719d6d192f427390add2a03b0a6c1bec3b0b05
 
 pkgname = oxideterm-bin
