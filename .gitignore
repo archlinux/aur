@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!make-lvm-snapshot.install
+
+
+!.gitignore
