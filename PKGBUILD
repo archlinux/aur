@@ -1,15 +1,15 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Qwen 3.5 Plus (Alibaba).
+# Created with assistance from Qwen 3.6 (Alibaba).
 
 pkgname=pake-cli
-pkgver=3.11.2
+pkgver=3.11.7
 pkgrel=1
 pkgdesc="Turn any webpage into a desktop app with one command (Tauri/Rust-based CLI)"
 arch=('any')
 url="https://github.com/tw93/Pake"
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm' 'node-gyp' 'python')
+makedepends=('npm' 'node-gyp' 'python' 'gcc' 'make')
 optdepends=(
     'rust: for building apps with pake-cli'
     'rustup: for building apps with pake-cli (alternative to rust)'
@@ -19,18 +19,18 @@ options=('!debug')
 _pkgname=pake-cli
 
 source=("https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
-b2sums=('c8c7bfcb4247108bcdf1e42395341ca03efb336f5579249ec2104d72b3b35142c0213756e3a3de452e44d60d959befe59bd7e5ea1192b6ccf8cc0eab76d21501')
+b2sums=('63ffd4070d6b1a2ef0cd45e103c6b11274ade17cd023b2a2267136325af4338fbd308095e098f764f948a3b70b8b8875aafa190fd9f3ffcde559e3040b2649f7')
 
 prepare() {
     bsdtar -xf "${_pkgname}-${pkgver}.tgz"
 
-    # sharp requires node-addon-api and node-gyp to be resolvable from its own directory
+    CXXFLAGS="${CXXFLAGS} -std=c++17" \
     npm install \
         --cache "${srcdir}/npm-cache" \
         --no-fund \
         --no-audit \
         --prefix "${srcdir}/package" \
-        node-addon-api node-gyp
+        node-addon-api@6 node-gyp
 
     export npm_config_node_gyp="$(which node-gyp)"
 
