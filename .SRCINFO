@@ -1,5 +1,5 @@
 pkgbase = osdockx-git
-	pkgdesc = A lightweight, customizable OSX-inspired dock for Linux/X11
+	pkgdesc = A skeuomorphic dock application
 	pkgver = 0.1.0.r0
 	pkgrel = 2
 	epoch = 1
