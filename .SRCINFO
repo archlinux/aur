@@ -12,6 +12,7 @@ pkgbase = osdockx-git
 	depends = gtk4
 	provides = osdockx
 	conflicts = osdockx
+	conflicts = osdockx-bin
 	options = !debug
 	source = osdockx::git+https://github.com/pruefsumme/osdockx.git
 	source = dev.pruefsumme.OSDockX.desktop

@@ -13,7 +13,7 @@ depends=('gtk4')
 makedepends=('cargo' 'git' 'pkgconf')
 options=('!debug')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=('osdockx' 'osdockx-bin')
 source=(
     "$_pkgname::git+$url.git"
     'dev.pruefsumme.OSDockX.desktop'
