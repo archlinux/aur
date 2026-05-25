@@ -1,7 +1,7 @@
 pkgbase = zl-compressor
 	pkgdesc = Sidechain and oversample capable compressor plugin by ZL Audio
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://zl-audio.github.io/plugins/zlcompressor/
 	arch = x86_64
 	groups = zl-audio
@@ -9,6 +9,7 @@ pkgbase = zl-compressor
 	license = AGPL-3.0
 	makedepends = git
 	makedepends = cmake
+	makedepends = kfr
 	depends = alsa-lib
 	depends = libx11
 	depends = libxinerama
@@ -17,11 +18,13 @@ pkgbase = zl-compressor
 	depends = fontconfig
 	depends = webkit2gtk
 	depends = glu
-	depends = libc++
-	source = git+https://github.com/ZL-Audio/ZLCompressor#tag=0.4.0
-	source = git+https://github.com/ZL-Audio/JUCE#tag=6bd3353
-	sha256sums = 721bbbe371c81e73698976c7304e4c5486bb010686dd92a1b745a26165386b48
-	sha256sums = 2adccbf0b7e52a90a16956955dbbef14924af56086157cfbef7607ac83faf4e5
+	depends = highway
+	source = git+https://github.com/ZL-Audio/ZLCompressor#tag=0.5.0
+	source = git+https://github.com/ZL-Audio/JUCE#tag=542dcc3
+	source = git+https://github.com/ZL-Audio/zldsp_fft.git#tag=455a40b
+	sha256sums = 1bdba1f65e2fb2332cff7c34e31009a66b337b340223f4b7419e37290d9dfa67
+	sha256sums = 9fd8b671b3f0d2001f9acc1a9c13b3e0d778c76ab884ee2c69f122ec68729659
+	sha256sums = ca881fdb227ffa83a02f41bc89121eada4aeb63081a6b7428edb1300ae1de44a
 
 pkgname = zl-compressor-vst3
 	pkgdesc = Sidechain and oversample capable compressor plugin by ZL Audio (VST3 version)
@@ -44,6 +47,6 @@ pkgname = zl-compressor
 	depends = fontconfig
 	depends = webkit2gtk
 	depends = glu
-	depends = libc++
+	depends = highway
 	depends = zl-compressor-vst3
 	depends = zl-compressor-lv2
