@@ -1,5 +1,5 @@
 pkgname=terax-ai-bin
-pkgver=0.7.1
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Modern AI terminal powered by Tauri"
 arch=(x86_64)
@@ -12,8 +12,8 @@ conflicts=("terax" "terax-bin")
 provides=(terax)
 
 _appimage="Terax_${pkgver}_amd64.AppImage"
-source=("${_appimage}::https://github.com/crynta/terax-ai/releases/download/v0.7.1/Terax_0.7.1_amd64.AppImage")
-sha256sums=('d5cdf81e0a69521fa17c13ef1651c51771e07ccd751774f555f6ddb0feb377e5')
+source=("${_appimage}::https://github.com/crynta/terax-ai/releases/download/v0.7.3/Terax_0.7.3_amd64.AppImage")
+sha256sums=('cba61a8dad11863d1631a9d74b0215d2b497b9a08ffc56e85ffc5f276bf6cbe2')
 noextract=("${_appimage}")
 
 prepare() {
