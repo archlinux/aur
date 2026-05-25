@@ -1,0 +1,14 @@
+post_install() {
+    echo ":: Packaging issues? Report at: https://github.com/orange-guo/aur-packages"
+    echo ::\ This\ package\ installs\ only\ the\ boxd\ CLI\ binary\ as\ /usr/bin/boxd.
+    echo ::\ Upstream\'s\ shell\ installer\ also\ writes\ Claude\ Code\ skills\ under\ ~/.claude/skills\ and\ may\ edit\ shell\ startup\ files\;\ this\ package\ intentionally\ does\ not\ modify\ user\ home\ directories.
+    echo ::\ Optional\ skill\ installation\ is\ documented\ at\ https://docs.boxd.sh/using-boxd/skills
+}
+
+post_upgrade() {
+    :
+}
+
+post_remove() {
+    :
+}

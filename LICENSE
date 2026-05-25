@@ -1,0 +1,20 @@
+boxd CLI license notice
+=======================
+
+No separate open-source license for the prebuilt boxd CLI binary was found in
+the upstream installer, release manifests, website, or documentation at the
+time this package was added.
+
+The boxd CLI is distributed by Azin Tech Holding as part of the boxd services.
+Use of the services is governed by the boxd Terms & Conditions:
+
+  https://boxd.sh/terms/
+
+The terms identify Azin Tech Holding as the operator of boxd.sh and state that
+the Company owns the Services and related intellectual property. They grant
+users a non-exclusive, non-transferable, revocable license to access and use
+the Services for internal business purposes.
+
+This AUR package does not bundle the upstream binary in the git repository; it
+declares upstream download URLs so makepkg retrieves the binary directly from
+boxd.sh during package builds.
