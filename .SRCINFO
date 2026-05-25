@@ -1,0 +1,17 @@
+pkgbase = gameflow-deck-git
+	pkgdesc = A tool for managing games on your deck
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/simeonradivoev/gameflow-deck
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = bun
+	depends = nodejs
+	depends = sqlite
+	provides = gameflow-deck
+	conflicts = gameflow-deck
+	source = git+https://github.com/simeonradivoev/gameflow-deck.git
+	sha256sums = SKIP
+
+pkgname = gameflow-deck-git
