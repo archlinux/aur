@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.22.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
@@ -27,7 +27,7 @@ makedepends=('mingw-w64-cmake' 'ninja')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('43055f032bc3c74595a68a21709a54b64733e4d97619452275414b849298aeea')
+sha256sums=('7be69828c778c90c8750933cace92ff946983a0e875dae6cfd73a106226d7c9e')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/${_pkgname}/archive/v${pkgver}.tar.gz")
 
 _srcdir="${_pkgname}-${pkgver}"
@@ -35,7 +35,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=(
 	-Wno-dev
 	-DCMAKE_BUILD_TYPE=Release
-	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -Wno-error=stringop-overflow'
+	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
 	-DWITH_RAV1E=ON
 	-DWITH_RAV1E_PLUGIN=OFF
 	-DWITH_SvtEnc=ON # Only supported on 64 bits platforms
