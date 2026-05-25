@@ -1,15 +1,12 @@
 pkgbase = yacasl2
-	pkgdesc = A CASL II processing system
-	pkgver = 0.5p15
+	pkgdesc = CASL2/COMET2 simulator for Japanese Information Technology examination
+	pkgver = 0.5.32
 	pkgrel = 1
-	url = https://github.com/j8takagi/YACASL2
+	url = https://github.com/j8takagi/yacasl2
 	arch = x86_64
-	license = MIT
-	depends = glibc
-	source = yacasl2-0.5p15.tar.gz::https://github.com/j8takagi/YACASL2/archive/v0.5p15.tar.gz
-	source = Makefile.patch
-	sha256sums = 1dd17c9ad3236e144540ffa18e1e8fffb92c4ccfe58785ee158460d8348952de
-	sha256sums = 26c19ad47a56e355a89ef14caba0061c1d498853c45cbedc45e7c3e644bbafbc
+	license = GPL
+	makedepends = texinfo
+	source = yacasl2-0.5.32.tar.gz::https://github.com/j8takagi/yacasl2/archive/v0.5.32.tar.gz
+	sha256sums = SKIP
 
 pkgname = yacasl2
-
