@@ -1,0 +1,16 @@
+pkgbase = python-sphinxcontrib-googleanalytics
+	pkgdesc = Sphinx extension googleanalytics
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/sphinx-contrib/googleanalyticss
+	arch = any
+	license = BSD-2-Clause
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib_googleanalytics/sphinxcontrib_googleanalytics-0.5.tar.gz
+	sha256sums = a2ac6df9d16b9c124febf6b44e714c1fd9725e692b73ee84ec6b52b377ff5561
+
+pkgname = python-sphinxcontrib-googleanalytics
+	depends = python-sphinx>=0.6
