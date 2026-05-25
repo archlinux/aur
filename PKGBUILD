@@ -2,8 +2,8 @@
 : ${aur_llamacpp_build_universal:=false}
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b9279.r3.4f0e43da6f
-pkgrel=2
+pkgver=b9305.r2.549b9d8433
+pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
 url='https://github.com/ggml-org/llama.cpp'
@@ -139,7 +139,7 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build
 
   # Helper libraries.
-  install -Dm755 -t "${pkgdir}/usr/lib/" build/bin/lib*-impl.so
+  #install -Dm755 -t "${pkgdir}/usr/lib/" build/bin/lib*-impl.so
 
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "llama.cpp.conf" "${pkgdir}/etc/conf.d/llama.cpp"
