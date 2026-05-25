@@ -1,6 +1,6 @@
 pkgbase = linux-ryzen-undervolt-git
 	pkgdesc = Ryzen CPU undervolting tool (GUI) using the ryzen_smu driver
-	pkgver = 0.1.0.r0.g1234567
+	pkgver = 0.0.0
 	pkgrel = 1
 	url = https://github.com/softwaresocialist/linux-ryzen-undervolt-ui
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = linux-ryzen-undervolt-git
 	depends = python-psutil
 	depends = polkit
 	optdepends = ryzen_smu-dkms-git: required kernel module for accessing SMU registers
-	provides = ruv-gui=0.1.0.r0.g1234567
-	provides = ruv-gui=0.1.0.r0.g1234567
+	provides = ruv-gui=0.0.0
+	provides = ruv-gui=0.0.0
 	conflicts = ruv-gui
 	conflicts = ruv-gui
 	source = ruv-gui::git+https://github.com/softwaresocialist/linux-ryzen-undervolt-ui.git
