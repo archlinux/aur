@@ -1,7 +1,7 @@
 pkgbase = ecss-elph-bin
 	pkgdesc = An application to extend the functionality of an ECSS-10 enabled telephone set and use it as a software SIP client
 	pkgver = 2.14.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://docs.eltex-co.ru/display/doc/Elph+Desktop
 	arch = x86_64
 	license = custom

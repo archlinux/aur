@@ -1,9 +1,9 @@
-# Maintainer: h8ray <hiddenforever at elektrine dot com>
+# See contacts at https://aur.archlinux.org/cgit/aur.git/tree/README.md?h=ecss-elph-bin
 
 pkgname=ecss-elph-bin
 _pkgname=ecss-elph
 pkgver=2.14.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="An application to extend the functionality of an ECSS-10 enabled telephone set and use it as a software SIP client"
 arch=("x86_64")
 url="https://docs.eltex-co.ru/display/doc/Elph+Desktop"
