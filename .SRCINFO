@@ -1,6 +1,6 @@
 pkgbase = moshpit-bin
 	pkgdesc = moshpit client — SSH and Mosh inspired remote terminal client (pre-compiled binary)
-	pkgver = 0.8.10
+	pkgver = 0.8.11
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = moshpit-bin
 	depends = moshpit-keygen
 	provides = moshpit
 	conflicts = moshpit
-	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.10/dist-mp.tar.gz
-	sha256sums = 08e3598e57ebcc7ecbb0dbad20cdfb32bcc927eec95b9667306ed555f29607d6
-	source_x86_64 = mp-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.10/mp-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 48accd023d9906a7cb833317b608f6dd790a1906e7045cdd7ffa56ff0951739a
-	source_aarch64 = mp-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.10/mp-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = c3641480f4f84d648f670f84b7c72214f834e2fbe6264b7cc4f63534833677be
+	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.11/dist-mp.tar.gz
+	sha256sums = c489a3c23de68b12c1af9d86aed1e5c54807635def2e270bff62bd78075f766a
+	source_x86_64 = mp-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.11/mp-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 9e7920bdad7ace69c89c89bb2799fb3f838c49c1678d15ad3b8b83064d9facf3
+	source_aarch64 = mp-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.11/mp-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 01318cab87537178e81070d3324eb6e67d8718cb9680332ac71f018932e86126
 
 pkgname = moshpit-bin
