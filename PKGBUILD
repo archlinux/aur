@@ -2,7 +2,7 @@
 pkgname=sovet
 pkgver=2.19.0
 pkgrel=1
-pkgdesc="ЗАЩИЩЕННЫЙ МЕССЕНДЖЕР // АНОНИМНОСТЬ И БЕЗОПАСНОСТЬ"
+pkgdesc="Корпоративная платформа для совместной работы: чат, видеоконференции, задачи, файлы. Аналог Microsoft Teams. Сервер в России."
 arch=('x86_64')
 url="https://sovetchat.ru"
 license=('custom')
