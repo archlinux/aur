@@ -1,7 +1,7 @@
 # Maintainer: Meredith V. <delightful.device@pm.me>
 
 pkgname=world-radio-league-desktop-bin
-pkgver=0.0.5
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="World Radio League desktop application"
 arch=('x86_64')
