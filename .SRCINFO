@@ -9,6 +9,8 @@ pkgbase = streamdeck-controller
 	makedepends = python-pip
 	depends = python
 	depends = hidapi
+	options = !debug
+	options = !strip
 	source = git+https://github.com/ricwoh/streamdeck-controller.git
 	sha256sums = SKIP
 

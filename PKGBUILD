@@ -10,6 +10,7 @@ depends=('python' 'hidapi')
 makedepends=('python-pip')
 install="$pkgname.install"
 source=("git+https://github.com/ricwoh/streamdeck-controller.git")
+options=(!debug !strip)
 sha256sums=('SKIP')
 
 pkgver() {
