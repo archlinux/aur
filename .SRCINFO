@@ -1,5 +1,4 @@
 pkgbase = server-picker-x-git
-	pkgdesc = Lightweight CS2, Deadlock and Marathon GUI server picker for blocking/unblocking server locations
 	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/FN-FAL113/server-picker-x
@@ -12,11 +11,9 @@ pkgbase = server-picker-x-git
 	depends = fontconfig
 	provides = server-picker-x
 	conflicts = server-picker-x
-	options = !strip
-	options = !debug
 	source = git+https://github.com/FN-FAL113/server-picker-x.git
 	source = icon.png::https://raw.githubusercontent.com/NasirA1991/aur-server_picker_x/main/icon.png
 	sha256sums = SKIP
-	sha256sums = 723a00a105ffcd843693d2ca7d6b70e7eaa7da284e26704893fce19b1ec1c839
+	sha256sums = SKIP
 
 pkgname = server-picker-x-git
