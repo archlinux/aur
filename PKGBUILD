@@ -1,5 +1,6 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: baest <m at frausing dot me>
+# Contributor: 3ED <krzysztof1987 at gmail dot com>
 
 _author=SKAJI
 _dist=App-cpm
