@@ -1,7 +1,7 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=veila-git
 _repo=Veila
-pkgver=0.4.0.r0.g0000000
+pkgver=0.4.1.r0.g0000000
 pkgrel=1
 pkgdesc="Secure, elegant, and fast Wayland screen locker (latest git)"
 arch=('x86_64')
@@ -53,4 +53,5 @@ package() {
   done
 
   install -Dm644 README.md "$pkgdir/usr/share/doc/veila/README.md"
+  install -Dm644 docs/man/veila.1 "$pkgdir/usr/share/man/man1/veila.1"
 }
