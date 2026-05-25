@@ -5,7 +5,7 @@
 # Contributor: yugrotavele <yugrotavele at archlinux dot us>
 
 pkgname=dosage
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc='A comic downloader and archiver.'
 arch=('any')
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('python')
 makedepends=('git' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
 source=("git+https://github.com/webcomics/$pkgname.git#tag=$pkgver")
-sha256sums=('f85aecb166e30ebbcd4fb2509854c3f796949ee6a7d24841f46205279bab165b')
+sha256sums=('e06e1c50c2428e6704e5ba9ef4a4ff46a9df693d5babdb37b88eb34cbd021eec')
 
 _srcdir="$pkgname"
 
