@@ -1,0 +1,14 @@
+pkgbase = osdockx-bin
+	pkgdesc = Transitional package: installs osdockx-git
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pruefsumme/osdockx
+	arch = any
+	license = MIT
+	depends = osdockx-git
+	provides = osdockx
+	conflicts = osdockx
+	options = !strip
+	options = !debug
+
+pkgname = osdockx-bin
