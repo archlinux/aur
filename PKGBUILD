@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=limabean
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='A new implementation of Beancount using Rust and Clojure and the Lima parser'
 arch=(x86_64 i686)
@@ -15,7 +15,7 @@ makedepends=(cargo
              git)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('5942c8b0c617c688857317db358fefd0cbff4037fa39b4fde758f5c7886af22a')
+sha256sums=('a31851016a02a515f6463735b5a9ab39d4dde97e8afa1e8fb690836c0bfa923f')
 
 prepare() {
 	cd "$_archive"
