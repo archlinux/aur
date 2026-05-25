@@ -5,13 +5,13 @@
 void print_help() {
     printf("a small program to help systemd users switch to openrc by m1rkvl9\n");
     printf("\nUsage:\n");
-    printf("  rctl start <service>\n");
-    printf("  rctl stop <service>\n");
-    printf("  rctl info\n");
-    printf("  rctl enable <service> [--now]\n");
-    printf("  rctl disable <service> [--now]\n");
-    printf("  rctl enable --now <service>\n");
-    printf("  rctl disable --now <service>\n");
+    printf("  rctl start <service> [--user]\n");
+    printf("  rctl stop <service> [--user]\n");
+    printf("  rctl restart <service> [--user]\n");
+    printf("  rctl info [--user]\n");
+    printf("  rctl enable <service> [--now] [--user]\n");
+    printf("  rctl disable <service> [--now] [--user]\n");
+    printf("\nNote: Order of arguments does not matter!\n");
 }
 
 int main(int argc, char *argv[]) {
@@ -20,71 +20,99 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    char *command = argv[1];
-
-    if (strcmp(command, "help") == 0 || strcmp(command, "--help") == 0) {
-        print_help();
-        return 0;
-    }
-
-    if (strcmp(command, "info") == 0) {
-        return system("rc-update");
-    }
-
-    // Для остальных команд нужно как минимум 3 аргумента (rctl + команда + имя_сервиса)
-    if (argc < 3) {
-        fprintf(stderr, "Error: Missing arguments.\n");
-        return 1;
-    }
-
+    char *command = NULL;
     char *service = NULL;
     int has_now = 0;
+    int has_user = 0;
 
-    // Проходим по всем аргументам начиная с argv[2] (после rctl и команды)
-    for (int i = 2; i < argc; i++) {
+    // Проходим по абсолютно всем аргументам (начиная с argv[1])
+    for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "--now") == 0) {
             has_now = 1;
-        } else {
-            // Если это не --now, значит это имя сервиса
+        }
+        else if (strcmp(argv[i], "--user") == 0) {
+            has_user = 1;
+        }
+        else if (strcmp(argv[i], "help") == 0 || strcmp(argv[i], "--help") == 0) {
+            print_help();
+            return 0;
+        }
+        // Проверяем, является ли аргумент известной командой
+        else if (strcmp(argv[i], "start") == 0 ||
+                 strcmp(argv[i], "stop") == 0 ||
+                 strcmp(argv[i], "restart") == 0 ||
+                 strcmp(argv[i], "enable") == 0 ||
+                 strcmp(argv[i], "disable") == 0 ||
+                 strcmp(argv[i], "info") == 0) {
+            command = argv[i];
+        }
+        else {
+            // Если это не флаг и не команда, значит это имя сервиса
             service = argv[i];
         }
     }
 
-    // Если обошли все аргументы, а имя сервиса так и не нашли
+    // Если команду так и не нашли
+    if (command == NULL) {
+        fprintf(stderr, "Error: No command specified (e.g., start, stop, enable).\n");
+        print_help();
+        return 1;
+    }
+
+    // Отдельная обработка для команды info (ей сервис не нужен)
+    if (strcmp(command, "info") == 0) {
+        if (has_user) {
+            return system("rc-update --user");
+        } else {
+            return system("rc-update");
+        }
+    }
+
+    // Для всех остальных команд имя сервиса обязательно
     if (service == NULL) {
         fprintf(stderr, "Error: Missing service name.\n");
         return 1;
     }
 
     char cmd_buffer[512];
+    char svc_prefix[32] = "";
+    char upd_prefix[32] = "";
+
+    if (has_user) {
+        strcpy(svc_prefix, "--user ");
+        strcpy(upd_prefix, "--user ");
+    }
 
     if (strcmp(command, "start") == 0) {
-        snprintf(cmd_buffer, sizeof(cmd_buffer), "rc-service %s start", service);
+        snprintf(cmd_buffer, sizeof(cmd_buffer), "rc-service %s%s start", svc_prefix, service);
         return system(cmd_buffer);
     }
     else if (strcmp(command, "stop") == 0) {
-        snprintf(cmd_buffer, sizeof(cmd_buffer), "rc-service %s stop", service);
+        snprintf(cmd_buffer, sizeof(cmd_buffer), "rc-service %s%s stop", svc_prefix, service);
+        return system(cmd_buffer);
+    }
+    else if (strcmp(command, "restart") == 0) {
+        snprintf(cmd_buffer, sizeof(cmd_buffer), "rc-service %s%s restart", svc_prefix, service);
         return system(cmd_buffer);
     }
     else if (strcmp(command, "enable") == 0) {
         if (has_now) {
-            snprintf(cmd_buffer, sizeof(cmd_buffer), "rc-update add %s default && rc-service %s start", service, service);
+            snprintf(cmd_buffer, sizeof(cmd_buffer), "rc-update %sadd %s default && rc-service %s%s start",
+                     upd_prefix, service, svc_prefix, service);
         } else {
-            snprintf(cmd_buffer, sizeof(cmd_buffer), "rc-update add %s default", service);
+            snprintf(cmd_buffer, sizeof(cmd_buffer), "rc-update %sadd %s default", upd_prefix, service);
         }
         return system(cmd_buffer);
     }
     else if (strcmp(command, "disable") == 0) {
         if (has_now) {
-            snprintf(cmd_buffer, sizeof(cmd_buffer), "rc-service %s stop && rc-update delete %s default", service, service);
+            snprintf(cmd_buffer, sizeof(cmd_buffer), "rc-service %s%s stop && rc-update %sdelete %s default",
+                     svc_prefix, service, upd_prefix, service);
         } else {
-            snprintf(cmd_buffer, sizeof(cmd_buffer), "rc-update delete %s default", service);
+            snprintf(cmd_buffer, sizeof(cmd_buffer), "rc-update %sdelete %s default", upd_prefix, service);
         }
         return system(cmd_buffer);
     }
-    else {
-        fprintf(stderr, "Unknown command: %s\n", command);
-        print_help();
-        return 1;
-    }
+
+    return 0;
 }

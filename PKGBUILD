@@ -1,6 +1,6 @@
 # Maintainer: m1rkvl9 <ваша_почта@example.com>
 pkgname=rctl
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A small program to help systemd users switch to openrc"
 arch=('x86_64')
