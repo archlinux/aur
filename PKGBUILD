@@ -2,7 +2,7 @@
 # Maintainer: Anonym3000 <theanonym3000 at icloud dot com>
 # Contributor:
 pkgname=itrain
-pkgver=5.1
+pkgver=5.1.20
 pkgrel=1
 pkgdesc="iTrain offers an easy to use solution to control your model railroad with your computer."
 arch=('x86_64')
