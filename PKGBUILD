@@ -1,4 +1,5 @@
-# Maintainer : Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Mark Collins <tera_1225 hat hotmail ðot com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-repoze.profile
 pkgver=2.3
