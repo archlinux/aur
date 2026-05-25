@@ -1,5 +1,10 @@
-# Name: v3.10.1 
-### URL: https://github.com/TomWright/dasel/releases/tag/v3.10.1
-### published at '2026-05-13T21:19:23Z' by TomWright
+# Name: v3.11.0 
+### URL: https://github.com/TomWright/dasel/releases/tag/v3.11.0
+### published at '2026-05-19T17:07:06Z' by TomWright
 ---
-**Full Changelog**: https://github.com/TomWright/dasel/compare/v3.10.0...v3.10.1
+## What's Changed
+* Support newline-delimited JSON (NDJSON) input by @TomWright in https://github.com/TomWright/dasel/pull/548
+* Ensure version command output has consistent formatting.
+
+
+**Full Changelog**: https://github.com/TomWright/dasel/compare/v3.10.1...v3.11.0
