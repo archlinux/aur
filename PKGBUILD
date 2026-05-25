@@ -6,15 +6,32 @@
 # under GPL-3.0-only by its upstream author (declared in license= below).
 pkgname=modulejail
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Proactively shrink Linux kernel-module attack surface by blacklisting unused modules'
 arch=('any')
 url='https://github.com/jnuyens/modulejail'
 license=('GPL-3.0-only')
 depends=('kmod')
 optdepends=('util-linux: logger(1) for syslog integration')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('00bcf1ddd8e46f183782822b7a710209b405ab708afade61a028306340e2972e')
+makedepends=('sequoia-sqv')
+# Source filenames deliberately avoid the .sig/.sign/.asc extensions so
+# makepkg's built-in gpg verifier does NOT auto-trigger; the sole verifier
+# is sequoia-sqv invoked from prepare() (per AUR comment from Velocifyer
+# 2026-05-24: use sqv, not gpg). The signing key is shipped in this AUR
+# repo as modulejail-signing-key.gpg (sha256 below) so verification needs
+# no keyring state, no network beyond the source fetch, and no gpg.
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tarball-signature::${url}/releases/download/v${pkgver}/v${pkgver}.tar.gz.sig"
+        'modulejail-signing-key.gpg')
+sha256sums=('00bcf1ddd8e46f183782822b7a710209b405ab708afade61a028306340e2972e'
+            'SKIP'
+            '5b4f8bef3957b8d8f91475aeb40f398dc87b550b7bdc8458b72661112b033433')
+
+prepare() {
+    sqv --keyring "${srcdir}/modulejail-signing-key.gpg" \
+        --signature-file "${srcdir}/${pkgname}-${pkgver}.tarball-signature" \
+        "${srcdir}/${pkgname}-${pkgver}.tar.gz"
+}
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
