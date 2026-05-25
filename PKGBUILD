@@ -5,9 +5,9 @@
 # Contributor: DilithiumNitrate
 
 pkgname="srb2-legacy"
-pkgver=2.1.29
+pkgver=2.1.29R1
 _dataver=2.1.25
-pkgrel=2
+pkgrel=1
 pkgdesc='Updated fork of Sonic Robo Blast 2 2.1.25'
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL-2.0-or-later')
@@ -17,7 +17,7 @@ makedepends=('git' 'mesa')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/srb2-preservation/srb2-legacy/archive/SRB2_release_${pkgver}.zip")
-sha256sums=('c5e32e4a57b45b162646a3fc1043f02886e21afdd40455c38838a0493bcf99a0')
+sha256sums=('8d432fe47df3c7f11feabaa82f6bbd65aea4655265f686513d7adff0f87030a1')
 
 build() {
   cd srb2-legacy-SRB2_release_$pkgver/src
