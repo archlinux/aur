@@ -26,7 +26,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r969.1d30bbd
+pkgver=r970.7d6a7b9
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor + first-party mshell desktop (mango heritage)"
 url="https://github.com/kenanpelit/margo"
@@ -397,6 +397,23 @@ package() {
     "$pkgdir/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.margo.service"
   install -Dm644 "assets/margo-portal.service" \
     "$pkgdir/usr/lib/systemd/user/margo-portal.service"
+
+  # ── mshell desktop-shell user service ──────────────────────────
+  # Starts mshell (the bar / menus / notifications) when a margo
+  # graphical session comes up. uwsm reaches graphical-session.target
+  # once the compositor is live (margo imports WAYLAND_DISPLAY into the
+  # systemd user env); the unit's ConditionEnvironment gates it to a
+  # margo session so the auto-start drop-in below can't fire under
+  # other desktops. A user's own ~/.config/systemd/user/mshell.service
+  # still overrides this packaged one.
+  install -Dm644 "assets/mshell.service" \
+    "$pkgdir/usr/lib/systemd/user/mshell.service"
+  # Auto-enable: pull mshell into graphical-session.target for every user
+  # without a per-user `systemctl --user enable` (the ConditionEnvironment
+  # guards keep it margo-only).
+  install -d "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants"
+  ln -sf "../mshell.service" \
+    "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants/mshell.service"
 
   # ── Session integration reference ──────────────────────────────
   # The uwsm .desktop + wrapper scripts above are installed live (to
