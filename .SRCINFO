@@ -1,12 +1,12 @@
 pkgbase = breeze-plus
-	pkgdesc = Breeze Styled extra icon theme for KDE
-	pkgver = 6.2.5
+	pkgdesc = Breeze Styled extra icon theme
+	pkgver = 6.19.0
 	pkgrel = 1
 	url = https://github.com/mjkim0727/breeze-plus
 	arch = any
 	license = LGPL-2.1
 	depends = breeze
-	source = breeze-plus-6.2.5.tar.gz::https://github.com/mjkim0727/breeze-plus/archive/refs/tags/6.2.5.tar.gz
-	sha256sums = 394de826f5d0edeb036d9947842229d45be928cf95e296850e6f4a47bbe392b7
+	source = breeze-plus-6.19.0.tar.gz::https://github.com/mjkim0727/breeze-plus/archive/refs/tags/6.19.0.tar.gz
+	sha256sums = 9001b847f7f7c407620c4fedbcd01bc32b26a0cb33f80bc7fdad26617ff78d17
 
 pkgname = breeze-plus
