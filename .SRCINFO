@@ -1,6 +1,6 @@
 pkgbase = pake-twitter
 	pkgdesc = Twitter wrapped as a desktop app using Pake
-	pkgver = 3.11.5
+	pkgver = 3.11.7
 	pkgrel = 1
 	url = https://github.com/tw93/Pake
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = pake-twitter
 	depends = libayatana-appindicator
 	options = !strip
 	options = !debug
-	source = Twitter-3.11.5.deb::https://github.com/tw93/Pake/releases/download/V3.11.5/Twitter_x86_64.deb
-	source = LICENSE-3.11.5::https://raw.githubusercontent.com/tw93/Pake/V3.11.5/LICENSE
-	sha256sums = 7c075d9901bb1a83ad59df61e450fcc95cba1dc4cb45399e15277651ca123e1d
+	source = Twitter-3.11.7.deb::https://github.com/tw93/Pake/releases/download/V3.11.7/Twitter_x86_64.deb
+	source = LICENSE-3.11.7::https://raw.githubusercontent.com/tw93/Pake/V3.11.7/LICENSE
+	sha256sums = ce8fd53060d3eb1c8ed3175e09b3ed19327d0ec55fc97337ca2bd2306f605b54
 	sha256sums = 462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758
 
 pkgname = pake-twitter

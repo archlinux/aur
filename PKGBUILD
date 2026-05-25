@@ -3,7 +3,7 @@
 pkgname=pake-twitter
 _appname=Twitter
 _appname_lower=twitter
-_pkgver=3.11.5
+_pkgver=3.11.7
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="${_appname} wrapped as a desktop app using Pake"
@@ -17,7 +17,7 @@ source=(
     "${_appname}-${_pkgver}.deb::https://github.com/tw93/Pake/releases/download/V${_pkgver}/${_appname}_${CARCH}.deb"
     "LICENSE-${_pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${_pkgver}/LICENSE"
 )
-sha256sums=('7c075d9901bb1a83ad59df61e450fcc95cba1dc4cb45399e15277651ca123e1d'
+sha256sums=('ce8fd53060d3eb1c8ed3175e09b3ed19327d0ec55fc97337ca2bd2306f605b54'
             '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 
 prepare() {
