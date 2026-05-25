@@ -1,8 +1,9 @@
 pkgbase = dosbox-x-sdl2
 	pkgdesc = x86 emulator with builtin DOS, with patches and more features
 	pkgver = 2026.05.02
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dosbox-x.com
+	install = dosbox-x.install
 	arch = i686
 	arch = x86_64
 	arch = aarch64
