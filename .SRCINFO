@@ -1,0 +1,14 @@
+pkgbase = botbox
+	pkgdesc = A CLI tool for scaffolding, configuring, and managing Discord bot projects
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = https://github.com/choice404/botbox
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = botbox-2.5.3.tar.gz::https://github.com/choice404/botbox/archive/refs/tags/v2.5.3.tar.gz
+	sha256sums = f692944ee1255699abf57323b83fecbbabbb388936de5bc0a200e4c96ccb6868
+
+pkgname = botbox
