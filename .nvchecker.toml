@@ -1,0 +1,5 @@
+[handoff-bin]
+source = "github"
+github = "TStansel/handoff"
+use_latest_release = true
+prefix = "v"
