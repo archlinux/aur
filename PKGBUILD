@@ -1,4 +1,4 @@
-# Maintainer: Michael S. <sandersm689@gmail.com>
+# Maintainer: Michael S. <siniq90@gmail.com>
 pkgname=glogout
 pkgver=1.0.0
 pkgrel=2
