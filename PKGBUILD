@@ -2,33 +2,24 @@
 # Maintainer: cadapur <cadapur@proton.me>
 
 pkgname='coomerdl-bin'
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Download from coomer.st'
 url='https://codeberg.org/cadapur/coomerdl'
-arch=('aarch64' 'aarch64' 'armv7h' 'armv7h' 'x86_64' 'x86_64')
+arch=('aarch64' 'armv7h' 'x86_64')
 license=('AGPL')
 provides=('coomerdl')
 conflicts=('coomerdl')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_linux_arm64")
-sha256sums_aarch64=('6eb79d83e5aa9e3d21759c62ed0ca17db478536e15de942d83d79d15ede75958')
-
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('18faf09f127bd509f3c68160fc6b260fc248ffa82329a40c0c4a9f6a26777ced')
+sha256sums_aarch64=('f5cbc35472f2d30052c6b24e04172227629c6e1117b4e7af10be50d033d5f9c6')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.binary::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_linux_armv7")
-sha256sums_armv7h=('37fea0a80cd94f61d3d3001eb6dae8eaf1968b2914bc76208cd16118a868a5f6')
-
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('dcab590e85144bc27cef056185f0b21fb2a2acb3ab23024251849fd546610cf4')
+sha256sums_armv7h=('09692c009c060365f7d6059ff4ad5edf91fc1c6b09ff72567cf0ca3acd9d996f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_linux_amd64")
-sha256sums_x86_64=('47d443f6809be5bb3a6fd847910a09f9b5979816bb2eb8d5f15f69b6974bc1bd')
-
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://codeberg.org/cadapur/coomerdl/releases/${pkgver}/coomerdl_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('5bf166e58916c49d20e1aad87e028daecc89cd0299327ab84c6c96244febf8fb')
+sha256sums_x86_64=('66294f5a6749145c393038d13cf95eb37f02b42183e6399a3ec321bf4d85b22d')
 
 package() {
-  install -Dm755 "./coomerdl_linux_armv7" "${pkgdir}/usr/bin/coomerdl"
+  install -Dm755 "./coomerdl" "${pkgdir}/usr/bin/coomerdl"
 }
