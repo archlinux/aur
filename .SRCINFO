@@ -1,6 +1,6 @@
 pkgbase = dmtl-bin
 	pkgdesc = Custom Linux launcher for DayZ
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/69-Lukash/DMTLauncher
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dmtl-bin
 	conflicts = dmtl
 	options = !strip
 	options = !debug
-	source = https://github.com/69-Lukash/DMTLauncher/releases/download/v1.2.2/DMTL-Linux.tar.gz
-	sha256sums = 55a4e2c5b4fccc5420cfa59bb6f9681be2e4892cb03f343728104afe7cae92fb
+	source = https://github.com/69-Lukash/DMTLauncher/releases/download/v1.2.3/DMTL-Linux.tar.gz
+	sha256sums = 48004a6f15f88bd05e477611286dccd8f533177a19d8023882920204a1dbebc7
 
 pkgname = dmtl-bin
