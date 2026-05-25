@@ -8,3 +8,5 @@
 !mautrix-signal.service
 !mautrix-signal.sysusers
 !mautrix-signal.tmpfiles
+
+!.gitignore
