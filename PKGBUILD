@@ -4,7 +4,7 @@
 _mayaver=2027
 
 pkgname=maya-lookdevx
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Artist-friendly look-development system with graph shading objects and USD materials'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=("maya>=${_mayaver}" 'maya<2028' 'maya-usd')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please unbundle the rpm from the Maya download')
 source=("manual://LookdevX-${pkgver}-${_mayaver}.el8.x86_64.rpm")
-b2sums=('f599d7194e8a23031221d2e224951f23a56e08ea4e7539c92dd720e1aab0d63eb3c0efc4655a695a0a54a2ba311183dc23cdb088f0888e4f5aa9a81dcaa2872f')
+b2sums=('fcb4902b812a5b68f30315e30a8de1f470ec0f43dd000b1d525b1bfdd1764420a8c110ebf1d780987f6aaf93cbd2fc43f996566f8e4a5a869d2dc4f1f550a4e3')
 
 options=(!strip)
 
