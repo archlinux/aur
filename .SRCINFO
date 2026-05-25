@@ -1,23 +1,26 @@
 pkgbase = padctl-git
 	pkgdesc = HID gamepad daemon — declarative TOML device config, uinput output
-	pkgver = r0.unknown
+	pkgver = r627.gb8ec129
 	pkgrel = 1
 	url = https://github.com/BANANASJIM/padctl
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-2.1-or-later
-	makedepends = zig>=0.15
 	makedepends = git
 	depends = libusb
-	depends = systemd-libs
+	depends = systemd
 	depends = gcc-libs
 	depends = glibc
 	provides = padctl
 	conflicts = padctl
 	conflicts = padctl-bin
 	source = git+https://github.com/BANANASJIM/padctl.git
-	source = zig-toml::https://github.com/sam701/zig-toml/archive/refs/heads/main.tar.gz
+	source = zig-toml::https://github.com/sam701/zig-toml/archive/24e0deeceaad1b7f1b12027ebae1c65ff1d86e33.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
+	source_x86_64 = zig-0.15.2-x86_64-linux.tar.xz::https://ziglang.org/download/0.15.2/zig-x86_64-linux-0.15.2.tar.xz
+	sha256sums_x86_64 = 02aa270f183da276e5b5920b1dac44a63f1a49e55050ebde3aecc9eb82f93239
+	source_aarch64 = zig-0.15.2-aarch64-linux.tar.xz::https://ziglang.org/download/0.15.2/zig-aarch64-linux-0.15.2.tar.xz
+	sha256sums_aarch64 = 958ed7d1e00d0ea76590d27666efbf7a932281b3d7ba0c6b01b0ff26498f667f
 
 pkgname = padctl-git
