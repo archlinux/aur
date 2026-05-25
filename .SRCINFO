@@ -1,6 +1,6 @@
 pkgbase = devforge
 	pkgdesc = Tmux + kanban + git web cockpit (F.O.R.G.E.) — single-binary devforge
-	pkgver = 0.1.23
+	pkgver = 0.1.31
 	pkgrel = 1
 	url = https://github.com/darkClaw921/F.O.R.G.E.
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = devforge
 	optdepends = bat: preview для television
 	optdepends = ripgrep: helper для television (channel content)
 	options = !lto
-	source = devforge-0.1.23.tar.gz::https://github.com/darkClaw921/F.O.R.G.E./archive/refs/tags/v0.1.23.tar.gz
-	sha256sums = 1bc6f2de7b6be7df43e7715339b59bffdecea52342b6596387993a25756a080a
+	source = devforge-0.1.31.tar.gz::https://github.com/darkClaw921/F.O.R.G.E./archive/refs/tags/v0.1.31.tar.gz
+	sha256sums = 8ee151cf7c2aa9513d0f0de9767eacb76c6f75320bf701a1974868552954224b
 
 pkgname = devforge
