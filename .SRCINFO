@@ -1,7 +1,7 @@
 pkgbase = llamatray-git
 	pkgdesc = PyQt6 based Llama.cpp Tray Manager for Linux
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/DolbyDAX2/LlamaTray
 	arch = any
 	license = MIT
