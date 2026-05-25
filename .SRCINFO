@@ -1,6 +1,6 @@
 pkgbase = badapple
 	pkgdesc = Bad Apple!! ASCII art player for the terminal
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/IRRatium/badapple-aur
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = badapple
 	depends = bash
 	depends = mpv
 	depends = python
-	source = badapple-1.1.0.tar.gz::https://github.com/IRRatium/badapple-aur/archive/refs/tags/v1.1.0.tar.gz
+	source = badapple-1.1.1.tar.gz::https://github.com/IRRatium/badapple-aur/archive/refs/tags/v1.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = badapple

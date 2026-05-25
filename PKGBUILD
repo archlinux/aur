@@ -1,6 +1,6 @@
 # Maintainer: IRRatium <https://github.com/IRRatium>
 pkgname=badapple
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Bad Apple!! ASCII art player for the terminal"
 arch=('any')
