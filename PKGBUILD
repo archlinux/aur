@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 hatt hotmail.com>
 pkgname=borgwarehouse
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="WebUI for a BorgBackup central repository server"
 arch=("x86_64")
@@ -29,14 +29,16 @@ backup=(
   "etc/webapps/${pkgname}/config/users.json"
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${pkgname}.service"
         "${pkgname}-cron.service"
         "${pkgname}-cron.timer"
+        "${pkgname}.service"
+	"${pkgname}.tmpfiles"
         "fix-env-nodocker.patch")
-sha256sums=('7717c8f5a20b7c1497c66731875f4605f25bccdae12e89e22016f67512becab2'
-            '80f802b4068d2a4ca35c4def9952d6289233a0a7d145d8228ec52804e26884cd'
+sha256sums=('884290b001acd86ab37b8bf5dbc1b08f391e27dca4c7444f92b3d4d300c7bbd2'
             'ce1a55c203eef3c65f186efc3ffa2bcf416de67e5586cf542edf199b8a9ec47a'
             '15bc6db13bfa17402ee07bb2f91711a0d84d298b3fbd3f48722345d4c19bb917'
+            '80f802b4068d2a4ca35c4def9952d6289233a0a7d145d8228ec52804e26884cd'
+            '4baf4a805e37db88b95506cdbdb59e97a0c4e7b59205917a2e8eb77c804bdc3d'
             'ab3e40452498b965180109b560d352646c6dcc048675b5fd2b371f6632f6a827')
 
 prepare() {
@@ -74,13 +76,18 @@ package() {
   install -dm 755 "${pkgdir}/etc/webapps/$pkgname"
   mv "${pkgdir}/usr/share/webapps/${pkgname}/.env.sample" "${pkgdir}/etc/webapps/${pkgname}/${pkgname}.env"
   ln -s "/etc/webapps/${pkgname}/${pkgname}.env" "${pkgdir}/usr/share/webapps/${pkgname}/.env"
+
+  echo "Packaging config files"
   mv "${pkgdir}/usr/share/webapps/${pkgname}/config" "${pkgdir}/etc/webapps/${pkgname}/"
   ln -s "/etc/webapps/${pkgname}/config" "${pkgdir}/usr/share/webapps/${pkgname}/config"
   touch "${pkgdir}/etc/webapps/${pkgname}/config/repo.json"
   touch "${pkgdir}/etc/webapps/${pkgname}/config/users.json"
-  install -Dm644 "${srcdir}/${pkgname}.service" "$pkgdir/usr/lib/systemd/system/${pkgname}.service"
-  install -Dm644 "${srcdir}/${pkgname}-cron.service" "$pkgdir/usr/lib/systemd/system/${pkgname}-cron.service"
-  install -Dm644 "${srcdir}/${pkgname}-cron.timer" "$pkgdir/usr/lib/systemd/system/${pkgname}-cron.timer"
+
+  echo "Packaging service and tmp- files"
+  install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 "${srcdir}/${pkgname}-cron.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}-cron.service"
+  install -Dm644 "${srcdir}/${pkgname}-cron.timer" "${pkgdir}/usr/lib/systemd/system/${pkgname}-cron.timer"
+  install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
   echo "Removing references to pkgdir"
   fd --no-ignore --hidden --type f 'package.json' "$pkgdir" -x sed -i "/_where/d"
