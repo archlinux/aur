@@ -2,11 +2,11 @@
 # Co-Maintainer: Robert Zhou <meep (dot) aur (at) meepzh (dot) com>
 
 _mayasver=2027
-_mayaver=2027
+_mayaver=2027.1
 
 pkgname=maya-usd-bin
-pkgver=0.35.0
-pkgrel=2
+pkgver=0.36.0
+pkgrel=1
 pkgdesc='Autodesk Maya Universal Scene Description Plugin'
 arch=('x86_64')
 url='https://github.com/Autodesk/maya-usd'
@@ -17,7 +17,7 @@ conflicts=('maya-usd')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("https://github.com/Autodesk/maya-usd/releases/download/v${pkgver}/MayaUSD_${pkgver}_Maya${_mayaver}_Linux.run")
-b2sums=('ed2b91a76e5a993b8ede861acc48e88de5e4a63b4e1147622ba96a3732c1deb40fde6efdc8157c07e03decdca43fa2f0f5f591001945fb04ca029849e9dfcf17')
+b2sums=('fb8ba019e045f728d6238c3fa8e620d869d8559c84d134a2fc9b0a1ea299a10250ba99106ee27392bec0a0a0697f9461b5bb78327246654606686727fa7b0f79')
 
 options=(!strip)
 
