@@ -53,7 +53,7 @@ package() {
 
   install -Dm0644 client-config-gui/tapauth-config.desktop "${pkgdir}/usr/share/applications/tapauth-config.desktop"
   install -Dm0644 client-config-gui/assets/tapauth-config.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/tapauth-config.svg"
-  install -Dm0644 client-config-gui/dev.rourunisen.tapauth.policy "${pkgdir}/usr/share/polkit-1/actions/dev.rourunisen.tapauth.policy"
+  install -Dm0644 tapauthd/org.tapauth.config.admin.policy "${pkgdir}/usr/share/polkit-1/actions/org.tapauth.config.admin.policy"
 
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
