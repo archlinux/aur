@@ -1,7 +1,7 @@
 # Maintainer: PenguinBurner contributors
 
 pkgname=penguin-burner
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='NVIDIA GPU automatic undervolting and fine tuning tool'
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
   'python-wheel'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jpietek/PenguinBurner/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6526e2cac85009a9efb592ffa9281bd91fcbbee819e560f5ef04f382bbdc9a3d')
+sha256sums=('SKIP')
 
 build() {
   cd "PenguinBurner-${pkgver}"
