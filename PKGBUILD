@@ -31,13 +31,16 @@ build() {
 }
 
 package() {
-  # 1. Create system binary folder
+  # 1. Create directory for the binary
   install -d "${pkgdir}/usr/bin"
   
-  # 2. Install the compiled single binary executable directly into /usr/bin
-  # The file compiled by dotnet matches the project name exactly: "ServerPickerX"
-  install -Dm755 build/ServerPickerX "${pkgdir}/usr/bin/${pkgname}"
+  # 2. Rename the actual binary (add a 'bin' suffix so it doesn't conflict)
+  install -Dm755 build/ServerPickerX "${pkgdir}/usr/lib/${pkgname}/ServerPickerX"
 
-  # 3. Copy the license file over
+  # 3. Create a wrapper script in /usr/bin that executes from a writable home folder
+  echo -e "#!/bin/bash\ncd ~ && /usr/lib/${pkgname}/ServerPickerX" > "${pkgdir}/usr/bin/${pkgname}"
+  chmod +x "${pkgdir}/usr/bin/${pkgname}"
+
+  # 4. Copy the license
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
