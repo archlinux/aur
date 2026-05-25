@@ -1,4 +1,4 @@
-# Maintainer: Evilleader <evilleader91@gmail.com>
+# Maintainer: ***REMOVED*** <***REMOVED***>
 _pkgname=low_latency_layer
 pkgname=vulkan-low-latency-layer-bin
 pkgver=0.2.0
