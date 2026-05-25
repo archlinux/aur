@@ -1,0 +1,20 @@
+pkgbase = nuance-emu
+	pkgdesc = A Nuon emulator resurrecting the late Riff's original Nuance project
+	pkgver = r363.2162dcb
+	pkgrel = 1
+	url = https://github.com/andkrau/NuanceResurrection
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	makedepends = imagemagick
+	depends = libgl
+	depends = libx11
+	depends = sdl2
+	depends = glibc
+	provides = nuance
+	conflicts = nuance
+	source = git+https://github.com/andkrau/NuanceResurrection.git
+	sha256sums = SKIP
+
+pkgname = nuance-emu
