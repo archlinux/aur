@@ -1,0 +1,21 @@
+pkgbase = kimi-cli-bin
+	pkgdesc = Kimi Code CLI - AI coding agent (precompiled binary)
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://github.com/MoonshotAI/kimi-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = zlib
+	provides = kimi-cli
+	conflicts = kimi-cli
+	options = !strip
+	source = LICENSE-1.44.0::https://raw.githubusercontent.com/MoonshotAI/kimi-cli/1.44.0/LICENSE
+	sha256sums = 58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd
+	source_x86_64 = kimi-cli-bin-1.44.0-x86_64.tar.gz::https://github.com/MoonshotAI/kimi-cli/releases/download/1.44.0/kimi-1.44.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 886407f2632434c91496a342ec6dc3a0f2c4b3fccdb2995505f75133ec21ad44
+	source_aarch64 = kimi-cli-bin-1.44.0-aarch64.tar.gz::https://github.com/MoonshotAI/kimi-cli/releases/download/1.44.0/kimi-1.44.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4ff55fbdf1869ad2bc72b7c47cccc29d49bd0e5ebe97c29fce2c0a2c1c57a569
+
+pkgname = kimi-cli-bin
