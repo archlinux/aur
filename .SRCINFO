@@ -1,6 +1,6 @@
 pkgbase = 4ztexdock-git
 	pkgdesc = Wayland layer-shell taskbar/launcher for KDE Plasma (git)
-	pkgver = 0.1.0.r4.gb0b4b60
+	pkgver = 0.1.0.r5.ge0004c8
 	pkgrel = 1
 	url = https://github.com/furkann-ahmet/4ztexDock
 	install = 4ztexdock.install
@@ -20,7 +20,7 @@ pkgbase = 4ztexdock-git
 	optdepends = spectacle: screenshot shortcut
 	optdepends = kcmshell6: settings shortcuts
 	optdepends = powerprofilesctl: power profile tile (laptops only)
-	provides = 4ztexdock=0.1.0.r4.gb0b4b60
+	provides = 4ztexdock=0.1.0.r5.ge0004c8
 	conflicts = 4ztexdock
 	source = 4ztexdock::git+https://github.com/furkann-ahmet/4ztexDock.git
 	sha256sums = SKIP
