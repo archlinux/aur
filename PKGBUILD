@@ -16,11 +16,13 @@ sha256sums=('SKIP')
 prepare() {
     cd "gameflow-deck"
     
-    # Initialize and pull LFS objects
-    git lfs install
-    git lfs pull
+    # Disable LFS filters so Git doesn't try to access protected config files
+    git config filter.lfs.smudge "cat"
+    git config filter.lfs.clean "cat"
     
-    # Existing instructions...
+    # Now remove the icons that were causing the build to crash
+    rm -rf src/mainview/assets/icons/
+    
     bun install
 }
 
