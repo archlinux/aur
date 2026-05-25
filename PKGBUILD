@@ -3,7 +3,7 @@
 
 pkgname=trojita-qt5-git
 pkgver=0.7.r796.gc10f2990
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast QT IMAP e-mail client (Qt5 version with webkit viewer)"
 arch=(i686 x86_64)
 url="http://trojita.flaska.net"
@@ -18,7 +18,7 @@ _commithash='c10f299'
 source=("git+https://invent.kde.org/pim/trojita.git#commit=${_commithash}"
         'trojita-qgpgme5.patch')
 md5sums=('SKIP'
-         '18c5e0061400e3180969b7edf2128a6e')
+         '8c45c3124cf8bdb627388b1356c5fcbd')
 
 pkgver() {
   cd "$srcdir/trojita"
