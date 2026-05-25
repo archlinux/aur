@@ -27,7 +27,7 @@ optdepends=(
   "xtb"
 )
 checkdepends=("python-msgpack" "python-pytest")
-source=("https://github.com/MolSSI/${_name}/archive/v${pkgver}.tar.gz")
+source=("${_name}-v${pkgver}.tar.gz::https://github.com/MolSSI/${_name}/archive/v${pkgver}.tar.gz")
 sha256sums=('7d9317355294b2118b9e959e57394eb3f2205db004d9ebe7441cd5026a7fc6c4')
 
 build() {
