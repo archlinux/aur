@@ -1,6 +1,6 @@
 pkgbase = verovio
 	pkgdesc = A music notation engraving library
-	pkgver = 6.1.1
+	pkgver = 6.2.1
 	pkgrel = 1
 	url = https://www.verovio.org
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = verovio
 	makedepends = swig
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/rism-digital/verovio/archive/version-6.1.1/verovio-6.1.1.tar.gz
+	source = https://github.com/rism-digital/verovio/archive/version-6.2.1/verovio-6.2.1.tar.gz
 	source = no-assert.patch
 	source = resource-path.patch
-	sha256sums = 4ac970d31d984f397d40cd8ed35ff1731b694594d93e323f98584135df256560
+	sha256sums = fa0ccdad12f2d56b7e76537ad7af5355a9e6861c17f793e028741b1e2800bbb0
 	sha256sums = d7f93d7f995541ebd94cae6a972bf13db92d43680aa56018ebe7270400f52677
 	sha256sums = 9e753f91b2da85dc7fb6e1fe36d8d3de85957ed91d331a1e4b65af121415b50f
 

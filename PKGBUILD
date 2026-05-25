@@ -2,7 +2,7 @@
 
 pkgname=('verovio' 'python-verovio')
 pkgbase=verovio
-pkgver=6.1.1
+pkgver=6.2.1
 pkgrel=1
 pkgdesc="A music notation engraving library"
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=('cmake' 'python-build' 'python-installer' 'python-setuptools' 'pyth
 source=("https://github.com/rism-digital/verovio/archive/version-$pkgver/$pkgname-$pkgver.tar.gz"
   no-assert.patch
   resource-path.patch)
-sha256sums=('4ac970d31d984f397d40cd8ed35ff1731b694594d93e323f98584135df256560'
+sha256sums=('fa0ccdad12f2d56b7e76537ad7af5355a9e6861c17f793e028741b1e2800bbb0'
             'd7f93d7f995541ebd94cae6a972bf13db92d43680aa56018ebe7270400f52677'
             '9e753f91b2da85dc7fb6e1fe36d8d3de85957ed91d331a1e4b65af121415b50f')
 
