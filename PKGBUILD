@@ -5,12 +5,12 @@
 # Contributor: Roman Perepelitsa <roman.perepelitsa@gmail.com>
 pkgname=zsh-theme-powerlevel10k
 # Whenever pkgver is updated, _libgit2ver below must also be updated.
-pkgver=1.20.15  ## see P9K_VERSION in internal/p10k.zsh
+pkgver=1.24.16
 _libgit2ver="tag-2ecf33948a4df9ef45a66c68b8ef24a5e60eaac6"
 pkgrel=1
-pkgdesc="Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience."
+pkgdesc="The fastest & most customizable Zsh theme"
 arch=('x86_64' 'aarch64')
-url='https://github.com/romkatv/powerlevel10k'
+url="https://github.com/quantumnic/powerlevel10k"
 license=('MIT')
 makedepends=(
   'git'
@@ -29,18 +29,14 @@ optdepends=(
   'ttf-font-nerd: full choice of style options'
 )
 replaces=('zsh-theme-powerlevel9k')
-_commit=36f3045d69d1ba402db09d09eb12b42eebe0fa3b
 
 # _libgit2ver depends on pkgver. They must be updated together. See libgit2_version in:
-# https://raw.githubusercontent.com/romkatv/powerlevel10k/v${pkgver}/gitstatus/build.info
+# https://raw.githubusercontent.com/quantumnic/powerlevel10k/v${pkgver}/gitstatus/build.info
 source=(
-  "git+https://github.com/romkatv/powerlevel10k.git#commit=${_commit}"
-#  "powerlevel10k-${pkgver}.tar.gz::https://github.com/romkatv/powerlevel10k/archive/v${pkgver}.tar.gz"
-#  "https://github.com/romkatv/powerlevel10k/releases/download/v$pkgver/powerlevel10k-$pkgver.tar.gz.asc"
+  "git+https://github.com/quantumnic/powerlevel10k.git#tag=v$pkgver"
   "libgit2-${_libgit2ver}.tar.gz::https://github.com/romkatv/libgit2/archive/${_libgit2ver}.tar.gz")
-sha256sums=('e53c80c488f42e708f46512ccbb511e4ce21df01b892b5558345a5ce20c81bb0'
+sha256sums=('fe73162566bd0ee2983c2bbeb8510f1779a41f97147a731c38ea4d4459ac7f43'
             '4ce11d71ee576dbbc410b9fa33a9642809cc1fa687b315f7c23eeb825b251e93')
-#validpgpkeys=('8B060F8B9EB395614A669F2A90ACE942EB90C3DD') # Roman Perepelitsa <roman.perepelitsa@gmail.com>
 
 build() {
   cd "libgit2-${_libgit2ver}"
@@ -78,19 +74,21 @@ package() {
   ln -s "/usr/share/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # delete unnecessary files. See also: https://bugs.archlinux.org/task/66737
-  rm -rf "${pkgdir}/usr/share/${pkgname}/gitstatus/obj"
-  rm -rf "${pkgdir}/usr/share/${pkgname}/gitstatus/.gitignore"
-  rm -rf "${pkgdir}/usr/share/${pkgname}/gitstatus/.gitattributes"
-  rm -rf "${pkgdir}/usr/share/${pkgname}/gitstatus/src"
-  rm -rf "${pkgdir}/usr/share/${pkgname}/gitstatus/build"
-  rm -rf "${pkgdir}/usr/share/${pkgname}/gitstatus/deps"
-  rm -rf "${pkgdir}/usr/share/${pkgname}/gitstatus/Makefile"
-  rm -rf "${pkgdir}/usr/share/${pkgname}/gitstatus/mbuild"
+  rm -r "${pkgdir}/usr/share/${pkgname}/.git"
+  rm -r "${pkgdir}/usr/share/${pkgname}/gitstatus/deps/"
+  rm -r "${pkgdir}/usr/share/${pkgname}/gitstatus/obj"
+  rm -r "${pkgdir}/usr/share/${pkgname}/gitstatus/src/"
+  rm -r "${pkgdir}/usr/share/${pkgname}/gitstatus/.vscode/"
   rm "${pkgdir}/usr/share/${pkgname}/.gitattributes"
   rm "${pkgdir}/usr/share/${pkgname}/.gitignore"
-  rm -rf "${pkgdir}/usr/share/${pkgname}/gitstatus/usrbin/.gitkeep"
+  rm "${pkgdir}/usr/share/${pkgname}/Makefile"
+  rm "${pkgdir}/usr/share/${pkgname}/gitstatus/build"
+  rm "${pkgdir}/usr/share/${pkgname}/gitstatus/Makefile"
+  rm "${pkgdir}/usr/share/${pkgname}/gitstatus/mbuild"
   rm "${pkgdir}/usr/share/${pkgname}/gitstatus/.clang-format"
-  rm -rf "${pkgdir}/usr/share/${pkgname}/gitstatus/.vscode/"
+  rm "${pkgdir}/usr/share/${pkgname}/gitstatus/.gitignore"
+  rm "${pkgdir}/usr/share/${pkgname}/gitstatus/.gitattributes"
+  rm "${pkgdir}/usr/share/${pkgname}/gitstatus/usrbin/.gitkeep"
 
   cd "${pkgdir}/usr/share/${pkgname}"
   for file in *.zsh-theme internal/*.zsh gitstatus/*.zsh gitstatus/install; do
