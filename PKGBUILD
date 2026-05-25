@@ -1,7 +1,7 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: SoftwareSocialist <nils@reichardt.de>
 pkgname=linux-ryzen-undervolt-git
 _pkgname=ruv-gui
-pkgver=0.0.0.r197.1a529d1
+pkgver=0.0.0.r198.168092b
 pkgrel=1
 pkgdesc="Ryzen CPU undervolting tool (GUI and CLi) using the Ryzen SMU driver"
 arch=('x86_64')
