@@ -1,0 +1,17 @@
+pkgbase = streamdeck-controller
+	pkgdesc = Elgato Stream Deck GUI-Konfigurator und Controller
+	pkgver = r1.811b68d
+	pkgrel = 1
+	url = https://github.com/ricwoh/streamdeck-controller
+	install = streamdeck-controller.install
+	arch = x86_64
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = hidapi
+	depends = python-pillow
+	depends = python-pyside6
+	source = git+https://github.com/ricwoh/streamdeck-controller.git
+	sha256sums = SKIP
+
+pkgname = streamdeck-controller

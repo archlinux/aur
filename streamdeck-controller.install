@@ -1,0 +1,13 @@
+post_install() {
+    udevadm control --reload-rules
+    udevadm trigger
+    echo ""
+    echo "  Stream Deck wurde installiert!"
+    echo "  Starten: Windows-Taste → 'Stream Deck' suchen"
+    echo "  Tipp: Stream Deck USB kurz trennen und wieder einstecken."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
