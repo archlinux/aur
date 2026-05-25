@@ -21,6 +21,6 @@ pkgbase = whph-bin
 	provides = whph
 	conflicts = whph
 	source = https://github.com/ahmet-cetinkaya/whph/releases/download/v0.22.3/whph-v0.22.3-linux.tar.gz
-	sha256sums = b531ee6710a8a2e3ebcf7c7269afd5c2ec28db6ab888a3098b7f5ee41dda5ea0
+	sha256sums = 392cc68a7d16239716f960713f339fec847f3513b5b5bdf23bb5603871331a8d
 
 pkgname = whph-bin
