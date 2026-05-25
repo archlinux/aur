@@ -5,7 +5,7 @@
 # - Keep release asset naming aligned with .github/workflows/release.yml.
 
 pkgname=pidnest-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Clean Linux process tree viewer by user or UID"
 arch=('x86_64' 'aarch64')

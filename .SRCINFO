@@ -1,6 +1,6 @@
 pkgbase = pidnest-bin
 	pkgdesc = Clean Linux process tree viewer by user or UID
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/oxyzenQ/pidnest
 	arch = x86_64
