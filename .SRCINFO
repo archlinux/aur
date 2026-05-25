@@ -1,0 +1,19 @@
+pkgbase = prismlauncher-ecoson-themes
+	pkgdesc = Ecoson dark theme collection and icon pack for Prism Launcher
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/PrinceAkaid/Ecoson-Themes
+	install = ecoson.install
+	arch = any
+	license = MIT
+	optdepends = prismlauncher: the launcher these themes are for
+	noextract = prismlauncher-ecoson-themes-1.0-themes.zip
+	noextract = prismlauncher-ecoson-themes-1.0-icons.zip
+	source = prismlauncher-ecoson-themes-1.0-themes.zip::https://github.com/PrinceAkaid/Ecoson-Themes/releases/download/1.0/Ecoson-Theme_Pack.zip
+	source = prismlauncher-ecoson-themes-1.0-icons.zip::https://github.com/PrinceAkaid/Ecoson-Themes/releases/download/1.0/Ecoson-Icon_Pack.zip
+	source = LICENSE-1.0::https://github.com/PrinceAkaid/Ecoson-Themes/raw/refs/tags/1.0/LICENSE
+	sha256sums = bf7a4b8b58f5c2d6c76e3d48c4360a58d0c3c78a395d0da787b2c552476ce3e3
+	sha256sums = 6f56bd9862501abab133833cd8c4e6c35ea93f6f72e7d8618b57a92763be5368
+	sha256sums = 2161bb8df64b8640e39188bce63c45b9a1948090d60227376c4c2a6707470ac4
+
+pkgname = prismlauncher-ecoson-themes

@@ -1,0 +1,10 @@
+post_install() {
+    echo ">> To activate, symlink into your Prism Launcher data dir:"
+    echo ">>   ln -s /usr/share/prismlauncher/themes/Ecoson\ * ~/.local/share/PrismLauncher/themes/"
+    echo ">>   ln -s /usr/share/prismlauncher/iconthemes/Ecoson ~/.local/share/PrismLauncher/iconthemes/"
+    echo ">> Then select the theme in Settings → Launcher → User Interface."
+}
+
+post_upgrade() {
+    post_install
+}
