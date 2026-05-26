@@ -1,7 +1,7 @@
-From ab6bcae0b1bfc89608d12bf848a104fb773b1dad Mon Sep 17 00:00:00 2001
+From 6d76981a52a948bea71e3d4873525f6d5fe292b5 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Fri, 16 Jan 2026 05:31:18 +0100
-Subject: [PATCH 1/5] build: work around sccache, do not read
+Subject: [PATCH 1/4] build: work around sccache, do not read
  `$SOURCE_DATE_EPOCH`
 
 ---
@@ -12,7 +12,7 @@ Subject: [PATCH 1/5] build: work around sccache, do not read
  4 files changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/build.rs b/build.rs
-index ebeefed0..60c9df81 100644
+index 4cdd62b4..bcc6ed08 100644
 --- a/build.rs
 +++ b/build.rs
 @@ -81,6 +81,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -24,11 +24,11 @@ index ebeefed0..60c9df81 100644
      println!("cargo::rustc-env=GIT_HEAD={hash}");
  
 diff --git a/crates/radicle-cli/src/main.rs b/crates/radicle-cli/src/main.rs
-index 3aa59e47..2e56b702 100644
+index 29bd54aa..fef48fb1 100644
 --- a/crates/radicle-cli/src/main.rs
 +++ b/crates/radicle-cli/src/main.rs
 @@ -30,7 +30,7 @@ Do you have feedback?
-  - Mail <\x1b]8;;mailto:feedback@radicle.xyz\x1b\\feedback@radicle.xyz\x1b]8;;\x1b\\>
+  - Mail <\x1b]8;;mailto:feedback@radicle.dev\x1b\\feedback@radicle.dev\x1b]8;;\x1b\\>
     (Messages are automatically posted to the public #feedback channel on Zulip.)\
  ";
 -pub const TIMESTAMP: &str = env!("SOURCE_DATE_EPOCH");
@@ -37,10 +37,10 @@ index 3aa59e47..2e56b702 100644
      name: NAME,
      version: RADICLE_VERSION,
 diff --git a/crates/radicle-node/src/lib.rs b/crates/radicle-node/src/lib.rs
-index 88b3a0f2..d2abaf36 100644
+index 53bb3bb1..758c59ea 100644
 --- a/crates/radicle-node/src/lib.rs
 +++ b/crates/radicle-node/src/lib.rs
-@@ -35,7 +35,7 @@ pub const VERSION: Version = Version {
+@@ -33,7 +33,7 @@ pub const VERSION: Version = Version {
      name: env!("CARGO_PKG_NAME"),
      commit: env!("GIT_HEAD"),
      version: env!("RADICLE_VERSION"),
@@ -48,12 +48,12 @@ index 88b3a0f2..d2abaf36 100644
 +    timestamp: env!("RADICLE_TIMESTAMP"),
  };
  
- /// This node's user agent string.
+ pub mod prelude {
 diff --git a/crates/radicle-remote-helper/src/main.rs b/crates/radicle-remote-helper/src/main.rs
-index 525b5255..df5f9853 100644
+index e3c14b21..78123c01 100644
 --- a/crates/radicle-remote-helper/src/main.rs
 +++ b/crates/radicle-remote-helper/src/main.rs
-@@ -39,7 +39,7 @@ pub const VERSION: Version = Version {
+@@ -45,7 +45,7 @@ const VERSION: Version = Version {
      name: env!("CARGO_BIN_NAME"),
      commit: env!("GIT_HEAD"),
      version: env!("RADICLE_VERSION"),
@@ -63,5 +63,5 @@ index 525b5255..df5f9853 100644
  
  fn main() {
 -- 
-2.53.0.8.g57fba0c4633
+2.54.0.8.g54385fd153
 
