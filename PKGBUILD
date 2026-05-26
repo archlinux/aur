@@ -2,7 +2,7 @@
 
 _pkgname=iventoy
 pkgname="${_pkgname}-bin"
-pkgver=1.0.31
+pkgver=1.0.32
 pkgrel=1
 pkgdesc="An enhanced version of the PXE server"
 arch=("x86_64" "aarch64")
@@ -19,8 +19,8 @@ source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/ventoy
 sha256sums=('ef27beecddc5a9650194e8b033ae0b3172f29a9bf352cfff079a61ece86a3263'
             '7d0c73aa37f35ec8b8ab2b32ba415b3efed0e1f1a677f64f64349f102d173562'
             '4f2180dc7afdeebf062bc6cbf8186c652394196cd264608a314a196c4ece809c')
-sha256sums_x86_64=('6fa7cb429cd4ced9050f49f06acc87ba1aaf3348d1f00e898244fdca66f0da46')
-sha256sums_aarch64=('1071626cf56ea2141cb7f473335f6863fc25cccb6a29cede721e7b5d30626f95')
+sha256sums_x86_64=('6ed3ce04309dd0eb331dba28a5ba414ca55a915204ce3ca121161f643a45dc12')
+sha256sums_aarch64=('f63dc588a7289ce37f3235ccc3d11097b8f796a94fdc3d0de037cb50fbc07bc7')
 options=(!strip)
 
 prepare() {
