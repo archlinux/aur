@@ -1,7 +1,7 @@
 pkgbase = muslimtify
 	pkgdesc = An Islamic prayer time notification daemon for Linux
-	pkgver = 0.2.2
-	pkgrel = 3
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/rizukirr/muslimtify
 	install = muslimtify.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = muslimtify
 	makedepends = pkgconf
 	depends = libnotify
 	depends = curl
-	source = muslimtify-0.2.2.tar.gz::https://github.com/rizukirr/muslimtify/archive/v0.2.2.tar.gz
-	sha256sums = 7c01d3f36c0c066b06c8774d1b03f4f8948f7f53618ce3c78a0c9c9858972bba
+	source = muslimtify-0.2.3.tar.gz::https://github.com/rizukirr/muslimtify/archive/v0.2.3.tar.gz
+	sha256sums = 31c32760b2454910cf04402f5ae4aa3c6127dfaab09871cd2d44623be67ceab9
 
 pkgname = muslimtify
