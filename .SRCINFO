@@ -1,6 +1,6 @@
 pkgbase = lilbee-cuda
 	pkgdesc = Local search engine and personal encyclopedia for your notes, code, and PDFs (CUDA build)
-	pkgver = 0.6.66b481
+	pkgver = 0.6.66b483
 	pkgrel = 1
 	url = https://github.com/tobocop2/lilbee
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lilbee-cuda
 	conflicts = lilbee
 	options = !strip
 	options = !debug
-	source = lilbee.service::https://github.com/tobocop2/lilbee/raw/v0.6.66b481/packaging/systemd/lilbee.service
+	source = lilbee.service::https://github.com/tobocop2/lilbee/raw/v0.6.66b483/packaging/systemd/lilbee.service
 	sha256sums = 8987137080f5b5353ca4a5bc82aa56c92c450c158e8558fa48fa8bff2cb1c69d
-	source_x86_64 = lilbee-0.6.66b481-cu125::https://github.com/tobocop2/lilbee/releases/download/v0.6.66b481/lilbee-linux-x86_64-cu125
-	sha256sums_x86_64 = 654cdbe3359884403845009048550d4ea3af870bd03839a1dad93756284a060a
+	source_x86_64 = lilbee-0.6.66b483-cu125::https://github.com/tobocop2/lilbee/releases/download/v0.6.66b483/lilbee-linux-x86_64-cu125
+	sha256sums_x86_64 = 84d21403948fadbb399591ebe79e78754703ea6568137f7a80eaaece68427bad
 
 pkgname = lilbee-cuda
