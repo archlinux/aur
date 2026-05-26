@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!10-7z.patch
+!CVE-2021-45909.patch
+!CVE-2021-45910.patch
+!CVE-2021-45911.patch
+
+!.gitignore
