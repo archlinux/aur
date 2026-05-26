@@ -1,7 +1,7 @@
 # Maintainer: hase9awa <hase9awa@users.noreply.github.com>
 
 pkgname=termtypist
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Keyboard-first terminal typing trainer inspired by Monkeytype'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'gcc-libs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e36cec988775ae85f6b7e7f18862236cb769434ce423ad0deadecc25c3424d90')
+sha256sums=('c3dd80c72664c9a383b1f077452e576aae039143fb520b899abbc4e425c2b569')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
