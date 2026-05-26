@@ -26,7 +26,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r970.7d6a7b9
+pkgver=r1000.a7dc5d1
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor + first-party mshell desktop (mango heritage)"
 url="https://github.com/kenanpelit/margo"
@@ -371,6 +371,15 @@ package() {
   if [[ -f "assets/wallpapers/default.jpg" ]]; then
     install -Dm644 "assets/wallpapers/default.jpg" \
       "$pkgdir/usr/share/margo/wallpapers/default.jpg"
+  fi
+
+  # ── Bundled default desktop wallpaper (margo brand) ────────────
+  # Shown by the shell when no wallpaper directory is configured
+  # yet (and offered as the first tile in the Wallpaper menu);
+  # resolved at runtime from /usr/share/margo/wallpapers/.
+  if [[ -f "assets/wallpapers/margo-hero.png" ]]; then
+    install -Dm644 "assets/wallpapers/margo-hero.png" \
+      "$pkgdir/usr/share/margo/wallpapers/margo-hero.png"
   fi
 
   # ── XDG desktop-portal preferences ─────────────────────────────

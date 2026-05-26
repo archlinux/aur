@@ -1,6 +1,6 @@
 pkgbase = margo-git
 	pkgdesc = Rust/Smithay Wayland tiling compositor + first-party mshell desktop (mango heritage)
-	pkgver = r970.7d6a7b9
+	pkgver = r1000.a7dc5d1
 	pkgrel = 1
 	url = https://github.com/kenanpelit/margo
 	arch = x86_64
