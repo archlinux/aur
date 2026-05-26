@@ -1,7 +1,7 @@
 # Maintainer: Andron <andron@andron-thinkpad>
 # AUR: https://aur.archlinux.org/packages/xmm7360-dkms
 
-pkgname=xmm7360-pci-dkms
+pkgname=xmm7360-dkms-git
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Intel XMM7360 / Fibocom L850 LTE modem driver (DKMS) with RPC init tool"
