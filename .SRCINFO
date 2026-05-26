@@ -1,7 +1,7 @@
 pkgbase = varnish
 	pkgdesc = High-performance HTTP accelerator
 	pkgver = 9.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.varnish-cache.org/
 	install = varnish.install
 	arch = x86_64
