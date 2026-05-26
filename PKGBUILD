@@ -1,8 +1,8 @@
 # Maintainer: Daniel Head <archlinux at danhead dot me>
 
 pkgname=playback-appimage
-pkgver=1.8.0
-pkgrel=3
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="Playback software for Epilogue Operator devices"
 arch=('x86_64')
 url="https://www.epilogue.co"
@@ -26,11 +26,11 @@ _desktop_file="/usr/share/applications/playback.desktop"
 _install_path="/opt/appimages/$_filename"
 
 source=(
-  "$_appimage::https://epilogue.nyc3.digitaloceanspaces.com/releases/software/Playback/version/$pkgver/release/linux/$_filename"
+  "$_appimage::https://releases.epilogue.co/desktop/playback/$pkgver/release/linux/$_filename"
   "playback.sh"
   "60-gb-operator.rules"
 )
-sha512sums=('1216eec1167d9d60beebe87d130eb8caa7a54fca3b9be59bb9e4aa7cbdfa030b29c622ada1a683db32f0033295cbde319a35d9107220cb24520a1e34e44a94eb'
+sha512sums=('7180507f561916fc4596516d211da10eeacb62a8b9947eb0538c70d118f4c267fedef15787ef41eb9c262861a14ea21cd79cf36be894ce1d40009c00301cb945'
             '2ea22a28795914314d73b52fe94d0e7875b54ae3a1240c62f408c33e26f1a06099f273a7af43e439fe6259e7a4270d18f944f5aedfc5295bd1de4f3223ef4dad'
             'af2c3f33e02de571bebaa4ec9097922f78e9c5d27d7c308ae15a3387dfad39029b229e998ef2ad0759bfe40774121b690e6702082cbc544a29a9f10616bc282d')
 
