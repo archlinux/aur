@@ -1,0 +1,28 @@
+pkgbase = fuzzel-ime-git
+	pkgdesc = Fuzzel(a wayland launcher) with Input Method support.
+	pkgver = 1.14.1.r4.g02f7346
+	pkgrel = 2
+	url = https://codeberg.org/dnkl/fuzzel
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	depends = fcft
+	depends = libxkbcommon
+	depends = pixman
+	depends = tllist
+	depends = wayland
+	depends = glibc
+	provides = fuzzel=1.14.1.r4.g02f7346
+	conflicts = fuzzel
+	conflicts = fuzzel-git
+	source = fuzzel::git+https://gitee.com/jxc20120414/fuzzel.git
+	source = ime-support.patch
+	sha256sums = SKIP
+	sha256sums = 2c912de8ccdeac16ae1493b681d01b8937ecfde6b8d3fa66093b8185a7df88d3
+
+pkgname = fuzzel-ime-git
