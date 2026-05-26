@@ -6,9 +6,14 @@ pkgdesc="Anonymous encrypted P2P chat over the Tor network"
 arch=('x86_64')
 url="https://github.com/berk-kucuk/Haze"
 license=('GPL-3.0-only')
+makedepends=(
+    'python-setuptools'
+    'python-wheel'
+)
 depends=(
     'python>=3.11'
     'tor'
+    'portaudio'
 )
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/Haze/archive/refs/tags/v$pkgver.tar.gz")

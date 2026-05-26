@@ -5,8 +5,11 @@ pkgbase = haze
 	url = https://github.com/berk-kucuk/Haze
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python>=3.11
 	depends = tor
+	depends = portaudio
 	options = !strip
 	source = haze-2.0.0.tar.gz::https://github.com/berk-kucuk/Haze/archive/refs/tags/v2.0.0.tar.gz
 	sha256sums = 54c09683a0abb8737c01aec06bb0b6ba1784ae49683cb7ff8fb45afb10bd3339
