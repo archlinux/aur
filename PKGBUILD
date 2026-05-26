@@ -1,7 +1,7 @@
 # Maintainer: Needed!
 
 pkgname=samrewritten-git
-pkgver=1.2.0.r0.g95cda4f
+pkgver=1.3.5.r2.gc5dfcaa
 pkgrel=1
 pkgdesc="Unlock achievements and stats on Steam, and more!"
 url="https://github.com/PaulCombal/SamRewritten"
@@ -12,6 +12,8 @@ depends=('gtk4')
 optdepends=('libadwaita: for Adwaita styling')
 source=("git+https://github.com/PaulCombal/SamRewritten.git")
 sha256sums=('SKIP')
+provides=('samrewritten')
+conflicts=('samrewritten')
 
 prepare() {
   cd "${srcdir}/SamRewritten"
