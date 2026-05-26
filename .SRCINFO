@@ -1,6 +1,6 @@
 pkgbase = pupu-bin
 	pkgdesc = A simple and easy to use UI for the Ollama.(Use system-wide electron)
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/haoxiang-xu/PuPu
 	arch = any
@@ -14,14 +14,14 @@ pkgbase = pupu-bin
 	depends = python-httpx
 	depends = python-werkzeug
 	depends = python-openai
-	provides = pupu=0.1.5
+	provides = pupu=0.1.6
 	conflicts = pupu
 	options = !emptydirs
-	source = pupu-0.1.5.deb::https://github.com/haoxiang-xu/PuPu/releases/download/v0.1.5/PuPu_0.1.5.deb
-	source = LICENSE-0.1.5::https://raw.githubusercontent.com/haoxiang-xu/PuPu/v0.1.5/LICENSE
+	source = pupu-0.1.6.deb::https://github.com/haoxiang-xu/PuPu/releases/download/v0.1.6/PuPu_0.1.6_amd64.deb
+	source = LICENSE-0.1.6::https://raw.githubusercontent.com/haoxiang-xu/PuPu/v0.1.6/LICENSE
 	source = pupu.sh
-	sha256sums = ae106271f67017beafb95dca8accf735db7342c000d2da2786e4738531e16446
+	sha256sums = 2cfa86625a06bdb679dd181d32ac59666f831c3dfbbf87e2fb5ab0286b4e6a7a
 	sha256sums = 2191d05c6ee7c145480916b745bd020484adb61653be943c43cff10bc22927a1
-	sha256sums = 3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = pupu-bin
