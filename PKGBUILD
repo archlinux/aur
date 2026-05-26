@@ -1,6 +1,6 @@
 # Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=ryzenadj-gtk
-pkgver=1.1.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A modern, polished GTK4/Libadwaita graphical wrapper for ryzenadj (AMD power management adjustment tool)."
 arch=('any')
@@ -10,19 +10,21 @@ install=ryzenadj-gtk.install
 depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'ryzenadj')
 optdepends=('ryzen_smu-dkms-git: enhanced hardware monitoring and control')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marleylinux/Ryzenadj-gtk/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('54adacbf793ebbc187a766a0b32e6b93b2b23f0be53b60c34cabffb6e368dc0e')
+sha256sums=(f908d5beef3517c1f5d1acbc609726b5a9750518f5b2547da734763d5c977f36)
 
 package() {
   cd "$srcdir/Ryzenadj-"*
 
   # Install Python files
   install -d "$pkgdir/usr/share/ryzenadj-gtk"
-  install -m644 *.py "$pkgdir/usr/share/ryzenadj-gtk/"
+  install -m644 src/*.py "$pkgdir/usr/share/ryzenadj-gtk/"
   chmod 755 "$pkgdir/usr/share/ryzenadj-gtk/app.py"
 
-  # Install Icon (SVG is scalable, so it goes to hicolor/scalable)
-  install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  install -m644 "ryzenadj-gtk.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.marley.ryzenadj-gtk.svg"
+  # Install Icon (PNG) - 256 and 512 for modern displays
+  for size in 256 512; do
+    install -d "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
+    install -m644 "src/assets/com.marley.ryzenadj-gtk.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/com.marley.ryzenadj-gtk.png"
+  done
 
   # Install Desktop file
   install -Dm644 "com.marley.ryzenadj-gtk.desktop" "$pkgdir/usr/share/applications/com.marley.ryzenadj-gtk.desktop"

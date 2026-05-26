@@ -1,5 +1,5 @@
 pre_remove() {
-    # Disable and stop the systemd service if it is enabled or active
+    # disable service if active
     if systemctl is-enabled ryzenadj-gtk-apply.service >/dev/null 2>&1; then
         echo "  -> Disabling ryzenadj-gtk-apply.service..."
         systemctl disable --now ryzenadj-gtk-apply.service >/dev/null 2>&1 || true
@@ -7,7 +7,9 @@ pre_remove() {
 }
 
 post_remove() {
-    # Clean up residual config if requested, and reload daemon
+    # reload daemon
     echo "  -> Reloading systemd daemon..."
     systemctl daemon-reload >/dev/null 2>&1 || true
+
+    # Note: sudoers drop-in is removed by uninstall.sh (not this hook)
 }
