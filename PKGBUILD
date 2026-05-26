@@ -1,7 +1,7 @@
 # Maintainer: Carlos Prieto <cprieto.ortiz@gmail.com>
 pkgname=murmur-bin
 _pkgname=murmur
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='A native, opinionated IRC client. Subtle by default. IRCv3-ready. (prebuilt binary)'
 arch=('x86_64')
@@ -22,8 +22,8 @@ source_x86_64=(
   "$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/prietus/murmur/releases/download/v$pkgver/murmur-x86_64-unknown-linux-gnu.tar.gz"
   "$_pkgname-$pkgver-extras.tar.gz::https://github.com/prietus/murmur/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums_x86_64=('ffb6a92ce82339eb975f13084a0b34e4a542e6e87f4823462dc536479b835b6b'
-                   '960f457774129c61fccbfd076a86f846206b0673036081ad781a2eed6c7b44bb')
+sha256sums_x86_64=('d22435999efe3e3d0222d524bba03e73eaec988e7007db8312a0982f5be3f659'
+                   '730a5367c35778960abd211f63d4ab92ae39c7a3eb69eb2f2eb03c5a904cce8f')
 
 package() {
   install -Dm755 "$srcdir/murmur" "$pkgdir/usr/bin/$_pkgname"
