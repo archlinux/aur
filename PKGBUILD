@@ -4,12 +4,12 @@
 
 pkgname=arduino-ide-bin
 pkgver=2.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino prototyping platform IDE, rewrite based on the Theia IDE framework."
 arch=(x86_64)
 url="https://github.com/arduino/arduino-ide"
 license=(AGPL3)
-depends=(libxkbfile libxss nss libsecret git)
+depends=(bash gcc-libs glib2 glibc libsecret libx11 libxkbfile python ripgrep libxkbfile libxss nss libsecret git)
 optdepends=('libusb: Needed for some libraries or boards'
             'usbutils: Needed for stm32 boards using st-link'
             'libusb-compat: Needed for the `micronucleus` cli utility'
