@@ -1,4 +1,5 @@
-# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
+# Maintainer: Piotr Zarycki <piotr.zarycki@gmail.com>
+# Contributor: Evangelos Foutras <foutrelis@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Aurelien Foret <orelien@chez.com>
 
@@ -9,7 +10,7 @@ pkgdesc="A date and time display plugin for the Xfce panel"
 arch=('x86_64')
 license=('GPL2')
 url="https://docs.xfce.org/panel-plugins/xfce4-datetime-plugin"
-depends=('xfce4-panel')
+depends=('xfce4-panel' 'zlib')
 makedepends=('intltool')
 install=$pkgname.install
 source=(https://archive.xfce.org/src/panel-plugins/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2)
