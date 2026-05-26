@@ -1,7 +1,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=angie-bin
-pkgver=Angie-1.11.5 # datasource=github-releases depName=webserver-llc/angie
+pkgver=Angie-1.11.6 # datasource=github-releases depName=webserver-llc/angie
 pkgver=${pkgver#Angie-}
 _pkgver="${pkgver}-1"
 pkgrel=1
@@ -88,8 +88,8 @@ for package in "${_packages[@]}"; do
 	)
 done
 
-sha256sums_x86_64=('49bec32f0712d4e9181150f86eaf642c3147d1a9cfda6713f7a56796d3c71f06')
-sha256sums_aarch64=('eed1aa8bea0939480e2a495a022c5bc3d4c4d0a75ee0a549bb627db53a9fa8aa')
+sha256sums_x86_64=('0ba187f507f2fa08fd24b6043bd04dcbf1b0c0d3cdcb1dfbef60423e7378cc02')
+sha256sums_aarch64=('d52e4ba4f527ec7564f8cde4152e14e5ad58365cbba445fbcbcef71bcead6bfc')
 
 package() {
 
