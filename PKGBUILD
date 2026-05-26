@@ -34,6 +34,10 @@ build() {
         | xargs -r sed -i "s|${srcdir}/venv|${_install_dir}/venv|g"
     sed -i "s|${srcdir}/venv|${_install_dir}/venv|g" \
         "${srcdir}/venv/pyvenv.cfg"
+
+    # Remove Python's Unicode easter-egg symlink (𝜋thon); bsdtar cannot
+    # encode its name and emits a warning during packaging.
+    find "${srcdir}/venv/bin/" -name '*𝜋*' -delete
 }
 
 package() {
