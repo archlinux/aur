@@ -1,43 +1,53 @@
-# Maintainer: Kendall G. <kgarner at duck dot com>
-
+# Maintainer: agony <27015 at riseup dot net>
 pkgname=feishin-appimage
-pkgver=0.21.2
-pkgrel=1
-pkgdesc="Sonixd Rewrite"
-arch=('x86_64')
+pkgver=1.11.0
+pkgrel=2
+pkgdesc="A player for your self-hosted music server (AppImage)"
+arch=('x86_64' 'aarch64')
 url="https://github.com/jeffvli/feishin"
-provides=("feishin")
-license=('GPL3')
-depends=('fuse2' 'mpv')
-options=(!strip) # necessary otherwise the AppImage file in the package is truncated
-conflicts=("feishin-bin")
-_filename=Feishin-linux-$CARCH.AppImage
-source=("${url}/releases/download/v${pkgver//_/-}/${_filename}")
-sha256sums=("083608f714cfa54f3d4ab5ef3d9ed09b6734a62b96d75aa30205d95b1b6ca526")
-pkgdesc="A modern self-hosted music player."
-INSTALL_PATH="/opt/${pkgname}/${_filename}"
+license=('GPL-3.0-only')
+depends=('fuse3')
+optdepends=('mpv: alternative audio backend')
+provides=('feishin')
+conflicts=('feishin')
+options=(!strip)
+source=("feishin.desktop")
+source_x86_64=("feishin-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/Feishin-linux-x86_64.AppImage")
+source_aarch64=("feishin-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/Feishin-linux-arm64.AppImage")
+sha256sums=('818f9700176bc3fbb3a00a1e6e41c933114f2a6029c8143a88239c5b9fc5c194')
+sha256sums_x86_64=('843b85887dba1457d5d014bf9294b199e8d764ea3775cd0b1b28b524f6dc0a8a')
+sha256sums_aarch64=('d5fa435fafd11f59647551e850e0cc77e718bf40b0edca56ce921e811a881226')
 
 prepare() {
-  chmod +x $_filename
-  mkdir -p squashfs-root/usr/share/icons/hicolor
-  ./$_filename --appimage-extract "usr/share/icons/hicolor/*/apps/feishin.png" > /dev/null 2>&1
-  ./$_filename --appimage-extract feishin.desktop > /dev/null 2>&1
-}
-
-build() {
-  sed -i -E "s|Exec=AppRun|Exec=${INSTALL_PATH}|" squashfs-root/feishin.desktop
-  # Fix permissions; .AppImage permissions are 700 for all directories
-  chmod -R a-x+rX squashfs-root/usr
+  # The package ships the raw, self-contained AppImage. We only unpack it
+  # here to harvest the icon and license for desktop integration.
+  # --appimage-extract unpacks the squashfs without needing FUSE.
+  chmod +x "feishin-${pkgver}-${CARCH}.AppImage"
+  ./"feishin-${pkgver}-${CARCH}.AppImage" --appimage-extract >/dev/null
 }
 
 package() {
-  # install icons
-  install -dm755 "${pkgdir}/usr/share/icons"
-  cp -dpr --no-preserve=ownership "squashfs-root/usr/share/icons" "${pkgdir}/usr/share"
-  chmod -R 755 "${pkgdir}/usr/share/icons"
-  find "${pkgdir}/usr/share/icons" -type f -name "feishin.png" -exec chmod 644 {} \;
+  # Ship the raw AppImage. The type2-runtime mounts its squashfs via
+  # fusermount3 (fuse3) at launch and runs the bundled Electron app, which
+  # carries its own libraries — hence the single fuse3 runtime dependency.
+  install -Dm755 "feishin-${pkgver}-${CARCH}.AppImage" \
+    "$pkgdir/opt/$pkgname/feishin.AppImage"
 
-  # install .desktop file and image file
-  install -Dm644 "squashfs-root/feishin.desktop" "${pkgdir}/usr/share/applications/feishin.desktop"
-  install -Dm755 "${_filename}" "${pkgdir}${INSTALL_PATH}"
+  # /usr/bin/feishin -> the AppImage. A plain symlink (no wrapper, no flags):
+  # the app uses the unprivileged user-namespace sandbox, identical to the
+  # feishin-bin package — the AppImage mount is nosuid so a SUID sandbox is
+  # impossible there anyway.
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s "/opt/$pkgname/feishin.AppImage" "$pkgdir/usr/bin/feishin"
+
+  # Desktop entry (identical to feishin-bin for consistent integration)
+  install -Dm644 feishin.desktop "$pkgdir/usr/share/applications/feishin.desktop"
+
+  # Icon, harvested from the AppImage, installed to match feishin-bin
+  install -Dm644 squashfs-root/usr/share/icons/hicolor/512x512/apps/feishin.png \
+    "$pkgdir/usr/share/pixmaps/org.jeffvli.feishin.png"
+
+  # License (bundled Electron license text)
+  install -Dm644 squashfs-root/LICENSE.electron.txt \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron.txt"
 }
