@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartos-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Barto central job scheduling server (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,9 @@ license=('MIT' 'Apache-2.0')
 provides=('bartos')
 conflicts=('bartos')
 depends=()
-optdepends=('mariadb: local database server')
+optdepends=('mariadb: local database server'
+            'logrotate: periodic cleanup of rotated log files'
+            'xz: xz compression of rotated log files')
 makedepends=()
 
 _base="https://github.com/rustyhorde/barto/releases/download/v${pkgver}"
@@ -18,9 +20,9 @@ _base="https://github.com/rustyhorde/barto/releases/download/v${pkgver}"
 source=("${_base}/dist-bartos.tar.gz")
 source_x86_64=("bartos-x86_64::${_base}/bartos-x86_64-unknown-linux-musl")
 source_aarch64=("bartos-aarch64::${_base}/bartos-aarch64-unknown-linux-musl")
-sha256sums=('45ede71a4ce1e8fa7be35cdf5cf7c343969e555305d27fe045ad351b9df79a88')
-sha256sums_x86_64=('d70c452bcec3dc377877a9d3a9bff4596d068988fcf08c323a3efacc0bc08056')
-sha256sums_aarch64=('2210a8a7ce65a947d4d747ebacf5743ea91c0f7b8ed2d1110b014eb2d04acfeb')
+sha256sums=('c254808ac73e89c32c36aa17d6536d53a271fbc5b73f19b04c5d1a6a02c17926')
+sha256sums_x86_64=('e723270b570266740e02258cec0ca216dd11bdb47fe11dc23b7fbfead5ecf271')
+sha256sums_aarch64=('4ab147a4db019db9c765839911d6fb9532910f2b5697d04c3bfaccde7a2b1117')
 
 package() {
     install -Dm755 "bartos-${CARCH}" "$pkgdir/usr/bin/bartos"
@@ -48,6 +50,10 @@ package() {
     # Systemd service
     install -Dm644 bartos/bartos.service \
         "$pkgdir/usr/lib/systemd/system/bartos.service"
+
+    # Logrotate
+    install -Dm644 bartos/bartos.logrotate \
+        "$pkgdir/etc/logrotate.d/bartos"
 
     # Example config
     install -Dm644 bartos/bartos.toml.example \
