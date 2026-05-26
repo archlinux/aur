@@ -1,8 +1,8 @@
 # Maintainer: Rooki  <aur at rooki dot xyz>
 
 pkgname=thrive-launcher-bin
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Thrive Launcher for installing and automatically updating Thrive."
 arch=(x86_64)
 url="https://revolutionarygamesstudio.com"
@@ -10,8 +10,8 @@ license=(custom MIT)
 depends=(glibc zlib libxi libxinerama libxrender libxcursor libxext libglvnd libxrandr libx11)
 provides=(thrive-launcher)
 conflicts=(thrive-launcher)
-source_x86_64=("https://github.com/Revolutionary-Games/Thrive-Launcher/releases/download/v${pkgver%.0}/ThriveLauncher_${pkgver}_linux_standalone.7z")
-sha256sums_x86_64=('cea449864e82ea35e7abb692da6e3733bdf93f90257f011536b0274addde6850')
+source=("https://github.com/Revolutionary-Games/Thrive-Launcher/releases/download/v${pkgver}/ThriveLauncher_${pkgver}_linux_standalone.7z")
+sha256sums=('b412e9f08f795008071437dd1dd9bba61fec552229c85e35606e5d81de31527e')
 options=(!strip)
 
 prepare() {
@@ -31,5 +31,5 @@ package() {
   install -D -t "${pkgdir}/usr/share/applications" ThriveLauncher.desktop
 
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644  "${pkgdir}/opt/thrivelauncher/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "${pkgdir}/opt/thrivelauncher/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
