@@ -1,13 +1,14 @@
 pkgbase = echoroutine
 	pkgdesc = AI-powered daily routine voice assistant — schedule blocks announced via ElevenLabs TTS
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/kurojs/EchoRoutine
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = opencode
 	depends = libnotify
+	depends = jq
 	depends = systemd
 	source = EchoRoutine::git+https://github.com/kurojs/EchoRoutine.git
 	sha256sums = SKIP
