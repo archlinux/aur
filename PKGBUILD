@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=p3x-redis-ui-bin
 _pkgname=P3X-Redis-UI
-pkgver=2026.4.2012
+pkgver=2026.4.3001
 _electronversion=42
 pkgrel=1
 pkgdesc="A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source=(
 )
 sha256sums=('1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('9ad275517f50e50df75140d1af32810e6f221e786ea757e33168d787f41b4203')
-sha256sums_x86_64=('56513bece39f79c874acb5036666ff5ff49acb9aadca91c7e5cecd4f0195fca4')
+sha256sums_aarch64=('94612dcbb232a0b68fc9bde8c20a5c1ef778794228a87ba11d23ae31370cb399')
+sha256sums_x86_64=('952076c88e2f1b41f1a8a8a1e5f12d18457843c06f6e10ec8e431f921d8ab9ef')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
