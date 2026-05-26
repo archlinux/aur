@@ -1,0 +1,19 @@
+pkgbase = vmod-uuid
+	pkgdesc = Generate UUIDs in Varnish VCL
+	pkgver = 9.0.3
+	pkgrel = 2
+	url = https://github.com/otto-de/libvmod-uuid
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = autoconf-archive
+	makedepends = pkg-config
+	makedepends = python-docutils
+	depends = varnish=9.0.3-2
+	depends = uuid
+	source = libvmod-uuid-ae0ca345b9974092bf139409d2852fc46886c250.tar.gz::https://github.com/otto-de/libvmod-uuid/archive/ae0ca345b9974092bf139409d2852fc46886c250.tar.gz
+	sha512sums = a0fb89af3c2dee5542b4173e3853869e2cdbf4cd473900b338e4701f0b769ede7d05436b754a8c1de6b13dc81cda73361a901ace26174b9c4068a3922f1119c3
+
+pkgname = vmod-uuid
