@@ -1,0 +1,18 @@
+pkgbase = waybar-niri-taskbar-focused-git
+	pkgdesc = Focused-workspace Niri taskbar CFFI module for Waybar
+	pkgver = 0.4.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/jR4dh3y/niri-taskbar
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = waybar
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	provides = waybar-niri-taskbar-focused
+	conflicts = waybar-niri-taskbar-focused
+	source = waybar-niri-taskbar-focused::git+https://github.com/jR4dh3y/niri-taskbar.git
+	sha256sums = SKIP
+
+pkgname = waybar-niri-taskbar-focused-git
