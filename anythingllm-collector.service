@@ -1,0 +1,35 @@
+[Unit]
+Description=AnythingLLM Collector
+Documentation=https://github.com/Mintplex-Labs/anything-llm
+After=network-online.target anythingllm-server.service
+Wants=network-online.target
+BindsTo=anythingllm-server.service
+
+[Service]
+Type=simple
+User=anythingllm
+Group=anythingllm
+WorkingDirectory=/srv/anythingllm/collector
+
+EnvironmentFile=/etc/anythingllm/server.env
+Environment=NODE_ENV=production
+
+ExecStart=/usr/bin/node /srv/anythingllm/collector/index.js
+
+StandardOutput=append:/var/log/anythingllm/collector.log
+StandardError=append:/var/log/anythingllm/collector.log
+
+Restart=on-failure
+RestartSec=10
+StartLimitInterval=2min
+StartLimitBurst=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/anythingllm /var/lib/anythingllm /var/log/anythingllm /etc/anythingllm
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

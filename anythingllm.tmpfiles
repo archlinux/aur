@@ -1,0 +1,5 @@
+# Type  Path                         Mode  User          Group         Age  Argument
+d       /etc/anythingllm             0750  anythingllm   anythingllm   -    -
+d       /var/lib/anythingllm         0750  anythingllm   anythingllm   -    -
+d       /var/lib/anythingllm/storage 0750  anythingllm   anythingllm   -    -
+d       /var/log/anythingllm         0750  anythingllm   anythingllm   -    -

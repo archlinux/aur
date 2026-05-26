@@ -1,0 +1,2 @@
+# Type  Name          ID    GECOS                  Home                    Shell
+u       anythingllm   -     "AnythingLLM service"  /var/lib/anythingllm    /usr/bin/nologin

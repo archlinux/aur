@@ -1,0 +1,84 @@
+post_install() {
+    # Create system user / group via sysusers
+    systemd-sysusers anythingllm.conf 2>/dev/null || true
+
+    # Initialise tmpfiles (directories + permissions)
+    systemd-tmpfiles --create anythingllm.conf 2>/dev/null || true
+
+    # Fix app permissions
+    chown -R anythingllm:anythingllm /srv/anythingllm
+    chmod -R 0750 /srv/anythingllm
+
+    echo ""
+    echo "╔══════════════════════════════════════════════════════════════╗"
+    echo "║              AnythingLLM has been installed                  ║"
+    echo "╚══════════════════════════════════════════════════════════════╝"
+    echo ""
+    echo ">> 1. Review (and optionally pre-configure) the environment file:"
+    echo ">>    /etc/anythingllm/server.env"
+    echo ""
+    echo ">> 2. Enable and start both services (migrations run automatically):"
+    echo ">>    $ systemctl enable --now anythingllm-server anythingllm-collector"
+    echo ""
+    echo ">> 3. Open http://localhost:3001 and complete the setup wizard."
+    echo ""
+    echo ">> Logs:"
+    echo ">>   /var/log/anythingllm/server.log"
+    echo ">>   /var/log/anythingllm/collector.log"
+    echo ""
+}
+
+pre_upgrade() {
+    # Stop services so no files are held open during the upgrade
+    systemctl stop anythingllm-collector.service 2>/dev/null || true
+    systemctl stop anythingllm-server.service    2>/dev/null || true
+
+    # ── Wipe the application directories ─────────────────────────────────────
+    # node_modules trees accumulate stale packages across upgrades because
+    # pacman only adds/replaces tracked files — it never removes files that
+    # were present in the old package but absent from the new one.
+    # Deleting these dirs here guarantees a clean slate before pacman
+    # extracts the freshly-built package contents on top.
+    #
+    # /var/lib/anythingllm (user data) and /etc/anythingllm (config) are
+    # intentionally NOT touched here.
+    rm -rf /srv/anythingllm/server
+    rm -rf /srv/anythingllm/collector
+}
+
+post_upgrade() {
+    # Fix app permissions
+    chown -R anythingllm:anythingllm /srv/anythingllm
+    chmod -R 0750 /srv/anythingllm
+
+    echo ""
+    echo ">> AnythingLLM has been upgraded."
+    echo ""
+    echo ">> Restart the services (migrations run automatically on server start):"
+    echo ">> $ systemctl restart anythingllm-server anythingllm-collector"
+    echo ""
+}
+
+pre_remove() {
+    # Stop and disable services before files are removed
+    systemctl stop  anythingllm-collector.service 2>/dev/null || true
+    systemctl stop  anythingllm-server.service    2>/dev/null || true
+    systemctl disable anythingllm-server.service \
+                      anythingllm-collector.service 2>/dev/null || true
+}
+
+post_remove() {
+    echo ">> Removing service account..."
+    userdel anythingllm
+
+    echo ""
+    echo ">> AnythingLLM has been removed."
+    echo ""
+    echo ">> Your data and configuration have been preserved:"
+    echo ">>   /etc/anythingllm      – environment configuration"
+    echo ">>   /var/lib/anythingllm  – storage, database, vectors"
+    echo ">>   /var/log/anythingllm  – log files"
+    echo ""
+    echo ">> Remove them manually if you no longer need them:"
+    echo ">> $ rm -rf /var/lib/anythingllm /etc/anythingllm /var/log/anythingllm"
+}
