@@ -1,7 +1,7 @@
 pkgname=maybar-git
 _pkgname=maybar
-pkgver=1.11.0.r112.ga0ebf48
-pkgrel=1
+pkgver=1.11.0.r127.g2532698
+pkgrel=2
 pkgdesc="Simplistic and highly configurable status panel for Wayland (fork of yambar)"
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/mathstuf/maybar"
@@ -44,11 +44,9 @@ pkgver() {
 }
 
 build() {
-  export CFLAGS+=" -Wno-error -Wno-error=unused-but-set-variable"
-  export CXXFLAGS+=" -Wno-error -Wno-error=unused-but-set-variable"
-
   arch-meson "$_pkgname" build \
     -Db_lto=true \
+    -Dwerror=false \
     --wrap-mode=nofallback
 
   meson compile -C build

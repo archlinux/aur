@@ -1,7 +1,7 @@
 pkgbase = maybar-git
 	pkgdesc = Simplistic and highly configurable status panel for Wayland (fork of yambar)
-	pkgver = 1.11.0.r112.ga0ebf48
-	pkgrel = 1
+	pkgver = 1.11.0.r127.g2532698
+	pkgrel = 2
 	url = https://codeberg.org/mathstuf/maybar
 	arch = x86_64
 	arch = aarch64
