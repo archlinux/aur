@@ -1,6 +1,6 @@
 pkgbase = python-repomatic
 	pkgdesc = Automate repository maintenance, releases, and CI/CD workflows
-	pkgver = 6.21.0
+	pkgver = 6.22.0
 	pkgrel = 1
 	url = https://kdeldycke.github.io/repomatic/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-repomatic
 	depends = python-click-extra
 	depends = python-typing_extensions
 	depends = python-wcmatch
-	source = python-repomatic-6.21.0.tar.gz::https://github.com/kdeldycke/repomatic/archive/refs/tags/v6.21.0.tar.gz
-	sha512sums = 27e8cbedba3061a38a212254887065ca0de86d9a54e434cb8de4dfc447680426dcf74aecf91a85fbeb768a100b647f67c46cd68dc291d52b73757b869e5f53ba
+	source = python-repomatic-6.22.0.tar.gz::https://github.com/kdeldycke/repomatic/archive/refs/tags/v6.22.0.tar.gz
+	sha512sums = eabfdd1593e440ef34b15115297dabcd0e3e0e6b2d1965ec35f4293963967e2c80577944622c63b5a1e87f17254e25b782b6622cce666babb7afea2335a03fb8
 
 pkgname = python-repomatic
