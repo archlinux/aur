@@ -8,6 +8,7 @@ Type=simple
 ExecStart=/usr/bin/chatlab web --no-open
 Restart=always
 RestartSec=5
+SyslogIdentifier=chatlab-web
 User=%i
 
 [Install]

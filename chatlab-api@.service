@@ -8,6 +8,7 @@ Type=simple
 ExecStart=/usr/bin/chatlab serve
 Restart=always
 RestartSec=5
+SyslogIdentifier=chatlab-api
 User=%i
 
 [Install]
