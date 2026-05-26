@@ -12,6 +12,8 @@ provides=("orca-slicer")
 conflicts=("orca-slicer")
 options=('!strip')
 
+_meta_file=assets_meta.json
+
 _verify_digest() {
   local meta_data="$1"
   local digest
@@ -55,13 +57,13 @@ verify() {
     return 1
   fi
 
-  if [[ -f "assets_meta.json" ]]; then
-    if [[ "${meta_data}" == "$(< assets_meta.json)" ]] && _verify_digest "$meta_data" ; then
+  if [[ -f "$_meta_file" ]]; then
+    if [[ "${meta_data}" == "$(< "$_meta_file")" ]] && _verify_digest "$meta_data" ; then
       msg2 "AppImage metadata has not changed since the last build, skipping download and checksum verification."
       return 0
     fi
   fi
-  rm -f assets_meta.json
+  rm -f "$_meta_file"
 
   # verify the digest before downloading the file to avoid unnecessary downloads if the file has not changed
   _verify_digest "${meta_data}" 2>/dev/null || {
@@ -72,11 +74,11 @@ verify() {
     curl -fL "${appimage_url}" -o "${filename}"
     chmod +x "${filename}"
   }
-  echo "${meta_data}" > assets_meta.json
+  echo "${meta_data}" > "$_meta_file"
 }
 
 prepare() {
-  appimage_url=$(jq --raw-output '.url' ../assets_meta.json)
+  appimage_url=$(jq --raw-output '.url' ../"$_meta_file")
   filename=$(basename "${appimage_url}")
   msg2 "Extracting AppImage..."
   ../"${filename}" --appimage-extract
@@ -86,7 +88,7 @@ prepare() {
 }
 
 pkgver() {
-  jq -r '.date' ../assets_meta.json | sed 's/[-T]/./g; s/://g'
+  jq -r '.date' ../"$_meta_file" | sed 's/[-T]/./g; s/://g'
 }
 
 package() {
