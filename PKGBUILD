@@ -1,6 +1,6 @@
 # Maintainer: vodkanull <vodkanull@proton.me>
 pkgname=nullwc
-pkgver=0.1.0
+pkgver=262526
 pkgrel=1
 pkgdesc="A minimal floating Wayland compositor"
 arch=('x86_64')
