@@ -1,6 +1,6 @@
 pkgbase = ovcs-bin
 	pkgdesc = The client/server of the terminal pager ov
-	pkgver = 0.16.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/noborus/ovcs
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = ovcs-bin
 	provides = ovcs
 	conflicts = ovcs
 	conflicts = ovcs-git
-	source_x86_64 = ovcs-x86_64-0.16.1.zip::https://github.com/noborus/ovcs/releases/download/v0.16.1/ovcs_0.16.1_linux_amd64.zip
-	sha256sums_x86_64 = 81f652b76e538907577d0946640492f24fdd8c2ca5dd66c9ae1101fb301f103b
-	source_aarch64 = ovcs-aarch64-0.16.1.zip::https://github.com/noborus/ovcs/releases/download/v0.16.1/ovcs_0.16.1_linux_arm64.zip
-	sha256sums_aarch64 = 3b7319ca20825f5f8ffc24b45240fa3b65825e8f056d1c786abc336ac148e316
+	source_x86_64 = ovcs-x86_64-0.17.0.zip::https://github.com/noborus/ovcs/releases/download/v0.17.0/ovcs_0.17.0_linux_amd64.zip
+	sha256sums_x86_64 = ae71d1f31edb84b0e991d66dbafd52974e443d8daab89a6a99e4693ba0aacf50
+	source_aarch64 = ovcs-aarch64-0.17.0.zip::https://github.com/noborus/ovcs/releases/download/v0.17.0/ovcs_0.17.0_linux_arm64.zip
+	sha256sums_aarch64 = b8370e86547c6f1bc826f6680f59dbb50cd7ee06c59f054ebff067d23bac4122
 
 pkgname = ovcs-bin
