@@ -1,6 +1,6 @@
 pkgbase = pq-bin
 	pkgdesc = Inspect, query, transform, and view Parquet files from the command line
-	pkgver = 2026.04.12
+	pkgver = 2026.05.26
 	pkgrel = 1
 	url = https://github.com/joewalnes/pq
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = pq-bin
 	license = MIT
 	provides = pq
 	conflicts = pq
-	source = README-2026.04.12.md::https://raw.githubusercontent.com/joewalnes/pq/latest/README.md
-	source = LICENSE-2026.04.12::https://raw.githubusercontent.com/joewalnes/pq/latest/LICENSE
+	source = README-2026.05.26.md::https://raw.githubusercontent.com/joewalnes/pq/latest/README.md
+	source = LICENSE-2026.05.26::https://raw.githubusercontent.com/joewalnes/pq/latest/LICENSE
 	sha256sums = a4de52779f23fe9ccb7ce85efa50853399b0b3bbd9d980791fd5fceac5fa1eab
 	sha256sums = 6e84842560bd74d9730631d2e82dc254a6abd965a99a29535866e2108bd31b9f
-	source_x86_64 = pq-x86_64-2026.04.12::https://github.com/joewalnes/pq/releases/download/latest/pq-linux-amd64
-	sha256sums_x86_64 = a1575a78952e5f2c853f65a7be29701741386f94c401be43c40920f2224c0488
-	source_aarch64 = pq-aarch64-2026.04.12::https://github.com/joewalnes/pq/releases/download/latest/pq-linux-arm64
-	sha256sums_aarch64 = 1880ff4b37c9aedd9b4cf689cfd70027425be0327b4ca2e983162a0662ff9b2a
+	source_x86_64 = pq-x86_64-2026.05.26::https://github.com/joewalnes/pq/releases/download/latest/pq-linux-amd64
+	sha256sums_x86_64 = 1b97f0fbbc28de7b7b3f3bf24b35c5a1590c5d3559a4db072c33b2d0ab1c9e77
+	source_aarch64 = pq-aarch64-2026.05.26::https://github.com/joewalnes/pq/releases/download/latest/pq-linux-arm64
+	sha256sums_aarch64 = efc9bec070ab5ff1b7c9a442db3b65240a16825afe94e2171fbe5ce58e00242d
 
 pkgname = pq-bin

@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Inspect, query, transform, and view Parquet files from the command line"
 
-pkgver=2026.04.12
+pkgver=2026.05.26
 pkgrel=1
 _gitversion=latest
 
@@ -28,10 +28,15 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('a4de52779f23fe9ccb7ce85efa50853399b0b3bbd9d980791fd5fceac5fa1eab'
             '6e84842560bd74d9730631d2e82dc254a6abd965a99a29535866e2108bd31b9f')
-sha256sums_x86_64=('a1575a78952e5f2c853f65a7be29701741386f94c401be43c40920f2224c0488')
-sha256sums_aarch64=('1880ff4b37c9aedd9b4cf689cfd70027425be0327b4ca2e983162a0662ff9b2a')
+sha256sums_x86_64=('1b97f0fbbc28de7b7b3f3bf24b35c5a1590c5d3559a4db072c33b2d0ab1c9e77')
+sha256sums_aarch64=('efc9bec070ab5ff1b7c9a442db3b65240a16825afe94e2171fbe5ce58e00242d')
 
 
+prepare() {
+	cd "${srcdir}/" || exit
+
+	chmod +x "${_appname}-${CARCH}-${pkgver}"
+}
 package() {
 	cd "${srcdir}/" || exit
 
