@@ -5,7 +5,7 @@
 # Note: This PKGBUILD and the chromium PKGBUILD are loosely kept in sync to ease maintenance.
 # As such care should be taken to minimize the differences between these PKGBUILDs.
 pkgname=cef-vaapi
-# pkgver is updated automatically.
+# pkgver is updated automatically by the daily Arch cef sync workflow.
 # To update this package, update the _cef_commit and _chromium_ver variables.
 # For the CEF versioning scheme, see
 # https://chromiumembedded.github.io/cef/branches_and_building#version-number-format
@@ -77,6 +77,7 @@ source=("chromium-$_chromium_ver-lite.tar.xz::https://commondatastorage.googleap
         chromium-147-rust-1.95-bytemuck.patch
         chromium-148-revert-clang-fsanitize-return-flag-1.patch
         chromium-148-revert-clang-fsanitize-return-flag-2.patch
+        chromium-148-system-gn-rust-tool-inputs.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         glibc-2.42-baud-rate-fix.patch
@@ -95,6 +96,7 @@ sha256sums=('694d4e0269e11056c6dff748da7e8354bfbf90da7ce8f7467a0acfe2994a8688'
             'b9e6339221efe03540ffb360c161d93604a1fc93a5a1c53e5e9849066f987d05'
             '2c0d0407ff7d4d607cf4f4b56aef4913df1bcbacb630d85c06a4a125fd0dceab'
             '7836f666b78b85ac4a05cc9403df74c80d17f18a7f2a29d489848c76db919128'
+            '9aad707db57822148d93d12c6c789658577bd4e0abcc9031a605ee99d77693b8'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '1c1898f263eaacbc069a8e1a3e732852350350d1dad4cb1a6bba430e3b796cd0'
@@ -272,6 +274,9 @@ prepare() {
   # Causes a build failure with our clang version
   patch -Np1 -i ../chromium-148-revert-clang-fsanitize-return-flag-1.patch
   patch -Np1 -i ../chromium-148-revert-clang-fsanitize-return-flag-2.patch
+
+  # Arch's system GN rejects non-tool variables inside Rust tool definitions.
+  patch -Np1 -i ../chromium-148-system-gn-rust-tool-inputs.patch
 
   # CEF: Remove sysroot requirement for non-x64 builds
   patch -Np1 -i ../cef-no-sysroot.patch

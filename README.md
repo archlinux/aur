@@ -58,12 +58,12 @@ strings /usr/lib/cef/libcef.so | grep -E 'vaCreateContext|VaapiVideoDecoder::|li
 
 When Arch updates its official `cef` package:
 
-1. `sync-arch-cef.yml` checks Arch packaging and opens/updates a pull request.
-2. The PR runs `scripts/update-from-arch-cef.sh`, which re-fetches Arch packaging and reapplies the `cef-vaapi` delta.
-3. After review and merge to `main`, `aur.yml` publishes the committed source package to AUR as `cef-vaapi`.
-4. The same committed source state triggers `build-vaapi.yml`, which builds on the trusted self-hosted runner, verifies VAAPI symbols in `libcef.so`, creates a GitHub Release, and publishes `cef-vaapi-bin` to AUR.
+1. `sync-arch-cef.yml` checks Arch packaging and runs `scripts/update-from-arch-cef.sh` when a newer version exists.
+2. The sync workflow validates the generated package state, commits it directly to `main`, and dispatches the publish/build workflows.
+3. `aur.yml` publishes the committed source package to AUR as `cef-vaapi`.
+4. `build-vaapi.yml` installs required build dependencies, builds on the trusted self-hosted runner, verifies VAAPI symbols in `libcef.so`, creates a GitHub Release, and publishes `cef-vaapi-bin` to AUR.
 
-Scheduled sync jobs do not publish uncommitted generated package state. The source package in the repository root is the canonical input for both AUR packages.
+Scheduled sync jobs only publish committed generated package state. The source package in the repository root is the canonical input for both AUR packages.
 
 ## AUR package identity
 
