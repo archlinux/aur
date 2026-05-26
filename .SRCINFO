@@ -1,0 +1,14 @@
+pkgbase = rpc-go-bin
+	pkgdesc = Intel AMT management CLI — activate, configure, and query AMT/vPro via /dev/mei0 or network
+	pkgver = 2.50.6
+	pkgrel = 1
+	url = https://github.com/device-management-toolkit/rpc-go
+	arch = x86_64
+	license = Apache-2.0
+	provides = rpc-go
+	conflicts = rpc-go
+	options = !strip
+	source_x86_64 = rpc_linux_x64-2.50.6.tar.gz::https://github.com/device-management-toolkit/rpc-go/releases/download/v2.50.6/rpc_linux_x64.tar.gz
+	sha256sums_x86_64 = 4e59da6a712df12ed4198087751b87218d2187705adfc6b59725eebef03666f9
+
+pkgname = rpc-go-bin
