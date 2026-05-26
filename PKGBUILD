@@ -1,6 +1,5 @@
-# Maintainer: dividebysandwich <josef.jahn@gmail.com>
 pkgname=sparkplayer
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A vibrant terminal music player built with ratatui"
 arch=('x86_64')
@@ -9,7 +8,7 @@ license=('GPL-2.0-only')
 depends=('alsa-lib' 'gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dividebysandwich/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f7b3da7173195fc519c641e278c75a12a844ed59c7eaebf471990e5512b77cde')
+sha256sums=('f51a456032c751c61c6fbbbe71c72a9983ca726cd3ce1d852c4e00ad103198fc')
 
 prepare() {
     cd "$pkgname-$pkgver"
