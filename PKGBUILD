@@ -1,7 +1,7 @@
 # Maintainer: Softer <softer@lin.in.ua>
 pkgname=razer-tray-bin
 _pkgname=razer-tray
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Minimal Linux tray indicator for Razer wireless mouse and keyboard battery level (prebuilt binary)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
 source=("https://github.com/Softer/razer-tray/releases/download/v$pkgver/$_pkgname-$pkgver-$CARCH.tar.gz")
-sha256sums=('a2d3d6e0856ac204fc46bb23441a50e18e6859960540344f3913ffbe0b6df6be')
+sha256sums=('0c220bd7b8318b03f456a711f896d0297ea4beb68ec26016346a5289ed372d61')
 
 package() {
     cd "$_pkgname-$pkgver"
@@ -23,7 +23,7 @@ package() {
     install -Dm644 "$_pkgname.service" \
         "$pkgdir/usr/lib/systemd/user/$_pkgname.service"
     install -Dm644 "$_pkgname.desktop" \
-        "$pkgdir/etc/xdg/autostart/$_pkgname.desktop"
+        "$pkgdir/usr/share/applications/$_pkgname.desktop"
     install -Dm644 "99-$_pkgname.rules" \
         "$pkgdir/usr/lib/udev/rules.d/99-$_pkgname.rules"
     install -Dm755 "$_pkgname-udev-trigger.sh" \
