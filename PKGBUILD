@@ -2,8 +2,8 @@
 
 pkgname=recoverywhiskers
 pkgdesc='Flux-based data recovery tool for floppy disks'
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 url=https://codeberg.org/JennyFluff/RecoveryWhiskers
 license=(AGPL-3.0-or-later)
 arch=(x86_64)
