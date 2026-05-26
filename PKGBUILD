@@ -3,19 +3,19 @@
 _org='coal-library'
 _pkgname='coal'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.0.3
+pkgrel=1
 pkgdesc="Detection Library, previously known as hpp-fcl"
 arch=('i686' 'x86_64')
 url="https://github.com/$_org/$_pkgname"
 license=('BSD-2-Clause')
-depends=('assimp' 'eigen3' 'eigenpy' 'octomap' 'qhull' 'python-numpy' 'boost-libs' 'python' 'glibc' 'gcc-libs')
+depends=('assimp' 'eigen' 'eigenpy' 'octomap' 'qhull' 'python-numpy' 'boost-libs' 'python' 'glibc' 'gcc-libs')
 optdepends=('doxygen')
 makedepends=('cmake' 'boost')
 conflicts=('hpp-fcl')
 replaces=('hpp-fcl')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('899eb343ee7d86ae6312401bc969d1d2cb8103a5a67af5e1f06061a9c5fb0743'
+sha256sums=('d1afcc0c22477a61e93e070a01cc8ed1d256a96ec65d308844d24b9caf771d36'
             'SKIP')
 validpgpkeys=(
         '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'  # https://github.com/nim65s.gpg
@@ -33,7 +33,6 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DINSTALL_DOCUMENTATION=ON \
         -DBUILD_DOCUMENTATION=ON \
-        -DEigen3_ROOT=/opt/eigen3 \
         -Wno-dev
     cmake --build "build-$pkgver"
 }
