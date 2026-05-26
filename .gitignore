@@ -1,3 +1,5 @@
 fprintd-clients*
 pkg/
 src/
+
+!.gitignore
