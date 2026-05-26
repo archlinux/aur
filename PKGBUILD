@@ -10,14 +10,14 @@
 
 _qt_module=qtserialbus
 pkgname=mingw-w64-qt5-serialbus
-pkgver=5.15.18
+pkgver=5.15.19
 pkgrel=1
 arch=('any')
 pkgdesc="Qt module for general purpose serial bus access (mingw-w64)"
 depends=('mingw-w64-qt5-serialport')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=c23069351ec31563c9ea9fcdce42ccdba95ea518
+_commit=6734222bccc5541f9527281c810c6b5f8fdd092f
 _basever=${pkgver%%+*}
 pkgver+=+kde+r0
 makedepends+=('git')
@@ -26,7 +26,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('c073405d6d2ad19f235ab72260994d36ea74b40e307e07a3bdbff84df98cbb09')
+sha256sums=('546e044d81131765e543c0f0d8cdd66eafde090df931879f9b5fec571e642168')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
