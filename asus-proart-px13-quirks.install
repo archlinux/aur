@@ -23,6 +23,11 @@ Audio (TAS2783):
        amixer -c1 cset name='tas2783-2 Channel Playback' Right
        sudo alsactl store
 
+Headset codec (RT721) — runtime autosuspend disabled via
+/usr/lib/udev/rules.d/99-rt721-sdw-no-autosuspend.rules. The RT721 UCM
+route does not depend on jack detection, so users can select Headphones
+manually when the kernel reports the jack state incorrectly.
+
 Bluetooth (MT7925) — btusb autosuspend disabled via
 /usr/lib/modprobe.d/btusb-no-autosuspend.conf. Takes effect after the next
 btusb reload or reboot. If BT is already wedged, a cold boot (full power-off,

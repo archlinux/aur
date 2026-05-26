@@ -1,0 +1,1 @@
+ACTION=="add|bind|change", SUBSYSTEM=="soundwire", KERNEL=="sdw:*:025d:0721:*", TEST=="power/control", ATTR{power/control}="on"
