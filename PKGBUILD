@@ -3,7 +3,7 @@
 # Maintainer: Solomon <shlomochoina@gmail.com>
 pkgname=openclaw-git
 _pkgver=2026.5.25.beta.1
-pkgver=2026.5.25.beta.1.r20213.g7a147419dbb
+pkgver=2026.4.19.beta.2.r20222.g2b63eb2825f
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices (Bun build, highly optimized)"
 arch=('x86_64')
