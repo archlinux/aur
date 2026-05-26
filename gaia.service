@@ -8,6 +8,7 @@ Type=simple
 User=gaia
 Group=gaia
 Environment=HOME=/var/lib/gaia
+Environment=PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 ExecStart=/usr/bin/gaia --ui
 Restart=on-failure
 RestartSec=5s

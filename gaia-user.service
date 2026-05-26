@@ -5,6 +5,7 @@ After=network.target
 
 [Service]
 Type=simple
+Environment=PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 ExecStart=/usr/bin/gaia --ui
 Restart=on-failure
 RestartSec=5s

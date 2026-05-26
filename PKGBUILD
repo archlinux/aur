@@ -2,7 +2,7 @@
 
 pkgname=(gaia-amd gaia-amd-webui)
 pkgver=0.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AI-powered inference engine for AMD hardware"
 arch=(x86_64)
 url="https://github.com/amd/gaia"
@@ -71,8 +71,8 @@ makedepends=(
 )
 
 sha256sums=(ecac14989bb17ba6f07fe8dc274df8458195b7ef16504b3301bcbf707066ae3c
-            04f4f7fa7584d8a5deb6e1f9b8e1f2d8c2267cdb95cdd9d208ead9825ae2ac44
-            a5aa7651b2b13e5161e98fb231cb4a12cc451ee09bce0d5822824913573daa97
+            8ba5237cd80c52c5e279db84102285a48632a8f8345c6c238c5e8fd556f87c20
+            aaf92363374901f80f30448c1efbd3573d0a5f86de20f85858b29c74e49faddc
             3d185692ac7bd9834643052cb570a6a214878bf74f9e6e14b8c5115493bc7c7e)
 
 source=("gaia-amd-$pkgver.tar.gz::https://github.com/amd/gaia/archive/refs/tags/v$pkgver.tar.gz"
@@ -111,6 +111,22 @@ prepare() {
     sed -i \
         's#const resourcesPath = process\.resourcesPath;#const resourcesPath = process.env.GAIA_RESOURCES_PATH || process.resourcesPath;#' \
         "$_webui/services/backend-installer.cjs"
+
+    # lemond v10.6.0 passes bare --flash-attn (no value) to llama-server for
+    # Gemma-4 models; llama-server requires --flash-attn on. Explicitly supply
+    # the arg so the default model loads on first run.
+    sed -i \
+        's/prompt=False$/prompt=False, llamacpp_args="--flash-attn on"/' \
+        "$srcdir/gaia-$pkgver/src/gaia/ui/server.py"
+
+    # The lifespan calls keyring (via tripwire_check) which blocks until
+    # kwalletd responds — up to 7+ minutes if KWallet isn't running yet.
+    # Port 4200 never opens until the lifespan yields. Bypass the system
+    # keyring for the Electron-spawned backend; OAuth connectors fall back
+    # to prompting for credentials at first use.
+    sed -i \
+        's/env: { \.\.\.process\.env }/env: { ...process.env, PYTHON_KEYRING_BACKEND: "keyring.backends.null.Keyring" }/' \
+        "$srcdir/gaia-$pkgver/src/gaia/apps/webui/main.cjs"
 }
 
 build() {
