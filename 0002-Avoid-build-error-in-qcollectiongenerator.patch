@@ -1,4 +1,4 @@
-From 161aa51c04669a84453f73a8924fbae4f6cb1f08 Mon Sep 17 00:00:00 2001
+From f86185df4e7961a2afca172d12e92b1e34e8e36e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 28 May 2024 22:26:21 +0200
 Subject: [PATCH 2/2] Avoid build error in qcollectiongenerator
@@ -22,5 +22,5 @@ index 783a799a1..517aae6fb 100644
          fprintf(stderr, "Error while executing \"%s\" tool.\n", newPath);
          return 3;
 -- 
-2.51.2
+2.54.0
 
