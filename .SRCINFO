@@ -1,0 +1,19 @@
+pkgbase = vmod-jq
+	pkgdesc = Use jq programs from Varnish VCL
+	pkgver = 9.0.3
+	pkgrel = 2
+	url = https://github.com/varnishcache-friends/libvmod-jq
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = autoconf-archive
+	makedepends = pkg-config
+	makedepends = python-docutils
+	depends = varnish=9.0.3-2
+	depends = jq
+	source = libvmod-jq-4051a7d08dc3a4ca90d9e8319d5a3a132793e1da.tar.gz::https://github.com/varnishcache-friends/libvmod-jq/archive/4051a7d08dc3a4ca90d9e8319d5a3a132793e1da.tar.gz
+	sha512sums = 2d9e3827a33b19411d0ba0dd3366a94f8ece1ef5174e1648f3dab7c6ebbc186b840e92b929532dc7f5db9ad3d7dc7e3891f2f61c540c4c109a37a8eda095927c
+
+pkgname = vmod-jq
