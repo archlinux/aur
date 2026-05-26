@@ -1,7 +1,7 @@
 #Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgname=tldx-bin
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Domain Availability Research Tool"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,9 @@ source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/brandonyoungdev/
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/brandonyoungdev/tldx/releases/download/v$pkgver/tldx_${pkgver}_linux_arm64.tar.gz")
 url="https://github.com/brandonyoungdev/tldx"
 license=("Apache-2.0")
-sha256sums_x86_64=('7ac0e2d35c5beeef036cb35e6777c05a269be1a39ee4baee22ad33affc6e7486')
-sha256sums_aarch64=('3eb074efbfd71e9c3695a96c5105684e75742e0bcae0fe438a65dc827400bf31')
+sha256sums_x86_64=('b88b445a15caa101728fbc7f058c1f442ffe49e16c5e5c5145c2b911f1fd34ba')
+sha256sums_aarch64=('75ef106ba547e5fbce24188633b77e428d3ec3ef3fd49027897a1c8b06a21add')
+options=(!debug)
 
 package() {
   # Unpack, flag as executable and move to the right directory
