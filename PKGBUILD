@@ -1,5 +1,5 @@
 pkgname=nodotify
-pkgver=2.2.9
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="t.me/nodotify | music player"
 arch=('x86_64')
@@ -24,7 +24,7 @@ depends=(
 provides=('dotify')
 conflicts=('dotify')
 source=("https://dotify.fun/Dotify.deb")
-sha256sums=('9eb06a051782300b806d023758518eb1b9f3c1f30e6b2cd66285cf82e6c4cfbf')
+sha256sums=('d7dc56112413d5da4cf92eec8118b3038f68c4618848c6d268a1cbbb3c378efe')
 
 package() {
   cd "${srcdir}"
