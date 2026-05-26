@@ -1,4 +1,4 @@
-pkgname=fuzzel-ime-git
+pkgname=fuzzel-ime-gitee-git
 pkgver=1.14.1.r4.g02f7346
 pkgrel=2
 pkgdesc="Fuzzel(a wayland launcher) with Input Method support."
