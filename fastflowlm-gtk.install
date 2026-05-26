@@ -1,6 +1,8 @@
 post_remove() {
-    echo "Reverting memlock system fixes..."
-    [ -f /etc/security/limits.conf ] && sed -i '/^\* soft memlock unlimited$/d' /etc/security/limits.conf
-    [ -f /etc/security/limits.conf ] && sed -i '/^\* hard memlock unlimited$/d' /etc/security/limits.conf
-    [ -f /etc/systemd/system.conf ] && sed -i 's/^DefaultLimitMEMLOCK=infinity/#DefaultLimitMEMLOCK=infinity/' /etc/systemd/system.conf || true
+    echo "Reverting memlock system fixes (99-fastflowlm-gtk.conf)..."
+    rm -f /etc/security/limits.d/99-fastflowlm-gtk.conf
+    
+    # legacy cleanup
+    [ -f /etc/security/limits.conf ] && sed -i '/fastflowlm-gtk/d' /etc/security/limits.conf 2>/dev/null || true
+    [ -f /etc/systemd/system.conf ] && sed -i 's/^DefaultLimitMEMLOCK=infinity/#DefaultLimitMEMLOCK=infinity/' /etc/systemd/system.conf 2>/dev/null || true
 }
