@@ -1,7 +1,7 @@
 # Maintainer: 32exe <32exe@proton.me>
 pkgname=web-archer-bin
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A bug-fixed, multi-threaded text scraper and website crawling tool. (Pre-packaged Source)"
 arch=('any')
 url="https://github.com/32archusers/web-archer"
