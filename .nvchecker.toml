@@ -1,0 +1,3 @@
+[perl-dancer2]
+source = "cpan"
+cpan = "Dancer2"
