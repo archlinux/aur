@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartoc-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Barto job executor client (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -19,9 +19,9 @@ _base="https://github.com/rustyhorde/barto/releases/download/v${pkgver}"
 source=("${_base}/dist-bartoc.tar.gz")
 source_x86_64=("bartoc-x86_64::${_base}/bartoc-x86_64-unknown-linux-musl")
 source_aarch64=("bartoc-aarch64::${_base}/bartoc-aarch64-unknown-linux-musl")
-sha256sums=('62102871d7922afd9beb1f0bad2a46a47e2fb5ff785a4dcb5840c43fa11d3e63')
-sha256sums_x86_64=('1916b53d280c6f11e1e722e75dcc24990059c21346aec3aba568377900fd7472')
-sha256sums_aarch64=('086410a7b24464b920e31902c2806cbf45b5081a6a564f2e929ce528c8214c79')
+sha256sums=('401959d287e938a7bbd1f595f3b385a171d06d4f4921a39241baa77bee1563cd')
+sha256sums_x86_64=('9158eca1ee329d62c01fa40148cce41355f3201fafd8cce78a16d2306ef228b8')
+sha256sums_aarch64=('55484b279c931674cace4e7cb12e181ff4f24bcf04e044630df1e5de7b3ad138')
 
 package() {
     install -Dm755 "bartoc-${CARCH}" "$pkgdir/usr/bin/bartoc"
@@ -37,13 +37,19 @@ package() {
     install -Dm644 bartoc/bartoc.fish \
         "$pkgdir/usr/share/fish/vendor_completions.d/bartoc.fish"
 
-    # Systemd service
+    # Systemd user service
     install -Dm644 bartoc/bartoc.service \
-        "$pkgdir/usr/lib/systemd/system/bartoc.service"
+        "$pkgdir/usr/lib/systemd/user/bartoc.service"
 
-    # Logrotate
-    install -Dm644 bartoc/bartoc.logrotate \
-        "$pkgdir/etc/logrotate.d/bartoc"
+    # Log rotation helper script
+    install -Dm755 bartoc/bartoc-logrotate \
+        "$pkgdir/usr/lib/bartoc/bartoc-logrotate"
+
+    # Systemd user timer for log rotation
+    install -Dm644 bartoc/bartoc-logrotate.service \
+        "$pkgdir/usr/lib/systemd/user/bartoc-logrotate.service"
+    install -Dm644 bartoc/bartoc-logrotate.timer \
+        "$pkgdir/usr/lib/systemd/user/bartoc-logrotate.timer"
 
     # Example config
     install -Dm644 bartoc/bartoc.toml.example \
