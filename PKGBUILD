@@ -2,8 +2,8 @@
 
 pkgname=antigravity2-bin
 _pkgname=antigravity2
-pkgver=2.0.1
-_build=6566078776737792
+pkgver=2.0.6
+_build=5413878570549248
 pkgrel=1
 pkgdesc='Google Antigravity - Agentic Desktop Application'
 arch=('x86_64' 'aarch64')
@@ -61,10 +61,10 @@ sha256sums=(
   'b27f0e4a6f14f491ba31bb24533a1f43c677362b12a0744a53fdd09d7c785317'
 )
 sha256sums_x86_64=(
-  '0727e1f56961b6d2347941f278da69cc6c17de3befe988524848cd167380e9ab'
+  'ad1e04535149b07c27030eb1ead40f4efda388cb39020bcbb9accdfb49e44cc5'
 )
 sha256sums_aarch64=(
-  '5af56cc9dda954f369a61045b7da2f348bcb0b3507d272b4c0e9aa7cd6175d9b'
+  '02fc7f47650582ac72b845853b514de6c83ea7a4cd8a8d739e1a8688db2f45a9'
 )
 
 package() {
