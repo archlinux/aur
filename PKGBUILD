@@ -1,13 +1,14 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: LightDot <lightdot -a-t- server.si>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgbase=antora
 pkgname=(
   antora-cli
   antora-site-generator
 )
-pkgver=3.1.10
+pkgver=3.1.15
 pkgrel=1
-pkgdesc="A modular documentation site generator"
+pkgdesc="A modular site generator for documentation written in AsciiDoc."
 arch=(any)
 url="https://antora.org"
 license=(MPL-2.0)
@@ -21,10 +22,8 @@ noextract=(
   "cli-$pkgver.tgz"
   "site-generator-$pkgver.tgz"
 )
-sha256sums=(
-  'ff712666713743b7a0ef53aa4fa605ed093963840d7a7cd214b37c585ba68a15'
-  '3f7d4adf33448a1e5b26c9c81796ce3f70f25e5ea5c12f044c22e6876b6a9c3b'
-)
+sha256sums=('5707530ce5cc831b4b08ebd062f20c4b3e9ffb6fa8a29163afcdf5694cfda3b9'
+            '8ed09f3f1e79133f55aa92c67016a47cfbb708a1a1bca2fc162d1721e4eb7ea2')
 
 _package() {
   local file="$1"
