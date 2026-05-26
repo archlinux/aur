@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!lameta.desktop
+!no_node_pin.patch
+
+!.gitignore
