@@ -2,13 +2,12 @@
 
 pkgname=liquidshell
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Basic desktop shell using QtWidgets'
 arch=(x86_64)
 url='https://invent.kde.org/system/liquidshell'
 license=(GPL-3.0-or-later)
 depends=(bluez-qt
-         gcc-libs
          glibc
          karchive
          kcmutils
@@ -28,6 +27,7 @@ depends=(bluez-qt
          kwidgetsaddons
          kwindowsystem
          kxmlgui
+         libstdc++
          networkmanager-qt
          qt6-base
          sh
