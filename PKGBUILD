@@ -1,21 +1,18 @@
-# Maintainer: Jojii <jojii@gmx.net>
+# Maintainer: lcian <lorenzo@cian.dev>
 pkgname=logo-ls
-pkgver=1.3.7
+pkgver=1.4.3
 pkgrel=1
-pkgdesc="Modern ls command with vscode like file icon and git integrations"
-arch=('i686' 'x86_64')
-url="https://github.com/Yash-Handa/logo-ls"
+pkgdesc="ls, but with icons"
+arch=('i686' 'x86_64' 'aarch64')
+url="https://github.com/canta2899/logo-ls"
 license=('MIT')
 groups=()
 depends=()
-makedepends=(
-    'git'
-    'go'
-)
+makedepends=('git' 'go')
 
 options=()
-source=("https://github.com/Yash-Handa/logo-ls/archive/v${pkgver}.tar.gz")
-md5sums=('62da2311badaa1445312e63b4232991c')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/canta2899/logo-ls/archive/v${pkgver}.tar.gz")
+md5sums=('786699ba3ddb2aac0af8126e30eb4fe2')
 
 prepare() {
     cd "$pkgname"-"$pkgver"
@@ -24,7 +21,7 @@ prepare() {
 
 build() {
     cd "$pkgname"-"$pkgver"
-	go build
+    go build ./cmd/logo-ls
 }
 
 package() {
