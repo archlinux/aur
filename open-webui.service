@@ -9,6 +9,7 @@ Group=open-webui
 EnvironmentFile=-/etc/open-webui/environment
 Environment=DATA_DIR=/var/lib/open-webui
 Environment=UV_CACHE_DIR=/var/cache/open-webui
+Environment=UV_OVERRIDE=/etc/open-webui/override
 ExecStart=/usr/bin/open-webui
 Restart=on-failure
 RestartSec=5s
