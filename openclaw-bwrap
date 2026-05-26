@@ -12,6 +12,7 @@ fi
 
 # Ensure necessary directories exist
 mkdir -p "${HOME}/.openclaw" "${HOME}/.config/openclaw" "${HOME}/.openclaw-bwrap"
+mkdir -p "${HOME}/.openclaw-bwrap/.openclaw" "${HOME}/.openclaw-bwrap/.config/openclaw"
 
 BWRAP_ARGS=(
     # Unshare namespaces for isolation
@@ -19,6 +20,7 @@ BWRAP_ARGS=(
     --share-net
     --die-with-parent
     --new-session
+    --hostname openclaw-sandbox
 
     # Mount host root read-only
     --ro-bind / /
@@ -27,7 +29,7 @@ BWRAP_ARGS=(
     --tmpfs /tmp
 
     # Mount devices and process info
-    --dev-bind /dev /dev
+    --dev /dev
     --ro-bind /sys /sys
     --proc /proc
 

@@ -1,107 +1,160 @@
 # Maintainer: Emir-Eins <emir-eins@outlook.com>
 # Contributor: Wuxxin <wuxxin@gmail.com>
+# Maintainer: Solomon <shlomochoina@gmail.com>
 pkgname=openclaw-git
-pkgver=2026.3.24.r531.g2e23d44491c
+_pkgver=2026.5.25.beta.1
+pkgver=2026.5.25.beta.1.r20213.g7a147419dbb
 pkgrel=1
-pkgdesc="Personal AI assistant that runs on your own devices"
+pkgdesc="Personal AI assistant that runs on your own devices (Bun build, highly optimized)"
 arch=('x86_64')
 url="https://github.com/openclaw/openclaw"
 license=('MIT')
-depends=('nodejs>=22' 'bubblewrap')
-makedepends=('git' 'bun' 'pnpm' 'npm' 'python')
-optdepends=('bubblewrap: for experimental additional sandboxed execution')
-provides=('openclaw')
-conflicts=('openclaw')
-source=(
-    'git+https://github.com/openclaw/openclaw.git'
-    'openclaw-bwrap'
-    'openclaw-agent-bwrap'
-    'openclaw-bwrap-install-as-systemd-user-service'
-    'openclaw-patch.sh'
-    'openclaw.install'
-    'openclaw-commit-382fe80'
-    'README.md'
-)
+depends=('nodejs>=22')
+makedepends=('git' 'bun' 'npm' 'python')
+optdepends=('bubblewrap: for experimental additional sandboxed execution'
+            'oxlint: for system-wide fast linting in doctor'
+            'oxfmt: for system-wide fast formatting in doctor'
+            'markdownlint-cli2: for system-wide documentation linting'
+            'typescript: for system-wide tsc support')
 
-install=openclaw.install
+provides=('openclaw')
+conflicts=('openclaw' 'openclaw-git')
+source=('git+https://github.com/openclaw/openclaw.git'
+        'git+https://github.com/openclaw/fs-safe.git'
+        'openclaw-bwrap'
+        'openclaw-agent-bwrap'
+        'openclaw-bwrap-install-as-systemd-user-service'
+        'openclaw-patch.sh'
+        'openclaw.install'
+        'openclaw-commit-382fe80'
+        'openclaw-restart.hook'
+        'README.md')
 sha256sums=('SKIP'
-            '28568550c4674efc8b90a9b4ea5cf9dc024770275c089499a5cc5d7064d1bba8'
-            '44b23035089628327dbb05b1aa7a6daf09f21b82c0172ca59ed4576d3aa7b9a5'
+            'SKIP'
+            '273910e58f512a4f1d59fe2cde328d7abc68f720f5e6e98a23a06a43c3eb9599'
+            '63e557c01ca78e392ac17f37538faff9be6e568bb6d8b33980c8836197fd06ad'
             '34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d'
-            '59a344f5e91031e0b8afc5598686625bbf2a27c9ee3ed2c48107caf494e2b067'
-            '72cf00f138984381e747bafe04d853d4f8dc3b6e2fa92f58e0739e881eda2799'
+            'cc2324e4ad3e6786a3d38b30f674d786f95ede92a7ac6eb8996183ce5c6dd7fb'
+            '7f7dc1a6d0c96c018de6c73b7594dc15c268c4152a0ade8001406055962c89a7'
             'cdaf01acb58af62348c6f669f8b77675f66428a8ae41b4b4e371739492fb05c6'
-            '817f2a15928521a5e3b9206ee227cbe0b699932fe8f54eaa6a4290c59608dff2')
+            '34e1f98f832f394e4c4fbb807985cf747e8dfc95cc8933cde0f3c5f75e162b1d'
+            '0c177909ae593fb349c0bcbb56dcd5efdc645e75d6e9861647c9defbf604afe5')
 
 options=('!strip' '!debug')
 
 pkgver() {
     cd "$srcdir/openclaw"
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    if git describe --long --tags >/dev/null 2>&1; then
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        local _count=$(git rev-list --count HEAD)
+        local _hash=$(git rev-parse --short HEAD)
+        printf "%s.r%s.g%s" "$_pkgver" "$_count" "$_hash"
+    fi
 }
 
 prepare() {
+    # Dynamically patch the install script with the correct package name
+    sed -i "s/@PKGNAME@/$pkgname/g" "${srcdir}/openclaw.install"
+
+    # 1. Build @openclaw/fs-safe from source
+    echo "Building @openclaw/fs-safe from source..."
+    cd "$srcdir/fs-safe"
+    bun install
+    bun run build
+
+    # 2. Run the main openclaw patch script (performs bun install)
     cd "$srcdir/openclaw"
-    bash "$srcdir/openclaw-patch.sh" --patch
-    if test "$OPENCLAW_REVERT_382fe80" != ""; then
-        echo "reverse patching 382fe80"
-        gzip -d < "$srcdir/openclaw-commit-382fe80" > $srcdir/openclaw-commit-382fe80.patch
+    bash "${srcdir}/openclaw-patch.sh"
+
+    # 3. Surgically install built fs-safe into openclaw node_modules AFTER bun install
+    echo "Surgically installing local @openclaw/fs-safe build..."
+    mkdir -p "$srcdir/openclaw/node_modules/@openclaw/fs-safe"
+    cp -r "$srcdir/fs-safe/dist" "$srcdir/fs-safe/package.json" "$srcdir/openclaw/node_modules/@openclaw/fs-safe/"
+
+    if [ -n "$OPENCLAW_REVERT_382fe80" ]; then
+        echo "Reverting commit 382fe80 (restoring Google Antigravity)..."
+        gzip -d < "$srcdir/openclaw-commit-382fe80" > "$srcdir/openclaw-commit-382fe80.patch"
         patch -R -p1 < "$srcdir/openclaw-commit-382fe80.patch"
     fi
-    # bun has a bug with pnpm-lock.yaml workspace link migration (bun/issues/23026)
-    # which causes @agentclientprotocol/sdk and other scoped packages to fail with 405.
-    # Use pnpm (the upstream package manager) for dependency installation instead.
-    # Restore pnpm as packageManager field so pnpm install accepts the project.
-    sed -i 's/"packageManager": "bun@[^"]*"/"packageManager": "pnpm@10.30.3"/' package.json
-    pnpm install
-    # Install UI dependencies (scripts/ui.js detects bun and uses it if available)
-    bun run ui:install
+
+    node scripts/ui.js install || true
 }
 
 build() {
     cd "$srcdir/openclaw"
     bun run build
-    # Build Control UI
-    bun run ui:build
+    node scripts/ui.js build || true
 }
 
 package() {
     cd "$srcdir/openclaw"
-
-    # Install the package to /usr/lib/openclaw
+    
+    echo "Creating package directory structure..."
     install -d "$pkgdir/usr/lib/openclaw"
-    cp -r assets dist docs extensions git-hooks node_modules patches scripts skills "$pkgdir/usr/lib/openclaw/"
+    
+    # Safely copy directories that exist to the package directory
+    for dir in assets dist dist-runtime docs extensions node_modules patches scripts skills git-hooks; do
+        if [ -d "$dir" ]; then
+            cp -r "$dir" "$pkgdir/usr/lib/openclaw/"
+        fi
+    done
     cp openclaw.mjs package.json AGENTS.md "$pkgdir/usr/lib/openclaw/"
 
-    rm -f "$pkgdir/usr/lib/openclaw/node_modules/.pnpm-workspace-state-v1.json"
+    # --- PERFORM PRUNING INSIDE $pkgdir ---
+    cd "$pkgdir/usr/lib/openclaw"
+    
+    echo "Aggressively pruning heavy non-runtime assets from package..."
+    rm -rf .git .github .artifacts .agents .pi .vscode .npmrc test qa Swabble vendor
+    rm -f pnpm-lock.yaml bun.lockb tsconfig*.json vite.config.ts vitest*.config.ts .eslint* .prettier* .oxlint*
+    
+    # Prune extension node_modules (we hoisted the important ones to root)
+    echo "Pruning redundant extension node_modules..."
+    rm -rf ui/node_modules packages/*/node_modules extensions/*/node_modules dist/extensions/*/node_modules
+    
+    echo "Pruning development tools and caches..."
+    # We MUST keep typescript and tsx as they are used for runtime plugin loading and code tools
+    rm -rf node_modules/@typescript node_modules/tsdown node_modules/@rolldown node_modules/rolldown node_modules/@oxlint node_modules/oxlint node_modules/@oxlint-tsgolint node_modules/oxlint-tsgolint node_modules/@oxfmt node_modules/oxfmt node_modules/esbuild node_modules/@esbuild node_modules/vitest node_modules/@vitest node_modules/jscpd node_modules/madge node_modules/.cache
+    
+    echo "Purging all non-glibc/non-x64 platform binaries..."
+    find node_modules -name "*musl*" -o -name "*arm64*" -o -name "*darwin*" -o -name "*win32*" -o -name "*armv7*" | \
+        grep -vE "linux-x64$" | xargs rm -rf 2>/dev/null || true
 
-    # Install documentation
+    echo "Pruning build artifacts and source maps..."
+    find dist -type f \( -name "*.js.map" -o -name "*.d.ts" -o -name "*.d.mts" \) -delete
+    
+    echo "Finalizing node_modules cleanup..."
+    # Only remove READMEs and other typical non-code root files
+    find node_modules -maxdepth 2 -type f \( -name "README*" -o -name "CHANGELOG*" -o -name "HISTORY*" -o -name "AUTHORS*" -o -name "LICENSE*" \) -delete 2>/dev/null || true
+    # Remove broken symlinks in .bin
+    find node_modules/.bin -xtype l -delete 2>/dev/null || true
+    # Remove empty directories in node_modules
+    find node_modules -type d -empty -delete 2>/dev/null || true
+
+    # --- END PRUNING ---
+
+    cd "$srcdir/openclaw"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
     install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README-arch.md"
+    install -Dm644 "$srcdir/openclaw-restart.hook" "$pkgdir/usr/share/doc/$pkgname/openclaw-restart.hook.sample"
 
-    # Install examples
     for i in docker-compose.yml Dockerfile Dockerfile.sandbox Dockerfile.sandbox-browser; do
-        install -Dm644 "$i" "$pkgdir/usr/share/doc/$pkgname/examples/$i"
+        if [ -f "$i" ]; then
+            install -Dm644 "$i" "$pkgdir/usr/share/doc/$pkgname/examples/$i"
+        fi
     done
 
-    # Install binary wrapper
     install -d "$pkgdir/usr/bin"
-
-    # Create a wrapper script for the main openclaw executable
-    cat >"$pkgdir/usr/bin/openclaw" <<EOF
+    cat >"$pkgdir/usr/bin/openclaw" <<WRAPPERSCRIPT
 #!/bin/bash
 exec node /usr/lib/openclaw/openclaw.mjs "\$@"
-EOF
+WRAPPERSCRIPT
     chmod +x "$pkgdir/usr/bin/openclaw"
 
-    # Install bwrap scripts
     install -m755 "$srcdir/openclaw-bwrap" "$pkgdir/usr/bin/openclaw-bwrap"
     install -m755 "$srcdir/openclaw-agent-bwrap" "$pkgdir/usr/bin/openclaw-agent-bwrap"
-    install -m755 "$srcdir/openclaw-bwrap-install-as-systemd-user-service" \
-        "$pkgdir/usr/bin/openclaw-bwrap-install-as-systemd-user-service"
+    install -m755 "$srcdir/openclaw-bwrap-install-as-systemd-user-service" "$pkgdir/usr/bin/openclaw-bwrap-install-as-systemd-user-service"
 
-    # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,155 +1,192 @@
 #!/usr/bin/env bash
+# openclaw-patch.sh - Robust, idempotent patching for OpenClaw Arch Linux package
+# (Optimized Version for Bun + Hardening)
 
 set -euo pipefail
 
-PATCH_FILE="openclaw-adjustment.patch"
+# This script handles all necessary transformations for a clean,
+# reproducible build using Bun on Arch Linux.
 
-patch_source() {
-    # 1. package.json
-    echo "Patching package.json..."
-    if ! grep -q '"node-gyp":' package.json; then
-        # Verify original strings exist before patching
-        grep -q '"scripts": {' package.json
-        grep -q '"packageManager": "pnpm@' package.json
-        grep -q '"lit":' package.json
+PATCH_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$PATCH_DIR/openclaw"
 
-        sed -i '/"scripts": {/,/},/ s/pnpm/bun run/g' package.json
-        # Replace npm package manager definition
-        sed -i 's/"packageManager": "pnpm@[^"]*"/"packageManager": "bun@1.2.0"/' package.json
-        # Insert node-gyp
-        sed -i '/"lit":/a \    "node-gyp": "^12.2.0",' package.json
-        # Remove @discordjs/opus if it exists (don't fail if already gone)
-        sed -i '/"@discordjs\/opus":/d' package.json
-    fi
+echo "Applying optimized patches to OpenClaw in $REPO_ROOT (Idempotent)..."
 
-    # 2. scripts/bundle-a2ui.sh
-    echo "Patching scripts/bundle-a2ui.sh..."
-    if ! grep -q 'bun run tsc' scripts/bundle-a2ui.sh; then
-        grep -q 'pnpm -s exec tsc' scripts/bundle-a2ui.sh
-        sed -i 's/pnpm -s exec tsc/bun run tsc/' scripts/bundle-a2ui.sh
-    fi
+cd "$REPO_ROOT"
 
-    # 3. scripts/ui.js
-    echo "Patching scripts/ui.js..."
-    # Insert bun detection
-    if ! grep -q 'const bun = which("bun");' scripts/ui.js; then
-        grep -q 'const pnpm = which("pnpm");' scripts/ui.js
-        sed -i '/const pnpm = which("pnpm");/i \  const bun = which("bun");\n  if (bun) {\n    return { cmd: bun, kind: "bun" };\n  }' scripts/ui.js
-    fi
-    if ! grep -q 'install bun or pnpm, then retry' scripts/ui.js; then
-        grep -q 'install pnpm, then retry' scripts/ui.js
-        sed -i 's/install pnpm, then retry/install bun or pnpm, then retry/' scripts/ui.js
-    fi
+# 1. Restore to pristine state (Idempotent)
+echo "Restoring source tree to pristine state via git reset --hard..."
+git reset --hard
 
-    # 4. src/discord/voice/manager.ts (moved to extensions/discord/src/voice/manager.ts)
-    VOICE_MANAGER=""
-    for f in src/discord/voice/manager.ts extensions/discord/src/voice/manager.ts; do
-        if [ -f "$f" ]; then
-            VOICE_MANAGER="$f"
-            break
-        fi
-    done
-    if [ -n "$VOICE_MANAGER" ]; then
-        echo "Patching $VOICE_MANAGER..."
-        if ! grep -q 'any' "$VOICE_MANAGER" 2>/dev/null || ! grep -q 'opus' "$VOICE_MANAGER" 2>/dev/null; then
-            if grep -q 'typeof import("@discordjs/opus")' "$VOICE_MANAGER"; then
-                sed -i 's/typeof import("@discordjs\/opus")/any/g' "$VOICE_MANAGER"
-            fi
-        fi
-    else
-        echo "Skipping discord voice/manager.ts patch (file not found, upstream removed opus)"
-    fi
+# 2. Patch package.json (Hoisting and pinning)
+echo "Updating package.json and hoisting dependencies..."
+node -e '
+    const fs = require("fs");
+    const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
 
-    # 5. src/agents/skills-install.ts
-    echo "Patching src/agents/skills-install.ts..."
-    if ! grep -q 'CONFIG_DIR' src/agents/skills-install.ts; then
-        grep -q 'import { resolveUserPath } from "../utils.js";' src/agents/skills-install.ts
-        grep -q 'env?: NodeJS.ProcessEnv;' src/agents/skills-install.ts
-        grep -q 'env: params.env,' src/agents/skills-install.ts
-        grep -q 'const uvInstallFailure = await ensureUvInstalled' src/agents/skills-install.ts
-        grep -q 'if (spec.kind === "brew" && brewExe && argv?\.\[0\] === "brew") {' src/agents/skills-install.ts
-        grep -q 'return withWarnings(await executeInstallCommand({ argv, timeoutMs, env }), warnings);' src/agents/skills-install.ts
+    // --- HOISTING ---
+    const hoistMap = {
+        "node-edge-tts": "1.2.10",
+        "playwright-core": "1.60.0",
+        "grammy": "1.43.0",
+        "@whiskeysockets/baileys": "7.0.0-rc11",
+        "@homebridge/ciao": "1.3.8",
+        "@grammyjs/runner": "2.0.3",
+        "@grammyjs/transformer-throttler": "1.2.1",
+        "jimp": "1.6.1",
+        "hono": "4.12.21",
+        "@hono/node-server": "1.19.14",
+        "axios": "1.16.1",
+        "follow-redirects": "1.16.0",
+        "acpx": "0.8.0",
+        "@agentclientprotocol/claude-agent-acp": "0.36.1",
+        "@zed-industries/codex-acp": "0.14.0",
+        "https-proxy-agent": "9.0.0",
+        "undici": "8.3.0",
+        "jsdom": "29.1.1",
+        "zod": "4.4.1",
+        "unrun": "0.2.37",
+        "tsdown": "0.21.10",
+        "@openclaw/proxyline": "0.3.3"
+    };
 
-        sed -i 's/import { resolveUserPath } from "..\/utils.js";/import { resolveUserPath, CONFIG_DIR } from "..\/utils.js";/' src/agents/skills-install.ts
-        sed -i 's/env?: NodeJS.ProcessEnv;/env?: NodeJS.ProcessEnv;\n  cwd?: string;/' src/agents/skills-install.ts
-        sed -i 's/env: params.env,/env: params.env,\n    cwd: params.cwd,/' src/agents/skills-install.ts
+    pkg.dependencies = pkg.dependencies || {};
+    pkg.devDependencies = pkg.devDependencies || {};
 
-        sed -i '/const uvInstallFailure = await ensureUvInstalled({ spec, brewExe, timeoutMs });/i \
-  // Force installation into user config directory if package.json exists there or forced by env\
-  const configPkgJson = path.join(CONFIG_DIR, "package.json");\
-  const forceLocal = process.env.OPENCLAW_FORCE_LOCAL_SKILLS === "1";\
-' src/agents/skills-install.ts
+    for (const [dep, ver] of Object.entries(hoistMap)) {
+        pkg.dependencies[dep] = ver;
+        if (pkg.devDependencies[dep]) {
+            delete pkg.devDependencies[dep];
+        }
+    }
 
-        sed -i '/if (spec.kind === "brew" && brewExe && argv?\.\[0\] === "brew") {/i \
-  if (spec.kind === "node" && argv && (forceLocal || fs.existsSync(configPkgJson))) {\
-    // Remove global flags\
-    for (let i = 0; i < argv.length; i++) {\
-      if (argv[i] === "-g" || argv[i] === "global") {\
-        argv.splice(i, 1);\
-        i--;\
-      }\
-    }\
-  }\
-' src/agents/skills-install.ts
+    // --- BUN RESOLUTIONS ---
+    if (pkg.pnpm && pkg.pnpm.overrides) {
+        pkg.resolutions = Object.assign({}, pkg.resolutions || {}, pkg.pnpm.overrides);
+        pkg.overrides = Object.assign({}, pkg.overrides || {}, pkg.pnpm.overrides);
+    }
 
-        sed -i 's/return withWarnings(await executeInstallCommand({ argv, timeoutMs, env }), warnings);/\
-  \/\/ Use CONFIG_DIR as cwd if we are installing locally (stripped globals)\
-  const cwd = (spec.kind === "node" \&\& (forceLocal || fs.existsSync(configPkgJson)))\
-    ? CONFIG_DIR\
-    : undefined;\
-\
-  return withWarnings(await executeInstallCommand({ argv, timeoutMs, env, cwd }), warnings);/' src/agents/skills-install.ts
-    fi
+    // --- TRUSTED DEPENDENCIES ---
+    const trusted = [
+        "tsdown",
+        "unrun",
+        "@openclaw/fs-safe",
+        "@discordjs/opus",
+        "@google/genai",
+        "@lydell/node-pty",
+        "@matrix-org/matrix-sdk-crypto-nodejs",
+        "@tloncorp/api",
+        "@tloncorp/tlon-skill",
+        "@whiskeysockets/baileys",
+        "@whiskeysockets/libsignal-node",
+        "authenticate-pam",
+        "esbuild",
+        "node-llama-cpp",
+        "protobufjs",
+        "sharp"
+    ];
+    pkg.trustedDependencies = trusted; // Bun uses trustedDependencies or onlyBuiltDependencies
+    if (pkg.pnpm) {
+        pkg.pnpm.onlyBuiltDependencies = trusted;
+    }
+
+    fs.writeFileSync("package.json", JSON.stringify(pkg, null, 4));
+'
+
+# 3. Patch build scripts
+echo "Patching build scripts for Bun..."
+sed -i 's/pnpm/bun/g' package.json
+sed -i 's/pnpm exec/bun x/g' scripts/*.mjs 2>/dev/null || true
+sed -i 's/pnpm exec/bun x/g' scripts/*.sh 2>/dev/null || true
+
+# 4. Run bun install
+bun install
+
+# 5. Complex source patches
+echo "Running complex source patches..."
+node -e '
+    const fs = require("fs");
+    const path = require("path");
+
+    // Fix plugin discovery for Bun global paths
+    const discoveryPath = "src/plugins/discovery.ts";
+    if (fs.existsSync(discoveryPath)) {
+        let content = fs.readFileSync(discoveryPath, "utf8");
+        if (!content.includes("discoverNpmPlugins")) {
+            // Add import
+            content = content.replace("import { resolveUserPath } from \"../utils.js\";", "import { CONFIG_DIR, resolveUserPath } from \"../utils.js\";");
+            
+            const anchor = "seen,\n        realpathCache,\n      });";
+            const callCode = "\n      discoverNpmPlugins({ dir: CONFIG_DIR, origin: \"global\", env: params.env ?? process.env, ownershipUid: params.ownershipUid, candidates: result.candidates, diagnostics: result.diagnostics, seen, realpathCache });";
+            content = content.replace(anchor, anchor + callCode);
+            content += "\nfunction discoverNpmPlugins(params: { dir: string; origin: PluginOrigin; env: NodeJS.ProcessEnv; ownershipUid?: number | null; workspaceDir?: string; candidates: PluginCandidate[]; diagnostics: PluginDiagnostic[]; seen: Set<string>; realpathCache: Map<string, string>; }) {\n  const nodeModules = path.join(params.dir, \"node_modules\");\n  if (!fs.existsSync(nodeModules)) return;\n  try {\n    const entries = fs.readdirSync(nodeModules, { withFileTypes: true });\n    for (const entry of entries) {\n      if (!entry.isDirectory()) continue;\n      if (entry.name.startsWith(\"@\")) {\n        const scopeDir = path.join(nodeModules, entry.name);\n        const scopeEntries = fs.readdirSync(scopeDir, { withFileTypes: true });\n        for (const scopeEntry of scopeEntries) {\n          if (!scopeEntry.isDirectory()) continue;\n          discoverInDirectory({ dir: path.join(scopeDir, scopeEntry.name), origin: params.origin, env: params.env, ownershipUid: params.ownershipUid, workspaceDir: params.workspaceDir, candidates: params.candidates, diagnostics: params.diagnostics, seen: params.seen, realpathCache: params.realpathCache });\n        }\n      } else if (!entry.name.startsWith(\".\")) {\n        discoverInDirectory({ dir: path.join(nodeModules, entry.name), origin: params.origin, env: params.env, ownershipUid: params.ownershipUid, workspaceDir: params.workspaceDir, candidates: params.candidates, diagnostics: params.diagnostics, seen: params.seen, realpathCache: params.realpathCache });\n      }\n    }\n  } catch {}\n}";
+            fs.writeFileSync(discoveryPath, content);
+        }
+    }
+'
+
+# 6. Rewrite pnpm-runner.mjs
+echo "Rewriting pnpm-runner.mjs..."
+cat > scripts/pnpm-runner.mjs <<EOF
+import { spawn, spawnSync as spawnSyncInternal } from "node:child_process";
+import fs from "node:fs";
+import path from "node:path";
+function sysWhich(cmd) {
+  try { const res = spawnSyncInternal("which", [cmd], { encoding: "utf8" }); return res.status === 0 ? res.stdout.trim() : null; } catch { return null; }
 }
-
-show_help() {
-    echo "Usage: $0 [OPTION]"
-    echo "Options:"
-    echo "  --patch           Apply changes to the source"
-    echo "  --refresh-patch   Recreate the patch file from pristine source for reference"
-    echo "  --help            Show this help"
+export function resolvePnpmRunner(params = {}) {
+  const pnpmArgs = params.pnpmArgs ?? [];
+  const filteredArgs = pnpmArgs.filter(a => a !== "-s" && a !== "--silent");
+  const isExec = filteredArgs[0] === "exec";
+  if (isExec && filteredArgs[1]) {
+    const localBin = path.join(process.cwd(), "node_modules", ".bin", filteredArgs[1]);
+    if (fs.existsSync(localBin)) return { command: localBin, args: filteredArgs.slice(2) };
+    const sysBin = sysWhich(filteredArgs[1]);
+    if (sysBin) return { command: sysBin, args: filteredArgs.slice(2) };
+    return { command: "bun", args: ["x", ...filteredArgs.slice(1)] };
+  }
+  const pmCmds = new Set(["install", "i", "add", "remove", "rm", "uninstall", "update", "up", "link", "unlink", "pm", "run"]);
+  if (pmCmds.has(filteredArgs[0])) {
+    return { command: "bun", args: filteredArgs };
+  }
+  return { command: "bun", args: ["run", ...filteredArgs] };
 }
+export function createPnpmRunnerSpawnSpec(params = {}) {
+  const runner = resolvePnpmRunner(params);
+  return { command: runner.command, args: runner.args, options: { cwd: params.cwd, detached: params.detached, stdio: params.stdio ?? "inherit", env: params.env ?? process.env, shell: false } };
+}
+export function spawnPnpmRunner(params = {}) {
+  const spawnSpec = createPnpmRunnerSpawnSpec(params);
+  return spawn(spawnSpec.command, spawnSpec.args, spawnSpec.options);
+}
+EOF
 
-case "${1:-}" in
---patch)
-    patch_source
-    ;;
---refresh-patch)
-    echo "Refreshing pristine sources..."
-    updpkgsums
-    makepkg -Co --noprepare
+# Patch scripts/ui.js to use bun
+echo "Patching scripts/ui.js for Bun..."
+sed -i 's/which("pnpm")/which("bun")/g' scripts/ui.js
+sed -i 's/kind: "pnpm"/kind: "bun"/g' scripts/ui.js
+sed -i 's/install bun, then retry/install bun, then retry/g' scripts/ui.js
 
-    cd src/openclaw
+# 8. Fix Proxyline ESM resolution
+echo "Fixing @openclaw/proxyline ESM exports..."
+node -e '
+    const fs = require("fs");
+    const path = "node_modules/@openclaw/proxyline/package.json";
+    if (fs.existsSync(path)) {
+        const pkg = JSON.parse(fs.readFileSync(path, "utf8"));
+        pkg.exports = {
+            ".": "./dist/index.js",
+            "./dispatcher-brand": "./dist/dispatcher-brand.js"
+        };
+        fs.writeFileSync(path, JSON.stringify(pkg, null, 4));
+    }
+'
 
-    echo "Creating backups for diff..."
-    cp package.json package.json.orig
-    cp scripts/bundle-a2ui.sh scripts/bundle-a2ui.sh.orig
-    cp scripts/ui.js scripts/ui.js.orig
-    cp src/discord/voice/manager.ts src/discord/voice/manager.ts.orig
-    cp src/agents/skills-install.ts src/agents/skills-install.ts.orig
+# 7. Fix extension specific errors
+sed -i 's/typeof import("@discordjs\/opus")/any/g' extensions/discord/src/voice/sdk-runtime.ts 2>/dev/null || true
+sed -i 's/abortWith(requestSignal)/abortWith(requestSignal as any)/g' extensions/telegram/src/bot.ts 2>/dev/null || true
 
-    patch_source
+# Fix duplicate import in googlechat (causes PARSE_ERROR in rolldown)
+sed -i '/resolveGoogleChatAccount,/{n; /listGoogleChatAccountIds,/d}' extensions/googlechat/src/channel.ts 2>/dev/null || true
 
-    echo "Generating new $PATCH_FILE..."
-    {
-        diff -u package.json.orig package.json || true
-        diff -u scripts/bundle-a2ui.sh.orig scripts/bundle-a2ui.sh || true
-        diff -u scripts/ui.js.orig scripts/ui.js || true
-        diff -u src/discord/voice/manager.ts.orig src/discord/voice/manager.ts || true
-        diff -u src/agents/skills-install.ts.orig src/agents/skills-install.ts || true
-    } >"../../$PATCH_FILE"
-
-    cd ../..
-    echo "Updating PKGBUILD checksums..."
-    updpkgsums
-    echo "Done! You can now review $PATCH_FILE."
-    ;;
---help | "")
-    show_help
-    ;;
-*)
-    echo "Unknown option: $1"
-    show_help
-    exit 1
-    ;;
-esac
+echo "All optimized patches applied successfully."

@@ -15,10 +15,16 @@ post_install() {
  
   You can run OpenClaw inside a Bubblewrap sandbox for added security, 
   but this is not a guarantee of isolation. 
+
+  PACMAN HOOK:
+  A sample pacman hook to automatically restart OpenClaw user services on
+  upgrade is available at:
+  /usr/share/doc/@PKGNAME@/openclaw-restart.hook.sample
+  To use it, copy it to /etc/pacman.d/hooks/.
  
   Please read further documentation and security warnings at:
-  file:///usr/share/doc/openclaw-git/README-arch.md
-  file:///usr/share/doc/openclaw-git/README.md
+  file:///usr/share/doc/@PKGNAME@/README-arch.md
+  file:///usr/share/doc/@PKGNAME@/README.md
  
 ==========================================================================
 EOF

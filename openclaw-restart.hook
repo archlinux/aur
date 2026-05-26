@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/lib/openclaw/
+
+[Action]
+Description = Restarting OpenClaw user services...
+When = PostTransaction
+Exec = /usr/bin/bash -c 'for user in $(loginctl list-users --no-legend | awk "{print \$2}"); do id -u "$user" >/dev/null && systemctl --user -M "$user"@ restart openclaw-gateway.service openclaw-node.service 2>/dev/null || true; done'

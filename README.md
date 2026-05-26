@@ -58,7 +58,10 @@ openclaw doctor
 This package provides an **experimental** wrapper using `bubblewrap` to sandbox the gateway and agent processes. This is a lightweight alternative to Docker containers for those seeking filesystem isolation.
 
 > [!IMPORTANT]
-> The bubblewrap wrapper restricts filesystem access to protect personal files and prevent unauthorized system modifications. It binds `/` as read-only, isolates `home`, and provides write access only to `~/.openclaw` and `~/.config/openclaw`.
+> The bubblewrap wrapper restricts filesystem access to protect personal files and prevent unauthorized system modifications.
+> - **Filesystem Boundaries:** Binds `/` as read-only, isolates `home` (mapping it to `~/.openclaw-bwrap`), and provides write access only to the mapped configuration and workspace directories (`~/.openclaw` and `~/.config/openclaw`).
+> - **Device Hardening:** Restricts device access to a secure, minimal virtual `/dev` structure (`--dev`) containing only standard, safe device nodes like `/dev/null`, `/dev/zero`, `/dev/random`, `/dev/urandom`, and `/dev/pts`. Host devices (like input devices, keyloggers, and disks) are completely hidden.
+> - **Hostname Isolation:** Enforces hostname isolation (`--hostname openclaw-sandbox`) to prevent the sandboxed agent from reading the host's real hostname.
 
 ### Usage
 Replace the `openclaw` command with `openclaw-bwrap`.
