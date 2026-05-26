@@ -3,8 +3,8 @@
 set -l _data (curl -sLf https://api.github.com/repos/SagerNet/sing-box/releases?per_page=3)
 or echo "Network request failed" && return 1
 set -l release (echo $_data | jq -rc 'map(select(.prerelease)) | first')
-test "$release" = null; and echo "Cannot fetch release data from GitHub API"\n"Raw data:"\n"$_data"; and return 1
-set -l _pkgver (echo $release | jq -r .name)
+test "$release" = null; and echo "Cannot fetch release data from GitHub API"\n"Raw data:"\n"$_data" && return 1
+set -l _pkgver (echo $release | jq -r .name | string trim -lcv)
 set -l assets (echo $release | jq -rc '.assets | map(select(.name | endswith(".pkg.tar.zst")))')
 for asset in (echo $assets | jq -r '.[] | "\(.name) \(.digest)"' | string replace -r '.+_linux_(x86_64|armv7h|aarch64)l?\.pkg\.tar\.zst sha256:' '$1 ')
     set -l asset (string split ' ' $asset)
