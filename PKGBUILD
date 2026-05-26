@@ -3,8 +3,8 @@
 pkgname=whisper.cpp-cuda-bin
 _upstream_pkgname=whisper.cpp
 pkgver=1.8.4
-pkgrel=10
-_libggml_pkgver=0.12.0
+pkgrel=11
+_libggml_pkgver=0.12.1
 _libggml_pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++ with NVIDIA CUDA optimizations"
 arch=('x86_64')
@@ -29,7 +29,7 @@ _asset_name="${pkgname}-${pkgver}-${pkgrel}-x86_64.tar.zst"
 source=(
   "${_asset_name}::${url}/releases/download/v${pkgver}-${pkgrel}/${_asset_name}"
 )
-sha256sums=('23af7e1bebad11a57aac131fb5b6d6c56b4e2ca9a4b327f2c73d18361b43fda6')
+sha256sums=('70253b5fa16c312a7eb8bffc2354d60336466f4c634ba00044ef9c919ec28488')
 
 package() {
   bsdtar -xf "${srcdir}/${_asset_name}" -C "${pkgdir}"
