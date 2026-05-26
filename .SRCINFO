@@ -1,7 +1,7 @@
 pkgbase = searchtool-gtk
 	pkgdesc = A generic GTK search tool and launcher
 	pkgver = 2.3.1
-	pkgrel = 1.314
+	pkgrel = 2.314
 	url = https://github.com/v--/searchtool-gtk
 	arch = any
 	license = Unlicense
@@ -20,6 +20,6 @@ pkgbase = searchtool-gtk
 	depends = python-pyicu
 	depends = python-wcmatch
 	source = https://github.com/v--/searchtool-gtk/archive/refs/tags/v2.3.1.tar.gz
-	sha256sums = 77718b3355131be7f57682b86d3d021a2a53b22463aa834a2af8071d2aaf657f
+	sha256sums = 95d69e5e41ec186137fb18419ffb71bd0d3f622f4d0fd09a614551c80b11df95
 
 pkgname = searchtool-gtk
