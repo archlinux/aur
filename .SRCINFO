@@ -1,0 +1,25 @@
+pkgbase = gbe_fork-bin
+	pkgdesc = Goldberg Steam Emulator fork — drop-in Steam API replacement for LAN multiplayer without Steam
+	pkgver = 2026_05_19
+	pkgrel = 1
+	url = https://github.com/Detanup01/gbe_fork
+	arch = x86_64
+	license = LGPL-3.0-only
+	depends = glibc
+	depends = bash
+	depends = gcc-libs
+	optdepends = lib32-gcc-libs: 32-bit native Linux game support
+	optdepends = lib32-glibc: 32-bit native Linux game support
+	optdepends = libx11: experimental overlay (native Linux x64)
+	optdepends = lib32-libx11: experimental overlay (native Linux x86)
+	optdepends = wine: running Windows games with the emulator
+	provides = gbe_fork
+	conflicts = gbe_fork
+	noextract = gbe_fork-bin-win-2026_05_19.7z
+	options = !debug
+	source = gbe_fork-bin-linux-2026_05_19.tar.bz2::https://github.com/Detanup01/gbe_fork/releases/download/release-2026_05_19/emu-linux-release.tar.bz2
+	source = gbe_fork-bin-win-2026_05_19.7z::https://github.com/Detanup01/gbe_fork/releases/download/release-2026_05_19/emu-win-release.7z
+	sha256sums = 89bc9f7e0a83f6dc0a5051fc0f342c9c5fbf9043efe574b570793a4de1a3a04e
+	sha256sums = 7be0ead31fb2d47747cc4c269a2e2f6c19ad393b238bf7ab56149944fc8af5bb
+
+pkgname = gbe_fork-bin
