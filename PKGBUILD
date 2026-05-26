@@ -7,7 +7,7 @@
 _pkgbase='logisim-evolution'
 pkgbase="${_pkgbase}-git"
 pkgname="${_pkgbase}-git"
-pkgver=4.0.0+117.r5706.20251231.fcd255195
+pkgver=4.1.0+135.r6037.20260526.6dbb73b33
 pkgrel=1
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
@@ -25,7 +25,8 @@ makedepends=(
   'gradle>=8.5'
   # 'java-environment>=21'  # Versioned dependency seems not to be honoured here; `yay` wants to install jdk-openjdk version 17 which gives 'gradle' error.
   'jdk-openjdk>=21'
-  'zopflipng-parallel'
+  'zopfli' # To size-reduce PNG files
+  'parallel' # To size-reduce PNG files
 )
 
 source=(
@@ -66,32 +67,42 @@ pkgver() {
 build() {
   cd "$srcdir/${_pkgbase}"
 
-  gradle --gradle-user-home "${srcdir}/.gradle" --no-daemon shadowJar
+  printf '%s\n' " --> Building with 'gradle shadowJar' ..."
+  gradle --gradle-user-home "${srcdir}/.gradle" --build-cache --no-configuration-cache --no-daemon --console verbose shadowJar
 
-  zopflipng-parallel -m -- build/resources/main/resources/logisim/img/*.png
+  printf '%s\n' " --> Size-optimising PNG files ..."
+  printf '%s\n' build/resources/main/resources/logisim/img/*.png | parallel -j "`nproc`" zopflipng -m -y {} {}
 }
 
 package() {
   cd "$srcdir/${_pkgbase}"
 
+  printf '%s\n' " --> Installing application ..."
+  local _appver
   _appver="$(grep -oP '(?<=^version = ).*$' gradle.properties | tr -d '-')"
   install -Dvm644 build/libs/logisim-evolution-${_appver}-all.jar \
       "${pkgdir}/usr/share/java/logisim-evolution/logisim-evolution.jar"
+  install -Dvm755 "${srcdir}/logisim-evolution.sh" "${pkgdir}/usr/bin/logisim-evolution"
 
+  printf '%s\n' " --> Installing MIME definitions ..."
   install -Dvm644 "${srcdir}/logisim-evolution.xml" "${pkgdir}/usr/share/mime/packages/logisim-evolution.xml"
+  printf '%s\n' " --> Installing .desktop file ..."
   install -Dvm644 "${srcdir}/logisim-evolution.desktop" "${pkgdir}/usr/share/applications/logisim-evolution.desktop"
 
+  printf '%s\n' " --> Installing icons ..."
+  local _icon
+  local _SIZE 
   for _icon in build/resources/main/resources/logisim/img/logisim-icon-[0-9]*.png; do
     _SIZE="$(basename "${_icon}" .png | awk -F- '{print $3}')"
     install -Dvm644 "build/resources/main/resources/logisim/img/logisim-icon-${_SIZE}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${_SIZE}x${_SIZE}/apps/logisim-evolution.png"
   done
 
-  install -Dvm755 "${srcdir}/logisim-evolution.sh" "${pkgdir}/usr/bin/logisim-evolution"
-
+  printf '%s\n' " --> Installing documentation ..."
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgbase}" git.log README.md CHANGES.md CITATION.cff
   cp -rv docs "${pkgdir}/usr/share/doc/${_pkgbase}/"
 
+  printf '%s\n' " --> Installing license ..."
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.md
   ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/doc/${_pkgbase}/LICENSE.md"
 }

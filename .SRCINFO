@@ -1,6 +1,6 @@
 pkgbase = logisim-evolution-git
 	pkgdesc = An educational tool for designing and simulating digital logic circuits.
-	pkgver = 4.0.0+117.r5706.20251231.fcd255195
+	pkgver = 4.1.0+135.r6037.20260526.6dbb73b33
 	pkgrel = 1
 	url = https://github.com/logisim-evolution/logisim-evolution
 	arch = any
@@ -8,11 +8,12 @@ pkgbase = logisim-evolution-git
 	makedepends = git
 	makedepends = gradle>=8.5
 	makedepends = jdk-openjdk>=21
-	makedepends = zopflipng-parallel
+	makedepends = zopfli
+	makedepends = parallel
 	depends = hicolor-icon-theme
 	depends = java-runtime
 	depends = sh
-	provides = logisim-evolution=4.0.0+117.r5706.20251231.fcd255195
+	provides = logisim-evolution=4.1.0+135.r6037.20260526.6dbb73b33
 	conflicts = logisim-evolution
 	source = logisim-evolution::git+https://github.com/logisim-evolution/logisim-evolution.git
 	source = logisim-evolution.xml
