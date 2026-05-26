@@ -1,7 +1,7 @@
 _godot_repo=https://github.com/godotengine/godot/releases/download
 # See Scripts/GodotVersion.cs
 _godot=4.6.2
-_system_godot=false
+_system_godot=${MAKEPKG_THRIVE_SYSTEM_GODOT:-false}
 
 pkgname=thrive
 pkgver=1.1.0
@@ -10,8 +10,7 @@ pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
 url="https://revolutionarygamesstudio.com/"
 license=("GPL-3.0-or-later AND LicenseRef-CCPL AND OFL-1.1")
-depends=("libxrender" "libxi" "libx11" "libglvnd" "libxinerama" "zlib" "libxrandr"
-         "libxext" "glibc" "libxcursor" "fontconfig" "gcc-libs")
+depends=("libgcc" "libstdc++" "glibc")
 makedepends=("git" "git-lfs" "dotnet-sdk-10.0" "cmake" "clang" "lld" "ninja" "jq" "python")
 source=("git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
         "git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git"
@@ -22,7 +21,9 @@ source=("git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
         "git+https://github.com/Revolutionary-Games/Arch.git")
 if "$_system_godot"
 then
-    makedepends+=("godot-mono" "godot-export-templates-linux-mono")
+    depends+=("brotli" "libpng" "miniupnpc" "libogg" "graphite" "pcre2" "openxr" "libtheora" "libwebp" "libvorbis"
+              "embree" "freetype2" "zlib" "zstd")
+    makedepends+=("godot-mono" "godot-mono-export-templates-linux")
 else
     source_x86_64+=("godot-$_godot-x86_64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_x86_64.zip")
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
@@ -89,7 +90,8 @@ prepare(){
                 Scripts/GodotVersion.cs \
                 Thrive.csproj
         fi
-        cp "/usr/share/godot/export_templates/." "$templates"
+        cp -r "/usr/share/godot/export_templates/$installed_godot.stable.mono" "$templates"
+        echo "$installed_godot.stable.mono" > "$templates/$installed_godot.stable.mono/version.txt"
     fi
     local _build_info_path="$srcdir/Thrive/simulation_parameters/revision.json"
     local _commit _branch _built_at _dev_build
