@@ -4,7 +4,7 @@ _base=numba-mpi
 pkgname=python-${_base}
 pkgdesc="Numba @njittable MPI wrappers tested on Linux, macOS and Windows"
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 arch=(any)
 url="https://github.com/${_base}/${_base}"
 license=(GPL-3.0-or-later)
@@ -26,8 +26,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  mpiexec -np 2 test-env/bin/python -m pytest -k 'not test_paper_listings[files3]' \
-    --ignore=tests/api/test_isend_irecv.py
+  mpiexec -np 2 test-env/bin/python -m pytest -k 'not test_paper_listings[files3] and not test_wall_segfault'
 }
 
 package() {
