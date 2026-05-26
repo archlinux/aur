@@ -1,6 +1,6 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=posthog-cli
-pkgver=0.7.11
+pkgver=0.7.13
 pkgrel=1
 pkgdesc="The command line interface for PostHog"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/PostHog/posthog/archive/refs/tags/posthog-cli%2Fv$pkgver.tar.gz")
-sha256sums=('47de18fccb9ce7eda0c9de27db588497086dde103f840f5f52680bff60bc31e6')
+sha256sums=('b16df439c856f56ea45927f40c3ed58f4d0b012eacc10f69c2bf68eb8117bf33')
 
 _srcdir="posthog-posthog-cli-v$pkgver"
 
