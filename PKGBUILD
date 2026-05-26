@@ -3,8 +3,8 @@
 
 pkgname=zju-connect-bin
 _pkgname=zju-connect
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Go client for ZJU RVPN"
 arch=("i686" "x86_64" "armv7h" "aarch64" "riscv64")
 url="https://github.com/Mythologyli/zju-connect"
