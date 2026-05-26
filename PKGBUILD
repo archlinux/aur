@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ulogviewer-bin
 _pkgname=ULogViewer
-pkgver=4.1.7.411
+pkgver=2026.0.4
 pkgrel=1
 pkgdesc="Universal Log Viewer,supports reading, parsing and analysing various type of logs.(Prebuilt version)"
 arch=(
@@ -36,8 +36,8 @@ source=(
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
             '08c0a423317a93a254a6d6fbcb0575e8dde202ce46f5126dbf03eb58e02c8851')
-sha256sums_aarch64=('a3e0db2b299687a728f5a14c9d4320a51290e0af3b284111b8eac1b890375454')
-sha256sums_x86_64=('505c8172e31552316973e85eba180070b59476f270a453e0b4ab6e8ca89880ee')
+sha256sums_aarch64=('f506ec35558035de23b3c2263884879286f6fb9990c4f9a52ac620915f712c37')
+sha256sums_x86_64=('4c6e19d409cb1bc79ea48944f4e3ba7f326aab82a15b472802455707a5e47777')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -53,6 +53,7 @@ prepare() {
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
     chmod 755 "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}"
     rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/__MACOSX"
+    touch "{PersistentState.json,Settings.json}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
@@ -60,4 +61,5 @@ package() {
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm777 "${srcdir}/"*.json -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 }
