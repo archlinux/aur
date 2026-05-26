@@ -1,6 +1,6 @@
 pkgbase = echo-music-bin
 	pkgdesc = A minimalist third-party Kugou concept music player. (Prebuilt version. Use system-wide electron)🎉 一个简约的第三方酷狗概念版音乐播放器
-	pkgver = 2.2.3
+	pkgver = 2.2.4
 	pkgrel = 1
 	url = https://github.com/hoowhoami/EchoMusic
 	arch = aarch64
@@ -8,18 +8,18 @@ pkgbase = echo-music-bin
 	license = MIT
 	makedepends = asar
 	depends = electron42
-	provides = echo-music=2.2.3
+	provides = echo-music=2.2.4
 	conflicts = echo-music
 	conflicts = echomusic
 	conflicts = echomusic-appimage
 	options = !emptydirs
-	source = LICENSE-2.2.3::https://raw.githubusercontent.com/hoowhoami/EchoMusic/v2.2.3/LICENSE
+	source = LICENSE-2.2.4::https://raw.githubusercontent.com/hoowhoami/EchoMusic/v2.2.4/LICENSE
 	source = echo-music.sh
 	sha256sums = 8b9f721a54a564c55de17c8082a2a6466568309b5a026a989f12a711bb78edbf
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = echo-music-2.2.3-aarch64.rpm::https://github.com/hoowhoami/EchoMusic/releases/download/v2.2.3/EchoMusic-2.2.3-linux-aarch64.rpm
-	sha256sums_aarch64 = 537693e69f2cc1ddc749b5a83f550dc5725baa4b94e3edbd6418a488affa2277
-	source_x86_64 = echo-music-2.2.3-x86_64.rpm::https://github.com/hoowhoami/EchoMusic/releases/download/v2.2.3/EchoMusic-2.2.3-linux-x86_64.rpm
-	sha256sums_x86_64 = caa0396ef4531d3a0635fa5eda6b5c54a864c021e75a746b7da707139f2fc2fd
+	source_aarch64 = echo-music-2.2.4-aarch64.rpm::https://github.com/hoowhoami/EchoMusic/releases/download/v2.2.4/EchoMusic-2.2.4-linux-aarch64.rpm
+	sha256sums_aarch64 = 5e1deaa356497d38af11cd14c39942011a6db52cfefed9510ac7ab8f8ddf7401
+	source_x86_64 = echo-music-2.2.4-x86_64.rpm::https://github.com/hoowhoami/EchoMusic/releases/download/v2.2.4/EchoMusic-2.2.4-linux-x86_64.rpm
+	sha256sums_x86_64 = 03036e6e3cd85a701d8969264fbd2b7d8a9612b3bbeba3ba16046be28d6a4e31
 
 pkgname = echo-music-bin

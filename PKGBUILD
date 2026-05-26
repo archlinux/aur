@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=echo-music-bin
 _pkgname=EchoMusic
-pkgver=2.2.3
+pkgver=2.2.4
 _electronversion=42
 pkgrel=1
 pkgdesc="A minimalist third-party Kugou concept music player. (Prebuilt version. Use system-wide electron)🎉 一个简约的第三方酷狗概念版音乐播放器"
@@ -34,8 +34,8 @@ source_aarch64=( "${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/downloa
 source_x86_64=( "${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('8b9f721a54a564c55de17c8082a2a6466568309b5a026a989f12a711bb78edbf'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('537693e69f2cc1ddc749b5a83f550dc5725baa4b94e3edbd6418a488affa2277')
-sha256sums_x86_64=('caa0396ef4531d3a0635fa5eda6b5c54a864c021e75a746b7da707139f2fc2fd')
+sha256sums_aarch64=('5e1deaa356497d38af11cd14c39942011a6db52cfefed9510ac7ab8f8ddf7401')
+sha256sums_x86_64=('03036e6e3cd85a701d8969264fbd2b7d8a9612b3bbeba3ba16046be28d6a4e31')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
