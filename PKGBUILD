@@ -3,8 +3,8 @@
 
 pkgname=deepseek-tui-git
 _pkgname=deepseek-tui
-pkgver=0.8.40.r2.g1ca495f5
-pkgrel=3
+pkgver=0.8.45.r0.g325aec39
+pkgrel=1
 pkgdesc="Terminal coding agent for DeepSeek models - git version"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Hmbown/DeepSeek-TUI"
@@ -15,9 +15,10 @@ optdepends=('bash-completion: bash completions'
             'zsh: zsh completions'
             'fish: fish completions')
 makedepends=('cargo' 'pkgconf')
-provides=('deepseek-tui' 'deepseek')
-conflicts=('deepseek-tui' 'deepseek-tui-bin')
+provides=('codewhale-tui' 'codewhale')
+conflicts=('codewhale-tui' 'codewhale-tui-bin')
 
+install="$pkgname.install"
 source=("$_pkgname::git+https://github.com/Hmbown/DeepSeek-TUI.git")
 sha256sums=('SKIP')
 
@@ -44,19 +45,19 @@ package() {
     cd "$srcdir/$_pkgname"
 
     # Install binaries
-    install -Dm755 target/release/deepseek "$pkgdir/usr/bin/deepseek"
-    install -Dm755 target/release/deepseek-tui "$pkgdir/usr/bin/deepseek-tui"
+    install -Dm755 target/release/codewhale "$pkgdir/usr/bin/codewhale"
+    install -Dm755 target/release/codewhale-tui "$pkgdir/usr/bin/codewhale-tui"
 
     # Generate shell completions
-    ./target/release/deepseek completion bash > deepseek.bash
-    install -Dm644 deepseek.bash "$pkgdir/usr/share/bash-completion/completions/deepseek"
+    ./target/release/codewhale completion bash > codewhale.bash
+    install -Dm644 codewhale.bash "$pkgdir/usr/share/bash-completion/completions/codewhale"
 
     # Install zsh and fish completions (optdepends tells users about them)
-    ./target/release/deepseek completion zsh > _deepseek
-    install -Dm644 _deepseek "$pkgdir/usr/share/zsh/site-functions/_deepseek"
+    ./target/release/codewhale completion zsh > _codewhale
+    install -Dm644 _codewhale "$pkgdir/usr/share/zsh/site-functions/_codewhale"
 
-    ./target/release/deepseek completion fish > deepseek.fish
-    install -Dm644 deepseek.fish "$pkgdir/usr/share/fish/vendor_completions.d/deepseek.fish"
+    ./target/release/codewhale completion fish > codewhale.fish
+    install -Dm644 codewhale.fish "$pkgdir/usr/share/fish/vendor_completions.d/codewhale.fish"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
