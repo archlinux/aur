@@ -1,7 +1,7 @@
-From afb6070deb28f01fd43462f45c40688bbd058cbc Mon Sep 17 00:00:00 2001
+From dc86c4821a76d78e6cd814d49a96abf3496d093e Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Fri, 16 Jan 2026 05:31:53 +0100
-Subject: [PATCH 2/5] git-ref-format: fix macros for !debug_assertions
+Subject: [PATCH 2/4] git-ref-format: fix macros for !debug_assertions
 
 ---
  crates/radicle-git-ref-format/src/lib.rs | 8 +++++---
@@ -55,5 +55,5 @@ index e7df4b25..5eb6eefb 100644
  
              use $crate::refspec::{PatternStr, PatternString};
 -- 
-2.53.0.8.g57fba0c4633
+2.54.0.8.g54385fd153
 

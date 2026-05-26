@@ -1,7 +1,7 @@
-From ff04eb89835b2ab9237c06de36799f6c63db6ab9 Mon Sep 17 00:00:00 2001
+From ee23116141aa2074821bbefc1895a210ffa4dd4d Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Fri, 16 Jan 2026 06:06:36 +0100
-Subject: [PATCH 3/5] git-ref-format: support tests with !debug_assertions
+Subject: [PATCH 3/4] git-ref-format: support tests with !debug_assertions
 
 ---
  crates/radicle-git-ref-format/src/lib.rs | 20 ++++++++++----------
@@ -102,5 +102,5 @@ index 5eb6eefb..0a7d491e 100644
              extern crate alloc;
  
 -- 
-2.53.0.8.g57fba0c4633
+2.54.0.8.g54385fd153
 
