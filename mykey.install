@@ -6,12 +6,13 @@ Recommended next steps:
     1. Run the unified auth setup:
        sudo mykey auth setup
 
-    2. Optionally enroll MyKey as your Secret Service provider:
-       mykey migrate enroll
+    2. If you want MyKey to provide Secret Service for new secrets,
+       disable any conflicting Secret Service provider, then enable
+       the MyKey user service:
+       systemctl --user enable --now mykey-secrets
 
-       Do not manually enable mykey-secrets first on initial setup.
-       The migration flow will enable/start the service after
-       proper provider handoff.
+       MyKey does not import third-party keyrings. Recreate secrets
+       in MyKey after switching providers.
 
     3. Optionally enable the tray:
        mykey tray enable

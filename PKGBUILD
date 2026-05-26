@@ -47,7 +47,6 @@ build() {
   cargo build --manifest-path mykey/Cargo.toml --release
   cargo build --manifest-path mykey-tray/Cargo.toml --release
   cargo build --manifest-path mykey-secrets/Cargo.toml --release
-  cargo build --manifest-path mykey-migrate/Cargo.toml --release
   cargo build --manifest-path mykey-auth/mykey-pin/Cargo.toml --release
   cargo build --manifest-path mykey-auth/mykey-pam/Cargo.toml --release
   cargo build --manifest-path mykey-auth/mykey-biometrics/Cargo.toml --release
@@ -78,8 +77,6 @@ package() {
     "${pkgdir}/usr/bin/mykey-tray"
   install -Dm755 "${srcdir}/target/release/mykey-secrets" \
     "${pkgdir}/usr/bin/mykey-secrets"
-  install -Dm755 "${srcdir}/target/release/mykey-migrate" \
-    "${pkgdir}/usr/bin/mykey-migrate"
   install -Dm755 "${srcdir}/target/release/mykey-pin" \
     "${pkgdir}/usr/bin/mykey-pin"
   install -Dm755 "${srcdir}/target/release/mykey-pin-auth" \
@@ -125,6 +122,8 @@ package() {
     "${pkgdir}/usr/share/libalpm/hooks/90-mykey-post-install.hook"
   install -Dm644 packaging/arch/90-mykey-post-upgrade.hook \
     "${pkgdir}/usr/share/libalpm/hooks/90-mykey-post-upgrade.hook"
+  install -Dm644 packaging/arch/95-mykey-auth-reapply.hook \
+    "${pkgdir}/usr/share/libalpm/hooks/95-mykey-auth-reapply.hook"
   install -Dm644 LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
