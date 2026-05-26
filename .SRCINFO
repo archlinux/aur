@@ -1,4 +1,4 @@
-pkgbase = xmm7360-dkms
+pkgbase = xmm7360-pci-dkms
 	pkgdesc = Intel XMM7360 / Fibocom L850 LTE modem driver (DKMS) with RPC init tool
 	pkgver = 1.0.0
 	pkgrel = 1
