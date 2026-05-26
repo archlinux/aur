@@ -1,0 +1,3 @@
+[perl-http-xsheaders]
+source = "cpan"
+cpan = "HTTP-XSHeaders"
