@@ -8,3 +8,5 @@
 !mautrix-discord.service
 !mautrix-discord.tmpfiles
 !sysusers-mautrix-discord.conf
+
+!.gitignore
