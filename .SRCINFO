@@ -1,0 +1,19 @@
+pkgbase = vmod-digest
+	pkgdesc = Varnish Module for computing HMAC, message digests and working with base64
+	pkgver = 9.0.3
+	pkgrel = 2
+	url = https://github.com/varnish/libvmod-digest
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = autoconf-archive
+	makedepends = pkg-config
+	makedepends = python-docutils
+	depends = varnish=9.0.3-2
+	depends = mhash
+	source = libvmod-digest-libvmod-digest-1.0.3.tar.gz::https://github.com/varnish/libvmod-digest/archive/refs/tags/libvmod-digest-1.0.3.tar.gz
+	sha512sums = 352c91613e51e98a034f04382e42b52992c4bb88d26cb38d7577a0523acbd6de549898ff159c67e9f2aeeb60a5b9025bd2b34c67da9ef3de5af95bfaa7b0cb58
+
+pkgname = vmod-digest
