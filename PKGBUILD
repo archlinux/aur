@@ -1,6 +1,6 @@
 # Maintainer: rezky_nightky <rezky2399@proton.me>
 pkgname=zejtron-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Small Linux terminal toolkit for tracing paths, ports, env, recent files, and services"
 arch=('x86_64' 'aarch64')
