@@ -1,6 +1,6 @@
 pkgbase = arch-update
 	pkgdesc = An interactive update notifier & applier that assists you with important pre / post update tasks
-	pkgver = 3.19.5
+	pkgver = 3.19.6
 	pkgrel = 1
 	url = https://github.com/Antiz96/arch-update
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = arch-update
 	optdepends = sudo: Privilege elevation
 	optdepends = sudo-rs: Privilege elevation
 	optdepends = opendoas: Privilege elavation
-	source = arch-update-3.19.5.tar.gz::https://github.com/Antiz96/arch-update/archive/v3.19.5.tar.gz
-	sha256sums = b998550929a3bdf82f25fce61c8adf1266ce6f94ce7b62ea389ab04c20a34418
+	source = arch-update-3.19.6.tar.gz::https://github.com/Antiz96/arch-update/archive/v3.19.6.tar.gz
+	sha256sums = cc3dc05a751cec71789ce30f135c8c7d38b6e53f238d7a7f5c2e1a90589a02e4
 
 pkgname = arch-update
