@@ -11,7 +11,7 @@
 
 _qt_module=qtscript
 pkgname=mingw-w64-qt5-script
-_basever=5.15.17
+_basever=5.15.19
 pkgver=5.15.19
 pkgrel=1
 arch=('any')
