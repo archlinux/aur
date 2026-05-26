@@ -1,0 +1,14 @@
+pkgbase = vmod-querystring
+	pkgdesc = QueryString module for Varnish Cache
+	pkgver = 9.0.3
+	pkgrel = 2
+	url = https://github.com/Dridi/libvmod-querystring
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = pkg-config
+	makedepends = python-docutils
+	depends = varnish=9.0.3-2
+	source = vmod-querystring-2.0.4.tar.gz::https://git.sr.ht/~dridi/vmod-querystring/refs/download/vmod-querystring-2.0.4/vmod-querystring-2.0.4.tar.gz
+	sha512sums = 609e333279f761e4bb4867f4541003eccf71df06ff4631834e66f3b384d49e1e66dd7fa7ff500717b4a7db215838418f05406a431d19af7e03a61321646422cf
+
+pkgname = vmod-querystring
