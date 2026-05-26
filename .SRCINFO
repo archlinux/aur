@@ -1,6 +1,6 @@
 pkgbase = ymn-git
 	pkgdesc = Yomuna visual novel transcript and flashcard tool
-	pkgver = 0.1.11.r0.gcf19ab5
+	pkgver = 0.1.12.r0.g20e55ea
 	pkgrel = 1
 	url = https://github.com/DarlingGoose/ymn
 	arch = x86_64
