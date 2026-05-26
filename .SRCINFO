@@ -1,6 +1,6 @@
 pkgbase = python-bloom
 	pkgdesc = Bloom is a release automation tool.
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/ros-infrastructure/bloom
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-bloom
 	depends = python-empy3
 	depends = python-rosdep
 	depends = python-vcstool
-	source = python-bloom::git+https://github.com/ros-infrastructure/bloom.git#tag=0.14.1
-	sha256sums = 1da1a9d59fd4002393049c31c657ca9ab2eda1510b302f6f5e6d960f49ba687a
+	source = python-bloom::git+https://github.com/ros-infrastructure/bloom.git#tag=0.14.2
+	sha256sums = 161f361ef777679a5a28470ed6da9b684716878ca812e449aac4bdda4ecbe9d6
 
 pkgname = python-bloom
