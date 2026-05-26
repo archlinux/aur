@@ -1,0 +1,5 @@
+[guesswidth-bin]
+source = "github"
+github = "noborus/guesswidth"
+use_latest_release = true
+prefix = "v"
