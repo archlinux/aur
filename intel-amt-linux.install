@@ -1,0 +1,21 @@
+post_install() {
+    echo ""
+    echo "==> intel-amt-linux installed."
+    echo ""
+    echo "    First launch downloads Intel(r) Manageability Commander from Intel."
+    echo "    Network required (~45MB). Stored under /opt/intel-amt-linux/upstream/."
+    echo ""
+    echo "    Credential vault: install 'libsecret' (GNOME) or 'kwallet' (KDE)"
+    echo "    for OS keyring encryption of saved AMT passwords."
+    echo ""
+    echo "    Same-machine AMT access via /dev/mei0 requires 'docker' (LMS container)."
+    echo ""
+    echo "    Run: intel-amt-linux"
+    echo "    Docs: https://github.com/88plug/intel-amt-linux"
+    echo "    Issues: https://github.com/88plug/intel-amt-linux/issues"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
