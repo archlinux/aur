@@ -1,18 +1,17 @@
 pkgbase = ny-cli
-	pkgdesc = Terminal-based anime streaming client with self-hosted scraping via aniwatch
-	pkgver = 3.0.3
+	pkgdesc = Beautiful terminal anime streaming client with artwork display, cloud sync, and watch progress tracking
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://github.com/AnjishnuSengupta/ny-cli
 	arch = any
 	license = MIT
 	depends = nodejs>=18
 	depends = npm
-	depends = grep
-	depends = sed
-	optdepends = mpv: recommended video player
+	optdepends = mpv: recommended video player with IPC support
 	optdepends = vlc: alternative video player
-	optdepends = fzf: fuzzy finder for better menus
-	source = ny-cli-3.0.3.tar.gz::https://github.com/AnjishnuSengupta/ny-cli/archive/v3.0.3.tar.gz
+	optdepends = chafa: terminal image rendering for artwork display
+	optdepends = bun: enhanced terminal UI experience
+	source = ny-cli-5.5.0.tar.gz::https://github.com/AnjishnuSengupta/ny-cli/archive/v5.5.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = ny-cli
