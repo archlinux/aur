@@ -1,11 +1,11 @@
 # Maintainer: HarryLoong <local>
 
 pkgname=epson-inkjet-printer-escpr2-clos-bin
-pkgver=1.1.13
-pkgrel=2
-pkgdesc='Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux, CLOS/Kylin binary package'
+pkgver=1.1.12
+pkgrel=1
+pkgdesc='Epson ESC/P-R2 printer driver (L8050/L8058/L6160 etc.), from UOS signed DEB'
 arch=('x86_64' 'aarch64')
-url='https://www.epson.com.cn/drive/97ee5dd695ea4b3295b8a62e90b445b7.html?productId=53ce92f1e56342f8b89981ee9b461572'
+url='https://www.epson.com.cn/services/supportproduct.html?p=53ce92f1e56342f8b89981ee9b461572&tab=1'
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later' 'custom:Epson')
 depends=('cups' 'glibc' 'libcups')
 optdepends=('colord: color profile support')
@@ -15,14 +15,15 @@ conflicts=('epson-inkjet-printer-escpr2')
 options=('!debug' '!strip')
 
 _pkgver=${pkgver//./_}
-_baseurl='https://eposs.epson.com.cn/EPSON/assets/resource/Download/Service/driver/Inkjet/L6276'
-_debname="epson-inkjet-printer-escpr2_${_pkgver}_CLOS"
+_uosver=21
+_baseurl='https://eposs.epson.com.cn/EPSON/assets/resource/Download/Service/driver/Inkjet/L8058'
+_debname="signed_epson-inkjet-printer-escpr2_${_pkgver}_UOS_${_uosver}"
 
 source_x86_64=("${_debname}_amd64.deb::${_baseurl}/${_debname}_amd64.deb")
 source_aarch64=("${_debname}_arm64.deb::${_baseurl}/${_debname}_arm64.deb")
 
-sha256sums_x86_64=('a93363290eb9a0ad857d7d3606c1bf48a386f6ca9df0376582da3188103b9c04')
-sha256sums_aarch64=('ff114d0d0981f6b7ce4a80264c092449a3d1673e201d0ce1051d5e1d067a68e8')
+sha256sums_x86_64=('b28f668b8a6248ce2dc950af6904ec5b4ec138d99b87a61bb3de5241d5021a3c')
+sha256sums_aarch64=('b5262ea984320a1404561c479895c43ac4bc0f07ffda9e0216e7404a800bcfca')
 
 noextract=("${_debname}_amd64.deb" "${_debname}_arm64.deb")
 
@@ -34,11 +35,11 @@ elif [ "$CARCH" = "aarch64" ]; then
 fi
 
 prepare() {
-  ar x "${_srcdeb}" data.tar.gz
+  ar x "${_srcdeb}" data.tar.xz
 }
 
 package() {
-  tar --no-same-owner -xzf data.tar.gz -C "${pkgdir}"
+  tar --no-same-owner -xJf data.tar.xz -C "${pkgdir}"
 
   rm -f "${pkgdir}/usr/lib/libescpr2.a"
   rm -f "${pkgdir}/usr/lib/libescpr2.la"
