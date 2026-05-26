@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Eric Bakker <musqz at mf dot com>
 pkgname=forum-scout
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Arch focused forum search tool"
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   'python-requests'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2829320f41901d046fd3e4e4821cbdf399f5e36c6a2974c3374f18b3c86b2390')
+sha256sums=('843f6ae4964adbee049054f4bdebff4c1203460a04603a264333dc916ede389c')
 
 prepare() {
   cd "$pkgname-$pkgver"
