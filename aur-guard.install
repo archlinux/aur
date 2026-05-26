@@ -1,3 +1,13 @@
+_shim_marker='AUR-GUARD-SHIM-MARKER'
+_active_shim='/usr/local/bin/makepkg'
+_shipped_shim='/usr/share/aur-guard/makepkg-shim'
+
+# True iff $_active_shim exists AND contains our marker (i.e. is OUR shim,
+# not a user-written wrapper or another tool's shim).
+_is_our_shim() {
+    [[ -f "$_active_shim" ]] && grep -q "$_shim_marker" "$_active_shim" 2>/dev/null
+}
+
 post_install() {
     cat << 'EOF'
 
@@ -18,6 +28,10 @@ post_install() {
       which makepkg          # → /usr/local/bin/makepkg
       makepkg --version      # should still print the real makepkg version
 
+  Subsequent upgrades of this package will refresh the active shim automatically.
+  Uninstalling this package will also remove the active shim automatically
+  (only if it is still ours — a user-modified shim is left alone).
+
   ── Disable temporarily ───────────────────────────────────────────────────────
       AUR_GUARD_DISABLE=1 yay -S <pkg>
       AUR_GUARD_DISABLE=1 makepkg -si
@@ -29,18 +43,43 @@ EOF
 }
 
 post_upgrade() {
-    post_install
+    # If the user has activated our shim, refresh it in place. We can only do
+    # this safely because the marker proves the file is ours.
+    if _is_our_shim; then
+        if install -m0755 "$_shipped_shim" "$_active_shim"; then
+            echo "  aur-guard :: refreshed active shim at $_active_shim"
+        else
+            echo "  aur-guard :: failed to refresh shim at $_active_shim — refresh manually" >&2
+        fi
+    elif [[ -e "$_active_shim" ]]; then
+        echo "  aur-guard :: $_active_shim exists but is not our shim — left untouched"
+    fi
+}
+
+pre_remove() {
+    # Mirror of post_upgrade: only touch the active shim if we can prove it's
+    # ours. A user-written /usr/local/bin/makepkg is left alone.
+    if _is_our_shim; then
+        if rm -f "$_active_shim"; then
+            echo "  aur-guard :: removed shim from $_active_shim"
+        else
+            echo "  aur-guard :: failed to remove $_active_shim — remove manually" >&2
+        fi
+    elif [[ -e "$_active_shim" ]]; then
+        cat >&2 << EOF
+
+  aur-guard :: $_active_shim exists but is NOT our shim — leaving it alone.
+              If you put it there yourself and want it gone:
+                  sudo rm $_active_shim
+
+EOF
+    fi
 }
 
 post_remove() {
     cat << 'EOF'
 
-  If you installed the makepkg shim manually, remove it now:
-
-      sudo rm /usr/local/bin/makepkg
-
-  The pacman hook in /usr/share/libalpm/hooks/aur-guard.hook was removed
-  with the package.
+  aur-guard removed. The pacman hook is gone with the package.
 
 EOF
 }
