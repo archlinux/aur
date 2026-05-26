@@ -14,7 +14,7 @@ pkgbase = singcast
 	source_x86_64 = singcast-1.1.0_beta6-x86_64.zip::https://github.com/mapleafgo/clash-for-flutter/releases/download/v1.1.0-beta6/singcast-1.1.0-beta6-linux-amd64.zip
 	source_x86_64 = singcast.desktop
 	source_x86_64 = singcast.svg
-	sha256sums_x86_64 = 9a05eeaba1c43cceacc96f7015f041762ddde0d4afc6cf52c3d745d4fde4d1d2
+	sha256sums_x86_64 = 0f2c2db61777b97ba6112128cf26da9017827bbaff2d4cd3454d7b84f3003a04
 	sha256sums_x86_64 = f14d52960b535f9d31d24f08e9b248f3f70f70bfadc4ea58bb57f4d12b711ee9
 	sha256sums_x86_64 = 289d9ffd1ea9b24928bea1a0936d9a1125e7f3d9e2d7341e353ce5c42d405f09
 
