@@ -3,7 +3,7 @@
 pkgbase=python-romanisim
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Nancy Grace Roman Space Telescope WFI Simulator"
 arch=('i686' 'x86_64')
@@ -19,6 +19,7 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-numpydoc'
              'python-astropy-healpix'
 ##           'python-astroquery'
+             'python-crds'
              'python-galsim'
              'python-photutils'
              'python-roman-datamodels'
@@ -26,17 +27,18 @@ makedepends=('python-setuptools-scm>=3.4'
 # takes long time and needs big data
 # @pytest.mark.bigdata: ci_watson
 #checkdepends=(
+#'python-pytest-doctestplus'
 #'python-ci_watson'
 #             'python-pytest-xdist'
 #             'python-pytest-timeout'
 #              'python-defusedxml'
-##              'python-crds'
 #              'python-stpsf'
-#              )   # galsim, roman-datamodels, scipy <- photutils, astropy-healpix, astroquery
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-#       "https://stsci.box.com/shared/static/kqfolg2bfzqc4mjkgmujo06d3iaymahv.gz"
-#   )
-md5sums=('cd2b0e406d9832b0f1ad5d4ce10cff3b')
+#              )   # galsim, roman-datamodels, crds, scipy <- photutils, astropy-healpix, astroquery
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+       "https://stsci.box.com/shared/static/kqfolg2bfzqc4mjkgmujo06d3iaymahv.gz"
+   )
+md5sums=('3ed1df89433abcf1f5248c545d0bb9e3'
+         'b5cc6fe3fe5c7ae4dfe413691338a05a')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -56,8 +58,9 @@ build() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
 #    # deselect tests that may take long time
-#    mkdir .crds
-#    STPSF_PATH=${srcdir}/stpsf-data CRDS_PATH="${srcdir}/${_pyname}-${pkgver}/.crds" CRDS_SERVER_URL=https://roman-crds.stsci.edu pytest -vv -l -ra --color=yes -o console_output_style=count "build/lib.linux-${CARCH}-cpython-$(get_pyver)" -p xdist -n 4 --timeout 300 \
+##   mkdir .crds
+##   STPSF_PATH=${srcdir}/stpsf-data CRDS_PATH="${srcdir}/${_pyname}-${pkgver}/.crds" CRDS_SERVER_URL=https://roman-crds.stsci.edu pytest -vv -l -ra --color=yes -o console_output_style=count "build/lib.linux-${CARCH}-cpython-$(get_pyver)" -p xdist -n 4 --timeout 300 \
+#    STPSF_PATH=${srcdir}/stpsf-data pytest -vv -l -ra --color=yes -o console_output_style=count "build/lib.linux-${CARCH}-cpython-$(get_pyver)" -p xdist -n 4 --timeout 300 \
 #        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/romanisim/tests/test_l3.py::test_scaling \
 #        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/romanisim/tests/test_psf.py::test_make_psf[args8-kwargs8-None] \
 #        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/romanisim/tests/test_psf.py::test_make_psf[args2-kwargs2-None] \
