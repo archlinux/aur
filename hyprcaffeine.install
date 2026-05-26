@@ -32,7 +32,7 @@ post_install() {
     fi
 
     echo "  Running user setup for: $_user"
-    # hyprcaffeine setup skips polkit if already installed (avoids sudo prompt)
+    # polkit is already installed above as root; setup handles waybar/systemd/keybinds
     runuser -l "$_user" -c "hyprcaffeine setup" 2>/dev/null || \
         echo "  Run 'hyprcaffeine setup' to complete configuration."
     echo ""

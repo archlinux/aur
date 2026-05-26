@@ -1,7 +1,7 @@
 # Maintainer: Hans-Dieter Buddenberg <hbuddenberg@gmail.com>
 pkgname=hyprcaffeine
-pkgver=0.8.3
-pkgrel=1
+pkgver=0.8.4
+pkgrel=2
 pkgdesc='☕ Idle inhibition utility for Hyprland — caffeine for your Wayland compositor'
 arch=(any)
 url='https://github.com/hbuddenberg/hyprcaffeine'
@@ -13,8 +13,8 @@ optdepends=(
     'walker: menu frontend'
 )
 install=hyprcaffeine.install
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b6d0cd7860f354e156b88a66dea911df907c137b7e6b27f5843419cd6fb6b447')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v0.8.4-2/$pkgname-$pkgver.tar.gz")
+sha256sums=('0ae0aecb569c64365719a504f78431891f7ba5e98df6267bdb711b95a3a88221')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver" || return
