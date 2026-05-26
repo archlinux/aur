@@ -1,0 +1,16 @@
+pkgbase = controller-manager
+	pkgdesc = GUI for viewing connected game controllers and testing inputs on Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bandyburrito/ControllerManagerArch
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python>=3.10
+	depends = python-pyqt6
+	depends = python-evdev
+	depends = python-pyudev
+	source = controller-manager-0.1.0.tar.gz::https://github.com/bandyburrito/ControllerManagerArch/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 56a96e4b5de8203007fd2eda01746c4b3d287017f2dcc240f7181e36de7e2cc6
+
+pkgname = controller-manager
