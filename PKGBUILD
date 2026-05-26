@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=gnome-shell-extension-wintile
-pkgver=2026.03.22
+pkgver=2026.05.26
 pkgrel=1
 pkgdesc="Windows 10 window tiling for GNOME"
 arch=('any')
@@ -13,11 +13,11 @@ makedepends=(
   'zip'
 )
 source=("wintile-$pkgver-1.tar.gz::https://github.com/fmstrat/wintile/archive/v$pkgver-1.tar.gz")
-sha256sums=('ec0c6cb8f965a70b2b893f6d475c51817bb9f2e247db66fba3aeffbe388f866a')
+sha256sums=('038a36397a803b3550621ffd32aabee0be75ad8c4a26890d9cdb4ee6ef10382d')
 
 build() {
   cd "wintile-$pkgver-1"
-  sh build.sh
+  sh bin/build.sh
 }
 
 package() {
