@@ -1,6 +1,6 @@
 pkgbase = cronicle
 	pkgdesc = A simple, distributed task scheduler and runner
-	pkgver = 0.9.116
+	pkgver = 0.9.117
 	pkgrel = 1
 	url = https://github.com/jhuckaby/Cronicle
 	install = cronicle.install
@@ -11,9 +11,9 @@ pkgbase = cronicle
 	provides = cronicle
 	backup = opt/cronicle/conf/config.json
 	backup = usr/lib/systemd/system/cronicle.service
-	source = https://github.com/jhuckaby/Cronicle/archive/refs/tags/v0.9.116.tar.gz
+	source = https://github.com/jhuckaby/Cronicle/archive/refs/tags/v0.9.117.tar.gz
 	source = cronicle.service
-	sha256sums = e5b732789c55990b2707344ec7a295e684f3fc625e628ff1c68c4b44923cd621
+	sha256sums = 336e7db87f35d2d1f07566d5382beaadbc19fb484962b2f83b50379228c7285e
 	sha256sums = 62a03d25afa12fd53e3cb0a81fa8b16e6a82c2be4a8a96dd79ebb976a2705315
 
 pkgname = cronicle
