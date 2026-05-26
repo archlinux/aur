@@ -1,6 +1,9 @@
-*
+/*
 
-!.gitignore
-!LICENSE
-!PKGBUILD
-!.SRCINFO
+!/.gitignore
+!/LICENSE
+!/LICENSES/
+!/REUSE.toml
+!/PKGBUILD
+!/.SRCINFO
+!/yukigram-bin.install

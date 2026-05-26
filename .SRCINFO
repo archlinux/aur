@@ -1,8 +1,9 @@
 pkgbase = yukigram-bin
 	pkgdesc = Telegram Desktop, minus the bullshit, plus the features
-	pkgver = 6.8.2.2
+	pkgver = 6.8.2.3
 	pkgrel = 1
 	url = https://github.com/yukigram/yukigram
+	install = yukigram-bin.install
 	arch = x86_64
 	license = GPL-3.0-or-later WITH sqlitestudio-OpenSSL-exception
 	depends = glibc
@@ -16,9 +17,10 @@ pkgbase = yukigram-bin
 	optdepends = webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1
 	optdepends = webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)
 	optdepends = xdg-desktop-portal: desktop integration
-	provides = telegram-desktop
-	conflicts = telegram-desktop
-	source = https://github.com/yukigram/yukigram/releases/download/v6.8.2.2/binary-x86_64.tar.gz
-	sha256sums = 021ccebaa5bfe586e72253696f8f4b07befed7fbdc76886950d7509b5acb3961
+	provides = yukigram-desktop
+	conflicts = yukigram-desktop
+	noextract = yukigram-bin-6.8.2.3.tar.gz
+	source = yukigram-bin-6.8.2.3.tar.gz::https://github.com/yukigram/yukigram/releases/download/v6.8.2.3/binary-x86_64.tar.gz
+	sha256sums = 396149b8bd648efabaecb65907dcf40cb59dc18c34320e50c7bf6ed403a948f0
 
 pkgname = yukigram-bin

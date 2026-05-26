@@ -1,7 +1,7 @@
 # Maintainer: Elk Cloner <dev [at] elkcl [dot] ru>
 
 pkgname=yukigram-bin
-pkgver=6.8.2.2
+pkgver=6.8.2.3
 pkgrel=1
 pkgdesc="Telegram Desktop, minus the bullshit, plus the features"
 arch=(x86_64)
@@ -15,14 +15,20 @@ optdepends=(
 	'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)'
 	'xdg-desktop-portal: desktop integration'
 )
-conflicts=(telegram-desktop)
-provides=(telegram-desktop)
+provides=(yukigram-desktop)
+conflicts=(yukigram-desktop)
+install="${pkgname}.install"
 
-source=($url/releases/download/v${pkgver/_/-}/binary-${CARCH}.tar.gz)
-sha256sums=('021ccebaa5bfe586e72253696f8f4b07befed7fbdc76886950d7509b5acb3961')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver//_/-}/binary-${CARCH}.tar.gz")
+sha256sums=('396149b8bd648efabaecb65907dcf40cb59dc18c34320e50c7bf6ed403a948f0')
+noextract=("${source[0]%%::*}")
+
+prepare() {
+	mkdir unpacked
+	bsdtar -C unpacked -xf "${source[0]%%::*}"
+}
 
 package() {
-	install -dm755 "$pkgdir/usr"
-	cp -a "$srcdir/bin" "$pkgdir/usr"
-	cp -a "$srcdir/share" "$pkgdir/usr"
+	install -dm755 "${pkgdir}/usr"
+	cp -a "${srcdir}/unpacked/." "${pkgdir}/usr/"
 }

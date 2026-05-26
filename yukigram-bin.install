@@ -1,0 +1,10 @@
+post_install() {
+	echo "Remember to move your old Yukigram data to the new location like this:"
+	echo "mv ~/.local/share/Yukigram ~/.local/share/io.github.yukigram"
+	echo "or like this:"
+	echo "mv ~/.TelegramDesktop ~/.local/share/io.github.yukigram"
+}
+
+post_upgrade() {
+	post_install
+}
