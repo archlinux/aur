@@ -2,7 +2,7 @@
 
 pkgname=(gaia-amd gaia-amd-webui)
 pkgver=0.19.0
-pkgrel=3
+pkgrel=4
 pkgdesc="AI-powered inference engine for AMD hardware"
 arch=(x86_64)
 url="https://github.com/amd/gaia"
@@ -71,8 +71,8 @@ makedepends=(
 )
 
 sha256sums=(ecac14989bb17ba6f07fe8dc274df8458195b7ef16504b3301bcbf707066ae3c
-            8ba5237cd80c52c5e279db84102285a48632a8f8345c6c238c5e8fd556f87c20
-            aaf92363374901f80f30448c1efbd3573d0a5f86de20f85858b29c74e49faddc
+            96ab23bd2b0d3d402a6c3160f0f5016f582994533723b503098deb042ebbcb03
+            13598d2e9294b09ac7cf26739a0ae42acc4993fc2e63ac94a7867ec3d22c99df
             3d185692ac7bd9834643052cb570a6a214878bf74f9e6e14b8c5115493bc7c7e)
 
 source=("gaia-amd-$pkgver.tar.gz::https://github.com/amd/gaia/archive/refs/tags/v$pkgver.tar.gz"
@@ -124,9 +124,18 @@ prepare() {
     # Port 4200 never opens until the lifespan yields. Bypass the system
     # keyring for the Electron-spawned backend; OAuth connectors fall back
     # to prompting for credentials at first use.
+    # Also set GAIA_SKIP_DEVICE_CHECK: the device support check is Windows-only;
+    # on Linux it always returns false and shows a warning banner.
     sed -i \
-        's/env: { \.\.\.process\.env }/env: { ...process.env, PYTHON_KEYRING_BACKEND: "keyring.backends.null.Keyring" }/' \
+        's/env: { \.\.\.process\.env }/env: { ...process.env, PYTHON_KEYRING_BACKEND: "keyring.backends.null.Keyring", GAIA_SKIP_DEVICE_CHECK: "1" }/' \
         "$srcdir/gaia-$pkgver/src/gaia/apps/webui/main.cjs"
+
+    # The onboarding wizard installs lemonade via Ubuntu PPA — useless on Arch.
+    # Mark the install as initialized on any non-Windows platform so the UI
+    # opens directly to the chat interface rather than the setup wizard.
+    sed -i \
+        's/status\.initialized = init_marker\.exists()/status.initialized = init_marker.exists() or sys.platform != "win32"/' \
+        "$srcdir/gaia-$pkgver/src/gaia/ui/routers/system.py"
 }
 
 build() {

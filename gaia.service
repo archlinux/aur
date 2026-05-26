@@ -9,6 +9,7 @@ User=gaia
 Group=gaia
 Environment=HOME=/var/lib/gaia
 Environment=PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+Environment=GAIA_SKIP_DEVICE_CHECK=1
 ExecStart=/usr/bin/gaia --ui
 Restart=on-failure
 RestartSec=5s
