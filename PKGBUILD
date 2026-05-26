@@ -3,7 +3,7 @@
 pkgname=python-pythondata-software-compiler_rt
 _name=${pkgname#python-}
 _pyname=${_name//-/_}
-pkgver=2025.12
+pkgver=2026.04
 pkgrel=1
 pkgdesc='Python module containing data files for compiler_rt software (for use with LiteX)'
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
   'python-wheel'
 )
 source=("${_name}::git+${url}.git#tag=$pkgver")
-sha256sums=('663933a1273f8ebd502d684adb0badb9391a1bf8a55b84338f3ec8ae3f85848e')
+sha256sums=('87dd3fc351e7d8883c526ee25e98ac2042d9f29a5d437109d2bf77f790251393')
 
 prepare() {
   git -C "${srcdir}/${_name}" clean -dfx
