@@ -85,17 +85,17 @@ verify() {
 }
 
 prepare() {
-  appimage_url=$(jq --raw-output '.url' ../"$_meta_file")
+  appimage_url=$(jq --raw-output '.url' "$startdir/$_meta_file")
   filename=$(basename "${appimage_url}")
   msg2 "Extracting AppImage..."
-  ../"${filename}" --appimage-extract
+  "$startdir/${filename}" --appimage-extract
 
   sed -i 's|Exec=AppRun|Exec=/opt/orca-slicer-nightly/bin/orca-slicer|g' \
     "squashfs-root/com.orcaslicer.OrcaSlicer.desktop"
 }
 
 pkgver() {
-  jq -r '.date' ../"$_meta_file" | sed 's/[-T]/./g; s/://g'
+  jq -r '.date' "$startdir/$_meta_file" | sed 's/[-T]/./g; s/://g'
 }
 
 package() {
