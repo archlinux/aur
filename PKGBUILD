@@ -2,7 +2,7 @@
 
 pkgname='zoi-bin'
 _tag="Prod-Release-$pkgver"
-pkgver=1.13.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Universal Package Manager & Environment Setup Tool (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -12,22 +12,22 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=('git')
 optdepends=(
-    'bash-completion: for bash shell completion'
-    'zsh: for zsh shell completion'
-    'fish: for fish shell completion'
-    'less: for viewing files'
+  'bash-completion: for bash shell completion'
+  'zsh: for zsh shell completion'
+  'fish: for fish shell completion'
+  'less: for viewing files'
 )
 _license_url='http://gitlab.com/Zillowe/Zillwen/Zusty/Zoi/-/raw/main/LICENSE'
 
 source_x86_64=("${pkgname%-bin}-linux-amd64.tar.zst::$url/-/releases/Prod-Release-$pkgver/downloads/${pkgname%-bin}-linux-amd64.tar.zst"
-              "LICENSE::$_license_url")
+  "LICENSE::$_license_url")
 source_aarch64=("${pkgname%-bin}-linux-arm64.tar.zst::$url/-/releases/Prod-Release-$pkgver/downloads/${pkgname%-bin}-linux-arm64.tar.zst"
-               "LICENSE::$_license_url")
+  "LICENSE::$_license_url")
 
-sha512sums_x86_64=('de068b190ddfe18a8ad833a142a2b1e78c57868ebe8f87848382214b6fa3b8eae91e2c09d9c597d7c9774d8be8859ff833e053a236d9309f6db5f6d935d4fb55'
-                   'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
-sha512sums_aarch64=('aa43ec1b1e0803a4032df2c6274151598b4c63db03a086e826e475bb34db0acbfd1d2f4419e469f47a99f00e876ebde193187ee5b256d4057d9f896fcc7c0fae'
-                    'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
+sha512sums_x86_64=('17ec104096cd09789ae464a6d1556ba8f06501ac155408cf2d9cdf5db5e20a24da23f5e1c069b08880c84cadf4791db607ce183b08dd289063cab6a16cde2ca2'
+  'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
+sha512sums_aarch64=('b658df191ee9a495c5f1c52d2e14f9323dd94a676ff276a622d66092a9850018b79ceecc63b86e9013fe8d13a51032c987a94e5a02646b1a2181bf179dc0f2e8'
+  'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
@@ -36,15 +36,15 @@ package() {
 
   local _bash_completion_dir="$pkgdir/usr/share/bash-completion/completions"
   install -d "$_bash_completion_dir"
-  "$pkgdir/usr/bin/${pkgname%-bin}" generate-completions bash > "$_bash_completion_dir/${pkgname%-bin}"
+  "$pkgdir/usr/bin/${pkgname%-bin}" generate-completions bash >"$_bash_completion_dir/${pkgname%-bin}"
 
   local _zsh_completion_dir="$pkgdir/usr/share/zsh/site-functions"
   install -d "$_zsh_completion_dir"
-  "$pkgdir/usr/bin/${pkgname%-bin}" generate-completions zsh > "$_zsh_completion_dir/_${pkgname%-bin}"
+  "$pkgdir/usr/bin/${pkgname%-bin}" generate-completions zsh >"$_zsh_completion_dir/_${pkgname%-bin}"
 
   local _fish_completion_dir="$pkgdir/usr/share/fish/vendor_completions.d"
   install -d "$_fish_completion_dir"
-  "$pkgdir/usr/bin/${pkgname%-bin}" generate-completions fish > "$_fish_completion_dir/${pkgname%-bin}.fish"
+  "$pkgdir/usr/bin/${pkgname%-bin}" generate-completions fish >"$_fish_completion_dir/${pkgname%-bin}.fish"
 
   local _man_dir="$pkgdir/usr/share/man/man1"
   install -d "$_man_dir"
