@@ -33,18 +33,13 @@ _verify_digest() {
         msg2 "Checksum verification failed: expected ${expected_checksum}, got ${actual_checksum}"
         return 1
       fi
+      return 0
     else
       echo "Unsupported digest type: ${digest_type}"
       return 1
     fi
   fi
-  if [[ -n "${digest}" ]]; then
-    local digest_type="${digest%%:*}"
-    if [[ "${digest_type}" != "sha256" ]]; then
-      echo "Unsupported digest type: ${digest_type}"
-      return 1
-    fi
-  fi
+  return 1
 }
 
 verify() {
