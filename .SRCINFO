@@ -1,6 +1,6 @@
 pkgbase = matrix-commander-git
 	pkgdesc = Simple CLI-based Matrix client (from git master)
-	pkgver = r398.362b419
+	pkgver = r403.ecea643
 	pkgrel = 1
 	url = https://github.com/8go/matrix-commander
 	arch = any
