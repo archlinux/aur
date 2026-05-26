@@ -1,6 +1,6 @@
 # Maintainer: Berk Kucuk <berkkucukk@proton.me>
 pkgname=haze
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Anonymous encrypted P2P chat over the Tor network"
 arch=('any')
@@ -12,6 +12,10 @@ depends=(
     'python-stem'
     'python-cryptography'
     'python-python-socks'
+    'python-aiohttp'
+    'python-qrcode'
+    'python-sounddevice'
+    'python-numpy'
     'tor'
 )
 makedepends=(
@@ -21,7 +25,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/Haze/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7e1cb5ba49d21aef7888b2b0b6cd576152a501703be95cddfc95c5cf00ca70d1')
+sha256sums=('54c09683a0abb8737c01aec06bb0b6ba1784ae49683cb7ff8fb45afb10bd3339')
 
 build() {
     cd "Haze-$pkgver"
