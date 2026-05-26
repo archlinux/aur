@@ -4,7 +4,7 @@ pkgbase=python-roman-datamodels
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.31.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Datamodel support for the roman calibration pipeline"
 arch=('any')
@@ -28,7 +28,7 @@ checkdepends=('python-pytest-doctestplus'
               'python-pandas'
               'python-lz4') # rad already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('6b019a79732342dd9daf6e7e12b8ab5d')
+md5sums=('2ea4d1a03e7d0a5b0bc849e360e3a5c2')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -57,7 +57,7 @@ package_python-roman-datamodels() {
              'python-asdf-astropy>=0.8.0'
              'python-gwcs>=0.20.0'
              'python-lz4>=4.3.0'
-             'python-rad>=0.31.0'
+             'python-rad>=1.0.0'
              'python-pyarrow>=10.0.1')
     optdepends=('python-roman-datamodels-doc: Documentation for Roman Datamodels')
     cd ${srcdir}/${_pyname}-${pkgver}
