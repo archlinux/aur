@@ -1,6 +1,6 @@
 pkgbase = badapple
 	pkgdesc = Bad Apple!! ASCII art player for the terminal (real-time rendering)
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/IRRatium/badapple-aur
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = badapple
 	depends = mpv
 	depends = ffmpeg
 	depends = ascii-image-converter
-	source = badapple-2.0.0.tar.gz::https://github.com/IRRatium/badapple-aur/archive/refs/tags/v2.0.0.tar.gz
+	source = badapple-2.1.0.tar.gz::https://github.com/IRRatium/badapple-aur/archive/refs/tags/v2.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = badapple
