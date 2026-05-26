@@ -1,6 +1,6 @@
 pkgbase = portprotonqt
 	pkgdesc = Modern GUI for managing and launching games from PortProton and Steam
-	pkgver = 1.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt
 	arch = any
@@ -44,11 +44,13 @@ pkgbase = portprotonqt
 	depends = vulkan-icd-loader
 	depends = procps-ng
 	depends = psmisc
-	depends = squashfs-tools
 	depends = 7zip
 	depends = python-dbus-fast
-	source = git+https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt#tag=v1.0
-	sha256sums = 610c46fcc4ddafecca5827f8f957b8f60107335c507070a52d3997a0131fb04b
+	provides = portprotonqt-steam-compat
+	conflicts = portprotonqt-steam-compat
+	replaces = portprotonqt-steam-compat
+	source = git+https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt#tag=v1.1.0
+	sha256sums = c6b1e83317c6f474fdcdc1118064d31f901a260e7656bfc19815e975b6dc5cf3
 
 pkgname = portprotonqt
 	pkgdesc = Modern GUI for managing and launching games from PortProton and Steam
@@ -57,7 +59,4 @@ pkgname = portprotonqt
 	optdepends = upower: System tab bluetooth battery level
 	optdepends = libpulse: System tab audio volume/output management
 	optdepends = python-qrcode: Wi-Fi QR code generation
-
-pkgname = portprotonqt-steam-compat
-	pkgdesc = Steam compatibility tool for PortProtonQt
-	depends = portprotonqt
+	optdepends = squashfs-tools: for legacy PortProton prefix backup support
