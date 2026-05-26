@@ -1,0 +1,4 @@
+[python-docstring_parser]
+source = "git"
+git = "https://github.com/rr-/docstring_parser.git"
+exclude_regex = '.*(pre|a|alpha|b|beta|rc).*'

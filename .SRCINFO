@@ -1,0 +1,16 @@
+pkgbase = python-docstring_parser
+	pkgdesc = Parse Python docstrings. Currently support ReST, Google, Numpydoc-style and Epydoc docstrings.
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/rr-/docstring_parser
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.8
+	source = python-docstring_parser-0.18.0.tar.gz::https://github.com/rr-/docstring_parser/archive/refs/tags/0.18.0.tar.gz
+	b2sums = 531cb7a342d55b73fec1ec7acf4def4fea53f7f3ebab322bf5d623ffdd6069e447b7206f48de1f7f235ea90bc6592025fd88f5d9de5455bf0e6770dee1c6c552
+
+pkgname = python-docstring_parser
