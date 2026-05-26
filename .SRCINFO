@@ -1,6 +1,6 @@
 pkgbase = fenrir
 	pkgdesc = A user space console screen reader written in python3
-	pkgver = 2026.01.28
+	pkgver = 2026.05.25
 	pkgrel = 1
 	epoch = 1
 	url = https://git.stormux.org/storm/fenrir
@@ -24,16 +24,16 @@ pkgbase = fenrir
 	depends = python-pyxdg
 	depends = python-setproctitle
 	depends = python-pyenchant
-	depends = python-pexpect
 	depends = speech-dispatcher
 	optdepends = espeak-ng: Default speech synthesizer for the generic speech driver
 	optdepends = socat: Control running Fenrir screenreader
 	optdepends = sox: A sound driver
+	optdepends = python-xlib: X11 terminal mode with fenrir -x
 	optdepends = xclip: for copy to X session clipboard
 	provides = fenrir
 	conflicts = fenrir-git
 	backup = etc/fenrirscreenreader/settings/settings.conf
-	source = git+https://git.stormux.org/storm/fenrir.git#tag=2026.01.28
-	sha512sums = d8aab55d5e4f8b1a08789f688de998682f4fe5183761c72f080b05ec1a1a026b567341f28fd3f4b48620a5c1d0dba3e3bb9e3c96ec9bb6e84f025949e6df80a6
+	source = git+https://git.stormux.org/storm/fenrir.git#tag=2026.05.25
+	sha512sums = 7caa5b649dc08d712eb0f981664d79311fa48f663a40163149ded56078826adcdbb3632a6528c4c6b9ade6bb9be95aedfacd6ac115fb764e9538971e329aeced
 
 pkgname = fenrir
