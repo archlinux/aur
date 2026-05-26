@@ -1,6 +1,6 @@
 pkgbase = arch-update-manager
 	pkgdesc = A Linux Mint inspired GTK4-based update manager for Arch Linux
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/destbg/arch-update-manager
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = arch-update-manager
 	optdepends = snapper: pre-update Btrfs snapshots
 	provides = arch-update-manager
 	conflicts = arch-update-manager
-	source = git+https://github.com/destbg/arch-update-manager.git#tag=2.2.0
-	sha256sums = f14a2bd53afc018fbebdb0b76560c1205957678cb53cc857677bc18cb62a86b6
+	source = git+https://github.com/destbg/arch-update-manager.git#tag=2.2.1
+	sha256sums = 9e6e7eb5ce548ff4b80f0fb50e38f57510faee1adb205360532b279ecb433e5c
 
 pkgname = arch-update-manager
