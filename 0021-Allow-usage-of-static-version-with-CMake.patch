@@ -1,4 +1,4 @@
-From 00edd3b81e84761df9bb51ba1af89a699f705b18 Mon Sep 17 00:00:00 2001
+From dc8f76245dd91115b1fbc32d11cb8f0551807f54 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Aug 2017 21:14:26 +0200
 Subject: [PATCH 21/32] Allow usage of static version with CMake
@@ -1091,5 +1091,5 @@ index 2a575958ae4..ca0e3be3b56 100644
      INTERFACE_COMPILE_DEFINITIONS QT_TESTCASE_BUILDDIR=\\\"\${CMAKE_BINARY_DIR}\\\"
  )
 -- 
-2.51.2
+2.54.0
 
