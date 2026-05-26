@@ -1,0 +1,15 @@
+pkgbase = abtop
+	pkgdesc = AI agent monitor for your terminal
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/graykode/abtop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = abtop-0.4.5.tar.gz::https://github.com/graykode/abtop/archive/refs/tags/v0.4.5.tar.gz
+	sha256sums = aab79fb05cae990867075f0c6cac7ee11aaa2a4028c4e8942176f3b4262b2085
+
+pkgname = abtop
