@@ -11,7 +11,7 @@ provides=('web-archer')
 conflicts=('web-archer' 'web-archer-git')
 source=("https://github.com/32archusers/web-archer/archive/refs/tags/1.4.tar.gz")
 
-sha256sums=('9ac5e50e0ba87e81cb77af4241916b2cc7ef33d1fed4cb354ff3ad882a263282')
+sha256sums=('c4f46ef92169bd9b8882083731c6508ed4f27717dd95fb38672e3d3a84b61644')
 
 package() {
     cd "${srcdir}/web-archer-${pkgver}"
