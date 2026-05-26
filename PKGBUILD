@@ -77,7 +77,6 @@ prepare(){
             "$HOME/.local/bin/godot"
         mkdir -p "$templates/$_godot.stable.mono"
         bsdtar -x -C "$templates/$_godot.stable.mono" -f "$srcdir/godot-mono-export-templates-$_godot.zip" --strip-components 1 "templates/*"
-        cp -r "$srcdir/templates" "$templates/$_godot.stable.mono"
     else
         ln -srfv /usr/bin/godot-mono "$HOME/.local/bin/godot"
         local installed_godot
