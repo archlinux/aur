@@ -1,0 +1,27 @@
+pkgbase = epson-inkjet-printer-escpr2-clos-bin
+	pkgdesc = Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux, CLOS/Kylin binary package
+	pkgver = 1.1.13
+	pkgrel = 2
+	url = https://www.epson.com.cn/drive/97ee5dd695ea4b3295b8a62e90b445b7.html?productId=53ce92f1e56342f8b89981ee9b461572
+	install = epson-inkjet-printer-escpr2-clos-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	license = custom:Epson
+	depends = cups
+	depends = glibc
+	depends = libcups
+	optdepends = colord: color profile support
+	provides = epson-inkjet-printer-escpr2
+	conflicts = epson-inkjet-printer-escpr2
+	noextract = epson-inkjet-printer-escpr2_1_1_13_CLOS_amd64.deb
+	noextract = epson-inkjet-printer-escpr2_1_1_13_CLOS_arm64.deb
+	options = !debug
+	options = !strip
+	source_x86_64 = epson-inkjet-printer-escpr2_1_1_13_CLOS_amd64.deb::https://eposs.epson.com.cn/EPSON/assets/resource/Download/Service/driver/Inkjet/L6276/epson-inkjet-printer-escpr2_1_1_13_CLOS_amd64.deb
+	sha256sums_x86_64 = a93363290eb9a0ad857d7d3606c1bf48a386f6ca9df0376582da3188103b9c04
+	source_aarch64 = epson-inkjet-printer-escpr2_1_1_13_CLOS_arm64.deb::https://eposs.epson.com.cn/EPSON/assets/resource/Download/Service/driver/Inkjet/L6276/epson-inkjet-printer-escpr2_1_1_13_CLOS_arm64.deb
+	sha256sums_aarch64 = ff114d0d0981f6b7ce4a80264c092449a3d1673e201d0ce1051d5e1d067a68e8
+
+pkgname = epson-inkjet-printer-escpr2-clos-bin

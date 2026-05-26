@@ -1,0 +1,29 @@
+post_install() {
+  echo ":: Configuring usblp blacklist..."
+  if ! [ -f /etc/modprobe.d/no-usblp.conf ]; then
+    echo 'blacklist usblp' > /etc/modprobe.d/no-usblp.conf
+    echo "   Created /etc/modprobe.d/no-usblp.conf"
+  else
+    echo "   Already exists, skipped."
+  fi
+
+  if lsmod | grep -q '^usblp'; then
+    echo "   usblp is currently loaded. Please run as root:"
+    echo "     modprobe -r usblp && systemctl restart cups"
+    echo "   Or reboot to apply."
+  fi
+
+  echo ":: Done. You may need to restart CUPS: systemctl restart cups"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  if [ -f /etc/modprobe.d/no-usblp.conf ]; then
+    echo ":: Removing usblp blacklist..."
+    rm -f /etc/modprobe.d/no-usblp.conf
+    echo "   Removed /etc/modprobe.d/no-usblp.conf"
+  fi
+}
