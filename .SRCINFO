@@ -1,20 +1,20 @@
 pkgbase = cinematic-bin
 	pkgdesc = Gorgeous desktop movie collections.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.1.0
-	pkgrel = 2
+	pkgver = 3.2.1
+	pkgrel = 1
 	url = http://gh.lacymorrow.com/cinematic/
-	arch = x86_64
+	arch = aarch64
 	license = CC-BY-NC-SA-4.0
-	depends = electron27
-	provides = cinematic=3.1.0
+	depends = electron40
+	provides = cinematic=3.2.1
 	conflicts = cinematic
 	options = !strip
 	options = !emptydirs
-	source = cinematic-3.1.0.pacman::https://github.com/lacymorrow/cinematic/releases/download/v3.1.0/cinematic-3.1.0.pacman
-	source = LICENSE-3.1.0::https://raw.githubusercontent.com/lacymorrow/cinematic/v3.1.0/LICENSE
+	source = LICENSE-3.2.1::https://raw.githubusercontent.com/lacymorrow/cinematic/v3.2.1/LICENSE
 	source = cinematic.sh
-	sha256sums = e1514d056a6963f91108ab623f36b0eab4fe1698de91568bf292f72528b074cd
 	sha256sums = e66c269d4819aaab34b49ef5220c4ddab6756f21bb5180761a4eb8561f2b7bbd
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = cinematic-3.2.1-aarch64.pacman::https://github.com/lacymorrow/cinematic/releases/download/v3.2.1/cinematic-3.2.1-aarch64.pacman
+	sha256sums_aarch64 = b5c9d61273edeb15f44ffab0ddef3e4a665a0e83b02dc1383921802fb899f450
 
 pkgname = cinematic-bin
