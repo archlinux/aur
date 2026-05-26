@@ -1,0 +1,12 @@
+pkgbase = unix-tree-multilingual
+	pkgdesc = Multilingual fork of unix-tree with GNU gettext NLS support
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://github.com/johnpetersa19/unix-tree-master-Multilingual
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = glibc
+	source = unix-tree-multilingual-2.3.2.tar.gz::https://github.com/johnpetersa19/unix-tree-master-Multilingual/archive/refs/tags/2.3.2.tar.gz
+	sha512sums = 019b07fac1b4e171d6e00bef986cfc391aece8918637f9da81cdcc6c1b03f37a0680f6955332bef3651b66fae17fb5f69083c792a469682e522d697a161ff9af
+
+pkgname = unix-tree-multilingual
