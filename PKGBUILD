@@ -1,7 +1,7 @@
 # Maintainer: bobi
 
 pkgname=germinal
-pkgver=28
+pkgver=29
 pkgrel=1
 pkgdesc="Minimalist terminal emulator based on vte and tmux"
 gdeskpatch="gnome-desktop.patch"
@@ -18,7 +18,7 @@ depends=('glib2' 'vte4' 'pango' 'tmux' 'pcre2' 'libadwaita')
 install=$pkgname.install
 
 arch=('i686' 'x86_64')
-md5sums=('71d92c369e23c35eda68e82fee1c99fc'
+md5sums=('710c9098cf6d5f22622e4f124153a31a'
          'f5b9996bcb2856ce3e2f91d739f81612')
 
 build () {
