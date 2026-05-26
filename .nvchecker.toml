@@ -1,0 +1,3 @@
+[perl-data-censor]
+source = "cpan"
+cpan = "Data-Censor"
