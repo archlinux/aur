@@ -1,12 +1,12 @@
 pkgbase = doma
 	pkgdesc = Directory tag manager — put your directories on the cutting board (Crystal CLI).
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/hahwul/doma
 	arch = x86_64
 	license = MIT
 	depends = sqlite
-	source = doma-0.1.1::https://github.com/hahwul/doma/releases/download/v0.1.1/doma-v0.1.1-linux-x86_64
+	source = doma-0.2.0::https://github.com/hahwul/doma/releases/download/v0.2.0/doma-v0.2.0-linux-x86_64
 	sha256sums = SKIP
 
 pkgname = doma
