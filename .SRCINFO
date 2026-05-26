@@ -1,6 +1,6 @@
 pkgbase = python-agent-client-protocol
 	pkgdesc = Python SDK for ACP clients and agents
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/agentclientprotocol/python-sdk
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-agent-client-protocol
 	makedepends = python-dotenv
 	depends = python
 	depends = python-pydantic
-	source = git+https://github.com/agentclientprotocol/python-sdk.git#tag=0.10.0
-	sha256sums = c88980f7a8784ee3f6d3a943c82c7a9351180a336542328cf8658a45ae561017
+	source = git+https://github.com/agentclientprotocol/python-sdk.git#tag=0.10.1
+	sha256sums = a02a979f1f01eb03b046fabe7daedcf8b413a620ec5e7870fe8f3fec872abe2e
 
 pkgname = python-agent-client-protocol

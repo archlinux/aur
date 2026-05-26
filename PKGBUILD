@@ -1,7 +1,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=python-agent-client-protocol
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Python SDK for ACP clients and agents'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
     "python-dotenv"
 )
 source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('c88980f7a8784ee3f6d3a943c82c7a9351180a336542328cf8658a45ae561017')
+sha256sums=('a02a979f1f01eb03b046fabe7daedcf8b413a620ec5e7870fe8f3fec872abe2e')
 
 build() {
     cd "python-sdk"
