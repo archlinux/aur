@@ -1,6 +1,6 @@
 # Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
 pkgname=gazan
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Browse, upload, download and manage cloud files with a GTK4 interface"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=(python gtk4 libadwaita rsync python-gobject)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/subhangadirli/gazan/archive/v$pkgver.tar.gz")
-sha256sums=('99d56dc4a6a2d3e2ae0e5113d14dfbcab18d675dfaea8bfce2bf6aae9b79a1bf')
+sha256sums=('327a6f4fe8b02d2cec10fbdc163e84b457938a405599f4f0934d678dbd5cfb35')
 
 build() {
     cd "$pkgname"
