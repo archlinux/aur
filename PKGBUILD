@@ -1,13 +1,13 @@
 # Maintainer: Octopus118 <idlansdowne at gmail dot com>
 pkgname=python-bloom
 pkgver=0.14.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Bloom is a release automation tool."
 arch=('any')
 url="https://github.com/ros-infrastructure/bloom"
 license=('BSD')
 depends=('python' 'python-empy3' 'python-rosdep' 'python-vcstool')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname::git+https://github.com/ros-infrastructure/bloom.git#tag=$pkgver")
 sha256sums=('e973b02ff76d0230d274acd77fc1bcae0f36e51bb69f22a8849f55dc2087a27f')
 
