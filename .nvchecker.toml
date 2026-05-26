@@ -1,3 +1,4 @@
-[python-flask-qrcode]
-source="pypi"
-pypi="Flask-QRcode"
+[python-wikipedia-api]
+source="git"
+git="https://github.com/martin-majlis/Wikipedia-API"
+prefix="v"
