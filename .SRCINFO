@@ -1,0 +1,21 @@
+pkgbase = bottles-bin
+	pkgdesc = Run Windows applications with Wine – user‑friendly GUI
+	pkgver = 63.2
+	pkgrel = 1
+	url = https://github.com/bottlesdevs/bottles
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pip
+	depends = wine
+	depends = glib2
+	depends = gtk3
+	depends = gobject-introspection
+	provides = bottles
+	conflicts = bottles
+	source = git+https://github.com/bottlesdevs/bottles.git#tag=v63.2
+	sha256sums = SKIP
+
+pkgname = bottles-bin
