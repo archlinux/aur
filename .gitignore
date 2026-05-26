@@ -1,6 +1,9 @@
+# Ignore everything
 *
 
-!\.SRCINFO
+# But not these files...
 !PKGBUILD
-!mesh-mini-server\.service
+!.SRCINFO
+!mesh-mini-server.service
+
 !.gitignore
