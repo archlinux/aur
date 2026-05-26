@@ -30,6 +30,6 @@ package() {
   install -Dm644 "singcast.desktop" "${pkgdir}/usr/share/applications/singcast.desktop"
 }
 
-sha256sums_x86_64=('8b807f28a16299f330f8f7d08f9b0017ac0069539a07d3a4a508d09f67c93a89'
+sha256sums_x86_64=('9a05eeaba1c43cceacc96f7015f041762ddde0d4afc6cf52c3d745d4fde4d1d2'
                    'f14d52960b535f9d31d24f08e9b248f3f70f70bfadc4ea58bb57f4d12b711ee9'
                    '289d9ffd1ea9b24928bea1a0936d9a1125e7f3d9e2d7341e353ce5c42d405f09')
