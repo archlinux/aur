@@ -1,7 +1,7 @@
 pkgname=clio
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Keyboard-first terminal notes utility"
+pkgdesc="A lightning-fast, keyboard-driven TUI for taking Markdown notes in the terminal. Powered by Go & Bubble Tea."
 arch=('x86_64')
 url="https://github.com/psychosomat/Clio"
 license=('MIT')
