@@ -1,7 +1,7 @@
 # Maintainer: Lai Jiang <jianglai@msn.com>
 
 pkgname=plezy-bin
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A beautiful Plex media server client built with Flutter"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
   'glib2'
 )
 source=("${pkgname%-bin}-${pkgver}.pkg.tar.zst::https://github.com/edde746/plezy/releases/download/${pkgver}/plezy-linux-x64.pkg.tar.zst")
-sha256sums=('be3a73f9655ce152bf934e86f2072b6f40782c0791de871a81bfb659fa1162c4')
+sha256sums=('b33c6ce7361e9cb40bc1c578c3e17f956c90af1917f446bb0755d7b5481965b7')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
