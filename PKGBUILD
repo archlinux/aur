@@ -14,13 +14,13 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/kurojs/Kotoba/archive/v$pkg
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/Kotoba-$pkgver"
   npm install
   npm run build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/Kotoba-$pkgver"
   install -dm755 "$pkgdir/usr/share/vicinae/extensions/kotoba"
   install -Dm644 dist/kotoba.js "$pkgdir/usr/share/vicinae/extensions/kotoba/kotoba.js"
   install -Dm644 package.json "$pkgdir/usr/share/vicinae/extensions/kotoba/package.json"
