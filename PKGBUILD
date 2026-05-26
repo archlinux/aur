@@ -4,7 +4,7 @@
 # Contributor: Luca Cesari < luca AT cesari DOT me>
 
 pkgname=tmuxinator
-pkgver=3.3.8
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
@@ -24,7 +24,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
   "00-bump-gemspec-thor-dependency-to-1.5.0.patch"
 )
-sha256sums=('1d2b8b888fb5dbc3ddae5d48a47c8a2287ef533b68475132c63e006f4a60eef1'
+sha256sums=('ea043d727660d4a10e0e851c0f44128849ac420b9fba477dad2a436b6f568173'
             'df2131d084feb55a679353b1098ca3b326b569f000980b84632ddcd934023cc9')
 
 prepare() {
