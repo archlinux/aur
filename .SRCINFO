@@ -1,0 +1,20 @@
+pkgbase = clauge-bin
+	pkgdesc = One window. Every dev tool.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://clauge.in
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libsecret
+	provides = clauge
+	conflicts = clauge
+	source_x86_64 = clauge_3.0.0_amd64.deb::https://github.com/ansxuman/Clauge/releases/download/v3.0.0/Clauge_3.0.0_amd64.deb
+	sha256sums_x86_64 = d5f45d99e6f60ca125436e799d13b3bc4ca5a8a4a037e19dffc5eb23a825124e
+	source_aarch64 = clauge_3.0.0_arm64.deb::https://github.com/ansxuman/Clauge/releases/download/v3.0.0/Clauge_3.0.0_arm64.deb
+	sha256sums_aarch64 = 79fb35f75e14b23981732cf0ef8dcb4e3e78fcfac2bc0504d1a663895dc805ac
+
+pkgname = clauge-bin
