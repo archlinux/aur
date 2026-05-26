@@ -11,7 +11,7 @@
 
 pkgname=tengine
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
@@ -49,6 +49,7 @@ source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgv
 	"0001-pr-2001.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/2001.patch"
 	"0101-fix-CVE-2026-1642.patch::https://github.com/alibaba/tengine/commit/51e05b88fd2b2c656d087601bdd3186a90334201.patch"
 	"0102-fix-CVE-2026-42945-and-more.patch::https://github.com/alibaba/tengine/commit/70e6ba5f3a021d9cc54c0299fd29c9ef3400adf6.patch"
+	"0103-fix-buffer-overflow-with-overlapping-captures.patch::https://github.com/nginx/nginx/commit/3f135ae2eb60ce376196c898a6c7cb4d774f7068.patch"
         service
         logrotate
        )
@@ -57,11 +58,17 @@ sha256sums=('64ed7155c0c904ce0fe7199c21b8eb6c2abfc267278fa8af832c0cb781e864dc'
             '18b5f2a1bdd0b03895f079a5dbaa11e1ee155ce79306a458c1ba68813baf1e50'
             '28caad27790100a06d7639e4d2b53e60a24974865607af93899f9a056a16ac48'
             '8ad68aafd671db485cf073c4ec0daf5aebae94b7403b917dc0358c5e180c7856'
+            'af8f92c4883506d92f844805a3e870e9a6c5d6bc256a10a6258e17cccb4db95a'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
 
 prepare() {
     cd tengine-$pkgver
+
+    for i in ../*.patch; do
+      echo "Applying patch $i..."
+      patch -Np1 -i $i
+    done
 }
 
 build() {
