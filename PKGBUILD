@@ -1,6 +1,6 @@
 # Maintainer: Andrew Mello <andrew@88plug.com>
 pkgname=intel-amt-activate
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Activate Intel AMT in Client Control Mode from Linux — no MEBx, no reboot, ~40s on CSME 16.1+"
 arch=('any')
