@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartoc
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Barto job executor client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('logrotate: periodic cleanup of rotated log files'
             'xz: xz compression of rotated log files')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/barto/archive/v$pkgver.tar.gz")
-sha256sums=('af385b653b9ab6b4f180166e3ceb4fff4d4360f86a4d0625b599362d28a2cc8b')
+sha256sums=('b8b9d3cee0690ba7ddbb1a53f1e68c69e17166f7b6db4b51cda9a6548d81f719')
 
 prepare() {
     cd "barto-$pkgver"
@@ -46,13 +46,19 @@ package() {
     install -Dm644 "dist/bartoc/bartoc.fish" \
         "$pkgdir/usr/share/fish/vendor_completions.d/bartoc.fish"
 
-    # Systemd service
+    # Systemd user service
     install -Dm644 "dist/bartoc/bartoc.service" \
-        "$pkgdir/usr/lib/systemd/system/bartoc.service"
+        "$pkgdir/usr/lib/systemd/user/bartoc.service"
 
-    # Logrotate
-    install -Dm644 "dist/bartoc/bartoc.logrotate" \
-        "$pkgdir/etc/logrotate.d/bartoc"
+    # Log rotation helper script
+    install -Dm755 "dist/bartoc/bartoc-logrotate" \
+        "$pkgdir/usr/lib/bartoc/bartoc-logrotate"
+
+    # Systemd user timer for log rotation
+    install -Dm644 "dist/bartoc/bartoc-logrotate.service" \
+        "$pkgdir/usr/lib/systemd/user/bartoc-logrotate.service"
+    install -Dm644 "dist/bartoc/bartoc-logrotate.timer" \
+        "$pkgdir/usr/lib/systemd/user/bartoc-logrotate.timer"
 
     # Example config
     install -Dm644 "packaging/arch/bartoc/examples/bartoc.toml.example" \
