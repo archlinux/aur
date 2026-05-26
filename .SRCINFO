@@ -1,6 +1,6 @@
 pkgbase = yt-dlp-animepahe
 	pkgdesc = Animepahe extractor plugin for yt-dlp
-	pkgver = 2026.5.15
+	pkgver = 2026.5.25
 	pkgrel = 1
 	url = https://github.com/yt-dlp-plugins/yt-dlp-animepahe
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = yt-dlp-animepahe
 	makedepends = python-hatchling
 	depends = python
 	depends = yt-dlp
-	source = yt-dlp-animepahe-2026.5.15.tar.gz::https://github.com/yt-dlp-plugins/yt-dlp-animepahe/archive/v2026.5.15.tar.gz
-	sha256sums = cfac56bc1935bd221a563a4d5c078d860947766f5013f8533adb146c7eaba98b
+	source = yt-dlp-animepahe-2026.5.25.tar.gz::https://github.com/yt-dlp-plugins/yt-dlp-animepahe/archive/v2026.5.25.tar.gz
+	sha256sums = 3c2c9308481217cc832b300e25cd9e73e97e543ad38b137e043ad2db790ee443
 
 pkgname = yt-dlp-animepahe
