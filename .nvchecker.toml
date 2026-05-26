@@ -1,0 +1,3 @@
+[perl-math-random-isaac-xs]
+source = "cpan"
+cpan = "Math-Random-ISAAC-XS"
