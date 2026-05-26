@@ -1,13 +1,12 @@
-pkgbase = xmm7360-dkms-git
+pkgbase = xmm7360-dkms
 	pkgdesc = Intel XMM7360 / Fibocom L850 LTE modem driver (DKMS) with RPC init tool
-	pkgver = r331.g79ff93f
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/Andron338/xmm7360-pci
+	url = https://github.com/Andron338/xmm7360-dkms
 	install = xmm7360-dkms.install
 	arch = x86_64
 	license = GPL2
 	makedepends = linux-headers
-	makedepends = git
 	depends = dkms
 	depends = openssl
 	depends = util-linux-libs
@@ -20,7 +19,7 @@ pkgbase = xmm7360-dkms-git
 	conflicts = xmm7360-dkms
 	conflicts = xmm7360-git
 	conflicts = xmm7360-pci-dkms
-	source = xmm7360-pci::git+https://github.com/Andron338/xmm7360-pci.git
+	source = xmm7360-dkms-1.0.0.tar.gz::https://github.com/Andron338/xmm7360-dkms/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = xmm7360-dkms-git
+pkgname = xmm7360-dkms
