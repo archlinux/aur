@@ -3,13 +3,13 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.113.r0.gd57a8674
+pkgver=1.2.115.r0.gb7bef6e4
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL-3.0-only')
-depends=('python-csdr-luarvique>=0.18.36' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools' 'python-distutils-extra' 'python-importlib-metadata')
+depends=('python-csdr-luarvique>=0.18.37' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools' 'python-distutils-extra' 'python-importlib-metadata')
 install=openwebrx-plus.install
 optdepends=(
     # decoding
@@ -41,6 +41,7 @@ optdepends=(
     'nrsc5: decode HDRadio broadcasts'
     'csdr-skimmer: decode multiple CW signals at once'
     'radiosonde_auto_rx: decode radiosonde data'
+    # lorarx (dxlAPRS): decode LoRa data, manual build required, no AUR package yet
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
