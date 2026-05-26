@@ -1,6 +1,6 @@
 #Maintainer Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="mlarchiverplugin"
-pkgver="1.0.1"
+pkgver="1.0.2"
 pkgrel="1"
 pkgdesc="MyLibrary plugin for archives creation"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/ProfessorNavigator/mlarchiverplugin"
 license=('GPL-3.0-only')
 makedepends=('cmake' 'pkgconf' 'gcc' 'qt6-tools')
 depends=('mylibrary')
-sha256sums=('78b336fbf504ab4164a0c84bdaca6c08fc6b55b69b5b1cdda8e35b637fb67e51')
+sha256sums=('5d6dbbdafc27fa4462212281e0d754db35583cc0cb00967a5064869825fac6c6')
 
 build() {   
    local cmake_options=(
