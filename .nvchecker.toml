@@ -1,0 +1,5 @@
+[mdtsql-bin]
+source = "github"
+github = "noborus/mdtsql"
+use_latest_release = true
+prefix = "v"
