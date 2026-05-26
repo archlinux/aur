@@ -1,0 +1,15 @@
+pkgbase = zejtron-bin
+	pkgdesc = Small Linux terminal toolkit for tracing paths, ports, env, recent files, and services
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/oxyzenQ/zejtron
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = zejtron
+	conflicts = zejtron
+	options = !strip
+
+pkgname = zejtron-bin
