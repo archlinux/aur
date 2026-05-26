@@ -1,12 +1,12 @@
 pkgbase = unix-tree-pt-br
 	pkgdesc = A directory listing program displaying a depth indented list of files
-	pkgver = 2.2.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://gitlab.com/OldManProgrammer/unix-tree
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = glibc
-	source = https://github.com/johnpetersa19/unix-tree-master-pt_br/releases/download/Tree2.2.1-1/unix-tree-master.tar.gz
-	sha512sums = 9ea9fbad926b1da545d7b1eb0f19e1c69baebcfc4e192a8075713b556ba9af4f419142d947a4b4111642fd7d633f07f85ffe5be5fd9e03a6c301c477eec87986
+	source = unix-tree-pt-br-2.3.2.tar.gz::https://github.com/johnpetersa19/unix-tree-master-Multilingual/archive/refs/tags/2.3.2.tar.gz
+	sha512sums = 019b07fac1b4e171d6e00bef986cfc391aece8918637f9da81cdcc6c1b03f37a0680f6955332bef3651b66fae17fb5f69083c792a469682e522d697a161ff9af
 
 pkgname = unix-tree-pt-br

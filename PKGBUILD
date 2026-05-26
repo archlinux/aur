@@ -3,27 +3,27 @@
 
 pkgbase=unix-tree-pt-br
 pkgname=('unix-tree-pt-br')
-pkgver=2.2.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="A directory listing program displaying a depth indented list of files"
 arch=('x86_64')
 url="https://gitlab.com/OldManProgrammer/unix-tree"
 license=('GPL-2.0-or-later')
 depends=('glibc')
-source=("https://github.com/johnpetersa19/unix-tree-master-pt_br/releases/download/Tree2.2.1-1/unix-tree-master.tar.gz")
-sha512sums=('9ea9fbad926b1da545d7b1eb0f19e1c69baebcfc4e192a8075713b556ba9af4f419142d947a4b4111642fd7d633f07f85ffe5be5fd9e03a6c301c477eec87986')
+source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/johnpetersa19/unix-tree-master-Multilingual/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('019b07fac1b4e171d6e00bef986cfc391aece8918637f9da81cdcc6c1b03f37a0680f6955332bef3651b66fae17fb5f69083c792a469682e522d697a161ff9af')
 
 prepare() {
-  cd "unix-tree-master"
-  sed -i -e '/^CFLAGS/d' -e '/^LDFLAGS/d' Makefile
+  cd "unix-tree-master-Multilingual-${pkgver}"
+  sed -i -e '/^CFLAGS/d' -e '/^LDFLAGS/d' -e '/-Wdiscarded-qualifiers/d' Makefile
 }
 
 build() {
-  cd "unix-tree-master"
+  cd "unix-tree-master-Multilingual-${pkgver}"
   make
 }
 
 package() {
-  cd "unix-tree-master"
+  cd "unix-tree-master-Multilingual-${pkgver}"
   make PREFIX="${pkgdir}/usr" MANDIR="${pkgdir}/usr/share/man" install
 }
