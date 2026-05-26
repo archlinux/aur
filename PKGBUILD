@@ -1,7 +1,7 @@
 # Maintainer: Gilwiljam <gillbilljam@gmail.com>
 pkgname=rmg-k-bin
 _pkgname=rmg-k 
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Rosalie's Mupen GUI with the Kaillera netplay protocol"
 arch=('x86_64') 
@@ -12,7 +12,7 @@ provides=('rmg-k')
 source=("RMG-K-Portable-Linux64-v${pkgver}.AppImage::${url}/releases/download/v${pkgver}/RMG-K-Portable-Linux64-v${pkgver}.AppImage" 
 	"README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
 	"LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
-sha512sums=('9319d49b3d145a0a1fdfd66a898b7587ba416983b844e922e2a9b55cce82cd2bd5cff7b289a397d9112d38f1c63857735c609438281ab95c490e3e17ce16ceba' 'SKIP' 'SKIP')
+sha512sums=('fa5d9c61d604070afcdc2c1ed6a3c7d35c70d38f864f20439423d005fd60bb0d3cb95ed5e93671ca3ded99f0a875e6e6a1916bdfec9e3696045cdc2a560a87a2' 'SKIP' 'SKIP')
 
 prepare() {
 	cd "${srcdir}" 
