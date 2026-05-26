@@ -1,15 +1,15 @@
-# Maintainer: TheFeelTrain <thefeeltrain@thefeeltrain.com>
+# Maintainer: TheFeelTrain <the@feeltra.in>
 
 _plug=edgemasks
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=3.1.0.gd0a1fcd
+pkgver=4.1.0.gfeb47b4
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/HolyWu/VapourSynth-EdgeMasks'
 license=('MIT')
 depends=(
-  'vapoursynth'
+  'vapoursynth>=75'
 )
 makedepends=(
   'git'
@@ -29,7 +29,7 @@ pkgver() {
 build() {
   arch-meson "${_plug}" build \
     --buildtype=release \
-    --libdir /usr/lib/vapoursynth
+    --libdir "$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")"
 
   meson compile -C build
 }
