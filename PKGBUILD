@@ -2,7 +2,7 @@
 
 pkgname=terraform-mcp-server
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Model Context Protocol (MCP) server for the Terraform ecosystem"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hashicorp/terraform-mcp-server"
@@ -24,7 +24,7 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -buildvcs=false"
 	export GOPROXY=off
 
 	local _builddate
