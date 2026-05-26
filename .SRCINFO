@@ -1,0 +1,23 @@
+pkgbase = hwsonnet
+	pkgdesc = Modern hardware information and monitoring tool for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Varionetzwerk/hwsonnet
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = python>=3.10
+	depends = python-pyqt6
+	depends = python-psutil
+	optdepends = lm_sensors: hardware temperature and fan speed monitoring
+	optdepends = smartmontools: SSD/HDD/NVMe SMART health data
+	optdepends = nvidia-utils: NVIDIA GPU utilization and temperature
+	optdepends = mesa-utils: OpenGL information (glxinfo)
+	optdepends = vulkan-tools: Vulkan information (vulkaninfo)
+	optdepends = dmidecode: detailed RAM type/speed and mainboard info
+	optdepends = python-reportlab: PDF export support
+	source = git+https://github.com/Varionetzwerk/hwsonnet.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = hwsonnet
