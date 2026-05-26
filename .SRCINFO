@@ -1,0 +1,15 @@
+pkgbase = fusioncore-git
+	pkgdesc = Fallout Modloader for Linux
+	pkgver = r12.20260119.d959eb1
+	pkgrel = 1
+	url = https://github.com/Bazsalanszky/fusioncore
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = fusioncore
+	conflicts = fusioncore
+	source = git+https://github.com/Bazsalanszky/fusioncore.git
+	sha256sums = SKIP
+
+pkgname = fusioncore-git
