@@ -1,6 +1,6 @@
 pkgbase = sftool
 	pkgdesc = A command-line utility for SiFli SoC serial tool.
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/OpenSiFli/sftool
 	arch = x86_64
@@ -10,13 +10,14 @@ pkgbase = sftool
 	depends = libgcc
 	depends = glibc
 	depends = systemd-libs
+	optdepends = sftool-gui: A user-friendly graphical serial port operation tool for SIFLI series SoC chips.
 	provides = sftool
 	provides = sftool-bin
 	conflicts = sftool
 	conflicts = sftool-bin
 	options = !lto
 	options = !debug
-	source = sftool::git+https://github.com/OpenSiFli/sftool.git#tag=0.2.1
-	sha256sums = 858f09d823a8bedd562de9276c37b6e68ff776d83e2c6239163fef790e3e672f
+	source = sftool::git+https://github.com/OpenSiFli/sftool.git#tag=0.2.3
+	sha256sums = 2f8b7e14e44d5885139d6b46dcc5d87ca054a00e9a3cfa966c06cb0867b62f1b
 
 pkgname = sftool
