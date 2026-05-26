@@ -1,7 +1,7 @@
 # Maintainer: Harshil Anuwadia <your-email@example.com>
 pkgname=archwiki-tui-git
 pkgver=0.1.0.beta.1.r1.g617838b
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist terminal browser for the Arch Wiki (Beta)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Harshil-Anuwadia/archwiki-tui"

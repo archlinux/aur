@@ -1,7 +1,7 @@
 pkgbase = archwiki-tui-git
 	pkgdesc = Minimalist terminal browser for the Arch Wiki (Beta)
 	pkgver = 0.1.0.beta.1.r1.g617838b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Harshil-Anuwadia/archwiki-tui
 	arch = x86_64
 	arch = aarch64
