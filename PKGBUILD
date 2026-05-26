@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=e-search-bin
 _pkgname=eSearch
-pkgver=15.2.5
+pkgver=15.2.6
 _electronversion=40
 pkgrel=1
 pkgdesc="Screenshot,OCR search,translate,search for picture paste the picture on the screen,screen recorder.(Prebuilt version.Use system-wide electron)截屏,离线OCR,搜索翻译,以图搜图,贴图,录屏,滚动截屏."
@@ -32,8 +32,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('d329b4493438e66f7fc280f883bf6ddf202f6c20f9b6fb9be85dc21d29627984')
-sha256sums_x86_64=('e6566e17a1904a7695e0b0882b7ffd10174a6c2a467f4bf7526bf80efce9b25c')
+sha256sums_aarch64=('3dcab8a7f650bcded23c9fce90c74f66831a475e9038ef93bb93fdda05fc131f')
+sha256sums_x86_64=('3893198318ff620dd5b8706ed7472fb61746fab7d22169e1db61a57d3cdc1598')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
