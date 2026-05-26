@@ -1,0 +1,19 @@
+pkgbase = tbs-dvb-drivers-git-dkms
+	pkgdesc = DKMS package for TBS DVB drivers, tracking tbsdtv/linux_media upstream
+	pkgver = r6.541f7d8
+	pkgrel = 1
+	url = https://github.com/JohnLBergqvist/tbs-dvb-drivers-git-dkms
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = dkms
+	depends = tbs-firmware
+	provides = tbs-dvb-drivers
+	conflicts = tbsecp3-driver-git-dkms
+	conflicts = tbs-dvb-drivers
+	conflicts = tbs-linux_media-git-dkms
+	conflicts = tbs-linux_media-git
+	source = git+https://github.com/JohnLBergqvist/tbs-dvb-drivers-git-dkms.git
+	sha256sums = SKIP
+
+pkgname = tbs-dvb-drivers-git-dkms
