@@ -5,7 +5,6 @@ pkgbase = fileoptimizer-bin
 	url = https://nikkhokkho.sourceforge.io/?page=FileOptimizer
 	arch = x86_64
 	license = AGPL-3.0-only or AGPL-3.0-or-later
-	makedepends = p7zip
 	makedepends = icoutils
 	makedepends = imagemagick
 	depends = wine
