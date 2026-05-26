@@ -1,0 +1,20 @@
+pkgbase = bartos-bin
+	pkgdesc = Barto central job scheduling server (pre-compiled binary)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/rustyhorde/barto
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	optdepends = mariadb: local database server
+	provides = bartos
+	conflicts = bartos
+	source = https://github.com/rustyhorde/barto/releases/download/v1.0.1/dist-bartos.tar.gz
+	sha256sums = 45ede71a4ce1e8fa7be35cdf5cf7c343969e555305d27fe045ad351b9df79a88
+	source_x86_64 = bartos-x86_64::https://github.com/rustyhorde/barto/releases/download/v1.0.1/bartos-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = d70c452bcec3dc377877a9d3a9bff4596d068988fcf08c323a3efacc0bc08056
+	source_aarch64 = bartos-aarch64::https://github.com/rustyhorde/barto/releases/download/v1.0.1/bartos-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 2210a8a7ce65a947d4d747ebacf5743ea91c0f7b8ed2d1110b014eb2d04acfeb
+
+pkgname = bartos-bin
