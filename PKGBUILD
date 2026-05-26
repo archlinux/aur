@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=7.1.210
-pkgrel=1
+pkgrel=2
 _mpris_ver=2.1.5
 # Commit hash for aunetx/deezer-linux for patches
 _patch_commit=9cbe22284685c09d0c41f7f4d68fdb64fb4382aa
@@ -10,7 +10,7 @@ pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
 license=('custom')
-depends=('electron42' 'hicolor-icon-theme')
+depends=('electron41' 'hicolor-icon-theme')
 provides=('deezer')
 makedepends=('p7zip' 'asar' 'imagemagick' 'npm')
 source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact-win32-x86-$pkgver"
@@ -39,7 +39,7 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
 )
 sha256sums=('567fe009f67f5249fdef81d1f6555b9a45daf81c93863f1fcb12987c92a257d1'
             'c33b398d8ae279a620cf2914c806f7ee00c47519e4f404874cfd90a68fc8d80f'
-            '2712df28c1c061988ef75bfa543532ce16def27252b572d72ba3944a9788ac2c'
+            '3a23339b7b00d5d6d59768699f585d2565fc1cd7d2c43a254206de3840546eb6'
             '951c80c9dc4848b31a5fcc9655b005f3a218b1ff735396168c13922ac658c83b'
             'fe9bab50ef433516105ed2f2c349736c0be87c2f75f8d18bf1f011b2115019c1'
             '181016c614fc62595d604d336cdb43c40645d7cc66a35acaf562c9af26177a6e'
