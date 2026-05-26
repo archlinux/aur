@@ -32,7 +32,6 @@ depends=(
 )
 makedepends=('python-pip' 'git' 'cython' 'scons' 'clang')
 provides=('cabana')
-conflicts=('openpilot-cabana-git')
 options=(!lto)
 
 source=("git+https://github.com/deanlee/openpilot-cabana.git#commit=c70419f068a108f1775afe5af8796c4ff1287720"
