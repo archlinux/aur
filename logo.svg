@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#182035"/>
+      <stop offset="100%" stop-color="#080d1a"/>
+    </radialGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="prismClip">
+      <polygon points="250,62 52,370 448,370"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background card -->
+  <rect width="500" height="500" fill="url(#bg)" rx="30"/>
+
+  <!-- Glow halo behind prism -->
+  <polygon points="250,62 52,370 448,370" fill="#2255a0" opacity="0.30" filter="url(#glow)"/>
+
+  <!-- ===== PRISM — 4 facets =====
+       Vertices:
+         T  = top apex        (250, 62)
+         L  = bottom-left     ( 52,370)
+         R  = bottom-right    (448,370)
+         ML = mid of T–L edge (151,216)
+         MR = mid of T–R edge (349,216)
+         MB = mid of L–R edge (250,370)
+  -->
+
+  <!-- Top facet: brightest — light source above -->
+  <polygon points="250,62 151,216 349,216" fill="#64b3f4"/>
+  <!-- Center inverted facet: reflected highlight -->
+  <polygon points="151,216 250,370 349,216" fill="#3d8fd9"/>
+  <!-- Bottom-left facet: darker shadow side -->
+  <polygon points="52,370 151,216 250,370"  fill="#2265a8"/>
+  <!-- Bottom-right facet: deepest shadow -->
+  <polygon points="448,370 349,216 250,370" fill="#174f8c"/>
+
+  <!-- Subtle data-row lines clipped inside prism -->
+  <g clip-path="url(#prismClip)" opacity="0.10">
+    <line x1="0" y1="190" x2="500" y2="190" stroke="#9dd4fa" stroke-width="2"/>
+    <line x1="0" y1="255" x2="500" y2="255" stroke="#9dd4fa" stroke-width="2"/>
+    <line x1="0" y1="320" x2="500" y2="320" stroke="#9dd4fa" stroke-width="2"/>
+  </g>
+
+  <!-- Face edge lines -->
+  <g fill="none" stroke="#05090f" stroke-width="2" stroke-linejoin="round">
+    <polygon points="250,62 52,370 448,370"/>
+    <line x1="151" y1="216" x2="349" y2="216"/>
+    <line x1="151" y1="216" x2="250" y2="370"/>
+    <line x1="349" y1="216" x2="250" y2="370"/>
+  </g>
+
+  <!-- Highlight edges catching light -->
+  <line x1="250" y1="62" x2="151" y2="216" stroke="#9dd4fa" stroke-width="2.5" stroke-linecap="round" opacity="0.80"/>
+  <line x1="250" y1="62" x2="349" y2="216" stroke="#6ab9f5" stroke-width="2.0" stroke-linecap="round" opacity="0.50"/>
+
+  <!-- Apex sparkle -->
+  <circle cx="250" cy="62" r="4" fill="#b8e2ff" opacity="0.90"/>
+
+  <!-- ===== TEXT ===== -->
+  <text x="250" y="448"
+    font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif"
+    font-size="46" font-weight="800" fill="#eef2f7"
+    text-anchor="middle" letter-spacing="-0.5">Prisma<tspan fill="#4a9fd8">4</tspan>Postgres</text>
+
+  <text x="250" y="478"
+    font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif"
+    font-size="12" font-weight="500" fill="#3d6680"
+    text-anchor="middle" letter-spacing="5">DATABASE EXPLORER</text>
+</svg>
