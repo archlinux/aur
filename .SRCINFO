@@ -1,0 +1,16 @@
+pkgbase = mansnip
+	pkgdesc = The universal manual indexer
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = https://github.com/day50-dev/llm-manpage-tool
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python>=3.2
+	optdepends = python-mcp: mcp server support
+	source = llm-manpage-tool-0.6.5.tar.gz::https://github.com/day50-dev/llm-manpage-tool/archive/refs/tags/v0.6.5.tar.gz
+	sha256sums = ad81a77a26b0977d8f42e9110a5f6c64847f5571e05a23f7831e87c909044045
+
+pkgname = mansnip
