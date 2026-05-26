@@ -1,6 +1,6 @@
 pkgbase = onetalker-git
 	pkgdesc = An Augmentative and Alternative Communication (AAC) Aid
-	pkgver = 2026.4.r39.g967c044
+	pkgver = 2026.5.r1.g0a7df87
 	pkgrel = 1
 	url = https://onetalker.org
 	install = onetalker.install

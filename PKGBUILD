@@ -3,7 +3,7 @@
 
 _pkgname=onetalker
 pkgname=$_pkgname-git
-pkgver=2026.4.r39.g967c044
+pkgver=2026.5.r1.g0a7df87
 pkgrel=1
 pkgdesc='An Augmentative and Alternative Communication (AAC) Aid'
 arch=(x86_64)
@@ -56,7 +56,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
-  cargo build --frozen --release
+  cargo build --frozen --release --no-default-features
 }
 
 package() {
