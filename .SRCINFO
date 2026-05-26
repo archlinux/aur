@@ -1,0 +1,14 @@
+pkgbase = bartos
+	pkgdesc = Barto central job scheduling server
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/rustyhorde/barto
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	optdepends = mariadb: local database server
+	source = bartos-1.0.1.tar.gz::https://github.com/rustyhorde/barto/archive/v1.0.1.tar.gz
+	sha256sums = c30de9363518f8c19e3215e3fffa3587ee3e516ab57dd5f8ef6aa5ccd9eb844e
+
+pkgname = bartos
