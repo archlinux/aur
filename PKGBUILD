@@ -4,7 +4,7 @@
 _pkgname=dusklight
 pkgname=${_pkgname}-git
 pkgver=1.3.0.r2.g0dc4751
-pkgrel=1
+pkgrel=2
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
@@ -57,7 +57,7 @@ package() {
   cp -r "${srcdir}/dusklight/res" "${pkgdir}/usr/share/${_pkgname}/res"
 
   install -Dm 644 "${srcdir}/dusklight/platforms/freedesktop/1024x1024/apps/dev.twilitrealm.dusk.png" "${pkgdir}/usr/share/pixmaps/dev.twilitrealm.dusk.png"
-  install -Dm 755 "${srcdir}/dusklight/platforms/freedesktop/dusklight.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm 755 "${srcdir}/dusklight/platforms/freedesktop/dev.twilitrealm.dusk.desktop" "${pkgdir}/usr/share/applications/dev.twilitrealm.dusk.desktop"
 
   patchelf --remove-rpath "${pkgdir}/usr/share/${_pkgname}/dusklight"
 }
