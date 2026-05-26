@@ -1,0 +1,20 @@
+pkgbase = haraltr
+	pkgdesc = Proximity-based authentication daemon and PAM module using Bluetooth RSSI
+	pkgver = 0.2.0_alpha
+	pkgrel = 1
+	url = https://github.com/kdufla/haraltr
+	install = haraltr.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = pam
+	depends = bluez
+	depends = dbus
+	optdepends = bluez-utils: bluetoothctl for initial device pairing
+	options = !debug
+	source = haraltr-0.2.0_alpha.tar.gz::https://github.com/kdufla/haraltr/archive/refs/tags/v0.2.0-alpha.tar.gz
+	b2sums = 12be8a99212d26ad9c6a51d99d08dfb25a1581b04e2af8a28365b215ab17db9f194c823ee66653d00f2b2aac3a6503e94f988dc556188d13147d4b3cd9f927a9
+
+pkgname = haraltr

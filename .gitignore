@@ -1,0 +1,12 @@
+/*
+
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/haraltr.install
+!/LICENSE
+!/REUSE.toml
+
+!/LICENSES/
+LICENSES/*
+!/LICENSES/0BSD.txt
