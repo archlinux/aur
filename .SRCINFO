@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-wintile-git
 	pkgdesc = Windows 10 window tiling for GNOME
-	pkgver = 2026.03.22.r0.gdd8994c
+	pkgver = 2026.05.26.r0.ga6b3cac
 	pkgrel = 1
 	url = https://nowsci.com/wintile
 	arch = any
