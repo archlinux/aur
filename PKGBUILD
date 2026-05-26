@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=3.8.4
+pkgver=3.8.5
 _electronversion=36
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter.(Prebuilt version.Use system-wide electron)"
@@ -24,8 +24,8 @@ source=(
 )
 sha256sums=('65dff9c234613d5ca892f8a52b54de23fcf3b9f996d51651bc611aca239ef606'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('a09a60a13f2ec87d3929fb6de8c6fa87dbdc62e4620649cb5f662a9e44ce101c')
-sha256sums_x86_64=('03c2c3f4ac9638195403ef73eb52125a44a0903a97f763f1ea53ef54b208eef9')
+sha256sums_aarch64=('c352d0c6b04233ba6a9f530d944cfe8f7d0e218d245bfac5587ff2c092804ddc')
+sha256sums_x86_64=('77eafd16361f84abc22e0bd1901101c4cee16576bf4ab2231b1d96382e512cab')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
