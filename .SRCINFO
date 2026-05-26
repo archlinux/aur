@@ -1,7 +1,7 @@
 pkgbase = koito
 	pkgdesc = Modern, themeable scrobbler that you can use with any program that scrobbles to ListenBrainz
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://koito.io/
 	install = koito.install
 	arch = x86_64

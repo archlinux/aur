@@ -3,7 +3,7 @@
 pkgname=koito
 _pkgname=Koito
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, themeable scrobbler that you can use with any program that scrobbles to ListenBrainz'
 arch=('x86_64')
 url='https://koito.io/'
@@ -25,11 +25,18 @@ sha256sums=('e0afcc61a315767040eea58ff9c32a9cd76fe03134a012a35bf89c550c311c91'
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
 
+  export VITE_KOITO_VERSION="$pkgver"
+  export BUILD_TARGET="docker"
+
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
+  sed -i "s/-ldflags='-s -w'/-ldflags='-linkmode=external -X main.Version=$pkgver'/g" Makefile
+
   make build
 }
 
