@@ -1,6 +1,6 @@
 pkgbase = gitcomet
 	pkgdesc = Fast, resource-efficient Git GUI written in Rust
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://gitcomet.dev/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = gitcomet
 	depends = libxcb
 	depends = libxkbcommon
 	depends = wayland
-	source = gitcomet-v0.1.13-linux-x86_64.tar.gz::https://github.com/Auto-Explore/GitComet/releases/download/v0.1.13/gitcomet-v0.1.13-linux-x86_64.tar.gz
-	source = gitcomet-source-v0.1.13.tar.gz::https://github.com/Auto-Explore/GitComet/archive/refs/tags/v0.1.13.tar.gz
-	sha256sums = e85fbe00df27aa37db7de76c3f1dfaebcb9f1966af0a6eab244544d03df1cc8a
-	sha256sums = 8fde4e321c630c49ecbd94b9b18e661b680525feed0181f15c9575f3ed4d331a
+	source = gitcomet-v0.1.14-linux-x86_64.tar.gz::https://github.com/Auto-Explore/GitComet/releases/download/v0.1.14/gitcomet-v0.1.14-linux-x86_64.tar.gz
+	source = gitcomet-source-v0.1.14.tar.gz::https://github.com/Auto-Explore/GitComet/archive/refs/tags/v0.1.14.tar.gz
+	sha256sums = 3191f0de5ebdd73276e6c5ecbd83b9b0ca41cd9baa8895fffcbbcb79d91c043a
+	sha256sums = bccb95ad3df3f578d7a2365fdea1e93ec18f03a3145a68815a361cfb0d696604
 
 pkgname = gitcomet
