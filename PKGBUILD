@@ -1,6 +1,6 @@
 # Maintainer: HarryLoong <local>
 
-pkgname=epson-inkjet-printer-escpr2-clos-bin
+pkgname=epson-inkjet-printer-l8050
 pkgver=1.1.12
 pkgrel=1
 pkgdesc='Epson ESC/P-R2 printer driver (L8050/L8058/L6160 etc.), from UOS signed DEB'

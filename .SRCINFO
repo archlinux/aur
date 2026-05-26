@@ -1,9 +1,9 @@
-pkgbase = epson-inkjet-printer-escpr2-clos-bin
+pkgbase = epson-inkjet-printer-l8050
 	pkgdesc = Epson ESC/P-R2 printer driver (L8050/L8058/L6160 etc.), from UOS signed DEB
 	pkgver = 1.1.12
 	pkgrel = 1
 	url = https://www.epson.com.cn/services/supportproduct.html?p=53ce92f1e56342f8b89981ee9b461572&tab=1
-	install = epson-inkjet-printer-escpr2-clos-bin.install
+	install = epson-inkjet-printer-l8050.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-or-later
@@ -24,4 +24,4 @@ pkgbase = epson-inkjet-printer-escpr2-clos-bin
 	source_aarch64 = signed_epson-inkjet-printer-escpr2_1_1_12_UOS_21_arm64.deb::https://eposs.epson.com.cn/EPSON/assets/resource/Download/Service/driver/Inkjet/L8058/signed_epson-inkjet-printer-escpr2_1_1_12_UOS_21_arm64.deb
 	sha256sums_aarch64 = b5262ea984320a1404561c479895c43ac4bc0f07ffda9e0216e7404a800bcfca
 
-pkgname = epson-inkjet-printer-escpr2-clos-bin
+pkgname = epson-inkjet-printer-l8050
