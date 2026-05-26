@@ -2,7 +2,7 @@
 pkgname=netsonar-bin
 _pkgname=NetSonar
 _debname="pt.ptrtech.${_pkgname}"
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A network diagnostics tool for pinging hosts (ICMP/TCP/UDP/HTTP), managing network interfaces, and discovering local devices/services(Prebuilt version)"
 arch=(
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}_linux-x64_v${pkgver}.AppImage")
 source=("${pkgname%-bin}.sh")
 sha256sums=('587630b858a37bc5b30f31af8d7e7f40c8c3b3cc3c2835278fabc13c79860485')
-sha256sums_aarch64=('50a8ea9d53fa1980ca3f336c32c249db3d972ac63439affa446049c318b95cb7')
-sha256sums_x86_64=('467d1110af66f1f8fa7d0be156833704b54b289e644914a208f87f7aadf9c188')
+sha256sums_aarch64=('1f19c504299e9588f5fba10e4e5267434c8bb5fa2e704ad6facb66166a6741a5')
+sha256sums_x86_64=('58f202d95717de0b846ce2b92138c88264d6b611976fa1b793d3408e81a81e68')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
