@@ -13,22 +13,21 @@ _qodercli() {
         cword=$COMP_CWORD
     fi
 
-    local -r subcommands="commit jobs rm feedback help install mcp status update"
+    local -r subcommands="mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback wiki"
     local -r mcp_subcommands="add auth get list remove"
 
     local -r model_choices="auto efficient gmodel kmodel lite mmodel performance q35model qmodel ultimate"
     local -r output_format_choices="text json stream-json"
     local -r input_format_choices="text stream-json"
     local -r max_output_tokens_choices="16k 32k"
-    local -r scope_choices="local user project"
-    local -r transport_choices="stdio sse http streamable-http"
+    local -r permission_mode_choices="default accept_edits bypass_permissions dont_ask plan auto"
 
     # Determine which subcommand (if any) has been given
     local subcmd="" mcp_subcmd=""
     local i
     for ((i = 1; i < cword; i++)); do
         case "${words[i]}" in
-            commit|jobs|rm|feedback|help|mcp|status|update)
+            mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|external|remote-control|status|feedback|wiki)
                 subcmd="${words[i]}"
                 # Look for mcp subcommand
                 if [[ "$subcmd" == "mcp" ]]; then
@@ -48,11 +47,11 @@ _qodercli() {
 
     # Handle option arguments that expect a value
     case "$prev" in
-        --model)
+        -m|--model)
             COMPREPLY=($(compgen -W "$model_choices" -- "$cur"))
             return
             ;;
-        -f|--output-format)
+        -o|--output-format)
             COMPREPLY=($(compgen -W "$output_format_choices" -- "$cur"))
             return
             ;;
@@ -64,7 +63,11 @@ _qodercli() {
             COMPREPLY=($(compgen -W "$max_output_tokens_choices" -- "$cur"))
             return
             ;;
-        -w|--workspace|--workdir|--path)
+        --permission-mode)
+            COMPREPLY=($(compgen -W "$permission_mode_choices" -- "$cur"))
+            return
+            ;;
+        -w|--cwd)
             if declare -F _filedir >/dev/null 2>&1; then
                 _filedir -d
             else
@@ -72,38 +75,20 @@ _qodercli() {
             fi
             return
             ;;
-        --attachment|-i|--images)
+        --attachment|--plugin-dir|--mcp-config|--settings)
             if declare -F _filedir >/dev/null 2>&1; then
                 _filedir
             else
                 COMPREPLY=($(compgen -f -- "$cur"))
             fi
-            return
-            ;;
-        --kubeconfig)
-            if declare -F _filedir >/dev/null 2>&1; then
-                _filedir
-            else
-                COMPREPLY=($(compgen -f -- "$cur"))
-            fi
-            return
-            ;;
-        -s|--scope)
-            COMPREPLY=($(compgen -W "$scope_choices" -- "$cur"))
-            return
-            ;;
-        -t|--transport)
-            COMPREPLY=($(compgen -W "$transport_choices" -- "$cur"))
-            return
-            ;;
-        -o|--output)
-            COMPREPLY=($(compgen -W "text json" -- "$cur"))
             return
             ;;
         # These flags take a value but we can't autocomplete them
-        --agents|--allowed-tools|--disallowed-tools|--branch|--max-turns|\
-        -p|--print|-r|--resume|-c|--content|-s|--session|--namespace|\
-        -e|--env|-H|--header|--summarize-tool)
+        --reasoning-effort|--context-window|-i|--prompt-interactive|--worktree|\
+        --allowed-mcp-server-names|--tools|--allowed-tools|--disallowed-tools|\
+        --add-dir|-r|--resume|-n|--name|--session-id|--remote|--remote-session|\
+        --teleport|--remote-control|--delete-session|--agent|--agents|\
+        --append-system-prompt|--system-prompt|--output-style|--setting-sources)
             return
             ;;
     esac
@@ -113,64 +98,38 @@ _qodercli() {
             # Top level: complete subcommands or flags
             if [[ "$cur" == -* ]]; then
                 COMPREPLY=($(compgen -W "
-                    --agents --allowed-tools --attachment --branch
-                    -c --continue --dangerously-skip-permissions
-                    --disallowed-tools --experimental-mcp-load
-                    -h --help --input-format --max-output-tokens
-                    --max-turns --model -f --output-format --path
-                    -p --print -q --quiet -r --resume --summarize-tool
-                    -v --version --with-claude-config -w --workspace
-                    --worktree --yolo
+                    -d --debug -m --model --reasoning-effort --context-window
+                    -i --prompt-interactive -w --cwd --worktree --permission-mode
+                    --dangerously-skip-permissions --allowed-mcp-server-names
+                    --tools --allowed-tools --disallowed-tools --attachment
+                    --plugin-dir -c --continue --fork-session -r --resume
+                    -n --name --session-id --remote --remote-session --teleport
+                    --remote-control --list-sessions --delete-session --add-dir
+                    -o --output-format --input-format --max-output-tokens
+                    -p --print --agent --agents --append-system-prompt
+                    --system-prompt --output-style --mcp-config --strict-mcp-config
+                    --setting-sources --settings -v --version -h --help
                 " -- "$cur"))
             else
                 COMPREPLY=($(compgen -W "$subcommands" -- "$cur"))
             fi
             ;;
-        jobs)
-            COMPREPLY=($(compgen -W "-a --all -h --help -v --version -w --workspace" -- "$cur"))
-            ;;
-        rm)
-            COMPREPLY=($(compgen -W "-f --force -h --help --kubeconfig --namespace -v --version -w --workspace" -- "$cur"))
-            ;;
-        feedback)
-            COMPREPLY=($(compgen -W "--caller-version -c --content --email -h --help -i --images --json -s --session --workdir -v --version -w --workspace" -- "$cur"))
-            ;;
-        commit)
-            COMPREPLY=($(compgen -W "-h --help -m --message -v --version -w --workspace" -- "$cur"))
-            ;;
-        help)
-            COMPREPLY=($(compgen -W "$subcommands" -- "$cur"))
-            ;;
-        status)
-            COMPREPLY=($(compgen -W "-h --help -o --output -v --version -w --workspace" -- "$cur"))
-            ;;
-        update)
-            ;;
-        install)
-            COMPREPLY=($(compgen -W "--force -h --help --quiet -v --version -w --workspace" -- "$cur"))
-            ;;
         mcp)
             case "$mcp_subcmd" in
                 "")
                     if [[ "$cur" == -* ]]; then
-                        COMPREPLY=($(compgen -W "-h --help -v --version -w --workspace" -- "$cur"))
+                        COMPREPLY=($(compgen -W "-h --help -v --version -w --cwd" -- "$cur"))
                     else
                         COMPREPLY=($(compgen -W "$mcp_subcommands" -- "$cur"))
                     fi
                     ;;
-                add)
-                    COMPREPLY=($(compgen -W "-e --env -H --header -h --help -s --scope -t --transport -v --version -w --workspace" -- "$cur"))
-                    ;;
-                auth|get)
-                    COMPREPLY=($(compgen -W "-h --help -v --version -w --workspace" -- "$cur"))
-                    ;;
-                list)
-                    COMPREPLY=($(compgen -W "-h --help -v --version -w --workspace" -- "$cur"))
-                    ;;
-                remove)
-                    COMPREPLY=($(compgen -W "-h --help -s --scope -v --version -w --workspace" -- "$cur"))
+                add|auth|get|list|remove)
+                    COMPREPLY=($(compgen -W "-h --help -v --version -w --cwd" -- "$cur"))
                     ;;
             esac
+            ;;
+        plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|external|remote-control|status|feedback|wiki)
+            COMPREPLY=($(compgen -W "-h --help -v --version -w --cwd" -- "$cur"))
             ;;
     esac
 }
