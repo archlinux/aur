@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ccsm-bin
 _pkgname=CCSM
-pkgver=0.2.3
+pkgver=0.2.13
 _electronversion=41
 pkgrel=1
 pkgdesc="Desktop GUI for running multiple Claude Code agents in parallel, organized by task. (Prebuilt version. Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/Jiahui-Gu/ccsm"
-license=('LicenseRef-unknown')
+license=('MIT')
 conflicts=(
     "${pkgname%-bin}"
 )
@@ -23,9 +23,11 @@ options=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.rpm"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/Jiahui-Gu/ccsm/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8c3cdee4324465a0801ab3d76df296612b6edb63ea79aa02736cc61646ac8626'
+sha256sums=('7cc7cdc1735269ce6d40584dc0065ac10cbd2ac868ff80955ffb60fab0526bc5'
+            '298f03360dc6577ed1cd5b56c4c3cf16b2b83a1f1066d6e888d074c367299a5b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 
 _check_electron_version() {
@@ -71,4 +73,5 @@ package() {
         install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
