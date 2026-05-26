@@ -1,0 +1,17 @@
+pkgbase = momentum4-control-git
+	pkgdesc = Unofficial Linux/KDE tray controller for Sennheiser Momentum 4 headphones
+	pkgver = r2.c9d28cb
+	pkgrel = 1
+	url = https://github.com/f3Y0/momentum4-control
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pyqt6
+	depends = bluez
+	provides = momentum4-control
+	conflicts = momentum4-control
+	source = momentum4-control::git+https://github.com/f3Y0/momentum4-control.git
+	sha256sums = SKIP
+
+pkgname = momentum4-control-git
