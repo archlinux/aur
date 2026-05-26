@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=annimate-bin
 _pkgname=Annimate
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A tool for the convenient export of query results (matches) from the ANNIS1 system for linguistic corpora.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
-sha256sums=('35aa3eff54defe8788a0e947d1a32c02aab03790e5a85c067ce75d8241ea9911')
+sha256sums=('5f48aa8bb4656551bccd4d5d9168b23e3ca7607c56d4e8ca4178157e488aed24')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
@@ -29,10 +29,11 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    _icon_sizes=(32x32 128x128 256x256@2)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-bin}"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
