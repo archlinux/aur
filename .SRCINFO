@@ -1,6 +1,6 @@
 pkgbase = urdfdom
 	pkgdesc = The URDF (U-Robot Description Format) library provides core data structures and a simple XML parsers for populating the class data structures from an URDF file.
-	pkgver = 5.0.2
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/ros/urdfdom
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = urdfdom
 	depends = urdfdom-headers
 	depends = gcc-libs
 	depends = glibc
-	source = urdfdom-5.0.2.tar.gz::https://github.com/ros/urdfdom/archive/5.0.2.tar.gz
-	sha256sums = f929a33ec6171a57d4ff7d4c0eff6fb79d4725c279189d4f4c8806c4aa4e71ac
+	source = urdfdom-6.0.0.tar.gz::https://github.com/ros/urdfdom/archive/6.0.0.tar.gz
+	sha256sums = 3305bb725095c78ca3408a510e11f530cd9bb45229779084695b21b2e693bde9
 
 pkgname = urdfdom
