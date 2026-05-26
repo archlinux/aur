@@ -1,0 +1,18 @@
+pkgbase = fcitx5-eurolatin-sil
+	pkgdesc = An fcitx5 table layout replicating the Eurolatin SIL keyman layout (preliminary/incomplete release)
+	pkgver = r25.fa79da7
+	pkgrel = 1
+	url = https://github.com/ashprice/fcitx5-eurolatin-sil
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = fcitx5-chinese-addons
+	depends = libime
+	provides = fcitx5-eurolatin-sil
+	conflicts = fcitx5-eurolatin-sil
+	source = git+https://github.com/ashprice/fcitx5-eurolatin-sil.git
+	sha512sums = SKIP
+
+pkgname = fcitx5-eurolatin-sil
