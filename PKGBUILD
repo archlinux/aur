@@ -1,14 +1,15 @@
 # Maintainer: Guillaume Quintard <guillaume.quintard@varnish-software.com>
 
 pkgname=varnish-modules
-pkgver=0.28.0
-pkgrel=1
+pkgver=9.0.3
+pkgrel=2
+_srcver=0.28.0
 pkgdesc="A bundle of commonly useful Varnish vmods"
-depends=('varnish=9.0.3-2')
+depends=("varnish=$pkgver-$pkgrel")
 makedepends=('autoconf' 'automake' 'gcc' 'libtool' 'make' 'python' 'python-docutils')
 arch=('x86_64')
 url="https://github.com/varnish/varnish-modules"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/varnish/varnish-modules/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/varnish/varnish-modules/releases/download/$_srcver/$pkgname-$_srcver.tar.gz")
 license=('BSD')
 
 build() {
@@ -26,12 +27,12 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$_srcver"
     make check -k VERBOSE=1 -j
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$_srcver"
     make DESTDIR="$pkgdir" install
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

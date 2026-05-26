@@ -1,7 +1,7 @@
 pkgbase = varnish-modules
 	pkgdesc = A bundle of commonly useful Varnish vmods
-	pkgver = 0.28.0
-	pkgrel = 1
+	pkgver = 9.0.3
+	pkgrel = 2
 	url = https://github.com/varnish/varnish-modules
 	arch = x86_64
 	license = BSD
