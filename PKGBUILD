@@ -15,14 +15,14 @@
 
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
-pkgver=5.15.18
+pkgver=5.15.19
 pkgrel=1
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-qt5-declarative' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'python')
 license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
-_commit=e4c93bc7cac45bac6bccda3310947e8fe026a9ed
+_commit=e85773764374878adc197b6a45ae8ec3ff44dafa
 _basever=${pkgver%%+*}
 pkgver+=+kde+r0
 makedepends+=('git')
@@ -34,7 +34,7 @@ source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0001-Don-t-require-windows.h-when-using-native-Linux-gcc.patch'
         '0002-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch'
         'cmake-config-template.cmake')
-sha256sums=('1df02fdf99d1bb20cd11142b2b1fff19a1921bc5112a9bd827093b8ed3bf8b75'
+sha256sums=('f95d2475c13895fe65055c6cc7c167c8c2cc2b1c61cab94925f9a3a4afb4ba18'
             '05443c9a67b30160a7d4264da9c57b1a2fdbc3c74bab8e9f69c51ac8feeac2cb'
             '06aa9413f31edd4f8c51d65cf6a8e1add8d5a6af2588f18bdc2e67164ebdaea7'
             '89d091e4d5692eceeecc7ffef3c054fa47652458986beb98c4dc2c6b4e55ab26')
