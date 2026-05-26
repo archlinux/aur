@@ -1,0 +1,18 @@
+pkgbase = perl-moox-typetiny
+	pkgdesc = Optimized type checks for Moo + Type::Tiny
+	pkgver = 0.002003
+	pkgrel = 1
+	url = https://metacpan.org/dist/MooX-TypeTiny
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-fatal>=0.003
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-moo>=2.004
+	depends = perl-type-tiny>=1.008
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/H/HA/HAARG/MooX-TypeTiny-0.002003.tar.gz
+	sha256sums = d81e26ff6f8db10261f0087f96dc54367dcb49a9f3de8d53238f834ece19624b
+
+pkgname = perl-moox-typetiny

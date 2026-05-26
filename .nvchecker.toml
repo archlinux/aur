@@ -1,0 +1,3 @@
+[perl-moox-typetiny]
+source = "cpan"
+cpan = "MooX-TypeTiny"
