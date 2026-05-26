@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!fix_missing_pdfsizeopt_which.patch
+!minuimus_leanify_keep_icc.patch
+
+!.gitignore
