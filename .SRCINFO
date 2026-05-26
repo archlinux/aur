@@ -1,15 +1,15 @@
 pkgbase = ttf-lxgw-neo-zhisong-screen
 	pkgdesc = 霞鹜新致宋屏幕阅读版。
-	pkgver = 26.05.05
+	pkgver = 26.05.26
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwNeoXiZhi-Screen
 	arch = any
 	license = IPA
-	source = ttf-lxgw-neo-zhisong-screen-26.05.05-1.ttf::https://github.com/lxgw/LxgwNeoXiZhi-Screen/releases/download/26.05.05/LXGWNeoZhiSongScreen.ttf
-	source = ttf-lxgw-neo-zhisong-screen-full-26.05.05-1.ttf::https://github.com/lxgw/LxgwNeoXiZhi-Screen/releases/download/26.05.05/LXGWNeoZhiSongScreenFull.ttf
+	source = ttf-lxgw-neo-zhisong-screen-26.05.26-1.ttf::https://github.com/lxgw/LxgwNeoXiZhi-Screen/releases/download/26.05.26/LXGWNeoZhiSongScreen.ttf
+	source = ttf-lxgw-neo-zhisong-screen-full-26.05.26-1.ttf::https://github.com/lxgw/LxgwNeoXiZhi-Screen/releases/download/26.05.26/LXGWNeoZhiSongScreenFull.ttf
 	source = LICENSE.md
-	sha256sums = a600b6f779370913d799c45ec58f22355022ef762b0ea7c1af2a1c4735bd0530
-	sha256sums = 698193ae63fa980d234222f75c6ce1dfabffce6ea251b03babfd83ee08e11869
+	sha256sums = b04c1c5a99c392b92fae5b61ab774e2c5f6b4f00ea8a0d492b479f3642903f11
+	sha256sums = 1eadac19c50ebb08eb70d15f40a99aa506fb5d28963b1fc7a9a58bbecc0c9da3
 	sha256sums = daf91386d6f9a6a78e4e736c0c00375cae30214ac5c1dab2479f0a05fcb63edd
 
 pkgname = ttf-lxgw-neo-zhisong-screen
