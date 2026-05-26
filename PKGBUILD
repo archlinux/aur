@@ -4,7 +4,7 @@ pkgname=varnish-modules
 pkgver=0.28.0
 pkgrel=1
 pkgdesc="A bundle of commonly useful Varnish vmods"
-depends=('varnish=9.0.3-1')
+depends=('varnish=9.0.3-2')
 makedepends=('autoconf' 'automake' 'gcc' 'libtool' 'make' 'python' 'python-docutils')
 arch=('x86_64')
 url="https://github.com/varnish/varnish-modules"
