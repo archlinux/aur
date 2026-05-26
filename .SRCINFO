@@ -1,6 +1,6 @@
 pkgbase = quickcut
 	pkgdesc = Lightweight video cutter powered by ffmpeg
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/CallMeVerity/Quickcut
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = quickcut
 	depends = qt6-declarative
 	depends = qt6-multimedia
 	depends = ffmpeg
-	source = quickcut-0.1.1.tar.gz::https://github.com/CallMeVerity/Quickcut/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = b0a2b0d3f990af2ce80d0a98af73396e65bebf5a80c1421353ace08506b1c8c1
+	source = quickcut-0.1.2.tar.gz::https://github.com/CallMeVerity/Quickcut/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = b4a6182793714fe0671cde3014331a7d8ce3f43b202249d7762306c33d88faf6
 
 pkgname = quickcut
