@@ -1,7 +1,7 @@
 # Maintainer: Trần Xuân Nhật  <xuannhat123456789@gmail.com>
 pkgname=gytm-git
 pkgver=r0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Minimal TUI based music streaming app for Youtube Music"
 arch=('x86_64')
 url="https://github.com/xuannhat999/gytm"
@@ -28,6 +28,7 @@ build() {
   export SQLITE3_NO_PKG_CONFIG=0
   export PKG_CONFIG_ALL_DYNAMIC=1
   export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+  export OPENSSL_NO_VENDOR=1
   cargo build --frozen --release --bin gytm
 }
 
