@@ -12,7 +12,7 @@ pkgbase = mailio
 	depends = gcc-libs
 	depends = glibc
 	depends = openssl
-	source = mailio::git+https://github.com/karastojko/mailio.git#tag=8c540236ba4dedcab8080343267465abf9823c0d
-	sha512sums = 05caa05929a1927e0008144206273b1e5a638d02964db4e992050c7a5f6eff55348434d6450fafd5e6c5dc552885872ea5d15bee601a6062b8554af3278b5b43
+	source = mailio::git+https://github.com/karastojko/mailio.git#tag=5d4f7331037616633a91dff95d68531a62e883b6
+	sha512sums = fe61a102d3c39a82369c094f7b5b3e5065ca3eb1dc068e4707777ebe84744ec53f83c46e46535db2d54e59ed456587f13435b1644fbc70a9523e8135afbad7f6
 
 pkgname = mailio

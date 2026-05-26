@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Adrien Wu <adrien.sf.wu@gmail.com>
 
-declare -r _tag="8c540236ba4dedcab8080343267465abf9823c0d"
+declare -r _tag="5d4f7331037616633a91dff95d68531a62e883b6"
 
 pkgname="mailio"
 pkgver="0.25.3"
@@ -20,7 +20,7 @@ makedepends=("boost" "cmake" "doxygen")
 checkdepends=("cmake")
 # source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz") TODO
 source=("${pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("05caa05929a1927e0008144206273b1e5a638d02964db4e992050c7a5f6eff55348434d6450fafd5e6c5dc552885872ea5d15bee601a6062b8554af3278b5b43")
+sha512sums=("fe61a102d3c39a82369c094f7b5b3e5065ca3eb1dc068e4707777ebe84744ec53f83c46e46535db2d54e59ed456587f13435b1644fbc70a9523e8135afbad7f6")
 
 _compile()
 {
