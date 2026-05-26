@@ -9,12 +9,12 @@ pkgname=cef-vaapi
 # To update this package, update the _cef_commit and _chromium_ver variables.
 # For the CEF versioning scheme, see
 # https://chromiumembedded.github.io/cef/branches_and_building#version-number-format
-pkgver=147.0.10
+pkgver=148.0.8
 # See https://github.com/chromiumembedded/cef/tree/<release branch>
 # Also see https://chromiumembedded.github.io/cef/branches_and_building
-_cef_commit=d58e84d17dd3f646c906ac633156cd0ec46638e9
+_cef_commit=18e00ea6d6e4567ab4031efaf04c50e5b2709c29
 # the chromium version must match CHROMIUM_BUILD_COMPATIBILITY.txt in the CEF repo
-_chromium_ver=147.0.7727.118
+_chromium_ver=148.0.7778.96
 _system_clang=1
 pkgrel=1
 pkgdesc="Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)"
@@ -75,6 +75,8 @@ source=("chromium-$_chromium_ver-lite.tar.xz::https://commondatastorage.googleap
         chromium-146-build-with-wasm-rollup.patch
         chromium-147-revert-clang-no-lifetime-dse-flag.patch
         chromium-147-rust-1.95-bytemuck.patch
+        chromium-148-revert-clang-fsanitize-return-flag-1.patch
+        chromium-148-revert-clang-fsanitize-return-flag-2.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         glibc-2.42-baud-rate-fix.patch
@@ -83,14 +85,16 @@ source=("chromium-$_chromium_ver-lite.tar.xz::https://commondatastorage.googleap
         chromium-disable-font-tests.patch
         FindCEF.cmake
 )
-sha256sums=('713eb46feccf03417a06bb26768d0ffb6ec635b13eeffaacfe570e7ce55c5da7'
-            '752d63b546d78146a3c3618eaefb0eccb22343abd7d26d76de264d52029e5638'
+sha256sums=('694d4e0269e11056c6dff748da7e8354bfbf90da7ce8f7467a0acfe2994a8688'
+            '011c62db2fcfb6e7e1def597b07986ad91836a94577a1f680b336085f7bf6b81'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
             '24535c314c7e70c52bcf409aaf604728bfc5b5c97e60087e630e1f7233b9e12d'
             '45fa20cc27ef0aa00d654d0bac84bfaa8d8090b5f8aec49cc2e8d7249d3cd7ba'
             'c382830318c5b37826ecf44f3ba9def6be8affdad1bce819ecb83f3222ff4b3a'
             'b9e6339221efe03540ffb360c161d93604a1fc93a5a1c53e5e9849066f987d05'
+            '2c0d0407ff7d4d607cf4f4b56aef4913df1bcbacb630d85c06a4a125fd0dceab'
+            '7836f666b78b85ac4a05cc9403df74c80d17f18a7f2a29d489848c76db919128'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '1c1898f263eaacbc069a8e1a3e732852350350d1dad4cb1a6bba430e3b796cd0'
@@ -108,22 +112,25 @@ declare -gA _system_libs=(
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
-  [harfbuzz-ng]=harfbuzz
+  [harfbuzz]=harfbuzz
   #[icu]=icu
   #[jsoncpp]=jsoncpp  # needs libstdc++
   #[libaom]=aom
   #[libavif]=libavif  # needs -DAVIF_ENABLE_EXPERIMENTAL_GAIN_MAP=ON
+  [libdrm]=libdrm
   [libjpeg]=libjpeg-turbo
   # [libpng]=libpng
   #[libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
+  [openh264]=openh264
   [opus]=opus
   #[re2]=re2          # needs libstdc++
   #[snappy]=snappy    # needs libstdc++
   #[woff2]=woff2      # needs libstdc++
   [zlib]=minizip
+  [zstd]=zstd
 )
 _unwanted_bundled_libs=(
   $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
@@ -239,8 +246,12 @@ prepare() {
   # Increase _FORTIFY_SOURCE level to match Arch's default flags
   patch -Np1 -i ../increase-fortify-level.patch
 
-  # Fix issue about missing compiler flag, can be dropped when arch has LLVM 23
-  # clang++: error: unknown argument: '-fsanitize-ignore-for-ubsan-feature=array-bounds'
+  # clang 22 lacks -fsanitize-ignore-for-ubsan-feature, which is needed to use
+  # -fsanitize=array-bounds without triggering UBSan feature detection. Without
+  # feature detection suppression, V8 compiles in __sanitizer_set_death_callback
+  # calls that require the UBSan runtime, which is not linked in a trap-mode
+  # build. Drop the entire sanitize_c_array_bounds cflags block.
+  # Can be dropped when arch has LLVM 23.
   patch -Np1 -i ../chromium-146-drop-unknown-clang-flag.patch
 
   # Causes a build failure with our clang version
@@ -258,6 +269,10 @@ prepare() {
   # https://crbug.com/456677057
   patch -Np1 -i ../glibc-2.42-baud-rate-fix.patch
 
+  # Causes a build failure with our clang version
+  patch -Np1 -i ../chromium-148-revert-clang-fsanitize-return-flag-1.patch
+  patch -Np1 -i ../chromium-148-revert-clang-fsanitize-return-flag-2.patch
+
   # CEF: Remove sysroot requirement for non-x64 builds
   patch -Np1 -i ../cef-no-sysroot.patch
 
@@ -268,9 +283,19 @@ prepare() {
   echo 'clang_exe = "clang"' >> cef/tools/clang_util.py
 
   # Link to system tools required by the build
-  mkdir -p third_party/node/linux/node-linux-x64/bin third_party/jdk/current/bin
+  mkdir -p third_party/node/linux/node-linux-x64/bin \
+           third_party/rust-toolchain/bin \
+           third_party/jdk/current/bin
+
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
+
+  # the build uses system rust, but CEF checks for it here.
+  ln -s /usr/bin/rustc third_party/rust-toolchain/bin/
+
+  # remove x86_64 binary and use our own
+  rm -f third_party/gperf/cipd/bin/gperf
+  ln -s /usr/bin/gperf third_party/gperf/cipd/bin/
 
   if (( !_system_clang )); then
     # Use prebuilt rust as system rust cannot be used due to the error:
@@ -428,6 +453,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
   python3 cef/tools/gclient_hook.py
+  sed -i '/__sanitizer_set_death_callback/d' v8/src/sandbox/testing.cc
   ninja -C out/Release_GN_x64 libcef chrome_sandbox
 
   # Build the CEF binary distribution
