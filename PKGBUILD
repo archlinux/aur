@@ -37,11 +37,11 @@ build() {
 check() {
     cd "$_pkgname"
     # Smoke test the freshly-built binary against the bundled fixtures.
-    if ./target/release/aur-guard check --threshold malicious test-fixtures/PKGBUILD.malicious >/dev/null; then
+    if ./target/release/aur-guard check --no-diff --threshold malicious test-fixtures/PKGBUILD.malicious >/dev/null; then
         echo "smoke test FAILED: scanner missed the malicious fixture" >&2
         return 1
     fi
-    if ! ./target/release/aur-guard check test-fixtures/PKGBUILD.benign >/dev/null; then
+    if ! ./target/release/aur-guard check --no-diff test-fixtures/PKGBUILD.benign >/dev/null; then
         echo "smoke test FAILED: scanner flagged the benign fixture" >&2
         return 1
     fi
