@@ -1,0 +1,18 @@
+pkgbase = perl-http-xscookies
+	pkgdesc = Fast XS cookie mangling for Perl
+	pkgver = 0.000021
+	pkgrel = 1
+	url = https://metacpan.org/dist/HTTP-XSCookies
+	arch = x86_64
+	license = MIT
+	checkdepends = perl-data-dumper
+	checkdepends = perl-test-simple
+	checkdepends = perl-timedate
+	makedepends = perl-extutils-makemaker
+	depends = perl-xsloader
+	depends = perl>=5.8.9
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/G/GO/GONZUS/HTTP-XSCookies-0.000021.tar.gz
+	sha256sums = 74e637d6f682f3025fbdf825f51c5be892a8458b5c6ae08c44a73cd8b658258a
+
+pkgname = perl-http-xscookies

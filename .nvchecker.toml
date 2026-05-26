@@ -1,0 +1,3 @@
+[perl-http-xscookies]
+source = "cpan"
+cpan = "HTTP-XSCookies"
