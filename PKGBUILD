@@ -8,7 +8,7 @@ _qml_material_commit=8072ee668c08f8de59b4286cce56de5e3ea3af59
 _qextra_commit=2b947f16cfba8ba21c16f2a5dd953c152db78c4a
 
 pkgname=waywallen
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
@@ -26,7 +26,7 @@ source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
         "git+https://github.com/hypengw/QmlMaterial.git#commit=$_qml_material_commit"
         "git+https://github.com/hypengw/QExtra.git#commit=$_qextra_commit"
         "0001-use-system-deps.diff")
-sha256sums=('fc3c388a862fd231a15089b7ad9993d70474de73f6e55c67addb3a70de187f19'
+sha256sums=('5eab80e16f2d52af687abdd5d5d48d4473b1859622b10d3815132c4cc44d38f3'
             '4084a64ce856093b1648792ed9f0c00fea9c61d59997577b2f21128a7fe0a1ec'
             '939c717802fc9e0ef13e54f547d6f7d1b2b99730eb31c6ef06211a3ffd5495e6'
             'f39e96c654b7459ab7c8f81df3c2b983636a08a6807fd1bd5b00bcb110bfb7d7'
