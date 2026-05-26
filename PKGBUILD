@@ -3,7 +3,7 @@
 _name=htmltools
 _srcname="py-${_name}"
 pkgname="python-${_name}"
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Tools for creating, manipulating, and writing HTML from Python"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 depends=('ipython' 'python-packaging>=20.9' 'python-typing_extensions' 'python')
 checkdepends=('python-pytest>=6.2.4' 'python-syrupy>=4.6.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/posit-dev/${_srcname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('4ec472f9168e3c8a3b0e9120fd320fa6c2964003a1084e5be0c87c1c6d9a22ae26ed262ee6e87fdd0160efa3780cbd690256b03eaa78319c586ce14038742892')
+b2sums=('d10efba3976c3154460ebbcf5652c2dc53ca5e9760db923742c7720c70c2aed3d5982d22eeefa97d62da75e405e56e7e60201c92652e49bd68e7eb29ede34c0d')
 
 check() {
     cd $_srcname-$pkgver
