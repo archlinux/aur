@@ -1,6 +1,6 @@
 pkgname=hpr
-pkgver=0.5
-pkgrel=11
+pkgver=0.6
+pkgrel=1
 pkgdesc="Offline zero-account activity tracker"
 arch=('x86_64')
 url="https://github.com/plexescor/HPR"
@@ -53,8 +53,14 @@ package() {
     install -Dm644 ../shippedWithBinary/tabAliases.csv \
         "$pkgdir/usr/share/hpr/tabAliases.csv"
 
+    install -Dm644 ../shippedWithBinary/projectAliases.csv \
+        "$pkgdir/usr/share/hpr/projectAliases.csv"
+
     install -Dm644 ../shippedWithBinary/config.csv \
         "$pkgdir/usr/share/hpr/config.csv"
+
+    install -Dm644 ../shippedWithBinary/installWindowCallsExtension.sh \
+        "$pkgdir/usr/share/hpr/installWindowCallsExtension.sh"
 
     # UI + assets
     cp -r ../build/ui \
