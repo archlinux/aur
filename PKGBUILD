@@ -1,6 +1,6 @@
 # Maintainer: Slush97 <slusheliott@gmail.com>
 pkgname=vpkmerge-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Combine multiple Valve Pak (.vpk) mods into one (Deadlock modding; desktop app, prebuilt)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE"
 )
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('91948810b084e4676d33a8a6060210ac01ff75a04d6e5c63c14ae00f4656a864'
+sha256sums=('418c150486f056c8da0fb96fb2e0ffb6e8d1a75c7f248832cdf7d4e2c8e76f9f'
             '00b2f40961e16423ce60d95c9087bde5bc5a2ed7d078312a56c54f0452863d19')
 
 package() {
