@@ -1,0 +1,22 @@
+pkgbase = python-jsrc
+	pkgdesc = Python library for bioinformatics and scientific computing
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://github.com/imjiaoyuan/jsrc
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=61.0
+	makedepends = uv
+	depends = python>=3.10
+	depends = python-numpy>=1.23
+	depends = python-matplotlib>=3.5
+	depends = python-opencv>=4.7
+	options = !strip
+	options = !debug
+	source = python-jsrc-0.2.8.tar.gz::https://github.com/imjiaoyuan/jsrc/archive/v0.2.8.tar.gz
+	sha256sums = 86962a7ad2e4744688ca3ec9294d5c6a9753968d360ca8cdadf17ced2fa4145f
+
+pkgname = python-jsrc
