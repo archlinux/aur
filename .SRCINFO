@@ -1,6 +1,6 @@
 pkgbase = antigravity2-bin
 	pkgdesc = Google Antigravity - Agentic Desktop Application
-	pkgver = 2.0.1
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://antigravity.google
 	arch = x86_64
@@ -46,9 +46,9 @@ pkgbase = antigravity2-bin
 	sha256sums = 8bd61275845713a7bb0386b3e9a035fc6e12b6beb975e5500d173a1b9bf6d0ea
 	sha256sums = 6c65d2b53cc056539ad761b8f4d3c1bc484c853972ae5b1708c219c1153a4753
 	sha256sums = b27f0e4a6f14f491ba31bb24533a1f43c677362b12a0744a53fdd09d7c785317
-	source_x86_64 = Antigravity-2.0.1-x86_64.tar.gz::https://storage.googleapis.com/antigravity-public/antigravity-hub/2.0.1-6566078776737792/linux-x64/Antigravity.tar.gz
-	sha256sums_x86_64 = 0727e1f56961b6d2347941f278da69cc6c17de3befe988524848cd167380e9ab
-	source_aarch64 = Antigravity-2.0.1-aarch64.tar.gz::https://storage.googleapis.com/antigravity-public/antigravity-hub/2.0.1-6566078776737792/linux-arm/Antigravity.tar.gz
-	sha256sums_aarch64 = 5af56cc9dda954f369a61045b7da2f348bcb0b3507d272b4c0e9aa7cd6175d9b
+	source_x86_64 = Antigravity-2.0.6-x86_64.tar.gz::https://storage.googleapis.com/antigravity-public/antigravity-hub/2.0.6-5413878570549248/linux-x64/Antigravity.tar.gz
+	sha256sums_x86_64 = ad1e04535149b07c27030eb1ead40f4efda388cb39020bcbb9accdfb49e44cc5
+	source_aarch64 = Antigravity-2.0.6-aarch64.tar.gz::https://storage.googleapis.com/antigravity-public/antigravity-hub/2.0.6-5413878570549248/linux-arm/Antigravity.tar.gz
+	sha256sums_aarch64 = 02fc7f47650582ac72b845853b514de6c83ea7a4cd8a8d739e1a8688db2f45a9
 
 pkgname = antigravity2-bin
