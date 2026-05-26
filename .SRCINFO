@@ -1,6 +1,6 @@
 pkgbase = qoder-bin
 	pkgdesc = Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.2.3
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://qoder.com/
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = qoder-bin
 	depends = libxkbfile
 	optdepends = bash
 	optdepends = zsh
-	provides = qoder=1.2.3
+	provides = qoder=1.3.0
 	conflicts = qoder
 	options = !emptydirs
 	options = !strip
-	source = qoder-1.2.3.rpm::https://download.qoder.com/release/latest/qoder_x86_64.rpm
+	source = qoder-1.3.0.rpm::https://download.qoder.com/release/latest/qoder_x86_64.rpm
 	source = LICENSE.html
 	source = qoder.js
 	source = qoder.sh
