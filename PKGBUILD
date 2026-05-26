@@ -1,7 +1,7 @@
 # Maintainer: 88plug <https://github.com/88plug>
 pkgname=intel-amt-linux
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Linux GUI+CLI for Intel AMT/vPro: KVM, SOL, IDER, power control. IPMI/iLO/MeshCommander alt."
 arch=('x86_64')
 url="https://github.com/88plug/intel-amt-linux"
