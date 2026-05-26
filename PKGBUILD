@@ -44,6 +44,7 @@ noextract=(
     "${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip"
     "${_pkgname}-${pkgver}-${CARCH}.zip"
 )
+source=("${pkgname%-bin}.sh")
 source_aarch64=(
     "${_pkgname}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/chromedriver-v${_pkgver//_/-}-linux-arm64.zip"
     "${_pkgname}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-arm64.zip"
@@ -56,6 +57,7 @@ source_x86_64=(
     "${_pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/chromedriver-v${_pkgver//_/-}-linux-x64.zip"
     "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 )
+sha256sums=('7583672050c8131697949cdba39fd2e86f6ed9555c063bc1bc81efc9e661d78e')
 sha256sums_aarch64=('cea1cb44862a43f0306edbeaa2438b7d14af126ec422fda3d257cc3596649043'
                     'b35ab237575639299f303ffaa1fefc007ca121856c8b007278faa282f3ccf544')
 sha256sums_armv7h=('1b93aa4818cb184825d664fe885fbfae7ce1487cf92136645b2123fe44df1c91'
@@ -63,6 +65,7 @@ sha256sums_armv7h=('1b93aa4818cb184825d664fe885fbfae7ce1487cf92136645b2123fe44df
 sha256sums_x86_64=('83f7b3f59a10d71f284cfc17c22eeac459db0603e1f8a604fc76062f965d0bb2'
                    '0769ce8db38101aa7f4eff6e4573cb625906613ff0f0f566694e72861ec561a4')
 prepare() {
+    sed -i "s/@ELECTRON@/${_pkgname}/g" "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/${_pkgname}"
     bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
     bsdtar -xf "${srcdir}/${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
@@ -70,9 +73,9 @@ prepare() {
     chmod u+s "${srcdir}/${_pkgname}/chrome-sandbox"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
-    cp -r --no-preserve=ownership --preserve=mode "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib"
-    ln -nfs "/usr/lib/${_pkgname}/${_projectname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -a "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib"
     rm -rf "${pkgdir}/usr/lib/${_pkgname}/LICENSE"*
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
