@@ -1,0 +1,11 @@
+--- pyproject.toml.orig	2026-05-26 15:54:56.650112807 +0400
++++ pyproject.toml	2026-05-26 15:55:07.005730420 +0400
+@@ -6,7 +6,7 @@
+ name = "Wikipedia-API"
+ version = "0.15.0"
+ description = "Python Wrapper for Wikipedia"
+-readme = {file = "README_processed.rst", content-type = "text/x-rst"}
++readme = {file = "README.rst", content-type = "text/x-rst"}
+ license = {text = "MIT"}
+ authors = [
+     {name = "Martin Majlis", email = "martin@majlis.cz"},

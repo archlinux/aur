@@ -1,0 +1,21 @@
+pkgbase = python-wikipedia-api
+	pkgdesc = Python wrapper for Wikipedia
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/martin-majlis/Wikipedia-API
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-hatchling
+	depends = python
+	depends = python-click
+	depends = python-httpx
+	depends = python-tenacity
+	source = Wikipedia-API-0.15.0.tar.gz::https://github.com/martin-majlis/Wikipedia-API/archive/v0.15.0.tar.gz
+	source = fix-readme-name.patch
+	sha256sums = 78ff45feed951f91fdc2183ff533f0a5bed6560e5091b38200ba4ac068fa33df
+	sha256sums = SKIP
+
+pkgname = python-wikipedia-api
