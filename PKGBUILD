@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spool-bin
 _pkgname=Spool
-pkgver=0.4.19
+pkgver=0.4.20
 _electronversion=34
 pkgrel=1
 pkgdesc="Your local AI session library. Collects sessions from Claude Code, Codex CLI, Gemini CLI (and more) — browsable and ⌘K-searchable. (Prebuilt version.Use system-wide electron)."
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/spool-lab/spool/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b1e73f79088654a26da044bd64d1c97060b3b075669ce3381d54a54b782f17f1'
+sha256sums=('9b2501532b24cdb783c480c0c817e5b1b920614501af1b2f2809cd48b31f0709'
             '44b3703d31c25ba6ad08086976448a58b55426a3c206efba0dc08ff2162a4efa'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
