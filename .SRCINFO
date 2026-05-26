@@ -1,0 +1,16 @@
+pkgbase = intel-amt-activate
+	pkgdesc = Activate Intel AMT in Client Control Mode from Linux — no MEBx, no reboot, ~40s on CSME 16.1+
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/88plug/amt-activate-linux
+	arch = any
+	license = MIT
+	depends = rpc-go-bin
+	depends = openssl
+	depends = sudo
+	optdepends = intel-amt-linux: GUI + CLI for KVM, SOL, IDER, power control after activation
+	optdepends = nmap: scan subnet for AMT IPs after activation
+	source = git+https://github.com/88plug/amt-activate-linux.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = intel-amt-activate
