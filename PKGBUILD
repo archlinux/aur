@@ -2,7 +2,7 @@
 pkgname=(yacreader yacreaderlibraryserver)
 pkgbase=yacreader
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Comic reader for cross-platform reading and managing your digital comic collection."
 arch=('i686' 'x86_64')
 url="http://www.yacreader.com"
@@ -19,18 +19,27 @@ build() {
   cd $srcdir/$pkgbase-$pkgver/
   cmake -B build -DDECOMPRESSION_BACKEND=7zip -DPDF_BACKEND=pdfium -DCMAKE_INSTALL_PREFIX=/usr -GNinja
   cmake --build build
-  cmake -B build-server -DDECOMPRESSION_BACKEND=7zip -DPDF_BACKEND=pdfium -DBUILD_SERVER_STANDALONE=ON -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build build-server
   }
 
 package_yacreader() {
   cd $srcdir/$pkgbase-$pkgver/
   DESTDIR="$pkgdir" cmake --install build
+  rm $pkgdir/usr/bin/YACReaderLibraryServer
+  rm $pkgdir/usr/lib/systemd/user/yacreaderlibraryserver.service
 }
 
 package_yacreaderlibraryserver() {
   pkgdesc="Headless YACReaderLibrary server for use with YACReader for iOS."
   install=yacreaderlibraryserver.install
   cd $srcdir/$pkgbase-$pkgver/
-  DESTDIR="$pkgdir" cmake --install build-server
-  }
+  
+  # install binary
+  install -Dm755 \
+    "build/YACReaderLibraryServer/YACReaderLibraryServer" \
+    "$pkgdir/usr/bin/YACReaderLibraryServer"
+
+  # install systemd service
+  install -Dm644 \
+    "YACReaderLibraryServer/yacreaderlibraryserver.service" \
+    "$pkgdir/usr/lib/systemd/system/yacreaderlibraryserver.service"
+}
