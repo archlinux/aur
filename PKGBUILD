@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=celq-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Query and transform JSON, YAML, TOML, XML, and JSON5 data with CEL expressions"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("${pkgname}-${pkgver}-LICENSE-MIT::https://raw.githubusercontent.com/Iva
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/IvanIsCoding/celq/releases/download/v${pkgver}/celq-linux-x86_64-gnu.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/IvanIsCoding/celq/releases/download/v${pkgver}/celq-linux-aarch64-gnu.tar.gz")
 sha256sums=('c73e3f239b267fb3f998a0535e250920e1e520ec3b5b567894798f76f56b9bb9')
-sha256sums_x86_64=('d105c5c26204d3f32c48b5d03ef3418ee379b5338e84aafa11accafe963b5156')
-sha256sums_aarch64=('3696ef1140fd534e2614780ed239dd03604d6edfe77c675e429af8eb6b9b59a2')
+sha256sums_x86_64=('85294f1255489aec7b0b11bb4f49b4b2f247bc4c4516ab873b105e22bb8d5812')
+sha256sums_aarch64=('dec99f525b37a5d0dba949b648445393705346481a313806009c742c67cf1608')
 
 latestver() {
     gh api --paginate repos/IvanIsCoding/celq/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "celq-linux-x86_64-gnu.tar.gz") and any(.assets[]; .name == "celq-linux-aarch64-gnu.tar.gz")) | .tag_name' |
