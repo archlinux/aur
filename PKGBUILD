@@ -6,9 +6,11 @@ arch=('any')
 url="https://github.com/mavxa/DynamicGlacier"
 license=('MIT')
 depends=(
+  'bluez-utils'
   'fontconfig'
   'hyprland'
   'libpulse'
+  'networkmanager'
   'noto-fonts'
   'pipewire'
   'playerctl'
@@ -16,7 +18,12 @@ depends=(
   'qt6-5compat'
   'qt6-declarative'
   'quickshell'
+  'ttf-material-symbols-variable'
   'upower'
+)
+optdepends=(
+  'kitty: WiFi settings via nmtui'
+  'bluedevil: Bluetooth device wizard'
 )
 makedepends=('git')
 provides=('dynamic-glacier')
