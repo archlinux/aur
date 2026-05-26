@@ -1,7 +1,7 @@
 pkgbase = gaia-amd
 	pkgdesc = AI-powered inference engine for AMD hardware
 	pkgver = 0.19.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/amd/gaia
 	arch = x86_64
 	license = MIT
@@ -62,8 +62,8 @@ pkgbase = gaia-amd
 	source = gaia-user.service
 	source = gaia.sysusers
 	sha256sums = ecac14989bb17ba6f07fe8dc274df8458195b7ef16504b3301bcbf707066ae3c
-	sha256sums = 04f4f7fa7584d8a5deb6e1f9b8e1f2d8c2267cdb95cdd9d208ead9825ae2ac44
-	sha256sums = a5aa7651b2b13e5161e98fb231cb4a12cc451ee09bce0d5822824913573daa97
+	sha256sums = 8ba5237cd80c52c5e279db84102285a48632a8f8345c6c238c5e8fd556f87c20
+	sha256sums = aaf92363374901f80f30448c1efbd3573d0a5f86de20f85858b29c74e49faddc
 	sha256sums = 3d185692ac7bd9834643052cb570a6a214878bf74f9e6e14b8c5115493bc7c7e
 
 pkgname = gaia-amd
