@@ -1,6 +1,6 @@
 pkgbase = mupdf-git
 	pkgdesc = Lightweight PDF, XPS, and E-book viewer
-	pkgver = 20251111.31a3f7ae5
+	pkgver = 20260525.6b4b7c8d1
 	pkgrel = 1
 	url = https://mupdf.com/
 	arch = x86_64
@@ -27,10 +27,12 @@ pkgbase = mupdf-git
 	conflicts = mupdf-tools
 	source = git+https://github.com/ArtifexSoftware/mupdf.git
 	source = git+https://github.com/ArtifexSoftware/extract.git
+	source = git+https://github.com/ArtifexSoftware/thirdparty-cmark-gfm.git
 	source = git+https://github.com/ArtifexSoftware/thirdparty-freeglut.git
 	source = git+https://github.com/ArtifexSoftware/thirdparty-lcms2.git#branch=lcms2mt
 	source = https://raw.githubusercontent.com/ArtifexSoftware/mujs/refs/heads/master/regexp.h
 	source = desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
