@@ -1,14 +1,14 @@
 # Maintainer: Aaron Coach <aur@awc.id.au>
 
 pkgname=yamtrack
-pkgver=0.25.2
+pkgver=0.25.3
 pkgrel=1
 pkgdesc="Self-hosted media tracker"
 arch=('any')
 url="https://github.com/FuzzyGrim/Yamtrack"
 license=('AGPL3')
 depends=('python' 'valkey')
-makedepends=('python-pip')
+makedepends=('python-pip' 'uv')
 backup=('etc/yamtrack/yamtrack.env')
 install="${pkgname}.install"
 provides=("yamtrack=${pkgver}")
@@ -29,7 +29,7 @@ source=(
   "yamtrack-manage"
 )
 
-sha256sums=('ef434ebe5fcb6fc5edd015aeb438619674c3864147fac0e132ea14af1334b133'
+sha256sums=('da50edba56cef0531f9387ec0d29bd99f1fd1a7f2adcd4423f46500771535488'
             '491b49f33107a36727db4fd181b5f1da1d43a564737a3656d90d3acc22816a36'
             'b802edf0f341b2ec008eedb79b1f4b4c7cec4b89428765a20fa6dd5db30e3a48'
             '1caecf3ac52fd3c0a9c2ada54d4130aba03ff454185c6b10f04f4cf514c4a3b7'
@@ -53,6 +53,9 @@ build() {
 
   python -m venv venv
   venv/bin/python -m pip install --upgrade pip setuptools wheel
+
+  # Generate requirements.txt from uv.lock to keep dependencies pinned perfectly
+  uv export --frozen --no-dev --format requirements-txt -o requirements.txt
 
   # Install pinned runtime deps into the venv.
   venv/bin/pip install --no-cache-dir -r requirements.txt
