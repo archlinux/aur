@@ -1,8 +1,8 @@
 # Maintainer: Andron <andron@andron-thinkpad>
-# AUR: https://aur.archlinux.org/packages/xmm7360-dkms
+# AUR: https://aur.archlinux.org/packages/xmm7360-dkms-git
 
 pkgname=xmm7360-dkms-git
-pkgver=1.0.0
+pkgver=r331.g79ff93f   # updated by pkgver() below
 pkgrel=1
 pkgdesc="Intel XMM7360 / Fibocom L850 LTE modem driver (DKMS) with RPC init tool"
 arch=('x86_64')
@@ -17,29 +17,33 @@ depends=(
     'modemmanager'
     'psmisc'         # fuser, for recovery service
 )
-makedepends=('linux-headers')
+makedepends=('linux-headers' 'git')
 optdepends=('linux-headers: required by DKMS on kernel update')
 
 provides=('xmm7360-dkms')
 conflicts=('xmm7360' 'xmm7360-dkms' 'xmm7360-git' 'xmm7360-pci-dkms')
 install="${pkgname%-git}.install"
 
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
+source=("xmm7360-pci::git+${url}.git")
 sha256sums=('SKIP')
 
+pkgver() {
+    cd "$srcdir/xmm7360-pci"
+    printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-    cd "$srcdir/xmm7360-pci-$pkgver/tool"
+    cd "$srcdir/xmm7360-pci/tool"
     make clean 2>/dev/null || true
 }
 
 build() {
-    cd "$srcdir/xmm7360-pci-$pkgver/tool"
+    cd "$srcdir/xmm7360-pci/tool"
     make
 }
 
 package() {
-    local _src="$srcdir/xmm7360-pci-$pkgver"
+    local _src="$srcdir/xmm7360-pci"
     local _module="xmm7360"
     local _dkms_src="/usr/src/${_module}-${pkgver}"
 
