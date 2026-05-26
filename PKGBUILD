@@ -4,7 +4,7 @@
 _pkgname=anythingllm
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.8.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="AnythingLLM: The all-in-one AI app you were looking for. Any LLM, unlimited documents, and fully private. All on your desktop."
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!strip !debug)
 _appimage="AnythingLLMDesktop.AppImage"
 source_x86_64=("${_appimage}::https://cdn.anythingllm.com/latest/AnythingLLMDesktop.AppImage")
 noextract=("${_appimage}")
-b2sums_x86_64=('4b52fa923dd6ab96dc668285407119f6c088070d11dc0f9385dd4fba425f9426d89ba086d74e1c92c6b2decc08e0c001cd6d1945285cfc2443a3cd75b3b99865')
+b2sums_x86_64=('a3d16ced5d18e2ca6aa1c65f92d0f7fb43c293ffa7e6710cc46dfd45ef517b992cf1b21560b2dcc9f8b1a35c856a4b45cd56d09006bf8ab12797260fcf3e3b04')
 appname="anythingllm-desktop"
 
 prepare() {
