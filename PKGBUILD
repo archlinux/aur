@@ -25,7 +25,7 @@ makedepends=(
     'shared-mime-info'
 )
 source=("MComix3_v${pkgver}.tar.gz::https://github.com/rippa-the-hutt/mcomix3/releases/download/v${pkgver}/MComix3_v${pkgver}.tar.gz")
-sha256sums=('sha256:6017cf79c05121c678fa18a4deeec8f11ec74c03f6072faa1fb9c4afca5ff0b2')
+sha256sums=('6017cf79c05121c678fa18a4deeec8f11ec74c03f6072faa1fb9c4afca5ff0b2')
 
 package() {
     cd "${srcdir}/MComix3_v${pkgver}"
