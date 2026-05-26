@@ -1,0 +1,19 @@
+pkgbase = bartoc-bin
+	pkgdesc = Barto job executor client (pre-compiled binary)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/rustyhorde/barto
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	provides = bartoc
+	conflicts = bartoc
+	source = https://github.com/rustyhorde/barto/releases/download/v1.0.1/dist-bartoc.tar.gz
+	sha256sums = cf2f83dfd1d0422f7385c6f0b3ff0dbe8976393f446f4e9014478d3539d7bba7
+	source_x86_64 = bartoc-x86_64::https://github.com/rustyhorde/barto/releases/download/v1.0.1/bartoc-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = dfa75bb8ebc5d7796deac799f02669f30330958666404943202dd44f5096f8a0
+	source_aarch64 = bartoc-aarch64::https://github.com/rustyhorde/barto/releases/download/v1.0.1/bartoc-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = d5e05c0a260ae884ba5415c5c7abf1c693cfe031b9580b6f5b9d023ebc1e71a7
+
+pkgname = bartoc-bin
