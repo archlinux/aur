@@ -1,24 +1,27 @@
 # Maintainer: munenick <https://github.com/MuNeNICK>
 pkgname=hypr-rdp-git
-pkgver=0.1.0.r0.g3d5c7b6
+pkgver=0.1.1.r0.gffa17c9
 pkgrel=1
 pkgdesc="Native RDP server for Hyprland"
 arch=('x86_64')
 url="https://github.com/MuNeNICK/hypr-rdp"
 license=('MIT')
+options=(!debug)
 depends=(
-    'libxkbcommon'
+    'ffmpeg'
     'libva'
+    'libxkbcommon'
+    'mesa'
     'pipewire'
+    'wayland'
 )
 makedepends=(
     'git'
     'cargo'
-    'cmake'
     'clang'
+    'cmake'
 )
 optdepends=(
-    'openh264: software H.264 encoding fallback'
     'intel-media-driver: VA-API hardware encoding for Intel GPUs'
     'libva-mesa-driver: VA-API hardware encoding for AMD GPUs'
 )
@@ -30,7 +33,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf "0.1.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -43,7 +46,7 @@ build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    # Prevent makepkg's CFLAGS/LDFLAGS from breaking C code in ring/aws-lc-sys
+    # Keep Rust/C build scripts isolated from makepkg hardening flags.
     unset CFLAGS CXXFLAGS LDFLAGS
     cargo build --release
 }
