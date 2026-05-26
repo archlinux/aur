@@ -2,7 +2,7 @@
 
 pkgname=deskbrid
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux desktop agent HAL with a JSON-over-Unix-socket protocol'
 arch=('x86_64' 'aarch64')
 url='https://github.com/coe0718/deskbrid'
@@ -34,11 +34,18 @@ optdepends=(
   'pipewire-pulse: audio sink listing and volume control'
   'tesseract: screenshot OCR support'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('81f58a20166c3302e36fa81d5ae2a5785a06f4294599f1b2ac49bee6e6aa462347d8dd14c666c2958bf543af4e4109c46d5a2e090265787444a18815e8b28a8a')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "deskbrid-mcp-log-stderr.patch"
+)
+b2sums=(
+  '81f58a20166c3302e36fa81d5ae2a5785a06f4294599f1b2ac49bee6e6aa462347d8dd14c666c2958bf543af4e4109c46d5a2e090265787444a18815e8b28a8a'
+  'SKIP'
+)
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+  patch -Np1 < "${srcdir}/deskbrid-mcp-log-stderr.patch"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 

@@ -1,7 +1,7 @@
 pkgbase = deskbrid
 	pkgdesc = Linux desktop agent HAL with a JSON-over-Unix-socket protocol
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coe0718/deskbrid
 	arch = x86_64
 	arch = aarch64
@@ -37,6 +37,8 @@ pkgbase = deskbrid
 	optdepends = pipewire-pulse: audio sink listing and volume control
 	optdepends = tesseract: screenshot OCR support
 	source = deskbrid-0.10.0.tar.gz::https://github.com/coe0718/deskbrid/archive/refs/tags/v0.10.0.tar.gz
+	source = deskbrid-mcp-log-stderr.patch
 	b2sums = 81f58a20166c3302e36fa81d5ae2a5785a06f4294599f1b2ac49bee6e6aa462347d8dd14c666c2958bf543af4e4109c46d5a2e090265787444a18815e8b28a8a
+	b2sums = SKIP
 
 pkgname = deskbrid
