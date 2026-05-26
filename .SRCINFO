@@ -17,6 +17,6 @@ pkgbase = mcomix3
 	optdepends = lha: for LHA/LZA archive support
 	optdepends = mupdf-tools: for PDF support
 	source = MComix3_v3.3.tar.gz::https://github.com/rippa-the-hutt/mcomix3/releases/download/v3.3/MComix3_v3.3.tar.gz
-	sha256sums = sha256:6017cf79c05121c678fa18a4deeec8f11ec74c03f6072faa1fb9c4afca5ff0b2
+	sha256sums = 6017cf79c05121c678fa18a4deeec8f11ec74c03f6072faa1fb9c4afca5ff0b2
 
 pkgname = mcomix3
