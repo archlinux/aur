@@ -1,6 +1,6 @@
 pkgbase = ai-jail-bin
-	pkgdesc = Sandbox for AI coding agents (bubblewrap on Linux, sandbox-exec on macOS) — prebuilt binary
-	pkgver = 0.10.3
+	pkgdesc = Sandbox wrapper for AI coding agents (prebuilt binary)
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/akitaonrails/ai-jail
 	arch = x86_64
@@ -9,14 +9,17 @@ pkgbase = ai-jail-bin
 	depends = glibc
 	depends = gcc-libs
 	optdepends = mise: language version management inside the sandbox
-	optdepends = docker: Docker socket passthrough
-	provides = ai-jail=0.10.3
+	optdepends = docker: Docker socket passthrough for sandboxed agents
+	provides = ai-jail=1.4.0
 	conflicts = ai-jail
+	conflicts = ai-jail-debug
 	options = !strip
 	options = !debug
-	source = ai-jail-bin-0.10.3.tar.gz::https://github.com/akitaonrails/ai-jail/releases/download/v0.10.3/ai-jail-linux-x86_64.tar.gz
-	source = LICENSE-0.10.3::https://raw.githubusercontent.com/akitaonrails/ai-jail/v0.10.3/LICENSE
-	sha256sums = 78976db421347fdedd7f6a57bd7da6e87de879f36dd7e8aa7750fae90703986e
+	source = LICENSE-1.4.0::https://github.com/akitaonrails/ai-jail/raw/v1.4.0/LICENSE
+	source = README-1.4.0.md::https://github.com/akitaonrails/ai-jail/raw/v1.4.0/README.md
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 823121502ca8914d70fa806823d870d233ffcf99c63da3799089ca4a34b90e07
+	source_x86_64 = ai-jail-1.4.0-x86_64.tar.gz::https://github.com/akitaonrails/ai-jail/releases/download/v1.4.0/ai-jail-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2a71a8090f57a65dacb54385a0b08ae871417a0864c75cddaef4a0a27893d0f0
 
 pkgname = ai-jail-bin
