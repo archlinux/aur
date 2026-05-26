@@ -9,7 +9,7 @@ pkgname=(
   ppsspp
   ppsspp-assets
 )
-pkgver=1.20.2
+pkgver=1.20.4
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
@@ -36,7 +36,7 @@ makedepends=(
   snappy
   zlib
 )
-_tag=1b454a2008100276824c08cae65c29bbde0c6e35
+_tag=3a31057b7e44270b4d5cef8c31b6559d51802a3b
 source=(
   git+https://github.com/hrydgard/ppsspp.git#tag=${_tag}
   git+https://github.com/Kethen/aemu_postoffice.git
@@ -59,7 +59,7 @@ source=(
   PPSSPPSDL.desktop
   PPSSPPQt.desktop
 )
-b2sums=('9ad95a02d9635a6cabfef65f3892758e9defad0afdd7016f70df43338dfce63ab3557e941d1ef524c2d21a1ad2aee5fd05b943e7dc6ba1eca016b2d3a5e84853'
+b2sums=('cd2bca3351b97831f2e0d372bf544dcf3aa9d44095b56fe30de8bf4d586216e56ba24f22f3fac51ffb1343d4763fe3466628d6730c502c5e2230315b6319c336'
         'SKIP'
         'SKIP'
         'SKIP'
