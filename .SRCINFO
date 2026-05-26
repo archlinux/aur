@@ -1,0 +1,22 @@
+pkgbase = intel-amt-linux
+	pkgdesc = Native Linux GUI + CLI for Intel AMT / vPro out-of-band management (unofficial Intel Manageability Commander launcher)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/88plug/intel-amt-linux
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	depends = npm
+	depends = msitools
+	depends = nss
+	depends = libxtst
+	depends = libxss
+	depends = gtk3
+	depends = alsa-lib
+	optdepends = docker: LMS container for same-machine AMT access via /dev/mei0
+	optdepends = libsecret: OS keyring support for credential vault
+	optdepends = kwallet: KDE keyring support for credential vault
+	source = git+https://github.com/88plug/intel-amt-linux.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = intel-amt-linux
