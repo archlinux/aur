@@ -7,7 +7,7 @@
 
 pkgname=ddhx-git
 _pkgname=ddhx
-pkgver=v0.9.2.r0.gcb4ba4a
+pkgver=v0.9.3.r2.gd3fb72c
 pkgrel=1
 pkgdesc="Console hexadecimal file viewer"
 arch=('x86_64')

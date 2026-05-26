@@ -1,6 +1,6 @@
 pkgbase = ddhx-git
 	pkgdesc = Console hexadecimal file viewer
-	pkgver = v0.9.2.r0.gcb4ba4a
+	pkgver = v0.9.3.r2.gd3fb72c
 	pkgrel = 1
 	url = https://github.com/dd86k/ddhx
 	arch = x86_64
