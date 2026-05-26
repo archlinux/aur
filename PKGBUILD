@@ -3,7 +3,7 @@
 pkgbase=python-romancal
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.22.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Library for calibration of science observations from Nancy Grace Roman Space Telescope"
 arch=('any')
@@ -24,18 +24,17 @@ makedepends=('python-setuptools-scm>=3.4'
              'graphviz')  # wheel required by new setuptools; latex.fmt: -latex; anyfontsize.sty: latexextra
 # inputs_root: ci_watson
 #checkdepends=(
-###           'python-pytest-doctestplus'
+#'python-pytest-doctestplus'
 #             'python-pytest-xdist'
 #             'python-pytest-timeout'
 #              'python-ci_watson'
-#               'python-deepdiff'
 #               'python-pysiaf'
 #               'python-romanisim'
-#              )   # gwcs <- roman-datamodels, jsonschema, photutils <- romanisim, stcal, stpipe already in makedepends
+#              )   # deepdiff <- rad;  gwcs <- roman-datamodels, jsonschema, photutils <- romanisim, stcal, stpipe already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "${pkgver}-overview.png::https://github.com/spacetelescope/romancal/raw/refs/tags/${pkgver}/docs/roman/associations/graphics/overview.png"
 #       "${pkgver}-overview_classes.png::https://github.com/spacetelescope/romancal/raw/refs/tags/${pkgver}/docs/roman/associations/graphics/overview_classes.png")
-md5sums=('28068b1f2698a6521d0d0d2311844811')
+md5sums=('07cca991937e44ff40c5b491b2fd1471')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -62,7 +61,7 @@ build() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
 #    # deselect tests that may take long time
-#    CRDS_PATH=".crds" CRDS_SERVER_URL=https://roman-crds.stsci.edu pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 --timeout 300 \
+#    PYTHONPATH="${PWD}" CRDS_PATH=".crds" CRDS_SERVER_URL=https://roman-crds.stsci.edu pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 --timeout 300 \
 #        --deselect=romancal/flatfield/tests/test_flatfield.py \
 #        --deselect=romancal/multiband_catalog/tests/test_multiband_catalog.py \
 #        --deselect=romancal/ramp_fitting/tests/test_ramp_fit_cas22.py::test_fits \
@@ -81,7 +80,20 @@ build() {
 #        --deselect=romancal/skycell/tests/test_skycell_match.py \
 #        --deselect=romancal/stpipe/tests/test_core.py \
 #        --deselect=romancal/pipeline/tests/test_exposure_pipeline.py::test_elp_save_results[False] \
-#        --deselect=romancal/pipeline/tests/test_exposure_pipeline.py::test_elp_save_results[True]
+#        --deselect=romancal/pipeline/tests/test_exposure_pipeline.py::test_elp_save_results[True] \
+#        --deselect=romancal/source_catalog/tests/test_psf.py::test_psf_fit[-0.4604265724722594-0.7263578446997732-1389.4954943731375] \
+#        --deselect=romancal/source_catalog/tests/test_psf.py::test_psf_fit[-0.9180529521276106-0.08292244049818343-1930.6977288832495] \
+#        --deselect=romancal/source_catalog/tests/test_psf.py::test_psf_fit[-0.9669447289429418--0.40057621892523043-2682.6957952797247] \
+#        --deselect=romancal/source_catalog/tests/test_psf.py::test_psf_fit[0.6317071082430643--0.23264489147623313-26826.957952797275] \
+#        --deselect=romancal/source_catalog/tests/test_psf.py::test_psf_fit[-0.9945229996597038-0.994419871578422-37275.93720314938] \
+#        --deselect=romancal/source_catalog/tests/test_psf.py::test_psf_fit[0.7148085531751387-0.9616706775524602-51794.74679231213] \
+#        --deselect=romancal/source_catalog/tests/test_psf.py::test_psf_fit[-0.9328288493890713-0.3710839689613894-71968.56730011514] \
+# \
+#        --deselect=romancal/source_catalog/tests/test_psf.py::test_add_jitter \
+#        --deselect=romancal/source_catalog/tests/test_psf.py::test_azimuthally_average_via_fft \
+#        --deselect=romancal/source_catalog/tests/test_psf.py::test_create_convolution_kernel \
+#        --deselect=romancal/source_catalog/tests/test_psf.py::test_psf_model_type
+#
 ##       --deselect=parfive/tests/test_downloader.py::test_ftp #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 #}
 
@@ -89,17 +101,17 @@ package_python-romancal() {
     depends=('python>=3.11'
              'python-jsonschema>=4.8'
              'python-scipy>=1.14.1'
-             'python-photutils>=2.3.0'
-             'python-pyarrow>=10.0.1'
-             'python-pandas>=2.0.0'
-             'python-roman-datamodels>=0.30.0'
-             'python-romanisim>=0.13.0'
+             'python-photutils>=3.0'
+             'python-pyarrow>=16.0'
+             'python-pandas>=2.2.2'
+             'python-roman-datamodels>=1.0'
+             'python-romanisim>=0.14'
              'python-crds>=13.0.2'
              'python-drizzle>=2.2.0'
              'python-gwcs>=1.0.1'
-             'python-stcal>=1.17.0'
+             'python-stcal>=1.18.0'
              'python-stpipe>=0.11.0'
-             'python-spherical_geometry>=1.3.3')
+             'python-spherical_geometry>=1.4.0')
     optdepends=('python-romancal-doc: Documentation for romancal')
     cd ${srcdir}/${_pyname}-${pkgver}
 
