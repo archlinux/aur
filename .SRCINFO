@@ -1,15 +1,15 @@
 pkgbase = lemminx
 	pkgdesc = Eclipse XML language server
 	pkgver = 0.31.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eclipse/lemminx
 	changelog = CHANGELOG.md
 	arch = any
 	license = EPL-2.0
 	depends = java-runtime
-	source = lemminx-0.31.1.jar::https://www.eclipse.org/downloads/download.php?file=lemminx/releases/0.31.1/org.eclipse.lemminx-uber.jar
+	source = lemminx-0.31.1.jar::https://www.eclipse.org/downloads/download.php?file=/lemminx/releases/0.31.1/org.eclipse.lemminx-uber.jar&r=1
 	source = launcher.sh
-	sha512sums = d981626fe0c6ca3271659483ad00a0bb076124ce060d592922744b1bf83462abc32d4c2b8bacfeb952f8f1ea8da3632c3946bce7cf1cfbbba2b2178db1ddfa47
+	sha512sums = 52646e52443d2b9e7779c2b3948849e478721132aec8c062070240e7451558086b3ba068d84d24c4e0cb67f030c79ef69e8be28992b3d3d8c6aa61d6bb183f4d
 	sha512sums = 21973956910861bb7c608a0240cc8fd2ef15a5753bfee8df36dfda39721a06d474a66c59a22501b990fb3d3d063531a385dca62a7e91b248c1cb9509aff77cec
 
 pkgname = lemminx
