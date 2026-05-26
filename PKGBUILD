@@ -2,9 +2,9 @@
 
 pkgname=zinit
 pkgver=3.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A flexible and fast Zsh plugin manager.'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/zdharma-continuum/zinit'
 license=('MIT')
 depends=('git' 'curl' 'zsh')
