@@ -1,0 +1,19 @@
+pkgbase = archwiki-tui-git
+	pkgdesc = Minimalist terminal browser for the Arch Wiki (Beta)
+	pkgver = 0.1.0.beta.1.r1.g617838b
+	pkgrel = 1
+	url = https://github.com/Harshil-Anuwadia/archwiki-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = make
+	depends = glibc
+	provides = archwiki-tui
+	conflicts = archwiki-tui
+	options = !debug
+	source = archwiki-tui-git::git+https://github.com/Harshil-Anuwadia/archwiki-tui.git
+	sha256sums = SKIP
+
+pkgname = archwiki-tui-git
