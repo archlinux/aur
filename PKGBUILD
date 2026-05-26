@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: The one with the braid <info@braid.business>
 
 : ${FVM_CACHE_PATH:=$SRCDEST/fvm-cache}
@@ -7,7 +7,7 @@ export FVM_CACHE_PATH RUSTUP_TOOLCHAIN
 
 _pkgname="fluffychat"
 pkgname="$_pkgname"
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="The cutest instant messenger in the [matrix]"
 url="https://github.com/krille-chan/fluffychat"
@@ -46,7 +46,7 @@ source=(
   '0000-fix-wayland-gtk-csd.patch'
 )
 sha256sums=(
-  '498c4390bec4c4244f58f9ecb39002f607d23abea900ced921f7a33eee56fa9d'
+  'f42d1249c186b5fdaa72218ae71cfe25590a012491a3c7156ba03a8c7270a84f'
   '04a373c2c25a9be1617ab1ccb19da48ae379ff392bb59a3938bcdec00ab82230'
 )
 
