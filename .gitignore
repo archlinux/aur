@@ -1,0 +1,6 @@
+*.pkg.tar.zst
+*.tar.gz
+pkg/
+src/
+
+p2r3-convert-git/
