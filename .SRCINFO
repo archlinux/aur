@@ -1,0 +1,20 @@
+pkgbase = hush-desktop-bin
+	pkgdesc = End-to-end encrypted messenger (binary release)
+	pkgver = 0.1.38
+	pkgrel = 1
+	url = https://gethush.live
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = libnotify
+	optdepends = libsecret: keychain integration
+	optdepends = gnome-keyring: secret storage backend
+	provides = hush
+	conflicts = hush
+	noextract = hush-desktop-bin-0.1.38.deb
+	source = hush-desktop-bin-0.1.38.deb::https://github.com/hushhq/hush-desktop/releases/download/v0.1.38-mvp/hush-desktop_0.1.38-mvp_amd64.deb
+	sha256sums = c69a9cfafc608fa522ff3f10bd1814f47e0c0d8da6cdf23c255b019591b1ca5f
+
+pkgname = hush-desktop-bin
