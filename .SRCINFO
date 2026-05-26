@@ -1,6 +1,6 @@
 pkgbase = singcast
 	pkgdesc = A clash GUI client based on Flutter
-	pkgver = 1.1.0_beta5
+	pkgver = 1.1.0_beta6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mapleafgo/clash-for-flutter
@@ -11,10 +11,10 @@ pkgbase = singcast
 	depends = polkit
 	provides = singcast
 	conflicts = singcast
-	source_x86_64 = singcast-1.1.0_beta5-x86_64.zip::https://github.com/mapleafgo/clash-for-flutter/releases/download/v1.1.0-beta5/singcast-1.1.0-beta5-linux-amd64.zip
+	source_x86_64 = singcast-1.1.0_beta6-x86_64.zip::https://github.com/mapleafgo/clash-for-flutter/releases/download/v1.1.0-beta6/singcast-1.1.0-beta6-linux-amd64.zip
 	source_x86_64 = singcast.desktop
 	source_x86_64 = singcast.svg
-	sha256sums_x86_64 = 5ce48a78d3cc7caee23c14101898403bd8e1d9dd785a68df2f96e8d635617d37
+	sha256sums_x86_64 = 8b807f28a16299f330f8f7d08f9b0017ac0069539a07d3a4a508d09f67c93a89
 	sha256sums_x86_64 = f14d52960b535f9d31d24f08e9b248f3f70f70bfadc4ea58bb57f4d12b711ee9
 	sha256sums_x86_64 = 289d9ffd1ea9b24928bea1a0936d9a1125e7f3d9e2d7341e353ce5c42d405f09
 

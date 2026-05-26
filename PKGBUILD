@@ -1,7 +1,7 @@
 # Maintainer: mapleafgo <mapleafgo at 163 dot com>
 pkgname=singcast
 epoch=1
-pkgver=1.1.0_beta5
+pkgver=1.1.0_beta6
 pkgrel=1
 pkgdesc="A clash GUI client based on Flutter"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=(${pkgname})
 provides=(${pkgname})
 depends=('gtk3' 'libayatana-appindicator' 'polkit')
-source_x86_64=(${pkgname}-${pkgver}-x86_64.zip::https://github.com/mapleafgo/clash-for-flutter/releases/download/v1.1.0-beta5/singcast-1.1.0-beta5-linux-amd64.zip
+source_x86_64=(${pkgname}-${pkgver}-x86_64.zip::https://github.com/mapleafgo/clash-for-flutter/releases/download/v1.1.0-beta6/singcast-1.1.0-beta6-linux-amd64.zip
              singcast.desktop
              singcast.svg)
 _install_path="/opt/Singcast"
@@ -30,6 +30,6 @@ package() {
   install -Dm644 "singcast.desktop" "${pkgdir}/usr/share/applications/singcast.desktop"
 }
 
-sha256sums_x86_64=('5ce48a78d3cc7caee23c14101898403bd8e1d9dd785a68df2f96e8d635617d37'
+sha256sums_x86_64=('8b807f28a16299f330f8f7d08f9b0017ac0069539a07d3a4a508d09f67c93a89'
                    'f14d52960b535f9d31d24f08e9b248f3f70f70bfadc4ea58bb57f4d12b711ee9'
                    '289d9ffd1ea9b24928bea1a0936d9a1125e7f3d9e2d7341e353ce5c42d405f09')
