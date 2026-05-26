@@ -1,61 +1,68 @@
-# Maintainer: Mete ÇİFTÇİ <e.meteciftci@gmail.com>
+# Maintainer: Erdener Karacan <erdener.karacan@gmail.com>
+# Önceki Maintainer: Mete ÇİFTÇİ <e.meteciftci@gmail.com>
+
 pkgname=arksigner-pub
-pkgver=2.3.15
-pkgrel=2
+pkgver=2.3.17.2
+pkgrel=1
 pkgdesc="ArkSigner e-Imza ve AKİS Akıllı Kart Uygulaması"
 arch=('x86_64')
 url="https://www.arksigner.com"
 license=('custom')
 
-depends=('pcsclite' 'ccid' 'openssl-1.0' 'qt5-base' 'qt5-websockets' 'nss')
+depends=('pcsclite' 'ccid' 'nss')
 install="arksigner-pub.install"
 
-source=("https://downloadark.com/arksigner-pub-${pkgver}.deb"
+source=("https://downloadark.com/arksigner-pub-${pkgver}-portable.deb"
         "arksigner.service")
 sha256sums=('SKIP'
             'SKIP')
 
 package() {
-    msg2 "Ubuntu paketinin iç organları Arch'a aktarılıyor..."
+    msg2 "DEB paketi açılıyor..."
+    cd "${srcdir}"
+    ar x "arksigner-pub-${pkgver}-portable.deb"
     tar -xf data.tar.* -C "${pkgdir}"
 
-    # 1. macOS çöplerini kökünden kazı
-    msg2 "Gereksiz macOS artıkları temizleniyor..."
+    # Çakışan /lib dizinini sil (filesystem paketiyle çakışıyor)
+    # Debian'ın init.d servisi yerine kendi arksigner.service'imizi kullanacağız
+    rm -rf "${pkgdir}/lib"
+
+    # 1. macOS çöplerini temizle
     find "${pkgdir}" -name ".DS_Store" -type f -delete
 
-    # 2. Linux Dosya Sistemi Hiyerarşisi (FHS) Düzeltmesi (Her şeyi /opt içine taşı)
-    msg2 "Klasör mimarisi Arch standartlarına (/opt dizinine) çekiliyor..."
+    # 2. Uygulamayı /opt altına taşı
     install -d "${pkgdir}/opt"
     mv "${pkgdir}/usr/bin/arksigner" "${pkgdir}/opt/arksigner"
 
-    # 3. Ubuntu'nun init çöpünü sil
-    rm -rf "${pkgdir}/etc"
+    # 3. Boş kalan usr/bin dizinini temizle
+    rm -rf "${pkgdir}/usr/bin"
 
-    # 4. Frankenstein kütüphaneleri çöpe at (Arch'ın kendi liblerini kullanması için)
-    msg2 "Eski ve bozuk kütüphaneler imha ediliyor..."
-    rm -f "${pkgdir}/opt/arksigner/libs"/libQt5*.so*
-    rm -f "${pkgdir}/opt/arksigner/libs"/libssl.so*
-    rm -f "${pkgdir}/opt/arksigner/libs"/libcrypto.so*
+    # 4. Bundled kütüphanelere DOKUNMA!
+    msg2 "Bundled kütüphaneler korunuyor..."
 
-    # 5. Kalan yerel kütüphaneler için wrapper betikler oluştur
-    msg2 "Sisteme entegre edici sarmalayıcı betikler yazılıyor..."
+    # 5. OpenSSL 1.1 symlink'leri
+    msg2 "OpenSSL 1.1 symlink'leri oluşturuluyor..."
+    cd "${pkgdir}/opt/arksigner/libs"
+    ln -sf libcrypto.so.1.1 libcrypto.so
+    ln -sf libssl.so.1.1    libssl.so
 
-    # Servis Kısayolu (/usr/bin/arksigner-service)
-    echo '#!/bin/bash' > "${pkgdir}/usr/bin/arksigner-service"
-    echo 'export LD_LIBRARY_PATH="/opt/arksigner/libs:$LD_LIBRARY_PATH"' >> "${pkgdir}/usr/bin/arksigner-service"
-    echo 'exec /opt/arksigner/arksigner-service "$@"' >> "${pkgdir}/usr/bin/arksigner-service"
+    # 6. Wrapper betik
+    install -d "${pkgdir}/usr/bin"
+
+    cat > "${pkgdir}/usr/bin/arksigner-service" << 'EOF'
+#!/bin/bash
+export LD_LIBRARY_PATH="/opt/arksigner/libs:/usr/local/lib64:${LD_LIBRARY_PATH}"
+export LD_PRELOAD="/opt/arksigner/libs/libssl.so.1.1:/opt/arksigner/libs/libcrypto.so.1.1"
+cd /opt/arksigner
+exec /opt/arksigner/arksigner-service "$@"
+EOF
     chmod +x "${pkgdir}/usr/bin/arksigner-service"
 
-    # Arayüz Kısayolu (/usr/bin/arksigner)
-    echo '#!/bin/bash' > "${pkgdir}/usr/bin/arksigner"
-    echo 'export LD_LIBRARY_PATH="/opt/arksigner/libs:$LD_LIBRARY_PATH"' >> "${pkgdir}/usr/bin/arksigner"
-    echo 'exec /opt/arksigner/arksigner-universal "$@"' >> "${pkgdir}/usr/bin/arksigner"
-    chmod +x "${pkgdir}/usr/bin/arksigner"
+    # 7. Systemd servisi
+    install -Dm644 "${srcdir}/arksigner.service" \
+        "${pkgdir}/usr/lib/systemd/system/arksigner.service"
 
-    # 6. Systemd servisini pakete gömme
-    msg2 "Arka plan servisi (Systemd) sisteme entegre ediliyor..."
-    install -Dm644 "${srcdir}/arksigner.service" "${pkgdir}/usr/lib/systemd/system/arksigner.service"
-
-    # 7. Klasör izinlerini düzelt
+    # 8. İzinleri düzelt
     chmod -R u=rwX,go=rX "${pkgdir}"
+    chmod +x "${pkgdir}/opt/arksigner/arksigner-service"
 }

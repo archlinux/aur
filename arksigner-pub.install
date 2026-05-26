@@ -1,16 +1,104 @@
 post_install() {
-    echo -e "\e[1;33m=================================================================\e[0m"
-    echo -e "\e[1;32m ArkSigner kurulumu tamamlandı!\e[0m"
-    echo -e " Akıllı kart ve e-imza işlemlerini yapabilmek için arka plan"
-    echo -e " servisini başlatmanız ve etkinleştirmeniz gerekmektedir."
-    echo -e ""
-    echo -e " \e[1;37msudo systemctl enable --now arksigner\e[0m"
-    echo -e ""
-    echo -e " Ayrıca sisteminizde 'pcscd' servisinin de çalıştığından"
-    echo -e " emin olun (sudo systemctl enable --now pcscd)."
-    echo -e "\e[1;33m=================================================================\e[0m"
+    # 1. hosts girişi
+    if ! grep -q "local.pwsigner.ark-teknoloji.com" /etc/hosts; then
+        echo "127.0.0.1  local.pwsigner.ark-teknoloji.com" >> /etc/hosts
+        echo ":: /etc/hosts güncellendi"
+    fi
+
+    # 2. Servisleri başlat
+    systemctl daemon-reload
+    systemctl enable --now pcscd.service
+    systemctl enable --now arksigner.service
+
+    # 3. Sertifikayı sisteme ekle
+    sleep 3  # servisin ayağa kalkmasını bekle
+    openssl s_client -connect localhost:16357 -servername local.pwsigner.ark-teknoloji.com </dev/null 2>/dev/null | openssl x509 -outform PEM -out /tmp/arksigner.crt
+
+    if [ -f /tmp/arksigner.crt ]; then
+        # Sistem deposuna ekle
+        cp /tmp/arksigner.crt /etc/ca-certificates/trust-source/anchors/arksigner.crt
+        trust extract-compat
+        echo ":: Sertifika sistem deposuna eklendi"
+
+        # Kurulu kullanıcıların NSS veritabanlarına ekle
+        for home in /home/*; do
+            user=$(basename $home)
+
+            # Chrome/Chromium
+            if [ -d "$home/.pki/nssdb" ]; then
+                certutil -d sql:$home/.pki/nssdb -D -n "ArkSigner" 2>/dev/null
+                certutil -d sql:$home/.pki/nssdb -A -t "CT,," -n "ArkSigner" -i /tmp/arksigner.crt
+                echo ":: Chrome NSS güncellendi: $user"
+            fi
+
+            # Firefox
+            for db in $(find $home/.mozilla -name "cert9.db" 2>/dev/null); do
+                dir=$(dirname $db)
+                certutil -d sql:$dir -D -n "ArkSigner" 2>/dev/null
+                certutil -d sql:$dir -A -t "CT,," -n "ArkSigner" -i /tmp/arksigner.crt
+                echo ":: Firefox NSS güncellendi: $dir"
+            done
+
+            # Brave
+            for db in $(find $home/.config/BraveSoftware -name "cert9.db" 2>/dev/null); do
+                dir=$(dirname $db)
+                certutil -d sql:$dir -D -n "ArkSigner" 2>/dev/null
+                certutil -d sql:$dir -A -t "CT,," -n "ArkSigner" -i /tmp/arksigner.crt
+                echo ":: Brave NSS güncellendi: $dir"
+            done
+        done
+    else
+        echo ":: UYARI: Sertifika çekilemedi, manuel olarak ekleyin:"
+        echo "::   https://local.pwsigner.ark-teknoloji.com:16357"
+    fi
+
+    echo ""
+    echo "╔══════════════════════════════════════════════════════════╗"
+    echo "║           ArkSigner Kurulumu Tamamlandı!                 ║"
+    echo "╠══════════════════════════════════════════════════════════╣"
+    echo "║ Tarayıcınızda şu adrese gidip sertifikayı onaylayın:     ║"
+    echo "║   https://local.pwsigner.ark-teknoloji.com:16357         ║"
+    echo "╚══════════════════════════════════════════════════════════╝"
 }
 
 post_upgrade() {
+    # Sertifika yenilenmiş olabilir, güncelle
+    systemctl restart arksigner.service
+    sleep 3
+    openssl s_client -connect local.pwsigner.ark-teknoloji.com:16357 -servername local.pwsigner.ark-teknoloji.com </dev/null 2>/dev/null | openssl x509 -outform PEM -out /tmp/arksigner.crt
+
+    if [ -f /tmp/arksigner.crt ]; then
+        cp /tmp/arksigner.crt /etc/ca-certificates/trust-source/anchors/arksigner.crt
+        trust extract-compat
+        echo ":: Sertifika güncellendi"
+    fi
+
     post_install
+}
+
+pre_remove() {
+    systemctl disable --now arksigner.service 2>/dev/null
+
+    # hosts temizle
+    sed -i '/local.pwsigner.ark-teknoloji.com/d' /etc/hosts
+    echo ":: /etc/hosts temizlendi"
+
+    # Sistem sertifikasını kaldır
+    rm -f /etc/ca-certificates/trust-source/anchors/arksigner.crt
+    trust extract-compat
+    echo ":: Sertifika sistem deposundan kaldırıldı"
+
+    # NSS veritabanlarından kaldır
+    for home in /home/*; do
+        if [ -d "$home/.pki/nssdb" ]; then
+            certutil -d sql:$home/.pki/nssdb -D -n "ArkSigner" 2>/dev/null
+        fi
+        for db in $(find $home/.mozilla -name "cert9.db" 2>/dev/null); do
+            certutil -d sql:$(dirname $db) -D -n "ArkSigner" 2>/dev/null
+        done
+        for db in $(find $home/.config/BraveSoftware -name "cert9.db" 2>/dev/null); do
+            certutil -d sql:$(dirname $db) -D -n "ArkSigner" 2>/dev/null
+        done
+    done
+    echo ":: NSS veritabanları temizlendi"
 }
