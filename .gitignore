@@ -1,0 +1,12 @@
+# Downloaded source assets (fetched by makepkg/updpkgsums — not committed)
+*.AppImage
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.zip
+
+# makepkg build artifacts
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz

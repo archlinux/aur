@@ -1,0 +1,18 @@
+pkgbase = ethereal-appimage
+	pkgdesc = Focus timer with workspace enforcement and friend presence
+	pkgver = 1.4.8
+	pkgrel = 1
+	url = https://github.com/quetrea/ethereal-releases
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = fuse2
+	options = !strip
+	source = LICENSE
+	source = Ethereal-1.4.8-x86_64.AppImage::https://github.com/quetrea/ethereal-releases/releases/download/v1.4.8%2B33/Ethereal-1.4.8-x86_64.AppImage
+	source = ethereal-1.4.8-linux-x86_64.tar.gz::https://github.com/quetrea/ethereal-releases/releases/download/v1.4.8%2B33/ethereal-1.4.8-linux-x86_64.tar.gz
+	sha256sums = 3644a4f9ab28a1a83a93a10ebcd388308e193c15f7ca5890ba7412496db7073c
+	sha256sums = 38b1f28252ba2a8ca9d7408e51a55ad7643fbe69eba2f2eca1fcbbc23f29edf2
+	sha256sums = 21a0dc5c2563bf4760d1597c57b3e1d28c063a4168a3420b573b3edf7f5d4c8a
+
+pkgname = ethereal-appimage
