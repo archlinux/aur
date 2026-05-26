@@ -1,18 +1,20 @@
 # Maintainer: Gigas002 <gigas002@pm.me>
 
 pkgname=wayshot
-pkgver=1.4.6
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Screenshot tool for wlroots compositors"
 arch=(x86_64)
 url="https://github.com/waycrate/$pkgname"
-license=(BSD-2-Clause)
+license=(
+	'GPL-3.0-or-later'
+)
 depends=(gcc-libs glibc libdrm libjxl mesa wayland)
 optdepends=('slurp: region selection'
             'waysip: region selection')
 makedepends=(cargo git scdoc)
 source=("git+$url#tag=v$pkgver")
-b2sums=('8dadc05753a46bd43b37e50b2f8c7bdb85e7cb254054e779cb04497656ae685a12ce1d03d9efa6072675a42e969f33dab7814a75dfed69f5dbff0b7af86c9dda')
+b2sums=('68aba47f5b4309fff0bb2960912509b5c2fdd6b1b94dfd405cdd18d58976c47bf2f999a95202a53189c0ec9b6444156e28de1deba1762eb23a268b442fc933e5')
 
 prepare() {
 	cd $pkgname
@@ -37,5 +39,5 @@ package() {
 	scdoc < docs/$pkgname.1.scd | install -Dm644 /dev/stdin "$pkgdir/usr/share/man/man1/$pkgname.1"
 	scdoc < docs/$pkgname.5.scd | install -Dm644 /dev/stdin "$pkgdir/usr/share/man/man5/$pkgname.5"
 	scdoc < docs/$pkgname.7.scd | install -Dm644 /dev/stdin "$pkgdir/usr/share/man/man7/$pkgname.7"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 LICENSE-GPL -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
