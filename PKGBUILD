@@ -3,7 +3,7 @@
 _sdk=10.0
 _Name="Ps3DiscDumper"
 pkgname="ps3-disc-dumper"
-pkgver=4.4.2
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="A handy utility to make decrypted PS3 disc dumps"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -14,7 +14,8 @@ makedepends=("dotnet-sdk-${_sdk}" 'gendesk')
 options=('!strip' '!debug' 'staticlibs')
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('994a9692d7f24e3cd567a48670fec6252ae645fa02b381402409e32b37442e5ec40b21c0007ccbef3532722870a618ae59704e3e7d33df5e93c759d5803c2c0a')
+b2sums=('fc051c4c9f955c351f2367dec8b1f678cfc76eab164c5c03703835d52225795a72ebc99ceec911a56a4ef7cd9cefd656dfd99cf978a9dc14c94c137af7f4cca4')
+
 
 if   [ "${CARCH}" = 'x86_64'  ]; then _msarch=x64;
 elif [ "${CARCH}" = 'armv7h'  ]; then _msarch=arm;
