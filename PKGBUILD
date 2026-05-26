@@ -1,17 +1,15 @@
 # Maintainer: Guillaume Quintard <guillaume.quintard@varnish-software.com>
 
 pkgname=vmod-cfg
-_vver=9.0.3
-_vrel=2
-_uver=9.0_21.0
-_srcver="${_uver//_/-}"
-pkgver=$_vver
-pkgrel=$_vrel
+pkgver=9.0.3
+pkgrel=2
+_srcver=9.0_21.0
+_srcver="${_srcver//_/-}"
 pkgdesc="Config VMOD for Varnish"
 arch=('x86_64')
 url="https://github.com/carlosabalde/libvmod-cfg"
 license=('BSD-2-Clause')
-depends=("varnish=$_vver-$_vrel" 'curl' 'luajit')
+depends=("varnish=$pkgver-$pkgrel" 'curl' 'luajit')
 makedepends=('autoconf' 'automake' 'libtool' 'autoconf-archive' 'pkg-config' 'python-docutils' 'jemalloc' 'xxd')
 source=("$pkgname-${_srcver}.tar.gz::https://github.com/carlosabalde/libvmod-cfg/archive/refs/tags/${_srcver}.tar.gz")
 sha512sums=('21a2907fe4d864da96602fa735d8b385396bda55737eec4979b74c83697417f2c643880225c91f467f939eb5f303e013365e7be597ba2b68955cc617f64145fc')
