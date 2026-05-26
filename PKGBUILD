@@ -2,7 +2,7 @@
 
 pkgname=(gaia-amd gaia-amd-webui)
 pkgver=0.19.0
-pkgrel=4
+pkgrel=6
 pkgdesc="AI-powered inference engine for AMD hardware"
 arch=(x86_64)
 url="https://github.com/amd/gaia"
@@ -136,6 +136,37 @@ prepare() {
     sed -i \
         's/status\.initialized = init_marker\.exists()/status.initialized = init_marker.exists() or sys.platform != "win32"/' \
         "$srcdir/gaia-$pkgver/src/gaia/ui/routers/system.py"
+
+    # lemond v10+ returns ctx_size=0 in its health response when it does not
+    # track context size. The status endpoint guards the sufficiency check with
+    # `is not None`, so 0 passes through and triggers a false "context window
+    # too small" banner. Treat 0 the same as None (not reported).
+    sed -i \
+        's/if status\.model_context_size is not None:/if status.model_context_size:/' \
+        "$srcdir/gaia-$pkgver/src/gaia/ui/routers/system.py"
+
+    # The ConnectionBanner shows "Cannot connect" on the very first health-check
+    # because the React frontend fires immediately on mount while gaia's Python
+    # server is still starting (port 4200 not yet open). Apply the same 3-
+    # consecutive-failure threshold already used for the lemonade check so
+    # startup noise is suppressed without hiding genuine outages.
+    local _app="$srcdir/gaia-$pkgver/src/gaia/apps/webui/src/App.tsx"
+    sed -i \
+        '/const LEMONADE_FAIL_THRESHOLD = 3;/a\    const backendFailCountRef = useRef(0);\n    const BACKEND_FAIL_THRESHOLD = 3; // require 3 consecutive failures before showing banner' \
+        "$_app"
+    sed -i \
+        's/const status = await api\.getSystemStatus();/const status = await api.getSystemStatus();\n            backendFailCountRef.current = 0;/' \
+        "$_app"
+    python3 -c '
+import sys
+path = sys.argv[1]
+with open(path) as f: s = f.read()
+s = s.replace(
+    "            setBackendConnected(false);\n            setSystemStatus(null);",
+    "            backendFailCountRef.current += 1;\n            if (backendFailCountRef.current >= BACKEND_FAIL_THRESHOLD) {\n                setBackendConnected(false);\n                setSystemStatus(null);\n            }"
+)
+with open(path, "w") as f: f.write(s)
+' "$_app"
 }
 
 build() {
