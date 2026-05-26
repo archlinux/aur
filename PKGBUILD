@@ -2,7 +2,7 @@
 
 pkgname=mangowm-wlonly-git
 pkgver=r1293.794e96d
-pkgrel=1
+pkgrel=1.1
 pkgdesc="mangowm without scenefx"
 url="https://github.com/mangowm/mango/tree/wl-only"
 arch=("x86_64")
@@ -15,6 +15,7 @@ depends=(
   pixman
   libxkbcommon
   pcre2
+  cjson
   libxcb
   xorg-xwayland
   'libwlroots-0.20.so'
