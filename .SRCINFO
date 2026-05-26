@@ -1,15 +1,15 @@
 pkgbase = amplitude-soundboard-appimage
 	pkgdesc = A sleek, cross-platform soundboard, available for Windows, MacOS, and Linux
-	pkgver = 2.12.0
+	pkgver = 2.13.1
 	pkgrel = 1
 	url = https://amplitude-soundboard.dan0v.com/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	provides = amplitude-soundboard
 	conflicts = amplitude-soundboard
-	noextract = AmplitudeSoundboard-2.12.0-x86_64.AppImage
+	noextract = AmplitudeSoundboard-2.13.1-x86_64.AppImage
 	options = !strip
-	source = AmplitudeSoundboard-2.12.0-x86_64.AppImage::https://github.com/dan0v/AmplitudeSoundboard/releases/download/2.12.0/Amplitude_Soundboard-x86_64.AppImage
-	sha256sums = 2c99fa7457c40e5b684a0739847f97e4faabfee07b735b43c83da650a5cc3705
+	source = AmplitudeSoundboard-2.13.1-x86_64.AppImage::https://github.com/dan0v/AmplitudeSoundboard/releases/download/2.13.1/Amplitude_Soundboard-x86_64.AppImage
+	sha256sums = fa5b30f9588509a55ac8476785adfee74fc1fdddd4c018ac6a084feaf90c105f
 
 pkgname = amplitude-soundboard-appimage
