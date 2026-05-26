@@ -1,18 +1,18 @@
 pkgbase = ttf-ioskeley-mono
 	pkgdesc = Iosevka configuration to mimic the look and feel of Berkeley Mono as closely as possible
-	pkgver = 2.0.0_beta.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/ahatem/IoskeleyMono
 	arch = any
 	license = OFL-1.1
 	options = !strip
-	source = ttf-ioskeley-mono-2.0.0_beta.1-normal.zip::https://github.com/ahatem/IoskeleyMono/releases/download/v2.0.0-beta.1/IoskeleyMono-Normal.zip
-	source = ttf-ioskeley-mono-2.0.0_beta.1-condensed.zip::https://github.com/ahatem/IoskeleyMono/releases/download/v2.0.0-beta.1/IoskeleyMono-Condensed.zip
-	source = ttf-ioskeley-mono-2.0.0_beta.1-semicondensed.zip::https://github.com/ahatem/IoskeleyMono/releases/download/v2.0.0-beta.1/IoskeleyMono-SemiCondensed.zip
-	source = LICENSE::https://raw.githubusercontent.com/ahatem/IoskeleyMono/refs/tags/v2.0.0-beta.1/LICENSE
-	sha256sums = 00693cd2ce76e93fccc357b0357a92b5ec2e17fa3cd994e67355baafbe98f8b7
-	sha256sums = 264b5569844c12328b99f1dfb57cb527fe4be2650dd5c15a2333db64a322e6a7
-	sha256sums = a4dc4d0801892922e7b3572e69bd8c6f0aa0364da436c64fdcb3e1c21b74bdbc
+	source = ttf-ioskeley-mono-2.0.0-normal.zip::https://github.com/ahatem/IoskeleyMono/releases/download/v2.0.0/IoskeleyMono.zip
+	source = ttf-ioskeley-mono-2.0.0-condensed.zip::https://github.com/ahatem/IoskeleyMono/releases/download/v2.0.0/IoskeleyMono-Term.zip
+	source = ttf-ioskeley-mono-2.0.0-semicondensed.zip::https://github.com/ahatem/IoskeleyMono/releases/download/v2.0.0/IoskeleyMono-NL.zip
+	source = LICENSE::https://raw.githubusercontent.com/ahatem/IoskeleyMono/refs/tags/v2.0.0/LICENSE
+	sha256sums = dc37763fbb82cbb99611955ee3196c774c164c716c0f659b4bddbe3d370c3204
+	sha256sums = af34aa4f02a6887bc9c7826528a109f054f77edc780ce11d9edd99e32d5a9645
+	sha256sums = 8480dbadb0c8c1739f338aba119dbc359b5d23f45bd1679e018964a77c602a8f
 	sha256sums = 1084285bd2bddf706d566e11a92fcbae2706da4a8eafac49ed34c871d01fb7fe
 
 pkgname = ttf-ioskeley-mono
