@@ -2,20 +2,23 @@
 # Contributor: Oleg Plakhotniuk <olegus EIGHT AT gmail DOT com>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
-pkgname=validatornu
-pkgver=26.1.11
-_commit=f6c2fe281d0f9ee7066d5eef4a9b499c505476d8
+pkgname=vnu
+pkgver=26.5.22
+_commit=d3efb7d93855d9c12fdc7b764e81f873f6e47186
 pkgrel=1
 pkgdesc="The Nu Html Checker, a command line tool for HTML5 markup validation"
 arch=('any')
 url="https://validator.github.io/validator/"
 license=('MIT' 'BSD' 'Apache' 'CDDL' 'EPL' 'MPL')
 depends=('bash' 'java-runtime>=11')
-source=("validatornu"
+conflicts=(validatornu)
+replaces=(validatornu)
+install=post_install.install
+source=("vnu"
         "https://registry.npmjs.org/vnu-jar/-/vnu-jar-$pkgver.tgz"
         "https://raw.githubusercontent.com/validator/validator/$_commit/CREDITS")
 sha256sums=('96cd47b569b8c79a60f3bea22159444919b418ef20d8beb4b223a6389aabbf25'
-            '614728f6b6628ea59da629acae7a8cfb21573afec94c6ad7eede418631865d71'
+            '3d6d1fd3753e4f090e1a43b1471f9bc7d06b8bbbff9f65197aa406ca35138859'
             'b7f78e603da0e9aa19adb63a3c12af5c8c16e40c43ac115a017cc7ed2517e9fb')
 
 package() {

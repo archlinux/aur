@@ -1,0 +1,6 @@
+post_install() {
+  echo ""
+  echo "NOTE:"
+  echo "The executable has also been renamed from validatornu to vnu."
+  echo ""
+}
