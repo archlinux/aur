@@ -1,6 +1,6 @@
 pkgbase = ssm-bin
 	pkgdesc = SSH connection manager with a TUI
-	pkgver = 2.3.1
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/lfaoro/ssm
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = ssm-bin
 	conflicts = ssm
 	provides = ssm
 	arch = aarch64
-	source_aarch64 = https://github.com/lfaoro/ssm/releases/download/2.3.1/ssm_2.3.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 751979aaf4dbdf40cb086b340b177a42034265a6f6a98e4158445cebcb1a187d
+	source_aarch64 = https://github.com/lfaoro/ssm/releases/download/2.4.0/ssm_2.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 309f233f3983429a7b582c817d611e3af0b36438850ff43112d0681cbe69cbf3
 	arch = x86_64
-	source_x86_64 = https://github.com/lfaoro/ssm/releases/download/2.3.1/ssm_2.3.1_linux_x86_64.tar.gz
-	sha256sums_x86_64 = e4b637be41788cb8ef86ba4af0f3cf682dad3a1173764b29ff8c79a55eabf929
+	source_x86_64 = https://github.com/lfaoro/ssm/releases/download/2.4.0/ssm_2.4.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1c677bb94c5f57c919fce435519085b0e8bd03f27e37b2c3f4000c31652f468e
 	
 pkgname = ssm-bin
