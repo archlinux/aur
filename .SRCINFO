@@ -1,7 +1,7 @@
 pkgbase = python-kikuchipy
 	pkgdesc = Processing and analysis of electron backscatter diffraction (EBSD) patterns.
-	pkgver = 0.11.3
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = https://kikuchipy.org/
 	arch = any
 	license = GPL-3.0-or-later
@@ -18,21 +18,24 @@ pkgbase = python-kikuchipy
 	depends = python-h5py>=2.10
 	depends = python-imageio
 	depends = python-lazy-loader
-	depends = python-matplotlib>=3.5
+	depends = python-matplotlib>=3.6
 	depends = python-numba>=0.57
 	depends = python-numpy>=1.23.0
 	depends = python-orix>=0.12.1
-	depends = python-pooch>=1.3.0
 	depends = python-pyyaml
 	depends = python-rosettasciio>=0.3.0
 	depends = python-scikit-image>=0.16.2
 	depends = python-scikit-learn
 	depends = python-scipy>=1.7
 	depends = python-tqdm>=0.5.2
+	optdepends = python-pooch>=1.3.0: download test data
 	optdepends = python-pyvista: visualization,
-	optdepends = python-pyebsdindex>=0.3.2: orientation indexing
+	optdepends = python-pyebsdindex>=0.3.2: orientation indexing,
+	optdepends = python-psygnal: triggering actions based on state changes,
+	optdepends = python-ipywidgets: gui widgets,
+	optdepends = ipython: gui widgets,
 	provides = kikuchipy
-	source = https://github.com/pyxem/kikuchipy/archive/v0.11.3.tar.gz
-	md5sums = 246a7948e18daee7d9ff19f2869eeb01
+	source = https://github.com/pyxem/kikuchipy/archive/v0.12.0.tar.gz
+	sha256sums = 20ee9575d171a537bf0d862f81355528a7791e5e3f25b228eb52c06fe1d1d36c
 
 pkgname = python-kikuchipy
