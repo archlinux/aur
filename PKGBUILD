@@ -7,7 +7,7 @@ _pkgname='silverbullet'
 pkgname="$_pkgname-bin"
 pkgdesc='Programmable, private, browser-based, personal knowledge management platform / wiki (pre-compiled)'
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 url='https://github.com/silverbulletmd/silverbullet'
 install="$pkgname.install"
 changelog="$pkgname.changelog"
@@ -29,8 +29,8 @@ source=(
   'tmpfile.conf'
 )
 sha256sums=(
-  'a2a48349267e46ca8a94df5d198c4130bafc361f1a4858837cf5fe537cd7fe13'
-  'da3ee84ff63ac9608e6111fec3441873649248222982ba91d0ff5172e943b3ee'
+  '96dd7e01599262f7ee2471a19186908f216fd0ac7b21deb582b5fcffdff3cabf'
+  '568416820a34f889b7acbe77ab00832c115017a6d513f6df4418428436981ed6'
   'SKIP' 'SKIP' 'SKIP'
   '934853f43b399b1761d57ad4d42957863b23459f50f003cd4408c33f238ac012'
   '66bc5f51f8361eabd22aa26e5ebc86eb0d33e07196c93d423c8839b3055200d4'
