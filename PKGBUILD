@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=calmly-writer-bin
-_pkgname='Calmly Writer'
-pkgver=2.0.65
-_electronversion=34
+_pkgname=CalmlyWriter
+pkgver=3.0.2
+_electronversion=41
 pkgrel=1
 pkgdesc="An editor designed to focus on what you want to tell, with a simple, unobtrusive and ease-to-use user interface."
 arch=(
@@ -17,19 +17,35 @@ options=('!strip')
 depends=(
     "electron${_electronversion}"
 )
-source_aarch64=("${pkgname%-bin}_${pkgver}-aarch64.rpm::${url}/releases/linux/rpm/arm64/${pkgname%-bin}-${pkgver}.aarch64.rpm")
-source_x86_64=("${pkgname%-bin}_${pkgver}-x86_64.rpm::${url}/releases/linux/rpm/x64/${pkgname%-bin}-${pkgver}.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}_${pkgver}-aarch64.rpm::${url}/pro/releases/${pkgname%-bin}-3-${pkgver}.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}_${pkgver}-x86_64.rpm::${url}/pro/releases/${pkgname%-bin}-3-${pkgver}.x86_64.rpm")
 source=(
     "LICENSE.html::${url}/eula.htm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a97d8a67ab0f70d0db8a5c305071d1dc6e107f91d7f24bcd2146dffa0a51b2e1'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('d6526d9c35898537799b225bce6ea5b782e69ec09c845c3d363db831921cc527')
-sha256sums_x86_64=('5a6215fad58dc19efc62963ffd6f9fd48d7c353a02fb84969ba6c30f958e10e8')
-_get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+sha256sums=('ef7a9b96350b985806a28ad6542fd437cfb34c740107c6d8306b85dd99be348e'
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums_aarch64=('072f34c3b900f30c7dcb38ef940d6659674f3240c6cf08bc62207885a8b2f9fe')
+sha256sums_x86_64=('04da83f4aaaa604c0ef8ad6236e693cde57ad69740e264aae4ec40a67b54ea06')
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _main_exe=""
+    if [[ -n "${_app_dir}" ]]; then
+        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
+    fi
+    if [[ -n "${_main_exe}" ]]; then
+        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
+        if [[ -n "${_elec_ver}" ]]; then
+            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+            else
+                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+            fi
+        fi
+    else
+        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
+    fi
 }
 prepare() {
     sed -i -e "
@@ -37,31 +53,25 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    _get_electron_version
-    sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/"{7zip-bin/mac,app-builder-bin/mac,font-list/libs/{darwin,win32}}
-    case "${CARCH}" in
-        aarch64)
-            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/"{arm,ia32,x64}
-            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/app-builder-bin/linux/"{arm,ia32,loong64,riscv64,x64}
-            ;;
-        x86_64)
-            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/"{arm,arm64,ia32}
-            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/app-builder-bin/linux/"{arm,arm64,ia32,loong64,riscv64}
-            ;;
-    esac
+    _check_electron_version
+    sed -i -e "
+        s/\/opt\/${_pkgname}Pro\/${pkgname%-bin}-3/${pkgname%-bin}/g
+        s/Icon=${pkgname%-bin}-3/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}-3.desktop"
+    rm -rf "${srcdir}/opt/${_pkgname}Pro/resources/app.asar.unpacked/node_modules/font-list/libs/"{darwin,win32}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	cp -a "${srcdir}/opt/${_pkgname}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    _icon_sizes=(16x16 32x32 64x64 128x128 256x256 512x512)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}-3.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
