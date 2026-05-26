@@ -22,9 +22,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long --tags --match 'v*' 2>/dev/null |
-    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+  if version="$(git describe --long --tags --match 'v*' 2>/dev/null)"; then
+    printf '%s\n' "${version}" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  else
     printf '0.4.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
 }
 
 build() {
