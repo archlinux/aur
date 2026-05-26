@@ -1,6 +1,6 @@
 pkgbase = refract
 	pkgdesc = GUI tool for ranking pacman mirrors on Arch Linux and Arch-based distributions
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Labaman/refract
 	arch = any
@@ -12,9 +12,10 @@ pkgbase = refract
 	depends = python-requests
 	depends = python-gobject
 	depends = gtk4
-	depends = reflector
 	depends = polkit
-	source = refract-1.4.3.tar.gz::https://github.com/Labaman/refract/archive/refs/tags/v1.4.3.tar.gz
-	sha256sums = 7c05b35b95610fa9c60c18b2d40d5e01d87a279d01ad0501efc0ceb77ba61eeb
+	optdepends = rsync: speed testing for rsync mirrors
+	optdepends = geoip: country auto-detection via geoiplookup
+	source = refract-1.5.0.tar.gz::https://github.com/Labaman/refract/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 8aa596e61e185f4644b245345a86850941e30b6a576c90091f8a8ecb70b17665
 
 pkgname = refract
