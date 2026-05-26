@@ -66,6 +66,10 @@ prepare() {
 build() {
 	cd heartwood
 
+	# Some crates seem to hardcode or prefer clang; undo that
+	export CC="${CC-gcc}"
+	export CXX="${CXX-g++}"
+
 	# _Disable_ cross-toolchain LTO because we are using different toolchains
 	# for C/C++ and Rust code (i.e., LLVM LTO is incompatible with GCC LTO).
 	# In this project, C/C++ code is linked into Rust code. Therefore, apply
