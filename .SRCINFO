@@ -1,6 +1,6 @@
 pkgbase = python-supercode-cli-git
 	pkgdesc = Experimental AI hole-filling compiler/interpreter frontend
-	pkgver = 0.1.0.r1.g79bbe2f
+	pkgver = 0.1.0.r2.gc136c02
 	pkgrel = 1
 	url = https://github.com/LwhJesse/SuperCode
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-supercode-cli-git
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = git+https://github.com/LwhJesse/SuperCode.git
+	source = python-supercode-cli-git::git+https://github.com/LwhJesse/SuperCode.git
 	sha256sums = SKIP
 
 pkgname = python-supercode-cli-git
