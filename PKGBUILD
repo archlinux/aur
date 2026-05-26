@@ -31,7 +31,7 @@ package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/sovet.desktop" << EOF
 [Desktop Entry]
 Name=Совет
-Comment=ЗАЩИЩЕННЫЙ МЕССЕНДЖЕР
+Comment=Корпоративная платформа: чат, видеоконференции, задачи
 Exec=/opt/sovet/sovet.AppImage
 Icon=sovet
 Type=Application
