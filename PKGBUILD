@@ -1,6 +1,6 @@
 # Maintainer: Anjishnu Sengupta <itsaemail@duck.com>
 pkgname=ny-cli
-pkgver=5.5.5
+pkgver=5.5.6
 pkgrel=1
 pkgdesc="Beautiful terminal anime streaming client with artwork display, cloud sync, and watch progress tracking"
 arch=('any')
