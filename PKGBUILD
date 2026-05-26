@@ -18,7 +18,7 @@ optdepends=('bubblewrap: for experimental additional sandboxed execution'
             'typescript: for system-wide tsc support')
 
 provides=('openclaw')
-conflicts=('openclaw' 'openclaw-git')
+conflicts=('openclaw')
 source=('git+https://github.com/openclaw/openclaw.git'
         'git+https://github.com/openclaw/fs-safe.git'
         'openclaw-bwrap'

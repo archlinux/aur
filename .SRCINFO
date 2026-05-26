@@ -17,7 +17,6 @@ pkgbase = openclaw-git
 	optdepends = typescript: for system-wide tsc support
 	provides = openclaw
 	conflicts = openclaw
-	conflicts = openclaw-git
 	options = !strip
 	options = !debug
 	source = git+https://github.com/openclaw/openclaw.git
