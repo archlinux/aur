@@ -1,0 +1,17 @@
+pkgbase = neko-cloud-music
+	pkgdesc = Neko Cloud Music desktop client (Qt6/C++)
+	pkgver = 2026.526.22
+	pkgrel = 1
+	url = https://github.com/FantasyNetworkCN/NekoMusicForPc
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-svg
+	source = neko-cloud-music-363938b7ff8b54c92a2e0131809efcf4fef6da20.tar.gz::https://github.com/FantasyNetworkCN/NekoMusicForPc/archive/363938b7ff8b54c92a2e0131809efcf4fef6da20.tar.gz
+	sha256sums = SKIP
+
+pkgname = neko-cloud-music
