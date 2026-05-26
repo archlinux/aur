@@ -14,6 +14,7 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
+options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/Haze/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('54c09683a0abb8737c01aec06bb0b6ba1784ae49683cb7ff8fb45afb10bd3339')
 
