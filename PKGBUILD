@@ -22,6 +22,8 @@ pkgver() {
 build() {
   cd "$pkgname"
   export GOPATH="$srcdir/gopath"
+  export GOMODCACHE="$srcdir/gopath/pkg/mod"
+  export GOFLAGS="-modcacherw"
   make build
 }
 
