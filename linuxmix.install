@@ -11,13 +11,6 @@ post_install() {
         sudo usermod -aG audio $U
 	    systemctl -M "$U@.host" --user daemon-reload
 	    systemctl -M "$U@.host" --user enable --now linuxmix
-        
-        # Create blacklist file
-        mkdir "/home/$U/.config/linuxmix"
-        echo "# Enter the node name for each device you wish to blacklist" >> "/home/$U/.config/linuxmix/blacklist.conf"
-        echo "# This can be retrieved by entering 'pw-cli ls Node', and searching for the corresponding 'node.name'" >> "/home/$U/.config/linuxmix/blacklist.conf"
-        echo "# NOTE: Not all Nodes may correspond to an audio sink, but you should be able to tell." >> "/home/$U/.config/linuxmix/blacklist.conf"
-        echo "# If there comes a situation where you *cannot* tell which node corresponds to which device, please open an issue and I'll try to create an alternative" >> "/home/$U/.config/linuxmix/blacklist.conf"
     done
 }
 
