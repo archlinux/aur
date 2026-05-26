@@ -1,6 +1,6 @@
 pkgbase = folios
 	pkgdesc = Simple GNOME utility for working with local PDF files
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://gitlab.com/fvtronics/folios
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = folios
 	depends = gtk4
 	depends = libadwaita
 	depends = poppler-glib
-	source = folios-0.1.7.tar.gz::https://gitlab.com/fvtronics/folios/-/archive/v0.1.7/folios-v0.1.7.tar.gz
-	sha256sums = 2c5f1463929870740a28575a8c6ffb476ea56e094246c25a3dcc42af7eb77bf5
+	source = folios-0.1.8.tar.gz::https://gitlab.com/fvtronics/folios/-/archive/v0.1.8/folios-v0.1.8.tar.gz
+	sha256sums = 0048887f727d3d5c6dc08c80e4f0be7d9b6a80c9695aab9d575133903e3cc397
 
 pkgname = folios
