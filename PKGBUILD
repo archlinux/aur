@@ -1,7 +1,7 @@
 # Maintainer: Mohan Raman <mohan43u@gmail.com>
 
 pkgname=machi
-pkgver=0.5.0.r9.g401c9b6
+pkgver=0.5.0.r10.g5ea5b4c
 pkgrel=1
 pkgdesc='Window Manager for river wayland compositor'
 arch=('x86_64')
