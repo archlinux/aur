@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mangareader
-pkgver=2.4.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='Manga Reader for local files'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=('kimageformats: extra image formats support (jxl, avif, heif, ...)')
 # output as optional
 makedepends=('cmake' 'extra-cmake-modules' 'ninja' 'qt6-tools' 'vulkan-headers')
 source=("https://github.com/g-fb/mangareader/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8c19856110256702563dd1e7513878a4fc4212390b409e7030c7a604f8745834')
+sha256sums=('def520cc4f1930d440124d79a91b1c53249307dcc77af9d9704c91ba9b318ea2')
 
 build() {
   cmake -S $pkgname-$pkgver -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr'
