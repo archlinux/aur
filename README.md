@@ -5,6 +5,8 @@ AUR package: <https://aur.archlinux.org/packages/openpilot-cabana>
 ## Installation
 
 ```bash
+yay -S openpilot-cabana
+# or
 paru -S openpilot-cabana
 ```
 
