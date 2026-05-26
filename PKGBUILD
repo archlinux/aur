@@ -5,8 +5,8 @@
 # The CI publish-aur-bin task updates pkgver before pushing to AUR.
 
 pkgname=lafifi-bin
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Multi-chain, multi-wallet crypto portfolio tracker – prebuilt binary"
 arch=('x86_64')
 url="https://buildhut.fly.dev/apps/lafifi"
