@@ -1,39 +1,81 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: atomickaiser <reubenpercival@tutanota.de>
 pkgname=bottles-bin
+_pkgname=Bottles
 pkgver=63.2
 pkgrel=1
-pkgdesc="Run Windows applications with Wine – user‑friendly GUI"
-arch=('any')
-url="https://github.com/bottlesdevs/bottles"
-license=('GPL-3.0')
-depends=('python' 'python-pip' 'wine' 'glib2' 'gtk3' 'gobject-introspection')
-makedepends=('git' 'python-setuptools')
+pkgdesc="Easily manage wine and proton prefix"
+arch=(any)
+url="https://github.com/bottlesdevs/Bottles"
+license=(GPL-3.0-only)
+depends=(
+  cabextract
+  dconf
+  fvs2
+  gamemode
+  gtk4
+  gtksourceview5
+  hicolor-icon-theme
+  icoextract
+  imagemagick
+  libadwaita
+  libportal-gtk4
+  p7zip
+  patool
+  python
+  python-chardet
+  python-fvs
+  python-gobject
+  python-markdown
+  python-orjson
+  python-pathvalidate
+  python-pycurl
+  python-requests
+  python-steamgriddb
+  python-yaml
+  python-yara
+  webkit2gtk-4.1
+  xorg-xdpyinfo
+  vkbasalt-cli
+)
+optdepends=(
+  gvfs
+  lib32-gamemode
+  lib32-gnutls
+  lib32-vkd3d
+  lib32-vulkan-icd-loader
+  vkd3d
+  vulkan-icd-loader
+  wine
+)
+makedepends=(
+  blueprint-compiler
+  meson
+  ninja
+)
 conflicts=('bottles')
 provides=('bottles')
-source=("git+https://github.com/bottlesdevs/bottles.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=(
+  "${_pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/${pkgver}.tar.gz"
+  remove-flatpak-checks.patch
+)
+sha256sums=(
+  820a505a84003c766582de69d7008dcc0a3f4bb808a2074d7d8fa37931ca4f77
+  1d2e1417803e93a5d487d46c76ec256c301459f28854e0c8d049a8be11e50fc0
+)
+
+prepare() {
+  patch --forward --directory="${srcdir}/${_pkgname}-${pkgver}" --strip=1 --input="${srcdir}/remove-flatpak-checks.patch"
+}
 
 build() {
-    cd "$srcdir/bottles"
-    python -m pip install --no-deps --ignore-installed \
-        --target="${srcdir}/staging" .
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  meson setup --prefix='/usr' build
+  ninja -C build
 }
 
 package() {
-    cd "$srcdir/staging"
-    PYDIR="/usr/lib/python$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')/site-packages"
-    install -dm755 "${pkgdir}${PYDIR}"
-    cp -a . "${pkgdir}${PYDIR}/"
-
-    install -Dm644 "$srcdir/bottles/data/bottles.desktop" \
-        "${pkgdir}/usr/share/applications/bottles.desktop"
-    for sz in 16 32 48 64 128 256; do
-        if [[ -f "$srcdir/bottles/data/icons/hicolor/${sz}x${sz}/apps/bottles.png" ]]; then
-            install -Dm644 "$srcdir/bottles/data/icons/hicolor/${sz}x${sz}/apps/bottles.png" \
-                "${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/apps/bottles.png"
-        fi
-    done
-
-    install -Dm755 "$srcdir/bottles/bottles.py" "${pkgdir}/usr/bin/bottles"
-    sed -i '1 s|^|#!/usr/bin/env python\n|' "${pkgdir}/usr/bin/bottles"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  DESTDIR="${pkgdir}" ninja -C build install
 }
+
+# vim: set ft=sh ts=2 sw=2 et:
