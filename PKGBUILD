@@ -11,7 +11,7 @@
 
 _qt_module=qtimageformats
 pkgname=mingw-w64-qt5-imageformats-static
-pkgver=5.15.18
+pkgver=5.15.19
 pkgrel=1
 arch=('any')
 pkgdesc="Plugins for additional image formats: TIFF, MNG, TGA, WBMP (mingw-w64)"
@@ -22,7 +22,7 @@ depends=('mingw-w64-qt5-base-static')
 #depends+=('mingw-w64-libwebp') # for WebP
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=c91e4c63c1eaf1e23806d9df10e3d5a9ae353c1d
+_commit=4076e38d68f05f5e1bcdedb79442d9008f18702c
 _basever=${pkgver%%+*}
 pkgver+=+kde+r2
 makedepends+=('git')
@@ -31,7 +31,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('546bf7cb83be9c369ac358cc9019227b47c515098e362284b1e02e9a8608b63b')
+sha256sums=('08ed721ca9ea48d0769d39d56fc8c82068fd8595e98feba43189a84e12fbd155')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
