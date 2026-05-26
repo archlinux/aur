@@ -1,0 +1,22 @@
+pkgbase = shed-sh-git
+	pkgdesc = A Linux shell with a powerful line editor and IPC socket extensibility (development version)
+	pkgver = 0.20.2.r8.gf55b5db
+	pkgrel = 1
+	url = https://github.com/km-clay/shed
+	install = shed.install
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = sqlite
+	provides = shed
+	provides = shed-sh
+	conflicts = shed
+	conflicts = shed-sh
+	source = git+https://github.com/km-clay/shed.git
+	sha256sums = SKIP
+
+pkgname = shed-sh-git
