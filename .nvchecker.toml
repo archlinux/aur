@@ -1,0 +1,5 @@
+[mdviewer-bin]
+source = "github"
+github = "noborus/mdviewer"
+use_latest_release = true
+prefix = "v"
