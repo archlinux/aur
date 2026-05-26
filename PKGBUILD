@@ -1,38 +1,56 @@
-# Maintainer: Kars Wang <jaklsy AT gmail.com>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Kars Wang <jaklsy AT gmail.com>
 
-pkgname='perl-url-encode-xs'
+_author=CHANSEN
+_dist=URL-Encode-XS
+pkgname=perl-${_dist@L}
 pkgver=0.03
-pkgrel=1
+pkgrel=2
 pkgdesc='XS implementation of URL::Encode'
-_dist='URL-Encode-XS'
-arch=('i686' 'x86_64')
-url="https://metacpan.org/release/$_dist"
-license=('PerlArtistic')
-depends=('perl>=5.8.1' 'perl-xsloader>=0' 'perl-url-encode>=0.03' 'perl-carp>=0' 'perl-exporter>=0')
-checkdepends=()
-makedepends=('perl-extutils-makemaker>=6.59' 'perl-test-simple>=0.88')
-provides=()
-options=('!emptydirs' 'purge')
-source=("http://search.cpan.org/CPAN/authors/id/C/CH/CHANSEN/$_dist-$pkgver.tar.gz")
+arch=('x86_64')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-carp'
+    'perl-exporter'
+    'perl-url-encode>=0.03'
+    'perl-xsloader'
+    'perl>=5.8.1'
+)
+makedepends=(
+    'perl-extutils-makemaker>=6.59'
+    'perl-module-install'
+    'perl-test-simple'
+)
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('d44f416bd3e58e3b3366ab420705da02c7118fc848a97ce089366ea0461fa823')
 
-build() (
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  /usr/bin/perl Makefile.PL
-  make
-)
+build()
+{
+    cd "$_dist-$pkgver"
 
-check() (
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1
-  make test
-)
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 
-package() (
-  cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-)
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
+}
+
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
+}
+
+package()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
