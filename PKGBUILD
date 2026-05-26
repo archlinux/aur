@@ -4,7 +4,7 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-springer
-pkgver=20251218
+pkgver=20260524
 pkgrel=1
 pkgdesc="Springer templates for LNCS proceedings (llncs), other proceedings (svproc), journal articles (sn-jnl), monographs (svmono), and multiauthor volumes (svmult)"
 arch=('any')
@@ -24,8 +24,8 @@ install=texlive.install
 source=('llncs.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/19238648/data/v8'
   'svproc.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/19338728/data/v1'
   'svjour.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/18782940/data/v13'
-  'svmono.zip::https://dam.springernature.com/file/B1GioCMDKtNBBsyRKEpr1X/*/SNmono.zip?authcred=Q29weVVSTDpDMHB5X1VSTA=='
-  'svmult.zip::https://dam.springernature.com/file/3ioiVy6IqIfA73u4es9_Ls/*/SNmult.zip?authcred=Q29weVVSTDpDMHB5X1VSTA==')
+  'svmono.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/27837776/data/v1'
+  'svmult.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/27837774/data/v1')
 
 noextract=("${source[@]%%::*}")
 
