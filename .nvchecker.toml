@@ -1,0 +1,3 @@
+[perl-cli-osprey]
+source = "cpan"
+cpan = "CLI-Osprey"
