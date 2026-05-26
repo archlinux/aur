@@ -1,6 +1,6 @@
 pkgbase = intel-amt-linux
 	pkgdesc = Linux GUI+CLI for Intel AMT/vPro: KVM, SOL, IDER, power control. IPMI/iLO/MeshCommander alt.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/88plug/intel-amt-linux
 	install = intel-amt-linux.install
@@ -20,7 +20,7 @@ pkgbase = intel-amt-linux
 	optdepends = libappindicator-gtk3: system tray icon support
 	options = !strip
 	options = !debug
-	source = git+https://github.com/88plug/intel-amt-linux.git#tag=v0.1.1
+	source = git+https://github.com/88plug/intel-amt-linux.git#tag=v0.1.2
 	sha256sums = SKIP
 
 pkgname = intel-amt-linux
