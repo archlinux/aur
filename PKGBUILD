@@ -1,47 +1,54 @@
 # Maintainer: Pasqual Troncone <pasqualtroncone at gmail dot com>
+# Co-Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=ai-jail
-pkgver=0.10.3
+pkgver=1.4.0
 pkgrel=1
-pkgdesc='Sandbox for AI coding agents (bubblewrap on Linux, sandbox-exec on macOS)'
-arch=('x86_64')
-url='https://github.com/akitaonrails/ai-jail'
+pkgdesc="Sandbox wrapper for AI coding agents"
+arch=('x86_64' 'aarch64')
+url="https://github.com/akitaonrails/ai-jail"
 license=('GPL-3.0-only')
 depends=('bubblewrap' 'glibc' 'gcc-libs')
+makedepends=('cargo')
 optdepends=(
     'mise: language version management inside the sandbox'
-    'docker: Docker socket passthrough'
+    'docker: Docker socket passthrough for sandboxed agents'
 )
-makedepends=('cargo')
-source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/akitaonrails/ai-jail/archive/refs/tags/v$pkgver.tar.gz"
-)
-b2sums=(
-    '97a927f475c913169958d48bb655235b8e15be6967422191ca20214d87a114f66ce5c3d5797f638a2f0bda2b7ed5d825c07c22b4a9c2b005b25e486bb82d29d1'
-)
+# Cargo's release profile strips symbols, so the auto-generated -debug split
+# would be empty and would collide with ai-jail-bin-debug if both package
+# variants were ever installed on the same machine.
+options=('!debug')
+conflicts=('ai-jail-bin')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('4eb4cffb2ad52bc920f97ee89653722aaf0c3d5cde9e251834a291bb5f19f137')
 
 prepare() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release
 }
 
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    export HOME="$srcdir/test-home"
+    mkdir -p "$HOME"
+    # Keep AUR builds robust across user kernels/containers: run the unit test
+    # binary, not the sandbox-escape integration tests that require working
+    # unprivileged namespaces at package-build time.
+    cargo test --frozen --release --bin ai-jail
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/"                    "target/release/ai-jail"
+    install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/"     "README.md"
     install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
