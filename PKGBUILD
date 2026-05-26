@@ -82,8 +82,6 @@ package() {
         "${pkgdir}/usr/lib/systemd/system/xmm7360-init.service"
     install -Dm644 "$_src/systemd/xmm7360-signal.service" \
         "${pkgdir}/usr/lib/systemd/system/xmm7360-signal.service"
-    install -Dm644 "$_src/systemd/xmm7360-rescan.service" \
-        "${pkgdir}/usr/lib/systemd/system/xmm7360-rescan.service"
 
     # ── Last-resort module reload (triggered by kernel uevent) ───────────
     install -Dm644 "$_src/systemd/xmm7360-recovery.service" \
