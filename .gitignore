@@ -1,5 +1,7 @@
-fprintd-clients*
-pkg/
-src/
+# Ignore everything
+*
 
+# But not these files...
+!PKGBUILD
+!.SRCINFO
 !.gitignore
