@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 build() {
   cd "$srcdir/Kotoba-$pkgver"
   npm install
-  npm run build
+  npm run build -- -o dist
 }
 
 package() {
