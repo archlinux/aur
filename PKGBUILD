@@ -16,12 +16,16 @@ _meta_file=assets_meta.json
 
 _verify_digest() {
   local meta_data="$1"
-  local digest
-  digest=$(jq --raw-output '.digest' <<< "${meta_data}")
   local appimage_url
   appimage_url=$(jq --raw-output '.url' <<< "${meta_data}")
   local filename
   filename=$(basename "${appimage_url}")
+  if [[ ! -f "${filename}" ]]; then
+    return 1
+  fi
+
+  local digest
+  digest=$(jq --raw-output '.digest' <<< "${meta_data}")
   if [[ -n "${digest}" ]]; then
     msg2 "Verifying checksum..."
     local digest_type
@@ -74,6 +78,9 @@ verify() {
     curl -fL "${appimage_url}" -o "${filename}"
     chmod +x "${filename}"
   }
+
+  _verify_digest "${meta_data}"
+
   echo "${meta_data}" > "$_meta_file"
 }
 
