@@ -1,9 +1,9 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=cursor-cli
 # extracted from https://cursor.com/install (managed by 'update-pkgver.sh')
-_upstream_ver='2026.04.28-e984b46'
+_upstream_ver='2026.05.24-dda726e'
 # Baseline pkgver; update using './update-pkgver.sh'
-pkgver=2026.04.28.1.e984b46
+pkgver=2026.05.24.1.dda726e
 pkgrel=1
 epoch=1
 pkgdesc="Cursor Agent CLI - AI-powered code assistant"
@@ -16,8 +16,8 @@ source=('Cursor-TOS')
 source_x86_64=("cursor-cli-${_upstream_ver}-x86_64.tar.gz::https://downloads.cursor.com/lab/${_upstream_ver}/linux/x64/agent-cli-package.tar.gz")
 source_aarch64=("cursor-cli-${_upstream_ver}-aarch64.tar.gz::https://downloads.cursor.com/lab/${_upstream_ver}/linux/arm64/agent-cli-package.tar.gz")
 b2sums=('7079c023e03ea4d78b067ed0f22b5cc1982c306721b2ea6be3c7f73bbbe0e8f05b148fd6571902b838464ee80a787ef7be73135c622f0a4fdb16c38429ced8d6')
-b2sums_x86_64=('db7182180e53f6f49b78042d41ac1e0158f40d13b7ae60e46b3921d1d217265a708e976af61fe53fb6b76d9b12bd0ba48a3bd44782eeb4a52734a092d5453cd9')
-b2sums_aarch64=('fa281befe6e63976d905f7517b8af551cbd4cfd85c80c07ef5c1ce29b39b6aab3255838fcd2186431b25631a288fca803a134e7fa8a6d3d97175ea40ece9a969')
+b2sums_x86_64=('1a386eb3b083226e53a13cfe89264db29b6225657bf1f0d3b8cc3ce3244688301edebb0e471fa5183bfb9a2626597a8b55fe8c9fa234ea35cb633679ed7e3596')
+b2sums_aarch64=('5faaa1ee28170b664c7ba7a2872f4cbf6ac34cd442ec075c687d772670a7b627ce8f0c5af8343909e4ad3ccb1176c199cc66155053a2543d36773083ad1f4736')
 
 package() {
     # Create necessary directories
