@@ -2,7 +2,7 @@
 
 _name=openai-agents
 pkgname=python-$_name
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 pkgdesc="OpenAI Agents SDK."
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=('python-numpy: voice' 'python-websockets: voice'
             'python-boto3: s3'
             'python-temporalio: temporal' 'python-textual: temporal')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('63b6dda6bd4fb51169e2a2cbd5d187a4e5ce823bbd15f965c8ed1d3b89072eec')
+sha256sums=('6af9afd4b40de23493c9ab285c28cd4e8fd088240af6e96e2dee45826ad568fd')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
