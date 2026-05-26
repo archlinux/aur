@@ -6,11 +6,12 @@ _appname=${_gitname}
 pkgname=${_appname}-sh-bin
 pkgdesc="A Linux shell with a powerful line editor and IPC socket extensibility"
 
-pkgver=0.20.2
+pkgver=0.21.0
 pkgrel=1
 _gitversion=v${pkgver}
 
 arch=('x86_64')
+_barch=('x86_64-linux-musl')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -30,10 +31,10 @@ options=(!strip)
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
-source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}")
-sha256sums=('83715040083b7db55e85521a0d8be7a7eafac18747a8f3b1d79f11b529ccfe2b'
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}")
+sha256sums=('e82701ef59db5310846da4854cf12ce0a7eb6cc3eca7b008d7be6e814638ae8e'
             '63935e295aec98532c3dc36362522aa977e38a5ec53b6d68644d8659a050b98b')
-sha256sums_x86_64=('114c82016545241eac9e65f041550df354ec3b59fd3fcb515cde37ec22b894bd')
+sha256sums_x86_64=('edd3c81d7d79eb6a0b8a4df7b94fbcf39b62be1cbb1a3a8354a330c5976ed53a')
 
 prepare() {
 	cd "${srcdir}/" || exit
