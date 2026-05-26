@@ -1,4 +1,4 @@
-From 9cf8d9436f76f5c2f64b0b8b9398fa0d808e4b99 Mon Sep 17 00:00:00 2001
+From 7a45b673ae37797ebb75b8e24e1ec1fb2b03ef69 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 21:08:20 +0100
 Subject: [PATCH 26/32] Enable and fix use of iconv
@@ -49,7 +49,7 @@ index 9c39727946c..cc14036b254 100644
  #else
      char **inBytesPtr = &inBytes;
 diff --git a/src/corelib/configure.json b/src/corelib/configure.json
-index a9025a2dd29..ffb6f50fbe1 100644
+index cb605ce7c80..e524bb556c1 100644
 --- a/src/corelib/configure.json
 +++ b/src/corelib/configure.json
 @@ -72,7 +72,7 @@
@@ -61,7 +61,7 @@ index a9025a2dd29..ffb6f50fbe1 100644
                      "char *outp;",
                      "size_t inbytes, outbytes;",
                      "iconv(x, &inp, &inbytes, &outp, &outbytes);",
-@@ -673,9 +673,9 @@
+@@ -679,9 +679,9 @@
          },
          "gnu-libiconv": {
              "label": "GNU iconv",
@@ -74,5 +74,5 @@ index a9025a2dd29..ffb6f50fbe1 100644
          },
          "icu": {
 -- 
-2.51.2
+2.54.0
 

@@ -1,4 +1,4 @@
-From 291ee90ac92052df02a170149e47f67fa7cb3b4b Mon Sep 17 00:00:00 2001
+From 29b9406c5266dd57a58993f1d2992d5f5eef048f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 Jun 2021 22:24:12 +0200
 Subject: [PATCH 32/32] Fix crashes in rasterization code using setjmp
@@ -244,5 +244,5 @@ index 1a2b907606a..746a41efa8e 100644
          "Description": "FreeType is a freely available software library to render fonts.",
          "Homepage": "http://www.freetype.org",
 -- 
-2.51.2
+2.54.0
 

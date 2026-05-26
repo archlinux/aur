@@ -1,4 +1,4 @@
-From 928f83c1bfac7efaba419bbcabce0b21a6076808 Mon Sep 17 00:00:00 2001
+From 735a7095afdb353bc40848f8fb29741517a81b6d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 21:08:48 +0100
 Subject: [PATCH 27/32] Ignore failing pkg-config test
@@ -9,7 +9,7 @@ Didn't investigate why it fails, let's hope for the best
  1 file changed, 1 deletion(-)
 
 diff --git a/configure.json b/configure.json
-index b75f8a8033c..72a963a6793 100644
+index 6e95d899c3e..ed5ca2ee3a1 100644
 --- a/configure.json
 +++ b/configure.json
 @@ -793,7 +793,6 @@
@@ -21,5 +21,5 @@ index b75f8a8033c..72a963a6793 100644
                  "publicFeature",
                  { "type": "publicQtConfig", "negative": true },
 -- 
-2.51.2
+2.54.0
 
