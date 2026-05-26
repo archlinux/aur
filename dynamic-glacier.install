@@ -1,75 +1,15 @@
 post_install() {
-  local hypr_dir
-  local exec_line="exec-once = dynamic-glacier"
-
-  # Try to find the real user (pacman runs as root)
-  local real_user="${SUDO_USER:-$USER}"
-  local real_home
-  real_home=$(getent passwd "$real_user" 2>/dev/null | cut -d: -f6)
-  [ -z "$real_home" ] && real_home="/home/$real_user"
-  hypr_dir="$real_home/.config/hypr"
-
   cat <<'EOF'
+Dynamic Glacier installed.
 
-  Dynamic Glacier installed.
+Run it with:
+  dynamic-glacier
 
-  Run it with:
-    dynamic-glacier
-
+For Hyprland autostart, add this to hyprland.conf:
+  exec-once = dynamic-glacier
 EOF
-
-  # Only prompt if stdout is a terminal
-  if [ -t 0 ] && [ -d "$hypr_dir" ]; then
-    printf '  Add to Hyprland autostart? [Y/n] '
-    read -r answer < /dev/tty 2>/dev/null || answer="n"
-    case "$answer" in
-      [Nn]*) printf '  Skipped.\n\n'; return ;;
-    esac
-
-    # Detect end-4 architecture
-    if [ -f "$hypr_dir/custom/execs.conf" ]; then
-      if ! grep -qF "dynamic-glacier" "$hypr_dir/custom/execs.conf" 2>/dev/null; then
-        printf '%s\n' "$exec_line" >> "$hypr_dir/custom/execs.conf"
-        printf '  Added to %s/custom/execs.conf\n\n' "$hypr_dir"
-      else
-        printf '  Already in %s/custom/execs.conf\n\n' "$hypr_dir"
-      fi
-    elif [ -f "$hypr_dir/hyprland.conf" ]; then
-      if ! grep -qF "dynamic-glacier" "$hypr_dir/hyprland.conf" 2>/dev/null; then
-        printf '\n%s\n' "$exec_line" >> "$hypr_dir/hyprland.conf"
-        printf '  Added to %s/hyprland.conf\n\n' "$hypr_dir"
-      else
-        printf '  Already in %s/hyprland.conf\n\n' "$hypr_dir"
-      fi
-    else
-      printf '  Could not find hyprland config. Add manually:\n'
-      printf '    %s\n\n' "$exec_line"
-    fi
-  else
-    printf '  For Hyprland autostart, add this to your config:\n'
-    printf '    %s\n\n' "$exec_line"
-  fi
 }
 
 post_upgrade() {
-  cat <<'EOF'
-
-  Dynamic Glacier upgraded.
-
-EOF
-}
-
-pre_remove() {
-  local real_user="${SUDO_USER:-$USER}"
-  local real_home
-  real_home=$(getent passwd "$real_user" 2>/dev/null | cut -d: -f6)
-  [ -z "$real_home" ] && real_home="/home/$real_user"
-  local hypr_dir="$real_home/.config/hypr"
-
-  # Remove autostart entries
-  for conf in "$hypr_dir/custom/execs.conf" "$hypr_dir/hyprland.conf"; do
-    if [ -f "$conf" ] && grep -qF "dynamic-glacier" "$conf" 2>/dev/null; then
-      sed -i '/dynamic-glacier/d' "$conf"
-    fi
-  done
+  post_install
 }
