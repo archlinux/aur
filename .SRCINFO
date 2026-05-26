@@ -1,8 +1,8 @@
 pkgbase = vicinae-kotoba
 	pkgdesc = Japanese dictionary, translator, and Anki integration for Vicinae — search Jotoba, translate sentences, add cards to Anki
-	pkgver = 2026.05.21
+	pkgver = 2026.05.25
 	pkgrel = 1
-	url = https://github.com/kurojs/vicinae-jotoba-anki
+	url = https://github.com/kurojs/Kotoba
 	arch = any
 	license = MIT
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = vicinae-kotoba
 	depends = vicinae-bin
 	depends = nodejs
 	depends = npm
-	source = vicinae-kotoba-2026.05.21.tar.gz::https://github.com/kurojs/vicinae-jotoba-anki/archive/v2026.05.21.tar.gz
+	source = vicinae-kotoba-2026.05.25.tar.gz::https://github.com/kurojs/Kotoba/archive/v2026.05.25.tar.gz
 	sha256sums = SKIP
 
 pkgname = vicinae-kotoba

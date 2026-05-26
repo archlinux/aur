@@ -2,15 +2,15 @@
 # Contributor: kuro <kuro@kuro.moe>
 
 pkgname=vicinae-kotoba
-pkgver=2026.05.21
+pkgver=2026.05.25
 pkgrel=1
 pkgdesc="Japanese dictionary, translator, and Anki integration for Vicinae — search Jotoba, translate sentences, add cards to Anki"
 arch=('any')
-url="https://github.com/kurojs/vicinae-jotoba-anki"
+url="https://github.com/kurojs/Kotoba"
 license=('MIT')
 depends=('vicinae-bin' 'nodejs' 'npm')
 makedepends=('git' 'npm')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kurojs/vicinae-jotoba-anki/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kurojs/Kotoba/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
