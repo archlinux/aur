@@ -1,6 +1,6 @@
 pkgbase = fcitx5-schnelle-umlaute-git
 	pkgdesc = Quick Accent equivalent for Linux/Fcitx5 — map any Unicode character
-	pkgver = 1.2.1.r419.g13fd300
+	pkgver = 1.2.2.r448.g10855d7
 	pkgrel = 1
 	url = https://github.com/Maik-0000FF/schnelle-umlaute
 	install = fcitx5-schnelle-umlaute-git.install
