@@ -4,7 +4,7 @@
 
 pkgname=cryptpad
 pkgver=2026.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtime collaborative visual editor with zero knowlege server"
 arch=('any')
 url="https://github.com/$pkgname/$pkgname"
@@ -18,7 +18,7 @@ optdepends=('nginx: HTTP server providing TLS'
 conflicts=("cryptpad-sso<0.6.0")
 backup=(etc/webapps/"$pkgname"/config.js
         etc/nginx/sites-available/"$pkgname".conf)
-options=(!strip) # There are no ELF files, no need to strip anything.
+options=(!strip !debug) # There are no ELF files, no need to strip anything.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"

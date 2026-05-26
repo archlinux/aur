@@ -1,0 +1,4 @@
+[nvchecker]
+source = "git"
+git = "https://github.com/cryptpad/cryptpad.git"
+prefix = "v"

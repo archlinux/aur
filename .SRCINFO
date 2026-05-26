@@ -1,7 +1,7 @@
 pkgbase = cryptpad
 	pkgdesc = Realtime collaborative visual editor with zero knowlege server
 	pkgver = 2026.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cryptpad/cryptpad
 	arch = any
 	license = AGPL-3.0-only
@@ -15,6 +15,7 @@ pkgbase = cryptpad
 	optdepends = cryptpad-sso: SSO plugin for Cryptpad
 	conflicts = cryptpad-sso<0.6.0
 	options = !strip
+	options = !debug
 	backup = etc/webapps/cryptpad/config.js
 	backup = etc/nginx/sites-available/cryptpad.conf
 	source = cryptpad-2026.5.1.tar.gz::https://github.com/cryptpad/cryptpad/archive/2026.5.1.tar.gz
