@@ -1,19 +1,19 @@
 pkgbase = clashtui
 	pkgdesc = Mihomo (Clash.Meta) TUI Client
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/JohanChane/clashtui
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = rust
-	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
+	depends = mihomo
 	provides = clashtui
 	options = !lto
-	source = git+https://github.com/JohanChane/clashtui.git#tag=v0.2.3
-	md5sums = 2c9657e0241ece3c94a5f1ab723660f0
+	source = source::git+https://github.com/JohanChane/clashtui.git#tag=v0.3.1
+	md5sums = e5faf2caa12fadb30baa1c2a148bf3f9
 
 pkgname = clashtui

@@ -6,35 +6,36 @@ pkgdesc="Mihomo (Clash.Meta) TUI Client"
 url="https://github.com/JohanChane/clashtui"
 license=("MIT")
 arch=("x86_64" "aarch64")
-pkgver=0.2.3
-pkgrel=2
-makedepends=("rust" "cargo" "git")
-depends=("gcc-libs" "glibc")
-source=("git+https://github.com/JohanChane/clashtui.git#tag=v${pkgver}")
-md5sums=('2c9657e0241ece3c94a5f1ab723660f0')
+pkgver=0.3.1
+pkgrel=1
+makedepends=("rust" "git")
+depends=("gcc-libs" "glibc" "mihomo")
+source=("source::git+https://github.com/JohanChane/clashtui.git#tag=v${pkgver}")
+md5sums=('e5faf2caa12fadb30baa1c2a148bf3f9')
 provides=("clashtui")
 options=(!lto)
 
 function prepare() {
-	cd "${srcdir}/clashtui/clashtui"
+	cd source
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 function build() {
-	cd "${srcdir}/clashtui/clashtui"
+	cd source
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --release --frozen --all-features --locked
 }
 
 function check() {
-	cd "${srcdir}/clashtui/clashtui"
+	cd source
 	export RUSTUP_TOOLCHAIN=stable
 	cargo test --release --frozen --all-features --locked
 }
 
 function package() {
-	install -Dm755 "${srcdir}/clashtui/clashtui/target/release/clashtui" "${pkgdir}/usr/bin/clashtui"
-	install -Dm644 "${srcdir}/clashtui/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd source
+	install -Dm755 "target/release/clashtui" "${pkgdir}/usr/bin/clashtui"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
