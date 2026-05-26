@@ -1,0 +1,4 @@
+[python-rclone]
+source="git"
+git="https://github.com/Johannes11833/rclone_python"
+prefix="v"
