@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pupu-git
 _pkgname=PuPu
-pkgver=0.1.5.r61.g49c4192
+pkgver=0.1.6.r21.g14a031d
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -36,7 +36,7 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            '0386164f4c9dff659cf8d7a5b015dd62754927824a5dfe1000003e7b7d963020')
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -50,9 +50,10 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/package.json" | tr -d '^')
-    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
-    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
+        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
+    [[ -z "${_elec_ver}" ]] && return 1
+    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -101,10 +102,9 @@ build() {
 
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    cd "${srcdir}/${pkgname//-/.}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    local _resources="dist/linux-unpacked/resources"
-    cp -a "${_resources}/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -exec dirname {} + | head -n 1)
+    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     _icon_sizes=(192 512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname//-/.}/public/logo${_icons}.png" \

@@ -1,6 +1,6 @@
 pkgbase = pupu-git
 	pkgdesc = A simple and easy to use UI for the Ollama.(Use system-wide electron)
-	pkgver = 0.1.5.r61.g49c4192
+	pkgver = 0.1.6.r21.g14a031d
 	pkgrel = 1
 	url = https://github.com/haoxiang-xu/PuPu
 	arch = any
@@ -19,13 +19,13 @@ pkgbase = pupu-git
 	depends = python-httpx
 	depends = python-werkzeug
 	depends = python-openai
-	provides = pupu=0.1.5
+	provides = pupu=0.1.6
 	conflicts = pupu
 	source = pupu.git::git+https://github.com/haoxiang-xu/PuPu.git
 	source = unchain::git+https://github.com/haoxiang-xu/unchain.git
 	source = pupu.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 0386164f4c9dff659cf8d7a5b015dd62754927824a5dfe1000003e7b7d963020
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = pupu-git
