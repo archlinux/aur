@@ -1,0 +1,3 @@
+[perl-url-encode-xs]
+source = "cpan"
+cpan = "URL-Encode-XS"
