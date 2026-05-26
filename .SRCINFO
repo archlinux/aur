@@ -1,7 +1,7 @@
 pkgbase = gixy-next
 	pkgdesc = Nginx configuration static analyzer
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.3.4
+	pkgrel = 1
 	url = https://gixy.io
 	arch = any
 	license = MPL-2.0
@@ -11,6 +11,7 @@ pkgbase = gixy-next
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = crossplane-gixy
+	depends = python
 	depends = python-configargparse
 	depends = python-jinja
 	depends = python-tldextract
@@ -19,7 +20,7 @@ pkgbase = gixy-next
 	conflicts = gixy-git
 	conflicts = gixy-ng
 	conflicts = gixy-ng-git
-	source = https://files.pythonhosted.org/packages/source/g/gixy-next/gixy_next-0.1.4.tar.gz
-	b2sums = 2f2e1ae8933604d528501728fdd6bd355498f1fd6b3d6fc466b3795ce1c61ad707fc0dab0d20bf4f69365fa128358f30ee8a3e16ef2522dbcb62999988445d4b
+	source = https://files.pythonhosted.org/packages/source/g/gixy-next/gixy_next-0.3.4.tar.gz
+	b2sums = 70ddb9594b58644c7993af49418f3ee9af3765d4c73db223d179d073dba8563398db7aa263ae1e3396d9cb203acad523356ea78a95e99e06e47ec797976075a4
 
 pkgname = gixy-next
