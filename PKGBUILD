@@ -2,7 +2,7 @@
 
 _name="openxr"
 pkgname="lib32-${_name}"
-pkgver=1.1.59.1
+pkgver=1.1.60
 pkgrel=1
 pkgdesc="An open standard for virtual reality and augmented reality platforms and devices (32-bit)"
 arch=(
@@ -36,9 +36,9 @@ source=(
   "${_url}/releases/download/release-${pkgver}/${_pkgsrc}.tar.gz"
   "${_url}/releases/download/release-${pkgver}/${_pkgsrc}.tar.gz.asc"
 )
-sha512sums=('3d9a0c2b340f2ad56dd488aebf50e22d229570fc4957fb59090d35672b7454371f736b6160b484a494ad20f82a03bb522614501bd1e775be5ca750b7de33c001'
+sha512sums=('cfb661729c7b79a2b8ad12b441fab1327814de020df987b8855e6e53b0a760651819fc08b10b46653e5cebac0167e0f089a1f05c494007f229f24ff1ef83c455'
             'SKIP')
-b2sums=('9153dc53253a009f35045d183bdf635ccfd9882546f53331156ce1bcd5cc7aa118dcb9a1222da6da6d30f0431e0cd1f9f6a344e10c8885a2ccca1d06b11033bd'
+b2sums=('8c4ef26d800e559f8d87c3eaf077334090514684c03cccc9afe37af91567f9fe10719238317daaded23b55ab2c84ea488146c1a2cd8d3d860fa6817a21487481'
         'SKIP')
 validpgpkeys=(
   '45207B2B1E53E1F2755FF63CC5A2D593A61DBC9D' # Rylie Pavlik <rylie.pavlik@collabora.com>
