@@ -1,7 +1,7 @@
 # Maintainer: Jas Singh <singh.jaskir@outlook.com>
 
 pkgname=wayle
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A configurable desktop shell for Wayland compositors"
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
 )
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3adc1d501e19f54bd9ea9cabef1ea8f78e0b2acf978a5ff519b7394b60205597')
+sha256sums=('b64ada6c750a78a1194e86167b607ac69e8df45a405bd3636a067057e15b14cd')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
