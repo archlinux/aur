@@ -1,6 +1,6 @@
 pkgbase = nusgmon-git
 	pkgdesc = Record, log, and analyze your internet usage (systemd-service)
-	pkgver = 80
+	pkgver = 95
 	pkgrel = 1
 	url = https://github.com/LUCKYS1NGHH/nusgmon
 	install = nusgmon.install
