@@ -3,7 +3,7 @@
 
 pkgname=vicinae-kotoba
 pkgver=2026.05.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese dictionary, translator, and Anki integration for Vicinae — search Jotoba, translate sentences, add cards to Anki"
 arch=('any')
 url="https://github.com/kurojs/Kotoba"
