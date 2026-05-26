@@ -1,7 +1,7 @@
 pkgbase = app-terminator
 	pkgdesc = Unified application uninstaller across system packages, Flatpak, Snap, and AppImage
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/r6mez/App-Terminator
 	arch = any
 	license = GPL-3.0-or-later
@@ -15,7 +15,7 @@ pkgbase = app-terminator
 	depends = libadwaita
 	depends = glib2
 	depends = packagekit
-	source = app-terminator-0.1.0.tar.gz::https://github.com/r6mez/App-Terminator/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 1878e9b792b24d7d32d22cf44e267f0153c486b32995a20d9d0e5e09c2241aad
+	source = app-terminator-0.2.0.tar.gz::https://github.com/r6mez/App-Terminator/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 2595f97ecc7bdff1ccebbe814e785976aed96c633b3afd93d4cb9907680e17f3
 
 pkgname = app-terminator
