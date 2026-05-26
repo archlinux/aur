@@ -1,7 +1,7 @@
 pkgbase = gaia-amd
 	pkgdesc = AI-powered inference engine for AMD hardware
 	pkgver = 0.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amd/gaia
 	arch = x86_64
 	license = MIT
@@ -75,3 +75,4 @@ pkgname = gaia-amd-webui
 	depends = gaia-amd
 	depends = electron40
 	depends = libappindicator
+	optdepends = ngrok: mobile access / remote tunnel feature
