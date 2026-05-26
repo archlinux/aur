@@ -2,7 +2,7 @@
 
 _plug=tivtc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v2.1.g1713095
+pkgver=v2.4.g0cb2635
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -28,10 +28,12 @@ prepare() {
 
 build() {
   cd build
-  arch-meson "../${_plug}" --libdir /usr/lib/vapoursynth
+  arch-meson "../${_plug}" --reconfigure
   ninja
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  PLUGINDIR=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
+
+  install -Dm755 build/libtivtc.so "${pkgdir}${PLUGINDIR}/libtivtc.so"
 }
