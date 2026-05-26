@@ -2,7 +2,8 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=gnome-shell-extension-wintile
 pkgver=2026.05.26
-pkgrel=1
+pkgrel=2
+_rev=2
 pkgdesc="Windows 10 window tiling for GNOME"
 arch=('any')
 url="https://nowsci.com/wintile"
@@ -12,16 +13,16 @@ makedepends=(
   'jq'
   'zip'
 )
-source=("wintile-$pkgver-1.tar.gz::https://github.com/fmstrat/wintile/archive/v$pkgver-1.tar.gz")
-sha256sums=('038a36397a803b3550621ffd32aabee0be75ad8c4a26890d9cdb4ee6ef10382d')
+source=("wintile-$pkgver-${_rev}.tar.gz::https://github.com/fmstrat/wintile/archive/v$pkgver-${_rev}.tar.gz")
+sha256sums=('49395d804860845784f6aa6c72eee949e07cab69a634f9a0125e964d0b2fbc8d')
 
 build() {
-  cd "wintile-$pkgver-1"
+  cd "wintile-$pkgver-${_rev}"
   sh bin/build.sh
 }
 
 package() {
-  cd "wintile-$pkgver-1"
+  cd "wintile-$pkgver-${_rev}"
   _uuid=$(jq -r .uuid metadata.json)
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"

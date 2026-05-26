@@ -1,14 +1,14 @@
 pkgbase = gnome-shell-extension-wintile
 	pkgdesc = Windows 10 window tiling for GNOME
 	pkgver = 2026.05.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nowsci.com/wintile
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = jq
 	makedepends = zip
 	depends = gnome-shell
-	source = wintile-2026.05.26-1.tar.gz::https://github.com/fmstrat/wintile/archive/v2026.05.26-1.tar.gz
-	sha256sums = 038a36397a803b3550621ffd32aabee0be75ad8c4a26890d9cdb4ee6ef10382d
+	source = wintile-2026.05.26-2.tar.gz::https://github.com/fmstrat/wintile/archive/v2026.05.26-2.tar.gz
+	sha256sums = 49395d804860845784f6aa6c72eee949e07cab69a634f9a0125e964d0b2fbc8d
 
 pkgname = gnome-shell-extension-wintile
