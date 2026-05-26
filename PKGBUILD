@@ -2,18 +2,22 @@
 
 _pkgauthor=noborus
 _pkgname=guesswidth
-pkgname=${_pkgname}-bin
-pkgver=0.4.0
-pkgrel=1
 pkgdesc='Guess the width (fwf) output without delimiters in commands that output to the terminal.'
+pkgver=0.5.0
+pkgrel=1
+pkgname=${_pkgname}-bin
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+
 arch=('x86_64' 'i686' 'aarch64')
 license=('MIT')
+
 depends=('glibc')
 makedepends=('help2man')
-conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
@@ -21,9 +25,9 @@ source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_38
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('afcb1af4d492525f0eab04b3f2c28781710393d6b0f932521f87b531a99680ff'
             '4c0f3a18ed3b0abcd5ae6ed620ec4da1c034d6f0995419ab7c23b662b90d1495')
-sha256sums_x86_64=('b4b6ddc15478cd812dfc1829c6604b2884c40b58c2e06a32e98fab87076d299c')
-sha256sums_i686=('de99d080827dbb8eeb948b53d7e652e6bdfb8d3e69acf3055ed00d69e3f7f685')
-sha256sums_aarch64=('75a70bcef7c14dc227ad09c76405bc16e2e9e9f87f10000601b244779b4a5a33')
+sha256sums_x86_64=('8ea34b07b4da7ff013ceea8be8b32c34b68e477d86011f0167b9a39c23da4f47')
+sha256sums_i686=('bcaae285ad2f6af790bca491bea077dff35b1a8b881cc696907118ce1f015b42')
+sha256sums_aarch64=('188ea3979c123c89c610b8d099d6b196249682574b990053a2c421b1c64b0d60')
 
 build() {
   cd "${srcdir}/" || exit
