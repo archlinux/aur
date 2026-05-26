@@ -1,6 +1,6 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=('textparser')
-pkgver='0.7.4'
+pkgver='0.8.0'
 pkgrel=1
 options=(!debug)
 pkgdesc='Flexible and eazy to integrate text parser library written in C.'
@@ -9,11 +9,11 @@ arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url='https://github.com/bokic/textparser'
 license=('MIT')
 makedepends=('gcc' 'cmake' 'ninja')
-depends=('glibc' 'pcre2' 'json-c' 'python' 'gcc-libs')
+depends=('glibc' 'pcre2' 'json-c' 'python')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bokic/$pkgname/archive/refs/tags/${pkgver}.tar.gz")
 
-sha512sums=('11a1371f3a4807928cd1088e78cb77ac5003e837a7568016552ea9b86040bcb155f6f9dddb029741b1ec437c2e8e40943b4b6ee20ffd6496b018e27b78d4f36d')
+sha512sums=('bf4acb42dda0c181838811553f6be32a3a89072efa64f6c00035efb960777751981b4ae550451bf59fa51f40acca4eaffcea2ad3bafc4030b2753b8e17bc61c3')
 
 build() {
     sed -i 's/add_subdirectory(tests)/#add_subdirectory(tests)/' "$pkgname-$pkgver/CMakeLists.txt"
