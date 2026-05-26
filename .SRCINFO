@@ -1,19 +1,19 @@
 pkgbase = frogtalk-bin
 	pkgdesc = A federated, end-to-end encrypted chat platform. Self-host your own node and join the swamp — or run it completely standalone.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.4.3
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://frogtalk.xyz/
 	arch = x86_64
 	license = MIT
 	depends = electron41
-	provides = frogtalk=1.4.3
+	provides = frogtalk=1.5.1
 	conflicts = frogtalk
 	options = !emptydirs
 	options = !strip
-	source = frogtalk-1.4.3.deb::https://github.com/deadinternetfox/frogtalk/releases/download/v1.4.3/frogtalk_1.4.3_amd64.deb
-	source = LICENSE-1.4.3::https://raw.githubusercontent.com/deadinternetfox/frogtalk/v1.4.3/LICENSE
+	source = frogtalk-1.5.1.deb::https://github.com/deadinternetfox/frogtalk/releases/download/v1.6.21-sec10/FrogTalk_1.5.1_amd64.deb
+	source = LICENSE-1.5.1::https://raw.githubusercontent.com/deadinternetfox/frogtalk/v1.6.21-sec10/LICENSE
 	source = frogtalk.sh
-	sha256sums = 1a53f72d51fd8bc15d1d59023bf2d2bbc66694fffd2be929f819b6f3ab6753af
+	sha256sums = 9ca971c861436dfbe525ca281e174f94b892b4618e5672a247116fa7837d9da8
 	sha256sums = 9a919bf3c59d886d7802566024b2eb9b438660d148faad5e6ffcd85afee00380
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
