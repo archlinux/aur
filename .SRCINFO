@@ -1,6 +1,6 @@
 pkgbase = nvoc-cli
-	pkgdesc = NVIDIA GPU overclocking utility for Blackwell (RTX 50-series) on Linux
-	pkgver = 0.2.0
+	pkgdesc = NVIDIA Blackwell GPU overclocking utility for Linux
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/martinstark/nvoc
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = nvoc-cli
 	makedepends = cargo
 	depends = gcc-libs
 	optdepends = nvidia-utils: required for GPU communication via NVML
-	source = nvoc-cli-0.2.0.tar.gz::https://github.com/martinstark/nvoc/archive/v0.2.0.tar.gz
-	sha256sums = be387ec99a64c5c8cb6d85c79bc3cb4e395113e1f25c7c26c879d89095a429c2
+	source = nvoc-cli-0.3.0.tar.gz::https://github.com/martinstark/nvoc/archive/v0.3.0.tar.gz
+	sha256sums = eabffab8098825774b73a332a5f0efdfb43b2be3f8cb56675e6e1fe5eb8da9ed
 
 pkgname = nvoc-cli

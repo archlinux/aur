@@ -1,8 +1,8 @@
 # Maintainer: Martin Stark <m@ayu.im>
 pkgname=nvoc-cli
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="NVIDIA GPU overclocking utility for Blackwell (RTX 50-series) on Linux"
+pkgdesc="NVIDIA Blackwell GPU overclocking utility for Linux"
 arch=('x86_64')
 url="https://github.com/martinstark/nvoc"
 license=('MIT')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 optdepends=('nvidia-utils: required for GPU communication via NVML')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('be387ec99a64c5c8cb6d85c79bc3cb4e395113e1f25c7c26c879d89095a429c2')
+sha256sums=('eabffab8098825774b73a332a5f0efdfb43b2be3f8cb56675e6e1fe5eb8da9ed')
 
 prepare() {
     cd "nvoc-$pkgver"
