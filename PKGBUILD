@@ -10,7 +10,7 @@
 
 _qt_module=qtnetworkauth
 pkgname=mingw-w64-qt5-networkauth
-pkgver=5.15.18
+pkgver=5.15.19
 pkgrel=1
 arch=('any')
 pkgdesc="Network authentication module (mingw-w64)"
@@ -18,7 +18,7 @@ depends=('mingw-w64-qt5-base')
 optdepends=()
 makedepends=('mingw-w64-gcc')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=510687fa4fdee84dd3d6d166e8f080c484016199
+_commit=d1ce24a72122c315e3d190c9ebc26ed603b90057
 _basever=${pkgver%%+*}
 pkgver+=+kde+r0
 makedepends+=('git')
@@ -27,7 +27,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('f45497e66bf4dbd5b84c7988e861090d0297de7e57be076abcb93b00f4fb2bf2')
+sha256sums=('d736135cc93f0837e69b5e5328fafd4768e2a1ee6ff6e25b61bbc337f04d113f')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
