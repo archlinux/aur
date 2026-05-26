@@ -1,12 +1,12 @@
 pkgname=vercel
 pkgver=54.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line interface for Vercel"
 arch=(any)
 url="https://github.com/vercel/vercel"
 license=('MIT')
-depends=('npm')
-makedepends=('jq')
+depends=('nodejs')
+makedepends=('npm' 'jq')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=('375b30d1be8b1b98d5fd4d3293b99d83d0b256f56584182f79955bb95c6f844c')
