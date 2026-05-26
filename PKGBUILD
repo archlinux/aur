@@ -1,16 +1,16 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_npmname=epiq
-_npmver=0.6.16
-
-pkgname=${_npmname}
+pkgname=epiq
 pkgdesc="CLI based issue tracker TUI - distributed and backed by git"
-pkgver=${_npmver}
+pkgver=0.6.18
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/ljtn/epiq"
 _urlraw="https://raw.githubusercontent.com/ljtn/epiq/v${pkgver}"
 license=("LicenseRef-UNLICENSE")
+
+_npmname=${pkgname}
+_npmver=${pkgver}
 
 replaces=("nodejs-${_npmname}")
 depends=("glibc" "nodejs")
@@ -21,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('80d33c26f17407c0cf683cd561af92ebbf698521dd44c65f99db5b2786c3c2e9b1f7d889fa3dfdee1f1e0e40cfb141833d051d2a61e4daf6b0ed3d531a77cddd')
+b2sums=('d26f5198da98b7f3251a718bc104771831a6eb7ac1b454f1a0f917c3259a15cd53d54ffb7c0446feaee6fff4baf78f9403e944995c77e930695118b2fdfa736d')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
