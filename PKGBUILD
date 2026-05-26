@@ -1,6 +1,6 @@
 pkgbase=waywallen-display
 pkgname=(waywallen-display plasma-wallpaper-waywallen)
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen-display
@@ -9,8 +9,8 @@ depends=(libgcc libstdc++ glibc qt6-base qt6-declarative)
 makedepends=(cmake vulkan-headers vulkan-icd-loader libglvnd glib2 gobject-introspection)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v$pkgver.tar.gz"
         "0001-install-kde-wallpaper-to-correct-path.diff")
-sha256sums=('e44698143484cfc9b547084dd3b980bb7d1527ab93c8614a20be23a2bc81d4f3'
-            'cce633071ed8aa4fc2f50317dd61a20610a8a25b4160c558f02b7986f8eb2a0f')
+sha256sums=('eb3796a8a749a192e566c1432b69f2e3ee04452e8bb0bfbc0bcc5550f3a17883'
+            'bb766cd888b1f004c98127b6b74715958ac38a059c3a8c0c5827dc1fd4965e43')
 
 prepare() {
     cd "$pkgbase-$pkgver"
@@ -23,7 +23,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWAYWALLEN_DISPLAY_PLUGIN_QML=ON \
         -DWAYWALLEN_DISPLAY_PLUGIN_GOBJECT=ON \
-        -DWAYWALLEN_DISPLAY_PLUGIN_GNOME=ON
+        -DWAYWALLEN_DISPLAY_PLUGIN_GNOME=ON \
+        -DWAYWALLEN_DISPLAY_QML_URI=Waywallen.DisplayEmbed
     cmake --build build
 }
 
