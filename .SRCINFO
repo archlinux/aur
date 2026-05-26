@@ -1,0 +1,11 @@
+pkgbase = hello-world-py
+	pkgdesc = Simple Hello World Python script
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = python
+	source = hello.py
+	sha256sums = b57ecd6b5dcc19c4d53cd9f5520c788a1d89fd2bfccef1ef6bf86b09414eb338
+
+pkgname = hello-world-py
