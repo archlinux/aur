@@ -1,17 +1,19 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartos
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Barto central job scheduling server"
 arch=('x86_64')
 url="https://github.com/rustyhorde/barto"
 license=('MIT' 'Apache-2.0')
 depends=()
-optdepends=('mariadb: local database server')
+optdepends=('mariadb: local database server'
+            'logrotate: periodic cleanup of rotated log files'
+            'xz: xz compression of rotated log files')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/barto/archive/v$pkgver.tar.gz")
-sha256sums=('c30de9363518f8c19e3215e3fffa3587ee3e516ab57dd5f8ef6aa5ccd9eb844e')
+sha256sums=('af385b653b9ab6b4f180166e3ceb4fff4d4360f86a4d0625b599362d28a2cc8b')
 
 prepare() {
     cd "barto-$pkgver"
@@ -56,6 +58,10 @@ package() {
     # Systemd service
     install -Dm644 "dist/bartos/bartos.service" \
         "$pkgdir/usr/lib/systemd/system/bartos.service"
+
+    # Logrotate
+    install -Dm644 "dist/bartos/bartos.logrotate" \
+        "$pkgdir/etc/logrotate.d/bartos"
 
     # Example config
     install -Dm644 "packaging/arch/bartos/examples/bartos.toml.example" \
