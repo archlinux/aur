@@ -21,7 +21,7 @@ pkgbase = tchap-desktop
 	depends = sqlcipher
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/tchapgouv/tchap-desktop/releases/download/tchap-4.19.5/Tchap-prod_4.19.7_amd64.deb
-	sha256sums_x86_64 = 42cf8d3adabb8ce4f5f324f535335892cc81abd0c4fab1a585b5ed0727e77d3c
+	source_x86_64 = https://github.com/tchapgouv/tchap-desktop/releases/download/tchap-4.19.7/Tchap-prod_4.19.7_amd64.deb
+	sha256sums_x86_64 = aceb1276fc20f5201d8cfa4699c840053317860022634011548f5b2e715b507a
 
 pkgname = tchap-desktop
