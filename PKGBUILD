@@ -1,7 +1,7 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 
 pkgname=stasis
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness"
 arch=('x86_64')
@@ -11,14 +11,13 @@ depends=('systemd' 'dbus' 'libinput' 'wayland')
 makedepends=('cargo' 'rust')
 optdepends=(
   'libnotify: for desktop notifications'
-  'playerctl: enhanced media player detection'
   'pipewire-pulse: audio sink detection for media handling'
   'pulseaudio: audio sink detection for media handling (alternative to pipewire-pulse)'
 )
 conflicts=('stasis-git')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2a7da7c75d6f5f20145f7b5dfd7db7a1c560c72e626ed85a2419efd97f8f5ed8')
+sha256sums=('dac54bf1777bc112e095c0336d0c3abceb029c0f6fe7928d50d9981e3d560995')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
