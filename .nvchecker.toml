@@ -1,0 +1,5 @@
+[gotatun]
+source = "github"
+github = "mullvad/gotatun"
+prefix = "v"
+use_max_tag = true
