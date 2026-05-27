@@ -1,0 +1,16 @@
+pkgbase = plasma6-applets-advanced-separator
+	pkgdesc = Customizable separator widget for the KDE Plasma Desktop
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/luisbocanegra/plasma-advanced-separator
+	arch = any
+	license = GPL3
+	makedepends = gcc
+	makedepends = extra-cmake-modules
+	makedepends = gettext
+	makedepends = python
+	depends = plasma-desktop
+	source = plasma-advanced-separator-0.2.0.tar.gz::https://github.com/luisbocanegra/plasma-advanced-separator/archive/v0.2.0/plasma-advanced-separator-0.2.0.tar.gz
+	sha256sums = 89ecd64ac0de8048129291a0f5ed23abb80161380155ffdb4bc0febf3b258187
+
+pkgname = plasma6-applets-advanced-separator
