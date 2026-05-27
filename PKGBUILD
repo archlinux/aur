@@ -6,7 +6,7 @@
 pkgbase=bitbake
 pkgname=(bitbake bitbake-vim)
 pkgver=6.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Build tool executing tasks and managing metadata"
 url="https://www.openembedded.org/wiki/Main_Page"
 license=(GPL2)
