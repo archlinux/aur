@@ -4,7 +4,7 @@
 _pkgname=python-tls-client
 pkgname=${_pkgname}-git
 pkgver=1.0.1.r113.20240202.ab6c736
-pkgrel=4
+pkgrel=5
 pkgdesc="An advanced HTTP library based on requests and tls-client"
 arch=('any')
 url="https://github.com/FlorianREGAZ/Python-Tls-Client"
@@ -37,6 +37,12 @@ prepare() {
   cd "$pkgname"
 
   git log > "${srcdir}/git.log"
+
+  # Do not package bundled tls-client binaries; lib-tls-client provides them.
+  sed -i \
+    -e '/^    include_package_data=True,/d' \
+    -e '/^    package_data={/,/^    },/d' \
+    setup.py
 }
 
 build() {
