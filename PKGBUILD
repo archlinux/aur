@@ -2,7 +2,7 @@ pkgname=ausweisapp-git
 _pkgname=AusweisApp
 pkgver=2.5.1.r87.g9bca2502
 pkgrel=1
-pkgdesc="Der offizielle eID-Client des Bundes für den Online-Ausweis"
+pkgdesc="The official eID client of the German Federal Government for the online ID card"
 arch=('x86_64' 'aarch64')
 url="https://www.ausweisapp.bund.de/"
 license=('EUPL-1.2')
@@ -24,19 +24,16 @@ makedepends=(
     'vulkan-headers'
 )
 optdepends=(
-    'ccid: Unterstützt dedizierte USB-Kartenleser'
+    'ccid: Support for dedicated USB devices'
 )
 provides=('ausweisapp')
 conflicts=('ausweisapp')
-# Der Zusatz "ausweisapp::" sorgt dafür, dass der Klon-Ordner kleingeschrieben wird
 source=("ausweisapp::git+https://github.com/Governikus/AusweisApp.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd ausweisapp
 
-    # Holt das letzte offizielle Release-Tag und hängt den Commit-Count an
-    # Falls keine Tags gefunden werden, fällt es auf ein reines Commit-Format zurück
     if git describe --long --tags >/dev/null 2>&1; then
         git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
     else
@@ -47,12 +44,10 @@ pkgver() {
 prepare() {
     cd ausweisapp
 
-    # Erstellt einen sauberen Build-Ordner außerhalb des Quellcodes (Best Practice)
     mkdir -p build
 }
 
 build() {
-    # Wir nutzen hier die Standard-Arch-Flags, indem wir cmake wie gewohnt füttern
     cmake -B ausweisapp/build -S ausweisapp \
         -G Ninja \
         -DCMAKE_BUILD_TYPE=None \
