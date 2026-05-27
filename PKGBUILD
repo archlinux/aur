@@ -2,48 +2,40 @@
 
 pkgname=gnatformat
 pkgdesc='An opinionated code formatter for the Ada language.'
-pkgver=26.0w
+pkgver=27.0w
 pkgrel=1
 epoch=1
 
-url=https://github.com/AdaCore/gnatformat
+url='https://github.com/AdaCore/gnatformat'
 
-arch=(i686 x86_64)
-license=(Apache)
+arch=(i686 x86_64 aarch64)
+license=(Apache-2.0)
 
 depends=(libadalang)
 makedepends=(gprbuild)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gnatformat-26.0w-20250416-16670-src.tar.gz)
-sha256sums=(0daaec673f4a8ab4336584196b10a028fa9960df5b784bc8d9c9b247d099a6b6)
-
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2026/gnatformat-src.tar.gz)
+sha256sums=(2a8d1e2684563cc958ef2b0817a2876383bf00699c0ffe3baaf992f0cbad3a98)
 
 
 build()
 {
-   cd $srcdir/gnatformat-26.0w-20250416-16670-src
+   cd $srcdir/gnatformat-27.0w-20260409-162F3-src
 
-   export LIBRARY_TYPE=relocatable
-
-   make lib
-   make bin
+   LIBRARY_TYPE=relocatable make lib
+   LIBRARY_TYPE=relocatable make bin
 }
-
 
 
 package()
 {
-   cd $srcdir/gnatformat-26.0w-20250416-16670-src
-   
-   export LIBRARY_TYPE=relocatable
+   cd $srcdir/gnatformat-27.0w-20260409-162F3-src
 
-   PREFIX=$pkgdir/usr \
-   make install-lib
+   make PREFIX=$pkgdir/usr install-lib
+   make PREFIX=$pkgdir/usr install-bin-stripped
 
-   PREFIX=$pkgdir/usr \
-   make install-bin-stripped
 
-   # Install the license.
+   ## Install the license.
    #
    install -D -m644 \
       LICENSE.txt   \

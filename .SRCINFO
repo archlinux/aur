@@ -1,15 +1,16 @@
 pkgbase = gnatformat
 	pkgdesc = An opinionated code formatter for the Ada language.
-	pkgver = 26.0w
+	pkgver = 27.0w
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/gnatformat
 	arch = i686
 	arch = x86_64
-	license = Apache
+	arch = aarch64
+	license = Apache-2.0
 	makedepends = gprbuild
 	depends = libadalang
-	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gnatformat-26.0w-20250416-16670-src.tar.gz
-	sha256sums = 0daaec673f4a8ab4336584196b10a028fa9960df5b784bc8d9c9b247d099a6b6
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2026/gnatformat-src.tar.gz
+	sha256sums = 2a8d1e2684563cc958ef2b0817a2876383bf00699c0ffe3baaf992f0cbad3a98
 
 pkgname = gnatformat
