@@ -1,7 +1,7 @@
 pkgbase = bitcoin-knots-bip110
 	pkgdesc = enhanced Bitcoin node/wallet software with BIP-110 support
 	pkgver = 29.3.knots20260210_bip110_v0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bip110.org
 	arch = x86_64
 	groups = bitcoin
@@ -18,7 +18,11 @@ pkgbase = bitcoin-knots-bip110
 	backup = etc/bitcoin/bitcoin.conf
 	source = https://github.com/dathonohm/bitcoin/archive/refs/tags/v29.3.knots20260210+bip110-v0.4.1.tar.gz
 	source = multi_index-fix-boost-1.91.patch
+	source = bitcoin.sysusers
+	source = bitcoin.tmpfiles
 	sha256sums = 60e168439b4e3246cebcb55ba80e90ab772dbdb788c52bb98b491a30491f926d
 	sha256sums = 5b44a132316039d4e3b917cc3ab203c2d79b81bbce3746823f19d06899c18766
+	sha256sums = 02f767d8eea9144e8372e4a454c4a14ecb7c84572e0cfa06e62b05a57d1fac6e
+	sha256sums = 0e9dfc7ede2c30ceeedd8a73a5e0aa7047d955431a87aa72a428c4fbd7f5de4f
 
 pkgname = bitcoin-knots-bip110
