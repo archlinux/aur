@@ -1,0 +1,25 @@
+pkgbase = wetty
+	pkgdesc = Terminal in browser over http/https
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/butlerx/wetty
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = bash
+	depends = nodejs
+	depends = python
+	provides = wetty
+	noextract = wetty-3.0.2.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = wetty-3.0.2.tgz::https://registry.npmjs.org/wetty/-/wetty-3.0.2.tgz
+	b2sums = 24a03cae3c1b6738dc2a2a63c75361115ec365223e745537073172225d25fa37af566ecdd7e8b21ad04f9febfc9a6b14580b1cc7f47ec0957844f5984ba6053c
+
+pkgname = wetty
