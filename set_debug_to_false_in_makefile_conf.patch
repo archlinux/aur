@@ -1,0 +1,11 @@
+--- makefile.conf	2025-05-16 19:08:13.000000000 +1000
++++ makefile.conf-new	2026-05-27 13:52:00.646271076 +1000
+@@ -144,7 +144,7 @@
+ #
+ # DEBUG = [true|false]
+ #
+-DEBUG	= true
++DEBUG	= false
+ 
+ ##############################################################################
+ # Number of parallel compilations to do.
