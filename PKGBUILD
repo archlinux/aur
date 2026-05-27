@@ -2,13 +2,13 @@
 _pkgname=ukrmol-out
 pkgname=${_pkgname}-fint64-git
 pkgver=r1.a36fb97
-pkgrel=1
+pkgrel=2
 _minCmake="3.10"
 pkgdesc="Outer region programs for UKRmol+, with some small patches."
 arch=('x86_64')
 url='https://github.com/banana-bred/Ukrmol-out'
 license=('GPL-3.0-only')
-depends=('lapack64' 'blas64-openblas' 'mpich-fint64' 'gbtolib' 'scalapack-mpich-ilp64')
+depends=('lapack64' 'blas64-openblas' 'mpich-fint64' 'ukrmol-in-fint64-git' 'scalapack-mpich-ilp64')
 makedepends=('cmake' 'gcc-fortran' 'doxygen' 'git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
