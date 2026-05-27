@@ -1,0 +1,12 @@
+*.tar.gz
+*.tar.zst
+*.tar.xz
+*.tar.bz2
+*.zip
+*.pkg.tar*
+src/
+pkg/
+LICENSE-*
+README.md-*
+*-x86_64
+*-aarch64
