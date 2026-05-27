@@ -5,14 +5,14 @@ _pkgbase='lua-etf'
 pkgver=1.0.2
 pkgrel=2
 arch=('x86_64' 'i686' 'aarch64')
-url='https://github.com/jprjr/lua-etf'
+url='https://buffering.party/software/lua-etf/'
 license=('MIT')
 depends=()
 _lua_current=5.5
 _lua_next=5.6
 makedepends=('cmake' "lua>=${_lua_current}" "lua<${_lua_next}" 'lua51' 'lua52' 'lua53' 'lua54')
 source=(
-"${url}/releases/download/v${pkgver}/lua-etf-${pkgver}.tar.gz"
+"${url}lua-etf-${pkgver}.tar.gz"
 'update-cmake.patch'
 )
 
