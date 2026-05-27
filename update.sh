@@ -205,20 +205,26 @@ fi
 pkgbuild_tmp="$(new_tmp)"
 awk -v latest_tag="$latest_tag" '
 BEGIN {
-    updated = 0
+    updated_pkgver = 0
+    updated_pkgrel = 0
 }
-/^pkgver=/ && !updated {
+/^pkgver=/ && !updated_pkgver {
     print "pkgver=" latest_tag
-    updated = 1
+    updated_pkgver = 1
+    next
+}
+/^pkgrel=/ && !updated_pkgrel {
+    print "pkgrel=1"
+    updated_pkgrel = 1
     next
 }
 {
     print
 }
 END {
-    exit(updated ? 0 : 1)
+    exit((updated_pkgver && updated_pkgrel) ? 0 : 1)
 }
-' PKGBUILD >"$pkgbuild_tmp"  || fail "unable to update pkgver in PKGBUILD"
+' PKGBUILD >"$pkgbuild_tmp"  || fail "unable to update pkgver/pkgrel in PKGBUILD"
 cmd mv "$pkgbuild_tmp" PKGBUILD
 
 cmd updpkgsums || fail "failed to update checksums in PKGBUILD"
@@ -243,8 +249,13 @@ if compgen -G 'pkg/oh-my-pi/usr/bin/pi_natives*.node' >/dev/null; then
 fi
 
 runtime_dir="$(new_tmp_dir)"
-cmd env HOME="${runtime_dir}/home" XDG_DATA_HOME="${runtime_dir}/xdg" \
-    pkg/oh-my-pi/usr/bin/omp --version || fail "failed to run omp --version"
+smoke_output="$(
+    cmd env HOME="${runtime_dir}/home" XDG_DATA_HOME="${runtime_dir}/xdg" \
+        pkg/oh-my-pi/usr/bin/omp --smoke-test
+)" || fail "failed to run omp --smoke-test"
+if [[ $smoke_output != "smoke-test: ok" ]]; then
+    fail "unexpected omp --smoke-test output: ${smoke_output}"
+fi
 cmd git add PKGBUILD .SRCINFO
 cmd git --no-pager diff --cached
 
