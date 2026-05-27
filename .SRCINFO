@@ -13,6 +13,6 @@ pkgbase = markless-bin
 	source_x86_64 = https://github.com/jvanderberg/markless/releases/download/v0.9.29/markless-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = 7c7911ee34707ff85dbbee2b7f588f4366067adbad2a3a4d5730d0165249599d
 	source_aarch64 = https://github.com/jvanderberg/markless/releases/download/v0.9.29/markless-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums_aarch64 = 3e0aad1172792475c11a3241eb6bc99a316e9efd900e3ea4401f6d8714dc81eb
 
 pkgname = markless-bin
