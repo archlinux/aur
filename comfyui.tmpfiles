@@ -1,4 +1,3 @@
 d /var/lib/comfyui 0755 comfy comfy -
-d /var/lib/comfyui/models 0755 comfy comfy -
 d /var/lib/comfyui/input 0755 comfy comfy -
 d /var/lib/comfyui/output 0755 comfy comfy -

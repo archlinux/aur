@@ -9,7 +9,7 @@ _prefix="${_prefix:-/opt/comfyui}"
 
 pkgname=comfyui
 pkgver=0.21.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface"
 arch=('x86_64')
 url="https://github.com/Comfy-Org/ComfyUI"
@@ -73,12 +73,45 @@ package() {
     # Model paths configuration in /etc (protected by pacman backup)
     install -dm755 "$pkgdir/etc/comfyui"
     cat > "$pkgdir/etc/comfyui/extra_model_paths.yaml" <<EOF
-# Model paths configuration for ComfyUI.
-# Edit this file to point to your models directory.
+# Extra model paths for ComfyUI.
+# By default, models are stored in the install prefix
+# (e.g. $_prefix/models/).
+#
+# Uncomment and edit below to add additional search paths.
 # See $_prefix/extra_model_paths.yaml.example for all options.
-comfyui:
-    base_path: /var/lib/comfyui/models
-    is_default: true
+#
+#comfyui:
+#    base_path: /path/to/my/models/
+#    is_default: true
+#    checkpoints: models/checkpoints/
+#    configs: models/configs/
+#    loras: models/loras/
+#    vae: models/vae/
+#    text_encoders: |
+#         models/text_encoders/
+#         models/clip/
+#    diffusion_models: |
+#                 models/diffusion_models/
+#                 models/unet/
+#    clip_vision: models/clip_vision/
+#    style_models: models/style_models/
+#    embeddings: models/embeddings/
+#    diffusers: models/diffusers/
+#    vae_approx: models/vae_approx/
+#    controlnet: |
+#             models/controlnet/
+#             models/t2i_adapter/
+#    gligen: models/gligen/
+#    upscale_models: models/upscale_models/
+#    latent_upscale_models: models/latent_upscale_models/
+#    hypernetworks: models/hypernetworks/
+#    photomaker: models/photomaker/
+#    classifiers: models/classifiers/
+#    model_patches: models/model_patches/
+#    audio_encoders: models/audio_encoders/
+#    background_removal: models/background_removal/
+#    frame_interpolation: models/frame_interpolation/
+#    optical_flow: models/optical_flow/
 EOF
 
     # Install launcher
