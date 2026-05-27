@@ -1,5 +1,1 @@
-*.tar.gz
-*.tgz
-pkg/
-src/
-*.pkg.tar.*
+tokscale-git/

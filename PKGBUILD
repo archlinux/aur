@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/junhoyeo/tokscale'
 license=('MIT')
 depends=('glibc' 'gcc-libs')
-makedepends=('git' 'cargo' 'rust')
+makedepends=('git' 'cargo' 'rust' 'openssl' 'pkg-config')
 provides=('tokscale')
 conflicts=('tokscale')
 source=("$pkgname::git+https://github.com/junhoyeo/tokscale.git#branch=main")
