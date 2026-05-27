@@ -2,7 +2,7 @@
 
 pkgname=raiderio-client
 _pkgapp=raiderio-client
-pkgver=0.0.0
+pkgver=4.11.2
 pkgrel=1
 pkgdesc="raider.io desktop client for Linux"
 arch=('x86_64' 'arm64')
