@@ -19,6 +19,14 @@ source=("git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
         "git+https://github.com/godotengine/godot-cpp.git"
         "git+https://github.com/Revolutionary-Games/Arch.Extended.git"
         "git+https://github.com/Revolutionary-Games/Arch.git")
+sha256sums=('c10ceb8dfdc9cf0d9170f55bbe804e8c75f91f702b140dac55d30bc916fe2606'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
 if "$_system_godot"
 then
     depends+=("brotli" "libpng" "miniupnpc" "libogg" "graphite" "pcre2" "openxr" "libtheora" "libwebp" "libvorbis"
@@ -26,21 +34,13 @@ then
     makedepends+=("godot-mono" "godot-mono-export-templates-linux")
 else
     source_x86_64+=("godot-$_godot-x86_64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_x86_64.zip")
+    sha256sums_x86_64+=('7d53302c31648ad98b620e8ca5b0c869c1066495770e62b2fa770cfeb004f167')
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
+    sha256sums_aarch64+=('65ee9699f6112c87bff2191c8e82ed96cf4c48c6e1549b8a9eb2664a8e80c99e')
     source+=("godot-mono-export-templates-$_godot.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_export_templates.tpz")
+    sha256sums+=('4ecf72faf76f96e010d166ddbbe3f0fb8e7df9633282666a3a9afd4ee3e00e7d')
     noextract+=("godot-mono-export-templates-$_godot.zip")
 fi
-
-sha256sums=('c10ceb8dfdc9cf0d9170f55bbe804e8c75f91f702b140dac55d30bc916fe2606'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '4ecf72faf76f96e010d166ddbbe3f0fb8e7df9633282666a3a9afd4ee3e00e7d')
-sha256sums_x86_64=('7d53302c31648ad98b620e8ca5b0c869c1066495770e62b2fa770cfeb004f167')
-sha256sums_aarch64=('65ee9699f6112c87bff2191c8e82ed96cf4c48c6e1549b8a9eb2664a8e80c99e')
 
 options=("!lto") # -flto=thin is added in CMakeLists.txt
 
