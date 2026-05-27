@@ -2,8 +2,8 @@
 # Contributor: yetist <yetist@gmail.com>; zlsun <zlsun1995@gmail.com>
 
 pkgname=lunar-date
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="Chinese lunar date library."
 arch=("i686" "x86_64")
 url="https://github.com/yetist/lunar-date"
@@ -11,16 +11,15 @@ license=('GPL2')
 depends=('glib2')
 makedepends=('ninja' 'meson' 'gobject-introspection' 'vala')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yetist/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('9b33346f2a8190125bdb879dac8afbc1')
+md5sums=('ce35f70b2e4ca0f80052bbd0f9af622c')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    meson build --prefix /usr -Ddocs=true -Dintrospection=true -Dvapi=true -Dtests=true
-    ninja -C build/
+  cd "$srcdir/$pkgname-$pkgver"
+  meson build --prefix /usr -Ddocs=true -Dintrospection=true -Dvapi=true -Dtests=true
+  ninja -C build/
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver/build"
-    DESTDIR="${pkgdir}" ninja install
+  cd "$srcdir/$pkgname-$pkgver/build"
+  DESTDIR="${pkgdir}" ninja install
 }
-
