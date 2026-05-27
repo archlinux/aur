@@ -2,7 +2,7 @@
 pkgname=singcast
 epoch=1
 pkgver=1.1.0_beta6
-pkgrel=1
+pkgrel=2
 pkgdesc="A clash GUI client based on Flutter"
 arch=('x86_64')
 url="https://github.com/mapleafgo/clash-for-flutter"
@@ -30,6 +30,6 @@ package() {
   install -Dm644 "singcast.desktop" "${pkgdir}/usr/share/applications/singcast.desktop"
 }
 
-sha256sums_x86_64=('0f2c2db61777b97ba6112128cf26da9017827bbaff2d4cd3454d7b84f3003a04'
+sha256sums_x86_64=('4635f4f174f2486fcb0de52f2cfa7675c6301e94e36bf26c96cc97782cf2d78b'
                    'f14d52960b535f9d31d24f08e9b248f3f70f70bfadc4ea58bb57f4d12b711ee9'
                    '289d9ffd1ea9b24928bea1a0936d9a1125e7f3d9e2d7341e353ce5c42d405f09')
