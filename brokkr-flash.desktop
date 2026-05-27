@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Brokkr Flash
+Comment=Samsung device flashing utility (Odin alternative)
+Exec=env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 /usr/bin/brokkr-flash %f
+Icon=brokkr-flash
+Type=Application
+Categories=Utility;System;
+Terminal=false
+StartupWMClass=brokkr

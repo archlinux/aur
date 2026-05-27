@@ -1,0 +1,16 @@
+post_install() {
+  echo '=> Brokkr Flash: Reloading udev rules for Samsung device access...'
+  echo '=> Run "udevadm control --reload-rules && udevadm trigger" if devices aren'\''t detected.'
+  echo '=> Ensure your user is in the "uucp" group: "usermod -aG uucp $USER", then log out/in.'
+}
+
+post_upgrade() {
+  echo '=> Brokkr Flash: Reloading udev rules for Samsung device access...'
+  echo '=> Run "udevadm control --reload-rules && udevadm trigger" if devices aren'\''t detected.'
+  echo '=> Ensure your user is in the "uucp" group: "usermod -aG uucp $USER", then log out/in.'
+}
+
+post_remove() {
+  echo '=> Brokkr Flash: If devices are not accessible after removal, run:'
+  echo '=>   udevadm control --reload-rules && udevadm trigger'
+}

@@ -1,0 +1,8 @@
+# Downloaded source files
+*.AppImage
+
+# Build artifacts
+*.pkg.tar.zst
+src/
+pkg/
+squashfs-root/

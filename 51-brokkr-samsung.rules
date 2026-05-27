@@ -1,0 +1,1 @@
+SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0660", GROUP="uucp", TAG+="uaccess"
