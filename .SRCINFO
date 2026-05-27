@@ -1,6 +1,6 @@
 pkgbase = sparkplayer
 	pkgdesc = A fun, no-nonsense terminal media player built with ratatui
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/dividebysandwich/sparkplayer
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = sparkplayer
 	depends = ffmpeg
 	depends = sdl2
 	depends = ttf-dejavu
-	source = sparkplayer-0.6.1.tar.gz::https://github.com/dividebysandwich/sparkplayer/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = 5ab9d22a6f48dee4b60b0e43ed200ec5ec70419c15694cb22185a36f47abb369
+	source = sparkplayer-0.6.2.tar.gz::https://github.com/dividebysandwich/sparkplayer/archive/refs/tags/v0.6.2.tar.gz
+	sha256sums = d52e1d37a1b37592d650392731cd3f0b448dbe57243d4b71a4dd1d411e7af7be
 
 pkgname = sparkplayer
