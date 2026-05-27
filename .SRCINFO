@@ -1,0 +1,14 @@
+pkgbase = fost
+	pkgdesc = A CLI tool for speedreading text from the clipboard
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://codeberg.org/rooiratel/fost
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	makedepends = cargo
+	options = !debug
+	source = fost-1.0.1.tar.gz::https://codeberg.org/rooiratel/fost/archive/v1.0.1.tar.gz
+	sha256sums = 84720fa4204db1c66fc730f6a6c4bd3d3d0974057dbee35d55ec34869f890d65
+
+pkgname = fost
