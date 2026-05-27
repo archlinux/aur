@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=barto-cli
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Barto command-line interface for querying bartos instances"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT' 'Apache-2.0')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/barto/archive/v$pkgver.tar.gz")
-sha256sums=('d19084cb9b4a69c1ac538dede50a45107e7a5385ce32401d6ad804d8ab035576')
+sha256sums=('eb3a9ad0d831d90397e401f532b2449cbd74e0653059ca6e6690c4ec77d4a760')
 
 prepare() {
     cd "barto-$pkgver"
