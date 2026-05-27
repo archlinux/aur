@@ -13,6 +13,7 @@ pkgbase = authendesk
 	makedepends = pkgconf
 	depends = qt6-base
 	depends = qt6-declarative
+	depends = qt6-widgets
 	depends = qt6-quickcontrols2
 	depends = qt6-svg
 	depends = openssl

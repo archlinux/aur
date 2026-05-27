@@ -9,6 +9,7 @@ license=('MIT')
 depends=(
     'qt6-base'
     'qt6-declarative'
+    'qt6-widgets'
     'qt6-quickcontrols2'
     'qt6-svg'
     'openssl'
