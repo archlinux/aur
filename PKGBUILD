@@ -20,6 +20,8 @@ depends=(
     'python-xlib'
     'python-secretstorage'
     'python-jeepney'
+    'python-psutil'
+    'python-yaml'
     'xdotool'
 )
 source=("${pkgname}-${_upstream}.tar.gz::https://github.com/flossbud/ToonTown-MultiTool/archive/refs/tags/v${_upstream}.tar.gz")
