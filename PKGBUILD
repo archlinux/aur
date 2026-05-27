@@ -7,9 +7,9 @@ pkgrel=1
 pkgdesc="Chinese lunar date library."
 arch=("i686" "x86_64")
 url="https://github.com/yetist/lunar-date"
-license=('GPL2')
-depends=('glib2')
-makedepends=('ninja' 'meson' 'gobject-introspection' 'vala')
+license=('LGPL-2.1-only')
+depends=('glib2' 'glibc' 'gcc-libs')
+makedepends=('ninja' 'meson' 'gobject-introspection' 'vala' 'glib2-devel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yetist/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('ce35f70b2e4ca0f80052bbd0f9af622c')
 

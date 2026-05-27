@@ -5,12 +5,15 @@ pkgbase = lunar-date
 	url = https://github.com/yetist/lunar-date
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = LGPL-2.1-only
 	makedepends = ninja
 	makedepends = meson
 	makedepends = gobject-introspection
 	makedepends = vala
+	makedepends = glib2-devel
 	depends = glib2
+	depends = glibc
+	depends = gcc-libs
 	source = lunar-date-3.2.0.tar.gz::https://github.com/yetist/lunar-date/archive/refs/tags/v3.2.0.tar.gz
 	md5sums = ce35f70b2e4ca0f80052bbd0f9af622c
 
