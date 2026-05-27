@@ -1,7 +1,7 @@
 pkgbase = fido2-token2-git
 	pkgdesc = TOKEN2 FIDO2 management CLI with wrapper and GUI
-	pkgver = r150.c1423e8
-	pkgrel = 2
+	pkgver = r152.b054404
+	pkgrel = 1
 	url = https://github.com/Token2/fido2-manage
 	arch = x86_64
 	license = BSD-2-Clause
