@@ -8,6 +8,7 @@ pkgbase = toontown-multitool
 	license = MIT
 	depends = python
 	depends = pyside6
+	depends = qt6-svg
 	depends = python-pynput
 	depends = python-requests
 	depends = python-keyring
