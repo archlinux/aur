@@ -15,8 +15,6 @@ pkgbase = howl-git
 	provides = howl
 	conflicts = howl
 	source = git+https://github.com/howl-editor/howl.git#branch=next
-	source = fix-terraform.patch
 	md5sums = SKIP
-	md5sums = 7589b99661ec75797fbc61d2423f5844
 
 pkgname = howl-git
