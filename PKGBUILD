@@ -1,5 +1,5 @@
 pkgname=forum-scout-qt
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Arch-focused multi-forum search tool (Qt/PyQt6 edition)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
 )
 checkdepends=('desktop-file-utils')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('51499a3d938019841d0ae68422d1c46aff78a5e2f07b2acde2bbccb2ec1cdbbd')
+sha256sums=('1a47697e3ca506b3d3bca286af764b3da5d5a5cbdb0bc9a2f372e1af3b42ee7c')
 
 prepare() {
   cd "$pkgname-$pkgver"
