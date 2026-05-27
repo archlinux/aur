@@ -4,7 +4,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="KDE spell checker with ranked suggestions, text-to-speech, and session history"
 arch=('x86_64')
-url="https://codeberg.org/FullStacking/spell"
+url="https://codeberg.org/FullStacking/spellr"
 license=('MIT')
 depends=(
     'qt6-base'
@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=('cmake' 'extra-cmake-modules' 'ninja' 'git')
 install=spellr.install
-source=("spell-$pkgver::git+https://codeberg.org/FullStacking/spell.git#tag=v$pkgver")
+source=("spell-$pkgver::git+https://codeberg.org/FullStacking/spellr.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
