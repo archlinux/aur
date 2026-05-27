@@ -1,0 +1,17 @@
+pkgbase = scalapack-mpich-ilp64
+	pkgdesc = ScaLAPACK with 64-bit Fortran and C integers (ILP64), for use with the mpich-fint64
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = http://www.netlib.org/scalapack
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = gcc-fortran
+	depends = glibc
+	depends = mpich-fint64
+	depends = lapack64
+	depends = blas64-openblas
+	source = scalapack-2.2.3.tar.gz::https://github.com/Reference-ScaLAPACK/scalapack/archive/v2.2.3/scalapack-2.2.3.tar.gz
+	sha512sums = 08c6073f8d1295df4f7f2a2449f189a2afb0ce30e94f2bc55613a94fc6404bb60ee5179ecba02641bff8bd4a088a3f621698e03347fddc6b0895bf14a87ca88a
+
+pkgname = scalapack-mpich-ilp64
