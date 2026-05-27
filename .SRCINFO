@@ -1,0 +1,14 @@
+pkgbase = nerimity
+	pkgdesc = A modern and sleek chat app.
+	pkgver = 1.3.1
+	pkgrel = 2
+	url = https://github.com/Nerimity/nerimity-desktop
+	arch = x86_64
+	license = custom:unknown
+	depends = fuse2
+	depends = hicolor-icon-theme
+	options = !strip
+	source = nerimity-1.3.1.AppImage::https://github.com/Nerimity/nerimity-desktop/releases/download/v1.3.1/nerimity-1.3.1.AppImage
+	sha256sums = d7687438236b7e2f0b237df114f5c1ca27a26754f079b76402a36fc58ff9e2e6
+
+pkgname = nerimity
