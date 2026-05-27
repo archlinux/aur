@@ -3,11 +3,11 @@
 pkgname=('lua-resty-mpd' 'lua51-resty-mpd' 'lua52-resty-mpd' 'lua53-resty-mpd' 'lua54-resty-mpd')
 _pkgbase='lua-resty-mpd'
 pkgver=5.2.3
-pkgrel=2
+pkgrel=3
 arch=('any')
-url='https://github.com/jprjr/lua-resty-mpd/'
+url='https://buffering.party/software/lua-resty-mpd/'
 license=('MIT')
-source=("$_pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+source=("${url}/lua-resty-mpd-${pkgver}.tar.gz")
 
 _lua_cur=5.5
 _lua_next=5.6
@@ -15,7 +15,7 @@ _lua_next=5.6
 _package() {
     LUA_V=$1
 
-    cd "$_pkgbase-$pkgver/src"
+    cd "$_pkgbase/src"
 
     find resty -type d | while read dir ; do
       if test -n "$(find $dir -name '*.lua' -print -quit)" ; then
@@ -73,5 +73,5 @@ package_lua51-resty-mpd() {
 }
 
 sha512sums=(
-'936c2feb880086c781b829d39c62c6a8340db3aae5141afc356070c892e49f148e2d5702237b42e7c876473b78556956bfb4c4af1fef59d0e1671119dd210dce'
+'03f6b552f91078ba8b844d10913f79e62d0d969796d83938664f13249a9735d46b8255f6f2b8c9be468010d7ff2454614b297c5e8728f98e50f66f7f856f7926'
 )
