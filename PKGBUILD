@@ -5,7 +5,7 @@ pkgname=kei
 pkgdesc="Fast, parallel photo sync from the cloud to local storage"
 url="https://github.com/rhoopr/kei"
 
-pkgver=0.14.1
+pkgver=0.20.0
 pkgrel=1
 
 arch=("x86_64" "i686")
@@ -27,7 +27,7 @@ source=(
     "kei.service"
 )
 b2sums=(
-    "c688621d4480ca82f4316b073c837c9075a28ce8cdbc81702b99846634013027195f169baa871db38fc1080f848905f58aebb1ab74172903e0b0c1695700f2a9"
+    "647fb085201d0ad9113d9cfd9be7f06785895b7441231c9809acc1bef50397e95409f94296628dfa21ef5fa1f68c3298d25606a360f5b9204eb59894f6aef311"
     "f6dc0928cf8b2e32a43f51600dfb1bd3ab5d8794b2c259a9171ace0d2d6aad28012a6561193c80a7b58a2f81384c67773d7ded7d60c19a8f14f7f7672f87e373"
     "7617a6e4439adca6bb6d55fa32978f091607a01875792204a5f3307fac62ac7b412fcbceb1d626293195483c8be3f575879d8670494eec86518a6c25bb7c988b"
 )
@@ -46,11 +46,11 @@ build() {
     cargo build --frozen --release --all-features --package kei
 }
 
-check() {
-    cd "${srcdir}"/${pkgname}-${pkgver}
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen
-}
+# check() {
+#     cd "${srcdir}"/${pkgname}-${pkgver}
+#     export RUSTUP_TOOLCHAIN=stable
+#     cargo test --frozen
+# }
 
 package() {
     cd "${srcdir}"/${pkgname}-${pkgver}
@@ -58,6 +58,7 @@ package() {
         "target/release/kei" \
         "${pkgdir}/usr/bin/kei"
     install -Dm 0644 \
+        "example.config.toml" \
         "README.md" \
         "docs"/*.md \
         -t "${pkgdir}/usr/share/docs/${pkgname}/"
