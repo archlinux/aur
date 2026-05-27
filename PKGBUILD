@@ -1,16 +1,18 @@
-# Maintainer: redponike <proton (dot) me>
-# Maintainer: Alex Hirzel <alex at hirzel period us>
+# Maintainer: Smoolak <smoolak@gmail.com>
+# Contributor: redponike <proton (dot) me>
+# Contributor: Alex Hirzel <alex at hirzel period us>
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=python-torchmetrics
 _pkgname=${pkgname#python-}
-pkgver=1.7.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Machine learning metrics for distributed, scalable PyTorch applications'
 arch=('any')
-url='https://github.com/PyTorchLightning/metrics'
+url='https://github.com/Lightning-AI/torchmetrics'
 license=('Apache-2.0')
 depends=(
+  'python'
   'python-lightning-utilities'
   'python-numpy'
   'python-packaging'
@@ -40,7 +42,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('8c0d475f7bee8fc66ef169fdbb180f5f7f09822d8c629ae2a2ad5fd631e5fc0c6ca34307bbbb0f0d2b337a68af68be3388695fcf2b6df9f5f47206baa6b92579')
+sha512sums=('34408d6bd60dc9c4816b8b795cbb228cd23334a951adc8be766bd44397aedb7151af3aa582ff1c75bb2538be3652b3bf5316547c2ee3ab698db6e80892840247')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -50,5 +52,6 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:

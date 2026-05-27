@@ -1,14 +1,15 @@
 pkgbase = python-torchmetrics
 	pkgdesc = Machine learning metrics for distributed, scalable PyTorch applications
-	pkgver = 1.7.1
+	pkgver = 1.9.0
 	pkgrel = 1
-	url = https://github.com/PyTorchLightning/metrics
+	url = https://github.com/Lightning-AI/torchmetrics
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	depends = python
 	depends = python-lightning-utilities
 	depends = python-numpy
 	depends = python-packaging
@@ -28,7 +29,7 @@ pkgbase = python-torchmetrics
 	optdepends = python-torchvision: Image and detection subdomains dependency
 	optdepends = python-pycocotools: Detection subdomain dependency
 	optdepends = python-matplotlib: Visual subdomain dependency
-	source = https://files.pythonhosted.org/packages/source/t/torchmetrics/torchmetrics-1.7.1.tar.gz
-	sha512sums = 8c0d475f7bee8fc66ef169fdbb180f5f7f09822d8c629ae2a2ad5fd631e5fc0c6ca34307bbbb0f0d2b337a68af68be3388695fcf2b6df9f5f47206baa6b92579
+	source = https://files.pythonhosted.org/packages/source/t/torchmetrics/torchmetrics-1.9.0.tar.gz
+	sha512sums = 34408d6bd60dc9c4816b8b795cbb228cd23334a951adc8be766bd44397aedb7151af3aa582ff1c75bb2538be3652b3bf5316547c2ee3ab698db6e80892840247
 
 pkgname = python-torchmetrics
