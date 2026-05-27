@@ -1,0 +1,102 @@
+--- ./common/fastmath.c	2026-05-27 18:02:55.426388668 +0200
++++ ./common/fastmath.c	2026-05-27 18:14:11.484980719 +0200
+@@ -20,11 +20,15 @@
+ 
+ #ifdef FAST_MATH
+ 
+-const float  tabatan2   [ 2*TABSTEP+1] [2];
+-const float  tabcos     [26*TABSTEP+1] [2];
+-const float  tabsqrt_ex [256];
+-const float  tabsqrt_m  [   TABSTEP+1] [2];
++//const float  tabatan2   [ 2*TABSTEP+1] [2];
++//const float  tabcos     [26*TABSTEP+1] [2];
++//const float  tabsqrt_ex [256];
++//const float  tabsqrt_m  [   TABSTEP+1] [2];
+ 
++float  tabatan2   [ 2*TABSTEP+1] [2];
++float  tabcos     [26*TABSTEP+1] [2];
++float  tabsqrt_ex [256];
++float  tabsqrt_m  [   TABSTEP+1] [2];
+ 
+ void   Init_FastMath ( void )
+ {
+--- ./include/mpc/mpcmath.h	2026-05-27 19:00:40.920204103 +0200
++++ ./include/mpc/mpcmath.h	2026-05-27 18:13:13.872536947 +0200
+@@ -86,10 +86,16 @@
+ # define IFLOORF(x)   my_ifloor ((float)(x))
+ 
+ void   Init_FastMath ( void );
+-extern const float  tabatan2   [] [2];
+-extern const float  tabcos     [] [2];
+-extern const float  tabsqrt_ex [];
+-extern const float  tabsqrt_m  [] [2];
++
++//extern const float  tabatan2   [] [2];
++//extern const float  tabcos     [] [2];
++//extern const float  tabsqrt_ex [];
++//extern const float  tabsqrt_m  [] [2];
++
++extern float  tabatan2   [] [2];
++extern float  tabcos     [] [2];
++extern float  tabsqrt_ex [];
++extern float  tabsqrt_m  [] [2];
+ 
+ static mpc_inline float my_atan2 ( float x, float y )
+ {
+--- ./mpcenc/mpcenc.h	2026-05-27 17:01:47.277472502 +0200
++++ ./mpcenc/mpcenc.h	2026-05-27 18:17:15.470150892 +0200
+@@ -25,6 +25,9 @@
+ #include <mpc/datatypes.h>
+ #include <mpc/minimax.h>
+ 
++//MODIFED: include types
++#include "mpc/mpc_types.h"
++
+ //// optimization/feature defines //////////////////////////////////
+ #ifndef NOT_INCLUDE_CONFIG_H
+ # include "config.h"
+@@ -241,8 +244,10 @@
+ 
+ float  ISNR_Schaetzer                  ( const float* samples, const float comp, const int res);
+ float  ISNR_Schaetzer_Trans            ( const float* samples, const float comp, const int res);
+-void   QuantizeSubband                 ( unsigned int* qu_output, const float* input, const int res, float* errors, const int maxNsOrder );
+-void   QuantizeSubbandWithNoiseShaping ( unsigned int* qu_output, const float* input, const int res, float* errors, const float* FIR );
++//void   QuantizeSubband                 ( unsigned int* qu_output, const float* input, const int res, float* errors, const int maxNsOrder );
++//void   QuantizeSubbandWithNoiseShaping ( unsigned int* qu_output, const float* input, const int res, float* errors, const float* FIR );
++void   QuantizeSubband                 ( mpc_int16_t* qu_output, const float* input, const int res, float* errors, const int maxNsOrder );
++void   QuantizeSubbandWithNoiseShaping ( mpc_int16_t* qu_output, const float* input, const int res, float* errors, const float* FIR );
+ 
+ void   NoiseInjectionComp ( void );
+ 
+--- ./CMakeLists.txt	2026-05-27 18:42:15.804232123 +0200
++++ ./CMakeLists.txt	2026-05-27 18:34:17.811472223 +0200
+@@ -21,17 +21,24 @@
+ add_definitions(-DFAST_MATH -DCVD_FASTLOG)
+ 
+ if(NOT MSVC)
+-  set(CMAKE_C_FLAGS "-O3 -Wall -fomit-frame-pointer -pipe")
+-endif(NOT MSVC)
++  # Debug
++  set(CMAKE_C_FLAGS_DEBUG "-O0 -g -Wall -pipe -fno-omit-frame-pointer")
++
++  # Universal Release
++  set(CMAKE_C_FLAGS_RELEASE "-O3 -Wall -pipe -fno-semantic-interposition -fno-plt")
++
++  # Zen4 Turbo Release
++  set(CMAKE_C_FLAGS_ZNVER4 "-O3 -march=znver4 -mtune=znver4 -funroll-loops -falign-functions=32 -falign-loops=32 -fno-math-errno -fno-trapping-math -fno-semantic-interposition -Wall -pipe -fomit-frame-pointer -fno-plt -flto")
++endif()
+ 
+ add_subdirectory(libmpcdec)
+ add_subdirectory(libmpcpsy)
+ add_subdirectory(libmpcenc)
+ add_subdirectory(libwavformat)
+-add_subdirectory(mpcgain)
++# add_subdirectory(mpcgain)
+ add_subdirectory(mpcdec)
+ add_subdirectory(mpcenc)
+-add_subdirectory(mpc2sv8)
++# add_subdirectory(mpc2sv8)
+ add_subdirectory(mpccut)
+-add_subdirectory(mpcchap)
++# add_subdirectory(mpcchap)
+ add_subdirectory(wavcmp)
