@@ -1,7 +1,7 @@
 # Maintainer: Justin Dickey <justin.dickey.eg@gmail.com>
 
 pkgname=goplaying-bin
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Now Playing TUI written in Go (binary release)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('goplaying')
 conflicts=('goplaying' 'goplaying-git')
 source=("https://github.com/justinmdickey/goplaying/releases/download/v${pkgver}/goplaying_${pkgver}_Linux_x86_64.tar.gz"
         "https://raw.githubusercontent.com/justinmdickey/goplaying/v${pkgver}/LICENSE")
-sha256sums=('1dd0256d1f68054fb3f1b49aa5f29ad6e3f54d21876a3b919e89d2469988bb02'
+sha256sums=('527cb4bc7b5158ef95b715ff96068af1b6e714c5b2b7ecd6b93e588955e18217'
             'SKIP')
 
 package() {
