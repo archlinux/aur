@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=herdr-bin
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Supervise multiple coding agents in one terminal"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('herdr')
 conflicts=('herdr')
 source_x86_64=("herdr-${pkgver}-x86_64::https://github.com/ogulcancelik/herdr/releases/download/v${pkgver}/herdr-linux-x86_64")
 source_aarch64=("herdr-${pkgver}-aarch64::https://github.com/ogulcancelik/herdr/releases/download/v${pkgver}/herdr-linux-aarch64")
-sha256sums_x86_64=('9ee85178a0a0db1fd1524328e91bc37b57c25400eeba4d0a6bb2f1beb63a0089')
-sha256sums_aarch64=('088a574c3d72e28529e750be0e92982c0d4b0cfd7f8d60404fe1a29f65df575b')
+sha256sums_x86_64=('6cb9f5f0ef78f1bdf4b1ad25972781aa0e82ad31539e1e3ebcf51c7cec33396c')
+sha256sums_aarch64=('f279b2ff90c30e3f9e770033bc271198b4c80480dd79909527acf9f6a880dd2f')
 
 package() {
     install -Dm755 herdr-${pkgver}-${CARCH} "${pkgdir}/usr/bin/herdr"
