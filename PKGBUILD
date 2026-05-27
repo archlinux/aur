@@ -2,7 +2,7 @@
 pkgname=prisma4postgres-bin
 pkgver=10.5.0
 pkgrel=1
-pkgdesc="PostgreSQL explorer and Prisma ORM integration"
+pkgdesc="PostgreSQL database explorer and query runner"
 arch=('x86_64')
 url="https://github.com/britors/Prisma4Postgres"
 license=('MIT')

@@ -1,5 +1,5 @@
 pkgbase = prisma4postgres-bin
-	pkgdesc = PostgreSQL explorer and Prisma ORM integration
+	pkgdesc = PostgreSQL database explorer and query runner
 	pkgver = 10.5.0
 	pkgrel = 1
 	url = https://github.com/britors/Prisma4Postgres
