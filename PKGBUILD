@@ -7,7 +7,7 @@ url="https://github.com/HimC29/is-my-code-cursed"
 license=('MIT')
 depends=('python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fa307324b2629006084bef8881b524694bada8feec1d48283b59f2e1a1b42f39')
+sha256sums=('74eccc769c647d1ac3e16904091d48bfe295d713a0b69d21caa869c49841c826')
 
 package() {
     cd "$pkgname-$pkgver"
