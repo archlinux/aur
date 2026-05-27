@@ -1,0 +1,18 @@
+pkgbase = nexus-tracker
+	pkgdesc = Personal Accountability App
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/YOUR_USERNAME/nexus-tracker
+	arch = x86_64
+	license = MIT
+	makedepends = flutter
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = gtk3
+	depends = libkeybinder3
+	source = nexus-tracker-1.0.0.tar.gz::https://github.com/YOUR_USERNAME/nexus-tracker/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = nexus-tracker
