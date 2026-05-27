@@ -1,7 +1,7 @@
 # Maintainer: Ondrej Polak <ondrej.polak@cloudylake.io>
 pkgname=nook-beta-bin
 pkgver=0.1.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Nook beta desktop app"
 arch=('x86_64')
 url="https://nook.cloudylake.io"
@@ -15,7 +15,15 @@ sha256sums=("aa451d66d506bf04b64c1acc646287a6abee1d88eecd652824171319a79df49c")
 
 package() {
     bsdtar -xf "nook-${pkgver}-${pkgrel}.deb" -C "${srcdir}"
-    bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
+
+    local data_archive
+    data_archive="$(find "${srcdir}" -maxdepth 1 -type f -name 'data.tar*' | head -n 1)"
+    if [ -z "${data_archive}" ]; then
+        echo "Unable to find data archive in extracted .deb" >&2
+        return 1
+    fi
+
+    bsdtar -xf "${data_archive}" -C "${pkgdir}"
 
     # Normalize desktop filename for AUR consumers.
     if [ -f "${pkgdir}/usr/share/applications/Nook.desktop" ]; then
