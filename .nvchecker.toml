@@ -1,0 +1,5 @@
+[rproc-bin]
+source = "github"
+github = "Trystan-SA/rproc"
+use_latest_release = true
+prefix = "v"
