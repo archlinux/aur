@@ -13,15 +13,19 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('0f051dc1b98a8d72e1277f12d75c1fac18cafcb8a2c4923dec1b9b1238a28a5e')
 
 prepare() {
-  # Entramos en la carpeta que acabas de ver con 'ls'
   cd "${pkgname}-${pkgver}"
 
-  # Descargamos dependencias aquí para que el chroot no necesite red en build()
+  # GOPATH local para no contaminar ~/go
+  export GOPATH="${srcdir}/gopath"
+
   go mod download
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
+
+  # GOPATH local para no contaminar ~/go
+  export GOPATH="${srcdir}/gopath"
 
   # Flags de optimización y seguridad estándar de Arch
   export CGO_CPPFLAGS="${CPPFLAGS}"
