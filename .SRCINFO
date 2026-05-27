@@ -1,0 +1,19 @@
+pkgbase = dcr-git
+	pkgdesc = Cargo-like utility to manage C/C++ projects (development branch)
+	pkgver = r0.g0000000
+	pkgrel = 1
+	url = https://github.com/dexoron/dcr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	optdepends = gcc: build C/C++ projects with GCC
+	optdepends = clang: build C/C++ projects with Clang
+	provides = dcr
+	conflicts = dcr
+	source = dcr-git::git+https://github.com/dexoron/dcr.git
+	sha256sums = SKIP
+
+pkgname = dcr-git
