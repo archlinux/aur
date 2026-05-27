@@ -47,3 +47,5 @@ Changes since 2.3.3
 20. configure: Typo: -export-dynamic --> --export-dynamic (Sam James)
 21. Added a pcre2-module that provides an interface to
     version 2 of the PCRE library
+22. src/slstrops.c: wchars_to_string function had a buffer-overflow
+    due to a misassigned variable (bug reported by Morten Bo Johansen)
