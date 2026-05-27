@@ -3,7 +3,7 @@
 # GitHub below is the upstream-maintained mirror used for clickable links and release artifacts.
 pkgname=nostr-vpn-bin
 _pkgname=nostr-vpn
-pkgver=4.0.42
+pkgver=4.0.45
 pkgrel=1
 pkgdesc='GTK4/libadwaita desktop client for Nostr VPN, a Tailscale-style private mesh VPN (prebuilt)'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
   'LICENSE'
 )
 sha256sums=(
-  '42e065e7df4ab968f91cdcc0f3fa27dc6c88476bfc37a4a8f2c3a4a485d5ca57'
+  '1fd3aed8fa45f1ec5cd6546ddd525e0846888ffd1ef0cd158726fc61f2878195'
   '0db560024163fbcc5ee5cff1971684ca448da90088f341db083a38548846c3d5'
 )
 
