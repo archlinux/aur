@@ -3,7 +3,7 @@
 ##Email: pony at just-a-pony dot net
 pkgname=yukigram-desktop
 pkgver=6.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A patch-based Telegram Desktop fork,with features from 64Gram'
 arch=('x86_64')
 url="https://github.com/yukigram/yukigram"
@@ -77,7 +77,7 @@ sha512sums=(
   'a733992a12268ee4d429ed383f63182c12e3a5d61d78e0f31cbfc705a5a36cb872a2f2dfb6c76d50a22ed46d141b9c13f80da4ab94286fe35b339ca685d954e3'
   SKIP
   'd9765588e92f154d83b95dc2840207bf22b26b6ca37b4d5cdfdb5e27a00c9e1ebcc9cd475a96bbcc5b02c24f6892320e009f843aa6b172a1820814b952a772eb'
-  '0087976e0f251023b03267e041a640c23cc967aa22a210202df59a56625f5eadef5d2a6b18068675dc9006c60ef281cb28cb8c9bae316998a5b3c6d7468ca786'
+  'b8c6d2b83961bf721782fbbef32e991575ce602eafc948ee6a50f40948f261edfb47ca8009e6873d17c9ddd748fc43fd0dc2fcb4073e67658fa38e6a7fc67e27'
 )
 
 
