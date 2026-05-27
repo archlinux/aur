@@ -1,16 +1,16 @@
 pkgbase = kerio-control-vpnclient-9.5-p3
-	pkgdesc = Kerio Control VPN client for corporate networks. version 9.5.0-9017-p3
+	pkgdesc = Kerio Control VPN Client 9.5 (corporate patch 3)
 	pkgver = 9.5.0.9017
-	pkgrel = 1
-	url = http://www.kerio.com/control
-	install = kerio-control-vpnclient-9.5-p3.install
+	pkgrel = 6
+	url = https://www.kerio.com/products/kerio-control
 	arch = x86_64
 	license = custom:EULA
-	depends = procps
-	depends = dialog
-	depends = util-linux
-	depends = libxcrypt-compat
-	options = !strip
+	depends = systemd
+	depends = openssl
+	depends = libnl
+	optdepends = networkmanager: for GUI integration
+	provides = kerio-control-vpnclient
+	conflicts = kerio-control-vpnclient
 	source = https://cdn.kerio.com/dwn/control/control-9.5.0-9017/kerio-control-vpnclient-9.5.0-9017-p3-linux-amd64.deb
 	sha256sums = bcfa7919d0a944a150097e7a0942f191d7e6d00b306c2707270223e9d8b91475
 
