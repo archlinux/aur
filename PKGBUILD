@@ -2,7 +2,7 @@
 # Contributor: EarthMessenger <earthmessenger@qq.com>
 
 pkgname=turso-cli-bin
-pkgver=1.0.25
+pkgver=1.0.26
 pkgrel=1
 pkgdesc='Command line interface to Turso.'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=('turso')
 source_x86_64=("turso-cli_Linux_x86_64_${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/turso-cli_Linux_x86_64.tar.gz")
 source_aarch64=("turso-cli_Linux_arm64_${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/turso-cli_Linux_arm64.tar.gz")
 
-sha256sums_x86_64=('0baf2132116f268e351f050cfb75885be20b195cb5e1fb0299b8497e2fea7f3c')
-sha256sums_aarch64=('d5c894924c5de36a9b555f729202f7d7d885189cf33aa7e060d9b55e401d8446')
+sha256sums_x86_64=('97a4192f403943ad398b19cb6f73b2f796fbef8ce8674d4124eaff532bca3b03')
+sha256sums_aarch64=('ad53d802e336b01d75d89b151a4d3c31ff7392ca5509a769a40f64ec99ac4338')
 
 optdepends=('libsql-server-bin: for turso dev (local development server) support')
 
