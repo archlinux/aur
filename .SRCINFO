@@ -1,0 +1,14 @@
+pkgbase = archculars
+	pkgdesc = A pacseek successor written in Rust
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/alpwrk/archculars
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	options = !lto
+	source = archculars-0.1.1.tar.gz::https://github.com/alpwrk/archculars/archive/v0.1.1.tar.gz
+	sha256sums = e4a25a6d9eb9c053e0b9894824777a96680b20be21f268ac5b9ccc778b1c389f
+
+pkgname = archculars
