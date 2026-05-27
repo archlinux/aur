@@ -1,8 +1,8 @@
 # Maintainer: iohzrd <iohzrd@gmail.com>
 pkgname=bitcoin-knots-bip110
-pkgver=29.2.knots20251110_bip110_v0.1
-_tagver=29.2.knots20251110+bip110-v0.1
-_srcver=29.2.knots20251110-bip110-v0.1
+pkgver=29.3.knots20260210_bip110_v0.4.1
+_tagver=29.3.knots20260210+bip110-v0.4.1
+_srcver=29.3.knots20260210-bip110-v0.4.1
 pkgrel=1
 epoch=
 pkgdesc="enhanced Bitcoin node/wallet software with BIP-110 support"
@@ -16,8 +16,22 @@ checkdepends=('python3')
 conflicts=('bitcoin')
 backup=('etc/bitcoin/bitcoin.conf')
 options=('!debug')
-source=("https://github.com/dathonohm/bitcoin/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('173d7cf1b8248c3dcb60d932566d81e3b3ea736e1a64dd01df50004e26ea710b')
+source=(
+	"https://github.com/dathonohm/bitcoin/archive/refs/tags/v${_tagver}.tar.gz"
+	"multi_index-fix-boost-1.91.patch"
+)
+sha256sums=(
+	'60e168439b4e3246cebcb55ba80e90ab772dbdb788c52bb98b491a30491f926d'
+	'5b44a132316039d4e3b917cc3ab203c2d79b81bbce3746823f19d06899c18766'
+)
+
+prepare() {
+	cd "bitcoin-$_srcver"
+	# Backport of bitcoin/bitcoin#35175 (commit 546598b73675): fix
+	# compilation failure with Boost >= 1.91. Drop once a tarball
+	# including this commit is released upstream.
+	patch -p1 <"$srcdir/multi_index-fix-boost-1.91.patch"
+}
 
 build() {
 	cd "bitcoin-$_srcver"

@@ -1,0 +1,113 @@
+From 546598b73675bd5663de6df8f4e3a23a0e7eceb7 Mon Sep 17 00:00:00 2001
+From: Cory Fields <cory-nospam-@coryfields.com>
+Date: Tue, 28 Apr 2026 18:00:36 +0000
+Subject: [PATCH] multi_index: fix compilation failure with boost >= 1.91
+
+This effectively reverts a3cb309e7c31853f272bffaa65fb6ab0a7cc4083 from PR #30194.
+
+That PR reduced the multi_index type signatures as recommended upstream, but
+this is no longer supported as of boost 1.91 because it is no longer necessary.
+1.91 drops support for the pre-c++11 work-arounds that bloated the type
+signatures to begin with.
+
+The upstream `BOOST_MULTI_INDEX_ENABLE_MPL_SUPPORT` define is meant to provide
+compatibility with removed features, but it does not work for this case. Using
+`indexed_by` directly when defining the `multi_index` (as opposed to inheriting
+from it) works with all versions, and avoids the use of the back-compat define.
+
+This is a slight regression when building against boost < 1.91 because the
+bloated type signatures are reintroduced in that case, but it's not significant
+enough to go to the trouble of introducing version detection and ifdefs.
+
+Github-Pull: #35175
+Rebased-From: 0bc9d354dfd8074d1c36a891a69b6585a8775c65
+---
+ src/node/miner.h  | 11 ++++-------
+ src/txmempool.h   | 10 ++++------
+ src/txrequest.cpp | 12 +++++-------
+ 3 files changed, 13 insertions(+), 20 deletions(-)
+
+diff --git a/src/node/miner.h b/src/node/miner.h
+index 56101561b110..c45c97100d87 100644
+--- a/src/node/miner.h
++++ b/src/node/miner.h
+@@ -102,7 +102,9 @@ struct CompareTxIterByAncestorCount {
+ };
+ 
+ 
+-struct CTxMemPoolModifiedEntry_Indices final : boost::multi_index::indexed_by<
++using indexed_modified_transaction_set = boost::multi_index_container<
++    CTxMemPoolModifiedEntry,
++    boost::multi_index::indexed_by<
+     boost::multi_index::ordered_unique<
+         modifiedentry_iter,
+         CompareCTxMemPoolIter
+@@ -115,12 +117,7 @@ struct CTxMemPoolModifiedEntry_Indices final : boost::multi_index::indexed_by<
+         CompareTxMemPoolEntryByAncestorFee
+     >
+ >
+-{};
+-
+-typedef boost::multi_index_container<
+-    CTxMemPoolModifiedEntry,
+-    CTxMemPoolModifiedEntry_Indices
+-> indexed_modified_transaction_set;
++>;
+ 
+ typedef indexed_modified_transaction_set::nth_index<0>::type::iterator modtxiter;
+ typedef indexed_modified_transaction_set::index<ancestor_score>::type::iterator modtxscoreiter;
+diff --git a/src/txmempool.h b/src/txmempool.h
+index 10acb2aa22f4..acc52aef1d95 100644
+--- a/src/txmempool.h
++++ b/src/txmempool.h
+@@ -329,7 +329,9 @@ class CTxMemPool
+ 
+     static const int ROLLING_FEE_HALFLIFE = 60 * 60 * 12; // public only for testing
+ 
+-    struct CTxMemPoolEntry_Indices final : boost::multi_index::indexed_by<
++    using indexed_transaction_set = boost::multi_index_container<
++        CTxMemPoolEntry,
++        boost::multi_index::indexed_by<
+             // sorted by txid
+             boost::multi_index::hashed_unique<mempoolentry_txid, SaltedTxidHasher>,
+             // sorted by wtxid
+@@ -357,11 +359,7 @@ class CTxMemPool
+                 CompareTxMemPoolEntryByAncestorFee
+             >
+         >
+-        {};
+-    typedef boost::multi_index_container<
+-        CTxMemPoolEntry,
+-        CTxMemPoolEntry_Indices
+-    > indexed_transaction_set;
++    >;
+ 
+     /**
+      * This mutex needs to be locked when accessing `mapTx` or other members
+diff --git a/src/txrequest.cpp b/src/txrequest.cpp
+index 5909146427b7..521ddec901d5 100644
+--- a/src/txrequest.cpp
++++ b/src/txrequest.cpp
+@@ -212,17 +212,15 @@ struct ByTimeViewExtractor
+     }
+ };
+ 
+-struct Announcement_Indices final : boost::multi_index::indexed_by<
+-    boost::multi_index::ordered_unique<boost::multi_index::tag<ByPeer>, ByPeerViewExtractor>,
+-    boost::multi_index::ordered_non_unique<boost::multi_index::tag<ByTxHash>, ByTxHashViewExtractor>,
+-    boost::multi_index::ordered_non_unique<boost::multi_index::tag<ByTime>, ByTimeViewExtractor>
+->
+-{};
+ 
+ /** Data type for the main data structure (Announcement objects with ByPeer/ByTxHash/ByTime indexes). */
+ using Index = boost::multi_index_container<
+     Announcement,
+-    Announcement_Indices
++    boost::multi_index::indexed_by<
++        boost::multi_index::ordered_unique<boost::multi_index::tag<ByPeer>, ByPeerViewExtractor>,
++        boost::multi_index::ordered_non_unique<boost::multi_index::tag<ByTxHash>, ByTxHashViewExtractor>,
++        boost::multi_index::ordered_non_unique<boost::multi_index::tag<ByTime>, ByTimeViewExtractor>
++    >
+ >;
+ 
+ /** Helper type to simplify syntax of iterator types. */
