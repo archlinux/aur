@@ -36,4 +36,5 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}/build"
 	make DESTDIR="${pkgdir}/" install
+	ln -s "/usr/include/nlohmann" "${pkgdir}/usr/include/dpp/nlohmann"
 }
