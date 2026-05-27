@@ -1,6 +1,6 @@
 # Maintainer: britors <rodrigo@w3ti.com.br>
 pkgname=prisma4postgres-bin
-pkgver=10.6.1
+pkgver=10.6.2
 pkgrel=1
 pkgdesc="PostgreSQL database explorer and query runner"
 arch=('x86_64')
