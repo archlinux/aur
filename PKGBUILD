@@ -1,39 +1,54 @@
 # Maintainer: Dessyume <dess@dessyu.me>
 
-_pkgname=nerimity-bin
+_pkgname=nerimity
 pkgname=nerimity-bin
+pkgver=2.2.0
+pkgrel=3
 pkgdesc="A modern and sleek chat app."
-pkgver=1.3.1
-pkgrel=2
 arch=('x86_64')
 url="https://github.com/Nerimity/nerimity-desktop"
 license=('custom:unknown')
 depends=('fuse2' 'hicolor-icon-theme')
 options=('!strip')
-_appimage="${pkgname}-${pkgver}.AppImage"
-source=("${_appimage}::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.AppImage")
-sha256sums=('d7687438236b7e2f0b237df114f5c1ca27a26754f079b76402a36fc58ff9e2e6')
+
+_appimage="Nerimity-${pkgver}.AppImage"
+
+source=(
+  "${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}"
+  "nerimity.ico::https://nerimity.com/favicon.ico"
+)
+
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
-	chmod +x "${_appimage}"
-	./"${_appimage}" --appimage-extract
+  chmod +x "${srcdir}/${_appimage}"
+  "${srcdir}/${_appimage}" --appimage-extract
 }
 
 build() {
-	sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
-		"squashfs-root/${_pkgname}.desktop"
-
-	chmod -R a-x+rX squashfs-root/usr
+  :
 }
 
 package() {
-	install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+  install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/nerimity/nerimity.AppImage"
 
-	install -dm755 "${pkgdir}/usr/bin"
-	ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/nerimity" <<'EOF'
+#!/bin/sh
+exec /opt/nerimity/nerimity.AppImage "$@"
+EOF
 
-	install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/nerimity.desktop" <<'EOF'
+[Desktop Entry]
+Name=Nerimity
+Comment=A modern and sleek chat app.
+Exec=nerimity %U
+Icon=nerimity
+Terminal=false
+Type=Application
+Categories=Network;Chat;
+StartupNotify=true
+EOF
 
-	install -dm755 "${pkgdir}/usr/share/"
-	cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+  install -Dm644 "${srcdir}/nerimity.ico" \
+    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/nerimity.ico"
 }
