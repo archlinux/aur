@@ -1,15 +1,15 @@
 # Maintainer: AuthenDesk Project
 pkgname=authendesk
-pkgver=1.0.0.r4.g9e11dc7
+pkgver=1.0.0.r8.gfb2ab67
 pkgrel=1
 pkgdesc="Desktop Two-Factor Authentication Token Manager (TOTP/HOTP)"
 arch=('x86_64')
+options=('!debug')
 url="https://gitee.com/AscendLiu/AuthenDesk"
 license=('MIT')
 depends=(
     'qt6-base'
     'qt6-declarative'
-    'qt6-quickcontrols2'
     'qt6-svg'
     'openssl'
     'zbar'
@@ -22,7 +22,7 @@ makedepends=(
     'ninja'
     'pkgconf'
 )
-source=("${pkgname}::git+https://gitee.com/AscendLiu/AuthenDesk.git")
+source=("${pkgname}::git+ssh://git@gitee.com/AscendLiu/AuthenDesk.git")
 sha256sums=('SKIP')
 install=authendesk.install
 
@@ -37,7 +37,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_DATADIR=share
-    cmake --build build --parallel $(nproc)
+    cmake --build build --parallel $(nproc) --config Release
 }
 
 package() {
@@ -46,5 +46,4 @@ package() {
     install -Dm755 build/AuthenDesk "${pkgdir}/usr/bin/AuthenDesk"
     install -Dm644 assets/app_icon.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/authendesk.png"
     install -Dm644 assets/authendesk.desktop "${pkgdir}/usr/share/applications/authendesk.desktop"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" || true
 }

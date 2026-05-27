@@ -13,12 +13,11 @@ pkgbase = authendesk
 	makedepends = pkgconf
 	depends = qt6-base
 	depends = qt6-declarative
-	depends = qt6-quickcontrols2
 	depends = qt6-svg
 	depends = openssl
 	depends = zbar
 	depends = hicolor-icon-theme
-	source = authendesk::git+https://gitee.com/AscendLiu/AuthenDesk.git
+	source = authendesk::git+ssh://git@gitee.com/AscendLiu/AuthenDesk.git
 	sha256sums = SKIP
 
 pkgname = authendesk
