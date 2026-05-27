@@ -1,7 +1,7 @@
 pkgbase = bootc
 	pkgdesc = Boot and upgrade via container images
 	pkgver = 1.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bootc-dev/bootc
 	arch = x86_64
 	license = Apache-2.0 OR MIT
