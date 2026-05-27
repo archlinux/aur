@@ -2,7 +2,7 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=3.10.1.1779326510
+pkgver=3.10.1.1779855991
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -23,7 +23,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   local latest_tag=$(git tag -l 'v[0-9]*' --sort=-v:refname | head -n 1)
-  local timestamp=$(git log -1 --format=%ct "$latest_tag")
+  local timestamp=$(git log -1 --format=%ct HEAD)
   echo "${latest_tag#v}.$timestamp"
 }
 
