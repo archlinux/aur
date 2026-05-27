@@ -1,6 +1,6 @@
 pkgbase = nexus-tracker
 	pkgdesc = Personal Accountability App
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/cookiesn1ffer/nexus-tracker
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = nexus-tracker
 	makedepends = pkgconf
 	depends = gtk3
 	depends = libkeybinder3
-	source = nexus-tracker-1.0.0.tar.gz::https://github.com/cookiesn1ffer/nexus-tracker/archive/v1.0.0.tar.gz
-	sha256sums = 137c5d5ea998e478a6ebbf8b84977ed8c9e5493222b066e99c693a152ed3d8a4
+	source = nexus-tracker-1.1.0.tar.gz::https://github.com/cookiesn1ffer/nexus-tracker/archive/v1.1.0.tar.gz
+	sha256sums = cc9446aab9aba1b3846f3c845c7c77db770e9ce187b9984e608e63ff718b90a7
 
 pkgname = nexus-tracker

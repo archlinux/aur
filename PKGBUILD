@@ -1,6 +1,6 @@
 # Maintainer: CookieSn1ffer <230327296+cookiesn1ffer@users.noreply.github.com>
 pkgname=nexus-tracker
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Personal Accountability App"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk3' 'libkeybinder3')
 makedepends=('flutter' 'clang' 'cmake' 'ninja' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('137c5d5ea998e478a6ebbf8b84977ed8c9e5493222b066e99c693a152ed3d8a4')
+sha256sums=('cc9446aab9aba1b3846f3c845c7c77db770e9ce187b9984e608e63ff718b90a7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
