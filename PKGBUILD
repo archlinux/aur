@@ -1,0 +1,34 @@
+# Maintainer: Ricky Morabito <codericcardo@gmail.com>
+
+pkgname=tokscale
+pkgver=2.1.3
+pkgrel=1
+pkgdesc='CLI tool and TUI for tracking token usage and costs from AI coding agents'
+arch=('x86_64')
+url='https://github.com/junhoyeo/tokscale'
+license=('MIT')
+depends=('glibc' 'gcc-libs')
+makedepends=('cargo' 'rust')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/junhoyeo/tokscale/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('2a4cf781c49e7992b7434ef448cdae1a7ffb07bd511486c382eb715732b9077316b99eefbded0095ea74ef58b11985fc82435898c50533bb8933c55609272195')
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    cargo fetch --locked
+}
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    cargo build --release --frozen
+}
+
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    cargo test --release --frozen
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
