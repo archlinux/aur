@@ -1,6 +1,6 @@
 pkgbase = agent-lx-music-bin
 	pkgdesc = A terminal-native music CLI replacing lx-music-desktop, powered by Agentic intelligence. (Pre-compiled)
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Xuepoo/agent-lx-music
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = agent-lx-music-bin
 	depends = mpv
 	provides = agent-lx-music
 	conflicts = agent-lx-music
-	source = LICENSE-0.1.2::https://raw.githubusercontent.com/Xuepoo/agent-lx-music/v0.1.2/LICENSE
+	source = LICENSE-0.1.3::https://raw.githubusercontent.com/Xuepoo/agent-lx-music/v0.1.3/LICENSE
 	sha256sums = 51b96fe87205eedde58a4da8fda83a5d23df4c3dfc54e7af76ecf430f9e50201
-	source_x86_64 = https://github.com/Xuepoo/agent-lx-music/releases/download/v0.1.2/alx-linux-x86_64
-	sha256sums_x86_64 = 58d4f43b0d68476a14110cae4db19601c593990ed7bd028271ed51f9120be90d
-	source_aarch64 = https://github.com/Xuepoo/agent-lx-music/releases/download/v0.1.2/alx-linux-aarch64
-	sha256sums_aarch64 = 7ec1674f03021b34a1397d640a336d13a7a9c0578f431ab70232f5df9600e4fb
+	source_x86_64 = https://github.com/Xuepoo/agent-lx-music/releases/download/v0.1.3/alx-linux-x86_64
+	sha256sums_x86_64 = 3078dd9dc4a71c6f445140474c94d5bee28fc1590787ca8ca34fedd11fea44d6
+	source_aarch64 = https://github.com/Xuepoo/agent-lx-music/releases/download/v0.1.3/alx-linux-aarch64
+	sha256sums_aarch64 = e916da48889e202e902dda1c9598c1a850296ec58bc598a19a8b04a2ae3616f3
 
 pkgname = agent-lx-music-bin
