@@ -1,13 +1,13 @@
 pkgbase = git-toolbelt
 	pkgdesc = A suite of useful Git commands that aid with scripting or every day command line usage
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/nvie/git-toolbelt
 	arch = any
 	license = BSD
 	depends = coreutils>=2.9
 	depends = git
-	source = git-toolbelt-1.10.0.zip::https://github.com/nvie/git-toolbelt/archive/v1.10.0.tar.gz
-	sha256sums = b6b23f61604b7a89a0bf7486ef9c32a34c95cf6b57c27376ff69d70c12fbf7c1
+	source = git-toolbelt-1.11.0.zip::https://github.com/nvie/git-toolbelt/archive/v1.11.0.tar.gz
+	sha256sums = 3828f96ff8ea14789a63fd914a5bf99ba4dad52e4066863b8fab0ea4310d9ac7
 
 pkgname = git-toolbelt
