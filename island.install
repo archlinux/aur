@@ -1,0 +1,9 @@
+#!/bin/sh
+
+post_install() {
+	if pacman -T zsh >/dev/null; then
+		echo "==> optional zsh integration: source <(island hook zsh)"
+	fi
+}
+
+post_upgrade() { post_install; }
