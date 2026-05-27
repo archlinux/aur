@@ -1,0 +1,18 @@
+pkgbase = linux-devmgmt-git
+	pkgdesc = Linux device management tool
+	pkgver = r7.0ef905b
+	pkgrel = 1
+	url = https://github.com/actuallyaridan/linux-devmgmt
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	depends = qt6-base
+	provides = linux-devmgmt
+	conflicts = linux-devmgmt
+	source = linux-devmgmt-git::git+https://github.com/actuallyaridan/linux-devmgmt.git
+	source = device-manager.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = linux-devmgmt-git
