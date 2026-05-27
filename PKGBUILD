@@ -20,7 +20,7 @@ source=(
   "$_pkgname-$pkgver.desktop::$url/raw/v$pkgver/clean-my-keys.desktop"
 )
 
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('799ec4ca89939b05db69610e7e0d609a6e0820fe5322b5bff5635f16ee9d6ff1' 'd51f1f359ebff4ce69acd6e22f450b75592989ed3e2157b727360ab368451271' '9af2bdfeec3412ffadd7e6904eefca24525fcaa074b2518ece1140bd41b2731a' '092c5079effeeb97056515fe2138d0e052a6063ae94295eebae8ead7e4df036a' '7835ff77e258aad5322feded0957a9bdb7575df467444006b27bbd353314c02b' )
 
 package() {
     install -Dm755 "$srcdir/$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
