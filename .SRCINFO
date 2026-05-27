@@ -1,7 +1,7 @@
 pkgbase = gentle-ai
 	pkgdesc = CLI tool to manage and configure AI coding agents ecosystems
 	pkgver = 1.31.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Gentleman-Programming/gentle-ai
 	arch = x86_64
 	arch = aarch64

@@ -2,7 +2,7 @@
 
 pkgname=gentle-ai
 pkgver=1.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool to manage and configure AI coding agents ecosystems"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Gentleman-Programming/gentle-ai"
