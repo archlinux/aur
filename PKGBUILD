@@ -1,6 +1,6 @@
 # Maintainer: Stephano Cetola <stephano@cetola.net>
 pkgname=reform-tools
-pkgver=1.85
+pkgver=1.87
 pkgrel=1
 pkgdesc="MNT Reform system tools & helpers"
 arch=('x86_64' 'aarch64')
