@@ -1,0 +1,26 @@
+pkgbase = spellr
+	pkgdesc = KDE spell checker with ranked suggestions, text-to-speech, and session history
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/FullStacking/spell
+	install = spellr.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-speech
+	depends = kf6-sonnet
+	depends = kf6-kxmlgui
+	depends = kf6-ki18n
+	depends = kf6-kwidgetsaddons
+	depends = kf6-kcoreaddons
+	depends = hunspell
+	depends = flite
+	depends = wl-clipboard
+	source = spell-0.1.0::git+https://codeberg.org/FullStacking/spell.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = spellr
