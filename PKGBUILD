@@ -3,7 +3,7 @@
 _pkgname=ukrmol-in
 pkgname=${_pkgname}-fint64-git
 pkgver=r4.667ef6e
-pkgrel=2
+pkgrel=3
 _minCmake="3.10"
 pkgdesc="Inner region programs for UKRmol+, with some small patches. Also provides GBTOlib."
 arch=('x86_64')
@@ -15,6 +15,7 @@ provides=("${_pkgname}=${pkgver}" gbtolib)
 conflicts=("${_pkgname}" gbtolib)
 source=("${_pkgname}::git+https://github.com/banana-bred/Ukrmol-in.git#branch=3.3.0-patches")
 sha256sums=('SKIP')
+options=('!lto' '!strip')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
