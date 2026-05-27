@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rodriguez <kontakt@antoniorodriguez.no>
 
 pkgname=cronboard
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A terminal-based dashboard for managing cron jobs"
 arch=('any')
@@ -32,7 +32,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/antoniorodr/cronboard/releases/download/v$pkgver/cronboard-$pkgver.tar.gz")
-sha256sums=('e8a55c5173c5d5a20f80cb2b81d270d421cf4fd1ade6b3c7d8e56b17508444e5')
+sha256sums=('1434a3c51ae219d3038b8ce92c2b675504b9d07745de0ec895d31b96e4ec1757b')
 
 build() {
   cd "$pkgname-$pkgver" || exit 1
