@@ -1,0 +1,27 @@
+pkgbase = liteparse-bin
+	pkgdesc = Fast local document parser for PDF, DOCX, XLSX, PPTX, and images with built-in OCR
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://developers.llamaindex.ai/liteparse/
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	optdepends = tesseract-data-eng: English OCR language data
+	optdepends = libreoffice-fresh: DOCX, XLSX, and PPTX document conversion
+	optdepends = imagemagick: image format conversion
+	optdepends = ghostscript: PostScript and EPS document conversion
+	provides = liteparse
+	conflicts = liteparse
+	options = !debug
+	source_x86_64 = liteparse-bin-2.0.2-x86_64.tar.gz::https://github.com/run-llama/liteparse/releases/download/crates-v2.0.2/lit-linux-x64.tar.gz
+	source_x86_64 = pdfium-7847-x86_64.tgz::https://github.com/run-llama/pdfium-binaries/releases/download/chromium%2F7847/pdfium-linux-x64.tgz
+	sha256sums_x86_64 = 12e3606f6ec6803470eb9ae611fb17a4d8c58bbac7a4979a5ff947782430c635
+	sha256sums_x86_64 = 3e8326bc517d071c569efc23f6e18d60a83c7b775c714bb571c609fffebd5320
+	source_aarch64 = liteparse-bin-2.0.2-aarch64.tar.gz::https://github.com/run-llama/liteparse/releases/download/crates-v2.0.2/lit-linux-arm64.tar.gz
+	source_aarch64 = pdfium-7847-aarch64.tgz::https://github.com/run-llama/pdfium-binaries/releases/download/chromium%2F7847/pdfium-linux-arm64.tgz
+	sha256sums_aarch64 = 580767322214145014e1a9cba4b74cb750b5e30c28514357f3dd6497cd235fe4
+	sha256sums_aarch64 = 9fc1c556fb5b9764f9f6f474161d871776c25a507cb82ba25006beb658c29cea
+
+pkgname = liteparse-bin
