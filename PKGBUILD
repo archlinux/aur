@@ -7,8 +7,9 @@ pkgdesc="Modern GUI for HP OMEN gaming laptops on Linux — GPU switching, fans,
 arch=('x86_64' 'aarch64')
 url="https://github.com/NoFilterA1/omen-hub"
 license=('GPL3')
-depends=('python' 'python-pyqt6' 'python-tomlkit' 'supergfxctl')
-optdepends=('omenctl-git: fan control daemon')
+depends=('python' 'python-pyqt6' 'python-tomlkit')
+optdepends=('supergfxctl: GPU mode switching (Hybrid/Integrated)'
+            'omenctl-git: fan RPM reading and fan curve control')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/NoFilterA1/${pkgname}.git#branch=main")
 sha256sums=('SKIP')

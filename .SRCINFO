@@ -10,8 +10,8 @@ pkgbase = omen-hub
 	depends = python
 	depends = python-pyqt6
 	depends = python-tomlkit
-	depends = supergfxctl
-	optdepends = omenctl-git: fan control daemon
+	optdepends = supergfxctl: GPU mode switching (Hybrid/Integrated)
+	optdepends = omenctl-git: fan RPM reading and fan curve control
 	source = omen-hub::git+https://github.com/NoFilterA1/omen-hub.git#branch=main
 	sha256sums = SKIP
 
