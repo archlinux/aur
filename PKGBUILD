@@ -15,10 +15,7 @@ depends=('procps' 'dialog' 'util-linux' 'libxcrypt-compat')
 source=(
   "https://cdn.kerio.com/dwn/control/control-9.5.0-9017/kerio-control-vpnclient-9.5.0-9017-p3-linux-amd64.deb"
 )
-sha256sums=('bcfa7919d0a944a150097e7a0942f191d7e6d00b306c2707270223e9d8b91475'
-            'a8729e2515e186f4ba4544cbd140b3bb1fc78c616694433f58944de9e4e72971'
-            '2f15a0d88c9fa915cd9150796638811daec911e6824b8ff5f96f131352d1e74a'
-            'bd8b1aabc31b9b24c4b63ce8099bef111dc84bd4923c77d42e05d3f1704d5c17')
+sha256sums=('bcfa7919d0a944a150097e7a0942f191d7e6d00b306c2707270223e9d8b91475')
 
 build() {
   # Get binary sources.
