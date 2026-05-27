@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'rust')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6b5153d11b534bfa56ba40305bcaf650228d391bcc8a9a7418fbde25299f86cd')
+sha256sums=('2638b670a7e0cd9b00fb205ed4ad00296c64316c06dc000473c36e41fe3b9d72')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

@@ -11,6 +11,6 @@ pkgbase = clean-my-keys
 	depends = gcc-libs
 	options = !lto
 	source = clean-my-keys-1.2.2.tar.gz::https://github.com/Strawberry-Foundations/clean-my-keys/archive/refs/tags/v1.2.2.tar.gz
-	sha256sums = 6b5153d11b534bfa56ba40305bcaf650228d391bcc8a9a7418fbde25299f86cd
+	sha256sums = 2638b670a7e0cd9b00fb205ed4ad00296c64316c06dc000473c36e41fe3b9d72
 
 pkgname = clean-my-keys
