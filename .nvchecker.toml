@@ -1,0 +1,5 @@
+[shimmy-bin]
+source = "github"
+github = "Michael-A-Kuykendall/shimmy"
+use_latest_release = true
+prefix = "v"
