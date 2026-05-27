@@ -1,7 +1,7 @@
 # Maintainer: Alexander Pohl <alex@ahpohl.com>
 
 pkgname=fronius-bridge
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="Lightweight Modbus-to-MQTT bridge for Fronius devices"
