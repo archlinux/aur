@@ -2,7 +2,7 @@
 
 pkgname=python-ilorest-library
 _pkgname=ilorest-library
-pkgver=7.1.0.0
+pkgver=7.2.0.0
 pkgrel=1
 pkgdesc="The python-ilorest-library is a python library built for interacting with the Redfish API remotely to any BMC that implements a Redfish API or any HPE system locally."
 arch=(x86_64)
