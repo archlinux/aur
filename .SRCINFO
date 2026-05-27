@@ -21,6 +21,6 @@ pkgbase = termcanvas
 	depends = libpulse
 	conflicts = termcanvas-bin
 	source = https://github.com/blueberrycongee/termcanvas/archive/v0.39.8.tar.gz
-	sha256sums = SKIP
+	sha256sums = 8b38cb6a105fb76f25ca80f433ad2b0af3533989c3571cfabeef8533d1447fbf
 
 pkgname = termcanvas

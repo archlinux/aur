@@ -18,7 +18,7 @@ source=("${url}/archive/v${pkgver}.tar.gz"
         "termcanvas.desktop"
         "termcanvas.sh"
         "io.github.blueberrycongee.termcanvas.metainfo.xml")
-sha256sums=('SKIP'
+sha256sums=('8b38cb6a105fb76f25ca80f433ad2b0af3533989c3571cfabeef8533d1447fbf'
             'SKIP'
             'SKIP'
             'SKIP')
