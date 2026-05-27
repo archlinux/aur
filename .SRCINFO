@@ -1,7 +1,7 @@
 pkgbase = island-git
 	pkgdesc = Landlock LSM powered, policy based sandboxing tool
 	pkgver = r40.05a9d69
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/landlock-lsm/island
 	install = island.install
 	arch = x86_64

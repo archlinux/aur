@@ -4,7 +4,7 @@
 pkgname=island-git
 _n=${pkgname%-git}
 pkgver=r40.05a9d69
-pkgrel=2
+pkgrel=3
 pkgdesc="Landlock LSM powered, policy based sandboxing tool"
 arch=(x86_64 aarch64)
 url=https://github.com/landlock-lsm/island
@@ -50,9 +50,9 @@ check() { _env
 		echo ": zsh not found skipping shell_hook tests"
 		_s="-- --skip shell_hook"
 	fi
-	export XDG_RUNTIME_DIR="$srcdir/test-env"
-	mkdir "$XDG_RUNTIME_DIR"
-	cargo test --frozen --all-features $_s
+	_t="$srcdir/test-env"
+	mkdir -p "$_t"
+	XDG_RUNTIME_DIR="$_t" cargo test --frozen --all-features $_s
 }
 
 package() { _env
