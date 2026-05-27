@@ -1,12 +1,10 @@
 pkgbase = seance
 	pkgdesc = Scrolling terminal multiplexer for running multiple AI coding agents side by side
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/no1msd/seance
 	arch = x86_64
 	license = MIT
-	options = !debug
-	makedepends = zig>=0.15.2
 	makedepends = ncurses
 	makedepends = pkg-config
 	depends = gtk4
@@ -25,7 +23,10 @@ pkgbase = seance
 	depends = freetype2
 	depends = harfbuzz
 	depends = oniguruma
+	options = !debug
 	source = seance-0.1.4-src.tar.gz::https://github.com/no1msd/seance/releases/download/v0.1.4/seance-0.1.4-src.tar.gz
+	source = zig-0.15.2.tar.xz::https://ziglang.org/download/0.15.2/zig-x86_64-linux-0.15.2.tar.xz
 	sha256sums = e6286ae2e073dece24c505474506d59a10f763fd46f34433ce8b9650be38f739
+	sha256sums = 02aa270f183da276e5b5920b1dac44a63f1a49e55050ebde3aecc9eb82f93239
 
 pkgname = seance
