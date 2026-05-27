@@ -17,12 +17,11 @@ if [[ "$local_version" != "$remote_version" ]]; then
 
     echo -e "\nNew version released.\n"
     keeperurl="https://www.keepersecurity.com/desktop_electron/Linux/repo/deb/keeperpasswordmanager_${remote_version}_amd64.deb"
-    remote_sha512sum=$(curl -sqLo - ${keeperurl} | sha512sum | awk '{print $1}')
 
     # PKGBUILD
     sed -i "s|^pkgver=.*$|pkgver=${remote_version}|" PKGBUILD
-    sed -i "s|^sha512sums=('.*'$|sha512sums=('${remote_sha512sum}'|" PKGBUILD
 
+    updpkgsums PKGBUILD
     makepkg --printsrcinfo > .SRCINFO
 
     echo -e "PGKBUILD and .SRCINFO have been modified with the newer version, source and sha512sum."
