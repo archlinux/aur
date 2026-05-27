@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=barto-cli-bin
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Barto command-line interface for querying bartos instances (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -17,9 +17,9 @@ _base="https://github.com/rustyhorde/barto/releases/download/v${pkgver}"
 source=("${_base}/dist-barto-cli.tar.gz")
 source_x86_64=("barto-cli-x86_64::${_base}/barto-cli-x86_64-unknown-linux-musl")
 source_aarch64=("barto-cli-aarch64::${_base}/barto-cli-aarch64-unknown-linux-musl")
-sha256sums=('c4e1af5122d9b3b1b976b1ca129210f27f44f71a42ca4c22cab1994b7c7a4fe2')
-sha256sums_x86_64=('76cf8b363ec794a9ed575d5ef5cbfd38ffda50ad0f5a523fdf1016416c0f4b38')
-sha256sums_aarch64=('444a82d765cf7b2506bc53b6537c1df7c8348c92db8483b8f0db7ca074cbd335')
+sha256sums=('c989aaed537ccc04ede446aadd5703bb8230d46ab69fa2ddf611f96bf92a5cfd')
+sha256sums_x86_64=('e9c91555cba3c6d2ec51feedf6b89f3b3495d0c0d26f7690e651b73d00bb5bd4')
+sha256sums_aarch64=('a65c1b8a1ea88ae88b2462831fa6a8c5bb73e5d4aeadb614401f9a4a070b2ede')
 
 package() {
     install -Dm755 "barto-cli-${CARCH}" "$pkgdir/usr/bin/barto-cli"
