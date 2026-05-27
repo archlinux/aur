@@ -5,7 +5,7 @@
 pkgname=appflowy-bin
 _pkgname=appflowy
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AppFlowy is an open-source alternative to Notion. You are in charge of your data and customizations."
 arch=(x86_64)
 url="https://appflowy.io"
@@ -25,6 +25,7 @@ b2sums=('6fa2a6adf165a614637f4aae5b323c427b99c2d13f9ab55eefae012dc3dbeebe5957cd2
 package(){
     cd "$pkgdir"
     tar --zstd -xf "$srcdir"/data.tar.zst
+
 	install -Dm644 "$srcdir"/LICENSE -t "usr/share/licenses/$_pkgname"
     sed -i "s;Icon=.*;Icon=appflowy;" "usr/share/applications/AppFlowy.desktop"
 	install -Dm644 "usr/lib/AppFlowy/data/flutter_assets/assets/images/flowy_logo.svg" \
@@ -32,6 +33,11 @@ package(){
 	install -Dm644 "usr/lib/AppFlowy/data/flutter_assets/assets/images/flowy_logo.svg" \
         "usr/share/pixmaps/appflowy.svg"
 	install -dm755 "usr/bin"
+
 	ln -s "/usr/lib/AppFlowy/AppFlowy" -t "usr/bin/"
+
+	# Clean-up stray dot-files
+	echo "Removing stray dot‑files from the package root…"
+	find "$pkgdir" -mindepth 1 -maxdepth 1 -name ".*" -exec rm -rf {} + && echo "... dot‑files removed."
 }
 # vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
