@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: OpenSourceGuy <osguy@duck.com>
 pkgname=brokkr-flash-appimage
 pkgver=1.4.5
 pkgrel=1
