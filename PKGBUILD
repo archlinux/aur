@@ -2,10 +2,10 @@
 
 pkgname=ai-memory-bin
 _pkgname=ai-memory
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Local-first long-term memory MCP server for AI coding agents (prebuilt binary)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/akitaonrails/ai-memory"
 license=('MIT')
 depends=('ca-certificates' 'gcc-libs' 'glibc')
@@ -19,7 +19,9 @@ install=ai-memory.install
 options=('!strip' '!debug')
 
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
-sha256sums_x86_64=('df5d002c7a894b07b278208325847974a16e3368ea65f8a5b25225dfda2b864b')
+sha256sums_x86_64=('8767c3f849e04a34fd112781f8d0b1b624b2a2bca78473344192392a35ccdf64')
+source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz")
+sha256sums_aarch64=('c4b8ce60662291b4eb8bd421327eb480be60dd3cfe1d9af92f1ad8283630d5ba')
 
 package() {
     install -Dm0755 ai-memory "$pkgdir/usr/bin/ai-memory"
