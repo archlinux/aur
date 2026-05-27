@@ -1,0 +1,18 @@
+pkgbase = omen-hub
+	pkgdesc = Modern GUI for HP OMEN gaming laptops on Linux — GPU switching, fans, RGB, thermals
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NoFilterA1/omen-hub
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-pyqt6
+	depends = python-tomlkit
+	depends = supergfxctl
+	optdepends = omenctl-git: fan control daemon
+	source = omen-hub::git+https://github.com/NoFilterA1/omen-hub.git#branch=main
+	sha256sums = SKIP
+
+pkgname = omen-hub
