@@ -2,7 +2,7 @@
 # Contributor: kuro <kuro@kuro.moe>
 
 pkgname=vicinae-kotoba
-pkgver=2026.05.26
+pkgver=2026.05.27
 pkgrel=1
 pkgdesc="Japanese dictionary, translator, and Anki integration for Vicinae — search Jotoba, translate sentences, add cards to Anki"
 arch=('any')
