@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=TermCanvas
+Comment=An infinite canvas desktop app for visually managing terminals
+Exec=/usr/bin/termcanvas %U
+Icon=termcanvas
+Terminal=false
+Type=Application
+StartupNotify=true
+StartupWMClass=TermCanvas
+Categories=Development;Utility;
+MimeType=x-scheme-handler/termcanvas;
