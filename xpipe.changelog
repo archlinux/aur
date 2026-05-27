@@ -1,6 +1,4 @@
-- Show detected IP information for VM entries
-- Don't add empty SSH config parent entry on search if no SSH config entries exist on a system
-- Fix exception when setting security key SSH auth in some cases
-- Fix public key file detection failing when key was a dotfile
-- Fix WezTerm not launching when XPipe window was maximized
-- Fix various NullPointers
+- Fix WezTerm not launching on Linux and macOS
+- Fix file browser rename for conflicting dotfiles failing
+- Fix VNC errors when the server did not respond well to changing the desktop size
+- Fix startup failure race condition when the new dialog to trust self-signed TLS certs was shown too early
