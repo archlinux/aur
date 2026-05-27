@@ -1,6 +1,6 @@
 # Maintainer: kemal <kmal@cock.li>
 
-##148.0.7778.215-444977
+#148.0.7778.215-444977
 pkgname=trivalent-bin
 pkgver=148.0.7778.215
 pkgrel=1
