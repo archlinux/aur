@@ -6,11 +6,11 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Regex Magic 🪄✨🚀"
 arch=(any)
-url="[TODO]"
+url="https://github.com/0ci/$pkgname"
 license=("GPL-3.0-or-later")
 depends=("coreutils" "sed")
 makedepends=("git")
-source=("git+https://github.com/0ci/${pkgname}")
+source=("git+$url")
 md5sums=(SKIP)
 
 prepare() {

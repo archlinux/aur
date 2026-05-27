@@ -1,0 +1,14 @@
+pkgbase = regex-magic
+	pkgdesc = Regex Magic 🪄✨🚀
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/0ci/regex-magic
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = coreutils
+	depends = sed
+	source = git+https://github.com/0ci/regex-magic
+	md5sums = SKIP
+
+pkgname = regex-magic
