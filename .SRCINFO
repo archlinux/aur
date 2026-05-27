@@ -1,0 +1,15 @@
+pkgbase = discli-bin
+	pkgdesc = Discord CLI for AI agents. Manage servers, messages, reactions, threads and monitor events from the terminal.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/DevRohit06/discli
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-click
+	depends = python-discord
+	source = discord_cli_agent-0.9.1-py3-none-any.whl::https://github.com/DevRohit06/discli/releases/download/v0.9.1/discord_cli_agent-0.9.1-py3-none-any.whl
+	b2sums = c3d35fb5b1df235c8b8504b7457bcb531b2a0c4846cf96f8bdfa21e9ba6f165dbd5ed8f0cf0eeb491d4c9990adbb1fb91ad69bb9e531a47d7c1537503ef4b640
+
+pkgname = discli-bin
