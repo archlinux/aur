@@ -1,7 +1,7 @@
 pkgbase=waywallen-display
 pkgname=(waywallen-display plasma-wallpaper-waywallen)
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen-display
 license=(MIT)
@@ -23,8 +23,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWAYWALLEN_DISPLAY_PLUGIN_QML=ON \
         -DWAYWALLEN_DISPLAY_PLUGIN_GOBJECT=ON \
-        -DWAYWALLEN_DISPLAY_PLUGIN_GNOME=ON \
-        -DWAYWALLEN_DISPLAY_QML_URI=Waywallen.DisplayEmbed
+        -DWAYWALLEN_DISPLAY_PLUGIN_GNOME=ON
     cmake --build build
 }
 

@@ -1,6 +1,6 @@
 pkgbase = waywallen-display
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/waywallen/waywallen-display
 	arch = x86_64
 	license = MIT
