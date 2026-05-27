@@ -1,0 +1,37 @@
+_src="/usr/share/vicinae-kotoba"
+
+_install_for_user() {
+  local home="$1"
+  local user="$2"
+  local dst="$home/.local/share/vicinae/extensions/kotoba"
+  [ -d "$home" ] || return 0
+  mkdir -p "$dst"
+  cp "$_src/kotoba.js" "$dst/"
+  cp "$_src/package.json" "$dst/"
+  cp "$_src/icon.png" "$dst/"
+  chown -R "$user:$user" "$dst"
+}
+
+_remove_for_user() {
+  local home="$1"
+  local dst="$home/.local/share/vicinae/extensions/kotoba"
+  [ -d "$dst" ] && rm -rf "$dst"
+}
+
+post_install() {
+  for home in /home/*; do
+    [ -d "$home" ] || continue
+    _install_for_user "$home" "$(basename "$home")"
+  done
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  for home in /home/*; do
+    [ -d "$home" ] || continue
+    _remove_for_user "$home"
+  done
+}

@@ -3,7 +3,7 @@
 
 pkgname=vicinae-kotoba
 pkgver=2026.05.25
-pkgrel=2
+pkgrel=3
 pkgdesc="Japanese dictionary, translator, and Anki integration for Vicinae — search Jotoba, translate sentences, add cards to Anki"
 arch=('any')
 url="https://github.com/kurojs/Kotoba"
@@ -12,6 +12,7 @@ depends=('vicinae-bin' 'nodejs' 'npm')
 makedepends=('git' 'npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kurojs/Kotoba/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
+install=kotoba.install
 
 build() {
   cd "$srcdir/Kotoba-$pkgver"
@@ -21,8 +22,8 @@ build() {
 
 package() {
   cd "$srcdir/Kotoba-$pkgver"
-  install -dm755 "$pkgdir/usr/share/vicinae/extensions/kotoba"
-  install -Dm644 dist/kotoba.js "$pkgdir/usr/share/vicinae/extensions/kotoba/kotoba.js"
-  install -Dm644 package.json "$pkgdir/usr/share/vicinae/extensions/kotoba/package.json"
-  install -Dm644 assets/icon.png "$pkgdir/usr/share/vicinae/extensions/kotoba/icon.png"
+  install -dm755 "$pkgdir/usr/share/vicinae-kotoba"
+  install -Dm644 dist/kotoba.js "$pkgdir/usr/share/vicinae-kotoba/kotoba.js"
+  install -Dm644 package.json "$pkgdir/usr/share/vicinae-kotoba/package.json"
+  install -Dm644 assets/icon.png "$pkgdir/usr/share/vicinae-kotoba/icon.png"
 }
