@@ -1,38 +1,30 @@
-# Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=proverbilo
-pkgver=f570a97
+pkgver=0.1.8
 pkgrel=1
-pkgdesc="Montras hazardajn proverbaojn kaj diraĵojn en terminalo."
-arch=('any')
-url="https://github.com/Fierthraix/proverbilo"
-license=('GPL3')
-provides=("proverbilo")
-makedepends=('git' 'cargo')
-conflicts=('proverbilo')
-source=("$pkgname::git+https://github.com/Fierthraix/proverbilo")
-sha1sums=('SKIP')
+pkgdesc='Programo por montri hazardajn proverbojn en Esperanto'
+arch=('x86_64' 'aarch64')
+url='https://github.com/Fierthraix/proverbilo'
+license=('GPL-3.0-or-later')
+depends=('gcc-libs' 'glibc')
+makedepends=('cargo')
+conflicts=('proverbilo-bin' 'proverbilo-git')
+_cratename='proverbilo'
+source=("${_cratename}-${pkgver}.crate::https://static.crates.io/crates/${_cratename}/${_cratename}-${pkgver}.crate")
+sha256sums=('652498a582d3145a33fcf09aff9f92d57ad8a7aef5bb542c67f97eb2d8c59448')
 
-build() {
-  cd "$pkgname"
-  if command -v rustup > /dev/null 2>&1; then
-    RUSTFLAGS="-C target-cpu=native" rustup run stable \
-      cargo build --release
-  elif rustc --version | grep -q nightly; then
-    RUSTFLAGS="-C target-cpu=native" \
-      cargo build --release
-  else
-    cargo build --release
-  fi
+prepare() {
+  cd "${_cratename}-${pkgver}"
+  export CARGO_HOME="${srcdir}/cargo-home"
+  cargo fetch --locked
 }
 
-pkgver() {
-  cd "$pkgname"
-  echo $(git describe --always | sed 's/-/./g')
+build() {
+  cd "${_cratename}-${pkgver}"
+  export CARGO_HOME="${srcdir}/cargo-home"
+  cargo build --release --locked --all-features
 }
 
 package() {
-  cd "$pkgname"
-  install -Dm755 "target/release/proverbilo" "$pkgdir/usr/bin/proverbilo"
+  cd "${_cratename}-${pkgver}"
+  install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:
