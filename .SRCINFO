@@ -1,0 +1,22 @@
+pkgbase = ukrmol-out-fint64-git
+	pkgdesc = Outer region programs for UKRmol+, with some small patches.
+	pkgver = r1.a36fb97
+	pkgrel = 1
+	url = https://github.com/banana-bred/Ukrmol-out
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = doxygen
+	makedepends = git
+	depends = lapack64
+	depends = blas64-openblas
+	depends = mpich-fint64
+	depends = gbtolib
+	depends = scalapack-mpich-ilp64
+	provides = ukrmol-out=r1.a36fb97
+	conflicts = ukrmol-out
+	source = ukrmol-out::git+https://github.com/banana-bred/Ukrmol-out.git
+	sha256sums = SKIP
+
+pkgname = ukrmol-out-fint64-git
