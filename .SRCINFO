@@ -1,0 +1,24 @@
+pkgbase = wxextract
+	pkgdesc = Extract WeChat 4.x conversations on Linux into compact LLM-ready text + interactive HTML report
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/boujuan/extract-wechat-messages-linux
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.12
+	depends = python-pycryptodome
+	depends = python-zstandard
+	depends = python-tiktoken
+	depends = python-rich
+	depends = python-rich-argparse
+	optdepends = sqlcipher: faster + WAL-correct decrypt (falls back to pure-Python AES otherwise)
+	optdepends = wechat-bin: the AUR build of WeChat 4.x this tool targets (only needed to extract live data)
+	optdepends = rsync: faster snapshot copy (usually already installed)
+	source = wxextract-0.7.1.tar.gz::https://github.com/boujuan/extract-wechat-messages-linux/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = d15143739ae5d5c71bffb477fa40c434a207bf307151b294db04ffd55d91d87f
+
+pkgname = wxextract
