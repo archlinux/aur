@@ -4,7 +4,7 @@
 
 pkgname=dpp-git
 _pkgname=DPP
-pkgver=10.1.4.r40.44bd22a5
+pkgver=10.1.5.r1.e5eeb464
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library - git version"
 arch=('x86_64')
