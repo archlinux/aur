@@ -1,7 +1,7 @@
 pkgbase = linux-devmgmt-git
 	pkgdesc = Linux device management tool
 	pkgver = r7.0ef905b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/actuallyaridan/linux-devmgmt
 	arch = x86_64
 	license = GPL-3.0-or-later
