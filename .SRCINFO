@@ -1,0 +1,21 @@
+pkgbase = moomoo-opend-bin
+	pkgdesc = Moomoo OpenD command-line daemon and GUI
+	pkgver = 10.6.6608
+	pkgrel = 1
+	url = https://openapi.moomoo.com/
+	arch = x86_64
+	license = custom:proprietary
+	depends = fuse2
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = moomoo-opend
+	provides = futu-opend
+	conflicts = moomoo-opend
+	conflicts = futu-opend
+	options = !debug
+	options = !strip
+	source = moomoo-opend-bin-10.6.6608.tar.gz::https://softwaredownload.futustatic.com/moomoo_OpenD_10.6.6608_Ubuntu18.04.tar.gz
+	sha256sums = 73116d7ba5adaf4e3d3fb6aaefb66466d2604ad73260cf75accc1d349e169dc8
+
+pkgname = moomoo-opend-bin
