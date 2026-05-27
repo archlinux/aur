@@ -2,14 +2,14 @@
 
 pkgname=vocab
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="English/Turkish vocabulary tool"
 arch=('any')
 url="https://github.com/whyghost/vocab"
 license=('MIT')
 depends=('bash' 'sqlite' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a24d9ace70e2e618782869c2158061a0e1f9da176ca528820373433398786612')
+sha256sums=('5efeea41f3d153ce556de969b7d9086f789ec1e93a67785a9285a49476b78b70')
 
 package() {
     cd "$pkgname-$pkgver"
