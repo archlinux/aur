@@ -3,7 +3,7 @@
 # by hand; the workflow overwrites this file on every release.
 
 pkgname=pollis
-pkgver=1.1.10
+pkgver=1.1.11
 pkgrel=1
 pkgdesc="End-to-end encrypted messaging"
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
   'xdg-utils'
 )
 source=("https://cdn.pollis.com/releases/v${pkgver}/pollis-v${pkgver}-linux.deb")
-sha256sums=('254b99216459b6eb86638bb9c3b2717daf9b3ac3e2b8950a4a5a7b59a6fc765c')
+sha256sums=('a96376470e34f6b23c35921981f2ff0350a89169ffe9f877eb360705647e1101')
 
 package() {
   # Extract the data archive from the .deb
