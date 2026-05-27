@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=swpui-bin
 _pkgname=swpui
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Search and replace, TUI style.'
 arch=(
@@ -22,8 +22,8 @@ provides=('swp')
 conflicts=('swpui-git' 'swpui')
 source_x86_64=("$pkgname-$pkgver-bin.tar.xz::$url/releases/download/v$pkgver/swpui-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("$pkgname-$pkgver-bin.tar.xz::$url/releases/download/v$pkgver/swpui-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('0df8d4d05aa0b0189cc87a903f25db927830aa86098b6ef1165656e1ed72fcca')
-sha256sums_aarch64=('75a84912fb263b8dbabf974a2999934498cf302d09a07578cb45488771f8ec20')
+sha256sums_x86_64=('ea9a26ca02587f2c0cb8f734abfba0301499224c5c5b564fddbe98a4e4104705')
+sha256sums_aarch64=('7f52d726a7989ff2330913ca4f0a87dfd5f768a486b82f1de2a49ee4e7c5ae46')
 
 package() {
     cd "swpui-$CARCH-unknown-linux-gnu"
