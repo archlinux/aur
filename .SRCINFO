@@ -1,5 +1,5 @@
 pkgbase = ausweisapp-git
-	pkgdesc = Der offizielle eID-Client des Bundes für den Online-Ausweis
+	pkgdesc = The official eID client of the German Federal Government for the online ID card
 	pkgver = 2.5.1.r87.g9bca2502
 	pkgrel = 1
 	url = https://www.ausweisapp.bund.de/
@@ -19,7 +19,7 @@ pkgbase = ausweisapp-git
 	depends = openssl
 	depends = pcsclite
 	depends = hicolor-icon-theme
-	optdepends = ccid: Unterstützt dedizierte USB-Kartenleser
+	optdepends = ccid: Support for dedicated USB devices
 	provides = ausweisapp
 	conflicts = ausweisapp
 	source = ausweisapp::git+https://github.com/Governikus/AusweisApp.git
