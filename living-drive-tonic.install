@@ -1,6 +1,6 @@
 post_install() {
     echo "安装完成！ 要启用并启动 living-drive-tonic 服务，请运行以下命令："
-    echo "sudo systemctl enable living-drive-tonic --now"
+    echo "  $ sudo systemctl enable living-drive-tonic --now"
 }
 post_upgrade() {
     [ -f /var/lib/living-drive-tonic/sqlite.db ] && /usr/bin/ldt migrate
@@ -16,5 +16,5 @@ pre_remove() {
 post_remove() {
     echo "living-drive-tonic 已被卸载。"
     echo "如果您不再需要保留数据，可以删除以下目录："
-    echo "rm -rf /var/lib/living-drive-tonic"
+    echo "  $ sudo rm -rf /var/lib/living-drive-tonic"
 }
