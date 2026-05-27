@@ -2,7 +2,7 @@
 
 pkgname=superslicer-nightly-git
 pkgver=2.3.55.5.r11543.gf2c9dd0d8c
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.) — nightly dev_27_62 branch"
 arch=("$CARCH")
@@ -17,11 +17,13 @@ conflicts=('superslicer' 'superslicer-prerelease' 'superslicer-git')
 source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git#branch=dev_27_62"
         "heatshrink-0.4.1.zip::https://github.com/atomicobject/heatshrink/archive/refs/tags/v0.4.1.zip"
         "libbgcode-source.zip::https://github.com/prusa3d/libbgcode/archive/6f43cb004ef3d3bda37dde49f6235e24d2717629.zip"
-        '0005-modern-deps.patch')
+        '0005-modern-deps.patch'
+        '0006-reset-vendorsync-best.patch')
 sha512sums=('SKIP'
             '910d1195536e41681dddf7468ad59f2343b530bed7b90cfb625a5b1c65c4e00cbf2c7ae28e9ef6a1e2895efe0a21fa2102017a773d238e86a8698b3cce1ffb96'
             'ace75273fee17a0d5cee6f6b6ae51861f0c323c3365b9ced711e9c21c1dc64e391ee29709dbe54922600ef8d1d6e1d963276f3bf32d6a77f8a66972f9e03b54e'
-            '33c4f39ea36276b72a3402b45529800ebf611185abcac8733ffc0149f517b532efcffff0433d8d7c3b52da227a08ea04c4909dd5ad6e315483a4087d5db582c7')
+            '33c4f39ea36276b72a3402b45529800ebf611185abcac8733ffc0149f517b532efcffff0433d8d7c3b52da227a08ea04c4909dd5ad6e315483a4087d5db582c7'
+            '7011caab129b7c5f560bd07e7a328b4df3a62ab2177a1c364b1cce103f5d4c1b6bc81a52384b4cff2b8aeecf6a220264477504e9001ed7646dbb0b8bd837377e')
 
 pkgver()
 {
@@ -58,6 +60,7 @@ prepare()
 
   # apply patches
   patch -Np1 -i "$srcdir/0005-modern-deps.patch"
+  patch -Np1 -i "$srcdir/0006-reset-vendorsync-best.patch"
 
   # build heatshrink (bundled, not in Arch repos)
   local _heatshrink_src="$srcdir/heatshrink-0.4.1"

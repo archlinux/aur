@@ -1,0 +1,26 @@
+VendorSync::best is a raw pointer into available_profiles, set during
+sort_available() and never cleared. PresetUpdater::reload_all_vendors()
+calls load_unused_vendors() multiple times — once for the user's
+~/.config/SuperSlicer/vendor/ entries (a single emplace_back + sort sets
+best=&[0]), then again for matching profiles copied from the resources
+tree into ~/.config/SuperSlicer/cache/vendor/. The second call does
+another emplace_back on the same VendorSync's vector, which may
+reallocate, freeing the buffer that `best` still points at. The first
+loop in sort_available() then reads best->config_version → SIGSEGV.
+
+Fix: reset best to nullptr at the top of sort_available(). The final
+loop already recomputes it.
+
+--- a/src/slic3r/Utils/PresetUpdater.cpp
++++ b/src/slic3r/Utils/PresetUpdater.cpp
+@@ -609,6 +609,10 @@ bool VendorSync::parse_tags(const std::string &json) {
+ }
+
+ void VendorSync::sort_available() {
++    // Reset cached pointer into available_profiles before recomputing: any
++    // prior emplace_back may have reallocated the vector, leaving `best`
++    // dangling, and the loop below would dereference it.
++    best = nullptr;
+     if (available_profiles.empty()) {
+         return;
+     }
