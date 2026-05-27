@@ -2,13 +2,13 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos
-_srctag=11.0-20260520
+_srctag=11.0-20260521
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=11.0.0
 _xaliaver=0.4.9
-pkgrel=1
+pkgrel=3
 epoch=1
 
 source=(
@@ -250,7 +250,6 @@ prepare() {
         SPIRV-Headers
         vkd3d
         vkd3d-proton
-        vkd3d-bratan
         Vulkan-Headers
         Vulkan-Utility-Libraries
         wine
@@ -347,7 +346,7 @@ package() {
         $(find "${_monodir}" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-b2sums=('633daeeb9b924760cd63097b8dc2e57c063efa970928331030d4327babbd5ba1f9c9a88107e9e22a92019b75d16d512857015a75d62bf8d15ce70eab7c133adf'
+b2sums=('aceb6396be3c1df2643f7d5173b164a5eb2bb742ddae430d143c993f8b3f4c7fd14d8d74b4cca28afaac5447552b16bd363f8c3dcb47e820db7c98523f165ca5'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         '76bdc625c6c14a6c3e3892649c1fbb7ed127d8ce90079a3f8d317c8e6fd567c763d71dd838f8422c921ed315e9d2735849b223a94a9517ad73d0734d313c1a6f'
