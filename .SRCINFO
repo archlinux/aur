@@ -19,6 +19,7 @@ pkgbase = ausweisapp-git
 	depends = openssl
 	depends = pcsclite
 	depends = hicolor-icon-theme
+	depends = llhttp
 	optdepends = ccid: Support for dedicated USB devices
 	provides = ausweisapp
 	conflicts = ausweisapp

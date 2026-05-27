@@ -15,6 +15,7 @@ depends=(
     'openssl'
     'pcsclite'
     'hicolor-icon-theme'
+    'llhttp'
 )
 makedepends=(
     'git'
