@@ -1,0 +1,18 @@
+pkgbase = tokscale-git
+	pkgdesc = CLI tool and TUI for tracking token usage and costs from AI coding agents (development branch)
+	pkgver = 2.1.3.r1525.g270d64c
+	pkgrel = 1
+	url = https://github.com/junhoyeo/tokscale
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = tokscale
+	conflicts = tokscale
+	source = tokscale-git::git+https://github.com/junhoyeo/tokscale.git#branch=main
+	b2sums = SKIP
+
+pkgname = tokscale-git
