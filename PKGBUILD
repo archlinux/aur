@@ -2,7 +2,7 @@
 pkgname=och
 pkgver=0.1.7
 pkgrel=1
-pkgdesc='Helper script for some OpenClaw TUI gaps'
+pkgdesc='Small helper for OpenClaw TUI session management.'
 arch=('any')
 url='https://github.com/shbernal/och'
 license=('MIT')

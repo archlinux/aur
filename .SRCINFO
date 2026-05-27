@@ -1,5 +1,5 @@
 pkgbase = och
-	pkgdesc = Helper script for some OpenClaw TUI gaps
+	pkgdesc = Small helper for OpenClaw TUI session management.
 	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/shbernal/och
