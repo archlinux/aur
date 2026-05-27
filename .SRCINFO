@@ -1,4 +1,4 @@
-pkgbase = libmpcdec-znver4-git
+pkgbase = musepack-znver4-git
 	pkgdesc = Musepack SV8 encoder/decoder with FAST_MATH fixes (git version, ZNVER4 optimized)
 	pkgver = 15feced
 	pkgrel = 1

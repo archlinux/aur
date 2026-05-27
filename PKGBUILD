@@ -1,3 +1,4 @@
+pkgbase="musepack-znver4-git"
 pkgname=('libmpcdec-znver4-git' 'musepack-tools-znver4-git')
 pkgver=15feced
 pkgrel=1
@@ -12,7 +13,7 @@ source=("git+https://github.com/tatsuz/musepack.git"
 sha256sums=('SKIP'
             'e906fbebb619672c4b945fc70101d41945e4628ba97d85b7c8bf4579b3c41a3f')
 
-# Explicit Zen4 CFLAGS (same as in patched CMakeLists)
+# Explicit Zen4 CFLAGS
 CFLAGS="-O3 -march=znver4 -mtune=znver4 -funroll-loops -falign-functions=32 -falign-loops=32 -fno-math-errno -fno-trapping-math -fno-semantic-interposition -Wall -pipe -fomit-frame-pointer -fno-plt -flto"
 CXXFLAGS="$CFLAGS"
 
