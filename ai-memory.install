@@ -1,0 +1,27 @@
+post_install() {
+    cat <<'EOF'
+ai-memory is installed.
+
+User service:
+  ai-memory --data-dir "$HOME/.local/share/ai-memory" --config "$HOME/.config/ai-memory/config.toml" init
+  systemctl --user enable --now ai-memory.service
+
+System service:
+  sudo systemd-sysusers /usr/lib/sysusers.d/ai-memory.conf
+  sudo systemd-tmpfiles --create /usr/lib/tmpfiles.d/ai-memory.conf
+  sudo -u ai-memory ai-memory --data-dir /var/lib/ai-memory --config /etc/ai-memory/config.toml init
+  sudo systemctl enable --now ai-memory.service
+
+Configure LLM/API keys in ~/.config/ai-memory/env for the user service, or
+/etc/ai-memory/env for the system service. See docs/install.md for details.
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+ai-memory was upgraded.
+
+If you use lifecycle hooks, refresh staged hook scripts for each agent:
+  ai-memory install-hooks --agent claude-code --apply
+EOF
+}

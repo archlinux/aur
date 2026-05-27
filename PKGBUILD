@@ -1,0 +1,63 @@
+# Maintainer: AkitaOnRails <boss@akitaonrails.com>
+
+pkgname=ai-memory
+pkgver=0.3.2
+pkgrel=1
+pkgdesc="Local-first long-term memory MCP server for AI coding agents"
+arch=('x86_64' 'aarch64')
+url="https://github.com/akitaonrails/ai-memory"
+license=('MIT')
+depends=('ca-certificates' 'gcc-libs' 'glibc')
+makedepends=('cargo')
+optdepends=(
+    'systemd: run ai-memory as a system or user service'
+)
+backup=('etc/ai-memory/config.toml' 'etc/ai-memory/env')
+install=ai-memory.install
+options=('!debug')
+conflicts=('ai-memory-bin')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('8bc7a9dd61affccab29c881144016900b70124bf59e9d7a179d6749c165c48ef')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=1.95
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=1.95
+    export CARGO_TARGET_DIR=target
+    export TAILWIND_SKIP=1
+    cargo build --frozen --release -p ai-memory-cli
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=1.95
+    export CARGO_TARGET_DIR=target
+    export TAILWIND_SKIP=1
+    export HOME="$srcdir/test-home"
+    mkdir -p "$HOME"
+    cargo test --frozen --release -p ai-memory-cli --bin ai-memory
+}
+
+package() {
+    cd "$pkgname-$pkgver"
+
+    install -Dm0755 target/release/ai-memory "$pkgdir/usr/bin/ai-memory"
+    install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm0644 docs/install.md "$pkgdir/usr/share/doc/$pkgname/install.md"
+    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    install -dm0755 "$pkgdir/usr/share/ai-memory"
+    cp -a hooks "$pkgdir/usr/share/ai-memory/"
+
+    install -Dm0644 crates/ai-memory-cli/templates/config.default.toml "$pkgdir/etc/ai-memory/config.toml"
+    install -Dm0640 packaging/env/ai-memory.env "$pkgdir/etc/ai-memory/env"
+    install -Dm0644 packaging/systemd/ai-memory.service "$pkgdir/usr/lib/systemd/system/ai-memory.service"
+    install -Dm0644 packaging/systemd/ai-memory-user.service "$pkgdir/usr/lib/systemd/user/ai-memory.service"
+    install -Dm0644 packaging/sysusers/ai-memory.conf "$pkgdir/usr/lib/sysusers.d/ai-memory.conf"
+    install -Dm0644 packaging/tmpfiles/ai-memory.conf "$pkgdir/usr/lib/tmpfiles.d/ai-memory.conf"
+}
