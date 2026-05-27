@@ -1,7 +1,7 @@
 # Maintainer: awowogei <hidden>
 pkgname=open-bin
 _pkgname=open
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A simpler alternative to xdg-open and xdg-mime"
 arch=('x86_64')

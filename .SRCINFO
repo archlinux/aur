@@ -1,6 +1,6 @@
 pkgbase = open-bin
 	pkgdesc = A simpler alternative to xdg-open and xdg-mime
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/awowogei/open
 	arch = x86_64
