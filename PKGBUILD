@@ -1,8 +1,13 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=cloudflare-wrangler
 _npmname=wrangler
-pkgver=4.94.0
+pkgver=4.95.0
 pkgrel=1
+# Source-of-truth commit on cloudflare/workers-sdk for this npm publish,
+# extracted from the npm provenance (sigstore) attestation. Used to fetch
+# LICENSE files reproducibly because upstream `wrangler@<ver>` tags often
+# lag the npm publish by hours/days.
+_license_commit=62dd39c6f175d6cefe4165d1329cbca42db37549
 pkgdesc="Command-line interface for building and deploying Cloudflare Workers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler"
@@ -16,12 +21,12 @@ provides=('wrangler2')
 # we still declare the file-level conflict so pacman warns the user.
 conflicts=('wrangler')
 # Upstream npm tarball ships no LICENSE; fetch dual-license files from the
-# monorepo pinned to the wrangler@<ver> tag so updates remain reproducible.
+# monorepo pinned to the provenance commit so updates remain reproducible.
 source=("$_npmname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz"
-        "LICENSE-APACHE-$pkgver::https://raw.githubusercontent.com/cloudflare/workers-sdk/$_npmname%40$pkgver/LICENSE-APACHE"
-        "LICENSE-MIT-$pkgver::https://raw.githubusercontent.com/cloudflare/workers-sdk/$_npmname%40$pkgver/LICENSE-MIT")
+        "LICENSE-APACHE-$pkgver::https://raw.githubusercontent.com/cloudflare/workers-sdk/$_license_commit/LICENSE-APACHE"
+        "LICENSE-MIT-$pkgver::https://raw.githubusercontent.com/cloudflare/workers-sdk/$_license_commit/LICENSE-MIT")
 noextract=("$_npmname-$pkgver.tgz")
-sha256sums=('4a21f27550a9d7130808cf2ca09c7ec4e0695949d45b9d020a641d6a8475ef86'
+sha256sums=('0822d9687f211fe0196e500c6c9f60a4f5d238ee7461e01ee98d8ef8f80c47bd'
             '62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a'
             '9bb3b077cc8628334bab25961223dd8207252c8a56aa054195be38f1c042aaf4')
 # wrangler bundles platform-specific native binaries (workerd, esbuild).
