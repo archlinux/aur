@@ -3,7 +3,7 @@
 _pkgname=ukrmol-in
 pkgname=${_pkgname}-fint64-git
 pkgver=r4.667ef6e
-pkgrel=1
+pkgrel=2
 _minCmake="3.10"
 pkgdesc="Inner region programs for UKRmol+, with some small patches. Also provides GBTOlib."
 arch=('x86_64')
@@ -51,6 +51,7 @@ build() {
     -D SCALAPACK_LIBRARIES='/opt/scalapack-mpich-fint64/lib/libscalapack.so'
     -D BLAS_LIBRARIES="${BLAS_LIBRARIES}"
     -D MPIEXEC_EXECUTABLE='/opt/mpich-fint64/bin/mpiexec'
+    -D SCALAPACK_LIBRARIES='/opt/scalapack-mpich-ilp64/lib/libscalapack.so'
   )
   cd "${srcdir}/${_pkgname}"
   cmake "${_cmakeOptions[@]}" .

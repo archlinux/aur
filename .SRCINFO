@@ -1,7 +1,7 @@
 pkgbase = ukrmol-in-fint64-git
 	pkgdesc = Inner region programs for UKRmol+, with some small patches. Also provides GBTOlib.
 	pkgver = r4.667ef6e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/banana-bred/Ukrmol-in
 	arch = x86_64
 	license = GPL-3.0-only
