@@ -1,1 +1,1 @@
-- Fix WezTerm not launching on Linux and macOS
+- Fix custom agent SSH auth being broken and marked as incomplete
