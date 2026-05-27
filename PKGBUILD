@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=crosvm-git
-pkgver=r11310.db857337c1
+pkgver=r11491.37871ccd34
 pkgrel=1
 pkgdesc="The Chrome OS Virtual Machine Monitor"
 url="https://chromium.googlesource.com/crosvm/crosvm"
@@ -26,7 +26,6 @@ prepare() {
   git config submodule."third_party/depot_tools".url "$srcdir/depot_tools"
   git config submodule."third_party/perfetto".url "$srcdir/perfetto"
   git -c protocol.file.allow=always submodule update
-  git -C third_party/minijail/ switch -d 42600f2
 }
 
 pkgver() {
@@ -43,7 +42,7 @@ package() {
   cd crosvm
   install -Dm755 target/release/crosvm "$pkgdir/usr/bin/crosvm"
   install -d "$pkgdir/usr/share/policy/crosvm/"
-  cp -r jail/seccomp/x86_64/* "$pkgdir/usr/share/policy/crosvm/"
+  cp -r jail/seccomp/$CARCH/* "$pkgdir/usr/share/policy/crosvm/"
   install -m644 -D LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -m644 -D README.md "$pkgdir"/usr/share/licenses/$pkgname/README.md
 }
