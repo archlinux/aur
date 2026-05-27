@@ -1,7 +1,7 @@
 # 版本号：build 时 pkgver() 从 CMakeLists.txt 读取；发 AUR 前可运行 ./packaging/aur/sync-aur.sh
 pkgname=neko-cloud-music
 pkgver=2026.526.22
-pkgrel=3
+pkgrel=4
 pkgdesc="Neko Cloud Music desktop client (Qt6/C++)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/FantasyNetworkCN/NekoMusicForPc"
@@ -9,7 +9,7 @@ license=('AGPL-3.0-or-later')
 depends=('qt6-base' 'qt6-multimedia' 'qt6-svg')
 makedepends=('cmake' 'ninja')
 
-_commit=af224e774af90cf8984c1d53bbd1e8bd819e5e9f
+_commit=2323643011488b3007df3b59401864b724a8c4e6
 source=("${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz")
 sha256sums=('SKIP')
 
