@@ -1,7 +1,7 @@
 pkgbase = grubforge
 	pkgdesc = A terminal UI for managing and customizing the GRUB bootloader — safely, intuitively, and beautifully
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jetomev/grubforge
 	arch = any
 	license = GPL3
