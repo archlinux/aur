@@ -4,15 +4,15 @@
 
 pkgname=appflowy-bin
 _pkgname=appflowy
-pkgver=0.12.0
-pkgrel=3
+pkgver=0.12.1
+pkgrel=1
 pkgdesc="AppFlowy is an open-source alternative to Notion. You are in charge of your data and customizations."
 arch=(x86_64)
 url="https://appflowy.io"
 license=('AGPL-3.0-only')
 provides=('appflowy')
 conflicts=('appflowy')
-depends=('gtk3' 'libkeybinder3' 'libnotify' 'xdg-user-dirs' 'gst-plugins-base-libs' 'zstd')
+depends=('gtk3' 'libkeybinder3' 'libnotify' 'xdg-user-dirs' 'gst-plugins-base-libs' 'zstd' 'glib2>=2.80')
 optdepends=('kdialog: For file picker on KDE plasma'
 	'zenity: bash dialog boxes')
 _src="https://github.com/AppFlowy-IO/AppFlowy"
@@ -20,7 +20,7 @@ source=(
     "$_src/raw/$pkgver/LICENSE"
     "$_src/releases/download/$pkgver/AppFlowy-$pkgver-linux-$arch.deb")
 b2sums=('6fa2a6adf165a614637f4aae5b323c427b99c2d13f9ab55eefae012dc3dbeebe5957cd2e2497e4c38426088a41dac89f6ac6284af6cf6a4a67a6780f409e8237'
-        '168fddb076926f3ecd617dcb1ad786c3e9da7c3571746ae31c94f51dfc4633d7b329d39b12da59dc87d2eec3712d4565c3c29fdbee545a726b415795d2852a23')
+        '1cf438a5953d54ea1122326d80f341b883067ec62f6c49b47bb8d3d14cabc9c38c8f97ffff5c121f6f306d0272a2fdfad18bfb61ec0c13554cf04ecc1a8f380c')
 
 package(){
     cd "$pkgdir"
