@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal overview for your local projects"
 
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('20d1b5222ae5725e16e453ab164da66c2c4951460703c614654784063cd9ad8f')
-sha256sums_aarch64=('d7cc4e66c973990c4584dc0eb5562a4acd6be337cc683b06f56c40d5fcea9f61')
+sha256sums_x86_64=('b86f315ad298c16763ab57622eda206077049629fb49747468fab59be8e12f62')
+sha256sums_aarch64=('cf4b1fbd0c597e12c2a927cdff26ea0ae011181026c940e13fe599eb60255478')
 
 
 package() {
