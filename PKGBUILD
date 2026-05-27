@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel < doppelhelix@gmail.com >
 
 pkgname=fortune-mod-de
-pkgver=0.37
+pkgver=0.38
 pkgrel=1
 pkgdesc="Fortune Cookies in german, from the Debian project"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
 )
 source=("$pkgname::git+$url.git#tag=upstream/$pkgver"
 )
-b2sums=('20edade24364bf66c4c4f5a6b9488591b0330cd5515ae7b411d954be95ea0cc43411d4274cd4e895a273b5cc6079603f5984be6a47e77ffbe66ed02ac14583e8')
+b2sums=('a2dcf1c9e692d2bea5cd7d089a6f9409b5ecaeed6e2167b2db3a26bf928681da4d0cbdd958c73ead1acbb98ec9123b21f70548b143fa8e8f10a5d1686f723b4d')
 
 build() {
     cd "$pkgname"
@@ -43,4 +43,4 @@ package() {
     rm -r de
 }
 
-# vim: set ts=4 sw=4 et:
+# vim: set ft=sh ts=4 sw=4 et:

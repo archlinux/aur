@@ -4,9 +4,11 @@
 # But not these files...
 !.gitignore
 !PKGBUILD
-!.SRCINFO
 !LICENSE
-!chroot-build.sh
 !.nvchecker.toml
-!*.asc
-!*/
+!/keys
+!/keys/pgp
+!/keys/pgp/*.asc
+!/LICENSES
+!/LICENSES/*.txt
+!REUSE.toml

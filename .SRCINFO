@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-de
 	pkgdesc = Fortune Cookies in german, from the Debian project
-	pkgver = 0.37
+	pkgver = 0.38
 	pkgrel = 1
 	url = https://salsa.debian.org/debian/fortunes-de
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = fortune-mod-de
 	makedepends = git
 	makedepends = recode
 	depends = fortune-mod
-	source = fortune-mod-de::git+https://salsa.debian.org/debian/fortunes-de.git#tag=upstream/0.37
-	b2sums = 20edade24364bf66c4c4f5a6b9488591b0330cd5515ae7b411d954be95ea0cc43411d4274cd4e895a273b5cc6079603f5984be6a47e77ffbe66ed02ac14583e8
+	source = fortune-mod-de::git+https://salsa.debian.org/debian/fortunes-de.git#tag=upstream/0.38
+	b2sums = a2dcf1c9e692d2bea5cd7d089a6f9409b5ecaeed6e2167b2db3a26bf928681da4d0cbdd958c73ead1acbb98ec9123b21f70548b143fa8e8f10a5d1686f723b4d
 
 pkgname = fortune-mod-de
