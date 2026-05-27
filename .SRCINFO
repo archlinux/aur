@@ -7,7 +7,7 @@ pkgbase = patata-git
 	license = MIT
 	makedepends = git
 	depends = alsa-utils
-	optdepends = notify-send
+	optdepends = libnotify
 	source = git+https://github.com/emiham/patata.git
 	sha256sums = SKIP
 
