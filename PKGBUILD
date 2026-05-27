@@ -2,7 +2,7 @@
 
 pkgname=linux-devmgmt-git
 pkgver=r7.0ef905b
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux device management tool"
 arch=('x86_64')
 url="https://github.com/actuallyaridan/linux-devmgmt"
