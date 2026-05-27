@@ -7,20 +7,25 @@ pkgbase = slimevr-server
 	license = MIT
 	license = Apache-2.0
 	makedepends = git
+	makedepends = java-runtime-headless-openjdk=17
 	makedepends = pnpm
 	makedepends = npm
-	makedepends = libgit2
 	makedepends = asar
 	makedepends = electron
-	makedepends = java-runtime-headless-openjdk=17
+	makedepends = cmake
+	makedepends = ninja
 	options = !lto
 	source = slimevr-server::git+https://github.com/SlimeVR/SlimeVR-Server.git#commit=81a46c2ea50ef7699a338795352ee8addece19fe
+	source = flatbuffers::git+https://github.com/google/flatbuffers.git#commit=203241ed3275625c8a25c4a1e7b86e3c0289c488
+	source = openvr::git+https://github.com/ValveSoftware/openvr.git#commit=91825305130f446f82054c1ec3d416321ace0072
 	source = solarxr-protocol::git+https://github.com/SlimeVR/SolarXR-Protocol.git#commit=5d572629c94f895574162225ec69443705ce35af
 	source = slimevr-gui-bin
 	source = slimevr-server-bin
 	source = slimevr-server.service
 	source = slimevr.desktop
 	source = argv-patch.js
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -37,3 +42,9 @@ pkgname = slimevr-gui
 	pkgdesc = GUI for SlimeVR Full Body Tracking System
 	depends = electron
 	depends = nodejs
+
+pkgname = slimevr-bindings-provider
+	pkgdesc = Utility application for binding common SlimeVR calibration actions to SteamVR controller actions
+	depends = gcc-libs
+	depends = glibc
+	depends = openvr
