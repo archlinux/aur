@@ -1,6 +1,6 @@
 pkgbase = pixelterm-c-bin
 	pkgdesc = A high-performance terminal image/video/book browser written in C, based on the Chafa library
-	pkgver = 1.7.27
+	pkgver = 1.7.28
 	pkgrel = 1
 	url = https://github.com/zouyonghe/PixelTerm-C
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = pixelterm-c-bin
 	conflicts = pixelterm-c
 	conflicts = pixelterm-bin
 	replaces = pixelterm-bin
-	source = LICENSE-1.7.27::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/v1.7.27/LICENSE
-	source = README-1.7.27.md::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/v1.7.27/README.md
+	source = LICENSE-1.7.28::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/v1.7.28/LICENSE
+	source = README-1.7.28.md::https://raw.githubusercontent.com/zouyonghe/PixelTerm-C/v1.7.28/README.md
 	sha256sums = a30b218bb0c27aa7264ea96b9bdbff18fb52702ad35d44212bcf019c391f83e5
 	sha256sums = 722d339dd28b193a4f06acb1b57b39c52c19b4ee5c94917dc30714c88e32197a
-	source_x86_64 = PixelTerm-C-x86_64-1.7.27.tgz::https://github.com/zouyonghe/PixelTerm-C/releases/download/v1.7.27/pixelterm-amd64-linux.tar.gz
-	sha256sums_x86_64 = 61dbd21c371a27d36069359fa692059efbeda46ff7f518f5a72b6a7ec2cee464
-	source_aarch64 = PixelTerm-C-aarch64-1.7.27.tgz::https://github.com/zouyonghe/PixelTerm-C/releases/download/v1.7.27/pixelterm-arm64-linux.tar.gz
-	sha256sums_aarch64 = 7f5e1c65bb9bbb630b80972fe27d16d689779ef09eedbe1786453fbc4a85a104
+	source_x86_64 = PixelTerm-C-x86_64-1.7.28.tgz::https://github.com/zouyonghe/PixelTerm-C/releases/download/v1.7.28/pixelterm-amd64-linux.tar.gz
+	sha256sums_x86_64 = e5e06d295376ccfb37ff8376ea54db4276dbc4bcf40d8927710edd4092c94f21
+	source_aarch64 = PixelTerm-C-aarch64-1.7.28.tgz::https://github.com/zouyonghe/PixelTerm-C/releases/download/v1.7.28/pixelterm-arm64-linux.tar.gz
+	sha256sums_aarch64 = c2167aed2e764039dc7bb7f63edec45bb1a2babc0e0963e48708718d132e7a23
 
 pkgname = pixelterm-c-bin
