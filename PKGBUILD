@@ -2,13 +2,13 @@
 
 pkgname=libadalang
 pkgdesc="A high performance semantic engine for the Ada programming language."
-pkgver=26.0w
-pkgrel=2
+pkgver=27.0w
+pkgrel=1
 epoch=2
 
-url=https://github.com/AdaCore/libadalang
-arch=(i686 x86_64)
-license=(Apache)
+url="https://github.com/AdaCore/libadalang"
+arch=(x86_64)
+license=(Apache-2.0)
 
 depends=(gnatcoll-gmp langkit)
 makedepends=(gprbuild
@@ -20,81 +20,117 @@ makedepends=(gprbuild
              python-docutils
              python-sphinx)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/libadalang-26.0w-20250409-16393-src.tar.gz)
-sha256sums=(35582ae22714fdbf0a8228dae2be2ca058568d550fec389a435873ce9ff64416)
+source=("https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2026/libadalang-src.tar.gz")
+sha256sums=('a829f8401c5b1f1786ba529ab2a7d3db1ac8bb8d241e55e14bc8f641df5e6c80')
 
 
 
 build()
 {
-  cd $srcdir/libadalang-26.0w-20250417-16134-src
+  cd "$srcdir/libadalang-27.0w-20260324-1687D-src"
 
   ADA_FLAGS="$CFLAGS"
   ADA_FLAGS="${ADA_FLAGS//-Wformat}"
   ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
 
 
-  python -m langkit.scripts.lkm generate 
+  python -m langkit.scripts.lkm generate
 
   python -m langkit.scripts.lkm build \
          --library-types=static,static-pic,relocatable
 
-#  make -C user_manual newhtml
-#  make -C dev_manual html
+
+  ## Build the OCaml bindings
+  #
+  dune build --root=build/ocaml
+
+
+  ## Make the docs ... TODO ~ Put docs in another package (libadalang-docs), since their creation depends on libadalang.
+#  make -C user_manual html
+#  make -C dev_manual  html
 }
 
 
 
 package()
 {
-  python_version=$(python - <<'EOF'
-import sys
-print(f"{sys.version_info.major}.{sys.version_info.minor}")
-EOF
-)
+  local _python_site
+  _python_site=$(python -c 'import site; print(site.getsitepackages()[0])')
 
-  cd $srcdir/libadalang-26.0w-20250417-16134-src
+
+  cd "$srcdir/libadalang-27.0w-20260324-1687D-src"
 
   python -m langkit.scripts.lkm install \
-            $pkgdir/usr --library-types=static,static-pic,relocatable
-  
-  
-  # Install the developers manual.
+            "$pkgdir/usr" --library-types=static,static-pic,relocatable
+
+
+  ## Install the users manual.
   #
-#  pushd dev_manual/_build/html
-
+#  pushd user_manual/_build/html
+#
 #  for file in $(find . -type f); do
-#      install -m 644 -D "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
+#      install -m 644 -D "$file" "$pkgdir/usr/share/doc/$pkgname/user_manual/$file"
 #  done
-
+#
 #  popd
 
 
-  # Install the license.
+  ## Install the developers manual.
   #
-  install -D -m644  \
-     LICENSE.txt    \
-     $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
+#  pushd dev_manual/_build/html
+#
+#  for file in $(find . -type f); do
+#      install -m 644 -D "$file" "$pkgdir/usr/share/doc/$pkgname/developer_manual/$file"
+#  done
+#
+#  popd
 
 
-  # Install the Python binding.
+  ## Install the license.
   #
-  cd build/python
-  python setup.py install --root=$pkgdir --optimize=1 --skip-build
+  install -Dm644 \
+     LICENSE.txt \
+     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 
-  mv $pkgdir/usr/python/libadalang \
-     $pkgdir/usr/lib/python$python_version/site-packages
 
-  rm -fr $pkgdir/usr/python
-  
-
-  # Fix ocaml bindings location.
+  ## Install the Python bindings.
   #
-  mkdir -p $pkgdir/usr/lib/ocaml
-  mv $pkgdir/usr/ocaml $pkgdir/usr/lib/ocaml/libadalang
-  
-  
-  # Rid Java files which are installed by langkit.
+  mkdir -p "$pkgdir$_python_site/"
+
+  mv "$pkgdir/usr/python/libadalang" \
+     "$pkgdir$_python_site/"
+
+  rm -fr "$pkgdir/usr/python"
+
+
+  ## Install the OCaml bindings.
   #
-  rm -fr  $pkgdir/usr/java
+  dune install \
+      --root=build/ocaml \
+      --prefix="$pkgdir/usr" \
+      --libdir="$pkgdir/usr/lib/ocaml"
+
+  rm -rf "$pkgdir/usr/ocaml"
+
+
+  ## Remove the empty Windows-specific directory, if present.
+  #
+  rmdir --ignore-fail-on-non-empty "$pkgdir/usr/lib/windows"
+
+
+  ## Install Java bindings source and JNI support files.
+  #
+  local _java_src="$pkgdir/usr/java"
+  local _java_dst="$pkgdir/usr/share/libadalang/java"
+
+  install -Dm644 "$_java_src/src/main/java/com/adacore/libadalang/Libadalang.java" \
+                 "$_java_dst/com/adacore/libadalang/Libadalang.java"
+
+  install -Dm644 "$_java_src/pom.xml" \
+                 "$_java_dst/pom.xml"
+
+  install -Dm644 "$_java_src/jni/jni_impl.c" \
+                 "$_java_dst/jni/jni_impl.c"
+
+  rm -rf "$pkgdir/usr/java"
 }
