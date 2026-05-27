@@ -14,7 +14,7 @@ source=(
   "sysusers-meter.conf"
   "fronius-bridge.service"
 )
-sha256sums=('9eed6e4d376b02ff1d7f3f9c363d6d11d796217409ce8556d2f298d7a37f4918'
+sha256sums=('16c532973dadc556f2cdda6dd9ba3a1b62f250dba8967ab1fa22b7777525080d'
             'ceb25291231fff17ab14840233f700878897bd74d7749bed3345d6e46d4f4f24'
             '9b07ac29013a6548f1ed08a8aa9565084ef273653444a5f4a5192c4389206bb9')
 backup=('etc/fronius-bridge/config.yaml')
