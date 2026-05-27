@@ -1,19 +1,19 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_npmname=cloudcmd
-_npmver=19.19.0
-
-pkgname=${_npmname}
+pkgname="cloudcmd"
 pkgdesc="Cloud Commander file manager for the web with console and editor."
-pkgver=${_npmver}
+pkgver=19.19.0
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/coderaiser/cloudcmd"
 _urlraw="https://raw.githubusercontent.com/coderaiser/cloudcmd/v${pkgver}"
 license=("MIT")
 
+_npmname=${pkgname}
+_npmver=${pkgver}
+
 replaces=("nodejs-${_npmname}")
-depends=("glibc" "nodejs" "python")
+depends=("glibc" "libgcc" "libstdc++" "nodejs" "python")
 makedepends=("npm" "jq")
 provides=("${_npmname}")
 
