@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=timr
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A TUI to organize your time: Pomodoro, Countdown, Timer"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3c3c2f5ccf98195ed48ace69abe925077abc2353fc8c601cbb5b08f0d8ad518a')
+sha256sums=('4c6ef2843b93469b357ebdc17b2edf18323234ee99807c649bdced998a9e6231')
 
 prepare() {
   mv "$pkgname-tui-$pkgver" "$pkgname-$pkgver"
