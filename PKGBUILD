@@ -1,23 +1,23 @@
 # Maintainer: Allen Zhong <pdev@zhoal.pw>
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 pkgname=tidb
-pkgver=8.5.1
+pkgver=8.5.6
 pkgrel=1
 pkgdesc='A distributed HTAP database compatible with the MySQL protocol'
 makedepends=('go' 'make')
 arch=('x86_64')
 url='https://github.com/pingcap/tidb'
-license=('Apache')
+license=('Apache-2.0')
 provides=('tidb-server')
 backup=(etc/tidb/tidb.toml)
-depends=('tikv')
+depends=('tikv-server')
 install=tidb.install
 source=(tidb-${pkgver}.tar.gz::https://github.com/pingcap/tidb/archive/v${pkgver}.tar.gz
         tidb.service
         tidb-sysusers.conf
         tidb-tmpfiles.conf
         tidb.toml)
-sha256sums=('5266d6d4657c4b8fe805e63f885afd2ed189c34ed25174f9ff17b8a3392208f0'
+sha256sums=('6d06151f0862cc43ae6d591d004924375477dcd89b913233d666b9853c4ac9cd'
             '22318c19bb89ff5a0852df5186cc1496214cd49f2264192413a326d1e8c93dc9'
             '2b147d80985e714d5f861baf76591104c07058b9b6fa573bf0676d675cf8fc20'
             '30ce83fbec8f102c30e438282bb5b18c026d08480f2386d68f1116c12481bf66'
