@@ -9,7 +9,7 @@
 # ------------------------------------------------------------------
 pkgname=python-kagglesdk
 _name=${pkgname#python-}
-pkgver=0.1.24
+pkgver=0.1.25
 pkgrel=1
 pkgdesc="Basic python bindings for Kaggle's external-facing endpoints"
 arch=('any')
@@ -18,7 +18,7 @@ license=('Apache')
 depends=('python' 'python-requests' 'python-protobuf')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('0b4d5e667f24516d21cd12e0437c5b4cd3bd671a50bdf780a3de7e5951baf9b7')
+sha256sums=('8a06baade9de8c58c7e27d65a21b46b7e501d1e6d6c713407c4cb5ce8b7c2f75')
 
 latestver() {
     curl -s "https://pypi.org/pypi/${_name}/json" | jq -r '.info.version'
