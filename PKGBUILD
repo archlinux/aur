@@ -1,7 +1,7 @@
 # Maintainer: Carlos Prieto <prietus@live.com>
 pkgname=mopytui-bin
 _pkgname=mopytui
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A feature-rich TUI client for Mopidy with cover art rendering (prebuilt binary)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 source=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64.tar.gz")
-sha256sums=('e30f7f4bd253ba2f1376aee5900e84afa83c6ffb2e178caf0a7869dc79318a32')
+sha256sums=('8bb6e3e88534507545e9557417d41edd9cfdcb24846d90f4108611adc3b5f67d')
 
 package() {
   cd "${srcdir}/${_pkgname}-linux-x86_64"
