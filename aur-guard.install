@@ -20,13 +20,13 @@ post_install() {
   ── Layer 2: makepkg shim (optional, strongly recommended) ────────────────────
   This is the ONLY checkpoint that runs BEFORE makepkg executes the build,
   so it is the only one that can prevent a malicious prepare()/build() payload.
-  Activate it once with:
+  Activate it once (run as root — Arch wiki convention "# cmd"):
 
-      sudo install -m0755 /usr/share/aur-guard/makepkg-shim /usr/local/bin/makepkg
+      # install -m0755 /usr/share/aur-guard/makepkg-shim /usr/local/bin/makepkg
 
-  Verify:
-      which makepkg          # → /usr/local/bin/makepkg
-      makepkg --version      # should still print the real makepkg version
+  Verify (as your normal user):
+      which makepkg          --> /usr/local/bin/makepkg
+      makepkg --version      should still print the real makepkg version
 
   Subsequent upgrades of this package will refresh the active shim automatically.
   Uninstalling this package will also remove the active shim automatically
@@ -69,8 +69,8 @@ pre_remove() {
         cat >&2 << EOF
 
   aur-guard :: $_active_shim exists but is NOT our shim — leaving it alone.
-              If you put it there yourself and want it gone:
-                  sudo rm $_active_shim
+              If you put it there yourself and want it gone, run as root:
+                  # rm $_active_shim
 
 EOF
     fi
