@@ -1,6 +1,6 @@
 # Maintainer: EIonTusk <eiontusk@github.com>
 pkgname=hyprlang2lua
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Convert legacy Hyprland hyprlang (.conf) configuration to the Hyprland 0.55+ Lua format'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 checkdepends=('lua')  # luac -p drives the golden-file syntax gate; tests still pass without it
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('53bd614282ada0038e09473f4c43de75042b59b807c8fc68f23b029a6061922f')
+sha256sums=('5fc87d703957853369f6ad8abbd0edccd0b9749268ef6eafa0b6eff8495ef0e9')
 
 prepare() {
   cd "$pkgname-$pkgver"

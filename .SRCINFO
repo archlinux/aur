@@ -1,6 +1,6 @@
 pkgbase = hyprlang2lua
 	pkgdesc = Convert legacy Hyprland hyprlang (.conf) configuration to the Hyprland 0.55+ Lua format
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/EIonTusk/hyprlang2lua
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hyprlang2lua
 	checkdepends = lua
 	makedepends = go
 	depends = glibc
-	source = hyprlang2lua-0.4.0.tar.gz::https://github.com/EIonTusk/hyprlang2lua/archive/v0.4.0.tar.gz
-	sha256sums = 53bd614282ada0038e09473f4c43de75042b59b807c8fc68f23b029a6061922f
+	source = hyprlang2lua-0.4.1.tar.gz::https://github.com/EIonTusk/hyprlang2lua/archive/v0.4.1.tar.gz
+	sha256sums = 5fc87d703957853369f6ad8abbd0edccd0b9749268ef6eafa0b6eff8495ef0e9
 
 pkgname = hyprlang2lua
