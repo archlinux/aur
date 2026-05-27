@@ -1,6 +1,6 @@
 pkgbase = archculars
 	pkgdesc = A modern and fast AUR seeker
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/alpwrk/archculars
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = archculars
 	makedepends = rust
 	makedepends = cargo
 	options = !lto
-	source = archculars-0.1.1.tar.gz::https://github.com/alpwrk/archculars/archive/v0.1.1.tar.gz
-	sha256sums = e4a25a6d9eb9c053e0b9894824777a96680b20be21f268ac5b9ccc778b1c389f
+	source = archculars-0.1.2.tar.gz::https://github.com/alpwrk/archculars/archive/v0.1.2.tar.gz
+	sha256sums = 82f896c5c9f41d84a9ed5b68a87fa757abb5a2b9f045ea3360a089bb6cfd5a74
 
 pkgname = archculars
