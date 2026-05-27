@@ -1,6 +1,6 @@
 pkgbase = baml-bin
 	pkgdesc = BAML - the language for agents (prebuilt binary)
-	pkgver = 0.11.0.alpha.4166
+	pkgver = 0.11.0.alpha.4281
 	pkgrel = 1
 	url = https://github.com/BoundaryML/baml
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = baml-bin
 	license = Apache-2.0
 	provides = baml
 	conflicts = baml
-	source_x86_64 = https://github.com/BoundaryML/baml/releases/download/baml-language-0.11.0-alpha.4166/baml-language-0.11.0-alpha.4166-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 35816a1493a36758cd67193fda0738415d52b5edf7d921932dbd389f1b82c335
-	source_aarch64 = https://github.com/BoundaryML/baml/releases/download/baml-language-0.11.0-alpha.4166/baml-language-0.11.0-alpha.4166-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 2d6b609b651a2542557d4d67a42df7410ea7f4d56f03bee827a40fb58ac07e1d
+	source_x86_64 = https://github.com/BoundaryML/baml/releases/download/baml-language-0.11.0-alpha.4281/baml-language-0.11.0-alpha.4281-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 39882dd5cad860dda97902280c76cf9bb31be27615f2d72ecc6b58aefc3e1965
+	source_aarch64 = https://github.com/BoundaryML/baml/releases/download/baml-language-0.11.0-alpha.4281/baml-language-0.11.0-alpha.4281-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f3e1b1421b50d1c012d7bc28d04ab61240c3b3ae3d22c8f7b281bce626ab980e
 
 pkgname = baml-bin
