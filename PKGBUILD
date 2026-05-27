@@ -5,11 +5,11 @@
 
 _pkgname=pytorch
 pkgbase="python-${_pkgname}"
-pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
+pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm" "${pkgbase}-xpu" "${pkgbase}-opt-xpu")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 arch=('x86_64')
 url="https://pytorch.org"
@@ -66,6 +66,16 @@ makedepends=(
   rocm-toolchain
   rocprofiler
   roctracer
+  procps-ng
+  oneccl
+  onedpl
+  level-zero-headers
+  level-zero-loader
+  intel-oneapi-common
+  intel-oneapi-dpcpp-cpp
+  intel-oneapi-mkl-sycl
+  intel-pti
+  intel-compute-runtime
   shaderc
   vulkan-headers
 )
@@ -252,6 +262,14 @@ prepare() {
   cp -r "${_pkgname}" "${_pkgname}-opt-cuda"
   cp -r "${_pkgname}" "${_pkgname}-rocm"
   cp -r "${_pkgname}" "${_pkgname}-opt-rocm"
+  cp -r "${_pkgname}" "${_pkgname}-xpu"
+  cp -r "${_pkgname}" "${_pkgname}-opt-xpu"
+
+  # Handle glog 0.6 vs 0.7 mismatch
+  local _suffix
+  for _suffix in xpu opt-xpu; do
+    sed -i '1s/^/#ifndef GLOG_USE_GLOG_EXPORT\n#define GLOG_USE_GLOG_EXPORT\n#endif\n\n/' ${_pkgname}-${_suffix}/c10/util/logging_is_google_glog.h
+  done
 }
 
 # Common build configuration, called in the build() function.
@@ -328,6 +346,7 @@ build() {
   export USE_CUDA=0
   export USE_CUDNN=0
   export USE_ROCM=0
+  export USE_XPU=0
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   python -m build --wheel --no-isolation
 
@@ -337,6 +356,7 @@ build() {
   export USE_CUDA=0
   export USE_CUDNN=0
   export USE_ROCM=0
+  export USE_XPU=0
   echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   python -m build --wheel --no-isolation
 
@@ -346,6 +366,7 @@ build() {
   export USE_CUDA=1
   export USE_CUDNN=1
   export USE_ROCM=0
+  export USE_XPU=0
   cd "${srcdir}/${_pkgname}-cuda"
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   python -m build --wheel --no-isolation
@@ -355,6 +376,7 @@ build() {
   export USE_CUDA=1
   export USE_CUDNN=1
   export USE_ROCM=0
+  export USE_XPU=0
   _prepare
   echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   python -m build --wheel --no-isolation
@@ -368,6 +390,7 @@ build() {
   export USE_CUDA=0
   export USE_CUDNN=0
   export USE_ROCM=1
+  export USE_XPU=0
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
@@ -379,9 +402,36 @@ build() {
   export USE_CUDA=0
   export USE_CUDNN=0
   export USE_ROCM=1
+  export USE_XPU=0
   echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
+  python -m build --wheel --no-isolation
+
+  # Strip the problematic format-security flag that breaks SYCL CMake scripts
+  export CFLAGS="${CFLAGS/-Werror=format-security/}"
+  export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+  # Prepare oneAPI compilers and libaries
+  source /opt/intel/oneapi/setvars.sh
+
+  cd "${srcdir}/${_pkgname}-xpu"
+  echo "Building with xpu and without non-x86-64 optimizations"
+  _prepare
+  export USE_CUDA=0
+  export USE_CUDNN=0
+  export USE_ROCM=0
+  export USE_XPU=1
+  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
+  python -m build --wheel --no-isolation
+
+  cd "${srcdir}/${_pkgname}-opt-xpu"
+  echo "Building with xpu and with non-x86-64 optimizations"
+  _prepare
+  export USE_CUDA=0
+  export USE_CUDNN=0
+  export USE_ROCM=0
+  export USE_XPU=1
+  echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   python -m build --wheel --no-isolation
 }
 
@@ -463,6 +513,41 @@ package_python-pytorch-opt-rocm() {
   provides=(python-pytorch=${pkgver} python-pytorch-rocm=${pkgver})
 
   cd "${srcdir}/${_pkgname}-opt-rocm"
+  _package
+}
+package_python-pytorch-xpu() {
+  pkgdesc+=" (with Intel XPU)"
+  depends+=(
+    intel-oneapi-dpcpp-cpp
+    intel-oneapi-mkl-sycl
+    intel-compute-runtime
+    intel-pti
+    level-zero-loader
+    onednn
+    oneccl
+  )
+  conflicts=(python-pytorch)
+  provides=(python-pytorch=${pkgver})
+
+  cd "${srcdir}/${_pkgname}-xpu"
+  _package
+}
+
+package_python-pytorch-opt-xpu() {
+  pkgdesc+=" (with Intel XPU and AVX2 CPU optimizations)"
+  depends+=(
+    intel-oneapi-dpcpp-cpp
+    intel-oneapi-mkl-sycl
+    intel-compute-runtime
+    intel-pti
+    level-zero-loader
+    onednn
+    oneccl
+  )
+  conflicts=(python-pytorch)
+  provides=(python-pytorch=${pkgver} python-pytorch-xpu=${pkgver})
+
+  cd "${srcdir}/${_pkgname}-opt-xpu"
   _package
 }
 
