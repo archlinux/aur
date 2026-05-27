@@ -2,7 +2,7 @@
 
 _name="libavif"
 pkgname="lib32-${_name}"
-pkgver=1.4.1
+pkgver=1.4.2
 _libargparse=ee74d1b53bd680748af14e737378de57e2a0a954 # should match cmake/Modules/LocalLibargparse.cmake
 pkgrel=1
 pkgdesc="Library for encoding and decoding .avif files (32-bit)"
@@ -58,7 +58,9 @@ build() {
   export CXXFLAGS+=" -m32"
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  local cmake_arguments=(
+  local cmake_options=(
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
     -G 'Unix Makefiles'
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
@@ -79,20 +81,21 @@ build() {
   )
   
   cd "${srcdir}"
-  cmake -B "${_pkgsrc}/build" -S "${_pkgsrc}" "${cmake_arguments[@]}"
-  cmake --build "${_pkgsrc}/build"
+  cmake "${cmake_options[@]}"
+  cmake --build "${cmake_options[1]}"
 }
 
 check() {
   local ctest_exclude_regex=""
-  local ctest_arguments=(
+  local ctest_options=(
+    --test-dir "${_pkgsrc}/build"
     --output-on-failure
     --parallel "$(nproc)"
     --exclude-regex "${ctest_exclude_regex}"
   )
 
   cd "${srcdir}"
-  ctest --test-dir "${_pkgsrc}/build" "${ctest_arguments[@]}"
+  ctest "${ctest_options[@]}"
 }
 
 package() {
