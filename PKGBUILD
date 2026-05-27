@@ -1,13 +1,13 @@
 # Maintainer: patcito
 pkgname=prettymux
-pkgver=0.2.38
+pkgver=0.2.39
 pkgrel=1
 pkgdesc="GPU-accelerated terminal multiplexer"
 arch=('x86_64')
 url="https://github.com/patcito/prettymux"
 license=('GPL-3.0-only')
 options=('!debug')
-depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'json-glib')
+depends=('gtk4' 'libadwaita' 'json-glib')
 makedepends=('meson' 'ninja' 'gcc' 'zig' 'git')
 source=(
   "prettymux::git+https://github.com/patcito/prettymux.git"
