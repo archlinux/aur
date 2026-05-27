@@ -3,7 +3,7 @@
 
 _pkgname=openvpn3-linux
 pkgname=openvpn3-git
-pkgver=27.r0.gf0c5ff7
+pkgver=27.r8.gc4816a9
 pkgrel=1
 pkgdesc='OpenVPN 3 Linux client'
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,6 @@ source=(
   "git+https://github.com/chriskohlhoff/asio.git"
   'openvpn3.rule'
   'sysusers-openvpn3.conf'
-  'fix-protobuf-nodiscard.patch'
 )
 sha256sums=(
   'SKIP'
@@ -37,7 +36,6 @@ sha256sums=(
   'SKIP'
   'ec0b8e28ae77b4b074d3eb8a084626e6dcfc587a07bef5d53fe1c6e160c0fc01'
   '045e914bb6fff5a082314dfc805bb511c9a80170619fa1e94a07825fa977c90a'
-  'SKIP'
 )
 install=openvpn3-git.install
 
@@ -53,7 +51,6 @@ prepare() {
   git config submodule.openvpn3-core.url "$srcdir/openvpn3"
   git config submodule.vendor/asio.url "$srcdir/asio"
   git -c protocol.file.allow=always submodule update
-  patch -Np1 -i "$srcdir/fix-protobuf-nodiscard.patch"
 }
 
 build() {
