@@ -4,7 +4,7 @@
 pkgname=amass
 pkgver=5.1.1
 pkgrel=1
-pkgdesc="In-depth Attack Surface Mapping and Asset Discovery"
+pkgdesc="In-depth attack surface mapping and asset discovery"
 arch=('x86_64')
 url="https://owasp.org/www-project-amass"
 license=('Apache-2.0')

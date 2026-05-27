@@ -1,5 +1,5 @@
 pkgbase = amass
-	pkgdesc = In-depth Attack Surface Mapping and Asset Discovery
+	pkgdesc = In-depth attack surface mapping and asset discovery
 	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://owasp.org/www-project-amass
