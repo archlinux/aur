@@ -1,6 +1,6 @@
 pkgbase = agent-one-bin
 	pkgdesc = AgentOne is a powerful AI agent that gives you freedom to choose your models and control your data.
-	pkgver = 0.0.20
+	pkgver = 0.0.21
 	pkgrel = 1
 	url = https://www.agent-one.dev
 	install = agent-one-bin.install
@@ -19,7 +19,7 @@ pkgbase = agent-one-bin
 	conflicts = agent-one
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/AgentOne-Dev/agent-one-public/releases/download/agent-one-v0.0.20/AgentOne_0.0.20_amd64.deb
-	sha256sums_x86_64 = 54e9d0d47e390302a88551c784430d798c0a29484d8e53a24878e5df54f02202
+	source_x86_64 = https://github.com/AgentOne-Dev/agent-one-public/releases/download/agent-one-v0.0.21/AgentOne_0.0.21_amd64.deb
+	sha256sums_x86_64 = 3edeaa283e31c6e92ee8f4f08957f2c1784cd0134361bf7f6efc1a6e30c0f200
 
 pkgname = agent-one-bin
