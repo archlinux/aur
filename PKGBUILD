@@ -2,18 +2,19 @@
 
 pkgname=termtypist
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Keyboard-first terminal typing trainer inspired by Monkeytype'
 arch=('x86_64')
 url='https://github.com/hase9awa/termtypist'
 license=('GPL-3.0-or-later')
-depends=('alsa-lib' 'gcc-libs')
+depends=('alsa-lib' 'gcc-libs' 'sqlite')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('c3dd80c72664c9a383b1f077452e576aae039143fb520b899abbc4e425c2b569')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+  sed -i 's/^rusqlite = { version = "0\.32", features = \["bundled"\] }$/rusqlite = "0.32"/' Cargo.toml
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
