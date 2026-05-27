@@ -11,6 +11,7 @@ license=('MIT')
 depends=(
     'python'
     'pyside6'
+    'qt6-svg'
     'python-pynput'
     'python-requests'
     'python-keyring'
