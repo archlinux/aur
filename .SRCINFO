@@ -1,0 +1,23 @@
+pkgbase = ai-memory-bin
+	pkgdesc = Local-first long-term memory MCP server for AI coding agents (prebuilt binary)
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/akitaonrails/ai-memory
+	install = ai-memory.install
+	arch = x86_64
+	license = MIT
+	depends = ca-certificates
+	depends = gcc-libs
+	depends = glibc
+	optdepends = systemd: run ai-memory as a system or user service
+	provides = ai-memory=0.3.2
+	conflicts = ai-memory
+	conflicts = ai-memory-debug
+	options = !strip
+	options = !debug
+	backup = etc/ai-memory/config.toml
+	backup = etc/ai-memory/env
+	source_x86_64 = ai-memory-0.3.2-x86_64.tar.gz::https://github.com/akitaonrails/ai-memory/releases/download/v0.3.2/ai-memory-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3558cb192a1010a1d57e5627b25317e8a216884d3a9c97b60ff2f2b6c9b9b002
+
+pkgname = ai-memory-bin
