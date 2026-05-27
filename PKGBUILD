@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=dusklight
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
@@ -15,7 +15,7 @@ replaces=('tp-dusk')
 source=("git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/encounter/aurora.git"
 	)
-sha256sums=('da3145d2795552aa319fd13eed8b42089cb1e07b9643521ad514a461b9cc53ca'
+sha256sums=('42a4ce5a9854d8f98811f148b8df724b43983729ae33c275717ca6df8f072dd1'
             'SKIP')
 
 prepare() {
@@ -49,7 +49,7 @@ package() {
 	ln -s /usr/share/${pkgname}/res "${pkgdir}/usr/lib/${pkgname}/res"
 	ln -s /usr/lib/${pkgname}/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
 
-	install -Dm644 ${pkgname}/platforms/freedesktop/${pkgname}.desktop "${pkgdir}/usr/share/applications/dev.twilitrealm.dusk.desktop"
+	install -Dm644 ${pkgname}/platforms/freedesktop/dev.twilitrealm.dusk.desktop "${pkgdir}/usr/share/applications/dev.twilitrealm.dusk.desktop"
 	#install -Dm644 ${pkgname}/res/icon.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/dev.twilitrealm.dusk.png"
 	install -Dm644 ${pkgname}/res/icon.png "${pkgdir}/usr/share/pixmaps/dev.twilitrealm.dusk.png"
 	sed -i 's/Icon=dusklight/Icon=dev.twilitrealm.dusk/g' "${pkgdir}/usr/share/applications/dev.twilitrealm.dusk.desktop"
