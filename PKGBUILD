@@ -26,4 +26,6 @@ package() {
   install -Dm644 dist/kotoba.js "$pkgdir/usr/share/vicinae-kotoba/kotoba.js"
   install -Dm644 package.json "$pkgdir/usr/share/vicinae-kotoba/package.json"
   install -Dm644 assets/icon.png "$pkgdir/usr/share/vicinae-kotoba/icon.png"
+  install -dm755 "$pkgdir/usr/share/vicinae-kotoba/assets"
+  install -Dm644 assets/icon.png "$pkgdir/usr/share/vicinae-kotoba/assets/icon.png"
 }

@@ -5,10 +5,11 @@ _install_for_user() {
   local user="$2"
   local dst="$home/.local/share/vicinae/extensions/kotoba"
   [ -d "$home" ] || return 0
-  mkdir -p "$dst"
+  mkdir -p "$dst/assets"
   cp "$_src/kotoba.js" "$dst/"
   cp "$_src/package.json" "$dst/"
   cp "$_src/icon.png" "$dst/"
+  cp "$_src/icon.png" "$dst/assets/"
   chown -R "$user:$user" "$dst"
 }
 
