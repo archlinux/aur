@@ -1,6 +1,6 @@
 pkgbase = himitsu-bako
 	pkgdesc = Encrypted clipboard-backed secret storage using age
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/shichirouji21/himitsu-bako
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = himitsu-bako
 	provides = himitsu-bako
 	conflicts = himitsu-bako-bin
 	conflicts = himitsu-bako-git
-	source = himitsu-bako-1.0.0.tar.gz::https://github.com/shichirouji21/himitsu-bako/archive/v1.0.0.tar.gz
-	sha256sums = 99c0aae63c90920ff3624c259b6cb7c1a17fe9eb3cb5c1a6372031a7cd26e5a2
+	source = himitsu-bako-1.1.0.tar.gz::https://github.com/shichirouji21/himitsu-bako/archive/v1.1.0.tar.gz
+	sha256sums = 1d22e9b1ef157a6cccd0cab082d6f90ef49246cdefe45588ee390022047483e5
 
 pkgname = himitsu-bako

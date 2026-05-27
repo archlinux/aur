@@ -1,6 +1,6 @@
 # Maintainer: shichirouji21 <shichirouji21@users.noreply.github.com>
 pkgname=himitsu-bako
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Encrypted clipboard-backed secret storage using age'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('wl-clipboard: Wayland clipboard support'
 provides=('himitsu-bako')
 conflicts=('himitsu-bako-bin' 'himitsu-bako-git')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('99c0aae63c90920ff3624c259b6cb7c1a17fe9eb3cb5c1a6372031a7cd26e5a2')
+sha256sums=('1d22e9b1ef157a6cccd0cab082d6f90ef49246cdefe45588ee390022047483e5')
 
 prepare() {
   cd "$pkgname-$pkgver"
