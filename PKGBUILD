@@ -1,7 +1,7 @@
 # Maintainer: MaoYaoTang <maoyaotang@163.com>
 
 pkgname=liveplayer-iptv
-pkgver=1.1.1
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="基于 mpv 简单看在线直播,在线更新直播源"
 arch=('x86_64')

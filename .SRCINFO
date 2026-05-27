@@ -1,6 +1,6 @@
 pkgbase = liveplayer-iptv
 	pkgdesc = 基于 mpv 简单看在线直播,在线更新直播源
-	pkgver = 1.1.1
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/maoyaotang12/LivePlayer
 	arch = x86_64
