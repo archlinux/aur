@@ -2,7 +2,7 @@
 pkgname=archculars
 pkgver=0.1.1
 pkgrel=1
-pkgdesc="A pacseek successor written in Rust"
+pkgdesc="A modern and fast AUR seeker"
 arch=('x86_64')
 url="https://github.com/alpwrk/archculars"
 license=('MIT')
