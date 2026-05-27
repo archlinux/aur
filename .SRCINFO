@@ -1,6 +1,6 @@
 pkgbase = cursor-nightly-bin
 	pkgdesc = AI-first coding environment (nightly channel, bundled Electron)
-	pkgver = 3.6.6
+	pkgver = 3.6.12
 	pkgrel = 1
 	url = https://www.cursor.com
 	arch = x86_64
@@ -22,13 +22,13 @@ pkgbase = cursor-nightly-bin
 	conflicts = cursor-bin
 	conflicts = cursor-early-access-bin
 	conflicts = cursor-ide-bin
-	noextract = cursor_3.6.6_amd64.deb
+	noextract = cursor_3.6.12_amd64.deb
 	options = !strip
 	options = !debug
-	source = cursor_3.6.6_amd64.deb::https://downloads.cursor.com/production/3f10403086781d5b0f56e42812ba28c053a44ec4/linux/x64/deb/amd64/deb/cursor_3.6.6_amd64.deb
+	source = cursor_3.6.12_amd64.deb::https://downloads.cursor.com/production/51897b9a1bad794adb4341746dcb2799071f1780/linux/x64/deb/amd64/deb/cursor_3.6.12_amd64.deb
 	source = cursor.desktop
 	source = cursor-launcher.sh
-	sha512sums = deca102a9f15eaa2a80323cfa93d389816889394f0452f8e03bfcc252981b7359b6b26d4b4c3bf6c46e7997981e8c619f96010fca42d35a6c7c234d6ba855dd9
+	sha512sums = 0f1a4ddf83804b7ec4e6ab8ee62968cbc8e7b4bf89c6d8e13ce66169bccfcb08362f5aa7e8b1c6aa7b8971ff25f48b144cc713240647b763d10f0e6cbd3e6888
 	sha512sums = 037aa5d878eddb06fc1d5be788e7bc64545773decacb34228053be746dfc33237371ad49cc331dac8e3437d7d885a9bc1564d0f114fc22e308827b33d0c55ad8
 	sha512sums = 9defecd35fd033a484642732605264cc00faf5791d852234d9705bf9ac005c76173780cd496208e4150685ac9ddbb73c8eb87cd5141526dd4521d455342e8233
 
