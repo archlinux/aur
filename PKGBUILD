@@ -7,8 +7,8 @@
 _pkgname=shed-sh
 pkgname="$_pkgname-git"
 pkgdesc='A Linux shell with a powerful line editor and IPC socket extensibility (development version)'
-pkgver=0.20.2.r10.g02a8e54
-pkgrel=2
+pkgver=0.22.0.r0.gafc5d3d
+pkgrel=1
 url='https://github.com/km-clay/shed'
 install=shed.install
 arch=('aarch64' 'x86_64')
@@ -52,8 +52,6 @@ package() {
 
   install -Dm0755 -t "$pkgdir/usr/bin" \
     target/release/shed
-  install -Dm0644 -t "$pkgdir/usr/share/shed/doc" \
-    doc/*.txt
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     ./*.md
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/examples" \
