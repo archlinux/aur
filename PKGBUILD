@@ -1,6 +1,6 @@
 # Maintainer: Kaylin Aurora <kaylin@cmdly.dev>
 pkgname=aria-fm-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Native Spotify desktop client — Go + Wails3 + librespot, FFI-first transport"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('aria.fm')
 # Binary is already stripped at build (-ldflags "-s -w").
 options=('!strip')
 source=("aria-${pkgver}.tar.gz::https://gitlab.com/api/v4/projects/cmdly%2Faria.fm/packages/generic/aria/v${pkgver}/aria-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('5e680af2979043e32a2f8f5b13020646b31cd01c615fa1aa351d2095b5e2988f')
+sha256sums=('05632b3e503688da38cfa9a0c3dea6d05f11afb3b611af238fa87474e84503af')
 
 package() {
   cd "${srcdir}/aria-v${pkgver}-linux-x86_64"
