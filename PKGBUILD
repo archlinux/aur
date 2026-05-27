@@ -1,6 +1,6 @@
 #  Maintainer: Skyler <sm+aur@skym.fi> 
 pkgname=discrakt-bin
-pkgver=3.4.2
+pkgver=3.4.4
 pkgrel=1
 pkgdesc="The Trakt/Plex Discord Rich Presence that you didn't know you needed"
 arch=('x86_64' 'aarch64')
