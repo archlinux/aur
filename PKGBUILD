@@ -35,22 +35,25 @@ package() {
     # 2. Распаковываем содержимое в pkgdir
     bsdtar -xf "${data_tar}" -C "${pkgdir}/"
 
-    # 3. Удаляем Debian-специфичные файлы (не нужны на Arch)
+    # 3. Удаляем Debian-специфичные файлы
     rm -rf "${pkgdir}/usr/share/lintian"
     rm -f "${pkgdir}/etc/init.d/kerio-kvc"
 
-    # 4. Распаковываем EULA (он в .gz формате)
+    # 4. Распаковываем EULA (он в .gz формате) — ИСПРАВЛЕННАЯ ВЕРСИЯ
     local eula_gz="${pkgdir}/usr/share/doc/kerio-control-vpnclient/EULA.txt.gz"
     if [[ -f "$eula_gz" ]]; then
+        # Создаём целевую директорию явно
+        mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+        # Распаковываем и копируем
         gunzip -c "$eula_gz" > "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
         chmod 644 "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
+        # Опционально: удаляем оригинальный .gz, чтобы не дублировать
+        # rm -f "$eula_gz"
+    else
+        echo "WARNING: EULA.txt.gz not found at expected path, skipping license install"
     fi
 
     # 5. Фиксим права на исполняемые файлы
-    chmod 755 "${pkgdir}/usr/sbin/kvpncsvc"
+    chmod 755 "${pkgdir}/usr/sbin/kvpncsvc" 2>/dev/null || true
     find "${pkgdir}/usr/lib" -name "*.so*" -exec chmod 755 {} \; 2>/dev/null || true
-
-    # 6. Пересоздаём кэш динамических библиотек (для проприетарных .so)
-    # Это делается в post_install, но можно и здесь для надёжности
-    # (ldconfig вызовется автоматически при установке через pacman)
 }
