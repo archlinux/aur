@@ -5,14 +5,15 @@
 # LICENSE file alongside it. The modulejail package it builds is licensed
 # under GPL-3.0-only by its upstream author (declared in license= below).
 pkgname=modulejail
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc='Proactively shrink Linux kernel-module attack surface by blacklisting unused modules'
 arch=('any')
 url='https://github.com/jnuyens/modulejail'
 license=('GPL-3.0-only')
-depends=('kmod')
-optdepends=('util-linux: logger(1) for syslog integration')
+depends=()
+optdepends=('kmod: provides modprobe, which consumes the generated blacklist file at runtime'
+            'util-linux: logger(1) for syslog integration')
 makedepends=('sequoia-sqv')
 # Source filenames deliberately avoid the .sig/.sign/.asc extensions so
 # makepkg's built-in gpg verifier does NOT auto-trigger; the sole verifier
@@ -23,7 +24,7 @@ makedepends=('sequoia-sqv')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tarball-signature::${url}/releases/download/v${pkgver}/v${pkgver}.tar.gz.sig"
         'modulejail-signing-key.gpg')
-sha256sums=('00bcf1ddd8e46f183782822b7a710209b405ab708afade61a028306340e2972e'
+sha256sums=('ea6c3df2fcdef4905a77fd86f316ca04f7ccfb2ffd7f0c9b995e1af043afd64a'
             'SKIP'
             '5b4f8bef3957b8d8f91475aeb40f398dc87b550b7bdc8458b72661112b033433')
 
