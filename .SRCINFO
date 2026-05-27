@@ -1,7 +1,7 @@
 pkgbase = codexbar-cli
 	pkgdesc = AI coding provider usage tracker CLI
 	pkgver = 0.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/steipete/CodexBar
 	arch = x86_64
 	arch = aarch64

@@ -1,7 +1,7 @@
 # Maintainer: Davide Carnemolla <herbrant@protonmail.com>
 pkgname=codexbar-cli
 pkgver=0.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc='AI coding provider usage tracker CLI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/steipete/CodexBar'
@@ -18,7 +18,20 @@ sha256sums=('14293556b79940745123d0160c71d27ed0e9fe9b8a848093f3ed78f4853caafe')
 sha256sums_x86_64=('cb638ba68fd7ef2e4b43b4899fd66720a330b9458346fb66207e9b5813b6e6f3')
 sha256sums_aarch64=('78cfe45b5cd77a985362f749d1995742518cee706efc1931218f02c583f13681')
 package() {
-    install -Dm755 CodexBarCLI "${pkgdir}/usr/bin/codexbar"
+    # Binary crashes when argv[0] has no directory component (Swift Foundation
+    # bug: uses argv[0] to resolve its own path for resource lookup).
+    # Fix: install real binary to /usr/lib/codexbar-cli/ and expose a wrapper
+    # at /usr/bin/codexbar that exec's with an absolute argv[0].
+    install -Dm755 CodexBarCLI "${pkgdir}/usr/lib/${pkgname}/codexbar"
+    # VERSION must live beside the binary (binary resolves it relative to argv[0] dir)
+    install -Dm644 VERSION "${pkgdir}/usr/lib/${pkgname}/VERSION"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 VERSION "${pkgdir}/usr/share/${pkgname}/VERSION"
+
+    # Wrapper: exec passes full absolute path as argv[0]
+    install -dm755 "${pkgdir}/usr/bin"
+    cat > "${pkgdir}/usr/bin/codexbar" << 'EOF'
+#!/bin/sh
+exec /usr/lib/codexbar-cli/codexbar "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/codexbar"
 }
