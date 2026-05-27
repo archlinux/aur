@@ -1,0 +1,14 @@
+pkgbase = createrepo-rs
+	pkgdesc = Pure Rust RPM repository metadata generator — dnf/yum-compatible, zero FFI, single static binary
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/jamesarch/createrepo_rs
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cargo
+	makedepends = rust>=1.76
+	source = createrepo-rs-0.1.8.tar.gz::https://github.com/jamesarch/createrepo_rs/archive/v0.1.8.tar.gz
+	sha256sums = 9f93784bf1d9504827c17009288f1f122e81a5975e651102405e0985be401f14
+
+pkgname = createrepo-rs
