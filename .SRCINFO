@@ -1,11 +1,14 @@
 pkgbase = passkeyd
 	pkgdesc = Opinionated WebAuthn authenticator backed by a TPM
 	pkgver = 1.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bjn7/passkeyd
 	arch = x86_64
 	license = GPL3
 	depends = tpm2-tss
+	depends = systemd
+	conflicts = openrc
+	conflicts = runit
 	options = !debug
 	backup = etc/passkeyd.conf
 	backup = usr/share/passkeyd/theme.conf
