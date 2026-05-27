@@ -1,6 +1,6 @@
 # Maintainer: canfro <francodvo@gmail.com>
 pkgname=erwin-intermediate-git
-pkgver=r2.73e0c02
+pkgver=r4.3c767f3
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/erwin-lang/erwin-intermediate.git"

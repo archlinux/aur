@@ -1,6 +1,6 @@
 pkgbase = erwin-intermediate-git
 	pkgdesc = The Erwin intermediate language compiler
-	pkgver = r2.73e0c02
+	pkgver = r4.3c767f3
 	pkgrel = 1
 	url = https://github.com/erwin-lang/erwin-intermediate.git
 	arch = x86_64
