@@ -1,6 +1,6 @@
 # Maintainer: Niels Desmet <parasait@proton.me>
 pkgname=awesomenes
-pkgver="0.3"
+pkgver="0.4"
 pkgrel=1
 pkgdesc="A NES emulator written in C"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('meson')
 depends=('sdl2-compat' 'libinih')
 source=("https://gitlab.com/ParaSait/awesomenes/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7a758d85bdb7631e0a0e47f05600956689cb872342ec30af329e922351ce671a')
+sha256sums=('eaf3b4bea27d65961832b48524952c4238a4443e83435063bfcc905e4aaa3ae0')
 sourcedir="${pkgname}-${pkgver}"
 
 build() {
