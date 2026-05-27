@@ -17,7 +17,9 @@ conflicts=({uutils-,}coreutils)
 source=("${pkgname%-git}::git+${url}.git"
 "tee.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11943.patch"
 "${url}/releases/download/latest-commit/docs.tar.zst")
-b2sums=('SKIP' 'SKIP' 'SKIP')
+b2sums=('SKIP'
+        '9b54db80ef99627fee08dc748e7d24a8082699dda59d84a61170cd289f823e283ec96156599366d4a87acb2ab7554187d8ca68991f958ecada7157f60b287822'
+        '5739c34cbed5543bcbbe6e0c892a3ed9755500455f7bf06c089116801d857736823129f24f7fed52db814bd516ed1b36aafee426dbcfddadcc3186af99f879c2')
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -36,7 +38,6 @@ package(){
   make install PROG_PREFIX=uu- UTILS="arch kill more uptime hostname"
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
   cp -r ../share "$pkgdir"/usr && cd "$pkgdir"/usr/share
-  rm -r bash-completion elvish
   for _b in arch kill more uptime hostname;do
     rm man/man1/${_b}.1
     rm fish/vendor_completions.d/${_b}.fish
