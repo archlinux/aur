@@ -1,12 +1,12 @@
 pkgbase = is-my-code-cursed
 	pkgdesc = A CLI Tool That Roasts Your Code Using AI
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/HimC29/is-my-code-cursed
 	arch = any
 	license = MIT
 	depends = python
-	source = is-my-code-cursed-1.1.0.tar.gz::https://github.com/HimC29/is-my-code-cursed/archive/v1.1.0.tar.gz
+	source = is-my-code-cursed-1.2.0.tar.gz::https://github.com/HimC29/is-my-code-cursed/archive/v1.2.0.tar.gz
 	sha256sums = fa307324b2629006084bef8881b524694bada8feec1d48283b59f2e1a1b42f39
 
 pkgname = is-my-code-cursed

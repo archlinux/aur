@@ -1,5 +1,5 @@
 pkgname=is-my-code-cursed
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A CLI Tool That Roasts Your Code Using AI"
 arch=('any')
