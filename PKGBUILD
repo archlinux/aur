@@ -1,6 +1,6 @@
 # Maintainer: lemachinarbo <your@email.com>
 pkgname=ddev-clim
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Advanced Terminal UI for managing DDEV instances"
 arch=('x86_64' 'aarch64')
@@ -27,4 +27,4 @@ package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 ddev-clim.service "$pkgdir/usr/lib/systemd/user/ddev-clim.service"
 }
-sha256sums=('793a4029add0b8f658bb89087a43b081e4a92dd50d21be9b3fca35f6e05ec566')
+sha256sums=('11249e7de7d7a632f56348da308a63dbc9108f5579108ebb2367d6ffafaaed6f')
