@@ -1,7 +1,7 @@
 # Maintainer: Juliandev02 <julian@strawberryfoundations.org>
 
 pkgname=clean-my-keys
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Utility to safely lock and clean your keyboard without breaking your workflow"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'rust')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6226501662980b983fd30253dfa50618e5ae79276d06e409eada2119cb8a7c65')
+sha256sums=('6b5153d11b534bfa56ba40305bcaf650228d391bcc8a9a7418fbde25299f86cd')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
