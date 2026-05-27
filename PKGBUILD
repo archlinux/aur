@@ -3,17 +3,16 @@
 pkgname=('lua-luasodium' 'lua51-luasodium' 'lua52-luasodium' 'lua53-luasodium' 'lua54-luasodium')
 _pkgbase='luasodium'
 pkgver=2.4.1
-pkgrel=2
-arch=('x86_64' 'i686')
-url='https://github.com/jprjr/luasodium'
+pkgrel=3
+arch=('x86_64' 'i686' 'aarch64')
+url='https://buffering.party/software/luasodium/'
 license=('MIT')
 depends=('libsodium')
 _lua_current=5.5
 _lua_next=5.6
 makedepends=('cmake' "lua>=${_lua_current}" "lua<${_lua_next}" 'lua51' 'lua52' 'lua53' 'lua54')
-source=("https://github.com/jprjr/luasodium/releases/download/v${pkgver}/luasodium-${pkgver}.tar.gz")
+source=("${url}luasodium-${pkgver}.tar.gz")
 
-sha256sums=('7f7e61fff2c8cf30d4e8248cee482c9b2028ac5cbeebe78341ef1ecb95914b02')
 
 _build() {
     LUA_VERSION="$1"
@@ -68,3 +67,7 @@ package_lua54-luasodium() {
 
     _package 5.4
 }
+
+sha512sums=(
+'1f3bcb1d9d91300ba3cd45915edc565667770662a5c4fd6b064b42458ae52551bf8c28fa3c9df4834058d734d765482116323ec028c91e48746dd529bc168892'
+)
