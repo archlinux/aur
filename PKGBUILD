@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=revpdf-bin
 pkgver=4.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="The Best Free Offline PDF Editor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pawandeep-prog/revpdf-release"

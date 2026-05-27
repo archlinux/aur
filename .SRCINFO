@@ -1,7 +1,7 @@
 pkgbase = revpdf-bin
 	pkgdesc = The Best Free Offline PDF Editor
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Pawandeep-prog/revpdf-release
 	arch = x86_64
 	arch = aarch64
