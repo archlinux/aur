@@ -1,6 +1,6 @@
 # Maintainer: Subhamoy Biswas <hey@neosubhamoy.com>
 pkgname=neodlp
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Modern video/audio downloader based on yt-dlp with browser integration"
 arch=('x86_64' 'aarch64')
@@ -43,6 +43,6 @@ package() {
 }
 
 source_x86_64=("NeoDLP_${pkgver}_amd64.deb::${url}/releases/download/v$pkgver/NeoDLP_${pkgver}_amd64.deb")
-sha256sums_x86_64=('ae9f10e3ee2211ce38d69f2f7ac5d211e017dd263aa344b86bd0a2f66bd5567f')
+sha256sums_x86_64=('a187630c9d7b9a15d5a22c3fcc807fe5eb15f7a144366971bbc05d2eebc29406')
 source_aarch64=("NeoDLP_${pkgver}_arm64.deb::${url}/releases/download/v$pkgver/NeoDLP_${pkgver}_arm64.deb")
-sha256sums_aarch64=('0bb3b735ae89025279ee9c551c62e0ce21ac95d2278beface5c5d5cef866cfe3')
+sha256sums_aarch64=('e78a567c6788fa3f3a8ed8c32f0b9dc93a4ed5d13acc1a5fd274ce959467806a')
