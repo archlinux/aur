@@ -18,6 +18,8 @@ pkgbase = ttmt-beta
 	depends = python-xlib
 	depends = python-secretstorage
 	depends = python-jeepney
+	depends = python-psutil
+	depends = python-yaml
 	depends = xdotool
 	source = git+https://github.com/flossbud/ToonTown-MultiTool.git#tag=v0.6.0-alpha.3
 	sha256sums = SKIP

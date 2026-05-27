@@ -20,6 +20,8 @@ depends=(
     'python-xlib'
     'python-secretstorage'
     'python-jeepney'
+    'python-psutil'
+    'python-yaml'
     'xdotool'
 )
 makedepends=('git')
