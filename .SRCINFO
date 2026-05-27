@@ -1,6 +1,6 @@
 pkgbase = eclipse-installer
 	pkgdesc = Automates the installation and update of Eclipse development environments
-	pkgver = 2025.12
+	pkgver = 2026.03
 	pkgrel = 1
 	url = https://wiki.eclipse.org/Eclipse_Installer
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = eclipse-installer
 	options = !strip
 	source = eclipse-installer.desktop
 	sha256sums = bb24472355cdd2dff1d9af45190d5fadf989f071458ff33a19e723b66fe85d84
-	source_aarch64 = https://download.eclipse.org/oomph/epp/2025-12/R/eclipse-inst-jre-linux-aarch64.tar.gz
-	sha256sums_aarch64 = fa7e06ec1534b8214e8282b6afd0994a2a953d0c1cd4de3730249ea70aa3e2a6
-	source_x86_64 = https://download.eclipse.org/oomph/epp/2025-12/R/eclipse-inst-jre-linux64.tar.gz
-	sha256sums_x86_64 = 52eef873734e18226eb69856d8c02a8965f91311c28ee9cfa5e797bab333fec2
+	source_aarch64 = https://download.eclipse.org/oomph/epp/2026-03/R/eclipse-inst-jre-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 77c3cbda39eeb1164d3fb9c46760ed45c29751ab7abccefc5a4210c1aea80b22
+	source_x86_64 = https://download.eclipse.org/oomph/epp/2026-03/R/eclipse-inst-jre-linux64.tar.gz
+	sha256sums_x86_64 = 2378eda6e0a278c53ca460b1ffd04ea1134ea9fb272be7de7bfc132efb8ba10c
 
 pkgname = eclipse-installer
