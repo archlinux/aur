@@ -2,15 +2,15 @@
 # Co-Maintainer: Skooma Bwoy <skooma.bwoy@keemail.me>
 
 pkgname=numaplayer
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Studiologic Numa Player: standalone and vst3 plugin"
 arch=('x86_64')
 url="https://www.studiologic-music.com/products/numaplayer"
 license=('custom:proprietary')
 depends=('alsa-lib' 'fontconfig' 'freetype2' 'curl' 'gcc-libs')
 source=("${pkgname}_${pkgver}_amd64.deb::https://www.studiologic-music.com/api/get-files/NumaPlayer_${pkgver}.deb")
-sha256sums=('d51fabd0fd2b7f4dae878b293f9c4b5e65c02ad769dd8f29273943e5fe546e0a')
+sha256sums=('faba097d45a05469736ad2b57d4af403a01ed72d21a6747021d479529165577d')
 options=('!strip')
 
 prepare() {

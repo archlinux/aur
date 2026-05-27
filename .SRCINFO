@@ -1,7 +1,7 @@
 pkgbase = numaplayer
 	pkgdesc = Studiologic Numa Player: standalone and vst3 plugin
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://www.studiologic-music.com/products/numaplayer
 	arch = x86_64
 	license = custom:proprietary
@@ -11,7 +11,7 @@ pkgbase = numaplayer
 	depends = curl
 	depends = gcc-libs
 	options = !strip
-	source = numaplayer_2.2.0_amd64.deb::https://www.studiologic-music.com/api/get-files/NumaPlayer_2.2.0.deb
-	sha256sums = d51fabd0fd2b7f4dae878b293f9c4b5e65c02ad769dd8f29273943e5fe546e0a
+	source = numaplayer_2.2.1_amd64.deb::https://www.studiologic-music.com/api/get-files/NumaPlayer_2.2.1.deb
+	sha256sums = faba097d45a05469736ad2b57d4af403a01ed72d21a6747021d479529165577d
 
 pkgname = numaplayer
