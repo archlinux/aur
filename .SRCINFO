@@ -11,6 +11,7 @@ pkgbase = tokscale
 	makedepends = pkg-config
 	depends = glibc
 	depends = gcc-libs
+	options = !lto
 	source = tokscale-2.1.3.tar.gz::https://github.com/junhoyeo/tokscale/archive/refs/tags/v2.1.3.tar.gz
 	b2sums = 2a4cf781c49e7992b7434ef448cdae1a7ffb07bd511486c382eb715732b9077316b99eefbded0095ea74ef58b11985fc82435898c50533bb8933c55609272195
 
