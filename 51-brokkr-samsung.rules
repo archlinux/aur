@@ -1,1 +1,7 @@
-SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0660", GROUP="uucp", TAG+="uaccess"
+# Samsung download/flash mode devices (vendor 04e8)
+# 6601 - download mode
+# 685d - Odin/flash mode
+# 68c3 - recovery/flash mode
+SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", ATTR{idProduct}=="6601", MODE="0660", GROUP="uucp", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", ATTR{idProduct}=="685d", MODE="0660", GROUP="uucp", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", ATTR{idProduct}=="68c3", MODE="0660", GROUP="uucp", TAG+="uaccess"
