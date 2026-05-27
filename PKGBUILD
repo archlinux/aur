@@ -9,7 +9,7 @@ license=('MIT' 'Apache')
 depends=('gcc-libs')
 makedepends=('cargo' 'cmake' 'clang')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1dd372315ff56dbf2db2504cb7cd3fe3c08aeaa3c6acb2db052c3d8e622c7fa3')  # replace with `sha256sum v1.0.0.tar.gz` output at release time
+sha256sums=('c0a24b5985c1626e953042c2fd95d341d0d05ebb7de15dc08c967e2678d59a42')  # replace with `sha256sum v1.0.0.tar.gz` output at release time
 
 prepare() {
     cd "$pkgname-$pkgver"

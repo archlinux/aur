@@ -12,6 +12,6 @@ pkgbase = narwhal
 	makedepends = clang
 	depends = gcc-libs
 	source = narwhal-1.0.0.tar.gz::https://github.com/Nonanti/narwhal/archive/v1.0.0.tar.gz
-	sha256sums = 1dd372315ff56dbf2db2504cb7cd3fe3c08aeaa3c6acb2db052c3d8e622c7fa3
+	sha256sums = c0a24b5985c1626e953042c2fd95d341d0d05ebb7de15dc08c967e2678d59a42
 
 pkgname = narwhal
