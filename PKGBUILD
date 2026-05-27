@@ -16,8 +16,8 @@
 
 pkgname=codex-desktop-linux
 # _appver MUST match flake.nix's codexVersion — same versioned zip.
-_appver=26.519.41501
-pkgver=26.519.41501
+_appver=26.519.81530
+pkgver=26.519.81530
 pkgrel=1
 pkgdesc="Codex Desktop for Linux — distsystem soft-fork (versioned-zip pinned, no auto-updater)"
 arch=('x86_64')
@@ -78,7 +78,7 @@ source=(
     "Codex-$_appver.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-$_appver.zip"
 )
 sha256sums=('SKIP'
-            '7e46af58373b9acf799296b83e7c3cf19a5255d263b30cb437b495c35e9628bd')
+            '4c11416391b0d12f2739784db7c102481f7610888d34cf09140f2928b52952f4')
 # install.sh runs 7z on the payload itself; let it own the extraction.
 noextract=("Codex-$_appver.zip")
 
