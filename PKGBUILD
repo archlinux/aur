@@ -13,13 +13,13 @@
 # Originally based on a Debian Squeeze package
 
 pkgname=zoneminder
-pkgver=1.38.1
+pkgver=1.38.2
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://zoneminder.com/'
 license=('GPL-2.0-only AND MIT')
-depends=('ffmpeg' 'libvlc' 'polkit'
+depends=('arp-scan' 'ffmpeg' 'libvlc' 'polkit'
          'php-apcu' 'php-fpm' 'php-gd'
          'perl-archive-zip' 'perl-data-dump' 'perl-date-manip' 'perl-datetime' 'perl-dbd-mysql' 'perl-device-serialport' 'perl-file-slurp'
          'perl-image-info' 'perl-libwww' 'perl-mime-lite' 'perl-mime-tools' 'perl-net-sftp-foreign' 'perl-number-bytes-human' 'perl-php-serialization'
@@ -56,7 +56,7 @@ source=("https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.ta
         'zoneminder-httpd.conf'
         'zoneminder-php.ini'
         'fcgiwrap-multiwatch.service')
-b2sums=('845d18b0dda8262714f78d8748f98408ee627d4a9cd1186c1f6810b12ce91a0a41cf9008ef56a47c1e1604e90c1afe75df1296acd21e7a99e7cb7ea7be40035b'
+b2sums=('57cc81c7e605af1d1d8278019145cfc230a2fae43efdf6c7469aa7d74b244ceb0245fd73d15ae3d3198f131efb90150cf73c0ecbd094db11f8559a9697fc3219'
         'a6d2c6960515f5b3402c306eb28710d00abce19d07a38a76a841928b69573cb30608f50e7ad458dd8771bb9267e56df68c1037019abb7b5eec4d990a33f9c234'
         '7d5b18e1a7a21c967128745591870cd5bf5b380c55a62f7c465f7cf1fd718961fb392b5bc80c941bf9a9819e7c87829ca6217d19505c655ffdc859e50662659c'
         '79fc6560c09127b6b9e0af7ffaaac7180882a0798abb5238fd824470f41921ab47e22e3f55c24f7ad79f0a03c722e42a5720cf633835e9e326ae7666f07b6bbc'
@@ -98,7 +98,8 @@ build() {
           -DZM_CACHEDIR=/var/lib/${pkgname}/cache \
           -DZM_WEBDIR=/usr/share/webapps/${pkgname}/www \
           -DZM_CGIDIR=/usr/share/webapps/${pkgname}/cgi-bin \
-          -DZM_WEB_USER=http .
+          -DZM_WEB_USER=http \
+          -Wno-dev .
 
     cmake --build .
 }
