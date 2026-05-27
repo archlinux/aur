@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=forum-scout
 epoch=1
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="Arch focused forum search tool"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 checkdepends=('desktop-file-utils')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('adc7c2285923366e8afc53da52521cfb740a0051913d0c9dc1c05eae65024c00')
+sha256sums=('1d4581c54adced9ad346bca1e4d3cd30196d47f4fb4d998a1aaae7ed6917e87d')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -31,6 +31,7 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 forums.conf -t "$pkgdir/usr/share/$pkgname/"
   install -Dm644 translations/*.json -t "$pkgdir/usr/share/$pkgname/translations/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
