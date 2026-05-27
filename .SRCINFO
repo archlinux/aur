@@ -1,15 +1,15 @@
 pkgbase = dbschema
 	pkgdesc = Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.
-	pkgver = 10.1.4
+	pkgver = 10.2.1
 	pkgrel = 1
 	url = http://www.dbschema.com/
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = dbschema-10.1.4.tar.gz::https://dbschema.com/download/dbschema_linux_10_1_4.tar.gz
+	source = dbschema-10.2.1.tar.gz::https://dbschema.com/download/dbschema_linux_10_2_1.tar.gz
 	source = dbschema.desktop
 	source = https://dbschema.com/img/favicon/favicon.svg
-	md5sums = c28fd53473a672a221893dc51fc3009c
+	md5sums = fffa0f7fac38ce4accf64e817c4b0efc
 	md5sums = fd70b65c057119c0290bf9f4b51be830
 	md5sums = f52f8d76f63ae513fda70b4ef53ebbc5
 
