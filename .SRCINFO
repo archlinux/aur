@@ -1,6 +1,6 @@
 pkgbase = aodv-git
-	pkgdesc = Userspace RFC 3561 ad hoc routing control-plane daemon
-	pkgver = 0.2.0.r24.g9b2bf2d
+	pkgdesc = Userspace AODV control-plane implementation based on RFC 3561
+	pkgver = 0.2.1.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/Fierthraix/aodv-rs
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = aodv-git
 	depends = glibc
 	provides = aodv
 	conflicts = aodv
-	source = aodv::git+ssh://git@github.com/Fierthraix/aodv-rs.git#branch=master
+	conflicts = aodv-bin
+	source = aodv::git+https://github.com/Fierthraix/aodv-rs.git
 	sha256sums = SKIP
 
 pkgname = aodv-git

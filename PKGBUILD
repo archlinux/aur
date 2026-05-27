@@ -1,54 +1,37 @@
-# Maintainer: Lucas Rooyakkers <lucas.rooyakkers@pm.me>
-
 pkgname=aodv-git
-pkgver=0.2.0.r24.g9b2bf2d
+_pkgname=aodv
+_binname=aodv
+pkgver=0.2.1.r0.g0000000
 pkgrel=1
-pkgdesc="Userspace RFC 3561 ad hoc routing control-plane daemon"
+pkgdesc='Userspace AODV control-plane implementation based on RFC 3561'
 arch=('x86_64' 'aarch64')
-url="https://github.com/Fierthraix/aodv-rs"
+url='https://github.com/Fierthraix/aodv-rs'
 license=('MIT OR Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
-provides=('aodv')
-conflicts=('aodv')
-source=("aodv::git+ssh://git@github.com/Fierthraix/aodv-rs.git#branch=master")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-bin")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd aodv
-
-  printf "%s.r%s.g%s" \
-    "$(awk -F\" '/^version = / { print $2; exit }' Cargo.toml)" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short=7 HEAD)"
+  cd "${_pkgname}"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {
-  cd aodv
-
-  export RUSTUP_TOOLCHAIN=stable
-  cargo generate-lockfile
+  cd "${_pkgname}"
+  export CARGO_HOME="${srcdir}/cargo-home"
   cargo fetch --locked
 }
 
 build() {
-  cd aodv
-
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
-}
-
-check() {
-  cd aodv
-
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo test --frozen --all-targets --all-features
+  cd "${_pkgname}"
+  export CARGO_HOME="${srcdir}/cargo-home"
+  cargo build --release --locked --all-features
 }
 
 package() {
-  cd aodv
-
-  install -Dm755 "target/release/aodv" "$pkgdir/usr/bin/aodv"
+  cd "${_pkgname}"
+  install -Dm755 "target/release/${_binname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
