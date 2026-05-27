@@ -29,8 +29,6 @@ package() {
         install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -Dm644 "$srcdir/package/share/$pkgname-fatrace.service" \
         "$pkgdir/usr/lib/systemd/system/$pkgname-fatrace.service"
-    install -Dm644 "$srcdir/package/share/$pkgname-fatrace.socket" \
-        "$pkgdir/usr/lib/systemd/system/$pkgname-fatrace.socket"
 
     # sysusers 配置
     install -Dm644 "$srcdir/package/share/$pkgname.sysusers" \
