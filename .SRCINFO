@@ -1,0 +1,16 @@
+pkgbase = perl-mojo-sql
+	pkgdesc = Safely generate and compose SQL statements
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/Mojo-SQL
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-mojolicious>=9.41
+	depends = perl>=5.020
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojo-SQL-0.02.tar.gz
+	md5sums = f9520127a71f030427a6e05ce90a8022
+	sha512sums = 47fb6222f48e621ab339ccdbd5ec5431b934bd797a410463a51366e94f105ee369bb70f01d03ea873b88d859c7dfade1dbe077d9ca2a9f78b9150d2c930a56d6
+
+pkgname = perl-mojo-sql
