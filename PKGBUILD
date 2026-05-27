@@ -20,6 +20,8 @@ source=("${pkgname%-git}::git+${url}.git"
 b2sums=('SKIP'
         '9b54db80ef99627fee08dc748e7d24a8082699dda59d84a61170cd289f823e283ec96156599366d4a87acb2ab7554187d8ca68991f958ecada7157f60b287822'
         '5739c34cbed5543bcbbe6e0c892a3ed9755500455f7bf06c089116801d857736823129f24f7fed52db814bd516ed1b36aafee426dbcfddadcc3186af99f879c2')
+b2sums[1]=SKIP
+b2sums[2]=SKIP
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
