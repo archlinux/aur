@@ -42,12 +42,7 @@ check() {
 }
 
 package() {
-    # TODO: leave just else branch after 1.11.0 is released
-    if grep -q install-initramfs-dracut $pkgname-$pkgver/Makefile; then
-        make -C $pkgname-$pkgver DESTDIR=$pkgdir install-all install-initramfs-dracut
-    else
-        make -C $pkgname-$pkgver DESTDIR=$pkgdir install-all
-    fi
+    make -C $pkgname-$pkgver DESTDIR=$pkgdir install-all
 
     install -m 644 -t $pkgdir/usr/share/doc/$pkgname -D $pkgname-$pkgver/README.md
 
