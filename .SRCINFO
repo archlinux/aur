@@ -1,0 +1,14 @@
+pkgbase = routa-bin
+	pkgdesc = Routa.js Desktop - Multi-agent coordination platform
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = https://github.com/phodal/routa
+	arch = x86_64
+	license = MIT
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	source = https://github.com/phodal/routa/releases/download/v0.18.1/Routa.Desktop_0.18.1_amd64.deb
+	sha256sums = 42e7fa376ba0b204b0b10794ce26a68fee081309292b312e03ef916e6b63ef9e
+
+pkgname = routa-bin
