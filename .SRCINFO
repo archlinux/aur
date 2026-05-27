@@ -1,11 +1,10 @@
 pkgbase = templates_parser
 	pkgdesc = Ada tools to create templated text streams, such as dynamic HTML documents.
-	pkgver = 26.0w
+	pkgver = 27.0w
 	pkgrel = 1
 	url = https://github.com/AdaCore/templates-parser
-	arch = i686
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = gprbuild
 	makedepends = python-setuptools
 	makedepends = python-mako
@@ -17,7 +16,7 @@ pkgbase = templates_parser
 	makedepends = texlive-binextra
 	depends = gnatcoll-gmp
 	depends = langkit
-	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/templates_parser-26.0w-20250409-163F7-src.tar.gz
-	sha256sums = 8d182b3fb6d630668dae8203eb2a8fe2db692c40d83dde344192590339f2ab1f
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2026/templates_parser-src.tar.gz
+	sha256sums = 753e355a1cbd71996b161eb10253ad42a64f5a1588d2abc118bd3a541eabf359
 
 pkgname = templates_parser

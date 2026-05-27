@@ -2,57 +2,59 @@
 
 pkgname=templates_parser
 pkgdesc='Ada tools to create templated text streams, such as dynamic HTML documents.'
-pkgver=26.0w
+pkgver=27.0w
 pkgrel=1
 
-url=https://github.com/AdaCore/templates-parser
-arch=(i686 x86_64)
-license=(Apache)
+url='https://github.com/AdaCore/templates-parser'
+arch=(x86_64)
+license=(Apache-2.0)
+
 
 depends=(gnatcoll-gmp langkit)
-makedepends=(gprbuild
-             python-setuptools
-             python-mako
-             python-funcy
-             python-e3-core
-             python-docutils
-             python-sphinx
-             python-sphinx_rtd_theme
-             texlive-binextra)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/templates_parser-26.0w-20250409-163F7-src.tar.gz)
-sha256sums=(8d182b3fb6d630668dae8203eb2a8fe2db692c40d83dde344192590339f2ab1f)
+makedepends=(
+  gprbuild
+  python-setuptools
+  python-mako
+  python-funcy
+  python-e3-core
+  python-docutils
+  python-sphinx
+  python-sphinx_rtd_theme
+  texlive-binextra
+)
 
 
-build()
-{
-  cd $srcdir/templates_parser-26.0w-20250416-163C5-src
+_srcdir="templates_parser-${pkgver}-20260324-1652A-src"
 
-  PROCESSORS=0 \
-  make DEFAULT_LIBRARY_TYPE=relocatable prefix=$pkgdir/usr setup
 
-  PROCESSORS=0 \
-  make
+source=("https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2026/templates_parser-src.tar.gz")
+sha256sums=('753e355a1cbd71996b161eb10253ad42a64f5a1588d2abc118bd3a541eabf359')
 
-  make build-doc                  \
-       1> build-docs-warnings.log \
-       2> build-docs-errors.log 
+
+build() {
+  cd "${_srcdir}"
+
+  make PROCESSORS=0 \
+       DEFAULT_LIBRARY_TYPE=relocatable \
+       prefix=/usr \
+       setup
+
+  make PROCESSORS=0
+
+  make build-doc \
+    1>build-docs-warnings.log \
+    2>build-docs-errors.log
 }
 
 
-package()
-{
-  cd $srcdir/templates_parser-26.0w-20250416-163C5-src
+package() {
+  cd "${_srcdir}"
 
-  make -j1 install
+  make -j1 \
+       prefix="${pkgdir}/usr" \
+       install
 
-  # Install the licenses.
-  #
-  install -D -m644   \
-     COPYING3        \
-     $pkgdir/usr/share/licenses/$pkgname/COPYING3
-
-  install -D -m644   \
-     COPYING.RUNTIME \
-     $pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME
+  install -Dm644 COPYING3        "${pkgdir}/usr/share/licenses/${pkgname}/COPYING3"
+  install -Dm644 COPYING.RUNTIME "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.RUNTIME"
 }
