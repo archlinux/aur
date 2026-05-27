@@ -1,0 +1,5 @@
+[bt-dualboot]
+source = "github"
+github = "x2es/bt-dualboot"
+prefix = "v"
+use_max_tag = true
