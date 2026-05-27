@@ -1,6 +1,6 @@
 # Maintainer: HanHan666666 <tar.zip@outlook.com>
 pkgname=linglong-store-nightly-bin
-pkgver=3.3.6_nightly.20260527.79c698d
+pkgver=3.3.6_nightly.20260528.f98cf74
 pkgrel=1
 pkgdesc="Community store for browsing and installing Linyaps applications"
 arch=('x86_64' 'aarch64')
@@ -34,12 +34,12 @@ source=(
   'linglong-store.svg'
 )
 source_x86_64=(
-  "linglong-store-3.3.6-nightly.20260527+79c698d-linux-amd64.tar.gz::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260527/linglong-store-3.3.6-nightly.20260527+79c698d-linux-amd64.tar.gz"
-  "linglong-store-3.3.6-nightly.20260527+79c698d-linux-amd64.tar.gz.asc::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260527/linglong-store-3.3.6-nightly.20260527+79c698d-linux-amd64.tar.gz.asc"
+  "linglong-store-3.3.6-nightly.20260528+f98cf74-linux-amd64.tar.gz::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260528/linglong-store-3.3.6-nightly.20260528+f98cf74-linux-amd64.tar.gz"
+  "linglong-store-3.3.6-nightly.20260528+f98cf74-linux-amd64.tar.gz.asc::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260528/linglong-store-3.3.6-nightly.20260528+f98cf74-linux-amd64.tar.gz.asc"
 )
 source_aarch64=(
-  "linglong-store-3.3.6-nightly.20260527+79c698d-linux-arm64.tar.gz::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260527/linglong-store-3.3.6-nightly.20260527+79c698d-linux-arm64.tar.gz"
-  "linglong-store-3.3.6-nightly.20260527+79c698d-linux-arm64.tar.gz.asc::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260527/linglong-store-3.3.6-nightly.20260527+79c698d-linux-arm64.tar.gz.asc"
+  "linglong-store-3.3.6-nightly.20260528+f98cf74-linux-arm64.tar.gz::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260528/linglong-store-3.3.6-nightly.20260528+f98cf74-linux-arm64.tar.gz"
+  "linglong-store-3.3.6-nightly.20260528+f98cf74-linux-arm64.tar.gz.asc::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260528/linglong-store-3.3.6-nightly.20260528+f98cf74-linux-arm64.tar.gz.asc"
 )
 
 sha256sums=(
@@ -49,12 +49,12 @@ sha256sums=(
   'ca9c4e35c731cbf2fb4b1290e26af7fd0d2dc7bc8a89f6373e1334d27b19e60c'
 )
 sha256sums_x86_64=(
-  '8408c43e01b2c6127a087a9146860c6a37d50243a82d2b508d27986867fa5704'
-  'b2066f80ffcb26f78794d20a82b7f60ec3219a9f89000520a6a87be3ee2aa2dc'
+  '6f3b92b5f18612e38533e535dc0e3abc3f0c46f86fd1c9e1caa04aedb4b16ef0'
+  '940e4ca56d257a6ea704a9b9e7698dbb33df72899324df8712768556d99def89'
 )
 sha256sums_aarch64=(
-  'dbe11778541db88b958497b8d57e3c7a3be3f8b2ac25ca5c6fb500a9ea61610e'
-  '4d7a38be3fb1d35c780467a24ba6715c94a9cd4b7891466dad5e5b019d109ca9'
+  '2de072dd08b33931355a6ff434f0832a24416674b24e695f325f36cb9bc9e6d2'
+  'c6d03df75f29840cb3dab5cf4ba5b22b1296b5b781e7febfee8c777f10b807bd'
 )
 
 package() {
