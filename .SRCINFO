@@ -1,6 +1,6 @@
 pkgbase = grubforge
 	pkgdesc = A terminal UI for managing and customizing the GRUB bootloader — safely, intuitively, and beautifully
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/jetomev/grubforge
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = grubforge
 	depends = python
 	depends = python-textual
 	depends = python-rich
-	source = grubforge-1.0.1.tar.gz::https://github.com/jetomev/grubforge/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 68df64462dbd37994b4bdaf03777c31a49083a61e78abedd4f0aadffcf49a1e0
+	source = grubforge-1.0.2.tar.gz::https://github.com/jetomev/grubforge/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 941a3f2d7f2b554bec89becd843fb5008fcbbd0270f0ec25db27e23576c4fdce
 
 pkgname = grubforge
