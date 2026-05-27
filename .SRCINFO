@@ -1,6 +1,6 @@
 pkgbase = bartos
 	pkgdesc = Barto central job scheduling server
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/rustyhorde/barto
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = bartos
 	optdepends = mariadb: local database server
 	optdepends = logrotate: periodic cleanup of rotated log files
 	optdepends = xz: xz compression of rotated log files
-	source = bartos-1.0.4.tar.gz::https://github.com/rustyhorde/barto/archive/v1.0.4.tar.gz
-	sha256sums = d19084cb9b4a69c1ac538dede50a45107e7a5385ce32401d6ad804d8ab035576
+	source = bartos-1.0.5.tar.gz::https://github.com/rustyhorde/barto/archive/v1.0.5.tar.gz
+	sha256sums = eb3a9ad0d831d90397e401f532b2449cbd74e0653059ca6e6690c4ec77d4a760
 
 pkgname = bartos
