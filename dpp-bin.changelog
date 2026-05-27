@@ -1,3 +1,11 @@
+# 10.1.5-1 / 2026-27-05
+
+* bump to new library version
+	* more API coverage
+	* voice and coro edge-case fixes
+	* see library changelog for full list
+* brought back linking to external nlohmann
+
 # 10.1.4-1 / 2026-16-04
 * bump to new library version
 	* see library changelog for full list

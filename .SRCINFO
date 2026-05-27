@@ -1,6 +1,6 @@
 pkgbase = dpp-bin
 	pkgdesc = Lightweight and Scalable C++ Discord API Bot Library - binary version
-	pkgver = 10.1.4
+	pkgver = 10.1.5
 	pkgrel = 1
 	url = https://dpp.dev/
 	changelog = dpp-bin.changelog
@@ -11,8 +11,9 @@ pkgbase = dpp-bin
 	depends = openssl
 	depends = zlib
 	depends = opus
-	source = https://raw.githubusercontent.com/Henonicks/dpp-bin/main/dpp-10.1.4-1-x86_64.pkg.tar.zst
+	depends = nlohmann-json
+	source = https://raw.githubusercontent.com/Henonicks/dpp-bin/main/dpp-10.1.5-1-x86_64.pkg.tar.zst
 	validpgpkeys = EDCEFB1FDAFFAC7952EED46F9927644B850BDD23
-	sha256sums = 193a60bf5cc34c308823d7590357e9bf6eb9618fc4a129a671bf2041ce752471
+	sha256sums = 7e4d2a73847708f9389f774d5a03138d3419beedbfc49705984de95daee5453d
 
 pkgname = dpp-bin
