@@ -5,18 +5,36 @@ _pkgname=sparrow-wallet
 pkgver=2.5.1
 _jdkver=25.0.2_10
 _jdkmajor="${_jdkver%%[^0-9]*}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (reproducible build)"
 arch=('x86_64')
 url="https://sparrowwallet.com/"
 license=('Apache-2.0')
 depends=(
     'alsa-lib'
+    'at-spi2-core'
+    'bash'
+    'cairo'
     'freetype2'
+    'fontconfig'
+    'gdk-pixbuf2'
+    'glib2'
+    'glibc'
+    'gtk3'
     'hicolor-icon-theme'
+    'libgcc'
+    'libglvnd'
+    'libstdc++'
+    'libusb'
+    'libx11'
     'libxcrypt-compat'
+    'libxext'
+    'libxi'
     'libxrender'
     'libxtst'
+    'libxxf86vm'
+    'pango'
+    'systemd-libs'
 )
 makedepends=('git')
 optdepends=(
