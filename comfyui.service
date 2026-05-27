@@ -6,6 +6,7 @@ After=network.target
 Type=simple
 User=comfy
 Group=comfy
+EnvironmentFile=-/etc/comfyui/comfyui.conf
 ExecStart=/usr/bin/comfyui --listen 127.0.0.1
 WorkingDirectory=_PREFIX_
 Restart=on-failure

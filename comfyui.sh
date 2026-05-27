@@ -24,7 +24,7 @@ fi
 
 source "$_prefix/venv/bin/activate"
 exec python "$_prefix/main.py" \
-    --output-directory /var/lib/comfyui/output \
-    --input-directory /var/lib/comfyui/input \
+    --output-directory "${COMFYUI_OUTPUT_DIR:-/var/lib/comfyui/output}" \
+    --input-directory "${COMFYUI_INPUT_DIR:-/var/lib/comfyui/input}" \
     --extra-model-paths-config /etc/comfyui/extra_model_paths.yaml \
     "$@"

@@ -9,7 +9,7 @@ _prefix="${_prefix:-/opt/comfyui}"
 
 pkgname=comfyui
 pkgver=0.21.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface"
 arch=('x86_64')
 url="https://github.com/Comfy-Org/ComfyUI"
@@ -43,7 +43,10 @@ sha256sums=(
 
 options=('!strip')
 
-backup=("etc/comfyui/extra_model_paths.yaml")
+backup=(
+    "etc/comfyui/extra_model_paths.yaml"
+    "etc/comfyui/comfyui.conf"
+)
 
 build() {
     # Break symlinks so sed does not modify originals in $startdir
@@ -112,6 +115,19 @@ package() {
 #    background_removal: models/background_removal/
 #    frame_interpolation: models/frame_interpolation/
 #    optical_flow: models/optical_flow/
+EOF
+
+    # Environment configuration (protected by pacman backup)
+    cat > "$pkgdir/etc/comfyui/comfyui.conf" <<EOF
+# ComfyUI environment configuration.
+# This file is sourced by the systemd service.
+# Uncomment and edit to override default paths.
+
+# Output directory (default: /var/lib/comfyui/output)
+#COMFYUI_OUTPUT_DIR=/var/lib/comfyui/output
+
+# Input directory (default: /var/lib/comfyui/input)
+#COMFYUI_INPUT_DIR=/var/lib/comfyui/input
 EOF
 
     # Install launcher
