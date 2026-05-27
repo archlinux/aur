@@ -1,59 +1,64 @@
-# Maintainer: Rod Kay     <rodakay5 at gmail com>
+# Maintainer: Rod Kay     <rodakay5 at gmail dot com>
 # Contributor: Tim Lagnese <tim at inept tech>
 
 pkgname=ada_language_server
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language.'
-pkgver=26.0w
+pkgver=27.0w
 pkgrel=1
 epoch=2
 
-url=https://github.com/AdaCore/ada_language_server
-arch=(x86_64)
-license=(GPL3)
+url='https://github.com/AdaCore/ada_language_server'
+arch=(x86_64 aarch64)
+license=(GPL-3.0-only)
 
 depends=(libadalang-tools
          lal-refactor
          templates_parser
          gtkada
-         libvss
+         vss-text
          ada_spawn
          ada-libfswatch
          gpr
          gnatformat
-         gnatdoc)
+         gnatdoc
+         xdiff-ada)
 
 makedepends=(gprbuild)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/ada_language_server-master.zip
-        lsp-gpr_files.adb-patch)
-        
-sha256sums=(3c35b9e17093a2681734f6aa42e8cc0448230f51c6fa7412d3f3c87fc97da556
-            284a87185f8048db10d5dd07379ddf005fa75362a97bd20334dea1f706003383)
+
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2026/als-src.tar.gz)
+
+sha256sums=(ec7a108fd99f799b165920129289b331ab8e39451d03bd3f48d3c4974754d453)
 
 
 build()
 {
-    cd $srcdir/ada_language_server-master
+   cd $srcdir/als-27.0w-20260409-16629-src
 
-    make -j16 BUILD_MODE=prod all
+   make -j$(nproc) BUILD_MODE=prod all
 
-    export LIBRARY_TYPE=relocatable
-    gprbuild -j16 gnat/lsp_client_glib.gpr
+   LIBRARY_TYPE=relocatable \
+   gprbuild -j0 gnat/lsp_client_glib.gpr
 }
 
 
-
 package()
- {
-    cd $srcdir/ada_language_server-master
+{
+   cd $srcdir/als-27.0w-20260409-16629-src
 
-    make BUILD_MODE=prod LIBRARY_TYPE=relocatable DESTDIR=$pkgdir/usr install
+   make BUILD_MODE=prod LIBRARY_TYPE=relocatable DESTDIR=$pkgdir/usr install
 
-    export LIBRARY_TYPE=relocatable
-    gprinstall --prefix=$pkgdir/usr -p gnat/lsp_client_glib.gpr
-    
-    # Rid clone of 'gnatcoll.gpr'.
-    #
-    rm $pkgdir/usr/share/gpr/gnatcoll.gpr
-    rm $pkgdir/usr/share/gpr/manifests/gnatcoll
+   LIBRARY_TYPE=relocatable \
+   gprinstall --prefix=$pkgdir/usr -p gnat/lsp_client_glib.gpr
+
+   
+   ## Rid '/usr/bin/tester-run'.
+   #
+   rm $pkgdir/usr/bin/tester-run
+   
+
+   ## Rid clone of 'gnatcoll.gpr'.
+   #
+   rm $pkgdir/usr/share/gpr/gnatcoll.gpr
+   rm $pkgdir/usr/share/gpr/manifests/gnatcoll
 }
