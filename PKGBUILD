@@ -2,7 +2,7 @@
 
 pkgname=vocab
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="English/Turkish vocabulary tool"
 arch=('any')
 url="https://github.com/whyghost/vocab"
