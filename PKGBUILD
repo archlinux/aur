@@ -1,6 +1,6 @@
 # Maintainer: shichirouji21 <shichirouji21@users.noreply.github.com>
 pkgname=himitsu-bako-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Encrypted clipboard-backed secret storage using age'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('himitsu-bako')
 conflicts=('himitsu-bako' 'himitsu-bako-git')
 source=("$pkgname-$pkgver::${url}/releases/download/v${pkgver}/himitsu-bako")
 noextract=("$pkgname-$pkgver")
-sha256sums=('7e0715d4ae93466fbea038726dd9fcb168a20df04c178b0eb2ed8f079402b758')
+sha256sums=('6673caea265d5c8a463cd52ad9abbfb0f7b7928afce2c05fda3660d66319fb47')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver" \
