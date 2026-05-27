@@ -1,6 +1,6 @@
 # Maintainer: shbernal <shbernal.01@gmail.com>
 pkgname=och
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='Small helper for OpenClaw TUI session management.'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/shbernal/och'
 license=('MIT')
 depends=('bash' 'jq' 'moreutils')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4fd350b13756091a151f9d95204f096b2cd636b105e8a0c37abdc382facd5738')
+sha256sums=('82c1ea5266c354e935408555e311838ea733f47e8b81ecc52d36d0d8749882d2')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
