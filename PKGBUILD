@@ -2,8 +2,8 @@
 # Contributor: kuro <kuro@kuro.moe>
 
 pkgname=vicinae-kotoba
-pkgver=2026.05.25
-pkgrel=3
+pkgver=2026.05.26
+pkgrel=1
 pkgdesc="Japanese dictionary, translator, and Anki integration for Vicinae — search Jotoba, translate sentences, add cards to Anki"
 arch=('any')
 url="https://github.com/kurojs/Kotoba"
