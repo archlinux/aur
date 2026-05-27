@@ -20,7 +20,7 @@
 #     There is intentionally no .SRCINFO.template — a hand-maintained one
 #     drifted from this PKGBUILD in the past (tebako-era tarball refs).
 pkgname=hive-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Folder-as-agent pipeline for autonomous software tasks'
 arch=('any')
@@ -37,7 +37,7 @@ provides=('hive')
 conflicts=('hive' 'apache-hive')
 install=hive.install
 source=("https://github.com/ivankuznetsov/hive/releases/download/v${pkgver}/hive-cli-${pkgver}.gem")
-sha256sums=('0204be3e5e3de93d1d825ba1c743ab90cc3467f2b5d799233e18b8ea781d2012')
+sha256sums=('9abacc4673a9a0030fedbfb723687b1974233e5303ba3aef611dcce4ff3e3f6d')
 noextract=("hive-cli-${pkgver}.gem")
 
 package() {
@@ -47,27 +47,32 @@ package() {
   # `gem install --install-dir` requires the .gem file path, not the
   # extracted source. `noextract` keeps the .gem intact during
   # makepkg's source preparation step.
+  # `--ignore-dependencies` is a boolean flag (no value): the runtime
+  # deps install by default. Passing `=false` makes gem's OptionParser
+  # raise NeedlessArgument and abort package().
   gem install \
     --install-dir "${gem_home}" \
     --bindir "${gem_home}/bin" \
     --no-document \
-    --ignore-dependencies=false \
     "${srcdir}/hive-cli-${pkgver}.gem"
 
-  # User-facing wrappers under /usr/bin that set GEM_PATH before
-  # exec'ing the gem-installed bin. Without this, `hive` would only
-  # work when the user's default GEM_PATH includes the vendored gem
-  # home.
+  # User-facing /usr/bin/hive wrapper that sets GEM_PATH before exec'ing
+  # the gem-installed bin. Without this, `hive` would only work when the
+  # user's default GEM_PATH includes the vendored gem home.
   install -dm755 "${pkgdir}/usr/bin"
-  for name in hive hv; do
-    cat > "${pkgdir}/usr/bin/${name}" <<WRAPPER
+  cat > "${pkgdir}/usr/bin/hive" <<WRAPPER
 #!/usr/bin/env bash
 export GEM_HOME="/usr/share/hive/gems"
 export GEM_PATH="\${GEM_HOME}\${GEM_PATH:+:\$GEM_PATH}"
-exec "/usr/share/hive/gems/bin/${name}" "\$@"
+exec "/usr/share/hive/gems/bin/hive" "\$@"
 WRAPPER
-    chmod 755 "${pkgdir}/usr/bin/${name}"
-  done
+  chmod 755 "${pkgdir}/usr/bin/hive"
+
+  # `hv` is a symlink to our hive wrapper, NOT the gem's bin/hv: bin/hv is
+  # a bash script, but `gem install` generates a Ruby binstub for every
+  # executable, and a Ruby binstub cannot run a bash program. Pointing hv
+  # at the working hive wrapper gives the Apache-Hive-collision shim.
+  ln -s hive "${pkgdir}/usr/bin/hv"
 
   install -Dm644 "${gem_home}/gems/hive-cli-${pkgver}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
