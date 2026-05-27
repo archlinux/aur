@@ -1,7 +1,7 @@
 pkgbase = omen-hub
 	pkgdesc = Modern GUI for HP OMEN gaming laptops on Linux — GPU switching, fans, RGB, thermals
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NoFilterA1/omen-hub
 	arch = x86_64
 	arch = aarch64
