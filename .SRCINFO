@@ -1,7 +1,7 @@
 pkgbase = clean-my-keys
 	pkgdesc = Utility to safely lock and clean your keyboard without breaking your workflow
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Strawberry-Foundations/clean-my-keys
 	arch = x86_64
 	arch = aarch64
