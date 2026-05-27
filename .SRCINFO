@@ -1,0 +1,27 @@
+pkgbase = vibewindow
+	pkgdesc = Rust-first autonomous agent runtime with CLI, ACP, and desktop client
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/hunzhiwange/vibewindow
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon
+	depends = openssl
+	depends = webkit2gtk-4.1
+	source = vibewindow-0.2.3.tar.gz::https://github.com/hunzhiwange/vibewindow/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = vibewindow
