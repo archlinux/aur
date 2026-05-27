@@ -1,13 +1,13 @@
 pkgbase = lazystack
 	pkgdesc = A keyboard-driven terminal UI for OpenStack
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/larkly/lazystack
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = go
-	source = lazystack-0.9.1.tar.gz::https://github.com/larkly/lazystack/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = 920a0a09137be57a218e76ba714b5dfa5b4f95f8a17395496e6c9b35314758f9
+	source = lazystack-0.10.0.tar.gz::https://github.com/larkly/lazystack/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = f7940a401a6b35d0689ae36658855e8c124b1088ee1974c30a5a931a17d0f8b5
 
 pkgname = lazystack
