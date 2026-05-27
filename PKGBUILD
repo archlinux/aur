@@ -1,7 +1,7 @@
 # Maintainer: John Bergqvist <JohnLBergqvist at gmail dot com >
 
 pkgname=tbs-dvb-drivers-git-dkms
-pkgver=r6.541f7d8
+pkgver=r7.de2cae9
 pkgrel=1
 pkgdesc="DKMS package for TBS DVB drivers, tracking tbsdtv/linux_media upstream"
 arch=('x86_64')
