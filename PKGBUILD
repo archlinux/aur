@@ -8,23 +8,23 @@ arch=('x86_64')
 url='https://github.com/junhoyeo/tokscale'
 license=('MIT')
 depends=('glibc' 'gcc-libs')
-makedepends=('cargo' 'rust')
+makedepends=('cargo' 'rust' 'openssl' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/junhoyeo/tokscale/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('2a4cf781c49e7992b7434ef448cdae1a7ffb07bd511486c382eb715732b9077316b99eefbded0095ea74ef58b11985fc82435898c50533bb8933c55609272195')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo fetch --locked
+    cargo fetch
 }
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo build --release --frozen
+    cargo build --release
 }
 
 check() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo test --release --frozen
+    cargo test --release
 }
 
 package() {
