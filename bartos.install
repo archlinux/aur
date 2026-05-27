@@ -1,0 +1,22 @@
+post_install() {
+    echo ""
+    echo "==> bartos installed successfully!"
+    echo ""
+    echo "    Configure the service:"
+    echo "      cp /usr/share/doc/bartos/examples/bartos.toml.example /etc/bartos/bartos.toml"
+    echo "      \$EDITOR /etc/bartos/bartos.toml"
+    echo ""
+    echo "    Run database migrations, then enable the service:"
+    echo "      DATABASE_URL='mariadb://user:pass@localhost/barto' barto-migrate"
+    echo "      systemctl enable --now bartos"
+    echo ""
+    echo "    Optional: TLS & Security"
+    echo "      To enable TLS, set [actix.tls] in bartos.toml with cert_file_path and key_file_path."
+    echo "      To require mutual TLS (client certs), also set client_ca_cert."
+    echo "      See: https://github.com/rustyhorde/barto#tls--certificate-pinning"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
