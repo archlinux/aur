@@ -1,0 +1,87 @@
+diff --git a/crates/librefang-runtime-media/src/media_understanding.rs b/crates/librefang-runtime-media/src/media_understanding.rs
+index 34f6b8ba5..69a7821be 100644
+--- a/crates/librefang-runtime-media/src/media_understanding.rs
++++ b/crates/librefang-runtime-media/src/media_understanding.rs
+@@ -168,7 +168,8 @@ impl MediaEngine {
+         let transcription = match provider {
+             // Whisper-compatible providers (OpenAI multipart protocol)
+             "groq" | "openai" | "minimax" | "fireworks" | "together" | "siliconflow" => {
+-                let (api_url, api_key) = whisper_provider_config(provider)?;
++                let custom_url = self.config.audio_base_url.as_deref();
++                let (api_url, api_key) = whisper_provider_config(provider, custom_url)?;
+                 whisper_transcribe(&api_url, &api_key, model, audio_bytes, &filename, &mime).await?
+             }
+             // Gemini — multimodal content generation with audio input
+@@ -293,32 +294,44 @@ fn detect_vision_provider() -> Option<&'static str> {
+ // ── STT provider helpers ──────────────────────────────────────────────
+ 
+ /// Resolve Whisper-compatible API URL and key for a provider.
+-fn whisper_provider_config(provider: &str) -> Result<(String, String), String> {
++fn whisper_provider_config(provider: &str, custom_base_url: Option<&str>) -> Result<(String, String), String> {
+     match provider {
+         "groq" => Ok((
+-            "https://api.groq.com/openai/v1/audio/transcriptions".into(),
++            custom_base_url
++                .map(|u| format!("{}/audio/transcriptions", u.trim_end_matches('/')))
++                .unwrap_or_else(|| "https://api.groq.com/openai/v1/audio/transcriptions".into()),
+             std::env::var("GROQ_API_KEY").map_err(|_| "GROQ_API_KEY not set")?,
+         )),
+         "openai" => Ok((
+-            "https://api.openai.com/v1/audio/transcriptions".into(),
++            custom_base_url
++                .map(|u| format!("{}/audio/transcriptions", u.trim_end_matches('/')))
++                .unwrap_or_else(|| "https://api.openai.com/v1/audio/transcriptions".into()),
+             std::env::var("OPENAI_API_KEY").map_err(|_| "OPENAI_API_KEY not set")?,
+         )),
+         "minimax" => Ok((
+-            "https://api.minimax.io/v1/audio/transcriptions".into(),
++            custom_base_url
++                .map(|u| format!("{}/audio/transcriptions", u.trim_end_matches('/')))
++                .unwrap_or_else(|| "https://api.minimax.io/v1/audio/transcriptions".into()),
+             std::env::var("MINIMAX_API_KEY")
+                 .or_else(|_| std::env::var("MINIMAX_CN_API_KEY"))
+                 .map_err(|_| "MINIMAX_API_KEY not set")?,
+         )),
+         "fireworks" => Ok((
+-            "https://api.fireworks.ai/inference/v1/audio/transcriptions".into(),
++            custom_base_url
++                .map(|u| format!("{}/audio/transcriptions", u.trim_end_matches('/')))
++                .unwrap_or_else(|| "https://api.fireworks.ai/inference/v1/audio/transcriptions".into()),
+             std::env::var("FIREWORKS_API_KEY").map_err(|_| "FIREWORKS_API_KEY not set")?,
+         )),
+         "together" => Ok((
+-            "https://api.together.xyz/v1/audio/transcriptions".into(),
++            custom_base_url
++                .map(|u| format!("{}/audio/transcriptions", u.trim_end_matches('/')))
++                .unwrap_or_else(|| "https://api.together.xyz/v1/audio/transcriptions".into()),
+             std::env::var("TOGETHER_API_KEY").map_err(|_| "TOGETHER_API_KEY not set")?,
+         )),
+         "siliconflow" => Ok((
+-            "https://api.siliconflow.cn/v1/audio/transcriptions".into(),
++            custom_base_url
++                .map(|u| format!("{}/audio/transcriptions", u.trim_end_matches('/')))
++                .unwrap_or_else(|| "https://api.siliconflow.cn/v1/audio/transcriptions".into()),
+             std::env::var("SILICONFLOW_API_KEY").map_err(|_| "SILICONFLOW_API_KEY not set")?,
+         )),
+         other => Err(format!("Unknown Whisper-compatible provider: {other}")),
+diff --git a/crates/librefang-types/src/media.rs b/crates/librefang-types/src/media.rs
+index e33818da3..64e0bc739 100644
+--- a/crates/librefang-types/src/media.rs
++++ b/crates/librefang-types/src/media.rs
+@@ -79,6 +79,8 @@ pub struct MediaConfig {
+     pub audio_provider: Option<String>,
+     /// Preferred audio transcription model (provider default if None).
+     pub audio_model: Option<String>,
++    /// Custom base URL override for transcription.
++    pub audio_base_url: Option<String>,
+ }
+ 
+ impl Default for MediaConfig {
+@@ -91,6 +93,7 @@ impl Default for MediaConfig {
+             image_provider: None,
+             audio_provider: None,
+             audio_model: None,
++            audio_base_url: None,
+         }
+     }
+ }

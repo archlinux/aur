@@ -1,13 +1,14 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
+# Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgbase=librefang-git
-pkgname=('librefang-cli-git' 'librefang-gui-git' 'librefang-whatsapp-gateway-git')
-pkgver=2026.5.17beta.12.r268.g34c44b62a
+pkgname=('librefang-cli-git' 'librefang-gui-git' 'librefang-whatsapp-gateway-git' 'python-librefang-sdk-git')
+pkgver=2026.5.25beta.13.r1.gd4adc14f8
 pkgrel=1
 pkgdesc='LibreFang is an open-source agent operating system written in Rust. '
 arch=('x86_64' 'aarch64')
 url='https://github.com/librefang/librefang'
 license=('MIT' 'Apache-2.0')
-makedepends=('rust' 'cargo' 'git' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'nodejs' 'npm' 'pnpm' 'node-gyp' 'python' 'nodejs-addon-api' 'libvips')
+makedepends=('rust' 'cargo' 'git' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'nodejs' 'npm' 'pnpm' 'node-gyp' 'python' 'nodejs-addon-api' 'libvips' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=(
     "${pkgbase}::git+https://github.com/librefang/librefang.git"
     "librefang.sysusers"
@@ -15,13 +16,19 @@ source=(
     "librefang.service"
     "librefang-desktop.desktop"
     "librefang-whatsapp-gateway.service"
+    "feature-local-stt.patch"
+    "feature-local-tts.patch"
+    "feature-local-stt-tts-doc.md"
 )
 sha256sums=('SKIP'
-            '72663b7a008dcf86e799df777f52c56ba700849510d3fd0c8f4a9e839702dd6e'
-            'eb06400136cd6f6e0a57f5ee802c273c3ea05b63946c60bd9e135d079d777f10'
-            'cf026330b3d4c3c708bd079b15401731e1afef4f3e780c4ad286ad0d961a6d5c'
-            'a640db0197d001c5ae9348d57cda8092e2c8170fa27ced98d5546557fadb6d17'
-            '1ddb18ffdd4c4131bf9a35debfb21a61aeda8ca1be90829e0e1b10d7bf19b975')
+    '72663b7a008dcf86e799df777f52c56ba700849510d3fd0c8f4a9e839702dd6e'
+    'eb06400136cd6f6e0a57f5ee802c273c3ea05b63946c60bd9e135d079d777f10'
+    'cf026330b3d4c3c708bd079b15401731e1afef4f3e780c4ad286ad0d961a6d5c'
+    'a640db0197d001c5ae9348d57cda8092e2c8170fa27ced98d5546557fadb6d17'
+    '1ddb18ffdd4c4131bf9a35debfb21a61aeda8ca1be90829e0e1b10d7bf19b975'
+    'bd2aa4391a895a6ea96974752ef96f97a98eda7fca9db5a05b30dc982b4be74c'
+    '6728f9d9b2bb132430bea9213e35e7fa85710631ba02926c8f9cf906fa136050'
+    'fbb27c9831e77ecfacba0ca8a9ce85a9d2aeacac47495ae4f864c90a6e3b895a')
 
 pkgver() {
     cd "${pkgbase}"
@@ -34,6 +41,12 @@ prepare() {
     export HOME="${srcdir}/.home"
 
     cd "${pkgbase}"
+
+    # Apply local patches
+    msg2 "Applying local STT and TTS support patches..."
+    patch -Np1 -i "${srcdir}/feature-local-stt.patch"
+    patch -Np1 -i "${srcdir}/feature-local-tts.patch"
+
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -79,9 +92,13 @@ build() {
     # Compile sharp native addon (transitive dependency of baileys)
     cd "${_gwdir}/node_modules/sharp"
     npm_config_build_from_source=true \
-    SHARP_FORCE_GLOBAL_LIBVIPS=1 \
-    NODE_PATH=/usr/lib/node_modules \
-    node install/build.js
+        SHARP_FORCE_GLOBAL_LIBVIPS=1 \
+        NODE_PATH=/usr/lib/node_modules \
+        node install/build.js
+
+    # Build Python SDK
+    cd "${srcdir}/${pkgbase}/sdk/python"
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -92,7 +109,7 @@ check() {
 
 package_librefang-cli-git() {
     pkgdesc='librefang CLI — terminal interface and daemon for the LibreFang Agent OS'
-    depends=('glibc' 'openssl' 'libgcc')
+    depends=('glibc' 'openssl' 'libgcc' 'python-librefang-sdk-git')
     optdepends=(
         'chromium: Browser Hand support'
         'yt-dlp: Clip Hand support'
@@ -106,6 +123,7 @@ package_librefang-cli-git() {
     install -Dm755 "target/release/librefang" "${pkgdir}/usr/bin/librefang"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "${srcdir}/feature-local-stt-tts-doc.md" "${pkgdir}/usr/share/doc/${pkgname}/feature-local-stt-tts-doc.md"
 
     # systemd service
     install -Dm644 "${srcdir}/librefang.service" "${pkgdir}/usr/lib/systemd/system/librefang.service"
@@ -189,7 +207,7 @@ package_librefang-whatsapp-gateway-git() {
 
     # Wrapper script
     install -dm755 "${pkgdir}/usr/bin"
-    cat > "${pkgdir}/usr/bin/librefang-whatsapp-gateway" <<'EOF'
+    cat >"${pkgdir}/usr/bin/librefang-whatsapp-gateway" <<'EOF'
 #!/bin/sh
 exec node /usr/lib/librefang-whatsapp-gateway/index.js "$@"
 EOF
@@ -201,4 +219,16 @@ EOF
 
     install -Dm644 "${srcdir}/${pkgbase}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python-librefang-sdk-git() {
+    pkgdesc='Official Python client and SDK for the LibreFang Agent OS'
+    depends=('python')
+    provides=('python-librefang-sdk')
+    conflicts=('python-librefang-sdk')
+
+    cd "${srcdir}/${pkgbase}/sdk/python"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
