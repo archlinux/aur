@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett @ gmail dot com>
 
 pkgname=dust3d
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="3D watertight modeling software"
 url="https://dust3d.org/"
@@ -26,7 +26,7 @@ source=(
   'cstdint.patch'
 )
 sha256sums=(
-  '36b7f478d044f1ea48cdbf6007756acfc0395a4c0d0fd7a39e56e0a1f2ee7b50'
+  '3942c78847a5aea88d0ee65acb06de3c250eb4170dd78bff0113e76e204b55b1'
   '71aa7d24f7a3ad49cf8f436e0bb2e3df689384dcd1530bf1d7ac2a450ecd2603'
 )
 
