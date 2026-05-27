@@ -2,7 +2,7 @@
 # Contributor: Alexey Stukalov <astukalov-at-gmail-dot-com>
 
 pkgname=ilorest
-pkgver=7.1.0.0
+pkgver=7.2.0.0
 pkgrel=1
 pkgdesc="HPE RESTful Interface Tool"
 arch=(x86_64)
@@ -17,7 +17,7 @@ groups=(hpproliant)
 license=("DMTF")
 #source=("https://github.com/HewlettPackard/python-redfish-utility/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 source=("https://github.com/HewlettPackard/python-ilorest-library/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0db68a8ef2abe41f7bb72dcb829f15ef42f0a78b3aae5f04891fd1b3e9a21798')
+sha256sums=('239c6e4b00f2bacaa28a2b89e2e0c96e921b93e1722bbc242e88fdfce05f2be6')
 changelog=ChangeLog
 
 package() {

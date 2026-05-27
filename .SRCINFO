@@ -1,6 +1,6 @@
 pkgbase = ilorest
 	pkgdesc = HPE RESTful Interface Tool
-	pkgver = 7.1.0.0
+	pkgver = 7.2.0.0
 	pkgrel = 1
 	url = https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_0b881600776d472b948d163114&tab=releaseNotes
 	changelog = ChangeLog
@@ -29,7 +29,7 @@ pkgbase = ilorest
 	depends = python-ilorest-library
 	provides = ilorest
 	conflicts = ilorest-bin
-	source = https://github.com/HewlettPackard/python-ilorest-library/archive/refs/tags/v7.1.0.0.tar.gz
-	sha256sums = 0db68a8ef2abe41f7bb72dcb829f15ef42f0a78b3aae5f04891fd1b3e9a21798
+	source = https://github.com/HewlettPackard/python-ilorest-library/archive/refs/tags/v7.2.0.0.tar.gz
+	sha256sums = 239c6e4b00f2bacaa28a2b89e2e0c96e921b93e1722bbc242e88fdfce05f2be6
 
 pkgname = ilorest
