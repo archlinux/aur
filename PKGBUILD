@@ -32,28 +32,39 @@ package() {
         return 1
     fi
 
-    # 2. Распаковываем содержимое в pkgdir
-    bsdtar -xf "${data_tar}" -C "${pkgdir}/"
+    # 2. Распаковываем во временную папку
+    local tmp_extract="${srcdir}/_extract"
+    mkdir -p "$tmp_extract"
+    bsdtar -xf "${data_tar}" -C "$tmp_extract"
 
-    # 3. Удаляем Debian-специфичные файлы
+    # 3. Копируем файлы поштучно через install -D
+    # Это создаёт нужные директории, но НЕ добавляет их в манифест пакета как "владельца"
+    cd "$tmp_extract"
+    find . -type f | while read -r file; do
+        local relpath="${file#./}"  # убираем "./" в начале
+        install -Dm644 "$file" "${pkgdir}/${relpath}"
+    done
+
+    # 4. Исправляем права на исполняемые файлы и библиотеки
+    find "${pkgdir}" -type f \( \
+        -name "*.so*" -o \
+        -path "*/sbin/*" -o \
+        -path "*/bin/*" -o \
+        -path "*/systemd/*" \
+    \) -exec chmod 755 {} \;
+
+    # 5. Распаковываем EULA (он в .gz)
+    local eula_gz="${pkgdir}/usr/share/doc/kerio-control-vpnclient/EULA.txt.gz"
+    if [[ -f "$eula_gz" ]]; then
+        mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+        gunzip -c "$eula_gz" > "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
+        chmod 644 "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
+    fi
+
+    # 6. Удаляем Debian-специфичный мусор
     rm -rf "${pkgdir}/usr/share/lintian"
     rm -f "${pkgdir}/etc/init.d/kerio-kvc"
 
-    # 4. Распаковываем EULA (он в .gz формате) — ИСПРАВЛЕННАЯ ВЕРСИЯ
-    local eula_gz="${pkgdir}/usr/share/doc/kerio-control-vpnclient/EULA.txt.gz"
-    if [[ -f "$eula_gz" ]]; then
-        # Создаём целевую директорию явно
-        mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-        # Распаковываем и копируем
-        gunzip -c "$eula_gz" > "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
-        chmod 644 "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
-        # Опционально: удаляем оригинальный .gz, чтобы не дублировать
-        # rm -f "$eula_gz"
-    else
-        echo "WARNING: EULA.txt.gz not found at expected path, skipping license install"
-    fi
-
-    # 5. Фиксим права на исполняемые файлы
-    chmod 755 "${pkgdir}/usr/sbin/kvpncsvc" 2>/dev/null || true
-    find "${pkgdir}/usr/lib" -name "*.so*" -exec chmod 755 {} \; 2>/dev/null || true
+    # 7. Чистим временные файлы
+    rm -rf "$tmp_extract"
 }
