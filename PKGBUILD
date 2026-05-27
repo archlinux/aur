@@ -1,7 +1,7 @@
 # Maintainer: maqsatto <maqsatto@users.noreply.github.com>
 
 pkgname=rux-git
-pkgver=0.2.1.r33.g35a6787
+pkgver=0.2.2.r46.g2f5a6f4
 pkgrel=1
 pkgdesc='Rux programming language compiler (development version)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cmake' 'git' 'gcc')
 provides=('rux')
 conflicts=('rux')
-source=('git+https://github.com/maqsatto/Rux.git#branch=linux-x64-host-support')
+source=('git+https://github.com/rux-lang/Rux.git#branch=main')
 sha256sums=('SKIP')
 
 pkgver() {

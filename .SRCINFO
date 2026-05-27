@@ -1,6 +1,6 @@
 pkgbase = rux-git
 	pkgdesc = Rux programming language compiler (development version)
-	pkgver = 0.2.1.r33.g35a6787
+	pkgver = 0.2.2.r46.g2f5a6f4
 	pkgrel = 1
 	url = https://github.com/rux-lang/Rux
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = rux-git
 	depends = gcc-libs
 	provides = rux
 	conflicts = rux
-	source = git+https://github.com/maqsatto/Rux.git#branch=linux-x64-host-support
+	source = git+https://github.com/rux-lang/Rux.git#branch=main
 	sha256sums = SKIP
 
 pkgname = rux-git
