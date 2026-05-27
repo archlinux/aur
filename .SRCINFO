@@ -9,6 +9,6 @@ pkgbase = coresound-bin
 	depends = bluez
 	options = !strip
 	source = coresound-bin-0.1.5.AppImage::https://github.com/CriticalRange/CoreSound/releases/download/v0.1.5/CoreSound-0.1.5.AppImage
-	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	sha256sums = d68105f73f87b0b6f6fa5ad5bc4ffedebebf8b53fa71b586706d8c89d7135fd9
 
 pkgname = coresound-bin

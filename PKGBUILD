@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=('fuse2' 'bluez')
 options=('!strip')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/CriticalRange/CoreSound/releases/download/v${pkgver}/CoreSound-${pkgver}.AppImage")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('d68105f73f87b0b6f6fa5ad5bc4ffedebebf8b53fa71b586706d8c89d7135fd9')
 
 prepare() {
     chmod +x "${pkgname}-${pkgver}.AppImage"
