@@ -3,7 +3,7 @@
 pkgname=yukigram-bin
 pkgver=6.8.2.3
 pkgrel=1
-pkgdesc="Telegram Desktop, minus the bullshit, plus the features"
+pkgdesc="Unofficial patch-based Telegram Desktop fork — minus the bullshit, plus the features"
 arch=(x86_64)
 url="https://github.com/yukigram/yukigram"
 license=('GPL-3.0-or-later WITH sqlitestudio-OpenSSL-exception')

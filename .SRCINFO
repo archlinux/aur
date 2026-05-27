@@ -1,5 +1,5 @@
 pkgbase = yukigram-bin
-	pkgdesc = Telegram Desktop, minus the bullshit, plus the features
+	pkgdesc = Unofficial patch-based Telegram Desktop fork — minus the bullshit, plus the features
 	pkgver = 6.8.2.3
 	pkgrel = 1
 	url = https://github.com/yukigram/yukigram
