@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="PMG protects developers from getting hacked by malicious open source packages"
 
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,9 +24,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('32f0cf8bb038765940866827b9020ec679b5bfb46e2ad2994752bd67b92ef417')
-sha256sums_i686=('27d716aa81de7a32af55efe6b79de27ca7d6eb5d0544f3a1c8842f07ab568538')
-sha256sums_aarch64=('d6f960b3ae87e585cd895305626132861c2349d08ce71b896bfa5e1f446115f1')
+sha256sums_x86_64=('b190378231d4b715bdda52c6f4f970d40e5db3721261b4534af0c95311bc7672')
+sha256sums_i686=('845ec8b2846117c59429a7e3fab67fd61d0b61ea81d69c271d12ea3f511bfdee')
+sha256sums_aarch64=('87c3cf0b5973d74128e6a6298fbde4e615adf4462227e05fd0476a3134a97bc5')
 
 
 case ${CARCH} in
