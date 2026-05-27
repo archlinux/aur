@@ -1,16 +1,16 @@
 pkgbase = molly-bin
 	pkgdesc = Terminal-native realtime chat client for Discord
-	pkgver = 0.2.18
+	pkgver = 0.2.19
 	pkgrel = 1
 	url = https://github.com/ploglabs/molly-terminal
 	license = Apache-2.0
 	conflicts = molly-terminal
 	provides = molly-terminal
 	arch = aarch64
-	source_aarch64 = https://github.com/ploglabs/molly-terminal/releases/download/v0.2.18/molly-terminal_0.2.18_linux_arm64.tar.gz
-	sha256sums_aarch64 = 066ad68c9cd09628caa5635c6912d30289c3753f9ec191d47943c1b200429150
+	source_aarch64 = https://github.com/ploglabs/molly-terminal/releases/download/v0.2.19/molly-terminal_0.2.19_linux_arm64.tar.gz
+	sha256sums_aarch64 = a29c449b662d769638ef29bc042260fd21f7f15050cf826ea11665c2c017c8b1
 	arch = x86_64
-	source_x86_64 = https://github.com/ploglabs/molly-terminal/releases/download/v0.2.18/molly-terminal_0.2.18_linux_amd64.tar.gz
-	sha256sums_x86_64 = 65ccb18a213b4f3f5797025a7c9098e2777bbdbecc12006701e87b14d283bd36
+	source_x86_64 = https://github.com/ploglabs/molly-terminal/releases/download/v0.2.19/molly-terminal_0.2.19_linux_amd64.tar.gz
+	sha256sums_x86_64 = 96a83761ae4499d8a9975b910e23e288a59fee593780e5d6a1ac5294c9a0485f
 	
 pkgname = molly-bin
