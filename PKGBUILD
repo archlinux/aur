@@ -4,8 +4,8 @@
 # Upstream: https://github.com/ValveSoftware/GameNetworkingSockets
 
 pkgname=gamenetworkingsockets-git
-pkgver=1.4.1.164.g517fff0
-pkgrel=2
+pkgver=1.5.1.83.ge5b4615
+pkgrel=1
 pkgdesc="Reliable & unreliable messages over UDP. Robust message fragmentation & reassembly. Encryption."
 arch=('x86_64')
 url='https://github.com/ValveSoftware/GameNetworkingSockets'
