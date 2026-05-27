@@ -1,6 +1,6 @@
-# Maintainer: Panda <satodu@github.com>
+# Maintainer: Panda <sato.du@gmail.com>
 pkgname=cachyos-store-bin
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Modern community store for CachyOS and Arch Linux built with NativePHP"
 arch=('x86_64')
