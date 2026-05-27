@@ -1,7 +1,7 @@
 pkgbase = vocab
 	pkgdesc = English/Turkish vocabulary tool
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/whyghost/vocab
 	arch = any
 	license = MIT
