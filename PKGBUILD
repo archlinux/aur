@@ -3,15 +3,15 @@
 pkgname=('lua-luaogg' 'lua51-luaogg' 'lua52-luaogg' 'lua53-luaogg' 'lua54-luaogg')
 _pkgbase='luaogg'
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686' 'aarch64')
-url='https://github.com/jprjr/luaogg'
+url='https://buffering.party/software/luaogg/'
 license=('MIT')
 depends=('libogg')
 _lua_cur=5.5
 _lua_next=5.6
 makedepends=('cmake' "lua>=${_lua_cur}" "lua<${_lua_next}" 'lua51' 'lua52' 'lua53' 'lua54')
-source=("$url/releases/download/v${pkgver}/luaogg-${pkgver}.tar.gz")
+source=("${url}${_pkgbase}-${pkgver}.tar.gz")
 
 _build() {
     LUA_V=$1

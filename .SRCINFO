@@ -1,7 +1,7 @@
 pkgbase = lua-luaogg
 	pkgver = 1.2.1
-	pkgrel = 2
-	url = https://github.com/jprjr/luaogg
+	pkgrel = 3
+	url = https://buffering.party/software/luaogg/
 	arch = x86_64
 	arch = i686
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = lua-luaogg
 	makedepends = lua53
 	makedepends = lua54
 	depends = libogg
-	source = https://github.com/jprjr/luaogg/releases/download/v1.2.1/luaogg-1.2.1.tar.gz
+	source = https://buffering.party/software/luaogg/luaogg-1.2.1.tar.gz
 	sha512sums = 8c97a95064bd2dab610e34debcaee9360c65125ab08a452274bf52effc60555418d097eb13ff441a3f91c26c1c6204870e7def8d4de9ff10255062bba356f2e2
 
 pkgname = lua-luaogg
