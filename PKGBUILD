@@ -1,6 +1,6 @@
 # Maintainer: Alessandro Fulgini <fuljo97 at gmail dot com>
 pkgname='rofi-vscode-mode'
-pkgver='0.11.0'
+pkgver='0.12.0'
 pkgrel='1'
 pkgdesc='A Rofi mode to open Visual Studio Code workspaces'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('rofi' 'sqlite')
 makedepends=('make' 'pkg-config' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fuljo/rofi-vscode-mode/archive/v$pkgver.tar.gz")
-sha256sums=('a480d6e430fe15e400abfbf26ebd5ef4696dfe46a78485a2c9fdcee308c2900b')
+sha256sums=('552057d64abfd0413952220e637044d057367092a78f1ce17a886339261ec5bb')
 
 prepare() {
   cd "$pkgname-$pkgver"
