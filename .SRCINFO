@@ -1,6 +1,6 @@
 pkgbase = k3d-gpu
 	pkgdesc = Bootstrap GPU-ready k3d clusters: launcher + NVIDIA device plugin manifest for k3s on Docker
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/88plug/k3d-gpu
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = k3d-gpu
 	optdepends = k3d-git: k3d CLI to manage clusters
 	optdepends = kubectl: query and apply manifests
 	optdepends = nvidia-container-toolkit: GPU container runtime for Docker
-	source = git+https://github.com/88plug/k3d-gpu.git#tag=v0.1.0
+	source = git+https://github.com/88plug/k3d-gpu.git#tag=aur-v0.1.1
 	sha256sums = SKIP
 
 pkgname = k3d-gpu

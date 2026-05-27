@@ -1,6 +1,6 @@
 # Maintainer: Andrew Mello <andrew@88plug.com>
 pkgname=k3d-gpu
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Bootstrap GPU-ready k3d clusters: launcher + NVIDIA device plugin manifest for k3s on Docker"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
     'kubectl: query and apply manifests'
     'nvidia-container-toolkit: GPU container runtime for Docker'
 )
-source=("git+https://github.com/88plug/k3d-gpu.git#tag=v${pkgver}")
+source=("git+https://github.com/88plug/k3d-gpu.git#tag=aur-v${pkgver}")
 sha256sums=('SKIP')
 
 package() {
