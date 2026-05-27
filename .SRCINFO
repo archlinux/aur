@@ -1,13 +1,12 @@
 pkgbase = is-my-code-cursed
 	pkgdesc = A CLI Tool That Roasts Your Code Using AI
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/HimC29/is-my-code-cursed
 	arch = any
 	license = MIT
 	depends = python
-	depends = python-google-generativeai
-	source = is-my-code-cursed-1.0.4.tar.gz::https://github.com/HimC29/is-my-code-cursed/archive/v1.0.4.tar.gz
+	source = is-my-code-cursed-1.1.0.tar.gz::https://github.com/HimC29/is-my-code-cursed/archive/v1.1.0.tar.gz
 	sha256sums = d268a308352c129b7a480f194b6324576ca17114dbc79a24c373a46d2a883df4
 
 pkgname = is-my-code-cursed
