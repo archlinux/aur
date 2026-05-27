@@ -1,0 +1,25 @@
+pkgbase = arch-backup-tool-git
+	pkgdesc = PyQt6 GUI and CLI package baseline/dotfile tracking and recovery tool for Arch Linux & CachyOS
+	pkgver = r7.aab9a5c
+	pkgrel = 1
+	url = https://github.com/kosirm/arch-backup
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pyqt6
+	depends = git
+	depends = pacman
+	depends = chezmoi
+	optdepends = konsave: KDE Plasma desktop configuration backup
+	optdepends = flatpak: Tracking installed flatpaks
+	provides = arch-backup-tool
+	provides = cachyos-backup
+	provides = cachyos-recovery
+	conflicts = arch-backup-tool
+	conflicts = cachyos-backup
+	conflicts = cachyos-recovery
+	source = git+https://github.com/kosirm/arch-backup.git
+	sha256sums = SKIP
+
+pkgname = arch-backup-tool-git
