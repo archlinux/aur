@@ -1,7 +1,7 @@
 # Maintainer: Ondrej Polak <ondrej.polak@cloudylake.io>
 pkgname=nook-beta-bin
-pkgver=0.1.17
-pkgrel=2
+pkgver=0.1.18
+pkgrel=1
 pkgdesc="Nook beta desktop app"
 arch=('x86_64')
 url="https://nook.cloudylake.io"
@@ -10,8 +10,8 @@ depends=('alsa-lib' 'gtk3' 'libayatana-appindicator' 'libxss' 'libxtst' 'nss')
 optdepends=('libpulse: PulseAudio audio support')
 provides=('nook')
 conflicts=('nook' 'nook-bin')
-source=("nook-${pkgver}-${pkgrel}.deb::https://nook.cloudylake.io/download/nook-0.1.17-linux.deb")
-sha256sums=("aa451d66d506bf04b64c1acc646287a6abee1d88eecd652824171319a79df49c")
+source=("nook-${pkgver}-${pkgrel}.deb::https://nook.cloudylake.io/download/nook-0.1.18-linux.deb")
+sha256sums=("6bb011195a425b95dc82757b6a0b224ddf545641741041bf3e9628288cd6fb45")
 
 package() {
     bsdtar -xf "nook-${pkgver}-${pkgrel}.deb" -C "${srcdir}"
