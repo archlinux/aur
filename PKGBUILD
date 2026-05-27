@@ -5,13 +5,13 @@ _pkgbase='luaflac'
 pkgver=3.0.0
 pkgrel=2
 arch=('x86_64' 'i686' 'aarch64')
-url='https://github.com/jprjr/luaflac'
+url='https://buffering.party/software/luaflac/'
 license=('MIT')
 depends=('flac')
 _lua_current=5.5
 _lua_next=5.6
 makedepends=('cmake' "lua>=${_lua_current}" "lua<=${_lua_next}" 'lua51' 'lua52' 'lua53' 'lua54')
-source=("$url/releases/download/v${pkgver}/luaflac-${pkgver}.tar.gz")
+source=("${url}luaflac-${pkgver}.tar.gz")
 
 _build() {
     LUA_VERSION="${1}"

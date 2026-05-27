@@ -1,7 +1,7 @@
 pkgbase = lua-luaflac
 	pkgver = 3.0.0
 	pkgrel = 2
-	url = https://github.com/jprjr/luaflac
+	url = https://buffering.party/software/luaflac/
 	arch = x86_64
 	arch = i686
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = lua-luaflac
 	makedepends = lua53
 	makedepends = lua54
 	depends = flac
-	source = https://github.com/jprjr/luaflac/releases/download/v3.0.0/luaflac-3.0.0.tar.gz
+	source = https://buffering.party/software/luaflac/luaflac-3.0.0.tar.gz
 	sha512sums = 1b85ce3cf76c33c733103a5ec9dd0548a395f5d3c87c88392e5a0d4e6986eebacf04a84e80fc1e79acefa2ae4e705798bafb3dfe8fa1198ea4a0b84ad61c9df7
 
 pkgname = lua-luaflac
