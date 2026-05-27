@@ -1,3 +1,4 @@
+# Maintainer: Eric Bakker <musqz at mf dot com>
 pkgname=forum-scout-qt
 epoch=1
 pkgver=0.5.5
