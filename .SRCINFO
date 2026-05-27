@@ -1,0 +1,24 @@
+pkgbase = prisma4postgres-bin
+	pkgdesc = PostgreSQL database explorer and query runner
+	pkgver = 10.6.4
+	pkgrel = 1
+	url = https://github.com/britors/Prisma4Postgres
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = librsvg
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	provides = prisma4postgres
+	conflicts = prisma4postgres
+	options = !debug
+	options = !strip
+	source = https://github.com/britors/Prisma4Postgres/releases/download/v10.6.4/prisma4postgres_10.6.4_amd64.deb
+	source = https://raw.githubusercontent.com/britors/Prisma4Postgres/main/logo.svg
+	sha256sums = SKIP
+	sha256sums = b22695b2f97a91e4995fe11fd5cd60a63522818fa49af063cfa300a75a6b3ba6
+
+pkgname = prisma4postgres-bin
