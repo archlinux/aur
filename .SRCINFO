@@ -1,6 +1,6 @@
 pkgbase = uniclipboard-bin
 	pkgdesc = Real-time clipboard sync across macOS, Windows and Linux — local-first, peer-to-peer, and end-to-end encrypted
-	pkgver = 0.11.1
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://www.uniclipboard.app
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = uniclipboard-bin
 	depends = gtk3
 	provides = uniclipboard
 	conflicts = uniclipboard
-	source_x86_64 = uniclipboard_0.11.1_amd64.deb::https://github.com/UniClipboard/UniClipboard/releases/download/v0.11.1/UniClipboard_0.11.1_amd64.deb
-	sha256sums_x86_64 = 5a59728cb49719cfe0dd7bf8e9809433ff443d612ae3871611f4192375facf98
-	source_aarch64 = uniclipboard_0.11.1_arm64.deb::https://github.com/UniClipboard/UniClipboard/releases/download/v0.11.1/UniClipboard_0.11.1_arm64.deb
-	sha256sums_aarch64 = 8677f6a8ac76cb7569635d52b4ae18e7d3cf9e80687dee4dcd92214ed59c8849
+	source_x86_64 = uniclipboard_0.12.0_amd64.deb::https://github.com/UniClipboard/UniClipboard/releases/download/v0.12.0/UniClipboard_0.12.0_amd64.deb
+	sha256sums_x86_64 = c4228e442625b4360d2c013ceced9313409ad6d09e4b7f9b6e3f315b637a6dc2
+	source_aarch64 = uniclipboard_0.12.0_arm64.deb::https://github.com/UniClipboard/UniClipboard/releases/download/v0.12.0/UniClipboard_0.12.0_arm64.deb
+	sha256sums_aarch64 = dbda822aefee8c33cffcc1f4fd82d29f6dc71bcd0c96cb81692cfd5b56f0a7da
 
 pkgname = uniclipboard-bin
