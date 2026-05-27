@@ -1,3 +1,13 @@
+2026.05.26, v19.19.0
+
+feature:
+- 4ee38db6 client: view: flac: add support
+
+2026.05.26, v19.18.1
+
+feature:
+- 40ecef5e cloudcmd: ratelimit: X-Forwarded-For (#437)
+
 2026.05.26, v19.18.0
 
 fix:
