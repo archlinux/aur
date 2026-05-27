@@ -2,7 +2,7 @@
 
 pkgname=zap-oss-git
 pkgver=2026.05.22.preview.r0.g3d4eaa4
-pkgrel=2
+pkgrel=3
 # Upstream renamed releases from "YYYY.MM.DD.preview" to "0.YYYY.MM.DD.HHMM",
 # which sorts lower under pacman vercmp. epoch ensures clean upgrades.
 # This package replaces openwarp-git (project was renamed OpenWarp → Zap).
@@ -114,12 +114,10 @@ package() {
     sed -i 's|^Exec=zap %U$|Exec=zap-oss %U|' \
         "${pkgdir}/usr/share/applications/dev.zap.Zap.desktop"
 
-    # Install icons
+    # Install icons. Upstream renamed icon/no-padding → icon/padded; only
+    # `padded` exists now, so don't fall back silently.
     for _size in 16x16 32x32 48x48 64x64 128x128 256x256 512x512; do
-        _icon="app/channels/oss/icon/no-padding/${_size}.png"
-        if [[ -f "${_icon}" ]]; then
-            install -Dm644 "${_icon}" \
-                "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/dev.zap.Zap.png"
-        fi
+        install -Dm644 "app/channels/oss/icon/padded/${_size}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/dev.zap.Zap.png"
     done
 }
