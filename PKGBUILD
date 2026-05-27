@@ -1,7 +1,7 @@
 # Maintainer: terrason <jterraghost@gmail.com>
 pkgname=living-drive-tonic
 pkgver=0.1.0.alpha.7
-pkgrel=1
+pkgrel=15
 pkgdesc="Protect your portable Linux (living) drive by detecting frequent write directories and redirecting them to the host's internal disk — extending SSD lifespan."
 arch=('x86_64')
 url="https://github.com/terrason/living-drive-tonic"
@@ -10,7 +10,7 @@ install="$pkgname.install"
 depends=('bun' 'fatrace-minimal')
 optdepends=('bash-completion: 为 ldt 命令启用 Tab 键自动补全')
 source=("package.tgz")
-sha256sums=('e8a9ee8f5475651c842f250b8528750fa9daeea29f1173c32d8013d06e64b51a')
+sha256sums=('773d38583ad3bdd3b715b2835de2f6b28c7a18900731431001d0cd27cabf2016')
 
 package() {
     # 主命令
@@ -24,11 +24,15 @@ package() {
     sed "s/@PKGNAME@/${pkgname}/g" "$srcdir/package/share/ldt.completion" | \
         install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/ldt"
 
+    mkdir "$pkgdir/usr/share/$pkgname"
+    # drizzle migrations
+    cp -r "$srcdir/package/share/drizzle" "$pkgdir/usr/share/$pkgname/"
+
     # systemd 服务
     sed "s/@PKGNAME@/${pkgname}/g" "$srcdir/package/share/$pkgname.service" | \
         install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-    install -Dm644 "$srcdir/package/share/$pkgname-fatrace.service" \
-        "$pkgdir/usr/lib/systemd/system/$pkgname-fatrace.service"
+    sed "s/@PKGNAME@/${pkgname}/g" "$srcdir/package/share/$pkgname-fatrace.service" | \
+        install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/system/$pkgname-fatrace.service"
 
     # sysusers 配置
     install -Dm644 "$srcdir/package/share/$pkgname.sysusers" \
