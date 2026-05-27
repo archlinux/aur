@@ -1,5 +1,5 @@
 [Unit]
-Description=Whatsapp XMPP gateway
+Description=WhatsApp XMPP gateway
 After=network.target
 Wants=network.target
 #Requires=prosody.service

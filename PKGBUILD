@@ -1,7 +1,7 @@
 pkgname=slidge-whatsapp
 pkgver=0.3.10
 pkgrel=1
-pkgdesc="A feature-rich Telegram to XMPP puppeteering gateway, based on slidge and Pyrofork."
+pkgdesc="A feature-rich WhatsApp to XMPP puppeteering gateway, based on slidge and whatsmeow."
 arch=('any')
 url="https://codeberg.org/slidge/slidge-whatsapp"
 license=('AGPL-3.0-or-later')
