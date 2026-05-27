@@ -1,7 +1,7 @@
 pkgbase = ardali-bin
 	pkgdesc = ArDali multimedia ecosystem for Linux (prebuilt AppImage)
 	pkgver = 3.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ardali.app
 	arch = x86_64
 	license = GPL-3.0-only

@@ -5,7 +5,7 @@
 
 pkgname=ardali-bin
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ArDali multimedia ecosystem for Linux (prebuilt AppImage)"
 arch=('x86_64')
 url="https://ardali.app"
@@ -55,8 +55,6 @@ MimeType=audio/mpeg;audio/wav;audio/flac;audio/aac;audio/ogg;audio/mp4;audio/x-m
 Keywords=Music;Audio;Video;Media;Player;Linux;AppImage;Equalizer;DSP;ArDali;
 StartupNotify=true
 EOF
-  ln -s com.ardali.mediaplayer.desktop "${pkgdir}/usr/share/applications/ardali.desktop"
-
   install -Dm644 "${srcdir}/com.ardali.mediaplayer.png" \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/com.ardali.mediaplayer.png"
 
