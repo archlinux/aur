@@ -69,9 +69,12 @@ package() {
   install -dm755 "${pkgdir}/opt/brokkr-flash"
   cp -a "${_squashroot}/." "${pkgdir}/opt/brokkr-flash/"
 
-  # Install binary symlink to /usr/bin/
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/brokkr-flash/AppRun" "${pkgdir}/usr/bin/brokkr-flash"
+  # Install wrapper script to /usr/bin/ (forces xcb platform for Wayland compat)
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/brokkr-flash" <<'EOF'
+#!/bin/sh
+export QT_QPA_PLATFORM=xcb
+exec /opt/brokkr-flash/AppRun "$@"
+EOF
 
   # Install .desktop file
   install -Dm644 "${srcdir}/../brokkr-flash.desktop" \
