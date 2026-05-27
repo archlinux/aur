@@ -18,11 +18,7 @@ source=(
 sha256sums=('bcfa7919d0a944a150097e7a0942f191d7e6d00b306c2707270223e9d8b91475')
 
 build() {
-  # Get binary sources.
-  bsdtar -xf "data.tar.xz"
-
-  # Extract license file
-  gzip -dfc "usr/share/doc/${pkgname}/EULA.txt.gz" > "EULA.txt"
+  :
 }
 
 package() {
