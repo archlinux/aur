@@ -3,7 +3,7 @@
 # Contributor: Evert <evorster at gmail dot com>
 _pkgname=hermes-agent
 pkgname=${_pkgname}-git
-pkgver=2026.5.7.r747.g13c72f
+pkgver=2026.5.16.r1095.gbb4703c
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
@@ -24,7 +24,7 @@ depends=(
     'cairo'
     'alsa-lib'
 )
-makedepends=('uv' 'nodejs' 'npm' 'git')
+makedepends=('nodejs' 'npm' 'git')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 # Binary is a self-contained Bun executable with embedded JS/resources - stripping breaks it
@@ -48,27 +48,27 @@ build() {
   echo "==> Building frontend..."
   if [ -d "web" ]; then
     cd web
-    rm -f package-lock.json
     npm install || return 1
     npm run build || return 1
     cd ..
   fi
 
   echo "==> Building TUI..."
-  # hermes_cli.main sets PROJECT_ROOT to its installed site-packages parent and
-  # expects the modern TUI at PROJECT_ROOT/ui-tui. Build that directory here and
-  # package it into the venv's site-packages below.
   if [ -d "ui-tui" ]; then
     cd ui-tui
     npm install --no-fund --no-audit --progress=false || return 1
     npm run build || return 1
     cd ..
+    # Upstream pyproject.toml bundles tui_dist/ in the wheel at
+    # hermes_cli/tui_dist/entry.js — the main.py TUI launcher detects
+    # it automatically (no HERMES_TUI_DIR env var needed).
+    mkdir -p hermes_cli/tui_dist
+    cp ui-tui/dist/entry.js hermes_cli/tui_dist/entry.js
   fi
 
   echo "==> Installing whatsapp-bridge dependencies..."
-  # Install whatsapp-bridge dependencies (kept alongside scripts for same path)
   if [ -f "scripts/whatsapp-bridge/package.json" ]; then
-    (cd scripts/whatsapp-bridge && rm -f package-lock.json && npm install --legacy-peer-deps --omit=dev) || return 1
+    (cd scripts/whatsapp-bridge && npm install --legacy-peer-deps --omit=dev) || return 1
   fi
 
   echo "==> Creating Python venv and installing dependencies..."
@@ -79,7 +79,9 @@ build() {
   # hermes-agent itself is pure Python and compatible with Python 3.11 .. 3.14.
   python -m venv --copies --clear "$srcdir/${_pkgname}/venv" || return 1
   PYTHONDONTWRITEBYTECODE=1 "$srcdir/${_pkgname}/venv/bin/python" -m pip install -U pip setuptools wheel || return 1
-  PYTHONDONTWRITEBYTECODE=1 "$srcdir/${_pkgname}/venv/bin/python" -m pip install .[all] || return 1
+  # Use specific extras instead of [all] — [all] in v0.14.0 includes [dev]
+  # (pytest, debugpy, ruff) which are unnecessary at runtime.
+  PYTHONDONTWRITEBYTECODE=1 "$srcdir/${_pkgname}/venv/bin/python" -m pip install .[cli,pty,mcp,acp,web,cron,homeassistant,sms,google,youtube] || return 1
 
   # Detect and persist Python version for package()
   "$srcdir/${_pkgname}/venv/bin/python" -c 'import sys; print(f"python{sys.version_info.major}.{sys.version_info.minor}")' > "$srcdir/_py_ver"
@@ -97,21 +99,15 @@ package() {
   install -d "$_optdir/venv/lib/${_py_ver}/site-packages"
   cp -r venv/lib/${_py_ver}/site-packages/* "$_optdir/venv/lib/${_py_ver}/site-packages/"
 
-  cp -r web       "$_optdir/"
-  cp -r scripts   "$_optdir/"
+  cp -r scripts "$_optdir/"
 
-  # The TUI launcher (hermes_cli/main.py line 1055-1059) checks HERMES_TUI_DIR.
-  # When set, it looks for $HERMES_TUI_DIR/dist/entry.js — keep the dist/
-  # directory intact so the shortcut path is triggered.
-  if [ -d "ui-tui/dist" ]; then
-    install -d "$_optdir/venv/lib/${_py_ver}/site-packages/ui-tui/dist"
-    cp -a ui-tui/dist/* "$_optdir/venv/lib/${_py_ver}/site-packages/ui-tui/dist/"
-  fi
+  # The upstream main.py:1304 auto-detects tui_dist/entry.js bundled in
+  # the hermes_cli package (via pyproject.toml [tool.setuptools.package-data]).
+  # No need for a separate ui-tui/dist/ copy or HERMES_TUI_DIR env var.
 
   # Install browser tool dependencies directly at the package path.
   # Building here avoids $srcdir references in native modules (better-sqlite3).
   cp package.json "$_optdir/"
-  [ -f package-lock.json ] && cp package-lock.json "$_optdir/"
   echo "==> Installing browser tool dependencies..."
   (cd "$_optdir" && npm install --omit=dev)
   # Remove build artifacts that embed $pkgdir paths — only the compiled
@@ -135,15 +131,14 @@ package() {
   [ -f "cli-config.yaml.example" ] && install -Dm644 cli-config.yaml.example "$_optdir/cli-config.yaml.example"
   [ -f ".env.example" ] && install -Dm644 .env.example "$_optdir/.env.example"
 
-
   # Install license to /opt/$_pkgname
   install -Dm644 LICENSE "$_optdir/LICENSE"
 
-  # Create simple wrapper script in /usr/bin
+  # Create wrapper script in /usr/bin
   # We ship only venv/lib/{py_ver}/site-packages/, not venv/bin/.
   # So we call the system Python with PYTHONPATH pointing to the site-packages.
-  # HERMES_TUI_DIR tells hermes_cli/main.py to use the prebuilt dist/entry.js
-  # directly, skipping all npm install / npm run build.
+  # TUI is auto-detected from hermes_cli/tui_dist/entry.js inside the package
+  # (main.py:1304), so no HERMES_TUI_DIR needed.
   install -d "$pkgdir/usr/bin"
 
   # Remove all __pycache__ directories (Python bytecode caches).  They contain
@@ -156,7 +151,6 @@ package() {
   find "$pkgdir" -name "direct_url.json" -delete 2>/dev/null || true
   cat > "$pkgdir/usr/bin/hermes" <<WRAPPER
 #!/bin/bash
-export HERMES_TUI_DIR=/opt/hermes-agent/venv/lib/${_py_ver}/site-packages/ui-tui
 export PYTHONPATH=/opt/hermes-agent/venv/lib/${_py_ver}/site-packages
 exec /usr/bin/python -m hermes_cli.main "\$@"
 WRAPPER
