@@ -1,20 +1,26 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: CookieSn1ffer <230327296+cookiesn1ffer@users.noreply.github.com>
 pkgname=nexus-tracker
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Personal Accountability App"
 arch=('x86_64')
-url="https://github.com/YOUR_USERNAME/nexus-tracker"
+url="https://github.com/cookiesn1ffer/nexus-tracker"
 license=('MIT')
 depends=('gtk3' 'libkeybinder3')
 makedepends=('flutter' 'clang' 'cmake' 'ninja' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('79e34253c4b45843711a9c6ea3dc0e721976d9aeb655405eb7908aec501dcc4f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   flutter pub get
-  flutter build linux --release
+  flutter build linux --release || true
+  
+  if [ ! -f "build/linux/x64/release/bundle/nexus_tracker" ]; then
+    cd build/linux/x64/release
+    ninja
+    cmake --install .
+  fi
 }
 
 package() {
