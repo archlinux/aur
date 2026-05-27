@@ -2,7 +2,7 @@
 
 pkgname=termtypist
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Keyboard-first terminal typing trainer inspired by Monkeytype'
 arch=('x86_64')
 url='https://github.com/hase9awa/termtypist'
@@ -21,9 +21,10 @@ _cargo_env() {
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  sed -i 's/^rusqlite = { version = "0\.32", features = \["bundled"\] }$/rusqlite = "0.32"/' Cargo.toml
   _cargo_env
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  sed -i 's/^rusqlite = { version = "0\.32", features = \["bundled"\] }$/rusqlite = "0.32"/' Cargo.toml
+  cargo update --offline -p rusqlite --precise 0.32.1
 }
 
 build() {
