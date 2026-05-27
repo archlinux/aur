@@ -1,0 +1,16 @@
+post_install() {
+    echo ""
+    echo "  ◈  HazeDrop installed!"
+    echo ""
+    echo "     hazedrop          — Launch GUI"
+    echo "     hazedrop --cli    — Interactive TUI"
+    echo "     hazedrop send     — Send a file"
+    echo "     hazedrop receive  — Receive a file"
+    echo ""
+    echo "  Installed to: /opt/hazedrop  (self-contained venv)"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

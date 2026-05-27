@@ -1,0 +1,18 @@
+pkgbase = hazedrop
+	pkgdesc = Anonymous encrypted file transfer over Tor — Haze Protocol v2
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/berk-kucuk/HazeDrop
+	install = hazedrop.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = python-pip
+	depends = python
+	depends = tor
+	depends = libgl
+	optdepends = xdg-utils: open download folder after transfer
+	source = hazedrop-1.0.0.tar.gz::https://github.com/berk-kucuk/HazeDrop/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 22552d068128ed185252a9a8a09d5d43bfef6010321ce3d87b520730942c68f1
+
+pkgname = hazedrop
