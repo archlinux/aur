@@ -1,7 +1,7 @@
 pkgbase = proverbilo
 	pkgdesc = Programo por montri hazardajn proverbojn en Esperanto
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fierthraix/proverbilo
 	arch = x86_64
 	arch = aarch64
