@@ -1,0 +1,20 @@
+pkgbase = system-tray-browser
+	pkgdesc = KDE-friendly system tray popup browser
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/itonia149/system-tray-browser
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = pyside6
+	depends = qt6-webengine
+	depends = python-adblock
+	optdepends = pipewire: WebRTC desktop sharing under Wayland
+	source = system-tray-browser::git+https://github.com/itonia149/system-tray-browser.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = system-tray-browser
