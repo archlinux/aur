@@ -2,8 +2,8 @@
 
 _name=codex-proxy
 pkgname=codex-proxy
-pkgver=2.0.70
-pkgrel=1
+pkgver=2.0.76
+pkgrel=2
 pkgdesc="Local headless proxy exposing ChatGPT Codex Responses API as OpenAI/Anthropic/Gemini-compatible endpoints"
 arch=('x86_64')
 url="https://github.com/icebear0828/codex-proxy"
@@ -13,10 +13,17 @@ makedepends=('npm' 'rust')
 backup=()
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "codex-proxy.sh"
-        "codex-proxy.service")
-sha256sums=('143a7ad861ff83974ae32ca5960fb27ee0e1dfc9329e3064930a9b576c3a71c3'
+        "codex-proxy.service"
+        "non-stream-backfill-missing-output.patch")
+sha256sums=('e79a414e8142b0a8eef8a6d184196193b96f5a2618008a50aed88685c1923149'
+            'SKIP'
             'SKIP'
             'SKIP')
+
+prepare() {
+    cd "$srcdir/$_name-$pkgver"
+    patch -p1 < "$srcdir/non-stream-backfill-missing-output.patch"
+}
 
 build() {
     cd "$srcdir/$_name-$pkgver"

@@ -1,0 +1,60 @@
+From d784fd93546ea4744561f4fc93e540af48b652a8 Mon Sep 17 00:00:00 2001
+From: Will Handley <wh260@cam.ac.uk>
+Date: Wed, 27 May 2026 08:09:06 +0100
+Subject: [PATCH] fix(responses): backfill output[] when missing, not only when
+ empty
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The non-streaming /v1/responses collector (collectPassthrough) backfills
+`response.output` from accumulated `response.output_item.done` events
+and `response.output_text.delta` chunks when the upstream
+`response.completed` event has `output: []`. The guard:
+
+    if (Array.isArray(resp.output) && resp.output.length === 0) { ... }
+
+only matches the *empty array* case. Upstream now (observed on
+gpt-5.5 via ChatGPT subscription, 2026-05-27) frequently omits the
+`output` field entirely from `response.completed`, in which case
+`Array.isArray(undefined)` is false and the backfill is skipped.
+
+The final non-stream JSON body returned to the client then contains
+no `output` field at all. Clients using the openai SDK's `Response`
+object hit `TypeError: 'NoneType' object is not iterable` when the
+`output_text` property iterates `self.output`.
+
+Loosen the guard to also fire when `output` is missing:
+
+    if (!Array.isArray(resp.output) || resp.output.length === 0) { ... }
+
+The body of the branch is unchanged — it only runs when there's no
+upstream output to copy through, so widening the guard is safe.
+
+Verified end-to-end: gpt-5.5 with stream=false now returns
+`output: [{...message...}]` and `output_text: "ok"` for a simple
+prompt; mcp-handley-lab's openai adapter (which calls
+`responses.create(stream=false)`) recovers from
+`'NoneType' is not iterable` to normal "ok" reply.
+---
+ src/routes/responses.ts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/routes/responses.ts b/src/routes/responses.ts
+index bba8818..c9e9492 100644
+--- a/src/routes/responses.ts
++++ b/src/routes/responses.ts
+@@ -406,8 +406,8 @@ export async function collectPassthrough(
+           onResponseMetadata?.({ functionCallIds: [...collectFunctionCallIds] });
+         }
+         // Codex hosted search 经常完整流出 output_item.done/text delta，
+-        // 但 completed.response.output 为空。这里用流式事件回填最终 JSON。
+-        if (Array.isArray(resp.output) && resp.output.length === 0) {
++        // 但 completed.response.output 为空或缺失。这里用流式事件回填最终 JSON。
++        if (!Array.isArray(resp.output) || resp.output.length === 0) {
+           if (outputItems.length > 0) {
+             resp.output = outputItems;
+           } else if (textDeltas) {
+-- 
+2.54.0
+
