@@ -1,6 +1,6 @@
 pkgbase = doubletake-bin
 	pkgdesc = AirPlay 2 mirroring sender for Linux (prebuilt release binary)
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/omarroth/doubletake
 	install = doubletake-bin.install
@@ -19,13 +19,13 @@ pkgbase = doubletake-bin
 	conflicts = doubletake
 	conflicts = doubletake-git
 	options = !debug
-	source = doubletake::https://github.com/omarroth/doubletake/releases/download/v0.3.1/doubletake
-	source = doubletake-ctl::https://github.com/omarroth/doubletake/releases/download/v0.3.1/doubletake-ctl
-	source = doubletake-manpages.tar.gz::https://github.com/omarroth/doubletake/releases/download/v0.3.1/doubletake-manpages.tar.gz
+	source = doubletake::https://github.com/omarroth/doubletake/releases/download/v0.3.2/doubletake
+	source = doubletake-ctl::https://github.com/omarroth/doubletake/releases/download/v0.3.2/doubletake-ctl
+	source = doubletake-manpages.tar.gz::https://github.com/omarroth/doubletake/releases/download/v0.3.2/doubletake-manpages.tar.gz
 	source = doubletake.service
-	sha256sums = 07fdac544e19dd683027b0bee8092edbb2182969afd6bfea8c7e52c63c57805c
-	sha256sums = 203cdcfa9718ee1d454f7fd0070d642d69a9d5ca3fe141f0152c2fb2d920521b
-	sha256sums = fe0bb48e49a87fccb70d2dd7dfafd07ae81f7283721c0ecbac3cd592a710b990
+	sha256sums = cbb98a558cca18b2ce80f81dbb0efcb8f66392d644ba099ddc513b4dd6b54831
+	sha256sums = 127a58768c5aa23d5a49cc4d661d3b652e88e5529e74a6499776629c049bdac1
+	sha256sums = aec700b4822d22d15fc87dc6514789f245939226734e0e2bfff64848565adb86
 	sha256sums = bb51bea22f4a5a6264a509eea126fce8b7dd0de8f5127e77e6bee13a96193c84
 
 pkgname = doubletake-bin
