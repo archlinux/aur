@@ -12,14 +12,13 @@
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
 pkgver=3.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
 license=('BSD-2-Clause')
 depends=(
   'glibc'
-  'pcre'
   'pcre2'
   'zlib'
   'gperftools'
@@ -65,6 +64,7 @@ source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgv
         service
         logrotate
         "0001-pr-1887.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/1887.patch"
+	"0001-pr-2013.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/2013.patch"
         "0001-fix-lua-ngx.location.capture.504.patch::https://github.com/alibaba/tengine/commit/6ee33c50ba1a9690e8f1459df0cfcc2a57626568.patch"
         "0001-pr-2001.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/2001.patch"
         "0101-fix-CVE-2026-1642.patch::https://github.com/alibaba/tengine/commit/51e05b88fd2b2c656d087601bdd3186a90334201.patch"
@@ -83,6 +83,7 @@ sha256sums=('64ed7155c0c904ce0fe7199c21b8eb6c2abfc267278fa8af832c0cb781e864dc'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97'
             'dc8cba315b440b407548a10077b8bfca84bcbfe647cd215b5b3c73cd59db8f50'
+            '574b3e91027c3b27c3ab3f44067ee883329c2d75d59462183b86d011f58c87f9'
             'a10e7cc50f100c1fb07d4f692d4ad07020c34fe4aa423507cbd5e46d6370dc5a'
             '18b5f2a1bdd0b03895f079a5dbaa11e1ee155ce79306a458c1ba68813baf1e50'
             '28caad27790100a06d7639e4d2b53e60a24974865607af93899f9a056a16ac48'
@@ -128,7 +129,7 @@ build() {
         --http-scgi-temp-path=/var/lib/tengine/scgi \
         --http-uwsgi-temp-path=/var/lib/tengine/uwsgi \
         --with-cc-opt="$CFLAGS $CPPFLAGS" \
-        --with-ld-opt="$LDFLAGS -lpcre" \
+        --with-ld-opt="$LDFLAGS" \
         --with-compat \
         --with-file-aio \
         --with-openssl=../Tongsuo-${_tongsuo_ver} \
