@@ -1,7 +1,7 @@
 pkgbase = vicinae-kotoba
 	pkgdesc = Japanese dictionary, translator, and Anki integration for Vicinae — search Jotoba, translate sentences, add cards to Anki
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kurojs/Kotoba
 	install = kotoba.install
 	arch = any
