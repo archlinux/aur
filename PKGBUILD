@@ -1,51 +1,46 @@
-# Maintainer: éclairevoyant
+# Maintainer: gigas002 <gigas002@pm.me>
 
-_pkgname=wayshot
-pkgname="$_pkgname-git"
-pkgver=1.3.1.r65
+_pkgname="wayshot"
+pkgname="${_pkgname}-git"
+pkgver=r506.100dff7
 pkgrel=1
-pkgdesc="Screenshot tool for wlroots compositors"
-arch=(x86_64)
-url="https://github.com/waycrate/$_pkgname"
-license=(BSD)
-depends=(gcc-libs glibc)
-makedepends=(cargo git scdoc)
-optdepends=('slurp: for area selection')
-provides=("$_pkgname=${pkgver%%.r*}")
-conflicts=("$_pkgname")
-source=("git+$url")
-b2sums=('SKIP')
-
-prepare() {
-	cd $_pkgname
-
-	# don't waste time zipping manpages
-	rm -rfv build.rs
-
-	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
+pkgdesc="Screenshotting tool for wayland compositors"
+arch=("x86_64")
+url="https://github.com/waycrate/wayshot"
+license=('GPL-3.0-only')
+depends=(pango libjxl)
+makedepends=(git cargo scdoc)
+optdepends=(
+  'wl-clipboard: copy screenshots to clipboard'
+  'slurp: interactive region selection'
+  'waysip: interactive region selection (Wayland-native)'
+)
+provides=(${_pkgname})
+conflicts=(${_pkgname})
+source=("${_pkgname}::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname/$_pkgname
-	git tag --list --sort=-version:refname | head -n1 | awk '{
-		ver = gensub(/[^0-9.]/, "", "g", $1);
-		"git rev-list --count "$1"..HEAD" | getline commit_count;
-		print ver".r"commit_count
-	}'
+  cd "${_pkgname}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-	cd $_pkgname
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features
+  cd "${_pkgname}"
+  cargo build --all-features --release
+  for f in docs/*.scd; do
+    scdoc < "$f" > "${f%.scd}"
+  done
 }
 
 package() {
-	cd $_pkgname
-	install -vDm755 target/release/$_pkgname -t "$pkgdir/usr/bin/"
-	install -vDm644 docs/$_pkgname.1.scd "$pkgdir/usr/share/man/man1/$_pkgname.1"
-	install -vDm644 docs/$_pkgname.7.scd "$pkgdir/usr/share/man/man7/$_pkgname.7"
-	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  cd "${_pkgname}"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname}"
+  install -Dm644 LICENSE-GPL "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  for f in docs/wayshot.[0-9]; do
+    install -Dm644 "$f" "$pkgdir/usr/share/man/man${f##*.}/${f##*/}"
+  done
 }
