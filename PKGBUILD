@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartoc-bin
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Barto job executor client (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -13,15 +13,16 @@ depends=()
 optdepends=('logrotate: periodic cleanup of rotated log files'
             'xz: xz compression of rotated log files')
 makedepends=()
+install=bartoc.install
 
 _base="https://github.com/rustyhorde/barto/releases/download/v${pkgver}"
 
 source=("${_base}/dist-bartoc.tar.gz")
 source_x86_64=("bartoc-x86_64::${_base}/bartoc-x86_64-unknown-linux-musl")
 source_aarch64=("bartoc-aarch64::${_base}/bartoc-aarch64-unknown-linux-musl")
-sha256sums=('c8e9db22e3fea270e5e4d1b9a75ca766332328efd56e65e7fb479e81102c247e')
-sha256sums_x86_64=('5355af4acd91f21f6ad4facd152d1c7992738393f9b8ba3823713abe2731c722')
-sha256sums_aarch64=('14abc22622913e4144815aaf8a220df344c2342c3175e1bbcf25eb3905411349')
+sha256sums=('b58cf6594d700a1ff47ffa3d808bd22b27f63eae6cc92f0dd372810a23f2f6e7')
+sha256sums_x86_64=('a11e25ba3b26f811d3d7e5bf44ed43102daf8f7dbf169456b9881c7a562669ac')
+sha256sums_aarch64=('97712789892aca2bb01433e77bd3e48d568be90016fb0199d50b20b8c2b2d6f6')
 
 package() {
     install -Dm755 "bartoc-${CARCH}" "$pkgdir/usr/bin/bartoc"
