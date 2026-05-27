@@ -2,38 +2,38 @@
 
 pkgname=markdown
 pkgdesc='A markdown parser for Ada.'
-pkgver=26.0w
+pkgver=27.0w
 pkgrel=1
 
-url=https://github.com/AdaCore/markdown
+url='https://github.com/AdaCore/markdown'
 arch=(i686 x86_64)
-license=(Apache)
+license=(Apache-2.0)
 
-depends=(libvss)
+depends=(vss-text)
 makedepends=(gprbuild-toolbox)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/markdown-26.0w-20250417-1614C-src.tar.gz)
-sha256sums=(55b7f37fcf1d16c40586a781e4dec319acafc1a75b1f43c19e7b6a96cf10c553)
+_srcdir="${pkgname}-${pkgver}-20260409-168B4-src"
+
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2026/markdown-src.tar.gz")
+sha256sums=(ae46a445fa83b1b78dd97063e59657e6355326bda8692a2a9c62f6fe37adbb19)
 
 
 build()
 {
-    cd $srcdir/markdown-26.0w-20250417-1614C-src
-    BUILD_MODE=prod make all
+    cd "${srcdir}/${_srcdir}"
+
+    make BUILD_MODE=prod all
 }
 
 
 package()
 {
-    cd $srcdir/markdown-26.0w-20250417-1614C-src
+    cd "${srcdir}/${_srcdir}"
 
     make BUILD_MODE=prod \
-         DESTDIR=$pkgdir \
+         DESTDIR="${pkgdir}" \
          install
-    
-    # Install the licenses.
-    #
-    install -D -m644     \
-       LICENSE.txt       \
-       $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+    install -Dm644 LICENSE.txt \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
