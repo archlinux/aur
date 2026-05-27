@@ -1,7 +1,7 @@
 pkgbase = lazydiff-bin
 	pkgdesc = A fast terminal UI for reviewing Git diffs
 	pkgver = 0.1.0
-	pkgrel = 7
+	pkgrel = 11
 	url = https://github.com/Ataraxy-Labs/lazydiff
 	arch = x86_64
 	license = MIT
@@ -12,11 +12,11 @@ pkgbase = lazydiff-bin
 	provides = lazydiff
 	conflicts = lazydiff
 	options = !strip
-	source = README-0.1.0.md::https://raw.githubusercontent.com/Ataraxy-Labs/lazydiff/v0.1.0-alpha.7/README.md
-	source = LICENSE-0.1.0::https://raw.githubusercontent.com/Ataraxy-Labs/lazydiff/v0.1.0-alpha.7/LICENSE
-	sha256sums = d17af4e97b8ef8e0ac0907eb89f080ab5e55f3863b951a34a65a20d6fcb84810
+	source = README-0.1.0.md::https://raw.githubusercontent.com/Ataraxy-Labs/lazydiff/v0.1.0-alpha.11/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/Ataraxy-Labs/lazydiff/v0.1.0-alpha.11/LICENSE
+	sha256sums = fa02cc018e373cf4f4e06f9328c2391a4850cf5b23a598b67bc136102db0a8ce
 	sha256sums = ac1c162eee0bc8161b18d934bb406dae9d7624a261fbb7bf58d4aeb7ea1736b8
-	source_x86_64 = lazydiff-x86_64-0.1.0.tgz::https://github.com/Ataraxy-Labs/lazydiff/releases/download/v0.1.0-alpha.7/lazydiff-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 43774b9121142cf9896e8948d56081f79478db172b502dd054dc15815830976b
+	source_x86_64 = lazydiff-x86_64-0.1.0.tgz::https://github.com/Ataraxy-Labs/lazydiff/releases/download/v0.1.0-alpha.11/lazydiff-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 8a687523cba24e79601bdd4f68914ea2bd12283dc530243c0dd3fa8cd73af0a6
 
 pkgname = lazydiff-bin
