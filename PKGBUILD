@@ -1,7 +1,7 @@
 # Maintainer: Dessyume <dess@dessyu.me>
 
-_pkgname=nerimity-desktop
-pkgname=nerimity
+_pkgname=nerimity-bin
+pkgname=nerimity-bin
 pkgdesc="A modern and sleek chat app."
 pkgver=1.3.1
 pkgrel=2
