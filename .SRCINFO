@@ -1,7 +1,7 @@
 pkgbase = termtypist
 	pkgdesc = Keyboard-first terminal typing trainer inspired by Monkeytype
 	pkgver = 0.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hase9awa/termtypist
 	arch = x86_64
 	license = GPL-3.0-or-later
