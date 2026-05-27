@@ -1,6 +1,6 @@
 # Maintainer: Ben Word <ben@benword.com>
 pkgname=quien
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A better whois and domain intelligence toolkit"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0b044105f13a4948a3728aaaf3f91f274fc87654f8a44fa8b801273f7b7808a5')
+sha256sums=('35bb500f7929ccfc22091a201c35c0e9e660ccd3da383f8b42a4e95530333fbe')
 
 prepare() {
   cd "$pkgname-$pkgver"
