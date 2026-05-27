@@ -1,7 +1,7 @@
 pkgbase = termtypist
 	pkgdesc = Keyboard-first terminal typing trainer inspired by Monkeytype
-	pkgver = 0.1.3
-	pkgrel = 4
+	pkgver = 0.1.4
+	pkgrel = 1
 	url = https://github.com/hase9awa/termtypist
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,7 +9,7 @@ pkgbase = termtypist
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = sqlite
-	source = termtypist-0.1.3.tar.gz::https://github.com/hase9awa/termtypist/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = c3dd80c72664c9a383b1f077452e576aae039143fb520b899abbc4e425c2b569
+	source = termtypist-0.1.4.tar.gz::https://github.com/hase9awa/termtypist/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 377f7a8adc2f08112a68928b356cb2e3ce08f578388eb66dbe0d44db2126e30c
 
 pkgname = termtypist
