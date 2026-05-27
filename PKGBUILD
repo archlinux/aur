@@ -1,15 +1,21 @@
-# fconvert v2.0.3 (c) 2023 - 2026 Eraldo Bako - MIT License
+# fconvert v2.1.0 (c) 2023 - 2026 Eraldo Bako - MIT License
 # Maintainer: Eraldo Bako <eraldobako@gmail.com>
 pkgname=fconvert
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="A fast, intentional CLI file converter for images, audio, and video."
+pkgdesc="A fast, intentional CLI file converter for images, audio, video, documents."
 arch=('x86_64')
 url="https://github.com/Eraldo-Bako/fconvert"
 license=('MIT')
-depends=('opencv' 'ffmpeg')
-makedepends=('gcc' 'cmake')
-source=("git+${url}.git")
+depends=('opencv' 'ffmpeg' 'libraw' 'imagemagick' 'ghostscript')
+makedepends=('gcc' 'cmake' 'git')
+optdepends=(
+  'pandoc: Essential for document conversion'
+  'libheif: Essential format codec for HEIC/HEIF asset conversion'
+  'libde265: HEVC decoder support for HEIF image sequences'
+  'x265: HEVC encoder support for HEIF image sequences'
+)
+source=("git+${url}.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
@@ -22,7 +28,7 @@ build() {
   else
     echo "fconvert==> WARNING: CMake build failed. Falling back to manual g++ compilation..."
     rm -rf build     
-    g++ -o fconvert main.cpp classes/*.cpp `pkg-config --cflags --libs opencv4` -lstdc++fs
+    g++ -std=c++17 -O3 -s main.cpp classes/*.cpp -o fconvert `pkg-config --cflags --libs opencv4 libraw`
   fi
 }
 
@@ -31,3 +37,4 @@ package() {
   install -Dm755 fconvert "$pkgdir/usr/bin/fconvert"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
