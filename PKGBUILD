@@ -1,16 +1,16 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_npmname=gritty
-_npmver=10.2.1
-
-pkgname=$_npmname
+pkgname="gritty"
 pkgdesc="Web Terminal Emulator."
-pkgver=${_npmver}
+pkgver=10.2.1
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/cloudcmd/gritty"
 _urlraw="https://raw.githubusercontent.com/cloudcmd/gritty/v${pkgver}"
 license=("MIT")
+
+_npmname=${pkgname}
+_npmver=${pkgver}
 
 replaces=("nodejs-${_npmname}")
 depends=("glibc" "gcc-libs" "bash" "nodejs" "python")
