@@ -2,11 +2,11 @@
 
 pkgname=rng-rename
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI tool to rename files to randomly generated strings."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
 url="https://github.com/cyqsimon/rng-rename"
-license=("AGPL3")
+license=("AGPL-3.0-only")
 depends=("libgcc")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")

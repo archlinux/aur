@@ -1,14 +1,14 @@
 pkgbase = rng-rename
 	pkgdesc = A CLI tool to rename files to randomly generated strings.
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cyqsimon/rng-rename
 	arch = x86_64
 	arch = i686
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = AGPL3
+	license = AGPL-3.0-only
 	makedepends = cargo
 	depends = libgcc
 	source = rng-rename-0.7.1.tar.gz::https://static.crates.io/crates/rng-rename/rng-rename-0.7.1.crate
