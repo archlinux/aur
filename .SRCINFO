@@ -1,0 +1,23 @@
+pkgbase = tunneled-bin
+	pkgdesc = A simple and powerful CLI tool for creating TCP tunnels (Precompiled Binary)
+	pkgver = 2.5.2
+	pkgrel = 2
+	url = https://github.com/Strawberry-Foundations/tunneled
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = openssl
+	provides = tunneled
+	conflicts = tunneled
+	source = tunneled-2.5.2::https://github.com/Strawberry-Foundations/tunneled/releases/download/v2.5.2/tunneled-linux-amd64
+	source = LICENSE-2.5.2::https://github.com/Strawberry-Foundations/tunneled/raw/v2.5.2/LICENSE
+	source = README-2.5.2::https://github.com/Strawberry-Foundations/tunneled/raw/v2.5.2/README.md
+	source = config.example-2.5.2.yml::https://github.com/Strawberry-Foundations/tunneled/raw/v2.5.2/config.example.yml
+	source = services.example-2.5.2.yml::https://github.com/Strawberry-Foundations/tunneled/raw/v2.5.2/services.example.yml
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tunneled-bin
