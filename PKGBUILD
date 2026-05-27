@@ -1,12 +1,12 @@
 # Maintainer: Allen Zhong <pdev@zhoal.pw>
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 pkgname=tikv
-pkgver=8.5.1
+pkgver=8.5.6
 pkgrel=1
 pkgdesc='Distributed transactional key-value database, originally created to complement TiDB'
 arch=('x86_64')
 url='https://github.com/tikv/tikv'
-license=('Apache')
+license=('Apache-2.0')
 provides=('tikv-server')
 backup=(etc/tikv/tikv.toml)
 depends=('tikv-pd' 'gcc-libs')
@@ -16,7 +16,7 @@ makedepends=(
     'rustup'
     'awk'
     'cmake'
-    'gcc12'
+    'gcc12<12.4.0'
     'gflags'
     'jemalloc'
 )
@@ -25,7 +25,7 @@ source=(tikv-${pkgver}.tar.gz::https://github.com/tikv/tikv/archive/v${pkgver}.t
         tikv-sysusers.conf
         tikv-tmpfiles.conf
         tikv.toml)
-sha256sums=('2a7e843b7ba8d03bcb4d8e1dcc9c809922ec4e85b4a4d8cef749b4dc5be4640f'
+sha256sums=('66e196bd8ba55f86ef8bcff7b32e23e18616a8bcfc78044f2bc455c8909aaa41'
             '870b8eaf83bc0d22b05b0f3a7890660e483cf77bb1d84bc50ad04fb23068cd8c'
             '744b252e29099b0099dc41e30bc3badd33b3d661c7126af8044faa4fc2df8927'
             '935291bac6a216c6f880df9bfaec8900266413bb202ac483e79f291e1f28e9f1'
@@ -55,6 +55,9 @@ build() {
     # see: https://github.com/tikv/tikv/issues/16593
     export CC="gcc-12"
     export CXX="g++-12"
+
+    # see: https://github.com/tikv/tikv/issues/18867
+    export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
     # the default config in devtools has some params like "-Wp,-D_GLIBCXX_ASSERTIONS"
     # in CXXFLAGS which make the build error, so overwrite them with a set of tested
