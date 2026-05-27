@@ -1,7 +1,9 @@
 # Maintainer: flossbud <flossbud27@gmail.com>
 pkgname=toontown-multitool
-pkgver=2.2.0
+epoch=1
+pkgver=0.6.0alpha.3
 pkgrel=1
+_upstream=0.6.0-alpha.3
 pkgdesc="Multiboxing input control for Toontown Rewritten and Corporate Clash"
 arch=('any')
 url="https://github.com/flossbud/ToonTown-MultiTool"
@@ -19,11 +21,11 @@ depends=(
     'python-jeepney'
     'xdotool'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/flossbud/ToonTown-MultiTool/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${_upstream}.tar.gz::https://github.com/flossbud/ToonTown-MultiTool/archive/refs/tags/v${_upstream}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-    cd "ToonTown-MultiTool-${pkgver}"
+    cd "ToonTown-MultiTool-${_upstream}"
 
     # Install Python source
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
