@@ -2,72 +2,85 @@
 
 pkgname=gtkada
 pkgdesc='Ada bindings for the Gtk+ library.'
-pkgver=26.0w
+pkgver=27.0w
 pkgrel=1
 epoch=1
 
-url=https://github.com/AdaCore/gtkada
-arch=(i686 x86_64)
-license=(GPL3 custom)
+url='https://github.com/AdaCore/gtkada'
+arch=(x86_64)
+license=(GPL-3.0-only LicenseRef-custom)
+options=(!lto)
 
 depends=(gcc-ada
          gtk3)
 makedepends=(gprbuild-toolbox
              python-sphinx
              python-sphinx_rtd_theme
-             texlive-meta)
-#             gnatdoc)
+             texlive-meta
+             gnatdoc)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gtkada-26.0w-20250416-16402-src.tar.gz
+_gtkada_src=gtkada-27.0w-20260409-163D3-src
+
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2026/gtkada-src.tar.gz
         Makefile.in-patch)
-sha256sums=(8ce12d3093544959a15c66e48652b45fbbe8f76c79a2ffab26cb7dbfb98f7dc0
+sha256sums=(217ca366be4dc581b3b04e942d8b36e29e41561fa9e8d1b03cd2e9adb85e52ab
             f525df1f7c319f1dc95ddafe1a73d961ce162c6171c97b0df3ae756122ca76d4)
-
-_gtkada_src=gtkada-26.0w-20250416-16402-src
 
 
 prepare()
 {
-    cd $srcdir/$_gtkada_src
+    cd "${srcdir}/${_gtkada_src}"
+
     patch -Np1 -i ../Makefile.in-patch
+
+    sed -i 's/gnatdoc3/gnatdoc/g' docs/gtkada_rm/Makefile
 }
 
 
 build()
 {
-    cd $srcdir/$_gtkada_src
+    cd "${srcdir}/${_gtkada_src}"
 
     ./configure --prefix=/usr
 
-    ADA_FLAGS="$CFLAGS"
-    ADA_FLAGS="${ADA_FLAGS//-Wformat}"
-    ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
+    ## Strip flags incompatible with GNAT.
+    #
+    local _ada_flags="${CFLAGS//-Wformat}"
+    _ada_flags="${_ada_flags//-Werror=format-security}"
 
     # Disable RPATH usage with -R.
     # Only use a single job (-j1) to prevent the same file being compiled simultaneously
     # which results in build artifacts being overwritten.
     #
-    make -j1 GPRBUILD_SWITCHES="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
+    make -j1 GPRBUILD_SWITCHES="-R -cargs ${_ada_flags} -largs ${LDFLAGS} -gargs"
 
-#    make docs
+
+    ## Make the documentation.
+    #
+    make docs > make_docs.log
 }
 
 
 package()
 {
-    cd $srcdir/$_gtkada_src
+    cd "${srcdir}/${_gtkada_src}"
 
-    make -j1 PROCESSORS=1 DESTDIR=$pkgdir install
-    
-    # Install the license.
-    #
-    install -D -m644     \
-       COPYING3          \
-       $pkgdir/usr/share/licenses/$pkgname/COPYING3
+    make -j1 DESTDIR="${pkgdir}" install
 
-    # Install the custom license.
+    ## Install the reference manual documentation.
     #
-    install -D -m644     \
-       COPYING.RUNTIME   \
-       $pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME
+    mv docs/gtkada_rm/doc_obj/gnatdoc/html \
+       "${pkgdir}/usr/share/doc/${pkgname}/gtkada_rm"
+
+
+    ## Install the license.
+    #
+    install -Dm644 COPYING3 \
+        "${pkgdir}/usr/share/licenses/${pkgname}/COPYING3"
+
+
+    ## Install the custom license.
+    #
+    install -Dm644 COPYING.RUNTIME \
+        "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.RUNTIME"
 }
