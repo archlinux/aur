@@ -1,9 +1,10 @@
 # Maintainer: JoyL <2936221683@qq.com>
 pkgname=reasonix-desktop-bin
 pkgver=0.53.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal-native AI coding agent with DeepSeek API (desktop GUI)"
 arch=('x86_64')
+options=('!debug')
 url="https://github.com/esengine/DeepSeek-Reasonix"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3')

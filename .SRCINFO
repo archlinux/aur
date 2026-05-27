@@ -1,9 +1,10 @@
 pkgbase = reasonix-desktop-bin
 	pkgdesc = Terminal-native AI coding agent with DeepSeek API (desktop GUI)
 	pkgver = 0.53.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esengine/DeepSeek-Reasonix
 	arch = x86_64
+	options = !debug
 	license = MIT
 	depends = webkit2gtk-4.1
 	depends = gtk3
