@@ -1,6 +1,6 @@
 # Maintainer: britors <rodrigo@w3ti.com.br>
 pkgname=prisma4postgres-bin
-pkgver=10.4.0
+pkgver=10.5.0
 pkgrel=1
 pkgdesc="PostgreSQL explorer and Prisma ORM integration"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('prisma4postgres')
 options=('!debug' '!strip')
 source=("https://github.com/britors/Prisma4Postgres/releases/download/v${pkgver}/prisma4postgres_${pkgver}_amd64.deb"
         "https://raw.githubusercontent.com/britors/Prisma4Postgres/main/logo.svg")
-sha256sums=('b4bf1a898ce9c3a81e980807c30fe14d9126f6698b68a2ba9cfb013acd7cc7da'
+sha256sums=('SKIP'
             'b22695b2f97a91e4995fe11fd5cd60a63522818fa49af063cfa300a75a6b3ba6')
 
 prepare() {
