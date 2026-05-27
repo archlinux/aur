@@ -1,4 +1,5 @@
-# Maintainer: Marco Scardovi <mscardovi95 at gmail dot com>
+# Maintainer: Yoann Laissus <yoann.laissus@gmail.com>
+# Contributor Marco Scardovi <mscardovi95 at gmail dot com>
 
 # Hardware support is limited. Nvidia cards should work fine.
 # If you're running a hybrid setup, try with primusrun/optirun.
@@ -9,8 +10,8 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve-studio-beta
-pkgver=21.0b2
-pkgrel=3
+pkgver=21.0b3
+pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -23,7 +24,7 @@ makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve-studio' 'davinci-resolve' 'davinci-resolve-beta')
 source=("file://DaVinci_Resolve_Studio_${pkgver}_Linux.zip"
         "davinci-control-panels-setup.sh")
-sha256sums=('48ec68e4cd0f6825b887fee7e0fdd2288cedc0ca083cd35fd70c1b5a756cfa2d'
+sha256sums=('36460f5884dd63218cf5c2e127035c650a09a299d8e3e2288ed045f498ac0419'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8')
 install="${pkgname}.install"
 options=('!strip')
@@ -100,14 +101,18 @@ prepare() {
     sed -i "s|RESOLVE_INSTALL_LOCATION|/opt/${_pkgname}|g" "${_file}"
   done < <(find . -type f '(' -name "*.desktop" -o -name "*.directory" -o -name "*.directory" -o -name "*.menu" ')' -print0)
 
-  rm "squashfs-root/libs/libglib-2.0.so.0"
-  rm "squashfs-root/libs/libgio-2.0.so.0"
-  rm "squashfs-root/libs/libgmodule-2.0.so.0"
+  rm "squashfs-root/libs/libglib-2.0.so.0" \
+     "squashfs-root/libs/libgio-2.0.so.0" \
+     "squashfs-root/libs/libgmodule-2.0.so.0" \
+     "squashfs-root/libs/libc++.so.1" \
+     "squashfs-root/libs/libc++abi.so.1"
   ln -s "../BlackmagicRAWPlayer/BlackmagicRawAPI" "squashfs-root/bin/"
   ln -s /usr/lib/libglib-2.0.so.0 "squashfs-root/libs/libglib-2.0.so.0"
   ln -s /usr/lib/libgio-2.0.so.0 "squashfs-root/libs/libgio-2.0.so.0"
   ln -s /usr/lib/libgmodule-2.0.so.0 "squashfs-root/libs/libgmodule-2.0.so.0"
   ln -s /usr/lib/libgdk_pixbuf-2.0.so.0 "squashfs-root/libs/libgdk_pixbuf-2.0.so.0"
+  ln -s /usr/lib/libc++.so.1 "squashfs-root/libs/libc++.so.1"
+  ln -s /usr/lib/libc++abi.so.1 "squashfs-root/libs/libc++abi.so.1"
 
   echo "StartupWMClass=resolve" >> "squashfs-root/share/DaVinciResolve.desktop"
 
@@ -149,6 +154,7 @@ package() {
     "share/log-conf.xml"
   install -D -m0644 -t "${pkgdir}/opt/${_pkgname}/DolbyVision" \
     "share/default_cm_config.bin"
+  install -d -m0755 "${pkgdir}/opt/${_pkgname}/.license"
   install -d -m0755 "${pkgdir}/opt/${_pkgname}/Apple Immersive/Calibration"
   # Install Desktop files and menu
   install -D -m0644 -t "${pkgdir}/usr/share/applications" \
