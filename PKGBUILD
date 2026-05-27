@@ -1,9 +1,9 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=zap-oss-bin
-pkgver=2026.05.22.preview
-_debver=2026.05.22.preview
-pkgrel=2
+pkgver=2026.05.26.2
+_debver=2026.05.26.2
+pkgrel=1
 # Upstream renamed releases from "YYYY.MM.DD.preview" to "0.YYYY.MM.DD.HHMM",
 # which sorts lower under pacman vercmp. epoch ensures clean upgrades.
 # This package replaces openwarp-bin (project was renamed OpenWarp → Zap).
@@ -39,7 +39,7 @@ conflicts=('openwarp-bin' 'zap-oss-git' 'warp-terminal-oss')
 replaces=('openwarp-bin')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/zap_${_debver}_amd64.deb")
-sha256sums=('ec07f03d6ce9a4b9b1349af042a29e4f72673d2a8bcd619ba21d9e496a643f24')
+sha256sums=('df9f75c44a6bc343b74e197654757efdcfc6343b0db56d2fc72314b6f1a0ac6f')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
