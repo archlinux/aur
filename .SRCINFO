@@ -1,6 +1,6 @@
 pkgbase = beancount
 	pkgdesc = Double-Entry Accounting from Text Files
-	pkgver = 3.2.0
+	pkgver = 3.2.3
 	pkgrel = 1
 	url = http://furius.ca/beancount/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = beancount
 	depends = python-dateutil
 	depends = python-regex
 	conflicts = beancount-hg
-	source = https://files.pythonhosted.org/packages/source/b/beancount/beancount-3.2.0.tar.gz
-	b2sums = 4f6caa0b68c84e3e90556569eda3ef47005db326f9e01db31338a0630dd8a7fb844d496bceaaee757b45779c20e7561427cc52c35b74542d71c6209098b493f3
+	source = https://files.pythonhosted.org/packages/source/b/beancount/beancount-3.2.3.tar.gz
+	b2sums = e4d1cc71bd6b57962b3c97c93d52f55ce120683e1ee4d8f44aeb394c437eb1392062f1973fcb1b08272c4ff22ef320865eb4022299a98c23b696247f4d1b1655
 
 pkgname = beancount
