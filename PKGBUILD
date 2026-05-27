@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk3' 'libkeybinder3')
 makedepends=('flutter' 'clang' 'cmake' 'ninja' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('79e34253c4b45843711a9c6ea3dc0e721976d9aeb655405eb7908aec501dcc4f')
+sha256sums=('137c5d5ea998e478a6ebbf8b84977ed8c9e5493222b066e99c693a152ed3d8a4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
