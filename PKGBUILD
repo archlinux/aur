@@ -42,7 +42,7 @@ check() {
 }
 
 package() {
-    make -C $pkgname-$pkgver DESTDIR=$pkgdir install-all
+    make -C $pkgname-$pkgver DESTDIR=$pkgdir install
 
     install -m 644 -t $pkgdir/usr/share/doc/$pkgname -D $pkgname-$pkgver/README.md
 
