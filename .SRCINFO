@@ -1,7 +1,7 @@
 pkgbase = claude-desktop-bin
 	pkgdesc = Claude Desktop - Linux (unofficial, from official binary)
 	pkgver = 1.9255.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/patrickjaja/claude-desktop-bin
 	arch = x86_64
 	arch = aarch64
@@ -10,13 +10,13 @@ pkgbase = claude-desktop-bin
 	depends = alsa-lib
 	depends = gtk3
 	depends = nss
-	source_x86_64 = claude-desktop-1.9255.2-1-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.9255.2/claude-desktop-1.9255.2-linux.tar.gz
+	source_x86_64 = claude-desktop-1.9255.2-2-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.9255.2-2/claude-desktop-1.9255.2-linux.tar.gz
 	source_x86_64 = electron-v42.0.0-linux-x64.zip::https://github.com/electron/electron/releases/download/v42.0.0/electron-v42.0.0-linux-x64.zip
-	sha256sums_x86_64 = 49c1983a9793b0df7959ecec4f94756495f8c91929aaa08d5504bcc773bc8153
+	sha256sums_x86_64 = b6590bfe2ea6adb2d7a33a297994bd79301fa888c0c56f8b93e1f0e87ef79850
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = claude-desktop-1.9255.2-1-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.9255.2/claude-desktop-1.9255.2-linux-aarch64.tar.gz
+	source_aarch64 = claude-desktop-1.9255.2-2-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.9255.2-2/claude-desktop-1.9255.2-linux-aarch64.tar.gz
 	source_aarch64 = electron-v42.0.0-linux-arm64.zip::https://github.com/electron/electron/releases/download/v42.0.0/electron-v42.0.0-linux-arm64.zip
-	sha256sums_aarch64 = 796e6302b63e5d72aabd642e8fc1703d0966f5960e7a28375a05ec69199acec7
+	sha256sums_aarch64 = 54fa4e4d2ad4071899f49fa78e20120963ffd70bee5d01c61b578c1a1737f75e
 	sha256sums_aarch64 = SKIP
 
 pkgname = claude-desktop-bin
