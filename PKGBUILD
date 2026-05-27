@@ -2,7 +2,7 @@
 # Contributor: Lars Sjöström <(firstname) @ radicore.se>
 
 pkgname=sapling-scm-bin
-_realver=0.2.20260519-201124+961b43fa
+_realver=0.2.20260522-084851+1e764c94
 pkgver="${_realver//-/.}" # dashes aren't allowed in pkgver
 pkgrel=1
 epoch=1
@@ -17,10 +17,10 @@ optdepends=(
 	'watchman: for faster file watching'
 )
 provides=('sapling-scm')
-conflicts=('sapling-scm')
+conflicts=('sapling-scm' 'sl')
 options=('!strip')
 source=("https://github.com/facebook/sapling/releases/download/${_realver}/sapling-${_realver}-linux-x64.tar.xz")
-sha256sums=('3c7ac19203a7334a9547d8f8cec193dc2c2c998df7702d4ddfde1d00ab741cf0')
+sha256sums=('72552ab655c0c8cd315b93ac9fc902de7281ce57eb5e39da97939c34b93480bc')
 
 package() {
 	install -Dm755 "lib/python3.12/lib-dynload/"* -t "${pkgdir}/opt/${pkgname}/lib/python3.12/lib-dynload"
