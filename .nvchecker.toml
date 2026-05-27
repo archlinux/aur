@@ -1,0 +1,5 @@
+[coyote-bin]
+source = "github"
+github = "Dark-Alex-17/coyote"
+use_latest_release = true
+prefix = "v"
