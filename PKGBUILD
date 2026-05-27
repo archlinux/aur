@@ -9,7 +9,7 @@ url="https://github.com/whyghost/vocab"
 license=('MIT')
 depends=('bash' 'sqlite' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4ade0a403537fcce8f2278bf4ffb42847485844072d33f40730f6f69ad002965')
+sha256sums=('e5ea8695cc8b429fced212ce73b74a4b894b3f3569524a1b74ce1fde3487dfb4')
 
 package() {
     cd "$pkgname-$pkgver"
