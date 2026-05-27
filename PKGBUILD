@@ -4,11 +4,11 @@ pkgname=('lua-irc-parser' 'lua51-irc-parser' 'lua52-irc-parser' 'lua53-irc-parse
 pkgdesc='An IRC parser for Lua in LPEG, with a Pure-Lua fallback'
 _pkgname='irc-parser'
 pkgver=1.2.0
-pkgrel=4
+pkgrel=5
 arch=('any')
-url='https://github.com/jprjr/lua-irc-parser'
+url='https://buffering.party/software/lua-irc-parser/'
 license=('MIT')
-source=("https://github.com/jprjr/lua-irc-parser/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+source=("${url}${_pkgname}-${pkgver}.tar.gz")
 
 _lua_cur=5.5
 _lua_next=5.6

@@ -1,12 +1,11 @@
 pkgbase = lua-irc-parser
 	pkgdesc = An IRC parser for Lua in LPEG, with a Pure-Lua fallback
 	pkgver = 1.2.0
-	pkgrel = 4
-	url = https://github.com/jprjr/lua-irc-parser
+	pkgrel = 5
+	url = https://buffering.party/software/lua-irc-parser/
 	arch = any
 	license = MIT
-	source = https://github.com/jprjr/lua-irc-parser/releases/download/v1.2.0/irc-parser-1.2.0.tar.gz
-	sha256sums = ea3ad5ac63a76031327497aaae30c966883f1df7b9170d9333a46b783492162d
+	source = https://buffering.party/software/lua-irc-parser/irc-parser-1.2.0.tar.gz
 	sha512sums = 16f1bafc176330dca64ee0b27332a9f8364ccbbaa57f9f3f06b4e37ae65f3dadb1953047d0c4cbeb5c2534435146c71f26f0d29a3a817a5b410c5163054cab07
 
 pkgname = lua-irc-parser
