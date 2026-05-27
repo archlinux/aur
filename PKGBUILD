@@ -8,8 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/NoFilterA1/omen-hub"
 license=('GPL3')
 depends=('python' 'python-pyqt6' 'python-tomlkit')
-optdepends=('supergfxctl: GPU mode switching (Hybrid/Integrated)'
-            'omenctl-git: fan RPM reading and fan curve control')
+optdepends=('supergfxctl: GPU mode switching (Hybrid/Integrated)')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/NoFilterA1/${pkgname}.git#branch=main")
 sha256sums=('SKIP')
