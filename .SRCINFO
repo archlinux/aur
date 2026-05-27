@@ -1,6 +1,6 @@
 pkgbase = doubletake-git
 	pkgdesc = AirPlay 2 mirroring sender for Linux (latest git commit)
-	pkgver = 0.3.1.r0.g7c8dd4b
+	pkgver = 0.3.2.r0.g5e071e0
 	pkgrel = 1
 	url = https://github.com/omarroth/doubletake
 	install = doubletake-git.install
