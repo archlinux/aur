@@ -4,16 +4,16 @@ pkgname=('lua-taglib' 'lua51-taglib' 'lua52-taglib' 'lua53-taglib' 'lua54-taglib
 pkgbase='lua-taglib'
 pkgdesc="Lua bindings for taglib"
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'aarch64')
-url='https://github.com/jprjr/lua-taglib'
+url='https://buffering.party/software/lua-taglib/'
 license=('MIT')
 depends=('taglib' 'gcc-libs' 'glibc')
 _lua_cur=5.5
 _lua_next=5.6
 makedepends=('cmake' "lua>=$_lua_cur" "lua<$_lua_next" 'lua51' 'lua52' 'lua53' 'lua54')
 #options=(debug)
-source=("https://github.com/jprjr/${pkgbase}/releases/download/v${pkgver}/${pkgbase}-${pkgver}.tar.gz")
+source=("https://buffering.party/software/lua-taglib/lua-taglib-$pkgver.tar.gz")
 
 _build() {
   LUA_V=$1
