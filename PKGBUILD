@@ -2,7 +2,7 @@
 
 pkgname=prettier-ada
 pkgdesc='Pretty printer for Ada.'
-pkgver=26.0w
+pkgver=27.0w
 pkgrel=1
 
 url=https://github.com/AdaCore/prettier-ada
@@ -11,16 +11,16 @@ license=(Apache)
 
 depends=(gcc-ada
          gnatcoll-core
-         libvss)
+         vss-text)
 makedepends=(gprbuild)
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/prettier-ada-26.0w-20250407-163DE-src.tar.gz)
-sha256sums=(1c7b44a673ca047bd69b061eabb5e2b70c73bebde0697c99d735ace83a736f8f)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2026/prettier-ada-src.tar.gz)
+sha256sums=(eb4d22ae96746161a29718b18b45fb29f214d69e3726a7e8abfb08d3187c71f2)
 
 
 build()
 {
-    cd $srcdir/prettier-ada-26.0w-20250416-1660F-src
+    cd $srcdir/prettier-ada-27.0w-20260324-166DC-src
 
     make all
 }
@@ -28,7 +28,7 @@ build()
 
 package()
 {
-    cd $srcdir/prettier-ada-26.0w-20250416-1660F-src
+    cd $srcdir/prettier-ada-27.0w-20260324-166DC-src
 
     PREFIX=$pkgdir/usr \
     make install-all
