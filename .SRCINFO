@@ -1,0 +1,29 @@
+pkgbase = hyprcorrect-git
+	pkgdesc = Keyboard-driven desktop spelling and typo corrector (latest main)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jondkinney/hyprcorrect
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = fontconfig
+	depends = freetype2
+	depends = hyprland
+	depends = libglvnd
+	depends = libsecret
+	depends = libxkbcommon
+	depends = wayland
+	depends = wtype
+	optdepends = wl-clipboard: enables the clipboard / selection fallback when the keystroke buffer is empty
+	provides = hyprcorrect=0.1.0
+	conflicts = hyprcorrect
+	conflicts = hyprcorrect-bin
+	options = !debug
+	source = hyprcorrect::git+https://github.com/jondkinney/hyprcorrect.git
+	sha256sums = SKIP
+
+pkgname = hyprcorrect-git
