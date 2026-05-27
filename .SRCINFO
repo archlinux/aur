@@ -1,0 +1,17 @@
+pkgbase = gsplash-git
+	pkgdesc = A lightweight native SDL2 splash screen wrapper for game launchers.
+	pkgver = r24.799229d
+	pkgrel = 1
+	url = https://github.com/sortedcord/gsplash
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = git
+	makedepends = pkgconf
+	depends = sdl2
+	depends = sdl2_image
+	depends = ffmpeg
+	source = git+https://github.com/sortedcord/gsplash.git
+	sha256sums = SKIP
+
+pkgname = gsplash-git
