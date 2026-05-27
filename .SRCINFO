@@ -1,0 +1,19 @@
+pkgbase = lib32-rav1e-bin
+	pkgdesc = An AV1 encoder focused on speed and safety (32-bit)
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/xiph/rav1e
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = patchelf
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	provides = lib32-rav1e=0.8.1
+	provides = librav1e.so
+	conflicts = lib32-rav1e
+	source = rav1e-0.8.1-PATENTS::https://github.com/xiph/rav1e/raw/refs/tags/v0.8.1/PATENTS
+	sha256sums = 7b14a70c194b19dbd0625e7eac839a63200f67484521ce5e8d8244b127e8907a
+	source_x86_64 = https://github.com/xiph/rav1e/releases/download/v0.8.1/librav1e-0.8.1-linux-i686.tar.gz
+	sha256sums_x86_64 = e45c3df0dd9fe27eace4d39921948a8f3bfda0d41d017c62589330411889eaf9
+
+pkgname = lib32-rav1e-bin

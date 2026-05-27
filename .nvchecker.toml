@@ -1,0 +1,4 @@
+[lib32-rav1e-bin]
+source = "archpkg"
+archpkg = "rav1e"
+strip_release = true
