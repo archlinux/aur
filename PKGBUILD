@@ -2,7 +2,7 @@
 
 pkgname=gnatcoll-xref
 pkgdesc='GNAT Components Collection - Tool to support parsing *.ali and *.gli files.'
-pkgver=26.0w
+pkgver=27.0w
 pkgrel=1
 epoch=1
 
@@ -14,10 +14,10 @@ depends=(gnatcoll-iconv gnatcoll-sqlite)
 makedepends=(gprbuild)
 
 _repo_name=gnatcoll-db
-_source_dir=gnatcoll-db-26.0w-20250416-16353-src
+_source_dir=gnatcoll-db-27.0w-20260324-165F4-src
 
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2025/gnatcoll-db-26.0w-20250409-16317-src.tar.gz)
-sha256sums=(fe4367a13407bb0d300dda10fbca26ffd5fa9d13121625f37b38d998e728d649)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2026/gnatcoll-db-src.tar.gz)
+sha256sums=(e78dae022a70f60ecbbee0e1a79b999d706fe078efa149b1664777293b1dfef8)
 
 
 build()
