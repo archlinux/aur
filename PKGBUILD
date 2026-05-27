@@ -1,110 +1,115 @@
-# Maintainer: nobody <you@example.com>
-pkgname=lib32-rav1e
-pkgver=0.8.1
-pkgrel=1
-pkgdesc='An AV1 encoder focused on speed and safety (32-bit)'
-arch=('x86_64')
-url='https://github.com/xiph/rav1e'
-license=('BSD-2-Clause')
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
+_name="rav1e"
+pkgname="lib32-${_name}"
+pkgver=0.8.1
+pkgrel=2
+pkgdesc="An AV1 encoder focused on speed and safety (32-bit)"
+arch=(
+  'x86_64'
+)
+url="https://github.com/xiph/${_name}"
+license=(
+  'BSD-2-Clause'
+)
 depends=(
+  # "${_name}>=${pkgver}"
   'lib32-gcc-libs'
   'lib32-glibc'
 )
 makedepends=(
   'cargo-c'
+  'lib32-rust-libs'
   'nasm'
   'rust'
-  'lib32-rust-libs'
-  'gcc'
 )
-provides=('librav1e.so')
-conflicts=('lib32-rav1e-git')
-options=('!lto')
-
-# Deterministic sources: release tarball + matching lockfile
+provides=(
+  "lib${_name}.so"
+)
+options=(
+  '!lto'
+)
+_pkgsrc="${url##*/}-${pkgver}"
 source=(
-  "rav1e-${pkgver}.tar.gz::https://github.com/xiph/rav1e/archive/refs/tags/v${pkgver}.tar.gz"
-  "Cargo-rav1e-${pkgver}.lock::https://github.com/xiph/rav1e/releases/download/v${pkgver}/Cargo.lock"
+  "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+  "${_pkgsrc}-Cargo.lock::${url}/releases/download/v${pkgver}/Cargo.lock"
 )
-# Regenerate these locally:
+sha256sums=('06d1523955fb6ed9cf9992eace772121067cca7e8926988a1ee16492febbe01e'
+            '861482385bdef579e207bb371937dd49cb9ff47d9406c40660b760fa672d0589')
 b2sums=('a7b396df8f0ac3cb7f4f7f6e4bac5b9500037f3518f3ac2914088f45928a443d81b59a5f4d777f49c7877713444c4b019db5baf27063b3f1c4a7bf82595de3ec'
         '4c0e7e271f8cd96bf5d47162a0072a7ba4ddb6f40ec03fc6deddd7b3166fffcdc60ddf85829d49359a9d49fe9a3fba1ed4ef2ea8c4303475076eba9ea6ae1cc4')
 
-# Map host arch to 32-bit target/libdir (package is only useful on x86_64)
-# (namcap prefers $CARCH-based conditionals over hard-coded 'i686' usage)
-case "$CARCH" in
-  x86_64)
-    _rust_target='i686-unknown-linux-gnu'
-    _libdir='/usr/lib32'
-    ;;
-  *)
-    echo "Unsupported CARCH: $CARCH (this lib32 package is intended for x86_64 hosts)"
-    return 1
-    ;;
-esac
+_source() {
+  export CARGO_HOME="${srcdir}/.cargo"
+  export CARGO_TARGET_DIR=target
+  export RUSTUP_TOOLCHAIN=stable
+  export _rust_target="$(rustc -vV | sed -n 's/host: //p' | sed 's/x86_64/i686/')"
+}
 
 prepare() {
-  export PATH=/usr/bin:$PATH
-  export CARGO_HOME="${srcdir}/fakehome/cargo"
+  _source
 
-  # Use the lockfile that matches the release tag to avoid dependency drift
-  cp -f "Cargo-rav1e-${pkgver}.lock" "rav1e-${pkgver}/Cargo.lock"
+  cd "${srcdir}"
+  cp -vf "${_pkgsrc}-Cargo.lock" "${_pkgsrc}/Cargo.lock"  
 
-  # Pre-fetch crates deterministically
-  cargo fetch --locked --manifest-path "rav1e-${pkgver}/Cargo.toml"
+  cd "${_pkgsrc}"
+  cargo fetch --locked --target "${_rust_target}"
 }
 
-build() {
-  export PATH=/usr/bin:$PATH
-  export CARGO_HOME="${srcdir}/fakehome/cargo"
+# build() {
+#   _source
+#   local cargo_options=(
+#     --target "${_rust_target}"
+#     --release
+#     --frozen
+#     --no-default-features
+#     --features asm,threading,signal_support # binaries
+#   )
 
-  # Keep host toolchain 64-bit; only direct the TARGET to 32-bit
-  # (Do NOT export global -m32 or PKG_CONFIG_LIBDIR here.)
-  cargo build --target "${_rust_target}" \
-    --release --frozen \
-    --no-default-features \
-    --features binaries,asm,threading,signal_support \
-    --manifest-path "rav1e-${pkgver}/Cargo.toml"
+#   cd "${srcdir}/${_pkgsrc}"
+#   cargo  build "${cargo_options[@]}"
+#   cargo cbuild "${cargo_options[@]}" \
+#     --prefix='/usr' \
+#     --libdir='/usr/lib32'
+# }
 
-  cargo cbuild --target "${_rust_target}" \
-    --release --frozen \
-    --no-default-features \
-    --features binaries,asm,threading,signal_support \
-    --prefix=/usr \
-    --manifest-path "rav1e-${pkgver}/Cargo.toml" \
-    --libdir "${_libdir}"
+check() {
+  _source
+  local cargo_options=(
+    --target "${_rust_target}"
+    --release
+    --frozen
+    --offline
+    --no-default-features
+    --features asm,threading,signal_support # binaries
+  )
+
+  cd "${srcdir}/${_pkgsrc}"
+  cargo test "${cargo_options[@]}"
 }
-
-# Tests recompile host/target and can accidentally reintroduce mixed-arch paths.
-# Skip for packaging; enable locally if you want to iterate on fixes.
-check() { :; }
 
 package() {
-  export PATH=/usr/bin:$PATH
-  export CARGO_HOME="${srcdir}/fakehome/cargo"
+  _source
+  local cargo_options=(
+    --target "${_rust_target}"
+    --frozen
+    --offline
+    --no-default-features
+    --features asm,threading,signal_support # binaries
+  )
 
-  cd "rav1e-${pkgver}"
-
-  cargo install --target "${_rust_target}" \
-    --frozen --offline \
-    --no-default-features \
-    --features binaries,asm,threading,signal_support \
+  cd "${srcdir}/${_pkgsrc}"
+  cargo  install "${cargo_options[@]}" \
     --no-track \
     --path . \
-    --root "${pkgdir}/usr"
-
-  cargo cinstall --target "${_rust_target}" \
-    --release --frozen \
-    --no-default-features \
-    --features binaries,asm,threading,signal_support \
+    --root="${pkgdir}/usr"
+  cargo cinstall "${cargo_options[@]}" \
     --prefix /usr \
-    --destdir "${pkgdir}" \
-    --libdir "${_libdir}"
+    --destdir="${pkgdir}" \
+    --libdir='/usr/lib32'
 
-  # Only 32-bit libs/bins should ship
-  rm -rf "${pkgdir}/usr/include"
-  ( cd "${pkgdir}/usr/bin"; mv rav1e rav1e-32 )
-
-  install -Dm644 LICENSE PATENTS -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -vDm644 "LICENSE" "PATENTS" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  
+  cd "${pkgdir}/usr"
+  rm -rf "bin" "include"
 }
