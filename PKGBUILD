@@ -3,7 +3,7 @@
 # Original Co-Maintainer: Kaleb Elwert <belak@coded.io>
 
 pkgname=picotron
-pkgver=0.3.0c
+pkgver=0.3.0d2
 pkgrel=1
 pkgdesc="A fantasy workstation for making pixelart games, animations, music, demos and other curiosities."
 arch=("x86_64" "aarch64")
@@ -20,8 +20,8 @@ source_aarch64=("file://${pkgname}_${pkgver}_raspi.zip")
 
 sha256sums=("04862c5d2f4ec10f4979ec316c4e14b01e073806d90bc23290e8420e142f710a"
             "45525e5ff68d3380492e188e626cf2208491ba0df79cc246aa8560e05f5b3100")
-sha256sums_x86_64=("b13b5a845601238d712c766d653dc45173c80f97dbd023b16d442182b3fba019")
-sha256sums_aarch64=("a24d0f67c8814ef1cc535885cbc44378f9654d68a1bd624600df307c9b255448")
+sha256sums_x86_64=("75e191be4249a08b4bee82d3d0e02127aedd31e3d93d04fe30b5536d8fcf0846")
+sha256sums_aarch64=("ba84788f0b043d75cf4be53a8df80f2c192f3a847e4d1023acbeb82124cbae75")
 
 package() {
   # Desktop entry
