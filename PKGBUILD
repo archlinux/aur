@@ -1,7 +1,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=winexe
-pkgver=4.24.2
+pkgver=4.24.3
 pkgrel=1
 pkgdesc='Remote Windows command executor via SMB (from samba/examples/winexe)'
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=(
   'winexe.install'
 )
 validpgpkeys=('81F5E2832BD2545A1897B713AA99442FB680B620') # Samba Distribution Verification Key
-sha256sums=('ac24583f271a82ac324f7c6fad7327f65b591ad3492e1dccfee988e2c1c81dd1'
+sha256sums=('4a5e0ed1ea192b798c873d9957c50a5767c10c2767cccb00d56ecc427e94f8e9'
             'SKIP'
             '989cee777ca19230f03623357e9bdc8eb33fce17230790c466aa013ecc6c9ba9'
             'cbd542ccd943ae95fb856ba7850ebc1ab5b03da5fe0649dafc989dd3b5bd77a0')
