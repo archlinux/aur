@@ -1,7 +1,7 @@
 pkgbase = winexe
 	pkgdesc = Remote Windows command executor via SMB (from samba/examples/winexe)
 	pkgver = 4.24.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.samba.org/
 	install = winexe.install
 	arch = x86_64
