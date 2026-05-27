@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=smolvm
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=('x86_64' 'aarch64')
@@ -30,8 +30,8 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     'Cargo.lock'
 )
-sha256sums=('364b3082794492fcc247f92cc804d125a90b8c7d0973f5133507b33d92919884'
-            'af2549e360ba2bed63ece9f8816b1a9fc019d8af6602eeb8710c54ff31aeaaf5')
+sha256sums=('bf6a562c96b5c35d8ebc4f73f8bb2604cf5ab48317ffc10d4854031bf13ccbd5'
+            '599d4121f522169fb3d55bbe2b8077d6dde27c42d6c0d189dfc18c406be45ef8')
 
 prepare() {
     cd "$pkgname-$pkgver"
