@@ -1,6 +1,6 @@
 pkgbase = phasionary
 	pkgdesc = Terminal-first, single-user project planning tool
-	pkgver = 0.6.4
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = https://github.com/ilyasturki/phasionary
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = phasionary
 	makedepends = go
 	provides = phasionary
 	conflicts = phasionary-bin
-	source = phasionary-0.6.4.tar.gz::https://github.com/ilyasturki/phasionary/archive/v0.6.4.tar.gz
-	sha256sums = 1f1c04eb53bc898de1def3274deb0f4cded5fcb7d8a64b2a66ecc876be9b7052
+	source = phasionary-0.6.5.tar.gz::https://github.com/ilyasturki/phasionary/archive/v0.6.5.tar.gz
+	sha256sums = 500aade37680f02a81442e1373846742d447373ec75131119937cc051c34764c
 
 pkgname = phasionary
