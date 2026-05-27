@@ -14,9 +14,6 @@ install="${pkgname}.install"
 depends=('procps' 'dialog' 'util-linux' 'libxcrypt-compat')
 source=(
   "https://cdn.kerio.com/dwn/control/control-9.5.0-9017/kerio-control-vpnclient-9.5.0-9017-p3-linux-amd64.deb"
-  "kvpnc"
-  "kvpnc.conf"
-  "kvpnc.service"
 )
 sha256sums=('bcfa7919d0a944a150097e7a0942f191d7e6d00b306c2707270223e9d8b91475'
             'a8729e2515e186f4ba4544cbd140b3bb1fc78c616694433f58944de9e4e72971'
