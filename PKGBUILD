@@ -1,7 +1,7 @@
-# Maintainer: jinzhongjia <mail@nviemr.org>
+# Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codewhale-bin
-pkgver=0.8.42
+pkgver=0.8.47
 pkgrel=1
 # Upstream renamed DeepSeek-TUI → CodeWhale on 2026-05-24. The `deepseek`
 # and `deepseek-tui` binaries became thin stubs that exec the real
@@ -39,16 +39,16 @@ source_aarch64=(
 )
 
 sha256sums_x86_64=(
-    '4e65a40f0ed35b14d90af40f1a59e1b1840eaa730e6415fd847fd2b7969cfb16'
-    'd8270097b58722342c70bebcdad11782f1c8b7d69eefa259c9693c41ec408a49'
-    'bd257740fb091add703e7c9459fc791d0bd5d53738f4accbc5c571c4c1d0f386'
-    'b27f586cc7a58f149a7dfdc44ad3cc225e7b32d0c2bf7ad9d172c624f0784198'
+    '8386bc5d3f63c2dd2e29b570815546fd4f84235da56b686f4afe5d058138698f'
+    'c9fd8ca3ba0d517be25cf789b41152d8bdc746d884e8c81fd5c13fec4bb74f57'
+    '6374819efbf9119aca100a2768a3372912b2217529faa00348577cdbd99a0003'
+    '05f84b71828001988e49dfeeba5e5745cb4c662285d160cc6ed43c604b7b0049'
 )
 sha256sums_aarch64=(
-    'a32305f558fa34ebd65c212098c6f56a977c14d3bb32ae6e243b71c42cd81471'
-    '9ce4e1c33f20d104042544a69ab9f59c39fd66b274b1160c36d0027daf67a459'
-    '07f3e7ea4bae449084a8436cd0d2a393f2cd84627c809a5d376f1c9533f14b74'
-    'ba72488171a47c20fbc0d68fb43d611e8e2e064488686c2494d0745e00f73132'
+    '9050075da0d4496b52edf237a59a21ccde8b60553cbc689e7aa5565957ebbed8'
+    'a52990590d6f0426819fd3b95a6739922da7e519991278b9d62e2ab42a1745f5'
+    'cb4be56e3ae7867b805fcbb5568febd640b37395cb601e017686b014ac1fb2b1'
+    'd521c16bfda2af42929eac97d9bef801657bf349007f6fc2e06d462c9d0e99c1'
 )
 
 package() {
