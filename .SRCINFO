@@ -1,6 +1,6 @@
 pkgbase = discrakt-bin
 	pkgdesc = The Trakt/Plex Discord Rich Presence that you didn't know you needed
-	pkgver = 3.4.2
+	pkgver = 3.4.4
 	pkgrel = 1
 	url = https://github.com/afonsojramos/discrakt
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = discrakt-bin
 	provides = discrakt
 	conflicts = discrakt
 	conflicts = discrakt-git
-	source_x86_64 = discrakt-bin-3.4.2-amd64.deb::https://github.com/afonsojramos/discrakt/releases/download/v3.4.2/discrakt_3.4.2_amd64.deb
+	source_x86_64 = discrakt-bin-3.4.4-amd64.deb::https://github.com/afonsojramos/discrakt/releases/download/v3.4.4/discrakt_3.4.4_amd64.deb
 	sha256sums_x86_64 = 4a85e1e337edd494a70258e4e807ca4963eba03805d0b265425e0aa10c65834a
-	source_aarch64 = discrakt-bin-3.4.2-arm64.deb::https://github.com/afonsojramos/discrakt/releases/download/v3.4.2/discrakt_3.4.2_arm64.deb
+	source_aarch64 = discrakt-bin-3.4.4-arm64.deb::https://github.com/afonsojramos/discrakt/releases/download/v3.4.4/discrakt_3.4.4_arm64.deb
 	sha256sums_aarch64 = 1e5f8749fd5bc464be27439c9ec5fae258cf9f5479ba1f1bb6e5daac4bf633a1
 
 pkgname = discrakt-bin
