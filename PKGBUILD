@@ -1,26 +1,33 @@
-#Maintainer: Rod Kay  <rodakay5 at gmail.com>
+# Maintainer: Rod Kay  <rodakay5 at gmail dot com>
 
 pkgname=gnatcoverage-bin
-pkgver=22.0
+pkgver=26.2
 pkgrel=1
-pkgdesc="Source and object coverage analysis tool"
-arch=('i686' 'x86_64')
-url="https://github.com/AdaCore/gnatcoverage"
-license=('GPL3')
-provides=('gnatcoverage')
-depends=('llvm' 'valgrind')
+pkgdesc='Source and object coverage analysis tool.'
 
-source=("https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-$pkgver-1/gnatcov-x86_64-linux-$pkgver-1.tar.gz")
-sha256sums=(eae687f0fb100524933ae37123a1de5ec26e5fca7fe2355cf2b267c9ccc0989a)
+arch=(x86_64)
+url='https://github.com/AdaCore/gnatcoverage'
+license=(GPL-3.0-only)
+
+provides=(gnatcoverage)
+depends=(llvm valgrind)
+
+source=(https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-$pkgver-1/gnatcov-x86_64-linux-$pkgver-1.tar.gz
+        COPYING3)
+
+sha256sums=(6a186a9ba103dbc21957124769a4b51f2ccf87d6af1d81f474496fc480089a48
+            c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271)
+
 
 package()
 {
-   cd "$srcdir/gnatcov-x86_64-linux-$pkgver-1"
+   cd $srcdir/gnatcov-x86_64-linux-$pkgver-1
 
-   ./doinstall $pkgdir/usr
+   cp -r . $pkgdir/usr
 
    # Install the license.
-   install -D -m644 \
-      "COPYING3"    \
-      "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+   #
+   install -D -m644    \
+      $srcdir/COPYING3 \
+      $pkgdir/usr/share/licenses/$pkgname/COPYING3
 }
