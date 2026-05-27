@@ -7,7 +7,7 @@
 # for improvements are most welcome.
 pkgname=qb64pe
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern cross-platform BASIC compatible with QBasic and QuickBASIC 4.5'
 arch=('x86_64')
 url='https://www.qb64phoenix.com/'
@@ -19,7 +19,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/QB64-Phoenix-Edition/QB64pe/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
 sha256sums=('73cc9b50acfa2d37ad53dd6ce7af28eecfdfc34989f9c3fc1b7e9bc50cdec6ad'
-            'd1642f5b0d6f14b214d656857c2c166cba879015b167a7912d6c5ebc110125d4')
+            'aa1020c75c718720f504300fadda67642b7d840a1456efc3498bf9b3f574d2cd')
 
 _srcdir="QB64pe-${pkgver}"
 
