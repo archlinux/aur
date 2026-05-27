@@ -1,0 +1,24 @@
+post_install() {
+    echo ""
+    echo "==> bartoc installed successfully!"
+    echo ""
+    echo "    Configure the service:"
+    echo "      mkdir -p ~/.config/bartoc"
+    echo "      cp /usr/share/doc/bartoc/examples/bartoc.toml.example ~/.config/bartoc/bartoc.toml"
+    echo "      \$EDITOR ~/.config/bartoc/bartoc.toml"
+    echo ""
+    echo "    Enable the service:"
+    echo "      systemctl --user daemon-reload"
+    echo "      systemctl --user enable --now bartoc"
+    echo "      systemctl --user enable --now bartoc-logrotate.timer"
+    echo ""
+    echo "    Optional: TLS & Security"
+    echo "      Certificate pinning: set ca_cert in [bartos] to pin your bartos CA cert."
+    echo "      Mutual TLS:          set client_cert and client_key in [bartos]."
+    echo "      See: https://github.com/rustyhorde/barto#tls--certificate-pinning"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
