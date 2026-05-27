@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-sh
 pkgdesc="Get to know about commands before you execute them"
 
-pkgver=0.1.0
+pkgver=0.2.3
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -24,7 +24,7 @@ optdepends=('ollama')
 provides=("${_appname}")
 
 source=("${_pkgname}-${_pkgvername}.tgz::${url}/archive/v${_pkgvername}.tar.gz")
-sha256sums=('2ee1954c392842c2205f04dad52740d512376a1813ce086fdecbeae57e57524e')
+sha256sums=('fc4789c6bb91ea2ceb96d655ed483a3d278f66c86cc9107f778f8f28b3eb248f')
 
 
 prepare() {
