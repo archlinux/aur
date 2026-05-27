@@ -1,7 +1,7 @@
 # Maintainer: Guiradev <aur.evacuate190@passinbox.com>
 
 pkgname=gentle-ai
-pkgver=1.30.6
+pkgver=1.31.0
 pkgrel=1
 pkgdesc="CLI tool to manage and configure AI coding agents ecosystems"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('499e4baa5bb92e7eccbbc31d342fb30daafa8f3fa336de78219f0d94db326946')
+sha256sums=('0f051dc1b98a8d72e1277f12d75c1fac18cafcb8a2c4923dec1b9b1238a28a5e')
 
 prepare() {
   # Entramos en la carpeta que acabas de ver con 'ls'
