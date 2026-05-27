@@ -1,0 +1,18 @@
+pkgbase = quien-git
+	pkgdesc = A better whois and domain intelligence toolkit
+	pkgver = 0.9.0.r1.g6bd4f22
+	pkgrel = 1
+	url = https://github.com/retlehs/quien
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = quien
+	conflicts = quien
+	conflicts = quien-bin
+	source = quien-main::git+https://github.com/retlehs/quien.git#branch=main
+	sha256sums = SKIP
+
+pkgname = quien-git
