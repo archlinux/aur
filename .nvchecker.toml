@@ -1,4 +1,6 @@
 ["dotnet-core-6.0"]
 source = "git"
 git = "https://github.com/dotnet/installer.git"
-prefix = "v"
+include_regex = 'v6\.0\.1\d+'
+from_pattern = 'v(\d+)\.(\d+)\.1(\d{2})'
+to_pattern = '\1.\2.\3.sdk1\3'

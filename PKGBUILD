@@ -43,9 +43,8 @@ options=(
   !lto
   staticlibs
 )
-_tag=d638663530d923adbe0442604b7a6562127321e9
 source=(
-  dotnet-installer::git+https://github.com/dotnet/installer.git#tag=${_tag}
+  dotnet-installer::git+https://github.com/dotnet/installer.git#tag=v${pkgver/.*.sdk/.0.}
   dotnet.sh
   dotnet-core-runtime-disable-package-validation.patch
   dotnet-core-sdk-telemetry-optout.patch
@@ -61,27 +60,6 @@ prepare() {
   # fix bootstrap
   cd dotnet-installer
   git remote set-url origin https://github.com/dotnet/installer.git
-}
-
-pkgver() {
-  cd dotnet-installer
-
-  if [[ $(git describe --tags) != v6.0.* ]]; then
-    msg "Invalid SDK version"
-    exit 1
-  fi
-
-  local _standardver=$(xmllint --xpath "//*[local-name()='NETStandardLibraryRefPackageVersion']/text()" eng/Versions.props)
-
-  if [[ $_standardver != 2.1.0 ]]; then
-    msg "Invalid Standard version"
-    exit 1
-  fi
-
-  local _sdkver=$(xmllint --xpath "//*[local-name()='VersionSDKMinor']/text()" eng/Versions.props)$(xmllint --xpath "//*[local-name()='VersionFeature']/text()" eng/Versions.props)
-  local _runtimever=$(xmllint --xpath "//*[local-name()='MicrosoftNETCoreAppRuntimewinx64PackageVersion']/text()" eng/Versions.props)
-
-  echo "${_runtimever}.sdk${_sdkver}"
 }
 
 build() {
