@@ -1,6 +1,6 @@
 pkgname=waybar-niri-taskbar-focused-git
 _pkgname=waybar-niri-taskbar-focused
-pkgver=0.4.0.r45.gf521e15
+pkgver=0.4.0.r46.g38a94d2
 pkgrel=1
 pkgdesc='Focused-workspace Niri taskbar CFFI module for Waybar'
 arch=('x86_64')
