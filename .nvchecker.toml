@@ -1,4 +1,0 @@
-[forum-scout]
-source = "git"
-git = "https://github.com/musqz/forum-scout.git"
-prefix = "v"

@@ -1,5 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Co-Maintainer: Eric Bakker <musqz at mf dot com>
+# Maintainer: Eric Bakker <musqz at mf dot com>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=forum-scout
 pkgver=0.5.4
 pkgrel=1
