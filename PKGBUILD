@@ -1,16 +1,17 @@
-# Maintainer: Marco Scardovi <mscardovi95 at gmail dot com>
+# Maintainer: Cristian Gutierrez <cristian@crstian.me>
+# Contributor: Marco Scardovi <mscardovi95 at gmail dot com>
 
 # Hardware support is limited. Nvidia cards should work fine.
 # If you're running a hybrid setup, try with primusrun/optirun.
 
 # Get the source file DaVinci_Resolve_${pkgver}_Linux.zip from:
 # https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
-# and save it in the same directory of this PKGBUILD
+# and save it in the same directory as this PKGBUILD.
 
 _pkgname=resolve
 pkgname=davinci-resolve-beta
-pkgver=21.0b2
-pkgrel=1
+pkgver=21.0b3
+pkgrel=2
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -21,10 +22,12 @@ depends=('glu' 'gtk2' 'libpng12' 'fuse2' 'opencl-driver' 'qt5-x11extras' 'qt5-sv
          'tbb' 'apr-util' 'luajit' 'libc++' 'libc++abi')
 makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve-studio' 'davinci-resolve' 'davinci-resolve-studio-beta')
-source=("file://DaVinci_Resolve_${pkgver}_Linux.zip"
-        "davinci-control-panels-setup.sh")
-sha256sums=('4f29d11bae89c534e426cbe4bcdf0853b26e64ed8893953827c0e98145177020'
-            '5c6bf06852c8239b4e6158464b8958563e175ca23f014bdd1067d8031269a2a7')
+source=("local://DaVinci_Resolve_${pkgver}_Linux.zip"
+        "davinci-control-panels-setup.sh"
+        "davinci-resolve-beta.sh")
+sha256sums=('172fbc1f6391507cf2d7fa27d1a618277a95c774682e195584284888052b6078'
+            '89118298fd75806a71c5c53cc02a618b6fd730f56e807ab64dd34be6de49d21c'
+            'ef807c8ace5a87dddc6cf51dd7b131699a6ec41392391cfe01bde32764f61824')
 install="${pkgname}.install"
 options=('!strip')
 
@@ -100,18 +103,24 @@ prepare() {
 
   rm "squashfs-root/libs/libglib-2.0.so.0" \
      "squashfs-root/libs/libgio-2.0.so.0" \
-     "squashfs-root/libs/libgmodule-2.0.so.0"
+     "squashfs-root/libs/libgmodule-2.0.so.0" \
+     "squashfs-root/libs/libc++.so.1" \
+     "squashfs-root/libs/libc++abi.so.1"
   ln -s "../BlackmagicRAWPlayer/BlackmagicRawAPI" "squashfs-root/bin/"
   ln -s /usr/lib/libglib-2.0.so.0 "squashfs-root/libs/libglib-2.0.so.0"
   ln -s /usr/lib/libgio-2.0.so.0 "squashfs-root/libs/libgio-2.0.so.0"
   ln -s /usr/lib/libgmodule-2.0.so.0 "squashfs-root/libs/libgmodule-2.0.so.0"
   ln -s /usr/lib/libgdk_pixbuf-2.0.so.0 "squashfs-root/libs/libgdk_pixbuf-2.0.so.0"
+  ln -s /usr/lib/libc++.so.1 "squashfs-root/libs/libc++.so.1"
+  ln -s /usr/lib/libc++abi.so.1 "squashfs-root/libs/libc++abi.so.1"
 
   echo "StartupWMClass=resolve" >> "squashfs-root/share/DaVinciResolve.desktop"
 
   echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="096e", MODE="0666"' > "squashfs-root/share/etc/udev/rules.d/99-DavinciPanel.rules"
 
   # Fix desktop files
+  sed -i 's#Exec=/opt/resolve/bin/resolve#Exec=davinci-resolve-beta#' \
+    "squashfs-root/share/DaVinciResolve.desktop"
   sed -i 's#Exec=.*#Exec=davinci-control-panels-setup#' \
     "squashfs-root/share/DaVinciControlPanelsSetup.desktop"
   sed -i 's#Icon=.*#Icon=davinci-resolve#' \
@@ -126,9 +135,10 @@ prepare() {
 
 package() {
   # Install binary launchers
+  install -D -m 0755 "${srcdir}/davinci-resolve-beta.sh" \
+    "${pkgdir}/usr/bin/${pkgname}"
   install -D -m 0755 "${srcdir}/davinci-control-panels-setup.sh" \
     "${pkgdir}/usr/bin/davinci-control-panels-setup"
-  ln -s "/opt/resolve/bin/resolve" "${pkgdir}/usr/bin/${pkgname}"
   # Install other files
   install -d -m 0755 "${pkgdir}/opt/${_pkgname}"
   cp -rf squashfs-root/* "${pkgdir}/opt/${_pkgname}"

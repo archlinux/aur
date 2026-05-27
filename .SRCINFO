@@ -1,7 +1,7 @@
 pkgbase = davinci-resolve-beta
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
-	pkgver = 21.0b2
-	pkgrel = 1
+	pkgver = 21.0b3
+	pkgrel = 2
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	install = davinci-resolve-beta.install
 	arch = x86_64
@@ -35,9 +35,11 @@ pkgbase = davinci-resolve-beta
 	conflicts = davinci-resolve
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = file://DaVinci_Resolve_21.0b2_Linux.zip
+	source = local://DaVinci_Resolve_21.0b3_Linux.zip
 	source = davinci-control-panels-setup.sh
-	sha256sums = 4f29d11bae89c534e426cbe4bcdf0853b26e64ed8893953827c0e98145177020
-	sha256sums = 5c6bf06852c8239b4e6158464b8958563e175ca23f014bdd1067d8031269a2a7
+	source = davinci-resolve-beta.sh
+	sha256sums = 172fbc1f6391507cf2d7fa27d1a618277a95c774682e195584284888052b6078
+	sha256sums = 89118298fd75806a71c5c53cc02a618b6fd730f56e807ab64dd34be6de49d21c
+	sha256sums = ef807c8ace5a87dddc6cf51dd7b131699a6ec41392391cfe01bde32764f61824
 
 pkgname = davinci-resolve-beta
