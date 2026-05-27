@@ -1,0 +1,22 @@
+pkgbase = clean-my-keys-bin
+	pkgdesc = Utility to safely lock and clean your keyboard without breaking your workflow (Precompiled Binary)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Strawberry-Foundations/clean-my-keys
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	provides = clean-my-keys
+	conflicts = clean-my-keys
+	source = clean-my-keys-1.2.1::https://github.com/Strawberry-Foundations/clean-my-keys/releases/download/v1.2.1/clean-my-keys-linux-amd64
+	source = LICENSE-1.2.1::https://github.com/Strawberry-Foundations/clean-my-keys/raw/v1.2.1/LICENSE
+	source = README-1.2.1::https://github.com/Strawberry-Foundations/clean-my-keys/raw/v1.2.1/README.md
+	source = icon-1.2.1.svg::https://github.com/Strawberry-Foundations/clean-my-keys/raw/v1.2.1/assets/image/icon.svg
+	source = clean-my-keys-1.2.1.desktop::https://github.com/Strawberry-Foundations/clean-my-keys/raw/v1.2.1/clean-my-keys.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = clean-my-keys-bin
