@@ -2,7 +2,7 @@
 
 pkgname=superslicer-nightly-git
 pkgver=2.3.55.5.r11543.gf2c9dd0d8c
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.) — nightly dev_27_62 branch"
 arch=("$CARCH")
@@ -53,6 +53,8 @@ prepare()
   # logo/splash bitmaps loaded by name == APP_KEY at runtime
   cp resources/icons/Slic3r.svg resources/icons/SuperSlicer.svg
   cp resources/icons/Slic3r.png resources/icons/SuperSlicer.png
+  # About/SysInfo dialogs load APP_KEY + "_logo" via get_bmp_bundle()
+  cp resources/icons/Slic3r_logo.png resources/icons/SuperSlicer_logo.png
 
   # apply patches
   patch -Np1 -i "$srcdir/0005-modern-deps.patch"
