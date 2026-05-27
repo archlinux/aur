@@ -1,4 +1,4 @@
-# Maintainer: Morozyuk Daniil <morozdan2003@gmail.com>
+# Maintainer: Morozyuk Daniil <morozyuk.d.p@gmail.com>
 
 pkgname=linux-devmgmt-git
 pkgver=r7.0ef905b
