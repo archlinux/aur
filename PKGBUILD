@@ -1,6 +1,6 @@
 # Maintainer: mrFrok <https://github.com/mrFrok>
 pkgname=lfff-bin
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Free, open-source firmware flasher for Android A/B devices — CLI + GUI (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -23,12 +23,12 @@ source_aarch64=(
   "lfff-gui-${pkgver}-linux-aarch64.tar.gz::https://github.com/mrFrok/LibreFastbootFirmwareFlasher/releases/download/v$pkgver/lfff-gui-linux-aarch64.tar.gz"
 )
 sha256sums_x86_64=(
-  'a568d2e8630d003c1c05b9851624f96c915e25e666ff7c2213f439090488c6c3'
-  '2ce8d783532136b56f28b512e3a6a4d9c86fea8f4f0ed367beadca2a33376800'
+  'cdb79f67cfaf9f02b37f6d199b8f24e44d2708445e3a794cdb964ee53baaa75e'
+  'c083dd4f9509e11aa339ec64d7b1e22ad7feefa925911584faee75b45164204c'
 )
 sha256sums_aarch64=(
-  '4eb55061f474703f44a107bf8580d46b8735d62def3442c7a5f9814116b2cd60'
-  'acd5c2976ccec48bc4efd2a99864747f84b924b34ad87794397fdc48d6a81b32'
+  'cd9355a8851dc2d961320414e767f8e110c53e741678a976158a2234baa94f4c'
+  'e8ae8ad7619d8a9d85fc801e89e4c033c878e7f76328ad4140ef786776949980'
 )
 
 source+=(
