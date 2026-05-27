@@ -1,0 +1,18 @@
+pkgbase = hive-bin
+	pkgdesc = Folder-as-agent pipeline for autonomous software tasks
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/ivankuznetsov/hive
+	install = hive.install
+	arch = any
+	license = MIT
+	makedepends = ruby-rubygems
+	depends = ruby
+	provides = hive
+	conflicts = hive
+	conflicts = apache-hive
+	noextract = hive-cli-0.1.4.gem
+	source = https://github.com/ivankuznetsov/hive/releases/download/v0.1.4/hive-cli-0.1.4.gem
+	sha256sums = 0204be3e5e3de93d1d825ba1c743ab90cc3467f2b5d799233e18b8ea781d2012
+
+pkgname = hive-bin
