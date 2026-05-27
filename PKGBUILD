@@ -6,8 +6,8 @@
 
 _pkgname=shed-sh
 pkgname="$_pkgname-git"
-pkgdesc='A Linux shell with a powerful line editor and IPC socket extensibility (development version)'
-pkgver=0.22.0.r0.gafc5d3d
+pkgdesc='Shell that strives to be POSIX compliant, with a powerful line editor and IPC socket extensibility (development version)'
+pkgver=0.22.0.r2.g866a439
 pkgrel=1
 url='https://github.com/km-clay/shed'
 install=shed.install
@@ -58,6 +58,10 @@ package() {
     examples/*.*
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
+  # These are hardcoded into the binary, but they might be
+  # nice to have in clear text:
+  install -Dm0644 -t "$pkgdir/usr/share/shed/help" \
+    include/help/*.txt
 
   for _dir in doc licenses; do
     pushd "$pkgdir/usr/share/$_dir"
