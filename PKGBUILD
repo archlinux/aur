@@ -3,14 +3,14 @@
 pkgname=('lua-luawav' 'lua51-luawav' 'lua52-luawav' 'lua53-luawav' 'lua54-luawav')
 _pkgbase='luawav'
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'aarch64')
-url='https://github.com/jprjr/luawav'
+url='https://buffering.party/software/luawav/'
 license=('MIT')
 _lua_cur=5.5
 _lua_next=5.6
 makedepends=('cmake' "lua>=${_lua_cur}" "lua<${_lua_next}" 'lua51' 'lua52' 'lua53' 'lua54')
-source=("$url/releases/download/v${pkgver}/luawav-${pkgver}.tar.gz")
+source=("${url}luawav-1.3.0.tar.gz")
 
 _build() {
     LUA_V=$1
