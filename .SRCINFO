@@ -13,7 +13,7 @@ pkgbase = varnish-modules
 	makedepends = python
 	makedepends = python-docutils
 	depends = varnish=9.0.3-2
-	source = varnish-modules-0.28.0.tar.gz::https://github.com/varnish/varnish-modules/releases/download/0.28.0/varnish-modules-0.28.0.tar.gz
+	source = varnish-modules-9.0.3.tar.gz::https://github.com/varnish/varnish-modules/releases/download/0.28.0/varnish-modules-0.28.0.tar.gz
 	sha512sums = 796f95ea6f8b69f6e4fb3daf327c4a6cccc9b6c927d8daace753aad7e443c1f937020465924e472ad65bb0a10e2e5bf85b6228afe3257dbfba0091750fbf300a
 
 pkgname = varnish-modules

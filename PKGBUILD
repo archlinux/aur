@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/varnish/varnish-modules/rel
 license=('BSD')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$_srcver"
     ./configure \
         --build="$CBUILD" \
         --host="$CHOST" \
