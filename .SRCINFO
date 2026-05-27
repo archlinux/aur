@@ -1,7 +1,7 @@
 pkgbase = lua-luaopus
 	pkgver = 1.0.1
-	pkgrel = 2
-	url = https://github.com/jprjr/luaopus
+	pkgrel = 3
+	url = https://buffering.party/software/luaopus/
 	arch = x86_64
 	arch = i686
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = lua-luaopus
 	makedepends = lua53
 	makedepends = lua54
 	depends = opus
-	source = https://github.com/jprjr/luaopus/releases/download/v1.0.1/luaopus-1.0.1.tar.gz
+	source = https://buffering.party/software/luaopus/luaopus-1.0.1.tar.gz
 	sha512sums = 1c2af1741a4add34046042eeeaa8801feab9830b740a19a8db0e7a65e2b2a411e9e1d0a9869ae3bb78dcbd98ff63250d1b7f692d9f070baa9ea686257b4435ab
 
 pkgname = lua-luaopus
