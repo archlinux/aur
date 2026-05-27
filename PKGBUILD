@@ -1,4 +1,5 @@
 pkgname=forum-scout-qt
+epoch=1
 pkgver=0.5.5
 pkgrel=1
 pkgdesc="Arch-focused multi-forum search tool (Qt/PyQt6 edition)"
