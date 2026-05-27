@@ -1,11 +1,11 @@
 # Maintainer: britors <rodrigo@w3ti.com.br>
 pkgname=prisma4postgres-bin
-pkgver=10.5.1
+pkgver=10.6.0
 pkgrel=1
 pkgdesc="PostgreSQL database explorer and query runner"
 arch=('x86_64')
 url="https://github.com/britors/Prisma4Postgres"
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=('gtk3' 'nss' 'alsa-lib' 'libnotify' 'libxss' 'libxtst')
 makedepends=('librsvg')
 provides=('prisma4postgres')
