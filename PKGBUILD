@@ -3,7 +3,7 @@
 # Contributor: Jian Zeng <anonymousknight96@gmail.com>
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 pkgbase=tidb-bin
-_basever=8.4.0
+_basever=8.5.6
 #_relver=-prega
 #pkgver=$_basever.$_relver
 pkgver=$_basever
@@ -12,7 +12,7 @@ pkgname=("${pkgbase}")
 pkgdesc="A distributed NewSQL database compatible with MySQL protocol"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pingcap/tidb"
-license=('APACHE')
+license=('Apache-2.0')
 depends=('gcc-libs')
 conflicts=('tidb-bin-nightly' 'tidb' 'tikv' 'tikv-pd')
 options=('strip' 'debug')
@@ -50,12 +50,12 @@ sha256sums=('b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924'
             '44de9aed72b8bc9156db354dcddfe0624f2fe4fc91e903fe64892913cae93e0f'
             'f32709894c0d2c105a4398dcaf027f1cbdee359a2a6747f43cac819e9df25517'
             '1c933198cd9b5611bd7d25f4f3501bd1b580bb35352f8d65bc1cef8588400d24')
-sha256sums_x86_64=('32e22337fca45fe02c9747a4b1578b3f73caabe15a7b37b7b4e60089084a81a1'
-                   'df3b5293ae2d9b8962d0dbb37d19ee7a07dbabe67594f3a44206157291d5ef01'
-                   '91a3bf7a09ecbd47d926aba2a644f0f2d2ae76625d25ae996c8fd7def7bea1a3')
-sha256sums_aarch64=('a1aa3dac7556edb660b1136d7175ce5b33822adcf5a99ecdc838191e8c5e2fda'
-                    'e83761e711a18ae1c6ef8c263b37e92c9e0e633ae04e74b80227530fc0349500'
-                    '906f2c0bfbc8cf1969b24bb0c7db1704e36572c4dd91d73770a66fbe1a8f0361')
+sha256sums_x86_64=('676768548416d4c36311a857f1f08abb18c4ee91b46d4160d4abdd52b3dc2344'
+                   'ae6c6374ba8d82731a2ac67ca88a3fbebd762c8502477599479c52fc4b604206'
+                   '024efbd6efc64ae811a8e25aeb27ac611664b685f93425d061846944d2654a9e')
+sha256sums_aarch64=('5ed24beac23af81b1e605468cd748288d5f19555adf5f61cdc2c33552f049737'
+                    '323b18912e82a9c1b6d054b46880632efd1d4ac5463d5da122fac810fe723de1'
+                    '65a6e027f78696101b9d62a4bb8613cc2611ea8e5662c839d3174a0b88690385')
 
 _package() {
     provides=("tidb-server=$_basever" "tikv-server=$_basever" "pd-server=$_basever")
