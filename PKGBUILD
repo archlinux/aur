@@ -2,7 +2,7 @@
 
 pkgname=winexe
 pkgver=4.24.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Remote Windows command executor via SMB (from samba/examples/winexe)'
 arch=('x86_64')
 url='https://www.samba.org/'
@@ -44,20 +44,6 @@ sha256sums=('4a5e0ed1ea192b798c873d9957c50a5767c10c2767cccb00d56ecc427e94f8e9'
 build() {
   cd "${srcdir}/${_sambapkg}-${pkgver}"
 
-  local _samba_private_version=
-  if [[ -r /usr/lib/samba/libreplace-private-samba.so ]]; then
-    _samba_private_version=$(
-      readelf --version-info /usr/lib/samba/libreplace-private-samba.so |
-        perl -ne 'print "$1\n" and exit if /Name: (SAMBA_[^ ]+_PRIVATE_SAMBA)/'
-    )
-  fi
-
-  # Temporary workaround for Arch shipping samba 4.24.3 with a stale private
-  # ABI tag. When present, match the tag exported by the installed private
-  # libraries so winexe keeps working until the samba package is corrected.
-  perl -0pi -e 's/conf\.env\.PRIVATE_VERSION = "%s_%s_%s" % \(Context\.g_module\.APPNAME,\s*Context\.g_module\.VERSION, conf\.env\.PRIVATE_EXTENSION\)/conf.env.PRIVATE_VERSION = os.environ.get("SAMBA_PRIVATE_VERSION") or "%s_%s_%s" % (Context.g_module.APPNAME,\n        Context.g_module.VERSION, conf.env.PRIVATE_EXTENSION)/s' \
-    buildtools/wafsamba/wscript
-
   # Mirror the configure flags from the official Arch `samba` PKGBUILD so the
   # winexe binary we produce is ABI-compatible with /usr/lib/samba/*.so on
   # the user's system. The only addition is --with-winexe.
@@ -65,7 +51,7 @@ build() {
   local _samba4_pdb_modules=pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4
   local _samba4_auth_modules=auth_unix,auth_wbc,auth_server,auth_netlogond,auth_script,auth_samba4
 
-  SAMBA_PRIVATE_VERSION="${_samba_private_version}" ./configure --enable-fhs \
+  ./configure --enable-fhs \
     --prefix=/usr \
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
