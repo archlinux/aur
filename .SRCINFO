@@ -1,7 +1,7 @@
 pkgbase = localwp
 	pkgdesc = The #1 local WordPress development tool. (Official .rpm repack)
 	pkgver = 10.1.0
-	pkgrel = 1
+	pkgrel = 6912
 	url = https://localwp.com/
 	arch = x86_64
 	license = custom:proprietary
