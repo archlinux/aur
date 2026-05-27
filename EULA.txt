@@ -1,0 +1,207 @@
+Eula Agreement
+PLEASE CAREFULLY READ THIS END USER LICENSE AGREEMENT ("AGREEMENT") BEFORE DOWNLOADING, INSTALLING, OR USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING TO BE BOUND BY THE TERMS OF THIS AGREEMENT.
+
+IF YOU AND PULSE SECURE HAVE SIGNED A SEPARATE WRITTEN AGREEMENT COVERING YOUR RIGHTS AND DUTIES WITH RESPECT TO THE SOFTWARE, THEN THAT WRITTEN AGREEMENT TAKES PRECEDENCE OVER ANY CONFLICTING TERMS OF THIS AGREEMENT.
+
+IF YOU ARE ACCEPTING THIS AGREEMENT ON BEHALF OF AN ENTERPRISE'S END USERS, IT IS YOUR RESPONSIBILITY TO COMMUNICATE THE INFORMATION IN THIS AGREEMENT TO THE ENTERPRISE END USERS AND ENSURE COMPLIANCE WITH THE TERMS AND CONDITIONS CONTAINED HEREIN.
+
+BY DOWNLOADING AND/OR USING THE SOFTWARE, YOU ARE INDICATING THAT YOU UNDERSTAND THIS AGREEMENT AND ACCEPT ALL OF ITS TERMS. IF YOU ARE ACCEPTING THE TERMS OF THIS AGREEMENT ON BEHALF OF A COMPANY OR OTHER LEGAL ENTITY, YOU REPRESENT AND WARRANT THAT YOU HAVE THE AUTHORITY TO BIND THAT COMPANY OR OTHER LEGAL ENTITY TO THE TERMS OF THIS AGREEMENT.
+
+Capitalized terms used in this Agreement are defined in Section 1 (Definitions).
+
+1. Definitions.
+The following definitions apply to capitalized terms used in this Agreement:
+
+a. "Agreement" means this End User License Agreement ("EULA").
+
+b. "Approved Source" is Pulse Secure, or a distributor or reseller authorized by Pulse Secure to distribute Software in the territory in which You are located.
+
+c. "Beta" is a version of the Software that (i) is still in its testing phase and has not yet been released commercially.
+
+d. "Documentation" for a particular Software Version or Release means Pulse Secure's published user guide, release notes and feature listings for that Version or Release.
+
+e. “Effective Date” is the date on which you accept the terms and conditions of this Agreement by clicking “Agree” or otherwise accepting this Agreement through use of the Software.
+
+f. "License Metric" is a parameter for the access or use of the Software, as described in Section 5.
+
+g. "License Metric Unit" is a unit of measurement for the number of seats for the License Metric that You purchased for access or use of the Software.
+
+h. "NFR" means "Not for Resale" and is limited to demonstration use by a reseller.
+
+i. "Proof of Entitlement" is Pulse Secure’s acceptance of Your order for a license to the Software as set forth in an order confirmation or other Pulse Secure-issued written or electronic confirmation. The Proof of Entitlement must identify You, the Software licensed, any applicable License Metric and, if applicable, the License Metric Units.
+
+j. "Pulse Secure" means Pulse Secure, LLC.
+
+k. "Pulse Secure Platform" means any hardware, network appliance, equipment or devices marketed, and sold by Pulse Secure.
+
+l. "Release" is a particular object code image of a Software product that is identified by a release naming convention starting with "x.y" followed by an additional image identifying string.
+
+m. "Software" means the software product identified in Your Proof of Entitlement, and includes 1) machine-readable instructions and data, 2) components, files, and modules, 3) any accompanying audio-visual content, and 4) accompanying activation keys, if any, and 5) associated Documentation. Except where the context otherwise requires, Software includes any Update of that Software that You rightfully receive under a Subscription.
+
+n. "Special Purpose License" means any of the licenses described in Section 6 of the Agreement.
+
+o. "Subscription" means a license to Software for a finite, fixed term of use.
+
+p. "Update" means software that is an upgrade, bug fix, patch or other Release of Software licensed hereunder that Pulse Secure makes generally available free of incremental charge to customers.
+
+q. "Version" means one or more Releases of a particular Software product with a common "x.y" naming convention in the first two places of the Release identifier.
+
+r. "You" means the individual, other legal entity, or other business, governmental or not-for-profit organization (but excluding any parent, subsidiary or other affiliate of any of the foregoing) that is the original end user purchaser of a license to the Software from an Approved Source as set forth in the Proof of Entitlement.
+
+2. License Grant.
+a. When You purchase or rightfully receive a license to the Software, Pulse Secure grants You a revocable, non-exclusive, non-transferrable right to install and use that Software for the term stated in Your Proof of Entitlement, solely for internal business operations and subject to the terms of this Agreement.
+
+b. The operating system software installed on the Pulse Secure Platform that you have purchased from Pulse Secure or an Approved Source, along with the Software, and their respective Updates, may only be used on said Pulse Secure Platform and not installed or used on any other appliance. Pulse Secure virtual appliances may be used on a supported virtual infrastructure.
+
+3. Software Name.
+Each Software product is identified by a unique name. This name, when combined with a Version number corresponds to a specific base set of product features and functionality identified for that Version of the Software in the Documentation.
+
+4. Term of License.
+a. Subscription License. If Your license is a Subscription license, then the term of the Subscription shall be as specified on Your Proof of Entitlement. You may, renew or reinstate Your Subscription license subject to the terms of Pulse Secure policies at the time of the renewal and/or reinstatement.
+
+b. Special Purpose License. If Your license is a Special Purpose License (see Section 6, below), then its term shall be as stated in Your Proof of Entitlement. If You have no Proof of Entitlement or if Your Proof of Entitlement fails to state a license term, then the term of Your Special Purpose License shall be up to a maximum of eight (8) weeks from the date that You first received the Software, whether via download unless otherwise specified in a separate written agreement which You may have entered into with Pulse Secure.
+
+c. Perpetual License. If You have a valid Proof of Entitlement that clearly states that Your license is "Perpetual", then, except as stated below, Your license is perpetual, subject only to termination for non-payment of license fees or other breach of this Agreement. An otherwise Perpetual license to the operating system software installed on the Pulse Secure Platform purchased from Pulse Secure or from an Approved Source, along with the Software, and their respective Updates will nonetheless terminate if and when You sell or otherwise transfer the Pulse Secure Platform on which You use it.
+
+5. License Metrics.
+License Metrics include the following:
+
+a. Named Users - the number of individuals to which You and Your authorized users grant access for one or more services furnished, managed, or provisioned by any instance of the Software. A Named User who accesses such services through multiple devices is nonetheless counted as a single Named User.
+
+b. Concurrent Sessions - the number of connections to which You and Your authorized users grant access for one or more services concurrently furnished, managed, or provisioned by any instance of the Software.
+
+c. Other Forms of License. Other License Metrics may be defined for specific Software as specified in Your Proof of Entitlement.
+
+6. Special Purpose Licenses.
+Special Purpose Licenses are limited, short-term licenses that may not be used for any production or commercial application or similar use.
+
+a. NFR-based License. If Your Proof of Entitlement for certain Software (or a separate written agreement with Pulse Secure) identifies Your license as "Not for Resale" or with words of like meaning, AND if You are a Pulse Secure-authorized distributor or reseller, then for the license term (see Section 4, above) You may use the Software, but only to demonstrate features and performance of the Software to prospective buyers, and only while You remain a Pulse Secure-authorized distributor or reseller. The Software provided under this license may not be resold.
+
+b. Evaluation/Beta Use-based License. If Your Proof of Entitlement for certain Software (or a separate written agreement with Pulse Secure) identifies Your license as "Evaluation Use", “Beta Use” or with words of like meaning, then for the license term (see Section 4, above) You may install and use the Software, but only for internal evaluation of the Software.
+
+7. License Restrictions; Limitations and Prohibitions.
+This Section 7 supersedes any contrary provision elsewhere in this Agreement and applies to all varieties of licenses, whether Special Purpose Licenses, Subscriptions, Perpetual or otherwise:
+
+a. No Rights or Licenses Implied. Licenses or rights in the Software not expressly granted in this Agreement shall not arise by implication or otherwise.
+
+b. Approved Source. You shall have no right or license in the Software unless You rightfully received the Software from an Approved Source.
+
+c. No Sublicensing or Assignment. You may not sublicense, transfer or assign, whether voluntarily or by operation of law, any right or license in or to the Software or under any Proof of Entitlement. Any attempted sublicense, transfer or assignment shall be void.
+
+d. Restructures. If You are a party to a transaction (or related series of transactions) involving a merger, consolidation or other corporate reorganization where You do not survive the transaction(s), the transaction(s) shall also be deemed a prohibited transfer.
+
+e. You are Sole Licensee. No rights or licenses in the Software shall arise under this Agreement in favor of anyone other than You.
+
+f. Separately Licensable Software. The software image that contains Software that You license from an Approved Source might also include additional unlicensed features or functionality that You may not use unless You purchase a separate license at an additional fee. Specific features and functionality are included in Your license to the Software You licensed only if published Pulse Secure Documentation for that Version of the Software identifies those features and functionality as being included. For example, without limiting the foregoing, if You are a user of the Pulse Policy Secure Virtual Appliance, You are only licensed to use the Pulse Profiler and 10 Polsec licenses included therewith if You have licensed the Advanced or Enterprise editions of the Pulse Access Suite.
+
+g. Virtual Appliance. You will need to purchase an additional license should you download and/or use a Pulse Secure Virtual Appliance.
+
+h. Restrictions on Charging a Fee for Access or Use. You shall not allow any authorized user of the Software or other third party to grant anyone else access for a fee or other consideration to services, content or resources that are generated, managed, distributed, provisioned, billed or enabled by the Software.
+
+i. Other Use Restrictions and Prohibitions. Neither You nor Your Named Users shall, directly or indirectly:
+
+(i) Decompile, disassemble or reverse engineer the Software or modify, unbundle, or create derivative works based on the Software, except as expressly permitted by applicable law without the possibility of contractual waiver. If the law requires Pulse Secure to provide interface information to You to adapt the Software, Pulse Secure, at its option, may either (A) provide the information to You subject to Your acceptance of non-disclosure and use limitation terms that Pulse Secure reasonably requires, or (B) perform that adaptation itself at a reasonable charge for services;
+
+(ii) Copy the Software except for archival purposes or as necessary for You to install and make use of the Software as expressly licensed by Pulse Secure;
+
+(iii) Detach or separate any libraries, files, modules or other components embedded within a Software product or within a particular software image You have received even if any such library, file, module or other component is separately licensable, or use any such modules, files or other components separately from the Software product or software image in which it is embedded (except to the extent that a documented feature of the Software product is implemented by doing so);
+
+(iv) Furnish any copy of the Software or other means of access to the Software to any third party other than to Your contractor(s) solely for Your benefit in performing contract services for You and in that case only if that contractor has agreed to adhere to the terms of this Agreement. If You do furnish Software or access to Software to Your contractor(s), You shall remain fully and primarily responsible to Pulse Secure for compliance with all provisions of this Agreement;
+
+(v) Remove (or, if the license includes the right to make copies of the Software, fail to include in those copies) any readme files notices, disclaimers, marks and labels included in the Software as delivered by Pulse Secure;
+
+(vi) Use or allow use of the Software in violation of any applicable law or regulation or to support or facilitate any illegal activity;
+
+(vii) Use the Software or allow anyone else to use the Software for benchmarking or other testing not related to Your internal use;
+
+(viii) Attempt to gain unauthorized access to the Software or its related systems or networks; (ix) Copy any ideas, features or functions or graphics of the Software; or
+
+(x) Use or permit the use of the Software, including by uploading, emailing, posting publishing or otherwise transmitting any material for any purpose that may (a) menace or harass any person or cause damage or injury to any person or property; (b) involve the publication of any material that is false, defamatory, harassing or obscene; (c) violate privacy rights or promote bigotry, racism, hatred or harm; (d) constitute unsolicited bulk email, "junk mail," "spam," or chain letters; (e) constitute an infringement of intellectual property or other proprietary rights, or (f) otherwise violate applicable laws, ordinances, or regulations; and (g) in addition to any other rights afforded under this Agreement, Pulse Secure reserves the right to remove or disable access to any material that violates the foregoing restrictions and shall have no liability to You for taking (or not taking) such action.
+
+j. You agree to defend and indemnify Pulse Secure against any claim arising out of a violation of your obligations under this Section.
+
+8. Termination.
+a. Early Termination for Breach. This Agreement shall automatically terminate If at any time You:
+
+(i) fail to make timely payment of any applicable fees due in respect of the Software, or
+(ii) breach any term of this Agreement
+
+b. Effect of Termination or Expiration. If Your license term expires without renewal or reinstatement or otherwise terminates, then You shall promptly destroy or return to Pulse Secure all copies of the Software and related documentation in Your possession or control. In the event You have a paid cloud-based Subscription License, Pulse Secure may permit You to access the Software solely to the extent necessary for You to retrieve a file of Your data provided You request such access within sixty (60) days prior to the termination of the paid Subscription license. You agree and acknowledge that Pulse Secure has no obligation to retain Your data and that Your data may be irretrievably deleted sixty (60) days following the termination of the Subscription License.
+
+c. Survival. The provisions of Sections 1, 7, 8.b, 8.c, and 9-25 shall survive termination or expiration of this Agreement.
+
+9. Confidentiality.
+You agree that aspects of the Software and associated documentation are the confidential property of Pulse Secure. As such, You shall exercise all reasonable commercial efforts to maintain the Software and associated documentation in confidence, which, at a minimum includes restricting access to the Software to Your employees and contractors having a need to use the Software for Your internal business purposes.
+
+10. Your Data
+You shall have sole responsibility for the accuracy, quality, integrity, legality, reliability, exportability, appropriateness, and ownership of Your data. Pulse Secure treats Your information and Your data in accordance with its Privacy Policy found at http://www.pulsesecure.net/legal/privacy-policy.
+
+11. Ownership.
+Pulse Secure and Pulse Secure's licensors, respectively, retain exclusive ownership of all right, title, and interest in and to all intellectual property in the Software. Nothing in this Agreement constitutes a sale or other transfer or conveyance of any right, title, or interest in the Software.
+
+12. Limited Warranties/Intellectual Property Indemnification.
+a. Software Limited Warranty.
+(i) ANY SOFTWARE LICENSED UNDER A SPECIAL PURPOSE LICENSE IS FURNISHED "AS IS" WITH ALL FAULTS AND WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
+(ii) For any other license of Software under this Agreement, Pulse Secure warrants for Your sole benefit that for a period of ninety (90) days from the Effective Date (the "Software Warranty Period"), the Software shall substantially conform to the Documentation. You may not make a software warranty claim after the lapse of the Software Warranty Period. YOUR SOLE AND EXCLUSIVE REMEDY AND THE ENTIRE LIABILITY OF PULSE SECURE FOR BREACH OF ANY WARRANTY REGARDING SOFTWARE UNDER THIS SECTION 12 SHALL BE THE REPLACEMENT OF THE DEFECTIVE SOFTWARE.
+
+b. Restrictions. No warranty will apply if the Software (i) has been altered, except by Pulse Secure; (ii) has not been installed, operated, repaired, or maintained in accordance with the Documentation and instructions supplied by Pulse Secure; (iii) has been subjected to unreasonable physical, thermal or electrical stress, misuse, negligence, or accident or (iv) has been licensed pursuant to a Special Purpose License. In addition, Software is not designed or intended for (i) use in the design, construction, operation or maintenance of any nuclear facility, (ii) navigating or operating aircraft; (iii) operating life-support or life-critical medical equipment or (iv) incorporation in a dwelling or for personal, family, or household purposes or otherwise for use as a consumer product, and Pulse Secure disclaims any express or implied warranty of fitness for such uses. You are solely responsible for backing up its programs and Your data to protect against loss or corruption
+
+c. Disclaimer of All Other Warranties. EXCEPT AS EXPRESSLY PROVIDED IN THIS SECTION 12, TO THE EXTENT PERMITTED BY LAW, PULSE SECURE DISCLAIMS ALL WARRANTIES IN AND TO THE SOFTWARE (WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE), INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NONINFRINGEMENT, OR ARISING FROM A COURSE OF DEALING, LAW, USAGE, OR TRADE PRACTICE. PULSE SECURE DISCLAIMS ANY WARRANTY, REPRESENTATION OR ASSURANCE THAT THE SOFTWARE, OR ANY EQUIPMENT OR NETWORK RUNNING THE SOFTWARE, WILL OPERATE WITHOUT ERROR OR INTERRUPTION, OR WILL BE FREE OF VULNERABILITY TO INTRUSION OR ATTACK. TO THE EXTENT AN IMPLIED WARRANTY CANNOT BE EXCLUDED, THAT WARRANTY IS LIMITED IN DURATION TO THE EXPRESS WARRANTY PERIOD. BECAUSE SOME STATES OR JURISDICTIONS DO NOT ALLOW LIMITATIONS ON HOW LONG AN IMPLIED WARRANTY LASTS, THE ABOVE LIMITATION MAY NOT APPLY. YOU MAY ALSO HAVE OTHER RIGHTS THAT VARY FROM JURISDICTION TO JURISDICTION. This disclaimer and exclusion shall apply even if the express warranty fails of its essential purpose.
+
+d. Indemnification. Pulse Secure shall defend and indemnify You, at its own expense, from any suit brought against You based upon a claim that the Software infringes any third party trade name, patent or copyright (“IP Claims”) and will pay all damages and costs that a court awards against You as a result of such claim, provided that You: (i) promptly give Pulse Secure written notice of such IP Claim after becoming aware of it and furnish Pulse Secure with a copy of each communication, notice or other document exchanged with the claimant relating to the IP Claim; (ii) give Pulse Secure complete control of the defense and settlement of the IP Claim; and (iii) fully cooperate with Pulse Secure in the defense or settlement of such claim. Pulse Secure shall have no obligation or liability with respect to any IP Claim, which is based in whole or part upon: (a) the combination, operation or use of the Software with any hardware, software or other device supplied by a party other than Pulse Secure and the claim would not have arisen but for such combination, operation or use; (b) any modification of the Software which is not pre-approved by Pulse Secure in writing; (c) any specifications, designs or instructions provided to Pulse Secure by or on behalf of You; (d) Your failure to promptly modify the Software (e.g., install a supported Release provided by Pulse Secure), if the claim could have been avoided had you followed Pulse Secure’s directions for the implementation of such modification: or (e) use of the Software in a manner other than that for which it was designed or in a manner other than as specified by Pulse Secure. If use of the Software is enjoined or threatened to be enjoined in connection with an IP Claim, Pulse Secure may, at its expense, either: (y) obtain for You the right to continue to use the Software, or (z) replace the Software with non-infringing software that has substantially similar features and functionality, the use of which is not restricted or prohibited. If in Pulse Secure’s sole judgment, neither of the foregoing actions is reasonably available to it, then Pulse Secure will refund the amount paid by You for the Software depreciated on a five year straight-line basis. THE REMEDIES SET FORTH IN THIS SECTION 12.d ARE YOUR SOLE AND EXCLUSIVE REMEDIES FROM PULSE SECURE WITH RESPECT TO ANY IP CLAIM.
+
+13. Limitation of Damages. To the extent permitted by law:
+a. IN NO EVENT SHALL THE CUMULATIVE LIABILITY OF PULSE SECURE, ITS DIRECTORS, OFFICERS, EMPLOYEES, AFFILIATES, SUPPLIERS AND LICENSORS TO YOU FROM ALL CAUSES OF ACTION AND ALL THEORIES OF LIABILITY (WHETHER UNDER CONTRACT OR STATUTE, IN TORT (INCLUDING PRODUCT LIABILITY) OR OTHERWISE), EXCEED THE: (i) PRICE PAID BY YOU FOR LICENSED RIGHTS TO THE SOFTWARE, FOR THE CURRENT TERM.
+
+b. IN NO EVENT SHALL ANY BREACH BY PULSE SECURE IN CONNECTION WITH ANY REPRESENTATIONS, WARRANTIES OR COMMITMENTS, EXPRESS OR IMPLIED, RELATING TO THE SOFTWARE EXCUSE YOUR UNAUTHORIZED USE OF SOFTWARE OR IMPAIR PULSE SECURE'S RIGHT TO TERMINATE ANY LICENSE BASED ON YOUR BREACH OF THIS AGREEMENT.
+
+c. NEITHER PULSE SECURE NOR ITS DIRECTORS, OFFICERS, EMPLOYEES, AFFILIATES, SUPPLIERS OR LICENSORS SHALL BE LIABLE FOR ANY LOST PROFITS, LOSS OF YOUR DATA, OR COSTS OF PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES, OR FOR ANY SPECIAL, INDIRECT, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES ARISING FROM THIS AGREEMENT OR USE OF THE SOFTWARE.
+
+d. BECAUSE SOME JURISDICTIONS DO NOT ALLOW LIMITATION OR EXCLUSION OF CONSEQUENTIAL OR INCIDENTAL DAMAGES, SOME OR ALL OF THE ABOVE LIMITATIONS MAY NOT APPLY TO YOU.
+
+e. TO THE EXTENT PERMITTED BY LAW, PULSE SECURE DISCLAIMS ANY AND ALL LIABILITIES OR OBLIGATIONS WHATSOEVER RELATED TO THE PULSE SECURE PLATFORM, SOFTWARE OR ITS LICENSING TO OR USE BY ANYONE OTHER THAN YOU. You shall defend, indemnify and hold Pulse Secure harmless from and against any liability, damages, loss or cost (including attorneys' fees) arising from or relating to any dispute, lawsuit, administrative hearing, arbitration or settlement based on any claim by a party other than You relating to Software that You originally licensed (or relating to a service You offered involving use of the Software).
+
+f. Pulse Secure has set its prices and entered into this Agreement in reliance upon the disclaimers of warranty and the limitations of liability stated above. Those disclaimers and limitations reflect an allocation of risk between Pulse Secure and You, and they form an essential basis of the bargain between Pulse Secure and You.
+
+14. Compliance with Laws; Export Requirements.
+You shall comply with all applicable laws and regulations in connection with the movement and use of the Software. You acknowledge and agree that the Software as well as related technical data and Documentation may contain encryption or encryption technology and are all subject to legal and regulatory controls and restrictions on export and re-export, including those of the U.S. Department of Commerce. You warrant and represent that You are not on any Denied Persons list or other list published by the US Government of parties to whom exports or re-exports of products subject to export controls are forbidden, that no Software is located in or controlled from a site in a Group E country, and that You are not using any Software or technology furnished hereunder to further activities in support of the development, manufacture or use of nuclear fuel or weapons, missiles, or chemical or biological weapons. You further covenant that You will immediately notify Pulse Secure if at any time those warranties and representation become no longer accurate. Regardless of any disclosure You might make to Pulse Secure of an ultimate destination of the Software, You shall not export, either directly or indirectly, any Software without first obtaining any and all necessary approvals from the U.S. Department of Commerce or any other agency or department of the United States Government as required.
+
+15. Commercial Computer Software.
+The Software is a "commercial item" as defined at Federal Acquisition Regulation (48 C.F.R.) ("FAR") section 2.101 comprised of "commercial computer software" and "commercial computer software documentation" as those terms are used in FAR 12.212. Consequently, regardless of whether You are the US Government or a department or agency thereof, You shall acquire only those rights with respect to the Software that are set forth in this Agreement and the Proof of Entitlement.
+
+16. Third Party Software.
+Any licensor of Pulse Secure whose software is embedded in the Software shall be a third party beneficiary with respect to this Agreement, and that licensor shall have the right to enforce this Agreement in its own name as if it were Pulse Secure. Certain third party software may be provided with the Software and is subject to the accompanying license(s), if any, of its respective owner(s). This Software is licensed subject to open source software licenses. For information, click here http://www.pulsesecure.net/techpubs/licensing/attribution or contact opensource@pulsesecure.net.
+
+17. Governing Law.
+This Agreement (including all documents incorporated herein) shall be governed by the laws of the State of California (without reference to its conflicts of laws principles). The provisions of the U.N. Convention for the International Sale of Goods shall not apply. The provisions of the Uniform Computer Information Transactions Act shall not apply. For any disputes arising under this Agreement that You may have with Pulse Secure, You hereby consent to the personal and exclusive jurisdiction of, and venue in the federal and state courts located in Santa Clara County, California.
+
+18. Force Majeure.
+Except for Your duty to make payment for, Software licenses, and except for Your unauthorized installation or use of Software, neither party will be responsible for any failure or delay in its performance due to causes beyond its reasonable control, including, but not limited to, acts of God, war, riot, embargoes, acts of terrorism, acts of civil or military authorities, fire, floods, earthquakes, accidents, strikes, or fuel crises ("Force Majeure"), provided that the party gives prompt written notice thereof to the other party and uses its diligent efforts to resume performance. The performance of the party claiming the Force Majeure event shall be excused for the duration of said event.
+
+19. Applicability of This Agreement.
+a. Separate Signed Agreements. If You and an authorized representative of Pulse Secure have signed a valid separate written agreement governing Your use of any or all Software licensed from Pulse Secure, then with respect to that Software that signed agreement will take precedence over this Agreement.
+
+b. Transition Rules. If You licensed any Software from Pulse Secure under a different End User License Agreement, then this Agreement shall apply to that Software if and when, following posting of this Agreement at http://www.pulsesecure.net/support You either purchase additional License Metric Units for the Software, renew the license at the end of the license term or reinstate the license after the license expires.
+
+20. Complete Agreement; Modifications.
+a. Except as otherwise provided in subsection 19.a, this Agreement constitutes the entire agreement between the parties regarding its subject matter and supersedes all prior agreements, commitments or representations, oral or written related to the Software. The terms and conditions of this Agreement will supersede all pre-printed terms and conditions contained on any purchase order, task order or other business form submitted by either party to the other. Except as otherwise provided in subsection 19.a, this Agreement may not be amended or modified except by a writing executed by the duly authorized representatives of both parties.
+
+b. Future Modifications. Pulse Secure may at any time post on its website (or that of its affiliates) modifications or restatements of this Agreement and any other policy or guideline referenced in this Agreement. Any such modification shall govern the terms of Your license for any extension or renewal term of the Software license, but only if that extension or renewal term or reinstatement period starts after the posting of the modification.
+
+21. Severability.
+If any portion of this Agreement is held invalid, the parties agree that such invalidity shall not affect the validity of the remainder of this Agreement.
+
+22. Notification.
+Except as otherwise provided elsewhere in this Agreement, any report or notice under this Agreement shall be given in a writing, if to Pulse Secure by mail to 2700 Zanker Road, Suite 200, San Jose, CA 95134 USA, Attn.: Legal Department, provided that the notice identifies You by name, address and email address; or, if to You, by email to Your contact email address or by mail addressed to Your street address that is associated with Your user account for registration with Pulse Secure. If You have no such user account, then notification shall be deemed given to You by emailing or mailing notice to any office or contact email address for the Approved Source from which You acquired Your license.
+
+23. Waiver.
+The failure of Pulse Secure to require Your performance of any provision of this Agreement shall not affect Pulse Secure's full right to require such performance at any time thereafter; nor shall its waiver of a breach of any provision hereof be taken to be a waiver of the provision itself.
+
+24. Translations.
+Several translations of this Agreement may appear at http://www.pulsesecure.net/support. To the extent of any inconsistency between the English version of this Agreement and any non-English version the English version shall govern.
+
+25. Statistical Information.
+Pulse Secure may collect, compile, and publish statistical information related to the use of and the performance of the Software for marketing purposes, provided that such information is anonymized and does not incorporate Your data. Pulse Secure retains all intellectual property rights in such statistical information. The type of data Pulse Secure may collect for this purpose includes, but is not limited to, information about the hardware and Software and use of the Software.
+
+
+-END OF DOCUMENT-
