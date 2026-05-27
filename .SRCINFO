@@ -1,7 +1,7 @@
 pkgbase = lua-lualame
 	pkgver = 1.0.0
-	pkgrel = 2
-	url = https://github.com/jprjr/lualame
+	pkgrel = 3
+	url = https://buffering.party/software/lualame/
 	arch = x86_64
 	arch = i686
 	arch = aarch64
@@ -14,8 +14,8 @@ pkgbase = lua-lualame
 	makedepends = lua53
 	makedepends = lua54
 	depends = lame
-	source = https://github.com/jprjr/lualame/releases/download/v1.0.0/lualame-1.0.0.tar.gz
-	sha512sums = 85bae98c8c87f4bcb21694df377bd82610927eb75fe1b96f97c277f88cdc47a6b016cce96c530bcf9dcb6f6b982c156ef04e18652b3c1824141a6831de65233f
+	source = https://buffering.party/software/lualame/lualame-1.0.0.tar.gz
+	sha512sums = 2358e3e1dafefa4b4bd154c631bb2ca660f719204b50d81cc8e3341ab4e3804e192ce6d597dae57ee3197a70a5b317f2cc1f0e28f15443aac9a036a6a0abd493
 
 pkgname = lua-lualame
 	pkgdesc = Lua 5.5 bindings for libmp3lame

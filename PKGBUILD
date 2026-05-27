@@ -3,15 +3,15 @@
 pkgname=('lua-lualame' 'lua51-lualame' 'lua52-lualame' 'lua53-lualame' 'lua54-lualame')
 _pkgbase='lualame'
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686' 'aarch64')
-url='https://github.com/jprjr/lualame'
+url='https://buffering.party/software/lualame/'
 license=('MIT')
 depends=('lame')
 _lua_cur=5.5
 _lua_next=5.6
 makedepends=('cmake' "lua>=${_lua_cur}" "lua<${_lua_next}" 'lua51' 'lua52' 'lua53' 'lua54')
-source=("$url/releases/download/v${pkgver}/lualame-${pkgver}.tar.gz")
+source=("${url}${_pkgbase}-${pkgver}.tar.gz")
 
 _build() {
     LUA_V=$1
@@ -74,5 +74,5 @@ package_lua51-lualame() {
 }
 
 sha512sums=(
-'85bae98c8c87f4bcb21694df377bd82610927eb75fe1b96f97c277f88cdc47a6b016cce96c530bcf9dcb6f6b982c156ef04e18652b3c1824141a6831de65233f'
+'2358e3e1dafefa4b4bd154c631bb2ca660f719204b50d81cc8e3341ab4e3804e192ce6d597dae57ee3197a70a5b317f2cc1f0e28f15443aac9a036a6a0abd493'
 )
