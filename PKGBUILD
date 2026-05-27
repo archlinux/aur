@@ -6,8 +6,7 @@ pkgdesc='AI coding provider usage tracker CLI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/steipete/CodexBar'
 license=('MIT')
-depends=('libxml2')
-makedepends=('patchelf')
+
 provides=('codexbar')
 conflicts=('codexbar')
 
@@ -19,7 +18,7 @@ sha256sums=('14293556b79940745123d0160c71d27ed0e9fe9b8a848093f3ed78f4853caafe')
 sha256sums_x86_64=('cb638ba68fd7ef2e4b43b4899fd66720a330b9458346fb66207e9b5813b6e6f3')
 sha256sums_aarch64=('78cfe45b5cd77a985362f749d1995742518cee706efc1931218f02c583f13681')
 package() {
-    patchelf --replace-needed libxml2.so.2 libxml2.so.16 CodexBarCLI
     install -Dm755 CodexBarCLI "${pkgdir}/usr/bin/codexbar"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 VERSION "${pkgdir}/usr/share/${pkgname}/VERSION"
 }
