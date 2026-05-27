@@ -1,5 +1,5 @@
 _detect_gpu() {
-    if lspci | grep -i "VGA\|3D" | grep -qi "AMD\|Radeon"; then
+    if lspci | grep -i "VGA\|3D\|Display controller" | grep -qi "AMD\|Radeon"; then
         echo "rocm"
     elif lspci | grep -i "VGA\|3D" | grep -qi "NVIDIA"; then
         echo "cuda"

@@ -9,7 +9,7 @@ _prefix="${_prefix:-/opt/comfyui}"
 
 pkgname=comfyui
 pkgver=0.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface"
 arch=('x86_64')
 url="https://github.com/Comfy-Org/ComfyUI"
