@@ -1,0 +1,20 @@
+pkgbase = phasionary-bin
+	pkgdesc = Terminal-first, single-user project planning tool
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = https://github.com/ilyasturki/phasionary
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = phasionary
+	conflicts = phasionary
+	options = !strip
+	source = LICENSE-0.6.5::https://github.com/ilyasturki/phasionary/raw/v0.6.5/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = phasionary-bin-0.6.5-x86_64::https://github.com/ilyasturki/phasionary/releases/download/v0.6.5/phasionary-linux-x64
+	sha256sums_x86_64 = 3f23ed2d9a6d26076dc3aee815fe56a981e18f648627ad4080d18cf935df9cb8
+	source_aarch64 = phasionary-bin-0.6.5-aarch64::https://github.com/ilyasturki/phasionary/releases/download/v0.6.5/phasionary-linux-arm64
+	sha256sums_aarch64 = 179c43b612d1c292e3390134d446e37d9636fe56575a0aa456997a7856fb286a
+
+pkgname = phasionary-bin
