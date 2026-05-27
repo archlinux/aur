@@ -1,0 +1,26 @@
+pkgbase = termcanvas
+	pkgdesc = An infinite canvas desktop app for visually managing terminals
+	pkgver = 0.39.8
+	pkgrel = 1
+	url = https://github.com/blueberrycongee/termcanvas
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs>=20
+	makedepends = pnpm
+	makedepends = git
+	makedepends = python
+	makedepends = gcc
+	makedepends = make
+	depends = electron
+	depends = libxss
+	depends = nss
+	depends = gtk3
+	depends = libnotify
+	depends = xdg-utils
+	depends = alsa-lib
+	depends = libpulse
+	conflicts = termcanvas-bin
+	source = https://github.com/blueberrycongee/termcanvas/archive/v0.39.8.tar.gz
+	sha256sums = SKIP
+
+pkgname = termcanvas

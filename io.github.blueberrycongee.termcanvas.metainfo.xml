@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.blueberrycongee.termcanvas</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <name>TermCanvas</name>
+  <summary>An infinite canvas desktop app for visually managing terminals</summary>
+  <description>
+    <p>
+      TermCanvas spreads all your terminals across an infinite spatial canvas
+      — no more tabs, no more split panes. Drag them around, zoom in to focus,
+      zoom out to see the big picture.
+    </p>
+    <p>
+      It organizes everything in a Project → Worktree → Terminal hierarchy that
+      mirrors how you actually use git. Add a project, and TermCanvas auto-detects
+      its worktrees. Create a new worktree from the terminal, and it appears on
+      the canvas instantly.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Infinite canvas — pan, zoom, and arrange terminals freely</li>
+      <li>AI Coding Agent support for Claude Code, Codex, Kimi, Gemini, and OpenCode</li>
+      <li>Session history organized by project and worktree</li>
+      <li>Built-in git commit history, diff viewer, and live git status</li>
+      <li>Shell, lazygit, and tmux terminals alongside AI agents</li>
+      <li>Usage tracking with weekly heatmap and daily summaries</li>
+      <li>Canvas annotations, drawings, and exportable layouts</li>
+    </ul>
+  </description>
+  <developer id="io.github.blueberrycongee">
+    <name>blueberrycongee</name>
+  </developer>
+  <url type="homepage">https://termcanvas.dev</url>
+  <url type="bugtracker">https://github.com/blueberrycongee/termcanvas/issues</url>
+  <url type="donation">https://github.com/sponsors/blueberrycongee</url>
+  <url type="vcs-browser">https://github.com/blueberrycongee/termcanvas</url>
+  <screenshots>
+    <screenshot type="default">
+      <caption>TermCanvas canvas view with multiple terminals arranged spatially</caption>
+      <image>https://raw.githubusercontent.com/blueberrycongee/termcanvas/main/docs/hero-canvas.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>TermCanvas Hub with knowledge graph and session sidebar</caption>
+      <image>https://raw.githubusercontent.com/blueberrycongee/termcanvas/main/docs/hero-hub.png</image>
+    </screenshot>
+  </screenshots>
+  <categories>
+    <category>Development</category>
+    <category>Utility</category>
+  </categories>
+  <keywords>
+    <keyword>terminal</keyword>
+    <keyword>canvas</keyword>
+    <keyword>developer-tools</keyword>
+    <keyword>git</keyword>
+  </keywords>
+  <releases>
+    <release version="0.39.8" date="2026-05-01"/>
+  </releases>
+  <content_rating type="oars-1.1"/>
+  <launchable type="desktop-id">termcanvas.desktop</launchable>
+  <provides>
+    <modalias>termcanvas.desktop</modalias>
+  </provides>
+  <custom>
+    <value key="Purism::form_factor">workstation</value>
+    <value key="KDE::supported">true</value>
+  </custom>
+</component>
