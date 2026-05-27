@@ -1,7 +1,7 @@
 pkgbase = manhuagui-downloader
 	pkgdesc = 漫画柜 manhuagui 看漫画 下载器，带图形界面，支持下载隐藏内容、导出PDF
-	pkgver = 0.4.2
-	pkgrel = 5
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/lanyeeee/manhuagui-downloader
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = manhuagui-downloader
 	makedepends = git
 	makedepends = pnpm
 	makedepends = patchelf
+	makedepends = nodejs-lts
 	depends = cairo
 	depends = gcc-libs
 	depends = gdk-pixbuf2
@@ -17,16 +18,15 @@ pkgbase = manhuagui-downloader
 	depends = glibc
 	depends = gtk3
 	depends = hicolor-icon-theme
-	depends = librsvg
 	depends = libsoup3
-	depends = libappindicator-gtk3
+	depends = openssl
 	depends = webkit2gtk-4.1
 	provides = manhuagui-downloader
 	conflicts = manhuagui-downloader
 	options = !debug
 	options = !strip
 	options = !lto
-	source = manhuagui-downloader-0.4.2.tar.gz::https://github.com/lanyeeee/manhuagui-downloader/archive/refs/tags/v0.4.2.tar.gz
-	sha256sums = abcfc58a4281c0d02d9ba7554affc652c7bfe5a19137798876c3fcc915f86269
+	source = manhuagui-downloader::git+https://github.com/lanyeeee/manhuagui-downloader.git#tag=v0.5.0
+	sha256sums = 9df27a8d17c8f30df1942e6cefc45d7c84349c5922e4163e638790cf7c71ac88
 
 pkgname = manhuagui-downloader
