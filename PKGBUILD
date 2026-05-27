@@ -17,13 +17,13 @@ optdepends=('libnotify: for desktop notifications' 'wl-clipboard: for Wayland cl
 install=kcd.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bethropolis/kcd/releases/download/v${pkgver}/kcd_${pkgver}_linux_aarch64.tar.gz")
-sha256sums_aarch64=('a30a0f611a0391b4fc54f1a6d79d7e6f5c429cc0a9e7383c0bdbdc0c8bce0d04')
+sha256sums_aarch64=('b13938437408757c5167652c23d6803360fd55dabf8b63bea0e7a775ffc22069')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/bethropolis/kcd/releases/download/v${pkgver}/kcd_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('52e4e41053e0a117f6a823b2a5705564659f12120e330230f1b3c8812085f719')
+sha256sums_armv7h=('9b867bd6abd9f1cc9e27d548639b9598d2447b803dff2a40d53bf619ddf9be0f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bethropolis/kcd/releases/download/v${pkgver}/kcd_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('ca823a1ebbee315f73499712774fff1add77992ef821f5405f452eefb2a130ee')
+sha256sums_x86_64=('65c6bf7406291d1025ac55706d0d9cf2ed5a69d99a1c80f9bfcdcea4c79f2493')
 
 package() {
   install -Dm755 "./kcd" "${pkgdir}/usr/bin/kcd"
