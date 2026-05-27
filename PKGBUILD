@@ -43,7 +43,7 @@ options=(
   staticlibs
 )
 _tag=14d5ddefede18b29eb0f2ea918c79861a5211177
-source=(git+https://github.com/dotnet/dotnet.git#tag=${_tag})
+source=(git+https://github.com/dotnet/dotnet.git#tag=v${pkgver/.*.sdk/.0.})
 b2sums=('006cddcd256da821c58d056a9d6716a02f830ac90105d2241b51e02da048dca1d4b0140d222a11250b305ee9ca23816e0a7498944264d4024692f8089d187704')
 
 prepare() {
@@ -60,27 +60,6 @@ prepare() {
     ln -sf /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz prereqs/packages/archive/
   fi
   ./prep-source-build.sh
-}
-
-pkgver() {
-  cd dotnet
-
-  if [[ $(git describe --tags) != v9.0.* ]]; then
-    msg "Invalid SDK version"
-    exit 1
-  fi
-
-  local _standardver=$(xmllint --xpath "//*[local-name()='NETStandardLibraryRefPackageVersion']/text()" src/sdk/eng/Versions.props)
-
-  if [[ $_standardver != 2.1.0 ]]; then
-    msg "Invalid Standard version"
-    exit 1
-  fi
-
-  local _sdkver=$(xmllint --xpath "//*[local-name()='VersionSDKMinor']/text()" src/sdk/eng/Versions.props)$(xmllint --xpath "//*[local-name()='VersionFeature']/text()" src/sdk/eng/Versions.props)
-  local _runtimever=$(xmllint --xpath "//*[local-name()='ProductVersion']/text()" src/runtime/eng/Versions.props)
-
-  echo "${_runtimever}.sdk${_sdkver}"
 }
 
 build() {
