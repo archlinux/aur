@@ -1,15 +1,14 @@
 pkgname=tb-tdl
-pkgver=0.4.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Terminal based to-do list"
 arch=('any')
 url="https://github.com/nicitel3333/tb-tdl"
 license=('MIT')
-depends=('python' 'python-pipx')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-depends=('python' 'python-textual')
+depends=('python' 'python-textual' 'python-requests')
 
 package() {
   cd "$srcdir/tb-tdl-$pkgver"
