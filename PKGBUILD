@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: JoyL <2936221683@qq.com>
 pkgname=reasonix-desktop-bin
 pkgver=0.52.0
 pkgrel=1
