@@ -4,7 +4,7 @@
 _authorname=batrachianai
 _appname=toad
 pkgname=${_appname}-ai
-pkgver=0.6.18
+pkgver=0.6.20
 pkgrel=1
 pkgdesc='A unified interface for AI in your terminal'
 
@@ -21,7 +21,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 options=('!debug')
 
 source=("https://github.com/${_authorname}/${_appname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('890fc286305e89d4a39bb026816db737fc94493ffa226f0ff95d43b82ac6b3b8f580e5d67793244e53f5c3d9973b68a9cb1a4f809b9753185fa6e0f74f848c75')
+b2sums=('a4b5c4524c3a8ed7120acc708469417d594203a2b1c25e24266a385bc61c6802c74281925a8ec015694ec909060233e9ba855b5e70381a3e5c7c7aba57654eb8')
 
 prepare() {
     cd "${_appname}-${pkgver}"
