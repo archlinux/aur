@@ -1,0 +1,31 @@
+pkgbase = libmpcdec-znver4-git
+	pkgdesc = Musepack SV8 encoder/decoder with FAST_MATH fixes (git version, ZNVER4 optimized)
+	pkgver = 15feced
+	pkgrel = 1
+	url = https://github.com/tatsuz/musepack
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	conflicts = libmpcdec
+	conflicts = libmpcdec-git
+	conflicts = musepack-tools-git
+	source = git+https://github.com/tatsuz/musepack.git
+	source = musepack-fixes.patch
+	sha256sums = SKIP
+	sha256sums = e906fbebb619672c4b945fc70101d41945e4628ba97d85b7c8bf4579b3c41a3f
+
+pkgname = libmpcdec-znver4-git
+	pkgdesc = Musepack decoding library (ZNVER4 optimized git version)
+	depends = glibc
+	provides = libmpcdec
+	conflicts = libmpcdec
+	conflicts = libmpcdec-git
+
+pkgname = musepack-tools-znver4-git
+	pkgdesc = Musepack SV8 encoder/decoder tools (ZNVER4 optimized git version)
+	depends = glibc
+	depends = libmpcdec-znver4-git
+	conflicts = musepack-tools-git
