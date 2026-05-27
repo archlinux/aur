@@ -1,0 +1,14 @@
+pkgbase = vss-text
+	pkgdesc = A high level Unicode text processing library for Ada.
+	pkgver = 27.0w
+	pkgrel = 1
+	url = https://github.com/AdaCore/vss-text
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = gprbuild
+	depends = xmlada
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2026/vss-text-src.tar.gz
+	sha256sums = 1774e982bc133644b22f4747cd817a70e038e80b59d9ff9ef0da5689439e861c
+
+pkgname = vss-text
