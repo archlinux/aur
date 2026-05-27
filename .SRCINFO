@@ -1,6 +1,6 @@
 pkgbase = aur-guard-bin
 	pkgdesc = Security scanner for AUR PKGBUILDs — detects malicious patterns before makepkg runs (precompiled)
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/prietus/aur-guard
 	install = aur-guard.install
@@ -12,9 +12,9 @@ pkgbase = aur-guard-bin
 	provides = aur-guard
 	conflicts = aur-guard
 	conflicts = aur-guard-git
-	source_x86_64 = https://github.com/prietus/aur-guard/releases/download/v0.1.6/aur-guard-0.1.6-x86_64-linux.tar.gz
-	sha256sums_x86_64 = a22dd3e34865bc189f43a8b3888bfa6d097659eac1a439286fb6f3afd0ee88c4
-	source_aarch64 = https://github.com/prietus/aur-guard/releases/download/v0.1.6/aur-guard-0.1.6-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 8d3446dd9b4b652f594a64c6ef30cf9ffa1c1102a825551700d1a23d6ff79180
+	source_x86_64 = https://github.com/prietus/aur-guard/releases/download/v0.1.7/aur-guard-0.1.7-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 8fc51f7f4e65fc8a69f641df071bf5ebbbd7bb87212afd2448a40f1a42a9b108
+	source_aarch64 = https://github.com/prietus/aur-guard/releases/download/v0.1.7/aur-guard-0.1.7-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 98071a4e9d9a2fd41b91dc7f6d18189926249886db8281b30ee706edec3196d6
 
 pkgname = aur-guard-bin

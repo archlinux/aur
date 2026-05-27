@@ -1,7 +1,7 @@
 # Maintainer: prietus <prietus@live.com>
 pkgname=aur-guard-bin
 _pkgname=aur-guard
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Security scanner for AUR PKGBUILDs — detects malicious patterns before makepkg runs (precompiled)"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_aarch64=("${_release}/${_pkgname}-${pkgver}-aarch64-linux.tar.gz")
 # from there, or run `updpkgsums` after publishing the GitHub release.
 # Leaving them as SKIP defeats the integrity check and would even be flagged
 # by aur-guard itself (rule AG080).
-sha256sums_x86_64=('a22dd3e34865bc189f43a8b3888bfa6d097659eac1a439286fb6f3afd0ee88c4')
-sha256sums_aarch64=('8d3446dd9b4b652f594a64c6ef30cf9ffa1c1102a825551700d1a23d6ff79180')
+sha256sums_x86_64=('8fc51f7f4e65fc8a69f641df071bf5ebbbd7bb87212afd2448a40f1a42a9b108')
+sha256sums_aarch64=('98071a4e9d9a2fd41b91dc7f6d18189926249886db8281b30ee706edec3196d6')
 
 package() {
     local stage="${_pkgname}-${pkgver}-${CARCH}-linux"
