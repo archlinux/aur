@@ -4,7 +4,7 @@
 pkgname=island-git
 _n=${pkgname%-git}
 pkgver=r40.05a9d69
-pkgrel=1
+pkgrel=2
 pkgdesc="Landlock LSM powered, policy based sandboxing tool"
 arch=(x86_64 aarch64)
 url=https://github.com/landlock-lsm/island
