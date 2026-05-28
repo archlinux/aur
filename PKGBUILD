@@ -103,6 +103,8 @@ EOF
   _alias_blob "tls_clienthello_chat_deepseek_com.bin" "tls_clienthello_www_google_com.bin"
   _alias_blob "tls_clienthello_gosuslugi_ru.bin" "tls_clienthello_www_google_com.bin"
   _alias_blob "tls_clienthello_iana_org.bin" "tls_clienthello_www_google_com.bin"
+  _alias_blob "tls_clienthello_4pda_to.bin" "tls_clienthello_www_google_com.bin"
+  _alias_blob "tls_clienthello_max_ru.bin" "tls_clienthello_www_google_com.bin"
   _alias_blob "tls_clienthello_sberbank_ru.bin" "tls_clienthello_www_google_com.bin"
   _alias_blob "tls_clienthello_vk_com.bin" "tls_clienthello_www_google_com.bin"
   _alias_blob "tls_clienthello_vk_com_kyber.bin" "tls_clienthello_www_google_com.bin"
