@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=joker
-pkgver=1.7.2
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Small Clojure interpreter, linter, and formatter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/candid82/joker"
@@ -10,7 +10,7 @@ license=('EPL-1.0')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5946755e194e44dbf4b79e35d47b4f17be03804fe6a9633f1c0a279f22183c16')
+sha256sums=('a9fc641ff964854d575c5dd133c4a46825b509938b864c115df5b17b00221a80')
 
 prepare() {
     export GOPATH="$srcdir"
