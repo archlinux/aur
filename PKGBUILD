@@ -2,26 +2,26 @@
 
 _name=genai-prices
 pkgname=python-$_name
-pkgver=0.0.61
+pkgver=0.0.62
 pkgrel=1
 pkgdesc='Calculate prices for calling LLM inference APIs.'
 arch=('any')
 url='https://github.com/pydantic/genai-prices'
 license=('MIT')
-depends=('python' 'python-httpx' 'python-pydantic')
+depends=('python' 'python-httpx2' 'python-pydantic')
 makedepends=('python-uv-build' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-anyio' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-recording' 'python-pydantic-settings' 'python-rich' 'python-rich-argparse' 'python-boto3' 'python-ruamel-yaml')
 optdepends=('pydantic-settings: cli' 'python-rich: cli' 'python-rich-argparse: cli')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6e15eb2136e38cb8d5d4a977224a32fdcac9f99267584cef39cb7442675e5ad3')
+sha256sums=('d4c532e961139e63186f28f053fb083fce73db43a6eaac9afa411414e3fa89a5')
 
 prepare() {
   # Fix ValidationError
   cd "$srcdir"/$_name-$pkgver
-  sed -i 's/no_color/color/g' packages/python/genai_prices/_cli_impl.py
-  sed -i 's/no-color/color/g' packages/python/genai_prices/_cli_impl.py
-  sed -i '137s/False/True/' packages/python/genai_prices/_cli_impl.py
-  sed -i 's/not args.color/args.color/g' packages/python/genai_prices/_cli_impl.py
+  sed -i 's/no_color/color/g' packages/python/genai_prices/_cli.py
+  sed -i 's/no-color/color/g' packages/python/genai_prices/_cli.py
+  sed -i '137s/False/True/' packages/python/genai_prices/_cli.py
+  sed -i 's/not args.color/args.color/g' packages/python/genai_prices/_cli.py
   sed -i 's/--no-color/--color/g' tests/test_cli.py
 }
 
