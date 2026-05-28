@@ -1,7 +1,7 @@
 # Maintainer: kawuchuu <kawuchuu at gmail dot com>
 pkgname=firetail-bin
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Firetail music player"
 arch=('x86_64')
 url="https://github.com/kawuchuu/firetail"
