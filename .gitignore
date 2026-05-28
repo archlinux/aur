@@ -1,4 +1,5 @@
 pkg
 src
 example.jsonnet
+reaction.service
 *.tar.*
