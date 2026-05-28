@@ -11,7 +11,7 @@ depends=(
   'python-requests'
   'python-colorama'
   'python-pyyaml'
-  'python-python-dateutil'
+  'python-dateutil'
 )
 optdepends=(
   'python-lxml: web application support'
