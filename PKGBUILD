@@ -1,7 +1,7 @@
 # Maintainer: Whyme Lyu <callme5long@gmail.com>
 
 pkgname=debcraft
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Easy, fast and secure way to build Debian packages"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('bash' 'docker')  # For podman users: install podman-docker
 makedepends=('help2man')
 
 source=("$pkgname-$pkgver.tar.bz2::https://salsa.debian.org/debian/debcraft/-/archive/debian/$pkgver/debcraft-debian-$pkgver.tar.bz2?ref_type=tags")
-b2sums=('396a88ae9e0e272ae55afe8ff479374e9b6a2d0380227a3015fbb0f55457a05ec64889c9c62f36184962c98154b48174e71814e7f9b0504b3fadf6d1674a9209')
+b2sums=('9a339e6f8fee0b36dea500539e03f0ce3632cdde8f332be9da2bc1db2f3b1c5b74a4237aa12f950bf867985ce4a4f60141c7418b92b0e19b802d6e77d0f68e7d')
 
 # About check():
 # Upstream runs shellcheck and codespell. Neither of which
