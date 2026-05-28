@@ -1,0 +1,19 @@
+pkgbase = tiny-ping-git
+	pkgdesc = Small Asynchronous ICMP library and CLI
+	pkgver = 0.7.1.r0.ga1d7e59
+	pkgrel = 1
+	url = https://github.com/Fierthraix/tiny-ping
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = tiny-ping
+	conflicts = tiny-ping
+	conflicts = tiny-ping-bin
+	source = tiny-ping::git+https://github.com/Fierthraix/tiny-ping.git
+	sha256sums = SKIP
+
+pkgname = tiny-ping-git
