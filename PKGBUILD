@@ -2,8 +2,8 @@
 # Maintainer: cordx56 <cordx56@cordx.cx>
 
 pkgname=rustowl
-pkgver=0.3.4
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='Visualize Ownership and Lifetimes in Rust'
 url='https://github.com/cordx56/rustowl'
 license=('MPL-2.0')
@@ -12,12 +12,12 @@ depends=()
 conflicts=('rustowl-git' 'rustowl-bin')
 arch=('any')
 source=("https://github.com/cordx56/rustowl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fa120643aeb48061eb32a7c993dabff88aa4e9d0b32f8ab0f3289b3fb2cf5744')
+sha256sums=('5d203a04ef54512bd8c8bfcd54690c9022c0659710aac5b63125df0d7f3e893e')
 
 prepare() {
     cd rustowl-${pkgver}
     export RUSTC_BOOTSTRAP=1
-    export RUSTUP_TOOLCHAIN=1.87.0
+    export RUSTUP_TOOLCHAIN=1.89.0
     rustup component add rust-src rustc-dev llvm-tools
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -26,7 +26,7 @@ build() {
     cd rustowl-${pkgver}
     export CARGO_TARGET_DIR=target
     export RUSTC_BOOTSTRAP=1
-    export RUSTUP_TOOLCHAIN=1.87.0
+    export RUSTUP_TOOLCHAIN=1.89.0
     export RUSTOWL_RUNTIME_DIRS=/opt/rustowl
     cargo build --frozen --release --all-features --target $(rustc --print=host-tuple)
 }
@@ -34,7 +34,7 @@ build() {
 check() {
     cd rustowl-${pkgver}
     export RUSTC_BOOTSTRAP=1
-    export RUSTUP_TOOLCHAIN=1.87.0
+    export RUSTUP_TOOLCHAIN=1.89.0
     cargo test --frozen --all-features
 }
 
@@ -58,4 +58,3 @@ package() {
     install -Dm644 "rustowl-build-time-out/completions/rustowl.elv" "${pkgdir}/usr/share/elvish/completions/rustowl.elv"
     install -Dm644 "rustowl-build-time-out/completions/_rustowl.ps1" "${pkgdir}/usr/share/powershell/Modules/Rustowl/_rustowl.ps1"
 }
-
