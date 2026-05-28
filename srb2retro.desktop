@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SRB2 Retro
+Comment=Updated fork of Sonic Robo Blast 2 2.0.7
+Exec=srb2retro
+Icon=srb2retro
+Actions=OpenGL;Software;
+Terminal=false
+Categories=Game;
+
+[Desktop Action OpenGL]
+Name=OpenGL renderer
+Exec=srb2retro -opengl
+
+[Desktop Action Software]
+Name=Software renderer
+Exec=srb2retro -software
