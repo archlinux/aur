@@ -1,29 +1,116 @@
+# Version at which data dir moved from ~/.deadsync/ to $XDG_DATA_HOME/deadsync/
+_XDG_MIGRATION_VER="0.3.826"
+# Version at which the in-app updater was introduced
+_UPDATER_SINCE="0.4.164"
+
+_data_dir() {
+    echo "${XDG_DATA_HOME:-${HOME}/.local/share}/deadsync"
+}
+
+# Migrate ~/.deadsync/ -> $XDG_DATA_HOME/deadsync/ if upgrading from before
+# 0.3.826 and the old directory still exists.
+_migrate_data_dir() {
+    local _old_dir="${HOME}/.deadsync"
+    local _new_dir
+    _new_dir=$(_data_dir)
+
+    if [[ -d "${_old_dir}" && ! -d "${_new_dir}" ]]; then
+        echo ">>> Migrating data directory to XDG path:"
+        echo ">>>   ${_old_dir} -> ${_new_dir}"
+        mkdir -p "$(dirname "${_new_dir}")"
+        mv "${_old_dir}" "${_new_dir}"
+    elif [[ -d "${_old_dir}" && -d "${_new_dir}" ]]; then
+        echo ">>> WARNING: Both old and new data directories exist."
+        echo ">>>   Old: ${_old_dir}"
+        echo ">>>   New: ${_new_dir}"
+        echo ">>> Automatic migration skipped to prevent data loss."
+        echo ">>> Please manually merge your data into the new path."
+    fi
+}
+
+# Write updater_install_enabled = false into the user's deadsync.ini.
+# Idempotent — safe to call regardless of current ini state.
+_disable_updater() {
+    local _ini
+    _ini="$(_data_dir)/deadsync.ini"
+    mkdir -p "$(_data_dir)"
+
+    if [[ ! -f "${_ini}" ]]; then
+        printf '[Updater]\nupdater_install_enabled = false\n' > "${_ini}"
+        return
+    fi
+
+    if grep -q '^updater_install_enabled' "${_ini}" 2>/dev/null; then
+        sed -i 's/^updater_install_enabled\s*=.*/updater_install_enabled = false/' "${_ini}"
+    else
+        printf '\n[Updater]\nupdater_install_enabled = false\n' >> "${_ini}"
+    fi
+}
+
+# Returns 0 (true) if $1 < $2 using pacman's vercmp.
+_ver_lt() {
+    [[ $(vercmp "$1" "$2") -lt 0 ]]
+}
+
 post_install() {
-    echo "DeadSync has been installed to /opt/deadsync."
-    echo "Run 'deadsync' from a terminal or launch it from your application menu."
+    local _ver
+    _ver=$(grep -m1 '^pkgver=' /opt/deadsync/PKGBUILD 2>/dev/null | cut -d= -f2 || true)
+
     echo
-    echo "Game data and configuration can be found in \$XDG_DATA_HOME/deadsync after first launch"
+    echo " ╔═══════════════════════════════════════════════╗"
+    echo " ║              DeadSync installed               ║"
+    echo " ╚═══════════════════════════════════════════════╝"
+    echo
+    echo "  Installed to  : /opt/deadsync"
+    echo "  User data     : $(_data_dir)"
+    echo "  Songs         : $(_data_dir)/songs/"
+    echo
+    echo "  Launch from your application menu or run:"
+    echo "    \$ deadsync"
+    echo
+    # Fresh install — no existing config, always seed the updater flag.
+    _disable_updater
+    echo "  Note: in-app updates have been disabled in $(_data_dir)/deadsync.ini"
+    echo "  Updates are managed by pacman / your AUR helper."
+    echo
+    echo "  Changelog:"
+    echo "    https://github.com/pnn64/deadsync/releases/tag/v${_ver}"
+    echo
 }
 
 post_upgrade() {
-    local _breaking_ver="0.3.826"
+    local _ver _old_ver
+    _ver=$(grep -m1 '^pkgver=' /opt/deadsync/PKGBUILD 2>/dev/null | cut -d= -f2 || true)
+    _old_ver="$2"
 
-    if [ $(vercmp "$2" "$_breaking_ver") -lt 0 ]; then
-        local _old_dir="$HOME/.deadsync"
-        local _xdg_base="${XDG_DATA_HOME:-$HOME/.local/share}"
-        local _new_dir="$_xdg_base/deadsync"
-  
-        if [ -d "$_old_dir" ] && [ ! -d "$_new_dir" ]; then
-            echo ">>> Deadsync version 0.3.826+ uses XDG_DATA_HOME."
-            echo ">>> Migrating data: $_old_dir -> $_new_dir"
-            mkdir -p "$_xdg_base"
-            mv "$_old_dir" "$_new_dir"
-        elif [ -d "$_old_dir" ] && [ -d "$_new_dir" ]; then
-            echo ">>> WARNING: Both $_old_dir and $_new_dir exist."
-            echo ">>> Automatic migration skipped to prevent data loss."
-            echo ">>> Please manually merge your data into $_new_dir"
-        fi
+    echo
+    echo " ╔═══════════════════════════════════════════════╗"
+    echo " ║              DeadSync upgraded                ║"
+    echo " ╚═══════════════════════════════════════════════╝"
+    echo
+    echo "  Installed to  : /opt/deadsync"
+    echo "  User data     : $(_data_dir)"
+    echo
+
+    # Step 1 — XDG data dir migration (< 0.3.826)
+    # Must run before the updater check so the ini ends up in the right place.
+    if _ver_lt "${_old_ver}" "${_XDG_MIGRATION_VER}"; then
+        _migrate_data_dir
+        echo
     fi
-    
-    post_install
+
+    # Step 2 — Disable in-app updater (< 0.4.164)
+    # Only act if upgrading from before the updater was introduced — if the
+    # key already exists the user may have made a conscious choice, leave it.
+    if _ver_lt "${_old_ver}" "${_UPDATER_SINCE}"; then
+        _disable_updater
+        echo "  Note: in-app updates have been disabled in $(_data_dir)/deadsync.ini"
+        echo "  (upgrade from v${_old_ver}, before the updater was introduced)."
+        echo "  Updates are managed by pacman / your AUR helper."
+        echo
+    fi
+
+    echo "  Changelog:"
+    echo "    https://github.com/pnn64/deadsync/releases/tag/v${_ver}"
+    echo
 }

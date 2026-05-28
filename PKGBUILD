@@ -22,17 +22,26 @@ makedepends=(
 options=('!lto' '!debug' '!strip')
 install="${pkgname}.install"
 
-pkgver=0.4.143
+pkgver=0.4.265
 pkgrel=1
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pnn64/deadsync/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('29f261edc9270afa73c5423b851954941bc9a069285febc0d0ff9d7db2b4a503')
+sha256sums=('5668093257389821ce46d8d411dbbe99904f8970c63f6a152c3e2b00179b29e5')
 
 prepare() {
     cd "${srcdir}/deadsync-${pkgver}"
 
+    # The xcb crate gates its screensaver module behind the "screensaver"
+    # feature flag (xcb >= 1.7.0) but deadsync's Cargo.toml does not request
+    # it, causing a compile error.  Inject the feature with `cargo add` before
+    # fetching dependencies.  Remove this block once fixed upstream.
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo add xcb --features screensaver
+
+    # Cargo.lock will have been updated by the above so we use --target
+    # without --locked here.  The build step still uses --frozen since no
+    # further changes will be made between prepare() and build().
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -40,6 +49,7 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    unset CFLAGS CXXFLAGS
 
     export RUSTFLAGS="${RUSTFLAGS} \
         --remap-path-prefix=${srcdir}=/build/source \
@@ -80,6 +90,7 @@ package() {
 exec /opt/deadsync/deadsync "$@"
 EOF
 
+
     install -Dm644 /dev/stdin \
         "${pkgdir}/usr/share/applications/deadsync.desktop" <<'EOF'
 [Desktop Entry]
@@ -92,11 +103,15 @@ Icon=deadsync
 Categories=Game;
 Keywords=ITG;StepMania;rhythm;dance;
 StartupNotify=true
-Actions=OpenDataDir;
+Actions=OpenConfigDir;OpenSongsDir;
 
-[Desktop Action OpenDataDir]
-Name=Open Data Directory
-Exec=xdg-open "$XDG_DATA_HOME/deadsync"
+[Desktop Action OpenConfigDir]
+Name=Open Config Directory
+Exec=sh -c 'DS="${XDG_DATA_HOME:-$HOME/.local/share}/deadsync"; mkdir -p "$DS" && xdg-open "$DS"'
+
+[Desktop Action OpenSongsDir]
+Name=Open Songs Directory
+Exec=sh -c 'DS="${XDG_DATA_HOME:-$HOME/.local/share}/deadsync/songs"; mkdir -p "$DS" && xdg-open "$DS"'
 EOF
 
     local _icondir="assets/graphics/icon"
