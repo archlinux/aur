@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=socketcan-rs-git
-pkgver=3.3.0.r54.gd7942d5
+pkgver=3.5.0.r36.g258f97a
 pkgrel=1
 pkgdesc="Linux SocketCAN access in Rust"
 arch=($CARCH)
@@ -13,7 +13,7 @@ replaces=()
 depends=(gcc-libs
     glibc)
 makedepends=(
-    cargo
+    rust
     git
     mold)
 checkdepends=()
@@ -34,6 +34,9 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+    cargo fetch --target host-tuple
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
