@@ -1,6 +1,6 @@
 pkgbase = capypdf
 	pkgdesc = Fully color-managed PDF generation library
-	pkgver = 0.19.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/jpakkane/capypdf
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = capypdf
 	depends = libjpeg
 	depends = freetype2
 	depends = libtiff
-	source = https://github.com/jpakkane/capypdf/releases/download/0.19.0/capypdf-0.19.0.tar.xz
-	sha256sums = 620c8e0a44a97880ac49a89530435aac3839e82676e9c263866154449ee7c203
+	source = https://github.com/jpakkane/capypdf/releases/download/0.21.0/capypdf-0.21.0.tar.xz
+	sha256sums = b269a7361252b737f47b744f5329ba63f29af5bd3c46acbf7d4a4e074661f8a1
 
 pkgname = capypdf
