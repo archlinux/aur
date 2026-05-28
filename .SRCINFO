@@ -1,7 +1,7 @@
 pkgbase = koito
 	pkgdesc = Modern, themeable scrobbler that you can use with any program that scrobbles to ListenBrainz
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://koito.io/
 	install = koito.install
 	arch = x86_64
@@ -10,18 +10,18 @@ pkgbase = koito
 	makedepends = npm
 	makedepends = yarn
 	makedepends = nodejs>=16
+	makedepends = corepack
 	depends = libvips
 	depends = libheif
 	depends = imagemagick
 	depends = openslide
 	depends = poppler-glib
-	optdepends = postgresql: database storage backend
 	backup = etc/koito.env
-	source = koito-0.2.1.tar.gz::https://github.com/gabehf/Koito/archive/refs/tags/v0.2.1.tar.gz
+	source = koito-0.3.1.tar.gz::https://github.com/gabehf/Koito/archive/refs/tags/v0.3.1.tar.gz
 	source = koito.service
 	source = koito.env
-	sha256sums = e0afcc61a315767040eea58ff9c32a9cd76fe03134a012a35bf89c550c311c91
-	sha256sums = 512c7911ef7d04561ddc0ccc70d240617be60cdedbfab3bfd43b2ee80d1d43bb
-	sha256sums = e001fae2ecb86bfc5425f4ca2a1c4bcee7522a63406cc1e218a901770197474d
+	sha256sums = 0ceb6f933fe8000eab711f565f875a55aebd175038fee8abf99931062cb6dbdb
+	sha256sums = f82dc31307d11b402dc1a3466aee6b5cb8a4560105e3595ef411e7f4e1fdea43
+	sha256sums = d9cc7b0adcf4ee0094388697ddd5645cc8c76252985fd71a03c1d4d7a904bcfd
 
 pkgname = koito

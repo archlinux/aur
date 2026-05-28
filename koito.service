@@ -1,7 +1,7 @@
 [Unit]
 Description=Koito ListenBrainz Scrobbler
-After=network.target network-online.target postgresql.service
-Wants=network-online.target postgresql.service
+After=network.target network-online.target
+Wants=network-online.target
 
 [Install]
 WantedBy=multi-user.target

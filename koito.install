@@ -2,10 +2,7 @@ post_install() {
   cat <<'EOF'
 NOTE: Before starting Koito, complete these steps:
 
-  1) Edit /etc/koito.env to configure your environment variables:
-       • KOITO_ALLOWED_HOSTS
-       (Note: Koito now uses a local SQLite database by default).
-
+  1) Edit /etc/koito.env to configure your environment variables (e.g., KOITO_ALLOWED_HOSTS).
   2) Reload systemd and enable/start the service:
        # systemctl daemon-reload
        # systemctl enable --now koito.service
@@ -18,15 +15,27 @@ post_upgrade() {
   if [[ $(vercmp "$2" "0.2.1") -lt 0 ]]; then
     cat <<'EOF'
 ========================================================================
-                             IMPORTANT
+                            CRITICAL WARNING
 ========================================================================
-Koito v0.2.1 is a bridge release that migrates your database backend
-from PostgreSQL to SQLite.
+You are upgrading from a version older than v0.2.1.
+Upstream has ENTIRELY removed PostgreSQL code in this release.
 
-PLEASE BACKUP YOUR POSTGRESQL DATA BEFORE RESTARTING THE SERVICE!
+You MUST first downgrade/install v0.2.1 to automatically migrate your
+database from PostgreSQL to SQLite. Failure to do so will result in
+immediate service failure and potential data loss.
+========================================================================
+EOF
+  fi
 
-To ensure automatic migration succeeds, make sure your
-KOITO_DATABASE_URL is still properly set in /etc/koito.env.
+  if [[ $(vercmp "$2" "0.3.1") -lt 0 ]]; then
+    cat <<'EOF'
+========================================================================
+                         IMAGE CACHE MIGRATION
+========================================================================
+Koito v0.3.1 introduces a brand-new image cache system.
+
+While tested, there is a minor risk of data/image loss during migration.
+PLEASE BACKUP YOUR DATA FOLDER (/var/lib/koito) BEFORE RESTARTING!
 ========================================================================
 EOF
   fi
