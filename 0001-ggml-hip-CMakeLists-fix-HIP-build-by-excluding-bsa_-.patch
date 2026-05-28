@@ -1,0 +1,40 @@
+From 3503f33aa0ae63d0138f4d12b5c642ec45d929cc Mon Sep 17 00:00:00 2001
+From: Jakov Petrina <jkv.petrina@gmail.com>
+Date: Thu, 28 May 2026 21:32:15 +0200
+Subject: [PATCH] ggml-hip: CMakeLists: fix HIP build by excluding bsa_*.cu by
+ default
+
+This fixes the following build errors:
+
+```
+.../ggml/src/ggml-cuda/bsa_launcher.cu:5:10: fatal error: 'cuda_bf16.h' file not found
+    5 | #include <cuda_bf16.h>
+      |          ^~~~~~~~~~~~~
+1 error generated when compiling for gfx1030.
+
+.../ggml/src/ggml-cuda/bsa_fwd_inst.cu:9:10: fatal error: 'flash_fwd_block_hdim128_bf16_sm80.cu' file not found
+    9 | #include "flash_fwd_block_hdim128_bf16_sm80.cu"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated when compiling for gfx1030.
+```
+
+Signed-off-by: Jakov Petrina <jkv.petrina@gmail.com>
+---
+ ggml/src/ggml-hip/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ggml/src/ggml-hip/CMakeLists.txt b/ggml/src/ggml-hip/CMakeLists.txt
+index 062c95750..41d7f493e 100644
+--- a/ggml/src/ggml-hip/CMakeLists.txt
++++ b/ggml/src/ggml-hip/CMakeLists.txt
+@@ -61,6 +61,7 @@ file(GLOB   GGML_HEADERS_ROCM "../ggml-cuda/*.cuh")
+ list(APPEND GGML_HEADERS_ROCM "../../include/ggml-cuda.h")
+ 
+ file(GLOB   GGML_SOURCES_ROCM "../ggml-cuda/*.cu")
++list(FILTER GGML_SOURCES_ROCM EXCLUDE REGEX "../ggml-cuda/bsa_.*\\.cu$")
+ file(GLOB   SRCS "../ggml-cuda/template-instances/fattn-tile*.cu")
+ list(APPEND GGML_SOURCES_ROCM ${SRCS})
+ file(GLOB   SRCS "../ggml-cuda/template-instances/fattn-mma*.cu")
+-- 
+2.54.0
+
