@@ -1,0 +1,18 @@
+pkgbase = ghpending
+	pkgdesc = Watch GitHub repos for open issues and pull requests at a glance
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/akitaonrails/ghpending
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = ca-certificates
+	conflicts = ghpending-bin
+	options = !debug
+	source = ghpending-0.2.2.tar.gz::https://github.com/akitaonrails/ghpending/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 1dcba72cf38dd60d24c72e259f651497ce5a6cb37335989539eb234306d57433
+
+pkgname = ghpending
