@@ -7,7 +7,7 @@
 
 pkgname=roomeqwizard-beta
 pkgver=5.40.beta.126
-pkgrel=1
+pkgrel=2
 pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
 arch=('x86_64' 'aarch64')
 options=('!debug')
@@ -88,7 +88,7 @@ package() {
       "$srcdir/usr/share/java/$pkgname/spark-swagger.conf"
 
   install -T -m 755 "$srcdir/usr/share/java/$pkgname/${pkgname%-beta}" "$pkgdir/usr/share/java/$pkgname/$pkgname"
-  ln -s "$pkgdir/usr/share/java/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/usr/share/java/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -T -m 644 "$srcdir/usr/share/java/$pkgname/EULA.html" "$pkgdir/usr/share/licenses/$pkgname/EULA.html"
   install -T -m 644 "$srcdir/usr/share/java/$pkgname/REW.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
