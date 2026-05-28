@@ -2,7 +2,7 @@
 
 _pkgname=surrealql-language-server
 pkgname=surrealql-language-server-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="SurrealQL language server for editor integration (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=(surrealql-language-server)
 conflicts=(surrealql-language-server)
 source_x86_64=("$_pkgname-$pkgver-linux-amd64::https://github.com/surrealdb/$_pkgname/releases/download/v$pkgver/$_pkgname-linux-amd64")
 source_aarch64=("$_pkgname-$pkgver-linux-arm64::https://github.com/surrealdb/$_pkgname/releases/download/v$pkgver/$_pkgname-linux-arm64")
-sha256sums_x86_64=('1c2cc604d0145a11ad5ebdd83bba6c4fd62d0a2e3567c457c58ef8cfc1b378bf')
-sha256sums_aarch64=('4ce4aad66b27bce0e9ddbd9a1e1dddf733a7715b1f99e693e2f7be7cdf9f802a')
+sha256sums_x86_64=('9935ba74e79169e4f739e5b40aec3c48e5fd5c4ba3a7f2103b7052bbb48cbcda')
+sha256sums_aarch64=('504a0edc3a5f9d35823b11c5c4cb2fac849a2492a4c40e15e36f80f0cf47a31a')
 options=('!debug')
 
 package() {
