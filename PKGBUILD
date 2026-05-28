@@ -1,6 +1,6 @@
 pkgname=pingall-git
 _pkgname=pingall
-pkgver=2.1.4.r1.g9732c45
+pkgver=2.1.5.r0.gfbaf75d
 pkgrel=1
 pkgdesc='Ping everything you can reach'
 arch=('x86_64' 'aarch64')
