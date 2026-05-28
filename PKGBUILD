@@ -1,6 +1,6 @@
 # Maintainer: sbysb <sbysb@protonmail.com>
 pkgname=ouijit-bin
-pkgver=1.0.45
+pkgver=1.0.48
 pkgrel=1
 pkgdesc='Kanban terminal manager for CLI agent workflows with git worktree isolation'
 arch=('x86_64')
@@ -29,7 +29,7 @@ options=('!strip' '!debug')
 source=(
   "${pkgname}-${pkgver}.zip::https://github.com/ouijit/ouijit/releases/download/v${pkgver}/ouijit-linux-x64.zip"
 )
-sha256sums=('2303833263765f04fb2aa83479d0bd2d48aca91c7515833429ee52e3a6dfc890')
+sha256sums=('c012873f735db6d3754bbeb46b48189bd2aaf823915fbd36316c428d5aa5dced')
 
 package() {
   # Install app to /opt
