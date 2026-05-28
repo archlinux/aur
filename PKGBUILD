@@ -12,15 +12,23 @@ options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('2514271604bef98551a581ea96a4a6a189351da825cae7fd1dfc5a3762f3eb96')
 
+prepare() {
+    cd "$pkgname-v$pkgver"
+    export CARGO_HOME="$srcdir/cargo-home"
+    cargo fetch --locked
+}
+
 build() {
     cd "$pkgname-v$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export CARGO_HOME="$srcdir/cargo-home"
     cargo build --frozen --release --all-features
 }
 
 check() {
     cd "$pkgname-v$pkgver"
+    export CARGO_HOME="$srcdir/cargo-home"
     cargo test --frozen --all-features
 }
 
