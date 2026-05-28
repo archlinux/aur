@@ -1,15 +1,15 @@
 # Maintainer: artichoke <cmrtumilovic@gmail.com>
 pkgname=chpwd
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="Ultra-secure CLI password manager using Argon2id and AES-256-GCM"
+pkgdesc="Secure CLI password manager using Argon2id and AES-256-GCM"
 arch=('x86_64' 'aarch64')
 url="https://github.com/b0lbas/chpwd"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('692ded29f734a69c2067c3339ff1af444fe97eab6b66221133c38275962441b8')
+sha256sums=('c90f930426ece4caec6583b0d780a2d714632d38cbc7d66636492ff86439f20a')
 
 build() {
   cd "${pkgname}-${pkgver}"

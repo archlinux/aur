@@ -1,6 +1,6 @@
 pkgbase = chpwd
-	pkgdesc = Ultra-secure CLI password manager using Argon2id and AES-256-GCM
-	pkgver = 1.0.1
+	pkgdesc = Secure CLI password manager using Argon2id and AES-256-GCM
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/b0lbas/chpwd
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = chpwd
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = chpwd-1.0.1.tar.gz::https://github.com/b0lbas/chpwd/archive/v1.0.1.tar.gz
-	sha256sums = 692ded29f734a69c2067c3339ff1af444fe97eab6b66221133c38275962441b8
+	source = chpwd-1.0.2.tar.gz::https://github.com/b0lbas/chpwd/archive/v1.0.2.tar.gz
+	sha256sums = c90f930426ece4caec6583b0d780a2d714632d38cbc7d66636492ff86439f20a
 
 pkgname = chpwd
