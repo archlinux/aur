@@ -1,7 +1,7 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=hyprcorrect-git
 _pkgname=hyprcorrect
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Keyboard-driven desktop spelling and typo corrector (latest main)"
 arch=('x86_64' 'aarch64')
@@ -68,8 +68,12 @@ package() {
     install -Dm755 "target/release/hyprcorrect" "$pkgdir/usr/bin/hyprcorrect"
     install -Dm644 "packaging/hyprcorrect.desktop" \
         "$pkgdir/usr/share/applications/hyprcorrect.desktop"
-    install -Dm644 "crates/hyprcorrect-ui/assets/icons/svg/hyprcorrect.svg" \
+    install -Dm644 "assets/icons/hicolor/scalable/apps/hyprcorrect.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/hyprcorrect.svg"
+    for size in 16 22 24 32 48 64 128 256 512; do
+        install -Dm644 "assets/icons/hicolor/${size}x${size}/apps/hyprcorrect.png" \
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/hyprcorrect.png"
+    done
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
