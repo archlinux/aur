@@ -1,6 +1,6 @@
 pkgbase = meta-package-manager
 	pkgdesc = A wrapper around all package managers
-	pkgver = 6.5.0
+	pkgver = 6.5.1
 	pkgrel = 1
 	url = https://kdeldycke.github.io/meta-package-manager/
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = meta-package-manager
 	optdepends = yarn: support for Node packages
 	optdepends = yay: support for AUR packages
 	optdepends = zypper: support for RPM packages
-	source = git+https://github.com/kdeldycke/meta-package-manager.git#tag=v6.5.0
-	sha512sums = 570602d255752636a7eb2e581ccabc3aece713fded195a997b867c0f66c76fab7dd1ed073af555cd5ab266837fc65ddb1dadd9363441d7125c53d40e328623c8
+	source = git+https://github.com/kdeldycke/meta-package-manager.git#tag=v6.5.1
+	sha512sums = 0b3abf2d35e2f687c4e1ed94612472d7657f89088a5eceed3c3491139c00b2d54e3f04952477b5dcbcf390d8e8542d8a572ab100c73b03c4f5a2e440aaa5ddf9
 
 pkgname = meta-package-manager
