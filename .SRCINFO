@@ -1,0 +1,8 @@
+pkgbase = langman
+	pkgdesc = Single-binary doc viewer
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL2
+
+pkgname = langman
