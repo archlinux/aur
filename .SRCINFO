@@ -1,0 +1,22 @@
+pkgbase = h5df
+	pkgdesc = Library and CLI for storing numeric data frames in HDF5
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/gilesc/h5df
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-h5py
+	depends = python-click
+	provides = python-h5df=0.1.5
+	conflicts = python-h5df
+	source = pypi-h5df-0.1.5.tar.gz::https://files.pythonhosted.org/packages/source/h/h5df/h5df-0.1.5.tar.gz
+	sha256sums = c1cbdc2723a1416abb0a58c69b6be4931b10c25f74962f6d5e48c149b8c08032
+
+pkgname = h5df
