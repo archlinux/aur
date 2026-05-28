@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ter-music
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="This is a music player that can be used in the terminal~"
 arch=($CARCH)
@@ -24,7 +24,6 @@ depends=(
     ffmpeg
     hicolor-icon-theme
     ncurses
-    libpulse
     libpng
     libjpeg
 # ter-music-server
@@ -42,7 +41,7 @@ backup=()
 options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('64efd1d659ac74c0657b74cd4cdecaad07f3e0736e9098e023c6f62f352964f4')
+sha256sums=('aa020f620fe608578c3c0f8808f5b55124db686992057861679ddc48c49414fb')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
@@ -61,10 +60,10 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
-    cd "${srcdir}"/${pkgname}
 
+    cd "${srcdir}"/${pkgname}
     install -vDm755 tools/start-server.py "${pkgdir}/usr/bin/${pkgname}-server"
-    # install -vDm644 data/*.txt -t "${pkgdir}/usr/share/doc/${pkgname}/"
-    # cp -R docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -vdm644 "${pkgdir}/usr/share/doc/${pkgname}/"
+    cp -rv docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
     install -vDm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

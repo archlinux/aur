@@ -1,6 +1,6 @@
 pkgbase = ter-music
 	pkgdesc = This is a music player that can be used in the terminal~
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/YXZL985/ter-music
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = ter-music
 	depends = ffmpeg
 	depends = hicolor-icon-theme
 	depends = ncurses
-	depends = libpulse
 	depends = libpng
 	depends = libjpeg
 	depends = impacket
@@ -28,7 +27,7 @@ pkgbase = ter-music
 	provides = ter-music-cn
 	conflicts = ter-music
 	conflicts = ter-music-cn
-	source = ter-music::git+https://github.com/YXZL985/ter-music.git#tag=v1.10.0
-	sha256sums = 64efd1d659ac74c0657b74cd4cdecaad07f3e0736e9098e023c6f62f352964f4
+	source = ter-music::git+https://github.com/YXZL985/ter-music.git#tag=v1.11.0
+	sha256sums = aa020f620fe608578c3c0f8808f5b55124db686992057861679ddc48c49414fb
 
 pkgname = ter-music
