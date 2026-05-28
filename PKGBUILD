@@ -1,7 +1,7 @@
 # Maintainer: zapret-gui maintainers
 pkgname=zapret-gui
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="GUI for zapret DPI bypass with Linux NFQUEUE/nftables runtime"
 arch=("x86_64")
 url="https://github.com/Mechtaatel/zapret-gui"
@@ -41,13 +41,17 @@ optdepends=(
 source=(
   "zapret-gui::git+https://github.com/Mechtaatel/zapret-gui.git"
   "zapret2::git+https://github.com/bol-van/zapret2.git"
+  "zapret::git+https://github.com/bol-van/zapret.git"
   "zapret-win-bundle::git+https://github.com/bol-van/zapret-win-bundle.git"
 )
-sha256sums=("SKIP" "SKIP" "SKIP")
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 build() {
   cd "$srcdir/zapret2/nfq2"
   make nfqws2
+
+  cd "$srcdir/zapret/nfq"
+  make nfqws
 }
 
 package() {
@@ -140,16 +144,43 @@ EOF
       | sort -u
   )
 
+  find "$pkgdir/usr/lib/zapret-gui/presets/winws2_builtin" -type f -name '*.txt' -print -quit | grep -q . || {
+    echo "ERROR: missing built-in winws2 presets" >&2
+    return 1
+  }
+  find "$pkgdir/usr/lib/zapret-gui/presets/winws1_builtin" -type f -name '*.txt' -print -quit | grep -q . || {
+    echo "ERROR: missing built-in winws1 presets" >&2
+    return 1
+  }
+
   install -Dm755 "$srcdir/zapret2/nfq2/nfqws2" \
     "$pkgdir/usr/lib/zapret-gui/exe/nfqws2"
 
-  if [[ -x "$srcdir/zapret2/nfq/nfqws" ]]; then
-    install -Dm755 "$srcdir/zapret2/nfq/nfqws" \
-      "$pkgdir/usr/lib/zapret-gui/exe/nfqws"
-  elif [[ -x "$srcdir/zapret2/nfq2/nfqws2" ]]; then
-    install -Dm755 "$srcdir/zapret2/nfq2/nfqws2" \
-      "$pkgdir/usr/lib/zapret-gui/exe/nfqws"
+  install -Dm755 "$srcdir/zapret/nfq/nfqws" \
+    "$pkgdir/usr/lib/zapret-gui/exe/nfqws"
+
+  [[ -x "$pkgdir/usr/lib/zapret-gui/exe/nfqws2" ]] || return 1
+  [[ -x "$pkgdir/usr/lib/zapret-gui/exe/nfqws" ]] || return 1
+
+  if cmp -s "$pkgdir/usr/lib/zapret-gui/exe/nfqws" "$pkgdir/usr/lib/zapret-gui/exe/nfqws2"; then
+    echo "ERROR: nfqws and nfqws2 must not be the same binary" >&2
+    return 1
   fi
+
+  PYTHONPATH="$pkgdir/usr/lib/zapret-gui/src" QT_QPA_PLATFORM=offscreen python - <<'PY'
+import qfluentwidgets
+import darkdetect
+import qframelesswindow
+import qtawesome
+
+from pathlib import Path
+from core.paths import AppPaths
+from settings.mode import ENGINE_WINWS1, ENGINE_WINWS2
+
+paths = AppPaths(user_root=Path("/tmp/zapret-gui-user"), local_root=Path("/usr/lib/zapret-gui"))
+assert paths.engine_paths(ENGINE_WINWS2).builtin_presets_dir.name == "winws2_builtin"
+assert paths.engine_paths(ENGINE_WINWS1).builtin_presets_dir.name == "winws1_builtin"
+PY
 
   install -Dm755 "$srcdir/zapret-gui/packaging/linux/zapret-gui" \
     "$pkgdir/usr/bin/zapret-gui"
