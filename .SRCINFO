@@ -1,0 +1,19 @@
+pkgbase = tuxedo
+	pkgdesc = A fast, keyboard-driven terminal UI for todo.txt.
+	pkgver = 2026.5.12
+	pkgrel = 1
+	url = https://github.com/webstonehq/tuxedo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = tuxedo
+	conflicts = tuxedo-git
+	conflicts = tuxedo-bin
+	options = !strip
+	source = tuxedo-2026.5.12.tar.gz::https://github.com/webstonehq/tuxedo/archive/refs/tags/v2026.5.12.tar.gz
+	sha256sums = a345e657f05d837db2282f1855d92c278b58463bf8e300f94b0670df2307229a
+
+pkgname = tuxedo
