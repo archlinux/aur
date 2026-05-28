@@ -2,7 +2,6 @@ pkgbase = forum-scout-qt
 	pkgdesc = Arch-focused multi-forum search tool (Qt/PyQt6 edition)
 	pkgver = 0.5.7
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/musqz/forum-scout-qt
 	arch = any
 	license = MIT
