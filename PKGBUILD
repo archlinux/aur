@@ -1,6 +1,6 @@
 # Maintainer: Martin Etchebarne <martin@etchebarne.net>
 pkgname=kosmos
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="A modern code editor."
 arch=('x86_64')
