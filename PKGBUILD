@@ -6,7 +6,7 @@
 # Based on owncloud-git PKGBUILD by Alexander Ovsyannikov
 
 pkgname=owncloud
-pkgver=10.16.2
+pkgver=10.16.3
 pkgrel=1
 pkgdesc="Securely access and share data from everywhere and any device"
 arch=('any')
@@ -28,12 +28,12 @@ options=('!strip')
 backup=('etc/webapps/owncloud/apache.example.conf')
 validpgpkeys=('E3036906AD9F30807351FAC32D5D5E97F6978A26'
               'DDA2C105C4B73A6649AD2BBD47AE7F72479BC94B')
-_pkgverdate="20260218"
+_pkgverdate="20260422"
 source=("https://download.owncloud.com/server/stable/owncloud-complete-${_pkgverdate}.zip"
         'apache.example.conf'
 	'owncloud.hook'
 )
-sha256sums=('bf1d9ff24d412d7a89db20c62ecb7b9764ae535f6d87cabee09a8e927eeca099'
+sha256sums=('bf1b2354747ecde66d4698dd3022db2851333ea6954b59de9426c971e22cf601'
             'e19149bbe2fef90d2d669ca8912104f6cf3c435a6c19610b00c844230190f0fb'
             'fae2a021055a7bcf2ceece645e15a921aecefab088583a3f8c4d7d969578a36e')
 
