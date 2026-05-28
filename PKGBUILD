@@ -1,7 +1,7 @@
 # Maintainer: Shirow MIURA <shirowmiura at gmail dot com>
 
 pkgname=deltacp
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A copy tool designed for incremental backup of block device by utilizing reflink (CoW)"
 url="https://codeberg.org/sharow/deltacp"
@@ -11,10 +11,11 @@ makedepends=('scdoc')
 arch=('x86_64')
 optdepends=(
     'python: for a inspectextents script that provides shared-extent analysis'
+    'thin-provisioning-tools: dm-era support'
 )
 options=(zipman !debug)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('822ec606f06c488b6266aaaaefff637ff58de2f7a2ffd4b49bb17a58949f4a61')
+sha256sums=('0f0eb1f4c0665c9474b571e4a7479c3f767e1a9062afbf44f1ecdb4aea2b61e2')
 
 build() {
     cd "${srcdir}/${pkgname}"
