@@ -1,8 +1,8 @@
-# Maintainer: Garrett Stewart <zero@gr-p.com>
+# Maintainer: Your Name <you@example.com>
 pkgname=deadsync-git
-pkgdesc='ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync and competitive-level performance - from git'
+pkgdesc='ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync (git)'
 url='https://github.com/pnn64/deadsync'
-license=('GPL-3.0-only')
+license=('MIT')
 arch=('x86_64' 'aarch64')
 provides=('deadsync')
 conflicts=('deadsync' 'deadsync-bin')
@@ -25,7 +25,7 @@ makedepends=(
 options=('!lto' '!debug' '!strip')
 install="${pkgname}.install"
 
-pkgver=0.3.826.r4.g80c0b2a # Placeholder - gets overwritten with pkgver()
+pkgver=0.4.265.r5.g91224d3    # placeholder — always overwritten by pkgver()
 pkgrel=1
 
 source=("${pkgname}::git+https://github.com/pnn64/deadsync.git")
@@ -46,6 +46,7 @@ prepare() {
     git submodule update --init --recursive
 
     export RUSTUP_TOOLCHAIN=stable
+    # Omit --locked here for -git: HEAD may be ahead of Cargo.lock
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -54,11 +55,13 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    unset CFLAGS CXXFLAGS
 
     export RUSTFLAGS="${RUSTFLAGS} \
         --remap-path-prefix=${srcdir}=/build/source \
         --remap-path-prefix=${CARGO_HOME:-$HOME/.cargo}=/build/cargo"
 
+    # Omit --frozen for -git since we didn't use --locked in prepare()
     cargo build --release
 }
 
@@ -91,17 +94,12 @@ package() {
         --exclude=TRANSLATION_STATUS.md \
         . "${pkgdir}/opt/deadsync/"
 
-    # -----------------------------------------------------------------------
-    # Wrapper script so `deadsync` works from any terminal.
-    # -----------------------------------------------------------------------
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/deadsync" <<'EOF'
 #!/bin/sh
 exec /opt/deadsync/deadsync "$@"
 EOF
 
-    # -----------------------------------------------------------------------
-    # Desktop entry
-    # -----------------------------------------------------------------------
+
     install -Dm644 /dev/stdin \
         "${pkgdir}/usr/share/applications/deadsync.desktop" <<'EOF'
 [Desktop Entry]
@@ -114,15 +112,17 @@ Icon=deadsync
 Categories=Game;
 Keywords=ITG;StepMania;rhythm;dance;
 StartupNotify=true
-Actions=OpenDataDir;
+Actions=OpenConfigDir;OpenSongsDir;
 
-[Desktop Action OpenDataDir]
-Name=Open Data Directory
-Exec=xdg-open "$XDG_DATA_HOME/deadsync"
+[Desktop Action OpenConfigDir]
+Name=Open Config Directory
+Exec=sh -c 'DS="${XDG_DATA_HOME:-$HOME/.local/share}/deadsync"; mkdir -p "$DS" && xdg-open "$DS"'
+
+[Desktop Action OpenSongsDir]
+Name=Open Songs Directory
+Exec=sh -c 'DS="${XDG_DATA_HOME:-$HOME/.local/share}/deadsync/songs"; mkdir -p "$DS" && xdg-open "$DS"'
 EOF
 
-    # Install all sized icons into the hicolor theme so Icon=deadsync in the
-    # .desktop file resolves correctly through the icon theme lookup chain.
     local _icondir="assets/graphics/icon"
     for _size in 16 24 32 48 64 96 128 256 512 1024; do
         install -Dm644 "${_icondir}/icon-${_size}.png" \

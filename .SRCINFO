@@ -1,12 +1,12 @@
 pkgbase = deadsync-git
-	pkgdesc = ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync and competitive-level performance - from git
-	pkgver = 0.3.826.r4.g80c0b2a
+	pkgdesc = ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync (git)
+	pkgver = 0.4.265.r5.g91224d3
 	pkgrel = 1
 	url = https://github.com/pnn64/deadsync
 	install = deadsync-git.install
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-only
+	license = MIT
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = ninja
