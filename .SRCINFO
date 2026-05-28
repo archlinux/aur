@@ -1,6 +1,6 @@
 pkgbase = aodv
-	pkgdesc = Userspace RFC 3561 ad hoc routing control-plane daemon
-	pkgver = 0.2.1
+	pkgdesc = Userspace AODV control-plane implementation based on RFC 3561
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/Fierthraix/aodv-rs
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = aodv
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = aodv-0.2.1.tar.gz::https://crates.io/api/v1/crates/aodv/0.2.1/download
-	sha256sums = 2777fdd833a0dc813140b02a918d15ab8cf800ea93e3232852d7d11f0fc98725
+	conflicts = aodv-bin
+	conflicts = aodv-git
+	source = aodv-0.2.2.crate::https://static.crates.io/crates/aodv/aodv-0.2.2.crate
+	sha256sums = 63e13ff80fa47673aec419fd242e08cc6a3f9e176bada65025be45647748954d
 
 pkgname = aodv

@@ -1,42 +1,31 @@
-# Maintainer: Lucas Rooyakkers <lucas.rooyakkers@pm.me>
-
 pkgname=aodv
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="Userspace RFC 3561 ad hoc routing control-plane daemon"
+pkgdesc='Userspace AODV control-plane implementation based on RFC 3561'
 arch=('x86_64' 'aarch64')
-url="https://github.com/Fierthraix/aodv-rs"
+url='https://github.com/Fierthraix/aodv-rs'
 license=('MIT OR Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('2777fdd833a0dc813140b02a918d15ab8cf800ea93e3232852d7d11f0fc98725')
+conflicts=('aodv-bin' 'aodv-git')
+_cratename='aodv'
+_binname='aodv'
+source=("${_cratename}-${pkgver}.crate::https://static.crates.io/crates/${_cratename}/${_cratename}-${pkgver}.crate")
+sha256sums=('63e13ff80fa47673aec419fd242e08cc6a3f9e176bada65025be45647748954d')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-
-  export RUSTUP_TOOLCHAIN=stable
+  cd "${_cratename}-${pkgver}"
+  export CARGO_HOME="${srcdir}/cargo-home"
   cargo fetch --locked
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
-}
-
-check() {
-  cd "$pkgname-$pkgver"
-
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo test --frozen --all-targets --all-features
+  cd "${_cratename}-${pkgver}"
+  export CARGO_HOME="${srcdir}/cargo-home"
+  cargo build --release --locked --all-features
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  install -Dm755 "target/release/aodv" "$pkgdir/usr/bin/aodv"
+  cd "${_cratename}-${pkgver}"
+  install -Dm755 "target/release/${_binname}" "${pkgdir}/usr/bin/${pkgname}"
 }
