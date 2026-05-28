@@ -5,8 +5,8 @@
 
 pkgname='wiki-go'
 pkgdesc='A modern, feature-rich, databaseless flat-file wiki platform'
-pkgver=1.8.9
-pkgrel=2
+pkgver=1.8.10
+pkgrel=1
 url='https://github.com/leomoon-studios/wiki-go'
 changelog="$pkgname.changelog"
 arch=('aarch64' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('go')
 depends=('glibc')
 optdepends=('python: needed to run the notion-to-wikigo script')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0bcc4863a64e04dd3191eb9ac5f0199cef1c3dc71c9c628a89b32a713f03155a')
+sha256sums=('9fa8e815b0a1769370659291adf9544ef3502fb96b2c0368b37d4cacf7832e15')
 
 prepare() {
   cd "$pkgname-$pkgver"
