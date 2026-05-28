@@ -1,6 +1,6 @@
 pkgbase = clifm-bin
 	pkgdesc = The command line file manager (binary version)
-	pkgver = 1.27.1
+	pkgver = 1.28
 	pkgrel = 1
 	url = https://github.com/leo-arch/clifm
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = clifm-bin
 	conflicts = clifm
 	conflicts = clifm-git
 	conflicts = clifm-nerd
-	source_x86_64 = clifm-1.27.1-linux-x86_64.tar.gz::https://github.com/leo-arch/clifm/releases/download/v1.27.1/clifm-1.27.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 9ecbf35d28a1ce0ae6d7603dbce64493d95f5411b22aebe31a4e090508b5c95b
+	source_x86_64 = clifm-1.28-linux-x86_64.tar.gz::https://github.com/leo-arch/clifm/releases/download/v1.28/clifm-1.28-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 80be580f67d9da178a2f0d56e1ebf2812f947b49bd36790ff5f55232bfa14347
 
 pkgname = clifm-bin
