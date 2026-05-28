@@ -1,11 +1,12 @@
 # Maintainer: Jakov Petrina <jkv.petrina@gmail.com>
+# Adapted-from: https://aur.archlinux.org/packages/llama.cpp
 # Adapted-from: https://aur.archlinux.org/packages/llama.cpp-hip
 
 pkgname=buun-llama.cpp-hip
 _pkgname="${pkgname%-hip}"
 _reponame=buun-llama-cpp
 pkgver=b9637
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental llama.cpp fork with Trellis-Coded Quantization (TCQ) for KV cache compression (with AMD ROCm optimizations)"
 arch=(x86_64)
 url='https://github.com/spiritbuun/buun-llama-cpp'
@@ -39,15 +40,22 @@ provides=(llama.cpp libggml libggml-hip.so ggml)
 conflicts=(llama.cpp libggml ggml stable-diffusion.cpp)
 options=(lto !debug)
 backup=("etc/conf.d/llama.cpp")
+install='llama.cpp.install'
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/spiritbuun/${_reponame}/archive/refs/tags/${pkgver}.tar.gz"
-  "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
-  "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
+  'llama.cpp.conf'
+  'llama.cpp.service'
+  'llama.cpp.install'
+  'sysusers.conf'
+  'tmpfiles.conf'
   "0001-ggml-hip-CMakeLists-fix-HIP-build-by-excluding-bsa_-.patch"
 )
 sha256sums=('98832cd360bdf321487a84ed764812fff5b0cda464e196ea88f35126d16ba802'
-            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec'
+            '48d6b261315c9175b4b4cea4900bd4d76f2f27112804934db656537485510cd2'
+            'c534b4c37ff8ac9174a2f6f410daa96d991e8c638f338383ffb07613c771724b'
+            'e687106ee9f6a5f0de4f286015f85a60e68d884e8100c67810b709960c354148'
+            '402a44f609785fbabc7afca6e8a486ff517933661e9e7f4955fed6574eac9875'
             '6bc864d6607429e781a5608c8f4882103ad1409f9771f0cfa4fc70a8327a4460')
 
 prepare() {
@@ -94,7 +102,7 @@ build() {
     -DGGML_LTO=ON
     -DGGML_RPC=ON
     -DGGML_HIP=ON
-    -DGGML_HIP_GRAPHS=OFF # breaks runtime
+    -DGGML_HIP_GRAPHS=OFF # ON breaks runtime
     -DHIP_PLATFORM=amd
     -DGGML_CUDA_FA_ALL_QUANTS=ON
     -DLLAMA_BUILD_NUMBER="${pkgver#b}"
@@ -130,7 +138,6 @@ package() {
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "llama.cpp.conf" "${pkgdir}/etc/conf.d/llama.cpp"
   install -Dm644 "llama.cpp.service" "${pkgdir}/usr/lib/systemd/system/llama.cpp.service"
-
-  msg2 "llama.cpp.service is now available"
-  msg2 "llama-server arguments are in /etc/conf.d/llama.cpp"
+  install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/llama-cpp.conf"
+  install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/llama-cpp.conf"
 }
