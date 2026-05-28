@@ -1,0 +1,21 @@
+pkgbase = klavaro-bin
+	pkgdesc = Print your current xkb_layout in Sway
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/Fierthraix/klavaro
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	optdepends = sway: Sway IPC socket provider
+	optdepends = i3-wm: i3 IPC socket provider
+	provides = klavaro
+	conflicts = klavaro
+	conflicts = klavaro-git
+	source_x86_64 = https://github.com/Fierthraix/klavaro/releases/download/v1.0.5/klavaro-1.0.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9a397d4e4ad0f7198b2c20a55a8bbbb22c3baa00b4f6ac3731bc6443780029c0
+	source_aarch64 = https://github.com/Fierthraix/klavaro/releases/download/v1.0.5/klavaro-1.0.5-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f088c93c70a2b929416b7ae86fa25184a857a9de93046db56971d39944cc69b8
+
+pkgname = klavaro-bin
