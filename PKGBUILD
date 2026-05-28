@@ -1,6 +1,6 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=hyprcorrect
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Keyboard-driven desktop spelling and typo corrector (Hyprland-first)"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ optdepends=(
     'wl-clipboard: enables the clipboard / selection fallback when the keystroke buffer is empty'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jondkinney/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bbf65158ea2beef1b70793cc990b1843ebeb4879c10247665d395d649f9ff20a')
+sha256sums=('1365ba0a298070e3aff18d5f444c2249bb0eeacbf92875f5d5df7ec23cd69b28')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -62,8 +62,12 @@ package() {
     install -Dm644 "packaging/hyprcorrect.desktop" \
         "$pkgdir/usr/share/applications/hyprcorrect.desktop"
 
-    install -Dm644 "crates/hyprcorrect-ui/assets/icons/svg/hyprcorrect.svg" \
+    install -Dm644 "assets/icons/hicolor/scalable/apps/hyprcorrect.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/hyprcorrect.svg"
+    for size in 16 22 24 32 48 64 128 256 512; do
+        install -Dm644 "assets/icons/hicolor/${size}x${size}/apps/hyprcorrect.png" \
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/hyprcorrect.png"
+    done
 
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
