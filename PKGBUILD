@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Interactive TUI pipeline editor built for rapid iteration"
 
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('bde58c5058f81b18821c2146052904f063b1433d5fbde92aff26a7f3a5394178')
-sha256sums_aarch64=('b4a65f24a551f0c1be74cc6693010d2ddaab5c7a0f8a2d681bac94df57e7b873')
+sha256sums_x86_64=('bbcb2f2bc8981d23e6f04495b2838ed5c2fabc8e35015007e17d89d7a0caa7d9')
+sha256sums_aarch64=('af144c10dc672443a93045f407032524bb99ea86108631d45c015ae0df450848')
 
 
 case ${CARCH} in

@@ -1,6 +1,6 @@
 pkgbase = rura-bin
 	pkgdesc = Interactive TUI pipeline editor built for rapid iteration
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/tlipinski/rura
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = rura-bin
 	provides = rura
 	conflicts = rura
 	options = !strip
-	source_x86_64 = rura-x86_64-1.2.0.txz::https://github.com/tlipinski/rura/releases/download/v1.2.0/rura-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = bde58c5058f81b18821c2146052904f063b1433d5fbde92aff26a7f3a5394178
-	source_aarch64 = rura-aarch64-1.2.0.txz::https://github.com/tlipinski/rura/releases/download/v1.2.0/rura-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = b4a65f24a551f0c1be74cc6693010d2ddaab5c7a0f8a2d681bac94df57e7b873
+	source_x86_64 = rura-x86_64-1.3.0.txz::https://github.com/tlipinski/rura/releases/download/v1.3.0/rura-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = bbcb2f2bc8981d23e6f04495b2838ed5c2fabc8e35015007e17d89d7a0caa7d9
+	source_aarch64 = rura-aarch64-1.3.0.txz::https://github.com/tlipinski/rura/releases/download/v1.3.0/rura-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = af144c10dc672443a93045f407032524bb99ea86108631d45c015ae0df450848
 
 pkgname = rura-bin
