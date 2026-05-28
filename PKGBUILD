@@ -1,7 +1,7 @@
 # Maintainer: Maik Broemme <mbroemme@libmpq.org>
 pkgname="vdi-stream-client"
 pkgdesc="A tiny and low latency desktop streaming client for remote Windows guests with GPU passthrough"
-pkgver="0.3.0"
+pkgver="0.3.1"
 pkgrel="1"
 arch=("x86_64")
 url="https://libmpq.org/"
@@ -11,7 +11,7 @@ source=(
   "https://github.com/mbroemme/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  "e2f94974df5265d6a80ab8e5051ac22b3f22fe12200776e5411ddaf04f45eb00"
+  "5d45890245bef20f88aa389a1f09e98f60b0ec9c10ad7e36d3c64abb7bfdd22a"
 )
 
 prepare() {
