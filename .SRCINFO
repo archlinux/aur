@@ -1,7 +1,7 @@
 pkgbase = neko-cloud-music
 	pkgdesc = NekoMusic: Free High-Quality Cloud Music
-	pkgver = 2026.526.22
-	pkgrel = 2
+	pkgver = 2026.528.24
+	pkgrel = 1
 	url = https://github.com/FantasyNetworkCN/NekoMusicForPc
 	arch = x86_64
 	arch = aarch64

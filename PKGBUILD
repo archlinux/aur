@@ -1,7 +1,7 @@
 # 版本号：build 时 pkgver() 从 CMakeLists.txt 读取；发 AUR 前可运行 ./packaging/aur/sync-aur.sh
 pkgname=neko-cloud-music
-pkgver=2026.526.22
-pkgrel=2
+pkgver=2026.528.24
+pkgrel=1
 pkgdesc="NekoMusic: Free High-Quality Cloud Music"
 arch=('x86_64' 'aarch64')
 url="https://github.com/FantasyNetworkCN/NekoMusicForPc"
