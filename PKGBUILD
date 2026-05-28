@@ -3,7 +3,7 @@
 # Maintainer: Solomon <shlomochoina@gmail.com>
 pkgname=openclaw-git
 _pkgver=2026.5.25.beta.1
-pkgver=2026.4.19.beta.2.r20222.g2b63eb2825f
+pkgver=2026.4.19.beta.2.r20904.g2229122077e
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices (Bun build, highly optimized)"
 arch=('x86_64')
@@ -34,10 +34,10 @@ sha256sums=('SKIP'
             '273910e58f512a4f1d59fe2cde328d7abc68f720f5e6e98a23a06a43c3eb9599'
             '63e557c01ca78e392ac17f37538faff9be6e568bb6d8b33980c8836197fd06ad'
             '34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d'
-            'cc2324e4ad3e6786a3d38b30f674d786f95ede92a7ac6eb8996183ce5c6dd7fb'
+            '813ab0f1f1f86e03b24edd4937d9b2b03499bec2fc7adfaad9a02aebccc1ce90'
             '7f7dc1a6d0c96c018de6c73b7594dc15c268c4152a0ade8001406055962c89a7'
             'cdaf01acb58af62348c6f669f8b77675f66428a8ae41b4b4e371739492fb05c6'
-            '34e1f98f832f394e4c4fbb807985cf747e8dfc95cc8933cde0f3c5f75e162b1d'
+            '025de14715ac9508517d3461f0c35e289c545353443f5cab312a091b630e8b3a'
             '0c177909ae593fb349c0bcbb56dcd5efdc645e75d6e9861647c9defbf604afe5')
 
 options=('!strip' '!debug')

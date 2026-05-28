@@ -99,6 +99,23 @@ sed -i 's/pnpm/bun/g' package.json
 sed -i 's/pnpm exec/bun x/g' scripts/*.mjs 2>/dev/null || true
 sed -i 's/pnpm exec/bun x/g' scripts/*.sh 2>/dev/null || true
 
+# Patch package.json workspaces for Bun
+echo "Configuring workspaces in package.json for Bun..."
+node -e '
+    const fs = require("fs");
+    const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+    pkg.workspaces = [".", "ui", "packages/*", "extensions/*"];
+    fs.writeFileSync("package.json", JSON.stringify(pkg, null, 4));
+'
+
+# Replace workspace:* with file:../.. for openclaw dependency in extensions
+echo "Replacing workspace:* with file:../.. for openclaw in extensions..."
+find extensions -name package.json -exec sed -i 's/"openclaw": "workspace:\*"/"openclaw": "file:..\/.."/g' {} +
+
+# Remove bun.lock to force Bun to resolve workspaces from scratch
+echo "Removing pre-existing bun.lock to force workspace resolution..."
+rm -f bun.lock bun.lockb
+
 # 4. Run bun install
 bun install
 
@@ -160,6 +177,9 @@ export function spawnPnpmRunner(params = {}) {
   return spawn(spawnSpec.command, spawnSpec.args, spawnSpec.options);
 }
 EOF
+
+# Copy rewritten pnpm-runner.mjs to canvas extension scripts directory
+cp scripts/pnpm-runner.mjs extensions/canvas/scripts/pnpm-runner.mjs
 
 # Patch scripts/ui.js to use bun
 echo "Patching scripts/ui.js for Bun..."
