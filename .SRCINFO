@@ -1,7 +1,7 @@
 pkgbase = vpkedit
 	pkgdesc = A library and CLI/GUI tool to create, read, and write several pack file formats
 	pkgver = 5.0.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/craftablescience/VPKEdit
 	arch = x86_64
 	license = MIT
@@ -19,20 +19,18 @@ pkgbase = vpkedit
 	depends = hicolor-icon-theme
 	optdepends = qt6-wayland: Wayland support
 	source = vpkedit::git+https://github.com/craftablescience/VPKEdit.git#tag=v5.0.0.4
-	source = git+https://github.com/craftablescience/cmake-helpers.git
-	source = argparse::git+https://github.com/p-ranav/argparse.git
-	source = indicators::git+https://github.com/p-ranav/indicators.git
-	source = discord::git+https://github.com/craftablescience/discord-rpc-clean.git
-	source = miniaudio::git+https://github.com/mackron/miniaudio.git
-	source = sourcepp::git+https://github.com/craftablescience/sourcepp.git
-	source = git+https://github.com/Tencent/rapidjson.git
+	source = git+https://github.com/craftablescience/cmake-helpers.git#commit=222dc03de5333bf9d3c2e7d15fcf8f1fbb28df2b
+	source = argparse::git+https://github.com/p-ranav/argparse.git#commit=d924b84eba1f0f0adf38b20b7b4829f6f65b6570
+	source = indicators::git+https://github.com/p-ranav/indicators.git#commit=3872f37abd90d7557bac5f834bfb45bd6c75259a
+	source = discord::git+https://github.com/craftablescience/discord-rpc-clean.git#commit=45f36ee0615bca5be496f1cc2e62b7774fd21324
+	source = sourcepp::git+https://github.com/craftablescience/sourcepp.git#commit=175e93da4803f563d2c4261680eebec612df6c0d
+	source = git+https://github.com/Tencent/rapidjson.git#commit=24b5e7a8b27f42fa16b96fc70aade9106cf7102f
 	sha256sums = 78946127cbbb10bfe83cdbd2101e4cc408fa380ec0ac0e262e61625156bcba2c
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 36987619293b245eb17d98c7c4e454f6b7801678daaf1e6afe0617c2618d400f
+	sha256sums = 42b2b012a0724cfe279a79a520e63602d0dc7d549e8e56ea626018ffcc3f0bc9
+	sha256sums = 91c88da51a60cf533a95aaa0838cfba311a00579c3377a11ccf32141dc93eb93
+	sha256sums = 0d3b99c83877d433a793e2d1f60dcc2b376c40561ffc4276c7a3ca836afbe6df
+	sha256sums = 9d457cb5bcff4029c7c31a9c1057c625be629983b8fed4be072fc4303d9cf641
+	sha256sums = 22638c58cd876ca7e19ae975346f0871c2b582d2a6d9d7f0d26c6ac423e5367f
 
 pkgname = vpkedit
