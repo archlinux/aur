@@ -13,10 +13,10 @@ pkgbase = bartoc-bin
 	provides = bartoc
 	conflicts = bartoc
 	source = https://github.com/rustyhorde/barto/releases/download/v1.4.1/dist-bartoc.tar.gz
-	sha256sums = 7462d14ccac6f970d40617b4041a2bf7b7eea6386c7193f4f06f192dcccdb154
+	sha256sums = 2f98517bf3693fe34985051de71dc563d9e6133d1eef14eb59ee04840e790783
 	source_x86_64 = bartoc-x86_64::https://github.com/rustyhorde/barto/releases/download/v1.4.1/bartoc-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 7bb9a3e56d72b6b6493f8b8d9639abd0389195b9bd414878374b331991e4c75a
+	sha256sums_x86_64 = b019ddb8a449686f8a87e42fddf44341322167d30422ce5a168fb54c5f7f5126
 	source_aarch64 = bartoc-aarch64::https://github.com/rustyhorde/barto/releases/download/v1.4.1/bartoc-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = cb2c74efb9304aafedb40ead8e4cb78b1f62ceae1fc3f5bd955684d6f5d8dd91
+	sha256sums_aarch64 = 2892ef46339395439d007559d5a817922704c398ce1e1b20241fb3cbe9ded394
 
 pkgname = bartoc-bin
