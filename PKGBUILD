@@ -3,7 +3,7 @@ _pkgname=wmake-parse
 pkgname=${_pkgname}
 
 pkgver=0.2.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Utility and library to parse wmake config files"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/nnSemenov/wmakeParse"
@@ -16,7 +16,7 @@ sha512sums=('fbca668c8c9e8a6f05c1ac36c54fcafc68b3fa99405b1e5cfc38bdff57213261975
 
 
 build() {
-    cmake -S wmakeParse-$pkgver -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+    cmake -S wmakeParse-$pkgver -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 
     cmake --build build --parallel
 }
