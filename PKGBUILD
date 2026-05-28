@@ -1,23 +1,30 @@
 pkgname=rimilo
-pkgver=0.2.5
-pkgrel=3
-pkgdesc='Rapida rimvort-serchilo por Esperanto-angla vortaro'
-arch=('x86_64')
+pkgver=0.2.8
+pkgrel=1
+pkgdesc='Rapida rimvort-serĉilo por Esperanto-angla vortaro'
+arch=('x86_64' 'aarch64')
 url='https://github.com/Fierthraix/rimilo'
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
-options=('!debug')
-source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('16f913ae54194521cb90ee712710cc1f2a4fdc465c9fffa4592074f0f86e2bcb')
+conflicts=('rimilo-bin' 'rimilo-git')
+_cratename='rimilo'
+source=("${_cratename}-${pkgver}.crate::https://static.crates.io/crates/${_cratename}/${_cratename}-${pkgver}.crate")
+sha256sums=('a46274daf4f628bf477157f8d0ff71326bd9f7d8843cfd1d28375670855701ae')
+
+prepare() {
+  cd "${_cratename}-${pkgver}"
+  export CARGO_HOME="${srcdir}/cargo-home"
+  cargo fetch --locked
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  export CARGO_TARGET_DIR=target
-  cargo build --release --locked
+  cd "${_cratename}-${pkgver}"
+  export CARGO_HOME="${srcdir}/cargo-home"
+  cargo build --release --locked --all-features
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "${_cratename}-${pkgver}"
+  install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
