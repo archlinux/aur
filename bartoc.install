@@ -13,8 +13,11 @@ post_install() {
     echo "      systemctl --user enable --now bartoc-logrotate.timer"
     echo ""
     echo "    Optional: TLS & Security"
-    echo "      Certificate pinning: set ca_cert in [bartos] to pin your bartos CA cert."
-    echo "      Mutual TLS:          set client_cert and client_key in [bartos]."
+    echo "      Certificate pinning:  set ca_cert in [bartos] to pin your bartos CA cert."
+    echo "      Mutual TLS:           set client_cert and client_key in [bartos]."
+    echo "      HMAC authentication:  set hmac_key (top-level) to the same value as bartos.toml."
+    echo "        Optionally set replay_window_secs (default: 60)."
+    echo "      Ed25519 verification: set server_public_key (top-level) to match bartos signing_key."
     echo "      See: https://github.com/rustyhorde/barto#tls--certificate-pinning"
     echo ""
 }
