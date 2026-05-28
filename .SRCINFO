@@ -1,0 +1,17 @@
+pkgbase = python-tree-sitter-dm
+	pkgdesc = DreamMaker grammar for tree-sitter
+	pkgver = 0.25.1
+	pkgrel = 1
+	url = https://github.com/feudeytf/tree-sitter-dm
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tree-sitter
+	source = python-tree-sitter-dm-0.25.1.tar.gz::https://files.pythonhosted.org/packages/source/t/tree_sitter_dm/tree_sitter_dm-0.25.1.tar.gz
+	sha256sums = 9f12daf78d7e0d8b9cafdbeb07556c2be79d0c25c02e75612799fc561c90e539
+
+pkgname = python-tree-sitter-dm
