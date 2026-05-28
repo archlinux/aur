@@ -3,8 +3,8 @@
 
 pkgname=v2rayn
 _pkgname=v2rayN
-pkgver=7.22.2
-_bin_commit=61f39cfd2db3fed41eddd899a3b63fb1946f8c33
+pkgver=7.22.3
+_bin_commit=bb3aa9a474311e859852d030ab67d9dac6de6fbe
 pkgrel=1
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
 arch=('aarch64' 'x86_64')
@@ -18,9 +18,9 @@ source=("git+${url}#tag=${pkgver}"
         "git+https://github.com/2dust/GlobalHotKeys.git"
         "${pkgname}-bin-${_bin_commit}.zip::${url}-core-bin/raw/${_bin_commit}/v2rayN-linux-64.zip"
         "${pkgname}.sh")
-sha256sums=('a77c8ad1e09e0572b9ffc8b6b6bbda125823d512fde45bf69e0a22129ceeed49'
+sha256sums=('9f06068798c2d9c9ce20f747374410be4965d84e54381a44678593b7009799b4'
             'SKIP'
-            '00dafbbcd6a013c97dfff03a95fb1414481b6eb18ad65cfe64247172859a1a9a'
+            '75bd29260157e9da0aa0db1ed8bba7ab20118a3702eb490cad579b0085b04c5b'
             '0fd5ed368fc6f51f6a8d2507c7cf598edbede076245d5661b06fe4394a6f1390')
 
 prepare() {
@@ -40,12 +40,13 @@ prepare() {
 
 build() {
     cd "${_pkgname}/${_pkgname}"
-    dotnet publish \
-        --configuration Release \
-        --output build \
-        --runtime linux-x64 \
-        -p:SelfContained=false \
-        v2rayN.Desktop/v2rayN.Desktop.csproj
+    local publish_args=(
+        --configuration Release
+        --output build
+        --runtime linux-x64
+        -p:SelfContained=false
+    )
+    dotnet publish "${publish_args[@]}" v2rayN.Desktop/v2rayN.Desktop.csproj
 }
 
 package() {
