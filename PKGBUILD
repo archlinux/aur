@@ -3,10 +3,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-serialbus
-_basever=5.15.18
-pkgver=5.15.18
+_basever=5.15.19
+pkgver=5.15.19
 pkgrel=1
-_commit=c23069351ec31563c9ea9fcdce42ccdba95ea518
+_commit=6734222bccc5541f9527281c810c6b5f8fdd092f
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -16,7 +16,7 @@ makedepends=('git')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('c073405d6d2ad19f235ab72260994d36ea74b40e307e07a3bdbff84df98cbb09')
+sha256sums=('546e044d81131765e543c0f0d8cdd66eafde090df931879f9b5fec571e642168')
 
 pkgver() {
   cd kde-$_pkgfqn
