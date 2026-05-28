@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 # Maintainer: Manoel Brunnen <manoel.brunnen@gmail.com>
 
-pkgname=fetcher-rs
+pkgname=fetcher-rs-rs
 pkgver=2.0
 pkgrel=1
 pkgdesc="Automatic update of git repositories via a systemd service."
@@ -26,7 +26,7 @@ md5sums=('7850769db5609291b9aef320b87d9f15'
 =======
 # Maintainer: type1arc
 
-pkgname=fetcher-rs
+pkgname=fetcher-rs-rs
 _commit=f0bde1ba6131c6a55c8817f44c0508110044bc4d
 pkgver=0.1.0
 pkgrel=1
