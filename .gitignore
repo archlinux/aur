@@ -1,0 +1,4 @@
+src/
+pkg/
+pg-migrate-bin-*
+LICENSE-*
