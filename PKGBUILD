@@ -1,12 +1,12 @@
 # Maintainer: David Hrabě <david.hrabe12@seznam.cz>
 pkgname=awsd-git
-pkgver=0.1.3.r13.g5d32cf3
-pkgrel=1
+pkgver=0.2.0.r2.g9e48453
+pkgrel=2
 pkgdesc="AWS Profile Switcher — interactively select and export AWS_PROFILE from ~/.aws/config"
 arch=('x86_64' 'aarch64')
 url="https://github.com/radiusmethod/awsd"
 license=('MIT')
-depends=('glibc')
+depends=('bash' 'glibc')
 makedepends=('go>=1.23' 'git')
 provides=('awsd')
 conflicts=('awsd')
@@ -47,6 +47,6 @@ package() {
     install -Dm755 _awsd_prompt                   "${pkgdir}/usr/bin/_awsd_prompt"
     install -Dm755 scripts/_awsd                  "${pkgdir}/usr/bin/_awsd"
     install -Dm755 scripts/_awsd_autocomplete     "${pkgdir}/usr/bin/_awsd_autocomplete"
-    install -Dm644 LICENSE                        "${pkgdir}/usr/share/licenses/awsd/LICENSE"
+    install -Dm644 LICENSE                        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md                      "${pkgdir}/usr/share/doc/awsd/README.md"
 }
