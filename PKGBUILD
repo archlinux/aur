@@ -3,7 +3,7 @@
 pkgname=spectools
 pkgver=2016.01.R1
 _ver=2016-01-R1
-pkgrel=4
+pkgrel=5
 pkgdesc="A set of utilities for spectrum analyzer hardware including Wi-Spy devices."
 arch=('x86_64')
 url="https://www.kismetwireless.net/static/spectools/"
