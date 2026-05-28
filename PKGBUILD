@@ -1,8 +1,8 @@
 # Maintainer: Moritz Bunkus <mo@bunkus.online>
 
 pkgname="perl-authen-oath"
-pkgver="2.0.1"
-pkgrel='5'
+pkgver="3.000001"
+pkgrel='1'
 pkgdesc="OATH One Time Passwords"
 url="https://metacpan.org/pod/Authen::OATH"
 license=("Artistic-2.0")
@@ -10,6 +10,7 @@ arch=('any')
 depends=(
   "perl"
   "perl-digest-hmac"
+  "perl-module-runtime"
   "perl-moo>=2.002004"
   "perl-type-tiny"
 )
@@ -17,7 +18,7 @@ makedepends=(
   "perl-test-needs"
 )
 source=("https://cpan.metacpan.org/authors/id/O/OA/OALDERS/Authen-OATH-${pkgver}.tar.gz")
-sha256sums=('1a813dbdc05c3fbd9dd39dbcfd85e2cfb0ba3d0f652cf6b26ec83ab8146ddc77')
+sha256sums=('b6944cd877848ba9e7c3d3920e946c1f99703d926ca1447ec114ce42545826c8')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
