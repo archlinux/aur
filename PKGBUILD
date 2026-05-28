@@ -7,8 +7,8 @@ arch=('any')
 url="https://github.com/BackendDeveloperHub/bdh-linux"
 license=('MIT')
 depends=('python' 'python-pip')
-source=("https://files.pythonhosted.org/packages/source/b/bdh-linux/bdh-linux-${pkgver}.tar.gz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+source=("https://files.pythonhosted.org/packages/py3/b/bdh_linux/bdh_linux-${pkgver}-py3-none-any.whl")
+sha256sums=('c4b07fec07b3d352aa57fd641d00d86dc8c41f6a6e5424b4a290e558930de0db')
 
 package() {
     cd "$srcdir/bdh-linux-$pkgver"
