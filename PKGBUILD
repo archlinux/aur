@@ -2,7 +2,7 @@
 
 _pkgname=py-rust-stemmers
 pkgname=python-py-rust-stemmers
-pkgver=0.1.5
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Fast and parallel snowball stemmer"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ makedepends=(
 provides=('python-py-rust-stemmers')
 conflicts=('python-py-rust-stemmers')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/qdrant/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('415d55d9e0dc5775ef41ba727f72e8eda6e8c0e2a9e4897bb811de5eef92e7ba')
+sha256sums=('fad96aa860b6e9df2611f6453295cc9635337c48b462b233702f7bade474884c')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
