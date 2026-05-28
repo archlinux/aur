@@ -1,7 +1,7 @@
 pkgname=aodv-git
 _pkgname=aodv
 _binname=aodv
-pkgver=0.2.1.r0.g0000000
+pkgver=0.2.2.r0.g46340ed
 pkgrel=1
 pkgdesc='Userspace AODV control-plane implementation based on RFC 3561'
 arch=('x86_64' 'aarch64')
