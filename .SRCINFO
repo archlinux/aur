@@ -1,6 +1,6 @@
 pkgbase = repoconductor-bin
 	pkgdesc = Tool to manage multiple repositories
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/shichirouji21/RepoConductor
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = repoconductor-bin
 	provides = repoconductor
 	conflicts = repoconductor
 	conflicts = repoconductor-git
-	noextract = repoconductor-bin-1.3.1
-	source = repoconductor-bin-1.3.1::https://github.com/shichirouji21/RepoConductor/releases/download/v1.3.1/repoconductor
-	source = https://github.com/shichirouji21/RepoConductor/releases/download/v1.3.1/repoconductor-completions-1.3.1.tar.gz
-	sha256sums = fec242ee31d19c81841b4bdec5ca72fbe09c297e63d2d8a7b823f7754c2f2b08
-	sha256sums = 1d41d31dbea900b5b80f6f29ab74330f8b4d1245029fd6ce9821fb5f708739a0
+	noextract = repoconductor-bin-1.4.0
+	source = repoconductor-bin-1.4.0::https://github.com/shichirouji21/RepoConductor/releases/download/v1.4.0/repoconductor
+	source = https://github.com/shichirouji21/RepoConductor/releases/download/v1.4.0/repoconductor-completions-1.4.0.tar.gz
+	sha256sums = f3b7ba5be4f966d6525cebfdd5b5a2e567b87c30dbede78e7e7df13f4d7f13f8
+	sha256sums = c51137509c576a8636b01b443010cd9fc0a1e8f46d0029616ca6b270a0410a55
 
 pkgname = repoconductor-bin
