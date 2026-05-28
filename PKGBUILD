@@ -1,24 +1,47 @@
-# Maintainer: Andy Alt <andy400-dev at yahoo dot com>
+# Maintainer: Andy Alt <arch_stanton5995 at proton dot me>
 
-pkgname=modemu2k
-pkgver=0.0.6
+pkgbase=modemu2k
+pkgname=('modemu2k' 'modemu2k-docs')
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="adds telnet capability to a comm program"
-arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
-url="http://theimpossibleastronaut.com/modemu2k"
-license=('GPL3')
-makedepends=('flex')
-optdepends=('gettext' 'minicom')
+pkgdesc="Hayes-style AT-command modem emulator bridging serial-style I/O to TCP/Telnet"
+arch=('x86_64')
+url="https://theimpossibleastronaut.github.io/modemu2k/"
+license=('GPL-2.0-or-later')
+makedepends=(
+  'doxygen'
+  'groff'
+  'meson'
+  'ninja'
+)
 
-source=("https://github.com/theimpossibleastronaut/modemu2k/releases/download/v${pkgver}/modemu2k-${pkgver}.tar.gz")
-sha256sums=('b09381628538996d4c22772f7955b42a63e482d1054508833524e36dbf27b7c2')
+source=("https://github.com/theimpossibleastronaut/${pkgbase}/releases/download/v${pkgver}/${pkgbase}-${pkgver}.tar.xz")
+sha256sums=('d5938cafb00c822fc15f478207288d15d70ea68520245d6f1ba62ed164e13da4')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    ./configure --prefix=/usr
+  arch-meson "${pkgbase}-${pkgver}" build \
+    -Db_sanitize=none \
+    -Dgen-docs=true \
+    -Dhelper-scripts=true
+  meson compile -C build
 }
 
-package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
+check() {
+  meson test -C build
+}
+
+package_modemu2k() {
+  DESTDIR="${pkgdir}" meson install -C build
+  # HTML docs ship separately via modemu2k-docs.
+  rm -rf "${pkgdir}/usr/share/doc/${pkgbase}/html"
+  install -Dm 644 "${pkgbase}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgbase}"
+  rm -f "${pkgdir}/usr/share/doc/${pkgbase}/COPYING"
+}
+
+package_modemu2k-docs() {
+  pkgdesc="HTML API documentation for modemu2k"
+  arch=('any')
+  install -d "${pkgdir}/usr/share/doc/${pkgbase}"
+  cp -r "${srcdir}/build/html" "${pkgdir}/usr/share/doc/${pkgbase}/html"
+  install -Dm 644 "${pkgbase}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/modemu2k-docs"
 }

@@ -1,19 +1,19 @@
 pkgbase = modemu2k
-	pkgdesc = adds telnet capability to a comm program
-	pkgver = 0.0.6
+	pkgdesc = Hayes-style AT-command modem emulator bridging serial-style I/O to TCP/Telnet
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/theimpossibleastronaut/modemu2k
-	arch = i686
+	url = https://theimpossibleastronaut.github.io/modemu2k/
 	arch = x86_64
-	arch = aarch64
-	arch = armv7h
-	arch = ppc64le
-	license = GPL3
-	makedepends = flex
-	optdepends = gettext
-	optdepends = minicom
-	source = https://github.com/theimpossibleastronaut/modemu2k/releases/download/v0.0.6/modemu2k-0.0.6.tar.gz
-	sha256sums = b09381628538996d4c22772f7955b42a63e482d1054508833524e36dbf27b7c2
+	license = GPL-2.0-or-later
+	makedepends = doxygen
+	makedepends = groff
+	makedepends = meson
+	makedepends = ninja
+	source = https://github.com/theimpossibleastronaut/modemu2k/releases/download/v0.2.0/modemu2k-0.2.0.tar.xz
+	sha256sums = d5938cafb00c822fc15f478207288d15d70ea68520245d6f1ba62ed164e13da4
 
 pkgname = modemu2k
 
+pkgname = modemu2k-docs
+	pkgdesc = HTML API documentation for modemu2k
+	arch = any
