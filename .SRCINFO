@@ -12,6 +12,7 @@ pkgbase = sing-box-extended
 	arch = aarch64
 	license = LicenseRef-sing-box-extended
 	makedepends = go
+	makedepends = npm
 	depends = glibc
 	optdepends = sing-geosite: sing-geosite database
 	optdepends = sing-geoip: sing-geoip database
