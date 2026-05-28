@@ -1,7 +1,7 @@
 pkgbase = reform-tools
 	pkgdesc = MNT Reform system tools & helpers
 	pkgver = 1.87
-	pkgrel = 1
+	pkgrel = 2
 	url = https://source.mnt.re/reform/reform-tools
 	install = reform-tools.install
 	arch = x86_64
