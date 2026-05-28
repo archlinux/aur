@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-charts
-_basever=5.15.18
-pkgver=5.15.18
+_basever=5.15.19
+pkgver=5.15.19
 pkgrel=1
-_commit=1093fb53ced126100d14af30a8adffd29b7ef855
+_commit=16e9aff210cd4de7192adfc6cd91cdd44ba45a3d
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
@@ -16,7 +16,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('7995b2ef6bd669d051857d4a9b8a965e85fe40740c06e8e37b9f7eee9502e0b8')
+sha256sums=('8d03e8267cbf8265021f47ee4714827f02a2fd9cf1b73a6237fba77c9e0a80e1')
 
 pkgver() {
   cd kde-$_pkgfqn
