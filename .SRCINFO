@@ -1,6 +1,6 @@
 pkgbase = ele-messenger
 	pkgdesc = Resilience-first household chat platform. Degrades gracefully from LAN to BLE when infrastructure fails.
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/thefangeddeity/ele-messenger
 	install = ele-messenger.install
@@ -14,7 +14,7 @@ pkgbase = ele-messenger
 	depends = nginx
 	optdepends = tailscale: for Tailscale transport layer
 	backup = usr/lib/ele-messenger/config.json
-	source = ele-messenger-1.2.4.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v1.2.4.tar.gz
-	sha256sums = a88946c1dee57d0d151997b2208a5bbbc07df4e10ad225e68d0281e66272f49f
+	source = ele-messenger-1.2.5.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v1.2.5.tar.gz
+	sha256sums = 8d20edf7492cac8cf24eba346ce755a302cca8c74c9902180853ce8122d4f9a0
 
 pkgname = ele-messenger
