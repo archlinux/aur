@@ -3,10 +3,10 @@
 pkgname=spectools
 pkgver=2016.01.R1
 _ver=2016-01-R1
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of utilities for spectrum analyzer hardware including Wi-Spy devices."
-arch=('i686' 'x86_64')
-url="https://www.kismetwireless.net/spectools/"
+arch=('x86_64')
+url="https://www.kismetwireless.net/static/spectools/"
 license=('GPL')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'gtk2' 'ncurses' 'pango' 'libusb' 'libusb-compat')
 optdepends=('libtinfo: ncurses terminal graphics support')
