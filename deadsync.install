@@ -53,8 +53,7 @@ _ver_lt() {
 }
 
 post_install() {
-    local _ver
-    _ver=$(grep -m1 '^pkgver=' /opt/deadsync/PKGBUILD 2>/dev/null | cut -d= -f2 || true)
+    local _ver="$1"
 
     echo
     echo " ╔═══════════════════════════════════════════════╗"
@@ -79,9 +78,7 @@ post_install() {
 }
 
 post_upgrade() {
-    local _ver _old_ver
-    _ver=$(grep -m1 '^pkgver=' /opt/deadsync/PKGBUILD 2>/dev/null | cut -d= -f2 || true)
-    _old_ver="$2"
+    local _ver="$1" _old_ver="$2"
 
     echo
     echo " ╔═══════════════════════════════════════════════╗"
