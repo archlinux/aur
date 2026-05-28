@@ -1,0 +1,11 @@
+pkgbase = tungsay
+	pkgdesc = A cowsay CLI but instead of a cow, it's tung tung tung sahur.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Soltrubeg/TungSay
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+
+pkgname = tungsay
