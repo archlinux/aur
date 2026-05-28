@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=rare-git
-pkgver=1.11.3.r15.gcfbd680a
+pkgver=1.12.0.155.r14.ga7bb227e
 pkgrel=1
 pkgdesc="GUI for legendary. An Epic Games Launcher open source alternative."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/Dummerle/Rare"
 license=('GPL-3.0-or-later')
 groups=()
 depends=(
-	"legendary"
+	"legendary-rare"
 	"pyside6"
 	"python-importlib-metadata"
 	"python-orjson"

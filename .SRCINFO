@@ -1,6 +1,6 @@
 pkgbase = rare-git
 	pkgdesc = GUI for legendary. An Epic Games Launcher open source alternative.
-	pkgver = 1.11.3.r15.gcfbd680a
+	pkgver = 1.12.0.155.r14.ga7bb227e
 	pkgrel = 1
 	url = https://github.com/Dummerle/Rare
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = rare-git
 	makedepends = python-setuptools
 	makedepends = gendesk
 	makedepends = python-setuptools-scm
-	depends = legendary
+	depends = legendary-rare
 	depends = pyside6
 	depends = python-importlib-metadata
 	depends = python-orjson
