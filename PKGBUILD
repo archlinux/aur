@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spBayes
-_pkgver=0.4-8
+_pkgver=0.4-9
 pkgname=r-${_pkgname,,}
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc='Univariate and Multivariate Spatial-Temporal Modeling'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-mba
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0d2e1f7ab859b6f6ff2b386709382fb953cad6b6295ac93ff07396e9145f569e')
+sha256sums=('3beccf2eaa9896278c6f2d19cf77c72157fbd50f84d8c85a2a86865757507131')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
