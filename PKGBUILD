@@ -13,7 +13,7 @@ optdepends=(
   'clang: build C/C++ projects with Clang'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8d4baa3d95b7a688e06a92ba3d6869a15a98ebed4e6ac3168b208dd87e7e9871')
+sha256sums=('90483c273c77e9e4b5c706a098795bfe5343258c98d730284c49a65bc353f77b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
