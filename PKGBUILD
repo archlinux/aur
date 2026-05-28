@@ -2,7 +2,7 @@
 
 _pkgname=sing-box
 pkgname=sing-box-extended
-_pkgver="1.13.11-extended-2.1.0"
+_pkgver="1.13.12-extended-2.1.1"
 pkgver="${_pkgver//-/\~}"
 pkgrel=1
 
@@ -14,7 +14,7 @@ license=("LicenseRef-${pkgname}")
 makedepends=('go')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/shtorm-7/sing-box-extended/archive/v$_pkgver.tar.gz"
         "sing-box.rules")
-sha256sums=('5aa27739c51d1e2c6560166ee8ecb23f07c314fb70605a42759cb1b8c35eec8a'
+sha256sums=('fe5367f0895296df48e884215a302d680eca3f37bb2353a7495d9761eef4aa06'
             '1365536e1875043b969e2e18d7313ab7c6f7f9f63387f25506bb04362b44f206')
 conflicts=($_pkgname "$_pkgname-git" "$_pkgname-beta" "$pkgname-bin" )
 depends=("glibc")
@@ -29,7 +29,7 @@ prepare() {
     go mod download -modcacherw
 }
 
-_tags=with_gvisor,with_quic,with_dhcp,with_wireguard,with_utls,with_acme,with_clash_api,with_tailscale
+_tags=with_gvisor,with_quic,with_dhcp,with_wireguard,with_utls,with_acme,with_clash_api,with_tailscale,with_masque,with_mtproxy,with_manager,with_admin_panel
 build(){
     cd "${pkgname}-${_pkgver}"
 
