@@ -1,0 +1,14 @@
+post_install() {
+  echo "=== display-tui installed ==="
+  echo ""
+  echo "You can launch Display TUI via your application launcher or by running 'display-tui' in your terminal."
+  echo "A .desktop file has been installed globally, along with the icon."
+  echo ""
+  echo "Note: The desktop entry uses 'xdg-terminal-exec'. Make sure you have a terminal configured to handle it,"
+  echo "or edit the desktop file if needed."
+  echo "==============================="
+}
+
+post_upgrade() {
+  post_install
+}
