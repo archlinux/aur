@@ -1,0 +1,24 @@
+From ee896bce94d266b3cdfd2731b954080e9b89932d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sat, 17 Jan 2026 23:53:07 +0100
+Subject: [PATCH] Adjust desktop entry
+
+Rename the launcher command while keeping the translated desktop name.
+---
+ plugins/gtk/lxhotkey-gtk.desktop.in | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/plugins/gtk/lxhotkey-gtk.desktop.in b/plugins/gtk/lxhotkey-gtk.desktop.in
+index 682ac8a..70af61f 100644
+--- a/plugins/gtk/lxhotkey-gtk.desktop.in
++++ b/plugins/gtk/lxhotkey-gtk.desktop.in
+@@ -4,8 +4,7 @@ Icon=preferences-desktop-keyboard
+ _Name=Setup Hot Keys
+ _Comment=View and change Window Manager global shortcuts
+ _Keywords=hotkey;shortcut;system;settings;
+ Categories=DesktopSettings;Settings;Core;GTK;
+-NotShowIn=GNOME;KDE;XFCE;MATE;
+-Exec=lxhotkey --gui=gtk
++Exec=labhotkey --gui=gtk
+ StartupNotify=true
+ Terminal=false

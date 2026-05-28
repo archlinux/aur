@@ -1,0 +1,2239 @@
+diff --git a/configure.ac b/configure.ac
+index 6082c5e..60dee98 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -63,7 +63,7 @@ else
+ fi
+ 
+ dnl Test for required libraries
+-pkg_modules="libfm >= 1.2.0 x11"
++pkg_modules="glib-2.0 libxml-2.0 x11"
+ PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+ AC_SUBST(PACKAGE_CFLAGS)
+ AC_SUBST(PACKAGE_LIBS)
+@@ -96,9 +96,6 @@ AM_CONDITIONAL(WITH_GTK, [test x$with_gtk = xyes])
+ AC_SUBST(GTK_CFLAGS)
+ AC_SUBST(GTK_LIBS)
+ 
+-dnl Test for libunistring for correct UTF-8 printf
+-AC_CHECK_LIB(unistring, ulc_fprintf)
+-
+ dnl Supress extra linking
+ AC_MSG_CHECKING([whether $LD accepts --as-needed])
+ case `$LD --as-needed -v 2>&1 </dev/null` in
+diff --git a/lxhotkey.pc.in b/lxhotkey.pc.in
+index ba2933d..5c4e9f0 100644
+--- a/lxhotkey.pc.in
++++ b/lxhotkey.pc.in
+@@ -6,7 +6,6 @@ pluginsdir=${pkglibdir}
+ 
+ Name: lxhotkey
+ Description: A lightweight global keyboard shortcuts configurator.
+-Requires: libfm >= 1.2.0
+ Version: @VERSION@
+ Libs: 
+ Cflags: -I${includedir}
+diff --git a/man/lxhotkey.1.in b/man/lxhotkey.1.in
+index 7a2fdba..63c0f7c 100644
+--- a/man/lxhotkey.1.in
++++ b/man/lxhotkey.1.in
+@@ -8,9 +8,9 @@ LXHotkey \- A lightweight global keyboard shortcuts configurator
+ .B lxhotkey
+ [ command ]
+ .SH DESCRIPTION
+-\fBLXHotkey\fP is an universal application for the Lightweight X11 Desktop
+-Environment (\fBLXDE\fP) which allows view and change global keyboard shortcuts
+-for Window Manager actions, including ones to start applications.
++\fBLXHotkey\fP allows viewing and changing global keyboard shortcuts
++for supported window managers and compositors, including shortcuts
++used to start applications.
+ .SH OPTIONS
+ .SS Command line interface:
+ .TP 20
+@@ -38,6 +38,8 @@ start with GUI of \fItype\fR
+ .SH SUPPORTED WINDOW MANAGERS
+ .PD 0
+ .TP
++.I labwc
++.TP
+ .I Openbox
+ 
+ .SH AUTHOR
+diff --git a/plugins/Makefile.am b/plugins/Makefile.am
+index 315a631..520c16f 100644
+--- a/plugins/Makefile.am
++++ b/plugins/Makefile.am
+@@ -1,32 +1,5 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-## common flags for all plugins
+-AM_CPPFLAGS = \
+-	-I$(top_srcdir) \
+-	-I$(top_srcdir)/src \
+-	$(PACKAGE_CFLAGS)
+-
+-AM_LDFLAGS = \
+-	-module -avoid-version -shared -export-dynamic -no-undefined \
+-	-rpath $(libdir)/lxhotkey $(PACKAGE_LIBS)
+-
+-## modules list
+-pkglibdir = $(libdir)/lxhotkey
+-pkglib_LTLIBRARIES = ob.la
+-if WITH_GTK
+-pkglib_LTLIBRARIES += gtk.la
+-endif
+-
+-## Openbox module
+-ob_la_SOURCES = openbox/openbox.c
+-ob_la_LIBADD = -lfm-extra
+-
+-# GTK module
+-gtk_la_SOURCES = gtk/gtk.c gtk/edit.c
+-gtk_la_CFLAGS = $(GTK_CFLAGS)
+-gtk_la_LIBADD = $(GTK_LIBS)
+-
+-
+ # .desktop files
+ desktopdir=$(datadir)/applications
+ desktop_in_files =
+@@ -38,13 +11,8 @@ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+ 
+ EXTRA_DIST = \
+ 	gtk/lxhotkey-gtk.desktop.in gtk/lxhotkey-gtk.desktop \
+-	gtk/edit.h
++	gtk/edit.h \
++	gtk/gtk.c gtk/edit.c \
++	openbox/openbox.c openbox/xml_compat.h openbox/xml_compat.c
+ 
+ DISTCLEANFILES = gtk/lxhotkey-gtk.desktop
+-
+-install-exec-hook:
+-	rm -f $(DESTDIR)$(pkglibdir)/*.la
+-
+-PLUGINS_INSTALLED = $(pkglib_LTLIBRARIES:.la=.so)
+-uninstall-hook:
+-	cd $(DESTDIR)$(pkglibdir) && rm -f $(PLUGINS_INSTALLED) || true
+diff --git a/plugins/gtk/edit.c b/plugins/gtk/edit.c
+index 1bce084..46721dd 100644
+--- a/plugins/gtk/edit.c
++++ b/plugins/gtk/edit.c
+@@ -104,12 +104,16 @@ static void fill_edit_frame(PluginData *data, const LXHotkeyAttr *opt,
+     while (subopts)
+     {
+         sub = subopts->data;
++        if (sub->name == NULL || sub->name[0] == '\0') {
++            subopts = subopts->next;
++            continue;
++        }
+         /* ignore existing opts */
+         for (l = exempt; l; l = l->next)
+             if (strcmp(sub->name, ((LXHotkeyAttr *)l->data)->name) == 0)
+                 break;
+         if (l == NULL)
+-            gtk_list_store_insert_with_values(names_store, NULL, i++, 0, _(sub->name),
++            gtk_list_store_insert_with_values(names_store, NULL, i++, 0, sub->name,
+                                                                       1, sub->name,
+                                                                       2, sub, -1);
+         subopts = subopts->next;
+@@ -185,8 +189,8 @@ static void on_save(GtkAction *action, PluginData *data)
+     LXHotkeyApp *app = NULL;
+     GtkTreeModel *model;
+     GtkTreeIter iter;
+-    LXHotkeyGlobal new_act;
+-    LXHotkeyApp new_app;
++    LXHotkeyGlobal new_act = { 0 };
++    LXHotkeyApp new_app = { 0 };
+     gboolean ok = FALSE;
+ 
+     if (data->current_page == data->acts)
+@@ -206,17 +210,9 @@ static void on_save(GtkAction *action, PluginData *data)
+         if (act)
+         {
+             /* global edited */
+-            if (!options_equal(act->actions, new_act.actions))
+-            {
+-                /* actions list changed, remove old binding and add new */
+-                LXHotkeyGlobal rem_act = *act;
+-
+-                rem_act.accel1 = rem_act.accel2 = NULL;
+-                if (!data->cb->set_wm_key(*data->config, &rem_act, &error))
+-                    goto _exit;
+-            }
+-            else if (g_strcmp0(act->accel1, new_act.accel1) == 0 &&
+-                     g_strcmp0(act->accel2, new_act.accel2) == 0)
++            if (options_equal(act->actions, new_act.actions) &&
++                g_strcmp0(act->accel1, new_act.accel1) == 0 &&
++                g_strcmp0(act->accel2, new_act.accel2) == 0)
+                 /* nothing was changed */
+                 goto _exit;
+         }
+@@ -241,10 +237,10 @@ static void on_save(GtkAction *action, PluginData *data)
+         if (app)
+         {
+             /* app edited */
+-            if (g_strcmp0(app->exec, new_app.exec) != 0 ||
+-                !options_equal(app->options, new_app.options))
++            new_app.data1 = app->data1;
++            new_app.data2 = app->data2;
++            if (!options_equal(app->options, new_app.options))
+             {
+-                /* exec line or options list changed, remove old binding and add new */
+                 LXHotkeyApp rem_app = *app;
+ 
+                 rem_app.accel1 = rem_app.accel2 = NULL;
+@@ -252,7 +248,8 @@ static void on_save(GtkAction *action, PluginData *data)
+                     goto _exit;
+             }
+             else if (g_strcmp0(app->accel1, new_app.accel1) == 0 &&
+-                     g_strcmp0(app->accel2, new_app.accel2) == 0)
++                     g_strcmp0(app->accel2, new_app.accel2) == 0 &&
++                     g_strcmp0(app->exec, new_app.exec) == 0)
+                 /* nothing was changed */
+                 goto _exit;
+         }
+@@ -610,24 +607,26 @@ static GList *copy_options(GList *orig)
+ }
+ 
+ static void add_options_to_tree(GtkTreeStore *store, GtkTreeIter *parent_iter,
+-                                GList *list)
++                                GList *list, gboolean raw_names)
+ {
+     LXHotkeyAttr *opt;
+     GtkTreeIter iter;
+     const char *val;
++    const char *name;
+ 
+     while (list)
+     {
+         opt = list->data;
+         val = opt->values ? opt->values->data : NULL;
++        name = raw_names ? opt->name : _(opt->name);
+         gtk_tree_store_insert_with_values(store, &iter, parent_iter, -1,
+                                           0, opt->name,
+                                           1, val,
+                                           2, opt,
+-                                          3, _(opt->name),
++                                          3, name,
+                                           4, (val && val[0]) ? _(val) : NULL, -1);
+         if (opt->subopts)
+-            add_options_to_tree(store, &iter, opt->subopts);
++            add_options_to_tree(store, &iter, opt->subopts, raw_names);
+         list = list->next;
+     }
+ }
+@@ -640,7 +639,8 @@ static void update_options_tree(PluginData *data)
+                                                 G_TYPE_STRING, /* shown name */
+                                                 G_TYPE_STRING); /* shown value */
+ 
+-    add_options_to_tree(store, NULL, data->edit_options_copy);
++    add_options_to_tree(store, NULL, data->edit_options_copy,
++                        data->current_page == data->acts);
+     gtk_tree_view_set_model(data->edit_tree, GTK_TREE_MODEL(store));
+     gtk_tree_view_expand_all(data->edit_tree);
+     g_object_unref(store);
+@@ -1143,12 +1143,10 @@ void _edit_action(PluginData *data, GError **error)
+         gtk_alignment_set_padding(GTK_ALIGNMENT(align), 0, 0, 4, 0);
+         gtk_container_add(GTK_CONTAINER(align), GTK_WIDGET(data->edit_exec));
+         gtk_box_pack_start(xbox, align, FALSE, TRUE, 0);
+-        align = gtk_alignment_new(0.0, 0.0, 0.0, 0.0);
+-        gtk_container_add(GTK_CONTAINER(align), gtk_label_new(_("Options:")));
+-        gtk_box_pack_start(xbox, align, FALSE, TRUE, 0);
+     }
+     data->edit_tree = GTK_TREE_VIEW(gtk_tree_view_new());
+-    gtk_box_pack_start(xbox, GTK_WIDGET(data->edit_tree), TRUE, TRUE, 0);
++    if (is_action)
++        gtk_box_pack_start(xbox, GTK_WIDGET(data->edit_tree), TRUE, TRUE, 0);
+     gtk_container_add(GTK_CONTAINER(widget), GTK_WIDGET(xbox));
+     gtk_box_pack_start(vbox, widget, FALSE, TRUE, 0);
+     gtk_tree_view_insert_column_with_attributes(data->edit_tree, 0, NULL,
+@@ -1169,15 +1167,18 @@ void _edit_action(PluginData *data, GError **error)
+     gtk_label_set_markup(GTK_LABEL(widget), _("<b>Name:</b>"));
+     gtk_container_add(GTK_CONTAINER(align), widget);
+     gtk_box_pack_start(xbox, align, FALSE, TRUE, 0);
+-    align = gtk_alignment_new(0.0, 0.0, 1.0, 1.0);
++    align = gtk_alignment_new(0.0, 0.0, 1.0, 0.0);
+     gtk_alignment_set_padding(GTK_ALIGNMENT(align), 0, 0, 4, 0);
+     widget = gtk_hbox_new(FALSE, 0);
+     data->edit_option_name = gtk_label_new(NULL);
+     gtk_box_pack_start(GTK_BOX(widget), data->edit_option_name, FALSE, TRUE, 0);
+     data->edit_actions = (GtkComboBox *)gtk_combo_box_new();
++    gtk_widget_set_size_request(GTK_WIDGET(data->edit_actions), -1, 28);
+     g_signal_connect(data->edit_actions, "changed",
+                      G_CALLBACK(on_option_changed), data);
+     column = gtk_cell_renderer_text_new();
++    g_object_set(column, "ypad", 0, NULL);
++    gtk_cell_renderer_text_set_fixed_height_from_font(GTK_CELL_RENDERER_TEXT(column), 1);
+     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(data->edit_actions), column, TRUE);
+     gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(data->edit_actions), column,
+                                    "text", 0, NULL);
+@@ -1190,13 +1191,16 @@ void _edit_action(PluginData *data, GError **error)
+     gtk_label_set_markup(GTK_LABEL(widget), _("<b>Value:</b>"));
+     gtk_container_add(GTK_CONTAINER(data->edit_value_label), widget);
+     gtk_box_pack_start(xbox, data->edit_value_label, FALSE, TRUE, 0);
+-    align = gtk_alignment_new(0.0, 0.0, 1.0, 1.0);
++    align = gtk_alignment_new(0.0, 0.0, 1.0, 0.0);
+     gtk_alignment_set_padding(GTK_ALIGNMENT(align), 0, 0, 4, 0);
+     widget = gtk_hbox_new(FALSE, 0);
+     data->edit_value = (GtkEntry *)gtk_entry_new();
+     gtk_box_pack_start(GTK_BOX(widget), GTK_WIDGET(data->edit_value), TRUE, TRUE, 0);
+     data->edit_values = (GtkComboBox *)gtk_combo_box_new();
++    gtk_widget_set_size_request(GTK_WIDGET(data->edit_values), -1, 28);
+     column = gtk_cell_renderer_text_new();
++    g_object_set(column, "ypad", 0, NULL);
++    gtk_cell_renderer_text_set_fixed_height_from_font(GTK_CELL_RENDERER_TEXT(column), 1);
+     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(data->edit_values), column, TRUE);
+     gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(data->edit_values), column,
+                                    "text", 0, NULL);
+@@ -1221,7 +1225,7 @@ void _edit_action(PluginData *data, GError **error)
+     g_signal_connect(align, "clicked", G_CALLBACK(on_cancel_button), data);
+     gtk_box_pack_end(GTK_BOX(widget), align, FALSE, TRUE, 0);
+     gtk_container_add(GTK_CONTAINER(data->edit_frame), GTK_WIDGET(xbox));
+-    gtk_box_pack_start(vbox, data->edit_frame, TRUE, TRUE, 0);
++    gtk_box_pack_start(vbox, data->edit_frame, FALSE, TRUE, 0);
+ 
+     gtk_widget_show_all(GTK_WIDGET(vbox));
+     gtk_widget_hide(data->edit_frame);
+@@ -1235,7 +1239,12 @@ void _edit_action(PluginData *data, GError **error)
+     {
+         /* AddAction is visible for action only */
+         GtkAction *act = gtk_ui_manager_get_action(ui, "/toolbar/AddAction");
++
+         gtk_action_set_visible(act, FALSE);
++        gtk_action_set_visible(data->add_option_button, FALSE);
++        gtk_action_set_visible(data->rm_option_button, FALSE);
++        gtk_action_set_visible(data->edit_option_button, FALSE);
++        gtk_action_set_visible(data->add_suboption_button, FALSE);
+     }
+     gtk_container_add(GTK_CONTAINER(data->edit_window), GTK_WIDGET(vbox));
+     g_signal_connect(gtk_tree_view_get_selection(data->edit_tree), "changed",
+@@ -1243,5 +1252,8 @@ void _edit_action(PluginData *data, GError **error)
+     update_options_tree(data);
+     update_edit_toolbar(data);
+     gtk_window_present(data->edit_window);
+-    gtk_widget_grab_focus(GTK_WIDGET(data->edit_tree));
++    if (data->edit_exec)
++        gtk_widget_grab_focus(GTK_WIDGET(data->edit_exec));
++    else
++        gtk_widget_grab_focus(GTK_WIDGET(data->edit_tree));
+ }
+diff --git a/plugins/gtk/edit.h b/plugins/gtk/edit.h
+index 9130891..fbdf7c1 100644
+--- a/plugins/gtk/edit.h
++++ b/plugins/gtk/edit.h
+@@ -62,7 +62,7 @@ typedef struct {
+     gboolean use_primary;
+ } PluginData;
+ 
+-#define LXHOTKEY_ICON "preferences-desktop-keyboard"
++#define LXHOTKEY_ICON "labwc"
+ 
+ void _main_refresh(PluginData *data);
+ 
+diff --git a/plugins/gtk/gtk.c b/plugins/gtk/gtk.c
+index c7c7ed3..dc5665f 100644
+--- a/plugins/gtk/gtk.c
++++ b/plugins/gtk/gtk.c
+@@ -141,7 +141,7 @@ static void on_del(GtkAction *act, PluginData *data)
+         if (gtk_tree_selection_get_selected(gtk_tree_view_get_selection(data->apps),
+                                             &model, &iter))
+             gtk_tree_model_get(model, &iter, 3, &app, -1);
+-        if (act)
++        if (app)
+         {
+             LXHotkeyApp rem_app = *app;
+ 
+@@ -172,13 +172,17 @@ static void on_about(GtkAction *act, PluginData *data)
+         "Andriy Grytsenko <andrej@rep.kiev.ua>",
+         NULL
+     };
++    const gchar *labwc[] = {
++        "sfs <sfslinux@gmail.com> + GPT-5.4",
++        NULL
++    };
+     /* TRANSLATORS: Replace this string with your names, one name per line. */
+     gchar *translators = _("translator-credits");
+ 
+     about = GTK_ABOUT_DIALOG(gtk_about_dialog_new());
+     gtk_window_set_icon_name(GTK_WINDOW(about), LXHOTKEY_ICON);
+     gtk_about_dialog_set_version(about, VERSION);
+-    gtk_about_dialog_set_program_name(about, "LXHotkey"); //FIXME: translated?
++    gtk_about_dialog_set_program_name(about, "labhotkey");
+     gtk_about_dialog_set_logo_icon_name(about, LXHOTKEY_ICON);
+ 
+     gtk_about_dialog_set_copyright(about, _("Copyright (C) 2016-2025"));
+@@ -198,6 +202,7 @@ static void on_about(GtkAction *act, PluginData *data)
+                                         "Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.");
+     gtk_about_dialog_set_website(about, "http://lxde.org/");
+     gtk_about_dialog_set_authors(about, authors);
++    gtk_about_dialog_add_credit_section(about, "labwc", labwc);
+     gtk_about_dialog_set_translator_credits(about, translators);
+     gtk_dialog_run(GTK_DIALOG(about));
+     gtk_widget_destroy(GTK_WIDGET(about));
+@@ -288,16 +293,16 @@ static void set_actions_list(PluginData *data)
+             if (opt->values)
+             {
+                 if (attr->subopts->next)
+-                    _val = val = g_strdup_printf("%s:%s, ...", _(opt->name), _((char *)opt->values->data));
++                    _val = val = g_strdup_printf("%s:%s, ...", opt->name, _((char *)opt->values->data));
+                 else
+-                    _val = val = g_strdup_printf("%s:%s", _(opt->name), _((char *)opt->values->data));
++                    _val = val = g_strdup_printf("%s:%s", opt->name, _((char *)opt->values->data));
+             }
+             else if (attr->subopts->next)
+-                _val = val = g_strdup_printf("%s, ...", _(opt->name));
++                _val = val = g_strdup_printf("%s, ...", opt->name);
+             else
+-                val = _(opt->name);
++                val = opt->name;
+         }
+-        gtk_list_store_insert_with_values(model, &iter, -1, 0, _(attr->name),
++        gtk_list_store_insert_with_values(model, &iter, -1, 0, attr->name,
+                                                             1, val,
+                                                             2, act->accel1,
+                                                             3, act->accel2,
+@@ -348,25 +353,6 @@ static void module_gtk_run(const gchar *wm, const LXHotkeyPluginInit *cb,
+         gtk_init(&inited, NULL);
+     inited = 1;
+ 
+-    /* force style for GtkComboBox, it's ugly when list reaches screen bottom */
+-#if GTK_CHECK_VERSION(3, 0, 0)
+-    GtkCssProvider *provider = gtk_css_provider_new();
+-    if (gtk_css_provider_load_from_data(provider,
+-                                        "#gtk-widget {\n"
+-                                        "-GtkComboBox-appears-as-list : 1;\n"
+-                                        "}\n", -1, NULL))
+-        gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
+-                                                  GTK_STYLE_PROVIDER(provider),
+-                                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+-    g_object_unref(provider);
+-#else
+-    gtk_rc_parse_string("style 'default-style'\n"
+-                        "{\n"
+-                        "  GtkComboBox::appears-as-list = 1\n"
+-                        "}\n"
+-                        "class 'GtkWidget' style 'default-style'");
+-#endif
+-
+     memset(&data, 0, sizeof(data));
+     data.wm = wm;
+     data.cb = cb;
+@@ -383,6 +369,7 @@ static void module_gtk_run(const gchar *wm, const LXHotkeyPluginInit *cb,
+     win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+     gtk_window_set_default_size(GTK_WINDOW(win), 800, 480);
+     gtk_window_set_icon_name(GTK_WINDOW(win), LXHOTKEY_ICON);
++    gtk_window_set_title(GTK_WINDOW(win), "labhotkey");
+     g_signal_connect(win, "unmap", G_CALLBACK(gtk_main_quit), NULL);
+ 
+     vbox = (GtkBox *)gtk_vbox_new(FALSE, 0);
+@@ -508,13 +495,14 @@ static void module_gtk_alert(GError *error)
+ 
+ static void module_gtk_init(int argc, char **argv)
+ {
+-    if (!inited)
++    if (!inited) {
++        g_set_prgname("labhotkey");
++        gdk_set_program_class("labhotkey");
+         gtk_init(&argc, &argv);
++    }
+     inited = 1;
+ }
+ 
+-FM_DEFINE_MODULE(lxhotkey_gui, gtk)
+-
+ LXHotkeyGUIPluginInit fm_module_init_lxhotkey_gui = {
+     .run = module_gtk_run,
+     .alert = module_gtk_alert,
+diff --git a/plugins/openbox/openbox.c b/plugins/openbox/openbox.c
+index 74ee21a..3d5e803 100644
+--- a/plugins/openbox/openbox.c
++++ b/plugins/openbox/openbox.c
+@@ -30,7 +30,8 @@
+ #include <X11/Xlib.h>
+ #include <X11/Xatom.h>
+ 
+-#include <libfm/fm-extra.h>
++#include <signal.h>
++#include "xml_compat.h"
+ #include <glib/gi18n.h>
+ 
+ #include <fnmatch.h>
+@@ -50,6 +51,47 @@ enum LXHotkeyObError {
+     LXKEYS_PARSE_ERROR
+ };
+ 
++static gboolean string_mentions_labwc(const char *value)
++{
++    char *lower;
++    gboolean ret;
++
++    if (value == NULL || value[0] == '\0')
++        return FALSE;
++    lower = g_ascii_strdown(value, -1);
++    ret = g_strrstr(lower, "labwc") != NULL;
++    g_free(lower);
++    return ret;
++}
++
++static gboolean session_is_labwc(void)
++{
++    return (g_getenv("LABWC_PID") != NULL && g_getenv("LABWC_PID")[0] != '\0')
++        || string_mentions_labwc(g_getenv("DESKTOP_SESSION"))
++        || string_mentions_labwc(g_getenv("GDMSESSION"))
++        || string_mentions_labwc(g_getenv("XDG_CURRENT_DESKTOP"));
++}
++
++static gboolean reconfigure_labwc(GError **error)
++{
++    const char *pid = g_getenv("LABWC_PID");
++    gint status = 0;
++
++    if (pid != NULL && pid[0] != '\0') {
++        gint64 labwc_pid = g_ascii_strtoll(pid, NULL, 10);
++
++        if (labwc_pid > 0 && kill((int)labwc_pid, SIGHUP) == 0)
++            return TRUE;
++    }
++    if (g_spawn_command_line_sync("labwc --reconfigure", NULL, NULL, &status, NULL)
++        && g_spawn_check_exit_status(status, NULL))
++        return TRUE;
++
++    g_set_error_literal(error, LXKEYS_OB_ERROR, LXKEYS_FILE_ERROR,
++                        _("Failed to reconfigure labwc."));
++    return FALSE;
++}
++
+ 
+ /* simple functions to manage LXHotkeyAttr data type */
+ static inline LXHotkeyAttr *lxhotkey_attr_new(void)
+@@ -168,6 +210,12 @@ static gboolean restart_openbox(GError **error)
+     XEvent ce;
+     gboolean ret = TRUE;
+ 
++    if (dpy == NULL) {
++        g_set_error_literal(error, LXKEYS_OB_ERROR, LXKEYS_FILE_ERROR,
++                            _("Failed to reconfigure Openbox."));
++        return FALSE;
++    }
++
+     ce.xclient.type = ClientMessage;
+     ce.xclient.message_type = XInternAtom(dpy, "_OB_CONTROL", True);
+     ce.xclient.display = dpy;
+@@ -203,18 +251,8 @@ static gboolean restart_openbox(GError **error)
+ 
+ static char * values_enabled[] = { N_("yes"), N_("no"), NULL };
+ 
+-static LXHotkeyAttr options_startupnotify[] = {
+-    { N_("enabled"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+-    { N_("wmclass"), NULL, NULL, NULL, FALSE },
+-    { N_("name"), NULL, NULL, NULL, FALSE },
+-    { N_("icon"), NULL, NULL, NULL, FALSE },
+-    { NULL }
+-};
+-
+ static LXHotkeyAttr options_Execute[] = {
+     { N_("command"), NULL, NULL, NULL, FALSE },
+-    { N_("prompt"), NULL, NULL, NULL, FALSE },
+-    { N_("startupnotify"), NULL, TO_BE_CONVERTED(options_startupnotify), NULL, FALSE },
+     { NULL }
+ };
+ 
+@@ -296,7 +334,6 @@ static LXHotkeyAttr options_Restart[] = {
+ };
+ 
+ static LXHotkeyAttr options_Exit[] = {
+-    { N_("prompt"), BOOLEAN_VALUES, NULL, NULL, FALSE },
+     { NULL }
+ };
+ 
+@@ -480,6 +517,7 @@ typedef struct {
+ 
+ typedef struct {
+     char *path;
++    gboolean is_labwc;
+     FmXmlFile *xml;
+     FmXmlFileItem *keyboard; /* the <keyboard> section */
+     GList *actions; /* no-exec actions, in reverse order */
+@@ -819,7 +857,7 @@ static void obcfg_free(gpointer config)
+     ObXmlFile *cfg = (ObXmlFile *)config;
+ 
+     g_free(cfg->path);
+-    g_object_unref(cfg->xml);
++    fm_xml_file_free(cfg->xml);
+     g_list_free_full(cfg->actions, (GDestroyNotify)lkxeys_action_free);
+     g_list_free_full(cfg->execs, (GDestroyNotify)lkxeys_app_free);
+     clear_stack(cfg);
+@@ -839,7 +877,7 @@ static gpointer obcfg_load(gpointer config, GError **error)
+         FmXmlFile *old_xml = cfg->xml;
+ 
+         cfg->xml = fm_xml_file_new(old_xml);
+-        g_object_unref(old_xml);
++        fm_xml_file_free(old_xml);
+         g_list_free_full(cfg->actions, (GDestroyNotify)lkxeys_action_free);
+         g_list_free_full(cfg->execs, (GDestroyNotify)lkxeys_app_free);
+         cfg->actions = NULL;
+@@ -847,6 +885,7 @@ static gpointer obcfg_load(gpointer config, GError **error)
+         cfg->keyboard = NULL;
+     } else {
+         const char *session;
++        char *labwc_path;
+ 
+         /* prepare data */
+         cfg = g_new0(ObXmlFile, 1);
+@@ -869,6 +908,7 @@ static gpointer obcfg_load(gpointer config, GError **error)
+             session = g_getenv("GDMSESSION");
+         if (session == NULL)
+             session = g_getenv("XDG_CURRENT_DESKTOP");
++        labwc_path = g_build_filename(g_get_user_config_dir(), "labwc", "rc.xml", NULL);
+         if (g_strcmp0(session, "Lubuntu") == 0)
+             cfg->path = g_build_filename(g_get_user_config_dir(), "openbox",
+                                          "lubuntu-rc.xml", NULL);
+@@ -878,19 +918,26 @@ static gpointer obcfg_load(gpointer config, GError **error)
+         else if (g_strcmp0(session, "LXDE-pi") == 0)
+             cfg->path = g_build_filename(g_get_user_config_dir(), "openbox",
+                                          "lxde-pi-rc.xml", NULL);
++        else if (session_is_labwc() || g_file_test(labwc_path, G_FILE_TEST_EXISTS)) {
++            cfg->path = labwc_path;
++            cfg->is_labwc = TRUE;
++            labwc_path = NULL;
++        }
+         else
+             cfg->path = g_build_filename(g_get_user_config_dir(), "openbox",
+                                          "rc.xml", NULL);
++        g_free(labwc_path);
+     }
+ 
+-    /* try to load ~/.config/openbox/$xml */
++    /* try to load the user rc.xml first */
+     if (!g_file_get_contents(cfg->path, &contents, &len, NULL)) {
+-        /* if it does not exist then try to load $XDG_SYSTEM_CONFDIR/openbox/rc.xml */
++        /* if it does not exist then try system rc.xml in XDG config dirs */
+         const gchar * const *dirs;
+         char *path = NULL;
+ 
+         for (dirs = g_get_system_config_dirs(); dirs[0]; dirs++) {
+-            path = g_build_filename(dirs[0], "openbox", "rc.xml", NULL);
++            path = g_build_filename(dirs[0], cfg->is_labwc ? "labwc" : "openbox",
++                                    "rc.xml", NULL);
+             if (g_file_get_contents(path, &contents, &len, NULL))
+                 break;
+             g_free(path);
+@@ -923,7 +970,7 @@ static gboolean obcfg_save(gpointer config, GError **error)
+     gsize len;
+     gboolean ret = FALSE;
+ 
+-    /* save as ~/.config/openbox/$xml */
++    /* save as ~/.config/{openbox,labwc}/$xml */
+     contents = fm_xml_file_to_data(cfg->xml, &len, error);
+     if (contents) {
+         /* workaround on libfm-extra bug on save data without DTD */
+@@ -934,7 +981,7 @@ static gboolean obcfg_save(gpointer config, GError **error)
+         g_free(contents);
+     }
+     if (ret)
+-        ret = restart_openbox(error);
++        ret = cfg->is_labwc ? reconfigure_labwc(error) : restart_openbox(error);
+     return ret;
+ }
+ 
+@@ -974,7 +1021,7 @@ static FmXmlFileItem *make_new_xml_item(ObXmlFile *cfg, LXHotkeyAttr *opt,
+     LXHotkeyAttr *act = NULL;
+ 
+     if (is_action) {
+-        item = fm_xml_file_item_new(ObXmlFile_action);
++        item = fm_xml_file_item_new(cfg->xml, ObXmlFile_action);
+         fm_xml_file_item_set_attribute(item, "name", opt->name);
+     } else {
+         FmXmlFileTag tag = FM_XML_FILE_TAG_NOT_HANDLED;
+@@ -990,7 +1037,7 @@ static FmXmlFileItem *make_new_xml_item(ObXmlFile *cfg, LXHotkeyAttr *opt,
+             cfg->added_tags = g_list_prepend(cfg->added_tags, GUINT_TO_POINTER(tag));
+         } else
+             tag = GPOINTER_TO_UINT(l->data);
+-        item = fm_xml_file_item_new(tag);
++        item = fm_xml_file_item_new(cfg->xml, tag);
+         if (opt->values)
+             fm_xml_file_item_append_text(item, opt->values->data, -1, FALSE);
+     }
+@@ -1016,7 +1063,7 @@ static FmXmlFileItem *make_new_xml_binding(ObXmlFile *cfg, GList *actions,
+                                            const gchar *accel, GList **opts,
+                                            const gchar *exec)
+ {
+-    FmXmlFileItem *binding = fm_xml_file_item_new(ObXmlFile_keybind);
++    FmXmlFileItem *binding = fm_xml_file_item_new(cfg->xml, ObXmlFile_keybind);
+     FmXmlFileItem *item, *opt;
+     char *obkey = key_to_obkey(accel);
+ 
+@@ -1026,10 +1073,10 @@ static FmXmlFileItem *make_new_xml_binding(ObXmlFile *cfg, GList *actions,
+     if (exec) {
+         /* make <action name='Execute'><command>exec</command>..opts..</action>
+            instead of ..<acts>.. */
+-        item = fm_xml_file_item_new(ObXmlFile_action);
++        item = fm_xml_file_item_new(cfg->xml, ObXmlFile_action);
+         fm_xml_file_item_set_attribute(item, "name", "Execute");
+         fm_xml_file_item_append_child(binding, item);
+-        opt = fm_xml_file_item_new(ObXmlFile_command);
++        opt = fm_xml_file_item_new(cfg->xml, ObXmlFile_command);
+         fm_xml_file_item_append_text(opt, exec, -1, FALSE);
+         fm_xml_file_item_append_child(item, opt);
+     }
+@@ -1052,6 +1099,80 @@ static inline void replace_key(FmXmlFileItem *item, const char *key, char **kptr
+     *kptr = g_strdup(key);
+ }
+ 
++static gboolean key_is_empty(const char *key)
++{
++    return key == NULL || key[0] == '\0';
++}
++
++static gboolean key_equal(const char *left, const char *right)
++{
++    char *left_ob;
++    char *right_ob;
++    gboolean ret;
++
++    if (key_is_empty(left) || key_is_empty(right))
++        return key_is_empty(left) && key_is_empty(right);
++    if (g_strcmp0(left, right) == 0)
++        return TRUE;
++    left_ob = key_to_obkey(left);
++    right_ob = key_to_obkey(right);
++    ret = g_strcmp0(left_ob, right_ob) == 0;
++    g_free(left_ob);
++    g_free(right_ob);
++    return ret;
++}
++
++static gboolean key_matches(const char *left, const char *right)
++{
++    if (key_is_empty(left) || key_is_empty(right))
++        return FALSE;
++    return key_equal(left, right);
++}
++
++static void set_execute_command(FmXmlFileItem *binding, const char *exec)
++{
++    FmXmlFileItem *action;
++    FmXmlFileItem *command;
++
++    if (binding == NULL)
++        return;
++    action = fm_xml_file_item_find_child(binding, ObXmlFile_action);
++    if (action == NULL)
++        return;
++    command = fm_xml_file_item_find_child(action, ObXmlFile_command);
++    if (command == NULL)
++        command = fm_xml_file_item_find_child(action, ObXmlFile_execute);
++    if (command != NULL)
++        fm_xml_file_item_set_scoped_text(binding, command, exec);
++}
++
++static void replace_exec(FmXmlFileItem *data1, FmXmlFileItem *data2,
++                         const char *exec, char **eptr)
++{
++    set_execute_command(data1, exec);
++    set_execute_command(data2, exec);
++    g_free(*eptr);
++    *eptr = g_strdup(exec);
++}
++
++static void replace_wm_actions(ObXmlFile *cfg, LXHotkeyGlobal *act,
++                               LXHotkeyGlobal *data)
++{
++    FmXmlFileItem *binding;
++    GList *actions = NULL;
++
++    if (act == NULL || data == NULL || act->data1 == NULL || data->accel1 == NULL)
++        return;
++    binding = make_new_xml_binding(cfg, data->actions, data->accel1, &actions, NULL);
++    fm_xml_file_item_replace_with(act->data1, binding);
++    if (act->data2 != NULL && act->accel2 != NULL) {
++        binding = make_new_xml_binding(cfg, data->actions, act->accel2, NULL, NULL);
++        fm_xml_file_item_replace_with(act->data2, binding);
++    }
++    free_options(act->actions);
++    act->actions = actions;
++}
++
+ static gboolean obcfg_set_wm_key(gpointer config, LXHotkeyGlobal *data, GError **error)
+ {
+     ObXmlFile *cfg = (ObXmlFile *)config;
+@@ -1071,26 +1192,38 @@ static gboolean obcfg_set_wm_key(gpointer config, LXHotkeyGlobal *data, GError *
+     for (ll = cfg->actions; ll; ll = ll->next)
+         if (options_equal((act = ll->data)->actions, data->actions))
+             break;
++    if (ll == NULL && !key_is_empty(data->accel1)) {
++        for (ll = cfg->actions; ll; ll = ll->next) {
++            act = ll->data;
++            if (key_equal(act->accel1, data->accel1) ||
++                key_equal(act->accel2, data->accel1) ||
++                key_equal(act->accel1, data->accel2) ||
++                key_equal(act->accel2, data->accel2))
++                break;
++        }
++        if (ll == NULL)
++            act = NULL;
++    }
+     /* find if those keys are already bound elsewhere */
+     for (l = cfg->actions; l; l = l->next) {
+         if (l == ll)
+             /* it's our action */
+             continue;
+         if (data->accel1) {
+-            if (strcmp(data->accel1, ((LXHotkeyGlobal *)l->data)->accel1) == 0 ||
+-                g_strcmp0(data->accel1, ((LXHotkeyGlobal *)l->data)->accel2) == 0)
++            if (key_matches(data->accel1, ((LXHotkeyGlobal *)l->data)->accel1) ||
++                key_matches(data->accel1, ((LXHotkeyGlobal *)l->data)->accel2))
+                 goto _accel1_bound;
+         }
+         if (data->accel2) {
+-            if (g_strcmp0(data->accel2, ((LXHotkeyGlobal *)l->data)->accel1) == 0 ||
+-                g_strcmp0(data->accel2, ((LXHotkeyGlobal *)l->data)->accel2) == 0)
++            if (key_matches(data->accel2, ((LXHotkeyGlobal *)l->data)->accel1) ||
++                key_matches(data->accel2, ((LXHotkeyGlobal *)l->data)->accel2))
+                 goto _accel2_bound;
+         }
+     }
+     for (l = cfg->execs; l; l = l->next) {
+         if (data->accel1) {
+-            if (strcmp(data->accel1, ((LXHotkeyApp *)l->data)->accel1) == 0 ||
+-                g_strcmp0(data->accel1, ((LXHotkeyApp *)l->data)->accel2) == 0) {
++            if (key_matches(data->accel1, ((LXHotkeyApp *)l->data)->accel1) ||
++                key_matches(data->accel1, ((LXHotkeyApp *)l->data)->accel2)) {
+ _accel1_bound:
+                 g_set_error(error, LXKEYS_OB_ERROR, LXKEYS_FILE_ERROR,
+                             _("Hotkey '%s' is already bound to an action."),
+@@ -1099,8 +1232,8 @@ _accel1_bound:
+             }
+         }
+         if (data->accel2) {
+-            if (g_strcmp0(data->accel2, ((LXHotkeyApp *)l->data)->accel1) == 0 ||
+-                g_strcmp0(data->accel2, ((LXHotkeyApp *)l->data)->accel2) == 0) {
++            if (key_matches(data->accel2, ((LXHotkeyApp *)l->data)->accel1) ||
++                key_matches(data->accel2, ((LXHotkeyApp *)l->data)->accel2)) {
+ _accel2_bound:
+                 g_set_error(error, LXKEYS_OB_ERROR, LXKEYS_FILE_ERROR,
+                             _("Hotkey '%s' is already bound to an action."),
+@@ -1122,16 +1255,18 @@ _accel2_bound:
+         } else {
+             if (data->accel2 == NULL) {
+                 /* new data contains only one binding */
+-                if (g_strcmp0(act->accel1, data->accel1) == 0) {
++                if (key_equal(act->accel1, data->accel1)) {
+                     /* accel1 not changed, just clear accel2 */
+                     if (act->data2)
+                         fm_xml_file_item_destroy(act->data2);
+                     g_free(act->accel2);
+                     act->accel2 = NULL;
+-                } else if (g_strcmp0(act->accel2, data->accel1) == 0) {
++                } else if (key_equal(act->accel2, data->accel1)) {
+                     /* accel1 was removed */
+                     if (act->data1)
+                         fm_xml_file_item_destroy(act->data1);
++                    act->data1 = act->data2;
++                    act->data2 = NULL;
+                     g_free(act->accel1);
+                     act->accel1 = act->accel2;
+                     act->accel2 = NULL;
+@@ -1145,11 +1280,11 @@ _accel2_bound:
+                 }
+             } else if (act->accel2 == NULL) {
+                 /* new data has two bindings and old data has 1 */
+-                if (g_strcmp0(act->accel1, data->accel1) == 0) {
++                if (key_equal(act->accel1, data->accel1)) {
+                     /* add data->accel2 */
+                     act->data2 = make_new_xml_binding(cfg, data->actions, data->accel2, NULL, NULL);
+                     act->accel2 = g_strdup(data->accel2);
+-                } else if (g_strcmp0(act->accel1, data->accel2) == 0) {
++                } else if (key_equal(act->accel1, data->accel2)) {
+                     /* add data->accel1 */
+                     act->data2 = make_new_xml_binding(cfg, data->actions, data->accel1, NULL, NULL);
+                     act->accel2 = g_strdup(data->accel1);
+@@ -1161,20 +1296,20 @@ _accel2_bound:
+                 }
+             } else {
+                 /* both keys are present in old and new data */
+-                if (g_strcmp0(act->accel1, data->accel1) == 0) {
+-                    if (g_strcmp0(act->accel2, data->accel2) != 0)
++                if (key_equal(act->accel1, data->accel1)) {
++                    if (!key_equal(act->accel2, data->accel2))
+                         /* just accel2 is changed */
+                         replace_key(act->data2, data->accel2, &act->accel2);
+                     /* else nothing changed */
+-                } else if (g_strcmp0(act->accel1, data->accel2) == 0) {
+-                    if (g_strcmp0(act->accel2, data->accel1) != 0)
++                } else if (key_equal(act->accel1, data->accel2)) {
++                    if (!key_equal(act->accel2, data->accel1))
+                         /* replace accel2 with data->accel1 */
+                         replace_key(act->data2, data->accel1, &act->accel2);
+                     /* else keys just swapped */
+-                } else if (g_strcmp0(act->accel2, data->accel2) == 0) {
++                } else if (key_equal(act->accel2, data->accel2)) {
+                     /* just accel1 is changed */
+                     replace_key(act->data1, data->accel1, &act->accel1);
+-                } else if (g_strcmp0(act->accel2, data->accel1) == 0) {
++                } else if (key_equal(act->accel2, data->accel1)) {
+                     /* replace accel1 with data->accel2 */
+                     replace_key(act->data1, data->accel2, &act->accel1);
+                 } else {
+@@ -1183,6 +1318,8 @@ _accel2_bound:
+                     replace_key(act->data2, data->accel2, &act->accel2);
+                 }
+             }
++            if (!options_equal(act->actions, data->actions))
++                replace_wm_actions(cfg, act, data);
+         }
+     /* if not found then add a new keybinding */
+     } else if (data->accel1) {
+@@ -1222,6 +1359,7 @@ static gboolean obcfg_set_app_key(gpointer config, LXHotkeyApp *data, GError **e
+     ObXmlFile *cfg = (ObXmlFile *)config;
+     GList *l, *ll;
+     LXHotkeyApp *app = NULL;
++    gboolean same_keys = FALSE;
+ 
+     if (cfg == NULL) {
+         g_set_error_literal(error, LXKEYS_OB_ERROR, LXKEYS_FILE_ERROR,
+@@ -1232,31 +1370,56 @@ static gboolean obcfg_set_app_key(gpointer config, LXHotkeyApp *data, GError **e
+                             _("The exec line cannot be empty."));
+         return FALSE;
+     }
+-    /* find if that action(s) is present */
+-    for (ll = cfg->execs; ll; ll = ll->next)
+-        if (g_strcmp0((app = ll->data)->exec, data->exec) == 0
+-            && options_equal(app->options, data->options))
++    for (ll = cfg->execs; ll; ll = ll->next) {
++        app = ll->data;
++        if ((data->data1 != NULL &&
++             (app->data1 == data->data1 || app->data2 == data->data1)) ||
++            (data->data2 != NULL &&
++             (app->data1 == data->data2 || app->data2 == data->data2)))
+             break;
++    }
++    if (ll == NULL)
++        for (ll = cfg->execs; ll; ll = ll->next)
++            if (g_strcmp0((app = ll->data)->exec, data->exec) == 0
++                && options_equal(app->options, data->options))
++                break;
++    if (key_is_empty(data->accel2))
++        data->accel2 = NULL;
++    if (ll == NULL && !key_is_empty(data->accel1)) {
++        for (ll = cfg->execs; ll; ll = ll->next) {
++            app = ll->data;
++            if (key_equal(app->accel1, data->accel1) ||
++                key_equal(app->accel2, data->accel1) ||
++                key_equal(app->accel1, data->accel2) ||
++                key_equal(app->accel2, data->accel2))
++                break;
++        }
++        if (ll == NULL)
++            app = NULL;
++    }
++    same_keys = ll != NULL &&
++                key_equal(app->accel1, data->accel1) &&
++                key_equal(app->accel2, data->accel2);
+     /* find if those keys are already bound elsewhere */
+-    for (l = cfg->actions; l; l = l->next) {
++    for (l = same_keys ? NULL : cfg->actions; l; l = l->next) {
+         if (data->accel1) {
+-            if (strcmp(data->accel1, ((LXHotkeyGlobal *)l->data)->accel1) == 0 ||
+-                g_strcmp0(data->accel1, ((LXHotkeyGlobal *)l->data)->accel2) == 0)
++            if (key_matches(data->accel1, ((LXHotkeyGlobal *)l->data)->accel1) ||
++                key_matches(data->accel1, ((LXHotkeyGlobal *)l->data)->accel2))
+                 goto _accel1_bound;
+         }
+         if (data->accel2) {
+-            if (g_strcmp0(data->accel2, ((LXHotkeyGlobal *)l->data)->accel1) == 0 ||
+-                g_strcmp0(data->accel2, ((LXHotkeyGlobal *)l->data)->accel2) == 0)
++            if (key_matches(data->accel2, ((LXHotkeyGlobal *)l->data)->accel1) ||
++                key_matches(data->accel2, ((LXHotkeyGlobal *)l->data)->accel2))
+                 goto _accel2_bound;
+         }
+     }
+-    for (l = cfg->execs; l; l = l->next) {
++    for (l = same_keys ? NULL : cfg->execs; l; l = l->next) {
+         if (l == ll)
+             /* it's our action */
+             continue;
+         if (data->accel1) {
+-            if (strcmp(data->accel1, ((LXHotkeyApp *)l->data)->accel1) == 0 ||
+-                g_strcmp0(data->accel1, ((LXHotkeyApp *)l->data)->accel2) == 0) {
++            if (key_matches(data->accel1, ((LXHotkeyApp *)l->data)->accel1) ||
++                key_matches(data->accel1, ((LXHotkeyApp *)l->data)->accel2)) {
+ _accel1_bound:
+                 g_set_error(error, LXKEYS_OB_ERROR, LXKEYS_FILE_ERROR,
+                             _("Hotkey '%s' is already bound to an action."),
+@@ -1265,8 +1428,8 @@ _accel1_bound:
+             }
+         }
+         if (data->accel2) {
+-            if (g_strcmp0(data->accel2, ((LXHotkeyApp *)l->data)->accel1) == 0 ||
+-                g_strcmp0(data->accel2, ((LXHotkeyApp *)l->data)->accel2) == 0) {
++            if (key_matches(data->accel2, ((LXHotkeyApp *)l->data)->accel1) ||
++                key_matches(data->accel2, ((LXHotkeyApp *)l->data)->accel2)) {
+ _accel2_bound:
+                 g_set_error(error, LXKEYS_OB_ERROR, LXKEYS_FILE_ERROR,
+                             _("Hotkey '%s' is already bound to an action."),
+@@ -1288,16 +1451,18 @@ _accel2_bound:
+         } else {
+             if (data->accel2 == NULL) {
+                 /* new data contains only one binding */
+-                if (g_strcmp0(app->accel1, data->accel1) == 0) {
++                if (key_equal(app->accel1, data->accel1)) {
+                     /* accel1 not changed, just clear accel2 */
+                     if (app->data2)
+                         fm_xml_file_item_destroy(app->data2);
+                     g_free(app->accel2);
+                     app->accel2 = NULL;
+-                } else if (g_strcmp0(app->accel2, data->accel1) == 0) {
++                } else if (key_equal(app->accel2, data->accel1)) {
+                     /* accel1 was removed */
+                     if (app->data1)
+                         fm_xml_file_item_destroy(app->data1);
++                    app->data1 = app->data2;
++                    app->data2 = NULL;
+                     g_free(app->accel1);
+                     app->accel1 = app->accel2;
+                     app->accel2 = NULL;
+@@ -1311,11 +1476,11 @@ _accel2_bound:
+                 }
+             } else if (app->accel2 == NULL) {
+                 /* new data has two bindings and old data has 1 */
+-                if (g_strcmp0(app->accel1, data->accel1) == 0) {
++                if (key_equal(app->accel1, data->accel1)) {
+                     /* add data->accel2 */
+                     app->data2 = make_new_xml_binding(cfg, data->options, data->accel2, NULL, data->exec);
+                     app->accel2 = g_strdup(data->accel2);
+-                } else if (g_strcmp0(app->accel1, data->accel2) == 0) {
++                } else if (key_equal(app->accel1, data->accel2)) {
+                     /* add data->accel1 */
+                     app->data2 = make_new_xml_binding(cfg, data->options, data->accel1, NULL, data->exec);
+                     app->accel2 = g_strdup(data->accel1);
+@@ -1327,20 +1492,20 @@ _accel2_bound:
+                 }
+             } else {
+                 /* both keys are present in old and new data */
+-                if (g_strcmp0(app->accel1, data->accel1) == 0) {
+-                    if (g_strcmp0(app->accel2, data->accel2) != 0)
++                if (key_equal(app->accel1, data->accel1)) {
++                    if (!key_equal(app->accel2, data->accel2))
+                         /* just accel2 is changed */
+                         replace_key(app->data2, data->accel2, &app->accel2);
+                     /* else nothing changed */
+-                } else if (g_strcmp0(app->accel1, data->accel2) == 0) {
+-                    if (g_strcmp0(app->accel2, data->accel1) != 0)
++                } else if (key_equal(app->accel1, data->accel2)) {
++                    if (!key_equal(app->accel2, data->accel1))
+                         /* replace accel2 with data->accel1 */
+                         replace_key(app->data2, data->accel1, &app->accel2);
+                     /* else keys just swapped */
+-                } else if (g_strcmp0(app->accel2, data->accel2) == 0) {
++                } else if (key_equal(app->accel2, data->accel2)) {
+                     /* just accel1 is changed */
+                     replace_key(app->data1, data->accel1, &app->accel1);
+-                } else if (g_strcmp0(app->accel2, data->accel1) == 0) {
++                } else if (key_equal(app->accel2, data->accel1)) {
+                     /* replace accel1 with data->accel2 */
+                     replace_key(app->data1, data->accel2, &app->accel1);
+                 } else {
+@@ -1350,6 +1515,8 @@ _accel2_bound:
+                 }
+             }
+         }
++        if (data->accel1 != NULL && g_strcmp0(app->exec, data->exec) != 0)
++            replace_exec(app->data1, app->data2, data->exec, &app->exec);
+     /* if not found then add a new keybinding */
+     } else if (data->accel1) {
+         app = g_new0(LXHotkeyApp, 1);
+@@ -1395,8 +1562,6 @@ static GList *obcfg_get_app_options(gpointer config, GError **error)
+ }
+ 
+ 
+-FM_DEFINE_MODULE(lxhotkey, Openbox)
+-
+ LXHotkeyPluginInit fm_module_init_lxhotkey = {
+     .load = obcfg_load,
+     .save = obcfg_save,
+diff --git a/plugins/openbox/xml_compat.c b/plugins/openbox/xml_compat.c
+new file mode 100644
+index 0000000..ac64018
+--- /dev/null
++++ b/plugins/openbox/xml_compat.c
+@@ -0,0 +1,901 @@
++#include "xml_compat.h"
++
++#include <libxml/parser.h>
++#include <libxml/tree.h>
++
++#include <string.h>
++
++struct _FmXmlFileItem {
++    FmXmlFile *file;
++    xmlNodePtr node;
++};
++
++typedef struct {
++    char *name;
++    FmXmlFileHandler handler;
++} FmXmlTagDef;
++
++typedef struct {
++    xmlNodePtr node;
++    xmlNodePtr scope;
++    char *text;
++    gboolean whole_node;
++    gboolean owns_node;
++} FmXmlTextReplacement;
++
++struct _FmXmlFile {
++    GPtrArray *tags;
++    GHashTable *tag_by_name;
++    xmlDocPtr doc;
++    char *xml_decl;
++    char *original;
++    gsize original_len;
++    GPtrArray *text_replacements;
++};
++
++static void free_tag_def(gpointer data)
++{
++    FmXmlTagDef *tag = data;
++
++    if (tag == NULL)
++        return;
++    g_free(tag->name);
++    g_free(tag);
++}
++
++static void free_text_replacement(gpointer data)
++{
++    FmXmlTextReplacement *replacement = data;
++
++    if (replacement == NULL)
++        return;
++    if (replacement->owns_node)
++        xmlFreeNode(replacement->node);
++    g_free(replacement->text);
++    g_free(replacement);
++}
++
++static GQuark lxhotkey_xml_error_quark(void)
++{
++    return g_quark_from_static_string("lxhotkey-xml-error");
++}
++
++static void init_registry(FmXmlFile *file)
++{
++    FmXmlTagDef *tag;
++
++    file->tags = g_ptr_array_new_with_free_func(free_tag_def);
++    file->tag_by_name = g_hash_table_new(g_str_hash, g_str_equal);
++    file->text_replacements = g_ptr_array_new_with_free_func(free_text_replacement);
++
++    g_ptr_array_add(file->tags, NULL);
++
++    tag = g_new0(FmXmlTagDef, 1);
++    tag->name = g_strdup("#text");
++    g_ptr_array_add(file->tags, tag);
++}
++
++static FmXmlFileItem *wrap_node(FmXmlFile *file, xmlNodePtr node)
++{
++    FmXmlFileItem *item;
++
++    if (node == NULL)
++        return NULL;
++    item = node->_private;
++    if (item != NULL)
++        return item;
++    item = g_new0(FmXmlFileItem, 1);
++    item->file = file;
++    item->node = node;
++    node->_private = item;
++    return item;
++}
++
++static void free_wrappers(xmlNodePtr node)
++{
++    xmlNodePtr child;
++    xmlNodePtr next;
++
++    for (child = node ? node->children : NULL; child; child = next) {
++        next = child->next;
++        free_wrappers(child);
++    }
++    if (node && node->_private) {
++        g_free(node->_private);
++        node->_private = NULL;
++    }
++}
++
++static void free_doc(FmXmlFile *file)
++{
++    if (file->doc != NULL) {
++        free_wrappers(xmlDocGetRootElement(file->doc));
++        xmlFreeDoc(file->doc);
++        file->doc = NULL;
++    }
++    g_free(file->xml_decl);
++    file->xml_decl = NULL;
++    g_free(file->original);
++    file->original = NULL;
++    file->original_len = 0;
++    if (file->text_replacements != NULL)
++        g_ptr_array_set_size(file->text_replacements, 0);
++}
++
++static char *copy_xml_decl(const char *contents, gsize len)
++{
++    const char *end;
++
++    if (contents == NULL || len < 5 || strncmp(contents, "<?xml", 5) != 0)
++        return NULL;
++    end = g_strstr_len(contents, len, "?>");
++    if (end == NULL)
++        return NULL;
++    return g_strndup(contents, (end + 2) - contents);
++}
++
++static char *normalize_dump(FmXmlFile *file, const char *data)
++{
++    GString *out = g_string_new(NULL);
++    const char *p = data;
++    gsize i;
++    gsize len;
++
++    if (file->xml_decl != NULL && g_str_has_prefix(p, "<?xml")) {
++        const char *end = strstr(p, "?>");
++
++        if (end != NULL) {
++            g_string_append(out, file->xml_decl);
++            p = end + 2;
++            if (g_str_has_prefix(p, "\n\n<"))
++                p++;
++        }
++    }
++
++    len = strlen(p);
++    for (i = 0; i < len; i++) {
++        if (i + 2 < len && p[i] == ' ' && p[i + 1] == '/' && p[i + 2] == '>')
++            continue;
++        g_string_append_c(out, p[i]);
++    }
++    return g_string_free(out, FALSE);
++}
++
++static gsize offset_for_line(const char *contents, gsize len, long line)
++{
++    gsize i;
++    long current = 1;
++
++    if (line <= 1)
++        return 0;
++    for (i = 0; i < len; i++) {
++        if (contents[i] == '\n') {
++            current++;
++            if (current == line)
++                return i + 1;
++        }
++    }
++    return 0;
++}
++
++static gboolean element_content_bounds(GString *contents, xmlNodePtr node,
++                                       gsize *start, gsize *end)
++{
++    char *open_tag;
++    char *close_tag;
++    char *open;
++    char *open_end;
++    char *close;
++    gsize offset;
++
++    if (node == NULL || node->type != XML_ELEMENT_NODE)
++        return FALSE;
++    open_tag = g_strdup_printf("<%s", (const char *)node->name);
++    close_tag = g_strdup_printf("</%s>", (const char *)node->name);
++    offset = offset_for_line(contents->str, contents->len, xmlGetLineNo(node));
++    open = g_strstr_len(contents->str + offset, contents->len - offset, open_tag);
++    if (open == NULL)
++        open = g_strstr_len(contents->str, contents->len, open_tag);
++    if (open == NULL)
++        goto fail;
++    open_end = strchr(open, '>');
++    if (open_end == NULL || open_end[-1] == '/')
++        goto fail;
++    close = g_strstr_len(open_end + 1, contents->len - (gsize)(open_end + 1 - contents->str), close_tag);
++    if (close == NULL)
++        goto fail;
++    *start = (gsize)(open_end + 1 - contents->str);
++    *end = (gsize)(close - contents->str);
++    g_free(open_tag);
++    g_free(close_tag);
++    return TRUE;
++
++fail:
++    g_free(open_tag);
++    g_free(close_tag);
++    return FALSE;
++}
++
++static gboolean element_bounds(GString *contents, xmlNodePtr node,
++                               gsize *start, gsize *end)
++{
++    char *open_tag;
++    char *close_tag;
++    char *open;
++    char *open_end;
++    char *close;
++    gsize offset;
++
++    if (node == NULL || node->type != XML_ELEMENT_NODE)
++        return FALSE;
++    open_tag = g_strdup_printf("<%s", (const char *)node->name);
++    close_tag = g_strdup_printf("</%s>", (const char *)node->name);
++    offset = offset_for_line(contents->str, contents->len, xmlGetLineNo(node));
++    open = g_strstr_len(contents->str + offset, contents->len - offset, open_tag);
++    if (open == NULL)
++        open = g_strstr_len(contents->str, contents->len, open_tag);
++    if (open == NULL)
++        goto fail;
++    open_end = strchr(open, '>');
++    if (open_end == NULL)
++        goto fail;
++    if (open_end[-1] == '/') {
++        *start = (gsize)(open - contents->str);
++        *end = (gsize)(open_end + 1 - contents->str);
++        g_free(open_tag);
++        g_free(close_tag);
++        return TRUE;
++    }
++    close = g_strstr_len(open_end + 1, contents->len - (gsize)(open_end + 1 - contents->str), close_tag);
++    if (close == NULL)
++        goto fail;
++    *start = (gsize)(open - contents->str);
++    *end = (gsize)(close + strlen(close_tag) - contents->str);
++    g_free(open_tag);
++    g_free(close_tag);
++    return TRUE;
++
++fail:
++    g_free(open_tag);
++    g_free(close_tag);
++    return FALSE;
++}
++
++static gboolean element_content_bounds_by_attr(GString *contents, xmlNodePtr node,
++                                               const char *attr_name,
++                                               gsize *start, gsize *end)
++{
++    xmlChar *value;
++    char *open_tag;
++    char *double_attr;
++    char *single_attr;
++    char *close_tag;
++    char *search;
++
++    if (node == NULL || node->type != XML_ELEMENT_NODE)
++        return FALSE;
++    value = xmlGetProp(node, BAD_CAST attr_name);
++    if (value == NULL)
++        return FALSE;
++    open_tag = g_strdup_printf("<%s", (const char *)node->name);
++    double_attr = g_strdup_printf("%s=\"%s\"", attr_name, (const char *)value);
++    single_attr = g_strdup_printf("%s='%s'", attr_name, (const char *)value);
++    close_tag = g_strdup_printf("</%s>", (const char *)node->name);
++    for (search = contents->str; ; search++) {
++        char *open = g_strstr_len(search, contents->len - (gsize)(search - contents->str), open_tag);
++        char *open_end;
++        char *close;
++
++        if (open == NULL)
++            break;
++        open_end = strchr(open, '>');
++        if (open_end == NULL)
++            break;
++        if (g_strstr_len(open, open_end - open, double_attr) == NULL &&
++            g_strstr_len(open, open_end - open, single_attr) == NULL) {
++            search = open;
++            continue;
++        }
++        if (open_end[-1] == '/')
++            break;
++        close = g_strstr_len(open_end + 1,
++                             contents->len - (gsize)(open_end + 1 - contents->str),
++                             close_tag);
++        if (close == NULL)
++            break;
++        *start = (gsize)(open_end + 1 - contents->str);
++        *end = (gsize)(close - contents->str);
++        xmlFree(value);
++        g_free(open_tag);
++        g_free(double_attr);
++        g_free(single_attr);
++        g_free(close_tag);
++        return TRUE;
++    }
++    xmlFree(value);
++    g_free(open_tag);
++    g_free(double_attr);
++    g_free(single_attr);
++    g_free(close_tag);
++    return FALSE;
++}
++
++static gboolean element_bounds_by_attr(GString *contents, xmlNodePtr node,
++                                       const char *attr_name,
++                                       gsize *start, gsize *end)
++{
++    xmlChar *value;
++    char *open_tag;
++    char *double_attr;
++    char *single_attr;
++    char *close_tag;
++    char *search;
++
++    if (node == NULL || node->type != XML_ELEMENT_NODE)
++        return FALSE;
++    value = xmlGetProp(node, BAD_CAST attr_name);
++    if (value == NULL)
++        return FALSE;
++    open_tag = g_strdup_printf("<%s", (const char *)node->name);
++    double_attr = g_strdup_printf("%s=\"%s\"", attr_name, (const char *)value);
++    single_attr = g_strdup_printf("%s='%s'", attr_name, (const char *)value);
++    close_tag = g_strdup_printf("</%s>", (const char *)node->name);
++    for (search = contents->str; ; search++) {
++        char *open = g_strstr_len(search, contents->len - (gsize)(search - contents->str), open_tag);
++        char *open_end;
++        char *close;
++
++        if (open == NULL)
++            break;
++        open_end = strchr(open, '>');
++        if (open_end == NULL)
++            break;
++        if (g_strstr_len(open, open_end - open, double_attr) == NULL &&
++            g_strstr_len(open, open_end - open, single_attr) == NULL) {
++            search = open;
++            continue;
++        }
++        if (open_end[-1] == '/') {
++            *start = (gsize)(open - contents->str);
++            *end = (gsize)(open_end + 1 - contents->str);
++        } else {
++            close = g_strstr_len(open_end + 1,
++                                 contents->len - (gsize)(open_end + 1 - contents->str),
++                                 close_tag);
++            if (close == NULL)
++                break;
++            *start = (gsize)(open - contents->str);
++            *end = (gsize)(close + strlen(close_tag) - contents->str);
++        }
++        xmlFree(value);
++        g_free(open_tag);
++        g_free(double_attr);
++        g_free(single_attr);
++        g_free(close_tag);
++        return TRUE;
++    }
++    xmlFree(value);
++    g_free(open_tag);
++    g_free(double_attr);
++    g_free(single_attr);
++    g_free(close_tag);
++    return FALSE;
++}
++
++static gboolean scoped_element_content_bounds(GString *contents,
++                                              xmlNodePtr scope,
++                                              xmlNodePtr node,
++                                              gsize *start, gsize *end)
++{
++    char *open_tag;
++    char *close_tag;
++    char *open;
++    char *open_end;
++    char *close;
++    gsize scope_start;
++    gsize scope_end;
++
++    if (scope == NULL || node == NULL || node->type != XML_ELEMENT_NODE)
++        return FALSE;
++    if (!element_content_bounds_by_attr(contents, scope, "key", &scope_start, &scope_end) &&
++        !element_content_bounds(contents, scope, &scope_start, &scope_end))
++        return FALSE;
++    open_tag = g_strdup_printf("<%s", (const char *)node->name);
++    close_tag = g_strdup_printf("</%s>", (const char *)node->name);
++    open = g_strstr_len(contents->str + scope_start, scope_end - scope_start,
++                        open_tag);
++    if (open == NULL)
++        goto fail;
++    open_end = strchr(open, '>');
++    if (open_end == NULL || open_end[-1] == '/' ||
++        (gsize)(open_end - contents->str) >= scope_end)
++        goto fail;
++    close = g_strstr_len(open_end + 1, scope_end - (gsize)(open_end + 1 - contents->str),
++                         close_tag);
++    if (close == NULL)
++        goto fail;
++    *start = (gsize)(open_end + 1 - contents->str);
++    *end = (gsize)(close - contents->str);
++    g_free(open_tag);
++    g_free(close_tag);
++    return TRUE;
++
++fail:
++    g_free(open_tag);
++    g_free(close_tag);
++    return FALSE;
++}
++
++static char *apply_text_replacements(FmXmlFile *file, gsize *len)
++{
++    GString *contents;
++    guint i;
++
++    if (file->original == NULL || file->text_replacements == NULL ||
++        file->text_replacements->len == 0)
++        return NULL;
++    contents = g_string_new_len(file->original, file->original_len);
++    for (i = 0; i < file->text_replacements->len; i++) {
++        FmXmlTextReplacement *replacement = g_ptr_array_index(file->text_replacements, i);
++        char *escaped;
++        gsize start;
++        gsize end;
++
++        if (replacement->whole_node) {
++            if (!element_bounds_by_attr(contents, replacement->node, "key", &start, &end) &&
++                !element_bounds(contents, replacement->node, &start, &end)) {
++                g_string_free(contents, TRUE);
++                return NULL;
++            }
++        } else if (replacement->scope != NULL && replacement->scope != replacement->node) {
++            if (!scoped_element_content_bounds(contents, replacement->scope,
++                                               replacement->node, &start, &end)) {
++                g_string_free(contents, TRUE);
++                return NULL;
++            }
++        } else if (!element_content_bounds(contents, replacement->node, &start, &end)) {
++            g_string_free(contents, TRUE);
++            return NULL;
++        }
++        g_string_erase(contents, start, end - start);
++        if (replacement->whole_node)
++            g_string_insert(contents, start, replacement->text);
++        else {
++            escaped = g_markup_escape_text(replacement->text, -1);
++            g_string_insert(contents, start, escaped);
++            g_free(escaped);
++        }
++    }
++    if (len)
++        *len = contents->len;
++    return g_string_free(contents, FALSE);
++}
++
++static void record_text_replacement(FmXmlFileItem *scope, FmXmlFileItem *item,
++                                    const char *text)
++{
++    FmXmlTextReplacement *replacement;
++    guint i;
++
++    if (item == NULL || item->file == NULL || item->node == NULL ||
++        item->file->text_replacements == NULL)
++        return;
++    for (i = 0; i < item->file->text_replacements->len; i++) {
++        replacement = g_ptr_array_index(item->file->text_replacements, i);
++        if (replacement->node == item->node &&
++            replacement->scope == (scope ? scope->node : NULL)) {
++            g_free(replacement->text);
++            replacement->text = g_strdup(text);
++            return;
++        }
++    }
++    replacement = g_new0(FmXmlTextReplacement, 1);
++    replacement->node = item->node;
++    replacement->scope = scope ? scope->node : NULL;
++    replacement->text = g_strdup(text);
++    g_ptr_array_add(item->file->text_replacements, replacement);
++}
++
++static char *node_to_data(FmXmlFileItem *item)
++{
++    xmlBufferPtr buffer;
++    char *copy;
++
++    if (item == NULL || item->node == NULL || item->file == NULL)
++        return NULL;
++    buffer = xmlBufferCreate();
++    if (buffer == NULL)
++        return NULL;
++    xmlNodeDump(buffer, item->file->doc, item->node, 0, 0);
++    copy = normalize_dump(item->file, (const char *)xmlBufferContent(buffer));
++    xmlBufferFree(buffer);
++    return copy;
++}
++
++static void record_node_replacement(FmXmlFileItem *item, const char *text)
++{
++    FmXmlTextReplacement *replacement;
++
++    if (item == NULL || item->file == NULL || item->node == NULL ||
++        item->file->text_replacements == NULL)
++        return;
++    replacement = g_new0(FmXmlTextReplacement, 1);
++    replacement->node = item->node;
++    replacement->text = g_strdup(text ? text : "");
++    replacement->whole_node = TRUE;
++    replacement->owns_node = TRUE;
++    g_ptr_array_add(item->file->text_replacements, replacement);
++}
++
++static FmXmlTagDef *get_tag_def(FmXmlFile *file, FmXmlFileTag tag)
++{
++    if (file == NULL || tag >= file->tags->len)
++        return NULL;
++    return g_ptr_array_index(file->tags, tag);
++}
++
++static FmXmlFileTag get_tag_by_name(FmXmlFile *file, const char *name)
++{
++    gpointer value;
++
++    if (name == NULL)
++        return FM_XML_FILE_TAG_NOT_HANDLED;
++    value = g_hash_table_lookup(file->tag_by_name, name);
++    if (value == NULL)
++        return FM_XML_FILE_TAG_NOT_HANDLED;
++    return GPOINTER_TO_UINT(value);
++}
++
++static gboolean text_is_blank(xmlNodePtr node)
++{
++    const xmlChar *content;
++
++    if (node == NULL || node->type != XML_TEXT_NODE)
++        return FALSE;
++    content = node->content;
++    if (content == NULL)
++        return TRUE;
++    for (; *content; content++)
++        if (!g_ascii_isspace(*content))
++            return FALSE;
++    return TRUE;
++}
++
++static GList *node_children(FmXmlFile *file, xmlNodePtr node)
++{
++    GList *children = NULL;
++    xmlNodePtr child;
++
++    for (child = node ? node->children : NULL; child; child = child->next) {
++        if (child->type != XML_ELEMENT_NODE && child->type != XML_TEXT_NODE)
++            continue;
++        if (text_is_blank(child))
++            continue;
++        children = g_list_append(children, wrap_node(file, child));
++    }
++    return children;
++}
++
++static gboolean run_handlers(FmXmlFile *file, xmlNodePtr node, GError **error,
++                             gpointer user_data)
++{
++    xmlNodePtr child;
++    xmlNodePtr next;
++    FmXmlFileItem *item;
++    FmXmlTagDef *tag;
++    FmXmlFileTag tag_id;
++    GList *children;
++    char **attr_names = NULL;
++    char **attr_values = NULL;
++    guint n_attrs = 0;
++    guint i = 0;
++    xmlAttrPtr attr;
++
++    if (node == NULL)
++        return TRUE;
++    for (child = node->children; child; child = next) {
++        next = child->next;
++        if (child->type == XML_ELEMENT_NODE) {
++            if (!run_handlers(file, child, error, user_data))
++                return FALSE;
++        }
++    }
++    if (node->type != XML_ELEMENT_NODE)
++        return TRUE;
++
++    tag_id = get_tag_by_name(file, (const char *)node->name);
++    tag = get_tag_def(file, tag_id);
++    if (tag == NULL || tag->handler == NULL)
++        return TRUE;
++
++    for (attr = node->properties; attr; attr = attr->next)
++        n_attrs++;
++    if (n_attrs > 0) {
++        attr_names = g_new0(char *, n_attrs + 1);
++        attr_values = g_new0(char *, n_attrs + 1);
++        for (attr = node->properties; attr; attr = attr->next, i++) {
++            xmlChar *value = xmlNodeListGetString(node->doc, attr->children, 1);
++
++            attr_names[i] = g_strdup((const char *)attr->name);
++            attr_values[i] = g_strdup((const char *)(value ? value : BAD_CAST ""));
++            if (value)
++                xmlFree(value);
++        }
++    }
++
++    item = wrap_node(file, node);
++    children = node_children(file, node);
++    if (!tag->handler(item, children, attr_names, attr_values, n_attrs,
++                      (gint)xmlGetLineNo(node), 0, error, user_data)) {
++        g_list_free(children);
++        g_strfreev(attr_names);
++        g_strfreev(attr_values);
++        return FALSE;
++    }
++    g_list_free(children);
++    g_strfreev(attr_names);
++    g_strfreev(attr_values);
++    return TRUE;
++}
++
++FmXmlFile *fm_xml_file_new(FmXmlFile *other)
++{
++    FmXmlFile *file = g_new0(FmXmlFile, 1);
++    guint i;
++
++    init_registry(file);
++    if (other == NULL)
++        return file;
++    for (i = 2; i < other->tags->len; i++) {
++        FmXmlTagDef *old = g_ptr_array_index(other->tags, i);
++        FmXmlTagDef *tag = g_new0(FmXmlTagDef, 1);
++
++        tag->name = g_strdup(old->name);
++        tag->handler = old->handler;
++        g_ptr_array_add(file->tags, tag);
++        g_hash_table_insert(file->tag_by_name, tag->name, GUINT_TO_POINTER(i));
++    }
++    return file;
++}
++
++void fm_xml_file_free(FmXmlFile *file)
++{
++    if (file == NULL)
++        return;
++    free_doc(file);
++    g_ptr_array_free(file->tags, TRUE);
++    g_hash_table_destroy(file->tag_by_name);
++    g_free(file);
++}
++
++FmXmlFileTag fm_xml_file_set_handler(FmXmlFile *file, const char *name,
++                                     FmXmlFileHandler handler, gboolean recursive,
++                                     gpointer unused)
++{
++    FmXmlFileTag tag_id;
++    FmXmlTagDef *tag;
++
++    (void)recursive;
++    (void)unused;
++
++    tag_id = get_tag_by_name(file, name);
++    if (tag_id != FM_XML_FILE_TAG_NOT_HANDLED) {
++        tag = get_tag_def(file, tag_id);
++        tag->handler = handler;
++        return tag_id;
++    }
++
++    tag = g_new0(FmXmlTagDef, 1);
++    tag->name = g_strdup(name);
++    tag->handler = handler;
++    tag_id = file->tags->len;
++    g_ptr_array_add(file->tags, tag);
++    g_hash_table_insert(file->tag_by_name, tag->name, GUINT_TO_POINTER(tag_id));
++    return tag_id;
++}
++
++const char *fm_xml_file_get_tag_name(FmXmlFile *file, FmXmlFileTag tag)
++{
++    FmXmlTagDef *tag_def = get_tag_def(file, tag);
++
++    return tag_def ? tag_def->name : NULL;
++}
++
++gboolean fm_xml_file_parse_data(FmXmlFile *file, const char *contents, gsize len,
++                                GError **error, gpointer user_data)
++{
++    xmlNodePtr root;
++
++    free_doc(file);
++    file->xml_decl = copy_xml_decl(contents, len);
++    file->original = g_strndup(contents, len);
++    file->original_len = len;
++    xmlResetLastError();
++    file->doc = xmlReadMemory(contents, (int)len, NULL, NULL, XML_PARSE_NONET);
++    if (file->doc == NULL) {
++        const xmlError *xml_error = xmlGetLastError();
++
++        g_set_error(error, lxhotkey_xml_error_quark(), 0,
++                    "%s", xml_error && xml_error->message ? xml_error->message
++                                                             : "Failed to parse XML.");
++        return FALSE;
++    }
++    root = xmlDocGetRootElement(file->doc);
++    if (root == NULL) {
++        g_set_error_literal(error, lxhotkey_xml_error_quark(), 0,
++                            "Failed to parse XML.");
++        return FALSE;
++    }
++    wrap_node(file, root);
++    return run_handlers(file, root, error, user_data);
++}
++
++FmXmlFileItem *fm_xml_file_finish_parse(FmXmlFile *file, GError **error)
++{
++    (void)error;
++    return wrap_node(file, xmlDocGetRootElement(file->doc));
++}
++
++char *fm_xml_file_to_data(FmXmlFile *file, gsize *len, GError **error)
++{
++    xmlChar *buffer = NULL;
++    int size = 0;
++    char *copy;
++
++    (void)error;
++    copy = apply_text_replacements(file, len);
++    if (copy != NULL)
++        return copy;
++    xmlDocDumpFormatMemoryEnc(file->doc, &buffer, &size, "UTF-8", 0);
++    if (buffer == NULL)
++        return NULL;
++    copy = normalize_dump(file, (const char *)buffer);
++    xmlFree(buffer);
++    if (len)
++        *len = (gsize)strlen(copy);
++    return copy;
++}
++
++FmXmlFileTag fm_xml_file_item_get_tag(FmXmlFileItem *item)
++{
++    if (item == NULL || item->node == NULL)
++        return FM_XML_FILE_TAG_NOT_HANDLED;
++    if (item->node->type == XML_TEXT_NODE)
++        return FM_XML_FILE_TEXT;
++    return get_tag_by_name(item->file, (const char *)item->node->name);
++}
++
++const char *fm_xml_file_item_get_tag_name(FmXmlFileItem *item)
++{
++    if (item == NULL || item->node == NULL)
++        return NULL;
++    if (item->node->type == XML_TEXT_NODE)
++        return "#text";
++    return (const char *)item->node->name;
++}
++
++GList *fm_xml_file_item_get_children(FmXmlFileItem *item)
++{
++    if (item == NULL)
++        return NULL;
++    return node_children(item->file, item->node);
++}
++
++FmXmlFileItem *fm_xml_file_item_get_parent(FmXmlFileItem *item)
++{
++    if (item == NULL || item->node == NULL || item->node->parent == NULL)
++        return NULL;
++    if (item->node->parent->type == XML_DOCUMENT_NODE)
++        return NULL;
++    return wrap_node(item->file, item->node->parent);
++}
++
++FmXmlFileItem *fm_xml_file_item_find_child(FmXmlFileItem *item, FmXmlFileTag tag)
++{
++    xmlNodePtr child;
++
++    if (item == NULL)
++        return NULL;
++    for (child = item->node->children; child; child = child->next) {
++        FmXmlFileItem *wrapped;
++
++        if (child->type != XML_ELEMENT_NODE && child->type != XML_TEXT_NODE)
++            continue;
++        if (text_is_blank(child))
++            continue;
++        wrapped = wrap_node(item->file, child);
++        if (fm_xml_file_item_get_tag(wrapped) == tag)
++            return wrapped;
++    }
++    return NULL;
++}
++
++const char *fm_xml_file_item_get_data(FmXmlFileItem *item, gpointer unused)
++{
++    (void)unused;
++    if (item == NULL || item->node == NULL)
++        return NULL;
++    return (const char *)item->node->content;
++}
++
++FmXmlFileItem *fm_xml_file_item_new(FmXmlFile *file, FmXmlFileTag tag)
++{
++    const char *name = fm_xml_file_get_tag_name(file, tag);
++    xmlNodePtr node;
++
++    if (name == NULL || tag == FM_XML_FILE_TEXT)
++        return NULL;
++    node = xmlNewNode(NULL, BAD_CAST name);
++    return wrap_node(file, node);
++}
++
++void fm_xml_file_item_set_attribute(FmXmlFileItem *item, const char *name,
++                                    const char *value)
++{
++    if (item == NULL || item->node == NULL)
++        return;
++    xmlSetProp(item->node, BAD_CAST name, BAD_CAST value);
++}
++
++void fm_xml_file_item_set_text(FmXmlFileItem *item, const char *text)
++{
++    if (item == NULL || item->node == NULL || text == NULL)
++        return;
++    record_text_replacement(NULL, item, text);
++    xmlNodeSetContent(item->node, BAD_CAST text);
++}
++
++void fm_xml_file_item_set_scoped_text(FmXmlFileItem *scope, FmXmlFileItem *item,
++                                      const char *text)
++{
++    if (item == NULL || item->node == NULL || text == NULL)
++        return;
++    record_text_replacement(scope, item, text);
++    xmlNodeSetContent(item->node, BAD_CAST text);
++}
++
++void fm_xml_file_item_replace_with(FmXmlFileItem *item, FmXmlFileItem *replacement)
++{
++    char *text;
++
++    if (item == NULL || item->node == NULL || replacement == NULL ||
++        replacement->node == NULL)
++        return;
++    text = node_to_data(replacement);
++    record_node_replacement(item, text);
++    g_free(text);
++    xmlReplaceNode(item->node, replacement->node);
++    free_wrappers(item->node);
++    item->node = replacement->node;
++}
++
++void fm_xml_file_item_append_text(FmXmlFileItem *item, const char *text, gssize len,
++                                  gboolean escaped)
++{
++    xmlNodePtr node;
++
++    (void)escaped;
++    if (item == NULL || item->node == NULL)
++        return;
++    if (len < 0)
++        len = (gssize)strlen(text);
++    node = xmlNewTextLen(BAD_CAST text, (int)len);
++    xmlAddChild(item->node, node);
++    wrap_node(item->file, node);
++}
++
++void fm_xml_file_item_append_child(FmXmlFileItem *item, FmXmlFileItem *child)
++{
++    if (item == NULL || child == NULL)
++        return;
++    xmlAddChild(item->node, child->node);
++}
++
++void fm_xml_file_item_destroy(FmXmlFileItem *item)
++{
++    if (item == NULL || item->node == NULL)
++        return;
++    record_node_replacement(item, "");
++    xmlUnlinkNode(item->node);
++    free_wrappers(item->node);
++}
+diff --git a/plugins/openbox/xml_compat.h b/plugins/openbox/xml_compat.h
+new file mode 100644
+index 0000000..81e07b6
+--- /dev/null
++++ b/plugins/openbox/xml_compat.h
+@@ -0,0 +1,48 @@
++#ifndef LXHOTKEY_XML_COMPAT_H
++#define LXHOTKEY_XML_COMPAT_H
++
++#include <glib.h>
++
++typedef struct _FmXmlFile FmXmlFile;
++typedef struct _FmXmlFileItem FmXmlFileItem;
++typedef guint FmXmlFileTag;
++
++#define FM_XML_FILE_TAG_NOT_HANDLED 0
++#define FM_XML_FILE_TEXT 1
++
++typedef gboolean (*FmXmlFileHandler)(FmXmlFileItem *item, GList *children,
++                                     char * const *attribute_names,
++                                     char * const *attribute_values,
++                                     guint n_attributes, gint line, gint pos,
++                                     GError **error, gpointer user_data);
++
++FmXmlFile *fm_xml_file_new(FmXmlFile *other);
++void fm_xml_file_free(FmXmlFile *file);
++FmXmlFileTag fm_xml_file_set_handler(FmXmlFile *file, const char *name,
++                                     FmXmlFileHandler handler, gboolean recursive,
++                                     gpointer unused);
++const char *fm_xml_file_get_tag_name(FmXmlFile *file, FmXmlFileTag tag);
++gboolean fm_xml_file_parse_data(FmXmlFile *file, const char *contents, gsize len,
++                                GError **error, gpointer user_data);
++FmXmlFileItem *fm_xml_file_finish_parse(FmXmlFile *file, GError **error);
++char *fm_xml_file_to_data(FmXmlFile *file, gsize *len, GError **error);
++
++FmXmlFileTag fm_xml_file_item_get_tag(FmXmlFileItem *item);
++const char *fm_xml_file_item_get_tag_name(FmXmlFileItem *item);
++GList *fm_xml_file_item_get_children(FmXmlFileItem *item);
++FmXmlFileItem *fm_xml_file_item_get_parent(FmXmlFileItem *item);
++FmXmlFileItem *fm_xml_file_item_find_child(FmXmlFileItem *item, FmXmlFileTag tag);
++const char *fm_xml_file_item_get_data(FmXmlFileItem *item, gpointer unused);
++FmXmlFileItem *fm_xml_file_item_new(FmXmlFile *file, FmXmlFileTag tag);
++void fm_xml_file_item_set_attribute(FmXmlFileItem *item, const char *name,
++                                    const char *value);
++void fm_xml_file_item_set_text(FmXmlFileItem *item, const char *text);
++void fm_xml_file_item_set_scoped_text(FmXmlFileItem *scope, FmXmlFileItem *item,
++                                      const char *text);
++void fm_xml_file_item_replace_with(FmXmlFileItem *item, FmXmlFileItem *replacement);
++void fm_xml_file_item_append_text(FmXmlFileItem *item, const char *text, gssize len,
++                                  gboolean escaped);
++void fm_xml_file_item_append_child(FmXmlFileItem *item, FmXmlFileItem *child);
++void fm_xml_file_item_destroy(FmXmlFileItem *item);
++
++#endif
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 6900326..9f8c4bd 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -4,13 +4,34 @@ bin_PROGRAMS = lxhotkey
+ 
+ lxhotkey_CPPFLAGS = \
+ 	-I$(top_srcdir) \
+-	-DPACKAGE_PLUGINS_DIR=\""$(libdir)/lxhotkey"\" \
+-	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
++	-I$(top_srcdir)/src \
++	-I$(top_srcdir)/plugins/openbox \
++	-DPACKAGE_LOCALE_DIR=\"$(prefix)/$(DATADIRNAME)/locale\" \
+ 	$(PACKAGE_CFLAGS)
+ 
+-lxhotkey_SOURCES = lxhotkey.c
++lxhotkey_SOURCES = \
++	lxhotkey.c \
++	$(top_srcdir)/plugins/openbox/openbox.c \
++	$(top_srcdir)/plugins/openbox/xml_compat.c
+ 
++if WITH_GTK
++lxhotkey_CPPFLAGS += \
++	-I$(top_srcdir)/plugins/gtk \
++	-DWITH_GTK=1 \
++	$(GTK_CFLAGS)
++lxhotkey_SOURCES += \
++	$(top_srcdir)/plugins/gtk/gtk.c \
++	$(top_srcdir)/plugins/gtk/edit.c
++lxhotkey_LDADD = $(PACKAGE_LIBS) $(GTK_LIBS)
++else
+ lxhotkey_LDADD = $(PACKAGE_LIBS)
++endif
+ 
+ lxhotkey_includedir = $(includedir)/lxhotkey
+ lxhotkey_include_HEADERS = lxhotkey.h
++
++install-exec-hook:
++	ln -sf lxhotkey "$(DESTDIR)$(bindir)/labhotkey"
++
++uninstall-hook:
++	rm -f "$(DESTDIR)$(bindir)/labhotkey"
+diff --git a/src/lxhotkey.c b/src/lxhotkey.c
+index a7512a7..3a9e20c 100644
+--- a/src/lxhotkey.c
++++ b/src/lxhotkey.c
+@@ -30,6 +30,8 @@
+ #include <X11/Xlib.h>
+ #include <X11/Xatom.h>
+ 
++#include <locale.h>
++#include <stdio.h>
+ #include <stdlib.h>
+ 
+ #ifdef HAVE_LIBUNISTRING
+@@ -124,6 +126,19 @@ static gchar *get_property (Display *disp, Window win, /*{{{*/
+     return ret;
+ } /*}}}*/
+ 
++static gboolean string_mentions_labwc(const char *value)
++{
++    char *lower;
++    gboolean ret;
++
++    if (value == NULL || value[0] == '\0')
++        return FALSE;
++    lower = g_ascii_strdown(value, -1);
++    ret = g_strrstr(lower, "labwc") != NULL;
++    g_free(lower);
++    return ret;
++}
++
+ static gchar *get_wm_info(void)
+ {
+     /* this code is taken from wmctrl utility, adapted
+@@ -132,6 +147,12 @@ static gchar *get_wm_info(void)
+     Window *sup_window = NULL;
+     gchar *wm_name = NULL;
+ 
++    if (g_getenv("LABWC_PID") != NULL
++        || string_mentions_labwc(g_getenv("DESKTOP_SESSION"))
++        || string_mentions_labwc(g_getenv("GDMSESSION"))
++        || string_mentions_labwc(g_getenv("XDG_CURRENT_DESKTOP")))
++        return g_strdup("labwc");
++
+     if (!(disp = XOpenDisplay(NULL))) {
+         fputs("Cannot open display.\n", stderr);
+         return NULL;
+@@ -143,6 +164,7 @@ static gchar *get_wm_info(void)
+                         XA_CARDINAL, "_WIN_SUPPORTING_WM_CHECK", NULL))) {
+             fputs("Cannot get window manager info properties.\n"
+                   "(_NET_SUPPORTING_WM_CHECK or _WIN_SUPPORTING_WM_CHECK)\n", stderr);
++            XCloseDisplay(disp);
+             return NULL;
+         }
+     }
+@@ -165,6 +187,7 @@ static gchar *get_wm_info(void)
+         }
+     }
+ 
++    XCloseDisplay(disp);
+     return wm_name;
+ }
+ 
+@@ -175,6 +198,9 @@ static gboolean test_X_is_local(void)
+     int Xnum;
+     char lockfile[32], socket[32];
+ 
++    if (g_getenv("WAYLAND_DISPLAY") != NULL)
++        return TRUE;
++
+     if (display)
+         display = strchr(display, ':');
+     if (!display || display[1] < '0' || display[1] > '9')
+@@ -198,19 +224,14 @@ typedef struct LXHotkeyPlugin {
+ 
+ static LXHotkeyPlugin *plugins = NULL;
+ 
+-FM_MODULE_DEFINE_TYPE(lxhotkey, LXHotkeyPluginInit, 1)
+-static gboolean fm_module_callback_lxhotkey(const char *name, gpointer init, int ver)
++static void register_plugin(const char *name, LXHotkeyPluginInit *init)
+ {
+-    LXHotkeyPlugin *plugin;
++    LXHotkeyPlugin *plugin = g_new(LXHotkeyPlugin, 1);
+ 
+-    /* ignore ver for now, only 1 exists */
+-    /* FIXME: need to check for duplicates? */
+-    plugin = g_new(LXHotkeyPlugin, 1);
+     plugin->next = plugins;
+     plugin->name = g_strdup(name);
+     plugin->t = init;
+     plugins = plugin;
+-    return TRUE;
+ }
+ 
+ 
+@@ -223,19 +244,25 @@ typedef struct LXHotkeyGUIPlugin {
+ 
+ static LXHotkeyGUIPlugin *gui_plugins = NULL;
+ 
+-FM_MODULE_DEFINE_TYPE(lxhotkey_gui, LXHotkeyGUIPluginInit, 1)
+-static gboolean fm_module_callback_lxhotkey_gui(const char *name, gpointer init, int ver)
++static void register_gui_plugin(const char *name, LXHotkeyGUIPluginInit *init)
+ {
+-    LXHotkeyGUIPlugin *plugin;
++    LXHotkeyGUIPlugin *plugin = g_new(LXHotkeyGUIPlugin, 1);
+ 
+-    /* ignore ver for now, only 1 exists */
+-    /* FIXME: need to check for duplicates? */
+-    plugin = g_new(LXHotkeyGUIPlugin, 1);
+     plugin->next = gui_plugins;
+     plugin->name = g_strdup(name);
+     plugin->t = init;
+     gui_plugins = plugin;
+-    return TRUE;
++}
++
++static void register_builtin_plugins(gboolean do_gui)
++{
++    register_plugin("Openbox", &fm_module_init_lxhotkey);
++#ifdef WITH_GTK
++    if (do_gui)
++        register_gui_plugin("gtk", &fm_module_init_lxhotkey_gui);
++#else
++    (void)do_gui;
++#endif
+ }
+ 
+ 
+@@ -478,16 +505,14 @@ int main(int argc, char *argv[])
+         cmd += 4;
+     }
+ 
+-    /* init LibFM and FmModule */
+-    fm_init(NULL);
+-    fm_modules_add_directory(PACKAGE_PLUGINS_DIR);
+-    fm_module_register_lxhotkey();
+-    if (do_gui)
+-        fm_module_register_lxhotkey_gui();
++    register_builtin_plugins(do_gui);
++    if (g_getenv("LXHOTKEY_LABWC_MARKER") != NULL) {
++        puts("labsetup-lxhotkey labwc-patch pkgrel=28 builtin-plugins xml-preserve key-normalize scoped-text-save labwc-icon action-save delete-save raw-action-ui combo-popup-fix app-edit-save app-self-conflict app-edit-identity compact-edit-field combo-height-fix");
++        goto _exit;
++    }
+ 
+     LXKEYS_ERROR = g_quark_from_static_string("lxhotkey-error");
+ 
+-    CHECK_MODULES();
+     if (do_gui) /* load GUI plugin if requested */
+         for (gui_plugin = gui_plugins; gui_plugin; gui_plugin = gui_plugin->next)
+             if (g_ascii_strcasecmp(gui_plugin->name, cmd) == 0)
+@@ -511,6 +536,10 @@ int main(int argc, char *argv[])
+     for (plugin = plugins; plugin; plugin = plugin->next)
+         if (g_ascii_strcasecmp(plugin->name, wm_name) == 0)
+             break;
++    if (!plugin && g_ascii_strcasecmp(wm_name, "labwc") == 0)
++        for (plugin = plugins; plugin; plugin = plugin->next)
++            if (g_ascii_strcasecmp(plugin->name, "Openbox") == 0)
++                break;
+     if (!plugin) {
+         g_set_error(&error, LXKEYS_ERROR, LXKEYS_NOT_SUPPORTED,
+                     _("Could not find a plugin for window manager %s."), wm_name);
+@@ -687,9 +716,6 @@ _exit:
+             fprintf(stderr, "LXHotkey: %s\n", error->message);
+         g_error_free(error);
+     }
+-    fm_module_unregister_type("lxhotkey");
+-    if (do_gui)
+-        fm_module_unregister_type("lxhotkey_gui");
+     while (plugins) {
+         plugin = plugins;
+         plugins = plugin->next;
+diff --git a/src/lxhotkey.h b/src/lxhotkey.h
+index b123c74..fbeced6 100644
+--- a/src/lxhotkey.h
++++ b/src/lxhotkey.h
+@@ -21,7 +21,7 @@
+ #ifndef _LXKEYS_H_
+ #define _LXKEYS_H_ 1
+ 
+-#include <libfm/fm.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 
