@@ -9,7 +9,7 @@ url='https://github.com/AdaCore/markdown'
 arch=(i686 x86_64)
 license=(Apache-2.0)
 
-depends=(vss-text)
+depends=(vss-text vss-extra)
 makedepends=(gprbuild-toolbox)
 
 _srcdir="${pkgname}-${pkgver}-20260409-168B4-src"
