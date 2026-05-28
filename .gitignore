@@ -1,0 +1,10 @@
+src/
+pkg/
+*.deb
+*.pkg.tar.*
+*.tar.*
+.claude/
+.agents/
+.crush/
+AGENTS.md
+*.sh
