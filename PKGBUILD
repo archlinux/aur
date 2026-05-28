@@ -1,15 +1,35 @@
-# Maintainer: ziya <your@email.com>
+# Maintainer: Monjaris ziyanovruzlu750@gmail.com
 pkgname=dotty
-pkgver=0.1.0
-pkgrel=2
-pkgdesc="Dotfiles and config manager with profiles written in C++"
+pkgver=0.1.1
+pkgrel=3
+pkgdesc="Dotfiles and config manager with profiles, written in C++"
 arch=('x86_64')
 url="https://github.com/Monjaris/dotty"
-license=('MIT')
-depends=('gcc-libs')
-source=()
-sha256sums=()
+license=('AGPL-3.0-or-later')
+source=("git+$url.git#tag=v$pkgver")
+
+depends=(
+  'cli11'
+  'git'
+  'github-cli'
+  'readline'
+  'bat'
+)
+
+makedepends=(
+  'xmake'
+)
+
+sha256sums=('SKIP')
+
+
+build() {
+    cd "$srcdir/dotty"
+    xmake config -m release
+    xmake build -j$(nproc) dotty
+}
 
 package() {
-    echo ""
+    cd "$srcdir/dotty"
+    install -Dm755 build/linux/x86_64/release/dotty "$pkgdir/usr/bin/dotty"
 }
