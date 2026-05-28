@@ -1,5 +1,5 @@
 pkgname=hyprspaces
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="Paired workspace plugin and setup scripts for Hyprland"
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=hyprspaces.install
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "hyprspaces.hook")
-sha256sums=('6d349a8a5de7608e6970f8bbd9fa80afd80ac8b3e1c14ba1d1da0ef88dd7ec70'
+sha256sums=('26cb65e349dcc8caab6fefd64dbf6be2a906390789edfb86aeaaa7d1325e2c33'
             'a7868c8e64938386e8dd559b1bf1991ffbd7d144ec746830cbc80efacc357ebc')
 
 build() {
