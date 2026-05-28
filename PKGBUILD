@@ -1,32 +1,24 @@
+# Maintainer: mokurin000 <mokurin000@gmail.com>
+
 _name=fluent.runtime
-pkgname=python-fluent.runtime
-epoch=2
+pkgname=python-${_name}
 pkgver=0.4.0
 pkgrel=1
-pkgdesc="Localization library for expressive translations."
-arch=(any)
+pkgdesc="Python implementation of Project Fluent"
+arch=('any')
 url="https://github.com/projectfluent/python-fluent"
-license=(Apache-2.0)
-depends=('python-fluent.syntax' 'python-attrs' 'python-babel' 'python-pytz' 'python-typing_extensions')
-makedepends=('python-setuptools' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/fluent.runtime-0.4.0.tar.gz")
-sha256sums=('cb5ef96a58a3f67acaaca046d1201d202a1ebf2823e5e664370f359bae20574d')
+license=('Apache-2.0')
+depends=('python' 'python-fluent.syntax')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+source=("https://github.com/projectfluent/python-fluent/archive/refs/tags/fluent.runtime@$pkgver.tar.gz")
+sha512sums=('6225f9ef88a3a4e67a9e7d4a39e792cd6c03a0a90afba2ff6cf0a99cdd698d884bfe3ee2ffbeb18d93d8ce7dae5bdec9fb8df2b17a9921111d901e0f9a5c4d29')
 
 build() {
-  cd "$srcdir/fluent.runtime-0.4.0"
-  python setup.py build
+    cd "${srcdir}/python-fluent-fluent.runtime-${pkgver}/${_name}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/fluent.runtime-0.4.0"
-  python setup.py install --root=$pkgdir --optimize=1 --skip-build
-
-  # make sure we don't install any world-writable or root-readable-only files
-  # we shouldn't need to fix ownership as we extract tarballs as a non-root user
-  # https://github.com/pypa/setuptools/issues/1328
-  # https://github.com/LonamiWebs/Telethon/issues/1605
-  chmod u=rwX,go=rX -R "$pkgdir"
-  # make sure we don't install annoying files
-  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -rf "$pkgdir/$_site_packages/tests/"
+    cd "${srcdir}/python-fluent-fluent.runtime-${pkgver}/${_name}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
