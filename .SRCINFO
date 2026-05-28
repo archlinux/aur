@@ -1,7 +1,7 @@
 pkgbase = grantlee
 	pkgdesc = A string template engine based on the Django template system and written in Qt
 	pkgver = 5.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/steveire/grantlee
 	arch = x86_64
 	license = LGPL-2.1-or-later

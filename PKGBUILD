@@ -5,7 +5,7 @@
 
 pkgname=grantlee
 pkgver=5.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A string template engine based on the Django template system and written in Qt'
 arch=(x86_64)
 url='https://github.com/steveire/grantlee'
@@ -26,6 +26,7 @@ validpgpkeys=(FCA530E51EE4331C2DF16637D264C7B1D02D6509) # Stephen Kelly <steveir
 build() {
   cmake -B build -S $pkgname-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_STANDARD=17 \
     -DBUILD_TESTS=OFF
   cmake --build build
   cmake --build build --target docs
