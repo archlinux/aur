@@ -1,4 +1,5 @@
 *.deb
 *.pkg.tar.zst
+*.sh
 yandex-music-beta
 src
