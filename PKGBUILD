@@ -10,7 +10,7 @@ depends=('python' 'python-fastapi' 'uvicorn' 'python-websockets' 'python-aiosqli
 optdepends=('tailscale: for Tailscale transport layer')
 backup=('usr/lib/ele-messenger/config.json')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0f52996e20154e8ab7fd2dc0e5dbf301e41612047747f79e1e01bdcb5060adc2')
+sha256sums=('6b2724bba49166bb84aea18986567f62baffd20bf6ea1a544418080799fb5987')
 
 package() {
     cd "$srcdir/ele-messenger-$pkgver/pkg"
