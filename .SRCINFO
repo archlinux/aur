@@ -20,6 +20,7 @@ pkgbase = mykey-git
 	optdepends = howdy: face biometric authentication backend (AUR)
 	optdepends = pam-u2f: security-key enrollment and security-key authentication testing
 	provides = mykey
+	provides = org.freedesktop.secrets
 	conflicts = mykey
 	source = mykey-git::git+https://github.com/JamesFromFL/mykey.git
 	sha256sums = SKIP

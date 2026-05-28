@@ -26,7 +26,7 @@ makedepends=(
   'pkgconf'
   'rust'
 )
-provides=('mykey')
+provides=('mykey' 'org.freedesktop.secrets')
 conflicts=('mykey')
 install='mykey.install'
 source=("${pkgname}::git+${url}.git")
@@ -64,6 +64,7 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/systemd/user"
   install -dm755 "${pkgdir}/usr/share/libalpm/hooks"
   install -dm755 "${pkgdir}/usr/share/polkit-1/actions"
+  install -dm755 "${pkgdir}/usr/share/dbus-1/services"
   install -dm755 "${pkgdir}/usr/share/dbus-1/system.d"
   install -dm755 "${pkgdir}/usr/lib/sysusers.d"
   install -dm755 "${pkgdir}/usr/lib/tmpfiles.d"
@@ -110,6 +111,8 @@ package() {
 
   install -Dm644 scripts/com.mykey.Daemon.conf \
     "${pkgdir}/usr/share/dbus-1/system.d/com.mykey.Daemon.conf"
+  install -Dm644 scripts/org.freedesktop.secrets.service \
+    "${pkgdir}/usr/share/dbus-1/services/org.freedesktop.secrets.service"
   install -Dm644 scripts/com.mykey.authenticate.policy \
     "${pkgdir}/usr/share/polkit-1/actions/com.mykey.authenticate.policy"
   install -Dm644 packaging/arch/mykey.sysusers \
