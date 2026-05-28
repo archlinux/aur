@@ -63,7 +63,7 @@ package_firma-digital-agente-gaudi() {
     cp -r "${srcdir}/sfd_ClientesLinux_RPM64_26_02/Firma Digital/Agente GAUDI/usr/"* "${pkgdir}/usr/" 2> >(read err; error "$err") 
 
     mkdir -p "${pkgdir}/usr/share/applications/"
-    ln -s "${srcdir}/sfd_ClientesLinux_RPM64_26_02/Firma Digital/Agente GAUDI/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop" "${pkgdir}/usr/share/applications/Agente-GAUDI.desktop"
+    install -Dm644 "${srcdir}/sfd_ClientesLinux_RPM64_26_02/Firma Digital/Agente GAUDI/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop" "${pkgdir}/usr/share/applications/Agente-GAUDI.desktop"
 }
 
 package_firma-digital-middleware-idopte() {
