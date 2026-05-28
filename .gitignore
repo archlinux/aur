@@ -1,0 +1,4 @@
+src/*
+SpectrometerUI/*
+pkg/*
+*.tar.zst

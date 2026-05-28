@@ -1,0 +1,17 @@
+pkgbase = spectrometerui-git
+	pkgdesc = A small desktop application providing a user interface for spectrometer measurements (Y21B7W10034CCPD)
+	pkgver = r1.a69e031
+	pkgrel = 1
+	url = https://github.com/zaps166/SpectrometerUI
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = qt6-shadertools
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-serialport
+	provides = spectrometerui
+	conflicts = spectrometerui
+	source = git+https://github.com/zaps166/SpectrometerUI.git
+	sha256sums = SKIP
+
+pkgname = spectrometerui-git
