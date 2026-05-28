@@ -1,6 +1,6 @@
 pkgbase = piped-frontend-git
 	pkgdesc = An alternative privacy-friendly YouTube frontend which is efficient by design. Frontend component, calling [piped-backend-git](https://aur.archlinux.org/piped-backend-git) for Metadata
-	pkgver = r4797.c4e6f40
+	pkgver = r4906.da7ab35
 	pkgrel = 1
 	url = https://github.com/TeamPiped/Piped
 	install = piped-frontend.install

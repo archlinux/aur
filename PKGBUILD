@@ -3,7 +3,7 @@
 pkgname='piped-frontend-git'
 _componentname="${pkgname%'-git'}"
 _componentnameshort="${_componentname#'piped-'}"
-pkgver=r4797.c4e6f40
+pkgver=r4906.da7ab35
 pkgrel=1
 pkgdesc='An alternative privacy-friendly YouTube frontend which is efficient by design. Frontend component, calling [piped-backend-git](https://aur.archlinux.org/piped-backend-git) for Metadata'
 arch=('x86_64')
@@ -31,6 +31,8 @@ prepare() {
 
 build() {
 	cd Piped
+	if pnpm install vite; then :; fi
+	pnpm approve-builds core-js esbuild vue-demi
 	pnpm install vite
 	pnpm run build
 }
