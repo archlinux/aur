@@ -1,6 +1,6 @@
 pkgbase = piped-html-proxy-git
 	pkgdesc = Express.js proxy for Piped that injects OpenGraph meta to the HTML body.
-	pkgver = r55.757cb7e
+	pkgver = r57.f8b03e6
 	pkgrel = 1
 	url = https://github.com/JuniorJPDJ/piped-html-proxy
 	arch = any
@@ -21,6 +21,6 @@ pkgbase = piped-html-proxy-git
 	sha256sums = 98ead0813c5fe2b0f97490eb979f34741bc35ebf5745801f63b5676c81bda7e3
 	sha256sums = eb122e1cf5149be5e89a2ebfb158f29f305427cb8b2061d6728c53ad1d1b89d4
 	sha256sums = 881a3ce33e4327919721e61f707bb1097a77077125c8c68766b2145ee0eadc58
-	sha256sums = 23b033a5055d930b1f9c7a8a20aa79091c94e316a62e8a144c023469a189a994
+	sha256sums = bb8105e1d76da20c138ad22c37e9e1be93a078ef9fbd9eedf10664399328b80b
 
 pkgname = piped-html-proxy-git
