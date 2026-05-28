@@ -1,0 +1,15 @@
+pkgbase = podcast-dl-bin
+	pkgdesc = A humble CLI for downloading and archiving podcasts
+	pkgver = 11.7.5
+	pkgrel = 1
+	url = https://github.com/lightpohl/podcast-dl
+	arch = x86_64
+	license = MIT
+	depends = libstdc++
+	depends = libgcc
+	optdepends = ffmpeg: post-processing
+	options = !strip
+	source = podcast-dl::https://github.com/lightpohl/podcast-dl/releases/download/v11.7.5/podcast-dl-11.7.5-linux-x64
+	sha256sums = 8ad533722c2d4bcddbb195d7332011527dbacb4ec785abd326c651721e010713
+
+pkgname = podcast-dl-bin
