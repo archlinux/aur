@@ -1,6 +1,6 @@
 pkgbase = plank-player-git
 	pkgdesc = Multimedia Player for playing local files on Plasma Bigscreen allowing navigation with just a remote control (Git version)
-	pkgver = 5.26.90.r220.gcdfbf31
+	pkgver = 5.26.90.r225.g93a409a
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/plank-player
 	arch = any
