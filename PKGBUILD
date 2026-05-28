@@ -2,7 +2,7 @@
 
 _basename=Athas
 pkgname=${_basename,,}-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Lightweight code editor built with React, TypeScript, and Tauri"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ depends=('glibc' 'gcc-libs' 'zlib' 'gdk-pixbuf2' 'libsoup3' 'xz' 'cairo' 'gtk3' 
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('5a7117c8fb4f6055e0b89eec12116abb4fb3f42e489c1a18a2bd8537d4808c50')
-sha256sums_aarch64=('9542615361b98ba80b9ae3230293d8e862e7ea1abc5dfcdd974229eec8018948')
+sha256sums_x86_64=('d04f8de7d9e3132de7dd00275130531f7a797c42c5127b7f71a0403ac8624fe6')
+sha256sums_aarch64=('9111a0eab5a407ac44fb2f0af2a9fdc68b809258b14873833977356cf7467171')
 
 
 package() {
