@@ -1,0 +1,16 @@
+pkgbase = bttf
+	pkgdesc = command line tool for datetime arithmetic, parsing, formatting and more
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/BurntSushi/bttf
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	license = Unlicense
+	makedepends = cargo
+	source = bttf-0.1.4.tar.gz::https://static.crates.io/crates/bttf/bttf-0.1.4.crate
+	sha256sums = 4b2009adc3d337b9d9b135b2e679ef969fb731dd78458da629e8e21ce7ae1f3a
+
+pkgname = bttf
