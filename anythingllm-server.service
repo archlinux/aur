@@ -13,6 +13,7 @@ WorkingDirectory=/srv/anythingllm/server
 
 EnvironmentFile=/etc/anythingllm/server.env
 Environment=NODE_ENV=production
+Environment=CHECKPOINT_DISABLE=1
 
 ExecStartPre=/bin/bash -c '\
     cd /srv/anythingllm/server && \
