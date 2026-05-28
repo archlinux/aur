@@ -1,8 +1,8 @@
 # Maintainer: britors <rodrigo@w3ti.com.br>
 pkgname=prisma4postgres-bin
-pkgver=10.8.0
+pkgver=10.9.0
 pkgrel=1
-pkgdesc="PostgreSQL database explorer and query runner"
+pkgdesc="PostgreSQL desktop client — explorer, query editor, table creator/editor, ERD, and more"
 arch=('x86_64')
 url="https://github.com/britors/Prisma4Postgres"
 license=('GPL-3.0-or-later')
