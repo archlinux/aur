@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=resources-git
-pkgver=1.10.2.r81.gaf0bd53
+pkgver=1.10.2.r117.gf44d2a1
 pkgrel=1
 pkgdesc="Monitor your system resources and processes"
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ depends=(
   'dmidecode'
   'gtk4'
   'libadwaita'
+  'libsoup3'
   'polkit'
 )
 makedepends=(
@@ -35,7 +36,7 @@ prepare() {
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
-  arch-meson "${pkgname%-git}" build -Dprofile=default
+  arch-meson "${pkgname%-git}" build
   meson compile -C build
 }
 
