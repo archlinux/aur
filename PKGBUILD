@@ -10,7 +10,7 @@ install=hyprspaces.install
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "hyprspaces.hook")
-sha256sums=('26cb65e349dcc8caab6fefd64dbf6be2a906390789edfb86aeaaa7d1325e2c33'
+sha256sums=('d227f0bd1406e5fa177177f76f7bb76703bb83818a898f6f003bd32d2060a040'
             'a7868c8e64938386e8dd559b1bf1991ffbd7d144ec746830cbc80efacc357ebc')
 
 build() {
