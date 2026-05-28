@@ -1,7 +1,7 @@
 # Maintainer: svgaming <svgaming234@gmail.com>
 
 pkgname=cstats
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Command-line RetroMC statistics tool"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(
 	'python-requests'
 )
 source=("https://github.com/svgaming234/cstats/releases/download/v${pkgver}/cstats-v${pkgver}-python.py")
-sha256sums=('0d04ddba182bc61a4745d3a84d73eba42a12bb36076a8a91f5917c5f16aaa8ff')
+sha256sums=('a072f0f9d95e8e062d33ff1d49d4146c1e61e0e77bb3b61e7aa10ce9664edaf0')
 
 package() {
 	install -Dm755 ./cstats-v${pkgver}-python.py "$pkgdir/usr/bin/$pkgname"
