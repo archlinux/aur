@@ -1,0 +1,27 @@
+pkgbase = awscurl-git
+	pkgdesc = Curl-like tool with AWS Signature Version 4 request signing
+	pkgver = 0.42.r0.g89c74fa
+	pkgrel = 1
+	url = https://github.com/okigan/awscurl
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-awscrt
+	depends = python-boto3
+	depends = python-botocore
+	depends = python-configargparse
+	depends = python-requests
+	depends = python-urllib3
+	provides = awscurl
+	conflicts = awscurl
+	options = !debug
+	source = awscurl-git::git+https://github.com/okigan/awscurl.git
+	b2sums = SKIP
+
+pkgname = awscurl-git
