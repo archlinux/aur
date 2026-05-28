@@ -1,6 +1,6 @@
 pkgbase = qt5-remoteobjects
 	pkgdesc = Inter-process communication (IPC) module developed for Qt
-	pkgver = 5.15.18
+	pkgver = 5.15.19
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = qt5-remoteobjects
 	makedepends = git
 	depends = qt5-base
 	optdepends = qt5-declarative: QML bindings
-	source = kde-qtremoteobjects::git+https://invent.kde.org/qt/qt/qtremoteobjects#commit=b2740a7c7f5b6ac810240404a947ca5cff9de5f7
-	sha256sums = 0c89be1890b59ac0df77862e2798bbd898982f3c6eb8d8e50f8e408e471d94d3
+	source = kde-qtremoteobjects::git+https://invent.kde.org/qt/qt/qtremoteobjects#commit=48d10f341279e08c1bc4abb764c2d3ab9a259a51
+	sha256sums = 09257f94146ff86a1f89c06d108931e6bf298545443dc8e4ba44ef727ac1550a
 
 pkgname = qt5-remoteobjects
