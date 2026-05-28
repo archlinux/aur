@@ -1,0 +1,15 @@
+pkgbase = waylandcraft-session-git
+	pkgdesc = Minimal labwc session preconfigured to run Minecraft Waylandcraft as a session.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NerdPupX3/Waylandcraft-Session
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = labwc
+	depends = prismlauncher
+	depends = wlcontrol
+	depends = pavucontrol
+	source = git+https://github.com/NerdPupX3/Waylandcraft-Session.git
+	sha256sums = SKIP
+
+pkgname = waylandcraft-session-git
