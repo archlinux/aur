@@ -1,6 +1,6 @@
 # Maintainer: type1arc <type1arc@github>
 
-pkgname=fetcher-rs
+pkgname=fetcher-cli
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A configurable package fetcher written in Rust"
