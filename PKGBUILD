@@ -2,7 +2,7 @@
 # Maintainer: Danny Rosenthal <dsrosen6@gmail.com>
 
 pkgname='hyprdocked-bin'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Laptop display helper for Hyprland'
 url='https://github.com/dsrosen6/hyprdocked'
@@ -13,10 +13,10 @@ conflicts=('hyprdocked')
 depends=('hyprland')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/dsrosen6/hyprdocked/releases/download/v${pkgver}/hyprdocked_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('4b8a15f873e24494826642bc19780795ac58126f928f36015f5f8650f23d1a05')
+sha256sums_aarch64=('dc558e28d26b3539a0e9bc806ac89dfff6548235a67257c4803ba8e1053b9754')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dsrosen6/hyprdocked/releases/download/v${pkgver}/hyprdocked_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('8c57d8cae10c12d497a5625de4f31be4b8cd19296bf2656f2aeafba24900a435')
+sha256sums_x86_64=('6fb75de040cc30d35141820dcabb75513cc555377f06e4e6de0013fe85b5c75c')
 
 package() {
   install -Dm755 hyprdocked "$pkgdir/usr/bin/hyprdocked"

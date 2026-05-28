@@ -1,6 +1,6 @@
 pkgbase = hyprdocked-bin
 	pkgdesc = Laptop display helper for Hyprland
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/dsrosen6/hyprdocked
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = hyprdocked-bin
 	conflicts = hyprdocked
 	provides = hyprdocked
 	arch = aarch64
-	source_aarch64 = https://github.com/dsrosen6/hyprdocked/releases/download/v0.3.0/hyprdocked_0.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 4b8a15f873e24494826642bc19780795ac58126f928f36015f5f8650f23d1a05
+	source_aarch64 = https://github.com/dsrosen6/hyprdocked/releases/download/v0.3.1/hyprdocked_0.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = dc558e28d26b3539a0e9bc806ac89dfff6548235a67257c4803ba8e1053b9754
 	arch = x86_64
-	source_x86_64 = https://github.com/dsrosen6/hyprdocked/releases/download/v0.3.0/hyprdocked_0.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8c57d8cae10c12d497a5625de4f31be4b8cd19296bf2656f2aeafba24900a435
+	source_x86_64 = https://github.com/dsrosen6/hyprdocked/releases/download/v0.3.1/hyprdocked_0.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6fb75de040cc30d35141820dcabb75513cc555377f06e4e6de0013fe85b5c75c
 	
 pkgname = hyprdocked-bin
