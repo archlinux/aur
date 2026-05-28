@@ -1,0 +1,12 @@
+pkgbase = iron-tool
+	pkgdesc = System administration and security toolkit for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pidid64-alt/iron-tool
+	arch = any
+	license = MIT
+	depends = bash
+	source = iron-tool-1.0.0.sh::https://github.com/pidid64-alt/iron-tool/raw/main/iron-tool.sh
+	b2sums = SKIP
+
+pkgname = iron-tool
