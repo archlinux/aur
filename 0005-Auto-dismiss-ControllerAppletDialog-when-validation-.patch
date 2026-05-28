@@ -1,0 +1,123 @@
+From 179bd299155afb743a81d5acc9756b3493191ea3 Mon Sep 17 00:00:00 2001
+From: Jakob Linke <36006+schuay@users.noreply.github.com>
+Date: Wed, 27 May 2026 12:43:40 +0200
+Subject: [PATCH 5/5] Auto-dismiss ControllerAppletDialog when validation would
+ now succeed
+
+The ControllerSupport applet dialog opens whenever Npads.Validate() fails
+(e.g. when a controller disconnects via idle auto-off) and currently
+blocks until the user dismisses it via keyboard/mouse, even after the
+controller reconnects.
+
+Add a polling task in AvaHostUIHandler.DisplayMessageDialog that
+re-runs Validate() every 500 ms while the dialog is open and cancels
+a CancellationToken on the first success. ShowControllerAppletDialog
+now accepts that token and dismisses the dialog (contentDialog.Hide)
+when the token fires. An auto-dismiss is treated as user-confirmed, so
+the outer ControllerApplet.Start loop re-validates and exits cleanly.
+
+User-initiated dismissal cancels the token afterwards to stop the
+poll. The poll is a no-op when AppHost is null (shutdown).
+---
+ src/Ryujinx/UI/Applet/AvaHostUIHandler.cs     | 41 ++++++++++++++++++-
+ .../UI/Applet/ControllerAppletDialog.axaml.cs | 11 ++++-
+ 2 files changed, 49 insertions(+), 3 deletions(-)
+
+diff --git a/src/Ryujinx/UI/Applet/AvaHostUIHandler.cs b/src/Ryujinx/UI/Applet/AvaHostUIHandler.cs
+index 45235ee3f..639915944 100644
+--- a/src/Ryujinx/UI/Applet/AvaHostUIHandler.cs
++++ b/src/Ryujinx/UI/Applet/AvaHostUIHandler.cs
+@@ -19,6 +19,7 @@ using System;
+ using System.Collections.ObjectModel;
+ using System.Linq;
+ using System.Threading;
++using System.Threading.Tasks;
+ 
+ namespace Ryujinx.Ava.UI.Applet
+ {
+@@ -46,8 +47,44 @@ namespace Ryujinx.Ava.UI.Applet
+ 
+             Dispatcher.UIThread.InvokeAsync(async () =>
+             {
+-                UserResult response = await ControllerAppletDialog.ShowControllerAppletDialog(_parent, args);
+-                if (response == UserResult.Ok)
++                using CancellationTokenSource cts = new();
++
++                // Poll Validate() while the dialog is up; cancel the token if it would
++                // now succeed (e.g. after a disconnected controller reconnects). The
++                // token cancellation dismisses the dialog, the outer ControllerApplet
++                // loop then re-validates and exits cleanly.
++                Task pollTask = Task.Run(async () =>
++                {
++                    try
++                    {
++                        while (true)
++                        {
++                            await Task.Delay(500, cts.Token);
++
++                            if (_parent.ViewModel.AppHost?.Device?.Hid?.Npads?.Validate(
++                                    args.PlayerCountMin,
++                                    args.PlayerCountMax,
++                                    args.SupportedStyles,
++                                    out _,
++                                    out _) == true)
++                            {
++                                cts.Cancel();
++                                return;
++                            }
++                        }
++                    }
++                    catch (OperationCanceledException)
++                    {
++                    }
++                });
++
++                UserResult response = await ControllerAppletDialog.ShowControllerAppletDialog(_parent, args, cts.Token);
++
++                bool autoDismissed = cts.IsCancellationRequested;
++                cts.Cancel();
++                await pollTask;
++
++                if (response == UserResult.Ok || autoDismissed)
+                 {
+                     okPressed = true;
+                 }
+diff --git a/src/Ryujinx/UI/Applet/ControllerAppletDialog.axaml.cs b/src/Ryujinx/UI/Applet/ControllerAppletDialog.axaml.cs
+index ee0e884d2..cc2464f1c 100644
+--- a/src/Ryujinx/UI/Applet/ControllerAppletDialog.axaml.cs
++++ b/src/Ryujinx/UI/Applet/ControllerAppletDialog.axaml.cs
+@@ -10,6 +10,7 @@ using Ryujinx.Common;
+ using Ryujinx.HLE.HOS.Applets;
+ using Ryujinx.HLE.HOS.Services.Hid;
+ using System.Linq;
++using System.Threading;
+ using System.Threading.Tasks;
+ 
+ namespace Ryujinx.Ava.UI.Applet
+@@ -63,7 +64,7 @@ namespace Ryujinx.Ava.UI.Applet
+             InitializeComponent();
+         }
+ 
+-        public static async Task<UserResult> ShowControllerAppletDialog(MainWindow window, ControllerAppletUIArgs args)
++        public static async Task<UserResult> ShowControllerAppletDialog(MainWindow window, ControllerAppletUIArgs args, CancellationToken cancelToken = default)
+         {
+             ContentDialog contentDialog = new();
+             UserResult result = UserResult.Cancel;
+@@ -87,6 +88,14 @@ namespace Ryujinx.Ava.UI.Applet
+ 
+             contentDialog.Styles.Add(bottomBorder);
+ 
++            // Dismiss the dialog automatically when the cancellation token fires.
++            // The caller uses this to close the modal once the underlying validation
++            // would have succeeded (e.g. a disconnected controller reconnected).
++            using CancellationTokenRegistration reg = cancelToken.Register(() =>
++            {
++                Dispatcher.UIThread.InvokeAsync(() => contentDialog.Hide());
++            });
++
+             await ContentDialogHelper.ShowAsync(contentDialog);
+ 
+             return result;
+-- 
+2.54.0
+

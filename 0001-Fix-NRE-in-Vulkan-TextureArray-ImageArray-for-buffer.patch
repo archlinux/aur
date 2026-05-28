@@ -1,0 +1,67 @@
+From c9002608085e5f6530519e55b14b2b3f841daf71 Mon Sep 17 00:00:00 2001
+From: Jakob Linke <36006+schuay@users.noreply.github.com>
+Date: Wed, 27 May 2026 07:50:31 +0200
+Subject: [PATCH 1/5] Fix NRE in Vulkan TextureArray/ImageArray for buffer-mode
+ arrays
+
+When the array is constructed with isBuffer=true only the buffer-side
+fields are allocated; _textureRefs is left null. TextureArray.SetSamplers
+unconditionally indexes _textureRefs[i].Sampler, and both arrays'
+QueueWriteToReadBarriers iterate _textureRefs.Length. Each NREs the
+first time a samplerBuffer[N>=2] or imageBuffer[N>=2] binding is used.
+
+Guard each with an early return on _isBuffer. Texel-buffer descriptors
+carry no sampler state and storage barriers do not apply to texel
+buffers.
+---
+ src/Ryujinx.Graphics.Vulkan/ImageArray.cs   |  5 +++++
+ src/Ryujinx.Graphics.Vulkan/TextureArray.cs | 10 ++++++++++
+ 2 files changed, 15 insertions(+)
+
+diff --git a/src/Ryujinx.Graphics.Vulkan/ImageArray.cs b/src/Ryujinx.Graphics.Vulkan/ImageArray.cs
+index 47c180696..20f3111dc 100644
+--- a/src/Ryujinx.Graphics.Vulkan/ImageArray.cs
++++ b/src/Ryujinx.Graphics.Vulkan/ImageArray.cs
+@@ -89,6 +89,11 @@ namespace Ryujinx.Graphics.Vulkan
+ 
+         public void QueueWriteToReadBarriers(CommandBufferScoped cbs, PipelineStageFlags stageFlags)
+         {
++            if (_isBuffer)
++            {
++                return;
++            }
++
+             HashSet<TextureStorage> storages = _storages;
+ 
+             if (storages == null)
+diff --git a/src/Ryujinx.Graphics.Vulkan/TextureArray.cs b/src/Ryujinx.Graphics.Vulkan/TextureArray.cs
+index 2511f5711..a36b718cc 100644
+--- a/src/Ryujinx.Graphics.Vulkan/TextureArray.cs
++++ b/src/Ryujinx.Graphics.Vulkan/TextureArray.cs
+@@ -54,6 +54,11 @@ namespace Ryujinx.Graphics.Vulkan
+ 
+         public void SetSamplers(int index, ISampler[] samplers)
+         {
++            if (_isBuffer)
++            {
++                return;
++            }
++
+             for (int i = 0; i < samplers.Length; i++)
+             {
+                 ISampler sampler = samplers[i];
+@@ -109,6 +114,11 @@ namespace Ryujinx.Graphics.Vulkan
+ 
+         public void QueueWriteToReadBarriers(CommandBufferScoped cbs, PipelineStageFlags stageFlags)
+         {
++            if (_isBuffer)
++            {
++                return;
++            }
++
+             HashSet<TextureStorage> storages = _storages;
+ 
+             if (storages == null)
+-- 
+2.54.0
+

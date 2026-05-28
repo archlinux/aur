@@ -1,0 +1,66 @@
+From e3c654e96400a3d839f7101b4d15b26076847eef Mon Sep 17 00:00:00 2001
+From: Jakob Linke <36006+schuay@users.noreply.github.com>
+Date: Wed, 27 May 2026 07:50:36 +0200
+Subject: [PATCH 2/5] Suppress Invalid-texture-format log spam from
+ uninitialized pool slots
+
+UpdateFromPool iterates the full texture pool (sized by the guest's
+MaximumId), which can exceed the slot range the guest has actually
+populated. The trailing slots hold whatever was in guest memory at
+allocation time; for pools filled with a poison byte (e.g. 0x5A) every
+descriptor word is identical, the format lookup misses, and the existing
+error log fires once per slot.
+
+Skip the log when all eight descriptor words are bitwise equal. No real
+descriptor has that shape, so this is a structural uninitialized-memory
+test rather than a behaviour change; the lookup still falls back to
+FormatInfo.Default as before.
+---
+ src/Ryujinx.Graphics.Gpu/Image/TexturePool.cs | 24 ++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/src/Ryujinx.Graphics.Gpu/Image/TexturePool.cs b/src/Ryujinx.Graphics.Gpu/Image/TexturePool.cs
+index d9fe02f8d..9fd97fcee 100644
+--- a/src/Ryujinx.Graphics.Gpu/Image/TexturePool.cs
++++ b/src/Ryujinx.Graphics.Gpu/Image/TexturePool.cs
+@@ -529,6 +529,28 @@ namespace Ryujinx.Graphics.Gpu.Image
+             }
+         }
+ 
++        private static bool IsUninitializedDescriptor(in TextureDescriptor descriptor)
++        {
++            // The descriptor type is a 3-bit field but only values 0..4 are defined.
++            // 5, 6, 7 cannot appear in a descriptor the guest meant to write.
++            if ((uint)descriptor.UnpackTextureDescriptorType() > (uint)TextureDescriptorType.BlockLinearColorKey)
++            {
++                return true;
++            }
++
++            // Byte-uniform fill (0x00, 0x5A, 0xCC, ...) is the other common poison signature.
++            // No real descriptor has eight bitwise-identical words.
++            uint w = descriptor.Word0;
++
++            return descriptor.Word1 == w
++                && descriptor.Word2 == w
++                && descriptor.Word3 == w
++                && descriptor.Word4 == w
++                && descriptor.Word5 == w
++                && descriptor.Word6 == w
++                && descriptor.Word7 == w;
++        }
++
+         /// <summary>
+         /// Gets texture information from a texture descriptor.
+         /// </summary>
+@@ -586,7 +608,7 @@ namespace Ryujinx.Graphics.Gpu.Image
+ 
+             if (!FormatTable.TryGetTextureFormat(format, srgb, out FormatInfo formatInfo))
+             {
+-                if (gpuVa != 0 && format != 0)
++                if (gpuVa != 0 && format != 0 && !IsUninitializedDescriptor(descriptor))
+                 {
+                     Logger.Error?.Print(LogClass.Gpu, $"Invalid texture format 0x{format:X} (sRGB: {srgb}).");
+                 }
+-- 
+2.54.0
+

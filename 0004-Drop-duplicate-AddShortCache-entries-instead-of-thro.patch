@@ -1,0 +1,76 @@
+From 9c7be1fac10d18e4780df43b632305b33a4a04c8 Mon Sep 17 00:00:00 2001
+From: Jakob Linke <36006+schuay@users.noreply.github.com>
+Date: Sat, 16 May 2026 14:43:07 +0200
+Subject: [PATCH 4/5] Drop duplicate AddShortCache entries instead of throwing
+
+When InvalidateRangeImpl walks a modified pool chunk, it calls
+AddShortCache once per stale slot whose texture has HasOneReference().
+Two slots can have byte-equal cached descriptors that point at distinct
+Texture instances with different Info: DescriptorCache[id] is updated
+on every slot re-population, but a re-population that hits the texture
+cache returns an existing Texture whose Info reflects its earlier
+creation descriptor rather than the current one. The two slots' cached
+descriptors converge while the textures' Info diverges; the second
+AddShortCache call then throws ArgumentException on the duplicate
+descriptor key.
+
+Convert the lookup add to TryAdd and return early on duplicates. This
+prevents the crash but is a crash-vs-wrong-render trade rather than a
+structurally safe no-op: the kept entry's Texture.Info may disagree
+with its key descriptor, so a later FindShortCache hit could surface a
+texture with the wrong format / width / range. The InvalidatedSequence
+check in FindShortCache bounds staleness but does not catch the Info
+mismatch.
+
+TODO: replace dedup with a deeper fix once FindOrCreateTexture's role
+in producing distinct Textures for byte-equal descriptors is understood
+(likely guest gpuVa remapping between slot populations).
+---
+ .../Image/AutoDeleteCache.cs                  | 30 ++++++++++++++++++-
+ 1 file changed, 29 insertions(+), 1 deletion(-)
+
+diff --git a/src/Ryujinx.Graphics.Gpu/Image/AutoDeleteCache.cs b/src/Ryujinx.Graphics.Gpu/Image/AutoDeleteCache.cs
+index 99b34112f..155dd130b 100644
+--- a/src/Ryujinx.Graphics.Gpu/Image/AutoDeleteCache.cs
++++ b/src/Ryujinx.Graphics.Gpu/Image/AutoDeleteCache.cs
+@@ -278,8 +278,36 @@ namespace Ryujinx.Graphics.Gpu.Image
+         {
+             ShortTextureCacheEntry entry = new(descriptor, texture);
+ 
++            // The lookup is descriptor-keyed. Two pool slots can have byte-equal cached
++            // descriptors yet hold distinct Texture instances with different Info
++            // (different format, width, physical range). DescriptorCache[id] is updated
++            // on every slot re-population, but a re-population that hits the texture
++            // cache returns an existing Texture whose Info reflects its earlier creation
++            // descriptor rather than the current one -- the two slots' cached descriptors
++            // converge while the textures' Info diverges. Both Texture instances then
++            // have HasOneReference()==true and pass the gate in InvalidateRangeImpl.
++            //
++            // Dedup here converts the otherwise-fatal duplicate-key on the second
++            // Dictionary.Add into a soft failure: the kept entry's Texture.Info may
++            // disagree with its key descriptor, so a later FindShortCache hit could
++            // surface a texture with the wrong format / width / range. This is a
++            // crash-vs-wrong-render trade, NOT a structurally safe no-op. The
++            // InvalidatedSequence check in FindShortCache bounds staleness but does
++            // not catch the Info mismatch.
++            //
++            // The same-Texture-shared-across-slots case the original commit attributed
++            // the duplicate to cannot reach here -- a shared instance has refcount >= 2
++            // and HasOneReference() filters it out before AddShortCache is called.
++            //
++            // TODO(jgruber): replace dedup with a deeper fix once FindOrCreateTexture's
++            // role in producing distinct Textures for byte-equal descriptors is
++            // understood (likely guest gpuVa remapping between slot populations).
++            if (!_shortCacheLookup.TryAdd(entry.Descriptor, entry))
++            {
++                return;
++            }
++
+             _shortCacheBuilder.Add(entry);
+-            _shortCacheLookup.Add(entry.Descriptor, entry);
+ 
+             texture.ShortCacheEntry = entry;
+ 
+-- 
+2.54.0
+

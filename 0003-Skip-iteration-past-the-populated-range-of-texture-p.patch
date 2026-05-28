@@ -1,0 +1,168 @@
+From ff1752ddd8f125e12b541aa816e316abf91feb5b Mon Sep 17 00:00:00 2001
+From: Jakob Linke <36006+schuay@users.noreply.github.com>
+Date: Sat, 16 May 2026 13:44:25 +0200
+Subject: [PATCH 3/5] Skip iteration past the populated range of texture pools
+
+For bindless-promoted texture arrays, the shader translator sizes the
+binding by the guest's TexturePoolMaximumId, which can be hundreds of
+thousands of slots even when the guest has only populated a few. The
+binding cache currently walks the full range on each descriptor-set
+update, calling GetForBinding for every slot in the trailing uninit
+region.
+
+Track a per-pool walk limit (highest slot ever observed as carrying a
+valid descriptor) and an explored flag (whether iteration has covered
+the full pool at least once since the last guest write past the walk
+limit). When both are set, clamp full-pool walks by the walk limit.
+
+The explored flag is invalidated by RegionModified calls after the
+first SynchronizeMemory; the all-dirty initial state of the granular
+tracker is ignored via a _firstSyncDone gate so we don't conflate
+"chunk we haven't read yet" with "chunk the guest just wrote".
+
+NoteValidSlot uses the existing IsUninitializedDescriptor structural
+check, so the walk limit only counts descriptors that are plausibly
+real. Slots clamped out by the limit are bound to null/default in the
+array (same as today's path for uninit slots), so behavior is
+unchanged for any binding the guest actually exercises.
+---
+ src/Ryujinx.Graphics.Gpu/Image/Pool.cs        | 52 +++++++++++++++++++
+ .../Image/TextureBindingsArrayCache.cs        | 21 +++++++-
+ src/Ryujinx.Graphics.Gpu/Image/TexturePool.cs |  5 ++
+ 3 files changed, 76 insertions(+), 2 deletions(-)
+
+diff --git a/src/Ryujinx.Graphics.Gpu/Image/Pool.cs b/src/Ryujinx.Graphics.Gpu/Image/Pool.cs
+index 3cc65a92b..d0bcd0e85 100644
+--- a/src/Ryujinx.Graphics.Gpu/Image/Pool.cs
++++ b/src/Ryujinx.Graphics.Gpu/Image/Pool.cs
+@@ -46,6 +46,49 @@ namespace Ryujinx.Graphics.Gpu.Image
+         private int _modifiedSequenceOffset;
+         private bool _modified;
+ 
++        // Walk-limit tracking. Used by callers iterating the full pool (e.g. bindless-promoted texture
++        // arrays) to skip slots the guest has never populated. _walkLimit is the highest slot index
++        // observed as carrying a valid descriptor, plus one. _fullyExplored means iteration has covered
++        // the full pool at least once since the last guest write past _walkLimit, so it can be trusted
++        // as a clamp. _firstSyncDone distinguishes the initial all-dirty bitmap state from real writes.
++        private int _walkLimit;
++        private bool _fullyExplored;
++        private bool _firstSyncDone;
++
++        /// <summary>
++        /// Highest slot index observed as carrying a valid descriptor, plus one.
++        /// Zero means no valid descriptor has been observed yet.
++        /// </summary>
++        public int WalkLimit => _walkLimit;
++
++        /// <summary>
++        /// Whether the pool has been iterated end-to-end since the last guest write past <see cref="WalkLimit"/>.
++        /// When true, <see cref="WalkLimit"/> is an accurate upper bound on populated slots.
++        /// </summary>
++        public bool IsFullyExplored => _fullyExplored;
++
++        /// <summary>
++        /// Marks the pool as having been iterated end-to-end. Callers invoke this after a walk
++        /// with no upper-bound clamp completes.
++        /// </summary>
++        public void MarkFullyExplored()
++        {
++            _fullyExplored = true;
++        }
++
++        /// <summary>
++        /// Records that a slot was observed as carrying a valid descriptor.
++        /// </summary>
++        protected void NoteValidSlot(int id)
++        {
++            int next = id + 1;
++
++            if (next > _walkLimit)
++            {
++                _walkLimit = next;
++            }
++        }
++
+         /// <summary>
+         /// Creates a new instance of the GPU resource pool.
+         /// </summary>
+@@ -145,6 +188,7 @@ namespace Ryujinx.Graphics.Gpu.Image
+         {
+             _modified = false;
+             _memoryTracking.QueryModified(_modifiedDelegate);
++            _firstSyncDone = true;
+ 
+             if (_modified)
+             {
+@@ -173,6 +217,14 @@ namespace Ryujinx.Graphics.Gpu.Image
+                 mSize = maxSize;
+             }
+ 
++            // The dirty bitmap is all-dirty on construction, so the first sync's RegionModified
++            // calls are bookkeeping for chunks we haven't read yet, not real guest writes.
++            // Only modifications after the first sync invalidate the explored state.
++            if (_firstSyncDone)
++            {
++                _fullyExplored = false;
++            }
++
+             InvalidateRangeImpl(mAddress, mSize);
+         }
+ 
+diff --git a/src/Ryujinx.Graphics.Gpu/Image/TextureBindingsArrayCache.cs b/src/Ryujinx.Graphics.Gpu/Image/TextureBindingsArrayCache.cs
+index fc3b64c03..82e733376 100644
+--- a/src/Ryujinx.Graphics.Gpu/Image/TextureBindingsArrayCache.cs
++++ b/src/Ryujinx.Graphics.Gpu/Image/TextureBindingsArrayCache.cs
+@@ -655,8 +655,20 @@ namespace Ryujinx.Graphics.Gpu.Image
+                 entry.Reset();
+             }
+ 
+-            int length = (isSampler ? samplerPool.MaximumId : texturePool.MaximumId) + 1;
+-            length = Math.Min(length, bindingInfo.ArrayLength);
++            int poolLimit = (isSampler ? samplerPool.MaximumId : texturePool.MaximumId) + 1;
++            int length = Math.Min(poolLimit, bindingInfo.ArrayLength);
++
++            // When iteration covers the full pool (typical for bindless-promoted arrays whose
++            // ArrayLength is the entire pool), trust the pool's walk-limit to skip slots past
++            // the populated range. Only apply once the pool has been fully explored at least
++            // once, so we never miss a slot we haven't yet seen.
++            bool isFullPoolWalk = length >= poolLimit;
++            Pool<Texture, TextureDescriptor> walkPool = isSampler ? null : texturePool;
++
++            if (isFullPoolWalk && walkPool != null && walkPool.IsFullyExplored && walkPool.WalkLimit < length)
++            {
++                length = walkPool.WalkLimit;
++            }
+ 
+             ISampler[] samplers = isImage ? null : new ISampler[bindingInfo.ArrayLength];
+             ITexture[] textures = new ITexture[bindingInfo.ArrayLength];
+@@ -733,6 +745,11 @@ namespace Ryujinx.Graphics.Gpu.Image
+ 
+                 SetTextureArray(stage, bindingInfo, entry.TextureArray);
+             }
++
++            if (isFullPoolWalk && walkPool != null && !walkPool.IsFullyExplored)
++            {
++                walkPool.MarkFullyExplored();
++            }
+         }
+ 
+         /// <summary>
+diff --git a/src/Ryujinx.Graphics.Gpu/Image/TexturePool.cs b/src/Ryujinx.Graphics.Gpu/Image/TexturePool.cs
+index 9fd97fcee..df61d0b85 100644
+--- a/src/Ryujinx.Graphics.Gpu/Image/TexturePool.cs
++++ b/src/Ryujinx.Graphics.Gpu/Image/TexturePool.cs
+@@ -183,6 +183,11 @@ namespace Ryujinx.Graphics.Gpu.Image
+ 
+             ref readonly TextureDescriptor descriptor = ref GetDescriptorRef(id);
+ 
++            if (!IsUninitializedDescriptor(descriptor))
++            {
++                NoteValidSlot(id);
++            }
++
+             if (texture == null)
+             {
+                 if (_invalidMap.IsSet(id))
+-- 
+2.54.0
+
