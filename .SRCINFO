@@ -1,6 +1,6 @@
 pkgbase = wolframengine
 	pkgdesc = Free Wolfram Engine(TM) for Developers
-	pkgver = 14.2.0
+	pkgver = 14.3.0
 	pkgrel = 1
 	url = https://www.wolfram.com/engine/
 	arch = x86_64
@@ -43,9 +43,11 @@ pkgbase = wolframengine
 	provides = wolframscript
 	provides = wolframplayer
 	provides = wolfram
-	noextract = WolframEngine_14.2.0_LINUX.sh
+	conflicts = mathematica
+	conflicts = mathematica-light
+	noextract = WolframEngine_14.3.0_LINUX.sh
 	options = !strip
-	source = WolframEngine_14.2.0_LINUX.sh::https://account.wolfram.com/dl/WolframEngine?platform=Linux&version=14.2
-	sha256sums = ea967fd28eba2150834fae7d174af47aa5cadda58262928a79784c8afa2c5b07
+	source = WolframEngine_14.3.0_LINUX.sh::https://account.wolfram.com/dl/WolframEngine?platform=Linux&version=14.3
+	sha256sums = 861629cc718592a2aca969a1db6a432cf189d2b95bf8bd9f61e263dd617536dc
 
 pkgname = wolframengine
