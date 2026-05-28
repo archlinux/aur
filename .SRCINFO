@@ -1,0 +1,20 @@
+pkgbase = lpack-git
+	pkgdesc = A lightweight Linux packaging system and portable package manager for distributing applications across distributions using a standard .lpk format
+	pkgver = 1.0_beta
+	pkgrel = 1
+	url = https://github.com/bytesketch/lpack.git
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	provides = lpack
+	conflicts = lpack
+	options = !debug
+	source = lpack::git+https://github.com/bytesketch/lpack.git
+	sha256sums = SKIP
+
+pkgname = lpack-git
