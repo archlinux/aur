@@ -1,1 +1,4 @@
-pipewire
+/pipewire/
+/pipewire-selinux-*.pkg.tar*
+/src/
+/pkg/

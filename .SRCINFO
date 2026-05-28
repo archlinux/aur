@@ -2,6 +2,7 @@ pkgbase = pipewire-selinux
 	pkgdesc = Low-latency audio/video router and processor (SELinux-aware)
 	pkgver = 1.6.6
 	pkgrel = 1
+	epoch = 1
 	url = https://pipewire.org
 	install = pipewire-selinux.install
 	arch = x86_64
@@ -53,14 +54,10 @@ pkgbase = pipewire-selinux
 	makedepends = valgrind
 	makedepends = webrtc-audio-processing-1
 	makedepends = libselinux
-	depends = libpipewire=1.6.6
-	depends = libpipewire-.so
+	depends = libpipewire>=1:1.6.6-1
+	depends = libpipewire-0.3.so
 	depends = dbus
 	depends = libdbus-1.so
-	depends = ffmpeg
-	depends = libavcodec.so
-	depends = libavutil.so
-	depends = libswscale.so
 	depends = glib2
 	depends = libglib-2.0.so
 	depends = glibc

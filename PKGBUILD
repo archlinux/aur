@@ -19,6 +19,7 @@ _extract() {
     }
   ' <<< "$_upstream"
 }
+eval "$(_extract epoch)"
 eval "$(_extract pkgver)"
 eval "$(_extract pkgrel)"
 eval "$(_extract pkgdesc)"
@@ -41,35 +42,34 @@ license+=(
   LGPL-2.1-or-later
 )
 depends=(
-  "libpipewire=${pkgver}" "libpipewire-${_api_ver}.so"
-  'dbus' 'libdbus-1.so'
-  'ffmpeg' 'libavcodec.so' 'libavutil.so' 'libswscale.so'
-  'glib2' 'libglib-2.0.so'
+  "libpipewire>=${epoch}:${pkgver}-${pkgrel}" "lib${_pwname}.so"
+  'dbus'                                      'libdbus-1.so'
+  'glib2'                                     'libglib-2.0.so'
   'glibc'
   'libdrm'
   'libgcc'
-  'ncurses' 'libncursesw.so'
-  'readline' 'libreadline.so'
-  'systemd-libs' 'libsystemd.so' 'libudev.so'
+  'ncurses'                                   'libncursesw.so'
+  'readline'                                  'libreadline.so'
+  'systemd-libs'                              'libsystemd.so'     'libudev.so'
 )
 optdepends=(
-  'gst-plugin-pipewire: gstreamer support'
-  'pipewire-alsa: ALSA support'
-  'pipewire-audio: Audio support'
-  'pipewire-docs: Documentation'
-  'pipewire-ffado: FireWire support'
-  'pipewire-jack: JACK support'
-  'pipewire-jack-client: PipeWire as JACK client'
-  'pipewire-libcamera: Libcamera support'
-  'pipewire-pulse: PulseAudio support'
-  'pipewire-roc: ROC support'
-  'pipewire-session-manager: Session manager'
-  'pipewire-v4l2: V4L2 interceptor'
-  'pipewire-vulkan: Vulkan support'
-  'pipewire-x11-bell: X11 bell'
-  'pipewire-zeroconf: Zeroconf support'
-  'realtime-privileges: realtime privileges with rt module'
-  'rtkit: realtime privileges with rtkit module'
+  'gst-plugin-pipewire:       gstreamer support'
+  'pipewire-alsa:             ALSA support'
+  'pipewire-audio:            Audio support'
+  'pipewire-docs:             Documentation'
+  'pipewire-ffado:            FireWire support'
+  'pipewire-jack:             JACK support'
+  'pipewire-jack-client:      PipeWire as JACK client'
+  'pipewire-libcamera:        Libcamera support'
+  'pipewire-pulse:            PulseAudio support'
+  'pipewire-roc:              ROC support'
+  'pipewire-session-manager:  Session manager'
+  'pipewire-v4l2:             V4L2 interceptor'
+  'pipewire-vulkan:           Vulkan support'
+  'pipewire-x11-bell:         X11 bell'
+  'pipewire-zeroconf:         Zeroconf support'
+  'realtime-privileges:       realtime privileges with rt module'
+  'rtkit:                     realtime privileges with rtkit module'
 )
 provides=("pipewire=${pkgver}")
 conflicts=(
@@ -114,7 +114,9 @@ build() {
     -D udevrulesdir='/usr/lib/udev/rules.d'
   )
 
-  meson compile -C build "${meson_options[@]}" -D selinux='enabled'
+  arch-meson pipewire build "${meson_options[@]}" -D selinux='enabled'
+
+  meson compile -C build
 }
 
 check() {
@@ -122,7 +124,7 @@ check() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build-selinux
+  DESTDIR="${pkgdir}" meson install -C build
 
   (
     cd "${pkgdir}"
@@ -133,101 +135,101 @@ package() {
       ln -sf pipewire usr/bin/"${_f}"
     done
 
-    rm -rf /usr/include/{"${_pwname}","${_spaname}"}
-    rm -rf /usr/lib/"${_spaname}"/libspa.so*
-    rm -rf /usr/lib/lib"${_pwname}".so*
-    rm -rf /usr/lib/pkgconfig/lib{"${_pwname}","${_spaname}"}.pc
+    rm -rf usr/include/
+    rm -rf usr/lib/"${_spaname}"/libspa.so*
+    rm -rf usr/lib/lib"${_pwname}".so*
+    rm -rf usr/lib/pkgconfig/
 
-    rm -rf /usr/lib/udev
-    rm -rf /usr/share/alsa-card-profile
+    rm -rf usr/lib/udev
+    rm -rf usr/share/alsa-card-profile
 
-    rm -rf /usr/share/doc
+    rm -rf usr/share/doc
 
-    rm -rf /usr/lib/"${_spaname}"/libcamera
+    rm -rf usr/lib/"${_spaname}"/libcamera
 
-    rm -rf /usr/lib/"${_spaname}"/filter-graph/libspa-filter-graph-plugin-onnx.so
+    rm -rf usr/lib/"${_spaname}"/filter-graph/libspa-filter-graph-plugin-onnx.so
 
-    rm -rf /usr/bin/pipewire-{aes67,avb}
-    rm -rf /usr/bin/pw-{cat,loopback,mididump,midi2play,midi2record,sysex}
-    rm -rf /usr/bin/pw-{dsd,enc,midi,}play
-    rm -rf /usr/bin/pw-{midi,}record
-    rm -rf /usr/bin/spa-{acp-tool,resample}
-    rm -rf /usr/lib/alsa-lib
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-avb.so
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-echo-cancel.so
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-fallback-sink.so
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-filter-chain*.so
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-loopback.so
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-netjack2*.so
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-parametric-equalizer.so
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-pipe-tunnel.so
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-protocol-simple.so
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-rtp-{sap,sink,source}.so
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-vban*.so
-    rm -rf /usr/lib/"${_spaname}"/{aec,alsa,audio*,avb,bluez5,filter-graph}
-    rm -rf /usr/lib/systemd/user/filter-chain.service
-    rm -rf /usr/share/alsa
-    rm -rf /usr/share/man/man1/pw-{cat,loopback,mididump}.1
-    rm -rf /usr/share/man/man1/spa-{acp-tool,resample}.1
-    rm -rf /usr/share/man/man5/pipewire-filter-chain.conf.5
-    rm -rf /usr/share/man/man7/libpipewire-module-avb.7
-    rm -rf /usr/share/man/man7/libpipewire-module-echo-cancel.7
-    rm -rf /usr/share/man/man7/libpipewire-module-fallback-sink.7
-    rm -rf /usr/share/man/man7/libpipewire-module-filter-chain*.7
-    rm -rf /usr/share/man/man7/libpipewire-module-loopback.7
-    rm -rf /usr/share/man/man7/libpipewire-module-netjack2*.7
-    rm -rf /usr/share/man/man7/libpipewire-module-parametric-equalizer.7
-    rm -rf /usr/share/man/man7/libpipewire-module-pipe-tunnel.7
-    rm -rf /usr/share/man/man7/libpipewire-module-protocol-simple.7
-    rm -rf /usr/share/man/man7/libpipewire-module-rtp-{sap,sink,source}.7
-    rm -rf /usr/share/man/man7/libpipewire-module-vban*.7
-    rm -rf /usr/share/pipewire/filter-chain*
-    rm -rf /usr/share/pipewire/pipewire-{aes67,avb}.conf
-    rm -rf /usr/share/"${_spaname}"/bluez5
+    rm -rf usr/bin/pipewire-{aes67,avb}
+    rm -rf usr/bin/pw-{cat,loopback,mididump,midi2play,midi2record,sysex}
+    rm -rf usr/bin/pw-{dsd,enc,midi,}play
+    rm -rf usr/bin/pw-{midi,}record
+    rm -rf usr/bin/spa-{acp-tool,resample}
+    rm -rf usr/lib/alsa-lib
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-avb.so
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-echo-cancel.so
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-fallback-sink.so
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-filter-chain*.so
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-loopback.so
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-netjack2*.so
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-parametric-equalizer.so
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-pipe-tunnel.so
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-protocol-simple.so
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-rtp-{sap,sink,source}.so
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-vban*.so
+    rm -rf usr/lib/"${_spaname}"/{aec,alsa,audio*,avb,bluez5,filter-graph}
+    rm -rf usr/lib/systemd/user/filter-chain.service
+    rm -rf usr/share/alsa
+    rm -rf usr/share/man/man1/pw-{cat,loopback,mididump}.1
+    rm -rf usr/share/man/man1/spa-{acp-tool,resample}.1
+    rm -rf usr/share/man/man5/pipewire-filter-chain.conf.5
+    rm -rf usr/share/man/man7/libpipewire-module-avb.7
+    rm -rf usr/share/man/man7/libpipewire-module-echo-cancel.7
+    rm -rf usr/share/man/man7/libpipewire-module-fallback-sink.7
+    rm -rf usr/share/man/man7/libpipewire-module-filter-chain*.7
+    rm -rf usr/share/man/man7/libpipewire-module-loopback.7
+    rm -rf usr/share/man/man7/libpipewire-module-netjack2*.7
+    rm -rf usr/share/man/man7/libpipewire-module-parametric-equalizer.7
+    rm -rf usr/share/man/man7/libpipewire-module-pipe-tunnel.7
+    rm -rf usr/share/man/man7/libpipewire-module-protocol-simple.7
+    rm -rf usr/share/man/man7/libpipewire-module-rtp-{sap,sink,source}.7
+    rm -rf usr/share/man/man7/libpipewire-module-vban*.7
+    rm -rf usr/share/pipewire/filter-chain*
+    rm -rf usr/share/pipewire/pipewire-{aes67,avb}.conf
+    rm -rf usr/share/"${_spaname}"/
 
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-ffado*.so
-    rm -rf /usr/share/man/man7/libpipewire-module-ffado-driver.7
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-ffado*.so
+    rm -rf usr/share/man/man7/libpipewire-module-ffado-driver.7
 
     rm -rf usr/lib/"${_pwname}"/libpipewire-module-jack{-tunnel,dbus-detect}.so
     rm -rf usr/lib/"${_spaname}"/jack
     rm -rf usr/share/man/man7/libpipewire-module-jack{-tunnel,dbus-detect}.7
 
-    rm -rf /usr/bin/pw-jack
-    rm -rf /usr/include/jack
-    rm -rf /usr/lib/libjack*
-    rm -rf /usr/lib/pkgconfig/jack*.pc
-    rm -rf /usr/share/man/man1/pw-jack.1
-    rm -rf /usr/share/man/man5/pipewire-jack.conf.5
-    rm -rf /usr/share/pipewire/jack.conf
+    rm -rf usr/bin/pw-jack
+    rm -rf usr/include/jack
+    rm -rf usr/lib/libjack*
+    rm -rf usr/lib/pkgconfig/jack*.pc
+    rm -rf usr/share/man/man1/pw-jack.1
+    rm -rf usr/share/man/man5/pipewire-jack.conf.5
+    rm -rf usr/share/pipewire/jack.conf
 
-    rm -rf /usr/bin/pipewire-pulse
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-protocol-pulse.so
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-pulse-tunnel.so
-    rm -rf /usr/lib/systemd/user/pipewire-pulse.*
-    rm -rf /usr/share/glib-2.0/schemas/org.freedesktop.pulseaudio.gschema.xml
-    rm -rf /usr/share/man/man1/pipewire-pulse.1
-    rm -rf /usr/share/man/man5/pipewire-pulse.conf.5
-    rm -rf /usr/share/man/man7/libpipewire-module-{protocol-pulse,pulse-tunnel}.7
-    rm -rf /usr/share/man/man7/pipewire-pulse*.7
-    rm -rf /usr/share/pipewire/pipewire-pulse.conf
+    rm -rf usr/bin/pipewire-pulse
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-protocol-pulse.so
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-pulse-tunnel.so
+    rm -rf usr/lib/systemd/user/pipewire-pulse.*
+    rm -rf usr/share/glib-2.0/
+    rm -rf usr/share/man/man1/pipewire-pulse.1
+    rm -rf usr/share/man/man5/pipewire-pulse.conf.5
+    rm -rf usr/share/man/man7/libpipewire-module-{protocol-pulse,pulse-tunnel}.7
+    rm -rf usr/share/man/man7/pipewire-pulse*.7
+    rm -rf usr/share/pipewire/pipewire-pulse.conf
 
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-roc*.so
-    rm -rf /usr/share/man/man7/libpipewire-module-roc-{sink,source}.7
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-roc*.so
+    rm -rf usr/share/man/man7/libpipewire-module-roc-{sink,source}.7
 
-    rm -rf /usr/lib/gstreamer-1.0
+    rm -rf usr/lib/gstreamer-1.0
 
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-{raop,zeroconf}-*.so
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-rtp-session.so
-    rm -rf /usr/lib/"${_pwname}"/libpipewire-module-snapcast-discover.so
-    rm -rf /usr/share/man/man7/libpipewire-module-{raop,zeroconf}-*.7
-    rm -rf /usr/share/man/man7/libpipewire-module-rtp-session.7
-    rm -rf /usr/share/man/man7/libpipewire-module-snapcast-discover.7
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-{raop,zeroconf}-*.so
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-rtp-session.so
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-snapcast-discover.so
+    rm -rf usr/share/man/man7/libpipewire-module-{raop,zeroconf}-*.7
+    rm -rf usr/share/man/man7/libpipewire-module-rtp-session.7
+    rm -rf usr/share/man/man7/libpipewire-module-snapcast-discover.7
 
-    rm -rf /usr/bin/pw-v4l2 usr/lib/"${_pwname}"/v4l2
-    rm -rf /usr/share/man/man1/pw-v4l2.1
+    rm -rf usr/bin/pw-v4l2 usr/lib/"${_pwname}"/v4l2
+    rm -rf usr/share/man/man1/pw-v4l2.1
 
-    _pick x11-bell usr/lib/"${_pwname}"/libpipewire-module-x11-bell.so
-    _pick x11-bell usr/share/man/man7/libpipewire-module-x11-bell.7
+    rm -rf usr/lib/"${_pwname}"/libpipewire-module-x11-bell.so
+    rm -rf usr/share/man/man7/libpipewire-module-x11-bell.7
 
     # directories for overrides
     mkdir -p etc/pipewire/{client-rt,client,minimal,pipewire}.conf.d
