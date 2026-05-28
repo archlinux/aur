@@ -3,7 +3,7 @@
 # Maintainer: Solomon <shlomochoina@gmail.com>
 pkgname=openclaw-git
 _pkgver=2026.5.25.beta.1
-pkgver=2026.4.19.beta.2.r21089.ga85ff92c05c
+pkgver=2026.4.19.beta.2.r21189.g503d8d55427
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices (Bun build, highly optimized)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ sha256sums=('SKIP'
             '273910e58f512a4f1d59fe2cde328d7abc68f720f5e6e98a23a06a43c3eb9599'
             '63e557c01ca78e392ac17f37538faff9be6e568bb6d8b33980c8836197fd06ad'
             '34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d'
-            'a51425dbda581061dc0622a5a961c2fc5cb67ea9250c6d95876339e3bdbb0b19'
+            '97ca0ff8165995dffc110e5fcc50acb696232ea072aef86e26803228af72f8fe'
             '7f7dc1a6d0c96c018de6c73b7594dc15c268c4152a0ade8001406055962c89a7'
             'cdaf01acb58af62348c6f669f8b77675f66428a8ae41b4b4e371739492fb05c6'
             '025de14715ac9508517d3461f0c35e289c545353443f5cab312a091b630e8b3a'
@@ -67,11 +67,6 @@ prepare() {
     cd "$srcdir/openclaw"
     bash "${srcdir}/openclaw-patch.sh"
 
-    # 3. Surgically install built fs-safe into openclaw node_modules AFTER bun install
-    echo "Surgically installing local @openclaw/fs-safe build..."
-    mkdir -p "$srcdir/openclaw/node_modules/@openclaw/fs-safe"
-    cp -r "$srcdir/fs-safe/dist" "$srcdir/fs-safe/package.json" "$srcdir/openclaw/node_modules/@openclaw/fs-safe/"
-
     if [ -n "$OPENCLAW_REVERT_382fe80" ]; then
         echo "Reverting commit 382fe80 (restoring Google Antigravity)..."
         gzip -d < "$srcdir/openclaw-commit-382fe80" > "$srcdir/openclaw-commit-382fe80.patch"
@@ -79,6 +74,12 @@ prepare() {
     fi
 
     node scripts/ui.js install || true
+
+    # 3. Surgically install built fs-safe into openclaw node_modules AFTER all installations
+    echo "Surgically installing local @openclaw/fs-safe build..."
+    rm -rf "$srcdir/openclaw/node_modules/@openclaw/fs-safe"
+    mkdir -p "$srcdir/openclaw/node_modules/@openclaw/fs-safe"
+    cp -r "$srcdir/fs-safe/dist" "$srcdir/fs-safe/package.json" "$srcdir/openclaw/node_modules/@openclaw/fs-safe/"
 }
 
 build() {

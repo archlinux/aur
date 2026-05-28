@@ -18,6 +18,13 @@ cd "$REPO_ROOT"
 echo "Restoring source tree to pristine state via git reset --hard..."
 git reset --hard
 
+# Create bunfig.toml to force Bun to always use hoisted linker
+echo "Creating bunfig.toml..."
+cat > bunfig.toml <<EOF
+[install]
+linker = "hoisted"
+EOF
+
 # 2. Patch package.json (Hoisting and pinning)
 echo "Updating package.json and hoisting dependencies..."
 node -e '
