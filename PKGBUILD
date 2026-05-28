@@ -99,11 +99,10 @@ package_firma-digital-middleware-smartcard() {
     pkgdesc="Middleware PKCS#11 Smart Card para Firma Digital de Costa Rica"
     provides=("libASEP11.so" "libaseLaserP11.so")
 
-    mkdir -p "${pkgdir}/opt/sinpe-smartcard/lib"
     msg "Installing"
     for item in "${provides[@]}"; do
         msg2 "Installing $item"
-        install -Dm755 "${srcdir}/sfd_ClientesLinux_RPM64_26_02/Firma Digital/Librería/${item}" "${pkgdir}/opt/sinpe-smartcard/lib/${item}"
+        install -Dm755 "${srcdir}/sfd_ClientesLinux_RPM64_26_02/Firma Digital/Librería/${item}" "${pkgdir}/usr/lib/x64-athena/${item}"
     done
 
     msg "Creating firma digital module"
