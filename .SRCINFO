@@ -1,7 +1,7 @@
 pkgbase = proverbilo
 	pkgdesc = Programo por montri hazardajn proverbojn en Esperanto
-	pkgver = 0.1.8
-	pkgrel = 2
+	pkgver = 0.1.9
+	pkgrel = 1
 	url = https://github.com/Fierthraix/proverbilo
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = proverbilo
 	depends = glibc
 	conflicts = proverbilo-bin
 	conflicts = proverbilo-git
-	source = proverbilo-0.1.8.crate::https://static.crates.io/crates/proverbilo/proverbilo-0.1.8.crate
-	sha256sums = 652498a582d3145a33fcf09aff9f92d57ad8a7aef5bb542c67f97eb2d8c59448
+	source = proverbilo-0.1.9.crate::https://static.crates.io/crates/proverbilo/proverbilo-0.1.9.crate
+	sha256sums = 7db4b95b9a639a5cbd4c35460e32f2468ca8380e0522a81a885b6c2cd398729d
 
 pkgname = proverbilo
