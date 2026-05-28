@@ -1,4 +1,4 @@
-pkgbase = srb2bld
+pkgbase = srb2bld 
 	pkgdesc = POSIX shell script that eases compiling, installing or creating AppImage/Flatpak/App Bundle/Android APKs of Sonic Robo Blast 2 related builds.
 	pkgver = 2026_04_26
 	pkgrel = 1

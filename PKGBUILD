@@ -11,7 +11,7 @@ depends=('git' 'make' 'coreutils' 'which' 'findutils' 'inetutils' 'ncurses' 'cur
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/Bijman/srb2bld/archive/refs/tags/${pkgver//_/-}.zip")
-md5sums=('7830cd4516382da3006ff1dab5c01295')
+md5sums=('7830cd4516382da3006ff1dab5c01295')  
 
 package ()
 {
