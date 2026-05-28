@@ -1,0 +1,16 @@
+[Unit]
+Description=Tracefinity Backend
+After=network.target
+
+[Service]
+Type=simple
+User=tracefinity
+Group=tracefinity
+WorkingDirectory=/opt/tracefinity/backend
+EnvironmentFile=/etc/tracefinity/tracefinity.env
+Environment="STORAGE_PATH=/var/lib/tracefinity/storage"
+ExecStart=/opt/tracefinity/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

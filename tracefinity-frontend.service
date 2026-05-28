@@ -1,0 +1,18 @@
+[Unit]
+Description=Tracefinity Frontend
+After=network.target tracefinity-backend.service
+
+[Service]
+Type=simple
+User=tracefinity
+Group=tracefinity
+WorkingDirectory=/opt/tracefinity/frontend
+EnvironmentFile=/etc/tracefinity/tracefinity.env
+Environment="NODE_ENV=production"
+Environment="PORT=3001"
+Environment="BACKEND_URL=http://127.0.0.1:8000"
+ExecStart=/usr/bin/node /opt/tracefinity/frontend/node_modules/.bin/next start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

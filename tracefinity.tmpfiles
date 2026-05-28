@@ -1,0 +1,6 @@
+d /var/lib/tracefinity 0750 tracefinity tracefinity
+d /var/lib/tracefinity/storage 0750 tracefinity tracefinity
+d /var/lib/tracefinity/storage/uploads 0750 tracefinity tracefinity
+d /var/lib/tracefinity/storage/processed 0750 tracefinity tracefinity
+d /var/lib/tracefinity/storage/outputs 0750 tracefinity tracefinity
+Z /opt/tracefinity/frontend/.next - tracefinity tracefinity
