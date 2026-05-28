@@ -2,10 +2,10 @@
 
 _name="mpm"
 pkgname="matlab-${_name}"
-_commit="eee682f0ce437f76c4a9fef23e9873fecd8ed8e6"
-pkgver=2026.3+r142.geee682f
+_commit="87963d3693f25908716f50547d727886f9d878c8"
+pkgver=2026.4+r147.g87963d3
 _pkgver="${pkgver%+*}"
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="MATLAB Package Manager"
 arch=(
@@ -24,7 +24,7 @@ depends=(
   'unzip'
 
   # https://github.com/mathworks-ref-arch/container-images/commit/ea7154f8f2b3efa2bcbaded5ba151285a0281c2e
-  # /tmp/mwse_433300552/bin/glnxa64/mpm: error while loading shared libraries: libatomic.so.1: cannot open shared object file: No such file or directory
+  # https://github.com/mathworks-ref-arch/matlab-dockerfile/issues/160
   'libatomic'
 )
 makedepends=(
@@ -40,8 +40,8 @@ source=(
 source_x86_64=(
   "${pkgname}-${_pkgver}-x86_64::https://ssd.mathworks.com/supportfiles/downloads/${_name}/${_pkgver}/glnxa64/${_name}"
 )
-sha256sums=('363d78a8f8b253bee1e294483d9c5a9701e8b3e65e55fc475a64f0c5ccbec700')
-sha256sums_x86_64=('96c09adb14f4997506ba735cb363ec134e08b4e3b26f195086636e29afeab3a3')
+sha256sums=('d8c51f76f25797a0a7fd12358dee0d4ffb9547482d17a03b10264291644cb4fb')
+sha256sums_x86_64=('49f23b8a9b60a7a655c790dadb4703f23c0cbb9a921096e73bda01d3f63884a9')
 
 prepare() {
   # comment out after updating _commit
@@ -53,7 +53,7 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/${_pkgsrc}"
-  printf '%s+r%s.g%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  printf '%s+r%s.g%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
@@ -64,5 +64,6 @@ package() {
   install -vDm644 "MPM.md"     "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 
-  ln -vsf "${pkgname}" "${pkgdir}/usr/bin/${_name}"
+  # https://kdeldycke.github.io/meta-package-manager/
+  # ln -vsf "${pkgname}" "${pkgdir}/usr/bin/${_name}"
 }
