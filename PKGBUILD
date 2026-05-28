@@ -1,5 +1,5 @@
 pkgname=agent-lx-music
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="A terminal-native music CLI replacing lx-music-desktop, powered by Agentic intelligence."
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('alsa-lib' 'mpv')
 makedepends=('cargo' 'pkgconf' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Xuepoo/agent-lx-music/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('71eb26dadf5e890dcd725ce6c2a2e793d15888920d3441cbccc27668f5ce8777')
+sha256sums=('1e624ae323cd506193f5d8eb1c6ba61bee6c7be253d83dcffc53e5771d48f8d9')
 
 build() {
   cd "$pkgname-$pkgver"
