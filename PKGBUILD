@@ -1,6 +1,6 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=hyprcorrect
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Keyboard-driven desktop spelling and typo corrector (Hyprland-first)"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ optdepends=(
     'wl-clipboard: enables the clipboard / selection fallback when the keystroke buffer is empty'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jondkinney/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1365ba0a298070e3aff18d5f444c2249bb0eeacbf92875f5d5df7ec23cd69b28')
+sha256sums=('0d0b033d32c1f86e4e197d52f92008c1018f8d0e95ca27f07a03bf9008b31918')
 
 prepare() {
     cd "$pkgname-$pkgver"
