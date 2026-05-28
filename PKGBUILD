@@ -14,6 +14,7 @@ conflicts=('pi-skill-brave-search')
 source=('git+https://github.com/badlogic/pi-skills.git')
 install="$pkgname.install"
 sha256sums=('SKIP')
+optdepends=('pi-coding-agent' 'pi-coding-agent-git')
 
 pkgver() {
   cd "$srcdir/pi-skills"
