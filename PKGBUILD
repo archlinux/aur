@@ -1,7 +1,7 @@
 # Maintainer: AntiApple4life <antiapple@antiapple.net>
 _pkgname=emerald-legacy-launcher
 pkgname=${_pkgname}-git
-pkgver=r119.8dfab72
+pkgver=v1.3.0.r2.g377f093
 pkgrel=1
 pkgdesc="FOSS, cross-platform launcher for Minecraft Legacy Console Edition"
 arch=('x86_64')
@@ -11,17 +11,21 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 optdepends=('discord: Discord RPC support')
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
 provides=('emerald-legacy-launcher')
-source=("$_pkgname::git+$url")
-sha256sums=('SKIP')
+source=("$_pkgname::git+$url" "no-updater.patch")
+sha256sums=('SKIP'
+            '8aee475faee5f51bb727fc947daa836fa2eb0f137c3313bf01cbf897ac45d7c3')
 pkgver() {
   cd "$srcdir/$_pkgname"
-  ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    patch -d "$srcdir/$_pkgname" -Np1 -i $srcdir/no-updater.patch
+}
+
+
 build() {
+  CFLAGS+=' -ffat-lto-objects'
   cd "$srcdir/$_pkgname"
   pnpm install
   pnpm tauri build --bundles=deb
