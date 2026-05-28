@@ -1,8 +1,8 @@
 # Maintainer: archcrack <leo.clifm@outlook.com>
 
 pkgname=clifm
-pkgver=1.27.1
-pkgrel=2
+pkgver=1.28
+pkgrel=1
 pkgdesc="The command line file manager"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
 url="https://github.com/leo-arch/${pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
 	'udisks2: (un)mount storage devices'
 	)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a35cd1ccbb83f1261c3c5b14b5b4733cf0555be68579b3cb19fa8b36076a5339')
+sha256sums=('65ac33825fb55d6388c1044572e464a50ad367b607448774fb396d850b7c4420')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
