@@ -1,7 +1,7 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=shopify-cli
 _npmname=@shopify/cli
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A CLI tool to build for the Shopify platform"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/@shopify/cli/-/cli-${pkgver}.tgz")
 noextract=("cli-${pkgver}.tgz")
-sha256sums=('87b7f5dc3fcc210c41b742da36ccd9577331cd256ad527eaab821f4a17daaabd')
+sha256sums=('d9163ff07bdfbf7126e227d8cc789bb9a685c58327ae6c3c7834bd22f8b080b2')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
@@ -50,4 +50,10 @@ package() {
         break
       fi
     done
+    # Fallback: create minimal SPDX license file if none found
+    if [ ! -f "$pkgdir/usr/share/licenses/${pkgname}/LICENSE" ]; then
+      mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
+      printf 'MIT\n' > "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+      chmod 644 "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    fi
 }
