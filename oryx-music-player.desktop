@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Oryx
+Comment=Native Rust music player
+Exec=oryx-music-player
+Icon=oryx-music-player
+Terminal=false
+Categories=AudioVideo;Audio;Music;
+StartupNotify=true

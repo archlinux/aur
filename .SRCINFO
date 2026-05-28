@@ -1,0 +1,22 @@
+pkgbase = oryx-music-player-bin
+	pkgdesc = Native Rust music player built with gpui
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/behzade/oryx
+	arch = x86_64
+	license = custom:PolyForm-Strict-1.0.0
+	depends = ffmpeg
+	depends = hicolor-icon-theme
+	depends = yt-dlp
+	provides = oryx-music-player
+	conflicts = oryx-music-player
+	options = !strip
+	options = !debug
+	source = LICENSE-0.1.9::https://github.com/behzade/oryx/raw/v0.1.9/LICENSE
+	source = oryx-music-player.desktop
+	sha256sums = c373c05e9d8d06d7aa53cc1d5fba2b9d3fa8776aae1b3720d104f594f9dd771f
+	sha256sums = c864a2c89fedf9ee64a33cb82473abaefb819da5615f364ff01229fdb5aed124
+	source_x86_64 = oryx-0.1.9-x86_64.tar.gz::https://github.com/behzade/oryx/releases/download/v0.1.9/oryx_0.1.9_x86_64.tar.gz
+	sha256sums_x86_64 = 46384a3cd433e34b961e398f4cc34404f6d6deadad9e83191382c4ec40c3631f
+
+pkgname = oryx-music-player-bin
