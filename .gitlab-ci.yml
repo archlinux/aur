@@ -10,11 +10,12 @@ check_version:
   stage: check
   script:
     - pacman -Sy --noconfirm curl python3
-    - LATEST=$(curl -s "https://archlinux.org/packages/extra/x86_64/kwin/json/" | python3 -c "import sys,json; print(json.load(sys.stdin)['pkgver'])")
-    - CURRENT=$(grep "pkgver=" PKGBUILD | cut -d= -f2)
-    - echo "Latest=$LATEST Current=$CURRENT"
-    - if [ "$LATEST" = "$CURRENT" ]; then echo "No update needed"; exit 0; fi
-    - echo "NEW_VERSION=$LATEST" >> build.env
+    - LATEST_VER=$(curl -s "https://archlinux.org/packages/extra/x86_64/kwin/json/" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['pkgver']+'-'+str(d['pkgrel']))")
+    - CURRENT_VER=$(grep "pkgver=" PKGBUILD | cut -d= -f2)-$(grep "pkgrel=" PKGBUILD | cut -d= -f2)
+    - echo "Latest=$LATEST_VER Current=$CURRENT_VER"
+    - if [ "$LATEST_VER" = "$CURRENT_VER" ]; then echo "No update needed"; exit 0; fi
+    - echo "NEW_VERSION=$(echo $LATEST_VER | cut -d- -f1)" >> build.env
+    - echo "NEW_PKGREL=$(echo $LATEST_VER | cut -d- -f2)" >> build.env
   artifacts:
     reports:
       dotenv: build.env
@@ -35,6 +36,7 @@ build:
     - echo "builder ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/builder
     - chmod 440 /etc/sudoers.d/builder
     - sed -i "s/pkgver=.*/pkgver=$NEW_VERSION/" PKGBUILD
+    - sed -i "s/pkgrel=.*/pkgrel=$NEW_PKGREL/" PKGBUILD
     - NEWSHA=$(curl -sL "https://download.kde.org/stable/plasma/$NEW_VERSION/kwin-$NEW_VERSION.tar.xz" | sha256sum | cut -d' ' -f1)
     - sed -i "s/'[a-f0-9]\{64\}'/'$NEWSHA'/" PKGBUILD
     - cp -r . /home/builder/kwin-osd-bottom
@@ -68,7 +70,7 @@ update_aur:
     - cd /tmp/aur
     - makepkg --printsrcinfo > .SRCINFO
     - git add PKGBUILD .SRCINFO
-    - git commit -m "update to $NEW_VERSION"
+    - git commit -m "update to $NEW_VERSION-$NEW_PKGREL"
     - git push
 
 deploy:
@@ -88,4 +90,4 @@ deploy:
     - ssh-keyscan 144.24.248.38 >> ~/.ssh/known_hosts
     - scp *.pkg.tar.zst ubuntu@144.24.248.38:/var/www/repo/x86_64/
     - ssh ubuntu@144.24.248.38 "repo-add /var/www/repo/x86_64/kwin-osd-bottom.db.tar.gz /var/www/repo/x86_64/*.pkg.tar.zst"
-    - 'curl -H "Content-Type:application/json" -d "{\"content\":\"✅ kwin-osd-bottom $NEW_VERSION disponibile! Fai sudo pacman -Syu per aggiornare.\"}" $DISCORD_WEBHOOK'
+    - 'curl -H "Content-Type:application/json" -d "{\"content\":\"✅ kwin-osd-bottom $NEW_VERSION-$NEW_PKGREL disponibile! Fai sudo pacman -Syu per aggiornare.\"}" $DISCORD_WEBHOOK'
