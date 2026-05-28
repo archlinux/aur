@@ -1,0 +1,8 @@
+[Unit]
+Description=Watch cursor theme file for changes
+
+[Path]
+PathChanged=%h/.local/share/icons/default/index.theme
+
+[Install]
+WantedBy=default.target

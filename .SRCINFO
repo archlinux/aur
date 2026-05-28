@@ -1,0 +1,24 @@
+pkgbase = hyprcursor-sync
+	pkgdesc = Automated cursor sync. No need to log out just to apply cursor changes :)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/hyprcursor-sync
+	install = hyprcursor-sync.install
+	arch = any
+	license = MIT
+	depends = hyprland
+	depends = bash
+	depends = glib2
+	depends = gtk4
+	depends = nwg-look
+	depends = hyprcursor
+	source = cursor-update.sh
+	source = cursor-update.service
+	source = cursor-update.path
+	source = LICENSE
+	sha256sums = 08a36c97951c1e779df6c62aad4fd3dfc484807040c0d68702fb503d81918527
+	sha256sums = e14a0873ad1d58b839b334fb055d57cf14a0abbb6f5caadf98f084c352aab85a
+	sha256sums = faafced74cfd85881a907de42d90463e39ee57ca72944de17029691b7628dbf7
+	sha256sums = 3ba763f30eedfa83344cf6101ca16b9b4e508752ac999a15cf58e2c020bf06ca
+
+pkgname = hyprcursor-sync

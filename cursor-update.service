@@ -1,0 +1,6 @@
+[Unit]
+Description=Update Hyprland cursor on theme change
+
+[Service]
+Type=oneshot
+ExecStart=%h/.config/systemd/user/cursor-update.sh

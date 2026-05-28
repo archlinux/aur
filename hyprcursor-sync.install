@@ -1,0 +1,15 @@
+post_install() {
+  echo ':: Enabling cursor-update automation globally...'
+  systemctl --global enable cursor-update.path
+  echo ':: Note: Automation will start for your user on next login.'
+  echo ':: To start now: systemctl --user enable --now cursor-update.path'
+}
+
+post_upgrade() {
+  systemctl --global daemon-reload
+}
+
+pre_remove() {
+  echo ':: Disabling cursor-update automation...'
+  systemctl --global disable cursor-update.path
+}
