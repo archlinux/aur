@@ -1,0 +1,18 @@
+pkgbase = pane-bin
+	pkgdesc = Terminal-native AI agent manager — any provider, one unified interface
+	pkgver = 1.1.145
+	pkgrel = 1
+	url = https://github.com/dcouple/Pane
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	depends = fuse2
+	provides = pane
+	conflicts = pane
+	noextract = Pane-1.1.145-linux-x86_64.AppImage
+	options = !strip
+	options = !debug
+	source = Pane-1.1.145-linux-x86_64.AppImage::https://github.com/dcouple/Pane/releases/download/v1.1.145/Pane-1.1.145-linux-x86_64.AppImage
+	sha256sums = de58c9f68d67c483d7f95906e4a19ed284d2fb23e4e95869d683a31ff003860a
+
+pkgname = pane-bin
