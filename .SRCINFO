@@ -1,0 +1,15 @@
+pkgbase = alacrittyforge
+	pkgdesc = A terminal UI for managing and customizing the Alacritty terminal emulator — safely, intuitively, and beautifully
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/jetomev/alacrittyforge
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-textual
+	depends = python-rich
+	depends = python-tomli-w
+	source = alacrittyforge-0.1.1.tar.gz::https://github.com/jetomev/alacrittyforge/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = cfb930e7edb77aae74154181d615cf6d56d1641e21610c321c9c7b135828528d
+
+pkgname = alacrittyforge
