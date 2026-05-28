@@ -1,7 +1,7 @@
 # Maintainer: zapret-gui maintainers
 pkgname=zapret-gui
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="GUI for zapret DPI bypass with Linux NFQUEUE/nftables runtime"
 arch=("x86_64")
 url="https://github.com/Mechtaatel/zapret-gui"
