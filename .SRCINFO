@@ -1,6 +1,6 @@
 pkgbase = twingate-status-bin
 	pkgdesc = A tray notification for your Twingate status
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 0
 	url = https://codeberg.org/marcos56/twingate-status
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = twingate-status-bin
 	optdepends = gnome-shell-extension-appindicator: Required to display the tray icon in GNOME environments
 	provides = twingate-status
 	conflicts = twingate-status
-	source = https://codeberg.org/marcos56/twingate-status/raw/tag/v0.4.0/LICENSE
+	source = https://codeberg.org/marcos56/twingate-status/raw/tag/v0.5.0/LICENSE
 	sha256sums = 2227ff509a59ab58f495ab2121f5a95ddfbf2672cff35219a40d68676e3c3000
-	source_x86_64 = https://codeberg.org/marcos56/twingate-status/releases/download/v0.4.0/twingate_status-0.4.0-x86_64
-	sha256sums_x86_64 = 2781be1d7e99aff71a871bbdd12e47237045096ba23e026b64ca14f45bbfadbe
-	source_aarch64 = https://codeberg.org/marcos56/twingate-status/releases/download/v0.4.0/twingate_status-0.4.0-aarch64
-	sha256sums_aarch64 = fdef8d5a9fb7e800a07f9669f7d919dac0ea5c391132490b0657fd2fb1d27511
+	source_x86_64 = https://codeberg.org/marcos56/twingate-status/releases/download/v0.5.0/twingate_status-0.5.0-x86_64
+	sha256sums_x86_64 = 4b25946d7fa50ff402d12ced1270ee57d96612bbb25e1a5a8ad3e122cea26312
+	source_aarch64 = https://codeberg.org/marcos56/twingate-status/releases/download/v0.5.0/twingate_status-0.5.0-aarch64
+	sha256sums_aarch64 = 3d00f7b6065b034a0529888cf0d1578dd0098205e3510f94935883be69fbbb9d
 
 pkgname = twingate-status-bin
