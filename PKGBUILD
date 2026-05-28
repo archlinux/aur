@@ -1,15 +1,15 @@
 # ena
 
 pkgname=vocab
-pkgver=0.17
-pkgrel=2
+pkgver=0.18
+pkgrel=1
 pkgdesc="English/Turkish vocabulary tool"
 arch=('any')
 url="https://github.com/whyghost/vocab"
 license=('MIT')
 depends=('bash' 'sqlite' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5b1b96b9e94489831d34ffb9c2e136d8e09cdff6fcac8ddcfa86a8821c432534')
+sha256sums=('25213ed1f5ab2bc1b4519217ba7b2b07b3fea70bbb331f3c5aa442b9d7dfc180')
 
 package() {
     cd "$pkgname-$pkgver"
