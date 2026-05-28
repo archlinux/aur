@@ -1,6 +1,6 @@
 pkgbase = lumoria
 	pkgdesc = A Linux installer and launcher for Final Fantasy XI
-	pkgver = 0.1.15
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://github.com/Windower/Lumoria
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = lumoria
 	depends = libportal-gtk4
 	depends = vte4
 	depends = libxml2
-	source = lumoria-0.1.15.tar.gz::https://github.com/Windower/Lumoria/archive/refs/tags/v0.1.15.tar.gz
-	sha256sums = 36ebd0b0aeac7363cc5c429361cb47c36bc5a744d77af0eb8c8b2d56d1a3e859
+	source = lumoria-0.1.17.tar.gz::https://github.com/Windower/Lumoria/archive/refs/tags/v0.1.17.tar.gz
+	sha256sums = 635f297fb1ee6ab41225a59e60cc2429b8d3571111dfdee98e10cfaed79ef244
 
 pkgname = lumoria
