@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-mnelab
 _name=${pkgname#python-}
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Graphical user interface (GUI) for MNE, a Python package for EEG/MEG analysis"
 arch=('any')
@@ -33,7 +33,7 @@ source=(
     "mnelab.desktop"
     "mnelab-mimetypes.xml"
 )
-sha256sums=('d483047da9bc334d6bac62d36d560f11748dc51223a8ed238eda001b5b2898a7'
+sha256sums=('89012355d78567832e965609d7d535aec8e3dea56ff1cb134984073d54957244'
             '90465ed1dcd28013a24a9410d9ea7529e9a94e58325d54d57dacf7c0552ec3ae'
             '566cccf86be39eed374a3cfa3905945c9aa60e553b73c4758c2c66d46184c977')
 
