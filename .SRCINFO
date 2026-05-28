@@ -5,6 +5,5 @@ pkgbase = langman
 	arch = x86_64
 	license = GPL2
 	makedepends = gcc
-	depends = glibc
 
 pkgname = langman
