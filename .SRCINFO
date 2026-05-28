@@ -1,0 +1,19 @@
+pkgbase = rimilo-git
+	pkgdesc = Rapida rimvort-serĉilo por Esperanto-angla vortaro
+	pkgver = 0.2.8.r0.g85ecf12
+	pkgrel = 1
+	url = https://github.com/Fierthraix/rimilo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = rimilo
+	conflicts = rimilo
+	conflicts = rimilo-bin
+	source = rimilo::git+https://github.com/Fierthraix/rimilo.git
+	sha256sums = SKIP
+
+pkgname = rimilo-git
