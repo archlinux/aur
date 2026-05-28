@@ -44,9 +44,6 @@ build() {
     export CARGO_HOME="${srcdir}/.cargo"
     export CARGO_TARGET_DIR="${srcdir}/target"
     export RUSTUP_TOOLCHAIN=stable
-    # cxx-qt-lib generates .cxx.cpp files at build time; limit parallelism so
-    # generated files are on disk before parallel compilation tries to use them.
-    export CARGO_BUILD_JOBS=1
     cargo build --frozen --release
 }
 
