@@ -23,6 +23,7 @@ depends=(
     gnatcoll-gmp
     gnatcoll-iconv
     ocaml-ctypes
+    ocaml-zarith
     prettier-ada
     python
 )

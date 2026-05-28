@@ -27,6 +27,7 @@ pkgbase = langkit
 	depends = gnatcoll-gmp
 	depends = gnatcoll-iconv
 	depends = ocaml-ctypes
+	depends = ocaml-zarith
 	depends = prettier-ada
 	depends = python
 	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/refs/heads/main/gnatstudio-sources-2026/langkit-src.tar.gz
