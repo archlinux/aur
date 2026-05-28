@@ -1,6 +1,6 @@
 pkgbase = astraeditor-git
 	pkgdesc = AstraEditor is a TurboWarp mod used to add more practical features to make your writing lightning fast.
-	pkgver = v1.2.0.r0.g6b1e0f4
+	pkgver = v1.2.3.r23.g45777a5
 	pkgrel = 1
 	url = https://github.com/AstraEditor/
 	arch = x86_64
