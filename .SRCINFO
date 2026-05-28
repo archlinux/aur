@@ -1,0 +1,27 @@
+pkgbase = slaysp2manager-git
+	pkgdesc = Desktop mod manager for Slay the Spire 2
+	pkgver = 0.9.0.r0.g09db51a
+	pkgrel = 1
+	url = https://github.com/konuhd/slaySP2Manager-for-arch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = pkgconf
+	makedepends = glib2-devel
+	makedepends = gcc
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = ayatana-ido
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = xdg-utils
+	provides = slaysp2manager
+	conflicts = slaysp2manager
+	options = !lto
+	source = git+https://github.com/konuhd/slaySP2Manager-for-arch.git
+	sha256sums = SKIP
+
+pkgname = slaysp2manager-git
