@@ -1,7 +1,7 @@
 # Maintainer: Firstp1ck <firstp1ck@users.noreply.github.com>
 pkgname=mini-agent-bin
 _pkgname=mini-agent
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Minimal coding agent with Anthropic/OpenAI LLM loop and local tools (prebuilt binary)'
 arch=('x86_64')
@@ -18,10 +18,8 @@ source=(
   "${_pkgname}-${pkgver}-linux.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux.tar.gz"
   "${_pkgname}-${pkgver}-LICENSE::${url}/raw/v${pkgver}/LICENSE"
 )
-sha256sums=(
-  'ea019ee0b67eddb8560058d2b002519ec64337e6c368758c6802fcff09d5c648'
-  'ed80c1593045458beaf92a78e1ab7929efd610cd48a1096018b34a20aee1771e'
-)
+sha256sums=('1786a68a5b38135ad544bfa5c1b070c449e96615084d14471dcbafd9c8836f18'
+            'ed80c1593045458beaf92a78e1ab7929efd610cd48a1096018b34a20aee1771e')
 
 package() {
   cd "${srcdir}/${_pkgname}" || return
