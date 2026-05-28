@@ -1,5 +1,5 @@
 pkgname=mkdev
-pkgver=3.4.2
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Save your boilerplate instead of writing it."
 arch=('x86_64')
