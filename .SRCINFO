@@ -1,7 +1,7 @@
 pkgbase = deepclaude-git
 	pkgdesc = Use Claude Code with DeepSeek, OpenRouter, or any Anthropic-compatible backend
 	pkgver = r15.70518b6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aattaran/deepclaude
 	arch = any
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = deepclaude-git
 	provides = deepclaude
 	conflicts = deepclaude
 	source = deepclaude-git::git+https://github.com/aattaran/deepclaude.git
+	source = route-through-proxy.patch::https://github.com/aattaran/deepclaude/commit/710a7fb5a61ecf98c2b32271e61fc496d94d844f.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = deepclaude-git
