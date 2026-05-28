@@ -2,15 +2,15 @@
 # Contributor: C. Dominik Bódi  dominik.bodi at gmx dot de
 
 pkgname=debhelper-python
-pkgver=3.10.6
+pkgver=3.13.9
 pkgrel=0
 
 _debpy_name=python3-defaults
 _debpy_ver=$pkgver
-_debpy_rel=1
+_debpy_rel=3
 
 _py3def_name=dh-python
-_py3def_ver=4.20201102+nmu1
+_py3def_ver=7.20260309
 
 pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
@@ -19,29 +19,29 @@ license=('custom:MIT')
 depends=('python-docutils')
 makedepends=('debhelper' 'python')
 optdepends=('sgmltools-lite')
-provides=('debhelper-python' 'dh-python')
+provides=('debhelper-python' 'dh-python' 'dh-sequence-python3')
 source=(https://deb.debian.org/debian/pool/main/p/${_debpy_name}/${_debpy_name}_${_debpy_ver}-${_debpy_rel}.tar.gz
         https://deb.debian.org/debian/pool/main/d/${_py3def_name}/${_py3def_name}_${_py3def_ver}.tar.xz
         py3versions.patch)
-sha512sums=('27c33e502d57d43d0ac072228487c0e1a99280d8d968c0fed9a9e7de5fa485a8a3af25d78ac106a43e9f937d71448cbeb27d9adccababee973326d257dea5f00'
-            '695eb40a3993f0de7e50039283579e99829f713c13b8c9aaadccb71f04df4e6a1f0961494e234b41565ebab9818a5ea5c440ae8bd5af3713b9ef4bc59adbdc8a'
-            '772332cecd85331b6deda25c0d48eed2490e7e7f26d90c7936f46188c706f590771af6edcbb4740a23bff0434ed061bc2b49f8183561cbf4bbb845ed3bebc42a')
+b2sums=('569df94fb85d45ece5ce391d6ff73ac4d975cb82b6fdcc2be723fc257a58931a647b16c35aba18ed72d87c24fb1c759eb646bcc248b7505bf6cd4a2cb614a335'
+        'e4ae5f9413ce9cad47c64a38242b163f7796671556926adac59438c0fe05ab2ef7aadddb33785ffd4ad46a134577fd27f3bbbdfa99d87eb2348d6e4268f29fdf'
+        '04ca5e93e07c4eb5f6ac02e758a6b3f078d844982a945a6d2ecf811ca315efedb4e12c3238edb56dacfcc6e480adf9c30b4f472545f1934fd4cd92bc6cc65ef2')
 
 prepare() {
-  cd "$srcdir/$_debpy_name"
+  cd "$srcdir/$_debpy_name-$_debpy_ver"
   patch -Np1 < "$srcdir"/py3versions.patch
 }
 
 build() {
-  cd "$srcdir/$_debpy_name"
+  cd "$srcdir/$_debpy_name-$_debpy_ver"
   make
 
-  cd "$srcdir/$_py3def_name"
+  cd "$srcdir/$_py3def_name-$_py3def_ver"
   make
 }
 
 check() {
-  cd "$srcdir/$_debpy_name"
+  cd "$srcdir/$_debpy_name-$_debpy_ver"
   sed -i -e 's|/usr/share/python3/debian_defaults|debian/debian_defaults|' \
     debpython/version.py
   make -k check_versions
@@ -50,7 +50,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$_debpy_name"
+  cd "$srcdir/$_debpy_name-$_debpy_ver"
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 
   mkdir -p $pkgdir/usr/share/python3
@@ -64,20 +64,16 @@ package() {
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
   install -D -m 644 debian/copyright $pkgdir/usr/share/licenses/$pkgname/
 
-  cd "$srcdir/$_py3def_name"
+  cd "$srcdir/$_py3def_name-$_py3def_ver"
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 
   # create symlinks to executables in order to make this look like in
   # debian
-  ln -s -r $pkgdir/usr/share/dh-python/dh_pypy $pkgdir/usr/bin/dh_pypy
   ln -s -r $pkgdir/usr/share/dh-python/dh_python3 $pkgdir/usr/bin/dh_python3
   ln -s -r $pkgdir/usr/share/dh-python/pybuild $pkgdir/usr/bin/pybuild
 
   mkdir -p $pkgdir/usr/share/perl5/vendor_perl
   mv $pkgdir/usr/share/perl5/Debian $pkgdir/usr/share/perl5/vendor_perl/Debian
-
-  # python2.pm is in debhelper-python2
-  rm $pkgdir/usr/share/perl5/vendor_perl/Debian/Debhelper/Sequence/python2.pm
 }
 
 # vim:set ts=2 sw=2 et:
