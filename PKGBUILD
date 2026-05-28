@@ -3,7 +3,7 @@
 # Contributor: envolution
 
 pkgname=llama.cpp
-pkgver=b9371 # renovate: datasource=github-releases depName=ggml-org/llama.cpp
+pkgver=b9374 # renovate: datasource=github-releases depName=ggml-org/llama.cpp
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=(x86_64 armv7h aarch64)
@@ -43,7 +43,7 @@ source=(
   'sysusers.conf'
   'tmpfiles.conf'
 )
-sha256sums=('3684b9a214302cc69e0bc6a52c9b7d707515305273a109d9f71e65934f91731d'
+sha256sums=('859ecb55ea2392b6f977c6bf59cfadc75fd7a9182b9e9aa85e7765ba97b40087'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '48d6b261315c9175b4b4cea4900bd4d76f2f27112804934db656537485510cd2'
             'c534b4c37ff8ac9174a2f6f410daa96d991e8c638f338383ffb07613c771724b'
