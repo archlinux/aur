@@ -1,13 +1,13 @@
 pkgbase = sovet
 	pkgdesc = Корпоративная платформа для совместной работы: чат, видеоконференции, задачи, файлы. Аналог Microsoft Teams. Сервер в России.
-	pkgver = 2.22.1
+	pkgver = 2.23.0
 	pkgrel = 1
 	url = https://sovetchat.ru
 	arch = x86_64
 	license = custom
 	depends = fuse2
 	options = !strip
-	source_x86_64 = Soviet_2.22.1_amd64.AppImage::https://updates.sovetchat.ru/downloads/Soviet_2.22.1_amd64.AppImage
-	sha256sums_x86_64 = fb3006aeb2bebdc1ba0282d56dbdc2c1364e42fcd60fe182215af8c02abf5f7a
+	source_x86_64 = Soviet_2.23.0_amd64.AppImage::https://updates.sovetchat.ru/downloads/Soviet_2.23.0_amd64.AppImage
+	sha256sums_x86_64 = 7dde99a27bfb9ebb415dc8989dd2b634de7d3e56bce1af3b90f6da3702ef70ff
 
 pkgname = sovet
