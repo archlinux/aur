@@ -8,7 +8,7 @@ pkgname=(
   'handbrake-svt-av1-hdr'
   'handbrake-svt-av1-hdr-cli'
 )
-pkgver=1.11.1.r9.g4f0f5feed
+pkgver=1.11.1.r21.g1636c1311
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
@@ -70,7 +70,7 @@ makedepends=(
   "${_guideps[@]}"
 )
 options=('!lto') # https://bugs.archlinux.org/task/72600
-source=("HandBrake::git+https://github.com/HandBrake/HandBrake.git#commit=4f0f5feed" "HandBrake-SVT-AV1-HDR::git+https://github.com/grayespinoza/handbrake-svt-av1-hdr.git")
+source=("HandBrake::git+https://github.com/HandBrake/HandBrake.git#commit=1636c1311" "HandBrake-SVT-AV1-HDR::git+https://github.com/grayespinoza/handbrake-svt-av1-hdr.git")
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
