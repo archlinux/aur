@@ -1,0 +1,25 @@
+pkgbase = lenocon-git
+	pkgver = v1.0.0.r0.gb9fb18c
+	pkgrel = 1
+	url = https://github.com/KofTD/lenocon
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	options = !debug
+	source = git+https://github.com/KofTD/lenocon
+	source = lenocon-daemon.policy
+	sha256sums = SKIP
+	sha256sums = dffc1777ac4ee9fc5e96c9490c950eaed9c6d2bc6765d6fe1d3ab44a9d0d355f
+
+pkgname = lenocon-cli-git
+	pkgdesc = CLI tool to manage Lenovo conservation mode
+	depends = glibc
+	depends = libgcc
+
+pkgname = lenocon-daemon-git
+	pkgdesc = System tray daemon for Lenovo conservation mode
+	depends = lenocon-cli-git
+	depends = polkit
+	depends = glibc
+	depends = libgcc
