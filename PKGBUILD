@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Contributor: SoulHarsh007 <admin@soulharsh007.dev>
 # Contributor: MedzikUser <nivua1fn@duck.com>
@@ -8,8 +8,8 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=6.8.1
-pkgrel=2
+pkgver=6.8.4
+pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL-3.0-or-later')
@@ -58,6 +58,7 @@ makedepends=(
   jemalloc # gio error when absent
   libtg_owt
   ninja
+  qt6-shadertools
   range-v3
   tl-expected
 )
@@ -79,7 +80,7 @@ source=(
   '0001-revert-cmake-patch.patch'
 )
 sha256sums=(
-  'edfa7b1448f15d05d5ea8295d0a51618d6b66de17cff70f0383049acbc61c421'
+  '291f3d7c0a3d2fe2da7e8f32fc5d2baf9a1543557bf977a73eec9f1c4fdd685c'
   'SKIP'
   'cf669c8a03f8ffcfb0898534c394324f9d59909e0526b86d63190d662a3dd861'
 )
