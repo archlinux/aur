@@ -2,7 +2,7 @@
 
 pkgname=ter-music
 pkgver=1.11.0
-pkgrel=1
+pkgrel=3
 pkgdesc="This is a music player that can be used in the terminal~"
 arch=($CARCH)
 url="https://github.com/YXZL985/ter-music"
@@ -63,7 +63,7 @@ package() {
 
     cd "${srcdir}"/${pkgname}
     install -vDm755 tools/start-server.py "${pkgdir}/usr/bin/${pkgname}-server"
-    install -vdm644 "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -vdm755 "${pkgdir}/usr/share/doc/${pkgname}/"
     cp -rv docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
     install -vDm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
