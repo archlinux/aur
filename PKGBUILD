@@ -1,7 +1,7 @@
 # Maintainer: dougEfresh <dchimento@gmail.com>
 pkgname=pi-ext-subagents
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Subagents extension for pi coding agent'
 arch=('any')
 url='https://github.com/nicobailon/pi-subagents'
@@ -11,6 +11,7 @@ source=(
 )
 sha256sums=('17182de941616fc44dfc3f5053fc392eda1c2098c11bb15525f636348339ec22')
 install=pi-ext.install
+optdepends=('pi-coding-agent' 'pi-coding-agent-git')
 
 package() {
   install -d "${pkgdir}/usr/share/pi/extensions/subagents"
