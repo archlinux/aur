@@ -1,5 +1,5 @@
 pkgname=agent-lx-music-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A terminal-native music CLI replacing lx-music-desktop, powered by Agentic intelligence. (Pre-compiled)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source_x86_64=("https://github.com/Xuepoo/agent-lx-music/releases/download/v$pkg
 source_aarch64=("https://github.com/Xuepoo/agent-lx-music/releases/download/v$pkgver/alx-linux-aarch64")
 
 sha256sums=('51b96fe87205eedde58a4da8fda83a5d23df4c3dfc54e7af76ecf430f9e50201')
-sha256sums_x86_64=('9193fe8ce09de4c7f14f881de8767cdc5d438df3b732713bde712633757ffb18')
-sha256sums_aarch64=('210bd1d041ac897a64a9022d02a51ae83bd0455efab6981178bd7c25eb9bfbc8')
+sha256sums_x86_64=('85da3c60d7100650f580ae1f4b8ff09f3b4555637bcd755129c007c1f3ed3860')
+sha256sums_aarch64=('0da450a995c7ff111e629a8066af423d985f7ca2199b20baa0d16a7704670614')
 
 package() {
   install -Dm755 "$srcdir/alx-linux-$CARCH" "$pkgdir/usr/bin/alx"
