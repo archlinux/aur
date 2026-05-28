@@ -2,7 +2,7 @@
 pkgname=('firma-digital-agente-gaudi' 'firma-digital-middleware-idopte' 'firma-digital-certificados-bccr' 'firma-digital-middleware-smartcard')
 pkgver=Rev26_02
 pkgbase=firma-digital
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Instalador de suite para Firma Digital de Costa Rica"
 arch=(x86_64)
