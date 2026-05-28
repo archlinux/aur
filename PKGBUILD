@@ -3,17 +3,24 @@
 
 pkgname=python-csdr-luarvique
 pkgver=0.18.37
-pkgrel=1
+pkgrel=3
 pkgdesc="Python bindings for the csdr library."
 arch=('x86_64' 'aarch64')
 url="https://github.com/luarvique/pycsdr"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python' 'gcc-libs' "csdr-luarvique>=$pkgver")
 makedepends=('git' 'python-setuptools')
 conflicts=('python-csdr')
 provides=('python-csdr')
-source=("$pkgname"::"git+https://github.com/luarvique/pycsdr#tag=${pkgver}")
-md5sums=('bfbd199d68fd2e16ce167a326e8e54b7')
+source=("$pkgname"::"git+https://github.com/luarvique/pycsdr#tag=${pkgver}"
+        "fix-gcc16-designated-initializers.patch")
+md5sums=('bfbd199d68fd2e16ce167a326e8e54b7'
+         '59ad728f657e435ecfd31b2c247f4995')
+
+prepare() {
+    cd "$srcdir/$pkgname"
+    patch -p1 -i "$srcdir/fix-gcc16-designated-initializers.patch"
+}
 
 build() {
     cd "$srcdir/$pkgname"

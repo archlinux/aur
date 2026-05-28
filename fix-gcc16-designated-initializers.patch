@@ -1,0 +1,20 @@
+diff --git a/src/pycsdr.cpp b/src/pycsdr.cpp
+index f24a01c..fb66f25 100644
+--- a/src/pycsdr.cpp
++++ b/src/pycsdr.cpp
+@@ -57,9 +57,14 @@
+ 
+ static PyModuleDef pycsdrmodule = {
+         PyModuleDef_HEAD_INIT,
+-        .m_name = "pycsdr.modules",
+-        .m_doc = "Python bindings for the csdr library",
+-        .m_size = -1,
++        "pycsdr.modules",
++        "Python bindings for the csdr library",
++        -1,
++        NULL,
++        NULL,
++        NULL,
++        NULL,
++        NULL,
+ };
