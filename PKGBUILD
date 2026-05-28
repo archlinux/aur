@@ -2,9 +2,9 @@
 # Maintainer: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
 # Contributor: (sirocco AT ngs.ru)
 
-pkgname=doublecmd-gtk2
+pkgname=doublecmd-gtk
 _pkgname=doublecmd
-pkgver=1.1.26
+pkgver=1.2.6
 pkgrel=3
 url="http://doublecmd.sourceforge.net/"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
     'mplayer: to make use of the wlxmplayer plugin'
 )
 source=("https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-src.tar.gz")
-sha512sums=('dae0b72cdf63c945b81d0c0a7356a5cb574fa437edca3dc1242b94a916ef1f78bd825ece2c4f4fdebabade0a0bbf12f4164ba2c0cefbba4ed62689788921660f')
+sha512sums=('a795409acd44b4b0b1789cb3f8dc64d72c44200b55a488f7858a98ae31c8218ebed096783b40e5741768e0c0e6f0fb391713f296721670385993501738965de9')
 
 prepare() {
     cp -a /usr/lib/lazarus ./
@@ -47,7 +47,7 @@ build() {
     ./build.sh doublecmd gtk2
 }
 
-package_doublecmd-gtk2() {
+package() {
     pkgdesc="twin-panel (commander-style) file manager (GTK)"
     depends=('desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info')
     conflicts=('doublecmd-qt6' 'doublecmd-qt5')

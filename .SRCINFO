@@ -1,5 +1,5 @@
-pkgbase = doublecmd-gtk2
-	pkgver = 1.1.26
+pkgbase = doublecmd-gtk
+	pkgver = 1.2.6
 	pkgrel = 3
 	url = http://doublecmd.sourceforge.net/
 	arch = x86_64
@@ -25,10 +25,10 @@ pkgbase = doublecmd-gtk2
 	provides = doublecmd
 	conflicts = doublecmd-qt5
 	conflicts = doublecmd-qt6
-	source = https://github.com/doublecmd/doublecmd/releases/download/v1.1.26/doublecmd-1.1.26-src.tar.gz
-	sha512sums = dae0b72cdf63c945b81d0c0a7356a5cb574fa437edca3dc1242b94a916ef1f78bd825ece2c4f4fdebabade0a0bbf12f4164ba2c0cefbba4ed62689788921660f
+	source = https://github.com/doublecmd/doublecmd/releases/download/v1.2.6/doublecmd-1.2.6-src.tar.gz
+	sha512sums = a795409acd44b4b0b1789cb3f8dc64d72c44200b55a488f7858a98ae31c8218ebed096783b40e5741768e0c0e6f0fb391713f296721670385993501738965de9
 
-pkgname = doublecmd-gtk2
+pkgname = doublecmd-gtk
 	pkgdesc = twin-panel (commander-style) file manager (GTK)
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
