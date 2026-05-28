@@ -4,7 +4,7 @@
 pkgname=qt5-quicktimeline
 _basever=5.15.19
 pkgver=5.15.19
-pkgrel=1
+pkgrel=2
 _commit=ea9d6c4d5a0a172b4778e8f37d694d02aab83f37
 arch=('x86_64')
 url='https://www.qt.io'
