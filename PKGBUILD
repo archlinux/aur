@@ -1,6 +1,6 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=hiprompt-gtk
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 license=("GPL3")
 pkgdesc=" GTK4 prompter for Himitsu "
@@ -30,4 +30,4 @@ package() {
 	make DESTDIR="$pkgdir" PREFIX=/usr install
 }
 
-sha256sums=('879bebb24ce66ff92ba28844efcbb39ae8bb514f745e2ea894ef7d8f72d69c15')
+sha256sums=('8a8b960d86f481769e25205d3b27d707c32e1dc78843a5fa4a2abe198f4ed27a')
