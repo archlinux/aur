@@ -1,8 +1,6 @@
 #!/bin/sh
-# Prefer native Wayland when running under a Wayland session; fall back to X11
-# otherwise. Override via PASEO_FLAGS (e.g. PASEO_FLAGS=--ozone-platform=x11).
-exec /opt/Paseo/Paseo \
-    --ozone-platform-hint=auto \
-    --enable-wayland-ime \
-    ${PASEO_FLAGS} \
-    "$@"
+# Paseo wraps Electron with a Commander.js CLI that rejects Chromium flags,
+# so we configure Ozone via the Electron-level env var instead (Electron 28+).
+# Override by exporting ELECTRON_OZONE_PLATFORM_HINT before invocation.
+export ELECTRON_OZONE_PLATFORM_HINT="${ELECTRON_OZONE_PLATFORM_HINT:-auto}"
+exec /opt/Paseo/Paseo "$@"
