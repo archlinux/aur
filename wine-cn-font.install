@@ -1,0 +1,10 @@
+info() {
+    echo -e "\033[34m修复 wine 环境中文字体方框：\033[0m"
+    echo -e "\033[31m    WINEARCH=wow64 WINEPREFIX=\$HOME/.wine wine /opt/wine-cn-font/wine-cn-font.exe\033[0m"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    info
+}
