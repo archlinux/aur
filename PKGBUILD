@@ -4,7 +4,7 @@ pkgname=xrefactory
 pkgdesc="Professional refactoring tool for C/Java and Emacs"
 url="http://xrefactory.com"
 pkgver=1.6.10
-pkgrel=9
+pkgrel=10
 arch=('x86_64')
 license=(custom)
 source=(
@@ -46,46 +46,53 @@ source=(
     0040-Fix-parsing-initializer-list-for-arrays.patch
     0042-Fix-build-for-Mingw-w64.patch
     0043-Fix-detecting-GCC-include-files-and-predefined-macro.patch
-    0044-Fix-workMemory-overflowed-over-borne-with-Linux-kern.patch)
-md5sums=('63e10baa9a5dfce9165570e7c3897701'
-         '4791f8a42e53a141ded3bd36e39b3a6d'
-         'a00b17df920380afd6689369845acbc8'
-         '12b0691bade1c2cf54f7d65be627e4ed'
-         'd03d650d3379b9803e9c6e33d00bff01'
-         '4016cb112001986916c4f8339cf15558'
-         'c396819441e5eefcf853c6fd95e8b235'
-         'd3d4a5c0b2f092a7870a3f07cf1e7ed4'
-         'eadbf7b35f36fbb714411852e0be7526'
-         '0dbaae243f9406b086b06e74976dee56'
-         '8cec60b31a4caf9a1593073d690a66bf'
-         '5d57e22fb4559632db54da28f98b55ff'
-         '727c48c11af8d7b21ce32272ab17aa39'
-         '04af9e30863641db22cdc1f25ec35730'
-         '2a4dd004387c50787be3adb4412f2865'
-         'e841cbbbafa06012db6edbe1fbc26936'
-         '302bec1cc494984d108da0a392be30c8'
-         '387e847d3e19d64f8883d649ba31e54b'
-         '081d03063e8f34223c7fa74982cc240e'
-         '4a1b6647233483e20fe861425e331d76'
-         '4a2e62ff6a6d3c3afe4318fd90f939b5'
-         '4245381509065daa86941467e5ad102c'
-         '2c4132f8c6f22352af7390678f4d4304'
-         '1684460f5a1d16907428c868d75a27b4'
-         '59cf224ed498b053ea3f84a2033d7f66'
-         '5c758605b952d406b17f596afe87eeb5'
-         '86c7bf7215f680e2b0d50db80ae908d6'
-         '501a1993fbb4e0ac88351c10a678866d'
-         '8549dc467458994dda13c8fdeef7dee6'
-         '633789164b37a833579fb23b1b16c5f1'
-         'ff4ac43651958f8e5f61f19858a87aa7'
-         'c84a7d60425c8210c7767c3df99e6d52'
-         '602734cd3b425e3fbec646eab6804aed'
-         'e92ad6217bfa847f1ebc2aabe88bacf8'
-         '8e5a1b177d5c74541facbfa98ff09e19'
-		 '20c7f661b6b8ce9bcbbd384fab2517a8'
-		 '651328ad9af97cbfcbb59c268eb89e37'
-		 'ab0c52ccdb4ed0127b33f23477abfd17'
-		 '1b47c4a526e80c160419ff0ca6a23d1f')
+    0044-Fix-parsing-bool-and-thread_local-keywords.patch
+	0045-Add-std-gnu89-option-when-compiling-byyacc.patch
+	0046-Fix-workMemory-overflowed-over-borne-with-Linux-kern.patch
+)
+md5sums=(
+	'63e10baa9a5dfce9165570e7c3897701'
+    '4791f8a42e53a141ded3bd36e39b3a6d'
+    'a00b17df920380afd6689369845acbc8'
+    '12b0691bade1c2cf54f7d65be627e4ed'
+    'd03d650d3379b9803e9c6e33d00bff01'
+    '4016cb112001986916c4f8339cf15558'
+    'c396819441e5eefcf853c6fd95e8b235'
+    'd3d4a5c0b2f092a7870a3f07cf1e7ed4'
+    'eadbf7b35f36fbb714411852e0be7526'
+    '0dbaae243f9406b086b06e74976dee56'
+    '8cec60b31a4caf9a1593073d690a66bf'
+    '5d57e22fb4559632db54da28f98b55ff'
+    '727c48c11af8d7b21ce32272ab17aa39'
+    '04af9e30863641db22cdc1f25ec35730'
+    '2a4dd004387c50787be3adb4412f2865'
+    'e841cbbbafa06012db6edbe1fbc26936'
+    '302bec1cc494984d108da0a392be30c8'
+    '387e847d3e19d64f8883d649ba31e54b'
+    '081d03063e8f34223c7fa74982cc240e'
+    '4a1b6647233483e20fe861425e331d76'
+    '4a2e62ff6a6d3c3afe4318fd90f939b5'
+    '4245381509065daa86941467e5ad102c'
+    '2c4132f8c6f22352af7390678f4d4304'
+    '1684460f5a1d16907428c868d75a27b4'
+    '59cf224ed498b053ea3f84a2033d7f66'
+    '5c758605b952d406b17f596afe87eeb5'
+    '86c7bf7215f680e2b0d50db80ae908d6'
+    '501a1993fbb4e0ac88351c10a678866d'
+    '8549dc467458994dda13c8fdeef7dee6'
+    '633789164b37a833579fb23b1b16c5f1'
+    'ff4ac43651958f8e5f61f19858a87aa7'
+    'c84a7d60425c8210c7767c3df99e6d52'
+    '602734cd3b425e3fbec646eab6804aed'
+    'e92ad6217bfa847f1ebc2aabe88bacf8'
+    '8e5a1b177d5c74541facbfa98ff09e19'
+	'20c7f661b6b8ce9bcbbd384fab2517a8'
+	'651328ad9af97cbfcbb59c268eb89e37'
+	'ab0c52ccdb4ed0127b33f23477abfd17'
+	'b5aebef7fc4532becc290b3f4a1a3873'
+	'5ff548280c80b23ed2dba83e18300402'
+	'e5ce27de5df70dfa51f6f17cf9afaa43'
+)
 
 prepare() {
     cd "$srcdir/xref-any"
@@ -126,7 +133,10 @@ prepare() {
 	patch --verbose -p1 -i "$srcdir/0040-Fix-parsing-initializer-list-for-arrays.patch"
 	patch --verbose -p1 -i "$srcdir/0042-Fix-build-for-Mingw-w64.patch"
 	patch --verbose -p1 -i "$srcdir/0043-Fix-detecting-GCC-include-files-and-predefined-macro.patch"
-	patch --verbose -p1 -i "$srcdir/0044-Fix-workMemory-overflowed-over-borne-with-Linux-kern.patch"
+	cd "$srcdir"
+	patch --verbose -p1 -i "$srcdir/0044-Fix-parsing-bool-and-thread_local-keywords.patch"
+	patch --verbose -p1 -i "$srcdir/0045-Add-std-gnu89-option-when-compiling-byyacc.patch"
+	patch --verbose -p1 -i "$srcdir/0046-Fix-workMemory-overflowed-over-borne-with-Linux-kern.patch"
 }
 
 build() {

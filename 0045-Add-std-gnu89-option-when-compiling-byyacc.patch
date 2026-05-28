@@ -1,0 +1,25 @@
+From e045492b921ef68c3617f1b8c7242a1450ca25f4 Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Fri, 6 Mar 2026 10:47:32 +0100
+Subject: [PATCH] Add -std=gnu89 option when compiling byyacc
+
+---
+ byacc-1.9/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/byacc-1.9/Makefile b/byacc-1.9/Makefile
+index 4bab4c9..fd3f893 100644
+--- a/byacc-1.9/Makefile
++++ b/byacc-1.9/Makefile
+@@ -2,7 +2,7 @@ DEST	      = .
+ 
+ HDRS	      = defs.h
+ 
+-CFLAGS	      = -O -DNDEBUG
++CFLAGS	      = -O -DNDEBUG -std=gnu89
+ 
+ LDFLAGS	      =
+ 
+-- 
+2.54.0
+

@@ -1,0 +1,184 @@
+From f3a9f90376828ffdb1a256588210e2063079c11f Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Fri, 6 Mar 2026 10:21:56 +0100
+Subject: [PATCH] Fix parsing bool and thread_local keywords
+
+---
+ xref-any/src/cgram.y    |  8 ++++----
+ xref-any/src/globals.c  | 18 ++++++++----------
+ xref-any/src/javagram.y |  2 +-
+ xref-any/src/yaccgram.y | 10 +++++-----
+ 4 files changed, 18 insertions(+), 20 deletions(-)
+
+diff --git a/xref-any/src/cgram.y b/xref-any/src/cgram.y
+index 298c9e4..c53ffdb 100644
+--- a/xref-any/src/cgram.y
++++ b/xref-any/src/cgram.y
+@@ -105,7 +105,7 @@
+ 
+ /* c-special */
+ %token TYPEDEF EXTERN AUTO REGISTER SIGNED UNSIGNED STRUCT UNION ENUM
+-%token SIZEOF TYPEOF RESTRICT _ATOMIC _BOOL _THREADLOCAL _NORETURN
++%token SIZEOF TYPEOF RESTRICT _ATOMIC BOOL THREADLOCAL _NORETURN
+ /* hmm */
+ %token ANONYME_MOD
+ 
+@@ -119,7 +119,7 @@
+ 
+ /* c++-special */
+ %token FRIEND OPERATOR NAMESPACE TEMPLATE DELETE MUTABLE EXPLICIT
+-%token WCHAR_T BOOL USING ASM_KEYWORD EXPORT VIRTUAL INLINE TYPENAME
++%token WCHAR_T USING ASM_KEYWORD EXPORT VIRTUAL INLINE TYPENAME
+ %token DYNAMIC_CAST STATIC_CAST REINTERPRET_CAST CONST_CAST TYPEID
+ 
+ /* yacc-special */
+@@ -867,7 +867,7 @@ storage_class_specifier
+ 	: TYPEDEF		{ $$.d = StorageTypedef; }
+ 	| EXTERN		{ $$.d = StorageExtern; }
+ 	| STATIC		{ $$.d = StorageStatic; }
+-	| _THREADLOCAL	{ $$.d = StorageThreadLocal; }
++	| THREADLOCAL	{ $$.d = StorageThreadLocal; }
+ 	| AUTO			{ $$.d = StorageAuto; }
+ 	| REGISTER		{ $$.d = StorageAuto; }
+ 	;
+@@ -894,7 +894,7 @@ type_specifier1
+ 	| FLOAT		{ $$.d = TypeFloat; }
+ 	| DOUBLE	{ $$.d = TypeDouble; }
+ 	| VOID		{ $$.d = TypeVoid; }
+-	| _BOOL		{ $$.d = TypeBoolean; }
++	| BOOL		{ $$.d = TypeBoolean; }
+ 	;
+ 
+ type_specifier2
+diff --git a/xref-any/src/globals.c b/xref-any/src/globals.c
+index 6cce897..a12e5df 100644
+--- a/xref-any/src/globals.c
++++ b/xref-any/src/globals.c
+@@ -530,12 +530,14 @@ S_typeModificationsInit s_typeModificationsInit[] = {
+ S_tokenNameIni s_tokenNameIniTab[] = {
+ 	{"asm",			ASM_KEYWORD		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"auto", 		AUTO			,LAN_C | LAN_YACC | LAN_CCC},
++	{"bool",		BOOL			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"enum", 		ENUM			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"extern",		EXTERN			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"inline",		INLINE			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"register",	REGISTER		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"signed",		SIGNED			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"sizeof",		SIZEOF			,LAN_C | LAN_YACC | LAN_CCC},
++	{"thread_local",THREADLOCAL		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"typeof",		TYPEOF			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"struct",		STRUCT			,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"typedef",		TYPEDEF			,LAN_C | LAN_YACC | LAN_CCC},
+@@ -561,7 +563,6 @@ S_tokenNameIni s_tokenNameIniTab[] = {
+ 	{"protected",	PROTECTED		,LAN_JAVA | LAN_CCC},
+ 	{"public",		PUBLIC			,LAN_JAVA | LAN_CCC},
+ 	{"super",		SUPER			,LAN_JAVA},
+-
+ 	{"synchronized",SYNCHRONIZED	,LAN_JAVA},
+ 	{"strictfp",	STRICTFP		,LAN_JAVA},
+ 	{"this",		THIS			,LAN_JAVA | LAN_CCC},
+@@ -569,13 +570,10 @@ S_tokenNameIni s_tokenNameIniTab[] = {
+ 	{"throws",		THROWS			,LAN_JAVA},
+ 	{"transient",	TRANSIENT		,LAN_JAVA},
+ 	{"try",			TRY				,LAN_JAVA | LAN_CCC},
+-
+ 	{"true",		TRUE_LITERAL	,LAN_JAVA | LAN_CCC},
+ 	{"false",		FALSE_LITERAL	,LAN_JAVA | LAN_CCC},
+ 	{"null",		NULL_LITERAL	,LAN_JAVA},
+ 
+-
+-	{"bool",				BOOL			,LAN_CCC},
+ 	{"const_cast",			CONST_CAST		,LAN_CCC},
+ 	{"delete",				DELETE			,LAN_CCC},
+ 	{"dynamic_cast",		DYNAMIC_CAST	,LAN_CCC},
+@@ -616,11 +614,11 @@ S_tokenNameIni s_tokenNameIniTab[] = {
+ 	{"volatile",	VOLATILE		,LAN_C | LAN_YACC | LAN_CCC | LAN_JAVA},
+ 	{"while", 		WHILE			,LAN_C | LAN_YACC | LAN_CCC | LAN_JAVA},
+ 
+-	{"restrict",		RESTRICT		,LAN_C},
+-	{"_Atomic",			_ATOMIC			,LAN_C},
+-	{"_Bool",			_BOOL			,LAN_C},
+-	{"_Noreturn",		_NORETURN		,LAN_C},
+-	{"_Thread_local",	_THREADLOCAL	,LAN_C},
++	{"_Atomic",			_ATOMIC			,LAN_C | LAN_YACC},
++	{"_Bool",			BOOL			,LAN_C | LAN_YACC},
++	{"_Noreturn",		_NORETURN		,LAN_C | LAN_YACC},
++	{"_Thread_local",	THREADLOCAL		,LAN_C | LAN_YACC},
++	{"restrict",		RESTRICT		,LAN_C | LAN_YACC},
+ 
+ /*
+ 	{"token", 		TOKEN			,LAN_YACC},
+@@ -722,7 +720,7 @@ S_tokenNameIni s_tokenNameIniTab2[] = {
+ 	{"__asm",			ASM_KEYWORD		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__asm__",			ASM_KEYWORD		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__label__",		LABEL			,LAN_C | LAN_YACC | LAN_CCC},
+-	{"__threadd",		_THREADLOCAL	,LAN_C | LAN_YACC | LAN_CCC},
++	{"__threadd",		THREADLOCAL		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__restrict",		RESTRICT		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__restrict__",	RESTRICT		,LAN_C | LAN_YACC | LAN_CCC},
+ 	{"__typeof",		TYPEOF			,LAN_C | LAN_YACC | LAN_CCC},
+diff --git a/xref-any/src/javagram.y b/xref-any/src/javagram.y
+index de5dc0c..c8ee51f 100644
+--- a/xref-any/src/javagram.y
++++ b/xref-any/src/javagram.y
+@@ -156,7 +156,7 @@
+ 
+ /* c-special */
+ %token TYPEDEF EXTERN AUTO REGISTER SIGNED UNSIGNED STRUCT UNION ENUM
+-%token SIZEOF TYPEOF RESTRICT _ATOMIC _BOOL _THREADLOCAL _NORETURN
++%token SIZEOF TYPEOF RESTRICT _ATOMIC BOOL THREADLOCAL _NORETURN
+ /* hmm */
+ %token ANONYME_MOD
+ 
+diff --git a/xref-any/src/yaccgram.y b/xref-any/src/yaccgram.y
+index 9ae6416..18f11fa 100644
+--- a/xref-any/src/yaccgram.y
++++ b/xref-any/src/yaccgram.y
+@@ -111,7 +111,7 @@ static void addYaccSymbolReference C_ARG((S_idIdent *name, int usage));
+ 
+ /* c-special */
+ %token TYPEDEF EXTERN AUTO REGISTER SIGNED UNSIGNED STRUCT UNION ENUM
+-%token SIZEOF TYPEOF RESTRICT _ATOMIC _BOOL _THREADLOCAL _NORETURN
++%token SIZEOF TYPEOF RESTRICT _ATOMIC BOOL THREADLOCAL _NORETURN
+ /* hmm */
+ %token ANONYME_MOD
+ 
+@@ -125,7 +125,7 @@ static void addYaccSymbolReference C_ARG((S_idIdent *name, int usage));
+ 
+ /* c++-special */
+ %token FRIEND OPERATOR NAMESPACE TEMPLATE DELETE MUTABLE EXPLICIT
+-%token WCHAR_T BOOL USING ASM_KEYWORD EXPORT VIRTUAL INLINE TYPENAME
++%token WCHAR_T USING ASM_KEYWORD EXPORT VIRTUAL INLINE TYPENAME
+ %token DYNAMIC_CAST STATIC_CAST REINTERPRET_CAST CONST_CAST TYPEID
+ 
+ /* yacc-special */
+@@ -478,7 +478,7 @@ any_token_not_perc_par:
+ 	| DOUBLE | ELSE | FLOAT | FOR | GOTO | IF | INT | LONG | RETURN | SHORT
+ 	| SWITCH | VOID | VOLATILE | WHILE
+ 	| TYPEDEF | EXTERN | AUTO | REGISTER | SIGNED | UNSIGNED | STRUCT | UNION 
+-	| ENUM | SIZEOF | TYPEOF | RESTRICT | _ATOMIC | _BOOL | _THREADLOCAL | _NORETURN
++	| ENUM | SIZEOF | TYPEOF | RESTRICT | _ATOMIC | BOOL | THREADLOCAL | _NORETURN
+ 	| ANONYME_MOD | TOKEN
+ 	| ABSTRACT | BOOLEAN | BYTE | CATCH | CLASS | EXTENDS | FINAL | FINALLY 
+ 	| IMPLEMENTS | IMPORT | INSTANCEOF | INTERFACE | NATIVE | NEW
+@@ -1077,7 +1077,7 @@ storage_class_specifier
+ 	: TYPEDEF		{ $$.d = StorageTypedef; }
+ 	| EXTERN		{ $$.d = StorageExtern; }
+ 	| STATIC		{ $$.d = StorageStatic; }
+-	| _THREADLOCAL	{ $$.d = StorageThreadLocal; }
++	| THREADLOCAL	{ $$.d = StorageThreadLocal; }
+ 	| AUTO			{ $$.d = StorageAuto; }
+ 	| REGISTER		{ $$.d = StorageAuto; }
+ 	;
+@@ -1104,7 +1104,7 @@ type_specifier1
+ 	| FLOAT		{ $$.d = TypeFloat; }
+ 	| DOUBLE	{ $$.d = TypeDouble; }
+ 	| VOID		{ $$.d = TypeVoid; }
+-	| _BOOL		{ $$.d = TypeBoolean; }
++	| BOOL		{ $$.d = TypeBoolean; }
+ 	;
+ 
+ type_specifier2
+-- 
+2.54.0
+
