@@ -1,7 +1,7 @@
 # Maintainer: Stephano Cetola <stephano@cetola.net>
 pkgname=reform-tools
 pkgver=1.87
-pkgrel=2
+pkgrel=3
 pkgdesc="MNT Reform system tools & helpers"
 arch=('x86_64' 'aarch64')
 url="https://source.mnt.re/reform/reform-tools"
@@ -36,7 +36,7 @@ optdepends=(
 )
 
 source=(
-  "git+https://source.mnt.re/reform/reform-tools.git#tag=1d96f15cc3396442530a92c472bfe6d367045d76"
+  "git+https://source.mnt.re/reform/reform-tools.git#tag=7048b8b2be903764a3777f47c68fc5fff5c3ccc3"
   'motd-full'
   'motd-rescue'
 )
