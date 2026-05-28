@@ -14,7 +14,7 @@ optdepends=('mariadb: local database server'
 makedepends=('cargo')
 install=bartos.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/barto/archive/v$pkgver.tar.gz")
-sha256sums=('70dc37d9771210786d4efd8e5edaa0b7e581020fa8550876852d3088538bf30e')
+sha256sums=('1ff0f2ccf7b233c089128cb5e8b58afe22fad1e06a3d0cd641385862a6acb157')
 
 prepare() {
     cd "barto-$pkgver"
