@@ -1,6 +1,6 @@
 # Maintainer: Xuepoo Foter <foter@example.com>
 pkgname=agent-book-translate
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A powerful LLM-driven agentic EPUB book translator with robust progress monitoring and recovery"
 arch=("x86_64" "aarch64")
@@ -9,7 +9,7 @@ license=("MIT")
 depends=("sqlite" "openssl")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Xuepoo/agent-book-translate/archive/v${pkgver}.tar.gz")
-sha256sums=('91e266ea119343206b14c7457782fafb65b98f2ddfcb6b2633eaee30c4fc4457')
+sha256sums=('ff9753de8ac511fa34ccbc6e7eb8a66f34ec14656e0816ae69de5713f19df941')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
