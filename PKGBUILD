@@ -9,7 +9,7 @@ license=('custom')
 depends=('fuse2')
 options=('!strip')
 source_x86_64=("Soviet_${pkgver}_amd64.AppImage::https://updates.sovetchat.ru/downloads/Soviet_${pkgver}_amd64.AppImage")
-sha256sums_x86_64=('7dde99a27bfb9ebb415dc8989dd2b634de7d3e56bce1af3b90f6da3702ef70ff')
+sha256sums_x86_64=('ba707ed22955aaed62ecc5aa677c3d9b49a7db070ce75f35c0220429f2ed6508')
 
 prepare() {
     chmod +x "Soviet_${pkgver}_amd64.AppImage"
