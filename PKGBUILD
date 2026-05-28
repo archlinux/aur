@@ -2,7 +2,7 @@
 
 pkgname=python-jbom
 _name=${pkgname#python-}
-pkgver=7.0.2
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="Intelligent KiCad Bill of Materials generator with inventory matching"
 provides=(${pkgname})
@@ -14,21 +14,28 @@ _pydeps=(
     sexpdata
 
     openpyxl
+    pydantic
     requests
+    wxpython
     yaml
 )
-depends=('python'
-    "${_pydeps[@]/#/python-}")
+depends=(
+    'python'
+    "${_pydeps[@]/#/python-}"
+)
 makedepends=(
     git
     'python-build'
     'python-installer'
     'python-setuptools'
-    'python-wheel')
-optdepends=('kicad')
+    'python-wheel'
+)
+optdepends=(
+    'kicad: Electronic schematic and printed circuit board (PCB) design tools'
+)
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('3f67bce0330f25a358cc361f1135cad44b67a1fc984cae82e53c9f665bdc6730')
+sha256sums=('31ed628bc7568ca0e06d115ea6164c8071e9f3736a51f638f171b7ddf6862468')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
