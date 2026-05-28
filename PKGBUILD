@@ -1,7 +1,7 @@
 # Maintainer: purpletue, purpletuesdayofficial@gmail.com 
 pkgname=langman
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A single-binary language tutorial reference tool"
 arch=('x86_64')
 license=('MIT')
