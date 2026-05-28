@@ -1,6 +1,6 @@
 pkgbase = morph
 	pkgdesc = Modern music player with dynamic UI and QML theme support
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/lizapropanol/morph
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = morph
 	depends = hicolor-icon-theme
 	depends = yt-dlp
 	depends = ffmpeg
-	source = https://github.com/lizapropanol/morph/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = dedb024e01ca269db35b55548d6795c4f438e77701456a8284969b11a3f03df8
+	source = https://github.com/lizapropanol/morph/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = bd6e85fbeb34308422e2974f4e5fdcb352bd65eb18313f12b9c4d10066733a4f
 
 pkgname = morph
