@@ -1,7 +1,7 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=hyprcorrect-git
 _pkgname=hyprcorrect
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Keyboard-driven desktop spelling and typo corrector (latest main)"
 arch=('x86_64' 'aarch64')
