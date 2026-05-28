@@ -1,0 +1,12 @@
+pkgbase = sudos-eyes
+	pkgdesc = Ever wanted sudo to fight back? well, now sudo is here to annoy you permanently.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/rafdog1222/sudos-eyes
+	arch = any
+	license = WTFPL
+	depends = bash
+	source = sudos-eyes-1.0.tar.gz::https://github.com/rafdog1222/sudos-eyes/archive/refs/tags/v1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = sudos-eyes
