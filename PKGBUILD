@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gap
-_pkgver=1.15.1
+_pkgver=1.15.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -54,8 +54,8 @@ optdepends=(
   r-valr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('054e74706124805d5ec52ca19d9b3186')
-b2sums=('e13f194f8bd8e3c8376fca34764e1afcd3cf64375020d04208bf825c4cd6816d8b1767f6e347b3471e2c7da72af729cb636d66e68ab04c71c64b159e137c1d33')
+md5sums=('52478515ea26137597b2010a69d0a738')
+b2sums=('7b059b3dbf0505430d61f9ee3fa7301e5da31c4af594cee8831bae5f35aeffd061f012fd269eaf3334be9bd082f7ba0733544fafffa4ab2a8cbe0544fbaa0e30')
 
 build() {
   mkdir build
