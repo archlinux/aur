@@ -3,16 +3,26 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl3-git
-pkgver=3.4.0.r257.gf1a7a64eb4
-pkgrel=2
+pkgver=3.4.8.r885.gbb3c613
+pkgrel=1
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
 license=('Zlib')
-depends=(libxkbcommon libxfixes libxrandr libxext libdecor libxi alsa-lib libxtst libglvnd libxcursor libusb
-	libpulse libpipewire fribidi mesa libxss libthai sndio jack libdrm libx11 glibc wayland)
-makedepends=('cmake' 'ninja' 'git' 'vulkan-headers' 'python' 'ffmpeg' 'wayland-protocols' 'ibus')
-optdepends=('vulkan-driver: vulkan renderer')
+depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb')
+makedepends=('cmake' 'ninja' 'vulkan-headers' 'python' 'hidapi' 'ibus' 'jack' 'libdecor'
+	     'libthai' 'fribidi' 'libgl' 'libpulse' 'libusb' 'libxext' 'libxfixes' 'libxi'
+	     'libxinerama' 'libxkbcommon' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'mesa'
+	     'pipewire' 'sndio' 'vulkan-driver' 'wayland' 'wayland-protocols'
+	)
+optdepends=('vulkan-driver: vulkan renderer'
+	    'alsa-lib: ALSA audio driver'
+	    'libpulse: PulseAudio audio driver'
+	    'jack: JACK audio driver'
+	    'pipewire: PipeWire audio driver'
+	    'sndio: sndio audio driver'
+	    'libdecor: Wayland client decorations'
+)
 source=("git+https://github.com/libsdl-org/SDL.git")
 provides=("sdl3=${pkgver%.r*}")
 conflicts=("sdl3")
@@ -20,7 +30,8 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd SDL
-  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/preview.//'
+  #git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/preview.//'
+  printf "%s.r%s.g%s" "$(git tag -l 'release-*' | sort -V | tail -n1 | sed 's/release-//')" "$(git rev-list --count $(git tag -l 'release-*' | sort -V | tail -n1)..HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -30,7 +41,7 @@ build() {
 	-D CMAKE_INSTALL_PREFIX=/usr \
 	-D SDL_STATIC=OFF \
 	-D SDL_RPATH=OFF \
-	-D SDL_DEPS_SHARED=OFF
+	-D SDL_DEPS_SHARED=ON
 	cmake --build build
 }
 
