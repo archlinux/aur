@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=kodi-nfo-generator
 _pkgname=${pkgname//-/_}
-pkgver=0.0.19
+pkgver=0.1.0
 pkgrel=1
 pkgdesc=" Simple Python-based command-line tool to generate .nfo files for movies and TV series used by Kodi."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('python')
 makedepends=('python-setuptools' 'python-beautifulsoup4')
 source=("https://github.com/fracpete/${pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('af0c06e2ee6cd460e2305e398fd480f67ae9727bab38eadde446e31f2d8e193a')
+sha256sums=('a0443e52ed4fb6f82de9532577446004048aa45b01bc0636a0e1378b8eaeb671')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
