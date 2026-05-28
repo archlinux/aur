@@ -1,5 +1,5 @@
 pkgname=proton-vpn-qt-app
-pkgver=1.8.4
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A Qt GUI frontend for the ProtonVPN CLI"
 arch=('x86_64')
@@ -22,12 +22,8 @@ makedepends=(
 )
 source=(
   "git+https://github.com/wheat32/proton-vpn-qt-app.git#tag=v${pkgver}"
-  "proton-vpn-qt-app.desktop"
-  "proton-vpn-sign.svg"
 )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('SKIP')
 
 build() {
     cmake -S "${srcdir}/${pkgname}/src" \
@@ -40,11 +36,17 @@ build() {
 
 package() {
     install -Dm755 build/proton_vpn_qt \
-        "${pkgdir}/usr/bin/proton-vpn-qt-app"
+        "${pkgdir}/usr/bin/proton_vpn_qt"
 
-    install -Dm644 proton-vpn-qt-app.desktop \
+    # Compatibility symlink for any existing scripts/launchers
+    ln -s proton_vpn_qt "${pkgdir}/usr/bin/proton-vpn-qt-app"
+
+    install -Dm644 "${srcdir}/${pkgname}/proton-vpn-qt-app.desktop" \
         "${pkgdir}/usr/share/applications/proton-vpn-qt-app.desktop"
 
-    install -Dm644 proton-vpn-sign.svg \
+    install -Dm644 "${srcdir}/${pkgname}/proton-vpn-sign.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/proton-vpn-qt-app.svg"
+
+    install -Dm644 "${srcdir}/${pkgname}/io.github.wheat32.ProtonVPNQt.metainfo.xml" \
+        "${pkgdir}/usr/share/metainfo/io.github.wheat32.ProtonVPNQt.metainfo.xml"
 }
