@@ -2,7 +2,7 @@
 
 pkgname=awatcher-bundle-bin
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="ActivityWatch-compatible activity and idle watchers, with bundled aw server"
 arch=('x86_64')
 url="https://github.com/2e3s/awatcher"
