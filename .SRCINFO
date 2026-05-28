@@ -1,6 +1,6 @@
 pkgbase = devscripts
 	pkgdesc = Scripts to make the life of a Debian Package maintainer easier
-	pkgver = 2.26.3
+	pkgver = 2.26.9
 	pkgrel = 1
 	url = https://tracker.debian.org/pkg/devscripts
 	arch = i686
@@ -39,9 +39,9 @@ pkgbase = devscripts
 	provides = checkbashisms
 	conflicts = checkbashisms
 	options = !makeflags
-	source = https://salsa.debian.org/debian/devscripts/-/archive/v2.26.3/devscripts-v2.26.3.tar.gz
+	source = https://salsa.debian.org/debian/devscripts/-/archive/v2.26.9/devscripts-v2.26.9.tar.gz
 	source = fixes.patch
-	sha512sums = 67c2cf617d434481a483fb824680eb80b4fbd860e750cb1ce1eab2ed1e48abf8dd0203d9851b7ba18d42199d12017a328fbd05aa6c826f6a886df08a2b450360
+	sha512sums = 2dffca5cc69f392de285f4e1458fb1b7c5600f05dc68514701ef9a0af702dd2409dbab5d3ed95a0955b02db5477d4bd9ef1043324946b7b0cccb6553cc4c912c
 	sha512sums = 120434ab274065a7a74b3ff30f2831ae1f803efc4d2dd43fce67f03fcd91f391384a9d0c4ab045f6161f063444275ce6bbb15cf494002026361ed818e2332501
 
 pkgname = devscripts
