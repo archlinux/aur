@@ -1,14 +1,14 @@
 pkgbase = bili-tools-git
 	pkgdesc = B站直播开播工具 — 命令行一键开播/下播
-	pkgver = 0.1.0.r1.b491f25
+	pkgver = 0.1.2.r1.be29ac5
 	pkgrel = 1
 	url = https://github.com/QwerProg/bili-tools
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = gcc-libs
 	makedepends = cargo
 	makedepends = git
-	depends = gcc-libs
 	source = git+https://github.com/QwerProg/bili-tools.git
 	sha256sums = SKIP
 
