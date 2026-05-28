@@ -25,4 +25,7 @@ package() {
   cd "${srcdir}/${pkgname}-debian-${pkgver}"
   make DESTDIR="$pkgdir" install
   cd -
+
+  echo 'Remove conflicting "installkernel" files...'
+  find "${pkgdir}" -name installkernel* -delete
 }
