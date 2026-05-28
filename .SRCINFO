@@ -1,11 +1,13 @@
 pkgbase = pi-ext-usage
 	pkgdesc = Usage statistics dashboard for Pi sessions
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tmustier/pi-extensions/tree/main/usage-extension
 	install = pi-ext.install
 	arch = any
 	license = MIT
+	optdepends = pi-coding-agent
+	optdepends = pi-coding-agent-git
 	source = pi-ext-usage-0.3.1.tar.gz::https://github.com/tmustier/pi-extensions/archive/refs/tags/usage-extension/v0.3.1.tar.gz
 	sha256sums = 01b6a3d0a4dc778b709f99bd9985be8a7001a2b8c73bf8cc89d5462f90f7c2d5
 
