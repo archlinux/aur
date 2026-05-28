@@ -1,7 +1,7 @@
 pkgbase = date12
 	pkgdesc = Alternative calendar with 12-day weeks and 60-day months
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/kaizarzycki/date12
 	arch = x86_64
 	arch = aarch64

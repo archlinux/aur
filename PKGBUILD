@@ -1,7 +1,7 @@
 # Maintainer: Kai Zarzycki <me@kaizarzycki.com>
 pkgname=date12
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative calendar with 12-day weeks and 60-day months"
 arch=('x86_64' 'aarch64' 'riscv64' 'armv7h')
 url="https://gitlab.com/kaizarzycki/date12"
