@@ -25,6 +25,7 @@ check_version:
 
 build:
   stage: build
+  timeout: 2h
   needs:
     - job: check_version
       artifacts: true
