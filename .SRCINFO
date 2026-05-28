@@ -1,7 +1,7 @@
 pkgbase = katdown-git
 	pkgdesc = GitHub-styled live Markdown preview for Kate (KTextEditor/KF6)
 	pkgver = r3.f4f7b4c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uwuclxdy/katdown
 	arch = x86_64
 	license = GPL-3.0-or-later
