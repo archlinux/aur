@@ -2,7 +2,7 @@
 
 pkgname=selene-p2p
 _pkgname=Selene
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='Selene is a Tor-based P2P chat and encrypted file sharing'
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=('qt6-base' 'qt6-multimedia' 'hicolor-icon-theme' 'tor')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d9d3398569f093ade892c7eace002efc0a0dde52dd8337285a2bd9b1e76d1fe1')
+sha256sums=('d425c2e7cee682185db0a93f82b0045c37d574f5e50d3226f18cd65acdd521f2')
 
 build(){
   cd "$srcdir/${_pkgname}-${pkgver}"
