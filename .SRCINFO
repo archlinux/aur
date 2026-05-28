@@ -1,0 +1,19 @@
+pkgbase = rmatrix-bin
+	pkgdesc = Rust port of cmatrix
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/Fierthraix/rmatrix
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	provides = rmatrix
+	conflicts = rmatrix
+	conflicts = rmatrix-git
+	source_x86_64 = https://github.com/Fierthraix/rmatrix/releases/download/v2.0.3/rmatrix-2.0.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8f91ca287652d2c3c98ad5f6b20aae28be7bae5bfd64bb23ff1eaee4b279444e
+	source_aarch64 = https://github.com/Fierthraix/rmatrix/releases/download/v2.0.3/rmatrix-2.0.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 677c71868dfbf0bb7df96385a9477ecc27102dcc4cc91a9adcdeb96df0ba9a5b
+
+pkgname = rmatrix-bin
