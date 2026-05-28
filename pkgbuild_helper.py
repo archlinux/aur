@@ -9,7 +9,7 @@ import argparse
 
 PKGBUILD_FILE = "PKGBUILD"
 SRCINFO_FILE = ".SRCINFO"
-GITHUB_API_URL = "https://api.github.com/repos/mapleafgo/cff-core/releases/latest"
+GITHUB_API_URL = "https://api.github.com/repos/mapleafgo/singcast-cli/releases/latest"
 
 def fetch_latest_version():
     """获取 GitHub 最新版本号"""
