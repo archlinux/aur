@@ -1,7 +1,7 @@
 # Maintainer: Ricky Morabito <codericcardo@gmail.com>
 
 pkgname=tokscale-git
-pkgver=2.1.3.r1529.gcf4b931
+pkgver=3.0.0.r1531.gc21f0f53
 pkgrel=1
 pkgdesc='CLI tool and TUI for tracking token usage and costs from AI coding agents (development branch)'
 arch=('x86_64')
@@ -13,6 +13,7 @@ provides=('tokscale')
 conflicts=('tokscale')
 source=("$pkgname::git+https://github.com/junhoyeo/tokscale.git#branch=main")
 b2sums=('SKIP')
+options=(!lto)
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -22,8 +23,14 @@ pkgver() {
         "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "$srcdir/$pkgname"
+    sed -i 's/native-tls-vendored/native-tls/g' Cargo.toml crates/*/Cargo.toml
+}
+
 build() {
     cd "$srcdir/$pkgname"
+    export RUSTFLAGS='-C linker-features=-lld -C link-arg=-Wl,--copy-dt-needed-entries'
     cargo build --release
 }
 
