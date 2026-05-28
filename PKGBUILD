@@ -1,6 +1,6 @@
 pkgname=proton-vpn-qt-app
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Qt GUI frontend for the ProtonVPN CLI"
 arch=('x86_64')
 url="https://github.com/wheat32/proton-vpn-qt-app"
@@ -29,7 +29,8 @@ build() {
     cmake -S "${srcdir}/${pkgname}/src" \
           -B build \
           -G Ninja \
-          -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_PREFIX=/usr
 
     cmake --build build
 }
