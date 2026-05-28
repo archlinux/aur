@@ -1,0 +1,18 @@
+pkgbase = pdftl
+	pkgdesc = CLI tool for PDF manipulation written in Python, intended to be a command-line compatible extension of pdftk.
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/pdftl/pdftl
+	arch = any
+	license = MPL-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python-pikepdf>=10.3.0
+	depends = python-rich
+	depends = python-defusedxml
+	source = pdftl-0.18.0.tar.gz::https://github.com/pdftl/pdftl/archive/refs/tags/v0.18.0.tar.gz
+	sha256sums = 2733aa6eb04eee421ff4a7f08568ae57ddd058a37a7c7466ca40426fe53fdc03
+
+pkgname = pdftl
