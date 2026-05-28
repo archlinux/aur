@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r4003.78d557464
+pkgver=r4036.40ce476b2
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -254,12 +254,17 @@ package() {
 
 	cd "$srcdir/$_pkgname"
 
-	mkdir -p "$pkgdir/usr/bin/" "$pkgdir/opt/vita3k/"
+	install -Dm644 "build/${BUILDPRESET}/bin/Release/README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
+	install -Dm644 "build/${BUILDPRESET}/bin/Release/COPYING.txt" "$pkgdir/usr/share/licenses/$_pkgname/COPYING.txt"
+    install -Dm755 "build/${BUILDPRESET}/bin/Release/Vita3K" "$pkgdir/usr/bin/vita3k"
+    rm -f "build/${BUILDPRESET}/bin/Release/README.md"
+    rm -f "build/${BUILDPRESET}/bin/Release/COPYING.txt"
+    rm -f "build/${BUILDPRESET}/bin/Release/Vita3K"
 
-	cp -r "build/${BUILDPRESET}/bin/Release/"* "$pkgdir/opt/vita3k/"
-	ln -s "/opt/vita3k/Vita3K" "$pkgdir/usr/bin/vita3k"
+    # Once everything is taken care of, we can copy everything to /usr/share/
+    mkdir -p "$pkgdir/usr/share/$_pkgname/"
+    cp -r "build/${BUILDPRESET}/bin/Release/"* "$pkgdir/usr/share/$_pkgname/"
 
-	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
-	install -Dm644 "data/image/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
 	install -Dm644 "$srcdir/vita3k.desktop" "$pkgdir/usr/share/applications/vita3k.desktop"
+	install -Dm644 "data/image/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
 }
