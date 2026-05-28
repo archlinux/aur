@@ -1,10 +1,10 @@
 # Maintainer: Latif Sulistyo <latipun@aur.archlinux.org>
 
-# shellcheck disable=2034,2154
+# shellcheck disable=2034,2154,2164
 # shellcheck shell=bash
 
 pkgname=asciiquarium-transparent-git
-pkgver=r15.653cd99
+pkgver=r46.3862efe
 pkgrel=1
 pkgdesc="An aquarium/sea animation in ASCII art (with option of transparent background)"
 arch=("any")
@@ -18,11 +18,11 @@ source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/asciiquarium" || exit 1
+  cd "$srcdir/asciiquarium"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/asciiquarium" || exit 1
+  cd "$srcdir/asciiquarium"
   install -Dm755 "asciiquarium" "${pkgdir}/usr/bin/asciiquarium"
 }

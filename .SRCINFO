@@ -1,6 +1,6 @@
 pkgbase = asciiquarium-transparent-git
 	pkgdesc = An aquarium/sea animation in ASCII art (with option of transparent background)
-	pkgver = r15.653cd99
+	pkgver = r46.3862efe
 	pkgrel = 1
 	url = https://github.com/nothub/asciiquarium
 	arch = any
