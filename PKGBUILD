@@ -1,41 +1,66 @@
-# Maintainer: shilka <shilkazx at gmail dot com>
+# Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=paseo-bin
-pkgver=0.1.76
+pkgver=0.1.84
 pkgrel=1
-pkgdesc="Paseo, Orchestrate coding agents from your desk and your phone"
-arch=("x86_64")
+pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (Electron desktop app)"
+arch=('x86_64')
 url="https://paseo.sh"
-
-#source=("${pkgname}-${pkgver}-${pkgrel}-x86_64.deb::https://github.com/getpaseo/paseo/releases/download/v${pkgver}/Paseo-${pkgver}-amd64.deb")
+_github_url="https://github.com/getpaseo/paseo"
+license=('AGPL-3.0-only')
 depends=(
-    gtk3
-    libnotify
-    libnss_nis
-    libxss
-    libx11
-    libxtst
-    xdg-utils
-    at-spi2-core
-    util-linux-libs
-    libsecret
-    libappindicator
+    'alsa-lib'
+    'at-spi2-core'
+    'cairo'
+    'dbus'
+    'expat'
+    'gcc-libs'
+    'glib2'
+    'glibc'
+    'gtk3'
+    'hicolor-icon-theme'
+    'libcups'
+    'libx11'
+    'libxcb'
+    'libxcomposite'
+    'libxdamage'
+    'libxext'
+    'libxfixes'
+    'libxkbcommon'
+    'libxrandr'
+    'mesa'
+    'nspr'
+    'nss'
+    'pango'
 )
+provides=("paseo=${pkgver}")
+conflicts=('paseo' 'paseo-desktop-bin' 'paseo-appimage')
+options=('!strip' '!debug')
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${_github_url}/releases/download/v${pkgver}/Paseo-${pkgver}-x64.tar.gz"
+    'paseo.desktop'
+    'paseo.sh'
+)
+sha256sums=('e195309e552b12f265f0f8a33d6fec4cf081eceb252a22591c376039ecb9a815'
+            '6ae9c520668f639a22f17df7814548056ee46aa99a2886639405297a7b1ef212'
+            '6a4ea4fcd190e31e9a1be0497216c3a37703009b09fdf5e56415a393e65e007f')
 
-source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.deb::https://github.com/getpaseo/paseo/releases/download/v${pkgver}/Paseo-${pkgver}-amd64.deb")
-# source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.deb::https://data.tdx.com.cn/kylin/com.tdx.tdxcfv_${pkgver}_arm64.deb")
-
-sha256sums_x86_64=('8bd026b965009733ae04b1ba797757010b7078729970fadf8981dc86a859b956')
-#sha256sums_aarch64=('7ab7a0fc74aca6b750acb1439478b3477a7121eadd6a66a001cd4b81d2144793')
-
-prepare() {
-    cd ${srcdir}
-    tar -xvf data.tar.xz -C "${srcdir}"
-
-}
 package() {
-    cd $srcdir
-    cp -rf opt $pkgdir/
-    cp -rf usr $pkgdir/
+    local _src="${srcdir}/Paseo-${pkgver}-x64"
 
+    install -d "${pkgdir}/opt/Paseo"
+    cp -a "${_src}"/. "${pkgdir}/opt/Paseo/"
+
+    install -Dm755 "${srcdir}/paseo.sh" "${pkgdir}/usr/bin/paseo"
+
+    install -Dm644 "${srcdir}/paseo.desktop" \
+        "${pkgdir}/usr/share/applications/paseo.desktop"
+
+    install -Dm644 "${_src}/resources/app-dist/pwa-icon-192.png" \
+        "${pkgdir}/usr/share/icons/hicolor/192x192/apps/paseo.png"
+    install -Dm644 "${_src}/resources/app-dist/pwa-icon-512.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/paseo.png"
+
+    install -Dm644 "${_src}/LICENSE.electron.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
 }
