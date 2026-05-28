@@ -1,6 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 _pkgname=bttf
 pkgname=bttf
+# renovate: datasource=github-releases depName=BurntSushi/bttf
 pkgver=0.1.4
 pkgrel=1
 pkgdesc='command line tool for datetime arithmetic, parsing, formatting and more'
