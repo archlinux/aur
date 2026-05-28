@@ -99,12 +99,12 @@ sed -i 's/pnpm/bun/g' package.json
 sed -i 's/pnpm exec/bun x/g' scripts/*.mjs 2>/dev/null || true
 sed -i 's/pnpm exec/bun x/g' scripts/*.sh 2>/dev/null || true
 
-# Patch package.json workspaces for Bun
+# Patch package.json workspaces for Bun (excluding root '.' to prevent issues)
 echo "Configuring workspaces in package.json for Bun..."
 node -e '
     const fs = require("fs");
     const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
-    pkg.workspaces = [".", "ui", "packages/*", "extensions/*"];
+    pkg.workspaces = ["ui", "packages/*", "extensions/*"];
     fs.writeFileSync("package.json", JSON.stringify(pkg, null, 4));
 '
 
@@ -112,12 +112,12 @@ node -e '
 echo "Replacing workspace:* with file:../.. for openclaw in extensions..."
 find extensions -name package.json -exec sed -i 's/"openclaw": "workspace:\*"/"openclaw": "file:..\/.."/g' {} +
 
-# Remove bun.lock to force Bun to resolve workspaces from scratch
-echo "Removing pre-existing bun.lock to force workspace resolution..."
-rm -f bun.lock bun.lockb
+# Remove lockfiles to force Bun to resolve workspaces from scratch and avoid conflicts
+echo "Removing pre-existing lockfiles to force workspace resolution..."
+rm -f bun.lock bun.lockb pnpm-lock.yaml npm-shrinkwrap.json
 
-# 4. Run bun install
-bun install
+# 4. Run bun install with hoisted linker to correctly flatten workspace dependencies
+bun install --linker hoisted
 
 # 5. Complex source patches
 echo "Running complex source patches..."
