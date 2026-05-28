@@ -1,6 +1,6 @@
 # Note: After installation must me enabled service 'sudo systemctl enable --now vpnagentd.service'
 pkgname=cisco-secure-client
-pkgver=5.1.16.194
+pkgver=5.1.17.3394
 pkgrel=1
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 url='https://www.cisco.com/site/us/en/products/security/secure-client/index.html'
@@ -19,10 +19,10 @@ license=('custom')
 options=('!strip')
 
 source=(
-    "https://git.ufz.de/howto/linux/vpn-setup/-/raw/update_5.1.16.194/cisco-secure-client-linux64-${pkgver}-predeploy-deb-k9.tgz"
+    "https://archive.org/download/cisco-secure-client-linux64-${pkgver}/cisco-secure-client-linux64-${pkgver}-predeploy-deb-k9.tgz"
 )
 
-sha256sums=('9b5d6b731a88f84b0c50da7d4d8afc9da6d874fc54504701ef5a49b321d03aa3')
+sha256sums=('5c4cafb4694e64cbf041481f5df3d70389399926f8aa2a469d480c0555b58c2c')
 
 prepare() {
     cd "$srcdir"
