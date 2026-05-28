@@ -1,0 +1,11 @@
+--- Makefile.in	2025-11-20 16:57:44.691136925 +1100
++++ Makefile.in-new	2025-11-20 17:14:45.918175698 +1100
+@@ -86,7 +86,7 @@
+ # Note: if EXTRA_GNATMAKE_FLAGS contains a -%args argument, we add -margs at
+ # the end because further builder flags may need to be passed.
+ 
+-COMP_TOOLS_GNATMAKE_FLAGS := @STYLE_SWITCHES@ -gnatwa@WARNINGS_MODE@ -gnat12 -gnatec=${top_builddir}/compilers/config.adc ${BASE_GNATMAKE_FLAGS}
++COMP_TOOLS_GNATMAKE_FLAGS := @STYLE_SWITCHES@ -gnatwa@WARNINGS_MODE@ -gnat2022 -gnatec=${top_builddir}/compilers/config.adc ${BASE_GNATMAKE_FLAGS}
+ # Gnatmake flags for compilation tools mains, built without project files
+ 
+ # Extra flags for target
