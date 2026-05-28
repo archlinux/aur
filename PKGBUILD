@@ -1,6 +1,6 @@
 # Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname=canoe
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Stacking window manager for River with a classic look and feel written in Rust"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   https://github.com/roblillack/canoe/archive/refs/tags/v"$pkgver".tar.gz
 )
 sha256sums=('6033278424fe66af6e6397b4e1a2dfdd621693586a32a5320640a17dc459993d'
-            'e5d39d55f62644afafe3555b7b33884347ddb1f8a34195a3e5596a257a1bff3c')
+            '5fb414f73e1d8b83772e90ed6fd453e1429ebe2bceb78369228145a5a51af8f5')
 
 prepare(){
   cd "$srcdir/$pkgname-$pkgver"
