@@ -1,27 +1,30 @@
-# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Aseem Athale <athaleaseem@gmail.com>
 
 pkgname=python-weaviate-client
-_pkg=weaviate_client
-pkgver=4.20.3
+pkgver=4.21.2
 pkgrel=1
+_commit=5a4b983
 pkgdesc='A python native client for easy interaction with a Weaviate instance.'
 arch=('any')
 url='https://github.com/weaviate/weaviate-python-client'
 license=('BSD-3-Clause')
-depends=('python' 'python-httpx' 'python-validators' 'python-authlib' 'python-pydantic' 'python-grpcio' 'python-protobuf' 'python-deprecation')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-setuptools-scm')
-optdepends=('weaviate-bin')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz")
-b2sums=('191ce99820491c13699706172cf9f702fbbffd011d6bb8f869d7607730ff7500ce26e2a9d38c79cc297cc9238d359d427527df9ed59a0766762c959211160278')
+depends=('python-httpx' 'python-validators' 'python-authlib' 'python-pydantic' 'python-grpcio' 'python-protobuf' 'python-deprecation')
+optdepends=('weaviate')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-setuptools-scm')
+source=("$pkgname::git+$url#commit=${_commit}?signed")
+sha256sums=('581988a39763ee5876e9305943eaba86e2563e57470aeeee9aa767b03c6da2f7')
+validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 
 build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
+    cd "$pkgname"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+    cd "$pkgname"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+    install -d "$pkgdir/usr/share/licenses/$pkgname/"
+    ln -s "$_site/weaviate_client-$pkgver.dist-info/licenses/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
