@@ -8,6 +8,8 @@ arch=('x86_64')
 url='https://github.com/junhoyeo/tokscale'
 license=('MIT')
 depends=('glibc' 'gcc-libs')
+provides=('tokscale')
+conflicts=('tokscale' 'tokscale-git')
 source=("tokscale-v$pkgver-linux-x64-gnu.tgz::https://registry.npmjs.org/@tokscale/cli-linux-x64-gnu/-/cli-linux-x64-gnu-$pkgver.tgz"
          "tokscale-LICENSE::https://raw.githubusercontent.com/junhoyeo/tokscale/v$pkgver/LICENSE")
 b2sums=('28da44e5cf1c91051165f8a56c94e54e416061a2485e4bc82552ad2d1913fa33321bccb54038a9cedb46ee4c4fbf5bdf298db46ce8e85a9d90b5c948b1d9b603'
