@@ -2,7 +2,7 @@
 pkgname=zejtron-bin
 pkgver=2.4.0
 pkgrel=1
-pkgdesc="Linux terminal toolkit for tracing paths, ports, env, holders, reasons, diagnostics, file changes, services, and process trees"
+pkgdesc="Unified Linux introspection toolkit for paths, ports, processes, files, services, and diagnostics"
 arch=('x86_64' 'aarch64')
 url="https://github.com/oxyzenQ/zejtron"
 license=('MIT')
