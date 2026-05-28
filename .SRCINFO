@@ -1,6 +1,6 @@
 pkgbase = got-vcs
 	pkgdesc = Game of Trees (Got) is a version control system which prioritizes ease of use and simplicity over flexibility.
-	pkgver = 0.125
+	pkgver = 0.126
 	pkgrel = 1
 	url = https://gameoftrees.org/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = got-vcs
 	makedepends = bc
 	depends = libbsd
 	depends = libretls
-	source = https://gameoftrees.org/releases/portable/got-portable-0.125.tar.gz
-	md5sums = e5bd5e09959c8b5b1fe963cb2b727567
+	source = https://gameoftrees.org/releases/portable/got-portable-0.126.tar.gz
+	md5sums = 961caeab3f0374d36bab25df51535586
 
 pkgname = got-vcs
