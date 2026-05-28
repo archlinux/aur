@@ -16,6 +16,6 @@ md5sums=('7830cd4516382da3006ff1dab5c01295')
 package ()
 {
     cd srb2bld-${pkgver//_/-}
-    make install PREFIX=/usr
+    sudo make install PREFIX=/usr
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
