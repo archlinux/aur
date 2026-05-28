@@ -1,8 +1,8 @@
 # Maintainer: rezky_nightky <rezky2399@proton.me>
 pkgname=zejtron-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="Linux terminal toolkit for tracing paths, ports, env, recent files, services, and process trees"
+pkgdesc="Linux terminal toolkit for tracing paths, ports, env, holders, recent files, services, and process trees"
 arch=('x86_64' 'aarch64')
 url="https://github.com/oxyzenQ/zejtron"
 license=('MIT')
