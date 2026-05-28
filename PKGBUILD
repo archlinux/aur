@@ -1,7 +1,7 @@
 # Maintainer: Lck0427 <lck0427 at hotmail dot com>
 # Contributor: Lck0427 <lck0427 at hotmail dot com>
 pkgname=comfyui-desktop-2-beta
-pkgver=0.6.9
+pkgver=0.6.11
 pkgrel=1
 pkgdesc="ComfyUI Desktop 2.0 – Electron desktop app for ComfyUI"
 arch=('x86_64' 'aarch64')
@@ -54,7 +54,7 @@ source=(
   "${pkgname}::git+https://github.com/Comfy-Org/ComfyUI-Desktop-2.0-Beta#tag=v${pkgver}"
   "comfyui-desktop-2.desktop"
 )
-sha256sums=('8288bc72b4d1bc62bce4330c76c50b1f49b2c9344df9e562ba5861f719de3632'
+sha256sums=('af1c548ecd905b367eca44f5e4ced85472a639752fe1abba875df44fc9b2b8d8'
             'b818d04a3e4943d5f74fc12d14cf8b9d7a1496ccf6aa3268af23bfa88e7e34e6')
 build() {
   cd "${srcdir}/${pkgname}"
