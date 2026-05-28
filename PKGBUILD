@@ -16,19 +16,22 @@ depends=(
 options=('!strip')
 install="${pkgname}.install"
 
-pkgver=0.4.143
+pkgver=0.4.265
 pkgrel=1
 
 # NOTE: aarch64 releases use "arm64" in the asset filename, not "aarch64".
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v${pkgver}/deadsync-v${pkgver}-x86_64-linux.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v${pkgver}/deadsync-v${pkgver}-arm64-linux.tar.gz")
-sha256sums_x86_64=('cdbf8760bee5dd76964547b3b91230b5cddccbc073384a0700d9858c306011fa')
-sha256sums_aarch64=('4461ba0787b1767d5c07dd18299ed6fc9e0ef779f2cf7304a8388461c3d0d7a8')
+sha256sums_x86_64=('ff7016c090e462dc218ad0dcfa31ee8ae051d2fcafb569da35f390660b505187')
+sha256sums_aarch64=('bc5a19a11f659317097f5899e202477749d58dd713d8f38452b9f1b96f533de7')
 
 package() {
+    # The release tarball always extracts to a single "deadsync/" subdirectory.
     local _src="${srcdir}/deadsync"
 
-    # portable.txt tells the game to resolve data paths relative to its own directory
+    # portable.txt tells the game to resolve data paths relative to its own
+    # directory instead of ~/.local/share/deadsync. Must not ship in an
+    # installed package where user data lives in the home directory.
     rm -f "${_src}/portable.txt"
 
     install -dm755 "${pkgdir}/opt/deadsync"
@@ -39,6 +42,7 @@ package() {
 #!/bin/sh
 exec /opt/deadsync/deadsync "$@"
 EOF
+
 
     install -Dm644 /dev/stdin \
         "${pkgdir}/usr/share/applications/deadsync.desktop" <<'EOF'
@@ -52,11 +56,15 @@ Icon=deadsync
 Categories=Game;
 Keywords=ITG;StepMania;rhythm;dance;
 StartupNotify=true
-Actions=OpenDataDir;
+Actions=OpenConfigDir;OpenSongsDir;
 
-[Desktop Action OpenDataDir]
-Name=Open Data Directory
-Exec=xdg-open "$XDG_DATA_HOME/deadsync"
+[Desktop Action OpenConfigDir]
+Name=Open Config Directory
+Exec=sh -c 'DS="${XDG_DATA_HOME:-$HOME/.local/share}/deadsync"; mkdir -p "$DS" && xdg-open "$DS"'
+
+[Desktop Action OpenSongsDir]
+Name=Open Songs Directory
+Exec=sh -c 'DS="${XDG_DATA_HOME:-$HOME/.local/share}/deadsync/songs"; mkdir -p "$DS" && xdg-open "$DS"'
 EOF
 
     local _icondir="${_src}/assets/graphics/icon"
