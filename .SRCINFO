@@ -1,14 +1,14 @@
 pkgbase = anythingllm-web
 	pkgdesc = All-in-one AI application for RAG, AI agents, and full LLM support
 	pkgver = 1.13.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Mintplex-Labs/anything-llm
 	install = anythingllm.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = yarn-berry
-	depends = nodejs
+	depends = nodejs-lts-krypton
 	depends = npm
 	depends = chromium
 	options = !strip
