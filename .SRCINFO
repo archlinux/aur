@@ -1,0 +1,15 @@
+pkgbase = agent-book-translate
+	pkgdesc = A powerful LLM-driven agentic EPUB book translator with robust progress monitoring and recovery
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Xuepoo/agent-book-translate
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = sqlite
+	depends = openssl
+	source = agent-book-translate-0.1.0.tar.gz::https://github.com/Xuepoo/agent-book-translate/archive/v0.1.0.tar.gz
+	sha256sums = 91e266ea119343206b14c7457782fafb65b98f2ddfcb6b2633eaee30c4fc4457
+
+pkgname = agent-book-translate
