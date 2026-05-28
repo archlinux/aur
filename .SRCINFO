@@ -13,7 +13,6 @@ pkgbase = spectools
 	depends = pango
 	depends = libusb
 	depends = libusb-compat
-	optdepends = libtinfo: ncurses terminal graphics support
 	source = https://www.kismetwireless.net/code/spectools-2016-01-R1.tar.xz
 	source = spectool_gtk.desktop
 	sha256sums = 8d70daaf3b4b71196ca63bbd5df0ef14b82c3b496f63b5cfa434fa637dc08d57
