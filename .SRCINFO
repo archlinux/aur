@@ -1,0 +1,19 @@
+pkgbase = tiny-ping-bin
+	pkgdesc = Small Asynchronous ICMP library and CLI
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/Fierthraix/tiny-ping
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = tiny-ping
+	conflicts = tiny-ping
+	conflicts = tiny-ping-git
+	source_x86_64 = https://github.com/Fierthraix/tiny-ping/releases/download/v0.7.1/tiny-ping-0.7.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 20ccd20a443102443fbd85c592174fa6a1b5f8bdf856b3cec928a0c031bd5f9b
+	source_aarch64 = https://github.com/Fierthraix/tiny-ping/releases/download/v0.7.1/tiny-ping-0.7.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ecabe246737d54d05c78e90c363273fe4232bdcc91fcc202c419b74772d485a1
+
+pkgname = tiny-ping-bin
