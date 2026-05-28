@@ -1,14 +1,14 @@
 pkgbase = nodejs-npm-upgrade
 	pkgdesc = CLI utility to update outdated NPM dependencies with changelogs inspection
-	pkgver = 3.1.2
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/th0r/npm-upgrade
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs>=10.20.0
-	noextract = npm-upgrade-3.1.2.tgz
-	source = https://registry.npmjs.org/npm-upgrade/-/npm-upgrade-3.1.2.tgz
-	sha256sums = c9b48069d6d31ed581e51e360a5eefde3739329f703c945ea220c47b73e73bac
+	noextract = npm-upgrade-3.3.0.tgz
+	source = https://registry.npmjs.org/npm-upgrade/-/npm-upgrade-3.3.0.tgz
+	sha256sums = c0a5ae4c54ffbb4ed12a0033d02900831886417c8220d01adeb3d15e1ec91063
 
 pkgname = nodejs-npm-upgrade
