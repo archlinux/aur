@@ -2,10 +2,10 @@
 pkgname=js-pm-dummy
 pkgver=1.0
 pkgrel=1
-pkgdesc="Dummy package providing npm, yarn, bun and pnpm"
+pkgdesc="Dummy package providing npm, yarn and pnpm. No bun as bun is runtime and pm."
 arch=('any')
-provides=('npm' 'yarn' 'bun' 'pnpm')
-conflicts=('npm' 'yarn' 'bun' 'pnpm')
+provides=('npm' 'yarn' 'pnpm')
+conflicts=('npm' 'yarn' 'pnpm')
 
 package() {
 	true
