@@ -1,7 +1,7 @@
 #! Maintainer: artist for Artix Linux
 
 pkgname=helium-browser
-pkgver=0.12.0.2
+pkgver=0.12.5.1
 _hlmver="${pkgver%.*}"
 pkgrel=1
 pkgdesc="Private, fast, and honest web browser based on - Ungoogled - Chromium"
@@ -24,8 +24,8 @@ source=("${url}/archive/refs/tags/${_hlmver}.tar.gz"
         "${url}-linux/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.desktop")
 
-sha256sums=('f5b080d02c7b31645ddd00faee3ef4dc7488b4d57f84701802b7c055e6b2250e'
-            '0c97352ae471e83c491604f1f56787221d8b20887ae7e6ce2e58e87bff114488'
+sha256sums=('f26695155a890e6509df19fa385f4d1035e463485bf44c5460179f147e2da62e'
+            '3714c600321f4e6964816fb8702004285041925de78f0adcc9e2c1c8684f04ed'
             '934b84f8f55e8461c3e47651c632d5e8e2d23ec1d71113dd7384d845ffa16a27')
 
 prepare() {
