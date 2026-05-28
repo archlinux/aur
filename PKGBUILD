@@ -3,7 +3,7 @@
 
 pkgname=waybar-switch
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical waybar profile switcher with quickshell selector"
 arch=('x86_64')
 url="https://github.com/markbus-ai/waybar-switch"
