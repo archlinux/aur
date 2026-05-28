@@ -1,5 +1,5 @@
 pkgname=tapauth
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Local smartphone-based authentication framework engine"
 arch=('x86_64' 'aarch64')
@@ -7,8 +7,9 @@ url="https://github.com/lolle2000la/tapauth"
 license=('Apache-2.0')
 depends=('dbus' 'pam')
 makedepends=('cargo' 'rust' 'protobuf')
+backup=('etc/tapauth/config.toml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lolle2000la/tapauth/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('71917cf34caa1712b233917450be9a477b0a5923aa7e89c930e2d3e21ae171fd')
+sha256sums=('a9eb32d15491e308f1fc928266606eea057e306be83913c2b99894e79dc47a4d')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -25,6 +26,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
+  install -dm0755 "$pkgdir/etc/tapauth"
   install -Dm0755 target/release/tapauthd "$pkgdir/usr/bin/tapauthd"
   install -Dm0755 target/release/tapauth-config "$pkgdir/usr/bin/tapauth-config"
   install -Dm0755 target/release/libclient_pam.so "$pkgdir/usr/lib/security/pam_tapauth.so"
