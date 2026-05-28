@@ -1,7 +1,7 @@
 # Maintainer: dougEfresh <dchimento@gmail.com>
 pkgname=pi-ext-cursor-sdk
 pkgver=0.1.20
-pkgrel=1
+pkgrel=2
 pkgdesc='pi provider extension backed by Cursor SDK local agents'
 arch=('any')
 url='https://github.com/fitchmultz/pi-cursor-sdk'
@@ -9,6 +9,7 @@ license=('MIT')
 depends=(
   'nodejs'
 )
+optdepends=('pi-coding-agent' 'pi-coding-agent-git')
 makedepends=(
   'npm'
   'python'
