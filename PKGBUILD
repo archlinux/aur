@@ -1,7 +1,7 @@
 # Maintainer: rnestler
 
 pkgname=git-delete-merged-branches
-pkgver=7.5.1
+pkgver=7.6.0
 pkgrel=1
 pkgdesc="Command-line tool to delete merged Git branches."
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-parameterized')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hartwork/$pkgname/archive/$pkgver.tar.gz")
 
-sha512sums=('5d7355b474536169476e9cb9a67df0c50dbd934c54aa097ee1a10377596363821bcc030d73289ce5d8ab7d9b1494329c1340339626de719be2631ee67bb31db6')
+sha512sums=('b1253dca2af074d87fa550b65a091e6e474c75c941b50c6371b8382189f6d860cf9904fa399494e3460f62a57bbfd0627f621b9bad82e2c8ba8c3dd520921aa0')
 
 build() {
     cd "$srcdir"/$pkgname-$pkgver
