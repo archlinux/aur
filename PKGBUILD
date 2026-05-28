@@ -2,7 +2,7 @@
 
 pkgname=binauralplayer
 _pkgname=BinauralPlayer
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='BinauralPlayer combines traditional media playback with brainwave audio generation'
 arch=('i686' 'x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt6-base' 'qt6-multimedia' 'qt6-svg')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'vulkan-headers')
 provides=('binauralplayer')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b48779240cf2710a2680bceddee58754ff1979b83ca0ae7f361bcf3c5b75bf69')
+sha256sums=('bbc300d072ae02062048675294d777162f3b6f0cc5476cd01462c881f3cac8e9')
 
 #prepare() {
 #}
@@ -34,7 +34,7 @@ package() {
   echo ""
   echo "Please note:" 
   echo "BinauralPlayer requires PulseAudio for sound output."
-  echo "If you don't want to use PulseAudio, you can always use a PulseAudio emulation (such as apulse) without ever running PulseAudio server"
+  echo "If you don't want to use PulseAudio, you can always use a PulseAudio emulation (such as apulse) without ever running a PulseAudio server"
   echo "(this is why PulseAudio wasn't specified as a dependency)."
   echo ""
 }
