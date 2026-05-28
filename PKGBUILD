@@ -1,7 +1,7 @@
 # Maintainer: Mikhail <efklid@gmail.com>
 # shellcheck disable=SC2034,SC2154
 pkgname=refract
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="GUI tool for ranking pacman mirrors on Arch Linux and Arch-based distributions"
 arch=('any')
@@ -15,7 +15,6 @@ depends=(
     'polkit'
 )
 optdepends=(
-    'rsync: speed testing for rsync mirrors'
     'geoip: country auto-detection via geoiplookup'
 )
 makedepends=(
@@ -24,7 +23,7 @@ makedepends=(
     'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Labaman/refract/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8aa596e61e185f4644b245345a86850941e30b6a576c90091f8a8ecb70b17665')
+sha256sums=('b0b6c9a115ef5ce542ff80a67a8dbbe8aa809afb77652c92996e83ed5dddec6b')
 
 build() {
     cd "$pkgname-$pkgver" || return 1
