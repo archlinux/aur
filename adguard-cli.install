@@ -7,4 +7,5 @@ post_install() {
     echo "  adguard-cli cert                     - to install the certificate"
     echo "  adguard-cli start                    - to start AdGuard proxy server"
     echo "  You can also configure systemd service to run adguard-cli automatically, please refer to the documentation: https://adguard.com/kb/adguard-for-linux/solving-problems/cli-auto-start/"
+    echo "  Since version 1.14 you can connect adguard-cli to your browser extension via 'adguard-cli install-browser-integration', please refer to the documentation: https://adguard.com/kb/adguard-for-linux/settings/#adguard-browser-assistant"
 }
