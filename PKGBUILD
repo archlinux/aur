@@ -1,6 +1,6 @@
 # Maintainer: Henrik Bernhardt <57109108+Henriklmao@users.noreply.github.com>
 pkgname=display-tui-git
-pkgver=0.9.0.r36
+pkgver=r1.g
 pkgrel=1
 pkgdesc="Minimalistic hyprland monitor configuration TUI."
 arch=('x86_64')
