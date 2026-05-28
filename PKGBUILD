@@ -11,8 +11,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('8f91ca287652d2c3c98ad5f6b20aae28be7bae5bfd64bb23ff1eaee4b279444e')
-sha256sums_aarch64=('677c71868dfbf0bb7df96385a9477ecc27102dcc4cc91a9adcdeb96df0ba9a5b')
+sha256sums_x86_64=('e3b5ee3649300fec9ca38838cf974c446711cf979264711af6a73b4c0eb7a45d')
+sha256sums_aarch64=('333cbf394a1dbf9ebfddf32af24d254560b29b3fe391eafbf084516a7dd4f682')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}-${pkgver}-${CARCH}-unknown-linux-gnu/r-matrix" "${pkgdir}/usr/bin/${_pkgname}"
