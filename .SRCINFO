@@ -1,6 +1,6 @@
-pkgbase = debhelper-python
+pkgbase = dh-python
 	pkgdesc = debhelper scripts for Python 3: py3versions, python3.pm
-	pkgver = 3.13.9
+	pkgver = 7.20260309
 	pkgrel = 0
 	url = http://packages.debian.org/sid/python3
 	arch = any
@@ -12,6 +12,8 @@ pkgbase = debhelper-python
 	provides = debhelper-python
 	provides = dh-python
 	provides = dh-sequence-python3
+	conflicts = debhelper-python
+	replaces = debhelper-python
 	source = https://deb.debian.org/debian/pool/main/p/python3-defaults/python3-defaults_3.13.9-3.tar.gz
 	source = https://deb.debian.org/debian/pool/main/d/dh-python/dh-python_7.20260309.tar.xz
 	source = py3versions.patch
@@ -19,4 +21,4 @@ pkgbase = debhelper-python
 	b2sums = e4ae5f9413ce9cad47c64a38242b163f7796671556926adac59438c0fe05ab2ef7aadddb33785ffd4ad46a134577fd27f3bbbdfa99d87eb2348d6e4268f29fdf
 	b2sums = 04ca5e93e07c4eb5f6ac02e758a6b3f078d844982a945a6d2ecf811ca315efedb4e12c3238edb56dacfcc6e480adf9c30b4f472545f1934fd4cd92bc6cc65ef2
 
-pkgname = debhelper-python
+pkgname = dh-python
