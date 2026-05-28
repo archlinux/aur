@@ -1,7 +1,7 @@
 pkgbase = linuxqq-nt
 	pkgdesc = New Linux QQ based on Electron
-	pkgver = 3.2.28_260429
-	pkgrel = 2
+	pkgver = 3.2.29_260528
+	pkgrel = 1
 	epoch = 5
 	url = https://im.qq.com/linuxqq
 	install = linuxqq-nt.install
@@ -16,18 +16,18 @@ pkgbase = linuxqq-nt
 	depends = pulse-native-provider
 	optdepends = libappindicator-gtk3: System tray support
 	optdepends = gjs: Screen sharing support
-	provides = linuxqq=3.2.28_260429
+	provides = linuxqq=3.2.29_260528
 	conflicts = linuxqq-nt-bwrap
 	conflicts = linuxqq
 	options = !strip
 	options = !debug
 	source = linuxqq.sh
 	sha512sums = 240c3ada9f96e80d4c8f927279d4457c43956a07f381bf712bff321651e90e6d856c69af2a6c6d2a86c63769fdf8d37857f82da4de95d13cbd8045b6850daa87
-	source_x86_64 = https://dldir1v6.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.28_260429_amd64_01.deb
-	sha512sums_x86_64 = 0f91db286b25915adfd57dbd66365f11f4e8d0614a5ce4eef659ee757e3c6464cefa8b290a1f74fa3c875e8c03d94a8fa873e88fe3b1b26c59e02fec5a8daeab
-	source_aarch64 = https://dldir1v6.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.28_260429_arm64_01.deb
-	sha512sums_aarch64 = 5b5e776ea60bba750bb6ef6426e7089d54719056ab9acec85415c28238123caf23074a3e57e8354a64af75fb58ed4c3be56b6f1d3fef84bc0268489466dbc7b2
-	source_loong64 = https://dldir1v6.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.28_260429_loongarch64_01.deb
-	sha512sums_loong64 = e0a3ac489b6ac681184df23f3127a34bf776b92a0ffa4739213a754fbf66c32893a1799d823c6e7f57743d895a9056a5ffb85bac5ee5b528a9af3d71b1755a64
+	source_x86_64 = https://qqdl.gtimg.cn/qqfile/QQNT/9.9.31/release/00e6a3e7/QQ_3.2.29_260528_amd64_01.deb
+	sha512sums_x86_64 = 3e214621b34b5eb3706451c94d19d4a09a59ad6b415e9a719db8d635bcb0900445cd6d468ffdb293b9b2c032e6b551d8d8090b390979ce782db5de30791f467d
+	source_aarch64 = https://qqdl.gtimg.cn/qqfile/QQNT/9.9.31/release/00e6a3e7/QQ_3.2.29_260528_arm64_01.deb
+	sha512sums_aarch64 = a0e7773b111ffb76f403fb322d4bd7e865b5b10ce70b2b3163b7db42218d960d212a585fe2ac9b09f4dcdeb783013d29fd9e2d534bff4c5414e63bf49e789648
+	source_loong64 = https://qqdl.gtimg.cn/qqfile/QQNT/9.9.31/release/00e6a3e7/QQ_3.2.29_260528_loongarch64_01.deb
+	sha512sums_loong64 = 0b15317df8cbd7f600b08b3fff88edf88bd1cd52908790366ba52a36b1bb27326b5f88e7bf0a4d910b79077ba96c6a3b72f3518c7952b790b28554fac79b0408
 
 pkgname = linuxqq-nt
