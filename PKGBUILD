@@ -18,9 +18,9 @@ _base="https://github.com/rustyhorde/barto/releases/download/v${pkgver}"
 source=("${_base}/dist-barto-cli.tar.gz")
 source_x86_64=("barto-cli-x86_64::${_base}/barto-cli-x86_64-unknown-linux-musl")
 source_aarch64=("barto-cli-aarch64::${_base}/barto-cli-aarch64-unknown-linux-musl")
-sha256sums=('4c05db5279a5a7210e06f85541124c74bcaddd4dff998ae1c31e5f938d840b50')
-sha256sums_x86_64=('bcd051a6f62ea588b31b438e4948c4e712cf37221dced73ee9192f4b85f65705')
-sha256sums_aarch64=('fe46568df0d418e0a76a29452954317369a0bd77e02cb656425301d2c88f106a')
+sha256sums=('5a214757b0ff2a3b4612e98a7978cf174c3ed62e1afa8e3f36c99674cd5a2244')
+sha256sums_x86_64=('6d12abef68e0653807235c702509c728a49e049e82824502a69d20e7bbeb798e')
+sha256sums_aarch64=('e42a01a7820ce11ce7f9ba29c45b5953de7c16bec3af91c218396525989d26f0')
 
 package() {
     install -Dm755 "barto-cli-${CARCH}" "$pkgdir/usr/bin/barto-cli"
