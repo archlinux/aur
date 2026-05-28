@@ -1,5 +1,5 @@
---- a/install.js	2026-01-29 06:04:11.000000000 +0100
-+++ b/install.js	2026-05-15 23:14:09.489605003 +0200
+--- a/install.js
++++ b/install.js
 @@ -3,6 +3,10 @@
  const fs = require('fs');
  const path = require('path');
@@ -11,7 +11,7 @@
  let share = process.argv.filter(a => a.startsWith('--custom-dir='))
    .map(a => a.split('=')[1])[0] || path.resolve(process.env.HOME, '.config');
  if (share[0] === '~') {
-@@ -41,7 +45,7 @@
+@@ -41,11 +45,11 @@
    one();
  }
 
@@ -20,6 +20,11 @@
  const name = 'com.add0n.node';
  const ids = require('./config.js').ids;
 
+-function manifest(root, type, executable = path.join(dir, 'run.sh')) {
++function manifest(root, type, executable = path.join(share, 'com.add0n.node', 'run.sh')) {
+   console.log(' -> Creating a directory at', root);
+   return new Promise((resolve, reject) => {
+     exists(root, e => {
 @@ -110,59 +114,29 @@
  async function chrome() {
    if (ids.chrome.length) {
