@@ -1,8 +1,8 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=cascadia
-pkgver=1.5.0
-pkgrel=3
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Go cascadia package command line CSS selector"
 arch=('x86_64' 'aarch64')
 url="https://github.com/suntong/cascadia"
