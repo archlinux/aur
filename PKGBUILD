@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=agent-cli
-pkgver=0.95.1
+pkgver=0.95.5
 pkgrel=1
 pkgdesc="A suite of local AI-powered command-line tools"
 
@@ -23,7 +23,7 @@ depends=('bash' 'python' 'uvicorn' 'python-onnxruntime' 'python-yaml' 'python-ri
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f903d008d9b9ca83ac6a09b91a04740c4c06b65b081d3645aab7c6c816009975')
+sha256sums=('548bb3f6f1ab0c41f81367c173db43005ee173439df2dc102811f2bbf4a7bc8e')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
