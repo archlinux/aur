@@ -1,7 +1,7 @@
 pkgbase = unixbench
 	pkgdesc = UnixBench is a simple benchmark whose purpose is to provide a basic indicator of the performance of a Unix-like system.
-	pkgver = 6.0.0
-	pkgrel = 3
+	pkgver = 6.0.1
+	pkgrel = 1
 	url = https://github.com/kdlucas/byte-unixbench
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = unixbench
 	arch = armv7h
 	license = GPL
 	depends = perl
-	source = unixbench-6.0.0.tar.gz::https://github.com/kdlucas/byte-unixbench/archive/refs/tags/v6.0.0.tar.gz
+	source = unixbench-6.0.1.tar.gz::https://github.com/kdlucas/byte-unixbench/archive/refs/tags/v6.0.1.tar.gz
 	source = no-make.patch
 	source = ubench
-	sha256sums = c151d28b6f4f3f40faad19e877c1ab06fbd4b3da006ccfa26b36200c741fc3ba
+	sha256sums = e52257ae9ba6294a0c5804d802745294cf536e8c8d9383aabff7a8b039e31faa
 	sha256sums = a1cb8aba9d0a3bbf4215f8b56efbc1aed2a0d0a592d6955275d15be49a8122e4
 	sha256sums = 8dda604fbb8cbec355c220965b0a014f8efcee1218d2df763aad6d4f9d8a8a21
 
