@@ -13,6 +13,9 @@ post_install() {
     echo "    Optional: TLS & Security"
     echo "      To enable TLS, set [actix.tls] in bartos.toml with cert_file_path and key_file_path."
     echo "      To require mutual TLS (client certs), also set client_ca_cert."
+    echo "      To enable HMAC-SHA256 message authentication, set hmac_key (top-level):"
+    echo "        openssl rand -base64 32   # generate key — use the same value in bartoc.toml"
+    echo "      To sign messages with Ed25519, set signing_key (top-level)."
     echo "      See: https://github.com/rustyhorde/barto#tls--certificate-pinning"
     echo ""
 }
