@@ -1,10 +1,10 @@
 # Maintainer: Eisuke Kawashima <e DOT kawaschima+arch AT gmail DOT com>
-# Maintainer: Eric Berquist <eric dot berquist at gmail dot com>
+# Contributor: Eric Berquist <eric dot berquist at gmail dot com>
 
 _name='QCElemental'
 _pkgname="${_name,,}"
 pkgname="python-${_pkgname}"
-pkgver=0.50.1
+pkgver=0.50.2
 pkgrel=1
 pkgdesc='Periodic table, physical constants, and molecule parsing for quantum chemistry'
 arch=('any')
