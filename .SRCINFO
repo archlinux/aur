@@ -1,7 +1,7 @@
 pkgbase = mangobar-git
 	pkgdesc = A simple bar for mango wayland compositor
 	pkgver = r2.667745d
-	pkgrel = 1
+	pkgrel = 1.2
 	url = https://github.com/mangowm/mangobar
 	arch = x86_64
 	license = GPL-3.0
@@ -13,6 +13,7 @@ pkgbase = mangobar-git
 	depends = pixman
 	depends = cjson
 	depends = wayland
+	depends = tllist
 	provides = mangobar
 	conflicts = mangobar
 	options = !strip

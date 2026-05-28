@@ -2,7 +2,7 @@
 
 pkgname=mangobar-git
 pkgver=r2.667745d
-pkgrel=1
+pkgrel=1.2
 pkgdesc="A simple bar for mango wayland compositor"
 url="https://github.com/mangowm/mangobar"
 arch=("x86_64")
@@ -12,6 +12,7 @@ depends=(
   pixman
   cjson
   wayland
+  tllist
 )
 
 makedepends=(
