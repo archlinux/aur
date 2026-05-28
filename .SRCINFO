@@ -1,0 +1,32 @@
+pkgbase = ballview
+	pkgdesc = A free molecular modeling and molecular graphics tool with OpenGL visualization, molecular mechanics, and electrostatic calculations
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://www.ballview.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = boost
+	makedepends = qt6-base
+	makedepends = flex
+	makedepends = bison
+	makedepends = ccache
+	makedepends = python
+	depends = qt6-base
+	depends = qt6-webengine
+	depends = boost-libs
+	depends = eigen
+	depends = glew
+	depends = tbb
+	depends = openbabel
+	depends = curl
+	depends = mpg123
+	depends = mesa
+	depends = glu
+	optdepends = python: for Python bindings (if manually enabled)
+	source = git+https://github.com/BALL-Project/ball.git#tag=v2.1.0
+	sha256sums = SKIP
+
+pkgname = ballview
