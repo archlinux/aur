@@ -1,0 +1,122 @@
+From 0017000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: distsystem <dev@dist.systems>
+Date: Wed, 28 May 2026 09:40:00 +0800
+Subject: [PATCH] ASoC: rt721-sdca: enable jack-detect IRQ on AMD ACP70
+
+On AMD ACP70 platforms (e.g. ASUS ProArt PX13 HN7306EA), the rt721-sdca
+codec never delivers SDW ALERTs on headphone plug events: the kernel's
+interrupt_callback is never invoked, the ALSA 'Headphone Jack' /
+'Headset Mic Jack' kctls never flip, and userspace cannot route audio
+based on jack state. Intel SoundWire masters work around the same shape
+of bug via HDaudio WAKEEN + intel_shim_check_wake -> link re-enumeration;
+AMD's amd_manager has no equivalent path and depends on the codec
+advertising an SDW ALERT during normal PING polling.
+
+For an SDCA codec to ALERT from a jack event, three conditions must hold:
+
+  1. prop->scp_int1_mask must allow port-0 (DP0) activity to bubble up.
+     The existing driver only enables BUS_CLASH and PARITY; this adds
+     IMPL_DEF (bit 2) and PORT0_3 (bit 3-6 mask) so the SCP layer can
+     reflect SDCA cascade and port-0 events into the slave's ALERT
+     status. Note: on the actual rt721 silicon the PORT0_3 mask bits
+     read back as zero (the codec implements them as RO), but
+     IMPL_DEF (bit 2) is honoured and that is what propagates the
+     SDCA cascade indicator to the host. Leaving PORT0_3 in the mask
+     is harmless documentation of intent.
+
+  2. DP0_INTMASK must keep SDW_DP0_SDCA_CASCADE (bit 3) requested.
+     The MIPI SoundWire spec describes this bit as effectively
+     read-only -- cascade status is the OR of pending SCP_SDCA_INT*
+     bits, see commit b3a6809e623c ("soundwire: bus: don't clear
+     SDCA_CASCADE bit"). However, on AMD ACP70 the act of issuing
+     this update_no_pm transaction (which is rejected at the codec
+     as IGNORED) appears to be required as a side-effect: without
+     it the codec never advertises ALERT during PING. With the
+     write present in both rt721_sdca_jack_init (initial set_jack
+     path) and rt721_sdca_update_status (reattach/resume path),
+     headphone plug events fire interrupt_callback reliably.
+     This was determined empirically: a "spec-pure" variant that
+     dropped these writes built and loaded fine but never produced
+     a plug interrupt on HN7306EAC.
+
+  3. The codec's SCP_SDCA_INTMASK1/2 must enable SDCA_0 and SDCA_8.
+     The existing driver already does this in rt721_sdca_jack_init()
+     and in rt721_sdca_update_status() on reattach.
+
+Also allocate prop->dp0_prop locally if mipi_disco did not, mirroring
+9452422fc321 ("ASoC: rt711-sdca: add DP0 support") -- so AMD ACP70
+platforms whose firmware omits the optional MIPI DP0 subnode don't
+short-circuit DP0_INTMASK programming in sdw_initialize_slave().
+
+Observed on HN7306EAC, before this fix, with no headphone connected:
+  DP0_INT       0x00 = 0x08   (SDCA_CASCADE bit set internally)
+  DP0_INTMASK   0x01 = 0x04   (BRA_FAILURE only -- bit 3 masked)
+  SCP_INT1      0x40 = 0x0c   (IMPL_DEF + port-0 activity)
+  SCP_INTMASK1  0x41 = 0x03   (BUS_CLASH + PARITY only)
+  Plug -> Headphone Jack kctl stays 'false'.
+
+After this fix:
+  SCP_INTMASK1  0x41 = 0x07   (+ IMPL_DEF)
+  Plug -> interrupt_callback fires -> 'Headphone Jack' flips true.
+
+Note: this only restores kernel-level jack signalling. The userspace
+auto-routing of default sink between Speaker and Headphones is tracked
+separately at https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/5191
+-- the sof-soundwire UCM creates one sink per output, which does not
+fit PipeWire's traditional jack-driven port-switch model.
+
+Signed-off-by: distsystem <dev@dist.systems>
+---
+ sound/soc/codecs/rt721-sdca-sdw.c | 13 ++++++++++++-
+ sound/soc/codecs/rt721-sdca.c     |  2 ++
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/sound/soc/codecs/rt721-sdca-sdw.c b/sound/soc/codecs/rt721-sdca-sdw.c
+--- a/sound/soc/codecs/rt721-sdca-sdw.c	2026-05-28 09:41:16.758934623 +0800
++++ b/sound/soc/codecs/rt721-sdca-sdw.c	2026-05-28 09:41:37.496946202 +0800
+@@ -208,6 +208,8 @@
+ 				SDW_SCP_SDCA_INTMASK_SDCA_0);
+ 			sdw_write_no_pm(rt721->slave, SDW_SCP_SDCA_INTMASK2,
+ 				SDW_SCP_SDCA_INTMASK_SDCA_8);
++			sdw_update_no_pm(rt721->slave, SDW_DP0_INTMASK,
++				SDW_DP0_SDCA_CASCADE, SDW_DP0_SDCA_CASCADE);
+ 		}
+ 	}
+ 
+@@ -232,7 +234,8 @@
+ 	struct sdw_dpn_prop *dpn;
+ 
+ 	sdw_slave_read_prop(slave);
+-	prop->scp_int1_mask = SDW_SCP_INT1_BUS_CLASH | SDW_SCP_INT1_PARITY;
++	prop->scp_int1_mask = SDW_SCP_INT1_BUS_CLASH | SDW_SCP_INT1_PARITY |
++			      SDW_SCP_INT1_IMPL_DEF | SDW_SCP_INT1_PORT0_3;
+ 	prop->quirks = SDW_SLAVE_QUIRKS_INVALID_INITIAL_PARITY;
+ 
+ 	prop->paging_support = true;
+@@ -290,6 +293,15 @@
+ 	/* Three data lanes are supported by rt721-sdca codec */
+ 	prop->lane_control_support = true;
+ 
++	if (!prop->dp0_prop) {
++		prop->dp0_prop = devm_kzalloc(&slave->dev,
++					      sizeof(*prop->dp0_prop), GFP_KERNEL);
++		if (!prop->dp0_prop)
++			return -ENOMEM;
++		prop->dp0_prop->simple_ch_prep_sm = true;
++		prop->dp0_prop->ch_prep_timeout = 10;
++	}
++
+ 	return 0;
+ }
+ 
+--- a/sound/soc/codecs/rt721-sdca.c	2026-05-28 09:41:18.883935903 +0800
++++ b/sound/soc/codecs/rt721-sdca.c	2026-05-28 09:41:49.472951991 +0800
+@@ -295,6 +295,8 @@
+ 			SDW_SCP_SDCA_INTMASK_SDCA_0);
+ 		sdw_write_no_pm(rt721->slave, SDW_SCP_SDCA_INTMASK2,
+ 			SDW_SCP_SDCA_INTMASK_SDCA_8);
++		sdw_update_no_pm(rt721->slave, SDW_DP0_INTMASK,
++			SDW_DP0_SDCA_CASCADE, SDW_DP0_SDCA_CASCADE);
+ 		dev_dbg(&rt721->slave->dev, "in %s enable\n", __func__);
+ 		rt_sdca_index_write(rt721->mbq_regmap, RT721_HDA_SDCA_FLOAT,
+ 			RT721_HDA_LEGACY_UAJ_CTL, 0x036E);

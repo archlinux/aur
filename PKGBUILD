@@ -175,7 +175,7 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=7.0
-_minor=6
+_minor=9
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -239,7 +239,7 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=0829cf892b5d7b3a0e8aa76cc7aca02b84f62557")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=6330a45b06d20125de679aae5f63ba14082671ef")
 fi
 
 
@@ -817,7 +817,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('e445d619ed6474c1a8b9ce6a80daf92644e34df247ff41c56289e19fc4a69299622f8a24d217b2aace838c9c096483824178208321b97b9372906d036ff93d39'
+b2sums=('ffa4da16bbd6313fb85b916a770383df817a43f8e1135f8c4c4a5d29d8cc692e3ecb4f71ecba4bc51173c10f88e8d7a9c159a5ffd6bd21d23382916ffe28b3f6'
         '7bb5113dbc67e8e2ce5c5473ae1b08973af5adba0a6a14c64a213bb116e5a172d40b7c274b85ad15553511484ee1f120e0372251e242c6f87ce6920235f0c136'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')
 
@@ -847,8 +847,9 @@ source+=(
     0014-defer-check.patch
     0015-to-help-alsa-find-them.patch
     0016-cleanup-controls.patch
+    0017-ASoC-rt721-sdca-enable-jack-detect-irq-on-AMD-ACP70.patch
 )
 b2sums+=(
     SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
-    SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+    SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
 )

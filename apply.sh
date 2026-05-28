@@ -54,10 +54,11 @@ source+=(
     0014-defer-check.patch
     0015-to-help-alsa-find-them.patch
     0016-cleanup-controls.patch
+    0017-ASoC-rt721-sdca-enable-jack-detect-irq-on-AMD-ACP70.patch
 )
 b2sums+=(
     SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
-    SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+    SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
 )
 CUSTOM
 
@@ -72,9 +73,4 @@ mv PKGBUILD.new PKGBUILD
 mv config.new config
 sed -i -E 's/^pkgrel=.*/pkgrel=1/' PKGBUILD
 makepkg --printsrcinfo > .SRCINFO
-pkgver=$(aur_pkgbuild_var pkgver)
-git add PKGBUILD config .SRCINFO
-git commit -m "chore: sync from CachyOS upstream (${pkgver})"
-command -v notify-send >/dev/null && \
-    notify-send -u normal "AUR" "bumped $(basename "$PWD") to ${pkgver}, verify patches still apply then: git push aur main:master"
-echo "synced to upstream ${pkgver} — verify patches apply before pushing"
+echo "synced $(basename "$PWD") from CachyOS upstream -> $(aur_pkgbuild_var pkgver)"
