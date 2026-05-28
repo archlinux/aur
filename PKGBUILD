@@ -13,12 +13,16 @@ depends=(
 )
 makedepends=(
   "python-installer"
-  "python-wheel"
 )
 source=(
-  "qfluentwidgets::https://files.pythonhosted.org/packages/a7/ee/0c9499dd81bfdc1323529fee71b4a326b06b000869d8339915a9e6548aa4/pyqt6_fluent_widgets-1.11.2-py3-none-any.whl"
-  "darkdetect::https://files.pythonhosted.org/packages/f2/f2/728f041460f1b9739b85ee23b45fa5a505962ea11fd85bdbe2a02b021373/darkdetect-0.8.0-py3-none-any.whl"
-  "frameless::https://files.pythonhosted.org/packages/eb/de/d9f2d50ca3624a7455603ad0daee22073408b8ceb96f8b250a580ddbe88d/pyqt6_frameless_window-0.8.1-py3-none-any.whl"
+  "pyqt6_fluent_widgets-1.11.2-py3-none-any.whl::https://files.pythonhosted.org/packages/a7/ee/0c9499dd81bfdc1323529fee71b4a326b06b000869d8339915a9e6548aa4/pyqt6_fluent_widgets-1.11.2-py3-none-any.whl"
+  "darkdetect-0.8.0-py3-none-any.whl::https://files.pythonhosted.org/packages/f2/f2/728f041460f1b9739b85ee23b45fa5a505962ea11fd85bdbe2a02b021373/darkdetect-0.8.0-py3-none-any.whl"
+  "pyqt6_frameless_window-0.8.1-py3-none-any.whl::https://files.pythonhosted.org/packages/eb/de/d9f2d50ca3624a7455603ad0daee22073408b8ceb96f8b250a580ddbe88d/pyqt6_frameless_window-0.8.1-py3-none-any.whl"
+)
+noextract=(
+  "pyqt6_fluent_widgets-1.11.2-py3-none-any.whl"
+  "darkdetect-0.8.0-py3-none-any.whl"
+  "pyqt6_frameless_window-0.8.1-py3-none-any.whl"
 )
 sha256sums=(
   "fe8c76f793eb1ccc31b5833cb15c1571655b38662abfb508c27bb7458d043593"
@@ -27,7 +31,7 @@ sha256sums=(
 )
 
 package() {
-  python -m installer --destdir="$pkgdir" "$srcdir/qfluentwidgets.whl"
-  python -m installer --destdir="$pkgdir" "$srcdir/darkdetect.whl"
-  python -m installer --destdir="$pkgdir" "$srcdir/frameless.whl"
+  python -m installer --destdir="$pkgdir" "$srcdir/pyqt6_fluent_widgets-1.11.2-py3-none-any.whl"
+  python -m installer --destdir="$pkgdir" "$srcdir/darkdetect-0.8.0-py3-none-any.whl"
+  python -m installer --destdir="$pkgdir" "$srcdir/pyqt6_frameless_window-0.8.1-py3-none-any.whl"
 }
