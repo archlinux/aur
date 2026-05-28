@@ -1,0 +1,19 @@
+pkgbase = python-metaarray
+	pkgdesc = N-dimensional array with metadata such as axis titles, units, and column names
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/outofculture/metaarray
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=61.0
+	depends = python>=3.7
+	depends = python-numpy
+	depends = python-h5py
+	optdepends = python-pyqtgraph>=0.11.0: plotting
+	source = pypi-metaarray-2.2.2.tar.gz::https://files.pythonhosted.org/packages/source/m/metaarray/metaarray-2.2.2.tar.gz
+	sha256sums = 4674feb2cad719d7692330676647b3e971ab7fffec3fa7ec5520eb9b5b4edaa3
+
+pkgname = python-metaarray
