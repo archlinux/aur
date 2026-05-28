@@ -1,6 +1,6 @@
 pkgbase = osc
 	pkgdesc = Command line client for the openSUSE Build Service
-	pkgver = 1.22.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://github.com/openSUSE/osc
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = osc
 	conflicts = zsh-completion-osc
 	replaces = osc-bash-completion
 	replaces = zsh-completion-osc
-	source = osc-1.22.0.tar.gz::https://github.com/openSUSE/osc/archive/1.22.0.tar.gz
-	sha256sums = 5ffcda4aef9d27bfaccbbbb196ed32d1cb1c7870b940b04dfc8f0fdbd4dde479
+	source = osc-1.26.0.tar.gz::https://github.com/openSUSE/osc/archive/1.26.0.tar.gz
+	sha256sums = 2c024260452e75cae36d542ce5207dab8cbc9747e271b5642391d4eb8c9e84ad
 
 pkgname = osc
