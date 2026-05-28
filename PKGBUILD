@@ -9,7 +9,8 @@ arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/debianutils"
 license=('GPL')
 makedepends=('po4a')
-depends=('run-parts')
+provides=('run-parts')
+conflicts=('run-parts')
 source=("https://salsa.debian.org/debian/$pkgname/-/archive/debian/$pkgver/$pkgname-debian-$pkgver.tar.bz2")
 sha512sums=('d435f5280748362a546505418d41943c8c51d8ed359e96ebb851eec1c64c7375e9e14d361ab8f4ba81373f2654bb561556fae5eb440c7140398b7908500a6f74')
 
@@ -23,8 +24,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-debian-${pkgver}"
   make DESTDIR="$pkgdir" install
-
-  echo 'Remove files of "run-parts" package...'
   cd -
-  find "${pkgdir}" -name run-parts* -delete
 }
