@@ -6,7 +6,7 @@
 
 pkgname=proton-pass
 pkgver=1.37.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source and secure identity manager"
 arch=('aarch64' 'x86_64')
 url="https://proton.me/pass"
@@ -26,7 +26,7 @@ prepare() {
     sed -i 's@"applications/\*",@"applications/pass*",@' package.json
 
     # Bypass pass-desktop-native build script (removes npm/rustup requirement and Rust target hardcoding)
-    sed -i 's@build"@build:napi && yarn run build:host"@' applications/pass-desktop/package.json
+    sed -i 's@build"@build:napi \&\& yarn run build:host"@' applications/pass-desktop/package.json
 
     # Skip electron-forge in build step (needed for .asar size improvement below)
     sed -i 's@ && electron-forge package@@' applications/pass-desktop/package.json
