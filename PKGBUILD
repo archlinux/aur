@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartoc
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Barto job executor client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('logrotate: periodic cleanup of rotated log files'
 makedepends=('cargo')
 install=bartoc.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/barto/archive/v$pkgver.tar.gz")
-sha256sums=('3a8f9f415dcf3be15b047a73a2833bf8807475966931bdf255e0390d5e293622')
+sha256sums=('70dc37d9771210786d4efd8e5edaa0b7e581020fa8550876852d3088538bf30e')
 
 prepare() {
     cd "barto-$pkgver"
@@ -35,6 +35,9 @@ package() {
 
     # Binary
     install -Dm755 "target/release/bartoc" "$pkgdir/usr/bin/bartoc"
+
+    # Launcher script (loads secrets from GNOME Keyring / KWallet)
+    install -Dm755 "dist/bartoc/bartoc-launcher" "$pkgdir/usr/lib/bartoc/bartoc-launcher"
 
     # Man page
     install -Dm644 "dist/bartoc/bartoc.1" "$pkgdir/usr/share/man/man1/bartoc.1"
