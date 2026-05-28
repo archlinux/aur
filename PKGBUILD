@@ -1,25 +1,16 @@
-# Maintainer: wuxxin <wuxxin@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: wuxxin <wuxxin@gmail.com>
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=moltis
-pkgver=20260510.01
+pkgver=20260526.03
+_commit=9ab2bb43c08c0972dedc2a0736efc6026cf6d7aa
 pkgrel=1
-pkgdesc="A personal AI gateway written in Rust. One binary, sandboxed, secure."
+pkgdesc="A secure persistent personal agent server in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/moltis-org/moltis"
 license=('MIT')
-provides=(
-    ${pkgname}
-)
-conflicts=(
-    ${pkgname}
-)
-replaces=()
-depends=(
-    gcc-libs
-    glibc
-    openssl
-    systemd-libs)
+depends=('libgcc_s.so')
 makedepends=(
     clang
     cargo
@@ -29,21 +20,18 @@ makedepends=(
     npm
     just
 )
-backup=()
 options=(!lto !debug)
-install=
-source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-sha256sums=('14d940e4290036985dbdfc4a4c6c50255b03c3fbcc2a173b4d3313370fba7c51')
+source=("$pkgname::git+$url#commit=${_commit}?signed")
+sha256sums=('8ad19fd560262b5affc2ca69c6861a007a91a201b6e35353c43a3df698716385')
+validpgpkeys=('310320A8CC1C5BA86AD09040C0451BADF7649BBF')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
     
     # Increase recursion limit for all crate roots
     for f in crates/*/src/lib.rs crates/*/src/main.rs; do
-        if [ -f "$f" ]; then
-            sed -i '/recursion_limit/d' "$f"
-            echo '#![recursion_limit = "2048"]' | cat - "$f" > temp && mv temp "$f"
-        fi
+        sed -i '/recursion_limit/d' "$f"
+        echo '#![recursion_limit = "2048"]' | cat - "$f" > temp && mv temp "$f"
     done
 
     # Disable matrix feature globally as it causes build failure on stable Rust
@@ -51,7 +39,7 @@ prepare() {
     find . -name "Cargo.toml" -exec sed -i 's/"moltis-matrix\/metrics",//g' {} +
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -64,7 +52,7 @@ build() {
     just build-web-assets
     
     # Build release binary
-    cargo build --release -p moltis --features full
+    cargo build --release --frozen -p moltis --features full
 }
 
 # check() {
