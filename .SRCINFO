@@ -1,7 +1,7 @@
 pkgbase = sdl3-git
 	pkgdesc = Simple Directmedia Layer (Version 3)
 	pkgver = 3.4.8.r885.gbb3c613
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.libsdl.org
 	arch = x86_64
 	arch = aarch64
@@ -36,6 +36,7 @@ pkgbase = sdl3-git
 	makedepends = wayland
 	makedepends = wayland-protocols
 	makedepends = patchelf
+	makedepends = git
 	depends = glibc
 	depends = libxext
 	depends = libxrender

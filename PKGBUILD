@@ -4,7 +4,7 @@
 
 pkgname=sdl3-git
 pkgver=3.4.8.r885.gbb3c613
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
@@ -14,6 +14,7 @@ makedepends=('cmake' 'ninja' 'vulkan-headers' 'python' 'hidapi' 'ibus' 'jack' 'l
 	     'libthai' 'fribidi' 'libgl' 'libpulse' 'libusb' 'libxext' 'libxfixes' 'libxi'
 	     'libxinerama' 'libxkbcommon' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'mesa'
 	     'pipewire' 'sndio' 'vulkan-driver' 'wayland' 'wayland-protocols' 'patchelf'
+	     'git'
 	)
 optdepends=('vulkan-driver: vulkan renderer'
 	    'alsa-lib: ALSA audio driver'
