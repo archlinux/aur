@@ -1,0 +1,16 @@
+pkgbase = deepclaude-git
+	pkgdesc = Use Claude Code with DeepSeek, OpenRouter, or any Anthropic-compatible backend
+	pkgver = r15.70518b6
+	pkgrel = 1
+	url = https://github.com/aattaran/deepclaude
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = claude-code
+	depends = nodejs
+	provides = deepclaude
+	conflicts = deepclaude
+	source = deepclaude-git::git+https://github.com/aattaran/deepclaude.git
+	sha256sums = SKIP
+
+pkgname = deepclaude-git
