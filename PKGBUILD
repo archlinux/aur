@@ -6,7 +6,7 @@
 # Contributor: Joshua Glass <joshuag1000@outlook.com>
 
 pkgname=arduino-ide
-pkgver=2.3.8
+pkgver=2.3.9
 pkgrel=1
 pkgdesc="Open-source electronics prototyping platform"
 arch=(x86_64)
@@ -44,14 +44,14 @@ optdepends=(
   'python-pyserial: Needed for esptool'
   'usbutils: Needed for stm32 boards using st-link'
 )
-_tag=edf2575570abf94208a3cc40925d7e721794dc01
+_tag=17a44c35f9298a72438dd21805d61d80ff949ca4
 source=(
   git+https://github.com/arduino/arduino-ide.git#tag=${_tag}
   arduino-ide.sh
   arduino-ide.desktop
 )
 
-sha256sums=('e14102f0a96d15b5c8b3121fd13459d8116280ad41af567cf31e9c824460d1b7'
+sha256sums=('e41f59bf18354a4bc62c0de796235410e07f9bebea0188b43bb283ba66ea6f8a'
             'd8462a3cf2cb7ceaac49b07208ff4c6ac7ac7918d89f61ce3037ca9bc0d2dcfb'
             'bfa4fc5098c423770f49a17ca6f7c401c1ce5e4b1936b50a8f0fed5bbd83a7fc')
 
