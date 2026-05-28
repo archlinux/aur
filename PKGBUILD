@@ -3,7 +3,7 @@ options=(!strip)  # Don't strip libs because there aren't any
 
 pkgname=hydrus
 _pkgname=hydrus
-pkgver=672
+pkgver=673.b
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -41,13 +41,13 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'swftools: to display SWF thumbnails'
             'python-pillow-jpegxl-plugin: to display JXL images')
 conflicts=(hydrus-docs-dummy)
-source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=7b12bea769e7c5e5a518dbdfdcdc58d792fa9fda"
+source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=27dc5c728ba62f504a18b8c1040d8993bd33c3d2"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            '6cbfbbc1d59e822182ff509c2c8b4d3bdcad98c95b467abe596f3d79713cf569'
+            'bdb43bcd36e74fae26c178f405ef13fde885529326a78a0c5c33170033e3d466'
             '39d3404b75320be6a9e33dc256f4fc313c65fe11458e96bd5af6268c2f78eaf0'
             '5956d418d29fe19f54263acf47adce7c6d134d19ec65e2810d4517ce83529480'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
@@ -97,8 +97,7 @@ package() {
 
   # Install license files
   install -d -m755 "${pkgdir}/usr/share/licenses/${_pkgname}"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/"
-  install -m644 license.txt "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
 
 # Tests (they don't pass!)
