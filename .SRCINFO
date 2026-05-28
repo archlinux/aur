@@ -1,6 +1,6 @@
 pkgbase = dsd-neo-git
 	pkgdesc = Digital Speech Decoder - A modern, modular, and performance enhanced C/C++ decoder for digital voice. DMR, P25, NXDN, YSF, and more.
-	pkgver = 1.0.0.r24.geb71d02
+	pkgver = 1.0.0.r25.gaebe50c
 	pkgrel = 1
 	url = https://github.com/arancormonk/dsd-neo
 	arch = x86_64
