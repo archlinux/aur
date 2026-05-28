@@ -1,0 +1,13 @@
+pkgbase = tree-sitter-heex-git
+	pkgdesc = heex grammar for tree-sitter
+	pkgver = 0.9.0.r0.g5842537
+	pkgrel = 1
+	url = https://github.com/phoenixframework/tree-sitter-heex
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter
+	source = tree-sitter-heex-git::git+https://github.com/phoenixframework/tree-sitter-heex
+	sha256sums = SKIP
+
+pkgname = tree-sitter-heex-git

@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/tree-sitter-heex-git/
+/*.tar.zst
