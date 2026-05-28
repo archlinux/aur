@@ -1,0 +1,27 @@
+pkgbase = qmidigen-git
+	pkgdesc = Randomized MIDI music generator with JRPG-style compositions (git)
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://gitlab.com/ganthore/qmidigen
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = LicenseRef-GeneralUser-GS
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = pkgconf
+	provides = qmidigen
+	conflicts = qmidigen
+	depends = qt6-declarative
+	depends = qt6-wayland
+	depends = fluidsynth
+	optdepends = ffmpeg: non-WAV audio export (MP3, FLAC, OGG, AAC, MP4)
+	optdepends = kdialog: native KDE file dialogs
+	options = !lto
+	options = debug
+	source = qmidigen-git::git+https://gitlab.com/ganthore/qmidigen.git
+	b2sums = SKIP
+
+pkgname = qmidigen-git

@@ -1,0 +1,5 @@
+# Ignore everything — only PKGBUILD, .SRCINFO, and .gitignore belong in AUR
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
