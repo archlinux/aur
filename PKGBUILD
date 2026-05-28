@@ -12,7 +12,7 @@ pkgname=agildodock
 _githubuser=juglesbass
 _repo=AgildoDockCpp_Wayland # pasta ao extrair: ${_repo}-${pkgver}
 
-pkgver=1.1.1
+pkgver=1.2
 pkgrel=1
 
 pkgdesc="Dock de aplicativos para KDE Plasma com Layer Shell, Kirigami e efeito de onda"
@@ -33,10 +33,7 @@ depends=(
 )
 makedepends=("cmake" "ninja" "extra-cmake-modules")
 
-optdepends=(
-  "kdotool: focar, minimizar e fechar janelas em sessão Plasma Wayland"
-  "kglobalaccel: atalhos globais Ctrl+, e Meta+Alt+D"
-)
+optdepends=("kdotool: focar, minimizar e fechar janelas em sessão Plasma Wayland")
 
 install="${pkgname}.install"
 
@@ -45,7 +42,7 @@ validpgpkeys=()
 _source_file="${_repo}-${pkgver}.tar.gz"
 # ATENÇÃO: não envies SKIP ao servidor AUR com tarball estático — corre «updpkgsums» aqui primeiro.
 source=("${_source_file}::https://github.com/${_githubuser}/${_repo}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bcf442b6429b3816c91011ae2cfc08704dc1538e81775e0ba3d60ee26136d2de')
+sha256sums=('4dcd2561e7f1855ed170e7e2e67cac92dc0836cc0366bab6b3b41d483a2ff12a')
 
 build() {
   cd "${srcdir}/${_repo}-${pkgver}"
