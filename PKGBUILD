@@ -2,31 +2,43 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=grubforge
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="A terminal UI for managing and customizing the GRUB bootloader — safely, intuitively, and beautifully"
 arch=('any')
 url="https://github.com/jetomev/grubforge"
 license=('GPL3')
 depends=('python' 'python-textual' 'python-rich')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('941a3f2d7f2b554bec89becd843fb5008fcbbd0270f0ec25db27e23576c4fdce')
+sha256sums=('e443c2d510768e279e9d7073720f0e6f9f8eb6a59fe248c93bfb4cafa378adbe')
 
 check() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    # Smoke test: import the main app module. Catches Textual API breaks
-    # like the v1.0.1 F16 bug (Static.Clicked removed in Textual 8.x) at
-    # build time so we never ship an unimportable package again. Added in
-    # v1.0.2 alongside the events.Click migration that closed GitHub Issue #1.
+    # Headless smoke test: import AND mount the app under Textual's test
+    # harness. The v1.0.2 import smoke caught Textual API breaks (the v1.0.1
+    # F16 Static.Clicked removal); v1.0.3 widens it to a full headless mount
+    # so build-time failures beyond import — CSS parse errors, bad widget ids,
+    # on_mount crashes — are caught too. We never ship a package that imports
+    # but won't launch. (With no /etc/default/grub or /boot in the build env,
+    # the app mounts cleanly in mock mode.)
     #
     # PYTHONDONTWRITEBYTECODE=1 prevents Python from writing .pyc cache files
-    # into the source tree during the import. Without this, the .pyc files
-    # would be picked up by package()'s `cp -r grubforge` below, end up at
+    # into the source tree during the smoke. Without this, those .pyc files
+    # get picked up by package()'s `cp -r grubforge` below, land at
     # /usr/lib/grubforge/.../__pycache__/, and conflict on install with the
     # .pyc files that user-runtime Python generates at the same paths
-    # (pacman refuses to overwrite untracked-but-existing files). The pkgrel=2
-    # bump exists to ship this packaging fix on top of v1.0.2-1.
-    PYTHONDONTWRITEBYTECODE=1 python -c "import sys; sys.path.insert(0, '.'); from grubforge.app import GrubForgeApp; print('grubforge.app imports OK')"
+    # (pacman refuses to overwrite untracked-but-existing files).
+    PYTHONDONTWRITEBYTECODE=1 python -c "
+import sys, asyncio
+sys.path.insert(0, '.')
+from grubforge.app import GrubForgeApp
+async def _smoke():
+    app = GrubForgeApp()
+    async with app.run_test() as pilot:
+        await pilot.pause()
+asyncio.run(_smoke())
+print('grubforge headless mount OK')
+"
 }
 
 package() {
