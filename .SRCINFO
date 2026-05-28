@@ -1,0 +1,15 @@
+pkgbase = autocake
+	pkgdesc = Fully automated SQM (cake) bandwidth tuner for Linux Wi-Fi workstations
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gchait/autocake
+	install = autocake.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = iproute2
+	depends = curl
+	source = autocake-0.1.0.tar.gz::https://github.com/gchait/autocake/archive/v0.1.0.tar.gz
+	sha256sums = 2fd2d70875a2b53e35d8d799a9ff3051cc9ba5e749dd3c064b166a9ba0498fc0
+
+pkgname = autocake
