@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=regname
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='mass renamer TUI written in Rust'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('460a822020556f5ebf6e9de05107f3e29b5c34669b8c52903795bb8b03dae0c8')
+sha256sums=('4ba8a0ea79ff314880368d17bc9837ef04918f2d6352d4350d70e07583654243')
 
 prepare() {
 	cd "$_archive"
