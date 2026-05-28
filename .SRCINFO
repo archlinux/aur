@@ -1,0 +1,13 @@
+pkgbase = bdh-linux
+	pkgdesc = Backend developer environment provisioning CLI for Arch/Manjaro
+	pkgver = 4.2.10
+	pkgrel = 1
+	url = https://github.com/BackendDeveloperHub/bdh-linux
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pip
+	source = https://files.pythonhosted.org/packages/source/b/bdh-linux/bdh-linux-4.2.10.tar.gz
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+pkgname = bdh-linux
