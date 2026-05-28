@@ -1,4 +1,5 @@
 pkgbase = fetcher
+<<<<<<< HEAD
 	pkgdesc = Automatic update of git repositories via a systemd service.
 	pkgver = 2.0
 	pkgrel = 1
@@ -14,3 +15,18 @@ pkgbase = fetcher
 
 pkgname = fetcher
 
+=======
+	pkgdesc = A configurable package fetcher
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/type1arc/fetcher
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = git
+	source = fetcher::https://github.com/type1arc/fetcher/archive/f0bde1ba6131c6a55c8817f44c0508110044bc4d.tar.gz
+	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+
+pkgname = fetcher
+>>>>>>> 68d6e40 (initial commit)
