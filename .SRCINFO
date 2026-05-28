@@ -1,8 +1,9 @@
 pkgbase = zapret-gui
 	pkgdesc = GUI for zapret DPI bypass with Linux NFQUEUE/nftables runtime
 	pkgver = 1.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Mechtaatel/zapret-gui
+	install = zapret-gui.install
 	arch = x86_64
 	license = GPL3
 	makedepends = base-devel
