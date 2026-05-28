@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vtk-git
-pkgver=r98876.33b5ee6cdbf
+pkgver=r99103.27b35226104
 pkgrel=1
 pkgdesc='Software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -23,7 +23,7 @@ pkgver () {
 prepare() {
   cd "${srcdir}/vtk"
   # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
-  patch -p1 -i "${srcdir}"/diy2.patch
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/13293.patch | patch -p1
 }
 
 build() {
