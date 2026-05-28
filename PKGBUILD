@@ -1,15 +1,15 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_npmname=concurrently
-_npmver=9.2.1
-
-pkgname=${_npmname}
+pkgname="concurrently"
 pkgdesc="Run multiple commands concurrently"
-pkgver=${_npmver}
+pkgver=10.0.0
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/open-cli-tools/concurrently"
 license=("MIT")
+
+_npmname=${pkgname}
+_npmver=${pkgver}
 
 provides=("${_npmname}" "${_npmname%%urrently}")
 replaces=("nodejs-${_npmname}")
@@ -22,7 +22,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('76ba82bbb06c445e4d80d8a9736408d1faf6cd36b873d432da8d3ae11d78ac1ce94f89a15cfb85a2bdc3fd1d901d3d2fd1ece6c21e53f373a45fc38f775cd559')
+b2sums=('8011d0944271bdd96b282c3294a9d531aed4218162765654706ca02235a065a4079e57f2163e91d2346dc6022d3787ecbbcae8cfa81a47ff959868e598994cff')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
