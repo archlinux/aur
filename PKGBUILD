@@ -1,6 +1,6 @@
 # Maintainer: giomarco2107 <giomarco2107@gmail.com>
 pkgname=linuxviva-git
-pkgver=1
+pkgver=r3.ec48987
 pkgrel=1
 pkgdesc="Classeviva client for Linux — native GNOME app (GTK4 + libadwaita)"
 arch=('any')

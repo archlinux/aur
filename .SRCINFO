@@ -1,6 +1,6 @@
 pkgbase = linuxviva-git
 	pkgdesc = Classeviva client for Linux — native GNOME app (GTK4 + libadwaita)
-	pkgver = 1
+	pkgver = r3.ec48987
 	pkgrel = 1
 	url = https://github.com/Giovix64/linuxviva
 	arch = any
