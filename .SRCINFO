@@ -1,0 +1,12 @@
+pkgbase = gosip
+	pkgdesc = Anonymous encrypted terminal chat. No accounts. No logs. No trace.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Bearcry55/gosip
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = gosip-linux::https://github.com/Bearcry55/gosip/releases/latest/download/gosip-linux
+	sha256sums = SKIP
+
+pkgname = gosip
