@@ -14,6 +14,7 @@ pkgbase = tapauth-git
 	provides = tapauth
 	conflicts = tapauth
 	backup = etc/tapauth/config.toml
+	install = tapauth-git.install
 	source = tapauth::git+https://github.com/lolle2000la/tapauth.git#branch=main
 	sha256sums = SKIP
 

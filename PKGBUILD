@@ -9,6 +9,7 @@ license=('Apache-2.0')
 depends=('dbus' 'pam')
 makedepends=('cargo' 'rust' 'protobuf' 'git')
 backup=('etc/tapauth/config.toml')
+install=tapauth-git.install
 provides=('tapauth')
 conflicts=('tapauth')
 source=("tapauth::git+https://github.com/lolle2000la/tapauth.git#branch=main")
@@ -56,6 +57,7 @@ package() {
   install -Dm0644 client-config-gui/tapauth-config.desktop "${pkgdir}/usr/share/applications/tapauth-config.desktop"
   install -Dm0644 client-config-gui/assets/tapauth-config.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/tapauth-config.svg"
   install -Dm0644 tapauthd/dev.rourunisen.tapauth.config.admin.policy "${pkgdir}/usr/share/polkit-1/actions/dev.rourunisen.tapauth.config.admin.policy"
+  install -Dm0644 packaging/50-tapauthd.rules "${pkgdir}/usr/share/polkit-1/rules.d/50-tapauthd.rules"
 
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

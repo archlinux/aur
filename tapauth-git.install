@@ -1,0 +1,18 @@
+post_install() {
+  systemd-sysusers /usr/lib/sysusers.d/tapauth.conf
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/tapauth.conf
+  systemctl daemon-reload
+  systemctl enable --now tapauthd.socket
+}
+
+post_upgrade() {
+  systemd-sysusers /usr/lib/sysusers.d/tapauth.conf
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/tapauth.conf
+  systemctl daemon-reload
+  systemctl reenable tapauthd.socket
+  systemctl restart tapauthd.socket
+}
+
+pre_remove() {
+  systemctl disable --now tapauthd.socket tapauthd.service 2>/dev/null || true
+}
