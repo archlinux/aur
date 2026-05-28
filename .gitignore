@@ -1,4 +1,5 @@
 *
-!lacy.install
-!PKGBUILD
-!.SRCINFO
+!/PKGBUILD
+!/.SRCINFO
+!/lacy.install
+!/.gitignore
