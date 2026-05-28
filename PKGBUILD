@@ -3,8 +3,8 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-webview
-_basever=5.15.18
-pkgver=5.15.18+kde+r2
+_basever=5.15.19
+pkgver=5.15.19
 pkgrel=1
 _commit=043cb7c0eaf8d1bcee56a62d6a102f727a22fcbc
 arch=('x86_64')
