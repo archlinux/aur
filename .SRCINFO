@@ -12,6 +12,6 @@ pkgbase = dcr
   optdepends = clang: build C/C++ projects with Clang
   options = !lto
   source = dcr-0.6.9.tar.gz::https://github.com/dexoron/dcr/archive/refs/tags/v0.6.9.tar.gz
-  sha256sums = 90483c273c77e9e4b5c706a098795bfe5343258c98d730284c49a65bc353f77b
+  sha256sums = ba3558c0121cff7270be3178c3675b2cf8287f9dfdb9011cadd281b1b3fc8cfc
 
 pkgname = dcr
