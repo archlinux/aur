@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-cmake3
-pkgver=3.5.6
+pkgver=3.6.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 makedepends=('cmake' 'doxygen')
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('0b49b7391bf874533585447b1a3959d0438418ec32b8a7c2b784fd503f514ecc')
+sha256sums=('d713b5750b4768d45623917852bccecf30dbc6471df6a9d780eef06cb53b6283')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
