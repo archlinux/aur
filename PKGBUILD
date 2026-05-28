@@ -13,7 +13,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=131.0.5877.97
+pkgver=132.0.5905.11
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
@@ -26,7 +26,7 @@ optdepends=(
     'qt6-base' 'qt5-base'
     'upower: opera battery save'
 )
-nwjs_ffmpeg_version=0.110.0
+nwjs_ffmpeg_version=0.111.1
 source=(
     "https://get.geo.opera.com/ftp/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb"
     "opera"
@@ -37,13 +37,13 @@ source=(
     "https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/${nwjs_ffmpeg_version}/${nwjs_ffmpeg_version}-linux-x64.zip"
 )
 
-sha512sums=('166239afa299d2f33dfdf7b542918a1f1b49d663c12e40f7c0eaef1d5176fad30962bd4d8b74503d04b8f710310dc9ec8b08023ab9fb639937c8a1ebf9d7643c'
+sha512sums=('d501cef7218891c613b9e16c7741ab878aad24dec15cf5820714efd547fc82ab389f05dae115ec778711338484eda2a4c4fdc1fa71ad4424d68bb1268fe72b61'
             '7e854e4c972785b8941f60117fbe4b88baeb8d7ca845ef2e10e8064043411da73821ba1ab0068df61e902f242a3ce355b51ffa9eab5397ff3ae3b5defd1be496'
             'ddb1773877fcfd7d9674e63263a80f9dd5a3ba414cda4cc6c411c88d49c1d5175eede66d9362558ddd53c928c723101e4e110479ae88b8aec4d2366ec179297f'
             'aaaa4435a3b6a08bf8e6ad4802afcbf111c1e8f477054251f031b70ae57ac1234fa19048121d64c878dc3b1de03522ce7ef11a263a86dc7062f643d569ecff82'
             '800d62321344ff4e3521ff20fae281cad9206bae80e60965784d144f8bf852f756cbc21f4c9d8d4e93d026da7ca10e0eda7601c83a6d8d85125831eacb907d9a'
             '43d4a066758805597527dbdfc95b4c8ad4b22c5db812b9493e50f8820c72f30c1e431bed40fdb821ab0c23a63aa31dc0e946ab708cc23ac617446964fa6b96f2'
-            '654a8cd23760788ab0fc6da99fece0ccbf16b57bf07dcf1727be7efbe6bafc0fbf802c8902663dfcbeba223779cf3ce2bbb116c01a553b1c97d566fe4a51cd8a')
+            'e19e829acb52af869d73efc539986052d70452af7e7370a45a45669a08c1f6479db3e93b30098ee87acb0b234bb6d6a5272b4ba208080a38f9661396c8b72463')
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
