@@ -1,7 +1,7 @@
 pkgbase = quadcast2srgb
 	pkgdesc = Customizable RGB LED controller for HyperX Quadcast 2S
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/MuffinMario/quadcast2Srgb
 	install = quadcast2srgb.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = quadcast2srgb
 	depends = hidapi
 	depends = libsystemd
 	backup = etc/quadcast2srgb/config.toml
-	source = quadcast2srgb-0.1.0.tar.gz::https://github.com/MuffinMario/quadcast2Srgb/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 06720f9605da86d25f9ba525442a64767db8ca57b9ef3fb7cd86790958e5cc93
+	source = quadcast2srgb-0.2.1.tar.gz::https://github.com/MuffinMario/quadcast2Srgb/releases/download/v0.2.1/quadcast2srgb-0.2.1.tar.gz
+	sha256sums = 26c629c32376247cdd21a2f61030062282f4b00d3ece91d3f1c6af735af58dfa
 
 pkgname = quadcast2srgb
