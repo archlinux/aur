@@ -9,6 +9,6 @@ pkgbase = fss
 	makedepends = go>=1.25
 	depends = glibc
 	source = fss-1.17.0.tar.gz::https://github.com/Wasylq/FSS/archive/v1.17.0.tar.gz
-	sha256sums = 81363e0c33e8093d0b88ee2e39e09f728076225790c878e0c50ea863c38a49eb
+	sha256sums = c2e7d09bb2887f6dec0ae97ef5645c3ebb52cb00398f65eb8a770c60de5346b1
 
 pkgname = fss

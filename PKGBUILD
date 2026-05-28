@@ -12,7 +12,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Wasylq/FSS/archive/v${p
 # The real sha256 is populated by `updpkgsums` in the release workflow before
 # the package is committed to AUR — see .github/workflows/release.yml. The
 # 'SKIP' placeholder lets makepkg parse the file locally without the source.
-sha256sums=('81363e0c33e8093d0b88ee2e39e09f728076225790c878e0c50ea863c38a49eb')
+sha256sums=('c2e7d09bb2887f6dec0ae97ef5645c3ebb52cb00398f65eb8a770c60de5346b1')
 
 build() {
   cd "FSS-${pkgver}"
