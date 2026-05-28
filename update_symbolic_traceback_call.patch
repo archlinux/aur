@@ -1,0 +1,11 @@
+--- gnatsymbolize.adb-old	2020-02-28 17:03:24.000000000 +1100
++++ gnatsymbolize.adb	2026-05-28 13:51:31.448903174 +1000
+@@ -165,7 +165,7 @@
+       end if;
+ 
+       for I in 1 .. Count loop
+-         Symbolic_Traceback (C, Addrs, False, Success, Res);
++         Symbolic_Traceback (C, Addrs, False, Full, Success, Res);
+          if not Success then
+             Put_Line (Standard_Error, "cannot symbolize");
+          else
