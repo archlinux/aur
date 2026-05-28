@@ -4,9 +4,9 @@
 _pkgname=recaf
 _jdkver=25
 pkgname=${_pkgname}-git
-pkgver=r5242.1e251186a
+pkgver=r5244.6023a2055
 pkgrel=1
-pkgdesc="A modern Java bytecode editor"
+pkgdesc="The modern Java bytecode editor"
 arch=("any")
 url="https://github.com/Col-E/Recaf"
 license=("MIT")
