@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
-	pkgver = 3.0.22
-	pkgrel = 27
+	pkgver = 3.0.23_2
+	pkgrel = 1
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
 	arch = aarch64
@@ -20,13 +20,14 @@ pkgbase = vlc-luajit
 	makedepends = dav1d
 	makedepends = dbus
 	makedepends = faad2
-	makedepends = ffmpeg4.4
+	makedepends = ffmpeg
 	makedepends = flac
 	makedepends = fluidsynth
 	makedepends = fontconfig
 	makedepends = freetype2
 	makedepends = fribidi
 	makedepends = gdk-pixbuf2
+	makedepends = git
 	makedepends = glib2
 	makedepends = glibc
 	makedepends = gnutls
@@ -119,8 +120,14 @@ pkgbase = vlc-luajit
 	makedepends = libvlccore.so
 	options = !emptydirs
 	options = !strip
-	source = https://download.videolan.org/vlc/3.0.22/vlc-3.0.22.tar.xz
-	sha512sums = f60926fae508cb5b3b99d32910ea0f83372dd46497c60aa0c601dfd3b5b467c9c6cc628ab0a3a8541559739f77fc8a00de909a2c9b92d700d5b48830e8b3e409
+	source = git+https://code.videolan.org/videolan/vlc.git#tag=3.0.23-2
+	source = 0001-Use-reproducible-data-for-build-user-and-host.patch
+	source = 0002-Adjust-hardcoded-font-paths-for-ttf-dejavu.patch
+	source = 0003-Adjust-includes-for-build-with-gstreamer-1.28.patch
+	sha512sums = 7a8700de9b8c458474c6d43df5306f2d59ead93a665d64ebf7d4d0b38b378abc18e065c47fa04f85ff1ea51b3aff59bf6a6d6ac346991c4cf0ad78a3d9169150
+	sha512sums = 9d72267ac97c998a12435041ed9ff6010f422d21505b8074ebb54bc6c8ee56532e0706489415fa725c541a5271f36db1614c11ec3c82dd354c36af97c82972ad
+	sha512sums = f5452e7fdbaa273f088e3accaea46687ff7dd8479a89e266987208aff8ddae2a0bb87bd0a602508d1a7f7d7fc9447e9c69eb0e3f84de9643d6213757e9a7cfb5
+	sha512sums = 232f5595356a9864f89caf36f7ff3d81ba58b9f76b2a39c5540837b705e21a7a8c6ae2980303d6ba8bc589f4664db2fe25956b1d7f8f420c4b216f354866715c
 
 pkgname = vlc-luajit
 	arch = any
@@ -142,5 +149,5 @@ pkgname = vlc-plugin-luajit
 	depends = libvlccore.so
 	depends = luajit
 	optdepends = lua-socket: for http interface
-	provides = vlc-plugin-lua=3.0.22
+	provides = vlc-plugin-lua=3.0.23_2
 	conflicts = vlc-plugin-lua
