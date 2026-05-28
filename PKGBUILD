@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 build() {
     cd "$srcdir/$pkgname"
     export CARGO_HOME="$srcdir/cargo-home"
-    cargo build --release --frozen
+    cargo build --release --locked
 }
 
 check() {
