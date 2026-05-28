@@ -1,8 +1,9 @@
 pkgbase = tapauth-git
 	pkgdesc = Local smartphone-based authentication framework engine (Development/Git version)
-	pkgver = 0.3.2.r0.gffbbf4b
+	pkgver = 0.3.4.r1.g4313e44
 	pkgrel = 1
 	url = https://github.com/lolle2000la/tapauth
+	install = tapauth-git.install
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
@@ -14,7 +15,6 @@ pkgbase = tapauth-git
 	provides = tapauth
 	conflicts = tapauth
 	backup = etc/tapauth/config.toml
-	install = tapauth-git.install
 	source = tapauth::git+https://github.com/lolle2000la/tapauth.git#branch=main
 	sha256sums = SKIP
 
