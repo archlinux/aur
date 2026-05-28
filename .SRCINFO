@@ -1,0 +1,17 @@
+pkgbase = tiny-ping
+	pkgdesc = Small Asynchronous ICMP library and CLI
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/Fierthraix/tiny-ping
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	conflicts = tiny-ping-bin
+	conflicts = tiny-ping-git
+	source = tiny-ping-0.7.1.crate::https://static.crates.io/crates/tiny-ping/tiny-ping-0.7.1.crate
+	sha256sums = 53562e86678aa49f067ed3ad0841c13a5303d6b1a5586ba2a8d75d85df7cbb12
+
+pkgname = tiny-ping
