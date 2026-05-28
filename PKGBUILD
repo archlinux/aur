@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: muzammil <muzu@duck.com>
 
 pkgname=vinyl-player-git
 pkgver=1.3.2.r70.g1acf4a4
