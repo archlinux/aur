@@ -1,0 +1,25 @@
+pkgbase = posys-cursor-scalable
+	pkgdesc = Posy's cursor theme made scalable with SVGs, packaged as a hyprcursor and Plasma cursor
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/Morxemplum/posys-cursor-scalable
+	arch = any
+	license = CC-BY-NC-4.0
+	source = https://github.com/Morxemplum/posys-cursor-scalable/releases/download/v1.3/hyprcursor_white_v1.3.tar.gz
+	source = https://github.com/Morxemplum/posys-cursor-scalable/releases/download/v1.3/hyprcursor_black_v1.3.tar.gz
+	source = https://github.com/Morxemplum/posys-cursor-scalable/releases/download/v1.3/hyprcursor_mono_v1.3.tar.gz
+	source = https://github.com/Morxemplum/posys-cursor-scalable/releases/download/v1.3/hyprcursor_mono_black_v1.3.tar.gz
+	source = https://github.com/Morxemplum/posys-cursor-scalable/releases/download/v1.3/plasma_white_v1.3.tar.gz
+	source = https://github.com/Morxemplum/posys-cursor-scalable/releases/download/v1.3/plasma_black_v1.3.tar.gz
+	source = https://github.com/Morxemplum/posys-cursor-scalable/releases/download/v1.3/plasma_mono_v1.3.tar.gz
+	source = https://github.com/Morxemplum/posys-cursor-scalable/releases/download/v1.3/plasma_mono_black_v1.3.tar.gz
+	sha256sums = a12b0262a81e6abdc0d9269f261c06e2e0c2043e0951bd65065cd816dc480e86
+	sha256sums = fcd161a59e869bdb1637c48ebdb9dedc65da1b588a8e6413423edb9e51792502
+	sha256sums = 6f2f0724b34108df683490d97a03944046e045f7b910e4c326877c130d02891a
+	sha256sums = ecfc38e2ba0189ebff94a0bf29fc8d855034f158fbccb7cccadd0c3705e9a274
+	sha256sums = 5fc1617a9fba84ec663afe1e8a221ad2a67047b3347908ca8bfac29035fc4d92
+	sha256sums = 8156925d5329c30f09fd40deb9bc94bae3689cbbc6a6fb4b1bd0fcf46d0d3b4a
+	sha256sums = 86573a7e80211ec925768b750b76e22282a82b538511289593c949f76242be14
+	sha256sums = 0ef517b8e9806cfda0d9ed526b9e2033063375b47bc0ca5fb262307a8f53483c
+
+pkgname = posys-cursor-scalable
