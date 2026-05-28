@@ -1,10 +1,10 @@
 pkgname=dcr
-pkgver=0.6.8
+pkgver=0.6.9
 pkgrel=1
 pkgdesc="Cargo-like utility to manage C/C++ projects"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dexoron/dcr"
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo')
 options=('!lto')
@@ -13,7 +13,7 @@ optdepends=(
   'clang: build C/C++ projects with Clang'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('81b4304ea915e61f1503df95fce1a008c495067daeb19733edb6264cf3627fb6')
+sha256sums=('16f9716831b464879030d4747f40af5cdb29125174b331275608907bb0b99109')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
