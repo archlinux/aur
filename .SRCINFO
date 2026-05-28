@@ -14,10 +14,10 @@ pkgbase = bartos-bin
 	provides = bartos
 	conflicts = bartos
 	source = https://github.com/rustyhorde/barto/releases/download/v1.4.1/dist-bartos.tar.gz
-	sha256sums = 3a586e4fa1768acf4a621b0bc311604dc06ae5281f414699b5f5c4f37d57ecf3
+	sha256sums = ab0b1e2423d3354e802298d772c03713328fdd2c03312c682bf0806f297e44ef
 	source_x86_64 = bartos-x86_64::https://github.com/rustyhorde/barto/releases/download/v1.4.1/bartos-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 6173af287c58506189448484bc60b3221c390b9b110e4311a53bc4b8fad8abcb
+	sha256sums_x86_64 = 58fcfb9e1e984ee09a6de60a3b9fc61f2af5cdd99a7ed137406516462ea6f8a6
 	source_aarch64 = bartos-aarch64::https://github.com/rustyhorde/barto/releases/download/v1.4.1/bartos-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = 2fb112ce902406ae302c2d980fbb44c48fef24fb4a2cb4265d0918905f469957
+	sha256sums_aarch64 = bef1028d31038204abda770e94f04c30a0850fbb11e6641ff6502a9824820cfe
 
 pkgname = bartos-bin
