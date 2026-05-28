@@ -4,16 +4,16 @@
 
 pkgname=sdl3-git
 pkgver=3.4.8.r885.gbb3c613
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
 license=('Zlib')
-depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb')
+depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb' 'libunwind')
 makedepends=('cmake' 'ninja' 'vulkan-headers' 'python' 'hidapi' 'ibus' 'jack' 'libdecor'
 	     'libthai' 'fribidi' 'libgl' 'libpulse' 'libusb' 'libxext' 'libxfixes' 'libxi'
 	     'libxinerama' 'libxkbcommon' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'mesa'
-	     'pipewire' 'sndio' 'vulkan-driver' 'wayland' 'wayland-protocols'
+	     'pipewire' 'sndio' 'vulkan-driver' 'wayland' 'wayland-protocols' 'patchelf'
 	)
 optdepends=('vulkan-driver: vulkan renderer'
 	    'alsa-lib: ALSA audio driver'
@@ -41,12 +41,16 @@ build() {
 	-D CMAKE_INSTALL_PREFIX=/usr \
 	-D SDL_STATIC=OFF \
 	-D SDL_RPATH=OFF \
-	-D SDL_DEPS_SHARED=ON
+	-D SDL_DEPS_SHARED=ON \
+	-D CMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+	-D CMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG"
 	cmake --build build
 }
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
 	mv "$pkgdir/usr/share/licenses/SDL3" "$pkgdir/usr/share/licenses/${pkgname}"
+	install -Dm755 "$srcdir/build/test/testcontroller" "${pkgdir}/usr/bin/testcontroller"
+	patchelf --remove-rpath "${pkgdir}/usr/bin/testcontroller"
 }
 
