@@ -1,21 +1,20 @@
 pkgbase = python-rtslib-fb
 	pkgdesc = free branch version of the LIO target API
-	pkgver = 2.2.3
-	pkgrel = 2
+	pkgver = 2.2.4
+	pkgrel = 1
 	url = https://github.com/open-iscsi/rtslib-fb
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = python
 	makedepends = python-build
-	makedepends = python-pip
-	makedepends = python-pyudev
+	makedepends = python-installer
 	depends = python
 	depends = python-pyudev
 	provides = python-rtslib
 	conflicts = python-rtslib
-	source = git+https://github.com/open-iscsi/rtslib-fb.git#tag=v2.2.3
-	sha512sums = c3d249d2b965d155860fbf77b57b99cb5f78fd325ae38ba65fbecb7853cf03a48e983e16ba23e4e8c5f33fac8fd29d58b11e3305e563d380c632bc96f32b17a7
+	source = git+https://github.com/open-iscsi/rtslib-fb.git#tag=v2.2.4
+	sha512sums = 61d324ce35575c722fa003f0b8a375d8080c58aad0c150349b4761048ca6d0793a44faac50f2f0a0796bc314f7798f1b231e8513233e58269590d256041ab7f0
 
 pkgname = python-rtslib-fb
 	depends = python>=3.14
