@@ -1,7 +1,7 @@
 pkgbase = inputactions-kwin
 	pkgdesc = Bind keyboard, mouse, touchpad and touchscreen actions to system actions
 	pkgver = 0.9.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://inputactions.org
 	install = inputactions-kwin.install
 	arch = x86_64
