@@ -1,7 +1,6 @@
 # Maintainer: Eric Bakker <musqz at mf dot com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=forum-scout
-epoch=1
 pkgver=0.5.8
 pkgrel=1
 pkgdesc="Arch focused forum search tool"
