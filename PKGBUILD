@@ -1,15 +1,12 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.5.0'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='dirplot'
-
-
-pkgname="${_pypi_package}"
-pkgver="${_upstreamver}"
+pkgname="dirplot"
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Nested treemap visualizations for directory trees and archives"
+
+_pypi_package=${pkgname}
+_pypi_version=${pkgver}
 
 license=('MIT')
 arch=('any')
@@ -25,8 +22,8 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 depends=('python' 'python-py7zr' 'python-botocore' 'python-typer' 'python-paramiko' 'python-watchdog' 'python-numpy' 'python-rich' 'python-rarfile' 'python-boto3' 'python-click' 'python-libarchive-c' 'python-pillow' 'python-squarify' 'python-cmap' 'python-drawsvg')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-# source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('267cb03350b416f61f696a1c600c82ff795faba58f96645e4236bbac1cd5fc2d')
+# source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('c96aa54aa6d1a0371f3c141659e124139bbbf75908ef0646b875751a8530d590')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/" || exit
