@@ -5,7 +5,7 @@
 # LICENSE file alongside it. The modulejail package it builds is licensed
 # under GPL-3.0-only by its upstream author (declared in license= below).
 pkgname=modulejail
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Proactively shrink Linux kernel-module attack surface by blacklisting unused modules'
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=('sequoia-sqv')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tarball-signature::${url}/releases/download/v${pkgver}/v${pkgver}.tar.gz.sig"
         'modulejail-signing-key.gpg')
-sha256sums=('707ee2a7c2a2795ba43ea29b9777c19c721286f333bc6cf7d1d548d7c84b218b'
+sha256sums=('5d399a51b5987ccd2a6913eabd33ba3496efa72b933117157f696a738a6c9fec'
             'SKIP'
             '5b4f8bef3957b8d8f91475aeb40f398dc87b550b7bdc8458b72661112b033433')
 
