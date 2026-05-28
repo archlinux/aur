@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MBA
-_pkgver=0.1-2
+_pkgver=0.1-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,10 +17,11 @@ makedepends=(
 )
 optdepends=(
   r-sp
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8bcf59146cbfc60f885caadfd5675a17')
-b2sums=('a9a43335acacd4e90da6044333a35fed1757f381323d2e54e24e6d8a29bab5f0eef3e9ec8a5860e840ed95cc17d8a3e641e4d36703ca3ae31e2d80a27c90f567')
+md5sums=('1b486bf2436bd2b6bdacce54d235cd91')
+b2sums=('9931c1bea54b34848d23c3882bb68dc2398ea05c8e532d9436f8837e19f96f763c7aa76fe2d38a67949a79dc15c562583585b2dcde84216e40d8afc812f2572e')
 
 build() {
   mkdir build
