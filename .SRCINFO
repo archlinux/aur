@@ -1,0 +1,17 @@
+pkgbase = surrealql-language-server-bin
+	pkgdesc = SurrealQL language server for editor integration (pre-built binary)
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/surrealdb/surrealql-language-server
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = surrealql-language-server
+	conflicts = surrealql-language-server
+	options = !debug
+	source_x86_64 = surrealql-language-server-0.1.5-linux-amd64::https://github.com/surrealdb/surrealql-language-server/releases/download/v0.1.5/surrealql-language-server-linux-amd64
+	sha256sums_x86_64 = 1c2cc604d0145a11ad5ebdd83bba6c4fd62d0a2e3567c457c58ef8cfc1b378bf
+	source_aarch64 = surrealql-language-server-0.1.5-linux-arm64::https://github.com/surrealdb/surrealql-language-server/releases/download/v0.1.5/surrealql-language-server-linux-arm64
+	sha256sums_aarch64 = 4ce4aad66b27bce0e9ddbd9a1e1dddf733a7715b1f99e693e2f7be7cdf9f802a
+
+pkgname = surrealql-language-server-bin
