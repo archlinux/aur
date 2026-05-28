@@ -2,10 +2,10 @@
 
 pkgname=dicto-bin
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal native dictionary app for MDX/MDD files"
 arch=('x86_64')
-url="https://github.com/mohamadkhani/dicto"
+url="https://github.com/logi-camp/dicto"
 license=('AGPL-3.0-or-later')
 depends=(
   'gtk3'
@@ -20,7 +20,7 @@ optdepends=(
 )
 provides=('dicto')
 conflicts=('dicto')
-source_x86_64=("https://github.com/mohamadkhani/dicto/releases/download/v${pkgver}/dicto-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+source_x86_64=("https://github.com/logi-camp/dicto/releases/download/v${pkgver}/dicto-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 b2sums_x86_64=('SKIP')
 
 package() {
