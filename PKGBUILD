@@ -5,21 +5,21 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-nightly
-pkgver=1779133685.5ab0227624
-pkgrel=3
-pkgdesc="Nintendo Switch emulator forked from yuzu - nightly builds"
+pkgver=1779912217.8fd495f906
+pkgrel=0
+pkgdesc="Nightly release of the Eden Nintendo Switch emulator (built from source)"
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 provides=('eden')
-conflicts=('eden' 'eden-beta' 'eden-git' 'eden-bin' 'eden-preview-bin')
-depends=('libusb' 'libva' 'qt6-webengine' 'qt6-charts' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg' 'zydis' 'zycore-c' 'quazip-qt6' 'mbedtls' 'fmt' 'enet' 'cubeb')
-makedepends=('git' 'cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'enet' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen' 'cpp-jwt')
+conflicts=('eden' 'eden-beta' 'eden-git' 'eden-bin' 'eden-preview-bin' 'eden-nightly-bin')
+depends=('libusb' 'libva' 'qt6-webengine' 'qt6-charts' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg' 'zydis' 'zycore-c' 'quazip-qt6' 'mbedtls' 'fmt' 'enet' 'cubeb' 'qt6-multimedia')
+makedepends=('git' 'cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'enet' 'gamemode' 'renderdoc' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen' 'cpp-jwt')
 optdepends=('gamemode: Gamemoded support')
 options=('lto' '!debug')
-_commit=5ab02276242f9ef2324f164390504db6169f68f4
+_commit=8fd495f906f03e59cdc3e68ec33d0b9b6f257427
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git#commit=${_commit}")
-sha256sums=('d62da0e3fb7aa6656a312b60a96cc0c374e43bf893130f18a3ba06b795a6a87d')
+sha256sums=('8f430d5cee6d9f6243231b50ecf9c8e0fe19d4cc2b01840c79653677d371e721')
 pkgver() {
 	cd "$_pkgname"
 	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/.git//'
