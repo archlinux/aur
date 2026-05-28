@@ -11,7 +11,7 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/shtorm-7/sing-box-extended'
 license=("LicenseRef-${pkgname}")
 
-makedepends=('go')
+makedepends=('go' 'npm')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/shtorm-7/sing-box-extended/archive/v$_pkgver.tar.gz"
         "sing-box.rules")
 sha256sums=('fe5367f0895296df48e884215a302d680eca3f37bb2353a7495d9761eef4aa06'
@@ -38,6 +38,8 @@ build(){
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+    make -j1 admin_panel_regen
 
     go build \
         -v \
