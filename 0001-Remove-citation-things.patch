@@ -1,8 +1,6 @@
-diff --git a/src/parallel b/src/parallel
-index 7959566f..140c8397 100755
 --- a/src/parallel
 +++ b/src/parallel
-@@ -2638,11 +2638,6 @@ sub options_completion_hash() {
+@@ -2436,11 +2436,6 @@ sub options_completion_hash() {
  	 "gnu[Behave like GNU parallel]" => \$opt::gnu,
  	 "link|xapply[Link input sources]" => \$opt::link,
  	 "linkinputsource|xapplyinputsource=i" => \@opt::linkinputsource,
@@ -14,7 +12,7 @@ index 7959566f..140c8397 100755
  	 ("bibtex|citation".
  	  "[Print the citation notice and BibTeX entry for GNU parallel, ".
  	  "silence citation notice for all future runs, and exit. ".
-@@ -2927,14 +2922,6 @@ sub parse_options(@) {
+@@ -2728,14 +2723,6 @@ sub parse_options(@) {
      init_globals();
      my @argv_before = @ARGV;
      @ARGV = read_options();
@@ -29,10 +27,11 @@ index 7959566f..140c8397 100755
      # no-* overrides *
      if($opt::nokeeporder) { $opt::keeporder = undef; }
  
-@@ -3264,87 +3251,6 @@ sub parse_options(@) {
+@@ -3064,88 +3051,6 @@ sub parse_options(@) {
+ 	    eval q{ sub mbswidth { return length @_; } };
  	}
      }
- 
+-
 -    # If you want GNU Parallel to be maintained in the future you
 -    # should keep this.
 -    # _YOU_ will be harming free software by removing the notice.
@@ -117,7 +116,7 @@ index 7959566f..140c8397 100755
      parse_halt();
  
      if($ENV{'PARALLEL_ENV'}) {
-@@ -6815,85 +6721,9 @@ sub usage() {
+@@ -6622,85 +6527,9 @@ sub usage() {
  	 "--recstart str  Record start separator for --pipe.",
  	 "",
  	 "GNU Parallel can do much more. See 'man $Global::progname' for details",
@@ -126,8 +125,8 @@ index 7959566f..140c8397 100755
 -	 "If you use programs that use GNU Parallel to process data for an article in a",
 -	 "scientific publication, please cite:",
 -	 "",
--	 "  Tange, O. (2026, April 22). GNU Parallel 20260422 ('Artemis II').",
--	 "  Zenodo. https://doi.org/10.5281/zenodo.19701238",
+-	 "  Tange, O. (2026, May 22). GNU Parallel 20260522 ('Hantavirus').",
+-	 "  Zenodo. https://doi.org/10.5281/zenodo.20402000",
 -	 "",
 -	 # Before changing these lines,  please read
 -	 # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice
@@ -159,8 +158,8 @@ index 7959566f..140c8397 100755
 -	     "If you use programs that use GNU Parallel to process data for an article in a",
 -	     "scientific publication, please cite:",
 -	     "",
--	     "  Tange, O. (2026, April 22). GNU Parallel 20260422 ('Artemis II').",
--	     "  Zenodo. https://doi.org/10.5281/zenodo.19701238",
+-	     "  Tange, O. (2026, May 22). GNU Parallel 20260522 ('Hantavirus').",
+-	     "  Zenodo. https://doi.org/10.5281/zenodo.20402000",
 -	     "",
 -	     # Before changing these line,   please read
 -	     # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice and
@@ -203,7 +202,7 @@ index 7959566f..140c8397 100755
  sub status(@) {
      my @w = @_;
      my $fh = $Global::status_fd || *STDERR;
-@@ -6958,9 +6788,6 @@ sub version() {
+@@ -6765,9 +6594,6 @@ sub version() {
  	 "This is free software: you are free to change and redistribute it.",
  	 "GNU $Global::progname comes with no warranty.",
  	 "",
