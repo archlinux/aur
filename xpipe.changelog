@@ -1,4 +1,2 @@
-- Fix WezTerm not launching on Linux and macOS
-- Fix file browser rename for conflicting dotfiles failing
-- Fix VNC errors when the server did not respond well to changing the desktop size
-- Fix startup failure race condition when the new dialog to trust self-signed TLS certs was shown too early
+- Fix custom agent SSH auth being broken and marked as incomplete
+- Fix VsCode-based installations in Program Files not being detected (Thanks for @Merlyn42 for the fix)
