@@ -6,11 +6,11 @@
 _pkgname='ryelang'
 pkgname="$_pkgname-git"
 pkgdesc='Rye — a programming language trying to be flexible about expression, but strict about state (development version)'
-pkgver=0.2.7.r1.ga4a20ae
+pkgver=0.2.9.r1.g6c6b1a3
 pkgrel=2
 url='https://ryelang.org/'
 _url='https://github.com/refaktor/rye'
-install="$pkgname.install"
+install="$_pkgname.install"
 arch=('aarch64' 'x86_64')
 license=('BSD-3-Clause')
 makedepends=('git' 'go')
@@ -39,8 +39,6 @@ prepare() {
 
   git clean -dfx
 
-  go mod tidy
-
   cd "examples/mqtt" && \
   sed -i 's|#!/usr/bin/env rye$|#!/usr/bin/ryelang|g' \
     publisher.rye subscriber.rye
@@ -63,7 +61,7 @@ build() {
     -mod=readonly
     -modcacherw
     -trimpath
-    -tags=seccomp
+    -tags=seccomp,no_contrib
   )
   go build "${_opts[@]}" -o bin/ryelang
 }
