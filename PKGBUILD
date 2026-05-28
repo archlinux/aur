@@ -1,6 +1,6 @@
 # Maintainer: inventory69 <inventory69@users.noreply.github.com>
 pkgname=simple-notes-desktop-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Cross-platform note-taking app with WebDAV sync, built with Tauri"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=('simple-notes-desktop')
 conflicts=('simple-notes-desktop' 'simple-notes-desktop-git')
 options=('!strip')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Simple.Notes.Desktop_${pkgver}_amd64.deb")
-sha256sums=('59c7f4dad59c68ab07138c3c5994914499b478754192bdaad44bdaa438fff056')
+sha256sums=('57e99eb1e4793d412ed754ce0d9a8942dd5d2b43c7788ef00bdba214c65669f8')
 
 package() {
   # Extract data from deb package
@@ -29,6 +29,15 @@ package() {
   find "${pkgdir}" -type d -exec chmod 755 {} +
   find "${pkgdir}" -type f -exec chmod 644 {} +
   chmod 755 "${pkgdir}/usr/bin/simple-notes-desktop"
+
+  # Tauri benennt die .desktop-Datei nach productName ("Simple Notes Desktop.desktop"
+  # mit Leerzeichen). Wayland-Compositors (KDE) matchen Fenster über die xdg_toplevel
+  # app_id gegen den Dateinamen ohne .desktop – Leerzeichen im Dateinamen verhindern
+  # das Matching. Umbenennen auf die freedesktop-konforme Form (Binary-Name).
+  if [[ -f "${pkgdir}/usr/share/applications/Simple Notes Desktop.desktop" ]]; then
+    mv "${pkgdir}/usr/share/applications/Simple Notes Desktop.desktop" \
+       "${pkgdir}/usr/share/applications/simple-notes-desktop.desktop"
+  fi
 
   # Install license
   install -Dm644 /dev/null "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
