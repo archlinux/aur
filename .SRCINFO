@@ -1,0 +1,16 @@
+pkgbase = wireforge-git
+	pkgdesc = Braille wireframe viewer and editor
+	pkgver = r24.1683266
+	pkgrel = 1
+	url = https://github.com/Vaishnav-Sabari-Girish/wireforge
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = wireforge
+	source = wireforge-main::git+https://github.com/Vaishnav-Sabari-Girish/wireforge.git#branch=main
+	sha256sums = SKIP
+
+pkgname = wireforge-git
