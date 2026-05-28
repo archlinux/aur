@@ -1,12 +1,12 @@
 pkgbase = lua-luacov-reporter-gcovr
 	pkgdesc = A luacov reporter that creates gcovr json files
 	pkgver = 0.0.5
-	pkgrel = 1
-	url = https://github.com/jprjr/luacov-reporter-gcovr
+	pkgrel = 2
+	url = https://buffering.party/software/luacov-reporter-gcovr/
 	arch = any
 	license = MIT
-	source = luacov-reporter-gcovr-0.0.5.tar.gz::https://github.com/jprjr/luacov-reporter-gcovr/archive/0.0.5.tar.gz
-	sha256sums = 0989a2551000830cc33e8a406da40a34b280b0f993095ef6695eb010e2fb65cd
+	source = https://buffering.party/software/luacov-reporter-gcovr/luacov-reporter-gcovr-0.0.5.tar.gz
+	sha512sums = a95b43c37cd118f04a18e0857a95881eb2786ccb56199494c4e2cf0f5b306c7de6d298b4eb3d658b245b1359bfd0749b16ed1615ddb0c809d22a454062a9a590
 
 pkgname = lua-luacov-reporter-gcovr
 	pkgdesc = A luacov reporter that creates gcovr json files
