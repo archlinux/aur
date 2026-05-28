@@ -2,7 +2,7 @@
 
 pkgname=asteria
 _pkgname=Asteria
-pkgver=2.1.5
+pkgver=2.4.6
 pkgrel=1
 pkgdesc='Astrological chart calculator and analyzer with AI interpretations'
 arch=('i686' 'x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt6-base' 'qt6-svg' 'qt6-webengine' 'qt6-positioning' 'hicolor-icon-th
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "swisseph-2.10.3final.tar.gz::https://github.com/aloistr/swisseph/archive/refs/tags/v2.10.3final.tar.gz")
-sha256sums=('4189b02855ea4350db81a99d12c153d8fd1e9cae7dfac5157e14326317929c88'
+sha256sums=('b7e9a0035b308a9da4c14ee65cf47e4828b6b3d1a4e4a0245a774c4698c0451f'
             '032a71d18cff92c9bf960020abda28d44c8f0c678072dcbab561e9aeb0399fbc')
 
 prepare(){
