@@ -1,6 +1,6 @@
 # Maintainer: Limehawk <128890849+limehawk@users.noreply.github.com>
 pkgname=omarchy-vpn
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="WireGuard VPN manager TUI for Omarchy"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('wireguard-tools' 'systemd-resolvconf')
 makedepends=('go')
 install=omarchy-vpn.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/limehawk/omarchy-vpn/archive/v$pkgver.tar.gz")
-sha256sums=('1b63129235ff87c33df950ff0b8a0734d01890a9b1f8dc81ae3d23329dcfa2bc')
+sha256sums=('3ff8b2648a36ab3d87e04edf0656d5f4526b7375c5311a655e60bb247071111b')
 
 build() {
     cd "$pkgname-$pkgver"
