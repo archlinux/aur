@@ -1,0 +1,18 @@
+pkgbase = mini-agent-bin
+	pkgdesc = Minimal coding agent with Anthropic/OpenAI LLM loop and local tools (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Firstp1ck/mini-agent
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = zlib
+	provides = mini-agent=0.1.0
+	conflicts = mini-agent
+	source = mini-agent-0.1.0-linux.tar.gz::https://github.com/Firstp1ck/mini-agent/releases/download/v0.1.0/mini-agent-linux.tar.gz
+	source = mini-agent-0.1.0-LICENSE::https://github.com/Firstp1ck/mini-agent/raw/v0.1.0/LICENSE
+	sha256sums = ea019ee0b67eddb8560058d2b002519ec64337e6c368758c6802fcff09d5c648
+	sha256sums = ed80c1593045458beaf92a78e1ab7929efd610cd48a1096018b34a20aee1771e
+
+pkgname = mini-agent-bin
