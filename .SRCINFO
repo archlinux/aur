@@ -1,6 +1,6 @@
 pkgbase = libobjectbox
 	pkgdesc = C/C++ database for objects and structs
-	pkgver = 5.3.1
+	pkgver = 5.3.2
 	pkgrel = 1
 	url = https://github.com/objectbox/objectbox-c
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = libobjectbox
 	arch = armv7h
 	license = Apache-2.0 AND custom
 	depends = gcc-libs
-	source_x86_64 = libobjectbox-5.3.1-x86_64.tar.gz::https://github.com/objectbox/objectbox-c/releases/download/v5.3.1/objectbox-linux-x64.tar.gz
-	sha256sums_x86_64 = d1a22f5a43e8aa438c987524c2ef97f5d179acb991b0f63ab03a30c33b882368
-	source_aarch64 = libobjectbox-5.3.1-aarch64.tar.gz::https://github.com/objectbox/objectbox-c/releases/download/v5.3.1/objectbox-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 948fe456904b8b0ae6b22a26a9f460734dc3c2ec58750df3a329ccae1ebe035d
-	source_armv7h = libobjectbox-5.3.1-armv7hf.tar.gz::https://github.com/objectbox/objectbox-c/releases/download/v5.3.1/objectbox-linux-armv7hf.tar.gz
-	sha256sums_armv7h = 13eb38c3f25f907ade0381baf439b70ddeae30ffe4864b7f2e6077bdee597e83
+	source_x86_64 = libobjectbox-5.3.2-x86_64.tar.gz::https://github.com/objectbox/objectbox-c/releases/download/v5.3.2/objectbox-linux-x64.tar.gz
+	sha256sums_x86_64 = 6dbb5450c36dd11ee9074f16ecc61e79b45ff43c2082934601f3166b39c8a613
+	source_aarch64 = libobjectbox-5.3.2-aarch64.tar.gz::https://github.com/objectbox/objectbox-c/releases/download/v5.3.2/objectbox-linux-aarch64.tar.gz
+	sha256sums_aarch64 = bdfbfbf4971057e11018ca6645697d8a40ebc7df56ccde63397cbb0e0609c0e8
+	source_armv7h = libobjectbox-5.3.2-armv7hf.tar.gz::https://github.com/objectbox/objectbox-c/releases/download/v5.3.2/objectbox-linux-armv7hf.tar.gz
+	sha256sums_armv7h = 9e7e4ed9df601cad54950a829f57dd77f297dffb0d0e3b9758bbe2fb01fd0064
 
 pkgname = libobjectbox

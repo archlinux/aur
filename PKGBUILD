@@ -1,10 +1,10 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Rich Lees <git0 at bitservices dot io>
-# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: theguy147 <yakamoz147 (at) protonmail (dot) com>
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=libobjectbox
-pkgver=5.3.1
+pkgver=5.3.2
 pkgrel=1
 pkgdesc='C/C++ database for objects and structs'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -14,9 +14,9 @@ depends=('gcc-libs')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/objectbox-linux-x64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/objectbox-linux-aarch64.tar.gz")
 source_armv7h=("${pkgname}-${pkgver}-armv7hf.tar.gz::${url}/releases/download/v${pkgver}/objectbox-linux-armv7hf.tar.gz")
-sha256sums_x86_64=('d1a22f5a43e8aa438c987524c2ef97f5d179acb991b0f63ab03a30c33b882368')
-sha256sums_aarch64=('948fe456904b8b0ae6b22a26a9f460734dc3c2ec58750df3a329ccae1ebe035d')
-sha256sums_armv7h=('13eb38c3f25f907ade0381baf439b70ddeae30ffe4864b7f2e6077bdee597e83')
+sha256sums_x86_64=('6dbb5450c36dd11ee9074f16ecc61e79b45ff43c2082934601f3166b39c8a613')
+sha256sums_aarch64=('bdfbfbf4971057e11018ca6645697d8a40ebc7df56ccde63397cbb0e0609c0e8')
+sha256sums_armv7h=('9e7e4ed9df601cad54950a829f57dd77f297dffb0d0e3b9758bbe2fb01fd0064')
 
 package() {
     install -Dm644 "$srcdir/lib/$pkgname.so" -t "$pkgdir/usr/lib/"
