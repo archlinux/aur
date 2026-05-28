@@ -1,6 +1,6 @@
 # Maintainer: Lolle2000la
 pkgname=tapauth-git
-pkgver=0.3.0_preview1.r0.gf1ebec1
+pkgver=0.3.2.r0.gffbbf4b
 pkgrel=1
 pkgdesc="Local smartphone-based authentication framework engine (Development/Git version)"
 arch=('x86_64')
@@ -8,6 +8,7 @@ url="https://github.com/lolle2000la/tapauth"
 license=('Apache-2.0')
 depends=('dbus' 'pam')
 makedepends=('cargo' 'rust' 'protobuf' 'git')
+backup=('etc/tapauth/config.toml')
 provides=('tapauth')
 conflicts=('tapauth')
 source=("tapauth::git+https://github.com/lolle2000la/tapauth.git#branch=main")
@@ -41,6 +42,7 @@ build() {
 package() {
   cd "${srcdir}/tapauth"
 
+  install -dm0755 "\$pkgdir/etc/tapauth"
   install -Dm0755 target/release/tapauthd "${pkgdir}/usr/bin/tapauthd"
   install -Dm0755 target/release/tapauth-config "${pkgdir}/usr/bin/tapauth-config"
   install -Dm0755 target/release/libclient_pam.so "${pkgdir}/usr/lib/security/pam_tapauth.so"
