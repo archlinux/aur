@@ -4,7 +4,7 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus-docs
 upstream_name=hydrus
-pkgver=672
+pkgver=673.b
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop (documentation)"
 arch=(any)
@@ -12,7 +12,7 @@ license=(WTFPL)
 url=http://hydrusnetwork.github.io/hydrus/
 depends=()
 makedepends=(git 'mkdocs>=1.3.0' mkdocs-material python-regex 'python-pymdown-extensions>=9.4')
-source=("${upstream_name}::git+https://github.com/hydrusnetwork/${upstream_name}.git#commit=7b12bea769e7c5e5a518dbdfdcdc58d792fa9fda")
+source=("${upstream_name}::git+https://github.com/hydrusnetwork/${upstream_name}.git#commit=27dc5c728ba62f504a18b8c1040d8993bd33c3d2")
 sha256sums=('SKIP')
 
 build() {
@@ -31,6 +31,5 @@ package() {
 
   # Install license files
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
