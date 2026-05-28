@@ -1,6 +1,6 @@
 # Maintainer: Rui Jiang <ruidofm at gmail dot com>
 pkgname=sdctl
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="An easy-to-use TUI for managing systemd units"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'systemd' 'polkit')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('417ce31c6db85252c7a43edde0cc9ef4644936164e6b0581f83c60a91c63a0f3')
+sha256sums=('feb6f3fe6dc291123bf5126e55153c4b5fd1f2a9141189b69c03a98a913126a2')
 
 prepare() {
   cd "$pkgname-$pkgver"
