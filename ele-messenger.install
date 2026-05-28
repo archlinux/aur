@@ -1,0 +1,44 @@
+post_install() {
+    useradd -r -s /sbin/nologin -d /usr/lib/ele-messenger ele-messenger 2>/dev/null || true
+    mkdir -p /var/lib/ele-messenger
+    chown ele-messenger:ele-messenger /var/lib/ele-messenger
+
+    SNIPPET="    include /etc/nginx/sites-available/ele-messenger;"
+    INJECTED=0
+
+    if [ -d /etc/nginx/sites-enabled ]; then
+        for f in /etc/nginx/sites-enabled/*; do
+            [ -f "$f" ] || continue
+            if grep -q 'listen 80' "$f" && ! grep -qF "$SNIPPET" "$f"; then
+                sed -i "$(grep -n '^}' "$f" | tail -1 | cut -d: -f1)i\\$SNIPPET" "$f"
+                INJECTED=1
+                echo "==> Injected ELE nginx snippet into $f"
+                break
+            fi
+        done
+    fi
+
+    if [ "$INJECTED" = "0" ]; then
+        if ! grep -rqF "$SNIPPET" /etc/nginx/sites-enabled/ 2>/dev/null; then
+            cat > /etc/nginx/sites-available/ele-messenger-standalone << 'NGEOF'
+server {
+    listen 80;
+    include /etc/nginx/sites-available/ele-messenger;
+}
+NGEOF
+            ln -sf /etc/nginx/sites-available/ele-messenger-standalone \
+                /etc/nginx/sites-enabled/ele-messenger-standalone
+            echo "==> Created standalone nginx block on port 80"
+        fi
+    fi
+
+    nginx -t && systemctl reload nginx || echo "==> nginx reload failed — check config"
+    systemctl daemon-reload
+    systemctl enable --now ele-messenger
+    echo "==> ELE Messenger started."
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl restart ele-messenger
+}

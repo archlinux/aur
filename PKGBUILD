@@ -1,17 +1,17 @@
 # Maintainer: thefangeddeity
 pkgname=ele-messenger
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Resilience-first household chat platform. Degrades gracefully from LAN to BLE when infrastructure fails."
 arch=('any')
 url="https://github.com/thefangeddeity/ele-messenger"
 license=('GPL3')
+install=ele-messenger.install
 depends=('python' 'python-fastapi' 'uvicorn' 'python-websockets' 'python-aiosqlite' 'nginx')
 optdepends=('tailscale: for Tailscale transport layer')
 backup=('usr/lib/ele-messenger/config.json')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6b2724bba49166bb84aea18986567f62baffd20bf6ea1a544418080799fb5987')
-
+sha256sums=('a88946c1dee57d0d151997b2208a5bbbc07df4e10ad225e68d0281e66272f49f')
 package() {
     cd "$srcdir/ele-messenger-$pkgver/pkg"
     cp -r usr "$pkgdir/"
@@ -19,14 +19,4 @@ package() {
     cp -r etc "$pkgdir/"
     chmod 644 "$pkgdir/etc/systemd/system/ele-messenger.service"
     chmod 644 "$pkgdir/etc/nginx/sites-available/ele-messenger"
-}
-
-post_install() {
-    useradd -r -s /sbin/nologin -d /usr/lib/ele-messenger ele-messenger 2>/dev/null || true
-    mkdir -p /var/lib/ele-messenger
-    chown ele-messenger:ele-messenger /var/lib/ele-messenger
-    systemctl daemon-reload
-    echo "==> Enable and start: systemctl enable --now ele-messenger"
-    echo "==> Add nginx snippet: include /etc/nginx/sites-available/ele-messenger; in your server block"
-    echo "==> Then: systemctl reload nginx"
 }
