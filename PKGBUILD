@@ -30,7 +30,7 @@ sha256sums=('SKIP')
 options=('!lto')
 
 pkgver() {
-  cd 'SlaySP2Manger'
+  cd 'slaySP2Manager-for-arch'
 
   local tag commits hash
   tag=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')
@@ -40,21 +40,21 @@ pkgver() {
 }
 
 prepare() {
-  cd 'SlaySP2Manger'
+  cd 'slaySP2Manager-for-arch'
 
   cargo fetch --locked --manifest-path src-tauri/Cargo.toml
   npm ci
 }
 
 build() {
-  cd 'SlaySP2Manger'
+  cd 'slaySP2Manager-for-arch'
 
   npm run build
   env -u RUSTFLAGS -u CARGO_ENCODED_RUSTFLAGS -u CFLAGS -u CXXFLAGS -u LDFLAGS npm run tauri:build -- --no-bundle
 }
 
 package() {
-  cd 'SlaySP2Manger'
+  cd 'slaySP2Manager-for-arch'
 
   install -Dm755 src-tauri/target/release/slaysp2manager "${pkgdir}/usr/bin/slaysp2manager"
   install -Dm644 src-tauri/icons/icon-256.png "${pkgdir}/usr/share/pixmaps/slaysp2manager.png"
