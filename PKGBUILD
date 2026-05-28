@@ -1,8 +1,8 @@
 # Maintainer: Davide Gerhard <rainbow@irh.it>
 
 pkgname=freedv-gui
-pkgver=2.3.0
-pkgrel=3
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('x86_64' 'aarch64')
 license=('LGPL-2.1-or-later')
@@ -10,11 +10,9 @@ url="https://freedv.org/"
 depends=('libpulse' 'hamlib' 'wxwidgets-gtk3' 'speex' 'libao' 'libsamplerate' 'gsm' 'libsndfile' 'libebur128')
 makedepends=('cmake' 'patchelf' 'wget')
 source=(
-  "1347.patch"
   "${pkgname}-${pkgver}.tar.gz::https://github.com/drowe67/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha512sums=('73b07fec462699c310fa116a153f32bdce610d09bddb42f4026715320dc0766ac5e8cc77fb89814795d28c76b9d062fd7a2af28981296329040f7be4727fb525'
-            '34ee5e8287ff430d589d3fe7065a075392e17f03c5e89b3d4a0ae683a94a31572a415ab41554aabfaa22d5b494b4bf15e7f0becee9f39926b42950a1b0765598')
+sha512sums=('d9ca7aac3bd4be2692d36f60d2bda5766c032f904edfe983a76b830ddb6981e3a71429cab5413eec17f79bb8371bdef074c0a55bf9b3271335a21fe315fc9e0f')
 
 ## trying to use local library
 # Codec2:  fatal error: codec2_alloc.h: No such file or directory
@@ -34,12 +32,6 @@ radae_bins=(
 radae_libs=(
   "librade.so.0.1"
 )
-
-# https://github.com/drowe67/freedv-gui/pull/1347
-# remove with next version
-prepare() {
-  patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="${srcdir}/1347.patch"
-}
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
