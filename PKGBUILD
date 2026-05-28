@@ -2,7 +2,7 @@
 
 pkgname=sync-worktrees
 pkgdesc="Git cli tool for managing worktrees"
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/coderaiser/cloudcmd"
@@ -21,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('73787c89f24c223f4e81c41c857e2320a6dac355829a9d3107e5a88f877c8cf0193c5356c6d300969422c06b9a90583a570b65df42c8365905e676a4f9d3d08a')
+b2sums=('1c57e997b2fe279dcd6e43d271f6aa921b597748cea6109bab9102e167c757567568bbe1358e930642841f9ebe7a449fc9e913d4827b574ae63e5fa7fdce3df8')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
