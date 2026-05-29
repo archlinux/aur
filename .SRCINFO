@@ -1,0 +1,19 @@
+pkgbase = sshpiper
+	pkgdesc = reverse proxy for ssh scp
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/tg123/sshpiper
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = https://github.com/tg123/sshpiper/archive/v1.5.3/sshpiper-1.5.3.tar.gz
+	source = sshpiper.crypto-c785453d857dbf33dd9431a50ced4c11694c6e92.tar.gz::https://github.com/tg123/sshpiper.crypto/archive/c785453d857dbf33dd9431a50ced4c11694c6e92.tar.gz
+	sha512sums = 6e2a542a53415ec75d3f387effbb667846d4e77d0da7da4cb2a57bfdc6826da381ce4021f9ebaede88325e494f6d0f1b371a7208a896d614da0442951e687392
+	sha512sums = b676ec81507f974e736b73b1df77322367b23e46732f6dc60cd3feeca26d0392aaf900ed9fae6f75baa46acd03aa47544a54947930b0350ac45e555fff342438
+	b2sums = 883fc0369307c07110886575edce18465fd0e23536ffa10c433c312977343ac5a5293e0effed6ef0b4dd0f4a20e0a9c90e55c17881abe2365cac5f1fb3681ee6
+	b2sums = 66c830585f8a85b2ac2520b74f97f537aa4c5565b6f197a4f1144c08ec22cee9b619721e34a9b5fa918857145748df2531b512975550386f0c195584f1b01384
+
+pkgname = sshpiper
