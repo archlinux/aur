@@ -5,7 +5,7 @@
 # Contributor: Patrick Smits <mail@patricksmits.net>
 
 pkgname=yaws
-pkgver=2.2.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Web server for dynamic content"
 arch=(x86_64)
@@ -17,7 +17,7 @@ options=(!emptydirs)
 install=${pkgname}.install
 source=("https://github.com/klacke/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
   "${pkgname}.service")
-sha512sums=('3f703d62739346f815055ee45d0768d6a6a0f7bfbc662fa1eb5563ee37c10e00d608910bb6f4d03676c4fbce7642115596c2d6c0894c9112f269fc2db4d89d20'
+sha512sums=('e0fae4f5a23cbaa61a54b2a82d042078726ed90e63ebf90c026bdb269ac1a346334dfe69de0125dfe2b471b1c3bebab4a5f53ced5d0068118cdea499b62004de'
             '6bafd099901d4da241094d137191eda7c18ec8ff9d3f9688aa37220db11d7d19ad97ab6fa4e8b57ebf9c7e2f16ac162284332354d4dae61340ddc598933cee0e')
 
 prepare() {
