@@ -1,0 +1,10 @@
+post_install() {
+    printf '%b\n' \
+        '\e[1;33mThe alc298-hda-init systemd service is installed but not enabled automatically.\e[0m' \
+        'To enable and start the service, run:' \
+        '\e[1;32m  systemctl enable --now alc298-hda-init.service\e[0m'
+}
+
+post_upgrade() {
+    post_install
+}
