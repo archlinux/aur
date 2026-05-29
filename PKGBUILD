@@ -2,7 +2,7 @@
 # Previous maintainer: Patrick Fischer <aur@pathin.me>
 # Revived package with updated upstream tarball
 pkgname=windsurf-bin
-pkgver=2.3.9
+pkgver=2.3.15
 pkgrel=1
 pkgdesc="The new purpose-built IDE to harness magic (binary pre-built version)"
 arch=('x86_64')
@@ -41,9 +41,9 @@ install=windsurf-bin.install
 # Download URL from Windsurf API
 # To update: curl -s https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest | jq -r '.url'
 # Then update pkgver and the URL below
-_url="https://windsurf-stable.codeiumdata.com/linux-x64/stable/a5d3f1ff990cabc0e8001cce6642bdb7ad429e73/Windsurf-linux-x64-${pkgver}.tar.gz"
+_url="https://windsurf-stable.codeiumdata.com/linux-x64/stable/c46c49e94b4d3f41181204d59809d8f1b2c48d68/Windsurf-linux-x64-${pkgver}.tar.gz"
 source=("windsurf-${pkgver}.tar.gz::$_url")
-sha256sums=('874024744cd853b7c350fe514be19b0060fac39586253c3b7602d6869473eadc')
+sha256sums=('cffdd3e01715f2a9b271b026a26cf204308915bcb4851b6103b30ef7a2d52deb')
 
 build() {
     # Extract the tarball
@@ -84,5 +84,4 @@ EOF
     
     # Fix permissions
     chmod 755 "$pkgdir/opt/windsurf/windsurf"
-    # chmod 4755 "$pkgdir/opt/windsurf/chrome-sandbox" 2>/dev/null || true
 }

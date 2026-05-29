@@ -1,6 +1,6 @@
 pkgbase = windsurf-bin
 	pkgdesc = The new purpose-built IDE to harness magic (binary pre-built version)
-	pkgver = 2.3.9
+	pkgver = 2.3.15
 	pkgrel = 1
 	url = https://windsurf.com/
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = windsurf-bin
 	provides = windsurf
 	conflicts = windsurf
 	options = !strip
-	source = windsurf-2.3.9.tar.gz::https://windsurf-stable.codeiumdata.com/linux-x64/stable/a5d3f1ff990cabc0e8001cce6642bdb7ad429e73/Windsurf-linux-x64-2.3.9.tar.gz
-	sha256sums = b2b8d1644f8684feaa21326d93829f79319381c439fd88663ee570966954d626
+	source = windsurf-2.3.15.tar.gz::https://windsurf-stable.codeiumdata.com/linux-x64/stable/a5d3f1ff990cabc0e8001cce6642bdb7ad429e73/Windsurf-linux-x64-2.3.15.tar.gz
+	sha256sums = cffdd3e01715f2a9b271b026a26cf204308915bcb4851b6103b30ef7a2d52deb
 
 pkgname = windsurf-bin
