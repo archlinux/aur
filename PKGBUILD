@@ -1,6 +1,6 @@
 pkgname=ark-cli
-pkgver=0.1.0_alpha.4
-pkgrel=2
+pkgver=0.1.0_alpha.5
+pkgrel=1
 pkgdesc="Plain-text terminal organiser for notes, todos, and events"
 arch=('any')
 url="https://github.com/benjaminingreens/ark"
