@@ -4,7 +4,7 @@
 pkgname=deepseek-tui-git
 _pkgname=deepseek-tui
 pkgver=0.8.46.r49.g54151a4b
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal coding agent for DeepSeek models - git version"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Hmbown/DeepSeek-TUI"
