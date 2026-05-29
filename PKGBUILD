@@ -2,13 +2,14 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=5.67.0
-_pkgver=4.215.0-patch.1
+pkgver=5.68.0
+_pkgver=release-20260527
 pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://techdocs.akamai.com/cloud-computing/docs/cli"
-license=('BSD-3-Clause')
+license=('BSD-3-Clause'
+         'Apache-2.0')
 depends=('python-openapi3'
          'python-requests' 
          'python-rich'
@@ -21,15 +22,15 @@ optdepends=('python-boto3: Object Storage plugin')
 replaces=("${pkgname}-dev")
 install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname%%-*}/${pkgname}/archive/v${pkgver}.tar.gz"
-        "${pkgname%%-*}-api-docs-${_pkgver}.tar.gz::https://github.com/${pkgname%%-*}/${pkgname%%-*}-api-docs/archive/refs/tags/${_pkgver}.tar.gz")
-noextract=("${pkgname%%-*}-api-docs-${_pkgver}.tar.gz")
-sha512sums=('4841e7911c0f31b51e5815b9b60b18b85a975c9b8602ffa50a64f53b7e9980603e46d33935603876209e8cadae1300fb363e2e2d9c0fb683c88b68c23ce5d531'
-            '08f436727e45203ab4c0faf65c77b0450c7c796a6458ef8efcf911cfcccc643ec0afaaca8f807f86a11f5a5f9f41e3f65cfdf06c87cf8a2e4bcc67369aad426f')
+        "${pkgname%%-*}-api-openapi-${_pkgver}.tar.gz::https://github.com/${pkgname%%-*}/${pkgname%%-*}-api-openapi/archive/refs/tags/${_pkgver}.tar.gz")
+noextract=("${pkgname%%-*}-api-openapi-${_pkgver}.tar.gz")
+sha512sums=('78a5edb6de7bc0544169e657c505542a307571256befc3a070ac04874c4213e9c84a2556be6d894409719bd6fa8edf52edefa42a679bc226207669e261a9bf1c'
+            '8e8fa299edee74a67afb015fa605d77919849fc8802ef139e0162bfb04d72f64ee3bd561250d5a53d2dd5a280c879ba38e7ff50c3c5f1da186c36b48d82aaeb9')
 
 prepare() {
   # Extract API spec
-  bsdtar -zvxf "${pkgname%%-*}-api-docs-${_pkgver}.tar.gz" "${pkgname%%-*}-api-docs-${_pkgver}/openapi.json"
-  mv "${pkgname%%-*}-api-docs-${_pkgver}/openapi.json" "${pkgname}-${pkgver}/openapi.json"
+  bsdtar -zvxf "${pkgname%%-*}-api-openapi-${_pkgver}.tar.gz" "${pkgname%%-*}-api-openapi-${_pkgver}/openapi.json"
+  mv "${pkgname%%-*}-api-openapi-${_pkgver}/openapi.json" "${pkgname}-${pkgver}/openapi.json"
 
   # Fix version number
   cd "${pkgname}-${pkgver}"
