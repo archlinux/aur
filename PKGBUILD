@@ -1,8 +1,10 @@
 pkgname=sniffercommit
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="Fast C++20-powered pre-commit hook and CI generator"
+
 arch=('x86_64')
+
 url="https://github.com/slowy07/sniffercommit"
 license=('MIT')
 
@@ -10,24 +12,27 @@ depends=(
   'git'
   'bash'
   'fmt'
-  'tomlplusplus'
 )
 
 makedepends=(
   'cmake'
+  'ninja'
+  'clang'
 )
 
-source=(
-  "$pkgname-$pkgver.tar.gz"::$url/archive/refs/tags/v$pkgver.tar.gz
-)
+source=()
 
-sha256sums=('SKIP')
+sha256sums=()
+
+_repo_root="/home/builder/project"
 
 build() {
   cmake -B build \
-    -S "$srcdir/$pkgname-$pkgver" \
+    -S "$_repo_root" \
+    -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DSNIFFERCOMMIT_USER_SYSTEM_DEPS=ON
+    -DSNIFFERCOMMIT_USE_SYSTEM_FMT=ON \
+    -DSNIFFERCOMMIT_USE_SYSTEM_TOMLPLUSPLUS=OFF
 
   cmake --build build --parallel
 }
