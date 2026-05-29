@@ -1,13 +1,14 @@
 pkgbase = proxy-term-bin
 	pkgdesc = A desktop proxy management tool with GUI
-	pkgver = 0.2.0
-	pkgrel = 1
+	pkgver = 0.3.0
+	pkgrel = 2
 	url = https://github.com/lyj404/proxy_term
 	arch = x86_64
 	license = Apache
+	depends = xdotool
 	conflicts = proxy-term
 	provides = proxy-term
-	source = https://github.com/lyj404/proxy_term/releases/download/v0.2.0/proxy_term-0.1.0-x86_64-linux.tar.gz
+	source = https://github.com/lyj404/proxy_term/releases/download/v0.3.0/proxy_term-0.1.0-x86_64-linux.tar.gz
 	sha256sums = SKIP
 
 pkgname = proxy-term-bin
