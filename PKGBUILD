@@ -15,11 +15,10 @@ sha256sums=('SKIP')
 package() {
     cd "$srcdir/Hexer"
 
-    install -Dm755 main.py "$pkgdir/usr/lib/hexer-cli/main.py"
+    install -Dm755 core/gui.py "$pkgdir/usr/lib/hexer-cli/gui.py"
 
-    # launcher
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/hexer-cli" << 'EOF'
 #!/usr/bin/env bash
-exec python /usr/lib/hexer-cli/main.py
+exec python /usr/lib/hexer-cli/gui.py
 EOF
 }
