@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=drawio-bin
-pkgver=30.0.2
+pkgver=30.0.4
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=("any")
@@ -9,7 +9,7 @@ url="https://github.com/jgraph/drawio"
 license=("Apache")
 options=(!strip)
 source=("drawio-${pkgver}.war::https://github.com/jgraph/drawio/releases/download/v${pkgver}/draw.war")
-sha512sums=('6f71d48eec857c655902e223a4ae939f7e935fd472b144958d77a38c63233bd476dca10e13f0d250dfff0d35149b40fe498e6667f842afff62968c79b8b39d54')
+sha512sums=('80ac73277472b76e2d5aedf2c50c92f131b1430ebc563ddf6fe3c4d398b2f1366cb959b061d713f67de83879c5242fc7b0c12dd151de1fcb9f1ca99972046190')
 
 package() {
     install -dm755 "${pkgdir}/usr/share/webapps/drawio"
