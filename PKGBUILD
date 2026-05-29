@@ -4,14 +4,14 @@ pkgname=('lua-miniflac' 'lua51-miniflac' 'lua52-miniflac' 'lua53-miniflac' 'lua5
 _pkgbase='luaminiflac'
 pkgdesc="Lua library for decoding FLAC files"
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686' 'aarch64')
-url='https://github.com/jprjr/luaminiflac'
+url='https://buffering.party/software/luaminiflac/'
 license=('MIT')
 _lua_cur=5.5
 _lua_next=5.6
 makedepends=('cmake' "lua>=${_lua_cur}" "lua<${_lua_next}" 'lua51' 'lua52' 'lua53' 'lua54')
-source=("$url/releases/download/v${pkgver}/luaminiflac-${pkgver}.tar.gz")
+source=("${url}luaminiflac-${pkgver}.tar.gz")
 
 _build() {
     LUA_V=$1
