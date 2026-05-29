@@ -7,7 +7,7 @@
 # Contributor: Anders Bostrom <anders.bostrom@home.se>
 
 pkgname=thunderbird-globalmenu
-pkgver=149.0
+pkgver=151.0
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org'
 url='https://www.thunderbird.net/'
@@ -33,7 +33,8 @@ depends=(
   libjpeg-turbo
   libffi libffi.so
   nspr
-  gcc-libs
+  libgcc
+  libstdc++
   libx11
   libxrender
   libxfixes
@@ -59,7 +60,7 @@ makedepends=(
   gawk perl findutils libotr wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
 )
 options=(!emptydirs !makeflags !lto)
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/eb03fc1a6d4e37def5dc47fbdbade7d2e7593770
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/2d45fbdcd2a55cc391daa83c4c846c7b44a6a5bf
 source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/thunderbird-${pkgver}.source.tar.xz{,.asc}
         $commit/0024-bgo-969412-glibc-2.43.patch
         $commit/clang22-wasm32-wasip1.patch
@@ -110,7 +111,9 @@ prepare() {
     third_party/rust/glslopt/.cargo-checksum.json
   sed -i -e 's/\("files":{\)[^}]*/\1/' \
     comm/third_party/rust/glslopt/.cargo-checksum.json
-
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2041134
+  sed -i 's/log\.warn(/log.warning(/' \
+    comm/build/moz.configure/gecko_source.configure
   # Make icon transparent
   sed -i '/^<rect/d' comm/mail/branding/thunderbird/TB-symbolic.svg
 
@@ -123,7 +126,6 @@ prepare() {
   printf "%s" "$_mozilla_api_key" >mozilla-api-key
   cp ../mozconfig.cfg .mozconfig
   sed "s|@PWD@|${PWD@Q}|g" -i .mozconfig
-  sed -i '\|#include "mozilla/VirtualKeyCodeList.h"|d' widget/gtk/nsMenuItem.cpp
 }
 
 build() {
@@ -187,7 +189,7 @@ END
     "$pkgdir/usr/lib/thunderbird/thunderbird-bin"
 }
 
-sha512sums=('f58588cc8aac170f5d3160730c6427ed1df91e7e5d4654f12399900ec8a24d63168f6e9b4c726130e2c93d0c17f49943ca81fd90d430a6314c4784a3d1864367'
+sha512sums=('a20f435f07ee7d0e1119072de3d9e98d4cb6eb7101d5b186641c74db8a8ba94b55d393ecef2cf4db8ff470b473cf4fd7367dbe3d0a0c891382f08fb9ec7c2a67'
             'SKIP'
             '470f37b6401c9a031d11b56ed94dacc3f3e36e86c27931c5924ec8c3ad8f9676970d7d29af8f288ac88081a2a785b088365412128076559e1ba4df1546026dc8'
             'b7097f0d620be87047f6f11f152bd096dc144b1745fe30dc75db7d7050242c4178382f7e504cc10ad3545a3455174ca17a83fa3113443dffe660f28de006cb0e'
@@ -202,5 +204,5 @@ sha512sums=('f58588cc8aac170f5d3160730c6427ed1df91e7e5d4654f12399900ec8a24d63168
 provides=(thunderbird)
 conflicts=(thunderbird)
 
-source+=(https://github.com/Lexi-Ewald/unity-menubar/raw/a4ee19d6d7c10875e0f1831481a836262de2cadb/unity-menubar.patch)
-sha512sums+=(1a0e1be20d43ce91babb36df6b33401237adda3fa582d24fba39a94bacde6f09859a9ec5c9ee35d76fe6fa14a0476ea364d533d62ddac9a73c1563db6d794876)
+source+=(https://github.com/Lexi-Ewald/unity-menubar/raw/9a69a0967c32991d488f3b47bb287ecf38aa1f55/unity-menubar.patch)
+sha512sums+=(878952fe51cea206529d6e0b438c3a40e83e0318702ed2750d636bc2f05bedf0e33e664c3506a3a5f1e9f73549431bdb3ecfb3089240734f55ab26dc2d896cfc)
