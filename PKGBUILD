@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartoc
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Barto job executor client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('logrotate: periodic cleanup of rotated log files'
 makedepends=('cargo')
 install=bartoc.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/barto/archive/v$pkgver.tar.gz")
-sha256sums=('c68c01d96e9ae0b37220cfd2a39edf874cae4585df28e89f5bbad7b692a5b4ef')
+sha256sums=('d4a9033546ae7774664916d624632d58d2881144b71c14ea96938dfd4eeb9ecf')
 
 prepare() {
     cd "barto-$pkgver"
@@ -40,7 +40,7 @@ package() {
     install -Dm755 "dist/bartoc/bartoc-launcher" "$pkgdir/usr/lib/bartoc/bartoc-launcher"
 
     # Interactive setup helper for systemd user credentials (lingering services)
-    install -Dm755 "dist/bartoc/bartoc-secrets-init" "$pkgdir/usr/bin/bartoc-secrets-init"
+    install -Dm755 "packaging/nfpm/scripts/bartoc-secrets-init" "$pkgdir/usr/bin/bartoc-secrets-init"
 
     # Man page
     install -Dm644 "dist/bartoc/bartoc.1" "$pkgdir/usr/share/man/man1/bartoc.1"

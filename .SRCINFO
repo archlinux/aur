@@ -1,6 +1,6 @@
 pkgbase = bartoc
 	pkgdesc = Barto job executor client
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/rustyhorde/barto
 	install = bartoc.install
@@ -10,7 +10,7 @@ pkgbase = bartoc
 	makedepends = cargo
 	optdepends = logrotate: periodic cleanup of rotated log files
 	optdepends = xz: xz compression of rotated log files
-	source = bartoc-1.4.4.tar.gz::https://github.com/rustyhorde/barto/archive/v1.4.4.tar.gz
-	sha256sums = c68c01d96e9ae0b37220cfd2a39edf874cae4585df28e89f5bbad7b692a5b4ef
+	source = bartoc-1.4.5.tar.gz::https://github.com/rustyhorde/barto/archive/v1.4.5.tar.gz
+	sha256sums = d4a9033546ae7774664916d624632d58d2881144b71c14ea96938dfd4eeb9ecf
 
 pkgname = bartoc
