@@ -1,0 +1,19 @@
+pkgbase = python-fluent
+	pkgdesc = Python implementation of Project Fluent
+	pkgver = 0.4.0_syntax0.19.0
+	pkgrel = 1
+	url = https://github.com/projectfluent/python-fluent
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	provides = python-fluent.runtime
+	provides = python-fluent.syntax
+	conflicts = python-fluent.runtime
+	conflicts = python-fluent.syntax
+	source = https://github.com/projectfluent/python-fluent/archive/refs/tags/fluent.runtime@0.4.0.tar.gz
+	sha512sums = 6225f9ef88a3a4e67a9e7d4a39e792cd6c03a0a90afba2ff6cf0a99cdd698d884bfe3ee2ffbeb18d93d8ce7dae5bdec9fb8df2b17a9921111d901e0f9a5c4d29
+
+pkgname = python-fluent
