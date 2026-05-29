@@ -1,6 +1,6 @@
 pkgbase = entropy-shield
 	pkgdesc = Modern Linux desktop privacy stack — Tor, DNSCrypt, I2P, Onion Server
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/berk-kucuk/entropy-shield
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = entropy-shield
 	depends = polkit
 	optdepends = redsocks: transparent proxy support for I2P routing
 	optdepends = firefox: privacy browser integration
-	source = entropy-shield-1.0.0.tar.gz::https://github.com/berk-kucuk/entropy-shield/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = be53eb1ed55d9ed222c0fd66a8f56cf905002f8f294b605941f11c5ebc960a60
+	source = entropy-shield-2.0.0.tar.gz::https://github.com/berk-kucuk/entropy-shield/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 9df732b88d21717e59d92fdccdcb7fbb085e842e3c238400773be01d3182628b
 
 pkgname = entropy-shield

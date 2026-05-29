@@ -1,6 +1,6 @@
 # Maintainer: Berk Kucuk <berkkucukk@proton.me>
 pkgname=entropy-shield
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Modern Linux desktop privacy stack — Tor, DNSCrypt, I2P, Onion Server"
 arch=('any')
@@ -22,14 +22,14 @@ optdepends=(
     'firefox: privacy browser integration'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/entropy-shield/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('be53eb1ed55d9ed222c0fd66a8f56cf905002f8f294b605941f11c5ebc960a60')
+sha256sums=('9df732b88d21717e59d92fdccdcb7fbb085e842e3c238400773be01d3182628b')
 
 package() {
     cd "$pkgname-$pkgver"
 
     # Install application files
     install -dm755 "$pkgdir/opt/entropy-shield"
-    cp -r core gui logos main.py "$pkgdir/opt/entropy-shield/"
+    cp -r core gui logos Fonts main.py "$pkgdir/opt/entropy-shield/"
     chmod 755 "$pkgdir/opt/entropy-shield/main.py"
 
     # Launcher
@@ -40,10 +40,10 @@ exec python3 /opt/entropy-shield/main.py "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/entropy-shield"
 
-    # Icon
-    install -Dm644 logos/entropy-logo.png \
+    # Icon (use dark.png as default)
+    install -Dm644 logos/dark.png \
         "$pkgdir/usr/share/pixmaps/entropy-shield.png"
-    install -Dm644 logos/entropy-logo.png \
+    install -Dm644 logos/dark.png \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/entropy-shield.png"
 
     # Desktop entry
