@@ -1,6 +1,6 @@
 pkgbase = r-igraph
 	pkgdesc = Network Analysis and Visualization
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=igraph
 	arch = x86_64
@@ -35,8 +35,8 @@ pkgbase = r-igraph
 	optdepends = r-testthat
 	optdepends = r-vdiffr
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/igraph_2.3.1.tar.gz
-	md5sums = c35002b7bf8306384e27e8ea8580c6c5
-	b2sums = 006fee137176f6fa65acc9cc68f2a1e2f88abd40e6b12b4c530a07c7eea5b98b482bd17eed9bc1fbec9c79abd5b8631fa61fdc7c69e1873d0c477a4f53543b50
+	source = https://cran.r-project.org/src/contrib/igraph_2.3.2.tar.gz
+	md5sums = 2ad887c09ac8f7712a1532d6bba64339
+	b2sums = 7d405fedc42e20e81b374370fc648e34be40b9bb97ac8047b8af2666526db3e2fcabb59859435bc0ee9d5dc9e9928d4f8ba689b4a52570f918175f6017a448c2
 
 pkgname = r-igraph
