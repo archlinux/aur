@@ -1,6 +1,6 @@
 pkgbase = comfyui-desktop-2-beta
 	pkgdesc = ComfyUI Desktop 2.0 – Electron desktop app for ComfyUI
-	pkgver = 0.6.11
+	pkgver = 0.6.12
 	pkgrel = 1
 	url = https://github.com/Comfy-Org/ComfyUI-Desktop-2.0-Beta
 	arch = x86_64
@@ -43,9 +43,9 @@ pkgbase = comfyui-desktop-2-beta
 	optdepends = libcups: printing support
 	optdepends = at-spi2-core: accessibility support
 	options = !strip
-	source = comfyui-desktop-2-beta::git+https://github.com/Comfy-Org/ComfyUI-Desktop-2.0-Beta#tag=v0.6.11
+	source = comfyui-desktop-2-beta::git+https://github.com/Comfy-Org/ComfyUI-Desktop-2.0-Beta#tag=v0.6.12
 	source = comfyui-desktop-2.desktop
-	sha256sums = af1c548ecd905b367eca44f5e4ced85472a639752fe1abba875df44fc9b2b8d8
+	sha256sums = de97f4ed6421d5c8663ac69f9a8d10b3f517cb436860d5097a7435b8dd9161dd
 	sha256sums = b818d04a3e4943d5f74fc12d14cf8b9d7a1496ccf6aa3268af23bfa88e7e34e6
 
 pkgname = comfyui-desktop-2-beta
