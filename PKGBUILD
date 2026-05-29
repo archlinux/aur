@@ -1,13 +1,13 @@
 # Maintainer: Needed!
 
 pkgname=samrewritten-git
-pkgver=1.3.5.r2.gc5dfcaa
+pkgver=1.4.0.r1.ge94912f
 pkgrel=1
 pkgdesc="Unlock achievements and stats on Steam, and more!"
 url="https://github.com/PaulCombal/SamRewritten"
 license=('GPL-3.0-only')
 arch=('x86_64')
-makedepends=('cargo' 'gtk4' 'pkg-config' 'git')
+makedepends=('rust>=1.95' 'cargo' 'gtk4' 'pkg-config' 'git')
 depends=('gtk4')
 optdepends=('libadwaita: for Adwaita styling')
 source=("git+https://github.com/PaulCombal/SamRewritten.git")
@@ -24,7 +24,7 @@ prepare() {
 build() {
   cd "${srcdir}/SamRewritten"
   export CARGO_TARGET_DIR=target
-  
+
   # Might break builds, just let cargo be in charge
   unset CFLAGS
   unset CXXFLAGS
