@@ -10,8 +10,8 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'git' 'ninja-makeflags')
 provides=('mingw-w64-vtk')
 conflicts=('mingw-w64-vtk')
 options=('!buildflags' 'staticlibs' '!strip')
-source=("git+https://gitlab.kitware.com/vtk/vtk.git" diy2.patch)
-sha256sums=('SKIP' 'SKIP')
+source=("git+https://gitlab.kitware.com/vtk/vtk.git")
+sha256sums=('SKIP')
 
 _architectures="x86_64-w64-mingw32"
 
