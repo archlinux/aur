@@ -2,7 +2,7 @@
 
 pkgname=dicto-bin
 pkgver=0.2.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Minimal native dictionary app for MDX/MDD files"
 arch=('x86_64')
 url="https://github.com/logi-camp/dicto"
