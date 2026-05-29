@@ -1,0 +1,13 @@
+pkgbase = zigmate
+	pkgdesc = Terminal chess game with local hot-seat and network play over SSH (written in Zig)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/greenelephante/zigmate
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = zig
+	source = zigmate-1.0.0.tar.gz::https://codeberg.org/greenelephante/zigmate/archive/v1.0.0.tar.gz
+	sha256sums = 7856ca31a6067750310cea102d2f69d06733d93ee2bd93a744aa55ae3c52eb06
+
+pkgname = zigmate
