@@ -73,9 +73,21 @@ check() {
 
 	export RUSTUP_TOOLCHAIN=stable
 
+	# Skip rebuilding the executable.
+	# https://github.com/rust-lang/cargo/issues/12980
+	find "crates/${_pkgname}/src" -name "*.rs" -delete
+	sed -i '/^default-run = "squawk"$/d' "crates/${_pkgname}/Cargo.toml"
+	# Skip rebuilding the dependencies.
+	sed -i \
+		'/^\[dependencies\]$/,/^\[dev-dependencies\]$/ { /^\[dev-dependencies\]$/!d }' \
+		"crates/${_pkgname}/Cargo.toml"
+	# Test against the release executable.
+	declare "CARGO_BIN_EXE_${_pkgname}=${PWD:?}/target/release/${_pkgname}"
+	export "CARGO_BIN_EXE_${_pkgname}"
+
 	cargo test \
 		--all-features \
-		--frozen \
+		--offline \
 		--package "${_pkgname}" \
 		--test '*'
 }
