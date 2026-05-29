@@ -4,7 +4,7 @@
 _pkgname=BestClient
 pkgname=bestclient
 pkgver=1.7.1
-pkgrel=8
+pkgrel=9
 pkgdesc="DDRaceNetwork modification that adds new feauters"
 arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
@@ -68,9 +68,11 @@ prepare() {
 	local _avfmt="$pkgname/game/libavformat.so.60.16.100"
 	local _avcod="$pkgname/game/libavcodec.so.60.31.102"
 
-	# libformat.so.60 ihtiyaçları: sistem versiyonuna yönlendir (uyarı verir ama çalışır)
-	patchelf --replace-needed libxml2.so.2     libxml2.so.16   "$_avfmt"
-	patchelf --replace-needed libbluray.so.2   libbluray.so.3  "$_avfmt"
+	# libavformat.so.60: libxml2 (DASH/HLS XML parse) ve libbluray (Blu-ray)
+	# GNU sembol versiyon tabloları uyumsuz — replace-needed ld.so assertion hatasına yol açıyor.
+	# DDNet bunları kullanmaz, kaldır.
+	patchelf --remove-needed libxml2.so.2   "$_avfmt"
+	patchelf --remove-needed libbluray.so.2 "$_avfmt"
 
 	# libavcodec.so.60 codec bağımlılıkları: DDNet video encode etmediğinden bu
 	# dış encoder/codec kütüphanelerine gerek yok. FFmpeg'in dahili decoderleri
