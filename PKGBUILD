@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-library-sparkfun-git
-pkgver=V_0.5.r31.ge23396a
+pkgver=0.5.r1393.g14865e2
 pkgrel=1
 pkgdesc="SparkFun's KiCad Libraries"
 arch=(any)
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd SparkFun-KiCad-Libraries
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^V_//'
 }
 
 package() {

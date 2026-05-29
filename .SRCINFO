@@ -1,6 +1,6 @@
 pkgbase = kicad-library-sparkfun-git
 	pkgdesc = SparkFun's KiCad Libraries
-	pkgver = V_0.5.r31.ge23396a
+	pkgver = 0.5.r1393.g14865e2
 	pkgrel = 1
 	url = https://github.com/sparkfun/SparkFun-KiCad-Libraries
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = kicad-library-sparkfun-git
 	sha256sums = SKIP
 
 pkgname = kicad-library-sparkfun-git
-
