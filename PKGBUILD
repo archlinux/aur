@@ -36,7 +36,7 @@ prepare() {
     fi
     cd "${srcdir}/${pkgname}-${pkgver}"
     export CARGO_HOME="${srcdir}/.cargo"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
