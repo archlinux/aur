@@ -1,0 +1,19 @@
+pkgbase = sz0mtify
+	pkgdesc = Self-hosted music analytics and listening companion for Subsonic/Navidrome libraries
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Sz0msz3dvagy0k/music-listening-dashboard
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pkgconf
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	source = sz0mtify-0.1.0.tar.gz::https://github.com/Sz0msz3dvagy0k/music-listening-dashboard/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = updpkgsums
+
+pkgname = sz0mtify
