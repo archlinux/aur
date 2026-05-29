@@ -1,0 +1,11 @@
+pkgbase = ttf-delagothic
+	pkgdesc = fat sans-serif font
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/syakuzen/DelaGothic
+	arch = any
+	license = OFL
+	source = https://github.com/syakuzen/DelaGothic/raw/refs/heads/master/fonts/ttf/DelaGothicOne-Regular.ttf
+	sha256sums = 155da8f318553c11d9dffc2affbc7c2114c6a46f9740bcf639ed5568af92be71
+
+pkgname = ttf-delagothic
