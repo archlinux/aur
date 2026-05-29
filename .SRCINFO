@@ -1,6 +1,6 @@
 pkgbase = pxview-git
 	pkgdesc = GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.
-	pkgver = 1.4.8.r13.69e4e45
+	pkgver = 1.4.9.r14.11ea4f8
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/PXLogic/PXView
@@ -20,7 +20,6 @@ pkgbase = pxview-git
 	depends = qt5-base
 	depends = qt5-svg
 	depends = boost-libs
-	depends = saribbon
 	source = pxview-git::git+https://github.com/PXLogic/PXView
 	source = 0001-make-glibc-happy.patch
 	source = 0002-simplify-qt-version-detection.patch

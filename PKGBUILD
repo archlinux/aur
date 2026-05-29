@@ -6,7 +6,7 @@
 # Origin Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=pxview-git
-pkgver=1.4.8.r13.69e4e45
+pkgver=1.4.9.r14.11ea4f8
 pkgrel=1
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
@@ -15,7 +15,7 @@ url='https://github.com/PXLogic/PXView'
 license=(GPL-3.0-or-later)
 # Upstream added VCS dependency to libsigrokdecode :/
 depends=(hicolor-icon-theme glib2 python fftw
-        libusb zlib qt5-base qt5-svg boost-libs saribbon)
+        libusb zlib qt5-base qt5-svg boost-libs)
 makedepends=(boost cmake git librsvg)
 source=("${pkgname}::git+https://github.com/PXLogic/PXView"
         "0001-make-glibc-happy.patch"
