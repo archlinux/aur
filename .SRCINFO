@@ -1,6 +1,6 @@
 pkgbase = forum-scout
 	pkgdesc = Arch focused forum search tool
-	pkgver = 0.5.9
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/musqz/forum-scout
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = forum-scout
 	depends = gtk3
 	depends = python-gobject
 	depends = python-requests
-	source = forum-scout-0.5.9.tar.gz::https://github.com/musqz/forum-scout/archive/refs/tags/v0.5.9.tar.gz
-	sha256sums = 713930b31ec1f7403f7794d9cb742b69f76766ace659ef49079e059f10f18308
+	source = forum-scout-0.6.0.tar.gz::https://github.com/musqz/forum-scout/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 1db1cc526928379b3f76c4c1a76f16ffde76df14fe12c16ca7903a8204c91647
 
 pkgname = forum-scout
