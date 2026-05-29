@@ -2,7 +2,7 @@
 pkgname=singcast
 epoch=1
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A clash GUI client based on Flutter"
 arch=('x86_64')
 url="https://github.com/mapleafgo/singcast"
