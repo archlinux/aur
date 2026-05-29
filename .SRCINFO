@@ -1,0 +1,20 @@
+pkgbase = vopono-gui
+	pkgdesc = Graphical frontend for vopono
+	pkgver = 0.10.17
+	pkgrel = 1
+	url = https://github.com/jamesmcm/vopono
+	arch = any
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = rust
+	depends = vopono
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = systemd-libs
+	depends = xdotool
+	provides = vopono-gui
+	conflicts = vopono-gui
+	source = vopono-gui-0.10.17.tar.gz::https://github.com/jamesmcm/vopono/archive/0.10.17.tar.gz
+	sha256sums = 92f0e610905a6469c152b64b9ce2c232e8d0acd01ba328ae607428001b2029ca
+
+pkgname = vopono-gui
