@@ -1,6 +1,6 @@
 pkgbase = cloneholio
 	pkgdesc = Maintain local backups of *all Git repositories* belonging to a user or group.
-	pkgver = 0.15.1
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/nvllsvm/cloneholio
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = cloneholio
 	depends = python-pygithub
 	depends = python-requests
 	depends = python-tqdm
-	source = https://files.pythonhosted.org/packages/source/c/cloneholio/cloneholio-0.15.1.tar.gz
-	sha256sums = 18214df4846b899f4e922d0e119847e3b19f7631c81b78cbb7bca28760d6542b
+	source = https://files.pythonhosted.org/packages/source/c/cloneholio/cloneholio-0.16.0.tar.gz
+	sha256sums = e16942c887c424c8a7b89a2eb619dbae13b39376c107c42da531b9bf8613d763
 
 pkgname = cloneholio

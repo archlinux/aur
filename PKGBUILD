@@ -1,7 +1,7 @@
 # Contributor: Andrew Rabert <ar nullsum.net>
 
 pkgname=cloneholio
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Maintain local backups of *all Git repositories* belonging to a user or group."
 url="https://github.com/nvllsvm/cloneholio"
@@ -10,7 +10,7 @@ makedepends=('python-build' 'python-hatchling' 'python-hatch-vcs' 'python-instal
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('18214df4846b899f4e922d0e119847e3b19f7631c81b78cbb7bca28760d6542b')
+sha256sums=('e16942c887c424c8a7b89a2eb619dbae13b39376c107c42da531b9bf8613d763')
 
 build() {
     cd $pkgname-$pkgver
