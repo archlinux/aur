@@ -11,7 +11,7 @@ pkgbase = neko-cloud-music
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-svg
-	source = neko-cloud-music-9aea7681b38c5c72bd906e9b4d70fb39e4848b52.tar.gz::https://github.com/FantasyNetworkCN/NekoMusicForPc/archive/9aea7681b38c5c72bd906e9b4d70fb39e4848b52.tar.gz
+	source = neko-cloud-music-8b8a6bd49d4ac737ae8ac55279ce95ea4394fe0f.tar.gz::https://github.com/FantasyNetworkCN/NekoMusicForPc/archive/8b8a6bd49d4ac737ae8ac55279ce95ea4394fe0f.tar.gz
 	sha256sums = SKIP
 
 pkgname = neko-cloud-music

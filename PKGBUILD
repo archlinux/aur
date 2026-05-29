@@ -1,7 +1,7 @@
 # 版本号：build 时 pkgver() 从 CMakeLists.txt 读取；发 AUR 前可运行 ./packaging/aur/sync-aur.sh
 pkgname=neko-cloud-music
 pkgver=2026.528.24
-pkgrel=1
+pkgrel=2
 pkgdesc="NekoMusic: Free High-Quality Cloud Music"
 arch=('x86_64' 'aarch64')
 url="https://github.com/FantasyNetworkCN/NekoMusicForPc"
@@ -9,7 +9,7 @@ license=('AGPL-3.0-or-later')
 depends=('qt6-base' 'qt6-multimedia' 'qt6-svg')
 makedepends=('cmake' 'ninja')
 
-_commit=9aea7681b38c5c72bd906e9b4d70fb39e4848b52
+_commit=b9f4f332e63df72858510e8edd283cf620ca4b1f
 source=("${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz")
 sha256sums=('SKIP')
 
