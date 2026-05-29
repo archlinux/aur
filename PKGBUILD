@@ -1,5 +1,6 @@
-# Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
-# Maintainer: Oleg Shparber <trollixx+aur@gmail.com>
+# Maintainer: Miranda Collins (serqetry) <miranda@xyla.net>
+# Contributor: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
+# Contributor: Oleg Shparber <trollixx+aur@gmail.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Sébastien Luttringer
@@ -8,18 +9,18 @@
 # Contributor: Vesa Kaihlavirta
 
 _pkgname=awesome
-pkgname=${_pkgname}-git
-pkgver=4.3.1683.g691e36425
+pkgname=${_pkgname}-stellar-git
+pkgver=4.3.1746.g27eb6132
 pkgrel=1
-pkgdesc='Highly configurable framework window manager'
+pkgdesc='Highly configurable framework window manager (Bleeding edge / Unmerged PRs)'
 arch=('i686' 'x86_64')
 url='https://awesomewm.org/'
 license=('GPL2')
 depends=('cairo' 'dbus' 'gdk-pixbuf2' 'libxdg-basedir' 'libxkbcommon-x11'
          'lua' 'lua-lgi' 'pango' 'startup-notification' 'xcb-util-cursor'
          'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util-xrm' 'libxfixes')
-makedepends=('asciidoctor' 'cmake' 'docbook-xsl' 'git' 'imagemagick' 'ldoc'
-             'xmlto')
+#makedepends=('asciidoctor' 'cmake' 'docbook-xsl' 'git' 'imagemagick' 'ldoc' 'xmlto')
+makedepends=('cmake' 'git' 'imagemagick')
 optdepends=('rlwrap: readline support for awesome-client'
             'dex: autostart your desktop files'
             'xcb-util-errors: for pretty-printing of X11 errors'
@@ -28,7 +29,7 @@ optdepends=('rlwrap: readline support for awesome-client'
 provides=('notification-daemon' 'awesome')
 conflicts=('awesome')
 backup=('etc/xdg/awesome/rc.lua')
-source=("$pkgname::git+https://github.com/awesomeWM/awesome.git")
+source=("${pkgname}::git+https://github.com/miranda/awesome.git#branch=awesome-stellar")
 md5sums=('SKIP')
 _LUA_VER=5.4
 
@@ -47,6 +48,7 @@ build() {
     -DLUA_INCLUDE_DIR=/usr/include/lua${_LUA_VER} \
     -DLUA_LIBRARY=/usr/lib/liblua.so.${_LUA_VER} \
     -DLUA_EXECUTABLE=/usr/bin/lua${_LUA_VER} \
+	-DGENERATE_DOC=OFF \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
