@@ -1,0 +1,16 @@
+post_install() {
+  cat <<'EOF'
+==> whispy installed. Finish setup (this is required before first use):
+
+      whispy-daemon setup
+
+   It builds whisper.cpp with the Vulkan backend, downloads the ggml model,
+   grants ydotool uinput access, seeds ~/.config/whispy, and enables the
+   systemd user service. Add `--quickshell` to also install the pill overlay.
+   Then add the Hyprland keybinds it prints at the end.
+EOF
+}
+
+post_upgrade() {
+  :
+}
