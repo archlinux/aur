@@ -4,7 +4,7 @@ _appname=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-git"
 _electron='electron40'
-pkgver=2.145.0.r0.g8db1653
+pkgver=4.6.0.r0.g96e8dbb
 pkgrel=1
 pkgdesc="Maintain your Ledger devices (git-main)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ sha512sums=('SKIP'
 _nvm_install() {
   export NVM_DIR="${srcdir}/.nvm"
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-  nvm install "$(awk -F "=" '/node/ {print $2}' .prototools | xargs)"
+  nvm install
 }
 
 _check_electron() {
@@ -43,6 +43,7 @@ build() {
 
   _nvm_install
 
+  export CI=true
   export UV_USE_IO_URING=0
   pnpm i --filter="${_appname}..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld:deps
