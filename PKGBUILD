@@ -2,7 +2,7 @@
 _pkgname=musescore
 pkgname=musescore-bin
 pkgver=4.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Create, play and print beautiful sheet music / AppImage version'
 arch=(x86_64)
 url=https://musescore.org/
@@ -29,7 +29,8 @@ prepare() {
 
 build() {
     # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=.*|Exec=env DESKTOPINTEGRATION=false /usr/bin/${appname} %U|"\
+    # LD_PRELOAD to fix ffmpeg library incompatibility with the AppImage
+    sed -i -E "s|Exec=.*|Exec=env DESKTOPINTEGRATION=false LD_PRELOAD=/usr/lib/libdbus-1.so /usr/bin/${appname} %U|"\
         "squashfs-root/org.musescore.MuseScore4portable.desktop"
     # Remove "Portable" from the application name
     sed -i -E "s|Name=MuseScore Studio.*|Name=MuseScore Studio ${pkgver}|"\
