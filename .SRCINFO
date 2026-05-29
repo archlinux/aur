@@ -5,25 +5,30 @@ pkgbase = python-moteus
 	url = https://pypi.org/project/moteus/
 	arch = any
 	license = Apache-2.0
+	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/py3/m/moteus/moteus-1.0.0-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/m/moteus-gui/moteus_gui-1.0.0-py3-none-any.whl
-	source = https://raw.githubusercontent.com/mjbots/fdcanusb/master/70-fdcanusb.rules
-	sha256sums = b1a8211d1397d3d7b37c8ee66391a4e6cbde48b1c0be397fff5123a51aefbebb
-	sha256sums = eb1e8d5624a6f562d4d699b8bd83c15fae4d758dc8ff67cf563ff5bc2fb2117f
-	sha256sums = 6008f3b20baca0e4a077bc45c8e541717d6e3fc63ba7621dc3b1bcb14d86cb23
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = mypy
+	makedepends = nodejs
+	source = python-moteus::git+https://github.com/mjbots/moteus.git#tag=python/v1.0.0
+	source = https://github.com/mjbots/fdcanusb/blob/master/70-fdcanusb.rules
+	sha256sums = b5f9fdf12a6eb7baf6e00a5db154b2115323708fe8a9310f1f806d04d7d273fd
+	sha256sums = 433de43876d9f6abd1a3895924fd47e4a634d102ffd6604cd05d8290d266dc6f
 
 pkgname = python-moteus
 	depends = python-importlib-metadata
 	depends = python-pyelftools
 	depends = python-pyserial
 	depends = python-can
+	depends = python-scipy
+	depends = python-packaging
 
 pkgname = python-moteus-gui
 	depends = pyside6
 	depends = python-asyncqt
 	depends = python-matplotlib
 	depends = python-moteus
-	depends = python-numpy
+	depends = python-scipy
 	depends = python-qtconsole
 	depends = python-qtpy
