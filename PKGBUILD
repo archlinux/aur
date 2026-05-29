@@ -1,6 +1,6 @@
 # Maintainer: Eric Bakker <musqz at mf dot com>
 pkgname=forum-scout-gtk4
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Arch focused forum search tool (GTK4)"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 checkdepends=('desktop-file-utils')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7795861c82b6d6fd23bccb47b3fe13ab93bab779fa2c3929a47bf0d584255ff0')
+sha256sums=('abf202a3918c0985f2e09ed844794711c421b620f8f50d71467178c5de2e8b3e')
 
 prepare() {
   cd "$pkgname-$pkgver"
