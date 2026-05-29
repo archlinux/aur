@@ -9,8 +9,8 @@ pkgbase="python-${_pkgname}-cuda12.9"
 pkgname=("${pkgbase}" "python-${_pkgname}-opt-cuda12.9")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.11.0
-pkgrel=4
+pkgver=2.12.0
+pkgrel=2
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)'
 arch=('x86_64')
 url="https://pytorch.org"
@@ -114,10 +114,8 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         add_gpu_targets_rocm.patch
         aotriton_disable_install.patch
         pyproject.patch
-        fix_pybind11.patch
-        allow_gcc_14_with_cuda_12.8.patch
         )
-b2sums=('995a6fb3164db61d67e877c1b38a3786b75066943f1b9d01b458796124f0183b023548f9839abef5a272a229b6d9969933bdf19072ab50b9eb656e2aebfbb471'
+b2sums=('607de4efeed0bfece53c010bc1493e83c0aff088faea14110b3f64d5e3f231a5bc2677c54a5df0d5069913d0e073356f882c95ef85902b624d51eebda2b985a2'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -162,9 +160,7 @@ b2sums=('995a6fb3164db61d67e877c1b38a3786b75066943f1b9d01b458796124f0183b023548f
         'eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980'
         '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
-        '21234592e20b5ff1bf43f926bdda72b089cc2b32b92d4287e5aa6b20dc8ebbb2e30135ba8b881d64c35d98be457366bcfd9982cf2e38fd3fc13901955fa571da'
-        '1fcd8326343b3318eb6475fbd11cd3d28a826627206d55ac95dc13af78946b2bcadc3b0f5be965a33f24c7bb1de62706f256894449fa93604d064c90158ce1e1'
-        'a50dfd46306fc97d352f0452ed9a6004392a5cf4ed107e994cf749c723a336a552466155488673bed30d9d80c3c430fe812984b499d4784b29574426abb8d3dd')
+        '21234592e20b5ff1bf43f926bdda72b089cc2b32b92d4287e5aa6b20dc8ebbb2e30135ba8b881d64c35d98be457366bcfd9982cf2e38fd3fc13901955fa571da')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -236,11 +232,6 @@ prepare() {
   # into the torch folder. Disable this behavior.
   patch -p1 -i "${srcdir}/aotriton_disable_install.patch"
 
-  # Fix building with pybind11 3.0.2
-  # (https://github.com/pybind/pybind11/pull/5881 added typing for py::make_tuple
-  # and gcc complains when the ?: operator gets different types for each operand)
-  patch -p1 -i "${srcdir}/fix_pybind11.patch"
-
   # Avoid using /usr/include along with -isystem
   # https://bugs.archlinux.org/task/64981
   # https://gitlab.archlinux.org/archlinux/packaging/packages/python-pytorch/-/issues/37
@@ -249,16 +240,13 @@ prepare() {
   # patch python dependencies in pyproject.toml
   patch -p1 -i "${srcdir}/pyproject.patch"
 
-  # Allow gcc 14 with CUDA 12.8
-  patch -p1 -i "${srcdir}/allow_gcc_14_with_cuda_12.8.patch"
-
   cd "${srcdir}"
 
   cp -r "${_pkgname}" "${_pkgname}-cuda"
   mv "${_pkgname}" "${_pkgname}-opt-cuda"
 }
 
-# Common build configuration, called in all package() functions.
+# Common build configuration, called in the build() function.
 _prepare() {
   export VERBOSE=1
   export PYTORCH_BUILD_VERSION="${pkgver}"
@@ -300,10 +288,6 @@ _prepare() {
   # (note that 8.8 is not supported)
   export TORCH_CUDA_ARCH_LIST="5.2 5.3 6.0 6.1 6.2 7.0 7.2"
 
-  export ROCM_PATH=/opt/rocm
-  export HIP_ROOT_DIR=/opt/rocm
-  # gfx950 lacks support for 128 bit atomics
-  export PYTORCH_ROCM_ARCH="$(rocm-supported-gfx -e gfx950)"
   # Composable kernels is not supported for all architectures.
   # https://github.com/pytorch/pytorch/issues/150187
   export USE_ROCM_CK_GEMM=OFF
@@ -335,6 +319,7 @@ build() {
   export USE_CUDA=1
   export USE_CUDNN=1
   export USE_ROCM=0
+  export USE_XPU=0
   cd "${srcdir}/${_pkgname}-cuda"
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   python -m build --wheel --no-isolation
@@ -344,6 +329,7 @@ build() {
   export USE_CUDA=1
   export USE_CUDNN=1
   export USE_ROCM=0
+  export USE_XPU=0
   _prepare
   echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   python -m build --wheel --no-isolation
