@@ -1,0 +1,23 @@
+pkgbase = pipewire-visualizer-git
+	pkgdesc = PipeWire Visualizer spectrum overlay for Wayland desktops
+	pkgver = 0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/niyoko/pipewire-visualizer
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = pipewire
+	depends = fftw
+	provides = pipewire-visualizer
+	provides = pwviz
+	conflicts = pipewire-visualizer
+	conflicts = pwviz
+	source = git+https://github.com/niyoko/pipewire-visualizer.git
+	sha256sums = SKIP
+
+pkgname = pipewire-visualizer-git
