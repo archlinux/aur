@@ -11,7 +11,7 @@
 #     to the matching aur.archlinux.org/ykw.git repo.
 
 pkgname=ykw
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Multi-recipient YubiKey OpenPGP workflow CLI (Bash)"
 arch=('any')
@@ -35,7 +35,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 
 # Replaced by `arch/aur-bump.sh` per release. 'SKIP' lets makepkg run
 # without curl'ing the tarball during development.
-sha256sums=('9b4e2bf8f8a619093a17bbae8e185ffcd4c6b4634d1488fc2777e2e9600aa60a')
+sha256sums=('cc404b1fb85d66c86fc3cf3429b8809e0c79447e0a0e52b03866fcb73cf0e909')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
