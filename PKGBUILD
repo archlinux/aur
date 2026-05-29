@@ -2,7 +2,7 @@
 
 pkgname=mihomosh
 pkgver=2.3.2
-pkgrel=0
+pkgrel=1
 pkgdesc="A CLI Toolkit for Mihomo"
 arch=('x86_64')
 url="https://github.com/SamuNatsu/mihomosh"
