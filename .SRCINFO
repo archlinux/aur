@@ -1,0 +1,16 @@
+pkgbase = goto-dir
+	pkgdesc = Lightweight directory shortcut manager for POSIX shells
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/byteoverride/goto
+	arch = any
+	license = MIT
+	depends = coreutils
+	optdepends = bash: Bash shell integration and completion
+	optdepends = zsh: Zsh shell integration and completion
+	optdepends = fish: Fish shell integration and completion
+	conflicts = goto
+	source = goto-1.0.0.tar.gz::https://github.com/byteoverride/goto/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = goto-dir
