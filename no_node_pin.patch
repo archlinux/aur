@@ -1,13 +1,12 @@
-diff '--color=auto' --unified --recursive --text lameta-2.2.7-alpha.old/package.json lameta-2.2.7-alpha/package.json
---- lameta-2.2.7-alpha.old/package.json	2024-02-06 08:36:37.724821660 +0100
-+++ lameta-2.2.7-alpha/package.json	2024-02-06 08:36:51.522271132 +0100
-@@ -257,10 +257,6 @@
+diff -ura lameta-3.0.18-betaorig/package.json lameta-3.0.18-betanew/package.json
+--- lameta-3.0.18-betaorig/package.json	2026-05-29 07:14:23.686125283 +0200
++++ lameta-3.0.18-betanew/package.json	2026-05-29 07:15:38.308913428 +0200
+@@ -259,9 +259,6 @@
      "xmllint-wasm": "^4.0.2",
      "xpath": "^0.0.33"
    },
--  "//remember to match this with github actions in main.yml": "",
 -  "engines": {
--    "node": "18.16.0"
+-    "node": "22.16.0"
 -  },
    "debug": {
      "env": {
