@@ -1,6 +1,6 @@
 pkgbase = hermes-agent-git
         pkgdesc = Locally-run AI agent with tool use, web browsing, and automation
-        pkgver = 2026.5.16.r1095.gbb4703c
+        pkgver = 2026.5.29.r10.ga61878
         pkgrel = 1
         url = https://github.com/NousResearch/hermes-agent
         install = hermes-agent.install

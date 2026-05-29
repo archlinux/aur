@@ -3,7 +3,7 @@
 # Contributor: Evert <evorster at gmail dot com>
 _pkgname=hermes-agent
 pkgname=${_pkgname}-git
-pkgver=2026.5.16.r1095.gbb4703c
+pkgver=2026.5.29.r10.ga61878
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
@@ -40,11 +40,6 @@ pkgver() {
 build() {
   cd "${_pkgname}"
 
-  echo "==> Installing Node.js dependencies..."
-  if [ -f "package.json" ]; then
-    npm install || return 1
-  fi
-
   echo "==> Building frontend..."
   if [ -d "web" ]; then
     cd web
@@ -64,11 +59,6 @@ build() {
     # it automatically (no HERMES_TUI_DIR env var needed).
     mkdir -p hermes_cli/tui_dist
     cp ui-tui/dist/entry.js hermes_cli/tui_dist/entry.js
-  fi
-
-  echo "==> Installing whatsapp-bridge dependencies..."
-  if [ -f "scripts/whatsapp-bridge/package.json" ]; then
-    (cd scripts/whatsapp-bridge && npm install --legacy-peer-deps --omit=dev) || return 1
   fi
 
   echo "==> Creating Python venv and installing dependencies..."
@@ -100,6 +90,10 @@ package() {
   cp -r venv/lib/${_py_ver}/site-packages/* "$_optdir/venv/lib/${_py_ver}/site-packages/"
 
   cp -r scripts "$_optdir/"
+  echo "==> Installing whatsapp-bridge dependencies..."
+  if [ -f "$_optdir/scripts/whatsapp-bridge/package.json" ]; then
+    (cd "$_optdir/scripts/whatsapp-bridge" && npm install --legacy-peer-deps --omit=dev)
+  fi
 
   # The upstream main.py:1304 auto-detects tui_dist/entry.js bundled in
   # the hermes_cli package (via pyproject.toml [tool.setuptools.package-data]).
