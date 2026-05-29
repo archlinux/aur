@@ -2,7 +2,7 @@
 
 _pkgname=BestClient
 pkgname=bestclient
-pkgver=1.4.3
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="DDRaceNetwork modification that adds new feauters"
 arch=('x86_64')
@@ -14,8 +14,8 @@ optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
 	'discord-game-sdk: Enable rich presence in Discord desktop client.')
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
 install="$pkgname.install"
-source=("https://github.com/RoflikBEST/bestdownload/releases/download/v$pkgver/bestclient.tar.xz" "$pkgname.png")
-sha256sums=('14e1b03583a7dfceff0371c168ce0e87d5d2a1bc81168212a2993984d6d3ea2d'
+source=("https://github.com/RoflikBEST/bestdownload/releases/download/v$pkgver/BestClient-linux.tar.xz" "$pkgname.png")
+sha256sums=('ffe98fc6159789e56241e90e27aa5cf2ab2ec0ac9ebefe8d6c13e6acf566e649'
             'a118504f690407019294b39bea26920e2cddee94c032a1e5fae1ea216c9ea64f')
 
 prepare() {
