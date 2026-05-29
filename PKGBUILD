@@ -1,20 +1,20 @@
 # Maintainer: Marco Calautti <phoenix_87_c@hotmail.com>
 pkgname=spotube-fork-bin
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Fork by marcos10pcs of Spotube, open source Music client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=(x86_64)
 url="https://github.com/marcos10pcs/spotube"
 license=('BSD-4-Clause')
 groups=()
-depends=('mpv' 'libappindicator-gtk3' 'libsecret' 'jsoncpp' 'libnotify' 'xdg-user-dirs' 'webkit2gtk-4.1')
+depends=('mpv' 'libappindicator-gtk3' 'libsecret' 'jsoncpp' 'libnotify' 'xdg-user-dirs' 'webkit2gtk-4.1' 'yt-dlp-nightly-bin')
 makedepends=()
 checkdepends=()
-optdepends=('yt-dlp-git')
-provides=()
+optdepends=()
+provides=("spotube")
 conflicts=("spotube-bin" "spotube")
-replaces=()
+replaces=("spotube-bin")
 backup=()
 options=()
 install=
