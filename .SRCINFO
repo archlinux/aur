@@ -1,9 +1,9 @@
 pkgbase = alsa-hdspeconf
 	pkgdesc = RME HDSPe MADI/AES/RayDAT/AIO/AIO-Pro sound cards user space configuration tool
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PhilippeBekaert/hdspeconf
-	arch = any
+	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = alsa-lib
@@ -12,8 +12,7 @@ pkgbase = alsa-hdspeconf
 	depends = glibc
 	depends = wxwidgets-common
 	depends = wxwidgets-gtk3
-	provides = alsa-hdspeconf=1.0-1
-	source = git+https://github.com/PhilippeBekaert/hdspeconf.git
+	source = alsa-hdspeconf-1.0.tar.gz::https://github.com/PhilippeBekaert/hdspeconf/archive/764ad26f18947368b7c329c6f1c07fc95098158e.tar.gz
 	source = hdspeconf.sh
 	source = hdspeconf.desktop
 	sha256sums = SKIP
