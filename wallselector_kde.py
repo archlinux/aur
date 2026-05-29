@@ -31,13 +31,13 @@ CONFIG_FILE = os.path.expanduser("~/.config/wallselector-kde.json")
 DEFAULT_DIR = os.path.expanduser("~/Pictures/Wallpapers")
 
 I18N = {
-    "en": {"settings_title": "Settings", "folder": "Wallpaper Folder:", "browse": "Browse", "pause_bat": "Pause on Battery", "pause_dpms": "Pause when Screen Off (DPMS)", "pause_man": "Force Pause Video Wallpapers", "shortcut": "Global Shortcut:", "press_key": "Press combination...", "autostart": "Autostart on Boot", "language": "Language:", "close": "Close", "save": "Save"},
-    "uk": {"settings_title": "Налаштування", "folder": "Папка зі шпалерами:", "browse": "Огляд", "pause_bat": "Пауза від батареї", "pause_dpms": "Пауза, якщо екран вимкнено", "pause_man": "Примусова пауза відеошпалер", "shortcut": "Глобальна комбінація:", "press_key": "Натисніть клавіші...", "autostart": "Автозапуск при ввімкненні", "language": "Мова (Language):", "close": "Закрити", "save": "Зберегти"},
-    "ru": {"settings_title": "Настройки", "folder": "Папка с обоями:", "browse": "Обзор", "pause_bat": "Пауза от батареи", "pause_dpms": "Пауза при выкл. экране", "pause_man": "Принудительная пауза видео", "shortcut": "Глобальная комбинация:", "press_key": "Нажмите клавиши...", "autostart": "Автозапуск при старте ПК", "language": "Язык (Language):", "close": "Закрыть", "save": "Сохранить"}
+    "en": {"settings_title": "Settings", "folder": "Wallpaper Folder:", "browse": "Browse", "pause_bat": "Pause on Battery", "pause_dpms": "Pause when Screen Off (DPMS)", "pause_man": "Force Pause Video Wallpapers", "shortcut": "Global Shortcut (Wayland):", "kde_btn": "Configure in KDE Settings", "autostart": "Autostart on Boot", "language": "Language:", "close": "Close", "save": "Save"},
+    "uk": {"settings_title": "Налаштування", "folder": "Папка зі шпалерами:", "browse": "Огляд", "pause_bat": "Пауза від батареї", "pause_dpms": "Пауза, якщо екран вимкнено", "pause_man": "Примусова пауза відеошпалер", "shortcut": "Глобальна комбінація (Wayland):", "kde_btn": "Налаштувати в параметрах KDE", "autostart": "Автозапуск при ввімкненні", "language": "Мова (Language):", "close": "Закрити", "save": "Зберегти"},
+    "ru": {"settings_title": "Настройки", "folder": "Папка с обоями:", "browse": "Обзор", "pause_bat": "Пауза от батареи", "pause_dpms": "Пауза при выкл. экране", "pause_man": "Принудительная пауза видео", "shortcut": "Глобальная комбинация (Wayland):", "kde_btn": "Настроить в параметрах KDE", "autostart": "Автозапуск при старте ПК", "language": "Язык (Language):", "close": "Закрыть", "save": "Сохранить"}
 }
 
 def load_config():
-    cfg = {"wallpaper_folder": DEFAULT_DIR, "pause_battery": False, "pause_screen_off": False, "pause_manual": False, "language": "en", "shortcut": "Alt+T", "autostart": True}
+    cfg = {"wallpaper_folder": DEFAULT_DIR, "pause_battery": False, "pause_screen_off": False, "pause_manual": False, "language": "en", "autostart": True}
     if os.path.exists(CONFIG_FILE):
         try:
             with open(CONFIG_FILE, 'r') as f: cfg.update(json.load(f))
@@ -47,38 +47,6 @@ def load_config():
 def save_config(cfg):
     os.makedirs(os.path.dirname(CONFIG_FILE), exist_ok=True)
     with open(CONFIG_FILE, 'w') as f: json.dump(cfg, f)
-
-def enforce_kde_rules(shortcut_str):
-    if not shortcut_str: return
-
-    subprocess.run(["kbuildsycoca6"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    time.sleep(0.2)
-
-    # Жестко перезаписываем шорткат в правильном формате Plasma 6
-    subprocess.run(["systemctl", "--user", "stop", "plasma-kglobalaccel.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    time.sleep(0.2)
-    subprocess.run(["kwriteconfig6", "--file", "kglobalshortcutsrc", "--group", "services", "--group", "wallselector_kde.desktop", "--key", "_launch", shortcut_str], stdout=subprocess.DEVNULL)
-    subprocess.run(["systemctl", "--user", "start", "plasma-kglobalaccel.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
-    # Прописываем скрытие из панели И форсируем фокус для Wayland
-    rule_id = "wallselector_hide"
-    res = subprocess.run(["kreadconfig6", "--file", "kwinrulesrc", "--group", "General", "--key", "rules"], capture_output=True, text=True)
-    rules_list = res.stdout.strip().split(",") if res.stdout.strip() else []
-    if rule_id not in rules_list:
-        rules_list.append(rule_id)
-        new_rules = ",".join(filter(None, rules_list))
-        subprocess.run(["kwriteconfig6", "--file", "kwinrulesrc", "--group", "General", "--key", "rules", new_rules], stdout=subprocess.DEVNULL)
-        subprocess.run(["kwriteconfig6", "--file", "kwinrulesrc", "--group", "General", "--key", "count", str(len(rules_list))], stdout=subprocess.DEVNULL)
-
-    subprocess.run(["kwriteconfig6", "--file", "kwinrulesrc", "--group", rule_id, "--key", "Description", "Скрытие и Фокус Wallselector KDE"], stdout=subprocess.DEVNULL)
-    subprocess.run(["kwriteconfig6", "--file", "kwinrulesrc", "--group", rule_id, "--key", "wmclass", "wallselector_kde"], stdout=subprocess.DEVNULL)
-    subprocess.run(["kwriteconfig6", "--file", "kwinrulesrc", "--group", rule_id, "--key", "wmclassmatch", "2"], stdout=subprocess.DEVNULL)
-    subprocess.run(["kwriteconfig6", "--file", "kwinrulesrc", "--group", rule_id, "--key", "skiptaskbar", "true"], stdout=subprocess.DEVNULL)
-    subprocess.run(["kwriteconfig6", "--file", "kwinrulesrc", "--group", rule_id, "--key", "skiptaskbarrule", "2"], stdout=subprocess.DEVNULL)
-    # Магия отключения защиты от кражи фокуса:
-    subprocess.run(["kwriteconfig6", "--file", "kwinrulesrc", "--group", rule_id, "--key", "fsplevel", "0"], stdout=subprocess.DEVNULL)
-    subprocess.run(["kwriteconfig6", "--file", "kwinrulesrc", "--group", rule_id, "--key", "fsplevelrule", "2"], stdout=subprocess.DEVNULL)
-    subprocess.run(["qdbus6", "org.kde.KWin", "/KWin", "org.kde.KWin.reconfigure"], stdout=subprocess.DEVNULL)
 
 CACHE_DIR = os.path.expanduser("~/.cache/plasma-wallpapers")
 LAST_WP_FILE = os.path.join(CACHE_DIR, "last_selected.txt")
@@ -196,30 +164,6 @@ class DaemonWatcher:
         subprocess.Popen(["kwriteconfig6", "--file", "kscreenlockerrc", "--group", "Greeter", "--key", "WallpaperPlugin", plugin], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.Popen(["kwriteconfig6", "--file", "kscreenlockerrc", "--group", "Greeter", "--group", "Wallpaper", "--group", plugin, "--group", "General", "--key", cfg_key, cfg_val], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-class ShortcutInputButton(QPushButton):
-    def __init__(self, text, lang_dict, parent=None):
-        super().__init__(text, parent)
-        self.setCheckable(True)
-        self.current_shortcut = text
-        self.lang_dict = lang_dict
-
-    def keyPressEvent(self, event: QKeyEvent):
-        if not self.isChecked():
-            super().keyPressEvent(event)
-            return
-        key = event.key()
-        modifiers = event.modifiers()
-        if key in (Qt.Key.Key_Control, Qt.Key.Key_Shift, Qt.Key.Key_Alt, Qt.Key.Key_Meta): return
-        if key == Qt.Key.Key_Escape:
-            self.setText(self.current_shortcut)
-            self.setChecked(False)
-            return
-        seq = QKeySequence(key | modifiers.value)
-        shortcut_str = seq.toString(QKeySequence.SequenceFormat.PortableText)
-        self.current_shortcut = shortcut_str
-        self.setText(shortcut_str)
-        self.setChecked(False)
-
 class SettingsMenu(QDialog):
     def __init__(self, parent=None, current_config=None, anchor_widget=None):
         super().__init__(parent)
@@ -300,9 +244,9 @@ class SettingsMenu(QDialog):
         layout.addWidget(self.cb_manual)
 
         layout.addWidget(QLabel(self.t["shortcut"]))
-        self.btn_shortcut = ShortcutInputButton(self.cfg.get("shortcut", "Alt+T"), self.t)
-        self.btn_shortcut.toggled.connect(lambda checked: self.btn_shortcut.setText(self.t["press_key"] if checked else self.btn_shortcut.current_shortcut))
-        layout.addWidget(self.btn_shortcut)
+        self.btn_kde_shortcuts = QPushButton(self.t["kde_btn"])
+        self.btn_kde_shortcuts.clicked.connect(self.open_kde_shortcuts)
+        layout.addWidget(self.btn_kde_shortcuts)
 
         layout.addStretch()
         btn_box = QHBoxLayout()
@@ -321,6 +265,9 @@ class SettingsMenu(QDialog):
 
     def change_language_preview(self, new_lang):
         self.cfg["language"] = new_lang
+
+    def open_kde_shortcuts(self):
+        subprocess.Popen(["systemsettings", "kcm_keys"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     def showEvent(self, event):
         if self.anchor and self.parent():
@@ -355,11 +302,6 @@ class SettingsMenu(QDialog):
         else:
             with open(autostart_path, "w") as f:
                 f.write("[Desktop Entry]\nHidden=true\n")
-
-        new_shortcut = self.btn_shortcut.current_shortcut
-        if self.cfg.get("shortcut") != new_shortcut:
-            self.cfg["shortcut"] = new_shortcut
-            enforce_kde_rules(new_shortcut)
 
         save_config(self.cfg)
 
@@ -503,13 +445,12 @@ class WallpaperSelector(QWidget):
         self.is_settings_open = False
 
         cfg = load_config()
-        if not cfg.get("rules_applied_v11"):
-            enforce_kde_rules(cfg.get("shortcut", "Alt+T"))
+        if not cfg.get("daemon_autostart_created"):
             autostart_path = os.path.expanduser("~/.config/autostart/wallselector_kde_daemon.desktop")
             os.makedirs(os.path.dirname(autostart_path), exist_ok=True)
             with open(autostart_path, "w") as f:
                 f.write("[Desktop Entry]\nName=Wallselector KDE Daemon\nExec=wallselector_kde --hidden\nType=Application\nTerminal=false\nX-KDE-autostart-phase=2\n")
-            cfg["rules_applied_v11"] = True
+            cfg["daemon_autostart_created"] = True
             save_config(cfg)
 
         QTimer.singleShot(50, self.init_carousel)
@@ -617,7 +558,6 @@ class WallpaperSelector(QWidget):
 
     def changeEvent(self, event):
         if event.type() == QEvent.Type.ActivationChange:
-            # 300мс иммунитета на самом старте, чтобы KGlobalAccel не убил окно из-за Wayland-задержек
             if time.time() - getattr(self, 'startup_time', 0) > 0.3:
                 if not self.isActiveWindow() and not self.is_applying and not self.is_settings_open:
                     QApplication.quit()
@@ -625,18 +565,6 @@ class WallpaperSelector(QWidget):
 
     def keyPressEvent(self, event: QKeyEvent):
         if not self.items: return super().keyPressEvent(event)
-        cfg = load_config()
-        current_shortcut = cfg.get("shortcut", "Alt+T").split("+")
-        if len(current_shortcut) == 2:
-            mod_str, key_str = current_shortcut[0].lower(), current_shortcut[1].lower()
-            mod_pressed = False
-            if "alt" in mod_str and (event.modifiers() & Qt.KeyboardModifier.AltModifier): mod_pressed = True
-            elif "meta" in mod_str or "win" in mod_str and (event.modifiers() & Qt.KeyboardModifier.MetaModifier): mod_pressed = True
-            elif "ctrl" in mod_str and (event.modifiers() & Qt.KeyboardModifier.ControlModifier): mod_pressed = True
-
-            if mod_pressed and event.text().lower() == key_str:
-                QApplication.quit()
-                return
 
         if event.key() == Qt.Key.Key_Left: self.select_prev()
         elif event.key() == Qt.Key.Key_Right: self.select_next()

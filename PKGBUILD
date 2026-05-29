@@ -1,5 +1,5 @@
 pkgname=wallselector-kde
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Qt-based wallpaper carousel and selector for KDE Plasma 6"
 arch=('any')
@@ -21,7 +21,6 @@ package() {
     install -dm755 "$pkgdir/etc/xdg/autostart"
     install -dm755 "$pkgdir/usr/share/pixmaps"
 
-    # Копируем из $srcdir (куда makepkg поместит исходники)
     cp "$srcdir/wallselector_kde.py" "$pkgdir/opt/wallselector-kde/app/wallselector_kde.py"
     chmod +x "$pkgdir/opt/wallselector-kde/app/wallselector_kde.py"
 
@@ -31,7 +30,7 @@ package() {
         cp "$srcdir/wallselector_kde.svg" "$pkgdir/usr/share/pixmaps/wallselector_kde.svg"
     fi
 
-    # Ярлык для меню Пуск
+    # Ярлык для меню Пуск со встроенным шорткатом Wayland
     echo "[Desktop Entry]
 Name=Wallselector KDE
 Comment=Select Wallpapers
@@ -39,7 +38,8 @@ Exec=wallselector_kde
 Icon=wallselector_kde
 Terminal=false
 Type=Application
-Categories=Settings;DesktopSettings;" > "$pkgdir/usr/share/applications/wallselector_kde.desktop"
+Categories=Settings;DesktopSettings;
+X-KDE-GlobalShortcut=Alt+T" > "$pkgdir/usr/share/applications/wallselector_kde.desktop"
 
     # Ярлык для автозагрузки сервиса
     echo "[Desktop Entry]
