@@ -1,6 +1,6 @@
 pkgbase = python-click-extra
 	pkgdesc = Drop-in replacement for Click to make user-friendly and colorful CLI.
-	pkgver = 7.17.2
+	pkgver = 7.18.0
 	pkgrel = 1
 	url = https://github.com/kdeldycke/click-extra
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-click-extra
 	depends = python-wcwidth
 	depends = python-docutils
 	depends = python-sphinx
-	source = python-click-extra-7.17.2.tar.gz::https://github.com/kdeldycke/click-extra/archive/refs/tags/v7.17.2.tar.gz
-	sha512sums = 978306fc5313ce99c4559de58293074f78c9389e3b948dd091882694229f021ecac3cbeb0078df91da3c6914a36b0cf84f41036b9f25d85e3f63e9dbe02df562
+	source = python-click-extra-7.18.0.tar.gz::https://github.com/kdeldycke/click-extra/archive/refs/tags/v7.18.0.tar.gz
+	sha512sums = 73210f852306ccd2028e94bb0e5bb927b2ace9a8bcf7f59a0244d7bdd4e87af37b13684e7f2896adaed73e5bf4a3a837cd414805135242b1ec4787de3542bca0
 
 pkgname = python-click-extra
