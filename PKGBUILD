@@ -1,6 +1,6 @@
 # Maintainer: Rodrigo Brito <rodrigo@w3ti.com.br>
 pkgname=fina
-pkgver=8.9.8
+pkgver=8.9.9
 pkgrel=1
 pkgdesc="Gerenciador de finanças pessoais (Electron + SQLite)"
 arch=('x86_64')
@@ -18,6 +18,8 @@ prepare() {
   local _electron_version
   _electron_version=$(electron38 --version | sed 's/^v//')
   npx @electron/rebuild -f -w better-sqlite3 -v "$_electron_version"
+  # gera build/icon.png a partir do SVG (não versionado no tarball)
+  npm run generate-icons
 }
 
 build() {
@@ -40,10 +42,9 @@ package() {
 exec electron38 /usr/lib/$pkgname "\$@"
 EOF
 
-  # Ícone (adicione build/icon.png ao repositório)
-  if [[ -f build/icon.png ]]; then
-    install -Dm644 "build/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  fi
+  # Ícone gerado em prepare() via generate-icons
+  install -Dm644 "build/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "build/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
 
   # Entrada .desktop
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
