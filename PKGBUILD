@@ -19,7 +19,7 @@
 # PostgreSQL 15+ and nginx are runtime deps (matches the RPM spec which
 # pins postgresql-server >= 12 and Requires: nginx).
 pkgname=sysmanage
-pkgver=2.4.0.7
+pkgver=2.4.0.11
 pkgrel=1
 pkgdesc="Centralized system management server with web-based interface"
 arch=('any')
@@ -55,7 +55,7 @@ depends=(
 makedepends=('python-setuptools' 'python-pip')
 backup=('etc/sysmanage.yaml' 'etc/nginx/conf.d/sysmanage-nginx.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bceverly/sysmanage/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c6ed4020a8de69037a0a55a47beb13daa228a60400868452870c5f63a30e26ce')
+sha256sums=('7e784e6cf46583928c9bb874e5a7d280b522dbae11576dab933799dab7ef4dcb')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -71,6 +71,13 @@ package() {
     install -m 0644 requirements-prod.txt "${pkgdir}/opt/sysmanage/requirements-prod.txt" 2>/dev/null || true
     cp -r config "${pkgdir}/opt/sysmanage/"
     cp -r scripts "${pkgdir}/opt/sysmanage/"
+
+    # Air-gap bundle dispatcher template — buildAirGapBundle.sh (in
+    # scripts/) resolves this relative to itself
+    # (../installer/airgap-bundle/install.sh), so it must be packaged
+    # alongside scripts/ or every bundle build dies at the "dispatcher
+    # template not found" preflight.
+    install -Dm0755 installer/airgap-bundle/install.sh "${pkgdir}/opt/sysmanage/installer/airgap-bundle/install.sh"
 
     # Pre-built frontend (dist + public) so the bootstrap nginx config
     # has something to serve out of the gate.
