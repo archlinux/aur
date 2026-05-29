@@ -17,6 +17,9 @@ prepare() {
   # Reconstrói better-sqlite3 para o Electron do sistema
   local _electron_version
   _electron_version=$(electron --version | sed 's/^v//')
+  # GCC 16 removed nullptr_t from global namespace; force-include a compat shim
+  printf '#include <cstddef>\nusing std::nullptr_t;\n' > "$srcdir/nullptr_compat.h"
+  export CXXFLAGS="$CXXFLAGS -include $srcdir/nullptr_compat.h"
   npx @electron/rebuild -f -w better-sqlite3 -v "$_electron_version"
 }
 
