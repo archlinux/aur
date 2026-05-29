@@ -20,8 +20,8 @@ pkgbase = zeldaladxhd-bin
 	source = https://gitlab.com/linuxbombay/zeldaladxhd/-/archive/1.0.1/zeldaladxhd-1.0.1.tar.bz2
 	sha256sums = b9565e4e4dbbb8f5d74c5b227a23d103c55e4e06a1ec8af2ca6ef46db37c9813
 	source_x86_64 = https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/releases/download/v1.8.6/LADXHD-Patcher-v1.8.6-Linux-x64.zip
-	sha256sums_x86_64 = 73c0ec2128618e5863f9a88831c0365030e28c53daa9cf3cd6e97f871bbc4655
+	sha256sums_x86_64 = a9979226519850f6e25913758230c62e8e44c9a2166fabf6b49cf7ccc7c97532
 	source_aarch64 = https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/releases/download/v1.8.6/LADXHD-Patcher-v1.8.6-Linux-Arm64.zip
-	sha256sums_aarch64 = b6caf3da9593f7bcdae87809a55d670bef95dfabcfe3dacaf369d73cabeb32b5
+	sha256sums_aarch64 = 8bb9503a9958e1d5e41a36084702eb6053f0a43f119c14533deee9ad3ad158eb
 
 pkgname = zeldaladxhd-bin
