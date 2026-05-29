@@ -1,6 +1,6 @@
 pkgbase = refract
 	pkgdesc = GUI tool for ranking pacman mirrors on Arch Linux and Arch-based distributions
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/Labaman/refract
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = refract
 	depends = gtk4
 	depends = polkit
 	optdepends = geoip: country auto-detection via geoiplookup
-	source = refract-1.5.1.tar.gz::https://github.com/Labaman/refract/archive/refs/tags/v1.5.1.tar.gz
-	sha256sums = b0b6c9a115ef5ce542ff80a67a8dbbe8aa809afb77652c92996e83ed5dddec6b
+	source = refract-1.5.2.tar.gz::https://github.com/Labaman/refract/archive/refs/tags/v1.5.2.tar.gz
+	sha256sums = ab5a32473111e352e1fa787fbca12314253e97abd300f2fb48c12f5f24a1e337
 
 pkgname = refract
