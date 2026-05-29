@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 4.7.1 ➙ 4.7.5
-              : 2026-05-19 ➙ 2026-05-29
+ Tags         : 4.7.2 ➙ 4.8.0
+              : 2026-05-25 ➙ 2026-05-29
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-05-29   : 4.8.0
+              - **4.8.0**
+            
+                * Fix installer typo for loaderentry modify.
+              - update Changelog
 
  2026-05-29   : 4.7.5
               - fix license install typo
@@ -35,12 +41,4 @@
                 * Some code tidy ups.
                 * No functional change.
  2026-05-19   ⋯
-              - update Changelog
-
- 2026-05-19   : 4.7.1
-              - **4.7.1**
-            
-                * Change PKGBUILD arch to x85_64 not any.
-                * Change linking to only use libblkid where needed.
-                * Clean up cruft from CMakeLists.txt
               - update Changelog
