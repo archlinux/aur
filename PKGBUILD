@@ -8,7 +8,6 @@ arch=("x86_64")
 url="https://github.com/maxsharabayko/srt-xtransmit"
 license=("MPL-2.0")
 options=("!lto")
-conflicts=("srt")
 depends=(
   "bash"
   "gcc-libs"

@@ -17,7 +17,6 @@ pkgbase = srt-xtransmit
 	depends = srt
 	optdepends = python-bokeh: visualization scripts
 	optdepends = python-pandas: data analysis scripts
-	conflicts = srt
 	options = !lto
 	source = srt-xtransmit-0.2.0.tar.gz::https://github.com/maxsharabayko/srt-xtransmit/archive/refs/tags/v0.2.0.tar.gz
 	source = git+https://github.com/CLIUtils/CLI11.git#commit=0d06d21b56eadef9dcb24907ee2866b2b6f0babe
