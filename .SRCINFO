@@ -1,6 +1,6 @@
 pkgbase = rufin
 	pkgdesc = Native GTK4 Jellyfin/Subsonic Client in Rust
-	pkgver = 0.3.14
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/screwys/Rufin
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = rufin
 	optdepends = kwallet: Secret Service provider for saving Jellyfin tokens
 	conflicts = rufin-git
 	options = !lto
-	source = rufin-0.3.14.tar.gz::https://github.com/screwys/Rufin/archive/refs/tags/v0.3.14.tar.gz
-	sha256sums = d1074c33df2fbb459f158bca15c0e46e476f4d7f73e367b019f96da6980a30da
+	source = rufin-0.4.0.tar.gz::https://github.com/screwys/Rufin/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 7bea8adadd8022567b9b5fb58c18ef0b7d68f9a9dd40a5b5f060f1b2cf6d65db
 
 pkgname = rufin
