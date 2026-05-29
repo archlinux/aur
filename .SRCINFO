@@ -6,7 +6,6 @@ pkgbase = dektec-drivers-dkms
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = dkms
-	depends = linux-headers
 	provides = dektec-drivers-dkms
 	conflicts = dektec-drivers-dkms
 	conflicts = dektec-dkms
