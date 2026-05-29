@@ -1,0 +1,3 @@
+[perl-apache-htpasswd]
+source = "cpan"
+cpan = "Apache-Htpasswd"
