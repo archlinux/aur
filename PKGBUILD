@@ -4,7 +4,7 @@
 _pkgname=BestClient
 pkgname=bestclient
 pkgver=1.7.1
-pkgrel=7
+pkgrel=8
 pkgdesc="DDRaceNetwork modification that adds new feauters"
 arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
@@ -68,20 +68,24 @@ prepare() {
 	local _avfmt="$pkgname/game/libavformat.so.60.16.100"
 	local _avcod="$pkgname/game/libavcodec.so.60.31.102"
 
-	# libavformat.so.60 needs
+	# libformat.so.60 ihtiyaçları: sistem versiyonuna yönlendir (uyarı verir ama çalışır)
 	patchelf --replace-needed libxml2.so.2     libxml2.so.16   "$_avfmt"
 	patchelf --replace-needed libbluray.so.2   libbluray.so.3  "$_avfmt"
 
-	# libavcodec.so.60 needs
-	patchelf --replace-needed libvpx.so.9           libvpx.so.12        "$_avcod"
-	patchelf --replace-needed libjxl.so.0.10        libjxl.so.0.11      "$_avcod"
-	patchelf --replace-needed libjxl_threads.so.0.10 libjxl_threads.so.0.11 "$_avcod"
-	patchelf --replace-needed librav1e.so.0.7       librav1e.so.0.8     "$_avcod"
-	patchelf --replace-needed libSvtAv1Enc.so.2     libSvtAv1Enc.so.4   "$_avcod"
-	patchelf --replace-needed libtheoraenc.so.1     libtheoraenc.so.2   "$_avcod"
-	patchelf --replace-needed libtheoradec.so.1     libtheoradec.so.2   "$_avcod"
-	patchelf --replace-needed libx264.so.164        libx264.so.165      "$_avcod"
-	patchelf --replace-needed libx265.so.199        libx265.so.215      "$_avcod"
+	# libavcodec.so.60 codec bağımlılıkları: DDNet video encode etmediğinden bu
+	# dış encoder/codec kütüphanelerine gerek yok. FFmpeg'in dahili decoderleri
+	# (H.264, H.265, VP9) bu dış libs olmadan da çalışır.
+	# NOT: x265 gibi kütüphaneler soname'i sembol adına gömer (x265_api_get_199),
+	# replace-needed sorun çözmez — sadece remove-needed işe yarar.
+	patchelf --remove-needed libvpx.so.9            "$_avcod"
+	patchelf --remove-needed libjxl.so.0.10         "$_avcod"
+	patchelf --remove-needed libjxl_threads.so.0.10 "$_avcod"
+	patchelf --remove-needed librav1e.so.0.7        "$_avcod"
+	patchelf --remove-needed libSvtAv1Enc.so.2      "$_avcod"
+	patchelf --remove-needed libtheoraenc.so.1      "$_avcod"
+	patchelf --remove-needed libtheoradec.so.1      "$_avcod"
+	patchelf --remove-needed libx264.so.164         "$_avcod"
+	patchelf --remove-needed libx265.so.199         "$_avcod"
 }
 
 package() {
