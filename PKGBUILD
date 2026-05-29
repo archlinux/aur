@@ -1,7 +1,7 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=cherrytree-git
-pkgver=1.6.3.r70.g6c42a114
+pkgver=1.7.0.r84.gde69ee23
 pkgrel=1
 pkgdesc="Hierarchical note-taking application, git version"
 arch=('x86_64')
@@ -26,6 +26,12 @@ sha512sums=('SKIP')
 pkgver() {
   cd "${pkgname%%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
+}
+
+prepare() {
+  # Workaround for https://github.com/giuspen/cherrytree/pull/2864
+  cd "${pkgname%%-git}"
+  sed -i '176i list(APPEND CT_LIBXML_LIBRARIES xml2)' CMakeLists.txt
 }
 
 build() {
