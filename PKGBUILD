@@ -2,7 +2,7 @@
 # Contributor: Dr. Abiira Nathan <nabiira2by2@gmail.com>
 
 pkgname=solidc-git
-pkgver=1.10.10.r0.gce76675
+pkgver=1.10.11.r0.g46eecaf
 pkgrel=1
 pkgdesc="A robust C library for data structures, concurrency, and utilities."
 arch=('x86_64' 'aarch64')
