@@ -1,0 +1,29 @@
+pkgbase = picoclaw-git
+	pkgdesc = Ultra-Efficient AI Assistant in Go (Nightly Git build)
+	pkgver = 0.2.9.nightly.20260528.28ec5793
+	pkgrel = 1
+	url = https://github.com/sipeed/picoclaw
+	install = picoclaw-git.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	arch = loong64
+	license = MIT
+	makedepends = go>=1.25
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = git
+	depends = glibc
+	depends = ca-certificates
+	depends = libolm
+	depends = hicolor-icon-theme
+	provides = picoclaw
+	conflicts = picoclaw
+	options = !debug
+	source = picoclaw::git+https://github.com/sipeed/picoclaw.git#tag=nightly
+	source = picoclaw.service
+	sha256sums = SKIP
+	sha256sums = 4a982c31b007b6c787b14d05f60b01aaf242d5dd73fa3e273df895c9115f0ec8
+
+pkgname = picoclaw-git

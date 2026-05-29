@@ -1,0 +1,33 @@
+post_install() {
+    cat <<'EOF'
+==> PicoClaw (Git) installed successfully.
+
+Web UI:
+  - Start service: systemctl --user enable --now picoclaw
+  - Access Web UI: http://127.0.0.1:18800
+
+Configuration notice:
+  - Your config may need updates for newer versions.
+  - Default config path: ~/.picoclaw/config.json
+  - Default Workspace path: ~/.picoclaw/workspace
+  - Newer config template: /usr/share/picoclaw-git/examples/config.example.json
+EOF
+}
+
+post_upgrade() {
+    post_install
+
+    cat <<'EOF'
+
+Upgrade notice:
+  - If picoclaw is running, please restart it manually:
+    systemctl --user daemon-reload
+    systemctl --user restart picoclaw
+EOF
+}
+
+pre_remove() {
+  if [ -n "${SUDO_USER:-}" ] && [ "${SUDO_USER}" != "root" ] && command -v runuser >/dev/null 2>&1; then
+    runuser -u "$SUDO_USER" -- systemctl --user disable --now picoclaw >/dev/null 2>&1 || true
+  fi
+}
