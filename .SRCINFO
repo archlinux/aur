@@ -1,0 +1,20 @@
+pkgbase = pdf-editor-omarchy-git
+	pkgdesc = PDF annotation and note-taking app with live markdown sidebar, designed for Omarchy
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://github.com/brokkoli71/pdf-editor-omarchy
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = poppler-glib
+	depends = python-cairo
+	depends = gtksourceview5
+	optdepends = librsvg: render PNG icon sizes at install time
+	optdepends = libreoffice: convert PPTX files to PDF
+	source = pdf-editor-omarchy::git+https://github.com/brokkoli71/pdf-editor-omarchy.git
+	sha256sums = SKIP
+
+pkgname = pdf-editor-omarchy-git
