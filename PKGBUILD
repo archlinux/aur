@@ -3,7 +3,7 @@
 # Contributor: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _base=ripser
 pkgname=python-${_base}
-pkgver=0.6.14
+pkgver=0.6.15
 pkgrel=1
 pkgdesc="A Lean Persistent Homology Library for Python"
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel cython
 checkdepends=(python-pytest)
 changelog=CHANGELOG.md
 source=(${_base}.py-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('6396b71be96c0e95344296c1bd398b618a279aa805843ade20866f67ae7b1b6b1a12276258a24d778ee2f7bb23a021d1c703b8a1967a6e364be9c770d13a5751')
+sha512sums=('ddc3935320e3e40ea8770bc692a722a6bed9d50b2a3230df6fcbbbfbef7df6b54611cfa1be165fa803b6f1729e052a21963a34ede7205d418ed47df3d3ac2e51')
 
 build() {
   cd ${_base}.py-${pkgver}
