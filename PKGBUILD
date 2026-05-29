@@ -1,7 +1,7 @@
 pkgname=waifu
 pkgver=0.1.6
 pkgrel=1
-pkgdesc="Tool to fetch and display images from nekos.best"
+pkgdesc="Tool to fetch and display anime images from nekos.best"
 arch=('x86_64')
 url="https://github.com/izeperson/waifu-cli"
 license=('MIT')

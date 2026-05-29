@@ -1,5 +1,5 @@
 pkgbase = waifu
-	pkgdesc = Tool to fetch and display images from waifu.pics
+	pkgdesc = Tool to fetch and display anime images from nekos.best
 	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/izeperson/waifu-cli
