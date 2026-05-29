@@ -1,7 +1,7 @@
 pkgbase = lunar-client
 	pkgdesc = PvP modpack for all modern versions of Minecraft
 	pkgver = 3.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lunarclient.com
 	arch = x86_64
 	license = unknown

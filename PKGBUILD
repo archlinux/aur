@@ -4,7 +4,7 @@
 pkgname=lunar-client
 _pkgname=lunarclient
 pkgver=3.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc='PvP modpack for all modern versions of Minecraft'
 url=https://lunarclient.com
 arch=(x86_64)
@@ -42,10 +42,10 @@ package() {
 		"${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
 	# Icon images
-	install -dm755 "${pkgdir}/usr/share/"
+	install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
 	cp -a \
-		"${srcdir}/squashfs-root/usr/share/icons" \
-		"${pkgdir}/usr/share/"
+		"${srcdir}/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/lunarclient.png" \
+		"${pkgdir}/usr/share/icons/hicolor/512x512/apps/lunarclient.png"
 
 	# Symlink executable
 	install -dm755 "${pkgdir}/usr/bin"
