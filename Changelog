@@ -1,4 +1,2 @@
-2.43.4-1 [2026-05-20]
-- [Desktop][BugFix] Fixed color inconsistencies in Developer and Incognito modes under the Light theme.
-- [Desktop][BugFix][Mac] Fixed unclickable elements in WebView during macOS Immersive (Fullscreen) Mode.  
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 148.0.7778.179.
+2.43.5-1 [2026-05-28]
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 148.0.7778.217.
