@@ -11,7 +11,7 @@ pkgname=(
 pkgver=5.0.17.sdk408
 _runtimever=5.0.17
 _sdkver=5.0.408
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -59,7 +59,7 @@ package_dotnet-sdk-5.0-bin() {
     'dotnet-runtime-5.0-bin'
     'glibc'
     'dotnet-targeting-pack-5.0-bin'
-    "netstandard-targeting-pack-2.1")
+    "netstandard-targeting-pack")
   optdepends=('aspnet-targeting-pack-5.0-bin: Build ASP.NET Core applications')
   provides=("dotnet-sdk-5.0")
   conflicts=("dotnet-sdk-5.0")
@@ -71,7 +71,7 @@ package_dotnet-sdk-5.0-bin() {
 
 package_dotnet-targeting-pack-5.0-bin() {
   pkgdesc='The .NET Core targeting pack version 5.0 (binary) - End of life'
-  depends=("netstandard-targeting-pack-2.1")
+  depends=("netstandard-targeting-pack")
   provides=(dotnet-targeting-pack-5.0)
   conflicts=(dotnet-targeting-pack-5.0)
 

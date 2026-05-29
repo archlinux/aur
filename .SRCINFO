@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-5.0-bin
 	pkgver = 5.0.17.sdk408
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -38,14 +38,14 @@ pkgname = dotnet-sdk-5.0-bin
 	depends = dotnet-runtime-5.0-bin
 	depends = glibc
 	depends = dotnet-targeting-pack-5.0-bin
-	depends = netstandard-targeting-pack-2.1
+	depends = netstandard-targeting-pack
 	optdepends = aspnet-targeting-pack-5.0-bin: Build ASP.NET Core applications
 	provides = dotnet-sdk-5.0
 	conflicts = dotnet-sdk-5.0
 
 pkgname = dotnet-targeting-pack-5.0-bin
 	pkgdesc = The .NET Core targeting pack version 5.0 (binary) - End of life
-	depends = netstandard-targeting-pack-2.1
+	depends = netstandard-targeting-pack
 	provides = dotnet-targeting-pack-5.0
 	conflicts = dotnet-targeting-pack-5.0
 
