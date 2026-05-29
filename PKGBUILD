@@ -1,9 +1,13 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=matchmaker
-pkgver=0.0.41
+pkgver=0.0.42
 pkgrel=1
 pkgdesc='A fast, configurable and intuitive fuzzy searcher.'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(
+    'x86_64'
+    'aarch64'
+    'riscv64'
+)
 url='https://github.com/Squirreljetpack/matchmaker'
 license=('AGPL-3.0')
 makedepends=('cargo')
@@ -11,7 +15,7 @@ options=(!lto)
 provides=('mm')
 conflicts=('matchmaker-git' 'matchmaker-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e7a0a3276539006b75c5c553c3035e75494eb41267deb44b4e324087d4f13b19')
+sha256sums=('6c13543714fa1fd393221ad6dcc397982645c04a2645769c985da8dfb87db9ba')
 
 prepare() {
     cd "$pkgname-$pkgver"
