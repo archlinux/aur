@@ -4,7 +4,7 @@
 _pkgname=BestClient
 pkgname=bestclient
 pkgver=1.7.1
-pkgrel=6
+pkgrel=7
 pkgdesc="DDRaceNetwork modification that adds new feauters"
 arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
@@ -60,6 +60,28 @@ prepare() {
 	ln -sf libavutil.so.58.29.100    $pkgname/game/libavutil.so.58
 	ln -sf libswscale.so.7.5.100     $pkgname/game/libswscale.so.7
 	ln -sf libswresample.so.4.12.100 $pkgname/game/libswresample.so.4
+
+	# Patch bundled FFmpeg .so soname references to match system library versions.
+	# The bundled libs were compiled against older sonames; we redirect them to
+	# the system versions already present on Arch. DDNet itself does not use these
+	# codec libraries directly — they are pulled in transitively by libavformat/libavcodec.
+	local _avfmt="$pkgname/game/libavformat.so.60.16.100"
+	local _avcod="$pkgname/game/libavcodec.so.60.31.102"
+
+	# libavformat.so.60 needs
+	patchelf --replace-needed libxml2.so.2     libxml2.so.16   "$_avfmt"
+	patchelf --replace-needed libbluray.so.2   libbluray.so.3  "$_avfmt"
+
+	# libavcodec.so.60 needs
+	patchelf --replace-needed libvpx.so.9           libvpx.so.12        "$_avcod"
+	patchelf --replace-needed libjxl.so.0.10        libjxl.so.0.11      "$_avcod"
+	patchelf --replace-needed libjxl_threads.so.0.10 libjxl_threads.so.0.11 "$_avcod"
+	patchelf --replace-needed librav1e.so.0.7       librav1e.so.0.8     "$_avcod"
+	patchelf --replace-needed libSvtAv1Enc.so.2     libSvtAv1Enc.so.4   "$_avcod"
+	patchelf --replace-needed libtheoraenc.so.1     libtheoraenc.so.2   "$_avcod"
+	patchelf --replace-needed libtheoradec.so.1     libtheoradec.so.2   "$_avcod"
+	patchelf --replace-needed libx264.so.164        libx264.so.165      "$_avcod"
+	patchelf --replace-needed libx265.so.199        libx265.so.215      "$_avcod"
 }
 
 package() {
