@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gtk3' 'hicolor-icon-theme' 'libsoup3' 'webkit2gtk-4.1')
 makedepends=('cargo' 'nodejs' 'npm' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('026cc04974bd2c601afdd28ac13425f5f9f15c5454a46fd4dc1a0d3f181602e0')
 
 _srcname="sz0mtify-dashboard-$pkgver"
 
