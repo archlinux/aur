@@ -2,8 +2,8 @@
 # Contributor:
 pkgname=enpasscli
 _pkgname=enpass-cli
-pkgver=1.9.0
-pkgrel=4
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="Enpass commandline client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hazcod/enpass-cli"
