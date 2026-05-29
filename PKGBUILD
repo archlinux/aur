@@ -24,12 +24,8 @@ source=()
 
 sha256sums=()
 
-_repo_root="/home/builder/project"
-
 build() {
   cmake -B build \
-    -S "$_repo_root" \
-    -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DSNIFFERCOMMIT_USE_SYSTEM_FMT=ON \
     -DSNIFFERCOMMIT_USE_SYSTEM_TOMLPLUSPLUS=OFF
