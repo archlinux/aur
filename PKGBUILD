@@ -1,7 +1,7 @@
 # Maintainer: Majd Bnat <magame2tec@gmail.com>
 pkgname=aegis-pentest
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AI-driven web penetration testing orchestrator (PTES + OWASP WSTG)"
 arch=('any')
 url="https://github.com/glorybnat/aegis-pentest"
@@ -9,6 +9,19 @@ license=('MIT')
 depends=(
   'python>=3.12'
   'python-pip'
+  'python-typer'
+  'python-rich'
+  'python-httpx'
+  'python-pydantic'
+  'python-sqlmodel'
+  'python-structlog'
+  'python-jinja'
+  'python-anyio'
+  'python-yaml'
+  'python-dnspython'
+  'python-dateutil'
+  'python-aiosqlite'
+  'python-packaging'
 )
 optdepends=(
   'nmap: port scanning'
@@ -46,7 +59,8 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  pip install --root="$pkgdir/" --no-warn-script-location dist/*.whl
+  pip install --root="$pkgdir/" --prefix=/usr --no-warn-script-location --no-deps dist/*.whl
+  pip install --root="$pkgdir/" --prefix=/usr --no-warn-script-location anthropic fastmcp
 
   if [ -f LICENSE ]; then
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
