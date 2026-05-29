@@ -1,6 +1,6 @@
 pkgname=twintaillauncher
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 _dirname="TwintailLauncher-ttl-v${pkgver}"
 pkgdesc='A multi-platform launcher for your anime games'
 arch=('x86_64' 'aarch64')
@@ -17,6 +17,7 @@ options=('!lto' '!debug')
 
 prepare() {
   cd $_dirname
+  sed -i 's/"ignoredBuiltDependencies"/"onlyBuiltDependencies"/' package.json
   pnpm i
 }
 
