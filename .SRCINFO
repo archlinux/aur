@@ -1,0 +1,16 @@
+pkgbase = crunched-icons
+	pkgdesc = A clean and minimal icon theme for Linux.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://gitlab.com/quyx/crunched-icons
+	changelog = CHANGELOG.md
+	arch = any
+	license = CC-BY-SA-4.0
+	makedepends = git
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	options = !strip
+	source = https://gitlab.com/quyx/crunched-icons/-/archive/0.1.1/crunched-icons-0.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = crunched-icons
