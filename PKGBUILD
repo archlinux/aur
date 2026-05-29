@@ -4,7 +4,7 @@
 _pkgname=BestClient
 pkgname=bestclient
 pkgver=1.7.1
-pkgrel=11
+pkgrel=12
 pkgdesc="DDRaceNetwork modification that adds new feauters"
 arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
@@ -84,19 +84,30 @@ prepare() {
 
 	local _avcod="$pkgname/game/libavcodec.so.60.31.102"
 
-	# libavcodec encoder-only deps: DDNet only plays video, never encodes.
-	# FFmpeg's built-in decoders handle H.264/H.265/VP9 without these libs.
-	# x265 and ICU use version-embedded symbol names (x265_api_get_199, ucnv_open_75)
-	# so --replace-needed cannot work; --remove-needed is the only safe option.
-	patchelf --remove-needed libvpx.so.9            "$_avcod"
-	patchelf --remove-needed libjxl.so.0.10         "$_avcod"
-	patchelf --remove-needed libjxl_threads.so.0.10 "$_avcod"
-	patchelf --remove-needed librav1e.so.0.7        "$_avcod"
-	patchelf --remove-needed libSvtAv1Enc.so.2      "$_avcod"
-	patchelf --remove-needed libtheoraenc.so.1      "$_avcod"
-	patchelf --remove-needed libtheoradec.so.1      "$_avcod"
-	patchelf --remove-needed libx264.so.164         "$_avcod"
-	patchelf --remove-needed libx265.so.199         "$_avcod"
+	# libavcodec encoder-only deps that are NOT in GNU_VERSION_R (VER_NEED):
+	# safe to remove — dynamic linker won't look for them by version.
+	# Note: x265/x264/vpx/rav1e/SvtAv1Enc have no VER_NEED entries in libavcodec.
+	patchelf --remove-needed libvpx.so.9        "$_avcod"
+	patchelf --remove-needed librav1e.so.0.7    "$_avcod"
+	patchelf --remove-needed libSvtAv1Enc.so.2  "$_avcod"
+	patchelf --remove-needed libx264.so.164     "$_avcod"
+	patchelf --remove-needed libx265.so.199     "$_avcod"
+
+	# libtheoraenc.so.1, libtheoradec.so.1, libjxl.so.0.10, libjxl_threads.so.0.10
+	# HAVE VER_NEED entries in libavcodec — patchelf --remove-needed would leave
+	# orphan VER_NEED entries causing "needed != NULL" assertion in ld.so.
+	# Fix: keep them in NEEDED, provide SONAME-patched copies of current system libs.
+	# Symbol names are stable across these minor version bumps (no version embedding).
+	_make_compat() {
+		local old_soname="$1" sys_lib="$2"
+		local out="$pkgname/game/${old_soname}"
+		cp "$(readlink -f "$sys_lib")" "$out"
+		patchelf --set-soname "$old_soname" "$out"
+	}
+	_make_compat libtheoraenc.so.1      /usr/lib/libtheoraenc.so.2
+	_make_compat libtheoradec.so.1      /usr/lib/libtheoradec.so.2
+	_make_compat libjxl.so.0.10        /usr/lib/libjxl.so.0.11
+	_make_compat libjxl_threads.so.0.10 /usr/lib/libjxl_threads.so.0.11
 
 	# ── libxml2 2.12.7 ──────────────────────────────────────────────────────────
 	# libavformat has GNU_VERSION_R entries for LIBXML2_2.5.2 / 2.4.30 / 2.7.3.
