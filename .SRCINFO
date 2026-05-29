@@ -1,0 +1,18 @@
+pkgbase = bare
+	pkgdesc = A lightweight vertical bar for Wayland compositors.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/kupospelov/bare
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = rust
+	makedepends = make
+	makedepends = scdoc
+	options = !debug
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/kupospelov/bare/archive/refs/tags/0.1.tar.gz
+	sha256sums = c58ace41a887146f4b05124f5f79d877f64638f2d506fe8a085aa75c9009c436
+
+pkgname = bare
