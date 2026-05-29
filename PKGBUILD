@@ -6,7 +6,7 @@ pkgname="${_pkgname}-git"
 #_jdkversion=21
 #_jdkversion=26
 pkgver=26.05.05+130.r2772.20260528.77a4ce84
-pkgrel=1
+pkgrel=2
 pkgdesc="Matrix client for desktop written in Kotlin and using the Matrix Rust SDK, designed to be fully keyboard controllable, multi account, hirarchical spaces. Design in the tradition of SchildiChat clients."
 arch=(
   "aarch64"
@@ -19,7 +19,10 @@ arch=(
 url="https://schildi.chat/revenge/"
 _url_schildirevenge_source="https://github.com/SchildiChat/schildi-revenge"
 _url_matrix_rust_sdk="https://github.com/SchildiChat/matrix-rust-sdk"
-license=('GPL-3.0-or-later')
+license=(
+  'GPL-3.0-or-later' # SchildiChat Revenge
+  'Apache-2.0'       # Matrix Rust SDK
+)
 provides=(
   "${_pkgname}=${pkgver}"
   "schildi-revenge=${pkgver}"
@@ -214,5 +217,6 @@ package() {
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log README.md 
   cp --no-dereference --preserve=links -v AGENTS.md CLAUDE.md "${pkgdir}/usr/share/doc/${_pkgname}"/ # Copy those to preserve symlinks.
   printf '%s\n' " --> Installing license ..."
-  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dvm644 LICENSE                  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.schildichat-revenge"
+  install -Dvm644 matrix-rust-sdk/LICENSE  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.matrix-rust-sdk"
 }
