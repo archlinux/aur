@@ -1,6 +1,6 @@
 # Maintainer: Mehad <mehad605@example.com>
 pkgname=dev-type
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Master touch typing while coding"
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/mehad605/dev_type/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('328d83da498280febae8de6c6cbb8230e1f27c37874477f276736075ea312d8b')
 
 build() {
   cd "dev_type-${pkgver}"
