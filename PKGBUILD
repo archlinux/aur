@@ -41,7 +41,7 @@ depends=('alsa-lib'
 options=('!strip')
 source=("${url}/releases/download/v${pkgver}/hydralauncher_${pkgver}_amd64.deb"
         "${pkgname}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
-sha256sums=('9271216c63fad6a64f24d5d5f3ddf14acf3dad2823b4bcfdb2cf532d0107fd6d'
+sha256sums=('66a3c3dd16fecd1655bbbcb82a004ef1fad0339bf733b3ac1345c801531e4ba5'
             '32619612c2e0223e86c4908747ec14bef64c3c423fee80910c1aa944769b66f9')
 
 package() {
