@@ -1,0 +1,22 @@
+pkgbase = jelly-git
+	pkgdesc = Native Jellyfin desktop client with bit-perfect audio and HDR/Dolby Vision video (Slint + libmpv)
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/prietus/jlfine
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = mpv
+	depends = alsa-lib
+	depends = dbus
+	depends = fontconfig
+	depends = libxkbcommon
+	depends = libglvnd
+	depends = wayland
+	provides = jelly
+	conflicts = jelly
+	source = jelly::git+https://github.com/prietus/jlfine.git
+	sha256sums = SKIP
+
+pkgname = jelly-git
