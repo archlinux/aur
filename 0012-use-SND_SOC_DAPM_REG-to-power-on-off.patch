@@ -1,0 +1,88 @@
+diff --git a/sound/soc/codecs/tas2783-sdw.c b/sound/soc/codecs/tas2783-sdw.c
+index 28971840ce24..d19d84bee1ef 100644
+--- a/sound/soc/codecs/tas2783-sdw.c
++++ b/sound/soc/codecs/tas2783-sdw.c
+@@ -889,6 +889,11 @@ static const struct snd_soc_dapm_widget tas_dapm_widgets[] = {
+ 
+ 	SND_SOC_DAPM_DAC("FU21", NULL, SND_SOC_NOPM, 0, 0),
+ 	SND_SOC_DAPM_DAC("FU23", NULL, SND_SOC_NOPM, 0, 0),
++
++	SND_SOC_DAPM_REG(snd_soc_dapm_supply, "Speaker Power",
++	     SDW_SDCA_CTL(FUNC_NUM_SMART_AMP, TAS2783_SDCA_ENT_PDE23, TAS2783_SDCA_CTL_REQ_POW_STATE, 0),
++	     0, 0x3, TAS2783_SDCA_POW_STATE_ON, TAS2783_SDCA_POW_STATE_OFF),
++
+ 	SND_SOC_DAPM_OUTPUT("SPK"),
+ 	SND_SOC_DAPM_INPUT("DMIC"),
+ };
+@@ -903,6 +908,8 @@ static const struct snd_soc_dapm_route tas_audio_map[] = {
+ 	{"SPK", NULL, "FU21"},
+ 	{"SPK", NULL, "FU23"},
+ 
++	{"ASI", NULL, "Speaker Power"},
++
+ 	{"ASI OUT", NULL, "DMIC"},
+ };
+ 
+@@ -934,7 +941,7 @@ static s32 tas_sdw_hw_params(struct snd_pcm_substream *substream,
+ 	struct sdw_port_config port_config = {0};
+ 	struct sdw_stream_runtime *sdw_stream;
+ 	struct sdw_slave *sdw_peripheral = tas_dev->sdw_peripheral;
+-	s32 ret, retry = 3;
++	s32 ret;
+ 
+ 	if (!tas_dev->fw_dl_success) {
+ 		dev_err(tas_dev->dev, "error playback without fw download");
+@@ -950,25 +957,6 @@ static s32 tas_sdw_hw_params(struct snd_pcm_substream *substream,
+ 		dev_err(tas_dev->dev,
+ 			"clear latch failed, err=%d", ret);
+ 
+-	mutex_lock(&tas_dev->pde_lock);
+-	/*
+-	 * Sometimes, there is error returned during power on.
+-	 * So added retry logic to ensure power on so that
+-	 * port prepare succeeds
+-	 */
+-	do {
+-		ret = regmap_write(tas_dev->regmap,
+-				   SDW_SDCA_CTL(1, TAS2783_SDCA_ENT_PDE23,
+-						TAS2783_SDCA_CTL_REQ_POW_STATE, 0),
+-						TAS2783_SDCA_POW_STATE_ON);
+-		if (!ret)
+-			break;
+-		usleep_range(2000, 2200);
+-	} while (retry--);
+-	mutex_unlock(&tas_dev->pde_lock);
+-	if (ret)
+-		return ret;
+-
+ 	/* SoundWire specific configuration */
+ 	snd_sdw_params_to_config(substream, params,
+ 				 &stream_config, &port_config);
+@@ -989,7 +977,6 @@ static s32 tas_sdw_hw_params(struct snd_pcm_substream *substream,
+ static s32 tas_sdw_pcm_hw_free(struct snd_pcm_substream *substream,
+ 			       struct snd_soc_dai *dai)
+ {
+-	s32 ret;
+ 	struct snd_soc_component *component = dai->component;
+ 	struct tas2783_prv *tas_dev =
+ 		snd_soc_component_get_drvdata(component);
+@@ -997,15 +984,7 @@ static s32 tas_sdw_pcm_hw_free(struct snd_pcm_substream *substream,
+ 		snd_soc_dai_get_dma_data(dai, substream);
+ 
+ 	sdw_stream_remove_slave(tas_dev->sdw_peripheral, sdw_stream);
+-
+-	mutex_lock(&tas_dev->pde_lock);
+-	ret = regmap_write(tas_dev->regmap,
+-			   SDW_SDCA_CTL(1, TAS2783_SDCA_ENT_PDE23,
+-					TAS2783_SDCA_CTL_REQ_POW_STATE, 0),
+-			   TAS2783_SDCA_POW_STATE_OFF);
+-	mutex_unlock(&tas_dev->pde_lock);
+-
+-	return ret;
++	return 0;
+ }
+ 
+ static const struct snd_soc_dai_ops tas_dai_ops = {
+-- 
+2.54.0
+

@@ -1,0 +1,49 @@
+diff --git a/sound/soc/codecs/tas2783-sdw.c b/sound/soc/codecs/tas2783-sdw.c
+index ad37a8acd5ca..5b71d88afbab 100644
+--- a/sound/soc/codecs/tas2783-sdw.c
++++ b/sound/soc/codecs/tas2783-sdw.c
+@@ -522,37 +522,11 @@ static const struct regmap_sdw_mbq_cfg tas2783_mbq_cfg = {
+ 	.mbq_size = tas2783_sdca_mbq_size,
+ };
+ 
+-static s32 tas2783_digital_getvol(struct snd_kcontrol *kcontrol,
+-				  struct snd_ctl_elem_value *ucontrol)
+-{
+-	return snd_soc_get_volsw(kcontrol, ucontrol);
+-}
+-
+-static s32 tas2783_digital_putvol(struct snd_kcontrol *kcontrol,
+-				  struct snd_ctl_elem_value *ucontrol)
+-{
+-	return snd_soc_put_volsw(kcontrol, ucontrol);
+-}
+-
+-static s32 tas2783_amp_getvol(struct snd_kcontrol *kcontrol,
+-			      struct snd_ctl_elem_value *ucontrol)
+-{
+-	return snd_soc_get_volsw(kcontrol, ucontrol);
+-}
+-
+-static s32 tas2783_amp_putvol(struct snd_kcontrol *kcontrol,
+-			      struct snd_ctl_elem_value *ucontrol)
+-{
+-	return snd_soc_put_volsw(kcontrol, ucontrol);
+-}
+-
+ static const struct snd_kcontrol_new tas2783_snd_controls[] = {
+-	SOC_SINGLE_RANGE_EXT_TLV("Amp Playback Volume", TAS2783_AMP_LEVEL,
+-				 1, 0, 20, 0, tas2783_amp_getvol,
+-				 tas2783_amp_putvol, tas2781_amp_tlv),
+-	SOC_SINGLE_RANGE_EXT_TLV("Speaker Playback Volume", TAS2783_DVC_LVL,
+-				 0, 0, 200, 1, tas2783_digital_getvol,
+-				 tas2783_digital_putvol, tas2781_dvc_tlv),
++	SOC_SINGLE_RANGE_TLV("Amp Playback Volume", TAS2783_AMP_LEVEL,
++				 1, 0, 20, 0, tas2781_amp_tlv),
++	SOC_SINGLE_RANGE_TLV("Speaker Playback Volume", TAS2783_DVC_LVL,
++				 0, 0, 200, 1, tas2781_dvc_tlv),
+ };
+ 
+ static s32 tas2783_validate_calibdata(struct tas2783_prv *tas_dev,
+-- 
+2.54.0
+

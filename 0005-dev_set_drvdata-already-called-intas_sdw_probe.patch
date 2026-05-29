@@ -1,0 +1,15 @@
+diff --git a/sound/soc/codecs/tas2783-sdw.c b/sound/soc/codecs/tas2783-sdw.c
+index 5b71d88afbab..070fe50f4824 100644
+--- a/sound/soc/codecs/tas2783-sdw.c
++++ b/sound/soc/codecs/tas2783-sdw.c
+@@ -1006,7 +1006,6 @@ static s32 tas_init(struct tas2783_prv *tas_dev)
+ {
+ 	s32 ret;
+ 
+-	dev_set_drvdata(tas_dev->dev, tas_dev);
+ 	ret = devm_snd_soc_register_component(tas_dev->dev,
+ 					      &soc_codec_driver_tasdevice,
+ 					      tas_dai_driver,
+-- 
+2.54.0
+

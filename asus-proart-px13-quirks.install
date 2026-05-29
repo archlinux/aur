@@ -1,33 +1,45 @@
+_dkms_name=px13-audio
+
+# pacman passes "pkgver-pkgrel"; dkms is keyed on pkgver only.
+_ver() { printf '%s' "${1%-*}"; }
+
 post_install() {
+    dkms install --force "$_dkms_name/$(_ver "$1")"
     cat <<'EOF'
 
 ==> asus-proart-px13-quirks installed.
 
-Audio (TAS2783):
+Audio (TAS2783 / RT721 / amd_manager):
 
-  1. The TAS2783 firmware ships in linux-firmware (>= 20260519). This package
-     only adds symlinks so the kernel's flat request names 1714-1-{8,B}.bin
-     resolve to ti/audio/tas2783/1714-1-0x{8,B}.bin.
+  1. The 16 codec patches (CachyOS issue 737) build as DKMS modules and
+     override the in-tree .ko under /usr/lib/modules/$KVER/updates/. No forked
+     kernel required; they rebuild for each installed kernel via dkms.
 
-  2. The linux-cachyos-px13 kernel already ships the 16 TAS2783 codec patches
-     from https://github.com/CachyOS/linux-cachyos/issues/737 plus the
-     ACP-layer PX13 patches. Verify after reboot:
+  2. TAS2783 firmware ships in linux-firmware-other (>= 1:20260519); this
+     package only symlinks the kernel's flat request names 1714-1-{8,B}.bin
+     to ti/audio/tas2783/1714-1-0x{8,B}.bin.
+
+  3. After install, reboot (so the DKMS modules load in place of the in-tree
+     ones), then verify:
        amixer -c1 contents | grep -E 'Speaker Playback|Channel Playback'
 
-  3. Restart the audio stack:
-       systemctl --user restart pipewire pipewire-pulse wireplumber
-
-  4. Switch the card profile to HiFi and assign channels:
-       pactl set-card-profile alsa_card.pci-0000_c4_00.5-platform-amd_sdw HiFi
-       amixer -c1 cset name='tas2783-1 Channel Playback' Left
-       amixer -c1 cset name='tas2783-2 Channel Playback' Right
+  4. The UCM override auto-selects the HiFi profile and assigns channels
+     (tas2783-1=Left, tas2783-2=Right). If channels need persisting:
        sudo alsactl store
+
+Kernel upgrades: the DKMS modules rebuild for each new kernel. The vendored
+source tracks a specific cachyos kernel; if a future kernel's ABI drifts, that
+rebuild may FAIL. dkms reports it as a non-fatal warning during 'pacman -Syu',
+so the kernel still installs but PX13 audio will not work on it (it falls back
+to the unpatched in-tree modules). If you see a px13-audio dkms build failure,
+boot a known-good kernel and rebuild this package (re-vendor its source) for
+the new kernel. Check current state with: dkms status px13-audio
 
 Headset codec (RT721) — runtime autosuspend disabled via
 /usr/lib/udev/rules.d/99-rt721-sdw-no-autosuspend.rules. Jack detection works
-at the kernel level (linux-cachyos-px13 patch 0017); the 'Headphone Jack'
-kctl tracks plug state. PipeWire does not auto-switch the default sink on
-sof-soundwire split-sink cards (see JACK-AUTOSWITCH.md).
+at the kernel level (patch 0017); the 'Headphone Jack' kctl tracks plug state.
+PipeWire does not auto-switch the default sink on sof-soundwire split-sink
+cards (see JACK-AUTOSWITCH.md).
 
 Bluetooth (MT7925) — btusb autosuspend disabled via
 /usr/lib/modprobe.d/btusb-no-autosuspend.conf. Takes effect after the next
@@ -39,5 +51,14 @@ EOF
 }
 
 post_upgrade() {
-    post_install
+    local new old
+    new=$(_ver "$1"); old=$(_ver "$2")
+    if [ "$new" != "$old" ]; then
+        dkms remove "$_dkms_name/$old" --all 2>/dev/null || true
+    fi
+    dkms install --force "$_dkms_name/$new"
+}
+
+pre_remove() {
+    dkms remove "$_dkms_name/$(_ver "$1")" --all || true
 }

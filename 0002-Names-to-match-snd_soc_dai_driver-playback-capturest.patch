@@ -1,0 +1,18 @@
+diff --git a/sound/soc/codecs/tas2783-sdw.c b/sound/soc/codecs/tas2783-sdw.c
+index 8eb793a126a4..34c4850347fd 100644
+--- a/sound/soc/codecs/tas2783-sdw.c
++++ b/sound/soc/codecs/tas2783-sdw.c
+@@ -854,8 +854,8 @@ static s32 tas_fu23_event(struct snd_soc_dapm_widget *w,
+ }
+ 
+ static const struct snd_soc_dapm_widget tas_dapm_widgets[] = {
+-	SND_SOC_DAPM_AIF_IN("ASI", "ASI Playback", 0, SND_SOC_NOPM, 0, 0),
+-	SND_SOC_DAPM_AIF_OUT("ASI OUT", "ASI Capture", 0, SND_SOC_NOPM,
++	SND_SOC_DAPM_AIF_IN("ASI", "Playback", 0, SND_SOC_NOPM, 0, 0),
++	SND_SOC_DAPM_AIF_OUT("ASI OUT", "Capture", 0, SND_SOC_NOPM,
+ 			     0, 0),
+ 	SND_SOC_DAPM_DAC_E("FU21", NULL, SND_SOC_NOPM, 0, 0, tas_fu21_event,
+ 			   SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_PRE_PMD),
+-- 
+2.54.0
+
