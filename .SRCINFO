@@ -1,1 +1,12 @@
-makepkg --printsrcinfo > .SRCINFO
+pkgbase = soundkeeper-linux
+	pkgdesc = Keeps audio devices alive by playing an inaudible 19kHz tone via SoX.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/arnav4o4/soundkeeper-linux
+	arch = any
+	license = MIT
+	depends = sox
+	source = soundkeeper.service
+	sha256sums = a6ccc7d9ea0ea384b6a8c56d15703b05d8747e53f114210e3f60bb56de24d524
+
+pkgname = soundkeeper-linux
