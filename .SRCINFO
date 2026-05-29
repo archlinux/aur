@@ -1,0 +1,17 @@
+pkgbase = git-ss-bin
+	pkgdesc = A Git plugin for sharing temporary snapshot branches.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/rijuyuezhu/git-ss
+	arch = x86_64
+	license = MIT
+	depends = git
+	provides = git-ss
+	conflicts = git-ss
+	options = !strip
+	source = git-ss-0.1.2::https://github.com/rijuyuezhu/git-ss/releases/download/v0.1.2/git-ss-x86_64-unknown-linux-musl
+	source = LICENSE-0.1.2::https://github.com/rijuyuezhu/git-ss/raw/v0.1.2/LICENSE
+	sha256sums = b0e4e844bd9b6e68ec723bc5641ba39a94590a254e0d15c1bdad494d9b7bd7ac
+	sha256sums = d9c5c3f4f9e4429b77f047f8b1740c17302b831611421a5a343e75203bea6c27
+
+pkgname = git-ss-bin
