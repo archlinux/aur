@@ -1,6 +1,6 @@
 pkgbase = lumen
 	pkgdesc = Instant AI Git Commit message, Git changes summary from the CLI (no API key required)
-	pkgver = 2.24.0
+	pkgver = 2.25.0
 	pkgrel = 1
 	url = https://github.com/jnsahaj/lumen
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = lumen
 	optdepends = ollama-rocm: Local AI provider with ROCm
 	options = !debug
 	options = !lto
-	source = https://github.com/jnsahaj/lumen/archive/refs/tags/v2.24.0/lumen-2.24.0.tar.gz
-	sha256sums = 2565a358c808875e1d13d628528b35fca5b3bb1186161fb04965b56737b1213b
+	source = https://github.com/jnsahaj/lumen/archive/refs/tags/v2.25.0/lumen-2.25.0.tar.gz
+	sha256sums = f23901b20daccece0d65041aacd370a9518480c73ee16e4299c847a27eea5f82
 
 pkgname = lumen
