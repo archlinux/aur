@@ -43,8 +43,7 @@ _comfyui_setup() {
             echo ""
             echo ":: ERROR: PyTorch installation failed."
             echo ":: Pip cache preserved at _PREFIX_/.pip-cache for retry."
-            echo ":: To retry, reinstall the package:"
-            echo "::   sudo pacman -S comfyui"
+            echo ":: To retry, reinstall the package."
             return 1
         fi
     fi
@@ -54,8 +53,7 @@ _comfyui_setup() {
         echo ""
         echo ":: ERROR: ComfyUI dependencies installation failed."
         echo ":: Pip cache preserved at _PREFIX_/.pip-cache for retry."
-        echo ":: To retry, reinstall the package:"
-        echo "::   sudo pacman -S comfyui"
+        echo ":: To retry, reinstall the package."
         return 1
     fi
 
@@ -92,7 +90,7 @@ post_install() {
         echo ":: Edit /etc/comfyui/extra_model_paths.yaml to configure model paths."
         echo "::"
         echo ":: To override GPU detection (rocm, cuda, cpu):"
-        echo "::   sudo COMFYUI_GPU=cuda pacman -S comfyui"
+        echo "::   sudo COMFYUI_GPU=cuda makepkg -sf"
     fi
 }
 
