@@ -1,6 +1,6 @@
 # Maintainer: upi@mis.my.id
 pkgname=wewbo
-pkgver="1.1.2"
+pkgver="1.3.0"
 pkgrel=1
 pkgdesc="Interactive terminal application for streaming and downloading anime"
 arch=('x86_64')
