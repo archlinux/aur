@@ -30,7 +30,7 @@ sha256sums=('b070a34acf69ed92e523902683d104abb295d78b6f37663f4668e929b9e90470'
 
 build() {
   cd "${pkgname}-${pkgver}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev -B cmake
+  cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev -B cmake
   make -C cmake
 }
 
