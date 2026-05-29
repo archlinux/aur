@@ -1,11 +1,10 @@
 # Maintainer: Argos Releases <releases@thothlab.tech>
 #
-# Template — `0.1.3` and `c79480fe8b00a423f32ee9d44efdbb60694efa970f4bf41615cab5a09524b9fe` placeholders are substituted by
-# .github/workflows/release-aur.yml before this file is pushed to AUR.
-# Edit-by-hand on a release is fine; just keep both placeholders intact.
+# Generated from packaging/aur/argos-bin/PKGBUILD.template by
+# .github/workflows/release-aur.yml on every release: published event.
 
 pkgname=argos-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Fast, git-native API client (REST / GraphQL / WebSocket)"
 arch=('x86_64')
@@ -20,7 +19,7 @@ depends=('fuse2' 'webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3')
 options=('!strip' '!debug')
 source=("Argos_${pkgver}_amd64.AppImage::https://github.com/thothlab/argos-app/releases/download/v${pkgver}/Argos_${pkgver}_amd64.AppImage")
 noextract=("Argos_${pkgver}_amd64.AppImage")
-sha256sums=('c79480fe8b00a423f32ee9d44efdbb60694efa970f4bf41615cab5a09524b9fe')
+sha256sums=('bb1c10a9f6e91f5b99caca1ad6df2a4745eb9f1ad1a0794e58e23f911894d795')
 
 prepare() {
   chmod +x "Argos_${pkgver}_amd64.AppImage"
