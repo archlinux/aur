@@ -2,7 +2,7 @@
 # Contributor: Amirul Fitri <tounghacker@gmail.com>
 
 pkgname=playit
-pkgver=0.17.1
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A tunneling tool to host a game server without port forwarding or sharing public IP"
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=(
   "systemd-service.patch"
   "tmpfiles.conf"
 )
-sha256sums=('d8c937325d9415d2d73c91b3dda8da3919a5dedf3ea8d831716e00924d32d832'
-            '27e70d8498049ab785e04076e4e0b8fea7ddb9639ad3bbef93241cc96adb6ad8'
+sha256sums=('c2e7c8252425c2f04e5cba2bc209b48d12675740df0448bb03022ca3d3168fa4'
+            '397a63ab9c3c329ff5c3a2817bc426dc8023c9f86c5f92feac41196f248cee05'
             '91c4f8c54d07f5877de216263e586ac96a6cf33e29219f1436e8447adb62cf9d')
 options=(!lto)
 
@@ -24,7 +24,7 @@ prepare() {
   cd "playit-agent-${pkgver}"
   patch -Np1 -i ../systemd-service.patch
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+  cargo fetch --offline --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
@@ -42,7 +42,7 @@ check() {
 
 package() {
   cd "playit-agent-${pkgver}"
-  install -Dm755 target/release/playit-cli "${pkgdir}"/usr/bin/"${pkgname}"
+  install -Dm755 target/release/playit-cli target/release/playitd target/release/playitd-{service,tray,windows-setup} -t "${pkgdir}"/usr/bin/
   install -Dm644 linux/playit.service "${pkgdir}"/usr/lib/systemd/system/playit.service
   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
   install -Dm644 linux/logrotate.conf "${pkgdir}"/etc/logrotate.d/playit
