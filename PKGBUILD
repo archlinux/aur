@@ -1,5 +1,5 @@
 pkgname=ark-cli
-pkgver=0.1.0_alpha.8
+pkgver=0.1.0_alpha.9
 pkgrel=1
 pkgdesc="Plain-text terminal organiser for notes, todos, and events"
 arch=('any')
@@ -15,15 +15,15 @@ package() {
 
     install -Dm755 bin/ark "$pkgdir/usr/bin/ark-cli"
 
-    install -Dm644 lib/ark/arkfuncs.pl \
-        "$pkgdir/usr/lib/ark/arkfuncs.pl"
+    mkdir -p "$pkgdir/usr/lib/ark"
+    cp -R lib/ark/. "$pkgdir/usr/lib/ark/"
 
-    install -d "$pkgdir/usr/lib/ark/commands"
+    find "$pkgdir/usr/lib/ark" -type d -exec chmod 755 {} \;
+    find "$pkgdir/usr/lib/ark" -type f -exec chmod 644 {} \;
 
-    for cmd in lib/ark/commands/*; do
-        [ -f "$cmd" ] || continue
-        install -m755 "$cmd" "$pkgdir/usr/lib/ark/commands/$(basename "$cmd")"
-    done
+    if [ -d "$pkgdir/usr/lib/ark/commands" ]; then
+        find "$pkgdir/usr/lib/ark/commands" -type f -exec chmod 755 {} \;
+    fi
 
     install -Dm644 README.md "$pkgdir/usr/share/doc/ark-cli/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/ark-cli/LICENSE"
