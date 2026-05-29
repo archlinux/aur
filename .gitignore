@@ -3,7 +3,7 @@
 *.tar.gz
 src/
 pkg/
-comfyui.install
+comfyui.install.orig
 
 # Manual archives
 PKGBUILD.v*

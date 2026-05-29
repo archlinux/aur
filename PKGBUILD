@@ -9,7 +9,7 @@ _prefix="${_prefix:-/opt/comfyui}"
 
 pkgname=comfyui
 pkgver=0.21.1
-pkgrel=6
+pkgrel=7
 pkgdesc="The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface"
 arch=('x86_64')
 url="https://github.com/Comfy-Org/ComfyUI"
@@ -25,7 +25,7 @@ makedepends=()
 
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Comfy-Org/ComfyUI/archive/refs/tags/v$pkgver.tar.gz"
-    'comfyui.install.in'
+    'comfyui.install'
     'comfyui.sh'
     'comfyui.service'
     'comfyui.sysusers'
@@ -59,9 +59,12 @@ build() {
         "$srcdir/comfyui.sh" \
         "$srcdir/comfyui.service"
 
-    # Generate install scriptlet from template (never modify the .in)
+    # Back up pristine install template (no-clobber: keep earliest copy)
+    cp -n "$startdir/comfyui.install" "$startdir/comfyui.install.orig"
+    # Always generate from backup so repeated builds with different
+    # _prefix values work correctly
     sed "s|_PREFIX_|$_prefix|g" \
-        "$srcdir/comfyui.install.in" > "$startdir/comfyui.install"
+        "$startdir/comfyui.install.orig" > "$startdir/comfyui.install"
 }
 
 package() {
