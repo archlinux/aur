@@ -1,6 +1,6 @@
 pkgbase = susshi
 	pkgdesc = modern, terminal-based SSH connection manager
-	pkgver = 0.16.1
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/yatoub/susshi
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = susshi
 	license = MIT
 	makedepends = cargo
 	depends = openssh
-	source = https://github.com/yatoub/susshi/archive/refs/tags/v0.16.1.tar.gz
-	b2sums = 66bcb10205468819e820a2114dc68af5b865cbee6e582f8ac38fc4c274f05d6bb2c8e2e06636fef79b98aa2bce47dc16fa2e94cf83290c74c0725ea5d034ea8c
+	source = https://github.com/yatoub/susshi/archive/refs/tags/v0.18.0.tar.gz
+	b2sums = cf3fa1165d6c0a1a848486b8002cd5440fc5b42d64793d3912ca9274d34172be276e8ea819ca36adeddbeeeb5ae65f29a4b8c63a7f27800fc7de94405a71e7c0
 
 pkgname = susshi
