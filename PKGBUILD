@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vulkan-low-latency-layer-git
-pkgver=0.1.0.r1.g4633ada
-pkgrel=2
+pkgver=0.2.0.r0.g4e7fe12
+pkgrel=1
 pkgdesc="Vulkan layer for hardware agnostic input latency reduction"
 arch=('x86_64')
 url="https://github.com/Korthos-Software/low_latency_layer"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname::-4}"
-	git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {
