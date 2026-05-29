@@ -1,7 +1,7 @@
 # Maintainer: Carlos <prietus@live.com>
 pkgname=jlfine-bin
 _pkgname=jlfine
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Native Jellyfin desktop client with bit-perfect audio and HDR/Dolby Vision video (Slint + libmpv)"
 arch=('x86_64')
