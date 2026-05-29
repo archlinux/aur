@@ -9,7 +9,7 @@ depends=('gtk4' 'libadwaita' 'gtk4-layer-shell' 'libheif' 'pam' 'geoclue')
 provides=('glimpse-panel' 'glimpse-shell' 'glimpse-idle' 'glimpse-lock' 'glimpse-sunset' 'glimpse-wallpaper')
 conflicts=('glimpse-panel' 'glimpse-shell' 'glimpse-idle' 'glimpse-lock' 'glimpse-sunset' 'glimpse-wallpaper')
 source_x86_64=("glimpse-$pkgver-x86_64.tar.zst::$url/releases/download/v$pkgver/glimpse-$pkgver-x86_64.tar.zst")
-b2sums_x86_64=('75fc6ee06316ffef61ac2adf5cbcddec34292558e3e40427f8c9f8bafaecd3d5449058eca270dd5c58581a9ff5f44dfc87dbe84821d1df81064bd08a177fe99d')
+b2sums_x86_64=('603762756d0823bf158d8036458df2eee46e8c8067c809a975e23a4a25a7194d25f24b3fbacff9e1a08224250610d104ea54674ae003ca4c73d31e4a97168a41')
 
 package() {
     cp -a "$srcdir/usr" "$pkgdir/"
