@@ -2,8 +2,8 @@
 
 pkgname=stm32cubemx2
 _pkgname=stm32cubemx2
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="STM32CubeMX2 - new flavor of STM32CubeMX tool"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemx.html"
@@ -14,7 +14,7 @@ options=('!strip' '!debug')
 
 _installer="stm32cubemx2-${pkgver}-X64-Linux-installer"
 source=("local://${_installer}")
-sha256sums=('46d8133c28d4d0d1b4f09c384f5cfbcb2faabfa42aa99da7236409f4c3a7106e')
+sha256sums=('3451e2f09f5de695b7ac463fd318090ca2883d6fb0265731bfc9358bee1aff34')
 
 if [ ! -f "${startdir}/${_installer}" ]; then
   echo ""
@@ -37,7 +37,7 @@ prepare() {
     --icon "${pkgname}" \
     --categories "Development;IDE;"
 
-  tail -c +10563432 "${_installer}" >data.tar.gz
+  tail -c +12407694 "${_installer}" >data.tar.gz
   mkdir -p build
   bsdtar -C build -zxf data.tar.gz
 }
