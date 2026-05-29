@@ -2,7 +2,7 @@
 
 _pkgbase=vk-gl-cts
 pkgname='vulkan-cts'
-pkgver=1.4.5.3
+pkgver=1.4.6.0
 pkgrel=1
 arch=('any')
 pkgdesc='Khronos Vulkan Conformance Tests'
@@ -10,7 +10,6 @@ url="https://github.com/KhronosGroup/VK-GL-CTS"
 license=('Apache-2.0')
 depends=(
 	vulkan-driver
-	zlib
 	libpng
 )
 
@@ -41,7 +40,7 @@ prepare() {
 
 build() {
 	cd ${_pkgbase^^}/build
-	_p=$(((`nproc` / 3 +1 )))
+	_p=$((`nproc` / 2 +1 ))
 	make -j${_p}
 }
 
@@ -49,7 +48,7 @@ package() {
 	cd ${_pkgbase^^}
 	install -Dm644 external/vulkancts/README.md ${pkgdir}/usr/share/vulkancts/README.md
 	git log --first-parent "vulkan-cts-${pkgver}^..HEAD" >${pkgdir}/usr/share/vulkancts/git-log.txt
-	cp -r external/vulkancts/doc ${pkgdir}/usr/share/vulkancts/
+	cp -r external/vulkancts/{doc,mustpass} ${pkgdir}/usr/share/vulkancts/
 	install git-status.txt ${pkgdir}/usr/share/vulkancts/git-status.txt
 	
 	cd build/external/vulkancts/modules/vulkan

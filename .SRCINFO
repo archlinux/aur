@@ -1,6 +1,6 @@
 pkgbase = vulkan-cts
 	pkgdesc = Khronos Vulkan Conformance Tests
-	pkgver = 1.4.5.3
+	pkgver = 1.4.6.0
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/VK-GL-CTS
 	arch = any
@@ -11,9 +11,8 @@ pkgbase = vulkan-cts
 	makedepends = gcc
 	makedepends = wayland-protocols
 	depends = vulkan-driver
-	depends = zlib
 	depends = libpng
-	source = git+https://github.com/KhronosGroup/VK-GL-CTS.git#tag=vulkan-cts-1.4.5.3
+	source = git+https://github.com/KhronosGroup/VK-GL-CTS.git#tag=vulkan-cts-1.4.6.0
 	sha256sums = SKIP
 
 pkgname = vulkan-cts
