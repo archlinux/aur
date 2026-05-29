@@ -1,13 +1,13 @@
 pkgbase = mage-bin
 	pkgdesc = A Make/rake-like build tool using Go
-	pkgver = 1.17.1
+	pkgver = 1.17.2
 	pkgrel = 0
 	url = https://magefile.org
 	arch = x86_64
 	license = Apache
 	provides = mage
 	conflicts = mage
-	source = mage-bin-1.17.1.tar.gz::https://github.com/magefile/mage/releases/download/v1.17.1/mage_1.17.1_Linux-64bit.tar.gz
-	sha256sums = 6e03c7485d13559e9eec2027a057db9019fbbe569d620046b92f2a9bced0a949
+	source = mage-bin-1.17.2.tar.gz::https://github.com/magefile/mage/releases/download/v1.17.2/mage_1.17.2_Linux-64bit.tar.gz
+	sha256sums = b1dd189f5a4d38484176dd5be3b651eb7cbc0b78eaf4bb9715738aa24edec644
 
 pkgname = mage-bin
