@@ -1,6 +1,6 @@
 pkgbase = kiro-ide
 	pkgdesc = An agentic AI IDE with spec-driven development from prototype to production
-	pkgver = 0.12.224
+	pkgver = 0.12.263
 	pkgrel = 1
 	epoch = 1
 	url = https://kiro.dev/
@@ -40,12 +40,12 @@ pkgbase = kiro-ide
 	conflicts = kiro
 	options = !debug
 	options = !strip
-	source = kiro-ide-0.12.224.deb::https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/0.12.224/deb/kiro-ide-0.12.224-stable-linux-x64.deb
-	source = kiro-ide-0.12.224-deb-signature.bin::https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/0.12.224/deb/signature.bin
-	source = kiro-ide-0.12.224-certificate.pem::https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/0.12.224/deb/certificate.pem
+	source = kiro-ide-0.12.263.deb::https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/0.12.263/deb/kiro-ide-0.12.263-stable-linux-x64.deb
+	source = kiro-ide-0.12.263-deb-signature.bin::https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/0.12.263/deb/signature.bin
+	source = kiro-ide-0.12.263-certificate.pem::https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/0.12.263/deb/certificate.pem
 	source = Kiro-LICENSE.txt
-	b2sums = b6c5dffb0d4660393fa6833338ddc876d4b273be4bc1d246ba642c39bd857f3634a4b83d9fe2594f2e77c60c76e5c91c8e8de62af3915d8c9f7d965b397e759d
-	b2sums = f41c169b7e9150f1c052d20bae734d3752b2f7d64e375dcb1999c1023c28f8f59d23c0a24d30376bb309d6cf51c18ed939fa6874ca9aa1716313d97c4aa695c7
+	b2sums = 7e4245971b91d3e900102485d6f67f2c0b4e7765b2a03a05fa4834a9e2fcde9c50d18f75c94561d5205e6f939cc244e84bafbfc0d675319691586c8c3a5ec837
+	b2sums = 11c2182197647b3d1e6786fa310cbfb0e32aca27ebaf326b277e83d40ad209e695ee988e03632c62341101491015065b1c7c63655f2b864d5523b0cf4dae8e68
 	b2sums = 4cba4d51523a883653b28e04abc4a0e444d7672636153be9c99058b4469137ab2c591466d9452c5471e1577c6ce9a54edca28f14c01e6d66b36b72eb53f92bc8
 	b2sums = 4fee11387ffa92e8fba85ca53dcd51906efb5aa0d581002510a66e63916e439c836539de374db5e5b5a4470a1790b6dc0348e7ceb555a8de4dd5210b6c0f7a01
 
