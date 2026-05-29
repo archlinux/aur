@@ -1,0 +1,17 @@
+pkgbase = rui-bin
+	pkgdesc = Terminal UI for managing home routers (Orange Livebox/Funbox today; Play/Fritz on the roadmap)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/j4y-w4lk3r/rui
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	optdepends = chromium: --capture mode (records router web UI traffic) needs a Chrome/Chromium binary
+	optdepends = xdg-utils: ergonomic clipboard support for `y`/`Y` device-copy keys
+	provides = rui
+	conflicts = rui
+	conflicts = rui-git
+	source = rui-0.1.1.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v0.1.1/rui_0.1.1_Linux_x86_64.tar.gz
+	sha256sums = b3d4ba897d4603141e601374ec886386effcd40b40554fdfc798083799f8edc9
+
+pkgname = rui-bin
