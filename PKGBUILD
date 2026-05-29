@@ -2,7 +2,7 @@
 
 pkgname=mistral-vibe
 pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
 url='https://github.com/mistralai/mistral-vibe'
@@ -30,6 +30,7 @@ depends=(
     "python-textual"
     "python-tomli-w"
     "python-tree-sitter-bash"
+    "python-truststore"
     "python-watchfiles"
     "python-yaml"
     "python-sounddevice"
