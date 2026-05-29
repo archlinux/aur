@@ -1,6 +1,6 @@
 # Maintainer: bipin kumar <kbipinkumar@pm.me>
 pkgname=chopper
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Rust implementation of NanoFilt+NanoLyse intended for long read sequencing'
 arch=(x86_64)
@@ -10,7 +10,7 @@ url='https://github.com/wdecoster/chopper'
 license=('MIT')
 options=(!lto)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/wdecoster/chopper/archive/refs/tags/v${pkgver}.tar.gz)
-b2sums=('d9b2655bce55a6d673b1e1937a4c1608627321ef54c76481d0bcf9fa218d5f95ef1ccb631369a22934780f486214dfa37da06612c1ef531012ddd8e17b90050d')
+b2sums=('8ec6c98e7e64892ad944ed9cd3dbaeb08e0a38a0b53cc9a02ec071552bb1c261977f3f9856a5344413b017fc5a809644af5854c398ba4e99e19e268cfad01b06')
 
 prepare() {
     cd ${pkgname}-${pkgver}
