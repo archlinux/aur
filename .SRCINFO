@@ -1,13 +1,13 @@
 pkgbase = lapctl-bin
 	pkgdesc = CLI tool for managing laptop hardware features on Linux
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/S4NKALP/lapctl
 	arch = x86_64
 	license = MIT
 	provides = lapctl
 	conflicts = lapctl
-	source = https://github.com/S4NKALP/lapctl/releases/download/v0.3.4/lapctl-0.3.4-x86_64.tar.gz
-	sha256sums = 92db6aa8ad2f1e98b9c659ae0e7cce0555c958650dee9e943e4d30a79f8b6daf
+	source = https://github.com/S4NKALP/lapctl/releases/download/v0.3.5/lapctl-0.3.5-x86_64.tar.gz
+	sha256sums = 49afbb5bde0578a6b0101e7a7ad1f767bf535ee19fb8f6af8b7f13c0489e9412
 
 pkgname = lapctl-bin
