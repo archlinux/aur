@@ -39,7 +39,7 @@ makedepends=(
   'uv'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('c9580a799af53fca4d2f481fc80ab58659a2f5c2b68b93d0688f2ca6b4a9dbb7')
 
 build() {
   cd "$pkgname-$pkgver"
