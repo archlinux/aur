@@ -1,0 +1,13 @@
+diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
+index c76ac95..cffc73c 100644
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
+@@ -38,7 +38,7 @@
+   "bundle": {
+     "active": true,
+     "targets": "all",
+-    "createUpdaterArtifacts": true,
++    "createUpdaterArtifacts": false,
+     "linux": {
+       "appimage": {
+         "bundleMediaFramework": true
