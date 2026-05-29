@@ -1,7 +1,7 @@
 pkgname=twintaillauncher-git
 _pkgname="${pkgname%-git}"
 pkgver=r1009.ae41283
-pkgrel=1
+pkgrel=2
 pkgdesc='A multi-platform launcher for your anime games'
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-only')
@@ -17,6 +17,7 @@ options=('!lto' '!debug')
 
 prepare() {
 	cd $_pkgname
+	echo -e "allowBuilds:\n  esbuild: true" > pnpm-workspace.yaml
 	pnpm i
 }
 
