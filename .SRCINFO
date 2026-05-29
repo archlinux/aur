@@ -1,7 +1,7 @@
 pkgbase = driftwm
 	pkgdesc = Trackpad-first infinite canvas Wayland compositor
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/malbiruk/driftwm
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,12 @@ pkgbase = driftwm
 	depends = seatd
 	depends = mesa
 	depends = libxkbcommon
+	optdepends = xwayland-satellite: run X11 apps like Steam, Discord, and many games (needs >= 0.7)
+	optdepends = xdg-desktop-portal: screencasting and file pickers
+	optdepends = xdg-desktop-portal-wlr: screencast backend (OBS, Discord, browsers); or xdg-desktop-portal-cosmic
+	optdepends = grim: screenshots
+	optdepends = slurp: region selection for screenshots
+	optdepends = adwaita-fonts: Adwaita Sans SSD title bars matching GTK apps
 	source = driftwm-0.8.1.tar.gz::https://github.com/malbiruk/driftwm/archive/refs/tags/v0.8.1.tar.gz
 	sha256sums = SKIP
 
