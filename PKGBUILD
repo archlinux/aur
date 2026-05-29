@@ -1,6 +1,6 @@
 # Maintainer: sickhate <archate@gmail.com>
 pkgname=meh2
-pkgver=0.1.0.r36.886fcb7
+pkgver=0.1.0.r61.2077255
 pkgrel=1
 pkgdesc="GTK4 Wayland widget system with Rhai scripting (fork of meh)"
 arch=('x86_64')
@@ -14,32 +14,33 @@ depends=(
     'glib2'
     'pango'
 )
-makedepends=('cargo')
+makedepends=('rust' 'cargo')
 options=('!debug')
-source=("meh2-0.1.0.r36.886fcb7.tar.gz::https://github.com/sickhate/meh2/archive/886fcb7.tar.gz")
-sha256sums=('cdbb6cefc248537cc753027bf6c554d266eac79645d6bf2a1707a63c11f05759')
+source=("meh2-0.1.0.r61.2077255.tar.gz::https://github.com/sickhate/meh2/archive/2077255.tar.gz")
+sha256sums=('d6ad60ca94773895aedf41159c0df90756090125eab0a13acf800805ad901170')
 
 prepare() {
-    cd "$srcdir/meh2-886fcb7"
+    cd "$srcdir/meh2-2077255"
     export RUSTUP_TOOLCHAIN=stable
+    rm -rf target
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$srcdir/meh2-886fcb7"
+    cd "$srcdir/meh2-2077255"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --release --frozen --features default,builtin-default-config
 }
 
 check() {
-    cd "$srcdir/meh2-886fcb7"
+    cd "$srcdir/meh2-2077255"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen 2>/dev/null | grep -v '^$' | grep -v 'running 0 tests' | grep -v 'test result: ok. 0 passed' || true
+    cargo test --release --frozen 2>/dev/null | grep -v '^$' | grep -v 'running 0 tests' | grep -v 'test result: ok. 0 passed' || true
 }
 
 package() {
-    cd "$srcdir/meh2-886fcb7"
+    cd "$srcdir/meh2-2077255"
     install -Dm755 "target/release/meh2" "$pkgdir/usr/bin/meh2"
     install -Dm644 /usr/share/licenses/spdx/GPL-3.0-or-later "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
