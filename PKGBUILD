@@ -1,36 +1,36 @@
 # Maintainer: Eric Bakker <musqz at mf dot com>
-# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=forum-scout
 pkgver=0.6.0
-pkgrel=1
-pkgdesc="Arch focused forum search tool"
+pkgrel=2
+pkgdesc="Arch focused forum search tool (GTK4)"
 arch=('any')
-url="https://github.com/musqz/forum-scout"
+url="https://github.com/musqz/forum-scout-gtk4"
 license=('MIT')
+conflicts=('forum-scout-gtk4')
 depends=(
-  'gtk3'
+  'gtk4'
   'python-gobject'
   'python-requests'
 )
 checkdepends=('desktop-file-utils')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1db1cc526928379b3f76c4c1a76f16ffde76df14fe12c16ca7903a8204c91647')
+source=("forum-scout-gtk4-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('a025b5b8d605886d783075e9942124f4b2e9b8844d26ca6f4d3b37b2c5b66f90')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  sed -i "s/__VERSION__/$pkgver/" "$pkgname.py"
+  cd "forum-scout-gtk4-$pkgver"
+  sed -i "s/__VERSION__/$pkgver/" "forum-scout.py"
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-  desktop-file-validate "$pkgname.desktop"
+  cd "forum-scout-gtk4-$pkgver"
+  desktop-file-validate "forum-scout.desktop"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 forums.conf -t "$pkgdir/usr/share/$pkgname/"
-  install -Dm644 translations/*.json -t "$pkgdir/usr/share/$pkgname/translations/"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  cd "forum-scout-gtk4-$pkgver"
+  install -Dm755 "forum-scout.py" "$pkgdir/usr/bin/forum-scout"
+  install -Dm644 "forum-scout.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 forums.conf -t "$pkgdir/usr/share/forum-scout/"
+  install -Dm644 translations/*.json -t "$pkgdir/usr/share/forum-scout/translations/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/forum-scout/"
 }
