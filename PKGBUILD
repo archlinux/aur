@@ -2,17 +2,17 @@
 # Contributor: Adam Brenner <adam@aeb.io>
 
 pkgname=pulsar
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc='Distributed pub-sub messaging system'
 arch=('any')
 url='https://github.com/apache/pulsar'
 license=('Apache-2.0')
-makedepends=('java-environment>=21'
+makedepends=('java-environment=21'
 )
-depends=('java-runtime>=21' 'python')
+depends=('java-runtime=21' 'python')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/apache/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6491def2f54278815111896d4c15967556c2fa956d23424e0448d4a395e77bd9')
+sha256sums=('accac7ca40d0a7c175614b81b3bd59d9c791bbb56f9569bde5a86dc92a5682f1')
 
 build() {
     cd ${pkgname}-${pkgver}
@@ -30,8 +30,11 @@ package() {
   tar -xzf distribution/server/target/apache-${pkgname}-${pkgver}-bin.tar.gz
   cd apache-${pkgname}-${pkgver}
 
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm777 ${pkgdir}/opt/${pkgname}/logs
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 NOTICE ${pkgdir}/usr/share/licenses/${pkgname}/NOTICE
+  install -dm777 ${pkgdir}/opt/${pkgname}/logs
+  cp -r examples ${pkgdir}/opt/${pkgname}/examples
+
   find conf -type f -exec install -D -m644 "{}" "${pkgdir}/opt/${pkgname}/{}" \;
 
   for bin in $(ls bin -I "*.cmd"); do
