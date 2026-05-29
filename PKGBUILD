@@ -2,7 +2,7 @@
 
 pkgname=alacritree-bin
 _pkgname=alacritree
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Alacritty fork with worktree-aware sidebars (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -15,6 +15,9 @@ depends=(
   'libxcb'
   'wayland'
   'libglvnd'
+  # Runtime deps for the sidebar diff view: we shell out to `git diff … | delta`.
+  'git'
+  'git-delta'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname" 'alacritree-git')
@@ -23,8 +26,8 @@ source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64-linux.tar.gz")
 # Hashes are filled in by .github/workflows/aur-bin-publish.yml before the
 # manifest is shipped to AUR.
-sha256sums_x86_64=('8d23753dde1482b7edb8039c6120019df8a9ab426e4964d6966bb7028a760ce9')
-sha256sums_aarch64=('1716fda4db5f128608c58bfd91052e7330fefadb3ff29c62600189d0aa8590a7')
+sha256sums_x86_64=('0835b05f1883a9718c91e508908b76e7e3949e0cbfe5e52e0a94e9dbe8654e71')
+sha256sums_aarch64=('3fdbf2efedc72d2a1101275062a7dbb70ae1f0d46b9d78990a6b75cd9030dc91')
 
 package() {
   install -Dm755 "$srcdir/alacritree" "$pkgdir/usr/bin/alacritree"
