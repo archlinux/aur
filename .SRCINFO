@@ -1,7 +1,7 @@
 pkgbase = mihomosh
 	pkgdesc = A CLI Toolkit for Mihomo
-	pkgver = 2.3.0
-	pkgrel = 1
+	pkgver = 2.3.2
+	pkgrel = 0
 	url = https://github.com/SamuNatsu/mihomosh
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = mihomosh
 	makedepends = pkg-config
 	depends = openssl
 	options = !lto
-	source = git+https://github.com/SamuNatsu/mihomosh.git#tag=v2.3.0
-	sha256sums = 3ea130f61a7903a9040e13bf64d54c1fc014a79f4db1b4928ae224a9cf9782e9
+	source = git+https://github.com/SamuNatsu/mihomosh.git#tag=v2.3.2
+	sha256sums = 5c71a6147d8b62eb3bd0de62e991847296cf0a58b5165cfeab3b8acb0b7e592c
 
 pkgname = mihomosh

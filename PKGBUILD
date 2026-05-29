@@ -1,8 +1,8 @@
 # Maintainer: k88936 email: kvtodev@outlook.com
 
 pkgname=mihomosh
-pkgver=2.3.0
-pkgrel=1
+pkgver=2.3.2
+pkgrel=0
 pkgdesc="A CLI Toolkit for Mihomo"
 arch=('x86_64')
 url="https://github.com/SamuNatsu/mihomosh"
@@ -11,7 +11,7 @@ depends=('openssl')
 options=(!lto)
 makedepends=('cargo' 'rust' 'base-devel' 'pkg-config')
 source=("git+https://github.com/SamuNatsu/mihomosh.git#tag=v${pkgver}")
-sha256sums=('3ea130f61a7903a9040e13bf64d54c1fc014a79f4db1b4928ae224a9cf9782e9')
+sha256sums=('5c71a6147d8b62eb3bd0de62e991847296cf0a58b5165cfeab3b8acb0b7e592c')
 
 build() {
   cd "${srcdir}/${pkgname}"
