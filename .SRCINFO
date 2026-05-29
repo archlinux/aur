@@ -1,0 +1,20 @@
+pkgbase = llamastash-git
+	pkgdesc = Fast, keyboard-driven TUI for launching local llama.cpp models (git main)
+	pkgver = 0.0.1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/llamastash/llamastash
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	optdepends = llama.cpp: provides llama-server (otherwise installed by `llamastash init`)
+	provides = llamastash
+	conflicts = llamastash
+	conflicts = llamastash-bin
+	options = !lto
+	source = llamastash::git+https://github.com/llamastash/llamastash.git#branch=main
+	sha256sums = SKIP
+
+pkgname = llamastash-git
