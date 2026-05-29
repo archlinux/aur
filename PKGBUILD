@@ -2,7 +2,7 @@
 
 pkgname=deepclaude-git
 pkgver=r15.70518b6
-pkgrel=3
+pkgrel=4
 pkgdesc='Use Claude Code with DeepSeek, OpenRouter, or any Anthropic-compatible backend'
 arch=('any')
 url='https://github.com/aattaran/deepclaude'
@@ -80,9 +80,30 @@ function normalizeSystemMessages(body) {
     }
     return true;
 }
+
+function stripThinkingExceptToolUseTurns(body) {
+    if (!body?.messages) return;
+    const thinkingEnabled = body.thinking && body.thinking.type !== 'disabled';
+    for (const msg of body.messages) {
+        if (!Array.isArray(msg.content)) continue;
+        // Reasoning backends (DeepSeek) require the thinking block that produced
+        // a tool_use to be passed back ("content[].thinking ... must be passed
+        // back to the API"). Preserve thinking on tool_use turns whenever a
+        // thinking mode is active (Claude Code sends type 'enabled' or
+        // 'adaptive'); standalone thinking blocks are safe to drop. With thinking
+        // disabled/absent this strips everything, matching stripAllThinkingBlocks.
+        if (thinkingEnabled && msg.content.some(b => b && b.type === 'tool_use')) continue;
+        msg.content = msg.content.filter(b => b.type !== 'thinking');
+    }
+}
 NORMALIZE_SYSTEM
-    # Invoke alongside the existing thinking-block strips (covers every
-    # forwarding path: non-anthropic backends and anthropic fallback).
+    # Non-anthropic (DeepSeek) path: swap the blanket strip for the tool_use-aware
+    # one so DeepSeek's own thinking blocks survive on tool_use turns. Target only
+    # the request-processing `if (isModelCall)` block via its try/JSON.parse prefix
+    # (the logging `if (isModelCall)` lacks that prefix, so it is not matched).
+    perl -0777 -i -pe 's/(if \(isModelCall\) \{[ ]*\n[ ]*try \{[ ]*\n[ ]*const parsed = JSON\.parse\(body\);[ ]*\n[ ]*)stripAllThinkingBlocks\(parsed\);/${1}stripThinkingExceptToolUseTurns(parsed); normalizeSystemMessages(parsed);/' proxy/model-proxy.js
+    # Anthropic-fallback path keeps stripping all foreign blocks; add system-message
+    # normalization to both remaining (anthropic) strip sites.
     sed -i 's/stripAllThinkingBlocks(parsed);/stripAllThinkingBlocks(parsed); normalizeSystemMessages(parsed);/g' proxy/model-proxy.js
     sed -i 's/stripUnsignedThinkingBlocks(parsed);/stripUnsignedThinkingBlocks(parsed); normalizeSystemMessages(parsed);/g' proxy/model-proxy.js
 }
