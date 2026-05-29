@@ -10,12 +10,16 @@ license=('GPL3')
 depends=('python' 'python-pyqt6')
 
 source=("git+https://github.com/azuk13215/Hexer.git")
-
 sha256sums=('SKIP')
 
 package() {
-    cd Hexer
+    cd "$srcdir/Hexer"
 
-    install -Dm755 main.py "$pkgdir/usr/bin/hexer-cli"
+    install -Dm755 main.py "$pkgdir/usr/lib/hexer-cli/main.py"
+
+    # launcher
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/hexer-cli" << 'EOF'
+#!/usr/bin/env bash
+exec python /usr/lib/hexer-cli/main.py
+EOF
 }
-

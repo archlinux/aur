@@ -1,4 +1,4 @@
-pkgbase = hexer
+pkgbase = hexer-cli
 	pkgdesc = Hexer terminal GUI
 	pkgver = 0.1
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = hexer
 	source = git+https://github.com/azuk13215/Hexer.git
 	sha256sums = SKIP
 
-pkgname = hexer
+pkgname = hexer-cli
