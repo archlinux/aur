@@ -102,6 +102,7 @@ build() {
 }
 
 package() {
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   cd "${pkgname}-${pkgver}"
 
   # Install the built package
