@@ -3,10 +3,10 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 
 _pkgname=mvtnorm
-_pkgver=1.3-7
+_pkgver=1.4-0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Multivariate Normal and t Distributions"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -24,8 +24,8 @@ optdepends=(
   r-qrng
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('512d4804037e5b1905aeab5cc99aaf22')
-b2sums=('c23085da14e59914b877715eb8331e3e49818bb87e6ebc651cb6f3f2bd7204345335c96087a670a92203188b1d448bc1a427524aac0db92c6017a032d9937d02')
+md5sums=('254fbd467ad04c724d17c6d6e9b85410')
+b2sums=('ae03a4ca572907fd9ee94281fa961d6270255c08fc9d323c37525fbff5aaa1dab950eba19abc06e75b9a724529ca71e009900200908505df41b9df4f60668dcf')
 
 build() {
   mkdir build
