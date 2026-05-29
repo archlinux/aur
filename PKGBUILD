@@ -15,6 +15,9 @@ depends=(
   'libxcb'
   'wayland'
   'libglvnd'
+  # Runtime deps for the sidebar diff view: we shell out to `git diff … | delta`.
+  'git'
+  'git-delta'
 )
 makedepends=(
   'git'
