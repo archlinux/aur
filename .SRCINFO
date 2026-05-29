@@ -1,0 +1,15 @@
+pkgbase = rsv-ng-systemctl
+	pkgdesc = systemctl compatibility shim for runit (via rsv-ng)
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://gitlab.com/runit-rsv/Rsv-systemctl
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = rsv-ng
+	provides = systemctl
+	conflicts = systemd
+	source = rsv-ng-systemctl::git+https://gitlab.com/runit-rsv/Rsv-systemctl
+	sha256sums = SKIP
+
+pkgname = rsv-ng-systemctl
