@@ -1,16 +1,16 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=jxl-oxide
-pkgver=0.12.5
-pkgrel=2
+pkgver=0.12.6
+pkgrel=1
 pkgdesc="Pure Rust implementation of JPEG XL decoder"
 arch=('x86_64')
 url="https://github.com/tirr-c/jxl-oxide"
 license=('Apache-2.0 AND MIT')
-depends=('glibc' 'gcc-libs' 'lcms2' 'ffmpeg')
+depends=('glibc' 'libgcc' 'lcms2')
 makedepends=('cargo')
 provides=()
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ae4936ca71543da3a8880bd7edad9200dc99374560cce222d5c9a491c13dd119')
+sha256sums=('d4ddd94b8d9c5d34424e3e228e07a5399aee9a388339fd6cd81b073eebf1e6de')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver/crates/${pkgname}-cli"
@@ -23,7 +23,7 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	export CFLAGS="$CFLAGS -ffat-lto-objects"
-	cargo build --frozen --release --all-features
+	cargo build --frozen --release #Temp disabled ffmpeg cause it won't compile
 }
 
 package() {
