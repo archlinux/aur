@@ -2,7 +2,7 @@
 
 _pkgbase=visage
 pkgname="$_pkgbase-bin"
-pkgver=0.3.0
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Linux face authentication via PAM with persistent daemon, IR camera support, ONNX inference'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 install='setup.install'
 source_x86_64=("$_pkgbase-$pkgver.deb::https://github.com/sovren-software/$_pkgbase/releases/download/v$pkgver/${_pkgbase}_$pkgver-1_amd64.deb")
-sha256sums_x86_64=('4bc944dde8c501d35b57aef2b04e5ad80341704d7785d82eac52cd3dab565914')
+sha256sums_x86_64=('2e7ba072a20747ba7ffb1f59b93618968186df873350bdb1ec9569ef7ce9e795')
 
 prepare() {
 	bsdtar -xf "$_pkgbase-$pkgver.deb"
