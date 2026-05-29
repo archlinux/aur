@@ -2,7 +2,7 @@
 
 _pkgname="hyprtoolkit"
 pkgname="$_pkgname-git"
-pkgver=0.5.4.r21.gb95b29d
+pkgver=0.5.4.r22.gdf625c0
 pkgrel=1
 pkgdesc="A modern C++ Wayland-native GUI toolkit"
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ url="https://github.com/hyprwm/hyprtoolkit"
 license=('BSD-3-Clause')
 
 depends=(
+  abseil-cpp
   aquamarine-git
   egl-gbm
   iniparser
