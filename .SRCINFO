@@ -1,7 +1,7 @@
 pkgbase = linuxqq-nt
 	pkgdesc = New Linux QQ based on Electron
 	pkgver = 3.2.29_260528
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 5
 	url = https://im.qq.com/linuxqq
 	install = linuxqq-nt.install
