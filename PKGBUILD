@@ -2,13 +2,13 @@
 
 pkgname=which-key-wayland
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="About A key-hint panel for Wayland, inspired by the Neovim plugin which-key.nvim and the Helix editor style"
 arch=('x86_64')
 url="https://github.com/liuhq/which-key.wayland"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('4c39456d2a71c31012467ab48e42d48db1ad67071afe798c257ced739fcf45b8')
+sha256sums=('d5b447ec1e37297db1f55e4fa89b4cc425fe29a374b0d21b63590ef6a8a7fbbf')
 makedepends=(rust)
 depends=(libxkbcommon)
 options=(!debug)
