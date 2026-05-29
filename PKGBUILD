@@ -16,6 +16,7 @@ provides=('ring-lang' 'ring')
 conflicts=('ring-lang' 'ring')
 depends=(
   'allegro'
+  'apache'
   'freeglut'
   'gcc-libs'
   'glew'
@@ -28,40 +29,34 @@ depends=(
   'mesa'
   'openssl'
   'postgresql-libs'
-  'qt5-base'
-  'qt5-declarative'
-  'qt5-multimedia'
+  'qt6-base'
+  'qt6-declarative'
+  'qt6-multimedia'
   'qt5-quickcontrols'
-  'qt5-serialport'
-  'qt5-speech'
-  'qt5-svg'
-  'sdl2'
+  'qt6-serialport'
+  'qt6-speech'
+  'qt6-svg'
   'sdl2_image'
   'sdl2_mixer'
   'sdl2_net'
   'sdl2_ttf'
   'unixodbc'
   'zlib'
+  'qt6-3d'
+  'qt6-charts'
+  'qt6-connectivity'
+  'qt6-positioning'
+  'qt6-webengine'
+  'qt6-webview'
 )
 makedepends=(
   'binutils'
   'gcc'
   'make'
   'pkgconf'
-  'qt5-tools'
+  'qt6-tools'
 )
-optdepends=(
-  'apache: Web server support for Ring web apps'
-  'qt5-3d: Qt3D support for Ring Qt bindings (AUR)'
-  'qt5-charts: Charts module for Ring Qt bindings (AUR)'
-  'qt5-connectivity: Bluetooth/Connectivity support (AUR)'
-  'qt5-positioning: Positioning module for Ring Qt bindings (AUR)'
-  'qt5-webengine: Qt WebEngine support (AUR)'
-  'qt5-webkit: Qt WebKit support (AUR)'
-  'qt5-webview: Qt WebView support (AUR)'
-  'libui: native UI bindings for Ring (AUR)'
-  'tilengine: Tilengine bindings for Ring (AUR)'
-)
+
 options=('!strip')
 source=("Ring_${pkgver}_Ubuntu.zip::https://github.com/ring-lang/ring/releases/download/v${pkgver}/Ring_${pkgver}_Ubuntu.zip")
 sha256sums=('cb15148d7b365f80391540e4e8b37ab70644b97b2c31cbba01d76751854f3d14')
