@@ -1,6 +1,6 @@
 pkgbase = aria2-next
 	pkgdesc = Maintained aria2 fork with extensive bug fixes and modernized architecture
-	pkgver = 2.3.4
+	pkgver = 2.3.5
 	pkgrel = 1
 	url = https://github.com/AnInsomniacy/aria2-next
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = aria2-next
 	optdepends = motrix-next: A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust
 	provides = aria2-next
 	conflicts = aria2-next
-	source = aria2-next::git+https://github.com/AnInsomniacy/aria2-next.git#tag=v2.3.4
-	sha256sums = f33606b30069e656112c43e4687d7915825cf77b7ac4325bcc7d3fe2f76d004f
+	source = aria2-next::git+https://github.com/AnInsomniacy/aria2-next.git#tag=v2.3.5
+	sha256sums = 6b25174f97db93ff1b07e004ac76bb90957adacc234d7f7ae2cf678862fe380b
 
 pkgname = aria2-next
