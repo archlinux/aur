@@ -2,7 +2,7 @@
 pkgname=gwenview-aero-git
 _pkgname=gwenview-aero
 pkgver=r7825.d4f48c31
-pkgrel=1
+pkgrel=2
 pkgdesc="Aero-styled fork of KDE's Gwenview Image Viewer"
 arch=('x86_64')
 url="https://gitgud.io/atmk/gwenview-aero"
