@@ -2,7 +2,7 @@
 # Contributor: Martino Pilia <martino.pilia@gmail.com>
 _base=pyevtk
 pkgname=python-${_base}
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Export data as binary VTK files"
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('fb52a3270c9ea3e7a92380543592a8109099f99fcc29ed70bc5f0a4d9f750c1b5b602e2d4a6a27edac26e75e8091377a6ce4fa21a24cbc2dfebaa06ef6715f98')
+sha512sums=('ba29bdb42c424c58a424e41022e81bd803b5ec73b66faf9f56b9c743e11339ef6881959ac29017fc114d59c97a663d244577f6ca7b3ed0eecd3606806e95539c')
 
 build() {
   cd ${_base}-${pkgver}
