@@ -9,7 +9,7 @@ pkgname=hpd-handheld-power-daemon
 pkgver=1.0.0
 # pkgrel is static (not a placeholder): reset to 1 when bumping pkgver,
 # increment for packaging-only respins of the same version.
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux system daemon for handheld PCs: TDP, charge, profile, fan (ROG Ally family)"
 arch=('x86_64')
 url="https://github.com/CiroDev-Git/hpd-handheld-power-daemon"
