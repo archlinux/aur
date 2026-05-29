@@ -5,38 +5,75 @@
 # Keep messages short — pacman prints them inline during the
 # install / upgrade transaction.
 
+# Files a manual `install.sh` deployment of this project leaves at paths
+# this package does NOT own. Removing them before our own files are
+# placed prevents pacman "file exists in filesystem" conflicts on the
+# polkit files, stops the old /usr/local/bin binaries from shadowing the
+# packaged ones in /usr/bin, and stops the /etc unit from overriding the
+# packaged one in /usr/lib. Every path here is created by this project's
+# own install.sh, so removing it is safe.
+_migrate_from_install_sh() {
+    local f found=0
+    # Stop a daemon that may be running from the old /etc unit + the
+    # /usr/local/bin binary before we remove either.
+    systemctl stop hpd.service 2>/dev/null || true
+    for f in \
+        /usr/local/bin/hpd-daemon \
+        /usr/local/bin/hpdctl \
+        /etc/systemd/system/hpd.service \
+        /etc/dbus-1/system.d/dev.cirodev.hpd.conf \
+        /usr/share/hpd/VERSION \
+        /usr/share/polkit-1/actions/dev.cirodev.hpd.policy \
+        /usr/share/polkit-1/rules.d/49-hpd.rules
+    do
+        [ -e "$f" ] && { rm -f "$f"; found=1; }
+    done
+    rmdir /usr/share/hpd 2>/dev/null || true
+    [ "$found" = 1 ] && \
+        echo "==> Migrated off a previous install.sh deployment (removed its files under /usr/local/bin, /etc and /usr/share)."
+    return 0
+}
+
 _post_setup() {
-    # Reload systemd so it picks up /usr/lib/systemd/system/hpd.service.
+    # Pick up /usr/lib/systemd/system/hpd.service and the dbus policy.
     systemctl daemon-reload || true
-    # Pick up the dbus policy at /usr/share/dbus-1/system.d/dev.cirodev.hpd.conf.
     systemctl try-reload-or-restart dbus.service 2>/dev/null || true
+}
+
+pre_install() {
+    _migrate_from_install_sh
 }
 
 post_install() {
     _post_setup
+    # Appliance daemon: enable + start on install so the user has zero
+    # manual systemctl steps. `|| true` keeps chroot / offline installs
+    # (no running systemd) from failing the transaction.
+    systemctl enable --now hpd.service 2>/dev/null || true
     cat <<EOF
 
-==> hpd installed. Next steps:
-    sudo systemctl enable --now hpd.service
-    # optional: tune defaults
-    sudo cp /etc/hpd/config.toml.example /etc/hpd/config.toml
-
-    # then:
-    hpdctl status
-    journalctl -fu hpd
+==> hpd installed, enabled and started.
+    Status:   systemctl status hpd   |   hpdctl status
+    Logs:     journalctl -fu hpd
+    Optional: sudo cp /etc/hpd/config.toml.example /etc/hpd/config.toml
 EOF
+}
+
+pre_upgrade() {
+    _migrate_from_install_sh
 }
 
 post_upgrade() {
     _post_setup
-    # If the daemon is running, re-read the on-disk config in-place
-    # (SIGHUP). Safer than a full restart and matches the project's
-    # documented hot-reload contract.
-    systemctl reload hpd.service 2>/dev/null || true
+    # The on-disk binary changed; restart the running daemon so the
+    # upgrade actually takes effect (try-restart is a no-op if it is not
+    # currently running). This supersedes the SIGHUP-only reload, which
+    # would re-read config but keep executing the old binary.
+    systemctl try-restart hpd.service 2>/dev/null || true
     cat <<EOF
 
-==> hpd upgraded. The daemon was sent SIGHUP if running.
-    Review the release notes:
+==> hpd upgraded to v${1%-*}.
+    Release notes:
     https://github.com/CiroDev-Git/hpd-handheld-power-daemon/releases/tag/v${1%-*}
 EOF
 }
