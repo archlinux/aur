@@ -1,6 +1,6 @@
 pkgbase = whispy
-	pkgdesc = System-wide push-to-talk dictation for Hyprland (Wayland), powered by whisper.cpp (Vulkan)
-	pkgver = 0.1.0
+	pkgdesc = System-wide push-to-talk dictation for Hyprland/Wayland and X11, powered by whisper.cpp
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Ceereals/whispy
 	install = whispy.install
@@ -14,8 +14,12 @@ pkgbase = whispy
 	depends = ydotool
 	depends = libnotify
 	depends = vulkan-icd-loader
-	optdepends = quickshell: dictation pill overlay UI
-	source = whispy-0.1.0.tar.gz::https://github.com/Ceereals/whispy/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = fb942c03ed462c14c8108c259898ce004c1fa1baf9fd2ec32ad6f204c4673977
+	optdepends = quickshell: dictation pill overlay UI (Wayland layer-shell)
+	optdepends = wtype: type-mode injection on Wayland
+	optdepends = xdotool: type-mode injection and window-class detection on X11
+	optdepends = xclip: clipboard paste mode on X11
+	optdepends = xsel: clipboard paste mode on X11 (xclip alternative)
+	source = whispy-0.2.0.tar.gz::https://github.com/Ceereals/whispy/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 41c5cc0e18b762df858312de6bfe01ba8441cc503bf32f7ce747cf463c1d3e5b
 
 pkgname = whispy
