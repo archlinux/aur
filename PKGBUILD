@@ -7,7 +7,7 @@ url="https://github.com/Xuepoo/sonic-bridge"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Xuepoo/sonic-bridge/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5e1b7815aa2532318b0b882fa0568ca86ccc352c91645fbad202d643af3a728e')
+sha256sums=('4648cb0359958e4ce9fe56fec4c3b7f28470ea658c7e4b21add7b9f57ae404a8')
 
 build() {
   cd "$pkgname-$pkgver"
