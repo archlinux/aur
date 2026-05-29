@@ -1,0 +1,14 @@
+post_install() {
+    echo "==> Настройка Plasma Login Manager (SDDM)..."
+    kwriteconfig6 --file /etc/plasmalogin.conf --group Greeter --key WallpaperPlugin "org.kde.image"
+    kwriteconfig6 --file /etc/plasmalogin.conf --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "file:///var/tmp/wallselector-sddm.jpg"
+
+    if [ ! -f /var/tmp/wallselector-sddm.jpg ]; then
+        touch /var/tmp/wallselector-sddm.jpg
+        chmod 644 /var/tmp/wallselector-sddm.jpg
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
