@@ -1,7 +1,7 @@
 pkgbase = bestclient
 	pkgdesc = DDRaceNetwork modification that adds new feauters
 	pkgver = 1.7.1
-	pkgrel = 5
+	pkgrel = 6
 	install = bestclient.install
 	arch = x86_64
 	makedepends = patchelf
