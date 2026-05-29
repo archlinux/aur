@@ -19,4 +19,4 @@ makepkg -si
 - Packaging-only repository: the upstream app source is not in this repo.
 - Declares `provides=(tokenuze)` and `conflicts=(tokenuze)`.
 - `sqlite` is an optional dependency for some providers.
-- Current packaged version is `0.9.0-2`.
+- Current packaged version is `0.9.2-1`.

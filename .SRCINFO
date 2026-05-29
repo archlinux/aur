@@ -1,14 +1,14 @@
 pkgbase = tokenuze-bin
 	pkgdesc = A CLI tool that summarizes token and cost usage from various LLM providers
-	pkgver = 0.9.0
-	pkgrel = 2
-	url = https://github.com/arrufat/tokenuze
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/mirsella/tokenuze
 	arch = x86_64
 	license = MIT
-	optdepends = sqlite: for Zed and Crush providers
+	optdepends = sqlite: for Zed, Crush, and Opencode providers
 	provides = tokenuze
 	conflicts = tokenuze
-	source = tokenuze-bin-0.9.0.tar.gz::https://github.com/arrufat/tokenuze/releases/download/0.9.0/tokenuze-linux-x86_64.tar.gz
-	sha256sums = 804266a590f7b8cba00cbbdd9f336fdab35acb8b45ed4ae11084d184359463ee
+	source = tokenuze-bin-0.9.2.tar.gz::https://github.com/mirsella/tokenuze/releases/download/0.9.2/tokenuze-linux-x86_64.tar.gz
+	sha256sums = a1acd3f0a77fddb6d0b889bcaac1724bf52d1661eabb4abe917591ae46a095a4
 
 pkgname = tokenuze-bin
