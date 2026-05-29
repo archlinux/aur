@@ -1,0 +1,20 @@
+pkgbase = speedcat-bin
+	pkgdesc = Prebuilt SpeedCat desktop proxy client based on ClashMeta
+	pkgver = 3.0.3.2026043013
+	pkgrel = 1
+	url = https://speedcat.me/
+	arch = x86_64
+	license = custom:unknown
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	optdepends = xdg-utils: open external links from the application
+	provides = speedcat=3.0.3.2026043013
+	conflicts = speedcat
+	noextract = scapp-linux-lite.zip
+	options = !strip
+	options = !debug
+	source = scapp-linux-lite.zip::https://dl.pbb.dexi009.com/apps/sc/scapp-linux-lite.zip
+	sha256sums = 1e151010e1aaef5b75881c2604a553c7134653ff5c00d2d51dd04b17d91e3976
+
+pkgname = speedcat-bin
