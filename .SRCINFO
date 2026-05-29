@@ -1,6 +1,6 @@
 pkgbase = aria-fm-bin
 	pkgdesc = Native Spotify desktop client — Go + Electron (Chromium) + librespot, FFI-first transport
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://gitlab.com/cmdly/aria.fm
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = aria-fm-bin
 	provides = aria.fm
 	conflicts = aria.fm
 	options = !strip
-	source = aria-0.3.2.tar.gz::https://gitlab.com/api/v4/projects/cmdly%2Faria.fm/packages/generic/aria/v0.3.2/aria-v0.3.2-linux-x86_64.tar.gz
-	sha256sums = f52ab9bd1307fe4d1393030151ec92ad16252160ce5930d351b7a4f9da08d8b8
+	source = aria-0.4.0.tar.gz::https://gitlab.com/api/v4/projects/cmdly%2Faria.fm/packages/generic/aria/v0.4.0/aria-v0.4.0-linux-x86_64.tar.gz
+	sha256sums = 5689291f74623daf5a5a06beac24adaeba17596e7655d6eac368daa28f68e031
 
 pkgname = aria-fm-bin
