@@ -1,7 +1,7 @@
 pkgbase = sentinel-kde
 	pkgdesc = UAC-style confirmation dialog for privilege escalation on KDE Plasma (Wayland)
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/atayozcan/sentinel-kde
 	install = sentinel-kde.install
 	arch = x86_64

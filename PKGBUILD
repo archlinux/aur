@@ -3,7 +3,7 @@
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel-kde
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 install=sentinel-kde.install
 # Cargo.toml's release profile strips symbols at link time, so makepkg's
 # debug-package generator has nothing to index — opt out to silence the
@@ -70,6 +70,15 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # `sentinel-polkit-agent`'s build.rs hardcodes the helper path it
+    # spawns from this env var; the default fallback (`/usr/lib/
+    # sentinel-helper`) is the COSMIC binary name, which doesn't exist
+    # on the KDE side. Without this export the agent's
+    # `BeginAuthentication` call silently fails to spawn the helper,
+    # `pkexec` returns "Not authorized", and the user blames Sentinel.
+    # install.sh + build-release.sh set this already; the PKGBUILD has
+    # to mirror them.
+    export SENTINEL_HELPER_PATH=/usr/lib/sentinel-helper-kde
     # mold linker — rust-lld can't resolve cxx-qt-lib's bridge symbols
     # (`rust$cxxqtlib1$cxxbridge1$…`) against Qt6/KF6. Mold (and gold) do.
     # Append rather than overwrite so /etc/makepkg.conf RUSTFLAGS still
