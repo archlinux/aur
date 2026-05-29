@@ -7,7 +7,7 @@ pkgname=asus-proart-px13-quirks
 # newer kernel; bump pkgrel for packaging-only changes (UCM, btusb, patches).
 _kver=7.0.10
 pkgver=${_kver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Hardware quirks for ASUS ProArt PX13 (HN7306EA): TAS2783 audio DKMS + UCM configs + MT7925 btusb autosuspend disable"
 arch=('any')
 url="https://aur.archlinux.org/packages/asus-proart-px13-quirks"
@@ -23,8 +23,6 @@ optdepends=(
 )
 # The DKMS modules override these in-tree .ko via /usr/lib/modules/$KVER/updates/.
 provides=('snd-soc-tas2783-sdw' 'snd-soc-rt721-sdca' 'soundwire-amd' 'snd-soc-sdw-utils')
-replaces=('px13-audio-fix' 'px13-quirks' 'proart-px13' 'px13-audio-dkms')
-conflicts=('px13-audio-fix' 'px13-quirks' 'proart-px13' 'px13-audio-dkms')
 install=${pkgname}.install
 
 _dkms_name=px13-audio
