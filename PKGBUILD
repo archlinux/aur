@@ -1,7 +1,7 @@
 # Maintainer: Juacrumar <juacrumar at lairen dot eu>
 
 pkgname=pineappl
-pkgver=1.3.0
+pkgver=1.4.0
 fullver=${pkgver}
 pkgrel=1
 pkgdesc='PineAPPL is not an extension of APPLgrid. Installs pineappl_cli, pineappl library and python package'
@@ -17,7 +17,7 @@ optdepends=()
 provides=("pineappl")
 changelog=
 source=("https://github.com/NNPDF/pineappl/archive/v${fullver}.tar.gz")
-md5sums=("3853054e624197658bbcf151fbb72a4e")
+md5sums=("3ce02eec97b5fcc499151bbad0b07970")
 
 # workaround for the problem with ring, see https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20 (!lto)
 options=(!lto)
@@ -38,7 +38,7 @@ build() {
 
 package() {
  	cd "$pkgname-$pkgver"
-    cargo install --path pineappl_cli --root=${pkgdir}/usr --no-track --locked --features=evolve
+    cargo install --path pineappl_cli --root=${pkgdir}/usr --no-track --locked --features=evolve,fktable
     # Install also the pineappl_capi
  	cd pineappl_capi
     cargo cinstall --locked --release --destdir=${pkgdir} --prefix=/usr
