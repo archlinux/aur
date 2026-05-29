@@ -13,15 +13,15 @@ source=("git+https://github.com/azuk13215/Hexer.git")
 sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir/Hexer"
+    cd "$srcdir/Hexer/Hexer"
 
-    install -Dm755 main.py "$pkgdir/usr/lib/hexer-cli/main.py"
+    install -dm755 "$pkgdir/usr/lib/hexer-cli"
 
-    cp -r core "$pkgdir/usr/lib/hexer-cli/"
-    cp -r commands "$pkgdir/usr/lib/hexer-cli/"
+    cp -r . "$pkgdir/usr/lib/hexer-cli/"
 
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/hexer-cli" << 'EOF'
 #!/usr/bin/env bash
+export PYTHONPATH=/usr/lib/hexer-cli
 exec python /usr/lib/hexer-cli/main.py
 EOF
 }
