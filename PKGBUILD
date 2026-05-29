@@ -3,7 +3,7 @@
 _pkgname=BestClient
 pkgname=bestclient
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="DDRaceNetwork modification that adds new feauters"
 arch=('x86_64')
 url=""
@@ -22,15 +22,13 @@ prepare() {
 	mkdir -p $pkgname/game
 	cp -r ${srcdir}/$pkgname-*-linux_x86_64/* $pkgname/game
 	chmod +x $pkgname/game/DDNet
-	# Create compat symlink: binary needs libGLEW.so.2.2 but Arch ships 2.3+
-	if [ ! -f $pkgname/game/libGLEW.so.2.2 ]; then
-		ln -sf /usr/lib/libGLEW.so $pkgname/game/libGLEW.so.2.2
-	fi
 }
 
 package() {
 	install -dm0755 "$pkgdir/opt"
 	cp -a $pkgname "$pkgdir/opt/$pkgname"
+	# Arch ships libGLEW.so.2.3+, binary needs 2.2 — create compat symlink
+	ln -sf /usr/lib/libGLEW.so "$pkgdir/opt/$pkgname/game/libGLEW.so.2.2"
 	install -dm0755 "$pkgdir/usr/bin"
 	install -dm0755 "$pkgdir/usr/share/applications/"
 	cat >"$pkgdir/usr/bin/$pkgname" <<EOF
