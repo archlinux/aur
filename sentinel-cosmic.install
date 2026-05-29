@@ -1,0 +1,4 @@
+# SPDX-FileCopyrightText: 2025 Atay Özcan <atay@oezcan.me>
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Arch makepkg install hook for sentinel / sentinel-git.
+# Intentionally empty — keep pacman output quiet on install / upgrade.
