@@ -5,6 +5,9 @@
 # project at https://github.com/ring-lang/ring
 # ******/
 # Maintainer of this AUR package: Khaled Mahfouz <khaledmhfz2004@gmail.com>
+# >> Use This Package At Your Own Risk <<
+# Checkout the Pinned Comment at 
+# <https://aur.archlinux.org/packages/ring-lang-bin#comment-1073208>
 pkgname=ring-lang-bin
 pkgver=1.27
 pkgrel=1
