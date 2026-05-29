@@ -5,7 +5,6 @@ pkgbase = rtpengine-kernel-dkms
 	url = https://github.com/sipwise/rtpengine
 	arch = any
 	license = GPL-3.0-or-later
-	depends = bash
 	depends = dkms
 	provides = rtpengine-kernel-module=26.0.1.13
 	conflicts = rtpengine-kernel-module

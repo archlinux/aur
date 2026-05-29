@@ -7,7 +7,7 @@ pkgdesc="Kernel module for Sipwise rtpengine media proxy (DKMS)"
 url="https://github.com/sipwise/rtpengine"
 license=('GPL-3.0-or-later')
 arch=('any')
-depends=('bash' 'dkms')
+depends=('dkms')
 provides=("rtpengine-kernel-module=${pkgver}")
 conflicts=('rtpengine-kernel-module')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/mr${pkgver}.tar.gz")
