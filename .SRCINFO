@@ -1,0 +1,15 @@
+pkgbase = minimal-translate
+	pkgdesc = Minimal floating GTK translation widget
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vicMJ/minimal-translate
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = translate-shell
+	source = translate.py::https://raw.githubusercontent.com/vicMJ/minimal-translate/main/translate.py
+	sha256sums = SKIP
+
+pkgname = minimal-translate
