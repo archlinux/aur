@@ -1,10 +1,10 @@
 pkgname=ark-cli
-pkgver=0.1.0_alpha.1
+pkgver=0.1.0_alpha.3
 pkgrel=1
 pkgdesc="Plain-text terminal organiser for notes, todos, and events"
 arch=('any')
 url="https://github.com/benjaminingreens/ark"
-license=('MIT')
+license=('AGPL3')
 depends=('perl')
 
 source=("ark-v${pkgver//_/-}.tar.gz::https://github.com/benjaminingreens/ark/archive/refs/tags/v${pkgver//_/-}.tar.gz")
