@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartoc
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Barto job executor client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('logrotate: periodic cleanup of rotated log files'
 makedepends=('cargo')
 install=bartoc.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/barto/archive/v$pkgver.tar.gz")
-sha256sums=('2194127beaf5c8755c00e49b6d209beee5e19de9085caab83001ee7492753828')
+sha256sums=('c68c01d96e9ae0b37220cfd2a39edf874cae4585df28e89f5bbad7b692a5b4ef')
 
 prepare() {
     cd "barto-$pkgver"
@@ -36,8 +36,11 @@ package() {
     # Binary
     install -Dm755 "target/release/bartoc" "$pkgdir/usr/bin/bartoc"
 
-    # Launcher script (loads secrets from GNOME Keyring / KWallet)
+    # Launcher script (loads secrets from systemd credentials or GNOME Keyring / KWallet)
     install -Dm755 "dist/bartoc/bartoc-launcher" "$pkgdir/usr/lib/bartoc/bartoc-launcher"
+
+    # Interactive setup helper for systemd user credentials (lingering services)
+    install -Dm755 "dist/bartoc/bartoc-secrets-init" "$pkgdir/usr/bin/bartoc-secrets-init"
 
     # Man page
     install -Dm644 "dist/bartoc/bartoc.1" "$pkgdir/usr/share/man/man1/bartoc.1"
