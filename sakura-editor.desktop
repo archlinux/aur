@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Sakura Editor
+Exec=sakura-editor %F
+Type=Application
+Categories=Utility;TextEditor;
+MimeType=text/plain;

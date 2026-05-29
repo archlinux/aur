@@ -1,0 +1,21 @@
+pkgbase = sakura-editor
+	pkgdesc = A free text editor (running on Wine, portable build)
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://sakura-editor.github.io/
+	arch = x86_64
+	license = zlib
+	makedepends = unzip
+	depends = wine
+	depends = winetricks
+	optdepends = ttf-hackgen: recommended Japanese programming font
+	optdepends = noto-fonts-cjk: fallback CJK font
+	noextract = sakura.zip
+	source = sakura.zip::https://github.com/sakura-editor/sakura/releases/download/v2.4.2/sakura-tag-v2.4.2-build4203-a3e63915b-Win32-Release-Exe.zip
+	source = sakura-editor.sh
+	source = sakura-editor.desktop
+	sha256sums = 91f2eae7fe3b2417a47ee678463012e030063cf2694fd6c925fbaebc575dd7e8
+	sha256sums = bd0e3098e8b68a8378792a6b6caf2a6113042c9117689d017f25f6aecab07f10
+	sha256sums = b34a74f6e3667b17a9a89be406bd33f9f58beadf0ab28f21cbbba4a5ca6289a9
+
+pkgname = sakura-editor

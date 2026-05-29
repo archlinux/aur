@@ -1,0 +1,14 @@
+# build artifacts
+pkg/
+src/
+*.pkg.tar*
+*.tar.*
+*.log
+
+# temporary files
+*~
+*.swp
+*.bak
+
+# makepkg env
+*.sig
