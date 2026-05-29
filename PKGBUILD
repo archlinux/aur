@@ -1,7 +1,7 @@
 # Maintainer: smiley <smiley@archlinux.org>
 
 pkgname=hyprlogin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Work-in-progress greetd greeter forked from hyprlock'
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=(
 backup=('etc/hyprlogin/hyprlogin.conf')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8c5950f4e052efb7bf2b398d8b8454051d3068a192430e80918b21e7e405c147')
+sha256sums=('53d8f158bbcda40bfd65e4b5cd4ec749aed26ca846d8264b365fc70fffec194f')
 
 prepare() {
   local staged_src="$srcdir/hyprlogin-src"
