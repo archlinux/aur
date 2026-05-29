@@ -1,0 +1,3 @@
+obj-m += soundwire-amd.o
+
+soundwire-amd-y := amd_init.o amd_manager.o

@@ -3,3 +3,7 @@
 *.pkg.tar.zst
 *.pkg.tar.xz
 SmartAMP_TI_DCH_TexasInstruments_Z_V*.exe
+
+# Kernel source fetched by makepkg per source=() (vendored at build, not committed)
+*.c
+*.h

@@ -1,0 +1,3 @@
+obj-m += sound/soc/codecs/
+obj-m += sound/soc/sdw_utils/
+obj-m += drivers/soundwire/

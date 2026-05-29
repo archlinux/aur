@@ -1,6 +1,6 @@
 pkgbase = asus-proart-px13-quirks
 	pkgdesc = Hardware quirks for ASUS ProArt PX13 (HN7306EA): TAS2783 audio DKMS + UCM configs + MT7925 btusb autosuspend disable
-	pkgver = 0.20260529
+	pkgver = 7.0.10
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/asus-proart-px13-quirks
 	install = asus-proart-px13-quirks.install
@@ -8,10 +8,6 @@ pkgbase = asus-proart-px13-quirks
 	license = CC0-1.0
 	license = GPL-2.0-only
 	makedepends = patchutils
-	makedepends = linux-cachyos-headers
-	makedepends = clang
-	makedepends = lld
-	makedepends = llvm
 	depends = dkms
 	depends = alsa-ucm-conf
 	depends = pipewire
@@ -40,7 +36,11 @@ pkgbase = asus-proart-px13-quirks
 	source = 99-echo-cancel.conf
 	source = btusb-no-autosuspend.conf
 	source = rt721-sdw-no-autosuspend.rules
-	source = px13-audio-dkms.tar.gz
+	source = dkms.conf
+	source = Kbuild.top
+	source = Kbuild.codecs
+	source = Kbuild.sdw_utils
+	source = Kbuild.soundwire
 	source = 0001-ALSA-tas2783-sdw-add-Playback-to-volume-control.patch
 	source = 0002-Names-to-match-snd_soc_dai_driver-playback-capturest.patch
 	source = 0003-removed-unused-fields.patch
@@ -57,6 +57,36 @@ pkgbase = asus-proart-px13-quirks
 	source = 0015-to-help-alsa-find-them.patch
 	source = 0016-cleanup-controls.patch
 	source = 0017-ASoC-rt721-sdca-enable-jack-detect-irq-on-AMD-ACP70.patch
+	source = tas2783-sdw.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/codecs/tas2783-sdw.c?h=v7.0.10
+	source = tas2783.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/codecs/tas2783.h?h=v7.0.10
+	source = rt721-sdca.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/codecs/rt721-sdca.c?h=v7.0.10
+	source = rt721-sdca.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/codecs/rt721-sdca.h?h=v7.0.10
+	source = rt721-sdca-sdw.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/codecs/rt721-sdca-sdw.c?h=v7.0.10
+	source = rt721-sdca-sdw.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/codecs/rt721-sdca-sdw.h?h=v7.0.10
+	source = rt-sdw-common.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/codecs/rt-sdw-common.h?h=v7.0.10
+	source = rt1308.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/codecs/rt1308.h?h=v7.0.10
+	source = soc_sdw_utils.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_utils.c?h=v7.0.10
+	source = soc_sdw_dmic.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_dmic.c?h=v7.0.10
+	source = soc_sdw_rt_dmic.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_rt_dmic.c?h=v7.0.10
+	source = soc_sdw_rt700.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_rt700.c?h=v7.0.10
+	source = soc_sdw_rt711.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_rt711.c?h=v7.0.10
+	source = soc_sdw_rt5682.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_rt5682.c?h=v7.0.10
+	source = soc_sdw_rt_sdca_jack_common.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_rt_sdca_jack_common.c?h=v7.0.10
+	source = soc_sdw_rt_amp.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_rt_amp.c?h=v7.0.10
+	source = soc_sdw_rt_amp_coeff_tables.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_rt_amp_coeff_tables.h?h=v7.0.10
+	source = soc_sdw_rt_mf_sdca.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_rt_mf_sdca.c?h=v7.0.10
+	source = soc_sdw_bridge_cs35l56.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_bridge_cs35l56.c?h=v7.0.10
+	source = soc_sdw_cs42l42.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_cs42l42.c?h=v7.0.10
+	source = soc_sdw_cs42l43.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_cs42l43.c?h=v7.0.10
+	source = soc_sdw_cs42l45.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_cs42l45.c?h=v7.0.10
+	source = soc_sdw_cs_amp.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_cs_amp.c?h=v7.0.10
+	source = soc_sdw_maxim.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_maxim.c?h=v7.0.10
+	source = soc_sdw_ti_amp.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/sound/soc/sdw_utils/soc_sdw_ti_amp.c?h=v7.0.10
+	source = amd_init.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/soundwire/amd_init.c?h=v7.0.10
+	source = amd_init.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/soundwire/amd_init.h?h=v7.0.10
+	source = amd_manager.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/soundwire/amd_manager.c?h=v7.0.10
+	source = amd_manager.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/soundwire/amd_manager.h?h=v7.0.10
+	source = bus.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/soundwire/bus.h?h=v7.0.10
 	sha256sums = 8704e2350ece61e4fbfc6fab0e1555e9dadc4e50509f727c704cae137de7e372
 	sha256sums = 06feb24e7a3a5a5f59da7e0e1ed02c76b1b48e83a6942433ba232ae6c2dca138
 	sha256sums = bbbc4eafdbdacfc9af5b58922bb21118da59c88320dae037925ceed5ebfa02ed
@@ -65,22 +95,56 @@ pkgbase = asus-proart-px13-quirks
 	sha256sums = 2a68adee036530d1fa9e59fba0268d414c31f7c5d4b2ea1e93a11ceb469f4642
 	sha256sums = 289f0457bebb51a1a6e2f6a555ebea829b484be837361afc71f7a81fee1e323c
 	sha256sums = aa36adef4d19feb795c68324276896bc710767b80820957d76f75911d151e755
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = e1b51041a7ea3069d87bda7dcf6a506c73344d2557e9455b0ab09ecfe03b69c6
+	sha256sums = febed13c901ac3988da80936c7b9989bf459b304a52c5c41d982b667303eae48
+	sha256sums = 21c636861268b217f52ed934895d84f14e2f3b162fc10a8bb16651973d46f378
+	sha256sums = 53c47ede0d2329e891e4cb0683436df5f084960df7db7f8f4fdeccedd5d9c859
+	sha256sums = d886e66f683aedb28d05a771d5bfe67b08224cae360c3c83cdc6bf9771dc1cc4
+	sha256sums = b7cc6a705c783c0dee1d59d0c4755b5852b2aa7978187590523005db23c686d6
+	sha256sums = e2a9154ab6dd3b8b8516cd05e61d0a7849954eeaf0130ff133808519c634215f
+	sha256sums = 9ddb312a48561a6ae6d4e410c53672d5f64420e29b1121862b40f6be04a6e0b7
+	sha256sums = 8bb18803760400dd8932c66d976070302bf80de77ae0c18ac1a675b8dfbb3800
+	sha256sums = 9348569f3998763e354e74e56a517b73c1406135eb3317af48eedf70f6d74ec9
+	sha256sums = 786d7646adaed114a951b291b9f63e6816383df891689df913cfa55b7516ec8d
+	sha256sums = c1fe0dd57de5803535daec0bd12eac129fd08a0183b4e8368e2f0605e11afd0b
+	sha256sums = 0bf19dc030dda37945c4fe5b719f43698a84ac26bef8555db23e90d2f01a0d3b
+	sha256sums = d11a7fd2ab27f89d77a27be7d7b1b324cde5b4239790bc6b80f06b9884daf946
+	sha256sums = 20ea5a188aa5c5058d6f42c9f083bac88bd80294eefcb40f87c3db341863d65c
+	sha256sums = 1339df9c2250f36b6d51c760ac6e29df39aca85320ef92e2055848c007e603ec
+	sha256sums = 5f51cdcca2efac77057f26f0a34d33805d943db97cfdc7b1ae7726457ad9f2ae
+	sha256sums = 74b1e37055321b7ff878f842a73669da3b6ca245c98c1329a08f88e753f10e16
+	sha256sums = 929ff4b238982b98a7d79473efba2403887353ef89b68c327795090b504b04a1
+	sha256sums = be215990daff3959349f84c859699f65d9cdacfb3eba9ed4d2392faf6ce29a41
+	sha256sums = 3df85635993af6fd76dc18fa28b53723bc22eb6bb42836d84e3a962d7825b6e3
+	sha256sums = e6b9405525ebbec06ea27544a0cfd871020ff0952a6df25a2cc851d31822766e
+	sha256sums = 0804ef869734742872008653fdc4a1c2b0eab39929521a4ad2cbb4e72f598b01
+	sha256sums = 1407d9c11d3578f94e06d7f60512aa3fa901dc3d192341c26e769c43cdb41184
+	sha256sums = e24c75a2ba1fe8d5bf85a8957443ee04403190714ae2d3876a4e5e67b3ed21fa
+	sha256sums = 6f283d47b393f0bd66d75a91b05bab3f77f5932e5b1adb0e85e41a94099efe6d
+	sha256sums = 83d7fdcd0e3737a631566bcb18cc7d70d17f78774f921ab6f466e625bc9f7a87
+	sha256sums = 38823f8011afeeab0250cdd6d566e995237777b917b04d36b67908a74d348c65
+	sha256sums = 7153ad89ac4c9a7cb10cf1554ad437dfd600bb3eff629469f299b0d099280bcd
+	sha256sums = 0d7df1ca0ec71ffd3ace16f34f7acdecef904dd727745a5380c66672483d7b65
+	sha256sums = d33aa197ebb628566dd7c54b8d39c48427260c7640f55899eef2544346b08691
+	sha256sums = 93d81a626b98e726cc801c1822ad7f4a505a6e4bf0ab9d9f592792b054354beb
+	sha256sums = 27ae93708915bfe015cb273fc04371f1e62cb28e2e4f303341aae31a9de2212a
+	sha256sums = d6eb0616bf4de85a3de46c2cfe69227fd104ae5804f793e593c5966c74b4ebf5
+	sha256sums = 8a8db74c470f369e2c9abda76e0f1681b09d00d31c108c442f9d21ee76a33f93
+	sha256sums = b1854a3a3130bfab2d103bf9c90039bac54dd61671226d130823c440c153aacd
+	sha256sums = cb1bd81f2863822465cfe2513cb97e48b044d3f1da27595e1b110f8f4b079ecf
+	sha256sums = 99a270047e64a08eb55348acfc36351c794ff265692df91defa73bb107e40184
+	sha256sums = cd245b169db4bd5bdafab3d6a1c1136bbf0df02f84e4ca6702f7be0f99647a58
+	sha256sums = 5a1149b2005ca8ff829dc1675fb8e44f247ee2ff7bda9605644ec7094664ed97
+	sha256sums = 0cfcf2ab2cc8d2b201f8d842bdaf524f8f05d7b0beeadaa239e7577b5521f0c6
+	sha256sums = d83ff68de708fb23ca3be731be309b9a371784d00834f2672a9a9eaa28f4e9fc
+	sha256sums = 6feacfda51470711a76ec1d6be81948d017cfd15a5c09f9fdbb8cc0231009236
+	sha256sums = fb70da2bb6df9bcca0d55f476b227bb3031b5177a89896a7192216d89d877d96
+	sha256sums = 4932970281face6d86902a0eb2131c189af0207267ceb096e34294c3fae89ced
+	sha256sums = 26dc8b4769feb74881fcd611b6e81d0b55a970cfe474feb03c1638334dd583ab
+	sha256sums = 131079c16825ed07a1c02a2952291b295ac5a1ae80e4fa97160d08146cb14b54
+	sha256sums = d6c961f8911fe910985bffe00f39e9a0e833b1c03388d264cf3cb72e49b385da
+	sha256sums = ee113260557a83e79f6a98caa7af093c47513d7c604113c2a5d9a150c8986207
+	sha256sums = a66ac90b614299f53cf5c3b0b7c22bb0c5cef38363ecca5799c82367dfadcdcc
+	sha256sums = c25915dc7b0b0357fd1260229b246c5edbf904e3f956bf8f5d7aa1473fe25663
 
 pkgname = asus-proart-px13-quirks
