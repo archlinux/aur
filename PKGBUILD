@@ -2,7 +2,7 @@
 
 _pkgname=sing-box
 pkgname=sing-box-extended
-_pkgver="1.13.12-extended-2.1.2"
+_pkgver="1.13.12-extended-2.1.3"
 pkgver="${_pkgver//-/\~}"
 pkgrel=1
 
@@ -14,7 +14,7 @@ license=("LicenseRef-${pkgname}")
 makedepends=('go' 'npm')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/shtorm-7/sing-box-extended/archive/v$_pkgver.tar.gz"
         "sing-box.rules")
-sha256sums=('8ee2c3cb4a1d891729f2eefd1f33b8ca710d32766f908a252a6babc772c4e8e5'
+sha256sums=('753eb4557e3300bd3a8bf8c894045971a6524a065c05faa4c952c735ce941c74'
             '1365536e1875043b969e2e18d7313ab7c6f7f9f63387f25506bb04362b44f206')
 conflicts=($_pkgname "$_pkgname-git" "$_pkgname-beta" "$pkgname-bin" )
 depends=("glibc")
@@ -39,7 +39,7 @@ build(){
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    make -j1 admin_panel_regen
+    make build_admin_panel
 
     go build \
         -v \
