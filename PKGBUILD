@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Khani
 
 pkgname=dicto
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Minimal native dictionary app for MDX/MDD files"
 arch=('x86_64')
