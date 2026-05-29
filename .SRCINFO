@@ -1,0 +1,14 @@
+pkgbase = arch-wallpapers-git
+	pkgdesc = A collection of wallpapers
+	pkgver = r14.6e6091f
+	pkgrel = 1
+	url = https://github.com/cametendo/Arch-Wallpapers
+	arch = any
+	license = custom
+	makedepends = git
+	provides = arch-wallpapers
+	conflicts = arch-wallpapers
+	source = arch-wallpapers::git+https://github.com/cametendo/Arch-Wallpapers.git
+	md5sums = SKIP
+
+pkgname = arch-wallpapers-git
