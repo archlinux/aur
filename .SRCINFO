@@ -1,5 +1,5 @@
-pkgbase = atch
-	pkgdesc = Lets you attach and detach terminal sessions
+pkgbase = atch-stellar-git
+	pkgdesc = Lets you attach and detach terminal sessions (with fixes needed by Stellar DE)
 	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/mobydeck/atch
@@ -7,9 +7,12 @@ pkgbase = atch
 	license = GPL-2.0-only
 	makedepends = bash
 	makedepends = lowdown
+	makedepends = git
 	depends = glibc
+	provides = atch
+	conflicts = atch
 	options = !debug
-	source = https://github.com/mobydeck/atch/archive/0.5/atch-0.5.tar.gz
-	b2sums = 14b65911c9ddcdb53458a6e980cecf13446d5181623f707907726af3dd8ed75066f1906652921dd3f5c454f9dfbb33461ca4036dc1b81f0b4bb04ed6b2a99db2
+	source = atch-stellar-git::git+https://github.com/miranda/atch.git#branch=timed-drain-filter
+	b2sums = SKIP
 
-pkgname = atch
+pkgname = atch-stellar-git

@@ -1,35 +1,40 @@
-# Maintainer: Nebulosa <nebulosa2007-at-yandex-dot-ru>
+# Maintainer: Miranda Collins (serqetry) miranda@xyla.net
+# Contributor: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
-pkgname=atch
+_pkgname=atch
+pkgname=${_pkgname}-stellar-git
 pkgver=0.5
 pkgrel=1
-pkgdesc="Lets you attach and detach terminal sessions"
+pkgdesc="Lets you attach and detach terminal sessions (with fixes needed by Stellar DE)"
 arch=(x86_64)
-url="https://github.com/mobydeck/$pkgname"
+url="https://github.com/mobydeck/atch"
 license=(GPL-2.0-only)
 depends=(glibc)
 makedepends=(
   bash
   lowdown
+  git
 )
+provides=('atch')
+conflicts=('atch')
 options=(!debug)
-source=($url/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('14b65911c9ddcdb53458a6e980cecf13446d5181623f707907726af3dd8ed75066f1906652921dd3f5c454f9dfbb33461ca4036dc1b81f0b4bb04ed6b2a99db2')
+source=("${pkgname}::git+https://github.com/miranda/atch.git#branch=timed-drain-filter")
+b2sums=('SKIP')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd "$pkgname"
   sed -i 's/pandoc --standalone -t man/lowdown -s -Tman/' makefile
   sed -i 's/\$(STATIC_FLAG)//' makefile
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname"
   make CC="gcc $CFLAGS -I. -Wno-unused-result" LDFLAGS="$LDFLAGS" VERSION="$pkgver"
   make man
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -vDm 755 $pkgname -t "$pkgdir"/usr/bin/
+  cd "$pkgname"
+  install -vDm 755 "$_pkgname" -t "$pkgdir"/usr/bin/
   install -vDm 644 atch.1   -t "$pkgdir"/usr/share/man/man1/
 }
