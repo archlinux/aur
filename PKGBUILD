@@ -1,4 +1,5 @@
 pkgname=hexer-cli
+pkgbase=hexer-cli
 pkgver=0.1
 pkgrel=1
 pkgdesc="Hexer terminal GUI"
@@ -15,6 +16,6 @@ sha256sums=('SKIP')
 package() {
     cd Hexer
 
-    install -Dm755 main.py "$pkgdir/usr/bin/hexer"
+    install -Dm755 main.py "$pkgdir/usr/bin/hexer-cli"
 }
 
