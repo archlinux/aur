@@ -1,13 +1,15 @@
 pkgbase = mdfu-git
-	pkgdesc = MogDop File Utils - CLI File Sorter
-	pkgver = 1.0.0
+	pkgdesc = MogDop File Utils - CLI & Web File Sorter
+	pkgver = r1.0.0
 	pkgrel = 1
+	url = https://github.com/Glob876/MogDop-File-Utils
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = python
-	source = cli_main.py
-	source = sorter_core.py
-	sha256sums = SKIP
+	provides = mdfu
+	conflicts = mdfu
+	source = mdfu::git+https://github.com/Glob876/MogDop-File-Utils.git
 	sha256sums = SKIP
 
 pkgname = mdfu-git
