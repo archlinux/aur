@@ -2,8 +2,8 @@
 # https://wiki.archlinux.org/title/PKGBUILD
 
 pkgname=qownnotes
-pkgver=26.5.16
-tag="b5d387c422566b055fe2b90f55f0a6b500ff2919"
+pkgver=26.5.17
+tag="e5dbe2d73f1a6f717394c5a01597736465876e61"
 pkgrel=1
 pkgdesc="Plain-text file markdown note taking with Nextcloud/ownCloud integration"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ groups=('qownnotes')
 depends=('qt6-base' 'qt6-svg' 'qt6-declarative' 'qt6-websockets' 'aspell' 'botan' 'libgit2')
 makedepends=('qt6-tools' 'cmake')
 source=("https://github.com/pbek/QOwnNotes/releases/download/v${pkgver}/qownnotes-${pkgver}.tar.xz")
-sha256sums=('793426f2274d55360741159da8f95c54a3c7004848ff72e7221a970628e2e10c')
+sha256sums=('43bd9de043f0033fa818266ede9f3cba18828305cfed06d31b9444731f02b7c8')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
