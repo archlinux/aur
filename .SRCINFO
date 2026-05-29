@@ -1,0 +1,24 @@
+pkgbase = bbm-bin
+	pkgdesc = Backblaze B2 manager: focused CLI for the bu encrypted-bundle workflow (S3-compatible)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/j4y-w4lk3r/bbm
+	license = MIT
+	optdepends = 1password-cli: resolve op:// references in config.toml at runtime
+	optdepends = gnupg: bbm push --encrypt shells out to ykw which shells out to gpg
+	optdepends = ykw: ergonomic --encrypt path uses ykw encrypt
+	depends = glibc
+	conflicts = bbm
+	conflicts = bbm-git
+	provides = bbm
+	arch = aarch64
+	source_aarch64 = https://github.com/j4y-w4lk3r/bbm/releases/download/v0.1.0/bbm_0.1.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 5b85a6bf2f654597c1424bc2604ca2685f477dcc66f3b0737817e70c5aa6f816
+	arch = armv7h
+	source_armv7h = https://github.com/j4y-w4lk3r/bbm/releases/download/v0.1.0/bbm_0.1.0_Linux_armv7.tar.gz
+	sha256sums_armv7h = 3d91e3745003c84041a397fcdc0f49299ca7ef7d7bb8a4cea0186e9c15b44bec
+	arch = x86_64
+	source_x86_64 = https://github.com/j4y-w4lk3r/bbm/releases/download/v0.1.0/bbm_0.1.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0796a98a7a6bc0295ba0dfdc401a760d79daa615d0cd1babcee99e92604dde55
+	
+pkgname = bbm-bin
