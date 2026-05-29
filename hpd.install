@@ -1,0 +1,50 @@
+# pacman install hooks for hpd-handheld-power-daemon{,-bin}.
+#
+# Both AUR packages reference this file via `install=hpd.install` so
+# the behaviour stays identical between source and binary variants.
+# Keep messages short — pacman prints them inline during the
+# install / upgrade transaction.
+
+_post_setup() {
+    # Reload systemd so it picks up /usr/lib/systemd/system/hpd.service.
+    systemctl daemon-reload || true
+    # Pick up the dbus policy at /usr/share/dbus-1/system.d/dev.cirodev.hpd.conf.
+    systemctl try-reload-or-restart dbus.service 2>/dev/null || true
+}
+
+post_install() {
+    _post_setup
+    cat <<EOF
+
+==> hpd installed. Next steps:
+    sudo systemctl enable --now hpd.service
+    # optional: tune defaults
+    sudo cp /etc/hpd/config.toml.example /etc/hpd/config.toml
+
+    # then:
+    hpdctl status
+    journalctl -fu hpd
+EOF
+}
+
+post_upgrade() {
+    _post_setup
+    # If the daemon is running, re-read the on-disk config in-place
+    # (SIGHUP). Safer than a full restart and matches the project's
+    # documented hot-reload contract.
+    systemctl reload hpd.service 2>/dev/null || true
+    cat <<EOF
+
+==> hpd upgraded. The daemon was sent SIGHUP if running.
+    Review the release notes:
+    https://github.com/CiroDev-Git/hpd-handheld-power-daemon/releases/tag/v${1%-*}
+EOF
+}
+
+pre_remove() {
+    systemctl disable --now hpd.service 2>/dev/null || true
+}
+
+post_remove() {
+    _post_setup
+}
