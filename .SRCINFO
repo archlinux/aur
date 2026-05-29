@@ -1,24 +1,24 @@
 pkgbase = equibop-bin
 	pkgdesc = A custom Discord desktop app with Equicord pre-installed (binary release)
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/Equicord/Equibop
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron40
-	provides = equibop=3.2.0
-	provides = equibop-desktop=3.2.0
+	provides = equibop=3.2.1
+	provides = equibop-desktop=3.2.1
 	conflicts = equibop
 	conflicts = equibop-desktop
 	options = !strip
 	source = equibop.sh
-	source = icon.png::https://raw.githubusercontent.com/Equicord/Equibop/v3.2.0/static/icon.png
+	source = icon.png::https://raw.githubusercontent.com/Equicord/Equibop/v3.2.1/static/icon.png
 	sha256sums = 28e852632bc479a8c9bb84c2d9b629c35a621618448fbc1e0bbea21dfaef19a1
 	sha256sums = 280156676d268d80f65ea3e592bacdd0df5bd78e69872211c624fa07ea062cb8
-	source_aarch64 = equibop-3.2.0-aarch64.tar.gz::https://github.com/Equicord/Equibop/releases/download/v3.2.0/equibop-3.2.0-arm64.tar.gz
-	sha256sums_aarch64 = 72775919fd133d12d805b180a87baea94146cc9e0d794aa9d917cb981a7fec5f
-	source_x86_64 = equibop-3.2.0-x86_64.tar.gz::https://github.com/Equicord/Equibop/releases/download/v3.2.0/equibop-3.2.0.tar.gz
-	sha256sums_x86_64 = fd4c881917cd8d81a9c088cd2619958acab44538447506790e3e5a2cff94f70c
+	source_aarch64 = equibop-3.2.1-aarch64.tar.gz::https://github.com/Equicord/Equibop/releases/download/v3.2.1/equibop-3.2.1-arm64.tar.gz
+	sha256sums_aarch64 = 3842b7448c45ab224ad91b9519480002e2602bd3aec41a8b80436362421a304b
+	source_x86_64 = equibop-3.2.1-x86_64.tar.gz::https://github.com/Equicord/Equibop/releases/download/v3.2.1/equibop-3.2.1.tar.gz
+	sha256sums_x86_64 = 889d8db9762cf15c435c32237daefbc2364c0390e94b774e66d68d773e0f8493
 
 pkgname = equibop-bin
