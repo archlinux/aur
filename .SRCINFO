@@ -1,13 +1,13 @@
 pkgbase = nodejs-gemini-cli
 	pkgdesc = The official Google Gemini CLI
-	pkgver = 0.40.1
+	pkgver = 0.44.1
 	pkgrel = 1
 	url = https://github.com/google/generative-ai-js/tree/main/packages/cli
 	arch = any
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs>=20
-	source = https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.40.1.tgz
-	sha256sums = 893205127c072d3baa2fba419a28081b9fd5cb77c745883139dd9e3e2c1a2b2d
+	source = https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.44.1.tgz
+	sha256sums = fcf5dc9f01eb602e64c204f7112bf33e17ba5e36f737a8ed374821c838ab2cf9
 
 pkgname = nodejs-gemini-cli
