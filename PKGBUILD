@@ -2,7 +2,7 @@
 
 pkgname=deepclaude-git
 pkgver=r15.70518b6
-pkgrel=2
+pkgrel=3
 pkgdesc='Use Claude Code with DeepSeek, OpenRouter, or any Anthropic-compatible backend'
 arch=('any')
 url='https://github.com/aattaran/deepclaude'
@@ -36,6 +36,55 @@ prepare() {
     # Fix: legacy mode must not pass backends — causes default mode 'anthropic'
     # which routes everything to api.anthropic.com instead of the target URL
     sed -i 's/backends: hasBackends ? backends : undefined/backends: undefined/' proxy/start-proxy.js
+    # Fix: hoist system-role messages out of the messages array into the
+    # top-level `system` field. Claude Code sometimes emits a {role:"system"}
+    # entry mid-conversation; Anthropic tolerates it but stricter backends
+    # (DeepSeek's serde deserializer) reject it with
+    # "messages[N].role: unknown variant `system`". Folding it into `system`
+    # is the Anthropic-canonical, lossless representation.
+    cat >> proxy/model-proxy.js <<'NORMALIZE_SYSTEM'
+
+function normalizeSystemMessages(body) {
+    if (!body || !Array.isArray(body.messages)) return false;
+    let found = false;
+    const extracted = [];
+    const kept = [];
+    for (const msg of body.messages) {
+        if (msg && msg.role === 'system') {
+            found = true;
+            let text = '';
+            if (typeof msg.content === 'string') {
+                text = msg.content;
+            } else if (Array.isArray(msg.content)) {
+                text = msg.content
+                    .filter(b => b && b.type === 'text' && typeof b.text === 'string')
+                    .map(b => b.text)
+                    .join('\n');
+            }
+            if (text) extracted.push(text);
+        } else {
+            kept.push(msg);
+        }
+    }
+    if (!found) return false;
+    body.messages = kept;
+    if (extracted.length) {
+        const merged = extracted.join('\n\n');
+        if (body.system == null) {
+            body.system = merged;
+        } else if (typeof body.system === 'string') {
+            body.system = body.system + '\n\n' + merged;
+        } else if (Array.isArray(body.system)) {
+            body.system.push({ type: 'text', text: merged });
+        }
+    }
+    return true;
+}
+NORMALIZE_SYSTEM
+    # Invoke alongside the existing thinking-block strips (covers every
+    # forwarding path: non-anthropic backends and anthropic fallback).
+    sed -i 's/stripAllThinkingBlocks(parsed);/stripAllThinkingBlocks(parsed); normalizeSystemMessages(parsed);/g' proxy/model-proxy.js
+    sed -i 's/stripUnsignedThinkingBlocks(parsed);/stripUnsignedThinkingBlocks(parsed); normalizeSystemMessages(parsed);/g' proxy/model-proxy.js
 }
 
 package() {

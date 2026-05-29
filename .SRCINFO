@@ -1,7 +1,7 @@
 pkgbase = deepclaude-git
 	pkgdesc = Use Claude Code with DeepSeek, OpenRouter, or any Anthropic-compatible backend
 	pkgver = r15.70518b6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aattaran/deepclaude
 	arch = any
 	license = MIT
