@@ -36,6 +36,7 @@ checkdepends=(
     "python-scipy"
     "python-trimesh"
     "python-virtualenv"
+    "xorg-server-xvfb"
 )
 
 build () {
@@ -46,15 +47,10 @@ build () {
 check () {
     cd "$srcdir/$_name-$pkgver"
 
-    if [ "$XDG_SESSION_TYPE" != "x11" ]; then
-        echo "Tests only work on X11 sessions. Skipping..."
-        return
-    fi
-
     python -m venv --system-site-packages venv
     source venv/bin/activate
     pip install ./dist/*.whl
-    python -m pytest
+    xvfb-run python -m pytest
     rm -rf venv
 }
 

@@ -10,6 +10,7 @@ pkgbase = python-moderngl-window
 	checkdepends = python-scipy
 	checkdepends = python-trimesh
 	checkdepends = python-virtualenv
+	checkdepends = xorg-server-xvfb
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
