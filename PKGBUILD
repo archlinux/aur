@@ -9,6 +9,14 @@ url="https://github.com/malbiruk/driftwm"
 license=('GPL-3.0-or-later')
 depends=('libdisplay-info' 'libinput' 'seatd' 'mesa' 'libxkbcommon')
 makedepends=('rust' 'cargo' 'pkg-config' 'git')
+optdepends=(
+    'xwayland-satellite: run X11 apps like Steam, Discord, and many games (needs >= 0.7)'
+    'xdg-desktop-portal: screencasting and file pickers'
+    'xdg-desktop-portal-wlr: screencast backend (OBS, Discord, browsers); or xdg-desktop-portal-cosmic'
+    'grim: screenshots'
+    'slurp: region selection for screenshots'
+    'adwaita-fonts: Adwaita Sans SSD title bars matching GTK apps'
+)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!debug' '!lto' '!strip')
