@@ -2,8 +2,8 @@
 
 pkgname=gstd
 _pkgname=gstd-1.x
-pkgver=0.15.2
-pkgrel=3
+pkgver=0.16.0
+pkgrel=1
 pkgdesc="A GStreamer framework for controlling audio and video streaming using TCP messages"
 arch=('x86_64' 'aarch64')
 url="https://github.com/RidgeRun/gstd-1.x"
@@ -16,7 +16,7 @@ depends=(
   'json-glib'
   'libdaemon'
   'libedit'
-  'libsoup'
+  'libsoup3'
   'python'
 )
 makedepends=(
@@ -43,7 +43,7 @@ source=(
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=('d9d3205551482acd6b7ec2a865407b60efce252e8f747553628401c84f88c556'
+sha256sums=('67320ef0ab45fbaca890274c08617c7ca3f73980565cdfd17093ee205f65defa'
             '20555e74531238a8434fcb9884ac693aac0bbcb6955747db439e290d136cae7e'
             '44d1f0c185a3bd1e430b3b4f6538da714d384bf72921170b1c6f1d624d4bdf63'
             '2a7a4598c3e9f20cc927a4e79f55bb1c59e197e812bd053ad9ad0b9815b73311'
