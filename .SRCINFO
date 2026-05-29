@@ -1,7 +1,7 @@
 pkgbase = zeldaladxhd-bin
 	pkgdesc = Open source and unofficial Links Awakening DX HD PC port
 	pkgver = v1.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated
 	arch = x86_64
 	arch = aarch64
