@@ -1,7 +1,7 @@
 pkgbase = aegis-pentest
 	pkgdesc = AI-driven web penetration testing orchestrator (PTES + OWASP WSTG)
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/glorybnat/aegis-pentest
 	arch = any
 	license = MIT
@@ -42,7 +42,8 @@ pkgbase = aegis-pentest
 	optdepends = arjun: HTTP parameter discovery (pipx)
 	optdepends = droopescan: Drupal scanner (pipx)
 	optdepends = wappalyzer-cli: tech detection (npm)
-	source = aegis-pentest-0.1.0.tar.gz::https://github.com/glorybnat/aegis-pentest/archive/v0.1.0.tar.gz
-	sha256sums = 083710fcba431f6aeeb628c46f46b6faaed820fa7963b40e58bf8588e7ae9c6a
+	optdepends = rtk: token compressor for LLM prompts (cargo install --git https://github.com/rtk-ai/rtk)
+	source = aegis-pentest-0.1.1.tar.gz::https://github.com/glorybnat/aegis-pentest/archive/v0.1.1.tar.gz
+	sha256sums = 0bce5fa00653d2a0dcde56dd07c3ef16ac2aebf4b1899e8d37a76a77c4166747
 
 pkgname = aegis-pentest

@@ -1,7 +1,7 @@
 # Maintainer: Majd Bnat <magame2tec@gmail.com>
 pkgname=aegis-pentest
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="AI-driven web penetration testing orchestrator (PTES + OWASP WSTG)"
 arch=('any')
 url="https://github.com/glorybnat/aegis-pentest"
@@ -44,13 +44,14 @@ optdepends=(
   'arjun: HTTP parameter discovery (pipx)'
   'droopescan: Drupal scanner (pipx)'
   'wappalyzer-cli: tech detection (npm)'
+  'rtk: token compressor for LLM prompts (cargo install --git https://github.com/rtk-ai/rtk)'
 )
 makedepends=(
   'python-build'
   'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('083710fcba431f6aeeb628c46f46b6faaed820fa7963b40e58bf8588e7ae9c6a')
+sha256sums=('0bce5fa00653d2a0dcde56dd07c3ef16ac2aebf4b1899e8d37a76a77c4166747')
 
 build() {
   cd "$pkgname-$pkgver"
