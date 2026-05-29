@@ -1,7 +1,7 @@
 pkgbase = bestclient
 	pkgdesc = DDRaceNetwork modification that adds new feauters
 	pkgver = 1.7.1
-	pkgrel = 12
+	pkgrel = 13
 	url = https://github.com/RoflikBEST/bestdownload
 	install = bestclient.install
 	arch = x86_64
@@ -26,11 +26,15 @@ pkgbase = bestclient
 	source = libxml2_212::https://archive.archlinux.org/packages/l/libxml2/libxml2-2.12.7-1-x86_64.pkg.tar.zst
 	source = libbluray_134::https://archive.archlinux.org/packages/l/libbluray/libbluray-1.3.4-3-x86_64.pkg.tar.zst
 	source = icu75::https://archive.archlinux.org/packages/i/icu/icu-75.1-2-x86_64.pkg.tar.zst
+	source = x264_164::https://archive.archlinux.org/packages/x/x264/x264-3%3A0.164.r3108.31e19f9-3-x86_64.pkg.tar.zst
+	source = x265_35::https://archive.archlinux.org/packages/x/x265/x265-3.5-3-x86_64.pkg.tar.zst
 	sha256sums = ffe98fc6159789e56241e90e27aa5cf2ab2ec0ac9ebefe8d6c13e6acf566e649
 	sha256sums = a118504f690407019294b39bea26920e2cddee94c032a1e5fae1ea216c9ea64f
 	sha256sums = e4c9468bf15c08a4ef2875be99c99261f0769559d92cde7d25acacac5515e9fd
 	sha256sums = de624a17b93a72af65c3a7987e94af4b9d0664b1ed279b6fb6fd4a4faf9695d9
 	sha256sums = e701ff2f681c79eca1663e8b0db52142dc356f35db1ec1bc68198c8a7e7c1d59
 	sha256sums = 328339d8083e175438d75e5172dc882202064918cf3e88c72d1c8e57fff57a23
+	sha256sums = 8ffdc81e6ca674cc430e2bb3c63b8b35e94abe2b78b4a5a3806cd3ce938ce37d
+	sha256sums = ca8a4e3fcce43757770f93fb9fa8e9815f2a9c1f626e43e7ac357fa7fdd9592d
 
 pkgname = bestclient
