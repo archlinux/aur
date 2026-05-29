@@ -1,0 +1,19 @@
+pkgbase = vopono-gui-bin
+	pkgdesc = Graphical frontend for vopono
+	pkgver = 0.10.17
+	pkgrel = 1
+	url = https://github.com/jamesmcm/vopono
+	arch = x86_64
+	license = GPL3
+	depends = vopono
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = systemd-libs
+	depends = xdotool
+	provides = vopono-gui
+	conflicts = vopono-gui
+	noextract = vopono-gui-0.10.17
+	source_x86_64 = vopono-gui-0.10.17::https://github.com/jamesmcm/vopono/releases/download/0.10.17/vopono-gui_0.10.17_linux_x86-64_gcc
+	sha256sums_x86_64 = 30406e6f1e9b06a74cc50df4a19b5586f827ef634e404dd117fc31e6a38cafa6
+
+pkgname = vopono-gui-bin
