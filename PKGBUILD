@@ -2,8 +2,8 @@
 
 _pkgname=browser-stable
 pkgname=yandex-browser
-pkgver=26.3.1.1088
-_pkgver=26.3.1.1088-1
+pkgver=26.4.1.1101mk
+_pkgver=26.4.1.1101-1
 pkgrel=4
 #epoch=1
 
@@ -27,7 +27,7 @@ optdepends=(
 
 source=("${pkgname}-${_pkgver}.deb::https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-${_pkgname}/yandex-${_pkgname}_${_pkgver}_amd64.deb"
         "wayland.patch")
-sha256sums=("8af56b588c48f2965386886f98ae9f95b98c8b5f1c20847b06f7cb2cd2932ba0"
+sha256sums=("0d7cd31000c744bf2ac45f0c7dee2ca17399742085be87165b5af4c20512dae1"
             "86e4267e8b08e66d2227db41afe1b3d301f14579a76c9664e29645a49c26664d")
 install=yandex-browser.install
 
