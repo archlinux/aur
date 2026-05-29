@@ -1,15 +1,18 @@
 # Maintainer: Youcef <youcef.nafa@gmail.com>
 # Co-maintainer: Evert <evorster at gmail dot com>
+# This package uses a venv-based installation inspired by the official NousResearch install.sh. It swaps off uv with python311's venv since python 3.11 is the latest version supported by the developer. The venv solution allows the inclusion of all nodejs modules inside the package's /opt as opposed to shipping the package following ArchLinux convensions (/usr/share,/usr/lib,/usr/bin).
+# Optional dependencies are dissociated from arch and need to be installed manually into venv.
 pkgname=hermes-agent
-pkgver=0.14.0
-_tagver=2026.5.16
-pkgrel=2
+pkgver=0.15.2
+_tagver=2026.5.29.2
+pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
 url="https://github.com/NousResearch/hermes-agent"
 license=('MIT')
 groups=()
 depends=(
+    'python311'
     'ripgrep'
     'ffmpeg'
     'nss'
@@ -24,9 +27,9 @@ depends=(
     'alsa-lib'
 )
 
-makedepends=('uv' 'nodejs' 'npm')
+makedepends=('python311' 'nodejs' 'npm')
 source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('c0a554050a50ee9a62f3fa5cd288a167ba5640c42d647d100cdea084b7294143')
+sha256sums=('465ee7a8da014d89e8d381fd13b862469862b7aa6d42b2e9b938351d3787b48e')
 validpgpkeys=()
 install=hermes-agent.install
 
@@ -68,10 +71,9 @@ build() {
     (cd scripts/whatsapp-bridge && rm -f package-lock.json && npm install --legacy-peer-deps --omit=dev) || return 1
   fi
 
-  echo "==> Creating Python 3.11 venv and installing dependencies..."
-  uv venv --python 3.11 --clear venv || return 1
-  source venv/bin/activate
-  uv pip install .[all] 
+  echo "==> Creating Python venv and installing dependencies..."
+  python3.11 -m venv --clear venv || return 1
+  venv/bin/pip install -e .[all]
 }
 
 package() {
@@ -87,8 +89,7 @@ package() {
   cp -r scripts "$_optdir/"
 
   # The TUI launcher uses PROJECT_ROOT/ui-tui, where PROJECT_ROOT is the venv's
-  # site-packages directory (/opt/hermes-agent/venv/lib/python3.11/site-packages
-  # for this package). Put the prebuilt ui-tui tree there so hermes --tui does
+  # site-packages directory. Put the prebuilt ui-tui tree there so hermes --tui does
   # not try to npm-install from a missing directory at runtime.
   if [ -d "ui-tui" ]; then
     _site_packages="$(find "$_optdir/venv/lib" -type d -name site-packages -print -quit)"
@@ -126,8 +127,9 @@ package() {
   install -d "$pkgdir/usr/bin"
   {
     echo "#!/bin/bash"
-    echo "export HERMES_TUI_DIR=/opt/$pkgname/venv/lib/python3.11/site-packages/ui-tui"
-    echo "exec /opt/$pkgname/venv/bin/python -m hermes_cli.main" '"$@"'
+    echo "export HERMES_TUI_DIR=/opt/$pkgname/venv/lib/\$(/opt/$pkgname/venv/bin/python3.11 -c 'import sys; print(\"python{}.{}\".format(*sys.version_info[:2]))')/site-packages/ui-tui"
+    echo "exec /opt/$pkgname/venv/bin/python3.11 -m hermes_cli.main" '"$@"'
   } > "$pkgdir/usr/bin/hermes"
+
   chmod 755 "$pkgdir/usr/bin/hermes"
 }
