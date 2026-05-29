@@ -11,7 +11,7 @@ depends=('gtk4' 'gtk4-layer-shell' 'cairo' 'glibc' 'spectacle')
 makedepends=('cargo' 'git' 'rust')
 provides=('wayruler')
 conflicts=('wayruler')
-source=("git+https://github.com/Mahmoud-walid/WayRuler.git")
+source=("WayRuler::git+https://github.com/Mahmoud-walid/WayRuler.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -48,4 +48,8 @@ package() {
   install -Dm644 \
     assets/wayruler.png \
     "$pkgdir/usr/share/pixmaps/wayruler.png"
+
+  install -Dm644 \
+    src/assets/*.svg \
+    "$pkgdir/usr/share/wayruler/icons/"
 }

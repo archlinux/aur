@@ -15,7 +15,7 @@ pkgbase = wayruler-git
 	depends = spectacle
 	provides = wayruler
 	conflicts = wayruler
-	source = git+https://github.com/Mahmoud-walid/WayRuler.git
+	source = WayRuler::git+https://github.com/Mahmoud-walid/WayRuler.git#branch=main
 	sha256sums = SKIP
 
 pkgname = wayruler-git
