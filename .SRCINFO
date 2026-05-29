@@ -12,6 +12,7 @@ pkgbase = schildichat-revenge-git
 	license = GPL-3.0-or-later
 	license = Apache-2.0
 	makedepends = git
+	makedepends = cargo
 	makedepends = gradle
 	makedepends = java-environment
 	makedepends = zopfli

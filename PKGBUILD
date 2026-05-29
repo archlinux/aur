@@ -39,7 +39,7 @@ replaces=(
 )
 makedepends=(
   "git"
-  #"cargo"
+  "cargo"
   "gradle"
   #"java-environment=${_jdkversion}"
   "java-environment"
