@@ -1,7 +1,7 @@
 # Maintainer: matt-shearing <matt-shearing@users.noreply.github.com>
 pkgname=voxtype-tray
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="System tray app and settings GUI for VoxType voice dictation (PyQt6)"
 arch=('any')
 url="https://github.com/matt-shearing/voxtype-tray"
@@ -9,7 +9,12 @@ license=('MIT')
 depends=(
     'python'
     'python-pyqt6'
-    'voxtype>=0.7.2'
+    # Unversioned: the voxtype-bin / voxtype-cuda providers declare an
+    # unversioned `provides=('voxtype')`, which pacman cannot match against a
+    # versioned dependency (e.g. `voxtype>=0.7.2`) — doing so breaks install
+    # for everyone not on the source `voxtype` package. v0.7.2+ is recommended
+    # for streaming/Parakeet/MIGraphX features surfaced by the GUI.
+    'voxtype'
 )
 optdepends=(
     'dotool: keyboard simulation for KDE Plasma Wayland (recommended)'
