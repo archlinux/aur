@@ -1,7 +1,7 @@
 # Maintainer: Thomas Mashos <thomas at mashos dot com>
 # Maintainer: devolutionsinfra https://devolutions.net/
 pkgname=remote-desktop-manager
-pkgver=2026.1.2.3
+pkgver=2026.1.2.4
 pkgrel=1
 pkgdesc="Devolutions Remote Desktop Manager centralizes all remote connections on a single platform that is securely shared between users and across the entire team."
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('libappindicator-gtk3: for system tray icon support'
 options=(!strip)
 install=${pkgname}.install
 source=("RemoteDesktopManager_${pkgver}_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/${pkgver}/RemoteDesktopManager_${pkgver}_amd64.deb")
-sha256sums=('59EADFEB160A2AAC923CC587A9E1477D37643E32B31058514601CFE1B4119E2C')
+sha256sums=('1B92E899393C729DD426D8E2ECAC736366B8EB21460F5248D0C2FB0F2CE70840')
 
 prepare() {
   tar -xf ${srcdir}/data.tar.xz
