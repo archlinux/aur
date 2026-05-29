@@ -1,7 +1,7 @@
 # Maintainer: Kyle McNally <kyle@kmcnally.net>
 pkgname=snapraid-daemon
-pkgver=1.9
-pkgrel=2
+pkgver=1.10
+pkgrel=1
 pkgdesc="a background service for SnapRAID: always-on, health monitoring, power management, web ui, rest api, notifications"
 arch=('x86_64' 'i686')
 url="http://www.snapraid.it/"
@@ -10,7 +10,7 @@ depends=('libutil-linux' 'glibc' 'snapraid>=14.4' 'zip')
 optdepends=('zlib' 'zstd')
 source=("https://github.com/amadvance/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 backup=('etc/snapraidd.conf')
-sha256sums=('949b219ee0d187d23bee2fa8e390191410df22619e58561798fd3216756ffb58')
+sha256sums=('790d4213a12e3f1e4d80ded4f81b32b465a8e6249c1f2e58420425f918716532')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
