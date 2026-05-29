@@ -9,7 +9,7 @@ post_install() {
     echo "    2. Run database migrations:"
     echo "         DATABASE_URL='mariadb://user:pass@localhost/barto' barto-migrate"
     echo "    3. Set up secrets (HMAC key, signing key, API key, DB password):"
-    echo "         barto-secrets-init"
+    echo "         bartos-secrets-init"
     echo "       Follow the prompts and add the printed SetCredentialEncrypted= lines to:"
     echo "         /etc/systemd/system/bartos.service.d/secrets.conf"
     echo "    4. Enable and start the service:"

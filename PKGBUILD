@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartos
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Barto central job scheduling server"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('mariadb: local database server'
 makedepends=('cargo')
 install=bartos.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/barto/archive/v$pkgver.tar.gz")
-sha256sums=('2194127beaf5c8755c00e49b6d209beee5e19de9085caab83001ee7492753828')
+sha256sums=('c68c01d96e9ae0b37220cfd2a39edf874cae4585df28e89f5bbad7b692a5b4ef')
 
 prepare() {
     cd "barto-$pkgver"
@@ -42,7 +42,7 @@ package() {
     install -Dm755 "dist/bartos/bartos-launcher" "$pkgdir/usr/lib/bartos/bartos-launcher"
 
     # Secrets init helper
-    install -Dm755 "packaging/nfpm/scripts/barto-secrets-init" "$pkgdir/usr/bin/barto-secrets-init"
+    install -Dm755 "packaging/nfpm/scripts/bartos-secrets-init" "$pkgdir/usr/bin/bartos-secrets-init"
 
     # Migration helper
     install -Dm755 "packaging/nfpm/scripts/barto-migrate" "$pkgdir/usr/bin/barto-migrate"
