@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Foltz <thorsten.foltz@live.com>
 pkgname=octa
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Multi-format data viewer/editor supporting parquet, csv, json, avro, xlsx and more"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('rust' 'cargo' 'clang' 'cmake' 'nasm' 'pkgconf' 'asciidoctor')
 conflicts=('octa-bin')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('68ba0905f6082cf99335dd7c925da632db05c941c44e0af379c22f7d3db440aa')
+sha256sums=('fec86c86e46cd94e1128828cc2608c6c245628fa82bf3421c5e6976b744a7b57')
 
 prepare() {
     cd "$pkgname-$pkgver"
