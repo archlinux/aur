@@ -1,6 +1,6 @@
 pkgname=twintaillauncher
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 _dirname="TwintailLauncher-ttl-v${pkgver}"
 pkgdesc='A multi-platform launcher for your anime games'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ options=('!lto' '!debug')
 
 prepare() {
   cd $_dirname
-  sed -i 's/"ignoredBuiltDependencies"/"onlyBuiltDependencies"/' package.json
+  echo -e "allowBuilds:\n  esbuild: true" > pnpm-workspace.yaml
   pnpm i
 }
 
