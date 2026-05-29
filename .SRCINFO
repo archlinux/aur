@@ -1,7 +1,7 @@
 pkgbase = smag
 	pkgdesc = Easily create graphs from cli commands and view them in the terminal.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aantn/smag/
 	arch = i686
 	arch = pentium4
