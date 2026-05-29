@@ -1,4 +1,5 @@
-# Maintainer: whiteman808 <whiteman808@paraboletancza.org>
+# Maintainer: gamestime102 < >
+# Contributor: whiteman808 <whiteman808@paraboletancza.org>
 # Contributor: David P. <megver83@parabola.nu>
 # Contributor: André Silva <emulatorman@hyperbola.info>
 # Contributor: Márcio Silva <coadde@hyperbola.info>
@@ -10,8 +11,8 @@ _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre-hardened
-pkgver=6.17.13.hardened1
-pkgrel=2
+pkgver=7.0.10.hardened1
+pkgrel=1
 pkgdesc='Security-Hardened Linux-libre'
 url='https://linux-libre.fsfla.org/'
 arch=(x86_64)
@@ -41,12 +42,12 @@ options=(
   !debug
   !strip
 )
-_srcname=linux-6.17.13
+_srcname=linux-7.0.10
 _srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_srcname##*-}-gnu/linux-libre-${_srcname##*-}-gnu.tar.xz"{,.sign}
-  "https://linux-libre.fsfla.org/pub/linux-libre/releases/${pkgver%.*}-gnu/patch-6.17-gnu-${pkgver%.*}-gnu.xz"{,.sign}
-  "https://linux-libre.fsfla.org/pub/linux-libre/releases/${pkgver%.*}-gnu/patch-6.17.12-gnu-${pkgver%.*}-gnu.xz"{,.sign}
+  "https://linux-libre.fsfla.org/pub/linux-libre/releases/${pkgver%.*}-gnu/patch-7.0-gnu-${pkgver%.*}-gnu.xz"{,.sign}
+  "https://linux-libre.fsfla.org/pub/linux-libre/releases/${pkgver%.*}-gnu/patch-7.0-gnu-${pkgver%.*}-gnu.xz"{,.sign}
   "https://github.com/anthraxx/linux-hardened/releases/download/${_srctag}/linux-hardened-${_srctag}.patch"{,.sig}
   "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}{,.sig}
   config         # the main kernel config file
@@ -65,13 +66,13 @@ validpgpkeys=(
   6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78 # David P.
   E240B57E2C4630BA768E2F26FC1B547C8D8172C8 # Levente Polyak
 )
-sha256sums=('8d716a6051ef7bcc11406a100d5c9daee580ce1dd032580b188fd0316d0dec0f'
+sha256sums=('34f97478b285dffa8eafa4e323c3018815ee4608c65e0fec0f2042891cd52735'
             'SKIP'
-            'a2bbedf5c5367ef9862bc35caf4e4c782450bba99a22968b2ef9bd0aa84c4ddb'
+            '4a6d245b5cc8845842efbd928440ae8ced843f0e16e0b8b46b90a45fd1b72fd9'
             'SKIP'
-            '6b9665736d1b94b33261a9a625d093084bfe9e9b2cab8e2db90cb267c035700c'
+            '4a6d245b5cc8845842efbd928440ae8ced843f0e16e0b8b46b90a45fd1b72fd9'
             'SKIP'
-            '4c6671688c0f9fc1782f5de268e185de19accc706cbd0256c5df48c74df37eb3'
+            'ac168b124c453f1c9160d4f16a24cb7ccca426df1406d95a8cd57118350d985c'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -82,13 +83,13 @@ sha256sums=('8d716a6051ef7bcc11406a100d5c9daee580ce1dd032580b188fd0316d0dec0f'
             'ec7cbaea6a8341ae004dad4c8530bc14dd9bb54281db07447ade4ccaabdac15f'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25')
-b2sums=('917d26cb0e711b3edf61ebcec38b8f73cae0a335598e42ae8ec17395a10f0b1a574fc10479a26349dd3d65898a81836caa4347494cac78f20c93cd024e064cde'
+b2sums=('6faed42955a647f9b13f338cbfa01d9839442c51c95418075311d622257f59822c2b205ce5c4d585f2de944a9b3f65521b9d7b2e3202d8bd608b5c2d23830dd0'
         'SKIP'
-        '6e056269ad7378d2416de5e5e9d56df91f617ff98d497f0044ab59afa74b48e4faae83ffac83e319f975f9dc1fb2416bbb35ba5ef6854443331b642aa01ddade'
+        '8b2e1372a3da2f103164eebae7d27ea8169037bd8ca6eddd380c2976026e28d8ad66ba62896086f0034ccdb01ec900d0e7493343941d12b625bb7a00f22737d9'
         'SKIP'
-        '921fbbdafbe1be60d5dd66606e142fe7b0427313eaf5765443dcb40d59996f60e28d1755a4270a241783e7ee8cf606290280af382a2a5e2f050c0f12385287b3'
+        '8b2e1372a3da2f103164eebae7d27ea8169037bd8ca6eddd380c2976026e28d8ad66ba62896086f0034ccdb01ec900d0e7493343941d12b625bb7a00f22737d9'
         'SKIP'
-        '67e8af0e06150c9839a2bd1c17e2db14a23fab4cfe3179582cb00866592996ae982838061194ecbd1e940c706acaa1f44822368fa0990232477f8cc329f21e11'
+        '5673d6eb32075d345b216eddf0e9fff59cb81fe0c2ca4f350bfe40e05a037c62209e5089d12025eff0226f6c24b7b1709e28613faa0b8267ea9a9cf55866cca5'
         'SKIP'
         '73fee2ae5cb1ffd3e6584e56da86a8b1ff6c713aae54d77c0dab113890fc673dc5f300eb9ed93fb367b045ece8fa80304ff277fe61665eccf7b7ce24f0c045eb'
         'SKIP'
