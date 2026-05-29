@@ -1,10 +1,10 @@
 pkgbase = nvidia-utils
 	pkgver = 610.43.02
-	pkgrel = 1
-	url = http://www.nvidia.com/
+	pkgrel = 2
+	url = https://www.nvidia.com/
 	arch = aarch64
 	arch = x86_64
-	license = custom
+	license = LicenseRef-NVIDIA-Driver-License-Agreement
 	options = !strip
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils.sysusers
