@@ -1,1 +1,17 @@
+pkgbase = firmium-desktop-bin
+	pkgdesc = Lightning fast OpenSubsonic player in Tauri
+	pkgver = 3.1.6
+	pkgrel = 1
+	url = https://github.com/fossisawesome/firmium
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = webkit2gtk-4.1
+	depends = alsa-lib
+	depends = openssl
+	provides = firmium-desktop
+	conflicts = firmium-desktop-git
+	options = !strip
+	source = https://github.com/fossisawesome/firmium/releases/download/v3.1.6/Firmium_3.1.6_amd64.deb
+	sha256sums = SKIP
 
+pkgname = firmium-desktop-bin
