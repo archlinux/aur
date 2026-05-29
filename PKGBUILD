@@ -19,7 +19,7 @@ source=("jlfine-$pkgver::https://github.com/prietus/jlfine/releases/download/v$p
         "jlfine-$pkgver.png::https://raw.githubusercontent.com/prietus/jlfine/v$pkgver/crates/jlfine-ui/ui/icon.png"
         "jlfine-$pkgver.desktop::https://raw.githubusercontent.com/prietus/jlfine/v$pkgver/packaging/jlfine.desktop"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/prietus/jlfine/v$pkgver/LICENSE")
-sha256sums=('b6592be6a8268c11acce9ca906620f0e51f4326150828ca28beefe1b63d0adba'
+sha256sums=('144076c986f921d25b887db9658cb79e17aac3bbb0ad9054cc4c71f7bbbc438e'
             'acde7cddefcb2733fc4cd592a5e4d2e7aa0eac452f9092d35ea27c36fc64c0a7'
             'edfd28b3a72b473fff05ceac56b8c170f4fe8d853de1300976f5a885448cf8bb'
             '0e87f8768a2d1e3e648c5bbf5d02261ca12be722dce4d25fc51d2c610e03ab32')
