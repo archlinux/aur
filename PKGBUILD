@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A wrapper that adds reveal effects, live ANSI recoloring, and keymaps to existing terminal apps"
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc')
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}.${_barch[0]}.tar.gz")
-sha256sums_x86_64=('b711d819d156b3a7d452cce3c5a93dd7fe5350ed28d11897c418e1800efed2dd')
+sha256sums_x86_64=('6edd3c8148f36737083e7b631b3837c3dec87ad6cf6cec6e4f2aebecb76773b1')
 
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = baeru-bin
 	pkgdesc = A wrapper that adds reveal effects, live ANSI recoloring, and keymaps to existing terminal apps
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/blacknon/baeru
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = baeru-bin
 	provides = baeru
 	conflicts = baeru
 	options = !strip
-	source_x86_64 = baeru-x86_64-0.2.0.tgz::https://github.com/blacknon/baeru/releases/download/0.2.0/baeru-0.2.0.x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b711d819d156b3a7d452cce3c5a93dd7fe5350ed28d11897c418e1800efed2dd
+	source_x86_64 = baeru-x86_64-0.3.0.tgz::https://github.com/blacknon/baeru/releases/download/0.3.0/baeru-0.3.0.x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6edd3c8148f36737083e7b631b3837c3dec87ad6cf6cec6e4f2aebecb76773b1
 
 pkgname = baeru-bin
