@@ -1,5 +1,5 @@
 pkgname=ark-cli
-pkgver=0.1.0_alpha.7
+pkgver=0.1.0_alpha.8
 pkgrel=1
 pkgdesc="Plain-text terminal organiser for notes, todos, and events"
 arch=('any')
@@ -13,14 +13,14 @@ sha256sums=('SKIP')
 package() {
     cd "$srcdir/ark-${pkgver//_/-}"
 
-    install -Dm755 ark "$pkgdir/usr/bin/ark-cli"
+    install -Dm755 bin/ark "$pkgdir/usr/bin/ark-cli"
 
-    install -Dm644 other/arkfuncs.pl \
-        "$pkgdir/usr/lib/ark/other/arkfuncs.pl"
+    install -Dm644 lib/ark/arkfuncs.pl \
+        "$pkgdir/usr/lib/ark/arkfuncs.pl"
 
     install -d "$pkgdir/usr/lib/ark/commands"
 
-    for cmd in commands/*; do
+    for cmd in lib/ark/commands/*; do
         [ -f "$cmd" ] || continue
         install -m755 "$cmd" "$pkgdir/usr/lib/ark/commands/$(basename "$cmd")"
     done
