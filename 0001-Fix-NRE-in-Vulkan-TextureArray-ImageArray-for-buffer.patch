@@ -1,5 +1,5 @@
-From c9002608085e5f6530519e55b14b2b3f841daf71 Mon Sep 17 00:00:00 2001
-From: Jakob Linke <36006+schuay@users.noreply.github.com>
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: 86b34e01 <86b34e01@invalid>
 Date: Wed, 27 May 2026 07:50:31 +0200
 Subject: [PATCH 1/5] Fix NRE in Vulkan TextureArray/ImageArray for buffer-mode
  arrays

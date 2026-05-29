@@ -1,5 +1,5 @@
-From 179bd299155afb743a81d5acc9756b3493191ea3 Mon Sep 17 00:00:00 2001
-From: Jakob Linke <36006+schuay@users.noreply.github.com>
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: 86b34e01 <86b34e01@invalid>
 Date: Wed, 27 May 2026 12:43:40 +0200
 Subject: [PATCH 5/5] Auto-dismiss ControllerAppletDialog when validation would
  now succeed

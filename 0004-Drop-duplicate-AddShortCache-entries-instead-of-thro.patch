@@ -1,5 +1,5 @@
-From 9c7be1fac10d18e4780df43b632305b33a4a04c8 Mon Sep 17 00:00:00 2001
-From: Jakob Linke <36006+schuay@users.noreply.github.com>
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: 86b34e01 <86b34e01@invalid>
 Date: Sat, 16 May 2026 14:43:07 +0200
 Subject: [PATCH 4/5] Drop duplicate AddShortCache entries instead of throwing
 
@@ -30,7 +30,7 @@ in producing distinct Textures for byte-equal descriptors is understood
  1 file changed, 29 insertions(+), 1 deletion(-)
 
 diff --git a/src/Ryujinx.Graphics.Gpu/Image/AutoDeleteCache.cs b/src/Ryujinx.Graphics.Gpu/Image/AutoDeleteCache.cs
-index 99b34112f..155dd130b 100644
+index 99b34112f..0c2fa68ad 100644
 --- a/src/Ryujinx.Graphics.Gpu/Image/AutoDeleteCache.cs
 +++ b/src/Ryujinx.Graphics.Gpu/Image/AutoDeleteCache.cs
 @@ -278,8 +278,36 @@ namespace Ryujinx.Graphics.Gpu.Image
@@ -58,7 +58,7 @@ index 99b34112f..155dd130b 100644
 +            // the duplicate to cannot reach here -- a shared instance has refcount >= 2
 +            // and HasOneReference() filters it out before AddShortCache is called.
 +            //
-+            // TODO(jgruber): replace dedup with a deeper fix once FindOrCreateTexture's
++            // TODO(86b34e01): replace dedup with a deeper fix once FindOrCreateTexture's
 +            // role in producing distinct Textures for byte-equal descriptors is
 +            // understood (likely guest gpuVa remapping between slot populations).
 +            if (!_shortCacheLookup.TryAdd(entry.Descriptor, entry))

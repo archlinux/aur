@@ -1,5 +1,5 @@
-From ff1752ddd8f125e12b541aa816e316abf91feb5b Mon Sep 17 00:00:00 2001
-From: Jakob Linke <36006+schuay@users.noreply.github.com>
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: 86b34e01 <86b34e01@invalid>
 Date: Sat, 16 May 2026 13:44:25 +0200
 Subject: [PATCH 3/5] Skip iteration past the populated range of texture pools
 
