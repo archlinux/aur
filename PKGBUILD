@@ -1,5 +1,5 @@
 pkgname=waifu
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Tool to fetch and display images from waifu.pics"
 arch=('x86_64')
