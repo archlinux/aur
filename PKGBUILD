@@ -1,18 +1,19 @@
 # Maintainer: Rain Xelelo <rxelelo@outlook.com>
+# Co-Maintainer: jofir
 
 _pkgname=BestClient
 pkgname=bestclient
 pkgver=1.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="DDRaceNetwork modification that adds new feauters"
 arch=('x86_64')
-url=""
-license=()
+url="https://github.com/RoflikBEST/bestdownload"
+license=('custom')
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader')
+makedepends=('patchelf')
 checkdepends=('gmock')
 optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
 	'discord-game-sdk: Enable rich presence in Discord desktop client.')
-backup=('usr/share/ddnet/data/autoexec_server.cfg')
 install="$pkgname.install"
 source=("https://github.com/RoflikBEST/bestdownload/releases/download/v$pkgver/BestClient-linux.tar.xz" "$pkgname.png")
 sha256sums=('ffe98fc6159789e56241e90e27aa5cf2ab2ec0ac9ebefe8d6c13e6acf566e649'
@@ -22,22 +23,41 @@ prepare() {
 	mkdir -p $pkgname/game
 	cp -r ${srcdir}/$pkgname-*-linux_x86_64/* $pkgname/game
 	chmod +x $pkgname/game/DDNet
+
+	# Fix hardcoded CI build path for discord_game_sdk.so
+	patchelf --replace-needed \
+		/home/runner/work/BestClient/BestClient/ddnet-libs/discord/linux/lib64/discord_game_sdk.so \
+		discord_game_sdk.so \
+		$pkgname/game/DDNet
+
+	# Set RPATH to $ORIGIN so bundled libs (discord_game_sdk.so etc.) are found
+	patchelf --set-rpath '$ORIGIN' $pkgname/game/DDNet
+
+	# Patch FFmpeg sonames: binary built against FFmpeg 6.x, Arch ships newer
+	# libavformat.so.60 -> current
+	patchelf --replace-needed libavformat.so.60 libavformat.so $pkgname/game/DDNet
+	patchelf --replace-needed libavcodec.so.60  libavcodec.so  $pkgname/game/DDNet
+	patchelf --replace-needed libavutil.so.58   libavutil.so   $pkgname/game/DDNet
+	patchelf --replace-needed libswscale.so.7   libswscale.so  $pkgname/game/DDNet
+	patchelf --replace-needed libswresample.so.4 libswresample.so $pkgname/game/DDNet
 }
 
 package() {
 	install -dm0755 "$pkgdir/opt"
 	cp -a $pkgname "$pkgdir/opt/$pkgname"
-	# Arch ships libGLEW.so.2.3+, binary needs 2.2 — create compat symlink
+
+	# GLEW compat: binary needs 2.2, Arch ships 2.3+
 	ln -sf /usr/lib/libGLEW.so "$pkgdir/opt/$pkgname/game/libGLEW.so.2.2"
+
 	install -dm0755 "$pkgdir/usr/bin"
 	install -dm0755 "$pkgdir/usr/share/applications/"
 	cat >"$pkgdir/usr/bin/$pkgname" <<EOF
 #!/bin/bash
 cd /opt/$pkgname/game
-export LD_LIBRARY_PATH="/opt/$pkgname/game${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-exec ./DDNet "$@"
+export LD_LIBRARY_PATH="/opt/$pkgname/game\${LD_LIBRARY_PATH:+:\$LD_LIBRARY_PATH}"
+exec ./DDNet "\$@"
 EOF
-	chmod +x $pkgdir/usr/bin/$pkgname
+	chmod +x "$pkgdir/usr/bin/$pkgname"
 	cat >"$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
 [Desktop Entry]
 Version=$pkgver
