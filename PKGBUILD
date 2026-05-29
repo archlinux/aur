@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gpu-t
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A lightweight GPU-Z clone for Linux"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   'vulkan-driver: packaged Vulkan driver'
 )
 source=("GPU-T-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3fc168d8fefe68f7ed5477e0156bba3c474e9c185225611df99c5fe69476842d')
+sha256sums=('99437405890ff2995d5effceb8c79810eec9513cd29f5c50476c63701379785f')
 
 prepare() {
   cd "GPU-T-$pkgver"
