@@ -1,6 +1,6 @@
 pkgbase = colgrep-bin
 	pkgdesc = Semantic code search powered by ColBERT (prebuilt binary)
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/lightonai/next-plaid
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = colgrep-bin
 	depends = openssl
 	provides = colgrep
 	conflicts = colgrep
-	source = colgrep-1.4.0-x86_64-unknown-linux-gnu.tar.xz::https://github.com/lightonai/next-plaid/releases/download/v1.4.0/colgrep-x86_64-unknown-linux-gnu.tar.xz
-	source = colgrep-1.4.0-x86_64-unknown-linux-gnu.tar.xz.sha256::https://github.com/lightonai/next-plaid/releases/download/v1.4.0/colgrep-x86_64-unknown-linux-gnu.tar.xz.sha256
-	sha256sums = 1fd083b78f16445b588ba50d02e115e47476568cbda5100170edb1539f892c07
-	sha256sums = 3d0d3ce68ec727a34c3dd0afe3a0c5a6eadff450fe1c9c640d4adc01cdd6504e
+	source = colgrep-1.5.0-x86_64-unknown-linux-gnu.tar.xz::https://github.com/lightonai/next-plaid/releases/download/v1.5.0/colgrep-x86_64-unknown-linux-gnu.tar.xz
+	source = colgrep-1.5.0-x86_64-unknown-linux-gnu.tar.xz.sha256::https://github.com/lightonai/next-plaid/releases/download/v1.5.0/colgrep-x86_64-unknown-linux-gnu.tar.xz.sha256
+	sha256sums = d7a3d48a989dbce5371a67e4f5bbd086fbaf1f84a766a36a01995e4d944e9481
+	sha256sums = 67aeb524051cdc042566c997b444865223db1983a100d0303c72c3e1fc29a73c
 
 pkgname = colgrep-bin
