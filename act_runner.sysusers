@@ -1,2 +1,1 @@
-u act_runner - "Runner for Gitea" /var/lib/act_runner
-m act_runner docker
+u! act_runner - "Runner for Gitea" /var/lib/act_runner

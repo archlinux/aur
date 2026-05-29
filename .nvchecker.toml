@@ -1,0 +1,4 @@
+[act_runner]
+source = "git"
+git = "https://gitea.com/gitea/act_runner.git"
+prefix = "v"
