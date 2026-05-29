@@ -1,12 +1,12 @@
 # Maintainer: methamphetaminelab <https://github.com/methamphetaminelab>
 pkgname=mpddiscordrpc
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Display MPD currently playing track in Discord Rich Presence"
 arch=("any")
 url="https://github.com/methamphetaminelab/MPDDiscordRPC"
 license=("MIT")
-depends=("python" "python-pypresence" "python-mpd2" "python-requests")
+depends=("python" "python-pypresence" "python-mpd2" "python-requests" "python-tomli")
 optdepends=("python-ytmusicapi: YouTube Music album art lookup")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel" "git")
 source=("$pkgname::git+$url.git#tag=v$pkgver")
