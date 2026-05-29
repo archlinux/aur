@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.pranavagarkar07.beamsync</id>
+  <name>BeamSync</name>
+  <summary>Fast, local peer-to-peer file transfer</summary>
+  <developer id="io.github.pranavagarkar07">
+    <name>Pranav Agarkar</name>
+  </developer>
+  <description>
+    <p>
+      BeamSync is a fast, local peer-to-peer file transfer application.
+      Share files between your desktop and mobile devices over LAN with
+      a NeoBrutalist interface. No cloud, no accounts, no size limits.
+    </p>
+  </description>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <url type="homepage">https://github.com/PranavAgarkar07/BeamSync</url>
+  <url type="bugtracker">https://github.com/PranavAgarkar07/BeamSync/issues</url>
+  <url type="donation">https://github.com/sponsors/PranavAgarkar07</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/PranavAgarkar07/BeamSync/main/community/assets/appSS1.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/PranavAgarkar07/BeamSync/main/community/assets/appSS2.png</image>
+    </screenshot>
+  </screenshots>
+  <provides>
+    <binary>beamsync</binary>
+  </provides>
+  <categories>
+    <category>Network</category>
+    <category>FileTransfer</category>
+    <category>Utility</category>
+  </categories>
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+  </recommends>
+  <launchable type="desktop-id">beamsync.desktop</launchable>
+  <releases>
+    <release version="2.4.0" date="2026-04-28">
+      <description>
+        <p>Complete mobile UI overhaul, intelligent file lists, rich file-type icons, enhanced metadata handling, accessibility improvements.</p>
+      </description>
+    </release>
+    <release version="2.3.0" date="2026-02-15"/>
+  </releases>
+  <content_rating type="oars-1.1"/>
+</component>

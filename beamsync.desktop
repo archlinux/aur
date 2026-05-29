@@ -2,8 +2,16 @@
 Version=1.0
 Type=Application
 Name=BeamSync
-Comment=Fast, local peer-to-peer file transfer
+GenericName=File Transfer
+Comment=Fast, local peer-to-peer file transfer between desktop and mobile
 Exec=beamsync
 Icon=beamsync
 Terminal=false
 Categories=Network;FileTransfer;Utility;
+StartupNotify=true
+Actions=qr;
+
+[Desktop Action qr]
+Name=Show QR Code
+Exec=beamsync
+Icon=beamsync
