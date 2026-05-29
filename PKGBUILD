@@ -1,6 +1,6 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=('cfrds')
-pkgver='1.0.4'
+pkgver='1.0.5'
 pkgrel=1
 options=(!debug)
 pkgdesc='Client side ColdFusion RDS protocol.'
@@ -15,7 +15,7 @@ source=(
 )
 
 sha512sums=(
-    '4c1efd0849556dd0896f577d34b3bff1d266ac321cb32607833c62f73f92fdb5ad39e6299e3c05949d3db39e10054ec0012d7b080c66a8ca76ae5e88fef12dd1'
+    '24c288f9428d0a7555997028cf3a09c8960f27058b28adf7cef855e01d87bb9cb68d9cf13d29df28b969a9585e598698fe12d65f9ce460c057110d4684542ae7'
 )
 
 build() {
