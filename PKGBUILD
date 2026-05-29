@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
-pkgver=0.7.3
-pkgrel=2
+pkgver=0.7.5
+pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
@@ -37,20 +37,30 @@ optdepends=(
     'onnxruntime: required for ONNX engines (rebuild with onnxruntime installed)'
     'cuda: GPU acceleration via CUDA 13 for ONNX engines (NVIDIA GPUs, requires driver 580+)'
     'cuda12.6: GPU acceleration via CUDA 12 for ONNX engines (older NVIDIA setups)'
-    'rocm-hip-runtime: GPU acceleration via MIGraphX for ONNX engines (AMD GPUs)'
+    'rocm-hip-runtime: ROCm runtime (required by migraphx)'
+    'migraphx: AMD GPU graph optimization for the MIGraphX execution provider — required for AMD GPU acceleration on ONNX engines'
     'ollama: local AI summarization for meeting mode'
     'gtk4: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)'
     'gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer'
 )
 backup=('etc/voxtype/config.toml')
 install=voxtype.install
-validpgpkeys=('E79F5BAF8CD51A806AA27DBB7DA2709247D75BC6')  # Peter Jackson <pete@peteonrails.com>
+validpgpkeys=(
+    # Offline maintainer primary (Peter Jackson) — signs legacy assets
+    # through v0.7.4 and cross-signed the CI primary below.
+    'E79F5BAF8CD51A806AA27DBB7DA2709247D75BC6'
+    # Voxtype CI release signing primary. Signs the GitHub auto-archive
+    # source tarball starting in v0.7.5. Auto-fetchable by fingerprint
+    # via dirmngr from keys.openpgp.org / keyserver.ubuntu.com, so first
+    # install on a fresh system has no manual gpg --recv-keys step.
+    '9CCF7915B750CAE8B095ED1AA3FC9F33FD209279'
+)
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz"
     "$pkgname-$pkgver.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-    '1a80d5d28136535d705bfcb4e4a0d07fef366ace148e1a5627bdf07185c0821a'  # source tarball
+    '0efb2a1d188cdbc5c63d1aa29e253e41b1320835a1c2b05d95ea6e7c011ff03f'  # source tarball
     'SKIP'  # source tarball signature
 )
 
@@ -145,22 +155,29 @@ build() {
         echo "=== Skipping ONNX engines (install onnxruntime and rebuild for Parakeet/SenseVoice/etc.) ==="
     fi
 
-    # Build OSD binaries: the launcher (voxtype-osd) plus both frontends.
-    # The launcher has no GUI deps; each frontend is gated on its feature
-    # so the cargo invocation needs both osd-gtk4 and osd-native enabled
-    # to produce all three. These don't need engine features (the OSD
-    # only consumes audio frames over IPC, not the transcribers).
+    # Build OSD binaries: the launcher (voxtype-osd) plus all three
+    # frontends and the audio-bridge sidecar.
+    # - voxtype-osd / voxtype-audio-bridge / voxtype-osd-quickshell have no
+    #   required-features (no GUI deps; quickshell loads QML at runtime).
+    # - voxtype-osd-gtk4 requires the osd-gtk4 feature.
+    # - voxtype-osd-native requires the osd-native feature.
+    # Engine features aren't needed — the OSD frontends consume audio
+    # frames over IPC, not the transcribers themselves.
     cargo clean
     cargo build --frozen --release \
         --bin voxtype-osd \
         --bin voxtype-osd-gtk4 \
         --bin voxtype-osd-native \
+        --bin voxtype-osd-quickshell \
+        --bin voxtype-audio-bridge \
         --features osd-gtk4,osd-native \
         --config 'profile.release.lto=false' \
         --config 'profile.release.codegen-units=8'
     cp target/release/voxtype-osd voxtype-osd
     cp target/release/voxtype-osd-gtk4 voxtype-osd-gtk4
     cp target/release/voxtype-osd-native voxtype-osd-native
+    cp target/release/voxtype-osd-quickshell voxtype-osd-quickshell
+    cp target/release/voxtype-audio-bridge voxtype-audio-bridge
 }
 
 check() {
@@ -204,7 +221,35 @@ package() {
     install -Dm755 "voxtype-osd" "$pkgdir/usr/lib/voxtype/voxtype-osd"
     install -Dm755 "voxtype-osd-gtk4" "$pkgdir/usr/lib/voxtype/voxtype-osd-gtk4"
     install -Dm755 "voxtype-osd-native" "$pkgdir/usr/lib/voxtype/voxtype-osd-native"
+    install -Dm755 "voxtype-osd-quickshell" "$pkgdir/usr/lib/voxtype/voxtype-osd-quickshell"
     ln -sf /usr/lib/voxtype/voxtype-osd "$pkgdir/usr/bin/voxtype-osd"
+
+    # voxtype-audio-bridge: NDJSON sidecar streaming audio levels over a
+    # UNIX socket to the Quickshell OSD. Installed to /usr/bin so the
+    # quickshell launcher can exec it by basename.
+    install -Dm755 "voxtype-audio-bridge" "$pkgdir/usr/bin/voxtype-audio-bridge"
+
+    # Quickshell QML tree. voxtype-osd-quickshell probes
+    # /usr/share/voxtype/quickshell/ for shell.qml after user/runtime paths,
+    # so shipping these files lets users opt in via
+    # [osd] frontend = "quickshell" without copying anything by hand.
+    # The voxtype-shared/ subdir holds a QML module registered via qmldir.
+    install -Dm644 "quickshell/shell.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/shell.qml"
+    install -Dm644 "quickshell/OsdSurface.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/OsdSurface.qml"
+    install -Dm644 "quickshell/EnginePicker.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/EnginePicker.qml"
+    install -Dm644 "quickshell/MeetingControls.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/MeetingControls.qml"
+    install -Dm644 "quickshell/voxtype-shared/Theme.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/Theme.qml"
+    install -Dm644 "quickshell/voxtype-shared/StateReader.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/StateReader.qml"
+    install -Dm644 "quickshell/voxtype-shared/AudioBridge.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/AudioBridge.qml"
+    install -Dm644 "quickshell/voxtype-shared/qmldir" \
+        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/qmldir"
 
     # Desktop entry for the TUI configure command, surfaced in walker/rofi/fuzzel/etc.
     install -Dm755 "packaging/scripts/voxtype-configure-launcher" \
