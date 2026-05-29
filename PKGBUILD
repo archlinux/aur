@@ -1,7 +1,7 @@
 # Maintainer: lyj404 <lyj404@outlook.com>
 
 pkgname=proxy-term-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A desktop proxy management tool with GUI"
 arch=('x86_64')
