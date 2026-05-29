@@ -7,7 +7,7 @@
 pkgname=python-textual-image
 _pkgname=textual-image
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Render images in the terminal with Textual and Rich"
 arch=('any')
 url="https://github.com/lnqs/textual-image"
@@ -25,7 +25,6 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-wheel'
-  'python-setuptools'
   'python-hatchling'
 )
 checkdepends=(

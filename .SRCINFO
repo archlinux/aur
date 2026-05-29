@@ -1,7 +1,7 @@
 pkgbase = python-textual-image
 	pkgdesc = Render images in the terminal with Textual and Rich
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lnqs/textual-image
 	arch = any
 	license = LGPL-3.0-only
@@ -12,7 +12,6 @@ pkgbase = python-textual-image
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
 	makedepends = python-hatchling
 	depends = python>=3.12
 	depends = python-pillow
