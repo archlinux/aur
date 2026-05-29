@@ -1,0 +1,19 @@
+pkgbase = miniter-bin
+	pkgdesc = Basic video editor (for simple tasks)
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/mlm-games/miniter
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = fuse2
+	depends = zlib
+	provides = miniter
+	conflicts = miniter
+	options = !strip
+	source_x86_64 = miniter-0.6.2-x86_64.AppImage::https://github.com/mlm-games/miniter/releases/download/0.6.2/miniter-0.6.2-x86_64.AppImage
+	sha256sums_x86_64 = 9b3c1c2246df55996f7e00b97c0e2faa8487c4395eeb277a264f1d872d915020
+	source_aarch64 = miniter-0.6.2-aarch64.AppImage::https://github.com/mlm-games/miniter/releases/download/0.6.2/miniter-0.6.2-aarch64.AppImage
+	sha256sums_aarch64 = a2b589dcf5bfbe4a5d87c35df8b91df94012f23ac889d31893099aee87b6fe46
+
+pkgname = miniter-bin
