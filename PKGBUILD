@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://www.fundtracer.xyz"
 license=('custom')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'glib2' 'cairo' 'pango' 'gcc-libs')
-source=("${pkgname%-bin}-${pkgver}.tar.gz::https://github.com/Deji-Tech/fundtracer-desktop/releases/download/v${pkgver}/fundtracer-desktop-${pkgver}-x86_64.tar.gz")
+source=("${pkgname%-bin}-${pkgver}.tar.gz::https://github.com/Deji-Tech/fundtracer-by-dt/releases/download/v${pkgver}/fundtracer-desktop-${pkgver}-x86_64.tar.gz")
 sha256sums=('8cc545e1b4fe7f791e01bb11a896867f0293c21d786db1a017c6df41ab7e7a24')
 
 package() {
