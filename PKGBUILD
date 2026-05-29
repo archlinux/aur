@@ -2,7 +2,7 @@
 
 pkgname=mykey-git
 pkgver=0.1.5.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="Hardware-focused local authentication, Secret Service, and tray stack for Linux"
 arch=('x86_64')
 url="https://github.com/JamesFromFL/mykey"
