@@ -1,7 +1,7 @@
 pkgbase = glass-music-bin
 	pkgdesc = Futuristic liquid-glass music player for Linux
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dvytvs/Glass-Music
 	arch = x86_64
 	license = MIT

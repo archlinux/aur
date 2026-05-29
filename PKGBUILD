@@ -2,7 +2,7 @@
 
 pkgname=glass-music-bin
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Futuristic liquid-glass music player for Linux"
 arch=('x86_64')
 url="https://github.com/dvytvs/Glass-Music"
