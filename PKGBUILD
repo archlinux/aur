@@ -46,7 +46,7 @@ build () {
 check () {
     cd "$srcdir/$_name-$pkgver"
 
-    if [ -z "$XDG_SESSION_TYPE" ]; then
+    if [ "$XDG_SESSION_TYPE" != "x11" ]; then
         echo "Tests only work on X11 sessions. Skipping..."
         return
     fi
