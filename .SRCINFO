@@ -1,6 +1,6 @@
 pkgbase = qmidigen
 	pkgdesc = Randomized MIDI music generator with JRPG-style compositions
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://gitlab.com/ganthore/qmidigen
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = qmidigen
 	optdepends = kdialog: native KDE file dialogs
 	options = !lto
 	options = debug
-	source = qmidigen-0.1.0.tar.gz::https://gitlab.com/ganthore/qmidigen/-/archive/v0.1.0/qmidigen-v0.1.0.tar.gz
+	source = qmidigen-0.1.1.tar.gz::https://gitlab.com/ganthore/qmidigen/-/archive/v0.1.1/qmidigen-v0.1.1.tar.gz
 	b2sums = SKIP
 
 pkgname = qmidigen
