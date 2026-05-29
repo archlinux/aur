@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=gitpane
-pkgver=0.7.3
+pkgver=0.7.5
 pkgrel=1
 pkgdesc='Multi-repo Git workspace dashboard for the terminal'
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -13,10 +13,8 @@ provides=('gitpane')
 conflicts=('gitpane-git' 'gitpane-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     'disable-self-updates.patch')
-sha256sums=(
-    '51d157eb6f912557cfbcbba942743c4b49a123aeebabc31b2d816700bca65850'
-    '3de1d97cf8e0f44c381978a5e65de656710d75f2e64595fb295edfdb2ef9cfb4'
-)
+sha256sums=('c95cc60ac2e1785b9150e995c71dff9bc42be0a70a34291fb6399bf6ffcd7b93'
+            '3de1d97cf8e0f44c381978a5e65de656710d75f2e64595fb295edfdb2ef9cfb4')
 
 prepare() {
     cd "$pkgname-$pkgver"
