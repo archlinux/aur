@@ -1,7 +1,7 @@
 # Maintainer: lyj404 <lyj404@outlook.com>
 
 pkgname=proxy-term-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=2
 pkgdesc="A desktop proxy management tool with GUI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('xdotool')
 makedepends=()
 conflicts=('proxy-term')
 provides=('proxy-term')
-source=("${url}/releases/download/v${pkgver}/proxy_term-${pkgver}-x86_64-linux.tar.gz")
+source=("${url}/releases/download/v${pkgver}/proxy_term-${pkgver}-x86_64-linux-arch.tar.gz")
 sha256sums=('SKIP')
 
 package() {
