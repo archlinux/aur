@@ -1,0 +1,10 @@
+post_install() {
+    echo ""
+    echo "PLEASE READ THIS!"
+    echo "Image at: https://gitgud.io/atmk/dolphin-aero"
+    echo "Note: If it doesn't show up right (i.e the window isn't properly inset)"
+    echo "you may need to manually set your window decorations to SMOD's window"
+    echo "decorations. Once that is done, go into the SMOD settings panel and"
+    echo "remove the inner border from the Dolphin window. Enjoy!"
+    echo ""
+}
