@@ -2,12 +2,12 @@
 # Co-Maintainer: Jai Brown (aur JaINTP) <dev [at] jaintp [dot] com>
 
 _pkgname=capacities
-_version=1.65.9
+_version=1.65.13
 _image_url_x86_64="https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-${_version}.AppImage"
 _image_url_aarch64="https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-${_version}-arm64.AppImage"
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.65.9
+pkgver=1.65.13
 pkgrel=1
 pkgdesc="Personal Knowledge Management app - A studio for your mind"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ provides=('capacities')
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::${_image_url_x86_64}")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::${_image_url_aarch64}")
-sha256sums_x86_64=('0e32fca85712269d58e0298632f94be60e147f133126c8037d7b8f095b89790b')
-sha256sums_aarch64=('d6de20280ad937cf829f21ca62b9b4a10eee32d82828c0a4d5b011df44966635')
+sha256sums_x86_64=('013897d61f615e628c16d63a384c9912827f4b124681b8f9fd0670145d6c7c54')
+sha256sums_aarch64=('fb27d704ebea5213bc557950b3de903fa419a586e97f0593a6288e04c9044516')
 
 _appimage="${_pkgname}-${pkgver}-${CARCH}.AppImage"
 noextract=(
