@@ -2,7 +2,7 @@
 # Maintainer: j4y <j4y_w4lk3r@pobox.com>
 
 pkgname='bbm-bin'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Backblaze B2 manager: focused CLI for the bu encrypted-bundle workflow (S3-compatible)'
 url='https://github.com/j4y-w4lk3r/bbm'
@@ -14,13 +14,13 @@ depends=('glibc')
 optdepends=('1password-cli: resolve op:// references in config.toml at runtime' 'gnupg: bbm push --encrypt shells out to ykw which shells out to gpg' 'ykw: ergonomic --encrypt path uses ykw encrypt')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/j4y-w4lk3r/bbm/releases/download/v${pkgver}/bbm_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('5b85a6bf2f654597c1424bc2604ca2685f477dcc66f3b0737817e70c5aa6f816')
+sha256sums_aarch64=('24c8836278c482c0bdff294d38f5befbd4ae39dc590b59f17c49f98071b16d48')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/j4y-w4lk3r/bbm/releases/download/v${pkgver}/bbm_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('3d91e3745003c84041a397fcdc0f49299ca7ef7d7bb8a4cea0186e9c15b44bec')
+sha256sums_armv7h=('507c1f797490b83bf8714fb86e251954ef0feee35138351a97725622c0d9c9d3')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/j4y-w4lk3r/bbm/releases/download/v${pkgver}/bbm_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('0796a98a7a6bc0295ba0dfdc401a760d79daa615d0cd1babcee99e92604dde55')
+sha256sums_x86_64=('a40d10c0964f8dde095c5c9e9c4a9dea73c41051369b02b2fdb6c3d843f9490a')
 
 package() {
   install -Dm755 "./bbm" "${pkgdir}/usr/bin/bbm"
