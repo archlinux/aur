@@ -22,6 +22,10 @@ prepare() {
 	mkdir -p $pkgname/game
 	cp -r ${srcdir}/$pkgname-*-linux_x86_64/* $pkgname/game
 	chmod +x $pkgname/game/DDNet
+	# Create compat symlink: binary needs libGLEW.so.2.2 but Arch ships 2.3+
+	if [ ! -f $pkgname/game/libGLEW.so.2.2 ]; then
+		ln -sf /usr/lib/libGLEW.so $pkgname/game/libGLEW.so.2.2
+	fi
 }
 
 package() {
