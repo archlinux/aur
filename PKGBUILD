@@ -1,7 +1,7 @@
 # Maintainer: AntiApple4life <antiapple@antiapple.net>
 _pkgname=emerald-legacy-launcher
 pkgname=${_pkgname}-git
-pkgver=v1.3.0.r2.g377f093
+pkgver=1.3.0.r6.g7baa96c
 pkgrel=1
 pkgdesc="FOSS, cross-platform launcher for Minecraft Legacy Console Edition"
 arch=('x86_64')
@@ -11,12 +11,13 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 optdepends=('discord: Discord RPC support')
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
 provides=('emerald-legacy-launcher')
+conflicts=('emerald-legacy-launcher')
 source=("$_pkgname::git+$url" "no-updater.patch")
 sha256sums=('SKIP'
             '8aee475faee5f51bb727fc947daa836fa2eb0f137c3313bf01cbf897ac45d7c3')
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
