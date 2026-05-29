@@ -1,7 +1,7 @@
 # Maintainer: berkkucukk <berkkucukk@proton.me>
 
 pkgname=maze
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Public WiFi security monitor — MITM detection, MAC randomization, nftables firewall"
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ optdepends=(
 install=maze.install
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/Maze/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f1963bb1f1b81bd20b784839285e738659598712071da13ec304b83b409c1143')
+sha256sums=('005d539b9a262a53459754b54294c0a7cd73880ab00ba96b44a614e62978ecfd')
 
 package() {
     cd "$srcdir/Maze-${pkgver}"
