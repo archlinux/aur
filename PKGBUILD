@@ -6,14 +6,14 @@
 pkgname=python-torchmetrics
 _pkgname=${pkgname#python-}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Machine learning metrics for distributed, scalable PyTorch applications'
 arch=('any')
 url='https://github.com/Lightning-AI/torchmetrics'
 license=('Apache-2.0')
 depends=(
   'python'
-  'python-lightning-utilities'
+  'python-lightning-utilities>=0.15.3'
   'python-numpy'
   'python-packaging'
   'python-pytorch'

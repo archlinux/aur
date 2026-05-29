@@ -1,7 +1,7 @@
 pkgbase = python-torchmetrics
 	pkgdesc = Machine learning metrics for distributed, scalable PyTorch applications
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lightning-AI/torchmetrics
 	arch = any
 	license = Apache-2.0
@@ -10,7 +10,7 @@ pkgbase = python-torchmetrics
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = python-lightning-utilities
+	depends = python-lightning-utilities>=0.15.3
 	depends = python-numpy
 	depends = python-packaging
 	depends = python-pytorch
