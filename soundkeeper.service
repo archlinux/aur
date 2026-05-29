@@ -1,0 +1,10 @@
+[Unit]
+Description=Keep audio alive (prevent muting/delay)
+After=sound.target
+
+[Service]
+ExecStart=/usr/bin/play -n synth sine 19000 vol 0.01 repeat -
+Restart=always
+
+[Install]
+WantedBy=default.target
