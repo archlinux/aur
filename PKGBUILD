@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
-pkgver=r19152.2b19f7f
-pkgrel=2
+pkgver=r19272.c08641f
+pkgrel=1
 pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
 arch=('x86_64')
 url="https://github.com/libretro/ps2"
@@ -12,7 +12,6 @@ depends=('glibc' 'libretro-core-info')
 makedepends=(
 	'cmake'
 	'fast_float'
-	'fmt'
 	'git'
 	'libgl'
 	'libstdc++'
@@ -36,7 +35,7 @@ source=(
 )
 b2sums=(
 	'SKIP'{,,,,,}
-	'7510ea9f7c452b1081893cf8c5dfe34c64bea23a68f6322178e6f5154c6fb6f7b4e1c8e0efdc74abf72cca4dbcd9e08380c363698bf70a40fa2f0d23ee208b6e'
+	'1db2dda768337fdb7137824d145d526532c5ea6b09ce98569b648957871d79a68ec40d1623ecabcbfd2973349f63f378e55e0686aab3b25718febba41b77c0d8'
 )
 
 pkgver() {
@@ -79,7 +78,6 @@ build() {
 
 package() {
 	depends+=(
-		'libfmt.so'
 		'libryml.so'
 		'libstdc++.so'
 		'libzip.so'
