@@ -1,0 +1,8 @@
+--- a/qpdfview.pri	2026-05-29 01:04:12.247801462 +0200
++++ b/qpdfview.pri	2026-05-29 01:56:33.230693991 +0200
+@@ -12,4 +12,4 @@
+ win32:include(qpdfview_win32.pri)
+ os2:include(qpdfview_os2.pri)
+ 
+-CONFIG += c++11
++CONFIG += c++17
