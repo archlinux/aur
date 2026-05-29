@@ -27,7 +27,7 @@
 
 pkgname=margo-git
 pkgver=r1008.b367387
-pkgrel=2
+pkgrel=3
 pkgdesc="Rust/Smithay Wayland tiling compositor + first-party mshell desktop (mango heritage)"
 url="https://github.com/kenanpelit/margo"
 arch=("x86_64")
@@ -229,7 +229,15 @@ build() {
   # feature unification from leaking back into margo's build.
   # mwizard depends on mshell-config to write the shell
   # profile, so it builds alongside the rest of the shell stack.
+  #
+  # `--features mshell/wasm-plugins` builds mshell with the sandboxed
+  # in-shell WASM plugin panels (mplugins WASM tier — e.g. the
+  # assistant-panel chat). It pulls wasmtime, so it's opt-in upstream;
+  # we turn it on here so the packaged shell ships the panels. The
+  # feature lives only in mshell's graph (mshell → mshell-core →
+  # mshell-frame), so mpicker/mwizard/margo-portal are unaffected.
   cargo build --frozen --release \
+    --features mshell/wasm-plugins \
     -p mshell -p mshellctl -p mshellshare -p mpicker -p mwizard \
     -p margo-portal
 }
