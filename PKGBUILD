@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.8.134.r0.gfc9980d
+pkgver=0.8.135.r7.gfd0ae0c
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -19,6 +19,7 @@ makedepends=(
 	'git'
 	'glib2'
 	'glu'
+	'libatomic'
 	'libepoxy'
 	'libgcc'
 	'libpcap'
@@ -74,6 +75,7 @@ build() {
 
 package() {
 	depends+=(
+		'libatomic.so'
 		'libcurl.so'
 		'libepoxy.so'
 		'libgcc_s.so'

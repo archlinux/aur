@@ -1,6 +1,6 @@
 pkgbase = xemu-git
 	pkgdesc = Original Xbox emulator (fork of XQEMU)
-	pkgver = 0.8.134.r0.gfc9980d
+	pkgver = 0.8.135.r7.gfd0ae0c
 	pkgrel = 1
 	url = https://xemu.app/
 	install = xemu.install
@@ -11,6 +11,7 @@ pkgbase = xemu-git
 	makedepends = git
 	makedepends = glib2
 	makedepends = glu
+	makedepends = libatomic
 	makedepends = libepoxy
 	makedepends = libgcc
 	makedepends = libpcap
@@ -41,6 +42,7 @@ pkgname = xemu-git
 	depends = glslang
 	depends = hicolor-icon-theme
 	depends = sdl3>=3.4
+	depends = libatomic.so
 	depends = libcurl.so
 	depends = libepoxy.so
 	depends = libgcc_s.so
