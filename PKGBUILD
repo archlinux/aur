@@ -32,6 +32,7 @@ makedepends=(
 checkdepends=(
     "python-pytest"
     "python-psutil"
+    "xorg-server-xvfb"
 )
 
 build () {
@@ -42,14 +43,8 @@ build () {
 check () {
     cd "$srcdir/$_name-$pkgver"
 
-    if [ -z "$XDG_SESSION_TYPE" ]; then
-        echo "Tests don't work on headless sessions. Skipping..."
-        return
-    fi
-
-    cd "$srcdir/$_name-$pkgver"
     python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-    PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" pytest
+    PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" xvfb-run pytest
 }
 
 package () {
