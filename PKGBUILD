@@ -1,12 +1,12 @@
 # Maintainer: Rodrigo Brito <rodrigo@w3ti.com.br>
 pkgname=fina
-pkgver=8.9.7
+pkgver=8.9.8
 pkgrel=1
 pkgdesc="Gerenciador de finanças pessoais (Electron + SQLite)"
 arch=('x86_64')
 url="https://github.com/britors/Fina"
 license=('GPL-3.0-only')
-depends=('electron' 'libsecret')
+depends=('electron38' 'libsecret')
 makedepends=('npm' 'python' 'gcc' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/britors/Fina/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
@@ -14,12 +14,9 @@ sha256sums=('SKIP')
 prepare() {
   cd "Fina-$pkgver"
   npm ci --ignore-scripts
-  # Reconstrói better-sqlite3 para o Electron do sistema
+  # better-sqlite3 prebuilds top out at Electron 38; rebuild against that version
   local _electron_version
-  _electron_version=$(electron --version | sed 's/^v//')
-  # GCC 16 removed nullptr_t from global namespace; force-include a compat shim
-  printf '#include <cstddef>\nusing std::nullptr_t;\n' > "$srcdir/nullptr_compat.h"
-  export CXXFLAGS="$CXXFLAGS -include $srcdir/nullptr_compat.h"
+  _electron_version=$(electron38 --version | sed 's/^v//')
   npx @electron/rebuild -f -w better-sqlite3 -v "$_electron_version"
 }
 
@@ -40,7 +37,7 @@ package() {
   # Launcher
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<EOF
 #!/bin/sh
-exec electron /usr/lib/$pkgname "\$@"
+exec electron38 /usr/lib/$pkgname "\$@"
 EOF
 
   # Ícone (adicione build/icon.png ao repositório)

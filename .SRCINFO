@@ -1,6 +1,6 @@
 pkgbase = fina
 	pkgdesc = Gerenciador de finanças pessoais (Electron + SQLite)
-	pkgver = 8.9.7
+	pkgver = 8.9.8
 	pkgrel = 1
 	url = https://github.com/britors/Fina
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = fina
 	makedepends = python
 	makedepends = gcc
 	makedepends = make
-	depends = electron
+	depends = electron38
 	depends = libsecret
-	source = fina-8.9.7.tar.gz::https://github.com/britors/Fina/archive/v8.9.7.tar.gz
+	source = fina-8.9.8.tar.gz::https://github.com/britors/Fina/archive/v8.9.8.tar.gz
 	sha256sums = SKIP
 
 pkgname = fina
