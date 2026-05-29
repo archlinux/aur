@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r86059.906b8c4f52
+pkgver=r86235.9b9fca7d93
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -38,7 +38,7 @@ prepare() {
   echo "target_link_libraries(vtkRemotingServerManager PRIVATE absl_log_internal_message)" >> Remoting/ServerManager/CMakeLists.txt
 
   # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
-  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/13293.patch | patch -p1
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/13293.patch | patch -p1 -d VTK
 }
 
 build() {
