@@ -4,13 +4,13 @@
 _pkgname=BestClient
 pkgname=bestclient
 pkgver=1.7.1
-pkgrel=13
+pkgrel=14
 pkgdesc="DDRaceNetwork modification that adds new feauters"
 arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
 license=('custom')
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader')
-makedepends=('patchelf')
+makedepends=('patchelf' 'gcc')
 checkdepends=('gmock')
 optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
 	'discord-game-sdk: Enable rich presence in Discord desktop client.')
@@ -51,7 +51,8 @@ source=("https://github.com/RoflikBEST/bestdownload/releases/download/v$pkgver/B
         "libbluray_134::https://archive.archlinux.org/packages/l/libbluray/libbluray-1.3.4-3-x86_64.pkg.tar.zst"
         "icu75::https://archive.archlinux.org/packages/i/icu/icu-75.1-2-x86_64.pkg.tar.zst"
         "x264_164::https://archive.archlinux.org/packages/x/x264/x264-3%3A0.164.r3108.31e19f9-3-x86_64.pkg.tar.zst"
-        "x265_35::https://archive.archlinux.org/packages/x/x265/x265-3.5-3-x86_64.pkg.tar.zst")
+        "x265_35::https://archive.archlinux.org/packages/x/x265/x265-3.5-3-x86_64.pkg.tar.zst"
+        "vsscript_stub.c")
 sha256sums=('ffe98fc6159789e56241e90e27aa5cf2ab2ec0ac9ebefe8d6c13e6acf566e649'
             'a118504f690407019294b39bea26920e2cddee94c032a1e5fae1ea216c9ea64f'
             'e4c9468bf15c08a4ef2875be99c99261f0769559d92cde7d25acacac5515e9fd'
@@ -59,7 +60,8 @@ sha256sums=('ffe98fc6159789e56241e90e27aa5cf2ab2ec0ac9ebefe8d6c13e6acf566e649'
             'e701ff2f681c79eca1663e8b0db52142dc356f35db1ec1bc68198c8a7e7c1d59'
             '328339d8083e175438d75e5172dc882202064918cf3e88c72d1c8e57fff57a23'
             '8ffdc81e6ca674cc430e2bb3c63b8b35e94abe2b78b4a5a3806cd3ce938ce37d'
-            'ca8a4e3fcce43757770f93fb9fa8e9815f2a9c1f626e43e7ac357fa7fdd9592d')
+            'ca8a4e3fcce43757770f93fb9fa8e9815f2a9c1f626e43e7ac357fa7fdd9592d'
+            'SKIP')
 
 prepare() {
 	mkdir -p $pkgname/game
@@ -94,6 +96,15 @@ prepare() {
 		cp "$real" "$pkgname/game/$old_soname"
 		patchelf --set-soname "$old_soname" "$pkgname/game/$old_soname"
 	}
+
+	# ── VapourSynth stub ───────────────────────────────────────────────────────
+	# libavformat was compiled with -lvapoursynth-script. Modern VapourSynth
+	# changed its SONAME to libvsscript.so and removed the vsscript_* API.
+	# DDNet never uses VapourSynth; this stub satisfies BIND_NOW symbol resolution.
+	gcc -shared -fPIC \
+	    -Wl,-soname,libvapoursynth-script.so.0 \
+	    -o "$pkgname/game/libvapoursynth-script.so.0" \
+	    "${srcdir}/vsscript_stub.c"
 
 	# ── FFmpeg 6.1.1 ────────────────────────────────────────────────────────────
 	for sofile in usr/lib/libavformat.so.60.16.100 \
