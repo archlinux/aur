@@ -1,6 +1,6 @@
 # Maintainer: Quaid Perkins <perkins@quaid.me>
 pkgname=crunched-icons
-pkgver=0.1.1
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A clean and minimal icon theme for Linux."
 arch=('any')

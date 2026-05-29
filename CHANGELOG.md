@@ -1,6 +1,6 @@
-## [0.1.2] - 2026-05-29
+## [0.1.5] - 2026-05-29
 
-### 🐛 Bug Fixes
+### ⚙️ Miscellaneous Tasks
 
-- *(ci)* Add AUR as git safe directory by @quaid-perkins
+- *(ci)* Remove bump-version job dependency by @quaid-perkins
 
