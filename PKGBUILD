@@ -80,6 +80,7 @@ package() {
     # Ensure all scripts are executable
     find "$dest" -name "*.sh" -exec chmod 755 {} +
     chmod 755 "$dest/welcome_to_vutureland.sh"
+    chmod 755 "$dest/bin/vutureland"
 
     # /usr/bin/vutureland → symlink so realpath() in the launcher resolves correctly
     install -dm755 "$pkgdir/usr/bin"
