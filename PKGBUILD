@@ -3,7 +3,7 @@
 # Contributor Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=git-buildpackage
-pkgver=0.9.42
+pkgver=0.9.43
 pkgrel=1
 pkgdesc="Tools from Debian to integrate the package build system with Git"
 arch=(any)
@@ -44,7 +44,7 @@ makedepends=(
 
 backup=('etc/git-buildpackage/gbp.conf')
 source=("git+https://github.com/agx/git-buildpackage.git#tag=debian/$pkgver")
-sha256sums=('9d2d68a6cad6313bf9ccfb4892cd594a38a85654022d3882adb7627e8ce35ac2')
+sha256sums=('7151dc361fa88aefa752366c785cec33f0af25ade8972c931d4f698e07368460')
 
 build() {
   cd git-buildpackage
