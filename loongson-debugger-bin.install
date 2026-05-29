@@ -1,0 +1,46 @@
+RED='\033[31m'
+GREEN='\033[32m'
+YELLOW='\033[33m'
+BLUE='\033[34m'
+MAGENTA='\033[35m'
+CYAN='\033[36m'
+WHITE='\033[37m'
+BOLD='\033[1m'
+UNDERLINE='\033[4m'
+NC='\033[0m'
+
+info() {
+    printf "\n${GREEN}✓ loongson-debugger 安装成功${NC}\n"
+    printf "${CYAN}路径: /opt/loongson/loongson-debugger/${NC}\n\n"
+    printf "${BOLD}使用步骤:${NC}\n"
+    printf "1. ${RED}source /etc/profile.d/loongson-debugger.sh${NC}\n"
+    printf "2. ${RED}ejtag_debug_usb --help${NC}\n"
+    printf "3. ${RED}la_dbg_tool_usb --help${NC}\n\n"
+    printf "${YELLOW}查看文档:${NC}\n"
+    printf "xdgopen /opt/loongson/loongson-debugger/doc/lsdebugger-ejtag.pdf\n"
+    printf "xdgopen /opt/loongson/loongson-debugger/doc/lsdebugger-ljtag.pdf\n\n"
+    printf "${BOLD}开始调试:${NC}\n"
+    printf "ejtag_debug_usb\n"
+    printf "la_dbg_tool_usb\n\n"
+    
+    printf "\n${GREEN}✓ loongson-debugger installed${NC}\n"
+    printf "${CYAN}Path: /opt/loongson/loongson-debugger/${NC}\n\n"
+    printf "${BOLD}Quick steps:${NC}\n"
+    printf "1. ${RED}source /etc/profile.d/loongson-debugger.sh${NC}\n"
+    printf "2. ${RED}ejtag_debug_usb --help${NC}\n"
+    printf "3. ${RED}la_dbg_tool_usb --help${NC}\n\n"
+    printf "${YELLOW}View documentation:${NC}\n"
+    printf "xdgopen /opt/loongson/loongson-debugger/doc/lsdebugger-ejtag.pdf\n"
+    printf "xdgopen /opt/loongson/loongson-debugger/doc/lsdebugger-ljtag.pdf\n\n"
+    printf "${BOLD}Start debugging:${NC}\n"
+    printf "ejtag_debug_usb\n"
+    printf "la_dbg_tool_usb\n\n"
+
+}
+
+post_install() {
+    info
+}
+post_upgrade() {
+    info
+}

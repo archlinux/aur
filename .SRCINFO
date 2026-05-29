@@ -1,0 +1,21 @@
+pkgbase = loongson-debugger-bin
+	pkgdesc = loongson-debugger contains binary debugging tools and supporting documentation.
+	pkgver = 20250621
+	pkgrel = 1
+	url = https://gitee.com/Zhou---wei/ctcisz
+	install = loongson-debugger-bin.install
+	arch = x86_64
+	license = MIT
+	makedepends = libarchive
+	depends = sh
+	depends = glibc
+	depends = perl
+	noextract = loongson-debugger-20250621.tar.xz
+	options = !strip
+	options = !debug
+	source = loongson-debugger-20250621.tar.xz::https://gitee.com/Zhou---wei/ctcisz/releases/download/20250621/loongson-debugger-20250621.tar.xz
+	source = loongson-debugger-bin.install
+	sha256sums = 328e50a8af4e23e344c7109019785b91e73767c7f2864d05dfd00605be0cb1e9
+	sha256sums = c8c9181558e763bcb1a6451da90f9650737702c462d6ba60c25db7bee856113f
+
+pkgname = loongson-debugger-bin
