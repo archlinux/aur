@@ -1,5 +1,5 @@
 pkgbase = gwenview-aero-git
-	pkgdesc = Aero-styled fork of KDE's Dolphin File Manager
+	pkgdesc = Aero-styled fork of KDE's Gwenview Image Viewer
 	pkgver = r7825.d4f48c31
 	pkgrel = 1
 	url = https://gitgud.io/atmk/gwenview-aero
