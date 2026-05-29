@@ -1,14 +1,12 @@
 pkgbase = aegis-pentest
 	pkgdesc = AI-driven web penetration testing orchestrator (PTES + OWASP WSTG)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/glorybnat/aegis-pentest
 	arch = any
 	license = MIT
 	makedepends = python-build
-	makedepends = python-installer
 	makedepends = python-hatchling
-	makedepends = uv
 	depends = python>=3.12
 	depends = python-pip
 	optdepends = nmap: port scanning

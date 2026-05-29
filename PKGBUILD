@@ -1,7 +1,7 @@
 # Maintainer: Majd Bnat <magame2tec@gmail.com>
 pkgname=aegis-pentest
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-driven web penetration testing orchestrator (PTES + OWASP WSTG)"
 arch=('any')
 url="https://github.com/glorybnat/aegis-pentest"
@@ -34,9 +34,7 @@ optdepends=(
 )
 makedepends=(
   'python-build'
-  'python-installer'
   'python-hatchling'
-  'uv'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('083710fcba431f6aeeb628c46f46b6faaed820fa7963b40e58bf8588e7ae9c6a')
@@ -48,7 +46,7 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  pip install --root="$pkgdir/" --no-warn-script-location dist/*.whl
 
   if [ -f LICENSE ]; then
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
