@@ -1,6 +1,6 @@
 pkgbase = kicad-library-digikey-git
 	pkgdesc = An atomic parts library for Ki-Cad by Digi-Key
-	pkgver = v1.2.r43.ge10fdb7
+	pkgver = 1.2.r44.gd4bd68f
 	pkgrel = 1
 	url = https://github.com/Digi-Key/digikey-kicad-library
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = kicad-library-digikey-git
 	sha256sums = SKIP
 
 pkgname = kicad-library-digikey-git
-

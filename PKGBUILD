@@ -1,7 +1,5 @@
-# Maintainer: Grey Christoforo <first name at last name dot net>
-
 pkgname=kicad-library-digikey-git
-pkgver=v1.2.r43.ge10fdb7
+pkgver=1.2.r44.gd4bd68f
 pkgrel=1
 pkgdesc="An atomic parts library for Ki-Cad by Digi-Key"
 arch=(any)
@@ -20,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd digikey-kicad-library
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 package() {
