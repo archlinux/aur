@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("lapctl")
 conflicts=("lapctl")
 source=("https://github.com/S4NKALP/lapctl/releases/download/v$pkgver/lapctl-$pkgver-x86_64.tar.gz")
-sha256sums=('539041158324385baeca09f2dc2a528947372c8e1bd211754a320c035d760bbf')
+sha256sums=('24255ce88dc0b58be0120ee7810a9e978bcdcf615b6ebfe5628415f12f3ac538')
 
 package() {
     install -Dm755 lapctl -t "$pkgdir/usr/bin"
