@@ -1,6 +1,6 @@
 # Maintainer: aeris <aeris+aur@imirhil.fr>
 pkgname=website-auditing-tool
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 gitversion=$pkgver
 #gitversion=2.0.0
@@ -15,7 +15,7 @@ source=(
 	electron-disable-deb.patch
 	"$pkgname.desktop"
 )
-sha256sums=('4b8c3ad633c171696bbdd1e4a30821101473a0addd20f225e198d2f88b220380'
+sha256sums=('77070c0da3f18daf855cba91807ad1693fe7fed08e0c4f44843527f5215ce432'
             'b97f2bcdcd9d4445d02486783e39ae09deea3c441bb97a0b09e809d649b59ff0'
             '6e7c6ee07e476996b72e9ad51dbe5d8515c2be853204b1d35bd83d857fe19392')
 
