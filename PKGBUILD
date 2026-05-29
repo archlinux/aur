@@ -12,11 +12,11 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=2.0.0
-_tag=stable.1
+pkgver=2.1.0
+_tag=
 pkgrel=1
 
-pkgdesc="High-performance cinematic terminal renderer"
+pkgdesc="High-performance cinematic Matrix rain renderer for the terminal."
 arch=('x86_64' 'aarch64')
 url="https://github.com/oxyzenQ/cosmostrix"
 license=('MIT')
@@ -61,7 +61,12 @@ sha512sums=()
 # ---------------------------------------------------------------------------
 prepare() {
     local asset
-    local tag="v${pkgver}-${_tag}"
+    local tag
+    if [[ -n "${_tag}" ]]; then
+        tag="v${pkgver}-${_tag}"
+    else
+        tag="v${pkgver}"
+    fi
 
     # -- Select optimal binary based on host architecture and CPU features --
     case "${CARCH}" in
@@ -120,6 +125,7 @@ prepare() {
     # -- Extract (normalize archive layout) --
     # Older releases nested files under a subdirectory (e.g.
     # cosmostrix-1.1.1-stable.1-linux-x86_64-v3/); newer releases are flat.
+    # Artifact naming uses the tag (e.g. cosmostrix-bin-v2.1.0-linux-x86_64-v3.tar.gz).
     # Detect and strip the leading directory if present so package() always
     # finds files at ${srcdir}/cosmostrix, ${srcdir}/LICENSE, etc.
     local top_entry
