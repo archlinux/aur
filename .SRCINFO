@@ -1,6 +1,6 @@
 pkgbase = pipewire-visualizer
 	pkgdesc = PipeWire Visualizer spectrum overlay for Wayland desktops
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/niyoko/pipewire-visualizer
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = pipewire-visualizer
 	depends = fftw
 	provides = pwviz
 	conflicts = pwviz
-	source = pipewire-visualizer-0.1.2.tar.gz::https://github.com/niyoko/pipewire-visualizer/releases/download/v0.1.2/pipewire-visualizer-0.1.2.tar.gz
-	sha256sums = a2db0ad4377bc8f54eadc4bd3abc092b63d64ae10e4726365b93c9c244dd4e34
+	source = pipewire-visualizer-0.2.0.tar.gz::https://github.com/niyoko/pipewire-visualizer/releases/download/v0.2.0/pipewire-visualizer-0.2.0.tar.gz
+	sha256sums = 60ce16b0dd72ed36d634d9e11ad88346b5d9b9061c3bcae4beef260d1c905c5c
 
 pkgname = pipewire-visualizer
