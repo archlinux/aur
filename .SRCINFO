@@ -1,7 +1,7 @@
 pkgbase = sentinel-kde
 	pkgdesc = UAC-style confirmation dialog for privilege escalation on KDE Plasma (Wayland)
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atayozcan/sentinel-kde
 	install = sentinel-kde.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = sentinel-kde
 	makedepends = pkgconf
 	makedepends = wayland-protocols
 	makedepends = qt6-tools
+	makedepends = mold
 	depends = pam
 	depends = polkit
 	depends = qt6-base
@@ -42,6 +43,6 @@ pkgbase = sentinel-kde
 	backup = etc/security/sentinel.conf
 	backup = etc/pam.d/polkit-1
 	source = sentinel-kde-0.8.0.tar.gz::https://github.com/atayozcan/sentinel-kde/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = 3c7c9d49543afc623bd8673ce0de683e6716c4b16c040b26d86d0224776414ba
+	sha256sums = SKIP
 
 pkgname = sentinel-kde

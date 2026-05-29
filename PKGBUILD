@@ -3,7 +3,7 @@
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel-kde
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 install=sentinel-kde.install
 # Cargo.toml's release profile strips symbols at link time, so makepkg's
 # debug-package generator has nothing to index — opt out to silence the
@@ -40,6 +40,10 @@ makedepends=(
     'pkgconf'
     'wayland-protocols'
     'qt6-tools'
+    # mold is required: rust-lld can't resolve cxx-qt-lib's bridge symbols
+    # against Qt6/KF6 with -fat LTO, and Arch's default linker config picks
+    # rust-lld unless we override. mold links cleanly.
+    'mold'
 )
 optdepends=(
     'sudo-rs: memory-safe sudo replacement'
@@ -54,7 +58,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Regenerated to a real value by the AUR-publish CI workflow before the
 # PKGBUILD lands on the AUR repo. In-repo copy stays 'SKIP' so dependabot-
 # style updates don't churn this file every release.
-sha256sums=('3c7c9d49543afc623bd8673ce0de683e6716c4b16c040b26d86d0224776414ba')
+sha256sums=('SKIP')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -66,14 +70,22 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # mold linker — rust-lld can't resolve cxx-qt-lib's bridge symbols
+    # (`rust$cxxqtlib1$cxxbridge1$…`) against Qt6/KF6. Mold (and gold) do.
+    # Append rather than overwrite so /etc/makepkg.conf RUSTFLAGS still
+    # compose cleanly with our linker override.
+    export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-fuse-ld=mold"
     # Microarch baseline: x86-64-v3 (Haswell/Zen 1+ — AVX2, BMI1/2, FMA,
     # F16C). Anyone running Plasma 6 on Wayland in 2026+ is on a v3+ CPU.
-    # aarch64 builds use the toolchain default. Append rather than over-
-    # write so /etc/makepkg.conf RUSTFLAGS compose cleanly.
+    # aarch64 builds use the toolchain default.
     if [[ "${CARCH:-}" == "x86_64" ]]; then
-        export RUSTFLAGS="${RUSTFLAGS:-} -C target-cpu=x86-64-v3"
+        export RUSTFLAGS="$RUSTFLAGS -C target-cpu=x86-64-v3"
     fi
-    cargo build --frozen --release --workspace
+    # Dropped `--frozen`: cxx-qt-build's generated C++ outputs need a
+    # writable build script run; `--frozen` blocks that on a cold cache,
+    # which is exactly the CI / clean-chroot case. `--locked` (implied by
+    # the prepare-step `cargo fetch --locked`) still pins Cargo.lock.
+    cargo build --release --workspace
 
     install -d target/release/share
     target/release/sentinel-polkit-agent completions bash > target/release/share/sentinel-polkit-agent.bash
