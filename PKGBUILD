@@ -1,4 +1,4 @@
-# Maintainer: Your Name <you at domain dot tld>
+# Maintainer: Jorryn Macris <jorryn.m116@gmail.com>
 pkgname=minimal-translate
 pkgver=1.0.0
 pkgrel=1
