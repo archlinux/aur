@@ -1,0 +1,49 @@
+pkgbase = sentinel-kde-git
+	pkgdesc = UAC-style confirmation dialog for privilege escalation on KDE Plasma (git HEAD)
+	pkgver = 0.8.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/atayozcan/sentinel-kde
+	install = sentinel-kde.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = wayland-protocols
+	makedepends = qt6-tools
+	makedepends = git
+	depends = pam
+	depends = polkit
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = kirigami
+	depends = kirigami-addons
+	depends = layer-shell-qt
+	depends = plasma-workspace
+	depends = libplasma
+	depends = wayland
+	depends = libxkbcommon
+	depends = fontconfig
+	depends = freetype2
+	depends = mesa
+	depends = vulkan-icd-loader
+	depends = gcc-libs
+	depends = glibc
+	optdepends = sudo-rs: memory-safe sudo replacement
+	optdepends = libcanberra: UAC-style audio cue at dialog open
+	provides = polkit-kde-agent=0.8.0.r0.g0000000
+	provides = sentinel-kde=0.8.0.r0.g0000000
+	conflicts = polkit-kde-agent
+	conflicts = sentinel
+	conflicts = sentinel-git
+	conflicts = sentinel-kde
+	options = !debug
+	backup = etc/security/sentinel.conf
+	backup = etc/pam.d/polkit-1
+	source = sentinel-kde::git+https://github.com/atayozcan/sentinel-kde.git#branch=main
+	sha256sums = SKIP
+
+pkgname = sentinel-kde-git
