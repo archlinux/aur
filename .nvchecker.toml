@@ -1,2 +1,5 @@
 [libkcompactdisc]
-source = "manual"
+source = "regex"
+url = "https://invent.kde.org/multimedia/libkcompactdisc/-/tags"
+regex = "v([\\d+.]+)"
+

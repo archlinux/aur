@@ -1,10 +1,11 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Conributor: Felix Yan <felixonmars@archlinux.org>
+# Conributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkcompactdisc
 pkgver=25.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for interfacing with CDs'
 url='https://www.kde.org/'
 arch=(x86_64)

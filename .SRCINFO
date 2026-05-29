@@ -1,7 +1,7 @@
 pkgbase = libkcompactdisc
 	pkgdesc = A library for interfacing with CDs
 	pkgver = 25.12.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kde.org/
 	arch = x86_64
 	license = GPL-2.0-or-later
