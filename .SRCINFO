@@ -1,0 +1,21 @@
+pkgbase = maze
+	pkgdesc = Public WiFi security monitor — MITM detection, MAC randomization, nftables firewall
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/berk-kucuk/Maze
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = python>=3.11
+	depends = python-dbus
+	depends = nftables
+	depends = iproute2
+	depends = dbus
+	depends = libdbus
+	optdepends = wireless_tools: WiFi interface monitoring (iwgetid)
+	optdepends = imagemagick: resize app icon to multiple sizes during install
+	install = maze.install
+	source = maze-1.0.0.tar.gz::https://github.com/berk-kucuk/Maze/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = f1963bb1f1b81bd20b784839285e738659598712071da13ec304b83b409c1143
+
+pkgname = maze

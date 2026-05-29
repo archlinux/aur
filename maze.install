@@ -1,0 +1,134 @@
+#!/usr/bin/env bash
+# Maze post-install hooks
+# Handles venv creation and Python package installation / upgrade / removal.
+
+_INSTALL_DIR="/opt/maze"
+_VENV="$_INSTALL_DIR/venv"
+_PIP="$_VENV/bin/pip"
+
+_PACKAGES=(
+    "scapy>=2.5.0"
+    "httpx>=0.27.0"
+    "PyQt6>=6.6.0"
+    "qasync>=0.27.0"
+)
+
+# ── helpers ───────────────────────────────────────────────────────────────────
+
+_info()  { echo "  [maze] $*"; }
+_warn()  { echo "  [maze] WARNING: $*"; }
+_ok()    { echo "  [maze] ✓ $*"; }
+
+_setup_venv() {
+    _info "Creating Python virtual environment at $_VENV ..."
+    python3 -m venv "$_VENV"
+
+    _info "Upgrading pip ..."
+    "$_PIP" install --quiet --upgrade pip
+}
+
+_install_packages() {
+    _info "Installing Python packages into venv ..."
+    "$_PIP" install --quiet "${_PACKAGES[@]}"
+    _ok "Core packages installed"
+}
+
+_install_dbus_python() {
+    # Try pip first; fall back to linking system python-dbus into the venv
+    if "$_PIP" install --quiet "dbus-python>=1.3.2" 2>/dev/null; then
+        _ok "dbus-python installed via pip"
+        return
+    fi
+
+    _warn "dbus-python pip build failed — linking system python-dbus ..."
+
+    local sys_site venv_site
+    sys_site=$(python3 -c \
+        "import sysconfig; print(sysconfig.get_path('purelib'))" 2>/dev/null)
+    venv_site=$("$_VENV/bin/python3" -c \
+        "import sysconfig; print(sysconfig.get_path('purelib'))" 2>/dev/null)
+
+    if [[ -z "$sys_site" || -z "$venv_site" ]]; then
+        _warn "Could not determine site-packages paths — dbus integration may be unavailable"
+        return
+    fi
+
+    local linked=0
+    for item in dbus _dbus_bindings.so _dbus_glib_bindings.so; do
+        if [[ -e "$sys_site/$item" ]]; then
+            ln -sf "$sys_site/$item" "$venv_site/"
+            (( linked++ )) || true
+        fi
+    done
+
+    if (( linked > 0 )); then
+        _ok "Linked system python-dbus into venv ($linked item(s))"
+    else
+        _warn "System python-dbus not found — NetworkManager integration unavailable"
+    fi
+}
+
+_fix_permissions() {
+    chown -R root:root "$_INSTALL_DIR"
+    find "$_INSTALL_DIR" -type d  -exec chmod 755 {} +
+    find "$_INSTALL_DIR" -type f  -exec chmod 644 {} +
+    find "$_VENV/bin"   -type f  -exec chmod 755 {} + 2>/dev/null || true
+    chmod 755 "$_INSTALL_DIR/main.py"
+    chmod 755 "$_INSTALL_DIR/maze/helper.py"
+}
+
+_refresh_desktop() {
+    command -v gtk-update-icon-cache &>/dev/null && \
+        gtk-update-icon-cache -f -t /usr/share/icons/hicolor 2>/dev/null || true
+    command -v update-desktop-database &>/dev/null && \
+        update-desktop-database /usr/share/applications 2>/dev/null || true
+}
+
+_print_summary() {
+    echo ""
+    echo "  ┌─────────────────────────────────────────────────────┐"
+    echo "  │  Maze installed — run: maze                         │"
+    echo "  │                                                     │"
+    echo "  │  To skip the sudo password prompt at startup:       │"
+    echo "  │    sudo cp /usr/share/doc/maze-git/maze.sudoers.example \\"
+    echo "  │             /etc/sudoers.d/maze                     │"
+    echo "  │    sudo nano /etc/sudoers.d/maze  # set USERNAME    │"
+    echo "  └─────────────────────────────────────────────────────┘"
+    echo ""
+}
+
+# ── hooks ─────────────────────────────────────────────────────────────────────
+
+post_install() {
+    _setup_venv
+    _install_packages
+    _install_dbus_python
+    _fix_permissions
+    _refresh_desktop
+    _print_summary
+}
+
+post_upgrade() {
+    if [[ ! -x "$_VENV/bin/python3" ]]; then
+        # venv missing or broken — recreate fully
+        rm -rf "$_VENV"
+        post_install
+        return
+    fi
+
+    _info "Upgrading Python packages in venv ..."
+    "$_PIP" install --quiet --upgrade "${_PACKAGES[@]}"
+    "$_PIP" install --quiet --upgrade "dbus-python>=1.3.2" 2>/dev/null || true
+    _fix_permissions
+    _refresh_desktop
+    _ok "Maze upgraded"
+}
+
+pre_remove() {
+    :
+}
+
+post_remove() {
+    # venv is inside /opt/maze which pacman already removed; just refresh caches
+    _refresh_desktop
+}
