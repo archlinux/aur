@@ -1,7 +1,7 @@
 # Maintainer: dougEfresh <dchimento@gmail.com>
 pkgname=pi-ext-cursor-sdk
 pkgver=0.1.25
-pkgrel=1
+pkgrel=2
 pkgdesc='pi provider extension backed by Cursor SDK local agents'
 arch=('any')
 url='https://github.com/fitchmultz/pi-cursor-sdk'
@@ -32,23 +32,20 @@ build() {
 
 package() {
   cd "${srcdir}/pi-cursor-sdk-${pkgver}"
-
-  install -d "${pkgdir}/usr/share/pi/extensions/${pkgname}"
-  cp -a \
-    src \
-    scripts \
-    package.json \
-    package-lock.json \
-    node_modules \
-    "${pkgdir}/usr/share/pi/extensions/${pkgname}/"
-
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d "${pkgdir}/usr/share/pi/extensions/cursor-sdk"
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
   cp -a \
     docs \
     README.md \
     CHANGELOG.md \
     "${pkgdir}/usr/share/doc/${pkgname}/"
-
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cp -a . "${pkgdir}/usr/share/pi/extensions/cursor-sdk/"
+  rm -rf \
+    "${pkgdir}/usr/share/pi/extensions/cursor-sdk/README.md" \
+    "${pkgdir}/usr/share/pi/extensions/cursor-sdk/CHANGELOG.md" \
+    "${pkgdir}/usr/share/pi/extensions/cursor-sdk/docs" \
+    "${pkgdir}/usr/share/pi/extensions/cursor-sdk/test" \
+    "${pkgdir}/usr/share/pi/extensions/cursor-sdk/LICENSE"
 }
