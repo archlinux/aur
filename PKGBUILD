@@ -1,11 +1,12 @@
 # Maintainer: Youcef <youcef.nafa@gmail.com>
 # Co-maintainer: Evert <evorster at gmail dot com>
 # This package uses a venv-based installation inspired by the official NousResearch install.sh. It swaps off uv with python311's venv since python 3.11 is the latest version supported by the developer. The venv solution allows the inclusion of all nodejs modules inside the package's /opt as opposed to shipping the package following ArchLinux convensions (/usr/share,/usr/lib,/usr/bin).
-# Optional dependencies are dissociated from arch and need to be installed manually into venv.
+# Optional dependencies are dissociated from arch and need to be installed manually into venv. Although, many are installed by hermes lazyly when needed.
+# TODO: there needs to be a way to copy skills upon hermes package update, or, at least, to prompt the user to do so.
 pkgname=hermes-agent
 pkgver=0.15.2
 _tagver=2026.5.29.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
 url="https://github.com/NousResearch/hermes-agent"
@@ -73,7 +74,9 @@ build() {
 
   echo "==> Creating Python venv and installing dependencies..."
   python3.11 -m venv --clear venv || return 1
-  venv/bin/pip install -e .[all]
+  venv/bin/pip install .[all]
+
+  cp -r hermes_cli/dashboard_auth venv/lib/python3.11/site-packages/hermes_cli/
 }
 
 package() {
@@ -87,6 +90,11 @@ package() {
   cp -r venv "$_optdir/"
   cp -r web "$_optdir/"
   cp -r scripts "$_optdir/"
+  cp -r locales "$_optdir/"
+  cp -r plugins "$_optdir/"
+  cp -r optional-mcps "$_optdir/"
+  cp -r optional-skills "$_optdir/"
+  cp -r plans "$_optdir/"
 
   # The TUI launcher uses PROJECT_ROOT/ui-tui, where PROJECT_ROOT is the venv's
   # site-packages directory. Put the prebuilt ui-tui tree there so hermes --tui does
