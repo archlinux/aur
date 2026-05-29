@@ -9,7 +9,7 @@ _prefix="${_prefix:-/opt/comfyui}"
 
 pkgname=comfyui
 pkgver=0.21.1
-pkgrel=4
+pkgrel=5
 pkgdesc="The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface"
 arch=('x86_64')
 url="https://github.com/Comfy-Org/ComfyUI"
@@ -83,6 +83,7 @@ package() {
 # Uncomment and edit below to add additional search paths.
 # See $_prefix/extra_model_paths.yaml.example for all options.
 #
+{}
 #comfyui:
 #    base_path: /path/to/my/models/
 #    is_default: true
