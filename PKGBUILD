@@ -2,7 +2,7 @@
 # New one-run releases: https://github.com/cherio/one-run
 
 pkgname=lease
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A FIFO semaphore utility that manages resource ownership by processes"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("lease")
 conflicts=("lease")
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('20e23d79a1db809782f833dc401cb3d9bd69dbc47526a11e9997e70cad163de0')
+sha256sums=('bd16d7a943f45965a27c40ffa62a28e796cca5f781a7bbd1ddfab8e2793d0554')
 
 package() {
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/man/man1"
