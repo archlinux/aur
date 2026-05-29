@@ -1,6 +1,6 @@
 # Maintainer: Patrick Li <aur@patrickli.one>
 pkgname=unbill-nightly-bin
-pkgver=nightly.20260528.023027
+pkgver=nightly.20260529.023451
 pkgrel=1
 pkgdesc="Desktop app for unbill (nightly)"
 arch=('x86_64')
