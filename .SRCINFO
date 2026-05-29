@@ -1,7 +1,7 @@
 pkgbase = navicat17-premium-zh-cn
 	pkgdesc = Navicat Premium is a multi-connection database development tool. (Chinese Simplified)
 	pkgver = 17.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.navicat.com.cn/products/navicat-premium
 	arch = x86_64
 	arch = aarch64

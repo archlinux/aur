@@ -3,7 +3,7 @@
 _pkgname=navicat17-premium-cs
 pkgname=navicat17-premium-zh-cn
 pkgver=17.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Navicat Premium is a multi-connection database development tool. (Chinese Simplified)"
 arch=('x86_64' 'aarch64')
 url='https://www.navicat.com.cn/products/navicat-premium'
