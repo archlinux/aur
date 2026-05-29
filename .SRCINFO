@@ -26,10 +26,10 @@ pkgbase = sing-box-extended-bin
 	sha256sums = 77d1b5fbcfe27e3effbe382c574f3bde140ca4eb18fab76faa31e147f74b7f71
 	sha256sums = 44f3e5d85740b26c9f4d5cbbddfced42fce98bdf6fd8d28e1480b93c9edf18d6
 	source_x86_64 = sing-box-1.13.12-extended-2.1.1-linux-amd64.tar.gz::https://github.com/shtorm-7/sing-box-extended/releases/download/v1.13.12-extended-2.1.1/sing-box-1.13.12-extended-2.1.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = 8ae5a51747acd02eb34fd8f8a46291a6dc808232fc0b8be8305cab3a6416264f
+	sha256sums_x86_64 = 02f0a4b8c7d3992e3e8ccdf52bb91295842519af1fd6296b8cd96197056956dc
 	source_armv7h = sing-box-1.13.12-extended-2.1.1-linux-armv7.tar.gz::https://github.com/shtorm-7/sing-box-extended/releases/download/v1.13.12-extended-2.1.1/sing-box-1.13.12-extended-2.1.1-linux-armv7.tar.gz
-	sha256sums_armv7h = 9fd055302e3228c279a8c54164c434896af87f0b91ebd5bc4994ae093d53ddd7
+	sha256sums_armv7h = c4ab2a9c1f1bf6fbbdef15f9445aae9a248982027a025bceba356b14ff1e1f67
 	source_aarch64 = sing-box-1.13.12-extended-2.1.1-linux-arm64.tar.gz::https://github.com/shtorm-7/sing-box-extended/releases/download/v1.13.12-extended-2.1.1/sing-box-1.13.12-extended-2.1.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 8c53bead80398a9faef709772efca5636eaba7b85b140d4de6bc01ee92dfa3df
+	sha256sums_aarch64 = 9613c6c68d131bc2a02c55db25d607f273f70944cff05ef56bf7f681ca5e2f50
 
 pkgname = sing-box-extended-bin
