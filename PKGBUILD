@@ -47,21 +47,17 @@ package() {
     install -Dm644 lib.sh "${pkgdir}/usr/share/${pkgname}/lib.sh"
     install -Dm644 op.sh  "${pkgdir}/usr/share/${pkgname}/op.sh"
 
-    # Bundled pubkeys + keys.tsv. Read-only by virtue of /usr/share/. Users
-    # who want to mutate state (re-export, rotate keys) should `cp -r` this
-    # tree to $XDG_DATA_HOME/ykw and `export YKW_WORKSPACE=$XDG_DATA_HOME/ykw`.
-    if [[ -d pubkeys ]]; then
-        install -d "${pkgdir}/usr/share/${pkgname}/pubkeys"
-        install -m644 pubkeys/* "${pkgdir}/usr/share/${pkgname}/pubkeys/"
-    fi
+    # Pubkeys are NOT bundled — `ykw bootstrap` (Phase 5) materializes them
+    # from the encrypted bu bundle in B2 the first time the user runs it on
+    # a fresh machine. Bundling them here would just go stale every time a
+    # YubiKey is rotated.
 
-    # /usr/bin/ykw is a wrapper that points YKW_WORKSPACE at /usr/share/ykw
-    # so `ykw status` finds pubkeys/keys.tsv out of the box. Users override
-    # with their own YKW_WORKSPACE before running write-mode commands.
+    # /usr/bin/ykw is a one-line wrapper. lib.sh resolves the workspace:
+    # $YKW_WORKSPACE if set, dev-checkout if .git is present beside lib.sh,
+    # otherwise $XDG_DATA_HOME/ykw (default ~/.local/share/ykw).
     install -d "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/${pkgname}" <<'EOF'
 #!/bin/bash
-export YKW_WORKSPACE="${YKW_WORKSPACE:-/usr/share/ykw}"
 exec /usr/share/ykw/ykw "$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/${pkgname}"
