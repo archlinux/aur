@@ -1,6 +1,6 @@
 pkgbase = qelith-bin
 	pkgdesc = Qelith programming language - prebuilt x86-64 binary
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/Momwhyareyouhere/Qelith
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = qelith-bin
 	depends = bash
 	depends = binutils
 	depends = glibc
-	source = qelith-bin-0.1.3.tar.gz::https://github.com/Momwhyareyouhere/Qelith/releases/download/v0.1.3/qelith-linux-x86_64.tar.gz
-	sha256sums = SKIP
+	source = qelith-bin-0.1.4.tar.gz::https://github.com/Momwhyareyouhere/Qelith/releases/download/v0.1.4/qelith-linux-x86_64.tar.gz
+	sha256sums = fab0076ba91b10528f0b251e49a19e71d7bab88eae0813e9a304b9c5a7d9e820
 
 pkgname = qelith-bin
