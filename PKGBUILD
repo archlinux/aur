@@ -1,6 +1,6 @@
 # Maintainer: Rodrigo Brito <rodrigo@w3ti.com.br>
 pkgname=fina
-pkgver=8.9.9
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="Gerenciador de finanças pessoais (Electron + SQLite)"
 arch=('x86_64')
