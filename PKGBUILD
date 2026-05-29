@@ -19,6 +19,9 @@ prepare() {
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12937.patch | patch -p1
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12939.patch | patch -p1
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12940.patch | patch -p1
+
+  # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/13293.patch | sed "s|cxx.inc.in|cxx.in|g" | patch -p1
 }
 
 build() {
