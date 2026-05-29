@@ -1,8 +1,8 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=zap-oss-git
-pkgver=2026.05.22.preview.r0.g3d4eaa4
-pkgrel=3
+pkgver=2026.05.29.1.r0.g8dade445
+pkgrel=1
 # Upstream renamed releases from "YYYY.MM.DD.preview" to "0.YYYY.MM.DD.HHMM",
 # which sorts lower under pacman vercmp. epoch ensures clean upgrades.
 # This package replaces openwarp-git (project was renamed OpenWarp → Zap).
