@@ -1,0 +1,15 @@
+pkgbase = mythes-ar
+	pkgdesc = Arabic thesaurus
+	pkgver = 3.5
+	pkgrel = 1
+	url = http://ayaspell.sourceforge.net
+	arch = any
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	license = MPL-1.1
+	makedepends = libmythes
+	optdepends = libmythes: offers thesaurus library functions
+	source = http://downloads.sourceforge.net/project/ayaspell/dict_ar-3.5.2014-11-08.oxt
+	sha256sums = 1f273bbf44ff627bdc7e4fe9239649cdf48e672b94c34ce5b791bbf069d2f05e
+
+pkgname = mythes-ar
