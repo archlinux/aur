@@ -1,0 +1,4 @@
+[proton-pass-cli]
+source = "github"
+github = "protonpass/pass-cli"
+use_latest_release = true
