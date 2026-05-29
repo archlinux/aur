@@ -1,7 +1,7 @@
 # Maintainer: Daniel Vigh <vighd@digital.co.hu>
 pkgname=river-delta-git
 _pkgname=river-delta
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Keyboard-driven launcher and system console for wlr-layer-shell compositors: apps, network, Bluetooth, display, storage, keyboard, pass (git)"
 arch=('x86_64' 'aarch64')
