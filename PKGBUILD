@@ -6,7 +6,7 @@ pkgname="${_pkgname}-git"
 #_jdkversion=21
 #_jdkversion=26
 pkgver=26.05.05+130.r2772.20260528.77a4ce84
-pkgrel=2
+pkgrel=3
 pkgdesc="Matrix client for desktop written in Kotlin and using the Matrix Rust SDK, designed to be fully keyboard controllable, multi account, hirarchical spaces. Design in the tradition of SchildiChat clients."
 arch=(
   "aarch64"
@@ -216,6 +216,11 @@ package() {
   printf '%s\n' " --> Installing basic documentation ..."
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log README.md 
   cp --no-dereference --preserve=links -v AGENTS.md CLAUDE.md "${pkgdir}/usr/share/doc/${_pkgname}"/ # Copy those to preserve symlinks.
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" composeApp/src/jvmMain/composeResources/files/keybindings-default.toml
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" example-config/keybindings-advanced.toml
+  printf '%s\n' 'Put a keybindings file to `~/.config/SchildiChatRevenge/keybindings.toml`. Once the config exists, schildichat-revenge will reload its settings automatically whenever you edit the file even while SchildiChat is running.' > "${pkgdir}/usr/share/doc/${_pkgname}/keybindings-readme.txt"
+  chmod 644 "${pkgdir}/usr/share/doc/${_pkgname}/keybindings-readme.txt"
+
   printf '%s\n' " --> Installing license ..."
   install -Dvm644 LICENSE                  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.schildichat-revenge"
   install -Dvm644 matrix-rust-sdk/LICENSE  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.matrix-rust-sdk"
