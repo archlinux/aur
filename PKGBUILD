@@ -4,7 +4,7 @@
 _appname=ledger-live-desktop
 pkgname=ledger-live
 _electron='electron40'
-pkgver=4.4.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Maintain your Ledger devices"
 arch=('x86_64')
@@ -14,13 +14,13 @@ depends=('ledger-udev' "${_electron}")
 makedepends=('node-gyp' 'python' 'pnpm' 'nvm' 'desktop-file-utils')
 source=("${_appname}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/@ledgerhq/live-desktop@${pkgver}.tar.gz"
         "${_appname}.sh")
-sha512sums=('7bd5153a2b1565aa62b0c10b19423ad9443bd74797d89c01dc227f2bbd4d54c43ab42c07a30a6611b3a76c12dd3d8a516feb7aa2d3e621d8abf5545192a53843'
+sha512sums=('b250c4710b535e57ef4e26461d02613dcd72faff39a5392f4b21687d36c696a88b1c5d4f72b180e2d6508c243140b62120159067525545c3628610398d6a6d34'
             '70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755')
 
 _nvm_install() {
   export NVM_DIR="${srcdir}/.nvm"
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-  nvm install "$(awk -F "=" '/node/ {print $2}' .prototools | xargs)"
+  nvm install
 }
 
 _check_electron() {
@@ -41,6 +41,7 @@ build() {
 
   _nvm_install
 
+  export CI=true
   export UV_USE_IO_URING=0
   export GIT_REVISION="${pkgver}"
   pnpm i --filter="${_appname}..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
