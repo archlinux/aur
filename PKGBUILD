@@ -2,7 +2,7 @@
 
 _basename=riprip
 pkgname=${_basename}-bin
-pkgver=0.5.6
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="A specialized audio CD-ripper optimized for track recovery"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('tar')
 depends=('glibc' 'gcc-libs' 'libcdio')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums_x86_64=('efb75ec10b9ecacced7ac78400fdfd9d6bc8311a8e131b35f4a4fde0fd89a123')
+sha256sums_x86_64=('574295994e6a30ef6412f46ca356518b081faa8fd11f891eb1123f812b07cfdc')
 
 package() {
     cd "${pkgdir}"
