@@ -1,6 +1,6 @@
 # Maintainer: Cametendo cameronmathis08@gmail.com
 pkgname=arch-wallpapers-git
-pkgver=r14.6e6091f
+pkgver=1.0
 pkgrel=1
 pkgdesc="A collection of wallpapers"
 arch=('any')
