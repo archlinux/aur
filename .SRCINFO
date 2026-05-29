@@ -1,0 +1,14 @@
+pkgbase = zehn-git-release
+	pkgdesc = Fuzzy-find prompts across claude, codex, pi & opencode histories — latest git release version
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/al3rez/zehn
+	arch = x86_64
+	license = LicenseRef-PolyForm-Noncommercial-1.0.0
+	makedepends = git
+	makedepends = zig
+	optdepends = sqlite3: opencode history support
+	source = zehn::git+https://github.com/al3rez/zehn.git
+	sha256sums = SKIP
+
+pkgname = zehn-git-release
