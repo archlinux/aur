@@ -1,0 +1,44 @@
+# SPDX-FileCopyrightText: 2026 Atay Özcan <atay@oezcan.me>
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Arch makepkg install hook for sentinel-kde / sentinel-kde-git.
+
+post_install() {
+    cat <<'EOF'
+==> sentinel-kde installed. Activate per-user:
+
+      systemctl --user mask plasma-polkit-agent.service   # if you had it
+      systemctl --user start sentinel-polkit-agent.service
+
+    The unit is symlinked into graphical-session.target.wants and will
+    autostart on next login. Only one polkit agent can register per
+    session, so mask the Plasma one first.
+
+==> To guard sudo / su (optional), copy in the PAM drop-ins:
+
+      install -m644 /usr/share/doc/sentinel-kde/sudo /etc/pam.d/sudo
+      install -m644 /usr/share/doc/sentinel-kde/su   /etc/pam.d/su
+
+    Diff against the originals before overwriting — silently rewriting
+    /etc/pam.d/sudo is a notorious foot-gun.
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+==> sentinel-kde upgraded. Reload the running agent to pick up the new
+    binary:
+      systemctl --user restart sentinel-polkit-agent.service
+EOF
+}
+
+pre_remove() {
+    cat <<'EOF'
+==> sentinel-kde is being removed. If you want the upstream Plasma polkit
+    agent back:
+      systemctl --user unmask plasma-polkit-agent.service
+      systemctl --user start  plasma-polkit-agent.service
+
+    If you copied the sudo/su PAM drop-ins, restore your distro originals
+    from /etc/pam.d/*.pacsave (or your snapshot).
+EOF
+}
