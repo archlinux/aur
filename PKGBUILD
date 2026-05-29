@@ -32,6 +32,7 @@ package() {
 	cat >"$pkgdir/usr/bin/$pkgname" <<EOF
 #!/bin/bash
 cd /opt/$pkgname/game
+export LD_LIBRARY_PATH="/opt/$pkgname/game${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 exec ./DDNet "$@"
 EOF
 	chmod +x $pkgdir/usr/bin/$pkgname
