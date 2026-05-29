@@ -1,6 +1,6 @@
 pkgbase = linux-soundboard-git
 	pkgdesc = Native Linux soundboard with full Wayland/X11 support and virtual microphone support
-	pkgver = 2.0.0.r65.gd5cf541
+	pkgver = 2.0.0.r1.g6079880
 	pkgrel = 1
 	url = https://github.com/germanua/Linux-SoundBoard
 	install = linux-soundboard-git.install
@@ -21,7 +21,6 @@ pkgbase = linux-soundboard-git
 	depends = hicolor-icon-theme
 	depends = polkit
 	depends = pipewire
-	depends = pipewire-pulse
 	depends = wireplumber
 	optdepends = swhkd-bin: native Wayland global hotkeys from the AUR
 	optdepends = swhkd-git: development build of the native Wayland hotkey daemon
