@@ -2,7 +2,7 @@
 
 _name=langchain-protocol
 pkgname=python-$_name
-pkgver=0.0.15
+pkgver=0.0.16
 pkgrel=1
 pkgdesc="Python bindings for the LangChain agent streaming protocol."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-typing_extensions')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('9ab2d11ee73944754f10e037e717098d3a6796f0e58afa9cadda6154e7655ade')
+sha256sums=('806c7cdd951b1c4f692fa40fce60821ff0f221d4360e27673ddf2c2b99c2b7ff')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
