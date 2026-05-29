@@ -75,8 +75,9 @@ check() {
 
 	cargo test \
 		--all-features \
-		--bin "${_pkgname}" \
-		--frozen
+		--frozen \
+		--package "${_pkgname}" \
+		--test '*'
 }
 
 package() {
