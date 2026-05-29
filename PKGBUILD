@@ -1,67 +1,55 @@
-# $Id: PKGBUILD 139172 2011-09-30 22:43:18Z eric $
-# Maintainer: Kyle Keen <keenerd@gmail.com>
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Miranda Collins (serqetry) <miranda@xyla.net>
+# Contributor: Kyle Keen <keenerd@gmail.com>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=xscreensaver-hacks
 _srcname=xscreensaver
-pkgver=5.43
+pkgver=6.15
 pkgrel=1
-pkgdesc="Standalone apps from xscreensaver, including phosphor and apple2 terminals."
-arch=('i686' 'x86_64')
-url="http://www.jwz.org/xscreensaver/"
-_watch="http://www.jwz.org/xscreensaver/download.html"
-license=('BSD')
+pkgdesc="Standalone graphical hacks and screensavers from xscreensaver"
+arch=('x86_64')
+url="https://www.jwz.org/xscreensaver/"
+license=('BSD-2-Clause')
 conflicts=('xscreensaver')
-depends=('libxxf86vm' 'libglade' 'mesa' 'pam' 'libxmu')
-#depends=('libxxf86vm' 'libglade' 'mesa' 'pam' 'xorg-appres' 'libxmu' 'perl-libwww')
+
+depends=('libxxf86vm' 'mesa' 'libxmu' 'gdk-pixbuf2' 'gdk-pixbuf-xlib' 'libx11' 'libxext' 'libxt')
 makedepends=('bc')
-source=(http://www.jwz.org/xscreensaver/$_srcname-$pkgver.tar.gz \
-        LICENSE)
-sha1sums=('7a0e24b224e1316f0a211446db301de1c22daaa0'
-          '4209ea586b204fd1d81c382a0522c654f9fd9134')
+
+source=("https://www.jwz.org/xscreensaver/$_srcname-$pkgver.tar.gz"
+        "LICENSE")
+        
+sha256sums=('d2e687e56263fbfd8fca1fb9cc7c9331fd4f096ab57d3f7482565fe012c362d3'
+            '0d2a17d9645402edf51182609a06f9be3232bba0802397387e64c125ebb8bde0')
 
 build() {
-  cd "$srcdir/$_srcname-$pkgver"
+  cd "$_srcname-$pkgver"
 
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --libexecdir=/usr/lib --with-x-app-defaults=/usr/share/X11/app-defaults \
-    --without-pam --without-motif --with-gtk --with-gl \
-    --without-gle --with-pixbuf --with-jpeg --disable-locking \
-    --with-hackdir=/usr/bin --with-configdir=/usr/share/xscreensaver-hacks/config
+  ./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib \
+    --with-app-defaults=/usr/lib/X11/app-defaults \
+    --without-pam \
+    --without-motif \
+    --without-gtk \
+    --with-gl \
+    --without-gle \
+    --with-pixbuf \
+    --with-jpeg \
+    --disable-locking \
+    --with-hackdir=/usr/lib/xscreensaver \
+    --with-configdir=/usr/share/xscreensaver/config || true
 
-  sed -i 's/utils driver hacks/utils hacks/' Makefile
-  make
+  make -C utils
+  make -C hacks
+  make -C hacks/glx
 }
 
-# possible graphical utilities to add:
-# vidwhacker webcollage xflame
-# glx/photopile glx/glslideshow glx/fliptext glx/gltext glx/starwars glx/molecule glx/carousel barcode fontglide twang
-# pretty, but not utility:
-# binaryring intermomentary interaggregate fireworkx galaxy substrate wormhole
-# glx/cityflow glx/flurry
-# cute:
-# glx/companioncube glx/skytentacles glx/timetunnel
-
 package() {
-  cd "$srcdir/$_srcname-$pkgver"
-  cd hacks
-  make install_prefix="$pkgdir" install
-  cd glx
-  make install_prefix="$pkgdir" install
-  cd ../..
+  cd "$_srcname-$pkgver"
+  
+  make -C hacks DESTDIR="$pkgdir" install
+  make -C hacks/glx DESTDIR="$pkgdir" install
+  
   install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # Keep only the terminal related apps.
-  # If you think something should be added to this list, just ask.
-  find "$pkgdir" -type f ! \( \
-        -name '*bsod*'   -or -name '*xmatrix*'  -or \
-        -name '*pong*'   -or -name '*phosphor*' -or \
-        -name '*apple2*' -or -name '*glmatrix*' -or \
-        -name '*m6502*'  -or -name '*xanalogtv*' -or \
-        -name '*sonar*'  -or -name '*lcdscrub*' -or \
-        -name '*boing*'  -or -name '*tronbit*' -or \
-        -name '*memscroller*' -or \
-        -name '*unknownpleasures*' \) -delete
-  # fix some conflicts
-  mv "$pkgdir/usr/bin/bsod" "$pkgdir/usr/bin/bsod-ss"
 }
