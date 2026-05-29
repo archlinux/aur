@@ -68,6 +68,20 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "${srcdir}/${pkgname}"
+
+    # workspace_root() in app/src/remote_server/ssh_transport.rs bakes
+    # env!("CARGO_MANIFEST_DIR") into a string literal. --remap-path-prefix
+    # only rewrites file!()/debug paths, not env! literals, so the absolute
+    # $srcdir build path leaks into the binary and makepkg warns
+    # "package contains reference to $srcdir". This code path is dev-only
+    # (cross-compiling the remote server); replace the literal with a stable
+    # path matching the --remap-path-prefix convention used in build().
+    sed -i 's#env!("CARGO_MANIFEST_DIR")#"/build/zap-oss-git/app"#g' \
+        app/src/remote_server/ssh_transport.rs
+}
+
 build() {
     cd "${srcdir}/${pkgname}"
     export CARGO_HOME="${srcdir}/.cargo"
