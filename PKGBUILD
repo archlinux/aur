@@ -49,7 +49,6 @@ makedepends=(
   'make'
   'pkgconf'
   'qt5-tools'
-  'qtchooser'
 )
 optdepends=(
   'apache: Web server support for Ring web apps'
