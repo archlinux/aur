@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-globalmenu
-pkgver=149.0
+pkgver=151.0.2
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
@@ -78,7 +78,7 @@ options=(
   !lto
   !makeflags
 )
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/b210375c92e767950ec8ec8bdceda555e969ee21
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/95a1152b7bba4db2ecffda17b11e73832da88380
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   $commit/firefox-symbolic.svg
@@ -86,32 +86,26 @@ source=(
   $commit/org.mozilla.firefox.metainfo.xml
   $commit/0001-Install-under-remoting-name.patch
   $commit/0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
-  $commit/0003-Bug-2016618-Fix-Linux-sandbox-build-breakage-on-glib.patch
-  $commit/0004-Use-wasm32-wasip1-target.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('b861fdee999d9b6404e1e865d6f707c41b4bded1b5ea62affc176288c1484b8a'
+sha256sums=('63c4267799f2618dd7ac5997d0306bbcf2a5306caaca0056795bc6c61d00f8c8'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '2a51d57d98fbda86f094bc991e1ad4dd6e8a9d32fd0836b1183bf70ec4b68915'
             '23f557fa7989adcae03cc9458d94716981dbcf0e9d6d52a289a2426e50b4b785'
-            'd5380f8d8b908654d7816eaffa4ffa954f438cecac23fe650a399345904c9af7'
-            '7e8ee1997aa0c6db7de6fe5da0bca88b5c1c3aa2db0b18950e24e5cbe4df8d84'
-            'bf4a7667fb7d7a64795a6ea3d34515c55f46e42872fd3c5a8e8e99964bb3c4e8'
-            '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89')
-b2sums=('8b1d084dc2b8a7de85cc54aef57adda94afa191d4adb7a6e6ef1339e8a3cc7a7d8a42df52f858bcff358f69382e163ba42b2142126dcdbd1ad1cdc4bad0c0114'
+            'f0118f1b092e471fe3c81c1e8b49a76a37f72f3263d00a18e939dcde80c90dac'
+            'c7d6572fe1ac76f6adbfb10102f284fd55690396ac0a275a5cfea9a2efa22b58')
+b2sums=('4b5fd2683a2b3aaf85fdf419cef5e4fab3660d623511bc0b3b2f463c04aae075e906309965730df1cd564778fd2d8e9b1262147016b4cd02b922d6952fbe9b03'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '63c62c85ee70e22b02e9ea34e69f04f50403b7634b99fb0e996a83c963916dc4224041a0b265e54f6c224bd1777ddfdeb255037e3e30fec288695f3050278b05'
         '1a7fc030b1051df00df1b2f5b247b8c658de6cdfba0788041c830da3aaaa6ac974ab684e05feb80672aa2d2c22294cacfa93a71dc664b3e60becdd65e879fcee'
-        '09a880c88104c19c1efaa44716a4e03c5ae3adf5f573a6e2e7ae8f369f712c46f56432570fba52ba22c99f943da3278ffc1f8a5940c04917eace2db284526de4'
-        '3bec47156abaf832b6847e6ec19e06275f3dacd31ebf165c221b57d3e5b6e3a76f32767bd25daf43ecd594b2af279efe15370a5e27ed52809b0afe7f05d146f1'
-        'cd1a052a2121ee15942a32ce1ba26b376412097818eae124d6fb45561132d991af7bbd37b6cc5175cef28b2e3676ae31899be09457385bbe4d3e5934e71a8d1f'
-        '3f726cc603758aea6e75f705934f07ad05f851f9993fcc1c292e3dd2b2f84772f2de6eebd6f3f9f94490c7e3f4933ffdf22a4e96d8513f2d6cd16df57f4f5e2c')
+        'c1cbb2de5011ed88e77c22c6abbc944ac2bd0f6c95bddb75f668f40566e6cad8d0090e65a5ff498055612a359f82484b41202f74e1312236e17d099e71bbc952'
+        '0420be311ae633c05d3a110b9fe5a8da288530d918ec9435c1a54d8d13bbbd06f5ee90977a9ee71d39e68bc26deb20264e712816e1dc5d7374b64a920e51b353')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -128,15 +122,9 @@ prepare() {
   # Fix build with glibc 2.43
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
   patch -Np1 -i ../0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=2016618
-  patch -Np1 -i ../0003-Bug-2016618-Fix-Linux-sandbox-build-breakage-on-glib.patch
-
-  # Fix build with Clang 22
-  patch -Np1 -i ../0004-Use-wasm32-wasip1-target.patch
 
   # Appmenu patches
   patch -Np1 -i ../unity-menubar.patch
-  sed -i '\|#include "mozilla/VirtualKeyCodeList.h"|d' widget/gtk/nsMenuItem.cpp
 
   echo -n "$_google_api_key" >google-api-key
 
@@ -208,7 +196,9 @@ END
 package() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
+
   local appdir="$pkgdir/usr/lib/firefox"
+  touch "$appdir/is-packaged-app"
 
   install -Dvm644 /dev/stdin "$appdir/browser/defaults/preferences/vendor.js" <<END
 // Use LANG environment variable to choose locale
@@ -267,7 +257,7 @@ END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/firefox" "$pkgdir/usr/lib/firefox/firefox-bin"
+  ln -srfv "$pkgdir/usr/bin/firefox" "$appdir/firefox-bin"
 
   # Use system certificates
   if [[ -e $appdir/libnss3.so ]]; then
@@ -284,8 +274,8 @@ Version=2
 END
 }
 
-source+=('https://github.com/Lexi-Ewald/unity-menubar/raw/a4ee19d6d7c10875e0f1831481a836262de2cadb/unity-menubar.patch')
-sha256sums+=('1d2fa1153ba155e5463c57968102829b0c0318ee377f50b064a3bebbba96be7a')
-b2sums+=('744cf8f57ef73f56e4106b806c7c837cbb09b8feee8ca802592a1208bd5c913973f943d922dcf507f13e9416fbd97064c2b86cdfc2edf86eb5c6cb282411a257')
+source+=('https://github.com/Lexi-Ewald/unity-menubar/raw/9a69a0967c32991d488f3b47bb287ecf38aa1f55/unity-menubar.patch')
+sha256sums+=('8ca5a55119f42a75565e8803a130f21133d285df63c0de58dc5d17babf20ad64')
+b2sums+=('07579b32e1527662325b37a3df2a6311637cdeaecc1b62fb386051dabdb5917f3ad617482732c97b167e3766ac109dc3e5d59c525dec0033a0f8923a1f44165f')
 provides=(firefox)
 conflicts=(firefox)
