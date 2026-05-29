@@ -1,5 +1,5 @@
 pkgname=tb-tdl
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Terminal based to-do list"
 arch=('any')
