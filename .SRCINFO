@@ -1,0 +1,19 @@
+pkgbase = llamastash-bin
+	pkgdesc = Fast, keyboard-driven TUI for launching local llama.cpp models (prebuilt)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/llamastash/llamastash
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	optdepends = llama.cpp: provides llama-server (otherwise installed by `llamastash init`)
+	provides = llamastash
+	conflicts = llamastash
+	conflicts = llamastash-git
+	source_x86_64 = https://github.com/llamastash/llamastash/releases/download/v0.0.1/llamastash-0.0.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 298c19320b89589dd2c2b58538727ebaf73d009635c3c0a91c6921bfd249b6a4
+	source_aarch64 = https://github.com/llamastash/llamastash/releases/download/v0.0.1/llamastash-0.0.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9a2b709c54abea4865d05a7ee215ed01a3dcdd91ea6fa3575f004fffe784d4da
+
+pkgname = llamastash-bin
