@@ -10,7 +10,7 @@ pkgname='sd-boot'
 pkgdesc='Tools to install linux kernels via kernel-install from systemd'
 _gitname='sd-boot'
 
-pkgver="4.7.2"
+pkgver="4.7.4"
 pkgrel=1
 url="https://github.com/gene-git/sd-boot"
 
@@ -27,7 +27,7 @@ depends=(
     rsync
     systemd
     glibc
-    util-linux-libs
+    util-linux-libs     # provides libblkid
     sbctl
     systemd
     systemd-ukify
@@ -40,15 +40,16 @@ optdepends=(
 makedepends=(
     git
     gcc
-    cmake
-    ninja
+    meson
 )
 
 # clang provides clang-tidy (static source code analysis)
+# linux is used to test installing a kernel 
 checkdepends=(
     cppcheck
     clang
     valgrind
+    linux
 )
 
 backup=(
@@ -77,15 +78,29 @@ sha512sums=('SKIP')
 changelog="Changelog"
 
 build() {
-    cd "${_gitname}"
+    cd "${_gitname}/src"
     echo "***"
     echo "Building:" 
     echo "***"
-    cd ./src
-    /usr/bin/cmake -G Ninja -B build
-    cd ./build
-    /usr/bin/cmake -S .. -B none -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
-    /usr/bin/cmake --build none
+
+    #
+    # Compile flags are in meson.build - options like C23 are required.
+    #
+    /usr/bin/rm -rf build/*
+    export PATH="/usr/bin"
+    export CFLAGS=""
+    export LDFLAGS=""
+
+    /usr/bin/meson setup \
+            --prefix=/usr \
+            --sysconfdir=/etc \
+            --localstatedir=/var \
+            --buildtype=plain \
+            --reconfigure build/release \
+            --buildtype=release \
+            -Ddefault_library=shared
+
+    /usr/bin/meson compile -C build/release
 }
 
 check() {
@@ -93,18 +108,29 @@ check() {
     echo "***"
     echo "Running test suite:"
     echo "***"
-    ./tests/scripts/run-test-suite
+
+    echo ""
+    echo "-----------------------------"
+    echo " Standard:"
+    echo "------------"
+    echo ""
+    /usr/bin/meson test -C build/release --setup=standard
+
+    # echo ""
+    # echo "-----------------------------"
+    # echo " Valgrind:"
+    # echo "------------"
+    # echo ""
+    # /usr/bin/meson test -C build/release --setup=valgrind
 }
 
 package() {
-    cd "${_gitname}"
+    cd "${_gitname}/src"
     echo "***"
     echo "Installing:"
     echo "***"
-    cd src/build
-    DESTDIR="$pkgdir" cmake --install none
-    # dont need the static lib in production
-    /usr/bin/rm -f "$pkgdir"/usr/lib/libsd_boot.a
+
+    /usr/bin/meson install -C build/release --destdir "$pkgdir" > /dev/null
 }
 # vim:set ts=4 sts=4 sw=4 et:
 

@@ -1,6 +1,6 @@
 pkgbase = sd-boot
 	pkgdesc = Tools to install linux kernels via kernel-install from systemd
-	pkgver = 4.7.2
+	pkgver = 4.7.4
 	pkgrel = 1
 	url = https://github.com/gene-git/sd-boot
 	changelog = Changelog
@@ -9,10 +9,10 @@ pkgbase = sd-boot
 	checkdepends = cppcheck
 	checkdepends = clang
 	checkdepends = valgrind
+	checkdepends = linux
 	makedepends = git
 	makedepends = gcc
-	makedepends = cmake
-	makedepends = ninja
+	makedepends = meson
 	depends = bash
 	depends = dracut
 	depends = efifs
@@ -32,7 +32,7 @@ pkgbase = sd-boot
 	backup = etc/kernel/install.conf
 	backup = etc/kernel/ukify.conf
 	backup = etc/dracut.conf.d/010-dracut.conf
-	source = git+https://github.com/gene-git/sd-boot#tag=4.7.2
+	source = git+https://github.com/gene-git/sd-boot#tag=4.7.4
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 

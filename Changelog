@@ -1,9 +1,25 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 4.4.0 ➙ 4.7.2
-              : 2026-05-18 ➙ 2026-05-25
+ Tags         : 4.7.0 ➙ 4.7.4
+              : 2026-05-19 ➙ 2026-05-29
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-05-29   : 4.7.4
+              - **4.7.4**
+            
+                * loader flags to meson build
+              - update Changelog
+
+ 2026-05-29   : 4.7.3
+              - **4.7.3**
+            
+                * Change build tooling to meson (was cmake).
+                  Simpler and cleaner.
+                * Use meson to run tests.
+                * No functional change.
+ 2026-05-25   ⋯
+              - update Changelog
 
  2026-05-25   : 4.7.2
               - **4.7.2**
@@ -34,29 +50,4 @@
                 * Add sbctl and systemd-ukify as dependencies
                 * Little code tidy
  2026-05-18   ⋯
-              - update Changelog
-
- 2026-05-18   : 4.6.0
-              - **4.6.0**
-            
-                * Loader entries are not used for UKI layout.
-                  Turn off messages about missing loader entries.
-            
-                **4.5.0**
-            
-                * Enhance sd-boot-find-mounts using liblkid (new dependency)
-                * Kernel ALPM hook trigger update.
-              - update Changelog
-
- 2026-05-18   : 4.4.0
-              - **4.4.0**
-            
-                * Add secure boot signing key changes trigger to ALPM hook to update kernel.
-                * Messages more consistent with prefixes (! = error, ⦁ = top level, ↳ = sub level).
-                * Add brief section on signing kernels and secure boot.
-                * Fix c-code checker (clang-tidy, valgrind)
-                * Simplify some code (readability, maintainability)
-                * Additional boundary case checks.
-                * Loader entry modifier for efi tools handle "uki" row in addition to "linux"
- 2026-05-15   ⋯
               - update Changelog
