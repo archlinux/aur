@@ -1,0 +1,16 @@
+pkgbase = diskonaut-ng-git
+	pkgdesc = Diskonaut fork
+	pkgver = v0.12.2.r0.g01aa4d7
+	pkgrel = 1
+	url = https://github.com/Gigas002/diskonaut-ng
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = scdoc
+	provides = diskonaut
+	conflicts = diskonaut
+	source = diskonaut-ng::git+https://github.com/Gigas002/diskonaut-ng.git
+	sha256sums = SKIP
+
+pkgname = diskonaut-ng-git
