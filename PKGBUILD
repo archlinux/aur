@@ -1,4 +1,4 @@
-# Maintainer: Armando Rodolfo Guillen Zambrano <guillenza4@pm.me>
+# Maintainer: Armando Zambrano <zambrano@armando.one>
 pkgname=aquafin-git
 _pkgname=aquafin
 pkgver=r3.e3c7daa
