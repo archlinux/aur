@@ -1,6 +1,6 @@
 # Maintainer: Daniel Vigh <vighd@digital.co.hu>
 pkgname=river-delta
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Keyboard-driven launcher and system console for wlr-layer-shell compositors: apps, network, Bluetooth, display, storage, keyboard, pass"
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ optdepends=(
   'libnotify: desktop notifications'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('60991d404742e246c0ed31d35e5214bd34c6c9599d70064f3ab871c5141a15a8')
+sha256sums=('3a05ebece93a8a8c46ecc6c5c83e3f5f79c9a8780aae511a6a9c35a06802f4ac')
 
 build() {
   cd "$pkgname-$pkgver"
