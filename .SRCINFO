@@ -10,7 +10,6 @@ pkgbase = ring-lang-bin
 	makedepends = make
 	makedepends = pkgconf
 	makedepends = qt5-tools
-	makedepends = qtchooser
 	depends = allegro
 	depends = freeglut
 	depends = gcc-libs
