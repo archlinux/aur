@@ -8,7 +8,6 @@ pkgbase = rsv-ng-systemctl
 	makedepends = git
 	depends = rsv-ng
 	provides = systemctl
-	conflicts = systemd
 	conflicts = rsv
 	source = rsv-ng-systemctl::git+https://gitlab.com/runit-rsv/Rsv-systemctl
 	sha256sums = SKIP

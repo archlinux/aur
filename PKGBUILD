@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('rsv-ng')
 makedepends=('git')
 provides=('systemctl')
-conflicts=('systemd' 'rsv')
+conflicts=('rsv')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
