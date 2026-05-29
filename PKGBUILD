@@ -25,7 +25,7 @@ makedepends=()
 
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Comfy-Org/ComfyUI/archive/refs/tags/v$pkgver.tar.gz"
-    'comfyui.install'
+    'comfyui.install.in'
     'comfyui.sh'
     'comfyui.service'
     'comfyui.sysusers'
@@ -50,19 +50,18 @@ backup=(
 
 build() {
     # Break symlinks so sed does not modify originals in $startdir
-    for f in comfyui.install comfyui.sh comfyui.service; do
+    for f in comfyui.sh comfyui.service; do
         cp --remove-destination "$(readlink -f "$srcdir/$f")" "$srcdir/$f"
     done
 
-    # Inject _prefix into source files
+    # Inject _prefix into runtime source files
     sed -i "s|_PREFIX_|$_prefix|g" \
-        "$srcdir/comfyui.install" \
         "$srcdir/comfyui.sh" \
         "$srcdir/comfyui.service"
 
-    # Swap the .install for pacman, saving the template
-    cp "$startdir/comfyui.install" "$srcdir/comfyui.install.tpl"
-    cp "$srcdir/comfyui.install" "$startdir/comfyui.install"
+    # Generate install scriptlet from template (never modify the .in)
+    sed "s|_PREFIX_|$_prefix|g" \
+        "$srcdir/comfyui.install.in" > "$startdir/comfyui.install"
 }
 
 package() {
