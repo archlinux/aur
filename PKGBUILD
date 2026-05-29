@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=(${pkgname})
 provides=(${pkgname})
 depends=('gtk3' 'libayatana-appindicator' 'polkit')
-source_x86_64=(${pkgname}-${pkgver}-x86_64.zip::https://github.com/mapleafgo/singcast/releases/download/v${pkgver}/singcast-v${pkgver}-linux-amd64.zip
+source_x86_64=(${pkgname}-${pkgver}-x86_64.zip::https://github.com/mapleafgo/singcast/releases/download/v${pkgver}/singcast-${pkgver}-linux-amd64.zip
              singcast.desktop
              singcast.svg)
 _install_path="/opt/Singcast"
@@ -30,6 +30,6 @@ package() {
   install -Dm644 "singcast.desktop" "${pkgdir}/usr/share/applications/singcast.desktop"
 }
 
-sha256sums_x86_64=('c6cbd113e0a214fb495ea5e90aba73a6c5a227b9ad52f30e38efed52cfdc56f1'
+sha256sums_x86_64=('5ab843ab0760d28fd0ee5afab2632377b7798c78c2004a8ff7ca2c4245c753d9'
                    'f14d52960b535f9d31d24f08e9b248f3f70f70bfadc4ea58bb57f4d12b711ee9'
                    '289d9ffd1ea9b24928bea1a0936d9a1125e7f3d9e2d7341e353ce5c42d405f09')
