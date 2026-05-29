@@ -1,10 +1,11 @@
-# Maintainer: Robin Candau <antiz@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Robin Candau <antiz@archlinux.org>
 # Contributor: Rocket Aaron <i at rocka dot me>
 # Contributor: Manuel Gugger <mdgdot[at]tutanota[dot]com>
 
 pkgname=act_runner
 _pkgname=runner
-pkgver=0.6.1
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Runner for Gitea based on Gitea fork of act"
 url="https://gitea.com/gitea/act_runner"
@@ -19,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('88f9ca7fdaaf45a9885f0b64eb5d0e06ef86e41e0d6ecdb3b4eba5252f263eca'
+sha256sums=('68c6e65e7cc200921a64042bea695d333015888e0693d788c8c50bc8e7b97f83'
             '5d391f0646d24acec4271b9ad769c79f2d6780848aaaa215ea697d61c4d1e895'
             '96abb320d5b0bc2f828f0d34fb9ad1fa3015dc0b31354213fa21771b2fb8f8f6'
             '86885e9226ffb7bc3dbb105dc2e10630c41717212c804e19413acf3974c8b347')
