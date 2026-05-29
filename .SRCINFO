@@ -1,5 +1,5 @@
 pkgbase = hexfeed
-pkgdesc = Private social network in your terminal. Minimalist, encrypted TUI client with Tor support.
+pkgdesc = Anonymous private social network. Tor-native, zero IP leaks, zero trackers.
 pkgver = 0.1.0
 pkgrel = 1
 url = https://github.com/MCookinho/hexfeed

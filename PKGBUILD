@@ -4,7 +4,7 @@
 pkgname=hexfeed
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Private social network in your terminal. Minimalist, encrypted TUI client with Tor support."
+pkgdesc="Anonymous private social network. Tor-native, zero IP leaks, zero trackers."
 arch=('any')
 url="https://github.com/MCookinho/hexfeed"
 license=('MIT')
