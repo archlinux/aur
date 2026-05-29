@@ -1,6 +1,6 @@
 pkgbase = flaca-bin
 	pkgdesc = Lossless GIF, JPEG and PNG optimizer, written in Rust
-	pkgver = 3.6.2
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/Blobfolio/flaca
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = flaca-bin
 	provides = flaca
 	conflicts = flaca
 	conflicts = flaca-git
-	source = flaca-bin-3.6.2.deb::https://github.com/Blobfolio/flaca/releases/download/v3.6.2/flaca_3.6.2-1_amd64.deb
-	sha256sums = 38dff3466e9ffe5abf280a2f592ccf22b391ba1e223c20207a1188840c7a629d
+	source = flaca-bin-3.7.0.deb::https://github.com/Blobfolio/flaca/releases/download/v3.7.0/flaca_3.7.0-1_amd64.deb
+	sha256sums = 0ed1d641605a3de2d1aa305708d9a2b96b77bf3761c9549e8ad28a0a9f6df5e5
 
 pkgname = flaca-bin
