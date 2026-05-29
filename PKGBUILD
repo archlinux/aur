@@ -2,7 +2,7 @@
 pkgname=hygg-git
 _pkgname=${pkgname%-git}
 pkgver=0.1.20.r1.g3c7c3b7
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalistic Vim-like TUI document reader - From the main branch'
 arch=(
     'x86_64'
@@ -16,7 +16,7 @@ makedepends=(
 ) # 'clang' 'gcc-libs')
 options=(!lto !debug)
 provides=(
-    $pkgname
+    $_pkgname
     'cli-epub-to-text'
     'cli-justify'
     'cli-pdf-to-text'
