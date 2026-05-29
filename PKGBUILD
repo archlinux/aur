@@ -48,10 +48,6 @@ makedepends=(
     'extra-cmake-modules'
     'kdoctools'
 )
-optdepends=(
-    'cfitsio: FITS format support (https://heasarc.gsfc.nasa.gov/fitsio/fitsio.html)'
-    'libkdcraw: interface around LibRaw used to decode RAW pictures'
-)
 source=("git+https://gitgud.io/atmk/gwenview-aero.git")
 md5sums=('SKIP')
 
