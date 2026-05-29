@@ -1,6 +1,6 @@
 pkgbase = tofi-rs-git
 	pkgdesc = A Wayland application launcher — Rust port of tofi
-	pkgver = r390.8b4c283
+	pkgver = r407.b931b97
 	pkgrel = 1
 	url = https://github.com/Gigas002/tofi-rs
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = tofi-rs-git
 	depends = pango
 	depends = harfbuzz
 	depends = libxkbcommon
-	provides = tofi=r390.8b4c283
+	provides = tofi=r407.b931b97
 	conflicts = tofi
 	conflicts = tofi-git
 	options = !strip
-	source = tofi-rs::git+https://github.com/Gigas002/tofi-rs.git#branch=rust
+	source = tofi-rs::git+https://github.com/Gigas002/tofi-rs.git
 	b2sums = SKIP
 
 pkgname = tofi-rs-git
