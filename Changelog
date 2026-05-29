@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 4.7.0 ➙ 4.7.4
+ Tags         : 4.7.1 ➙ 4.7.5
               : 2026-05-19 ➙ 2026-05-29
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-05-29   : 4.7.5
+              - fix license install typo
+              - update Changelog
 
  2026-05-29   : 4.7.4
               - **4.7.4**
@@ -39,15 +43,4 @@
                 * Change PKGBUILD arch to x85_64 not any.
                 * Change linking to only use libblkid where needed.
                 * Clean up cruft from CMakeLists.txt
-              - update Changelog
-
- 2026-05-19   : 4.7.0
-              - **4.7.0**
-            
-                * Read /etc/kernel/install.conf so code is aware of layout (bls or uki).
-                * Loader entry plugin now exits earlier for uki kernels which has no loader entries.
-                * kernel-install remove does not need kernel image
-                * Add sbctl and systemd-ukify as dependencies
-                * Little code tidy
- 2026-05-18   ⋯
               - update Changelog
