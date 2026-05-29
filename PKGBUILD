@@ -1,11 +1,11 @@
 pkgname=machina
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="Vim-keybinded TUI file manager with OneShot theme"
+pkgdesc="Fast terminal file manager with preview, git integration, archive extraction, and image display"
 arch=('x86_64')
 url="https://github.com/viewerofall/machina"
 license=('MIT')
-depends=('glibc' 'oniguruma')
+depends=('glibc')
 
 source=(
   "machina-binary::https://github.com/viewerofall/machina/releases/download/v$pkgver/machina-$pkgver-x86_64-linux"
