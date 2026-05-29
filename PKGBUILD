@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartoc-bin
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Barto job executor client (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -20,15 +20,18 @@ _base="https://github.com/rustyhorde/barto/releases/download/v${pkgver}"
 source=("${_base}/dist-bartoc.tar.gz")
 source_x86_64=("bartoc-x86_64::${_base}/bartoc-x86_64-unknown-linux-musl")
 source_aarch64=("bartoc-aarch64::${_base}/bartoc-aarch64-unknown-linux-musl")
-sha256sums=('961ddc34c16f9233a4fbf1a03fb920f9fad9fe55069bd63fe0b1bc9cc36a03c9')
-sha256sums_x86_64=('54433e5ecb275c1442db8b3db46142c90e6b7365a399f278159d094c81325c5e')
-sha256sums_aarch64=('41c1b6fd6c3bed7d207936ebc920875cdaaca24768211e58932f5fa68857e808')
+sha256sums=('7f362ebbbe9467ce4bfbc67da0c1536ab6c65076ae623d2fb42be5eedff02c0e')
+sha256sums_x86_64=('c921bdf92917fcfcbc31b3f55c4ae242b4bea38b28aa6b5a9bfd46db12f315b9')
+sha256sums_aarch64=('b4ba70c28f7d7cbc4d937aa74cadd51d86c73ae8c858e3a04d660df1bd720e28')
 
 package() {
     install -Dm755 "bartoc-${CARCH}" "$pkgdir/usr/bin/bartoc"
 
-    # Launcher script (reads keychain secrets, exports as env vars)
+    # Launcher script (loads secrets from systemd credentials or platform keychain)
     install -Dm755 "bartoc/bartoc-launcher" "$pkgdir/usr/lib/bartoc/bartoc-launcher"
+
+    # Interactive setup helper for systemd user credentials (lingering services)
+    install -Dm755 "bartoc/bartoc-secrets-init" "$pkgdir/usr/bin/bartoc-secrets-init"
 
     # Man page
     install -Dm644 bartoc/bartoc.1 "$pkgdir/usr/share/man/man1/bartoc.1"
