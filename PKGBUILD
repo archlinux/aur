@@ -1,6 +1,6 @@
 # Maintainer: thefangeddeity
 pkgname=ele-messenger
-pkgver=1.2.5
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Resilience-first household chat platform. Degrades gracefully from LAN to BLE when infrastructure fails."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-fastapi' 'uvicorn' 'python-websockets' 'python-aiosqli
 optdepends=('tailscale: for Tailscale transport layer')
 backup=('usr/lib/ele-messenger/config.json')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8d20edf7492cac8cf24eba346ce755a302cca8c74c9902180853ce8122d4f9a0')
+sha256sums=('7bf3e37e5e32eaa4e009abb1ae861ecea29a0708c4a75136f09a282770cd5ef4')
 package() {
     cd "$srcdir/ele-messenger-$pkgver/pkg"
     cp -r usr "$pkgdir/"
