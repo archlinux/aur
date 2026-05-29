@@ -3,7 +3,7 @@
 _pkgauthor=benjajaja
 _pkgname=mdfried
 pkgname=${_pkgname}-bin
-pkgver=0.20.2
+pkgver=0.20.3
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc='A markdown viewer for the terminal that renders images and big headers'
@@ -21,8 +21,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}")
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '8be02740568f687e8d5d484cf885d04faf26b1485bb1aed9b52c207486b0c1fa')
-sha256sums_x86_64=('4a3e7beeee1621ae76fa45f3c1340207f419e0fd0bfdce2cad593b559af085c2')
+            'b8fb462377401b329cda78b822ca0553a8d041fff80d342ac24f52ffcc3b3a7f')
+sha256sums_x86_64=('6f47a30d486ed42a58d8af3ded8d2b4134dd759a6147d9d3a714707de5de4e8d')
 
 package() {
     cd "${srcdir}" || exit 1
