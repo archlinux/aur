@@ -1,7 +1,7 @@
 pkgbase = darkplaces
 	pkgdesc = An advanced Quake 1 game engine
 	pkgver = 20140513
-	pkgrel = 4
+	pkgrel = 5
 	url = http://icculus.org/twilight/darkplaces/
 	install = darkplaces.install
 	arch = i686
