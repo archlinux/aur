@@ -50,14 +50,17 @@ pkgver() {
 
 build() {
   cd slade
-  cmake -B build -G Ninja
+  cmake -B build -G Ninja -S. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr"
   cmake --build build
 }
 
 package() {
   cd "$srcdir/slade/build"
-  mkdir -p "$pkgdir"/usr/bin/
-  mkdir -p "$pkgdir"/usr/share/slade3
-  install -Dm755 ./slade "$pkgdir"/usr/bin/slade
-  install -Dm644 ./slade.pk3 "$pkgdir"/usr/share/slade3/slade.pk3
+  DESTDIR="${pkgdir}" cmake --install .
+  rm -rf "${pkgdir}"/usr/include
+  rm -rf "${pkgdir}"/usr/lib
+  rm -rf "${pkgdir}"/usr/share/cpptrace
+  rm -rf "${pkgdir}"/usr/share/SQLiteCpp
 }
