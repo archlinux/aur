@@ -1,6 +1,6 @@
 # Maintainer: mryll <https://github.com/mryll>
 pkgname=codexbar
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Waybar widget displaying OpenAI Codex subscription usage with colored progress bars'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('libnotify: desktop notifications on session expiry'
 conflicts=('waybar-codex-usage')
 provides=('waybar-codex-usage')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mryll/codexbar/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1a547cb6248816398d15a77055c10a5583e7c2ec1e6d876de29cc5bb6db225d9')
+sha256sums=('045fede4011b0c177e340a9752aa4ec37c4c375f81c4c66649c5b4679bd8ac5e')
 
 package() {
     cd "$pkgname-$pkgver"
