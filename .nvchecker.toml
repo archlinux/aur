@@ -1,0 +1,4 @@
+["zork++"]
+source = "git"
+git = "https://github.com/zerodaycode/Zork.git"
+prefix = "v"
