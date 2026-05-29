@@ -1,6 +1,6 @@
 pkgname=ark-cli
-pkgver=0.1.0_alpha.3
-pkgrel=1
+pkgver=0.1.0_alpha.4
+pkgrel=2
 pkgdesc="Plain-text terminal organiser for notes, todos, and events"
 arch=('any')
 url="https://github.com/benjaminingreens/ark"
@@ -14,6 +14,9 @@ package() {
     cd "$srcdir/ark-${pkgver//_/-}"
 
     install -Dm755 ark "$pkgdir/usr/bin/ark-cli"
+
+    install -Dm644 other/arkfuncs.pl \
+        "$pkgdir/usr/lib/ark/other/arkfuncs.pl"
 
     install -d "$pkgdir/usr/lib/ark/commands"
 
