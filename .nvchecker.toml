@@ -1,3 +1,4 @@
-[fastcompmgr]
+[3dstool]
 source = "git"
 git = "https://github.com/dnasdw/3dstool.git"
+prefix = "v"
