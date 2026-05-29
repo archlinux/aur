@@ -1,12 +1,12 @@
 pkgbase = soundkeeper-linux
 	pkgdesc = Keeps audio devices alive by playing an inaudible 19kHz tone via SoX.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arnav4o4/soundkeeper-linux
 	arch = any
 	license = MIT
 	depends = sox
-	source = soundkeeper.service
-	sha256sums = a6ccc7d9ea0ea384b6a8c56d15703b05d8747e53f114210e3f60bb56de24d524
+	source = soundkeeper-linux-1.0.tar.gz::https://github.com/arnav4o4/soundkeeper-linux/archive/refs/tags/v1.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = soundkeeper-linux

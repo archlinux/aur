@@ -1,16 +1,21 @@
 # Maintainer: Arnav Gupta <allenarnav2023@gmail.com>
 pkgname=soundkeeper-linux
 pkgver=1.0
-pkgrel=1
+pkgrel=2  # Incremented to 2 for the update
 pkgdesc="Keeps audio devices alive by playing an inaudible 19kHz tone via SoX."
 arch=('any')
-url="https://github.com/arnav4o4/soundkeeper-linux" # Or your local path
+url="https://github.com/arnav4o4/soundkeeper-linux"
 license=('MIT')
 depends=('sox')
-source=("soundkeeper.service")
-sha256sums=('a6ccc7d9ea0ea384b6a8c56d15703b05d8747e53f114210e3f60bb56de24d524')
+
+# Points to your GitHub release tarball instead of a local file
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP') # We will overwrite this with 'updpkgsums'
 
 package() {
+  # Step into the directory extracted from the GitHub archive
+  cd "${pkgname}-${pkgver}"
+
   # Install the systemd user service
-  install -Dm644 "${srcdir}/soundkeeper.service" "${pkgdir}/usr/lib/systemd/user/soundkeeper.service"
+  install -Dm644 "soundkeeper.service" "${pkgdir}/usr/lib/systemd/user/soundkeeper.service"
 }
