@@ -1,6 +1,6 @@
 pkgbase = bartos-bin
 	pkgdesc = Barto central job scheduling server (pre-compiled binary)
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/rustyhorde/barto
 	install = bartos.install
@@ -13,11 +13,11 @@ pkgbase = bartos-bin
 	optdepends = xz: xz compression of rotated log files
 	provides = bartos
 	conflicts = bartos
-	source = https://github.com/rustyhorde/barto/releases/download/v1.4.3/dist-bartos.tar.gz
-	sha256sums = 45bfc0256d25d249e22d13a3a6cbd0ee17323ee8400479e22be8ef8bf2110e27
-	source_x86_64 = bartos-x86_64::https://github.com/rustyhorde/barto/releases/download/v1.4.3/bartos-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = fbd503c779035c1814cbfffbf1aa9a155cdfc236b12513a81d88b124d8b54765
-	source_aarch64 = bartos-aarch64::https://github.com/rustyhorde/barto/releases/download/v1.4.3/bartos-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = 4a30bd612eb1c92fc9d2c750c6a9d7eb3807defc4fe74b41a3f9e7e4f6465eb0
+	source = https://github.com/rustyhorde/barto/releases/download/v1.4.4/dist-bartos.tar.gz
+	sha256sums = da905439e3af28c81515664074f910aea8264f00c04753f9b2c2a6933e2cac89
+	source_x86_64 = bartos-x86_64::https://github.com/rustyhorde/barto/releases/download/v1.4.4/bartos-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = a2248cf4c6896234302a88d2e67e1f0ed1401bf1f2b51bc79c5c26b1f293224d
+	source_aarch64 = bartos-aarch64::https://github.com/rustyhorde/barto/releases/download/v1.4.4/bartos-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 8b940ce2665869e942f195da38fdff104be3b2a819b03080cb75d995dbca4ce1
 
 pkgname = bartos-bin

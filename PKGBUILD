@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartos-bin
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Barto central job scheduling server (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -21,9 +21,9 @@ _base="https://github.com/rustyhorde/barto/releases/download/v${pkgver}"
 source=("${_base}/dist-bartos.tar.gz")
 source_x86_64=("bartos-x86_64::${_base}/bartos-x86_64-unknown-linux-musl")
 source_aarch64=("bartos-aarch64::${_base}/bartos-aarch64-unknown-linux-musl")
-sha256sums=('45bfc0256d25d249e22d13a3a6cbd0ee17323ee8400479e22be8ef8bf2110e27')
-sha256sums_x86_64=('fbd503c779035c1814cbfffbf1aa9a155cdfc236b12513a81d88b124d8b54765')
-sha256sums_aarch64=('4a30bd612eb1c92fc9d2c750c6a9d7eb3807defc4fe74b41a3f9e7e4f6465eb0')
+sha256sums=('da905439e3af28c81515664074f910aea8264f00c04753f9b2c2a6933e2cac89')
+sha256sums_x86_64=('a2248cf4c6896234302a88d2e67e1f0ed1401bf1f2b51bc79c5c26b1f293224d')
+sha256sums_aarch64=('8b940ce2665869e942f195da38fdff104be3b2a819b03080cb75d995dbca4ce1')
 
 package() {
     install -Dm755 "bartos-${CARCH}" "$pkgdir/usr/bin/bartos"
@@ -32,7 +32,7 @@ package() {
     install -Dm755 "bartos/bartos-launcher" "$pkgdir/usr/lib/bartos/bartos-launcher"
 
     # Secrets init helper
-    install -Dm755 "bartos/barto-secrets-init" "$pkgdir/usr/bin/barto-secrets-init"
+    install -Dm755 "bartos/bartos-secrets-init" "$pkgdir/usr/bin/bartos-secrets-init"
 
     # Migration helper
     install -Dm755 "bartos/barto-migrate" "$pkgdir/usr/bin/barto-migrate"
