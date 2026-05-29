@@ -2,14 +2,14 @@
 
 _pkgname="diskonaut-ng"
 pkgname="${_pkgname}-git"
-pkgver=v0.12.2.r0.g01aa4d7
+pkgver=r231.g01aa4d7
 pkgrel=1
-pkgdesc="Diskonaut fork"
+pkgdesc="Interactive terminal disk-space navigator (diskonaut fork)"
 arch=("x86_64")
 url="https://github.com/Gigas002/diskonaut-ng"
 license=('MIT')
-depends=()
-makedepends=(git cargo scdoc)
+depends=(gcc-libs glibc)
+makedepends=(git cargo)
 optdepends=()
 provides=(diskonaut)
 conflicts=(diskonaut)
@@ -18,10 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
