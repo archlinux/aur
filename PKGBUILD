@@ -1,5 +1,5 @@
 pkgname=mausam
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Beautiful weather in your terminal"
 arch=('x86_64' 'aarch64')
