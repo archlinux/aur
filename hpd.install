@@ -14,9 +14,6 @@
 # own install.sh, so removing it is safe.
 _migrate_from_install_sh() {
     local f found=0
-    # Stop a daemon that may be running from the old /etc unit + the
-    # /usr/local/bin binary before we remove either.
-    systemctl stop hpd.service 2>/dev/null || true
     for f in \
         /usr/local/bin/hpd-daemon \
         /usr/local/bin/hpdctl \
@@ -29,8 +26,15 @@ _migrate_from_install_sh() {
         [ -e "$f" ] && { rm -f "$f"; found=1; }
     done
     rmdir /usr/share/hpd 2>/dev/null || true
-    [ "$found" = 1 ] && \
+    # Only when we actually removed leftovers: a daemon may be running
+    # from the old /usr/local/bin binary via the /etc unit we just
+    # deleted, so stop it and let post_* bring the packaged one up. NEVER
+    # stop unconditionally — on a normal upgrade the service must keep
+    # running (post_upgrade restarts it to pick up the new binary).
+    if [ "$found" = 1 ]; then
+        systemctl stop hpd.service 2>/dev/null || true
         echo "==> Migrated off a previous install.sh deployment (removed its files under /usr/local/bin, /etc and /usr/share)."
+    fi
     return 0
 }
 
@@ -65,11 +69,14 @@ pre_upgrade() {
 
 post_upgrade() {
     _post_setup
-    # The on-disk binary changed; restart the running daemon so the
-    # upgrade actually takes effect (try-restart is a no-op if it is not
-    # currently running). This supersedes the SIGHUP-only reload, which
-    # would re-read config but keep executing the old binary.
-    systemctl try-restart hpd.service 2>/dev/null || true
+    # Pick up the new on-disk binary. `restart` (not `try-restart`) so
+    # this also brings the service back if pre_upgrade's migration had to
+    # stop it. Gated on `is-enabled` to respect a user who deliberately
+    # disabled the service; an enabled service is meant to run, so a
+    # brief restart on upgrade is expected.
+    if systemctl is-enabled --quiet hpd.service 2>/dev/null; then
+        systemctl restart hpd.service 2>/dev/null || true
+    fi
     cat <<EOF
 
 ==> hpd upgraded to v${1%-*}.
