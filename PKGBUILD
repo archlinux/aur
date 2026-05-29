@@ -1,6 +1,6 @@
 # Maintainer: kidpixo <kidpixo at gmail dot com>
 pkgname=arch-check
-pkgver=0.3.0
+pkgver=0.4.0
 # upstream repository name (GitHub) — note underscore vs package name
 upstream_name=arch_check
 pkgrel=1
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 # Use the GitHub tag release (use upstream_name for the archive filename)
 source=("$upstream_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "LICENSE")
-sha256sums=('85d62596bcb27463c3ab4238039b6808d8d75bb747911245527e8fc725b90eba'
+sha256sums=('80f73e00d5a77c0c65ca689ed8e2e632159d2e50b94fd856332a11bae5bb511a'
             '7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3')
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = arch-check
 	pkgdesc = Python stdlib Arch Linux health checker: disks, kernel, services, SMART. Output to terminal or JSON.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/kidpixo/arch_check
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = arch-check
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = arch_check-0.3.0.tar.gz::https://github.com/kidpixo/arch_check/archive/refs/tags/v0.3.0.tar.gz
+	source = arch_check-0.4.0.tar.gz::https://github.com/kidpixo/arch_check/archive/refs/tags/v0.4.0.tar.gz
 	source = LICENSE
-	sha256sums = 85d62596bcb27463c3ab4238039b6808d8d75bb747911245527e8fc725b90eba
+	sha256sums = 80f73e00d5a77c0c65ca689ed8e2e632159d2e50b94fd856332a11bae5bb511a
 	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3
 
 pkgname = arch-check
