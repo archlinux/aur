@@ -4,7 +4,7 @@
 _pkgname=BestClient
 pkgname=bestclient
 pkgver=1.7.1
-pkgrel=9
+pkgrel=10
 pkgdesc="DDRaceNetwork modification that adds new feauters"
 arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
@@ -16,12 +16,19 @@ optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
 	'discord-game-sdk: Enable rich presence in Discord desktop client.')
 install="$pkgname.install"
 # FFmpeg 6.1.1 bundled from Arch Linux Archive — binary was compiled against these ABI versions
+# libxml2 2.12.7 and libbluray 1.3.4 bundled — FFmpeg 6.x was built against these sonames
+# (libxml2.so.2, libbluray.so.2). GNU_VERSION_R entries in libavformat cannot be patched
+# with patchelf; bundling the correct soname versions is the only reliable solution.
 source=("https://github.com/RoflikBEST/bestdownload/releases/download/v$pkgver/BestClient-linux.tar.xz"
         "$pkgname.png"
-        "ffmpeg6::https://archive.archlinux.org/packages/f/ffmpeg/ffmpeg-2%3A6.1.1-7-x86_64.pkg.tar.zst")
+        "ffmpeg6::https://archive.archlinux.org/packages/f/ffmpeg/ffmpeg-2%3A6.1.1-7-x86_64.pkg.tar.zst"
+        "libxml2_212::https://archive.archlinux.org/packages/l/libxml2/libxml2-2.12.7-1-x86_64.pkg.tar.zst"
+        "libbluray_134::https://archive.archlinux.org/packages/l/libbluray/libbluray-1.3.4-3-x86_64.pkg.tar.zst")
 sha256sums=('ffe98fc6159789e56241e90e27aa5cf2ab2ec0ac9ebefe8d6c13e6acf566e649'
             'a118504f690407019294b39bea26920e2cddee94c032a1e5fae1ea216c9ea64f'
-            'e4c9468bf15c08a4ef2875be99c99261f0769559d92cde7d25acacac5515e9fd')
+            'e4c9468bf15c08a4ef2875be99c99261f0769559d92cde7d25acacac5515e9fd'
+            'de624a17b93a72af65c3a7987e94af4b9d0664b1ed279b6fb6fd4a4faf9695d9'
+            'e701ff2f681c79eca1663e8b0db52142dc356f35db1ec1bc68198c8a7e7c1d59')
 
 prepare() {
 	mkdir -p $pkgname/game
@@ -68,11 +75,20 @@ prepare() {
 	local _avfmt="$pkgname/game/libavformat.so.60.16.100"
 	local _avcod="$pkgname/game/libavcodec.so.60.31.102"
 
-	# libavformat.so.60: libxml2 (DASH/HLS XML parse) ve libbluray (Blu-ray)
-	# GNU sembol versiyon tabloları uyumsuz — replace-needed ld.so assertion hatasına yol açıyor.
-	# DDNet bunları kullanmaz, kaldır.
-	patchelf --remove-needed libxml2.so.2   "$_avfmt"
-	patchelf --remove-needed libbluray.so.2 "$_avfmt"
+	# Bundle libxml2.so.2 (2.12.7) and libbluray.so.2 (1.3.4) — libavformat was compiled
+	# against these sonames and their GNU_VERSION_R entries cannot be patched away.
+	# LD_LIBRARY_PATH in the launcher prioritizes /opt/bestclient/game/, so these are found first.
+	local _xml2dir="${srcdir}/libxml2_212-extract"
+	local _bldir="${srcdir}/libbluray_134-extract"
+	mkdir -p "$_xml2dir" "$_bldir"
+
+	bsdtar -xf "${srcdir}/libxml2_212" -C "$_xml2dir" "usr/lib/libxml2.so.2.12.7"
+	install -m755 "$_xml2dir/usr/lib/libxml2.so.2.12.7" $pkgname/game/
+	ln -sf libxml2.so.2.12.7 $pkgname/game/libxml2.so.2
+
+	bsdtar -xf "${srcdir}/libbluray_134" -C "$_bldir" "usr/lib/libbluray.so.2.4.3"
+	install -m755 "$_bldir/usr/lib/libbluray.so.2.4.3" $pkgname/game/
+	ln -sf libbluray.so.2.4.3 $pkgname/game/libbluray.so.2
 
 	# libavcodec.so.60 codec bağımlılıkları: DDNet video encode etmediğinden bu
 	# dış encoder/codec kütüphanelerine gerek yok. FFmpeg'in dahili decoderleri
