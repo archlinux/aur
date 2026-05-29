@@ -5,7 +5,7 @@
 
 pkgname=brscan5
 pkgver=1.6.2_0
-pkgrel=1
+pkgrel=2
 pkgdesc='SANE drivers from Brother for compatible models'
 arch=('i686' 'x86_64')
 license=('GPL' 'custom:Brother')
@@ -45,7 +45,7 @@ package() {
   ln -sf libsane-brother5.so.1 libsane-brother5.so
 
   cd "$pkgdir/usr/lib" || exit 1
-  mv "$pkgdir/opt/brother/scanner/brscan5/libLxBsScanCoreApi.so.3.2.1" "$pkgdir/usr/lib"
+  mv "$pkgdir/opt/brother/scanner/brscan5/libLxBsScanCoreApi.so.3.2.6" "$pkgdir/usr/lib"
   ln -sf "libLxBsScanCoreApi.so.3.2.1" "libLxBsScanCoreApi.so.3"
   ln -sf "libLxBsScanCoreApi.so.3" "libLxBsScanCoreApi.so"
 
