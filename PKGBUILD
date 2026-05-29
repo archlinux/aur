@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=barto-cli
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Barto command-line interface for querying bartos instances"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('cargo')
 install=barto-cli.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/barto/archive/v$pkgver.tar.gz")
-sha256sums=('2194127beaf5c8755c00e49b6d209beee5e19de9085caab83001ee7492753828')
+sha256sums=('c68c01d96e9ae0b37220cfd2a39edf874cae4585df28e89f5bbad7b692a5b4ef')
 
 prepare() {
     cd "barto-$pkgver"
@@ -31,8 +31,11 @@ build() {
 package() {
     cd "barto-$pkgver"
 
-    # Binary
-    install -Dm755 "target/release/barto-cli" "$pkgdir/usr/bin/barto-cli"
+    # Real binary (invoked by the launcher)
+    install -Dm755 "target/release/barto-cli" "$pkgdir/usr/lib/barto-cli/barto-cli"
+
+    # Launcher at the public PATH location — loads keychain secrets before exec
+    install -Dm755 "dist/barto-cli/barto-cli-launcher" "$pkgdir/usr/bin/barto-cli"
 
     # Man page
     install -Dm644 "dist/barto-cli/barto-cli.1" "$pkgdir/usr/share/man/man1/barto-cli.1"

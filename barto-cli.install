@@ -7,7 +7,7 @@ post_install() {
     echo "         cp /usr/share/doc/barto-cli/examples/barto-cli.toml.example ~/.config/barto-cli/barto-cli.toml"
     echo "         \$EDITOR ~/.config/barto-cli/barto-cli.toml"
     echo "    Optional: store secrets in the platform keychain (auto-unlocked at login):"
-    echo "         barto-cli secrets set BARTO_CLI_BARTOS_API_KEY"
+    echo "         barto-cli secrets set BARTO_CLI_BARTOS__API_KEY"
     echo "         barto-cli secrets list   # check what is stored"
     echo "    Optional: TLS & Certificate Pinning"
     echo "         Certificate pinning: set ca_cert in [bartos] to pin your bartos CA cert."
