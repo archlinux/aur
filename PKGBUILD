@@ -1,6 +1,6 @@
 # Maintainer: Quaid Perkins <perkins@quaid.me>
 pkgname=crunched-icons
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A clean and minimal icon theme for Linux."
 arch=('any')
@@ -14,7 +14,7 @@ source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-  cd "${srcdir}"/"${pkgname}"
+  cd "${srcdir}"/"${pkgname}-${pkgver}"
   # use the repository's `install.sh` script to install the icon packs
   DESTDIR="${pkgdir}/usr/share/icons" ./install.sh
 }

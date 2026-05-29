@@ -1,6 +1,10 @@
-## [0.1.5] - 2026-05-29
+## [0.1.6] - 2026-05-29
 
-### ⚙️ Miscellaneous Tasks
+### 🐛 Bug Fixes
 
-- *(ci)* Remove bump-version job dependency by @quaid-perkins
+- *(pkgbuild)* Update directory navigation by @quaid-perkins
+
+### 📚 Documentation
+
+- *(readme)* Add release version badges by @quaid-perkins
 
