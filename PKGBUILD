@@ -1,10 +1,10 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=cardx
-_pkgver=0.3.2
+_pkgver=0.3.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Extra Analysis Results Data Utilities"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('51c13cffb6a98ccbde33b585ebed43ca')
-b2sums=('17f0c515a67c7440d6355e611939d475552a952be31f7097509e057ab9f7a787ecebe11eb833de3d00bf75be3d4abb89c446e33014af552f0e9a035c547a4ed5')
+md5sums=('9b9f1245bffa81c7e289d26953c10351')
+b2sums=('7ceb9ce385592ca4a75fddcf3b0243523e3753635958e3a6dc14e2845c2c7e62f1c51bc9b3fefda9399acb6bd278e2cd5df971df2537d14521ccfc26f0274c44')
 
 build() {
   mkdir build
