@@ -4,8 +4,8 @@ pkgbase = ttf-manrope
 	pkgrel = 1
 	url = https://fontsource.org/fonts/manrope
 	arch = any
-	license = OFL-1.1
-	source = ttf-manrope-5.2.5.zip::https://r2.fontsource.org/fonts/manrope@latest/download.zip
+	license = OFL-1.1-RFN
+	source = ttf-manrope-5.2.5.zip::https://r2.fontsource.org/fonts/manrope@5.2.5/download.zip
 	sha256sums = 6862c5e65c085e9f918f0b91e4698f9657703174efe05e6faf5b957eac244f2b
 
 pkgname = ttf-manrope

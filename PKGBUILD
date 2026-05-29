@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="An open-source modern sans-serif font family with comprehensive language support"
 arch=('any')
 url="https://fontsource.org/fonts/manrope"
-license=('OFL-1.1')
+license=('OFL-1.1-RFN')
 source=("${pkgname}-${pkgver}.zip::https://r2.fontsource.org/fonts/manrope@${pkgver}/download.zip")
 sha256sums=('6862c5e65c085e9f918f0b91e4698f9657703174efe05e6faf5b957eac244f2b')
 
