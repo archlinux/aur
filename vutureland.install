@@ -1,0 +1,23 @@
+post_install() {
+    echo ""
+    echo "  ╔══════════════════════════════════════════════════════════╗"
+    echo "  ║                 Vutureland installed!                    ║"
+    echo "  ╚══════════════════════════════════════════════════════════╝"
+    echo ""
+    echo "  Files are in: /usr/share/vutureland/"
+    echo ""
+    echo "  Run the first-time setup wizard to configure your desktop:"
+    echo ""
+    echo "    bash /usr/share/vutureland/welcome_to_vutureland.sh"
+    echo ""
+    echo "  This sets up ~/.config/hypr, starts services, applies a"
+    echo "  default Waybar layout, and sets the initial wallpaper."
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "  Vutureland upgraded to $(pacman -Q vutureland-git | awk '{print $2}')"
+    echo "  No action needed — your ~/.config/vutureland/ user data is untouched."
+    echo ""
+}
