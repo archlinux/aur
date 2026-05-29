@@ -2,7 +2,7 @@
 
 pkgname="wetty"
 pkgdesc="Terminal in browser over http/https"
-pkgver=3.0.4
+pkgver=3.1.0
 pkgrel=1
 
 arch=("x86_64")
@@ -21,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('de7d92d77121c646bfd535e24da885964230158cb1c0d2c115cc01e4a0de5f12ef6446e902547d8cc689c5be24936c106c73b47e15384a27993f2c143e88d555')
+b2sums=('a1db7e531dc24b645830df4199f85d9b1c3286759b9f5ad8ac9a47db7e1c908139719c60753525eb5ff6864bee1aeae7f7fbbea1f40d0333d21a5b2cccf4f0be')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
