@@ -2,7 +2,7 @@
 _pkgname=ValveResourceFormat
 pkgbase=source2viewer
 pkgname=(source2viewer source2viewer-cli)
-pkgver=19.1
+pkgver=19.2
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip !debug)
 conflicts=('valveresourceformat')
 replaces=('valveresourcefromat')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4502bb0437eed369cd7f8c74653d3731c466c7e07184b3d277f710db0d704ed6')
+sha256sums=('6f1b59fc9e480ea65fb7cd7a667758e6105988a13d1b96edbc64f274f691522d')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
@@ -50,7 +50,7 @@ build() {
 
 package_source2viewer() {
 	install=$pkgbase.install
-	depends=('bash' 'hicolor-icon-theme' 'dotnet-runtime-bin' 'wine')
+	depends=('bash' 'hicolor-icon-theme' 'wine')
 	install -Dm644 "$srcdir/$_pkgname-$pkgver/GUI/bin/Release/win-x64/publish/Source2Viewer.exe" "$pkgdir/usr/lib/$pkgname/$pkgname.exe"
 	install -dm755 "$pkgdir/usr/bin"
 	cat >> "$pkgdir/usr/bin/$pkgname" <<-EOF
@@ -99,7 +99,7 @@ EOF
 }
 
 package_source2viewer-cli() {
-	depends=('glibc' 'libgcc' 'libstdc++')
+	depends=('glibc' 'libgcc' 'libstdc++' 'dotnet-runtime>=10')
 	cd "$srcdir/$_pkgname-$pkgver/CLI/bin/Release/linux-x64/publish"
 	install -Dm755 Source2Viewer-CLI "$pkgdir/usr/bin/${pkgbase}-cli"
 	install -Dm644 "$srcdir/$_pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname}"

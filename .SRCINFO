@@ -1,6 +1,6 @@
 pkgbase = source2viewer
 	pkgdesc = Valve's Source 2 resource file format parser, decompiler, and exporter.
-	pkgver = 19.1
+	pkgver = 19.2
 	pkgrel = 1
 	url = https://github.com/ValveResourceFormat/ValveResourceFormat
 	arch = x86_64
@@ -12,17 +12,17 @@ pkgbase = source2viewer
 	replaces = valveresourcefromat
 	options = !strip
 	options = !debug
-	source = https://github.com/ValveResourceFormat/ValveResourceFormat/archive/refs/tags/19.1.tar.gz
-	sha256sums = 4502bb0437eed369cd7f8c74653d3731c466c7e07184b3d277f710db0d704ed6
+	source = https://github.com/ValveResourceFormat/ValveResourceFormat/archive/refs/tags/19.2.tar.gz
+	sha256sums = 6f1b59fc9e480ea65fb7cd7a667758e6105988a13d1b96edbc64f274f691522d
 
 pkgname = source2viewer
 	install = source2viewer.install
 	depends = bash
 	depends = hicolor-icon-theme
-	depends = dotnet-runtime-bin
 	depends = wine
 
 pkgname = source2viewer-cli
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
+	depends = dotnet-runtime>=10
