@@ -1,8 +1,8 @@
 diff --git a/crates/librefang-runtime-media/src/media_understanding.rs b/crates/librefang-runtime-media/src/media_understanding.rs
-index 34f6b8ba5..69a7821be 100644
+index da809fd77..887275d9a 100644
 --- a/crates/librefang-runtime-media/src/media_understanding.rs
 +++ b/crates/librefang-runtime-media/src/media_understanding.rs
-@@ -168,7 +168,8 @@ impl MediaEngine {
+@@ -257,7 +257,8 @@ impl MediaEngine {
          let transcription = match provider {
              // Whisper-compatible providers (OpenAI multipart protocol)
              "groq" | "openai" | "minimax" | "fireworks" | "together" | "siliconflow" => {
@@ -12,7 +12,7 @@ index 34f6b8ba5..69a7821be 100644
                  whisper_transcribe(&api_url, &api_key, model, audio_bytes, &filename, &mime).await?
              }
              // Gemini — multimodal content generation with audio input
-@@ -293,32 +294,44 @@ fn detect_vision_provider() -> Option<&'static str> {
+@@ -626,32 +627,44 @@ async fn gemini_describe_image(
  // ── STT provider helpers ──────────────────────────────────────────────
  
  /// Resolve Whisper-compatible API URL and key for a provider.
@@ -65,23 +65,23 @@ index 34f6b8ba5..69a7821be 100644
          )),
          other => Err(format!("Unknown Whisper-compatible provider: {other}")),
 diff --git a/crates/librefang-types/src/media.rs b/crates/librefang-types/src/media.rs
-index e33818da3..64e0bc739 100644
+index db7fb8411..4223a6058 100644
 --- a/crates/librefang-types/src/media.rs
 +++ b/crates/librefang-types/src/media.rs
-@@ -79,6 +79,8 @@ pub struct MediaConfig {
+@@ -124,6 +124,8 @@ pub struct MediaConfig {
      pub audio_provider: Option<String>,
      /// Preferred audio transcription model (provider default if None).
      pub audio_model: Option<String>,
 +    /// Custom base URL override for transcription.
 +    pub audio_base_url: Option<String>,
- }
- 
- impl Default for MediaConfig {
-@@ -91,6 +93,7 @@ impl Default for MediaConfig {
-             image_provider: None,
+     /// Custom / self-hosted STT endpoint configuration.
+     ///
+     /// When `audio_provider` is set to a name that is not one of the
+@@ -146,6 +148,7 @@ impl Default for MediaConfig {
+             image_model: None,
              audio_provider: None,
              audio_model: None,
 +            audio_base_url: None,
+             custom_stt: CustomSttConfig::default(),
          }
      }
- }

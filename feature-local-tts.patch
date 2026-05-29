@@ -1,8 +1,8 @@
 diff --git a/crates/librefang-runtime/src/tts.rs b/crates/librefang-runtime/src/tts.rs
-index c52587b29..d3dfc9e93 100644
+index a50a6fce5..b1ba51eb9 100644
 --- a/crates/librefang-runtime/src/tts.rs
 +++ b/crates/librefang-runtime/src/tts.rs
-@@ -120,9 +120,13 @@ impl TtsEngine {
+@@ -124,9 +124,13 @@ impl TtsEngine {
              "speed": self.config.openai.speed,
          });
  
@@ -18,10 +18,10 @@ index c52587b29..d3dfc9e93 100644
              .header("Content-Type", "application/json")
              .json(&body)
 diff --git a/crates/librefang-types/src/config/types.rs b/crates/librefang-types/src/config/types.rs
-index cd77cf48c..70664e9f6 100644
+index 1235e6254..5c8c50eab 100644
 --- a/crates/librefang-types/src/config/types.rs
 +++ b/crates/librefang-types/src/config/types.rs
-@@ -1266,6 +1266,8 @@ pub struct TtsOpenAiConfig {
+@@ -1348,6 +1348,8 @@ pub struct TtsOpenAiConfig {
      pub format: String,
      /// Speed: 0.25 to 4.0. Default: 1.0.
      pub speed: f32,
@@ -30,7 +30,7 @@ index cd77cf48c..70664e9f6 100644
  }
  
  impl Default for TtsOpenAiConfig {
-@@ -1275,6 +1277,7 @@ impl Default for TtsOpenAiConfig {
+@@ -1357,6 +1359,7 @@ impl Default for TtsOpenAiConfig {
              model: "tts-1".to_string(),
              format: "mp3".to_string(),
              speed: 1.0,
