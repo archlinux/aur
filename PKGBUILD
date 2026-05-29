@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=accounts-qml-module
 pkgver=0.7
-pkgrel=7
+pkgrel=8
 pkgdesc='Expose the Online Accounts API to QML applications'
 url='https://gitlab.com/accounts-sso/accounts-qml-module'
 arch=(x86_64)
