@@ -2,7 +2,7 @@
 
 pkgname=mihomosh-bin
 pkgver=2.3.2
-pkgrel=0
+pkgrel=1
 pkgdesc="A CLI Toolkit for Mihomo (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/SamuNatsu/mihomosh"
