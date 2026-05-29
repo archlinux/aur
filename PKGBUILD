@@ -2,7 +2,7 @@
 pkgname='alacritty-sixel-git'
 _pkgname="alacritty"
 pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
-pkgver=0.14.0.2427.gc7213774
+pkgver=0.17.0.2561.g3d658d2e
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 
 build(){
   cd "$_pkgname"
-  env CARGO_INCREMENTAL=0 cargo build --release --locked
+  env CARGO_INCREMENTAL=0 cargo build --release
 }
 
 check(){
@@ -34,21 +34,20 @@ check(){
 package_alacritty-sixel-git() {
 	cd $_pkgname
 
-	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "extra/linux/Alacritty.desktop"
+	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "$srcdir/$_pkgname/extra/linux/Alacritty.desktop"
+
+	mkdir -p "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/man/man5"
+	scdoc < extra/man/alacritty.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty.1.gz" > /dev/null
+	scdoc < extra/man/alacritty.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty.5.gz" > /dev/null
+	scdoc < extra/man/alacritty-msg.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty-msg.1.gz" > /dev/null
+	scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty-bindings.5.gz" > /dev/null
+	scdoc < extra/man/alacritty-escapes.7.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty-escapes.7.gz" > /dev/null
+
 	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty"
-
-	scdoc < "extra/man/alacritty.1.scd" | install -D -m644 /dev/stdin \
-		"$pkgdir/usr/share/man/man1/alacritty.1"
-	scdoc < "extra/man/alacritty.5.scd" | install -D -m644 /dev/stdin \
-		"$pkgdir/usr/share/man/man5/alacritty.5"
-	scdoc < "extra/man/alacritty-msg.1.scd" | install -D -m644 /dev/stdin \
-		"$pkgdir/usr/share/man/man1/alacritty-msg.1"
-	scdoc < "extra/man/alacritty-bindings.5.scd" | install -D -m644 /dev/stdin \
-		"$pkgdir/usr/share/man/man5/alacritty-bindings.5"
-
 	install -D -m644 "extra/linux/org.alacritty.Alacritty.appdata.xml" "$pkgdir/usr/share/appdata/org.alacritty.Alacritty.appdata.xml"
 	install -D -m644 "extra/completions/alacritty.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty"
 	install -D -m644 "extra/completions/_alacritty" "$pkgdir/usr/share/zsh/site-functions/_alacritty"
 	install -D -m644 "extra/completions/alacritty.fish" "$pkgdir/usr/share/fish/vendor_completions.d/alacritty.fish"
 	install -D -m644 "extra/logo/alacritty-term.svg" "$pkgdir/usr/share/pixmaps/Alacritty.svg"
+	install -D -m644 "extra/logo/compat/alacritty-term.png" "$pkgdir/usr/share/pixmaps/Alacritty.png"
 }
