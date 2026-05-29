@@ -1,6 +1,6 @@
 pkgbase = vibepaper
 	pkgdesc = Wayland wallpaper daemon that generates and refines wallpapers via OpenAI, Gemini, Stability and other image APIs
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/maxischmaxi/vibepaper
 	arch = x86_64
@@ -10,9 +10,12 @@ pkgbase = vibepaper
 	depends = wayland
 	depends = curl
 	depends = cjson
+	depends = libxcb
+	depends = glib2
+	depends = dbus
 	provides = vibepaper
 	conflicts = vibepaper-git
-	source = vibepaper-0.1.0.tar.gz::https://github.com/maxischmaxi/vibepaper/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = c894f41375d908a91d77cff5c2a45e0e425adf1e8a58fd27302f16d9ce85ca2c
+	source = vibepaper-0.2.0.tar.gz::https://github.com/maxischmaxi/vibepaper/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 9a343ec1b0e1093bc12ddc8747135b6248472a912e78d75387006f33e6f9f4e5
 
 pkgname = vibepaper

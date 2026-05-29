@@ -6,18 +6,21 @@
 # for local/manual builds.
 
 pkgname=vibepaper
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Wayland wallpaper daemon that generates and refines wallpapers via OpenAI, Gemini, Stability and other image APIs"
 arch=('x86_64')
 url="https://github.com/maxischmaxi/vibepaper"
 license=('MIT')
-depends=('wayland' 'curl' 'cjson')
+# wayland+wayland-protocols → wlr backend; libxcb → x11 backend;
+# glib2 → gnome backend (GSettings); dbus → kde backend. Build all four by
+# default (Makefile BACKENDS); the daemon picks one at runtime.
+depends=('wayland' 'curl' 'cjson' 'libxcb' 'glib2' 'dbus')
 makedepends=('wayland-protocols' 'pkgconf')
 provides=("$pkgname")
 conflicts=("$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/maxischmaxi/vibepaper/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c894f41375d908a91d77cff5c2a45e0e425adf1e8a58fd27302f16d9ce85ca2c')
+sha256sums=('9a343ec1b0e1093bc12ddc8747135b6248472a912e78d75387006f33e6f9f4e5')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
