@@ -1,7 +1,7 @@
 pkgbase = wine-cn-font
 	pkgdesc = a gtk+ calendar widget for chinese lunar library.
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/yetist/wine-cn-fonts
 	install = wine-cn-font.install
 	arch = x86_64
@@ -10,6 +10,9 @@ pkgbase = wine-cn-font
 	makedepends = meson
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-winpthreads
+	optdepends = adobe-source-han-sans-cn-fonts: Adobe Source Han Sans Subset OTF - Simplified Chinese OpenType/CFF fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	optdepends = wqy-microhei: A Sans-Serif style high quality CJK outline font
 	optdepends = wine: A compatibility layer for running Windows programs
 	source = wine-cn-font::git+https://github.com/yetist/wine-cn-fonts.git#tag=v0.0.1
 	source = wine-cn-font.install
