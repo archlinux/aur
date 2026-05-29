@@ -1,6 +1,6 @@
 # Maintainer: Guy Chait <53366531+gchait@users.noreply.github.com>
 pkgname=autocake
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Fully automated SQM (cake) bandwidth tuner for Linux Wi-Fi workstations"
 arch=('any')
@@ -11,20 +11,16 @@ depends=('bash' 'iproute2' 'curl')
 # already provides make, sed, install, etc. Listing them is discouraged
 # per current Arch packaging guidelines.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-# Replace SKIP with the real hash before publishing to AUR — run
-# `updpkgsums` after tagging the release. SKIP bypasses tarball
-# integrity verification entirely; it's only acceptable while the
-# tag doesn't exist yet (chicken-and-egg during initial setup).
-sha256sums=('2fd2d70875a2b53e35d8d799a9ff3051cc9ba5e749dd3c064b166a9ba0498fc0')
+# Upstream keeps SKIP; publish.sh fills the real hash into the AUR-side
+# copy at submission time so this file never needs to be edited per
+# release. Users install from AUR, never from this PKGBUILD directly.
+sha256sums=('3bf582bb4a9cc128a56733239d45bbfcf660fac5ea0af801d673482453bdf8fc')
 install=$pkgname.install
 
 package() {
   cd "$pkgname-$pkgver"
 
-  # PREFIX=/usr per FHS for distro packages (/usr/local is admin-owned).
-  # SYSTEMDDIR=/usr/lib/systemd/system per systemd's Unit Load Path: that
-  # path is for distro-shipped units, /etc/systemd/system is reserved for
-  # local admin overrides and `systemctl enable` symlinks.
+  # Arch-conventional paths — see README.md § Install for rationale.
   make install \
     DESTDIR="$pkgdir" \
     PREFIX=/usr \
