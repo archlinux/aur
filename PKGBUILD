@@ -45,6 +45,25 @@ sha256sums=('f302a590e6a3ab6ba02e27ec963902393d362f0817047e09bd1c5e34749f9607'
 : "${source[@]}"
 : "${sha256sums[@]}"
 
+_list_packages_for_removal() {
+	cargo tree \
+		--all-features \
+		--depth 1 \
+		--package "${_pkgname}" \
+		--prefix none \
+		"$@" |
+		tail -n +2 |
+		cut -d " " -f 1 |
+		grep -Fvx snapbox
+}
+
+_remove_packages() {
+	xargs cargo remove \
+		--offline \
+		--package "${_pkgname}" \
+		"$@"
+}
+
 prepare() {
 	cd "${_pkgname}-${pkgver}"
 
@@ -78,16 +97,15 @@ check() {
 	find "crates/${_pkgname}/src" -name "*.rs" -delete
 	sed -i '/^default-run = "squawk"$/d' "crates/${_pkgname}/Cargo.toml"
 	# Skip rebuilding the dependencies.
-	sed -i \
-		'/^\[dependencies\]$/,/^\[dev-dependencies\]$/ { /^\[dev-dependencies\]$/!d }' \
-		"crates/${_pkgname}/Cargo.toml"
+	_list_packages_for_removal --edges no-dev | _remove_packages
+	_list_packages_for_removal --edges dev | _remove_packages --dev
 	# Test against the release executable.
 	declare "CARGO_BIN_EXE_${_pkgname}=${PWD:?}/target/release/${_pkgname}"
 	export "CARGO_BIN_EXE_${_pkgname}"
 
 	cargo test \
 		--all-features \
-		--offline \
+		--frozen \
 		--package "${_pkgname}" \
 		--test '*'
 }
