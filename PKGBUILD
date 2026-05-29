@@ -26,8 +26,8 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r1008.b367387
-pkgrel=3
+pkgver=r1137.2077f6c
+pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor + first-party mshell desktop (mango heritage)"
 url="https://github.com/kenanpelit/margo"
 arch=("x86_64")
