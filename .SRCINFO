@@ -1,0 +1,26 @@
+pkgbase = jlfine-bin
+	pkgdesc = Native Jellyfin desktop client with bit-perfect audio and HDR/Dolby Vision video (Slint + libmpv)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/prietus/jlfine
+	arch = x86_64
+	license = MIT
+	depends = mpv
+	depends = alsa-lib
+	depends = dbus
+	depends = fontconfig
+	depends = libxkbcommon
+	depends = libglvnd
+	depends = wayland
+	provides = jlfine
+	conflicts = jlfine
+	source = jlfine-0.1.0::https://github.com/prietus/jlfine/releases/download/v0.1.0/jlfine-linux-x86_64
+	source = jlfine-0.1.0.png::https://raw.githubusercontent.com/prietus/jlfine/v0.1.0/crates/jlfine-ui/ui/icon.png
+	source = jlfine-0.1.0.desktop::https://raw.githubusercontent.com/prietus/jlfine/v0.1.0/packaging/jlfine.desktop
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/prietus/jlfine/v0.1.0/LICENSE
+	sha256sums = b6592be6a8268c11acce9ca906620f0e51f4326150828ca28beefe1b63d0adba
+	sha256sums = acde7cddefcb2733fc4cd592a5e4d2e7aa0eac452f9092d35ea27c36fc64c0a7
+	sha256sums = edfd28b3a72b473fff05ceac56b8c170f4fe8d853de1300976f5a885448cf8bb
+	sha256sums = 0e87f8768a2d1e3e648c5bbf5d02261ca12be722dce4d25fc51d2c610e03ab32
+
+pkgname = jlfine-bin
