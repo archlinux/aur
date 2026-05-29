@@ -2,10 +2,10 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade-git
-pkgver=3.2.8+r3163+gd826a3767
-pkgrel=2
+pkgver=3.2.12+r3729+g48f82abfd
+pkgrel=3
 pkgdesc='SLADE3 Doom editor'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://slade.mancubus.net/'
 license=('GPL-2.0-only')
 
@@ -34,9 +34,10 @@ depends=(
   'xz')
 makedepends=('git'
   'cmake'
-  'p7zip')
+  'p7zip'
+  'ninja')
 
-source=("slade::git+https://github.com/sirjuddington/SLADE.git")
+source=("slade::git+https://github.com/sirjuddington/SLADE.git#branch=3.3.0")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -49,23 +50,14 @@ pkgver() {
 
 build() {
   cd slade
-  cmake -B build -S . \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_RPATH="/opt/sfml2/lib" 
+  cmake -B build -G Ninja
   cmake --build build
 }
 
 package() {
-  # Install slade
   cd "$srcdir/slade/build"
-  make install DESTDIR="$pkgdir"
-
-  # Rename slade executable and create wrapper script
-  mv "$pkgdir/usr/bin/slade" "$pkgdir/usr/bin/slade3.bin"
-  cat >"$pkgdir/usr/bin/slade" <<'EOF'
-#!/bin/sh
-GDK_BACKEND=x11 exec /usr/bin/slade3.bin "$@"
-EOF
-  chmod 755 "$pkgdir/usr/bin/slade"
+  mkdir -p "$pkgdir"/usr/bin/
+  mkdir -p "$pkgdir"/usr/share/slade3
+  install -Dm755 ./slade "$pkgdir"/usr/bin/slade
+  install -Dm644 ./slade.pk3 "$pkgdir"/usr/share/slade3/slade.pk3
 }
