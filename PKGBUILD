@@ -1,6 +1,6 @@
 # Maintainer: Guy Chait <53366531+gchait@users.noreply.github.com>
 pkgname=autocake
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Fully automated SQM (cake) bandwidth tuner for Linux Wi-Fi workstations"
 arch=('any')
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # Upstream keeps SKIP; publish.sh fills the real hash into the AUR-side
 # copy at submission time so this file never needs to be edited per
 # release. Users install from AUR, never from this PKGBUILD directly.
-sha256sums=('3bf582bb4a9cc128a56733239d45bbfcf660fac5ea0af801d673482453bdf8fc')
+sha256sums=('38e47657e2c2fc8a232df0c3ede98ee00816ded3660af331a4a75c58b7a5e6dd')
 install=$pkgname.install
 
 package() {
