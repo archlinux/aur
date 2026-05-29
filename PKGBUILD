@@ -7,7 +7,9 @@ pkgrel=1
 pkgdesc=" A simple and elegant open-source markdown editor that focused on speed and usability."
 arch=("x86_64")
 url="https://github.com/marktext/marktext"
-license=()
+license=(MIT)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 depends=('gtk3'  'libsecret'  'libxkbfile'  'libxss'  'nss')
 source=(
   "$url/releases/download/v$pkgver/$_pkgname-linux-$pkgver.deb")
