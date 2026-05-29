@@ -1,7 +1,7 @@
 pkgbase = zen-browser-twilight-bin
 	pkgdesc = Zen Browser - Twilight nightly build, a Firefox-based browser focused on privacy
 	pkgver = 1.21t
-	pkgrel = 7
+	pkgrel = 8
 	url = https://zen-browser.app/
 	install = zen-browser-twilight-bin.install
 	arch = x86_64
@@ -32,9 +32,9 @@ pkgbase = zen-browser-twilight-bin
 	sha512sums = dae4133154524cca0ed0bed47b9c2a6070be2e9aba603442e3050c40a15fd04b00dd502eeab89b8a0f51ee27020a19b0ee5f2ac87cd4ae9c0694fd21d330c749
 	sha512sums = 5f16ff2b8b84402b19b735e2b627d8290bdf9289e7ea26973aa6dc339ce6c9835ce6c4c12df881436108894bcee5623e43b5ef090c641031369ac28975b6107e
 	sha512sums = f17d02c67f731ea27401176d2fb320a093367d94c8cbfd18a3b76c6f516994b8c547cee970b7bbf0422767064d62410884e07ae6e95b59007b48869e750fdcd9
-	source_x86_64 = zen.linux-x86_64-1.21t-7.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz
+	source_x86_64 = zen.linux-x86_64-1.21t-8.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz
 	sha512sums_x86_64 = 4e6a981c5af26048109da5a6a73925b97bf352dd14d4180e3261f297dbd3521b7929c384538d35255c945b366cc3aa09d61bbabeefaa491011388c7051b4c7ea
-	source_aarch64 = zen.linux-aarch64-1.21t-7.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-aarch64.tar.xz
+	source_aarch64 = zen.linux-aarch64-1.21t-8.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-aarch64.tar.xz
 	sha512sums_aarch64 = 1dba520b98909d3e2916d5878b0251ba29919faceca2fa08a16422a9c5c3130afa1da5549be37a774d92dcfa131232d3f35757721bec4eda4e12639a49166998
 
 pkgname = zen-browser-twilight-bin

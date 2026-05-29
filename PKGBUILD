@@ -2,7 +2,7 @@
 
 pkgname=zen-browser-twilight-bin
 pkgver=1.21t
-pkgrel=7
+pkgrel=8
 pkgdesc="Zen Browser - Twilight nightly build, a Firefox-based browser focused on privacy"
 arch=('x86_64' 'aarch64')
 url="https://zen-browser.app/"

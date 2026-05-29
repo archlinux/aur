@@ -1,24 +1,19 @@
+GREEN='\e[1;32m'
+BLUE='\e[1;34m'
+YELLOW='\e[1;33m'
+RESET='\e[0m'
+
 post_install() {
-    echo ""
-    echo "  Zen Browser Twilight (每夜版) 已安装成功！"
-    echo "  启动命令: zen-browser-twilight"
-    echo "  自定义启动参数: ~/.config/zen-browser-twilight-flags.conf"
-    echo ""
+    echo -e "\n${GREEN}  Zen Browser Twilight (experimental Nightly build) has been successfully installed!${RESET}"
+    echo -e "  -> ${BLUE}Launch command:${RESET} zen-browser-twilight"
+    echo -e "  -> ${BLUE}User flags configuration file:${RESET} ~/.config/zen-browser-twilight-flags.conf\n"
 }
 
 post_upgrade() {
-    echo ""
-    echo "  Zen Browser Twilight 已更新至 $1"
-    echo ""
-}
-
-pre_remove() {
-    true
+    echo -e "\n${GREEN}  Zen Browser Twilight has been upgraded to version $1!${RESET}\n"
 }
 
 post_remove() {
-    echo ""
-    echo "  Zen Browser Twilight 已移除。"
-    echo "  配置文件保留在 ~/.zen/"
-    echo ""
+    echo -e "\n${YELLOW}  Zen Browser Twilight has been successfully removed.${RESET}"
+    echo -e "  -> User profile files were kept in: ~/.zen/\n"
 }
