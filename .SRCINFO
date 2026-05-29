@@ -1,7 +1,7 @@
 pkgbase = bestclient
 	pkgdesc = DDRaceNetwork modification that adds new feauters
 	pkgver = 1.7.1
-	pkgrel = 4
+	pkgrel = 5
 	install = bestclient.install
 	arch = x86_64
 	makedepends = patchelf
@@ -11,7 +11,6 @@ pkgbase = bestclient
 	depends = curl
 	depends = glew
 	depends = wavpack
-	depends = ffmpeg
 	depends = libnotify
 	depends = miniupnpc
 	depends = sqlite
@@ -21,7 +20,9 @@ pkgbase = bestclient
 	optdepends = discord-game-sdk: Enable rich presence in Discord desktop client.
 	source = https://github.com/RoflikBEST/bestdownload/releases/download/v1.7.1/BestClient-linux.tar.xz
 	source = bestclient.png
+	source = ffmpeg6::https://archive.archlinux.org/packages/f/ffmpeg/ffmpeg-2%3A6.1.1-7-x86_64.pkg.tar.zst
 	sha256sums = ffe98fc6159789e56241e90e27aa5cf2ab2ec0ac9ebefe8d6c13e6acf566e649
 	sha256sums = a118504f690407019294b39bea26920e2cddee94c032a1e5fae1ea216c9ea64f
+	sha256sums = e4c9468bf15c08a4ef2875be99c99261f0769559d92cde7d25acacac5515e9fd
 
 pkgname = bestclient
