@@ -7,14 +7,14 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.6.870.r2.gc73aee6e4
+pkgver=1.6.870.r72.g7fba6df0e
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
 arch=('x86_64')
 url='https://www.mumble.info'
 license=('BSD')
-depends=('gcc-libs' 'glibc' 'qt6-base')
+depends=('glibc' 'libgcc' 'libstdc++' 'qt6-base')
 makedepends=('alsa-lib' 'avahi' 'boost' 'cli11' 'cmake' 'git' 'hicolor-icon-theme'
              'jack' 'lib32-gcc-libs' 'libpulse' 'libsndfile' 'libspeechd'
              'libx11' 'libxi' 'mesa' 'nlohmann-json' 'openssl'
