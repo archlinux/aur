@@ -49,7 +49,8 @@ package() {
     assets/wayruler.png \
     "$pkgdir/usr/share/pixmaps/wayruler.png"
 
-  install -Dm644 \
-    src/assets/*.svg \
+  install -d "$pkgdir/usr/share/wayruler/icons"
+
+  install -m644 src/assets/*.svg \
     "$pkgdir/usr/share/wayruler/icons/"
 }
