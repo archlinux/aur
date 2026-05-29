@@ -1,0 +1,21 @@
+pkgbase = ykw
+	pkgdesc = Multi-recipient YubiKey OpenPGP workflow CLI (Bash)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/j4y-w4lk3r/ykw
+	arch = any
+	license = MIT
+	depends = bash
+	depends = gnupg
+	depends = yubikey-manager
+	depends = jq
+	optdepends = 1password-cli: store PINs + provisioning metadata in 1Password
+	optdepends = fzf: interactive tag picker (Ninjago presets)
+	optdepends = github-cli: GitHub repo helpers used by ykw sync
+	provides = ykw
+	conflicts = ykw-bin
+	conflicts = ykw-git
+	source = ykw-0.1.1.tar.gz::https://github.com/j4y-w4lk3r/ykw/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 9b4e2bf8f8a619093a17bbae8e185ffcd4c6b4634d1488fc2777e2e9600aa60a
+
+pkgname = ykw
