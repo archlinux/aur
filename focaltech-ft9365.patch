@@ -1,0 +1,1132 @@
+From e960ddf31648c0bd784213cfc71fbdb1800b4264 Mon Sep 17 00:00:00 2001
+From: Sid1803 <siddheshkmande@gmail.com>
+Date: Wed, 4 Mar 2026 18:16:19 +0530
+Subject: [PATCH 1/2] add storage clear for 2808:6553
+
+---
+ data/autosuspend.hwdb                         |   1 +
+ .../drivers/focaltech_moc/focaltech_moc.c     | 195 +++++++++----
+ tests/focaltech_moc-6553/custom.pcapng        | Bin 0 -> 61556 bytes
+ tests/focaltech_moc-6553/custom.py            |  75 +++++
+ tests/focaltech_moc-6553/device               | 267 ++++++++++++++++++
+ tests/meson.build                             |   1 +
+ 6 files changed, 489 insertions(+), 50 deletions(-)
+ create mode 100644 tests/focaltech_moc-6553/custom.pcapng
+ create mode 100644 tests/focaltech_moc-6553/custom.py
+ create mode 100644 tests/focaltech_moc-6553/device
+
+diff --git a/data/autosuspend.hwdb b/data/autosuspend.hwdb
+index 9d1fd351..0ca7a88c 100644
+--- a/data/autosuspend.hwdb
++++ b/data/autosuspend.hwdb
+@@ -187,6 +187,7 @@ usb:v2808pA78A*
+ usb:v2808p1579*
+ usb:v2808p077A*
+ usb:v2808p079A*
++usb:v2808p6553*
+  ID_AUTOSUSPEND=1
+  ID_PERSIST=0
+ 
+diff --git a/libfprint/drivers/focaltech_moc/focaltech_moc.c b/libfprint/drivers/focaltech_moc/focaltech_moc.c
+index 8bd93e4b..68b12b11 100644
+--- a/libfprint/drivers/focaltech_moc/focaltech_moc.c
++++ b/libfprint/drivers/focaltech_moc/focaltech_moc.c
+@@ -22,6 +22,9 @@
+ 
+ #define FP_COMPONENT "focaltech_moc"
+ 
++#define FOCALTECH_QUIRK_SINGLE_SLOT 1
++#define FOCALTECH_MOC_STATIC_USER_ID "focaltech_moc_static_id"
++
+ #include "drivers_api.h"
+ 
+ G_DEFINE_TYPE (FpiDeviceFocaltechMoc, fpi_device_focaltech_moc, FP_TYPE_DEVICE)
+@@ -37,6 +40,7 @@ static const FpIdEntry id_table[] = {
+   { .vid = 0x2808,  .pid = 0x1579,  },
+   { .vid = 0x2808,  .pid = 0x077A,  },
+   { .vid = 0x2808,  .pid = 0x079A,  },
++  { .vid = 0x2808,  .pid = 0x6553,  .driver_data = FOCALTECH_QUIRK_SINGLE_SLOT, },
+   { .vid = 0,  .pid = 0,  .driver_data = 0 },   /* terminating entry */
+ };
+ 
+@@ -1045,7 +1049,7 @@ focaltech_moc_get_enrolled_info_cb (FpiDeviceFocaltechMoc *self,
+   fp_cmd = (FpCmd *) buffer_in;
+   items = (struct EnrolledInfoItem *) (fp_cmd + 1);
+ 
+-  if (fp_cmd->code != 0x04)
++  if (fp_cmd->code != 0x04 && fp_cmd->code != 0x09)
+     {
+       fpi_ssm_mark_failed (self->task_ssm,
+                            fpi_device_error_new_msg (FP_DEVICE_ERROR_PROTO,
+@@ -1053,8 +1057,21 @@ focaltech_moc_get_enrolled_info_cb (FpiDeviceFocaltechMoc *self,
+     }
+   else
+     {
+-      memcpy (&data->enrolled_info->items[0], items,
+-              FOCALTECH_MOC_MAX_FINGERS * sizeof (struct EnrolledInfoItem));
++      if (fp_cmd->code == 0x04)
++        {
++
++          memcpy (&data->enrolled_info->items[0], items,
++                  FOCALTECH_MOC_MAX_FINGERS * sizeof (struct EnrolledInfoItem));
++
++        }
++      else if (fp_cmd->code == 0x09)
++        {
++
++          memset (data->enrolled_info->actived, 0, FOCALTECH_MOC_MAX_FINGERS);
++          memset (&data->enrolled_info->items[0], 0,
++                  FOCALTECH_MOC_MAX_FINGERS * sizeof (struct EnrolledInfoItem));
++        }
++
+       fpi_ssm_next_state (self->task_ssm);
+     }
+ }
+@@ -1109,7 +1126,7 @@ focaltech_moc_get_enrolled_list_cb (FpiDeviceFocaltechMoc *self,
+   fp_cmd = (FpCmd *) buffer_in;
+   uid_list = (struct UidList *) (fp_cmd + 1);
+ 
+-  if (fp_cmd->code != 0x04)
++  if (fp_cmd->code != 0x04 && fp_cmd->code != 0x09)
+     {
+       fpi_ssm_mark_failed (self->task_ssm,
+                            fpi_device_error_new_msg (FP_DEVICE_ERROR_PROTO,
+@@ -1118,46 +1135,49 @@ focaltech_moc_get_enrolled_list_cb (FpiDeviceFocaltechMoc *self,
+   else
+     {
+       FpActionData *data = fpi_ssm_get_data (self->task_ssm);
+-      int i;
+ 
+-      for (i = 0; i < FOCALTECH_MOC_MAX_FINGERS; i++)
++      if (fp_cmd->code == 0x04)
+         {
+-          if (uid_list->actived[i] != 0)
++          int i;
++          for (i = 0; i < FOCALTECH_MOC_MAX_FINGERS; i++)
+             {
+-              struct UserId *user_id = &uid_list->uid[i];
+-              FpPrint *print = fp_print_new (FP_DEVICE (self));
+-              struct EnrolledInfoItem *item = NULL;
+-              int index;
+-
+-              fp_info ("focaltechmoc add slot: %d", i);
+-
+-              fprint_set_uid (print, user_id->uid, sizeof (user_id->uid));
+-
+-              if (focaltech_moc_get_enrolled_info_item (self, user_id->uid, &item, &index) == 0)
++              if (uid_list->actived[i] != 0)
+                 {
+-                  g_autofree gchar *userid_safe = NULL;
+-                  const gchar *username;
+-                  userid_safe = g_strndup ((const char *) &item->user_id, FOCALTECH_MOC_USER_ID_LENGTH);
+-                  fp_dbg ("%s", userid_safe);
+-                  fpi_print_fill_from_user_id (print, userid_safe);
+-                  memcpy (data->enrolled_info->user_id[index].uid, user_id->uid, 32);
+-                  data->enrolled_info->user_des[index].finger = fp_print_get_finger (print);
+-                  username = fp_print_get_username (print);
+-
+-                  if (username != NULL)
+-                    strncpy (data->enrolled_info->user_des[index].username, username, 64);
++                  struct UserId *user_id = &uid_list->uid[i];
++                  FpPrint *print = fp_print_new (FP_DEVICE (self));
++                  struct EnrolledInfoItem *item = NULL;
++                  int index;
++
++                  fp_info ("focaltechmoc add slot: %d", i);
++
++                  fprint_set_uid (print, user_id->uid, sizeof (user_id->uid));
++
++                  if (focaltech_moc_get_enrolled_info_item (self, user_id->uid, &item, &index) == 0)
++                    {
++                      g_autofree gchar *userid_safe = NULL;
++                      const gchar *username;
++                      userid_safe = g_strndup ((const char *) &item->user_id, FOCALTECH_MOC_USER_ID_LENGTH);
++                      fp_dbg ("%s", userid_safe);
++                      fpi_print_fill_from_user_id (print, userid_safe);
++                      memcpy (data->enrolled_info->user_id[index].uid, user_id->uid, 32);
++                      data->enrolled_info->user_des[index].finger = fp_print_get_finger (print);
++                      username = fp_print_get_username (print);
++
++                      if (username != NULL)
++                        strncpy (data->enrolled_info->user_des[index].username, username, 64);
++                    }
++
++                  g_ptr_array_add (data->list_result, g_object_ref_sink (print));
+                 }
+-
+-              g_ptr_array_add (data->list_result, g_object_ref_sink (print));
+             }
+-        }
+ 
+-      for (i = 0; i < FOCALTECH_MOC_MAX_FINGERS; i++)
+-        {
+-          struct EnrolledInfoItem *item = &data->enrolled_info->items[i];
++          for (i = 0; i < FOCALTECH_MOC_MAX_FINGERS; i++)
++            {
++              struct EnrolledInfoItem *item = &data->enrolled_info->items[i];
+ 
+-          if (data->enrolled_info->actived[i] == 0)
+-            memset (item, 0, sizeof (struct EnrolledInfoItem));
++              if (data->enrolled_info->actived[i] == 0)
++                memset (item, 0, sizeof (struct EnrolledInfoItem));
++            }
+         }
+ 
+       fpi_ssm_next_state (self->task_ssm);
+@@ -1281,7 +1301,18 @@ focaltech_moc_start_enroll_cb (FpiDeviceFocaltechMoc *self,
+         {
+           fpi_device_get_enroll_data (FP_DEVICE (self), &print);
+           fprint_set_uid (print, user_id->uid, sizeof (user_id->uid));
+-          userid_safe = fpi_print_generate_user_id (print);
++
++          guint64 quirk = fpi_device_get_driver_data (FP_DEVICE (self));
++          if (quirk == FOCALTECH_QUIRK_SINGLE_SLOT)
++            {
++              fp_info ("Applying SINGLE_SLOT quirk: Forcing static User ID");
++              userid_safe = g_strdup (FOCALTECH_MOC_STATIC_USER_ID);
++            }
++          else
++            {
++              userid_safe = fpi_print_generate_user_id (print);
++            }
++
+           userid_len = strlen (userid_safe);
+           userid_len = MIN (FOCALTECH_MOC_USER_ID_LENGTH, userid_len);
+           fp_info ("focaltechmoc user id: %s", userid_safe);
+@@ -1352,7 +1383,7 @@ focaltech_moc_set_enrolled_info_cb (FpiDeviceFocaltechMoc *self,
+ 
+   fp_cmd = (FpCmd *) buffer_in;
+ 
+-  if (fp_cmd->code != 0x04)
++  if (fp_cmd->code != 0x04 && fp_cmd->code != 0x09)
+     {
+       fpi_ssm_mark_failed (self->task_ssm,
+                            fpi_device_error_new_msg (FP_DEVICE_ERROR_PROTO,
+@@ -1379,7 +1410,7 @@ focaltech_moc_commit_cb (FpiDeviceFocaltechMoc *self,
+ 
+   fp_cmd = (FpCmd *) buffer_in;
+ 
+-  if (fp_cmd->code != 0x04)
++  if (fp_cmd->code != 0x04 && fp_cmd->code != 0x09)
+     {
+       fpi_ssm_mark_failed (self->task_ssm,
+                            fpi_device_error_new_msg (FP_DEVICE_ERROR_PROTO,
+@@ -1574,7 +1605,7 @@ focaltech_moc_delete_cb (FpiDeviceFocaltechMoc *self,
+ 
+   fp_cmd = (FpCmd *) buffer_in;
+ 
+-  if (fp_cmd->code != 0x04)
++  if (fp_cmd->code != 0x04 && fp_cmd->code != 0x09)
+     {
+       fpi_ssm_mark_failed (self->task_ssm,
+                            fpi_device_error_new_msg (FP_DEVICE_ERROR_PROTO,
+@@ -1582,20 +1613,31 @@ focaltech_moc_delete_cb (FpiDeviceFocaltechMoc *self,
+     }
+   else
+     {
+-      FpActionData *data = fpi_ssm_get_data (self->task_ssm);
+-      int ssm_state;
++      guint64 quirk = fpi_device_get_driver_data (FP_DEVICE (self));
+ 
+-      if (self->delete_slot != -1)
++      if (quirk == FOCALTECH_QUIRK_SINGLE_SLOT)
+         {
+-          fp_dbg ("delete slot %d", self->delete_slot);
+-          data->enrolled_info->actived[self->delete_slot] = 0;
+-          memset (&data->enrolled_info->items[self->delete_slot], 0, sizeof (struct EnrolledInfoItem));
+-          memset (&data->enrolled_info->user_id[self->delete_slot], 0, sizeof (struct UserId));
+-          memset (&data->enrolled_info->user_des[self->delete_slot], 0, sizeof (struct UserDes));
++          fp_info ("Mass Erase successful. Completing delete action.");
++          fpi_device_delete_complete (FP_DEVICE (self), NULL);
++          fpi_ssm_mark_completed (self->task_ssm);
+         }
++      else
++        {
++          FpActionData *data = fpi_ssm_get_data (self->task_ssm);
++          int ssm_state;
+ 
+-      ssm_state = fpi_ssm_get_cur_state (self->task_ssm);
+-      fpi_ssm_jump_to_state (self->task_ssm, ssm_state);
++          if (self->delete_slot != -1)
++            {
++              fp_dbg ("delete slot %d", self->delete_slot);
++              data->enrolled_info->actived[self->delete_slot] = 0;
++              memset (&data->enrolled_info->items[self->delete_slot], 0, sizeof (struct EnrolledInfoItem));
++              memset (&data->enrolled_info->user_id[self->delete_slot], 0, sizeof (struct UserId));
++              memset (&data->enrolled_info->user_des[self->delete_slot], 0, sizeof (struct UserDes));
++            }
++
++          ssm_state = fpi_ssm_get_cur_state (self->task_ssm);
++          fpi_ssm_jump_to_state (self->task_ssm, ssm_state);
++        }
+     }
+ }
+ 
+@@ -1614,6 +1656,19 @@ focaltech_delete_run_state (FpiSsm *ssm, FpDevice *device)
+   guint8 *cmd_buf = NULL;
+   uint16_t cmd_len = 0;
+   uint16_t resp_len = 0;
++  guint64 quirk = fpi_device_get_driver_data (device);
++
++  if (quirk == FOCALTECH_QUIRK_SINGLE_SLOT)
++    {
++      fp_info ("Applying quirk: mass erase (0xac)");
++      cmd_buf = focaltech_moc_compose_cmd (0xac, NULL, 0);
++      focaltech_moc_get_cmd (device, cmd_buf,
++                             sizeof (FpCmd) + 0 + sizeof (uint8_t),
++                             sizeof (FpCmd) + 0 + sizeof (uint8_t),
++                             1,
++                             focaltech_moc_delete_cb);
++      return;
++    }
+ 
+   switch (fpi_ssm_get_cur_state (ssm))
+     {
+@@ -1850,6 +1905,45 @@ focaltech_moc_list (FpDevice *device)
+   fpi_ssm_start (self->task_ssm, task_ssm_done);
+ }
+ 
++static void
++focaltech_moc_clear_storage_cb (FpiDeviceFocaltechMoc *self,
++                                uint8_t               *buffer_in,
++                                gsize                  length_in,
++                                GError                *error)
++{
++  if (error)
++    {
++      fp_warn ("Mass erase command completed with warning: %s", error->message);
++      g_clear_error (&error);
++    }
++
++  fpi_device_clear_storage_complete (FP_DEVICE (self), NULL);
++}
++
++static void
++focaltech_clear_storage_run_state (FpiSsm *ssm, FpDevice *device)
++{
++  guint8 *cmd_buf = NULL;
++
++  /* 0xAC is the mass erase command */
++  cmd_buf = focaltech_moc_compose_cmd (0xac, NULL, 0);
++
++  focaltech_moc_get_cmd (device, cmd_buf,
++                         sizeof (FpCmd) + sizeof (uint8_t),
++                         sizeof (FpCmd) + sizeof (uint8_t),
++                         1,
++                         focaltech_moc_clear_storage_cb);
++}
++
++static void
++focaltech_moc_clear_storage (FpDevice *device)
++{
++  FpiDeviceFocaltechMoc *self = FPI_DEVICE_FOCALTECH_MOC (device);
++
++  self->task_ssm = fpi_ssm_new (device, focaltech_clear_storage_run_state, 1);
++  fpi_ssm_start (self->task_ssm, task_ssm_done);
++}
++
+ static void
+ fpi_device_focaltech_moc_init (FpiDeviceFocaltechMoc *self)
+ {
+@@ -1877,6 +1971,7 @@ fpi_device_focaltech_moc_class_init (FpiDeviceFocaltechMocClass *klass)
+   dev_class->identify = focaltech_moc_identify;
+   dev_class->delete = focaltech_moc_delete_print;
+   dev_class->list = focaltech_moc_list;
++  dev_class->clear_storage = focaltech_moc_clear_storage;
+ 
+   fpi_device_class_auto_initialize_features (dev_class);
+ }
+diff --git a/tests/focaltech_moc-6553/custom.pcapng b/tests/focaltech_moc-6553/custom.pcapng
+new file mode 100644
+index 0000000000000000000000000000000000000000..b5c2369548398b9074e6b32449127d37968b905e
+GIT binary patch
+literal 61556
+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
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/focaltech_moc-6553/custom.py b/tests/focaltech_moc-6553/custom.py
+new file mode 100644
+index 00000000..2ced775e
+--- /dev/null
++++ b/tests/focaltech_moc-6553/custom.py
+@@ -0,0 +1,75 @@
++#!/usr/bin/python3
++
++import traceback
++import sys
++import gi
++
++gi.require_version('FPrint', '2.0')
++from gi.repository import FPrint, GLib
++
++sys.excepthook = lambda *args: (traceback.print_exception(*args), sys.exit(1))
++
++ctx = GLib.main_context_default()
++
++c = FPrint.Context()
++c.enumerate()
++devices = c.get_devices()
++
++d = next((dev for dev in devices if dev.get_driver() == "focaltech_moc"), None)
++
++if d is None:
++    print("Error: Focaltech driver not loaded for any discovered device.")
++    sys.exit(1)
++
++del devices
++
++d.open_sync()
++assert d.get_driver() == "focaltech_moc"
++assert d.has_feature(FPrint.DeviceFeature.STORAGE_LIST)
++assert d.has_feature(FPrint.DeviceFeature.STORAGE_DELETE)
++#added storage clear
++assert d.has_feature(FPrint.DeviceFeature.STORAGE_CLEAR)
++
++
++print("Clearing storage (0xAC)...")
++d.clear_storage_sync()
++
++template = FPrint.Print.new(d)
++
++def enroll_progress(*args):
++    print('Enroll progress: ' + str(args))
++
++print("Enrolling (Perform 12 taps now)...")
++p = d.enroll_sync(template, None, enroll_progress, None)
++print("Enroll done.")
++
++print("Listing prints...")
++stored = d.list_prints_sync()
++assert len(stored) == 1
++assert stored[0].equal(p)
++print("List verified.")
++
++print("Verifying...")
++verify_res, verify_print = d.verify_sync(p)
++assert verify_res == True
++print("Verify done.")
++
++print('Identifying...')
++match, identify_print = d.identify_sync(stored, None, None, None)
++
++if match:
++    print('Identification SUCCESS')
++    assert match.equal(identify_print)
++else:
++    print('Identification FAILURE')
++    sys.exit(1)
++
++print("Deleting...")
++d.delete_print_sync(stored[0])
++print("Delete done.")
++
++final_list = d.list_prints_sync()
++assert len(final_list) == 0
++print("Cleanup verified.")
++
++d.close_sync()
+\ No newline at end of file
+diff --git a/tests/focaltech_moc-6553/device b/tests/focaltech_moc-6553/device
+new file mode 100644
+index 00000000..158bf2c1
+--- /dev/null
++++ b/tests/focaltech_moc-6553/device
+@@ -0,0 +1,267 @@
++P: /devices/pci0000:00/0000:00:14.0/usb3/3-2
++N: bus/usb/003/002=12010102000000400828536501210301020109022000010104A0FA0904000002DCA0B0000705010240000007058202400000
++E: BUSNUM=003
++E: CURRENT_TAGS=:seat:
++E: DEVNAME=/dev/bus/usb/003/002
++E: DEVNUM=002
++E: DEVTYPE=usb_device
++E: DRIVER=usb
++E: ID_AUTOSUSPEND=1
++E: ID_BUS=usb
++E: ID_FOR_SEAT=usb-pci-0000_00_14_0-usb-0_2
++E: ID_MODEL=Focaltech_FT9365_ESS
++E: ID_MODEL_ENC=Focaltech\x20FT9365\x20ESS
++E: ID_MODEL_ID=6553
++E: ID_PATH=pci-0000:00:14.0-usb-0:2
++E: ID_PATH_TAG=pci-0000_00_14_0-usb-0_2
++E: ID_PATH_WITH_USB_REVISION=pci-0000:00:14.0-usbv2-0:2
++E: ID_PERSIST=0
++E: ID_REVISION=2101
++E: ID_SERIAL=Generic_Focaltech_FT9365_ESS_201801010001
++E: ID_SERIAL_SHORT=201801010001
++E: ID_USB_INTERFACES=:dca0b0:
++E: ID_USB_MODEL=Focaltech_FT9365_ESS
++E: ID_USB_MODEL_ENC=Focaltech\x20FT9365\x20ESS
++E: ID_USB_MODEL_ID=6553
++E: ID_USB_REVISION=2101
++E: ID_USB_SERIAL=Generic_Focaltech_FT9365_ESS_201801010001
++E: ID_USB_SERIAL_SHORT=201801010001
++E: ID_USB_VENDOR=Generic
++E: ID_USB_VENDOR_ENC=Generic
++E: ID_USB_VENDOR_ID=2808
++E: ID_VENDOR=Generic
++E: ID_VENDOR_ENC=Generic
++E: ID_VENDOR_ID=2808
++E: MAJOR=189
++E: MINOR=257
++E: PRODUCT=2808/6553/2101
++E: SUBSYSTEM=usb
++E: TAGS=:seat:
++E: TYPE=0/0/0
++A: authorized=1\n
++A: avoid_reset_quirk=0\n
++A: bConfigurationValue=1\n
++A: bDeviceClass=00\n
++A: bDeviceProtocol=00\n
++A: bDeviceSubClass=00\n
++A: bMaxPacketSize0=64\n
++A: bMaxPower=500mA\n
++A: bNumConfigurations=1\n
++A: bNumInterfaces= 1\n
++A: bcdDevice=2101\n
++A: bmAttributes=a0\n
++H: bos_descriptors=050F2900021C100500DF60DDD88945C74C9CD2659D9E648A9F000003066E0315000810110103000000
++A: busnum=3\n
++A: configuration=Focaltech FT9365 ESS\n
++H: descriptors=12010102000000400828536501210301020109022000010104A0FA0904000002DCA0B0000705010240000007058202400000
++A: dev=189:257\n
++A: devnum=2\n
++A: devpath=2\n
++L: driver=../../../../../bus/usb/drivers/usb
++L: firmware_node=../../../../LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:56/device:57/device:59
++A: idProduct=6553\n
++A: idVendor=2808\n
++A: ltm_capable=no\n
++A: manufacturer=Generic\n
++A: maxchild=0\n
++A: physical_location/dock=no\n
++A: physical_location/horizontal_position=left\n
++A: physical_location/lid=no\n
++A: physical_location/panel=top\n
++A: physical_location/vertical_position=upper\n
++L: port=../3-0:1.0/usb3-port2
++A: power/active_duration=886464\n
++A: power/autosuspend=2\n
++A: power/autosuspend_delay_ms=2000\n
++A: power/connected_duration=15109711\n
++A: power/control=auto\n
++A: power/level=auto\n
++A: power/persist=0\n
++A: power/runtime_active_time=894614\n
++A: power/runtime_status=active\n
++A: power/runtime_suspended_time=14214859\n
++A: power/wakeup=disabled\n
++A: power/wakeup_abort_count=\n
++A: power/wakeup_active=\n
++A: power/wakeup_active_count=\n
++A: power/wakeup_count=\n
++A: power/wakeup_expire_count=\n
++A: power/wakeup_last_time_ms=\n
++A: power/wakeup_max_time_ms=\n
++A: power/wakeup_total_time_ms=\n
++A: product=Focaltech FT9365 ESS\n
++A: quirks=0x0\n
++A: removable=fixed\n
++A: rx_lanes=1\n
++A: serial=201801010001\n
++A: speed=12\n
++A: tx_lanes=1\n
++A: urbnum=12224\n
++A: version= 2.01\n
++
++P: /devices/pci0000:00/0000:00:14.0/usb3
++N: bus/usb/003/001=12010002090001406B1D020018060302010109021900010100E0000904000001090000000705810304000C
++E: BUSNUM=003
++E: CURRENT_TAGS=:seat:
++E: DEVNAME=/dev/bus/usb/003/001
++E: DEVNUM=001
++E: DEVTYPE=usb_device
++E: DRIVER=usb
++E: ID_AUTOSUSPEND=1
++E: ID_BUS=usb
++E: ID_FOR_SEAT=usb-pci-0000_00_14_0
++E: ID_MODEL=xHCI_Host_Controller
++E: ID_MODEL_ENC=xHCI\x20Host\x20Controller
++E: ID_MODEL_FROM_DATABASE=2.0 root hub
++E: ID_MODEL_ID=0002
++E: ID_PATH=pci-0000:00:14.0
++E: ID_PATH_TAG=pci-0000_00_14_0
++E: ID_REVISION=0618
++E: ID_SERIAL=Linux_6.18.9-arch1-2_xhci-hcd_xHCI_Host_Controller_0000:00:14.0
++E: ID_SERIAL_SHORT=0000:00:14.0
++E: ID_USB_INTERFACES=:090000:
++E: ID_USB_MODEL=xHCI_Host_Controller
++E: ID_USB_MODEL_ENC=xHCI\x20Host\x20Controller
++E: ID_USB_MODEL_ID=0002
++E: ID_USB_REVISION=0618
++E: ID_USB_SERIAL=Linux_6.18.9-arch1-2_xhci-hcd_xHCI_Host_Controller_0000:00:14.0
++E: ID_USB_SERIAL_SHORT=0000:00:14.0
++E: ID_USB_VENDOR=Linux_6.18.9-arch1-2_xhci-hcd
++E: ID_USB_VENDOR_ENC=Linux\x206.18.9-arch1-2\x20xhci-hcd
++E: ID_USB_VENDOR_ID=1d6b
++E: ID_VENDOR=Linux_6.18.9-arch1-2_xhci-hcd
++E: ID_VENDOR_ENC=Linux\x206.18.9-arch1-2\x20xhci-hcd
++E: ID_VENDOR_FROM_DATABASE=Linux Foundation
++E: ID_VENDOR_ID=1d6b
++E: MAJOR=189
++E: MINOR=256
++E: PRODUCT=1d6b/2/618
++E: SUBSYSTEM=usb
++E: TAGS=:seat:
++E: TYPE=9/0/1
++A: authorized=1\n
++A: authorized_default=1\n
++A: avoid_reset_quirk=0\n
++A: bConfigurationValue=1\n
++A: bDeviceClass=09\n
++A: bDeviceProtocol=01\n
++A: bDeviceSubClass=00\n
++A: bMaxPacketSize0=64\n
++A: bMaxPower=0mA\n
++A: bNumConfigurations=1\n
++A: bNumInterfaces= 1\n
++A: bcdDevice=0618\n
++A: bmAttributes=e0\n
++A: busnum=3\n
++A: configuration=
++H: descriptors=12010002090001406B1D020018060302010109021900010100E0000904000001090000000705810304000C
++A: dev=189:256\n
++A: devnum=1\n
++A: devpath=0\n
++L: driver=../../../../bus/usb/drivers/usb
++L: firmware_node=../../../LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:56/device:57
++A: idProduct=0002\n
++A: idVendor=1d6b\n
++A: interface_authorized_default=1\n
++A: ltm_capable=no\n
++A: manufacturer=Linux 6.18.9-arch1-2 xhci-hcd\n
++A: maxchild=12\n
++A: power/active_duration=7247968\n
++A: power/autosuspend=0\n
++A: power/autosuspend_delay_ms=0\n
++A: power/connected_duration=15109854\n
++A: power/control=auto\n
++A: power/level=auto\n
++A: power/runtime_active_time=7247962\n
++A: power/runtime_status=active\n
++A: power/runtime_suspended_time=7861889\n
++A: power/wakeup=disabled\n
++A: power/wakeup_abort_count=\n
++A: power/wakeup_active=\n
++A: power/wakeup_active_count=\n
++A: power/wakeup_count=\n
++A: power/wakeup_expire_count=\n
++A: power/wakeup_last_time_ms=\n
++A: power/wakeup_max_time_ms=\n
++A: power/wakeup_total_time_ms=\n
++A: product=xHCI Host Controller\n
++A: quirks=0x0\n
++A: removable=unknown\n
++A: rx_lanes=1\n
++A: serial=0000:00:14.0\n
++A: speed=480\n
++A: tx_lanes=1\n
++A: urbnum=1929\n
++A: version= 2.00\n
++
++P: /devices/pci0000:00/0000:00:14.0
++E: DRIVER=xhci_hcd
++E: ID_AUTOSUSPEND=1
++E: ID_MODEL_FROM_DATABASE=Alder Lake PCH USB 3.2 xHCI Host Controller
++E: ID_PATH=pci-0000:00:14.0
++E: ID_PATH_TAG=pci-0000_00_14_0
++E: ID_PCI_CLASS_FROM_DATABASE=Serial bus controller
++E: ID_PCI_INTERFACE_FROM_DATABASE=XHCI
++E: ID_PCI_SUBCLASS_FROM_DATABASE=USB controller
++E: ID_VENDOR_FROM_DATABASE=Intel Corporation
++E: MODALIAS=pci:v00008086d000051EDsv0000144Dsd0000C1D9bc0Csc03i30
++E: PCI_CLASS=C0330
++E: PCI_ID=8086:51ED
++E: PCI_SLOT_NAME=0000:00:14.0
++E: PCI_SUBSYS_ID=144D:C1D9
++E: SUBSYSTEM=pci
++A: ari_enabled=0\n
++A: broken_parity_status=0\n
++A: class=0x0c0330\n
++H: config=8680ED51060490020130030C00008000040012016000000000000000000000000000000000000000000000004D14D9C1000000007000000000000000FF010000FD0134A089C27F8000000000000000003F6DD80F000000000000000000000000316000000000000000000000000000000180C2C10800000000000000000000000590B7001804E0FE000000000000000009B014F01000400100000000C10A080000080E00001800008F50020000010000090000018680C00009001014000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000B50F110112000000
++A: consistent_dma_mask_bits=64\n
++A: d3cold_allowed=1\n
++A: dbc=disabled\n
++A: dbc_bInterfaceProtocol=01\n
++A: dbc_bcdDevice=0010\n
++A: dbc_idProduct=0010\n
++A: dbc_idVendor=1d6b\n
++A: dbc_poll_interval_ms=64\n
++A: device=0x51ed\n
++A: dma_mask_bits=64\n
++L: driver=../../../bus/pci/drivers/xhci_hcd
++A: driver_override=(null)\n
++A: enable=1\n
++L: firmware_node=../../LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:56
++A: index=5\n
++A: irq=131\n
++A: label=Onboard - Other\n
++A: local_cpulist=0-11\n
++A: local_cpus=fff\n
++A: modalias=pci:v00008086d000051EDsv0000144Dsd0000C1D9bc0Csc03i30\n
++A: msi_bus=1\n
++A: msi_irqs/131=msi\n
++A: msi_irqs/132=msi\n
++A: msi_irqs/133=msi\n
++A: msi_irqs/134=msi\n
++A: msi_irqs/135=msi\n
++A: msi_irqs/136=msi\n
++A: msi_irqs/137=msi\n
++A: msi_irqs/138=msi\n
++A: numa_node=-1\n
++A: pools=poolinfo - 0.1\nbuffer-2048         0    0 2048  0\nbuffer-512          0    0  512  0\nbuffer-128          0    0  128  0\nbuffer-32           0    0   32  0\nxHCI 256 port bw ctx arrays    0    0  256  0\nxHCI 1KB stream ctx arrays    0    0 1024  0\nxHCI 256 byte stream ctx arrays    0    0  256  0\nxHCI input/output contexts    8    9 2112  9\nxHCI ring segments   33   33 4096 33\nbuffer-2048         0    0 2048  0\nbuffer-512          0    0  512  0\nbuffer-128          0    0  128  0\nbuffer-32           0    0   32  0\n
++A: power/control=auto\n
++A: power/runtime_active_time=7261537\n
++A: power/runtime_status=active\n
++A: power/runtime_suspended_time=7861354\n
++A: power/wakeup=enabled\n
++A: power/wakeup_abort_count=0\n
++A: power/wakeup_active=0\n
++A: power/wakeup_active_count=0\n
++A: power/wakeup_count=0\n
++A: power/wakeup_expire_count=0\n
++A: power/wakeup_last_time_ms=0\n
++A: power/wakeup_max_time_ms=0\n
++A: power/wakeup_total_time_ms=0\n
++A: power_state=D0\n
++A: resource=0x0000006001120000 0x000000600112ffff 0x0000000000140204\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n0x0000000000000000 0x0000000000000000 0x0000000000000000\n
++A: revision=0x01\n
++A: subsystem_device=0xc1d9\n
++A: subsystem_vendor=0x144d\n
++A: vendor=0x8086\n
++
+diff --git a/tests/meson.build b/tests/meson.build
+index 07c924be..130348e7 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -59,6 +59,7 @@ drivers_tests = [
+ 	'realtek',
+ 	'realtek-5816',
+     'focaltech_moc',
++    'focaltech_moc-6553',
+ ]
+ 
+ if get_option('introspection')
+-- 
+GitLab
+
+
+From 7730145366196af2f1dc74e6314a29f214a7a88a Mon Sep 17 00:00:00 2001
+From: Sid1803 <siddheshkmande@gmail.com>
+Date: Fri, 20 Mar 2026 12:04:18 +0530
+Subject: [PATCH 2/2] focaltech_moc: implement thin subclass for samsung 6553
+ mass erase quirk
+
+---
+ data/autosuspend.hwdb                         |   4 ++
+ .../drivers/focaltech_moc/focaltech_moc.c     |  43 +++++++++++++++++-
+ libfprint/meson.build                         |   8 ++++
+ .../custom.pcapng                             | Bin
+ .../custom.py                                 |   4 +-
+ .../device                                    |   0
+ tests/meson.build                             |   4 +-
+ 7 files changed, 57 insertions(+), 6 deletions(-)
+ rename tests/{focaltech_moc-6553 => focaltech_moc_samsung-6553}/custom.pcapng (100%)
+ rename tests/{focaltech_moc-6553 => focaltech_moc_samsung-6553}/custom.py (95%)
+ rename tests/{focaltech_moc-6553 => focaltech_moc_samsung-6553}/device (100%)
+
+diff --git a/data/autosuspend.hwdb b/data/autosuspend.hwdb
+index 0ca7a88c..4da1d912 100644
+--- a/data/autosuspend.hwdb
++++ b/data/autosuspend.hwdb
+@@ -187,6 +187,10 @@ usb:v2808pA78A*
+ usb:v2808p1579*
+ usb:v2808p077A*
+ usb:v2808p079A*
++ ID_AUTOSUSPEND=1
++ ID_PERSIST=0
++
++# Supported by libfprint driver focaltech_moc_samsung
+ usb:v2808p6553*
+  ID_AUTOSUSPEND=1
+  ID_PERSIST=0
+diff --git a/libfprint/drivers/focaltech_moc/focaltech_moc.c b/libfprint/drivers/focaltech_moc/focaltech_moc.c
+index 68b12b11..44f9d32d 100644
+--- a/libfprint/drivers/focaltech_moc/focaltech_moc.c
++++ b/libfprint/drivers/focaltech_moc/focaltech_moc.c
+@@ -29,6 +29,21 @@
+ 
+ G_DEFINE_TYPE (FpiDeviceFocaltechMoc, fpi_device_focaltech_moc, FP_TYPE_DEVICE)
+ 
++
++#define FPI_TYPE_DEVICE_FOCALTECH_MOC (fpi_device_focaltech_moc_get_type ())
++#define FPI_TYPE_DEVICE_FOCALTECH_MOC_SAMSUNG (fpi_device_focaltech_moc_samsung_get_type ())
++
++G_DECLARE_FINAL_TYPE (FpiDeviceFocaltechMocSamsung, fpi_device_focaltech_moc_samsung,
++                      FPI, DEVICE_FOCALTECH_MOC_SAMSUNG, FpiDeviceFocaltechMoc)
++
++struct _FpiDeviceFocaltechMocSamsung
++{
++  FpiDeviceFocaltechMoc parent;
++};
++
++G_DEFINE_TYPE (FpiDeviceFocaltechMocSamsung, fpi_device_focaltech_moc_samsung,
++               FPI_TYPE_DEVICE_FOCALTECH_MOC)
++
+ static const FpIdEntry id_table[] = {
+   { .vid = 0x2808,  .pid = 0x9e48,  },
+   { .vid = 0x2808,  .pid = 0xd979,  },
+@@ -40,10 +55,14 @@ static const FpIdEntry id_table[] = {
+   { .vid = 0x2808,  .pid = 0x1579,  },
+   { .vid = 0x2808,  .pid = 0x077A,  },
+   { .vid = 0x2808,  .pid = 0x079A,  },
+-  { .vid = 0x2808,  .pid = 0x6553,  .driver_data = FOCALTECH_QUIRK_SINGLE_SLOT, },
+   { .vid = 0,  .pid = 0,  .driver_data = 0 },   /* terminating entry */
+ };
+ 
++static const FpIdEntry id_table_samsung[] = {
++  { .vid = 0x2808, .pid = 0x6553, .driver_data = FOCALTECH_QUIRK_SINGLE_SLOT },
++  { .vid = 0, .pid = 0 }
++};
++
+ typedef void (*SynCmdMsgCallback) (FpiDeviceFocaltechMoc *self,
+                                    uint8_t               *buffer_in,
+                                    gsize                  length_in,
+@@ -1918,6 +1937,7 @@ focaltech_moc_clear_storage_cb (FpiDeviceFocaltechMoc *self,
+     }
+ 
+   fpi_device_clear_storage_complete (FP_DEVICE (self), NULL);
++  fpi_ssm_mark_completed (self->task_ssm);
+ }
+ 
+ static void
+@@ -1944,6 +1964,26 @@ focaltech_moc_clear_storage (FpDevice *device)
+   fpi_ssm_start (self->task_ssm, task_ssm_done);
+ }
+ 
++static void
++fpi_device_focaltech_moc_samsung_init (FpiDeviceFocaltechMocSamsung *self)
++{
++  G_DEBUG_HERE ();
++}
++
++static void
++fpi_device_focaltech_moc_samsung_class_init (FpiDeviceFocaltechMocSamsungClass *klass)
++{
++  FpDeviceClass *dev_class = FP_DEVICE_CLASS (klass);
++
++  dev_class->id = "focaltech_moc_samsung";
++
++  dev_class->id_table = id_table_samsung;
++  dev_class->full_name = "Focaltech MOC (Samsung)";
++  dev_class->clear_storage = focaltech_moc_clear_storage;
++
++  fpi_device_class_auto_initialize_features (dev_class);
++}
++
+ static void
+ fpi_device_focaltech_moc_init (FpiDeviceFocaltechMoc *self)
+ {
+@@ -1971,7 +2011,6 @@ fpi_device_focaltech_moc_class_init (FpiDeviceFocaltechMocClass *klass)
+   dev_class->identify = focaltech_moc_identify;
+   dev_class->delete = focaltech_moc_delete_print;
+   dev_class->list = focaltech_moc_list;
+-  dev_class->clear_storage = focaltech_moc_clear_storage;
+ 
+   fpi_device_class_auto_initialize_features (dev_class);
+ }
+diff --git a/libfprint/meson.build b/libfprint/meson.build
+index ae0f6e24..0235c97d 100644
+--- a/libfprint/meson.build
++++ b/libfprint/meson.build
+@@ -215,6 +215,14 @@ foreach driver: supported_drivers
+     drivers_type_func += '  g_array_append_val (drivers, t);'
+     drivers_type_func += ''
+ endforeach
++
++if supported_drivers.contains('focaltech_moc')
++    drivers_type_list += 'extern GType (fpi_device_focaltech_moc_samsung_get_type) (void);'
++    drivers_type_func += '  t = fpi_device_focaltech_moc_samsung_get_type ();'
++    drivers_type_func += '  g_array_append_val (drivers, t);'
++    drivers_type_func += ''
++endif
++
+ drivers_type_list += ''
+ drivers_type_func += '  return drivers;'
+ drivers_type_func += '}'
+diff --git a/tests/focaltech_moc-6553/custom.pcapng b/tests/focaltech_moc_samsung-6553/custom.pcapng
+similarity index 100%
+rename from tests/focaltech_moc-6553/custom.pcapng
+rename to tests/focaltech_moc_samsung-6553/custom.pcapng
+diff --git a/tests/focaltech_moc-6553/custom.py b/tests/focaltech_moc_samsung-6553/custom.py
+similarity index 95%
+rename from tests/focaltech_moc-6553/custom.py
+rename to tests/focaltech_moc_samsung-6553/custom.py
+index 2ced775e..cef08917 100644
+--- a/tests/focaltech_moc-6553/custom.py
++++ b/tests/focaltech_moc_samsung-6553/custom.py
+@@ -15,7 +15,7 @@ c = FPrint.Context()
+ c.enumerate()
+ devices = c.get_devices()
+ 
+-d = next((dev for dev in devices if dev.get_driver() == "focaltech_moc"), None)
++d = next((dev for dev in devices if dev.get_driver() == "focaltech_moc_samsung"), None)
+ 
+ if d is None:
+     print("Error: Focaltech driver not loaded for any discovered device.")
+@@ -24,7 +24,7 @@ if d is None:
+ del devices
+ 
+ d.open_sync()
+-assert d.get_driver() == "focaltech_moc"
++assert d.get_driver() == "focaltech_moc_samsung"
+ assert d.has_feature(FPrint.DeviceFeature.STORAGE_LIST)
+ assert d.has_feature(FPrint.DeviceFeature.STORAGE_DELETE)
+ #added storage clear
+diff --git a/tests/focaltech_moc-6553/device b/tests/focaltech_moc_samsung-6553/device
+similarity index 100%
+rename from tests/focaltech_moc-6553/device
+rename to tests/focaltech_moc_samsung-6553/device
+diff --git a/tests/meson.build b/tests/meson.build
+index 130348e7..81140bc0 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -59,7 +59,7 @@ drivers_tests = [
+ 	'realtek',
+ 	'realtek-5816',
+     'focaltech_moc',
+-    'focaltech_moc-6553',
++    'focaltech_moc_samsung-6553',
+ ]
+ 
+ if get_option('introspection')
+@@ -172,7 +172,7 @@ if get_option('introspection')
+         driver_envs = envs
+         driver_envs.set('FP_DRIVERS_ALLOWLIST', driver_name)
+ 
+-        if (driver_name in supported_drivers and
++        if ((driver_name in supported_drivers or driver_name == 'focaltech_moc_samsung') and
+             gusb_dep.version().version_compare('>= 0.3.0'))
+             driver_tests_enabled = true
+             test(driver_test,
+-- 
+GitLab
+
