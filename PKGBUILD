@@ -4,11 +4,11 @@
 
 pkgname=sakura-launcher-gui
 pkgver=v1.2.0_beta
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple SakuraLLM launcher"
 arch=(x86_64)
 url='https://github.com/PiDanShouRouZhouXD/Sakura_Launcher_GUI'
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 options=(!debug)
 
 makedepends=(
@@ -57,13 +57,7 @@ build() {
     source .venv/bin/activate
 
     # Install dependencies
-    ## Specify PySide6 version
-    echo "$(sed 's/^PySide6$/PySide6==6.10.1/' requirements.txt)" > requirements.txt
-    ## Remove WMI
-    echo "$(sed 's/^wmi$//' requirements.txt)" > requirements.txt
-    ## Add missing dependency
-    echo 'tiktoken' >> requirements.txt
-
+    echo "$(sed 's/^wmi$//' requirements.txt)" > requirements.txt # Remove WMI
     pip install -r requirements.txt
 
     # Build
