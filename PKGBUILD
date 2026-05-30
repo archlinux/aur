@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-clipboard-indicator
 _uuid=("clipboard-indicator@tudmotu.com")
-pkgver=70
+pkgver=71
 pkgrel=1
 pkgdesc="Adds a clipboard indicator to the top panel, and caches clipboard history"
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gnome-shell>=46.0")
 conflicts=("gnome-shell-extension-clipboard-history")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a276587a50c3bf2a1149477a5d9f72814339528e4d93d406870456d582577484')
+sha256sums=('31d6c3694889b0f1c257b113926643e6a37610495f501cbd810eb2c14b9ebd85')
 
 package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions" \
