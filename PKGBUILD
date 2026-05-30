@@ -11,8 +11,7 @@ url="https://github.com/RoflikBEST/bestdownload"
 license=('custom')
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader' 'highway' 'libogg')
 makedepends=('patchelf' 'gcc')
-optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
-	'discord-game-sdk: Enable rich presence in Discord desktop client.')
+optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.')
 install="$pkgname.install"
 
 # ── Bundled library rationale ─────────────────────────────────────────────────
@@ -207,16 +206,19 @@ EOF
 
 	cat >"$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
 [Desktop Entry]
-Version=$pkgver
+Version=1.0
 Name=$_pkgname
+Comment=DDRaceNetwork client modification
 StartupNotify=true
 TryExec=$pkgname
 Exec=$pkgname
 Terminal=false
-Icon=/opt/$pkgname/$pkgname.png
+Icon=$pkgname
 Type=Application
-Categories=Game
+Categories=Game;
+Keywords=ddnet;ddrace;teeworlds;
 EOF
 
-	install -Dm0644 "$srcdir/$pkgname.png" "$pkgdir/opt/$pkgname/$pkgname.png"
+	# Install icon to standard freedesktop location (referenced by name in .desktop)
+	install -Dm0644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
