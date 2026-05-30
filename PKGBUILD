@@ -1,7 +1,7 @@
 # Maintainer: d10n <david at bitinvert dot com>
 
 pkgname=mullvad-tui
-pkgver=0.8.1
+pkgver=0.9.1
 pkgrel=1
 _upstream_ref=47ef04e6afa863316c2e4f4e37cd6395758bf26f
 pkgdesc='Terminal user interface for mullvad-vpn'
@@ -15,7 +15,7 @@ source=(
     "mullvad-tui-v$pkgver.tar.gz::https://github.com/d10n/mullvad-tui/archive/refs/tags/v$pkgver.tar.gz"
     "mullvadvpn-app-$_upstream_ref.tar.gz::https://github.com/mullvad/mullvadvpn-app/archive/$_upstream_ref.tar.gz"
 )
-sha256sums=('06e13b9d93287483f4a54cbc7a724dddbdbc1f526da539f35bd20e7221fd29d0'
+sha256sums=('deeee0ae4570702f550c0bd06b0ae2e1a87d3599661837f3e7cc3ea5588422fb'
             'fc7836c51415e112fd93fef160a4abe44ff99eb1cb2bf23a6b7a8124ed29151f')
 
 prepare() {
