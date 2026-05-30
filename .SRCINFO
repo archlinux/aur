@@ -13,6 +13,6 @@ pkgbase = fundtracer-desktop-bin
 	depends = pango
 	depends = gcc-libs
 	source = fundtracer-desktop-1.0.8.tar.gz::https://github.com/Deji-Tech/fundtracer-by-dt/releases/download/v1.0.8/fundtracer-desktop-1.0.8-x86_64.tar.gz
-	sha256sums = b0178d0e1f2c0f76441f3b63884e4e0e43286a7fb378ccf2c46ee03417082914
+	sha256sums = 33fbe3e64cd1c0debcbcfb148d1f6bb1f065bdf55aaddaae4ec9152cc2318473
 
 pkgname = fundtracer-desktop-bin
