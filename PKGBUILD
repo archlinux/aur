@@ -1,6 +1,6 @@
 # Maintainer: Xuepoo Foter <foter@example.com>
 pkgname=agent-book-translate-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A powerful LLM-driven agentic EPUB book translator (binary release)"
 arch=("x86_64" "aarch64")
@@ -13,8 +13,8 @@ conflicts=("agent-book-translate")
 source_x86_64=("${pkgname}-x86_64-${pkgver}::https://github.com/Xuepoo/agent-book-translate/releases/download/v${pkgver}/agent-book-translate-linux-x86_64")
 source_aarch64=("${pkgname}-aarch64-${pkgver}::https://github.com/Xuepoo/agent-book-translate/releases/download/v${pkgver}/agent-book-translate-linux-aarch64")
 
-sha256sums_x86_64=('e4ba4c8d37432a357f4d0cf34b49d8f6a0e3d719641d328712156655f71a6b75')
-sha256sums_aarch64=('d8f7ef5f8d05b5c0bf5f378862c5c7b66af9130da4b1e68818a83a49d1d5b5e9')
+sha256sums_x86_64=('1d2d7bd455451935589d3ff0c8e4bf8f4de1ee6370896295d310c04b1e166650')
+sha256sums_aarch64=('9845ff23297ca5170f962b2ccc46566b503549c6c36cd6ad505fceb39f591f7a')
 
 package() {
   if [ "${CARCH}" = "x86_64" ]; then
