@@ -1,0 +1,13 @@
+pkgbase = kras
+	pkgdesc = Detect, highlight and pretty print almost any structured data inside plain text
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/acidnik/kras-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = kras-0.4.3.tar.gz::https://github.com/acidnik/kras-rs/archive/v0.4.3.tar.gz
+	sha256sums = b87d14ce354085cc1e9c7452a3f9bfa641c3e9d64fe87f2dbe8cc3c7e2ed42ba
+
+pkgname = kras
