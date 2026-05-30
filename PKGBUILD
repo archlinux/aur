@@ -15,7 +15,7 @@ license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'pkl')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")

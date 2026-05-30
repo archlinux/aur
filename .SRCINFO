@@ -8,6 +8,7 @@ pkgbase = hk-bin
 	license = MIT
 	depends = glibc
 	depends = gcc-libs
+	depends = pkl
 	provides = hk
 	conflicts = hk
 	source = LICENSE-1.46.0::https://raw.githubusercontent.com/jdx/hk/v1.46.0/LICENSE
