@@ -1,6 +1,6 @@
 # Maintainer: Martin Etchebarne <martin@etchebarne.net>
 pkgname=kosmos
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="A modern code editor."
 arch=('x86_64')
@@ -16,8 +16,9 @@ depends=(
     'vulkan-icd-loader'
     'ttf-dejavu'
     'wayland'
+    'zlib'
 )
-makedepends=('cargo' 'pkgconf' 'rust' 'vulkan-headers')
+makedepends=('cargo' 'clang' 'pkgconf' 'rust' 'vulkan-headers' 'zig')
 provides=('kosmos')
 conflicts=('kosmos-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/etchebarne/kosmos/archive/refs/tags/v${pkgver}.tar.gz")
