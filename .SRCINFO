@@ -1,13 +1,14 @@
 pkgbase = waybar-google-calendar
 	pkgdesc = GTK4/Relm4 Google Calendar popup for Waybar
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pufanyi/waybar-google-calendar
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
 	depends = gtk4
 	depends = libadwaita
+	options = !lto
 	source = waybar-google-calendar-0.0.1.tar.gz::https://github.com/pufanyi/waybar-google-calendar/archive/refs/tags/v0.0.1.tar.gz
 	sha256sums = b44542fe42f21be8c2947f77153338298d244ddc3f90ca42b5948d3186c436b4
 
