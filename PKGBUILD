@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Slopsmith desktop app (testing channel: tracks latest release including alpha/beta)"
 arch=('x86_64')
 url="https://github.com/byrongamatos/slopsmith-desktop"
-license=('MIT')
+license=('AGPL-3.0-only')
 depends=(
     'gtk3'
     'libnotify'
