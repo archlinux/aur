@@ -105,13 +105,15 @@ init)
     load_instance_config
 
     echo ">>> Bootstrapping AstrBot data..."
-    (
-        if [ -n "$backup_file" ]; then
-            run_astrbot init -y -b -f "$backup_file"
-        else
-            run_astrbot init -y -b
-        fi
-    )
+    ensure_instance_env_synced || {
+        echo "❌ Error: Failed to prepare Python environment for instance '$instance'." >&2
+        exit 1
+    }
+    venv_astrbot="$(venv_dir)/bin/astrbot"
+    printf 'Y\nY\n' | run_astrbot_env_cmd "$venv_astrbot" init
+    if [ -n "$backup_file" ]; then
+        run_astrbot_env_cmd "$venv_astrbot" bk import -y "$backup_file"
+    fi
 
     chown -R astrbot:astrbot "$astrbot_root"
     local_venv_dir="$(venv_dir)"

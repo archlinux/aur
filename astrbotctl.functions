@@ -11,7 +11,7 @@ APP_DIR="${APP_DIR:-/opt/astrbot}"
 CACHE_DIR="${CACHE_DIR:-/var/cache/astrbot}"
 CERTBOT_INSTANCE_CERTS_DIR="${CERTBOT_INSTANCE_CERTS_DIR:-/etc/astrbot/certs}"
 UPSTREAM_URL="${UPSTREAM_URL:-https://github.com/AstrBotDevs/AstrBot.git}"
-UPSTREAM_BRANCH="${UPSTREAM_BRANCH:-dev}"
+UPSTREAM_BRANCH="${UPSTREAM_BRANCH:-master}"
 
 # Update / rollback config (can be overridden in /etc/astrbot/update.conf)
 UPDATE_STABILITY_SECS="${UPDATE_STABILITY_SECS:-60}"

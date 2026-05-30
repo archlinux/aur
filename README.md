@@ -2,7 +2,7 @@
 
 Arch Linux AUR package for [AstrBot](https://github.com/AstrBotDevs/AstrBot).
 
-This package installs the upstream `dev` branch under `/opt/astrbot` and provides
+This package installs the upstream `master` branch under `/opt/astrbot` and provides
 `astrbotctl` plus a systemd template unit for multi-instance deployments.
 
 ## Install
@@ -22,6 +22,18 @@ astrbotctl status bot1
 The instance config is written to `/etc/astrbot/bot1.conf`. Runtime data and the
 instance virtualenv live under `/var/lib/astrbot/bot1`.
 
+The dashboard port is allocated during `init` and stored in the instance config:
+
+```bash
+grep '^ASTRBOT_PORT=' /etc/astrbot/bot1.conf
+```
+
+Then open:
+
+```text
+http://localhost:<port>
+```
+
 ## Common Commands
 
 ```bash
@@ -38,6 +50,15 @@ Run AstrBot commands inside an instance:
 astrbotctl cli bot1 plug list
 astrbotctl cli bot1 plug install <plugin_repo>
 ```
+
+Run an instance in the foreground for debugging:
+
+```bash
+sudo astrbotctl run bot1
+```
+
+This uses the instance environment and ultimately runs AstrBot's `astrbot run`
+command from `/var/lib/astrbot/bot1/.venv`.
 
 Manage dashboard credentials:
 
@@ -91,6 +112,22 @@ Remove a stale runtime lock:
 
 ```bash
 sudo rm -f /var/lib/astrbot/bot1/astrbot.lock
+```
+
+If a service fails with `权限不够` for files under `/var/lib/astrbot/<name>`,
+fix ownership:
+
+```bash
+sudo chown -R astrbot:astrbot /var/lib/astrbot/bot1
+```
+
+If startup reports that the dashboard port is already in use, find and stop the
+old foreground process before starting the systemd service:
+
+```bash
+sudo ss -lntp | grep ':<port>'
+sudo kill <pid>
+sudo systemctl restart astrbot@bot1
 ```
 
 Force a virtualenv rebuild:
