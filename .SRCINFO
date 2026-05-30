@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-appgrid-git
 	pkgdesc = A modern application launcher for KDE Plasma (development build)
-	pkgver = 1.9.0.r426.ge39a431
+	pkgver = 1.9.0.r432.ge3e605a
 	pkgrel = 1
 	url = https://appgrid.xarbit.dev
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = plasma6-applets-appgrid-git
 	depends = kwindowsystem
 	depends = kcmutils
 	depends = libplasma
+	depends = plasma-activities-stats
 	depends = appstream-qt
 	provides = plasma6-applets-appgrid
 	conflicts = plasma6-applets-appgrid
