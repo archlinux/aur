@@ -1,4 +1,5 @@
-[rio]
+[rio-nik]
 source = "git"
-git = "https://github.com/raphamorim/rio"
+git = "https://github.com/nikicat/rio"
 prefix = "v"
+include_regex = ".*-nb.*"

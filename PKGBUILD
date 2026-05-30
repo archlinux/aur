@@ -1,17 +1,22 @@
-# Maintainer: Orhun Parmaksız <orhun@archlinux.org>
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Nikolay Bryskin <nbryskin@gmail.com>
+# Contributor: Orhun Parmaksız <orhun@archlinux.org>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: bbx0 <39773919+bbx0@users.noreply.github.com>
 # Contributor: Raphael Amorim <rapha850@gmail.com>
 
-pkgname=rio
-pkgver=0.4.5
+_pkgname=rio
+pkgname=rio-nik
+pkgver=0.4.6.nb.1
+_tag="v0.4.6-nb.1"
 pkgrel=1
-pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
+pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU (nikicat's fork with fixes)"
 arch=('x86_64')
-url="https://github.com/raphamorim/rio"
+url="https://github.com/nikicat/rio"
 license=('MIT')
 # https://raphamorim.io/rio/install/#arch-linux
 options=('!lto')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 depends=(
   'alsa-lib'
   'fontconfig'
@@ -31,32 +36,33 @@ makedepends=(
   'glslang'
   'scdoc'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('1e0ce733a4d027f1c4f7a6a6ffcfe5504d072aa1af9b1e0c392633401dcfa75424e6b816f34ea1fa5bef31331c70b8358d8f4159b29e67e520a54cc4620df707')
+_srcdir="${_pkgname}-${_tag#v}"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
+sha512sums=('bf65c6d35b562e45f336e33db915a78891b3bc87fc1a6c958da63ac31691fc0fa8104f36014c1513d3de730ed4465af9304408d01c474b2aade4585706c80c13')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_srcdir}"
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_srcdir}"
   cargo build --frozen --release --all-features
   make -C extra/man
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_srcdir}"
   cargo test --frozen --workspace
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname}"
-  install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgname}/" "README.md"
-  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "LICENSE"
-  install -vDm 644 "misc/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
-  install -vDm 644 "misc/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+  cd "${_srcdir}"
+  install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}"
+  install -Dm0644 -t "${pkgdir}/usr/share/doc/${_pkgname}/" "README.md"
+  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${_pkgname}/" "LICENSE"
+  install -vDm 644 "misc/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -vDm 644 "misc/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
   install -vDm 644 "misc/com.rioterm.Rio.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
   install -vDm 644 extra/man/*.1 -t "$pkgdir/usr/share/man/man1/"
   install -vDm 644 extra/man/*.5 -t "$pkgdir/usr/share/man/man5/"

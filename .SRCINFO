@@ -1,8 +1,8 @@
-pkgbase = rio
-	pkgdesc = A hardware-accelerated GPU terminal emulator powered by WebGPU
-	pkgver = 0.4.5
+pkgbase = rio-nik
+	pkgdesc = A hardware-accelerated GPU terminal emulator powered by WebGPU (nikicat's fork with fixes)
+	pkgver = 0.4.6.nb.1
 	pkgrel = 1
-	url = https://github.com/raphamorim/rio
+	url = https://github.com/nikicat/rio
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
@@ -20,8 +20,10 @@ pkgbase = rio
 	depends = libgcc
 	depends = libstdc++
 	depends = vulkan-driver
+	provides = rio
+	conflicts = rio
 	options = !lto
-	source = rio-0.4.5.tar.gz::https://github.com/raphamorim/rio/archive/refs/tags/v0.4.5.tar.gz
-	sha512sums = 1e0ce733a4d027f1c4f7a6a6ffcfe5504d072aa1af9b1e0c392633401dcfa75424e6b816f34ea1fa5bef31331c70b8358d8f4159b29e67e520a54cc4620df707
+	source = rio-nik-0.4.6.nb.1.tar.gz::https://github.com/nikicat/rio/archive/refs/tags/v0.4.6-nb.1.tar.gz
+	sha512sums = bf65c6d35b562e45f336e33db915a78891b3bc87fc1a6c958da63ac31691fc0fa8104f36014c1513d3de730ed4465af9304408d01c474b2aade4585706c80c13
 
-pkgname = rio
+pkgname = rio-nik
