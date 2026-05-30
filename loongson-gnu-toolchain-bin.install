@@ -25,10 +25,10 @@ info() {
 }
 
 post_install() {
-    info()
+    info
 }
 
 post_upgrade() {
-    info()
+    info
 }
 
