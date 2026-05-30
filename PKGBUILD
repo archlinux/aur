@@ -1,6 +1,6 @@
 # Maintainer: AmetistYT <ametist0yt@gmail.com>
 pkgname=soundpaad-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Sound pad with virtual microphone support for Linux"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('soundpaad')
 source=("soundpaad-${pkgver}::https://github.com/AmetistYT/soundpaad/releases/download/v${pkgver}/soundpaad"
         "com.soundpaad.app.desktop"
         "com.soundpaad.app.svg")
-sha256sums=('f7dcb2f4ec746582700c18f5a1dbd95c06f3a2f348eb5cb1e35ec7d406e8c9d2'
+sha256sums=('1f2dc8fd713308e60f36e9b955ab968aa8f912ab9e9166314524f2327ee4f6fb'
             '8359701edad14fde483728eb275dee9b7c8052e4b9a4d470af150b805dec1926'
             '711a600b092364e9b787243d9c234b9e44582cba7a6261b79f305a0323e08785')
 
