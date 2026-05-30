@@ -1,6 +1,6 @@
 # Maintainer: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="wff-git"
-pkgver="0.11"
+pkgver="0.12"
 pkgrel=1
 pkgdesc="Simple GUI screen recorder for wlroots compositors based on wl-recorder"
 arch=("x86_64")
