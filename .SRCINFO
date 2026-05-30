@@ -1,0 +1,20 @@
+pkgbase = linkerd-edge-recommended-bin
+	pkgdesc = Ultralight, security-first service mesh for Kubernetes. Recommended edge release.
+	pkgver = 26.5.1
+	pkgrel = 1
+	url = https://linkerd.io/
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	depends = glibc
+	provides = linkerd
+	conflicts = linkerd-bin
+	conflicts = linkerd-edge-bin
+	options = !debug
+	options = !strip
+	source_x86_64 = linkerd-26.5.1-x86_64::https://github.com/linkerd/linkerd2/releases/download/edge-26.5.1/linkerd2-cli-edge-26.5.1-linux-amd64
+	sha256sums_x86_64 = 0fdc998cdfba824b22562ccdfa9d4c0d1d7b129c42e4c6ad05c5ad8a3f2e6906
+	source_aarch64 = linkerd-26.5.1-aarch64::https://github.com/linkerd/linkerd2/releases/download/edge-26.5.1/linkerd2-cli-edge-26.5.1-linux-arm64
+	sha256sums_aarch64 = a8c325ed560ba6aa9c97c9008c255fb514027cd90bccc9905ee66ee620ead021
+
+pkgname = linkerd-edge-recommended-bin
