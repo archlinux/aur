@@ -2,7 +2,7 @@
 
 pkgname=elio-bin
 _pkgname=elio
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Snappy, batteries-included terminal file manager with rich previews, inline images, bulk actions, and trash support (prebuilt binary)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   'libarchive: archive and ISO listing fallback through bsdtar'
 )
 source=("${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('e68bb2bc2976474539c20f2f8b8d4ccf54ce97072c11ea0c4fe8746f2fd64736')
+sha256sums=('f4b36124f133688cd08c2954466b0eba813e594003960f8ad4f2b6f62797fe71')
 
 package() {
   cd "${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu"
