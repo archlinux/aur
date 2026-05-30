@@ -1,6 +1,6 @@
 pkgbase = barto-cli
 	pkgdesc = Barto command-line interface for querying bartos instances
-	pkgver = 1.4.6
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = https://github.com/rustyhorde/barto
 	install = barto-cli.install
@@ -8,7 +8,7 @@ pkgbase = barto-cli
 	license = MIT
 	license = Apache-2.0
 	makedepends = cargo
-	source = barto-cli-1.4.6.tar.gz::https://github.com/rustyhorde/barto/archive/v1.4.6.tar.gz
-	sha256sums = 568871d0368e6fad492813e8f0270cb23d5ce5d6f06676c213aa2fba85242b9d
+	source = barto-cli-1.4.7.tar.gz::https://github.com/rustyhorde/barto/archive/v1.4.7.tar.gz
+	sha256sums = 15eee284339465d0098ab03dce8b61b6fd7b66e31302fd9c016b68b45957c803
 
 pkgname = barto-cli
