@@ -21,16 +21,22 @@ elif [ -f "$script_dir/pywalfox-colors.css" ]; then
 else
 	source_css="/usr/share/gnome-pywalfox-theme/pywalfox-colors.css"
 fi
+chrome_entry_file="$theme_dir/userChrome.css"
 entry_file="$theme_dir/theme/gnome-theme.css"
 content_entry_file="$theme_dir/userContent.css"
 target_css="$theme_dir/theme/colors/pywalfox.css"
-chrome_import_line='@import "colors/pywalfox.css";'
-chrome_anchor='@import "extensions/adaptive-tab-bar-colour.css" screen and -moz-pref("gnomeTheme.extensions.adaptiveTabBarColour");'
-content_import_line='@import "theme/colors/pywalfox.css";'
-content_anchor='@import "theme/pages/privatebrowsing.css";'
+custom_chrome_file="$theme_dir/customChrome.css"
+custom_content_file="$theme_dir/customContent.css"
+theme_root_import_line='@import "theme/colors/pywalfox.css";'
+legacy_chrome_import_line='@import "colors/pywalfox.css";'
+chrome_custom_anchor='@import "customChrome.css"; /**/'
+content_custom_anchor='@import "customContent.css"; /**/'
+legacy_chrome_anchor='@import "extensions/adaptive-tab-bar-colour.css" screen and -moz-pref("gnomeTheme.extensions.adaptiveTabBarColour");'
+legacy_content_anchor='@import "theme/pages/privatebrowsing.css";'
 
 theme_tree_complete() {
 	[ -d "$theme_dir/theme/colors" ] &&
+		[ -f "$chrome_entry_file" ] &&
 		[ -f "$entry_file" ] &&
 		[ -f "$content_entry_file" ]
 }
@@ -58,6 +64,13 @@ require_anchor() {
 		printf 'Import anchor not found in %s\n' "$file" >&2
 		exit 42
 	fi
+}
+
+has_anchor() {
+	local file="$1"
+	local anchor="$2"
+
+	grep -Fxq "$anchor" "$file"
 }
 
 ensure_import() {
@@ -98,11 +111,58 @@ ensure_import() {
 	fi
 }
 
+ensure_import_at_top() {
+	local file="$1"
+	local import_line="$2"
+	local tmp
+	local status
+
+	tmp="$(mktemp)"
+	if [ -f "$file" ]; then
+		if awk -v import_line="$import_line" '
+			!started {
+				started = 1
+				if ($0 ~ /^@charset /) {
+					print
+					print import_line
+					print ""
+					next
+				}
+				print import_line
+				print ""
+			}
+			$0 != import_line {
+				print
+			}
+			END {
+				if (!started) {
+					print import_line
+				}
+			}
+		' "$file" > "$tmp"; then
+			chmod --reference="$file" "$tmp"
+			chown --reference="$file" "$tmp"
+		else
+			status="$?"
+			rm -f "$tmp"
+			exit "$status"
+		fi
+	else
+		printf '%s\n' "$import_line" > "$tmp"
+		chmod 0644 "$tmp"
+	fi
+	mv "$tmp" "$file"
+}
+
 remove_import() {
 	local file="$1"
 	local import_line="$2"
 	local tmp
 	local status
+
+	if [ ! -f "$file" ]; then
+		return
+	fi
 
 	if ! grep -Fxq "$import_line" "$file"; then
 		return
@@ -125,18 +185,36 @@ remove_import() {
 }
 
 if [ "$action" = "remove" ]; then
-	remove_import "$entry_file" "$chrome_import_line"
-	remove_import "$content_entry_file" "$content_import_line"
+	remove_import "$entry_file" "$legacy_chrome_import_line"
+	remove_import "$content_entry_file" "$theme_root_import_line"
+	remove_import "$custom_chrome_file" "$theme_root_import_line"
+	remove_import "$custom_content_file" "$theme_root_import_line"
 	rm -f "$target_css"
-	chmod 0644 "$entry_file" "$content_entry_file"
+	chmod 0644 "$chrome_entry_file" "$entry_file" "$content_entry_file"
+	[ ! -f "$custom_chrome_file" ] || chmod 0644 "$custom_chrome_file"
+	[ ! -f "$custom_content_file" ] || chmod 0644 "$custom_content_file"
 	printf 'Removed Firefox GNOME Theme color patch from %s\n' "$theme_dir"
 	exit 0
 fi
 
-require_anchor "$entry_file" "$chrome_anchor"
-require_anchor "$content_entry_file" "$content_anchor"
+use_custom_imports=false
+if has_anchor "$chrome_entry_file" "$chrome_custom_anchor" && has_anchor "$content_entry_file" "$content_custom_anchor"; then
+	use_custom_imports=true
+else
+	require_anchor "$entry_file" "$legacy_chrome_anchor"
+	require_anchor "$content_entry_file" "$legacy_content_anchor"
+fi
+
 install -Dm644 "$source_css" "$target_css"
-ensure_import "$entry_file" "$chrome_anchor" "$chrome_import_line"
-ensure_import "$content_entry_file" "$content_anchor" "$content_import_line"
-chmod 0644 "$entry_file" "$content_entry_file" "$target_css"
+remove_import "$entry_file" "$legacy_chrome_import_line"
+remove_import "$content_entry_file" "$theme_root_import_line"
+if [ "$use_custom_imports" = "true" ]; then
+	ensure_import_at_top "$custom_chrome_file" "$theme_root_import_line"
+	ensure_import_at_top "$custom_content_file" "$theme_root_import_line"
+	chmod 0644 "$custom_chrome_file" "$custom_content_file"
+else
+	ensure_import "$entry_file" "$legacy_chrome_anchor" "$legacy_chrome_import_line"
+	ensure_import "$content_entry_file" "$legacy_content_anchor" "$theme_root_import_line"
+fi
+chmod 0644 "$chrome_entry_file" "$entry_file" "$content_entry_file" "$target_css"
 printf 'Patched Firefox GNOME Theme colors in %s\n' "$theme_dir"

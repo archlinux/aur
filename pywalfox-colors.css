@@ -10,45 +10,79 @@
 :root[privatebrowsingmode="temporary"],
 :is(:root, :root[privatebrowsingmode="temporary"]):-moz-window-inactive {
 	/* Accent */
-	--gnome-accent-bg: var(--lwt-toolbar-field-highlight, AccentColor);
-	--gnome-toolbar-star-button: var(--lwt-toolbarbutton-icon-fill-attention, var(--lwt-toolbar-field-highlight, AccentColor));
+	--gnome-accent-bg: var(--lwt-toolbar-field-highlight, AccentColor) !important;
+	--gnome-accent: var(--gnome-accent-bg) !important;
+	--gnome-focus-border-color: color-mix(in srgb, var(--gnome-accent-bg) 55%, transparent) !important;
+	--gnome-toolbar-star-button: var(--lwt-toolbarbutton-icon-fill-attention, var(--lwt-toolbar-field-highlight, AccentColor)) !important;
 
 	/* Window and content */
-	--gnome-window-background: var(--lwt-accent-color);
-	--gnome-window-color: var(--lwt-text-color);
-	--gnome-view-background: var(--lwt-accent-color);
-	--gnome-view-color: var(--lwt-text-color);
-	--gnome-sidebar-background: var(--sidebar-background-color);
-	--gnome-secondary-sidebar-background: var(--sidebar-background-color);
+	--gnome-window-background: var(--lwt-accent-color) !important;
+	--gnome-window-color: var(--lwt-text-color) !important;
+	--gnome-view-background: var(--lwt-accent-color) !important;
+	--gnome-view-color: var(--lwt-text-color) !important;
+	--gnome-view-selected-background: color-mix(in srgb, var(--gnome-accent-bg) 28%, transparent) !important;
+	--gnome-view-selected-hover-background: color-mix(in srgb, var(--gnome-accent-bg) 35%, transparent) !important;
+	--gnome-view-selected-active-background: color-mix(in srgb, var(--gnome-accent-bg) 42%, transparent) !important;
+	--gnome-sidebar-background: var(--sidebar-background-color) !important;
+	--gnome-secondary-sidebar-background: var(--sidebar-background-color) !important;
 
 	/* Cards and menus */
-	--gnome-card-background: var(--sidebar-background-color);
-	--gnome-menu-background: var(--arrowpanel-background);
-	--gnome-menu-color: var(--arrowpanel-color);
+	--pywalfox-card-background: color-mix(in srgb, var(--toolbar-bgcolor, var(--lwt-accent-color)) 88%, var(--lwt-text-color) 12%) !important;
+	--pywalfox-menu-background: var(--gnome-tabbar-tab-active-background, var(--lwt-tab-line-color, var(--pywalfox-card-background))) !important;
+	--pywalfox-menu-color: var(--lwt-text-color, var(--toolbar-color)) !important;
+	--gnome-card-background: var(--pywalfox-card-background) !important;
+	--gnome-menu-background: var(--pywalfox-menu-background) !important;
+	--gnome-menu-color: var(--pywalfox-menu-color) !important;
+	--gnome-menu-border-color: color-mix(in srgb, var(--gnome-menu-color) 16%, transparent) !important;
+	--gnome-menu-separator-color: color-mix(in srgb, var(--gnome-menu-color) 16%, transparent) !important;
+	--gnome-menu-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.22), 0 8px 24px 6px rgba(0, 0, 0, 0.18) !important;
 
 	/* Header bar and toolbars */
 	--gnome-headerbar-background: var(--lwt-accent-color) !important;
-	--gnome-toolbar-background: var(--lwt-accent-color);
-	--gnome-toolbar-border-color: transparent;
-	--gnome-toolbar-icon-fill: var(--toolbarbutton-icon-fill);
+	--gnome-toolbar-background: var(--lwt-accent-color) !important;
+	--gnome-toolbar-border-color: transparent !important;
+	--gnome-toolbar-icon-fill: var(--toolbarbutton-icon-fill) !important;
 
 	/* Entries */
-	--gnome-entry-background: var(--toolbar-field-background-color);
-	--gnome-entry-color: var(--toolbar-field-color);
-	--gnome-entry-focused-border-color: var(--gnome-selection-bg);
+	--gnome-entry-background: var(--toolbar-field-background-color) !important;
+	--gnome-entry-color: var(--toolbar-field-color) !important;
+	--gnome-inactive-entry-color: color-mix(in srgb, var(--gnome-entry-color), var(--gnome-window-background) 30%) !important;
+	--gnome-entry-focused-border-color: var(--gnome-selection-bg) !important;
+
+	/* Shared controls */
+	--gnome-border-color: color-mix(in srgb, currentColor 15%, transparent) !important;
+	--gnome-hover-color: color-mix(in srgb, currentColor 7%, transparent) !important;
+	--gnome-active-color: color-mix(in srgb, currentColor 16%, transparent) !important;
+	--gnome-selected-color: color-mix(in srgb, currentColor 10%, transparent) !important;
+	--gnome-selected-background: color-mix(in srgb, var(--gnome-menu-color) 10%, transparent) !important;
+	--gnome-selected-hover-color: color-mix(in srgb, currentColor 13%, transparent) !important;
+	--gnome-selected-active-color: color-mix(in srgb, currentColor 19%, transparent) !important;
+	--gnome-trough-background: color-mix(in srgb, currentColor 15%, transparent) !important;
+	--gnome-trough-hover-background: color-mix(in srgb, currentColor 20%, transparent) !important;
+	--gnome-trough-active-background: color-mix(in srgb, currentColor 25%, transparent) !important;
+	--gnome-button-background: color-mix(in srgb, currentColor 10%, transparent) !important;
+	--gnome-button-hover-background: color-mix(in srgb, currentColor 15%, transparent) !important;
+	--gnome-button-active-background: color-mix(in srgb, currentColor 30%, transparent) !important;
+	--gnome-button-checked-background: var(--gnome-button-active-background) !important;
+	--gnome-button-checked-hover-background: color-mix(in srgb, currentColor 35%, transparent) !important;
+	--gnome-button-checked-active-background: color-mix(in srgb, currentColor 40%, transparent) !important;
+	--gnome-button-suggested-background: var(--gnome-accent-bg) !important;
 
 	/* Tabs */
-	--gnome-tabbar-background: var(--lwt-accent-color);
-	--gnome-tabbar-tab-active-background: var(--lwt-tab-line-color);
-	--gnome-tabbar-tab-active-background-contrast: var(--lwt-tab-line-color);
-	--gnome-tabbar-tab-hover-background: color-mix(in srgb, var(--lwt-accent-color), var(--lwt-text-color) 7%);
-	--gnome-tabbar-tab-active-hover-background: color-mix(in srgb, var(--lwt-tab-line-color), var(--lwt-text-color) 10%);
-	--gnome-tabbar-tab-needs-attetion: var(--lwt-tab-loading-fill);
+	--gnome-tabbar-background: var(--lwt-accent-color) !important;
+	--gnome-tabbar-tab-active-background: var(--lwt-tab-line-color) !important;
+	--gnome-tabbar-tab-active-background-contrast: var(--lwt-tab-line-color) !important;
+	--gnome-tabbar-tab-hover-background: color-mix(in srgb, var(--lwt-accent-color), var(--lwt-text-color) 7%) !important;
+	--gnome-tabbar-tab-active-hover-background: color-mix(in srgb, var(--lwt-tab-line-color), var(--lwt-text-color) 10%) !important;
+	--gnome-tabbar-tab-needs-attetion: var(--lwt-tab-loading-fill) !important;
+	--gnome-tabbar-tab-separator-color: var(--gnome-border-color) !important;
+	--gnome-tabbar-fade-background: var(--gnome-tabbar-background) !important;
+	--tab-selected-bgcolor: var(--gnome-tabbar-tab-active-background) !important;
 
 	/* Private/new-tab pages */
-	--gnome-private-wordmark: var(--newtab-text-primary-color);
-	--gnome-private-in-content-page-background: var(--newtab-background-color);
-	--gnome-private-text-primary-color: var(--newtab-text-primary-color);
+	--gnome-private-wordmark: var(--newtab-text-primary-color) !important;
+	--gnome-private-in-content-page-background: var(--newtab-background-color) !important;
+	--gnome-private-text-primary-color: var(--newtab-text-primary-color) !important;
 }
 
 /* GNOME Theme has additional tab styling after its color tokens are declared. */
@@ -56,24 +90,53 @@
 	background: var(--lwt-accent-color) !important;
 }
 
-#tabbrowser-tabs[orient="horizontal"] .tabbrowser-tab[selected="true"] .tab-background {
-	background-color: var(--lwt-tab-line-color) !important;
+#tabbrowser-tabs .tabbrowser-tab:is([selected], [selected="true"]) .tab-background {
+	background-color: var(--gnome-tabbar-tab-active-background) !important;
+}
+
+menupopup,
+panel {
+	--panel-background: var(--gnome-menu-background) !important;
+	--arrowpanel-background: var(--gnome-menu-background) !important;
+	--arrowpanel-color: var(--gnome-menu-color) !important;
+	--panel-color: var(--gnome-menu-color) !important;
+	background: transparent !important;
+	background-color: transparent !important;
+	color: var(--gnome-menu-color) !important;
+}
+
+.menupopup-arrowscrollbox,
+.panel-arrowcontent {
+	background: var(--gnome-menu-background) !important;
+	background-color: var(--gnome-menu-background) !important;
+	border-radius: var(--gnome-popover-radius) !important;
+	color: var(--gnome-menu-color) !important;
+	overflow: hidden !important;
+}
+
+panelview,
+panelmultiview,
+.panel-viewstack,
+.panel-subview-body {
+	background: var(--gnome-menu-background) !important;
+	background-color: var(--gnome-menu-background) !important;
+	color: var(--gnome-menu-color) !important;
 }
 
 @-moz-document url-prefix("about:newtab"), url-prefix("about:home"), url-prefix("about:privatebrowsing") {
 	:root {
-		--gnome-window-background: var(--newtab-background-color);
-		--gnome-window-color: var(--newtab-text-primary-color);
-		--gnome-view-background: var(--newtab-background-color);
-		--gnome-view-color: var(--newtab-text-primary-color);
-		--gnome-card-background: var(--newtab-background-card);
-		--gnome-private-wordmark: var(--newtab-text-primary-color);
-		--gnome-private-in-content-page-background: var(--newtab-background-color);
-		--gnome-private-text-primary-color: var(--newtab-text-primary-color);
+		--gnome-window-background: var(--newtab-background-color) !important;
+		--gnome-window-color: var(--newtab-text-primary-color) !important;
+		--gnome-view-background: var(--newtab-background-color) !important;
+		--gnome-view-color: var(--newtab-text-primary-color) !important;
+		--gnome-card-background: var(--newtab-background-card) !important;
+		--gnome-private-wordmark: var(--newtab-text-primary-color) !important;
+		--gnome-private-in-content-page-background: var(--newtab-background-color) !important;
+		--gnome-private-text-primary-color: var(--newtab-text-primary-color) !important;
 	}
 }
 
-@-moz-document url("about:newtab"), url("about:home") {
+@-moz-document url-prefix("about:newtab"), url-prefix("about:home") {
 	body {
 		--newtab-background-color: revert !important;
 		--newtab-background-color-secondary: var(--gnome-menu-background) !important;

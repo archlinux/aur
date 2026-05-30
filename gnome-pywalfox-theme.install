@@ -1,9 +1,19 @@
-post_install() {
+patch_if_theme_exists() {
+	if [ ! -d /usr/lib/firefox-gnome-theme ]; then
+		echo "Firefox GNOME Theme not found at /usr/lib/firefox-gnome-theme."
+		echo "Install firefox-gnome-theme or firefox-gnome-theme-git, then run: sudo gnome-pywalfox-theme-patch"
+		return 0
+	fi
+
 	/usr/bin/gnome-pywalfox-theme-patch
 }
 
+post_install() {
+	patch_if_theme_exists
+}
+
 post_upgrade() {
-	post_install
+	patch_if_theme_exists
 }
 
 pre_remove() {
