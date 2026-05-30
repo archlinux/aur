@@ -1,7 +1,7 @@
 pkgbase = apparmor.d
 	pkgdesc = Full set of apparmor profiles
 	pkgver = 0.4908.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roddhjav/apparmor.d
 	arch = x86_64
 	arch = armv6h
@@ -11,7 +11,8 @@ pkgbase = apparmor.d
 	makedepends = go
 	makedepends = git
 	makedepends = just
-	depends = apparmor
+	depends = apparmor>=4.1.3
+	depends = apparmor<5.0.0
 	source = https://github.com/roddhjav/apparmor.d/releases/download/v0.4908.0/apparmor.d-0.4908.0.tar.gz
 	source = https://github.com/roddhjav/apparmor.d/releases/download/v0.4908.0/apparmor.d-0.4908.0.tar.gz.asc
 	validpgpkeys = 06A26D531D56C42D66805049C5469996F0DF68EC
