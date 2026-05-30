@@ -37,29 +37,29 @@ prepare() {
 
 package() {
     # Install extracted application to /opt/zcode
-    mkdir -p "${pkgdir}/opt/${pkgname}"
-    cp -a "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}"
+    mkdir -p "${pkgdir}/opt/zcode"
+    cp -a "${srcdir}/squashfs-root/"* "${pkgdir}/opt/zcode"
     # Fix directory permissions: AppImage extraction creates 0700 dirs,
     # preventing non-root users from accessing libs, resources, and locales
-    find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
-    find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} \;
-    find "${pkgdir}/opt/${pkgname}" -type f \( -name "*.so" -o -name "*.so.*" \) -exec chmod 755 {} \;
+    find "${pkgdir}/opt/zcode" -type d -exec chmod 755 {} \;
+    find "${pkgdir}/opt/zcode" -type f -exec chmod 644 {} \;
+    find "${pkgdir}/opt/zcode" -type f \( -name "*.so" -o -name "*.so.*" \) -exec chmod 755 {} \;
     # Restore exec bit on binaries and scripts
-    chmod 755 "${pkgdir}/opt/${pkgname}/zcode" \
-             "${pkgdir}/opt/${pkgname}/chrome_crashpad_handler" \
-             "${pkgdir}/opt/${pkgname}/chrome-sandbox" \
-             "${pkgdir}/opt/${pkgname}/AppRun" 2>/dev/null || true
+    chmod 755 "${pkgdir}/opt/zcode/zcode" \
+             "${pkgdir}/opt/zcode/chrome_crashpad_handler" \
+             "${pkgdir}/opt/zcode/chrome-sandbox" \
+             "${pkgdir}/opt/zcode/AppRun" 2>/dev/null || true
 
     # ACP provider binaries (ELF executables bundled in resources)
-    chmod 755 "${pkgdir}/opt/${pkgname}/resources/opencode/opencode" \
-             "${pkgdir}/opt/${pkgname}/resources/glm/zcode-acp" \
-             "${pkgdir}/opt/${pkgname}/resources/tools/ripgrep/rg" 2>/dev/null || true
+    chmod 755 "${pkgdir}/opt/zcode/resources/opencode/opencode" \
+             "${pkgdir}/opt/zcode/resources/glm/zcode-acp" \
+             "${pkgdir}/opt/zcode/resources/tools/ripgrep/rg" 2>/dev/null || true
 
     # Codex ACP provider binary (ELF executable bundled in node_modules)
-    chmod 755 "${pkgdir}/opt/${pkgname}/resources/codex/node_modules/@zed-industries/codex-acp-linux-x64/bin/codex-acp" 2>/dev/null || true
+    chmod 755 "${pkgdir}/opt/zcode/resources/codex/node_modules/@zed-industries/codex-acp-linux-x64/bin/codex-acp" 2>/dev/null || true
 
     # Remove duplicated icons (installed system-wide below)
-    rm -rf "${pkgdir}/opt/${pkgname}/usr/share/icons"
+    rm -rf "${pkgdir}/opt/zcode/usr/share/icons"
 
     # Create launcher script (avoids FUSE and sets library paths correctly)
     install -dm755 "${pkgdir}/usr/bin"

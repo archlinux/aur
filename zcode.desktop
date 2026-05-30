@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=ZCode
-Exec=zcode --no-sandbox %U
+Exec=zcode-bin --no-sandbox %U
 Terminal=false
 Type=Application
 Icon=zcode
