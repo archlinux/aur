@@ -1,6 +1,6 @@
 # Maintainer: Mehad <mehad605@gmail.com>
 pkgname=dev-type-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Master touch typing while coding"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "${pkgname}-${pkgver}.AppImage::https://github.com/mehad605/dev_type/releases/download/v${pkgver}/dev_type-${pkgver}-x86_64.AppImage"
   "dev_type.png::https://raw.githubusercontent.com/mehad605/dev_type/v${pkgver}/assets/icon.png"
 )
-sha256sums=('16b58de8fa1d5238127824ff0ace264be5b646f68476a06dd844373f5b829cec'
+sha256sums=('ab3b5dfea83f78c384926018a1a95392e9daa734977df78b216831390cad3644'
             'a326e6355f522857545036ac88825042ba1f22e750c2638029856fc7347b3188')
 
 prepare() {

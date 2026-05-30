@@ -1,6 +1,6 @@
 pkgbase = dev-type-bin
 	pkgdesc = Master touch typing while coding
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/mehad605/dev_type
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = dev-type-bin
 	conflicts = dev-type
 	conflicts = dev-type-git
 	options = !strip
-	source = dev-type-bin-1.0.1.AppImage::https://github.com/mehad605/dev_type/releases/download/v1.0.1/dev_type-1.0.1-x86_64.AppImage
-	source = dev_type.png::https://raw.githubusercontent.com/mehad605/dev_type/v1.0.1/assets/icon.png
-	sha256sums = 16b58de8fa1d5238127824ff0ace264be5b646f68476a06dd844373f5b829cec
+	source = dev-type-bin-1.0.2.AppImage::https://github.com/mehad605/dev_type/releases/download/v1.0.2/dev_type-1.0.2-x86_64.AppImage
+	source = dev_type.png::https://raw.githubusercontent.com/mehad605/dev_type/v1.0.2/assets/icon.png
+	sha256sums = ab3b5dfea83f78c384926018a1a95392e9daa734977df78b216831390cad3644
 	sha256sums = a326e6355f522857545036ac88825042ba1f22e750c2638029856fc7347b3188
 
 pkgname = dev-type-bin
