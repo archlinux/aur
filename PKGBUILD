@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=yosys-nightly
-pkgver=20260529_v0.65_67_g1801abf30
+pkgver=20260530_v0.65_71_ge56c6a954
 pkgrel=1
 epoch=1
 pkgdesc="Yosys Open SYnthesis Suite, A framework for RTL synthesis"
@@ -17,7 +17,7 @@ conflicts=("yosys" "yosys-git" "python-yosys")
 replaces=("yosys" "yosys-git" "python-yosys")
 provides=("yosys=$(cut -d _ -f 3 <<< "${pkgver}")")
 source=(
-	"yosys::git+https://github.com/YosysHQ/yosys.git#commit=1801abf30"
+	"yosys::git+https://github.com/YosysHQ/yosys.git#commit=e56c6a954"
 	"yosys.conf"
 )
 sha256sums=(
@@ -28,18 +28,43 @@ sha256sums=(
 _PREFIX="/usr"
 prepare() {
 	cd "${srcdir}/yosys"
-	make config-gcc
-	cp "${srcdir}/yosys.conf" Makefile.conf
+	if [ ! -f "CMakeLists.txt" ]; then
+		make config-gcc
+		cp "${srcdir}/yosys.conf" Makefile.conf
+	else
+		if [ ! -d "${srcdir}/yosys/build" ]; then
+			mkdir build
+		fi
+	fi
 	git submodule update --init
 }
 
 build() {
 	cd "${srcdir}/yosys"
-	UV_NO_MANAGED_PYTHON=1 make PREFIX="${_PREFIX}"
+	UV_NO_MANAGED_PYTHON=1
+	if [ ! -f "CMakeLists.txt" ]; then
+		make PREFIX="${_PREFIX}"
+	else
+		cd build
+		cmake -G Ninja \
+			-DBUILD_SHARED_LIBS=ON \
+			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+			-DCMAKE_INSTALL_PREFIX="${_PREFIX}" \
+			-DYOSYS_WITH_PYTHON=ON \
+			-DYOSYS_INSTALL_PYTHON=ON \
+			-DYOSYS_INSTALL_LIBRARY=ON \
+			..
+		ninja
+	fi
 }
 
 package() {
 	cd "${srcdir}/yosys"
-	make STRIP=':' PREFIX="${_PREFIX}" PYTHON_PREFIX="${pkgdir}${_PREFIX}" DESTDIR="${pkgdir}" install
+	if [ ! -f "CMakeLists.txt" ]; then
+		make STRIP=':' PREFIX="${_PREFIX}" PYTHON_PREFIX="${pkgdir}${_PREFIX}" DESTDIR="${pkgdir}" install
+	else
+		DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build install
+	fi
+
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/yosys/LICENSE"
 }
