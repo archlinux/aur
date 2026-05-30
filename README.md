@@ -30,17 +30,18 @@ namcap *.pkg.tar.zst
 - systemd units are installed to `/usr/lib/systemd/system/` with `ExecStart`
   rewritten from `/usr/local/bin` to `/usr/bin`.
 
-## Publishing to the AUR
+## Publishing / releasing (`Makefile`)
 
-This repo is meant to be pushed to `ssh://aur@aur.archlinux.org/ruroco.git`.
-Before pushing:
+This repo is pushed to `ssh://aur@aur.archlinux.org/ruroco.git`. A `Makefile`
+wraps the maintenance loop — run `make help` for the full list:
 
 ```bash
-updpkgsums
-makepkg --printsrcinfo > .SRCINFO   # regenerate on every version bump
-git add PKGBUILD .SRCINFO ruroco.sysusers ruroco-server.install
-git commit -m "ruroco 0.14.1-1"
-git push
+make release VERSION=0.14.2   # bump pkgver + reset pkgrel, updpkgsums,
+                              # regenerate .SRCINFO, sanity build, commit
+make push                     # review the commit, then push to the AUR
+
+make keywords                 # set AUR search keywords (one-off)
 ```
 
-> `.SRCINFO` is mandatory and must be regenerated whenever the PKGBUILD changes.
+> `.SRCINFO` is mandatory and must match the PKGBUILD on every push — the
+> `release`/`srcinfo` targets regenerate it for you.
