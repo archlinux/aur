@@ -1,0 +1,14 @@
+pkgbase = asciinema-agg-plus
+	pkgdesc = Terminal user interface for mullvad-vpn
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/d10n/agg-plus
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	options = !lto
+	options = !debug
+	source = agg-plus-v1.9.0.tar.gz::https://github.com/d10n/agg-plus/archive/refs/tags/plus-v1.9.0.tar.gz
+	sha256sums = a6489b5e5f572ac80d04c6263de72d13f49144b267d7cad7bed4a36d42d9825e
+
+pkgname = asciinema-agg-plus
