@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Slopsmith desktop app with integrated audio engine, VST hosting, and amp modeling"
 arch=('x86_64')
 url="https://github.com/byrongamatos/slopsmith-desktop"
-license=('MIT')
+license=('AGPL-3.0-only')
 depends=(
     'gtk3'
     'libnotify'
