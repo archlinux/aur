@@ -1,7 +1,7 @@
 pkgbase = graphify
 	pkgdesc = AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph
 	pkgver = 0.8.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/safishamsi/graphify
 	arch = any
 	license = MIT
@@ -56,6 +56,7 @@ pkgbase = graphify
 	optdepends = python-anthropic: Claude direct extraction backend
 	optdepends = python-boto3: AWS Bedrock LLM backend
 	optdepends = python-tree-sitter-sql: SQL indexing support
+	optdepends = python-jieba: Chinese text segmentation for the MCP search server
 	provides = graphifyy
 	conflicts = graphifyy
 	source = https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.8.24.tar.gz

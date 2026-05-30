@@ -3,7 +3,7 @@
 pkgname=graphify
 _name=graphifyy
 pkgver=0.8.24
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph"
 arch=('any')
 url="https://github.com/safishamsi/graphify"
@@ -60,6 +60,7 @@ optdepends=(
     'python-anthropic: Claude direct extraction backend'
     'python-boto3: AWS Bedrock LLM backend'
     'python-tree-sitter-sql: SQL indexing support'
+    'python-jieba: Chinese text segmentation for the MCP search server'
 )
 
 makedepends=(
