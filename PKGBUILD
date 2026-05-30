@@ -1,0 +1,39 @@
+# Maintainer: Ismet Togay <ismet.togay@gmail.com>
+
+pkgname=command-code
+pkgver=0.30.1
+pkgrel=1
+pkgdesc='AI coding agent that continuously learns your coding taste'
+arch=('x86_64')
+url='https://commandcode.ai'
+license=('LicenseRef-command-code')
+depends=('nodejs')
+makedepends=('npm' 'jq')
+noextract=("${pkgname}-${pkgver}.tgz")
+source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
+        "$pkgname.license")
+sha256sums=('cee2ef52c8fe51d191af3576f7bb562fd3d58c5ca291686661c7e62957772f16'
+            'SKIP')
+
+package() {
+    npm install -g \
+        --cache "${srcdir}/npm-cache" \
+        --prefix "${pkgdir}/usr" \
+        "${srcdir}/${pkgname}-${pkgver}.tgz"
+
+    chown -R root:root "${pkgdir}"
+
+    find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/\_where/d'
+
+    local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
+    if [[ -f "$pkgjson" ]]; then
+        local tmppackage
+        tmppackage="$(mktemp)"
+        jq '.|=with_entries(select(.key|test("^_")|not))' "$pkgjson" > "$tmppackage"
+        mv "$tmppackage" "$pkgjson"
+        chmod 644 "$pkgjson"
+    fi
+
+    install -Dm644 "${srcdir}/command-code.license" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
