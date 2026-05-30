@@ -7,7 +7,7 @@ url="https://github.com/zackb/hyprwat"
 license=('MIT')
 depends=('wayland' 'mesa' 'fontconfig' 'libxkbcommon' 'sdbus-cpp' 'pipewire' 'libdrm')
 provides=('hyprwat')
-conflicts=('hyprwat')
+conflicts=('hyprwat' 'hyprwat-git')
 source=("https://github.com/zackb/hyprwat/releases/download/$pkgver/hyprwat-$pkgver.tar.gz")
 sha256sums=('8ca4a2484232c7d8e4904cd470fa2426e5bcd9b3445ee328815de420d2ca112d')
 

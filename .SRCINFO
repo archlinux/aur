@@ -14,6 +14,7 @@ pkgbase = hyprwat-bin
 	depends = libdrm
 	provides = hyprwat
 	conflicts = hyprwat
+	conflicts = hyprwat-git
 	source = https://github.com/zackb/hyprwat/releases/download/0.11.3/hyprwat-0.11.3.tar.gz
 	sha256sums = 8ca4a2484232c7d8e4904cd470fa2426e5bcd9b3445ee328815de420d2ca112d
 
