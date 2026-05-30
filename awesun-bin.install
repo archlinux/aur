@@ -1,0 +1,21 @@
+post_install() {
+	systemctl daemon-reload
+
+	echo "AweSun daemon service must be running for remote-control service mode."
+	echo "Start it with: sudo systemctl enable --now runawesun.service"
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+
+	if systemctl -q is-active runawesun.service; then
+		systemctl restart runawesun.service
+		echo "Restarted runawesun.service."
+	else
+		echo "AweSun daemon service is not running. Start it with: sudo systemctl enable --now runawesun.service"
+	fi
+}
+
+post_remove() {
+	systemctl daemon-reload
+}
