@@ -1,8 +1,8 @@
 # Maintainer: nopw <aur@n0.pw>
 
 pkgname=stremio-linux-shell-git
-pkgver=v1.0.0.beta.11.r5.gca88264
-pkgrel=2
+pkgver=v1.0.0.beta.13.r72.g638b5af
+pkgrel=1
 pkgdesc="A native Linux client for Stremio"
 arch=('x86_64')
 url="https://github.com/Stremio/stremio-linux-shell"
@@ -37,8 +37,8 @@ makedepends=(
 provides=('stremio-linux-shell' 'stremio')
 conflicts=('stremio' 'stremio-linux-shell')
 options=(!lto)
-source=("git+https://github.com/Stremio/stremio-linux-shell.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/Stremio/stremio-linux-shell.git" "patch-server-path-env.patch")
+sha256sums=('SKIP' 'c20584d54991c6efc9d1dcdb0192e5a5b604c0bc85eeff224d62645af6e97c8d')
 
 pkgver() {
   cd "stremio-linux-shell"
@@ -47,6 +47,9 @@ pkgver() {
 
 prepare() {
   cd "stremio-linux-shell"
+
+  patch -Np1 -i ../patch-server-path-env.patch 
+
   git submodule update --init --recursive
   cargo fetch --locked
 }
@@ -59,8 +62,10 @@ build() {
 package() {
   cd "stremio-linux-shell"
 
+  install -Dm755 "data/server.js" "$pkgdir/usr/lib/stremio/server.js"
   install -Dm755 "target/release/stremio-linux-shell" "$pkgdir/usr/bin/stremio"
-
+  
+  
   install -Dm644 "data/com.stremio.Stremio.desktop" \
     "$pkgdir/usr/share/applications/com.stremio.Stremio.desktop"
   sed -i '/^[[:space:]]*DBusActivatable[[:space:]]*=[[:space:]]*true[[:space:]]*$/d' \

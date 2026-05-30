@@ -1,0 +1,13 @@
+diff --git a/src/server.rs b/src/server.rs
+index 7b0e99a..77485e8 100644
+--- a/src/server.rs
++++ b/src/server.rs
+@@ -16,7 +16,7 @@ pub struct Server {
+ 
+ impl Server {
+     pub fn new() -> Self {
+-        let server_path = env::var("SERVER_PATH").expect("Failed to read SERVER_PATH env");
++        let server_path = env::var("SERVER_PATH").unwrap_or("/usr/lib/stremio/server.js".into());
+         let file = PathBuf::from(&server_path);
+ 
+         Self {
