@@ -14,18 +14,20 @@ makedepends=('bmake' 'patch')
 provides=('udfclient')
 conflicts=('udfclient')
 source=("${url}releases/UDFclient.${pkgver}.tgz"
-        "fix-fgets-unused-result.patch")
+        "fix-fgets-unused-result.patch"
+        "fix-packed-member-address.patch")
 sha256sums=('83deab4d97d8e5f67baa47aa779c41d35b5f5ef348bcea36bebb1549534c6f5e'
-            'a275bd371061915fce0c8b0fcdf076b02e5d494b3410463a7f1ec937ecee05b0')
+            'af7be2743ffd3aa5dac21c57a1bc52e00a3619032f96962f99a4e7f44e0fa3cb'
+            '831ccde1381f9be7b1e76832222d92bdd674cccdbf7b28cf499ed6a44f27ab8c')
 
 prepare() {
   cd "${srcdir}/UDFclient.${pkgver}"
   patch -p1 < "${srcdir}/fix-fgets-unused-result.patch"
+  patch -p1 < "${srcdir}/fix-packed-member-address.patch"
 }
 
 build() {
   cd "${srcdir}/UDFclient.${pkgver}"
-  export CFLAGS="${CFLAGS} -Wno-address-of-packed-member"
   ./configure --prefix=/usr
   bmake -s
 }

@@ -1,0 +1,162 @@
+--- a/udf.c	2026-05-30 22:07:29.208868638 +0700
++++ b/udf.c	2026-05-30 22:07:43.659997113 +0700
+@@ -1662,7 +1662,7 @@
+ 	struct icb_tag         *icbtag;
+ 	struct long_ad         *l_ad;
+ 	struct short_ad        *s_ad;
+-	uint32_t               *l_adptr;	/* points to length of alloc. descr. */
++	enum { L_AD_NONE, L_AD_FE, L_AD_EFE, L_AD_AEE } l_ad_sel = L_AD_NONE;
+ 	uint8_t                *pos;
+ 	char                   *what;
+ 	uint32_t                alloc_entries;
+@@ -1774,26 +1774,26 @@
+ 
+ 		pos  = 0;
+ 		rest = 0;
+-		l_adptr = NULL;		/* invalid */
++		l_ad_sel = L_AD_NONE;
+ 		switch (udf_rw16(dscrptr->tag.id)) {
+ 			case TAGID_FENTRY         :
+ 				/* not used now */
+ 				fe   = &dscrptr->fe;
+ 				pos  = &fe->data[0] + udf_rw32(fe->l_ea);
+ 				rest = dscr_entry->len - sizeof(struct file_entry) - udf_rw32(fe->l_ea);
+-				l_adptr = &fe->l_ad;
++				l_ad_sel = L_AD_FE;
+ 				break;
+ 			case TAGID_EXTFENTRY      :
+ 				efe  = &dscrptr->efe;
+ 				pos  = &efe->data[0] + udf_rw32(efe->l_ea);
+ 				rest = dscr_entry->len - sizeof(struct extfile_entry) - udf_rw32(efe->l_ea);
+-				l_adptr = &efe->l_ad;
++				l_ad_sel = L_AD_EFE;
+ 				break;
+ 			case TAGID_ALLOCEXTENT    :
+ 				aee  = &dscrptr->aee;
+ 				pos  = &aee->data[0];
+ 				rest = dscr_entry->len - sizeof(struct alloc_ext_entry);
+-				l_adptr = &aee->l_ad;
++				l_ad_sel = L_AD_AEE;
+ 				break;
+ 			case TAGID_INDIRECTENTRY :
+ 				/* do we even do these in strat 4 ? */
+@@ -1802,7 +1802,7 @@
+ 				UDF_MUTEX_UNLOCK(&udf_node->alloc_mutex);
+ 				return ENOENT;	/* panic really */
+ 		}
+-		assert(l_adptr);
++		assert(l_ad_sel != L_AD_NONE);
+ 
+ 		/* fill in remaining allocation entries 	*/
+ 		/* remember to keep one SPARE for extending	*/
+@@ -1818,7 +1818,10 @@
+ 			memcpy(pos, udf_node->intern_data, udf_node->intern_len);
+ 
+ 			/* make sure the length for allocation entries is the same as the data it contains (4/8.8.2, 4/14.6.8) */
+-			*l_adptr = udf_rw32(udf_node->intern_len);
++			uint32_t _v = udf_rw32(udf_node->intern_len);
++			if (l_ad_sel == L_AD_FE)      memcpy(&fe->l_ad, &_v, sizeof(_v));
++			else if (l_ad_sel == L_AD_EFE) memcpy(&efe->l_ad, &_v, sizeof(_v));
++			else if (l_ad_sel == L_AD_AEE) memcpy(&aee->l_ad, &_v, sizeof(_v));
+ 
+ 			/* alloc_entry is zero, so it'll fall trough */
+ 			pos	+= udf_node->intern_len;	/* advance pos for length calculation */
+@@ -1851,7 +1854,10 @@
+ 					break;
+ 			}
+ 			alloc_entries++;
+-			*l_adptr = udf_rw32(alloc_entries * udf_node->icb_len);
++			uint32_t _v = udf_rw32(alloc_entries * udf_node->icb_len);
++			if (l_ad_sel == L_AD_FE)      memcpy(&fe->l_ad, &_v, sizeof(_v));
++			else if (l_ad_sel == L_AD_EFE) memcpy(&efe->l_ad, &_v, sizeof(_v));
++			else if (l_ad_sel == L_AD_AEE) memcpy(&aee->l_ad, &_v, sizeof(_v));
+ 			alloc_entry = TAILQ_NEXT(alloc_entry, next_alloc);
+ 			pos  += udf_node->icb_len;
+ 			rest -= udf_node->icb_len;
+@@ -2860,7 +2866,7 @@
+ int udf_proc_logvol_integrity(struct udf_log_vol *udf_log_vol, struct logvol_int_desc *new_lvid) {
+ 	struct udf_logvol_info *impl;
+ 	uint64_t psize, pfree;
+-	uint32_t *free_space_pos, *size_pos;
++	uint32_t free_space_idx, size_idx;
+ 	uint32_t lb_size, part_map;
+ 	uint32_t integrity;
+ 	int error, tagid;
+@@ -2911,14 +2917,14 @@
+ 	lb_size = udf_log_vol->lb_size;
+ 
+ 	/* init start positions */
+-	free_space_pos = &new_lvid->tables[0];
+-	size_pos       = &new_lvid->tables[udf_log_vol->num_part_mappings];
++	free_space_idx = 0;
++	size_idx       = udf_log_vol->num_part_mappings;
+ 
+ 	/* init counters */
+ 	udf_log_vol->total_space = udf_log_vol->free_space = udf_log_vol->await_alloc_space = 0;
+ 	for (part_map = 0; part_map < udf_log_vol->num_part_mappings; part_map++) {
+-		psize = udf_rw32(*size_pos); size_pos++;
+-		pfree = udf_rw32(*free_space_pos); free_space_pos++;
++		{ uint32_t _v; memcpy(&_v, &new_lvid->tables[size_idx], sizeof(_v)); psize = udf_rw32(_v); size_idx++; }
++		{ uint32_t _v; memcpy(&_v, &new_lvid->tables[free_space_idx], sizeof(_v)); pfree = udf_rw32(_v); free_space_idx++; }
+ 		if (pfree != UINT_MAX) {
+ 			/* if UINT_MAX, its not applicable like virtual space partitions */
+ 			udf_log_vol->total_space += (uint64_t) psize * lb_size;
+@@ -4455,7 +4461,7 @@
+ 	struct desc_tag         *terminator;
+ 	struct udf_wrcallback    wr_callback;
+ 	uint32_t sector, lvid_sector, term_sector;
+-	uint32_t part_num, *free_space_pos, *size_pos, lb_size;
++	uint32_t part_num, free_space_idx, size_idx, lb_size;
+ 	uint32_t len, length, lvid_len, num_sectors;
+ 	int error, dscr_ver, tagid;
+ 
+@@ -4529,15 +4535,15 @@
+ 
+ 	/* calculate and fill in free space */
+ 	intdesc->num_part = udf_rw32(udf_log_vol->num_part_mappings);
+-	free_space_pos = &intdesc->tables[0];
+-	size_pos       = &intdesc->tables[udf_log_vol->num_part_mappings];
++	free_space_idx = 0;
++	size_idx       = udf_log_vol->num_part_mappings;
+ 	SLIST_FOREACH(part_mapping, &udf_log_vol->part_mappings, next_mapping) {
+ 		part_num = part_mapping->udf_virt_part_num;
+ 		udf_logvol_vpart_to_partition(udf_log_vol, part_num, NULL, &udf_partition);
+ 		assert(udf_partition);
+ 
+-		*size_pos++       = udf_partition->partition->part_len;
+-		*free_space_pos++ = udf_rw32(udf_partition->free_unalloc_space / udf_log_vol->lb_size);
++		{ uint32_t _v = udf_partition->partition->part_len; memcpy(&intdesc->tables[size_idx], &_v, sizeof(_v)); size_idx++; }
++		{ uint32_t _v = udf_rw32(udf_partition->free_unalloc_space / udf_log_vol->lb_size); memcpy(&intdesc->tables[free_space_idx], &_v, sizeof(_v)); free_space_idx++; }
+ 	}
+ 
+ 	/* fill in UDF implementation use parameters */
+--- a/newfs_udf.c	2026-05-30 22:07:29.210220248 +0700
++++ b/newfs_udf.c	2026-05-30 22:07:29.236822663 +0700
+@@ -198,7 +198,7 @@
+ 	uint32_t part_start, part_length, integrity_start, integrity_length;
+ 	uint32_t unalloc_space_bitmap, space_bitmap_size;
+ 	uint32_t start_lb_fsd, num_lbs_fsd;
+-	uint16_t serial, *udfver_pos, vpart_fsd;
++	uint16_t serial, vpart_fsd;
+ 	uint8_t  *blank;
+ 	uint32_t cnt;
+ 	int error;
+@@ -472,15 +472,12 @@
+ 		if (logvol_name) {
+ 			/* Implementation use volume descritor's UDF version must be the same as the logical volume's UDF  version it describes */
+ 			/* update/fill in the UDF version chosen */
+-			udfver_pos  = (uint16_t *) logvol->domain_id.id_suffix;
+-			*udfver_pos = udf_rw16(udf_log_vol->min_udf_writever);
++			{ uint16_t _v = udf_rw16(udf_log_vol->min_udf_writever); memcpy(&logvol->domain_id.id_suffix, &_v, sizeof(_v)); }
+ 
+-			udfver_pos  = (uint16_t *) implvol->impl_id.id_suffix;
+-			*udfver_pos = udf_rw16(udf_log_vol->min_udf_writever);
++			{ uint16_t _v = udf_rw16(udf_log_vol->min_udf_writever); memcpy(&implvol->impl_id.id_suffix, &_v, sizeof(_v)); }
+ 
+ 			/* FIXME only one fileset now */
+-			udfver_pos  = (uint16_t *) fileset->domain_id.id_suffix;
+-			*udfver_pos = udf_rw16(udf_log_vol->min_udf_writever);
++			{ uint16_t _v = udf_rw16(udf_log_vol->min_udf_writever); memcpy(&fileset->domain_id.id_suffix, &_v, sizeof(_v)); }
+ 		}
+ 
+ 
