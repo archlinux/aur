@@ -24,7 +24,7 @@ source=("pdf-editor-omarchy::git+https://github.com/brokkoli71/pdf-editor-omarch
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/pdf-editor-omarchy"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
