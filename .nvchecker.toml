@@ -1,0 +1,5 @@
+[gocheat-bin]
+source = "github"
+github = "Achno/gocheat"
+use_latest_release = true
+prefix = "v"
