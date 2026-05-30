@@ -1,4 +1,4 @@
-# Maintainer: Daniela <pikalp32@gmail.com> | https://github.com/danielah05
+# Maintainer: KittiBytes <pikalp32@gmail.com> | https://daniela.lol
 # Contributor: Reylyer <reylyercross@gmail.com> | https://github.com/Reylyer
 
 # Package name
@@ -6,7 +6,7 @@ pkgname=gamemaker-beta-bin
 
 # Version
 pkgver=2024.1400.5.1065
-pkgrel=1
+pkgrel=2
 
 # Generic
 pkgdesc="Make a game with GameMaker, the best free video game engine. Perfect for beginners and professionals."
