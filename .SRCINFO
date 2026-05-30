@@ -1,0 +1,26 @@
+pkgbase = easinote-bin
+	pkgdesc = Seewo EasiNote5 希沃白板 5
+	pkgver = 5.2.2.4.13984
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	makedepends = asar
+	makedepends = nodejs
+	makedepends = npm
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux
+	depends = libappindicator-gtk3
+	depends = libsecret
+	options = !strip
+	options = !debug
+	options = !emptydirs
+	source = https://imlizhi-store-https.seewo.com/EasiNote_UOS_amd64_5.2.2.4.13984(20260429093518).deb
+	sha256sums = c0dea82dfaf3edf4fd91ceaa1c3ad76a463bd5d67817d5a41ca2f30054b00598
+
+pkgname = easinote-bin
