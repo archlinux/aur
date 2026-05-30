@@ -1,6 +1,6 @@
 pkgbase = mpz
 	pkgdesc = Music player for the large local collections
-	pkgver = 2.0.8
+	pkgver = 2.0.9
 	pkgrel = 0
 	url = https://github.com/olegantonyan/mpz
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mpz
 	depends = cmake
 	depends = libmpdclient
   provides = mpz
-	source = mpz-2.0.8-0.zip::https://github.com/olegantonyan/mpz/archive/5217f1ee49f8e38b02a0a9f201afc53c1388edca.zip
-	sha256sums = 002c20dc8bb285ae2d2f54c4c07394f0577c83d958add31918068800614aa0ac
+	source = mpz-2.0.9-0.zip::https://github.com/olegantonyan/mpz/archive/dae540aeede95472b52c3e04bdd68e5f48b60bc7.zip
+	sha256sums = ea0a5600c8eee77bc079a6d01c77d56f559e5f5115a22920d34b9cdac6c9e2cc
 
 pkgname = mpz
