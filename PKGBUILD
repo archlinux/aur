@@ -2,7 +2,7 @@
 pkgname=limit-computer-time
 pkgver=1.0.3
 pkgrel=1
-pkgdesc="Daily desktop time budget daemon for KDE Plasma on Wayland with countdown overlay and TUI configurator"
+pkgdesc="Daily desktop time budget daemon for KDE Plasma on Wayland with countdown overlay and TUI configurator — suitable for parental control"
 arch=(x86_64)
 url="https://codeberg.org/LuminaNAO/limit-computer-time"
 license=(AGPL3)
