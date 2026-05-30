@@ -1,7 +1,7 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=ai-memory
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Local-first long-term memory MCP server for AI coding agents"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ install=ai-memory.install
 options=('!debug')
 conflicts=('ai-memory-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('019141e92249a1670050b4f3a3e79ad71acb7abab547f1166312dde85ecddf55')
+sha256sums=('4ea2a052a5b1a2519c4a093e1a87b13fd314acd016acfc4b09cb87a29485d0ff')
 
 prepare() {
     cd "$pkgname-$pkgver"
