@@ -1,0 +1,5 @@
+[cruxpass]
+source = "github"
+github = "c0d-0x/cruxpass"
+use_latest_release = true
+prefix = "v"

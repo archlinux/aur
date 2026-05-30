@@ -1,0 +1,18 @@
+pkgbase = cruxpass
+	pkgdesc = A minimal CLI password manager designed to be simple, dependency-light, and transparent
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/c0d-0x/cruxpass
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	depends = sqlcipher
+	depends = libsodium
+	provides = cruxpass
+	options = !strip
+	source = git+https://github.com/c0d-0x/cruxpass.git#tag=v2.0.0
+	sha256sums = bcbe73444997bb5d3fe932eb19679aa50673bbf1e1ea2974789a7ca805729a15
+
+pkgname = cruxpass
