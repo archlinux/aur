@@ -186,18 +186,17 @@ package() {
 
 	cat >"$pkgdir/usr/bin/$pkgname" <<'EOF'
 #!/bin/bash
-# Fix Discord Rich Presence when Discord runs as a Flatpak.
-# Flatpak Discord puts IPC sockets in a sandboxed path; the Game SDK
-# expects them at $XDG_RUNTIME_DIR/discord-ipc-N. Create symlinks.
+# Discord Rich Presence: when Discord runs sandboxed (Flatpak / Snap) it places
+# IPC sockets in a non-standard path. The Game SDK expects discord-ipc-N directly
+# under $XDG_RUNTIME_DIR. Dynamically discover and symlink all sockets found.
+# Works with: native AUR discord, Flatpak stable/PTB/Canary, Snap.
 _uid=$(id -u)
+_rdir="/run/user/$_uid"
 for _n in 0 1 2 3 4 5 6 7 8 9; do
-	for _src in \
-		"/run/user/$_uid/app/com.discordapp.Discord/discord-ipc-$_n" \
-		"/run/user/$_uid/.flatpak/com.discordapp.Discord/xdg-run/discord-ipc-$_n"
-	do
-		_dst="/run/user/$_uid/discord-ipc-$_n"
-		[ -S "$_src" ] && [ ! -S "$_dst" ] && ln -sf "$_src" "$_dst" 2>/dev/null || true
-	done
+	_dst="$_rdir/discord-ipc-$_n"
+	[ -S "$_dst" ] && continue   # already in place (native Discord)
+	_src=$(find "$_rdir" -maxdepth 5 -name "discord-ipc-$_n" -type s 2>/dev/null | head -1)
+	[ -n "$_src" ] && ln -sf "$_src" "$_dst" 2>/dev/null || true
 done
 
 cd /opt/bestclient/game
