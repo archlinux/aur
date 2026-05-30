@@ -4,7 +4,6 @@ version = 1
 path = [
     "PKGBUILD",
     ".SRCINFO",
-    "subtitleedit",
     "subtitleedit.desktop"
     ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
