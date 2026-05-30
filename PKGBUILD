@@ -1,7 +1,7 @@
 # Maintainer: Rodney Annand <annand.rodney at gmail dot com>
 
 pkgname=putmpv-bin
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Desktop app for browsing Put.io media and handing playback off to MPV"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("PutMPV-${pkgver}::https://github.com/X0RA/Slint_PutMPV/releases/downloa
         "LICENSE::https://raw.githubusercontent.com/X0RA/Slint_PutMPV/main/LICENSE"
         "putmpv.png"
         "putmpv.desktop")
-sha256sums=('0a8d63469e8bd29f9168852690612b7f07cc14dbc392931a5c0f091056da59cf'
+sha256sums=('41de5de6b366b8b760b15dd89b89d196d97064ef5b6f74c538e1f6fbcd662b33'
             'f1792d4b05b3c2e0f3aeeebf3e0b218e28c6e86bdc26914e3ad21371c588c841'
             'fb051655d5ffe59407b6693dc793f7a65b56d0826c52b98d372b18efbac95aa5'
             'ba6cacfa9c71477dd822865a2dac8360fb26a858c22be7f81e0322a0547b3111')
