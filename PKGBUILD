@@ -4,12 +4,12 @@
 _pkgname=BestClient
 pkgname=bestclient
 pkgver=1.7.1
-pkgrel=20
+pkgrel=21
 pkgdesc="DDRaceNetwork modification that adds new features"
 arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
 license=('custom')
-depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader' 'highway' 'libogg')
+depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader' 'highway' 'libogg' 'sdl2' 'libpulse' 'libmodplug' 'libopenmpt' 'srt' 'libssh' 'opencore-amr' 'snappy' 'aom' 'gsm' 'lame' 'openjpeg2' 'speex' 'libvorbis' 'xvidcore' 'libva' 'libvpl' 'libvdpau' 'ocl-icd' 'soxr')
 makedepends=('patchelf' 'gcc')
 optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.')
 install="$pkgname.install"
