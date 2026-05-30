@@ -33,7 +33,7 @@ namcap *.pkg.tar.zst
 ## Publishing / releasing (`Makefile`)
 
 This repo is pushed to `ssh://aur@aur.archlinux.org/ruroco.git`. A `Makefile`
-wraps the maintenance loop — run `make help` for the full list:
+wraps the maintenance loop - run `make help` for the full list:
 
 ```bash
 make release VERSION=0.14.2   # bump pkgver + reset pkgrel, updpkgsums,
@@ -43,5 +43,5 @@ make push                     # review the commit, then push to the AUR
 make keywords                 # set AUR search keywords (one-off)
 ```
 
-> `.SRCINFO` is mandatory and must match the PKGBUILD on every push — the
+> `.SRCINFO` is mandatory and must match the PKGBUILD on every push - the
 > `release`/`srcinfo` targets regenerate it for you.
