@@ -1,50 +1,50 @@
-# Maintainer: robertfoster
+# Maintainer: aur.chaotic.cx
+# Contributor: robertfoster
 
-pkgname=whisper.cpp
-pkgver=1.8.4 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
+_pkgname="whisper.cpp"
+pkgname="$_pkgname"
+pkgver=1.8.5
 pkgrel=1
-pkgdesc="Port of OpenAI's Whisper model in C/C++ (with OpenBLAS + Vulkan optimizations)"
+pkgdesc="Port of OpenAI's Whisper model in C/C++"
+url="https://github.com/ggml-org/whisper.cpp"
+license=('MIT')
 arch=('armv7h' 'aarch64' 'x86_64')
-url="https://github.com/ggerganov/whisper.cpp"
-license=("MIT")
-depends=('libggml-git' 'sdl2-compat')
+
+depends=(
+  'libggml'
+  'sdl2'
+)
 makedepends=(
   'cmake'
-  'git'
-)
-source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-  disable-deprecated.patch
+  'ninja'
 )
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/disable-deprecated.patch"
-}
+provides=('libwhisper.so')
 
-build() {
-  cmake \
-    -B "${srcdir}/build" \
-    -S "${srcdir}/${pkgname}-${pkgver}" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DWHISPER_SDL2=1 \
-    -DWHISPER_BUILD_SERVER=0 \
-    -DWHISPER_BUILD_TESTS=0 \
-    -DWHISPER_USE_SYSTEM_GGML=1
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('cd702189cb5e608c8bc487f4b151db593c4455925b37cc06ef76b44861911db1')
 
-  cmake --build "${srcdir}/build"
-}
+build() (
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-dev
+
+    -DWHISPER_BUILD_TESTS=$(CHECKFUNC)
+    -DWHISPER_SDL2=ON
+    -DWHISPER_USE_SYSTEM_GGML=ON
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
+)
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install "${srcdir}/build"
-
-  cp -r ${srcdir}/build/bin "${pkgdir}"/usr
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
-    -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-sha256sums=(
-  'b26f30e52c095ccb75da40b168437736605eb280de57381887bf9e2b65f31e66'
-  '5f880edae417c7083a9403260e5c381285e4c52ccc39f127c6510fdfa249c1ad'
-)
