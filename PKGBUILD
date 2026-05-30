@@ -10,7 +10,7 @@
 # regenerates .SRCINFO, and pushes.
 pkgname=tensaku-bin
 _pkgname=tensaku
-pkgver=0.25.2
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='Modern screenshot annotation tool for Wayland (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ conflicts=("$_pkgname" "$_pkgname-git")
 source_x86_64=("$_pkgname-v$pkgver-x86_64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64.tar.gz")
 source_aarch64=("$_pkgname-v$pkgver-aarch64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64.tar.gz")
 # Placeholders — CI's updpkgsums overwrites with real per-arch hashes per release.
-sha256sums_x86_64=('1119f99c11c99b0df27acd5292aaf665fe5c38443f17da2c2ed468e84ce0d233')
-sha256sums_aarch64=('2dc02063138c293f0fb33d4233454c7b4f5e67899621ad323d03651418466002')
+sha256sums_x86_64=('4a8fc2686fe54e417796284c31b95b4b8c6be1cf7cf8841dfc1e975611acc11a')
+sha256sums_aarch64=('4a01e3f63ff166f1d0bb7f21304122722bcf88c0882a8fe8c71b6d5b373eaa33')
 
 package() {
   # `make package` tarballs the install-staged tree, so we just need
