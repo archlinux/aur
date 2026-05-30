@@ -9,8 +9,7 @@ url="https://github.com/berk-kucuk/QLAM"
 license=('MIT')
 depends=(
     'python'
-    'python-pyqt6'
-    'python-watchdog'
+    'python-virtualenv'
     'clamav'
     'polkit'
 )
@@ -24,11 +23,9 @@ sha256sums=('c236584b209d4e355ded2725bea7c33550574c8b7383fc68188085f2306dd685')
 build() {
     cd "QLAM-$pkgver"
 
-    # Install Python deps not available in official repos
-    pip install --quiet --no-build-isolation \
-        --target="$srcdir/lib_deps" \
-        qtawesome \
-        pyclamd
+    python3 -m venv --system-site-packages "$srcdir/venv"
+    "$srcdir/venv/bin/pip" install --quiet --no-build-isolation \
+        PyQt6 pyclamd watchdog qtawesome
 }
 
 package() {
@@ -39,21 +36,25 @@ package() {
     cp -r main.py core ui resources Logos \
         "$pkgdir/usr/share/qlam/"
 
-    # Bundled pip libs (qtawesome, pyclamd)
-    cp -r "$srcdir/lib_deps" "$pkgdir/usr/share/qlam/lib"
+    # Venv — relocate to final install path
+    cp -r "$srcdir/venv" "$pkgdir/usr/share/qlam/venv"
+
+    # Fix venv shebangs and activation scripts to point to final path
+    find "$pkgdir/usr/share/qlam/venv/bin" -type f | while read -r f; do
+        sed -i "s|$srcdir/venv|/usr/share/qlam/venv|g" "$f" 2>/dev/null || true
+    done
 
     # Launcher
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/qlam" << 'EOF'
 #!/bin/bash
-export PYTHONPATH="/usr/share/qlam/lib${PYTHONPATH:+:$PYTHONPATH}"
-exec python3 /usr/share/qlam/main.py "$@"
+exec /usr/share/qlam/venv/bin/python /usr/share/qlam/main.py "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/qlam"
 
     # Desktop entry
-    install -dm755 "$pkgdir/usr/share/applications"
-    cat > "$pkgdir/usr/share/applications/qlam.desktop" << 'EOF'
+    install -Dm644 /dev/stdin \
+        "$pkgdir/usr/share/applications/qlam.desktop" << 'EOF'
 [Desktop Entry]
 Name=Qlam
 GenericName=Antivirus
@@ -75,8 +76,8 @@ EOF
         "$pkgdir/usr/share/pixmaps/qlam.png"
 
     # License
-    install -Dm644 LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null \
-        || install -Dm644 /dev/null \
-            "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+    if [ -f LICENSE ]; then
+        install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    fi
 }
