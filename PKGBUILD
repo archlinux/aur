@@ -11,7 +11,8 @@ depends=(
     'python-gobject'
     'gtk4'
     'libadwaita'
-    'poppler-glib'
+    'python-pymupdf'
+    'python-numpy'
     'python-cairo'
     'gtksourceview5'
 )
