@@ -1,0 +1,25 @@
+# Shown by pacman after installing Tensaku.
+
+post_install() {
+  cat <<'MSG'
+
+
+  ================================================================
+  ================================================================
+
+      >>>  TENSAKU INSTALLED -- ONE MORE STEP TO FINISH  <<<
+
+      Run this command to finalize the Omarchy integration
+      (it makes Tensaku your screenshot editor, replacing Satty):
+
+            tensaku --wire-omarchy
+
+      Your screenshot keys will then open captures in Tensaku.
+      Check status any time:   tensaku --doctor
+
+  ================================================================
+  ================================================================
+
+
+MSG
+}
