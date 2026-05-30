@@ -9,7 +9,7 @@ license=('GPL-2.0-or-later')
 depends=('python' 'gtk4' 'python-gobject' 'mpv' 'xwinwrap')
 optdepends=('polkit: para guardar archivos protegidos con contraseña')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/debwuoldirty/icecc3/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7b24ba3d1f07a24474dd00de22006ef3705c79cdf5c09d5439152b47cbc2b18d')
+sha256sums=('427e05a66be867b69f2631dc915efc2f8c234c8f15751466caee5d3369f889ab')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
