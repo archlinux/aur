@@ -1,5 +1,5 @@
 pkgname=clio
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A lightning-fast, keyboard-driven TUI for taking Markdown notes in the terminal. Powered by Go & Bubble Tea."
 arch=('x86_64')
@@ -7,8 +7,8 @@ url="https://github.com/psychosomat/Clio"
 license=('MIT')
 depends=()
 makedepends=('go')
-source=("https://github.com/psychosomat/Clio/releases/download/v1.0.0/clio-1.0.0-source.tar.gz")
-sha256sums=('cbe5f83759231abbcacc0968ce699797bbd6f9934be133efcdbb21d778cb2b1d')
+source=("https://github.com/psychosomat/Clio/releases/download/v1.0.1/clio-1.0.1-source.tar.gz")
+sha256sums=('9575b2f7993d423d098b90aebef3799461d05930b922dddacc2ef4859be89471')
 
 build() {
   cd "${srcdir}/clio-${pkgver}"
