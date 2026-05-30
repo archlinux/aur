@@ -170,11 +170,13 @@ prepare() {
 	ln -sf libtheoraenc.so.1.1.2 $pkgname/game/libtheoraenc.so.1
 	ln -sf libtheoradec.so.1.1.4 $pkgname/game/libtheoradec.so.1
 
-	# libjxl 0.10.3 — libjxl.so.0.10 + libjxl_threads.so.0.10 (GNU_VERSION_R entries)
+	# libjxl 0.10.3 — libjxl.so.0.10 + libjxl_threads.so.0.10 + libjxl_cms.so.0.10 (GNU_VERSION_R entries)
 	_extract_so "${srcdir}/libjxl_010" "usr/lib/libjxl.so.0.10.3"         "$pkgname/game"
 	_extract_so "${srcdir}/libjxl_010" "usr/lib/libjxl_threads.so.0.10.3" "$pkgname/game"
+	_extract_so "${srcdir}/libjxl_010" "usr/lib/libjxl_cms.so.0.10.3"     "$pkgname/game"
 	ln -sf libjxl.so.0.10.3         $pkgname/game/libjxl.so.0.10
 	ln -sf libjxl_threads.so.0.10.3 $pkgname/game/libjxl_threads.so.0.10
+	ln -sf libjxl_cms.so.0.10.3     $pkgname/game/libjxl_cms.so.0.10
 
 	# rav1e 0.7.1 — librav1e.so.0.7
 	_extract_so "${srcdir}/rav1e_07" "usr/lib/librav1e.so.0.7.1" "$pkgname/game"
