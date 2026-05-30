@@ -13,7 +13,7 @@
 
 namespace fs = std::filesystem;
 
-// HOLY ANSI ESCAPE CODES
+// ansi escape codes
 const std::string RESET = "\x1b[0m";
 const std::string RED = "\x1b[0;31m";
 const std::string GOLD = "\x1b[0;33m";
@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
     for (int i = 1; i < argc; ++i) {
         std::string flag = argv[i];
         if (flag == "-v" || flag == "--version") {
-            std::cout << "smosummary v4.0.1-3 | owner: aray4iv3\n";
+            std::cout << "smosummary v4.0.1-4 | owner: aray4iv3\n";
             return 0;
         } else if (flag == "-h" || flag == "--help") {
             std::cout << GOLD << "smosummary tui" << RESET << "\nusage:\n"

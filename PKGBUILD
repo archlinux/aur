@@ -4,10 +4,10 @@ pkgver=4.0.1
 pkgrel=3
 pkgdesc="A Sum of Best (SoB) calculator and Stopwatch for Super Mario Odyssey speedrunners"
 arch=('x86_64')
-source=("smosummary::git+https://github.com/aray4iv3/smosummary.git")
+source=("git+https://github.com/aray4iv3/smosummary.git#branch=master")
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('cmake' 'ninja' 'git') # Added ninja and git here
+makedepends=('cmake' 'ninja' 'git')
 sha256sums=('SKIP')
 provides=('smosummary')
 conflicts=('smosummary-bin' 'smosummary-git')
