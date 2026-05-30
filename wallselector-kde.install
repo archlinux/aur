@@ -1,5 +1,6 @@
 post_install() {
     echo "==> Настройка Plasma Login Manager (SDDM)..."
+    # Примечание: /etc/plasmalogin.conf обычно доступен только руту, путь верный
     kwriteconfig6 --file /etc/plasmalogin.conf --group Greeter --key WallpaperPlugin "org.kde.image"
     kwriteconfig6 --file /etc/plasmalogin.conf --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "file:///var/tmp/wallselector-sddm.jpg"
 
@@ -7,8 +8,20 @@ post_install() {
         touch /var/tmp/wallselector-sddm.jpg
         chmod 644 /var/tmp/wallselector-sddm.jpg
     fi
+
+    echo "--------------------------------------------------------"
+    echo ">>> Установка завершена!"
+    echo ">>> Чтобы сбросить настройки и кэш вручную, удалите:"
+    echo ">>> ~/.config/wallselector-kde.json и ~/.cache/plasma-wallpapers"
+    echo "--------------------------------------------------------"
 }
 
 post_upgrade() {
     post_install
+}
+
+# post_remove мы оставляем пустым или убираем,
+# так как удалять пользовательские файлы от root нельзя.
+post_remove() {
+    echo ">>> Пакет удален. Файлы конфигурации и кэш пользователя сохранены."
 }
