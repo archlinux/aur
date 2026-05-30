@@ -1,0 +1,13 @@
+pkgbase = asciinema-agg-plus-bin
+	pkgdesc = asciinema gif generator fork with support for hinting and antialiasing
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/d10n/agg-plus
+	arch = x86_64
+	license = GPL-3.0-or-later
+	options = !lto
+	options = !debug
+	source = agg-plus-v1.9.0::https://github.com/d10n/agg-plus/releases/download/plus-v1.9.0/agg-plus-x86_64-unknown-linux-musl
+	sha256sums = 4bd4d26dd45079e02741ababf5a0826f882b7a620e448f2916b2327dd2c5e40b
+
+pkgname = asciinema-agg-plus-bin
