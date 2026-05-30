@@ -1,0 +1,10 @@
+_hlp_completion() {
+    _hlp_completion_result="$(
+        COMP_WORDS="${COMP_WORDS[*]}" \
+        COMP_CWORD="$COMP_CWORD" \
+        "$1" --autocomplete 2>/dev/null
+    )"
+    COMPREPLY=( $_hlp_completion_result )
+}
+
+complete -F _hlp_completion hlp

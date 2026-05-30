@@ -1,0 +1,22 @@
+pkgbase = hlp
+	pkgdesc = Get Python help from the command line
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/chrahunt/hlp
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	provides = hlp
+	conflicts = python-hlp
+	replaces = python-hlp
+	source = hlp-0.2.1.tar.gz::https://github.com/chrahunt/hlp/archive/refs/tags/v0.2.1.tar.gz
+	source = hlp.bash_autocomplete
+	sha256sums = e4480d3daf01ffa4d7620d0dc35ec4ed44885fc2333c6181b5ade040bddf4111
+	sha256sums = c88117270ed54260e5974ace5b0df9d0aa1ca433fa76387d63bc6b0cc98088f0
+
+pkgname = hlp
