@@ -4,7 +4,7 @@
 _pkgname=SuperZSNES
 _execname=SUPERZSNES
 pkgname=superzsnes
-pkgver=0.110
+pkgver=0.201
 pkgrel=1
 pkgdesc="A GPU-powered SNES Emulator developed in Unity"
 arch=("x86_64")
@@ -13,13 +13,13 @@ install=$pkgname.install
 license=('freeware-proprietary')
 depends=("hidapi" "systemd-libs" "alsa-lib" "gtk3" "glib2" "libdecor")
 source=(
-    "$_execname-runner"
+    "$_execname.sh"
     "$_execname.desktop"
     "https://www.zsnes.com/files/${_pkgname}_v${pkgver}.tar.gz"
 )
 sha256sums=('091fc53feea1ae09eb9cf22d1bc98b700dd5441b640586e3c0d75d663d377e43'
             '420f11c4a717d11a955b5bc64238fbd5398c5aae3676d2b531de5da7a409ee27'
-            '157b7f469e74a153f83b10de0fe03394c9c015b8d34af8062ac443e6e1b78d72'
+            '85c730b9c2706e7f3a2d995a6333a0d2819b43464f2781194c1699d7a15a64a8'
 )
 
 package() {
@@ -29,7 +29,7 @@ package() {
     install -dm777 "$pkgdir/opt/$_pkgname"
 
     # install binaries
-    install -Dm777 "${_execname}-runner" "$pkgdir/usr/bin/$_execname"
+    install -Dm777 "${_execname}.sh" "$pkgdir/usr/bin/$_execname"
     install -Dm777 "$srcdir/UnityPlayer.so" "$pkgdir/opt/$_pkgname/"
     install -Dm777 "$srcdir/${_execname}" "$pkgdir/opt/$_pkgname/${_execname}"
     cp -r "$srcdir/${_execname}_Data" "$pkgdir/opt/$_pkgname/${_execname}_Data"
