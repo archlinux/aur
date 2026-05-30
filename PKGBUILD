@@ -14,7 +14,7 @@ makedepends=(gcc-fortran cmake)
 source=(https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz
 cmake.patch::https://gitlab.com/${pkgname}/${pkgname}/-/merge_requests/696.patch)
 sha512sums=('ae50760cb4afb37af26cbc5cf819d1bfaa2fa1fc01509b73a4e2533ca772cff5750493974f63f573cf5748ed1007e21c7611d3840b3fa50a3e77e74f7a027988'
-            'e3b6e45ff38f6bc5053bcdcb1c1d7fc65bf24fd148728abceaad770fe396d2a1a155d17f196199cca60ce62070cb331052a4687960731a8e0c4b261578b1108b')
+            'de45e6ba6d8ce7daf192329a48f8969438f2a1b3965872138a0f603b8c90c2c70c92c584223ce102b039c949620aed136b7beab093e02d09afde301768e352aa')
 options=(staticlibs)
 
 prepare() {
