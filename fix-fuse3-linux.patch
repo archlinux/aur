@@ -1,0 +1,231 @@
+--- a/udfclientfs.c	2026-05-31 03:03:57.404323739 +0700
++++ b/udfclientfs.c	2026-05-31 03:04:12.952488353 +0700
+@@ -37,7 +37,6 @@
+  */
+ 
+ #include <sys/types.h>
+-#include <sys/limits.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ 
+@@ -50,12 +49,13 @@
+ #include <paths.h>
+ #include <libgen.h>
+ #include <limits.h>
++#include <dirent.h>
+ #include <errno.h>
+ 
+ #include "udf.h"
+ #include "udf_bswap.h"
+ 
+-#define FUSE_USE_VERSION 27
++#define FUSE_USE_VERSION 31
+ #include <fuse.h>
+ 
+ static int udfclientfs_debug = 0;
+@@ -70,26 +70,26 @@
+ static int	decompose_path(const char *path, char **ppath, char **cpath);
+ static int	lookup_pathname(struct udf_node **node, const char *path);
+ static void	fixup_stat(const struct udf_node *node, struct stat *stat);
+-static int	udfclientfs_getattr(const char *path, struct stat *stat);
+-static int	udfclientfs_chmod(const char *path, mode_t mode);
+-static int	udfclientfs_chown(const char *path, uid_t uid, gid_t gid);
+-static int	udfclientfs_utime(const char *path, struct utimbuf *times);
+-static int	udfclientfs_truncate(const char *path, off_t length);
++static int	udfclientfs_getattr(const char *path, struct stat *stat, struct fuse_file_info *fi);
++static int	udfclientfs_chmod(const char *path, mode_t mode, struct fuse_file_info *fi);
++static int	udfclientfs_chown(const char *path, uid_t uid, gid_t gid, struct fuse_file_info *fi);
++static int	udfclientfs_utimens(const char *path, const struct timespec tv[2], struct fuse_file_info *fi);
++static int	udfclientfs_truncate(const char *path, off_t length, struct fuse_file_info *fi);
+ static int	udfclientfs_mknod(const char *path, mode_t mode, dev_t unused);
+ static int	udfclientfs_mkdir(const char *path, mode_t mode);
+ static int	udfclientfs_unlink(const char *path);
+ static int	udfclientfs_rmdir(const char *path);
+-static int	udfclientfs_rename(const char *from, const char *to);
++static int	udfclientfs_rename(const char *from, const char *to, unsigned int flags);
+ static int	udfclientfs_open(const char *path, struct fuse_file_info *fi);
+ static int	udfclientfs_release(const char *path, struct fuse_file_info *fi);
+ static int	udfclientfs_read(const char *path, char *rbuf, size_t size, off_t offset, struct fuse_file_info *fi);
+ static int	udfclientfs_write(const char *path, const char *wbuf, size_t size, off_t offset, struct fuse_file_info *fi);
+ static int	udfclientfs_opendir(const char *path, struct fuse_file_info *fi);
+ static int	udfclientfs_releasedir(const char *path, struct fuse_file_info *fi);
+-static int	udfclientfs_readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t offset, struct fuse_file_info *fi);
++static int	udfclientfs_readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t offset, struct fuse_file_info *fi, enum fuse_readdir_flags flags);
+ static int	udfclientfs_fsync(const char *unused1, int unused2, struct fuse_file_info *unused3);
+ static int	udfclientfs_statfs(const char *unsed, struct statvfs *buf);
+-static void *	udfclientfs_init();
++static void *	udfclientfs_init(struct fuse_conn_info *conn, struct fuse_config *cfg);
+ static void	udfclientfs_destroy(void *unused);
+ 
+ static struct udf_mountpoint *mp = NULL;
+@@ -243,8 +243,9 @@
+ }
+ 
+ static int
+-udfclientfs_getattr(const char *path, struct stat *stat)
++udfclientfs_getattr(const char *path, struct stat *stat, struct fuse_file_info *fi)
+ {
++	(void)fi;
+ 	struct udf_node *node;
+ 	int error;
+ 
+@@ -256,8 +257,9 @@
+ }
+ 
+ static int
+-udfclientfs_chmod(const char *path, mode_t mode)
++udfclientfs_chmod(const char *path, mode_t mode, struct fuse_file_info *fi)
+ {
++	(void)fi;
+ 	struct stat stat;
+ 	struct udf_node *node;
+ 	int error;
+@@ -277,8 +279,9 @@
+ }
+ 
+ static int
+-udfclientfs_chown(const char *path, uid_t uid, gid_t gid)
++udfclientfs_chown(const char *path, uid_t uid, gid_t gid, struct fuse_file_info *fi)
+ {
++	(void)fi;
+ 	struct stat stat;
+ 	struct udf_node *node;
+ 	int error;
+@@ -296,8 +299,9 @@
+ }
+ 
+ static int
+-udfclientfs_utime(const char *path, struct utimbuf *times)
++udfclientfs_utimens(const char *path, const struct timespec tv[2], struct fuse_file_info *fi)
+ {
++	(void)fi;
+ 	struct stat stat;
+ 	struct udf_node *node;
+ 	int error;
+@@ -307,16 +311,17 @@
+ 	else if ((error = udf_getattr(node, &stat)) != 0) {
+ 	} 
+ 	else {
+-		stat.st_atime = times->actime;
+-		stat.st_mtime = times->modtime;
++		stat.st_atime = tv[0].tv_sec;
++		stat.st_mtime = tv[1].tv_sec;
+ 		error = udf_setattr(node, &stat);
+ 	}
+ 	return (-error);
+ }
+ 
+ static int
+-udfclientfs_truncate(const char *path, off_t length)
++udfclientfs_truncate(const char *path, off_t length, struct fuse_file_info *fi)
+ {
++	(void)fi;
+ 	struct stat stat;
+ 	struct udf_node *node;
+ 	int error;
+@@ -449,8 +454,10 @@
+ }
+ 
+ static int
+-udfclientfs_rename(const char *from, const char *to)
++udfclientfs_rename(const char *from, const char *to, unsigned int flags)
+ {
++	if (flags)
++		return (-EINVAL);
+ 	struct udf_node *from_pnode;
+ 	struct udf_node *to_pnode;
+ 	struct udf_node *from_node;
+@@ -616,8 +623,11 @@
+ }
+ 
+ static int
+-udfclientfs_readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t offset, struct fuse_file_info *fi)
++udfclientfs_readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t offset, struct fuse_file_info *fi, enum fuse_readdir_flags flags)
+ {
++	(void)flags;
++	(void)path;
++	(void)offset;
+ 	struct uio dir_uio;
+ 	struct iovec dir_iov;
+ 	struct stat stat;
+@@ -666,7 +676,7 @@
+ 			error = udf_getattr(entry_node, &stat);
+ 			fixup_stat(entry_node, &stat);
+ 		}
+-		if (filler(buf, dirent->d_name, error ? NULL : &stat, off) != 0)
++		if (filler(buf, dirent->d_name, error ? NULL : &stat, off, 0) != 0)
+ 			break;
+ 	}
+ 
+@@ -712,9 +722,10 @@
+ }
+ 
+ static void *
+-udfclientfs_init(struct fuse_conn_info *conn)
++udfclientfs_init(struct fuse_conn_info *conn, struct fuse_config *cfg)
+ {
+ 	(void)conn;
++	(void)cfg;
+ 	udf_start_unix_thread();
+ 	return (NULL);
+ }
+@@ -736,7 +747,7 @@
+ 	.chmod      = udfclientfs_chmod,
+ 	.chown      = udfclientfs_chown,
+ 	.truncate   = udfclientfs_truncate,
+-	.utime      = udfclientfs_utime,
++	.utimens    = udfclientfs_utimens,
+ 	.open       = udfclientfs_open,
+ 	.fsync      = udfclientfs_fsync,
+ 	.release    = udfclientfs_release,
+@@ -887,11 +898,6 @@
+ 	if(argc != 2)
+ 		usage(progname);
+ 
+-	/* add use_ino fuse option to use our "persistent" inums
+-	 * instead of dynamically generated by fuse
+-	 */
+-	fuseargv[fuseargc++] = strdup("-o");
+-	fuseargv[fuseargc++] = strdup("use_ino");
+ 	fuseargv[fuseargc++] = strdup("-s");
+ 
+ 	dev = argv[0];
+--- a/Makefile.in	2026-05-31 03:03:57.405323798 +0700
++++ b/Makefile.in	2026-05-31 03:04:23.961440895 +0700
+@@ -37,12 +37,12 @@
+ #CFLAGS+= -D__ANONYMOUSUDF__
+ 
+ #CFLAGS+= -fPIC -DPIC
+-POSTOBJ+= -L/usr/local/lib -lfuse @SCSI_LIB@ @THREADLIB@
++POSTOBJ+= -lfuse3 @SCSI_LIB@ @THREADLIB@
+ 
+ 
+ # For use with the cpuflags package
+ #CPROCFLAGS != cpuflags
+-CFLAGS+= ${CPROCFLAGS} -I/usr/local/include -D_FILE_OFFSET_BITS=64
++CFLAGS+= ${CPROCFLAGS} -I/usr/include/fuse3 -D_FILE_OFFSET_BITS=64
+ 
+ 
+ # Main programs
+--- a/udf.h	2026-05-31 03:03:57.407323915 +0700
++++ b/udf.h	2026-05-31 03:04:30.249984926 +0700
+@@ -502,7 +502,7 @@
+ extern int  udf_getattr(struct udf_node *udf_node, struct stat *stat);
+ extern int  udf_readdir(struct udf_node *udf_node, struct uio *result_uio, int *eof_res /* int *cookies, int ncookies */);
+ //extern int  udf_lookup_name_in_dir(struct udf_node *dir_node, struct udf_node **vnode, char *name);		/* not fully VOP_LOOKUP yet */
+-extern int  udf_lookup_name_in_dir(struct udf_node *dir_node, char *name, int namelen, struct long_ad *icb_loc, struct fileid_desc *fid, int *found);
++extern int  udf_lookup_name_in_dir(struct udf_node *dir_node, const char *name, int namelen, struct long_ad *icb_loc, struct fileid_desc *fid, int *found);
+ extern int  udf_readin_udf_node(struct udf_node *dir_node, struct long_ad *udf_icbptr, struct fileid_desc *fid, struct udf_node **res_sub_node);
+ extern int  udf_sync_udf_node(struct udf_node *udf_node, char *why);			/* writeout node */
+ extern int  udf_truncate_node(struct udf_node *udf_node, uint64_t length /* ,ioflags */);
+--- a/udf.c	2026-05-31 03:03:57.409324031 +0700
++++ b/udf.c	2026-05-31 03:04:30.253242393 +0700
+@@ -5686,7 +5686,7 @@
+ 
+ 
+ /* XXX yes, move namelen to unsigned int */
+-int udf_lookup_name_in_dir(struct udf_node *dir_node, char *name, int namelen, struct long_ad *icb_loc, struct fileid_desc *fid, int *found) {
++int udf_lookup_name_in_dir(struct udf_node *dir_node, const char *name, int namelen, struct long_ad *icb_loc, struct fileid_desc *fid, int *found) {
+ 	struct dirhash       *dirh;
+ 	struct dirhash_entry *dirh_ep;
+ 	struct dirent *dirent;
