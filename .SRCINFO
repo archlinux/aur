@@ -1,6 +1,6 @@
 pkgbase = tun2proxy
 	pkgdesc = Tunnel (TUN) interface for SOCKS and HTTP proxies
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/tun2proxy/tun2proxy
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tun2proxy
 	depends = glibc
 	depends = gcc-libs
 	options = !debug
-	source = https://github.com/tun2proxy/tun2proxy/archive/v0.8.0/tun2proxy-0.8.0.tar.gz
-	sha256sums = 82cba98bd091ca28ccceddf48c4b96354786ae5c9650013c1174327a1346c2a8
+	source = https://github.com/tun2proxy/tun2proxy/archive/v0.8.1/tun2proxy-0.8.1.tar.gz
+	sha256sums = 2df576b413978bff6294ea13e4c5f31485bb5c95d82a213a5a706032dfc451c6
 
 pkgname = tun2proxy
