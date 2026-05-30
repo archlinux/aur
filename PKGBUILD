@@ -1,7 +1,7 @@
 # Maintainer: beac0n <gh@schempp.dev>
 
 pkgname=ruroco-client-ui
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc='ruroco client GUI (egui) - graphical front-end for the ruroco client'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('openssl' 'gcc-libs' 'glibc' 'fontconfig' 'libglvnd'
 makedepends=('cargo')
 options=('!lto')
 source=("ruroco-$pkgver.tar.gz::https://github.com/beac0n/ruroco/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3236dc6ccb73af6fc58b8f43f01a32594550a82dddf896554a0be41ce88acfa3')
+sha256sums=('9d4fa1eb8f4fb5134995ef39ba9c21a5e23487b8d55b97479593516f8ada320c')
 
 prepare() {
   cd "$srcdir/ruroco-$pkgver"
