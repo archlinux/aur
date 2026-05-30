@@ -8,8 +8,10 @@ import subprocess
 import time
 import urllib.request
 import urllib.error
+from datetime import datetime
 
 CONFIG_DIR = os.path.expanduser("~/.config/prism")
+HISTORY_DIR = os.path.join(CONFIG_DIR, "history")
 CONFIG_FILE = os.path.join(CONFIG_DIR, "config.json")
 
 DEFAULT_CONFIG = {
@@ -27,12 +29,14 @@ DEFAULT_CONFIG = {
  ██████╔╝██████╔╝██║███████╗██╔████╔██║
  ██╔═══╝ ██╔══██╗██║╚════██║██║╚██╔╝██║
  ██║     ██║  ██║██║███████║██║ ╚═╝ ██║
- ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝     ╚═╝ v1.0"""
+ ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝     ╚═╝ v1.1"""
 }
 
 def load_user_config():
     if not os.path.exists(CONFIG_DIR):
         os.makedirs(CONFIG_DIR, exist_ok=True)
+    if not os.path.exists(HISTORY_DIR):
+        os.makedirs(HISTORY_DIR, exist_ok=True)
     if not os.path.exists(CONFIG_FILE):
         with open(CONFIG_FILE, "w") as f:
             json.dump(DEFAULT_CONFIG, f, indent=4)
@@ -199,6 +203,7 @@ class PrismCLI:
             {"role": "system", "content": f"You are {CFG['assistant_name']}. A clean terminal AI companion."}
         ]
         self.tools_supported = True
+        self.current_session_file = None
 
     def query_api_raw(self, endpoint, payload=None):
         url = f"{self.host_url}{endpoint}"
@@ -215,6 +220,55 @@ class PrismCLI:
                 return [m['name'] for m in data.get('models', [])]
         except Exception:
             return []
+
+    def save_current_history(self):
+        if len(self.history) <= 1:
+            return
+        if not self.current_session_file:
+            timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            self.current_session_file = os.path.join(HISTORY_DIR, f"chat_{timestamp}.json")
+        try:
+            with open(self.current_session_file, "w") as f:
+                json.dump({"model": self.model_name, "history": self.history}, f, indent=4)
+        except Exception as e:
+            print(f"\033[31m[-] Failed to save history block: {e}\033[0m")
+
+    def select_and_load_history(self):
+        try:
+            files = sorted([f for f in os.listdir(HISTORY_DIR) if f.endswith(".json")], reverse=True)
+            if not files:
+                print("\n\033[33m[!] No historical logs discovered in storage pipelines.\033[0m\n")
+                return
+            
+            print("\n\033[1;36m--- Saved Memory Context Pipelines ---\033[0m")
+            for idx, filename in enumerate(files[:10]):
+                filepath = os.path.join(HISTORY_DIR, filename)
+                with open(filepath, "r") as f:
+                    meta = json.load(f)
+                # Find the first user message text snippet
+                snippet = "Empty stream summary"
+                for msg in meta.get("history", []):
+                    if msg.get("role") == "user":
+                        snippet = msg.get("content", "")[:35] + "..."
+                        break
+                print(f"  [{idx + 1}] {filename[:-5]} ({meta.get('model', 'unknown')}) -> {snippet}")
+            print("  [c] Cancel sequence back to live console\n")
+
+            choice = input("\033[1;30mSelect historical log indices » \033[0m").strip().lower()
+            if choice == 'c' or not choice:
+                print("\n\033[32m✔ Aborted memory pull. Retaining active pipeline.\033[0m\n")
+                return
+            
+            idx = int(choice) - 1
+            if 0 <= idx < len(files):
+                self.current_session_file = os.path.join(HISTORY_DIR, files[idx])
+                with open(self.current_session_file, "r") as f:
+                    data = json.load(f)
+                self.model_name = data.get("model", self.model_name)
+                self.history = data.get("history", [])
+                print(f"\n\033[1;32m✔ Memory block mapped. Restored {len(self.history)-1} dialogue states.\033[0m\n")
+        except Exception as e:
+            print(f"\n\033[31m[-] Log context mapping failed: {e}\033[0m\n")
 
     def draw_ui_frame(self, animated=True):
         if animated:
@@ -294,6 +348,8 @@ class PrismCLI:
 
                 if full_reply:
                     self.history.append({"role": "assistant", "content": full_reply})
+                
+                self.save_current_history()
 
         except urllib.error.HTTPError as e:
             if e.code == 400 and self.tools_supported:
@@ -322,11 +378,15 @@ class PrismCLI:
                     print("\n\033[1;36m--- Internal Workspace Command Layer ---\033[0m")
                     print("  /models        List local disk engine options")
                     print("  /model <name>  Hot-swap pipeline target to another layout")
+                    print("  /history       Review log registry map and load past sessions")
                     print("  /clear         Wipe window and re-trigger animation sequence")
                     print("  exit           Safely shut down app stack context\n")
                     continue
                 if user_input.lower() == "/clear":
-                    self.draw_ui_frame(animated=True)
+                    self.draw_ui_frame(animated=False)
+                    continue
+                if user_input.lower() == "/history":
+                    self.select_and_load_history()
                     continue
                 if user_input.lower() == "/models":
                     print("\n\033[1;34m--- Discovered Storage Blocks ---\033[0m")
