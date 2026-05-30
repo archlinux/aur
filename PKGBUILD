@@ -3,7 +3,7 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
-pkgver=4.25.1.r662.g9528f1ca
+pkgver=4.25.1.r663.gf48c1143
 pkgrel=1
 
 pkgver() {
@@ -21,13 +21,14 @@ pkgver() {
     fi
 }
 
-pkgdesc="Agentic IM Chatbot infrastructure (multi-instance, astrbotctl only)"
+pkgdesc="Agentic IM Chatbot infrastructure with systemd multi-instance support"
 arch=('any')
 url="https://github.com/AstrBotDevs/AstrBot"
 license=('AGPL-3.0-only')
 
-depends=('python>=3.12' 'uv' 'certbot')
+depends=('python>=3.12' 'uv')
 makedepends=('git')
+optdepends=('certbot: HTTPS certificate helper for astrbotctl certbot')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -37,18 +38,10 @@ source=(
     "astrbotctl"
     "astrbotctl.functions"
     "astrbot@.service"
-    "astrbot-update.timer"
-    "astrbot-update.service"
-    "update.conf.example"
     "tmpl.conf"
-    "setup.sh"
 )
 
 sha256sums=('SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -109,16 +102,9 @@ package() {
     fi
 
     install -Dm644 "$srcdir/tmpl.conf" "$pkgdir/etc/astrbot/tmpl.conf"
-    install -Dm644 "$srcdir/update.conf.example" \
-        "$pkgdir/usr/share/doc/$pkgname/update.conf.example"
     install -Dm755 "$srcdir/astrbotctl" "$pkgdir/usr/bin/astrbotctl"
     install -Dm644 "$srcdir/astrbotctl.functions" \
         "$pkgdir/usr/bin/astrbotctl.functions"
     install -Dm644 "$srcdir/astrbot@.service" \
         "$pkgdir/usr/lib/systemd/system/astrbot@.service"
-    install -Dm644 "$srcdir/astrbot-update.timer" \
-        "$pkgdir/usr/lib/systemd/system/astrbot-update.timer"
-    install -Dm644 "$srcdir/astrbot-update.service" \
-        "$pkgdir/usr/lib/systemd/system/astrbot-update.service"
-    install -Dm755 "$srcdir/setup.sh" "$pkgdir/usr/bin/astrbot-setup"
 }
