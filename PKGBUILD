@@ -6,7 +6,7 @@
 # pushes to the AUR. Edit depends / package() etc. here — never in the
 # AUR repo directly.
 pkgname=tensaku
-pkgver=0.25.2
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='Modern screenshot annotation tool for Wayland'
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('MPL-2.0')
 depends=('gtk4' 'gtk4-layer-shell' 'libadwaita' 'libepoxy' 'fontconfig')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4d18cea82087b58030ebc64f52c43cbba6989ee32e31f1e874543b2bdaeb1897')
+sha256sums=('a54e98503c0299f6731fbc6ec2202bfcfe4fa70dccb3ff409284da36d6bf8164')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -33,6 +33,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 target/release/tensaku "$pkgdir/usr/bin/tensaku"
+  install -Dm755 assets/tensaku-edit "$pkgdir/usr/bin/tensaku-edit"
   install -Dm644 dev.tensaku.Tensaku.desktop "$pkgdir/usr/share/applications/dev.tensaku.Tensaku.desktop"
   install -Dm644 assets/tensaku.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/dev.tensaku.Tensaku.svg"
   install -Dm644 man/tensaku.1 "$pkgdir/usr/share/man/man1/tensaku.1"
