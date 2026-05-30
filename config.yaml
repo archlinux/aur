@@ -1,7 +1,4 @@
 http:
     bind: "[::]:80"
 
-handler: !hosts
-    "example.org": !files
-        root: "/srv/http"
-        index: true
+handler: !file { type: text/plain, content: "Hello World! Configure gnix in /etc/gnix.yaml" }

@@ -1,6 +1,6 @@
 pkgbase = gnix
 	pkgdesc = a simple stupid http reverse proxy
-	pkgver = 2.4.1
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://codeberg.org/metamuffin/gnix
 	arch = i686
@@ -11,13 +11,13 @@ pkgbase = gnix
 	license = AGPL3
 	makedepends = rustup
 	backup = etc/gnix.yaml
-	source = gnix-2.4.1.tar.gz::https://codeberg.org/metamuffin/gnix/archive/v2.4.1.tar.gz
+	source = gnix-2.6.0.tar.gz::https://codeberg.org/metamuffin/gnix/archive/v2.6.0.tar.gz
 	source = gnix.service
 	source = config.yaml
 	source = sysusers.conf
-	sha256sums = 28afe0ec345b418de6686af30e4700dc26d47c54bd648a7cb8e9772f2504129b
-	sha256sums = a80df54a4e44960decf43ad618dc1afef9cc498370460362e91646ac3f95358e
-	sha256sums = 6f39c6a2e82f9e09eb7ffe5082bfdd795936c3665863f118fcfd4135bc8e70f1
+	sha256sums = ffd2f306e5cc2a1ff32d274702e919e90385a2e78f57172161120bf9e4d28381
+	sha256sums = 658a194c65afee7b20f91a55673af0654aec7db5d108291fd299355ac0398642
+	sha256sums = f747b1549c1c18996b1b0fac7768b248179b479027768d742e4389e9504be1de
 	sha256sums = 9e03be16b1b3dd4c0d0e5feb5c31221758b68a54bad5ba7232e8565d766ea620
 
 pkgname = gnix

@@ -4,10 +4,11 @@ After=network.target
 Wants=network-online.target
 
 [Service]
-AmbientCapabilities=CAP_NET_BIND_SERVICE
-CapabilityBoundingSet=CAP_NET_BIND_SERVICE
-ExecStart=/usr/bin/gnix /etc/gnix.yaml
-User=gnix
+Type=simple
+ExecStart=/usr/bin/gnix --control-socket /run/gnix --user gnix /etc/gnix.yaml
+ExecReload=/usr/bin/gnix --control-socket /run/gnix --reload /etc/gnix.yaml
+Restart=always
+
 LockPersonality=yes
 MemoryDenyWriteExecute=yes
 NoNewPrivileges=yes
@@ -23,12 +24,9 @@ ProtectKernelTunables=yes
 ProtectSystem=full
 RestrictAddressFamilies=~AF_PACKET AF_NETLINK
 RestrictNamespaces=yes
-RestrictSUIDSGID=yes
 RestrictRealtime=yes
-Restart=always
 SystemCallArchitectures=native
 SystemCallFilter=@system-service
-Type=simple
 
 [Install]
 WantedBy=multi-user.target
