@@ -4,20 +4,28 @@
 
 pkgname=udfclientfs
 pkgver=0.8.21
-pkgrel=1
+pkgrel=2
 pkgdesc='a userland implementation of the UDF filingsystem — provides udfclient, newfs_udf, cd_disect, cd_sessions, mmc_format, and udfdump'
 arch=('x86_64')
 url='https://www.13thmonkey.org/udfclient/'
 license=('LicenseRef-Clarified Artistic')
 depends=('glibc')
-makedepends=('bmake')
+makedepends=('bmake' 'patch')
 provides=('udfclient')
 conflicts=('udfclient')
-source=("${url}releases/UDFclient.${pkgver}.tgz")
-sha256sums=('83deab4d97d8e5f67baa47aa779c41d35b5f5ef348bcea36bebb1549534c6f5e')
+source=("${url}releases/UDFclient.${pkgver}.tgz"
+        "fix-fgets-unused-result.patch")
+sha256sums=('83deab4d97d8e5f67baa47aa779c41d35b5f5ef348bcea36bebb1549534c6f5e'
+            'a275bd371061915fce0c8b0fcdf076b02e5d494b3410463a7f1ec937ecee05b0')
+
+prepare() {
+  cd "${srcdir}/UDFclient.${pkgver}"
+  patch -p1 < "${srcdir}/fix-fgets-unused-result.patch"
+}
 
 build() {
   cd "${srcdir}/UDFclient.${pkgver}"
+  export CFLAGS="${CFLAGS} -Wno-address-of-packed-member"
   ./configure --prefix=/usr
   bmake -s
 }

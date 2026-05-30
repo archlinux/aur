@@ -1,0 +1,13 @@
+--- a/udfclient.c	2026-05-30 20:49:10.754822437 +0700
++++ b/udfclient.c	2026-05-30 20:49:10.783659973 +0700
+@@ -1552,7 +1552,9 @@
+ 		clearerr(stdin);
+ 
+ 		*line = 0;
+-		(void) fgets(line, 4096, stdin);
++		if (fgets(line, 4096, stdin) == NULL) {
++			/* NULL return handled by feof() check below */
++		}
+ 
+ 		if ((*line == 0) && feof(stdin)) {
+ 			printf("quit\n");
