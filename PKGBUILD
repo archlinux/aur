@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
-pkgver=r19272.c08641f
+pkgver=r19304.7001209
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(
 )
 b2sums=(
 	'SKIP'{,,,,,}
-	'1db2dda768337fdb7137824d145d526532c5ea6b09ce98569b648957871d79a68ec40d1623ecabcbfd2973349f63f378e55e0686aab3b25718febba41b77c0d8'
+	'b31072c060eb01db1e34d8169d9e68f58a2fcf720dd916fc50a404a149383bf8be6023a21f4947eae018471308fdd181b76f352926eab41c744885e49a8cee44'
 )
 
 pkgver() {

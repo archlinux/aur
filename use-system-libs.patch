@@ -12,7 +12,7 @@ index 70fb5c2d2..e8777dfac 100644
  optional_system_library(ryml)
  optional_system_library(zstd)
 diff --git a/common/StringUtil.h b/common/StringUtil.h
-index 6c23f51f3..06678bb32 100644
+index 67389b12b..607465983 100644
 --- a/common/StringUtil.h
 +++ b/common/StringUtil.h
 @@ -30,7 +30,7 @@
@@ -25,7 +25,7 @@ index 6c23f51f3..06678bb32 100644
  #define _M_ARM64 HAD_M_ARM64
  #undef HAD_M_ARM64
 diff --git a/pcsx2/GameDatabase.cpp b/pcsx2/GameDatabase.cpp
-index 3bf7483d0..ff26df446 100644
+index 8d5d03ccc..ff26df446 100644
 --- a/pcsx2/GameDatabase.cpp
 +++ b/pcsx2/GameDatabase.cpp
 @@ -17,8 +17,8 @@
@@ -39,17 +39,3 @@ index 3bf7483d0..ff26df446 100644
  
  #include "../common/Console.h"
  #include "../common/FileSystem.h"
-@@ -873,9 +873,10 @@ u32 GameDatabaseSchema::GameEntry::applyGSHardwareFixes(Pcsx2Config::GSOptions&
- void GameDatabase::initDatabase()
- {
- 	ryml::Callbacks rymlCallbacks = ryml::get_callbacks();
--	rymlCallbacks.m_error = [](const char* msg, size_t msg_len, ryml::Location loc, void*) {
--		Console.Error("[YAML] Parsing error at {%s}:{%s} (bufpos={%s}): {%s}",
--			loc.line, loc.col, loc.offset, msg);
-+	rymlCallbacks.m_error_parse = [](c4::csubstr msg, ryml::ErrorDataParse const& errdata, void*) {
-+		Console.Error("[YAML] Parsing error at {%zu}:{%zu} (bufpos={%zu}): {%.*s}",
-+			errdata.ymlloc.line, errdata.ymlloc.col, errdata.ymlloc.offset,
-+			(int)msg.len, msg.str);
- 	};
- 	ryml::set_callbacks(rymlCallbacks);
- 	c4::set_error_callback([](const char* msg, size_t msg_size) {
