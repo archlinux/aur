@@ -29,7 +29,7 @@ DEFAULT_CONFIG = {
  ██████╔╝██████╔╝██║███████╗██╔████╔██║
  ██╔═══╝ ██╔══██╗██║╚════██║██║╚██╔╝██║
  ██║     ██║  ██║██║███████║██║ ╚═╝ ██║
- ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝     ╚═╝ v1.1"""
+ ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝     ╚═╝ v1.2"""
 }
 
 def load_user_config():
@@ -204,6 +204,7 @@ class PrismCLI:
         ]
         self.tools_supported = True
         self.current_session_file = None
+        self.last_assistant_response = ""
 
     def query_api_raw(self, endpoint, payload=None):
         url = f"{self.host_url}{endpoint}"
@@ -220,6 +221,37 @@ class PrismCLI:
                 return [m['name'] for m in data.get('models', [])]
         except Exception:
             return []
+
+    def copy_to_clipboard(self):
+        if not self.last_assistant_response:
+            print("\n\033[33m[!] No response text exists in history buffer yet.\033[0m\n")
+            return
+        try:
+            if shutil.which("wl-copy"):
+                process = subprocess.Popen(['wl-copy'], stdin=subprocess.PIPE)
+                process.communicate(input=self.last_assistant_response.encode('utf-8'))
+            elif shutil.which("xclip"):
+                process = subprocess.Popen(['xclip', '-selection', 'clipboard'], stdin=subprocess.PIPE)
+                process.communicate(input=self.last_assistant_response.encode('utf-8'))
+            elif shutil.which("xsel"):
+                process = subprocess.Popen(['xsel', '--clipboard', '--input'], stdin=subprocess.PIPE)
+                process.communicate(input=self.last_assistant_response.encode('utf-8'))
+            else:
+                print("\n\033[31m[-] Clipboard utility missing. Install xclip or wl-clipboard.\033[0m\n")
+                return
+            print("\n\033[1;32m✔ Last AI response synced cleanly to system clipboard!\033[0m\n")
+        except Exception as e:
+            print(f"\n\033[31m[-] Clipboard write failure: {e}\033[0m\n")
+
+    def start_new_session(self):
+        self.save_current_history()
+        self.history = [
+            {"role": "system", "content": f"You are {CFG['assistant_name']}. A clean terminal AI companion."}
+        ]
+        self.current_session_file = None
+        self.last_assistant_response = ""
+        self.draw_ui_frame(animated=False)
+        print("\033[1;34m✔ Dropped execution tree. New conversational sequence ready.\033[0m\n")
 
     def save_current_history(self):
         if len(self.history) <= 1:
@@ -245,7 +277,6 @@ class PrismCLI:
                 filepath = os.path.join(HISTORY_DIR, filename)
                 with open(filepath, "r") as f:
                     meta = json.load(f)
-                # Find the first user message text snippet
                 snippet = "Empty stream summary"
                 for msg in meta.get("history", []):
                     if msg.get("role") == "user":
@@ -266,6 +297,12 @@ class PrismCLI:
                     data = json.load(f)
                 self.model_name = data.get("model", self.model_name)
                 self.history = data.get("history", [])
+                
+                # Restore last assistant response reference from history array
+                for msg in reversed(self.history):
+                    if msg.get("role") == "assistant" and msg.get("content"):
+                        self.last_assistant_response = msg["content"]
+                        break
                 print(f"\n\033[1;32m✔ Memory block mapped. Restored {len(self.history)-1} dialogue states.\033[0m\n")
         except Exception as e:
             print(f"\n\033[31m[-] Log context mapping failed: {e}\033[0m\n")
@@ -283,7 +320,7 @@ class PrismCLI:
                     
         print("\033[90m─" * shutil.get_terminal_size().columns + "\033[0m")
         print(f"\033[1;32m● Engine:\033[0m \033[1;37m{self.model_name}\033[0m  |  Palette: \033[1;35m{CFG['banner_style']}\033[0m")
-        print("\033[90mType \033[33m/help\033[90m to see hidden prompt shortcuts\033[0m\n")
+        print("\033[90mType \033[33m/help\033[90m or use terminal string triggers (/new, /copy)\033[0m\n")
 
     def switch_model(self, target_name):
         if target_name not in self.installed_models:
@@ -348,6 +385,7 @@ class PrismCLI:
 
                 if full_reply:
                     self.history.append({"role": "assistant", "content": full_reply})
+                    self.last_assistant_response = full_reply
                 
                 self.save_current_history()
 
@@ -379,11 +417,19 @@ class PrismCLI:
                     print("  /models        List local disk engine options")
                     print("  /model <name>  Hot-swap pipeline target to another layout")
                     print("  /history       Review log registry map and load past sessions")
+                    print("  /new  [Ctrl+N] Drop active thread context and open a fresh canvas")
+                    print("  /copy [Ctrl+Y] Copy last complete AI response block to clipboard")
                     print("  /clear         Wipe window and re-trigger animation sequence")
                     print("  exit           Safely shut down app stack context\n")
                     continue
                 if user_input.lower() == "/clear":
                     self.draw_ui_frame(animated=False)
+                    continue
+                if user_input.lower() == "/new":
+                    self.start_new_session()
+                    continue
+                if user_input.lower() == "/copy":
+                    self.copy_to_clipboard()
                     continue
                 if user_input.lower() == "/history":
                     self.select_and_load_history()
@@ -407,5 +453,13 @@ class PrismCLI:
 if __name__ == "__main__":
     if "COLORTERM" not in os.environ:
         os.environ["COLORTERM"] = "truecolor"
+    
+    try:
+        import readline
+        readline.parse_and_bind('"\C-n": "/new\n"')
+        readline.parse_and_bind('"\C-y": "/copy\n"')
+    except ImportError:
+        pass
+
     client = PrismCLI()
     client.start()
