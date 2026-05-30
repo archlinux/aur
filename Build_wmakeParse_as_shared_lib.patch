@@ -1,0 +1,19 @@
+Subject: [PATCH] Build wmakeParse as shared lib
+---
+Index: CMakeLists.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	(revision 13b7a56a11a7058d61b65eaa40f99d772f9f0eb7)
++++ b/CMakeLists.txt	(date 1780122131774)
+@@ -17,7 +17,7 @@
+ 
+ include(cmake/3rdParty/cli11.cmake)
+ 
+-add_library(wmakeParse STATIC
++add_library(wmakeParse SHARED
+     parse_wmake.H
+     parse_wmake.C
+ )

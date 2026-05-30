@@ -1,7 +1,7 @@
 pkgbase = wmake-parse
 	pkgdesc = Utility and library to parse wmake config files
 	pkgver = 0.2.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/nnSemenov/wmakeParse
 	arch = armv7h
 	arch = aarch64
