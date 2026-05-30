@@ -1,16 +1,16 @@
 pkgbase = slipway-bin
 	pkgdesc = Governance CLI for AI-assisted software delivery
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/signalridge/slipway
 	license = UNLICENSED
 	conflicts = slipway
 	provides = slipway
 	arch = aarch64
-	source_aarch64 = https://github.com/signalridge/slipway/releases/download/v0.2.0/slipway_0.2.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2cb534c6bea0deecbfffd71302f90c5e516769087d5e251ac2575d7f70322747
+	source_aarch64 = https://github.com/signalridge/slipway/releases/download/v0.3.0/slipway_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9e3d8b4575af9598e86b615f7af1196adbb60b79e9292662a37d305664388733
 	arch = x86_64
-	source_x86_64 = https://github.com/signalridge/slipway/releases/download/v0.2.0/slipway_0.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 86aa7d21584a3cf5850b46abe90b3e82794d2ee4aeaf8014e6500a03c25e101b
+	source_x86_64 = https://github.com/signalridge/slipway/releases/download/v0.3.0/slipway_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e2baaa20359a5f05af8bb6174cbb96026c872c2b28c7e6139dd26089324ee4ab
 	
 pkgname = slipway-bin
