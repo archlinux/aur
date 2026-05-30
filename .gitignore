@@ -2,4 +2,5 @@
 *-*-linux-*-package.tar.xz.sig
 *.pkg.tar.zst
 source/
+pkg/
 src/
