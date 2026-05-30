@@ -1,6 +1,6 @@
 pkgbase = cpp-gen-bin
 	pkgdesc = Modern C++ project generator with CMake, package managers, IDE configurations and development tools
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/matpdev/cpp-gen
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = cpp-gen-bin
 	provides = cpp-gen
 	conflicts = cpp-gen
 	options = !strip
-	source_x86_64 = cpp-gen-bin-0.2.0-x86_64.tar.gz::https://github.com/matpdev/cpp-gen/releases/download/v0.2.0/cpp-gen_0.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = accc005f65fe1d828e2d93bfd07cf17e8747c21e20990c848dba7aaecfa18cdc
-	source_i686 = cpp-gen-bin-0.2.0-i686.tar.gz::https://github.com/matpdev/cpp-gen/releases/download/v0.2.0/cpp-gen_0.2.0_linux_386.tar.gz
-	sha256sums_i686 = 7a6d2758fb47d737daff23995e1c49505b2da51bb989a44d4c073a375f6b8623
+	source_x86_64 = cpp-gen-bin-0.3.0-x86_64.tar.gz::https://github.com/matpdev/cpp-gen/releases/download/v0.3.0/cpp-gen_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2fe96b770adc3325a8d410c6b6564086f677f24fabe1d940fb1f69f63a06d518
+	source_i686 = cpp-gen-bin-0.3.0-i686.tar.gz::https://github.com/matpdev/cpp-gen/releases/download/v0.3.0/cpp-gen_0.3.0_linux_386.tar.gz
+	sha256sums_i686 = 1c8b2dbedb967f3b45a205b462469e7d378ae268118131a0fa9ff098f1d362c4
 
 pkgname = cpp-gen-bin
