@@ -3,7 +3,7 @@
 pkgname=undertalemodtool-avalonia-bin
 _pkgname=undertalemodtool-avalonia
 
-pkgver=2026.05.17
+pkgver=2026.05.30
 pkgrel=1
 arch=('x86_64')
 
@@ -23,7 +23,7 @@ source=(
   "icon.png"
   )
 sha256sums=(
-  '240b44c3e9e51868c43914b1740baa34894d1976882c1ace3f00c0572e3a1951'
+  '8489221fa8502b7904a8e572fdbd35a5633d976328a7ff54c2ddb4ee89f1ad86'
   '706b5653445f333ada38279ebd21e4f14439e9eb2bcce21ce9cae13230ceaaf0'
   'efdd09628785b8d27cda3a0d9ef434ae8435041a199f12b7be39f697297a84c0'
   '64c7b9ab34a2c519f99533b85a6ff8b4a50710ec6ee93024f3b239493dc9d61e'
