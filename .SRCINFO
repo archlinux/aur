@@ -1,0 +1,35 @@
+pkgbase = sibyl
+	pkgdesc = Persistent memory and task coordination CLI for AI coding agents
+	pkgver = 1.0.0rc2
+	pkgrel = 1
+	url = https://github.com/hyperb1iss/sibyl
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = docker
+	depends = docker-compose
+	depends = python>=3.13
+	depends = python-anyio
+	depends = python-dotenv
+	depends = python-httpx
+	depends = python-passlib
+	depends = python-pydantic
+	depends = python-pydantic-settings
+	depends = python-pyjwt
+	depends = python-yaml
+	depends = python-rich
+	depends = python-structlog
+	depends = python-tomli-w
+	depends = python-typer
+	depends = python-websockets
+	provides = sibyl-cli
+	conflicts = sibyl-cli
+	source = sibyl-dev-1.0.0rc2.tar.gz::https://files.pythonhosted.org/packages/3f/72/7462477898d8f7b11f87c6692e11bafad28e48d605ee403d14eaa64a2547/sibyl_dev-1.0.0rc2.tar.gz
+	source = sibyl-core-1.0.0rc2.tar.gz::https://files.pythonhosted.org/packages/39/ac/e2564a9a8bba9cce82a0b1b6de63f687589a784182f77bd9fbf67b73ed11/sibyl_core-1.0.0rc2.tar.gz
+	sha256sums = f59736e4382116cac5727ee7a7ea84c514b4ceb8a75c73bdf42168522edaa939
+	sha256sums = 15f408e27f24f4efd54e417834104846c5cd861a5f2797ffcf43a50312feea17
+
+pkgname = sibyl
