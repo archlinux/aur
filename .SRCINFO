@@ -1,7 +1,7 @@
 pkgbase = bestclient
 	pkgdesc = DDRaceNetwork modification that adds new features
 	pkgver = 1.7.1
-	pkgrel = 21
+	pkgrel = 22
 	url = https://github.com/RoflikBEST/bestdownload
 	install = bestclient.install
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = bestclient
 	depends = libvpl
 	depends = libvdpau
 	depends = ocl-icd
-	depends = soxr
+	depends = libsoxr
 	optdepends = ddnet-maps-git: All the maps used on the official DDNet Servers.
 	source = https://github.com/RoflikBEST/bestdownload/releases/download/v1.7.1/BestClient-linux.tar.xz
 	source = bestclient.png
