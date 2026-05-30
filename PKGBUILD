@@ -3,7 +3,7 @@
 
 pkgbase=python-nodejs-wheel
 pkgname=(python-nodejs-wheel python-nodejs-wheel-binaries)
-pkgver=24.15.0
+pkgver=24.16.0
 pkgrel=1
 pkgdesc="Unoffical Node.js wheels"
 arch=("x86_64")
@@ -17,7 +17,7 @@ makedepends=(
 source=(
     "$pkgbase-$pkgver.tar.gz::https://github.com/njzjz/nodejs-wheel/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('74f8deb98f468644f487e66506620bd9ce008db6214c9a4531512dbcf35bcf44')
+sha256sums=('c0fb80acf209d5a1e9312a6d8892be6467de6f11e23f74cda5e416f4c41468e2')
 
 # prepare() {
 # 	cd "$srcdir/nodejs-wheel-$pkgver"
