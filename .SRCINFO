@@ -1,0 +1,13 @@
+pkgbase = librocdxg
+	pkgdesc = A user-mode library that enables ROCm functionality on Windows Subsystem for Linux (WSL)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ROCm/librocdxg
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	source = librocdxg-1.2.0.tar.gz::https://github.com/ROCm/librocdxg/archive/v1.2.0.tar.gz
+	sha256sums = bae9c068e9c08a0b7c42dd005abd7b9c62248ace49ccd1f49bf508167a15f4f0
+
+pkgname = librocdxg
