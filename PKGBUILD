@@ -9,7 +9,7 @@
 # Build/test locally with: makepkg -si
 
 pkgname=mgnx
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Keyboard-driven system monitor for Linux (Tauri + React)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3')
 makedepends=('rust' 'cargo' 'nodejs' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('77630f78e0a781cea9e5b14132a75ed97a399d27b43563bc51f12183b48b239c')
+sha256sums=('9a956c69f31db5f09613d7b77e5ac05fafd59cf1aa284313ed0dd6e4e0706d9b')
 
 build() {
     cd "$pkgname-$pkgver"

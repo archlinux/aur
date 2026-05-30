@@ -1,6 +1,6 @@
 pkgbase = mgnx
 	pkgdesc = Keyboard-driven system monitor for Linux (Tauri + React)
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Svynct/mgnx
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mgnx
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libappindicator-gtk3
-	source = mgnx-0.1.2.tar.gz::https://github.com/Svynct/mgnx/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 77630f78e0a781cea9e5b14132a75ed97a399d27b43563bc51f12183b48b239c
+	source = mgnx-0.2.0.tar.gz::https://github.com/Svynct/mgnx/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 9a956c69f31db5f09613d7b77e5ac05fafd59cf1aa284313ed0dd6e4e0706d9b
 
 pkgname = mgnx
