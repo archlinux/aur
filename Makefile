@@ -26,8 +26,14 @@ help:
 
 # Full local release prep. Order enforced via recursive make (safe under -j).
 # Stops before pushing so you can review the commit.
+LATEST_VERSION = $(shell curl -fsSL https://api.github.com/repos/beac0n/ruroco/releases/latest | grep '"tag_name"' | sed 's/.*"v\([^"]*\)".*/\1/')
+
+CURRENT_VERSION = $(shell grep '^pkgver=' PKGBUILD | cut -d= -f2)
+
 release:
-	@test -n "$(VERSION)" || { echo 'error: VERSION required, e.g. make release VERSION=0.14.2'; exit 1; }
+	$(eval VERSION ?= $(LATEST_VERSION))
+	@test -n "$(VERSION)" || { echo 'error: VERSION not specified and could not fetch latest from GitHub'; exit 1; }
+	@test "$(VERSION)" != "$(CURRENT_VERSION)" || { echo 'error: $(VERSION) is already the current pkgver'; exit 1; }
 	$(MAKE) bump VERSION='$(VERSION)'
 	$(MAKE) checksums
 	$(MAKE) srcinfo

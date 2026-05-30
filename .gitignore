@@ -1,6 +1,7 @@
 # build artifacts produced by makepkg - never committed to the AUR
 pkg/
 src/
+*.pkg.tar
 *.tar.gz
 *.tar.zst
 *.pkg.tar.zst
