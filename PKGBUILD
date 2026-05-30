@@ -19,13 +19,15 @@ source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.g
         "${_pkgname}@.service"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles"
-        "config.yaml")
+        "config.yaml"
+        "Model.bin::${url}/releases/download/LightGBM-Model/Model.bin")
 sha256sums=('cb538d0351c5fc62531a048b888671816d1e6f7cee10989f046aa71b2e02b4da'
             '7b60925a78c9a4b726833e194b395cabddf89b364a5c721522cb78aaece33e79'
             '81a93a53a59dee006bfaa3f8b6490e654ea8a929cd2acb136136b5f7d569aad4'
             '60b5e5308d9aec711e797c402b82899ea0f20951de9baca1594884fbe21f8acc'
             '60b60d84c52443d976265f0be68b13ae1700daffd8de35edf63990380f4c93d9'
-            '90f7fdacecd5928e37865b4f841517f925c8bedc769f16f7a7a1e89b923f1fb9')
+            '90f7fdacecd5928e37865b4f841517f925c8bedc769f16f7a7a1e89b923f1fb9'
+            '31a16dce26dec0cdcf6244776dda2dd267254c114b8fac5453455a070b87e748')
 
 build(){
     cd "${srcdir}"/${_pkgname}-${_pkgver}
@@ -48,6 +50,7 @@ package() {
     install -Dm644 ${_pkgname}.sysusers "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
     install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
     install -Dm644 "config.yaml" -t "${pkgdir}/etc/${_pkgname}"
+    install -Dm644 "Model.bin" -t "${pkgdir}/etc/${_pkgname}"
     install -Dm644 "${_pkgname}.service"  -t "${pkgdir}/usr/lib/systemd/system"
     install -Dm644 "${_pkgname}@.service" -t "${pkgdir}/usr/lib/systemd/system"
     ln -sf /etc/clash/Country.mmdb ${pkgdir}/etc/${_pkgname}/Country.mmdb
