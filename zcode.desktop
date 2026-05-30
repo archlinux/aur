@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ZCode
+Exec=zcode --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=zcode
+StartupWMClass=ZCode
+Comment=ZCode - AI-powered code editor by CodeGeeX
+MimeType=x-scheme-handler/zcode;
+Categories=Development;IDE;

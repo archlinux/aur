@@ -1,0 +1,20 @@
+pkgbase = zcode-bin
+	pkgdesc = ZCode - AI-powered code editor by CodeGeeX
+	pkgver = 2.13.0
+	pkgrel = 1
+	url = https://codegeex.cn/
+	arch = x86_64
+	license = MIT
+	license = custom:ZCode
+	makedepends = asar
+	depends = zlib
+	depends = hicolor-icon-theme
+	options = !strip
+	source = ZCode-2.13.0-linux-x64.AppImage::https://cdn.codegeex.cn/zcode/electron/releases/2.13.0/ZCode-2.13.0-linux-x64.AppImage
+	source = zcode.desktop
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = zcode-bin
