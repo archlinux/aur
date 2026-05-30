@@ -8,7 +8,7 @@
 #   make keywords                 # set AUR search keywords
 
 PKG      := ruroco-server
-KEYWORDS := udp wakeonlan port-knocking remote-command rust
+KEYWORDS := port-knocking single-packet-authorization fwknop udp remote-command firewall ssh rust server
 
 .PHONY: help release push bump checksums srcinfo build lint commit keywords clean
 
