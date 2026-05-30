@@ -1,0 +1,26 @@
+pkgbase = hyprwat-git
+	pkgdesc = Hyprwat - A Wayland menu tool (Git version)
+	pkgver = 0.11.3
+	pkgrel = 1
+	url = https://github.com/zackb/hyprwat
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = wayland
+	depends = mesa
+	depends = fontconfig
+	depends = libxkbcommon
+	depends = sdbus-cpp
+	depends = pipewire
+	depends = libdrm
+	provides = hyprwat
+	conflicts = hyprwat
+	conflicts = hyprwat-bin
+	source = git+https://github.com/zackb/hyprwat.git
+	source = imgui-submodule::git+https://github.com/ocornut/imgui.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hyprwat-git
