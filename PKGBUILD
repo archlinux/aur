@@ -1,4 +1,4 @@
-#Mainrainer: 5hridhyan <shridhyanh at gmail dot com>
+# Maintainer: 5hridhyan <shridhyanh at gmail dot com>
 # Contributer: LS-Shandong < ls-shandong at outlook dot com >
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Aditya Naik <nikeadilfc at gmail dot com>
@@ -6,15 +6,16 @@
 
 pkgname=artanis
 pkgver=1.3.0
-pkgrel=3
+pkgrel=6
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://artanis.dev/"
 depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss' 'texinfo')
+makedepends=('texinfo')
 optdepends=('guile-dbi: A simple, generic, easy-to-use guile scheme interface to SQL databases, such as Postgres, MySQL or SQLite3'
             'guile-dbd-sqlite3: The dbd plugin connects to an actual SQLite database server.'
             'guile-dbd-postgresql: The dbd plugin connects to an actual PostgreSQL database server.'
             'guile-dbd-mysql: The dbd plugin connects to an actual MySQL database server.')
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
 source=(https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz{,.sig})
 sha256sums=('f1532564383fedb7dcd47c43c0b803ec126f66543c7fb6f7c9e64f0fa8979c99'
@@ -25,16 +26,12 @@ options=('!strip')
 build() {
   cd "$pkgname-$pkgver"
   
-  # Tell aclocal to check the newly unpacked local m4 directory for macros
-  export ACLOCAL_PATH="/usr/share/aclocal"
-  export AUTOPOINT='autopoint --force'
-
-  ./autogen.sh --no-configure
+  # Use the existing configure script
   ./configure --prefix=/usr
   make
   
-  # Upstream lines to fix specific makefile quirks on Arch
-  sed -i -e '219,220s/^/#/' -e "227s/^#/$(echo -e '\t')/" Makefile
+  # Fix documentation generation issues
+  sed -i -e '219,220s/^/#/' -e "227s/^#/$(printf '\t')/" Makefile
   sed -i '64,67!b;66b;s/true/false/g' build-aux/gendocs.sh
   make docs
 }
