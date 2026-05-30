@@ -1,6 +1,6 @@
 # Maintainer: Luke Hsiao <luke@hsiao.dev>
 pkgname=openring-rs
-pkgver=0.5.9
+pkgver=0.5.11
 pkgrel=1
 pkgdesc='A tool for generating a webring from Atom/RSS feeds, written in Rust'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -17,7 +17,7 @@ conflicts=('openring' 'openring-rs-bin')
 #   subpackage is noise for AUR distribution.
 options=(!debug !lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lukehsiao/openring-rs/archive/v$pkgver.tar.gz")
-sha256sums=('d51a7adf5617e4443465262ee2970e280804c4d2c8d1c2e035058b2ebc19cac0')
+sha256sums=('3003f36e73dc20dccd4c466725f746c6ae1319f959e28091bd036eb8cc41e70c')
 
 prepare() {
     cd "$pkgname-$pkgver"
