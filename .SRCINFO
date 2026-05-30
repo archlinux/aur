@@ -1,0 +1,29 @@
+pkgbase = machctrl
+	pkgdesc = Monitor e Otimizador de Hardware para Linux — CPU, GPU, RAM, Fans, Temperatura
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/araujo791/machctrl
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = python
+	depends = python-psutil
+	depends = python-websockets
+	depends = lm_sensors
+	depends = dmidecode
+	depends = fuse2
+	depends = nodejs
+	optdepends = nvidia-utils: suporte a GPU NVIDIA (fan control, temperatura)
+	optdepends = nvidia-settings: controle avançado de fan NVIDIA
+	optdepends = plasma: ambiente KDE Plasma (testado e suportado)
+	optdepends = gnome-shell: ambiente GNOME (testado e suportado)
+	provides = machctrl
+	conflicts = machctrl-git
+	conflicts = machctrl-bin
+	install = machctrl.install
+	source = machctrl-2.0.0.tar.gz::https://github.com/araujo791/machctrl/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = machctrl
+	# Requer KDE Plasma ou GNOME. Outros DEs podem funcionar mas não são oficialmente suportados.

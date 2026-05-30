@@ -1,0 +1,37 @@
+post_install() {
+    systemctl daemon-reload
+    systemctl enable --now machctrl-backend.service
+    gtk-update-icon-cache /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database /usr/share/applications 2>/dev/null || true
+    echo ""
+    echo "  ✅  MachCtrl instalado!"
+    echo "  → Abrir: menu de apps ou terminal: machctrl"
+    echo "  → Status: systemctl status machctrl-backend"
+    echo ""
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl restart machctrl-backend.service
+    gtk-update-icon-cache /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database /usr/share/applications 2>/dev/null || true
+    echo ""
+    echo "  ✅  MachCtrl atualizado!"
+    echo ""
+}
+
+pre_remove() {
+    systemctl stop machctrl-backend.service 2>/dev/null || true
+    systemctl disable machctrl-backend.service 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl daemon-reload
+    gtk-update-icon-cache /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database /usr/share/applications 2>/dev/null || true
+    echo ""
+    echo "  MachCtrl removido."
+    echo "  Configurações mantidas em: ~/.config/machctrl/"
+    echo "  Para remover tudo: rm -rf ~/.config/machctrl"
+    echo ""
+}
