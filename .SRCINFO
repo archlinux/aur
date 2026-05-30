@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-bin
 	pkgdesc = Fast, Private & Safe Web Browser from Mozilla — Nightly Build (en-US)
-	pkgver = 153.0a1.20260529.091611
+	pkgver = 153.0a1.20260529.200249
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/nightly
 	arch = x86_64
@@ -29,13 +29,13 @@ pkgbase = firefox-nightly-bin
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = 320659477fc3319db4b73492aa6ce39c3a5dbc4ab8adc27440cb1e7ab69dad2cea83a57d7cd77eebfe833fb8a48c7e021bdca851f1be4840fae292afdba96664
 	sha512sums = 5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308
-	source_x86_64 = 20260529-091611-firefox-153.0a1.en-US.linux-x86_64.tar.xz::https://ftp.mozilla.org/pub/firefox/nightly/2026/05/2026-05-29-09-16-11-mozilla-central/firefox-153.0a1.en-US.linux-x86_64.tar.xz
-	source_x86_64 = 20260529-091611-firefox-153.0a1.en-US.linux-x86_64.tar.xz.asc::https://ftp.mozilla.org/pub/firefox/nightly/2026/05/2026-05-29-09-16-11-mozilla-central/firefox-153.0a1.en-US.linux-x86_64.tar.xz.asc
-	sha512sums_x86_64 = e278ec188f03d0a89b445d10a5e78eb8a0a830e2ab8356cae48cbb4ddb2a5502748b8484e11141b1fbe810ad4f940ba239ba7039c4f83bda32c8090bb054aaec
+	source_x86_64 = 20260529-200249-firefox-153.0a1.en-US.linux-x86_64.tar.xz::https://ftp.mozilla.org/pub/firefox/nightly/2026/05/2026-05-29-20-02-49-mozilla-central/firefox-153.0a1.en-US.linux-x86_64.tar.xz
+	source_x86_64 = 20260529-200249-firefox-153.0a1.en-US.linux-x86_64.tar.xz.asc::https://ftp.mozilla.org/pub/firefox/nightly/2026/05/2026-05-29-20-02-49-mozilla-central/firefox-153.0a1.en-US.linux-x86_64.tar.xz.asc
+	sha512sums_x86_64 = e2ff25ef64b739492db3663ff8851998e777830742ff292fc1e05bb9e32491761c60d5590ef4be7a4fda8e2e618631bbbaa043a03e8653fe2b7b5ff000e89a9d
 	sha512sums_x86_64 = SKIP
-	source_aarch64 = 20260529-091611-firefox-153.0a1.en-US.linux-aarch64.tar.xz::https://ftp.mozilla.org/pub/firefox/nightly/2026/05/2026-05-29-09-16-11-mozilla-central/firefox-153.0a1.en-US.linux-aarch64.tar.xz
-	source_aarch64 = 20260529-091611-firefox-153.0a1.en-US.linux-aarch64.tar.xz.asc::https://ftp.mozilla.org/pub/firefox/nightly/2026/05/2026-05-29-09-16-11-mozilla-central/firefox-153.0a1.en-US.linux-aarch64.tar.xz.asc
-	sha512sums_aarch64 = 285f72c5ba45937db856c152f1f2c0c88e27c7a882029228f7ffd0c4651ad330cb8a3d4a955e326697ed413f0af0cee60a7bfcfcbbe37ca0c35835411957c8d9
+	source_aarch64 = 20260529-200249-firefox-153.0a1.en-US.linux-aarch64.tar.xz::https://ftp.mozilla.org/pub/firefox/nightly/2026/05/2026-05-29-20-02-49-mozilla-central/firefox-153.0a1.en-US.linux-aarch64.tar.xz
+	source_aarch64 = 20260529-200249-firefox-153.0a1.en-US.linux-aarch64.tar.xz.asc::https://ftp.mozilla.org/pub/firefox/nightly/2026/05/2026-05-29-20-02-49-mozilla-central/firefox-153.0a1.en-US.linux-aarch64.tar.xz.asc
+	sha512sums_aarch64 = 562b512a14165abe9a218d961b1118cfb1e1094710ba0c8ec546931971776050b655152e1d0132aac485a8d6048b0c1e0e6fb3072299ae6a47a65dc5f9c886a5
 	sha512sums_aarch64 = SKIP
 
 pkgname = firefox-nightly-bin
