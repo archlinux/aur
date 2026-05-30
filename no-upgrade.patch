@@ -87,10 +87,18 @@ index 279f073e..00000000
 -  }
 -}
 diff --git a/cli/main.ts b/cli/main.ts
-index be6e8dbd..2f8c3976 100755
+index be6e8dbd..b976ac00 100755
 --- a/cli/main.ts
 +++ b/cli/main.ts
-@@ -25,7 +25,6 @@ if (import.meta.main) {
+@@ -7,7 +7,6 @@ import {
+   CompletionsCommand,
+ } from "https://deno.land/x/cliffy@v0.25.7/command/mod.ts";
+ import { initCommand } from "./commands/init.ts";
+-import { upgradeCommand } from "./commands/upgrade.ts";
+ import { versionsCommand } from "./commands/versions.ts";
+ 
+ // Replaced by esbuild.
+@@ -25,7 +24,6 @@ if (import.meta.main) {
        Deno.exit(0);
      })
      .command("init", initCommand())
