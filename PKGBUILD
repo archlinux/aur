@@ -4,12 +4,12 @@
 pkgname=awesun-bin
 _pkgname=awesun
 pkgver=16.5.0.30560
-pkgrel=1
+pkgrel=2
 pkgdesc="AweSun remote control client for Linux (Unofficial Community Package)"
 arch=('x86_64')
 url="https://sunlogin.oray.com/download/linux"
 license=('custom')
-depends=('gtk3' 'libappindicator-gtk3' 'webkit2gtk-4.1' 'libnotify' 'util-linux-libs' 'libepoxy')
+depends=('gtk3' 'libappindicator-gtk3' 'webkit2gtk-4.1' 'libnotify' 'util-linux-libs' 'libepoxy' 'libxcrypt-compat')
 provides=("${_pkgname}" 'sunloginclient' 'sunlogin')
 conflicts=("${_pkgname}" 'sunloginclient' 'sunlogin' 'sunloginenterprise' 'awesunhost' 'awesuncli')
 options=(!strip emptydirs)
@@ -28,6 +28,7 @@ package() {
 
 	install -d "${pkgdir}/opt/${_pkgname}"
 	cp -a "usr/local/${_pkgname}/." "${pkgdir}/opt/${_pkgname}/"
+	chown -R root:root "${pkgdir}/opt/${_pkgname}"
 
 	install -Dm644 "usr/share/applications/${_pkgname}.desktop" \
 		"${pkgdir}/usr/share/applications/${_pkgname}.desktop"

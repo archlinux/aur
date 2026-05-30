@@ -1,7 +1,7 @@
 pkgbase = awesun-bin
 	pkgdesc = AweSun remote control client for Linux (Unofficial Community Package)
 	pkgver = 16.5.0.30560
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sunlogin.oray.com/download/linux
 	install = awesun-bin.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = awesun-bin
 	depends = libnotify
 	depends = util-linux-libs
 	depends = libepoxy
+	depends = libxcrypt-compat
 	provides = awesun
 	provides = sunloginclient
 	provides = sunlogin
