@@ -1,6 +1,6 @@
 # Maintainer: Ron <thefangeddeity>
 pkgname=hls-livecam-server
-pkgver=5.1.3
+pkgver=5.1.4
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
-sha256sums=('2cac8e217637c4c378e7a677f637c0536c57c9ceeff2d9d1ab4656c4e13ea34c'
+sha256sums=('72e31ecb251605ed095aef16cbf5470d0cb5085a9fffe0a4b577c6de27d771d1'
             'SKIP')
 
 package() {
@@ -57,6 +57,9 @@ package() {
     # ── tmpfiles.d ───────────────────────────────────────────────────────────
     install -Dm644 pkg/usr/lib/tmpfiles.d/hls-livecam.conf \
                    "$pkgdir/usr/lib/tmpfiles.d/hls-livecam.conf"
+
+    # ── nginx ────────────────────────────────────────────────────────────────
+    install -Dm644 pkg/etc/nginx/conf.d/hls-livecam.conf                    "$pkgdir/etc/nginx/conf.d/hls-livecam.conf"
 
     # ── Sudoers ───────────────────────────────────────────────────────────────
     # Ships http user for broadcast-api (Arch has no www-data).
