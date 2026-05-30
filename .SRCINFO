@@ -69,10 +69,10 @@ pkgbase = margo-git
 	optdepends = blocky: local DNS resolver controlled by the ndns widget
 	optdepends = curl: used by the nip public-IP widget (already pulled by base)
 	optdepends = fprintd: opt-in fingerprint login for mlogind (pam_fprintd)
-	provides = margo=r970.7d6a7b9
+	provides = margo=r1150.1c8a9fc
 	provides = wayland-compositor
-	provides = mshell=r970.7d6a7b9
-	provides = margo-mshell-git=r970.7d6a7b9
+	provides = mshell=r1150.1c8a9fc
+	provides = margo-mshell-git=r1150.1c8a9fc
 	conflicts = margo
 	conflicts = margo-mshell-git
 	conflicts = mshell

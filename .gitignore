@@ -1,0 +1,11 @@
+# makepkg working tree — never commit to the AUR repo.
+# `pkg/` and `src/` are wiped + rebuilt on every build; `margo/` is the
+# `git+url#branch=main` checkout makepkg clones during build().
+src/
+pkg/
+margo/
+
+# Build outputs and signature files.
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.log

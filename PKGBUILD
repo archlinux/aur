@@ -444,10 +444,13 @@ package() {
     cp -a contrib/sessions/. "$pkgdir/usr/share/doc/$pkgname/sessions/"
   fi
 
-  # ── mctl shell completions ─────────────────────────────────────
-  # Hand-curated under contrib/completions/: extends the clap-
-  # derived subcommand layer with dispatch-action names (`mctl
-  # actions --names`), layout names, and output names.
+  # ── mctl + mshellctl shell completions ─────────────────────────
+  # Hand-curated under contrib/completions/. The mctl set extends
+  # the clap-derived subcommand layer with dispatch-action names
+  # (`mctl actions --names`), layout names, and output names. The
+  # mshellctl set adds live plugin-key completion against
+  # `mshellctl plugin list --names` for `menu plugin <KEY>`,
+  # `plugin reload <KEY>`, and `plugin keybind <KEY>`.
   if [[ -f "contrib/completions/mctl.bash" ]]; then
     install -Dm644 "contrib/completions/mctl.bash" \
       "$pkgdir/usr/share/bash-completion/completions/mctl"
@@ -459,6 +462,18 @@ package() {
   if [[ -f "contrib/completions/mctl.fish" ]]; then
     install -Dm644 "contrib/completions/mctl.fish" \
       "$pkgdir/usr/share/fish/vendor_completions.d/mctl.fish"
+  fi
+  if [[ -f "contrib/completions/mshellctl.bash" ]]; then
+    install -Dm644 "contrib/completions/mshellctl.bash" \
+      "$pkgdir/usr/share/bash-completion/completions/mshellctl"
+  fi
+  if [[ -f "contrib/completions/_mshellctl" ]]; then
+    install -Dm644 "contrib/completions/_mshellctl" \
+      "$pkgdir/usr/share/zsh/site-functions/_mshellctl"
+  fi
+  if [[ -f "contrib/completions/mshellctl.fish" ]]; then
+    install -Dm644 "contrib/completions/mshellctl.fish" \
+      "$pkgdir/usr/share/fish/vendor_completions.d/mshellctl.fish"
   fi
 
   # ── mshell sound assets ────────────────────────────────────────
