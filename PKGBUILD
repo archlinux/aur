@@ -16,6 +16,11 @@ conflicts=("${_pkgname}")
 source=("git+https://github.com/srb2-preservation/srb2-retro.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --always --abbrev=7
+}
+
 build() {
   cd "$srcdir"/srb2-retro/src
   git checkout sdl2 # use the sdl2 branch
