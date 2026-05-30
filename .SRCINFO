@@ -1,7 +1,7 @@
 pkgbase = linkerd-edge-bin
-	pkgdesc = Ultralight, security-first service mesh for Kubernetes.
+	pkgdesc = Ultralight, security-first service mesh for Kubernetes
 	pkgver = 26.5.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://linkerd.io/
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = linkerd-edge-bin
 	depends = glibc
 	provides = linkerd
 	conflicts = linkerd-bin
+	conflicts = linkerd-edge-recommended-bin
 	options = !debug
 	options = !strip
 	source_x86_64 = linkerd-26.5.5-x86_64::https://github.com/linkerd/linkerd2/releases/download/edge-26.5.5/linkerd2-cli-edge-26.5.5-linux-amd64
