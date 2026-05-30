@@ -10,6 +10,6 @@ pkgbase = agent-book-translate
 	depends = sqlite
 	depends = openssl
 	source = agent-book-translate-0.1.7.tar.gz::https://github.com/Xuepoo/agent-book-translate/archive/v0.1.7.tar.gz
-	sha256sums = 32a11fbd4a6f7d3989dc561b3d7656facc744360ebfc09ad60a6a0c04c6d3da7
+	sha256sums = 36fad8d2dd0360f75c03ab37c819c93320afc4ecbe25783ea28d4e05e931ebfa
 
 pkgname = agent-book-translate
