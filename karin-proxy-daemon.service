@@ -1,0 +1,13 @@
+[Unit]
+Description=KarinCore Proxy Daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/karin-proxy-daemon
+Restart=always
+RestartSec=3
+PrivateTmp=false
+
+[Install]
+WantedBy=multi-user.target

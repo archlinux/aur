@@ -1,0 +1,27 @@
+pkgbase = karincore-git
+	pkgdesc = KarinCore - Modern and secure proxy client
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/detestern/KarinCore
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = cairo
+	depends = pango
+	depends = glib2
+	depends = xray
+	provides = karincore
+	conflicts = karincore
+	source = KarinCore::git+https://github.com/detestern/KarinCore.git
+	source = karin-proxy-daemon.service
+	source = karincore.sudoers
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = karincore-git
