@@ -1,8 +1,8 @@
-pkgbase = agsh
-	pkgdesc = A general-purpose AI agent runtime
+pkgbase = meka
+	pkgdesc = A general-purpose AI agent harness
 	pkgver = 0.26.2
 	pkgrel = 1
-	url = https://docs.agsh.sh
+	url = https://docs.meka.so
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
@@ -12,7 +12,9 @@ pkgbase = agsh
 	depends = libgcc
 	depends = sqlite
 	optdepends = bubblewrap: sandbox support
-	source = agsh-0.26.2.tar.gz::https://github.com/k4yt3x/agsh/archive/0.26.2.tar.gz
+	provides = agsh
+	replaces = agsh
+	source = meka-0.26.2.tar.gz::https://github.com/k4yt3x/meka/archive/0.26.2.tar.gz
 	sha256sums = a904ff48c4db19c227639de339cc4a45b747f3b313723a21141a41de1eab2658
 
-pkgname = agsh
+pkgname = meka
