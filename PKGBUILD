@@ -3,7 +3,7 @@
 # Commented out lines are problematic and will be addressed in a future PKGBUILD release.
 
 pkgname=kazakov_simple_components
-pkgver=4.75
+pkgver=4.80
 pkgrel=1
 pkgdesc="A set of low-level Ada components by Dmitri Kazakov."
 arch=(i686 x86_64)
@@ -13,16 +13,20 @@ license=(GPL2+)
 depends=(unixodbc)
 makedepends=(gprbuild)
 
-source=(http://www.dmitry-kazakov.de/ada/components_4_75.tgz
+source=(http://www.dmitry-kazakov.de/ada/components_4_80.tgz
         LICENSE)
-sha256sums=(56826190048d63aed8126c3949ee76d282e792498ce86acbd58cac1778e4127d
+sha256sums=(4db980861d5b0f86affd7d31acd2430011d347e211d443e49ab60fc40578b823
             3718d08bc7d42a49e6ce06d6d942f4e310e0db3c4336de1c9fd91dc6c3711615)
 
-
+export Target_OS=Linux
+   
+   
 build()
 {
    cd "$srcdir"
 
+   export Target_OS=Linux
+   
    gprbuild -P strings_edit.gpr
    gprbuild -P tables.gpr
    gprbuild -P xpm/xpm_parser.gpr
@@ -36,7 +40,7 @@ build()
    gprbuild -P components-odbc.gpr
    gprbuild -P components-ntp.gpr
    gprbuild -P components-julia.gpr
-   gprbuild -P components-json.gpr
+   #   gprbuild -P components-json.gpr
    gprbuild -P components-gnutls.gpr
    
    #   gprbuild -P components-gnade.gpr
@@ -60,6 +64,8 @@ build()
 
 install_gpr()
 {
+   export Target_OS=Linux
+   
    gprinstall -p --prefix="$pkgdir/usr" --sources-subdir="include/kazakov" --lib-subdir="lib/kazakov"   -P "$1"
 }
 
@@ -69,6 +75,8 @@ package()
 {
    cd "$srcdir"
 
+   export Target_OS=Linux
+   
    install_gpr strings_edit.gpr
    install_gpr tables.gpr
    install_gpr xpm/xpm_parser.gpr
@@ -82,7 +90,7 @@ package()
    install_gpr components-odbc.gpr
    install_gpr components-ntp.gpr
    install_gpr components-julia.gpr
-   install_gpr components-json.gpr
+#      install_gpr components-json.gpr
    install_gpr components-gnutls.gpr
    
    #   gprbuild -P components-gnade.gpr
