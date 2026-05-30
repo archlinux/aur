@@ -1,7 +1,7 @@
 # Maintainer: Ted pheenty Lukin <fedorlukin2006@gmail.com>
 
 pkgname=icbm
-pkgver=v0.1.0
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="It's a ClipBoard Manager! For wlroots-based wayland WMs. Written in Rust (🚀🚀🚀)"
 arch=(any)
