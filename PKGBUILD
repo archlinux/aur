@@ -1,7 +1,7 @@
 # Maintainer: Deji-Tech <deji@fundtracer.xyz>
 pkgname=fundtracer-desktop-bin
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="FundTracer - Blockchain Wallet Forensics Desktop App"
 arch=('x86_64')
 url="https://www.fundtracer.xyz"

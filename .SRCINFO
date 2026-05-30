@@ -1,7 +1,7 @@
 pkgbase = fundtracer-desktop-bin
 	pkgdesc = FundTracer - Blockchain Wallet Forensics Desktop App
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fundtracer.xyz
 	arch = x86_64
 	license = custom
