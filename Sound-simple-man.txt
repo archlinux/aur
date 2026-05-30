@@ -1,0 +1,6 @@
+gsettings set org.gnome.desktop.sound event-sounds true
+
+gsettings set org.gnome.desktop.sound input-feedback-sounds true
+
+gsettings set org.gnome.desktop.sound theme-name simple
+

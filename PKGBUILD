@@ -2,7 +2,7 @@
 # Original author: Anton Karmanov <a.karmanov@inventati.org>
 
 pkgname=sound-theme-simple
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Complete system sound theme with 70+ event sounds. Tested with Gnome (check docs on how to enable) and XFCE. Adapted from Smooth sound theme'
 arch=('any')
@@ -12,10 +12,10 @@ license=('custom:combined')
 
 # _src_url='https://my.opendesktop.org/s/QrcjmXiTpqQsciE/download/Smooth_v1.2.tar.gz'
 # source=("${pkgname}-${pkgver}.tar.gz::${_src_url}")
-source=("https://github.com/spsf64/simple/releases/download/1/simple-1.0.tar.gz"
+source=("https://github.com/spsf64/simple/releases/download/1.1/simple-1.1.tar.gz"
 	'.nvchecker.toml')
 
-b2sums=('7e48a2a13cc5d42db7f30dfeb789803bda1847178e5ff7bbcac0e95a88c2cf167411caa37b02d4e79cc21275d271f12af0b5dc4898616c2810b7efcafe94a4ae'
+b2sums=('b7b6d11c877206744dd908bef7d8e26ca2cc2fea8228611fa2acb6eb289b4cfd2f702f535f2f7854dd6a5c1caca251b9c1ee1201b85074a070870ae2ee82c760'
         'c5b42dda10f7912553fc29a6d09833b8017b957402bfdc7a439d22b4b8c28999b35e38cb46a9ea96433b4f15fc8326866d74c3a32cac38d45db081114cf5b1c2')
 
 package() {
