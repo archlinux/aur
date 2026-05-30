@@ -3,13 +3,14 @@
 _plug=lsmashsource
 pkgbase=foosynth-plugin-${_plug}-git
 pkgname=("vapoursynth-plugin-${_plug}-git")
-pkgver=1194.0.0.0.5.gf41e8d5
+pkgver=1282.0.g0079a06
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=167435'
 license=('LGPL')
 depends=('vapoursynth'
+  'vapoursynth-api3-headers'
   'liblsmash.so'
   'libavcodec.so'
   'libavformat.so'
@@ -27,7 +28,6 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works.git")
 sha256sums=('SKIP')
-options=('debug')
 
 pkgver() {
   cd "${_plug}"
