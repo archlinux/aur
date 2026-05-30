@@ -1,0 +1,12 @@
+pkgbase = mindi-busybox
+	pkgdesc = Busybox version specially configured for Mindi
+	pkgver = 1.25.1
+	pkgrel = 2
+	url = http://www.mondorescue.org/
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = https://hub.darcs.net/stef204/mondorescue-aur/raw/mindi-busybox-1.25.1.tar.gz
+	sha512sums = 56cfa5c95a2527022884e3ac7bcfe43cb95df12f162f2c1988003763d30dacfc3215ff87ffd11712e60114d390d211d9da4adf4da25456f8a01f6c19b479ccbc
+
+pkgname = mindi-busybox
