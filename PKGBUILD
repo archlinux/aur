@@ -1,18 +1,18 @@
+# Maintainer: gilcu3
 # Contributor: Modelmat <modelmat@outlook.com.au>
-# Maintainer: Modelmat <modelmat@outlook.com.au>
-# Comaintainer: gilcu3 <gilcu3 [at] gmail [dot] com>
+# Previous Maintainer: Modelmat <modelmat@outlook.com.au>
 
 _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
-pkgver=2.0.34.r4557.61d88a42
+pkgver=2.0.38.r4741.d1e0fa23
 pkgrel=1
-GOVERSION=go1.24.11
+GOVERSION=go1.26.3
 epoch=3
 pkgdesc='Psiphon Tunnelling Proxy'
 arch=('i686' 'x86_64')
 url="https://github.com/Psiphon-Labs/psiphon-tunnel-core"
 license=('GPL3')
-makedepends=('go')
+makedepends=('go' 'git')
 conflicts=('psiphon-console-client' 'psiphon-server')
 source=("git+$url.git"
         "client.config"
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             'c2c414831ad29bdeecd00313c473fbaa448f4750e70df1c10e863870bde179aa'
             '6711a12112a594ba70bbae51c66ee23302e08c54c4e059c92b67adba9451c037'
             '373c1eb939118055f799237df3e665680b8dc4b4a281505cce32e957a9554c56'
-            'bceca00afaac856bc48b4cc33db7cd9eb383c81811379faed3bdbc80edb0af65')
+            '2b2cfc7148493da5e73981bffbf3353af381d5f93e789c82c79aff64962eb556')
 
 
 pkgver() {
@@ -48,8 +48,8 @@ export CGO_CFLAGS="$CFLAGS"
 export CGO_CXXFLAGS="$CXXFLAGS"
 export CGO_LDFLAGS="$LDFLAGS"
 export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-console_binary=psiphon-console-client
-server_binary=psiphon-server
+_console_binary=psiphon-console-client
+_server_binary=psiphon-server
 
 build() {
   cw=$(pwd)
@@ -63,13 +63,13 @@ build() {
   rm -rf "${GOPATH}/src/github.com/Psiphon-Labs/${_pkgname}"
   ln -srf  "$srcdir/${_pkgname}/" "${GOPATH}/src/github.com/Psiphon-Labs/${_pkgname}"
 
-  go build -o bin/$console_binary "github.com/Psiphon-Labs/$_pkgname/ConsoleClient"
-  go build -o bin/$server_binary "github.com/Psiphon-Labs/$_pkgname/Server"
+  go build -o bin/$_console_binary "github.com/Psiphon-Labs/$_pkgname/ConsoleClient"
+  go build -o bin/$_server_binary "github.com/Psiphon-Labs/$_pkgname/Server"
 }
 
 package() {
-  install -Dm755 "$srcdir/bin/$console_binary" "$pkgdir/usr/bin/$console_binary"
-  install -Dm755 "$srcdir/bin/$server_binary" "$pkgdir/usr/bin/$server_binary"
+  install -Dm755 "$srcdir/bin/$_console_binary" "$pkgdir/usr/bin/$_console_binary"
+  install -Dm755 "$srcdir/bin/$_server_binary" "$pkgdir/usr/bin/$_server_binary"
   ln -srf "$pkgdir/usr/bin/psiphon-server" "$pkgdir/usr/bin/psiphond"
   install -Dm644 "$srcdir/client.config" "$pkgdir/etc/psiphon/client.config"
   install -Dm644 "$srcdir/psiphon-client.service" "$pkgdir/usr/lib/systemd/user/psiphon-client.service"
