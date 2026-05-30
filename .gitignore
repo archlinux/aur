@@ -1,4 +1,4 @@
-# build artifacts produced by makepkg — never committed to the AUR
+# build artifacts produced by makepkg - never committed to the AUR
 pkg/
 src/
 *.tar.gz

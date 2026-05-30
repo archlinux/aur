@@ -1,5 +1,5 @@
 pkgbase = ruroco
-	pkgdesc = Run Remote Command — encrypted, one-way UDP remote command execution
+	pkgdesc = Run Remote Command - encrypted, one-way UDP remote command execution
 	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/beac0n/ruroco
@@ -23,13 +23,13 @@ pkgbase = ruroco
 	sha256sums = e0899988bf07d43f878b813c47e510924f1705fa61fc88ff47913c7c5eae2f6f
 
 pkgname = ruroco-client
-	pkgdesc = ruroco client CLI — sends the encrypted UDP packets
+	pkgdesc = ruroco client CLI - sends the encrypted UDP packets
 	depends = openssl
 	depends = gcc-libs
 	depends = glibc
 
 pkgname = ruroco-client-ui
-	pkgdesc = ruroco client GUI (egui) — graphical front-end for ruroco-client
+	pkgdesc = ruroco client GUI (egui) - graphical front-end for ruroco-client
 	depends = openssl
 	depends = gcc-libs
 	depends = glibc
@@ -43,7 +43,7 @@ pkgname = ruroco-client-ui
 	depends = libxrandr
 
 pkgname = ruroco-server
-	pkgdesc = ruroco server + commander — validates packets and runs configured commands
+	pkgdesc = ruroco server + commander - validates packets and runs configured commands
 	install = ruroco-server.install
 	depends = openssl
 	depends = gcc-libs

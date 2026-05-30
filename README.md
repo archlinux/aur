@@ -1,4 +1,4 @@
-# ruroco — AUR split package
+# ruroco - AUR split package
 
 PKGBUILD for [ruroco](https://github.com/beac0n/ruroco) (Run Remote Command).
 
@@ -6,7 +6,7 @@ A single `pkgbase=ruroco` produces three packages from one source build:
 
 | Package             | Binary(ies)                          | Purpose                          |
 |---------------------|--------------------------------------|----------------------------------|
-| `ruroco-client`     | `ruroco-client`                      | CLI — sends the UDP packets      |
+| `ruroco-client`     | `ruroco-client`                      | CLI - sends the UDP packets      |
 | `ruroco-client-ui`  | `ruroco-client-ui`                   | egui GUI front-end               |
 | `ruroco-server`     | `ruroco-server`, `ruroco-commander`  | server + commander + systemd     |
 
