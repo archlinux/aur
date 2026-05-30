@@ -1,7 +1,7 @@
 # Maintainer: kbity <bit161660@gmail.com>
 pkgname='wbij'
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a CLI tool for wbijanie zadań"
 arch=('x86_64')
 url="https://repos.adamm.rocks/maleszka/wbij"
@@ -14,7 +14,7 @@ sha256sums=('43884295847439a8dbae4146eb8383b9e781c26c4003dd7dde0774d6e661135a')
 
 build() {
   cd "${srcdir}/${pkgname}"
-  zig build -Doptimize=ReleaseSafe
+  zig0.15 build -Doptimize=ReleaseSafe
 }
 
 package() {
