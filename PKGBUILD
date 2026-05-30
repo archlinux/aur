@@ -1,6 +1,6 @@
 # Maintainer: fam007e <faisalmoshiur+secpasswdmgmt@gmail.com>
 pkgname=securepasswd_mgmt
-pkgver=2026.05.16
+pkgver=2026.05.30
 pkgrel=1
 pkgdesc="A secure, cross-platform password manager with TOTP support"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libsodium' 'argon2' 'sqlcipher' 'qt6-base' 'qt6-svg' 'openssl' 'curl' 
 makedepends=('cmake' 'gcc')
 install=securepasswd_mgmt.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fam007e/SecurePasswd_MGMT/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('effb4a3f15d4752022bf1ba2655a511c647c5d16a59b652db8c30c589bb6ac5b')
+sha256sums=('49c06d6ac50aecd168ec5971a07c9d5841788a43d70af58ffd14418e16820e42')
 
 build() {
     cd "$srcdir/SecurePasswd_MGMT-${pkgver}"
