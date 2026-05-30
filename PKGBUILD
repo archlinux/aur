@@ -1,7 +1,7 @@
 # Maintainer: mfw <mfwolffe@outlook.com>
 
 pkgname=mat-cat
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A fast cat/bat alternative with syntax highlighting, a built-in pager, and zero-copy I/O'
 arch=('x86_64' 'aarch64')
