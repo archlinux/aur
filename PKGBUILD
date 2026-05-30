@@ -35,30 +35,27 @@ sha256sums=('SKIP')
 build() {
     cd "$srcdir/machctrl-main"
     npm install --prefer-offline
-    npm run build:appimage
+    npm run build:appimage -- --dir
 }
 
 package() {
     cd "$srcdir/machctrl-main"
 
-    # Extrai AppImage (evita dependência de FUSE em runtime)
-    local appimage
-    appimage=$(find dist-electron -name '*.AppImage' | head -1)
-    chmod +x "$appimage"
-    "$appimage" --appimage-extract >/dev/null 2>&1 || true
-
+    # Instala linux-unpacked diretamente (sem AppImage, sem FUSE)
     install -dm755 "$pkgdir/opt/machctrl/app"
-    cp -r squashfs-root/. "$pkgdir/opt/machctrl/app/"
-    chmod 755 "$pkgdir/opt/machctrl/app/AppRun"
+    cp -r dist-electron/linux-unpacked/. "$pkgdir/opt/machctrl/app/"
+    # Torna todos os binários executáveis
+    find "$pkgdir/opt/machctrl/app/" -maxdepth 1 -type f -exec chmod 755 {} \;
 
     # Backend Python
     install -Dm644 backend/machctrl_server.py "$pkgdir/opt/machctrl/backend/machctrl_server.py"
 
-    # Launcher aponta para AppRun extraído
+    # Launcher
     install -dm755 "$pkgdir/usr/local/bin"
     cat > "$pkgdir/usr/local/bin/machctrl" << 'LAUNCHER'
 #!/bin/bash
-exec /opt/machctrl/app/AppRun "$@"
+# Encontra o binário principal (pode ser "machctrl" ou "MachCtrl")
+exec /opt/machctrl/app/$(ls /opt/machctrl/app/ | grep -iE "^machctrl$" | head -1 || ls /opt/machctrl/app/ | grep -v "\." | head -1) "$@"
 LAUNCHER
     chmod 755 "$pkgdir/usr/local/bin/machctrl"
 
@@ -67,11 +64,6 @@ LAUNCHER
         install -Dm644 src/assets/app-icon.png \
             "$pkgdir/usr/share/pixmaps/machctrl.png"
         install -Dm644 src/assets/app-icon.png \
-            "$pkgdir/usr/share/icons/hicolor/256x256/apps/machctrl.png"
-    elif [[ -f squashfs-root/resources/app-icon.png ]]; then
-        install -Dm644 squashfs-root/resources/app-icon.png \
-            "$pkgdir/usr/share/pixmaps/machctrl.png"
-        install -Dm644 squashfs-root/resources/app-icon.png \
             "$pkgdir/usr/share/icons/hicolor/256x256/apps/machctrl.png"
     fi
 
