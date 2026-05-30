@@ -1,3 +1,4 @@
+# Maintainer: WinnerWind <archaur543258@winnerwind.in>
 pkgrel=1
 pkgver=0.28.8
 pkgname=late-sh-cli-bin
