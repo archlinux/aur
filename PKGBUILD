@@ -1,8 +1,8 @@
-# Maintainer: 5hridhyan <atvknox@gmail.com>
-# Contributor: LS-Shandong <ls-shandong@outlook.com>
-# Contributor: Michał Wojdyła <micwoj9292@gmail.com>
-# Contributor: Aditya Naik <nikeadilfc@gmail.com>
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+#Mainrainer: 5hridhyan <shridhyanh at gmail dot com>
+# Contributer: LS-Shandong < ls-shandong at outlook dot com >
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Aditya Naik <nikeadilfc at gmail dot com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de> 
 
 pkgname=artanis
 pkgver=1.3.0
