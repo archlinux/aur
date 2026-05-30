@@ -2,7 +2,7 @@
 
 pkgname=trae-sg
 pkgver=2.3.30128
-pkgrel=2
+pkgrel=3
 pkgdesc="AI-powered IDE by ByteDance (Singapore CDN)"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
@@ -19,7 +19,7 @@ install=trae.install
 source=("trae.sh" "trae.desktop")
 source_x86_64=("Trae-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.30128/linux/Trae-linux-x64.tar.gz")
 source_aarch64=("Trae-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.30128/linux/Trae-linux-arm64.tar.gz")
-sha512sums=('2659baca6aa6b572d7665670304d5abd7f19a92abdf4c3a231f43158f946b9c84d5fd3b41902dd16192e817b853f72bb688c6f863dff7cc0684ce4719a111b73'
+sha512sums=('64f1197312452536c740c142c15794b0574cbc96ec064c92dd15641b474d0efbe7120a099c6b1432345da287f83a99e1de012109a2f168ac552165ea98ac62e0'
             '8b5e04cd53bf71757eb5042414f3a4c49248d731ef6e7cc981d063c29b5325163e4c8500b8bacd6db2194a2fb050dfbd7b7593c64450f95792d7604d1a54f0a7')
 sha512sums_x86_64=('7fa54bfcb82b7c3f6f3918186d11b1556bd556fc8010b5412543c83e2de1af39db7976d7395856287156b8fe97fc0ef43cfefb8f9f6a6e2a5cb88101e2593eda')
 sha512sums_aarch64=('e2239a6bbcf29a99026c020ad07d819de547b577f82101e37bd87d427dfb41f7ef69104bffa5ac6ce393783af0a80b08a10697874bd2b5fe08004d688b4a9c8a')
@@ -57,4 +57,7 @@ package() {
 
     # Remove unnecessary files
     rm -rf "${pkgdir}/opt/trae/node_modules"
+    find "${pkgdir}/opt/trae" -name "*.asc" -delete
+    find "${pkgdir}/opt/trae" -name "*.bat" -delete
+    find "${pkgdir}/opt/trae" -type d -name "rush-logs" -exec rm -rf {} +
 }
