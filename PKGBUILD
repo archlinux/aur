@@ -37,9 +37,17 @@ optdepends=('ffmpeg: for video post-processing'
   'quickjs: for extractors with javascript code'
   'phantomjs: for extractors with javascript code (deprecated)')
 
-source=("$_pkgname-$pkgver::https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/$pkgver/yt-dlp")
-sha256sums=('1d5fe6384708eb86af7a12a84c9eabc388a02565c7390638461e3f91993d5f93')
+source=("$_pkgname-$pkgver::https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/$pkgver/yt-dlp"
+        "$_pkgname-src-$pkgver.tar.gz::https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/$pkgver/yt-dlp.tar.gz")
+sha256sums=('1d5fe6384708eb86af7a12a84c9eabc388a02565c7390638461e3f91993d5f93'
+            '66905200cdc4b04f513e9adec1d56688a23d40b98876200a18fe6b4747a8324c')
 
 package() {
   install -Dm755 "$srcdir/$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
+
+  # Install completions
+  install -Dm644 "$srcdir/$_pkgname/completions/bash/yt-dlp" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+  install -Dm644 "$srcdir/$_pkgname/completions/zsh/_yt-dlp" "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+  install -Dm644 "$srcdir/$_pkgname/completions/fish/yt-dlp.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
 }
+
