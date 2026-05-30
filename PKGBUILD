@@ -2,7 +2,7 @@
 pkgname=slopsmith-desktop-bin
 _pkgname=slopsmith-desktop
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Slopsmith desktop app with integrated audio engine, VST hosting, and amp modeling"
 arch=('x86_64')
 url="https://github.com/byrongamatos/slopsmith-desktop"

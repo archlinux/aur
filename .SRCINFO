@@ -1,7 +1,7 @@
 pkgbase = slopsmith-desktop-bin
 	pkgdesc = Slopsmith desktop app with integrated audio engine, VST hosting, and amp modeling
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/byrongamatos/slopsmith-desktop
 	arch = x86_64
 	license = AGPL-3.0-only
