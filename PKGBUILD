@@ -4,7 +4,7 @@
 _pkgname=BestClient
 pkgname=bestclient
 pkgver=1.7.1
-pkgrel=19
+pkgrel=20
 pkgdesc="DDRaceNetwork modification that adds new features"
 arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
