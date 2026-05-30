@@ -1,0 +1,8 @@
+post_install() {
+  echo "Custom flags can be placed in ~/.config/thorium-flags.conf"
+  echo "Run Thorium with: thorium-browser"
+}
+
+post_upgrade() {
+  post_install
+}
