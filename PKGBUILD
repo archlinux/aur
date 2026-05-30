@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=megabasterd-bin
 _name=MegaBasterd
-pkgver=8.51 # renovate: datasource=github-tags depName=tonikelope/megabasterd
+pkgver=8.55 # renovate: datasource=github-tags depName=tonikelope/megabasterd
 pkgrel=1
 pkgdesc="Yet another (unofficial) cross-platform MEGA downloader/uploader/streaming suite"
 arch=('any')
@@ -26,6 +26,6 @@ package() {
     "$pkgdir/usr/share/applications/${pkgname%%-bin}.desktop"
 }
 
-sha256sums=('439d4f6d782677ff7d994731bf94a3909932f0979056a3d983317541e7135e79'
+sha256sums=('ddb5af19ddde95445027a68b1e60860b7d9c0a7177fa1d1e506c9def06cf0452'
             '72c7a1db49c5e58a6e6400a445758f7779a594789705dfeac954171d457af103'
             'a85b49dab7f58ab3c3b3e609a1c3c8e0fab2bedf5597a179aae82773681e7753')
