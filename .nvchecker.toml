@@ -1,0 +1,3 @@
+[perl-conf-libconfig]
+source = "cpan"
+cpan = "Conf-Libconfig"
