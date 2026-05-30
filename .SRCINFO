@@ -1,6 +1,6 @@
 pkgbase = loongson-gnu-toolchain-bin
 	pkgdesc = loongson gnu toolchain
-	pkgver = 8.3_rc1.4
+	pkgver = 8.3_rc1.6
 	pkgrel = 1
 	url = http://ftp.loongnix.cn/toolchain/gcc/release/loongarch/gcc8/
 	install = loongson-gnu-toolchain-bin.install
@@ -14,11 +14,11 @@ pkgbase = loongson-gnu-toolchain-bin
 	provides = loongson-gcc
 	conflicts = loongson-gnu-toolchain
 	conflicts = loongson-gcc
-	noextract = loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.4.tar.xz
+	noextract = loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6.tar.xz
 	options = !strip
 	options = !emptydirs
 	options = !debug
-	source = loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.4.tar.xz::http://ftp.loongnix.cn/toolchain/gcc/release/loongarch/gcc8//loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.4.tar.xz
-	sha256sums = 6883f7b4783430da9b2d76ade1373138659ebae7eca40cba002e343e331be747
+	source = loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6.tar.xz::http://ftp.loongnix.cn/toolchain/gcc/release/loongarch/gcc8//loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6.tar.xz
+	sha256sums = fb39d178b6760f49852e8452c092bfc176a98c3166ce13b7d700e3da9e99e237
 
 pkgname = loongson-gnu-toolchain-bin

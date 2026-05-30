@@ -1,6 +1,27 @@
-_info() {
-    echo "--> A system reboot is required after installation to automatically load the loongson-gnu-toolchain environment variable. <--"
-    echo "--> 安装后需要重启系统，才能自动加载 loongson-gnu-toolchain 环境变量。<--"
+RED='\033[31m'
+GREEN='\033[32m'
+YELLOW='\033[33m'
+BLUE='\033[34m'
+MAGENTA='\033[35m'
+CYAN='\033[36m'
+WHITE='\033[37m'
+BOLD='\033[1m'
+UNDERLINE='\033[4m'
+NC='\033[0m'
+
+info() {
+    printf "\n${GREEN}✓ loongson-gnu-toolchain 安装成功${NC}\n"
+    printf "${CYAN}路径: /opt/loongson/loongson-gnu-toolchain/${NC}\n\n"
+    printf "${BOLD}使用步骤:${NC}\n"
+    printf "1. ${RED}source /etc/profile.d/loongson-gnu-toolchain.sh${NC}\n"
+    printf "2. ${RED}loongarch64-linux-gnu-gcc --help${NC}\n\n"
+    
+    printf "\n${GREEN}✓ loongson-gnu-toolchain installed${NC}\n"
+    printf "${CYAN}Path: /opt/loongson/loongson-gnu-toolchain/${NC}\n\n"
+    printf "${BOLD}Quick steps:${NC}\n"
+    printf "1. ${RED}source /etc/profile.d/loongson-gnu-toolchain.sh${NC}\n"
+    printf "2. ${RED}loongarch64-linux-gnu-gcc --help${NC}\n\n"
+
 }
 
 post_install() {
