@@ -3,7 +3,7 @@
 pkgname=kookbook
 pkgver=0.3.0
 pkgrel=1
-pkgdesc='Fast real-time plotting program with light data analysis capabilities'
+pkgdesc='Simplistic recipe manager that will help you to maintain a collection of your favorite recipes'
 arch=(x86_64)
 url='https://apps.kde.org/kookbook/'
 license=(MIT)
