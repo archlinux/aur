@@ -1,6 +1,6 @@
 # Maintainer: Main Serve Contributors <https://github.com/dekoding/main-serve>
 pkgname=main-serve
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A high-performance, YAML-configured web server"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ backup=('etc/main-serve/config.yaml')
 install=main-serve.install
 conflicts=('main-serve-bin')
 source=("$pkgname-$pkgver::https://github.com/dekoding/main-serve/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c9bcdd62f57ace8cbab97bc60f08e7c64bdca6ae81acb88121bba719680a0933')
+sha256sums=('b0e86bd9c2d2d3e6ea647c8dcd3d665b4494ed1ce0a0dec08f32053cad066c0b')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -29,7 +29,7 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 "target/release/main-serve" "$pkgdir/usr/bin/main-serve"
-    install -Dm644 "config/config.yaml" "$pkgdir/etc/main-serve/config.yaml"
+    install -Dm644 "config/templates/default.yaml" "$pkgdir/etc/main-serve/config.yaml"
     install -Dm644 "dist/main-serve.service" "$pkgdir/usr/lib/systemd/system/main-serve.service"
     install -Dm644 "dist/main-serve.sysusers" "$pkgdir/usr/lib/sysusers.d/main-serve.conf"
     install -Dm644 "dist/main-serve.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/main-serve.conf"

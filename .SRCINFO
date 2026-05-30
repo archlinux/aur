@@ -1,6 +1,6 @@
 pkgbase = main-serve
 	pkgdesc = A high-performance, YAML-configured web server
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/dekoding/main-serve
 	install = main-serve.install
@@ -15,7 +15,7 @@ pkgbase = main-serve
 	depends = systemd
 	conflicts = main-serve-bin
 	backup = etc/main-serve/config.yaml
-	source = main-serve-0.2.0::https://github.com/dekoding/main-serve/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = c9bcdd62f57ace8cbab97bc60f08e7c64bdca6ae81acb88121bba719680a0933
+	source = main-serve-0.2.2::https://github.com/dekoding/main-serve/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = b0e86bd9c2d2d3e6ea647c8dcd3d665b4494ed1ce0a0dec08f32053cad066c0b
 
 pkgname = main-serve
