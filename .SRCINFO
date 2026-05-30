@@ -1,6 +1,6 @@
 pkgbase = hpd-handheld-power-daemon-bin
 	pkgdesc = Linux system daemon for handheld PCs: TDP, charge, profile, fan (prebuilt x86_64)
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 3
 	url = https://github.com/CiroDev-Git/hpd-handheld-power-daemon
 	install = hpd.install
@@ -9,12 +9,12 @@ pkgbase = hpd-handheld-power-daemon-bin
 	depends = dbus
 	depends = polkit
 	depends = systemd
-	provides = hpd-handheld-power-daemon=1.0.0
+	provides = hpd-handheld-power-daemon=2.0.0
 	conflicts = hpd-handheld-power-daemon
 	options = !strip
 	options = !debug
 	backup = etc/hpd/config.toml.example
-	source = hpd-handheld-power-daemon-bin-1.0.0.tar.gz::https://github.com/CiroDev-Git/hpd-handheld-power-daemon/releases/download/v1.0.0/hpd-1.0.0-x86_64-linux.tar.gz
-	sha256sums = 21db33c9b7efecfae1353563b0cd3bbb361547620bec01aa67b5d9fb1a4595b3
+	source = hpd-handheld-power-daemon-bin-2.0.0.tar.gz::https://github.com/CiroDev-Git/hpd-handheld-power-daemon/releases/download/v2.0.0/hpd-2.0.0-x86_64-linux.tar.gz
+	sha256sums = 26b780f362ca3d2de047ee74676a45395cd217aa15146e0e60ac657d133c9c3c
 
 pkgname = hpd-handheld-power-daemon-bin
