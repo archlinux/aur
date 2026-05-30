@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=codebuff-bin
-pkgver=1.0.679
+pkgver=1.0.680
 pkgrel=1
 pkgdesc='AI coding agent for the terminal'
 arch=('x86_64' 'aarch64')
@@ -12,10 +12,10 @@ conflicts=('codebuff')
 options=('!strip' '!debug')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://codebuff.com/api/releases/download/${pkgver}/codebuff-linux-x64.tar.gz")
-sha256sums_x86_64=('a34e6ed3e1bc6bfdde13237cff2c5c6602b49f1218d7e0afa471e53de39edc49')
+sha256sums_x86_64=('e5eabb9caec238542775063306c413d9fdd74e0b74bd0ace1a7e5d136a2be6b2')
+sha256sums_aarch64=('99626f42d0f7b76015ad20865e184488221e06deb81c849039ea20f492bef06e')
 
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://codebuff.com/api/releases/download/${pkgver}/codebuff-linux-arm64.tar.gz")
-sha256sums_aarch64=('ef771b8c90888ffe7d793bb870dff6f6db583c03460977bbc5e9008bf17cfb09')
 
 latestver() {
     curl -fsSL 'https://registry.npmjs.org/codebuff/latest' | python3 -c "import sys,json; print(json.load(sys.stdin)['version'])"
