@@ -1,8 +1,8 @@
-# Maintainer: NAHO <90870942+trueNAHO@users.noreply.github.com>
+# Maintainer: Noah Biewesch <dev-grub-vimix-midnight@noahbiewesch.com>
 
 _pkgname=grub2-theme-vimix-very-dark-blue
 pkgname=grub-theme-vimix-very-dark-blue
-pkgver=1.0.0.r129.ee7015a
+pkgver=1.0.0.r137.7b3e61f
 pkgrel=1
 pkgdesc="Simple, very dark blue GRUB theme"
 arch=(any)
@@ -21,6 +21,7 @@ md5sums=(SKIP)
 
 pkgver() {
     cd "$srcdir/$_pkgname" || return
+
     printf "1.0.0.r%s.%s" "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
 }

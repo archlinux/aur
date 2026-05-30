@@ -25,12 +25,12 @@
 #         Usage: post_remove
 #
 # Dependencies:
-#     This script depends on the following commands: `grep`, `grub-mkconfig`,
-#     `printf`, `sudo`.
+#     This script depends on the following commands: grep, grub-mkconfig,
+#     printf, sudo.
 #
 # Note:
 #     This script assumes that the theme is located at
-#     `/usr/share/grub/themes/grub-theme-vimix-very-dark-blue`.
+#     '/usr/share/grub/themes/grub-theme-vimix-very-dark-blue'.
 
 readonly GRUB_THEME_CFG_PATH="/boot/grub/grub.cfg"
 readonly GRUB_THEME_CONFIG_LINE='GRUB_THEME="/usr/share/grub/themes/grub-theme-vimix-very-dark-blue/theme.txt"'
@@ -50,14 +50,16 @@ post_install() {
     if ! _is_use_theme; then
         _status \
             "This GRUB theme is currently installed, but not being used." \
-            ""
-            "To apply this theme, update the 'GRUB_THEME' line in the '$GRUB_THEME_DEFAULT_PATH' file to the following:" \
-            "$GRUB_THEME_CONFIG_LINE" \
             "" \
-            "Then, generate the GRBU configuration file with superuser privileges by running the following command:" \
-            "sudo grub-mkconfig -o '$GRUB_THEME_CFG_PATH'" \
+            "To apply this theme, update the 'GRUB_THEME' variable in the '$GRUB_THEME_DEFAULT_PATH' file to:" \
             "" \
-            "The system will start using the new theme after the next reboot."
+            "    $GRUB_THEME_CONFIG_LINE" \
+            "" \
+            "Then, update the GRUB configuration file by running:" \
+            "" \
+            "    grub-mkconfig -o '$GRUB_THEME_CFG_PATH'" \
+            "" \
+            "This theme will be used upon rebooting."
     fi
 }
 
@@ -116,7 +118,8 @@ _grub_mkconfig_smart() {
     if _is_use_theme; then
         _status \
             "Generating the GRUB configuration file with superuser privileges by running the following command:" \
-            "sudo grub-mkconfig -o $GRUB_THEME_CFG_PATH"
+            "" \
+            "    sudo grub-mkconfig -o $GRUB_THEME_CFG_PATH"
         _grub_mkconfig
     fi
 }
@@ -143,7 +146,7 @@ _is_use_theme() {
     _is_use_theme_default_grub && _is_use_theme_grub_cfg
 }
 
-# Print each MESSAGE on a new line with the `grub-theme-vimix-very-dark-blue: `
+# Print each MESSAGE on a new line with the 'grub-theme-vimix-very-dark-blue: '
 # prefix.
 #
 # Usage: status [MESSAGE ...]
@@ -151,7 +154,7 @@ _status() {
     printf 'grub-theme-vimix-very-dark-blue: %s\n' "$@"
 }
 
-# Print each MESSAGE on a new line with the `grub-theme-vimix-very-dark-blue: `
+# Print each MESSAGE on a new line with the 'grub-theme-vimix-very-dark-blue: '
 # prefix to stderr.
 #
 # Usage: status_error [MESSAGE ...]
