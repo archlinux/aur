@@ -1,0 +1,16 @@
+pkgbase = mat-cat
+	pkgdesc = A fast cat/bat alternative with syntax highlighting, a built-in pager, and zero-copy I/O
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tenseleyFlow/mat
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = mat
+	conflicts = mat
+	source = mat-0.1.0::git+https://github.com/tenseleyFlow/mat.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = mat-cat
