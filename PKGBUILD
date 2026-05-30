@@ -2,13 +2,14 @@
 
 pkgname=command-code
 pkgver=0.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc='AI coding agent that continuously learns your coding taste'
 arch=('x86_64')
 url='https://commandcode.ai'
 license=('LicenseRef-command-code')
 depends=('nodejs')
 makedepends=('npm' 'jq')
+options=(!strip)
 noextract=("${pkgname}-${pkgver}.tgz")
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
         "$pkgname.license")
