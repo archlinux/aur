@@ -1,6 +1,6 @@
 # Maintainer: Hannes Spitz <h.spitz@outlook.de>
 pkgname=pdf-editor-omarchy-git
-pkgver=r1.0
+pkgver=r61.02f4ca4
 pkgrel=1
 pkgdesc="PDF annotation and note-taking app with live markdown sidebar, designed for Omarchy"
 arch=('any')
