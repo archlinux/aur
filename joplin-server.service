@@ -6,6 +6,7 @@ Type=simple
 User=joplin
 Group=joplin
 WorkingDirectory=/usr/lib/joplin-server/server
+Environment=PNPM_CONFIG_VERIFY_DEPS_BEFORE_RUN=false
 EnvironmentFile=/etc/joplin-server.env
 ExecStart=/usr/bin/pnpm run start-prod
 # Service hardening

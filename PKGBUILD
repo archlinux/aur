@@ -3,7 +3,7 @@ _image=joplin/server
 
 pkgname="$_pkgname-bin"
 pkgver=3.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Joplin Server, via Docker image'
 arch=('any')
 url="https://hub.docker.com/r/$_image"
@@ -16,7 +16,7 @@ source=(
   "$_pkgname.tmpfiles"
   'https://raw.githubusercontent.com/laurent22/joplin/dev/.env-sample'
 )
-sha256sums=('adac9f3a6df5a29c4fa865249e9c8b65cd6b582271fb9e69d99c4b9ebc83f5fa'
+sha256sums=('2b4bd101041ea99d90d735b65b6bd54573e7424e57fc127c90082034c19c1cde'
             '2f3cea9bed6f79d7c93721dd1acb7c3b5c0368be264ae2894bd66034634e694d'
             '55455d0ebfcb6ef72b8c4fe934a69ccfd9089f881058933d7cba0c07d7aaffc0'
             'e85770c7a0391baa7cf18edeeb64b6a8fe2ccb409d31294d2bde4cd8096cf80f')
