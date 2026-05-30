@@ -1,6 +1,6 @@
 # Maintainer: thongor77 <magetriste@proton.me>
 pkgname=nmlinux
-pkgver=1.2.7
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="A free Linux adaptation of NETworkManager — network GUI for KDE/Linux"
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://github.com/thongor77/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ddba795e1cb7651560d886b4b54efdc0c752510b9bdd8bc075c3ea93fbb26e39')
+sha256sums=('4a213b0c374cf63ecb96977e04af740231a6e026ef2e41ba7d6c571e66a19208')
 
 build() {
     cd "${pkgname}-${pkgver}"

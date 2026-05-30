@@ -1,6 +1,6 @@
 pkgbase = nmlinux
 	pkgdesc = A free Linux adaptation of NETworkManager — network GUI for KDE/Linux
-	pkgver = 1.2.7
+	pkgver = 1.2.9
 	pkgrel = 1
 	url = https://github.com/thongor77/nmlinux
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = nmlinux
 	optdepends = traceroute: Traceroute alternative (tracepath used by default)
 	optdepends = python-hwdata: OUI vendor lookup in IP Scanner
 	optdepends = nm-connection-editor: Edit connections from Connection Manager
-	source = https://github.com/thongor77/nmlinux/archive/refs/tags/v1.2.7.tar.gz
-	sha256sums = ddba795e1cb7651560d886b4b54efdc0c752510b9bdd8bc075c3ea93fbb26e39
+	source = https://github.com/thongor77/nmlinux/archive/refs/tags/v1.2.9.tar.gz
+	sha256sums = 4a213b0c374cf63ecb96977e04af740231a6e026ef2e41ba7d6c571e66a19208
 
 pkgname = nmlinux
