@@ -1,6 +1,6 @@
 # Maintainer: Brandon Doornbos <b.doornbos at pm dot me>
 pkgname=cfait-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Powerful, fast and elegant task / TODO manager (GUI & TUI, CalDAV & local). Cfait is a powerful yet simple tasks / TODO CalDAV client. (TUI and GUI)"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://codeberg.org/trougnouf/cfait"
 license=('GPL-3.0-or-later')
 conflicts=('cfait')
 options=('!strip' '!emptydirs')
-source_x86_64=("https://github.com/trougnouf/cfait/releases/download/v1.0.3/cfait_1.0.3-1_amd64.deb")
-sha256sums_x86_64=('c174fe7eb5b99746edb07cfe5650b51861be4aedf24c2ce6ac23cc8c5b0ec4a6')
+source_x86_64=("https://github.com/trougnouf/cfait/releases/download/v1.0.4/cfait_1.0.4-1_amd64.deb")
+sha256sums_x86_64=('3b631c84cdaa2f183fb97b419014f56195e0af5cb3386fb27faaf7d15b67cae5')
 depends=(
     'gcc-libs'
     'glibc'
