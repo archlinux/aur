@@ -5,8 +5,8 @@
 pkgbase=datagrip-eap
 _pkgbase=${pkgbase/-eap/}
 pkgname=(datagrip-eap datagrip-eap-jre)
-pkgver=262.5752.1
-_pkgver=2026.1
+pkgver=262.6653.38
+_pkgver=2026.2
 pkgrel=1
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity (EAP)'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_x86_64=("Datagrip-${pkgver}-${arch[0]}.tar.gz::https://download.jetbrains
 source_aarch64=("Datagrip-${pkgver}-${arch[1]}.tar.gz::https://download.jetbrains.com/${_pkgbase}/${_pkgbase}-${pkgver}-aarch64.tar.gz")
 sha256sums=('140cefe7ca857546ab5b548ff64909dbda6ebdaf735ee203ba02e0a32f217a5e'
             'c37db68dbedb20617a23cf1299cd95e7f114f019ff7f44877409cef916ff6ab1')
-sha256sums_x86_64=('382d3abbc3831451d341051fb061635ee683ee540a5bc4154403a6cb4490d74a')
-sha256sums_aarch64=('43765c999db29a5cdbb520de9ce7bc88f49cba3a69e22337fbbd4abec6ac2fe0')
+sha256sums_x86_64=('da8d204c99b107df0db7065f5a5c0c87f26bca7c375ec03034a2b738c24d7ac4')
+sha256sums_aarch64=('49954e2f4517f8c553bc85a44181a9d8ace68fd2961010cf3f9b9dafdf40ce2b')
 
 package_datagrip-eap() {
   optdepends=('datagrip-eap-jre: JetBrains custom Java Runtime (Recommended)'

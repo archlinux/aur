@@ -1,6 +1,6 @@
 pkgbase = datagrip-eap
 	pkgdesc = Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity (EAP)
-	pkgver = 262.5752.1
+	pkgver = 262.6653.38
 	pkgrel = 1
 	url = https://www.jetbrains.com/datagrip/nextversion/
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = datagrip-eap
 	source = LICENSE
 	sha256sums = 140cefe7ca857546ab5b548ff64909dbda6ebdaf735ee203ba02e0a32f217a5e
 	sha256sums = c37db68dbedb20617a23cf1299cd95e7f114f019ff7f44877409cef916ff6ab1
-	source_x86_64 = Datagrip-262.5752.1-x86_64.tar.gz::https://download.jetbrains.com/datagrip/datagrip-262.5752.1.tar.gz
-	sha256sums_x86_64 = 382d3abbc3831451d341051fb061635ee683ee540a5bc4154403a6cb4490d74a
-	source_aarch64 = Datagrip-262.5752.1-aarch64.tar.gz::https://download.jetbrains.com/datagrip/datagrip-262.5752.1-aarch64.tar.gz
-	sha256sums_aarch64 = 43765c999db29a5cdbb520de9ce7bc88f49cba3a69e22337fbbd4abec6ac2fe0	
+	source_x86_64 = Datagrip-262.6653.38-x86_64.tar.gz::https://download.jetbrains.com/datagrip/datagrip-262.6653.38.tar.gz
+	sha256sums_x86_64 = da8d204c99b107df0db7065f5a5c0c87f26bca7c375ec03034a2b738c24d7ac4
+	source_aarch64 = Datagrip-262.6653.38-aarch64.tar.gz::https://download.jetbrains.com/datagrip/datagrip-262.6653.38-aarch64.tar.gz
+	sha256sums_aarch64 = 49954e2f4517f8c553bc85a44181a9d8ace68fd2961010cf3f9b9dafdf40ce2b	
 
 pkgname = datagrip-eap
 	optdepends = datagrip-eap-jre: JetBrains custom Java Runtime (Recommended)
