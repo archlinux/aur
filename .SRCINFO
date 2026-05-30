@@ -1,0 +1,16 @@
+pkgbase = mondorescue-common
+	pkgdesc = Common libraries and tools for MondoRescue (Mondo and Mindi)
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://www.mondorescue.org/
+	arch = x86_64
+	license = GPL2
+	depends = perl
+	source = https://hub.darcs.net/stef204/mondorescue-aur/raw/MondoRescue-3.3.0.tar.gz
+	source = https://hub.darcs.net/stef204/mondorescue-aur/raw/ProjectBuilder-0.16.1.tar.gz
+	source = https://hub.darcs.net/stef204/mondorescue-aur/raw/Kernel.pm-zst.patch
+	sha512sums = 7c67f725eaee334826a6060149b6f41e5cc4a844d68d419eb89de03989821bd78f0110303c09cfb3b81ef4beebbbf8ad1b5dd9e9ddbed4c0d09f7ee96fc6a184
+	sha512sums = f18f76507a8c59f3316fcfc1460e480730995fe7e08b57cf5479c22f440526700e3619906182d4f26a449020ff3cf5d8ef3e82bf45ee8b00852d6bc44fa92b2b
+	sha512sums = b8cec0df957c040dee39df32770e790f13afe85f72fa3f0d946f7cd82b5e650f8a0d9ed0a5526a0272468e91a4b8359b6bffea56b530038de03f5033ece0a8ed
+
+pkgname = mondorescue-common
