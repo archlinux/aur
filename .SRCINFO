@@ -1,0 +1,16 @@
+pkgbase = ttf-saitamaar-git
+	pkgdesc = Font designed for ASCII art and Japanese SJIS-Art (Shift JIS Art)
+	pkgver = r14.695bee7
+	pkgrel = 1
+	url = https://github.com/asciiart-development/SaitamaarFont
+	arch = any
+	license = OFL-1.1
+	makedepends = git
+	provides = ttf-saitamaar
+	provides = otf-saitamaar
+	conflicts = ttf-saitamaar
+	conflicts = otf-saitamaar
+	source = ttf-saitamaar-git::git+https://github.com/asciiart-development/SaitamaarFont.git
+	sha256sums = SKIP
+
+pkgname = ttf-saitamaar-git
