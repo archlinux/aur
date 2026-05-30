@@ -184,11 +184,25 @@ package() {
 
 	install -dm0755 "$pkgdir/usr/bin" "$pkgdir/usr/share/applications"
 
-	cat >"$pkgdir/usr/bin/$pkgname" <<EOF
+	cat >"$pkgdir/usr/bin/$pkgname" <<'EOF'
 #!/bin/bash
-cd /opt/$pkgname/game
-export LD_LIBRARY_PATH="/opt/$pkgname/game\${LD_LIBRARY_PATH:+:\$LD_LIBRARY_PATH}"
-exec ./DDNet "\$@"
+# Fix Discord Rich Presence when Discord runs as a Flatpak.
+# Flatpak Discord puts IPC sockets in a sandboxed path; the Game SDK
+# expects them at $XDG_RUNTIME_DIR/discord-ipc-N. Create symlinks.
+_uid=$(id -u)
+for _n in 0 1 2 3 4 5 6 7 8 9; do
+	for _src in \
+		"/run/user/$_uid/app/com.discordapp.Discord/discord-ipc-$_n" \
+		"/run/user/$_uid/.flatpak/com.discordapp.Discord/xdg-run/discord-ipc-$_n"
+	do
+		_dst="/run/user/$_uid/discord-ipc-$_n"
+		[ -S "$_src" ] && [ ! -S "$_dst" ] && ln -sf "$_src" "$_dst" 2>/dev/null || true
+	done
+done
+
+cd /opt/bestclient/game
+export LD_LIBRARY_PATH="/opt/bestclient/game${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+exec ./DDNet "$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$pkgname"
 
