@@ -1,0 +1,15 @@
+pkgbase = glain-git
+	pkgdesc = fastfetch + lain gifs written in Go
+	pkgver = r6.58c0105
+	pkgrel = 1
+	url = https://github.com/JuanPerdomo00/glain
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	depends = fastfetch
+	depends = timg
+	source = glain-git::git+https://github.com/JuanPerdomo00/glain.git
+	sha256sums = SKIP
+
+pkgname = glain-git
