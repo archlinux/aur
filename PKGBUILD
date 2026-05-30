@@ -1,7 +1,7 @@
 # Maintainer: delthas <arch@delthas.fr>
 pkgname=procertum-smartsign
-pkgver=9.3.4.0
-_fullver=2.9.12-${pkgver}
+pkgver=9.4.3.0
+_fullver=2.9.14-${pkgver}
 pkgrel=1
 pkgdesc="Creation and verification of secure electronic signatures."
 arch=(x86_64)
@@ -13,7 +13,7 @@ optdepends=("ccid: USB CCID smart-card reader support"
 source=(
 	"https://files.certum.eu/software/SimplySignDesktop/Linux-Ubuntu/${_fullver}/SimplySignDesktop-${_fullver}-x86_64-prod-ubuntu.bin"
 )
-md5sums=('e1e2d2d2e28404b939b54f4d3e376495')
+md5sums=('36a19c83255d35f51d09a1f299845177')
 
 prepare() {
 	# Avoid trusting the installer; extract manually from the first gzip header.

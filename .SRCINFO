@@ -1,6 +1,6 @@
 pkgbase = procertum-smartsign
 	pkgdesc = Creation and verification of secure electronic signatures.
-	pkgver = 9.3.4.0
+	pkgver = 9.4.3.0
 	pkgrel = 1
 	url = https://support.certum.eu/en/software/procertum-smartsign/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = procertum-smartsign
 	depends = pcsclite
 	optdepends = ccid: USB CCID smart-card reader support
 	optdepends = opensc: PKCS#11 support for additional smart cards
-	source = https://files.certum.eu/software/SimplySignDesktop/Linux-Ubuntu/2.9.12-9.3.4.0/SimplySignDesktop-2.9.12-9.3.4.0-x86_64-prod-ubuntu.bin
-	md5sums = e1e2d2d2e28404b939b54f4d3e376495
+	source = https://files.certum.eu/software/SimplySignDesktop/Linux-Ubuntu/2.9.14-9.4.3.0/SimplySignDesktop-2.9.14-9.4.3.0-x86_64-prod-ubuntu.bin
+	md5sums = 36a19c83255d35f51d09a1f299845177
 
 pkgname = procertum-smartsign
