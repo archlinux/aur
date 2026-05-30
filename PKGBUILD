@@ -9,7 +9,7 @@ pkgdesc="DDRaceNetwork modification that adds new features"
 arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
 license=('custom')
-depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader' 'libhwy.so.1' 'libogg')
+depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader' 'highway' 'libogg')
 makedepends=('patchelf' 'gcc')
 optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
 	'discord-game-sdk: Enable rich presence in Discord desktop client.')
