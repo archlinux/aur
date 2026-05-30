@@ -1,0 +1,3 @@
+[solitaire]
+source = "git"
+git = "https://gitlab.gnome.org/wwarner/Solitaire.git"
