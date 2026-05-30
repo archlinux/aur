@@ -12,7 +12,6 @@ pkgbase = machctrl
 	depends = python-websockets
 	depends = lm_sensors
 	depends = dmidecode
-	depends = fuse2
 	depends = nodejs
 	optdepends = nvidia-utils: suporte a GPU NVIDIA (fan control, temperatura)
 	optdepends = nvidia-settings: controle avançado de fan NVIDIA

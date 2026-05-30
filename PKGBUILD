@@ -12,7 +12,6 @@ depends=(
     'python-websockets'
     'lm_sensors'
     'dmidecode'
-    'fuse2'
     'nodejs'
 )
 makedepends=(
@@ -30,7 +29,7 @@ optdepends=(
 provides=('machctrl')
 conflicts=('machctrl-git' 'machctrl-bin')
 install=machctrl.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/araujo791/machctrl/archive/refs/heads/main.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/araujo791/machctrl/tarball/main")
 sha256sums=('SKIP')
 
 build() {
@@ -42,22 +41,24 @@ build() {
 package() {
     cd "$srcdir/machctrl-main"
 
-    # Diretório de instalação
-    install -dm755 "$pkgdir/opt/machctrl/backend"
-
-    # AppImage
+    # Extrai AppImage (evita dependência de FUSE em runtime)
     local appimage
     appimage=$(find dist-electron -name '*.AppImage' | head -1)
-    install -Dm755 "$appimage" "$pkgdir/opt/machctrl/MachCtrl.AppImage"
+    chmod +x "$appimage"
+    "$appimage" --appimage-extract >/dev/null 2>&1 || true
+
+    install -dm755 "$pkgdir/opt/machctrl/app"
+    cp -r squashfs-root/. "$pkgdir/opt/machctrl/app/"
+    chmod 755 "$pkgdir/opt/machctrl/app/AppRun"
 
     # Backend Python
     install -Dm644 backend/machctrl_server.py "$pkgdir/opt/machctrl/backend/machctrl_server.py"
 
-    # Launcher
+    # Launcher aponta para AppRun extraído
     install -dm755 "$pkgdir/usr/local/bin"
     cat > "$pkgdir/usr/local/bin/machctrl" << 'LAUNCHER'
 #!/bin/bash
-exec /opt/machctrl/MachCtrl.AppImage "$@"
+exec /opt/machctrl/app/AppRun "$@"
 LAUNCHER
     chmod 755 "$pkgdir/usr/local/bin/machctrl"
 
@@ -66,6 +67,11 @@ LAUNCHER
         install -Dm644 src/assets/app-icon.png \
             "$pkgdir/usr/share/pixmaps/machctrl.png"
         install -Dm644 src/assets/app-icon.png \
+            "$pkgdir/usr/share/icons/hicolor/256x256/apps/machctrl.png"
+    elif [[ -f squashfs-root/resources/app-icon.png ]]; then
+        install -Dm644 squashfs-root/resources/app-icon.png \
+            "$pkgdir/usr/share/pixmaps/machctrl.png"
+        install -Dm644 squashfs-root/resources/app-icon.png \
             "$pkgdir/usr/share/icons/hicolor/256x256/apps/machctrl.png"
     fi
 
