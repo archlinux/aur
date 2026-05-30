@@ -1,13 +1,10 @@
---- plymouth.src/src/plymouthd.defaults
-+++ plymouth.patch/src/plymouthd.defaults
-@@ -1,6 +1,5 @@
--# Distribution defaults. Changes to this file will get overwritten during
--# upgrades.
--[Daemon]
--Theme=spinner
+--- plymouth.src/src/plymouthd.conf
++++ plymouth.patch/src/plymouthd.conf
+@@ -1,4 +1,4 @@
+-# Administrator customizations go in this file
+-#[Daemon]
+-#Theme=fade-in
 +# Set your plymouth configuration here.
 +[Daemon]
 +Theme=bgrt
- ShowDelay=0
- DeviceTimeout=8
 
