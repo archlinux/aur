@@ -3,4 +3,4 @@ pkg/
 src/
 *.desktop
 *.png
-translate-popup.py
+
