@@ -1,0 +1,23 @@
+pkgbase = refractum
+	pkgdesc = GUI tool for ranking pacman mirrors on Arch Linux and Arch-based distributions
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/Labaman/refractum
+	install = refractum.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-requests
+	depends = python-gobject
+	depends = gtk4
+	depends = polkit
+	optdepends = geoip: country auto-detection via geoiplookup
+	conflicts = refract
+	replaces = refract
+	source = refractum-1.6.0.tar.gz::https://github.com/Labaman/refractum/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = 3676cd0228e006d1a22408c0873b0549bf77de6c7a20f6c809c2b59132024f1f
+
+pkgname = refractum

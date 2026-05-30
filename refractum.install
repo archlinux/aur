@@ -1,0 +1,20 @@
+post_install() {
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database -q /usr/share/applications 2>/dev/null || true
+}
+
+post_upgrade() {
+    # Remove icon and desktop files from earlier names (the "refract" package and
+    # the short-lived io.github.Labaman.refract app ID) — superseded by refractum.
+    rm -f /usr/share/icons/hicolor/scalable/apps/refract.svg
+    rm -f /usr/share/icons/hicolor/scalable/apps/io.github.Labaman.refract.svg
+    rm -f /usr/share/applications/refract.desktop
+    rm -f /usr/share/applications/io.github.Labaman.refract.desktop
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database -q /usr/share/applications 2>/dev/null || true
+}
+
+post_remove() {
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database -q /usr/share/applications 2>/dev/null || true
+}
