@@ -23,6 +23,6 @@ pkgbase = nmlinux
 	optdepends = python-hwdata: OUI vendor lookup in IP Scanner
 	optdepends = nm-connection-editor: Edit connections from Connection Manager
 	source = https://github.com/thongor77/nmlinux/archive/refs/tags/v1.2.9.tar.gz
-	sha256sums = 4a213b0c374cf63ecb96977e04af740231a6e026ef2e41ba7d6c571e66a19208
+	sha256sums = 29884e280852ebbcf628fcc54149dec3d573b51a75d5506dd04c760d8962c708
 
 pkgname = nmlinux
