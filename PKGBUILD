@@ -4,7 +4,7 @@
 _name=NeuralRack
 pkgbase=${_name,,}
 pkgname=($pkgbase $pkgbase-{clap,lv2,standalone,vst})
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='A neural model and impulse response file loader'
 arch=(aarch64 x86_64)
@@ -15,7 +15,7 @@ depends=(glibc gcc-libs libx11)
 makedepends=(cairo jack libsndfile lv2 portaudio xxd)
 checkdepends=(lv2lint)
 source=("https://github.com/brummer10/$_name/releases/download/v$pkgver/$_name-v$pkgver-src.tar.xz")
-sha256sums=('8ca6067f938d6f36cab3780f9518ebbdeebcb9c9d06ae3922b2c4c881befb128')
+sha256sums=('460e4eeba85d2985910d2e624149c1a77639e1c194f7c0556ce9d21efed79f21')
 _plugin_uri="urn:brummer:$pkgbase"
 
 _pick() {
