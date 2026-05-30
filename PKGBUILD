@@ -6,7 +6,7 @@
 # AUR display). aur-publish.yml bumps that line on each release.
 pkgname=tensaku-git
 _pkgname=tensaku
-pkgver=0.25.2
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='Modern screenshot annotation tool for Wayland (latest main)'
 arch=('x86_64')
@@ -44,6 +44,7 @@ build() {
 package() {
   cd "$_pkgname"
   install -Dm755 target/release/tensaku "$pkgdir/usr/bin/tensaku"
+  install -Dm755 assets/tensaku-edit "$pkgdir/usr/bin/tensaku-edit"
   install -Dm644 dev.tensaku.Tensaku.desktop \
     "$pkgdir/usr/share/applications/dev.tensaku.Tensaku.desktop"
   install -Dm644 assets/tensaku.svg \
