@@ -1,7 +1,7 @@
 pkgbase = linkerd-edge-bin
-	pkgdesc = Ultralight, security-first service mesh for Kubernetes. Recommended edge release.
+	pkgdesc = Ultralight, security-first service mesh for Kubernetes.
 	pkgver = 26.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linkerd.io/
 	arch = x86_64
 	arch = aarch64

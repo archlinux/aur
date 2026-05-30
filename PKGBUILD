@@ -2,13 +2,13 @@
 
 pkgname=linkerd-edge-bin
 pkgver=26.5.5
-pkgrel=1
-pkgdesc="Ultralight, security-first service mesh for Kubernetes. Recommended edge release."
+pkgrel=2
+pkgdesc="Ultralight, security-first service mesh for Kubernetes."
 arch=('x86_64' 'aarch64')
 url="https://linkerd.io/"
 license=('Apache')
 depends=('glibc')
-# options=('!debug' '!strip')
+options=('!debug' '!strip')
 provides=('linkerd')
 conflicts=('linkerd-bin')
 
