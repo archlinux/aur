@@ -1,6 +1,6 @@
 pkgbase = hyprshell-bin
 	pkgdesc = A modern GTK4-based window switcher and application launcher for Hyprland (binary release)
-	pkgver = 4.10.4
+	pkgver = 4.10.6
 	pkgrel = 1
 	url = https://github.com/h3rmt/hyprshell/
 	arch = x86_64
@@ -11,11 +11,12 @@ pkgbase = hyprshell-bin
 	depends = gtk4
 	depends = libadwaita
 	depends = zstd
+	optdepends = org.freedesktop.secrets: Store clipboard encryption in the keyring
 	provides = hyprshell
 	conflicts = hyprshell
-	source_x86_64 = https://github.com/H3rmt/hyprshell/releases/download/v4.10.4/hyprshell-4.10.4-x86_64.tar.zst
-	sha256sums_x86_64 = 1f15b343d70b89d58419f94337f0e2649d2770534cb45d6be18a3cfe681353b5
-	source_aarch64 = https://github.com/H3rmt/hyprshell/releases/download/v4.10.4/hyprshell-4.10.4-aarch64.tar.zst
-	sha256sums_aarch64 = d7b517ea092eda4e3344125838696ac8de8302ad87cc16f36129402698d415e4
+	source_x86_64 = https://github.com/H3rmt/hyprshell/releases/download/v4.10.6/hyprshell-4.10.6-x86_64.tar.zst
+	sha256sums_x86_64 = d252bef7905f9c20497158ec5a206ea26d47fc461253c930f1703fae5176e9ba
+	source_aarch64 = https://github.com/H3rmt/hyprshell/releases/download/v4.10.6/hyprshell-4.10.6-aarch64.tar.zst
+	sha256sums_aarch64 = 8e59534bad5e23ab31d0eafddcdeea83eabcdfd8f38b3006520a14f04957c748
 
 pkgname = hyprshell-bin

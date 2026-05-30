@@ -1,6 +1,6 @@
 pkgname=hyprshell-bin
 # x-release-please-start-version
-pkgver=4.10.4
+pkgver=4.10.6
 # x-release-please-end
 pkgrel=1
 pkgdesc="A modern GTK4-based window switcher and application launcher for Hyprland (binary release)"
@@ -9,6 +9,7 @@ conflicts=('hyprshell')
 provides=('hyprshell')
 url="https://github.com/h3rmt/hyprshell/"
 license=("MIT")
+optdepends=('org.freedesktop.secrets: Store clipboard encryption in the keyring')
 depends=('hyprland' 'gtk4-layer-shell' 'gtk4' 'libadwaita' 'zstd')
 source_x86_64=("https://github.com/H3rmt/hyprshell/releases/download/v$pkgver/hyprshell-$pkgver-x86_64.tar.zst")
 source_aarch64=("https://github.com/H3rmt/hyprshell/releases/download/v$pkgver/hyprshell-$pkgver-aarch64.tar.zst")
@@ -30,5 +31,5 @@ package() {
     "$pkgdir/usr/bin/hyprshell" completions fish -p  "$pkgdir/usr/share/fish/vendor_completions.d"
     "$pkgdir/usr/bin/hyprshell" completions zsh -p   "$pkgdir/usr/share/zsh/site-functions"
 }
-sha256sums_x86_64=('1f15b343d70b89d58419f94337f0e2649d2770534cb45d6be18a3cfe681353b5')
-sha256sums_aarch64=('d7b517ea092eda4e3344125838696ac8de8302ad87cc16f36129402698d415e4')
+sha256sums_x86_64=('d252bef7905f9c20497158ec5a206ea26d47fc461253c930f1703fae5176e9ba')
+sha256sums_aarch64=('8e59534bad5e23ab31d0eafddcdeea83eabcdfd8f38b3006520a14f04957c748')
