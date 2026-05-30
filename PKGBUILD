@@ -2,7 +2,7 @@
 
 pkgname=gmpublisher-bin
 _realname=gmpublisher
-pkgver=2.11.2
+pkgver=2.12.1
 pkgrel=1
 pkgdesc="Workshop Publishing Utility for Garry's Mod, written in Rust & Svelte and powered by Tauri"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("${_realname}")
 source=("${_realname}_linux64.zip::https://github.com/WilliamVenner/${_realname}/releases/download/${pkgver}/${_realname}_linux64.zip"
         "LICENSE::https://raw.githubusercontent.com/WilliamVenner/${_realname}/${pkgver}/LICENSE"
         "${_realname}.png::https://raw.githubusercontent.com/WilliamVenner/${_realname}/${pkgver}/src-tauri/icons/128x128.png")
-sha256sums=('f236c7d271f5daa0acea4a68a615400c83d600721a77ed724174d8f4d845a6f8'
+sha256sums=('3557f4117aed96652c76590f5727953868a377b1dee6391cdc0e14decd36252d'
             'd1bfc7a749950924bd5d27dee610ac8933f96badc14a774be796e986b9dcd3aa'
             '5e9fb667ca5095013921970c58b53f984f4ba0836edf6b78876e03861b5f4265')
 
@@ -59,3 +59,9 @@ post_upgrade() {
 post_remove() {
   /usr/bin/gtk-update-icon-cache -q -t applications -f /usr/share/icons/hicolor
 }
+sha256sums=('3557f4117aed96652c76590f5727953868a377b1dee6391cdc0e14decd36252d'
+            'd1bfc7a749950924bd5d27dee610ac8933f96badc14a774be796e986b9dcd3aa'
+            '5e9fb667ca5095013921970c58b53f984f4ba0836edf6b78876e03861b5f4265')
+sha256sums=('0b561aa49c242a583d5bc5c349c465328e1a5aecad6f5a2d1e130d38589b9dfa'
+            'd1bfc7a749950924bd5d27dee610ac8933f96badc14a774be796e986b9dcd3aa'
+            '5e9fb667ca5095013921970c58b53f984f4ba0836edf6b78876e03861b5f4265')
