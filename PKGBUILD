@@ -2,7 +2,7 @@
 # Contributor: masutu <masutu dot arch at gmail dot com>
 
 pkgname=python-pyfluidsynth
-pkgver=1.3.6
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Python bindings for FluidSynth"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
   'python-wheel'
 )
 source=("pyfluidsynth-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b1171f7ec51dc50fb89d34fbcb0a5930230d665df8c3c12afe3c8a011acdc3cbe970663522fae390a24b7b81d9597383700109abd751b818ff0670b2ed8f4c2d')
+sha512sums=('9ac32dc80f1848dd53ade68539c94914103e061202c46898d8cd9185f576e0e19c5b60821ee172089b196db80578d6b798ee09f4be6a3518d171ed1dd0e4ea52')
 
 build() {
 	cd pyfluidsynth-$pkgver
