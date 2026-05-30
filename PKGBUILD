@@ -2,7 +2,7 @@
 # Created with assistance from Claude (Anthropic)
 
 pkgname=iris-yummy-anime
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="GTK4 client for Yummy Anime streaming service"
 arch=('x86_64')
@@ -26,10 +26,10 @@ makedepends=(
 )
 options=('!debug')
 source=(
-  "${pkgname}::git+https://altlinux.space/x1z53/iris.git#tag=${pkgver}"
+  "${pkgname}::git+https://altlinux.space/alt-gnome/iris.git#tag=${pkgver}"
   "libapi-base::git+https://altlinux.space/rirusha/libapi-base.git"
 )
-b2sums=('b1adf76d35a15c734ad24c672f59064af290306c2e7b413b9c843518c2cc32667d18e32d251988ac24934a645c063acad62373f947ef9f6b5e4bed3a298aa519'
+b2sums=('SKIP'
         'SKIP')
 
 prepare() {
