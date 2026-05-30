@@ -9,7 +9,7 @@ license=("MIT")
 depends=("sqlite" "openssl")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Xuepoo/agent-book-translate/archive/v${pkgver}.tar.gz")
-sha256sums=('fccf67e0cdca69d9fc0fa45fc1e3b51cc3237417a961613f1a0602ae0d6d86ee')
+sha256sums=('32a11fbd4a6f7d3989dc561b3d7656facc744360ebfc09ad60a6a0c04c6d3da7')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
