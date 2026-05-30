@@ -2,7 +2,7 @@
 
 pkgname=trae
 pkgver=2.3.30128
-pkgrel=3
+pkgrel=4
 pkgdesc="AI-powered IDE by ByteDance"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
@@ -59,4 +59,8 @@ package() {
     find "${pkgdir}/opt/trae" -name "*.asc" -delete
     find "${pkgdir}/opt/trae" -name "*.bat" -delete
     find "${pkgdir}/opt/trae" -type d -name "rush-logs" -exec rm -rf {} +
+
+    # Remove bundled GCC runtime libraries (conflict with system gcc-libs, breaks ckg indexing)
+    rm -fv "${pkgdir}/opt/trae/resources/app/modules/ckg/binary/libstdc++.so.6"
+    rm -fv "${pkgdir}/opt/trae/resources/app/modules/ckg/binary/libgcc_s.so.1"
 }
