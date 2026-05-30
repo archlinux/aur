@@ -9,7 +9,7 @@ pkgbase = waybar-google-calendar
 	depends = gtk4
 	depends = libadwaita
 	options = !lto
-	source = waybar-google-calendar-0.0.1.tar.gz::https://github.com/pufanyi/waybar-google-calendar/archive/refs/tags/v0.0.1.tar.gz
-	sha256sums = b44542fe42f21be8c2947f77153338298d244ddc3f90ca42b5948d3186c436b4
+	source = waybar-google-calendar-0.0.1-2.tar.gz::https://github.com/pufanyi/waybar-google-calendar/archive/refs/tags/v0.0.1-2.tar.gz
+	sha256sums = e8b3c06b895d3623d5103219bbca8641373f2518e88dbedbf5eaad44e042ca89
 
 pkgname = waybar-google-calendar
