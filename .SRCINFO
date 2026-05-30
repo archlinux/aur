@@ -1,0 +1,23 @@
+pkgbase = brother-dcpt430w
+	pkgdesc = Driver for the Brother DCP-t430w wifi multifuncional printer
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadtop.aspx?c=us_ot&lang=en&prod=dcpt430w_all
+	install = dcpt430w.install
+	arch = x86_64
+	license = GPL, EULA, custom:Brother License
+	depends = a2ps
+	depends = ghostscript
+	depends = cups
+	depends = lib32-glibc
+	optdepends = system-config-printer: A CUPS printer configuration tool and status applet
+	optdepends = sane: scanning support
+	optdepends = sane-airscan: SANE backend for AirScan (eSCL) and WSD document scanners
+	optdepends = brscan5: scanning driver required to make the printer available to sane
+	optdepends = brscan-skey: scankey support if connected via USB
+	source = https://download.brother.com/welcome/dlf106514/dcpt430wpdrv-3.6.1-1.x86_64.rpm
+	source = spool.patch
+	sha256sums = fda5dc3bcb6a3f271fe1a6b7182ce812a46349a6f98014397c0fc6a9afdb9cf3
+	sha256sums = 41754aa2f95eb562a6e298b8426b57ca9dc3b471247bf96fa109dd2b22567e2c
+
+pkgname = brother-dcpt430w
