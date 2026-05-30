@@ -8,7 +8,7 @@
 #   make keywords                 # set AUR search keywords
 
 PKG      := ruroco-client-ui
-KEYWORDS := udp wakeonlan port-knocking remote-command rust gui
+KEYWORDS := port-knocking single-packet-authorization fwknop udp remote-command firewall ssh rust gui
 
 .PHONY: help release push bump checksums srcinfo build lint commit keywords clean
 
