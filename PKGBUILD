@@ -1,7 +1,7 @@
 # Maintainer: Austin Cross <austincross@gmail.com>
 
 pkgname=iplib
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="Grid interpolation library"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('LGPL-3.0-only')
 depends=()
 makedepends=('gcc-fortran' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NOAA-EMC/NCEPLIBS-ip/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('918b2cc425d5f1fa7378346cad2d16ad68b03b575adeb40b8b37a7dc3e876041')
+sha256sums=('c80eab0a28a081a90051257490e4fc801a90f66cb9e2435119379649b4289577')
 
 build() {
   cmake -B build -S "NCEPLIBS-ip-${pkgver}" \
