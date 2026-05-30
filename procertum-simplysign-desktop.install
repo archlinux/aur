@@ -1,0 +1,12 @@
+post_upgrade() {
+	cat <<'EOF'
+==> SimplySign Desktop stores its configuration in ~/SimplySignDesktop.xml.
+    A configuration from an older version can make the new version crash on
+    startup. If SimplySign Desktop no longer starts after this upgrade, refresh
+    the config from the bundled template:
+
+      cp /usr/lib/procertum-simplysign-desktop/SimplySignDesktop.xml ~/SimplySignDesktop.xml
+
+    Your SimplySign login is stored separately and is not affected.
+EOF
+}

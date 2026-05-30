@@ -1,0 +1,5 @@
+[procertum-simplysign-desktop]
+source = "htmlparser"
+url = "https://www.certum.pl/pl/software_version/ssd_linux.plist"
+xpath = "/plist/dict/string"
+is_xml = true
