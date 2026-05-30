@@ -1,7 +1,7 @@
 pkgbase = loongson-gnu-toolchain-bin
 	pkgdesc = loongson gnu toolchain
 	pkgver = 8.3+rc1.6
-	pkgrel = 3
+	pkgrel = 5
 	url = http://ftp.loongnix.cn/toolchain/gcc/release/loongarch/gcc8/
 	install = loongson-gnu-toolchain-bin.install
 	arch = x86_64
