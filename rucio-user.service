@@ -1,0 +1,12 @@
+[Unit]
+Description=Decentralized peer-to-peer file sharing over libp2p, with eMule/Kad2 compatibility
+Documentation=https://github.com/ogarcia/rucio/blob/master/README.md
+After=network.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/ruciod
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

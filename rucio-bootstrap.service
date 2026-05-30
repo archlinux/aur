@@ -1,0 +1,14 @@
+[Unit]
+Description=Decentralized peer-to-peer file sharing - bootstrap node
+Documentation=https://github.com/ogarcia/rucio/blob/master/README.md
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=rucio
+ExecStart=/usr/bin/rucio-bootstrap
+
+[Install]
+WantedBy=multi-user.target

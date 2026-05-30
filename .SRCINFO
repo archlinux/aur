@@ -1,0 +1,41 @@
+pkgbase = rucio
+	pkgdesc = Decentralized peer-to-peer file sharing over libp2p, with eMule/Kad2 compatibility
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ogarcia/rucio
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	makedepends = rust-wasm
+	makedepends = trunk
+	options = !lto
+	source = rucio-0.1.0::git+https://github.com/ogarcia/rucio.git#tag=0.1.0
+	source = rucio-system.service
+	source = rucio-user.service
+	source = rucio-bootstrap.service
+	b2sums = b03706549d5581a6253f0042f90f1ec15f074b188a035fc8b716cb69dbce1a683b6d1b361f3bb160792d6856331c994a28a73f5d5c80a67dd8ec7ead3fe1bc5e
+	b2sums = d2c0ba8ef4047784ef2104ad7a9e61cbc85edf0849ec3c2afab4eb6ebde6799fb5e6099bba825fd3b232a8a09d03854834fa5cb2cc3a027b457b8b336308ab08
+	b2sums = a3c04268a6909af624a572331b021cf1d83621ea2156379739a9c851e54d672a2280a73784e53830163a9aa7a7e4bad7995fb3328d1c41fc509cabede342ccff
+	b2sums = 007be144a9a0526c4a7f3dc3f7056e41d2d4e0ab4075640654df2c29e061a2f475ab3727229f8af11973878b30be6d796d34e218050a150efc9b8a734ffb0741
+
+pkgname = rucio
+	pkgdesc = Decentralized P2P file sharing - complete client (daemon + CLI + web panel + eMule)
+	depends = gcc-libs
+	optdepends = rucio-web: serve the web panel from your own web server instead
+	provides = ruciod
+
+pkgname = rucio-daemon
+	pkgdesc = Decentralized P2P file sharing - stand alone daemon
+	optdepends = nginx: serve via reverse-proxy
+	provides = ruciod
+
+pkgname = rucio-cli
+	pkgdesc = Decentralized P2P file sharing - standalone command-line client
+	depends = gcc-libs
+
+pkgname = rucio-bootstrap
+	pkgdesc = Decentralized P2P file sharing - DHT bootstrap node
+	depends = gcc-libs

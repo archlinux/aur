@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!rucio-bootstrap.service
+!rucio-system.service
+!rucio-user.service
+!.SRCINFO
