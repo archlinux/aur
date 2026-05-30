@@ -1,6 +1,6 @@
 pkgbase = fcitx5-voice-input-git
 	pkgdesc = Fcitx5 addon for voice input via Whisper-compatible speech recognition
-	pkgver = r12.386fefd
+	pkgver = r22.f0bc085
 	pkgrel = 1
 	url = https://github.com/diginatu/fcitx5-voice-input
 	arch = x86_64

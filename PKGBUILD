@@ -1,6 +1,6 @@
 # Maintainer: diginatu <diginatu.510o@gmail.com>
 pkgname=fcitx5-voice-input-git
-pkgver=r12.386fefd
+pkgver=r22.f0bc085
 pkgrel=1
 pkgdesc="Fcitx5 addon for voice input via Whisper-compatible speech recognition"
 arch=('x86_64' 'aarch64')
