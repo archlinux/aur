@@ -52,5 +52,5 @@ package() {
   install -d "$pkgdir/usr/share/wayruler/icons"
 
   install -m644 src/assets/*.svg \
-    "$pkgdir/usr/share/wayruler/icons/"
+    -t "$pkgdir/usr/share/wayruler/icons/"
 }
