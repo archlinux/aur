@@ -1,5 +1,5 @@
 pkgname=waifu
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Tool to fetch and display anime images from nekos.best"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('kitty')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/izeperson/waifu-cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('24ba855baad5d3d9539f63991d6b6f5d9de5cfdd51ab50723644c39ab391f66b')
+sha256sums=('7886f42fce579c93274cbdcd193de1f0f9e2288db9cd8ee54fdc95372a0d54ac')
 
 build() {
   cd "$srcdir/waifu-cli-$pkgver"
