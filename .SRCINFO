@@ -24,7 +24,6 @@ pkgbase = rucio
 pkgname = rucio
 	pkgdesc = Decentralized P2P file sharing - complete client (daemon + CLI + web panel + eMule)
 	depends = gcc-libs
-	optdepends = rucio-web: serve the web panel from your own web server instead
 	provides = ruciod
 
 pkgname = rucio-daemon

@@ -49,7 +49,6 @@ package_rucio() {
   pkgdesc='Decentralized P2P file sharing - complete client (daemon + CLI + web panel + eMule)'
   depends=('gcc-libs')
   provides=('ruciod')
-  optdepends=('rucio-web: serve the web panel from your own web server instead')
 
   cd "${pkgbase}-${pkgver}"
 
