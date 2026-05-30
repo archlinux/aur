@@ -8,7 +8,7 @@ url="https://www.fundtracer.xyz"
 license=('custom')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'glib2' 'cairo' 'pango' 'gcc-libs')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::https://github.com/Deji-Tech/fundtracer-by-dt/releases/download/v${pkgver}/fundtracer-desktop-${pkgver}-x86_64.tar.gz")
-sha256sums=('16d1500f77c4e7bb685e418d7ab7b87d0227b24642a4d8710e3b7b159f6b44c8')
+sha256sums=('a6f8b76c8e7fdfe765fa49d287f37a98abd8b32fea2ad6cff5c33ee292abe98b')
 
 package() {
   install -Dm755 "${srcdir}/fundtracer-desktop-${pkgver}/fundtracer-desktop" "${pkgdir}/usr/bin/fundtracer-desktop"
