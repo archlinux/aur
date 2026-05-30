@@ -2,7 +2,7 @@
 
 pkgname=ruroco-server
 pkgver=0.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc='ruroco server + commander - validates UDP packets and runs configured commands'
 arch=('x86_64')
 url='https://github.com/beac0n/ruroco'
@@ -13,9 +13,11 @@ backup=('etc/ruroco/config.toml')
 install=ruroco-server.install
 options=('!lto')
 source=("ruroco-$pkgver.tar.gz::https://github.com/beac0n/ruroco/archive/refs/tags/v$pkgver.tar.gz"
-        'ruroco.sysusers')
+        'ruroco.sysusers'
+        'ruroco.tmpfiles')
 sha256sums=('3236dc6ccb73af6fc58b8f43f01a32594550a82dddf896554a0be41ce88acfa3'
-            'e0899988bf07d43f878b813c47e510924f1705fa61fc88ff47913c7c5eae2f6f')
+            'e0899988bf07d43f878b813c47e510924f1705fa61fc88ff47913c7c5eae2f6f'
+            'SKIP')
 
 prepare() {
   cd "$srcdir/ruroco-$pkgver"
@@ -48,8 +50,13 @@ package() {
   # creates the `ruroco` system user/group via systemd-sysusers (pacman hook)
   install -Dm644 "$srcdir/ruroco.sysusers" "$pkgdir/usr/lib/sysusers.d/ruroco.conf"
 
+  # chowns /etc/ruroco to the ruroco user via systemd-tmpfiles (pacman hook,
+  # runs after sysusers) so the service can write its keys/blocklist there.
+  install -Dm644 "$srcdir/ruroco.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/ruroco.conf"
+
   # example config - marked as backup() so pacman preserves local edits
-  install -Dm644 config/config.toml "$pkgdir/etc/ruroco/config.toml"
+  # read-only to the ruroco service; root edits it regardless of mode.
+  install -Dm400 config/config.toml "$pkgdir/etc/ruroco/config.toml"
 
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
   install -Dm644 README.md  "$pkgdir/usr/share/doc/$pkgname/README.md"

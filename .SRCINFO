@@ -1,7 +1,7 @@
 pkgbase = ruroco-server
 	pkgdesc = ruroco server + commander - validates UDP packets and runs configured commands
 	pkgver = 0.14.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/beac0n/ruroco
 	install = ruroco-server.install
 	arch = x86_64
@@ -14,7 +14,9 @@ pkgbase = ruroco-server
 	backup = etc/ruroco/config.toml
 	source = ruroco-0.14.1.tar.gz::https://github.com/beac0n/ruroco/archive/refs/tags/v0.14.1.tar.gz
 	source = ruroco.sysusers
+	source = ruroco.tmpfiles
 	sha256sums = 3236dc6ccb73af6fc58b8f43f01a32594550a82dddf896554a0be41ce88acfa3
 	sha256sums = e0899988bf07d43f878b813c47e510924f1705fa61fc88ff47913c7c5eae2f6f
+	sha256sums = SKIP
 
 pkgname = ruroco-server
