@@ -1,0 +1,12 @@
+post_install() {
+  echo ':: ruroco-server installed.'
+  echo '   1. Edit /etc/ruroco/config.toml (set your server IPs and commands).'
+  echo '   2. Generate keys / config with:  ruroco-client wizard   (needs ruroco-client)'
+  echo '   3. Enable the services:'
+  echo '        systemctl enable --now ruroco-commander.service'
+  echo '        systemctl enable --now ruroco.socket'
+}
+
+post_upgrade() {
+  echo ':: Review /etc/ruroco/config.toml against config.toml.pacnew if present.'
+}
