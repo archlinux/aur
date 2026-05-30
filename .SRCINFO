@@ -1,7 +1,7 @@
 pkgbase = eidklient-native
 	pkgdesc = Slovak eID Client - uses system-provided libraries, supports Wayland, …
 	pkgver = 5.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.slovensko.sk/
 	install = eidklient.install
 	arch = i686
@@ -39,3 +39,4 @@ pkgname = eidklient-native
 	depends = xdg-utils
 	optdepends = ccid: Generic USB Smart Card reader support
 	optdepends = disig-web-signer: online certificates update support
+	optdepends = gnome-shell-extension-appindicator: for system tray icons on GNOME

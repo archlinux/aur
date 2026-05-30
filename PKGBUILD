@@ -4,7 +4,7 @@
 _pkgname=eidklient
 pkgname="${_pkgname}-native"
 pkgver=5.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, …"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
@@ -98,6 +98,7 @@ package() {
     optdepends=(
         "ccid: Generic USB Smart Card reader support"
         "disig-web-signer: online certificates update support"
+        "gnome-shell-extension-appindicator: for system tray icons on GNOME"
     )
 
     : "${depends[@]}"
