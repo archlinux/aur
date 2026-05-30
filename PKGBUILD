@@ -33,12 +33,8 @@ provides=('thorium-browser')
 conflicts=('thorium-browser' 'thorium-browser-bin' 'thorium-browser-updated')
 options=('!emptydirs' '!strip' '!debug')
 install="${pkgname}.install"
-source=(
-  "thorium::git+https://github.com/brauliobo/thorium.git#commit=02714fcb63171e9623d3383704fd18928e381071"
-  "https://github.com/brauliobo/thorium/releases/download/M${pkgver}-updated/${_pkgname}-${pkgver}-3-x86_64.pkg.tar.zst"
-)
-sha256sums=('SKIP'
-            '801b462b64bf05bafa81e6b11af65010db694ba1f14020f68b37141d7fc18d00')
+source=("https://github.com/brauliobo/thorium/releases/download/M${pkgver}-updated/${_pkgname}-${pkgver}-3-x86_64.pkg.tar.zst")
+sha256sums=('801b462b64bf05bafa81e6b11af65010db694ba1f14020f68b37141d7fc18d00')
 noextract=("${_pkgname}-${pkgver}-3-x86_64.pkg.tar.zst")
 
 package() {
