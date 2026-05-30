@@ -2,7 +2,7 @@
 
 pkgname=ruroco-server
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='ruroco server + commander - validates UDP packets and runs configured commands'
 arch=('x86_64')
 url='https://github.com/beac0n/ruroco'

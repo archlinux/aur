@@ -5,6 +5,8 @@ post_install() {
   echo '   3. Enable the services:'
   echo '        systemctl enable --now ruroco-commander.service'
   echo '        systemctl enable --now ruroco.socket'
+  echo '      ruroco.service is socket-activated by ruroco.socket: systemd starts'
+  echo '      it automatically on the first UDP packet, so do NOT enable it directly.'
 }
 
 post_upgrade() {
