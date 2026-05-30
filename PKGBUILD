@@ -1,18 +1,21 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
+# Co-Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=sonix-flasher-c-git
 _gitname=SonixFlasherC
-pkgver=2.0.7.r0.gf3ba677
+pkgver=2.0.8.r0.gd94d3e9
 pkgrel=1
 pkgdesc="A CLI-based Flasher for Sonix 24x/26x MCUs."
 arch=('x86_64' 'aarch64')
 url="https://github.com/SonixQMK/SonixFlasherC"
-license=('GPL-3.0')
-depends=('glibc'
-         'hidapi'
-         'libudev.so=1')
+license=('GPL-3.0-only')
+depends=(
+  'glibc'
+  'hidapi'
+  'systemd-libs'
+)
 makedepends=('git')
-source=("git+https://github.com/SonixQMK/SonixFlasherC")
+source=("git+${url}.git")
 provides=("sonix-flasher-c" "sonixflasher")
 conflicts=("sonix-flasher-c" "sonixflasher")
 sha256sums=('SKIP')
