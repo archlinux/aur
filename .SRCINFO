@@ -1,0 +1,19 @@
+pkgbase = bilitools-bin
+	pkgdesc = A cross-platform bilibili toolbox
+	pkgver = 1.4.7
+	pkgrel = 1
+	url = https://github.com/btjawa/BiliTools
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	provides = bilitools=1.4.7
+	conflicts = bilitools
+	options = !debug
+	source_x86_64 = bilitools_1.4.7_amd64.deb::https://github.com/btjawa/BiliTools/releases/download/v1.4.7/bilitools_1.4.7_amd64.deb
+	sha256sums_x86_64 = de521bf923844302622da54080de21c08a168aa911bf60fb0231a3d020e41457
+	source_aarch64 = bilitools_1.4.7_arm64.deb::https://github.com/btjawa/BiliTools/releases/download/v1.4.7/bilitools_1.4.7_arm64.deb
+	sha256sums_aarch64 = b880e162c8a678543fb3f70136742f729ad55216d7d641033ed74c22561a332c
+
+pkgname = bilitools-bin
