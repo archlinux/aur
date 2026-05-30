@@ -1,6 +1,6 @@
 # Maintainer: LurkHub <LurkHub@yandex.ru>
 pkgname=sovet
-pkgver=2.23.1
+pkgver=2.24.0
 pkgrel=1
 pkgdesc="Корпоративная платформа для совместной работы: чат, видеоконференции, задачи, файлы. Аналог Microsoft Teams. Сервер в России."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom')
 depends=('fuse2')
 options=('!strip')
 source_x86_64=("Soviet_${pkgver}_amd64.AppImage::https://updates.sovetchat.ru/downloads/Soviet_${pkgver}_amd64.AppImage")
-sha256sums_x86_64=('c2415e3bfff8cb108ebb640c1f7c31d45deac487faa7de1832a29035c313357d')
+sha256sums_x86_64=('a8bba8928b18ccb3e49ae2bc147b92360c3343f90eb5f3dc0c2015ec388e4956')
 
 prepare() {
     chmod +x "Soviet_${pkgver}_amd64.AppImage"
