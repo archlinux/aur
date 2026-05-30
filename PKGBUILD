@@ -1,7 +1,7 @@
 # Maintainer: Anton Afanasyev <aasoft+aur@pm.me>
 
 pkgname=ringboard
-pkgver=0.16.0
+pkgver=0.16.2
 pkgrel=1
 pkgdesc='Fast, efficient, and composable clipboard manager for Linux'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libglvnd' 'libx11' 'libxcursor' 'libxi' 'libxkbcommon' 'libxkbcommon-x
 makedepends=('rustup')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SUPERCILEX/clipboard-history/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('308f109a760990363b05dc4539b542422c344b25476ea38547fe3b61b2cf5436')
+sha256sums=('35c801688728ff550316476a548907766ca9a38c7c66af4473525b033e43f87c')
 
 prepare() {
   cd "clipboard-history-${pkgver}"
