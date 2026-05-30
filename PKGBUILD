@@ -1,6 +1,6 @@
 # Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=ryzenadj-gtk
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A modern, polished GTK4/Libadwaita graphical wrapper for ryzenadj (AMD power management adjustment tool)."
 arch=('any')
@@ -10,7 +10,7 @@ install=ryzenadj-gtk.install
 depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'ryzenadj')
 optdepends=('ryzen_smu-dkms-git: enhanced hardware monitoring and control')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marleylinux/Ryzenadj-gtk/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=(f908d5beef3517c1f5d1acbc609726b5a9750518f5b2547da734763d5c977f36)
+sha256sums=('aedfb993652fcca535cc970d84160d29f87c6237e85a1d00e9ac1a4156be5ee1')
 
 package() {
   cd "$srcdir/Ryzenadj-"*
@@ -19,6 +19,10 @@ package() {
   install -d "$pkgdir/usr/share/ryzenadj-gtk"
   install -m644 src/*.py "$pkgdir/usr/share/ryzenadj-gtk/"
   chmod 755 "$pkgdir/usr/share/ryzenadj-gtk/app.py"
+
+  # Copy assets to install directory for runtime local search path
+  install -d "$pkgdir/usr/share/ryzenadj-gtk/assets"
+  install -m644 src/assets/* "$pkgdir/usr/share/ryzenadj-gtk/assets/"
 
   # Install Icon (PNG) - 256 and 512 for modern displays
   for size in 256 512; do
@@ -42,6 +46,8 @@ package() {
 %wheel ALL=(ALL) NOPASSWD: /usr/bin/systemctl enable --now ryzenadj-gtk-apply.service
 %wheel ALL=(ALL) NOPASSWD: /usr/bin/systemctl disable --now ryzenadj-gtk-apply.service
 %wheel ALL=(ALL) NOPASSWD: /usr/bin/systemctl is-enabled ryzenadj-gtk-apply.service
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/class/drm/card*/device/pp_od_clk_voltage
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/class/drm/card*/device/power_dpm_force_performance_level
 WRAPPER
   chmod 440 "$pkgdir/etc/sudoers.d/ryzenadj-gtk"
 
