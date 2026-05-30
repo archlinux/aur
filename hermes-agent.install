@@ -8,7 +8,7 @@ post_install() {
  echo " cp -r /opt/$pkgname/skills ~/.hermes/"
  echo " ln -s /opt/$pkgname/scripts/whatsapp-bridge ~/.hermes/whatsapp-bridge"
  echo "==> Add your API keys to ~/.hermes/.env"
- echo "==> Then run 'hermes model' to configure your provider."
+ echo "==> Then run 'hermes setup' to configure your provider and other settings."
  echo "==> Run 'hermes doctor' to verify your setup."
 }
 post_upgrade() {

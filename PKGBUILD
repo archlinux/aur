@@ -6,7 +6,7 @@
 pkgname=hermes-agent
 pkgver=0.15.2
 _tagver=2026.5.29.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
 url="https://github.com/NousResearch/hermes-agent"
@@ -74,9 +74,7 @@ build() {
 
   echo "==> Creating Python venv and installing dependencies..."
   python3.11 -m venv --clear venv || return 1
-  venv/bin/pip install .[all]
-
-  cp -r hermes_cli/dashboard_auth venv/lib/python3.11/site-packages/hermes_cli/
+  venv/bin/pip install -e .[all]
 }
 
 package() {
@@ -87,46 +85,7 @@ package() {
   install -d "$_optdir"
 
   # Copy application files
-  cp -r venv "$_optdir/"
-  cp -r web "$_optdir/"
-  cp -r scripts "$_optdir/"
-  cp -r locales "$_optdir/"
-  cp -r plugins "$_optdir/"
-  cp -r optional-mcps "$_optdir/"
-  cp -r optional-skills "$_optdir/"
-  cp -r plans "$_optdir/"
-
-  # The TUI launcher uses PROJECT_ROOT/ui-tui, where PROJECT_ROOT is the venv's
-  # site-packages directory. Put the prebuilt ui-tui tree there so hermes --tui does
-  # not try to npm-install from a missing directory at runtime.
-  if [ -d "ui-tui" ]; then
-    _site_packages="$(find "$_optdir/venv/lib" -type d -name site-packages -print -quit)"
-    install -d "$_site_packages"
-    cp -a ui-tui "$_site_packages/"
-  fi
-
-  # Copy node_modules if present (kept alongside app for same path)
-  if [ -d "node_modules" ]; then
-    cp -r node_modules "$_optdir/"
-  fi
-
-  # Install optional submodule if present
-  if [ -d "tinker-atropos" ]; then
-    cp -r tinker-atropos "$_optdir/"
-  fi
-
-  # Install skills directory if present
-  if [ -d "skills" ]; then
-    cp -r skills "$_optdir/"
-  fi
-
-  # Install configuration examples
-  [ -f "cli-config.yaml.example" ] && install -Dm644 cli-config.yaml.example "$_optdir/cli-config.yaml.example"
-  [ -f ".env.example" ] && install -Dm644 .env.example "$_optdir/.env.example"
-
-
-  # Install license to /opt/$pkgname
-  install -Dm644 LICENSE "$_optdir/LICENSE"
+  rsync -a --exclude='__pycache__' --exclude='.git' . "$_optdir/"
 
   # Create simple wrapper script in /usr/bin.
   # Set HERMES_TUI_DIR so the launcher uses the prebuilt bundle without
@@ -135,8 +94,9 @@ package() {
   install -d "$pkgdir/usr/bin"
   {
     echo "#!/bin/bash"
-    echo "export HERMES_TUI_DIR=/opt/$pkgname/venv/lib/\$(/opt/$pkgname/venv/bin/python3.11 -c 'import sys; print(\"python{}.{}\".format(*sys.version_info[:2]))')/site-packages/ui-tui"
-    echo "exec /opt/$pkgname/venv/bin/python3.11 -m hermes_cli.main" '"$@"'
+    echo "unset PYTHONPATH"
+    echo "unset PYTHONHOME"
+    echo "exec /opt/$pkgname/venv/bin/hermes" '"$@"'
   } > "$pkgdir/usr/bin/hermes"
 
   chmod 755 "$pkgdir/usr/bin/hermes"
