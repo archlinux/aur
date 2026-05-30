@@ -1,0 +1,23 @@
+pkgbase = hyperfocusdsp-niner-bin
+	pkgdesc = Monophonic analogue kick drum synthesizer — VST3 plugin (prebuilt)
+	pkgver = 0.7.9
+	pkgrel = 1
+	url = https://github.com/hyperfocusdsp/niner
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = libx11
+	depends = libxext
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxcursor
+	depends = libglvnd
+	depends = freetype2
+	provides = niner
+	conflicts = niner
+	source = hyperfocusdsp-niner-bin-0.7.9.tar.gz::https://github.com/hyperfocusdsp/niner/releases/download/v0.7.9/niner-linux-x86_64.tar.gz
+	sha256sums = e91cb82045ba078ebdc98ce54632f2a2d54cffc9f6d2e3bbb2b317f2771186f2
+
+pkgname = hyperfocusdsp-niner-bin
