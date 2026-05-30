@@ -1,7 +1,7 @@
 # Maintainer: Fanyi Pu <pufanyi@gmail.com>
 pkgname=waybar-google-calendar
-pkgver=0.0.1
-pkgrel=4
+pkgver=0.0.2
+pkgrel=1
 pkgdesc='GTK4/Relm4 Google Calendar popup for Waybar'
 arch=('x86_64')
 url='https://github.com/pufanyi/waybar-google-calendar'
@@ -10,7 +10,7 @@ depends=('gtk4' 'libadwaita')
 makedepends=('cargo')
 _source_tag="v$pkgver-$pkgrel"
 source=("$pkgname-${_source_tag#v}.tar.gz::$url/archive/refs/tags/$_source_tag.tar.gz")
-sha256sums=('eac41603df8f3570a4092868edace0256dd519e1f6780c7f0ebbc1420b3a5dc9')
+sha256sums=('597f2152eea5c0b358668fcdfa2f4dbdbc12fd27056aa43a5b34ec356fd0d782')
 options=('!lto')
 
 prepare() {
