@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Robrix
+Comment=A Matrix client written in Rust using Makepad UI toolkit.
+Categories=Network;Chat;InstantMessaging;
+Exec=robrix
+Icon=robrix
+Terminal=false
+StartupWMClass=robrix
