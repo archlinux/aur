@@ -1,6 +1,6 @@
 pkgbase = tapauth
 	pkgdesc = Local smartphone-based authentication framework engine
-	pkgver = 0.3.8
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/lolle2000la/tapauth
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tapauth
 	makedepends = protobuf
 	depends = dbus
 	depends = pam
-	source = tapauth-0.3.8.tar.gz::https://github.com/lolle2000la/tapauth/archive/refs/tags/v0.3.8.tar.gz
-	sha256sums = 8efb9aa95f6377f08e17ab2fd2b30e169188aff55d11bf6a257607b27532cf31
+	source = tapauth-0.4.0.tar.gz::https://github.com/lolle2000la/tapauth/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 37143e8f904a31e101078f0e9364b7ffbc7f451ad9f9e2c83bd37cdc302cb5d6
 
 pkgname = tapauth
