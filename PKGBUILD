@@ -4,13 +4,13 @@
 # pkgver is set to 5.0.0 is replaced in the update-aur.sh script
 
 pkgname=system-bridge
-pkgver=5.5.0
+pkgver=5.6.0
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
 makedepends=('git' 'mise')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.5.0.tar.gz")
-sha256sums=('0f5a87aa655e88e8c6d62d075748ea754c7ffbca0741d7b8874c00117779235b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.6.0.tar.gz")
+sha256sums=('ae2619653d8599a0db7ed1057d075de8de098ebcbb74f6b725dd4ddbc59c7813')
 conflicts=('system-bridge-git' 'system-bridge-git-debug')
 
 arch=('x86_64')
@@ -19,6 +19,7 @@ license=('Apache-2.0')
 keywords=('system-bridge' 'automation' 'home-assistant' 'api' 'websocket')
 depends=('libx11' 'libxtst' 'libxkbcommon' 'libxkbcommon-x11')
 provides=('system-bridge')
+options=('!strip')
 
 build() {
   ver="$pkgver"
@@ -35,6 +36,7 @@ build() {
   mise install
   mise exec -C web-client -- pnpm install --frozen-lockfile
   mise exec -- make build_web_client
+  mise exec -- make build_tui
   mise exec -- go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${pkgver}'" -o "system-bridge" .
 }
 
@@ -55,6 +57,7 @@ package() {
   ver="${ver/.rc./-rc.}"
   cd "${srcdir}/${pkgname}-${ver}"
   install -Dm755 system-bridge "$pkgdir/usr/bin/system-bridge"
+  install -Dm755 system-bridge-tui "$pkgdir/usr/bin/system-bridge-tui"
   install -Dm644 .scripts/linux/system-bridge.desktop "$pkgdir/usr/share/applications/system-bridge.desktop"
   install -Dm644 .resources/system-bridge-dimmed.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/system-bridge.svg"
   install -Dm644 .resources/system-bridge-dimmed-16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/system-bridge.png"
