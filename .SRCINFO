@@ -1,7 +1,7 @@
 pkgbase = smosummary
 	pkgdesc = A Sum of Best (SoB) calculator and Stopwatch for Super Mario Odyssey speedrunners
 	pkgver = 4.0.1
-	pkgrel = 3
+	pkgrel = 4
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
@@ -11,7 +11,7 @@ pkgbase = smosummary
 	provides = smosummary
 	conflicts = smosummary-bin
 	conflicts = smosummary-git
-	source = smosummary::git+https://github.com/aray4iv3/smosummary.git
+	source = git+https://github.com/aray4iv3/smosummary.git#branch=master
 	sha256sums = SKIP
 
 pkgname = smosummary
