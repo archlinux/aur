@@ -1,6 +1,6 @@
 # Maintainer: Celeste <celdaemon at voidgroup dot net>
 pkgname=fabricmc-cli-git
-pkgver=r206.cc276f1c
+pkgver=r208.f56ecc4
 pkgrel=1
 pkgdesc="Fabric modding CLI utility"
 arch=('any')
@@ -11,12 +11,12 @@ makedepends=('git' 'npm')
 provides=("fabricmc-cli=$pkgver")
 conflicts=('fabricmc-cli')
 source=(
-    'fabricmc::git+https://github.com/FabricMC/fabricmc.net.git'
+    'fabricmc::git+https://github.com/CelDaemon/fabricmc.net.git'
     'no-upgrade.patch'
 )
 sha256sums=(
     'SKIP'
-    'ba97033b90e7fe01775c3edcc69de438a6a97fe400467f18f4a0463b9dfb47a7'
+    'f6b7bbe83143362422439d7f669b365ce5e36e011423c544191bea4fdb39e9d3'
 )
 
 pkgver() {

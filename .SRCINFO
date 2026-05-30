@@ -1,6 +1,6 @@
 pkgbase = fabricmc-cli-git
 	pkgdesc = Fabric modding CLI utility
-	pkgver = r206.cc276f1c
+	pkgver = r208.f56ecc4
 	pkgrel = 1
 	url = https://github.com/FabricMC/fabricmc.net/tree/main/cli
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = fabricmc-cli-git
 	makedepends = git
 	makedepends = npm
 	depends = deno
-	provides = fabricmc-cli=r206.cc276f1c
+	provides = fabricmc-cli=r208.f56ecc4
 	conflicts = fabricmc-cli
-	source = fabricmc::git+https://github.com/FabricMC/fabricmc.net.git
+	source = fabricmc::git+https://github.com/CelDaemon/fabricmc.net.git
 	source = no-upgrade.patch
 	sha256sums = SKIP
-	sha256sums = ba97033b90e7fe01775c3edcc69de438a6a97fe400467f18f4a0463b9dfb47a7
+	sha256sums = f6b7bbe83143362422439d7f669b365ce5e36e011423c544191bea4fdb39e9d3
 
 pkgname = fabricmc-cli-git

@@ -1,6 +1,6 @@
 diff --git a/cli/commands/upgrade.ts b/cli/commands/upgrade.ts
 deleted file mode 100644
-index 279f073..0000000
+index 279f073e..00000000
 --- a/cli/commands/upgrade.ts
 +++ /dev/null
 @@ -1,82 +0,0 @@
@@ -87,22 +87,14 @@ index 279f073..0000000
 -  }
 -}
 diff --git a/cli/main.ts b/cli/main.ts
-index 616788c..641aadb 100755
+index be6e8dbd..2f8c3976 100755
 --- a/cli/main.ts
 +++ b/cli/main.ts
-@@ -7,7 +7,6 @@ import {
-   CompletionsCommand,
- } from "https://deno.land/x/cliffy@v0.25.7/command/mod.ts";
- import { initCommand } from "./commands/init.ts";
--import { upgradeCommand } from "./commands/upgrade.ts";
- 
- // Replaced by esbuild.
- declare let __VERSION__: string;
-@@ -24,7 +23,6 @@ if (import.meta.main) {
+@@ -25,7 +25,6 @@ if (import.meta.main) {
        Deno.exit(0);
      })
      .command("init", initCommand())
 -    .command("upgrade", upgradeCommand())
+     .command("versions", versionsCommand())
      .command("completions", new CompletionsCommand());
  
-   await cmd.parse();
