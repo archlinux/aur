@@ -1,0 +1,165 @@
+diff --git a/sca2d/messages.py b/sca2d/messages.py
+index 08270e5..7664f62 100644
+--- a/sca2d/messages.py
++++ b/sca2d/messages.py
+@@ -6,6 +6,7 @@ import hashlib
+ from dataclasses import dataclass
+ import logging
+ from colorama import Fore, Back, Style
++from sca2d.utilities import get_meta
+ 
+ 
+ def gitlab_summary(messages):
+@@ -162,7 +163,7 @@ class Message:
+         The line in the code where the a check raised this message.
+         """
+ 
+-        return self.tree.line
++        return get_meta(self.tree, "line")
+ 
+     @property
+     def column(self):
+@@ -170,7 +171,7 @@ class Message:
+         The column on Message.line of the code where the a check raised this message.
+         """
+ 
+-        return self.tree.column
++        return get_meta(self.tree, "column")
+ 
+     @property
+     def raw_message(self):
+diff --git a/sca2d/outerscope.py b/sca2d/outerscope.py
+index df93160..3fa453e 100644
+--- a/sca2d/outerscope.py
++++ b/sca2d/outerscope.py
+@@ -19,7 +19,7 @@ from sca2d.scadclasses import (
+ from sca2d.messages import Message
+ from sca2d.definitions import SCAD_VARS, SCAD_MODS, SCAD_FUNCS, CustomArgDef
+ from sca2d.patterns import GLOBAL_PATTERN
+-from sca2d.utilities import SCAD_BLOCK_REGEX, VALID_EXAMPLE_CUSTOMISERS
++from sca2d.utilities import SCAD_BLOCK_REGEX, VALID_EXAMPLE_CUSTOMISERS, get_meta
+ 
+ DOCSTRING_REGEX = re.compile(r"^(\s*)\/\*(.*?)\*\/", re.DOTALL)
+ 
+@@ -90,7 +90,7 @@ class OuterScope(ScopeContents):
+     def definitions(self):
+         """All module and function definitions."""
+         defs = self._defined_modules + self._defined_functions
+-        defs.sort(key=lambda obj: obj.tree.line)
++        defs.sort(key=lambda obj: get_meta(obj.tree, "line"))
+         return defs
+ 
+     @property
+@@ -152,12 +152,18 @@ class OuterScope(ScopeContents):
+                 end_of_last = None
+             else:
+                 prev_tree = self.tree.children[def_index - 1]
+-                end_of_last = [prev_tree.end_line, prev_tree.end_column]
++                end_of_last = [
++                    get_meta(prev_tree, "end_line"),
++                    get_meta(prev_tree, "end_column"),
++                ]
+ 
+             code_before = utilities.get_text_range(
+                 self.scad_code,
+                 end_of_last,
+-                [definition.tree.line, definition.tree.column],
++                [
++                    get_meta(definition.tree, "line"),
++                    get_meta(definition.tree, "column"),
++                ],
+             )
+             if not code_before:
+                 # No code before so no docstring.
+@@ -235,7 +241,7 @@ class OuterScope(ScopeContents):
+     def _check_definition_leading_whitespace(self):
+         """Top level module and function definitions should start on column 1."""
+         for definition in self._defined_modules + self._defined_functions:
+-            if definition.tree.column != 1:
++            if get_meta(definition.tree, "column") != 1:
+                 self._record_message("I0007", definition.tree)
+ 
+     def _printed_var_lists(self, indent=2, this_indent=0):
+diff --git a/sca2d/scadclasses.py b/sca2d/scadclasses.py
+index 94a4d0e..43bdba3 100644
+--- a/sca2d/scadclasses.py
++++ b/sca2d/scadclasses.py
+@@ -7,6 +7,8 @@ from __future__ import annotations
+ from dataclasses import dataclass
+ from lark import Tree, Token
+ from sca2d.definitions import CustomArgDef
++# Avoid circular imports by importing utilities instead of in definitions where it used
++from sca2d import utilities
+ 
+ 
+ class DummyTree:
+@@ -234,8 +236,14 @@ class ModuleCall:
+         """Return boolean. True if module call has an implicit
+         scope. i.e. has a scope not defined with braces."""
+         if not self.is_terminated_call:
+-            start = [self.scope.tree.line, self.scope.tree.column]
+-            end = [self.scope.tree.end_line, self.scope.tree.end_column]
++            start = [
++                utilities.get_meta(self.scope.tree, "line"),
++                utilities.get_meta(self.scope.tree, "column"),
++            ]
++            end = [
++                utilities.get_meta(self.scope.tree, "end_line"),
++                utilities.get_meta(self.scope.tree, "end_column"),
++            ]
+             scope_text = self.scope.text_range(start, end)
+             return not scope_text.startswith("{")
+         return False
+diff --git a/sca2d/scope.py b/sca2d/scope.py
+index a01301d..eb8fa21 100644
+--- a/sca2d/scope.py
++++ b/sca2d/scope.py
+@@ -825,10 +825,10 @@ class IfExprScope(ExprScope):
+         if_chosen_expr = self._tree.children[1]
+         self._parse_expression(conditional)
+         self._parse_expression(if_chosen_expr)
+-        if len(self._tree.children) > 2:
++        if len(self._tree.children) > 2 and self._tree.children[2] is not None:
+             # If the scope is longer than 2 elements it has an else. Element 2 is just
+             # the `else` token. So look at element [3] for the else scope.
+-            if len(self._tree.children) == 3:
++            if len(self._tree.children) == 3 or self._tree.children[3] is None:
+                 self._record_message("E3004", self._tree.children[2])
+                 return
+             scope = ElseExprScope(self._tree.children[3], self)
+diff --git a/sca2d/utilities.py b/sca2d/utilities.py
+index 76ff858..081bd54 100644
+--- a/sca2d/utilities.py
++++ b/sca2d/utilities.py
+@@ -209,7 +209,7 @@ def get_all_matching_tokens(tree, token, exclude_trees=None):
+     for child in tree.children:
+         if isinstance(child, Tree):
+             tokens += get_all_matching_tokens(child, token, exclude_trees=exclude_trees)
+-        else:
++        elif child is not None:
+             if child.type == token:
+                 tokens.append(child)
+     return tokens
+@@ -309,10 +309,22 @@ def get_text_range(text, start, end):
+     return "\n".join(lines)
+ 
+ 
++def get_meta(tree, attribute):
++    """
++    Get a meta attribute (like line or column) from a Lark Tree object.
++    Handles compatibility between newer lark versions (e.g. tree.meta.line)
++    and older versions (e.g. tree.line).
++    """
++    obj = getattr(tree, "meta", tree)
++    return getattr(obj, attribute)
++
++
+ def get_text_from_tree(source, tree):
+     "Return the text for a tree."
+     return get_text_range(
+-        source, (tree.line, tree.column), (tree.end_line, tree.end_column)
++        source,
++        (get_meta(tree, "line"), get_meta(tree, "column")),
++        (get_meta(tree, "end_line"), get_meta(tree, "end_column")),
+     )
+ 
