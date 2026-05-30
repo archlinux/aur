@@ -1,0 +1,16 @@
+pkgbase = icbm
+	pkgdesc = It's a ClipBoard Manager! For wlroots-based wayland WMs.
+	pkgver = v0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/pheenty/icbm
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = cliphist
+	depends = wtype
+	depends = wl-clipboard
+	source = git+https://codeberg.org/pheenty/icbm#tag=v0.1.0
+	md5sums = SKIP
+
+pkgname = icbm
