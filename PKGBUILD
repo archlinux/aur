@@ -25,7 +25,7 @@ optdepends=(
 options=('!strip')
 install="${pkgname}.install"
 source=("Arbit-linux-${pkgver}.zip::https://donutsdelivery.online/download-arbit/files/Arbit-linux.zip")
-sha256sums=('af86b95b5238a4b3692b76ddf401ae2dfa119d714b4a6107d3788b0d043f81d5')
+sha256sums=('59ef62a9f14e7d64262d9af1c4c1ea1b51f4997a6474e7ca1eae5be0b9490970')
 
 package() {
   install -dm755 "${pkgdir}/opt/arbit"
