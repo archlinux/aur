@@ -1,7 +1,7 @@
 # Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=ryzenadj-gtk
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, polished GTK4/Libadwaita graphical wrapper for ryzenadj (AMD power management adjustment tool)."
 arch=('any')
 url="https://github.com/marleylinux/Ryzenadj-gtk"
@@ -37,7 +37,7 @@ package() {
   install -Dm644 "ryzenadj-gtk-apply.service" "$pkgdir/usr/lib/systemd/system/ryzenadj-gtk-apply.service"
 
   # Install sudoers rules
-  install -d "$pkgdir/etc/sudoers.d"
+  install -d -m750 "$pkgdir/etc/sudoers.d"
   cat <<WRAPPER > "$pkgdir/etc/sudoers.d/ryzenadj-gtk"
 %wheel ALL=(ALL) NOPASSWD: /usr/bin/ryzenadj
 %wheel ALL=(ALL) NOPASSWD: /usr/local/bin/ryzenadj
