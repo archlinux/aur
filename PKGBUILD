@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
 license=('custom')
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader')
-makedepends=('patchelf' 'gcc' 'libjxl' 'librav1e' 'svt-av1')
+makedepends=('patchelf' 'gcc' 'libjxl' 'rav1e' 'svt-av1')
 checkdepends=('gmock')
 optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
 	'discord-game-sdk: Enable rich presence in Discord desktop client.')
