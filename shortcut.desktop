@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=DISK Commander
+Comment=Disk image viewer/editor for retro computers
+GenericName=Disk Image Tool
+Exec=disk-commander-bin %F
+TryExec=disk-commander-bin
+Type=Application
+Icon=disk-commander-bin
+Categories=Utility;System;FileTools;
+StartupWMClass=DISKCommander
