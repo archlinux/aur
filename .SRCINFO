@@ -1,6 +1,6 @@
 pkgbase = openring-rs-bin
 	pkgdesc = A tool for generating a webring from Atom/RSS feeds, written in Rust (prebuilt binary)
-	pkgver = 0.5.11
+	pkgver = 0.5.12
 	pkgrel = 1
 	url = https://github.com/lukehsiao/openring-rs
 	arch = x86_64
@@ -9,16 +9,16 @@ pkgbase = openring-rs-bin
 	license = BlueOak-1.0.0
 	depends = gcc-libs
 	provides = openring
-	provides = openring-rs=0.5.11
+	provides = openring-rs=0.5.12
 	conflicts = openring
 	conflicts = openring-rs
-	source = openring-rs-0.5.11.tar.gz::https://github.com/lukehsiao/openring-rs/archive/v0.5.11.tar.gz
-	sha256sums = 3003f36e73dc20dccd4c466725f746c6ae1319f959e28091bd036eb8cc41e70c
-	source_x86_64 = https://github.com/lukehsiao/openring-rs/releases/download/v0.5.11/openring-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = eb8ffe892f444eb05791472045ea6052ebba7607c8be9d36b9b0ffa5a805baeb
-	source_aarch64 = https://github.com/lukehsiao/openring-rs/releases/download/v0.5.11/openring-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = fc77ff553e4792372bd573c306ec15dfdb8b8a8a21d4c957bc3c9cad4f8aa3ba
-	source_armv7h = https://github.com/lukehsiao/openring-rs/releases/download/v0.5.11/openring-armv7-unknown-linux-gnueabihf.tar.gz
-	sha256sums_armv7h = d7f6066a0f7582988a00fe55c506b06e9b633f1aff3a7cba18c1bc608fc66ec0
+	source = openring-rs-0.5.12.tar.gz::https://github.com/lukehsiao/openring-rs/archive/v0.5.12.tar.gz
+	sha256sums = c356715f79506ae807374da7e2620b2312a59cd3914263ef79573fdc428e6e2f
+	source_x86_64 = https://github.com/lukehsiao/openring-rs/releases/download/v0.5.12/openring-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1eb4316566e775d6cc9e867e4c764c49e0d24c6e2266a32687ed4085cf1a15c6
+	source_aarch64 = https://github.com/lukehsiao/openring-rs/releases/download/v0.5.12/openring-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = aab858f24704c27cb7c4a589dde7b59ef83e3d75962b66c7400e64aa21c39b35
+	source_armv7h = https://github.com/lukehsiao/openring-rs/releases/download/v0.5.12/openring-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = 7d436117a347cde5332db9d3a500a22de810d5a0f2145e9e9a624626da0cdfda
 
 pkgname = openring-rs-bin
