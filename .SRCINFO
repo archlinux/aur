@@ -1,15 +1,14 @@
 pkgbase = datawarrior
 	pkgdesc = Open-source data visualization and analysis program with embedded chemical intelligence
-	pkgver = 5.5.0
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = http://www.openmolecules.org/datawarrior/index.html
 	arch = any
 	license = GPL
-	depends = java-runtime>=8
+	depends = java-openjdk
 	depends = java-openjfx
 	depends = hicolor-icon-theme
-	source = https://openmolecules.org/datawarrior/datawarrior550_linux.tar.gz
-	md5sums = 1feb7bff2ad7129ac677973186436ee8
+	source = https://openmolecules.org/datawarrior/datawarrior610.tar.gz
+	md5sums = 8141e32024a61ca144e238f3d00ca2d6
 
 pkgname = datawarrior
-
