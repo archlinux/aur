@@ -1,6 +1,6 @@
 pkgbase = mangolib-bin
 	pkgdesc = Music library manager, downloader, and iPod sync tool
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/mmrmagno/mangolib
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = mangolib-bin
 	depends = rsync
 	provides = mangolib
 	conflicts = mangolib
-	source_x86_64 = mangolib::https://github.com/mmrmagno/mangolib/releases/download/v0.1.0/mangolib-linux-amd64
-	sha256sums_x86_64 = e43e299e099f81139ffd15c5346ef88aba77dbe78331b181bbc2a639836e2c3f
-	source_aarch64 = mangolib::https://github.com/mmrmagno/mangolib/releases/download/v0.1.0/mangolib-linux-arm64
-	sha256sums_aarch64 = f92207140e72d878d32090cda4453f462198eca0cca3c7463ac4a3ae95be3429
+	source_x86_64 = mangolib::https://github.com/mmrmagno/mangolib/releases/download/v0.1.1/mangolib-linux-amd64
+	sha256sums_x86_64 = 79e75bd85b8c98c95dcc32a2931a637fc0e2e111c83ce11a9acb247532298519
+	source_aarch64 = mangolib::https://github.com/mmrmagno/mangolib/releases/download/v0.1.1/mangolib-linux-arm64
+	sha256sums_aarch64 = 2ad7dfcc33c5ff6779c92ef9015446cef267684a52cc2c2231c6a494664d1468
 
 pkgname = mangolib-bin
