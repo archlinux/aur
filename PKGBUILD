@@ -2,7 +2,7 @@
 
 _pkgname=hyprlogin
 pkgname=hyprlogin-git
-pkgver=0.2.0
+pkgver=0.0.0.r431.254a6a1
 pkgrel=1
 pkgdesc='Work-in-progress greetd greeter forked from hyprlock'
 arch=('x86_64')

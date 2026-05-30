@@ -1,6 +1,6 @@
 pkgbase = hyprlogin-git
 	pkgdesc = Work-in-progress greetd greeter forked from hyprlock
-	pkgver = 0.2.0
+	pkgver = 0.0.0.r431.254a6a1
 	pkgrel = 1
 	url = https://github.com/AuthenticSm1les/hyprlogin
 	arch = x86_64
