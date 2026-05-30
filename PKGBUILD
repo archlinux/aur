@@ -1,7 +1,7 @@
 # Maintainer: gilcu3
 _pkgname=ctranslate2
 pkgname=python-$_pkgname-bin
-pkgver=4.7.1
+pkgver=4.7.2
 pkgrel=1
 pkgdesc="CTranslate2 is a C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64' 'aarch64')
@@ -22,5 +22,5 @@ _wheel_name=${_pkgname//-/_}-$pkgver-$_py-${_py}-manylinux_2_27_${arch}.manylinu
 package() {
     python -m installer --destdir="$pkgdir" ${_wheel_name}
 }
-sha256sums_x86_64=('24c0482c51726430fb83724451921c0e539d769c8618dcfd46b1645e7f75960d')
-sha256sums_aarch64=('1aa6796edcc3c8d163c9e39c429d50076d266d68980fed9d1b2443f617c67e9e')
+sha256sums_x86_64=('54392ef0f1353c8b339640ca1a342761258ea3c58e744e91562d225dc5f40ec4')
+sha256sums_aarch64=('05127c6f04de072fba6e6e6e012f7c9265cd65cb1ad19420b861d23fb1e62e90')
