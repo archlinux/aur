@@ -8,6 +8,8 @@ arch=(x86_64)
 url="https://support.certum.eu/en/software/${pkgname}/"
 license=("LicenseRef-${pkgname}-software-license")
 depends=("gcc-libs" "java-runtime>=23" "pcsclite")
+optdepends=("ccid: USB CCID smart-card reader support"
+            "opensc: PKCS#11 support for additional smart cards")
 source=(
 	"https://files.certum.eu/software/SimplySignDesktop/Linux-Ubuntu/${_fullver}/SimplySignDesktop-${_fullver}-x86_64-prod-ubuntu.bin"
 )

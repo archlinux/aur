@@ -8,6 +8,8 @@ pkgbase = procertum-smartsign
 	depends = gcc-libs
 	depends = java-runtime>=23
 	depends = pcsclite
+	optdepends = ccid: USB CCID smart-card reader support
+	optdepends = opensc: PKCS#11 support for additional smart cards
 	source = https://files.certum.eu/software/SimplySignDesktop/Linux-Ubuntu/2.9.12-9.3.4.0/SimplySignDesktop-2.9.12-9.3.4.0-x86_64-prod-ubuntu.bin
 	md5sums = e1e2d2d2e28404b939b54f4d3e376495
 
