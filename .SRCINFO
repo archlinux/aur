@@ -1,6 +1,6 @@
 pkgbase = swagsh
 	pkgdesc = A sleek, high-performance Linux shell built in Rust for speed and reliability.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/takashialpha/swagsh
 	install = swagsh.install
@@ -12,7 +12,7 @@ pkgbase = swagsh
 	depends = libgcc
 	provides = swagsh
 	conflicts = swagsh
-	source_x86_64 = swagsh-x86_64-0.6.0.tgz::https://github.com/takashialpha/swagsh/archive/v0.6.0.tar.gz
-	sha256sums_x86_64 = 99b2cbcfa4bcfe9bfadf90fb7a6ee0cc5a075c97aefa76eda3bc80e3f3d6e1eb
+	source_x86_64 = swagsh-x86_64-0.7.0.tgz::https://github.com/takashialpha/swagsh/archive/v0.7.0.tar.gz
+	sha256sums_x86_64 = b9b145f6f87ed8dcf980cf1a49a1544898398fa635ff954d62eaf829117b32a8
 
 pkgname = swagsh
