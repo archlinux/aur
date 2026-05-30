@@ -4,7 +4,7 @@ pkgname=undertalemodtool-avalonia-bin
 _pkgname=undertalemodtool-avalonia
 
 pkgver=2026.05.30
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 
 pkgdesc="The rewrite of UndertaleModTool with a cross-platform framework Avalonia"
@@ -17,14 +17,12 @@ options=("!strip" "!debug")
 
 source=(
   "${_pkgname}-${pkgver}.zip::https://nightly.link/luizzeroxis/UndertaleModTool/workflows/publish_gui_avalonia/avalonia/GUI-ubuntu-latest-Release-isBundled-true-isSingleFile-false.zip"
-  "${_pkgname}.sh"
   "${_pkgname}.desktop"
   "gamemaker-data.xml"
   "icon.png"
   )
 sha256sums=(
   '8489221fa8502b7904a8e572fdbd35a5633d976328a7ff54c2ddb4ee89f1ad86'
-  '706b5653445f333ada38279ebd21e4f14439e9eb2bcce21ce9cae13230ceaaf0'
   'efdd09628785b8d27cda3a0d9ef434ae8435041a199f12b7be39f697297a84c0'
   '64c7b9ab34a2c519f99533b85a6ff8b4a50710ec6ee93024f3b239493dc9d61e'
   '4f501b7495960a291dfaa3a5c7b87b529170c47447c365d2407d1d317d97c51f'
@@ -43,8 +41,9 @@ package() {
   # copy of the program files
   cp -r --preserve=mode "${_pkgname}-${pkgver}" "$pkgdir/opt/${_pkgname}"
 
-  # Launcher script
-  install -Dm755 "${_pkgname}.sh" "$pkgdir/usr/bin/${_pkgname}"
+  # Linking the desktop in the path
+  mkdir -p "$pkgdir/usr/bin"
+  ln -s /opt/undertalemodtool-avalonia/UndertaleModToolAvalonia.Desktop "$pkgdir/usr/bin/${_pkgname}"
 
   # Desktop file
   install -Dm644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
