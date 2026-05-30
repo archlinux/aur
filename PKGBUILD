@@ -1,6 +1,6 @@
 # Contributor: tee < teeaur at duck dot com >
 pkgname=wazero-bin
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='wazero: the zero dependency WebAssembly runtime for Go developers'
 arch=(x86_64 aarch64)
@@ -10,8 +10,8 @@ provides=('wazero')
 conflicts=('wazero')
 source_x86_64=("$url/releases/download/v$pkgver/wazero_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/wazero_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('cb61ba01f493f889180e7a79b1683313dc5fdabf7e63a62fee7154085ffac9f5')
-sha256sums_aarch64=('59951f6060aed1e35c7260b96d88b0e77db3fb44744ecab045d572a1617c1b1a')
+sha256sums_x86_64=('88019896950340e8839b94af0510b248c3400d8d8f4a9b335dcaad93ac0484ff')
+sha256sums_aarch64=('b5e5105a8bc4817a117e52402713f0628ebe13ecec5c4e63d541c430ca9bf259')
 
 package() {
     install -Dm755 wazero -t "$pkgdir/usr/bin"
