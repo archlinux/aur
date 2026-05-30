@@ -1,32 +1,38 @@
-# Author:     David Rosca <nowrep@gmail.com>
+# Author:         David Rosca <nowrep@gmail.com>
+# Maintainer:  Martin Stibor <martin.von.reichenberg@gmail.com>
 
-_pkgbase=dualsensectl
-pkgbase=${_pkgbase}-git
 pkgname=dualsensectl-git
-pkgdesc='Tool for controlling PS5 DualSense controller'
+pkgdesc='Tool for controlling SONY PlayStation DualSense gamepad on Linux'
 conflicts=('dualsensectl')
-pkgver=r55.9d596ab
+provides=('dualsensectl')
+pkgver=0.7.r10.d3ae2fa
 pkgrel=1
 url='https://github.com/nowrep/dualsensectl'
-license=('GPL2')
-arch=('x86_64')
-depends=('dbus' 'hidapi')
+license=('GPL-2.0-only')
+arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
+depends=('dbus' 'hidapi' 'libusb')
 makedepends=('git' 'gcc' 'meson')
-source=("$_pkgbase::git+$url")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgbase"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/${pkgname}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$_pkgbase"
+    cd "${srcdir}/${pkgname}"
     arch-meson build
     meson compile -C build
 }
 
 package() {
-    cd "$_pkgbase"
-    meson install -C build --destdir "$pkgdir"
+    cd "${srcdir}/${pkgname}"
+    meson install -C build --destdir "${pkgdir}"
+
+    install -Dm644 "${srcdir}/${pkgname}/completion/dualsensectl" \
+                -t            "${pkgdir}/usr/share/bash-completion/completions/"
+
+    install -Dm644 "${srcdir}/${pkgname}/completion/_dualsensectl" \
+                -t            "${pkgdir}/usr/share/zsh/site-functions/"
 }
