@@ -1,10 +1,10 @@
 # Maintainer: Matthew Phillips <matthew@matthewphillips.info>
 pkgname=rosie
-pkgver=0.7.6
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A robot helper for agent skills"
 arch=('x86_64' 'aarch64')
-url="https://github.com/matthewp/rosie"
+url="https://github.com/withastro/rosie"
 license=('BSD-3-Clause')
 # The Rust binary statically links rustls; no system curl/libarchive needed.
 makedepends=('rust' 'cargo')
@@ -13,8 +13,8 @@ makedepends=('rust' 'cargo')
 # doesn't run gcc's LTO front-end on them, so every ring_core_0_17_14__*
 # symbol comes back undefined. Opting out of LTO restores native ELF objects.
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/matthewp/rosie/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c1259d97bc103783f29463d31f7565708dbb8b4ce166151c2df8c76265850db5')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/withastro/rosie/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f7dbae8451b12542abf84de2689311f471427f96f5dd77b3e4186de9fb9cc834')
 
 build() {
     cd "$pkgname-$pkgver"
