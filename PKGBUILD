@@ -1,19 +1,24 @@
+# Maintainer: debwuoldirty <debwuoldirty@gmail.com>
 pkgname=icecc3
-pkgver=1.2.0
-pkgrel=2
-pkgdesc="Centro de Control para IceWM (herramientas gráficas de configuración)"
+pkgver=1.3.0
+pkgrel=1
+pkgdesc="IceWM Control Center - Suite de herramientas gráficas para configurar IceWM"
 arch=('any')
+url="https://github.com/debwuoldirty/icecc3"
 license=('GPL-2.0-or-later')
-depends=('python' 'gtk4' 'python-gobject')
-optdepends=('polkit: para editar archivos protegidos'
-            'pkexec: para editar archivos del sistema')
-source=('https://raw.githubusercontent.com/debwuoldirty/icecc3/main/icecc3.tar.gz')
-sha256sums=('a9e355acd9635e93da2d0f3fd76a96fc622d9214718081b88ba4a3fc229bfb13')
+depends=('python' 'gtk4' 'python-gobject' 'mpv' 'xwinwrap')
+optdepends=('polkit: para guardar archivos protegidos con contraseña')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/debwuoldirty/icecc3/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('7b24ba3d1f07a24474dd00de22006ef3705c79cdf5c09d5439152b47cbc2b18d')
+
 package() {
+    cd "$srcdir/$pkgname-$pkgver"
     mkdir -p "$pkgdir/opt/icecc3"
-    cp -r "$srcdir/icecc3/"* "$pkgdir/opt/icecc3/"
+    cp -r * "$pkgdir/opt/icecc3/"
+    chmod +x "$pkgdir/opt/icecc3/"*.py
+    # Crear acceso directo en el menú
     mkdir -p "$pkgdir/usr/share/applications"
-    cat > "$pkgdir/usr/share/applications/icecc.desktop" << DESKTOP
+    cat > "$pkgdir/usr/share/applications/icecc.desktop" << EOF
 [Desktop Entry]
 Name=IceWM Control Center
 Comment=Configura IceWM gráficamente
@@ -22,6 +27,5 @@ Icon=/usr/share/icewm/icewm.png
 Terminal=false
 Type=Application
 Categories=Settings;DesktopSettings;
-DESKTOP
-    chmod +x "$pkgdir/opt/icecc3/"*.py
+EOF
 }
