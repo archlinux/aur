@@ -1,0 +1,9 @@
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
+["pi-ext-web-access"]
+source = "github"
+github = "nicobailon/pi-web-access"
+use_latest_release = true
+prefix = "v"
