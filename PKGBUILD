@@ -6,8 +6,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-plack'
-pkgver='1.0051'
-pkgrel='2'
+pkgver='1.0054'
+pkgrel='1'
 pkgdesc="Perl/CPAN Module Plack: Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -36,11 +36,12 @@ checkdepends=(
 	'perl-cgi-emulate-psgi'
 	'perl-fcgi'
 	'perl-log-log4perl'
+	'perl-mime-types'
 	'perl-module-refresh')
 url='https://metacpan.org/release/Plack'
 source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-$pkgver.tar.gz")
-md5sums=('0b3e573458b37ad69069fc8cb307b6b8')
-sha512sums=('be4b03f4b2cc6766be4ad06b1405e4513d475676ce8be7b3fd8bcb48cbfeedb7aef67df14a353f49d6b97ecd769f87b0f0787898148c849949f6936486c7ad5b')
+md5sums=('2aff327a947accfde698fff73b42e1f9')
+sha512sums=('2cc1179e79e620e6bc55d7f5e865e4ca86f39c10ea1477ce9f4918f8b4a9b5cae855b8624e2894106b10aedf83d3d6a32b5fee38faaeb17d8156d257373cbfd8')
 _distdir="Plack-$pkgver"
 
 build() {
