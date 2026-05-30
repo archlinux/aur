@@ -23,7 +23,6 @@ pkgver() {
 
 build() {
   cd "$srcdir"/srb2-retro/src
-  git checkout sdl2 # use the sdl2 branch
 
   [ "$CARCH" == "i686" ] && IS64BIT="" || IS64BIT="64"
   # (optional: be verbose)
