@@ -3,7 +3,7 @@
 pkgname=ruroco-server
 pkgver=0.14.1
 pkgrel=1
-pkgdesc='ruroco server + commander — validates UDP packets and runs configured commands'
+pkgdesc='ruroco server + commander - validates UDP packets and runs configured commands'
 arch=('x86_64')
 url='https://github.com/beac0n/ruroco'
 license=('MIT')
@@ -27,7 +27,7 @@ build() {
   cd "$srcdir/ruroco-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  # server + commander only — no GUI (eframe) is compiled. The release-build
+  # server + commander only - no GUI (eframe) is compiled. The release-build
   # feature is omitted so OpenSSL links dynamically against the system package
   # instead of being vendored.
   cargo build --release --frozen --no-default-features --features with-server --bin server --bin commander
@@ -48,7 +48,7 @@ package() {
   # creates the `ruroco` system user/group via systemd-sysusers (pacman hook)
   install -Dm644 "$srcdir/ruroco.sysusers" "$pkgdir/usr/lib/sysusers.d/ruroco.conf"
 
-  # example config — marked as backup() so pacman preserves local edits
+  # example config - marked as backup() so pacman preserves local edits
   install -Dm644 config/config.toml "$pkgdir/etc/ruroco/config.toml"
 
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
