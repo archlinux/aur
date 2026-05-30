@@ -2,7 +2,7 @@
 
 pkgname=vsview
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='The next-generation VapourSynth previewer'
 arch=('x86_64')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
@@ -19,6 +19,7 @@ depends=(
     'python-pluggy'
     'python-typing_extensions'
     'python-keyring'
+    'python-dotenv'
     'pyside6'
 )
 makedepends=(
@@ -55,15 +56,4 @@ package() {
     cd "${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    mkdir "${pkgdir}/usr/lib/vsview"
-    mv "${pkgdir}/usr/bin/vsview" "${pkgdir}/usr/lib/vsview/vsview"
-
-    cat > "${pkgdir}/usr/bin/vsview" << EOF
-#!/bin/sh
-export LD_PRELOAD=/usr/lib/libstdc++.so.6\${LD_PRELOAD:+:\$LD_PRELOAD}
-exec /usr/lib/vsview/vsview "\$@"
-EOF
-
-    chmod 755 "${pkgdir}/usr/bin/vsview"
 }
