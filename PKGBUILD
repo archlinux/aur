@@ -7,7 +7,7 @@
 
 pkgname=pxview-git
 pkgver=1.4.9.r14.11ea4f8
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
 arch=(i686 x86_64)
@@ -16,8 +16,8 @@ license=(GPL-3.0-or-later)
 # Upstream added VCS dependency to libsigrokdecode :/
 depends=(hicolor-icon-theme glib2 python fftw
         libusb zlib qt5-base qt5-svg boost-libs)
-makedepends=(boost cmake git librsvg)
-source=("${pkgname}::git+https://github.com/PXLogic/PXView"
+makedepends=("boost" "cmake" "git" "librsvg" "qt5-svg")
+source=("${pkgname}::git+${url}.git"
         "0001-make-glibc-happy.patch"
         "0002-simplify-qt-version-detection.patch")
 sha1sums=('SKIP'
