@@ -1,7 +1,7 @@
 # Maintainer: Ismet Togay <ismet.togay@gmail.com>
 pkgname=taste
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI to manage CommandCode preferences'
 arch=('x86_64')
 url='https://commandcode.ai'
