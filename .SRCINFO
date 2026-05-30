@@ -1,7 +1,7 @@
 pkgbase = dokku
 	pkgdesc = Docker-powered PaaS that helps build and manage the lifecycle of applications
-	pkgver = 0.38.9
-	pkgrel = 2
+	pkgver = 0.38.13
+	pkgrel = 1
 	url = https://github.com/dokku/dokku
 	install = dokku.install
 	arch = x86_64
@@ -34,10 +34,10 @@ pkgbase = dokku
 	depends = sudo
 	depends = sshcommand
 	depends = unzip
-	source = https://github.com/dokku/dokku/archive/v0.38.9.zip
+	source = https://github.com/dokku/dokku/archive/v0.38.13.zip
 	source = dokku.install
 	source = fix_go_work_missing_builds.patch
-	sha256sums = f5e05a1ecfa8ccd183bb652787b6664f8dfb014166bbae4ab3704cc945dd3d8c
+	sha256sums = b0f68b30f04a367fd543fe663193e40fcedd8c18971f9f87169de9b0ede1c5dc
 	sha256sums = dba725cb3d0009b6fb1134a53ab566c2125627c0aa8c5bee931beb650c5ed633
 	sha256sums = 21edd6f85494f3ab15e0262bae7d2bf7add81875374c3420dbeb3ff1acebcde8
 
