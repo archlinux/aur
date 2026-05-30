@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=diun
-pkgver=4.31.0
+pkgver=4.32.0
 pkgrel=1
 pkgdesc="Receive notifications when an image is updated on a Docker registry."
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('go>=1.17' 'git' 'gzip' 'tar' 'gcc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crazy-max/${pkgname}/archive/v${pkgver}.tar.gz"
         "diun.service::https://gitlab.com/mapanare-labs/packages/archlinux/diun-bin/-/raw/main/diun.service"
         "diun.yml::https://gitlab.com/mapanare-labs/packages/archlinux/diun-bin/-/raw/main/diun.yml")
-sha256sums=('4169db6d9cde8fd66c7e422c723de6a208d2ab8aee050b0bf4cb2b664df4ebf7'
+sha256sums=('cc67d3ff07cb5cba74b983e9de2a20799f811931ba1c40f0d128d6be6f5c0c1e'
             '5c16f7ae5b023407a443fbf1d0d811d236c94d191aae1af426e9540d22df3fa7'
             '00436d3e95e446211f9ffbaa36e6b9bc27ffe054745f1a687c4c1c46f1d7da14')
 
