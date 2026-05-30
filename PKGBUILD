@@ -1,6 +1,6 @@
 # Maintainer: AkitaOnRails <fabio.akita@gmail.com>
 pkgname=mangaplus-reader-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Personal-use desktop reader for MANGA Plus (talks to the official API with your own deviceSecret)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('mangaplus-reader')
 conflicts=('mangaplus-reader')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/FRANK.MANGA+_${pkgver}_amd64.AppImage")
-sha256sums=('a30dd65339b022901a207ca9e1acae7c1e66f670505ea6637bd2581ff9569054')
+sha256sums=('68094ff36e3165cbba20df42c5cdb07b4f7b853652bbcba1e96f9743a9b2b210')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
 prepare() {
@@ -24,20 +24,37 @@ package() {
         "${pkgdir}/opt/mangaplus-reader/mangaplus-reader.AppImage"
 
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s /opt/mangaplus-reader/mangaplus-reader.AppImage "${pkgdir}/usr/bin/mangaplus-reader"
+    # The bundle's .desktop file points at Exec=mangaplus-desktop
+    # and StartupWMClass=mangaplus-desktop (both come from the
+    # binary name Tauri uses). Symlink under that name so the
+    # launcher resolves cleanly and WM_CLASS-based taskbar
+    # grouping works. Keep mangaplus-reader as the friendlier
+    # alias users were already typing.
+    ln -s /opt/mangaplus-reader/mangaplus-reader.AppImage \
+        "${pkgdir}/usr/bin/mangaplus-desktop"
+    ln -s /opt/mangaplus-reader/mangaplus-reader.AppImage \
+        "${pkgdir}/usr/bin/mangaplus-reader"
 
-    if [[ -f "${srcdir}/squashfs-root/usr/share/applications/mangaplus-desktop.desktop" ]]; then
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/mangaplus-desktop.desktop" \
-  "${pkgdir}/usr/share/applications/mangaplus-reader.desktop"
-        sed -i 's|Exec=mangaplus-desktop|Exec=mangaplus-reader|g' \
+    # Tauri names the .desktop file after productName — for v0.4.0
+    # onward that's "FRANK MANGA+", so it ships as
+    # "FRANK MANGA+.desktop" with a space and a plus sign. Find
+    # it by glob rather than hardcoding the filename (which is
+    # exactly the bug that hid the launcher through v0.5.0).
+    desktop_src=$(find "${srcdir}/squashfs-root/usr/share/applications/" \
+        -maxdepth 1 -name '*.desktop' -print -quit)
+    if [[ -n "$desktop_src" && -f "$desktop_src" ]]; then
+        install -Dm644 "$desktop_src" \
   "${pkgdir}/usr/share/applications/mangaplus-reader.desktop"
     fi
 
+    # Icons keep their bundle name (mangaplus-desktop.png) so
+    # the .desktop file's Icon=mangaplus-desktop reference
+    # resolves without sed rewriting.
     for size in 32x32 128x128 256x256; do
         for cand in "${srcdir}/squashfs-root/usr/share/icons/hicolor/${size}/apps/"*.png; do
   [[ -f "$cand" ]] || continue
   install -Dm644 "$cand" \
-      "${pkgdir}/usr/share/icons/hicolor/${size}/apps/mangaplus-reader.png"
+      "${pkgdir}/usr/share/icons/hicolor/${size}/apps/mangaplus-desktop.png"
   break
         done
     done
