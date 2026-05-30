@@ -4,13 +4,13 @@
 _pkgname=BestClient
 pkgname=bestclient
 pkgver=1.7.1
-pkgrel=14
+pkgrel=15
 pkgdesc="DDRaceNetwork modification that adds new feauters"
 arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
 license=('custom')
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader')
-makedepends=('patchelf' 'gcc')
+makedepends=('patchelf' 'gcc' 'libjxl' 'librav1e' 'svt-av1')
 checkdepends=('gmock')
 optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
 	'discord-game-sdk: Enable rich presence in Discord desktop client.')
@@ -156,8 +156,8 @@ prepare() {
 	# be resolved at load time even though DDNet never encodes with these codecs.
 	_make_compat libtheoraenc.so.1      /usr/lib/libtheoraenc.so.2
 	_make_compat libtheoradec.so.1      /usr/lib/libtheoradec.so.2
-	_make_compat libjxl.so.0.10         /usr/lib/libjxl.so.0.11
-	_make_compat libjxl_threads.so.0.10 /usr/lib/libjxl_threads.so.0.11
+	_make_compat libjxl.so.0.10         /usr/lib/libjxl.so.0
+	_make_compat libjxl_threads.so.0.10 /usr/lib/libjxl_threads.so.0
 	_make_compat libvpx.so.9            /usr/lib/libvpx.so
 	_make_compat librav1e.so.0.7        /usr/lib/librav1e.so
 	_make_compat libSvtAv1Enc.so.2      /usr/lib/libSvtAv1Enc.so
