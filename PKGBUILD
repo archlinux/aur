@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=squidservers-bin
 _pkgname=squidservers
-pkgver=20260526
+pkgver=20260529
 pkgrel=1
 pkgdesc="A tool to easily self-host Minecraft servers without port forwarding"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 options=('!strip')
 
 source=("${_pkgname}.AppImage::https://cdn.squidservers.com/squidservers-latest.AppImage")
-sha256sums=('7ec4038798ea2bde6ab7e68098a025920d48259360d68844c2ebd71b19094a4c')
+sha256sums=('96b59faa66984fe8a56a58db9aa7436ff0cdc61fed49897e30e500b24d81edc4')
 
 prepare() {
     chmod +x "${_pkgname}.AppImage"
