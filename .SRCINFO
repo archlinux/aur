@@ -1,7 +1,7 @@
 pkgbase = ultrastardx-git
 	pkgdesc = Free and open source karaoke game. (GIT)
 	pkgver = r1962.a1a216e8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://usdx.eu/
 	arch = i686
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = ultrastardx-git
 	optdepends = ultrastar-creator: Qt program to generate USDX songs
 	optdepends = ultrastardx-songs: Free songs for USDX
 	optdepends = ultrastardx-utility: Manage USDX songs
+	optdepends = opencv: Webcam support
 	provides = ultrastardx
 	conflicts = ultrastardx
 	options = !strip
