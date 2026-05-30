@@ -1,35 +1,68 @@
-# Author: William Franco Abdul Hai <williamhai@hotmail.com>
-# Contributor: Martin Stibor <martin.von.reichenberg@protonmail.com>
-# Maintainer: Martin Stibor <martin.von.reichenberg@protonmail.com>
+# Original Author: William Franco Abdul Hai <baduhai@proton.me>
+# Contributor:     Martin Stibor <martin.von.reichenberg@protonmail.com>
+# Maintainer:      Martin Stibor <martin.von.reichenberg@protonmail.com>
 
-pkgname='koi'
-_pkgname='Koi'
+pkgname=koi
+_pkgname=Koi
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Scheduled LIGHT/DARK Theme Switching for the KDE Plasma Desktop"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
 url="https://github.com/baduhai/Koi"
-license=('LGPL3')
-depends=('gcc-libs' 'plasma-desktop' 'plasma-integration' 'plasma-workspace' 'qt6-svg' 'hicolor-icon-theme')
-makedepends=('base-devel' 'gcc' 'qt6-base' 'qt6-tools' 'cmake' 'extra-cmake-modules' 'desktop-file-utils' 'fdupes')
-optdepends=('xsettingsd: Apply settings to GTK applications on the fly'
-            'kvantum: Powerful extra customisable themes')
+license=('LGPL-3.0-only')
+
+depends=(
+    'qt6-base'
+    'qt6-svg'
+    'kconfig'
+    'kcoreaddons'
+    'kdbusaddons'
+    'kguiaddons'
+    'kwidgetsaddons'
+    'kwindowsystem'
+    'kconfigwidgets'
+    'plasma-desktop'
+    'plasma-integration'
+    'plasma-workspace'
+    'hicolor-icon-theme'
+)
+
+makedepends=(
+    'qt6-tools'
+    'cmake'
+    'extra-cmake-modules'
+    'desktop-file-utils'
+    'fdupes'
+)
+
+optdepends=(
+    'xsettingsd: Apply settings to GTK applications on the fly'
+    'kvantum: Powerful extra customisable themes'
+)
+
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('72486cc1c6b76f4f76401dc55f852d80')
+sha256sums=('fccc484bd14ebc6f4c557ecc1ed1cb76cf8cdee764c296efa75f0a66401e7c89')
 
 build() {
-    cmake -DCMAKE_BUILD_TYPE=Release              \
-          -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" \
-          -S "${srcdir}/${_pkgname}-${pkgver}/"   \
-          -B "${srcdir}/${_pkgname}-${pkgver}/build/"
+    cd "${_pkgname}-${pkgver}"
 
-    cmake --build "${srcdir}/${_pkgname}-${pkgver}/build/" --parallel
+    cmake -S '.' -B 'build' \
+          -DCMAKE_BUILD_TYPE='Release' \
+          -DCMAKE_INSTALL_PREFIX='/usr/' \
+          -DKDE_INSTALL_USE_QT_SYS_PATHS='ON'
+
+    cmake --build 'build'
 }
 
 package() {
-    cmake --install "${srcdir}/${_pkgname}-${pkgver}/build/"
+    cd "${_pkgname}-${pkgver}"
+    DESTDIR="${pkgdir}" cmake --install 'build'
 
-# Check the Application .DESKTOP file & Look for Duplicates within `pkgdir` ...
+    install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+    # Validate the desktop file structure
     desktop-file-validate "${pkgdir}/usr/share/applications/local.${_pkgname}DbusInterface.desktop"
-    fdupes -r -s          "${pkgdir}/"
+
+    # Deduplicate files (if applicable)
+    fdupes -s "${pkgdir}"
 }
