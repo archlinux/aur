@@ -1,0 +1,12 @@
+pkgbase = archbrew
+	pkgdesc = Homebrew-like standalone CLI package manager for Arch
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	url = https://github.com/Marmarek-here/ArchBrew/
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = pacman
+
+pkgname = archbrew
