@@ -5,8 +5,8 @@ pre_upgrade() {
   rm -rf /opt/bestclient/game
 }
 post_install() {
-  chmod -R 777 /opt/bestclient
+  chmod -R 755 /opt/bestclient
 }
 post_upgrade() {
-  chmod -R 777 /opt/bestclient
+  chmod -R 755 /opt/bestclient
 }
