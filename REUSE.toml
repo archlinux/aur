@@ -5,7 +5,8 @@ path = [
     "PKGBUILD",
     ".SRCINFO",
     "subtitleedit",
-    "subtitleedit.desktop"
+    "subtitleedit.desktop",
+    "subtitleedit.install"
     ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"

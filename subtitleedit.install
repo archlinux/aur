@@ -1,0 +1,13 @@
+post_install() {
+    echo
+    echo "   NOTICE:"
+    echo
+    echo "   SubtitleEdit 5.x.x has reached RC status, so the standard 'subtitleedit' package has been migrated to the 5.x.x branch."
+    echo
+    echo "   The 'subtitleedit-avalonia' package is now deprecated and will be deleted SOON™."
+    echo
+}
+
+post_upgrade() {
+    post_install
+}

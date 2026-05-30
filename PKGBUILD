@@ -2,12 +2,12 @@
 # Contributor: eduardosm
 
 pkgname=subtitleedit-avalonia
-pkgver=5.0.0.beta32
+pkgver=5.0.0.beta33
 pkgrel=1
 epoch=1
 pkgdesc='An advanced subtitle editor and converter (beta build with Avalonia UI)'
 arch=('any')
-url='https://github.com/SubtitleEdit/subtitleedit'
+url='https://www.nikse.dk/subtitleedit'
 license=('MIT')
 optdepends=('ffmpeg: waveform extraction'
             'mpv: video support'
@@ -15,23 +15,23 @@ optdepends=('ffmpeg: waveform extraction'
 provides=('subtitleedit')
 conflicts=('subtitleedit')
 options=('!strip')
+install='subtitleedit.install'
 source=("SubtitleEdit-Linux-x64-${pkgver}.tar.gz::https://github.com/SubtitleEdit/subtitleedit/releases/download/v${pkgver//.b/-b}/SubtitleEdit-Linux-x64.tar.gz"
         'subtitleedit'
         'subtitleedit.desktop'
         'subtitleedit.png')
-b2sums=('24254d063c95129d5bd1967674a840eb23f11285eb15388de5a46372cb6e4152f918ae9d943e0b5cb028975536550667d50753b3290adc5069385a94392fba70'
+b2sums=('59536e16534ece7dd7336c8332caea317768c1fffa083f36c42d84cb3cf932e4a4ffd44625b5acd0c973ab6255887f0aafc3d2dd1f7a5acda0034b89b0c7e7ce'
         '0e2d96c9611ba8428db13eefb624bbfc4f9e055ce9d56eeac37e275597b073f1222d06760634aef979e3667f1f70e5b0c9400316682ebec8842b02cd3a7df639'
         'bbeafd804a2d0ad6de03886771ecafbf3ebaa6ad86f449f2609c413114f898370102d1303135db0e21d04ca2612d40055c8f4de2458fc4a907f709e84940133b'
         'eefd5090791d860aa17f209ccf1d277b6e394af12bce07ecdebae5782b53cd9721c6d53e8034c038c0bdce5ffd09ba0c954aa90aa9cd9fbcffc1558d1010dc26')
 
 package() {
-    install -Dm755 subtitleedit         "${pkgdir}"/usr/bin/subtitleedit
+    install -Dm755 -t "${pkgdir}/usr/bin" subtitleedit
 
-    install -Dm755 SubtitleEdit         "${pkgdir}"/opt/subtitleedit/SubtitleEdit
-    install -Dm755 libHarfBuzzSharp.so  "${pkgdir}"/opt/subtitleedit/libHarfBuzzSharp.so
-    install -Dm755 libonigwrap.so       "${pkgdir}"/opt/subtitleedit/libonigwrap.so
-    install -Dm755 libSkiaSharp.so      "${pkgdir}"/opt/subtitleedit/libSkiaSharp.so
+    install -Dm755 -t "${pkgdir}/opt/subtitleedit" SubtitleEdit libHarfBuzzSharp.so libonigwrap.so libSkiaSharp.so
 
-    install -Dm644 subtitleedit.desktop "${pkgdir}"/usr/share/applications/subtitleedit.desktop
-    install -Dm644 subtitleedit.png     "${pkgdir}"/usr/share/pixmaps/subtitleedit.png
+    install -Dm644 -t "${pkgdir}/usr/share/applications" subtitleedit.desktop
+    install -Dm644 -t "${pkgdir}/usr/share/pixmaps" subtitleedit.png
+
+    install -Dm644 "${startdir}"/LICENSES/MIT.txt "${pkgdir}"/usr/share/licenses/subtitleedit/LICENSE
 }
