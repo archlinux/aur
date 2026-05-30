@@ -7,7 +7,10 @@ After=network-online.target
 [Service]
 Type=simple
 DynamicUser=yes
-StateDirectory=rucio
+StateDirectory=rucio-bootstrap
+Environment=RUCIO_BOOTSTRAP_API_LISTEN=127.0.0.1:3003
+Environment=RUCIO_BOOTSTRAP_IDENTITY=/var/lib/rucio-bootstrap/identity.key
+Environment=RUCIO_BOOTSTRAP_INDEX_DB=/var/lib/rucio-bootstrap/index.db
 ExecStart=/usr/bin/rucio-bootstrap
 
 [Install]

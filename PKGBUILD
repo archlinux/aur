@@ -2,7 +2,7 @@
 
 pkgbase=rucio
 pkgname=('rucio' 'rucio-daemon' 'rucio-cli' 'rucio-bootstrap')
-pkgver=0.1.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Decentralized peer-to-peer file sharing over libp2p, with eMule/Kad2 compatibility'
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ source=("${pkgbase}-${pkgver}::git+https://github.com/ogarcia/rucio.git#tag=${pk
         "${pkgbase}-system.service"
         "${pkgbase}-user.service"
         "${pkgbase}-bootstrap.service")
-b2sums=('b03706549d5581a6253f0042f90f1ec15f074b188a035fc8b716cb69dbce1a683b6d1b361f3bb160792d6856331c994a28a73f5d5c80a67dd8ec7ead3fe1bc5e'
-        'd2c0ba8ef4047784ef2104ad7a9e61cbc85edf0849ec3c2afab4eb6ebde6799fb5e6099bba825fd3b232a8a09d03854834fa5cb2cc3a027b457b8b336308ab08'
+b2sums=('4717d090befb77867c5371045ad70a0f8d99f931e2120904e4e24a961877f6a480a22cf6de79f7d5882faebc7565632dc2d418ecf955ee7fb2b2acf4d043dbd0'
+        '7906f2c641558dea0d6314b4609943b41e9a9bf5d64e83de688b95e2610074e298e9b87b1421729924807bf317277f87c8ebf2a39268bfaa75568fd34606296d'
         'a3c04268a6909af624a572331b021cf1d83621ea2156379739a9c851e54d672a2280a73784e53830163a9aa7a7e4bad7995fb3328d1c41fc509cabede342ccff'
-        '007be144a9a0526c4a7f3dc3f7056e41d2d4e0ab4075640654df2c29e061a2f475ab3727229f8af11973878b30be6d796d34e218050a150efc9b8a734ffb0741')
+        'e12e4f4f91b5bf50669a83ff570796350b19c1c321ba13f0138b8fcbbfb3a92a6a17e31f65c439c34219dc80ee4b7e284a25a7d73bcd0ee7085c3716d4163086')
 
 prepare() {
   cd "${pkgbase}-${pkgver}"
@@ -28,17 +28,16 @@ build() {
   cd "$pkgbase-$pkgver"
   export CARGO_TARGET_DIR=target
 
-  # Build the Leptos frontend first: the complete binary embeds it via
-  # rust-embed, and the rucio-web package ships the same assets.
+  # Build the Leptos frontend first: the complete binary embeds it via rust-embed
   ( cd rucio-web && trunk build --release )
 
-  # Complete client: fat binary with eMule + embedded web panel.
+  # Complete client: fat binary with eMule + embedded web panel
   cargo build --frozen --release -p rucio --features emule-compat,web-ui
 
-  # Server only: daemon with eMule
+  # Server only: daemon with eMule support
   cargo build --frozen --release -p rucio-daemon --features emule-compat
 
-  # Standalone CLI: no daemon, no web, no libp2p.
+  # Standalone CLI: no daemon, no web, no libp2p
   cargo build --frozen --release -p rucio-cli
 
   # Bootstrap server: DHT bootstrap node
@@ -49,10 +48,11 @@ package_rucio() {
   pkgdesc='Decentralized P2P file sharing - complete client (daemon + CLI + web panel + eMule)'
   depends=('gcc-libs')
   provides=('ruciod')
+  conflicts=('rucio-daemon')
 
   cd "${pkgbase}-${pkgver}"
 
-  # Fat binary: `ruciod` runs the daemon, `rucio` runs the CLI.
+  # fat binary: `ruciod` runs the daemon, `rucio` runs the CLI
   install -Dm755 target/release/rucio "${pkgdir}/usr/bin/rucio"
   ln -s rucio "${pkgdir}/usr/bin/ruciod"
 
@@ -69,13 +69,16 @@ package_rucio-daemon() {
   pkgdesc='Decentralized P2P file sharing - stand alone daemon'
   optdepends=('nginx: serve via reverse-proxy')
   provides=('ruciod')
+  conflicts=('rucio')
 
   cd "${pkgbase}-${pkgver}"
+
+  # server only
   install -Dm755 target/release/ruciod "${pkgdir}/usr/bin/ruciod"
 
   # service
   install -D -m644 "${srcdir}/${pkgbase}-system.service" \
-    "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    "${pkgdir}/usr/lib/systemd/system/${pkgbase}.service"
 }
 
 package_rucio-cli() {
@@ -84,7 +87,7 @@ package_rucio-cli() {
 
   cd "${pkgbase}-${pkgver}"
 
-  # Lightweight client only.
+  # lightweight client only
   install -Dm755 target/release/rucio-cli "${pkgdir}/usr/bin/rucio-cli"
 }
 
@@ -93,6 +96,8 @@ package_rucio-bootstrap() {
   depends=('gcc-libs')
 
   cd "${pkgbase}-${pkgver}"
+
+  # bootstrap server
   install -Dm755 target/release/rucio-bootstrap \
     "${pkgdir}/usr/bin/rucio-bootstrap"
 

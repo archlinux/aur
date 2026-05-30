@@ -8,6 +8,8 @@ After=network-online.target
 Type=simple
 DynamicUser=yes
 StateDirectory=rucio
+Environment=HOME=/var/lib/rucio
+WorkingDirectory=/var/lib/rucio
 ExecStart=/usr/bin/ruciod
 
 [Install]
