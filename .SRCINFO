@@ -1,0 +1,22 @@
+pkgbase = kookbook
+	pkgdesc = Fast real-time plotting program with light data analysis capabilities
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://apps.kde.org/kookbook/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = ninja
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = kirigami
+	depends = libstdc++
+	depends = qt6-base
+	depends = qt6-declarative
+	source = git+https://invent.kde.org/utilities/kookbook.git?signed#tag=v0.3.0
+	validpgpkeys = 8514067B1F1F5DF4E79DE0801A30765DF1F0D3ED
+	b2sums = febea80a4cdbd7547e4df66d2fcfb020f5190e58a1a3423d74e0b7b7fac826f1906cd0883ee2ed04c60cbff36dd856647c61fbf1482d98626d823ad85caaa0f0
+
+pkgname = kookbook

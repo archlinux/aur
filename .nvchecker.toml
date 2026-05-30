@@ -1,0 +1,4 @@
+[kookbook]
+source = "git"
+git = "https://invent.kde.org/utilities/kookbook.git"
+prefix = "v"
