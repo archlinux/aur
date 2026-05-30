@@ -2,7 +2,7 @@
 
 pkgname=mautrix-meta
 _name=meta
-pkgver=0.2605.0
+pkgver=0.2605.1
 pkgrel=1
 pkgdesc="A Matrix-meta (Facebook, Instagram) puppeting bridge"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ source=(
   log-path.diff
 )
 backup=("etc/${pkgname}/${pkgname}.yaml")
-sha256sums=('b0b6bef2708050deb878886ac9ef0629b72bbbe283bcd7c8615f50a752b557e3'
+sha256sums=('bd9a0a0422f758ea5cd7a7739c40460c747933132db7e39dc273d673833d78e0'
             '6888d152b7b6b0175160a452009b866eba53244ff844da9f6abeb02654e28be5'
             '7dfa012f34ec7f940b1c4111de701b97273b1c2f4075b2f5e67a4c2327f8fb2f'
             '9460950662be4d89a8f2f457922f0eaffbf43e9d30842b8aa3b3524dae48efae'
