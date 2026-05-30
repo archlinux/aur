@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-tools
-pkgver=26.05.3
+pkgver=26.05.4
 pkgrel=1
 pkgdesc="MX Tools - Dashboard application launcher for various MX tools"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/MX-Linux/mx-tools"
 license=('GPL3')
 depends=('qt6-base')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/mx-tools/archive/refs/tags/26.05.3.tar.gz")
-sha256sums=('4727dd83a7e661a28e59a0e58e8a81c5cd5600c4952cbf8ae981e78b295c290b')
+source=("https://github.com/MX-Linux/mx-tools/archive/refs/tags/26.05.4.tar.gz")
+sha256sums=('55b105456aa534ad48b86cfc48da4a43115110dd495a80b7d8a3d584309d8333')
 
 _srcdir="${pkgname}-${pkgver}"
 
