@@ -1,0 +1,21 @@
+pkgbase = fluentflame-reader-git
+	pkgdesc = Modern desktop RSS reader built with Electron, React, and Fluent UI
+	pkgver = 2.1.1.dev.1.r8.g3d13f07
+	pkgrel = 1
+	url = https://github.com/FluentFlame/fluentflame-reader
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = git
+	depends = alsa-lib
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	provides = fluentflame-reader
+	conflicts = fluentflame-reader
+	options = !debug
+	source = git+https://github.com/FluentFlame/fluentflame-reader.git
+	sha256sums = SKIP
+
+pkgname = fluentflame-reader-git
