@@ -3,12 +3,12 @@
 pkgname=datawarrior
 pkgver=6.1.0
 _pkgver=610
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source data visualization and analysis program with embedded chemical intelligence"
 arch=('any')
 url="http://www.openmolecules.org/datawarrior/index.html"
 license=('GPL')
-depends=('java-openjdk' 'java-openjfx' 'hicolor-icon-theme')
+depends=('jdk-openjdk' 'java-openjfx' 'hicolor-icon-theme')
 source=("https://openmolecules.org/datawarrior/$pkgname${_pkgver}.tar.gz")
 md5sums=('8141e32024a61ca144e238f3d00ca2d6')
 
