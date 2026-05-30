@@ -1,0 +1,18 @@
+pkgbase = qlam
+	pkgdesc = A modern antivirus GUI powered by ClamAV
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/berk-kucuk/QLAM
+	arch = x86_64
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-pyqt6
+	depends = python-watchdog
+	depends = clamav
+	depends = polkit
+	optdepends = clamav-freshclam: automatic virus database updates
+	source = qlam-1.1.0.tar.gz::https://github.com/berk-kucuk/QLAM/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = c236584b209d4e355ded2725bea7c33550574c8b7383fc68188085f2306dd685
+
+pkgname = qlam
