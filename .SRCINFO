@@ -1,5 +1,5 @@
 pkgbase = ruroco-client
-	pkgdesc = ruroco client CLI — sends encrypted one-way UDP remote-command packets
+	pkgdesc = ruroco client CLI - sends encrypted one-way UDP remote-command packets
 	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/beac0n/ruroco

@@ -3,7 +3,7 @@
 pkgname=ruroco-client
 pkgver=0.14.1
 pkgrel=1
-pkgdesc='ruroco client CLI — sends encrypted one-way UDP remote-command packets'
+pkgdesc='ruroco client CLI - sends encrypted one-way UDP remote-command packets'
 arch=('x86_64')
 url='https://github.com/beac0n/ruroco'
 license=('MIT')
@@ -23,7 +23,7 @@ build() {
   cd "$srcdir/ruroco-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  # client binary only — neither the GUI (eframe) nor the server code is
+  # client binary only - neither the GUI (eframe) nor the server code is
   # compiled. The release-build feature is omitted so OpenSSL links dynamically
   # against the system package instead of being vendored.
   cargo build --release --frozen --no-default-features --features with-client --bin client
