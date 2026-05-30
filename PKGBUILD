@@ -5,7 +5,7 @@ pkgname=perl-conf-libconfig
 _perl_namespace=Conf
 _perl_module=Libconfig
 _perl_author_path=C/CN/CNANGEL
-pkgver=1.0.3
+pkgver=1.1.2
 pkgrel=1
 pkgdesc=" Conf::Libconfig Perl extension for libconfig"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('perl' 'libconfig')
 makedepends=('perl-test-pod' 'perl-test-pod-coverage' 'perl-test-deep' 'perl-test-warn' 'perl-test-exception')
 
 source=("https://cpan.metacpan.org/authors/id/${_perl_author_path}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha256sums=('e107f4b3d09f2b37db5a38ccce36ad945b82b89e5202b6bd01d3bb50a5965a1a')
+sha256sums=('facea236b634412e3029243567fb83aacecc9c6f27eb98855e6ad92e3be53d42')
 options=('!emptydirs')
 
 build() {
