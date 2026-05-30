@@ -2,37 +2,32 @@
 # Contributor: eduardosm
 
 pkgname=subtitleedit
-pkgver=4.0.15
-pkgrel=2
+pkgver=5.0.0rc1
+pkgrel=1
 pkgdesc='An advanced subtitle editor and converter'
 arch=('any')
-url='https://www.nikse.dk/SubtitleEdit'
-license=('GPL-3.0-only')
-depends=('mono' 'ttf-dejavu')
-makedepends=('unzip')
+url='https://www.nikse.dk/subtitleedit'
+license=('MIT')
 optdepends=('ffmpeg: waveform extraction'
-            'mpv: video support')
-source=("https://github.com/SubtitleEdit/subtitleedit/releases/download/$pkgver/SE${pkgver//./}.zip"
+            'mpv: video support'
+            'libvlc: video support')
+options=('!strip')
+source=("SubtitleEdit-Linux-x64-${pkgver}.tar.gz::https://github.com/SubtitleEdit/subtitleedit/releases/download/v${pkgver//rc/-rc}/SubtitleEdit-Linux-x64.tar.gz"
         'subtitleedit'
         'subtitleedit.desktop'
         'subtitleedit.png')
-b2sums=('3e65f6d092aea1dfc45644089d55abd95db0223b68f2223e6750a9cf888962189bad7c6471e250ea0d74e0acbf7f2cb0e144c243ac140ce9acb3c0495984d41f'
-        '3576a8a2c11804ce43150329963122b784da1160e3d7d24e646e2245dac3db886c4c0998d8529e3b18e61c7f0bee55026416bb5cbc993f8e82e07f5c2b1edad3'
+b2sums=('53b167a8c4e0a4a779f495655a974394389775c7f29b5d59c0a466f4c773fc9f12dd1e8b3122d14c29cf0302d885a760ce6b005990563d903d391b17a69db32d'
+        '0e2d96c9611ba8428db13eefb624bbfc4f9e055ce9d56eeac37e275597b073f1222d06760634aef979e3667f1f70e5b0c9400316682ebec8842b02cd3a7df639'
         'bbeafd804a2d0ad6de03886771ecafbf3ebaa6ad86f449f2609c413114f898370102d1303135db0e21d04ca2612d40055c8f4de2458fc4a907f709e84940133b'
-        'a3a50848054537f84137a05c721491dd6f7b19a4f115758e127c124d14b3a1d8623f5eee7424fbc9f94ca5a948dd1e2728e01e3dd1ab8d413e0f71dfa46b8f6c')
-noextract=("SE${pkgver//./}.zip")
+        'eefd5090791d860aa17f209ccf1d277b6e394af12bce07ecdebae5782b53cd9721c6d53e8034c038c0bdce5ffd09ba0c954aa90aa9cd9fbcffc1558d1010dc26')
 
 package() {
-    install -dm755 "${pkgdir}"/opt/subtitleedit
+    install -Dm755 -t "${pkgdir}/usr/bin" subtitleedit
 
-    unzip "${srcdir}"/SE${pkgver//./}.zip -d "${pkgdir}"/opt/subtitleedit
+    install -Dm755 -t "${pkgdir}/opt/subtitleedit" SubtitleEdit libHarfBuzzSharp.so libonigwrap.so libSkiaSharp.so
 
-    rm -r "${pkgdir}"/opt/subtitleedit/Tesseract302
-    rm "${pkgdir}"/opt/subtitleedit/Hunspell{x86,x64}.dll
+    install -Dm644 -t "${pkgdir}/usr/share/applications" subtitleedit.desktop
+    install -Dm644 -t "${pkgdir}/usr/share/pixmaps" subtitleedit.png
 
-    touch "${pkgdir}"/opt/subtitleedit/.PACKAGE-MANAGER
-
-    install -Dm755 "${srcdir}"/subtitleedit "${pkgdir}"/usr/bin/subtitleedit
-    install -Dm644 "${srcdir}"/subtitleedit.desktop "${pkgdir}"/usr/share/applications/subtitleedit.desktop
-    install -Dm644 "${srcdir}"/subtitleedit.png "${pkgdir}"/usr/share/pixmaps/subtitleedit.png
+    install -Dm644 "${startdir}"/LICENSES/MIT.txt "${pkgdir}"/usr/share/licenses/subtitleedit/LICENSE
 }
