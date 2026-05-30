@@ -1,6 +1,6 @@
 pkgbase = limit-computer-time
 	pkgdesc = Daily desktop time budget daemon for KDE Plasma on Wayland with countdown overlay and TUI configurator
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://codeberg.org/LuminaNAO/limit-computer-time
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = limit-computer-time
 	optdepends = qdbusqt6: KDE Plasma screen lock integration
 	optdepends = qdbusqt5: KDE Plasma screen lock fallback
 	optdepends = logind: session lock detection fallback
-	source = git+https://codeberg.org/LuminaNAO/limit-computer-time.git#tag=v1.0.2
+	source = git+https://codeberg.org/LuminaNAO/limit-computer-time.git#tag=v1.0.3
 	sha256sums = SKIP
 
 pkgname = limit-computer-time
