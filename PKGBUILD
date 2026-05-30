@@ -1,5 +1,5 @@
 pkgname=qt-img-viewer
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Qt 6 image viewer with directory thumbnails, animated GIF playback, and image-only floating mode'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('qt6-base' 'qt6-imageformats' 'qt6-svg')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ba97f36fa99a56ff2f072920b2d2e1d0227f7582cc55380a03a14e997866e4e1')
+sha256sums=('77f9b270c319e745748650447613c8a44b4e3758838d43c76cc22502c278e4d3')
 
 build() {
     cmake -S "${pkgname}-${pkgver}" -B build -G Ninja \
