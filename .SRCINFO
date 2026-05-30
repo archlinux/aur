@@ -1,0 +1,22 @@
+pkgbase = itendry-bin
+	pkgdesc = Guitar companion app, for classic Malagasy song
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://itendry.com
+	arch = x86_64
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = fontconfig
+	depends = libstdc++
+	depends = glibc
+	depends = libgcc
+	depends = pango
+	depends = at-spi2-core
+	depends = libepoxy
+	depends = harfbuzz
+	depends = glib2
+	depends = cairo
+	source = https://github.com/frostzing/iTendry-bin/releases/download/releases/itendry-3.4.0-1-x86_64.pkg.tar.zst
+	sha256sums = SKIP
+
+pkgname = itendry-bin
