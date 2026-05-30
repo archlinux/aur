@@ -1,6 +1,6 @@
 pkgbase = facsimile
 	pkgdesc = Terminal text editor written in Fortran with VSCode-style keybindings
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/FortranGoingOnForty/facsimile
 	arch = x86_64
@@ -8,10 +8,9 @@ pkgbase = facsimile
 	arch = aarch64
 	license = MIT
 	makedepends = gcc-fortran
-	makedepends = fortran-fpm
 	depends = glibc
 	depends = gcc-libs
-	source = git+https://github.com/FortranGoingOnForty/facsimile.git#tag=v0.11.0
+	source = git+https://github.com/FortranGoingOnForty/facsimile.git#tag=v0.11.1
 	sha256sums = SKIP
 
 pkgname = facsimile
