@@ -1,0 +1,5 @@
+[hyperfocusdsp-niner-bin]
+source = "github"
+github = "hyperfocusdsp/niner"
+use_latest_release = true
+prefix = "v"
