@@ -1,9 +1,10 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
+# Co-Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=sonix-flasher-git
 _name=${pkgname%-git}
-pkgver=v0.2.5.r8.g7ded3d4
-pkgrel=2
+pkgver=0.2.5.r10.ga0baa68
+pkgrel=3
 pkgdesc="Sonix Keyboard Flasher"
 arch=('any')
 url="https://github.com/SonixQMK/sonix-flasher"
@@ -20,7 +21,7 @@ makedepends=('git')
 source=("sonix-flasher.sh"
         "sonix-flasher.desktop"
         "0001-fix-Wayland-taskbar-icon.patch"
-        "sonix-flasher::git+https://github.com/SonixQMK/sonix-flasher")
+        "sonix-flasher::git+${url}.git")
 provides=("sonix-flasher")
 conflicts=("sonix-flasher")
 sha256sums=('68d7641d8a903b9044ceb5bd38f71080f3e3b5c88312f3cd16a2fe4fb9c45077'
@@ -30,7 +31,7 @@ sha256sums=('68d7641d8a903b9044ceb5bd38f71080f3e3b5c88312f3cd16a2fe4fb9c45077'
 
 pkgver() {
   cd "$_name"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -63,6 +64,10 @@ package() {
                   ${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${_name}.png
   done
 
+  install -Dm644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/52-flash-keyboard.rules" << 'EOF'
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="7040", TAG+="uaccess"
+
+EOF
   # install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 # vim: ts=2 sw=2 et:
