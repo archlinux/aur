@@ -1,0 +1,10 @@
+/usr/bin/chronyc: libc.so.6
+/usr/bin/chronyc: libedit.so.0
+/usr/bin/chronyc: libm.so.6
+/usr/bin/chronyc: libnettle.so.9
+/usr/bin/chronyd: libc.so.6
+/usr/bin/chronyd: libcap.so.2
+/usr/bin/chronyd: libgnutls.so.30
+/usr/bin/chronyd: libm.so.6
+/usr/bin/chronyd: libnettle.so.9
+/usr/bin/chronyd: libseccomp.so.2

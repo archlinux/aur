@@ -4,7 +4,7 @@
 
 pkgname=chrony-git
 pkgver=4.8.r39.g866bede
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight NTP client and server (git version)"
 arch=('x86_64')
 url="https://gitlab.com/chrony/chrony.git"
@@ -12,6 +12,7 @@ license=('GPL-2.0-only')
 depends=(
     'glibc'
     'gnutls'
+    'nettle'
     'libcap'
     'libseccomp'
     'libedit'
