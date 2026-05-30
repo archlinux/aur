@@ -1,13 +1,16 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=iso-commander
 pkgver=7.0.9
-pkgrel=2
+pkgrel=1
 pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/iso-commander"
 license=('GPL3')
 depends=('coreutils' 'glibc' 'readline' 'util-linux' 'xz' 'zstd')
 makedepends=('gcc' 'make')
+optdepends=('ntfs-3g: NTFS formatting for Windows ISO creation (only mkfs.ntfs is used; NTFS writes utilize the kernel ntfs3 driver, not the FUSE driver)'
+            'dosfstools: FAT32 formatting for Windows ISO creation'
+            'parted: GPT partition layout for Windows ISO creation')
 md5sums=('b976079ab7970c1e08cb6159062a2192')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
