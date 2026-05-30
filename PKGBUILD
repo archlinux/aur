@@ -43,7 +43,7 @@ sha256sums=(
   'SKIP'  # matrix-rust-sdk
 )
 #options+=('!lto' 'debug' '!strip')
-options+=('!lto')
+options+=('!lto') # With LTO, linking errors happen.
 
 
 
