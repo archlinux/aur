@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#613583"/>
+      <stop offset="100%" style="stop-color:#1c71d8"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="24" fill="url(#bg)"/>
+  <!-- Sound wave icon -->
+  <g transform="translate(64,64)" fill="none" stroke="white" stroke-width="4" stroke-linecap="round">
+    <path d="M-8,-20 L-8,20"/>
+    <path d="M0,-28 L0,28"/>
+    <path d="M8,-20 L8,20"/>
+    <path d="M-16,-12 L-16,12"/>
+    <path d="M16,-12 L16,12"/>
+  </g>
+  <!-- Microphone icon -->
+  <g transform="translate(88,88)" fill="white">
+    <rect x="-4" y="-12" width="8" height="16" rx="4"/>
+    <path d="M-8,0 Q-8,10 0,10 Q8,10 8,0" fill="none" stroke="white" stroke-width="2"/>
+    <line x1="0" y1="10" x2="0" y2="14" stroke="white" stroke-width="2"/>
+    <line x1="-4" y1="14" x2="4" y2="14" stroke="white" stroke-width="2"/>
+  </g>
+</svg>

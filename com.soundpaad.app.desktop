@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SoundPad
+Comment=Sound pad with virtual microphone support
+Exec=soundpaad
+Icon=com.soundpaad.app
+Type=Application
+Categories=AudioVideo;Audio;Player;
+Keywords=sound;pad;microphone;virtual;
+StartupNotify=true

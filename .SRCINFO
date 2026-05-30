@@ -1,0 +1,25 @@
+pkgbase = soundpaad-bin
+	pkgdesc = Sound pad with virtual microphone support for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AmetistYT/soundpaad
+	arch = x86_64
+	license = MIT
+	depends = gtk4
+	depends = libadwaita
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = pipewire-pulse
+	depends = openssl
+	optdepends = pulseaudio: PulseAudio server (alternative to PipeWire)
+	provides = soundpaad
+	conflicts = soundpaad
+	source = soundpaad-0.1.0::https://github.com/AmetistYT/soundpaad/releases/download/v0.1.0/soundpaad
+	source = com.soundpaad.app.desktop
+	source = com.soundpaad.app.svg
+	sha256sums = f7dcb2f4ec746582700c18f5a1dbd95c06f3a2f348eb5cb1e35ec7d406e8c9d2
+	sha256sums = 8359701edad14fde483728eb275dee9b7c8052e4b9a4d470af150b805dec1926
+	sha256sums = 711a600b092364e9b787243d9c234b9e44582cba7a6261b79f305a0323e08785
+
+pkgname = soundpaad-bin
