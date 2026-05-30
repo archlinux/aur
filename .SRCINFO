@@ -1,0 +1,11 @@
+pkgbase = ttf-rocknroll-one
+	pkgdesc = RocknRoll is an original pop-style font. The strokes of varying intensity add momentum and the rounded dots create a lively and dynamic feel.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/fontworks-fonts/RocknRoll
+	arch = any
+	license = OFL
+	source = https://github.com/fontworks-fonts/RocknRoll/raw/29a2aa8bb7ab10702dee769ee681a9baeeb52ec1/fonts/ttf/RocknRollOne-Regular.ttf
+	sha256sums = dc0f5ff975851827f63f2c6bfed128ffbca14b6399a10fb5e1711215c0108526
+
+pkgname = ttf-rocknroll-one
