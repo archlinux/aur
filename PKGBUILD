@@ -2,16 +2,16 @@
 # Maintainer:  Martin Stibor <martin.von.reichenberg@gmail.com>
 
 pkgname=dualsensectl-git
-pkgdesc='Tool for controlling SONY PlayStation DualSense gamepad on Linux'
-conflicts=('dualsensectl')
-provides=('dualsensectl')
 pkgver=0.7.r10.d3ae2fa
 pkgrel=1
+pkgdesc='Tool for controlling SONY PlayStation DualSense gamepad on Linux'
+arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
 url='https://github.com/nowrep/dualsensectl'
 license=('GPL-2.0-only')
-arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
 depends=('dbus' 'hidapi' 'libusb')
 makedepends=('git' 'gcc' 'meson')
+provides=('dualsensectl')
+conflicts=('dualsensectl')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
