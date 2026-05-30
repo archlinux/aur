@@ -3,13 +3,13 @@
 pkgname=ruroco-client-ui
 pkgver=0.14.1
 pkgrel=1
-pkgdesc='ruroco client GUI (egui) — graphical front-end for the ruroco client'
+pkgdesc='ruroco client GUI (egui) - graphical front-end for the ruroco client'
 arch=('x86_64')
 url='https://github.com/beac0n/ruroco'
 license=('MIT')
 # The X11/Wayland/GL libs are loaded by eframe via dlopen at runtime (x11-dl /
 # wayland-sys / glow), so they do NOT appear in the ELF NEEDED table. namcap
-# reports them as "may not be needed" — that is a false positive; removing them
+# reports them as "may not be needed" - that is a false positive; removing them
 # breaks the GUI at runtime. They are also needed at build time to link eframe.
 depends=('openssl' 'gcc-libs' 'glibc' 'fontconfig' 'libglvnd'
          'libxkbcommon' 'wayland' 'libx11' 'libxi' 'libxcursor' 'libxrandr')

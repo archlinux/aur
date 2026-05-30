@@ -1,5 +1,5 @@
 pkgbase = ruroco-client-ui
-	pkgdesc = ruroco client GUI (egui) — graphical front-end for the ruroco client
+	pkgdesc = ruroco client GUI (egui) - graphical front-end for the ruroco client
 	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/beac0n/ruroco
