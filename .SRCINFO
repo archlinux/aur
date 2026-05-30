@@ -1,0 +1,12 @@
+pkgbase = ttf-blankenburg
+	pkgdesc = Modern blackletter font: a free, depoliticised semi-condensed Tannenberg variant by Peter Wiegel
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.peter-wiegel.de/Blankenburg.html
+	arch = any
+	license = OFL-1.1
+	depends = fontconfig
+	source = fonts-blankenburg-0.1.tar.gz::https://deb.debian.org/debian/pool/main/f/fonts-blankenburg/fonts-blankenburg_0.1.orig.tar.gz
+	sha256sums = f83c895294a9796a8c55c5376a591d6cf832039768c2460ec57253478e1f7699
+
+pkgname = ttf-blankenburg
