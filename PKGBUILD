@@ -4,18 +4,18 @@
 _pkgbase=indicator-sysmonitor
 pkgbase="${_pkgbase}-no-budgie-git"
 pkgname=("${_pkgbase}-no-budgie-git")
-pkgver=r140.cc5d095
-pkgrel=2
+pkgver=r144.08f8386
+pkgrel=1
 epoch=
 pkgdesc='An Application Indicator showing various system parameters'
 arch=('any')
 url='https://github.com/fossfreedom/indicator-sysmonitor'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 groups=()
-depends=('curl' 'python-gobject' 'python-psutil')
+depends=('curl' 'python-gobject' 'python-psutil' 'libayatana-appindicator')
 makedepends=('git' 'meson')
 checkdepends=()
-optdepends=('libayatana-appindicator')
+optdepends=()
 provides=('indicator-sysmonitor')
 conflicts=('indicator-sysmonitor')
 replaces=()
@@ -34,8 +34,6 @@ pkgver() {
 }
 
 package() {
-  pkgdesc+="; appindicator version"
-  depends+=('libappindicator-gtk3')
   conflicts+=('indicator-sysmonitor-appindicator')
   provides+=('indicator-sysmonitor-appindicator')
 
