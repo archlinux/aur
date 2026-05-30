@@ -29,7 +29,9 @@ makedepends=(cargo
              cmake
              vulkan-headers
              vulkan-validation-layers
-             cargo-cntp-bundle-git)
+             cargo-cntp-bundle-git
+             base-devel
+             clang)
 options=(!debug)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/hummingbird-player/hummingbird/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=(80dece173bce4220eb282c049aa9232ecdb8290bfeae9bc6bad2bcfaafbc4fe0)
@@ -55,5 +57,10 @@ build() {
 package() {
 	cd "$_pkgname-$pkgver"
 	cargo cntp-bundle --no-open
-	cp -ra target/bundle/$(rustc -vV | grep 'host:' | cut -d' ' -f2)/release/appdir/*/ ${pkgdir}
+	local appdir="target/bundle/$(rustc -vV | grep 'host:' | cut -d' ' -f2)/release/appdir"
+	install -Dm755 "$appdir/usr/bin/hummingbird" "$pkgdir/usr/bin/hummingbird"
+	install -Dm644 "$appdir/usr/share/applications/org.mailliw.hummingbird.desktop" \
+		"$pkgdir/usr/share/applications/org.mailliw.hummingbird.desktop"
+	install -Dm644 "$appdir/usr/share/icons/hicolor/scalable/apps/org.mailliw.hummingbird.svg" \
+		"$pkgdir/usr/share/icons/hicolor/scalable/apps/org.mailliw.hummingbird.svg"
 }
