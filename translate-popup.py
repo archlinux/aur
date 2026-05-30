@@ -9,7 +9,7 @@ import json
 import os
 
 DEBOUNCE_MS = 500
-CONFIG_DIR = os.path.expanduser("~/.config/translator")
+CONFIG_DIR = os.path.expanduser("~/.config/minimal-translate")
 CONFIG_FILE = os.path.join(CONFIG_DIR, "config.json")
 
 # Common languages: (display name, trans code)
