@@ -1,7 +1,7 @@
 # Maintainer: MiguelRegueiro
 
 pkgname=elio
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Snappy, batteries-included terminal file manager with rich previews, inline images, bulk actions, and trash support'
 arch=('x86_64')
@@ -18,8 +18,8 @@ optdepends=(
   '7zip: archive and comic archive preview fallback'
   'libarchive: archive and ISO listing fallback through bsdtar'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://crates.io/api/v1/crates/${pkgname}/${pkgver}/download")
-sha256sums=('de4be2bcea7e6218a39a0f8eff49e99c3d1af93de847ec6f98e5575e410eba88')
+source=("${pkgname}-${pkgver}.crate::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
+sha256sums=('99044d0f0cdfae59b44e87709f9de12816a4a664202d8d28f0fa9adabc3c33e9')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
