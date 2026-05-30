@@ -3,7 +3,7 @@
 
 _pkgname=cvrx
 pkgname=${_pkgname}-appimage
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='A standalone companion app for ChilloutVR that expands the user experience! (binary AppImage version)'
 arch=('x86_64')
