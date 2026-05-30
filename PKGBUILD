@@ -1,5 +1,5 @@
 pkgname=gosip
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Anonymous encrypted terminal chat. No accounts. No logs. No trace."
 arch=('x86_64')
