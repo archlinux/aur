@@ -1,0 +1,5 @@
+[narwhal-bin]
+source = "github"
+github = "Nonanti/narwhal"
+use_latest_release = true
+prefix = "v"
