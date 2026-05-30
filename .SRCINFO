@@ -1,6 +1,6 @@
 pkgbase = python-pytubefix
 	pkgdesc = A pytube fork with additional features and fixes
-	pkgver = 10.7.3
+	pkgver = 10.8.1
 	pkgrel = 1
 	url = https://github.com/JuanBindez/pytubefix
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pytubefix
 	optdepends = python-aiohttp: async HTTP support (AsyncYouTube)
 	optdepends = python-nodejs-wheel: bot-guard and nsig/sig JS execution
 	provides = pytubefix
-	source = python-pytubefix-10.7.3.zip::https://github.com/JuanBindez/pytubefix/archive/refs/tags/v10.7.3.zip
-	sha256sums = 6cf918bc10b023a4707087e9a66ea4e29097cd98753f499399c575f92aaa917f
+	source = python-pytubefix-10.8.1.zip::https://github.com/JuanBindez/pytubefix/archive/refs/tags/v10.8.1.zip
+	sha256sums = 1051fcf62a456caf42cc3c5fa15dc0adaa02b329d4f2b6ceffe58c8220b6fa1d
 
 pkgname = python-pytubefix
