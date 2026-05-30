@@ -1,25 +1,25 @@
 # Maintainer: Vladislav <your@email.com>
 pkgname=fluorine-manager-bin
-pkgver=0.1.3
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A native Linux mod manager for Bethesda and other games, built on MO2"
 arch=('x86_64')
 url="https://github.com/SulfurNitride/Fluorine-Manager"
 license=('GPL-3.0-or-later')
-depends=('fuse3' 'gtk3')
+depends=('fuse3''gtk3')
 provides=('fluorine-manager')
 conflicts=('fluorine-manager')
 options=(!strip)
 
 # The upstream tag appends '-A' to the version number
-_tag="${pkgver}-A"
+_tag="${pkgver}"
 
-source=("Fluorine-Manager-${pkgver}.zip::https://github.com/SulfurNitride/Fluorine-Manager/releases/download/${_tag}/Fluorine-Manager.zip")
-sha256sums=('5d9f74114798ee70fb96d7666ba73344feae168b15c1d65bb89630f7b45cfca8')
+source=("fluorine-manager-${pkgver}.tar.gz::https://github.com/SulfurNitride/Fluorine-Manager/releases/download/v0.2.2/fluorine-manager-0.2.2.tar.gz")
+sha256sums=('6b7b0ed8e36dc026e298bc5bca4352a2dd0a2658830e0530275f714ec85c99be')
 
 package() {
     # The zip extracts to a 'Fluorine-Manager' directory
-    cd "$srcdir"
+    cd "$srcdir/fluorine-manager"
 
     # Install the entire app bundle to /opt
     install -dm755 "${pkgdir}/opt/fluorine-manager"
@@ -56,7 +56,6 @@ export LD_LIBRARY_PATH="${RUN}/lib"
 
 export MO2_BASE_DIR="${RUN}"
 export MO2_PLUGINS_DIR="${RUN}/plugins"
-export MO2_DLLS_DIR="${RUN}/dlls"
 
 unset PYTHONPATH PYTHONNOUSERSITE PYTHONHOME MO2_PYTHON_DIR
 
