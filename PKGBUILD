@@ -35,7 +35,7 @@ package() {
     # Replace npm-installed symlink with wrapper that sets npm_config_prefix
     # so npx can find command-code installed via pacman/AUR
     rm "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm754 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<'WRAPPER'
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<'WRAPPER'
 #!/bin/bash
 export npm_config_prefix=/usr
 exec node /usr/lib/node_modules/taste/dist/index.mjs "$@"
