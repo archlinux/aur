@@ -1,6 +1,6 @@
 # Maintainer: Eric Bakker <musqz at mf dot com>
 pkgname=forum-scout-qt
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Arch-focused multi-forum search tool (Qt/PyQt6 edition)"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
 )
 checkdepends=('desktop-file-utils')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('86c2f56eef49fd2d44e361684e830ccac8f20bbd97c7130a1139d21175a128ad')
+sha256sums=('a59ffe97aa82ba6a08e74545ace669c68e00511cec13afbc16a09989b44d4904')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -23,13 +23,13 @@ prepare() {
 
 check() {
   cd "$pkgname-$pkgver"
-  desktop-file-validate "$pkgname.desktop"
+  desktop-file-validate "forum-scout.desktop"
 }
 
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname.py" "$pkgdir/usr/bin/forum-scout"
-  install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "forum-scout.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 forums.conf -t "$pkgdir/usr/share/forum-scout/"
   install -Dm644 translations/*.json -t "$pkgdir/usr/share/forum-scout/translations/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
