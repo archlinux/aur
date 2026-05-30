@@ -47,4 +47,8 @@ package() {
 
     install -Dm644 "${pkgdir}/opt/yandex-music/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
     install -Dm644 "${pkgdir}/opt/yandex-music/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
+
+    # add to the $PATH
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/opt/yandex-music/yandexmusic" "${pkgdir}/usr/bin/yandex-music"
 }
