@@ -1,0 +1,18 @@
+pkgbase = firefox-extension-location-guard
+	pkgdesc = Hide your geographic location from websites.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/chatziko/location-guard
+	arch = any
+	groups = firefox-addons
+	license = LicenseRef-unknown
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = unzip
+	makedepends = zip
+	makedepends = git
+	optdepends = firefox
+	source = source::git+https://github.com/chatziko/location-guard.git#tag=v2.5.0
+	b2sums = 4ef762fd709a32b22b5dbc0376680db33dc646ece8168a686fc72f02ab9d39fa1cfe3d26fa803abdbaae98b4b9162c1d156571b9fc96b821adbfd83cfe3e753d
+
+pkgname = firefox-extension-location-guard
