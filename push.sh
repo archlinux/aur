@@ -55,8 +55,8 @@ if printf '%s' "${_archive,,}" | grep -qi "appimage"; then
   "./${_archive}" --appimage-extract >/dev/null
   cp "squashfs-root/${desktop}" "${newdesktop}"
   cp "squashfs-root/${icon}" "${newicon}"
-  sed -i '/^X-AppImage-/d;/^$/d' "${newdesktop}"
-  sed -i 's/^Exec=.*/Exec=reflex %U/' "${newdesktop}"
+  sed -i "/^X-AppImage-/d;/^$/d" "${newdesktop}"
+  sed -i "s/^Exec=.*/Exec=${_pkgname} %U/" "${newdesktop}"
   rm -rf $(readlink -f squashfs-root) squashfs-root
 fi
 # Calculate checksums
