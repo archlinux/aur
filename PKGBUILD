@@ -2,7 +2,7 @@
 # Maintainer: Eraldo Bako <eraldobako@gmail.com>
 pkgname=fconvert
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, intentional CLI file converter for images, audio, video, documents."
 arch=('x86_64')
 url="https://github.com/Eraldo-Bako/fconvert"
@@ -37,4 +37,3 @@ package() {
   install -Dm755 fconvert "$pkgdir/usr/bin/fconvert"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
