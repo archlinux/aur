@@ -1,50 +1,103 @@
 #!/usr/bin/env bash
 
+# Variables
+gui=false
+desktop="pman.desktop"
+icon="pman.png"
+
 # Get version
-oldver=$(grep "pkgver=" PKGBUILD | sed 's/pkgver="//;s/"//')
+oldver=$(grep -E "^pkgver=" PKGBUILD | sed 's/pkgver="//;s/"//')
 if [ $# -eq 1 ]; then
   pkgver="${1}"
 else
   echo "Old version: ${oldver}"
   read -p "New version: " pkgver
 fi
+
 # Check version
-if [ "${pkgver}" = "${oldver}" ]; then
+if [ "${pkgver}" = "${oldver}" ] && [ -z "${FORCE_REBUILD}" ]; then
   echo >/dev/stderr "Error: same (old) version specified - update aborted"
-  exit 1
+  exit
 fi
 
 # Get variables from PKGBUILD
-url=$(grep "source=" PKGBUILD | sed 's/source=("//;s/")//')
-pkgname=$(grep "_pkgname=" PKGBUILD | sed 's/_pkgname="//;s/"//')
-pkgrel=$(grep "pkgrel=" PKGBUILD | sed 's/pkgrel="//;s/"//')
-aur_url=$(grep "pkgname=" PKGBUILD | tail -n 1 | sed 's/pkgname="//;s/"//')
+url=$(sed -n '/^source=(/,/)/p' PKGBUILD | grep -oE 'https?://[^"]+')
+pkgname=$(grep -E "^pkgname=" PKGBUILD | sed 's/pkgname="//;s/"//')
+_pkgname=$(grep -E "^_pkgname=" PKGBUILD | sed 's/_pkgname="//;s/"//')
+_srcname=$(grep -E "^_srcname=" PKGBUILD | sed 's/_srcname="//;s/"//')
+_srcmntr=$(grep -E "^_srcmntr=" PKGBUILD | sed 's/_srcmntr="//;s/"//')
+_archive=$(grep -E "^_archive=" PKGBUILD | sed 's/_archive="//;s/"//')
+pkgrel=$(grep -E "^pkgrel=" PKGBUILD | sed 's/pkgrel="//;s/"//')
+aur_url="ssh://aur@aur.archlinux.org/${pkgname}.git"
+if [ "${gui}" = "true" ] && [ -n "${_pkgname}" ]; then
+  newdesktop="${_pkgname}.desktop"
+  newicon="${_pkgname}.png"
+else
+  newdesktop="${package}.desktop"
+  newicon="${package}.png"
+fi
+
 # Perform variable substitution
-archive_url="${url//\$\{_pkgname\}/$pkgname}"
-archive_url="${archive_url//\$\{pkgver\}/$pkgver}"
-aur_url="ssh://aur@aur.archlinux.org/${aur_url//\$\{_pkgname\}/$pkgname}.git"
+url="${url//\$\{_pkgname\}/$_pkgname}"
+url="${url//\$\{_srcname\}/$_srcname}"
+url="${url//\$\{_srcmntr\}/$_srcmntr}"
+url="${url//\$\{pkgver\}/$pkgver}"
+_archive="${_archive//\$\{_pkgname\}/$_pkgname}"
+_archive="${_archive//\$\{pkgver\}/$pkgver}"
+aur_url="${aur_url//\$\{_pkgname\}/$_pkgname}"
+pkgname="${pkgname//\$\{_pkgname\}/$_pkgname}"
 
 # Download archive
-wget -O ${pkgname}.tar.gz "${archive_url}"
+wget -qO ${_archive} "${url}"
+# Extract icon / .desktop files if appimage
+if printf '%s' "${_archive,,}" | grep -qi "appimage"; then
+  chmod +x "${_archive}"
+  "./${_archive}" --appimage-extract >/dev/null
+  cp "squashfs-root/${desktop}" "${newdesktop}"
+  cp "squashfs-root/${icon}" "${newicon}"
+  sed -i "/^X-AppImage-/d;/^$/d" "${newdesktop}"
+  sed -i "s/^Exec=.*/Exec=${_pkgname} %U/" "${newdesktop}"
+  rm -rf $(readlink -f squashfs-root) squashfs-root
+fi
 # Calculate checksums
-sha1sum=$(sha1sum ${pkgname}.tar.gz | awk '{print $1}')
-sha256sum=$(sha256sum ${pkgname}.tar.gz | awk '{print $1}')
-md5sum=$(md5sum ${pkgname}.tar.gz | awk '{print $1}')
+sha256bin=$(sha256sum ${_archive} | awk '{print $1}')
+if [ "${gui}" = "true" ]; then
+  sha256dsk=$(sha256sum ${newdesktop} | awk '{print $1}')
+  sha256ico=$(sha256sum ${newicon} | awk '{print $1}')
+fi
 # Yoink the archive - unnecessary anymore
-rm -f ${pkgname}.tar.gz
+rm -f ${_archive}
 
 # Update PKGBUILD with new values
 sed -i -E "s/^pkgver=\"[^\"]+\"/pkgver=\"$pkgver\"/" PKGBUILD
-sed -i -E "s/^sha1sums=\(\"[^\"]+\"\)/sha1sums=(\"$sha1sum\")/" PKGBUILD
-sed -i -E "s/^sha256sums=\(\"[^\"]+\"\)/sha256sums=(\"$sha256sum\")/" PKGBUILD
-sed -i -E "s/^md5sums=\(\"[^\"]+\"\)/md5sums=(\"$md5sum\")/" PKGBUILD
-
+if [ "${gui}" = "true" ]; then
+  sed -i '/^sha256sums=(/,/^)/c\
+sha256sums=(\
+  "'"$sha256bin"'"\
+  "'"$sha256dsk"'"\
+  "'"$sha256ico"'"\
+)' PKGBUILD
+else
+  sed -i -E "s/^sha256sums=\(\"[^\"]+\"\)/sha256sums=(\"$sha256bin\")/" PKGBUILD
+fi
+if [ "${pkgver}" != "${oldver}" ] && [ -n "${FORCE_REBUILD}" ]; then
+  sed -i -E "s/^pkgrel=\"[^\"]+\"/pkgrel=\"1\"/" PKGBUILD
+fi
 # Update .SRCINFO
 makepkg --printsrcinfo > .SRCINFO
 
-# In case of fire, git commit, git push, leave building
-git add .
-git commit -m "Updated ${pkgname} to ${pkgver}-${pkgrel}"
-git remote add aur ${aur_url}
-git push origin main
-git push aur main:master
+# Create git message with correct variable
+if [ -n "$_pkgname" ]; then
+  commit_msg="Updated ${pkgname//\$\{_pkgname\}/_pkgname} to ${pkgver}-${pkgrel}"
+else
+  commit_msg="Updated ${pkgname} to ${pkgver}-${pkgrel}"
+fi
+
+if [ -z "${NO_GIT_PUSH}" ]; then
+  # In case of fire, git commit, git push, leave building
+  git add .
+  git commit -m "${commit_msg}"
+  git remote add aur ${aur_url}
+  git push origin main
+  git push aur main:master
+fi
