@@ -1,7 +1,7 @@
 pkgbase = slopsmith-desktop-testing-bin
 	pkgdesc = Slopsmith desktop app (testing channel: tracks latest release including alpha/beta)
 	pkgver = 0.2.9.alpha.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/byrongamatos/slopsmith-desktop
 	arch = x86_64
 	license = AGPL-3.0-only
