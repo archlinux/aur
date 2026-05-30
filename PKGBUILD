@@ -1,5 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
+pkgauthor="xavierog"
 pkgname="moulti"
 pkgver=1.34.1
 pkgrel=1
@@ -11,8 +12,8 @@ _pypi_version=${pkgver}
 license=('MIT')
 arch=('any')
 
-_url_pypi='https://pypi.org/project/moulti/'
-_url_github='https://github.com/xavierog/moulti'
+_url_pypi="https://pypi.org/project/${pkgname}/"
+_url_github="https://github.com/${pkgauthor}/${pkgname}"
 url='https://moulti.run/'
 
 provides=("${_pypi_package}")
