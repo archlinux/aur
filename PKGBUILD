@@ -1,10 +1,10 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=gtsummary
-_pkgver=2.5.0
+_pkgver=2.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Presentation-Ready Data Summary and Analytic Result Tables"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -52,8 +52,8 @@ optdepends=(
   r-workflows
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a64d44f70a93f71dec4c4115975a7048')
-b2sums=('b65b7409f4ffe6f2e1bf00d1987673312a4bbd02270bcdce412ed1d2a093bc1c2b4e9611c44cd58e39467c96427adb7d4f08eb1ec26e1018ac101ee135d81d04')
+md5sums=('747457d083116980d259eba325afd1bd')
+b2sums=('0ecfd23b653f51c49287269df0b6a89cbf9e1c293c8fbc0ecf36dea6ce1a348b6243823b1cdd0c62744dfb39ae899a2640a822e22813e3de46bf811e2abedce9')
 
 build() {
   mkdir build

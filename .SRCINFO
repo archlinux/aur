@@ -1,7 +1,7 @@
 pkgbase = r-gtsummary
 	pkgdesc = Presentation-Ready Data Summary and Analytic Result Tables
-	pkgver = 2.5.0
-	pkgrel = 3
+	pkgver = 2.5.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=gtsummary
 	arch = any
 	license = MIT
@@ -43,8 +43,8 @@ pkgbase = r-gtsummary
 	optdepends = r-testthat
 	optdepends = r-withr
 	optdepends = r-workflows
-	source = https://cran.r-project.org/src/contrib/gtsummary_2.5.0.tar.gz
-	md5sums = a64d44f70a93f71dec4c4115975a7048
-	b2sums = b65b7409f4ffe6f2e1bf00d1987673312a4bbd02270bcdce412ed1d2a093bc1c2b4e9611c44cd58e39467c96427adb7d4f08eb1ec26e1018ac101ee135d81d04
+	source = https://cran.r-project.org/src/contrib/gtsummary_2.5.1.tar.gz
+	md5sums = 747457d083116980d259eba325afd1bd
+	b2sums = 0ecfd23b653f51c49287269df0b6a89cbf9e1c293c8fbc0ecf36dea6ce1a348b6243823b1cdd0c62744dfb39ae899a2640a822e22813e3de46bf811e2abedce9
 
 pkgname = r-gtsummary
