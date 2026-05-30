@@ -1,12 +1,14 @@
-# Maintainer: Undercat037 <deltagamesdev037@gmail.com>
+# Maintainer: Undercat037 <deltacatdeveloper@gmail.com>
 pkgname=aura-emerge
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Portage-like wrapper for Arch Linux using Aura"
 arch=('x86_64')
 url="https://github.com/Undercat037/aura-emerge"
 license=('GPL-3.0')
 depends=('aura')
+optdepends=('asp: for --abs support (build from ABS source)'
+            'gnupg: for PGP verification when building from ABS')
 makedepends=('rust' 'cargo')
 backup=('etc/emerge/world.set')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Undercat037/aura-emerge/archive/refs/heads/main.tar.gz")
