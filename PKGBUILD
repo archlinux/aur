@@ -4,7 +4,7 @@
 pkgname=comaps
 pkgver=2026.05.06_11
 _tag="v${pkgver%%_*}-${pkgver##*_}"
-pkgrel=2
+pkgrel=3
 pkgdesc="CoMaps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
 makedepends=(
@@ -43,11 +43,11 @@ depends=(
 
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
 license=('Apache-2.0')
-url="https://comaps.app"
-_source_url="https://codeberg.org/comaps/comaps.git"
-source=(comaps.desktop
+url="https://${pkgname}.app"
+_source_url="https://codeberg.org/${pkgname}/${pkgname}.git"
+source=("${pkgname}.desktop"
 	relax-protobuf-version.patch)
-sha256sums=('21f70d6c3282fcec0165c9b9f8082e081ecb50b423ae286ffd4ccde4cc794563'
+sha256sums=('5f561d2c17862076b75d6258b408e6c9ddf23c50cbe6d72007a52fe467efa5a4'
             'cc620aac73157f0f16f480c6956e40edcafa3884d9fb96e17d08d2d02da39a47')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 prepare() {
@@ -96,7 +96,7 @@ package() {
 	rm -rf "${pkgdir}/usr/share/${pkgname}/data/test_data"
 	rm -rf "${pkgdir}/usr/share/${pkgname}/data/conf"
 
-	install -dm777 "${pkgdir}/usr/share/${pkgname}/data/$(jq '.v' ${pkgname}/data/countries.txt)"
+	install -dm755 "${pkgdir}/usr/share/${pkgname}/data/$(jq '.v' ${pkgname}/data/countries.txt)"
 
 	install -Dm644 "${pkgname}/android/.idea/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 	# install -Dm755 "omim-build-debug/CoMaps" "${pkgdir}/usr/bin/comaps"
