@@ -1,6 +1,6 @@
 pkgbase = fundtracer-desktop-bin
 	pkgdesc = FundTracer - Blockchain Wallet Forensics Desktop App
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://www.fundtracer.xyz
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = fundtracer-desktop-bin
 	depends = cairo
 	depends = pango
 	depends = gcc-libs
-	source = fundtracer-desktop-1.0.5.tar.gz::https://github.com/Deji-Tech/fundtracer-by-dt/releases/download/v1.0.5/fundtracer-desktop-1.0.5-x86_64.tar.gz
-	sha256sums = 72762b43121c41a1fed75f546ec546fe9b09fcd4d4b31d3b441b40c5dfee2686
+	source = fundtracer-desktop-1.0.6.tar.gz::https://github.com/Deji-Tech/fundtracer-by-dt/releases/download/v1.0.6/fundtracer-desktop-1.0.6-x86_64.tar.gz
+	sha256sums = 16d1500f77c4e7bb685e418d7ab7b87d0227b24642a4d8710e3b7b159f6b44c8
 
 pkgname = fundtracer-desktop-bin
