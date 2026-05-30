@@ -1,7 +1,7 @@
 # Maintainer: yobson <aur@yobson.xyz>
 pkgname=gale-git
 pkgdesc='A lightweight mod manager for Thunderstore'
-pkgver=1.13.1.r0.gaf87be2
+pkgver=1.13.4.r18.gc89d4de
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Kesomannen/gale'
@@ -24,7 +24,15 @@ prepare() {
     export RUSTUP_TOOLCHAIN=stable
 
     cd "$srcdir/gale"
-    pnpm install
+    # settings in pnpm-workspace.yaml from upstream are outdated for pnpm 11
+    # causing build scripts to fail as they're not approved
+    # https://pnpm.io/settings#allowbuilds
+    cat >>"$srcdir/gale/pnpm-workspace.yaml" <<'EOF'
+allowBuilds:
+  esbuild: true
+EOF
+
+    pnpm clean-install
 
     cd "src-tauri"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
