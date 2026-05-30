@@ -1,76 +1,102 @@
-# Maintainer: Parker Reed <parker.l.reed@gmail.com>
+# Maintainer: Jay Paul <elitedevx@gmail.com>
+#
 # Generate new listing of cores: 
 # pacaur -s libretro | sed 's/aur\///' | sed 'N;s/\n/ /' | awk '{print $1}'
-# This package tracks the latest source code on GitHub
-# Clone specific tags:
-
+#
+# This package tracks the latest source code on GitHub.
+# Do not mark as out-of-date unless there are issues with the build!
+#
 # Cloning specific tags:
-#source=("git+https://github.com/libretro/RetroArch.git#tag=v${pkgver}"
-#        'git+https://github.com/KhronosGroup/glslang.git#commit=a4a4d5e'
-#        'git+https://github.com/KhronosGroup/SPIRV-Cross.git#commit=5c24d99')
+#   source=("git+https://github.com/libretro/RetroArch.git#tag=v${pkgver}")
+#
+# Optional build dependency:
+#   libsmb2-git: enables support for built-in SMB
 
 pkgname=retroarch-git
-pkgver=1.22.2.r266.dc44c0814a
+pkgver=1.22.2.r1980.05c5852a70
 pkgrel=1
-#epoch=1
-_gitname=RetroArch
 pkgdesc='Reference frontend for the libretro API (Git-latest)'
 arch=('i686' 'x86_64')
 conflicts=('retroarch')
 provides=('retroarch')
-url='http://www.libretro.com/'
-license=('GPL')
+url='https://www.libretro.com/'
+license=('GPL-3.0-only')
 groups=('libretro')
-depends=('alsa-lib' 'gcc-libs' 'glibc' 'libdrm' 'libgl' 'libpulse' 'libusb'
-         'libx11' 'libxcb' 'libxext' 'libxinerama' 'libxkbcommon' 'libxv'
-         'libxxf86vm' 'mesa' 'openal' 'sdl2' 'wayland' 'zlib'
-         'libass.so' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
-         'libfreetype.so' 'libswresample.so' 'libswscale.so' 'libudev.so'
-	 'nvidia-cg-toolkit' 'perl-net-dbus')
-makedepends=('git' 'vulkan-icd-loader')
+depends=(
+  alsa-lib
+  dbus
+  ffmpeg
+  fontconfig
+  fribidi
+  gcc-libs
+  glibc
+  libass.so
+  libdrm
+  libfreetype.so
+  libgl
+  libpipewire
+  libpulse
+  libsixel
+  libudev.so
+  libusb
+  libx11
+  libxcb
+  libxext
+  libxinerama
+  libxkbcommon
+  libxrandr
+  libxxf86vm
+  libxv
+  libxss
+  mbedtls
+  mesa
+  openssl
+  qt6-base
+  sdl2
+  v4l-utils
+  wayland
+  zlib
+)
+
+makedepends=(
+  git
+  libdecor
+  vulkan-icd-loader
+  wayland-protocols
+)
+
 install=$pkgname.install
-optdepends=('libretro-overlays-git: Collection of overlays'
-	    'libretro-shaders-all-git: Collection of shaders'
-	    'retroarch-assets-xmb: XMB menu assets'
-	    'retroarch-autoconfig-udev-git: udev joypad autoconfig (git latest)'
-	    'xdg-utils-git: Includes updated screensaver suspend fixes'
-	    'qt5-base: For the new WIMP interface')
+optdepends=('gamemode: GameMode support'
+            'libretro-overlays-git: Collection of overlays'
+	          'libretro-shaders-all-git: Collection of shaders'
+	          'retroarch-assets-xmb: XMB menu assets'
+	          'retroarch-autoconfig-udev-git: udev joypad autoconfig (git latest)')
 backup=('etc/retroarch.cfg')
-source=('git+https://github.com/libretro/RetroArch.git'
-        'git+https://github.com/KhronosGroup/glslang.git'
-        'git+https://github.com/KhronosGroup/SPIRV-Cross.git')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+source=('git+https://github.com/libretro/RetroArch.git')
+sha256sums=('SKIP')
 
 pkgver() {
 
-  cd $_gitname
+  cd RetroArch
   printf "%s" "$(git describe --first-parent --long --tags | sed 's/v//g;s/\([^-]*-\)g/r\1/;s/-/./g')"
-
-}
-
-prepare() {
-
-  cd $_gitname
-
-  git submodule init deps/{glslang/glslang,SPIRV-Cross}
-  git config submodule.glslang.url ../glslang
-  git config submodule.SPIRV-Cross.url ../SPIRV-Cross
-  git submodule update deps/{glslang/glslang,SPIRV-Cross}
 
 }
 
 build() {
 
-  cd $_gitname
+  cd RetroArch
 
   ./configure \
-    --prefix='/usr' \
+    --prefix=/usr \
+    --enable-builtinmbedtls \
+    --disable-builtinzlib \
+    --disable-cg \
     --disable-jack \
-    --disable-oss 
-  make clean
+    --disable-oss \
+    --enable-dbus
+
   make
+  make -C libretro-common/audio/dsp_filters
   make -C gfx/video_filters
 
 }
@@ -80,9 +106,8 @@ package() {
   cd RetroArch
 
   make DESTDIR="${pkgdir}" install
-
-  install -dm 755 "${pkgdir}"/usr/lib/retroarch/filters/{audio,video}
-  install -m 644 gfx/video_filters/*.{filt,so} "${pkgdir}"/usr/lib/retroarch/filters/video/
+  install -Dm 644 libretro-common/audio/dsp_filters/*.{dsp,so} -t "${pkgdir}"/usr/lib/retroarch/filters/audio/
+  install -Dm 644 gfx/video_filters/*.{filt,so} -t "${pkgdir}"/usr/lib/retroarch/filters/video/
 
 }
 
