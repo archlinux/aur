@@ -1,7 +1,7 @@
 # Maintainer: Zack Bartel <zack@bartel.com>
 
 pkgname=hyprwat-git
-pkgver=0.11.4
+pkgver=0.11.5
 pkgrel=1
 pkgdesc="Hyprwat - A Wayland menu tool (Git version)"
 arch=('x86_64')
