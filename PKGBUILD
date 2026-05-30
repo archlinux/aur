@@ -3,7 +3,7 @@
 
 pkgname=qoredb-bin
 _pkgname=qoredb
-pkgver=0.1.28
+pkgver=0.1.29
 pkgrel=1
 pkgdesc="Next gen database client — lightweight alternative to DBeaver/pgAdmin (binary release)"
 arch=('x86_64')
