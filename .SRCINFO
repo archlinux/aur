@@ -8,7 +8,7 @@ pkgbase = eden-bin
 	depends = zlib
 	depends = hicolor-icon-theme
 	options = !strip
-	source_x86_64 = Eden-Linux-0.2.0-amd64.AppImage::https://git.eden-emu.dev/eden-emu/eden/releases/download/v0.2.0/Eden-Linux-v0.2.0-amd64-gcc-standard.AppImage
+	source_x86_64 = Eden-Linux-0.2.0-amd64.AppImage::https://stable.eden-emu.dev/v0.2.0/Eden-Linux-v0.2.0-amd64-gcc-standard.AppImage
 	sha256sums_x86_64 = 167d7ecfcb145b0b1ff84761a6e00067ec11288c35aba1d5f4643a1922bd579a
 
 pkgname = eden-bin
