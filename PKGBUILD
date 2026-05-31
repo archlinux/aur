@@ -5,7 +5,7 @@
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.2.0.r44.g8fd495f
+pkgver=0.2.0.r59.gbd2d344
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,8 @@ url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 provides=('eden')
 conflicts=('eden' 'eden-beta' 'eden-bin' 'eden-preview-bin')
-depends=('libusb' 'libva' 'qt6-webengine' 'brotli' 'qt6-charts' 'hicolor-icon-theme' 'qt6-base' 'sdl3' 'quazip-qt6' 'enet' 'cubeb'
-	 'fmt' 'boost-libs' 'qt6-multimedia' 'libdrm' 'libstdc++' 'libgcc' 'libx11' 'glibc' 'opus' 'zstd' 'zlib' 'lz4' 'openssl')
-makedepends=('git' 'cmake' 'catch2' 'boost' 'spirv-headers' 'vulkan-headers' 'vulkan-utility-libraries'
-	     'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'qt6-tools' 'nasm' 'opencl-headers'
-	     'doxygen')
+depends=('libusb' 'libva' 'qt6-webengine' 'brotli' 'qt6-charts' 'hicolor-icon-theme' 'qt6-base' 'sdl3' 'gcc-libs' 'ffmpeg' 'zydis' 'zycore-c' 'quazip-qt6' 'mbedtls' 'enet' 'cubeb' 'game-devices-udev')
+makedepends=('git' 'cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen' 'cpp-jwt')
 optdepends=('gamemode: Gamemoded support')
 options=(!debug)
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git")
@@ -52,8 +49,6 @@ build() {
 package() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir/" cmake --install build
-	install -Dm644 "$srcdir/$_pkgname/dist/72-eden-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-eden-input.rules"
-	sed -i 's/KERNEL==/ACTION!="remove", KERNEL==/' "$pkgdir/usr/lib/udev/rules.d/72-eden-input.rules"
 	cd "$srcdir/$_pkgname/LICENSES"
 	for file in *.txt;
 	do
