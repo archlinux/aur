@@ -10,7 +10,7 @@ license=('custom')
 
 source=("https://github.com/BlackArch/blackarch-artwork/archive/refs/heads/master.tar.gz")
 sha256sums=('SKIP')
-
+install=blackarch-wallpapers.install
 package() {
     cd "$srcdir"/blackarch-artwork-*/wallpaper
 
