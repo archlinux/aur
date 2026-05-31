@@ -1,0 +1,12 @@
+pkgbase = jellyfin-desktop-bin
+	pkgdesc = Jellyfin Desktop Client
+	pkgver = 0.r807.3f2eb84
+	pkgrel = 1
+	url = https://github.com/jellyfin/jellyfin-desktop
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	source = https://nightly.link/jellyfin/jellyfin-desktop/workflows/build-linux-appimage/main/linux-appimage-x86_64.zip
+	sha256sums = af9c435fba1d15a3b6e3e3dca465121b37a54f4c844fd72c3aae817010ad99a9
+
+pkgname = jellyfin-desktop-bin
