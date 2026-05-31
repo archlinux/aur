@@ -1,6 +1,6 @@
 pkgbase = openaquaero
 	pkgdesc = Suite di controllo per Aquaero 6 LT
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/raffaele-90/openaquaero
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = openaquaero
 	depends = pyside6
 	depends = python-hidapi
 	optdepends = python-pynvml: supporto lettura sensori GPU Nvidia
-	source = openaquaero-3.0.1.tar.gz::https://github.com/raffaele-90/openaquaero/archive/refs/tags/v3.0.1.tar.gz
-	sha256sums = 4eb2449087a7e4ba39ce7a35e83bf6bb06298353d4b2e86604d74c6375170baf
+	source = openaquaero-3.0.2.tar.gz::https://github.com/raffaele-90/openaquaero/archive/refs/tags/v3.0.2.tar.gz
+	sha256sums = f48d401145810173c05a207609205698bdadfb6cc419b61b7bbcb9bd0f7155e9
 
 pkgname = openaquaero
