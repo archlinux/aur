@@ -1,5 +1,5 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
-_versioncode=34
+_versioncode=36
 pkgname=fluent-lyrics-bin
 pkgver="0.0.$_versioncode"
 pkgrel=1
@@ -14,6 +14,9 @@ depends=(
   'json-glib'
   'glycin'
 )
+optdepends=(
+  'libayatana-appindicator: for tray function to work (Recommended)'
+)
 provides=('fluent-lyrics')
 conflicts=('fluent-lyrics')
 source=(
@@ -22,7 +25,7 @@ source=(
   "fluent-lyrics.sh"
   "fluent-lyrics.png::${url}/raw/main/assets/icons/logo-rounded.png"
   )
-sha256sums=('50c3837a2bb062d2369880e8cec9a44ae3919a63b7cef4c49b41a59d38d60006'
+sha256sums=('dc67015d4dd2f40a03befac46b50a64eefd1f8d8eaaa14d447e18cf25b537793'
             '29a9f40ec748ba132cd776862f99f84442f8018e1d4b6996691ee9ddf7ad917d'
             '22bda8e153e0a8b97c2657a1fb49c9d0907b93e0b83e2a15664019d14ae97f3e'
             '8e331b6e8925e78030fdc86417e7f8fbf987a30261d1cf09432e5baaff027282')
