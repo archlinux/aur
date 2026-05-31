@@ -1,0 +1,14 @@
+pkgbase = actual-cli
+	pkgdesc = CLI for Actual Budget
+	pkgver = 26.5.2
+	pkgrel = 1
+	url = https://github.com/actualbudget/actual
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = cli-26.5.2.tgz
+	source = https://registry.npmjs.org/@actual-app/cli/-/cli-26.5.2.tgz
+	sha256sums = b92ef7062bc7b18e0aa9d2c1196c92acf20bfca18b30371ea9eb7737c9e4f79a
+
+pkgname = actual-cli
