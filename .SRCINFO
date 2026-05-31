@@ -1,13 +1,17 @@
 pkgbase = grons
-	pkgdesc = Terminal UI for managing cron jobs
-	pkgver = 0.0.0
+	pkgdesc = Terminal UI for managing cron jobs.
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/gavasc/grons
-	arch = x86_64
 	arch = aarch64
+	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
-	depends = glibc
-
+	conflicts = grons
+	provides = grons
+	
+	source = https://github.com/gavasc/grons/releases/download/v0.1.4/grons_0.1.4.tar.gz
+	sha256sums = 9ca694dd2d9695c34ba310be8b4cd5363a309be5c44c345cf4b9e55150f7126b
+	
 pkgname = grons
