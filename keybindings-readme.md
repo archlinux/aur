@@ -1,0 +1,1 @@
+Put a keybindings file to `~/.config/SchildiChatRevenge/keybindings.toml`. Once the config exists, schildichat-revenge will reload its settings automatically whenever you edit the file even while SchildiChat is running.

@@ -5,8 +5,8 @@ pkgname="${_pkgname}-git"
 # 2026-05-28: Seems to work with both OpenJDK 21 and OpenJDK 26. We do not enforce a specific Java version. But make sure that `archlinux-java` is set to a version where an SDK and not only a JRE is installed.
 #_jdkversion=21
 #_jdkversion=26
-pkgver=26.05.05+130.r2772.20260528.77a4ce84
-pkgrel=3
+pkgver=26.05.05+143.r2785.20260531.b631c124
+pkgrel=1
 pkgdesc="Matrix client for desktop written in Kotlin and using the Matrix Rust SDK, designed to be fully keyboard controllable, multi account, hirarchical spaces. Design in the tradition of SchildiChat clients."
 arch=(
   "aarch64"
@@ -71,10 +71,12 @@ optdepends=()
 source=(
   "${_pkgname}::git+${_url_schildirevenge_source}.git"        # schildi-revenge source code.
   "matrix-rust-sdk-schildi::git+${_url_matrix_rust_sdk}.git"  # SpiritCroc's fork of matrix-rust-sdk.
+  'keybindings-readme.md'
 )
 sha256sums=(
   'SKIP'  # schildi-revenge source code.
   'SKIP'  # SpiritCroc's fork of matrix-rust-sdk.
+  '63b85cc65b586e252565a2c33b28c87021cb1698e6352e2e662508cf4059fc8e'  # 'keybindings-readme.md'.
 )
 #options+=('!lto' 'debug' '!strip')
 _gradle_default_options=(
@@ -151,6 +153,9 @@ build() {
 
   #printf '%s\n' " --> DEBUG INFO: JAVA_HOME: '${JAVA_HOME}'."
 
+  #printf '%s\n' " --> Building using 'gradle composeApp:packageReleaseUberJarForCurrentOs' in non-offline mode ..."
+  #gradle -g "${GRADLE_USER_HOME}" "${_gradle_default_options[@]}" composeApp:packageReleaseUberJarForCurrentOs
+
   printf '%s\n' " --> Building using 'gradle composeApp:createReleaseDistributable' in non-offline mode ..."  # Yes, this needs to download stuff at several stages during build :-(.
   gradle -g "${GRADLE_USER_HOME}" "${_gradle_default_options[@]}" composeApp:createReleaseDistributable
 }
@@ -214,12 +219,10 @@ package() {
   #find "${pkgdir}" -name '*.png' -type f | parallel -j "`nproc`" zopflipng -m -y {} {}
 
   printf '%s\n' " --> Installing basic documentation ..."
-  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log README.md 
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log README.md "${srcdir}/keybindings-readme.md"
   cp --no-dereference --preserve=links -v AGENTS.md CLAUDE.md "${pkgdir}/usr/share/doc/${_pkgname}"/ # Copy those to preserve symlinks.
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" composeApp/src/jvmMain/composeResources/files/keybindings-default.toml
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" example-config/keybindings-advanced.toml
-  printf '%s\n' 'Put a keybindings file to `~/.config/SchildiChatRevenge/keybindings.toml`. Once the config exists, schildichat-revenge will reload its settings automatically whenever you edit the file even while SchildiChat is running.' > "${pkgdir}/usr/share/doc/${_pkgname}/keybindings-readme.txt"
-  chmod 644 "${pkgdir}/usr/share/doc/${_pkgname}/keybindings-readme.txt"
 
   printf '%s\n' " --> Installing license ..."
   install -Dvm644 LICENSE                  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.schildichat-revenge"

@@ -1,7 +1,7 @@
 pkgbase = schildichat-revenge-git
 	pkgdesc = Matrix client for desktop written in Kotlin and using the Matrix Rust SDK, designed to be fully keyboard controllable, multi account, hirarchical spaces. Design in the tradition of SchildiChat clients.
-	pkgver = 26.05.05+130.r2772.20260528.77a4ce84
-	pkgrel = 3
+	pkgver = 26.05.05+143.r2785.20260531.b631c124
+	pkgrel = 1
 	url = https://schildi.chat/revenge/
 	arch = aarch64
 	arch = armv7h
@@ -35,9 +35,9 @@ pkgbase = schildichat-revenge-git
 	depends = libxrender
 	depends = libxtst
 	depends = zlib
-	provides = schildichat-revenge=26.05.05+130.r2772.20260528.77a4ce84
-	provides = schildi-revenge=26.05.05+130.r2772.20260528.77a4ce84
-	provides = schildi-revenge-git=26.05.05+130.r2772.20260528.77a4ce84
+	provides = schildichat-revenge=26.05.05+143.r2785.20260531.b631c124
+	provides = schildi-revenge=26.05.05+143.r2785.20260531.b631c124
+	provides = schildi-revenge-git=26.05.05+143.r2785.20260531.b631c124
 	conflicts = schildichat-revenge
 	conflicts = schildichat-revenge-bin
 	conflicts = schildi-revenge
@@ -45,7 +45,9 @@ pkgbase = schildichat-revenge-git
 	replaces = schildi-revenge-git<=26.05.05+130.r2772.20260528.77a4ce84
 	source = schildichat-revenge::git+https://github.com/SchildiChat/schildi-revenge.git
 	source = matrix-rust-sdk-schildi::git+https://github.com/SchildiChat/matrix-rust-sdk.git
+	source = keybindings-readme.md
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 63b85cc65b586e252565a2c33b28c87021cb1698e6352e2e662508cf4059fc8e
 
 pkgname = schildichat-revenge-git
