@@ -13,7 +13,7 @@
 # Originally based on a Debian Squeeze package
 
 pkgname=zoneminder
-pkgver=1.38.2
+pkgver=1.38.3
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
@@ -50,16 +50,16 @@ install=${pkgname}.install
 source=("https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.tar.gz"
         'https://github.com/FriendsOfCake/crud/archive/v3.2.0.tar.gz'
         'https://github.com/ZoneMinder/CakePHP-Enum-Behavior/archive/1.0-zm.tar.gz'
-        'https://github.com/ZoneMinder/RtspServer/archive/24e6b7153aa561ecc4123cc7c8fc1b530cde0bc9.tar.gz'
+        'https://github.com/ZoneMinder/RtspServer/archive/a071599575f60a6f1f424e1f9b408dad7da734a8.tar.gz'
         'https://github.com/chmike/CxxUrl/archive/eaf46c0207df24853a238d4499e7f4426d9d234c.tar.gz'
         'zoneminder-nginx.conf'
         'zoneminder-httpd.conf'
         'zoneminder-php.ini'
         'fcgiwrap-multiwatch.service')
-b2sums=('57cc81c7e605af1d1d8278019145cfc230a2fae43efdf6c7469aa7d74b244ceb0245fd73d15ae3d3198f131efb90150cf73c0ecbd094db11f8559a9697fc3219'
+b2sums=('c5ce7a933940cee7299eb22f278094be5cb95d631ca5f651ee6e3dd56a26bb6e03b4ce9e00210bc88ac3605bfe053e949bb757d483165513aea1f44e842cc896'
         'a6d2c6960515f5b3402c306eb28710d00abce19d07a38a76a841928b69573cb30608f50e7ad458dd8771bb9267e56df68c1037019abb7b5eec4d990a33f9c234'
         '7d5b18e1a7a21c967128745591870cd5bf5b380c55a62f7c465f7cf1fd718961fb392b5bc80c941bf9a9819e7c87829ca6217d19505c655ffdc859e50662659c'
-        '79fc6560c09127b6b9e0af7ffaaac7180882a0798abb5238fd824470f41921ab47e22e3f55c24f7ad79f0a03c722e42a5720cf633835e9e326ae7666f07b6bbc'
+        'b6b68daf6a6c90d492ce41a4827ad98ed64bfcfd7c3c1f55686db8e7186fc6dbd0d7730382279e2b1fc0a208eb67a24bbf35b8889092887674ee7d7381f5d361'
         'fedbb69dd0ed76b07ee8c62de116067dad392614423b5f83c5395ee5de609fedbee2eb4cca0f31dab1c5f4551a4c2ff0e3ac356c7f93f292aad8332e1ab1a0fe'
         '3886117b5471ab62a291a6d068f2bc168c1467da512a68b049a02046ab15ced1078cd96e342222ff8393858ce206ed03fe102b09db4534b97bd3b95d76c3e8cd'
         '9ce42fe44f2c3c1a1b205d36e08e0703519d3bf955c14538171f4b9eabfeae8847fda37b53bfded8e371e6765ef9ecc6a59d3a719ddc1b0acf4f486a925ed6ba'
@@ -79,7 +79,7 @@ prepare () {
     # Move third-party plugins into place
     mv ../crud-3.2.0/* web/api/app/Plugin/Crud
     mv ../CakePHP-Enum-Behavior-1.0-zm/* web/api/app/Plugin/CakePHP-Enum-Behavior
-    mv ../RtspServer-24e6b7153aa561ecc4123cc7c8fc1b530cde0bc9/* dep/RtspServer
+    mv ../RtspServer-a071599575f60a6f1f424e1f9b408dad7da734a8/* dep/RtspServer
     mv ../CxxUrl-eaf46c0207df24853a238d4499e7f4426d9d234c/* dep/CxxUrl
 }
 
