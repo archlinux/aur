@@ -7,13 +7,13 @@ pkgver=0.05
 pkgrel=24.4
 pkgdesc="Perl interface to libnotify"
 arch=('i686' 'x86_64')
-url="http://metacpan.org/release/${_cpanname}"
+url="https://metacpan.org/release/${_cpanname}"
 license=('LGPL')
 depends=('gtk2-perl' 'libnotify')
 makedepends=('perl-extutils-pkgconfig' 'perl-extutils-depends'
 	     'perl-module-install' 'perl-module-build-xsutil')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/$_cpanname-$pkgver.tar.gz"
+source=("https://search.cpan.org/CPAN/authors/id/F/FL/FLORA/$_cpanname-$pkgver.tar.gz"
 	"libnotify.patch")
 sha512sums=('071144ad4a5670b8b2451baf358c4a88'
          'c54d841861c9adfaa77b80bdf9cb0f98')
