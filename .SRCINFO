@@ -1,0 +1,22 @@
+pkgbase = waybar-wireguard
+	pkgdesc = Waybar module: WireGuard tunnel state and toggle
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mikek/waybar_wireguard
+	install = waybar-wireguard.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = libcap
+	depends = glibc
+	depends = libgcc
+	depends = waybar
+	depends = gtk3
+	depends = glib2
+	optdepends = wireguard-tools: for the default wg-quick up/down click commands
+	source = waybar-wireguard-0.1.0.tar.gz::https://github.com/mikek/waybar_wireguard/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = a7a9c1bac361aeac3bfe1ce8fc16f96f13d98bd88e345533f1260b2bac72bc67
+
+pkgname = waybar-wireguard
