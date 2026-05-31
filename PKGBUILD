@@ -17,7 +17,7 @@ source=("git+https://github.com/trusteddomainproject/OpenARC.git#commit=${_commi
         configure.ac.patch
 	openarc-headerdebug.patch
 	0001-Remove-t-from-the-list-of-required-AS-tags.patch
-        openarc.service
+        openarc-legacy.service
         openarc.sysusers
         openarc.tmpfiles)
 sha256sums=('51fe59502f4428e5516b31ef1e63f33bddc5b4fb9d0c7752a212ec1918b18145'

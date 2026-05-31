@@ -8,5 +8,5 @@
 !.SRCINFO
 !openarc.sysusers
 !openarc.tmpfiles
-!openarc.service
+!openarc-legacy.service
 !*.patch
