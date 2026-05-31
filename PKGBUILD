@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.7.23
+pkgver=1.7.24
 _electronversion=41
 pkgrel=1
 pkgdesc="Desktop app for ente Photos.(Prebuilt version)"
@@ -19,8 +19,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
-sha256sums_aarch64=('06325ca14368698ebc5bcd8fe4483c37a9b03b41c879b45113fd1e0192c33f5d')
-sha256sums_x86_64=('ec5830ce93018a04c0673fe69ce773250d45fdf099c272461ab4b72af7dd0fab')
+sha256sums_aarch64=('f125f1c46c4e6f04b3b3266beb43b66653cc67c1534ac133ddf097797f5a1745')
+sha256sums_x86_64=('36dae299da33f98ca531b2a74126d6b396612187d8dac3535d1e92096626f237')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)

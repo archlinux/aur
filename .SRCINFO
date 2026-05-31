@@ -1,6 +1,6 @@
 pkgbase = ente-desktop-bin
 	pkgdesc = Desktop app for ente Photos.(Prebuilt version)
-	pkgver = 1.7.23
+	pkgver = 1.7.24
 	pkgrel = 1
 	url = https://github.com/ente-io/photos-desktop
 	arch = aarch64
@@ -8,11 +8,11 @@ pkgbase = ente-desktop-bin
 	license = GPL-3.0-only
 	depends = electron41
 	depends = ffmpeg
-	provides = ente-desktop=1.7.23
+	provides = ente-desktop=1.7.24
 	conflicts = ente-desktop
-	source_aarch64 = ente-desktop-1.7.23-aarch64.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.7.23/ente-1.7.23-aarch64.pacman
-	sha256sums_aarch64 = 06325ca14368698ebc5bcd8fe4483c37a9b03b41c879b45113fd1e0192c33f5d
-	source_x86_64 = ente-desktop-1.7.23-x86_64.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.7.23/ente-1.7.23-x64.pacman
-	sha256sums_x86_64 = ec5830ce93018a04c0673fe69ce773250d45fdf099c272461ab4b72af7dd0fab
+	source_aarch64 = ente-desktop-1.7.24-aarch64.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.7.24/ente-1.7.24-aarch64.pacman
+	sha256sums_aarch64 = f125f1c46c4e6f04b3b3266beb43b66653cc67c1534ac133ddf097797f5a1745
+	source_x86_64 = ente-desktop-1.7.24-x86_64.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.7.24/ente-1.7.24-x64.pacman
+	sha256sums_x86_64 = 36dae299da33f98ca531b2a74126d6b396612187d8dac3535d1e92096626f237
 
 pkgname = ente-desktop-bin
