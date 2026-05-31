@@ -3,7 +3,7 @@ pkgver=1.0.2
 pkgrel=1
 pkgdesc="Hoshi desktop app"
 arch=('x86_64')
-url="https://github.com/dot-fx/hoshi"
+url="https://github.com/hoshi-io/hoshi"
 license=('AGPL')
 
 depends=(
