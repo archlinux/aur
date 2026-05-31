@@ -2,7 +2,7 @@
 
 pkgname=goodix5385
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fingerprint GUI for Goodix 5385 sensor — enroll, verify, delete, sudo auth toggle."
 arch=('any')
 url="https://github.com/sanecodeguy/Goodix5385"
