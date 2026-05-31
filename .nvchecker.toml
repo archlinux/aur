@@ -1,0 +1,5 @@
+[colout]
+source = "github"
+github = "nojhan/colout"
+use_max_tag = true
+prefix = "v"
