@@ -8,11 +8,11 @@ pkgbase = goodix5385
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = setuptools
+	makedepends = python-setuptools
 	depends = fprintd
 	depends = python
 	depends = python-pyusb
-	depends = python-pyside6
+	depends = pyside6
 	source = goodix5385-0.3.0.tar.gz::https://github.com/sanecodeguy/Goodix5385/archive/v0.3.0.tar.gz
 	sha256sums = SKIP
 

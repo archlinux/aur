@@ -11,9 +11,9 @@ depends=(
     'fprintd'
     'python'
     'python-pyusb'
-    'python-pyside6'
+    'pyside6'
 )
-makedepends=('python-build' 'python-installer' 'python-wheel' 'setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sanecodeguy/Goodix5385/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
