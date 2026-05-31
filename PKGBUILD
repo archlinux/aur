@@ -6,8 +6,7 @@ pkgdesc="Arch focused forum search tool (GTK4)"
 arch=('any')
 url="https://github.com/musqz/forum-scout"
 license=('MIT')
-provides=('forum-scout')
-conflicts=('forum-scout')
+conflicts=('forum-scout-qt')
 depends=(
   'gtk4'
   'python-gobject'

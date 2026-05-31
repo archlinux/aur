@@ -9,8 +9,7 @@ pkgbase = forum-scout
 	depends = gtk4
 	depends = python-gobject
 	depends = python-requests
-	provides = forum-scout
-	conflicts = forum-scout
+	conflicts = forum-scout-qt
 	source = forum-scout-0.6.4.tar.gz::https://github.com/musqz/forum-scout/archive/refs/tags/v0.6.4.tar.gz
 	sha256sums = 278c65712481138f553db0ae92d0619086c060cd72c831f33c160c8424f66d6b
 
