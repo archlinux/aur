@@ -1,12 +1,12 @@
 # Maintainer: robserob <robin at robserob.dk>
 pkgname=vpin-studio-client-bin
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Client to connect to Vpin Studio servers, an open source pinball cabinet manager"
 arch=('x86_64')
 url="https://github.com/syd711/vpin-studio"
 license=('MIT')
-depends=('java-openjfx=25')
+depends=('zulu-jre25-fx')
 makedepends=('unzip' 'cmake')
 source=("${pkgname}-${pkgver}.zip::https://github.com/syd711/vpin-studio/releases/download/${pkgver}/VPin-Studio-Client-linux-x64.zip"
 	      "vpin-studio-client.desktop"
