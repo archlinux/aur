@@ -21,6 +21,7 @@ pkgbase = hyprtoolkit-frozen
 	depends = pango
 	depends = pixman
 	depends = wayland
+	provides = hyprtoolkit
 	provides = hyprtoolkit-frozen
 	provides = libhyprtoolkit.so
 	conflicts = hyprtoolkit-git
