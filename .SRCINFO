@@ -1,7 +1,7 @@
 pkgbase = goodix5385
 	pkgdesc = Fingerprint GUI for Goodix 5385 sensor — enroll, verify, delete, sudo auth toggle.
 	pkgver = 0.3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/sanecodeguy/Goodix5385
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = goodix5385
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = fprintd
+	depends = libfprint-goodix53x5
 	depends = python
 	depends = python-pyusb
 	depends = pyside6

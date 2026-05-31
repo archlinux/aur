@@ -2,13 +2,14 @@
 
 pkgname=goodix5385
 pkgver=0.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Fingerprint GUI for Goodix 5385 sensor — enroll, verify, delete, sudo auth toggle."
 arch=('any')
 url="https://github.com/sanecodeguy/Goodix5385"
 license=('MIT')
 depends=(
     'fprintd'
+    'libfprint-goodix53x5'
     'python'
     'python-pyusb'
     'pyside6'
