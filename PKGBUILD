@@ -1,9 +1,9 @@
-# Maintainer: atvknox <atvknox at gmail dot com
-# Ex-maintainer: Christopher Cooper <christopher@cg505.com>
+# Maintainer: Shridhyan V Hegde <5hridhyan>
+# Contributor: Christopher Cooper <christopher@cg505.com>
 
 pkgname=happy-cli
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Mobile and Web client for Claude Code and Codex - remote control your AI coding agent"
 arch=('any')
 url="https://github.com/slopus/happy"
@@ -24,23 +24,25 @@ prepare() {
 build() {
     cd "happy-cli-1.1.8"
     
-    # Configure local pnpm cache directory inside srcdir
     export PNPM_HOME="$srcdir/.pnpm-home"
     
     pnpm install --frozen-lockfile --aggregate-output
     
-    # Run the build script straight out of the specific package folder directory
-    cd packages/happy-cli
-    pnpm build
+    # Compile the TypeScript distribution chunks
+    pnpm --filter={packages/happy-cli} build
+    
+    # Clean out any leftover dirty directory fragments from prior aborted builds
+    rm -rf "$srcdir/isolated-dist"
+    
+    # Isolate happy-cli and its full dependency tree using the legacy hoisting behavior required by pnpm v10
+    pnpm --filter={packages/happy-cli} deploy --legacy --prod "$srcdir/isolated-dist"
 }
 
 package() {
-    cd "happy-cli-1.1.8/packages/happy-cli"
-
     install -dm755 "$pkgdir/usr/"{lib/$pkgname,bin}
 
-    # Copy distribution files and node modules required at runtime
-    cp -r dist bin scripts package.json node_modules "$pkgdir/usr/lib/$pkgname/"
+    # Copy the isolated distribution folder which includes ALL hoisted runtime modules
+    cp -r "$srcdir/isolated-dist/"* "$pkgdir/usr/lib/$pkgname/"
 
     # Clean up build-only utilities if they exist
     rm -f "$pkgdir/usr/lib/$pkgname/scripts/unpack-tools.cjs"
@@ -51,6 +53,5 @@ package() {
     ln -s /usr/lib/$pkgname/bin/happy.mjs "$pkgdir/usr/bin/happy"
     ln -s /usr/lib/$pkgname/bin/happy-mcp.mjs "$pkgdir/usr/bin/happy-mcp"
 
-    install -Dm644 ../../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "happy-cli-1.1.8/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-

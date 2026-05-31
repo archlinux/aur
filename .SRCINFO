@@ -1,7 +1,7 @@
 pkgbase = happy-cli
 	pkgdesc = Mobile and Web client for Claude Code and Codex - remote control your AI coding agent
 	pkgver = 1.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slopus/happy
 	arch = any
 	license = MIT
