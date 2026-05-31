@@ -1,0 +1,71 @@
+post_install() {
+    systemd-sysusers
+    systemd-tmpfiles --create
+    chown root:facelock /var/lib/facelock 2>/dev/null || true
+    chmod 750 /var/lib/facelock 2>/dev/null || true
+    chown root:root /var/lib/facelock/models 2>/dev/null || true
+    chmod 755 /var/lib/facelock/models 2>/dev/null || true
+    chown root:facelock /var/log/facelock 2>/dev/null || true
+    chmod 750 /var/log/facelock 2>/dev/null || true
+    chown root:facelock /var/log/facelock/snapshots 2>/dev/null || true
+    chmod 750 /var/log/facelock/snapshots 2>/dev/null || true
+
+    # Reload systemd for D-Bus activation
+    systemctl daemon-reload 2>/dev/null || true
+
+    echo ""
+    echo "==> facelock installed. Run 'sudo facelock setup' to complete configuration."
+    echo "    (downloads models, configures PAM services, enrolls your face)"
+}
+
+post_upgrade() {
+    systemd-sysusers
+    systemd-tmpfiles --create
+    chown root:facelock /var/lib/facelock 2>/dev/null || true
+    chmod 750 /var/lib/facelock 2>/dev/null || true
+    chown root:root /var/lib/facelock/models 2>/dev/null || true
+    chmod 755 /var/lib/facelock/models 2>/dev/null || true
+    chown root:facelock /var/log/facelock 2>/dev/null || true
+    chmod 750 /var/log/facelock 2>/dev/null || true
+    chown root:facelock /var/log/facelock/snapshots 2>/dev/null || true
+    chmod 750 /var/log/facelock/snapshots 2>/dev/null || true
+
+    # Restart daemon if running
+    if systemctl is-active --quiet facelock-daemon; then
+        echo "==> Restarting facelock-daemon..."
+        systemctl restart facelock-daemon
+    fi
+}
+
+pre_remove() {
+    # Stop and disable daemon
+    systemctl stop facelock-daemon.service 2>/dev/null || true
+    systemctl disable facelock-daemon.service 2>/dev/null || true
+
+    # Kill facelock polkit agent if running (lets the DE's agent take over)
+    pkill -f facelock-polkit-agent 2>/dev/null || true
+
+    # Remove PAM lines (regex match — tolerates whitespace/option variations)
+    for PAM_FILE in /etc/pam.d/sudo /etc/pam.d/polkit-1 /etc/pam.d/hyprlock; do
+        if [ -f "$PAM_FILE" ] && grep -q 'pam_facelock\.so' "$PAM_FILE"; then
+            sed -i '/pam_facelock\.so/d' "$PAM_FILE"
+            echo "==> Removed face authentication from $PAM_FILE"
+        fi
+    done
+
+    # Remove PAM safety backups created by `facelock setup`
+    for backup in /etc/pam.d/sudo.facelock-backup /etc/pam.d/polkit-1.facelock-backup /etc/pam.d/hyprlock.facelock-backup; do
+        [ -f "$backup" ] && rm -f "$backup" && echo "==> Removed $backup"
+    done
+}
+
+post_remove() {
+    echo ""
+    echo "==> facelock uninstalled. User data preserved at:"
+    echo "==>   /etc/facelock/      (config.toml, encryption.key.sealed, setup markers)"
+    echo "==>   /var/lib/facelock/  (face database, ONNX models)"
+    echo "==>   /var/log/facelock/  (audit logs and snapshots)"
+    echo "==>"
+    echo "==> To remove all face data, config, models, and logs:"
+    echo "==>   sudo rm -rf /etc/facelock /var/lib/facelock /var/log/facelock"
+}
