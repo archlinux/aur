@@ -1,7 +1,7 @@
 pkgbase = shuiyuan-exporter
 	pkgdesc = Export posts on Shuiyuan Forum (SJTU) as markdown documents
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Labyrinth0419/shuiyuan_exporter
 	arch = any
 	license = MIT

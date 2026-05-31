@@ -2,7 +2,7 @@
 
 pkgname=shuiyuan-exporter
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Export posts on Shuiyuan Forum (SJTU) as markdown documents"
 arch=('any')
 url="https://github.com/Labyrinth0419/shuiyuan_exporter"
