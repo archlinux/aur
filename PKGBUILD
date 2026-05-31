@@ -1,7 +1,7 @@
 # Maintainer: matt-shearing <matt-shearing@users.noreply.github.com>
 pkgname=voxtype-tray
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="System tray app and settings GUI for VoxType voice dictation (PyQt6)"
 arch=('any')
 url="https://github.com/matt-shearing/voxtype-tray"
@@ -24,7 +24,7 @@ optdepends=(
     'migraphx: AMD GPU acceleration for ONNX engines (Parakeet, etc.)'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/matt-shearing/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f76dacd0e73e00ca7d01c444902386f18572bb2d8b52f6fbc93f32f70f61f42f')
+sha256sums=('79725df51c7cb857065f0d4f7607a2199bb8dedebebd6e2dcb02e5ae5f935336')
 
 package() {
     cd "${pkgname}-${pkgver}"
