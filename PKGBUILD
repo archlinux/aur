@@ -34,5 +34,5 @@ build() {
 }
 
 package() {
-    install -Dm755 build/cmake-deps "$pkgdir/usr/bin/deppull"
+    install -Dm755 "$srcdir/build/cmake-deps" "$pkgdir/usr/bin/deppull"
 }
