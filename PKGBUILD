@@ -2,7 +2,7 @@
 
 pkgname=gz-sim10
 pkgver=10.3.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Open source robotics simulator"
@@ -24,7 +24,7 @@ depends=(
   'gz-utils=4'
   'protobuf'
   'qt6-base'
-  'qt6-quickcontrols2'
+  'qt6-declarative'
   'sdformat=16'
   'tinyxml2'
   )
