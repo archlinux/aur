@@ -2,13 +2,12 @@
 
 pkgname=goodix5385
 pkgver=0.3.0
-pkgrel=8
-pkgdesc="Fingerprint GUI for Goodix 5385 sensor — enroll, verify, delete, sudo auth toggle. Requires libfprint-goodix53x5."
+pkgrel=9
+pkgdesc="Fingerprint GUI for Goodix 5385 sensor — enroll, verify, delete, sudo auth toggle."
 arch=('any')
 url="https://github.com/sanecodeguy/Goodix5385"
 license=('MIT')
 depends=(
-    'fprintd'
     'libfprint-goodix53x5'
     'python'
     'python-pyusb'
@@ -41,6 +40,11 @@ package() {
 }
 
 post_install() {
+    # Ensure fprintd is installed (libfprint-goodix53x5 only has it as optional)
+    if ! pacman -Qi fprintd &>/dev/null 2>&1; then
+        pacman -S --noconfirm --needed --asdeps fprintd
+    fi
+
     # Enable and start the USB reset service
     systemctl daemon-reload
     systemctl enable goodix-usb-reset.service
