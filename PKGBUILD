@@ -29,7 +29,7 @@ optdepends=(
 provides=('machctrl')
 conflicts=('machctrl-git' 'machctrl-bin')
 install=machctrl.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/araujo791/machctrl/tarball/main")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/araujo791/machctrl/archive/refs/heads/main.tar.gz")
 sha256sums=('SKIP')
 
 build() {
