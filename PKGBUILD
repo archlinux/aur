@@ -1,6 +1,6 @@
 pkgname=bearhub-git
 pkgver=0.10.7.r0.g0000000
-pkgrel=3
+pkgrel=4
 pkgdesc="Arch-first package manager hub (development snapshot, fork of bauh)"
 arch=('any')
 url="https://github.com/spalencsar/bearhub"
@@ -39,6 +39,10 @@ build() {
 
 package() {
   cd "$srcdir/bearhub"
+
+  sed -i 's|^Exec=/usr/bin/bearhub$|Exec=env QT_QPA_PLATFORM=xcb /usr/bin/bearhub|' "bearhub/desktop/bearhub.desktop"
+  sed -i 's|^Exec=/usr/bin/bearhub-tray$|Exec=env QT_QPA_PLATFORM=xcb /usr/bin/bearhub-tray|' "bearhub/desktop/bearhub_tray.desktop"
+
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 "bearhub/desktop/bearhub.desktop" \
