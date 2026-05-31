@@ -1,19 +1,19 @@
 pkgbase = nurproxy-bin
 	pkgdesc = NurProxy orchestrator — reverse proxy and DNS management dashboard
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/NurRobin/NurProxy
 	license = MIT
 	conflicts = nurproxy
 	provides = nurproxy
 	arch = aarch64
-	source_aarch64 = https://github.com/NurRobin/NurProxy/releases/download/v0.1.1/nurproxy_0.1.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5e8a8349ae42319c2ab0601e1ce69980513dbfa8959e3d8b21c5b1840869b1da
+	source_aarch64 = https://github.com/NurRobin/NurProxy/releases/download/v0.2.0/nurproxy_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a402dc2d897917aab7b854cebb0f9804f4f6ff9f95cc4f50b5edd6da5d84b965
 	arch = armv7h
-	source_armv7h = https://github.com/NurRobin/NurProxy/releases/download/v0.1.1/nurproxy_0.1.1_linux_armv7.tar.gz
-	sha256sums_armv7h = cde728609399166ee15489ab0ba11ffbacb54cc832006ce74df59889d23043da
+	source_armv7h = https://github.com/NurRobin/NurProxy/releases/download/v0.2.0/nurproxy_0.2.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 7ea022044d14da010280fceece96d64993b611839771417ffa3eda0fd9dbc0fc
 	arch = x86_64
-	source_x86_64 = https://github.com/NurRobin/NurProxy/releases/download/v0.1.1/nurproxy_0.1.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7770c90907fac44614797fde17269dc0ea919dff06f4fa210b4704e6809e455d
+	source_x86_64 = https://github.com/NurRobin/NurProxy/releases/download/v0.2.0/nurproxy_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 70dd17c4e3b7aefd6e3832837d72a8ae7ff34e8518d3861cb7502ded5d48dafa
 	
 pkgname = nurproxy-bin
