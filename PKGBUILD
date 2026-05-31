@@ -2,12 +2,12 @@
 pkgname=aquafin-git
 _pkgname=aquafin
 pkgver=r3.e3c7daa
-pkgrel=1
+pkgrel=2
 pkgdesc="Jellyfin TUI client for the terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Armando-ven/aquafin"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'glibc' 'alsa-lib' 'opus' 'dbus')
+depends=('gcc-libs' 'glibc' 'alsa-lib' 'opus' 'dbus' 'chafa')
 makedepends=('git' 'cargo' 'pkgconf' 'cmake' 'nasm')
 optdepends=('mpv: video playback'
             'pipewire: audio output (alternative to alsa)'

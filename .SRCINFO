@@ -1,7 +1,7 @@
 pkgbase = aquafin-git
 	pkgdesc = Jellyfin TUI client for the terminal
 	pkgver = r3.e3c7daa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Armando-ven/aquafin
 	arch = x86_64
 	arch = aarch64
@@ -16,6 +16,7 @@ pkgbase = aquafin-git
 	depends = alsa-lib
 	depends = opus
 	depends = dbus
+	depends = chafa
 	optdepends = mpv: video playback
 	optdepends = pipewire: audio output (alternative to alsa)
 	optdepends = kitty: inline image support
