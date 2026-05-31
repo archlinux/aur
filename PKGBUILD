@@ -2,7 +2,7 @@
 
 _Name="Sideband"
 pkgname="${_Name,,}"
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 pkgdesc="Communicate with people or LXMF-compatible systems over Reticulum networks"
 arch=(
@@ -61,7 +61,7 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('fc156b3f02f617b32587a79e5970391adc7998aba1e01b4824774f6011eb6abe')
+sha256sums=('ee25207c01880245254d0908fc6f284271494b3dc2b8f00954ede1cd8c0a90e0')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
