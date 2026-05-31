@@ -1,7 +1,7 @@
 pkgbase = ez2lazer-bin
 	pkgdesc = Ez to Lazer, As a cool client. (a fork of osu!lazer)
 	pkgver = 2026.531.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/SK-la/Ez2Lazer
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = ez2lazer-bin
 	provides = ez2lazer
 	conflicts = ez2lazer
 	conflicts = ez2lazer-git
-	noextract = ez2lazer.AppImage
+	noextract = ez2lazer-2026.531.0.AppImage
 	options = !strip
 	options = !debug
 	source = ez2lazer-2026.531.0.AppImage::https://github.com/SK-la/Ez2Lazer/releases/download/2026.531.0-ez2lazer/ez2lazer.AppImage

@@ -1,8 +1,9 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
 
 pkgname=ez2lazer-bin
+_pkgname=${pkgname%-bin}
 pkgver=2026.531.0
-pkgrel=1
+pkgrel=3
 _pkgtag=$pkgver-ez2lazer
 pkgdesc="Ez to Lazer, As a cool client. (a fork of osu!lazer)"
 arch=(x86_64)
@@ -18,13 +19,13 @@ provides=(ez2lazer)
 conflicts=(ez2lazer ez2lazer-git)
 options=(!strip !debug)
 source=(
-  "ez2lazer-${pkgver}.AppImage::https://github.com/SK-la/Ez2Lazer/releases/download/$_pkgtag/ez2lazer.AppImage"
+  "$_pkgname-$pkgver.AppImage::https://github.com/SK-la/Ez2Lazer/releases/download/$_pkgtag/ez2lazer.AppImage"
   'icon.png'
   'https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md'
   'ez2lazer.desktop'
   'ez2lazer-uri-handler.desktop'
   'ez2lazer')
-noextract=("ez2lazer.AppImage")
+noextract=("$_pkgname-$pkgver.AppImage")
 sha256sums=('fe32c7cc837e30e7377c10a0135758cadbfb101ba60d249c5f41bedcd184b51a'
             'ae382d6f50b8a767ccb30f49925020b610805f5403b7a99cd331a4f7b720e8ac'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
@@ -35,7 +36,7 @@ package() {
   cd "$srcdir"
 
   # Install binary and launch script
-  install -Dm755 ez2lazer.AppImage "$pkgdir/opt/ez2lazer/ez2lazer.AppImage"
+  install -Dm755 "$_pkgname-$pkgver.AppImage" "$pkgdir/opt/ez2lazer/ez2lazer.AppImage"
   install -Dm755 -t "$pkgdir/usr/bin" ez2lazer
 
   # Install pixmap, desktop and license file
