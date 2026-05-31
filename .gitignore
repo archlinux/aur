@@ -1,0 +1,9 @@
+# build and package output
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.tar.zst
+*.tar.bz2
+*.tar.gz
+*.tar.xz

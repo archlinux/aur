@@ -1,0 +1,16 @@
+pkgbase = pcf-shinonome
+	pkgdesc = Shinonome Japanese bitmap font family (12, 14, 16 and 18 dot fonts)
+	pkgver = 0.9.11
+	pkgrel = 1
+	url = http://openlab.ring.gr.jp/efont/shinonome
+	arch = any
+	license = custom:PublicDomain
+	makedepends = perl
+	makedepends = gawk
+	makedepends = xorg-bdftopcf
+	makedepends = xorg-mkfontscale
+	noextract = shinonome.tar.bz2
+	source = shinonome.tar.bz2::http://openlab.ring.gr.jp/efont/dist/shinonome/shinonome-0.9.11-src.tar.bz2
+	sha256sums = bc0b023096dcab99cccd61fe774e247b4e076a3c264c95f53e128dc23c79c729
+
+pkgname = pcf-shinonome
