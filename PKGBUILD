@@ -2,7 +2,7 @@
 
 pkgname=ez2lazer
 pkgver=2026.531.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ez to Lazer, As a cool client. (a fork of osu!lazer)"
 arch=(x86_64)
 url="https://github.com/SK-la/Ez2Lazer"
@@ -16,7 +16,7 @@ depends=(
 provides=(ez2lazer)
 conflicts=(ez2lazer-bin ez2lazer-git)
 options=(!strip !debug)
-source=('Ez2Lazer-2026.531.0.tar.gz::https://github.com/SK-la/Ez2Lazer/archive/2026.531.0-ez2lazer.tar.gz'
+source=("Ez2Lazer-${pkgver}.tar.gz::https://github.com/SK-la/Ez2Lazer/archive/${pkgver}-ez2lazer.tar.gz"
   'icon.png'
   'https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md'
   'ez2lazer.desktop'
