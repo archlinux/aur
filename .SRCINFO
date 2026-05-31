@@ -1,6 +1,6 @@
 pkgbase = server-report-git
 	pkgdesc = Weekly btrfs health check and email report via msmtp
-	pkgver = r1.f65286c
+	pkgver = r1.905f2e2
 	pkgrel = 1
 	url = https://codeberg.org/schnils/server-report
 	arch = any
