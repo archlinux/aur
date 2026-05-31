@@ -2,7 +2,7 @@
 
 pkgname=ez2lazer-bin
 pkgver=2026.531.0
-pkgrel=2
+pkgrel=1
 _pkgtag=$pkgver-ez2lazer
 pkgdesc="Ez to Lazer, As a cool client. (a fork of osu!lazer)"
 arch=(x86_64)
