@@ -1,7 +1,7 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=hyprcorrect-bin
 _pkgname=hyprcorrect
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Keyboard-driven desktop spelling and typo corrector (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -25,8 +25,8 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64.tar.gz")
-sha256sums_x86_64=('5152151099d63c60c424564c26301ef1ff7a3ae275e6729b7c9c4998226ff907')
-sha256sums_aarch64=('988a35300acf81bedfbe2d3ea1a291b09197df9719918d5cd85deded085feb18')
+sha256sums_x86_64=('d73b3e7e081ad373c0ec441199b0ee9613df7d4c3ca0c2c23a95bdc21dccad76')
+sha256sums_aarch64=('49408620b9d60b0e3969ca71149de636dc32af76dd12f811c5a42fdf2471e5f7')
 
 package() {
     # The release tarball is named after the host arch — $CARCH is set
@@ -36,6 +36,18 @@ package() {
 
     install -Dm755 hyprcorrect "$pkgdir/usr/bin/hyprcorrect"
     install -Dm644 hyprcorrect.desktop "$pkgdir/usr/share/applications/hyprcorrect.desktop"
+
+    # The release tarball ships the pre-rendered hicolor icon tree under
+    # icons/ (see release.yml) — without installing it the .desktop's
+    # Icon=hyprcorrect resolves to nothing and launchers (walker, etc.)
+    # show a blank entry.
+    install -Dm644 icons/hicolor/scalable/apps/hyprcorrect.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/hyprcorrect.svg"
+    for size in 16 22 24 32 48 64 128 256 512; do
+        install -Dm644 "icons/hicolor/${size}x${size}/apps/hyprcorrect.png" \
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/hyprcorrect.png"
+    done
+
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
