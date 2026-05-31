@@ -11,8 +11,10 @@ makedepends=('cmake' 'gcc' 'git')
 provides=('deppull')
 conflicts=('deppull')
 
-source=("git+file://${PWD}")
-md5sums=('SKIP')
+source=("deppull-git::git+https://github.com/aray4iv3/cdeppull.git"
+        "CMakeLists.txt")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
     cd "$srcdir/deppull-git"
