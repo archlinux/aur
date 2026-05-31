@@ -1,0 +1,21 @@
+pkgbase = reolink_aio
+	pkgdesc = Reolink NVR/camera API PyPI package.
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/starkillerOG/reolink_aio/
+	arch = any
+	license = LGPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-aiohttp
+	depends = python-aiortsp
+	depends = python-orjson
+	depends = python-pycryptodomex
+	depends = python-typing_extensions
+	source = https://files.pythonhosted.org/packages/source/r/reolink_aio/reolink_aio-0.20.0.tar.gz
+	sha512sums = 0572b9bae02bb364e18ae424acf6a41d2985c2529667011a434cb6799ed039822415d794501b71146ff56d06ec668bf6b4ad89400edb6a1995f6f77d77b37110
+
+pkgname = reolink_aio
