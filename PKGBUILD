@@ -4,8 +4,8 @@
 # using the .deb instead of the .tar.gz as it already contains the icons as well as the .desktop file.
 
 pkgname=picguard-bin
-pkgver=5.5.0
-pkgrel=0
+pkgver=5.5.2
+pkgrel=475
 pkgdesc='Your pictures, your signature'
 url=https://github.com/picguard/picguard
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ depends=(fuse2 xdg-user-dirs libayatana-appindicator)
 conflicts=('picguard')
 provides=('picguard')
 options=(!debug)
-source_x86_64=("${url}/releases/download/v${pkgver}/picguard-${pkgver}-linux-amd64.deb")
-source_aarch64=("${url}/releases/download/v${pkgver}/picguard-${pkgver}-linux-aarch64.deb")
-sha256sums_x86_64=('a2a8abdac8528a9d40ab3e07dded3274ea36efbf6a76155b2d82ec29392dff59')
-sha256sums_aarch64=('b2c0bfefbc4019bdf67aa0e121e8cf49b661d66a37f485918096f5f4b4d9a181')
+source_x86_64=("${url}/releases/download/v${pkgver}.${pkgrel}/picguard-${pkgver}.${pkgrel}-linux-amd64.deb")
+source_aarch64=("${url}/releases/download/v${pkgver}.${pkgrel}/picguard-${pkgver}.${pkgrel}-linux-aarch64.deb")
+sha256sums_x86_64=('49b96262d9455ea9b63c7546648555a119260037bd645d0f5dcc1694360fbd29')
+sha256sums_aarch64=('c021c2baca7bbc039982c71ef6b7ec6cc0b0331ca831dc953bb0551fefb06a30')
 _pkgdesktop="picguard.desktop"
 
 prepare() {
