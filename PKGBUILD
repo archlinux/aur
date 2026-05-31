@@ -4,45 +4,44 @@
 pkgname=ttf-dm-mono-nerd-font-git
 pkgdesc="DM Mono Font, patched with the Nerd Fonts Patcher"
 url='https://github.com/googlefonts/dm-mono'
-pkgver=1
+pkgver=20260531.cc1f24f
 pkgrel=1
 arch=('any')
 license=('OFL-1.1')
-makedepends=('fontforge' 'parallel' 'python')
+makedepends=('fontforge' 'python')
 source=(
-   "git+https://github.com/googlefonts/dm-mono.git"
-   "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FontPatcher.zip"
-   "99-scale-nerd-fonts-dm-mono.conf"
-   "OFL-1.1.md"
+  "git+https://github.com/googlefonts/dm-mono.git"
+  "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FontPatcher.zip"
+  "99-scale-nerd-fonts-dm-mono.conf"
+  "OFL-1.1.md"
 )
 
 pkgver() {
-   cd       "${srcdir}/dm-mono"
-   git      describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-   cd       "$srcdir"
-   unzip    FontPatcher.zip -d font-patcher
+  cd        "$srcdir"
+  local     _date
+  local     _commit
+  _date=$(  git log -1 --format=%ci HEAD)
+  _commit=$(git rev-parse --short HEAD)
+  # Print CI with date followed by short CI hash.
+  printf    "%s.%s" "$(date -d "$_date" +%Y%m%d)" "${_commit::7}"
 }
 
 build() {
-   cd       "$srcdir"
-   mkdir    -p "$srcdir/patched"
-   printf   "%b" "\e[1;33m==> WARNING: \e[0mNow patching all fonts. This will take very long...\n"
-   parallel -j$(nproc) python "$srcdir/font-patcher" -q -c {} -out "$srcdir/patched" &> /dev/null ::: "$srcdir"/*.ttf
+  cd       "$srcdir"
+  mkdir    -p patched
+  printf   "%b" "\e[1;33m==> WARNING: \e[0mNow patching all fonts. This will take very long...\n"
+  find     "dm-mono/exports" -maxdepth 1 -name "*.ttf" -print0 | \
+             xargs -0 -P $(nproc) -I {} ./font-patcher -c {} -out patched
 }
 
 package() {
-   install  -d "$pkgdir/usr/share/fonts/nerd-fonts-dm-mono"
-   install  -m644 "$srcdir/patched/"*.ttf "$pkgdir/usr/share/fonts/nerd-fonts-dm-mono/"
+  mkdir -p "$pkgdir/usr/share/"{fonts/nerd-fonts-dm-mono,fontconfig/conf.avail,$pkgname}
+  mkdir -p "$pkgdir/etc/fonts/conf.d/"
 
-   install  -d "$pkgdir/usr/share/fontconfig/conf.avail/"
-   install  -d "$pkgdir/usr/share/fontconfig/conf.default/"
-   install  -m644 "$srcdir/99-scale-nerd-fonts-dm-mono.conf" "$pkgdir/usr/share/fontconfig/conf.avail/"
-   cd       "$pkgdir/usr/share/fontconfig/conf.default/"
-   ln       -s ../conf.avail/99-scale-nerd-fonts-dm-mono.conf
-   install  -m644 "$srcdir/OFL-1.1.md" "$pkgdir/usr/share/$pkgname/LICENSE.md"
+  install  -m644 patched/*.ttf "$pkgdir/usr/share/fonts/nerd-fonts-dm-mono/"
+  install  -m644 "$srcdir/99-scale-nerd-fonts-dm-mono.conf" "$pkgdir/usr/share/fontconfig/conf.avail/"
+  ln       -s /usr/share/fontconfig/conf.avail/99-scale-nerd-fonts-dm-mono.conf "$pkgdir/etc/fonts/conf.d/99-scale-nerd-fonts-dm-mono.conf"
+  install  -m644 "$srcdir/OFL-1.1.md" "$pkgdir/usr/share/$pkgname/LICENSE.md"
 }
 
 b2sums=('SKIP'
@@ -61,3 +60,4 @@ sha256sums=('SKIP'
             'SKIP'
             '725ac8f7ca26da83359e5795fb5958e4f22b5025aa1aa6b7d1b925992c66ecdf'
             '81e8d5af1bc349fb2f62fdfac449910109b2b6c659051f03988b4269fd535069')
+

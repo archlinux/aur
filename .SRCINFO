@@ -1,12 +1,11 @@
 pkgbase = ttf-dm-mono-nerd-font-git
 	pkgdesc = DM Mono Font, patched with the Nerd Fonts Patcher
-	pkgver = 1
+	pkgver = 20260531.cc1f24f
 	pkgrel = 1
 	url = https://github.com/googlefonts/dm-mono
 	arch = any
 	license = OFL-1.1
 	makedepends = fontforge
-	makedepends = parallel
 	makedepends = python
 	source = git+https://github.com/googlefonts/dm-mono.git
 	source = https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FontPatcher.zip
