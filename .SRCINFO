@@ -7,20 +7,21 @@ pkgbase = artanis
 	arch = aarch64
 	license = GPL-3.0-or-later
 	license = LGPL-3.0-or-later
+	makedepends = texinfo
 	depends = guile>=3.0.5
 	depends = guile-curl
 	depends = guile-redis
 	depends = guile-json
 	depends = nss
-	depends = texinfo
 	optdepends = guile-dbi: A simple, generic, easy-to-use guile scheme interface to SQL databases, such as Postgres, MySQL or SQLite3
 	optdepends = guile-dbd-sqlite3: The dbd plugin connects to an actual SQLite database server.
 	optdepends = guile-dbd-postgresql: The dbd plugin connects to an actual PostgreSQL database server.
 	optdepends = guile-dbd-mysql: The dbd plugin connects to an actual MySQL database server.
 	options = !strip
-	options = !lto
 	source = https://ftp.gnu.org/gnu/artanis/artanis-1.3.0.tar.gz
+	source = https://ftp.gnu.org/gnu/artanis/artanis-1.3.0.tar.gz.sig
 	validpgpkeys = F53B4C5695B5E4D56093432484696772846A0058
 	sha256sums = f1532564383fedb7dcd47c43c0b803ec126f66543c7fb6f7c9e64f0fa8979c99
+	sha256sums = SKIP
 
 pkgname = artanis

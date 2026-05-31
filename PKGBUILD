@@ -9,45 +9,37 @@ pkgver=1.3.0
 pkgrel=11
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://artanis.dev/"
-
-depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss' 'texinfo')
+depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss')
 optdepends=('guile-dbi: A simple, generic, easy-to-use guile scheme interface to SQL databases, such as Postgres, MySQL or SQLite3'
             'guile-dbd-sqlite3: The dbd plugin connects to an actual SQLite database server.'
             'guile-dbd-postgresql: The dbd plugin connects to an actual PostgreSQL database server.'
             'guile-dbd-mysql: The dbd plugin connects to an actual MySQL database server.')
-
+makedepends=('texinfo')
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
-
-source=(https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('f1532564383fedb7dcd47c43c0b803ec126f66543c7fb6f7c9e64f0fa8979c99')
-
-validpgpkeys=(F53B4C5695B5E4D56093432484696772846A0058)
-
-options=('!strip' '!lto')
-
+source=("https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz"
+        "https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz.sig")
+sha256sums=('f1532564383fedb7dcd47c43c0b803ec126f66543c7fb6f7c9e64f0fa8979c99'
+            'SKIP')
+validpgpkeys=('F53B4C5695B5E4D56093432484696772846A0058')
+options=('!strip')
 build() {
-  cd $pkgname-$pkgver
-
+  cd "$pkgname-$pkgver"
   export GUILE_AUTO_COMPILE=0
-
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
 check() {
-  cd $pkgname-$pkgver
-
+  cd "$pkgname-$pkgver"
   export GUILE_AUTO_COMPILE=0
   export GUILE_LOAD_PATH=".:$GUILE_LOAD_PATH"
-
   guile -q --no-auto-compile -c \
     "(use-modules (artanis artanis)) (exit 0)"
 }
 
 package() {
-  cd $pkgname-$pkgver
-
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 
   if [ -f "$pkgdir/bin/art" ]; then
