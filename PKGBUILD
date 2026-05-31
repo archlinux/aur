@@ -3,7 +3,7 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.4.1.r269.g57ed31f
+pkgver=3.4.1.r376.ge79aa89
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -23,6 +23,7 @@ depends=('alsa-lib'
          'libass'
          'libgl'
          'libiconv'
+         'libportal-gtk3'
          'libpulse'
          'openal'
          'portaudio'
