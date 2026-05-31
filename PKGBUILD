@@ -2,14 +2,14 @@
 # Contributor: Rafael Fontenlle <rafaelff@gnome.org>
 
 pkgname=warsaw-bin
-_pkgver=2.21.5-1
+_pkgver=2.22.1-6
 pkgver=${_pkgver/-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(x86_64)
-url="https://diagnostico.gasantifraud.com"
+url="https://www.topaz.com.br"
 license=('GPL-3.0-or-later')
-depends=('dbus' 'procps-ng' 'python' 'execstack')
+depends=('dbus' 'fontconfig' 'gcc' 'libcurl-gnutls' 'libstdc++' 'libxcursor' 'libxft' 'libxinerama' 'nss' 'procps-ng' 'python')
 optdepends=('python-gpgme')
 backup=('etc/init.d/warsaw' 'etc/init/warsaw.conf')
 options=('!strip' '!emptydirs')
@@ -17,9 +17,9 @@ install=${pkgname}.install
 conflicts=('warsaw')
 provides=('warsaw')
 source=("https://www.gnu.org/licenses/gpl-3.0.txt")
-source_x86_64=("warsaw-${pkgver}-64.run::https://cloud.gastecnologia.com.br/bb/downloads/ws/debian/warsaw_setup64.run")
+source_x86_64=("warsaw-${pkgver}-64.run::https://guardiao.itau.com.br/warsaw/warsaw_ubuntu.run")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('7548027038d5ee0a617d725a8bf955678c96fc594cdaf469613a320ef1d5d47d')
+sha256sums_x86_64=('7b7e27961ccfb5ed9fb9d5eef00a44db81a6a0e778f96886464ffcacc28b9144')
 
 prepare() {
     cd "${srcdir}"

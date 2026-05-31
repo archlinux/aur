@@ -1,3 +1,5 @@
+#!/bin/bash
+
 post_install() {
     if [ "$(locale | grep "LANG")" = "LANG=pt_BR.UTF-8" ]; then
         echo -e "\e[34;1m==>\e[39;1m Reinicie o sistema e conclua a configuração do seu banco no site abaixo: \e[0m"
@@ -11,14 +13,9 @@ post_install() {
         echo -e "\e[34;1m==>\e[39;1m Sicredi: https://www.sicredi.com.br/diagnostico/html/modulo/index.html \e[0m"
     fi
 
-
-    if systemctl is-enabled warsaw.service 1>/dev/null; then
-        systemctl disable --now warsaw.service
-    fi
-
-    execstack -s /usr/local/bin/warsaw/core
-    chattr +i /usr/local/bin/warsaw/core
-    chattr +a /usr/local/bin/warsaw/
+    #execstack -s /usr/local/bin/warsaw/core
+    #chattr +i /usr/local/bin/warsaw/core
+    #chattr +a /usr/local/bin/warsaw/
 
     systemctl enable --now warsaw.service
 }
@@ -26,16 +23,16 @@ post_install() {
 pre_upgrade() {
     if systemctl is-active warsaw.service 1>/dev/null; then
         systemctl disable --now warsaw.service
-        chattr -i /usr/local/bin/warsaw/core
-        chattr -a /usr/local/bin/warsaw/
+        #chattr -i /usr/local/bin/warsaw/core
+        #chattr -a /usr/local/bin/warsaw/
     fi
 }
 
 post_upgrade() {
-    if systemctl is-active warsaw.service 1>/dev/null; then
-        execstack -s /usr/local/bin/warsaw/core
-        chattr +i /usr/local/bin/warsaw/core
-        chattr +a /usr/local/bin/warsaw/
+    if systemctl is-inactive warsaw.service 1>/dev/null; then
+        #execstack -s /usr/local/bin/warsaw/core
+        #chattr +i /usr/local/bin/warsaw/core
+        #chattr +a /usr/local/bin/warsaw/
 
         systemctl enable --now warsaw.service
     fi
@@ -46,8 +43,8 @@ pre_remove() {
         systemctl disable --now warsaw.service
     fi
 
-    chattr -i /usr/local/bin/warsaw/core
-    chattr -a /usr/local/bin/warsaw/
+    #chattr -i /usr/local/bin/warsaw/core
+    #chattr -a /usr/local/bin/warsaw/
 }
 
 post_remove() {
