@@ -2,7 +2,7 @@
 pkgname=smolvm-bin
 _pkgname=smolvm
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=('x86_64')
 url='https://github.com/smol-machines/smolvm'
@@ -18,7 +18,7 @@ source=("$_pkgname-$pkgver-bin.tar.gz::$url/releases/download/v$pkgver/$_pkgname
     'use-system-libs.patch')
 sha256sums=('6e89a1f695e9cd0bc953fbf922ed4a54b9dbbe033b39ab032baaf6f7b12e15bb'
             'ac6a4050f2f415a02f3c223ddee932a07de627bc143059e9a1ea9df088e46909'
-            '112528f311357aa84c2179670c57e46b45fe44eb2dd56ce9c4f5a9c633b09797')
+            '7bb2d82dfffbd7a20df90cbe29d70eb8b0a95a8a934343f58f75a5617ee415e1')
 
 package() {
     cd "$_pkgname-$pkgver-linux-x86_64"

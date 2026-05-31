@@ -24,7 +24,7 @@
 -    echo "Make sure you extracted the full distribution." >&2
 -    exit 1
 -fi
-++export SMOLVM_AGENT_ROOTFS='/usr/lib/smolvm/agent-rootfs'
++export SMOLVM_AGENT_ROOTFS='/usr/lib/smolvm/agent-rootfs'
  
 -# Set library path based on OS and run
 -if [[ "$(uname -s)" == "Darwin" ]]; then
