@@ -1,6 +1,6 @@
 pkgbase = srb2-retro-git
 	pkgdesc = Updated fork of Sonic Robo Blast 2 2.0.7 (git version)
-	pkgver = 2.0.7
+	pkgver = aef0d7e
 	pkgrel = 1
 	url = https://github.com/srb2-preservation/srb2-retro
 	arch = i686

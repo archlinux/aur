@@ -2,7 +2,7 @@
 
 _pkgname="srb2-retro"
 pkgname="${_pkgname}-git"
-pkgver=2.0.7
+pkgver=aef0d7e
 _dataver=2.0.6
 pkgrel=1
 pkgdesc='Updated fork of Sonic Robo Blast 2 2.0.7 (git version)'
