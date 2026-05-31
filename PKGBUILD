@@ -3,7 +3,7 @@
 _appauthor=takashialpha
 _appname=audium
 pkgname=${_appname}-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A keyboard-driven music app for people who live in the terminal."
 arch=('x86_64')
@@ -18,9 +18,9 @@ depends=('glibc' 'libgcc' 'alsa-lib')
 source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_appname}-v${pkgver}-${arch[0]}-linux.tar.gz")
-sha256sums=('041a50c9963c05b9f4bbad20055cae184702f81f2898aa5142eac7c356e309aa'
+sha256sums=('fa7c9195aac4bcb336241c870e25266b43c7ec572854038818d666c25581845e'
             'a24266a5d80f4172e4356c8cdb0b72c0cc884f27afcc7f274a7a6a15eba5f366')
-sha256sums_x86_64=('e7781999e65e4e5ee8b06ab676d2d9abbe0e825d2996e197d9a4013ece9fa99a')
+sha256sums_x86_64=('a9c862403b565c8ac14831bf6245d9dc7b3fff9705c9cf96e2c00af11cf6dd21')
 
 _CARCH="${arch[0]}-unknown-linux-gnu"
 
