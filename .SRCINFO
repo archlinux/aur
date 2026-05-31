@@ -1,6 +1,6 @@
 pkgbase = forum-scout-qt
 	pkgdesc = Arch-focused multi-forum search tool (Qt/PyQt6 edition)
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/musqz/forum-scout-qt
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = forum-scout-qt
 	depends = python-requests
 	provides = forum-scout
 	conflicts = forum-scout
-	source = forum-scout-qt-0.6.3.tar.gz::https://github.com/musqz/forum-scout-qt/archive/refs/tags/v0.6.3.tar.gz
-	sha256sums = dc77852499dc79a6da8fe3f091cda8c1edf92acca473316e17c298db2cab230f
+	source = forum-scout-qt-0.6.4.tar.gz::https://github.com/musqz/forum-scout-qt/archive/refs/tags/v0.6.4.tar.gz
+	sha256sums = 8e162d872090ce9c208a6f098de1c4b2e74167b2a034b16c25a7760b3c93ab42
 
 pkgname = forum-scout-qt
