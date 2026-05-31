@@ -1,8 +1,8 @@
 # Maintainer: Cherio <git at mx dot cherio dot org>
-# New one-run releases: https://github.com/cherio/one-run
+# New releases: https://github.com/cherio/lease
 
 pkgname=lease
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A FIFO semaphore utility that manages resource ownership by processes"
 arch=('x86_64')
@@ -14,11 +14,18 @@ depends=(
 provides=("lease")
 conflicts=("lease")
 _archive="$pkgname-$pkgver"
-source=("$_archive.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bd16d7a943f45965a27c40ffa62a28e796cca5f781a7bbd1ddfab8e2793d0554')
+
+_prj_src_url="https://raw.githubusercontent.com/cherio/lease/refs/tags/v$pkgver"
+source=(
+	"$_prj_src_url/lease"
+	"$_prj_src_url/doc/lease.1"
+)
+
+sha256sums=('5bb6b2cadea5502d862ff4e2c427766f97b77d2b010d35dd73412c7dec8a98f1'
+            '198d225cb607a381e28bcc313da8c838150e7de4bca617c48871ee2635a4a3a2')
 
 package() {
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/man/man1"
-	install -m755 "$_archive/$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -m644 "$_archive/doc/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
+	install -m755 "./$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -m644 "./$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
 }
