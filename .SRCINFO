@@ -5,6 +5,7 @@ pkgbase = prismcli
 	url = https://github.com/GORE-MODS/prismcli
 	arch = any
 	license = MIT
+	depends = ollama
 	depends = python
 	source = prismcli.py
 	sha256sums = 70cb5d0cdc557f476258267e3612327cb232fd0088cd9261681554783d794284
