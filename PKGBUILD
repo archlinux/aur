@@ -1,7 +1,7 @@
 # Maintainer: Nils Schulte <git@nilsschulte.de>
 pkgname=server-report-git
 pkgver=r1.df4a9bb752
-pkgrel=1
+pkgrel=2
 pkgdesc="Weekly btrfs health check and email report via msmtp"
 arch=('any')
 url="https://codeberg.org/schnils/server-report"
