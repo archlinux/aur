@@ -1,0 +1,16 @@
+pkgbase = tstype
+	pkgdesc = A very simple text editor (Beta version)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Tonsoff/tstype
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = gcc-libs
+	depends = glibc
+	source = tstype-0.1.0.tar.gz::https://github.com
+	sha256sums = e79df3b549d0de44bfc43b44b1b8a7b78414a01cd43cea3f283175b3d8fa98f2
+
+pkgname = tstype
