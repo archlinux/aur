@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=emsmediasystem-bin
 _pkgname=EMS.Media.System
-pkgver=6.4.2
+pkgver=6.4.3
 _electronversion=34
 pkgrel=1
 pkgdesc="An Electron-based media presentation tool that provides a dual-window approach to media playback,allows users to control media presentation from a management window.(Prebuilt version.Use system-wide electron)"
@@ -12,14 +12,12 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'python'
-    'perl'
 )
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5ba2472b2a66e17899aab03c1f107a36ced16e82c494b6b7a2d309935d77e531'
+sha256sums=('888fc597d8ec65735ab51ed50e0dc203b8c3d3def30bb88adcd0cca84867d53a'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -59,7 +57,7 @@ prepare() {
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Audio;/AudioVideo;/g
-    " "${srcdir}/squashfs-root/${_pkgname//./ }.desktop"
+    " "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
     rm -rf \
         "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@julusian/freetype2/prebuilds/"{*-darwin-*,*-win32-*} \
@@ -77,5 +75,5 @@ package() {
         _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
         install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname//./ }.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
