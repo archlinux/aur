@@ -12,13 +12,13 @@ provides=('NurProxy')
 conflicts=('NurProxy')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/NurRobin/NurProxy/releases/download/v${pkgver}/nurproxy-agent_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('b48e65cd3d56e7dc333b621b5cd78f2f6d45ae1e54a02c87c69f8bdbaffc7d24')
+sha256sums_aarch64=('44326726c611d96c4b550e788fd880395abe7d9796ba18f9d9b40c1221475a7d')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/NurRobin/NurProxy/releases/download/v${pkgver}/nurproxy-agent_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('b3e892cd2ce9e75eafde3ab6bd12b59a6850240ab6529a8dc1f0eb4afa76dbc3')
+sha256sums_armv7h=('e5943bf16449cbb5f12012a1a2c815fb1e8f3d405e791fd57d75822bfd9ed5f8')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/NurRobin/NurProxy/releases/download/v${pkgver}/nurproxy-agent_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('3855a5e337cb8c3e037e6235f04b5712e7a23e6c5249ded36277b5d48111b02a')
+sha256sums_x86_64=('0caf355c354e675b443adcb3a92d7dccfd72340c1b81c79039a1eed86163d03d')
 
 package() {
   install -Dm755 "./nurproxy-agent" "${pkgdir}/usr/bin/nurproxy-agent"
