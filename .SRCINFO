@@ -1,6 +1,6 @@
 pkgbase = 86box-appimage
 	pkgdesc = An emulator for classic IBM PC clones
-	pkgver = 5.3
+	pkgver = 6.0
 	pkgrel = 1
 	url = https://86box.net/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = 86box-appimage
 	provides = 86box
 	conflicts = 86box
 	options = !strip
-	source_x86_64 = 86Box-5.3-x86_64.appimage::https://github.com/86Box/86Box/releases/download/v5.3/86Box-Linux-x86_64-b8200.AppImage
-	sha256sums_x86_64 = 47ba404ed08315f81d5d22252a3c18138d5c8afd0aabce5e56e6046cc358f714
-	source_aarch64 = 86Box-5.3-aarch64.appimage::https://github.com/86Box/86Box/releases/download/v5.3/86Box-NDR-Linux-arm64-b8200.AppImage
-	sha256sums_aarch64 = b268200a107e4eba6fbca08c8f275ecb84ba7cdeea83dde452b67d88804a47f4
+	source_x86_64 = 86Box-6.0-x86_64.appimage::https://github.com/86Box/86Box/releases/download/v6.0/86Box-Linux-x86_64-b9001.AppImage
+	sha256sums_x86_64 = 535d3c329f8c32b601103970c86d80aa80298f345452c3524ea2f433624727a4
+	source_aarch64 = 86Box-6.0-aarch64.appimage::https://github.com/86Box/86Box/releases/download/v6.0/86Box-NDR-Linux-arm64-b9001.AppImage
+	sha256sums_aarch64 = da1f0c733d7a35059f153398d9978574d38e80019256b336dda9aaca9453a143
 
 pkgname = 86box-appimage
