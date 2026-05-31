@@ -1,13 +1,11 @@
-pkgbase = blackarch-wallpapers-git
+pkgbase = blackarch-wallpapers
 	pkgdesc = BlackArch Linux wallpapers
-	pkgver = 80
-	pkgrel = 3
+	pkgver = 1
+	pkgrel = 1
 	url = https://github.com/BlackArch/blackarch-artwork
-	install = blackarch-wallpapers-git.install
 	arch = any
 	license = custom
-	makedepends = git
-	source = git+https://github.com/BlackArch/blackarch-artwork.git
+	source = https://github.com/BlackArch/blackarch-artwork/archive/refs/heads/master.tar.gz
 	sha256sums = SKIP
 
-pkgname = blackarch-wallpapers-git
+pkgname = blackarch-wallpapers
