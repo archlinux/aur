@@ -1,6 +1,6 @@
-# Maintainer: Nils Schulte <nilsschulte@nilsschulte.de>
+# Maintainer: Nils Schulte <git@nilsschulte.de>
 pkgname=server-report-git
-pkgver=r1.53f28ad
+pkgver=r1.df4a9bb752
 pkgrel=1
 pkgdesc="Weekly btrfs health check and email report via msmtp"
 arch=('any')
@@ -23,5 +23,5 @@ package() {
 
     install -Dm755 server-report.sh "$pkgdir/usr/bin/server-report.sh"
     install -Dm644 "server-report@.service" "$pkgdir/usr/lib/systemd/system/server-report@.service"
-    install -Dm644 server-report.timer "$pkgdir/usr/lib/systemd/system/server-report.timer"
+    install -Dm644 "server-report@.timer" "$pkgdir/usr/lib/systemd/system/server-report@.timer"
 }
