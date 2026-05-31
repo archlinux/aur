@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postybirb-git
 _pkgname=PostyBirb
-pkgver=4.0.31.r0.gdf1672b
-_electronversion=35
-_nodeversion=22
+pkgver=4.0.35.r0.gae4bb56
+_electronversion=41
+_nodeversion=24
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly.(Use system-wide electron)"
 arch=('x86_64')
