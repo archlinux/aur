@@ -1,9 +1,10 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbauman.cc>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkolabxml
 pkgver=1.3.1
-pkgrel=9
+pkgrel=10
 pkgdesc='Kolab XML Format Schema Definitions Library'
 url='https://www.kolab.org/'
 arch=('x86_64')
