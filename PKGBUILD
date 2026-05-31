@@ -1,3 +1,4 @@
+# Maintainer: nulldayo <nulldayo at inatuz dot im>
 pkgname=pcf-shinonome
 pkgver=0.9.11
 pkgrel=1
