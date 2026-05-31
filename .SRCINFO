@@ -8,6 +8,11 @@ pkgbase = bleachbit-cli
 	makedepends = git
 	depends = python-gobject
 	depends = python-psutil
+	depends = python-chardet
+	depends = python-gobject
+	depends = python-psutil
+	depends = python-requests
+	depends = python-urllib3
 	provides = bleachbit=6.0.0
 	conflicts = bleachbit
 	source = git+https://github.com/bleachbit/bleachbit.git#tag=v6.0.0?signed
