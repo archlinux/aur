@@ -1,6 +1,10 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Michael Cortese <mcortese1406@gmail.com>
 
+# Override download agent to bypass strict user-agent blocking
+DLAGENTS=('http::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 --user-agent "PKGBUILD" -o %o %u'
+          'https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 --user-agent "PKGBUILD" -o %o %u')
+
 _pkgauthor=matthart1983
 _pkgname=diskwatch
 _cratename=${_pkgname}
