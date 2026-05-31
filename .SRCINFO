@@ -1,6 +1,6 @@
 pkgbase = thurbox-bin
 	pkgdesc = TUI for orchestrating multiple coding-agent CLI sessions in persistent tmux panels (prebuilt binary)
-	pkgver = 0.85.1
+	pkgver = 0.86.0
 	pkgrel = 1
 	url = https://github.com/Thurbeen/thurbox
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = thurbox-bin
 	conflicts = thurbox
 	options = !strip
 	options = !debug
-	source = thurbox-0.85.1.tar.gz::https://github.com/Thurbeen/thurbox/releases/download/v0.85.1/thurbox-v0.85.1-x86_64-unknown-linux-musl.tar.gz
-	source = LICENSE-0.85.1::https://raw.githubusercontent.com/Thurbeen/thurbox/v0.85.1/LICENSE
-	sha256sums = c1cef20df1fd37cd6bdd2c9b4c9532dea12a3404718f7f238ed7b25d98899c92
+	source = thurbox-0.86.0.tar.gz::https://github.com/Thurbeen/thurbox/releases/download/v0.86.0/thurbox-v0.86.0-x86_64-unknown-linux-musl.tar.gz
+	source = LICENSE-0.86.0::https://raw.githubusercontent.com/Thurbeen/thurbox/v0.86.0/LICENSE
+	sha256sums = cff62af4d58cff35d87dadfd98923bb07a6d1c7d90177267a699a384ad92dc49
 	sha256sums = 6c24e78d9603d3f074127a789b3c913ea7b5f18900816af16194f7abbef9275e
 
 pkgname = thurbox-bin
