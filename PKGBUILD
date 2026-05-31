@@ -3,7 +3,7 @@
 # Maintainer: LuoTianyi_amd64 <3511139170@qq.com>
 pkgname=astraeditor-git
 _binname=astraeditor-desktop
-pkgver=v1.2.3.r23.g45777a5
+pkgver=v1.2.3.r25.g1152aaf
 pkgrel=1
 pkgdesc='AstraEditor is a TurboWarp mod used to add more practical features to make your writing lightning fast.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -24,10 +24,9 @@ pkgver() {
 build() {
   cd "$pkgname"
   sed -i 's|github:AstraEditor/scratch-gui#.*|github:AstraEditor/scratch-gui#develop",|' package.json
-  sed -i 's|github:AstraEditor/scratch-gui#.*|github:AstraEditor/scratch-gui#develop",|' pnpm-lock.yaml
   rm -rf node_modules
   rm -f pnpm-lock.yaml
-  pnpm install
+  pnpm install --no-frozen-lockfile
   pnpm run fetch
   pnpm run webpack:prod
   local _target_arch="x64"
@@ -49,7 +48,7 @@ package() {
   ln -s "/opt/astraeditor/$_binname" "$pkgdir/usr/bin/$_binname"
 
   install -d "$pkgdir/usr/share/applications"
-  cat > "$pkgdir/usr/share/applications/$_binname.desktop" <<EOT
+  cat >"$pkgdir/usr/share/applications/$_binname.desktop" <<EOT
 [Desktop Entry]
 Name=AstraEditor
 GenericName=Scratch Mod
