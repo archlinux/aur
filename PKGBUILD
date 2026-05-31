@@ -2,7 +2,7 @@
 
 pkgname=thorium-browser-updated
 pkgver=148.0.7778.215
-pkgrel=1
+pkgrel=3
 pkgdesc="Chromium fork focused on high performance and security, built from source"
 arch=('x86_64')
 url="https://github.com/brauliobo/thorium"
@@ -82,7 +82,7 @@ conflicts=('thorium-browser' 'thorium-browser-bin' 'thorium-browser-updated-bin'
 options=('!lto' '!strip' '!debug')
 install="${pkgname}.install"
 source=(
-  "thorium::git+https://github.com/brauliobo/thorium.git#commit=02714fcb63171e9623d3383704fd18928e381071"
+  "thorium::git+https://github.com/brauliobo/thorium.git#commit=d48c37679ca608c85447271e35bb85b65201e476"
   "depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
 )
 sha256sums=('SKIP' 'SKIP')
@@ -161,6 +161,7 @@ package() {
 
   rm -f \
     "$pkgdir/usr/bin/thorium-browser" \
+    "$pkgdir/usr/bin/thorium-browser-stable" \
     "$pkgdir/usr/bin/pak"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/thorium-browser" <<'END'
@@ -184,6 +185,11 @@ done
 
 exec /opt/thorium-browser/thorium-browser "${flags[@]}" "$@"
 END
+
+  ln -sfn thorium-browser "$pkgdir/usr/bin/thorium-browser-stable"
+
+  find "$pkgdir/usr/share/applications" -name '*.desktop' -type f -exec \
+    sed -i 's@/usr/bin/thorium-browser-stable@/usr/bin/thorium-browser@g' {} +
 
   if [[ -f "$pkgdir/usr/bin/thorium-shell" ]]; then
     sed -E -i 's@/opt/chromium.org/thorium/@/opt/thorium-browser/@g' \
