@@ -1,8 +1,8 @@
-pkgbase = archtex-git
+pkgbase = suyoratex-git
 	pkgdesc = A frictionless LaTeX Live Editor
 	pkgver = r1.2f7fc73
 	pkgrel = 1
-	url = https://github.com/Yougraj/archtex
+	url = https://github.com/Yougraj/SuyoraTex
 	arch = any
 	license = MIT
 	makedepends = git
@@ -13,9 +13,11 @@ pkgbase = archtex-git
 	depends = texlive-latex
 	depends = texlive-latexextra
 	depends = texlive-fontsrecommended
-	provides = archtex
+	provides = suyoratex
+	conflicts = suyoratex
 	conflicts = archtex
-	source = git+https://github.com/Yougraj/archtex.git
+	conflicts = archtex-git
+	source = suyoratex::git+https://github.com/Yougraj/SuyoraTex.git
 	sha256sums = SKIP
 
-pkgname = archtex-git
+pkgname = suyoratex-git

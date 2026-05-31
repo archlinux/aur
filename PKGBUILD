@@ -1,11 +1,15 @@
-# Maintainer: Yougraj <your_email@example.com>
-pkgname=archtex-git
-pkgver=r1.2f7fc73  # This will auto-update itself
+# Maintainer: Yougraj <yougrajbora.developer@gmail.com>
+
+pkgname=suyoratex-git
+pkgver=r1.2f7fc73
 pkgrel=1
 pkgdesc="A frictionless LaTeX Live Editor"
 arch=('any')
-url="https://github.com/Yougraj/archtex"
-license=('MIT') # Make sure you add a LICENSE file to your GitHub repo!
+license=('MIT')
+
+# 1. Update the URL to your new GitHub repo name
+url="https://github.com/Yougraj/SuyoraTex"
+
 depends=(
     'python'
     'python-pyqt6'
@@ -16,32 +20,31 @@ depends=(
     'texlive-fontsrecommended'
 )
 makedepends=('git')
-provides=('archtex')
-conflicts=('archtex')
-source=("git+https://github.com/Yougraj/archtex.git")
+provides=('suyoratex')
+conflicts=('suyoratex' 'archtex' 'archtex-git')
+
+# 2. Update the source link. 
+# We put "suyoratex::" at the front to force Linux to make the folder lowercase.
+source=("suyoratex::git+https://github.com/Yougraj/SuyoraTex.git")
 sha256sums=('SKIP')
 
-# This function automatically generates the version number based on your latest GitHub commit
 pkgver() {
-    cd "$srcdir/archtex"
+    # 3. Update the folder name here
+    cd "$srcdir/suyoratex"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-# This function tells Arch Linux how to install your app into the system
 package() {
-    cd "$srcdir/archtex"
+    # 4. Update the folder name here
+    cd "$srcdir/suyoratex"
     
-    # 1. Create a read-only directory for your app in the system
-    install -d "$pkgdir/usr/share/archtex"
+    install -d "$pkgdir/usr/share/suyoratex"
+    cp -r * "$pkgdir/usr/share/suyoratex/"
     
-    # 2. Copy your Python files into that directory
-    cp -r * "$pkgdir/usr/share/archtex/"
-    
-    # 3. Create a terminal command 'archtex' in /usr/bin/ so users can launch it easily
     install -d "$pkgdir/usr/bin"
-    cat <<EOF > "$pkgdir/usr/bin/archtex"
+    cat <<EOF > "$pkgdir/usr/bin/suyoratex"
 #!/bin/bash
-exec python /usr/share/archtex/main.py "\$@"
+exec python /usr/share/suyoratex/main.py "\$@"
 EOF
-    chmod +x "$pkgdir/usr/bin/archtex"
+    chmod +x "$pkgdir/usr/bin/suyoratex"
 }
