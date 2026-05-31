@@ -1,0 +1,78 @@
+From 4f0b45b8fd153cbe982cf969b1492ae11ba42b5e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sun, 1 Dec 2024 18:34:01 +0100
+Subject: [PATCH] Rename desktop file to match with program name
+
+Also fix metainfo installation.
+---
+ data/appdata/Makefile.am                               |  2 +-
+ data/appdata/glabels-3.appdata.xml.in                  | 10 +++++-----
+ data/desktop/Makefile.am                               |  2 +-
+ .../{glabels-3.0.desktop.in => glabels-3.desktop.in}   |  0
+ 4 files changed, 7 insertions(+), 7 deletions(-)
+ rename data/desktop/{glabels-3.0.desktop.in => glabels-3.desktop.in} (100%)
+
+diff --git a/data/appdata/Makefile.am b/data/appdata/Makefile.am
+index b698c98..e765b2d 100644
+--- a/data/appdata/Makefile.am
++++ b/data/appdata/Makefile.am
+@@ -5,7 +5,7 @@
+ APPDATA_IN_FILES = glabels-3.appdata.xml.in
+ APPDATA_FILES =$(APPDATA_IN_FILES:.appdata.xml.in=.appdata.xml)
+ 
+-appdatadir = $(datadir)/appdata
++appdatadir = $(datadir)/metainfo
+ appdata_DATA = $(APPDATA_FILES)
+ 
+ EXTRA_DIST = $(APPDATA_IN_FILES)
+diff --git a/data/appdata/glabels-3.appdata.xml.in b/data/appdata/glabels-3.appdata.xml.in
+index 669927a..7a693bb 100644
+--- a/data/appdata/glabels-3.appdata.xml.in
++++ b/data/appdata/glabels-3.appdata.xml.in
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!-- Copyright 2013 Jim Evins <evins@snaught.com> -->
+ <component type="desktop">
+-  <id>glabels-3.0.desktop</id>
++  <id>glabels-3.desktop</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>GPL-3.0+</project_license>
+   <_name>gLabels</_name>
+@@ -24,13 +24,13 @@
+   </description>
+   <screenshots>
+     <screenshot height="640" width="881" type="default">
+-      <image>http://glabels.org/images/320-screenshot-main.png</image>
++      <image>https://github.com/jimevins/glabels/blob/master/help/C/figures/introduction-glabels-main-window.png?raw=true</image>
+     </screenshot>
+   </screenshots>
+-  <url type="homepage">http://glabels.org/</url>
+-  <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=glabels</url>
+-  <url type="donation">http://www.gnome.org/friends/</url>
++  <url type="homepage">https://github.com/jimevins/glabels</url>
++  <url type="bugtracker">https://github.com/jimevins/glabels/issues</url>
+   <url type="help">https://help.gnome.org/users/glabels/stable/</url>
++  <url type="vcs-browser">https://github.com/jimevins/glabels</url>
+   <update_contact>evins_at_snaught.com</update_contact>
+   <project_group>GNOME</project_group>
+   <translation type="gettext">glabels-3.0</translation>
+diff --git a/data/desktop/Makefile.am b/data/desktop/Makefile.am
+index 0358d5a..13ba1d2 100644
+--- a/data/desktop/Makefile.am
++++ b/data/desktop/Makefile.am
+@@ -2,7 +2,7 @@
+ 
+ @INTLTOOL_DESKTOP_RULE@
+ 
+-DESKTOP_IN_FILES = $(GLABELS_BRANCH).desktop.in
++DESKTOP_IN_FILES = glabels-3.desktop.in
+ DESKTOP_FILES =$(DESKTOP_IN_FILES:.desktop.in=.desktop)
+ 
+ desktopdir = $(datadir)/applications
+diff --git a/data/desktop/glabels-3.0.desktop.in b/data/desktop/glabels-3.desktop.in
+similarity index 100%
+rename from data/desktop/glabels-3.0.desktop.in
+rename to data/desktop/glabels-3.desktop.in
+-- 
+2.47.1
+
