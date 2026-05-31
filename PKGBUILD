@@ -35,7 +35,8 @@ sha256sums=('SKIP')
 build() {
     cd "$srcdir/machctrl-main"
     npm install --prefer-offline
-    npm run build:appimage -- --dir
+    npx vite build
+    npx electron-builder build --linux dir
 }
 
 package() {
