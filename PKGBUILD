@@ -1,6 +1,6 @@
 # Maintainer: Nils Schulte <git@nilsschulte.de>
 pkgname=server-report-git
-pkgver=r1.905f2e2
+pkgver=r1.0001808
 pkgrel=1
 pkgdesc="Weekly btrfs health check and email report via msmtp"
 arch=('any')
