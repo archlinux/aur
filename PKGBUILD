@@ -4,7 +4,7 @@ _pkgname=browser-stable
 pkgname=yandex-browser
 pkgver=26.4.1.1101
 _pkgver=26.4.1.1101-1
-pkgrel=2
+pkgrel=3
 #epoch=1
 
 pkgdesc="The web browser from Yandex.
@@ -41,4 +41,7 @@ package() {
 # The stable version uses the "browser" folder in /opt/yandex. ${_pkgname} cannot be used in this section for the stable branch 
 #    install -D -m0644 "${pkgdir}"/opt/yandex/browser/product_logo_128.png "${pkgdir}"/usr/share/pixmaps/${pkgname}.png
     chmod 4755 "${pkgdir}"/opt/yandex/browser/yandex_browser-sandbox
+    # Fix duplicate menu entry: NoDisplay=true belongs in [Desktop Entry], not in a desktop action section
+    sed -i '/^\[Desktop Entry\]/a NoDisplay=true' \
+        "${pkgdir}"/usr/share/applications/ru.yandex.desktop.browser.desktop
 }
