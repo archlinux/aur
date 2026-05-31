@@ -3,7 +3,7 @@
 # Maintainer: Ahmed G. Gad <me@ahmedgad.com>
 
 pkgname=apothem
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Host-agnostic AI-harness configuration manager."
 arch=('any')
@@ -11,7 +11,7 @@ url="https://apothem.ahmedgad.com"
 license=('MIT')
 depends=('bash' 'python')
 source=("${pkgname}-v${pkgver}-linux.tar.gz::https://github.com/ahmed-g-gad/apothem/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux.tar.gz")
-sha256sums=('b7020a8e0caf621ed3657a4d482e372620b9cd30bceab89a358ff7708ec34178')
+sha256sums=('4046e3e07dcc3d851673ee229f0a6a687797dbfcb10769a288d604408005cf36')
 
 package() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
