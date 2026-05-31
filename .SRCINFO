@@ -1,0 +1,12 @@
+pkgbase = lice-git
+	pkgdesc = inject a license file into your git repo
+	pkgver = r8.gc7df858
+	pkgrel = 1
+	url = https://codeberg.org/5unekku/lice
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = rust
+	source = lice-git::git+https://codeberg.org/5unekku/lice.git
+	sha256sums = SKIP
+
+pkgname = lice-git
