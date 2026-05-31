@@ -1,0 +1,24 @@
+post_install() {
+    echo -e "\e[1;32m- NapCat安装完成 -\e[0m"
+    echo ""
+    echo -e "\e[1;32m安装位置:\e[0m"
+    echo -e "  \e[1;36m/opt/napcat-qq\e[0m"
+    echo ""
+    echo -e "\e[1;32m启动 Napcat :\e[0m"
+    echo -e "  \e[1;36mnapcat-qq\e[0m"
+    echo ""
+    echo -e "\e[1;32m后台运行 Napcat:\e[0m"
+    echo -e "  启动: \e[1;36mscreen -dmS napcat napcat-qq\e[0m"
+    echo -e "  带账号启动: \e[1;36mscreen -dmS napcat napcat-qq -q QQ号码\e[0m"
+    echo -e "  查看会话: \e[1;36mscreen -r napcat\e[0m (按 Ctrl+A 然后按 D 退出)"
+    echo -e "  停止会话: \e[1;36mscreen -S napcat -X quit\e[0m"
+    echo ""
+    echo -e "\e[1;32mNapcat 相关信息:\e[0m"
+    echo -e "  插件与数据存放位置: \e[1;36m~/.config/napcat-qq-plugin\e[0m"
+    echo -e "  WebUI Token: 查看 \e[1;36m~/.config/napcat-qq-plugin/config/webui.json\e[0m 文件获取"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

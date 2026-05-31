@@ -1,0 +1,26 @@
+pkgbase = napcat-qq
+	pkgdesc = 现代化的基于 NTQQ 的 Bot 协议端实现
+	pkgver = 4.18.4
+	pkgrel = 2
+	url = https://github.com/NapNeko/NapCatQQ
+	install = napcat-qq.install
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	makedepends = jq
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = xorg-server-xvfb
+	depends = screen
+	source = NapCat.Shell.zip::https://github.com/NapNeko/NapCatQQ/releases/download/v4.18.4/NapCat.Shell.zip
+	source = napcat-qq.sh
+	source = napcat-qq.install
+	sha256sums = b275faf64fdbf3af2d4ae705c70450e219853ab9505c29f62ccd8e09b0b13871
+	sha256sums = d5c0a1e4e7df95c96971fd5447c9011e5d5327d142a1e53a772b035670056e44
+	sha256sums = fecf169a5e052b9b475d9c28594f5f57557c4424391bf1e6190e2d1a33eeb8e2
+	source_x86_64 = linuxqq_3.2.23-44343_amd64.deb::https://dldir1.qq.com/qqfile/qq/QQNT/94704804/linuxqq_3.2.23-44343_amd64.deb
+	sha256sums_x86_64 = a4252719c1beb8adce0da09ebfc310ce50c79ea548f5cce429505765d0bfba84
+
+pkgname = napcat-qq
