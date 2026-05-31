@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rpi-imager-git
-pkgver=2.0.6.r29.gd68e5e26
+pkgver=2.0.9.r10.gfc406012
 pkgrel=1
 pkgdesc="Raspberry Pi imaging utility"
 arch=('i686' 'x86_64')
 url="https://github.com/raspberrypi/rpi-imager"
 license=('Apache-2.0')
 depends=('glibc' 'libgcc' 'libstdc++' 'curl' 'gnutls' 'hicolor-icon-theme' 'libarchive' 'qt6-base' 'qt6-declarative' 'qt6-svg' 'xz')
-makedepends=('git' 'cmake' 'qt6-tools')
+makedepends=('git' 'cmake' 'nettle3' 'qt6-tools')
 optdepends=('dosfstools: SD card bootloader support'
             'udisks2: Needed if you want to be able to run rpi-imager as a regular user')
 provides=("rpi-imager=$pkgver")
@@ -34,6 +34,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DENABLE_CHECK_VERSION=OFF \
+    -DNETTLE_INCLUDE_DIR="/usr/include/nettle3" \
+    -DNETTLE_LIBRARY="/usr/lib/nettle3" \
     src
   cmake --build "_build"
 }
