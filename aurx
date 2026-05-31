@@ -370,15 +370,15 @@ aurx_completion() {
 				                fi
 				        elif [[ \${LAST_WORD} == "--search-criteria" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${SEARCH_CRITERIA_VALUES}" -- "\${CURRENT_WORD}") )
-				        elif [[ \${LAST_WORD} == "--comparison-criteria" ]]; then
+				        elif [[ \${LAST_WORD} == "--comparison-criteria" ]] || [[ \${LAST_WORD} == "-x" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${COMPARISON_CRITERIA_VALUES}" -- "\${CURRENT_WORD}") )
-				        elif [[ \${LAST_WORD} == "--git-connection" ]]; then
+				        elif [[ \${LAST_WORD} == "--git-connection" ]] || [[ \${LAST_WORD} == "-G" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${GIT_CONNECTION_VALUES}" -- "\${CURRENT_WORD}") )
-				        elif [[ \${LAST_WORD} == "--output" ]] && printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "search"; then
+				        elif [[ \${LAST_WORD} == "--output" ]] || [[ \${LAST_WORD} == "-o" ]] && printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "search"; then
 				                COMPREPLY=( \$(compgen -W "\${OUTPUT_VALUES}" -- "\${CURRENT_WORD}") )
-				        elif [[ \${LAST_WORD} == "--output" ]] && printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "describe"; then
+				        elif [[ \${LAST_WORD} == "--output" ]] || [[ \${LAST_WORD} == "-o" ]] && printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "describe"; then
 				                COMPREPLY=( \$(compgen -W "\${OUTPUT_DESCRIBE_VALUES}" -- "\${CURRENT_WORD}") )
-				        elif [[ \${LAST_WORD} == "--output" ]] && printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "suggest"; then
+				        elif [[ \${LAST_WORD} == "--output" ]] || [[ \${LAST_WORD} == "-o" ]] && printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "suggest"; then
 				                COMPREPLY=( \$(compgen -W "\${OUTPUT_SUGGEST_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--order-by" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${ORDER_BY_VALUES}" -- "\${CURRENT_WORD}") )
@@ -833,10 +833,10 @@ gather_aur_package_info() {
 		print_error 74
 		exit 74
 	fi
-	if [[ $(echo ${PACKAGE_INFORMATION} | jq -cr '.resultcount') == 0 ]]; then
+	if [[ $(echo "${PACKAGE_INFORMATION}" | jq -cr '.resultcount') == 0 ]]; then
 		return 1
 	else
-		PACKAGE_INFORMATION=$( echo ${PACKAGE_INFORMATION} \
+		PACKAGE_INFORMATION=$(echo "${PACKAGE_INFORMATION}" \
 		| jq -cr --arg PACKAGE_NAME "${TARGET_PACKAGE}" \
 			'.results.[0] + {AURWebURL: "https://aur.archlinux.org/packages/" + $PACKAGE_NAME}')
 	fi
@@ -1347,7 +1347,7 @@ METADATA_ARRAYS=("INTERNAL_VARIABLES" "INTERNAL_ARRAYS" "POSSIBLE_OPERATIONS" "G
 declare "${METADATA_VARIABLES[@]}"
 declare -a "${METADATA_ARRAYS[@]}"
 
-INTERNAL_VERSION="1.0.8-4"
+INTERNAL_VERSION="1.0.8-5"
 INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" "CONFIG" \
 	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "GIT_CONNECTION" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" \
 	"MAINTAINED" "NO_MARK_INSTALLED" "NO_MARK_UPDATE" "NO_OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
