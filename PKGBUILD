@@ -2,7 +2,7 @@
 
 _pkgbase=ayuz
 pkgname="$_pkgbase"
-pkgver=1.1.4
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='The unofficial MyAsus alternative for Linux'
 arch=('x86_64')
@@ -26,7 +26,7 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 replaces=('asus-hub')
 source=("$_pkgbase::git+https://github.com/Traciges/Ayuz.git#tag=v$pkgver")
-sha256sums=('927af6e29280b25be1118abb2d40d220c7b043c1e3dd7da58a298f5c54012ce9')
+sha256sums=('aa478e6d3b50ed1dd63d42f26f565832eeebea30a63be00537ca81440bf86fee')
 
 prepare() {
 	cd "$_pkgbase"
