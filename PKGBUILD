@@ -1,6 +1,6 @@
 pkgname=lmms-lab-writer-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-native LaTeX editor desktop application (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/EvolvingLMMs-Lab/lmms-lab-writer"
@@ -9,7 +9,7 @@ depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3')
 provides=('lmms-lab-writer')
 conflicts=('lmms-lab-writer')
 options=(!strip)
-source_x86_64=("lmms-lab-writer_0.1.2_amd64.deb::https://github.com/EvolvingLMMs-Lab/lmms-lab-writer/releases/download/v0.1.2/LMMs-Lab%20Writer_0.1.2_amd64.deb")
+source_x86_64=("lmms-lab-writer_0.1.2_amd64.deb::https://github.com/EvolvingLMMs-Lab/lmms-lab-writer/releases/download/v0.1.2/LMMs-Lab.Writer_0.1.2_amd64.deb")
 sha256sums_x86_64=('3930ec86412e000e2c74904ecaad1f2c14b2def299515e8e4dd1d0023f2bce7e')
 
 package() {
