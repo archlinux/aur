@@ -15,7 +15,7 @@ optdepends=('guile-dbi: A simple, generic, easy-to-use guile scheme interface to
             'guile-dbd-sqlite3: The dbd plugin connects to an actual SQLite database server.'
             'guile-dbd-postgresql: The dbd plugin connects to an actual PostgreSQL database server.'
             'guile-dbd-mysql: The dbd plugin connects to an actual MySQL database server.')
-arch=('x86_64') #haven't tested aarch64.
+arch=('x86_64''aarch64' ) #tested on aarch64, build's fine.
 license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
 source=(https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz{,.sig})
 sha256sums=('f1532564383fedb7dcd47c43c0b803ec126f66543c7fb6f7c9e64f0fa8979c99'
