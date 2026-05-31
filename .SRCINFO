@@ -1,7 +1,7 @@
 pkgbase = noctalia-git
         pkgdesc = Lightweight Wayland shell built directly on Wayland and OpenGL ES
         pkgver = 5.0.0.r1191.g39a4a335c
-        pkgrel = 8
+        pkgrel = 9
         url = https://github.com/noctalia-dev/noctalia-shell
         arch = x86_64
         license = MIT
@@ -24,6 +24,7 @@ pkgbase = noctalia-git
         depends = librsvg
         depends = libwebp
         depends = libxkbcommon
+        depends = libxml2
         depends = pam
         depends = polkit
         depends = pango
