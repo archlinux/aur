@@ -2,7 +2,7 @@
 # Contributor: le0nxx <leonlawxx@outlook.sg>
 
 pkgname=motrix-next
-pkgver=3.9.1
+pkgver=3.9.2
 pkgrel=1
 pkgdesc="A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ makedepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('719938d86949d0bf85ed2dc213069cb76839d25adbdeae867971fab9e7168c1e')
+sha256sums=('c775c87205c4c445ee925fbfea0f7b2be1f67d1c83b8c39e67a5ff3d59d07e0e')
 
 
 prepare() {
