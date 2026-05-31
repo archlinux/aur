@@ -10,7 +10,6 @@ arch=(x86_64)
 url='https://userbase.kde.org/Color_Management'
 license=(GPL-2.0-or-later)
 depends=(colord
-         gcc-libs
          glibc
          kcmutils
          kcoreaddons
@@ -20,6 +19,7 @@ depends=(colord
          kitemmodels # QML
          kwidgetsaddons
          lcms2
+         libstdc++
          libx11
          libxrandr
          qt6-base
