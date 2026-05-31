@@ -1,7 +1,7 @@
 pkgbase = gz-launch9
 	pkgdesc = Run and manage programs and plugins.
 	pkgver = 9.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/gz-launch
 	arch = any
 	license = Apache-2.0
@@ -17,8 +17,6 @@ pkgbase = gz-launch9
 	depends = gz-sim=10
 	depends = gz-transport=15
 	depends = gz-utils=4
-	depends = qt6-base
-	depends = qt6-quickcontrols2
 	depends = tinyxml2
 	optdepends = libwebsockets: a websocket server for simulation
 	provides = gz-launch=9

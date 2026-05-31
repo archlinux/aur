@@ -2,7 +2,7 @@
 
 pkgname=gz-launch9
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Run and manage programs and plugins."
@@ -18,8 +18,6 @@ depends=(
   'gz-sim=10'
   'gz-transport=15'
   'gz-utils=4'
-  'qt6-base'
-  'qt6-quickcontrols2'
   'tinyxml2'
   )
 makedepends=(
