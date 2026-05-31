@@ -2,7 +2,7 @@
 
 pkgname=pv-migrate
 # renovate: datasource=github-releases depName=utkuozdemir/pv-migrate
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=6
 pkgdesc='kubectl plugin to easily migrate the contents of one Kubernetes PersistentVolumeClaim to another'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
 provides=("kubectl-${pkgname}")
 groups=('kubectl-plugins')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('0e48abc681ae2229af50e97f62a13c360b5f077102fe1034983497be79ae5e72307177c18bbe77f8efdb4efb982177e97570dcf4611bdb99567703c98369d0ea')
+b2sums=('227bc5a4e4dd52c0efeb0d790b11454da9a297f84df80bbcb94a83445ed6dc20e1443be3a147d5f889c9faea9fd49dc60af92e563cef7f52e4a8b9c9b9fddb9b')
 
 build() {
   local _x _commit
