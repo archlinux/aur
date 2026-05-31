@@ -1,0 +1,26 @@
+pkgbase = gz-fuel-tools11
+	pkgdesc = A client library and command line tools for interacting with Gazebo Fuel servers.
+	pkgver = 11.0.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-fuel-tools
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=5
+	depends = curl
+	depends = gz-common=7
+	depends = gz-math=9
+	depends = gz-msgs=12
+	depends = gz-utils=4
+	depends = jsoncpp
+	depends = libyaml
+	depends = libzip
+	depends = protobuf
+	depends = tinyxml2
+	optdepends = ruby
+	provides = gz-fuel-tools=11
+	source = https://github.com/gazebosim/gz-fuel-tools/archive/gz-fuel-tools11_11.0.0.tar.gz
+	sha256sums = 508ee5f0c8e9ab43effa6ce307736f146914bb22580cd154d7e09b67e4838c54
+
+pkgname = gz-fuel-tools11
