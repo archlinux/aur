@@ -1,0 +1,7 @@
+post_install() {
+    echo ":: Your wallpapers are located at: /usr/share/backgrounds/blackarch/"
+}
+
+post_upgrade() {
+    post_install
+}
