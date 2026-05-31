@@ -12,7 +12,7 @@ depends=('fuse2')
 provides=('clipshare')
 conflicts=('clipshare')
 source=(
-  "clipshare.AppImage::https://github.com/aa2013/ClipShare/releases/download/v$pkgver/clipshare-${pkgver}%2B26-linux.AppImage"
+  "clipshare.AppImage::https://github.com/aa2013/ClipShare/releases/download/v$pkgver/clipshare-${pkgver}+26-linux.AppImage"
   "clipshare.png::https://raw.githubusercontent.com/aa2013/ClipShare/v$pkgver/assets/images/logo/logo.png"
 )
 sha256sums=('c03757856512d9d42c4cd1406f4abb9f85d936a1f509e54a77991c59ed445ee2'
