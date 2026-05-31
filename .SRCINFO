@@ -1,5 +1,5 @@
 pkgbase = pcf-shinonome
-	pkgdesc = Shinonome Japanese bitmap font family (12, 14, 16 and 18 dot fonts)
+	pkgdesc = Shinonome Japanese bitmap font family (12, 14 and 16 dot fonts)
 	pkgver = 0.9.11
 	pkgrel = 1
 	url = http://openlab.ring.gr.jp/efont/shinonome
