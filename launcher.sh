@@ -7,4 +7,9 @@ then
 	cp -r /opt/vpin-studio-client/resources ~/.local/share/vpin-studio
 fi
 
-/usr/lib/jvm/zulu11-fx-bin/bin/java -jar /opt/vpin-studio-client-bin/vpin-studio-ui.jar
+/usr/lib/jvm/zulu-jre25-fx/bin/java \
+  --add-exports=javafx.graphics/com.sun.javafx.iio=ALL-UNNAMED \
+  --add-exports=javafx.graphics/com.sun.javafx.iio.common=ALL-UNNAMED \
+  --enable-native-access=javafx.graphics \
+  --enable-native-access=javafx.web \
+  -jar /opt/vpin-studio-client-bin/vpin-studio-ui.jar
