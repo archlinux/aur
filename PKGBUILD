@@ -2,18 +2,18 @@
 
 pkgname=goodix5385
 pkgver=0.3.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Fingerprint GUI for Goodix 5385 sensor — enroll, verify, delete, sudo auth toggle. Requires libfprint-goodix53x5."
 arch=('any')
 url="https://github.com/sanecodeguy/Goodix5385"
 license=('MIT')
 depends=(
     'fprintd'
+    'libfprint-goodix53x5'
     'python'
     'python-pyusb'
     'pyside6'
 )
-optdepends=('libfprint-goodix53x5: Goodix HTK32 driver — official libfprint lacks it')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://github.com/sanecodeguy/Goodix5385/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
