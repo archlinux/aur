@@ -1,6 +1,6 @@
 pkgbase = bigsnatch
 	pkgdesc = Real-time eBPF network connection monitor — see what your computer is reaching out to
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/invisi101/bigsnatch
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = bigsnatch
 	makedepends = fontconfig
 	makedepends = freetype2
 	depends = polkit
-	source = bigsnatch-0.1.2.tar.gz::https://github.com/invisi101/bigsnatch/archive/v0.1.2.tar.gz
-	sha256sums = 0b8e6d47a40b63e7ce483943c5974657847c7ad1a4b5eae86b34d82d1073ff1f
+	source = bigsnatch-0.1.3.tar.gz::https://github.com/invisi101/bigsnatch/archive/v0.1.3.tar.gz
+	sha256sums = 231510786404a4bdb182d3aca0592f792d592120fdade7792d3eaa579abfdf4d
 
 pkgname = bigsnatch
