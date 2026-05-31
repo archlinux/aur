@@ -13,6 +13,7 @@ pkgbase = hyprlang-frozen
 	depends = gcc-libs
 	depends = glibc
 	depends = hyprutils-frozen
+	provides = hyprlang
 	provides = hyprlang-frozen
 	provides = libhyprlang.so
 	conflicts = hyprlang-git
