@@ -3,7 +3,7 @@
 _pkgname=piimg
 pkgname=piimg-git
 pkgver=27.e7ce4ad
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for working with disk images, which are designed to be flashed onto a Raspberry Pi."
 arch=('i686' 'x86_64')
 url="https://github.com/alexchamberlain/piimg"
@@ -12,7 +12,7 @@ depends=('parted')
 makedepends=('git' 'make')
 conflicts=('piimg')
 provides=('piimg')
-source=('git://github.com/alexchamberlain/piimg.git#branch=master')
+source=('git+https://github.com/alexchamberlain/piimg.git#branch=master')
 md5sums=('SKIP')
 
 
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgname}"
-  make src
+  make CFLAGS="${CFLAGS} -Wno-implicit-function-declaration" src
 }
 
 package() {
