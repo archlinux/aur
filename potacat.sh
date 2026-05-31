@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron39 /usr/lib/potacat/main.js "$@"
+ELECTRON_IS_DEV=0 exec /usr/lib/electron39/electron /usr/lib/potacat --user-data-dir="$HOME/.config/potacat" "$@"
