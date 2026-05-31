@@ -1,15 +1,15 @@
 pkgbase = concourse
-	pkgver = 8.2.0
+	pkgver = 8.2.1
 	pkgrel = 1
 	url = https://concourse-ci.org
 	arch = x86_64
 	license = custom:Apache-2.0
 	makedepends = go
 	makedepends = yarn-berry
-	source = concourse-8.2.0.tar.gz::https://github.com/concourse/concourse/archive/v8.2.0.tar.gz
-	source = https://github.com/concourse/concourse/releases/download/v8.2.0/concourse-8.2.0-linux-amd64.tgz
-	sha256sums = aa1b48b65bc3fa84047cfc5af0dace99793c50864e0538b3e9288b60aab9f1a8
-	sha256sums = d8c8c2e18e7691eaf7018561a200493db8febcca3296db7b01dba190db11e400
+	source = concourse-8.2.1.tar.gz::https://github.com/concourse/concourse/archive/v8.2.1.tar.gz
+	source = https://github.com/concourse/concourse/releases/download/v8.2.1/concourse-8.2.1-linux-amd64.tgz
+	sha256sums = f71b64d86a8b2fd2bec64a97804029b634879893a8201574f68fd8aaa9e813dc
+	sha256sums = f38bdc46ca67c6741d690cc15501541605d406ffcd9dac926eee04867e5da145
 
 pkgname = concourse
 	pkgdesc = Concourse is a container-based continuous thing-doer written in Go and Elm

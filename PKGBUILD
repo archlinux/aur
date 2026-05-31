@@ -4,7 +4,7 @@
 
 pkgbase='concourse'
 pkgname=('concourse' 'concourse-fly-cli' 'concourse-resource-types')
-pkgver=8.2.0
+pkgver=8.2.1
 pkgrel=1
 arch=('x86_64')
 url='https://concourse-ci.org'
@@ -12,8 +12,8 @@ license=('custom:Apache-2.0')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/concourse/concourse/archive/v${pkgver}.tar.gz"
         "https://github.com/concourse/concourse/releases/download/v${pkgver}/concourse-${pkgver}-linux-amd64.tgz")
 makedepends=('go' 'yarn-berry')
-sha256sums=('aa1b48b65bc3fa84047cfc5af0dace99793c50864e0538b3e9288b60aab9f1a8'
-            'd8c8c2e18e7691eaf7018561a200493db8febcca3296db7b01dba190db11e400')
+sha256sums=('f71b64d86a8b2fd2bec64a97804029b634879893a8201574f68fd8aaa9e813dc'
+            'f38bdc46ca67c6741d690cc15501541605d406ffcd9dac926eee04867e5da145')
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p "${srcdir}/go"
@@ -27,6 +27,7 @@ prepare() {
   sed -e 's#"init-bin"   default:"/usr/local/concourse/bin/init"#"init-bin"   default:"/usr/lib/concourse/bin/init"#' -i worker/workercmd/worker_linux.go
 
   go get -d ./...
+  export PUPPETEER_SKIP_DOWNLOAD=1
   yarn
 }
 
