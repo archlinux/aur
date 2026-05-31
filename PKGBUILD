@@ -3,7 +3,7 @@
 _pkgname=thorium-browser
 pkgname=thorium-browser-updated-bin
 pkgver=148.0.7778.215
-pkgrel=3
+pkgrel=7
 pkgdesc="Chromium fork focused on high performance and security, packaged from updated binaries"
 arch=('x86_64')
 url="https://github.com/brauliobo/thorium"
@@ -34,7 +34,7 @@ conflicts=('thorium-browser' 'thorium-browser-bin' 'thorium-browser-updated')
 options=('!emptydirs' '!strip' '!debug')
 install="${pkgname}.install"
 source=("https://github.com/brauliobo/thorium/releases/download/M${pkgver}-updated/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('5e8ceff97a28618ef13905603b8598be84cf95686aa7bd6be14473be254fbbbc')
+sha256sums=('f9d25c81b0cc19aa57680ac19b7c1beb6ea8294c835006a71424bd51a71d130a')
 noextract=("${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 
 package() {
@@ -46,7 +46,11 @@ package() {
     "$pkgdir/.MTREE" \
     "$pkgdir/.PKGINFO"
 
-  ln -sfn thorium-browser "$pkgdir/usr/bin/thorium-browser-stable"
+  rm -f \
+    "$pkgdir/usr/bin/thorium-browser-stable" \
+    "$pkgdir/usr/share/man/man1/thorium-browser-stable.1" \
+    "$pkgdir/usr/share/man/man1/thorium-browser-stable.1.gz"
+
   find "$pkgdir/usr/share/applications" -name '*.desktop' -type f -exec \
     sed -i 's@/usr/bin/thorium-browser-stable@/usr/bin/thorium-browser@g' {} +
 
