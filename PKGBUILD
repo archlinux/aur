@@ -2,8 +2,8 @@
 
 pkgname=python-spandrel
 _pkgname=${pkgname#python-}
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Library for loading and running pre-trained PyTorch models"
 arch=('any')
 url='https://github.com/chaiNNer-org/spandrel'
@@ -21,7 +21,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 source=(
 	"$pkgname-$pkgver.tar.gz"::"https://github.com/chaiNNer-org/spandrel/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('12063b78bb3a1979617e697a66994be9e651117425e19f7004af2a3e34ad2b97')
+sha256sums=('1c382c2ef8ebb5fce30d6d0fcf9641a0bd5113881d861896a27645829afc97df')
 
 build() {
 	cd "$_pkgname-$pkgver/libs/spandrel"
