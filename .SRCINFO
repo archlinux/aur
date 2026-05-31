@@ -1,7 +1,7 @@
 pkgbase = picguard-pro-bin
 	pkgdesc = Your pictures, your signature
-	pkgver = 5.5.0
-	pkgrel = 0
+	pkgver = 5.5.2
+	pkgrel = 475
 	url = https://github.com/picguard/picguard
 	arch = x86_64
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = picguard-pro-bin
 	provides = picguard-pro
 	conflicts = picguard-pro
 	options = !debug
-	source_x86_64 = https://github.com/picguard/picguard/releases/download/v5.5.0/picguard-pro-5.5.0-linux-amd64.deb
-	sha256sums_x86_64 = 01e42182a1a853ec7e6dafa4a36b06cb634f9bc28ea43ec1812d35d8baa28685
-	source_aarch64 = https://github.com/picguard/picguard/releases/download/v5.5.0/picguard-pro-5.5.0-linux-aarch64.deb
-	sha256sums_aarch64 = 17e85bbb6363340e5dd27be8f77f9d77c3747915c107a2d0e8f999ac61c582ec
+	source_x86_64 = https://github.com/picguard/picguard/releases/download/v5.5.2.475/picguard-pro-5.5.2.475-linux-amd64.deb
+	sha256sums_x86_64 = 091905f4503b2d0bfe51273e0fba758fdc2dfcfc74836bb9c4bb18432adebbbd
+	source_aarch64 = https://github.com/picguard/picguard/releases/download/v5.5.2.475/picguard-pro-5.5.2.475-linux-aarch64.deb
+	sha256sums_aarch64 = b0fb47bdf41fcc8aa68c57de9cfdd7af5c72ccd0ec743644a62bb0ac660d03d2
 
 pkgname = picguard-pro-bin
