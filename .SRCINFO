@@ -1,0 +1,14 @@
+pkgbase = pi-ext-spellcheck
+	pkgdesc = Codebook-powered spell checking for pi-coding-agent
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dougefresher/pi-ext-spellcheck
+	install = pi-ext.install
+	arch = any
+	license = MIT
+	optdepends = pi-coding-agent
+	optdepends = pi-coding-agent-git
+	source = pi-ext-spellcheck-0.1.1.tar.gz::https://github.com/dougefresher/pi-ext-spellcheck/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 0c20af080367564fea72e7cc9e73876dce84ef68e03f5e2dd0e5e9807762f52e
+
+pkgname = pi-ext-spellcheck
