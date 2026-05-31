@@ -1,0 +1,32 @@
+pkgbase = shuiyuan-exporter
+	pkgdesc = Export posts on Shuiyuan Forum (SJTU) as markdown documents
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/Labyrinth0419/shuiyuan_exporter
+	arch = any
+	license = MIT
+	depends = python>=3.12
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-simple-term-menu
+	depends = python-dumb-menu
+	source = main.py
+	source = constant.py
+	source = utils.py
+	source = image_handler.py
+	source = attachments_handler.py
+	source = audio_handler.py
+	source = video_handler.py
+	source = quality_list.py
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = shuiyuan-exporter
