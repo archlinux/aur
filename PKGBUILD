@@ -1,10 +1,10 @@
-# PKGBUILD for udfclient-fuse3
+# PKGBUILD for udfclientfs-fuse3
 # Maintainer: Tom Hale <tom at hale dot ee>
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
-pkgname=udfclient-fuse3
+pkgname=udfclientfs-fuse3
 pkgver=0.8.21
-pkgrel=3
+pkgrel=1
 pkgdesc='a userland implementation of the UDF filingsystem with FUSE 3 support — provides udfclient, newfs_udf, cd_disect, cd_sessions, mmc_format, udfdump, and a FUSE 3 mount binary'
 arch=('x86_64')
 url='https://www.13thmonkey.org/udfclient/'

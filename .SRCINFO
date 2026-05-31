@@ -1,7 +1,7 @@
-pkgbase = udfclient-fuse3
+pkgbase = udfclientfs-fuse3
 	pkgdesc = a userland implementation of the UDF filingsystem with FUSE 3 support — provides udfclient, newfs_udf, cd_disect, cd_sessions, mmc_format, udfdump, and a FUSE 3 mount binary
 	pkgver = 0.8.21
-	pkgrel = 3
+	pkgrel = 1
 	url = https://www.13thmonkey.org/udfclient/
 	arch = x86_64
 	license = LicenseRef-Clarified Artistic
@@ -27,4 +27,4 @@ pkgbase = udfclient-fuse3
 	sha256sums = 9d181a4168b5dde788c7223a3a8a1f7b45020876e3dda09086865cc4707948c0
 	sha256sums = ea7dc0d0582e6896616ab982e76034cd180f44032ccfe845bb646efab4b2fc07
 
-pkgname = udfclient-fuse3
+pkgname = udfclientfs-fuse3
