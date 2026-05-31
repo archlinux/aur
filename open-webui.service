@@ -10,7 +10,7 @@ CacheDirectory=open-webui
 WorkingDirectory=/var/lib/open-webui
 Environment=HOME=/var/lib/open-webui
 Environment=PYTHONUNBUFFERED=1
-EnvironmentFile=-/etc/conf.d/open-webui
+EnvironmentFile=/etc/conf.d/open-webui
 ExecStart=/usr/bin/open-webui serve
 Restart=on-failure
 RestartSec=5

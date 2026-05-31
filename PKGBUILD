@@ -3,23 +3,28 @@
 
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
-pkgver=0.8.8
-pkgrel=4
+pkgver=0.9.5
+pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
 license=('BSD-3-Clause')
 backup=("etc/conf.d/$_pkgname")
 depends=(
+  nltk-data
   python
   python-aiocache
   python-aiofiles
   python-aiohttp
+  python-aiosqlite
   python-alembic
   python-apscheduler
   python-argon2-cffi
   python-asgiref
   python-authlib
+  python-azure-core
+  python-azure-identity
+  python-azure-storage-blob
   python-fastapi
   python-bcrypt
   python-beautifulsoup4
@@ -64,7 +69,7 @@ depends=(
   python-pymdown-extensions
   python-pymysql
   python-pypdf
-  python-python-pptx
+  python-pptx
   python-pytube
   python-pytz
   python-rapidocr-onnxruntime
@@ -122,20 +127,20 @@ conflicts=('open-webui' 'open-webui-git')
 provides=('open-webui')
 
 source=(
-  "git+https://github.com/open-webui/open-webui.git#tag=v$pkgver"
+  "https://github.com/open-webui/open-webui/archive/refs/tags/v$pkgver.tar.gz"
   "open-webui.service"
   "open-webui.conf"
 )
 
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('385975c2da333fede8827e3cae04ae154b2fb4d850fdc44470c9f6d25636ebfd' 'SKIP' 'SKIP')
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   install -Dm644 "$srcdir/$_pkgname.service" \
     "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
