@@ -2,7 +2,7 @@
 
 pkgname=gz-gui10
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Graphical interfaces for robotics applications"
@@ -21,10 +21,9 @@ depends=(
   'qt6-base'
   'qt6-charts'
   'qt6-declarative'
-  'qt6-graphicaleffects'
+  'qt6-5compat'  # Needed for Qt5Compat.GraphicalEffects
   'qt6-location'
-  'qt6-quickcontrols'
-  'qt6-quickcontrols2'
+  'qt6-declarative'
   'tinyxml2'
 )
 makedepends=(
