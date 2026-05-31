@@ -2,7 +2,7 @@
 # Maintainer: gavasc
 
 pkgname='grons'
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Terminal UI for managing cron jobs.'
 url='https://github.com/gavasc/grons'
@@ -12,9 +12,9 @@ provides=('grons')
 conflicts=('grons')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/gavasc/grons/releases/download/v${pkgver}/grons_${pkgver}.tar.gz")
-sha256sums=('9ca694dd2d9695c34ba310be8b4cd5363a309be5c44c345cf4b9e55150f7126b')
+sha256sums=('02d474577d27135fb4534adfcd2130ca7e558a4fae1fb9a11a8eb8e641b3bee1')
 build() {
-  cd "${srcdir}/${pkgname}_${pkgver}"
+  cd "$srcdir"
   go build -ldflags="-s -w" -o grons .
 }
 package() {
