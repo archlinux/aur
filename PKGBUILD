@@ -9,7 +9,7 @@ arch=(x86_64)
 license=('LGPL')
 depends=('libglade' 'libart-lgpl')
 makedepends=('pkg-config' 'intltool' 'python' 'glib2-devel')
-url="http://www.gnome.org"
+url="https://gitlab.gnome.org/Archive/libgnomecanvas"
 source=(https://download.gnome.org/sources/${pkgname}/2.30/${pkgname}-${pkgver}.tar.bz2)
 sha256sums=('859b78e08489fce4d5c15c676fec1cd79782f115f516e8ad8bed6abcb8dedd40')
 
