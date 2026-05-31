@@ -1,7 +1,7 @@
 # Maintainer: Ashley <info@meisgaming.net>
 pkgname=league-of-gays
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="League of Gays — self-hosted MOBA launcher"
 arch=('x86_64')
 url="https://lol.meisgaming.net"
@@ -10,7 +10,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libnotify' 'xdg-utils' 'libx11')
 provides=('league-of-gays')
 conflicts=('league-of-gays')
 source=("${pkgname}-launcher-${pkgver}.tar.gz::https://lol.meisgaming.net/launcher/${pkgname}-launcher-${pkgver}.tar.gz")
-sha256sums=('f7536a861b95d5f0e74130bc7ffee67f09fa9fbe8bad93b12b25eff99bde4c63')
+sha256sums=('c56a9741aa2863b52af66319a55019d356efdb8bd186354ba53c317bf3327410')
 
 package() {
     local src_dir="$srcdir/${pkgname}-launcher-${pkgver}"
