@@ -2,7 +2,7 @@
 pkgname=ewwii
 pkgver=0.8.3
 pkgrel=1
-pkgdesc="Powerful and flexible widget system for Linux"
+pkgdesc="Eww fork with focus on extensibility, flexibility, and power."
 arch=('x86_64')
 url="https://github.com/Ewwii-sh/ewwii"
 license=('GPL')
