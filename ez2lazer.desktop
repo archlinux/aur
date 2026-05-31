@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Ez2Lazer
+MimeType=application/x-osu-skin-archive;application/x-osu-replay;application/x-osu-beatmap-archive;
+Icon=osu-lazer
+Comment=Ez to Lazer, As a cool client
+Exec=/usr/bin/ez2lazer
+Categories=Game;
