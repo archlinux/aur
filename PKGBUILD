@@ -1,40 +1,56 @@
-# PKGBUILD for ttf-ms-no-big-downloads
+# PKGBUILD for ttf-ms-win-en_us-auto
 # Maintainer: Tom Hale <tom at hale dot ee>
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 # BUILD INSTRUCTIONS:
 # -------------------
-# This PKGBUILD downloads fonts from a Windows 11 Enterprise evaluation ISO
-# using httpdirfs + udfclient + wimlib to extract only the font files
-# without downloading the entire multi-gigabyte ISO. Only the segments of the
-# ISO that are required to access the font data are transferred via HTTP.
-pkgname=ttf-ms-no-big-downloads
-pkgver=10.0.26200.6584
+# This PKGBUILD downloads fonts from the latest Windows 11 Enterprise
+# Evaluation ISO using httpdirfs + udfclient + wimlib to extract only the
+# font files without downloading the entire multi-gigabyte ISO. Only the
+# segments of the ISO that are required to access the font data are
+# transferred via HTTP.
+#
+# The fwlink below resolves to the latest US English 64-bit Enterprise
+# Evaluation ISO. When Microsoft releases a new build, the fwlink
+# automatically points to the new ISO — no PKGBUILD edit needed.
+#
+# pkgver() reads BUILD and SPBUILD from the ISO filename. After the first
+# successful prepare(), MAJOR and MINOR are also saved from WIM metadata
+# so subsequent builds use the fully authoritative version.
+pkgname=ttf-ms-win-en_us-auto
 pkgrel=1
-pkgdesc='Microsoft Windows 11 TrueType fonts (downloaded via HTTP streaming)'
+pkgdesc='Microsoft Windows 11 US English TrueType fonts (auto-downloaded via HTTP streaming)'
 arch=('any')
-url='https://www.microsoft.com/en-us/software-download/windows11'
+url='https://www.microsoft.com/en-us/evalcenter/download-windows-11-enterprise'
 license=('custom')
 depends=()
-makedepends=('httpdirfs' 'udfclientfs-fuse3' 'wimlib')
+makedepends=('httpdirfs' 'udfclientfs-fuse3' 'wimlib' 'curl')
 provides=('ttf-font' 'ttf-ms-fonts' 'ttf-ms-win11' 'ttf-tahoma' 'emoji-font')
-conflicts=('ttf-ms-win11' 'ttf-ms-win11-auto' 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts')
+conflicts=('ttf-ms-win11' 'ttf-ms-win11-auto' 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts' 'ttf-ms-no-big-downloads')
 
-# https://www.microsoft.com/en-in/evalcenter/download-windows-11-enterprise
-# Latest US English 64-bit Enterprise Evaluation ISO (25H2)
-_iso='26200.6584.250915-1905.25h2_ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso'
-_iso_url="https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/${_iso}"
+# Microsoft Evaluation Center fwlink for the latest US English 64-bit
+# Windows 11 Enterprise Evaluation ISO. Resolved once at PKGBUILD parse
+# time. The initial pkgver is derived from the ISO filename; prepare()
+# later saves the authoritative version from WIM XML metadata.
+_fwlink='https://go.microsoft.com/fwlink/?linkid=2334167&clcid=0x4009&culture=en-us'
+_iso_url="$(curl -sIL -o /dev/null -w '%{url_effective}' "${_fwlink}")"
+_iso="${_iso_url##*/}"
+_build="${_iso%%\.*}"
+_spbuild="${_iso#*.}"
+_spbuild="${_spbuild%%.*}"
+pkgver="10.0.${_build}.${_spbuild}"
+
 # Persistent httpdirfs byte-range cache — survives makepkg -C across builds
 _http_cache="${XDG_CACHE_HOME:-${HOME}/.cache}/${pkgname}"
 
 # ISO is NOT in source=() — httpdirfs byte-range streams only the segments
-# that are actually read during extraction (~200 MiB), avoiding the full 4.73 GiB
+# that are actually read during extraction (~200 MiB), avoiding the full
 # download that makepkg's DLAGENT would perform.
 source=()
 sha256sums=()
 
 prepare() {
-  # Cleanup trap for FUSE mounts — fires on any prepare() exit (normal, error, SIGINT)
+  # Cleanup trap for FUSE mounts — fires on any prepare() exit
   # shellcheck disable=SC2329  # _cleanup invoked indirectly via trap
   _cleanup() {
     echo "+++++++++ clean up +++++++++"
@@ -44,7 +60,7 @@ prepare() {
     fusermount3 -uz mnt/http 2>/dev/null || fusermount -uz mnt/http 2>/dev/null || true
     return "$_status"
   }
-  trap _cleanup EXIT INT HUP TERM QUIT
+  trap _cleanup EXIT INT HUP TERM
 
   cd "${srcdir}"
 
@@ -55,9 +71,8 @@ prepare() {
 
   mkdir -p mnt/http mnt/iso "${_http_cache}"
 
-  # Mount ISO URL via HTTP streaming — only fetches byte-range segments that
-  # are actually read.  Total transfer is the font data itself (~200 MiB),
-  # not the full 5 GiB ISO.
+  # Mount ISO URL via HTTP streaming — only fetches byte-range segments
+  # that are actually read (font data ~200 MiB, not full ISO)
   httpdirfs \
     --cache --cache-location "${_http_cache}" \
     --dl-seg-size 1 --max-conns 15 \
@@ -68,8 +83,18 @@ prepare() {
   # Mount the ISO with a FUSE UDF filesystem
   udfclientfs -r "mnt/http/${_iso}" mnt/iso
 
-  # Save WIM XML metadata for pkgver() to read
+  # Save WIM XML metadata for inspection and authoritative version
   wiminfo --xml "mnt/iso/sources/install.wim" 1 > "${srcdir}/wiminfo.xml"
+
+  # Derive and cache authoritative version from WIM metadata
+  {
+    local _major _minor _build _spbuild
+    _major="$(sed -n 's:.*<MAJOR>\(.*\)</MAJOR>.*:\1:p' "${srcdir}/wiminfo.xml" | head -1)"
+    _minor="$(sed -n 's:.*<MINOR>\(.*\)</MINOR>.*:\1:p' "${srcdir}/wiminfo.xml" | head -1)"
+    _build="$(sed -n 's:.*<BUILD>\(.*\)</BUILD>.*:\1:p' "${srcdir}/wiminfo.xml" | head -1)"
+    _spbuild="$(sed -n 's:.*<SPBUILD>\(.*\)</SPBUILD>.*:\1:p' "${srcdir}/wiminfo.xml" | head -1)"
+    printf '%s.%s.%s.%s\n' "${_major}" "${_minor}" "${_build}" "${_spbuild}"
+  } > "${srcdir}/.version"
 
   # List all font files in image 1 (the sole Enterprise Evaluation image)
   # and extract them directly — no full-WIM decompression needed
@@ -85,10 +110,18 @@ prepare() {
       --no-acls --dest-dir="${srcdir}/license"
 }
 
-# Derive pkgver from the ISO filename (available without mounting):
-# "BUILD.SPBUILD.date-arch.CLIENTENTERRPISEEVAL...en-us.iso"
-# Extract the first two dot-separated components: 26200.6584 → 10.0.26200.6584
+# Derive pkgver from the ISO filename (available without mounting).
+# After the first prepare() the WIM-derived .version cache takes priority.
+# ISO filename format: "BUILD.SPBUILD.date-arch.CLIENTEVAL...en-us.iso"
 pkgver() {
+  # Use authoritative WIM version cache if available
+  if [[ -f "${srcdir}/.version" ]]; then
+    cat "${srcdir}/.version"
+    return
+  fi
+
+  # Fallback: parse BUILD and SPBUILD from the ISO filename.
+  # MAJOR and MINOR default to 10.0 for NT 10.0 (Windows 10/11).
   local _build _spbuild
   _build="${_iso%%\.*}"
   _spbuild="${_iso#*.}"
