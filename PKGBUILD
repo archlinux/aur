@@ -3,7 +3,7 @@ pkgname=mudita-center-bin
 _pkgname='Mudita Center'
 pkgver=4.0.0
 _electronversion=40
-pkgrel=3
+pkgrel=4
 pkgdesc="Allows you to expand and update the features of Mudita Pure and Mudita Harmony, while using your computer. One application for every platform, open-sourced for transparency.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://mudita.com/products/pure/"
@@ -56,14 +56,12 @@ prepare() {
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
     sed -i -e "
-        s/AppRun --no-sandbox /${pkgname%-bin}/g
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/squashfs-root/${_pkgname}.desktop"
     rm -rf \
-        "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"\
-            {android-*,darwin-*,linux-arm*,win32-*} \
-        "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/usb/prebuilds/"\
-            {android-*,darwin-*,linux-arm*,linux-ia32,win32-*}
+        "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{android-*,darwin-*,linux-arm*,win32-*} \
+        "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/usb/prebuilds/"{android-*,darwin-*,linux-arm*,linux-ia32,win32-*}
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
 }
 package() {
