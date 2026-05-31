@@ -1,6 +1,6 @@
 pkgbase = gytm-git
 	pkgdesc = Minimal TUI based music streaming app for Youtube Music
-	pkgver = r83.9328721
+	pkgver = r101.dc56c17
 	pkgrel = 1
 	url = https://github.com/xuannhat999/gytm
 	arch = x86_64
