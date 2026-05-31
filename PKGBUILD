@@ -2,7 +2,8 @@
 
 pkgname=ez2lazer-bin
 pkgver=2026.531.0
-pkgrel=1
+pkgrel=2
+_pkgtag=$pkgver-ez2lazer
 pkgdesc="Ez to Lazer, As a cool client. (a fork of osu!lazer)"
 arch=(x86_64)
 url="https://github.com/SK-la/Ez2Lazer"
@@ -16,7 +17,8 @@ depends=(
 provides=(ez2lazer)
 conflicts=(ez2lazer ez2lazer-git)
 options=(!strip !debug)
-source=('ez2lazer.AppImage::https://github.com/SK-la/Ez2Lazer/releases/download/2026.531.0-ez2lazer/ez2lazer.AppImage'
+source=(
+  "ez2lazer-${pkgver}.AppImage::https://github.com/SK-la/Ez2Lazer/releases/download/$_pkgtag/ez2lazer.AppImage"
   'icon.png'
   'https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md'
   'ez2lazer.desktop'
