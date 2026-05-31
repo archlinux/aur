@@ -3,7 +3,7 @@ pkgname=quba-bin
 _pkgname=Quba
 pkgver=1.5.1
 _electronversion=37
-pkgrel=1
+pkgrel=2
 pkgdesc="A viewer for electronic invoices.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/ZUGFeRD/quba-viewer"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('601b2615cd314274d893ebc1a7a0117f8624a2ef1406af24fffc5a5d181dcded'
+sha256sums=('32356c1c5b7f7b67a937e96960f4e96dac93d8fab6e266f93e67f71d62cca8e5'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
