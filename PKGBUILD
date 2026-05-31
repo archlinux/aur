@@ -4,15 +4,17 @@
 
 pkgname=python-buildozer
 _pkgname=buildozer
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Generic Python packager for Android / iOS and Desktop"
 arch=('any')
+url="https://github.com/kivy/buildozer"
 depends=(
 	'python'
 	'python-colorama'
 	'python-pexpect'
 	'python-virtualenv'
+	'python-packaging'
 	'python-sh'
 )
 makedepends=(
@@ -23,29 +25,12 @@ makedepends=(
 	'python-setuptools'
 )
 optdepends=('python-paramiko: remote builds')
-url="https://github.com/kivy/buildozer"
 license=('MIT')
 options=(!emptydirs)
-source=(
-	"${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-	"buildozer-1.patch"
-	"buildozer-2.patch"
-)
-sha256sums=(
-	'229ae9fb8e519ee1a33e9a06a3e083f84646bb49b15cde91ac04ade79b44ef89'
-	'SKIP'
-	'SKIP'
-)
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('43ccfefdced4bc0a5abe1dd40335d86830bce66d04ce8bbd91fe12760b80ec69')
 provides=('buildozer' 'python-buildozer')
 conflicts=('buildozer')
-
-prepare() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-
-	# Get rid of deprecated&removed FancyURLopener
-	patch -p1 -i "${srcdir}/buildozer-1.patch"
-	patch -p1 -i "${srcdir}/buildozer-2.patch"
-}
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
