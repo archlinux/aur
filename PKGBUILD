@@ -1,8 +1,8 @@
 # Maintainer: Comma, Marmarek-here (on GitHub)
 pkgname=archbrew
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Homebrew-style package management interface for Arch Linux"
+pkgdesc="Homebrew-like standalone CLI package manager for Arch"
 arch=('x86_64')
 url="https://github.com/Marmarek-here/ArchBrew"
 source=("https://github.com/Marmarek-here/ArchBrew/archive/refs/tags/v${pkgver}.tar.gz")
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'pacman')
 makedepends=('cargo')
 optdepends=()
-sha256sums=('8e9bd0c73b95ee175935933b15b057ac24d6da604ac8127515ccdb457cfed39d')
+sha256sums=('b078e04409fdb090ffa5c7697f98b203ea2251fbc16c37dd4f336aed3be5d8e9')
 
 build() {
   cd "ArchBrew-${pkgver}"

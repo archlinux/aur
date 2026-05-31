@@ -15,7 +15,7 @@ Commands:
   list   -    List installed packages     
   doctor  -   Run diagnostics for sync db count, local db path and if local package db is readable     
   help    -   Print this message or the help of the given subcommand(s)     
-     
+  clean    -  Clean ArchBrew cache
 Options:     
 -  -V, --version  Print version    
 -  -l, --local    Use a local .pkg.tar.zst with a path specified (to be used only with install)    
@@ -45,4 +45,6 @@ Install it using paru -S archbrew or yay -S archbrew depending on your AUR helpe
 Using git: ```git clone https://github.com/Marmarek-here/ArchBrew.git && cd ArchBrew && makepkg -si```
 
 # Changelog
-31.05.2026 - FIRST STABLE RELEASE (it was made at night enthusiasm)
+1.1.0 - Added cache, bubblewrap and brew clean (cache is at /var/tmp/archbrew-cache/YOUR_USERNAME)
+1.0.x - Bugfixes
+1.0.0 - FIRST STABLE RELEASE (it was made at night enthusiasm)
