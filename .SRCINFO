@@ -1,0 +1,19 @@
+pkgbase = nurproxy-bin
+	pkgdesc = NurProxy orchestrator — reverse proxy and DNS management dashboard
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/NurRobin/NurProxy
+	license = MIT
+	conflicts = NurProxy
+	provides = NurProxy
+	arch = aarch64
+	source_aarch64 = https://github.com/NurRobin/NurProxy/releases/download/v0.1.0/nurproxy_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7cae5b72d5fc3ed5880c3f97d2e42e115f9a94bacd5efb03ad232429279561fc
+	arch = armv7h
+	source_armv7h = https://github.com/NurRobin/NurProxy/releases/download/v0.1.0/nurproxy_0.1.0_linux_armv7.tar.gz
+	sha256sums_armv7h = a7b9ad243f5e267e10e96ea3d441b2b567453015bc5a11a4b2aafb36ec0c24eb
+	arch = x86_64
+	source_x86_64 = https://github.com/NurRobin/NurProxy/releases/download/v0.1.0/nurproxy_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 032eb723ac62972d318845ebc2e1a60239b53abb917e75d78bc17bbc6cceb18e
+	
+pkgname = nurproxy-bin
