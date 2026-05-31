@@ -6,7 +6,7 @@
 pkgname=hermes-agent
 pkgver=0.15.2
 _tagver=2026.5.29.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
 url="https://github.com/NousResearch/hermes-agent"
@@ -74,7 +74,7 @@ build() {
 
   echo "==> Creating Python venv and installing dependencies..."
   python3.11 -m venv --clear venv || return 1
-  venv/bin/pip install -e .[all]
+  venv/bin/pip install .[all]
 }
 
 package() {
@@ -85,7 +85,14 @@ package() {
   install -d "$_optdir"
 
   # Copy application files
-  rsync -a --exclude='__pycache__' --exclude='.git' . "$_optdir/"
+  rsync -a --exclude='__pycache__' --exclude='.git' \
+  --exclude='node_modules' --exclude='web/src' \
+  --exclude='web/package.json' --exclude='web/package-lock.json' \
+  --exclude='web/vite.config.ts' --exclude='web/tsconfig*.json' \
+  --exclude='web/eslint.config.js' --exclude='web/README.md' \
+  --exclude='ui-tui/src' --exclude='ui-tui/node_modules' \
+  --exclude='scripts/tests' --exclude='scripts/install.*' \
+  . "$_optdir/"
 
   # Create simple wrapper script in /usr/bin.
   # Set HERMES_TUI_DIR so the launcher uses the prebuilt bundle without
@@ -94,9 +101,7 @@ package() {
   install -d "$pkgdir/usr/bin"
   {
     echo "#!/bin/bash"
-    echo "unset PYTHONPATH"
-    echo "unset PYTHONHOME"
-    echo "exec /opt/$pkgname/venv/bin/hermes" '"$@"'
+    echo "exec /opt/$pkgname/venv/bin/python -m hermes_cli.main" '"$@"'
   } > "$pkgdir/usr/bin/hermes"
 
   chmod 755 "$pkgdir/usr/bin/hermes"
