@@ -3,7 +3,7 @@
 _pkgauthor=nao1215
 _pkgname=sqly
 pkgname=${_pkgname}-bin
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Eaisly execute SQL against CSV/TSV/LTSV/JSON and Microsoft Excel™ with shell"
@@ -20,8 +20,8 @@ options=(!strip)
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.deb")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.deb")
-sha256sums_x86_64=('1f9e3409f57c2ad228ceaa43680785fed0a53ac3aac7d4282fd6d27cef4323b0')
-sha256sums_aarch64=('cd3d13607d64529a1fc59495d5906204a90ba36ddf78cdc245e87cf0c4444d56')
+sha256sums_x86_64=('2ae9e40674738dcf12e07dd10622cffa1e8814e89f0b2aec0a769ffc9f83b8b7')
+sha256sums_aarch64=('af960c324675cbc68eae118f437f4f35d8ab2028c6898c48181bd5ba2dfc3e8b')
 
 
 package() {
