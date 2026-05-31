@@ -1,0 +1,24 @@
+pkgbase = dot-cli-git
+	pkgdesc = Declarative dotfiles CLI for macOS, Linux, WSL, and PowerShell (git head)
+	pkgver = 0.2.503
+	pkgrel = 1
+	url = https://github.com/sebastienrousseau/dotfiles
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = chezmoi
+	depends = git
+	depends = curl
+	optdepends = gum: gorgeous tables and prompts in dot commands
+	optdepends = jq: JSON-mode output for every dot command
+	optdepends = starship: themed shell prompt integration
+	optdepends = fzf: fuzzy interactive selection
+	provides = dot
+	provides = dotfiles
+	conflicts = dot
+	conflicts = dotfiles
+	source = git+https://github.com/sebastienrousseau/dotfiles.git
+	sha256sums = 1e4ea46c403710e18ac5cc06fd308aadaea689da9b00f6898eb2abe782203fdf
+
+pkgname = dot-cli-git
