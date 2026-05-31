@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=('git')
 provides=('suyoratex')
-conflicts=('suyoratex' 'archtex' 'archtex-git')
+conflicts=('suyoratex')
 
 # 2. Update the source link. 
 # We put "suyoratex::" at the front to force Linux to make the folder lowercase.

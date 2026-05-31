@@ -1,0 +1,10 @@
+[project]
+name = "SuyoraTex"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "pymupdf>=1.27.2.3",
+    "pyqt6>=6.11.0",
+]
