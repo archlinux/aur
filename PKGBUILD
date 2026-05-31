@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S "$srcdir/deppull" \
+    cmake -B build -S "$srcdir/deppull-git" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
