@@ -1,20 +1,31 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=gitpane
-pkgver=0.7.5
+pkgver=0.7.9
 pkgrel=1
 pkgdesc='Multi-repo Git workspace dashboard for the terminal'
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=(
+    'x86_64'
+    'aarch64'
+    'riscv64'
+)
 url='https://github.com/affromero/gitpane'
 license=('MIT')
 depends=('git')
-makedepends=('cargo' 'patch')
+makedepends=(
+    'cargo'
+    'patch'
+)
 options=(!lto)
 provides=('gitpane')
 conflicts=('gitpane-git' 'gitpane-bin')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-    'disable-self-updates.patch')
-sha256sums=('c95cc60ac2e1785b9150e995c71dff9bc42be0a70a34291fb6399bf6ffcd7b93'
-            '3de1d97cf8e0f44c381978a5e65de656710d75f2e64595fb295edfdb2ef9cfb4')
+source=(
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+    'disable-self-updates.patch'
+)
+sha256sums=(
+    '1d0f42502888c6cef7edfaa34e12b84a795d6abcbb94bd7192247d2ed8cfd8b4'
+    '3de1d97cf8e0f44c381978a5e65de656710d75f2e64595fb295edfdb2ef9cfb4'
+)
 
 prepare() {
     cd "$pkgname-$pkgver"
