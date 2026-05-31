@@ -3,7 +3,7 @@ pkgname=edcolreport
 # Set to the release's semver. NOTE: AUR pkgver cannot contain a hyphen, so
 # for a pre-release tag like v0.2.0-alpha use _tag below to point at the real
 # tag and keep pkgver hyphen-free (e.g. pkgver=0.2.0alpha, _tag=v0.2.0-alpha).
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 _tag="v${pkgver}"
 pkgdesc="Report Elite Dangerous colonization progress to ravencolonial.com"
@@ -15,7 +15,7 @@ depends=('hicolor-icon-theme' 'libglvnd' 'libxcursor' 'libxrandr'
          'libxinerama' 'libxi' 'libxxf86vm' 'fontconfig')
 makedepends=('go' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('31294e1f3b28866ec57740b7f8725464b57b27c300c2f27ad6874d1cf95eb7bd')
+sha256sums=('4b4a8ce5447f9f9cbc10b3580b35c6cb3d866a303a3550f82cc840a0db39da44')
 
 # GitHub strips the leading "v" from the tag for the archive's top dir.
 _srcdir="ed-colonization-reporter-${_tag#v}"
