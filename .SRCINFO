@@ -1,6 +1,6 @@
 pkgbase = anitr-cli-git
 	pkgdesc = 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
-	pkgver = r240.c91c733
+	pkgver = r241.c4c9ba5
 	pkgrel = 1
 	url = https://github.com/prayjofir/anitr-cli
 	arch = x86_64
