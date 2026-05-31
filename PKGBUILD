@@ -6,8 +6,8 @@
 
 _pkgname=rio
 pkgname=rio-nik
-pkgver=0.4.6.nb.2
-_tag="v0.4.6-nb.2"
+pkgver=0.4.6.nb.3
+_tag="v0.4.6-nb.3"
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU (nikicat's fork with fixes)"
 arch=('x86_64')
@@ -38,7 +38,7 @@ makedepends=(
 )
 _srcdir="${_pkgname}-${_tag#v}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha512sums=('aedafd0fb5b59db7afd580fb40e7413b9a81b1ea05c5e56d8c6a91022b1adf86819a15deafbef6cb4a6a91fe5c7b912b310837162ec57bfddec57d1d39dd9ee2')
+sha512sums=('a071ede38186064628864b52d323919eb5424227eff534575b4b7210f38bac5d2b6103dbcbac81dc891d76d136fb9c6320b53caffb4e2d8595a2f715b4291c72')
 
 prepare() {
   cd "${_srcdir}"
