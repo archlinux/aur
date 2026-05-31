@@ -1,6 +1,6 @@
 pkgname=openaquaero
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Suite di controllo per Aquaero 6 LT"
 arch=('any')
 url="https://github.com/raffaele-90/openaquaero"
@@ -13,28 +13,28 @@ sha256sums=('f48d401145810173c05a207609205698bdadfb6cc419b61b7bbcb9bd0f7155e9')
 package() {
     cd "$pkgname-$pkgver"
 
-    # Directory di sistema
-    install -dm750 "$pkgdir/usr/lib/$pkgname"
-    install -dm750 "$pkgdir/usr/bin"
-    install -dm750 "$pkgdir/usr/share/applications"
-    install -dm750 "$pkgdir/usr/share/icons/hicolor/512x512/apps"
-    install -dm750 "$pkgdir/etc/udev/rules.d"
+    # Directory di sistema (Corretti a 755!)
+    install -dm755 "$pkgdir/usr/lib/$pkgname"
+    install -dm755 "$pkgdir/usr/bin"
+    install -dm755 "$pkgdir/usr/share/applications"
+    install -dm755 "$pkgdir/usr/share/icons/hicolor/512x512/apps"
+    install -dm755 "$pkgdir/etc/udev/rules.d"
 
-    # Codice Python (Copia tutti i .py dal tar.gz estratto)
+    # Codice Python
     install -m644 *.py "$pkgdir/usr/lib/$pkgname/"
 
-    # Wrapper Eseguibile (Punta a main.py)
+    # Wrapper Eseguibile
     echo '#!/bin/bash' > "$pkgdir/usr/bin/$pkgname"
     echo 'exec python3 /usr/lib/openaquaero/main.py "$@"' >> "$pkgdir/usr/bin/$pkgname"
     chmod 755 "$pkgdir/usr/bin/$pkgname"
 
-    # Regole Udev per HWMON e USB HID (Aquaero 6 LT)
+    # Regole Udev
     echo 'SUBSYSTEM=="hwmon", ACTION=="add", ATTRS{name}=="aquaero", RUN+="/bin/sh -c '\''sleep 2 && chmod a+w /sys/class/hwmon/%k/pwm*'\''"' > "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
     echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="0c70", ATTRS{idProduct}=="f001", MODE="0666"' >> "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
     echo 'SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0c70", ATTRS{idProduct}=="f001", MODE="0666"' >> "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
     chmod 644 "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
 
-    # Regola Polkit per Spegnimento di Emergenza
+    # Regola Polkit
     install -dm755 "$pkgdir/etc/polkit-1/rules.d"
     cat << 'EOF' > "$pkgdir/etc/polkit-1/rules.d/99-openaquaero-shutdown.rules"
 /* Consente agli utenti del gruppo wheel di forzare lo spegnimento ignorando gli inhibitor */

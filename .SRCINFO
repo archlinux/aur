@@ -1,7 +1,7 @@
 pkgbase = openaquaero
 	pkgdesc = Suite di controllo per Aquaero 6 LT
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raffaele-90/openaquaero
 	arch = any
 	license = GPL3
