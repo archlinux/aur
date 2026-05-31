@@ -1,0 +1,15 @@
+pkgbase = iwdtui
+	pkgdesc = TUI tool for the IWD backend
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/MatiasGabrielAraoz/IwdTUI
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = iwd
+	depends = coreutils
+	source = iwdtui-1.0.tar.gz::https://github.com/MatiasGabrielAraoz/IwdTUI/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 46a16ba99fcb3ce461d7d2221824a41a7fc455cc6261d16e067a6bed62a3365d
+
+pkgname = iwdtui
