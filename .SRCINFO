@@ -1,0 +1,16 @@
+pkgbase = gesso
+	pkgdesc = Deterministic Wayland wallpaper daemon and CLI
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/saltnpepper97/gesso
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = pkgconf
+	depends = wayland
+	options = !debug
+	source = gesso-0.3.1.tar.gz::https://github.com/saltnpepper97/gesso/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 878ad8d4ca1ebd03047f066962211692ba6472a86dedc415fc9314b816bee29f
+
+pkgname = gesso
