@@ -8,6 +8,7 @@ pkgdesc="A cross-platform clipboard history and synchronization software (AppIma
 arch=('x86_64')
 url="https://github.com/aa2013/ClipShare"
 license=('GPL3')
+options=('!strip' '!debug')
 depends=('fuse2')
 provides=('clipshare')
 conflicts=('clipshare')
