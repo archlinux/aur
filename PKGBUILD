@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flclash-bin
 _pkgname=FlClash
-pkgver=0.8.92
+pkgver=0.8.93
 pkgrel=1
 pkgdesc="A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free."
 arch=(
@@ -28,7 +28,7 @@ source_x86_64=(
     "libquickjs_c_bridge_plugin.so.base64::https://gist.githubusercontent.com/dongfengweixiao/bbddee34d6456326200fac3463761296/raw/c18484d78449d0e3b376a6e2a49852486305ff1e/libquickjs_c_bridge_plugin.so.base64"
 )
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_x86_64=('4fb078ef34eb98f3fff557f13c4115a2048dc449b7f6a33815b52526e37e5ea4'
+sha256sums_x86_64=('135da95baaf41f077521b98c0170554da432348b2e3aee73d6f4f050119e7917'
                    '367033ae3a8bd11f37e398f38c5de0acd8985b62b93b966eb43648fba6bd9094')
 # sha256sums_aarch64=('b250a118058cadd5d3dde417f38c439c5d535ae0597a145be235d6cdcbf4e325')
 prepare() {
