@@ -1,14 +1,14 @@
 # Maintainer: Deji-Tech <deji@fundtracer.xyz>
 pkgname=fundtracer-desktop-bin
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="FundTracer - Blockchain Wallet Forensics Desktop App"
 arch=('x86_64')
 url="https://www.fundtracer.xyz"
 license=('custom')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'glib2' 'cairo' 'pango' 'gcc-libs')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::https://github.com/Deji-Tech/fundtracer-by-dt/releases/download/v${pkgver}/fundtracer-desktop-${pkgver}-x86_64.tar.gz")
-sha256sums=('33fbe3e64cd1c0debcbcfb148d1f6bb1f065bdf55aaddaae4ec9152cc2318473')
+sha256sums=('39d1b4d7f5de5fb6472b2a6b89b67b277f71297184f728a973fa2073803f711c')
 
 package() {
   install -Dm755 "${srcdir}/fundtracer-desktop-${pkgver}/fundtracer-desktop" "${pkgdir}/usr/bin/fundtracer-desktop"
