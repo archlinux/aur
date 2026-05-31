@@ -1,24 +1,24 @@
 pkgbase = goshs-bin
 	pkgdesc = A SimpleHTTPServer written in Go, enhanced with features and with a nice design.(Prebuilt version)
-	pkgver = 2.0.8
+	pkgver = 2.1.0
 	pkgrel = 1
-	url = https://hesec.de/tags/goshs/
+	url = https://goshs.de/
 	arch = aarch64
 	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = goshs=2.0.8
+	provides = goshs=2.1.0
 	conflicts = goshs
-	source = LICENSE-2.0.8::https://raw.githubusercontent.com/patrickhener/goshs/v2.0.8/LICENSE
+	source = LICENSE-2.1.0::https://raw.githubusercontent.com/goshs-labs/goshs/v2.1.0/LICENSE
 	sha256sums = 791aa7d1cac7e097ad6e792e974688f433018e11bbe387e62330319dda68c94a
-	source_aarch64 = goshs-2.0.8-aarch64.rpm::https://github.com/patrickhener/goshs/releases/download/v2.0.8/goshs_2.0.8_linux_arm64.rpm
-	sha256sums_aarch64 = e072c118e6c4a55fcca4c224543f8eea4156c0b7432683288738715a9141278b
-	source_armv7h = goshs-2.0.8-armv7h.rpm::https://github.com/patrickhener/goshs/releases/download/v2.0.8/goshs_2.0.8_linux_armv7.rpm
-	sha256sums_armv7h = 14a8def31c06bd695ca9c49bea5aeb2b1ac31347a4d4685665f919b0f1a0a262
-	source_i686 = goshs-2.0.8-i686.rpm::https://github.com/patrickhener/goshs/releases/download/v2.0.8/goshs_2.0.8_linux_386.rpm
-	sha256sums_i686 = 476646dbe87e1497fdfe1172283de8bae499ee2ddbbee67edf6a415c5209fbc3
-	source_x86_64 = goshs-2.0.8-x86_64.rpm::https://github.com/patrickhener/goshs/releases/download/v2.0.8/goshs_2.0.8_linux_amd64.rpm
-	sha256sums_x86_64 = 266425605d39763ce56c47cb7bba1f04b7307f5936db7c96e57d723c0819b790
+	source_aarch64 = goshs-2.1.0-aarch64.rpm::https://github.com/goshs-labs/goshs/releases/download/v2.1.0/goshs_2.1.0_linux_arm64.rpm
+	sha256sums_aarch64 = c3bb050aa5cd73c16dc2fd5ad134d207f84e780caf602981a4e2100f9ef8058a
+	source_armv7h = goshs-2.1.0-armv7h.rpm::https://github.com/goshs-labs/goshs/releases/download/v2.1.0/goshs_2.1.0_linux_armv7.rpm
+	sha256sums_armv7h = 132fe361c76923126eae73b4ba3ddc86b39f4e48a01d657c2d2f382b2850063b
+	source_i686 = goshs-2.1.0-i686.rpm::https://github.com/goshs-labs/goshs/releases/download/v2.1.0/goshs_2.1.0_linux_386.rpm
+	sha256sums_i686 = fc8e61e97be3f5e4ac2cdfc43bda78657a98d790ab63b2c0c7f4b410718122cc
+	source_x86_64 = goshs-2.1.0-x86_64.rpm::https://github.com/goshs-labs/goshs/releases/download/v2.1.0/goshs_2.1.0_linux_amd64.rpm
+	sha256sums_x86_64 = db9f096836da05a6ea51019bca0b395db1bdfc06b30f5bce2c4887c622ef649f
 
 pkgname = goshs-bin
