@@ -5,7 +5,7 @@ _pkgname=tetro-tui
 pkgname=${_pkgname}-bin
 pkgdesc="A terminal-based but modern tetromino-stacking game that is customizable and cross-platform."
 
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,8 +27,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
 sha256sums=('a99105dd1a10cec73ce11fc679d25ac4a47389838e271b533b3c0a04e5307434'
             'b23d5471464616610a171c68ec3b23a127b52fc17c33a119c1eb997d1a00149b')
-sha256sums_x86_64=('42cc116fc21a2597a2bb6f3ad60e7741a93a112846ce72ac9fa8ce3cd61d8812')
-sha256sums_aarch64=('c417c082552eb8e553a8181423c8b546ba001f32c52646f436344c32fc785011')
+sha256sums_x86_64=('ddb3b755ef172a9c0f26313a701d2fe9a009d427f0ec1c3cc1203dd4baf56b1c')
+sha256sums_aarch64=('394a65f5dc3f7bdef45d4b7b7930ee721da528dfc34dd9404aa946b8ad3aa0a7')
 
 
 case ${CARCH} in
