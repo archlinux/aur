@@ -1,0 +1,19 @@
+pkgbase = league-of-gays
+	pkgdesc = League of Gays — self-hosted MOBA launcher
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://lol.meisgaming.net
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libnotify
+	depends = xdg-utils
+	depends = libx11
+	provides = league-of-gays
+	conflicts = league-of-gays
+	source = league-of-gays-launcher-0.1.0.tar.gz::https://lol.meisgaming.net/launcher/league-of-gays-launcher-0.1.0.tar.gz
+	sha256sums = 65f584de4f1c1965c775f8f90692c228181931f001e188b59362593ac0c18101
+
+pkgname = league-of-gays
