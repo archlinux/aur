@@ -1,6 +1,6 @@
 # Maintainer: adelmonte
 pkgname=arch-native
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Rebuild installed pacman packages from source with CPU-optimized compiler flags"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
 backup=('etc/arch-native.conf')
 install=arch-native.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adelmonte/arch-native/archive/refs/tags/arch-native-v${pkgver}.tar.gz")
-sha256sums=('0eba55d8ad3dbf214d0e9129af1230c050bbeb848a0b637ac55fd4af52e1a26e')
+sha256sums=('25b791f0639ae30bf0985fa58a2ad65c23b879eb2cb01c3db97925fb9c84970e')
 
 package() {
     cd "$srcdir/arch-native-arch-native-v${pkgver}/arch-native"
