@@ -12,7 +12,9 @@ depends=(
   'python-requests'
   'python-beautifulsoup4'
   'python-simple-term-menu'
-  'python-dumb-menu'
+)
+optdepends=(
+  'python-dumb-menu: Windows-style menu fallback'
 )
 source=(
   "main.py"
