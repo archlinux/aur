@@ -1,7 +1,7 @@
 pkgname=sakura-editor
 pkgver=2.4.2
-pkgrel=1
-pkgdesc="A free text editor (running on Wine, portable build)"
+pkgrel=2
+pkgdesc="A free text editor running on Wine, portable build"
 arch=('x86_64')
 url="https://sakura-editor.github.io/"
 license=('zlib')
@@ -17,13 +17,15 @@ source=(
     "sakura.zip::https://github.com/sakura-editor/sakura/releases/download/v2.4.2/sakura-tag-v2.4.2-build4203-a3e63915b-Win32-Release-Exe.zip"
     "sakura-editor.sh"
     "sakura-editor.desktop"
+    "sakura.ico"
 )
 
 noextract=("sakura.zip")
 
 sha256sums=('91f2eae7fe3b2417a47ee678463012e030063cf2694fd6c925fbaebc575dd7e8'
-            '665ce82869437625b3832eb8226c6b702c15a5f066c9e1ac11300e576a47ee01'
-            'b34a74f6e3667b17a9a89be406bd33f9f58beadf0ab28f21cbbba4a5ca6289a9')
+            '1cf78fe467e8366cdd292466540623914e1bacbd9474cafba7d18af5d56760fb'
+            '33c6dc7dbcb2cc656754e35a3547da9982f1a0f316378b7eb287b1234887dd9f'
+            'dfe65bc2387b3d1552d7dbb624c44262e076e269899a315aef4015915ed05247')
 
 prepare() {
     rm -rf "$srcdir/app"
@@ -39,4 +41,7 @@ package() {
     # wrapper
     install -Dm755 sakura-editor.sh "$pkgdir/usr/bin/sakura-editor"
     install -Dm644 sakura-editor.desktop "$pkgdir/usr/share/applications/sakura-editor.desktop"
+
+    # icon
+    install -Dm644 sakura.ico "$pkgdir/usr/share/pixmaps/sakura.ico"
 }

@@ -1,6 +1,7 @@
 [Desktop Entry]
-Name=Sakura Editor
+Name=SAKURA Editor
 Exec=sakura-editor %F
+Icon=/usr/share/pixmaps/sakura.ico
 Type=Application
 Categories=Utility;TextEditor;
 MimeType=text/plain;
