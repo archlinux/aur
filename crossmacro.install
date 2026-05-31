@@ -14,6 +14,32 @@ _crossmacro_has_systemd_runtime() {
     [ -d /run/systemd/system ] && _crossmacro_has_cmd systemctl
 }
 
+_crossmacro_provision_sysusers() {
+    if [ -x /usr/bin/systemd-sysusers ]; then
+        /usr/bin/systemd-sysusers /usr/lib/sysusers.d/crossmacro.conf >/dev/null 2>&1 || return 1
+    elif _crossmacro_has_cmd systemd-sysusers; then
+        systemd-sysusers /usr/lib/sysusers.d/crossmacro.conf >/dev/null 2>&1 || return 1
+    else
+        return 1
+    fi
+
+    getent passwd crossmacro >/dev/null 2>&1 || return 1
+    getent group crossmacro >/dev/null 2>&1 || return 1
+}
+
+_crossmacro_sysusers_remediation() {
+    echo "   sudo systemd-sysusers /usr/lib/sysusers.d/crossmacro.conf"
+    echo "   getent passwd crossmacro"
+    echo "   getent group crossmacro"
+    echo "   sudo systemctl start crossmacro.service"
+    echo "   sudo systemctl restart crossmacro.service"
+}
+
+_crossmacro_systemd_runtime_remediation() {
+    echo "   sudo systemctl enable --now crossmacro.service"
+    echo "   sudo systemctl restart crossmacro.service"
+}
+
 _crossmacro_reload_udev() {
     if _crossmacro_has_cmd udevadm; then
         udevadm control --reload-rules >/dev/null 2>&1 || true
@@ -22,6 +48,15 @@ _crossmacro_reload_udev() {
 }
 
 post_install() {
+    sysusers_ready=false
+    if _crossmacro_provision_sysusers; then
+        sysusers_ready=true
+    else
+        echo "Provisioning crossmacro sysusers failed or verification did not pass."
+        echo "Manual remediation:"
+        _crossmacro_sysusers_remediation
+    fi
+
     if _crossmacro_has_systemd_runtime; then
         echo "Reloading systemd daemon..."
         systemctl daemon-reload >/dev/null 2>&1 || true
@@ -35,45 +70,93 @@ post_install() {
     fi
 
     auto_service_status="systemd runtime not detected; skipped auto enable/start"
-    if _crossmacro_has_systemd_runtime; then
+    if $sysusers_ready && _crossmacro_has_systemd_runtime; then
         if systemctl enable --now crossmacro.service >/dev/null 2>&1; then
             auto_service_status="crossmacro.service enabled and started automatically"
         else
             auto_service_status="auto enable/start failed; run: sudo systemctl enable --now crossmacro.service"
         fi
+    elif _crossmacro_has_systemd_runtime; then
+        auto_service_status="crossmacro.service not started; sysusers provisioning/verification failed"
+    elif $sysusers_ready; then
+        auto_service_status="systemd runtime not detected; skipped auto enable/start"
     fi
 
     installer_user=""
+    installer_user_status="missing"
     if [ -n "${SUDO_USER:-}" ] && [ "${SUDO_USER}" != "root" ]; then
         installer_user="${SUDO_USER}"
+        installer_user_status="candidate"
     elif [ -n "${PKEXEC_UID:-}" ] && [ "${PKEXEC_UID}" != "0" ]; then
         installer_user="$(getent passwd "${PKEXEC_UID}" | cut -d: -f1)"
+        installer_user_status="candidate"
     fi
 
-    if [ -n "$installer_user" ] && getent passwd "$installer_user" >/dev/null 2>&1; then
-        usermod -aG crossmacro "$installer_user" >/dev/null 2>&1 || true
+    installer_user_group_status="$installer_user_status"
+    if [ "$installer_user_status" = "candidate" ]; then
+        if [ -z "$installer_user" ] || ! getent passwd "$installer_user" >/dev/null 2>&1; then
+            installer_user_group_status="unknown"
+        elif id -nG "$installer_user" 2>/dev/null | tr ' ' '\n' | grep -Fx crossmacro >/dev/null 2>&1; then
+            installer_user_group_status="already_member"
+        elif usermod -aG crossmacro "$installer_user" >/dev/null 2>&1; then
+            installer_user_group_status="added"
+        else
+            installer_user_group_status="failed"
+        fi
     fi
 
     echo "------------------------------------------------------------------------"
     echo "CrossMacro Daemon installed."
     echo "Service: $auto_service_status"
-    echo ""
-    if [ -n "$installer_user" ]; then
-        echo "1. '$installer_user' was added to 'crossmacro' group (best effort)."
-        echo "   If needed, run: sudo usermod -aG crossmacro \$USER"
-    else
-        echo "1. Add yourself to the 'crossmacro' group to communicate with the daemon:"
-        echo "   sudo usermod -aG crossmacro \$USER"
+    if ! _crossmacro_has_systemd_runtime; then
+        echo "Systemd runtime not detected; once you boot into a systemd host, enable/start the daemon manually:"
+        _crossmacro_systemd_runtime_remediation
     fi
     echo ""
-    echo "2. Log out and log back in for group changes to take effect."
+    case "$installer_user_group_status" in
+        already_member)
+            echo "1. '$installer_user' is already a member of the 'crossmacro' group."
+            echo "   If this login session still cannot access the daemon, log out and log back in or reboot."
+            ;;
+        added)
+            echo "1. '$installer_user' was added to the 'crossmacro' group."
+            echo "   Log out and log back in, or reboot, for the group change to take effect."
+            ;;
+        failed)
+            echo "1. Could not add '$installer_user' to the 'crossmacro' group automatically."
+            echo "   Run manually: sudo usermod -aG crossmacro \$USER"
+            echo "   Then log out and log back in, or reboot, for the group change to take effect."
+            ;;
+        unknown)
+            echo "1. Could not determine the non-root user who launched the installer."
+            echo "   Run manually: sudo usermod -aG crossmacro \$USER"
+            echo "   Then log out and log back in, or reboot, for the group change to take effect."
+            ;;
+        *)
+            echo "1. Add yourself to the 'crossmacro' group to communicate with the daemon:"
+            echo "   sudo usermod -aG crossmacro \$USER"
+            echo "   Then log out and log back in, or reboot, for the group change to take effect."
+            ;;
+    esac
     echo "------------------------------------------------------------------------"
 }
 
 post_upgrade() {
-    if _crossmacro_has_systemd_runtime; then
-        systemctl daemon-reload >/dev/null 2>&1 || true
+    if ! _crossmacro_provision_sysusers; then
+        echo "Provisioning crossmacro sysusers failed or verification did not pass."
+        echo "Manual remediation:"
+        _crossmacro_sysusers_remediation
+        return 0
     fi
+
+    if ! _crossmacro_has_systemd_runtime; then
+        echo "Systemd runtime not detected; automatic restart skipped."
+        echo "Once you boot into a systemd host, restart the daemon manually:"
+        echo "   sudo systemctl restart crossmacro.service"
+        return 0
+    fi
+
+    systemctl daemon-reload >/dev/null 2>&1 || true
 
     _crossmacro_reload_udev
     _crossmacro_load_uinput
@@ -83,7 +166,7 @@ post_upgrade() {
     fi
 
     # Only restart if service is active
-    if _crossmacro_has_systemd_runtime && systemctl is-active --quiet crossmacro.service 2>/dev/null; then
+    if systemctl is-active --quiet crossmacro.service 2>/dev/null; then
         systemctl try-restart crossmacro.service >/dev/null 2>&1 || true
     fi
 }
