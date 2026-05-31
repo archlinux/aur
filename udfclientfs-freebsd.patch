@@ -1,0 +1,53 @@
+# $Id: udfclientfs.patch,v 1.7 2017/05/18 13:56:27 avg Exp $
+--- a/Makefile.in	2026-05-31 10:00:27.407681489 +0700
++++ b/Makefile.in	2026-05-31 10:00:43.176454561 +0700
+@@ -37,16 +37,16 @@
+ #CFLAGS+= -D__ANONYMOUSUDF__
+ 
+ #CFLAGS+= -fPIC -DPIC
+-POSTOBJ+= @SCSI_LIB@ @THREADLIB@ @TIMELIB@
++POSTOBJ+= -L/usr/local/lib -lfuse @SCSI_LIB@ @THREADLIB@
+ 
+ 
+ # For use with the cpuflags package
+ #CPROCFLAGS != cpuflags
+-CFLAGS+= ${CPROCFLAGS}
++CFLAGS+= ${CPROCFLAGS} -I/usr/local/include -D_FILE_OFFSET_BITS=64
+ 
+ 
+ # Main programs
+-APPS=		udfdump udfclient newfs_udf cd_sessions
++APPS=		udfdump udfclient udfclientfs newfs_udf cd_sessions
+ SCSI_APPS=	cd_disect mmc_format
+ LIB=		osta.o udf.o udf_bmap.o udf_allocentries.o udf_discop.o uio.o
+ LIB+=		udf_verbose.o udf_readwrite.o udf_unix.o vfs_dirhash.o
+--- a/udf.c	2026-05-31 10:00:27.409318097 +0700
++++ b/udf.c	2026-05-31 10:00:43.177892723 +0700
+@@ -5234,7 +5234,6 @@
+ udf_init(void)
+ {
+ 	udf_unix_init();
+-	udf_start_unix_thread();
+ 	dirhash_init();
+ 
+ 	SLIST_INIT(&udf_discs_list);
+--- a/udf_readwrite.c	2026-05-31 10:00:27.410947010 +0700
++++ b/udf_readwrite.c	2026-05-31 10:00:43.179241923 +0700
+@@ -340,6 +340,7 @@
+ 					callback->function(UDF_WRCALLBACK_REASON_ANULATE, callback, report_error, from);
+ 				} else {
+ 					fprintf(stderr, "WARNING: error encountered with NULL callback function\n");
++					exit(1);
+ 				}
+ 			}
+ 		}
+--- a/udfclient.c	2026-05-31 10:00:27.412322501 +0700
++++ b/udfclient.c	2026-05-31 10:00:43.180649847 +0700
+@@ -1743,6 +1743,7 @@
+ 
+ 	/* all other arguments are devices */
+ 	udf_init();
++	udf_start_unix_thread();
+ 	while (argc) {
+ 		printf("Opening device %s\n", *argv);
+ 		error = udf_mount_disc(*argv, range, alt_sector_size, mnt_flags, &disc);

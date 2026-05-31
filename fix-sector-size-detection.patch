@@ -1,5 +1,5 @@
---- a/udf_discop.c	2026-05-31 02:33:57.255581207 +0700
-+++ udf_discop.c	2026-05-31 02:34:14.012572232 +0700
+--- a/udf_discop.c	2026-05-31 10:01:59.618627867 +0700
++++ b/udf_discop.c	2026-05-31 10:01:59.624444992 +0700
 @@ -365,7 +365,30 @@
  	/* check if its a regular file */
  	fstat(disc->dev->fhandle, &stat);
@@ -40,9 +40,9 @@
  		return 0;
  	}
  
---- a/udfclientfs.c	2026-05-31 02:33:57.257581325 +0700
-+++ udfclientfs.c	2026-05-31 02:34:33.792741983 +0700
-@@ -771,6 +771,7 @@
+--- a/udfclientfs.c	2026-05-31 10:01:59.620191864 +0700
++++ b/udfclientfs.c	2026-05-31 10:01:59.625689509 +0700
+@@ -759,6 +759,7 @@
  	fprintf(stderr, "Usage %s [options] special node\n"
  			"\n"
  			"%s-specific options:\n"
@@ -50,7 +50,7 @@
  			"\t-F | -o force\tforce r/w mount even if filesystem is marked dirty (use with caution)\n"
  			"\t-r | -o ro\tread-only mount\n"
  			"\t-d\t\tdebug mode\n"
-@@ -836,6 +837,7 @@
+@@ -824,6 +825,7 @@
  	char *fuseargv[MAX_FUSE_ARGC];
  	int fuseargc = 0;
  	int mnt_flags = 0;
@@ -58,7 +58,7 @@
  	int error;
  	char ch;
  
-@@ -845,8 +847,11 @@
+@@ -833,8 +835,11 @@
  	 * pass-through all other options
  	 */
  	/* TODO: change this stuff to use new FUSE option parsing API */
@@ -71,7 +71,7 @@
  		case 'd':
  			udfclientfs_debug = 1;
  			fuseargv[fuseargc++] = strdup("-d");
-@@ -929,7 +934,7 @@
+@@ -917,7 +922,7 @@
  
  	printf("Opening device %s\n", dev);
  	udf_init();
