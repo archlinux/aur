@@ -1,6 +1,6 @@
 pkgbase = 86box-roms-git
 	pkgdesc = ROMs for the 86Box emulator
-	pkgver = 5.3.r0.ga749595
+	pkgver = 6.0.r0.g26761b5
 	pkgrel = 1
 	url = https://github.com/86Box/roms
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = 86box-roms-git
 	provides = 86box-roms
 	conflicts = 86box-roms
 	options = !strip
+	options = !zipman
 	source = 86box-roms-git::git+https://github.com/86Box/roms.git
 	sha512sums = SKIP
 

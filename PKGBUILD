@@ -1,13 +1,13 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=86box-roms-git
-pkgver=5.3.r0.ga749595
+pkgver=6.0.r0.g26761b5
 pkgrel=1
 pkgdesc='ROMs for the 86Box emulator'
 arch=('any')
 url='https://github.com/86Box/roms'
 license=('custom')
 makedepends=('git')
-options=('!strip')
+options=('!strip' '!zipman')
 provides=('86box-roms')
 conflicts=('86box-roms')
 source=("${pkgname}::git+https://github.com/86Box/roms.git")
