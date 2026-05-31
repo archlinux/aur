@@ -1,0 +1,19 @@
+pkgbase = dionysus-git
+	pkgdesc = Simple GTK4 application launcher for Wayland
+	pkgver = 0.0.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/dzavadindev/dionysus
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	depends = gtk4
+	depends = hicolor-icon-theme
+	provides = dionysus
+	conflicts = dionysus
+	options = !debug
+	source = git+https://github.com/dzavadindev/dionysus.git
+	sha256sums = SKIP
+
+pkgname = dionysus-git
