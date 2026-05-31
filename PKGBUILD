@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=15.7.1
+pkgver=15.7.2
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/refs/tags/v${pkgver}.tar.gz"
     "tree-sitter-haskell-gcc-no-strict-aliasing.patch"
 )
-sha256sums=('f971fdbcf228157313b7dbd839214fbdfbf9e9ffe95d309f473b6a518af39a9d'
+sha256sums=('17fc54d474c6d1ed76b0090861514667f01f874cd99e6aa6f022f5e20dd008fa'
             '3eea6cd7fc2e5fa973b81cac109688231e40087f51c3ce4cf01e45e1b7893b17')
 
 # Patch to fix tree-sitter-haskell crash.
