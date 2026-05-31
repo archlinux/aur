@@ -1,4 +1,4 @@
-# Maintainer: atvknox <atvknox at gmail dot com>
+# Ex-Maintainer: atvknox <atvknox at gmail dot com>
 # Contributor: Christopher Cooper <christopher@cg505.com>
 
 pkgname=happy-cli
