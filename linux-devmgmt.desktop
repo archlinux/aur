@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Device Manager
+Comment=Manage system hardware devices
+Exec=/usr/bin/devmgmt
+Icon=applications-system
+Terminal=false
+Categories=System;Utility;
