@@ -10,7 +10,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libnotify' 'xdg-utils' 'libx11')
 provides=('league-of-gays')
 conflicts=('league-of-gays')
 source=("${pkgname}-launcher-${pkgver}.tar.gz::https://lol.meisgaming.net/launcher/${pkgname}-launcher-${pkgver}.tar.gz")
-sha256sums=('65f584de4f1c1965c775f8f90692c228181931f001e188b59362593ac0c18101')
+sha256sums=('f7536a861b95d5f0e74130bc7ffee67f09fa9fbe8bad93b12b25eff99bde4c63')
 
 package() {
     local src_dir="$srcdir/${pkgname}-launcher-${pkgver}"
