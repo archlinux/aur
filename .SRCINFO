@@ -6,7 +6,6 @@ pkgbase = fifechan
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = cmake
-	makedepends = make
 	depends = sdl2_image
 	provides = fifechan
 	source = fifechan-0.1.5.tar.gz::https://github.com/fifengine/fifechan/archive/0.1.5.tar.gz
