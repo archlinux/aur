@@ -2,7 +2,7 @@
 
 pkgname=goodix5385
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Fingerprint GUI for Goodix 5385 sensor — enroll, verify, delete, sudo auth toggle."
 arch=('any')
 url="https://github.com/sanecodeguy/Goodix5385"
@@ -52,4 +52,8 @@ post_upgrade() {
 
 pre_remove() {
     systemctl disable --now goodix-usb-reset.service
+    # Remove fingerprint sudo auth if present
+    if [ -f /etc/pam.d/sudo ]; then
+        sed -i '/pam_fprintd\.so/d' /etc/pam.d/sudo
+    fi
 }
