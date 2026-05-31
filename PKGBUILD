@@ -19,7 +19,7 @@ depends=(
 provides=('tauritavern')
 conflicts=('tauritavern')
 
-source=("TauriTavern.deb::https://github.com/LX2000WASD/TauriTavern-aur/releases/download/v${pkgver}-${pkgrel}/TauriTavern_${pkgver}_amd64.deb")
+source=("TauriTavern_${pkgver}_amd64.deb::https://github.com/LX2000WASD/TauriTavern-aur/releases/download/v${pkgver}-${pkgrel}/TauriTavern_${pkgver}_amd64.deb")
 
 md5sums=('7d3cb7adc7e20520cc30a90664feb4f2')
 
