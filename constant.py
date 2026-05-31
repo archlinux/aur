@@ -10,7 +10,7 @@ json_limit = 20
 layer_pagination = "\n-------------------------\n"
 code_block_pagination = "```"
 details_end_pagination = "[/details]"
-default_save_dir = "./posts"
+default_save_dir = "."
 
 # bmp，jpg，png，tif，gif，pcx，tga，exif，fpx，svg，psd，cdr，pcd，dxf，ufo，eps，ai，raw，WMF，webp，avif，apng
 image_extensions = {".gif", ".jpg", ".png", ".jpeg", ".webp", ".raw", ".bmp", ".tif", ".tiff", ".avif", ".svg", ".pcd",

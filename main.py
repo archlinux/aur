@@ -66,10 +66,10 @@ def raw_post(path:str, topic:str)->str:
 
 def export_exec(topic:str, save_dir:str = default_save_dir):
     topic = str(topic)
-    topic = topic[1:] if topic[0] == "L" else topic # 兼容老API的 L123456
+    topic = topic[1:] if topic[0] == "L" else topic
     print(f'topic:{topic} 文字备份中...')
 
-    path = f'{save_dir}/{topic}/'
+    path = f'{save_dir}/'
     os.makedirs(path, exist_ok=True)
     last_time = time.time()
     filename = raw_post(path=path, topic=topic)
