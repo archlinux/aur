@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yet-another-electron-term
 _pkgname=YAET
-pkgver=5.0.0
+pkgver=6.0.0
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('9076be2edf30c2995dbd32313bc27904551baf2d73d67a982cbf39f324750862'
+sha256sums=('6fb6291d37742128717c845fb6f1d480b275aaf35ccfdf1038c1940e6acbb9a8'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
