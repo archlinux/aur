@@ -1,0 +1,23 @@
+pkgbase = ishaans-termchat-bin
+	pkgdesc = Minimal anonymous terminal chatrooms — lightweight single-binary TUI client
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/ishaan-jindal/termchat
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = MIT
+	provides = termchat
+	conflicts = ishaans-termchat
+	source = termchat.1::https://raw.githubusercontent.com/ishaan-jindal/termchat/cli-v0.4.2/doc/termchat.1
+	source = LICENSE::https://raw.githubusercontent.com/ishaan-jindal/termchat/cli-v0.4.2/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_x86_64 = https://github.com/ishaan-jindal/termchat/releases/download/cli-v0.4.2/termchat-linux-amd64
+	sha256sums_x86_64 = 985a984b3aac505913a9bf593febfdd25d15be0f19afd0efa3428f0111b0894a
+	source_aarch64 = https://github.com/ishaan-jindal/termchat/releases/download/cli-v0.4.2/termchat-linux-arm64
+	sha256sums_aarch64 = 1f0b99f22039b6fd975b7a2435e62831d94404198f6d2f7360f1c10ce40be8b6
+	source_i686 = https://github.com/ishaan-jindal/termchat/releases/download/cli-v0.4.2/termchat-linux-386
+	sha256sums_i686 = 6bea23e9635aaa21ed3a9ed091c55abf665a177397822709ed557222eba3fa48
+
+pkgname = ishaans-termchat-bin
