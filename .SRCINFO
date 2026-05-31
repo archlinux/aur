@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libopenmpt
 	pkgdesc = A library to render tracker music to a PCM audio stream (mingw-w64)
-	pkgver = 0.8.6
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://lib.openmpt.org/libopenmpt/
 	arch = any
@@ -21,11 +21,11 @@ pkgbase = mingw-w64-libopenmpt
 	options = !buildflags
 	options = staticlibs
 	options = !debug
-	source = libopenmpt-0.8.6.tar.gz::https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.8.6+release.autotools.tar.gz
+	source = libopenmpt-0.8.7.tar.gz::https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.8.7+release.autotools.tar.gz
 	source = sf_wchar_open.patch
-	sha512sums = a9c813f80d2a688d52b161996ff7efab4a7d954ba177e2d2b3541bd9e7e246019510ea4f9027cbcb4e8ef50a21e633aa5fbe796435392e37383900b320fca03f
+	sha512sums = f0284238a0c1a7892ef948d1a719a13ce817bd0bd0c28a01e92263ca1511442ec836958186fa36c546cc9ca60453f714f9453e0774d910b79233c8698446073d
 	sha512sums = 3db33e13e383420ae09e189462ac1b57fe8f49d3a6bdd365bda7ae47f549567b86cc25e497935ec516a919ab4447db3b76ab21fc943b51cd9bcf9da247601c7e
-	b2sums = 44e326d8f8da088cd0353926c80726de6b81b428c79157785c7bb80ebc26d812c08e2463df12d8624a5d1430677cd0b502988ee3b9974b61a72497e9f53ba14a
+	b2sums = ef97f94e46b40cfc2087550659e13a6354abc7f85ac8ffa664414eb52011f4f6bce4fa5088d2ea0bf02c3193a78c6963f418d9b3a976c9c5699289dca18cb04e
 	b2sums = 24c7f85efd34243c6730d563a0f4910e9fd5b26ff44700ba56df90a054ffaea932829986f96a75e2a67244829fb46526c36eb0959b047e6430f063fd3032399a
 
 pkgname = mingw-w64-libopenmpt
