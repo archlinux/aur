@@ -1,6 +1,6 @@
 pkgname=bearhub
 pkgver=0.10.7
-pkgrel=5
+pkgrel=6
 pkgdesc="Arch-first package manager hub (community-maintained fork of bauh)"
 arch=('any')
 url="https://github.com/spalencsar/bearhub"
@@ -34,10 +34,10 @@ package() {
   cd "$srcdir/$pkgname-${pkgver}-bearhub.4"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 "bauh/desktop/bauh.desktop" \
+  install -Dm644 "bearhub/desktop/bearhub.desktop" \
     "$pkgdir/usr/share/applications/bearhub.desktop"
-  install -Dm644 "bauh/desktop/bauh_tray.desktop" \
+  install -Dm644 "bearhub/desktop/bearhub_tray.desktop" \
     "$pkgdir/usr/share/applications/bearhub-tray.desktop"
-  install -Dm644 "bauh/view/resources/img/logo.svg" \
+  install -Dm644 "bearhub/view/resources/img/logo.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/bearhub.svg"
 }
