@@ -2,8 +2,8 @@
 
 pkgname=blackarch-wallpapers-git
 pkgver=80
-pkgrel=2
-pkgdesc="Official BlackArch Linux wallpapers"
+pkgrel=3
+pkgdesc="Official BlackArch Linux wallpapers (optimized sparse checkout)"
 arch=('any')
 url="https://github.com/BlackArch/blackarch-artwork"
 license=('custom')
@@ -13,6 +13,13 @@ makedepends=('git')
 
 source=("git+https://github.com/BlackArch/blackarch-artwork.git")
 sha256sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/blackarch-artwork"
+    # Configure git to only pull the wallpaper directory
+    git sparse-checkout init --cone
+    git sparse-checkout set wallpaper
+}
 
 pkgver() {
     cd "$srcdir/blackarch-artwork"
