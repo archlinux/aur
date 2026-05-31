@@ -3,7 +3,7 @@
 _Name="SatisfactoryModManager"
 _pkgname="satisfactory-mod-manager"
 pkgname="${_pkgname}-bin"
-pkgver=3.0.6
+pkgver=3.0.7
 pkgrel=1
 pkgdesc="A mod manager for easy installation of mods and modloader for Satisfactory"
 arch=(
@@ -38,7 +38,7 @@ source=(
 source_x86_64=(
   "${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_Name}_linux_amd64"
 )
-sha256sums=('1bae57c3f1dcaf4d36e35e28d613893ff10541437e9fed0ec715dd13eac58add'
+sha256sums=('175aca78da7ce83d3480ac7fad95d1978bfa09e7dfc5ce4667be93aaa4e64f9c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '2a665efd6d635ef0925bc52c7e794f065c2875c8ca20c552505b0740666ca024'
             '2d71e119fa6c6e64d77c3c251765ec5c2279c76f0c8ada48bb5e9e5c50624403'
@@ -48,7 +48,7 @@ sha256sums=('1bae57c3f1dcaf4d36e35e28d613893ff10541437e9fed0ec715dd13eac58add'
             '23cc56f60c02bee1ddebd9f02290bdb18ae52f1a2b9827fdc1d220ef6023c70a'
             '0694a6dccd4407c5fee4aa3afa7d1cfc2f658afe204e642f6abd84c4f716bf77'
             '549a0ecef95c7468296df7e55b968c00851b3a51b46d063f76f9eb2aeda40d59')
-sha256sums_x86_64=('9620354fdf6246eab7840c9c6a99ee015930affb2353dab3daf4bc81f3973aa3')
+sha256sums_x86_64=('761c270af60e470c96233c9f1f8a13b6a19deb8c7abf02759877953fbfe76507')
 
 declare -rg _sizes="16 32 64 128 256 512"
 for _size in $_sizes; do
