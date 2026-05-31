@@ -1,0 +1,17 @@
+diff --git a/src/sid/xs_sidplay2.cc b/src/sid/xs_sidplay2.cc
+index 7685f1cad..91192950b 100644
+--- a/src/sid/xs_sidplay2.cc
++++ b/src/sid/xs_sidplay2.cc
+@@ -161,9 +161,9 @@ bool xs_sidplayfp_init()
+ #endif
+ 
+     /* Load ROMs */
+-    VFSFile kernal_file("file://" SIDDATADIR "/sidplayfp/kernal", "r");
+-    VFSFile basic_file("file://" SIDDATADIR "/sidplayfp/basic", "r");
+-    VFSFile chargen_file("file://" SIDDATADIR "/sidplayfp/chargen", "r");
++    VFSFile kernal_file("file:///usr/share/vice/C64/kernal-901227-03.bin", "r");
++    VFSFile basic_file("file:///usr/share/vice/C64/basic-901226-01.bin", "r");
++    VFSFile chargen_file("file:///usr/share/vice/C64/chargen-901225-01.bin", "r");
+ 
+     if (kernal_file && basic_file && chargen_file)
+     {
