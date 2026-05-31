@@ -3,13 +3,18 @@ pkgbase = happy-cli
 	pkgver = 1.1.8
 	pkgrel = 2
 	url = https://github.com/slopus/happy
-	arch = any
+	install = happy-cli.install
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = pnpm
 	makedepends = npm
-	depends = nodejs
+	depends = nodejs>=18
 	depends = ripgrep
 	depends = difftastic
+	depends = git
+	provides = happy-cli
+	options = !strip
 	source = happy-cli-1.1.8.tar.gz::https://github.com/slopus/happy/archive/refs/tags/cli-1.1.8.tar.gz
 	b2sums = 15a4b414fd6fd2caaafd796caab1b0c866a3dfc2ab301565dd20ae64533fefb20b0b50e7500844a5af2e88b77fe79eaabfddb4ed88a7d5f0f45818637f96b1f4
 

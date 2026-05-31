@@ -1,0 +1,37 @@
+# happy-cli.install
+
+post_install() {
+    cat << EOF
+==> happy-cli has been installed successfully.
+    
+    To get started:
+    - Run 'happy --help' for usage information
+    - Run 'happy-mcp --help' for MCP server options
+    
+    Note: This package uses system versions of:
+    • difftastic (/usr/bin/difft)
+    • ripgrep (/usr/bin/rg)
+    • git (/usr/bin/git)
+    
+    Node.js version required: >=18
+    
+    For shell completion and documentation:
+    https://github.com/slopus/happy
+EOF
+}
+
+post_upgrade() {
+    if [[ $(vercmp $2 1.1.8) -lt 0 ]]; then
+        echo "==> happy-cli has been upgraded to version $1"
+        echo "    Check the changelog at: https://github.com/slopus/happy/releases"
+    fi
+}
+
+pre_remove() {
+    echo "==> Removing happy-cli..."
+}
+
+post_remove() {
+    echo "==> happy-cli has been removed"
+    echo "    You may want to remove ~/.cache/happy-cli and ~/.config/happy-cli"
+}
