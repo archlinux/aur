@@ -1,6 +1,6 @@
 # Maintainer: Mark Austin <ganthore@gmail.com>
 pkgname=qmidigen
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Randomized MIDI music generator with JRPG-style compositions'
 arch=('x86_64' 'aarch64')
