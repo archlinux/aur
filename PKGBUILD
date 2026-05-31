@@ -2,10 +2,10 @@
 
 pkgname=sparrow-wallet-reproducible
 _pkgname=sparrow-wallet
-pkgver=2.5.1
+pkgver=2.5.2
 _jdkver=25.0.2_10
 _jdkmajor="${_jdkver%%[^0-9]*}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (reproducible build)"
 arch=('x86_64')
 url="https://sparrowwallet.com/"
@@ -55,8 +55,8 @@ source=(
     "lark::git+https://github.com/sparrowwallet/lark.git"
     "https://github.com/adoptium/temurin${_jdkmajor}-binaries/releases/download/jdk-${_jdkver/_/%2B}/OpenJDK${_jdkmajor}U-jdk_x64_linux_hotspot_${_jdkver}.tar.gz"
 )
-sha256sums=('2c2b5d39977a13f29c743159047db95bbd12ba59f142dbb66367b4f4b57b9ace'
-            '1bd3675962f1b59d08c86f0606dbd38749361b1cbf4f0af58e681d37202aa284'
+sha256sums=('b83d01c4c65cf1cee9e6f62c53c8d97474286ee2b82e5b65768642137129f877'
+            '8c3bd435a03f83f8b2cdd6db7ad972741cfd7c57879af2fc2103553a2d0918c0'
             'SKIP'
             'SKIP'
             '987387933b64b9833846dee373b640440d3e1fd48a04804ec01a6dbf718e8ab8')
