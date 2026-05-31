@@ -1,0 +1,26 @@
+pkgbase = zelynic-bin
+	pkgdesc = Easy userspace bandwidth manager for Linux
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/oxyzenQ/zelynic
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libgcc
+	depends = iproute2
+	depends = nftables
+	provides = zelynic
+	conflicts = zelynic
+	options = !strip
+	source = USAGE-2.0.0.md::https://raw.githubusercontent.com/oxyzenQ/zelynic/v2.0.0/docs/usage.md
+	source = VALIDATION-2.0.0.md::https://raw.githubusercontent.com/oxyzenQ/zelynic/v2.0.0/docs/validation.md
+	source = GETTING-STARTED-2.0.0.md::https://raw.githubusercontent.com/oxyzenQ/zelynic/v2.0.0/docs/getting-started.md
+	source = STRICT-BACKEND_DESIGN-2.0.0.md::https://raw.githubusercontent.com/oxyzenQ/zelynic/v2.0.0/docs/strict-backend-design.md
+	sha256sums = ffa9d7961c736ae9f082c14c267ba34a5ee4a29237ccef32f95661be77adcd82
+	sha256sums = df1c2d01d2240633c44d59b4ed4423854a13487e27b65304960490371db43073
+	sha256sums = aa5819c60d23cf202e683288a3a9f645a33e72049c77cf0850855b486e56d5d7
+	sha256sums = d29c49be72c1ce61d1cd89f042bc9ab044d0b564b19c53793fbaa4a3e18e7522
+	source_x86_64 = zelynic-x86_64-2.0.0.tgz::https://github.com/oxyzenQ/zelynic/releases/download/v2.0.0/zelynic-v2.0.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = a6c7898d3b6e3227103566fa9642a74a528ffa84832b7335dd7d5b5f86e9b765
+
+pkgname = zelynic-bin

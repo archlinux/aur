@@ -1,0 +1,5 @@
+[zelynic-bin]
+source = "github"
+github = "oxyzenQ/zelynic"
+use_latest_release = true
+prefix = "v"
