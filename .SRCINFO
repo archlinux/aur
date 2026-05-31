@@ -13,7 +13,7 @@ pkgbase = goodix5385
 	depends = python
 	depends = python-pyusb
 	depends = pyside6
-	source = goodix5385-0.3.0.tar.gz::https://github.com/sanecodeguy/Goodix5385/archive/v0.3.0.tar.gz
+	source = https://github.com/sanecodeguy/Goodix5385/archive/v0.3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = goodix5385

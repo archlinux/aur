@@ -14,11 +14,11 @@ depends=(
     'pyside6'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sanecodeguy/Goodix5385/archive/v${pkgver}.tar.gz")
+source=("https://github.com/sanecodeguy/Goodix5385/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/Goodix5385-${pkgver}"
 
     # Python package — installs `goodix` and `goodix5385-gui` commands
     python -m pip install --root="${pkgdir}" --prefix=/usr --no-deps .
