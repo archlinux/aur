@@ -1,6 +1,6 @@
 pkgbase = nuclear-player
 	pkgdesc = Streaming music player that finds free music for you.
-	pkgver = 1.37.4
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://nuclearplayer.com/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = nuclear-player
 	depends = webkit2gtk-4.1
 	depends = libsoup3
 	depends = gtk3
-	source = nuclear-player-1.37.4::git+https://github.com/nukeop/nuclear#tag=player@1.37.4
-	sha256sums = f97559ee4c532378b56ab9aacaabaf6fe7e6a214c6703500ef09c3163aa5c2bb
+	source = nuclear-player-1.38.0::git+https://github.com/nukeop/nuclear#tag=player@1.38.0
+	sha256sums = f965a977057fcc65beed523cb8e4d947b202d673025795c7f713f0916e588ab2
 
 pkgname = nuclear-player
