@@ -20,6 +20,7 @@ pkgbase = hyprgraphics-frozen
 	depends = libwebp
 	depends = pango
 	depends = pixman
+	provides = hyprgraphics
 	provides = hyprgraphics-frozen
 	provides = libhyprgraphics.so
 	conflicts = hyprgraphics-git
