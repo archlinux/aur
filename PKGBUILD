@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartos-bin
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc="Barto central job scheduling server (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -14,6 +14,7 @@ optdepends=('mariadb: local database server'
             'logrotate: periodic cleanup of rotated log files'
             'xz: xz compression of rotated log files')
 makedepends=()
+options=(!strip !debug)
 install=bartos.install
 
 _base="https://github.com/rustyhorde/barto/releases/download/v${pkgver}"
@@ -21,9 +22,9 @@ _base="https://github.com/rustyhorde/barto/releases/download/v${pkgver}"
 source=("${_base}/dist-bartos.tar.gz")
 source_x86_64=("bartos-x86_64::${_base}/bartos-x86_64-unknown-linux-musl")
 source_aarch64=("bartos-aarch64::${_base}/bartos-aarch64-unknown-linux-musl")
-sha256sums=('1e3f4ee11b1009216414f18437161c908ae3e54255df3d738df9939b8b6cef31')
-sha256sums_x86_64=('a254eaa27035523727cd8ac1658dcc556cfc42bf4c407269d471a929ff96012a')
-sha256sums_aarch64=('bb0eff662dcda25b2d48d3146a843aa7c07852b40a8929472866e545d000fa70')
+sha256sums=('67680aefa7a3222c121f8365436ab5ec0fb3c45a7551588230badeda5ec59f3d')
+sha256sums_x86_64=('0698b04cefef9d7abc364ba8ede9c3426d82b2f9f41c654bbe055cc7a81fcdde')
+sha256sums_aarch64=('a594ce1771cf60023aee5b851e50f045792ae201d1a251df110e296651914ff0')
 
 package() {
     install -Dm755 "bartos-${CARCH}" "$pkgdir/usr/bin/bartos"
