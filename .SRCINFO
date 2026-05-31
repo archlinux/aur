@@ -1,0 +1,20 @@
+pkgbase = xerxes
+	pkgdesc = A high-performance filesystem navigation engine
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/tryh4rd-26/xerxes
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc
+	provides = _xerxes
+	provides = _xerxesd
+	source = xerxes-0.2.9.crate::https://crates.io/api/v1/crates/xerxes/0.2.9/download
+	source = LICENSE
+	sha256sums = 4a93bb926b3eb85f352e74730e443bad48527e30547db20749c059bfaac79e9c
+	sha256sums = 0e90e8d18a1aac520d071d3c06ffc5e7123671913d0e9d7c36843b16fa2beb1b
+
+pkgname = xerxes
