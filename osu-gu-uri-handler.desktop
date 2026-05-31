@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+NoDisplay=true
+Name=osu! GU - uri handler
+MimeType=x-scheme-handler/osu;
+Icon=/usr/share/pixmaps/osu-gu.png
+Comment=Open source free-to-win rhythm game
+Exec=/usr/bin/osu-gu %u
+Categories=Game;

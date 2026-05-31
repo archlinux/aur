@@ -1,0 +1,2 @@
+#!/bin/sh
+env APPIMAGELAUNCHER_DISABLE=1 OSU_EXTERNAL_UPDATE_PROVIDER=1 dotnet /opt/osu-gu/osu!.dll "$@"
