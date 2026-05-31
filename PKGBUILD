@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=kangaroo
 pkgname="${_pkgname}-max-bin"
-pkgver=9.4.1.505
+pkgver=9.5.1.531
 pkgrel=1
 pkgdesc="A SQL client and admin tool for popular databases(SQLite/MySQL/PostgreSQL/...),support table design,query,model,sync,export/import etc,focus on comfortable,fun and developer friendly.(Prebuilt version)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/Kangaroo-Multiple-${pkgver}-1-${CARCH}.pkg.tar.zst"
     "LICENSE.html::${url}/en/license/service-agreement.html"
 )
-sha256sums=('3fe3d4b23240e6741a5ba3f8221c3aabec705db566961f4c413b5d8b95769d85'
+sha256sums=('21d09fe3f3d49695b8a6eae4590ef66d2cd553c58e9d32150777603bf5c2d2d5'
             '9446124544ea08ddbc964a803572eb2c8ccf806823fc858726d3764981c0ad56')
 package() {
     cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
