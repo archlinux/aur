@@ -1,5 +1,5 @@
 pkgbase = machctrl
-	pkgdesc = Monitor e Otimizador de Hardware para Linux — CPU, GPU, RAM, Fans, Temperatura
+	pkgdesc = Monitor e Otimizador de Hardware para Linux — CPU, GPU, RAM, Fans, Temperatura | Requer KDE Plasma ou GNOME
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/araujo791/machctrl
