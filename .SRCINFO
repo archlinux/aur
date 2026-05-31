@@ -1,6 +1,6 @@
 pkgbase = bubblejail
 	pkgdesc = Bubblewrap based sandboxing utility
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/igo95862/bubblejail
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = bubblejail
 	optdepends = bash-completion: completions for bash shell
 	optdepends = fish: completions for fish shell
 	optdepends = slirp4netns: Namespaced networking stack
-	source = https://github.com/igo95862/bubblejail/releases/download/0.10.2/bubblejail-0.10.2.tar.xz
-	source = https://github.com/igo95862/bubblejail/releases/download/0.10.2/bubblejail-0.10.2.tar.xz.sig
+	source = https://github.com/igo95862/bubblejail/releases/download/0.10.3/bubblejail-0.10.3.tar.xz
+	source = https://github.com/igo95862/bubblejail/releases/download/0.10.3/bubblejail-0.10.3.tar.xz.sig
 	validpgpkeys = 5A3D06576A6A67443DFBE856F1A55E62951B2143
-	sha512sums = 52bdbdcda4cefd170f1e1e3f822292ae6866986317f2064402137066cd279a27108a734a9a58f5642564c2e758c805a836020e2621845c31dd3a350c7cc6f084
+	sha512sums = 36073aae7f37cc066a2b8989ea55e9704b9faf00fd0ccbb8d20ceea253dbba3ba887fcb17140395993d5037263153acb4af8fc9661c778372bf895e395adf3bd
 	sha512sums = SKIP
 
 pkgname = bubblejail
