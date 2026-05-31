@@ -1,6 +1,6 @@
 pkgbase = edcolreport
 	pkgdesc = Report Elite Dangerous colonization progress to ravencolonial.com
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/pequalsnp/ed-colonization-reporter
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = edcolreport
 	depends = libxi
 	depends = libxxf86vm
 	depends = fontconfig
-	source = edcolreport-0.4.0.tar.gz::https://github.com/pequalsnp/ed-colonization-reporter/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 4b4a8ce5447f9f9cbc10b3580b35c6cb3d866a303a3550f82cc840a0db39da44
+	source = edcolreport-0.4.1.tar.gz::https://github.com/pequalsnp/ed-colonization-reporter/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 8fa145d9222dd9e3be632bb4350da39840e6a68d86fca87d9b81e15ef84753f3
 
 pkgname = edcolreport
