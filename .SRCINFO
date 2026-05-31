@@ -1,7 +1,7 @@
 pkgbase = bearhub-git
 	pkgdesc = Arch-first package manager hub (development snapshot, fork of bauh)
 	pkgver = 0.10.7.r0.g0000000
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/spalencsar/bearhub
 	arch = any
 	license = ZLIB
