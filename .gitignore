@@ -1,1 +1,5 @@
 .version
+pkg/
+src/
+*.pkg.tar.lzo
+*.tgz
