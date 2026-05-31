@@ -1,0 +1,25 @@
+pkgbase = ironkey-vp50-git
+	pkgdesc = Native Linux unlock and desktop auto-mount helper for Kingston IronKey VaultPrivacy50
+	pkgver = r3.f852b25
+	pkgrel = 1
+	url = https://github.com/DavidCarliez/ironkey-vp50
+	install = ironkey-vp50.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = openssl
+	depends = procps-ng
+	depends = python
+	depends = sudo
+	depends = systemd
+	depends = udisks2
+	depends = util-linux
+	optdepends = kdialog: KDE password prompts and notifications
+	optdepends = zenity: GNOME/GTK password prompts and notifications
+	optdepends = libnotify: fallback desktop notifications
+	provides = ironkey-vp50
+	conflicts = ironkey-vp50
+	source = ironkey-vp50::git+https://github.com/DavidCarliez/ironkey-vp50.git
+	sha256sums = SKIP
+
+pkgname = ironkey-vp50-git
