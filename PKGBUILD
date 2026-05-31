@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ccsm-bin
 _pkgname=CCSM
-pkgver=0.2.15
+pkgver=0.2.16
 _electronversion=41
 pkgrel=1
 pkgdesc="Desktop GUI for running multiple Claude Code agents in parallel, organized by task. (Prebuilt version. Use system-wide electron)"
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Jiahui-Gu/ccsm/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('84acaeaf03e02e0fb4eb7b5bda432d9003ca0fef8f44574fe7f985ac4108c242'
+sha256sums=('b6f38ce699372201839d5529c0e6a9831193eef277d698f04dd7b528145c0983'
             '298f03360dc6577ed1cd5b56c4c3cf16b2b83a1f1066d6e888d074c367299a5b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 
