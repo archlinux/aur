@@ -1,4 +1,5 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: ShortArrow <bamboogeneral@gmail.com>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=ShortArrow
 _pkgname=runex
@@ -7,7 +8,7 @@ _appname=runex
 pkgname=${_cratename}
 pkgdesc="Cross-shell abbreviation engine that expands short tokens into full commands"
 
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -16,17 +17,18 @@ _barch=('x86_64' 'aarch64')
 
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 
-license=('MIT')
+license=('MIT' 'Apache-2.0')
 
 makedepends=('rust' 'pkgconf')
 depends=('glibc' 'libgcc' 'openssl')
 
 provides=("${_appname}")
+conflicts=('runex-bin')
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download"
 		"LICENSE")
-sha256sums=('0c13a94189c9a38430c940488bf4f99df8d4cdae129d0b8cf7035beae5e2a958'
-            '19614dcc7dc2af82331a66d30ab79d5674be3ce73ef853ed76e1743b2830f4d0')
+sha256sums=('3192d344307e944eeabe621c3f25dfe636ef91dd0c6fc3083caa1130e1537042'
+            '735fa89d57bbf22a8c85d829aa1ed791cce81ffdb900467333025ab7b2feee1c')
 
 
 build() {
