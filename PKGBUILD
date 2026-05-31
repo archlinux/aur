@@ -1,10 +1,11 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kio5-extras
 pkgver=24.02.2
-pkgrel=9
+pkgrel=10
 pkgdesc='Additional components to increase the functionality of KIO'
 arch=(x86_64)
 url='https://www.kde.org/'
@@ -52,7 +53,7 @@ prepare() {
 # Drop docs
   sed -e '/DocTools/d' -e '/( doc )/d' -e '/kdoctools_install/d' -i kio-extras-kf5-$pkgver/CMakeLists.txt
 # Drop kio-smb
-  sed -e '/DNSSD/d' -i kio-extras-kf5-$pkgver/CMakeLists.txt
+  sed -e '/DNSSD/d' -e '/add_subdirectory(smb)/d' -i kio-extras-kf5-$pkgver/CMakeLists.txt
 }
 
 build() {
