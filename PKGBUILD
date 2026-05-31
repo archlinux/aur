@@ -12,5 +12,5 @@ sha256sums=('76371f16129c9dee4194ebd30e3825df2e95c69f4d9d9f344b66cb10812d4be3')
 
 package() {
     install -d "${pkgdir}/usr/bin"
-    install -m 755 prism-theme "${pkgdir}/usr/bin/prism-theme"
+    install -m 755 prismcli-themes.py "${pkgdir}/usr/bin/prismcli-themes"
 }
