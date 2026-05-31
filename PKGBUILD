@@ -1,5 +1,9 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
+# Override download agent to bypass strict user-agent blocking
+DLAGENTS=('http::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 --user-agent "PKGBUILD" -o %o %u'
+          'https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 --user-agent "PKGBUILD" -o %o %u')
+
 _cratesio_package='flux-cli'
 
 pkgname="${_cratesio_package%%-cli}"
