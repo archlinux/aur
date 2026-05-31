@@ -1,0 +1,20 @@
+pkgbase = ai-browser-bin
+	pkgdesc = Client app for ChatGPT, Gemini, Claude, Kimi, DeepSeek, Grok, Nani !?, Perplexity, Genspark with Monaco Editor / Terminal integration. (Prebuilt version.Use system-wide electron)
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://jun-murakami.web.app/apps/ai-browser
+	arch = x86_64
+	license = MIT
+	depends = electron42
+	provides = ai-browser=1.7.0
+	conflicts = ai-browser
+	options = !emptydirs
+	options = !strip
+	source = ai-browser-1.7.0.deb::https://github.com/Jun-Murakami/AI-Browser/releases/download/v1.7.0/ai-browser-1.7.0_linux_amd64.deb
+	source = LICENSE-1.7.0.txt::https://raw.githubusercontent.com/Jun-Murakami/AI-Browser/v1.7.0/LICENSE.txt
+	source = ai-browser.sh
+	sha256sums = a4d52b8bf23a21220ab320213f5dbe06efa9c050ae4db520b7ba21d356b18d0c
+	sha256sums = de2a7c516b29c110c496a5a7ccc71f9f7d365f7af0a274e9225bb7a6a4460f21
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = ai-browser-bin
