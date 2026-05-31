@@ -6,7 +6,7 @@
 pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.7.1.r0.gafd189c
+pkgver=1.9.0.r0.ga79670c
 pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (development version)'
 arch=('aarch64' 'x86_64')
@@ -16,6 +16,7 @@ depends=(
   'glibc'
   'libgcc'
   'python'
+  'python-brotli'  # or make it optional?
 )
 makedepends=(
   'cmake'
@@ -48,7 +49,6 @@ build() {
   cd "$_srcname"
 
   git clean -dfx
-
   python -m build --wheel --no-isolation
 }
 
@@ -64,9 +64,10 @@ package() {
   cp -fa examples "$pkgdir/usr/share/doc/$pkgname/"
 
   for _dir in doc licenses; do
-    cd "$pkgdir/usr/share/$_dir" || continue
+    pushd "$pkgdir/usr/share/$_dir"
     ln -srf "$pkgname" "$_pkgname"
-  done
+    popd
+  done > /dev/null
 }
 
 # eof
