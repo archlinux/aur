@@ -2,9 +2,9 @@
 # Contributor: Jacqueline Fisher <jcfisher@reality-overwritten.net>
 pkgname=postybirb
 _pkgname=PostyBirb
-pkgver=4.0.34
-_electronversion=35
-_nodeversion=22
+pkgver=4.0.35
+_electronversion=41
+_nodeversion=24
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly.(Use system-wide electron)"
 arch=('any')
