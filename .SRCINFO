@@ -1,10 +1,10 @@
 pkgbase = fifechan
-	pkgdesc = A C++ GUI library designed for games. It comes with a standard set of 'widgets'.
+	pkgdesc = Lightweight C++ GUI library designed for games
 	pkgver = 0.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://fifengine.github.io/fifechan/
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
 	makedepends = cmake
 	depends = sdl2_image
 	provides = fifechan
