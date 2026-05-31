@@ -3,7 +3,7 @@
 _pkgbase=ayuz
 pkgname="$_pkgbase-bin"
 pkgver=1.1.6
-pkgrel=2
+pkgrel=1
 pkgdesc='The unofficial MyAsus alternative for Linux'
 arch=('x86_64')
 url='https://github.com/Traciges/Ayuz'

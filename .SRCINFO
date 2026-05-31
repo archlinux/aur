@@ -1,7 +1,7 @@
 pkgbase = ayuz-bin
 	pkgdesc = The unofficial MyAsus alternative for Linux
 	pkgver = 1.1.6
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Traciges/Ayuz
 	arch = x86_64
 	license = GPL-3.0-or-later
