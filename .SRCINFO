@@ -1,0 +1,18 @@
+pkgbase = quantumlauncher
+	pkgdesc = A simple, powerful Minecraft launcher
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/Mrmayman/quantumlauncher
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = java-runtime: external Java runtime for Minecraft Java Edition
+	conflicts = quantumlauncher-bin
+	source = quantumlauncher-0.5.1.tar.gz::https://github.com/Mrmayman/quantumlauncher/archive/refs/tags/v0.5.1.tar.gz
+	b2sums = ddcb5d86808e552772fade4b6edccf0f1e143e6da01e36036cf25c9105d79638f0658129c27f59abf91ee071a2b9817aeec2dc16ab50daf2d29266035da77a0b
+
+pkgname = quantumlauncher
