@@ -1,6 +1,6 @@
 # Maintainer: DavidCarliez
 pkgname=ironkey-vp50-git
-pkgver=r3.f852b25
+pkgver=r4.9b7dfed
 pkgrel=1
 pkgdesc='Native Linux unlock and desktop auto-mount helper for Kingston IronKey VaultPrivacy50'
 arch=('any')
