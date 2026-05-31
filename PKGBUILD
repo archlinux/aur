@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-git
-pkgver=0.r807.3f2eb84
-pkgrel=1
+pkgver=0.r941.bd11333
+pkgrel=2
 epoch=1
 license=('GPL-2.0-only')
 pkgdesc="Jellyfin Desktop Client"
@@ -28,7 +28,7 @@ makedepends=(
 provides=('jellyfin-desktop')
 conflicts=('jellyfin-desktop')
 replaces=('jellyfin-desktop-cef-git')
-source=("git+${url}.git")
+source=("git+${url}.git#branch=download-cef")
 sha256sums=('SKIP')
 options=(!debug !lto)
 
@@ -39,9 +39,8 @@ pkgver() {
 
 build() {
     cd jellyfin-desktop
-
     cargo xtask build \
-        --system-cef \
+        --cef-path /usr/lib/cef \
         --external-mpv /opt/jellyfin-desktop/libmpv \
         --out build
 }

@@ -1,7 +1,7 @@
 pkgbase = jellyfin-desktop-git
 	pkgdesc = Jellyfin Desktop Client
-	pkgver = 0.r807.3f2eb84
-	pkgrel = 1
+	pkgver = 0.r941.bd11333
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/jellyfin/jellyfin-desktop
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = jellyfin-desktop-git
 	replaces = jellyfin-desktop-cef-git
 	options = !debug
 	options = !lto
-	source = git+https://github.com/jellyfin/jellyfin-desktop.git
+	source = git+https://github.com/jellyfin/jellyfin-desktop.git#branch=download-cef
 	sha256sums = SKIP
 
 pkgname = jellyfin-desktop-git
