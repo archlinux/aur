@@ -1,0 +1,14 @@
+pkgbase = gz-cmake5
+	pkgdesc = A set of CMake modules that are used by the C++-based Gazebo projects.
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-cmake
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = doxygen
+	provides = gz-cmake=5
+	source = https://github.com/gazebosim/gz-cmake/archive/gz-cmake5_5.1.1.tar.gz
+	sha256sums = 5424e481b765e7e88347c167e87b1c89f152ded2f8bbc7f24c7559ea3694f83f
+
+pkgname = gz-cmake5
