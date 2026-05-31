@@ -1,6 +1,6 @@
 pkgbase = fil
 	pkgdesc = 😋 Unix file command written in Go
-	pkgver = 0.2.8
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/file-go/fil
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fil
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/file-go/fil.git#tag=v0.2.8
+	source = git+https://github.com/file-go/fil.git#tag=v0.3.0
 	sha256sums = SKIP
 
 pkgname = fil

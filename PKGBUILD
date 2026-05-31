@@ -1,7 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=fil
-pkgver=0.2.8
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="😋 Unix file command written in Go"
 arch=('x86_64' 'aarch64')
