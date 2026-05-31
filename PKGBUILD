@@ -2,14 +2,14 @@
 
 pkgname=git-pages-cli
 pkgdesc='Command line application for publishing sites to git-pages'
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 url=https://codeberg.org/git-pages/git-pages-cli
 license=(0BSD)
 arch=(x86_64)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8e210c40c30de2100f6a9ea5b1c32ee83510782b7c2e68ae018d63a43744303c')
+sha256sums=('d5253a17ae340b8d8d9afbfb84dde9ae1b63251cd2e195de5f69e6108ba43a81')
 
 prepare () {
 	export GOPATH="$srcdir"
