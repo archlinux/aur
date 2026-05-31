@@ -2,7 +2,7 @@
 
 _pkgname=wooting-profile-switcher
 pkgname="${_pkgname}-bin"
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Automatically switch Wooting keyboard profiles based on focused window "
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/ShayBox/${_pkgname}"
 license=('MIT')
 depends=("libhidapi-hidraw.so" "wootility")
 source=("${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha512sums=("fe384655e0b290c1cf3e1018934f4ffd4104a9502a2898705deaa19f37d75a0a6c615c537134e07784887fb4d101adfb609e8ba06d9f624cb8608cc94506870c")
+sha512sums=("58dc6734cd66babc47582ffabfdb9fc9ffca471c76751989acae5fb1525d773e2cd29c9b77dec7323ab01a02585812a6eb8a259d5f7b5a9f56183a179f592286")
 
 prepare() {
   tar -zxvf data.tar.gz
