@@ -1,18 +1,18 @@
 pkgbase = jumble-bin
 	pkgdesc = yet another nostr desktop client.(Prebuilt version.Use system-wide electron.)
-	pkgver = 26.5.6
+	pkgver = 26.5.7
 	pkgrel = 1
 	url = https://github.com/CodyTseng/jumble
 	arch = x86_64
 	license = MIT
 	depends = electron41
-	provides = jumble=26.5.6
+	provides = jumble=26.5.7
 	conflicts = jumble
 	options = !emptydirs
-	source = jumble-26.5.6.deb::https://github.com/CodyTseng/jumble/releases/download/v26.5.6/Jumble-linux-amd64.deb
-	source = LICENSE-26.5.6::https://raw.githubusercontent.com/CodyTseng/jumble/v26.5.6/LICENSE
+	source = jumble-26.5.7.deb::https://github.com/CodyTseng/jumble/releases/download/v26.5.7/Jumble-linux-amd64.deb
+	source = LICENSE-26.5.7::https://raw.githubusercontent.com/CodyTseng/jumble/v26.5.7/LICENSE
 	source = jumble.sh
-	sha256sums = 9a537ca72ba1332acaa3d5fcd4e458d1492f7a6f866a663b020947d7741451cb
+	sha256sums = da9ae7f5804707785f9c41579474320510691e2962fc5633d6398aa6a2d9abb6
 	sha256sums = 636c9ac311004c9c7a64045f683eb1c05e907ea514b268b0cc09f935532d1fb9
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 

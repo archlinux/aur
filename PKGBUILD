@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jumble-bin
 _pkgname=Jumble
-pkgver=26.5.6
+pkgver=26.5.7
 _electronversion=41
 pkgrel=1
 pkgdesc="yet another nostr desktop client.(Prebuilt version.Use system-wide electron.)"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/CodyTseng/jumble/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9a537ca72ba1332acaa3d5fcd4e458d1492f7a6f866a663b020947d7741451cb'
+sha256sums=('da9ae7f5804707785f9c41579474320510691e2962fc5633d6398aa6a2d9abb6'
             '636c9ac311004c9c7a64045f683eb1c05e907ea514b268b0cc09f935532d1fb9'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
