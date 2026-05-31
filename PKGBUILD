@@ -3,7 +3,7 @@
 pkgname=noctalia-git
 _pkgname=noctalia
 pkgver=5.0.0.r1191.g39a4a335c
-pkgrel=7
+pkgrel=8
 pkgdesc='Lightweight Wayland shell built directly on Wayland and OpenGL ES'
 arch=('x86_64')
 url='https://github.com/noctalia-dev/noctalia-shell'
@@ -20,6 +20,7 @@ depends=(
   'jemalloc'
   'libglvnd'
   'libpipewire'
+  'libqalculate'
   'librsvg'
   'libwebp'
   'libxkbcommon'
