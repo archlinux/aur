@@ -1,4 +1,4 @@
-# Maintainer: BigBrainRobin29 @ GitHub
+# Maintainer: orb1n
 pkgname=deepl-cli
 pkgver=1.2.0
 pkgrel=1
