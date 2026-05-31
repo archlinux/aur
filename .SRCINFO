@@ -1,0 +1,16 @@
+pkgbase = loxone-app-bin
+	pkgdesc = Loxone Smart Home Control App
+	pkgver = 17.1.1.16704
+	pkgrel = 1
+	url = https://www.loxone.com
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = fuse2
+	options = !strip
+	source_x86_64 = loxone-app-bin-17.1.1.16704-x86_64.AppImage::https://updatefiles.loxone.com/linux/Release/171116704-x86_64.AppImage
+	sha256sums_x86_64 = e1efed8cae15c7fcd64d9112a921985b0d2aebed13dcba24f526855d532c7457
+	source_aarch64 = loxone-app-bin-17.1.1.16704-aarch64.AppImage::https://updatefiles.loxone.com/linux/Release/171116704-arm64.AppImage
+	sha256sums_aarch64 = dd37591f8b22e56fc0fb2b80e73d251e83253c58df2d26aac217f2e8475ef6c0
+
+pkgname = loxone-app-bin
