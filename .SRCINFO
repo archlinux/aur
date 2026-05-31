@@ -1,0 +1,16 @@
+pkgbase = libjsonschema-git
+	pkgver = r169.f666027
+	pkgrel = 1
+	url = https://codeberg.org/emersion/libjsonschema
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	provides = libjsonschema
+	provides = libjsonschema.so
+	conflicts = libjsonschema
+	source = git+https://codeberg.org/emersion/libjsonschema.git
+	sha1sums = SKIP
+
+pkgname = libjsonschema-git
