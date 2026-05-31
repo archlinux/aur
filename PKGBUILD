@@ -30,6 +30,10 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
+    # Keep LTO enabled while making C/C++ static objects linkable.
+    export CFLAGS+=" -ffat-lto-objects"
+    export CXXFLAGS+=" -ffat-lto-objects"
+
     cargo build --frozen --release --package quantum_launcher \
         --no-default-features \
         --features wgpu
