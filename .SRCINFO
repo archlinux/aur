@@ -1,0 +1,26 @@
+pkgbase = wonkey-bin
+	pkgdesc = An easy to learn, oriented object, modern and cross-platform programming language for creating cross-platform video games.
+	pkgver = 2026.05
+	pkgrel = 1
+	url = https://wonkey-coders.github.io/
+	arch = x86_64
+	license = Zlib
+	makedepends = gendesk
+	makedepends = imagemagick
+	depends = python
+	depends = gawk
+	depends = libpulse
+	depends = openal
+	depends = perl
+	depends = libxi
+	depends = libx11
+	provides = wonkey=2026.05
+	conflicts = wonkey
+	noextract = wonkey-2026.05.tgz
+	options = !strip
+	source = wonkey-2026.05.tgz::https://github.com/wonkey-coders/wonkey/releases/download/v2026.05/wonkey_2026.05_linux_x64.tgz
+	source = wonkey.sh
+	sha256sums = 01103db7deac2722cdeb62803d3dafb0f423540d77ec01acbb9f9cfcde817246
+	sha256sums = fda209fc72032ab69f3265b004e8dd21953d02c9a710d97eae261d8d40e1539d
+
+pkgname = wonkey-bin
