@@ -26,11 +26,11 @@ options=('!strip')
 build() {
   cd "$pkgname-$pkgver"
   
-  # Use the existing configure script
+  # Using the existing configure script, as the previous methods break during build
   ./configure --prefix=/usr
   make
   
-  # Fix documentation generation issues
+  #trying to  fix documentation generation issues
   sed -i -e '219,220s/^/#/' -e "227s/^#/$(printf '\t')/" Makefile
   sed -i '64,67!b;66b;s/true/false/g' build-aux/gendocs.sh
   make docs
