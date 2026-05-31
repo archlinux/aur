@@ -1,0 +1,32 @@
+pkgbase = gz-gui10
+	pkgdesc = Graphical interfaces for robotics applications
+	pkgver = 10.0.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-gui
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=5
+	makedepends = vulkan-headers
+	depends = gz-common=7
+	depends = gz-math=9
+	depends = gz-msgs=12
+	depends = gz-plugin=4
+	depends = gz-rendering=10
+	depends = gz-transport=15
+	depends = gz-utils=4
+	depends = protobuf
+	depends = qt6-base
+	depends = qt6-charts
+	depends = qt6-declarative
+	depends = qt6-graphicaleffects
+	depends = qt6-location
+	depends = qt6-quickcontrols
+	depends = qt6-quickcontrols2
+	depends = tinyxml2
+	provides = gz-gui=10
+	source = https://github.com/gazebosim/gz-gui/archive/gz-gui10_10.0.0.tar.gz
+	sha256sums = b5dd33aa20c43e34bbaf2c0c00a5bf5643f31d7808b52a38e90107b32f31b1c3
+
+pkgname = gz-gui10
