@@ -4,11 +4,11 @@ _electron="electron35"
 _reponame=ChatLab
 pkgbase="${_reponame,,}"
 pkgname=("${pkgbase}-cli" "${pkgbase}-desktop")
-pkgver=0.22.1
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Rediscover your social memories with local, AI-powered analysis"
 arch=('x86_64' 'aarch64')
-url="https://github.com/hellodigua/${_reponame}"
+url="https://github.com/${_reponame}/${_reponame}"
 license=("GPL-3.0-only")
 makedepends=("npm" "pnpm" "python")
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -18,11 +18,11 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgbase}-web@.service"
         "${pkgbase}-desktop.sh"
         "${pkgbase}.desktop")
-sha256sums=('a8591129e2d3b6b2154637594dac04aa6c19fb905fd13c0b5ab47178848b0290'
-            'da2a7b651f6072e2c85b0d9163243f1718112cb55999d0a84887b033ab557a8a'
-            '9f5fb8576463212e0c82c2ddc8b6db6ee693757060ef676df54b28c97ee96706'
-            'f88e8d609b724ac74ac646eaa55d8ea31e2beadbf6c16c0da2a90922e2eb2508'
-            '0317ab22c4393d66cb124ca338ce8e8336151d62946d64764ef7aa3ec923edb0'
+sha256sums=('5630d89c2ec90f63be2833be3eb68fae5184fa02377dc4166f971485d6e73e24'
+            'f0fb7d5b958733da2a94226522928564478c7e64674f7d5b0782a8104fbc4b6f'
+            'bf8348efe1b3d9e1d019ed33deb2f07f51c129a20dd2c94dad3a6ccabcdd7f6f'
+            '5f0d5ae69e43922f1140b1a01406e3d723f1f276dab4b00ffc74a176a22286aa'
+            '8db66c13603a87fe57340391ed91c982b70ac0d638bab51561ff12d1d5398527'
             '018864695044b9188a291a0c30db9322cba764f29198fd2014fbb0c43b1c0103'
             '349a64162923e2fcea32cde43af8e5da44d864b31e3050f3c4031c75744e60b0')
 

@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/chatlab serve
+ExecStart=/usr/bin/chatlab start --headless
 Restart=always
 RestartSec=5
 SyslogIdentifier=chatlab-api
