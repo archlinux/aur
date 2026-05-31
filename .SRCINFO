@@ -1,6 +1,6 @@
 pkgbase = optomizer
 	pkgdesc = Optomizer Java application
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/AlphaWolf6940/Optomizer
 	arch = any

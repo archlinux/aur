@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar OptomizerV3.1.0.jar
+java -cp "flatlaf-3.7.jar:." App

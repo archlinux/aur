@@ -1,5 +1,5 @@
 pkgname=optomizer
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Optomizer Java application"
 arch=('any')
@@ -9,11 +9,11 @@ depends=('jdk21-openjdk')
 makedepends=('git')
 source=("git+https://github.com/AlphaWolf6940/Optomizer.git")
 sha256sums=('SKIP')
-
+# This is how we comment in PKGBUILD... The more you know 🥀.
 package() {
     cd Optomizer/
 
-    install -Dm644 Optomizer_v3-3-0.jar \
+    install -Dm644 Optomizer_v3-4-0.jar \
         "$pkgdir/usr/share/optomizer/Optomizer.jar"
 
     install -Dm755 /dev/stdin \
