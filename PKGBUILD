@@ -1,13 +1,12 @@
-# Maintainer: Ty Smith <archlinux@m.tysmith.me>
-# Contributor: facelock contributors
+# Maintainer: facelock contributors
 pkgname=facelock-git
-pkgver=0.1.0
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Face authentication PAM module for Linux (development build)"
 arch=('x86_64')
 url="https://github.com/tyvsmith/facelock"
 license=('MIT OR Apache-2.0')
-depends=('glibc' 'dbus' 'pam' 'gcc-libs' 'tpm2-tss' 'libxkbcommon' 'onnxruntime')
+depends=('glibc' 'dbus' 'pam' 'gcc-libs' 'tpm2-tss' 'libxkbcommon')
 makedepends=('rust' 'cargo' 'clang' 'wayland' 'libxkbcommon' 'git')
 provides=('facelock')
 conflicts=('facelock')
