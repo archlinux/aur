@@ -1,0 +1,25 @@
+diff --git a/extensions/gnome/CMakeLists.txt b/extensions/gnome/CMakeLists.txt
+index 75f8dca..b695565 100644
+--- a/extensions/gnome/CMakeLists.txt
++++ b/extensions/gnome/CMakeLists.txt
+@@ -98,11 +98,15 @@ install(FILES
+ # --- System install (`cmake --install`, dev convenience) ------------------
+ 
+ install(FILES extension/schemas/${WW_GNOME_SCHEMA_ID}.gschema.xml
+-    DESTINATION ${CMAKE_INSTALL_DATADIR}/glib-2.0/schemas)
++    DESTINATION ${CMAKE_INSTALL_DATADIR}/glib-2.0/schemas
++    COMPONENT gnome_extension_packaging
++    EXCLUDE_FROM_ALL)
+ 
+ install(FILES ${_ext_files}
+-    DESTINATION ${CMAKE_INSTALL_DATADIR}/gnome-shell/extensions/${WW_GNOME_UUID})
+-install(FILES extension/schemas/${WW_GNOME_SCHEMA_ID}.gschema.xml
+-    DESTINATION ${CMAKE_INSTALL_DATADIR}/gnome-shell/extensions/${WW_GNOME_UUID}/schemas)
++    DESTINATION ${CMAKE_INSTALL_DATADIR}/gnome-shell/extensions/${WW_GNOME_UUID}
++    COMPONENT gnome_extension_packaging
++    EXCLUDE_FROM_ALL)
+ install(PROGRAMS renderer/renderer.js
+-    DESTINATION ${CMAKE_INSTALL_DATADIR}/gnome-shell/extensions/${WW_GNOME_UUID}/renderer)
++    DESTINATION ${CMAKE_INSTALL_DATADIR}/gnome-shell/extensions/${WW_GNOME_UUID}/renderer
++    COMPONENT gnome_extension_packaging
++    EXCLUDE_FROM_ALL)
