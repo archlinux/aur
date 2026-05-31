@@ -2,7 +2,7 @@
 
 pkgname=goodix5385
 pkgver=0.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Fingerprint GUI for Goodix 5385 sensor — enroll, verify, delete, sudo auth toggle."
 arch=('any')
 url="https://github.com/sanecodeguy/Goodix5385"
@@ -20,8 +20,12 @@ sha256sums=('SKIP')
 package() {
     cd "${srcdir}/Goodix5385-${pkgver}"
 
+    # Remove stray bytecode from source
+    find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+
     # Python package — installs `goodix` and `goodix5385-gui` commands
-    python -m pip install --root="${pkgdir}" --prefix=/usr --no-deps .
+    python -m build --wheel --no-isolation
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     # systemd service — resets USB before fprintd starts
     install -Dm644 systemd/goodix-usb-reset.service \
