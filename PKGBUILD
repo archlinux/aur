@@ -3,9 +3,9 @@
 _epsonscan2_non_free_plugin_version='1.0.0.6'
 
 pkgname=epsonscan2
-pkgver=6.7.87.0
+pkgver=6.7.91.1
 _pkgver="$pkgver-1"
-pkgrel=4
+pkgrel=1
 arch=('armv7h' 'x86_64')
 pkgdesc="Epson scanner management utility"
 url="https://download-center.epson.com/"
@@ -14,24 +14,22 @@ depends=('libjpeg-turbo' 'libpng' 'libtiff' 'libusb' 'qt5-base' 'sane' 'zlib')
 makedepends=('bbe' 'boost' 'cmake' 'qt5-singlecoreapplication' 'rapidjson')
 conflicts=('epsonscan2-non-free-plugin')
 options=('!buildflags')
-source=('https://download-center.epson.com/f/module/1ef33427-5366-4a18-9726-c44197b04301/epsonscan2-6.7.87.0-1.src.tar.gz'
+source=('https://download-center.epson.com/f/module/b35a1723-196e-44d9-b272-6cfd3e0e6349/epsonscan2-6.7.91.1-1.src.tar.gz'
         '0002-Fix-crash.patch'
         '0003-Use-XDG-open-to-open-the-directory.patch'
-        '0004-Fix-a-crash-on-an-OOB-container-access.patch'
         '0005-Fix-folder-creation-crash.patch'
         '0006-Fix-crash-no-serial-number.patch'
         '0007-Detect-scanners-that-need-firmware.patch')
-source_armv7h=('https://download-center.epson.com/f/module/b2a8f691-86af-4cc6-8729-d42370c1067b/epsonscan2-bundle-6.7.87.0.armv7l.deb.tar.gz')
-source_x86_64=('https://download-center.epson.com/f/module/30ef581b-81ba-4f6e-ab0f-6c74117e766b/epsonscan2-bundle-6.7.87.0.x86_64.deb.tar.gz')
-b2sums=('0e9ce73d830532e3c0bc188e066fea6df3900bbfb9dd0b9c7179f6baf98b282344b6a51589e408dbafda91b59404e9cca58b787258a5aa8fc33e003d553a0c13'
+source_armv7h=('https://download-center.epson.com/f/module/da0de85f-55b8-449a-b761-0a9e2553da8a/epsonscan2-bundle-6.7.90.0.armv7l.deb.tar.gz')
+source_x86_64=('https://download-center.epson.com/f/module/ee3a3a45-95aa-4c80-b14d-ad4cff5f7428/epsonscan2-bundle-6.7.90.0.x86_64.deb.tar.gz')
+b2sums=('f13e3e80b57d98d534598827b1bb53c720dafbf0b667a2e1917da1c9b00cf382b1235a4d9f3af0bc764f4943a42f75a4a9705f525b87d8d2b50bcefbb7199d58'
         'c763f16b2fac22b7ac0093228142a516222dc044533b7b320087f87b0fcad1f614ea93210f544f093f3e07c89220ab097901628a4d5dc57213bae505c4bebd58'
         'e398e821704599be0b6ba9192c32411f92650f2e455b088718ba4b643562c21bc02044df30affe2b7ea99069cd0c1c59902e586e9de7e1bb9b3e0ae013c9e30d'
-        '9b386009234a0109c1ad6658e8dfb95f1bd2005931c0ac5eb12a0d1a4773fb227a8d2f1d052729ff080f31df8f9ac69d73d5f05facb498966437766fba033445'
         '5e2af573e616a6afaeb4b9035e54f5a0e05684f194a5fac52eb9ced619fdc156a62ab22bcf62af14a058f74d80a6606abf5e056ea720109c013624802d4b62e5'
         '282a18ad086446f290d795141d63235e67416cea894945d2c65dac7ffa36b3288ef920ef627df349f06e5f482b16e8fa6dbd0064db4b701437a01b913bd8a3fb'
         '3ecc01e46cff4489f3e486df455d267eedb669c4562e27c91c804495c9841b9cfb23f680f1f9d83b4095cf21a4438f5d27cb7a4d54142fd6f9c78f74d5fecea9')
-b2sums_armv7h=('888ce2cb7589e0410f43f0c7c0787e7ad38d0fc453869868e9f9466eeead8d67f92d33f06cc9b5f36f8c08a99db214c6a9bdcc7f8f4e9492fc0692ebac8f40c7')
-b2sums_x86_64=('6af3458d21e46fc433e410ebabd9a5432e568ac4cd327af6591e306f83d7ec61045d7989993950f0f4d8ede748a4f49670d014c1b86bd16c785eba5751d7ac81')
+b2sums_armv7h=('aeeffb7194b9d9ce2326ff351722c07d06530d106abf3cc4e00cb17c39508882d10b14524e996240dbb923fce459cd881b386cc67789328fe96c928068e71277')
+b2sums_x86_64=('39e130cfb9c1207a4374136e5aa07fc409138c3a0e3db06bdb0363cfb4b0221b2975e7fdcdd80a29f4cebb03d1ddf4da96f6218a07e00b7bbf9838b8686cece1')
 
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
@@ -49,7 +47,6 @@ prepare() {
   # https://github.com/flathub/net.epson.epsonscan2
   for file in 0002-Fix-crash \
               0003-Use-XDG-open-to-open-the-directory \
-              0004-Fix-a-crash-on-an-OOB-container-access \
               0005-Fix-folder-creation-crash
   do
     patch --directory="$srcdir/$pkgname-$_pkgver" --forward --binary \
