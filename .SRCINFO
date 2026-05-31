@@ -1,14 +1,14 @@
 pkgbase = shoko-webui
 	pkgdesc = The webui used in Shoko Server.
-	pkgver = 2.5.4
+	pkgver = 2.5.5
 	pkgrel = 1
 	url = https://github.com/Shokoanime/Shoko-WebUI
 	install = shoko-webui.install
 	arch = any
 	makedepends = unzip
 	depends = shoko-server
-	noextract = shoko-webui-2.5.4.zip
-	source = shoko-webui-2.5.4.zip::https://github.com/ShokoAnime/Shoko-WebUI/releases/download/v2.5.4/Shoko-WebUI-v2.5.4.zip
-	sha512sums = 3904070d29e71ee250dcb23b3f0dc77a8d4fd48e81a7e41d9bbd99b89c656ca73c45a9b21ba9a3ab9d9dfc687c42b5372248eb871d0d86950913c3698e507a65
+	noextract = shoko-webui-2.5.5.zip
+	source = shoko-webui-2.5.5.zip::https://github.com/ShokoAnime/Shoko-WebUI/releases/download/v2.5.5/Shoko-WebUI-v2.5.5.zip
+	sha512sums = c475e93a09393839e25aae98fcd46c8aa717f5bf00e08011676dcecf752e0824a383fc088ae7b1f19b4324edfb86f3beb4a31225a379903f2aefd67721ea70ae
 
 pkgname = shoko-webui
