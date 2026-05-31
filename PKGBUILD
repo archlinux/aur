@@ -1,6 +1,6 @@
-# Maintainer: greenelephante <your-email@example.com>
+# Maintainer: greenelephante greenelephante112233@gmail.com
 pkgname=zigmate
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Terminal chess game with local hot-seat and network play over SSH (written in Zig)"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://codeberg.org/greenelephante/zigmate"
 license=('MIT')
 makedepends=('zig')
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/greenelephante/zigmate/archive/v${pkgver}.tar.gz")
-sha256sums=('7856ca31a6067750310cea102d2f69d06733d93ee2bd93a744aa55ae3c52eb06')
+sha256sums=('67ad09559eadd56895918834c29b40f01dc4b4cf3e9f4766db103266532fb471')
 
 build() {
     cd "zigmate"
