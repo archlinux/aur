@@ -2,7 +2,7 @@
 
 pkgname=thorium-browser-updated
 pkgver=148.0.7778.215
-pkgrel=3
+pkgrel=4
 pkgdesc="Chromium fork focused on high performance and security, built from source"
 arch=('x86_64')
 url="https://github.com/brauliobo/thorium"
@@ -162,7 +162,9 @@ package() {
   rm -f \
     "$pkgdir/usr/bin/thorium-browser" \
     "$pkgdir/usr/bin/thorium-browser-stable" \
-    "$pkgdir/usr/bin/pak"
+    "$pkgdir/usr/bin/pak" \
+    "$pkgdir/usr/share/man/man1/thorium-browser-stable.1" \
+    "$pkgdir/usr/share/man/man1/thorium-browser-stable.1.gz"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/thorium-browser" <<'END'
 #!/usr/bin/env bash
@@ -185,8 +187,6 @@ done
 
 exec /opt/thorium-browser/thorium-browser "${flags[@]}" "$@"
 END
-
-  ln -sfn thorium-browser "$pkgdir/usr/bin/thorium-browser-stable"
 
   find "$pkgdir/usr/share/applications" -name '*.desktop' -type f -exec \
     sed -i 's@/usr/bin/thorium-browser-stable@/usr/bin/thorium-browser@g' {} +
