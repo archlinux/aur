@@ -1,5 +1,5 @@
 pkgname=halley
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Spatial Wayland compositor built around infinite workspace navigation"
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
   'wireplumber: provides wpctl for default media-key bindings'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/saltnpepper97/halley/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7c36df2cb9922c0612cab8165f53101116fdb4ac793b685615109943cd94d46d')
+sha256sums=('a1bbefa7cf027bf9711ee17642af1eba12ef67e536404fcd928d9384bea8aef2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
