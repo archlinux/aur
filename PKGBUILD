@@ -14,7 +14,7 @@ sha256sums=('43884295847439a8dbae4146eb8383b9e781c26c4003dd7dde0774d6e661135a')
 
 build() {
   cd "${srcdir}/${pkgname}"
-  zig0.15 build -Doptimize=ReleaseSafe
+  zig-0.15 build -Doptimize=ReleaseSafe
 }
 
 package() {
