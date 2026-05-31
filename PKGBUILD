@@ -1,6 +1,6 @@
 pkgname=hpr
-pkgver=0.6
-pkgrel=3
+pkgver=0.69
+pkgrel=1
 pkgdesc="Offline zero-account activity tracker"
 arch=('x86_64')
 url="https://github.com/plexescor/HPR"
@@ -8,7 +8,7 @@ license=('GPL')
 
 _slint_ver="1.16.1"
 
-depends=('glibc' 'dbus')
+depends=('glibc' 'dbus' 'curl')
 makedepends=('cmake' 'curl' 'tar' 'pkgconf')
 install=hpr.install
 
