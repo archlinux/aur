@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://gitlab.com/TheEnchantedPotato/mirror-hyprcursor-hyprland-v0.54.git"
 license=('BSD-3-Clause')
 conflicts=("hyprcursor-git" "hyprcursor")
-provides=("hyprcursor-frozen" "libhyprcursor.so")
+provides=('hyprcursor' "hyprcursor-frozen" "libhyprcursor.so")
 
 depends=(
   cairo

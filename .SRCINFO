@@ -14,6 +14,7 @@ pkgbase = hyprcursor-frozen
 	depends = librsvg
 	depends = libzip
 	depends = tomlplusplus
+	provides = hyprcursor
 	provides = hyprcursor-frozen
 	provides = libhyprcursor.so
 	conflicts = hyprcursor-git
