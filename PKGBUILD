@@ -1,6 +1,6 @@
 pkgname=python-sklearn-morpho
 _name=sklearn_morpho
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Scikit-learn estimator toolbox for morphological perceptrons"
 arch=("any")
@@ -9,7 +9,7 @@ license=("MIT")
 depends=("python" "python-cvxpy" "python-pytest" "python-scikit-learn")
 makedepends=("python-build" "python-installer" "python-wheel" "python-hatchling")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('0bba96bdf9e0d0c982276da7b7503c1812c337071bca4e813b2eb6eb0ab8e6bd')
+sha256sums=('c7bab467402b00b03fbd836af18056d9ca953cda7517c8edd4c07d422d7dee39')
 
 build() {
   cd "${_name}-${pkgver}"
