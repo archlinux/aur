@@ -11,6 +11,7 @@ pkgbase = dsd-neo-git
 	makedepends = help2man
 	depends = mbelib-neo-git
 	depends = libsndfile
+	depends = openssl
 	depends = ncurses
 	depends = libpulse
 	depends = rtl-sdr
