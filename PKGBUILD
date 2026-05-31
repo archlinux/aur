@@ -1,6 +1,6 @@
 # Maintainer: Dejan Noveski <deko@duck.com>
 pkgname=vermouth
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="A game and app launcher for Linux - native, Windows, and retro"
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
     'sdl2: gamepad support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dekomote/vermouth/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2317513d6e4ce0a2983d28aaa61db75d7320bafb89c9468f0f9d790ae5c61af5')
+sha256sums=('22f61affa069559423badc9c1a4af2744899bd3d6c9ba1fb783ccbc25c5cd1e4')
 
 build() {
     cd "${pkgname}-${pkgver}"
