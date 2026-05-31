@@ -1,6 +1,6 @@
 pkgbase = librefang-git
 	pkgdesc = LibreFang is an open-source agent operating system written in Rust.
-	pkgver = 2026.5.28beta.14.r38.g85dc15e07
+	pkgver = 2026.5.30beta.15.r17.g1e7d1cb74
 	pkgrel = 1
 	url = https://github.com/librefang/librefang
 	arch = x86_64

@@ -2,7 +2,7 @@
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgbase=librefang-git
 pkgname=('librefang-cli-git' 'librefang-gui-git' 'librefang-whatsapp-gateway-git' 'python-librefang-sdk-git')
-pkgver=2026.5.28beta.14.r38.g85dc15e07
+pkgver=2026.5.30beta.15.r17.g1e7d1cb74
 pkgrel=1
 pkgdesc='LibreFang is an open-source agent operating system written in Rust. '
 arch=('x86_64' 'aarch64')
@@ -81,7 +81,7 @@ build() {
     # Build Node.js whatsapp-gateway
     local _gwdir="${srcdir}/${pkgbase}/packages/whatsapp-gateway"
     cd "${_gwdir}"
-    npm install --ignore-scripts --omit=dev
+    npm install --ignore-scripts --omit=dev --legacy-peer-deps
     # Copy system node-addon-api for compiling sharp/better-sqlite3 if needed
     cp -r /usr/lib/node_modules/node-addon-api "${_gwdir}/node_modules/node-addon-api"
 
