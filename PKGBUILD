@@ -30,7 +30,7 @@ optdepends=(
   'wireplumber: provides wpctl for default media-key bindings'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/saltnpepper97/halley/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a1bbefa7cf027bf9711ee17642af1eba12ef67e536404fcd928d9384bea8aef2')
+sha256sums=('90cdb48591ce7b5cfb57a732b8acff57c47c268aebd94e20e85b25bb9ecd1dab')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
