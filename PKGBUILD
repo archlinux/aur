@@ -5,7 +5,7 @@
 
 pkgname=linux_logo
 pkgver=6.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Text-based logo and system information program"
 arch=('x86_64')
 url="https://github.com/deater/linux_logo"

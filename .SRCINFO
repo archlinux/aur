@@ -1,7 +1,7 @@
 pkgbase = linux_logo
 	pkgdesc = Text-based logo and system information program
 	pkgver = 6.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deater/linux_logo
 	arch = x86_64
 	license = GPL2
