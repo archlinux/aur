@@ -1,0 +1,12 @@
+pkgbase = prismcli-themes
+	pkgdesc = Standalone automated theme injection layer for the prismcli interface environment
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/prismcli
+	arch = any
+	license = MIT
+	depends = prismcli
+	source = prismcli-themes.py
+	sha256sums = 76371f16129c9dee4194ebd30e3825df2e95c69f4d9d9f344b66cb10812d4be3
+
+pkgname = prismcli-themes
