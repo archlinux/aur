@@ -9,20 +9,21 @@
 # without downloading the entire multi-gigabyte ISO. Only the segments of the
 # ISO that are required to access the font data are transferred via HTTP.
 pkgname=ttf-ms-no-big-downloads
-pkgver=10.0.22621.525
+pkgver=10.0.26200.6584
 pkgrel=1
-pkgdesc='Microsoft Windows 11 TrueType fonts (auto-downloaded via HTTP streaming)'
+pkgdesc='Microsoft Windows 11 TrueType fonts (downloaded via HTTP streaming)'
 arch=('any')
 url='https://www.microsoft.com/en-us/software-download/windows11'
 license=('custom')
 depends=()
-makedepends=('httpdirfs' 'udfclient-fuse3' 'wimlib')
+makedepends=('httpdirfs' 'udfclientfs-fuse3' 'wimlib')
 provides=('ttf-font' 'ttf-ms-fonts' 'ttf-ms-win11' 'ttf-tahoma' 'emoji-font')
 conflicts=('ttf-ms-win11' 'ttf-ms-win11-auto' 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts')
 
-# Windows 11 Enterprise Evaluation ISO (build 22621.525, 22H2)
-_iso='22621.525.220925-0207.ni_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso'
-_iso_url="https://software-static.download.prss.microsoft.com/dbazure/988969d5-f34g-4e03-ac9d-1f9786c66751/${_iso}"
+# https://www.microsoft.com/en-in/evalcenter/download-windows-11-enterprise
+# Latest US English 64-bit Enterprise Evaluation ISO (25H2)
+_iso='26200.6584.250915-1905.25h2_ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso'
+_iso_url="https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/${_iso}"
 # Persistent httpdirfs byte-range cache — survives makepkg -C across builds
 _http_cache="${XDG_CACHE_HOME:-${HOME}/.cache}/${pkgname}"
 
@@ -36,13 +37,14 @@ prepare() {
   # Cleanup trap for FUSE mounts — fires on any prepare() exit (normal, error, SIGINT)
   # shellcheck disable=SC2329  # _cleanup invoked indirectly via trap
   _cleanup() {
+    echo "+++++++++ clean up +++++++++"
     local _status=$?
     set +e
     fusermount3 -uz mnt/iso 2>/dev/null || fusermount -uz mnt/iso 2>/dev/null || true
     fusermount3 -uz mnt/http 2>/dev/null || fusermount -uz mnt/http 2>/dev/null || true
     return "$_status"
   }
-  trap _cleanup EXIT
+  trap _cleanup EXIT INT HUP TERM QUIT
 
   cd "${srcdir}"
 
@@ -64,7 +66,10 @@ prepare() {
     "${_iso_url}" mnt/http
 
   # Mount the ISO with a FUSE UDF filesystem
-  udfclient "mnt/http/${_iso}" mnt/iso
+  udfclientfs -r "mnt/http/${_iso}" mnt/iso
+
+  # Save WIM XML metadata for pkgver() to read
+  wiminfo --xml "mnt/iso/sources/install.wim" 1 > "${srcdir}/wiminfo.xml"
 
   # List all font files in image 1 (the sole Enterprise Evaluation image)
   # and extract them directly — no full-WIM decompression needed
@@ -78,6 +83,17 @@ prepare() {
     | grep -i '/Windows/System32/Licenses/neutral/.*license\.rtf$' \
     | xargs -r wimextract "mnt/iso/sources/install.wim" 1 \
       --no-acls --dest-dir="${srcdir}/license"
+}
+
+# Derive pkgver from the ISO filename (available without mounting):
+# "BUILD.SPBUILD.date-arch.CLIENTENTERRPISEEVAL...en-us.iso"
+# Extract the first two dot-separated components: 26200.6584 → 10.0.26200.6584
+pkgver() {
+  local _build _spbuild
+  _build="${_iso%%\.*}"
+  _spbuild="${_iso#*.}"
+  _spbuild="${_spbuild%%.*}"
+  printf '10.0.%s.%s\n' "${_build}" "${_spbuild}"
 }
 
 package() {

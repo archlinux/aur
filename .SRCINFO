@@ -1,12 +1,12 @@
 pkgbase = ttf-ms-no-big-downloads
-	pkgdesc = Microsoft Windows 11 TrueType fonts (auto-downloaded via HTTP streaming)
-	pkgver = 10.0.22621.525
+	pkgdesc = Microsoft Windows 11 TrueType fonts (downloaded via HTTP streaming)
+	pkgver = 10.0.26200.6584
 	pkgrel = 1
 	url = https://www.microsoft.com/en-us/software-download/windows11
 	arch = any
 	license = custom
 	makedepends = httpdirfs
-	makedepends = udfclient-fuse3
+	makedepends = udfclientfs-fuse3
 	makedepends = wimlib
 	provides = ttf-font
 	provides = ttf-ms-fonts
