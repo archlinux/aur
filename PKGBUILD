@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="A GLUT-based C++ user interface library which provides controls such as buttons, checkboxes, radio buttons, and spinners to OpenGL applications"
 makedepends=('freeglut' 'glu')
 source=("https://github.com/libglui/glui/archive/refs/tags/${pkgver}.tar.gz" 'makefile.patch')
-url="http://glui.sourceforge.net/"
+url="https://glui.sourceforge.net/"
 arch=('i686' 'x86_64')
 md5sums=('08113ebdaeee91ca876b5ecb4963fac8'
          'ad14ce00704ceeb5183d354fd3b2d5c8')
