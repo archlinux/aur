@@ -1,0 +1,14 @@
+pkgbase = smugglex
+	pkgdesc = HTTP request smuggling detection scanner
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/hahwul/smugglex
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = smugglex-0.3.0.tar.gz::https://github.com/hahwul/smugglex/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = smugglex
