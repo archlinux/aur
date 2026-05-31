@@ -67,6 +67,7 @@ pkgbase = hyprland-frozen
 	optdepends = hyprqt6engine-git: the recommended way to manage qt styles
 	optdepends = meson: to build and install plugins using hyprpm
 	optdepends = uwsm: the recommended way to start Hyprland
+	provides = hyprland
 	provides = hyprland-frozen
 	provides = wayland-compositor
 	conflicts = hyprland-git
