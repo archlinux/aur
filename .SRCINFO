@@ -13,8 +13,6 @@ pkgbase = deppull-git
 	provides = deppull
 	conflicts = deppull
 	source = deppull-git::git+https://github.com/aray4iv3/cdeppull.git
-	source = CMakeLists.txt
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = deppull-git
