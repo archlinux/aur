@@ -44,13 +44,13 @@ build() {
     # Install dependencies with frozen lockfile cleanly
     pnpm install --frozen-lockfile --aggregate-output
 
-    # Compile the workspace package using shell-expanded directory targets
-    pnpm --filter={packages/happy-cli} build
+    # Compile the workspace package using explicit directory target tracking
+    pnpm --filter ./packages/happy-cli build
 
     rm -rf "$srcdir/isolated-dist"
 
     # Deploy production dependencies with legacy hoisting (required for pnpm v10)
-    pnpm --filter={packages/happy-cli} deploy --legacy --prod "$srcdir/isolated-dist"
+    pnpm --filter ./packages/happy-cli deploy --legacy --prod "$srcdir/isolated-dist"
 }
 
 package() {
@@ -64,9 +64,8 @@ package() {
     # Remove upstream dev artifact
     rm -f "$pkgdir/usr/lib/$pkgname/scripts/unpack-tools.cjs"
 
-    # Remove reproducibility-breaking metadata files
+    # Remove reproducibility-breaking metadata configurations and log assets
     find "$pkgdir/usr/lib/$pkgname/node_modules" -name ".modules.yaml" -delete 2>/dev/null || true
-    find "$pkgdir/usr/lib/$pkgname/node_modules" -name ".package-lock.json" -delete 2>/dev/null || true
     find "$pkgdir/usr/lib/$pkgname" -name "*.log" -delete 2>/dev/null || true
 
     # Ensure runtime tool directory exists
@@ -74,16 +73,18 @@ package() {
 
     chmod 755 "$pkgdir/usr/lib/$pkgname/bin/"*.mjs
 
-    # Create wrapper using literal heredoc structure for maximum predictability
+    # Create dynamic runtime wrapper using a quoted heredoc for maximum safety and clean syntax
     cat > "$pkgdir/usr/lib/$pkgname/happy-wrapper" << 'EOF'
 #!/bin/bash
 export NODE_NO_WARNINGS=1
-exec "$(dirname "$(readlink -f "$0")")/bin/happy.mjs" "$@"
+exec /usr/lib/happy-cli/bin/happy.mjs "$@"
 EOF
 
     chmod 755 "$pkgdir/usr/lib/$pkgname/happy-wrapper"
 
     ln -sf "/usr/lib/$pkgname/happy-wrapper" "$pkgdir/usr/bin/happy"
     ln -sf "/usr/lib/$pkgname/bin/happy-mcp.mjs" "$pkgdir/usr/bin/happy-mcp"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    
+    # Target root-level monorepo license definition for long-term layout robustness
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
