@@ -1,0 +1,22 @@
+pkgbase = python-dbgpu-git
+	pkgdesc = Open source database of 2000+ GPUs with architecture, manufacturing, API support and performance details
+	pkgver = r22.c8f30ad
+	pkgrel = 1
+	url = https://github.com/painebenjamin/dbgpu
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.8
+	depends = python-click
+	depends = python-pydantic
+	depends = python-thefuzz
+	provides = python-dbgpu=r22.c8f30ad
+	conflicts = python-dbgpu
+	source = git+https://github.com/painebenjamin/dbgpu.git
+	sha256sums = SKIP
+
+pkgname = python-dbgpu-git
