@@ -1,4 +1,4 @@
-# Maintainer: BigBrainRobin29
+# Maintainer: orb1n
 
 pkgname=scrcpy-bin
 pkgver=4.0
