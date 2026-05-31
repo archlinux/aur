@@ -1,7 +1,7 @@
 # Maintainer: prayjofir <210920094+prayjofir@users.noreply.github.com>
 # Description: 🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı
 pkgname=anitr-cli-git
-pkgver=r1.dummy
+pkgver=r240.c91c733
 pkgrel=1
 pkgdesc="🚀 Terminalde Türkçe altyazılı anime arama ve izleme aracı"
 arch=('x86_64' 'aarch64')
