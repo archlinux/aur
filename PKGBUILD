@@ -26,3 +26,4 @@ package() {
   cd ${pkgname}-${pkgver}
   make PREFIX="${pkgdir}/usr" install
 }
+##
