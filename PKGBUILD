@@ -6,7 +6,7 @@
 
 _basename=weston
 pkgname="$_basename-git"
-pkgver=15.0.0.r303.gf41430a
+pkgver=15.0.0.r425.g4db67f1
 pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor'
 arch=('x86_64')
@@ -15,15 +15,16 @@ license=('MIT')
 depends=('fontconfig' 'glibc' 'wayland' 'libxkbcommon' 'libinput' 'libunwind' 'pixman'
          'libdrm' 'pam' 'systemd-libs' 'cairo' 'libpng' 'libjpeg-turbo' 'libwebp'
          'mesa' 'libegl' 'libevdev' 'libgles' 'glib2' 'pango' 'lcms2' 'mtdev' 'libx11'
-         'libxcb' 'dbus' 'libva' 'libxcursor' 'colord' 'seatd'
+         'libxcb' 'dbus' 'libva' 'libxcursor' 'colord' 'seatd' 'libdisplay-info'
          'gstreamer' 'gst-plugins-base-libs')
-makedepends=('wayland-protocols-git' 'meson' 'ninja' 'freerdp' 'neatvnc' 'libpipewire' 'lua'
-             'xorg-xwayland' 'xcb-util-cursor' 'libdisplay-info' 'vulkan-headers' 'git')
+makedepends=('wayland-protocols-git' 'meson' 'ninja' 'freerdp' 'neatvnc' 'libpipewire'
+             'xorg-xwayland' 'xcb-util-cursor' 'vulkan-headers' 'vulkan-icd-loader'
+             'lua' 'git')
 optdepends=('xorg-xwayland: support x11 backend'
             'libpipewire: support pipewire backend'
             'freerdp: support rdp backend'
             'neatvnc: support vnc backend'
-            'libdisplay-info: support drm backend'
+            'vulkan-icd-loader: support vulkan renderer'
             'lua: support lua shell')
 conflicts=("$_basename")
 provides=("$_basename")
