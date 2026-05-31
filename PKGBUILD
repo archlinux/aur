@@ -6,7 +6,7 @@
 
 _pkgname=audacious
 pkgname=$_pkgname-gtk3
-pkgver=4.5.1
+pkgver=4.6
 pkgrel=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
 source=("https://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('7194743a0a41b1d8f582c071488b77f7b917be47ca5e142dd76af5d81d36f9cd')
+sha256sums=('03988a6a114e46f91dabcd4d0dae29fcad19f6029e3c28737938d1bd525979dd')
 
 build() {
   arch-meson $_pkgname-$pkgver build \
@@ -30,6 +30,5 @@ build() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  install -Dm644 $_pkgname-$pkgver/contrib/audacious.appdata.xml -t "$pkgdir/usr/share/metainfo"
   install -Dm644 $_pkgname-$pkgver/COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
