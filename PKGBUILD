@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ter-music
-pkgver=1.11.0
-pkgrel=3
+pkgver=1.11.1
+pkgrel=1
 pkgdesc="This is a music player that can be used in the terminal~"
 arch=($CARCH)
 url="https://github.com/YXZL985/ter-music"
@@ -41,7 +41,7 @@ backup=()
 options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('aa020f620fe608578c3c0f8808f5b55124db686992057861679ddc48c49414fb')
+sha256sums=('d7375e1055d3e0cc650552e98a88f50bae45e921c5368bf4a457fe6e0f6393e0')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
@@ -54,7 +54,8 @@ build() {
     cmake -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
-        -G Ninja
+        -G Ninja \
+        -Wno-dev
     ninja -C build
 }
 
