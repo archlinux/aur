@@ -1,0 +1,21 @@
+pkgbase = sidemark-git
+	pkgdesc = PDF viewer and annotator with a live markdown notes sidebar
+	pkgver = r61.02f4ca4
+	pkgrel = 1
+	url = https://github.com/brokkoli71/sidemark
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-pymupdf
+	depends = python-numpy
+	depends = python-cairo
+	depends = gtksourceview5
+	optdepends = librsvg: render PNG icon sizes at install time
+	optdepends = libreoffice: convert PPTX files to PDF
+	source = sidemark::git+https://github.com/brokkoli71/sidemark.git
+	sha256sums = SKIP
+
+pkgname = sidemark-git
