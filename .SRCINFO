@@ -1,0 +1,15 @@
+pkgbase = flockssh-bin
+	pkgdesc = Zero-config SSH fleet TUI for embedded/IoT Linux devices (discover the LAN, track by MAC, connect with one key)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/aashish-thapa/flock
+	arch = x86_64
+	license = MIT
+	depends = openssh
+	provides = flockssh
+	conflicts = flockssh
+	options = !strip
+	source = flockssh::https://github.com/aashish-thapa/flock/releases/download/v0.1.0/flockssh-x86_64-unknown-linux-musl
+	sha256sums = 48f9082388e650d28a7e4b9a9cd31c1b8013e97ea6df20a6f4e73805400300d8
+
+pkgname = flockssh-bin
