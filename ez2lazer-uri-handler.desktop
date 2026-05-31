@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+NoDisplay=true
+Name=Ez2Lazer - uri handler
+MimeType=x-scheme-handler/osu;
+Icon=/usr/share/pixmaps/ez2lazer.png
+Comment=Ez to Lazer, As a cool client
+Exec=/usr/bin/ez2lazer %u
+Categories=Game;
