@@ -1,6 +1,6 @@
 # Maintainer: invisi101 <https://github.com/invisi101>
 pkgname=bigsnatch
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Real-time eBPF network connection monitor — see what your computer is reaching out to"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('polkit')
 makedepends=('rust' 'cargo' 'protobuf' 'base-devel' 'wayland' 'libxcb' 'fontconfig' 'freetype2')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9c6bcc4b660cfa6039eb5f2d80708f98b0d4cd34591b4834d1e06eff05bbcf62')
+sha256sums=('0b8e6d47a40b63e7ce483943c5974657847c7ad1a4b5eae86b34d82d1073ff1f')
 
 build() {
   cd "${pkgname}-${pkgver}"
