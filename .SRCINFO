@@ -1,0 +1,15 @@
+pkgbase = xurl
+	pkgdesc = Auth-enabled curl-like CLI for the X API
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/xdevplatform/xurl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = !debug
+	source = xurl-1.1.1.tar.gz::https://github.com/xdevplatform/xurl/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 5ea2ad727154d7de255443139abfe08c98e3968a15c46e495f8591d2cad2d97a
+
+pkgname = xurl
