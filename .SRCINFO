@@ -1,0 +1,16 @@
+pkgbase = server-report-git
+	pkgdesc = Weekly btrfs health check and email report via msmtp
+	pkgver = r1.53f28ad
+	pkgrel = 1
+	url = https://codeberg.org/schnils/server-report
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = btrfs-progs
+	depends = msmtp
+	provides = server-report
+	conflicts = server-report
+	source = server-report-git::git+https://codeberg.org/schnils/server-report.git
+	sha256sums = SKIP
+
+pkgname = server-report-git
