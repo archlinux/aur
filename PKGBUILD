@@ -1,5 +1,5 @@
 # Maintainer: Eric Bakker <musqz at mf dot com>
-pkgname=forum-scout-gtk4
+pkgname=forum-scout
 pkgver=0.6.4
 pkgrel=2
 pkgdesc="Arch focused forum search tool (GTK4)"
