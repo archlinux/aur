@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Archon App Lite
+GenericName=Combat Log Uploader
+Comment=Upload MMO combat logs to Archon/RPGLogs
+Exec=archon-lite %U
+Icon=archon-lite
+Categories=Game;Utility;
+Terminal=false
+StartupNotify=true
+StartupWMClass=Archon App Lite
