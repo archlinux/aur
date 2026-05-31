@@ -1,35 +1,44 @@
-# Maintainer: Steven Honeyman <stevenhoneyman at gmail com>
+# Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Steven Honeyman <stevenhoneyman at gmail com>
 
-pkgname=speedcrunch-git
-pkgver=20160416
-pkgrel=2
+_pkgname=speedcrunch
+pkgname="${_pkgname}"-git
+pkgver=0.12.0.r695.g05d4f0f7
+pkgrel=1
 pkgdesc="Simple, high precision and powerful calculator."
 arch=('i686' 'x86_64' 'aarch64')
-url="http://speedcrunch.org/"
-license=('GPL2')
-depends=('qt5-base' 'qt5-tools' 'libxkbcommon-x11')
-makedepends=('git' 'cmake' 
-       'python-sphinx' 'python-sphinx-quark-theme')  # required for REBUILD_MANUAL
-conflicts=('speedcrunch')
-provides=('speedcrunch')
-source=('speedcrunch::git+https://bitbucket.org/heldercorreia/speedcrunch.git')
-md5sums=('SKIP')
+url="https://www.speedcrunch.org/"
+license=('GPL-2.0-only')
+depends=('qt6-tools')
+makedepends=('git' 'cmake' 'python-sphinx')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=("git+https://bitbucket.org/heldercorreia/speedcrunch.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd speedcrunch
-    git log -1 --format="%cd" --date=short | sed 's|-||g'
+    cd "${_pkgname}"
+    printf "0.12.0.r%s.%s" "$(git rev-list 0e9c32a2cc445affd5887cf98515603a3168fa5c..HEAD | wc -l)" "$(git describe --tags | sed 's|^.*-||')"
+}
+
+prepare() {
+    cd "${_pkgname}"
+    sed -i 's|GitHub light|GitHub Light|' src/resources/speedcrunch.qrc
+    sed -i 's|QHELPGENERATOR := qhelpgenerator|QHELPGENERATOR := /usr/lib/qt6/qhelpgenerator|' doc/src/Makefile
+    cd doc/src
+    make build-bundled
 }
 
 build() {
-    cd speedcrunch
-    rm -rf build
-    mkdir build
+    cd "${_pkgname}"
+    rm -rf build && mkdir build
     cd build
-    cmake ../src -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DREBUILD_MANUAL=on
+    cmake ../src -DCMAKE_INSTALL_PREFIX=/usr -DHTML_DOCS_DIR=../doc/src/_build-bundled
     make
 }
 
 package() {
-    cd speedcrunch/build
-    make install
+    cd "${_pkgname}"
+    cd build
+    make DESTDIR="${pkgdir}" install
 }
