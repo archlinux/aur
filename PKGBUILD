@@ -2,7 +2,7 @@
 
 pkgname=gz-common7
 pkgver=7.2.0
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Gazebo Common, a component of Gazebo, provides a set of libraries that cover many different use cases."
@@ -17,7 +17,6 @@ depends=(
   'gts'
   'gz-math=9'
   'gz-utils=4'
-  'stb'
   'tinyxml2'
   'util-linux-libs' # uuid
   )
