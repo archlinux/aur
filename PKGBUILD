@@ -1,7 +1,7 @@
 # Maintainer: wasdxl <xiaotianjuewo@foxmail.com>
 pkgname=tauritavern-bin
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A Tauri-based frontend for SillyTavern (Custom build with thin titlebar)"
 arch=('x86_64')
 url="https://github.com/LX2000WASD/TauriTavern-aur"
@@ -21,7 +21,7 @@ conflicts=('tauritavern')
 
 source=("TauriTavern.deb::https://github.com/LX2000WASD/TauriTavern-aur/releases/download/v${pkgver}-${pkgrel}/TauriTavern_${pkgver}_amd64.deb")
 
-md5sums=('588dcea97b79049f00b8d894b218ad64')
+md5sums=('7d3cb7adc7e20520cc30a90664feb4f2')
 
 package() {
     cd "${srcdir}"
