@@ -12,7 +12,7 @@ fi
 ## basic info
 _pkgname="ryujinx"
 pkgname="$_pkgname-git"
-pkgver=r4643.3a593b608
+pkgver=r4809.153d632ee
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://ryujinx.app"
@@ -77,10 +77,10 @@ package() {
   ln -s "/$_install_path/ryujinx/Ryujinx" "$pkgdir/usr/bin/ryujinx"
 
   # .desktop
-  install -Dm644 "$_pkgsrc"/distribution/linux/Ryujinx.desktop "$pkgdir/usr/share/applications/ryujinx.desktop"
+  install -Dm644 "$_pkgsrc"/distribution/linux/app.ryujinx.Ryujinx.desktop "$pkgdir/usr/share/applications/ryujinx.desktop"
 
   # icon
-  install -Dm644 "$_pkgsrc"/distribution/misc/Logo.svg "$pkgdir/usr/share/pixmaps/ryujinx.svg"
+  install -Dm644 "$_pkgsrc"/distribution/misc/Logo.png "$pkgdir/usr/share/pixmaps/ryujinx.png"
 
   # mimetype
   install -Dm644 "$_pkgsrc"/distribution/linux/mime/Ryujinx.xml "$pkgdir/usr/share/mime/packages/ryujinx.xml"
