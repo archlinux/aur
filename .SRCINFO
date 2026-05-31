@@ -24,6 +24,7 @@ pkgbase = xdg-desktop-portal-hyprland-frozen
 	depends = sdbus-cpp
 	depends = wayland
 	depends = xdg-desktop-portal
+	provides = xdg-desktop-portal-hyprland
 	provides = xdg-desktop-portal-hyprland-frozen
 	provides = xdg-desktop-portal-impl
 	conflicts = xdg-desktop-portal-hyprland-git
