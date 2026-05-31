@@ -1,7 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=OneDriveQt
-Comment=OneDrive Qt 同步客户端
+Name[zh_CN]=OneDrive 微软同步盘
+Comment=OneDrive 微软同步盘
 Exec=onedriveqt
 Icon=onedriveqt
 Terminal=false
