@@ -1,6 +1,6 @@
 pkgbase = rataplay
 	pkgdesc = A high-performance Rust TUI for YouTube playback and management (Binary Release)
-	pkgver = 1.5.0
+	pkgver = 1.5.1_beta
 	pkgrel = 1
 	url = https://github.com/mojahid8238/Rataplay
 	arch = x86_64
@@ -14,9 +14,11 @@ pkgbase = rataplay
 	conflicts = rataplay-git
 	options = !strip
 	options = !debug
-	source = rataplay::https://github.com/mojahid8238/Rataplay/releases/download/v1.5.0/rataplay
-	source = LICENSE::https://github.com/mojahid8238/Rataplay/raw/v1.5.0/LICENSE
-	sha256sums = ddc771cf8bb200a6160be4b9ab90b5a518f1d4d43a8f921edc742e682a99610a
+	source = rataplay::https://github.com/mojahid8238/Rataplay/releases/download/v1.5.1-beta/rataplay
+	source = LICENSE::https://github.com/mojahid8238/Rataplay/raw/v1.5.1-beta/LICENSE
+	source = rataplay.1::https://github.com/mojahid8238/Rataplay/raw/v1.5.1-beta/man/rataplay.1
+	sha256sums = 012aaae995aa661cb9df626f5f66bb752f6fd9c3e64ca16d974ddfbabf34716b
 	sha256sums = e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052
+	sha256sums = 5eddb79a839d815c16adc7c95f4510a693bf270633d554642a977f6462def97f
 
 pkgname = rataplay
