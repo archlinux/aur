@@ -2,7 +2,7 @@
 
 pkgname=rnalysis
 _name=RNAlysis
-pkgver=4.1.2
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Python-based software for analyzing RNA sequencing data. https://doi.org/10.1101/2022.11.25.517851'
 _pkgdesc='Python-based GUI tool for analyzing RNA sequencing data'
@@ -78,7 +78,7 @@ makedepends=(
 
 source=("git+https://github.com/GuyTeichman/RNAlysis.git#tag=V$pkgver"
 	)
-sha256sums=('e410119f77267355e139b385fc5db95629cb0da86a680f37adeae6fa24731c87')
+sha256sums=('34ab43f42888eb4c1d0b7d5b424d22ec5fc4a25b2a85f013223dcbffe8e48880')
 
 
 prepare() {

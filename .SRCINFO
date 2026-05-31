@@ -1,6 +1,6 @@
 pkgbase = rnalysis
 	pkgdesc = Python-based software for analyzing RNA sequencing data. https://doi.org/10.1101/2022.11.25.517851
-	pkgver = 4.1.2
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/GuyTeichman/RNAlysis
 	arch = any
@@ -66,7 +66,7 @@ pkgbase = rnalysis
 	depends = python-kmedoids
 	depends = picard-tools
 	depends = python-mslex
-	source = git+https://github.com/GuyTeichman/RNAlysis.git#tag=V4.1.2
-	sha256sums = e410119f77267355e139b385fc5db95629cb0da86a680f37adeae6fa24731c87
+	source = git+https://github.com/GuyTeichman/RNAlysis.git#tag=V4.2.0
+	sha256sums = 34ab43f42888eb4c1d0b7d5b424d22ec5fc4a25b2a85f013223dcbffe8e48880
 
 pkgname = rnalysis
