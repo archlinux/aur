@@ -1,6 +1,6 @@
 # Maintainer: kunkka19xx <nobita079x@gmail.com>
 pkgname=look-bin
-pkgver=0.5.9
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Keyboard-first, local-first launcher for apps, files, clipboard, and quick commands"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('lookapp')
 conflicts=('lookapp' 'look')
 options=(!strip !debug)
 source=("$pkgname-$pkgver.deb::https://github.com/kunkka19xx/look/releases/download/v${pkgver}/Look_${pkgver}_amd64.deb")
-sha256sums=('f31896dab9ca0277747040551b3c61f9cf8fe5eb521baa1ac8a50c5aa2ee89dc')
+sha256sums=('4fa89c2a290361d482251db516c39e9c60e798b889f6d664831bbba2681f8a67')
 noextract=("$pkgname-$pkgver.deb")
 
 package() {
