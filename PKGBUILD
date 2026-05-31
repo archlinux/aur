@@ -3,7 +3,7 @@
 
 _name=mistralai
 pkgname=python-$_name
-pkgver=2.4.5
+pkgver=2.4.8
 pkgrel=1
 pkgdesc="Python Client SDK for the Mistral AI API."
 arch=('any')
@@ -13,17 +13,24 @@ depends=('python' 'python-httpx' 'python-pydantic' 'python-dateutil' 'python-typ
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('python-google-auth: gcp' 'python-requests: gcp'
             'python-mcp: agents' 'python-griffe: agents' 'python-authlib: agents'
-            'python-websockets: realtime')
+            'python-websockets: realtime'
+            'python-opentelemetry-sdk: telemetry' 'python-opentelemetry-exporter-otlp-proto-http: telemetry'
+            'python-azure-storage-blob: workflow_payload_offloading_azure' 'python-azure-identity: workflow_payload_offloading_azure' 'python-aiohttp: workflow_payload_offloading_azure'
+            'python-gcloud-aio-storage: workflow_payload_offloading_gcs'
+            'python-aioboto3: workflow_payload_offloading_s3'
+            'python-azure-storage-blob: workflow_payload_offloading' 'python-azure-identity: workflow_payload_offloading' 'python-aiohttp: workflow_payload_offloading' 'python-gcloud-aio-storage: workflow_payload_offloading' 'python-aioboto3: workflow_payload_offloading'
+            'python-cryptography: workflow_payload_encryption'
+            'python-msgpack: workflow_payload_compression' 'python-zstandard: workflow_payload_compression')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6f39fc9e5eb29b567fb60b63968ac6161a78c67aff5ae90668e6b7fddadea82e')
+sha256sums=('94c3af9fc60c502636eeeff0b3865344f0f4d7968da0391d083be713a4a957e7')
 
 build() {
-    cd "$srcdir"/client-python-$pkgver
-    python -m build --wheel --no-isolation
+  cd "$srcdir"/client-python-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir"/client-python-$pkgver
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$srcdir"/client-python-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
