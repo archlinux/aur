@@ -1,6 +1,6 @@
 pkgbase = pipette-desktop-bin
 	pkgdesc = Pipette — Vial-compatible keyboard configurator (AppImage)
-	pkgver = 0.4.5
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/darakuneko/pipette-desktop
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = pipette-desktop-bin
 	provides = pipette-desktop
 	conflicts = pipette-desktop-git
 	options = !strip
-	source = pipette-desktop-bin-0.4.5.AppImage::https://github.com/darakuneko/pipette-desktop/releases/download/v0.4.5/Pipette-linux-x86_64.AppImage
-	sha256sums = e093cfb4ed3ff392f93ca7002dc09b8fa2c8603104841a67a30f2ef7760b2123
+	source = pipette-desktop-bin-0.4.7.AppImage::https://github.com/darakuneko/pipette-desktop/releases/download/v0.4.7/Pipette-linux-x86_64.AppImage
+	sha256sums = ed7c60823fc8f491831d3225dc2414d97b770801db6653cf09cbee17f61ff4b0
 
 pkgname = pipette-desktop-bin
