@@ -1,7 +1,7 @@
 # Maintainer: Johannes Brüderl <johannes.bruederl@gmail.com>
 pkgname=ezbar
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='GPU-rendered status bar for Sway (iced + wlr-layer-shell), with pluggable widgets'
 arch=('x86_64')
 url='https://github.com/birdayz/ezbar'
@@ -16,7 +16,7 @@ makedepends=('cargo')
 optdepends=('sway: the wlroots compositor ezbar targets'
             'noto-fonts-emoji: emoji glyphs in the bar')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('709be6d2a2cd80bc50224cf0ff04890cf5339ce44730f4d800ad407ba8d93325')
+sha256sums=('3f0432e4648588ff6f9509cd667ec24253e77c6ac8761b6064cb539f0ff37676')
 
 prepare() {
     cd "$pkgname-$pkgver"
