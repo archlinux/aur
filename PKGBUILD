@@ -1,24 +1,24 @@
 pkgname=openaquaero
-pkgver=3.0.0
-pkgrel=2
-pkgdesc="Software di controllo nativo per Aquaero 6 LT"
+pkgver=3.0.1
+pkgrel=1
+pkgdesc="Suite di controllo per Aquaero 6 LT"
 arch=('any')
 url="https://github.com/raffaele-90/openaquaero"
 license=('GPL3')
 depends=('python' 'pyside6' 'python-hidapi')
 optdepends=('python-pynvml: supporto lettura sensori GPU Nvidia')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/raffaele-90/openaquaero/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('4eb2449087a7e4ba39ce7a35e83bf6bb06298353d4b2e86604d74c6375170baf')
 
 package() {
     cd "$pkgname-$pkgver"
 
     # Directory di sistema
-    install -dm755 "$pkgdir/usr/lib/$pkgname"
-    install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/usr/share/applications"
-    install -dm755 "$pkgdir/usr/share/icons/hicolor/512x512/apps"
-    install -dm755 "$pkgdir/etc/udev/rules.d"
+    install -dm750 "$pkgdir/usr/lib/$pkgname"
+    install -dm750 "$pkgdir/usr/bin"
+    install -dm750 "$pkgdir/usr/share/applications"
+    install -dm750 "$pkgdir/usr/share/icons/hicolor/512x512/apps"
+    install -dm750 "$pkgdir/etc/udev/rules.d"
 
     # Codice Python (Copia tutti i .py dal tar.gz estratto)
     install -m644 *.py "$pkgdir/usr/lib/$pkgname/"
