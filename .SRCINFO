@@ -1,6 +1,6 @@
 pkgbase = halley
 	pkgdesc = Spatial Wayland compositor built around infinite workspace navigation
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/saltnpepper97/halley
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = halley
 	optdepends = wezterm: terminal for the default open-terminal binding
 	optdepends = alacritty: terminal for the default open-terminal binding
 	optdepends = wireplumber: provides wpctl for default media-key bindings
-	source = halley-0.3.1.tar.gz::https://github.com/saltnpepper97/halley/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = 90cdb48591ce7b5cfb57a732b8acff57c47c268aebd94e20e85b25bb9ecd1dab
+	source = halley-0.3.2.tar.gz::https://github.com/saltnpepper97/halley/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 810e4151e1c22804a0d5504fee626b8f0dc21b6a92657431247333fd2dfa6fdd
 
 pkgname = halley
