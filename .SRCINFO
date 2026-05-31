@@ -1,0 +1,30 @@
+pkgbase = clipshare
+	pkgdesc = A cross-platform clipboard history and synchronization software (Linux desktop build)
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://github.com/aa2013/ClipShare
+	arch = x86_64
+	license = GPL3
+	makedepends = flutter
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = unzip
+	makedepends = xz
+	makedepends = zip
+	depends = gtk3
+	depends = libkeybinder3
+	depends = libayatana-appindicator
+	depends = libayatana-indicator
+	depends = ayatana-ido
+	depends = libdbusmenu-glib
+	depends = libdbusmenu-gtk3
+	depends = libxtst
+	depends = wayland
+	depends = wayland-protocols
+	source = clipshare::git+https://github.com/aa2013/ClipShare.git#tag=v1.4.4
+	sha256sums = SKIP
+
+pkgname = clipshare
