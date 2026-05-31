@@ -3,7 +3,7 @@
 _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.121.0
+pkgver=1.122.1
 _electronversion=39
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.(Prebuilt and System-wide Electron edition)"
@@ -30,7 +30,6 @@ depends=(
     "electron${_electronversion}"
     'libx11'
     'libxkbfile'
-    'ripgrep'
     'python'
     'python-fonttools'
     'perl'
@@ -50,9 +49,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
 sha256sums=('68a94e4a9d746da48f5bb990d48b434363e476dfde006394a3ced94b4a54b4a7'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
-sha256sums_aarch64=('a8ca5fabb0e04250c54d093aeba04dbf2e4d6b31c658119a34a90626c9166284')
-sha256sums_armv7h=('571567e2f5ae656bb77dfe1ce4dd4b9a5a27cf16faf4b359e9a6bf761622e665')
-sha256sums_x86_64=('65866e05cce8d855b6070a6cbe839ed94715b72429bd07018371c37517010abf')
+sha256sums_aarch64=('865c641082a548bc6356d08465e0b82633f0f9a98519a56cbf1744cfbee3b71a')
+sha256sums_armv7h=('9c19a613287721923c5a23f55e2f1c550fe142068c22b721ea9e218368909d3a')
+sha256sums_x86_64=('b34dd22181e8c904210a6e057db0666ca1cd192775d3522f6b02241a940cffba')
 pkgver() {
     cd "${srcdir}/usr/share/${_appname}/resources/app"
     grep '"version": ' package.json | awk '{print $2}' | tr -d '"' | tr -d ','
@@ -67,7 +66,6 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     _get_electron_version
     sed -i "s/@ELECTRON@/electron${_electronversion}/g" "${srcdir}/${pkgname%-bin}.js"
@@ -76,7 +74,7 @@ prepare() {
         s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/g
         s/Icon=vs${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
-    ln -sf "/usr/bin/rg" "${srcdir}/usr/share/${_appname}/resources/app/node_modules/@vscode/ripgrep/bin/rg"
+    rm -rf "${srcdir}/usr/share/${_appname}/resources/app/node_modules/@microsoft/mxc-sdk/bin/arm64"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
