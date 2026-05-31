@@ -1,6 +1,6 @@
 # Maintainer: Ashe Sterling <ashe.sterling@outlook.com>
 pkgname=clrblk
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A simple utility to show and test pretty (and not so pretty) colors in the terminal."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('WTFPL-2-or-later')
 depends=()
 makedepends=('rust' 'cargo')
 source=("${pkgname}-v${pkgver}.tar.gz::https://gitlab.com/ashe.sterling/clrblk/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('c2f490dd78193adb875b826c25dfb51a143c94efe879ef82ed23b8c412a7e5bd')
+sha256sums=('a5e924e7cd49a46b55b2163b49ac531466b6963e1be3379d9bdea5699718c5e5')
 
 build() {
   export RUSTUP_TOOLCHAIN=nightly
