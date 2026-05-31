@@ -1,0 +1,20 @@
+pkgbase = easyeditor-git
+	pkgdesc = An easy markdown editor that allows you to professionally write MarkDown (MD), Mermaid, PlantUML, KaTeX and preview it in real-time. Import only MD, Templates and Docx. You can save, load .md files and export to PDF, PNG, TXT & SSTP.
+	pkgver = 1.7.6.r0.g4471001
+	pkgrel = 1
+	url = https://www.easyeditor.co.uk/
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	makedepends = rustup
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	source = easyeditor.git::git+https://github.com/gcclinux/Easyeditor.git
+	sha256sums = SKIP
+
+pkgname = easyeditor-git
