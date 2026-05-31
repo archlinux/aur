@@ -1,11 +1,11 @@
 # Maintainer: Lolle2000la
 pkgname=tapauth-git
-pkgver=0.3.4.r1.g4313e44
+pkgver=0.4.0.r0.gc0223fc
 pkgrel=1
 pkgdesc="Local smartphone-based authentication framework engine (Development/Git version)"
 arch=('x86_64')
 url="https://github.com/lolle2000la/tapauth"
-license=('Apache-2.0')
+license=('AGPL-3.0')
 depends=('dbus' 'pam')
 makedepends=('cargo' 'rust' 'protobuf' 'git')
 backup=('etc/tapauth/config.toml')
