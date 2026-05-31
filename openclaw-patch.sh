@@ -115,9 +115,16 @@ node -e '
     fs.writeFileSync("package.json", JSON.stringify(pkg, null, 4));
 '
 
-# Replace workspace:* with file:../.. for openclaw dependency in extensions
-echo "Replacing workspace:* with file:../.. for openclaw in extensions..."
-find extensions -name package.json -exec sed -i 's/"openclaw": "workspace:\*"/"openclaw": "file:..\/.."/g' {} +
+# Replace workspace:* (and variants) with file:../.. for the root "openclaw" package.
+# This is required because we rewrite the root workspaces to exclude the root itself,
+# and Bun refuses workspace: references to the root package name when it isn't a workspace member.
+echo "Rewriting workspace references to root 'openclaw' package to file:../.. (for Bun hoisted mode)..."
+find extensions packages ui -name package.json -exec \
+  sed -i 's/"openclaw": "workspace[^"]*"/"openclaw": "file:..\/.."/g' {} + 2>/dev/null || true
+
+# Also catch any other packages that might reference it via workspace protocol
+find . -path ./node_modules -prune -o -name package.json -print 2>/dev/null | \
+  xargs sed -i 's/"openclaw": "workspace[^"]*"/"openclaw": "file:..\/.."/g' 2>/dev/null || true
 
 # Remove lockfiles to force Bun to resolve workspaces from scratch and avoid conflicts
 echo "Removing pre-existing lockfiles to force workspace resolution..."

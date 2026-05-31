@@ -1,2 +1,5 @@
 openclaw/
+fs-safe/
+src/
+pkg/
 openclaw-git-*.pkg.tar*

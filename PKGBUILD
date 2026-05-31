@@ -3,14 +3,14 @@
 # Maintainer: Solomon <shlomochoina@gmail.com>
 pkgname=openclaw-git
 _pkgver=2026.5.25.beta.1
-pkgver=2026.4.19.beta.2.r21189.g503d8d55427
+pkgver=2026.4.19.beta.2.r22663.g4dad7bd93b6
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices (Bun build, highly optimized)"
 arch=('x86_64')
 url="https://github.com/openclaw/openclaw"
 license=('MIT')
 depends=('nodejs>=22')
-makedepends=('git' 'bun' 'npm' 'python')
+makedepends=('git' 'bun' 'npm' 'python' 'cmake' 'gcc' 'make' 'pkgconf' 'libvips')
 optdepends=('bubblewrap: for experimental additional sandboxed execution'
             'oxlint: for system-wide fast linting in doctor'
             'oxfmt: for system-wide fast formatting in doctor'
@@ -34,7 +34,7 @@ sha256sums=('SKIP'
             '273910e58f512a4f1d59fe2cde328d7abc68f720f5e6e98a23a06a43c3eb9599'
             '63e557c01ca78e392ac17f37538faff9be6e568bb6d8b33980c8836197fd06ad'
             '34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d'
-            '97ca0ff8165995dffc110e5fcc50acb696232ea072aef86e26803228af72f8fe'
+            'e26ae3401f00218dc25170876c905bd2886ca70ced34d85d980882859a2ae5b8'
             '7f7dc1a6d0c96c018de6c73b7594dc15c268c4152a0ade8001406055962c89a7'
             'cdaf01acb58af62348c6f669f8b77675f66428a8ae41b4b4e371739492fb05c6'
             '025de14715ac9508517d3461f0c35e289c545353443f5cab312a091b630e8b3a'
