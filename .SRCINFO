@@ -1,7 +1,7 @@
 pkgbase = fchat-horizon-bin
 	pkgdesc = Horizon is a modern, community-driven fork of the F-Chat 3.0 client with expanded customization.
 	pkgver = 2.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fchat-Horizon/Horizon
 	arch = x86_64
 	license = MPL-2.0
