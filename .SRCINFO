@@ -1,7 +1,7 @@
 pkgbase = piimg-git
 	pkgdesc = A utility for working with disk images, which are designed to be flashed onto a Raspberry Pi.
 	pkgver = 27.e7ce4ad
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alexchamberlain/piimg
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = piimg-git
 	provides = piimg
 	conflicts = piimg
 	source = git+https://github.com/alexchamberlain/piimg.git#branch=master
-	md5sums = SKIP
+	source = correct_gcc_warnings.patch
+	sha256sums = SKIP
+	sha256sums = ba7c72a845213c6f40ab228d67608be472229265d6d99274a8799ee09647cb95
 
 pkgname = piimg-git

@@ -1,0 +1,79 @@
+diff --git a/lib/command.c b/lib/command.c
+index 0dfc76f..ccf2bf8 100644
+--- a/lib/command.c
++++ b/lib/command.c
+@@ -1,4 +1,5 @@
+ #include "command.h"
++#include <string.h>
+ 
+ int run_argv(struct cmd_struct *cmds, int cmds_n, int argc, char ** argv) {
+   const char *cmd = argv[0];
+diff --git a/lib/loopdev.c b/lib/loopdev.c
+index 655a461..cd030c3 100644
+--- a/lib/loopdev.c
++++ b/lib/loopdev.c
+@@ -7,6 +7,8 @@
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/ioctl.h>
++#include <unistd.h>
+ 
+ #include <linux/loop.h>
+ 
+diff --git a/lib/privileges.c b/lib/privileges.c
+index ab6ad06..931d01c 100644
+--- a/lib/privileges.c
++++ b/lib/privileges.c
+@@ -1,4 +1,6 @@
+ #include <stdio.h>
++#include <sys/types.h>
++#include <unistd.h>
+ 
+ int escalate() {
+   if(seteuid(0) == -1 || geteuid() != 0) {
+diff --git a/src/piimg-dd.c b/src/piimg-dd.c
+index 87cc78d..5efbfb4 100644
+--- a/src/piimg-dd.c
++++ b/src/piimg-dd.c
+@@ -6,6 +6,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <unistd.h>
+ 
+ #include <piimg.h>
+ #include "builtin.h"
+diff --git a/src/piimg-grow.c b/src/piimg-grow.c
+index 622bb11..9201552 100644
+--- a/src/piimg-grow.c
++++ b/src/piimg-grow.c
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <fcntl.h>
++#include <unistd.h>
+ 
+ #include <piimg.h>
+ #include "builtin.h"
+diff --git a/src/piimg-mount.c b/src/piimg-mount.c
+index 3d6b0d6..ec852af 100644
+--- a/src/piimg-mount.c
++++ b/src/piimg-mount.c
+@@ -44,7 +44,7 @@ int cmd_mount(int argc, char* argv[]) {
+   }
+ 
+   if(loopdev_setup_device(argv[0], simg.boot_offset, boot_loop)) {
+-    fprintf(stderr, "Failed to associate loop device (%s) to file (%s).\n", boot_loop, argv[0], simg.boot_offset);
++    fprintf(stderr, "Failed to associate loop device (%s) to file (%s) at offset (%ld).\n", boot_loop, argv[0], simg.boot_offset);
+     goto error;
+   }
+ 
+@@ -57,7 +57,7 @@ int cmd_mount(int argc, char* argv[]) {
+   printf("Boot Loop device: %s\n", boot_loop);
+ 
+   if(loopdev_setup_device(argv[0], simg.root_offset, root_loop)) {
+-    fprintf(stderr, "Failed to associate loop device (%s) to file (%s; offset=%lld).\n", root_loop, argv[0], simg.root_offset);
++    fprintf(stderr, "Failed to associate loop device (%s) to file (%s; offset=%ld).\n", root_loop, argv[0], simg.root_offset);
+     goto error;
+   }
+ 
