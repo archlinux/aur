@@ -1,0 +1,21 @@
+pkgbase = vykar-bin
+	pkgdesc = Fast, encrypted, deduplicated backups in Rust — with friendly YAML config, a desktop GUI, and support for S3, custom REST and SFTP storage.
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://vykar.borgbase.com
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	depends = gtk3
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = freetype2
+	depends = fontconfig
+	depends = xdotool
+	provides = vykar
+	conflicts = vykar
+	source_x86_64 = vykar-0.16.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/borgbase/vykar/releases/download/v0.16.1/vykar-v0.16.1-x86_64-unknown-linux-gnu.tar.gz
+	sha512sums_x86_64 = 4ab5cfc2308d7e138dab6d9ad1dfd4fd249711f9342eb103363c4c555b36f51f17b867dd161a4e4447df06e4c89757ed209c41ba7378debdee22e403526b1713
+
+pkgname = vykar-bin
