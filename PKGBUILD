@@ -1,5 +1,5 @@
 # Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
-# Mantainer: Jackal32 <jxckal32 at gmail dot com>
+# Maintainer: Jackal32 <jxckal32 at gmail dot com>
 # Contributor: ZachAR3 <Zach4R3@gmail.com>
 
 _pkgname=Eden
@@ -10,14 +10,20 @@ pkgrel=1
 pkgdesc="The Eden Nintendo Switch emulator AppImage for preview builds such as release candidates (PGO build)."
 arch=('x86_64')
 url="https://git.eden-emu.dev/eden-emu/eden"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('zlib' 'hicolor-icon-theme')
 conflicts=('eden-preview-bin')
 provides=('eden-preview')
 options=(!strip)
 _appimage="${_pkgname}-Linux-${pkgver}-amd64.AppImage"
-source_x86_64=("${_appimage}::https://git.eden-emu.dev/eden-emu/eden/releases/download/${_upstreamver}/${_pkgname}-Linux-${_upstreamver}-amd64-clang-pgo.AppImage")
-sha256sums_x86_64=("68c8b5ace9772b0016a73c77089968b84708dace06ae5c9a472e21fab030465f")
+source_x86_64=(
+	"${_appimage}::https://git.eden-emu.dev/eden-emu/eden/releases/download/${_upstreamver}/${_pkgname}-Linux-${_upstreamver}-amd64-clang-pgo.AppImage"
+	"eden-preview.xml::https://git.eden-emu.dev/eden-emu/eden/raw/tag/v${pkgver}/dist/dev.eden_emu.eden.xml"
+)
+sha256sums_x86_64=(
+	'68c8b5ace9772b0016a73c77089968b84708dace06ae5c9a472e21fab030465f'
+	'c3b5931f7dee681f00bbbb4ceecb26c2bfd0e56bb00e58e85ebd98eb700b84e7'
+)
 
 prepare() {
     chmod +x "${_appimage}"
@@ -35,31 +41,7 @@ build() {
 }
 
 package() {
-    # Create the MIME type XML file (for file associations)
-    cat > eden-preview.xml << EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-  <mime-type type="application/x-nx-nro">
-    <comment>Nintendo Switch NRO Executable</comment>
-    <glob pattern="*.nro"/>
-  </mime-type>
-  <mime-type type="application/x-nx-nso">
-    <comment>Nintendo Switch NSO Executable</comment>
-    <glob pattern="*.nso"/>
-  </mime-type>
-  <mime-type type="application/x-nx-nsp">
-    <comment>Nintendo Switch NSP Package</comment>
-    <glob pattern="*.nsp"/>
-  </mime-type>
-  <mime-type type="application/x-nx-xci">
-    <comment>Nintendo Switch XCI Cartridge Image</comment>
-    <glob pattern="*.xci"/>
-  </mime-type>
-</mime-info>
-EOF
-
   install -Dm644 eden-preview.xml "${pkgdir}/usr/share/mime/packages/eden-preview.xml"
-
   install -Dm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
   install -Dm644 "squashfs-root/dev.eden_emu.eden.desktop" \
     "${pkgdir}/usr/share/applications/eden-preview.desktop"
