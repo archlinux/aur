@@ -1,8 +1,8 @@
 pkgbase = rove-agent-bin
 	pkgdesc = Rove Agent App
 	pkgver = 0.1.1
-	pkgrel = 5
-	url = https://github.com/artyompervykh/genius-ssh
+	pkgrel = 6
+	url = https://github.com/just-geniuss/genius-ssh
 	arch = x86_64
 	license = MIT
 	depends = webkit2gtk-4.1
@@ -15,7 +15,7 @@ pkgbase = rove-agent-bin
 	depends = librsvg
 	provides = rove-agent
 	conflicts = rove-agent
-	source = https://github.com/artyompervykh/genius-ssh/releases/download/v0.1.1-5/rove-agent_0.1.1-5_amd64.deb
+	source = https://github.com/just-geniuss/genius-ssh/releases/download/v0.1.1-6/rove-agent_0.1.1-6_amd64.deb
 	sha256sums = SKIP
 
 pkgname = rove-agent-bin
