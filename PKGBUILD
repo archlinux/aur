@@ -4,7 +4,7 @@
 # shellcheck shell=bash
 
 pkgname=yazi-nightly-bin
-pkgver=26.5.6.20260530.601cb10
+pkgver=26.5.6.20260531.601cb10
 pkgrel=1
 _date="$(date -u +%Y%m%d)"
 pkgdesc="💥 Blazing fast terminal file manager written in Rust, based on async I/O."
@@ -15,19 +15,21 @@ conflicts=("yazi")
 provides=("yazi")
 depends=(ttf-nerd-fonts-symbols)
 optdepends=(
-  'ffmpegthumbnailer: for video thumbnails'
-  'p7zip: for archive extraction and preview'
+  'ffmpeg: for video thumbnails'
+  '7zip: for archive extraction and preview'
   'jq: for JSON preview'
   'poppler: for PDF preview'
   'fd: for file searching'
   'ripgrep: for file content searching'
   'fzf: for quick file subtree navigation'
   'zoxide: for historical directories navigation'
-  'imagemagick: for Font, HEIC, and JPEG XL preview'
   'resvg: for SVG preview'
-  'xclip: for Linux clipboard support'
-  'wl-clipboard: for Linux clipboard support'
-  'xsel: for Linux clipboard support'
+  'imagemagick: for Font, HEIC, and JPEG XL preview'
+  'xclip: Linux X11 clipboard support'
+  'xsel: Linux X11 clipboard support'
+  'wl-clipboard: Linux Wayland clipboard support'
+  'ueberzugpp: X11 / Wayland fallback image previewer'
+  'chafa: ASCII art (Unicode block) fallback image previewer'
 )
 source=("yazi-$_date-$CARCH.zip::https://github.com/sxyazi/yazi/releases/download/nightly/yazi-$CARCH-unknown-linux-gnu.zip")
 sha256sums=('SKIP')
