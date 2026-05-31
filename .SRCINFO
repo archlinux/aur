@@ -10,6 +10,7 @@ pkgbase = hyprwayland-scanner-frozen
 	makedepends = git
 	makedepends = ninja
 	depends = pugixml
+	provides = hyprwayland-scanner
 	provides = hyprwayland-scanner-frozen
 	conflicts = hyprwayland-scanner-git
 	conflicts = hyprwayland-scanner
