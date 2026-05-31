@@ -13,6 +13,7 @@ pkgbase = hyprwire-frozen
 	depends = hyprutils-frozen
 	depends = pugixml
 	depends = libffi
+	provides = hyprwire
 	provides = hyprwire-frozen
 	conflicts = hyprwire-git
 	conflicts = hyprwire
