@@ -1,20 +1,20 @@
 # Maintainer: Johannes Brüderl <johannes.bruederl@gmail.com>
 pkgname=ezbar
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GPU-rendered status bar for Sway (iced + wlr-layer-shell), with pluggable widgets'
 arch=('x86_64')
 url='https://github.com/birdayz/ezbar'
 license=('MIT')
 # ring (rustls' asm crypto) fails to link under makepkg's default LTO
 options=('!lto')
-# wgpu/winit dlopen these at runtime (so they do not show up in ldd):
-depends=('gcc-libs' 'fontconfig' 'libxkbcommon' 'wayland' 'vulkan-icd-loader')
+# wgpu/winit dlopen wayland/xkbcommon/vulkan at runtime (so ldd shows only libc);
+# vulkan-driver (a virtual provided by vulkan-radeon/intel/nvidia/...) guarantees a
+# usable ICD so it renders on a fresh box.
+depends=('glibc' 'gcc-libs' 'libxkbcommon' 'wayland' 'vulkan-icd-loader' 'vulkan-driver')
 makedepends=('cargo')
-optdepends=('sway: the compositor ezbar targets'
-            'vulkan-radeon: Vulkan driver for AMD GPUs'
-            'vulkan-intel: Vulkan driver for Intel GPUs'
-            'nvidia-utils: Vulkan driver for NVIDIA GPUs')
+optdepends=('sway: the wlroots compositor ezbar targets'
+            'noto-fonts-emoji: emoji glyphs in the bar')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('709be6d2a2cd80bc50224cf0ff04890cf5339ce44730f4d800ad407ba8d93325')
 
