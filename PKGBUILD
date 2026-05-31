@@ -1,7 +1,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=phpactor-bin
-pkgver=2025.12.21.1 # datasource=github-releases depName=phpactor/phpactor
+pkgver=2026.05.30.0 # datasource=github-releases depName=phpactor/phpactor
 pkgrel=1
 pkgdesc='Mainly a PHP Language Server with more features than you can shake a stick at'
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('phpactor' 'phpactor-git')
 source=("phpactor-${pkgver}.phar::${url}/releases/download/${pkgver}/phpactor.phar"
         "LICENSE-${pkgver}::${url}/raw/refs/tags/${pkgver}/LICENSE")
 
-sha256sums=('53bbe9625cd9b5e9b394bc2f595fbad13dbbe6dfc96950c56dea3b5d9a246cc3'
+sha256sums=('83d225240a25a259414fbddeb793a5aa1e3f32c20a1837cf609f027e120179d0'
             '4287c3b7c293133dc59e92cb32a1aae899c4441ac6d64455c537c82070c84caa')
 
 package() {
