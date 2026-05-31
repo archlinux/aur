@@ -3,7 +3,7 @@
 pkgname=blackarch-wallpapers-git
 pkgver=80
 pkgrel=3
-pkgdesc="Official BlackArch Linux wallpapers (optimized sparse checkout)"
+pkgdesc="BlackArch Linux wallpapers"
 arch=('any')
 url="https://github.com/BlackArch/blackarch-artwork"
 license=('custom')

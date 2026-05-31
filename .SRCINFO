@@ -1,5 +1,5 @@
 pkgbase = blackarch-wallpapers-git
-	pkgdesc = Official BlackArch Linux wallpapers (optimized sparse checkout)
+	pkgdesc = BlackArch Linux wallpapers
 	pkgver = 80
 	pkgrel = 3
 	url = https://github.com/BlackArch/blackarch-artwork
