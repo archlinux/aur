@@ -1,6 +1,6 @@
 # Maintainer: Berk Kucuk <berkkucukk@proton.me>
 pkgname=entropy-shield
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Modern Linux desktop privacy stack — Tor, DNSCrypt, I2P, Onion Server"
 arch=('any')
@@ -19,10 +19,11 @@ depends=(
 )
 optdepends=(
     'redsocks: transparent proxy support for I2P routing'
+    'conntrack-tools: flush connection tracking on connect/disconnect'
     'firefox: privacy browser integration'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/entropy-shield/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9df732b88d21717e59d92fdccdcb7fbb085e842e3c238400773be01d3182628b')
+sha256sums=('da4159df9d7eb71d67f5b4d0cfe16e2acc7e2fe6ac19ecd3f734a3b4f25d868c')
 
 package() {
     cd "$pkgname-$pkgver"
@@ -77,7 +78,7 @@ EOF
       <allow_active>auth_admin_keep</allow_active>
     </defaults>
     <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/python3</annotate>
-    <annotate key="org.freedesktop.policykit.exec.argv1">/opt/entropy-shield/main.py</annotate>
+    <annotate key="org.freedesktop.policykit.exec.argv1">/opt/entropy-shield/core/privileged_runner.py</annotate>
   </action>
 </policyconfig>
 EOF
