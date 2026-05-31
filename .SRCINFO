@@ -1,6 +1,6 @@
 pkgbase = logo-ls
 	pkgdesc = ls, but with icons
-	pkgver = 1.4.3
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/canta2899/logo-ls
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = logo-ls
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = logo-ls-1.4.3.tar.gz::https://github.com/canta2899/logo-ls/archive/v1.4.3.tar.gz
-	md5sums = 786699ba3ddb2aac0af8126e30eb4fe2
+	source = logo-ls-1.5.2.tar.gz::https://github.com/canta2899/logo-ls/archive/v1.5.2.tar.gz
+	md5sums = 3d1d7d0ce9d7509f47d7c67d6e3358b3
 
 pkgname = logo-ls
