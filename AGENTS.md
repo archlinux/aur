@@ -1,32 +1,24 @@
-# gimp-openvino-ai-plugins
+# gimp-openvino
 
 PKGBUILD wrapping Intel's upstream OpenVINO AI plugins for GIMP 3.0.
-All plugin source lives at: https://github.com/intel/openvino-ai-plugins-gimp
+Plugin source: https://github.com/intel/openvino-ai-plugins-gimp
 
 ## Build & Validate
-- `makepkg -si` — build and install (standard Arch workflow)
-- `makepkg` — build only (without `-i`)
+- `makepkg -si` — build and install
+- `makepkg` — build only
 - `namcap PKGBUILD` — validate PKGBUILD
-
-`pkgver()` auto-generates version from git history (`r<commit-count>.<short-hash>`).
-
-## Dependencies
-- **Runtime:** gimp, python, openvino-models, python-openvino + Python ML stack
-- **Build:** git, python-pip
-- **Optional:** intel-compute-runtime (GPU), intel-npu-driver (NPU)
+- `makepkg --printsrcinfo > .SRCINFO` — regenerate `.SRCINFO` (must be done manually after PKGBUILD changes; it drifts easily)
 
 ## Key quirks
-- `pkgbase=gimp-openvino` (AUR repo name) differs from `pkgname=gimp-openvino-ai-plugins` — do not change.
+- `pkgname=gimp-openvino` (same as `pkgbase`) — the old AGENTS.md claimed `pkgname=gimp-openvino-ai-plugins`; that was wrong.
 - `build()` is a no-op (`:`); all work happens in `package()`.
-- `PIP_REQUIRE_VIRTUALENV=0` bypasses pip's venv enforcement (no venv used).
-- `2>/dev/null || true` silences errors from niche pip-only deps; their deps are satisfied by system packages in `depends=()`.
+- No venv — `PIP_REQUIRE_VIRTUALENV=0` bypasses pip's venv enforcement.
+- `2>/dev/null || true` silences errors from pip-only deps (`gdown`, `peft`, `controlnet-aux`, `openvino-genai`, `tomesd`); their deps satisfied by `depends=()`.
+- Config `weight_path` is patched after `complete_install()` — it points to `$pkgdir/...` at build time and must be rewritten to the runtime path.
+- Models dir is `chmod a+w` after install so plugins can write cache files at runtime.
+- `pkgver()` auto-generates from git tags (`r<commit-count>.<short-hash>`); the static `pkgver=` line is a fallback.
+- Wrapper script `openvino-ai-gimp` sets `GI_TYPELIB_PATH` and `LD_LIBRARY_PATH`, then runs `gimp-3`.
+- Plugins are copied from `$site_packages/gimpopenvino/plugins/*` to `/usr/lib/gimp/3.0/plug-ins/`.
+- `.SRCINFO` is often stale — always regenerate after touching PKGBUILD.
+- `AGENTS.md` is `.gitignore`d (AUR doesn't allow it); it won't be pushed.
 
-## How packaging works
-No venv — uses system Python. `pip install --root="$pkgdir" --prefix=/usr --no-deps .` installs the package; niche deps (`gdown`, `controlnet-aux`, `openvino-genai`, `optimum-intel`, `tomesd`) are installed the same way.
-
-`complete_install()` (with `GIMP_OPENVINO_MODELS_PATH` set) generates `gimp_openvino_config.json` and copies bundled weights to `/usr/share/$pkgname/`.
-
-Plugins are copied from `$site_packages/gimpopenvino/plugins/*` to `/usr/lib/gimp/3.0/plug-ins/`. Installs wrapper script `openvino-ai-gimp` that sets `GI_TYPELIB_PATH` and `LD_LIBRARY_PATH`, then runs `gimp-3`.
-
-## Maintainer
-Selene Bray-Hernandez <selebray1998@gmail.com>
