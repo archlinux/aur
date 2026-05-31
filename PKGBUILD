@@ -6,10 +6,10 @@ _pkgver=2013-05-1-LATEST
 pkgrel=1
 pkgdesc="Interactive spherical geometry software"
 arch=('i686' 'x86_64')
-url="http://$pkgname.sourceforge.net/"
+url="https://$pkgname.sourceforge.net/"
 license=('GPL')
 depends=('java-runtime')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$_pkgver.jar \
+source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$_pkgver.jar \
 			sphaerica \
 			sphaerica.desktop\
 			sphaerica.png)
