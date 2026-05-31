@@ -14,6 +14,7 @@ pkgbase = hyprland-guiutils-frozen
 	depends = hyprutils-frozen
 	depends = libdrm
 	depends = pixman
+	provides = hyprland-guiutils
 	provides = hyprland-guiutils-frozen
 	conflicts = hyprland-guiutils
 	conflicts = hyprland-guiutils-git

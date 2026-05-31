@@ -5,7 +5,7 @@ pkgname=hyprland-guiutils-frozen
 pkgver=0.1.0.r0.ga415eba
 pkgrel=1
 conflicts=('hyprland-guiutils' 'hyprland-guiutils-git')
-provides=('hyprland-guiutils-frozen')
+provides=('hyprland-guiutils' 'hyprland-guiutils-frozen')
 pkgdesc="Hyprland GUI utilities (successor to hyprland-qtutils) - Frozen For Yggdrasil, Nordix Desktop Environment (do not send bug reports to hyprwm)"
 arch=('x86_64' 'aarch64')
 
