@@ -7,7 +7,7 @@
 pkgname=car
 pkgver=2024.06
 pkgrel=1
-url="https://car.rene-grothmann.de/"
+url="https://zirkel.sourceforge.net/"
 pkgdesc="Compass and Ruler is a dynamic geometry program"
 arch=('any')
 license=('GPL')
