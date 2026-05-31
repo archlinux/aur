@@ -10,6 +10,7 @@ pkgbase = hyprutils-frozen
 	makedepends = git
 	makedepends = ninja
 	depends = pixman
+	provides = hyprutils
 	provides = hyprutils-frozen
 	provides = libhyprutils.so
 	conflicts = hyprutils-git
