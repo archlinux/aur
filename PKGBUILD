@@ -5,7 +5,7 @@
 
 _pkgname="hyprland"
 pkgname="$_pkgname-git"
-pkgver=0.55.2.r48.g2dcb10a
+pkgver=0.55.2.r79.g515b883
 pkgrel=1
 pkgdesc="Hyprland is an independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 arch=('x86_64' 'aarch64')
@@ -49,6 +49,7 @@ depends=(
   seatd
   systemd-libs
   tomlplusplus
+  udis86-git
   util-linux-libs
   wayland
   wayland-protocols
@@ -65,7 +66,6 @@ makedepends=(
   cmake
   git
   glaze
-  udis86-git
   hyprland-protocols-git
   hyprwayland-scanner-git
   ninja
