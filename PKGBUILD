@@ -34,7 +34,7 @@ package() {
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
     # Executable launcher wrapper (bypassing sandbox issues if applicable)
-    printf '#!/bin/sh\nexec /opt/%%s/%%s.AppImage --no-sandbox "$@"\n' \
+    printf '#!/bin/sh\nexec /opt/%s/%s.AppImage --no-sandbox "$@"\n' \
       "${pkgname}" "${pkgname}" \
       > "${srcdir}/${_pkgname}"
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
