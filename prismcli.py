@@ -29,7 +29,7 @@ DEFAULT_CONFIG = {
  ██████╔╝██████╔╝██║███████╗██╔████╔██║
  ██╔═══╝ ██╔══██╗██║╚════██║██║╚██╔╝██║
  ██║     ██║  ██║██║███████║██║ ╚═╝ ██║
- ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝     ╚═╝ v1.2"""
+ ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝     ╚═╝ v1.3"""
 }
 
 def load_user_config():
@@ -251,7 +251,24 @@ class PrismCLI:
         self.current_session_file = None
         self.last_assistant_response = ""
         self.draw_ui_frame(animated=False)
-        print("\033[1;34m✔ Dropped execution tree. New conversational sequence ready.\033[0m\n")
+        print("\033[1;34m✔ Dropped active context. Fresh conversation layer initialized.\033[0m\n")
+
+    def execute_shell_command(self, cmd_string):
+        if not cmd_string:
+            print("\n\033[31m[-] No command syntax provided.\033[0m\n")
+            return
+        print(f"\033[90m⚙ Executing subshell task: {cmd_string}...\033[0m")
+        try:
+            output = subprocess.check_output(cmd_string, shell=True, stderr=subprocess.STDOUT, text=True)
+            print(f"\n\033[1;32m--- Shell Output ---\033[0m\n{output}")
+            # Map shell data straight into AI conversational memory context points
+            context_note = f"[User executed shell command: '{cmd_string}'. Resulting Output:\n{output}]"
+            self.history.append({"role": "user", "content": context_note})
+            print("\033[90m✔ Output appended to AI context memory pipeline.\033[0m\n")
+        except subprocess.CalledProcessError as e:
+            print(f"\n\033[1;31m--- Execution Fault (Code {e.returncode}) ---\033[0m\n{e.output}")
+            context_note = f"[User tried executing command: '{cmd_string}'. Failed with error:\n{e.output}]"
+            self.history.append({"role": "user", "content": context_note})
 
     def save_current_history(self):
         if len(self.history) <= 1:
@@ -298,7 +315,6 @@ class PrismCLI:
                 self.model_name = data.get("model", self.model_name)
                 self.history = data.get("history", [])
                 
-                # Restore last assistant response reference from history array
                 for msg in reversed(self.history):
                     if msg.get("role") == "assistant" and msg.get("content"):
                         self.last_assistant_response = msg["content"]
@@ -320,7 +336,7 @@ class PrismCLI:
                     
         print("\033[90m─" * shutil.get_terminal_size().columns + "\033[0m")
         print(f"\033[1;32m● Engine:\033[0m \033[1;37m{self.model_name}\033[0m  |  Palette: \033[1;35m{CFG['banner_style']}\033[0m")
-        print("\033[90mType \033[33m/help\033[90m or use terminal string triggers (/new, /copy)\033[0m\n")
+        print("\033[90mType \033[33m/help\033[90m or pass custom command tasks directly via \033[33m/run <cmd>\033[0m\n")
 
     def switch_model(self, target_name):
         if target_name not in self.installed_models:
@@ -417,8 +433,9 @@ class PrismCLI:
                     print("  /models        List local disk engine options")
                     print("  /model <name>  Hot-swap pipeline target to another layout")
                     print("  /history       Review log registry map and load past sessions")
-                    print("  /new  [Ctrl+N] Drop active thread context and open a fresh canvas")
+                    print("  /new  [Ctrl+N] Fresh conversation layer canvas")
                     print("  /copy [Ctrl+Y] Copy last complete AI response block to clipboard")
+                    print("  /run <command> Execute native shell tasks straight into context buffer")
                     print("  /clear         Wipe window and re-trigger animation sequence")
                     print("  exit           Safely shut down app stack context\n")
                     continue
@@ -430,6 +447,9 @@ class PrismCLI:
                     continue
                 if user_input.lower() == "/copy":
                     self.copy_to_clipboard()
+                    continue
+                if user_input.startswith("/run "):
+                    self.execute_shell_command(user_input.split(" ", 1)[1].strip())
                     continue
                 if user_input.lower() == "/history":
                     self.select_and_load_history()
@@ -453,7 +473,6 @@ class PrismCLI:
 if __name__ == "__main__":
     if "COLORTERM" not in os.environ:
         os.environ["COLORTERM"] = "truecolor"
-    
     try:
         import readline
         readline.parse_and_bind('"\C-n": "/new\n"')
