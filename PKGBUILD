@@ -1,4 +1,5 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com> 
+# Maintainer: atvknox <atvknox at gmail dot com>
+# Ex-Maintainer: Frederic Bezies <fredbezies at gmail dot com> 
 # Contributor:  LinRs <20455421+LinRs at users.noreply.github.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
