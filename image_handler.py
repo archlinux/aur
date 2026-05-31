@@ -67,10 +67,8 @@ def img_replace(path:str, filename:str, topic:str):
             posts_list = data['post_stream']['posts']
             for post in posts_list:
                 html_content = post['cooked']
-                """
-                exist: r'<img src="([a-zA-Z0-9_:\/\-\.]+)" alt=".*?" data-base62-sha1="(.*?)"'
-                deleted: r'<img src="([a-zA-Z0-9_:\/\-\.]+)" alt=".*?" data-orig-src="(.*?)"'
-                """
+                # exist: <img src="..." alt=".*?" data-base62-sha1="...">
+                # deleted: <img src="..." alt=".*?" data-orig-src="...">
                 pattern_deleted = r'<img src="[a-zA-Z0-9_:\/\-\.]+" alt=".*?" data-orig-src="(.*?)"'
                 matches_deleted = re.findall(pattern_deleted, html_content)
                 if matches_deleted:
