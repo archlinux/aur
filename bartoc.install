@@ -34,5 +34,23 @@ post_install() {
 }
 
 post_upgrade() {
-    post_install
+    local _user="${SUDO_USER:-}"
+    if [ -n "$_user" ]; then
+        systemctl --user -M "${_user}@.host" daemon-reload 2>/dev/null || true
+        if systemctl --user -M "${_user}@.host" is-enabled --quiet bartoc 2>/dev/null; then
+            echo "==> Restarting bartoc service for ${_user}..."
+            systemctl --user -M "${_user}@.host" restart bartoc
+            echo "==> bartoc restarted successfully."
+            return
+        elif systemctl --user -M "${_user}@.host" is-enabled --quiet bartoc-age 2>/dev/null; then
+            echo "==> Restarting bartoc-age service for ${_user}..."
+            systemctl --user -M "${_user}@.host" restart bartoc-age
+            echo "==> bartoc-age restarted successfully."
+            return
+        fi
+    fi
+    echo ""
+    echo "==> bartoc upgraded to $1."
+    echo "    Run 'systemctl --user daemon-reload && systemctl --user enable --now bartoc' when ready."
+    echo ""
 }
