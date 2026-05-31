@@ -51,6 +51,7 @@ build() {
   cargo build --manifest-path mykey-auth/mykey-pam/Cargo.toml --release
   cargo build --manifest-path mykey-auth/mykey-biometrics/Cargo.toml --release
   cargo build --manifest-path mykey-auth/mykey-security-key/Cargo.toml --release
+  cargo build --manifest-path mykey-agent/Cargo.toml --release
 }
 
 package() {
@@ -92,6 +93,8 @@ package() {
     "${pkgdir}/usr/bin/mykey-security-key"
   install -Dm755 "${srcdir}/target/release/mykey-security-key-auth" \
     "${pkgdir}/usr/bin/mykey-security-key-auth"
+  install -Dm755 "${srcdir}/target/release/mykey-agent" \
+    "${pkgdir}/usr/bin/mykey-agent"
 
   install -Dm755 "${srcdir}/target/release/libmykeypin.so" \
     "${pkgdir}/usr/lib/security/mykeypin.so"
@@ -115,6 +118,8 @@ package() {
     "${pkgdir}/usr/share/dbus-1/services/org.freedesktop.secrets.service"
   install -Dm644 scripts/com.mykey.authenticate.policy \
     "${pkgdir}/usr/share/polkit-1/actions/com.mykey.authenticate.policy"
+  install -Dm644 scripts/com.mykey.step-up-session.policy \
+    "${pkgdir}/usr/share/polkit-1/actions/com.mykey.step-up-session.policy"
   install -Dm644 packaging/arch/mykey.sysusers \
     "${pkgdir}/usr/lib/sysusers.d/mykey.conf"
   install -Dm644 packaging/arch/mykey.tmpfiles \
