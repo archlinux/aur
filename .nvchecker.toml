@@ -1,0 +1,5 @@
+[chameleon]
+source = "github"
+github = "ruidosujeira/chameleon"
+use_latest_release = true
+prefix = "v"
