@@ -1,4 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=lite
 pkgver=1.11
