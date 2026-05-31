@@ -1,9 +1,11 @@
+# Maintainer: Andy Alt <arch_stanton5995@proton.me>
 # Contributor: Kilian Köppchen <kiliankoeppchen at gmail dot com>
+
 pkgname=fifechan
 pkgver=0.1.5
 pkgrel=2
 pkgdesc="A C++ GUI library designed for games. It comes with a standard set of 'widgets'."
-arch=(any)
+arch=('x86_64')
 url="http://fifengine.github.io/fifechan/"
 license=('LGPL2.1')
 depends=('sdl2_image')
