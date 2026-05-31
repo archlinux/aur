@@ -1,6 +1,6 @@
 _name=oidc
 pkgname=nextcloud-app-oidc
-pkgver=1.16.6
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Nextcloud as OpenID Connect Identity Provider"
 arch=('any')
@@ -9,7 +9,7 @@ license=('AGPLv3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/H2CK/oidc/releases/download/$pkgver/oidc-$pkgver.tar.gz")
-sha512sums=('389a6e186201d0b297157c11676766a17d974845f3ea2cc02e984e6b3ff60467cc3616a4f31f266f383723d965cba5400c77c4524503adaf10e965098b9ef1ef')
+sha512sums=('e19071e1884e99bc285ac55264fcc177129491d4fe8429e26116791d964d70a3a476d771c81263f3acd25adce9e869a419d58ac99af98b1a65aeb291d9434250')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
