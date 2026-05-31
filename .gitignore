@@ -1,0 +1,8 @@
+dist/
+build/
+__pycache__/
+*.spec
+iastfyp
+pkg
+src
+*.tar.zst

@@ -1,0 +1,15 @@
+pkgbase = iastfyp
+	pkgdesc = IaSTFyP - Ironically a Stress Test For Your PC (turtle + tkinter simulation)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/iastfyp
+	arch = x86_64
+	license = MIT
+	makedepends = pyinstaller
+	depends = python
+	depends = tk
+	options = !debug
+	source = iastfyp.py
+	sha256sums = SKIP
+
+pkgname = iastfyp
