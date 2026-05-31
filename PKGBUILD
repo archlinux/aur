@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spool-bin
 _pkgname=Spool
-pkgver=0.4.20
+pkgver=0.5.2
 _electronversion=34
 pkgrel=1
 pkgdesc="Your local AI session library. Collects sessions from Claude Code, Codex CLI, Gemini CLI (and more) — browsable and ⌘K-searchable. (Prebuilt version.Use system-wide electron)."
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/spool-lab/spool/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9b2501532b24cdb783c480c0c817e5b1b920614501af1b2f2809cd48b31f0709'
+sha256sums=('0ccc690164e2a06c0ba357f5889743648fb4fa574a164ea39b8c49816cd9c990'
             '44b3703d31c25ba6ad08086976448a58b55426a3c206efba0dc08ff2162a4efa'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
@@ -65,7 +65,8 @@ prepare() {
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} +
     rm -rf \
         "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@anthropic-ai/claude-agent-sdk/vendor/ripgrep/arm64-"* \
-        "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@anthropic-ai/claude-agent-sdk/vendor/ripgrep/x64-darwin"
+        "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@anthropic-ai/claude-agent-sdk/vendor/ripgrep/x64-darwin" \
+        "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v6/"{darwin,win32,linux/arm64}
     ln -sf "/usr/bin/rg" "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/@anthropic-ai/claude-agent-sdk/vendor/ripgrep/x64-linux/rg"
 }
 package() {
