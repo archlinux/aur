@@ -2,7 +2,7 @@ pkgbase = lightspeed
 	pkgdesc = Illustrate the effects of special relativity on the appearance of moving objects.
 	pkgver = 1.2a
 	pkgrel = 4
-	url = http://lightspeed.sourceforge.net
+	url = https://lightspeed.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -17,4 +17,3 @@ pkgbase = lightspeed
 	md5sums = 44e7e5d9de2a838ffc87b24e207e0507
 
 pkgname = lightspeed
-
