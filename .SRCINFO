@@ -1,0 +1,23 @@
+pkgbase = gz-physics9
+	pkgdesc = Abstract physics interface designed to support simulation and rapid development of robot applications.
+	pkgver = 9.3.0
+	pkgrel = 1
+	url = https://github.com/gazebosim/gz-physics
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gz-cmake=5
+	depends = eigen
+	depends = gz-common=7
+	depends = gz-math=9
+	depends = gz-plugin=4
+	depends = gz-utils=4
+	depends = sdformat=16
+	depends = bullet
+	depends = libdart
+	provides = gz-physics=9
+	source = https://github.com/gazebosim/gz-physics/archive/gz-physics9_9.3.0.tar.gz
+	sha256sums = 154b67338a2f047fc3d0dc509f8d03b10d53961ea0744d361695a393fd67bff4
+
+pkgname = gz-physics9
