@@ -3,7 +3,7 @@
 # Maintainer: Benjamin von Polheim <hi at benvp dot co>
 
 pkgname=tana
-pkgver=1.520.0
+pkgver=1.523.0
 pkgrel=1
 pkgdesc="The Everything OS. The all-in-one workspace"
 arch=('x86_64')
@@ -14,10 +14,10 @@ optdepends=('alsa-lib' 'gnome-keyring' 'pulseaudio')
 options=('!strip')
 install=${pkgname}.install
 source_x86_64=(
-	"https://github.com/tanainc/tana-desktop-releases/releases/download/v${pkgver}/Tana-linux-x64-${pkgver}.zip"
+	"https://github.com/tanainc/tana-desktop-releases/releases/download/v${pkgver}/Tana.Outliner-linux-x64-${pkgver}.zip"
 	"tana.desktop"
 	"tana.png")
-sha512sums_x86_64=('5bd5e077da749d67e649753bc7b1b23ba034de36186b1fc3486b11e6f3281bde89b38c33ef1cdf6f7d6e55e43c779b3215e22b35609092d82521032b3681d144'
+sha512sums_x86_64=('06ff903c849b137fdf95dab7accefaa0ea5daaa6bf916daa4fa745a837070a5156c9909f74328423ecd0467469645f8578ad13b22e48b5ea6d79d0219818fc49'
                    'aba951628007b1c1fb004732e78295689b4d95d189b935f428a6195197a665776057a71358437fcb89af415bc39b2a8d332ab75569e0e5cc1ce6b5b0c4f95107'
                    'fd59c24253b0b7981524f50f8e3882aed59f4d3d9c1e8b99067cb706de5d7224a9f13407b1af1a90c91138cbe49484c553243793d7832f9d1ed3d78062a4d8e1')
 
