@@ -43,4 +43,5 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname-$pkgver/target/release/$pkgname"
   install -Dm0644 -t "$pkgdir/etc/nostr-rs-relay/" "$pkgname-$pkgver/config.toml"
   install -Dm0644 -t "$pkgdir/usr/lib/systemd/system/" "$pkgname-$pkgver/target/release/nostr-rs-relay.service"
-  }
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" "$pkgname-$pkgver/LICENSE"
+}
