@@ -4,7 +4,7 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r9754
+pkgver=r9771
 pkgrel=1
 pkgdesc="Digital DJ mixing software (latest development branch)."
 arch=('i686' 'x86_64' 'aarch64')
@@ -46,7 +46,7 @@ depends=(
 	'rubberband'
 	'soundtouch'
 	'sqlite'
-	'taglib'
+	'taglib1'
 	'ttf-opensans'
 	'ttf-ubuntu-font-family'
 	'upower'
@@ -100,4 +100,4 @@ package() {
 	DESTDIR="$pkgdir" cmake --install build
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set ts=2 sw=2
