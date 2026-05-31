@@ -25,6 +25,7 @@ pkgbase = aquamarine-frozen
 	depends = systemd-libs
 	depends = wayland
 	depends = wayland-protocols
+	provides = aquamarine
 	provides = aquamarine-frozen
 	provides = libaquamarine.so
 	conflicts = aquamarine
