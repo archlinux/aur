@@ -1,6 +1,6 @@
 pkgname=bearhub
 pkgver=0.10.7
-pkgrel=6
+pkgrel=7
 pkgdesc="Arch-first package manager hub (community-maintained fork of bauh)"
 arch=('any')
 url="https://github.com/spalencsar/bearhub"
@@ -22,16 +22,16 @@ optdepends=(
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=('bearhub' 'bauh')
 conflicts=('bearhub-git' 'bauh' 'bauh-git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}-bearhub.4.tar.gz")
-sha256sums=('5b39fc47dace16e01ed8115a601af4f05e92db7669eea04b0c409d8c779aa4a7')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}-bearhub.5.tar.gz")
+sha256sums=('42001198cccd5ade206f93fc0570c9d3dbb7e49a1f85b790fa577c3af41aee70')
 
 build() {
-  cd "$srcdir/$pkgname-${pkgver}-bearhub.4"
+  cd "$srcdir/$pkgname-${pkgver}-bearhub.5"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname-${pkgver}-bearhub.4"
+  cd "$srcdir/$pkgname-${pkgver}-bearhub.5"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 "bearhub/desktop/bearhub.desktop" \
