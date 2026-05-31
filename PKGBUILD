@@ -1,14 +1,14 @@
-# Maintainer: Anand <AnandRiftYT>
+# Maintainer: Anand <Anand-Rift>
 pkgname=vectorx-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-intensity GPU/CPU stress tester (Electron/WebGL)"
 arch=('x86_64')
-url="https://github.com/AnandRiftYT/VectorX_Benchmarker"
+url="https://github.com/Anand-Rift/VectorXBenchmarker"
 license=('MIT')
 depends=('electron' 'libxss' 'nss')
 
-source=("https://github.com/AnandRiftYT/VectorX_Benchmarker/releases/download/VectorX_v.1.1.0_Stable_Release/VectorXBenchmark-cpu-linux-x64.zip")
+source=("https://github.com/Anand-Rift/VectorX_Benchmarker/releases/download/VectorX_v.1.1.0_Stable_Release/VectorXBenchmark-cpu-linux-x64.zip")
 sha256sums=('640a9229fa036b9222403f55693481eafceb4e4edae6b78ac15ca9b2502315ec')
 
 package() {
