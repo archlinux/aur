@@ -1,6 +1,6 @@
 # Maintainer: Francisco V. <fvasquez dot public at fvtronics dot com>
 pkgname=folios
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Simple GNOME utility for working with local PDF files"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
     'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('0048887f727d3d5c6dc08c80e4f0be7d9b6a80c9695aab9d575133903e3cc397')
+sha256sums=('7b2386dd4ab855dd7e012eac34035d5cf59794149865db68c0d65964e8dc9242')
 
 prepare() {
     cd "$pkgname-v$pkgver"
