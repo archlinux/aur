@@ -16,7 +16,7 @@ if [ ! -f "$WINE_EXE" ]; then
     # disable Gecko/Mono installation prompts
     export WINEDLLOVERRIDES="mscoree,mshtml="
     wineboot
-    winetricks -q cjkfonts fakejapanese
+    winetricks -q corefonts cjkfonts fakejapanese
     
     mkdir -p "$(dirname "$WINE_EXE")"
     cp "$SYSTEM_EXE" "$WINE_EXE"
