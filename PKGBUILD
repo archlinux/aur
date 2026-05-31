@@ -1,17 +1,24 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=budget-tracker
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
-pkgdesc='A simple TUI budget tracker. Designed to track income and expenses and help visualize and gather basic insights from your transactions.'
-arch=('x86_64' 'aarch64' 'riscv64')
+pkgdesc='Simple TUI budget tracker. Designed to track income and expenses and help visualize and gather basic insights from your transactions.'
+arch=(
+    'x86_64'
+    'aarch64'
+    'riscv64'
+)
 url='https://github.com/Feromond/budget_tracker_tui'
 license=('GPL-3.0')
 makedepends=('cargo')
-options=(!lto)
+options=(
+    !lto 
+    !debug
+)
 provides=('budget-tracker')
 conflicts=('budget-tracker-git' 'budget-tracker-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b41125e1e90984360e546c13a9e5c464c4bce1154514b28209bc53d0351344dc')
+sha256sums=('536ab6d9d215980b19997901bf2b0372f8cd7946caecd29a34a7a6b8359a1afc')
 
 prepare() {
     cd "budget_tracker_tui-$pkgver"
