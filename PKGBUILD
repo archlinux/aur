@@ -1,6 +1,6 @@
 pkgname=hpr
 pkgver=0.69
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline zero-account activity tracker"
 arch=('x86_64')
 url="https://github.com/plexescor/HPR"
@@ -69,17 +69,12 @@ package() {
     cp -r ../build/assets \
         "$pkgdir/usr/share/hpr/assets"
 
-    install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/applications/hpr.desktop" << EOF
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=HPR
-Comment=Offline zero-account activity tracker
-Exec=hpr
-Icon=hpr
-Terminal=false
-Categories=Utility;
-StartupNotify=true
+    install -Dm755 /dev/stdin \
+    "$pkgdir/usr/bin/hpr-launcher" << 'EOF'
+#!/bin/bash
+export HYPRLAND_INSTANCE_SIGNATURE=$(ls /run/user/$(id -u)/hypr/ 2>/dev/null | grep -v lock | head -1)
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+export WAYLAND_DISPLAY=wayland-1
+exec /usr/bin/hpr-launcher
 EOF
 }
