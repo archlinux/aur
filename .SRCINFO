@@ -1,0 +1,18 @@
+pkgbase = deppull-git
+	pkgdesc = a minimalist, lightning-fast c++ utility to fetch and extract github dependencies into a third_party directory
+	pkgver = 1.0.0.r1.18d497e
+	pkgrel = 1
+	url = https://github.com/aray4iv3/cdeppull
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = curl
+	depends = nlohmann-json
+	provides = deppull
+	conflicts = deppull
+	source = git+file:///home/aray4iv3/deppull/deppull-git
+	md5sums = SKIP
+
+pkgname = deppull-git
