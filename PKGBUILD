@@ -1,3 +1,4 @@
+# Maintainer: nulldayo <nulldayo at inatuz dot im>
 pkgname=sakura-editor
 pkgver=2.4.2
 pkgrel=2
