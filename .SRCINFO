@@ -23,6 +23,7 @@ pkgbase = hyprpicker-frozen
 	depends = libxkbcommon
 	depends = wayland
 	optdepends = wl-clipboard: --autocopy
+	provides = hyprpicker
 	provides = hyprpicker-frozen
 	conflicts = hyprpicker-git
 	conflicts = hyprpicker
