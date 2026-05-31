@@ -15,7 +15,7 @@ depends=(
     'python-rich'
     'python-httpx'
     'python-psutil'
-    'python-dbgpu-git'
+    'python-dbgpu'
     'python-thefuzz'
 )
 optdepends=(

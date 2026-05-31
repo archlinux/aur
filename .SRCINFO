@@ -16,7 +16,7 @@ pkgbase = whichllm-git
 	depends = python-rich
 	depends = python-httpx
 	depends = python-psutil
-	depends = python-dbgpu-git
+	depends = python-dbgpu
 	depends = python-thefuzz
 	optdepends = python-nvidia-ml-py: NVIDIA GPU detection (pulls in nvidia-utils ~900MB)
 	provides = whichllm=0.5.7.r14.g7abe2b4
