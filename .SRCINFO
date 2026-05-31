@@ -1,0 +1,12 @@
+pkgbase = wwiseutil
+	pkgdesc = Tools for unpacking and modifying Wwise SoundBank and File Package files
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Selene0623/wwiseutil
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = go
+	source = wwiseutil-1.1.tar.gz::https://github.com/Selene0623/wwiseutil/archive/master.tar.gz
+	sha256sums = efef78a881eba8f346097de234a211bdb178833b7850a33a58b22843c963a0b4
+
+pkgname = wwiseutil
