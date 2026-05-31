@@ -1,5 +1,5 @@
 pkgbase = qmidigen
-	pkgdesc = Randomized MIDI music generator with JRPG-style compositions
+	pkgdesc = Procedural MIDI music generator with JRPG-style compositions
 	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://gitlab.com/ganthore/qmidigen

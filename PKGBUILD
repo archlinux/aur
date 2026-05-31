@@ -2,7 +2,7 @@
 pkgname=qmidigen
 pkgver=0.1.2
 pkgrel=1
-pkgdesc='Randomized MIDI music generator with JRPG-style compositions'
+pkgdesc='Procedural MIDI music generator with JRPG-style compositions'
 arch=('x86_64' 'aarch64')
 url='https://gitlab.com/ganthore/qmidigen'
 license=('MIT' 'LicenseRef-GeneralUser-GS')
