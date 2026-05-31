@@ -23,5 +23,15 @@ post_install() {
 }
 
 post_upgrade() {
-    post_install
+    systemctl daemon-reload >/dev/null 2>&1 || true
+    if systemctl is-enabled --quiet bartos 2>/dev/null; then
+        echo "==> Restarting bartos service..."
+        systemctl restart bartos
+        echo "==> bartos restarted successfully."
+    else
+        echo ""
+        echo "==> bartos upgraded to $1."
+        echo "    Run 'systemctl daemon-reload && systemctl enable --now bartos' when ready."
+        echo ""
+    fi
 }
