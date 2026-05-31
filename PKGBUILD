@@ -55,7 +55,7 @@ pkgver() {
 
 source=("${_pkgname}::git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git")
 sha512sums=('SKIP')
-provides=('nordix-optimized-ananicy-cpp')
+provides=('nordix-optimized-ananicy-cpp' 'ananicy-cpp-git')
 conflicts=('ananicy-cpp' 'ananicy-cpp-git')
 
 

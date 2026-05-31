@@ -23,6 +23,7 @@ pkgbase = nordix-optimized-ananicy-cpp
 	depends = zlib
 	depends = pcre2
 	provides = nordix-optimized-ananicy-cpp
+	provides = ananicy-cpp-git
 	conflicts = ananicy-cpp
 	conflicts = ananicy-cpp-git
 	source = nordix-optimized-ananicy-cpp::git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git
