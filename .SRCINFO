@@ -1,6 +1,6 @@
 pkgbase = lpbooster
 	pkgdesc = Linux System Optimizer: Cleaning Packages and Disabling Background Services
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/qqlsdev/lpbooster
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lpbooster
 	makedepends = cmake
 	makedepends = gcc
 	depends = gcc-libs
-	source = lpbooster-1.0.1.tar.gz::https://github.com/qqlsdev/lpbooster/archive/refs/tags/lpb.tar.gz
-	sha256sums = 8bcd076f4a28fdb221bfb56161d15ecbfe07519086969cb200b6b714a7b52b4b
+	source = lpbooster-1.1.0.tar.gz::https://github.com/qqlsdev/lpbooster/archive/refs/tags/lpb1.1.0.tar.gz
+	sha256sums = 60ff02f9c3544c0a092830a1e345aebdc198fcf89ea0febb67bfe6ac6b5adf8a
 
 pkgname = lpbooster
