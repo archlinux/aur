@@ -1,6 +1,6 @@
 pkgbase = all-ada
 	pkgdesc = A meta package which installs all Ada tools and components.
-	pkgver = 2.0
+	pkgver = 3.0
 	pkgrel = 1
 	arch = x86
 	arch = x86_64
@@ -47,7 +47,8 @@ pkgbase = all-ada
 	depends = libadalang
 	depends = libadalang-tools
 	depends = libgpr
-	depends = libvss
+	depends = vss-text
+	depends = vss-extra
 	depends = markdown
 	depends = parse_args
 	depends = polyorb

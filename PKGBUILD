@@ -2,7 +2,7 @@
 
 pkgname=all-ada
 pkgdesc='A meta package which installs all Ada tools and components.'
-pkgver=2.0
+pkgver=3.0
 pkgrel=1
 
 arch=(x86 x86_64)
@@ -50,7 +50,8 @@ depends=(adacurses
          libadalang
          libadalang-tools
          libgpr
-         libvss
+         vss-text
+         vss-extra
          markdown
          parse_args
          polyorb
