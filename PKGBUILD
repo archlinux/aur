@@ -1,12 +1,12 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
-pkgver=3.12.2
+pkgver=3.12.3
 pkgrel=1
 pkgdesc="Not sure when to update Arch Linux or its derivative? This script will help you decide."
 arch=('any')
 url="https://github.com/motorrin/Arch_Smart_Update"
 license=('MIT')
-depends=('bash' 'python' 'pacman' 'tar' 'gawk' 'coreutils' 'psmisc' 'curl' 'util-linux')
+depends=('bash' 'python' 'pacman' 'tar' 'gawk' 'coreutils' 'psmisc' 'curl')
 optdepends=(
     'reflector: for Arch Linux mirror updates'
     'cachyos-rate-mirrors: for CachyOS mirror updates'
@@ -19,7 +19,7 @@ optdepends=(
     'libnotify: for desktop notifications in daemon mode'
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8e4c54b084c32080fcb10f90de0120f3a8b6b828437a49ecae9c695ba7990f23')
+sha256sums=('e7889d4241b87bdcd1b3dfdf72f4aa13a0b47f77caf3904c0f7d6c785522d982')
 
 package() {
     cd "Arch_Smart_Update-${pkgver}"
