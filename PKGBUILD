@@ -10,7 +10,7 @@ url="https://gitlab.com/TheEnchantedPotato/mirror-hypridle-hyprland-v0.54.git"
 license=('BSD-3-Clause')
 
 conflicts=("hypridle-git" "hypridle")
-provides=("hypridle-frozen" )
+provides=("hypridle" "hypridle-frozen" )
 
 depends=(
   hyprlang-frozen

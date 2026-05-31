@@ -17,6 +17,7 @@ pkgbase = hypridle-frozen
 	depends = sdbus-cpp>=2.0.0
 	depends = systemd
 	depends = wayland
+	provides = hypridle
 	provides = hypridle-frozen
 	conflicts = hypridle-git
 	conflicts = hypridle
