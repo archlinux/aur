@@ -1,0 +1,27 @@
+pkgbase = damascene-volume
+	pkgdesc = PipeWire volume control panel built with Damascene
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/computer-whisperer/damascene-volume
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = pkgconf
+	depends = libpipewire
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = damascene-volume-0.3.0.tar.gz::https://github.com/computer-whisperer/damascene-volume/archive/refs/tags/v0.3.0.tar.gz
+	source = LICENSE-MIT
+	sha256sums = 9240852e04ba87e5ff34aab84b3f5bfed2711774fbb37e62ad6189bef7528fb4
+	sha256sums = 9f00c7ed7074fac147074cf3440eb30099ca20ffce962d9fda4188d84bcdface
+
+pkgname = damascene-volume
