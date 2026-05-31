@@ -1,4 +1,4 @@
-# Maintainer: brave-prerelease <aur-prerelease@brave.com>
+# Maintainer: Aditya Hebballe <adityahebbale@gmail.com>
 
 pkgname=brave-origin-bin
 pkgver=1.91.165
