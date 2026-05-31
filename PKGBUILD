@@ -1,6 +1,6 @@
 # Maintainer: tuanapi <tuanapi@proton.me>
 pkgname=openanime
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Unofficial OpenAnime Linux client - Compiled from source (WebGPU/Vulkan support)"
 arch=('x86_64' 'aarch64')
@@ -45,7 +45,6 @@ Exec=${pkgname} %u
 Icon=${pkgname}
 Terminal=false
 Categories=AudioVideo;Video;Player;
-MimeType=x-scheme-handler/openanime;
 StartupWMClass=OpenAnime
 PrefersNonDefaultGPU=true
 EOF
