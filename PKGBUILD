@@ -23,8 +23,7 @@ url="https://github.com/jimmykallhagen/pacman-bulk-Rns.git"
 license=('GPL3')
 depends=('bash' 'git' 'base-devel')
 conflicts=('Microsoft-Windows')
-provides=('pacman-bulk-Rns')
-
+provides=('pacman-bulk-rns')
 pkgver() {
   cd "${srcdir}/${pkgname}"
   git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -36,6 +35,6 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/$_pkgsrc"
-    install -Dm755 pacman-bulk-Rns "$pkgdir/usr/bin/pacman-bulk-Rns"
+    install -Dm755 pacman-bulk-rns "$pkgdir/usr/bin/pacman-bulk-rns"
 }
 
