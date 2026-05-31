@@ -1,6 +1,6 @@
 # Maintainer: debwuoldirty <debwuoldirty@gmail.com>
 pkgname=icecc3
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="IceWM Control Center - Suite de herramientas gráficas para configurar IceWM"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-2.0-or-later')
 depends=('python' 'gtk4' 'python-gobject' 'mpv' 'xwinwrap')
 optdepends=('polkit: para guardar archivos protegidos con contraseña')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/debwuoldirty/icecc3/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('427e05a66be867b69f2631dc915efc2f8c234c8f15751466caee5d3369f889ab')
+sha256sums=('a3977935e5afb24533c476a9f16ffaf9a8e365a34bdf16f4e4e0b85d43afc236')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
