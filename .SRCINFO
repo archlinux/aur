@@ -1,0 +1,15 @@
+pkgbase = vkmsctl-git
+	pkgdesc = Command line tool to configure the VKMS Linux kernel driver
+	pkgver = r46.0865cbf
+	pkgrel = 1
+	url = https://github.com/JoseExposito/vkmsctl
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = vkmsctl
+	conflicts = vkmsctl
+	source = git+https://github.com/JoseExposito/vkmsctl.git
+	sha1sums = SKIP
+
+pkgname = vkmsctl-git
