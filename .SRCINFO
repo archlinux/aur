@@ -9,6 +9,7 @@ pkgbase = hermes-agent
 	makedepends = python311
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = rsync
 	depends = python311
 	depends = ripgrep
 	depends = ffmpeg

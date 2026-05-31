@@ -28,7 +28,7 @@ depends=(
     'alsa-lib'
 )
 
-makedepends=('python311' 'nodejs' 'npm')
+makedepends=('python311' 'nodejs' 'npm' 'rsync')
 source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
 sha256sums=('465ee7a8da014d89e8d381fd13b862469862b7aa6d42b2e9b938351d3787b48e')
 validpgpkeys=()
