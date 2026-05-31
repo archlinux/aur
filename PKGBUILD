@@ -12,11 +12,11 @@ depends=(
     'python-websockets'
     'lm_sensors'
     'dmidecode'
-    'nodejs'
 )
 makedepends=(
-    'npm'
     'git'
+    'nodejs'
+    'npm'
 )
 optdepends=(
     'nvidia-utils: suporte a GPU NVIDIA (fan control, temperatura)'
@@ -34,6 +34,11 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/machctrl-main"
+    # Verifica se node/npm estão disponíveis
+    if ! command -v node &>/dev/null; then
+        echo "ERRO: nodejs não encontrado. Instale com: sudo pacman -S nodejs npm"
+        exit 1
+    fi
     npm install --prefer-offline
     npx vite build
     npx electron-builder build --linux dir
@@ -55,8 +60,15 @@ package() {
     install -dm755 "$pkgdir/usr/local/bin"
     cat > "$pkgdir/usr/local/bin/machctrl" << 'LAUNCHER'
 #!/bin/bash
-# Encontra o binário principal (pode ser "machctrl" ou "MachCtrl")
-exec /opt/machctrl/app/$(ls /opt/machctrl/app/ | grep -iE "^machctrl$" | head -1 || ls /opt/machctrl/app/ | grep -v "\." | head -1) "$@"
+# Suporte a Wayland e X11
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    WAYLAND_FLAGS="--enable-features=UseOzonePlatform --ozone-platform=wayland"
+else
+    WAYLAND_FLAGS=""
+fi
+BIN=$(ls /opt/machctrl/app/ | grep -iE "^machctrl$" | head -1)
+[ -z "$BIN" ] && BIN=$(ls /opt/machctrl/app/ | grep -v "\." | head -1)
+exec /opt/machctrl/app/$BIN $WAYLAND_FLAGS "$@"
 LAUNCHER
     chmod 755 "$pkgdir/usr/local/bin/machctrl"
 
