@@ -1,4 +1,4 @@
-From 93fba53267bf8163dcf9c450983249cc5d279bad Mon Sep 17 00:00:00 2001
+From dd59314d2879eb27eeede8b985d0beaba302eceb Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
 Date: Wed, 17 Jan 2024 21:05:57 +0100
 Subject: [PATCH 3/4] Quick & Dirty patch to allow finding Clipper1 on Arch

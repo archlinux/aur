@@ -1,4 +1,4 @@
-From 1051627aa9a13d53d14af4e77c1a521cf1210208 Mon Sep 17 00:00:00 2001
+From 26406a67acb2a133714f1d34ef0280880d137fb1 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
 Date: Sun, 26 Apr 2026 18:38:19 +0200
 Subject: [PATCH 4/4] Remove Qt version requirements
@@ -8,7 +8,7 @@ Subject: [PATCH 4/4] Remove Qt version requirements
  1 file changed, 5 deletions(-)
 
 diff --git a/phoenix.pro b/phoenix.pro
-index 62690d58..42cdc456 100644
+index 433a1da9..3bf53990 100644
 --- a/phoenix.pro
 +++ b/phoenix.pro
 @@ -18,11 +18,6 @@

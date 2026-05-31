@@ -1,15 +1,29 @@
-From 569d50e6b22e0e2d6ee25cb16dddb88fd99d8f45 Mon Sep 17 00:00:00 2001
+From b01ba03f33a4161718f49d3bd3a7965dfdebe5ae Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
 Date: Thu, 26 Jan 2023 19:18:56 +0100
 Subject: [PATCH 1/4] Quick & Dirty patch to allow finding quazip-qt6 on Arch
  Linux
 
 ---
+ phoenix.pro          |  2 +-
  pri/quazipdetect.pri | 26 ++++----------------------
- 1 file changed, 4 insertions(+), 22 deletions(-)
+ 2 files changed, 5 insertions(+), 23 deletions(-)
 
+diff --git a/phoenix.pro b/phoenix.pro
+index 62690d58..433a1da9 100644
+--- a/phoenix.pro
++++ b/phoenix.pro
+@@ -164,7 +164,7 @@ macx {
+     QMAKE_BUNDLE_DATA += FILE_ICONS
+ }
+ 
+-QT += concurrent core gui network printsupport serialport sql svg widgets xml svgwidgets openglwidgets
++QT += concurrent core gui network printsupport serialport sql svg widgets xml svgwidgets openglwidgets core5compat
+ 
+ RC_FILE = fritzing.rc
+ RESOURCES += phoenixresources.qrc
 diff --git a/pri/quazipdetect.pri b/pri/quazipdetect.pri
-index f8d6c525..f13c5dff 100644
+index f8d6c525..33406c56 100644
 --- a/pri/quazipdetect.pri
 +++ b/pri/quazipdetect.pri
 @@ -1,6 +1,6 @@
@@ -50,7 +64,7 @@ index f8d6c525..f13c5dff 100644
 -	LIBS += -lz
 -}
 +message("including Arch's quazip library")
-+INCLUDEPATH += /usr/include/QuaZip-Qt6-1.5/
++INCLUDEPATH += /usr/include/QuaZip-Qt6-1.7.1/
 +LIBS += -lquazip1-qt6
 -- 
 2.54.0
