@@ -2,7 +2,7 @@
 _base=nbsphinx-link
 pkgname=python-${_base}
 pkgdesc="A sphinx extension for including notebook files from outside sphinx source root"
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 arch=(any)
 url="https://github.com/vidartf/${_base}"
@@ -11,7 +11,7 @@ depends=(python-nbsphinx)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz
   docutils.patch::${url}/pull/26.patch)
-sha512sums=('a9bf37fffd99de45991c9f385a548686cd5cc1494c122c277bbb72b815ea9192ca3a92d5ed2f00ca6b238021a013875d258ee2ef79b5f046493bafc85de3cdab'
+sha512sums=('c000de040607bae0065b68a1109a1f9e5fe2e391a6e492fe6eb019e08e450e8e093749093706eee2558f91bf8be2583c55c8abbd202d814a19547b9012dc38ea'
             '3c8009fa41b552a16acf1dde6fe27585c17c25dd7e67fa8ab9c8898895e490214925e5c199994d88399ad1a94daee37dabaf7c7ec1279a457be9c7ed3708315b')
 
 prepare() {
