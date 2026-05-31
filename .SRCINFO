@@ -1,6 +1,6 @@
 pkgbase = pocket-id
 	pkgdesc = A simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services.
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/pocket-id/pocket-id
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pocket-id
 	makedepends = nodejs
 	depends = glibc
 	conflicts = pocket-id
-	source = pocket-id::git+https://github.com/pocket-id/pocket-id.git#tag=v2.7.0
-	sha256sums = e8f93a830cda08064a277f55121e0b306d3a0ffc3980f6f835c8933a33ebb749
+	source = pocket-id::git+https://github.com/pocket-id/pocket-id.git#tag=v2.8.0
+	sha256sums = 4b6ddbe1b6d766f8ea7424e1e7950164c8d4faefe302608569f183a212263a6e
 
 pkgname = pocket-id
