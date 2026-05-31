@@ -1,6 +1,6 @@
 pkgbase = proton-authenticator-git
 	pkgdesc = 2FA app from Proton to securely sync and backup 2FA codes
-	pkgver = 1.1.5.r59198.g0fa8804
+	pkgver = 1.1.5.r59807.g23b362f
 	pkgrel = 1
 	url = https://proton.me/authenticator
 	arch = x86_64

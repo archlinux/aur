@@ -2,7 +2,7 @@
 
 pkgname=proton-authenticator-git
 _name=${pkgname%-git}
-pkgver=1.1.5.r59198.g0fa8804
+pkgver=1.1.5.r59807.g23b362f
 pkgrel=1
 pkgdesc='2FA app from Proton to securely sync and backup 2FA codes'
 arch=(x86_64)
@@ -40,17 +40,14 @@ prepare() {
     # Configure Yarn workspaces to build only authenticator instead of all applications
     sed -i 's/"applications\/\*",/"applications\/authenticator",/' package.json
 
-    # Modify tauri build script to use --frozen flag for reproducible builds
-    sed -i 's/tauri build -v --no-bundle/tauri build -v --no-bundle -- --frozen/g' \
-        applications/authenticator/tools/build.sh
-
     export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
     export SENTRYCLI_SKIP_DOWNLOAD=1
     yarn install
 
     cd applications/authenticator/src-tauri
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target host-tuple
+    cargo update
+    cargo fetch --target host-tuple
 }
 
 build() {
