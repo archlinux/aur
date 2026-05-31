@@ -1,7 +1,7 @@
 # Maintainer: Petr Kracik <petrkr@petrkr.net>
 
 pkgname=mpremote
-pkgver=1.27.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc="This CLI tool provides an integrated set of utilities to remotely interact with and automate a MicroPython device over a serial connection"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/m/mpremote/mpremote-${pkgver}.tar.gz")
-sha256sums=('6bb75774648091dad6833af4f86c5bf6505f8d7aec211380f9e6996c01d23cb5')
+sha256sums=('fdb5626be83dff4e53c0184f8950814cb519b524dba7f1f8b1668aa477257a31')
 
 build() {
 	cd $pkgname-$pkgver
