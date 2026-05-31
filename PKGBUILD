@@ -12,8 +12,8 @@ source=("LICENSE-0.4.2::https://raw.githubusercontent.com/Xuepoo/sonic-bridge/v0
 source_x86_64=("sonic-bridge-linux-x86_64-0.4.2::https://github.com/Xuepoo/sonic-bridge/releases/download/v0.4.2/sonic-bridge-linux-x86_64")
 source_aarch64=("sonic-bridge-linux-aarch64-0.4.2::https://github.com/Xuepoo/sonic-bridge/releases/download/v0.4.2/sonic-bridge-linux-aarch64")
 sha256sums=('a0609908bbcd4b5a91e8e2ce9e302a7adfc57957d16ad3ef5ef532839e186243')
-sha256sums_x86_64=('9486ae7fba173cc8ed7825cafd75130ed928f5695a1a405db9adfd96c9d4212d')
-sha256sums_aarch64=('55e6818716ebcfac8de5bd2952613a04e10370ac38e8def7205fb7eef713f59f')
+sha256sums_x86_64=('9895fb6427bebc5adc846b5cc9da15f2bdddb8db732b387e04fb0fe0d47cb0d3')
+sha256sums_aarch64=('d84f0ef16a43ceaae10905a5885d60d17473334e71ee21f7301cb8b923585a21')
 
 package() {
   install -Dm755 "$srcdir/sonic-bridge-linux-$CARCH-0.4.2" "$pkgdir/usr/bin/sonic-bridge"
