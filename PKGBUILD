@@ -2,7 +2,7 @@
 
 pkgname=winggifeditor2
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='一个轻量的 Gif 编辑器 / A lightweight Gif Editor'
 url="https://github.com/Wing-summer/WingGifEditor2"
 
@@ -52,7 +52,7 @@ package() {
     mkdir -p "$_optdir"
     install -Dm755 build/WingGifEditor2 "$_optdir/WingGifEditor2"
 
-    cp -a "build/lang" "$_optdir/"
+    cp -a "$_mkinst/images" "build/lang" "$_optdir/"
 
     for _f in LICENSE authorband.svg licenseband.svg screenshot.png README.md images/author.jpg; do
         install -Dm644 "$srcdir/WingGifEditor2/${_f}" "$_optdir/${_f##*/}"

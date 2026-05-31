@@ -1,7 +1,7 @@
 pkgbase = winggifeditor2
 	pkgdesc = 一个轻量的 Gif 编辑器 / A lightweight Gif Editor
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wing-summer/WingGifEditor2
 	arch = x86_64
 	arch = aarch64
