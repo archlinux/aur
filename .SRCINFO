@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-desktop-git
 	pkgdesc = Jitsi Meet desktop application.(Use system-wide electron)
-	pkgver = 2026.4.0.r0.gf92e8f0
+	pkgver = 2026.6.0.r0.gc07e9b8
 	pkgrel = 1
 	url = https://github.com/jitsi/jitsi-meet-electron
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = jitsi-meet-desktop-git
 	makedepends = git
 	makedepends = curl
 	makedepends = jq
-	depends = electron41
-	provides = jitsi-meet-desktop=2026.4.0
+	depends = electron42
+	provides = jitsi-meet-desktop=2026.6.0
 	conflicts = jitsi-meet-desktop
 	source = jitsi-meet-desktop.git::git+https://github.com/jitsi/jitsi-meet-electron
 	source = jitsi-meet-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = jitsi-meet-desktop-git
