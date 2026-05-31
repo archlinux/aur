@@ -64,7 +64,7 @@
      # symbolic links
 --- a/src/common/util/src/file_util.cpp
 +++ b/src/common/util/src/file_util.cpp
-@@ -212,7 +212,7 @@ std::filesystem::path ov::util::get_compiled_plugin_path(const std::filesystem::
+@@ -215,7 +215,7 @@ std::filesystem::path ov::util::get_compiled_plugin_path(const std::filesystem::
      const auto ov_library_path = get_ov_lib_path();
  
      // plugin can be found either:
@@ -79,9 +79,9 @@
                        npu_tools_utils)
  
  set_target_properties(${TARGET_NAME} PROPERTIES
--                          FOLDER ${CMAKE_CURRENT_SOURCE_DIR}
-+                          FOLDER ${CMAKE_CURRENT_SOURCE_DIR} OUTPUT_NAME ov-${TARGET_NAME}
-                           CXX_STANDARD 17)
+-                      FOLDER intel_npu_tools
++                      FOLDER intel_npu_tools OUTPUT_NAME ov-${TARGET_NAME}
+                       CXX_STANDARD 17)
  
  # TODO: fix warnings and remove this exception
 @@ -44,13 +44,13 @@ endif()
@@ -106,9 +106,9 @@
                LINK_LIBRARIES PRIVATE ${DEPENDENCIES})
  
  set_target_properties(${TARGET_NAME} PROPERTIES
--                          FOLDER ${CMAKE_CURRENT_SOURCE_DIR}
-+                          FOLDER ${CMAKE_CURRENT_SOURCE_DIR} OUTPUT_NAME ov-${TARGET_NAME}
-                           CXX_STANDARD 17)
+-                      FOLDER intel_npu_tools
++                      FOLDER intel_npu_tools OUTPUT_NAME ov-${TARGET_NAME}
+                       CXX_STANDARD 17)
  
  if (WIN32)
 @@ -79,13 +79,13 @@ endif()
@@ -129,16 +129,16 @@
  endif()
 --- a/src/plugins/intel_npu/tools/single-image-test/CMakeLists.txt
 +++ b/src/plugins/intel_npu/tools/single-image-test/CMakeLists.txt
-@@ -53,7 +53,7 @@ ov_add_target(TYPE EXECUTABLE
+@@ -52,7 +52,7 @@ ov_add_target(TYPE EXECUTABLE
  ov_set_threading_interface_for(${TARGET_NAME})
  
  set_target_properties(${TARGET_NAME} PROPERTIES
--                          FOLDER ${CMAKE_CURRENT_SOURCE_DIR}
-+                          FOLDER ${CMAKE_CURRENT_SOURCE_DIR} OUTPUT_NAME ov-${TARGET_NAME}
-                           CXX_STANDARD 17)
+-                      FOLDER intel_npu_tools
++                      FOLDER intel_npu_tools OUTPUT_NAME ov-${TARGET_NAME}
+                       CXX_STANDARD 17)
  
  # TODO: fix warnings and remove this exception
-@@ -66,13 +66,13 @@ endif()
+@@ -65,13 +65,13 @@ endif()
  #
  
  install(TARGETS ${TARGET_NAME}

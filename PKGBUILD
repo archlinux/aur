@@ -6,9 +6,9 @@ pkgname=(
     'openvino-intel-gpu-plugin'
     'openvino-intel-npu-plugin'
     'python-openvino')
-pkgver=2026.1.0
-pkgrel=2
-_commit=63e31528c62d3eee06733efa63915ce04bd86f47
+pkgver=2026.2.0
+pkgrel=1
+_commit=52ddc07385712456dd9f8c5ecf05d7e49c6da329
 pkgdesc='A toolkit for optimizing and deploying deep learning models'
 arch=('x86_64')
 url='https://docs.openvino.ai/'
@@ -56,7 +56,7 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?s
         'git+https://github.com/herumi/xbyak_riscv.git'
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch')
-sha256sums=('db6c89e6fea6b483ceb51ea17246b1c3190f8dbff502b259edd32f710a9dd362'
+sha256sums=('c33bfd5ecc535a4317c8484637f4e36d34e70832b9ec77c257ae48cf0ae58e71'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -80,8 +80,8 @@ sha256sums=('db6c89e6fea6b483ceb51ea17246b1c3190f8dbff502b259edd32f710a9dd362'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c5ed3a23fc153a082e97841c892b83685426a431a1a32a40f120d91633943e53'
-            '66615858cc57df2e0e256798415316e0b6deb41d6d9b3b135e8573f4a71b5f58')
+            'fa1d3bc0b89fb36ef254b572958b806f76b37dac2faab53a148ba9db9cbffd0d'
+            '07814fc576c6bced01c2d37e1f0d5c13f90ebb3c0e4fa404b3c5d367d83dc48c')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 
 export GIT_LFS_SKIP_SMUDGE='1'
