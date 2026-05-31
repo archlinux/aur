@@ -12,6 +12,7 @@ pkgbase = hyprpolkitagent-frozen
 	depends = hyprland-qt-support-frozen
 	depends = hyprutils-frozen
 	depends = polkit-qt6
+	provides = hyprpolkitagent
 	provides = hyprpolkitagent-frozen
 	conflicts = hyprpolkitagent-git
 	conflicts = hyprpolkitagent
