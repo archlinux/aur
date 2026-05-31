@@ -1,0 +1,13 @@
+pkgbase = chplymouth-git
+	pkgdesc = A simple interactive CLI script to change and apply Plymouth themes across all kernels
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/periodicbrake63/chplymouth
+	arch = any
+	license = MIT
+	depends = bash
+	depends = plymouth
+	source = chplymouth::git+https://github.com/periodicbrake63/chplymouth.git
+	md5sums = SKIP
+
+pkgname = chplymouth-git
