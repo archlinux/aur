@@ -9,6 +9,6 @@ pkgbase = lpbooster
 	makedepends = gcc
 	depends = gcc-libs
 	source = lpbooster-1.1.0.tar.gz::https://github.com/qqlsdev/lpbooster/archive/refs/tags/lpb1.1.0.tar.gz
-	sha256sums = 60ff02f9c3544c0a092830a1e345aebdc198fcf89ea0febb67bfe6ac6b5adf8a
+	sha256sums = 39f09e59097a1bdd29e76b3dc12a540a9e13196b5fc485904209351c2ebd063d
 
 pkgname = lpbooster
