@@ -1,6 +1,6 @@
 pkgbase = calendar-bin
 	pkgdesc = Task, calendar, Vision protection.(Prebuilt version)
-	pkgver = 1.0.22
+	pkgver = 1.0.23
 	pkgrel = 1
 	url = https://github.com/KangLin/Calendar
 	arch = aarch64
@@ -10,13 +10,14 @@ pkgbase = calendar-bin
 	depends = openssl
 	depends = qt6-base
 	depends = qt6-multimedia
-	provides = calendar=1.0.22
+	depends = qt6-svg
+	provides = calendar=1.0.23
 	conflicts = calendar
 	source = calendar.sh
 	sha256sums = 7bf300a49fb28500eeb082a713bde6a0ec98328630c0c53df5610512c2449cbc
-	source_aarch64 = calendar-1.0.22-aarch64.deb::https://github.com/KangLin/Calendar/releases/download/v1.0.22/rabbitcalendar_1.0.22_ubuntu-24.04_arm64.deb
-	sha256sums_aarch64 = c87bd67ffa05795ad245762f78c5a0aa24dfad21e8c91514fafe5f01928a3c98
-	source_x86_64 = calendar-1.0.22-x86_64.deb::https://github.com/KangLin/Calendar/releases/download/v1.0.22/rabbitcalendar_1.0.22_ubuntu-24.04_amd64.deb
-	sha256sums_x86_64 = 1a99d561d63308e9332511523d10243c4b5831b562a1d5e56c1a30a43999b270
+	source_aarch64 = calendar-1.0.23-aarch64.deb::https://github.com/KangLin/Calendar/releases/download/v1.0.23/rabbitcalendar_1.0.23_ubuntu26.04_aarch64.deb
+	sha256sums_aarch64 = d24032f90566c1ad6514ce16d81af5dc95b63236e8f10fd936160b8c26a98b5b
+	source_x86_64 = calendar-1.0.23-x86_64.deb::https://github.com/KangLin/Calendar/releases/download/v1.0.23/rabbitcalendar_1.0.23_ubuntu26.04_x86_64.deb
+	sha256sums_x86_64 = 4f8ded88216dec38805bed284da9479192adc3e46a0fdd7d973d23cd74bf2691
 
 pkgname = calendar-bin
