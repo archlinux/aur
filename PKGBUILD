@@ -2,7 +2,7 @@
 
 pkgname=ez2lazer-bin
 pkgver=2026.528.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ez to Lazer, As a cool client. (a fork of osu!lazer)"
 arch=(x86_64)
 url="https://github.com/SK-la/Ez2Lazer"
@@ -13,7 +13,7 @@ depends=(
   fuse2
   osu-mime
 )
-provides=(ez2lazer ez2lazer-git)
+provides=(ez2lazer)
 conflicts=(ez2lazer ez2lazer-git)
 options=(!strip !debug)
 source=(
