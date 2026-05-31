@@ -9,6 +9,7 @@ pkgbase = hyprland-protocols-frozen
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
+	provides = hyprland-protocols-git
 	provides = hyprland-protocols-frozen
 	conflicts = hyprland-protocols-git
 	conflicts = hyprland-protocols
