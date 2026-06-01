@@ -1,9 +1,28 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 4.7.3 ➙ 4.9.1
-              : 2026-05-29 ➙ 2026-05-30
+ Tags         : 4.7.4 ➙ 5.1.0
+              : 2026-05-29 ➙ 2026-05-31
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-05-31   : 5.1.0
+              - **5.1.0**
+            
+                * Avoid double "//" in efi tool shadow directory path name.
+                * Error messages to stderr instead of stdout.
+                * Code structure re-org.
+                * More code tidy ups.
+                * Add standalone tools (installed in /usr/bin):
+            
+                  * sd-boot-efi-tool-update <oper> <package-name>
+                  * sd-boot-kernel-update <oper> <package-name>
+            
+                  Where <oper> is add or remove or inspect (see man kernel-install).
+                  Note that <package-name> must be already installed via pacman.
+                * Improve way shadow "install.conf" is created. If file exists and is correct then
+                  dont write it again.
+ 2026-05-30   ⋯
+              - update Changelog
 
  2026-05-30   : 4.9.1
               - **4.9.1**
@@ -41,14 +60,4 @@
               - **4.7.4**
             
                 * loader flags to meson build
-              - update Changelog
-
- 2026-05-29   : 4.7.3
-              - **4.7.3**
-            
-                * Change build tooling to meson (was cmake).
-                  Simpler and cleaner.
-                * Use meson to run tests.
-                * No functional change.
- 2026-05-25   ⋯
               - update Changelog
