@@ -1,0 +1,18 @@
+pkgbase = dot-vault
+	pkgdesc = A secure vault utility for managing, backing up, and restoring dotfiles with a TUI.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/dot-vault
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = tar
+	depends = file
+	depends = findutils
+	provides = dotfiles-manager
+	conflicts = fish-manager
+	source = dot-vault.sh
+	sha256sums = SKIP
+
+pkgname = dot-vault
