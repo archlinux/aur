@@ -8,7 +8,7 @@ post_install() {
         _user="${SUDO_USER:-$USER}"
         _uid=$(id -u "$_user" 2>/dev/null)
         _env="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_uid}/bus"
-        _gset="sudo -u $_user env $_env gsettings"
+        _gset="runuser -u $_user -- env $_env gsettings"
         _binding="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/pkgbuild-manager/"
 
         _current=$(${_gset} get org.gnome.settings-daemon.plugins.media-keys \
@@ -32,7 +32,44 @@ post_install() {
         fi
     fi
 
-    pkill -u "${SUDO_USER:-$USER}" nautilus 2>/dev/null || true
+    # Detect installed file managers and show targeted hints
+    _detected=0
+    if command -v nautilus &>/dev/null; then
+        _detected=1
+        if ! pacman -Q python-nautilus &>/dev/null 2>&1; then
+            echo ">>> Nautilus detected — install python-nautilus for right-click support:"
+            echo ">>>   sudo pacman -S python-nautilus"
+            echo ">>> Then run: nautilus -q"
+        else
+            echo ">>> Nautilus extension ready. Run: nautilus -q"
+        fi
+    fi
+    if command -v nemo &>/dev/null; then
+        _detected=1
+        if ! pacman -Q nemo-python &>/dev/null 2>&1; then
+            echo ">>> Nemo detected — install nemo-python for right-click support:"
+            echo ">>>   sudo pacman -S nemo-python"
+        else
+            echo ">>> Nemo extension ready."
+        fi
+    fi
+    if command -v caja &>/dev/null; then
+        _detected=1
+        if ! pacman -Q python-caja &>/dev/null 2>&1; then
+            echo ">>> Caja detected — install python-caja for right-click support:"
+            echo ">>>   sudo pacman -S python-caja"
+        else
+            echo ">>> Caja extension ready."
+        fi
+    fi
+    if command -v dolphin &>/dev/null; then
+        _detected=1
+        echo ">>> Dolphin detected — right-click service menu installed automatically."
+    fi
+    if [ "$_detected" -eq 0 ]; then
+        echo ">>> No supported file manager detected."
+        echo ">>> Supported: Nautilus, Nemo, Caja, Dolphin."
+    fi
 }
 
 post_upgrade() {
@@ -50,7 +87,7 @@ post_remove() {
         _user="${SUDO_USER:-$USER}"
         _uid=$(id -u "$_user" 2>/dev/null)
         _env="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_uid}/bus"
-        _gset="sudo -u $_user env $_env gsettings"
+        _gset="runuser -u $_user -- env $_env gsettings"
         _binding="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/pkgbuild-manager/"
         _current=$(${_gset} get org.gnome.settings-daemon.plugins.media-keys \
             custom-keybindings 2>/dev/null || echo "[]")
