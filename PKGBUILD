@@ -1,11 +1,11 @@
 pkgname=wallselector-kde
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Qt-based wallpaper carousel and selector for KDE Plasma 6"
 arch=('any')
 url="https://github.com/local/wallselector-kde"
 license=('GPL3')
-depends=('python' 'python-pyqt6' 'ffmpeg' 'qt6-wayland' 'plasma-workspace')
+depends=('python' 'python-pyqt6' 'ffmpeg' 'qt6-wayland' 'plasma-workspace' 'qt6-multimedia' 'qt6-multimedia-ffmpeg' 'plasma6-wallpapers-smart-video-wallpaper-reborn')
 install='wallselector-kde.install'
 # Иконка удалена из обязательных исходников, чтобы не блокировать сборку
 source=('wallselector_kde.py'
