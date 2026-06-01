@@ -1,0 +1,32 @@
+# MachCtrl Changelog
+
+## v2.0.0 — 2026-06-01
+
+### New Features
+- GPU fan temperature curve editor (5 control points, interactive SVG graph + table)
+- NVIDIA GPU support: fan control via nvidia-smi (manual, max, curve, auto, restored on boot)
+- PT/BR ↔ EN language toggle button in titlebar, auto-detected from system locale
+- DE check on install: blocks installation if desktop environment is not KDE or GNOME
+- Fan curve: default set to 30% minimum for safety, with confirmation dialog on reset
+
+### Fixes
+- GPU fan showing 19% / 557 RPM when physically stopped (fan1_enable=0 ghost reading)
+- Fan curve mode displayed as "Manual" instead of "Curve" after restart
+- Resetting fan curve now sends set_fan_auto to sync backend state
+- FUSE error on launch: switched from AppImage to linux-unpacked (no FUSE required)
+- Wayland support: launcher auto-detects session and passes --ozone-platform=wayland
+- Manjaro compatibility: nodejs/npm moved to makedepends, no longer fails on install
+- i18n: full translation of all panels (CPU, Memory, Disks, Fans, Power, Cleaner, Benchmark, About)
+- i18n: duplicate keys in i18n.ts causing broken translations in EN mode
+- Sidebar labels showing raw key names (sideOverview, sideCpu, etc.)
+
+### Performance
+- Images converted from PNG to WebP (~80% size reduction: fan-blade 142KB→14KB, nvidia 86KB→9KB)
+- electron-builder updated to v26
+- vite updated to v6
+
+### AUR / Packaging
+- PKGBUILD: linux-unpacked install (no AppImage, no FUSE dependency)
+- PKGBUILD: Wayland launcher flags
+- PKGBUILD: nodejs/npm as makedepends for broader distro compatibility
+- pkgdesc now in English per AUR convention
