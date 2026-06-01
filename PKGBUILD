@@ -1,7 +1,7 @@
 # Maintainer: JP Roemer <jp+aur@roemer.im>
 
 pkgname=kconnect
-pkgver=0.5.22
+pkgver=0.5.23
 pkgrel=1
 pkgdesc='CLI utility that can be used to discover and securely access Kubernetes clusters across multiple operating environments.'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ conflicts=("${pkgname}-bin")
 source=(
     "${pkgname}_${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('20710a11e5f20187921f32e26b3e6593740b142279c96cb1d39d9a09c97646d3')
+sha256sums=('91a75204b9eaef72e5b270a63f409e9fe630c5adacb1983004c554b217a5729a')
 
 export GGO_ENABLED="0"
 export CGO_CPPFLAGS="${CPPFLAGS}"
