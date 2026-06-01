@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="IaSTFyP - Ironically a Stress Test For Your PC (turtle + tkinter simulation)"
 arch=('x86_64')
 url="https://aur.archlinux.org/packages/iastfyp"
-license=('MIT')
+license=('GPL')
 
 depends=('python' 'tk')
 makedepends=('pyinstaller')
