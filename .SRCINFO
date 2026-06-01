@@ -1,10 +1,10 @@
 pkgbase = piuparts
 	pkgdesc = .deb package installation, upgrading, and removal testing tool
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://piuparts.debian.org/
 	arch = x86_64
-	arch = arm64
+	arch = aarch64
 	license = GPL-2.0-or-later
 	makedepends = go
 	depends = debsums

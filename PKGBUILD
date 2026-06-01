@@ -2,9 +2,9 @@
 pkgbase=piuparts
 pkgname=(piuparts piuparts-doc)
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc=".deb package installation, upgrading, and removal testing tool"
-arch=(x86_64 arm64)
+arch=(x86_64 aarch64)
 url="https://piuparts.debian.org/"
 license=(GPL-2.0-or-later)
 depends=(debsums lsof util-linux python-sphinx python-debian python-apt python-debianbts python-distro-info python-pytest python-sphinx python-yaml)
