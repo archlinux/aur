@@ -3,7 +3,7 @@
 _pkgname=lossless-adapter-manager
 pkgname=${_pkgname}
 pkgdesc="Management application for the Input Integrety Lossless Adapter Gamecube adapter."
-pkgver=2.53
+pkgver=2.54
 pkgrel=1
 provides=("${_pkgname}")
 conflicts=("LosslessAdapterManager2")
@@ -16,11 +16,11 @@ source=("${_executablename}.gz::https://mirror.sanin.dev/aur/lossless-adapter-ma
         "${_pkgname}.sh"
         "${_pkgname}.desktop"
         "${_pkgname}.svg")
-sha1sums=('53a2504d52e249ce5bbac65bc879bf0954fb422c'
+sha1sums=('dedeb95f92186b8d38be5ad682f578ed8d8580a9'
           'ce512b6a45749d59323143273189a96db48a0565'
           '87ede3e2da870c0986f8d2fcbfdbdafa07ace299'
           '3e6ea78f4fd57d35596e64e6dbd664d00e67a465')
-sha256sums=('2bba183ba97fc57024093742acd91d9768623bd23e35beebe9faba577afbfb33'
+sha256sums=('08208d2ae47808683e01e7cbf8ecaa6625f336627e77046fa8c851e0a03d9fb6'
             '8f5f426441b1a65a5f9f20700035ca72c1747e59db03d4d96ed782c94c916e0c'
             '3e212146833bbe5924f22046839d50d0e67b166c50580481ec2a980cbb4e5d78'
             'f134f6a3de72b4d7dfd518832dcd56b2afe9303b76d7e271db629784e569e84f')
