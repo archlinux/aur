@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Huang <jeremyhuang55555@gmail.com>
 pkgname=jcode-bin
-pkgver=0.18.0
+pkgver=0.18.3
 pkgrel=1
 pkgdesc="AI coding agent powered by Claude and ChatGPT"
 arch=('x86_64')
@@ -8,14 +8,18 @@ url="https://github.com/1jehuang/jcode"
 license=('MIT')
 provides=('jcode')
 conflicts=('jcode')
-source=("https://github.com/1jehuang/jcode/releases/download/v0.18.0/jcode-linux-x86_64.tar.gz")
-sha256sums=('2d012503b7e4045b45320559e8748a7918163974d48a53227be8a34704e730e8')
+source=("https://github.com/1jehuang/jcode/releases/download/v0.18.3/jcode-linux-x86_64.tar.gz")
+sha256sums=('d86573502262bab22a4f36e4b2d147e4ac0c370b3e72421d628cf4bb79253930')
 
 package() {
     install -Dm755 "${srcdir}/jcode-linux-x86_64" "${pkgdir}/usr/lib/jcode/jcode-linux-x86_64"
     install -Dm755 "${srcdir}/jcode-linux-x86_64.bin" "${pkgdir}/usr/lib/jcode/jcode-linux-x86_64.bin"
-    install -Dm644 "${srcdir}"/libssl.so* "${pkgdir}/usr/lib/jcode/"
-    install -Dm644 "${srcdir}"/libcrypto.so* "${pkgdir}/usr/lib/jcode/"
+    if compgen -G "${srcdir}/libssl.so*" >/dev/null; then
+        install -Dm644 "${srcdir}"/libssl.so* "${pkgdir}/usr/lib/jcode/"
+    fi
+    if compgen -G "${srcdir}/libcrypto.so*" >/dev/null; then
+        install -Dm644 "${srcdir}"/libcrypto.so* "${pkgdir}/usr/lib/jcode/"
+    fi
     mkdir -p "${pkgdir}/usr/bin"
     ln -s /usr/lib/jcode/jcode-linux-x86_64 "${pkgdir}/usr/bin/jcode"
 }
