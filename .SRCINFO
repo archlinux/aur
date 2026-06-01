@@ -1,18 +1,18 @@
 pkgbase = command-code
 	pkgdesc = AI coding agent that continuously learns your coding taste
-	pkgver = 0.30.3
-	pkgrel = 2
+	pkgver = 0.31.0
+	pkgrel = 1
 	url = https://commandcode.ai
 	arch = x86_64
 	license = LicenseRef-command-code
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = command-code-0.30.3.tgz
+	noextract = command-code-0.31.0.tgz
 	options = !strip
-	source = command-code-0.30.3.tgz::https://registry.npmjs.org/command-code/-/command-code-0.30.3.tgz
+	source = command-code-0.31.0.tgz::https://registry.npmjs.org/command-code/-/command-code-0.31.0.tgz
 	source = command-code.license
-	sha256sums = 0e34c8408a5f6ee5c50e8e03ddda60714028bd3e17cebf26bad9c6593b22c7a1
+	sha256sums = be65f7264a0bb5eb3b1324755ddec55c712668a2fd2bed5abc5121fa0afa7ce6
 	sha256sums = SKIP
 
 pkgname = command-code
