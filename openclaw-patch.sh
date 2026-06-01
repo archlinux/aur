@@ -19,10 +19,17 @@ echo "Restoring source tree to pristine state via git reset --hard..."
 git reset --hard
 
 # Create bunfig.toml to force Bun to always use hoisted linker
+# and restrict to glibc linux-x64 only. This prevents musl-specific
+# native packages (e.g. @anthropic-ai/*-linux-x64-musl, @github/*-linuxmusl-x64,
+# sharp-linuxmusl-x64, lightningcss-linux-x64-musl, etc.) from ever being downloaded.
 echo "Creating bunfig.toml..."
 cat > bunfig.toml <<EOF
 [install]
 linker = "hoisted"
+
+# Only glibc x64 Linux — prevents all the musl variants that cause
+# "missing libc.musl-x86_64.so.1" errors in namcap/makepkg on Arch.
+supportedArchitectures = { os = ["linux"], cpu = ["x64"], libc = ["glibc"] }
 EOF
 
 # 2. Patch package.json (Hoisting and pinning)
@@ -97,6 +104,14 @@ node -e '
         pkg.pnpm.onlyBuiltDependencies = trusted;
     }
 
+    // Ensure runtime workspace templates are included in published package files.
+    // HEARTBEAT.md (the only template under src/) is required by the runtime
+    // resolver in src/agents/workspace-templates.ts and workspace.ts.
+    pkg.files = pkg.files || [];
+    if (!pkg.files.includes("src/agents/templates/**")) {
+        pkg.files.push("src/agents/templates/**");
+    }
+
     fs.writeFileSync("package.json", JSON.stringify(pkg, null, 4));
 '
 
@@ -152,6 +167,21 @@ node -e '
             content = content.replace(anchor, anchor + callCode);
             content += "\nfunction discoverNpmPlugins(params: { dir: string; origin: PluginOrigin; env: NodeJS.ProcessEnv; ownershipUid?: number | null; workspaceDir?: string; candidates: PluginCandidate[]; diagnostics: PluginDiagnostic[]; seen: Set<string>; realpathCache: Map<string, string>; }) {\n  const nodeModules = path.join(params.dir, \"node_modules\");\n  if (!fs.existsSync(nodeModules)) return;\n  try {\n    const entries = fs.readdirSync(nodeModules, { withFileTypes: true });\n    for (const entry of entries) {\n      if (!entry.isDirectory()) continue;\n      if (entry.name.startsWith(\"@\")) {\n        const scopeDir = path.join(nodeModules, entry.name);\n        const scopeEntries = fs.readdirSync(scopeDir, { withFileTypes: true });\n        for (const scopeEntry of scopeEntries) {\n          if (!scopeEntry.isDirectory()) continue;\n          discoverInDirectory({ dir: path.join(scopeDir, scopeEntry.name), origin: params.origin, env: params.env, ownershipUid: params.ownershipUid, workspaceDir: params.workspaceDir, candidates: params.candidates, diagnostics: params.diagnostics, seen: params.seen, realpathCache: params.realpathCache });\n        }\n      } else if (!entry.name.startsWith(\".\")) {\n        discoverInDirectory({ dir: path.join(nodeModules, entry.name), origin: params.origin, env: params.env, ownershipUid: params.ownershipUid, workspaceDir: params.workspaceDir, candidates: params.candidates, diagnostics: params.diagnostics, seen: params.seen, realpathCache: params.realpathCache });\n      }\n    }\n  } catch {}\n}";
             fs.writeFileSync(discoveryPath, content);
+        }
+    }
+
+    // Make HEARTBEAT template loading resilient: always use search dirs (src + docs fallback).
+    // This ensures that even if packaging omitted src/agents/templates (pre-fix builds),
+    // the docs/reference/templates copy can still be used as fallback.
+    // The clean src version is still preferred when present.
+    const workspaceTs = "src/agents/workspace.ts";
+    if (fs.existsSync(workspaceTs)) {
+        let content = fs.readFileSync(workspaceTs, "utf8");
+        const before = "    const templateDirs =\n      name === DEFAULT_HEARTBEAT_FILENAME\n        ? [await resolveWorkspaceTemplateDir()]\n        : await resolveWorkspaceTemplateSearchDirs();";
+        if (content.includes(before)) {
+            const after = "    const templateDirs = await resolveWorkspaceTemplateSearchDirs();";
+            content = content.replace(before, after);
+            fs.writeFileSync(workspaceTs, content);
         }
     }
 '
