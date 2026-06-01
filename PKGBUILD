@@ -3,7 +3,7 @@
 _pkggit=diun
 
 pkgname=diun-bin
-pkgver=4.32.0
+pkgver=4.33.0
 pkgrel=1
 pkgdesc="Receive notifications when an image is updated on a Docker registry."
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('MIT')
 source=("${_pkggit}-${pkgver}_linux_amd64.tar.gz::https://github.com/crazy-max/${_pkggit}/releases/download/v${pkgver}/${_pkggit}_${pkgver}_linux_amd64.tar.gz"
         "diun.service::https://gitlab.com/mapanare-labs/packages/archlinux/diun-bin/-/raw/main/diun.service"
         "diun.yml::https://gitlab.com/mapanare-labs/packages/archlinux/diun-bin/-/raw/main/diun.yml")
-sha256sums=('82c566c5de788bbfafc8f52803386825c941af03781ab331600758033e541f4b'
+sha256sums=('87cf5b69cd29c88bf57e6c6d38dd483a5226b3c434771f96c78ccd72b23fd738'
             '5c16f7ae5b023407a443fbf1d0d811d236c94d191aae1af426e9540d22df3fa7'
             '00436d3e95e446211f9ffbaa36e6b9bc27ffe054745f1a687c4c1c46f1d7da14')
 
