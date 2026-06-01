@@ -9,22 +9,18 @@ license=('MIT')
 depends=('electron' 'libusb')
 makedepends=('npm' 'typescript')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  npm install
+  npm install --legacy-peer-deps
 }
 
 build() {
-  cd "$pkgname-$pkgver"
   npm run build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  
   # Install the app files
   install -d "$pkgdir/usr/lib/$pkgname"
   cp -r out/* "$pkgdir/usr/lib/$pkgname/"
