@@ -1,6 +1,6 @@
 pkgbase = laravel-moat
 	pkgdesc = Moat reviews the security posture of your GitHub organization and repositories, then surfaces recommendations to consider.
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/laravel/moat
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = laravel-moat
 	depends = gcc-libs
 	source = https://raw.githubusercontent.com/laravel/moat/1.x/LICENSE.md
 	sha256sums = 7b4f9149597fbae2ce689bc9317d1869e17f1b3fa5f01c289998c108f8c37cf7
-	source_x86_64 = https://github.com/laravel/moat/releases/download/v1.0.4/moat-1.0.4-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = dc61680aa95ca5aef1e08ba8db163ed59e76bd39016fa07c55d9dd4af9467076
-	source_aarch64 = https://github.com/laravel/moat/releases/download/v1.0.4/moat-1.0.4-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 353e4162427f91d2a9272f39732a92d1752c11a8c82be7ab2a1f3916c2e81580
+	source_x86_64 = https://github.com/laravel/moat/releases/download/v1.0.5/moat-1.0.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b6ffa9b08c1df6d2745c8e143b98ff7d97f2108f5f22d44e248d0b1c43734d0b
+	source_aarch64 = https://github.com/laravel/moat/releases/download/v1.0.5/moat-1.0.5-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1b0f043819adf9d8ffd62b2d3dbdd49c8dde1ea559221a82dc04d7f9c8a79cec
 
 pkgname = laravel-moat
