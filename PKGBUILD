@@ -24,25 +24,27 @@ source=()
 sha256sums=()
 
 prepare() {
-  local _fwlink _iso _iso_url
+  local _redir_url _iso_url _iso
+  local _http_mount='mnt/http' _iso_mount='mnt/iso'
+  local _wim_image="${_iso_mount}/sources/install.wim"
   # Microsoft Evaluation Center link for the latest US English 64-bit ISO, listed at:
   # https://www.microsoft.com/en-us/evalcenter/download-windows-11-enterprise
   # When Microsoft releases a new build, the fwlink automatically forwards to the new ISO
   # _fwlink='https://go.microsoft.com/fwlink/?linkid=2334167'
   # The above is often slow and sometimes times out, but it redirects to:
-  _fwlink='https://aka.ms/Win11E-ISO-25H2-en-us'
+  _redir_url='https://aka.ms/Win11E-ISO-25H2-en-us'
   # Allow override with a different link, eg for a different language
-  [ "${TTF_MS_WIN_URL:-}" ] && _fwlink="$TTF_MS_WIN_URL"
+  [ "${TTF_MS_WIN_URL:-}" ] && _redir_url="$TTF_MS_WIN_URL"
 
   # Get the real URL from the forwarding URL. It should return something like:
   # https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26200.6584.250915-1905.25h2_ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso
-  _iso_url="$(curl -sIL -w '%{url_effective}' -o /dev/null --retry 30 --retry-delay 1 "${_fwlink}")" \
+  _iso_url="$(curl -sIL -w '%{url_effective}' -o /dev/null --retry 30 --retry-delay 1 "${_redir_url}")" \
     || { echo "curl error: couldn't get link to .iso file" >&2; exit 1; }
   _iso="${_iso_url##*/}"
 
   # Clean possible stale mounts from SIGKILL interrupted builds
-  fusermount3 -uz mnt/iso 2>/dev/null || fusermount -uz mnt/iso 2>/dev/null || true
-  fusermount3 -uz mnt/http 2>/dev/null || fusermount -uz mnt/http 2>/dev/null || true
+  fusermount3 -uz "${_iso_mount}" 2>/dev/null || true
+  fusermount3 -uz "${_http_mount}" 2>/dev/null || true
 
   # Allow storing httpdirfs cache for faster rebuilds. About 350MB is used.
   # You'd probably only want to set this if you're debugging this PKGBUILD.
@@ -59,16 +61,16 @@ prepare() {
     set +e
     trap '' EXIT HUP INT QUIT TERM
     echo "Cleaning up mount points..."
-    fusermount3 -uz mnt/iso 2>/dev/null || fusermount -uz mnt/iso 2>/dev/null || true
-    fusermount3 -uz mnt/http 2>/dev/null || fusermount -uz mnt/http 2>/dev/null || true
+    fusermount3 -uz "${_iso_mount}" 2>/dev/null || true
+    fusermount3 -uz "${_http_mount}" 2>/dev/null || true
     # Restore standard pkgbuild traps
     eval "${_traps_saved}"
-    return "$_status"
+    return "${_status}"
   }
   trap _cleanup EXIT HUP INT QUIT TERM
 
   # Create mount points
-  mkdir -p mnt/{http,iso}
+  mkdir -p "${_http_mount}" "${_iso_mount}"
 
   # Mount ISO URL via HTTP streaming — only fetches byte-range segments
   # that are actually read (font data ~350 MiB, not full ISO)
@@ -78,30 +80,32 @@ prepare() {
   echo "Mounting ${_iso_url} at ${_http_mount} via httpdirfs..."
   HTTPDIRFS_LOG_LEVEL=7 httpdirfs "${_httpdirfs_cache_opts[@]}" \
     --dl-seg-size 1 --retry-wait 1 --single-file-mode \
-    "${_iso_url}" mnt/http > /dev/null
+    "${_iso_url}" "${_http_mount}" > /dev/null
+
+  # LinkTable_print:  Invalid link count: 0
 
   # Mount the ISO UDF filesystem read-only with FUSE
   echo "Mounting ${_iso} at ${_iso_mount} via udfclientfs..."
-  udfclientfs -o ro "mnt/http/${_iso}" mnt/iso
+  udfclientfs -o ro "${_http_mount}/${_iso}" "${_iso_mount}"
 
   # Use the first image inside the .wim (the sole Enterprise Evaluation image)
   # Set $TTF_MS_WIN_WIM_IDX to override  (1-indexed)
   local _wim_image_idx="${TTF_MS_WIN_WIM_IDX:-1}"
   # Save WIM XML for image 1, converting UTF-16LE to UTF-8
-  echo "Getting install.wim image metadata from image #$_wim_image_idx..."
-  wiminfo "mnt/iso/sources/install.wim" "${_wim_image_idx}" --xml | iconv -f UTF-16LE -t UTF-8 > "${srcdir}/wiminfo.xml"
+  echo "Getting install.wim image metadata from image #${_wim_image_idx}..."
+  wiminfo "${_wim_image}" "${_wim_image_idx}" --xml | iconv -f UTF-16LE -t UTF-8 > "${srcdir}/wiminfo.xml"
 
   # Extract package() files from {ISO_IMAGE}/sources/install.wim
   echo "Extracting licence.rtf"
-  wimdir "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
+  wimdir "${_wim_image}" "${_wim_image_idx}" \
   | grep -i '/Windows/System32/Licenses/neutral/.*license\.rtf$' \
-  | xargs -r wimextract "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
+  | xargs -r wimextract "${_wim_image}" "${_wim_image_idx}" \
     --no-acls --dest-dir="${srcdir}/license"
 
   echo "Extracting all font files..."
-  wimdir "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
+  wimdir "${_wim_image}" "${_wim_image_idx}" \
   | grep '/Windows/Fonts/.*\.tt[cf]$' \
-  | xargs -r wimextract "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
+  | xargs -r wimextract "${_wim_image}" "${_wim_image_idx}" \
     --no-acls --dest-dir="${srcdir}/fonts"
 
   _cleanup  # Unmount UDF image and HTTP mounts, restore standard traps
@@ -117,19 +121,19 @@ pkgver() {
   local _ver
   _ver="$(sed -En 's/.*<PKEYCONFIGVERSION>[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+).*/\1/p' "${srcdir}/wiminfo.xml")"
 
-  if [ ! "$_ver" ]; then
+  if [ ! "${_ver}" ]; then
     printf "Couldn't derive version from %s data:\n" "${srcdir}/wiminfo.xml" >&2
     head -n20 "${srcdir}/wiminfo.xml"
     exit 1
   fi
 
-  echo "$_ver"
+  echo "${_ver}"
 }
 
 check() {
   local font_count # 137 files expected as at 2026-06-01
-  font_count="$(ls -1 "$srcdir/fonts" | wc -l)"
-  if [[ $"font_count" -lt 100 ]]; then
+  font_count="$(ls -1 "${srcdir}/fonts" | wc -l)"
+  if [[ ${font_count} -lt 100 ]]; then
     echo "Expected over 100 fonts in ${srcdir}/fonts, but only got ${font_count}." >&2
     exit 1
   fi
