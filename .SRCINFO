@@ -1,0 +1,29 @@
+pkgbase = llama-hdd
+	pkgdesc = LLM inference in C/C++ with disk-backed prompt-checkpoint persistence (llama.cpp soft-fork)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/LuminaNAO/llama-hdd.cpp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = python
+	depends = curl
+	depends = gcc-libs
+	depends = glibc
+	depends = openmp
+	optdepends = cuda: NVIDIA GPU acceleration (build with LLAMA_HDD_BACKEND=cuda)
+	optdepends = rocm-hip-sdk: AMD GPU acceleration (build with LLAMA_HDD_BACKEND=rocm)
+	optdepends = vulkan-icd-loader: Vulkan GPU acceleration (build with LLAMA_HDD_BACKEND=vulkan)
+	optdepends = llamacpp-helper: launcher with --hdd-cache mode that drives this fork's sidecar feature
+	provides = llama.cpp
+	provides = llama.cpp=1.0.0
+	conflicts = llama.cpp
+	conflicts = llama.cpp-cuda
+	conflicts = llama.cpp-vulkan
+	conflicts = llama.cpp-hip
+	source = llama-hdd::git+https://codeberg.org/LuminaNAO/llama-hdd.cpp.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = llama-hdd
