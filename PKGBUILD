@@ -41,7 +41,7 @@ package() {
   chmod +x "$pkgdir/usr/bin/attack-shark-x11-driver"
 
   # Install license
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Install desktop entry
   install -Dm644 "$srcdir/attack-shark-x11-driver.desktop" "$pkgdir/usr/share/applications/attack-shark-x11-driver.desktop"
