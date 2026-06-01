@@ -1,8 +1,53 @@
+diff --git a/po/ru.po b/po/ru.po
+index dfc4c69..ae9f71d 100644
+--- a/po/ru.po
++++ b/po/ru.po
+@@ -188,6 +188,15 @@ msgstr "Разрешение:"
+ msgid "Refresh Rate:"
+ msgstr "Частота обновления:"
+ 
++msgid "Scale:"
++msgstr "Масштаб:"
++
++msgid "Transform:"
++msgstr "Поворот:"
++
++msgid "Don't rotate"
++msgstr "Не поворачивать"
++
+ #: ../data/lxrandr.desktop.in.h:1
+ msgid "Monitor Settings"
+ msgstr "Настройки дисплея"
 diff --git a/src/lxrandr.c b/src/lxrandr.c
-index 477ffa5..8a9da70 100644
+index 2399119..03b01db 100644
 --- a/src/lxrandr.c
 +++ b/src/lxrandr.c
-@@ -74,6 +74,8 @@ static Monitor* LVDS = NULL;
+@@ -46,6 +46,7 @@ typedef enum
+ typedef struct _Monitor
+ {
+     char* name;
++    char* display_name;
+     GSList* mode_lines;
+     short active_mode;
+     short active_rate;
+@@ -66,6 +67,16 @@ typedef struct _Monitor
+     GtkComboBox* res_combo;
+     GtkComboBox* rate_combo;
+ #endif
++
++    int pos_x, pos_y;
++    double scale;
++    int transform; /* 0=normal, 1=90°, 2=180°, 3=270° */
++    int try_pos_x, try_pos_y;
++    double try_scale;
++    int try_transform;
++    GtkWidget* scale_spin;
++    GtkWidget* pos_x_spin, *pos_y_spin;
++    GtkWidget* transform_combo;
+ }Monitor;
+ 
+ static GSList* monitors = NULL;
+@@ -74,6 +85,8 @@ static Monitor* LVDS = NULL;
  static GtkWidget* dlg = NULL;
  static guint timer;
  
@@ -11,7 +56,7 @@ index 477ffa5..8a9da70 100644
  /* Disable, not used
  static void monitor_free( Monitor* m )
  {
-@@ -99,8 +101,162 @@ static const char* get_human_readable_name( Monitor* m )
+@@ -99,8 +112,211 @@ static const char* get_human_readable_name( Monitor* m )
      return m->name;
  }
  
@@ -46,14 +91,21 @@ index 477ffa5..8a9da70 100644
 +        if (!**line)
 +            continue;
 +
-+        regex = g_regex_new("^([-.a-zA-Z]+[-.0-9]*) +\"", 0, 0, NULL);
++        regex = g_regex_new("^([-.a-zA-Z]+[-.0-9]*) +\"([^\"]*)\"", 0, 0, NULL);
 +        if (g_regex_match(regex, *line, 0, &match))
 +        {
++            gchar* model;
++
 +            m = g_new0(Monitor, 1);
++            m->scale = 1.0;
++            m->try_scale = 1.0;
 +            m->active_mode = m->active_rate = -1;
 +            m->pref_mode = m->pref_rate = -1;
 +            m->placement = PLACEMENT_DEFAULT;
 +            m->name = g_match_info_fetch(match, 1);
++            model = g_match_info_fetch(match, 2);
++            m->display_name = model && *model ? g_strdup(model) : NULL;
++            g_free(model);
 +
 +            if (!LVDS && (g_str_has_prefix(m->name, "eDP") ||
 +                          g_str_has_prefix(m->name, "LVDS") ||
@@ -113,8 +165,50 @@ index 477ffa5..8a9da70 100644
 +            else if (y == 0)
 +                m->placement = PLACEMENT_RIGHT;
 +
++            m->pos_x = x;
++            m->pos_y = y;
++
 +            g_free(sx);
 +            g_free(sy);
++            in_modes = FALSE;
++            g_match_info_free(match);
++            g_regex_unref(regex);
++            continue;
++        }
++        g_match_info_free(match);
++        g_regex_unref(regex);
++
++        regex = g_regex_new("^  Scale: +([0-9.]+)$", 0, 0, NULL);
++        if (g_regex_match(regex, *line, 0, &match))
++        {
++            gchar* s = g_match_info_fetch(match, 1);
++            m->scale = g_ascii_strtod(s, NULL);
++            if (m->scale <= 0.0)
++                m->scale = 1.0;  /* guard against malformed output */
++            g_free(s);
++            in_modes = FALSE;
++            g_match_info_free(match);
++            g_regex_unref(regex);
++            continue;
++        }
++        g_match_info_free(match);
++        g_regex_unref(regex);
++
++        regex = g_regex_new("^  Transform: +(normal|90|180|270)$", 0, 0, NULL);
++        if (g_regex_match(regex, *line, 0, &match))
++        {
++            static const char* const transform_tokens[] = { "normal", "90", "180", "270" };
++            gchar* t = g_match_info_fetch(match, 1);
++            int i;
++            for (i = 0; i < 4; i++)
++            {
++                if (g_strcmp0(t, transform_tokens[i]) == 0)
++                {
++                    m->transform = i;
++                    break;
++                }
++            }
++            g_free(t);
 +            in_modes = FALSE;
 +            g_match_info_free(match);
 +            g_regex_unref(regex);
@@ -174,7 +268,81 @@ index 477ffa5..8a9da70 100644
      GRegex* regex;
      GMatchInfo* match;
      int status, i;
-@@ -415,7 +571,7 @@ static GString* get_command_xrandr_info()
+@@ -304,9 +520,12 @@ static void on_enable_toggled(GtkToggleButton *tb, Monitor* m)
+     if (monitors->next != NULL) for (l = monitors; l; l = l->next)
+     {
+         Monitor *m = (Monitor*)l->data;
+-        gtk_widget_set_sensitive(GTK_WIDGET(m->pos_combo), can_position && (m != fixed));
+-        if (!can_position || m == fixed)
+-            gtk_combo_box_set_active(GTK_COMBO_BOX(m->pos_combo), 0);
++        if (m->pos_combo)
++        {
++            gtk_widget_set_sensitive(GTK_WIDGET(m->pos_combo), can_position && (m != fixed));
++            if (!can_position || m == fixed)
++                gtk_combo_box_set_active(GTK_COMBO_BOX(m->pos_combo), 0);
++        }
+     }
+ }
+ 
+@@ -399,6 +618,17 @@ static void prepare_try_values_from_GUI()
+         m->try_rate = gtk_combo_box_get_active(GTK_COMBO_BOX(m->rate_combo));
+         if (m->pos_combo)
+             m->try_placement = gtk_combo_box_get_active(GTK_COMBO_BOX(m->pos_combo));
++        if (use_wlr_randr)
++        {
++            if (m->scale_spin)
++                m->try_scale = gtk_spin_button_get_value(GTK_SPIN_BUTTON(m->scale_spin));
++            if (m->pos_x_spin)
++                m->try_pos_x = (int)gtk_spin_button_get_value(GTK_SPIN_BUTTON(m->pos_x_spin));
++            if (m->pos_y_spin)
++                m->try_pos_y = (int)gtk_spin_button_get_value(GTK_SPIN_BUTTON(m->pos_y_spin));
++            if (m->transform_combo)
++                m->try_transform = gtk_combo_box_get_active(GTK_COMBO_BOX(m->transform_combo));
++        }
+ #else
+             m->try_mode = gtk_combo_box_get_active(m->res_combo);
+         m->try_rate = gtk_combo_box_get_active(m->rate_combo);
+@@ -409,13 +639,47 @@ static void prepare_try_values_from_GUI()
+     }
+ }
+ 
++static void restore_GUI_from_try_values()
++{
++    GSList *l;
++
++    for (l = monitors; l; l = l->next)
++    {
++        Monitor *m = (Monitor*)l->data;
++
++        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(m->enable), m->try_mode >= 0);
++#if GTK_CHECK_VERSION(2, 24, 0)
++        gtk_combo_box_set_active(GTK_COMBO_BOX(m->res_combo), m->try_mode);
++        gtk_combo_box_set_active(GTK_COMBO_BOX(m->rate_combo), m->try_rate);
++        if (m->pos_combo)
++            gtk_combo_box_set_active(GTK_COMBO_BOX(m->pos_combo), m->try_placement);
++#else
++        gtk_combo_box_set_active(m->res_combo, m->try_mode);
++        gtk_combo_box_set_active(m->rate_combo, m->try_rate);
++        if (m->pos_combo)
++            gtk_combo_box_set_active(m->pos_combo, m->try_placement);
++#endif
++        if (use_wlr_randr)
++        {
++            if (m->scale_spin)
++                gtk_spin_button_set_value(GTK_SPIN_BUTTON(m->scale_spin), m->try_scale);
++            if (m->pos_x_spin)
++                gtk_spin_button_set_value(GTK_SPIN_BUTTON(m->pos_x_spin), (gdouble)m->try_pos_x);
++            if (m->pos_y_spin)
++                gtk_spin_button_set_value(GTK_SPIN_BUTTON(m->pos_y_spin), (gdouble)m->try_pos_y);
++            if (m->transform_combo)
++                gtk_combo_box_set_active(GTK_COMBO_BOX(m->transform_combo), m->try_transform);
++        }
++    }
++}
++
+ static GString* get_command_xrandr_info()
+ {
+ 
      GSList* l;
      GString *cmd = g_string_sized_new( 1024 );
  
@@ -183,7 +351,7 @@ index 477ffa5..8a9da70 100644
  
      for( l = monitors; l; l = l->next )
      {
-@@ -426,9 +582,15 @@ static GString* get_command_xrandr_info()
+@@ -426,9 +690,15 @@ static GString* get_command_xrandr_info()
          // if the monitor is turned on
          if (m->try_mode >= 0)
          {
@@ -200,7 +368,7 @@ index 477ffa5..8a9da70 100644
              }
              else
              {
-@@ -456,14 +618,24 @@ static GString* get_command_xrandr_info()
+@@ -456,61 +726,91 @@ static GString* get_command_xrandr_info()
  
                  if( m->try_rate >= 1 ) // not auto refresh rate
                  {
@@ -227,40 +395,172 @@ index 477ffa5..8a9da70 100644
                      g_free(text);
                  }
              }
-@@ -485,7 +657,10 @@ static GString* get_command_xrandr_info()
-                     g_string_append(cmd, " --below ");
-                     break;
-                 case PLACEMENT_DEFAULT:
+-            if (m == LVDS) ; /* it's fixed, no positioning */
+-            else if (LVDS != NULL)
++            if (use_wlr_randr)
+             {
+-                switch (m->try_placement)
++                g_string_append_printf(cmd, " --pos %d,%d", m->try_pos_x, m->try_pos_y);
+                 {
+-                case PLACEMENT_RIGHT:
+-                    g_string_append(cmd, " --right-of ");
+-                    break;
+-                case PLACEMENT_ABOVE:
+-                    g_string_append(cmd, " --above ");
+-                    break;
+-                case PLACEMENT_LEFT:
+-                    g_string_append(cmd, " --left-of ");
+-                    break;
+-                case PLACEMENT_BELOW:
+-                    g_string_append(cmd, " --below ");
+-                    break;
+-                case PLACEMENT_DEFAULT:
 -                    g_string_append(cmd, " --same-as ");
-+                    if (!use_wlr_randr)
-+                        g_string_append(cmd, " --same-as ");
-+                    else
-+                        continue;
++                    char scale_buf[G_ASCII_DTOSTR_BUF_SIZE];
++                    g_ascii_formatd(scale_buf, sizeof scale_buf, "%g", m->try_scale);
++                    g_string_append(cmd, " --scale ");
++                    g_string_append(cmd, scale_buf);
++                }
++                {
++                    static const char* const wlr_transforms[] = { "normal", "90", "180", "270" };
++                    int ti = m->try_transform;
++                    if (ti < 0 || ti > 3) ti = 0;
++                    g_string_append(cmd, " --transform ");
++                    g_string_append(cmd, wlr_transforms[ti]);
                  }
-                 g_string_append(cmd, LVDS->name);
+-                g_string_append(cmd, LVDS->name);
              }
-@@ -508,7 +683,10 @@ static GString* get_command_xrandr_info()
-                     g_string_append(cmd, " --below ");
-                     break;
-                 case PLACEMENT_DEFAULT:
+-            else if (l != monitors)
++            else
+             {
+-                Monitor *first = (Monitor*)monitors->data;
+-                /* not notebook */
+-                switch (m->try_placement)
++                if (m == LVDS) ; /* it's fixed, no positioning */
++                else if (LVDS != NULL)
+                 {
+-                case PLACEMENT_RIGHT:
+-                    g_string_append(cmd, " --right-of ");
+-                    break;
+-                case PLACEMENT_ABOVE:
+-                    g_string_append(cmd, " --above ");
+-                    break;
+-                case PLACEMENT_LEFT:
+-                    g_string_append(cmd, " --left-of ");
+-                    break;
+-                case PLACEMENT_BELOW:
+-                    g_string_append(cmd, " --below ");
+-                    break;
+-                case PLACEMENT_DEFAULT:
 -                    g_string_append(cmd, " --same-as ");
-+                    if (!use_wlr_randr)
++                    switch (m->try_placement)
++                    {
++                    case PLACEMENT_RIGHT:
++                        g_string_append(cmd, " --right-of ");
++                        break;
++                    case PLACEMENT_ABOVE:
++                        g_string_append(cmd, " --above ");
++                        break;
++                    case PLACEMENT_LEFT:
++                        g_string_append(cmd, " --left-of ");
++                        break;
++                    case PLACEMENT_BELOW:
++                        g_string_append(cmd, " --below ");
++                        break;
++                    case PLACEMENT_DEFAULT:
 +                        g_string_append(cmd, " --same-as ");
-+                    else
-+                        continue;
++                    }
++                    g_string_append(cmd, LVDS->name);
++                }
++                else if (l != monitors)
++                {
++                    Monitor *first = (Monitor*)monitors->data;
++                    /* not notebook */
++                    switch (m->try_placement)
++                    {
++                    case PLACEMENT_RIGHT:
++                        g_string_append(cmd, " --right-of ");
++                        break;
++                    case PLACEMENT_ABOVE:
++                        g_string_append(cmd, " --above ");
++                        break;
++                    case PLACEMENT_LEFT:
++                        g_string_append(cmd, " --left-of ");
++                        break;
++                    case PLACEMENT_BELOW:
++                        g_string_append(cmd, " --below ");
++                        break;
++                    case PLACEMENT_DEFAULT:
++                        g_string_append(cmd, " --same-as ");
++                    }
++                    g_string_append(cmd, first->name);
                  }
-                 g_string_append(cmd, first->name);
+-                g_string_append(cmd, first->name);
              }
-@@ -549,7 +727,7 @@ static void save_configuration()
+ 
+             /* g_string_append( cmd, "" ); */
+@@ -549,7 +849,7 @@ static void save_configuration()
  
      g_key_file_set_string( kf, grp, "Type", "Application" );
      g_key_file_set_string( kf, grp, "Name", _("LXRandR autostart") );
 -    g_key_file_set_string( kf, grp, "Comment", _("Start xrandr with settings done in LXRandR") );
 +    g_key_file_set_string( kf, grp, "Comment", _("Start display setup with settings done in LXRandR") );
      g_key_file_set_string( kf, grp, "Exec", cmd->str );
-     g_key_file_set_string( kf, grp, "NotShowIn", "GNOME;KDE;XFCE;MATE;Budgie;COSMIC;Enlightenment;LXQt;X-Cinnamon;" );
+     g_key_file_set_string( kf, grp, "NotShowIn", "" );
  
-@@ -772,6 +950,8 @@ int main(int argc, char** argv)
+@@ -618,6 +918,10 @@ static void set_xrandr_info()
+                 m->active_mode = m->try_mode;
+                 m->active_rate = m->try_rate;
+                 m->placement = m->try_placement;
++                m->scale = m->try_scale;
++                m->pos_x = m->try_pos_x;
++                m->pos_y = m->try_pos_y;
++                m->transform = m->try_transform;
+             }
+         }
+         else
+@@ -629,7 +933,12 @@ static void set_xrandr_info()
+                 m->try_mode = m->active_mode;
+                 m->try_rate = m->active_rate;
+                 m->try_placement = m->placement;
++                m->try_scale = m->scale;
++                m->try_pos_x = m->pos_x;
++                m->try_pos_y = m->pos_y;
++                m->try_transform = m->transform;
+             }
++            restore_GUI_from_try_values();
+             g_string_free(cmd, TRUE);
+             cmd = get_command_xrandr_info();
+             /* g_debug("recovering: %s", cmd->str); */
+@@ -691,7 +1000,7 @@ static void on_quick_option( GtkButton* btn, gpointer data )
+             Monitor* m = (Monitor*)l->data;
+             choose_max_resolution( m );
+             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(m->enable), TRUE);
+-            if (m != LVDS)
++            if (m != LVDS && m->pos_combo)
+                 gtk_combo_box_set_active(GTK_COMBO_BOX(m->pos_combo), PLACEMENT_RIGHT);
+         }
+         break;
+@@ -701,7 +1010,7 @@ static void on_quick_option( GtkButton* btn, gpointer data )
+             Monitor* m = (Monitor*)l->data;
+             choose_max_resolution( m );
+             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(m->enable), TRUE);
+-            if (m != LVDS)
++            if (m != LVDS && m->pos_combo)
+                 gtk_combo_box_set_active(GTK_COMBO_BOX(m->pos_combo), PLACEMENT_ABOVE);
+         }
+         break;
+@@ -758,7 +1067,8 @@ static void on_response( GtkDialog* dialog, int response, gpointer user_data )
+ 
+ int main(int argc, char** argv)
+ {
+-    GtkWidget *notebook, *vbox, *frame, *label, *hbox, *check, *btn;
++    GtkWidget *notebook, *vbox, *frame, *label, *hbox, *check, *btn, *mvbox, *table;
++    gchar* frame_label;
+     GSList* l;
+     Monitor *fixed;
+     int i;
+@@ -772,6 +1082,8 @@ int main(int argc, char** argv)
  
      gtk_init( &argc, &argv );
  
@@ -269,3 +569,191 @@ index 477ffa5..8a9da70 100644
      if( ! get_xrandr_info() )
      {
          dlg = gtk_message_dialog_new( NULL,
+@@ -833,15 +1145,18 @@ int main(int argc, char** argv)
+         g_signal_connect( btn, "clicked", G_CALLBACK(on_quick_option), GINT_TO_POINTER(3) );
+         gtk_box_pack_start( GTK_BOX(vbox), btn, FALSE, TRUE , 4);
+ 
+-        btn = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(btn),
+-                        _("Place external monitor to the right of laptop LCD"));
+-        g_signal_connect( btn, "clicked", G_CALLBACK(on_quick_option), GINT_TO_POINTER(4) );
+-        gtk_box_pack_start( GTK_BOX(vbox), btn, FALSE, TRUE , 4);
++        if (!use_wlr_randr)
++        {
++            btn = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(btn),
++                            _("Place external monitor to the right of laptop LCD"));
++            g_signal_connect( btn, "clicked", G_CALLBACK(on_quick_option), GINT_TO_POINTER(4) );
++            gtk_box_pack_start( GTK_BOX(vbox), btn, FALSE, TRUE , 4);
+ 
+-        btn = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(btn),
+-                        _("Place external monitor above of laptop LCD"));
+-        g_signal_connect( btn, "clicked", G_CALLBACK(on_quick_option), GINT_TO_POINTER(5) );
+-        gtk_box_pack_start( GTK_BOX(vbox), btn, FALSE, TRUE , 4);
++            btn = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(btn),
++                            _("Place external monitor above of laptop LCD"));
++            g_signal_connect( btn, "clicked", G_CALLBACK(on_quick_option), GINT_TO_POINTER(5) );
++            gtk_box_pack_start( GTK_BOX(vbox), btn, FALSE, TRUE , 4);
++        }
+ 
+         gtk_notebook_append_page( GTK_NOTEBOOK(notebook), vbox, gtk_label_new( _("Quick Options") ) );
+     }
+@@ -901,12 +1216,33 @@ int main(int argc, char** argv)
+         Monitor* m = (Monitor*)l->data;
+         GSList* mode_line;
+ 
+-        frame = gtk_frame_new( get_human_readable_name(m) );
++        if (use_wlr_randr && m->display_name)
++        {
++            frame_label = g_strdup_printf("%s (%s)", get_human_readable_name(m), m->display_name);
++            frame = gtk_frame_new(frame_label);
++            g_free(frame_label);
++        }
++        else
++            frame = gtk_frame_new( get_human_readable_name(m) );
+         gtk_box_pack_start( GTK_BOX(vbox), frame, FALSE, TRUE, 2 );
+ 
+-        hbox = gtk_hbox_new( FALSE, 4 );
+-        gtk_container_set_border_width( GTK_CONTAINER(hbox), 4 );
+-        gtk_container_add( GTK_CONTAINER(frame), hbox );
++        mvbox = gtk_vbox_new( FALSE, 4 );
++        gtk_container_set_border_width( GTK_CONTAINER(mvbox), 4 );
++        gtk_container_add( GTK_CONTAINER(frame), mvbox );
++
++        if (use_wlr_randr)
++        {
++            table = gtk_table_new( 3, 5, FALSE );
++            gtk_table_set_col_spacings( GTK_TABLE(table), 4 );
++            gtk_table_set_row_spacings( GTK_TABLE(table), 4 );
++            gtk_box_pack_start( GTK_BOX(mvbox), table, FALSE, TRUE, 0 );
++        }
++        else
++        {
++            table = NULL;
++            hbox = gtk_hbox_new( FALSE, 4 );
++            gtk_box_pack_start( GTK_BOX(mvbox), hbox, FALSE, TRUE, 0 );
++        }
+ 
+         check = gtk_check_button_new_with_label( _("Turn On") );
+         m->enable = GTK_CHECK_BUTTON(check);
+@@ -918,9 +1254,12 @@ int main(int argc, char** argv)
+         else
+             g_signal_connect(m->enable, "toggled", G_CALLBACK(on_enable_toggled), m);
+ 
+-        gtk_box_pack_start( GTK_BOX(hbox), check, FALSE, TRUE, 6 );
++        if (use_wlr_randr)
++            gtk_table_attach(GTK_TABLE(table), check, 0, 1, 0, 1, GTK_FILL, GTK_FILL, 6, 2);
++        else
++            gtk_box_pack_start( GTK_BOX(hbox), check, FALSE, TRUE, 6 );
+ 
+-        if (monitors->next != NULL) /* g_slist_length(monitors) > 0 */
++        if (!use_wlr_randr && monitors->next != NULL) /* g_slist_length(monitors) > 0 */
+         {
+             label = gtk_label_new(_("Position:"));
+             gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, TRUE, 2);
+@@ -947,7 +1286,13 @@ int main(int argc, char** argv)
+         }
+ 
+         label = gtk_label_new( _("Resolution:") );
+-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, TRUE, 2 );
++        if (use_wlr_randr)
++        {
++            gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
++            gtk_table_attach(GTK_TABLE(table), label, 1, 2, 0, 1, GTK_FILL, GTK_FILL, 2, 2);
++        }
++        else
++            gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, TRUE, 2 );
+ 
+ #if GTK_CHECK_VERSION(2, 24, 0)
+         m->res_combo = GTK_COMBO_BOX_TEXT(gtk_combo_box_text_new());
+@@ -955,17 +1300,29 @@ int main(int argc, char** argv)
+         m->res_combo = GTK_COMBO_BOX(gtk_combo_box_new_text());
+ #endif
+         g_signal_connect( m->res_combo, "changed", G_CALLBACK(on_res_sel_changed), m );
+-        gtk_box_pack_start( GTK_BOX(hbox), GTK_WIDGET(m->res_combo), FALSE, TRUE, 2 );
++        if (use_wlr_randr)
++            gtk_table_attach(GTK_TABLE(table), GTK_WIDGET(m->res_combo), 2, 3, 0, 1, GTK_FILL, GTK_FILL, 2, 2);
++        else
++            gtk_box_pack_start( GTK_BOX(hbox), GTK_WIDGET(m->res_combo), FALSE, TRUE, 2 );
+ 
+         label = gtk_label_new( _("Refresh Rate:") );
+-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, TRUE, 2 );
++        if (use_wlr_randr)
++        {
++            gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
++            gtk_table_attach(GTK_TABLE(table), label, 3, 4, 0, 1, GTK_FILL, GTK_FILL, 2, 2);
++        }
++        else
++            gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, TRUE, 2 );
+ 
+ #if GTK_CHECK_VERSION(2, 24, 0)
+         m->rate_combo = GTK_COMBO_BOX_TEXT(gtk_combo_box_text_new());
+ #else
+         m->rate_combo = GTK_COMBO_BOX(gtk_combo_box_new_text());
+ #endif
+-        gtk_box_pack_start( GTK_BOX(hbox), GTK_WIDGET(m->rate_combo), FALSE, TRUE, 2 );
++        if (use_wlr_randr)
++            gtk_table_attach(GTK_TABLE(table), GTK_WIDGET(m->rate_combo), 4, 5, 0, 1, GTK_FILL, GTK_FILL, 2, 2);
++        else
++            gtk_box_pack_start( GTK_BOX(hbox), GTK_WIDGET(m->rate_combo), FALSE, TRUE, 2 );
+ 
+ #if GTK_CHECK_VERSION(2, 24, 0)
+         gtk_combo_box_text_append_text( m->res_combo, _("Auto") );
+@@ -992,6 +1349,59 @@ int main(int argc, char** argv)
+ #endif
+         if (m->active_mode >= 0)
+             m->active_mode++; /* let it stay -1 for inactive button */
++
++        if (use_wlr_randr)
++        {
++            label = gtk_label_new(_("Scale:"));
++            gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
++            gtk_table_attach(GTK_TABLE(table), label, 1, 2, 1, 2, GTK_FILL, GTK_FILL, 2, 2);
++            m->scale_spin = gtk_spin_button_new_with_range(0.25, 5.0, 0.25);
++            gtk_spin_button_set_digits(GTK_SPIN_BUTTON(m->scale_spin), 2);
++            gtk_entry_set_width_chars(GTK_ENTRY(m->scale_spin), 6);
++            gtk_spin_button_set_value(GTK_SPIN_BUTTON(m->scale_spin), m->scale);
++            if (m->active_mode < 0)
++                gtk_widget_set_sensitive(m->scale_spin, FALSE);
++            gtk_table_attach(GTK_TABLE(table), m->scale_spin, 2, 3, 1, 2, GTK_FILL, GTK_FILL, 2, 2);
++
++            label = gtk_label_new(_("Transform:"));
++            gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
++            gtk_table_attach(GTK_TABLE(table), label, 3, 4, 1, 2, GTK_FILL, GTK_FILL, 2, 2);
++            m->transform_combo = gtk_combo_box_text_new();
++            gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(m->transform_combo), _("Don't rotate"));
++            gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(m->transform_combo), "90\302\260");
++            gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(m->transform_combo), "180\302\260");
++            gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(m->transform_combo), "270\302\260");
++            gtk_combo_box_set_active(GTK_COMBO_BOX(m->transform_combo), m->transform);
++            if (m->active_mode < 0)
++                gtk_widget_set_sensitive(m->transform_combo, FALSE);
++            gtk_table_attach(GTK_TABLE(table), m->transform_combo, 4, 5, 1, 2, GTK_FILL, GTK_FILL, 2, 2);
++
++            label = gtk_label_new(_("Position:"));
++            gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
++            gtk_table_attach(GTK_TABLE(table), label, 0, 1, 2, 3, GTK_FILL, GTK_FILL, 6, 2);
++
++            label = gtk_label_new(_("X:"));
++            gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
++            gtk_table_attach(GTK_TABLE(table), label, 1, 2, 2, 3, GTK_FILL, GTK_FILL, 2, 2);
++            m->pos_x_spin = gtk_spin_button_new_with_range(-16384, 16384, 1);
++            gtk_spin_button_set_digits(GTK_SPIN_BUTTON(m->pos_x_spin), 0);
++            gtk_entry_set_width_chars(GTK_ENTRY(m->pos_x_spin), 6);
++            gtk_spin_button_set_value(GTK_SPIN_BUTTON(m->pos_x_spin), (gdouble)m->pos_x);
++            if (m->active_mode < 0)
++                gtk_widget_set_sensitive(m->pos_x_spin, FALSE);
++            gtk_table_attach(GTK_TABLE(table), m->pos_x_spin, 2, 3, 2, 3, GTK_FILL, GTK_FILL, 2, 2);
++
++            label = gtk_label_new(_("Y:"));
++            gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
++            gtk_table_attach(GTK_TABLE(table), label, 3, 4, 2, 3, GTK_FILL, GTK_FILL, 2, 2);
++            m->pos_y_spin = gtk_spin_button_new_with_range(-16384, 16384, 1);
++            gtk_spin_button_set_digits(GTK_SPIN_BUTTON(m->pos_y_spin), 0);
++            gtk_entry_set_width_chars(GTK_ENTRY(m->pos_y_spin), 6);
++            gtk_spin_button_set_value(GTK_SPIN_BUTTON(m->pos_y_spin), (gdouble)m->pos_y);
++            if (m->active_mode < 0)
++                gtk_widget_set_sensitive(m->pos_y_spin, FALSE);
++            gtk_table_attach(GTK_TABLE(table), m->pos_y_spin, 4, 5, 2, 3, GTK_FILL, GTK_FILL, 2, 2);
++        }
+     }
+ 
+     gtk_window_set_resizable(GTK_WINDOW(dlg), FALSE);
