@@ -1,6 +1,6 @@
 pkgbase = tagspaces
 	pkgdesc = Offline file organizer and browser with tagging support
-	pkgver = 6.11.2
+	pkgver = 6.12.1
 	pkgrel = 1
 	url = https://www.tagspaces.org
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = tagspaces
 	makedepends = libxcrypt-compat
 	makedepends = nvm
 	depends = bash
-	depends = electron39
-	source = tagspaces-6.11.2.tar.gz::https://github.com/tagspaces/tagspaces/archive/v6.11.2.tar.gz
+	depends = electron42
+	source = tagspaces-6.12.1.tar.gz::https://github.com/tagspaces/tagspaces/archive/v6.12.1.tar.gz
 	source = tagspaces.sh
-	sha256sums = acf0f0d3a31492667b8656ee02e1100469f9f66583a6c0129eafb5953d2385c5
+	sha256sums = ab9201521a187fdcc73e802d4d4afca798899a456307397a85e4b4e88efab767
 	sha256sums = 3ece307810a9e0acedb73bb422a58233b9d0933ebfd125db6064b5ea4723a60f
 
 pkgname = tagspaces

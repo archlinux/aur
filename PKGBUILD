@@ -3,18 +3,18 @@
 # Contributor: syntheit <daniel@matv.io>
 
 pkgname=tagspaces
-pkgver=6.11.2
+pkgver=6.12.1
 pkgrel=1
 pkgdesc="Offline file organizer and browser with tagging support"
 arch=('any')
 url="https://www.tagspaces.org"
 license=('AGPL-3.0-or-later')
-_electron=electron39
+_electron=electron42
 depends=('bash' "${_electron}")
 makedepends=('gendesk' 'git'  'libxcrypt-compat' 'nvm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tagspaces/tagspaces/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('acf0f0d3a31492667b8656ee02e1100469f9f66583a6c0129eafb5953d2385c5'
+sha256sums=('ab9201521a187fdcc73e802d4d4afca798899a456307397a85e4b4e88efab767'
             '3ece307810a9e0acedb73bb422a58233b9d0933ebfd125db6064b5ea4723a60f')
 
 _ensure_local_nvm() {
@@ -49,9 +49,9 @@ build() {
     cd "${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     npm install
-    npm run package-linux -- \
-        -c.electronDist="/usr/lib/${_electron}" \
-        -c.electronVersion="$(cat /usr/lib/${_electron}/version)"
+    npm run package-linux -- --dir \
+        --config.electronDist="/usr/lib/${_electron}" \
+        --config.electronVersion="$(cat /usr/lib/${_electron}/version)"
 }
 
 package() {
