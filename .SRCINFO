@@ -1,0 +1,22 @@
+pkgbase = python-lance-namespace-urllib3-client
+	pkgdesc = Auto-generated OpenAPI Python client for the Lance Namespace REST API
+	pkgver = 0.7.7
+	pkgrel = 1
+	url = https://github.com/lance-format/lance-namespace
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	depends = python
+	depends = python-urllib3
+	depends = python-dateutil
+	depends = python-pydantic
+	depends = python-typing_extensions
+	source = python-lance-namespace-urllib3-client-0.7.7.tar.gz::https://files.pythonhosted.org/packages/source/l/lance_namespace_urllib3_client/lance_namespace_urllib3_client-0.7.7.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/lance-format/lance-namespace/main/LICENSE
+	sha256sums = 4d8c066628c17c6a10cf643b51a7f7ae1bfb8a614d9cc54a5af38a4ba2b4b102
+	sha256sums = febc00dc5a0557ca8afbcdc6d3896731dc42f4cecabd87e6c98326212f8dbf36
+
+pkgname = python-lance-namespace-urllib3-client
