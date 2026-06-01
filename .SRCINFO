@@ -1,6 +1,6 @@
 pkgbase = extempore-bin
 	pkgdesc = A cyber-physical programming environment
-	pkgver = 0.8.9
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/digego/extempore
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = extempore-bin
 	license = LicenseRef-extempore
 	provides = extempore
 	conflicts = extempore
-	source = https://github.com/digego/extempore/releases/download/v0.8.9/extempore-v0.8.9-ubuntu-20.04.zip
+	source = https://github.com/digego/extempore/releases/download/v0.9.3/extempore-linux-x86_64-v0.9.3.zip
 	source = LICENSE
-	sha256sums = 3b6655688085c95e3365006e7e6b863088a5baabefafc38fdaff5a992b908f88
+	sha256sums = 2800a610c92477c86c6995e05f4586ea5f265b950f895219f7fcc72527144dad
 	sha256sums = f4bd232731cf4d4ddc82026b26a6e08736c2f5e8770078f69a864d9a45bec070
 
 pkgname = extempore-bin

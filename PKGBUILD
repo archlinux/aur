@@ -1,19 +1,20 @@
-# Maintainer: Xavier Góngora <ixbalanque@protonmail.ch>
-pkgname=extempore-bin
-_reponame=extempore
-pkgver=0.8.9
+# Maintainer: Xavier Góngora <ixbalanque at protonmail dot ch>
+
+_appname=extempore
+pkgname=$_appname-bin
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A cyber-physical programming environment"
 arch=('x86_64')
-url="https://github.com/digego/${_reponame}"
+url="https://github.com/digego/${_appname}"
 license=('LicenseRef-extempore')
 groups=('pro-audio')
 depends=()
 provides=('extempore')
 conflicts=('extempore')
-source=("${url}/releases/download/v${pkgver}/${_reponame}-v${pkgver}-ubuntu-20.04.zip" LICENSE)
-sha256sums=('3b6655688085c95e3365006e7e6b863088a5baabefafc38fdaff5a992b908f88'
-            'f4bd232731cf4d4ddc82026b26a6e08736c2f5e8770078f69a864d9a45bec070')
+source=("${url}/releases/download/v${pkgver}/${_appname}-linux-${arch}-v${pkgver}.zip" LICENSE)
+sha256sums=('2800a610c92477c86c6995e05f4586ea5f265b950f895219f7fcc72527144dad'
+  'f4bd232731cf4d4ddc82026b26a6e08736c2f5e8770078f69a864d9a45bec070')
 
 package() {
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
