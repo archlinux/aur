@@ -1,0 +1,25 @@
+pkgbase = python-minny
+	pkgdesc = Package and project manager for MicroPython and CircuitPython
+	pkgver = 0.1.0a1_r20.2dcfefa
+	pkgrel = 1
+	url = https://github.com/aivarannamaa/minny
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = pyrefly
+	depends = python-isort
+	depends = python-paramiko
+	depends = python-ptyprocess
+	depends = python-pytest
+	depends = python-ruff
+	depends = python-syrupy
+	depends = python-types-pyserial
+	depends = python-uv
+	depends = python-uv-build
+	depends = ty
+	source = python-minny-2dcfefae26b114d192db8ddb35fcfd4fefd578d6.tar.gz::https://github.com/aivarannamaa/minny/archive/2dcfefae26b114d192db8ddb35fcfd4fefd578d6.tar.gz
+	b2sums = SKIP
+
+pkgname = python-minny
