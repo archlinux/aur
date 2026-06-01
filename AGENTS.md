@@ -5,7 +5,7 @@
 AUR package for [Command Code](https://commandcode.ai) — an AI coding agent that continuously learns your coding taste. Distributed via npm as UNLICENSED proprietary software.
 
 - **Package name:** `command-code`
-- **Upstream version:** 0.30.1
+- **Upstream version:** 0.30.3
 - **Maintainer:** Ismet Togay <ismet.togay@gmail.com>
 - **License:** LicenseRef-command-code (proprietary Terms of Service)
 
