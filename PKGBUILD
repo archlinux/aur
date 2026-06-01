@@ -1,7 +1,7 @@
-# Maintainer: f0x <aur at cthu dot lu>
+# Contributor: f0x <aur at cthu dot lu>
 
 pkgname=hikari-darcs
-pkgver=1.1.0.20200502185221
+pkgver=2.3.3.20220113091747
 pkgrel=1
 epoch=1
 pkgdesc='Stacking Wayland compositor with additional tiling capabilities, heavily inspired by the Calm Window manager (cwm)'
@@ -9,7 +9,7 @@ url='https://hikari.acmelabs.space'
 license=('BSD-2-Clause')
 arch=('x86_64')
 makedepends=('darcs' 'bmake' 'pandoc')
-depends=('wlroots' 'cairo' 'pango' 'xorg-server-xwayland' 'libucl-git')
+depends=('wlroots0.15' 'cairo' 'pango' 'xorg-xwayland' 'libucl-git')
 provides=('hikari')
 conflicts=('hikari')
 source=()
@@ -39,6 +39,9 @@ pkgver() {
 }
 
 build() {
+  # To build against wlroots0.15
+  export PKG_CONFIG_PATH='/usr/lib/wlroots0.15/pkgconfig'
+
   cd "$srcdir/$_darcsmod"
   bmake PREFIX=/usr ETC_PREFIX='' WITH_POSIX_C_SOURCE=YES WITH_XWAYLAND=YES WITH_SCREENCOPY=YES WITH_GAMMACONTROL=YES WITH_LAYERSHELL=YES
 }

@@ -1,6 +1,6 @@
 pkgbase = hikari-darcs
 	pkgdesc = Stacking Wayland compositor with additional tiling capabilities, heavily inspired by the Calm Window manager (cwm)
-	pkgver = 1.1.0.20200502185221
+	pkgver = 2.3.3.20220113091747
 	pkgrel = 1
 	epoch = 1
 	url = https://hikari.acmelabs.space
@@ -9,13 +9,12 @@ pkgbase = hikari-darcs
 	makedepends = darcs
 	makedepends = bmake
 	makedepends = pandoc
-	depends = wlroots
+	depends = wlroots0.15
 	depends = cairo
 	depends = pango
-	depends = xorg-server-xwayland
+	depends = xorg-xwayland
 	depends = libucl-git
 	provides = hikari
 	conflicts = hikari
 
 pkgname = hikari-darcs
-
