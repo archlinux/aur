@@ -2,7 +2,7 @@
 pkgname=mangowm
 _pkgname=mango
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/mangowc"
 arch=("x86_64")
