@@ -1,6 +1,6 @@
 pkgbase = python-connectorx
 	pkgdesc = Load data from databases into Python
-	pkgver = 0.3.3
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/sfu-db/connector-x
 	arch = x86_64
@@ -11,9 +11,7 @@ pkgbase = python-connectorx
 	makedepends = rust
 	depends = python
 	options = !lto
-	source = connector-x-0.3.3.tar.gz::https://github.com/sfu-db/connector-x/archive/refs/tags/v0.3.3.tar.gz
-	source = version.patch
-	sha256sums = 512ce8b43c738d4f2fef460ef6b0de63f7959571d4d9c943425702d6ca3110f9
-	sha256sums = 8de1f09d24ef5b7ca6f20730be142f324cf5870ee055f377de9d02d4351c4c23
+	source = connector-x-0.4.5.tar.gz::https://github.com/sfu-db/connector-x/archive/refs/tags/v0.4.5.tar.gz
+	sha256sums = 619e8ff23f75a60604681a80cef94ed8d2458e4c235c7ad0d041a202ade2bd56
 
 pkgname = python-connectorx
