@@ -1,0 +1,10 @@
+pkgbase = hi
+	pkgdesc = Prints 'hello' and exits
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	source = hi.sh
+	sha256sums = SKIP
+
+pkgname = hi
