@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=phantun-dkms
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Kernel module re-implementation of phantun, transform UDP streams into fake-TCP streams'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/bjin/phantun-dkms'
 license=('GPL-2.0-or-later')
 depends=('dkms')
 source=("https://github.com/bjin/phantun-dkms/releases/download/v${pkgver}/phantun-dkms_${pkgver}.tar.gz")
-sha256sums=('3086c928190d443970f4562ff3675ae7d2f7b60dc51ad294bfcfc4cd27382856')
+sha256sums=('042d77662ea34e4b01ca7e66397cc0dfde374814de1f9e9f4ee09c58fc72f90c')
 
 _extract_source_tree() {
     local dest=$1
