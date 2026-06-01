@@ -21,7 +21,7 @@ makedepends=(
   ninja
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname=${pkgver%%.r*}" "lib$_pkgname.so")
 conflicts=("$_pkgname")
 
 _pkgsrc=$_pkgname
