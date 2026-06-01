@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Aburady <accounts@aburady.com>
 pkgname=plezy
-pkgver=2.3.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="A beautiful Plex media server client built with Flutter"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ makedepends=(
   'unzip'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/edde746/plezy/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5fb57bf0c4d1ac00592c7ef0335fdb48b361e72212cbdc869192aa8992777baf')
+sha256sums=('38be1cdcc9a34c1267c668b8488572dbd8134e296ea89b36cddc393c7817451f')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -60,15 +60,16 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "build/linux/${FLUTTER_ARCH}/release/bundle/$pkgname" -t \
     "$pkgdir/opt/$pkgname/"
-  cp -a build/linux/${FLUTTER_ARCH}/release/bundle/{data,lib} "$pkgdir/opt/$pkgname"
+  cp -a build/linux/${FLUTTER_ARCH}/release/bundle/{data,lib} "$pkgdir/opt/$pkgname/"
+  chmod 0755 "$pkgdir/opt/$pkgname/lib/crashpad_handler"
 
-  install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/"
-
+  install -Dm755 "linux/packaging/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "linux/packaging/com.edde746.$pkgname.desktop" -t \
     "$pkgdir/usr/share/applications/"
   install -Dm644 "assets/$pkgname.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm644 "assets/$pkgname.png" -t \
+    "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/"
   for i in 16 32 48 64 128 256 512; do
     install -Dm644 "assets/${pkgname}_${i}x${i}.png" \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
