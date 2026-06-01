@@ -2,7 +2,7 @@
 
 pkgname=gnatstudio-bin
 pkgver=2026.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='GNAT Programming Studio for Ada binary'
 
@@ -46,6 +46,12 @@ package() {
         done
     done
 
+
+    # Regenerate the GDK loaders pixbuf cache.
+    #
+    GDK_PIXBUF_MODULEDIR=$pkgdir/opt/gnatstudio/lib/gnatstudio/gdk-pixbuf-2.0/2.10.0/loaders \
+    gdk-pixbuf-query-loaders > $pkgdir/opt/gnatstudio/lib/gnatstudio/gdk-pixbuf-2.0/2.10.0/loaders.cache
+    
 
     # Install the license.
     #
