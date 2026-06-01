@@ -4,7 +4,7 @@
 # Contributor: beatgammit
 
 pkgname=servo-git
-pkgver=testing.0.0.0.0.2.r2070.g41c9e68
+pkgver=0.0.2.r2806.g41c9e68
 pkgrel=1
 pkgdesc='Parallel Browser Project: web browser written in Rust'
 arch=(x86_64 i686)
@@ -46,7 +46,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	git describe --long --tags --abbrev=7 HEAD |
+	git describe --long --tags --abbrev=7 --match='^v[0-9]*' HEAD |
 		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
