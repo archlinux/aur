@@ -1,5 +1,5 @@
 # Maintainer: pakrohk <pakrohk@gmail.com>
-_pkgname=hiddify-app
+_pkgname=hiddify-desktop
 pkgname=${_pkgname}-bin
 pkgver=4.1.1
 pkgrel=1
@@ -7,7 +7,7 @@ pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hys
 arch=('x86_64')
 url='https://github.com/hiddify/hiddify-app'
 license=('GPL3')
-options=('!debug')                     # <-- ADD THIS LINE
+options=('!debug')                     # جلوگیری از خطاهای gdb
 depends=(
     'hicolor-icon-theme'
     'libayatana-appindicator'
@@ -29,8 +29,8 @@ depends=(
 optdepends=(
     'gnome-shell-extension-appindicator: for system tray icon in Gnome'
 )
-provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-appimage")
+provides=("hiddify-app")              # اختیاری: قابلیت جایگزینی با بستهٔ اصلی
+conflicts=("hiddify-app" "hiddify-app-bin" "hiddify-app-git" "hiddify-app-appimage")
 source=("${_pkgname}-${pkgver}.deb::https://github.com/hiddify/hiddify-app/releases/download/v${pkgver}/Hiddify-Debian-x64.deb")
 sha256sums=('e622abd15f7d4410c5655f3fdcd0fa9300944666fa40ac22761f06f93020f10e')
 _install_path="/opt/${_pkgname}"
