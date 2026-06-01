@@ -1,0 +1,24 @@
+pkgbase = python-apex
+	pkgdesc = NVIDIA Apex: PyTorch extensions for mixed precision and distributed training (fused ops)
+	pkgver = 25.09
+	pkgrel = 1
+	url = https://github.com/NVIDIA/apex
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = gcc15
+	depends = python
+	depends = python-pytorch
+	depends = python-tqdm
+	depends = python-numpy
+	depends = python-yaml
+	depends = python-packaging
+	depends = cuda
+	depends = cudnn
+	source = apex-25.09.tar.gz::https://github.com/NVIDIA/apex/archive/refs/tags/25.09.tar.gz
+	sha256sums = d30ce19d8519363fd3ee52d028d60c6f66062c53f72d1265ed79e743449b12db
+
+pkgname = python-apex
