@@ -1,6 +1,6 @@
 # Maintainer: Castle <support@castlehq.com>
 pkgname=castle-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="CLI for Castle project management"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ source_x86_64=("castle-linux-x86_64-${pkgver}::https://a.castlehq.com/dl/cli/${p
 source_aarch64=("castle-linux-aarch64-${pkgver}::https://a.castlehq.com/dl/cli/${pkgver}/castle-linux-aarch64")
 
 # Update checksums after each release with: updpkgsums
-sha256sums_x86_64=('212f54b39110d73b5ff8a6ac4aa035d69842126832d1873024bb6bbcf099f4cb')
-sha256sums_aarch64=('df598f1e60b6591662e20af31e616cd11c18205a2970d5f34c1165bf42bb6c12')
+sha256sums_x86_64=('4d2f03673abc03fa929de49049cae0731570b950813eb18d51d11db0eaac7224')
+sha256sums_aarch64=('b00e6672b1e20e78e86af1a7c20d3bdebbd81afb08be21367a123dbed3673df9')
 
 package() {
     if [[ "$CARCH" == "x86_64" ]]; then
