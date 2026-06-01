@@ -6,10 +6,10 @@
 # Do not push the template verbatim to AUR; push the rendered file.
 
 pkgname=hpd-handheld-power-daemon
-pkgver=2.0.0
+pkgver=2.1.0
 # pkgrel is static (not a placeholder): reset to 1 when bumping pkgver,
 # increment for packaging-only respins of the same version.
-pkgrel=3
+pkgrel=1
 pkgdesc="Linux system daemon for handheld PCs: TDP, charge, profile, fan (ROG Ally family)"
 arch=('x86_64')
 url="https://github.com/CiroDev-Git/hpd-handheld-power-daemon"
@@ -20,7 +20,7 @@ backup=('etc/hpd/config.toml.example')
 install="hpd.install"
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('41b8e0f14f77a2d717c7d1910f0d7452f5e98da4e952ee9061b5263e9bfe72eb')
+sha256sums=('0fea10c34a1faa53cecb8aea7c3e2680b03565943a2291e8f14ed561c8e816c3')
 
 prepare() {
     cd "$pkgname-$pkgver"
