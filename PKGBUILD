@@ -58,6 +58,7 @@ prepare() {
     local _status=$?
     set +e
     trap '' EXIT HUP INT QUIT TERM
+    echo "Cleaning up mount points..."
     fusermount3 -uz mnt/iso 2>/dev/null || fusermount -uz mnt/iso 2>/dev/null || true
     fusermount3 -uz mnt/http 2>/dev/null || fusermount -uz mnt/http 2>/dev/null || true
     # Restore standard pkgbuild traps
@@ -71,17 +72,23 @@ prepare() {
 
   # Mount ISO URL via HTTP streaming — only fetches byte-range segments
   # that are actually read (font data ~350 MiB, not full ISO)
-  httpdirfs "${_httpdirfs_cache_opts[@]}" \
+  #
+  # Default log level includes noisy INFO. Set to 7 for fatal | error | warning only.
+  # https://github.com/fangfufu/httpdirfs/blob/26cce591de8518f3dd09c45ed241d1051411bc05/src/log.h#L35-L50
+  echo "Mounting ${_iso_url} at ${_http_mount} via httpdirfs..."
+  HTTPDIRFS_LOG_LEVEL=7 httpdirfs "${_httpdirfs_cache_opts[@]}" \
     --dl-seg-size 1 --retry-wait 1 --single-file-mode \
     "${_iso_url}" mnt/http > /dev/null
 
   # Mount the ISO UDF filesystem read-only with FUSE
+  echo "Mounting ${_iso} at ${_iso_mount} via udfclientfs..."
   udfclientfs -o ro "mnt/http/${_iso}" mnt/iso
 
   # Use the first image inside the .wim (the sole Enterprise Evaluation image)
   # Set $TTF_MS_WIN_WIM_IDX to override  (1-indexed)
   local _wim_image_idx="${TTF_MS_WIN_WIM_IDX:-1}"
   # Save WIM XML for image 1, converting UTF-16LE to UTF-8
+  echo "Getting install.wim image metadata from image #$_wim_image_idx..."
   wiminfo "mnt/iso/sources/install.wim" "${_wim_image_idx}" --xml | iconv -f UTF-16LE -t UTF-8 > "${srcdir}/wiminfo.xml"
 
   # Extract package() files from {ISO_IMAGE}/sources/install.wim
@@ -119,7 +126,17 @@ pkgver() {
   echo "$_ver"
 }
 
+check() {
+  local font_count # 137 files expected as at 2026-06-01
+  font_count="$(ls -1 "$srcdir/fonts" | wc -l)"
+  if [[ $"font_count" -lt 100 ]]; then
+    echo "Expected over 100 fonts in ${srcdir}/fonts, but only got ${font_count}." >&2
+    exit 1
+  fi
+}
+
 package() {
+  echo "Packaging fonts with version: ${pkgver} ..."
   install -dm755 "${pkgdir}/usr/share/fonts/TTF"
   find "${srcdir}/fonts" -type f \( -name '*.ttf' -o -name '*.ttc' \) \
     -exec install -m644 {} "${pkgdir}/usr/share/fonts/TTF" \;
