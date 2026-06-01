@@ -4,7 +4,7 @@
 
 pkgname='caelestia-shell'
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
 url='https://github.com/caelestia-dots/shell'
@@ -12,7 +12,7 @@ license=('GPL-3.0-only')
 depends=('caelestia-cli' 'quickshell-git' 'ddcutil' 'brightnessctl' 'app2unit' 'libcava' 'networkmanager'
          'lm_sensors' 'fish' 'aubio' 'libpipewire' 'glibc' 'gcc-libs' 'ttf-material-symbols-variable' 'power-profiles-daemon'
          'ttf-rubik-vf' 'ttf-cascadia-code-nerd' 'swappy' 'libqalculate' 'bash' 'qt6-base' 'qt6-declarative')
-makedepends=('cmake' 'ninja')
+makedepends=('cmake' 'ninja' 'qt6-shadertools')
 provides=($pkgname)
 conflicts=($pkgname-git)
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")

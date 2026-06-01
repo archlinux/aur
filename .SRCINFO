@@ -1,12 +1,13 @@
 pkgbase = caelestia-shell
 	pkgdesc = The desktop shell for the Caelestia dotfiles
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/caelestia-dots/shell
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = qt6-shadertools
 	depends = caelestia-cli
 	depends = quickshell-git
 	depends = ddcutil
