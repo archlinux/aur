@@ -3,6 +3,7 @@ pkgbase = crossmacro
 	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/alper-han/CrossMacro
+	install = crossmacro.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
