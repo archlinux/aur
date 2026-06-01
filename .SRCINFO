@@ -1,0 +1,16 @@
+pkgbase = eductool-desktop-bin
+	pkgdesc = EducTool is a comprehensive and modern school management software. 
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://eductool.com
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = openssl
+	provides = eductool-desktop
+	conflicts = eductool-desktop
+	source = Eductool-desktop_0.13.0_amd64.deb::https://eductool.com/linux-deb?utm_campaign=aur_archlinux&utm_medium=linuxdeb
+	sha256sums = 5c2050dc096a2c25e2fcb25ed169fe145e9972f37b213680be452f2a106097bd
+
+pkgname = eductool-desktop-bin
