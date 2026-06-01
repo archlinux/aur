@@ -1,6 +1,6 @@
 pkgname=kayo
 _pkgname=Kayo
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Unnofficial Kayo desktop application"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://gitlab.com/linuxbombay/kayo"
 license=('GPL')
 depends=('electron-castlab-bin' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('377a80dcbd00373a4e8f0888118a1ec1c014e613a329f7409d40ef685fa1e94a')
+sha256sums=('15519ee2ed897393c32760bb9ad6d5de0188de1d9e4b0e3c111e65f2541bfdf2')
 
 
 package() {
