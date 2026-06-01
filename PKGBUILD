@@ -2,9 +2,9 @@
 
 pkgname=enneagram
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An exploration into the enneagram."
-url="https://github.com/sigurd4/ennegram"
+url="https://github.com/sigurd4/enneagram"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('GPL-3.0-only')
 depends=()
