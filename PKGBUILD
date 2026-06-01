@@ -13,9 +13,9 @@ conflicts=('ishaans-termchat')
 
 _base_url="https://github.com/ishaan-jindal/termchat/releases/download/cli-v${pkgver}"
 
-source_x86_64=("${_base_url}/termchat-linux-amd64")
-source_aarch64=("${_base_url}/termchat-linux-arm64")
-source_i686=("${_base_url}/termchat-linux-386")
+source_x86_64=("termchat-linux-amd64-${pkgver}::${_base_url}/termchat-linux-amd64")
+source_aarch64=("termchat-linux-arm64-${pkgver}::${_base_url}/termchat-linux-arm64")
+source_i686=("termchat-linux-386-${pkgver}::${_base_url}/termchat-linux-386")
 
 sha256sums_x86_64=('fae16f8e776c2c76349ea2fe54dc56a72534ba380f1410898b2ca59022f12574')
 sha256sums_aarch64=('2a61f977c878983130d19d6595a57f0f6bd6d4a1db29ce9b5d344b0d1510c870')
@@ -29,9 +29,9 @@ sha256sums=('SKIP' 'SKIP')
 package() {
     # Determine the correct binary name for this architecture
     case "$CARCH" in
-        x86_64)  _binary="termchat-linux-amd64" ;;
-        aarch64) _binary="termchat-linux-arm64" ;;
-        i686)    _binary="termchat-linux-386" ;;
+        x86_64)  _binary="termchat-linux-amd64-${pkgver}" ;;
+        aarch64) _binary="termchat-linux-arm64-${pkgver}" ;;
+        i686)    _binary="termchat-linux-386-${pkgver}" ;;
     esac
 
     install -Dm755 "${srcdir}/${_binary}" "${pkgdir}/usr/bin/termchat"

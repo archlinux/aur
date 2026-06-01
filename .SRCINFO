@@ -13,11 +13,11 @@ pkgbase = ishaans-termchat-bin
 	source = LICENSE::https://raw.githubusercontent.com/ishaan-jindal/termchat/cli-v0.4.3/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/ishaan-jindal/termchat/releases/download/cli-v0.4.3/termchat-linux-amd64
+	source_x86_64 = termchat-linux-amd64-0.4.3::https://github.com/ishaan-jindal/termchat/releases/download/cli-v0.4.3/termchat-linux-amd64
 	sha256sums_x86_64 = fae16f8e776c2c76349ea2fe54dc56a72534ba380f1410898b2ca59022f12574
-	source_aarch64 = https://github.com/ishaan-jindal/termchat/releases/download/cli-v0.4.3/termchat-linux-arm64
+	source_aarch64 = termchat-linux-arm64-0.4.3::https://github.com/ishaan-jindal/termchat/releases/download/cli-v0.4.3/termchat-linux-arm64
 	sha256sums_aarch64 = 2a61f977c878983130d19d6595a57f0f6bd6d4a1db29ce9b5d344b0d1510c870
-	source_i686 = https://github.com/ishaan-jindal/termchat/releases/download/cli-v0.4.3/termchat-linux-386
+	source_i686 = termchat-linux-386-0.4.3::https://github.com/ishaan-jindal/termchat/releases/download/cli-v0.4.3/termchat-linux-386
 	sha256sums_i686 = 1261dcaf194e25cd0fbfc325026fbf0b19f66ff3a3de5dc1cea8e63fe200a825
 
 pkgname = ishaans-termchat-bin
