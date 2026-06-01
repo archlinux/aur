@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codewhale
-pkgver=0.8.47
+pkgver=0.8.49
 pkgrel=1
 pkgdesc="CodeWhale (formerly DeepSeek-TUI) - DeepSeek-first agentic terminal for open-source coding models"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=('codewhale-tui' 'deepseek' 'deepseek-tui')
 conflicts=('codewhale-bin' 'codewhale-tui' 'deepseek' 'deepseek-tui' 'deepseek-tui-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1506bcbc7badbb93057dc54d223116aa5e1906a8c9684c86ebe3caf9525bc79a')
+sha256sums=('332c35f9b609777868e3e828dfaac25e71e19250c3d9dce7045a76f897d01d72')
 
 prepare() {
     cd "CodeWhale-${pkgver}"
