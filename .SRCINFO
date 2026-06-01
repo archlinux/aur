@@ -1,0 +1,20 @@
+pkgbase = python-liger-kernel
+	pkgdesc = Efficient Triton kernels for LLM training
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/linkedin/Liger-Kernel
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytorch
+	depends = python-triton
+	optdepends = python-transformers: for Hugging Face Transformers integration
+	source = python-liger-kernel-0.8.0.tar.gz::https://github.com/linkedin/Liger-Kernel/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 7474b9855d16fb5aacf3338ad6d71220023e8c28c231211403f7fe347be7597a
+
+pkgname = python-liger-kernel
