@@ -1,62 +1,84 @@
 # Maintainer: logan_reed <liulingzhang.work@icloud.com>
+# Contributor: Filip Papaj <denuvo at tuta dot io>
 
-pkgname=zen-browser-twilight-bin
+_pkgname=zen-browser-twilight
+pkgname=${_pkgname}-bin
 pkgver=1.21t
-pkgrel=9
-pkgdesc="Zen Browser - Twilight nightly build, a Firefox-based browser focused on privacy"
+pkgrel=11
+pkgdesc='Zen Browser (Twilight Build) - Performance oriented Firefox-based web browser'
 arch=('x86_64' 'aarch64')
-url="https://zen-browser.app/"
+url='https://zen-browser.app/'
 license=('MPL-2.0')
-conflicts=('zen-browser' 'zen-browser-bin' 'zen-browser-git')
+depends=(
+    'dbus-glib'
+    'gtk3'
+    'libxt'
+    'mime-types'
+    'nss'
+    'ttf-font'
+)
+optdepends=(
+    'alsa-lib: ALSA audio backend'
+    'ffmpeg: H264/AAC/MP3 decoding'
+    'pulse-native-provider: PulseAudio/PipeWire audio backend'
+    'libnotify: Desktop notification support'
+    'networkmanager: Location detection via WiFi networks'
+    'speech-dispatcher: Text-to-Speech'
+    'hunspell-en_US: Spell checking, American English'
+    'xdg-desktop-portal: Screen sharing under Wayland'
+)
 provides=("zen-browser=$pkgver")
-depends=('alsa-lib' 'gtk3' 'libx11' 'mime-types' 'nspr' 'nss' 'systemd-libs' 'ttf-font')
-optdepends=('pulse-native-provider: Audio support'
-            'libnotify: Notification integration'
-            'networkmanager: Location detection via available WiFi networks'
-            'speech-dispatcher: Text-to-Speech'
-            'hunspell: Spell checking')
+conflicts=('zen-browser' 'zen-browser-bin' 'zen-browser-git')
 options=('!strip' '!debug')
 install=${pkgname}.install
-source=("zen-browser-twilight.sh"
-        "zen-browser-twilight.desktop"
-        "policies.json")
-source_x86_64=("zen.linux-x86_64-${pkgver}-${pkgrel}.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz")
-source_aarch64=("zen.linux-aarch64-${pkgver}-${pkgrel}.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-aarch64.tar.xz")
-sha512sums=('72aab4501229d83641169a1fe624906d8556613c17ca2e8fe6d818270b322503ea51acc6b356f3730cdb5a24a7e2d7aad50db57be5505f2dfc0d0a76fe9ee182'
-            '5f16ff2b8b84402b19b735e2b627d8290bdf9289e7ea26973aa6dc339ce6c9835ce6c4c12df881436108894bcee5623e43b5ef090c641031369ac28975b6107e'
-            'f17d02c67f731ea27401176d2fb320a093367d94c8cbfd18a3b76c6f516994b8c547cee970b7bbf0422767064d62410884e07ae6e95b59007b48869e750fdcd9')
-sha512sums_x86_64=('4249daa25772fe7ce7f7b8019c3e377dc3cfbe3da13415a5b4c3a4202c4768a3d0ef4566b23ad00bc9f7332b4677d4e0817b95f0b6fd8579289cd8dd4c837a88')
-sha512sums_aarch64=('ff4f29302ce9cc65eb491762df2842bcaacd1c2e53f4df0ee4ff1288353eff0138e921faaed64c9c5d2bc4312c5b92b4290fa6eb2bc5dff1c10f5e17961d3fc6')
+
+_gh='https://github.com/zen-browser/desktop/releases/download/twilight-1'
+_installdir="/opt/${pkgname}"
+
+source=("${_pkgname}.sh"
+        "${_pkgname}.desktop"
+        'policies.json')
+source_x86_64=("zen.linux-x86_64-${pkgver}-${pkgrel}.tar.xz::${_gh}/zen.linux-x86_64.tar.xz")
+source_aarch64=("zen.linux-aarch64-${pkgver}-${pkgrel}.tar.xz::${_gh}/zen.linux-aarch64.tar.xz")
+
+b2sums=('bc733dba0aad89145425cf6e82a22379c1115b736f0938203e80d7e78f3e0f4c6a4c6abab0ceb36d5eecb009163b77d0b8f2145ffcf6b985a8f142f6fabaec6d'
+        'f75e803fa9da53ab9c263cc357f388de87137393fac90e86dfb528029de1434d887c2c25050ea167fbe9959d2eec11f81c85f28010126bd0c46884b59bb6ae41'
+        'f83302f32649f214d97f2cadf41d353d7d76fc3b50b6dabc6e25256dc52b7a98aed024a14a88966d0a4f18ee5546ad8f45b4de626aa6ed38c9f8e7a99ef151c3')
+b2sums_x86_64=('59abaaf016f67c9717b5b3ce2a97d06ba513495f4ba66ff7cad95cfa5fe463468119dbd06979a65d3b9c77ee743c0f1fdf8edf448f702a55ce0366fa642299ba')
+b2sums_aarch64=('322d4edb9732d4be0b8dde105231649048390ec94b8a7006888979c5e2d07157482fd5ddf41db4c79449bb8d7dfb45c3954a638a22ccfb37f79dcbe40ba0049d')
 
 package() {
-    install -d "${pkgdir}/opt/${pkgname}"
-    cp -a "${srcdir}/zen/." "${pkgdir}/opt/${pkgname}/"
+    # Browser files
+    install -d "${pkgdir}${_installdir}"
+    cp -a "${srcdir}/zen/." "${pkgdir}${_installdir}/"
 
     # SUID sandbox helpers
-    chmod 4755 "${pkgdir}/opt/${pkgname}/glxtest"
-    chmod 4755 "${pkgdir}/opt/${pkgname}/vaapitest"
-
-    # Launcher
-    install -Dm755 "${srcdir}/zen-browser-twilight.sh" "${pkgdir}/usr/bin/zen-browser-twilight"
-
-    # Desktop entry
-    install -Dm644 "${srcdir}/zen-browser-twilight.desktop" "${pkgdir}/usr/share/applications/zen-browser-twilight.desktop"
-
-    # Icons (symlinks to avoid duplicating files)
-    _iconname="zen-browser-twilight"
-    for i in 16x16 32x32 48x48 64x64 128x128; do
-        install -d "${pkgdir}/usr/share/icons/hicolor/${i}/apps/"
-        ln -s "/opt/${pkgname}/browser/chrome/icons/default/default${i/x*}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${i}/apps/${_iconname}.png"
+    local _suid_bins=(glxtest vaapitest)
+    for _bin in "${_suid_bins[@]}"; do
+        [[ -f "${pkgdir}${_installdir}/${_bin}" ]] && chmod 4755 "${pkgdir}${_installdir}/${_bin}"
     done
 
-    # System dictionaries
-    ln -Ts /usr/share/hunspell "${pkgdir}/opt/${pkgname}/dictionaries"
-    ln -Ts /usr/share/hyphen "${pkgdir}/opt/${pkgname}/hyphenation"
+    # Launcher
+    install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
-    # System certificates
-    ln -sf /usr/lib/libnssckbi.so "${pkgdir}/opt/${pkgname}/libnssckbi.so"
+    # Desktop entry
+    install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-    # Policies - disable auto-update (managed via AUR)
-    install -Dm644 "${srcdir}/policies.json" "${pkgdir}/opt/${pkgname}/distribution/policies.json"
+    # Icons — symlink to bundled icons
+    local _i
+    for _i in 16 32 48 64 128; do
+        install -d "${pkgdir}/usr/share/icons/hicolor/${_i}x${_i}/apps"
+        ln -s "${_installdir}/browser/chrome/icons/default/default${_i}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_i}x${_i}/apps/${_pkgname}.png"
+    done
+
+    # System dictionaries & hyphenation
+    ln -Ts /usr/share/hunspell "${pkgdir}${_installdir}/dictionaries"
+    ln -Ts /usr/share/hyphen "${pkgdir}${_installdir}/hyphenation"
+
+    # System certificates (use system NSS CKBI instead of bundled)
+    ln -sf /usr/lib/libnssckbi.so "${pkgdir}${_installdir}/libnssckbi.so"
+
+    # Policies — disable auto-update (managed via AUR)
+    install -Dm644 "${srcdir}/policies.json" "${pkgdir}${_installdir}/distribution/policies.json"
 }
