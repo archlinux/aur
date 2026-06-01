@@ -1,12 +1,12 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=kwybars-git
 _repo=Kwybars
-pkgver=0.1.9.r0.g0000000
-pkgrel=1
+pkgver=0.2.0.r0.g0000000
+pkgrel=2
 pkgdesc="Desktop audio visualizer for Wayland that renders real-time audio bars on screen (latest git)"
 arch=('x86_64')
 url="https://github.com/naurissteins/Kwybars"
-license=('MIT')
+license=('GPL-3.0-or-later')
 provides=('kwybars')
 conflicts=('kwybars' 'kwybars-bin')
 options=('!debug')
@@ -43,6 +43,7 @@ package() {
 
   install -d "$pkgdir/usr/share/kwybars/themes"
   install -m644 assets/themes/*.toml "$pkgdir/usr/share/kwybars/themes/"
+  install -Dm644 docs/man/*.1 -t "$pkgdir/usr/share/man/man1"
   install -Dm644 assets/examples/config.toml \
     "$pkgdir/usr/share/doc/kwybars/examples/config.toml"
 
