@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-swift
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Swift grammar for tree-sitter"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-swift.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/alex-pinkus/tree-sitter-swift/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ac72ba74369b3ff2ae5c3ab9cdb0d3c2783c991303e8930fe5c2a8772e779949')
+sha256sums=('e380cd99f7e3d8ef784550afbfba67690c6e905d5bb64232264b39a22d03d28b')
 
 
 build() {

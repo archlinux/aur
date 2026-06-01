@@ -1,6 +1,6 @@
 pkgbase = tree-sitter-swift
 	pkgdesc = Swift grammar for tree-sitter
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/alex-pinkus/tree-sitter-swift
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = tree-sitter-swift
 	depends = glibc
 	provides = libtree-sitter-swift.so
 	options = staticlibs
-	source = tree-sitter-swift-0.7.2-src.tar.gz::https://github.com/alex-pinkus/tree-sitter-swift/archive/refs/tags/0.7.2.tar.gz
-	sha256sums = ac72ba74369b3ff2ae5c3ab9cdb0d3c2783c991303e8930fe5c2a8772e779949
+	source = tree-sitter-swift-0.7.3-src.tar.gz::https://github.com/alex-pinkus/tree-sitter-swift/archive/refs/tags/0.7.3.tar.gz
+	sha256sums = e380cd99f7e3d8ef784550afbfba67690c6e905d5bb64232264b39a22d03d28b
 
 pkgname = tree-sitter-swift
