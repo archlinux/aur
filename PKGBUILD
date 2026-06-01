@@ -9,7 +9,7 @@ _pkgver=1.22.3
 
 # `makepkg` doesn't support hyphens in `$pkgver`, so we'll strip them as per `vercmp`.
 pkgver=${_pkgver//-/}
-pkgrel=1
+pkgrel=2
 pkgdesc="Uncompromising wilderness survival sandbox game (requires paid account)"
 arch=("x86_64")
 url="https://www.vintagestory.at/"
@@ -20,7 +20,7 @@ source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_p
 #       "https://account.vintagestory.at/files/$_release/vs_client_linux-x64_$_pkgver.tar.gz" (alternative source)
         "$pkgname.desktop"
         "vsmodinstall-handler.desktop")
-md5sums=("67e0e15e92b793c70bb76c348e62639a"
+md5sums=("8005d8f5aacd948c05fd2c0fe8d622ec"
          "0cd6360c157fc7dc4d52952e83483e7d"
          "8ccc9b49290dda21199b14ac3cd4ac7e")
 
