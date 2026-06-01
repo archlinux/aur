@@ -15,7 +15,7 @@ depends=('lib32-glibc' "${_pkgbase}")
 makedepends=('git' 'gcc-multilib')
 validpgpkeys=('49EA7C670E0850E7419514F629C2366E4DFC5728'  # Thomas Haller <thaller@redhat.com>
               '67DA3FAEBAE276BA58FC6CE314F18A98993AECD5') # Thomas Haller <thom311@gmail.com>
-source=("git+https://github.com/thom311/libnl.git#tag=libnl${pkgver//./_}?signed")
+source=("git+https://github.com/thom311/libnl.git?signed#tag=libnl${pkgver//./_}")
 sha256sums=('d741b8f94ef4a64b953603efce660a2eec4eb0cb6cd7faeabf75c8af99f0bcab')
 
 prepare() {
