@@ -1,6 +1,6 @@
 pkgbase = chatmixd-git
 	pkgdesc = SteelSeries ChatMix daemon for Linux (hardened fork of linuxmix)
-	pkgver = 0.2.0.r4.g2ae085e
+	pkgver = 0.2.0.r5.ga9a5650
 	pkgrel = 1
 	url = https://github.com/UMCEKO/chatmixd
 	arch = x86_64
