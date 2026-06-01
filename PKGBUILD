@@ -32,7 +32,7 @@ package() {
   install -d "$pkgdir/usr/lib/$pkgname"
   cp package.json "$pkgdir/usr/lib/$pkgname/"
   cd "$pkgdir/usr/lib/$pkgname"
-  npm install --production --legacy-peer-deps
+  npm install --production --legacy-peer-deps --ignore-scripts
 
   # Create a wrapper script to run the app
   install -d "$pkgdir/usr/bin"
