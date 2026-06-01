@@ -1,0 +1,61 @@
+post_install() {
+    echo ">>> PKGBUILD Manager installed."
+    echo ">>> Right-click any PKGBUILD file to see the PKGBUILD submenu."
+    echo ">>> Press Ctrl+Alt+P to open the menu settings panel."
+
+    # Register Ctrl+Alt+P shortcut (GNOME only, only if slot is free)
+    if command -v gsettings &>/dev/null; then
+        _user="${SUDO_USER:-$USER}"
+        _uid=$(id -u "$_user" 2>/dev/null)
+        _env="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_uid}/bus"
+        _gset="sudo -u $_user env $_env gsettings"
+        _binding="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/pkgbuild-manager/"
+
+        _current=$(${_gset} get org.gnome.settings-daemon.plugins.media-keys \
+            custom-keybindings 2>/dev/null || echo "[]")
+
+        if ! echo "$_current" | grep -q "pkgbuild-manager"; then
+            # Append to existing list instead of overwriting
+            _new=$(echo "$_current" | sed "s|]$|, '$_binding']|" | sed "s|\[\]|['$_binding']|")
+            ${_gset} set org.gnome.settings-daemon.plugins.media-keys \
+                custom-keybindings "$_new" 2>/dev/null || true
+            ${_gset} set \
+                org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:${_binding} \
+                name "PKGBUILD Manager Settings" 2>/dev/null || true
+            ${_gset} set \
+                org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:${_binding} \
+                command "pkgbuild-manager-settings" 2>/dev/null || true
+            ${_gset} set \
+                org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:${_binding} \
+                binding "<Control><Alt>p" 2>/dev/null || true
+            echo ">>> Keyboard shortcut Ctrl+Alt+P registered."
+        fi
+    fi
+
+    pkill -u "${SUDO_USER:-$USER}" nautilus 2>/dev/null || true
+}
+
+post_upgrade() {
+    _user="${SUDO_USER:-$USER}"
+    _scripts="$(eval echo ~$_user)/.local/share/nautilus/scripts"
+    if [ -d "$_scripts/PKGBUILD" ]; then
+        rm -rf "$_scripts/PKGBUILD"
+        echo ">>> Removed stale PKGBUILD symlink directory from previous version."
+    fi
+    post_install
+}
+
+post_remove() {
+    if command -v gsettings &>/dev/null; then
+        _user="${SUDO_USER:-$USER}"
+        _uid=$(id -u "$_user" 2>/dev/null)
+        _env="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_uid}/bus"
+        _gset="sudo -u $_user env $_env gsettings"
+        _binding="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/pkgbuild-manager/"
+        _current=$(${_gset} get org.gnome.settings-daemon.plugins.media-keys \
+            custom-keybindings 2>/dev/null || echo "[]")
+        _new=$(echo "$_current" | sed "s|, '$_binding'||" | sed "s|'$_binding', ||" | sed "s|'$_binding'||")
+        ${_gset} set org.gnome.settings-daemon.plugins.media-keys \
+            custom-keybindings "$_new" 2>/dev/null || true
+    fi
+}
