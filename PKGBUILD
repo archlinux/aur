@@ -4,8 +4,8 @@
 # shellcheck shell=bash
 
 pkgname=yazi-nightly-bin
-pkgver=26.5.6.20260601.e892bf7
-pkgrel=1
+pkgver=26.5.6.20260531.e892bf7
+pkgrel=2
 _date="$(date -u +%Y%m%d)"
 pkgdesc="💥 Blazing fast terminal file manager written in Rust, based on async I/O."
 arch=("x86_64" "aarch64")
@@ -36,7 +36,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/yazi-$CARCH-unknown-linux-gnu"
-  ./yazi --version | awk -F'[ ()]' '{gsub(/-/, "", $5); print $2 "." $5 "." $4}'
+  ./yazi --version | awk '/Version:/{
+    sha=$3; date=$4; ver=$2;
+    gsub(/[()\-]/,"",sha); gsub(/[()\-]/,"",date);
+    print ver"."date"."sha
+  }'
 }
 
 package() {
