@@ -1,0 +1,24 @@
+pkgbase = plasma-ions-china
+	pkgdesc = A collection of KDE Plasma weather data sources for Chinese users
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/arenekosreal/plasma-ions-china
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = glibc
+	depends = kcoreaddons
+	depends = kdeplasma-addons>=6.5.0
+	depends = ki18n
+	depends = libstdc++
+	depends = qt6-base
+	noextract = kdeplasma-addons-6.5.5.tar.xz
+	source = plasma-ions-china-0.1.0.tar.gz::https://github.com/arenekosreal/plasma-ions-china/archive/v0.1.0.tar.gz
+	source = https://download.kde.org/stable/plasma/6.5.5/kdeplasma-addons-6.5.5.tar.xz
+	sha256sums = d4412b6f29a133c5f8d3a07984245c96d6906370a6a76c154fcce275f80885a3
+	sha256sums = 32b69b987258998b95017cf08aba1d85b986303bd59e1bbc600ed12e2184f5cb
+
+pkgname = plasma-ions-china
