@@ -1,13 +1,14 @@
 pkgbase = zebar-bin
 	pkgdesc = A tool for creating customizable and cross-platform taskbars, desktop widgets, and popups.(Prebuilt version)
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/glzr-io/zebar
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
 	provides = zebar=3.3.1
 	conflicts = zebar
 	source = zebar-3.3.1.deb::https://github.com/glzr-io/zebar/releases/download/v3.3.1/zebar-v3.3.1-opt4-x64.deb

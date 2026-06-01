@@ -2,7 +2,7 @@
 pkgname=zebar-bin
 _pkgname=Zebar
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for creating customizable and cross-platform taskbars, desktop widgets, and popups.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/glzr-io/zebar"
@@ -13,6 +13,7 @@ depends=(
     'gtk3'
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
+    'libayatana-appindicator'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-opt4-x64.deb"
