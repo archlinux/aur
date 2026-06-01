@@ -1,6 +1,6 @@
 pkgname=crunchyroll
 _pkgname=Crunchyroll
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Unnofficial CrunchyRoll desktop application"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('electron-castlab-bin' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('16a4758bd669606f5aca91788c0d755bfbbae70b0c60aec4c8ab798db080fe25')
+sha256sums=('d3ace8e9e1cc06a187a5c9d65d98eec8cb1ca81f431c310c6ca5a8527c300cf6')
 
 
 package() {
@@ -27,7 +27,7 @@ package() {
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/application-$pkgver/$_pkgname.desktop" \
-        "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -Dm644 "$srcdir/application-$pkgver/$pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
