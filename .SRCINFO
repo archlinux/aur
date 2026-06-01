@@ -1,0 +1,29 @@
+pkgbase = python-tritonclient
+	pkgdesc = Python client libraries for NVIDIA Triton Inference Server (HTTP/gRPC)
+	pkgver = 2.68.0
+	pkgrel = 1
+	url = https://github.com/triton-inference-server/client
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-grpcio-tools
+	makedepends = git
+	depends = python
+	depends = python-numpy
+	depends = python-rapidjson
+	depends = python-urllib3
+	depends = python-ml-dtypes
+	optdepends = python-aiohttp: HTTP client (async)
+	optdepends = python-geventhttpclient: HTTP client
+	optdepends = python-greenlet: HTTP client
+	optdepends = python-grpcio: gRPC client
+	optdepends = python-protobuf: gRPC client
+	optdepends = python-packaging: gRPC client
+	optdepends = python-cuda: CUDA shared-memory utilities
+	source = git+https://github.com/triton-inference-server/client.git#commit=8951d7a19788782f2349c2c49d8dc873e0487704
+	sha256sums = SKIP
+
+pkgname = python-tritonclient
