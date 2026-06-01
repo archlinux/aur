@@ -49,11 +49,24 @@ def save_config(cfg):
 
 CACHE_DIR = os.path.expanduser("~/.cache/plasma-wallpapers")
 LAST_WP_FILE = os.path.join(CACHE_DIR, "last_selected.txt")
+COLOR_CACHE_FILE = os.path.join(CACHE_DIR, "colors.json")
+
+# Загрузка кэша цветов для мгновенного старта
+COLOR_CACHE = {}
+if os.path.exists(COLOR_CACHE_FILE):
+    try:
+        with open(COLOR_CACHE_FILE, 'r') as f: COLOR_CACHE = json.load(f)
+    except: pass
+
+def save_color_cache():
+    try:
+        with open(COLOR_CACHE_FILE, 'w') as f: json.dump(COLOR_CACHE, f)
+    except: pass
 
 BASE_PREVIEW_SIZE = QSize(600, 300)
 FOCUSED_ITEM_SIZE = QSize(600, 300)
 NORMAL_ITEM_SIZE = QSize(180, 240)
-SETTINGS_DIALOG_SIZE = (480, 540) # УВЕЛИЧЕНО для дистанции кнопок
+SETTINGS_DIALOG_SIZE = (480, 540)
 STATIC_TYPES = ('*.jpg', '*.jpeg', '*.png', '*.webp')
 VIDEO_TYPES = ('*.mp4', '*.mkv', '*.webm')
 
@@ -124,11 +137,23 @@ class SkewedWallpaperView(QWidget):
         if self.dim_alpha > 0:
             painter.fillRect(self.rect(), QColor(10, 10, 15, self.dim_alpha))
 
-        # Отключаем обрезку, чтобы нарисовать жирный контур поверх обоев
+        # Отключаем обрезку, чтобы нарисовать рамки поверх обоев
         painter.setClipping(False)
+
+        # ОПТИМИЗАЦИЯ ВИЗУАЛА: Элегантная рамка для неактивных обоев (чтобы не казались деревянными)
+        if self.focus_val < 0.99:
+            alpha_border = int(40 * (1.0 - self.focus_val))
+            pen = QPen(QColor(255, 255, 255, alpha_border))
+            pen.setWidth(1)
+            pen.setJoinStyle(Qt.PenJoinStyle.MiterJoin)
+            painter.setPen(pen)
+            painter.setBrush(Qt.BrushStyle.NoBrush)
+            painter.drawPath(path)
+
+        # Активная жирная цветная рамка
         if self.focus_val > 0.01:
             pen = QPen(QColor(self.glow_color.red(), self.glow_color.green(), self.glow_color.blue(), int(220 * self.focus_val)))
-            pen.setWidth(int(4 * self.focus_val)) # Толщина контура
+            pen.setWidth(int(4 * self.focus_val))
             pen.setJoinStyle(Qt.PenJoinStyle.MiterJoin)
             painter.setPen(pen)
             painter.setBrush(Qt.BrushStyle.NoBrush)
@@ -382,7 +407,6 @@ class SettingsMenu(QDialog):
         self.btn_kde_shortcuts.clicked.connect(self.open_kde_shortcuts)
         layout.addWidget(self.btn_kde_shortcuts)
 
-        # ДОБАВЛЕНА ДИСТАНЦИЯ перед нижним блоком кнопок
         layout.addSpacing(25)
         layout.addStretch()
 
@@ -485,14 +509,15 @@ class WallpaperItem(QFrame):
     @focus_progress.setter
     def focus_progress(self, val):
         self._focus_progress = val
-        self.img_view.setDimAlpha(int(150 * (1.0 - val)))
 
-        # Передаем данные для отрисовки контурного свечения
+        # ОПТИМИЗАЦИЯ ВИЗУАЛА: Снижено затемнение до 110 для более стеклянного вида неактивных элементов
+        self.img_view.setDimAlpha(int(110 * (1.0 - val)))
+
         self.img_view.setFocusData(val, self.adaptive_color)
 
         c = self.adaptive_color
         alpha = int(255 * val)
-        blur = int(90 * val)  # ВЕРНУЛИ базовое свечение на 80
+        blur = int(90 * val)
 
         self.glow.setColor(QColor(c.red(), c.green(), c.blue(), alpha))
         self.glow.setBlurRadius(blur)
@@ -510,7 +535,14 @@ class WallpaperItem(QFrame):
                 if not img.isNull(): img.save(cache_path, "JPEG", 87)
 
         if os.path.exists(cache_path):
-            self.adaptive_color = extract_dominant_color(cache_path)
+            global COLOR_CACHE
+            # ОПТИМИЗАЦИЯ ЗАПУСКА: Используем кэш вместо повторного чтения файла
+            if cache_path in COLOR_CACHE:
+                self.adaptive_color = QColor(COLOR_CACHE[cache_path])
+            else:
+                self.adaptive_color = extract_dominant_color(cache_path)
+                COLOR_CACHE[cache_path] = self.adaptive_color.name()
+                save_color_cache()
             pix = QPixmap(cache_path)
         else:
             pix = QPixmap()
@@ -614,10 +646,20 @@ class WallpaperSelector(QWidget):
             self.cfg["daemon_autostart_created"] = True
             save_config(self.cfg)
 
-        # Вызываем загрузку карусели напрямую без таймера
         self.init_carousel()
         self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
         self.setFocus()
+
+    # ОПТИМИЗАЦИЯ ИСЧЕЗНОВЕНИЯ: Собственная прозрачная анимация (0.1с)
+    def fade_out_and_quit(self):
+        if hasattr(self, 'is_quitting') and self.is_quitting: return
+        self.is_quitting = True
+        self.fade_anim = QPropertyAnimation(self, b"windowOpacity")
+        self.fade_anim.setDuration(100)
+        self.fade_anim.setStartValue(1.0)
+        self.fade_anim.setEndValue(0.0)
+        self.fade_anim.finished.connect(QApplication.quit)
+        self.fade_anim.start()
 
     def update_settings_button_text(self):
         self.cfg = load_config()
@@ -738,13 +780,13 @@ class WallpaperSelector(QWidget):
         subprocess.Popen(["kwriteconfig6", "--file", "kscreenlockerrc", "--group", "Greeter", "--key", "WallpaperPlugin", plugin], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.Popen(["kwriteconfig6", "--file", "kscreenlockerrc", "--group", "Greeter", "--group", "Wallpaper", "--group", plugin, "--group", "General", "--key", cfg_key, cfg_val], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-        QApplication.quit()
+        self.fade_out_and_quit()
 
     def changeEvent(self, event):
         if event.type() == QEvent.Type.ActivationChange:
             if time.time() - getattr(self, 'startup_time', 0) > 1.5:
                 if not self.isActiveWindow() and not self.is_applying and not self.is_settings_open:
-                    QApplication.quit()
+                    self.fade_out_and_quit()
         super().changeEvent(event)
 
     def keyPressEvent(self, event: QKeyEvent):
@@ -753,7 +795,7 @@ class WallpaperSelector(QWidget):
         if event.key() == Qt.Key.Key_Left: self.select_prev()
         elif event.key() == Qt.Key.Key_Right: self.select_next()
         elif event.key() in (Qt.Key.Key_Enter, Qt.Key.Key_Return, Qt.Key.Key_Space): self.apply_wallpaper()
-        elif event.key() == Qt.Key.Key_Escape: QApplication.quit()
+        elif event.key() == Qt.Key.Key_Escape: self.fade_out_and_quit()
         else: super().keyPressEvent(event)
 
     def wheelEvent(self, event: QWheelEvent):
