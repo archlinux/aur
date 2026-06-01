@@ -3,7 +3,7 @@
 pkgname=libggml-cuda-bin
 _upstream_pkgname=ggml
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensor library for machine learning with OpenBLAS, Vulkan, and CUDA"
 arch=('x86_64')
 url="https://github.com/OneNoted/libggml-cuda-bin"
@@ -12,6 +12,7 @@ depends=(
   'cuda'
   'nvidia-utils'
   'openblas'
+  'spirv-headers'
   'vulkan-driver'
   'vulkan-icd-loader'
 )
@@ -27,9 +28,11 @@ conflicts=(
   'libggml-cuda-git'
 )
 
-_asset_name="${pkgname}-${pkgver}-${pkgrel}-x86_64.tar.zst"
+# Metadata-only pkgrel bumps can reuse the previous binary asset.
+_asset_pkgrel=1
+_asset_name="${pkgname}-${pkgver}-${_asset_pkgrel}-x86_64.tar.zst"
 source=(
-  "${_asset_name}::${url}/releases/download/v${pkgver}-${pkgrel}/${_asset_name}"
+  "${_asset_name}::${url}/releases/download/v${pkgver}-${_asset_pkgrel}/${_asset_name}"
 )
 sha256sums=('f5a89a6eab956048c42448ae59f7c3617580edd61076e58651dcab5a5d8ad1b8')
 
