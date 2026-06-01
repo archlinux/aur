@@ -3,7 +3,7 @@
 
 pkgbase=cutlass
 pkgname=('cutlass' 'python-cutlass')
-pkgver=4.5.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc='CUDA Templates for Linear Algebra Subroutines'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('cuda' 'cudnn')
 makedepends=('cmake' 'git' 'ninja' 'pybind11' 'python-build'
              'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/NVIDIA/$pkgbase/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d1ce5d785ba45e2ec1bbfc0fad64b5542878b8329a7d7dfdbfa681a545d35295')
+sha256sums=('550a27be6fe92de8bed43101b64f6b52878346409472b3e94e5b82f65b5b58cb')
 
 prepare() {
     cd "$pkgbase-$pkgver/python"
@@ -32,11 +32,14 @@ build() {
     export PATH="/opt/cuda/bin:$PATH"
 
     # Limit parallel jobs to prevent OOM during CUDA template compilation
-    # Each nvcc process can use 10-20GB+ RAM with heavy template instantiation
+    # (each nvcc can use ~10GB RAM with heavy template instantiation). Scale to
+    # available memory (~11GB/job) instead of a fixed -j4, so big-RAM build hosts
+    # aren't throttled to 4 of N cores; cap at 32 to bound it.
     local _jobs=$(nproc)
-    if (( _jobs > 4 )); then
-        _jobs=4
-    fi
+    local _memgb=$(awk '/MemTotal/{print int($2/1024/1024)}' /proc/meminfo 2>/dev/null || echo 16)
+    local _memcap=$(( _memgb / 11 )); (( _memcap < 1 )) && _memcap=1
+    (( _jobs > _memcap )) && _jobs=$_memcap
+    (( _jobs > 32 )) && _jobs=32
 
     # CUDA 13.x cannot use GCC 16+ as its host compiler. Arch's cuda package
     # depends on gcc15, so fall back to g++-15 when the system g++ is too new.
