@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/tarpediem/zenvision-studio"
 license=('MIT')
 depends=('python' 'python-pyusb' 'python-pillow' 'python-fastapi' 'python-uvicorn'
-         'python-multipart' 'python-psutil' 'python-dbus-next')
+         'python-multipart' 'python-psutil' 'python-dbus-next' 'hicolor-icon-theme')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 optdepends=('python-numpy: audio spectrum + visualisers'
             'python-imageio: video/GIF playback in the media applet'

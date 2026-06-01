@@ -17,6 +17,7 @@ pkgbase = zenvision-studio
 	depends = python-multipart
 	depends = python-psutil
 	depends = python-dbus-next
+	depends = hicolor-icon-theme
 	optdepends = python-numpy: audio spectrum + visualisers
 	optdepends = python-imageio: video/GIF playback in the media applet
 	optdepends = ffmpeg: video decoding backend for imageio
