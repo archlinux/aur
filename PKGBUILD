@@ -23,7 +23,7 @@ package() {
     install -m775 "$srcdir/tmc_pc" "$pkgdir/usr/share/games/Picori"
     #cp -r "$srcdir/sounds.json" "$pkgdir/usr/share/games/Picori"
     cp -r "$srcdir/picori-$scriptver/picori.png" "$pkgdir/usr/share/games/Picori"
-    install -m775 "$srcdir/asset_extractor" "$pkgdir/usr/share/games/Picori"
+    #install -m775 "$srcdir/asset_extractor" "$pkgdir/usr/share/games/Picori"
     install -m775 "$srcdir/picori-$scriptver/picori" "$pkgdir/usr/bin"
     printf '%s\n' "$pkgver" > "$pkgdir/usr/share/games/Picori/version.txt"
 }
