@@ -9,6 +9,7 @@ pkgbase = stably-orca-git
 	makedepends = nodejs>=20
 	makedepends = pnpm
 	makedepends = python
+	makedepends = unzip
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = gtk3

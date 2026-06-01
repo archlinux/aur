@@ -24,6 +24,9 @@ makedepends=(
   'nodejs>=20'
   'pnpm'
   'python'
+  # Upstream's config/scripts/install-electron-package-binary.mjs shells out
+  # to the `unzip` CLI to extract the Electron archive. Not in base-devel.
+  'unzip'
 )
 provides=('stably-orca')
 conflicts=('stably-orca' 'stably-orca-bin')
