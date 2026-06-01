@@ -1,6 +1,6 @@
 pkgbase = python-fpdf2
 	pkgdesc = Simple PDF generation for Python
-	pkgver = 2.8.5
+	pkgver = 2.8.7
 	pkgrel = 1
 	url = https://pyfpdf.github.io/fpdf2/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-fpdf2
 	optdepends = python-uharfbuzz: text shaping support
 	optdepends = python-cryptography: encryption support
 	conflicts = python-fpdf
-	source = https://files.pythonhosted.org/packages/source/f/fpdf2/fpdf2-2.8.5.tar.gz
-	sha256sums = af4491ef2e0a5fe476f9d61362925658949c995f7e804438c0e81008f1550247
+	source = https://files.pythonhosted.org/packages/source/f/fpdf2/fpdf2-2.8.7.tar.gz
+	sha256sums = 7060ccee5a9c7ab0a271fb765a36a23639f83ef8996c34e3d46af0a17ede57f9
 
 pkgname = python-fpdf2
