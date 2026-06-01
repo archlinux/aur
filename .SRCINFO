@@ -1,0 +1,15 @@
+pkgbase = shardy-rs-bin
+	pkgdesc = The leading headless encryption tool.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/OxiCrypt/shardy
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	provides = shardy
+	source_x86_64 = shardy-0.1.2::https://github.com/OxiCrypt/shardy/releases/download/v0.1.2/shardy-x86_64-linux
+	sha256sums_x86_64 = 6ebc2567af8d03005e9bdfc72228c388467ce31e733be5c00bcf751c16cdc974
+	source_aarch64 = shardy-0.1.2::https://github.com/OxiCrypt/shardy/releases/download/v0.1.2/shardy-aarch64-linux
+	sha256sums_aarch64 = 0971b9d357a7183a2d3cc11c9b5a9f261c634965f21f71724ce88e15f3c3ee62
+
+pkgname = shardy-rs-bin
