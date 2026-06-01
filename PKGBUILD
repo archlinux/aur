@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 
 pkgname=nixfmt
-pkgver=1.3.0 # renovate: datasource=github-tags depName=NixOS/nixfmt
+pkgver=1.3.1 # renovate: datasource=github-tags depName=NixOS/nixfmt
 pkgrel=1
 pkgdesc="Official formatter for Nix code"
 url="https://github.com/NixOS/nixfmt"
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('ghc-libs' 'haskell-cmdargs' 'haskell-megaparsec' 'haskell-parser-combinators' 'haskell-safe-exceptions' 'haskell-scientific' 'haskell-file-embed' 'haskell-pretty-simple')
 makedepends=('ghc' 'uusi')
 source=("https://github.com/NixOS/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('5655a4dd1ff4d261f459f369c710b6dbe70a742cea2f7cc0a1cfea22d7529a246cbe946a8f2f843b9f5058ebd17e3607f0f887068153d1766e4b9911f7a16f36')
+b2sums=('18c47aaa56b33c3e87b4b1eb13ebbc7cd00df378e95c3fd868b6a45f06abb8d061047005bd9785f7f0d20c395956b167a592b34e3cb378c3432572c10a8aa845')
 
 prepare() {
   uusi $pkgname-$pkgver/$pkgname.cabal
