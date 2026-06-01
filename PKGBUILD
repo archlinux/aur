@@ -17,7 +17,7 @@
 
 pkgname=truealter-cli
 _npmname='@truealter/cli'
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='ALTER identity CLI -- login once, authenticated everywhere'
 arch=('any')
@@ -27,7 +27,7 @@ depends=('nodejs>=20')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${_npmname}/-/cli-${pkgver}.tgz")
 noextract=("cli-${pkgver}.tgz")
-# sha256 pinned to published 0.7.1 tarball.
+# sha256 pinned to published 0.8.0 tarball.
 # Recompute on every pkgver bump:
 #   curl -fsSL https://registry.npmjs.org/@truealter/cli/-/cli-${pkgver}.tgz \
 #     -o cli-${pkgver}.tgz && sha256sum cli-${pkgver}.tgz
@@ -35,7 +35,7 @@ noextract=("cli-${pkgver}.tgz")
 # NOTE: /boogie-time §1.3 still gates Phase A on major version >= 1.0.0;
 # this PKGBUILD tracks the latest public minor for keep-pace hygiene
 # and will move to v1.0.0 in the launch-trigger PR.
-sha256sums=('8cc503e43d8f88493cbb27a8da41261b8084c2b14cdc44a8127b37a32b966229') # pragma: allowlist secret
+sha256sums=('a36cca9d989ece5aeda22de95633f2e7abd363d55b026e2ca5985151197888d9') # pragma: allowlist secret
 
 package() {
   cd "${srcdir}"
