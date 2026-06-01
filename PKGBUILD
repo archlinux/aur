@@ -1,7 +1,7 @@
 # HUSHHQ-35. AUR `hush-desktop-bin` PKGBUILD template.
 # Maintainer: Hush <security@gethush.live>
 pkgname=hush-desktop-bin
-pkgver=0.1.38
+pkgver=0.1.44
 pkgrel=1
 pkgdesc="End-to-end encrypted messenger (binary release)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 provides=('hush')
 conflicts=('hush')
 source=("${pkgname}-${pkgver}.deb::https://github.com/hushhq/hush-desktop/releases/download/v${pkgver}-mvp/hush-desktop_${pkgver}-mvp_amd64.deb")
-sha256sums=('c69a9cfafc608fa522ff3f10bd1814f47e0c0d8da6cdf23c255b019591b1ca5f')
+sha256sums=('a67397b37eddd8a225ed4ea4f60f20e9f41e9ba55e36468891f4b1c1e517b153')
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
