@@ -1,7 +1,7 @@
 # Maintainer: Celti B. <celti@celti.name>
 
 pkgname=age-plugin-keystore
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='org.freedesktop.secrets plugin for age'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('go')
 optdepends=('age: for use with age'
             'rage-encryption: for use with rage')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2b41d42ec9b0bb7b244e6d91b22fffa5063943851780f599ca7289ec38abed9d')
+sha256sums=('eaba6ecc71e5c94bf9c9e77718da94c07c532c9812abeba2a6b2cece5dc57d65')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

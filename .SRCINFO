@@ -1,6 +1,6 @@
 pkgbase = age-plugin-keystore
 	pkgdesc = org.freedesktop.secrets plugin for age
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/arouene/age-plugin-keystore
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = age-plugin-keystore
 	depends = glibc
 	optdepends = age: for use with age
 	optdepends = rage-encryption: for use with rage
-	source = age-plugin-keystore-1.1.0.tar.gz::https://github.com/arouene/age-plugin-keystore/archive/v1.1.0.tar.gz
-	sha256sums = 2b41d42ec9b0bb7b244e6d91b22fffa5063943851780f599ca7289ec38abed9d
+	source = age-plugin-keystore-1.2.0.tar.gz::https://github.com/arouene/age-plugin-keystore/archive/v1.2.0.tar.gz
+	sha256sums = eaba6ecc71e5c94bf9c9e77718da94c07c532c9812abeba2a6b2cece5dc57d65
 
 pkgname = age-plugin-keystore
