@@ -35,5 +35,5 @@ package() {
 
   install -Dm644 PROTOCOL.md "$pkgdir/usr/share/doc/$_pkgname/PROTOCOL.md"
   install -Dm644 README.md   "$pkgdir/usr/share/doc/$_pkgname/README.md"
-  install -Dm644 LICENSE     "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 LICENSE     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

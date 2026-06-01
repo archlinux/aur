@@ -1,6 +1,6 @@
 pkgbase = zenvision-linux-git
 	pkgdesc = Userspace driver + reverse-engineered protocol for the ASUS ZenVision lid OLED (git/main)
-	pkgver = r0.g0000000
+	pkgver = r4.g4e541a3
 	pkgrel = 1
 	url = https://github.com/tarpediem/zenvision-linux
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = zenvision-linux-git
 	depends = python
 	depends = python-pyusb
 	depends = python-pillow
-	provides = zenvision-linux=r0.g0000000
+	provides = zenvision-linux=r4.g4e541a3
 	conflicts = zenvision-linux
 	source = zenvision-linux::git+https://github.com/tarpediem/zenvision-linux.git
 	sha256sums = SKIP
