@@ -2,12 +2,13 @@
 
 _pkgname="fluxcast"
 pkgname="$_pkgname-git"
-pkgver=0.1.0.beta.r3.g531cd8f
+pkgver=0.1.0.beta.r18.g7a5d836
 pkgrel=1
 pkgdesc="Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast"
 arch=('any')
 url="https://github.com/IlyaP358/fluxcast"
 license=('GPL-3.0')
+install=fluxcast.install
 
 depends=(
   ffmpeg
@@ -56,6 +57,7 @@ package() {
   install -Dm644 "$_pkgsrc/src/assets/flcast_logo_512x512.png" -t "$pkgdir/opt/$_pkgname/assets/"
 
   install -Dm644 "$_pkgsrc/meta/fluxcast.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "$_pkgsrc/meta/dev.fluxcast.wpa-supplicant.conf" -t "$pkgdir/usr/share/dbus-1/system.d/"
   install -Dm644 "$_pkgsrc/src/assets/flcast_logo_512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/fluxcast.png"
 
   install -Dm755 "../fluxcast.sh" "$pkgdir/usr/bin/fluxcast"
