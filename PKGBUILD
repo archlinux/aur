@@ -38,7 +38,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   
   # Install desktop entry
-  install -Dm644 ../attack-shark-x11-driver.desktop "$pkgdir/usr/share/applications/attack-shark-x11-driver.desktop"
+  install -Dm644 ../../attack-shark-x11-driver.desktop "$pkgdir/usr/share/applications/attack-shark-x11-driver.desktop"
   
   # Install icon (assuming cs-mouse.svg is the icon)
   install -Dm644 assets/cs-mouse.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/attack-shark-x11.svg"
