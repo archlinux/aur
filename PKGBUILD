@@ -2,7 +2,7 @@
 
 pkgname=arch-update-check
 pkbase=arch-update-check
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="Pre-update safety checks for Arch Linux (Arch News, system state, optional AUR checks)"
 arch=('any')
