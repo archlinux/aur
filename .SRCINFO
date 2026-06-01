@@ -1,6 +1,6 @@
 pkgbase = mangaplus-reader-bin
 	pkgdesc = Personal-use desktop reader for MANGA Plus (talks to the official API with your own deviceSecret)
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/akitaonrails/frank_mangaplus
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = mangaplus-reader-bin
 	depends = fuse2
 	provides = mangaplus-reader
 	conflicts = mangaplus-reader
-	noextract = mangaplus-reader-bin-0.9.3.AppImage
+	noextract = mangaplus-reader-bin-0.9.4.AppImage
 	options = !strip
 	options = !debug
-	source = mangaplus-reader-bin-0.9.3.AppImage::https://github.com/akitaonrails/frank_mangaplus/releases/download/v0.9.3/FRANK.MANGA+_0.9.3_amd64.AppImage
-	sha256sums = 002d0937fcc07d51d85fecc3d94a86c7a7547b47fa79088f37890a345eb02ec1
+	source = mangaplus-reader-bin-0.9.4.AppImage::https://github.com/akitaonrails/frank_mangaplus/releases/download/v0.9.4/FRANK.MANGA+_0.9.4_amd64.AppImage
+	sha256sums = 8ae4fdedf0355dccb466ad8e2b72755575abaf75557a57bb208aca9dfe17ddab
 
 pkgname = mangaplus-reader-bin
