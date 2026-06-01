@@ -2,24 +2,25 @@
 # Contributor: kajoox <kayquesousa02004@gmail.com> (original maintainer)
 
 pkgname=espressif-ide-bin
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='Eclipse-based IDE for ESP-IDF development'
 arch=('x86_64')
 url="https://github.com/espressif/idf-eclipse-plugin"
 license=('EPL-2.0')
-depends=('java-runtime>=21' 'python' 'python-pip' 'gtk3' 'dfu-util' 'webkit2gtk-4.1')
-optdepends=('cmake: for building ESP-IDF projects'
+depends=('java-runtime>=21' 'python' 'python-pip' 'gtk3' 'dfu-util' 'webkit2gtk-4.1' 'cmake' 'ccache')
+optdepends=(
             'ninja: for building ESP-IDF projects'
             'gcc: for compiling projects'
-            'git: for version control and ESP-IDF installation')
+            'git: for version control and ESP-IDF installation'
+    )
 options=('!strip')
 
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://dl.espressif.com/dl/idf-eclipse-plugin/ide/Espressif-IDE-${pkgver}-linux.gtk.x86_64.tar.gz"
 	"espressif-ide.desktop"
 )
-sha256sums=('8dd49f6144fb758fe1a61757b0fc27221abe07bd55edb23baf1936f6cfc0204d'
+sha256sums=('4d98c244cd449e82177d924d52dba609c8893e0b70052158286e4c1953393dac'
             '01b498d77f4076a2b47bac488e47e1be164e5802cb39373256709f8441a33ad7')
 
 package() {

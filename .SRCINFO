@@ -1,6 +1,6 @@
 pkgbase = espressif-ide-bin
 	pkgdesc = Eclipse-based IDE for ESP-IDF development
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/espressif/idf-eclipse-plugin
 	arch = x86_64
@@ -11,14 +11,15 @@ pkgbase = espressif-ide-bin
 	depends = gtk3
 	depends = dfu-util
 	depends = webkit2gtk-4.1
-	optdepends = cmake: for building ESP-IDF projects
+	depends = cmake
+	depends = ccache
 	optdepends = ninja: for building ESP-IDF projects
 	optdepends = gcc: for compiling projects
 	optdepends = git: for version control and ESP-IDF installation
 	options = !strip
-	source = espressif-ide-bin-4.2.0.tar.gz::https://dl.espressif.com/dl/idf-eclipse-plugin/ide/Espressif-IDE-4.2.0-linux.gtk.x86_64.tar.gz
+	source = espressif-ide-bin-4.3.0.tar.gz::https://dl.espressif.com/dl/idf-eclipse-plugin/ide/Espressif-IDE-4.3.0-linux.gtk.x86_64.tar.gz
 	source = espressif-ide.desktop
-	sha256sums = 8dd49f6144fb758fe1a61757b0fc27221abe07bd55edb23baf1936f6cfc0204d
+	sha256sums = 4d98c244cd449e82177d924d52dba609c8893e0b70052158286e4c1953393dac
 	sha256sums = 01b498d77f4076a2b47bac488e47e1be164e5802cb39373256709f8441a33ad7
 
 pkgname = espressif-ide-bin
