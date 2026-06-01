@@ -6,21 +6,20 @@ import hashlib
 import subprocess
 import fcntl
 import json
-import shutil
 import signal
 import time
 
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QLabel, QFrame, QGraphicsDropShadowEffect,
     QPushButton, QDialog, QVBoxLayout, QHBoxLayout, QCheckBox,
-    QLineEdit, QFileDialog, QComboBox
+    QLineEdit, QFileDialog, QComboBox, QSpacerItem, QSizePolicy
 )
 from PyQt6.QtGui import (
     QPixmap, QKeyEvent, QGuiApplication, QImageReader,
-    QPainter, QPainterPath, QColor, QWheelEvent, QMouseEvent, QKeySequence
+    QPainter, QPainterPath, QColor, QWheelEvent, QMouseEvent, QPen
 )
 from PyQt6.QtCore import (
-    Qt, QSize, QPropertyAnimation, QEasingCurve, QRectF, QTimer, QPoint, QEvent, QRect, QCoreApplication
+    Qt, QSize, QPropertyAnimation, QEasingCurve, QRectF, QTimer, QPoint, QEvent, QRect, QCoreApplication, pyqtProperty
 )
 
 DAEMON_PID_FILE = f"/tmp/wallselector_daemon_{os.getuid()}.pid"
@@ -31,9 +30,9 @@ CONFIG_FILE = os.path.expanduser("~/.config/wallselector-kde.json")
 DEFAULT_DIR = os.path.expanduser("~/Pictures/Wallpapers")
 
 I18N = {
-    "en": {"settings_title": "Settings", "folder": "Wallpaper Folder:", "browse": "Browse", "pause_bat": "Pause on Battery", "pause_dpms": "Pause when Screen Off (DPMS)", "pause_man": "Force Pause Video Wallpapers", "shortcut": "Global Shortcut (Wayland):", "kde_btn": "Configure in KDE Settings", "autostart": "Autostart on Boot", "language": "Language:", "close": "Close", "save": "Save"},
-    "uk": {"settings_title": "Налаштування", "folder": "Папка зі шпалерами:", "browse": "Огляд", "pause_bat": "Пауза від батареї", "pause_dpms": "Пауза, якщо екран вимкнено", "pause_man": "Примусова пауза відеошпалер", "shortcut": "Глобальна комбінація (Wayland):", "kde_btn": "Налаштувати в параметрах KDE", "autostart": "Автозапуск при ввімкненні", "language": "Мова (Language):", "close": "Закрити", "save": "Зберегти"},
-    "ru": {"settings_title": "Настройки", "folder": "Папка с обоями:", "browse": "Обзор", "pause_bat": "Пауза от батареи", "pause_dpms": "Пауза при выкл. экране", "pause_man": "Принудительная пауза видео", "shortcut": "Глобальная комбинация (Wayland):", "kde_btn": "Настроить в параметрах KDE", "autostart": "Автозапуск при старте ПК", "language": "Язык (Language):", "close": "Закрыть", "save": "Сохранить"}
+    "en": {"settings_title": "Settings", "folder": "Wallpaper Folder:", "browse": "Browse", "pause_bat": "Pause on Battery", "pause_dpms": "Pause when Screen Off (DPMS)", "pause_man": "Force Pause Video Wallpapers", "shortcut": "Global Shortcut (Wayland):", "kde_btn": "Configure in KDE", "autostart": "Autostart on Boot", "language": "Language:", "close": "Close", "save": "Save", "settings_btn": "⚙ Settings"},
+    "uk": {"settings_title": "Налаштування", "folder": "Папка зі шпалерами:", "browse": "Огляд", "pause_bat": "Пауза від батареї", "pause_dpms": "Пауза, якщо екран вимкнено", "pause_man": "Примусова пауза відео", "shortcut": "Глобальна комбінація (Wayland):", "kde_btn": "Налаштувати в KDE", "autostart": "Автозапуск при ввімкненні", "language": "Мова (Language):", "close": "Закрити", "save": "Зберегти", "settings_btn": "⚙ Налаштування"},
+    "ru": {"settings_title": "Настройки", "folder": "Папка с обоями:", "browse": "Обзор", "pause_bat": "Пауза от батареи", "pause_dpms": "Пауза при выкл. экране", "pause_man": "Принудительная пауза видео", "shortcut": "Глобальная комбинация (Wayland):", "kde_btn": "Настроить в KDE", "autostart": "Автозапуск при старте ПК", "language": "Язык (Language):", "close": "Закрыть", "save": "Сохранить", "settings_btn": "⚙ Настройки"}
 }
 
 def load_config():
@@ -50,15 +49,17 @@ def save_config(cfg):
 
 CACHE_DIR = os.path.expanduser("~/.cache/plasma-wallpapers")
 LAST_WP_FILE = os.path.join(CACHE_DIR, "last_selected.txt")
-BASE_PREVIEW_SIZE = QSize(260, 146)
-NORMAL_ITEM_SIZE = QSize(BASE_PREVIEW_SIZE.width(), BASE_PREVIEW_SIZE.height() + 20)
-FOCUS_SCALE = 1.15
-FOCUSED_ITEM_SIZE = QSize(int(NORMAL_ITEM_SIZE.width() * FOCUS_SCALE), int(NORMAL_ITEM_SIZE.height() * FOCUS_SCALE))
-WINDOW_SIZE = (1050, 290)
-SPACING = 30
-SETTINGS_DIALOG_SIZE = (380, 440)
+
+BASE_PREVIEW_SIZE = QSize(600, 300)
+FOCUSED_ITEM_SIZE = QSize(600, 300)
+NORMAL_ITEM_SIZE = QSize(180, 240)
+SETTINGS_DIALOG_SIZE = (480, 540) # УВЕЛИЧЕНО для дистанции кнопок
 STATIC_TYPES = ('*.jpg', '*.jpeg', '*.png', '*.webp')
 VIDEO_TYPES = ('*.mp4', '*.mkv', '*.webm')
+
+SKEW_OFFSET = 40
+ITEM_GAP = 15
+
 os.makedirs(CACHE_DIR, exist_ok=True)
 
 def cache_filename_for(path: str, size: QSize) -> str:
@@ -73,19 +74,111 @@ def extract_dominant_color(image_path: str) -> QColor:
     scaled = img.scaled(1, 1, Qt.AspectRatioMode.IgnoreAspectRatio, Qt.TransformationMode.SmoothTransformation)
     return QColor(scaled.pixelColor(0, 0))
 
-def rounded_pixmap(pix: QPixmap, radius: int) -> QPixmap:
-    if pix.isNull(): return pix
-    out = QPixmap(pix.size())
-    out.fill(Qt.GlobalColor.transparent)
-    painter = QPainter(out)
-    painter.setRenderHints(QPainter.RenderHint.Antialiasing | QPainter.RenderHint.SmoothPixmapTransform)
-    path = QPainterPath()
-    rect = QRectF(out.rect())
-    path.addRoundedRect(rect, float(radius), float(radius))
-    painter.setClipPath(path)
-    painter.drawPixmap(0, 0, pix)
-    painter.end()
-    return out
+class SkewedWallpaperView(QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.pixmap = QPixmap()
+        self.dim_alpha = 150
+        self.focus_val = 0.0
+        self.glow_color = QColor(255, 255, 255)
+
+    def setPixmap(self, pix):
+        self.pixmap = pix
+        self.update()
+
+    def setDimAlpha(self, alpha):
+        self.dim_alpha = alpha
+        self.update()
+
+    def setFocusData(self, val, color):
+        self.focus_val = val
+        self.glow_color = color
+        self.update()
+
+    def paintEvent(self, event):
+        if self.pixmap.isNull(): return
+        painter = QPainter(self)
+        painter.setRenderHints(QPainter.RenderHint.Antialiasing | QPainter.RenderHint.SmoothPixmapTransform)
+
+        w, h = self.width(), self.height()
+        path = QPainterPath()
+        path.moveTo(SKEW_OFFSET, 0)
+        path.lineTo(w, 0)
+        path.lineTo(w - SKEW_OFFSET, h)
+        path.lineTo(0, h)
+        path.lineTo(SKEW_OFFSET, 0)
+
+        # Обрезаем картинку по форме параллелограмма
+        painter.setClipPath(path)
+
+        pw, ph = self.pixmap.width(), self.pixmap.height()
+        if pw > 0 and ph > 0:
+            if pw * h > w * ph:
+                new_w = int(ph * (w / h))
+                src_rect = QRect((pw - new_w) // 2, 0, new_w, ph)
+            else:
+                new_h = int(pw * (h / w))
+                src_rect = QRect(0, (ph - new_h) // 2, pw, new_h)
+            painter.drawPixmap(self.rect(), self.pixmap, src_rect)
+
+        if self.dim_alpha > 0:
+            painter.fillRect(self.rect(), QColor(10, 10, 15, self.dim_alpha))
+
+        # Отключаем обрезку, чтобы нарисовать жирный контур поверх обоев
+        painter.setClipping(False)
+        if self.focus_val > 0.01:
+            pen = QPen(QColor(self.glow_color.red(), self.glow_color.green(), self.glow_color.blue(), int(220 * self.focus_val)))
+            pen.setWidth(int(4 * self.focus_val)) # Толщина контура
+            pen.setJoinStyle(Qt.PenJoinStyle.MiterJoin)
+            painter.setPen(pen)
+            painter.setBrush(Qt.BrushStyle.NoBrush)
+            painter.drawPath(path)
+
+class ToggleSwitch(QCheckBox):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setFixedSize(44, 24)
+        self.setCursor(Qt.CursorShape.PointingHandCursor)
+        self._position = 0.0
+
+        self.anim = QPropertyAnimation(self, b"position")
+        self.anim.setDuration(250)
+        self.anim.setEasingCurve(QEasingCurve.Type.InOutQuad)
+
+        self.stateChanged.connect(self.start_transition)
+
+    @pyqtProperty(float)
+    def position(self):
+        return self._position
+
+    @position.setter
+    def position(self, pos):
+        self._position = pos
+        self.update()
+
+    def start_transition(self, value):
+        self.anim.stop()
+        self.anim.setEndValue(1.0 if value else 0.0)
+        self.anim.start()
+
+    def paintEvent(self, event):
+        p = QPainter(self)
+        p.setRenderHint(QPainter.RenderHint.Antialiasing)
+
+        track_color = QColor("#3daee9") if self.isChecked() else QColor(255, 255, 255, 30)
+        p.setBrush(track_color)
+        p.setPen(Qt.PenStyle.NoPen)
+        p.drawRoundedRect(0, 0, self.width(), self.height(), self.height() // 2, self.height() // 2)
+
+        thumb_radius = self.height() - 4
+        thumb_x = int(self._position * (self.width() - thumb_radius - 4)) + 2
+
+        p.setBrush(QColor(255, 255, 255))
+        p.drawEllipse(thumb_x, 2, thumb_radius, thumb_radius)
+        p.end()
+
+    def hitButton(self, pos: QPoint) -> bool:
+        return self.rect().contains(pos)
 
 class DaemonWatcher:
     def __init__(self):
@@ -142,7 +235,7 @@ class DaemonWatcher:
 
         if pause:
             h = hashlib.md5(current_wp.encode("utf-8")).hexdigest()[:16]
-            cache_thumb = os.path.join(CACHE_DIR, f"thumb_{h}_260x146.jpg")
+            cache_thumb = os.path.join(CACHE_DIR, f"thumb_{h}_{BASE_PREVIEW_SIZE.width()}x{BASE_PREVIEW_SIZE.height()}.jpg")
             if not os.path.exists(cache_thumb): return
             plugin = "org.kde.image"
             cfg_key = "Image"
@@ -177,40 +270,79 @@ class SettingsMenu(QDialog):
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setFixedSize(*SETTINGS_DIALOG_SIZE)
 
+        self.setStyleSheet("""
+            QDialog { background: transparent; }
+            QLabel { color: rgba(255, 255, 255, 220); font-size: 14px; background: transparent; border: none; min-height: 20px;}
+            QLineEdit, QComboBox {
+                background: rgba(255, 255, 255, 10);
+                color: white;
+                border: 1px solid rgba(255, 255, 255, 20);
+                border-radius: 8px;
+                padding: 6px 12px;
+                font-size: 13px;
+                min-height: 24px;
+            }
+            QComboBox::drop-down { border: none; }
+            QComboBox QAbstractItemView {
+                background-color: rgba(30, 30, 35, 240);
+                color: white;
+                selection-background-color: #3daee9;
+                border-radius: 4px;
+            }
+            QPushButton {
+                background-color: rgba(255, 255, 255, 10);
+                color: white;
+                border-radius: 8px;
+                padding: 6px 16px;
+                font-size: 13px;
+                border: 1px solid rgba(255,255,255,15);
+                min-height: 24px;
+            }
+            QPushButton:hover { background-color: rgba(255, 255, 255, 25); }
+            QPushButton#SaveBtn { background-color: #3daee9; font-weight: bold; border: none; color: white; }
+            QPushButton#SaveBtn:hover { background-color: #4dbfff; }
+        """)
+
         self.bg = QFrame(self)
+        self.bg.setObjectName("MainBG")
         self.bg.setGeometry(0, 0, SETTINGS_DIALOG_SIZE[0], 0)
-        self.bg.setStyleSheet("QFrame { background-color: rgba(20, 20, 25, 245); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 15); }")
+
+        self.bg.setStyleSheet("""
+            QFrame#MainBG {
+                background-color: rgba(25, 25, 30, 210);
+                border-radius: 24px;
+                border: 1px solid rgba(255, 255, 255, 30);
+            }
+        """)
+
         self.shadow = QGraphicsDropShadowEffect(self)
-        self.shadow.setBlurRadius(30)
-        self.shadow.setColor(QColor(0, 0, 0, 180))
-        self.shadow.setOffset(0, 5)
+        self.shadow.setBlurRadius(40)
+        self.shadow.setColor(QColor(0, 0, 0, 150))
+        self.shadow.setOffset(0, 10)
         self.bg.setGraphicsEffect(self.shadow)
 
         self.content = QWidget(self.bg)
         self.content.setFixedSize(*SETTINGS_DIALOG_SIZE)
         layout = QVBoxLayout(self.content)
-        layout.setContentsMargins(20, 20, 20, 20)
-        layout.setSpacing(12)
+        layout.setContentsMargins(30, 30, 30, 30)
+        layout.setSpacing(16)
 
         title = QLabel(self.t["settings_title"])
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        title.setStyleSheet("color: white; font-size: 15px; font-weight: bold; background: transparent; border: none;")
+        title.setStyleSheet("color: white; font-size: 18px; font-weight: bold; background: transparent; border: none; margin-bottom: 5px;")
         layout.addWidget(title)
 
-        style = """
-            QLabel { color: rgba(255, 255, 255, 180); font-size: 12px; background: transparent; border: none; }
-            QLineEdit, QComboBox { background: rgba(0, 0, 0, 60); color: white; border: 1px solid rgba(255, 255, 255, 15); border-radius: 6px; padding: 6px; font-size: 12px; }
-            QComboBox::drop-down { border: none; }
-            QPushButton { background-color: rgba(255, 255, 255, 10); color: white; border-radius: 6px; padding: 7px 12px; font-size: 12px; border: none; }
-            QPushButton:hover { background-color: rgba(255, 255, 255, 20); }
-            QPushButton:checked { background-color: rgba(61, 174, 233, 50); border: 1px solid #3daee9; }
-            QPushButton#SaveBtn { background-color: #3daee9; font-weight: bold; }
-            QPushButton#SaveBtn:hover { background-color: #4dbfff; }
-            QCheckBox { color: rgba(255, 255, 255, 200); font-size: 13px; background: transparent; border: none; }
-            QCheckBox::indicator { width: 16px; height: 16px; border-radius: 4px; background-color: rgba(0, 0, 0, 60); border: 1px solid rgba(255, 255, 255, 20); }
-            QCheckBox::indicator:checked { background-color: #3daee9; border: none; }
-        """
-        self.setStyleSheet(style)
+        def create_toggle_row(label_text, config_key, default=False):
+            row = QHBoxLayout()
+            lbl = QLabel(label_text)
+            toggle = ToggleSwitch()
+            initial_val = self.cfg.get(config_key, default)
+            toggle.setChecked(initial_val)
+            toggle._position = 1.0 if initial_val else 0.0
+            row.addWidget(lbl)
+            row.addStretch()
+            row.addWidget(toggle)
+            return row, toggle
 
         layout.addWidget(QLabel(self.t["language"]))
         self.lang_cb = QComboBox()
@@ -229,26 +361,31 @@ class SettingsMenu(QDialog):
         h_lay.addWidget(self.btn_br)
         layout.addLayout(h_lay)
 
-        self.cb_auto = QCheckBox(self.t["autostart"])
-        self.cb_auto.setChecked(self.cfg.get("autostart", True))
-        layout.addWidget(self.cb_auto)
+        layout.addSpacing(10)
 
-        self.cb_bat = QCheckBox(self.t["pause_bat"])
-        self.cb_bat.setChecked(self.cfg.get("pause_battery", False))
-        layout.addWidget(self.cb_bat)
-        self.cb_screen = QCheckBox(self.t["pause_dpms"])
-        self.cb_screen.setChecked(self.cfg.get("pause_screen_off", False))
-        layout.addWidget(self.cb_screen)
-        self.cb_manual = QCheckBox(self.t["pause_man"])
-        self.cb_manual.setChecked(self.cfg.get("pause_manual", False))
-        layout.addWidget(self.cb_manual)
+        row_auto, self.cb_auto = create_toggle_row(self.t["autostart"], "autostart", True)
+        layout.addLayout(row_auto)
+
+        row_bat, self.cb_bat = create_toggle_row(self.t["pause_bat"], "pause_battery", False)
+        layout.addLayout(row_bat)
+
+        row_screen, self.cb_screen = create_toggle_row(self.t["pause_dpms"], "pause_screen_off", False)
+        layout.addLayout(row_screen)
+
+        row_manual, self.cb_manual = create_toggle_row(self.t["pause_man"], "pause_manual", False)
+        layout.addLayout(row_manual)
+
+        layout.addSpacing(10)
 
         layout.addWidget(QLabel(self.t["shortcut"]))
         self.btn_kde_shortcuts = QPushButton(self.t["kde_btn"])
         self.btn_kde_shortcuts.clicked.connect(self.open_kde_shortcuts)
         layout.addWidget(self.btn_kde_shortcuts)
 
+        # ДОБАВЛЕНА ДИСТАНЦИЯ перед нижним блоком кнопок
+        layout.addSpacing(25)
         layout.addStretch()
+
         btn_box = QHBoxLayout()
         self.btn_close = QPushButton(self.t["close"])
         self.btn_close.clicked.connect(self.reject)
@@ -260,8 +397,8 @@ class SettingsMenu(QDialog):
         layout.addLayout(btn_box)
 
         self.anim_geom = QPropertyAnimation(self.bg, b"geometry")
-        self.anim_geom.setDuration(250)
-        self.anim_geom.setEasingCurve(QEasingCurve.Type.OutQuart)
+        self.anim_geom.setDuration(300)
+        self.anim_geom.setEasingCurve(QEasingCurve.Type.OutBack)
 
     def change_language_preview(self, new_lang):
         self.cfg["language"] = new_lang
@@ -272,7 +409,7 @@ class SettingsMenu(QDialog):
     def showEvent(self, event):
         if self.anchor and self.parent():
             gp = self.parent().mapToGlobal(QPoint(self.anchor.geometry().center().x(), self.anchor.geometry().top()))
-            self.move(gp.x() - (SETTINGS_DIALOG_SIZE[0] // 2), gp.y() - SETTINGS_DIALOG_SIZE[1] - 10)
+            self.move(gp.x() - (SETTINGS_DIALOG_SIZE[0] // 2), gp.y() - SETTINGS_DIALOG_SIZE[1] - 15)
         self.anim_geom.setStartValue(QRect(0, SETTINGS_DIALOG_SIZE[1], SETTINGS_DIALOG_SIZE[0], 0))
         self.anim_geom.setEndValue(QRect(0, 0, SETTINGS_DIALOG_SIZE[0], SETTINGS_DIALOG_SIZE[1]))
         self.anim_geom.start()
@@ -320,81 +457,86 @@ class WallpaperItem(QFrame):
         self.is_video = is_video
         self.adaptive_color = QColor(255, 255, 255)
         self.target_rect = QRect()
-        self.anim = QPropertyAnimation(self, b"geometry")
-        self.anim.setDuration(350)
-        self.anim.setEasingCurve(QEasingCurve.Type.OutExpo)
-        self.img_container = QWidget(self)
-        self.label = QLabel(self.img_container)
-        self.label.setScaledContents(True)
-        self.dim_overlay = QFrame(self.img_container)
-        self.top_indicator = QFrame(self)
-        self.top_indicator.setStyleSheet("background-color: transparent;")
-        self.bottom_indicator = QFrame(self)
-        self.bottom_indicator.setStyleSheet("background-color: transparent;")
+
+        self._focus_progress = 0.0
+
+        self.anim_geom = QPropertyAnimation(self, b"geometry")
+        self.anim_geom.setDuration(400)
+        self.anim_geom.setEasingCurve(QEasingCurve.Type.OutQuart)
+
+        self.anim_focus = QPropertyAnimation(self, b"focus_progress")
+        self.anim_focus.setDuration(400)
+        self.anim_focus.setEasingCurve(QEasingCurve.Type.OutQuart)
+
+        self.img_view = SkewedWallpaperView(self)
+
         self.glow = QGraphicsDropShadowEffect(self)
         self.glow.setOffset(0, 0)
         self.glow.setColor(QColor(0, 0, 0, 0))
-        self.label.setGraphicsEffect(self.glow)
+        self.setGraphicsEffect(self.glow)
+
         self.load_thumbnail()
-        self.update_style(False)
+        self.update_style(False, animate=False)
+
+    @pyqtProperty(float)
+    def focus_progress(self):
+        return self._focus_progress
+
+    @focus_progress.setter
+    def focus_progress(self, val):
+        self._focus_progress = val
+        self.img_view.setDimAlpha(int(150 * (1.0 - val)))
+
+        # Передаем данные для отрисовки контурного свечения
+        self.img_view.setFocusData(val, self.adaptive_color)
+
+        c = self.adaptive_color
+        alpha = int(255 * val)
+        blur = int(90 * val)  # ВЕРНУЛИ базовое свечение на 80
+
+        self.glow.setColor(QColor(c.red(), c.green(), c.blue(), alpha))
+        self.glow.setBlurRadius(blur)
 
     def load_thumbnail(self):
         cache_path = cache_filename_for(self.original_path, BASE_PREVIEW_SIZE)
         if not os.path.exists(cache_path):
             if self.is_video:
-                subprocess.run(["ffmpeg", "-y", "-i", self.original_path, "-vframes", "1", "-q:v", "2", cache_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                subprocess.run(["ffmpeg", "-y", "-i", self.original_path, "-vframes", "1", "-q:v", "2", "-s", f"{BASE_PREVIEW_SIZE.width()}x{BASE_PREVIEW_SIZE.height()}", cache_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             else:
                 reader = QImageReader(self.original_path)
                 reader.setAutoTransform(True)
                 reader.setScaledSize(BASE_PREVIEW_SIZE)
                 img = reader.read()
                 if not img.isNull(): img.save(cache_path, "JPEG", 87)
+
         if os.path.exists(cache_path):
             self.adaptive_color = extract_dominant_color(cache_path)
             pix = QPixmap(cache_path)
-        else: pix = QPixmap()
-        if not pix.isNull():
-            pix = pix.scaled(BASE_PREVIEW_SIZE, Qt.AspectRatioMode.KeepAspectRatioByExpanding, Qt.TransformationMode.SmoothTransformation)
-            self.label.setPixmap(rounded_pixmap(pix, 16))
-        else: self.label.setText("Error")
-
-    def update_style(self, is_selected: bool):
-        if is_selected:
-            self.dim_overlay.setStyleSheet("background-color: transparent; border-radius: 16px;")
-            c = self.adaptive_color
-            color_full = f"rgba({c.red()}, {c.green()}, {c.blue()}, 255)"
-            color_fade = f"rgba({c.red()}, {c.green()}, {c.blue()}, 0)"
-            grad_style = f"background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 {color_fade}, stop:0.2 {color_full}, stop:0.8 {color_full}, stop:1 {color_fade}); border-radius: 3px; border: none;"
-            self.top_indicator.setStyleSheet(grad_style)
-            self.bottom_indicator.setStyleSheet(grad_style)
-            self.glow.setColor(QColor(c.red(), c.green(), c.blue(), 180))
-            self.glow.setBlurRadius(50)
         else:
-            self.dim_overlay.setStyleSheet("background-color: rgba(10, 10, 15, 200); border-radius: 16px;")
-            self.top_indicator.setStyleSheet("background-color: transparent; border: none;")
-            self.bottom_indicator.setStyleSheet("background-color: transparent; border: none;")
-            self.glow.setColor(QColor(0, 0, 0, 120))
-            self.glow.setBlurRadius(20)
+            pix = QPixmap()
+
+        self.img_view.setPixmap(pix)
+
+    def update_style(self, is_selected: bool, animate=True):
+        target_val = 1.0 if is_selected else 0.0
+        if animate:
+            self.anim_focus.stop()
+            self.anim_focus.setEndValue(target_val)
+            self.anim_focus.start()
+        else:
+            self.focus_progress = target_val
 
     def animate_to(self, target_rect, animate=True):
         self.target_rect = target_rect
         if animate:
-            self.anim.stop()
-            self.anim.setEndValue(target_rect)
-            self.anim.start()
-        else: self.setGeometry(target_rect)
+            self.anim_geom.stop()
+            self.anim_geom.setEndValue(target_rect)
+            self.anim_geom.start()
+        else:
+            self.setGeometry(target_rect)
 
     def resizeEvent(self, event):
-        w, h = self.width(), self.height()
-        scale = h / NORMAL_ITEM_SIZE.height()
-        p_w, p_h = int(BASE_PREVIEW_SIZE.width() * scale), int(BASE_PREVIEW_SIZE.height() * scale)
-        cont_y = int(12 * scale)
-        self.img_container.setGeometry(0, cont_y, p_w, p_h)
-        self.label.setGeometry(0, 0, p_w, p_h)
-        self.dim_overlay.setGeometry(0, 0, p_w, p_h)
-        ind_w, ind_h = int(120 * scale), int(6 * scale)
-        self.top_indicator.setGeometry((w - ind_w) // 2, 0, ind_w, ind_h)
-        self.bottom_indicator.setGeometry((w - ind_w) // 2, h - ind_h, ind_w, ind_h)
+        self.img_view.setGeometry(self.rect())
         super().resizeEvent(event)
 
     def mousePressEvent(self, event: QMouseEvent):
@@ -411,56 +553,82 @@ class WallpaperSelector(QWidget):
         self.setWindowTitle("Wallselector KDE")
 
         self.startup_time = time.time()
+        self.cfg = load_config()
 
-        flags = Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.SplashScreen
+        flags = Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.Tool
         self.setWindowFlags(flags)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
-        self.setAttribute(Qt.WidgetAttribute.WA_ShowWithoutActivating)
-        self.setFixedSize(*WINDOW_SIZE)
 
         screen_geo = QGuiApplication.primaryScreen().geometry()
-        self.move((screen_geo.width() - self.width()) // 2, (screen_geo.height() - self.height()) // 2)
+        window_height = 450
+        self.setFixedSize(screen_geo.width(), window_height)
+        self.move(screen_geo.x(), (screen_geo.height() - window_height) // 2)
 
         self.bg = QFrame(self)
-        self.bg.setFixedSize(*WINDOW_SIZE)
+        self.bg.setFixedSize(self.width(), self.height())
+
         style_bg = """
-            background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
-                stop:0 rgba(25, 25, 30, 0.95), stop:0.5 rgba(15, 15, 20, 0.9), stop:1 rgba(10, 10, 15, 0.95));
-            border-radius: 28px; border: 1px solid rgba(255, 255, 255, 10%);
+            background-color: transparent;
+            border: none;
         """
         self.bg.setStyleSheet(style_bg)
-        self.window_shadow = QGraphicsDropShadowEffect(self)
-        self.window_shadow.setBlurRadius(60)
-        self.window_shadow.setColor(QColor(0, 0, 0, 150))
-        self.bg.setGraphicsEffect(self.window_shadow)
 
-        self.btn_settings = QPushButton("⚙", self)
-        self.btn_settings.setGeometry((self.width() - 36) // 2, self.height() - 42, 36, 36)
-        self.btn_settings.setStyleSheet("background: transparent; color: rgba(255,255,255,100); font-size: 22px; border: none;")
+        lang = self.cfg.get("language", "en")
+        if lang not in I18N: lang = "en"
+        btn_text = I18N[lang]["settings_btn"]
+
+        self.btn_settings = QPushButton(btn_text, self)
+        style_pill = """
+            QPushButton {
+                background-color: rgba(0, 0, 0, 150);
+                color: rgba(255, 255, 255, 220);
+                border: 1px solid rgba(255, 255, 255, 30);
+                border-radius: 16px;
+                font-size: 14px;
+                font-weight: bold;
+                padding: 6px 16px;
+            }
+            QPushButton:hover {
+                background-color: rgba(30, 30, 40, 200);
+                border: 1px solid rgba(255, 255, 255, 60);
+            }
+        """
+        self.btn_settings.setStyleSheet(style_pill)
         self.btn_settings.clicked.connect(self.open_settings)
+
+        btn_w, btn_h = 160, 32
+        center_y = self.height() // 2 + 20
+        btn_y = center_y - (FOCUSED_ITEM_SIZE.height() // 2) - btn_h - 15
+        self.btn_settings.setGeometry((self.width() - btn_w) // 2, btn_y, btn_w, btn_h)
 
         self.items = []
         self.current_index = 0
         self.is_applying = False
         self.is_settings_open = False
 
-        cfg = load_config()
-        if not cfg.get("daemon_autostart_created"):
+        if not self.cfg.get("daemon_autostart_created"):
             autostart_path = os.path.expanduser("~/.config/autostart/wallselector_kde_daemon.desktop")
             os.makedirs(os.path.dirname(autostart_path), exist_ok=True)
             with open(autostart_path, "w") as f:
                 f.write("[Desktop Entry]\nName=Wallselector KDE Daemon\nExec=wallselector_kde --hidden\nType=Application\nTerminal=false\nX-KDE-autostart-phase=2\n")
-            cfg["daemon_autostart_created"] = True
-            save_config(cfg)
+            self.cfg["daemon_autostart_created"] = True
+            save_config(self.cfg)
 
         QTimer.singleShot(50, self.init_carousel)
         self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
         self.setFocus()
 
+    def update_settings_button_text(self):
+        self.cfg = load_config()
+        lang = self.cfg.get("language", "en")
+        if lang not in I18N: lang = "en"
+        self.btn_settings.setText(I18N[lang]["settings_btn"])
+
     def open_settings(self):
         self.is_settings_open = True
         dlg = SettingsMenu(self, load_config(), self.btn_settings)
         if dlg.exec() == QDialog.DialogCode.Accepted:
+            self.update_settings_button_text()
             for item in self.items: item.deleteLater()
             self.items.clear()
             self.init_carousel()
@@ -471,8 +639,7 @@ class WallpaperSelector(QWidget):
         self.setFocus()
 
     def init_carousel(self):
-        cfg = load_config()
-        folder = cfg["wallpaper_folder"]
+        folder = self.cfg["wallpaper_folder"]
         static_files, video_files = [], []
         if os.path.exists(folder):
             for t in STATIC_TYPES: static_files.extend(glob.glob(os.path.join(folder, t)))
@@ -498,22 +665,38 @@ class WallpaperSelector(QWidget):
     def update_positions(self, animate=True):
         if not self.items: return
         n = len(self.items)
-        window_center_x = self.width() // 2
-        step = NORMAL_ITEM_SIZE.width() + SPACING
+        center_x = self.width() // 2
+        center_y = self.height() // 2 + 20
+
+        W_f = FOCUSED_ITEM_SIZE.width()
+        W_n = NORMAL_ITEM_SIZE.width()
+
+        x_f = center_x - W_f // 2
 
         for i, item in enumerate(self.items):
             dist = (i - self.current_index + n + n//2) % n - n//2
-            target_center_x = window_center_x + (dist * step)
             is_focused = (i == self.current_index)
+
             size = FOCUSED_ITEM_SIZE if is_focused else NORMAL_ITEM_SIZE
             w, h = size.width(), size.height()
-            y_pos = (WINDOW_SIZE[1] - h) // 2
 
-            target_rect = QRect(target_center_x - w//2, y_pos, w, h)
+            if dist == 0:
+                target_x = x_f
+            elif dist > 0:
+                target_x = x_f + W_f - SKEW_OFFSET + ITEM_GAP + (dist - 1) * (W_n - SKEW_OFFSET + ITEM_GAP)
+            else:
+                k = abs(dist)
+                target_x = x_f + SKEW_OFFSET - ITEM_GAP - W_n - (k - 1) * (W_n - SKEW_OFFSET + ITEM_GAP)
+
+            target_y = center_y - h // 2
+            target_rect = QRect(target_x, target_y, w, h)
+
             should_animate = animate
-            if animate and abs(item.target_rect.x() - target_rect.x()) > step * 2: should_animate = False
+            if animate and abs(item.target_rect.x() - target_rect.x()) > self.width():
+                should_animate = False
+
             item.animate_to(target_rect, animate=should_animate)
-            item.update_style(is_focused)
+            item.update_style(is_focused, animate=should_animate)
 
     def select_next(self):
         if not self.items or self.is_applying: return
@@ -558,7 +741,7 @@ class WallpaperSelector(QWidget):
 
     def changeEvent(self, event):
         if event.type() == QEvent.Type.ActivationChange:
-            if time.time() - getattr(self, 'startup_time', 0) > 0.3:
+            if time.time() - getattr(self, 'startup_time', 0) > 1.5:
                 if not self.isActiveWindow() and not self.is_applying and not self.is_settings_open:
                     QApplication.quit()
         super().changeEvent(event)
@@ -576,6 +759,7 @@ class WallpaperSelector(QWidget):
         angle = event.angleDelta().y()
         if angle > 0: self.select_prev()
         elif angle < 0: self.select_next()
+
 
 if __name__ == "__main__":
     is_daemon = "--hidden" in sys.argv

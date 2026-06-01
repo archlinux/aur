@@ -1,6 +1,6 @@
 pkgbase = wallselector-kde
 	pkgdesc = A Qt-based wallpaper carousel and selector for KDE Plasma 6
-	pkgver = 1.0.2
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/local/wallselector-kde
 	install = wallselector-kde.install
@@ -12,9 +12,7 @@ pkgbase = wallselector-kde
 	depends = qt6-wayland
 	depends = plasma-workspace
 	source = wallselector_kde.py
-	source = wallselector_kde.svg
 	source = wallselector-kde.install
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

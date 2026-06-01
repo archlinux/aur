@@ -1,5 +1,5 @@
 pkgname=wallselector-kde
-pkgver=1.0.2
+pkgver=2.0
 pkgrel=1
 pkgdesc="A Qt-based wallpaper carousel and selector for KDE Plasma 6"
 arch=('any')
@@ -7,11 +7,10 @@ url="https://github.com/local/wallselector-kde"
 license=('GPL3')
 depends=('python' 'python-pyqt6' 'ffmpeg' 'qt6-wayland' 'plasma-workspace')
 install='wallselector-kde.install'
+# Иконка удалена из обязательных исходников, чтобы не блокировать сборку
 source=('wallselector_kde.py'
-        'wallselector_kde.svg'
         'wallselector-kde.install')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 package() {
@@ -26,8 +25,9 @@ package() {
 
     ln -s /opt/wallselector-kde/app/wallselector_kde.py "$pkgdir/usr/bin/wallselector_kde"
 
-    if [ -f "$srcdir/wallselector_kde.svg" ]; then
-        cp "$srcdir/wallselector_kde.svg" "$pkgdir/usr/share/pixmaps/wallselector_kde.svg"
+    # Пробуем подхватить иконку, если она вдруг появится в корневой папке
+    if [ -f "$startdir/wallselector_kde.svg" ]; then
+        cp "$startdir/wallselector_kde.svg" "$pkgdir/usr/share/pixmaps/wallselector_kde.svg"
     fi
 
     # Ярлык для меню Пуск со встроенным шорткатом Wayland
