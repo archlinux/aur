@@ -48,11 +48,11 @@ prepare() {
 
 package() {
 	install -dm755 "${pkgdir}/opt/${pkgname}"
-	cp -r ${srcdir}/Tana-linux-x64/* "${pkgdir}/opt/${pkgname}/"
+	cp -r ${srcdir}/Tana.Outliner-linux-x64/* "${pkgdir}/opt/${pkgname}/"
 	mkdir -p "${pkgdir}/usr/bin"
 	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/tana"
 
 	install -Dm644 "${srcdir}/tana.desktop" -t "${pkgdir}/usr/share/applications"
 	install -Dm644 "${srcdir}/tana.png" -t "${pkgdir}/usr/share/pixmaps"
-	install -Dm644 "${srcdir}/Tana-linux-x64/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/Tana.Outliner-linux-x64/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
