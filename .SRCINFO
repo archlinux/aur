@@ -1,0 +1,23 @@
+pkgbase = officecli
+	pkgdesc = The first and best Office suite designed for AI agents
+	pkgver = 1.0.101
+	pkgrel = 1
+	url = https://github.com/iOfficeAI/OfficeCLI
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = dotnet-host
+	makedepends = dotnet-runtime
+	makedepends = dotnet-sdk
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = officecli
+	conflicts = officecli
+	options = !strip
+	options = !debug
+	options = !lto
+	source = officecli::git+https://github.com/iOfficeAI/OfficeCLI.git#tag=v1.0.101
+	sha256sums = 373c4e0795c49bfcf4141b311a3ccb3eb32d5bfe104b841d0912706e02c67e28
+
+pkgname = officecli
