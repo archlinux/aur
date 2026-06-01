@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/ryanbas21/CamlWM"
 license=('MIT')
 depends=('libx11')
-makedepends=('git' 'ocaml' 'dune' 'ocaml-ctypes' 'ocaml-findlib')
+makedepends=('git' 'ocaml' 'dune' 'ocaml-ctypes' 'ocaml-findlib' 'libffi')
 provides=('camlwm')
 conflicts=('camlwm')
 source=("git+https://github.com/ryanbas21/CamlWM.git")
@@ -20,11 +20,11 @@ pkgver() {
 
 build() {
   cd CamlWM
-  dune build
+  dune build @install
 }
 
 package() {
   cd CamlWM
   install -Dm755 _build/default/bin/main.exe "$pkgdir/usr/bin/camlwm"
-  dune install --prefix="$pkgdir/usr" --libdir="$pkgdir/usr/lib/ocaml" 2>/dev/null || true
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
 }
