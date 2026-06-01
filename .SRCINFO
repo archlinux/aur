@@ -1,0 +1,11 @@
+pkgbase = neohtop-cli-bin
+	pkgdesc = A cross-platform terminal process monitor with btop-style visualizations
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/Abdenasser/neohtop-cli
+	arch = x86_64
+	license = MIT
+	source = neohtop-cli-bin-x86_64-0.1.13.tar.gz::https://github.com/Abdenasser/neohtop-cli/releases/download/v0.1.13/neohtop-cli-linux-amd64.tar.gz
+	b2sums = 9c441fec6439ecde37098894d720979b1925216b4c93dd834e81bd9a0e453e8f36f4a7f6c6b716f8a3f872b9aad9466b9dd738af988aa9f049927ab5398c458a
+
+pkgname = neohtop-cli-bin
