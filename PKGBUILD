@@ -3,7 +3,7 @@
 
 pkgname=rustowl-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Visualize Ownership and Lifetimes in Rust'
 url='https://github.com/cordx56/rustowl'
 license=('MPL-2.0')
@@ -20,7 +20,6 @@ package() {
     install -d -m 755 "$pkgdir/opt/rustowl"
     cp -a sysroot/ "$pkgdir/opt/rustowl/"
     install -Dm0755 -t "$pkgdir/usr/bin/" "rustowl"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "rustowlc"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/rustowl/LICENSE"
     install -Dm644 man/rustowl.1 "$pkgdir/usr/share/man/man1/rustowl.1"
     install -Dm644 "completions/rustowl.bash" "${pkgdir}/usr/share/bash-completion/completions/rustowl"
