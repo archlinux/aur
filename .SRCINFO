@@ -1,0 +1,23 @@
+pkgbase = ytaudiobar-git
+	pkgdesc = A sleek YouTube audio player built with Tauri and React
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/ilyassan/ytaudiobar
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust
+	makedepends = cargo
+	depends = webkit2gtk-4.1
+	depends = openssl
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = ffmpeg
+	provides = ytaudiobar
+	conflicts = ytaudiobar
+	source = git+https://github.com/ilyassan/ytaudiobar.git
+	sha256sums = SKIP
+
+pkgname = ytaudiobar-git
