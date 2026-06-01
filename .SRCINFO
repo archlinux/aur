@@ -13,9 +13,6 @@ pkgbase = tytools-git
 	depends = qt6-base
 	optdepends = teensyduino: Arduino integration
 	provides = tytools
-	provides = ty
-	conflicts = ty
-	conflicts = teensytools
 	source = git+https://github.com/Koromix/rygel.git
 	sha256sums = SKIP
 
