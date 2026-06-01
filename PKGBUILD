@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartos-bin
-pkgver=1.4.9
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Barto central job scheduling server (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -22,9 +22,9 @@ _base="https://github.com/rustyhorde/barto/releases/download/v${pkgver}"
 source=("${_base}/dist-bartos.tar.gz")
 source_x86_64=("bartos-x86_64::${_base}/bartos-x86_64-unknown-linux-musl")
 source_aarch64=("bartos-aarch64::${_base}/bartos-aarch64-unknown-linux-musl")
-sha256sums=('67680aefa7a3222c121f8365436ab5ec0fb3c45a7551588230badeda5ec59f3d')
-sha256sums_x86_64=('0698b04cefef9d7abc364ba8ede9c3426d82b2f9f41c654bbe055cc7a81fcdde')
-sha256sums_aarch64=('a594ce1771cf60023aee5b851e50f045792ae201d1a251df110e296651914ff0')
+sha256sums=('88b3976ddd92993471d19b65df6674150765686690df7b3e4043531e4f031bca')
+sha256sums_x86_64=('58ecb7c4cf9433218736eee4231714786efb5f13ab7b902ade9c51f7bd73aa56')
+sha256sums_aarch64=('61c00f576e12944859eb325bc8fb61b105f44422c22b9e7b8bac51b08311bf86')
 
 package() {
     install -Dm755 "bartos-${CARCH}" "$pkgdir/usr/bin/bartos"
