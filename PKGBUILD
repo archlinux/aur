@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=noutube-bin
 _app_id="jp.nonbili.${pkgname%-bin}"
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="YouTube and YouTube Music in a single app. No ads."
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-linux-unpacked-$pkgver.zip::$url/releases/download/v$pkgver/linux-unpacked.zip"
         'NouTube.desktop')
 noextract=("${pkgname%-bin}-linux-unpacked-$pkgver.zip")
-sha256sums=('f2a0087dd32f0936ffd9b870829570da88332873b9f91480dbe2608d579da377'
+sha256sums=('f4dc606f90b08b4345152f28b0f62e565de9999a98acbcc0f482a257c8c9ef54'
             'cad129d2c27f89ddc6af0a63cb2e8257dda4185ccf5c9cfa083e8ebca073aed8')
 
 prepare() {
@@ -29,6 +29,7 @@ package() {
   cd "${pkgname%-bin}-$pkgver"
   install -d "$pkgdir/opt/${pkgname%-bin}"
   cp -r dist/linux-unpacked/* "$pkgdir/opt/${pkgname%-bin}/"
+  rm "$pkgdir/opt/${pkgname%-bin}/resources/app-update.yml"
 
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/${pkgname%-bin}/NouTube" "$pkgdir/usr/bin/"
