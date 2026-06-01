@@ -1,0 +1,17 @@
+pkgbase = python-sensai-utils
+	pkgdesc = Utilities from sensAI, the Python library for sensible AI
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/opcode81/sensAI
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-typing_extensions
+	source = python-sensai-utils-1.6.0.tar.gz::https://files.pythonhosted.org/packages/source/s/sensai-utils/sensai_utils-1.6.0.tar.gz
+	sha256sums = e50ae6bbd7c62a961f25b98e55b29029450efd66444678931b3b9c43e9bf9e95
+
+pkgname = python-sensai-utils
