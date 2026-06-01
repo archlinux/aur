@@ -1,6 +1,6 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=('textparser')
-pkgver='0.8.0'
+pkgver='0.8.2'
 pkgrel=1
 options=(!debug)
 pkgdesc='Flexible and eazy to integrate text parser library written in C.'
@@ -13,12 +13,11 @@ depends=('glibc' 'pcre2' 'json-c' 'python')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bokic/$pkgname/archive/refs/tags/${pkgver}.tar.gz")
 
-sha512sums=('bf4acb42dda0c181838811553f6be32a3a89072efa64f6c00035efb960777751981b4ae550451bf59fa51f40acca4eaffcea2ad3bafc4030b2753b8e17bc61c3')
+sha512sums=('1981ae8fb6bbbedb92b24c19161d9f52a90aec41404972c8b4512e77153bc3028f340ee6a7bf796c50e378ccb767733364ddccdb0f530f810da5732e86b77ef0')
 
 build() {
-    sed -i 's/add_subdirectory(tests)/#add_subdirectory(tests)/' "$pkgname-$pkgver/CMakeLists.txt"
     (cd $pkgname-$pkgver/definitions; ./regenerate.sh)
-    cmake "$pkgname-$pkgver" -DCMAKE_INSTALL_PREFIX="/usr" -DTEXTPARSER_VERSION_TAG=$pkgver -B"$pkgname-$pkgver/build" -G Ninja -DCMAKE_BUILD_TYPE=Release "$pkgname-$pkgver"
+    cmake "$pkgname-$pkgver" -DCMAKE_INSTALL_PREFIX="/usr" -DTEXTPARSER_VERSION_TAG=$pkgver -DBUILD_TESTS=OFF -B"$pkgname-$pkgver/build" -G Ninja -DCMAKE_BUILD_TYPE=Release "$pkgname-$pkgver"
     cmake --build "$pkgname-$pkgver/build" --target libtextparser --target libtextparser-json --target ccat --target textparser --config Release
 }
 
@@ -26,4 +25,6 @@ package() {
     DESTDIR="$pkgdir" cmake --install "$srcdir/$pkgname-$pkgver/build"
     install -Dm755 "$srcdir/$pkgname-$pkgver/definitions/json2h.py" "$pkgdir/usr/bin/textparser_json2h.py"
     install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -dm755 "$pkgdir/usr/share/$pkgname/definitions"
+    install -m644 "$srcdir/$pkgname-$pkgver/definitions/"*_definition.json "$pkgdir/usr/share/$pkgname/definitions/"
 }

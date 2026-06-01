@@ -1,6 +1,6 @@
 pkgbase = textparser
 	pkgdesc = Flexible and eazy to integrate text parser library written in C.
-	pkgver = 0.8.0
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/bokic/textparser
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = textparser
 	depends = pcre2
 	depends = json-c
 	depends = python
-	provides = textparser=0.8.0
-	provides = libtextparser=0.8.0
+	provides = textparser=0.8.2
+	provides = libtextparser=0.8.2
 	options = !debug
-	source = textparser-0.8.0.tar.gz::https://github.com/bokic/textparser/archive/refs/tags/0.8.0.tar.gz
-	sha512sums = bf4acb42dda0c181838811553f6be32a3a89072efa64f6c00035efb960777751981b4ae550451bf59fa51f40acca4eaffcea2ad3bafc4030b2753b8e17bc61c3
+	source = textparser-0.8.2.tar.gz::https://github.com/bokic/textparser/archive/refs/tags/0.8.2.tar.gz
+	sha512sums = 1981ae8fb6bbbedb92b24c19161d9f52a90aec41404972c8b4512e77153bc3028f340ee6a7bf796c50e378ccb767733364ddccdb0f530f810da5732e86b77ef0
 
 pkgname = textparser
