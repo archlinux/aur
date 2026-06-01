@@ -1,0 +1,28 @@
+diff -wrua symfpu-symfpu-1.2.0-dual-license.orig/baseTypes/simpleExecutable.cpp symfpu-symfpu-1.2.0-dual-license/baseTypes/simpleExecutable.cpp
+--- symfpu-symfpu-1.2.0-dual-license.orig/baseTypes/simpleExecutable.cpp	2026-05-13 19:50:00.000000000 +0200
++++ symfpu-symfpu-1.2.0-dual-license/baseTypes/simpleExecutable.cpp	2026-06-01 15:32:46.368255072 +0200
+@@ -12,7 +12,7 @@
+ */
+ 
+ 
+-#include "symfpu/baseTypes/simpleExecutable.h"
++#include "baseTypes/simpleExecutable.h"
+ 
+ #include <assert.h>
+ #include <math.h>
+diff -wrua symfpu-symfpu-1.2.0-dual-license.orig/baseTypes/simpleExecutable.h symfpu-symfpu-1.2.0-dual-license/baseTypes/simpleExecutable.h
+--- symfpu-symfpu-1.2.0-dual-license.orig/baseTypes/simpleExecutable.h	2026-05-13 19:50:00.000000000 +0200
++++ symfpu-symfpu-1.2.0-dual-license/baseTypes/simpleExecutable.h	2026-06-01 15:33:21.490256143 +0200
+@@ -18,9 +18,9 @@
+ **
+ */
+ 
+-#include "symfpu/utils/properties.h"
+-#include "symfpu/core/ite.h"
+-#include "symfpu/baseTypes/shared.h"
++#include "utils/properties.h"
++#include "core/ite.h"
++#include "baseTypes/shared.h"
+ 
+ #include <assert.h>
+ #include <stdint.h>

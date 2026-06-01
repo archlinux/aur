@@ -1,0 +1,14 @@
+pkgbase = symfpu
+	pkgdesc = Concrete or symbolic implementation of IEEE-754 / SMT-LIB floating-point
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/martin-cs/symfpu
+	arch = x86_64
+	license = GPL-3.0-or-later OR BSD-3-Clause
+	conflicts = symfpu-cvc5
+	source = https://github.com/martin-cs/symfpu/archive/refs/tags/symfpu-1.2.0-dual-license.tar.gz
+	source = 0000-fix-include-paths.patch
+	b2sums = 8055d09b54f900607b31a5181cfe1185712571019d6a6d7aa866485a81b7d17ffbf0767483df25c7045fa0edb73b98bb7d35fa0d6e5b59901beb97dd4d12010a
+	b2sums = 8f7b37aa97174fee0b2202c6ca14e18108d8ec9601e7a68449b48f83c07dac915c454e09acd5040b5e971ed816aef2de05723420ed0d5cd80d73cef501948d5c
+
+pkgname = symfpu
