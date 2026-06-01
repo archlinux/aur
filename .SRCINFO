@@ -1,0 +1,15 @@
+pkgbase = builder-cli-bin
+	pkgdesc = CLI coding agent focused on output quality and long-running tasks
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/respawn-llc/builder
+	arch = x86_64
+	license = AGPL-3.0-only
+	provides = builder-cli=1.3.0
+	provides = builder=1.3.0
+	conflicts = builder-cli
+	conflicts = builder
+	source = builder-cli-bin-1.3.0-x86_64.tar.gz::https://github.com/respawn-llc/builder/releases/download/v1.3.0/builder_1.3.0_linux_amd64.tar.gz
+	sha256sums = 1635daf8a5158b6d5c2c70929195be3ee547f10266089c8ef3e65beb40391052
+
+pkgname = builder-cli-bin
