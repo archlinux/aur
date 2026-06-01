@@ -5,7 +5,7 @@
 # BUILD INSTRUCTIONS:
 # -------------------
 # This PKGBUILD downloads fonts from the latest Windows 11 Enterprise
-# Evaluation ISO using httpdirfs + udisks2 + wimlib to extract only the
+# Evaluation ISO using httpdirfs + udfclient + wimlib to extract only the
 # font files without downloading the entire multi-gigabyte ISO. Only the
 # segments of the ISO that are required to access the font data are
 # transferred via HTTP.
@@ -13,7 +13,6 @@
 # The fwlink below resolves to the latest US English 64-bit Enterprise
 # Evaluation ISO. When Microsoft releases a new build, the fwlink
 # automatically points to the new ISO — no PKGBUILD edit needed.
-# To use a specific ISO instead, set MS_WIN_ISO_URL in the environment.
 #
 # pkgver() reads BUILD and SPBUILD from the ISO filename. After the first
 # successful prepare(), MAJOR and MINOR are also saved from WIM metadata
@@ -25,20 +24,16 @@ arch=('any')
 url='https://www.microsoft.com/en-us/evalcenter/download-windows-11-enterprise'
 license=('custom')
 depends=()
-makedepends=('httpdirfs' 'udisks2' 'wimlib' 'curl')
+makedepends=('httpdirfs' 'udfclientfs-fuse3' 'wimlib' 'curl')
 provides=('ttf-font' 'ttf-ms-fonts' 'ttf-ms-win11' 'ttf-tahoma' 'emoji-font')
-conflicts=('ttf-ms-win11' 'ttf-ms-win11-auto' 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts' 'ttf-ms-no-big-downloads' 'ttf-ms-win-en_us-auto')
+conflicts=('ttf-ms-win11' 'ttf-ms-win11-auto' 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts' 'ttf-ms-no-big-downloads')
 
 # Microsoft Evaluation Center fwlink for the latest US English 64-bit
 # Windows 11 Enterprise Evaluation ISO. Resolved once at PKGBUILD parse
 # time. The initial pkgver is derived from the ISO filename; prepare()
 # later saves the authoritative version from WIM XML metadata.
-# To use a specific ISO, set MS_WIN_ISO_URL in the environment.
 _fwlink='https://go.microsoft.com/fwlink/?linkid=2334167&clcid=0x4009&culture=en-us'
-_iso_url="${MS_WIN_ISO_URL:-}"
-if [[ -z "${_iso_url}" ]]; then
-  _iso_url="$(curl -sIL -o /dev/null -w '%{url_effective}' "${_fwlink}")"
-fi
+_iso_url="$(curl -sIL -o /dev/null -w '%{url_effective}' "${_fwlink}")"
 _iso="${_iso_url##*/}"
 _build="${_iso%%\.*}"
 _spbuild="${_iso#*.}"
@@ -55,14 +50,13 @@ source=()
 sha256sums=()
 
 prepare() {
-  # Cleanup trap — fires on any prepare() exit
+  # Cleanup trap for FUSE mounts — fires on any prepare() exit
   # shellcheck disable=SC2329  # _cleanup invoked indirectly via trap
   _cleanup() {
     echo "+++++++++ clean up +++++++++"
     local _status=$?
     set +e
-    [[ -n "${_loop_dev:-}" ]] && udisksctl unmount --block-device "${_loop_dev}" --no-user-interaction 2>/dev/null || true
-    [[ -n "${_loop_dev:-}" ]] && udisksctl loop-delete --block-device "${_loop_dev}" --no-user-interaction 2>/dev/null || true
+    fusermount3 -uz mnt/iso 2>/dev/null || fusermount -uz mnt/iso 2>/dev/null || true
     fusermount3 -uz mnt/http 2>/dev/null || fusermount -uz mnt/http 2>/dev/null || true
     return "$_status"
   }
@@ -71,10 +65,11 @@ prepare() {
   cd "${srcdir}"
 
   # Clean possible stale mounts from SIGKILL interrupted builds
+  fusermount3 -uz mnt/iso 2>/dev/null || fusermount -uz mnt/iso 2>/dev/null || true
   fusermount3 -uz mnt/http 2>/dev/null || fusermount -uz mnt/http 2>/dev/null || true
   rm -rf mnt fonts license  # preserve httpdirfs cache for speed on rebuilds
 
-  mkdir -p mnt/http "${_http_cache}"
+  mkdir -p mnt/http mnt/iso "${_http_cache}"
 
   # Mount ISO URL via HTTP streaming — only fetches byte-range segments
   # that are actually read (font data ~200 MiB, not full ISO)
@@ -85,19 +80,11 @@ prepare() {
     --single-file-mode \
     "${_iso_url}" mnt/http
 
-  # Mount the ISO as a loop device via udisks2 (kernel UDF driver).
-  # This avoids the need for udfclientfs (FUSE-patched udfclient).
-  # Example udisksctl loop-setup output:
-  #   Mapped file /home/user/.../22621.525....en-us.iso as /dev/loop0.
-  # After awk+sed extraction: _loop_dev=/dev/loop0
-  _loop_dev="$(udisksctl loop-setup --read-only --file "mnt/http/${_iso}" --no-user-interaction \
-    | awk '{print $NF}' | sed 's/\.$//')"
-
-  udisksctl mount --filesystem-type udf --block-device "${_loop_dev}" --no-user-interaction
-  _mountpoint="$(findmnt --noheadings --first-only --raw --output target --source "${_loop_dev}")"
+  # Mount the ISO with a FUSE UDF filesystem
+  udfclientfs -r "mnt/http/${_iso}" mnt/iso
 
   # Save WIM XML metadata for inspection and authoritative version
-  wiminfo --xml "${_mountpoint}/sources/install.wim" 1 > "${srcdir}/wiminfo.xml"
+  wiminfo --xml "mnt/iso/sources/install.wim" 1 > "${srcdir}/wiminfo.xml"
 
   # Derive and cache authoritative version from WIM metadata
   {
@@ -111,21 +98,16 @@ prepare() {
 
   # List all font files in image 1 (the sole Enterprise Evaluation image)
   # and extract them directly — no full-WIM decompression needed
-  wimdir "${_mountpoint}/sources/install.wim" 1 \
+  wimdir "mnt/iso/sources/install.wim" 1 \
     | grep '/Windows/Fonts/.*\.tt[cf]$' \
-    | xargs -r wimextract "${_mountpoint}/sources/install.wim" 1 \
+    | xargs -r wimextract "mnt/iso/sources/install.wim" 1 \
       --no-acls --dest-dir="${srcdir}/fonts"
 
   # Extract license files from the WIM (RTF EULA)
-  wimdir "${_mountpoint}/sources/install.wim" 1 \
+  wimdir "mnt/iso/sources/install.wim" 1 \
     | grep -i '/Windows/System32/Licenses/neutral/.*license\.rtf$' \
-    | xargs -r wimextract "${_mountpoint}/sources/install.wim" 1 \
+    | xargs -r wimextract "mnt/iso/sources/install.wim" 1 \
       --no-acls --dest-dir="${srcdir}/license"
-
-  # Clean up loop device and mount
-  udisksctl unmount --block-device "${_loop_dev}" --no-user-interaction
-  udisksctl loop-delete --block-device "${_loop_dev}" --no-user-interaction
-  fusermount3 -uz mnt/http 2>/dev/null || fusermount -uz mnt/http 2>/dev/null || true
 }
 
 # Derive pkgver from the ISO filename (available without mounting).
