@@ -1,0 +1,31 @@
+--- a/scripts/ci-release-build-binaries.ts
++++ b/scripts/ci-release-build-binaries.ts
+@@ -30,6 +30,7 @@
+ 	"./packages/coding-agent/src/tiny/worker.ts",
+ ];
+ const isDryRun = process.argv.includes("--dry-run");
++const skipNativeEmbed = Bun.env.OMP_SKIP_NATIVE_EMBED === "1";
+ const targets: BinaryTarget[] = [
+ 	{
+ 		id: "darwin-arm64",
+@@ -105,6 +106,20 @@
+ }
+ 
+ async function embedNative(target: BinaryTarget): Promise<void> {
++	if (skipNativeEmbed) {
++		if (isDryRun) {
++			console.log(`DRY RUN bun --cwd=packages/natives run embed:native --reset [skip native embed for ${target.platform}/${target.arch}]`);
++			return;
++		}
++
++		await runCommand(["bun", "--cwd=packages/natives", "run", "embed:native", "--reset"], repoRoot, {
++			...Bun.env,
++			TARGET_PLATFORM: target.platform,
++			TARGET_ARCH: target.arch,
++		});
++		return;
++	}
++
+ 	if (isDryRun) {
+ 		console.log(`DRY RUN bun --cwd=packages/natives run embed:native [${target.platform}/${target.arch}]`);
+ 		return;

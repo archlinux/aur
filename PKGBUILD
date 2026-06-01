@@ -2,7 +2,7 @@
 
 pkgname=oh-my-pi
 pkgver=15.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
@@ -13,9 +13,11 @@ options=('!strip')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/refs/tags/v${pkgver}.tar.gz"
     "tree-sitter-haskell-gcc-no-strict-aliasing.patch"
+    "skip-native-embed-for-aur.patch"
 )
 sha256sums=('a0d2cc11119d959f28693d1ab7b7a549db2bc379285b7a795df22b71b565b63a'
-            '3eea6cd7fc2e5fa973b81cac109688231e40087f51c3ce4cf01e45e1b7893b17')
+            '3eea6cd7fc2e5fa973b81cac109688231e40087f51c3ce4cf01e45e1b7893b17'
+            'e5cc7751f95d279705d2060040017a0ca76d1e980f36c51e93016754746c2b99')
 
 # Patch to fix tree-sitter-haskell crash.
 # See:
@@ -44,6 +46,12 @@ _patch_tree_sitter_haskell_gcc_workaround() {
     fi
 }
 
+prepare() {
+    cd "${srcdir}/oh-my-pi-${pkgver}"
+
+    patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
+}
+
 build() {
     cd "${srcdir}/oh-my-pi-${pkgver}"
 
@@ -70,12 +78,14 @@ build() {
     CI=1 TARGET_PLATFORM='linux' TARGET_ARCH='x64' TARGET_VARIANTS='baseline modern' \
         bun run ci:build:native
 
-    RELEASE_TARGETS='linux-x64' bun run ci:release:build-binaries
+    OMP_SKIP_NATIVE_EMBED=1 RELEASE_TARGETS='linux-x64' bun run ci:release:build-binaries
 }
 
 package() {
     cd "${srcdir}/oh-my-pi-${pkgver}"
 
     install -Dm755 "packages/coding-agent/binaries/omp-linux-x64" "${pkgdir}/usr/bin/omp"
+    install -Dm755 "packages/natives/native/pi_natives.linux-x64-baseline.node" "${pkgdir}/usr/bin/pi_natives.linux-x64-baseline.node"
+    install -Dm755 "packages/natives/native/pi_natives.linux-x64-modern.node" "${pkgdir}/usr/bin/pi_natives.linux-x64-modern.node"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
