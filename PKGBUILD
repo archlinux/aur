@@ -2,7 +2,7 @@
 pkgname=machctrl
 pkgver=2.0.0
 pkgrel=1
-pkgdesc="Monitor e Otimizador de Hardware para Linux — CPU, GPU, RAM, Fans, Temperatura | Requer KDE Plasma ou GNOME"
+pkgdesc="Hardware Monitor and Optimizer for Linux — CPU, GPU, RAM, Fans, Temperature | Requires KDE Plasma or GNOME"
 arch=('x86_64')
 url="https://github.com/araujo791/machctrl"
 license=('MIT')
