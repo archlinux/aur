@@ -4,8 +4,8 @@
 _pkgname=spectre-meltdown-checker
 pkgname=${_pkgname}-pt-br
 pkgver=26.33.0420460
-pkgrel=1
-pkgdesc="Verificador de vulnerabilidades/mitigação para Reptar, Downfall, Zenbleed, ZombieLoad, RIDL, Fallout, Foreshadow, Spectre e Meltdown"
+pkgrel=2
+pkgdesc="Verifique a resiliência do sistema contra vulnerabilidades de execução transitória (CVEs) publicadas desde 2018"
 arch=('any')
 url="https://github.com/speed47/${_pkgname}"
 license=('GPL-3.0-only')
@@ -18,7 +18,7 @@ source=("git+https://github.com/speed47/spectre-meltdown-checker.git#commit=$_co
         "https://gitlab.com/-/snippets/5998033/raw/main/translate-pt-br.patch")
 
 sha256sums=('4c96749271234d56b64f9f5ca9eed917677d09dc136150c1fa5e58a2bce133eb'
-            '620aa45d187c70bfc6d21679c1a65f8803bb6981380e4e6801d92a8630e2f9f9')
+            '046944cf874988a2f2148000a2df7b73f13b894f57d3afd38dd08a343c1921aa')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
