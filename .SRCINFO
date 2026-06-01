@@ -1,5 +1,5 @@
 pkgbase = python-httpx2
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/pydantic/httpx2
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = python-httpx2
 	checkdepends = python-chardet
 	checkdepends = python-cryptography
 	checkdepends = python-pytest
+	checkdepends = python-pytest-codspeed
 	checkdepends = python-pytest-httpbin
 	checkdepends = python-pytest-trio
 	checkdepends = python-trustme
@@ -30,15 +31,15 @@ pkgbase = python-httpx2
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	depends = python-certifi
-	source = httpx2::git+https://github.com/pydantic/httpx2.git#tag=v2.2.0
-	sha256sums = 489857b6883a0a14d74e679fa82ea49d0aecf61f5c01de8a4290fdb9099ac5b5
+	depends = python-truststore
+	source = httpx2::git+https://github.com/pydantic/httpx2.git#tag=v2.3.0
+	sha256sums = acc194991760d5e3ededf29906abb2686f5c0f0cf53be16f6e29de322cc0d831
 
 pkgname = python-httpcore2
 	pkgdesc = A minimal low-level HTTP client.
 	url = https://github.com/pydantic/pydantic-ai/
 	depends = python
-	depends = python-certifi
+	depends = python-truststore
 	depends = python-h11
 	optdepends = python-h2: http2
 	optdepends = python-socksio: socks
@@ -49,7 +50,7 @@ pkgname = python-httpx2
 	pkgdesc = The next generation HTTP client.
 	url = https://github.com/pydantic/pydantic-ai/
 	depends = python
-	depends = python-certifi
+	depends = python-truststore
 	depends = python-httpcore2
 	depends = python-anyio
 	depends = python-idna

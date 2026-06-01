@@ -4,16 +4,16 @@ _name1=httpcore2
 _name0=httpx2
 pkgbase=python-$_name0
 pkgname=(python-$_name1 python-$_name0)
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/httpx2'
 license=('BSD-3-Clause')
-depends=('python' 'python-certifi')
+depends=('python' 'python-truststore')
 makedepends=('python-hatchling' 'python-hatch-fancy-pypi-readme' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
-checkdepends=('python-brotli' 'python-brotlicffi' 'python-click' 'python-pygments' 'python-rich' 'python-h2' 'python-socksio' 'python-zstandard' 'python-anyio' 'python-trio' 'python-chardet' 'python-cryptography' 'python-pytest' 'python-pytest-httpbin' 'python-pytest-trio' 'python-trustme' 'uvicorn' 'python-werkzeug')
+checkdepends=('python-brotli' 'python-brotlicffi' 'python-click' 'python-pygments' 'python-rich' 'python-h2' 'python-socksio' 'python-zstandard' 'python-anyio' 'python-trio' 'python-chardet' 'python-cryptography' 'python-pytest' 'python-pytest-codspeed' 'python-pytest-httpbin' 'python-pytest-trio' 'python-trustme' 'uvicorn' 'python-werkzeug')
 source=("$_name0::git+$url.git#tag=v$pkgver")
-sha256sums=('489857b6883a0a14d74e679fa82ea49d0aecf61f5c01de8a4290fdb9099ac5b5')
+sha256sums=('acc194991760d5e3ededf29906abb2686f5c0f0cf53be16f6e29de322cc0d831')
 
 prepare() {
   cd "$srcdir"/$_name0
