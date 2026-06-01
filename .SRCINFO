@@ -1,0 +1,17 @@
+pkgbase = waywarp-scanner
+	pkgdesc = High-performance Wayland GUI layout scanner for AI Agents
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Xuepoo/waywarp-scanner
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-click
+	depends = python-pytorch
+	source = https://github.com/Xuepoo/waywarp-scanner/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = waywarp-scanner
