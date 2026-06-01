@@ -46,6 +46,10 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
+    export GOHOSTOS="$(go env GOHOSTOS)"
+    export GOHOSTARCH="$(go env GOHOSTARCH)"
+    export GOHOSTARM="$(go env GOHOSTARM)"
+
     make ci-node-generate
     make ci-go-generate build
 }
