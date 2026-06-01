@@ -9,7 +9,7 @@ pkgbase = restui-bin
 	depends = glibc
 	provides = restui
 	conflicts = restui
-	source = restui::https://github.com/arfadmuzali/restui/releases/download/v1.3.4/restui_Linux_x86_64.tar.gz
+	source = https://github.com/arfadmuzali/restui/releases/download/v1.3.4/restui_Linux_x86_64.tar.gz
 	sha256sums = 2b1779b93d668259f7c36d811aac90b98ab3e8a264af232d96c16ddc8ee0f6d8
 
 pkgname = restui-bin

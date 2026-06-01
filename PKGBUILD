@@ -13,7 +13,7 @@ conflicts=('restui')
 
 # gunakan binary release dari GitHub
 source=(
-  "restui::https://github.com/arfadmuzali/restui/releases/download/v$pkgver/restui_Linux_x86_64.tar.gz"
+  "https://github.com/arfadmuzali/restui/releases/download/v$pkgver/restui_Linux_x86_64.tar.gz"
 )
 sha256sums=('2b1779b93d668259f7c36d811aac90b98ab3e8a264af232d96c16ddc8ee0f6d8')
 
