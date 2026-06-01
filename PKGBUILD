@@ -13,7 +13,7 @@ optdepends=(
     'cuda: NVIDIA GPU acceleration (build with LLAMA_HDD_BACKEND=cuda)'
     'rocm-hip-sdk: AMD GPU acceleration (build with LLAMA_HDD_BACKEND=rocm)'
     'vulkan-icd-loader: Vulkan GPU acceleration (build with LLAMA_HDD_BACKEND=vulkan)'
-    'llamacpp-helper: launcher with --hdd-cache mode that drives this fork'\''s sidecar feature'
+    'llama-launcher: launcher with --hdd-cache mode that drives this fork'\''s sidecar feature'
 )
 provides=('llama.cpp' "llama.cpp=${pkgver}")
 conflicts=('llama.cpp' 'llama.cpp-cuda' 'llama.cpp-vulkan' 'llama.cpp-hip')
