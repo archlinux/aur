@@ -10,7 +10,7 @@ depends=('electron' 'libusb')
 makedepends=('npm' 'typescript')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz" "attack-shark-x11-driver.desktop""$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   cd "$pkgname-$pkgver"
