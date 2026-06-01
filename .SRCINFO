@@ -1,14 +1,14 @@
 pkgbase = rustowl-git
 	pkgdesc = Visualize Ownership and Lifetimes in Rust
 	pkgver = r1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/cordx56/rustowl
 	arch = any
 	license = MPL-2.0
 	makedepends = git
 	makedepends = rustup
-	makedepends = zig=0.13.0
 	conflicts = rustowl-bin
+        conflicts = rustowl
 	source = git+https://github.com/cordx56/rustowl.git
 	sha256sums = SKIP
 
