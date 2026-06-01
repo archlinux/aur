@@ -1,6 +1,6 @@
 # Maintainer: Arfad <arfadmuzali258@gmail.com>
 pkgname=restui
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Terminal UI API client for testing HTTP requests"
 arch=('any')
@@ -12,7 +12,7 @@ provides=('restui')
 conflicts=('restui')
 
 source=("https://github.com/arfadmuzali/restui/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('33cffa8c40807c46585eb7602b83167dcf53ff6437929def4704b6e1127e5c93')
+sha256sums=('fd15da015962168f35081e1b0c7a7f4b25a8e858c7cb5bbe31c88bb1eb39b5c0')
 
 build() {
   cd "$pkgname-$pkgver"
