@@ -1,11 +1,11 @@
 # Maintainer: Jason Scurtu <code@xarbit.dev>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 #
-# Release-candidate AUR package. CI renders 1.9.0_rc.2 / v1.9.0-rc.2 / 6759fd5a422be8c5888fb140bd2d6ae8356cd8b0a10890ecd4770db4cead0851
+# Release-candidate AUR package. CI renders 1.9.0_rc.3 / v1.9.0-rc.3 / e8091ffa21ad797af35980ccf96c2b527a6d93fb7e93a2edbeaf039de54a59e0
 # via envsubst and pushes the result to the AUR on every -rc tag — see
 # .github/workflows/publish.yml. Edit this template, not the AUR repo.
 pkgname=plasma6-applets-appgrid-rc
-pkgver=1.9.0_rc.2
+pkgver=1.9.0_rc.3
 pkgrel=1
 pkgdesc="A modern application launcher for KDE Plasma (release candidate)"
 arch=('x86_64')
@@ -40,9 +40,9 @@ makedepends=(
     'cmake'
     'extra-cmake-modules'
 )
-_tag=v1.9.0-rc.2
+_tag=v1.9.0-rc.3
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xarbit/plasma6-applet-appgrid/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('6759fd5a422be8c5888fb140bd2d6ae8356cd8b0a10890ecd4770db4cead0851')
+sha256sums=('e8091ffa21ad797af35980ccf96c2b527a6d93fb7e93a2edbeaf039de54a59e0')
 
 build() {
     cmake -B build -S "plasma6-applet-appgrid-${_tag#v}" \
