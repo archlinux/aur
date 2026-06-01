@@ -15,9 +15,11 @@ optdepends=(
     'python-duckduckgo-search: DuckDuckGo search provider'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/taxin-404/odysseus/archive/refs/tags/v$pkgver.tar.gz"
-        "odysseus-ai.desktop")
+        "odysseus-ai.desktop"
+        "odysseus-ai.svg")
 sha256sums=('67217c159fc4d30d8e4af94a8ed2201a1774b47a3415277c6721d35e52b4db3c'
-            'f21605f96ec6067504d15c788fe009890d07364f14e78da6e071cb8b922e43df')
+            'f21605f96ec6067504d15c788fe009890d07364f14e78da6e071cb8b922e43df'
+            '9d909012e4daf1a8bf4bec2bf4912ce546da8ce7828ec2cea6ca55886e94f916')
 install="$pkgname.install"
 
 backup=(
@@ -104,8 +106,8 @@ EOF
         "$pkgdir/usr/share/applications/odysseus-ai.desktop"
 
     # --- Icon ---
-    install -Dm644 "docs/odysseus.jpg" \
-        "$pkgdir/usr/share/pixmaps/odysseus-ai.jpg"
+    install -Dm644 "$srcdir/odysseus-ai.svg" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/odysseus-ai.svg"
 
     # --- License ---
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
