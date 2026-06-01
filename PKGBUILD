@@ -10,11 +10,14 @@ license=('MIT')
 source=("$url/archive/refs/tags/$pkgver-$pkgrel.tar.gz")
 sha256sums=('SKIP')
 
+_srcdir="no-${pkgver}-${pkgrel}"
+
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_srcdir"
     gcc no.c -o no
 }
 
 package() {
+    cd "$srcdir/$_srcdir"
     install -Dm755 no "$pkgdir/usr/bin/no"
 }
