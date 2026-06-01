@@ -1,6 +1,6 @@
 pkgbase = enneagram-git
 	pkgdesc = An exploration into the enneagram. (git version)
-	pkgver = 1.2.0.274eebf
+	pkgver = 1.2.1.4955bc7
 	pkgrel = 1
 	url = https://github.com/sigurd4/enneagram
 	arch = x86_64
