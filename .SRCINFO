@@ -1,0 +1,25 @@
+pkgbase = forgesmith
+	pkgdesc = Folder-aware FLAC tagger using MusicBrainz, with built-in synced-lyrics embedding (GNOME)
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/AbsolKing/forgesmith
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = blueprint-compiler
+	makedepends = appstream
+	makedepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = glib2
+	depends = gtk4
+	depends = libadwaita
+	depends = python
+	depends = python-gobject
+	depends = python-mutagen
+	depends = python-aiohttp
+	optdepends = chromaprint: audio fingerprinting fallback via AcoustID (needs a free API key)
+	source = forgesmith-0.6.0.tar.gz::https://github.com/AbsolKing/forgesmith/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = b3c56aaeb7e07d56d03e8e2f5ac7c9f9059d33151406131e3dea3d69a6cdcb35
+
+pkgname = forgesmith
