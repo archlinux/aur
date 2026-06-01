@@ -26,7 +26,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r1288.b9c510f
+pkgver=r1297.a9c6806
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor + first-party mshell desktop (mango heritage)"
 url="https://github.com/kenanpelit/margo"
@@ -108,6 +108,8 @@ optdepends=(
   "satty: alternative annotation editor for mscreenshot"
   "wf-recorder: screen recording via wlr-screencopy"
   "yt-dlp: \`mplay play\`/\`download\` of YouTube + other streaming URLs"
+  "playerctl: MPRIS media control for \`mplay media\` (Spotify/VLC/browsers)"
+  "mpc: MPD control for \`mplay media\`"
   # Clipboard managers — mshell clipboard widget + mshellshare paste
   "copyq: clipboard manager via wlr-data-control"
   "wl-clip-persist: keep clipboard alive after the producer exits"
