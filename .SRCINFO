@@ -1,0 +1,36 @@
+pkgbase = python-transformer-engine
+	pkgdesc = NVIDIA Transformer Engine: accelerated transformer training/inference with FP8 on Hopper+ GPUs (PyTorch backend)
+	pkgver = 2.15
+	pkgrel = 1
+	url = https://github.com/NVIDIA/TransformerEngine
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pybind11
+	makedepends = gcc15
+	makedepends = git
+	depends = python
+	depends = python-pytorch
+	depends = python-pydantic
+	depends = python-importlib-metadata
+	depends = python-packaging
+	depends = python-onnxscript
+	depends = python-triton
+	depends = python-einops
+	depends = cuda
+	depends = cudnn
+	source = git+https://github.com/NVIDIA/TransformerEngine.git#tag=v2.15
+	source = te-cudnn-frontend::git+https://github.com/NVIDIA/cudnn-frontend.git#commit=97f6cb3b88cacff507cca1280db5650a457d92b3
+	source = te-cutlass::git+https://github.com/NVIDIA/cutlass.git#commit=57e3cfb47a2d9e0d46eb6335c3dc411498efa198
+	source = te-googletest::git+https://github.com/google/googletest.git#commit=f8d7d77c06936315286eb55f8de22cd23c188571
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = python-transformer-engine
