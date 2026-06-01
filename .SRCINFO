@@ -1,0 +1,14 @@
+pkgbase = htype
+	pkgdesc = Mimic human typing on stdout
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/lord-of-the-strings/htype
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = htype-0.2.0.tar.gz::https://github.com/lord-of-the-strings/htype/archive/v0.2.0.tar.gz
+	sha256sums = fe962178a486c85cc5a9263086e2f92ae19f14e529bc5b581babcf9891eea129
+
+pkgname = htype
