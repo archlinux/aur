@@ -1,0 +1,15 @@
+pkgbase = ivylink
+	pkgdesc = Ivy's declarative dotfile manager and theme engine
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ivyella/ivylink
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	source = ivylink-0.1.0.tar.gz::https://github.com/ivyella/ivylink/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 0c87cb0808d3a8321b62cac3e4b8e10d00f4d7b5886a3724d37f7ec51ca498d9
+
+pkgname = ivylink
