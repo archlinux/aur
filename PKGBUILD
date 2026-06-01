@@ -6,7 +6,7 @@
 # for local/manual builds.
 
 pkgname=vibepaper
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Wayland wallpaper daemon that generates and refines wallpapers via OpenAI, Gemini, Stability and other image APIs"
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=('wayland-protocols' 'pkgconf')
 provides=("$pkgname")
 conflicts=("$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/maxischmaxi/vibepaper/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9a343ec1b0e1093bc12ddc8747135b6248472a912e78d75387006f33e6f9f4e5')
+sha256sums=('d0123ce901f2a1400cbdbe6dcc02562c95fb75e0d9c4d8733d7bb09dc7f73947')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
