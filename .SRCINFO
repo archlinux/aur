@@ -10,18 +10,16 @@ pkgbase = aurc
 	arch = armv6h
 	arch = aarch64
 	license = GPL3
+	makedepends = git
 	depends = less
 	depends = pacman
-	depends = gcc
 	depends = curl
-	depends = make
-	depends = base-devel
 	depends = git
 	depends = tar
 	depends = json-c
 	optdepends = sudo: privilege elevation
 	optdepends = doas: privilege elevation
-	source = aurc-2.2.5.tar.gz::https://github.com/statulr/aurc/archive/2.2.5.tar.gz
-	sha256sums = e58dced658e535c7227a89c5e54a5c0eabd2c8d69770a7197e0a9ed9e88c22cb
+	source = git+https://github.com/statulr/aurc.git#tag=2.2.5
+	sha256sums = SKIP
 
 pkgname = aurc

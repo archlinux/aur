@@ -9,30 +9,29 @@ license=('GPL3')
 depends=(
   'less'
   'pacman'
-  'gcc'
   'curl'
-  'make'
-  'base-devel'
   'git'
   'tar'
   'json-c'
 )
+makedepends=('git')
 optdepends=(
   'sudo: privilege elevation'
   'doas: privilege elevation'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+
+source=("git+${url}.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd ${pkgname}-${pkgver}/src
+  cd "${pkgname}/src"
   make build
 }
 
 package() {
-  cd ${pkgname}-${pkgver}/src
+  cd "${pkgname}/src"
 
-  mkdir -p "${pkgdir}"/usr/bin # Workaround a Makefile bug
+  mkdir -p "${pkgdir}"/usr/bin
   DESTDIR="${pkgdir}" PREFIX="/usr" make install
   install -Dm644 ../LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
-sha256sums=('e58dced658e535c7227a89c5e54a5c0eabd2c8d69770a7197e0a9ed9e88c22cb')
