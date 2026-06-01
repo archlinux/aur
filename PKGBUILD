@@ -19,4 +19,4 @@ package() {
   install -Dm644 "arch-update-check-${pkgver}/README-arch-update-check.md" \
     "$pkgdir/usr/share/doc/arch-update-check/README-arch-update-check.md"
 }
-sha256sums=('9948307d7b609385cd1f301462995d9aee904b2b29a21d3ea441f3d5282ec7fa')
+sha256sums=('31622d4a6b453e26857322a1e6ef8dea4a5dec5e4c067a2d4f15e0f70b786e16')
