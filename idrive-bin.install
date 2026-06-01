@@ -2,12 +2,10 @@ post_install() {
 	cat <<'EOF'
 IDrive for Linux is installed to /opt/IDriveForLinux.
 
-To set up your account, backup sets, and schedule, run as root:
-
-    sudo idrive
-
-and choose the option to configure. Runtime state is written under
-/opt/IDriveForLinux, so idrive must be run with root privileges.
+Run `idrive` and choose "Configure/Reconfigure your account" to set up your
+account, backup sets, and schedule. idrive stores its state under /opt and
+schedules root cron jobs, so it runs as root (the `idrive` command escalates
+via sudo automatically).
 EOF
 }
 

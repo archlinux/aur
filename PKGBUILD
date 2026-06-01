@@ -1,7 +1,7 @@
 # Maintainer: Andy <this.is.apb@gmail.com>
 pkgname=idrive-bin
 pkgver=3.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IDrive cloud backup for Linux - official interactive menu (idrive) and idevsutil engines"
 arch=('x86_64')
 url="https://www.idrive.com/online-backup-linux-scripts"
@@ -52,12 +52,22 @@ package() {
 	find "$deps/pythonbin" -mindepth 1 -maxdepth 1 ! -name k3 -exec rm -rf {} +
 	find "$deps/pythonbin/k3" -mindepth 1 -maxdepth 1 ! -name "$CARCH" -exec rm -rf {} +
 
-	# CLI entry point. idrive resolves some paths relative to the working
-	# directory, so the wrapper enters its bin dir before launching (matching
-	# the upstream "run ./idrive from /opt/IDriveForLinux/bin" instructions).
+	# CLI entry point. idrive keeps its state under /opt and schedules root cron
+	# jobs, so it must run as root; the wrapper escalates via sudo when needed.
+	# It also enters the app's bin dir first, since idrive resolves some paths
+	# relative to the working directory.
 	install -d "$pkgdir/usr/bin"
-	printf '#!/bin/sh\ncd /opt/IDriveForLinux/bin && exec ./idrive "$@"\n' \
-		> "$pkgdir/usr/bin/idrive"
+	cat > "$pkgdir/usr/bin/idrive" <<-'EOF'
+		#!/bin/sh
+		if [ "$(id -u)" -ne 0 ]; then
+			if command -v sudo >/dev/null 2>&1; then
+				exec sudo -- "$0" "$@"
+			fi
+			echo "idrive must be run as root; re-run with: sudo idrive" >&2
+			exit 1
+		fi
+		cd /opt/IDriveForLinux/bin && exec ./idrive "$@"
+	EOF
 	chmod 0755 "$pkgdir/usr/bin/idrive"
 
 	# Proprietary license: ship a pointer to the canonical Terms of Service plus
