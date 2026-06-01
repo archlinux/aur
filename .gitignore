@@ -1,0 +1,12 @@
+# Python cache files
+__pycache__/
+*.pyc
+
+# Arch Linux packaging / build outputs
+pkg/
+src/
+*.pkg.tar.zst
+*.tar.gz
+
+# Git tracking files that shouldn't be bundled
+.SRCINFO
