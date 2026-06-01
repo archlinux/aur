@@ -1,9 +1,17 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 4.7.4 ➙ 5.1.0
-              : 2026-05-29 ➙ 2026-05-31
+ Tags         : 4.7.5 ➙ 5.2.0
+              : 2026-05-29 ➙ 2026-06-01
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-06-01   : 5.2.0
+              - **5.2.0**
+            
+                * Shadow "install.con" for non-kernels now sets generator in addition to layout = bls.
+                  Also fixes missing "newline" bug.
+ 2026-05-31   ⋯
+              - update Changelog
 
  2026-05-31   : 5.1.0
               - **5.1.0**
@@ -54,10 +62,4 @@
 
  2026-05-29   : 4.7.5
               - fix license install typo
-              - update Changelog
-
- 2026-05-29   : 4.7.4
-              - **4.7.4**
-            
-                * loader flags to meson build
               - update Changelog
