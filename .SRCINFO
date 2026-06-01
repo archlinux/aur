@@ -1,6 +1,6 @@
 pkgbase = nasty-top-bin
 	pkgdesc = A top-like TUI for bcachefs filesystems
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/nasty-project/nasty-top
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = nasty-top-bin
 	provides = nasty-top
 	conflicts = nasty-top
 	optdepends = bcachefs-tools: required for reconcile status view
-	source_x86_64 = nasty-top-bin-0.0.6-x86_64.tar.gz::https://github.com/nasty-project/nasty-top/releases/download/v0.0.6/nasty-top-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 90d35f8e457f3db3e585ac2039d453e9e5100ba4cce8cbc450b561877a2f6697
-	source_aarch64 = nasty-top-bin-0.0.6-aarch64.tar.gz::https://github.com/nasty-project/nasty-top/releases/download/v0.0.6/nasty-top-aarch64-linux.tar.gz
-	sha256sums_aarch64 = cc71a81a0d38c306d14f606236e08044a1bcdf34530005aac46faa1528e4a43e
+	source_x86_64 = nasty-top-bin-0.0.7-x86_64.tar.gz::https://github.com/nasty-project/nasty-top/releases/download/v0.0.7/nasty-top-x86_64-linux.tar.gz
+	sha256sums_x86_64 = b1e7ffde291bcdeafc7e6cdd7ed003db07358f5984559e23c8f9b39fae478547
+	source_aarch64 = nasty-top-bin-0.0.7-aarch64.tar.gz::https://github.com/nasty-project/nasty-top/releases/download/v0.0.7/nasty-top-aarch64-linux.tar.gz
+	sha256sums_aarch64 = cc618d27066bc304e232a5e2ce4ef97de6faed7f79541dca7ef9c07d65067e72
 
 pkgname = nasty-top-bin
