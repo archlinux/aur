@@ -4,19 +4,19 @@ import math
 import tkinter as tk
 import colorsys
 import logging
+import uuid
 from datetime import datetime
+from logging.handlers import RotatingFileHandler
 
 # -----------------------
 # LOGGING
 # -----------------------
 log_filename = f"iastfyp_turtle_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
-logging.basicConfig(
-    filename=log_filename,
-    level=logging.DEBUG,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    datefmt="%H:%M:%S"
-)
+handler = RotatingFileHandler(log_filename, maxBytes=5 * 1024 * 1024, backupCount=2)
+handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S"))
 log = logging.getLogger()
+log.setLevel(logging.DEBUG)
+log.addHandler(handler)
 log.info("IaSTFyP started")
 
 # -----------------------
@@ -81,13 +81,10 @@ def custom_menu():
     def add_field(name):
         frame = tk.Frame(win)
         frame.pack(fill="x", padx=10, pady=3)
-
         tk.Label(frame, text=name, width=18, anchor="w").pack(side="left")
-
         e = tk.Entry(frame)
         e.insert(0, str(config[name]))
         e.pack(side="right", fill="x", expand=True)
-
         entries[name] = e
 
     for key in config:
@@ -101,10 +98,9 @@ def custom_menu():
             config["REPRO_CHANCE"] = float(entries["REPRO_CHANCE"].get())
             config["DEATH_CHANCE"] = float(entries["DEATH_CHANCE"].get())
             config["MEET_DISTANCE"] = int(entries["MEET_DISTANCE"].get())
-        except:
-            print("Invalid input!")
+        except ValueError:
+            print("Invalid input — expected numbers.")
             return
-
         win.destroy()
 
     tk.Button(win, text="Start Simulation", command=apply).pack(pady=10)
@@ -121,7 +117,6 @@ select_mode()
 if MODE is None:
     raise SystemExit("No mode selected")
 
-# preset modes
 if MODE == "supah_ez":
     config.update({
         "MAX_TURTLES": 10,
@@ -131,7 +126,6 @@ if MODE == "supah_ez":
         "DEATH_CHANCE": 0.002,
         "MEET_DISTANCE": 20
     })
-
 elif MODE == "easy":
     config.update({
         "MAX_TURTLES": 15,
@@ -141,7 +135,6 @@ elif MODE == "easy":
         "DEATH_CHANCE": 0.001,
         "MEET_DISTANCE": 25
     })
-
 elif MODE == "normal":
     config.update({
         "MAX_TURTLES": 50,
@@ -151,7 +144,6 @@ elif MODE == "normal":
         "DEATH_CHANCE": 0.0003,
         "MEET_DISTANCE": 30
     })
-
 elif MODE == "extreme":
     config.update({
         "MAX_TURTLES": 5000,
@@ -161,7 +153,6 @@ elif MODE == "extreme":
         "DEATH_CHANCE": 0.000001,
         "MEET_DISTANCE": 100
     })
-
 elif MODE == "custom":
     custom_menu()
 
@@ -175,33 +166,69 @@ screen = turtle.Screen()
 screen.tracer(0)
 screen.colormode(1.0)
 
-turtles = []
-ages = {}
-pending_kills = 0
-paused = False
-frame = 0
+# Query actual screen bounds
+BOUND_X = screen.window_width() // 2 - 10
+BOUND_Y = screen.window_height() // 2 - 10
+
+# TurtleEntity wraps turtle + stable UUID-keyed age
+class TurtleEntity:
+    def __init__(self):
+        self.uid = uuid.uuid4()
+        self.age = 0
+        self.t = turtle.Turtle()
+        self.t.shape("circle")
+        self.t.speed(0)
+        self.t.penup()
+        self.t.goto(random.randint(-BOUND_X, BOUND_X), random.randint(-BOUND_Y, BOUND_Y))
+        self.t.setheading(random.randint(0, 360))
+        self.t.pendown()
+
+    def destroy(self):
+        self.t.hideturtle()
+        self.t.clear()
+
+    def xcor(self):
+        return self.t.xcor()
+
+    def ycor(self):
+        return self.t.ycor()
 
 def age_color(age):
     hue = (age % 300) / 300.0
     return colorsys.hsv_to_rgb(hue, 1.0, 1.0)
 
-def create_turtle():
-    t = turtle.Turtle()
-    t.shape("circle")
-    t.speed(0)
-    t.penup()
-    t.goto(random.randint(-300, 300), random.randint(-300, 300))
-    t.setheading(random.randint(0, 360))
-    t.pendown()
-    ages[id(t)] = 0
-    return t
-
 def distance(a, b):
     return math.hypot(a.xcor() - b.xcor(), a.ycor() - b.ycor())
 
-# initial spawn
+# Spatial grid for O(n) proximity checks instead of O(n²)
+class SpatialGrid:
+    def __init__(self, cell_size):
+        self.cell_size = cell_size
+        self.grid = {}
+
+    def _cell(self, x, y):
+        return int(x // self.cell_size), int(y // self.cell_size)
+
+    def build(self, entities):
+        self.grid = {}
+        for e in entities:
+            c = self._cell(e.xcor(), e.ycor())
+            self.grid.setdefault(c, []).append(e)
+
+    def neighbors(self, e):
+        cx, cy = self._cell(e.xcor(), e.ycor())
+        result = []
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                result.extend(self.grid.get((cx + dx, cy + dy), []))
+        return result
+
+turtles = []
+pending_kills = 0
+paused = False
+
 for _ in range(2):
-    turtles.append(create_turtle())
+    turtles.append(TurtleEntity())
 
 # -----------------------
 # CONTROL UI
@@ -211,7 +238,7 @@ btn_frame.pack()
 
 def add_turtle():
     if len(turtles) < config["MAX_TURTLES"]:
-        turtles.append(create_turtle())
+        turtles.append(TurtleEntity())
 
 def kill_turtle():
     global pending_kills
@@ -233,57 +260,67 @@ pop_label.pack()
 # -----------------------
 # SIM LOOP
 # -----------------------
+grid = SpatialGrid(config["MEET_DISTANCE"])
+
 def step():
-    global turtles, pending_kills, frame
+    global turtles, pending_kills
 
     if paused:
         root.after(50, step)
         return
 
-    frame += 1
     alive = []
     new_turtles = []
 
-    for t in turtles:
-        if abs(t.xcor()) > 300 or abs(t.ycor()) > 300:
+    for e in turtles:
+        t = e.t
+
+        if abs(t.xcor()) > BOUND_X or abs(t.ycor()) > BOUND_Y:
             t.setheading(t.towards(0, 0))
             t.forward(20)
 
         t.forward(random.randint(config["MIN_SPEED"], config["MAX_SPEED"]))
         t.right(random.randint(-30, 30))
 
-        ages[id(t)] += 1
-        t.color(age_color(ages[id(t)]))
+        e.age += 1
+        t.color(age_color(e.age))
 
         if random.random() < config["DEATH_CHANCE"]:
-            t.hideturtle()
-            t.clear()
-            ages.pop(id(t), None)
+            e.destroy()
         else:
-            alive.append(t)
+            alive.append(e)
 
     turtles[:] = alive
 
-    # reproduction
-    for i in range(len(turtles)):
-        for j in range(i + 1, len(turtles)):
-            if distance(turtles[i], turtles[j]) < config["MEET_DISTANCE"]:
+    # O(n) reproduction via spatial grid
+    grid.build(turtles)
+    seen_pairs = set()
+    for e in turtles:
+        if len(turtles) + len(new_turtles) >= config["MAX_TURTLES"]:
+            break
+        for neighbor in grid.neighbors(e):
+            if neighbor is e:
+                continue
+            pair = frozenset((id(e), id(neighbor)))
+            if pair in seen_pairs:
+                continue
+            seen_pairs.add(pair)
+            if distance(e, neighbor) < config["MEET_DISTANCE"]:
                 if len(turtles) + len(new_turtles) < config["MAX_TURTLES"]:
                     if random.random() < config["REPRO_CHANCE"]:
-                        new_turtles.append(create_turtle())
+                        new_turtles.append(TurtleEntity())
 
     turtles.extend(new_turtles)
 
-    # kills
-    for _ in range(pending_kills):
-        if turtles:
-            t = turtles.pop(random.randrange(len(turtles)))
-            t.hideturtle()
-            t.clear()
+    # kills — snapshot pending_kills atomically
+    kills = pending_kills
     pending_kills = 0
+    for _ in range(kills):
+        if turtles:
+            e = turtles.pop(random.randrange(len(turtles)))
+            e.destroy()
 
     pop_label.config(text=f"Population: {len(turtles)}")
-
     screen.update()
     root.after(50, step)
 
