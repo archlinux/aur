@@ -1,6 +1,6 @@
 pkgbase = ykw
 	pkgdesc = Multi-recipient YubiKey OpenPGP workflow CLI (Bash)
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/j4y-w4lk3r/ykw
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ykw
 	provides = ykw
 	conflicts = ykw-bin
 	conflicts = ykw-git
-	source = ykw-0.1.1.tar.gz::https://github.com/j4y-w4lk3r/ykw/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = 74bab86e2f96f3a537a7b98e4ad914bf83110b0c684c67da6f198ee83ee97742
+	source = ykw-0.1.1.tar.gz::https://github.com/j4y-w4lk3r/ykw/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = 2125b60d1bd840cc4de2b953d4354ca4ebaf0d6768b145c5f457a1575b21b42f
 
 pkgname = ykw
