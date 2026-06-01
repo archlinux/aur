@@ -26,7 +26,7 @@ license=('custom')
 depends=()
 makedepends=('httpdirfs' 'udfclientfs-fuse3' 'wimlib' 'curl')
 provides=('ttf-font' 'ttf-ms-fonts' 'ttf-ms-win11' 'ttf-tahoma' 'emoji-font')
-conflicts=('ttf-ms-win11' 'ttf-ms-win11-auto' 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts' 'ttf-ms-no-big-downloads')
+conflicts=(ttf-ms-win{10,11} ttf-ms-win{10,11}-auto 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts')
 
 # Microsoft Evaluation Center fwlink for the latest US English 64-bit
 # Windows 11 Enterprise Evaluation ISO. Resolved once at PKGBUILD parse
