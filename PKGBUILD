@@ -1,6 +1,6 @@
 # Maintainer: Koutheir Attouchi <koutheir@gmail.com>
 pkgname=weave-bin
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Entity-level semantic merge driver for Git. Resolves merge conflicts that Git cannot by understanding code structure via tree-sitter'
 url="https://github.com/Ataraxy-Labs/weave/tree/v${pkgver}"
@@ -22,9 +22,9 @@ source=(
     "https://github.com/Ataraxy-Labs/weave/releases/download/v${pkgver}/weave-mcp-${CARCH}-unknown-linux-gnu.tar.gz")
 sha256sums=('3d5ac2ca3c9e4bcd641e43c5512350cf62e15e527f9b4a720d52b546d9965a5f'
             '0173d0fc0ea38a5124e9cc7eea9db01a14141ce1240508eb497f701394fe49eb'
-            '9d690b9ac9785fded50e4c757e012baa9bc47a0841c6da96391d49468a6317e1'
-            '975a0f4942551c547dc7e0043a3c0a8af9bd165ff56e95a510aedd4220a59574'
-            '3e6a61019be6b9b768459b0bd20d23de41aee3aecb22ca2fcd913386c3e28d35')
+            '7feced36548ff647b94b4bf16dae02a4abc282ce0a039d351fcad4e7702fc884'
+            '2c70689d0fe0f5f55b1bef1cb0fe971e7b73e1c95397cee50d0c7a1c363e6743'
+            '619ee9e92ea942ea1fec05a3d9964ce9deb8e518d960b6a1ef0e8b13f9d4d30f')
 validpgpkeys=()
 
 prepare() {
