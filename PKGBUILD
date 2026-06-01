@@ -1,6 +1,6 @@
 pkgname=lmms-lab-writer
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-native LaTeX editor desktop application"
 arch=('x86_64')
 url="https://github.com/EvolvingLMMs-Lab/lmms-lab-writer"
@@ -31,7 +31,12 @@ prepare() {
   export PATH="${PNPM_HOME}:${PATH}"
 
   pnpm config set store-dir "${srcdir}/pnpm-store"
-  pnpm install --frozen-lockfile
+  pnpm config set network-timeout 300000
+  pnpm config set fetch-retries 5
+  pnpm config set fetch-retry-mintimeout 20000
+  pnpm config set fetch-retry-maxtimeout 120000
+  pnpm config set network-concurrency 8
+  pnpm --filter @lmms-lab/writer-desktop... install --frozen-lockfile
 }
 
 build() {
