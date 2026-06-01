@@ -1,0 +1,30 @@
+pkgbase = python-ai-dynamo
+	pkgdesc = NVIDIA Dynamo: datacenter-scale distributed inference serving framework (Python)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/ai-dynamo/dynamo
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = git
+	depends = python
+	depends = python-ai-dynamo-runtime
+	depends = python-aiohttp
+	depends = python-transformers
+	depends = python-kubernetes
+	depends = python-prometheus_client
+	depends = python-msgspec
+	depends = python-pyzmq
+	optdepends = python-nixl: NIXL data-transfer connector (dynamo.nixl_connect, multimodal KV transfer)
+	optdepends = python-pmdarima: load forecasting for the SLA planner (dynamo.planner)
+	optdepends = python-uvloop: faster asyncio event loop used by the inference backends
+	optdepends = python-tensorrt-llm: TensorRT-LLM inference backend (dynamo.trtllm)
+	optdepends = python-vllm: vLLM inference backend (dynamo.vllm)
+	optdepends = python-sglang: SGLang inference backend (dynamo.sglang)
+	source = git+https://github.com/ai-dynamo/dynamo.git#commit=5b4bc1dd70965017a737c71b19db5a0aeaa88727
+	sha256sums = SKIP
+
+pkgname = python-ai-dynamo
