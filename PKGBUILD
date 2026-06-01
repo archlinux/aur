@@ -77,7 +77,7 @@ prepare() {
   #
   # Default log level includes noisy INFO. Set to 7 for fatal | error | warning only.
   # https://github.com/fangfufu/httpdirfs/blob/26cce591de8518f3dd09c45ed241d1051411bc05/src/log.h#L35-L50
-  echo "Mounting ${_iso_url} at ${_http_mount} via httpdirfs..."
+  echo "Mounting HTTP source via httpdirfs..."
   HTTPDIRFS_LOG_LEVEL=7 httpdirfs "${_httpdirfs_cache_opts[@]}" \
     --dl-seg-size 1 --retry-wait 1 --single-file-mode \
     "${_iso_url}" "${_http_mount}" > /dev/null
@@ -85,7 +85,7 @@ prepare() {
   # LinkTable_print:  Invalid link count: 0
 
   # Mount the ISO UDF filesystem read-only with FUSE
-  echo "Mounting ${_iso} at ${_iso_mount} via udfclientfs..."
+  echo "Mounting ${_iso}..."
   udfclientfs -o ro "${_http_mount}/${_iso}" "${_iso_mount}"
 
   # Use the first image inside the .wim (the sole Enterprise Evaluation image)
@@ -132,7 +132,7 @@ pkgver() {
 
 check() {
   local font_count # 137 files expected as at 2026-06-01
-  font_count="$(ls -1 "${srcdir}/fonts" | wc -l)"
+  font_count="$(find "${srcdir}/fonts" | wc -l)"
   if [[ ${font_count} -lt 100 ]]; then
     echo "Expected over 100 fonts in ${srcdir}/fonts, but only got ${font_count}." >&2
     exit 1
@@ -140,7 +140,7 @@ check() {
 }
 
 package() {
-  echo "Packaging fonts with version: ${pkgver} ..."
+  echo "Packaging fonts with version: ${pkgver}..."
   install -dm755 "${pkgdir}/usr/share/fonts/TTF"
   find "${srcdir}/fonts" -type f \( -name '*.ttf' -o -name '*.ttc' \) \
     -exec install -m644 {} "${pkgdir}/usr/share/fonts/TTF" \;
