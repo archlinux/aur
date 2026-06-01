@@ -1,0 +1,18 @@
+pkgbase = python-udapi
+	pkgdesc = Python framework for processing Universal Dependencies data
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/udapi/udapi-python
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-colorama
+	depends = python-termcolor
+	source = python-udapi-0.5.2.tar.gz::https://files.pythonhosted.org/packages/source/u/udapi/udapi-0.5.2.tar.gz
+	sha256sums = bea62dd380a885a485cb7810ce69d5154ba3f9345140e6198e0b39858ecb9ae8
+
+pkgname = python-udapi
