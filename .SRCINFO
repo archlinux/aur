@@ -1,13 +1,13 @@
 pkgbase = lisaem
 	pkgdesc = Apple Lisa computer emulator
-	pkgver = RC5_2025.03.15
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/arcanebyte/lisaem
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
 	depends = wxwidgets-gtk3
-	source = lisaem-RC5-2025.03.15.tar.gz::https://github.com/arcanebyte/lisaem/archive/refs/tags/RC5-2025.03.15.tar.gz
-	b2sums = 594922cd9f24e36b45d8bf962143701c38f97ca472de2c92eac426cf3a80e9088ccec686c6097d8139d3cc156f84f3e8e1f4951d9f73fe72623c7910cab2aed8
+	source = lisaem-2.0.0.tar.gz::https://github.com/arcanebyte/lisaem/archive/refs/tags/2.0.0.tar.gz
+	b2sums = cd7dc4d1232c31756aa67155408d89a6c54fb75a0d3df3e4794f4286dd9297d35840761e200bcc8ee87110d09091da304174a2ff96fe71895d15c7299dabbc57
 
 pkgname = lisaem
