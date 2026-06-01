@@ -1,6 +1,6 @@
 pkgbase = nook-beta-bin
 	pkgdesc = Nook beta desktop app
-	pkgver = 0.1.29
+	pkgver = 0.1.30
 	pkgrel = 1
 	url = https://nook.cloudylake.io
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = nook-beta-bin
 	conflicts = nook
 	conflicts = nook-bin
 	options = !strip
-	source_x86_64 = nook-beta-0.1.29-linux.deb::https://nook.cloudylake.io/download/beta/nook-beta-0.1.29-linux.deb
-	sha256sums_x86_64 = 04c78f83927e0af8a6b1def3aa8c99a9dfb8d8bc5fa80b6d821b34d429e245f7
+	source_x86_64 = nook-beta-0.1.30-linux.deb::https://nook.cloudylake.io/download/beta/nook-beta-0.1.30-linux.deb
+	sha256sums_x86_64 = 2c5bcec97d3321847533d625bd5e1c95e229d5dfafb2cb58424e16cab338681e
 
 pkgname = nook-beta-bin
