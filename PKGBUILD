@@ -80,7 +80,7 @@ prepare() {
   echo "Mounting HTTP source via httpdirfs..."
   HTTPDIRFS_LOG_LEVEL=7 httpdirfs "${_httpdirfs_cache_opts[@]}" \
     --dl-seg-size 1 --retry-wait 1 --single-file-mode \
-    "${_iso_url}" "${_http_mount}" > /dev/null
+    "${_iso_url}" "${_http_mount}"
 
   # LinkTable_print:  Invalid link count: 0
 
