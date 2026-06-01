@@ -1,6 +1,6 @@
 # Maintainer: niyoko
 pkgname=pipewire-visualizer
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='PipeWire Visualizer spectrum overlay for Wayland desktops'
 arch=('x86_64')
@@ -10,9 +10,9 @@ depends=('gtk4' 'gtk4-layer-shell' 'pipewire' 'fftw' 'json-glib' 'libsoup3')
 makedepends=('meson' 'ninja' 'pkgconf')
 provides=('pwviz')
 conflicts=('pwviz')
-_tag='v0.5.0'
+_tag='v0.5.1'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/niyoko/pipewire-visualizer/releases/download/${_tag}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('67eed7ff14946ec00a7febc4d3bcc15b2aa28ae0f56a59268c515e65153d470d')
+sha256sums=('915bb57e9f282cbd14235b7631a831b16436a48b3e611d45ca4e2cc4fea32e68')
 
 build() {
   meson setup build "${pkgname}-${pkgver}" \
