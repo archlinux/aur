@@ -1,0 +1,13 @@
+pkgbase = narrative
+	pkgdesc = Terminal streamer for ebooks, websites and other text sources.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/exaroth/narrative
+	arch = x86_64
+	arch = aarch64
+	license = AGPL
+	makedepends = go>=1.26.0
+	source = https://github.com/exaroth/narrative/archive/refs/tags/0.2.0.tar.gz
+	md5sums = 92d2c58540275312bdc88840152a4860
+
+pkgname = narrative
