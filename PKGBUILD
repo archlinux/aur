@@ -2,7 +2,7 @@
 
 pkgname=python-erddapy
 pkgdesc='Retrieve scientific datasets from ERDDAP servers'
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 url='https://ioos.github.io/erddapy/'
 arch=('any')
@@ -29,12 +29,12 @@ optdepends=(
   'python-joblib: parallel searching'
 )
 
-_commit=43832c6
+_commit=0af56c6
 source=(
   "git+https://github.com/ioos/erddapy.git?signed#commit=$_commit"
 )
 sha256sums=(
-  'c196a9bad7e1a4c5b1c91356c529e023ff58b8f344f2c694be702343a4758d52'
+  '70662838a306fa02073b6244bc62994a565ad54ff0262a951d42a619b4bc994a'
 )
 validpgpkeys=(
   '968479A1AFF927E37D1A566BB5690EEEBB952194'  # GitHub signing key
