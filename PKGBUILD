@@ -1,42 +1,45 @@
 # Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=ryzenadj-gtk
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="A modern, polished GTK4/Libadwaita graphical wrapper for ryzenadj (AMD power management adjustment tool)."
 arch=('any')
 url="https://github.com/marleylinux/Ryzenadj-gtk"
 license=('GPL3')
 install=ryzenadj-gtk.install
-depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'ryzenadj')
+depends=('python>=3.11' 'python-gobject' 'gtk4' 'libadwaita' 'ryzenadj')
 optdepends=('ryzen_smu-dkms-git: enhanced hardware monitoring and control')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marleylinux/Ryzenadj-gtk/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aedfb993652fcca535cc970d84160d29f87c6237e85a1d00e9ac1a4156be5ee1')
+sha256sums=('091fa6a83adfa9259eb0752350e26231287741775506bd1809acb5f0942e9293')
 
 package() {
   cd "$srcdir/Ryzenadj-"*
 
-  # Install Python files
+  # copy our python code files to the system share folder
   install -d "$pkgdir/usr/share/ryzenadj-gtk"
   install -m644 src/*.py "$pkgdir/usr/share/ryzenadj-gtk/"
   chmod 755 "$pkgdir/usr/share/ryzenadj-gtk/app.py"
 
-  # Copy assets to install directory for runtime local search path
+  # put our graphics and logos in the asset folder
   install -d "$pkgdir/usr/share/ryzenadj-gtk/assets"
-  install -m644 src/assets/* "$pkgdir/usr/share/ryzenadj-gtk/assets/"
+  cp -r src/assets/. "$pkgdir/usr/share/ryzenadj-gtk/assets/"
+  find "$pkgdir/usr/share/ryzenadj-gtk/assets" -type d -exec chmod 755 {} +
+  find "$pkgdir/usr/share/ryzenadj-gtk/assets" -type f -exec chmod 644 {} +
 
-  # Install Icon (PNG) - 256 and 512 for modern displays
+  # set up the system launcher icons
   for size in 256 512; do
     install -d "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
     install -m644 "src/assets/com.marley.ryzenadj-gtk.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/com.marley.ryzenadj-gtk.png"
   done
 
-  # Install Desktop file
+  # install the menu desktop launcher
   install -Dm644 "com.marley.ryzenadj-gtk.desktop" "$pkgdir/usr/share/applications/com.marley.ryzenadj-gtk.desktop"
 
-  # Install systemd service
+  # copy the boot apply systemd service file
   install -Dm644 "ryzenadj-gtk-apply.service" "$pkgdir/usr/lib/systemd/system/ryzenadj-gtk-apply.service"
 
-  # Install sudoers rules
+  # add passwordless sudo rules for wheel group users so ryzenadj can apply limits on demand
+  # (group-based for AUR/packages; install.sh uses per-$SUDO_USER rules for manual installs)
   install -d -m750 "$pkgdir/etc/sudoers.d"
   cat <<WRAPPER > "$pkgdir/etc/sudoers.d/ryzenadj-gtk"
 %wheel ALL=(ALL) NOPASSWD: /usr/bin/ryzenadj
@@ -51,10 +54,10 @@ package() {
 WRAPPER
   chmod 440 "$pkgdir/etc/sudoers.d/ryzenadj-gtk"
 
-  # Create system config directory and make it writable by wheel group
+  # make /etc/ryzenadj-gtk directory so the app can save settings
   install -d -m775 -o root -g wheel "$pkgdir/etc/ryzenadj-gtk"
 
-  # Create executable wrapper
+  # build a simple executable script in /usr/bin to run the app
   install -d "$pkgdir/usr/bin"
   cat <<WRAPPER > "$pkgdir/usr/bin/ryzenadj-gtk"
 #!/bin/sh

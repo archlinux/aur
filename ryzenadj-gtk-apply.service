@@ -1,10 +1,12 @@
 [Unit]
 Description=Apply saved ryzenadj-gtk settings on boot
-After=multi-user.target
+After=multi-user.target systemd-modules-load.service
+Wants=systemd-modules-load.service
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
+User=root
 ExecStart=/usr/bin/python3 /usr/share/ryzenadj-gtk/ryzen.py --apply-saved
 
 [Install]
