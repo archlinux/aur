@@ -1,0 +1,22 @@
+pkgbase = gv-terminal
+	pkgdesc = A simple GTK terminal
+	pkgver = 20260601
+	pkgrel = 1
+	url = https://github.com/char-fan/gv-terminal
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = ppc
+	license = GPLv3
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = pkg-config
+	makedepends = git
+	depends = gtk3
+	depends = vte3
+	options = !debug
+	source = gv-terminal::git+https://github.com/char-fan/gv-terminal
+	sha256sums = SKIP
+
+pkgname = gv-terminal
