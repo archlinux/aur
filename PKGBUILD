@@ -1,6 +1,6 @@
 # Maintainer: PandaDEV <contact@pandadev.net>
 pkgname=twitch-drops-miner-bin
-pkgver=20260531.153339
+pkgver=20260601.220721
 pkgrel=1
 pkgdesc="An app that allows you to AFK mine timed Twitch drops, with automatic drop claiming and channel switching."
 arch=(x86_64 aarch64)
@@ -13,8 +13,8 @@ provides=(twitch-drops-miner)
 conflicts=(twitch-drops-miner)
 source_x86_64=("Twitch.Drops.Miner.Linux.AppImage-x86_64.zip::https://github.com/DevilXD/TwitchDropsMiner/releases/download/dev-build/Twitch.Drops.Miner.Linux.AppImage-x86_64.zip")
 source_aarch64=("Twitch.Drops.Miner.Linux.AppImage-aarch64.zip::https://github.com/DevilXD/TwitchDropsMiner/releases/download/dev-build/Twitch.Drops.Miner.Linux.AppImage-aarch64.zip")
-sha256sums_x86_64=('0e10f461960a5d1351ade8003de5f1b20b5672e54d8de13491b9a8e8c6fe31a6')
-sha256sums_aarch64=('d8a32b842a7b6a08c1e934deca0547a0446b00a76aeaa44df2da74fbd24d8413')
+sha256sums_x86_64=('74b78b4b9c0ed8e62f332b982017917fdbacc95c13675f540c9c77633e707c5a')
+sha256sums_aarch64=('0c50eba73a5021c26599ab28fcd8030b05feae1fb526108c912394755b443fad')
 
 prepare() {
     cd "$srcdir"
