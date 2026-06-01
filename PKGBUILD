@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=DHARMa
-_pkgver=0.4.7
+_pkgver=0.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Residual Diagnostics for Hierarchical (Multi-Level / Mixed) Regression Models"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -24,6 +24,7 @@ checkdepends=(
   r-testthat
 )
 optdepends=(
+  r-brms
   r-glmmadaptive
   r-glmmtmb
   r-knitr
@@ -35,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4b8ee08f66c220e1e1ad74c6f486e747')
-b2sums=('c5693a839b046f231f99ae2db6f7e46deda4120f64f0115fd044b9ede6c735472fe29c152529f9b5daf0f66935c39f5a9b31b12afd9d1a439f3968de2b16cdd2')
+md5sums=('526afecc23a72067743268a25f97fab2')
+b2sums=('e2ead9086fa5265c1dfa7ed035d4c45c0a44b34d88e37f9d709072ff28efbdce45547a5ac29976fcf0b4e875e67125224ca5c5d88954507d79fab6ac6fe2f835')
 
 build() {
   mkdir build
