@@ -1,4 +1,3 @@
-# PKGBUILD for ttf-ms-win-http-auto
 # Maintainer: Tom Hale <tom at hale dot ee>
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
@@ -7,8 +6,8 @@
 # font files without downloading the entire multi-gigabyte ISO. Only the
 # segments of the ISO required to access the font data are transferred via HTTP.
 
-pkgname=ttf-ms-win-http-auto
-pkgdesc='Microsoft Windows 11 TrueType fonts (downloaded via HTTP streaming)'
+pkgname=ttf-ms-win-http
+pkgdesc='Microsoft Windows TrueType fonts (downloaded via HTTP streaming)'
 pkgver=10.0.26100.2894  # overridden by pkgver() after prepare() dumps install.wim info
 pkgrel=1
 arch=('any')
@@ -25,7 +24,6 @@ source=()
 sha256sums=()
 
 prepare() {
-  set -x
   local _fwlink _iso _iso_url
   # Microsoft Evaluation Center link for the latest US English 64-bit ISO, listed at:
   # https://www.microsoft.com/en-us/evalcenter/download-windows-11-enterprise
@@ -40,7 +38,6 @@ prepare() {
   # https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26200.6584.250915-1905.25h2_ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso
   _iso_url="$(curl -sIL -w '%{url_effective}' -o /dev/null --retry 30 --retry-delay 1 "${_fwlink}")" \
     || { echo "curl error: couldn't get link to .iso file" >&2; exit 1; }
-  echo XXXX $_iso_url $_iso
   _iso="${_iso_url##*/}"
 
   # Clean possible stale mounts from SIGKILL interrupted builds
@@ -68,32 +65,32 @@ prepare() {
   mkdir -p mnt/{http,iso}
 
   # Mount ISO URL via HTTP streaming — only fetches byte-range segments
-  # that are actually read (font data ~200 MiB, not full ISO)
+  # that are actually read (font data ~350 MiB, not full ISO)
   httpdirfs "${_httpdirfs_cache_opts[@]}" \
     --dl-seg-size 1 --max-conns 8 \
     --refresh-timeout 10 --single-file-mode \
     "${_iso_url}" mnt/http
 
   # Mount the ISO UDF filesystem read-only with FUSE
-  # udfclientfs -o ro "mnt/http/${_iso}" mnt/iso
-  udfclientfs -r "mnt/http/${_iso}" mnt/iso
+  udfclientfs -o ro "mnt/http/${_iso}" mnt/iso
 
-  local _wim_image_idx=1  # Use the first image inside the .wim
+  # Use the first image inside the .wim (the sole Enterprise Evaluation image)
+  # Set $TTF_MS_WIN_WIM_IDX to override  (1-indexed)
+  local _wim_image_idx="${TTF_MS_WIN_WIM_IDX:-1}"
   # Save WIM XML for image 1, converting UTF-16LE to UTF-8
   wiminfo "mnt/iso/sources/install.wim" "${_wim_image_idx}" --xml | iconv -f UTF-16LE -t UTF-8 > "${srcdir}/wiminfo.xml"
 
-  # List all font files in image 1 (the sole Enterprise Evaluation image)
-  # and extract them directly — no full-WIM decompression needed
-  wimdir "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
-  | grep '/Windows/Fonts/.*\.tt[cf]$' \
-  | xargs -r wimextract "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
-    --no-acls --dest-dir="${srcdir}/fonts"
-
-  # Extract license files from the WIM (RTF EULA) - if this is done later it can timeout
+  # Extract license file(s) from the WIM (RTF EULA)
   wimdir "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
   | grep -i '/Windows/System32/Licenses/neutral/.*license\.rtf$' \
   | xargs -r wimextract "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
     --no-acls --dest-dir="${srcdir}/license"
+
+  # Extract all font files
+  wimdir "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
+  | grep '/Windows/Fonts/.*\.tt[cf]$' \
+  | xargs -r wimextract "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
+    --no-acls --dest-dir="${srcdir}/fonts"
 }
 
 # Version is only available after prepare() mounts the ISO and extracts wiminfo
@@ -105,7 +102,7 @@ pkgver() {
   #                     ^^^^^^^^^^^^^^^^
   local _ver
   _ver="$(sed -En 's/.*<PKEYCONFIGVERSION>[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+).*/\1/p' "${srcdir}/wiminfo.xml")"
-  # check _ver is non-empty and error i fit is:
+
   if [ ! "$_ver" ]; then
     printf "Couldn't derive version from %s data:\n" "${srcdir}/wiminfo.xml" >&2
     head -n20 "${srcdir}/wiminfo.xml"
@@ -123,9 +120,7 @@ package() {
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   find "${srcdir}/license" -type f \
     -exec install -m644 {} "${pkgdir}/usr/share/licenses/${pkgname}" \;
-
   # No font registration needed — Arch's fontconfig pacman hook runs fc-cache -f automatically
 }
-# >/dev/null ### FIXME: fdsfads
 
 # vim:set ts=2 sw=2 et ft=PKGBUILD:
