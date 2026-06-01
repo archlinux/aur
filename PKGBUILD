@@ -1,25 +1,25 @@
 # shellcheck shell=bash
 # -*- mode: sh -*-
 
-#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
-_pkgname='nfp'
-pkgname="$_pkgname-git"
-pkgdesc='New File Processor: Run user-defined actions on new files in watched directories (development version)'
-pkgver=r62.g60d6ffe
+pkgname=nfp-git
+pkgdesc='Run user-defined actions on new files in watched directories (development version)'
+pkgver=r63.g3cc9748
 pkgrel=1
 url='https://codeberg.org/isagalaev/nfp'
-arch=('aarch64' 'x86_64')
-license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
-makedepends=('cargo' 'git')
-depends=('glibc' 'libgcc')
-provides=("$_pkgname")
-conflicts=("${provides[@]}")
-source=("git+$url.git")
+arch=(aarch64 x86_64)
+license=(BSD-3-Clause)  # SPDX-License-Identifier: BSD-3-Clause
+makedepends=(cargo git)
+depends=(libgcc_s.so)
+provides=(nfp)
+conflicts=(nfp)
+source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$pkgname"
 
   ( set -o pipefail
     git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || \
@@ -28,32 +28,28 @@ pkgver() {
 }
 
 prepare() {
-  cd "$_pkgname"
-
-  git clean -dfx
+  cd "$pkgname"
 
   # https://wiki.archlinux.org/title/Rust_package_guidelines
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target host-tuple
+  cargo update
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
-  cd "$_pkgname"
+  cd "$pkgname"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo build --release
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$pkgname"
 
-  install -Dm0755 -t "$pkgdir/usr/bin" "target/release/$_pkgname"
+  install -Dm0755 -t "$pkgdir/usr/bin" target/release/nfp
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-
-  for _dir in doc licenses; do
-    cd "$pkgdir/usr/share/$_dir" && ln -sr "$pkgname" "$_pkgname"
-  done
 }
 
 # eof
