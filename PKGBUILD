@@ -1,30 +1,33 @@
-# Maintainer: kajoox <kayquesousa02004@gmail.com>
+# Maintainer: sysitn <thegreatandrewsh@gmail.com>
+# Contributor: kajoox <kayquesousa02004@gmail.com> (original maintainer)
+
 pkgname=espressif-ide-bin
-_name=espressif-ide
-pkgver=3.6.0
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc='Eclipse-based IDE for ESP-IDF development'
 arch=('x86_64')
 url="https://github.com/espressif/idf-eclipse-plugin"
-license=('EPL')
-depends=('gcc' 'git' 'make' 'flex' 'bison' 'gperf' 'python' 'cmake' 'ninja' 'ccache' 'dfu-util' 'libusb' 'python-pip' 'gtk3' 'java-runtime>=17' 'maven')
-source=("${_name}-${pkgver}.tar.gz::https://dl.espressif.com/dl/idf-eclipse-plugin/ide/Espressif-IDE-linux.gtk.x86_64/latest"
-        "${_name}.desktop"
-        "espressif-ide.png")
-sha256sums=('71b1d278f4db1809a676b9dc57ecf2ad7aeeb161550992400400cd2559dc6b81'
-            'db9e1eec551b3254d6b8da3b8d972cb76a9c405f7c7894f090f193ee700bcdfd'
-            'f60870033123f7400a436fdc495a2bec3b50c96ffe2e4ad451296f1ae224e336')
+license=('EPL-2.0')
+depends=('java-runtime>=21' 'python' 'python-pip' 'gtk3' 'dfu-util' 'webkit2gtk-4.1')
+optdepends=('cmake: for building ESP-IDF projects'
+            'ninja: for building ESP-IDF projects'
+            'gcc: for compiling projects'
+            'git: for version control and ESP-IDF installation')
+options=('!strip')
+
+source=(
+	"${pkgname}-${pkgver}.tar.gz::https://dl.espressif.com/dl/idf-eclipse-plugin/ide/Espressif-IDE-${pkgver}-linux.gtk.x86_64.tar.gz"
+	"espressif-ide.desktop"
+)
+sha256sums=('8dd49f6144fb758fe1a61757b0fc27221abe07bd55edb23baf1936f6cfc0204d'
+            '01b498d77f4076a2b47bac488e47e1be164e5802cb39373256709f8441a33ad7')
 
 package() {
-	cd "$srcdir"
-	install -dm755 "${pkgdir}/opt/${_name}"
-	cp -r Espressif-IDE/* "${pkgdir}/opt/${_name}/"
-	chmod +x "${pkgdir}/opt/${_name}/espressif-ide"
+	install -dm755 "${pkgdir}/opt/${pkgname}"
+	cp -r "${srcdir}/Espressif-IDE/." "${pkgdir}/opt/${pkgname}/"
+
 	install -dm755 "${pkgdir}/usr/bin"
-	ln -s "/opt/${_name}/espressif-ide" "${pkgdir}/usr/bin/${_name}"
-	install -Dm644 "${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
-	install -Dm644 "espressif-ide.png" "${pkgdir}/usr/share/pixmaps/${_name}.png"
-	if [ -f "Espressif-IDE/icon.xpm" ]; then
-		install -Dm644 "Espressif-IDE/icon.xpm" "${pkgdir}/usr/share/pixmaps/${_name}.xpm"
-	fi
+	ln -s "/opt/${pkgname}/espressif-ide" "${pkgdir}/usr/bin/espressif-ide"
+
+	install -Dm644 "espressif-ide.desktop" "${pkgdir}/usr/share/applications/espressif-ide.desktop"
 }

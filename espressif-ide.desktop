@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Espressif IDE
-Comment=Eclipse-based IDE for ESP-IDF development
-Exec=/usr/bin/espressif-ide %F
-Icon=espressif-ide
+Comment=Espressif IDE based on Eclipse
+Exec=/opt/espressif-ide-bin/espressif-ide
+Icon=/opt/espressif-ide-bin/icon.xpm
 Terminal=false
 Type=Application
 Categories=Development;IDE;
-StartupWMClass=Espressif-IDE
+StartupWMClass=espressif-ide

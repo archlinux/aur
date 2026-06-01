@@ -1,31 +1,24 @@
 pkgbase = espressif-ide-bin
 	pkgdesc = Eclipse-based IDE for ESP-IDF development
-	pkgver = 3.6.0
-	pkgrel = 2
+	pkgver = 4.2.0
+	pkgrel = 1
 	url = https://github.com/espressif/idf-eclipse-plugin
 	arch = x86_64
-	license = EPL
-	depends = gcc
-	depends = git
-	depends = make
-	depends = flex
-	depends = bison
-	depends = gperf
+	license = EPL-2.0
+	depends = java-runtime>=21
 	depends = python
-	depends = cmake
-	depends = ninja
-	depends = ccache
-	depends = dfu-util
-	depends = libusb
 	depends = python-pip
 	depends = gtk3
-	depends = java-runtime>=17
-	depends = maven
-	source = espressif-ide-3.6.0.tar.gz::https://dl.espressif.com/dl/idf-eclipse-plugin/ide/Espressif-IDE-linux.gtk.x86_64/latest
+	depends = dfu-util
+	depends = webkit2gtk-4.1
+	optdepends = cmake: for building ESP-IDF projects
+	optdepends = ninja: for building ESP-IDF projects
+	optdepends = gcc: for compiling projects
+	optdepends = git: for version control and ESP-IDF installation
+	options = !strip
+	source = espressif-ide-bin-4.2.0.tar.gz::https://dl.espressif.com/dl/idf-eclipse-plugin/ide/Espressif-IDE-4.2.0-linux.gtk.x86_64.tar.gz
 	source = espressif-ide.desktop
-	source = espressif-ide.png
-	sha256sums = 71b1d278f4db1809a676b9dc57ecf2ad7aeeb161550992400400cd2559dc6b81
-	sha256sums = db9e1eec551b3254d6b8da3b8d972cb76a9c405f7c7894f090f193ee700bcdfd
-	sha256sums = f60870033123f7400a436fdc495a2bec3b50c96ffe2e4ad451296f1ae224e336
+	sha256sums = 8dd49f6144fb758fe1a61757b0fc27221abe07bd55edb23baf1936f6cfc0204d
+	sha256sums = 01b498d77f4076a2b47bac488e47e1be164e5802cb39373256709f8441a33ad7
 
 pkgname = espressif-ide-bin
