@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Nox
+Comment=Nox. Just watch. — a minimalist video player
+Exec=nox %U
+Icon=nox
+Categories=AudioVideo;Player;
+Terminal=false
+MimeType=video/mp4;video/x-matroska;video/x-msvideo;video/webm;video/x-flv;video/x-ms-wmv;
