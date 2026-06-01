@@ -3,6 +3,7 @@ pkgname=blackarch-xfce-theme-git
 pkgver=0
 pkgrel=1
 pkgdesc="BlackArch GTK, Xfwm4, and Plank themes for XFCE"
+#removed license as not specified in the upstream nor clarified in the issue
 arch=('any')
 url="https://github.com/BlackArch/blackarch-config-xfce"
 makedepends=('git')
