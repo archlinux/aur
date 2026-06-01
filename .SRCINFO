@@ -1,0 +1,25 @@
+pkgbase = easy-scsmodmanager
+	pkgdesc = Mod and profile manager for Euro Truck Simulator 2 and American Truck Simulator
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/Switch-Bros/easy-scsmodmanager
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	checkdepends = python-pytest-qt
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = hicolor-icon-theme
+	depends = python
+	depends = python-pyqt6
+	depends = python-pycryptodome
+	depends = python-vdf
+	depends = python-httpx
+	depends = python-pillow
+	depends = qt6-base
+	source = easy-scsmodmanager-1.1.1.tar.gz::https://github.com/Switch-Bros/easy-scsmodmanager/archive/v1.1.1.tar.gz
+	sha256sums = ad61c0c4847a88fb290d00d461ec6e6862c076f4abe4bd43ae65c6bf55a1e1ac
+
+pkgname = easy-scsmodmanager
