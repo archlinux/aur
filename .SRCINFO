@@ -1,0 +1,14 @@
+pkgbase = blackarch-xfce-theme-git
+	pkgdesc = BlackArch GTK, Xfwm4, and Plank themes for XFCE
+	pkgver = r15.996cb2d
+	pkgrel = 1
+	url = https://github.com/BlackArch/blackarch-config-xfce
+	arch = any
+	license = custom
+	makedepends = git
+	provides = blackarch-xfce-theme
+	conflicts = blackarch-xfce-theme
+	source = git+https://github.com/BlackArch/blackarch-config-xfce.git
+	sha256sums = SKIP
+
+pkgname = blackarch-xfce-theme-git
