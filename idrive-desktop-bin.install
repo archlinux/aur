@@ -1,0 +1,82 @@
+_idrive_dir=/opt/IDriveForLinux
+
+# The user who will run the GUI: prefer the sudo invoker, else the sole /home owner.
+_idrive_user() {
+	local u="$SUDO_USER" homes
+	if [ -z "$u" ] || [ "$u" = root ]; then
+		homes=(/home/*)
+		if [ "${#homes[@]}" -eq 1 ] && [ -d "${homes[0]}" ]; then
+			u=$(basename "${homes[0]}")
+		else
+			u=""
+		fi
+	fi
+	printf '%s' "$u"
+}
+
+# Copy the cloud-sync overlay extension + emblem icons into the user's home,
+# mirroring the upstream .deb postinst (Nautilus, Nemo and Caja).
+_idrive_overlay() {
+	local u="$1" home d
+	local src_py="$_idrive_dir/resources/app.asar.unpacked/daemon/idrive_overlay_xattr.py"
+	local src_assets="$_idrive_dir/resources/app.asar.unpacked/daemon/assets"
+	home=$(getent passwd "$u" | cut -d: -f6)
+	[ -d "$home" ] && [ -f "$src_py" ] || return 0
+	for d in nautilus nemo caja; do
+		install -d -o "$u" -g "$u" "$home/.local/share/$d-python/extensions"
+		install -m644 -o "$u" -g "$u" "$src_py" \
+			"$home/.local/share/$d-python/extensions/" 2>/dev/null || true
+	done
+	if [ -d "$src_assets" ]; then
+		for d in "$home/.icons/hicolor/16x16/emblems" \
+		         "$home/.local/share/icons/hicolor/16x16/emblems"; do
+			install -d -o "$u" -g "$u" "$d"
+			find "$src_assets" -name '*.svg' -exec install -m644 -o "$u" -g "$u" \
+				{} "$d/" \; 2>/dev/null || true
+		done
+	fi
+}
+
+_idrive_setup() {
+	local u
+	u=$(_idrive_user)
+	if [ -n "$u" ] && id "$u" >/dev/null 2>&1; then
+		# The GUI runs as a normal user and writes its state (idriveIt, .user,
+		# the backup engine) under $_idrive_dir, so it must own that tree.
+		chown -R "$u:$u" "$_idrive_dir"
+		_idrive_overlay "$u"
+		echo "IDrive configured for user '$u'. Launch it from your menu or run: idriveforlinux"
+	else
+		chmod -R u+rwX,go+rX "$_idrive_dir" 2>/dev/null || true
+		cat <<-EOF
+		Could not auto-detect your desktop user. IDrive stores its state under
+		$_idrive_dir and that tree must be writable by the user running the GUI:
+		    sudo chown -R <youruser>:<youruser> $_idrive_dir
+		EOF
+	fi
+	# chown clears the setuid bit on the Electron sandbox helper; restore it.
+	chown root:root "$_idrive_dir/chrome-sandbox" 2>/dev/null || true
+	chmod 4755 "$_idrive_dir/chrome-sandbox" 2>/dev/null || true
+
+	echo "Backup and restore work out of the box. Cloud Sync (real-time folder"
+	echo "sync) additionally needs a running redis-compatible server:"
+	echo "    sudo pacman -S --needed valkey && sudo systemctl enable --now valkey"
+}
+
+post_install() {
+	_idrive_setup
+}
+
+post_upgrade() {
+	_idrive_setup
+}
+
+post_remove() {
+	cat <<-EOF
+	idrive-desktop-bin removed. Account state under $_idrive_dir and the overlay
+	extensions copied into your ~/.local/share/*-python/extensions are NOT removed
+	automatically. To fully purge:
+	    sudo rm -rf $_idrive_dir
+	    rm -f ~/.local/share/{nautilus,nemo,caja}-python/extensions/idrive_overlay_xattr.py
+	EOF
+}
