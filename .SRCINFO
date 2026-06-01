@@ -1,7 +1,7 @@
 pkgbase = picori-bin
 	pkgdesc = Decompilation of The Legend of Zelda: The Minish Cap (USA/JP/EU)
 	pkgver = v0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/999sian/tmc
 	arch = x86_64
 	license = GPL
