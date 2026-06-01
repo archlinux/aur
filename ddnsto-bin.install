@@ -3,30 +3,29 @@ _help() {
 ================================
 DDNSTO 快速使用指南 / Quick Start Guide
 ================================
+1. DDNTO 访问权限 / DDNTO Access Permission
+sudo gpasswd -a $USER ddnsto
+newgrp ddnsto
 
-1. 配置并启动服务 / Configure and Start Service
+2. 配置并启动服务 / Configure and Start Service
 sudo vim /etc/ddnsto/config.yaml
 # 必须修改: userToken 和 webdav.password
 # Must change: userToken and webdav.password
 sudo systemctl enable --now ddnsto
 
-2. 检查服务状态 / Check Service Status
+3. 检查服务状态 / Check Service Status
 sudo systemctl status ddnsto
 
-3. 查看实时日志 / View Real-time Logs
+4. 查看实时日志 / View Real-time Logs
 sudo journalctl -u ddnsto -f
 
-4. WebDAV 访问 / WebDAV Access
+5. WebDAV 访问 / WebDAV Access
 账号/Username: admin
 密码/Password: config.yaml 中设置的密码
 密码/Password: Set in config.yaml
 路径/Path: /srv/ddnsto/
 在浏览器打开 / Open in browser:
 xdg-open http://localhost:18088
-
-5. SSH 访问权限 / SSH Access Permission
-sudo gpasswd -a $USER ddnsto
-newgrp ddnsto
 
 🎁 推荐有奖活动
 您将获得 一条免费的 4Mbps 高速隧道，有效期 3个月！

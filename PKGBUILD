@@ -3,8 +3,8 @@
 pkgbase=ddnsto-bin
 pkgname=ddnsto-bin
 _name=${pkgname%-bin}
-pkgver=4.0.7
-pkgrel=9
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="DDNSTO is a stable, fast and easy-to-use intranet penetration tool"
 arch=(
     x86_64
@@ -22,17 +22,17 @@ optdepends=()
 backup=('etc/ddnsto/config.yaml')
 install=${pkgname}.install
 source=(
-    "https://fw0.koolcenter.com/binary/ddnsto/${_name}-binary-${pkgver}.tar.gz"
+    "https://fw0.koolcenter.com/binary/ddnsto/linux-binary/${_name}-binary-${pkgver}.tar.gz"
     "ddnsto.service"
     "${pkgname}.tmpfiles"
     "${pkgname}.sysusers"
     "${pkgname}.install"
 )
-sha256sums=('d6a33d0878dcc41dc65fb65b62fbe655365f9839418ec71e0cf520dfcdab8a4d'
+sha256sums=('be066e16409da44cee04607c02e2ebdb9e4a89c2b2c0de2a03981d169ed5b3df'
             '99d7c3c20776645a08de44062cea1b32fd37288e35d61821e90c45e132dd5f14'
             '57f54bcf6013b0a2fe03923d4119a36cb8c6584f70b07dbd6d0c1d31f4fe8d72'
             'b068dcd630d7ce9a3b0bf904340f9438572d84cd4c75ad49102a274a4be37dd6'
-            '687c5df253534475cfc2db4cc7f0cdc3ae11d95aa307fa74d84bc54da11c04c9')
+            '113b1efa3502b9a62272cdf3f747f9ef39f452829e9f079b3975086d233f25aa')
 options=(!debug !strip emptydirs)
 
 package() {
