@@ -16,10 +16,8 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/taxin-404/odysseus/archive/refs/tags/v$pkgver.tar.gz"
         "odysseus-ai.desktop")
-
 sha256sums=('67217c159fc4d30d8e4af94a8ed2201a1774b47a3415277c6721d35e52b4db3c'
             'f21605f96ec6067504d15c788fe009890d07364f14e78da6e071cb8b922e43df')
-
 install="$pkgname.install"
 
 backup=(
