@@ -15,7 +15,7 @@ arch=('any')
 url='https://www.microsoft.com/en-us/evalcenter/download-windows-11-enterprise'
 license=('custom')
 depends=()
-makedepends=('httpdirfs' 'udfclientfs-fuse3' 'wimlib' 'curl')
+makedepends=('curl' 'httpdirfs' 'udfclientfs-fuse3' 'wimlib')
 provides=('ttf-font' 'ttf-ms-fonts' 'ttf-ms-win11' 'ttf-tahoma' 'emoji-font')
 conflicts=(ttf-ms-win{10,11} ttf-ms-win{10,11}-auto 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts')
 # ISO is NOT in source=() — httpdirfs byte-range streams only the segments
@@ -25,14 +25,22 @@ source=()
 sha256sums=()
 
 prepare() {
-    echo $_unusedvbardir
+  set -x
+  local _fwlink _iso _iso_url
   # Microsoft Evaluation Center link for the latest US English 64-bit ISO, listed at:
   # https://www.microsoft.com/en-us/evalcenter/download-windows-11-enterprise
   # When Microsoft releases a new build, the fwlink automatically forwards to the new ISO
-  _fwlink='https://go.microsoft.com/fwlink/?linkid=2334167&clcid=0x4009&culture=en-us'
+  # _fwlink='https://go.microsoft.com/fwlink/?linkid=2334167'
+  # The above is often slow and sometimes times out, but it redirects to:
+  _fwlink='https://aka.ms/Win11E-ISO-25H2-en-us'
   # Allow override with a different link, eg for a different language
-  [ "$TTF_MS_WIN_URL" ] && _fwlink="$TTF_MS_WIN_URL"
-  _iso_url="$(curl -sIL -o /dev/null -w '%{url_effective}' "${_fwlink}")"
+  [ "${TTF_MS_WIN_URL:-}" ] && _fwlink="$TTF_MS_WIN_URL"
+
+  # Get the real URL from the forwarding URL. It should return something like:
+  # https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26200.6584.250915-1905.25h2_ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso
+  _iso_url="$(curl -sIL -w '%{url_effective}' -o /dev/null --retry 30 --retry-delay 1 "${_fwlink}")" \
+    || { echo "curl error: couldn't get link to .iso file" >&2; exit 1; }
+  echo XXXX $_iso_url $_iso
   _iso="${_iso_url##*/}"
 
   # Clean possible stale mounts from SIGKILL interrupted builds
@@ -42,8 +50,8 @@ prepare() {
   # Allow storing httpdirfs cache for faster rebuilds. About 350MB is used.
   # You'd probably only want to set this if you're debugging this PKGBUILD.
   # If $TTF_MS_WIN_HTTP_CACHE is set, user is responsible for their own cache cleanup
-  if [ "$TTF_MS_WIN_HTTP_CACHE" ]; then
-    httpdirfs_cache_opts=(--cache --cache-location "${TTF_MS_WIN_HTTP_CACHE}")
+  if [ "${TTF_MS_WIN_HTTP_CACHE:-}" ]; then
+    _httpdirfs_cache_opts=(--cache --cache-location "${TTF_MS_WIN_HTTP_CACHE}")
   fi
 
   # Cleanup trap for FUSE mounts — fires on any prepare() exit
@@ -57,15 +65,18 @@ prepare() {
   }
   trap _cleanup EXIT INT HUP TERM
 
+  mkdir -p mnt/{http,iso}
+
   # Mount ISO URL via HTTP streaming — only fetches byte-range segments
   # that are actually read (font data ~200 MiB, not full ISO)
-  httpdirfs "${httpdirfs_cache_opts[@]}" \
+  httpdirfs "${_httpdirfs_cache_opts[@]}" \
     --dl-seg-size 1 --max-conns 8 \
     --refresh-timeout 10 --single-file-mode \
     "${_iso_url}" mnt/http
 
-  # Mount the ISO with a FUSE UDF filesystem
-  udfclientfs --read-only "mnt/http/${_iso}" mnt/iso
+  # Mount the ISO UDF filesystem read-only with FUSE
+  # udfclientfs -o ro "mnt/http/${_iso}" mnt/iso
+  udfclientfs -r "mnt/http/${_iso}" mnt/iso
 
   local _wim_image_idx=1  # Use the first image inside the .wim
   # Save WIM XML for image 1, converting UTF-16LE to UTF-8
@@ -74,15 +85,15 @@ prepare() {
   # List all font files in image 1 (the sole Enterprise Evaluation image)
   # and extract them directly — no full-WIM decompression needed
   wimdir "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
-    | grep '/Windows/Fonts/.*\.tt[cf]$' \
-    | xargs -r wimextract "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
-      --no-acls --dest-dir="${srcdir}/fonts"
+  | grep '/Windows/Fonts/.*\.tt[cf]$' \
+  | xargs -r wimextract "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
+    --no-acls --dest-dir="${srcdir}/fonts"
 
-  # Extract license files from the WIM (RTF EULA)
+  # Extract license files from the WIM (RTF EULA) - if this is done later it can timeout
   wimdir "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
-    | grep -i '/Windows/System32/Licenses/neutral/.*license\.rtf$' \
-    | xargs -r wimextract "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
-      --no-acls --dest-dir="${srcdir}/license"
+  | grep -i '/Windows/System32/Licenses/neutral/.*license\.rtf$' \
+  | xargs -r wimextract "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
+    --no-acls --dest-dir="${srcdir}/license"
 }
 
 # Version is only available after prepare() mounts the ISO and extracts wiminfo
