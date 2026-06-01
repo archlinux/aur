@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=copymanga-downloader
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="拷贝漫画 copymanga 的多线程下载器，带图形界面，带收藏夹，支持下载下架的漫画，没有每分钟15次API请求的限制，已打包exe，下载速度飞快。 "
 arch=($CARCH)
@@ -33,12 +33,12 @@ backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('e3b3743d2727bac82aa078e0c29fb6e267c3d9f342a33811d0dc1548658d376c')
+sha256sums=('a3c5a78db4b40f83d3f01672560a326bfd13396ec68ec50ebf945dfc69a8d2d3')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}/src-tauri"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
