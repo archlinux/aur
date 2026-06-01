@@ -1,0 +1,18 @@
+pkgbase = qtiker-git
+	pkgdesc = Small Qt clicker game for Linux
+	pkgver = 0.1.0.r1.g2bab924
+	pkgrel = 1
+	url = https://github.com/mateball9333-debug/qtiker
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = custom:Tux
+	makedepends = git
+	makedepends = cmake
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	provides = qtiker
+	conflicts = qtiker
+	source = git+https://github.com/mateball9333-debug/qtiker.git
+	sha256sums = SKIP
+
+pkgname = qtiker-git
