@@ -9,12 +9,12 @@ license=('MIT')
 depends=('electron' 'libusb')
 makedepends=('npm' 'typescript')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz" "attack-shark-x11-driver.desktop""$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+source=("-.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz" "attack-shark-x11-driver.desktop")
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  npm install --legacy-peer-deps
+  npm install --legacy-peer-deps --ignore-scripts
 }
 
 build() {
