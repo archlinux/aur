@@ -28,10 +28,13 @@ _qodercli() {
 
     mcp_commands=(
         'add:Add a new MCP server'
-        'auth:Authenticate with an MCP server using OAuth'
-        'get:Get details of an MCP server'
-        'list:List all MCP servers'
-        'remove:Remove an MCP Server'
+        'add-json:Add a server from a JSON config string'
+        'remove:Remove an MCP server'
+        'get:Get details about an MCP server'
+        'list:List all configured MCP servers'
+        'enable:Enable an MCP server'
+        'disable:Disable an MCP server'
+        'reset-project-choices:Reset all approved and rejected project-scoped servers'
     )
 
     _arguments -C \
@@ -100,7 +103,7 @@ _qodercli() {
                             ;;
                         mcp_args)
                             case ${words[1]} in
-                                add|auth|get|list|remove)
+                                add|add-json|remove|get|list|enable|disable|reset-project-choices)
                                     _arguments \
                                         '(- *)'{-h,--help}'[Show help]' \
                                         '(- *)'{-v,--version}'[Show version]' \

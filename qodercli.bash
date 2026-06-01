@@ -14,7 +14,7 @@ _qodercli() {
     fi
 
     local -r subcommands="mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback wiki"
-    local -r mcp_subcommands="add auth get list remove"
+    local -r mcp_subcommands="add add-json remove get list enable disable reset-project-choices"
 
     local -r model_choices="auto efficient gmodel kmodel lite mmodel performance q35model qmodel ultimate"
     local -r output_format_choices="text json stream-json"
@@ -33,7 +33,7 @@ _qodercli() {
                 if [[ "$subcmd" == "mcp" ]]; then
                     for ((i++; i < cword; i++)); do
                         case "${words[i]}" in
-                            add|auth|get|list|remove)
+                            add|add-json|remove|get|list|enable|disable|reset-project-choices)
                                 mcp_subcmd="${words[i]}"
                                 break
                                 ;;
@@ -123,7 +123,7 @@ _qodercli() {
                         COMPREPLY=($(compgen -W "$mcp_subcommands" -- "$cur"))
                     fi
                     ;;
-                add|auth|get|list|remove)
+                add|add-json|remove|get|list|enable|disable|reset-project-choices)
                     COMPREPLY=($(compgen -W "-h --help -v --version -w --cwd" -- "$cur"))
                     ;;
             esac

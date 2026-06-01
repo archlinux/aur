@@ -34,7 +34,7 @@ function __qodercli_using_mcp_subcommand
             set found_mcp 1
         else if test $found_mcp -eq 1
             switch $word
-                case add auth get list remove
+                case add add-json remove get list enable disable reset-project-choices
                     if test "$word" = "$argv[1]"
                         return 0
                     end
@@ -52,7 +52,7 @@ function __qodercli_mcp_no_subcommand
             set found_mcp 1
         else if test $found_mcp -eq 1
             switch $word
-                case add auth get list remove
+                case add add-json remove get list enable disable reset-project-choices
                     return 1
             end
         end
@@ -126,10 +126,13 @@ complete -c qodercli -n __qodercli_no_subcommand -l settings -r -d 'Load additio
 
 # === mcp subcommands ===
 complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -a add -d 'Add a new MCP server'
-complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -a auth -d 'Authenticate with an MCP server'
-complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -a get -d 'Get details of an MCP server'
-complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -a list -d 'List all MCP servers'
-complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -a remove -d 'Remove an MCP Server'
+complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -a add-json -d 'Add a server from a JSON config string'
+complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -a remove -d 'Remove an MCP server'
+complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -a get -d 'Get details about an MCP server'
+complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -a list -d 'List all configured MCP servers'
+complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -a enable -d 'Enable an MCP server'
+complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -a disable -d 'Disable an MCP server'
+complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -a reset-project-choices -d 'Reset all approved and rejected project-scoped servers'
 complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -s h -l help -d 'Show help'
 complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -s v -l version -d 'Show version'
 complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -s w -l cwd -r -F -d 'Change working directory'
@@ -139,10 +142,15 @@ complete -c qodercli -n '__qodercli_using_mcp_subcommand add' -s h -l help -d 'S
 complete -c qodercli -n '__qodercli_using_mcp_subcommand add' -s v -l version -d 'Show version'
 complete -c qodercli -n '__qodercli_using_mcp_subcommand add' -s w -l cwd -r -F -d 'Change working directory'
 
-# === mcp auth ===
-complete -c qodercli -n '__qodercli_using_mcp_subcommand auth' -s h -l help -d 'Show help'
-complete -c qodercli -n '__qodercli_using_mcp_subcommand auth' -s v -l version -d 'Show version'
-complete -c qodercli -n '__qodercli_using_mcp_subcommand auth' -s w -l cwd -r -F -d 'Change working directory'
+# === mcp add-json ===
+complete -c qodercli -n '__qodercli_using_mcp_subcommand add-json' -s h -l help -d 'Show help'
+complete -c qodercli -n '__qodercli_using_mcp_subcommand add-json' -s v -l version -d 'Show version'
+complete -c qodercli -n '__qodercli_using_mcp_subcommand add-json' -s w -l cwd -r -F -d 'Change working directory'
+
+# === mcp remove ===
+complete -c qodercli -n '__qodercli_using_mcp_subcommand remove' -s h -l help -d 'Show help'
+complete -c qodercli -n '__qodercli_using_mcp_subcommand remove' -s v -l version -d 'Show version'
+complete -c qodercli -n '__qodercli_using_mcp_subcommand remove' -s w -l cwd -r -F -d 'Change working directory'
 
 # === mcp get ===
 complete -c qodercli -n '__qodercli_using_mcp_subcommand get' -s h -l help -d 'Show help'
@@ -154,10 +162,20 @@ complete -c qodercli -n '__qodercli_using_mcp_subcommand list' -s h -l help -d '
 complete -c qodercli -n '__qodercli_using_mcp_subcommand list' -s v -l version -d 'Show version'
 complete -c qodercli -n '__qodercli_using_mcp_subcommand list' -s w -l cwd -r -F -d 'Change working directory'
 
-# === mcp remove ===
-complete -c qodercli -n '__qodercli_using_mcp_subcommand remove' -s h -l help -d 'Show help'
-complete -c qodercli -n '__qodercli_using_mcp_subcommand remove' -s v -l version -d 'Show version'
-complete -c qodercli -n '__qodercli_using_mcp_subcommand remove' -s w -l cwd -r -F -d 'Change working directory'
+# === mcp enable ===
+complete -c qodercli -n '__qodercli_using_mcp_subcommand enable' -s h -l help -d 'Show help'
+complete -c qodercli -n '__qodercli_using_mcp_subcommand enable' -s v -l version -d 'Show version'
+complete -c qodercli -n '__qodercli_using_mcp_subcommand enable' -s w -l cwd -r -F -d 'Change working directory'
+
+# === mcp disable ===
+complete -c qodercli -n '__qodercli_using_mcp_subcommand disable' -s h -l help -d 'Show help'
+complete -c qodercli -n '__qodercli_using_mcp_subcommand disable' -s v -l version -d 'Show version'
+complete -c qodercli -n '__qodercli_using_mcp_subcommand disable' -s w -l cwd -r -F -d 'Change working directory'
+
+# === mcp reset-project-choices ===
+complete -c qodercli -n '__qodercli_using_mcp_subcommand reset-project-choices' -s h -l help -d 'Show help'
+complete -c qodercli -n '__qodercli_using_mcp_subcommand reset-project-choices' -s v -l version -d 'Show version'
+complete -c qodercli -n '__qodercli_using_mcp_subcommand reset-project-choices' -s w -l cwd -r -F -d 'Change working directory'
 
 # === Other subcommands (common flags) ===
 for cmd in plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback wiki
