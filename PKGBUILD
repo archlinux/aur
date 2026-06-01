@@ -1,6 +1,6 @@
 # Maintainer: Xuepoo <xuepoo@users.noreply.github.com>
 pkgname=waywarp
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A high-performance keyboard-driven mouse control tool for Wayland compositors"
 arch=('x86_64')
