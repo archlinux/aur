@@ -49,7 +49,7 @@ build() {
     export CARGO_HOME="${srcdir}/.cargo"
     export CARGO_TARGET_DIR="${srcdir}/target"
     export RUSTUP_TOOLCHAIN=stable
-    cargo build --frozen --release
+    cargo build --frozen --release --bin qmidigen
 }
 
 package() {
