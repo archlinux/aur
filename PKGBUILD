@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail ðot com>
 # Partially adapted from https://github.com/wasta-linux/lameta-snap
 pkgname=lameta
-pkgver=3.0.18_beta
+pkgver=3.0.19_beta
 _upstream_pkgver="${pkgver//_/-}"
 _electron=electron37
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}.desktop"
   'no_node_pin.patch'
 )
-sha256sums=('03e82fa34ab04897472fc4a4dbb652842be99ff4ddfd54c9f7aedf2d1911df23'
+sha256sums=('50482d8e2f208c904a97d19069220027541c9e130188cac33cec0839e74eeef8'
             '874e1acc986076e9c876c6ccd2efc7ee0dcda322733c018fb8e3d0bf010b8791'
             '013659645d17441f98ed7a8bfcf3a1ef4385aeeb84ddc76e2a59afea42a2da44')
 
