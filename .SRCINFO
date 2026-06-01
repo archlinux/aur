@@ -1,7 +1,7 @@
 pkgbase = linuxqq-nt
 	pkgdesc = New Linux QQ based on Electron
 	pkgver = 3.2.29_260528
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 5
 	url = https://im.qq.com/linuxqq
 	install = linuxqq-nt.install
@@ -22,12 +22,12 @@ pkgbase = linuxqq-nt
 	options = !strip
 	options = !debug
 	source = linuxqq.sh
-	sha512sums = e38b83e5e37534d07f3fde11e30f6cfddc2c8faee6e9ee0c1108d003347de66e68a0eb23412a353bd007c196c4fb8f47a4d62d9ee9b3843ef606c5de2be383bf
+	b2sums = bc9b456b857447a011f0bfb1571e41b4cd6e804ce12019f812f65dbc8a6d4ffea6099a951386129eafd2d1451313c09c49222ffe7fa90d65e02260e3a4e0f6dd
 	source_x86_64 = https://qqdl.gtimg.cn/qqfile/QQNT/9.9.31/release/00e6a3e7/QQ_3.2.29_260528_amd64_01.deb
-	sha512sums_x86_64 = 3e214621b34b5eb3706451c94d19d4a09a59ad6b415e9a719db8d635bcb0900445cd6d468ffdb293b9b2c032e6b551d8d8090b390979ce782db5de30791f467d
+	b2sums_x86_64 = 548803444e83529368d8a0c176a817367b3244a2e874391a9683be48608b11572f047d5f8ecd3b5ef94c6bc4ecdb1cd35afe3fae78f85ff40b2107e764fa498a
 	source_aarch64 = https://qqdl.gtimg.cn/qqfile/QQNT/9.9.31/release/00e6a3e7/QQ_3.2.29_260528_arm64_01.deb
-	sha512sums_aarch64 = a0e7773b111ffb76f403fb322d4bd7e865b5b10ce70b2b3163b7db42218d960d212a585fe2ac9b09f4dcdeb783013d29fd9e2d534bff4c5414e63bf49e789648
+	b2sums_aarch64 = 1eaf84ba5c6387d697f2f995f769b01f970de7e1cc29239cf6ec47b3a0f492509c29178ebfcadba58d3583a30770d2a38b8e9cff1bb4c06f554c2f2b4248ca62
 	source_loong64 = https://qqdl.gtimg.cn/qqfile/QQNT/9.9.31/release/00e6a3e7/QQ_3.2.29_260528_loongarch64_01.deb
-	sha512sums_loong64 = 0b15317df8cbd7f600b08b3fff88edf88bd1cd52908790366ba52a36b1bb27326b5f88e7bf0a4d910b79077ba96c6a3b72f3518c7952b790b28554fac79b0408
+	b2sums_loong64 = 3f07a534f500b242fda9fc4bf8ac559e9c6699fe2f63aa936cf2e9727ad3e3b5805cdab446f502b74f6239592f767c8ef593b7aefea5f2da41a9ea48efc74a8c
 
 pkgname = linuxqq-nt
