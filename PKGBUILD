@@ -3,7 +3,7 @@
 # Contributor: Evert <evorster at gmail dot com>
 _pkgname=hermes-agent
 pkgname=${_pkgname}-git
-pkgver=2026.5.29.r326.g9a82cd
+pkgver=2026.5.29.r330.g79f7e7
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
@@ -147,7 +147,7 @@ package() {
 #!/bin/bash
 export PYTHONPATH=/opt/hermes-agent/venv/lib/${_py_ver}/site-packages
 export HERMES_REVISION=\$(cat /opt/hermes-agent/.git_rev 2>/dev/null || true)
-exec /usr/bin/python -W ignore -m hermes_cli.main "\$\@"
+exec /usr/bin/python -W ignore -m hermes_cli.main "\$@"
 WRAPPER
   chmod 755 "$pkgdir/usr/bin/hermes"
 
