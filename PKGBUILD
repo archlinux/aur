@@ -15,6 +15,8 @@ makedepends=(
   'rust'
   'curl'
   'wget'
+  'rustup'
+  'cargo'
 )
 
 provides=('memory-pak')
