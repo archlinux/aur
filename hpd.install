@@ -59,6 +59,8 @@ post_install() {
 ==> hpd installed, enabled and started.
     Status:   systemctl status hpd   |   hpdctl status
     Logs:     journalctl -fu hpd
+    Make hpd the sole power manager (neutralizes power-profiles-daemon /
+    steamos-manager + installs polkit):  hpdctl doctor --fix
     Optional: sudo cp /etc/hpd/config.toml.example /etc/hpd/config.toml
 EOF
 }
