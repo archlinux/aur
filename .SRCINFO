@@ -5,6 +5,7 @@ pkgbase = tytools-git
 	url = http://github.com/Koromix/tytools
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = custom:Unlicense
 	makedepends = git
 	makedepends = imagemagick
