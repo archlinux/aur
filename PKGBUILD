@@ -1,7 +1,7 @@
 # Maintainer: Bryson Kelly <https://github.com/brysonak>
 pkgname=buf-cli
 _binname=buf
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 _srcdir="buf-$pkgver"
 pkgdesc="A fast, safe bootable USB image flasher"
