@@ -1,10 +1,11 @@
-# Maintainer: redponike <proton (dot) me>
-# Maintainer: Alex Hirzel <alex@hirzel.us>
+# Maintainer: Smoolak <smoolak@gmail.com>
+# Contributor: redponike <redponike@proton.me>
+# Contributor: Alex Hirzel <alex@hirzel.us>
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=python-pytorch-lightning
 _pkgname=pytorch_lightning
-pkgver=2.5.1
+pkgver=2.6.5
 pkgrel=1
 pkgdesc="The lightweight PyTorch wrapper for high-performance AI research"
 arch=('any')
@@ -15,31 +16,34 @@ depends=(
   'python-lightning-utilities'
   'python-packaging'
   'python-pytorch'
-  'python-pyaml'
   'python-torchmetrics'
   'python-tqdm'
   'python-typing_extensions'
+  'python-yaml'
 )
 optdepends=(
-  'python-bitsandbytes'
-  'python-hydra-core'
-  'python-jsonargparse'
-  'python-matplotlib'
-  'python-omegaconf'
-  'python-rich'
-  'python-tensorboardx'
+  'python-aiohttp: for fsspec http filesystem support'
+  'python-bitsandbytes: for quantization'
+  'python-hydra-core: for Hydra configuration support'
+  'python-jsonargparse: for the LightningCLI'
+  'python-matplotlib: for plotting'
+  'python-omegaconf: for OmegaConf configuration support'
+  'python-rich: for rich terminal output'
+  'python-tensorboardx: for TensorBoard logging'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('e32f8c6fb4d75e643d88042078b0fbbbf29dd61f411214748b86e4b0ff539a45f05cdb9da12d1e0a46169a4a81e69bec62783e1b5e4ff7ef4bb220d7e90ffdf7')
+sha256sums=('1c32cefa76a1a9c4c5250338272d961d1e48b180e68396849efe128538ddb28e')
 
 build() {
   cd "${_pkgname}-${pkgver}"
+  export PACKAGE_NAME=pytorch
   python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
