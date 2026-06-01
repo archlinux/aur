@@ -9,7 +9,7 @@ license=('MIT')
 depends=('tmux' 'sqlite')
 makedepends=('rust' 'cargo' 'cmake' 'nasm' 'perl' 'sqlite')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qrafty-ai/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('66e3685572bb133423446a187db08b2c5c4b4e40674102667ad2a0de97636aea')
+sha256sums=('95246aec32163924c2059668ca02eb14a89ef396adee17b44ab671c06d47056c')
 
 prepare() {
     cd "$pkgname-$pkgver"
