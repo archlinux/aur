@@ -10,9 +10,9 @@ pkgbase = agentty-bin
 	optdepends = openssh: for `agentty airgap`
 	provides = agentty
 	conflicts = agentty
-	source_x86_64 = agentty-0.1.0-x86_64::https://github.com/1ay1/agentty/releases/download/v0.1.0/agentty-linux-x86_64
-	sha256sums_x86_64 = b559908ea7b7acf3ff10647e8b102a84048641566f0595f0c2356949601e55a0
-	source_aarch64 = agentty-0.1.0-aarch64::https://github.com/1ay1/agentty/releases/download/v0.1.0/agentty-linux-aarch64
-	sha256sums_aarch64 = 73c487b5820d24efe19abb119f54d94eaee9b94b9caad4bdced61bba4be629b6
+	source = agentty::https://github.com/1ay1/agentty/releases/latest/download/agentty-linux-x86_64
+	source = SHA256SUMS::https://github.com/1ay1/agentty/releases/latest/download/SHA256SUMS
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = agentty-bin
