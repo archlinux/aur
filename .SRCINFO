@@ -1,6 +1,6 @@
 pkgbase = bartoc-bin
 	pkgdesc = Barto job executor client (pre-compiled binary)
-	pkgver = 1.4.9
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/rustyhorde/barto
 	install = bartoc.install
@@ -14,11 +14,11 @@ pkgbase = bartoc-bin
 	conflicts = bartoc
 	options = !strip
 	options = !debug
-	source = https://github.com/rustyhorde/barto/releases/download/v1.4.9/dist-bartoc.tar.gz
-	sha256sums = d49e0831010167e6184899998b79b35b02fafd71cd0c2c8f9c197b54c9296fdb
-	source_x86_64 = bartoc-x86_64::https://github.com/rustyhorde/barto/releases/download/v1.4.9/bartoc-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 460693ffe3663499349b2f1771eddcca71822bd5a7446f726bf921319892ef61
-	source_aarch64 = bartoc-aarch64::https://github.com/rustyhorde/barto/releases/download/v1.4.9/bartoc-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = f6e9df6040b0cb9a3cb6a8171a5b498ace2839107efbd7ad0830e9e8f6e7ead4
+	source = https://github.com/rustyhorde/barto/releases/download/v1.5.0/dist-bartoc.tar.gz
+	sha256sums = 5f230097cfe7bf622e1c7ac96ecfb0907fe98d9bef6b011bc24caab3655a1ef7
+	source_x86_64 = bartoc-x86_64::https://github.com/rustyhorde/barto/releases/download/v1.5.0/bartoc-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = cd149d2c9c86ab874c8c3c9f3762223593fe84b426eef9c02046ab697b5fec23
+	source_aarch64 = bartoc-aarch64::https://github.com/rustyhorde/barto/releases/download/v1.5.0/bartoc-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 198dac23999e151896840261c272cd3b78ba9a6792f9a00a1258a43dbeed3879
 
 pkgname = bartoc-bin
