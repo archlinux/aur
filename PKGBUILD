@@ -1,11 +1,15 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=intel-deep-learning-essentials
 pkgver=2026.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Intel® Deep Learning Essentials + Intel® Deep Neural Network Library - Intel® oneAPI DPC++/C++ Compiler, Intel® oneAPI DPC++ Library, Intel® oneAPI Math Kernel Library, Intel® oneAPI Collective Communications Library, Intel® Deep Neural Network Library"
 arch=('x86_64')
 url="https://www.intel.com/content/www/us/en/developer/tools/oneapi/oneapi-toolkit-download.html"
 license=('custom')
+conflicts=(
+    'intel-oneapi-toolkit'
+    'intel-oneapi-basekit-2025'
+)
 options=('!strip' 'staticlibs')
 source=(
     'intel-deep-learning-essentials-2026.0.0.624_offline.sh::https://registrationcenter-download.intel.com/akdlm/IRC_NAS/8170208e-86db-4faa-a0d6-1ecf62699574/intel-deep-learning-essentials-2026.0.0.624_offline.sh'

@@ -1,10 +1,12 @@
 pkgbase = intel-deep-learning-essentials
 	pkgdesc = Intel® Deep Learning Essentials + Intel® Deep Neural Network Library - Intel® oneAPI DPC++/C++ Compiler, Intel® oneAPI DPC++ Library, Intel® oneAPI Math Kernel Library, Intel® oneAPI Collective Communications Library, Intel® Deep Neural Network Library
 	pkgver = 2026.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.intel.com/content/www/us/en/developer/tools/oneapi/oneapi-toolkit-download.html
 	arch = x86_64
 	license = custom
+	conflicts = intel-oneapi-toolkit
+	conflicts = intel-oneapi-basekit-2025
 	noextract = intel-deep-learning-essentials-2026.0.0.624_offline.sh
 	noextract = intel-onednn-2026.0.0.689_offline.sh
 	options = !strip
