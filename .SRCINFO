@@ -1,0 +1,17 @@
+pkgbase = smb-post
+	pkgdesc = Minimalistischer, tastaturgesteuerter Serienbrief-Verteiler für Unix-Systeme
+	pkgver = 0.1.0.r0.a1e50d4
+	pkgrel = 1
+	url = https://codeberg.org/Sergius/smb-post
+	arch = any
+	license = MIT
+	depends = bash
+	depends = rofi
+	depends = jq
+	depends = libnotify
+	optdepends = msmtp: Mail-Backend
+	optdepends = sendmail: Mail-Backend
+	source = git+https://codeberg.org/Sergius/smb-post.git
+	sha256sums = SKIP
+
+pkgname = smb-post
