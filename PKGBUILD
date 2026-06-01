@@ -9,9 +9,9 @@ license=('LicenseRef-Docker-Proprietary' 'GPL-2.0-only' 'Apache-2.0')
 depends=('dbus')
 optdepends=(
     'apparmor: AppArmor profile for nerdbox shim confinement (recommended)'
-    'gnome-keyring: secret store'
-    'keepassxc: secret store'
-    'kwallet: secret store')
+    'gnome-keyring: Keychain for credential storage'
+    'keepassxc: Keychain for credential storage'
+    'kwallet: Keychain for credential storage')
 provides=('sbx')
 conflicts=('sbx')
 options=('!debug')
