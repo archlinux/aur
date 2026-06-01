@@ -32,9 +32,9 @@ provides=('claude-desktop')
 conflicts=('claude-desktop')
 _electron_ver=42.0.0
 source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.9659.2/claude-desktop-1.9659.2-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
-sha256sums_x86_64=('b411c7ef419e35ac08e85136c218508d13f544cf1ea74fa8fb337e88090e41a8' 'SKIP')
+sha256sums_x86_64=('a67396b3512363af217f0a3ca6c7bf3b2e5fe65bb12d229f7891e46c56034608' 'SKIP')
 source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.9659.2/claude-desktop-1.9659.2-linux-aarch64.tar.gz" "electron-v${_electron_ver}-linux-arm64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-arm64.zip")
-sha256sums_aarch64=('d4066dc63b09c88d8a7ab2c33a756cc20ee5cf83ccd2142b19807c94d1e7538f' 'SKIP')
+sha256sums_aarch64=('ce389d64659e3b21733cc4a6aadcd788c106df5a6e915c55bdaff2c019d9be48' 'SKIP')
 options=('!strip')
 
 package() {
