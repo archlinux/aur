@@ -1,5 +1,5 @@
 pkgname=perkbox
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Local console-based password manager"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 makedepends=('go')
 depends=('xclip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('25816e37e77b931f15552bfdd09665f3f2ab32e8b11c3fa763795a11fd777399')
+sha256sums=('7879571242cd6613c9a56b6bbc563da0c0d4d47e69d19b14feaf01bd53a5c0f8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
