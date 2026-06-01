@@ -2,21 +2,20 @@
 
 _plug=vszip
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=14.1.0
-pkgrel=2
+pkgver=14.2.0
+pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug}"
 arch=('x86_64')
 url='https://github.com/dnjulek/vapoursynth-zip'
 license=('MIT')
 depends=('vapoursynth>=75')
-makedepends=('zig0.15-bin')
+makedepends=('zig>=0.16.0' 'zig<0.17.0')
 source=("https://github.com/dnjulek/vapoursynth-zip/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1c61a11cd210e4a80261fe9e8b10a6124c485f21e37aea2d39d109f1acfffbd1')
+sha256sums=('b7240d429a9f0f5894553b780eb5b0d76d9679b20b254e1da0191926c24a59f7')
 
 build() {
 	cd "vapoursynth-zip-${pkgver}"
-	# package currently requires zig 0.15, fails to build on 0.16
-	/opt/zig0.15/zig build -Doptimize=ReleaseFast
+	zig build -Doptimize=ReleaseFast
 }
 
 package() {
