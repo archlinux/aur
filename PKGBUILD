@@ -11,7 +11,7 @@ source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/no-1.0"
+    cd "$srcdir/$pkgname"
     gcc no.c -o no
 }
 
