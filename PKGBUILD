@@ -3,27 +3,57 @@
 pkgname=fileoptimizer-bin
 _pkgname=fileoptimizer
 
-# This is only the initial version
-# The pkgver() function below will always fetch the latest version
+# manual-hint: FileOptimizer ships only on SourceForge, whose files listing
+# and best_release.json are now Cloudflare-gated (curl gets a challenge page).
+# Every downstream packager (Scoop, Chocolatey) scrapes that same listing, so
+# none exposes a Cloudflare-free authoritative feed. If latestver() ever emits
+# a bare MAJOR.MINOR (chocolatey mirror lagging upstream), read the build
+# number from https://sourceforge.net/projects/nikkhokkho/files/FileOptimizer/
+# in a browser (curl is challenged) and set pkgver to MAJOR.MINOR.BUILD.
 pkgver=17.10.2857
 
-# Always fetch the latest version
+# No Cloudflare-free authoritative source exists, so combine two:
+#   * Chocolatey's community feed re-publishes the full MAJOR.MINOR.BUILD over a
+#     non-Cloudflare API — the only machine-readable source for the build number.
+#   * The upstream FlatPress product page (not Cloudflare-gated) is authoritative
+#     for the newest MAJOR.MINOR.
+# When chocolatey's minor matches upstream's, the mirror is current → return the
+# full version. When upstream is strictly newer, chocolatey is stale/frozen →
+# return the bare MAJOR.MINOR so check-updates reports asset-missing (loud) rather
+# than silently trusting a frozen mirror. See manual-hint for the build number.
 latestver() {
-    curl -sL "https://sourceforge.net/projects/nikkhokkho/best_release.json" | \
-    jq -r '.release.filename' | \
-    sed -n 's|.*/\([0-9.]*\)/.*|\1|p'
+    local choco upstream_mm choco_mm newer_mm
+    choco=$(curl -fsSL "https://community.chocolatey.org/api/v2/FindPackagesById()?id='fileoptimizer'" \
+        | grep -oE '<d:Version>[0-9]+\.[0-9]+\.[0-9]+</d:Version>' \
+        | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -1)
+    upstream_mm=$(curl -fsSL "https://nikkhokkho.sourceforge.io/?page=FileOptimizer" \
+        | grep -aoE '[0-9]+\.[0-9]+ - 20[0-9]{2}/[0-9]{2}/[0-9]{2}' \
+        | head -1 | grep -oE '^[0-9]+\.[0-9]+')
+    if [ -z "$choco" ]; then
+        [ -n "$upstream_mm" ] && printf '%s\n' "$upstream_mm"
+        return
+    fi
+    choco_mm=${choco%.*}
+    newer_mm=$(printf '%s\n%s\n' "$choco_mm" "$upstream_mm" | sort -V | tail -1)
+    if [ -n "$upstream_mm" ] && [ "$newer_mm" != "$choco_mm" ]; then
+        printf '%s\n' "$upstream_mm"
+    else
+        printf '%s\n' "$choco"
+    fi
 }
 
-pkgrel=4
+pkgrel=5
 pkgdesc="Lossless file size optimizer supporting multiple formats"
 arch=('x86_64')
 url="https://nikkhokkho.sourceforge.io/?page=FileOptimizer"
-license=('AGPL-3.0-only or AGPL-3.0-or-later')
+license=('AGPL-3.0-only OR AGPL-3.0-or-later')
 depends=('wine' 'wine-mono' 'wine-gecko')
 makedepends=('icoutils' 'imagemagick')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("$_pkgname-$pkgver.7z.exe::https://sourceforge.net/projects/nikkhokkho/files/FileOptimizer/${pkgver}/FileOptimizerFull.7z.exe/download"
+# downloads.sourceforge.net is now Cloudflare-gated; the master mirror serves
+# the file directly. ?viasf=1 marks the request as SourceForge-originated.
+source=("$_pkgname-$pkgver.7z.exe::https://master.dl.sourceforge.net/project/nikkhokkho/FileOptimizer/${pkgver}/FileOptimizerFull.7z.exe?viasf=1"
         "$_pkgname.desktop")
 sha256sums=('5fe38b7848fc5dac00aa063ce67cdd956c43913420cef8851aed846182ff3dce'
             'a84498b533c5acff60d98cd413df3c63f4408fddd9eb235e6c25c58931655ff5')
