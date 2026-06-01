@@ -1,4 +1,4 @@
-# PKGBUILD for ttf-ms-win-en_us-auto
+# PKGBUILD for ttf-ms-win-http-auto
 # Maintainer: Tom Hale <tom at hale dot ee>
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
@@ -17,9 +17,9 @@
 # pkgver() reads BUILD and SPBUILD from the ISO filename. After the first
 # successful prepare(), MAJOR and MINOR are also saved from WIM metadata
 # so subsequent builds use the fully authoritative version.
-pkgname=ttf-ms-win-en_us-auto
+pkgname=ttf-ms-win-http-auto
 pkgrel=1
-pkgdesc='Microsoft Windows 11 US English TrueType fonts (auto-downloaded via HTTP streaming)'
+pkgdesc='Microsoft Windows 11 TrueType fonts (downloaded via HTTP streaming)'
 arch=('any')
 url='https://www.microsoft.com/en-us/evalcenter/download-windows-11-enterprise'
 license=('custom')
