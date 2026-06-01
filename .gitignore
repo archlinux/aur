@@ -1,0 +1,5 @@
+pkg/
+src/
+jack_capture-*.tar.gz
+jack_capture-*.pkg.tar.*
+jack_capture-*.patch
