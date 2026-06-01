@@ -12,7 +12,7 @@ arch=(x86_64)
 depends=('procps-ng' 'lib32-glibc')
 makedepends=('git')
 provides=('libproc2.so')
-source=("git+https://gitlab.com/procps-ng/procps.git#tag=v${pkgver}?signed")
+source=("git+https://gitlab.com/procps-ng/procps.git?signed#tag=v${pkgver}")
 sha256sums=('160aa30e2a133f44e7cc6e90c16cc018360a786f043aef84614ce595062fc894')
 validpgpkeys=('5D2FB320B825D93904D205193938F96BDF50FEA5') # Craig Small <csmall@debian.org>
 
