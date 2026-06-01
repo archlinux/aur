@@ -1,5 +1,5 @@
 [Unit]
-Description=ChatLab API Service (user)
+Description=ChatLab HTTP API Service (user)
 Documentation=https://chatlab.fun
 After=network.target
 

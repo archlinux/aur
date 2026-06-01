@@ -1,5 +1,5 @@
 [Unit]
-Description=ChatLab WebUI Service for %I
+Description=ChatLab WebUI and HTTP API Service for %I
 Documentation=https://chatlab.fun
 After=network.target
 
