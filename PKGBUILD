@@ -2,8 +2,8 @@
 # Maintainer: HurricanePooits <hurricanepootis@protonmail.com>
 # Contributor: rcf <ryan.farley@gmx.com>
 pkgname=eden
-pkgver=0.2.0
-pkgrel=3
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
@@ -19,7 +19,7 @@ optdepends=('gamemode: Gamemoded support')
 conflicts=('eden-bin' 'eden-git' 'eden-preview-bin' 'eden-beta')
 options=('!debug')
 source=("eden-v${pkgver}.tar.gz::https://git.eden-emu.dev/eden-emu/eden/archive/v${pkgver}.tar.gz")
-sha256sums=('6ab816bf58507c809f116f64eb1bee3fa5208ac4fb3364e054fe4026c78048be')
+sha256sums=('031b1330af955a49cc969fd9d3efd4e597244c5f6511cfa923872fc727d12bc8')
 
 build() {
 	cd "$srcdir"
@@ -29,8 +29,8 @@ build() {
 		-DUSE_DISCORD_PRESENCE=ON \
 		-DCPM_USE_LOCAL_PACKAGES=ON \
 		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
-		-DYUZU_USE_BUNDLED_SDL2=OFF \
-		-DYUZU_USE_EXTERNAL_SDL2=OFF \
+		-DDiscordRPC_FORCE_BUNDLED=ON \
+		-Dxbyak_FORCE_BUNDLED=ON \
 		-DYUZU_USE_BUNDLED_QT=OFF \
 		-DENABLE_QT_TRANSLATION=ON \
 		-DYUZU_USE_QT_MULTIMEDIA=ON \
