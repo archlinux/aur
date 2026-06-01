@@ -2,7 +2,7 @@
 
 pkgname=rustfs-bin
 pkgver=1.0.0_beta.6
-pkgrel=1
+pkgrel=2
 pkgdesc="🚀 High-performance distributed object storage for MinIO alternative."
 arch=('x86_64' 'aarch64')
 url="https://github.com/rustfs/rustfs"
@@ -13,6 +13,7 @@ source=(
 )
 conflicts=('rustfs')
 backup=("etc/default/rustfs")
+options=('!strip' '!debug')
 
 source_x86_64=("rustfs-${pkgver//_/-}-x86_64.zip::https://github.com/rustfs/rustfs/releases/download/${pkgver//_/-}/rustfs-linux-x86_64-musl-v${pkgver//_/-}.zip")
 source_aarch64=("rustfs-${pkgver//_/-}-aarch64.zip::https://github.com/rustfs/rustfs/releases/download/${pkgver//_/-}/rustfs-linux-aarch64-musl-v${pkgver//_/-}.zip")
