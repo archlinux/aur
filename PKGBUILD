@@ -1,8 +1,6 @@
-# Maintainer: Statulr <re@citra.lol>
-# Contributor: Echo J. <aidas957 at gmail dot com>
-
+# Maintainer: Resslr <rob@bitqate.com>
 pkgname=aurc
-pkgver=1.2.3
+pkgver=2.2.4
 pkgrel=2
 pkgdesc="Fast Easy way to Install and Update Aur and Non-Aur Arch Linux Packages!"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -38,3 +36,4 @@ package() {
   DESTDIR="${pkgdir}" PREFIX="/usr" make install
   install -Dm644 ../LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
+sha256sums=('1abffa28ff073acba24b0c3afc557d56566ccf3e7fd7d1d5a312bdca9edfec47')
