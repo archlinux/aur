@@ -2,7 +2,7 @@
 
 _name=tree-sitter-swift
 pkgname=python-tree-sitter-swift
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Swift grammar for tree-sitter"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('67b9a3ba5ab8fff2c082a2c0c33c8b5a66539f8bfa5058385688b1aefc11cead')
+sha256sums=('a87f1dba3050a346ee3442aad8d727afd74555dea258e31c71c7934d8c04af9b')
 
 build() {
     cd "${_name//-/_}-${pkgver}"
