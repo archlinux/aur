@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/user14923929/no"
 license=('MIT')
 
-source=("$url/archive/refs/tags/$pkgver.tar.gz")
+source=("$url/archive/refs/tags/$pkgver-$pkgrel.tar.gz")
 sha256sums=('SKIP')
 
 build() {
