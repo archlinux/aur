@@ -1,0 +1,16 @@
+pkgbase = bonsai-pomodoro-git
+	pkgdesc = A beautiful Terminal User Interface (TUI) Pomodoro application written in Rust, inspired by Forest (Development version).
+	pkgver = 0.1.0.r0.g1234567
+	pkgrel = 1
+	url = https://github.com/Mestik78/bonsai-pomodoro
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = bonsai-pomodoro
+	conflicts = bonsai-pomodoro
+	source = git+https://github.com/Mestik78/bonsai-pomodoro.git
+	sha256sums = SKIP
+
+pkgname = bonsai-pomodoro-git
