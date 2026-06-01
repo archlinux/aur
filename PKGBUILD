@@ -1,24 +1,23 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
-# Contributor: Angel Velasquez <angvp@archlinux.org>
-# Contributor: Eric Belanger <eric@archlinux.org>
-# Contributor: Judd Vinet <jvinet@zeroflux.org>
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+# Maintainer: T.J. Townsend <blakkheim@archlinux.org>
 
 pkgname=rsync-git
-pkgver=3.2.3.r47.gec1d5d56
+pkgver=3.4.3.r55.g68df17ae
 pkgrel=1
 pkgdesc='A fast and versatile file copying tool for remote and local files - git checkout'
 arch=('i686' 'x86_64')
 url='https://rsync.samba.org/'
-license=('GPL3')
-depends=('acl' 'libacl.so' 'lz4' 'openssl' 'perl' 'popt' 'xxhash' 'libxxhash.so'
+license=('GPL-3.0-or-later')
+depends=('acl' 'libacl.so' 'lz4' 'openssl' 'popt' 'xxhash' 'libxxhash.so'
          'zlib' 'zstd')
+optdepends=('python: for rrsync')
 makedepends=('git' 'python-commonmark')
 provides=('rsync')
 conflicts=('rsync')
-backup=('etc/rsyncd.conf'
-        'etc/xinetd.d/rsync')
-source=("git+https://github.com/WayneD/rsync"
+backup=('etc/rsyncd.conf')
+validpgpkeys=('0048C8B026D4C96F0E589C2F6C859FB14B96A8C5'  # Wayne Davison <wayned@users.sourceforge.net>
+              '9FEF112DCE19A0DC7E882CB81BB24997A8535F6F') # Andrew Tridgell <andrew@tridgell.net
+source=("git+https://github.com/RsyncProject/rsync.git"
         'rsyncd.conf')
 sha256sums=('SKIP'
             '733ccb571721433c3a6262c58b658253ca6553bec79c2bdd0011810bb4f2156b')
@@ -39,34 +38,42 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/rsync"
+  cd "rsync"
 
-	./configure \
-		--prefix=/usr \
-		--disable-debug \
-		--with-included-popt=no \
-		--with-included-zlib=no
-	make
+  ./configure \
+    --prefix=/usr \
+    --enable-ipv6 \
+    --disable-debug \
+    --with-rrsync \
+    --with-included-popt=no \
+    --with-included-zlib=no
+  make
 }
 
 check() {
-	cd "$srcdir/rsync"
+  cd "rsync"
 
-	make test
+  # check for IPv6 support
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/rsync/-/commit/8936e33b245da170e7b5488b4ca35727ac9c4b68
+  if rsync -V | grep -q 'no IPv6'; then
+    echo 'Built without IPv6 support!' >&2
+    exit 1
+  fi
+
+  make test
 }
-
 
 package() {
-	cd "$srcdir/rsync"
+  cd "rsync"
 
-	make DESTDIR="${pkgdir}" install
-
-	make DESTDIR="$pkgdir" install
-	install -Dm0644 ../rsyncd.conf "$pkgdir/etc/rsyncd.conf"
-	install -Dm0644 packaging/lsb/rsync.xinetd "$pkgdir/etc/xinetd.d/rsync"
-	install -Dm0644 packaging/systemd/rsync.service "$pkgdir/usr/lib/systemd/system/rsyncd.service"
-	install -Dm0644 packaging/systemd/rsync.socket "$pkgdir/usr/lib/systemd/system/rsyncd.socket"
-	install -Dm0644 packaging/systemd/rsync@.service "$pkgdir/usr/lib/systemd/system/rsyncd@.service"
-	install -Dm0755 support/rrsync "$pkgdir/usr/lib/rsync/rrsync"	
+  make DESTDIR="$pkgdir" install
+  # install support scripts to doc
+  for i in support/*; do
+    install -Dm0644 "$i" "$pkgdir/usr/share/doc/rsync/$i"
+  done
+  install -Dm0644 "tech_report.tex" "$pkgdir/usr/share/doc/rsync/tech_report.tex"
+  install -Dm0644 ../rsyncd.conf "$pkgdir/etc/rsyncd.conf"
+  install -Dm0644 packaging/systemd/rsync.service "$pkgdir/usr/lib/systemd/system/rsyncd.service"
+  install -Dm0644 packaging/systemd/rsync.socket "$pkgdir/usr/lib/systemd/system/rsyncd.socket"
+  install -Dm0644 packaging/systemd/rsync@.service "$pkgdir/usr/lib/systemd/system/rsyncd@.service"
 }
-
