@@ -1,6 +1,6 @@
 pkgbase = puklic-bin
 	pkgdesc = Lightweight native Discord client (Compose Multiplatform, Kotlin Multiplatform)
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/JanDamek/puklic
 	install = puklic-bin.install
@@ -13,9 +13,9 @@ pkgbase = puklic-bin
 	optdepends = pipewire: Voice chat audio backend
 	optdepends = xdg-desktop-portal: Screen sharing on Wayland
 	optdepends = wl-clipboard: Wayland clipboard support
-	provides = puklic=1.2.3
+	provides = puklic=1.2.4
 	conflicts = puklic
-	source = puklic_1.2.3_amd64.deb::https://github.com/JanDamek/puklic/releases/download/v1.2.3/puklic_1.2.3-1_amd64.deb
-	sha256sums = 73f9fb15dffe93ca1ee5318abf82365cbe7c967d3844346be9d835e4c679cd34
+	source = puklic_1.2.4_amd64.deb::https://github.com/JanDamek/puklic/releases/download/v1.2.4/puklic_1.2.4-1_amd64.deb
+	sha256sums = 9c05c673b4cf54b5181fa65ce6a6e91ef4b760f74e506d0a84cebf4392741c95
 
 pkgname = puklic-bin
