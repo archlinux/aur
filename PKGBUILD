@@ -6,6 +6,7 @@ pkgdesc="Modern Linux desktop privacy stack — Tor, DNSCrypt, I2P, Onion Server
 arch=('any')
 url="https://github.com/berk-kucuk/entropy-shield"
 license=('MIT')
+install="$pkgname.install"
 depends=(
     'python>=3.10'
     'python-pyqt6'
@@ -17,10 +18,12 @@ depends=(
     'iproute2'
     'polkit'
     'conntrack-tools'
+    'curl'
 )
 optdepends=(
     'redsocks: transparent proxy support for I2P routing'
-    'obfs4proxy: Tor bridge pluggable transport (obfs4/meek)'
+    'obfs4proxy: Tor bridge pluggable transport (obfs4/meek-azure)'
+    'snowflake-tor: Tor Snowflake bridge pluggable transport'
     'bind: dig command for DNS leak tests'
     'firefox: isolated browser integration'
     'chromium: isolated browser integration'
@@ -42,7 +45,7 @@ package() {
 exec python3 /opt/entropy-shield/main.py "$@"
 EOF
 
-    # Icon — use OLED logo as default
+    # Icon — OLED logo
     install -Dm644 logos/oled.png \
         "$pkgdir/usr/share/pixmaps/entropy-shield.png"
     install -Dm644 logos/oled.png \
@@ -62,7 +65,7 @@ Terminal=false
 StartupWMClass=entropy-shield
 EOF
 
-    # Systemd service (headless / server mode)
+    # Systemd service (headless / server mode — optional)
     install -Dm644 entropy-shield.service \
         "$pkgdir/usr/lib/systemd/system/entropy-shield.service"
 
