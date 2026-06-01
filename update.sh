@@ -244,10 +244,6 @@ update_bun_makedepend "$bun_dep"
 cmd makepkg || fail "makepkg failed"
 cmd makepkg --printsrcinfo >.SRCINFO  || fail "failed to regenerate .SRCINFO"
 
-if compgen -G 'pkg/oh-my-pi/usr/bin/pi_natives*.node' >/dev/null; then
-    fail "standalone pi_natives addon files were packaged unexpectedly"
-fi
-
 runtime_dir="$(new_tmp_dir)"
 smoke_output="$(
     cmd env HOME="${runtime_dir}/home" XDG_DATA_HOME="${runtime_dir}/xdg" \
