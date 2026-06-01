@@ -6,7 +6,6 @@ pkgrel=1
 pkgdesc="BlackArch Linux wallpapers"
 arch=('any')
 url="https://github.com/BlackArch/blackarch-artwork"
-license=('custom')
 
 source=("https://github.com/BlackArch/blackarch-artwork/archive/refs/heads/master.tar.gz")
 sha256sums=('SKIP')
