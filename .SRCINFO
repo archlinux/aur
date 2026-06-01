@@ -1,0 +1,19 @@
+pkgbase = timetree-exporter
+	pkgdesc = A Tool for Exporting TimeTree Calendar and Converting to iCal Format (.ics) (RFC 5545 Compatible)
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/eoleedi/TimeTree-Exporter
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.10
+	depends = python-icalendar>=6.1.0
+	depends = python-tzdata>=2024.2
+	depends = python-requests>=2.32.5
+	source = https://files.pythonhosted.org/packages/source/t/timetree-exporter/timetree_exporter-0.7.2.tar.gz
+	sha256sums = a9a2e4b678de33499aa4cf1205939e6cb97411f95b37f7dca8def2f1e87a09f9
+
+pkgname = timetree-exporter
