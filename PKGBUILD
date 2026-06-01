@@ -1,7 +1,7 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="figurine"
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Print your text in style"
 arch=(
@@ -24,7 +24,7 @@ _pkgsrc="${url##*/}"
 source=(
   "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('a68507a6e28e4f40fe8ddf139bd356e3f89eb9eb7c17659da36bf1f6ae4791d4')
+sha256sums=('1fe829757d0301c06602820d5163c95d313a60c983f30579525951100e21ecde')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
