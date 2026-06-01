@@ -3,7 +3,7 @@
 # Contributor: Evert <evorster at gmail dot com>
 _pkgname=hermes-agent
 pkgname=${_pkgname}-git
-pkgver=2026.5.29.r10.ga61878
+pkgver=2026.5.29.r323.g758454
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
@@ -146,7 +146,15 @@ package() {
   cat > "$pkgdir/usr/bin/hermes" <<WRAPPER
 #!/bin/bash
 export PYTHONPATH=/opt/hermes-agent/venv/lib/${_py_ver}/site-packages
+export HERMES_REVISION=\$(cat /opt/hermes-agent/.git_rev 2>/dev/null || true)
 exec /usr/bin/python -m hermes_cli.main "\$@"
 WRAPPER
   chmod 755 "$pkgdir/usr/bin/hermes"
+
+  # Record the exact commit SHA baked into this package so the wrapper can
+  # set HERMES_REVISION. This makes update detection use the same git-SHA
+  # path that Nix installs use, instead of falling back to PyPI version
+  # comparison and spuriously reporting "1 commit behind" when the local
+  # code is current but the embedded __version__ hasn't been bumped yet.
+  git -C "$srcdir/${_pkgname}" rev-parse HEAD > "$pkgdir/opt/${_pkgname}/.git_rev"
 }
