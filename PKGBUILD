@@ -4,7 +4,7 @@
 # .github/workflows/release-aur.yml on every release: published event.
 
 pkgname=argos-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Fast, git-native API client (REST / GraphQL / WebSocket)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=('fuse2' 'webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3')
 options=('!strip' '!debug')
 source=("Argos_${pkgver}_amd64.AppImage::https://github.com/thothlab/argos-app/releases/download/v${pkgver}/Argos_${pkgver}_amd64.AppImage")
 noextract=("Argos_${pkgver}_amd64.AppImage")
-sha256sums=('bb1c10a9f6e91f5b99caca1ad6df2a4745eb9f1ad1a0794e58e23f911894d795')
+sha256sums=('2b444ae9f474eb3deb4a8d3a48212fdf023255317e1d2cf7dd6cdc3b450af245')
 
 prepare() {
   chmod +x "Argos_${pkgver}_amd64.AppImage"
