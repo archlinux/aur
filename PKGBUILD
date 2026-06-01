@@ -1,16 +1,16 @@
 # Maintainer: Austin Riba <austin@m51.io>
 pkgname=gelly
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Music player for Jellyfin and Subsonic"
 url="https://github.com/Fingel/gelly"
 license=("GPL-3.0-or-later")
 depends=("libadwaita" "gst-plugins-good" "org.freedesktop.secrets")
-makedepends=("cargo")
+makedepends=("cargo" "gettext")
 arch=("x86_64" "aarch64")
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Fingel/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=("f980ce9d672e1e15b35646f6912ec3e16ee6d217a1d76173a7da1e833feeafd3fbf5dced3132f6c3413abc67ac04d4335df7e81fdbaaf3c73d92d9e7d5bc3664")
+sha512sums=("e27ba7c318ea7f51166a239adffe942c8b68e7ff0e6d7652dd0d8a07a275766e4f24b9eb5dc5abd78c9983fe94479ab32c613a6b35ea2f6f52b7ac857ef1bb05")
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -22,7 +22,7 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    LOCALEDIR=/usr/share/locale cargo build --frozen --release
 }
 
 package() {
@@ -33,4 +33,9 @@ package() {
     install -Dm 0644 resources/io.m51.Gelly.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/io.m51.Gelly.gschema.xml"
     install -Dm 0644 resources/io.m51.Gelly.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.m51.Gelly.svg"
     install -Dm 0644 resources/io.m51.Gelly-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/io.m51.Gelly-symbolic.svg"
+    for po_file in po/*.po; do
+        lang=$(basename "$po_file" .po)
+        install -dm755 "$pkgdir/usr/share/locale/$lang/LC_MESSAGES"
+        msgfmt -o "$pkgdir/usr/share/locale/$lang/LC_MESSAGES/gelly.mo" "$po_file"
+    done
 }
