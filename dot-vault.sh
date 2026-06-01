@@ -80,7 +80,7 @@ select_files() {
         --prompt="Select files/folders to BACKUP (Space to Select + Next):" \
         --header="↑/↓: Navigate | Space: Select/Next | Enter: Confirm" \
         --bind 'space:toggle+down' \
-        --preview "if [[ -d {} ]]; then echo 'Directory: {}'; tree -L 2 {} 2>/dev/null | head -20; else echo 'File: {}'; head -10 {} 2>/dev/null; fi" \
+        --preview "tree -L 2 {} 2>/dev/null || ls -lh {} 2>/dev/null || head -10 {} 2>/dev/null || echo 'Cannot preview'"
         --preview-window "right:40%:wrap" \
         --layout=reverse \
     )
