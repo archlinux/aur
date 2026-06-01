@@ -39,7 +39,7 @@ provides=(
 )
 validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <rousseau@debian.org>
 source=(
-  "git+https://github.com/LudovicRousseau/PCSC.git#tag=${pkgver}?signed"
+  "git+https://github.com/LudovicRousseau/PCSC.git?signed#tag=${pkgver}"
   "program-suffix.patch"
   "systemd-unit-conflicts.diff"
   "0001-Allow-to-run-32-bit-pcscd-on-64-bit-systems.patch"

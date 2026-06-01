@@ -19,7 +19,7 @@ pkgbase = lib32-pcsclite
 	provides = libpcsclite.so
 	provides = libpcsclite_real.so
 	provides = libpcscspy.so
-	source = git+https://github.com/LudovicRousseau/PCSC.git#tag=2.5.0?signed
+	source = git+https://github.com/LudovicRousseau/PCSC.git?signed#tag=2.5.0
 	source = program-suffix.patch
 	source = systemd-unit-conflicts.diff
 	source = 0001-Allow-to-run-32-bit-pcscd-on-64-bit-systems.patch
