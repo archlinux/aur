@@ -2,7 +2,7 @@
 
 pkgbase=bitwuzla
 pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations'
 arch=('x86_64')
@@ -36,7 +36,7 @@ makedepends=(
     'python-sphinx_rtd_theme'
     'python-sphinxcontrib-bibtex'
     'python>=3.7'
-    'symfpu-cvc5'
+    'symfpu'
 )
 optdepends=(
     'aiger: Utilities for And-Inverter Graphs (AIGs)'
@@ -49,7 +49,7 @@ provides=(
     'libbitwuzlals.so'
     'libbitwuzla.so'
 )
-b2sums=('791bd5bb08161d5bc88208f167cdd88f630d523d6de4f5bf545c0b81bf1789a77c660d56a8da5c8c2ce556a7c6d705738a27f492c54bf3ebdb76ab9cbaefd984'
+b2sums=('b694149cd724ae569345d9f3386c0bcd8ae9f13259d7c10aa8f45d4d273b145c33a81aac30ab61aa70d2d31a0dc0d1847c300307f8ed4b888fa81387117f5086'
         '96897dada985c929820c7285a4e968977786e58e18b632dff06414ed71572a9139c0dad7a20705c03ff462cc954e5ffccb331d1ead100cd085686a5fc1d79fa3')
 options=('!lto')
 
