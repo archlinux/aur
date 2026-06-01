@@ -1,18 +1,19 @@
 # Maintainer: robertfoster
 
 pkgname=coova-chilli-arch
-pkgver=1.7
+pkgver=1.9
 pkgrel=1
 pkgdesc='An open-source software access controller'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://coova.github.io/"
 license=('GPL')
 depends=('curl' 'libpcap' 'openssl')
 makedepends=('gengetopt')
-optdepends=('python')
-options=(!libtool)
-replaces=(coova-chilli)
-source=("https://github.com/coova/coova-chilli/archive/$pkgver.tar.gz"
+optdepends=('python: for chilli helper scripts')
+replaces=('coova-chilli')
+provides=('coova-chilli')
+conflicts=('coova-chilli')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/coova/coova-chilli/archive/$pkgver.tar.gz"
   chilli.service
 )
 backup=('etc/chilli.conf')
@@ -22,7 +23,12 @@ prepare() {
   cd "${srcdir}/coova-chilli-${pkgver}"
 
   ./bootstrap
-  ./configure --prefix=/usr --sbindir=/usr/bin/ \
+}
+
+build() {
+  cd "${srcdir}/coova-chilli-${pkgver}"
+
+  ./configure --prefix=/usr --sbindir=/usr/bin \
     --sysconfdir=/etc --localstatedir=/var \
     --enable-statusfile \
     --disable-static \
@@ -35,10 +41,7 @@ prepare() {
     --with-poll \
     --with-openssl \
     --enable-chilliradsec
-}
 
-build() {
-  cd "${srcdir}/coova-chilli-${pkgver}"
   make
 }
 
@@ -46,12 +49,11 @@ package() {
   cd "${srcdir}/coova-chilli-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
-  msg2 "Installing systemd unit for ${pkgname}"
   install -Dm0644 ../chilli.service \
     "${pkgdir}/usr/lib/systemd/system/chilli.service"
 
   rm -rf "${pkgdir}/etc/init.d"
 }
 
-sha256sums=('ca69a6da19021b1823ad39fd19b5693266d08d909a6f1b53c7c78baffd78b6ca'
-            'cf4e9d610b22729a4dd6257b732d7ed4b01367cde6a330205a5f5c33cdbee578')
+sha256sums=('78b58189a3f031ab7b6346fe814bd64337940fe1fdbb7e45e32a32f146e7d421'
+  'f93473100b7c09898f2450cdddc1a2f9cd2317fb5943f7dd4962c4fde2ba8865')
