@@ -1,0 +1,5 @@
+[zenpower5-dkms]
+source = "github"
+github = "mattkeenan/zenpower5"
+prefix = "v"
+use_max_tag = true

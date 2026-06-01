@@ -1,0 +1,6 @@
+post_install() {
+echo "To use this kernel module, reboot your system or do: modprobe -r k10temp && modprobe zenpower"
+}
+post_upgrade() {
+echo "To use this kernel module, reboot your system or do: modprobe -r k10temp && modprobe zenpower"
+}
