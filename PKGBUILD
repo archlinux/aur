@@ -1,7 +1,7 @@
 # Maintainer: Arfad <arfadmuzali258@gmail.com>
 pkgname=restui-bin
 pkgbase=restui-bin
-pkgver=1.2.1
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Terminal UI API client for testing HTTP requests (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ conflicts=('restui')
 source=(
   "restui::https://github.com/arfadmuzali/restui/releases/download/v$pkgver/restui_Linux_x86_64.tar.gz"
 )
-sha256sums=('SKIP')  # nanti bisa diganti SHA256 file
+sha256sums=('2b1779b93d668259f7c36d811aac90b98ab3e8a264af232d96c16ddc8ee0f6d8')
 
 package() {
   install -Dm755 restui "$pkgdir/usr/bin/restui"

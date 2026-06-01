@@ -1,6 +1,6 @@
 pkgbase = restui-bin
 	pkgdesc = Terminal UI API client for testing HTTP requests (prebuilt binary)
-	pkgver = 1.2.1
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/arfadmuzali/restui
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = restui-bin
 	depends = glibc
 	provides = restui
 	conflicts = restui
-	source = restui::https://github.com/arfadmuzali/restui/releases/download/v1.2.1/restui_Linux_x86_64.tar.gz
-	sha256sums = SKIP
+	source = restui::https://github.com/arfadmuzali/restui/releases/download/v1.3.4/restui_Linux_x86_64.tar.gz
+	sha256sums = 2b1779b93d668259f7c36d811aac90b98ab3e8a264af232d96c16ddc8ee0f6d8
 
 pkgname = restui-bin
