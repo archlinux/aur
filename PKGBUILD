@@ -36,9 +36,9 @@ package() {
 
   # Create a wrapper script to run the app
   install -d "$pkgdir/usr/bin"
-  echo '#!/bin/sh' > "$pkgdir/usr/bin/attack-shark-x11-driver"
-  echo 'exec electron /usr/lib/attack-shark-x11-electron/main/index.js "$@"' >> "$pkgdir/usr/bin/attack-shark-x11-driver"
-  chmod +x "$pkgdir/usr/bin/attack-shark-x11-driver"
+  echo '#!/bin/sh' > "$pkgdir/usr/bin/attack-shark-x11-electron"
+  echo 'exec electron /usr/lib/attack-shark-x11-electron/main/index.js "$@"' >> "$pkgdir/usr/bin/attack-shark-x11-electron"
+  chmod +x "$pkgdir/usr/bin/attack-shark-x11-electron"
 
   # Install license
   install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
