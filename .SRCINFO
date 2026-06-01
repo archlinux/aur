@@ -1,4 +1,4 @@
-pkgbase = no
+pkgbase = no-cli
 	pkgdesc = Print 'n' repeatedly
 	pkgver = 1.0
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = no
 	source = https://github.com/user14923929/no/archive/refs/tags/1.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = no
+pkgname = no-cli

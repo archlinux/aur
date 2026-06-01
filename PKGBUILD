@@ -1,5 +1,5 @@
 # Maintainer: Illia Zavadzkyi <i68281124@gmail.com>
-pkgname=no
+pkgname=no-cli
 pkgver=1.0
 pkgrel=1
 pkgdesc="Print 'n' repeatedly"
