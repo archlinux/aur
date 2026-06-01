@@ -1,20 +1,22 @@
 # Maintainer: Joschka Thurner <git@joschkathurner.de>
 pkgname=docker-sbx
-pkgver=0.30.0
+pkgver=0.31.2
 pkgrel=1
 pkgdesc="Docker sandboxes - run AI coding agents in isolated microVM sandboxes"
 arch=('x86_64')
 url="https://docs.docker.com/ai/sandboxes/"
 license=('LicenseRef-Docker-Proprietary' 'GPL-2.0-only' 'Apache-2.0')
-depends=()
+depends=('dbus')
 optdepends=(
     'apparmor: AppArmor profile for nerdbox shim confinement (recommended)'
-)
+    'gnome-keyring: secret store'
+    'keepassxc: secret store'
+    'kwallet: secret store')
 provides=('sbx')
 conflicts=('sbx')
 options=('!debug')
 source=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux.tar.gz")
-sha256sums=('a700de257528cf026442ea3b852f644b43f898addf6a2ed8431e1357bd1b3d78')
+sha256sums=('7b07d82159f7b2a32319b6c3395b6a2c020c65cbfdd19310084693436ca05894')
 
 package() {
     install -Dm755 "$srcdir/docker-sbx/sbx" \
