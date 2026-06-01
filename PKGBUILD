@@ -1,22 +1,29 @@
 # Maintainer: Ashley <info@meisgaming.net>
 pkgname=league-of-gays
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="League of Gays — self-hosted MOBA launcher"
 arch=('x86_64')
 url="https://lol.meisgaming.net"
 license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib' 'libnotify' 'xdg-utils' 'libx11')
+makedepends=('nodejs' 'npm')
 provides=('league-of-gays')
 conflicts=('league-of-gays')
-source=("${pkgname}-launcher-${pkgver}.tar.gz::https://lol.meisgaming.net/launcher/${pkgname}-launcher-${pkgver}.tar.gz")
-sha256sums=('984ba2a0fe89ceb5ef70fbd2619be0ad8ec149f1cafb74b0ef4fd22f4e5721aa')
+source=("${pkgname}-src-${pkgver}.tar.gz::https://lol.meisgaming.net/launcher/${pkgname}-src-${pkgver}.tar.gz")
+sha256sums=('7b0c531dd8a123cc9bea8462178f88448ba706acbd7a3b8776c0a3859e631eee')
+
+build() {
+    cd "$srcdir/${pkgname}-src-${pkgver}"
+    npm ci --prefer-offline
+    npx electron-builder --linux --dir
+}
 
 package() {
-    local src_dir="$srcdir/${pkgname}-launcher-${pkgver}"
+    local app="$srcdir/${pkgname}-src-${pkgver}/dist/linux-unpacked"
 
     install -dm755 "$pkgdir/opt/league-of-gays"
-    cp -r "$src_dir/." "$pkgdir/opt/league-of-gays/"
+    cp -r "$app/." "$pkgdir/opt/league-of-gays/"
 
     install -dm755 "$pkgdir/usr/bin"
     ln -sf /opt/league-of-gays/league-of-gays "$pkgdir/usr/bin/league-of-gays"
@@ -33,8 +40,7 @@ StartupWMClass=league-of-gays
 MimeType=x-scheme-handler/log;
 EOF
 
-    # Icon (256px, optional — falls vorhanden)
-    local icon="$src_dir/resources/app/renderer/assets/icon.png"
+    local icon="$app/resources/app/renderer/assets/icon.png"
     if [ -f "$icon" ]; then
         install -Dm644 "$icon" \
             "$pkgdir/usr/share/icons/hicolor/256x256/apps/league-of-gays.png"
