@@ -1,6 +1,6 @@
 # Maintainer: Berk Kucuk <berkkucukk@proton.me>
 pkgname=entropy-shield
-pkgver=2.3.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Modern Linux desktop privacy stack — Tor, DNSCrypt, I2P, Onion Server"
 arch=('any')
@@ -26,33 +26,31 @@ optdepends=(
     'chromium: isolated browser integration'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/entropy-shield/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ca963c98041c97397bd84d8b1bd460d3c1238636044229502f384b1dbd9a7deb')
+sha256sums=('28f2f3265f7abf2392f9ffe7c322d5cab9b27d34e61e713ddb05c8e505eceb91')
 
 package() {
     cd "$pkgname-$pkgver"
 
-    # Install application files
+    # Application files
     install -dm755 "$pkgdir/opt/entropy-shield"
     cp -r core gui logos Fonts main.py "$pkgdir/opt/entropy-shield/"
     chmod 755 "$pkgdir/opt/entropy-shield/main.py"
 
     # Launcher
-    install -dm755 "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/entropy-shield" <<'EOF'
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/entropy-shield" <<'EOF'
 #!/usr/bin/env bash
 exec python3 /opt/entropy-shield/main.py "$@"
 EOF
-    chmod 755 "$pkgdir/usr/bin/entropy-shield"
 
-    # Icon (use dark.png as default)
-    install -Dm644 logos/dark.png \
+    # Icon — use OLED logo as default
+    install -Dm644 logos/oled.png \
         "$pkgdir/usr/share/pixmaps/entropy-shield.png"
-    install -Dm644 logos/dark.png \
+    install -Dm644 logos/oled.png \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/entropy-shield.png"
 
     # Desktop entry
-    install -dm755 "$pkgdir/usr/share/applications"
-    cat > "$pkgdir/usr/share/applications/entropy-shield.desktop" <<'EOF'
+    install -Dm644 /dev/stdin \
+        "$pkgdir/usr/share/applications/entropy-shield.desktop" <<'EOF'
 [Desktop Entry]
 Name=Entropy Shield
 Comment=Network Privacy Stack — Tor, DNSCrypt, I2P
@@ -64,9 +62,13 @@ Terminal=false
 StartupWMClass=entropy-shield
 EOF
 
+    # Systemd service (headless / server mode)
+    install -Dm644 entropy-shield.service \
+        "$pkgdir/usr/lib/systemd/system/entropy-shield.service"
+
     # Polkit policy
-    install -dm755 "$pkgdir/usr/share/polkit-1/actions"
-    cat > "$pkgdir/usr/share/polkit-1/actions/org.entropyshield.policy" <<'EOF'
+    install -Dm644 /dev/stdin \
+        "$pkgdir/usr/share/polkit-1/actions/org.entropyshield.policy" <<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE policyconfig PUBLIC
   "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"

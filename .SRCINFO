@@ -1,6 +1,6 @@
 pkgbase = entropy-shield
 	pkgdesc = Modern Linux desktop privacy stack — Tor, DNSCrypt, I2P, Onion Server
-	pkgver = 2.3.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/berk-kucuk/entropy-shield
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = entropy-shield
 	optdepends = bind: dig command for DNS leak tests
 	optdepends = firefox: isolated browser integration
 	optdepends = chromium: isolated browser integration
-	source = entropy-shield-2.3.1.tar.gz::https://github.com/berk-kucuk/entropy-shield/archive/refs/tags/v2.3.1.tar.gz
-	sha256sums = ca963c98041c97397bd84d8b1bd460d3c1238636044229502f384b1dbd9a7deb
+	source = entropy-shield-3.0.0.tar.gz::https://github.com/berk-kucuk/entropy-shield/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = 28f2f3265f7abf2392f9ffe7c322d5cab9b27d34e61e713ddb05c8e505eceb91
 
 pkgname = entropy-shield
