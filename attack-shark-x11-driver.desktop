@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Attack Shark X11 Driver
+Comment=Configuration tool for the Attack Shark X11 gaming mouse
+Exec=attack-shark-x11-driver
+Icon=attack-shark-x11
+Terminal=false
+Type=Application
+Categories=HardwareSettings;Settings;
+Keywords=mouse;gaming;driver;
