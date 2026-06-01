@@ -1,6 +1,6 @@
 pkgbase = plezy-bin
 	pkgdesc = A beautiful Plex media server client built with Flutter
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/edde746/plezy
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = plezy-bin
 	depends = glib2
 	provides = plezy
 	conflicts = plezy
-	source = plezy-2.4.0.pkg.tar.zst::https://github.com/edde746/plezy/releases/download/2.4.0/plezy-linux-x64.pkg.tar.zst
-	sha256sums = e61d65f5a4a0800fc849fe18c933f3e043498d0c3c91563506eedcab39788037
+	source = plezy-2.4.1.pkg.tar.zst::https://github.com/edde746/plezy/releases/download/2.4.1/plezy-linux-x64.pkg.tar.zst
+	sha256sums = 76c7278c60f829c4f5b9e3f386577e19ec03ee9b027b4d937ac1239df13606db
 
 pkgname = plezy-bin
