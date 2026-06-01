@@ -1,7 +1,7 @@
 # Maintainer: Ashley <info@meisgaming.net>
 pkgname=league-of-gays
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="League of Gays — self-hosted MOBA launcher"
 arch=('x86_64')
 url="https://lol.meisgaming.net"
