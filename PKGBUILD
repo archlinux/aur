@@ -3,7 +3,7 @@ pkgname=vesta-bin
 _pkgname=vesta
 _srcname=VESTA 
 _appid=com.vesta.desktop
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Video Extraction, Sync & Translation for Anki"
 arch=('x86_64')
@@ -34,7 +34,7 @@ options=('!debug')
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_srcname}_${pkgver}_amd64.deb"
         "LICENSE::https://raw.githubusercontent.com/pierspad/VESTA/main/LICENSE")
 
-sha256sums=('7da7415ccbbeb012046360375bef125fb5470c4f5e9bf2ef58b174f851e6177b'
+sha256sums=('14e69caacef6213e244a74da6382035840c38cd7622ea4635ef657a2871ea8e8'
             '144ee8f9fbaee3025c001b0b0e854eb6a80c1025a6548ead97ab5fb90df7aca6')
 
 package() {
@@ -54,12 +54,12 @@ Type=Application
 Name=VESTA
 Comment=${pkgdesc}
 Exec=${_pkgname}
-Icon=${_appid}
+Icon=${_pkgname}
 Terminal=false
 Categories=AudioVideo;Education;Utility;
 Keywords=subtitles;anki;flashcards;translation;sync;video;
 StartupNotify=true
-StartupWMClass=${_appid}
+StartupWMClass=${_pkgname}
 EOF
     install -Dm644 "${srcdir}/${_appid}.desktop" "${pkgdir}/usr/share/applications/${_appid}.desktop"
 
