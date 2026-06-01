@@ -1,6 +1,6 @@
 pkgbase = fcitx5-lotus-git
 	pkgdesc = Vietnamese input method for fcitx5
-	pkgver = 3.0.1.r661.ge3d9ae0
+	pkgver = 3.2.0.r731.g9825dc7
 	pkgrel = 1
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = fcitx5-lotus-git
 
 pkgname = fcitx5-lotus-git
 	install = fcitx5-lotus.install
+	depends = acl
 	depends = fcitx5
 	depends = libinput
 	depends = hicolor-icon-theme
