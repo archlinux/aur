@@ -1,16 +1,16 @@
 pkgname=tapauth
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Local smartphone-based authentication framework engine"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lolle2000la/tapauth"
 license=('AGPL-3.0')
 depends=('dbus' 'pam')
-makedepends=('cargo' 'rust' 'protobuf')
+makedepends=('cargo' 'rust' 'protobuf' 'clang')
 backup=('etc/tapauth/config.toml')
 install=tapauth.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lolle2000la/tapauth/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('21e6b30144160711b974c446e18a36928e11322530050516072bdc3037bf353e')
+sha256sums=('7fce915447a61a217f94de3eb703f9522f8927cc26935844bb667bc281088a6a')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -33,6 +33,7 @@ package() {
   install -Dm0755 target/release/libclient_pam.so "$pkgdir/usr/lib/security/pam_tapauth.so"
   install -Dm0644 systemd/tapauthd.service "$pkgdir/usr/lib/systemd/system/tapauthd.service"
   install -Dm0644 systemd/tapauthd.socket "$pkgdir/usr/lib/systemd/system/tapauthd.socket"
+  install -Dm0644 systemd/polkit-agent-helper@.service.d/tapauth.conf "$pkgdir/usr/lib/systemd/system/polkit-agent-helper@.service.d/tapauth.conf"
   install -Dm0644 packaging/sysusers.conf "$pkgdir/usr/lib/sysusers.d/tapauth.conf"
   install -Dm0644 packaging/tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/tapauth.conf"
   install -Dm0644 client-config-gui/tapauth-config.desktop "$pkgdir/usr/share/applications/tapauth-config.desktop"
