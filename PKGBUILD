@@ -4,7 +4,7 @@ pkgver=0.1.0
 pkgrel=2
 pkgdesc="A self-hosted AI workspace with chat, agents, deep research, calendar, notes and more"
 arch=('any')
-url="https://github.com/taxin-404/odysseus"
+url="https://pewdiepie-archdaemon.github.io/odysseus/"
 license=('MIT')
 depends=(
     'python>=3.11'
@@ -12,7 +12,6 @@ depends=(
 )
 optdepends=(
     'python-pymupdf: PDF form-filling support (AGPL-3.0)'
-    'python-duckduckgo-search: DuckDuckGo search provider'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/taxin-404/odysseus/archive/refs/tags/v$pkgver.tar.gz"
         "odysseus-ai.desktop"

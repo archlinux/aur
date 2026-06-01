@@ -2,14 +2,13 @@ pkgbase = odysseus-ai
 	pkgdesc = A self-hosted AI workspace with chat, agents, deep research, calendar, notes and more
 	pkgver = 0.1.0
 	pkgrel = 2
-	url = https://github.com/taxin-404/odysseus
+	url = https://pewdiepie-archdaemon.github.io/odysseus/
 	install = odysseus-ai.install
 	arch = any
 	license = MIT
 	depends = python>=3.11
 	depends = tmux
 	optdepends = python-pymupdf: PDF form-filling support (AGPL-3.0)
-	optdepends = python-duckduckgo-search: DuckDuckGo search provider
 	backup = etc/odysseus-ai/odysseus.env
 	source = odysseus-ai-0.1.0.tar.gz::https://github.com/taxin-404/odysseus/archive/refs/tags/v0.1.0.tar.gz
 	source = odysseus-ai.desktop
