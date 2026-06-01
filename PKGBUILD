@@ -4,21 +4,21 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-beta
-pkgver=0.2.0
-_pkgver=v0.2.0
-pkgrel=5
+pkgver=0.2.1
+_pkgver=v0.2.1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu - beta and test releases"
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 provides=('eden')
 conflicts=('eden' 'eden-git' 'eden-bin' 'eden-preview-bin')
-depends=('libusb' 'libva' 'qt6-webengine' 'qt6-charts' 'brotli' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg' 'zydis' 'zycore-c' 'quazip-qt6' 'mbedtls' 'fmt' 'enet' 'cubeb' 'qt6-charts')
-makedepends=('cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'enet' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen' 'cpp-jwt')
+depends=('libusb' 'libva' 'qt6-webengine' 'brotli' 'qt6-charts' 'hicolor-icon-theme' 'qt6-base' 'sdl2' 'gcc-libs' 'ffmpeg' 'zydis' 'zycore-c' 'quazip-qt6' 'mbedtls' 'enet' 'cubeb' 'game-devices-udev')
+makedepends=('git' 'cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen' 'cpp-jwt')
 optdepends=('gamemode: Gamemoded support')
-options=('!lto' '!debug')
+options=('!debug')
 source=("eden-v${pkgver}.tar.gz::https://git.eden-emu.dev/eden-emu/eden/archive/${_pkgver}.tar.gz")
-sha256sums=('6ab816bf58507c809f116f64eb1bee3fa5208ac4fb3364e054fe4026c78048be')
+sha256sums=('031b1330af955a49cc969fd9d3efd4e597244c5f6511cfa923872fc727d12bc8')
 
 build() {
 	cd "$srcdir"
@@ -26,13 +26,15 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=None \
 		-DUSE_DISCORD_PRESENCE=ON \
+		-DCPM_USE_LOCAL_PACKAGES=ON \
 		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
-		-DYUZU_USE_BUNDLED_SDL2=OFF \
-		-DYUZU_USE_EXTERNAL_SDL2=OFF \
+		-DDiscordRPC_FORCE_BUNDLED=ON \
+		-Dxbyak_FORCE_BUNDLED=ON \
 		-DYUZU_USE_BUNDLED_QT=OFF \
 		-DENABLE_QT_TRANSLATION=ON \
 		-DYUZU_USE_QT_MULTIMEDIA=ON \
 		-DYUZU_USE_QT_WEB_ENGINE=ON \
+		-Dhttplib_FORCE_BUNDLED=ON \
 		-DTITLE_BAR_FORMAT_RUNNING="eden | ${pkgver} {}" \
 		-DTITLE_BAR_FORMAT_IDLE="eden ${pkgver} {}" \
 		-DYUZU_TESTS=OFF \
