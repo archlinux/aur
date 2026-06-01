@@ -1,0 +1,17 @@
+pkgbase = beans-git
+	pkgdesc = CLI accounting
+	pkgver = r0.0.0
+	pkgrel = 1
+	url = https://github.com/rm-dr/beans
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = beans
+	conflicts = beans
+	source = beans::git+https://github.com/rm-dr/beans.git
+	sha256sums = SKIP
+
+pkgname = beans-git
