@@ -10,7 +10,7 @@ install=ryzenadj-gtk.install
 depends=('python>=3.11' 'python-gobject' 'gtk4' 'libadwaita' 'ryzenadj')
 optdepends=('ryzen_smu-dkms-git: enhanced hardware monitoring and control')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marleylinux/Ryzenadj-gtk/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('091fa6a83adfa9259eb0752350e26231287741775506bd1809acb5f0942e9293')
+sha256sums=('0d2af4f29c8a86ae50f35cb25a83c84c8a861a1e20ed1e0bf05e6ebffc7a84fc')
 
 package() {
   cd "$srcdir/Ryzenadj-"*
