@@ -49,7 +49,17 @@ prepare() {
     mkdir -p .git
     : > .git/HEAD
 
-    pnpm install --frozen-lockfile
+    # pnpm 11 makes blocked dependency build scripts a hard error
+    # (ERR_PNPM_IGNORED_BUILDS). Upstream's pnpm-workspace.yaml only carries a
+    # bogus `allowBuilds:` placeholder (not a real pnpm key), so esbuild and msw
+    # stay blocked and `pnpm install` aborts. The `onlyBuiltDependencies`
+    # allow-list is also ignored under --frozen-lockfile (frozen mode honors the
+    # empty list baked into pnpm-lock.yaml, not the workspace file). Approve the
+    # build scripts explicitly with --config.dangerouslyAllowAllBuilds so the
+    # install can run them: esbuild's postinstall links its native binary (which
+    # vite needs to bundle the frontend); msw's is a test-only stub. Safe here —
+    # the source is a pinned, checksum-verified release tarball.
+    pnpm install --frozen-lockfile --config.dangerouslyAllowAllBuilds=true
 }
 
 build() {
