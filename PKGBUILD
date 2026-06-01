@@ -1,18 +1,16 @@
+# Maintainer: Cryolitia PukNgae <cryolitia at gmail dot com>
 # Maintainer: Yiyao Yu <yuydevel at protonmail dot com>
 # Author: Himprakash Deka <himprakashd at gmail dot com>
 
 pkgname=utterly-nord-plasma
-pkgver=2.1
-pkgrel=4
-pkgdesc='A Global theme for Plasma 5 with transparency, blur, rounded edges for
-window borders and widgets, Nord Color Palette and inspired wallpaper and a
-reasonable desktop layout with a top panel, dock and a Android 12 like clock
-widget.'
+pkgver=3.3
+pkgrel=2
+pkgdesc='A Slick and Modern Global theme for KDE Plasma utilizing the Nord Color Palette with transparency and blur in UI '
 url='https://github.com/HimDek/Utterly-Nord-Plasma'
-_commit='e513b4dfeddd587a34bfdd9ba6b1d1eac8ecadf5'
+_commit='ae0de9d555b518226627b2d10ee5df4a18073c60'
 arch=('any')
-license=('GPL2')
-depends=('plasma-desktop')
+license=('GPL-2.0-or-later')
+depends=('bash' 'kirigami' 'libplasma' 'plasma-workspace' 'qt6-5compat' 'qt6-declarative')
 makedepends=('git')
 optdepends=('kvantum: kvantum application style',
             'konsole: konsole color scheme'
