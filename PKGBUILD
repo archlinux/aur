@@ -2,8 +2,8 @@
 
 _name=sca2d
 pkgname="python-${_name}"
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.1.patch2
+pkgrel=1
 pkgdesc='Static Code Analysis for SCAD'
 arch=('any')
 url='https://gitlab.com/bath_open_instrumentation_group/sca2d'
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=(
   548652491d50d8becfe599d8aac9dc719c2b3b5a3d89744e5dae6ea516d337f0
-  214ee5edd3a9443c861cf64a9a37fd7c8f61003cec1a45e2ca40b9260ae1a0b8
+  65c0a4c19054a3b223de256127be41bdcf054ceab6a07e95dc083589e318fc39
 )
 
 build() {
