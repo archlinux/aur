@@ -6,7 +6,7 @@
 _pkgname=eden
 pkgname=$_pkgname-nightly
 pkgver=1779912217.8fd495f906
-pkgrel=0
+pkgrel=1
 pkgdesc="Nightly release of the Eden Nintendo Switch emulator (built from source)"
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
