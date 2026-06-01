@@ -15,6 +15,8 @@ pkgbase = python-tensorrt-llm
 	makedepends = gcc
 	makedepends = git
 	makedepends = python-cutlass
+	makedepends = nanobind
+	makedepends = python-pybind11-stubgen
 	depends = python
 	depends = python-pytorch-cuda
 	depends = python-numpy
@@ -70,9 +72,9 @@ pkgbase = python-tensorrt-llm
 	optdepends = python-evaluate: for evaluation metrics
 	optdepends = python-blobfile: for blob file operations
 	optdepends = triton-inference-server: for Triton deployment
-	source = python-tensorrt-llm-1.2.1.tar.gz::https://github.com/NVIDIA/TensorRT-LLM/archive/refs/tags/v1.2.1.tar.gz
+	source = TensorRT-LLM-1.2.1::git+https://github.com/NVIDIA/TensorRT-LLM.git#tag=v1.2.1
 	source = glog-0.7-compatibility.patch
-	sha256sums = 10cd270b8c1d2e2709d2c57c38b6fa6e50994d47ba9ad9393583a3e879564511
+	sha256sums = SKIP
 	sha256sums = 8227c455479f0013ebf65b2fd7541e19e66b323cdb6e2a65d5f4486622484e0e
 
 pkgname = python-tensorrt-llm
