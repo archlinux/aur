@@ -1,42 +1,52 @@
-# Maintainer: Alex Hirzel <alex at hirzel period us>
+# Maintainer: Smoolak <smoolak@gmail.com>
+# Contributor: Alex Hirzel <alex at hirzel period us>
 
-pkgname='python-open-clip-torch'
-_name=open_clip
-pkgver='2.30.0'
+pkgname=python-open-clip-torch
+_pkgname=open_clip
+pkgver=3.3.0
 pkgrel=1
-pkgdesc="Open source implementation of OpenAI's CLIP (Contrastive Language-Image Pre-training)."
-url="https://github.com/mlfoundations/${name}"
-depends=(
-	'python-braceexpand'
-	'python-fsspec'
-	'python-ftfy'
-	'python-horovod'
-	'python-huggingface-hub'
-	'python-nltk'
-	'python-pandas'
-	'python-regex'
-	'python-safetensors'
-	'python-sentencepiece'
-	'python-timm'
-	'python-torchvision'
-	'python-tqdm'
-	'python-transformers'
-	'python-wandb'
-	'python-webdataset'
-)
-makedepends=('python-build' 'python-installer' 'python-wheel')
-license=('MIT')
+pkgdesc="Open source implementation of OpenAI's CLIP (Contrastive Language-Image Pre-training)"
 arch=('any')
-source=("https://github.com/mlfoundations/${_name}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('8537e54025314884b5a2bb221ef6c1c9b76c6eccea2e54eef33e94de9b2305d7')
+url="https://github.com/mlfoundations/open_clip"
+license=('MIT')
+depends=(
+    'python'
+    'python-pytorch'
+    'python-torchvision'
+    'python-regex'
+    'python-ftfy'
+    'python-tqdm'
+    'python-huggingface-hub'
+    'python-safetensors'
+    'python-timm'
+)
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-pdm-backend'
+    'python-wheel'
+)
+optdepends=(
+    'python-pandas: for training functionality'
+    'python-webdataset: for training with webdataset'
+    'python-transformers: for training with transformers models'
+    'python-fsspec: for remote filesystem support in training'
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mlfoundations/open_clip/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('5b72b5ea0a5bb4581a95d75487983fa20ebcf18b60261cc126e127f1eb1abffa')
 
 build() {
-	cd "${srcdir}/${_name}-${pkgver}"
-	python -m build --wheel --no-isolation
+    cd "$_pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "$_pkgname-$pkgver"
+    PYTHONPATH="$PWD/src:$PYTHONPATH" python -c "import open_clip; print(open_clip.__version__)"
 }
 
 package() {
-	cd "${srcdir}/${_name}-${pkgver}"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "$_pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
