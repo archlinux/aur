@@ -1,14 +1,14 @@
 pkgbase = datediff.sh
 	pkgdesc = Calculate elapsed time. Check moon phases, Easter dates and next Friday 13th.
-	pkgver = 0.29
-	pkgrel = 2
+	pkgver = 0.30
+	pkgrel = 1
 	url = https://github.com/mountaineerbr/shellDatediff
 	arch = any
 	license = GPL3
 	depends = bash
-	optdepends = bc: fractional time units
-	optdepends = date: convert user input to iso-8601 (gnu, bsd, busybox)
-	source = https://github.com/mountaineerbr/shellDatediff/releases/download/v0.29/shellDatediff.tar.zst
-	sha256sums = 540b916cfe8ff4bd701513b1c2135976424a7e5e7b46098da06a4023bcddc517
+	optdepends = bc: fractional time and large number arithmetics
+	optdepends = date: process input formats other than iso-8601
+	source = https://github.com/mountaineerbr/shellDatediff/releases/download/v0.30/shellDatediff.tar.zst
+	sha256sums = 54f433202acee04e4af36ca382eb3a923d47189ca7552aa31b069db7d0968172
 
 pkgname = datediff.sh
