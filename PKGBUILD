@@ -1,8 +1,8 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=yewtube
-pkgver=2.12.1
-pkgrel=2
+pkgver=2.13.1
+pkgrel=1
 pkgdesc="Terminal-based YouTube player and downloader"
 arch=(any)
 url="https://github.com/mps-youtube/yewtube"
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(python-pip python-pylast python-pyperclip python-requests python-ytsp-git yt-dlp)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=(7d79a6bfcf2bbd1066ad4fdfef5e5fc7ed1ad912ff495dac213c852153b5f92cfbc4f252a0b947413e90c340ad4d1385179086f62fc1bcb56f59fc04f7145ad4)
+b2sums=(9f33ea593cf51650358bcbab3f421537cea8ba800f8c323d809d93c8b74dc7381157d19208cc4f1e56310a7a70c11cb11f3098af4711dc34cc8822cbc64580fd)
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
