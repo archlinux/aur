@@ -1,7 +1,7 @@
 pkgbase = tana
 	pkgdesc = The Everything OS. The all-in-one workspace
 	pkgver = 1.523.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://tana.inc
 	install = tana.install
 	arch = x86_64

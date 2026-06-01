@@ -4,7 +4,7 @@
 
 pkgname=tana
 pkgver=1.523.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Everything OS. The all-in-one workspace"
 arch=('x86_64')
 url="https://tana.inc"
@@ -27,9 +27,9 @@ _gen_script() {
 set -e
 
 APPDIR="/opt/tana"
-_ELECTRON="${APPDIR}/Tana"
+_ELECTRON="${APPDIR}/tana-outliner"
 
-_FLAGS_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/tana-flags.conf"
+_FLAGS_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/tana-flags.conf" 
 if [ -r "$_FLAGS_FILE" ]; then
   _USER_FLAGS="$(cat "$_FLAGS_FILE")"
 fi
