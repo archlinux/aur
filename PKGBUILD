@@ -1,6 +1,6 @@
 pkgname=abciview
 _pkgname=ABCiview
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Unofficial ABC iview desktop application."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('electron-castlab-bin' 'libelectron-electron-meta' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('9753207160f19cca65ab88d037721cf9c3da45da20a3dbedc32f3df62d3ab9d6')
+sha256sums=('e491b8ee4433b1cbd996b38bb2c87dc7114843f4e47da18bb38887de3246e12d')
 
 package() {
     cd "$srcdir/application-$pkgver"
