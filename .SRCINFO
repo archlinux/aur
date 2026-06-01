@@ -1,0 +1,34 @@
+pkgbase = nixl
+	pkgdesc = NVIDIA Inference Xfer Library: high-throughput, low-latency point-to-point data transfer for distributed inference
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/ai-dynamo/nixl
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = meson
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = asio
+	makedepends = tomlplusplus
+	makedepends = pybind11
+	makedepends = python
+	makedepends = gcc15
+	depends = openucx
+	depends = abseil-cpp
+	depends = libfabric
+	depends = liburing
+	depends = cuda
+	depends = gflags
+	source = nixl-0.10.1.tar.gz::https://github.com/ai-dynamo/nixl/archive/refs/tags/0.10.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = nixl
+
+pkgname = python-nixl
+	pkgdesc = Python bindings for NIXL (NVIDIA Inference Xfer Library)
+	depends = nixl
+	depends = python
+	depends = openucx
+	depends = python-numpy
