@@ -39,7 +39,7 @@ pkgbase = curl-c-ares
 	conflicts = curl
 	conflicts = wcurl
 	replaces = wcurl
-	source = git+https://github.com/curl/curl.git#tag=curl-8_20_0?signed
+	source = git+https://github.com/curl/curl.git?signed#tag=curl-8_20_0
 	source = nettle-4.patch
 	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
 	sha512sums = e97541789fb3f5e00ecb41c867f8440e651fdb7be922cddfea70e9462b40ed33d7ca4d29039025584afb11ade8ce389ae25fc41200e3a38706a6fc265cd0c29b

@@ -35,7 +35,7 @@ provides=('curl' 'libcurl.so')
 replaces=('wcurl')
 conflicts=('curl' 'wcurl')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
-source=("git+https://github.com/curl/${_proj}.git#tag=${_git_tag}?signed"
+source=("git+https://github.com/curl/${_proj}.git?signed#tag=${_git_tag}"
         nettle-4.patch)
 sha512sums=('e97541789fb3f5e00ecb41c867f8440e651fdb7be922cddfea70e9462b40ed33d7ca4d29039025584afb11ade8ce389ae25fc41200e3a38706a6fc265cd0c29b'
             '66641075efeb6a4ed3df4dfabe28b7ec9e2c445f5f841d7e424bb40da969646adb6d2401b2507bf06d17f71ceacea66e3300083d0de70b0469b34240dad4c90d')
