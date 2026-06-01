@@ -1,0 +1,4 @@
+[plasma-ions-china]
+source = "git"
+git = "https://github.com/arenekosreal/plasma-ions-china.git"
+prefix = "v"
