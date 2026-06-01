@@ -1,8 +1,8 @@
-# Maintainer: Smoolak <smoolak [at] gmail.com>.
+# Maintainer: Smoolak <smoolak@gmail.com>
 
 pkgname=python-roboflow
 _pkgname=roboflow
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="Official Python package for working with the Roboflow API"
 arch=('any')
@@ -42,7 +42,7 @@ checkdepends=(
   'python-pytest'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/roboflow/roboflow-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1bfe273ccdda3287dd0ea1d9880e53a0d7cea2f113eca60986b249d2f9ee029a')
+sha256sums=('52c4cc14f993b17a7377d8cb27bc0b81ebc0a325759e25a5779ea174712550e7')
 
 build() {
   cd "$_pkgname-python-$pkgver"

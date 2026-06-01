@@ -1,6 +1,6 @@
 pkgbase = python-roboflow
 	pkgdesc = Official Python package for working with the Roboflow API
-	pkgver = 1.3.8
+	pkgver = 1.3.9
 	pkgrel = 1
 	url = https://github.com/roboflow/roboflow-python
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = python-roboflow
 	depends = python-typer
 	depends = python-pi-heif
 	depends = python-pillow-avif-plugin
-	source = python-roboflow-1.3.8.tar.gz::https://github.com/roboflow/roboflow-python/archive/refs/tags/v1.3.8.tar.gz
-	sha256sums = 1bfe273ccdda3287dd0ea1d9880e53a0d7cea2f113eca60986b249d2f9ee029a
+	source = python-roboflow-1.3.9.tar.gz::https://github.com/roboflow/roboflow-python/archive/refs/tags/v1.3.9.tar.gz
+	sha256sums = 52c4cc14f993b17a7377d8cb27bc0b81ebc0a325759e25a5779ea174712550e7
 
 pkgname = python-roboflow
