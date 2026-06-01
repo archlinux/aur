@@ -1,13 +1,13 @@
 pkgbase = perkbox
 	pkgdesc = Local console-based password manager
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/MRivSilv/perkbox
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = xclip
-	source = perkbox-0.4.5.tar.gz::https://github.com/MRivSilv/perkbox/archive/refs/tags/v0.4.5.tar.gz
-	sha256sums = a9039bb176314de9adad7f5f98af5ac00bda1deef39684ca3c78c594f7946faf
+	source = perkbox-0.4.6.tar.gz::https://github.com/MRivSilv/perkbox/archive/refs/tags/v0.4.6.tar.gz
+	sha256sums = 25816e37e77b931f15552bfdd09665f3f2ab32e8b11c3fa763795a11fd777399
 
 pkgname = perkbox
