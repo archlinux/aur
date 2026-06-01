@@ -1,6 +1,6 @@
 pkgbase = gdiff
 	pkgdesc = CLI tool to copy git staged diffs along with a set of rules to the clipboard
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/0Crazy-0/gdiff
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = gdiff
 	optdepends = wl-clipboard: for Wayland clipboard support
 	optdepends = xclip: for X11 clipboard support
 	optdepends = xsel: for X11 clipboard support
-	source = gdiff::git+https://github.com/0Crazy-0/gdiff.git#tag=v1.0.0
+	source = gdiff::git+https://github.com/0Crazy-0/gdiff.git#tag=v1.0.1
 	sha256sums = SKIP
 
 pkgname = gdiff
