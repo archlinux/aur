@@ -1,6 +1,6 @@
 # Maintainer: Nicholas Wilkins <nickwilkins5757@gmail.com>
 pkgname=gladiator
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Evolutionary chess engine trainer with CPU heuristic and neural network variants"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Nicholas-Wilkins/Gladiator/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('20c5838f604f3f2ae55c515655fd16d4b0ccc1bb364b155aa9b033b2a0aa71be')
+sha256sums=('7a5bc824892f803bad0ab33dec369666dae1a393acf1db012e1b177b94c73ec7')
 
 build() {
     cd "Gladiator-$pkgver"
