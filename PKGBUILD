@@ -2,7 +2,7 @@
 
 pkgname=arch-update-check
 pkbase=arch-update-check
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="Pre-update safety checks for Arch Linux (Arch News, system state, optional AUR checks)"
 arch=('any')
@@ -19,4 +19,4 @@ package() {
   install -Dm644 "arch-update-check-${pkgver}/README.md" \
     "$pkgdir/usr/share/doc/arch-update-check/README.md"
 }
-sha256sums=('d882d42f1577cabd1f62d1fb783f277bf792b39d226389f01dd89572f5ac7d09')
+sha256sums=('015228ca3b15eb6a9301e7c4be05ff137ea6ebe52bcd0089f8fb99957071377a')
