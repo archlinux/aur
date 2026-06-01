@@ -72,9 +72,8 @@ prepare() {
   # Mount ISO URL via HTTP streaming — only fetches byte-range segments
   # that are actually read (font data ~350 MiB, not full ISO)
   httpdirfs "${_httpdirfs_cache_opts[@]}" \
-    --dl-seg-size 1 --max-conns 8 \
-    --refresh-timeout 10 --single-file-mode \
-    "${_iso_url}" mnt/http
+    --dl-seg-size 1 --retry-wait 1 --single-file-mode \
+    "${_iso_url}" mnt/http > /dev/null
 
   # Mount the ISO UDF filesystem read-only with FUSE
   udfclientfs -o ro "mnt/http/${_iso}" mnt/iso
