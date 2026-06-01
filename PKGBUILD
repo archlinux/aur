@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=opencpu
-_pkgver=2.2.14
+_pkgver=2.2.15
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,7 +11,6 @@ arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('Apache-2.0')
 depends=(
-  pandoc
   r-brew
   r-curl
   r-evaluate
@@ -28,19 +27,19 @@ depends=(
   r-vctrs
   r-webutils
   r-zip
+  pandoc
 )
 optdepends=(
   apparmor
   r-arrow
   r-haven
   r-pander
-  r-r.rsp
   r-svglite
   r-unix
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b4ac8c8745f0a748f6c64425ad405fa6')
-b2sums=('05371f4a70e5695f094a9e41d1f32534304b3542d94f6a1827c493ab716a1d671c828f4dc614648ca3df3236f03e6009b6bea980a9af225c294ba9a94bf95913')
+md5sums=('cedb76dab48151a09f4eb3c6ba19488b')
+b2sums=('16cbb0502910b1bc7ecaa32a520f3b1cf5d896d1343811cd2bfae8ae382755b1b54fae4f5a8a280e8102a1cc64fac42bdba6bdb77e1ee360fddc12c7876268f9')
 
 build() {
   mkdir build

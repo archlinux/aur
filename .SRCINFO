@@ -1,11 +1,10 @@
 pkgbase = r-opencpu
 	pkgdesc = Producing and Reproducing Results
-	pkgver = 2.2.14
+	pkgver = 2.2.15
 	pkgrel = 1
 	url = https://cran.r-project.org/package=opencpu
 	arch = any
 	license = Apache-2.0
-	depends = pandoc
 	depends = r-brew
 	depends = r-curl
 	depends = r-evaluate
@@ -22,15 +21,15 @@ pkgbase = r-opencpu
 	depends = r-vctrs
 	depends = r-webutils
 	depends = r-zip
+	depends = pandoc
 	optdepends = apparmor
 	optdepends = r-arrow
 	optdepends = r-haven
 	optdepends = r-pander
-	optdepends = r-r.rsp
 	optdepends = r-svglite
 	optdepends = r-unix
-	source = https://cran.r-project.org/src/contrib/opencpu_2.2.14.tar.gz
-	md5sums = b4ac8c8745f0a748f6c64425ad405fa6
-	b2sums = 05371f4a70e5695f094a9e41d1f32534304b3542d94f6a1827c493ab716a1d671c828f4dc614648ca3df3236f03e6009b6bea980a9af225c294ba9a94bf95913
+	source = https://cran.r-project.org/src/contrib/opencpu_2.2.15.tar.gz
+	md5sums = cedb76dab48151a09f4eb3c6ba19488b
+	b2sums = 16cbb0502910b1bc7ecaa32a520f3b1cf5d896d1343811cd2bfae8ae382755b1b54fae4f5a8a280e8102a1cc64fac42bdba6bdb77e1ee360fddc12c7876268f9
 
 pkgname = r-opencpu
