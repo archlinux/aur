@@ -1,7 +1,7 @@
 pkgbase = wallselector-kde
 	pkgdesc = A Qt-based wallpaper carousel and selector for KDE Plasma 6
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/local/wallselector-kde
 	install = wallselector-kde.install
 	arch = any

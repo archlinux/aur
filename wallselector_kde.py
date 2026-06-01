@@ -614,7 +614,8 @@ class WallpaperSelector(QWidget):
             self.cfg["daemon_autostart_created"] = True
             save_config(self.cfg)
 
-        QTimer.singleShot(50, self.init_carousel)
+        # Вызываем загрузку карусели напрямую без таймера
+        self.init_carousel()
         self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
         self.setFocus()
 
