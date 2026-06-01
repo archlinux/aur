@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codewhale-bin
-pkgver=0.8.47
+pkgver=0.8.49
 pkgrel=1
 # Upstream renamed DeepSeek-TUI → CodeWhale on 2026-05-24. The `deepseek`
 # and `deepseek-tui` binaries became thin stubs that exec the real
@@ -24,6 +24,14 @@ _relurl="https://github.com/Hmbown/CodeWhale/releases/download/v${pkgver}"
 
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Hmbown/CodeWhale/v${pkgver}/LICENSE")
 sha256sums=('91873e17f073f4dcddc63799a0a6fdeb44a281440b6c5e0b9d8ea2aa7f7ffd95')
+sha256sums_x86_64=('f7bce4e0bcda86ca55a9df14fd9f2b7d2eb4a0e58d50fb169f8c6d9ffacbf024'
+                   'b5cfecdded68a262617d810dd44b6e12d3c117bedd072acc8a60c7ddb4226c22'
+                   '8818a4933902b4f622f14fd345cff7015cd602bba9735a0b3efabb203f391977'
+                   'e92a06d6ab4cbcba5cedf94fa47ffa6b55a1f6f5d7a0b026797b04d87ef65034')
+sha256sums_aarch64=('394fdaa93c48233be54b784098a90c9a18db5cf4bac795ac46402de46f49d745'
+                    'b4242be6999b473f701e9b7274a6e3a1318884a1689bea6a08a697e318b13fb6'
+                    'd80d6537fe285040ea3875a57fe59155b05c3b947852c099e7d4161f4aa2bfd1'
+                    '725eeca50c39c66c40e07e75eb699f0fdd92a97de20b84a538040b5943a3bbd4')
 
 source_x86_64=(
     "codewhale-${pkgver}-x86_64::${_relurl}/codewhale-linux-x64"
@@ -38,18 +46,6 @@ source_aarch64=(
     "deepseek-tui-${pkgver}-aarch64::${_relurl}/deepseek-tui-linux-arm64"
 )
 
-sha256sums_x86_64=(
-    '8386bc5d3f63c2dd2e29b570815546fd4f84235da56b686f4afe5d058138698f'
-    'c9fd8ca3ba0d517be25cf789b41152d8bdc746d884e8c81fd5c13fec4bb74f57'
-    '6374819efbf9119aca100a2768a3372912b2217529faa00348577cdbd99a0003'
-    '05f84b71828001988e49dfeeba5e5745cb4c662285d160cc6ed43c604b7b0049'
-)
-sha256sums_aarch64=(
-    '9050075da0d4496b52edf237a59a21ccde8b60553cbc689e7aa5565957ebbed8'
-    'a52990590d6f0426819fd3b95a6739922da7e519991278b9d62e2ab42a1745f5'
-    'cb4be56e3ae7867b805fcbb5568febd640b37395cb601e017686b014ac1fb2b1'
-    'd521c16bfda2af42929eac97d9bef801657bf349007f6fc2e06d462c9d0e99c1'
-)
 
 package() {
     install -Dm755 "${srcdir}/codewhale-${pkgver}-${CARCH}" \
