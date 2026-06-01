@@ -3,7 +3,7 @@
 # Contributor: Evert <evorster at gmail dot com>
 _pkgname=hermes-agent
 pkgname=${_pkgname}-git
-pkgver=2026.5.29.r330.g79f7e7
+pkgver=2026.5.29.r361.g70e157
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
@@ -67,14 +67,22 @@ build() {
   # and correctly patches all its embedded prefix paths, avoiding the /install
   # hardcoding problem that uv-managed Python has.
   # hermes-agent itself is pure Python and compatible with Python 3.11 .. 3.14.
+  _py_ver=$(python -c 'import sys; print(f"python{sys.version_info.major}.{sys.version_info.minor}")')
   python -m venv --copies --clear "$srcdir/${_pkgname}/venv" || return 1
   PYTHONDONTWRITEBYTECODE=1 "$srcdir/${_pkgname}/venv/bin/python" -m pip install -U pip setuptools wheel || return 1
-  # Use specific extras instead of [all] — [all] in v0.14.0 includes [dev]
-  # (pytest, debugpy, ruff) which are unnecessary at runtime.
-  PYTHONDONTWRITEBYTECODE=1 "$srcdir/${_pkgname}/venv/bin/python" -m pip install .[cli,pty,mcp,acp,web,cron,homeassistant,sms,google,youtube] || return 1
+  # Use --target so pip installs INTO the build venv's site-packages even when
+  # hermes-agent is already present in /opt/hermes-agent/ (system-wide install).
+  # Without --target, pip sees the system site-packages as "already satisfied"
+  # and skips installation, missing packages like acp/ that were added recently.
+  # --ignore-installed forces pip to write all files to --target regardless of
+  # what the system venv already has.
+  PYTHONDONTWRITEBYTECODE=1 "$srcdir/${_pkgname}/venv/bin/python" -m pip install \
+    --target "$srcdir/${_pkgname}/venv/lib/${_py_ver}/site-packages" \
+    --ignore-installed \
+    .[cli,pty,mcp,acp,web,cron,homeassistant,sms,google,youtube] || return 1
 
   # Detect and persist Python version for package()
-  "$srcdir/${_pkgname}/venv/bin/python" -c 'import sys; print(f"python{sys.version_info.major}.{sys.version_info.minor}")' > "$srcdir/_py_ver"
+  echo "${_py_ver}" > "$srcdir/_py_ver"
 }
 
 package() {
@@ -82,12 +90,40 @@ package() {
 
   # -----------------------------------------------------------------------
   # Python packages -> /opt/hermes-agent/venv/lib/{py_ver}/site-packages/
-  # Only ship site-packages (no venv/bin/ which has $srcdir shebangs).
   # -----------------------------------------------------------------------
   _py_ver=$(cat "$srcdir/_py_ver")
   _optdir="$pkgdir/opt/${_pkgname}"
   install -d "$_optdir/venv/lib/${_py_ver}/site-packages"
   cp -r venv/lib/${_py_ver}/site-packages/* "$_optdir/venv/lib/${_py_ver}/site-packages/"
+
+  # -----------------------------------------------------------------------
+  # Ship pyvenv.cfg + python symlink so generate_systemd_unit() correctly
+  # detects the venv and produces a working gateway systemd service.
+  #
+  # python -m venv (in build()) creates:
+  #   venv/bin/python  -> /usr/bin/python   (symlink, venv prefix)
+  #   venv/bin/python3 -> python            (symlink)
+  #   venv/pyvenv.cfg                       (home=/usr/bin, version=...)
+  #
+  # Without these, get_python_path() returns sys.executable (/usr/bin/python)
+  # which can't find hermes_cli without PYTHONPATH.  With a proper venv
+  # structure, Python auto-detects pyvenv.cfg, sets sys.prefix to the venv
+  # root, and adds the correct site-packages to sys.path — no PYTHONPATH
+  # needed in the generated systemd unit, and the auto-regeneration
+  # (refresh_systemd_unit_if_needed) produces a correct file every time.
+  # -----------------------------------------------------------------------
+  install -d "$_optdir/venv/bin"
+  cp -a venv/bin/python "$_optdir/venv/bin/python"
+  cp -a venv/bin/python3 "$_optdir/venv/bin/python3" 2>/dev/null || true
+  cp venv/pyvenv.cfg "$_optdir/venv/pyvenv.cfg"
+  # Remove scripts with embedded $srcdir shebangs — only python/python3
+  # symlinks are needed.
+  for f in "$_optdir/venv/bin/"*; do
+    case "$(basename "$f")" in
+      python|python3) ;;
+      *) rm -f "$f" ;;
+    esac
+  done
 
   cp -r scripts "$_optdir/"
   echo "==> Installing whatsapp-bridge dependencies..."
@@ -146,6 +182,7 @@ package() {
   cat > "$pkgdir/usr/bin/hermes" <<WRAPPER
 #!/bin/bash
 export PYTHONPATH=/opt/hermes-agent/venv/lib/${_py_ver}/site-packages
+export VIRTUAL_ENV=/opt/hermes-agent/venv
 export HERMES_REVISION=\$(cat /opt/hermes-agent/.git_rev 2>/dev/null || true)
 exec /usr/bin/python -W ignore -m hermes_cli.main "\$@"
 WRAPPER
