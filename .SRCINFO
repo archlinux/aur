@@ -1,0 +1,27 @@
+pkgbase = python-ai-dynamo-runtime
+	pkgdesc = NVIDIA Dynamo inference framework runtime (Rust/pyo3 core)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/ai-dynamo/dynamo
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = python-maturin
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	makedepends = protobuf
+	makedepends = patchelf
+	makedepends = clang
+	depends = python
+	depends = python-pydantic
+	depends = python-uvloop
+	depends = nixl
+	depends = openucx
+	options = !lto
+	source = git+https://github.com/ai-dynamo/dynamo.git#commit=5b4bc1dd70965017a737c71b19db5a0aeaa88727
+	sha256sums = SKIP
+
+pkgname = python-ai-dynamo-runtime
