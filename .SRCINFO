@@ -1,0 +1,19 @@
+pkgbase = openhfta-git
+	pkgdesc = HF terrain analysis tool using the OpenYTWCore Fortran numerical engine
+	pkgver = r2.5e6e415
+	pkgrel = 1
+	url = https://github.com/RioDXGroup/openhfta
+	arch = x86_64
+	license = 0BSD
+	makedepends = gcc-fortran
+	makedepends = git
+	depends = gcc-libs
+	depends = python
+	depends = python-matplotlib
+	depends = python-numpy
+	provides = openhfta=r2.5e6e415
+	conflicts = openhfta
+	source = openhfta::git+https://github.com/RioDXGroup/openhfta.git
+	sha256sums = SKIP
+
+pkgname = openhfta-git
