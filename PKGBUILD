@@ -1,6 +1,6 @@
 # Maintainer: Hec <hec@heccraft.com>
 pkgname=uupd
-pkgver=1.3.0 # renovate: datasource=github-releases depName=ublue-os/uupd
+pkgver=1.4.0 # renovate: datasource=github-releases depName=ublue-os/uupd
 pkgrel=1
 pkgdesc="Centralized update service/checker made for Universal Blue"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=(bootc
   distrobox
   flatpak)
 source=(https://github.com/ublue-os/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('6132b4e1dcc8bd993cf532384dbaf8021084731d709652e4a4105f4b8e04acd8')
+sha256sums=('ab38f5869831f98e4ee637a013ad03ccd7e183aab3c5175eec76041586ced024')
 
 build() {
 	cd "$pkgname-$pkgver"
