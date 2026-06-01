@@ -4,9 +4,9 @@
 _pkgname=phototonic
 pkgname=$_pkgname-git
 pkgver=1.7.21.ga9def1b
-pkgrel=1
+pkgrel=2
 pkgdesc='Image Viewer and Organizer'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='http://oferkv.github.io/phototonic/'
 license=('GPL3')
 depends=('qt5-base' 'exiv2' 'desktop-file-utils' 'gtk-update-icon-cache')
