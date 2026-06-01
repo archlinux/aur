@@ -1,7 +1,7 @@
 pkgbase = python-rectangle-packer
 	pkgdesc = Pack a set of rectangles into a bounding box with minimum area
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Penlect/rectangle-packer
 	arch = i686
 	arch = pentium4

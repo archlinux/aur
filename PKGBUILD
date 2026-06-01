@@ -4,7 +4,7 @@
 _pkgname=rectangle-packer
 pkgname=python-${_pkgname}
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Pack a set of rectangles into a bounding box with minimum area"
 arch=('i686' 'pentium4' 'x86_64')
 url="https://github.com/Penlect/rectangle-packer"
