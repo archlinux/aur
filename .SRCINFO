@@ -1,11 +1,10 @@
 pkgbase = rgbepp
 	pkgdesc = Reference Genome based Exon Phylogeny Pipeline
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/starsareintherose/RGBEPP
 	arch = x86_64
 	license = GPL-2.0-only
-	makedepends = gcc
 	makedepends = ldc
 	depends = fastp
 	depends = spades
@@ -16,7 +15,7 @@ pkgbase = rgbepp
 	depends = bcftools
 	depends = trimal
 	optdepends = exonerate: for extract exon
-	source = https://github.com/starsareintherose/RGBEPP/archive/refs/tags/0.0.3.tar.gz
-	sha256sums = c1bbc6758c3fc800c9268d5295f16b637b494d43e931c02652d1a3c748546ae4
+	source = https://github.com/starsareintherose/RGBEPP/archive/refs/tags/0.0.4.tar.gz
+	sha256sums = 2cfb59b37453d584c6d812b8bc0907a5e320c4997d33cf515a53d0a4b1d94a5a
 
 pkgname = rgbepp
