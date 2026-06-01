@@ -22,7 +22,6 @@ post_install() {
  echo "==> Add your API keys to ~/.hermes/.env"
  echo "==> Then run 'hermes model' to configure your provider."
  echo "==> Run 'hermes doctor' to verify your setup."
- echo ""
  echo "==> To suppress the 'pip install not officially supported' banner warning, run:"
  echo " mkdir -p ~/.hermes && echo arch > ~/.hermes/.install_method"
 }
