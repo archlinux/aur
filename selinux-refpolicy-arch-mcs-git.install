@@ -18,8 +18,18 @@ post_upgrade() {
 }
 
 post_remove() {
-    echo ">>> Removing refpolicy-arch-git left-over files in /var/lib/selinux"
-    /usr/bin/rm -rf /var/lib/selinux/refpolicy-arch-git
+    # NOTE: deliberately does NOT `rm -rf /var/lib/selinux/refpolicy-arch-git`.
+    # That directory is a libsemanage policy *store* — mutable runtime state
+    # created by `semodule`, NOT part of this package's payload (`pacman -Qo`
+    # reports it unowned). It is shared: besides this package's base modules it
+    # also holds any LOCALLY loaded modules (e.g. priority-400/500 admin policy
+    # from `semodule -i`). Blindly wiping it destroyed a database we don't own
+    # and silently removed the admin's local modules — the postgres-data
+    # antipattern (a package must not delete state it didn't create). Leave it;
+    # tell the operator how to purge by hand if they truly want a clean slate.
+    echo ">>> The SELinux policy store /var/lib/selinux/refpolicy-arch-git is kept"
+    echo ">>> (it may hold locally-loaded modules). To purge it manually:"
+    echo ">>>     rm -rf /var/lib/selinux/refpolicy-arch-git"
 
     if [ -L /etc/selinux/config ] && ! [ -e /etc/selinux/config ]
     then

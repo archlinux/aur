@@ -11,7 +11,7 @@ _reponame=refpolicy
 _policyname=${_reponame}-arch-git
 pkgname=selinux-refpolicy-arch-mcs-git
 pkgver=RELEASE_2_20260312.r70.g0dae0f47c
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular SELinux reference policy (Arch patches, latest commit), built TYPE=mcs"
 arch=('any')
 url="https://github.com/SELinuxProject/${_reponame}/wiki"
