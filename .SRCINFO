@@ -7,6 +7,7 @@ pkgbase = python-rectangle-packer
 	arch = pentium4
 	arch = x86_64
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	provides = python-rectangle-packer
 	conflicts = python-rectangle-packer

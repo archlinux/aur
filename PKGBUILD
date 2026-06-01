@@ -10,6 +10,7 @@ arch=('i686' 'pentium4' 'x86_64')
 url="https://github.com/Penlect/rectangle-packer"
 license=('MIT')
 depends=('python')
+makedepends=('python-setuptools')
 provides=('python-rectangle-packer')
 conflicts=('python-rectangle-packer')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
