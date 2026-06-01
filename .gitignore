@@ -1,0 +1,4 @@
+/selinux-refpolicy-arch-mcs-git*.pkg.tar*
+/refpolicy/
+/pkg/
+/src/

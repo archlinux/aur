@@ -1,0 +1,34 @@
+pkgbase = selinux-refpolicy-arch-mcs-git
+	pkgdesc = Modular SELinux reference policy (Arch patches, latest commit), built TYPE=mcs
+	pkgver = RELEASE_2_20260312.r70.g0dae0f47c
+	pkgrel = 1
+	url = https://github.com/SELinuxProject/refpolicy/wiki
+	install = selinux-refpolicy-arch-mcs-git.install
+	arch = any
+	groups = selinux
+	license = GPL2
+	makedepends = git
+	makedepends = python
+	makedepends = checkpolicy>=3.0
+	makedepends = semodule-utils
+	depends = policycoreutils>=3.0
+	provides = selinux-refpolicy-arch-git=RELEASE_2_20260312.r70.g0dae0f47c
+	conflicts = selinux-refpolicy-arch-git
+	replaces = selinux-refpolicy-arch-git
+	source = git+https://github.com/SELinuxProject/refpolicy
+	source = 0001-Push-initial-arch-compat-commit.patch
+	source = config
+	sha256sums = SKIP
+	sha256sums = 15f0b63af5790cc70b442648f6e30df57f4f91d95c7ca541e0b1bc1f59236020
+	sha256sums = 61babf996035dac53f5b74882a506537c2a6b0e3ee4df9dc24ac053bcd641109
+	sha384sums = SKIP
+	sha384sums = 6a4d84ef069f290831f5b0a394ef844f881059857505377f4046d5c088f16fb786501654ec33329e0444599d2fea3417
+	sha384sums = 37d4a9e6b65219ac6f1bd1b286b81faf27e89c6162ffec6d434627a66b229541adf5527e62ae263ca1856682dfd121d7
+	sha512sums = SKIP
+	sha512sums = 8fe8aff6b5e0c3b2c1998626762f604a66eb95e0ae7125a7c7796253541448469117b4a4b29be38517f7bd0dc62f5a9face271ce99367f3ceb856c341bf520a0
+	sha512sums = d6d168fdce5eef1fc843559f0883909ecd9b0a625277c3e93c2a4ede9360af830992bb1c66cbfd3f968ecbf54aeba035790017e7711dd91b32ba06582a69d0e8
+	b2sums = SKIP
+	b2sums = 4a26123f522ae0c953ea35740f7d5f588d46aed0ac502f7c67133f3556cf98d088c69947bc8ea45536e06ea600a3ce4a16265746301fcc98d837eb3563b2ea66
+	b2sums = ccf20940db9665842a7c5f714d56c35710b289aca8f92084d31cc105ffb578e429b279eff0b17943516febde1558a136fe127011f268f9d394e79591de61bf61
+
+pkgname = selinux-refpolicy-arch-mcs-git
