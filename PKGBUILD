@@ -1,6 +1,6 @@
 # Maintainer: Ozhan Gebesoglu <ozhan.gebesoglu@gmail.com>
 pkgname=kishi-shell
-pkgver=2.0.2.0
+pkgver=2.0.2.1
 pkgrel=1
 pkgdesc="A powerful, highly modular, Python-based modern TUI shell"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('python' 'python-prompt_toolkit' 'python-psutil')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ozhangebesoglu/Kishi-Shell/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('404b229628f1015cb2887567f1369aad5c7e764b2c1098577e78d690eb2ad9ae')
+sha256sums=('4e25189a761c2784c8e7bcc6d67d95095d33d1aee22fa09dc66840b291355122')
 
 build() {
     cd "Kishi-Shell-$pkgver"
