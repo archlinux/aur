@@ -1,0 +1,24 @@
+pkgbase = fsvc-bin
+	pkgdesc = Financial-services CLI: Revolut Business today, ING tomorrow.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/j4y-w4lk3r/fsvc
+	license = MIT
+	optdepends = gnupg: fsvc bootstrap shells out to ykw which shells out to gpg
+	optdepends = ykw: fsvc bootstrap shells out to ykw decrypt for the encrypted creds
+	optdepends = bbm: fsvc bootstrap shells out to bbm pull to fetch encrypted creds from B2
+	depends = glibc
+	conflicts = fsvc
+	conflicts = fsvc-git
+	provides = fsvc
+	arch = aarch64
+	source_aarch64 = https://github.com/j4y-w4lk3r/fsvc/releases/download/v0.1.0/fsvc_0.1.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 998f875d228f099fb998cae0652439562179b164d3ad5e8bad0d9cb408556f32
+	arch = armv7h
+	source_armv7h = https://github.com/j4y-w4lk3r/fsvc/releases/download/v0.1.0/fsvc_0.1.0_Linux_armv7.tar.gz
+	sha256sums_armv7h = c26addff82e75bce6fc6be9231329c503b0d7052c979f6dc6aa4d7fa3f74d04a
+	arch = x86_64
+	source_x86_64 = https://github.com/j4y-w4lk3r/fsvc/releases/download/v0.1.0/fsvc_0.1.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 370df045804ae44e19f5e9c352cb7108b6b4bea4bf2932a972a76d8ee5d9bfcf
+	
+pkgname = fsvc-bin
