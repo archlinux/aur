@@ -1,8 +1,21 @@
+From 005ea8b7f69e4d38026bab6a3b1c98a95a3f8d6a Mon Sep 17 00:00:00 2001
+From: Hec <hec@heccraft.com>
+Date: Mon, 1 Jun 2026 12:17:44 -0400
+Subject: [PATCH] Modify grub paths to match Arch Linux
+
+---
+ src/bios.rs                   | 24 ++++++++++++------------
+ src/bootupd.rs                | 14 +++++++-------
+ src/grub2/grub-static-efi.cfg |  6 +++---
+ src/grub2/grub-static-pre.cfg |  6 +++---
+ src/grubconfigs.rs            | 16 ++++++++--------
+ 5 files changed, 33 insertions(+), 33 deletions(-)
+
 diff --git a/src/bios.rs b/src/bios.rs
-index 4f6764f..d3e53db 100644
+index f341f99..2462aa5 100644
 --- a/src/bios.rs
 +++ b/src/bios.rs
-@@ -16,7 +16,7 @@ use crate::model::*;
+@@ -15,7 +15,7 @@ use crate::model::*;
  use crate::packagesystem;
  
  // grub2-install file path
@@ -10,10 +23,17 @@ index 4f6764f..d3e53db 100644
 +pub(crate) const GRUB_BIN: &str = "usr/bin/grub-install";
  
  #[cfg(target_arch = "powerpc64")]
- fn target_device(device: &str) -> Result<Cow<str>> {
-@@ -151,10 +151,10 @@ impl Component for Bios {
-     // - Remove symlink "/boot/grub2/grub.cfg"
-     // - Replace "/boot/grub2/grub.cfg" symlink with new static "grub.cfg"
+ fn target_device(device: &Device) -> Result<String> {
+@@ -148,14 +148,14 @@ impl Component for Bios {
+     }
+ 
+     // Backup the current grub.cfg and replace with new static config
+-    // - Backup "/boot/loader/grub.cfg" to "/boot/grub2/grub.cfg.bak"
+-    // - Remove symlink "/boot/grub2/grub.cfg"
+-    // - Replace "/boot/grub2/grub.cfg" symlink with new static "grub.cfg"
++    // - Backup "/boot/loader/grub.cfg" to "/boot/grub/grub.cfg.bak"
++    // - Remove symlink "/boot/grub/grub.cfg"
++    // - Replace "/boot/grub/grub.cfg" symlink with new static "grub.cfg"
      fn migrate_static_grub_config(&self, sysroot_path: &str, destdir: &openat::Dir) -> Result<()> {
 -        let grub = "boot/grub2";
 +        let grub = "boot/grub";
@@ -24,11 +44,64 @@ index 4f6764f..d3e53db 100644
  
          let grub_config = grub_config_path.join(grubconfigs::GRUBCONFIG);
  
+@@ -164,14 +164,14 @@ impl Component for Bios {
+         }
+ 
+         let mut current_config;
+-        // If /boot/grub2/grub.cfg is not symlink, we need to keep going
++        // If /boot/grub/grub.cfg is not symlink, we need to keep going
+         if !grub_config.is_symlink() {
+             println!("'{}' is not a symlink", grub_config);
+             current_config = grub_config.clone();
+         } else {
+-            // If /boot/grub2/grub.cfg is symlink to /boot/loader/grub.cfg,
+-            // backup it to /boot/grub2/grub.cfg.bak
+-            // Get real file for symlink /boot/grub2/grub.cfg
++            // If /boot/grub/grub.cfg is symlink to /boot/loader/grub.cfg,
++            // backup it to /boot/grub/grub.cfg.bak
++            // Get real file for symlink /boot/grub/grub.cfg
+             let real_config = grub_config_dir.read_link(grubconfigs::GRUBCONFIG)?;
+             let real_config =
+                 Utf8PathBuf::from_path_buf(real_config).expect("Path should be valid UTF-8");
+@@ -194,13 +194,13 @@ impl Component for Bios {
+         crate::grubconfigs::install(&destdir, None, None, true)?;
+ 
+         // Remove the real config if it is symlink and will not
+-        // if /boot/grub2/grub.cfg is file
++        // if /boot/grub/grub.cfg is file
+         if current_config != grub_config {
+             println!("Removing {}", current_config);
+             grub_config_dir.remove_file_optional(current_config.as_std_path())?;
+         }
+ 
+-        // Synchronize the filesystem containing /boot/grub2 to disk.
++        // Synchronize the filesystem containing /boot/grub to disk.
+         fsfreeze_thaw_cycle(grub_config_dir.open_file(".")?)?;
+ 
+         Ok(())
 diff --git a/src/bootupd.rs b/src/bootupd.rs
-index 0065300..ba18b72 100644
+index e01ce92..1bf69f9 100644
 --- a/src/bootupd.rs
 +++ b/src/bootupd.rs
-@@ -602,8 +602,8 @@ pub(crate) fn client_run_migrate_static_grub_config() -> Result<()> {
+@@ -337,7 +337,7 @@ pub(crate) fn update(name: &str, rootcxt: &RootContext) -> Result<ComponentUpdat
+     {
+         let grub2dir = &sysroot
+             .sub_dir(format!("boot/{GRUB2DIR}"))
+-            .context("Opening /boot/grub2")?;
++            .context("Opening /boot/grub")?;
+         ensure_grub_permissions(grub2dir)?;
+     }
+ 
+@@ -389,7 +389,7 @@ pub(crate) fn adopt_and_update(
+     {
+         let grub2dir = &sysroot
+             .sub_dir(format!("boot/{GRUB2DIR}"))
+-            .context("Opening /boot/grub2")?;
++            .context("Opening /boot/grub")?;
+         ensure_grub_permissions(grub2dir)?;
+     }
+ 
+@@ -737,8 +737,8 @@ pub(crate) fn client_run_migrate_static_grub_config() -> Result<()> {
      // Remount /boot read write just for this unit (we are called in a slave mount namespace by systemd)
      ensure_writable_boot()?;
  
@@ -39,7 +112,7 @@ index 0065300..ba18b72 100644
  
      // We mark the bootloader as BLS capable to disable the ostree-grub2 logic.
      // We can do that as we know that we are run after the bootloader has been
-@@ -612,10 +612,10 @@ pub(crate) fn client_run_migrate_static_grub_config() -> Result<()> {
+@@ -747,10 +747,10 @@ pub(crate) fn client_run_migrate_static_grub_config() -> Result<()> {
      // manually overwrites the (soon) static GRUB config by calling `grub2-mkconfig`.
      // We need this until we can rely on ostree-grub2 being removed from the image.
      println!("Marking bootloader as BLS capable...");
@@ -52,7 +125,7 @@ index 0065300..ba18b72 100644
      match dirfd.read_link("grub.cfg") {
          Err(_) => {
              println!(
-@@ -631,7 +631,7 @@ pub(crate) fn client_run_migrate_static_grub_config() -> Result<()> {
+@@ -766,7 +766,7 @@ pub(crate) fn client_run_migrate_static_grub_config() -> Result<()> {
              current_config.push(path);
  
              // Backup the current GRUB config which is hopefully working right now
@@ -81,10 +154,10 @@ index 3d552c3..8b0f5b7 100644
  fi
  boot
 diff --git a/src/grub2/grub-static-pre.cfg b/src/grub2/grub-static-pre.cfg
-index a092008..8441bf7 100644
+index a092008..5d6a358 100644
 --- a/src/grub2/grub-static-pre.cfg
 +++ b/src/grub2/grub-static-pre.cfg
-@@ -2,7 +2,7 @@
+@@ -2,10 +2,10 @@
  # Changes:
  #   - Dropped Ignition glue, that can be injected into platform.cfg
  # petitboot doesn't support -e and doesn't support an empty path part
@@ -92,7 +165,11 @@ index a092008..8441bf7 100644
 +if [ -d (md/md-boot)/grub ]; then
    # fcct currently creates /boot RAID with superblock 1.0, which allows
    # component partitions to be read directly as filesystems.  This is
-   # necessary because transposefs doesn't yet rerun grub2-install on BIOS,
+-  # necessary because transposefs doesn't yet rerun grub2-install on BIOS,
++  # necessary because transposefs doesn't yet rerun grub-install on BIOS,
+   # so GRUB still expects /boot to be a partition on the first disk.
+   #
+   # There are two consequences:
 @@ -19,7 +19,7 @@ if [ -d (md/md-boot)/grub2 ]; then
    #    future module loads to come from the RAID, so we reset $prefix.
    #    (On UEFI, the stub grub.cfg has already set $prefix properly.)
@@ -103,28 +180,25 @@ index a092008..8441bf7 100644
    if [ -f ${config_directory}/bootuuid.cfg ]; then
      source ${config_directory}/bootuuid.cfg
 diff --git a/src/grubconfigs.rs b/src/grubconfigs.rs
-index 17be02a..b28d46f 100644
+index 65196c3..645b922 100644
 --- a/src/grubconfigs.rs
 +++ b/src/grubconfigs.rs
-@@ -11,7 +11,7 @@ use openat_ext::OpenatDirExt;
+@@ -12,7 +12,7 @@ use openat_ext::OpenatDirExt;
  use crate::freezethaw::fsfreeze_thaw_cycle;
  
  /// The subdirectory of /boot we use
--const GRUB2DIR: &str = "grub2";
-+const GRUB2DIR: &str = "grub";
+-pub(crate) const GRUB2DIR: &str = "grub2";
++pub(crate) const GRUB2DIR: &str = "grub";
  const CONFIGDIR: &str = "/usr/lib/bootupd/grub2-static";
  const DROPINDIR: &str = "configs.d";
  // The related grub files
-@@ -138,14 +138,14 @@ pub(crate) fn install(
+@@ -143,12 +143,12 @@ pub(crate) fn install(
      Ok(())
  }
  
 -#[context("Create file boot/grub2/grubenv")]
 +#[context("Create file boot/grub/grubenv")]
- fn write_grubenv(bootdir: &openat::Dir) -> Result<()> {
--    let grubdir = &bootdir.sub_dir(GRUB2DIR).context("Opening boot/grub2")?;
-+    let grubdir = &bootdir.sub_dir(GRUB2DIR).context("Opening boot/grub")?;
- 
+ fn write_grubenv(grubdir: &openat::Dir) -> Result<()> {
      if grubdir.exists(GRUBENV)? {
          return Ok(());
      }
@@ -133,7 +207,7 @@ index 17be02a..b28d46f 100644
      if !editenv.exists() {
          anyhow::bail!("Failed to find {:?}", editenv);
      }
-@@ -167,29 +167,29 @@ mod tests {
+@@ -200,25 +200,25 @@ mod tests {
          let td = tempfile::tempdir()?;
          let tdp = td.path();
          let td = openat::Dir::open(tdp)?;
@@ -158,13 +232,20 @@ index 17be02a..b28d46f 100644
          }
          let td = tempfile::tempdir()?;
          let tdp = td.path();
--        std::fs::create_dir_all(tdp.join("boot/grub2"))?;
-+        std::fs::create_dir_all(tdp.join("boot/grub"))?;
-         let td = openat::Dir::open(&tdp.join("boot"))?;
+-        let grub = tdp.join("boot/grub2");
++        let grub = tdp.join("boot/grub");
+         std::fs::create_dir_all(&grub)?;
+         let td = openat::Dir::open(&grub)?;
          write_grubenv(&td)?;
+@@ -237,7 +237,7 @@ mod tests {
+     fn test_ensure_grub_permissions() -> Result<()> {
+         let td = tempfile::tempdir()?;
+         let tdp = td.path();
+-        let grub = tdp.join("boot/grub2");
++        let grub = tdp.join("boot/grub");
+         std::fs::create_dir_all(&grub)?;
+         let grub_dir = openat::Dir::open(&grub)?;
  
--        assert!(td.exists("grub2/grubenv")?);
-+        assert!(td.exists("grub/grubenv")?);
-         Ok(())
-     }
- }
+-- 
+2.54.0
+
