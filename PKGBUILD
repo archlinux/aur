@@ -5,7 +5,7 @@
 pkgname=radarr-develop
 _pkgname=Radarr
 pkgver=6.2.1.10437
-pkgrel=1
+pkgrel=2
 pkgdesc='Movie organizer/manager for usenet and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
 url='https://radarr.video'
@@ -73,7 +73,7 @@ prepare() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-  dotnet new globaljson --sdk-version 8.0.112 --force
+  dotnet new globaljson --sdk-version 8.0.127 --roll-forward latestFeature
 
   # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
