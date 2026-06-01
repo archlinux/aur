@@ -1,6 +1,6 @@
 pkgname=adw-network-bin
-pkgver=1.0.0
-pkgrel=5
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Modern network management application for GNOME (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/PlayRood32/adw-network"
@@ -19,9 +19,11 @@ source=(
   "icon.png::https://raw.githubusercontent.com/PlayRood32/adw-network/main/data/icons/hicolor/scalable/apps/icon.png"
 )
 
-sha256sums=('ca18a80b4c3551647a75300b286cea0ea2f1a8c216270e384d29624ba50a50ae'
-            '87e22132167fdb6372cf4fbdf1a60a0449e8ef1e5889d1a156a8eb540c069038'
-            '518a328abee19239ba5f20bcbfe3f15c474bc5c18b8adcb37c9793ecf7c640cc')
+sha256sums=(
+  'ca0692a3fcd72fb7a46556d63ee967b80492c480d79f3fbd922afc75dba7b6a6'
+  '87e22132167fdb6372cf4fbdf1a60a0449e8ef1e5889d1a156a8eb540c069038'
+  '518a328abee19239ba5f20bcbfe3f15c474bc5c18b8adcb37c9793ecf7c640cc'
+)
 
 package() {
   local bin
