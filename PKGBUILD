@@ -49,7 +49,7 @@ package() {
 
     # Regenerate the GDK loaders pixbuf cache.
     #
-    GDK_PIXBUF_MODULEDIR=$pkgdir/opt/gnatstudio/lib/gnatstudio/gdk-pixbuf-2.0/2.10.0/loaders \
+    GDK_PIXBUF_MODULEDIR=/opt/gnatstudio/lib/gnatstudio/gdk-pixbuf-2.0/2.10.0/loaders \
     gdk-pixbuf-query-loaders > $pkgdir/opt/gnatstudio/lib/gnatstudio/gdk-pixbuf-2.0/2.10.0/loaders.cache
     
 
