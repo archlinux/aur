@@ -83,18 +83,30 @@ prepare() {
   # Mount the ISO with a FUSE UDF filesystem
   udfclientfs -r "mnt/http/${_iso}" mnt/iso
 
-  # Save WIM XML metadata for inspection and authoritative version
-  wiminfo --xml "mnt/iso/sources/install.wim" 1 > "${srcdir}/wiminfo.xml"
+  # Save WIM XML metadata (raw XML document, no text prefix)
+  wiminfo "mnt/iso/sources/install.wim" --extract-xml="${srcdir}/wiminfo.xml"
 
-  # Derive and cache authoritative version from WIM metadata
+  # Derive authoritative version from WIM metadata; fall back to ISO filename
+  local _ver_source
   {
     local _major _minor _build _spbuild
-    _major="$(sed -n 's:.*<MAJOR>\(.*\)</MAJOR>.*:\1:p' "${srcdir}/wiminfo.xml" | head -1)"
-    _minor="$(sed -n 's:.*<MINOR>\(.*\)</MINOR>.*:\1:p' "${srcdir}/wiminfo.xml" | head -1)"
-    _build="$(sed -n 's:.*<BUILD>\(.*\)</BUILD>.*:\1:p' "${srcdir}/wiminfo.xml" | head -1)"
-    _spbuild="$(sed -n 's:.*<SPBUILD>\(.*\)</SPBUILD>.*:\1:p' "${srcdir}/wiminfo.xml" | head -1)"
-    printf '%s.%s.%s.%s\n' "${_major}" "${_minor}" "${_build}" "${_spbuild}"
-  } > "${srcdir}/.version"
+    _major="$(awk -F'[<>]' '/<MAJOR>/{print $3; exit}' "${srcdir}/wiminfo.xml")"
+    _minor="$(awk -F'[<>]' '/<MINOR>/{print $3; exit}' "${srcdir}/wiminfo.xml")"
+    _build="$(awk -F'[<>]' '/<BUILD>/{print $3; exit}' "${srcdir}/wiminfo.xml")"
+    _spbuild="$(awk -F'[<>]' '/<SPBUILD>/{print $3; exit}' "${srcdir}/wiminfo.xml")"
+    if [[ -n "${_major}" && -n "${_minor}" && -n "${_build}" && -n "${_spbuild}" ]]; then
+      _ver_source='WIM XML'
+      printf '%s.%s.%s.%s\n' "${_major}" "${_minor}" "${_build}" "${_spbuild}"
+    else
+      _ver_source='ISO filename'
+      local _fb _fb_build _fb_spbuild
+      _fb="${_iso#*.}"
+      _fb_build="${_iso%%\.*}"
+      _fb_spbuild="${_fb%%.*}"
+      printf '10.0.%s.%s\n' "${_fb_build}" "${_fb_spbuild}"
+    fi
+  } > "${srcdir}/version"
+  printf 'Derived version %s from %s\n' "$(cat "${srcdir}/version")" "${_ver_source}"
 
   # List all font files in image 1 (the sole Enterprise Evaluation image)
   # and extract them directly — no full-WIM decompression needed
@@ -115,8 +127,8 @@ prepare() {
 # ISO filename format: "BUILD.SPBUILD.date-arch.CLIENTEVAL...en-us.iso"
 pkgver() {
   # Use authoritative WIM version cache if available
-  if [[ -f "${srcdir}/.version" ]]; then
-    cat "${srcdir}/.version"
+  if [[ -f "${srcdir}/version" ]]; then
+    cat "${srcdir}/version"
     return
   fi
 
