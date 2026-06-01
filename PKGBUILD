@@ -6,7 +6,7 @@
 # font files without downloading the entire multi-gigabyte ISO. Only the
 # segments of the ISO required to access the font data are transferred via HTTP.
 
-pkgname=ttf-ms-win-http
+pkgname=ttf-ms-win-httpdirfs
 pkgdesc='Microsoft Windows TrueType fonts (downloaded via HTTP streaming)'
 pkgver=10.0.26100.2894  # overridden by pkgver() after prepare() dumps install.wim info
 pkgrel=1
@@ -53,15 +53,20 @@ prepare() {
 
   # Cleanup trap for FUSE mounts — fires on any prepare() exit
   # shellcheck disable=SC2329  # _cleanup invoked indirectly via trap
+  _traps_saved="$(trap)"
   _cleanup() {
     local _status=$?
     set +e
+    trap '' EXIT HUP INT QUIT TERM
     fusermount3 -uz mnt/iso 2>/dev/null || fusermount -uz mnt/iso 2>/dev/null || true
     fusermount3 -uz mnt/http 2>/dev/null || fusermount -uz mnt/http 2>/dev/null || true
+    # Restore standard pkgbuild traps
+    eval "${_traps_saved}"
     return "$_status"
   }
-  trap _cleanup EXIT INT HUP TERM
+  trap _cleanup EXIT HUP INT QUIT TERM
 
+  # Create mount points
   mkdir -p mnt/{http,iso}
 
   # Mount ISO URL via HTTP streaming — only fetches byte-range segments
@@ -80,17 +85,20 @@ prepare() {
   # Save WIM XML for image 1, converting UTF-16LE to UTF-8
   wiminfo "mnt/iso/sources/install.wim" "${_wim_image_idx}" --xml | iconv -f UTF-16LE -t UTF-8 > "${srcdir}/wiminfo.xml"
 
-  # Extract license file(s) from the WIM (RTF EULA)
+  # Extract package() files from {ISO_IMAGE}/sources/install.wim
+  echo "Extracting licence.rtf"
   wimdir "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
   | grep -i '/Windows/System32/Licenses/neutral/.*license\.rtf$' \
   | xargs -r wimextract "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
     --no-acls --dest-dir="${srcdir}/license"
 
-  # Extract all font files
+  echo "Extracting all font files..."
   wimdir "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
   | grep '/Windows/Fonts/.*\.tt[cf]$' \
   | xargs -r wimextract "mnt/iso/sources/install.wim" "${_wim_image_idx}" \
     --no-acls --dest-dir="${srcdir}/fonts"
+
+  _cleanup  # Unmount UDF image and HTTP mounts, restore standard traps
 }
 
 # Version is only available after prepare() mounts the ISO and extracts wiminfo
@@ -98,7 +106,7 @@ pkgver() {
   # Extract version from <PKEYCONFIGVERSION> tag
   # Format: 10.0.26200.6584;2016-01-01T00:00:00Z
   # sed captures the 4-field version (digits.digits.digits.digits) after the tag:
-  #   <PKEYCONFIGVERSION>10.0.26200.6584;DATE</PKEYCONFIGVERSION>
+  #   <PKEYCONFIGVERSION>10.0.26200.6584;{date}</PKEYCONFIGVERSION>
   #                     ^^^^^^^^^^^^^^^^
   local _ver
   _ver="$(sed -En 's/.*<PKEYCONFIGVERSION>[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+).*/\1/p' "${srcdir}/wiminfo.xml")"
