@@ -4,19 +4,20 @@
 _base=tcolorpy
 pkgname=python-${_base}
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to apply true color for terminal text"
 arch=(any)
 url="https://github.com/thombashi/${_base}"
 license=(MIT)
 depends=(python)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('2c88e5d5bdf3971fff329c6da52c3577da09c87e46a27c0379974a88457ccbdb4ac73e44caa3076db36b016a454901b6f9601340b12410a08379ee5ef2749724')
 
 build() {
   cd ${_base}-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
