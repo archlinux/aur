@@ -1,7 +1,7 @@
 # Maintainer: Lumina Nao <luminanao@duck.com>
 
 pkgname=llama-hdd
-pkgver=1.0.0
+pkgver=b9274.hdd
 pkgrel=1
 pkgdesc="LLM inference in C/C++ with disk-backed prompt-checkpoint persistence (llama.cpp soft-fork)"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=(
 )
 provides=('llama.cpp' "llama.cpp=${pkgver}")
 conflicts=('llama.cpp' 'llama.cpp-cuda' 'llama.cpp-vulkan' 'llama.cpp-hip')
-source=("${pkgname}::git+https://codeberg.org/LuminaNAO/llama-hdd.cpp.git#tag=v${pkgver}")
+source=("${pkgname}::git+https://codeberg.org/LuminaNAO/llama-hdd.cpp.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 # Backend selection: cpu (default), vulkan, cuda, rocm
