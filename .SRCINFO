@@ -1,6 +1,6 @@
 pkgbase = beans-git
 	pkgdesc = CLI accounting
-	pkgver = r0.0.0
+	pkgver = r0.0.1
 	pkgrel = 1
 	url = https://github.com/rm-dr/beans
 	arch = x86_64
