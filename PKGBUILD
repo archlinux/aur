@@ -1,7 +1,7 @@
 # Maintainer: thefangeddeity
 pkgname=ele-messenger-client
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ELE Messenger desktop client — resilience-first household chat"
 arch=('x86_64')
 url="https://github.com/thefangeddeity/ele-messenger"
@@ -15,6 +15,7 @@ package() {
     cp -r "$srcdir/bundle/." "$pkgdir/usr/lib/ele-messenger-client/"
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/ele-messenger-client" << 'WRAPPER'
 #!/bin/sh
+cd "$HOME"
 exec /usr/lib/ele-messenger-client/ele_messenger "$@"
 WRAPPER
     install -Dm644 "$srcdir/bundle/data/flutter_assets/assets/icon.png" \
