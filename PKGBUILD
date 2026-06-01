@@ -3,7 +3,7 @@
 
 pkgname=rustowl
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Visualize Ownership and Lifetimes in Rust'
 url='https://github.com/cordx56/rustowl'
 license=('MPL-2.0')
@@ -17,7 +17,7 @@ sha256sums=('ada97d9f387c86b8cbce9dc9e7f20565d578013a5b4517e9826cb2ec6d1cc432')
 prepare() {
     cd rustowl-${pkgver}
     export RUSTC_BOOTSTRAP=1
-    export RUSTUP_TOOLCHAIN=1.89.0
+    export RUSTUP_TOOLCHAIN=1.95.0
     rustup component add rust-src rustc-dev llvm-tools
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -26,7 +26,7 @@ build() {
     cd rustowl-${pkgver}
     export CARGO_TARGET_DIR=target
     export RUSTC_BOOTSTRAP=1
-    export RUSTUP_TOOLCHAIN=1.89.0
+    export RUSTUP_TOOLCHAIN=1.95.0
     export RUSTOWL_RUNTIME_DIRS=/opt/rustowl
     cargo build --frozen --release --all-features --target $(rustc --print=host-tuple)
 }
@@ -34,7 +34,7 @@ build() {
 check() {
     cd rustowl-${pkgver}
     export RUSTC_BOOTSTRAP=1
-    export RUSTUP_TOOLCHAIN=1.89.0
+    export RUSTUP_TOOLCHAIN=1.95.0
     cargo test --frozen --all-features
 }
 
@@ -49,7 +49,6 @@ package() {
     install -d -m 755 "$pkgdir/opt/rustowl"
     cp -a sysroot/ "$pkgdir/opt/rustowl/"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/$(rustc --print=host-tuple)/release/rustowl"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/$(rustc --print=host-tuple)/release/rustowlc"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/rustowl/LICENSE"
     install -Dm644 rustowl-build-time-out/man/rustowl.1 "$pkgdir/usr/share/man/man1/rustowl.1"
     install -Dm644 "rustowl-build-time-out/completions/rustowl.bash" "${pkgdir}/usr/share/bash-completion/completions/rustowl"

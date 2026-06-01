@@ -1,7 +1,7 @@
 pkgbase = rustowl
 	pkgdesc = Visualize Ownership and Lifetimes in Rust
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cordx56/rustowl
 	arch = any
 	license = MPL-2.0
