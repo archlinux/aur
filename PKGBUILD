@@ -1,7 +1,7 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname='hawser'
-pkgver=0.2.42
+pkgver=0.2.43
 pkgrel=1
 pkgdesc="The agent for Dockhand"
 conflicts=('hawser-git')
