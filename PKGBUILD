@@ -6,7 +6,7 @@ pkgname=(
 pkgbase=mullvad-vpn-beta-bin
 _pkgver=2026.3
 _channel=beta
-_rel=1
+_rel=2
 pkgver=${_pkgver}.${_channel}${_rel}  # beta
 #pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
@@ -32,9 +32,9 @@ source_aarch64=(
 #  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_arm64.deb"{,.asc}  # stable
 )
 sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
-sha256sums_x86_64=('05c57f0d297649e30d94810758a0d2dec9b919e8b6c182a40cbf9ce7f064eacd'
+sha256sums_x86_64=('b213a49199808efc9b5b25ec1b0fe18d7decf2f39b5873de3c149c81e6f16fc8'
                    'SKIP')
-sha256sums_aarch64=('4bfbb0c4edaa2d81b2def10ad8024739bc25fd5e23f27ac06be6922aefe9756c'
+sha256sums_aarch64=('215e5011a99edd538b72df85a45bd75256e3eddb8e058a9d7c2c124cacb0da20'
                     'SKIP')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
 
