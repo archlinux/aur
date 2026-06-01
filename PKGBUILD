@@ -1,6 +1,6 @@
 # Maintainer: AkitaOnRails <fabio.akita@gmail.com>
 pkgname=mangaplus-reader-bin
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Personal-use desktop reader for MANGA Plus (talks to the official API with your own deviceSecret)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('mangaplus-reader')
 conflicts=('mangaplus-reader')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/FRANK.MANGA+_${pkgver}_amd64.AppImage")
-sha256sums=('84cfb71c8beec97e3e8073b139c5853142488669ddc0aeda6957f843803cc939')
+sha256sums=('5b807119e0d2e5ad8afcd0aab5ce1280c6bb8f4d4d351e85770d69ded87edc30')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
 prepare() {
