@@ -18,7 +18,7 @@ prepare() {
   # GOPATH local para no contaminar ~/go
   export GOPATH="${srcdir}/gopath"
 
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
