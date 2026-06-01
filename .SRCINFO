@@ -1,6 +1,6 @@
 pkgbase = dooble
 	pkgdesc = A minimal, scientific, and stable Web browser
-	pkgver = 2026.03.31
+	pkgver = 2026.05.15
 	pkgrel = 1
 	url = https://textbrowser.github.io/dooble
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = dooble
 	depends = qt6-charts
 	depends = qt6-declarative
 	depends = qt6-webengine
-	source = dooble-2026.03.31.tar.gz::https://github.com/textbrowser/dooble/archive/2026.03.31.tar.gz
+	source = dooble-2026.05.15.tar.gz::https://github.com/textbrowser/dooble/archive/2026.05.15.tar.gz
 	source = git+https://github.com/textbrowser/dooble-dictionaries.git
 	source = dooble.sh
-	sha256sums = cc835e8196636454c49a8ecd0f0f73dc8a94809389a84c6fb0725b9e8b413f60
+	sha256sums = 3d2e23c440f54852582dc8555368548615aacd6e95531616e37919c5524cc751
 	sha256sums = SKIP
 	sha256sums = 39705af759145ffa3cb670353e8fe459228f92d70ae98aa16212006f0c239c1b
 
