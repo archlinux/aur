@@ -1,21 +1,21 @@
 # Maintainer: detestern <detestern@proton.me>
 pkgname=karincore-git
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="KarinCore - Modern and secure proxy client"
 arch=('x86_64')
 url="https://github.com/detestern/KarinCore"
 license=('MIT')
 
-depends=('webkit2gtk-4.1' 'gtk3' 'cairo' 'pango' 'glib2' 'xray')
+depends=('webkit2gtk-4.1' 'gtk3' 'cairo' 'pango' 'glib2' 'xray' 'openvpn')
 makedepends=('npm' 'rust' 'cargo' 'git')
 provides=('karincore')
 conflicts=('karincore')
 
+# Убрали sudoers из source, так как он теперь прилетит вместе с git-репозиторием
 source=("KarinCore::git+https://github.com/detestern/KarinCore.git"
-        "karin-proxy-daemon.service"
-        "karincore.sudoers")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+        "karin-proxy-daemon.service")
+sha256sums=('SKIP' 'SKIP')
 
 build() {
     cd "$srcdir/KarinCore"
@@ -36,7 +36,7 @@ package() {
 
     install -Dm644 "$srcdir/karin-proxy-daemon.service" "$pkgdir/usr/lib/systemd/system/karin-proxy-daemon.service"
 
-    install -Dm440 "$srcdir/karincore.sudoers" "$pkgdir/etc/sudoers.d/karincore"
+    install -Dm440 "src-tauri/system/karincore-sudoers" "$pkgdir/etc/sudoers.d/karincore"
 
     install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/pixmaps/karincore.png"
     
