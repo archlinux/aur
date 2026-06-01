@@ -1,5 +1,5 @@
 pkgname=iastfyp
-pkgver=1.0.0
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="IaSTFyP - Ironically a Stress Test For Your PC (turtle + tkinter simulation)"
 arch=('x86_64')

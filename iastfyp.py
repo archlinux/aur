@@ -125,21 +125,21 @@ if MODE is None:
 if MODE == "supah_ez":
     config.update({
         "MAX_TURTLES": 10,
-        "MIN_SPEED": 3,
+        "MIN_SPEED": 7,
         "MAX_SPEED": 10,
-        "REPRO_CHANCE": 0.1,
-        "DEATH_CHANCE": 0.3,
-        "MEET_DISTANCE": 5
+        "REPRO_CHANCE": 0.2,
+        "DEATH_CHANCE": 0.002,
+        "MEET_DISTANCE": 20
     })
 
 elif MODE == "easy":
     config.update({
         "MAX_TURTLES": 15,
-        "MIN_SPEED": 10,
+        "MIN_SPEED": 13,
         "MAX_SPEED": 15,
         "REPRO_CHANCE": 0.3,
-        "DEATH_CHANCE": 0.2,
-        "MEET_DISTANCE": 10
+        "DEATH_CHANCE": 0.001,
+        "MEET_DISTANCE": 25
     })
 
 elif MODE == "normal":
@@ -148,8 +148,8 @@ elif MODE == "normal":
         "MIN_SPEED": 20,
         "MAX_SPEED": 30,
         "REPRO_CHANCE": 0.4,
-        "DEATH_CHANCE": 0.3,
-        "MEET_DISTANCE": 25
+        "DEATH_CHANCE": 0.0003,
+        "MEET_DISTANCE": 30
     })
 
 elif MODE == "extreme":
