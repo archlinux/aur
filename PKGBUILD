@@ -1,7 +1,7 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=ai-usagebar
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Waybar widget + TUI for AI plan usage across Anthropic, OpenAI, Z.AI, and OpenRouter"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ options=('!lto' '!debug')
 # Pacman should auto-remove the binary variant when switching to source.
 conflicts=('ai-usagebar-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('81016ef96a36594ba7b0956477d262d043a9a97ee728bd7d39459d61dbda813a')
+sha256sums=('db9e46226012193503d4b40cac8282e7a2e8cebe5bebdad61326b5616218bb99')
 
 prepare() {
     cd "$pkgname-$pkgver"
