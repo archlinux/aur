@@ -22,7 +22,6 @@ optdepends=(
   'doas: privilege elevation'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('565c091a962032a7affef32cc779260fb4ec0ae4ef800666b09e8e5840010c35') # needs to update the sha256sum for every git archive ${pkgver} tarball from ${source}
 
 build() {
   cd ${pkgname}-${pkgver}/src
@@ -36,5 +35,4 @@ package() {
   DESTDIR="${pkgdir}" PREFIX="/usr" make install
   install -Dm644 ../LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
-sha256sums=('1abffa28ff073acba24b0c3afc557d56566ccf3e7fd7d1d5a312bdca9edfec47')
 sha256sums=('e58dced658e535c7227a89c5e54a5c0eabd2c8d69770a7197e0a9ed9e88c22cb')
