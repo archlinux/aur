@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Rakosn1cek/${pkgname}/a
 package() {
   install -Dm755 "arch-update-check-${pkgver}/arch-update-check.sh" \
     "$pkgdir/usr/bin/arch-update-check"
-  install -Dm644 "arch-update-check-${pkgver}/README-arch-update-check.md" \
-    "$pkgdir/usr/share/doc/arch-update-check/README-arch-update-check.md"
+  install -Dm644 "arch-update-check-${pkgver}/README.md" \
+    "$pkgdir/usr/share/doc/arch-update-check/README.md"
 }
 sha256sums=('d882d42f1577cabd1f62d1fb783f277bf792b39d226389f01dd89572f5ac7d09')
