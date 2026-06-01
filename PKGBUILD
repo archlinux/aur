@@ -1,6 +1,6 @@
 # Maintainer: Richard Fleming <rfleming@acqusys.com>
 pkgname=taskeract
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Desktop app for orchestrating AI coding agents"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 source=(
   "${pkgname}-${pkgver}.deb::${url}/v${pkgver}/Taskeract_${pkgver}_amd64.deb"
 )
-sha256sums=('077a36e7ce36e80547fc0611702df46c2eff45035f610ae58f79d065f0be6d70')
+sha256sums=('1a8d91c743d9916aea5c44b718de4ed2b21a6b024a25245490e4e2c3fc260e66')
 
 prepare() {
   cd "${srcdir}"
@@ -26,9 +26,11 @@ prepare() {
 }
 
 package() {
-  # Binary
-  install -Dm755 "${srcdir}/usr/bin/taskeract" \
-    "${pkgdir}/usr/bin/taskeract"
+  # Binaries
+  for bin in "${srcdir}"/usr/bin/taskeract*; do
+    [ -f "$bin" ] || continue
+    install -Dm755 "$bin" "${pkgdir}/usr/bin/$(basename "$bin")"
+  done
 
   # Desktop entry (add MimeType for taskeract:// URI scheme if not present)
   local _desktop="${srcdir}/usr/share/applications/Taskeract.desktop"
