@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=格式转换器
+Comment=基于 FFmpeg + Qt + OpenCV + FontForge 的格式转换工具
+Exec=FormatFactory
+Icon=FormatFactory
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Video;
+Keywords=format;factory;converter;video;audio;image;font;ffmpeg
+StartupWMClass=FormatFactory
+MimeType=video/*;audio/*;image/*;application/font-sfnt;application/font-ttf;
