@@ -1,6 +1,6 @@
 # Maintainer: britors <rodrigo@w3ti.com.br>
 pkgname=prisma4postgres-bin
-pkgver=11.1.0
+pkgver=11.1.2
 pkgrel=1
 pkgdesc="PostgreSQL desktop client — explorer, query editor, table creator/editor, ERD, and more"
 arch=('x86_64')
