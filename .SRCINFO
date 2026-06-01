@@ -1,0 +1,27 @@
+pkgbase = git-flow-rs
+	pkgdesc = GUI and reimplementation for gitflow with extended logic for CI/CD
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/Emiliopg91/git-flow-rs
+	arch = x86_64
+	license = GPL-2
+	makedepends = rust
+	source = git+https://github.com/Emiliopg91/git-flow-rs.git#tag=2.1.0
+	sha256sums = SKIP
+
+pkgname = git-flow-rs-cli
+	install = git-flow-rs-cli.install
+	depends = glibc
+	depends = libgcc
+	provides = gitflow
+
+pkgname = git-flow-rs-gui
+	depends = brotli
+	depends = bzip2
+	depends = expat
+	depends = fontconfig
+	depends = freetype2
+	depends = glibc
+	depends = libgcc
+	depends = libpng
+	depends = zlib-ng-compat
