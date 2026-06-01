@@ -22,7 +22,7 @@ source=(
 "$pkgname-$pkgver.tar.gz::https://github.com/KasishStar/termwatch/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('SKIP')
+sha256sums=('c95dd92c12898bb6d47ab4720688c0ba4616072250584439c574cee238788431')
 
 build() {
 cd "$srcdir/$pkgname-$pkgver"
