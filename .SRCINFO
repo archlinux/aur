@@ -1,7 +1,7 @@
 pkgbase = selinux-refpolicy-arch-mcs-git
 	pkgdesc = Modular SELinux reference policy (Arch patches, latest commit), built TYPE=mcs
 	pkgver = RELEASE_2_20260312.r70.g0dae0f47c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SELinuxProject/refpolicy/wiki
 	install = selinux-refpolicy-arch-mcs-git.install
 	arch = any
@@ -14,7 +14,6 @@ pkgbase = selinux-refpolicy-arch-mcs-git
 	depends = policycoreutils>=3.0
 	provides = selinux-refpolicy-arch-git=RELEASE_2_20260312.r70.g0dae0f47c
 	conflicts = selinux-refpolicy-arch-git
-	replaces = selinux-refpolicy-arch-git
 	source = git+https://github.com/SELinuxProject/refpolicy
 	source = 0001-Push-initial-arch-compat-commit.patch
 	source = config

@@ -11,15 +11,21 @@ _reponame=refpolicy
 _policyname=${_reponame}-arch-git
 pkgname=selinux-refpolicy-arch-mcs-git
 pkgver=RELEASE_2_20260312.r70.g0dae0f47c
-pkgrel=2
+pkgrel=3
 pkgdesc="Modular SELinux reference policy (Arch patches, latest commit), built TYPE=mcs"
 arch=('any')
 url="https://github.com/SELinuxProject/${_reponame}/wiki"
 license=('GPL2')
 groups=('selinux')
+# provides+conflicts (NOT replaces): this is a drop-in MCS variant, not the
+# successor to the upstream package. `conflicts` makes pacman prompt the user to
+# remove upstream when they CHOOSE to install this; `replaces` would instead
+# auto-swap it during an unrelated `-Syu`, silently changing the system's SELinux
+# base policy for people who never asked for it (and falsely claims we supersede
+# a live, separately-maintained package). Locally we install by `pacman -U`, so
+# conflicts alone already performs the swap.
 provides=("selinux-${_policyname}=${pkgver}")
 conflicts=("selinux-${_policyname}")
-replaces=("selinux-${_policyname}")
 makedepends=('git' 'python' 'checkpolicy>=3.0' 'semodule-utils')
 depends=('policycoreutils>=3.0')
 install="${pkgname}.install"
