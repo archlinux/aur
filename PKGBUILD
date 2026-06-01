@@ -26,7 +26,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r1265.e4827e3
+pkgver=r1288.b9c510f
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor + first-party mshell desktop (mango heritage)"
 url="https://github.com/kenanpelit/margo"
@@ -68,6 +68,7 @@ depends=(
   grim            # `mscreenshot` capture pipeline
   slurp
   wl-clipboard
+  mpv             # `mplay`: window control + libmpv.so for the wallpaper engine
   # ── mshell (gtk4 + relm4) ───────────────────────────────────────
   gtk4
   gtk4-layer-shell
@@ -106,6 +107,7 @@ optdepends=(
   "swappy: post-capture annotation editor for mscreenshot"
   "satty: alternative annotation editor for mscreenshot"
   "wf-recorder: screen recording via wlr-screencopy"
+  "yt-dlp: \`mplay play\`/\`download\` of YouTube + other streaming URLs"
   # Clipboard managers — mshell clipboard widget + mshellshare paste
   "copyq: clipboard manager via wlr-data-control"
   "wl-clip-persist: keep clipboard alive after the producer exits"
@@ -223,7 +225,7 @@ build() {
   # out to powerprofilesctl) with no zbus/tokio, so it's safe here too.
   cargo build --frozen --release \
     -p margo -p start-margo \
-    -p mctl -p mlock -p mlayout -p mscreenshot -p mvisual -p mlogind -p mpower
+    -p mctl -p mlock -p mlayout -p mscreenshot -p mvisual -p mlogind -p mpower -p mplay
 
   # mshell trio + mpicker + mwizard. mpicker pulls
   # mshell-screenshot (→ wayle-* → zbus/tokio), so it has to
@@ -274,7 +276,7 @@ package() {
   local bin
   for bin in \
       margo start-margo \
-      mctl mlock mlayout mscreenshot mvisual mlogind mpower \
+      mctl mlock mlayout mscreenshot mvisual mlogind mpower mplay \
       mshell mshellctl mshellshare mpicker mwizard; do
     install -Dm755 "$CARGO_TARGET_DIR/release/$bin" "$pkgdir/usr/bin/$bin"
   done

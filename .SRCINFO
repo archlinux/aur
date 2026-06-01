@@ -1,6 +1,6 @@
 pkgbase = margo-git
 	pkgdesc = Rust/Smithay Wayland tiling compositor + first-party mshell desktop (mango heritage)
-	pkgver = r1265.e4827e3
+	pkgver = r1288.b9c510f
 	pkgrel = 1
 	url = https://github.com/kenanpelit/margo
 	arch = x86_64
@@ -36,6 +36,7 @@ pkgbase = margo-git
 	depends = grim
 	depends = slurp
 	depends = wl-clipboard
+	depends = mpv
 	depends = gtk4
 	depends = gtk4-layer-shell
 	depends = gdk-pixbuf2
@@ -55,6 +56,7 @@ pkgbase = margo-git
 	optdepends = swappy: post-capture annotation editor for mscreenshot
 	optdepends = satty: alternative annotation editor for mscreenshot
 	optdepends = wf-recorder: screen recording via wlr-screencopy
+	optdepends = yt-dlp: `mplay play`/`download` of YouTube + other streaming URLs
 	optdepends = copyq: clipboard manager via wlr-data-control
 	optdepends = wl-clip-persist: keep clipboard alive after the producer exits
 	optdepends = networkmanager: NetworkManager backend for mshell network + ndns
@@ -69,10 +71,10 @@ pkgbase = margo-git
 	optdepends = blocky: local DNS resolver controlled by the ndns widget
 	optdepends = curl: used by the nip public-IP widget (already pulled by base)
 	optdepends = fprintd: opt-in fingerprint login for mlogind (pam_fprintd)
-	provides = margo=r1150.1c8a9fc
+	provides = margo=r1288.b9c510f
 	provides = wayland-compositor
-	provides = mshell=r1150.1c8a9fc
-	provides = margo-mshell-git=r1150.1c8a9fc
+	provides = mshell=r1288.b9c510f
+	provides = margo-mshell-git=r1288.b9c510f
 	conflicts = margo
 	conflicts = margo-mshell-git
 	conflicts = mshell
