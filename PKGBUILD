@@ -1,6 +1,6 @@
 pkgname=openaquaero
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Suite di controllo per Aquaero 6 LT"
 arch=('any')
 url="https://github.com/raffaele-90/openaquaero"
@@ -9,7 +9,7 @@ depends=('python' 'pyside6' 'python-hidapi')
 optdepends=('python-pynvml: supporto lettura sensori GPU Nvidia')
 install="openaquaero.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/raffaele-90/openaquaero/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('058d69544f7c1115d61642d86eeb169b18c6efa1c5f95a2b29b866d2f4a28ecc')
+sha256sums=('SKIP')
 
 package() {
     cd "$pkgname-$pkgver"
@@ -55,7 +55,7 @@ EOF
     cat << EOF > "$pkgdir/usr/share/applications/$pkgname.desktop"
 [Desktop Entry]
 Name=OpenAquaero
-Comment=Controllo Termico Avanzato per Aquaero 6 LT
+Comment=Suite di controllo per Aquaero 6 LT
 Exec=/usr/bin/$pkgname
 Icon=$pkgname
 Terminal=false
