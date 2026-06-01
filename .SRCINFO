@@ -1,0 +1,22 @@
+pkgbase = mnn
+	pkgdesc = Lightweight high-performance deep learning inference engine (CPU/Vulkan/OpenCL) with model converter and tools
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://github.com/alibaba/MNN
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = vulkan-headers
+	makedepends = opencl-headers
+	depends = gcc-libs
+	depends = glibc
+	depends = vulkan-icd-loader
+	depends = ocl-icd
+	optdepends = vulkan-driver: Vulkan GPU backend at runtime
+	optdepends = opencl-driver: OpenCL GPU backend at runtime
+	source = mnn-3.5.0.tar.gz::https://github.com/alibaba/MNN/archive/refs/tags/3.5.0.tar.gz
+	sha256sums = 7a4db1df4bd6c2116841f90b51961b8cb9466d52520bc7893081bfa4c7e8a9be
+
+pkgname = mnn
