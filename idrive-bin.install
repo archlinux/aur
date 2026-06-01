@@ -1,0 +1,32 @@
+post_install() {
+	cat <<'EOF'
+IDrive for Linux is installed to /opt/IDriveForLinux.
+
+To set up your account, backup sets, and schedule, run as root:
+
+    sudo idrive
+
+and choose the option to configure. Runtime state is written under
+/opt/IDriveForLinux, so idrive must be run with root privileges.
+EOF
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	# Best-effort: stop a scheduled-backup systemd unit if the app installed one.
+	systemctl disable --now idrivecron.service idrivecron.timer 2>/dev/null || true
+}
+
+post_remove() {
+	cat <<'EOF'
+idrive-bin removed. Account configuration, logs, and any backup schedule it
+created at first run are NOT removed automatically. To fully purge:
+
+    sudo rm -rf /opt/IDriveForLinux
+    sudo crontab -l        # check for and remove any idrive cron entries
+
+EOF
+}
