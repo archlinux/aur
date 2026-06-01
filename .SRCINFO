@@ -1,0 +1,25 @@
+pkgbase = python-onnx-simplifier
+	pkgdesc = Simplify your ONNX model by removing redundant operators
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/daquexian/onnx-simplifier
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = pybind11
+	makedepends = protobuf
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-onnx
+	depends = python-onnxruntime
+	depends = python-rich
+	provides = python-onnxsim
+	source = git+https://github.com/daquexian/onnx-simplifier.git#tag=v0.5.0
+	sha256sums = SKIP
+
+pkgname = python-onnx-simplifier
