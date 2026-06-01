@@ -1,7 +1,7 @@
 # Maintainer: KlapkiSzatana
 pkgname=serwis-app-bin
 _pkgname=serwis-app
-pkgver=3.0.0
+pkgver=4.0
 pkgrel=1
 pkgdesc="Proste Prowadzenie Serwisu"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 
 source=("https://github.com/KlapkiSzatana/serwis-app/releases/download/v${pkgver}/SerwisApp_linux.tar.gz")
-sha256sums=('8ab1a35bd5c70f08b598df673bc1b426235252490f570990b843edb73fc04334')
+sha256sums=('2c9359507dba3f3c1b48caebe9520a54d4d5bd019fec76473c61fa3f9bc0e0d6')
 
 package() {
     cd "$srcdir/linux-package"
