@@ -9,7 +9,7 @@
 #
 install_script () {
   #postinst part
-  ln -s /opt/brother/Printers/dcpt436w/lpd/x86_64/brdcpt436wfilter           /opt/brother/Printers/dcpt436w/lpd/brdcpt436wfilter
+  ln -fs /opt/brother/Printers/dcpt436w/lpd/x86_64/brdcpt436wfilter           /opt/brother/Printers/dcpt436w/lpd/brdcpt436wfilter
 
   /opt/brother/Printers/dcpt436w/inf/setupPrintcapij dcpt436w -i  
   /opt/brother/Printers/dcpt436w/cupswrapper/cupswrapperdcpt436w
