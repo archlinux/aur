@@ -1,6 +1,6 @@
 pkgbase = mesh-llm-rocm
 	pkgdesc = Mesh LLM lets you pool spare GPU capacity across machines and expose the result as one OpenAI-compatible API.
-	pkgver = 0.66.0rc4
+	pkgver = 0.71.0
 	pkgrel = 1
 	url = https://github.com/Mesh-LLM/mesh-llm
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = mesh-llm-rocm
 	makedepends = cmake
 	makedepends = npm
 	makedepends = cargo
-	makedepends = rocm-hip-sdk
+	depends = rocm-hip-sdk
 	provides = mesh-llm
 	provides = mesh-llm-rocm
 	conflicts = mesh-llm-cuda
 	conflicts = mesh-llm-vulkan
 	options = !lto
-	source = mesh-llm-rocm-0.66.0rc4.tar.gz::https://github.com/Mesh-LLM/mesh-llm/archive/refs/tags/v0.66.0-rc4.tar.gz
-	sha256sums = d1ed4ace047d9a833a5bd2a5d385f80a05f715c0befd6dde1e99b2cdd0b61e9d
+	source = mesh-llm-rocm-0.71.0.tar.gz::https://github.com/Mesh-LLM/mesh-llm/archive/refs/tags/v0.71.0.tar.gz
+	sha256sums = 4e8cedbe314ccfece208e37e00626b62b2cc2d2d9fb5c2415f22c8f381a909fa
 
 pkgname = mesh-llm-rocm
