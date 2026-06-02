@@ -10,7 +10,6 @@ pkgbase = camlwm-git
 	makedepends = dune
 	makedepends = ocaml-ctypes
 	makedepends = ocaml-findlib
-	makedepends = libffi
 	depends = libx11
 	provides = camlwm
 	conflicts = camlwm
