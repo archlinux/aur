@@ -1,0 +1,66 @@
+# hiddify-desktop-bin.install
+# Handles automatic backup of incompatible old data directory
+
+_old_data_dir=".local/share/app.hiddify.com"
+
+_backup_old_data() {
+    local real_user
+    local home_dir
+
+    # Detect the real user even when running under sudo
+    if [[ -n "$SUDO_USER" ]]; then
+        real_user="$SUDO_USER"
+    elif [[ -n "$DOAS_USER" ]]; then
+        real_user="$DOAS_USER"
+    else
+        real_user="$USER"
+    fi
+
+    # If still root, try logname
+    if [[ "$real_user" == "root" ]]; then
+        real_user=$(logname 2>/dev/null)
+    fi
+
+    if [[ -z "$real_user" || "$real_user" == "root" ]]; then
+        echo "Warning: Could not detect real user. Please manually check for old Hiddify data."
+        return
+    fi
+
+    home_dir="/home/$real_user"
+    if [[ ! -d "$home_dir" ]]; then
+        return
+    fi
+
+    local old_path="$home_dir/$_old_data_dir"
+    if [[ -d "$old_path" ]]; then
+        local backup_path="${old_path}.backup.$(date +%Y%m%d_%H%M%S)"
+        echo ":: Found old Hiddify data from a previous version at:"
+        echo "   $old_path"
+        echo ":: This data is NOT compatible with Hiddify 4.1.1+ and would cause the SQLite error."
+        echo ":: Automatically backing it up to:"
+        echo "   $backup_path"
+        mv "$old_path" "$backup_path"
+        echo ":: Backup completed. Your old data is safely stored."
+        echo ":: You may delete it manually later if no longer needed."
+        echo ":: Hiddify will now start with a fresh configuration."
+    fi
+}
+
+post_install() {
+    _backup_old_data
+    echo ":: Hiddify Desktop 4.1.1 installed successfully."
+    echo ":: If you had an older version, any incompatible data has been backed up."
+    echo ":: The application will now run without the database error."
+}
+
+post_upgrade() {
+    # Check if we are upgrading from a version older than 4.1.1
+    if [[ $(vercmp "$2" 4.1.1) -lt 0 ]]; then
+        _backup_old_data
+        echo ":: Upgraded from version $2 to 4.1.1."
+        echo ":: Due to major database changes, old user data has been backed up automatically."
+        echo ":: You can safely start using the new version."
+    fi
+}
+
+# No pre_remove or pre_upgrade needed
