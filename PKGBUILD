@@ -117,6 +117,8 @@ optdepends=(
   'python-opensearch-py: OpenSearch vector backend support'
   'python-pgvector: pgvector backend support'
   'python-playwright: Playwright-backed web loader'
+  'python-spacy: Playwright web loader support'
+  'python-en_core_web_sm: Playwright web loader suupport'
   'python-pyxlsb: XLSB document ingestion'
   'python-qdrant-client: Qdrant backend support'
   'python-weaviate-client: Weaviate backend support'
