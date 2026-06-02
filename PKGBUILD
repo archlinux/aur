@@ -22,7 +22,6 @@ arch=('x86_64')
 license=('custom:vim')
 makedepends=(
   gawk
-  git
   glibc
   gpm
   gtk3

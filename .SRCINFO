@@ -6,7 +6,6 @@ pkgbase = vim-classic
 	arch = x86_64
 	license = custom:vim
 	makedepends = gawk
-	makedepends = git
 	makedepends = glibc
 	makedepends = gpm
 	makedepends = gtk3
