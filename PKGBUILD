@@ -1,5 +1,5 @@
 pkgname=git-flow-rs
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='GUI and reimplementation for gitflow with extended logic for CI/CD'
 arch=('x86_64')
@@ -38,8 +38,7 @@ build() {
 package() {
   cd "$srcdir/${pkgname}"
 
-  install -Dm755 \
-      target/release/git-flow-rs \
+  install -Dm755 target/release/git-flow-rs \
       "$pkgdir/usr/bin/git-flow"
 
   install -Dm644 resources/assets/icon.png \
