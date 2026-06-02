@@ -1,0 +1,19 @@
+pkgbase = geary-hide-sidebar-bin
+	pkgdesc = GTK3 module that hides/collapses Geary's left Mail sidebar (prebuilt binary)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/akitaonrails/geary-hide-sidebar-module
+	install = geary-hide-sidebar.install
+	arch = x86_64
+	license = MIT
+	depends = geary
+	depends = gtk3
+	depends = glib2
+	provides = geary-hide-sidebar=0.1.1
+	conflicts = geary-hide-sidebar
+	options = !strip
+	options = !debug
+	source_x86_64 = geary-hide-sidebar-0.1.1-x86_64.tar.gz::https://github.com/akitaonrails/geary-hide-sidebar-module/releases/download/v0.1.1/geary-hide-sidebar-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 34af9d9fa176d19c7d9b164b4b08e7910bb54e7fa00fa0069dac8c17e956f2dc
+
+pkgname = geary-hide-sidebar-bin
