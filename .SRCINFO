@@ -1,5 +1,5 @@
 pkgbase = python-librefang-sdk-git
-	pkgdesc = Official Python client and SDK for the LibreFang Agent OS (GIT version)
+	pkgdesc = Python Client SDK for the LibreFang Agent OS (GIT version)
 	pkgver = 2026.5.31beta.16.r0.g2bef7a0f5
 	pkgrel = 2
 	url = https://github.com/librefang/librefang
