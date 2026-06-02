@@ -2,7 +2,7 @@
 # Contributor: Rizwan Hasan <rizwan.hasan486@gmail.com>
 
 pkgname=freedownloadmanager
-pkgver=6.34.0.6878
+pkgver=6.34.1.6907
 pkgrel=1
 pkgdesc="FDM is a powerful modern download accelerator and organizer."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Freeware')
 depends=('openssl' 'xdg-utils' 'ffmpeg' 'libtorrent' 'gst-plugins-base' 'qt6-wayland')
 # source=("${pkgname}-${pkgver}-amd64.deb::http://debrepo.freedownloadmanager.org/pool/main/f/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
 source=("${pkgname}-${pkgver}-amd64.deb::https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb")
-sha256sums=("03c3c66e7b0d08ed3473f5cf203696ec974dfbeb5749ca4a088e6026737a3be5")
+sha256sums=("92db4c0fb8e27869c7eb6c1c47a95da5f8657580050376af539f82c9464f2d55")
 
 prepare() {
     mkdir -p "$pkgname-$pkgver"
