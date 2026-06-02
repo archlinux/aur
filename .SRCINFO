@@ -1,0 +1,19 @@
+pkgbase = dcr-dev
+  pkgdesc = Cargo-like utility to manage C/C++ projects (development release)
+  pkgver = 0.7.0
+  pkgrel = 1
+  url = https://github.com/dexoron/dcr
+  arch = x86_64
+  arch = aarch64
+  license = GPL-3.0-or-later
+  makedepends = cargo
+  depends = gcc-libs
+  provides = dcr
+  conflicts = dcr
+  optdepends = gcc: build C/C++ projects with GCC
+  optdepends = clang: build C/C++ projects with Clang
+  options = !lto
+  source = dcr-0.7.0.tar.gz::https://github.com/dexoron/dcr/archive/refs/tags/v0.7.0-dev.tar.gz
+  sha256sums = f55dda7cdadafd2b35d3bdea030aa5578c251f07924972d5d00a94ac047f2410
+
+pkgname = dcr-dev
