@@ -1,0 +1,199 @@
+#!/usr/bin/env bash
+# ue4ss-install — deploy the packaged UE4SS payload into a Windows Unreal Engine
+# game's Binaries/Win64 directory (the folder holding the game .exe, inside a
+# Wine/Proton prefix or a native Windows install). UE4SS hooks the game through
+# the dwmapi.dll proxy placed next to the executable. Upstream ships no installer,
+# so this copies the pacman-managed payload — keeping a single current, checksummed
+# copy instead of hand-downloading arbitrary builds from GitHub.
+set -euo pipefail
+
+readonly payload=/usr/share/ue4ss
+readonly self=${0##*/}
+
+# Config files the user edits; preserved on re-deploy unless --force is given.
+readonly -a config_basenames=(UE4SS-settings.ini mods.txt mods.json load_order.txt)
+
+usage() {
+    local proxy override
+    proxy=$(proxy_dll)
+    override="${proxy%.dll}=n,b"
+    cat <<EOF
+$self — deploy UE4SS into a game's Binaries/Win64 folder
+
+USAGE
+    $self <win64-dir>              copy the UE4SS payload into the target
+    $self --symlink <win64-dir>    symlink the payload instead of copying
+    $self --force <win64-dir>      copy and overwrite existing config files
+    $self --uninstall <win64-dir>  remove a previously deployed UE4SS
+    $self --list                   show the payload that will be deployed
+    $self -h | --help              this help
+
+TARGET
+    <win64-dir> is the directory containing the game executable, e.g.
+        <SteamLibrary>/steamapps/common/<Game>/<Game>/Binaries/Win64
+    Under Proton/Wine the same in-prefix game path applies; UE4SS loads from
+    the executable's own directory regardless of prefix.
+
+BEHAVIOR
+    By default DLLs and bundled mod scripts are overwritten, but your edited
+    config files (${config_basenames[*]}) are preserved.
+    Use --force to overwrite them too. --symlink symlinks the DLLs and mod
+    scripts (so a package update propagates) while still copying config files
+    as real editable files.
+
+PROTON / WINE (REQUIRED)
+    Under Proton/Wine, Wine loads its own builtin $proxy and ignores the
+    dropped-in proxy, so UE4SS will NOT inject unless you also set this Steam
+    launch option (game > Properties > General > Launch Options):
+
+        WINEDLLOVERRIDES="$override" %command%
+
+    Native Windows needs no override. This step is printed again after deploy.
+
+AFTER DEPLOY
+    Edit UE4SS-settings.ini and Mods/mods.txt in the target.
+    Launch the game with --disable-ue4ss to bypass, or --ue4ss-path=<DIR>
+    to load UE4SS from an alternative directory.
+
+Payload source: $payload
+EOF
+}
+
+die() { printf '%s: %s\n' "$self" "$1" >&2; exit 1; }
+
+is_config() {
+    local base=${1##*/}
+    local c
+    for c in "${config_basenames[@]}"; do
+        [[ $base == "$c" ]] && return 0
+    done
+    return 1
+}
+
+require_payload() {
+    [[ -d $payload ]] || die "payload directory $payload is missing; reinstall the package"
+    [[ -n $(ls -A "$payload" 2>/dev/null) ]] || die "payload directory $payload is empty; reinstall the package"
+}
+
+# The proxy DLL is the top-level payload .dll (next to the game .exe) that is not
+# UE4SS.dll; UE4SS injects through it. Its name drives the WINEDLLOVERRIDES target.
+proxy_dll() {
+    local f
+    for f in "$payload"/*.dll; do
+        [[ -e $f ]] || continue
+        [[ ${f##*/} == UE4SS.dll ]] && continue
+        printf '%s' "${f##*/}"
+        return 0
+    done
+    printf 'dwmapi.dll'  # UE4SS's documented default if detection finds nothing
+}
+
+print_proton_step() {
+    local proxy override
+    proxy=$(proxy_dll)
+    override="${proxy%.dll}=n,b"
+    printf '%s: PROTON/WINE — UE4SS will NOT load until you set this Steam launch option\n' "$self"
+    printf '             (Wine prefers its builtin %s; this forces the dropped-in proxy first):\n' "$proxy"
+    printf '\n    WINEDLLOVERRIDES="%s" %%command%%\n\n' "$override"
+    printf '%s: set it in Steam > game Properties > General > Launch Options. Native Windows needs no override.\n' "$self"
+}
+
+list_payload() {
+    require_payload
+    printf 'UE4SS payload in %s:\n' "$payload"
+    ( cd "$payload" && find . -mindepth 1 -printf '  %P\n' | sort )
+}
+
+resolve_target() {
+    local dir=$1
+    [[ -n $dir ]] || die "no target directory given (see --help)"
+    [[ -d $dir ]] || die "target '$dir' is not a directory; point at the game's Binaries/Win64 folder"
+    # Warn (do not block) if it does not look like a Win64 game folder.
+    if ! compgen -G "$dir/*.exe" >/dev/null && ! compgen -G "$dir/*.EXE" >/dev/null; then
+        printf '%s: warning: no .exe found in %s — verify this is the game executable folder\n' "$self" "$dir" >&2
+    fi
+    printf '%s' "$dir"
+}
+
+deploy() {
+    local mode=$1 target=$2
+    require_payload
+    target=$(resolve_target "$target")
+
+    local rel src dst preserved=() copied=0 linked=0
+    while IFS= read -r -d '' src; do
+        rel=${src#"$payload"/}
+        dst=$target/$rel
+        install -d "$(dirname "$dst")"
+        if is_config "$rel"; then
+            # Config is always a real, editable copy — never a symlink into the
+            # root-owned payload — and the user's edits survive unless --force.
+            if [[ -e $dst && $mode != force ]]; then
+                preserved+=("$rel")
+                continue
+            fi
+            cp -f "$src" "$dst"
+            chmod u+rw "$dst"
+            ((++copied))
+        elif [[ $mode == symlink ]]; then
+            ln -sfn "$src" "$dst"
+            ((++linked))
+        else
+            cp -f "$src" "$dst"
+            chmod u+rw "$dst"
+            ((++copied))
+        fi
+    done < <(find "$payload" -type f -print0)
+
+    printf '%s: deployed into %s (%d copied, %d symlinked)\n' "$self" "$target" "$copied" "$linked"
+    if ((${#preserved[@]})); then
+        printf '%s: preserved existing config (use --force to overwrite):\n' "$self"
+        printf '    %s\n' "${preserved[@]}"
+    fi
+    print_proton_step
+    printf '%s: done. Edit UE4SS-settings.ini / Mods/mods.txt in the target as needed.\n' "$self"
+    printf '%s: undo with: %s --uninstall %q\n' "$self" "$self" "$target"
+}
+
+uninstall() {
+    local target=$1
+    [[ -n $target ]] || die "no target directory given (see --help)"
+    [[ -d $target ]] || die "target '$target' is not a directory"
+    require_payload
+
+    # Collect the top-level entries this payload provides that exist in target.
+    local entry name victim
+    local -a victims=()
+    while IFS= read -r -d '' entry; do
+        name=${entry##*/}
+        victim=$target/$name
+        [[ -e $victim || -L $victim ]] && victims+=("$victim")
+    done < <(find "$payload" -mindepth 1 -maxdepth 1 -print0)
+
+    if ((${#victims[@]} == 0)); then
+        printf '%s: nothing to remove in %s\n' "$self" "$target"
+        return 0
+    fi
+
+    # These paths contain UE4SS's own files AND any mods/config the user added
+    # under them; removal is recursive, so warn and list before deleting.
+    printf '%s: removing UE4SS from %s (this also deletes any mods/config you added under):\n' "$self" "$target"
+    printf '    %s\n' "${victims[@]}"
+    rm -rf "${victims[@]}"
+    printf '%s: removed %d entries\n' "$self" "${#victims[@]}"
+}
+
+main() {
+    [[ $# -gt 0 ]] || { usage; exit 0; }
+    case $1 in
+        -h|--help) usage ;;
+        --list) list_payload ;;
+        --symlink) deploy symlink "${2-}" ;;
+        --force) deploy force "${2-}" ;;
+        --uninstall) uninstall "${2-}" ;;
+        -*) die "unknown option '$1' (see --help)" ;;
+        *) deploy copy "$1" ;;
+    esac
+}
+
+main "$@"

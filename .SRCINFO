@@ -1,0 +1,19 @@
+pkgbase = ue4ss
+	pkgdesc = Lua/C++ mod loader DLLs for Win64 Unreal Engine 4/5 games (stable)
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://docs.ue4ss.com/
+	arch = any
+	license = MIT
+	depends = bash
+	optdepends = wine: run Windows Unreal Engine games under Wine/Proton to mod them
+	options = !strip
+	options = !debug
+	source = ue4ss-3.0.1.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/v3.0.1/UE4SS_v3.0.1.zip
+	source = LICENSE::https://raw.githubusercontent.com/UE4SS-RE/RE-UE4SS/v3.0.1/LICENSE
+	source = ue4ss-install
+	sha256sums = 4b47d4bceddd2f561a4e395bfa00924ccfc945af576a2d0c613e6537846c57ec
+	sha256sums = ddc030e25d0ea87aca4ae84c0ed3f868d69273c00c0c12ea1e26f1c6130f5d2e
+	sha256sums = d5ae8372ecdc7171c7a6179511bf9dd8fe1905a83eac03abf7ae1292fe780cb0
+
+pkgname = ue4ss
