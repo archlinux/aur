@@ -95,7 +95,7 @@ for bin in cmd cmdc command-code commandcode; do
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${bin}" << 'WRAPPER'
 #!/bin/sh
 if [ "$1" = "update" ]; then
-    echo "Updates are managed by your AUR package installer (paru, yay, etc.). Run: paru -Syu"
+    echo "command-code updates are managed by your AUR helper. Use: paru -Syu (or yay -Syu)"
     exit 0
 fi
 COMMANDCODE_SKIP_UPDATES=1 exec /usr/lib/node_modules/command-code/dist/index.mjs "$@"

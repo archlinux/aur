@@ -2,7 +2,7 @@
 
 pkgname=command-code
 pkgver=0.31.0
-pkgrel=2
+pkgrel=3
 pkgdesc='AI coding agent that continuously learns your coding taste'
 arch=('x86_64')
 url='https://commandcode.ai'
@@ -37,7 +37,7 @@ package() {
         install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${bin}" << 'WRAPPER'
 #!/bin/sh
 if [ "$1" = "update" ]; then
-    echo "Updates are managed by your AUR package installer (paru, yay, etc.). Run: paru -Syu"
+    echo "command-code updates are managed by your AUR helper. Use: paru -Syu (or yay -Syu)"
     exit 0
 fi
 COMMANDCODE_SKIP_UPDATES=1 exec /usr/lib/node_modules/command-code/dist/index.mjs "$@"
