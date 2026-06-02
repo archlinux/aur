@@ -1,13 +1,13 @@
 pkgbase = wordgen-bin
 	pkgdesc = A CLI random word generator.
-	pkgver = 0.5.1
-	pkgrel = 2
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = https://github.com/wordgen/cli
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	provides = wordgen
 	conflicts = wordgen
-	source = https://github.com/wordgen/cli/releases/download/v0.5.1/wordgen-0.5.1-linux-amd64.tar.gz
-	sha256sums = 91bbc80ffa39ea7dbcd39d788b04e3f803802d4905cf4e7a8e9851604d14189e
+	source = https://github.com/wordgen/cli/releases/download/v0.5.3/wordgen-v0.5.3-linux-amd64.tar.gz
+	sha256sums = 43fe1f03f189a68fe5e753f705174fd27bd82ee8eb32a043ffda6e7b406b8ab2
 
 pkgname = wordgen-bin
