@@ -3,7 +3,7 @@
 pkgname=sjtu-canvas-helper-appimage
 _pkgname=sjtu-canvas-helper
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="SJTU Canvas Helper - 帮助您更快速便捷地使用上海交通大学课程平台 (AppImage)"
 arch=('x86_64')
 url="https://github.com/Okabe-Rintarou-0/SJTU-Canvas-Helper"
