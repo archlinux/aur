@@ -8,7 +8,7 @@ pkgdesc='LibreFang is an open-source Agent Operating System written in Rust. (GI
 arch=('x86_64' 'aarch64')
 url='https://github.com/librefang/librefang'
 license=('MIT' 'Apache-2.0')
-makedepends=('rust' 'cargo' 'git' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'nodejs' 'npm' 'pnpm' 'node-gyp' 'python' 'nodejs-addon-api' 'libvips' )
+makedepends=('rust' 'cargo' 'git' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'nodejs' 'npm' 'pnpm' 'node-gyp' 'python' 'nodejs-addon-api' 'libvips')
 source=(
     "${pkgbase}::git+https://github.com/librefang/librefang.git"
     "librefang.sysusers"
@@ -97,11 +97,11 @@ check() {
     cargo test --frozen --release -p librefang-types --lib 2>/dev/null || true
 }
 
-
 package_librefang-git() {
     pkgdesc='terminal interface and daemon for the LibreFang Agent OS'
-    depends=('glibc' 'openssl' 'libgcc' 'python-librefang-sdk-git')
+    depends=('glibc' 'openssl' 'libgcc')
     optdepends=(
+        'python-librefang-sdk-git'
         'chromium: Browser Hand support'
         'yt-dlp: Clip Hand support'
         'ffmpeg: Clip Hand support'
@@ -132,6 +132,7 @@ package_librefang-desktop-git() {
     pkgdesc='Desktop application for the LibreFang Agent OS'
     depends=('glibc' 'openssl' 'libgcc' 'webkit2gtk-4.1' 'gtk3' 'cairo' 'gdk-pixbuf2' 'glib2' 'libsoup3' 'hicolor-icon-theme')
     optdepends=(
+        'python-librefang-sdk-git'
         'librefang-git: CLI companion tool'
         'chromium: Browser Hand support'
         'yt-dlp: Clip Hand support'
