@@ -2,8 +2,8 @@
 
 _pkgname="robrix"
 pkgname="${_pkgname}-git"
-pkgver=1.0.0.alpha.1.r2713.20260527.f751eb2a
-pkgrel=1
+pkgver=1.0.0.alpha.1.r2721.20260601.3b485170
+pkgrel=2
 pkgdesc="Multi-Platform Matrix client. Written in Rust, built on top of Matrix Rust SDK, using the Makepad UI toolkit and the Robius app dev framework."
 arch=(
   "aarch64"
@@ -66,6 +66,11 @@ sha256sums=(
 )
 #options+=('!lto' 'debug' '!strip')
 options+=('!lto') # With LTO, linking errors happen.
+_cargo_build_options=(
+  --frozen
+  --release
+  # --all-features # 2026-06-01: Don't use '--all-features' now; see https://github.com/project-robius/robrix/issues/892#issuecomment-4595194327.
+)
 
 
 
@@ -119,28 +124,27 @@ build() {
   export CARGO_HOME="${srcdir}/.cargo"
   export CARGO_TARGET_DIR=target
 
-  _CFLAGSADDITIONS=" -O0"  # -O0 to work around 'cargo:warning=   47 |  #error "The CPU Jitter random number generator must not be compiled with optimizations. See documentation. Use the compiler switch -O0 for compiling jitterentropy.c."'
+  _CFLAGSADDITIONS=" -O0"  # -O0 to work around 'cargo:warning=   47 |  #error "The CPU Jitter random number generator must not be compiled with optimizations. See documentation. Use the compiler switch -O0 for compiling jitterentropy.c."' # See https://github.com/project-robius/robrix/issues/889#issuecomment-4595182202
   CFLAGS+="${_CFLAGSADDITIONS}"
-  export CFLAFS
+  export CFLAGS
 
   printf '%s\n' " --> Building ..."
-  cargo build --frozen --release --all-features
+  cargo build "${_cargo_build_options[@]}"
 }
 
 
 
-# Fails to check!
-# check() {
-#   cd "${srcdir}/${_pkgname}"
-# 
-#   export RUSTUP_HOME="${srcdir}/.rustup"
-#   export RUSTUP_TOOLCHAIN=stable
-#   export CARGO_HOME="${srcdir}/.cargo"
-#   export CARGO_TARGET_DIR=target
-# 
-#   printf '%s\n' " --> Checking ..."
-#   cargo test --frozen --release --all-features
-# }
+check() {
+  cd "${srcdir}/${_pkgname}"
+
+  export RUSTUP_HOME="${srcdir}/.rustup"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_HOME="${srcdir}/.cargo"
+  export CARGO_TARGET_DIR=target
+
+  printf '%s\n' " --> Checking ..."
+  cargo test "${_cargo_build_options[@]}"
+}
 
 
 
