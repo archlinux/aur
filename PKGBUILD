@@ -1,18 +1,18 @@
 # Maintainer: YTJVDCM <50657624+YTJVDCM@users.noreply.github.com>
 _pkgname='vrc-get'
 pkgname=alcom
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="A fast open-source alternative of VRChat Creator Companion (VCC)"
 arch=('x86_64')
 url='https://github.com/vrc-get/vrc-get'
 license=('MIT')
 depends=(gtk3 openssl webkit2gtk-4.1)
-makedepends=(cargo nodejs-lts npm)
+makedepends=(cargo nodejs npm)
 optdepends=('unityhub: Used to open created projects and migrate projects from older versions of Unity.')
 options+=(!lto)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/gui-v${pkgver}.tar.gz" "build.patch")
-sha256sums=('c9f3c0f79e0aa425a2b4a86cb9f85f8890e93c23010c5e280b11df4343736b94' '4c2d171d2fe51d2818f0dbb1e2ffc0a9454e6b4a3abe7432e3329a7900da211e')
+sha256sums=('0e71d84b931f436e38169e146d19f13c4b8491ad5b60b04dead7c4016654cc1b' 'e7bcacd22702629cbadc907edad11b48dbb740f45f21bb70813761b818509e59')
 
 prepare() {
     cd "$_pkgname-gui-v$pkgver"
@@ -31,25 +31,30 @@ build() {
     export CARGO_TARGET_DIR=target
 
     # npm run tauri build
-    npm run -- tauri build --config '{"bundle":{"targets":["deb"]}}'
+    # npm run -- tauri build --config '{"bundle":{"targets":["deb"]}}'
+    cargo xtask build-alcom --release --no-self-updater --target 'x86_64-unknown-linux-gnu'
+
+    cd "$srcdir/$_pkgname-gui-v$pkgver"
+
+    cargo xtask bundle-alcom --release --target 'x86_64-unknown-linux-gnu' --bundles buildroot --buildroot 'target/x86_64-unknown-linux-gnu/release/bundle/'
 }
 
 check() {
     cd "$_pkgname-gui-v$pkgver/$_pkgname-gui"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test -p vrc-get-gui --frozen --all-features
+    cargo test -p vrc-get-gui --frozen --all-features 
 }
 
 package() {
-    cd "$_pkgname-gui-v$pkgver/$_pkgname-gui"
+    cd "$_pkgname-gui-v$pkgver"
 
     # mv "target/release/bundle/deb/ALCOM_${pkgver}_amd64/data/usr/bin/ALCOM" "target/release/bundle/deb/ALCOM_${pkgver}_amd64/data/usr/bin/$pkgname"
 
-    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    cp -ar "target/release/bundle/deb/ALCOM_${pkgver}_amd64/data/usr/share/icons" "$pkgdir/usr/share/"
+    cp -ar "target/x86_64-unknown-linux-gnu/release/bundle/usr/share/icons" "$pkgdir/usr/share/"
     
-    install -Dm644 -t "$pkgdir/usr/share/applications/" "target/release/bundle/deb/ALCOM_${pkgver}_amd64/data/usr/share/applications/ALCOM.desktop"
+    install -Dm644 -t "$pkgdir/usr/share/applications/" "target/x86_64-unknown-linux-gnu/release/bundle/usr/share/applications/alcom.desktop"
 
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/bundle/deb/ALCOM_${pkgver}_amd64/data/usr/bin/ALCOM"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/x86_64-unknown-linux-gnu/release/bundle/usr/bin/alcom"
 }

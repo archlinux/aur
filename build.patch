@@ -1,19 +1,19 @@
-diff '--color=auto' --unified --recursive --text --color vrc-get-gui-v1.1.5/vrc-get-gui/Tauri.toml vrc-get-gui-v1.1.5-patched/vrc-get-gui/Tauri.toml
---- vrc-get-gui-v1.1.5/vrc-get-gui/Tauri.toml	2025-11-17 08:40:22.719408556 +0900
-+++ vrc-get-gui-v1.1.5-patched/vrc-get-gui/Tauri.toml	2025-11-17 08:41:10.020246924 +0900
-@@ -34,8 +34,6 @@
- resources = []
- publisher = "anatawa12"
- 
--createUpdaterArtifacts = "v1Compatible"  # remove if ci # we do not generate updater artifacts in CI
--
- [[bundle.fileAssociations]]
- # note: for macOS we directory use info.plist for registering file association.
- description = "ALCOM Project Template"
-diff '--color=auto' --unified --recursive --text --color vrc-get-gui-v1.1.5/vrc-get-gui/components/providers.tsx vrc-get-gui-v1.1.5-patched/vrc-get-gui/components/providers.tsx
---- vrc-get-gui-v1.1.5/vrc-get-gui/components/providers.tsx	2025-11-17 08:40:22.723936366 +0900
-+++ vrc-get-gui-v1.1.5-patched/vrc-get-gui/components/providers.tsx	2025-11-17 09:26:33.340099226 +0900
-@@ -82,11 +82,6 @@
+diff '--color=auto' '--color=auto' --unified --recursive --text --color vrc-get-gui-v1.1.6/vrc-get-gui/bundle/alcom.desktop vrc-get-gui-v1.1.6-patched/vrc-get-gui/bundle/alcom.desktop
+--- vrc-get-gui-v1.1.6/vrc-get-gui/bundle/alcom.desktop	2026-06-02 19:29:07.000000000 +0900
++++ vrc-get-gui-v1.1.6-patched/vrc-get-gui/bundle/alcom.desktop	2026-06-02 20:17:29.604668580 +0900
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Categories=Development
+ Comment=ALCOM - Alternative Creator Companion
+-Exec={{exec}} %u
++Exec=env __NV_DISABLE_EXPLICIT_SYNC=1 {{exec}} %u
+ Icon=alcom
+ Name=ALCOM
+ Terminal=false
+diff '--color=auto' '--color=auto' --unified --recursive --text --color vrc-get-gui-v1.1.6/vrc-get-gui/components/providers.tsx vrc-get-gui-v1.1.6-patched/vrc-get-gui/components/providers.tsx
+--- vrc-get-gui-v1.1.6/vrc-get-gui/components/providers.tsx	2026-06-02 19:29:07.000000000 +0900
++++ vrc-get-gui-v1.1.6-patched/vrc-get-gui/components/providers.tsx	2026-06-02 20:05:35.651098411 +0900
+@@ -100,11 +100,6 @@
  				if (import.meta.env.DEV) return;
  				const checkVersion = await commands.utilCheckForUpdate();
  				if (cancel) return;
