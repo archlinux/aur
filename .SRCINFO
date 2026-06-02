@@ -1,0 +1,19 @@
+pkgbase = arxman-git
+	pkgdesc = fast archive manager — extract and compress tar, zip, 7z, rar, zst, xz, bz2 and more
+	pkgver = r4.ba1f8b8
+	pkgrel = 1
+	url = https://github.com/jimmy/arxman
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = bzip2
+	depends = xz
+	optdepends = p7zip: 7z compression and rar extraction fallback
+	optdepends = unrar: rar extraction
+	provides = arxman
+	conflicts = arxman
+	source = arxman-git::git+https://github.com/jimmy/arxman
+	sha256sums = SKIP
+
+pkgname = arxman-git
