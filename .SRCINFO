@@ -1,6 +1,6 @@
 pkgbase = npm-jail-bin
 	pkgdesc = Run npm commands inside a bubblewrap sandbox
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/suethttps/npm-jail
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = npm-jail-bin
 	depends = bubblewrap
 	provides = npm-jail
 	conflicts = npm-jail
-	source_x86_64 = https://github.com/suethttps/npm-jail/releases/download/v0.1.2/npm-jail_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = ccac633d2a32fc56e73b5137964d203c42bac6a5fcac1f67e1c3708209bfb9a5
-	source_aarch64 = https://github.com/suethttps/npm-jail/releases/download/v0.1.2/npm-jail_Linux_aarch64.tar.gz
-	sha256sums_aarch64 = d011f827ed1ed9686e6c0648c6ece9830c36e7de343e28675fc202e1d4a26ebe
+	source_x86_64 = https://github.com/suethttps/npm-jail/releases/download/v0.1.3/npm-jail_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 681080ee769681a2d86a68e3740192288f77e40b1553dedf75e9c429326bdaab
+	source_aarch64 = https://github.com/suethttps/npm-jail/releases/download/v0.1.3/npm-jail_Linux_aarch64.tar.gz
+	sha256sums_aarch64 = ea4a31ffb173c2b73a197a7ddd351e4fbb865346739e57e72ee3ff4ab10454ec
 
 pkgname = npm-jail-bin
