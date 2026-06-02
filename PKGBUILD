@@ -2,8 +2,8 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 
 pkgname="deezer"
-pkgver=7.1.220
-pkgrel=3
+pkgver=7.1.230
+pkgrel=1
 
 # Keep this in sync with the formatter version used by aunetx/deezer-linux.
 # The upstream patches are easier to apply when the extracted Deezer JS/HTML
@@ -15,13 +15,13 @@ _mpris_ver=2.1.5
 
 # Commit hash for aunetx/deezer-linux patches.
 # Pinning the commit keeps the patch contents reproducible.
-_patch_commit=9cbe22284685c09d0c41f7f4d68fdb64fb4382aa
+_patch_commit=637353333e63aa120c1d29a73124449611afa53a
 
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
 license=('custom')
-depends=('electron41' 'hicolor-icon-theme')
+depends=('electron41' 'hicolor-icon-theme' 'xdg-utils')
 provides=('deezer')
 makedepends=('p7zip' 'asar' 'imagemagick' 'npm')
 
@@ -54,6 +54,7 @@ source=(
     "11-fix-thumbar-actions-${_patch_commit}.patch::https://raw.githubusercontent.com/aunetx/deezer-linux/${_patch_commit}/patches/11-fix-thumbar-actions.patch"
     "12-adjust-volume-on-wheel-${_patch_commit}.patch::https://raw.githubusercontent.com/aunetx/deezer-linux/${_patch_commit}/patches/12-adjust-volume-on-wheel.patch"
     "13-disable-hardware-acceleration-${_patch_commit}.patch::https://raw.githubusercontent.com/aunetx/deezer-linux/${_patch_commit}/patches/13-disable-hardware-acceleration.patch"
+    "15-sync-theme-${_patch_commit}.patch::https://raw.githubusercontent.com/aunetx/deezer-linux/${_patch_commit}/patches/15-sync-theme.patch"
 
     # Local patches
     "99-systray-icon.patch"
@@ -64,7 +65,7 @@ noextract=(
     "mpris-service-${_mpris_ver}.tgz"
 )
 
-sha256sums=('f4c6542512c9e9cef58fd4db2d06f2aa20e5357eafad8dd74f3e12ab27f940ba'
+sha256sums=('b1400270205a367315e9a5b678d0f7b10686f47b150969b9a6b1921ce4be4f36'
             'c33b398d8ae279a620cf2914c806f7ee00c47519e4f404874cfd90a68fc8d80f'
             '3a23339b7b00d5d6d59768699f585d2565fc1cd7d2c43a254206de3840546eb6'
             '951c80c9dc4848b31a5fcc9655b005f3a218b1ff735396168c13922ac658c83b'
@@ -73,19 +74,20 @@ sha256sums=('f4c6542512c9e9cef58fd4db2d06f2aa20e5357eafad8dd74f3e12ab27f940ba'
             'c08a3e4550f216423ff6ebcb11f5af7268065efb5580b74e370aa40b9919cdb6'
             'b8acd7522c20212e725db4116e666b97822a835028c7e208f3fac39d4b4b1868'
             '181016c614fc62595d604d336cdb43c40645d7cc66a35acaf562c9af26177a6e'
-            '10f35e6f22e051203310dd98a821edbabf5dc4cc23af1d44146ea9be9496db80'
+            '4a8bc8187e69f388e202507608e1fd9c41e15ad827d7bd98c57349c531106f00'
             '171fd58d2eed2ea90ae0a50e867625203c9042e65ab9c9ce07c5e3ad3e6754bb'
             'd0c246522cdf5c253f7a0583097337ef8c03c558b129f28d4fe29ee26eaacb01'
-            'a5cda0227476a21f10cb98e6ccde1e53b8dbdfcfdf3a05eb0838f2562bbe4ace'
-            'd2bb57eb4ee458e6c310392a6dbb0fa2ca4d14b9011025968b2c52554de5f31f'
-            '44161a21b3aced9d4f6e78bbad0ecca48568fc083283dcffc63a4af050275741'
+            '2fe0cc68f05cf9655183766644ce5e81c59990d6ff6fcadbd295291f3f7c5421'
+            '16f555b4bc79117f82b7735b7c25ef87b336805e1c77325fddd4fcbac380ab58'
+            'f0415fa2c62140d971285dce56c8faabfa3fc79d97e72460efa5ce0ae2b8f3ec'
             'f8af7fe9b406b945f23e3a52b68ac5e9d04ecfef99930c20c591daa01766c2b2'
-            'fdc2b1b89c8692608e5a824d29a59d96fda5900113c4fb86f692dfc2c12512fa'
-            '2ca84b1a545be3934e00f0432239b45550f1eb84770131be2d78d0d794fad99c'
-            '19bf25afb50807b3e5ce7ceb9b9fa93a0e0760c18a783788a9cb0cdd91f330d3'
+            '707579ffc8d413099e1976b8210fa41722590780f92a5df01e5c23b6405c5ece'
+            '9e21290520323503d2e02788ba4bfb85fd44613e4d500ff7943aaab26c41a002'
+            '100cf38e92898afbc332f1be1be25f19d515ea4cbcbfbfeb88444b53abb4a568'
             '593eaa17fae1360ebd2ace36c4760ac7ef8bb6696db9e1d70983d916f5c69f6e'
-            '3ffd80a16d5c30875a12093faec92881f2c004b0bf49e9ba79f70b0f199c7bbd'
+            'e5297d5f6eb0cd159b63afb363a98080ed32da20f151ec347407dfbd8bbdbe43'
             '02f8fb4b8101d7a856cdd82ef17a54bb4de02adcc1de89c5ec7d8bfd9293d65d'
+            'e4f23d9a77bf0682ad3d1e20c4e98e68ae42d12110f9088496c85ef5c9e7cb9d'
             '2362c52147cf67759388ba6685e2add32c5bcfcdbdbca8e0990f58cafa0392de')
 
 _setup_prettier() {
