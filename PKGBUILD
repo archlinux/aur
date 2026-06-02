@@ -1,7 +1,7 @@
 # Maintainer: Janyel Lima <janyel-lima@users.noreply.github.com>
 
 pkgname=kb2xb
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Keyboard + mouse → Xbox One virtual gamepad (evdev/uinput, Wayland & X11, profile-based)"
 arch=('any')
@@ -26,7 +26,7 @@ backup=()
 install=kb2xb.install
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('efd28e78c068b26737449491e9efa802b6d52afb412e2323fd8f675d3dd323d8')
+sha256sums=('c87e61c6c788d7714bdec57ffee9e8553840ba7a4b37e30689fdd9e751abede4')
                        #   updpkgsums   or   makepkg -g >> PKGBUILD
 
 # ─────────────────────────────────────────────────────────────────────────────
