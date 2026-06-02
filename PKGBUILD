@@ -2,7 +2,7 @@
 pkgname=whatscli-git
 _pkgname=whatscli
 pkgver=20260602
-pkgrel=200b0a8
+pkgrel=4
 pkgdesc='A command line interface for WhatsApp, based on go-whatsmeow and tview'
 url='https://github.com/normen/whatscli'
 arch=('i686' 'x86_64' 'armv7h')
