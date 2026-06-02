@@ -1,6 +1,6 @@
 pkgbase = python-urllib3-request
 	pkgdesc = urllib3 request extension.
-	pkgver = 0.1.5.1
+	pkgver = 0.1.5.3
 	pkgrel = 1
 	url = https://pypi.org/project/urllib3_request
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-urllib3-request
 	conflicts = python-urllib3-request
 	options = !strip
 	options = !debug
-	source = urllib3_request-0.1.5.1.tar.gz::https://files.pythonhosted.org/packages/source/u/urllib3_request/urllib3_request-0.1.5.1.tar.gz
-	sha256sums = fa7e40ca46b24241f720f4f89f072878ebf1994a90f4c8e185779ac0fc0b150e
+	source = urllib3_request-0.1.5.3.tar.gz::https://files.pythonhosted.org/packages/source/u/urllib3_request/urllib3_request-0.1.5.3.tar.gz
+	sha256sums = 7cb4383a849cb50d738c2e85845aef7e9199b2563e0b38fc3092ff5ca5f44e2e
 
 pkgname = python-urllib3-request
