@@ -5,7 +5,7 @@
 _arch=x64v3
 _pkgbase=linux-xanmod
 _major=7.0
-_minor=10
+_minor=11
 _branch=7.x
 _xanmodrel=1
 _xanmodrev=
@@ -58,8 +58,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('7402bba062260ecd411d9a2fb327e154d3cdab08221d61be13d0aa374d12ae94'
-            'e63732bed2e8c2e2457e2afda7f25811a20c71cca04f97c5cf29a958370387e6')
+sha256sums=('22eb998f6673b18a34f16b6128d4d74509119be66feef02f9dc4848474aaeafd'
+            'f36bdf20b11a329401f9dd37e945de19cb5a7f1a3d280e4fd4ff1a4c724b8a4f')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
