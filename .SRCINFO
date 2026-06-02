@@ -1,6 +1,6 @@
 pkgbase = dircmp
 	pkgdesc = Terminal TUI for comparing two directories side by side
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/ilyasturki/dircmp
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = dircmp
 	depends = dbus
 	optdepends = rclone: remote directory support
 	conflicts = dircmp-bin
-	noextract = dircmp-1.5.1.tgz
-	source = https://registry.npmjs.org/@ilyasturki/dircmp/-/dircmp-1.5.1.tgz
-	sha256sums = 3a403031ea8474344a62e3bbaa5c2e7d7bb7a61e891200b7013f40a57b8377a2
+	noextract = dircmp-1.5.2.tgz
+	source = https://registry.npmjs.org/@ilyasturki/dircmp/-/dircmp-1.5.2.tgz
+	sha256sums = 009ce03ee9a79506ef59e60104876849f7552cda1c63253bba5a07622b9578bf
 
 pkgname = dircmp
