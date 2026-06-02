@@ -1,11 +1,11 @@
-# Maintainer: jimmy <jimmy.bungalo8@gmail.com>
+# Maintainer: 5unekku <jimmy.bungalo8@gmail.com>
 pkgname=arxman-git
 pkgver=r4.ba1f8b8
 pkgrel=1
 pkgdesc='fast archive manager — extract and compress tar, zip, 7z, rar, zst, xz, bz2 and more'
 arch=('x86_64' 'aarch64')
-url='https://github.com/jimmy/arxman'
-license=('MIT')
+url='https://gitlab.com/5unekku/arxman'
+license=('GPL-3.0-only')
 depends=('bzip2' 'xz')
 makedepends=('cargo')
 optdepends=(
@@ -13,7 +13,6 @@ optdepends=(
     'unrar: rar extraction'
 )
 provides=('arxman')
-conflicts=('arxman')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
