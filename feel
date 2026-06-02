@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""feel v1.2.1 —— 记录当前感受的命令行工具。
+"""feel v1.3.0 —— 记录当前感受的命令行工具。
 
 用法：
     feel              交互式记录
@@ -9,6 +9,7 @@
     feel list -a      显示所有日志
     feel delete <ts>  删除指定 Unix 时间戳的记录
     feel delete last  删除最后一条记录
+    feel version      显示版本信息
     feel help         显示帮助信息
 
 别名：
@@ -16,11 +17,14 @@
     ls -a          → list -a
     del, rm        → delete
     -h, --help     → help
+    -v, --version  → version
 """
 
 import os
 import sys
 from datetime import datetime
+
+VERSION = "1.3.0"
 
 
 # ── i18n ──────────────────────────────────────────────────────────────
@@ -45,11 +49,13 @@ _ZH = {
     "help.list": "  feel list [-n <N>] [-a] 显示日志（默认最近 10 条）",
     "help.delete": "  feel delete <时间戳>    删除指定记录",
     "help.delete_last": "  feel delete last       删除最后一条记录",
+    "help.version": "  feel version           显示版本信息",
     "help.alias_list": "  ls                     → list",
     "help.alias_list_a": "  ls -a                  → list -a",
     "help.alias_list_n": "  ls -n <N>              → list -n <N>",
     "help.alias_delete": "  del, rm                → delete",
     "help.alias_help": "  -h, --help             → help",
+    "help.alias_version": "  -v, --version          → version",
 }
 
 _EN = {
@@ -72,11 +78,13 @@ _EN = {
     "help.list": "  feel list [-n <N>] [-a] Show logs (default: last 10)",
     "help.delete": "  feel delete <timestamp> Delete entry by timestamp",
     "help.delete_last": "  feel delete last       Delete the last entry",
+    "help.version": "  feel version           Show version information",
     "help.alias_list": "  ls                     → list",
     "help.alias_list_a": "  ls -a                  → list -a",
     "help.alias_list_n": "  ls -n <N>              → list -n <N>",
     "help.alias_delete": "  del, rm                → delete",
     "help.alias_help": "  -h, --help             → help",
+    "help.alias_version": "  -v, --version          → version",
 }
 
 
@@ -268,6 +276,7 @@ def _show_help() -> None:
     print(tr["help.list"])
     print(tr["help.delete"])
     print(tr["help.delete_last"])
+    print(tr["help.version"])
     print(f"  help, -h, --help     {help_cmd_desc}")
     print()
     print(tr["help.aliases"])
@@ -276,6 +285,7 @@ def _show_help() -> None:
     print(tr["help.alias_list_n"])
     print(tr["help.alias_delete"])
     print(tr["help.alias_help"])
+    print(tr["help.alias_version"])
 
 
 def _resolve_aliases(argv: list[str]) -> list[str]:
@@ -288,6 +298,10 @@ def _resolve_aliases(argv: list[str]) -> list[str]:
     # help 别名
     if cmd in ("-h", "--help"):
         return [argv[0], "help"]
+
+    # version 别名
+    if cmd in ("-v", "--version"):
+        return [argv[0], "version"]
 
     # list 别名
     if cmd == "ls":
@@ -309,6 +323,10 @@ def main() -> None:
 
     if argv[1] == "help":
         _show_help()
+        return
+
+    if argv[1] == "version":
+        print(f"feel v{VERSION}")
         return
 
     if argv[1] == "list":
