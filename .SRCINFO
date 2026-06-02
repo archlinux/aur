@@ -1,0 +1,19 @@
+pkgbase = razer-fn-fix-git
+	pkgdesc = JIT low-level hypershift key layer fix for Razer Keyboards.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Adam-AtlasSoftware/razer-fn-fix
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = gcc
+	makedepends = clang
+	depends = glibc
+	provides = razer-fn-fix
+	conflicts = razer-fn-fix
+	source = razer-fn-fix-git::git+https://github.com/Adam-AtlasSoftware/razer-fn-fix.git
+	source = razer-fn.service::https://raw.githubusercontent.com/Adam-AtlasSoftware/razer-fn-fix/master/razer-fn.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = razer-fn-fix-git
