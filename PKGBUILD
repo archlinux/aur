@@ -2,14 +2,14 @@
 
 pkgname=asyncapi-cli-bin
 pkgver=6.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="AsyncAPI CLI"
 arch=('x86_64')
 url="https://www.asyncapi.com/tools/cli"
 license=('Apache-2.0')
 depends=('nodejs')
 source=("https://github.com/asyncapi/cli/releases/download/v${pkgver}/asyncapi.tar.gz")
-sha256sums=('da5abf09a88d8912e1e0fb33b36b3bffd8fc55d3cf32985da7b2d085695bd1f4')
+sha256sums=('27bd33474467809b702c58be7596f45cc9629823bd78570429930cb191d1a932')
 options=(!debug)
 
 package() {
