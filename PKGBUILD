@@ -1,6 +1,6 @@
 # Maintainer: Lumina Nao <luminanao at duck.com>
 pkgname=llama-launcher
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Helper scripts for building llama.cpp and running llama-server with per-model configs, launch history, benchmarking, and SSH tunneling"
 arch=(any)
@@ -18,8 +18,9 @@ sha256sums=(SKIP)
 package() {
     install -Dm755 "${pkgname}/install.sh" "${pkgdir}/usr/bin/llama-launcher-install"
     install -Dm755 "${pkgname}/llama-server-launcher.sh" "${pkgdir}/usr/bin/llama-launcher"
+    ln -sf llama-launcher "${pkgdir}/usr/bin/llama-launcher-log"
     install -Dm755 "${pkgname}/download-model.sh" "${pkgdir}/usr/bin/llama-download-model"
-    install -Dm755 "${pkgname}/utils/build.sh" "${pkgdir}/usr/bin/llama-build"
+    install -Dm755 "${pkgname}/build-llamacpp.sh" "${pkgdir}/usr/bin/llama-build"
     install -Dm755 "${pkgname}/utils/install-service.sh" "${pkgdir}/usr/bin/llama-install-service"
     install -Dm755 "${pkgname}/utils/ssh-tunnel.sh" "${pkgdir}/usr/bin/llama-ssh-tunnel"
     install -Dm755 "${pkgname}/utils/mlock-fixer.sh" "${pkgdir}/usr/bin/llama-mlock-fixer"
