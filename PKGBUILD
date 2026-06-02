@@ -5,7 +5,7 @@
 pkgname=prowlarr
 _pkgname=Prowlarr
 pkgver=2.3.5.5327
-pkgrel=1
+pkgrel=2
 pkgdesc='Indexer manager/proxy for usenet and torrent users.'
 arch=(x86_64 aarch64 armv7h)
 url='https://prowlarr.com'
@@ -70,6 +70,9 @@ _branch='master'
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
+
+  # Fix  CVE-2026-41319
+  sed 's/MailKit" Version="4\.14\.0"/MailKit" Version="4\.16\.0"/' -i src/NzbDrone.Core/Prowlarr.Core.csproj
 
   # Remove upstream dotnet version
   rm global.json
