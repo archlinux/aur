@@ -1,6 +1,6 @@
 pkgbase = freqangel
 	pkgdesc = A tool for doing things with SDRAngel frequency csv-files.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/sigurd4/freqangel
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = freqangel
 	makedepends = cargo
 	makedepends = rust
 	makedepends = base-devel
-	source = freqangel-0.1.0.tar.gz::https://static.crates.io/crates/freqangel/freqangel-0.1.0.crate
-	sha256sums = df1858f5588c2c7dfc33b6f4048fa5c49158d1b0d2413262db2da120fd54b844
+	source = freqangel-0.1.1.tar.gz::https://static.crates.io/crates/freqangel/freqangel-0.1.1.crate
+	sha256sums = 0c442c912211391d54526d6ea7d7a861f216cbb6a8cdb39b67e8c4b274a798e9
 
 pkgname = freqangel
