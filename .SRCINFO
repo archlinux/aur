@@ -1,5 +1,5 @@
 pkgbase = crude
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 0
 	pkgdesc = Migration toolkit for databases
 	url = https://github.com/termapps/crude
@@ -8,9 +8,9 @@ pkgbase = crude
 	license = MIT
 	provides = crude
 
-	source_x86_64 = crude-0.1.4.zip::https://github.com/termapps/crude/releases/download/v0.1.4/crude-v0.1.4-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 7cd2747855e68b84fb5278f1ed702326456424afbbca49715a671f477c54e074
-	source_i686 = crude-0.1.4.zip::https://github.com/termapps/crude/releases/download/v0.1.4/crude-v0.1.4-i686-unknown-linux-gnu.zip
-	sha256sums_i686 = 91d33a00acfeb9c543242739824b7d96273fd8bfbc119470bc60fd5afb1108c9
+	source_x86_64 = crude-0.1.5.zip::https://github.com/termapps/crude/releases/download/v0.1.5/crude-v0.1.5-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 511c96331f4ce02d2963e5ed4ffd782bef31f37ddafaec67c3a5df4b88469555
+	source_i686 = crude-0.1.5.zip::https://github.com/termapps/crude/releases/download/v0.1.5/crude-v0.1.5-i686-unknown-linux-gnu.zip
+	sha256sums_i686 = f674445e296c4d1f658e86f365aeea72f08ae8e0d67d9dc7c4691059c28c9578
 
 pkgname = crude
