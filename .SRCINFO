@@ -1,0 +1,23 @@
+pkgbase = gixy-ng
+	pkgdesc = NGINX configuration static analyzer focused on security (maintained fork of yandex/gixy)
+	pkgver = 0.2.47
+	pkgrel = 1
+	url = https://gixy.getpagespeed.com/
+	arch = any
+	license = MPL2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-ngxparse
+	depends = python-jinja
+	depends = python-configargparse
+	optdepends = python-rich: prettier terminal output
+	optdepends = python-requests: ReDoS checks via external API
+	provides = gixy
+	conflicts = gixy
+	source = https://files.pythonhosted.org/packages/source/g/gixy_ng/gixy_ng-0.2.47.tar.gz
+	sha256sums = 6729f4ae6b24ce554925bce51cbbca9e51785c31a2f85b923834c40c8d200dd1
+
+pkgname = gixy-ng
