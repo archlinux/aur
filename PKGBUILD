@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartoc-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Barto job executor client (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -21,9 +21,9 @@ _base="https://github.com/rustyhorde/barto/releases/download/v${pkgver}"
 source=("${_base}/dist-bartoc.tar.gz")
 source_x86_64=("bartoc-x86_64::${_base}/bartoc-x86_64-unknown-linux-musl")
 source_aarch64=("bartoc-aarch64::${_base}/bartoc-aarch64-unknown-linux-musl")
-sha256sums=('48fb3a94914bce52dfb1f89bebaf26d9796ca3afc8088e3ce9fc37317997e9dd')
-sha256sums_x86_64=('7af1f0f95bec181460f0a0b6aa3aab323de06eb8375fa86c14466df80c5e6329')
-sha256sums_aarch64=('a68bdcf157ca28b03e0d25389884dab4beb78ab07586d3c35973cf312dcd5991')
+sha256sums=('eb1909de44b6f0133102026ab7a04ce8eded8afbf9554ffafd70087c5c4b1c52')
+sha256sums_x86_64=('a60b0727e99c1bb9a4a2b88c105818bc4e59371f6cc24439c7a6ace2e0d1b878')
+sha256sums_aarch64=('b1575ac1463725ea6941fef5e48ab855550d545452f54da05aee8486447619d7')
 
 package() {
     install -Dm755 "bartoc-${CARCH}" "$pkgdir/usr/bin/bartoc"
