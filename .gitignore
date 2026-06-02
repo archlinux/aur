@@ -2,6 +2,6 @@ pkg/
 src/
 Mirror*.zip
 Mirror*.tar.gz
-*.deb
+*.deb*
 *.rpm
 *.pkg.*

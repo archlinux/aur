@@ -1,6 +1,9 @@
 # Maintainer: Zoey Mertes (zmertes at zmertes dot net)
 # shellcheck shell=bash disable=SC2034,SC2154
 
+# release 1.4.0 notes
+# * yay updated webkit2gtk, thanks for responding to my email panic <3
+# * panic keeps changing the deb name capitalization
 # release 1.2.0 notes
 # * fresh binary and gamecontrollerdb.txt
 # release 1.1.0 notes
@@ -17,7 +20,7 @@
 # if so, can you make the binary named PlaydateMirror from the beginning pretty please? thanks <3
 
 pkgname=playdate-mirror
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Screen viewer and controller for the Playdate console'
 arch=('x86_64')
@@ -25,24 +28,27 @@ url='https://play.date/mirror/'
 license=('custom:proprietary')
 depends=(
   'gtk3'
-  'webkit2gtk'
+  'webkit2gtk-4.1'
 )
 makedepends=()
 optdepends=()
 options=()
 
 source=(
-  "https://download-cdn.panic.com/mirror/Linux/Mirror-${pkgver}.x86_64.deb"
+  # Panic is inconsistent about the package filename, sometimes it's Mirror sometimes it's mirror
+  # With 1.3.0 they changed it after release from mirror to Mirror
+  # if in doubt check the file listing here: https://download-cdn.panic.com/mirror/Linux/
+  "https://download-cdn.panic.com/mirror/Linux/mirror-${pkgver}.x86_64.deb"
   "50-playdate-mirror.rules"
 )
 
-sha512sums=('e3d5d91a411fcb8b90072a99f202ce8d7af32831bf2f958fe4b27bf1a1389237530bf05d0859840d55aecbf5df5b6af02c73f832e7f15e32254ed84601bceff4'
+sha512sums=('098630f1cf11d69274eb653c536afeabc4b649a6c5ffa6e41665d8b763cd4c5b10dbbff49ee086038e27c114d4b02e3c192006ab99ef64aa61d3269fc01eea43'
             '84d348266722753a81bdf95e17917f4c4665c484fdb3ac258b0f46d5e3e92c62aff0df91b78c0e1d43ace9f2e15f3a9a6a24726a37302ddbf40499f5ca60864c')
 
 build() {
   echo >&2 "Extracting the deb"
   cd "${srcdir}" || exit 2
-  tar xvf "${srcdir}/data.tar.xz"
+  tar xvf "${srcdir}/data.tar.zst"
 
   echo >&2 "Patching the desktop file"
   sed -i -e 's|/usr/bin/mirror|/usr/bin/PlaydateMirror|' \
