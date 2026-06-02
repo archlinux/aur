@@ -54,8 +54,10 @@ build() {
   cmake -B build -G Ninja \
     -D CMAKE_BUILD_TYPE=RelWithDebInfo \
     -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_CXX_FLAGS="${CXXFLAGS} -Wno-array-bounds" \
     -D USE_GTK_VERSION=4 \
     -D ENABLE_DEPRECATED=OFF \
+    -D RUN_CLANG_TIDY=OFF \
     -D ENABLE_CLI=OFF \
     -D ENABLE_DAEMON=OFF \
     -D ENABLE_GTK=ON \
