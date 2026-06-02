@@ -20,11 +20,57 @@ index 8e838eaf..2011874e 100644
      /*!
       * Grab ownership of device, ownership is required to do modeset.
       *
+diff --git a/kernel-open/nvidia-drm/nvidia-drm-crtc.c b/kernel-open/nvidia-drm/nvidia-drm-crtc.c
+index 17958f8a..ce0b8334 100644
+--- a/kernel-open/nvidia-drm/nvidia-drm-crtc.c
++++ b/kernel-open/nvidia-drm/nvidia-drm-crtc.c
+@@ -3152,6 +3152,7 @@ static void nv_drm_vblank_enable_fn(void *t)
+ {
+     struct nv_drm_crtc *nv_crtc = t;
+     struct nv_drm_device *nv_dev = to_nv_device(nv_crtc->base.dev);
++    struct NvKmsKapiDevice *pDevice = READ_ONCE(nv_dev->pDevice);
+     struct drm_device *dev = nv_crtc->base.dev;
+     unsigned long irqflags;
+ 
+@@ -3165,9 +3166,11 @@ static void nv_drm_vblank_enable_fn(void *t)
+     nv_crtc->vblank_intr_fired = false;
+     spin_unlock_irqrestore(&dev->vblank_time_lock, irqflags);
+ 
+-    if (nv_crtc->vblankIntrCallback == NULL) {
++    if (pDevice != NULL && !READ_ONCE(nv_dev->inSurpriseRemoval) &&
++        !READ_ONCE(nv_dev->inRemoval) &&
++        nv_crtc->vblankIntrCallback == NULL) {
+         nv_crtc->vblankIntrCallback =
+-            nvKms->registerVblankIntrCallback(nv_dev->pDevice, nv_crtc->head,
++            nvKms->registerVblankIntrCallback(pDevice, nv_crtc->head,
+                 nv_drm_crtc_vblank_callback, (NvU64)(NvUPtr)nv_crtc);
+     }
+ 
+@@ -3179,13 +3182,17 @@ static void nv_drm_vblank_disable_fn(void *t)
+     struct nv_drm_crtc *nv_crtc = t;
+     struct drm_device *dev = nv_crtc->base.dev;
+     struct nv_drm_device *nv_dev = to_nv_device(dev);
++    struct NvKmsKapiDevice *pDevice = READ_ONCE(nv_dev->pDevice);
+     unsigned long irqflags;
+ 
+     mutex_lock(&nv_crtc->vblank_q_lock);
+ 
+     if (nv_crtc->vblankIntrCallback != NULL) {
+-        nvKms->unregisterVblankIntrCallback(nv_dev->pDevice, nv_crtc->head,
+-            nv_crtc->vblankIntrCallback);
++        if (pDevice != NULL && !READ_ONCE(nv_dev->inSurpriseRemoval) &&
++            !READ_ONCE(nv_dev->inRemoval)) {
++            nvKms->unregisterVblankIntrCallback(pDevice, nv_crtc->head,
++                nv_crtc->vblankIntrCallback);
++        }
+         nv_crtc->vblankIntrCallback = NULL;
+     }
+ 
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-drv.c b/kernel-open/nvidia-drm/nvidia-drm-drv.c
-index df29f491..f9e701f2 100644
+index df29f491..8c1fb7ac 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-drv.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-drv.c
-@@ -907,6 +907,46 @@ static void nv_drm_dev_unload(struct drm_device *dev)
+@@ -907,6 +907,56 @@ static void nv_drm_dev_unload(struct drm_device *dev)
          return;
      }
  
@@ -35,9 +81,19 @@ index df29f491..f9e701f2 100644
 +     * Use freeDeviceForSurpriseRemoval which only releases kernel resources
 +     * without attempting any hardware access.
 +     */
-+    if (nv_dev->inSurpriseRemoval) {
++    /*
++     * For Thunderbolt eGPU hot-unplug, pci_channel_offline() returns false
++     * (it's a controlled PCIe removal, not a bus error), so inSurpriseRemoval
++     * is not set.  However, the GPU hardware is physically gone.  Use
++     * freeDeviceForSurpriseRemoval for ALL removals triggered via nv_drm_remove
++     * (inRemoval = TRUE) so we never attempt hardware-level RM teardown against
++     * a device that is no longer on the bus.  This suppresses the
++     * kgmmuInvalidateTlb / dmaFreeMapping error flood in the kernel log.
++     */
++    if (READ_ONCE(nv_dev->inSurpriseRemoval) ||
++        READ_ONCE(nv_dev->inRemoval)) {
 +        NV_DRM_DEV_LOG_INFO(nv_dev,
-+            "Surprise removal detected, skipping hardware access");
++            "GPU removal detected (surprise or eGPU hot-unplug), skipping hardware access");
 +
 +        /* Wake up any processes waiting on flip events */
 +        wake_up_all(&nv_dev->flip_event_wq);
@@ -49,8 +105,8 @@ index df29f491..f9e701f2 100644
 +        drm_kms_helper_poll_fini(dev);
 +        drm_mode_config_cleanup(dev);
 +
-+        pDevice = nv_dev->pDevice;
-+        nv_dev->pDevice = NULL;
++        pDevice = READ_ONCE(nv_dev->pDevice);
++        WRITE_ONCE(nv_dev->pDevice, NULL);
 +
 +        mutex_unlock(&nv_dev->lock);
 +
@@ -71,10 +127,72 @@ index df29f491..f9e701f2 100644
      /* Release modeset ownership if fbdev is enabled */
  
  #if defined(NV_DRM_FBDEV_AVAILABLE)
-@@ -2234,6 +2274,28 @@ static void nv_drm_dev_destroy(struct nv_drm_device *nv_dev)
-     nv_drm_free(nv_dev);
+@@ -943,8 +993,8 @@ static void nv_drm_dev_unload(struct drm_device *dev)
+ 
+     /* Unset NvKmsKapiDevice */
+ 
+-    pDevice = nv_dev->pDevice;
+-    nv_dev->pDevice = NULL;
++    pDevice = READ_ONCE(nv_dev->pDevice);
++    WRITE_ONCE(nv_dev->pDevice, NULL);
+ 
+     mutex_unlock(&nv_dev->lock);
+ 
+@@ -1892,6 +1942,8 @@ static const struct drm_ioctl_desc nv_drm_ioctls[] = {
+                       DRM_UNLOCKED|DRM_MASTER),
+ };
+ 
++static void nv_drm_dev_release(struct drm_device *dev);
++
+ static struct drm_driver nv_drm_driver = {
+ 
+     .driver_features        =
+@@ -1964,6 +2016,7 @@ static struct drm_driver nv_drm_driver = {
+ #endif
+ 
+     .load                   = nv_drm_load_noop,
++    .release                = nv_drm_dev_release,
+ 
+     .postclose              = nv_drm_postclose,
+     .open                   = nv_drm_open,
+@@ -2156,10 +2209,13 @@ failed_drm_register:
+ failed_drm_load:
+ 
+     drm_dev_put(dev);
++    nv_dev = NULL;
+ 
+ failed_drm_alloc:
+ 
+-    nv_drm_free(nv_dev);
++    if (nv_dev != NULL) {
++        nv_drm_free(nv_dev);
++    }
  }
  
+ /*
+@@ -2231,7 +2287,44 @@ static void nv_drm_dev_destroy(struct nv_drm_device *nv_dev)
+ 
+     nv_drm_dev_unload(dev);
+     drm_dev_put(dev);
+-    nv_drm_free(nv_dev);
++}
++
++static void nv_drm_dev_release(struct drm_device *dev)
++{
++    struct nv_drm_device *nv_dev;
++
++    if (dev == NULL) {
++        return;
++    }
++
++    nv_dev = dev->dev_private;
++    dev->dev_private = NULL;
++
++    if (nv_dev != NULL) {
++        nv_drm_free(nv_dev);
++    }
++}
++
 +/*
 + * Helper to get PCI device from DRM device, handling both old and new kernels.
 + * Returns NULL if not a PCI device or device not available.
@@ -95,12 +213,10 @@ index df29f491..f9e701f2 100644
 +    }
 +    return NULL;
 +#endif
-+}
-+
+ }
+ 
  /*
-  * Unregister a single NVIDIA DRM device.
-  */
-@@ -2242,7 +2304,29 @@ void nv_drm_remove(NvU32 gpuId)
+@@ -2242,7 +2335,42 @@ void nv_drm_remove(NvU32 gpuId)
      struct nv_drm_device *nv_dev = nv_drm_find_and_remove_device(gpuId);
  
      if (nv_dev) {
@@ -109,19 +225,32 @@ index df29f491..f9e701f2 100644
          NV_DRM_DEV_LOG_INFO(nv_dev, "Removing device");
 +
 +        /*
++         * Mark the device as being removed BEFORE drm_dev_unplug to close
++         * the race window where delayed_fput callbacks (e.g. DMA-buf release)
++         * check pDevice != NULL and proceed to call into nvidia_modeset state
++         * that may have already been freed by nv_drm_dev_unload running
++         * concurrently on another CPU.  Setting inRemoval first ensures all
++         * destructor guards skip nvKms calls from this point on.
++         */
++        WRITE_ONCE(nv_dev->inRemoval, NV_TRUE);
++
++        /*
 +         * Check if this is a surprise removal (hot-unplug) by testing
 +         * if the PCI channel is offline. This happens when:
 +         * - Thunderbolt eGPU is physically disconnected
 +         * - GPU falls off the bus unexpectedly
-+         * 
-+         * For normal driver unload (rmmod), the PCI channel remains online.
-+         * We only skip NVKMS hardware access during surprise removal.
++         *
++         * Note: for Thunderbolt eGPU hot-unplug pci_channel_offline() often
++         * returns false (controlled PCIe hot-remove, not a bus error), so
++         * inSurpriseRemoval may not be set.  inRemoval above handles that.
++         * We keep inSurpriseRemoval for the hardware-access-skip path in
++         * nv_drm_dev_unload (freeDeviceForSurpriseRemoval vs freeDevice).
 +         */
 +        pdev = nv_drm_get_pci_dev(nv_dev->dev);
 +        if (pdev != NULL && pci_channel_offline(pdev)) {
 +            NV_DRM_DEV_LOG_INFO(nv_dev,
 +                "PCI channel offline - surprise removal detected");
-+            nv_dev->inSurpriseRemoval = NV_TRUE;
++            WRITE_ONCE(nv_dev->inSurpriseRemoval, NV_TRUE);
 +
 +            /* Wake up any processes waiting on flip events */
 +            wake_up_all(&nv_dev->flip_event_wq);
@@ -131,37 +260,54 @@ index df29f491..f9e701f2 100644
          nv_drm_dev_destroy(nv_dev);
      }
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-fb.c b/kernel-open/nvidia-drm/nvidia-drm-fb.c
-index 95fd4f0c..6d1d5e3f 100644
+index 95fd4f0c..b59051df 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-fb.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-fb.c
-@@ -63,7 +63,13 @@ static void nv_drm_framebuffer_destroy(struct drm_framebuffer *fb)
+@@ -55,6 +55,7 @@ static void __nv_drm_framebuffer_free(struct nv_drm_framebuffer *nv_fb)
+ static void nv_drm_framebuffer_destroy(struct drm_framebuffer *fb)
+ {
+     struct nv_drm_device *nv_dev = to_nv_device(fb->dev);
++    struct NvKmsKapiDevice *pDevice = READ_ONCE(nv_dev->pDevice);
+     struct nv_drm_framebuffer *nv_fb = to_nv_framebuffer(fb);
+ 
+     /* Cleaup core framebuffer object */
+@@ -63,8 +64,15 @@ static void nv_drm_framebuffer_destroy(struct drm_framebuffer *fb)
  
      /* Free NvKmsKapiSurface associated with this framebuffer object */
  
 -    if (nv_fb->pSurface != NULL) {
+-        nvKms->destroySurface(nv_dev->pDevice, nv_fb->pSurface);
 +    /*
-+     * Only call nvKms->destroySurface if pDevice is valid and device is not
-+     * in surprise removal. During hot-unplug, nvidia_modeset internal state
-+     * may be corrupted before this destructor runs from delayed_fput.
++     * Only call nvKms->destroySurface if pDevice is valid and removal has not
++     * started. During hot-unplug, nvidia_modeset internal state may be
++     * corrupted before this destructor runs from delayed_fput.
 +     */
 +
-+    if (nv_dev->pDevice != NULL && !nv_dev->inSurpriseRemoval && nv_fb->pSurface != NULL) {
-         nvKms->destroySurface(nv_dev->pDevice, nv_fb->pSurface);
++    if (pDevice != NULL && !READ_ONCE(nv_dev->inSurpriseRemoval) &&
++        !READ_ONCE(nv_dev->inRemoval) && nv_fb->pSurface != NULL) {
++        nvKms->destroySurface(pDevice, nv_fb->pSurface);
      }
  
+     __nv_drm_framebuffer_free(nv_fb);
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-fence.c b/kernel-open/nvidia-drm/nvidia-drm-fence.c
-index 7af1ed7f..d8fcf6ed 100644
+index 7af1ed7f..8dc021ea 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-fence.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-fence.c
-@@ -212,6 +212,19 @@ static void __nv_drm_prime_fence_context_destroy(
+@@ -209,14 +209,30 @@ static void __nv_drm_prime_fence_context_destroy(
+     struct nv_drm_fence_context *nv_fence_context)
+ {
+     struct nv_drm_device *nv_dev = nv_fence_context->nv_dev;
++    struct NvKmsKapiDevice *pDevice = READ_ONCE(nv_dev->pDevice);
      struct nv_drm_prime_fence_context *nv_prime_fence_context =
          to_nv_prime_fence_context(nv_fence_context);
  
 +    /*
-+     * Skip nvKms calls if device is being surprise-removed.
-+     * The nvidia_modeset internal state may be corrupted.
++     * Skip nvKms calls if device is being removed or was surprise-removed.
++     * The nvidia_modeset internal state may be freed before this destructor
++     * runs from delayed_fput (race between drm_dev_unplug and pDevice NULL).
 +     */
-+    if (nv_dev->pDevice == NULL || nv_dev->inSurpriseRemoval) {
++    if (pDevice == NULL || READ_ONCE(nv_dev->inSurpriseRemoval) ||
++        READ_ONCE(nv_dev->inRemoval)) {
 +        /* Force signal pending fences and free */
 +        spin_lock(&nv_prime_fence_context->lock);
 +        nv_drm_gem_prime_force_fence_signal(nv_prime_fence_context);
@@ -173,40 +319,142 @@ index 7af1ed7f..d8fcf6ed 100644
      /*
       * Free channel event before destroying the fence context, otherwise event
       * callback continue to get called.
+      */
+-    nvKms->freeChannelEvent(nv_dev->pDevice, nv_prime_fence_context->cb);
++    nvKms->freeChannelEvent(pDevice, nv_prime_fence_context->cb);
+ 
+     /* Force signal all pending fences and empty pending list */
+     spin_lock(&nv_prime_fence_context->lock);
+@@ -227,12 +243,12 @@ static void __nv_drm_prime_fence_context_destroy(
+ 
+     /* Free nvkms resources */
+ 
+-    nvKms->unmapMemory(nv_dev->pDevice,
++    nvKms->unmapMemory(pDevice,
+                        nv_prime_fence_context->pSemSurface,
+                        NVKMS_KAPI_MAPPING_TYPE_KERNEL,
+                        (void *) nv_prime_fence_context->pLinearAddress);
+ 
+-    nvKms->freeMemory(nv_dev->pDevice, nv_prime_fence_context->pSemSurface);
++    nvKms->freeMemory(pDevice, nv_prime_fence_context->pSemSurface);
+ 
+     nv_drm_free(nv_fence_context);
+ }
+@@ -1000,13 +1016,20 @@ __nv_drm_semsurf_ctx_reg_callbacks(struct nv_drm_semsurf_fence_ctx *ctx)
+ 
+ {
+     struct nv_drm_device *nv_dev = ctx->base.nv_dev;
+-    struct nv_drm_semsurf_fence_callback *newCallback =
+-        __nv_drm_semsurf_new_callback(ctx);
++    struct nv_drm_semsurf_fence_callback *newCallback;
+     struct NvKmsKapiSemaphoreSurfaceCallback *newNvKmsCallback;
+     NvU64 newWaitValue;
+     unsigned long newTimeout;
+     NvKmsKapiRegisterWaiterResult kapiRet;
+ 
++    if (READ_ONCE(nv_dev->pDevice) == NULL ||
++        READ_ONCE(nv_dev->inSurpriseRemoval) ||
++        READ_ONCE(nv_dev->inRemoval)) {
++        return;
++    }
++
++    newCallback = __nv_drm_semsurf_new_callback(ctx);
++
+     if (!newCallback) {
+         NV_DRM_DEV_LOG_ERR(
+             nv_dev,
+@@ -1118,6 +1141,7 @@ static void __nv_drm_semsurf_fence_ctx_destroy(
+     struct nv_drm_device *nv_dev = nv_fence_context->nv_dev;
+     struct nv_drm_semsurf_fence_ctx *ctx =
+         to_semsurf_fence_ctx(nv_fence_context);
++    struct NvKmsKapiDevice *pDevice = READ_ONCE(nv_dev->pDevice);
+     struct NvKmsKapiSemaphoreSurfaceCallback *pendingNvKmsCallback;
+     NvU64 pendingWaitValue;
+     unsigned long flags;
+@@ -1130,6 +1154,20 @@ static void __nv_drm_semsurf_fence_ctx_destroy(
+ 
+     nv_timer_delete_sync(&ctx->timer.kernel_timer);
+ 
++    if (pDevice == NULL || READ_ONCE(nv_dev->inSurpriseRemoval) ||
++        READ_ONCE(nv_dev->inRemoval)) {
++        if (ctx->callback.local) {
++            nv_drm_free(ctx->callback.local);
++            ctx->callback.local = NULL;
++            ctx->callback.nvKms = NULL;
++        }
++
++        __nv_drm_semsurf_force_complete_pending(ctx);
++
++        nv_drm_free(nv_fence_context);
++        return;
++    }
++
+     /*
+      * The semaphore surface could still be sending callbacks, so it is still
+      * not safe to dereference the ctx->callback pointers. However,
+@@ -1147,14 +1185,14 @@ static void __nv_drm_semsurf_fence_ctx_destroy(
+ 
+     if (pendingNvKmsCallback) {
+         WARN_ON(pendingWaitValue == 0);
+-        nvKms->unregisterSemaphoreSurfaceCallback(nv_dev->pDevice,
++        nvKms->unregisterSemaphoreSurfaceCallback(pDevice,
+                                                   ctx->pSemSurface,
+                                                   ctx->base.fenceSemIndex,
+                                                   pendingWaitValue,
+                                                   pendingNvKmsCallback);
+     }
+ 
+-    nvKms->freeSemaphoreSurface(nv_dev->pDevice, ctx->pSemSurface);
++    nvKms->freeSemaphoreSurface(pDevice, ctx->pSemSurface);
+ 
+     /*
+      * Now that the semaphore surface, the timer, and the workthread are gone:
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-gem-dma-buf.c b/kernel-open/nvidia-drm/nvidia-drm-gem-dma-buf.c
-index 163a8ecf..fdddfd98 100644
+index 163a8ecf..e93cab60 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-gem-dma-buf.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-gem-dma-buf.c
-@@ -43,7 +43,13 @@ void __nv_drm_gem_dma_buf_free(struct nv_drm_gem_object *nv_gem)
+@@ -41,11 +41,19 @@ static inline
+ void __nv_drm_gem_dma_buf_free(struct nv_drm_gem_object *nv_gem)
+ {
      struct nv_drm_device *nv_dev = nv_gem->nv_dev;
++    struct NvKmsKapiDevice *pDevice = READ_ONCE(nv_dev->pDevice);
      struct nv_drm_gem_dma_buf *nv_dma_buf = to_nv_dma_buf(nv_gem);
  
 -    if (nv_dma_buf->base.pMemory) {
 +    /*
-+     * Only call nvKms->freeMemory if pDevice is valid and device is not
-+     * in surprise removal. During hot-unplug, nvidia_modeset internal state
-+     * may be corrupted before this destructor runs from delayed_fput.
++     * Only call nvKms->freeMemory if pDevice is valid and removal has not
++     * started. During hot-unplug, nvidia_modeset internal state may be
++     * corrupted before this destructor runs from delayed_fput.
 +     */
-+    if (nv_dma_buf->base.pMemory && nv_dev->pDevice != NULL &&
-+        !nv_dev->inSurpriseRemoval) {
++    if (nv_dma_buf->base.pMemory && pDevice != NULL &&
++        !READ_ONCE(nv_dev->inSurpriseRemoval) &&
++        !READ_ONCE(nv_dev->inRemoval)) {
          /* Free NvKmsKapiMemory handle associated with this gem object */
-         nvKms->freeMemory(nv_dev->pDevice, nv_dma_buf->base.pMemory);
+-        nvKms->freeMemory(nv_dev->pDevice, nv_dma_buf->base.pMemory);
++        nvKms->freeMemory(pDevice, nv_dma_buf->base.pMemory);
      }
+ 
+     drm_prime_gem_destroy(&nv_gem->base, nv_dma_buf->sgt);
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-gem-nvkms-memory.c b/kernel-open/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
-index 0785dddf..befdf39e 100644
+index 0785dddf..a42cd5c2 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
-@@ -42,6 +42,17 @@ static void __nv_drm_gem_nvkms_memory_free(struct nv_drm_gem_object *nv_gem)
+@@ -39,9 +39,22 @@
+ static void __nv_drm_gem_nvkms_memory_free(struct nv_drm_gem_object *nv_gem)
+ {
+     struct nv_drm_device *nv_dev = nv_gem->nv_dev;
++    struct NvKmsKapiDevice *pDevice = READ_ONCE(nv_dev->pDevice);
      struct nv_drm_gem_nvkms_memory *nv_nvkms_memory =
          to_nv_nvkms_memory(nv_gem);
  
 +    /*
-+     * Skip nvKms calls if pDevice is NULL or inSurpriseRemoval is set.
++     * Skip nvKms calls if pDevice is NULL or removal has started.
 +     * During hot-unplug, the nvidia_modeset internal state (semaphores,
 +     * memory handles) may be corrupted or freed before this destructor
 +     * runs from delayed_fput. The memory resources are gone with the GPU.
 +     */
-+    if (nv_dev->pDevice == NULL || nv_dev->inSurpriseRemoval) {
++    if (pDevice == NULL || READ_ONCE(nv_dev->inSurpriseRemoval) ||
++        READ_ONCE(nv_dev->inRemoval)) {
 +        nv_drm_free(nv_nvkms_memory);
 +        return;
 +    }
@@ -214,11 +462,35 @@ index 0785dddf..befdf39e 100644
      if (nv_nvkms_memory->physically_mapped) {
          if (nv_nvkms_memory->pWriteCombinedIORemapAddress != NULL) {
              iounmap(nv_nvkms_memory->pWriteCombinedIORemapAddress);
+@@ -53,7 +66,7 @@ static void __nv_drm_gem_nvkms_memory_free(struct nv_drm_gem_object *nv_gem)
+         }
+ #endif
+ 
+-        nvKms->unmapMemory(nv_dev->pDevice,
++        nvKms->unmapMemory(pDevice,
+                            nv_nvkms_memory->base.pMemory,
+                            NVKMS_KAPI_MAPPING_TYPE_USER,
+                            nv_nvkms_memory->pPhysicalAddress);
+@@ -65,12 +78,12 @@ static void __nv_drm_gem_nvkms_memory_free(struct nv_drm_gem_object *nv_gem)
+ 
+     /* Decrement GC6 blocker if it's still held */
+     if (nv_nvkms_memory->was_mmapped) {
+-        nvKms->gc6BlockerRefCntDec(nv_dev->pDevice);
++        nvKms->gc6BlockerRefCntDec(pDevice);
+     }
+ 
+     /* Free NvKmsKapiMemory handle associated with this gem object */
+ 
+-    nvKms->freeMemory(nv_dev->pDevice, nv_nvkms_memory->base.pMemory);
++    nvKms->freeMemory(pDevice, nv_nvkms_memory->base.pMemory);
+ 
+     nv_drm_free(nv_nvkms_memory);
+ }
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-priv.h b/kernel-open/nvidia-drm/nvidia-drm-priv.h
-index 0201b95c..073f58c7 100644
+index 0201b95c..3951204f 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-priv.h
 +++ b/kernel-open/nvidia-drm/nvidia-drm-priv.h
-@@ -159,6 +159,21 @@ struct nv_drm_device {
+@@ -159,6 +159,30 @@ struct nv_drm_device {
      NvBool subOwnershipGranted;
      NvBool hasFramebufferConsole;
  
@@ -236,6 +508,15 @@ index 0201b95c..073f58c7 100644
 +     * are skipped to prevent crashes from accessing unmapped memory.
 +     */
 +    NvBool inSurpriseRemoval;
++
++    /*
++     * Set to NV_TRUE for ALL removals (both surprise and normal) before
++     * drm_dev_unplug is called. This closes the race window between
++     * drm_dev_unplug and pDevice being NULLed in nv_drm_dev_unload,
++     * during which delayed_fput callbacks could call into freed
++     * nvidia_modeset state (e.g. drm_gem_dmabuf_release path).
++     */
++    NvBool inRemoval;
 +
      struct drm_property *nv_out_fence_property;
      struct drm_property *nv_input_colorspace_property;
@@ -1239,6 +1520,13 @@ index b771a001..315a6b82 100644
  
      /* Takes nvl->ldata_lock */
      nvl = find_gpu_id(gpu_id);
+diff --git a/src/nvidia-modeset/exports_link_command.txt b/src/nvidia-modeset/exports_link_command.txt
+index 76064078..4929a370 100644
+--- a/src/nvidia-modeset/exports_link_command.txt
++++ b/src/nvidia-modeset/exports_link_command.txt
+@@ -1 +1 @@
+- --undefined=nvKmsIoctl --undefined=nvKmsClose --undefined=nvKmsOpen --undefined=nvKmsModuleLoad --undefined=nvKmsModuleUnload --undefined=nvKmsSuspend --undefined=nvKmsResume --undefined=nvKmsGetProcFiles --undefined=nvKmsReadConf --undefined=nvKmsKapiHandleEventQueueChange --undefined=nvKmsKapiGetFunctionsTableInternal --undefined=nvKmsKapiProbe --undefined=nvKmsKapiRemove --undefined=nvKmsKapiSuspendResume --undefined=nvKmsSetBacklight --undefined=nvKmsGetBacklight --undefined=nvKmsKapiF16ToF32Internal --undefined=nvKmsKapiF32ToF16Internal --undefined=nvKmsKapiF32MulInternal --undefined=nvKmsKapiF32DivInternal --undefined=nvKmsKapiF32AddInternal --undefined=nvKmsKapiF32ToUI32RMinMagInternal --undefined=nvKmsKapiUI32ToF32Internal
++ --undefined=nvKmsIoctl --undefined=nvKmsClose --undefined=nvKmsOpen --undefined=nvKmsModuleLoad --undefined=nvKmsModuleUnload --undefined=nvKmsSuspend --undefined=nvKmsResume --undefined=nvKmsGetProcFiles --undefined=nvKmsReadConf --undefined=nvKmsKapiHandleEventQueueChange --undefined=nvKmsKapiGetFunctionsTableInternal --undefined=nvKmsKapiProbe --undefined=nvKmsKapiRemove --undefined=nvKmsKapiSuspendResume --undefined=nvKmsSetBacklight --undefined=nvKmsGetBacklight --undefined=nvKmsKapiF16ToF32Internal --undefined=nvKmsKapiF32ToF16Internal --undefined=nvKmsKapiF32MulInternal --undefined=nvKmsKapiF32DivInternal --undefined=nvKmsKapiF32AddInternal --undefined=nvKmsKapiF32ToUI32RMinMagInternal --undefined=nvKmsKapiUI32ToF32Internal --undefined=nvKmsGpuLost
 diff --git a/src/nvidia-modeset/include/nvkms-private.h b/src/nvidia-modeset/include/nvkms-private.h
 index 31c76081..df468bc9 100644
 --- a/src/nvidia-modeset/include/nvkms-private.h
@@ -1769,23 +2057,11 @@ index 82fa6fe7..796e12d9 100644
  }
  
  static void AssignNumberOfApiHeads(NVDevEvoRec *pDevEvo)
-diff --git a/src/nvidia-modeset/src/nvkms-evo1.c b/src/nvidia-modeset/src/nvkms-evo1.c
-index 42aab97a..767b1a64 100644
---- a/src/nvidia-modeset/src/nvkms-evo1.c
-+++ b/src/nvidia-modeset/src/nvkms-evo1.c
-@@ -30,7 +30,6 @@
- #include "nvkms-rm.h"
- #include "nvkms-rmapi.h"
- #include "nvkms-evo1.h"
--#include "nvkms-prealloc.h"
- #include "nvkms-utils.h"
- 
- #include "hdmi_spec.h"
 diff --git a/src/nvidia-modeset/src/nvkms-evo3.c b/src/nvidia-modeset/src/nvkms-evo3.c
-index 5666f01a..9b00f870 100644
+index 5666f01a..40b8360e 100644
 --- a/src/nvidia-modeset/src/nvkms-evo3.c
 +++ b/src/nvidia-modeset/src/nvkms-evo3.c
-@@ -6444,9 +6446,16 @@ static NvBool GetChannelState(NVDevEvoPtr pDevEvo,
+@@ -6444,9 +6444,16 @@ static NvBool GetChannelState(NVDevEvoPtr pDevEvo,
                           NVC370_CTRL_CMD_GET_CHANNEL_INFO,
                           &info, sizeof(info));
      if (ret != NVOS_STATUS_SUCCESS) {
@@ -1804,7 +2080,25 @@ index 5666f01a..9b00f870 100644
 +        }
          return FALSE;
      }
-
+ 
+@@ -7553,7 +7560,7 @@ void nvEvoSendHdmiInfoFrameC8(const NVDispEvoRec *pDispEvo,
+     NVHDMIPKT_RESULT ret;
+     ADVANCED_INFOFRAME advancedInfoFrame = { };
+     NvBool swChecksum;
+-
++ 
+     /*
+      * These structures are weird. The NVT_VIDEO_INFOFRAME,
+      * NVT_VENDOR_SPECIFIC_INFOFRAME,
+@@ -7705,7 +7712,7 @@ static void EvoDisableAdaptiveSyncSdpC6(const NVDispEvoRec *pDispEvo,
+ {
+     nvEvo1DisableAdaptiveSyncSdp(pDispEvo, head, NVHDMIPKT_TYPE_SHARED_GENERIC1);
+ }
+-
++ 
+ static NvU32 EvoAllocSurfaceDescriptorC3(
+     NVDevEvoPtr pDevEvo, NVSurfaceDescriptor *pSurfaceDesc,
+     NvU32 memoryHandle, NvU32 localCtxDmaFlags,
 diff --git a/src/nvidia-modeset/src/nvkms-hw-flip.c b/src/nvidia-modeset/src/nvkms-hw-flip.c
 index e90a847a..1b5521b1 100644
 --- a/src/nvidia-modeset/src/nvkms-hw-flip.c
@@ -2880,10 +3174,3 @@ index 533b87e0..79bbcab7 100644
  
          if (pServer->bDebugFreeList)
          {
-diff --git a/src/nvidia-modeset/exports_link_command.txt b/src/nvidia-modeset/exports_link_command.txt
-index 76064078..4929a370 100644
---- a/src/nvidia-modeset/exports_link_command.txt
-+++ b/src/nvidia-modeset/exports_link_command.txt
-@@ -1 +1 @@
-- --undefined=nvKmsIoctl --undefined=nvKmsClose --undefined=nvKmsOpen --undefined=nvKmsModuleLoad --undefined=nvKmsModuleUnload --undefined=nvKmsSuspend --undefined=nvKmsResume --undefined=nvKmsGetProcFiles --undefined=nvKmsReadConf --undefined=nvKmsKapiHandleEventQueueChange --undefined=nvKmsKapiGetFunctionsTableInternal --undefined=nvKmsKapiProbe --undefined=nvKmsKapiRemove --undefined=nvKmsKapiSuspendResume --undefined=nvKmsSetBacklight --undefined=nvKmsGetBacklight --undefined=nvKmsKapiF16ToF32Internal --undefined=nvKmsKapiF32ToF16Internal --undefined=nvKmsKapiF32MulInternal --undefined=nvKmsKapiF32DivInternal --undefined=nvKmsKapiF32AddInternal --undefined=nvKmsKapiF32ToUI32RMinMagInternal --undefined=nvKmsKapiUI32ToF32Internal
-+ --undefined=nvKmsIoctl --undefined=nvKmsClose --undefined=nvKmsOpen --undefined=nvKmsModuleLoad --undefined=nvKmsModuleUnload --undefined=nvKmsSuspend --undefined=nvKmsResume --undefined=nvKmsGetProcFiles --undefined=nvKmsReadConf --undefined=nvKmsKapiHandleEventQueueChange --undefined=nvKmsKapiGetFunctionsTableInternal --undefined=nvKmsKapiProbe --undefined=nvKmsKapiRemove --undefined=nvKmsKapiSuspendResume --undefined=nvKmsSetBacklight --undefined=nvKmsGetBacklight --undefined=nvKmsKapiF16ToF32Internal --undefined=nvKmsKapiF32ToF16Internal --undefined=nvKmsKapiF32MulInternal --undefined=nvKmsKapiF32DivInternal --undefined=nvKmsKapiF32AddInternal --undefined=nvKmsKapiF32ToUI32RMinMagInternal --undefined=nvKmsKapiUI32ToF32Internal --undefined=nvKmsGpuLost
