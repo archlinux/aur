@@ -10,7 +10,7 @@ makedepends=('cmake')
 conflicts=('mbelib-neo-git')
 options=('staticlibs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7c6176f77743a354426ba278149fae1960f15e21988b079155414cf3b3ee1919')
+sha256sums=('2cb78517519635437e36642d34e60710d7677c4254175899d685e8c658b3aa5f')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
