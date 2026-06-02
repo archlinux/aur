@@ -12,6 +12,7 @@ pkgbase = tokyo-notes-git
 	depends = libadwaita
 	depends = cairo
 	depends = python-cairo
+	depends = python-cryptography
 	depends = python-gitpython
 	provides = tokyo-notes
 	conflicts = tokyo-notes
