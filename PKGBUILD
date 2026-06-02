@@ -3,11 +3,11 @@
 _author=GWILLIAMS
 _dist=Attean
 pkgname=perl-${_dist@L}
-pkgver=0.035
+pkgver=0.038
 pkgrel=1
 pkgdesc='A Semantic Web Framework'
 arch=('any')
-url=https://metacpan.org/release/$_author/$_dist-$pkgver
+url=https://metacpan.org/dist/$_dist
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl-algorithm-combinatorics'
@@ -18,7 +18,6 @@ depends=(
     'perl-iri>=0.005'
     'perl-json'
     'perl-libwww'
-    'perl-list-moreutils'
     'perl-math-cartesian-product>=1.008'
     'perl-module-pluggable'
     'perl-moo>=2.000002'
@@ -45,6 +44,7 @@ depends=(
 makedepends=(
     'perl-extutils-makemaker>=6.59'
     'perl-http-message'
+    'perl-module-install'
     'perl-plack'
     'perl-regexp-common'
     'perl-test-exception'
@@ -55,14 +55,14 @@ makedepends=(
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('536e07755ce5948acfe3d1982d76a1c10f0fc593ce8b607a3137406a42789d7b')
+sha256sums=('028961da3c365a0c3fbfde25ff29c9203d10e8e6c8529a5e63d020ced98c498b')
 
 build()
 {
     cd "$_dist-$pkgver"
 
     unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
-    export PERL_MM_USE_DEFAULT=1
+    export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 
     /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
