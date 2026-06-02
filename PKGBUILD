@@ -6,7 +6,7 @@
 pkgname=radarr
 _pkgname=Radarr
 pkgver=6.1.1.10360
-pkgrel=1
+pkgrel=2
 pkgdesc='Movie organizer/manager for usenet and torrent users'
 arch=(x86_64 aarch64 armv7h)
 url='https://radarr.video'
@@ -65,6 +65,9 @@ _branch='master'
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
+
+  # Fix  CVE-2026-41319
+  sed 's/MailKit" Version="4\.15\.1"/MailKit" Version="4\.16\.0"/' -i src/NzbDrone.Core/Radarr.Core.csproj
 
   # Remove upstream dotnet version
   rm global.json
