@@ -1,16 +1,18 @@
 pkgbase = sjtu-canvas-helper-appimage
 	pkgdesc = SJTU Canvas Helper - 帮助您更快速便捷地使用上海交通大学课程平台 (AppImage)
 	pkgver = 2.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Okabe-Rintarou-0/SJTU-Canvas-Helper
 	arch = x86_64
 	license = MIT
+	makedepends = fuse2
 	depends = hicolor-icon-theme
 	depends = zlib
-	depends = fuse2
 	noextract = SJTU.Canvas.Helper_2.0.5_amd64.AppImage
 	options = !strip
 	source = SJTU.Canvas.Helper_2.0.5_amd64.AppImage::https://github.com/Okabe-Rintarou-0/SJTU-Canvas-Helper/releases/download/app-v2.0.5/SJTU.Canvas.Helper_2.0.5_amd64.AppImage
+	source = sjtu-canvas-helper
 	sha256sums = bb2a0378e878e2d7b08497b827235279fc804053366b547da94c63a79af19225
+	sha256sums = SKIP
 
 pkgname = sjtu-canvas-helper-appimage

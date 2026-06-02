@@ -3,26 +3,30 @@
 pkgname=sjtu-canvas-helper-appimage
 _pkgname=sjtu-canvas-helper
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="SJTU Canvas Helper - 帮助您更快速便捷地使用上海交通大学课程平台 (AppImage)"
 arch=('x86_64')
 url="https://github.com/Okabe-Rintarou-0/SJTU-Canvas-Helper"
 license=('MIT')
-depends=('hicolor-icon-theme' 'zlib' 'fuse2')
+depends=('hicolor-icon-theme' 'zlib')
+makedepends=('fuse2')
 options=('!strip')
 _appimage="SJTU.Canvas.Helper_${pkgver}_amd64.AppImage"
-source=("${_appimage}::${url}/releases/download/app-v${pkgver}/${_appimage}")
-sha256sums=('bb2a0378e878e2d7b08497b827235279fc804053366b547da94c63a79af19225')
+source=("${_appimage}::${url}/releases/download/app-v${pkgver}/${_appimage}"
+        "${_pkgname}")
+sha256sums=('bb2a0378e878e2d7b08497b827235279fc804053366b547da94c63a79af19225'
+            'SKIP')
 noextract=("${_appimage}")
 
 prepare() {
   chmod +x "${srcdir}/${_appimage}"
   "${srcdir}/${_appimage}" --appimage-extract > /dev/null
+  rm -f "${srcdir}/squashfs-root/usr/lib/"*wayland*
   chmod -R a-x+rX "${srcdir}/squashfs-root/usr/"
 }
 
 build() {
-  sed -i "s|Exec=${_pkgname}|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
+  sed -i "s|Exec=${_pkgname}|Exec=${_pkgname}|" \
     "${srcdir}/squashfs-root/SJTU Canvas Helper.desktop"
   sed -i "s|Icon=${_pkgname}|Icon=${pkgname}|" \
     "${srcdir}/squashfs-root/SJTU Canvas Helper.desktop"
@@ -30,8 +34,7 @@ build() {
 
 package() {
   install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
-  install -dm755 "${pkgdir}/usr/bin/"
-  ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 "${srcdir}/squashfs-root/SJTU Canvas Helper.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"

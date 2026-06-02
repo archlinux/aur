@@ -1,0 +1,6 @@
+#!/bin/sh
+# EGL fix for Tauri/WebKitGTK
+export WEBKIT_DISABLE_COMPOSITING_MODE=1
+export LIBGL_ALWAYS_SOFTWARE=1
+export DESKTOPINTEGRATION=false
+exec /opt/sjtu-canvas-helper-appimage/SJTU.Canvas.Helper_2.0.5_amd64.AppImage "$@"
