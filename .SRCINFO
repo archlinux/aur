@@ -1,0 +1,28 @@
+pkgbase = netmon-gui
+	pkgdesc = Modern network monitor for Arch Linux with PySide6 GUI - speed test, bandwidth, connections, quota tracking
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/KyrilosKamal/NetMon
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = pyside6
+	depends = python-psutil
+	depends = speedtest-cli
+	depends = python-pyqtgraph
+	depends = python-colorama
+	depends = python-pyside6-fluent-widgets
+	depends = qt6-wayland
+	depends = hicolor-icon-theme
+	source = netmon-gui-0.2.0.tar.gz::https://github.com/KyrilosKamal/NetMon/archive/v0.2.0.tar.gz
+	source = netmon-gui.desktop
+	source = netmon-gui.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = netmon-gui
