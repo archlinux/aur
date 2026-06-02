@@ -1,10 +1,10 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=bb_launcher-bin
-pkgver=15.05
+pkgver=15.06
 _pkgname=bb_launcher
 _pkgid=BB_Launcher
-_pkgdate=2026-05-20
-_pkgcommit=46fb13f
+_pkgdate=2026-06-02
+_pkgcommit=b06dd6a
 pkgrel=1
 pkgdesc="shadPS4 Launcher for Bloodborne (bin version)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ _appimage=${_pkgid}-qt.AppImage
 noextract=("${_appimage}")
 _zip=${_pkgid}-linux-qt-downloader-${_pkgdate}-${_pkgcommit}.zip
 source=(https://github.com/rainmakerv3/BB_Launcher/releases/download/Release${pkgver}/${_zip})
-sha256sums=('eda26b5908aac24b170fc7506195c6f4d8211b40b68035ea7ef56db2f9d9f399')
+sha256sums=('80ad56d7153a21f707c0da0742ee1991edbea1c281011bd66265c30756b4d2f3')
 
 prepare() {
     unzip -o "${_zip}"
