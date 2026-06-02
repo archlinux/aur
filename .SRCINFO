@@ -1,8 +1,8 @@
 pkgbase = r-air
 	pkgdesc = An R language server and formatter
 	pkgver = 0.9.0
-	pkgrel = 1
-	url = https://github.com/r-lib/rig
+	pkgrel = 2
+	url = https://github.com/posit-dev/air
 	arch = x86_64
 	arch = aarch64
 	license = MIT

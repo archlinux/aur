@@ -2,9 +2,9 @@
 
 pkgname=r-air
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An R language server and formatter"
-url="https://github.com/r-lib/rig"
+url="https://github.com/posit-dev/air"
 arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=(
