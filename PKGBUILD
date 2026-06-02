@@ -1,5 +1,7 @@
 # Maintainer: 5unekku <jimmy.bungalo8@gmail.com>
+
 pkgname=lice-git
+_pkgname=lice
 pkgver=r6.g05e46d9
 pkgrel=1
 pkgdesc="inject a license file into your git repo"
@@ -7,7 +9,7 @@ arch=('x86_64')
 url="https://gitlab.com/5unekku/lice"
 license=('GPL-3.0-only')
 depends=()
-makedepends=('rust')
+makedepends=('git' 'rust')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
