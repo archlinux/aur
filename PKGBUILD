@@ -1,6 +1,6 @@
 pkgname=dsd-neo
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital Speech Decoder - A modern, modular, and performance enhanced C/C++ decoder for digital voice. DMR, P25, NXDN, YSF, and more."
 arch=('x86_64' 'aarch64')
 url="https://github.com/arancormonk/dsd-neo"
@@ -8,6 +8,7 @@ license=('GPL-3.0-or-later')
 depends=(
     'mbelib-neo'
     'libsndfile'
+    'openssl'
     'ncurses'
     'libpulse'
     'rtl-sdr'
