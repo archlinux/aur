@@ -1,0 +1,24 @@
+pkgbase = python-typechat-git
+	pkgdesc = TypeChat is a library that makes it easy to build natural language interfaces using types.
+	pkgver = r408.246f677
+	pkgrel = 1
+	url = https://github.com/microsoft/TypeChat
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-httpx
+	depends = python-pydantic
+	depends = python-pydantic-core
+	depends = python-typing_extensions
+	provides = python-typechat-git
+	conflicts = python-typechat-git
+	source = typechat::git+https://github.com/microsoft/TypeChat.git
+	sha256sums = SKIP
+
+pkgname = python-typechat-git
