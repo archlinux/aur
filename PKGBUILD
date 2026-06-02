@@ -6,14 +6,14 @@
 
 _locale='sr'
 pkgname=palemoon-i18n-sr
-pkgver=33.8.0
+pkgver=34.3.0
 pkgrel=1
 pkgdesc="Serbian language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('4560959f1fb853fba3da41b877ef0aa20893d9d91d13850190b1d0572f78cd59')
+sha256sums=('01e0de2d634413743e801c1d7893e921740f85a3f3e01651bf9cac27f2bbd9da')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
