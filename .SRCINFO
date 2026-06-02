@@ -1,0 +1,15 @@
+pkgbase = echobird-bin
+	pkgdesc = One-Click Install All
+	pkgver = 5.1.5
+	pkgrel = 1
+	url = https://echobird.ai/
+	arch = x86_64
+	arch = aarch64
+	license = BUSL-1.1
+	depends = glibc
+	source_x86_64 = https://github.com/edison7009/EchoBird/releases/download/v5.1.5/EchoBird_5.1.5_Linux_x64.rpm
+	sha256sums_x86_64 = ebd2c13987f676b337d7096f29c9ed52acc109223eb9fff15ee3d7049d1bda7e
+	source_aarch64 = https://github.com/edison7009/EchoBird/releases/download/v5.1.5/EchoBird_5.1.5_Linux_arm64.rpm
+	sha256sums_aarch64 = 6b6f3a102bf6ef59e645e467bc2d1612883ecc01a499e1311a3591cef4d8df41
+
+pkgname = echobird-bin
