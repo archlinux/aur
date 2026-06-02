@@ -14,16 +14,12 @@ url='https://byobu.org/'
 license=(GPL-3.0-only)
 depends=(libnewt python tmux)
 makedepends=(gettext git setconf)
-source=("git+https://github.com/dustinkirkland/byobu#tag=$pkgver"
-        "byobu-6.14-fix-double-install.patch")
-b2sums=('6d2253f9840999a59b18d5ad9d1ec3f499a6ffcb16bc73a4f6c0643d85fc73cdc3129a57ffc9ade492c3ba0b29872616f9f58be03722028c99129f2b7389148c'
-        '14da0443aeb3fb306c1f4bc139c74cc65e561b8b9b818efb2ffef877ed2aa37a039dda2620e090f58afdd910201e0036d91f3868d913ccdaa42006778072a1f8')
+source=("git+https://github.com/dustinkirkland/byobu#tag=$pkgver")
+b2sums=('6d2253f9840999a59b18d5ad9d1ec3f499a6ffcb16bc73a4f6c0643d85fc73cdc3129a57ffc9ade492c3ba0b29872616f9f58be03722028c99129f2b7389148c')
 
 prepare() {
   cd $pkgname
   
-  # Fix double installation issue in Makefile.am files
-  patch -p1 -i ../byobu-6.14-fix-double-install.patch
   
   # Adjust path to SOCKETDIR
   setconf etc/byobu/socketdir SOCKETDIR '"/tmp/screens"'
