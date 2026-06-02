@@ -1,7 +1,7 @@
-# Maintainer: Twilit Realm <https://github.com/TwilitRealm/dusklight>
+# Maintainer: Andres Perez <aur@andresperezl.com>
 pkgname=dusklight-bin
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 _desktop_id=dev.twilitrealm.dusk
 pkgdesc='PC port of a classic adventure game'
 arch=('x86_64')
