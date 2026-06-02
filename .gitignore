@@ -1,0 +1,10 @@
+# makepkg build artifacts
+src/
+pkg/
+
+# Downloaded/generated tarballs and built packages
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.pkg.tar.zst
+*.pkg.tar.xz
