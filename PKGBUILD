@@ -1,7 +1,7 @@
 # Maintainer: Horror Proton <107091537+horror-proton@users.noreply.github.com>
 pkgname=maa-cli
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple CLI for MAA by Rust."
 arch=('x86_64' 'aarch64')
 url="https://github.com/MaaAssistantArknights/maa-cli"
@@ -43,7 +43,7 @@ package() {
 
 	install -Dm644 <("$pkgdir"/usr/bin/maa complete bash) "$pkgdir/usr/share/bash-completion/completions/maa"
 	install -Dm644 <("$pkgdir"/usr/bin/maa complete zsh) "$pkgdir/usr/share/zsh/site-functions/_maa"
-	install -Dm644 "$srcdir/maa-cli-$pkgver"/crates/maa-cli/completions/*.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+	install -Dm644 <("$pkgdir"/usr/bin/maa complete fish) "$pkgdir/usr/share/fish/vendor_completions.d/maa.fish"
 
 	mkdir -p "$pkgdir/usr/share/man/man1"
 	"$pkgdir/usr/bin/maa" mangen --path "$pkgdir/usr/share/man/man1"
