@@ -1,0 +1,28 @@
+_inject="/usr/lib/geary-hide-sidebar/inject.sh"
+
+post_install() {
+    "$_inject" apply || true
+    cat <<'MSG'
+:: geary-hide-sidebar installed.
+   Geary's launcher and D-Bus service now load the module via GTK_MODULES.
+   Toggle the sidebar with Ctrl+Shift+M. Auto mode collapses it on narrow or
+   portrait windows; tune it with GEARY_HIDE_SIDEBAR_* env vars (see
+   /usr/share/doc/geary-hide-sidebar/README.md).
+   Restart any running Geary instance for the change to take effect.
+MSG
+}
+
+post_upgrade() {
+    # Module path is stable across versions; re-apply is idempotent.
+    "$_inject" apply || true
+}
+
+pre_remove() {
+    # Strip our injection while inject.sh and Geary's files still exist,
+    # restoring Geary's launchers byte-for-byte.
+    "$_inject" remove || true
+}
+
+post_remove() {
+    echo ":: geary-hide-sidebar removed. Geary's launchers were restored."
+}
