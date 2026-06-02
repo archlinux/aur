@@ -1,13 +1,14 @@
 pkgbase = scrapfetch-rs
 	pkgdesc = Small system info splash
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://github.com/egevtech/scrapfetch-rs
 	arch = x86_64
 	license = BSD3
 	makedepends = git
 	makedepends = cargo
 	makedepends = rustup
+	depends = which
 	provides = scrapfetch-rs
 	conflicts = scrapfetch-rs
 	source = git+https://github.com/egevtech/scrapfetch-rs.git
