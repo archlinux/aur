@@ -12,9 +12,9 @@ depends=(
     'python>=3.10'
     'python-evdev'
     'python-uinput'      # AUR
+    'pyside6'
 )
 optdepends=(
-    'pyside6: graphical user interface'
     'fish: fish shell completions'
     'zsh: zsh shell completions'
     'bash-completion: bash shell completions'

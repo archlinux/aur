@@ -9,7 +9,7 @@ pkgbase = kb2xb
 	depends = python>=3.10
 	depends = python-evdev
 	depends = python-uinput
-	optdepends = pyside6: graphical user interface
+	depends = pyside6
 	optdepends = fish: fish shell completions
 	optdepends = zsh: zsh shell completions
 	optdepends = bash-completion: bash shell completions
