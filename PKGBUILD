@@ -1,6 +1,6 @@
 # Maintainer: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="wff-git"
-pkgver="0.14"
+pkgver="0.141"
 pkgrel=1
 pkgdesc="Simple GUI screen recorder for wlroots compositors based on wl-recorder"
 options=('!debug')
@@ -14,7 +14,6 @@ sha256sums=("SKIP")
 build() {
 	cd $srcdir/wff/Wff.Desktop
 	dotnet publish --output dist
-	rm dist/Wff.Desktop.dbg
 }
 
 package() {
