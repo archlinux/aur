@@ -4,11 +4,11 @@
 _author=JBAIER
 _dist=Pass-OTP
 pkgname=perl-${_dist@L}
-pkgver=1.801
+pkgver=1.901
 pkgrel=1
 pkgdesc='Perl implementation of HOTP / TOTP algorithms'
 arch=('any')
-url=https://metacpan.org/release/$_author/$_dist-$pkgver
+url=https://metacpan.org/dist/$_dist
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl-digest-hmac'
@@ -21,7 +21,7 @@ makedepends=('perl-extutils-makemaker')
 checkdepends=('perl-test-simple')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('2f4b892917d55ccff32c7a9c8be7ecd6ab9efec2c0d164cfefa0e1e0b4830bba')
+sha256sums=('e5c98c755475d0d8327f7c2d9ae93e9ba7ee3846b3a1c93f402bd8030a9152a8')
 
 build()
 {

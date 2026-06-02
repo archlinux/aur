@@ -1,8 +1,8 @@
 pkgbase = perl-pass-otp
 	pkgdesc = Perl implementation of HOTP / TOTP algorithms
-	pkgver = 1.801
+	pkgver = 1.901
 	pkgrel = 1
-	url = https://metacpan.org/release/JBAIER/Pass-OTP-1.801
+	url = https://metacpan.org/dist/Pass-OTP
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-test-simple
@@ -13,7 +13,7 @@ pkgbase = perl-pass-otp
 	depends = perl-mime-base32
 	depends = perl>=5.14.0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/J/JB/JBAIER/Pass-OTP-1.801.tar.gz
-	sha256sums = 2f4b892917d55ccff32c7a9c8be7ecd6ab9efec2c0d164cfefa0e1e0b4830bba
+	source = https://cpan.metacpan.org/authors/id/J/JB/JBAIER/Pass-OTP-1.901.tar.gz
+	sha256sums = e5c98c755475d0d8327f7c2d9ae93e9ba7ee3846b3a1c93f402bd8030a9152a8
 
 pkgname = perl-pass-otp
