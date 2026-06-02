@@ -2,3 +2,9 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+
+# makepkg artifacts
+*.pkg.tar.*
+*.log
+src/
+pkg/
