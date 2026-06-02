@@ -1,6 +1,6 @@
 pkgbase = dns-collector
 	pkgdesc = Ingestor, aggregator and analyzer for your DNS traffic
-	pkgver = 1.4.0
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/dmachard/dns-collector
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = dns-collector
 	replaces = go-dnscollector
 	options = !debug
 	backup = etc/go-dnscollector/config.yml
-	source = dns-collector-1.4.0.tar.gz::https://github.com/dmachard/dns-collector/archive/refs/tags/v1.4.0.tar.gz
+	source = dns-collector-2.2.3.tar.gz::https://github.com/dmachard/dns-collector/archive/refs/tags/v2.2.3.tar.gz
 	source = go-dnscollector.service
-	b2sums = 8194e052a967ebb49795dd34d7ca2ad9a21b2c68462326528e1d2336aa7459fb7a76d7d714fd82c0f592f4b21f9e61845abc194e9a3c42e18241b331a276e944
+	b2sums = 0c1f6358f7f06f489d3bf97dbbe18b64dcf266ce7213aa73c0a1e7a9d1be661f7929b468e2351ec2d5c6d82293aff4d9b80d54af0371f079a1f8a1e81c8a82dc
 	b2sums = fbe5c63e637d832b94ee5b35732df8d1fafa9f790062820504108ebaa8b0be4f52d864478cfeb42d1db52058e98c912d6690635a3604ba16adb03a6f6ac92062
 
 pkgname = dns-collector
