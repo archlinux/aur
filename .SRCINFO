@@ -1,16 +1,18 @@
 pkgbase = emacs-with-editor-git
-	pkgdesc = Use the Emacsclient as the of child processes
-	pkgver = 2.8.3.r7.d5c777298cd8
+	pkgdesc = Use the Emacsclient as the emacs of child processes
+	pkgver = 3.5.1.r0.cdf2ac2
 	pkgrel = 1
 	url = http://github.com/magit/with-editor
 	install = emacs-with-editor-git.install
 	arch = any
 	license = GPL3
-	depends = emacs>=24.4
+	makedepends = git
+	depends = emacs
+	depends = emacs-async>=1.9
+	depends = emacs-cond-let
 	provides = emacs-with-editor
 	conflicts = emacs-with-editor
 	source = git+https://github.com/magit/with-editor.git
 	md5sums = SKIP
 
 pkgname = emacs-with-editor-git
-
