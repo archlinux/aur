@@ -7,7 +7,7 @@ _gitrepo="emacs-async"
 
 pkgname=emacs-async-git
 _pkgname=async
-pkgver=v1.9.4.r33.g9a8cd0c
+pkgver=v1.9.9.r31.g5faab28
 pkgrel=1
 pkgdesc="Asynchronous processing in Emacs"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -15,7 +15,7 @@ arch=('any')
 license=('GPL3')
 depends=('emacs')
 makedepends=('git')
-provides=('emacs-async')
+provides=("emacs-async=${pkgver#v}")
 conflicts=('emacs-async')
 source=("git+https://github.com/${_gituser}/${_gitrepo}.git")
 sha256sums=('SKIP')
