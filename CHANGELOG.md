@@ -8,6 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Aggregate Score** - Finished knockout matches (Champions League, Europa League, etc.) now display the aggregate score and eliminated team below the match score in the details panel
+
+### Changed
+
+### Fixed
+- **Homebrew Update** - Fixed `golazo -u` falling back to the install script when brew successfully built the new version but failed the link step due to a conflicting binary
+- **Link Rendering** - Fixed highlight and goal replay links not being clickable in macOS Terminal.app and other terminals that don't support OSC 8; links now render as visible bracketed URLs that Terminal.app detects natively on right-click
+
+## [0.24.0] - 2026-05-03
+
+### Added
 - **Live Statistics & Standings** - Press `x` for match statistics (possession, shots, etc.) or `s` for league standings while viewing any live match
 
 ### Changed
