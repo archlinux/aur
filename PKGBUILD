@@ -1,7 +1,7 @@
-# Maintainer: Pieter Joost van de Sande <pj@born2code.net>
+# Maintainer: normen <normen@users.noreply.github.com>
 pkgname=whatscli-git
 _pkgname=whatscli
-pkgver=20260415.b6994dd
+pkgver=0
 pkgrel=1
 pkgdesc='A command line interface for WhatsApp, based on go-whatsmeow and tview'
 url='https://github.com/normen/whatscli'
@@ -23,8 +23,9 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -o "${_pkgname}" -ldflags "-extldflags '${LDFLAGS}' -s -w -X main.VERSION=${pkgver}" ./main.go
+  go build -o "${_pkgname}" -ldflags "-s -w -X main.VERSION=${pkgver}" .
 }
 
 package() {
