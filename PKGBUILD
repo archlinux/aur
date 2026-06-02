@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Mestik78/bonsai-pomodoro/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('a2489ccbfc88df245a48bb2a39b83ab7eba278d6e3a0e63bdfdad70506ed00ab')
 
 build() {
     cd "$pkgname-$pkgver"
