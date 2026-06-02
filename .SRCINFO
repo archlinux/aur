@@ -1,0 +1,22 @@
+pkgbase = python-adguardvpn-gui
+	pkgdesc = Unofficial modern desktop GUI for the official adguardvpn-cli
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SpazzRabbit/adguardvpn-gui
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = hicolor-icon-theme
+	depends = pyside6
+	depends = python
+	optdepends = adguardvpn-cli-bin: Fast, flexible and reliable VPN solution for command-line enthusiasts.
+	provides = python-adguardvpn-gui
+	conflicts = python-adguardvpn-gui
+	source = adguardvpn-gui::git+https://github.com/SpazzRabbit/adguardvpn-gui.git#tag=v0.2.0
+	sha256sums = 4c21dd930d8fff2d42a574718864b80c8250228826dd8dd44e925df5394d6436
+
+pkgname = python-adguardvpn-gui
