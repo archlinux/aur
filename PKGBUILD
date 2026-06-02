@@ -8,7 +8,10 @@ pkgdesc='A small status bar for the River Wayland compositor'
 arch=('x86_64')
 url='https://github.com/vighd/river-bar'
 license=('MIT')
-depends=('fontconfig' 'freetype2' 'river')
+# river-classic is the legacy River (zriver_status_manager_v1 / zriver_control_v1)
+# this bar talks to. The rewritten 'river' 0.4+ drops those protocols and
+# conflicts with river-classic, so it is NOT a valid dependency here.
+depends=('fontconfig' 'freetype2' 'river-classic')
 makedepends=('go' 'git')
 optdepends=(
   'ttf-nerd-fonts-symbols: Nerd Font icon glyphs for the module icons (clock, battery, ...)'
