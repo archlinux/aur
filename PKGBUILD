@@ -1,6 +1,6 @@
 # Maintainer: Wolfspirit Magic <wolfspirit at wolfspirit dot eu>
 pkgname=firestorm
-pkgver=7.2.3.80036
+pkgver=7.2.4.80712
 _src=Firestorm_Release_$pkgver
 _extension=os
 pkgrel=1
@@ -41,13 +41,23 @@ source=(
 # We want to be able to use the OS version together with the official firestorm-bin version so we want a different config directory for the OS version.
 # This patch changes the default config directory to ~/.firestorm_x64-os instead of ~/.firestorm_x64
   '002-set-different-config-dir.patch'
+
+# GCC 16 introduced -Wsfinae-incomplete which triggers on valid SFINAE patterns used in llinitparam.h.
+# This patch disables that warning-as-error for GCC 16+.
+  '003-fix-sfinae-incomplete-gcc16.patch'
+
+# libwebrtc.a bundles protobuf/protozero build-tool plugins (cppgen_plugin.o, protozero_plugin.o)
+# that both define main. Newer ld rejects multiple definitions even when building a shared library.
+  '004-fix-webrtc-multiple-definition.patch'
 )
-sha256sums=('bd531ea153457066b46a0d8c80bae77f43f7a886154ace8688a3519338747b16'
+sha256sums=('220060b5da6f3096bbb479efe40597148a5eee818dc0747dd32eba8f66e1ced8'
             'SKIP'
             'db34a50f4b7fda4a465cd0536f17a0f6040ff6b2e40c32594b1f244ebe8e2d60'
             '465f1611c17f90bba8bc7e7cc3e05ffe8cf20fb9c1b7df59053f54a6bceb8283'
             'cbef822d5ce2b1b9eb3bc88bfcaa59dfb2eec2cc698bdcb391b1c332a7ed93fb'
-            '5eec78e0196e51d58e45078b84dc277353ef635ff160ff61ac58ab5966245011')
+            '5eec78e0196e51d58e45078b84dc277353ef635ff160ff61ac58ab5966245011'
+            '761502b9fe2a12d160b463b3dbe42d05cfa863b6ffde1fae8305c37f7eaa414c'
+            'cc754541b0ed40f80acee048ca038d32eccf5452e409d373638c055ccdb82dda')
 # The binaries are already stripped in the build system.
 options=(!strip)
 

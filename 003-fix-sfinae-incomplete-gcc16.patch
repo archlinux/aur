@@ -1,0 +1,14 @@
+--- a/indra/cmake/00-Common.cmake
++++ b/indra/cmake/00-Common.cmake
+@@ -236,6 +236,11 @@ endif(DARWIN)
+   if (NOT GCC_DISABLE_FATAL_WARNINGS AND NOT CLANG_DISABLE_FATAL_WARNINGS)
+     add_compile_options(-Werror)
+   endif ()
++
++  # GCC 16 introduced -Wsfinae-incomplete which triggers on valid SFINAE patterns in llinitparam.h
++  if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL "16.0")
++    add_compile_options(-Wno-error=sfinae-incomplete)
++  endif()
+
+   add_compile_options(${GCC_WARNINGS})
+   add_compile_options(-m${ADDRESS_SIZE})
