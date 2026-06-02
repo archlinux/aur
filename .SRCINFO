@@ -1,6 +1,6 @@
 pkgbase = python-integer-tool
 	pkgdesc = Python functions for integer.
-	pkgver = 0.0.6
+	pkgver = 0.0.6.1
 	pkgrel = 1
 	url = https://pypi.org/project/integer_tool
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-integer-tool
 	conflicts = python-integer-tool
 	options = !strip
 	options = !debug
-	source = integer_tool-0.0.6.tar.gz::https://files.pythonhosted.org/packages/source/i/integer_tool/integer_tool-0.0.6.tar.gz
-	sha256sums = 89be4de107e2d73d891bcfc04167b36cbe3f4c8839d486b3e1c9cad7369debc0
+	source = integer_tool-0.0.6.1.tar.gz::https://files.pythonhosted.org/packages/source/i/integer_tool/integer_tool-0.0.6.1.tar.gz
+	sha256sums = 83718b4e396f8282aee024d783866d46660103f2816d739df3d440c39fc3038e
 
 pkgname = python-integer-tool

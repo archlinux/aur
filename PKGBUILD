@@ -3,7 +3,7 @@
 pkgname=python-integer-tool
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.0.6
+pkgver=0.0.6.1
 pkgrel=1
 epoch=
 pkgdesc="Python functions for integer."
@@ -25,7 +25,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('89be4de107e2d73d891bcfc04167b36cbe3f4c8839d486b3e1c9cad7369debc0')
+sha256sums=('83718b4e396f8282aee024d783866d46660103f2816d739df3d440c39fc3038e')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
