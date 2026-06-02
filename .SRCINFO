@@ -1,6 +1,6 @@
 pkgbase = lem-editor-webview-ncurses-nightly
 	pkgdesc = An extensible editor written in Common Lisp
-	pkgver = 2.2.0.1565.g803e4922f
+	pkgver = 2.3.0.478.g803e4922
 	pkgrel = 1
 	url = https://github.com/lem-project/lem
 	arch = i686
