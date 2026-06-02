@@ -1,8 +1,9 @@
 # Maintainer: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="wff-git"
-pkgver="0.13"
+pkgver="0.14"
 pkgrel=1
 pkgdesc="Simple GUI screen recorder for wlroots compositors based on wl-recorder"
+options=('!debug')
 arch=("x86_64")
 makedepends=("dotnet-sdk"  "zig")
 depends=("slurp" "wf-recorder" "ffmpeg" "wlr-randr" "wayland" "wayland-protocols")
@@ -13,6 +14,7 @@ sha256sums=("SKIP")
 build() {
 	cd $srcdir/wff/Wff.Desktop
 	dotnet publish --output dist
+	rm dist/Wff.Desktop.dbg
 }
 
 package() {
