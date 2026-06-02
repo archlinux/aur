@@ -5,7 +5,7 @@ _pkgname=gohan
 pkgname=${_pkgname}-bin
 pkgdesc="A simple, fast static site generator written in Go with differential builds"
 
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}"{,-git})
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('6767a8e3896735c56f095a76c67bfee840762aa754f2b1caf4bcf01d53063795')
-sha256sums_aarch64=('5faaf4bf6f306a8cefc9f53d9b69c03bbacd34da4e8ea8bdbabce4b586ff3b95')
+sha256sums_x86_64=('1cf2b21f628b9864fcf6dbcc322b9ef76c9a497caf221ef484e8c4c87fddbb99')
+sha256sums_aarch64=('3554149ceed14f31edc094d1f89d8588578fce26ca572c76e8c7e5fd76375922')
 
 
 package() {
