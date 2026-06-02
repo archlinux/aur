@@ -1,7 +1,7 @@
 pkgbase = league-of-gays
 	pkgdesc = League of Gays — self-hosted MOBA launcher
 	pkgver = 0.1.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://lol.meisgaming.net
 	arch = x86_64
 	license = custom
