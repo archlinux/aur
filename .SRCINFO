@@ -13,6 +13,7 @@ pkgbase = sidemark-git
 	depends = python-numpy
 	depends = python-cairo
 	depends = gtksourceview5
+	depends = adwaita-icon-theme
 	optdepends = librsvg: render PNG icon sizes at install time
 	optdepends = libreoffice: convert PPTX files to PDF
 	source = sidemark::git+https://github.com/brokkoli71/sidemark.git

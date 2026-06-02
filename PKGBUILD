@@ -15,6 +15,7 @@ depends=(
     'python-numpy'
     'python-cairo'
     'gtksourceview5'
+    'adwaita-icon-theme'
 )
 optdepends=(
     'librsvg: render PNG icon sizes at install time'
