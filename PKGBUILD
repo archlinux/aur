@@ -14,7 +14,7 @@ depends=(
     python-traittypes
 )
 makedepends=('python-setuptools' 'python-jupyter-packaging')
-license=('Apache')
+license=('Apache-2.0')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=('dd1f55c9bf971b1c3edf571a23edecd707aab5a72c3f5dac3cb98ee233fc6216')
