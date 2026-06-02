@@ -1,6 +1,6 @@
 pkgbase = llamastash
 	pkgdesc = Fast, keyboard-driven TUI for launching local llama.cpp models
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/llamastash/llamastash
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = llamastash
 	conflicts = llamastash-bin
 	conflicts = llamastash-git
 	options = !lto
-	source = llamastash-0.0.1.tar.gz::https://github.com/llamastash/llamastash/archive/refs/tags/v0.0.1.tar.gz
-	sha256sums = d08f58c84c80a129f4f8da5b42bbd4febcee9da69eaef5de55d8bae480a0aa74
+	source = llamastash-0.0.2.tar.gz::https://github.com/llamastash/llamastash/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = ca87b8a7bbedf96828ed9f9d4587eaa13f3d69687c1429265df32536dc9eddc1
 
 pkgname = llamastash
