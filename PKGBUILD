@@ -9,13 +9,13 @@ license=('GPL3')
 depends=('gtk4' 'libadwaita' 'gdk-pixbuf2' 'networkmanager')
 makedepends=('rust' 'cargo')
 
-provides=('adw-network' 'adwaita-network')
+provides=('adw-network-git')
 conflicts=('adw-network-bin')
 
 options=('!debug' 'strip')
 
 source=("git+https://github.com/PlayRood32/adw-network.git#tag=v${pkgver}")
-sha256sums=('578c3bde81d631aa06cf359d5b5d299d80df3f645101627582ae2a0a17bc519e')
+sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/adw-network"
