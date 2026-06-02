@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Easy userspace bandwidth manager for Linux"
 
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,11 +31,11 @@ source=("USAGE-${pkgver}.md::${_ghurlraw}/docs/usage.md"
 		"STRICT-BACKEND_DESIGN-${pkgver}.md::${_ghurlraw}/docs/strict-backend-design.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums=('ffa9d7961c736ae9f082c14c267ba34a5ee4a29237ccef32f95661be77adcd82'
-            'df1c2d01d2240633c44d59b4ed4423854a13487e27b65304960490371db43073'
-            'aa5819c60d23cf202e683288a3a9f645a33e72049c77cf0850855b486e56d5d7'
-            'd29c49be72c1ce61d1cd89f042bc9ab044d0b564b19c53793fbaa4a3e18e7522')
-sha256sums_x86_64=('a6c7898d3b6e3227103566fa9642a74a528ffa84832b7335dd7d5b5f86e9b765')
+sha256sums=('3362e83917159592b0d31dfc83b2aec0fe4c5963d64ef02b85d687e2107a1741'
+            '6c2548fc92d37270af86e4f5aeabc7154ec4b02c9625f14bdefb1e43bf3222a7'
+            '07e9f7960c49519c3fb76931ac0f4d187239986ff75bc9525e0f067f26006199'
+            '56be18876a1dfd2d4b81fd900443d555a869beb7ccb3308b00b68b1d01e0fc5b')
+sha256sums_x86_64=('0d82344d2de72df6c88a56bcfdd38e65f1a79fdbfa96be2539dabe390251b30e')
 
 
 case ${CARCH} in
