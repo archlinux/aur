@@ -1,21 +1,23 @@
 # Maintainer: Alexander Tarasov <a.tevg@ya.ru>
 pkgname=pwsp-bin
 _pkgname=pipewire-soundpad
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Lets you play audio files through your microphone (Pre-built binaries)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/arabianq/pipewire-soundpad"
 license=('MIT')
 depends=('pipewire' 'alsa-lib')
 provides=('pwsp')
 conflicts=('pwsp')
 
-source=("${pkgname}-${pkgver}.zip::https://github.com/arabianq/$_pkgname/releases/download/v$pkgver/pwsp-v$pkgver-linux-x64.zip"
-        "${_pkgname}-${pkgver}.tar.gz::https://github.com/arabianq/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
+source_x86_64=("pwsp-${pkgver}-x86_64.zip::https://github.com/arabianq/$_pkgname/releases/download/v$pkgver/pwsp-v$pkgver-linux-x64.zip")
+source_aarch64=("pwsp-${pkgver}-aarch64.zip::https://github.com/arabianq/$_pkgname/releases/download/v$pkgver/pwsp-v$pkgver-linux-arm64.zip")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/arabianq/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('SKIP')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 package() {
   _srcsrc="${srcdir}/${_pkgname}-${pkgver}"
