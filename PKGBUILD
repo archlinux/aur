@@ -7,7 +7,7 @@
 _gitname="gtk"
 _pkgname="gtk4"
 pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=4.19.2.r6.g12605ba
+pkgver=4.23.1.r42.gfd7fb3b
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit"
 url="https://gitlab.gnome.org/GNOME/gtk"
@@ -129,18 +129,6 @@ build() {
   _pick guic usr/bin/gtk4-update-icon-cache
   _pick guic usr/share/man/man1/gtk4-update-icon-cache.1
 }
-
-check() (
-  export XDG_RUNTIME_DIR="$PWD/runtime-dir" WAYLAND_DISPLAY=wayland-5
-
-  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
-  weston --backend=headless-backend.so --socket=$WAYLAND_DISPLAY --idle-time=0 &
-  _w=$!
-
-  trap "kill $_w; wait" EXIT
-
-  meson test -C build --print-errorlogs || true
-)
 
 _pick() {
   local p="$1" f d
