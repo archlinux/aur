@@ -1,1 +1,1 @@
-u oceu - "Opencloud daemon user" /var/lib/opencloud /usr/bin/nologin
+u! opencloud - "opencloud daemon user" /var/lib/opencloud
