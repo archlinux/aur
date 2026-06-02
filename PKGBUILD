@@ -7,7 +7,7 @@ arch=(any)
 url="https://sr.ht/~minshall/tempstash/"
 license=('MIT')
 depends=(jq rsync yq zsh)
-makedepends=(asciidoc git)
+makedepends=(asciidoctor git)
 optdepends=('cram: functional testing framework')
 # git rev-parse 0.5.6
 _tag=10379961edecb467388c0589fa5d596748bdab26
