@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname='luna-translator'
-pkgver='10.15.9.1'
+pkgver='10.15.9.4'
 pkgrel=1
 pkgdesc='Visual Novel Translator'
 arch=(x86_64)
@@ -21,7 +21,7 @@ source=(
     'LunaTranslator.png'
 )
 b2sums=(
-    'ca11464b048bd388b6879d3e1e8209bd303cdf6e5fab8157b268d1b80e5c7f59cdfbbbc6765cf548708be50f2b24d868760efa5a0caeaf7dbd715aa89da6207a'
+    '172ef185d1dd17469fdb8b1fc08d30c8e9b6b1907f716f7df0ffcbf22303b0052ac485dc19c8a833b8a85e2f14e5cb0db6fcfb69aaddf18a33113d6b308dd858'
     '89bfdaec7169e8ad5d336ccb55a25d68f398a74509083ded1ed01ed8555128f48bcf5e927eaa4e8975d5f48e099bac6010cb4731eedc9fc7f6f5add62fbc313c'
     '96791975a8d6ff19e0de383f92bfeba3e805ef482c803c07801ea70a67c59c0b5ff056c3dac4b6a56a48811abea83bc28760259aad5ee7f02e7051996f5eb42b'
     '631ab7da2757459c7da9a1ac335cf9d9c920facb8fc589ab135ef762083df73b982a3c5bc3fbe56036ff0bb27303e0961196726ee503730aa9095bae5a957ab2'
@@ -29,8 +29,9 @@ b2sums=(
 
 prepare() {
     cd 'LunaTranslator_x64_win10'
+    # Clean-up
     rm -rf 'LICENSES' 'LunaTranslator_admin.exe' 'LunaTranslator_debug.bat'
-
+    # Set permissions
     find . -type d -exec chmod 755 "{}" \;
     find . -type f -exec chmod 644 "{}" \;
 }
