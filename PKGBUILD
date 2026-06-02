@@ -3,31 +3,30 @@
 
 pkgname=improve-imgsli
 _reponame=Improve-ImgSLI
-pkgver=8.2.0
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="Image comparison tool with magnifying glass feature"
 arch=(any)
 url="https://github.com/Loganavter/$pkgname"
 license=(MIT)
 depends=(
-  ffmpeg
   hicolor-icon-theme
   python
-  python-markdown
   python-numpy
   python-pillow
   python-opengl
   python-pyqt6
   python-scikit-image
+  sh
 )
 optdepends=(
-  'python-desktop-notifier: enhanced system notifications'
+  'ffmpeg: for session recording, timeline, and video export'
   'python-imagecodecs: JXL image format support'
   'python-snakeviz: for performance profiling'
 )
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-b2sums=('394eaf6e8681d50899d63cfd4f2eb33f2981c772817596aaf9a7c948a93f4e266d8fa36fdcc05208c9a69c69c1604f6e05380c7d213afecd04f84783d5542606')
+b2sums=('f8d13c101a62e873a0429a8b50117a94a40a2dd0ac4cfd6b767711000221e2e99420fc14b7943febb285e3483a9ab573f9efda37c7de2c9fbbf96f34ccef7afc')
 
 prepare() {
   cd "$_reponame-$pkgver"
