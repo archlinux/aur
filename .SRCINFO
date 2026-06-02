@@ -1,0 +1,24 @@
+pkgbase = dnsshotgun-git
+	pkgdesc = High-performance realistic DNS benchmarking tool
+	pkgver = 20240219.r31.f0aec1a
+	pkgrel = 1
+	url = https://gitlab.nic.cz/knot/shotgun
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = dnsjit
+	depends = libnghttp2
+	depends = libngtcp2
+	depends = libuv
+	depends = python
+	depends = python-jinja
+	depends = python-matplotlib
+	depends = python-toml
+	optdepends = wireshark-cli: needed by some PCAP pre-processing scripts
+	provides = dnsshotgun
+	conflicts = dnsshotgun
+	source = git+https://gitlab.nic.cz/knot/shotgun.git
+	sha256sums = SKIP
+
+pkgname = dnsshotgun-git
