@@ -9,7 +9,7 @@ url="https://github.com/Vatteck/atlas"
 license=('Zlib')
 depends=(
     'python'
-    'python-pywebview'
+    'python-pywebview>=4.2'  # 4.2 added the `icon` start param used for the window icon
     'webkit2gtk-4.1'
     'gtk3'
     'python-gobject'

@@ -11,7 +11,7 @@ pkgbase = atlas-pm-git
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = python-pywebview
+	depends = python-pywebview>=4.2
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = python-gobject
