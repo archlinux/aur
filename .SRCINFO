@@ -1,0 +1,16 @@
+pkgbase = hpmicro-riscv-gnu-toolchain-bin
+	pkgdesc = HPMicro prebuilt riscv32-unknown-elf GNU toolchain (rv32imac_zicsr_zifencei multilib + B extension)
+	pkgver = 2023.10.18
+	pkgrel = 1
+	url = https://github.com/hpmicro/riscv-gnu-toolchain
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = hpmicro-riscv-gnu-toolchain
+	conflicts = hpmicro-riscv-gnu-toolchain
+	options = !strip
+	options = staticlibs
+	options = !debug
+	source = rv32imac_zicsr_zifencei_multilib_b_ext-linux-2023.10.18.tar.gz::https://github.com/hpmicro/riscv-gnu-toolchain/releases/download/2023.10.18/rv32imac_zicsr_zifencei_multilib_b_ext-linux.tar.gz
+	sha256sums = 550e867c86d14e0a1fddfde4d9316f7485a396474311c5d8ab61ebff5492ce17
+
+pkgname = hpmicro-riscv-gnu-toolchain-bin
