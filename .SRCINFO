@@ -1,6 +1,6 @@
 pkgbase = letsnote-wheelpad-git
 	pkgdesc = Userland daemon: Panasonic Let's Note WheelPad circular touchpad scroll on Linux
-	pkgver = r1.0000000
+	pkgver = r18.7ccbac0
 	pkgrel = 1
 	url = https://github.com/Nerahikada/letsnote-wheelpad
 	install = letsnote-wheelpad.install

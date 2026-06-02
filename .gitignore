@@ -1,0 +1,7 @@
+src/
+pkg/
+letsnote-wheelpad-git/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.tar.gz
+*.log

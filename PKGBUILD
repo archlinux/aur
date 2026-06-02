@@ -1,6 +1,6 @@
 # Maintainer: szern <szern@aporianet.com>
 pkgname=letsnote-wheelpad-git
-pkgver=r1.0000000
+pkgver=r18.7ccbac0
 pkgrel=1
 pkgdesc="Userland daemon: Panasonic Let's Note WheelPad circular touchpad scroll on Linux"
 arch=('x86_64')
