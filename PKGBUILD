@@ -10,7 +10,6 @@ url='https://kdeconnect.kde.org/'
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 depends=(dbus
-         gcc-libs
          glib2
          glibc
          kconfig
@@ -33,6 +32,7 @@ depends=(dbus
          libei
          libevdev
          libfakekey
+         libstdc++
          libx11
          libxkbcommon
          libxtst
