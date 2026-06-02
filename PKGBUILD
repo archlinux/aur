@@ -11,7 +11,7 @@ makedepends=('nodejs' 'npm')
 provides=('league-of-gays')
 conflicts=('league-of-gays')
 source=("${pkgname}-src-${pkgver}.tar.gz::https://lol.meisgaming.net/launcher/${pkgname}-src-${pkgver}.tar.gz")
-sha256sums=('1ea2cc03d31ba4abdefcf63d58aaec002b0352f811e017b08122635841ecdfc8')
+sha256sums=('44dcc7c256152a6cb5b6f05099c14562d14425f2fdda0a5862ca7ded620637ed')
 
 build() {
     cd "$srcdir/${pkgname}-src-${pkgver}"
