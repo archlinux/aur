@@ -1,5 +1,5 @@
 pkgname=archwizard
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A simple setup wizard for Arch Linux"
 arch=('any')
@@ -20,7 +20,7 @@ source=(
 "$pkgname-$pkgver.tar.gz::https://github.com/KasishStar/ArchWizard/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('SKIP')
+sha256sums=('1d770413fb326b86121fe1c15449d3c1b9acac36b131f3264b8ef865ee8c7992')
 
 build() {
 cd "$srcdir/$pkgname-$pkgver"

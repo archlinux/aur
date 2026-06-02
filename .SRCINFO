@@ -1,6 +1,6 @@
 pkgbase = archwizard
 	pkgdesc = A simple setup wizard for Arch Linux
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/KasishStar/ArchWizard
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = archwizard
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python
-	source = archwizard-0.1.1.tar.gz::https://github.com/KasishStar/ArchWizard/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = SKIP
+	source = archwizard-0.1.2.tar.gz::https://github.com/KasishStar/ArchWizard/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 1d770413fb326b86121fe1c15449d3c1b9acac36b131f3264b8ef865ee8c7992
 
 pkgname = archwizard
