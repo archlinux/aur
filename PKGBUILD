@@ -13,7 +13,7 @@ optdepends=(
   'clang: build C/C++ projects with Clang'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dexoron/dcr/archive/refs/tags/v0.7.1.tar.gz")
-sha256sums=('48a169c8334171f6a59986eff7dbf8ce4a475cd0fcba585e74d1adc512247124')
+sha256sums=('3380246b21cb6d873962876bf02accdfdab30a16f65e7c6dd4522843033a7c0e')
 
 build() {
   cd "$srcdir/$pkgname-0.7.1"
