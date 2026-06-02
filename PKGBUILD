@@ -1,13 +1,16 @@
 # Maintainer: Daniel Vigh <vighd@digital.co.hu>
 
 pkgname=river-bar
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A small status bar for the River Wayland compositor'
 arch=('x86_64')
 url='https://github.com/vighd/river-bar'
 license=('MIT')
-depends=('fontconfig' 'freetype2' 'river')
+# river-classic is the legacy River (zriver_status_manager_v1 / zriver_control_v1)
+# this bar talks to. The rewritten 'river' 0.4+ drops those protocols and
+# conflicts with river-classic, so it is NOT a valid dependency here.
+depends=('fontconfig' 'freetype2' 'river-classic')
 makedepends=('go')
 optdepends=(
   'ttf-nerd-fonts-symbols: Nerd Font icon glyphs for the module icons (clock, battery, ...)'
@@ -21,7 +24,7 @@ optdepends=(
   'iwd: network module Wi-Fi SSID alternative (iwctl)'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vighd/river-bar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5b5cd738c667483ed8303147eb2d22c92accee26504554519a0665f2b0afde05')
+sha256sums=('99ba3436d964bc9e2cd3615646fc1b0c83344a3bfe77f54326142c8a97dd16a8')
 
 build() {
   cd "${pkgname}-${pkgver}"
