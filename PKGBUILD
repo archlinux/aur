@@ -17,10 +17,25 @@ url="https://www.palemoon.org/"
 license=('MPL-2.0')
 depends=(
   'alsa-lib'
-  'desktop-file-utils'
+  'at-spi2-core'
+  'bash'
+  'cairo'
+  'dbus'
+  'fontconfig'
+  'freetype2'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
   'gtk2'
+  'hicolor-icon-theme'
+  'libgcc'
+  'libstdc++'
+  'libx11'
+  'libxcb'
+  'libxext'
+  'libxrender'
   'libxt'
-  'mime-types'
+  'pango'
 )
 makedepends=(
   'git'
