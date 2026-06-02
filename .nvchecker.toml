@@ -1,0 +1,5 @@
+[vim]
+source = "git"
+git = "https://git.sr.ht/~sircmpwn/vim-classic"
+prefix = "v"
+use_max_tag = true
