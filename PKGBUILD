@@ -1,14 +1,13 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.8.2.post2'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='rovr'
-
-pkgname="${_pypi_package}"
-pkgver="${_upstreamver%%.post*}"
-pkgrel=4
+pkgauthor="NSPC911"
+pkgname="rovr"
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="A post-modern terminal file explorer"
+
+_pypi_package=${pkgname}
+_pypi_version=${pkgver}
 
 license=('MIT')
 arch=('any')
@@ -21,20 +20,20 @@ provides=("${_pypi_package}")
 conflicts=("${pkgname}"{-bin,-git})
 
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build' 'python-hatchling')
-depends=('python' 'python-textual-autocomplete' 'python-pygments' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-textual' 'python-jsonschema' 'python-fastjsonschema' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-puremagic' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-textual-image' 'python-pathvalidate' 'python-resvg_py')
+depends=('python' 'python-textual-autocomplete' 'python-pygments' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-textual' 'python-jsonschema' 'python-fastjsonschema' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-puremagic' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-textual-image' 'python-pathvalidate' 'python-resvg_py' 'python-multiarchive')
 
-source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_upstreamver}.tar.gz")
-# source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${_upstreamver}.tar.gz")
-sha256sums=('d8c2bfd8bbfb6c3aeacc1bb480a66c005a5a242a8434f58f5d8920091e5588ba')
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
+# source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
+sha256sums=('ab468336dd938be1dbccc032a8789bbe96d734a310423c9067c2176e45697fbf')
 
 build() {
-    cd "${srcdir}/${_pypi_package}-${_upstreamver}/"
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package}-${_upstreamver}/"
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
