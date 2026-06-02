@@ -22,15 +22,11 @@ pkgver() {
   git describe --tags --always --exclude='v20[0-9][0-9]*' | sed 's/^v//;s/\([^-]*\)-\([0-9]*\)-g\([0-9a-f]*\)/\1.r\2.g\3/;s/-/./g'
 }
 
-prepare() {
-  cd "${pkgname%-git}"
-  [ -d release-builds ] && rm -f release-builds/*.AppImage || true
-}
-
 build() {
   cd "${pkgname%-git}"
   npm install
-  npm run build
+  npm run dist
+  npx electron-builder --linux --x64 --dir
 }
 
 package() {
@@ -39,11 +35,10 @@ package() {
 
   install -Dm644 "${srcdir}/${pkgname%-git}/release-builds/linux-unpacked/resources/app.asar"  "${pkgdir}/usr/lib/stremio-enhanced/app.asar"
 
-  cat << EOF > "${pkgdir}/usr/bin/stremio-enhanced"
+  cat << EOF | install -Dm755 /dev/stdin "${pkgdir}/usr/bin/stremio-enhanced"
 #!/bin/bash
 exec electron /usr/lib/stremio-enhanced/app.asar "\$@"
 EOF
-  chmod 755 "${pkgdir}/usr/bin/stremio-enhanced"
 
   install -Dm644 stremio-enhanced.desktop "${pkgdir}/usr/share/applications/stremio-enhanced.desktop"
   install -Dm644 "${srcdir}/${pkgname%-git}/images/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/stremio-enhanced.png"
