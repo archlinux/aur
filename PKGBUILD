@@ -2,7 +2,7 @@
 
 pkgname=vercel-node
 _pkgname=vercel
-pkgver=54.6.1
+pkgver=54.7.1
 pkgrel=1
 pkgdesc='Command-line interface for Vercel'
 # x86_64 only: the npm tree pulls native ELF helpers (esbuild, oxc-transform,
@@ -18,7 +18,7 @@ provides=('vercel')
 conflicts=('vercel')
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('451af01d1cd85150bc4dcf18340198479014a786bc8576eb268c46ee06cc8280')
+sha256sums=('6f0c25f56344e4c9e0e455d7c56cac10e3440796b9b997252b8f4bddf956d1c2')
 
 package() {
     # Install the published tarball globally into $pkgdir. npm fetches the
