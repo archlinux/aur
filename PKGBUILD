@@ -6,14 +6,14 @@
 
 _locale='hu'
 pkgname=palemoon-i18n-hu
-pkgver=33.8.0
+pkgver=34.3.0
 pkgrel=1
 pkgdesc="Hungarian language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('54a23f10a46e2f7592dce7eee7ed8a88a88dc4cfee190b22d0d8a50560faff32')
+sha256sums=('11e8fa1a65c5ef0bbf0475e9b8cbf1919b40572921a7f5a947b4cb41cd9941f3')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
