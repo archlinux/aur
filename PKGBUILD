@@ -3,7 +3,7 @@
 # Contributor: Evert <evorster at gmail dot com>
 _pkgname=hermes-agent
 pkgname=${_pkgname}-git
-pkgver=2026.5.29.r361.g70e157
+pkgver=2026.5.29.r396.g85b65e
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
@@ -79,7 +79,7 @@ build() {
   PYTHONDONTWRITEBYTECODE=1 "$srcdir/${_pkgname}/venv/bin/python" -m pip install \
     --target "$srcdir/${_pkgname}/venv/lib/${_py_ver}/site-packages" \
     --ignore-installed \
-    .[cli,pty,mcp,acp,web,cron,homeassistant,sms,google,youtube] || return 1
+    .[cli,pty,mcp,acp,web,cron,homeassistant,sms,google,youtube,feishu,dingtalk] || return 1
 
   # Detect and persist Python version for package()
   echo "${_py_ver}" > "$srcdir/_py_ver"
