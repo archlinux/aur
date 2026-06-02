@@ -1,11 +1,13 @@
 pkgbase = python-pyroomacoustics
 	pkgdesc = Package for audio signal processing for indoor applications and beamforming algorithms
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/LCAV/pyroomacoustics
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = cmake
 	makedepends = cython
 	makedepends = pybind11
 	makedepends = eigen
@@ -16,7 +18,7 @@ pkgbase = python-pyroomacoustics
 	optdepends = python-soxr: for resampling signals
 	optdepends = python-matplotlib: to create graphs and plots
 	optdepends = python-sounddevice: to play sound samples
-	source = pyroomacoustics-0.10.0.tar.gz::https://github.com/LCAV/pyroomacoustics/archive/v0.10.0.tar.gz
-	sha256sums = 402699f55a8c410a586638991196057ba57445ba81bd66ef8fb34207cde0f3d8
+	source = pyroomacoustics-0.10.1.tar.gz::https://github.com/LCAV/pyroomacoustics/archive/v0.10.1.tar.gz
+	sha256sums = 1700bbef779ab1975ff760e5c5f3edc7b672917876f0314621fb936537bd9ccd
 
 pkgname = python-pyroomacoustics
