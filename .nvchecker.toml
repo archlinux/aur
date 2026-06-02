@@ -1,0 +1,5 @@
+[sortsort-bin]
+source = "github"
+github = "remememe/sortsort"
+use_latest_release = true
+prefix = ""
