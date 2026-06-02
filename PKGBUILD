@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartoc
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Barto job executor client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('logrotate: periodic cleanup of rotated log files'
 makedepends=('cargo')
 install=bartoc.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/barto/archive/v$pkgver.tar.gz")
-sha256sums=('928562f240c5f3a62b67e6de8e4aac1060b222b21a0308fee44836c1e0a6ce1e')
+sha256sums=('6bfbc49e6dee4dd0aab64a26596bd54c38c03e1b326097a225c6f49080451455')
 
 prepare() {
     cd "barto-$pkgver"
