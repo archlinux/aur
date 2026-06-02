@@ -1,4 +1,4 @@
-# Maintainer: Mestik78 <mestik@example.com>
+# Maintainer: Mestik78 <mestik@gmail.com>
 pkgname=bonsai-pomodoro
 pkgver=0.2.0
 pkgrel=1
