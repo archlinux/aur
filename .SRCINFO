@@ -1,7 +1,7 @@
 pkgbase = whatscli-git
 	pkgdesc = A command line interface for WhatsApp, based on go-whatsmeow and tview
-	pkgver = 0
-	pkgrel = 1
+	pkgver = 20260602
+	pkgrel = 4
 	url = https://github.com/normen/whatscli
 	arch = i686
 	arch = x86_64
