@@ -8,7 +8,7 @@ url="https://github.com/HerauxValle/Casket"
 license=('MIT')
 depends=('python' 'cryptsetup' 'btrfs-progs' 'udisks2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/HerauxValle/Casket/archive/v$pkgver.tar.gz")
-sha256sums=('c4af383e25d22571b98cba9a0286e1d4846a22d743404f14617c799c2cb92999')
+sha256sums=('39d02fa02999062adc7001dabb771d41a3adeb3d67082db68c518909ee004208')
 
 package() {
     cd "$srcdir/Casket-$pkgver"
