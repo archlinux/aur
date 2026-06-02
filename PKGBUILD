@@ -1,7 +1,7 @@
 # Maintainer: Vatteck <vatteck@gmail.com>
 pkgname=atlas-pm-git
 _srcname=atlas
-pkgver=0.10.7.r67.gcf7a283
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="Arch-focused graphical package manager (Arch/AUR, Flatpak, AppImage)"
 arch=('any')
@@ -46,8 +46,12 @@ package() {
     cd "$_srcname"
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    # desktop entry + icon (the .desktop uses Icon=atlas)
+    # desktop entry + icon. Named 'atlas-pm' (not 'atlas') so it doesn't collide with the
+    # generic 'atlas' map icon some themes ship. logo.png is 512x512, so install it to the
+    # hicolor 512x512 dir (what GNOME/KDE app grids actually search) plus pixmaps as a
+    # legacy fallback; the .desktop's Icon=atlas-pm resolves to it.
     install -Dm644 atlas/desktop/atlas.desktop "$pkgdir/usr/share/applications/atlas.desktop"
-    install -Dm644 atlas/view/resources/img/logo.png "$pkgdir/usr/share/pixmaps/atlas.png"
+    install -Dm644 atlas/view/resources/img/logo.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/atlas-pm.png"
+    install -Dm644 atlas/view/resources/img/logo.png "$pkgdir/usr/share/pixmaps/atlas-pm.png"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
