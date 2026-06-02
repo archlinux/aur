@@ -2,8 +2,8 @@
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgbase=python-librefang-sdk-git
 pkgname=('python-librefang-sdk-git')
-pkgver=2026.5.31beta.16.r0.g2bef7a0f5
-pkgrel=2
+pkgver=2026.5.31beta.16.r24.gcc8cf7975
+pkgrel=1
 pkgdesc='Python Client SDK for the LibreFang Agent OS (GIT version)'
 arch=('any')
 url='https://github.com/librefang/librefang'
