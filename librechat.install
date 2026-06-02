@@ -36,6 +36,7 @@ post_install() {
 
   print_info "To start the LibreChat service:"
   print_command "sudo systemctl start librechat"
+  print_info "The service opens on http://localhost:3080 by default"
   echo ""
 
   print_warning "MongoDB Database Required"
