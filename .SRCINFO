@@ -1,6 +1,6 @@
 pkgbase = beammp-server
 	pkgdesc = Server for the multiplayer mod BeamMP for BeamNG.drive
-	pkgver = 3.9.0
+	pkgver = 3.9.3
 	pkgrel = 1
 	url = https://github.com/BeamMP/BeamMP-Server
 	arch = x86_64
@@ -17,14 +17,12 @@ pkgbase = beammp-server
 	depends = lua53
 	depends = curl
 	provides = beammp-server
-	source = git+https://github.com/BeamMP/BeamMP-Server.git#tag=v3.9.0
-	source = downgrade-sol2.patch
+	source = git+https://github.com/BeamMP/BeamMP-Server.git#tag=v3.9.3
 	source = sol2-fix-emplace.patch
 	source = beammp-server.service
 	source = beammp-server.sysusers
 	source = beammp-server.tmpfiles
 	sha256sums = SKIP
-	sha256sums = 6ca91a7d420a1df31792f1adcf3e31aed9e353ff6b1645c6ff2fdce154764b03
 	sha256sums = 5c6197d0534317bea578597fdec2d84ca912812eb4c82a00a9184916ae038cdd
 	sha256sums = d5bd5f83e818c5174f25be79443078cefae5a632a6f72f7915c14e98ef4f98fe
 	sha256sums = 7e8d591152d3de0cea273b6aa212ebafab906f2f76126ff3fac73dd4d31cbfd5
