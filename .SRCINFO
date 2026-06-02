@@ -1,0 +1,13 @@
+pkgbase = panagement-bin
+	pkgdesc = FREE reverb/spatialization plugin with depth and character - Auburn Sounds (VST3 format)
+	pkgver = 2.8
+	pkgrel = 3
+	url = https://www.auburnsounds.com/products/Panagement.html
+	arch = x86_64
+	license = custom:proprietary
+	makedepends = unzip
+	options = !debug
+	source = https://www.auburnsounds.com/downloads/Panagement-FREE-2.8.zip
+	sha256sums = 5d8cf4804d839de97a02bbee40cdd67fa13971813e506111aceaac87b6640078
+
+pkgname = panagement-bin
