@@ -1,6 +1,6 @@
 # Maintainer: thefangeddeity
 pkgname=ele-messenger-client
-pkgver=1.3.2
+pkgver=1.3.1
 pkgrel=3
 pkgdesc="ELE Messenger desktop client — resilience-first household chat"
 arch=('x86_64')
