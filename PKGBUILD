@@ -2,7 +2,7 @@
 
 pkgbase=ollama-bin
 pkgname=(ollama-bin ollama-cuda12-bin ollama-cuda13-bin ollama-vulkan-bin)
-pkgver=0.24.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="Create, run and share large language models (LLMs)"
 
@@ -48,8 +48,8 @@ sha256sums=('5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226'
             '14e2e267be85b6943f66dfe60e73f5e0a611eaf40ee69a4cc0d497d071392cf4'
             '137e1d50a5f3058c30a73b7bb3c323888d225e6a7ae47564be869827db0659a3'
             'c45babd58b56b10ece2c652b67ca3104ed0ceaf4d6041b846be4e71dbd669c2d')
-sha256sums_x86_64=('15c5f8d66ba06e0d3b4719df8868612dbd66e14e82760929bb3552e1657cdcdb')
-sha256sums_aarch64=('6e9a3ce5f64e93312902e39c420ec336255f078a368ca25e99b339d08a6dfa4b')
+sha256sums_x86_64=('460e9b0789bedb0b6343fa7b9cccf15e5cb4de10b762f21c920cccf00a2f2968')
+sha256sums_aarch64=('9921a37f3e9319d5d12744e40f112b57f50a8f9d2256a8765042e6b45486d1f5')
 
 
 package_ollama-bin() {
@@ -60,8 +60,10 @@ package_ollama-bin() {
     install -Dm755 "./bin/ollama" "${pkgdir}/usr/bin/ollama"
 
     install -dm755 "${pkgdir}/usr/lib/ollama/"
-    for lib in "./lib/ollama/lib"*; do
-        cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
+    for lib in "./lib/ollama/"*; do
+        if [ -f "${lib}" ]; then
+            cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
+        fi
     done
 
     install -Dm644 "./ollama.service" "${pkgdir}/usr/lib/systemd/system/ollama.service"
@@ -95,8 +97,10 @@ package_ollama-cuda12-bin() {
     install -Dm644 "./ollama-cuda.conf" "${pkgdir}/etc/ollama-cuda.conf"
 
     install -dm755 "${pkgdir}/usr/lib/ollama/"
-    for lib in "./lib/ollama/cuda_v12/lib"*; do
-        cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
+    for lib in "./lib/ollama/cuda_v12/"*; do
+        if [ -f "${lib}" ]; then
+            cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
+        fi
     done
 }
 
@@ -116,8 +120,10 @@ package_ollama-cuda13-bin() {
     install -Dm644 "./ollama-cuda.conf" "${pkgdir}/etc/ollama-cuda.conf"
 
     install -dm755 "${pkgdir}/usr/lib/ollama/"
-    for lib in "./lib/ollama/cuda_v13/lib"*; do
-        cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
+    for lib in "./lib/ollama/cuda_v13/"*; do
+        if [ -f "${lib}" ]; then
+            cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
+        fi
     done
 }
 
@@ -137,7 +143,9 @@ package_ollama-vulkan-bin() {
     install -Dm644 "./ollama-vulkan.conf" "${pkgdir}/etc/ollama-vulkan.conf"
 
     install -dm755 "${pkgdir}/usr/lib/ollama/"
-    for lib in "./lib/ollama/vulkan/lib"*; do
-        cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
+    for lib in "./lib/ollama/vulkan/"*; do
+        if [ -f "${lib}" ]; then
+            cp -P "${lib}" "${pkgdir}/usr/lib/ollama/"
+        fi
     done
 }
