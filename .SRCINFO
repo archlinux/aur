@@ -1,14 +1,11 @@
 pkgbase = raindrop
 	pkgdesc = All-in-one bookmark manager
 	pkgver = 5.7.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://raindrop.io
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = git
-	makedepends = nodejs
-	makedepends = npm
 	provides = raindrop
 	source_x86_64 = raindrop-amd64.deb::https://github.com/raindropio/desktop/releases/download/v5.7.7/Raindrop-amd64.deb
 	source_x86_64 = raindrop.desktop

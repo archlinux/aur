@@ -2,13 +2,13 @@
 
 pkgname=raindrop
 pkgver='5.7.7'
-pkgrel=2
+pkgrel=3
 pkgdesc="All-in-one bookmark manager"
 arch=('x86_64' 'aarch64')
 url="https://raindrop.io"
 license=('MIT')
 depends=()
-makedepends=('git' 'nodejs' 'npm')
+makedepends=()
 provides=(raindrop)
 
 source_x86_64=('raindrop-amd64.deb::https://github.com/raindropio/desktop/releases/download/v5.7.7/Raindrop-amd64.deb' 'raindrop.desktop')
