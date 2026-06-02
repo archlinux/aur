@@ -10,7 +10,7 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.4.1.r76.gfd1617827.0.gfd1617827
+pkgver=1.4.1.r78.gb55eca391.0.gb55eca391
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
@@ -24,7 +24,7 @@ depends=(chromaprint gst-plugins-base-libs libcdio libgpod liblastfm-qt5 libmtp
          zlib glib2 sqlite libx11 gstreamer glibc libstdc++ libgcc abseil-cpp qt5-base fftw
 
          libprotobuf.so)
-makedepends=(boost cmake git qt5-tools sparsehash)
+makedepends=(boost cmake git qt5-tools sparsehash glu)
 optdepends=(
   'gst-plugins-base: "Base" plugin libraries'
   'gst-plugins-good: "Good" plugin libraries'
@@ -34,6 +34,7 @@ optdepends=(
   'gvfs: Various devices support')
 conflicts=(clementine)
 provides=(clementine)
+options=(!lto)
 source=("git+https://github.com/clementine-player/Clementine.git")
 sha256sums=('SKIP')
 
@@ -48,7 +49,7 @@ prepare() {
 
 build() {
   #export LDFLAGS="-Wl,--copy-dt-needed-entries"
-  export CXXFLAGS+=" -Wno-error=cpp  -Wno-unused-result"
+  export CXXFLAGS+=" -Wno-error=cpp  -Wno-unused-result -Wno-error=stringop-overflow"
 
   local _flags=(
     #-DCMAKE_CXX_FLAGS="-fpermissive"

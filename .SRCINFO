@@ -1,6 +1,6 @@
 pkgbase = clementine-git
 	pkgdesc = A modern music player and library organizer
-	pkgver = 1.4.1.r76.gfd1617827.0.gfd1617827
+	pkgver = 1.4.1.r78.gb55eca391.0.gb55eca391
 	pkgrel = 1
 	url = https://github.com/clementine-player/Clementine
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = clementine-git
 	makedepends = git
 	makedepends = qt5-tools
 	makedepends = sparsehash
+	makedepends = glu
 	depends = chromaprint
 	depends = gst-plugins-base-libs
 	depends = libcdio
@@ -42,6 +43,7 @@ pkgbase = clementine-git
 	optdepends = gvfs: Various devices support
 	provides = clementine
 	conflicts = clementine
+	options = !lto
 	source = git+https://github.com/clementine-player/Clementine.git
 	sha256sums = SKIP
 
