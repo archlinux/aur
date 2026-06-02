@@ -2,7 +2,7 @@
 # Please someone maintain this and make a better one, i do not use Arch!!!btw
 _pkgname=cardwire
 pkgname="${_pkgname}-git"
-pkgver=r293.8cbee73
+pkgver=r299.df29010
 pkgrel=1
 pkgdesc='GPU manager for Linux using eBPF LSM hooks'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'gcc-libs' 'dbus' 'hwdata')
 makedepends=('git' 'cargo' 'clang' 'libbpf')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+$url.git?ref=dev")
+source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
