@@ -1,6 +1,6 @@
 pkgbase = barto-cli-bin
 	pkgdesc = Barto command-line interface for querying bartos instances (pre-compiled binary)
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/rustyhorde/barto
 	install = barto-cli.install
@@ -12,11 +12,11 @@ pkgbase = barto-cli-bin
 	conflicts = barto-cli
 	options = !strip
 	options = !debug
-	source = https://github.com/rustyhorde/barto/releases/download/v1.5.3/dist-barto-cli.tar.gz
-	sha256sums = 3c1ba56405909ee182d81654c373b8a04fe75caa4f904cfeadcd9fbcb30eb72d
-	source_x86_64 = barto-cli-x86_64::https://github.com/rustyhorde/barto/releases/download/v1.5.3/barto-cli-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 73a3cd0b7fc726c85f425c34d1feb8f4771944b1cdd1c6177f7b1b1bce720154
-	source_aarch64 = barto-cli-aarch64::https://github.com/rustyhorde/barto/releases/download/v1.5.3/barto-cli-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = f154276450021972b023eddb195dd334e934e99a69d5e6bb0356c6d2550d95d6
+	source = https://github.com/rustyhorde/barto/releases/download/v1.5.4/dist-barto-cli.tar.gz
+	sha256sums = f845b11833bcad41bc38b47054ab4fd09a0de1d3dfbfa68b7ee6bb1691bdc10e
+	source_x86_64 = barto-cli-x86_64::https://github.com/rustyhorde/barto/releases/download/v1.5.4/barto-cli-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = aa8e4de9f365018b151dba4606026318f76565b6e8b279af070f8bb7f4c25d9c
+	source_aarch64 = barto-cli-aarch64::https://github.com/rustyhorde/barto/releases/download/v1.5.4/barto-cli-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 41ad309299fc62d75e75aea2e5a54b66c6932463e2607278b693236664a832b5
 
 pkgname = barto-cli-bin
