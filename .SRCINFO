@@ -1,0 +1,16 @@
+pkgbase = python-ngxparse
+	pkgdesc = Reliable and fast NGINX configuration file parser (maintained fork of crossplane)
+	pkgver = 0.5.16
+	pkgrel = 1
+	url = https://github.com/dvershinin/crossplane
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/n/ngxparse/ngxparse-0.5.16.tar.gz
+	sha256sums = 33746d1693d93903ab0c2b37ba16b8a4743a2767b1959dc125a2417d253b7e3b
+
+pkgname = python-ngxparse
