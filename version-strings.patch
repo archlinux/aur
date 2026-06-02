@@ -1,0 +1,66 @@
+--- a/.make/go.mk
++++ b/.make/go.mk
+@@ -25,22 +25,20 @@ ifndef OUTPUT
+ 	endif
+ endif
+ 
+-ifeq ($(VERSION), daily)
+-	STRING ?= $(shell git rev-parse --short HEAD)
+-else ifeq ($(VERSION),)
+-	STRING ?= $(shell git rev-parse --short HEAD)
+-endif
+-
+-
+-ifndef DATE
+-	DATE := $(shell date -u '+%Y%m%d')
+-endif
++EDITION ?= stable
++STRING ?= $(shell git rev-parse --short HEAD)
++VERSION ?= $(shell git describe --tags)
++DATE ?= $(shell TZ=UTC git show --no-patch --format=%cd --date=iso-strict-local)
+ 
+-LDFLAGS += -X google.golang.org/protobuf/reflect/protoregistry.conflictPolicy=warn -s -w \
++GO_X ?= -X "google.golang.org/protobuf/reflect/protoregistry.conflictPolicy=warn" \
+ 	-X "$(OC_REPO)/pkg/version.Edition=$(EDITION)" \
+ 	-X "$(OC_REPO)/pkg/version.String=$(STRING)" \
+ 	-X "$(OC_REPO)/pkg/version.Tag=$(VERSION)" \
+-	-X "$(OC_REPO)/pkg/version.Date=$(DATE)"
++	-X "$(OC_REPO)/pkg/version.Date=$(DATE)" \
++	-X "$(OC_REPO)/pkg/config/defaults.BaseDataPathType=path" \
++	-X "$(OC_REPO)/pkg/config/defaults.BaseDataPathValue=/var/lib/opencloud" \
++	-X "$(OC_REPO)/pkg/config/defaults.BaseConfigPathType=path" \
++	-X "$(OC_REPO)/pkg/config/defaults.BaseConfigPathValue=/etc/opencloud"
+ 
+ DEBUG_LDFLAGS += -X google.golang.org/protobuf/reflect/protoregistry.conflictPolicy=warn \
+ 	-X "$(OC_REPO)/pkg/version.Edition=$(EDITION)" \
+@@ -99,7 +97,18 @@ build: $(BIN)/$(EXECUTABLE)
+ build-debug: $(BIN)/$(EXECUTABLE)-debug
+ 
+ $(BIN)/$(EXECUTABLE): $(SOURCES)
+-	$(GOBUILD) -v -tags '$(TAGS)' -ldflags '$(LDFLAGS)' -o $@ ./cmd/$(NAME)
++	$(GOBUILD) -v \
++		-buildmode=pie \
++		-trimpath \
++		-mod=readonly \
++		-modcacherw \
++		-tags '$(TAGS)' \
++		-ldflags "-compressdwarf=false \
++		-linkmode external \
++		-extldflags '$(LDFLAGS)' \
++		$(GO_X)"\
++		-o $@ \
++		./cmd/$(NAME)
+ 
+ $(BIN)/$(EXECUTABLE)-debug: $(SOURCES)
+ 	$(GOBUILD) -v -tags '$(TAGS)' -ldflags '$(DEBUG_LDFLAGS)' -gcflags '$(GCFLAGS)' -o $@ ./cmd/$(NAME)
+--- a/pkg/version/version.go
++++ b/pkg/version/version.go
+@@ -91,7 +91,7 @@ func Compiled() time.Time {
+ 	if Date == Dev {
+ 		return time.Now()
+ 	}
+-	t, _ := time.Parse("20060102", Date)
++	t, _ := time.Parse(time.RFC3339, Date)
+ 	return t
+ }
+ 
