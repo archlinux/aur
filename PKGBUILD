@@ -13,7 +13,7 @@ url='https://www.bento4.com/'
 license=('GPL')
 makedepends=('cmake')
 optdepends=('python')
-source=("http://zebulon.bok.net/Bento4/source/Bento4-SRC-${_pkgverstr}.zip")
+source=("http://bok.net/Bento4/source/Bento4-SRC-${_pkgverstr}.zip")
 sha256sums=('8258faf0de7253f2aac016018f33d4a04c16d9060735e14ec8711f84aaedf0c8')
 
 build() {

@@ -12,7 +12,7 @@ pkgbase = bento4
 	license = GPL
 	makedepends = cmake
 	optdepends = python
-	source = http://zebulon.bok.net/Bento4/source/Bento4-SRC-1-6-0-641.zip
+	source = http://bok.net/Bento4/source/Bento4-SRC-1-6-0-641.zip
 	sha256sums = 8258faf0de7253f2aac016018f33d4a04c16d9060735e14ec8711f84aaedf0c8
 
 pkgname = bento4
