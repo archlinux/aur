@@ -1,27 +1,28 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=avm-git
-pkgver=r34738.gfe3aceb581
+pkgver=1.0.0.r5.g638905e970
 pkgrel=1
-pkgdesc="The reference software for next codec from Alliance for Open Media"
+pkgdesc="AVM (AOM Video Model) is the reference software for AV2 codec from Alliance for Open Media"
 arch=('i686' 'x86_64')
-url="https://gitlab.com/AOMediaCodec/avm"
+url="https://github.com/AOMediaCodec/avm"
 license=('BSD-3-Clause' 'LicenseRef-avm')
 depends=('glibc' 'libgcc' 'libstdc++' 'nasm')
 makedepends=('git' 'cmake')
 provides=("avm=$pkgver")
 conflicts=('avm' 'aom')
 options=('staticlibs')
-source=("git+https://gitlab.com/AOMediaCodec/avm.git")
+source=("git+https://github.com/AOMediaCodec/avm.git")
 sha256sums=('SKIP')
 
 
 pkgver() {
   cd "avm"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {

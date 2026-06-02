@@ -1,8 +1,8 @@
 pkgbase = avm-git
-	pkgdesc = The reference software for next codec from Alliance for Open Media
-	pkgver = r34738.gfe3aceb581
+	pkgdesc = AVM (AOM Video Model) is the reference software for AV2 codec from Alliance for Open Media
+	pkgver = 1.0.0.r5.g638905e970
 	pkgrel = 1
-	url = https://gitlab.com/AOMediaCodec/avm
+	url = https://github.com/AOMediaCodec/avm
 	arch = i686
 	arch = x86_64
 	license = BSD-3-Clause
@@ -13,11 +13,11 @@ pkgbase = avm-git
 	depends = libgcc
 	depends = libstdc++
 	depends = nasm
-	provides = avm=r34738.gfe3aceb581
+	provides = avm=1.0.0.r5.g638905e970
 	conflicts = avm
 	conflicts = aom
 	options = staticlibs
-	source = git+https://gitlab.com/AOMediaCodec/avm.git
+	source = git+https://github.com/AOMediaCodec/avm.git
 	sha256sums = SKIP
 
 pkgname = avm-git
