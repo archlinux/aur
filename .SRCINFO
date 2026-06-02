@@ -1,0 +1,14 @@
+pkgbase = guile-pstk-git
+	pkgdesc = PS/TK version fixed to work fine on modern GNU Guile
+	pkgver = r17.70396a6
+	pkgrel = 1
+	url = https://github.com/KikyTokamuro/guile-pstk
+	arch = any
+	license = BSD-2-Clause
+	makedepends = git
+	depends = guile
+	depends = tk
+	source = guile-pstk::git+https://github.com/KikyTokamuro/guile-pstk.git
+	sha256sums = SKIP
+
+pkgname = guile-pstk-git
