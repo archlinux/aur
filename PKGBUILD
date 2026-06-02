@@ -2,7 +2,7 @@
 # Maintainer: AntoineGS <antoineg.simard 'at' gmail.com>
 pkgname=python-lnxlink
 pkgver=2026.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux system integration for Home Assistant via MQTT"
 arch=('any')
 url="https://github.com/bkbilly/lnxlink"
@@ -13,7 +13,7 @@ depends=(
     'python-paho-mqtt-2'
     'python-requests'
     'python-psutil'
-    'python-pyinotify'
+    'python-inotify'
     'python-jeepney'
     'python-aiohttp'
     'python-distro'
