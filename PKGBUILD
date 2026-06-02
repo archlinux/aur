@@ -2,11 +2,11 @@
 
 pkgname=monsoon-git
 _pkgname=monsoon
-pkgver=0.1.0.r0.g0000000
+pkgver=0.1.0.r44.gfe34af5
 pkgrel=1
 pkgdesc="bittorrent client (daemon + cli + tui) built on libtorrent-rasterbar"
 arch=('x86_64' 'aarch64')
-url="https://codeberg.org/5unekku/monsoon"
+url="https://gitlab.com/5unekku/monsoon"
 license=('GPL-3.0-only')
 depends=('libtorrent-rasterbar' 'gcc-libs' 'glibc' 'curl')
 makedepends=('git' 'cargo' 'boost' 'clang')
