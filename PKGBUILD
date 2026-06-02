@@ -2,7 +2,7 @@
 
 _name=sca2d
 pkgname="python-${_name}"
-pkgver=0.3.1.patch2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Static Code Analysis for SCAD'
 arch=('any')
@@ -15,17 +15,14 @@ depends=(
   'python' 'python-lark-parser' 'python-colorama' 'python-pygments' 'python-jinja' 'python-markdown'
   )
 source=(
-  "https://files.pythonhosted.org/packages/0b/7b/defe4edbabaf47c4af5663bdda49ff9016678b26f9c77d302424be08cde0/${_name}-${pkgver}.tar.gz"
-  fix-lark.patch
+  "https://files.pythonhosted.org/packages/eb/3f/474a80aaf5882a15bd178b2cf2e1ee17ddd376779b4bd3cb6bbb5c49c690/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  548652491d50d8becfe599d8aac9dc719c2b3b5a3d89744e5dae6ea516d337f0
-  65c0a4c19054a3b223de256127be41bdcf054ceab6a07e95dc083589e318fc39
+  418a48add8e04cfa3c9903a86f476ea81e6aefe212f572e84af1070e7c95b374
 )
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
-  patch -p1 -i "${srcdir}/fix-lark.patch"
   python -m build --wheel --no-isolation
 }
 

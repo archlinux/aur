@@ -1,6 +1,6 @@
 pkgbase = python-sca2d
 	pkgdesc = Static Code Analysis for SCAD
-	pkgver = 0.3.1.patch2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://gitlab.com/bath_open_instrumentation_group/sca2d
 	arch = any
@@ -14,9 +14,7 @@ pkgbase = python-sca2d
 	depends = python-markdown
 	provides = python-sca2d
 	conflicts = python-sca2d
-	source = https://files.pythonhosted.org/packages/0b/7b/defe4edbabaf47c4af5663bdda49ff9016678b26f9c77d302424be08cde0/sca2d-0.3.1.patch2.tar.gz
-	source = fix-lark.patch
-	sha256sums = 548652491d50d8becfe599d8aac9dc719c2b3b5a3d89744e5dae6ea516d337f0
-	sha256sums = 65c0a4c19054a3b223de256127be41bdcf054ceab6a07e95dc083589e318fc39
+	source = https://files.pythonhosted.org/packages/eb/3f/474a80aaf5882a15bd178b2cf2e1ee17ddd376779b4bd3cb6bbb5c49c690/sca2d-0.4.0.tar.gz
+	sha256sums = 418a48add8e04cfa3c9903a86f476ea81e6aefe212f572e84af1070e7c95b374
 
 pkgname = python-sca2d
