@@ -1,6 +1,6 @@
 # Maintainer: o-murphy <thehelixpg@gmail.com>
 pkgname=ebalistyka-bin
-_pkgver="0.1.10-dev"
+_pkgver="0.1.16"
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc="Ballistic trajectory calculator"
