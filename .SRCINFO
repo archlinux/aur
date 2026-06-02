@@ -1,6 +1,6 @@
 pkgbase = container-magic
 	pkgdesc = Container development tools
-	pkgver = 5.3.0
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = https://github.com/markhedleyjones/container-magic
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = container-magic
 	depends = python-click
 	depends = python-requests
 	depends = python-pydantic
-	source = https://files.pythonhosted.org/packages/source/c/container_magic/container_magic-5.3.0.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/markhedleyjones/container-magic/v5.3.0/LICENSE
-	sha256sums = aea12bc9315ade9b82628fe47d05b3c83237de1aad1a87ac43f125dc3a22424e
+	source = https://files.pythonhosted.org/packages/source/c/container_magic/container_magic-5.3.1.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/markhedleyjones/container-magic/v5.3.1/LICENSE
+	sha256sums = d1a8fe95ee432a08e3cc910fd96cc056ac9ddfa15329f3f1c2383d866f9f4f48
 	sha256sums = 21aca9786832c0545aeb9e32c5e385acdbfbdcf2dcf141d59923da4864670dd0
 
 pkgname = container-magic
