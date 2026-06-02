@@ -18,6 +18,9 @@ sha256sums=('be65f7264a0bb5eb3b1324755ddec55c712668a2fd2bed5abc5121fa0afa7ce6'
 
 package() {
     npm install -g \
+        --no-audit \
+        --no-fund \
+        --prefer-offline \
         --allow-scripts sharp \
         --allow-scripts protobufjs \
         --cache "${srcdir}/npm-cache" \
