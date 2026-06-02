@@ -1,0 +1,15 @@
+pkgbase = faup-git
+	pkgdesc = Fast URL decoder library and utility
+	pkgver = r519.g8a736da
+	pkgrel = 1
+	url = https://github.com/stricaud/faup
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	provides = faup
+	conflicts = faup
+	source = faup::git+https://github.com/stricaud/faup.git
+	sha256sums = SKIP
+
+pkgname = faup-git
