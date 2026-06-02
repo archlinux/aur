@@ -55,13 +55,14 @@ EOF
     done
 
     # License
-    cat > "$pkgdir/usr/share/licenses/${pkgname}/LICENSE" << 'EOF'
-League of Gays Launcher
-Copyright (c) 2026 Ashley
-
-This software is provided for private, non-commercial use only.
-Redistribution or commercial use is prohibited without express permission.
-EOF
+    install -Dm644 /dev/null "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    printf '%s\n' \
+        'League of Gays Launcher' \
+        'Copyright (c) 2026 Ashley' \
+        '' \
+        'This software is provided for private, non-commercial use only.' \
+        'Redistribution or commercial use is prohibited without express permission.' \
+        > "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 
     # Install changelog
     install -Dm644 "$srcdir/${pkgname}-src-${pkgver}/CHANGELOG.md" \
