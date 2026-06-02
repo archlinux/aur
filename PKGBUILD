@@ -1,20 +1,21 @@
-# Maintainer: Swift Geek <swiftgeek «at» gmail.com>
+# Contributor: Swift Geek <swiftgeek «at» gmail.com>
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
 # Contributor: John D Jones III (jnbek) <jnbek1972 at gmail dot com>
+# Contributor: tee < teeaur at duck dot com >
 
 pkgname=perl-alien-wxwidgets
 _cpan_name=Alien-wxWidgets
 pkgver=0.69
-pkgrel=3
+pkgrel=4
 pkgdesc="building, finding and using wxWidgets binaries"
 arch=('any')
-url="https://metacpan.org/release/${_cpan_name}"
-license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0' 'wxgtk3' 'perl-module-pluggable')
+url="https://metacpan.org/dist/${_cpan_name}"
+license=("Artistic-1.0-Perl OR GPL-1.0-or-later")
+depends=('perl>=5.10.0' 'wxwidgets-gtk3' 'perl-module-pluggable')
 makedepends=('perl-module-build' 'perl-lwp-protocol-https')
 options=(!emptydirs)
-source=("http://www.cpan.org/modules/by-module/${_cpan_name%%-*}/${_cpan_name}-${pkgver}.tar.gz")
-sha256sums=('53224e4bbbefff4cf7b63ed9a62963893b9ffd4965d70d96710348f8676de249')
+source=("https://cpan.org/modules/by-module/${_cpan_name%%-*}/${_cpan_name}-${pkgver}.tar.gz")
+b2sums=('304dd5664fd9e628eb45c5c67cd9ca8250129c8c0eaba1a0d5e1d2ad6afe6cb7acf0eccfe954d2f35714942970613fd1cdcc466104d776119dcaea3a8b1ddff1')
 _src_dir=${_cpan_name}-${pkgver}
 
 build() {
@@ -25,7 +26,7 @@ build() {
     WX_CONFIG=/usr/bin/wx-config \
     MODULEBUILDRC=/dev/null
   cd "$_src_dir"
-  /usr/bin/perl Makefile.PL
+  /bin/perl Makefile.PL
   make
 }
 
