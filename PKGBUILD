@@ -1,6 +1,6 @@
 # Maintainer: Koutheir Attouchi <koutheir@gmail.com>
 pkgname=llvm-bolt-bin
-pkgver=22.1.6
+pkgver=22.1.7
 pkgrel=1
 pkgdesc='Post-link optimizer developed to speed up large applications'
 url="https://github.com/llvm/llvm-project/tree/llvmorg-${pkgver}/bolt"
@@ -17,7 +17,7 @@ source=("https://github.com/llvm/llvm-project/raw/refs/tags/llvmorg-${pkgver}/LI
         "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/LLVM-${pkgver}-Linux-X64.tar.xz")
 noextract=("LLVM-${pkgver}-Linux-X64.tar.xz")
 sha256sums=('8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee'
-            'c5ac8ef89ca39d30cb32e9b83772f995dd891c685ebc188d593c943a64d5f8b5')
+            'edb0522b41e261819c06ea437d249f9b8acfa413d3805bc9920eec6fb76ff830')
 validpgpkeys=()
 
 prepare() {
@@ -34,12 +34,12 @@ check() {
 }
 
 package () {
-    mkdir -p "$pkgdir/usr"/{bin,share/licenses/${pkgname}}
+    mkdir -p "${pkgdir}/usr"/{bin,share/licenses/${pkgname}}
 
     install -D --preserve-timestamps --mode=644 \
-        "--target-directory=$pkgdir/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE.TXT"
+        "--target-directory=${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE.TXT"
 
-    cp --archive --no-dereference "--target-directory=$pkgdir/usr/bin" \
+    cp --archive --no-dereference "--target-directory=${pkgdir}/usr/bin" \
         "${srcdir}/LLVM-${pkgver}-Linux-X64/bin"/{llvm-bolt*,perf2bolt,merge-fdata}
-    chmod --no-dereference 755 "$pkgdir/usr/bin"/*
+    chmod --no-dereference 755 "${pkgdir}/usr/bin"/*
 }
