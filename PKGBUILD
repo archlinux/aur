@@ -14,7 +14,7 @@ license=('GPL-2.0-or-later')
 arch=('any')
 
 makedepends=('uv' 'python-pip')
-depends=('python' 'python-boltons' 'python-pygments' 'python-click>=8.3.1' 'python-json5' 'python-hjson' 'python-tomli' 'python-tomlkit' 'python-yaml' 'python-cloup' 'python-deepmerge' 'python-extra-platforms' 'python-requests' 'python-tabulate' 'python-xmltodict' 'python-wcmatch' 'python-wcwidth' 'python-docutils' 'python-sphinx')
+depends=('python' 'python-boltons' 'python-pygments' 'python-click>=8.4.1' 'python-json5' 'python-hjson' 'python-tomli' 'python-tomlkit' 'python-yaml' 'python-cloup' 'python-deepmerge' 'python-extra-platforms' 'python-requests' 'python-tabulate' 'python-xmltodict' 'python-wcmatch' 'python-wcwidth' 'python-docutils' 'python-sphinx')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('73210f852306ccd2028e94bb0e5bb927b2ace9a8bcf7f59a0244d7bdd4e87af37b13684e7f2896adaed73e5bf4a3a837cd414805135242b1ec4787de3542bca0')
