@@ -2,7 +2,7 @@
 
 _pkgname="fluxcast"
 pkgname="$_pkgname-git"
-pkgver=0.1.0.beta.r18.g7a5d836
+pkgver=0.1.0.beta.r20.g92f4f6f
 pkgrel=1
 pkgdesc="Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast"
 arch=('any')
@@ -53,13 +53,6 @@ package() {
   install -Dm644 "$_pkgsrc/README.md" -t "$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 "$_pkgsrc/documentation/DOCUMENTATION.md" -t "$pkgdir/usr/share/doc/$pkgname/documentation/"
 
-  install -Dm644 "$_pkgsrc"/src/*.py -t "$pkgdir/opt/$_pkgname/"
-  install -Dm644 "$_pkgsrc/src/assets/flcast_logo_512x512.png" -t "$pkgdir/opt/$_pkgname/assets/"
-
-  install -Dm644 "$_pkgsrc/meta/fluxcast.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 "$_pkgsrc/meta/dev.fluxcast.wpa-supplicant.conf" -t "$pkgdir/usr/share/dbus-1/system.d/"
-  install -Dm644 "$_pkgsrc/src/assets/flcast_logo_512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/fluxcast.png"
-
-  install -Dm755 "../fluxcast.sh" "$pkgdir/usr/bin/fluxcast"
+  env SRCDIR="$_pkgsrc" DESTDIR="$pkgdir" "$_pkgsrc/meta/install.sh"
 }
 

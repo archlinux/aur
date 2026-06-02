@@ -1,6 +1,6 @@
 pkgbase = fluxcast-git
 	pkgdesc = Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast
-	pkgver = 0.1.0.beta.r18.g7a5d836
+	pkgver = 0.1.0.beta.r20.g92f4f6f
 	pkgrel = 1
 	url = https://github.com/IlyaP358/fluxcast
 	install = fluxcast.install
