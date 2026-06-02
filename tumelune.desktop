@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=tumelune
+Comment=twitter and activitypub post browser and search engine
+Exec=/usr/bin/tumelune
+Icon=/usr/share/icons/tumelune.png
+Terminal=true
