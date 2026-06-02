@@ -2,11 +2,11 @@
 # Contributor: Michał Wojdyła <micwoj9292@gmail.com>
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 
-_author=JJNAPIORK
+_author=ETHER
 _dist=Catalyst-Plugin-Authentication
 pkgname=perl-${_dist@L}
-pkgver=0.10024
-pkgrel=3
+pkgver=0.10026
+pkgrel=1
 pkgdesc='Infrastructure plugin for the Catalyst authentication framework.'
 arch=('any')
 url=https://metacpan.org/dist/$_dist
@@ -28,7 +28,7 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('cb88a1a03115ce050016fd2c64b87ae149c908b3662d70f53670b28b562fb818')
+sha256sums=('fed60a17b3ad3e7a5a65284a1444ecc33d9aacb94f7cd740a166fc9a236b625d')
 
 build()
 {
