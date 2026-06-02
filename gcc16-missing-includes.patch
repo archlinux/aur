@@ -1,0 +1,32 @@
+diff --git a/src/util/BitmapHdrHalf.cpp b/src/util/BitmapHdrHalf.cpp
+index 8b6a9da..6d363d5 100644
+--- a/src/util/BitmapHdrHalf.cpp
++++ b/src/util/BitmapHdrHalf.cpp
+@@ -1,4 +1,5 @@
+ #include <cmath>
++#include <unistd.h>
+ #include <ImfStdIO.h>
+ #include <ImfRgbaFile.h>
+ #include <lcms2.h>
+diff --git a/src/wayland/WaylandKeyboard.cpp b/src/wayland/WaylandKeyboard.cpp
+index 16184c5..04f0a8d 100644
+--- a/src/wayland/WaylandKeyboard.cpp
++++ b/src/wayland/WaylandKeyboard.cpp
+@@ -1,4 +1,5 @@
+ #include <sys/mman.h>
++#include <unistd.h>
+ #include <xkbcommon/xkbcommon-compose.h>
+ 
+ #include "WaylandKeyboard.hpp"
+diff --git a/src/wayland/WaylandWindow.hpp b/src/wayland/WaylandWindow.hpp
+index dccff79..475c782 100644
+--- a/src/wayland/WaylandWindow.hpp
++++ b/src/wayland/WaylandWindow.hpp
+@@ -2,6 +2,7 @@
+ 
+ #include <atomic>
+ #include <memory>
++#include <mutex>
+ #include <string>
+ #include <vector>
+ #include <vulkan/vulkan.h>
