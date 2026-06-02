@@ -2,12 +2,12 @@
 
 pkgname=coderabbit
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='AI-powered code review CLI tool'
 arch=('x86_64' 'aarch64')
 url='https://www.coderabbit.ai/cli'
 license=('custom:unfree')
-depends=('libsecret')
+depends=('git' 'libsecret')
 options=('!strip') # Prevent stripping JS from prepackaged Bun executable
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://cli.coderabbit.ai/releases/${pkgver}/coderabbit-linux-x64.zip")

@@ -1,11 +1,12 @@
 pkgbase = coderabbit
 	pkgdesc = AI-powered code review CLI tool
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.coderabbit.ai/cli
 	arch = x86_64
 	arch = aarch64
 	license = custom:unfree
+	depends = git
 	depends = libsecret
 	options = !strip
 	source_x86_64 = coderabbit-0.5.2-x86_64.zip::https://cli.coderabbit.ai/releases/0.5.2/coderabbit-linux-x64.zip
