@@ -1,6 +1,6 @@
 # Maintainer: Ondrej Polak <ondrej.polak@cloudylake.io>
 pkgname=nook-beta-bin
-pkgver=0.1.32
+pkgver=0.1.33
 pkgrel=1
 pkgdesc="Nook beta desktop app"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('nook')
 conflicts=('nook' 'nook-bin')
 
 package() {
-    bsdtar -xf "nook-beta-0.1.32-linux.deb" -C "${srcdir}"
+    bsdtar -xf "nook-beta-0.1.33-linux.deb" -C "${srcdir}"
 
     local data_archive
     data_archive="$(find "${srcdir}" -maxdepth 1 -type f -name 'data.tar*' | head -n 1)"
@@ -31,6 +31,6 @@ package() {
 
 options=(!strip)
 
-source_x86_64=("nook-beta-0.1.32-linux.deb::https://nook.cloudylake.io/download/beta/nook-beta-0.1.32-linux.deb")
+source_x86_64=("nook-beta-0.1.33-linux.deb::https://nook.cloudylake.io/download/beta/nook-beta-0.1.33-linux.deb")
 
-sha256sums_x86_64=("60cf24f1b20e39cd639d13edbe6c00adfc9bd572cd815e1b54f637386e6f998f")
+sha256sums_x86_64=("75b7d33f8c7d2dc1186553870ee0dafdb2703a8199bf94aadc78e9f3c3ac67ce")
