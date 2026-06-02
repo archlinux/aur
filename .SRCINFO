@@ -1,0 +1,24 @@
+pkgbase = documind
+	pkgdesc = Gemini-based OCR and Kokoro-based TTS desktop application
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Parth2684/documind-native
+	arch = x86_64
+	license = MIT
+	depends = espeak-ng
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = libsoup3
+	depends = cairo
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = pango
+	options = !strip
+	options = !emptydirs
+	options = !debug
+	source_x86_64 = documind-0.1.0.tar.gz::https://github.com/Parth2684/documind-native/releases/download/v0.1.0/documind-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 271f1d4bebe9808a8fc1e754681f2794265865367bb58dac7f2a4d2c4a871dd3
+
+pkgname = documind
