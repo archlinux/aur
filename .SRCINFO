@@ -1,6 +1,6 @@
 pkgbase = an-anime-game-launcher-bin
 	pkgdesc = A Launcher for a specific anime game with auto-patching, discord rpc and time tracking
-	pkgver = 3.19.5
+	pkgver = 3.19.6
 	pkgrel = 1
 	url = https://github.com/an-anime-team/an-anime-game-launcher
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = an-anime-game-launcher-bin
 	optdepends = gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance
 	provides = an-anime-game-launcher
 	conflicts = an-anime-game-launcher
-	source = an-anime-game-launcher_3.19.5::https://github.com/an-anime-team/an-anime-game-launcher/releases/download/3.19.5/anime-game-launcher
+	source = an-anime-game-launcher_3.19.6::https://github.com/an-anime-team/an-anime-game-launcher/releases/download/3.19.6/anime-game-launcher
 	source = icon.png
 	source = an-anime-game-launcher.desktop
-	md5sums = 43e21786097dc32f2688258d7d4b3db5
+	md5sums = 1a569824c784c2d52d8f3ff4e51f7809
 	md5sums = c1a5499b80a55d3d238ef5c5d2c93c99
 	md5sums = f0cfe73897e8f49e92e0dfc41326fb0b
 
