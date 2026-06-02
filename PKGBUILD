@@ -1,8 +1,8 @@
 # Maintainer: MicLeh <micleh at proton dot me>
 pkgname=cornelsen-offline-lernen-bin
 pkgver=37.10.2
-# App version 2026.6.1 from 2026-03-26
-pkgrel=4
+# App version 2026.8.1 from 2026-05-07
+pkgrel=5
 pkgdesc="Cornelsen Offline Lernen Electron App"
 arch=('x86_64')
 url="https://www.cornelsen.de"
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.zip::https://ebook.cornelsen.de/uma20/public/v2/um
         "icon16.png"
         "icon32.png"
         "icon96.png")
-b2sums=('6a6f85ea66ce44f4cdf9c6aa80736be9ebe24851f43460581dd1fb5edc97372ce3d65796400b34d8b74a43d3d8d587036360fa394f3fb379eefa6190e7c41326'
+b2sums=('f51a576f6e23d8db50f70efab1df91fb0cf4d37d211249b3435b0fa61b7d269d1b958a831d891927b305a6077233bc7a5a5c412b4d76ec4bcee8b6d4cee989a6'
         '2f1c802ebb340472a192316bdd9a7834dcb9e205e6a5fb186684c6142efc1033ff76c7238e9753b0bfa3f2daccebce6c709332b38b4a84440ffb42f316373531'
         '8157b061d35da630252a8c402a98fb978fcad59fcfa813eb8b67dfeaae7e467051d659201e55b5d1811ae15eca49e47189a5a9840277f09876cf1d7021cfc1da'
         '8dd68d9cd90347b954da9280d2133bc45706eec1e74261bdf19f53b61150ee5168db20a0f217643230c4dc66fb840f9ef61fce5f6aff5853b1bebae4bc9f4c65'
