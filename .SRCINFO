@@ -9,6 +9,7 @@ pkgbase = rovr-bin
 	makedepends = unzip
 	depends = glibc
 	depends = libgcc
+	depends = libstdc++
 	depends = bash
 	depends = zlib
 	provides = rovr

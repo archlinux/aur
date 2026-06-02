@@ -23,7 +23,7 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 
 makedepends=('unzip')
-depends=('glibc' 'libgcc' 'bash' 'zlib')
+depends=('glibc' 'libgcc' 'libstdc++' 'bash' 'zlib')
 
 options=(!strip)
 
