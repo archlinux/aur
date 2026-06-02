@@ -1,7 +1,7 @@
 # Maintainer: Ash Price <eisleggje@gmail.com>
 
 pkgname=fcitx5-eurolatin-sil
-_pkgname=fcitx5-ipa-eurolatin-git
+_pkgname=fcitx5-sil-eurolatin-git
 pkgver=r25.fa79da7
 pkgrel=1
 pkgdesc="An fcitx5 table layout replicating the Eurolatin SIL keyman layout (preliminary/incomplete release)"
