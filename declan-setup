@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_url="${DECLAN_SETUP_REPO_URL:-https://github.com/dclnc/declan-dotfiles.git}"
+target_dir="${DECLAN_SETUP_DIR:-$HOME/.local/share/declan-dotfiles}"
+bootstrap_args=()
+
+usage() {
+  cat <<'EOF'
+Usage: declan-setup [wrapper options] [bootstrap options]
+
+Wrapper options:
+  --repo-url URL   Override the dotfiles Git repository.
+  --dir PATH       Override the local checkout path.
+  -h, --help       Show this help.
+
+Common bootstrap options:
+  --yes            Pass --noconfirm to package installs.
+  --no-packages    Restore dotfiles only; skip pacman/yay installs.
+  --no-theme       Skip Omarchy theme selection.
+EOF
+}
+
+log() {
+  printf 'declan-setup: %s\n' "$*"
+}
+
+while (($#)); do
+  case "$1" in
+    --repo-url)
+      [[ $# -ge 2 ]] || {
+        printf '--repo-url requires a value\n' >&2
+        exit 2
+      }
+      repo_url=$2
+      shift 2
+      ;;
+    --dir)
+      [[ $# -ge 2 ]] || {
+        printf '--dir requires a value\n' >&2
+        exit 2
+      }
+      target_dir=$2
+      shift 2
+      ;;
+    -h | --help)
+      usage
+      exit 0
+      ;;
+    *)
+      bootstrap_args+=("$1")
+      shift
+      ;;
+  esac
+done
+
+command -v git >/dev/null || {
+  printf 'declan-setup requires git\n' >&2
+  exit 1
+}
+
+if [[ -d "$target_dir/.git" ]]; then
+  log "updating $target_dir"
+  git -C "$target_dir" pull --ff-only
+elif [[ -e "$target_dir" ]]; then
+  printf 'Target exists but is not a git checkout: %s\n' "$target_dir" >&2
+  exit 1
+else
+  log "cloning $repo_url to $target_dir"
+  mkdir -p -- "$(dirname -- "$target_dir")"
+  git clone --depth 1 "$repo_url" "$target_dir"
+fi
+
+exec "$target_dir/bootstrap.sh" "${bootstrap_args[@]}"
