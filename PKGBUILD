@@ -8,7 +8,7 @@ url="https://github.com/pidid64-alt/iron-tool"
 license=('MIT')
 depends=('bash')
 source=("$pkgname-$pkgver.sh::$url/raw/main/iron-tool.sh")
-b2sums=('b367492d5a89f4911733300595a5fd471a72933faa74d0fbc1fb171d3d7aa23ce0596793c6569046985fa49d7adaa0e3f229108bec56b8b9da3a59e2e284da05')
+b2sums=('0363c5f68c7712a55ebc0fb52788a889545c7ea4cc065f3cdb21c17e30b507b3da5ed09fa5771efe04548d9f78a26f19f3497b2a8b12103c6599b9fdd10234f1')
 
 package() {
     install -Dm755 "$pkgname-$pkgver.sh" "$pkgdir/usr/bin/iron-tool"
