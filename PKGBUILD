@@ -1,5 +1,5 @@
 pkgname=wallpygui
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='GTK4 wallpaper manager for Wayland desktops'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   'python-gobject'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7144e7c9b3f81fb816b5fc3ad95cfcabe289f0b33d273dfa4f97950286703384')
+sha256sums=('55b50ab38287430c1a3a209244a12adf8fe3599912d4a59b0076960cd69e3997')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
