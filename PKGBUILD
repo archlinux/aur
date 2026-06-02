@@ -2,7 +2,7 @@
 
 pkgname=monsoon-git
 _pkgname=monsoon
-pkgver=0.1.0.r44.gfe34af5
+pkgver=r44.fe34af5
 pkgrel=1
 pkgdesc="bittorrent client (daemon + cli + tui) built on libtorrent-rasterbar"
 arch=('x86_64' 'aarch64')
