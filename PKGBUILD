@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 
-_upstreamver='1.3.0'
+_upstreamver='1.3.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='spyder-terminal'
@@ -18,7 +18,7 @@ depends=('python' 'spyder' 'python-terminado' 'python-qstylizer' 'python-qtpy' '
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('70de0f0c40ae66f6330f517f5ff770811459f11d048e1b9719801bc86fad20eb')
+sha256sums=('04f7d93c1b7c4c1f6a328cd8bb63ff7af2fac4d973b513c0f8ca3c3553411127')
 
 
 build() {
