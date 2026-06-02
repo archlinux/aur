@@ -1,10 +1,10 @@
 # Maintainer: Alexander Tarasov <a.tevg@ya.ru>
 pkgsubn=pwsp
 pkgname=pwsp
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Lets you play audio files through your microphone"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/arabianq/pipewire-soundpad"
 license=('MIT')
 makedepends=(clang rust cargo cmake pipewire alsa-lib)
@@ -40,8 +40,8 @@ package() {
   install -Dm755 "target/release/pwsp-daemon" "${pkgdir}/usr/bin/pwsp-daemon"
   install -Dm755 "target/release/pwsp-gui" "${pkgdir}/usr/bin/pwsp-gui"
 
-  install -Dm644 "assets/pwsp-gui.desktop" "${pkgdir}/usr/share/applications/pwsp-gui.desktop"
-  install -Dm644 "assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pwsp.png"
+  install -Dm644 "pwsp-gui/assets/pwsp-gui.desktop" "${pkgdir}/usr/share/applications/pwsp-gui.desktop"
+  install -Dm644 "pwsp-gui/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pwsp.png"
 
-  install -Dm644 "assets/pwsp-daemon.service" "${pkgdir}/usr/lib/systemd/user/pwsp-daemon.service"
+  install -Dm644 "pwsp-gui/assets/pwsp-daemon.service" "${pkgdir}/usr/lib/systemd/user/pwsp-daemon.service"
 }
