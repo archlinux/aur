@@ -1,6 +1,6 @@
 pkgbase = mutui
 	pkgdesc = Lightweight terminal-based music player for YouTube and local libraries
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/notliad/mutui
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = mutui
 	makedepends = cargo
 	depends = mpv
 	depends = yt-dlp
-	source = mutui-0.4.0.tar.gz::https://github.com/notliad/mutui/archive/v0.4.0.tar.gz
-	sha256sums = 2184029fdbee7dba57d45edd8009e9557270d78bcf72835f8ff801e3a22b9a42
+	options = !lto
+	source = mutui-0.4.1.tar.gz::https://github.com/notliad/mutui/archive/v0.4.1.tar.gz
+	sha256sums = 1652835ebc28db6108a637ef026d4815db2939c819e41b47e38cf9e9b9c26877
 
 pkgname = mutui
