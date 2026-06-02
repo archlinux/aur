@@ -1,147 +1,52 @@
-# Gaia Sky 3.7.2
+# Gaia Sky 3.7.3
 
-This release brings some exciting new features and very many bug fixes.
+Gaia Sky 3.7.3 focuses on quality-of-life improvements, like the new 'load dataset' workflow, and includes many important bugfixes.
 
 ## Features
-
-- New billboard shading types, for particle groups. We have added three shading types to particle groups:
-	- `Plain` -- plain emissive color shading.
-	- `Billboard lighting` -- billboards are uniformly lit depending on light and view directions.
-	- `Spherical lighting` -- billboards are lit using Phong model, computing per-fragment normals with an assumed spherical volume.
-
-- Orbital element groups refactor: We have merged orbital element groups into regular particle groups, consolidating the data model and gaining all the particle group goodies: filtering, indexing, foucsing, texturing, and shading types.
-	- Updated FPR asteroids catalog -- new version of FPR SSOs to use spherical lighting and textured particles.
-	- Add support for particle-based rings in ringed planets. This includes a number of refactorings and improvements.
-	- Saturn rings -- new dataset containing 1.5 million particles of dust and rock in the rings of Saturn. They rotate realistically, as they were generated with physically plausible orbital elements.
-	- Diffuse scattering -- added the diffuse scattering property to particle groups, used in conjunction to global ambient light setting.
-	- Enable asteroids and other particle groups to use a different epoch per particle.
-	- Add experimental custom loader for orbital elements groups to load the data directly from VOTable.
-	- Add script to convert state vectors to Keplerian elements in VOTable, and then another to convert a VOTable to the Gaia Sky JSON format for asteroids/sso.
-
-
-- Star glow effect rework:
-	- Add time-dependent polar mask to star glow effect. Update default star/glow texture indices and glow factor.
-	- Separate star from glow texture in settings. Add image next to select boxes to provide visual feedback about the selected textures.
-
-- Better handling of name conflicts in catalogs and datasets:
-	- Add name conflicts window to inform the user of index conflicts in the current session. Fixes [#904](https://codeberg.org/gaiasky/gaiasky/issues/904).
-	- Dataset updates (base data, NBG, FPR SSO, nebulae) to try to mitigate name conflicts.
-
-- Internationalization and translations:
-	- Simplified Chinese translation, by BCY-SuiCi. Part of [#885](https://codeberg.org/gaiasky/gaiasky/issues/885).
-	- Italian translation, by Roberto Zacco.
-	- Japanese translation (WIP), by Yauchi Hiromasa.
-	- Update and complete translation files: Slovenian, Turkish, Russian.
-
-- User interface updates:
-	- Move from static font files to `gdx-freetype` library. This enables us to support CJK languages and more. Part of [#885](https://codeberg.org/gaiasky/gaiasky/issues/885).
-	- Remove monospace fonts from Gaia Sky UI and skin. They are used very sporadically and are not really needed. Part of [#885](https://codeberg.org/gaiasky/gaiasky/issues/885).
-	- Maintain aspect ratio of background image in welcome and loading GUIs by letterboxing.
-	- Add 'copy to clipboard' button to log window. Add text and icons to all buttons in the window.
-	- Read contributors from CONTRIBUTORS.md file instead of hardcoding the data in About Window.
-	- Add mastodon and bsky icons and links in about window. Add tooltips with funding agencies' names.
-	- Update splash image. Add dark background to central table in loading GUI.
-	- Add 'overwrite' check box to file export dialogs.
-	- Use degrees for min/max particle size in dataset visual settings dialog.
-	- Improve reset sliders (sliders that have a button to reset their value).
-	- Sliders are now able to connect to an event in order to auto-update their state and publish updates.
-	- Move planetarium and cubemap settings to sliders from free-text input fields.
-	- Remember last camera file name in keyframes window to avoid having to enter it every time.
-	- Show notification on log export.
-	- Use reset sliders in settings window, and camera/visual settings panes.
-	- Use logarithmic slider for stereo screen distance setting.
-	- Remove 'settings' from tabs in preferences dialog.
-	- Add checkbox to pull current cloud data for supported objects. This is the activation control for the pre-existing `url` parameter in cloud components.
-	- Add arrows to base character set.
-
-- Stereoscopic and anaglyph 3D:
-	- Add custom anaglyph mode that uses user-defined colors. Implement custom anaglyph in backend filter. Part of [#874](https://codeberg.org/gaiasky/gaiasky/issues/874).
-	- Add UI controls to settings dialog to select left and right colors in custom anaglyph mode. Part of [#874](https://codeberg.org/gaiasky/gaiasky/issues/874).
-	- Add stereo comfort multiplier to stereo GUI.
-
-- Camcorder and OptFlowCam export:
-	- Add new setting to automatically hide the user interface on camera file playback.
-	- Replace `pipenv` with `uv` for dependency management for the OptFlowCam script. It is much faster. Part of [#894](https://codeberg.org/gaiasky/gaiasky/issues/894).
-	- Update OptFlowCam readme with new method (not yet implemented). Part of [#894](https://codeberg.org/gaiasky/gaiasky/issues/894).
-
-- Post-processing updates:
-	- Remove threshold in bloom effect.
-	- Update maximum glow factor.
-
-- Dataset management:
-	- Add mechanism to mark datasets as obsolete or outdated whenever a newer, better dataset comes around.
-	- Add `replaces` and `replacedBy` properties to dataset descriptors, so that the user can be informed about newer datasets that replace old, outdated ones.
-	- Cross-check `replaces` and `replacedBy` fields in local and server datasets.
-
-- Other minor things:
-	- Add (optional) color variability to variable stars. This is part of the preparations for Gaia DR4 datasets.
-	- Remove point shaders and point cloud renderer setting. Defaults to "Quality billboards".
+- Rendering
+	- Add a new line shading method that uses screen-space derivatives instead of a power function for higher quality line rendering.
+	- Add limb fade to the cloud layer based on screen-space pixel counts. This prevents clouds from appearing overly flat at the edges of planets.
+	- Add PBR support in wavefront `.mtl` material files via common extensions.
+	- Add intrinsic opacity to materials, and use it in the default model sorter for proper transparency ordering.
+- File picker:
+	- Add a proper history stack to the file picker.
+	- Refactor the file picker to extract it as a reusable component outside of the default generic dialog.
+- Datasets:
+	- Redesign the "Load dataset" action. The new dialog has two tabs: in the first, `Load installed dataset`, the user can hot-load any installed dataset. In the second, `Load file (.vot, .csv, etc.)`, the user can select any supported file and load it as a catalog.
+	- Improve the layout of the datasets component and add a shortcut to load datasets.
+	- Add dataset type icons to the datasets component.
+	- Improve the handling of dataset cards.
+	- Mission datasets can now be 'selected', which sets the time to the start of the mission and the spacecraft as the focus. Part of [#908](https://codeberg.org/gaiasky/gaiasky/issues/908).
+	- Add support for server dataset images in the dataset manager. Part of [#908](https://codeberg.org/gaiasky/gaiasky/issues/908).
+- Japanese translation now fully complete: proofread and edited by Hiromasa Yauchi.
+- Add an updater helper to dispatch update events.
+- Fix double index initialization issue in star and particle groups loaded on the fly. Add update callbacks to star and particle loaders.
+- Add a Wavefront extension to handle packed PBR textures (occlusion, roughness, metallic) as `map_PBR`.
+- Add support for camelCase names in dataset description properties (e.g., `nObjects`, `numObjects`, `sizeBytes`, `releaseNotes`).
 
 ## Bug Fixes
-
-There are a huge quantity of bug fixes in this release:
-
-- Prevent applying accent color to color pickers and other pure-color widgets.
-- Star glow texture not updated correctly. Saving preferences prompted a full reload of all post processing effects.
-- Improve index conflict priority handling, and rework logging to make it more informative. Part of [#904](https://codeberg.org/gaiasky/gaiasky/issues/904).
-- Use 'umbra' and 'penumbra' in Catalan translation instead of the common names 'ombra' and 'penombra'.
-- Prevent smoothed distance to go to NaN in natural camera. This breaks the speed scaling computation. Fixes [#902](https://codeberg.org/gaiasky/gaiasky/issues/902).
-- Adapt look-up texture path names to internal format using backslash instead of forward slash. Fixes crash in Windows. Part of [#902](https://codeberg.org/gaiasky/gaiasky/issues/902).
-- Regression in 3.7.1 where Error Dialog crashes at startup due to incorrect sprite shader and skin initialization.
-- Check children list before getting child by name, prevents NPE.
-- Make sure `set.indices` is initialized when rendering labels. This is not always the case in datasets loaded on the fly, leading to a crash.
-- Correct actual penumbra line color (green -> yellow) in translation files.
-- Add on-demand ray-marching effects to all targets (screen, screenshots, frame output). This fixes screenshots and frame output using advanced mode not showing dynamically loaded ray-marching effects.
-- Correct off-by-one error in `ParticleSetUpdaterTask` SORT2 stage.
-- Use component type localized names in error messages in search dialog. Fixes [#901](https://codeberg.org/gaiasky/gaiasky/issues/901).
-- Detect the supported maximum vertex shader storage blocks in the method that checks if compute shaders are supported. If the number is zero, we mark compute shaders as not supported and fall back to the CPU method.
-- Disable go-to button for unindexed particle groups.
-- Goto operation uses interactive camera for particle sets (provisional hack).
-- Fix regression where the light glow effect was inconsistent and disappeared sometimes for some stars.
-- Wrong format in `notif.catalog.loaded` key in German translation file.
-- Hardcoding component type to all invisible objects results in unpredictable behaviour. Only set the component type to ray-marching objects (i.e. have a ray-marching shader attached).
-- Solid angle determination for (some) particle sets.
-- Remove `pack()` from top info interface notify method. Part of [#898](https://codeberg.org/gaiasky/gaiasky/issues/898).
-- Updating localized names does nothing if the new language does not have a name for the object. In this case, we need to remove the current localized name (if any, and if it is different than the default, English). Otherwise, the names for certain objects remain in the previous language rather than the default.
-- Remove raymarching component from invisible archetypes that do not have ray-marching enabled. This routes them to the invisible extractor correctly now.
-- Use HTTPS to check internet connection wiht fedoraproject.org.
-- Dataset manager window: expand filter input field, remove top padding in datasets list.
-- Typos in objects translation files: Ophiuc**H**us and Antar**C**tica.
-- Guard `keyStringToKeyCode()` execution against null strings. Fixes [#896](https://codeberg.org/gaiasky/gaiasky/issues/896).
-- Light glow texture aspect ratio in stereo half-width modes (cross-eye, parallel view).
-- Resolve camera path discontinuities in CatmullRom interpolation in OptFlowCam. Fixes [#895](https://codeberg.org/gaiasky/gaiasky/issues/895).
-- Unique file name method is missing the period '.' between file name and extension.
-- Log window contents not updated after loading is finished. To mend this, we have moved the log history from notifications interface to console logger, and made some further changes.
-- Delay `GatewayServer` start (scripting) until the end of the loading pipeline, when the scene is already initialized and the Gaia Sky state is actually ready. Fixes [#893](https://codeberg.org/gaiasky/gaiasky/issues/893), [#891](https://codeberg.org/gaiasky/gaiasky/issues/891).
-- Set line width to 1 for particle sets rendered as wireframe models.
-- State vectors to elements converter overrides past epochs, so all output epochs are the same.
-- Clicking buttons on gamepad UI does not work.
-- Frame buffer size cuts bottom of VR UI.
-- Remove unused I18n `key=value` pairs from all translation files.
-- Capture `InvalidPathException`s thrown by windows paths. Mark current location red when the path is malformed, or the location does not exist. Fixes [#887](https://codeberg.org/gaiasky/gaiasky/issues/887).
-- Getting `git` version/revision to work everywhere.
-- Reverse state of object visibility in camera info pane to match icon state.
-- Reverse open/closed eye icon in eye-toggle button. Fixes wrong state in datasets pane.
+- Shader positioning bugs in model-based particle sets (e.g. star clusters).
+- Fix expanding/collapsing dataset widgets to resize the scroll pane and component pane correctly.
+- Add a scroll pane to the datasets component, which can grow beyond screen bounds.
+- Consolidate the parser used in the color picker to avoid inconsistent accepted formats that led to a crash. Fixes [#910](https://codeberg.org/gaiasky/gaiasky/issues/910).
+- Clarify information about the shader cache in translation files.
+- Enable separate activation of gravitational waves and relativistic aberration effects.
+- Ensure the bookmarks manager has an up-to-date bookmark list before reloading the component view.
+- Fix crash caused by asterisks in Windows paths when the shader cache is enabled. Fixes [#907](https://codeberg.org/gaiasky/gaiasky/issues/907).
+- Fix uninitialized star textures in the main post-processor reload caused by a settings bookmark.
+- Include activation check boxes in the fade in/out validators for datasets.
 
 ## Performance Improvements
-
-- Remove light glow pass where a dedicated occlusion texture is rendered separately using opaque models and billboard stars to an off-screen frame buffer, to be used later in the light glow post-processing effect. Now, we directly use the default render buffer and a little bit of shader magic. Tests indicate this is enough, and works with asteroids/particles and all other opaque bodies. Performance is better, since we skip an additional render pass.
+- Improved performance when loading object name translations (I18n and I18NBundle).
 
 ## Code Refactoring
-
-- Abstract `GenericDialog` and the new `GenericScreen` as `IScreen` to unify gamepad and keyboard listeners. New `GenericScreen` is a variant of `GenericDialog` that takes up the full viewport instead of rendering to a dialog window.
-- Extract CPU computation of Keplerian elements from orbit component into utility class. This allows us to use it for the new `ParticleKepler` type.
-- Simplify naming scheme of fonts to adapt to `gdx-freetype`. Update skin JSON file. Remove skin JSON generation from texture packer utility.
+- Extensively refactor settings handling. Remove all static references to the settings and settings manager objects, keeping a single regular reference in the main `GaiaSky` class. Settings manager objects are now created on the fly whenever needed, with negligible creation cost. Given the all-encompassing nature of this refactor, new bugs may have been introduced, so please report if found.
+- Extensively refactor star/particle groups and internal initialization state.
+- Extensively refactor dataset metadata and related utilities. Add `provides` attribute to datasets.
 
 ## Build System
-
-- Upgrade to Gradle 9.4.1.
-- Upgrade to JDK 25.0.2+10 for release packages and AppImage. Update metainfo file.
-- Fix AUR package Java dependency to >=25.
-- AUR package: Use HTTPS for the `PKGBUILD` script. Remove MD5 checksum. Remove `.install` file.
+- Complete migration of Gradle build scripts to Kotlin DSL, including the settings script.
+- Update to Libgdx 1.14.1.
 
 ## Documentation
-- Use `close()` instead of `shutdown()` at the end of scripts in the javadocs.
-- Add Simplified Chinise, Japanese, and Italian translators to contributors list.
-- Add several class-level javadoc blocks.
-- Add section on object name translation in `CONTRIBUTING.md` file.
+- Add class-level Javadoc comments to `gaiasky.gui.components` classes.
