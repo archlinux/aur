@@ -1,12 +1,12 @@
 pkgbase = wordgen
 	pkgdesc = A CLI random word generator.
-	pkgver = 0.5.1
-	pkgrel = 2
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = https://github.com/wordgen/cli
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = go
-	source = https://github.com/wordgen/cli/archive/v0.5.1.tar.gz
-	sha256sums = 643164827deb1284fea53acd2bd7a79538b5ea6799a3d11be2127065add0d94b
+	source = https://github.com/wordgen/cli/archive/v0.5.3.tar.gz
+	sha256sums = e741e272f89a70e0ea514a920e598a831f58c73e5f97abfc4a3429db3e8c5a87
 
 pkgname = wordgen
