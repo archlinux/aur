@@ -1,16 +1,18 @@
 pkgbase = python-pypika
 	pkgdesc = A SQL query builder API for Python
 	pkgver = 0.51.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kayak/pypika
 	arch = any
 	license = Apache-2.0
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = pypika-0.51.1.tar.gz::https://github.com/kayak/pypika/archive/v0.51.1.tar.gz
-	b2sums = d523c08ee29441e30b81fee222e4e60fe816a6b614f34a687b1c089730be6c94f8a245126cf729ae31f2a1f23cf82cfc61ac4e12d14e55fa5bec436028e1f234
+	depends = python-typing_extensions
+	source = pypika::git+https://github.com/kayak/pypika.git#tag=v0.51.1
+	b2sums = e86afafb2bd97bd9803f7d105e53260b5bf2b3c2595ea9aee0852aa2bc74d281a6f95d6cd632722bd9cecde9e84d9e3506dc3a0c91f93c11a0b4969f5b6b6f26
 
 pkgname = python-pypika

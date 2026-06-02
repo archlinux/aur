@@ -1,4 +1,0 @@
-[python-pypika]
-source = "git"
-git = "https://github.com/kayak/pypika.git"
-prefix = "v"
