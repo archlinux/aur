@@ -1,0 +1,18 @@
+pkgbase = python-pyside6-fluent-widgets
+	pkgdesc = Fluent Design widgets library for PySide6
+	pkgver = 1.11.2
+	pkgrel = 1
+	url = https://github.com/zhiyiYo/PyQt-Fluent-Widgets
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = pyside6
+	depends = python-darkdetect
+	depends = python-pysidesix-frameless-window>=0.8.0
+	source = https://files.pythonhosted.org/packages/f1/22/01a72ab00873fac2575e8045cd4dfcb003afc0f0764982c706817be5629a/pyside6_fluent_widgets-1.11.2.tar.gz
+	sha256sums = cf49ff76b9b2ad1dc24f071a1b2a3f5f0a67d7adf655915071ddfb7342caf175
+
+pkgname = python-pyside6-fluent-widgets
