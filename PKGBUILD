@@ -27,10 +27,7 @@ pkgver() {
     cd "${pkgname}"
     # cargo version + commit count since tag + short hash
     # produces something like 0.1.0.r42.gabc1234
-    printf "%s.r%s.g%s" \
-        "$(awk -F\" '/^version/ {print $2; exit}' Cargo.toml)" \
-        "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
