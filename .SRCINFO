@@ -1,5 +1,5 @@
 pkgbase = opencloud-bin
-	pkgdesc = Open source platform for file management, sharing & collaboration
+	pkgdesc = Open source platform for file management, sharing & collaboration - upstream built binary
 	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://opencloud.eu
