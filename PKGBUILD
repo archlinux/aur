@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20260210.0f17d789f
+pkgver=20260423.7424d5f21
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=(x86_64 armv7h aarch64)
