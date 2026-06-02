@@ -17,11 +17,9 @@ sha256sums=('be65f7264a0bb5eb3b1324755ddec55c712668a2fd2bed5abc5121fa0afa7ce6'
             'SKIP')
 
 package() {
-    local npmrc="${srcdir}/npmrc"
-    printf 'allow-scripts[]=sharp\nallow-scripts[]=protobufjs\n' > "$npmrc"
-
     npm install -g \
-        --userconfig "$npmrc" \
+        --allow-scripts sharp \
+        --allow-scripts protobufjs \
         --cache "${srcdir}/npm-cache" \
         --prefix "${pkgdir}/usr" \
         "${srcdir}/${pkgname}-${pkgver}.tgz"
