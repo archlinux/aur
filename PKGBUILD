@@ -2,7 +2,7 @@
 
 pkgname=command-code
 pkgver=0.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc='AI coding agent that continuously learns your coding taste'
 arch=('x86_64')
 url='https://commandcode.ai'
@@ -26,8 +26,6 @@ package() {
         --cache "${srcdir}/npm-cache" \
         --prefix "${pkgdir}/usr" \
         "${srcdir}/${pkgname}-${pkgver}.tgz"
-
-    chown -R root:root "${pkgdir}"
 
     # Remove npm-created symlinks; replace with wrapper scripts that disable auto-updates
     rm -f "${pkgdir}/usr/bin/cmd" \

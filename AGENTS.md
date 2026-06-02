@@ -5,7 +5,7 @@
 AUR package for [Command Code](https://commandcode.ai) — an AI coding agent that continuously learns your coding taste. Distributed via npm as UNLICENSED proprietary software.
 
 - **Package name:** `command-code`
-- **Upstream version:** 0.30.3
+- **Upstream version:** 0.31.0
 - **Maintainer:** Ismet Togay <ismet.togay@gmail.com>
 - **License:** LicenseRef-command-code (proprietary Terms of Service)
 
@@ -25,7 +25,7 @@ command-code/
 | Field | Value | Notes |
 |-------|-------|-------|
 | `pkgname` | `command-code` | No `-bin` suffix — nonfree package guideline |
-| `pkgver` | `0.30.1` | Sync with npm registry |
+| `pkgver` | `0.31.0` | Sync with npm registry |
 | `pkgrel` | `2` | Increment on PKGBUILD changes |
 | `arch` | `x86_64` | sharp has platform-specific prebuilt binaries |
 | `license` | `LicenseRef-command-code` | SPDX custom license reference |
@@ -35,24 +35,24 @@ command-code/
 
 ## Binary Aliases
 
-npm installs 4 symlinks in `/usr/bin/`:
+Package installs 4 wrapper scripts in `/usr/bin/`. Each wrapper intercepts the `update` subcommand and sets `COMMANDCODE_SKIP_UPDATES=1` to disable auto-updates.
 
-| Binary | Target |
-|--------|--------|
-| `cmd` | `../lib/node_modules/command-code/dist/index.mjs` |
-| `cmdc` | `../lib/node_modules/command-code/dist/index.mjs` |
-| `command-code` | `../lib/node_modules/command-code/dist/index.mjs` |
-| `commandcode` | `../lib/node_modules/command-code/dist/index.mjs` |
+| Binary | Type | Purpose |
+|--------|------|---------|
+| `cmd` | wrapper script | Short alias |
+| `cmdc` | wrapper script | Short alias |
+| `command-code` | wrapper script | Full name |
+| `commandcode` | wrapper script | Full name (no dash) |
 
-All point to `dist/index.mjs` (ES module entry point).
+All wrappers `exec` `/usr/lib/node_modules/command-code/dist/index.mjs` (ES module entry point) after applying the env var.
 
 ## Installation Paths
 
 ```
-/usr/bin/cmd                                          → symlink
-/usr/bin/cmdc                                         → symlink
-/usr/bin/command-code                                 → symlink
-/usr/bin/commandcode                                  → symlink
+/usr/bin/cmd                                          → wrapper script
+/usr/bin/cmdc                                         → wrapper script
+/usr/bin/command-code                                 → wrapper script
+/usr/bin/commandcode                                  → wrapper script
 /usr/lib/node_modules/command-code/                   → package root
 /usr/lib/node_modules/command-code/dist/index.mjs     → main entry
 /usr/lib/node_modules/command-code/node_modules/      → dependencies
@@ -65,22 +65,48 @@ All point to `dist/index.mjs` (ES module entry point).
 
 ```bash
 npm install -g \
+    --no-audit \
+    --no-fund \
+    --prefer-offline \
+    --allow-scripts sharp \
+    --allow-scripts protobufjs \
     --cache "${srcdir}/npm-cache" \
     --prefix "${pkgdir}/usr" \
     "${srcdir}/${pkgname}-${pkgver}.tgz"
 ```
 
+- `--no-audit`: Skip security audit (~0.5s saved)
+- `--no-fund`: Skip funding message display
+- `--prefer-offline`: Use npm cache when available (warm rebuilds drop from ~12s to 3s)
+- `--allow-scripts sharp --allow-scripts protobufjs`: Suppress `npm warn allow-scripts` for the two packages that need install scripts (sharp downloads native binaries, protobufjs generates code)
 - `--cache`: Prevents polluting `$HOME/.npm`
 - `--prefix`: Installs into `${pkgdir}/usr` (creates `bin/`, `lib/node_modules/`)
 - Tarball passed directly — npm handles extraction
 
-### 2. Fix file ownership
+### 2. Replace npm symlinks with wrapper scripts
 
 ```bash
-chown -R root:root "${pkgdir}"
+rm -f "${pkgdir}/usr/bin/cmd" \
+      "${pkgdir}/usr/bin/cmdc" \
+      "${pkgdir}/usr/bin/command-code" \
+      "${pkgdir}/usr/bin/commandcode"
+
+for bin in cmd cmdc command-code commandcode; do
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${bin}" << 'WRAPPER'
+#!/bin/sh
+if [ "$1" = "update" ]; then
+    echo "Updates are managed by your AUR package installer (paru, yay, etc.). Run: paru -Syu"
+    exit 0
+fi
+COMMANDCODE_SKIP_UPDATES=1 exec /usr/lib/node_modules/command-code/dist/index.mjs "$@"
+WRAPPER
+done
 ```
 
-Safety measure. npm may set file ownership to build user instead of root. Bug FS#63396 was fixed in npm 9.8.0, but kept as precaution.
+npm creates 4 symlinks pointing to `dist/index.mjs`. We delete them and install wrapper scripts that:
+- Block the `update` subcommand (intercepted at shell level since `performAutoUpdate()` only checks `isLocalDevelopmentBuild()`)
+- Set `COMMANDCODE_SKIP_UPDATES=1` to skip background auto-update checks
+- `exec` the real binary with all original arguments
 
 ### 3. Clean `_where` references
 
@@ -111,7 +137,7 @@ Installs the upstream Terms of Service as the package license.
 
 | Source | Checksum | Notes |
 |--------|----------|-------|
-| `command-code-0.30.1.tgz` | `cee2ef52c8fe5d191af3576f7bb562fd3d58c5ca291686661c7e62957772f16` | npm registry tarball |
+| `command-code-0.31.0.tgz` | `be65f7264a0bb5eb3b1324755ddec55c712668a2fd2bed5abc5121fa0afa7ce6` | npm registry tarball |
 | `command-code.license` | `SKIP` | Local file, no need to verify |
 
 ## How to Update
@@ -135,7 +161,7 @@ rm -rf src pkg
 makepkg -f
 
 # Install locally
-sudo pacman -U command-code-0.30.1-*.pkg.tar.zst
+sudo pacman -U command-code-0.31.0-*.pkg.tar.zst
 
 # Verify binaries
 cmd --version
@@ -152,12 +178,14 @@ ls /usr/share/licenses/command-code/LICENSE
 | No `-bin` suffix | Nonfree software guideline: `-bin` implies source is available |
 | `LicenseRef-command-code` | SPDX custom license for proprietary software |
 | `options=(!strip)` | JavaScript packages don't benefit from ELF stripping; causes slow builds |
-| No wrapper script | No documented `DISABLE_UPDATES` env var; wrapper would break npm symlinks |
+| Wrapper scripts intercept `update` | `performAutoUpdate()` only checks `isLocalDevelopmentBuild()`, not env vars; must block at shell level |
 | No `.install` file | No post-install messages needed; optdepends were removed |
 | No `prepare()` function | npm `--cache` creates directories automatically |
 | Pinned sha256sums | Reproducibility; `SKIP` only for local license file |
-| `chown -R root:root` | Safety measure for file ownership in fakeroot context |
+| No `chown` step | npm 9.8.0+ (FS#63396 fixed) handles ownership correctly; user has npm 11+ |
 | `noextract` for tarball | npm handles extraction via `--prefix`; prevent makepkg double-extraction |
+| `--allow-scripts sharp --allow-scripts protobufjs` | Suppress npm warnings for the two packages needing install scripts |
+| `--prefer-offline --no-audit --no-fund` | Reduce rebuild time; safe in trusted build context |
 
 ## Relevant Guidelines
 
