@@ -1,8 +1,8 @@
 # Maintainer: normen <normen@users.noreply.github.com>
 pkgname=whatscli-git
 _pkgname=whatscli
-pkgver=0
-pkgrel=1
+pkgver=20260602
+pkgrel=200b0a8
 pkgdesc='A command line interface for WhatsApp, based on go-whatsmeow and tview'
 url='https://github.com/normen/whatscli'
 arch=('i686' 'x86_64' 'armv7h')
