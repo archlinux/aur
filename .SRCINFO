@@ -13,6 +13,6 @@ pkgbase = cloudtolocalllm
 	conflicts = cloudtolocalllm-git
 	conflicts = cloudtolocalllm-bin
 	source = cloudtolocalllm-10.1.201-x86_64.AppImage::https://github.com/CloudToLocalLLM-online/CloudToLocalLLM/releases/download/v10.1.201/cloudtolocalllm-10.1.201-x86_64.AppImage
-	sha256sums = b6eb38f7cba19bd4a42c67ae13ebbe12c6713c06f11ce4ba831361900243432a
+	sha256sums = ae6d6c2633d32b6057a13d6ffee49396528b38e44f7ded98c7ec0d0f1242ab4f
 
 pkgname = cloudtolocalllm
