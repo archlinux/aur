@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=formatusb
-pkgver=26.03.1
+pkgver=26.06
 pkgrel=1
 pkgdesc="USB Device Formatting Utility"
 arch=('x86_64' 'i686')
@@ -13,8 +13,8 @@ depends=(
     'util-linux'
 )
 makedepends=('qt6-tools' 'cmake' 'ninja')
-source=("https://github.com/MX-Linux/formatusb/archive/refs/tags/26.03.1.tar.gz")
-sha256sums=('9ccce5b20e6aa842a4a887dda37d1fe67bb192099090cff8abcf69085c8af9c1')
+source=("https://github.com/MX-Linux/formatusb/archive/refs/tags/26.06.tar.gz")
+sha256sums=('61f079fd43fc6c2e8cfe9c75b72fa0440f289fb8f1b5ad9ff1961acfc492f4dd')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
