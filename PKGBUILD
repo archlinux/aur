@@ -26,8 +26,8 @@ optdepends=('rlwrap: readline support for awesome-client'
             'xcb-util-errors: for pretty-printing of X11 errors'
             'librsvg: for displaying SVG files without scaling artifacts'
 )
-provides=('notification-daemon' 'awesome')
-conflicts=('awesome')
+provides=('notification-daemon' 'awesome' 'awesome-git')
+conflicts=('awesome' 'awesome-git')
 backup=('etc/xdg/awesome/rc.lua')
 source=("${pkgname}::git+https://github.com/miranda/awesome.git#branch=awesome-stellar")
 md5sums=('SKIP')
