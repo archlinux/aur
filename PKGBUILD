@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=arf-bin
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A modern R console"
 arch=('x86_64')
@@ -22,5 +22,5 @@ package() {
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
-sha256sums_x86_64=('b755f104f8258f9442946750c0c2391f262a4c6fe6d6dcdd3d7a2eb1b7b052b0'
+sha256sums_x86_64=('ca5e69e14a556207db33c29fce24139c76ed9880070774ecd5880af7424274ff'
                    'b9ee24794ec15953578fd5d07bb323b47a01f03b6fd206429dbe34b1c638fa0f')
