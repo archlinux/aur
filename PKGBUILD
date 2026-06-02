@@ -2,7 +2,7 @@
 
 pkgname=miasma
 pkgdesc='Trap AI web scrapers in an endless poison pit.'
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 arch=(x86_64)
 license=('GPLv3-only')
@@ -12,12 +12,12 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   miasma.service
   sysusers-file
-  tmpfiles-file
-)
-sha256sums=('c257e453154d50e07abf1b98cf8bcbad2ca1e23bf606b1d0d0e3076469f607e6'
+  tmpfiles-file)
+sha256sums=('a80b21a4fcba442d91ebda94c061236b62ce32407046cce83af4da2d4468a382'
             'b532e6e9e455bd5898a8076d0bf89fd5cc907d382690dd1b57d3a9c5cba4c18a'
             '211d658368c51a2dce6ad5f117d7159fe775516e392b7209df1304154c0a36d9'
             '42a3df35a73eb4c198367a0885ef86ea3b6b9f4dc824d74b70d77f04b5ea245b')
+backup=('usr/lib/systemd/system/miasma.service')
 options=(!lto)
 
 prepare() {
