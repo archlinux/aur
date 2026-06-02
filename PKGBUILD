@@ -5,7 +5,7 @@
 _author=RURBAN
 _dist=Net-Ping
 pkgname=perl-${_dist@L}
-pkgver=2.76
+pkgver=2.77
 pkgrel=1
 pkgdesc='check a remote host for reachability'
 arch=('any')
@@ -24,7 +24,7 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('07b52126a529c3231ae82c4e43961713ecbdccff6813e27d57ddde8865064f9b')
+sha256sums=('280ac87370f553e5fa5dd60e3b5433108b471064a7ee0df784b909a5f2b862c7')
 
 build()
 {

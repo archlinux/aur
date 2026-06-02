@@ -1,6 +1,6 @@
 pkgbase = perl-net-ping
 	pkgdesc = check a remote host for reachability
-	pkgver = 2.76
+	pkgver = 2.77
 	pkgrel = 1
 	url = https://metacpan.org/dist/Net-Ping
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = perl-net-ping
 	depends = perl-test-simple
 	depends = perl-time-hires
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/R/RU/RURBAN/Net-Ping-2.76.tar.gz
-	sha256sums = 07b52126a529c3231ae82c4e43961713ecbdccff6813e27d57ddde8865064f9b
+	source = https://cpan.metacpan.org/authors/id/R/RU/RURBAN/Net-Ping-2.77.tar.gz
+	sha256sums = 280ac87370f553e5fa5dd60e3b5433108b471064a7ee0df784b909a5f2b862c7
 
 pkgname = perl-net-ping
