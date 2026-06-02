@@ -1,0 +1,19 @@
+pkgbase = stremio-enhanced-git
+	pkgdesc = Stremio Enhanced (Community project)
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/REVENGE977/stremio-enhanced
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = electron
+	provides = stremio-enhanced
+	conflicts = stremio-enhanced-bin
+	conflicts = stremio-enhanced
+	source = git+https://github.com/REVENGE977/stremio-enhanced.git
+	source = stremio-enhanced.desktop
+	sha256sums = SKIP
+	sha256sums = 09c04a9886c2afb115f88dd7c2e74ca438bc089c5f73b76efdcc54652ce70ac6
+
+pkgname = stremio-enhanced-git
