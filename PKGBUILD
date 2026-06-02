@@ -1,7 +1,7 @@
 # Maintainer: Kiru <oss@kiru.app>
 
 pkgname=kiru-bin
-pkgver=0.5.2
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Transcription-driven video editor"
 arch=('x86_64')
@@ -22,14 +22,14 @@ provides=('kiru')
 conflicts=('kiru')
 options=('!strip')
 source=(
-  "Kiru-${pkgver}-linux-${CARCH}-arch.tar.gz::https://releases.getkiru.app/releases/linux/Kiru-0.5.2-linux-${CARCH}-arch.tar.gz"
+  "Kiru-${pkgver}-linux-${CARCH}-arch.tar.gz::https://releases.getkiru.app/releases/linux/Kiru-0.5.4-linux-${CARCH}-arch.tar.gz"
   'kiru.desktop'
   'kiru.png'
   'kiru.svg'
   'LICENSE'
 )
 sha256sums=(
-  '85689f9f576f33195f330476df6816794a70eea78331a8a96d49c53e2315b723'
+  'af6bb22d5e3207994abb192d5ad206733cc4562e1b183ca56e6c1143b41d0777'
   'b9ccd131ad127061eae3b05b53c566e78ca25243155c2b03bb7546e5be5defe0'
   '356ce1144dedad29ecf4a180761b83b2d826322ba25d9203c75e7570f574b364'
   '2935a0fe9651a84fded9c0fcd10122803f0935e0cd27f2d76dc96a3209af8cae'
