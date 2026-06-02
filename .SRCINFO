@@ -1,15 +1,15 @@
 pkgbase = waybar-google-calendar-bin
 	pkgdesc = Prebuilt GTK4/Relm4 Google Calendar popup for Waybar
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/pufanyi/waybar-google-calendar
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = gtk4
 	depends = libadwaita
-	provides = waybar-google-calendar=0.0.5
+	provides = waybar-google-calendar=0.0.6
 	conflicts = waybar-google-calendar
-	source = waybar-google-calendar-bin-0.0.5-1-x86_64.tar.zst::https://github.com/pufanyi/waybar-google-calendar/releases/download/v0.0.5-1/waybar-google-calendar-bin-0.0.5-1-x86_64.tar.zst
-	sha256sums = 962b1469530fa319f6e8b20656876ec5a970944cc8efdbce7f25a6073b0a002f
+	source = waybar-google-calendar-bin-0.0.6-1-x86_64.tar.zst::https://github.com/pufanyi/waybar-google-calendar/releases/download/v0.0.6-1/waybar-google-calendar-bin-0.0.6-1-x86_64.tar.zst
+	sha256sums = 7aa040826f1a7a328469306fb46e5784f59cc552f694b4c4ed0ca1171914baac
 
 pkgname = waybar-google-calendar-bin
