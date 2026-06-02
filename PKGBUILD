@@ -2,8 +2,8 @@
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgbase=librefang-git
 pkgname=("librefang-git" "librefang-desktop-git" "librefang-whatsapp-gateway-git")
-pkgver=2026.5.31beta.16.r0.g2bef7a0f5
-pkgrel=2
+pkgver=2026.5.31beta.16.r24.gcc8cf7975
+pkgrel=1
 pkgdesc='LibreFang is an open-source Agent Operating System written in Rust. (GIT version with patches for local STT and TTS support) '
 arch=('x86_64' 'aarch64')
 url='https://github.com/librefang/librefang'
@@ -99,9 +99,8 @@ check() {
 
 package_librefang-git() {
     pkgdesc='terminal interface and daemon for the LibreFang Agent OS'
-    depends=('glibc' 'openssl' 'libgcc')
+    depends=('glibc' 'openssl' 'libgcc' 'python-librefang-sdk-git')
     optdepends=(
-        'python-librefang-sdk-git'
         'chromium: Browser Hand support'
         'yt-dlp: Clip Hand support'
         'ffmpeg: Clip Hand support'
@@ -130,9 +129,8 @@ package_librefang-git() {
 
 package_librefang-desktop-git() {
     pkgdesc='Desktop application for the LibreFang Agent OS'
-    depends=('glibc' 'openssl' 'libgcc' 'webkit2gtk-4.1' 'gtk3' 'cairo' 'gdk-pixbuf2' 'glib2' 'libsoup3' 'hicolor-icon-theme')
+    depends=('glibc' 'openssl' 'libgcc' 'webkit2gtk-4.1' 'gtk3' 'cairo' 'gdk-pixbuf2' 'glib2' 'libsoup3' 'hicolor-icon-theme' 'python-librefang-sdk-git')
     optdepends=(
-        'python-librefang-sdk-git'
         'librefang-git: CLI companion tool'
         'chromium: Browser Hand support'
         'yt-dlp: Clip Hand support'
