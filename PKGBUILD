@@ -1,18 +1,18 @@
-# Maintainer: Simon Hauser <Simon-Hauser@outlook.de>
+# Contributor: Simon Hauser <Simon-Hauser@outlook.de>
 
 pkgname=premake-git
-pkgver=5.0.0.beta1.r225.gdc8dc0a4
+pkgver=5.0.0.beta8.r47.g3d989071
 pkgrel=1
 pkgdesc='Simple build configuration and project generation tool using Lua'
-arch=(i686 x86_64)
-url='http://industriousone.com/premake'
-license=(BSD)
+arch=(x86_64)
+url='https://premake.github.io'
+license=(BSD-3-Clause)
 depends=(glibc openssl)
 makedepends=(git)
 provides=(premake)
 conflicts=(premake)
 source=(git+https://github.com/premake/premake-core)
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd premake-core
@@ -34,7 +34,7 @@ build() {
 
 check(){
   cd premake-core
-  ./bin/release/premake5 test
+  bin/release/premake5 test
 }
 
 package() {
