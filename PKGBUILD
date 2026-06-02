@@ -13,17 +13,15 @@ url="https://gitlab.inria.fr/cado-nfs/${_pkg}"
 license=('LGPL2')
 # We configure with optional curl, hwloc, gmp-ecm.
 # Configuring with hwloc makes binaries in linalg/bwc depend on it.
-depends=('gmp' 'python' 'sqlite' 'hwloc' 'python-flask' 'python-requests')
+depends=('gmp' 'python' 'sqlite' 'hwloc' 'python-flask' 'python-requests' 'fmt')
 makedepends=('git' 'cmake' 'inetutils' 'curl' 'gmp-ecm')
 optdepends=('curl: for cado-nfs-client.py'
             'gmp-ecm: for JL DLP polynomial selection'
             'perl: for bwc.pl')
 conflicts=('cado-nfs')
 provides=('cado-nfs')
-source=("git+${url}.git"
-        fmt.patch)
-sha384sums=('SKIP'
-            '493abdd5b33bb202eb6f159bd399cf947f6c8a082fc23ba4fcf79dadcc07fbc8ef5989b0a5580cdb7537346af713d374')
+source=("git+${url}.git")
+sha384sums=('SKIP')
 
 # Need -march for SIMD support. Makes the resulting package less portable.
 _march=native
@@ -47,8 +45,6 @@ pkgver() {
 }
 
 prepare() {
-  patch -d "$_pkg" -p1 < fmt.patch
-
   cat <<EOF >"$_pkg/local.sh"
 PREFIX=/usr
 HWLOC="\$PREFIX"
