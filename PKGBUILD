@@ -46,11 +46,13 @@ package() {
     cd "$_srcname"
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    # desktop entry + icon. Named 'atlas-pm' (not 'atlas') so it doesn't collide with the
-    # generic 'atlas' map icon some themes ship. logo.png is 512x512, so install it to the
-    # hicolor 512x512 dir (what GNOME/KDE app grids actually search) plus pixmaps as a
-    # legacy fallback; the .desktop's Icon=atlas-pm resolves to it.
-    install -Dm644 atlas/desktop/atlas.desktop "$pkgdir/usr/share/applications/atlas.desktop"
+    # desktop entry + icon. The whole identity is 'atlas-pm' (desktop filename, Icon,
+    # StartupWMClass, and the runtime app_id via set_prgname) — NOT the bare 'atlas', which
+    # collides with a generic 'atlas' map icon several themes ship (char-white, Tela, Fluent,
+    # WhiteSur, …). KDE resolves a window's icon by an app_id→icon-name lookup, so a 'atlas'
+    # app_id would hit the theme map before the .desktop's Icon=. logo.png is 512x512, so
+    # install it to the hicolor 512x512 dir (what GNOME/KDE app grids search) plus pixmaps.
+    install -Dm644 atlas/desktop/atlas-pm.desktop "$pkgdir/usr/share/applications/atlas-pm.desktop"
     install -Dm644 atlas/view/resources/img/logo.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/atlas-pm.png"
     install -Dm644 atlas/view/resources/img/logo.png "$pkgdir/usr/share/pixmaps/atlas-pm.png"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
