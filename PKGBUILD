@@ -1,7 +1,7 @@
 # Maintainer: Jorryn Macris <jorryn.m116@gmail.com>
 pkgname=minimal-translate
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimal floating GTK translation widget"
 arch=('any')
 url="https://github.com/vicMJ/minimal-translate"

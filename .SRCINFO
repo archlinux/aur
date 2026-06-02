@@ -1,7 +1,7 @@
 pkgbase = minimal-translate
 	pkgdesc = Minimal floating GTK translation widget
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vicMJ/minimal-translate
 	arch = any
 	license = MIT
