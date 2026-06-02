@@ -1,7 +1,7 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=geary-hide-sidebar
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="GTK3 module that hides/collapses Geary's left Mail sidebar (Ctrl+Shift+M toggle + auto by window size)"
 arch=('x86_64' 'aarch64')
@@ -12,12 +12,17 @@ license=('MIT')
 depends=('geary' 'gtk3' 'glib2')
 makedepends=('pkgconf')
 checkdepends=('xorg-server-xvfb')
+# Pacman should auto-swap when moving between the source and binary variants.
+provides=("$pkgname=$pkgver")
+conflicts=('geary-hide-sidebar-bin')
+# The Makefile builds -O2 without -g, so the auto debug split would be empty.
+options=('!debug')
 install="$pkgname.install"
 # GitHub names the tag archive's top dir <repo>-<pkgver>; the repo is
 # geary-hide-sidebar-module while the package is geary-hide-sidebar.
 _archive="geary-hide-sidebar-module-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9e1faa789ddac9129e22fbe9db425286652c0dfaa30629bee6e9dc7c131ea74e')
+sha256sums=('8095b061bcf5684a56351eee2479e8147c2034c3e5c3fcb336de7f02318c46f7')
 
 build() {
     cd "$_archive"
