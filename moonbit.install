@@ -9,13 +9,14 @@ post_install() {
 ▀   ▀  ▀▀▀   ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀▀▀   ▀   ▀     ▀
 
 EOF
-    echo "==> MoonBit v1.3.0 installed successfully!"
+    echo "==> MoonBit v1.4.0 installed successfully!"
     echo ""
     echo "Usage:"
     echo "  moonbit                    # Interactive TUI"
     echo "  moonbit scan               # Scan and optionally clean"
-    echo "  moonbit clean              # Clean files (deletes by default)"
-    echo "  moonbit clean --dry-run    # Preview before cleaning"
+    echo "  moonbit clean              # Preview files before cleaning"
+    echo "  moonbit clean --force      # Actually delete files"
+    echo "  moonbit scan --list-categories"
     echo ""
     echo "Automation (choose ONE mode):"
     echo ""
@@ -46,9 +47,12 @@ post_upgrade() {
 ▀   ▀  ▀▀▀   ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀▀▀   ▀   ▀     ▀
 
 EOF
-    echo "==> MoonBit upgraded to v1.3.0!"
+    echo "==> MoonBit upgraded to v1.4.0!"
     echo ""
-    echo "New in v1.3.0: Daemon mode support"
+    echo "New in v1.4.0: safer systemd automation, deep app-cache targets,"
+    echo "category include/exclude controls, and better scan logging."
+    echo "  moonbit scan --list-categories --mode deep"
+    echo "  moonbit scan --mode deep --include-category 'opencode Caches'"
     echo "  sudo systemctl enable --now moonbit-daemon.service"
     echo ""
     echo "If you have enabled timers, they will continue running."
