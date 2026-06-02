@@ -1,6 +1,6 @@
 pkgbase = vmd
 	pkgdesc = Visual Molecular Dynamics (official binary build)
-	pkgver = 1.9.4a57
+	pkgver = 2.0.1a1
 	pkgrel = 1
 	url = http://www.ks.uiuc.edu/Research/vmd/
 	install = vmd.install
@@ -19,12 +19,12 @@ pkgbase = vmd
 	optdepends = sqlite: dmsplugin
 	provides = vmd
 	conflicts = vmd-src
-	source = local://vmd-1.9.4a57.bin.LINUXAMD64-CUDA102-OptiX650-OSPRay185.opengl.tar.gz
+	source = local://vmd-2.0.1a1.bin.LINUXAMD64.tar.gz
 	source = vmd.desktop
 	source = vmd.install
 	source = vmd.png
-	sha256sums = 5cb6c1ea7b57fcbe5997c03c893e77ccc158de59b8c12d2d1932c5a7534e22ed
-	sha256sums = 942b752e2c9c1d6e3adb55ccdee14d1794640c341ddb7d8d70fb02396dafe81a
+	sha256sums = 138f152362967979475a43846acc15ffc016a11fcac82a4641e5562124fe5acd
+	sha256sums = 4c27322fe473b57157f33b9e3a685fa80e981362cc26c361ffb9cc4c5c9ff3ab
 	sha256sums = f703f8de14eb277dc72cc837086fbd55f5d772049a44200686c8ae76348f6614
 	sha256sums = d83f568615ad954f582d986975997186fdacfd8f79c30f49d6aaf07ba2eb6aa7
 

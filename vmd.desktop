@@ -1,5 +1,5 @@
 [Desktop Entry]
-Version=1.9.4a38
+Version=2.0.1a1
 Name=VMD
 Comment=Visual Molecular Dynamics
 Exec=vmd %f

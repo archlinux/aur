@@ -1,9 +1,10 @@
-# Maintainer: Eric Berquist <eric DOT berquist AT gmail>
+# Maintainer: Jumping Bean
+# Contributor: Eric Berquist <eric DOT berquist AT gmail>
 # Contributor: steabert <steabert@member.fsf.org>
 # Contributor: Ricardo Honorato Z.
 
 pkgname=vmd
-pkgver=1.9.4a57
+pkgver=2.0.1a1
 pkgrel=1
 pkgdesc="Visual Molecular Dynamics (official binary build)"
 url="http://www.ks.uiuc.edu/Research/vmd/"
@@ -19,13 +20,13 @@ provides=('vmd')
 conflicts=('vmd-src')
 # You MUST download the package from the VMD url and put it in the PKGBUILD folder!
 # Current download should be:
-# LINUX_64 OpenGL, CUDA, OptiX, OSPRay (Linux (RHEL 6.7 and later) 64-bit Intel/AMD x86_64 SSE, with CUDA 9.x, OptiX, OSPRay)
-source=("local://${pkgname}-${pkgver}.bin.LINUXAMD64-CUDA102-OptiX650-OSPRay185.opengl.tar.gz"
+# VMD 2.0.1a1 for RHEL 8+ Linux, 64-bit Intel x86 (x86_64), RTX RTRT
+source=("local://${pkgname}-${pkgver}.bin.LINUXAMD64.tar.gz"
         "vmd.desktop"
         "vmd.install"
         "vmd.png")
-sha256sums=("5cb6c1ea7b57fcbe5997c03c893e77ccc158de59b8c12d2d1932c5a7534e22ed"
-            "942b752e2c9c1d6e3adb55ccdee14d1794640c341ddb7d8d70fb02396dafe81a"
+sha256sums=("138f152362967979475a43846acc15ffc016a11fcac82a4641e5562124fe5acd"
+            "4c27322fe473b57157f33b9e3a685fa80e981362cc26c361ffb9cc4c5c9ff3ab"
             "f703f8de14eb277dc72cc837086fbd55f5d772049a44200686c8ae76348f6614"
             "d83f568615ad954f582d986975997186fdacfd8f79c30f49d6aaf07ba2eb6aa7")
 
