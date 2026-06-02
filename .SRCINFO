@@ -1,6 +1,6 @@
 pkgbase = zenvision-studio-git
 	pkgdesc = Drive the ASUS ZenVision lid OLED with live applets and a web UI (git/main)
-	pkgver = 0.2.1.r1.g4f2c0de
+	pkgver = 0.2.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/tarpediem/zenvision-studio
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = zenvision-studio-git
 	depends = python-pyusb
 	depends = python-pillow
 	depends = python-fastapi
-	depends = python-uvicorn
+	depends = uvicorn
 	depends = python-multipart
 	depends = python-psutil
 	depends = python-dbus-next
@@ -26,7 +26,7 @@ pkgbase = zenvision-studio-git
 	optdepends = python-pystray: system-tray icon (zvstudio tray)
 	optdepends = python-gobject: AppIndicator backend for the tray
 	optdepends = libayatana-appindicator: KDE/SNI tray backend
-	provides = zenvision-studio=0.2.1.r1.g4f2c0de
+	provides = zenvision-studio=0.2.0.r0.g0000000
 	conflicts = zenvision-studio
 	source = zenvision-studio::git+https://github.com/tarpediem/zenvision-studio.git
 	sha256sums = SKIP
