@@ -1,27 +1,45 @@
-# Maintainer: devome <evinedeng@hotmail.com>
+# Maintainer: taotieren <admin@taotieren.com>
+# Contributor: devome <evinedeng@hotmail.com>
 
 _pkgname=chroma-hnswlib
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=0.7.6
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Chroma's fork of hnswlib - a header-only C++/python library for fast approximate nearest neighbors"
-arch=("x86_64" "aarch64")
+arch=($CARCH)
 url="https://github.com/chroma-core/hnswlib"
 provides=("python-hnswlib")
 conflicts=("python-hnswlib")
 license=('Apache-2.0')
-depends=("python-numpy")
-makedepends=('pybind11' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('4dce282543039681160259d29fcde6151cc9106c6461e0485f57cdccd83059b7')
+depends=(
+    glibc
+    libgcc
+    libstdc++
+)
+makedepends=(
+    'git'
+    'pybind11' 
+    'python-numpy'
+    'python-build' 
+    'python-installer' 
+    'python-setuptools' 
+    'python-wheel'
+)
+source=("${_pkgname}::git+${url}.git#tag=${pkgver}")
+sha256sums=('afe025adc97dca7ab99fdd1dbe482ec4f0a1ed2e52adcc85af255554dbc73dea')
+prepare() {
+    git -C "${srcdir}/${_pkgname}" clean -dfx  
+}
 
 build() {
-    cd "${_pipname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_pipname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
