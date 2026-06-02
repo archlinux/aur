@@ -1,0 +1,18 @@
+pkgbase = twin-cli-git
+	pkgdesc = A lightweight, agentic self-healing CLI wrapper that intercepts compiler failures and executes Docker sandbox recovery.
+	pkgver = 1.0.0.r0.g8b5cf6
+	pkgrel = 1
+	url = https://github.com/AbdullahZulfiqar2005/Twin
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	optdepends = docker: for containerized sandbox verification trial runs
+	provides = twin
+	conflicts = twin
+	source = git+https://github.com/AbdullahZulfiqar2005/Twin.git
+	sha256sums = SKIP
+
+pkgname = twin-cli-git
