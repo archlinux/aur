@@ -1,6 +1,6 @@
 pkgbase = python-unsloth-zoo
 	pkgdesc = Utility functions for Unsloth fine-tuning framework
-	pkgver = 2026.5.4
+	pkgver = 2026.5.5
 	pkgrel = 1
 	url = https://github.com/unslothai/unsloth-zoo
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = python-unsloth-zoo
 	depends = python-torchao
 	depends = python-tyro
 	depends = python-msgspec
-	source = python-unsloth-zoo-2026.5.4.tar.gz::https://pypi.io/packages/source/u/unsloth-zoo/unsloth_zoo-2026.5.4.tar.gz
-	sha256sums = 593db637efa2b874287474745674bbc8caf414c3250979fbb3e113fec412e844
+	source = python-unsloth-zoo-2026.5.5.tar.gz::https://pypi.io/packages/source/u/unsloth-zoo/unsloth_zoo-2026.5.5.tar.gz
+	sha256sums = f924edc4042c5d996bc3255a8549d83466a7205bdc7d2e1d108595b98cbef38d
 
 pkgname = python-unsloth-zoo

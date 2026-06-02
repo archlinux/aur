@@ -2,7 +2,7 @@
 
 pkgname=python-unsloth-zoo
 _pkgname=unsloth_zoo
-pkgver=2026.5.4
+pkgver=2026.5.5
 pkgrel=1
 pkgdesc="Utility functions for Unsloth fine-tuning framework"
 arch=('any')
@@ -42,7 +42,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/u/unsloth-zoo/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('593db637efa2b874287474745674bbc8caf414c3250979fbb3e113fec412e844')
+sha256sums=('f924edc4042c5d996bc3255a8549d83466a7205bdc7d2e1d108595b98cbef38d')
 
 prepare() {
     cd "$_pkgname-$pkgver"
