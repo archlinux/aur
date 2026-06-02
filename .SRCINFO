@@ -1,0 +1,20 @@
+pkgbase = python-librefang-sdk-git
+	pkgdesc = Official Python client and SDK for the LibreFang Agent OS (GIT version)
+	pkgver = 2026.5.31beta.16.r0.g2bef7a0f5
+	pkgrel = 2
+	url = https://github.com/librefang/librefang
+	arch = any
+	license = MIT
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-librefang-sdk
+	conflicts = python-librefang-sdk
+	source = python-librefang-sdk-git::git+https://github.com/librefang/librefang.git
+	sha256sums = SKIP
+
+pkgname = python-librefang-sdk-git
