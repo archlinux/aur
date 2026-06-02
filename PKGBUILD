@@ -1,22 +1,19 @@
 # Maintainer: Taxin <https://github.com/taxin-404>
 pkgname=odysseus-ai
-pkgver=0.1.0
-pkgrel=2
+pkgver=2026.06.02.f6b0dcb
+pkgrel=1
 pkgdesc="A self-hosted AI workspace with chat, agents, deep research, calendar, notes and more"
 arch=('any')
-url="https://pewdiepie-archdaemon.github.io/odysseus/"
+url="https://github.com/pewdiepie-archdaemon/odysseus"
 license=('MIT')
 depends=(
     'python>=3.11'
     'tmux'
 )
-optdepends=(
-    'python-pymupdf: PDF form-filling support (AGPL-3.0)'
-)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/taxin-404/odysseus/archive/refs/tags/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pewdiepie-archdaemon/odysseus/archive/refs/heads/main.tar.gz"
         "odysseus-ai.desktop"
         "odysseus-ai.svg")
-sha256sums=('67217c159fc4d30d8e4af94a8ed2201a1774b47a3415277c6721d35e52b4db3c'
+sha256sums=('61cc0c20affc945adbae74dfa8881ea9ce376d6674d676c03a431995c61886af'
             'f21605f96ec6067504d15c788fe009890d07364f14e78da6e071cb8b922e43df'
             '9d909012e4daf1a8bf4bec2bf4912ce546da8ce7828ec2cea6ca55886e94f916')
 install="$pkgname.install"
@@ -26,27 +23,30 @@ backup=(
 )
 
 prepare() {
-    cd "$srcdir/odysseus-$pkgver"
-    grep -v -E '^(PyMuPDF|pytest|pytest-asyncio|duckduckgo-search)' requirements.txt > requirements.filtered.txt
+    cd "$srcdir/odysseus-main"
+    grep -v -E '^(pytest|pytest-asyncio)' requirements.txt > requirements.filtered.txt
 }
 
 package() {
-    cd "$srcdir/odysseus-$pkgver"
+    cd "$srcdir/odysseus-main"
 
-    # --- Application files (all dirs needed at runtime) ---
     install -dm755 "$pkgdir/usr/lib/$pkgname"
     cp -r \
         app.py setup.py \
-        core routes services src scripts config mcp_servers static \
+        companion core routes services src scripts config mcp_servers static licenses \
         requirements.txt requirements.filtered.txt \
         "$pkgdir/usr/lib/$pkgname/"
+
+    install -dm777 "$pkgdir/usr/lib/$pkgname/services/cache/search"
+    install -dm777 "$pkgdir/usr/lib/$pkgname/services/cache/content"
 
     # --- Launcher wrapper ---
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/odysseus-ai" <<'EOF'
 #!/bin/bash
-exec /usr/lib/odysseus-ai/venv/bin/uvicorn app:app \
-    --app-dir /usr/lib/odysseus-ai \
+APPDIR=/usr/lib/odysseus-ai
+exec "$APPDIR/venv/bin/uvicorn" app:app \
+    --app-dir "$APPDIR" \
     --host "${ODYSSEUS_HOST:-127.0.0.1}" \
     --port "${ODYSSEUS_PORT:-7000}" \
     "$@"
