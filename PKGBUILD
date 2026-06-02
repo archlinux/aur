@@ -30,6 +30,7 @@ build() {
 
 package() {
   install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
+  install -dm755 "${pkgdir}/usr/bin/"
   ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 "${srcdir}/squashfs-root/SJTU Canvas Helper.desktop" \
