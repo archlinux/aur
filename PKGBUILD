@@ -1,4 +1,4 @@
-# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Maintainer: BlackFuffey <fluffistical@gmail.com>
 
 _py=cp310
 
