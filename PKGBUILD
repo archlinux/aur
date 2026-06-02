@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-git
 pkgver=0.r941.bd11333
-pkgrel=2
+pkgrel=3
 epoch=1
 license=('GPL-2.0-only')
 pkgdesc="Jellyfin Desktop Client"
@@ -28,7 +28,7 @@ makedepends=(
 provides=('jellyfin-desktop')
 conflicts=('jellyfin-desktop')
 replaces=('jellyfin-desktop-cef-git')
-source=("git+${url}.git#branch=download-cef")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 options=(!debug !lto)
 
