@@ -1,17 +1,19 @@
 # Maintainer: Ashley <info@meisgaming.net>
+# Contributor: Ashley <info@meisgaming.net>
 pkgname=league-of-gays
-pkgver=0.1.0
-pkgrel=11
-pkgdesc="League of Gays — self-hosted MOBA launcher"
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="League of Gays Launcher — private MOBA client launcher (self-hosted)"
 arch=('x86_64')
 url="https://lol.meisgaming.net"
-license=('custom')
-depends=('gtk3' 'nss' 'alsa-lib' 'libnotify' 'xdg-utils' 'libx11')
+license=('custom:proprietary')
+depends=('electron>=42')
 makedepends=('nodejs' 'npm')
 provides=('league-of-gays')
 conflicts=('league-of-gays')
+changelog=CHANGELOG.md
 source=("${pkgname}-src-${pkgver}.tar.gz::https://lol.meisgaming.net/launcher/${pkgname}-src-${pkgver}.tar.gz")
-sha256sums=('f5ecb6178a4870562d175d3a8d502fb0b9039f4fd59e952ed3a9f1c0dbc171b5')
+sha256sums=('887cf8212d61a2b80fad69e2e65a8a7bc827471846c48bfb521f3902dbd8bd29')
 
 build() {
     cd "$srcdir/${pkgname}-src-${pkgver}"
@@ -32,6 +34,7 @@ package() {
     cat > "$pkgdir/usr/share/applications/league-of-gays.desktop" << 'EOF'
 [Desktop Entry]
 Name=League of Gays
+Comment=League of Gays Launcher
 Exec=/usr/bin/league-of-gays %U
 Icon=league-of-gays
 Type=Application
@@ -40,11 +43,40 @@ StartupWMClass=league-of-gays
 MimeType=x-scheme-handler/log;
 EOF
 
-    local icon="$app/resources/app/renderer/assets/icon.png"
-    if [ -f "$icon" ]; then
-        install -Dm644 "$icon" \
-            "$pkgdir/usr/share/icons/hicolor/256x256/apps/league-of-gays.png"
-    fi
+    # Handle both electron-builder output layouts
+    for iconpath in \
+        "$app/resources/app/renderer/assets/icon.png" \
+        "$app/resources/icon.png"; do
+        if [ -f "$iconpath" ]; then
+            install -Dm644 "$iconpath" \
+                "$pkgdir/usr/share/icons/hicolor/256x256/apps/league-of-gays.png"
+            break
+        fi
+    done
 
-    install -Dm644 /dev/null "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    # License
+    cat > "$pkgdir/usr/share/licenses/${pkgname}/LICENSE" << 'EOF'
+League of Gays Launcher
+Copyright (c) 2026 Ashley
+
+This software is provided for private, non-commercial use only.
+Redistribution or commercial use is prohibited without express permission.
+EOF
+
+    # Install changelog
+    install -Dm644 "$srcdir/${pkgname}-src-${pkgver}/CHANGELOG.md" \
+        "$pkgdir/usr/share/doc/${pkgname}/CHANGELOG.md"
+
+    # Install protocol handler
+    cat > "$pkgdir/usr/share/applications/league-of-gays-handler.desktop" << 'EOF'
+[Desktop Entry]
+Name=League of Gays (Auth Handler)
+Exec=/usr/bin/league-of-gays %U
+Icon=league-of-gays
+Terminal=false
+Type=Application
+NoDisplay=true
+MimeType=x-scheme-handler/log;
+Categories=
+EOF
 }
