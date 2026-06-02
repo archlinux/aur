@@ -4,7 +4,7 @@
 # Contributor: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=seerr
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=(x86_64 aarch64)
@@ -36,7 +36,7 @@ source=(
   seerr.service
   seerr.conf.d
 )
-sha256sums=('e9c4c49f16da99516e0baf5968dc2c0221f6f22fd16a57c922810165bb57861b'
+sha256sums=('3a6caf9266f7525c3ac2aecb666f5939034e383296761bdea14ad3105237721c'
             '1a4a8daf655c530ebf24d89d036458aa75d7ae2de21a99a2b10eb02c2df1ac81'
             '8e137d571603af4ad83dd55a79d743bf1360de84af2db05dfb9289ccf649973d'
             '34f139015c3537ced763080832f691f3fca012ee4c126c7c66d8e120085d5290'
@@ -73,7 +73,7 @@ package() {
 
   # Copy seerr
   cp -dr --no-preserve='ownership' ./{.next,dist,public,node_modules} "${pkgdir}/usr/lib/seerr"
-  cp -d --no-preserve='ownership' ./{package.json,seerr-api.yml,next.config.js,committag.json} "${pkgdir}/usr/lib/seerr"
+  cp -d --no-preserve='ownership' ./{package.json,seerr-api.yml,committag.json} "${pkgdir}/usr/lib/seerr"
 
   # Remove cache
   rm -rf "${pkgdir}/usr/lib/seerr/.next/cache"
