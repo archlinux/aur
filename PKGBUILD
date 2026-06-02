@@ -1,14 +1,12 @@
 # Manitainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
-# 0.30.0-rcN tags are being made on assorted unmerged branches, e.g. as of
-# this comment af15a5d from the following PR is tagged as 0.30.0rc15:
-# https://github.com/ollama/ollama/pull/16031
-_branch=dhiltgen/llama-runner
+# Sometimes RC tags start showing up on unmerged branches...
+_branch=main
 
 pkgbase=ollama-git
 pkgname=(ollama-git ollama-rocm-git ollama-cuda-git ollama-vulkan-git ollama-docs-git)
-pkgver=0.30.0rc15.r0.gaf15a5d19512
+pkgver=0.30.1rc0.r1.gc95270816913
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(aarch64 x86_64)
