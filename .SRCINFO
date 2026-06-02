@@ -1,0 +1,20 @@
+pkgbase = hpmicro-openocd-bin
+	pkgdesc = HPMicro-patched OpenOCD (hpm_xpi) with HPM flash algorithms
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/hpmicro/riscv-openocd
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = libusb
+	depends = hidapi
+	depends = libftdi
+	provides = hpmicro-openocd
+	conflicts = hpmicro-openocd
+	options = !strip
+	options = !debug
+	source = openocd-linux-x86_64-0.4.0.tar.gz::https://github.com/hpmicro/riscv-openocd/releases/download/hpm_xpi_v0.4.0/openocd-linux-x86_64.tar.gz
+	source = 60-hpmicro-openocd.rules
+	sha256sums = dab7629a4de59a9c05f8d6c0db0ad4e900006f761efc20377946a420aae11566
+	sha256sums = 9e364726be707d6e9f863bd69aeba606587b767086bbc6ca07a911e9e1291cfe
+
+pkgname = hpmicro-openocd-bin
