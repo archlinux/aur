@@ -2,14 +2,14 @@
 
 _locale='hi'
 pkgname=palemoon-i18n-hi
-pkgver=33.8.0
+pkgver=34.3.0
 pkgrel=1
 pkgdesc="Hindi language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('0b2836e601e1f57c37be99ebd6edbc201751cd2d3d196b2ff0ac04b6b0b080b3')
+sha256sums=('a8fdeeda3bfe4b5166435450f07b15cc12feb13d9adc9dd1e2ab5ad16518c045')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
