@@ -2,7 +2,7 @@
 _pkgname=musescore
 pkgname=musescore-bin
 pkgver=4.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Create, play and print beautiful sheet music / AppImage version'
 arch=(x86_64)
 url=https://musescore.org/
