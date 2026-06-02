@@ -17,7 +17,7 @@ _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
 url=${_ghurl}
 
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 
 provides=("${_appname}")
 conflicts=("${_appname}")
