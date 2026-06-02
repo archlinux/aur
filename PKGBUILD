@@ -6,7 +6,7 @@ _dotnet_ver=10.0
 _tgtbin="ImeWlConverterCmd"
 pkgname=imewlconverter
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="深蓝词库转换：一款开源免费的输入法词库转换程序"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/studyzy/${pkgname}"
@@ -14,7 +14,7 @@ license=('GPL-3.0-or-later')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 replaces=("${pkgname}"{-bin,-cli})
-depends=("glibc" "libgcc" "libstdc++")
+depends=("dotnet-runtime-${_dotnet_ver}")
 makedepends=("dotnet-sdk-${_dotnet_ver}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9accdf0ce79eefc74442d4a8c3a9f336737a6198d9171662de2c0905fe81df6a')
@@ -27,14 +27,20 @@ build() {
     dotnet publish "src/${_tgtbin}" \
         --configuration Release \
         --framework "net${_dotnet_ver}" \
-        --output . \
-        -p:PublishSingleFile=true \
+        --self-contained false \
+        --output output \
+        -p:PublishSingleFile=false \
         -p:DebugSymbols=false \
         -p:DebugType=none
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm755 "${_tgtbin}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    cd output
+    find . -type f -exec install -Dm644 {} "${pkgdir}/usr/lib/${pkgname}/{}" \;
+    chmod +x "${pkgdir}/usr/lib/${pkgname}/${_tgtbin}"
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "../lib/${pkgname}/${_tgtbin}" "${pkgdir}/usr/bin/${pkgname}"
 }
