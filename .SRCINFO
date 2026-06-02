@@ -1,4 +1,4 @@
-pkgbase = dodo-bin
+pkgbase = dodo-pdf-reader-bin
 	pkgdesc = A fast and configurable PDF reader built with Qt and MuPDF
 	pkgver = 0.6.0
 	pkgrel = 1
@@ -18,4 +18,4 @@ pkgbase = dodo-bin
 	source_x86_64 = dodo-x86_64-0.6.0.deb::https://github.com/dheerajshenoy/dodo/releases/download/v0.6.0/dodo_0.6.0_amd64.deb
 	sha256sums_x86_64 = 45832e6e4ba4e5a8a18e0547cb52abaee646db19baacc4a4514b3cb1bcbef173
 
-pkgname = dodo-bin
+pkgname = dodo-pdf-reader-bin

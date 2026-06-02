@@ -1,4 +1,4 @@
-[dodo-bin]
+[dodo-pdf-reader-bin]
 source = "github"
 github = "dheerajshenoy/dodo"
 use_latest_release = true

@@ -2,7 +2,7 @@
 
 _pkgauthor=dheerajshenoy
 _pkgname=dodo
-pkgname=${_pkgname}-bin
+pkgname=${_pkgname}-pdf-reader-bin
 pkgdesc="A fast and configurable PDF reader built with Qt and MuPDF"
 
 pkgver=0.6.0
