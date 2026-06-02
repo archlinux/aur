@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="Implementation of the Number Field Sieve (NFS) algorithm for factoring integers"
 arch=('x86_64')
 url="https://gitlab.inria.fr/cado-nfs/${_pkg}"
-license=('LGPL2')
+license=('LGPL-2.1-or-later')
 # We configure with optional curl, hwloc, gmp-ecm.
 # Configuring with hwloc makes binaries in linalg/bwc depend on it.
 depends=('gmp' 'python' 'sqlite' 'hwloc' 'python-flask' 'python-requests' 'fmt')
