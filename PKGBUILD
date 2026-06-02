@@ -8,7 +8,7 @@
 _pkgname="palemoon"
 pkgname="$_pkgname-gtk3-bin"
 epoch=1
-pkgver=34.2.2
+pkgver="34.3.0"
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency"
 url="https://www.palemoon.org/"
