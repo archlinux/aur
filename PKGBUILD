@@ -1,10 +1,10 @@
 # Maintainer: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="wff-git"
-pkgver="0.12"
+pkgver="0.13"
 pkgrel=1
 pkgdesc="Simple GUI screen recorder for wlroots compositors based on wl-recorder"
 arch=("x86_64")
-makedepends=("dotnet-sdk"  "zig0.14-bin")
+makedepends=("dotnet-sdk"  "zig")
 depends=("slurp" "wf-recorder" "ffmpeg" "wlr-randr" "wayland" "wayland-protocols")
 url="https://www.github.com/eugenenoble2005/wff"
 source=("git+https://github.com/eugenenoble2005/wff")
