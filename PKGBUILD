@@ -2,7 +2,7 @@
 
 pkgname=chromium-ffmpeg
 _avcodec=62
-pkgver=8.1
+pkgver=8.1.1
 pkgrel=1
 pkgdesc="Add codecs to Chromium M138+ (libavcodec ${_avcodec})"
 arch=('x86_64')
@@ -18,14 +18,14 @@ https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${pkgve
 
 b2sums=('0291ddd136ff1b08eaf8da9a2a8a0a15a0a1125901eb72801e553acea7259389338a42f81939829b220ec1de36a2d2c25445f2235355f7e705578addb86f82ae'
         '1b896e60f51346f9ee586c5e8d6061650d1c153171706961f8c3b60366e167535ca7632bf4e5125e8ab8c974e20033449da2b2d99ede25760eb6122badf5d6d8'
-        '3710f8d3d60f89e404e837d238d089bdd7fd3be9404014aa1f3d4dd8983f10c7fefd7f4b27996fb8cb664f54aa3417da67f4ea02c896fe1026383198c45f5b26'
-        'c92deb468a018ae7f04150d35cb71d3cf7e2e151f23ab84533bca9ccb0c678b94897668c48362aa6549cfa9127250e094719a14f95b59ed4e95f69dcebb3bca1'
+        '275f853672f5d8e84bed0cd98b272b576355ebb3d31ad0538ef40200cf319ac03bd10d18f67b29e8549910e7e089aef7bad1c9537ae025eae5c13fc3c4bdb6c9'
+        '046f7fcb32ccd2d18a8a85a6ef4e1445cb6af682fb75999b12b60cd900fc4d37962dd86fc3f0201ec23ba296a834a01139ba379fabb33b1b49fa331a876593d5'
         'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d')
 depends=(glibc)
 makedepends=(nasm
 gcc make patch) # base-devel
 _so=libffmpeg.so
-conflicts=({nwjs,opera{,-beta,-developer},vivaldi{,-snapshot}}-ffmpeg-codecs)
+conflicts=({nwjs,opera-beta,vivaldi{,-snapshot}}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 prepare() {
   # List used funcs
