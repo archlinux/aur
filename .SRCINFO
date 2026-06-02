@@ -1,6 +1,6 @@
 pkgbase = min-ed-launcher-bin
 	pkgdesc = Minimal Elite Dangerous Launcher
-	pkgver = v0.12.2
+	pkgver = v0.13.0
 	pkgrel = 1
 	url = https://github.com/Rfvgyhn/min-ed-launcher
 	install = min-ed-launcher.install
@@ -10,10 +10,10 @@ pkgbase = min-ed-launcher-bin
 	provides = min-ed-launcher
 	conflicts = min-ed-launcher
 	options = !strip
-	source = https://github.com/Rfvgyhn/min-ed-launcher/releases/download/v0.12.2/min-ed-launcher_v0.12.2_linux-x64.tar.gz
+	source = https://github.com/Rfvgyhn/min-ed-launcher/releases/download/v0.13.0/min-ed-launcher_v0.13.0_linux-x64.tar.gz
 	source = CHANGELOG.md
 	source = min-ed-launcher.install
-	sha512sums = 06c851c138b27cb1544164edaa72e786a588fe5cf1ff6a0592fd589f51cb038e060e3d1601f1801c29fcfb592e84d8681486b1ce84547f95596fa18e02003247
+	sha512sums = 54a0df7e87a47498807882b7bcb0a07804f4290a64989a900e6bc5fb07aa2398f5fd66f21371184b45d000f4badb667a3fee1e49c4dc8fcd903ca63b81df1cf4
 	sha512sums = e5e5651a1ee3c19057e5dac6d7a727b92c2f3078c9782dbeba50fcc175e2ad6f10023b76f22d57e37f498615ac3f681fece3cd62f7164d61904f262a919a4ee3
 	sha512sums = 33d77b3f3511bf97f5166a8a909744954e1047929dc416db2fe76b0bd52425e02ceba8cad0a416df53e004ca48e68f7bbfd1227e015253345c8495e691b07e2f
 

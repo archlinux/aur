@@ -1,5 +1,53 @@
 # Changelog
 
+## [0.13.0] - 2026-06-01
+
+### New Features
+- Add support for account name aliases. Allows changing/hiding the name that appears in the output. Useful for when the 
+  launcher may be seen by others (streaming, video capture, etc...) and you don't want to expose your account name. ([#205])
+
+  Set the new `accountAliases` property in your [settings file].
+  ```json
+  "accountAliases": {
+    "Dwight Schrute": "CMDR Recyclops",
+    "fid1234": ""
+  }
+  ```
+- Add `/settingsOverlay` flag for per-profile settings.
+  Load a partial JSON overlay on top of the default settings.json. Only keys present in the overlay override the base 
+  config, allowing multi-account users to customize settings per profile. ([#199] - [@Teal Bauer])
+
+  See [settings overlay] section for details
+- Warn on unknown top-level keys in settings.json, with typo suggestions. (e.g. `forceUdate` → "Did you mean 'forceUpdate'?")
+  ([#198] - [@Teal Bauer])
+### Enhancements
+- Log when using the fallback products directory in cases when user doesn't have permissions to write to default 
+  products directory ([#177]) 
+
+- Add a workaround to get Flatpaks to be launched.  
+  You can now clear and override `$LD_LIBRARY_PATH` to allow processes defined in `processes` in your settings file to 
+  be launched using the host's libraries by setting `$MEL_LD_LIBRARY_PATH`. Mainly useful for Steam Deck users
+  (i.e. auto-launching EDMC).
+
+  `konsole` Steam launch options example: 
+  ```sh
+  LD_LIBRARY_PATH="" konsole -e env MEL_LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./MinEdLauncher %command% /autorun /autoquit
+  ```
+
+### Changes
+- Remove "Elite Runtime" output from console (still writes to debug log file) since _Products Dir_ could contain a 
+  username ([#205])
+
+### Bug Fixes
+- Fix flatpaks not being shutdown properly ([#196])
+- Fix not ignoring pre-releases when checking for launcher updates
+
+## [0.12.2] - 2025-07-25
+
+### Bug Fixes
+- Fix `/autorun` requiring a filter (`/edo`, `/edh`, etc...). `/autorun` without a filter will launch the first
+  product in your _Available Products_ list. ([#173])
+
 ## [0.12.1] - 2025-06-16
 
 ### Security
@@ -377,7 +425,9 @@ legendary launch --dry-run 9c203b6ed35846e8a4a9ff1e314f6593 2> >(grep "Launch pa
 
 Initial release
 
-[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.12.1...HEAD
+[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.13.0...HEAD
+[0.13.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.12.2...v0.13.0
+[0.12.2]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.12.1...v0.12.2
 [0.12.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.12.0...v0.12.1
 [0.12.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.3...v0.12.0
 [0.11.3]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.2...v0.11.3
@@ -424,6 +474,7 @@ Initial release
 [legendary]: https://github.com/derrod/legendary
 [heroic]: https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher
 [settings file]: README.md#settings
+[settings overlay]: README.md#settings-overlay
 [log file]: README.md#troubleshooting
 [EDDiscovery]: https://github.com/EDDiscovery/EDDiscovery
 [EDOMH]: https://github.com/jixxed/ed-odyssey-materials-helper
@@ -433,3 +484,10 @@ Initial release
 [#157]: https://github.com/rfvgyhn/min-ed-launcher/issues/157
 [#161]: https://github.com/rfvgyhn/min-ed-launcher/issues/161
 [#163]: https://github.com/rfvgyhn/min-ed-launcher/issues/163
+[#173]: https://github.com/rfvgyhn/min-ed-launcher/issues/173
+[#177]: https://github.com/rfvgyhn/min-ed-launcher/issues/177
+[#196]: https://github.com/rfvgyhn/min-ed-launcher/issues/196
+[#198]: https://github.com/rfvgyhn/min-ed-launcher/issues/198
+[#199]: https://github.com/rfvgyhn/min-ed-launcher/issues/199
+[#205]: https://github.com/rfvgyhn/min-ed-launcher/issues/205
+[@Teal Bauer]: https://github.com/teal-bauer
