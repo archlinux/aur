@@ -1,14 +1,14 @@
-# Maintainer: jimmy
+# Maintainer: 5unekku <jimmy.bungalo8@gmail.com>
 pkgname=lice-git
-pkgver=r8.gc7df858
+pkgver=r6.g05e46d9
 pkgrel=1
 pkgdesc="inject a license file into your git repo"
 arch=('x86_64')
-url="https://codeberg.org/5unekku/lice"
+url="https://gitlab.com/5unekku/lice"
 license=('GPL-3.0-only')
 depends=()
 makedepends=('rust')
-source=("$pkgname::git+https://codeberg.org/5unekku/lice.git")
+source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
