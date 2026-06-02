@@ -1,7 +1,7 @@
 pkgbase = perl-toml-tiny
 	pkgdesc = a minimal, pure perl TOML parser and serializer
 	pkgver = 0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/TOML-Tiny
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
@@ -9,6 +9,7 @@ pkgbase = perl-toml-tiny
 	checkdepends = perl-extutils-makemaker
 	checkdepends = perl-pathtools
 	checkdepends = perl-test-simple
+	checkdepends = perl-types-serialiser
 	makedepends = perl-extutils-makemaker
 	depends = perl-carp
 	depends = perl-data-dumper

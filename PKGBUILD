@@ -4,7 +4,7 @@ _author=OALDERS
 _dist=TOML-Tiny
 pkgname=perl-${_dist@L}
 pkgver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc='a minimal, pure perl TOML parser and serializer'
 arch=('any')
 url=https://metacpan.org/dist/$_dist
@@ -25,6 +25,7 @@ checkdepends=(
     'perl-extutils-makemaker'
     'perl-pathtools'
     'perl-test-simple'
+    'perl-types-serialiser'
 )
 optdepends=(
     'perl-cpan-meta>=2.120900'
