@@ -23,6 +23,7 @@ pkgbase = transmission-client-gtk
 	optdepends = libnotify: desktop notifications
 	optdepends = transmission-cli: transmission-daemon and web UI for torrents managed remotely
 	options = !lto
+	options = !debug
 	source = git+https://github.com/DeathKhan/transmission.git#branch=transmission-client-gtk
 	sha256sums = SKIP
 

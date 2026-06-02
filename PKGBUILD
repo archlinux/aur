@@ -34,7 +34,7 @@ optdepends=(
 )
 source=("git+https://github.com/DeathKhan/transmission.git#branch=transmission-client-gtk")
 sha256sums=('SKIP')
-options=('!lto') # upstream + fat LTO objects are fragile; keep build reliable
+options=('!lto' '!debug') # keep build reliable and avoid split debug package for end users
 
 pkgver() {
   cd transmission
