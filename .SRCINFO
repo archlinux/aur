@@ -1,0 +1,11 @@
+pkgbase = msgcardmaker
+	pkgdesc = A tiny tool that generates a simple message card file from input text
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/supergamerpugs-afk/msgcardmaker
+	arch = any
+	license = MIT
+	source = msgcardmaker-1.0.0.tar.gz::https://github.com/supergamerpugs-afk/msgcardmaker/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = msgcardmaker
