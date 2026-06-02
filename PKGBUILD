@@ -18,8 +18,12 @@ conflicts=(
     'musescore-git'
 )
 options=(!strip !debug)
-source=("${_appimage}::https://github.com/musescore/MuseScore/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('9c1c2c2db1a7dc830b1bccf530f392de9bff47022826596b3b2117fc19cd73f5')
+source=(
+    "${_appimage}::https://github.com/musescore/MuseScore/releases/download/v${pkgver}/${_appimage}"
+    "mscore.sh"
+)
+sha256sums=('9c1c2c2db1a7dc830b1bccf530f392de9bff47022826596b3b2117fc19cd73f5'
+            '65d7b014ee5f6dba7173b8ea548a1806b4ac038c03767f29e4b6c8b563097154')
 appname="mscore"
 
 prepare() {
@@ -30,7 +34,7 @@ prepare() {
 build() {
     # Adjust .desktop so it will work outside of AppImage container
     # LD_PRELOAD to fix ffmpeg library incompatibility with the AppImage
-    sed -i -E "s|Exec=.*|Exec=env DESKTOPINTEGRATION=false LD_PRELOAD=/usr/lib/libdbus-1.so /usr/bin/${appname} %U|"\
+    sed -i -E "s|Exec=.*|Exec=/usr/bin/${appname} %U|"\
         "squashfs-root/org.musescore.MuseScore4portable.desktop"
     # Remove "Portable" from the application name
     sed -i -E "s|Name=MuseScore Studio.*|Name=MuseScore Studio ${pkgver}|"\
@@ -55,8 +59,8 @@ package() {
     install -dm755 "${pkgdir}/usr/share/"
     cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 
-    # Symlink executable
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${appname}"
+    # Wrapper script
+    install -dm755 "${pkgdir}/usr/bin/"
+    install -D -m 0755 "${srcdir}/mscore.sh" "${pkgdir}/usr/bin/mscore"
 }
 
