@@ -3,7 +3,7 @@
 
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-vulkan"
-pkgver=1.8.5
+pkgver=1.8.6
 pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (using system llama.cpp-vulkan)"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -26,7 +26,7 @@ source=(
   # disable-talk-llama.patch
 )
 
-sha256sums=('cd702189cb5e608c8bc487f4b151db593c4455925b37cc06ef76b44861911db1'
+sha256sums=('f8e632016ceae556f3132a16c7f704be1e7715595041f474fa81a2b64c1abf7c'
             'a6e16d6cf3ceaa1bc699f5bca893d6bc7cf595a15638a0a3f456a42a2718e067'
             'd96d82cfe9816e06c2389a608ee5706e24ad0fbc3e7e90f570ff249e44363ad6')
 
