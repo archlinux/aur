@@ -3,10 +3,10 @@
 pkgname=python-adguardvpn-gui
 _name=${pkgname#python-}
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial modern desktop GUI for the official adguardvpn-cli"
-provides=(${pkgname})
-conflicts=(${pkgname})
+provides=(${pkgname} ${_name})
+conflicts=(${pkgname} ${_name})
 arch=('any')
 url="https://github.com/SpazzRabbit/adguardvpn-gui"
 _pydeps=(
