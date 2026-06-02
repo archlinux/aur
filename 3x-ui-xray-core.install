@@ -1,6 +1,8 @@
 post_install() {
   echo ":: Downloading latest geo files..."
 
+  local xui_folder="/usr/lib/x-ui"
+
   update_geofiles() {
     case "${1}" in
       "main") dat_files=(geoip geosite); dat_source="Loyalsoldier/v2ray-rules-dat";;

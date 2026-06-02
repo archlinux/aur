@@ -1,7 +1,7 @@
 pkgbase = 3x-ui-xray-core
 	pkgdesc = Xray, Penetrates Everything. Also the best v2ray-core (for *x-ui)
 	pkgver = 26.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XTLS/Xray-core
 	install = 3x-ui-xray-core.install
 	arch = aarch64

@@ -2,7 +2,7 @@
 
 pkgname=3x-ui-xray-core
 pkgver=26.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Xray, Penetrates Everything. Also the best v2ray-core (for *x-ui)"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/XTLS/Xray-core"
