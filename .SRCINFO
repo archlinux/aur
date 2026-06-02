@@ -1,6 +1,6 @@
 pkgbase = narwhal-bin
 	pkgdesc = TUI database client with a built-in MCP server
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Nonanti/narwhal
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = narwhal-bin
 	provides = narwhal
 	conflicts = narwhal
 	options = !strip
-	source_x86_64 = narwhal-x86_64-1.1.0.tgz::https://github.com/Nonanti/narwhal/releases/download/v1.1.0/narwhal-1.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 8a4341bc07cd1fd41ef0cd97e2dc0a146a4ca875050b9de3c637707620ee0512
+	source_x86_64 = narwhal-x86_64-1.2.0.tgz::https://github.com/Nonanti/narwhal/releases/download/v1.2.0/narwhal-1.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 060cc01f2fcd4fd791f7d4f5b03fc6c32648608400d52987e67098a57f8fd297
 
 pkgname = narwhal-bin
