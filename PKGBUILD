@@ -2,7 +2,7 @@
 # Contributor: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-advanced-scene-switcher
-pkgver=1.33.1
+pkgver=1.34.2
 pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("x86_64" "aarch64")
@@ -35,7 +35,7 @@ source=(
   "FindLeptonica.cmake" 
   "FindTesseract.cmake"
 )
-sha256sums=('63ad03419d5f6340ab527f2d6cb9b7ad1c9716bcd900452f5eb213b3645dbd1b'
+sha256sums=('513e5435f81897fd54a80640f1d4c177c83a93f672a4bc6effdf59cc86bfc3dd'
             '96c3583ca49180c35091be66b9a670af88aafe842c1cf948c9b6e79bea2e0269'
             'SKIP'
             'SKIP'
