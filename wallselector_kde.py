@@ -21,6 +21,7 @@ from PyQt6.QtGui import (
 from PyQt6.QtCore import (
     Qt, QSize, QPropertyAnimation, QEasingCurve, QRectF, QTimer, QPoint, QEvent, QRect, QCoreApplication, pyqtProperty
 )
+from PyQt6.QtDBus import QDBusConnection, QDBusMessage
 
 DAEMON_PID_FILE = f"/tmp/wallselector_daemon_{os.getuid()}.pid"
 DAEMON_LOCK_FILE = f"/tmp/wallselector_daemon_{os.getuid()}.lock"
@@ -231,9 +232,17 @@ class DaemonWatcher:
                 except: pass
             if not should_pause and cfg.get("pause_screen_off", False):
                 try:
-                    res = subprocess.run(["qdbus6", "org.freedesktop.ScreenSaver", "/ScreenSaver", "org.freedesktop.ScreenSaver.GetActive"], capture_output=True, text=True, timeout=1)
-                    if "true" in res.stdout.strip().lower(): should_pause = True
-                except: pass
+                    msg = QDBusMessage.createMethodCall(
+                        "org.freedesktop.ScreenSaver",
+                        "/ScreenSaver",
+                        "org.freedesktop.ScreenSaver",
+                        "GetActive"
+                    )
+                    reply = QDBusConnection.sessionBus().call(msg)
+                    if reply.type() == QDBusMessage.MessageType.ReplyMessage:
+                        if reply.arguments()[0] == True:
+                            should_pause = True
+                except Exception: pass
                 if not should_pause:
                     try:
                         connectors = glob.glob("/sys/class/drm/card*-*/status")
@@ -270,15 +279,23 @@ class DaemonWatcher:
             if is_video:
                 plugin = "luisbocanegra.smart.video.wallpaper.reborn"
                 cfg_key = "VideoUrls"
-                cfg_val = f'[{{"filename":"file://{current_wp}","enabled":true}}]'
+                cfg_val = f'[{{"filename":"file://{current_wp}","enabled":true}}, {{"filename":"dummy_{int(time.time()*1000)}","enabled":false}}]'
             else:
                 plugin = "org.kde.image"
                 cfg_key = "Image"
                 cfg_val = f"file://{current_wp}"
 
-        js_code = f"var d = desktops(); for(var i=0; i<d.length; i++) {{ d[i].wallpaperPlugin = '{plugin}'; d[i].currentConfigGroup = ['Wallpaper', '{plugin}', 'General']; d[i].writeConfig('{cfg_key}', '{cfg_val}'); }}"
+        # Отправляем всё одной мощной командой без таймеров
+        js_code = f"var d = desktops(); for(var i=0; i<d.length; i++) {{ d[i].currentConfigGroup = ['Wallpaper', '{plugin}', 'General']; d[i].writeConfig('{cfg_key}', '{cfg_val}'); d[i].wallpaperPlugin = '{plugin}'; }}"
+        msg = QDBusMessage.createMethodCall(
+            "org.kde.plasmashell",
+            "/PlasmaShell",
+            "org.kde.PlasmaShell",
+            "evaluateScript"
+        )
+        msg << js_code
+        QDBusConnection.sessionBus().asyncCall(msg)
 
-        subprocess.Popen(["qdbus6", "org.kde.plasmashell", "/PlasmaShell", "org.kde.PlasmaShell.evaluateScript", js_code], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.Popen(["kwriteconfig6", "--file", "kscreenlockerrc", "--group", "Greeter", "--key", "WallpaperPlugin", plugin], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.Popen(["kwriteconfig6", "--file", "kscreenlockerrc", "--group", "Greeter", "--group", "Wallpaper", "--group", plugin, "--group", "General", "--key", cfg_key, cfg_val], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
@@ -651,14 +668,19 @@ class WallpaperSelector(QWidget):
         self.setFocus()
 
     # ОПТИМИЗАЦИЯ ИСЧЕЗНОВЕНИЯ: Собственная прозрачная анимация (0.1с)
-    def fade_out_and_quit(self):
+    def fade_out_and_quit(self, delay_quit_ms=0):
         if hasattr(self, 'is_quitting') and self.is_quitting: return
         self.is_quitting = True
         self.fade_anim = QPropertyAnimation(self, b"windowOpacity")
         self.fade_anim.setDuration(100)
         self.fade_anim.setStartValue(1.0)
         self.fade_anim.setEndValue(0.0)
-        self.fade_anim.finished.connect(QApplication.quit)
+
+        if delay_quit_ms > 0:
+            self.fade_anim.finished.connect(lambda: QTimer.singleShot(delay_quit_ms, QApplication.quit))
+        else:
+            self.fade_anim.finished.connect(QApplication.quit)
+
         self.fade_anim.start()
 
     def update_settings_button_text(self):
@@ -735,11 +757,26 @@ class WallpaperSelector(QWidget):
             target_rect = QRect(target_x, target_y, w, h)
 
             should_animate = animate
-            if animate and abs(item.target_rect.x() - target_rect.x()) > self.width():
+            # ОПТИМИЗАЦИЯ: Уменьшен порог "прыжка", чтобы крайние обои не летели через весь экран при закольцовке
+            if animate and abs(item.target_rect.x() - target_rect.x()) > (self.width() * 0.5):
                 should_animate = False
 
             item.animate_to(target_rect, animate=should_animate)
             item.update_style(is_focused, animate=should_animate)
+
+            # Сохраняем дистанцию от центра для логики слоев
+            item._temp_dist = abs(dist)
+
+        # ИСПРАВЛЕНИЕ НАЛОЖЕНИЯ (Z-Order):
+        # Сортируем элементы: от самых дальних до центрального.
+        # Метод raise_() выводит виджет на передний план.
+        # Центральный элемент (dist = 0) поднимется последним и перекроет все остальные.
+        for item in sorted(self.items, key=lambda x: x._temp_dist, reverse=True):
+            item.raise_()
+
+        # Убедимся, что кнопка настроек не перекрылась обоями после изменения слоев
+        if hasattr(self, 'btn_settings'):
+            self.btn_settings.raise_()
 
     def select_next(self):
         if not self.items or self.is_applying: return
@@ -768,18 +805,27 @@ class WallpaperSelector(QWidget):
         if selected.is_video:
             plugin = "luisbocanegra.smart.video.wallpaper.reborn"
             cfg_key = "VideoUrls"
-            cfg_val = f'[{{"filename":"file://{path}","enabled":true}}]'
+            cfg_val = f'[{{"filename":"file://{path}","enabled":true}}, {{"filename":"dummy_{int(time.time()*1000)}","enabled":false}}]'
         else:
             plugin = "org.kde.image"
             cfg_key = "Image"
             cfg_val = f"file://{path}"
 
-        js_code = f"var d = desktops(); for(var i=0; i<d.length; i++) {{ d[i].wallpaperPlugin = '{plugin}'; d[i].currentConfigGroup = ['Wallpaper', '{plugin}', 'General']; d[i].writeConfig('{cfg_key}', '{cfg_val}'); }}"
+        # Отправляем всё одной мощной командой без таймеров
+        js_code = f"var d = desktops(); for(var i=0; i<d.length; i++) {{ d[i].currentConfigGroup = ['Wallpaper', '{plugin}', 'General']; d[i].writeConfig('{cfg_key}', '{cfg_val}'); d[i].wallpaperPlugin = '{plugin}'; }}"
+        msg = QDBusMessage.createMethodCall(
+            "org.kde.plasmashell",
+            "/PlasmaShell",
+            "org.kde.PlasmaShell",
+            "evaluateScript"
+        )
+        msg << js_code
+        QDBusConnection.sessionBus().asyncCall(msg)
 
-        subprocess.Popen(["qdbus6", "org.kde.plasmashell", "/PlasmaShell", "org.kde.PlasmaShell.evaluateScript", js_code], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.Popen(["kwriteconfig6", "--file", "kscreenlockerrc", "--group", "Greeter", "--key", "WallpaperPlugin", plugin], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.Popen(["kwriteconfig6", "--file", "kscreenlockerrc", "--group", "Greeter", "--group", "Wallpaper", "--group", plugin, "--group", "General", "--key", cfg_key, cfg_val], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
+        # Выходим мгновенно, окно само закроется после анимации
         self.fade_out_and_quit()
 
     def changeEvent(self, event):
