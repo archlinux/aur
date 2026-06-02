@@ -1,0 +1,57 @@
+_reload_restart_if_active() {
+  if ! command -v systemctl >/dev/null 2>&1; then
+    return 0
+  fi
+
+  systemctl daemon-reload
+  if systemctl -q is-active runawesun.service; then
+    systemctl restart runawesun.service
+    echo "restart runawesun.service."
+  fi
+}
+
+post_install() {
+  if [ ! -f "/etc/orayconfig.conf" ]; then
+    touch /etc/orayconfig.conf
+  fi
+  chmod 644 /etc/orayconfig.conf
+
+  if [ -d "/var/log/awesun" ]; then
+    rm -rf /var/log/awesun
+  fi
+  mkdir -p /var/log/awesun
+  chmod 777 /var/log/awesun
+
+  _reload_restart_if_active
+
+  ECHOLEN=$(echo -e|awk '{print length($0)}')
+  if [ ${ECHOLEN} = '0' ]
+  then
+    ECHO='echo -e'
+  else
+    ECHO='echo'
+  fi
+  
+  $ECHO "\033[36m*************************************************************************\033[0m"
+  $ECHO "\033[36m*  awesun daemon service must be running for awesun to work            *\033[0m"
+  $ECHO "\033[36m*  Type: systemctl start runawesun.service                             *\033[0m"
+  $ECHO "\033[36m*************************************************************************\033[0m"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  if [ -f "/etc/orayconfig.conf" ]; then
+    rm -f /etc/orayconfig.conf
+  fi
+
+  if [ -f "/etc/xdg/autostart/awesun.desktop" ]; then
+    rm -f /etc/xdg/autostart/awesun.desktop
+  fi
+
+  rm -rf /var/log/awesun
+}
+
+# vim: ts=2 sw=2 et:
