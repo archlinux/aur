@@ -1,6 +1,6 @@
 pkgbase = r-treetools
 	pkgdesc = Create, Modify and Analyse Phylogenetic Trees
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=TreeTools
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = r-treetools
 	optdepends = r-treedist
 	optdepends = r-treesearch
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/TreeTools_2.3.0.tar.gz
-	md5sums = eae06b9eab0801d8f2654382f4940413
-	b2sums = f4032720b9fa1e26a99ff3dd969972e04a61c12ce5ee4df1d3fe6148d36d58f75b9b490bdf1c52bdf21298d23f8eb7efc1d177ee0f11052ff99168d3e0bf083c
+	source = https://cran.r-project.org/src/contrib/TreeTools_2.4.0.tar.gz
+	md5sums = c8fea6a22e55ea1dcf45a740625a74fd
+	b2sums = 6f53bf14ce065857594f1d89607568c633c594a99f75df0536e3a7821ba6a29d5a3ab35caf9546248a45c069d9859133714473a84c2f7b3927e8c5d766a2dc82
 
 pkgname = r-treetools
