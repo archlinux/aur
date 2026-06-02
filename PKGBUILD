@@ -1,13 +1,9 @@
-pkgbase=git-flow-rs
-pkgname=(
-    git-flow-rs-cli
-    git-flow-rs-gui
-)
-pkgver=2.1.0
+pkgname=git-flow-rs
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='GUI and reimplementation for gitflow with extended logic for CI/CD'
 arch=('x86_64')
-url="https://github.com/Emiliopg91/${pkgbase}"
+url="https://github.com/Emiliopg91/${pkgname}"
 license=('GPL-2')
 makedepends=(
   'rust'
@@ -19,39 +15,33 @@ sha256sums=(
   'SKIP'
 )
 
+depends=(
+  brotli
+  bzip2
+  expat
+  fontconfig
+  freetype2
+  glibc
+  libgcc
+  libpng
+  zlib-ng-compat
+)
+
+install=git-flow-rs.install
+
+
 build() {
-  cd "$srcdir/${pkgbase}"
+  cd "$srcdir/${pkgname}"
   cargo build --release --locked --workspace
 }
 
-package_git-flow-rs-cli() {
-  depends=(
-      glibc
-      libgcc
-  )
-  provides=('gitflow')
-  install=git-flow-rs-cli.install
+package() {
+  cd "$srcdir/${pkgname}"
 
-  cd "$srcdir/${pkgbase}"
   install -Dm755 \
       target/release/git-flow-rs-cli \
       "$pkgdir/usr/bin/git-flow"
-}
 
-package_git-flow-rs-gui() {
-  depends=(
-      brotli
-      bzip2
-      expat
-      fontconfig
-      freetype2
-      glibc
-      libgcc
-      libpng
-      zlib-ng-compat
-  )
-
-  cd "$srcdir/${pkgbase}"
   install -Dm755 \
       target/release/git-flow-rs-gui \
       "$pkgdir/usr/bin/git-flow-gui"
