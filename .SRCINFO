@@ -1,0 +1,16 @@
+pkgbase = pmgui
+	pkgdesc = A lightweight, zero-confirmation GUI for Arch Linux package management and AUR
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rpizerow2-rgb/pmgui
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyqt6
+	depends = yay
+	depends = polkit
+	source = pmgui-1.0.0.tar.gz::https://github.com/rpizerow2-rgb/pmgui/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 778909b0e1fb5549314dc17d6e94d01a0fda8e3b33f8f2b2777e2fa0f1d2d35d
+
+pkgname = pmgui
