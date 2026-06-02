@@ -1,0 +1,15 @@
+pkgbase = snortal
+	pkgdesc = Detect captive portal URLs on a Linux network
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/goastler/snortal
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	source = snortal-1.0.6.tar.gz::https://github.com/goastler/snortal/archive/refs/tags/v1.0.6.tar.gz
+	sha256sums = 988730a0d87a75b0e6810029e341a2577a0f1d4e80408333c4555902fceecd1e
+
+pkgname = snortal
