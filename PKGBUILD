@@ -12,8 +12,14 @@ depends=(
 )
 options=('!strip' '!emptydirs')
 install="${pkgname}.install"
-source_x86_64=("https://github.com/MeatyAri/slideflare/releases/download/v${pkgver}/slideflare_${pkgver}_amd64.deb")
-source_aarch64=("https://github.com/MeatyAri/slideflare/releases/download/v${pkgver}/slideflare_${pkgver}_arm64.deb")
+
+pkgver() {
+  curl -fsSL "https://api.github.com/repos/MeatyAri/slideflare/releases/latest" \
+    | grep -oP '"tag_name":\s*"\Kapp-v\K.*?(?=")'
+}
+
+source_x86_64=("https://github.com/MeatyAri/slideflare/releases/download/app-v${pkgver}/slideflare_${pkgver}_amd64.deb")
+source_aarch64=("https://github.com/MeatyAri/slideflare/releases/download/app-v${pkgver}/slideflare_${pkgver}_arm64.deb")
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 
