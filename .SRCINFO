@@ -6,7 +6,6 @@ pkgbase = jetbrains-toolbox
 	arch = x86_64
 	arch = i686
 	license = custom:jetbrains
-	depends = fuse
 	depends = glib2
 	depends = libxslt
 	depends = libxss

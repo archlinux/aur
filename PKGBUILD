@@ -8,7 +8,6 @@ arch=('x86_64' 'i686')
 url='https://www.jetbrains.com/toolbox/'
 license=('custom:jetbrains')
 depends=(
-  fuse
   glib2
   libxslt
   libxss
