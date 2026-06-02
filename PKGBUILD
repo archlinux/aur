@@ -1,8 +1,9 @@
 # Maintainer: mfw <mfwolffe@outlook.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=mat-cat
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast cat/bat alternative with syntax highlighting, a built-in pager, and zero-copy I/O'
 arch=('x86_64' 'aarch64')
 url='https://github.com/tenseleyFlow/mat'
@@ -11,27 +12,32 @@ depends=('glibc')
 makedepends=('git')
 provides=('mat')
 conflicts=('mat')
-source=("mat-$pkgver::git+https://github.com/tenseleyFlow/mat.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("mat::git+https://github.com/tenseleyFlow/mat.git#tag=v$pkgver"
+        "paige::git+https://github.com/tenseleyFlow/paige#commit=056cdd0b811eae8cb0b366832e30ad6a8b425f1b")
+sha256sums=('SKIP'
+            'SKIP')
 
 prepare() {
-    cd "mat-$pkgver"
-    git submodule update --init --recursive
+    cd "mat"
+    git submodule init
+    git config submodule.lib/paige.url "$srcdir/paige"
+    git -c protocol.file.allow=always submodule update
+    sed -i '/LDFLAGS/s/=/+=/' Makefile
 }
 
 build() {
-    cd "mat-$pkgver"
-    ./configure
+    cd "mat"
+    ./configure --no-werror
     make
 }
 
 check() {
-    cd "mat-$pkgver"
+    cd "mat"
     make test
 }
 
 package() {
-    cd "mat-$pkgver"
+    cd "mat"
 
     install -Dm755 mat "$pkgdir/usr/bin/mat"
     install -Dm644 man/mat.1 "$pkgdir/usr/share/man/man1/mat.1"
