@@ -2,7 +2,7 @@
 # Contributor: Rene Peinthor <peinthor@gmail.com>
 
 pkgname=smartsvn
-pkgver=14.5.0
+pkgver=14.5.1
 pkgrel=1
 pkgdesc="A Subversion (SVN) GUI client"
 arch=("any")
@@ -11,7 +11,7 @@ license=('LicenseRef-custom')
 depends=("java-runtime" "desktop-file-utils" "hunspell-dictionary" "hicolor-icon-theme")
 source=("https://www.smartsvn.com/downloads/${pkgname}/${pkgname}-linux-${pkgver//\./_}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('955e30ba1850052562a570f4dc8aab3cfb00eb2b9fa556e060cb38a0551a47b3'
+sha256sums=('c856b2abff75d5bd80ed2db620858845758b3ad2db86aa4fcfaf4c56adef5f41'
             'ab0ef714cdb1ba8f188b04f4accaf661501503234b4cedd335e200498b6e3b35')
 
 package() {
