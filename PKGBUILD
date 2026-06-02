@@ -3,7 +3,7 @@
 # AUR Package Repository: https://github.com/patrickjaja/claude-desktop-bin
 
 pkgname=claude-desktop-bin
-pkgver=1.9659.2
+pkgver=1.9659.4
 pkgrel=1
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64' 'aarch64')
@@ -31,10 +31,10 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
 provides=('claude-desktop')
 conflicts=('claude-desktop')
 _electron_ver=42.0.0
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.9659.2/claude-desktop-1.9659.2-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
-sha256sums_x86_64=('a67396b3512363af217f0a3ca6c7bf3b2e5fe65bb12d229f7891e46c56034608' 'SKIP')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.9659.2/claude-desktop-1.9659.2-linux-aarch64.tar.gz" "electron-v${_electron_ver}-linux-arm64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-arm64.zip")
-sha256sums_aarch64=('ce389d64659e3b21733cc4a6aadcd788c106df5a6e915c55bdaff2c019d9be48' 'SKIP')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.9659.4/claude-desktop-1.9659.4-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
+sha256sums_x86_64=('78c20d20ac5aad284f6321cc87e2d0606fcbf8389a9c84db3ab124d9c16b5314' 'SKIP')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.9659.4/claude-desktop-1.9659.4-linux-aarch64.tar.gz" "electron-v${_electron_ver}-linux-arm64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-arm64.zip")
+sha256sums_aarch64=('ce431fd385dc56cc4cbb739f025917afb0b577376c1abcf28b85532a6992ea83' 'SKIP')
 options=('!strip')
 
 package() {
