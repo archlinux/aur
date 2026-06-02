@@ -1,25 +1,26 @@
-# Maintainer: Steven Allen <steven@stebalien.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Steven Allen <steven@stebalien.com>
 # Contributor: Jakob Matthes <jakob.matthes@gmail.com>
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
 
 pkgname=roll
-pkgver=2.6.1
+pkgver=2.7.0
 pkgrel=1
+arch=(i686 x86_64)
 pkgdesc="A tool to roll a user-defined dice sequence and display the result"
-arch=('i686' 'x86_64')
-depends=('glibc')
-url="http://matteocorti.github.io/roll/"
-license=('GPL2')
-source=("https://github.com/matteocorti/roll/releases/download/v${pkgver}/roll-${pkgver}.tar.gz")
-sha256sums=('399bd4958d92f82fb75ff308decb2d482c9a8db80234014f6d42f6513b144179')
+url="https://github.com/matteocorti/roll"
+depends=(glibc)
+license=(GPL-2.0-or-later)
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/roll-$pkgver.tar.gz")
+sha256sums=('9e116501aaa0c8f954d31a86e8cf6dee5d98ee35a5e8e5b025646c4bee741533')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	./configure --prefix=/usr
-	make
+    cd "$pkgname-$pkgver"
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="$pkgdir" install
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir" install
 }
