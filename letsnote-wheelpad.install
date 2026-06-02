@@ -1,0 +1,19 @@
+post_install() {
+    udevadm control --reload-rules || true
+    udevadm trigger || true
+    if ! grep -q '^uinput ' /proc/modules 2>/dev/null; then
+        modprobe uinput || true
+    fi
+    systemctl --global enable letsnote-wheelpad.service || true
+    echo ">> Reboot, log in, or run:"
+    echo ">>   systemctl --user enable --now letsnote-wheelpad.service"
+}
+
+post_upgrade() {
+    udevadm control --reload-rules || true
+    systemctl --global reenable letsnote-wheelpad.service || true
+}
+
+pre_remove() {
+    systemctl --global disable letsnote-wheelpad.service || true
+}
