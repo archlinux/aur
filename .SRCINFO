@@ -1,6 +1,6 @@
 pkgbase = mupdf-git
 	pkgdesc = Lightweight PDF, XPS, and E-book viewer
-	pkgver = 20260525.6b4b7c8d1
+	pkgver = 20260602.1168127a5
 	pkgrel = 1
 	url = https://mupdf.com/
 	arch = x86_64

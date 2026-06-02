@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20260525.6b4b7c8d1
+pkgver=20260602.1168127a5
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=(x86_64 armv7h aarch64)
@@ -45,6 +45,9 @@ prepare() {
 	# Should be in mujs package.
 	mkdir thirdparty/mujs
 	cp ../regexp.h thirdparty/mujs
+
+	# No idea what that is
+	sed -e '/autoheaderid/d' -i source/html/md.c Makelists
 }
 
 build() {
