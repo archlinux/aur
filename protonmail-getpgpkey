@@ -1,0 +1,100 @@
+#!/bin/sh
+
+# Information: https://blog.x-way.org/Misc/2024/09/02/Get-the-PGP-public-key-of-a-Proton-Mail-user.html
+
+# License: GPL-3.0-only
+
+VERSION=0.1_20260602.01
+
+msg() {
+  printf '%s\n' "$@"
+}
+
+errmsg() {
+  msg "$@" > /dev/stderr
+}
+
+usage="protonmail-getpgpkey, version ${VERSION}; copyright (c) 2026, dreieck, under GPL-3.0-only.
+
+Usage:
+
+  $0 <email>:      Retrieve publiv OpenPGP key for proton mail user with email address '<email>'.
+  $0 -h|--help:    Print this help message.
+  $0 -V|--version: Print version.
+  $0    --license: Print license information.
+
+- This programme retrieves the public OpenPGP key associated with that email address and prints it to stdout.
+- For non-existing email addresses at Proton Mail's email domains fake OpenPGP keys are returned.
+- For email addresses not belonging to Proton Mail's email domains Proton Mail returns a failure string, and this programme exits with exitcode 99, a failure message to stderr, and no stdout, upon detection of that.
+
+To run, you need to use a bourne shell (e.g. 'bash'), and 'curl' needs to be installed and in the '\$PATH'.
+
+- This programme is licensed under the GNU GPL version 3.0 only.
+- This programme comes with absolutely no warranty; for details run '$0 --license'.
+- This is free software, and you are welcome to redistribute it under certain conditions; for details run '$0 --license'."
+
+licenseinfo="GPL-3.0-only
+
+protonmail-getpgpkey, version ${VERSION} -- retrieve the public OpenPGP key from a Proton Mail user by querying Proton Mail's web API.
+Copyright (C) 2026, dreieck
+
+This programme is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License.
+
+This programme is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this programme.  If not, see <https://www.gnu.org/licenses/>."
+
+
+if [ $# -lt 1 ]; then
+  errmsg "$0: Error: No command line argument passed."
+  errmsg "Use '$0 -h' for usage information."
+  errmsg ''
+  errmsg "Aborting."
+  exit 1
+fi
+
+if [ $# -gt 1 ]; then
+  errmsg "$0: Error: No command line argument passed."
+  errmsg "Use '$0 -h' for usage information."
+  errmsg ''
+  errmsg "Aborting."
+  exit 1
+fi
+
+case "$1" in
+  '-h'|'--help')
+    msg "${usage}"
+    exit 0
+  ;;
+  '-V'|'--version')
+    msg "${VERSION}"
+    exit 0
+  ;;
+  '--license')
+    msg "${licenseinfo}"
+    exit 0
+  ;;
+esac
+
+if ! which curl > /dev/null 2>&1; then
+  errmsg "$0: Error: 'curl' not found."
+  errmsg ''
+  errmsg "'curl' needs to be installed and in the in the '\$PATH' to run this programme."
+  errmsg ''
+  errmsg "Aborting."
+  exit 9
+fi
+
+uid="$1"
+_result="`curl -s --show-error "https://api.protonmail.ch/pks/lookup?op=get&search=${uid}"`"
+
+case "${_result}" in
+  "No key found")
+    errmsg "${_result}"
+    exit 99
+  ;;
+  *)
+    msg "${_result}"
+    exit 0
+  ;;
+esac

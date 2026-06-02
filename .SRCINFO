@@ -1,0 +1,13 @@
+pkgbase = protonmail-getpgpkey
+	pkgver = 0.1_20260602.01
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/protonmail-getpgpkey
+	arch = any
+	groups = protonmail
+	license = GPL-3.0-only
+	depends = sh
+	depends = curl
+	source = protonmail-getpgpkey
+	sha256sums = 8450017cdb856eb7134fc1899a31599683e7e314fd5ed5652322fa58e425cd74
+
+pkgname = protonmail-getpgpkey
