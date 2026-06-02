@@ -9,12 +9,11 @@ arch=('x86_64' 'aarch64')
 url="https://gitlab.com/5unekku/monsoon"
 license=('GPL-3.0-only')
 depends=('libtorrent-rasterbar' 'gcc-libs' 'glibc' 'curl')
-makedepends=('git' 'cargo' 'boost' 'clang')
+makedepends=('git' 'rust' 'boost' 'clang')
 optdepends=(
     'systemd: user service included — enable with: systemctl --user enable --now monsoon'
 )
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 # disable LTO: makepkg's default `lto` option injects -Clinker-plugin-lto
 # into RUSTFLAGS, which breaks ffi to C/asm code (ring, our libtorrent
 # bridge). symptom is undefined symbols at final link for every C-derived
