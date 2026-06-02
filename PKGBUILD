@@ -1,7 +1,7 @@
 # Maintainer: bytesketch
 
 pkgname=lpack-git
-pkgver=1.0_r
+pkgver=r3.g79de796
 pkgrel=1
 pkgdesc="A lightweight Linux packaging system and portable package manager using the .lpk format"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -11,13 +11,18 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cargo')
 
-provides=('lpack')
+provides=("lpack=${pkgver}")
 conflicts=('lpack')
 
 source=("lpack::git+https://github.com/bytesketch/lpack.git")
 sha256sums=('SKIP')
 
 options=('!debug')
+
+pkgver() {
+    cd "${srcdir}/lpack"
+    printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
     cd "${srcdir}/lpack"
