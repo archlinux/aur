@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=frida-server-android-bin
-pkgver=17.10.0
+pkgver=17.10.1
 pkgrel=1
 pkgdesc='Frida server binaries for Android targets'
 arch=('any')
@@ -17,10 +17,10 @@ source=(
   "frida-server-${pkgver}-android-x86_64.xz::https://github.com/frida/frida/releases/download/${pkgver}/frida-server-${pkgver}-android-x86_64.xz"
 )
 sha256sums=('5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2'
-            'df65a49573148abcf9c19e6403fe32b9dd067ba504ed900f666f8fd486e8e4d3'
-            'a0d6ca39ee498bb896290e1e876b585edd18e1a153f0dae418c73300a71a7907'
-            'd1c9f552d74cb3feb33f2f2c54d7cd96624b8b3a04a3ce0c7539103386590f58'
-            '3c951f88bccd548c9b05a04bd7fae6aa8039560263aab2dd8db8d76369f54294')
+            'b0c6eeb486c15309a69d13699ec7291adc2e170d0c6ca0e4331c3a7262ca47a1'
+            'd03c696410e609e849abcccc24018673a1a9bff4b8a0c547a2ef33458f6d72ef'
+            '0820d8ba165d9e019caf4e97ff4839f622176ef7b99babbdb7a3338fc9f7ba3b'
+            '9e37483706bab8ae58a0f04ab5bff88e49a71dfc52952c8399d8403e87178115')
 
 latestver() {
   gh api repos/frida/frida/releases/latest --jq '.tag_name'
