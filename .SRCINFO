@@ -1,6 +1,6 @@
 pkgbase = dircmp-bin
 	pkgdesc = Terminal TUI for comparing two directories side by side
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/ilyasturki/dircmp
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = dircmp-bin
 	provides = dircmp
 	conflicts = dircmp
 	options = !strip
-	source = LICENSE-1.5.1::https://github.com/ilyasturki/dircmp/raw/v1.5.1/LICENSE
+	source = LICENSE-1.5.2::https://github.com/ilyasturki/dircmp/raw/v1.5.2/LICENSE
 	sha256sums = SKIP
-	source_x86_64 = dircmp-bin-1.5.1-x86_64::https://github.com/ilyasturki/dircmp/releases/download/v1.5.1/dircmp-linux-x64
-	sha256sums_x86_64 = 51edb1bff641895f0dc195548fa1a06892a2171ed509c0d8f62fe5e334267b2b
-	source_aarch64 = dircmp-bin-1.5.1-aarch64::https://github.com/ilyasturki/dircmp/releases/download/v1.5.1/dircmp-linux-arm64
-	sha256sums_aarch64 = d78cb467312a41b54ebe21739302d7f7065e6d7c8dfb37d8b99e487e23319182
+	source_x86_64 = dircmp-bin-1.5.2-x86_64::https://github.com/ilyasturki/dircmp/releases/download/v1.5.2/dircmp-linux-x64
+	sha256sums_x86_64 = 4819cb7d07ab16dc6dfb79551e514627046dfa72dc28c9344b17dd86cbec9220
+	source_aarch64 = dircmp-bin-1.5.2-aarch64::https://github.com/ilyasturki/dircmp/releases/download/v1.5.2/dircmp-linux-arm64
+	sha256sums_aarch64 = dcfe611bcc7d7498c3a53c78a00040729dbf29f2c3660e650bfee3a920ecb85e
 
 pkgname = dircmp-bin

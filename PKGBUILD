@@ -1,6 +1,6 @@
 # Maintainer: Ilyas Turki <ilyasturki at gmail dot com>
 pkgname=dircmp-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Terminal TUI for comparing two directories side by side"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/dircmp-linux-x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/dircmp-linux-arm64")
 sha256sums=('SKIP')
-sha256sums_x86_64=('51edb1bff641895f0dc195548fa1a06892a2171ed509c0d8f62fe5e334267b2b')
-sha256sums_aarch64=('d78cb467312a41b54ebe21739302d7f7065e6d7c8dfb37d8b99e487e23319182')
+sha256sums_x86_64=('4819cb7d07ab16dc6dfb79551e514627046dfa72dc28c9344b17dd86cbec9220')
+sha256sums_aarch64=('dcfe611bcc7d7498c3a53c78a00040729dbf29f2c3660e650bfee3a920ecb85e')
 
 package() {
     install -Dm755 "${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/dircmp"
