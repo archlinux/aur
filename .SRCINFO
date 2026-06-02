@@ -1,0 +1,19 @@
+pkgbase = run-concurrently
+	pkgdesc = A pure python, zero dependency, package to run a list of commands concurrently
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/eelkevdbos/run-concurrently
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	provides = run-concurrently
+	conflicts = python-run-concurrently
+	source = run-concurrently-0.2.5.tar.gz::https://github.com/eelkevdbos/run-concurrently/archive/refs/tags/v0.2.5.tar.gz
+	sha256sums = 8ca83b9888ba80451d0f81f6afba7355898d5933e2abefc0a60cb15ae07b98a3
+
+pkgname = run-concurrently

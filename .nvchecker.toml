@@ -1,0 +1,3 @@
+[run-concurrently]
+source = "pypi"
+pypi = "run-concurrently"
