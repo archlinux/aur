@@ -6,14 +6,14 @@
 
 _locale='fr'
 pkgname=palemoon-i18n-fr
-pkgver=33.8.0
+pkgver=34.3.0
 pkgrel=1
 pkgdesc="French language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('1ba017308b67d64052686f41165398678e99a195977f746ad1c74f8a10389ffa')
+sha256sums=('431c03b9d924a663219fdc00b85d4b2a66e2757124d016180f99b18c5bead304')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
