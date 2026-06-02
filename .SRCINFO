@@ -1,13 +1,13 @@
 pkgbase = palemoon-i18n-cs
 	pkgdesc = Czech language pack for Pale Moon browser
-	pkgver = 33.8.0
+	pkgver = 34.3.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL-2.0
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-cs-33.8.0.xpi
-	source = palemoon-i18n-cs-33.8.0.xpi::https://addons.palemoon.org/?component=download&version=33.8.0&id=langpack-cs@palemoon.org
-	sha256sums = c1b3d32b403446561a596b3d2bb40a4fee8e4824a362615cf0b6ee5211bb538f
+	noextract = palemoon-i18n-cs-34.3.0.xpi
+	source = palemoon-i18n-cs-34.3.0.xpi::https://addons.palemoon.org/?component=download&version=34.3.0&id=langpack-cs@palemoon.org
+	sha256sums = 14212341b223a4634441a580b8acd9637832178e95781dd93e7ff092a07420a3
 
 pkgname = palemoon-i18n-cs
