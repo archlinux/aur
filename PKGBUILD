@@ -11,6 +11,11 @@ makedepends=('pkg-config')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rickprice/VolumePanningStereo.lv2/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9a8d1c0c3893feec0c4307c9d5fcc2db76a7f184d2ca076f0160f6fa66669e66')
 
+prepare() {
+    cd "VolumePanningStereo.lv2-${pkgver}"
+    make clean
+}
+
 build() {
     cd "VolumePanningStereo.lv2-${pkgver}"
     make
