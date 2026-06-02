@@ -2,7 +2,7 @@
 
 pkgname=python-onnx-simplifier
 _pkgname=onnx-simplifier
-pkgver=0.5.0
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Simplify your ONNX model by removing redundant operators'
 arch=('x86_64')
@@ -36,8 +36,10 @@ prepare() {
     sed -i 's|git@github.com:|https://github.com/|g' .gitmodules
     git submodule sync
 
-    # Only init required submodules (skip onnxruntime - we use system version)
-    git submodule update --init third_party/pybind11
+    # Init only the onnx-optimizer submodule. onnx-simplifier 0.6.x dropped its
+    # vendored third_party/pybind11 submodule (the C++ extension now finds system
+    # pybind11 via find_package); onnx-optimizer still carries onnx + pybind11 and
+    # is initialised recursively below.
     git submodule update --init third_party/onnx-optimizer
 
     # Init onnx-optimizer's submodules
