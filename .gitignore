@@ -3,3 +3,4 @@
 *.pkg.tar.xz
 pkg/
 src/
+squashfs-root/
