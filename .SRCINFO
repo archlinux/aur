@@ -1,0 +1,15 @@
+pkgbase = lanscan
+	pkgdesc = LAN network scanner — discovers devices via ARP, optionally scans TCP/UDP ports
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/goastler/lan-scan
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = AGPL-3.0-only
+	makedepends = rust
+	makedepends = cargo
+	source = lanscan-1.0.5.tar.gz::https://github.com/goastler/lan-scan/archive/refs/tags/v1.0.5.tar.gz
+	sha256sums = cb61b949549f443b66af436af4c663864c990a69b160f28f1c04418b27cf00b6
+
+pkgname = lanscan
