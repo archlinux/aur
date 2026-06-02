@@ -2,7 +2,7 @@
 pkgname=tical
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A minimalist Tokyo Night themed terminal calculator (TUI)"
+pkgdesc="Minimalist TUI calculator with mouse & keyboard control and a Tokyo Night theme"
 arch=('x86_64')
 url="https://github.com/atiladefreitas/tical"
 license=('MIT')

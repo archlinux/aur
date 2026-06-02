@@ -1,5 +1,5 @@
 pkgbase = tical
-	pkgdesc = A minimalist Tokyo Night themed terminal calculator (TUI)
+	pkgdesc = Minimalist TUI calculator with mouse & keyboard control and a Tokyo Night theme
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/atiladefreitas/tical
