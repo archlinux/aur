@@ -1,14 +1,18 @@
 # Maintainer: Atila de Freitas <atiladefreitas@users.noreply.github.com>
 pkgname=tical
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Minimalist TUI calculator with mouse & keyboard control and a Tokyo Night theme"
 arch=('x86_64')
 url="https://github.com/atiladefreitas/tical"
 license=('MIT')
 makedepends=('go')
+optdepends=(
+	'wl-clipboard: copy results to the clipboard on Wayland'
+	'xclip: copy results to the clipboard on Xorg'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b6232dd54a0157f8bc437a16c1f58c6bda1d1abf018a805a1216725a28989fd2')
+sha256sums=('50201125a66ac3961b5d10278c10dec2f19b55b7cb41e25c4cd2d480f2c4139a')
 
 prepare() {
 	cd "$pkgname-$pkgver"
