@@ -1,7 +1,7 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=iso-commander
-pkgver=7.1.4
-pkgrel=2
+pkgver=7.1.5
+pkgrel=1
 pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/iso-commander"
@@ -15,7 +15,7 @@ optdepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('57ace81dc661fce42861c8f84a1a0d63')
+md5sums=('f498d7cd1cb2e0fda698435767aacb0e')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
