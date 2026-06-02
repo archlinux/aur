@@ -1,6 +1,6 @@
 # Maintainer: SathyaG
 pkgname=lm-get
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Search and download GGUF models from Hugging Face"
 arch=('x86_64')
