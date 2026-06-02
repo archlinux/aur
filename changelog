@@ -1,3 +1,11 @@
+2026-05-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.3.6.1-1:
+    ASF will now automatically chmod IPC unix socket to 0666 upon creation (@JustArchi).
+    Updated systemd service units with RuntimeDirectory to create /run/asf-%i by default (@JustArchi).
+    Added documentation of using IPC unix sockets, which were hidden feature previously (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2026-04-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.3.5.1-1:
     Added support for parsing steam launch URL format in selected ASF commands (@Nuklon #3579).
