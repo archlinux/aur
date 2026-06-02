@@ -1,6 +1,20 @@
 post_install() {
     systemctl daemon-reload
-    systemctl enable --now machctrl-backend.service
+
+    # Habilita e inicia o serviço
+    systemctl enable machctrl-backend.service 2>/dev/null || true
+    systemctl start machctrl-backend.service 2>/dev/null || true
+
+    # Verifica se realmente está enabled
+    if ! systemctl is-enabled machctrl-backend.service &>/dev/null; then
+        ln -sf /usr/lib/systemd/system/machctrl-backend.service                /etc/systemd/system/multi-user.target.wants/machctrl-backend.service 2>/dev/null || true
+    fi
+
+    # Carrega módulo nct6775 para fans da placa-mãe
+    modprobe nct6775 2>/dev/null || true
+    if [ ! -f /etc/modules-load.d/nct6775.conf ]; then
+        echo "nct6775" > /etc/modules-load.d/nct6775.conf
+    fi
     gtk-update-icon-cache /usr/share/icons/hicolor 2>/dev/null || true
     update-desktop-database /usr/share/applications 2>/dev/null || true
     echo ""
@@ -13,6 +27,12 @@ post_install() {
 post_upgrade() {
     systemctl daemon-reload
     systemctl restart machctrl-backend.service
+
+    # Garante módulo nct6775
+    modprobe nct6775 2>/dev/null || true
+    if [ ! -f /etc/modules-load.d/nct6775.conf ]; then
+        echo "nct6775" > /etc/modules-load.d/nct6775.conf
+    fi
     gtk-update-icon-cache /usr/share/icons/hicolor 2>/dev/null || true
     update-desktop-database /usr/share/applications 2>/dev/null || true
     echo ""
