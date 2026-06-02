@@ -1,6 +1,6 @@
 pkgbase = mbelib-neo
 	pkgdesc = P25 Phase 1 and ProVoice IMBE and Half-rate AMBE vocoder library (modernized fork)
-	pkgver = 1.2.7
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/arancormonk/mbelib-neo
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mbelib-neo
 	depends = glibc
 	conflicts = mbelib-neo-git
 	options = staticlibs
-	source = mbelib-neo-1.2.7.tar.gz::https://github.com/arancormonk/mbelib-neo/archive/refs/tags/v1.2.7.tar.gz
-	sha256sums = b2b1b4eeb3979450e3d3aaec2f65eda3398af959b5a178f727ed0d82a703d58c
+	source = mbelib-neo-2.0.0.tar.gz::https://github.com/arancormonk/mbelib-neo/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 7c6176f77743a354426ba278149fae1960f15e21988b079155414cf3b3ee1919
 
 pkgname = mbelib-neo
