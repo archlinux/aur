@@ -2,7 +2,7 @@
 
 pkgbase=nixl
 pkgname=('nixl' 'python-nixl')
-pkgver=0.10.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='NVIDIA Inference Xfer Library: high-throughput, low-latency point-to-point data transfer for distributed inference'
 arch=('x86_64')
@@ -15,6 +15,8 @@ depends=(
   'liburing'
   'cuda'
   'gflags'
+  'hwloc'
+  'numactl'
 )
 makedepends=(
   'meson'
@@ -24,12 +26,13 @@ makedepends=(
   'pkgconf'
   'asio'
   'tomlplusplus'
+  'taskflow'
   'pybind11'
   'python'
   'gcc15'
 )
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/ai-dynamo/nixl/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/ai-dynamo/nixl/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('d86da898277f51d5e5b72ca5bf69c1c3f93d10c433ea128cd205afdbbaa93839')
 
 prepare() {
   cd "$srcdir/nixl-$pkgver"
@@ -54,9 +57,23 @@ build() {
   # POSIX, LIBFABRIC and the CUDA GPUDirect-Storage backends. etcd + doca deps are
   # optional (required:false) and resolve to "not found" cleanly. The pybind11
   # python bindings (nixl_cu13) are built unconditionally and split into python-nixl.
+  # --wrap-mode=nodownload: never download a meson subproject wrap; resolve all
+  # deps from system packages. Every REQUIRED dep is packaged (abseil-cpp/asio/
+  # liburing/tomlplusplus + the new taskflow, found via its pkg-config). The
+  # optional prometheus-cpp telemetry exporter is pulled by an explicit
+  # cmake.subproject(..., required:false); with no download it finds no source and
+  # degrades gracefully (telemetry core + all data backends still build). DOCA
+  # telemetry similarly no-ops (SDK absent). Keeps the build offline/reproducible.
+  # -Dwerror=false: nixl's default_options sets werror=true, but system abseil
+  # (lts_20260107) marks absl::Mutex::Lock/Unlock/ReaderLock/ReaderUnlock
+  # deprecated, which nixl's src/core/sync.h still uses -> -Werror=deprecated-
+  # declarations turns it fatal. The methods still work; un-fatal the warnings
+  # (distro builds routinely relax upstream -Werror against newer toolchains/libs).
   meson setup build \
     --prefix=/usr \
     --buildtype=release \
+    --wrap-mode=nodownload \
+    -Dwerror=false \
     -Dbuild_tests=false \
     -Dbuild_examples=false \
     -Dbuild_docs=false \
