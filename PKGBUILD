@@ -6,9 +6,9 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A post-modern terminal file explorer"
 
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
-_gitversion=v${pkgver}.post${pkgrel}
+_gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
 _barch=('linux-x64-nuitka' 'linux-arm64-nuitka')
@@ -31,10 +31,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.zip")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.zip")
-sha256sums=('b5cff150c16ef85b8f0f50aa5d456f5f4d5ffef51ffc1567562e848990c2e692'
+sha256sums=('448ac7c05710e91da3aab578808017e838311bc9536a0158ad9d80cef9fd195c'
             'b1f7cd544c998e25bcc990abc8c1f7c46d01b3a2ec61efb454ea932cbcc69445')
-sha256sums_x86_64=('749398584770de6acad300d3ce355fa5f90d22066a4170411067eb719530b084')
-sha256sums_aarch64=('fe33308675407f7cec6e7239fc3d660d5fd5f9b9a1cd62835e963e9d8062bb93')
+sha256sums_x86_64=('e6ec5360f012258a0297ebfdeda6fa837a7f5c9f9aa43db0af7f5faf0330076c')
+sha256sums_aarch64=('c0421f9fbae973fa58510b94f5eb958eab14d724321e578b96ae3cd895d8826b')
 
 noextract=("${source_x86_64[@]%%::*}" "${source_i686[@]%%::*}" "${source_aarch64[@]%%::*}")
 
@@ -47,7 +47,7 @@ package() {
 
 	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_appname}" << END
 #!/usr/bin/env sh
-exec /opt/${_appname}/${_appname}.bin "\$@"
+exec /opt/${_appname}/${_appname} "\$@"
 END
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
