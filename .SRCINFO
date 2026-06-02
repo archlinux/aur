@@ -14,8 +14,8 @@ pkgbase = fafind-bin
 	source = LICENSE::https://raw.githubusercontent.com/rywils/fafind/v1.1.0/LICENSE
 	sha256sums = f500e1e4b3d5c32caedbd5d5d6ff1a92b683cd0bc3a41053cfd4fa0b51a854c1
 	source_x86_64 = fafind-x86_64-1.1.0.tar.gz::https://github.com/rywils/fafind/releases/download/v1.1.0/fafind-linux-x86_64-v1.1.0.tar.gz
-	sha256sums_x86_64 = ddd5e414b05d64f327d7f2d8e30b4c6e56a50d4648e6758e741edcfdd3697e65
+	sha256sums_x86_64 = c5687e2d4f2ee5362c9260dcc369a1c15fa4073cf7fd2d61ed49d70e594f0e65
 	source_aarch64 = fafind-arm64-1.1.0.tar.gz::https://github.com/rywils/fafind/releases/download/v1.1.0/fafind-linux-arm64-v1.1.0.tar.gz
-	sha256sums_aarch64 = 74802bd019e20aad58b6c1bef934d4f185c2dbab6e07048ad3e3d4297359801b
+	sha256sums_aarch64 = 36bf83f3f9b691763301f040e8f1850e88955d2cb18490c5f0acda1ea9333465
 
 pkgname = fafind-bin
