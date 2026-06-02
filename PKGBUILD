@@ -2,7 +2,7 @@
 
 _Name="Sideband"
 pkgname="${_Name,,}"
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 pkgdesc="Communicate with people or LXMF-compatible systems over Reticulum networks"
 arch=(
@@ -60,8 +60,20 @@ conflicts=(
 _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
+  # "${_pkgsrc}-manifest.rsm::${_url}/releases/download/${pkgver}/manifest.rsm"
 )
-sha256sums=('ee25207c01880245254d0908fc6f284271494b3dc2b8f00954ede1cd8c0a90e0')
+sha256sums=('5872015437078c6f44aaf52d93632291824068d060f3fc7ee092b9cd56ecb4c6')
+
+# verify() {
+#   rngit release "${_pkgsrc}-manifest.rsm" verify \
+#     --signer bc7291552be7a58f361522990465165c
+# }
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  sed -e "s|^__version__ = .*|__version__ = \"${pkgver}\"|" \
+      -i 'sbapp/main.py'
+}
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
