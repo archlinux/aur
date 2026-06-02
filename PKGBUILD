@@ -6,8 +6,8 @@
 # Contributor: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=ghidra-git
-pkgver=11.4.3.r1035.ccfea7e4c0
-pkgrel=2
+pkgver=12.1.1.r514.cef869af04
+pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64' 'aarch64') # Not sure aarch64 is correct here. Please confirm it to me in the comments if you can test that!
 url='https://www.nsa.gov/ghidra'
@@ -101,7 +101,7 @@ package() {
   echo -e "${_prefix}Extracting the zip archive"
   _appver=$(grep -oP '(?<=^application.version=).*$' Ghidra/application.properties)
   _relname=$(grep -oP '(?<=^application.release.name=).*$' Ghidra/application.properties)
-  bsdtar xf build/dist/ghidra_"${_appver}_${_relname}_$(date +"%Y%m%d")"_linux_*.zip -C "$pkgdir"/opt
+  bsdtar xf build/dist/ghidra_"${_appver}_${_relname}_$(date +"%Y%m%d")".zip -C "$pkgdir"/opt
 
   echo -e "${_prefix}Setting up a versionless directory name"
   mv "$pkgdir"/opt/ghidra{_"${_appver}_${_relname}",}
