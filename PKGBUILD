@@ -2,8 +2,8 @@
 # SKIP COMMENT CHECK
 pkgname=ozhium-ollium
 pkgdesc="System monitor daemon with GTK4 overlay UI. Monitors backlight, volume, battery, network, and Bluetooth changes and triggers an OSD overlay."
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 arch=(x86_64)
 url=https://github.com/Nithin-3/ozhium-ollium
 license=(BSD-3-Clause)
