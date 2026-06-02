@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=aaaaxy
-pkgver=1.7.61
+pkgver=1.7.77
 pkgrel=1
 pkgdesc='A nonlinear puzzle platformer taking place in impossible spaces'
 arch=('x86_64')
@@ -17,8 +17,8 @@ depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libx11')
 makedepends=('go' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'make' 'strip-nondeterminism' 'zip')
 source=("aaaaxy-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${url}/releases/download/v${pkgver}/sdl-gamecontrollerdb-for-aaaaxy-v${pkgver}.zip")
-sha256sums=('58e3122ace9af9472341679f515f49e6ee9c047a1ec8a60c4e3a5d10a5625114'
-            '8197d12d9e74bc1d2edf324f050435dc3c9babe22cee2ba62028fd501ab45d79')
+sha256sums=('fd98b693252696efb72148007b7e059c2882a0fde67e5817c4adfa31512aff9d'
+            '8fb90e32f080ef1d61811abbb2d8abbc511cf44c1244049be979f11a9f4a64d8')
 
 prepare() {
   cd "$pkgname-$pkgver"
