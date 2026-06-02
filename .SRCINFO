@@ -1,6 +1,6 @@
 pkgbase = cargo-mutants
 	pkgdesc = Mutation testing for Rust
-	pkgver = 27.0.0
+	pkgver = 27.1.0
 	pkgrel = 1
 	url = https://github.com/sourcefrog/cargo-mutants
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cargo-mutants
 	depends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/sourcefrog/cargo-mutants/archive/v27.0.0/cargo-mutants-27.0.0.tar.gz
-	sha256sums = 568919fc52cabaf4d28fe6b124cd4554732db059eb63cd9b7092d38869f2cf54
+	source = https://github.com/sourcefrog/cargo-mutants/archive/v27.1.0/cargo-mutants-27.1.0.tar.gz
+	sha256sums = e57d8c31a8edee7d9265949aef896768729c824626897938e98a5d162a82bda0
 
 pkgname = cargo-mutants
