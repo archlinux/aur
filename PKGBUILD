@@ -1,13 +1,13 @@
 # Maintainer: mateball9333-debug <mateball9333-debug@users.noreply.github.com>
 
 pkgname=qtiker-git
-pkgver=0.1.0.r1.g2bab924
+pkgver=0.1.1.r0.gc6c0170
 pkgrel=1
 pkgdesc='Small Qt clicker game for Linux'
 arch=('x86_64')
 url='https://github.com/mateball9333-debug/qtiker'
-license=('GPL-2.0-or-later' 'custom:Tux')
-depends=('qt6-base' 'hicolor-icon-theme')
+license=('GPL-2.0-or-later' 'Apache-2.0' 'custom:Tux')
+depends=('qt6-base' 'qt6-svg' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
 provides=('qtiker')
 conflicts=('qtiker')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd qtiker
-    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' || printf '0.1.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' || printf '0.1.1.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
