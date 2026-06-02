@@ -19,4 +19,4 @@ package() {
   chmod 755 -R "${pkgdir}/opt"
 }
 
-sha256sums=('6a9e99aece5589357401c92c301ff0ae39ccb89c448b0b7fdd116f2d9894acd4')
+sha256sums=('c4591786790fb30c5719867e0958562edbc7191a8ca9bdcfc558dc329d30eb78')
