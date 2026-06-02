@@ -1,0 +1,3 @@
+[coil-cli]
+source = "npm"
+npm = "coil-cli"
