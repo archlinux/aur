@@ -1,52 +1,15 @@
+# Version thresholds for informational notices only.
+# Actual data migration and config seeding is handled by the wrapper script
+# at first launch, where the correct user context is available.
 _XDG_MIGRATION_VER="0.3.826"
 _UPDATER_SINCE="0.4.164"
-
-_data_dir() {
-    echo "${XDG_DATA_HOME:-${HOME}/.local/share}/deadsync"
-}
-
-_migrate_data_dir() {
-    local _old_dir="${HOME}/.deadsync"
-    local _new_dir
-    _new_dir=$(_data_dir)
-
-    if [[ -d "${_old_dir}" && ! -d "${_new_dir}" ]]; then
-        echo ">>> Migrating data directory to XDG path:"
-        echo ">>>   ${_old_dir} -> ${_new_dir}"
-        mkdir -p "$(dirname "${_new_dir}")"
-        mv "${_old_dir}" "${_new_dir}"
-    elif [[ -d "${_old_dir}" && -d "${_new_dir}" ]]; then
-        echo ">>> WARNING: Both old and new data directories exist."
-        echo ">>>   Old: ${_old_dir}"
-        echo ">>>   New: ${_new_dir}"
-        echo ">>> Automatic migration skipped to prevent data loss."
-        echo ">>> Please manually merge your data into the new path."
-    fi
-}
-
-_disable_updater() {
-    local _ini
-    _ini="$(_data_dir)/deadsync.ini"
-    mkdir -p "$(_data_dir)"
-
-    if [[ ! -f "${_ini}" ]]; then
-        printf '[Updater]\nupdater_install_enabled = false\n' > "${_ini}"
-        return
-    fi
-
-    if grep -q '^updater_install_enabled' "${_ini}" 2>/dev/null; then
-        sed -i 's/^updater_install_enabled\s*=.*/updater_install_enabled = false/' "${_ini}"
-    else
-        printf '\n[Updater]\nupdater_install_enabled = false\n' >> "${_ini}"
-    fi
-}
 
 _ver_lt() {
     [[ $(vercmp "$1" "$2") -lt 0 ]]
 }
 
 post_install() {
-    local _ver="$1"
+    local _ver="${1%%-*}"  # strip pkgrel suffix (e.g. 0.4.345-1 -> 0.4.345)
 
     echo
     echo " ╔═══════════════════════════════════════════════╗"
@@ -54,14 +17,13 @@ post_install() {
     echo " ╚═══════════════════════════════════════════════╝"
     echo
     echo "  Installed to  : /opt/deadsync"
-    echo "  User data     : $(_data_dir)"
-    echo "  Songs         : $(_data_dir)/songs/"
+    echo "  User data     : \$XDG_DATA_HOME (default: ~/.local/share/deadsync)"
+    echo "  Songs         : \$XDG_DATA_HOME/songs (default: ~/.local/share/deadsync/songs)"
     echo
     echo "  Launch from your application menu or run:"
     echo "    \$ deadsync"
     echo
-    _disable_updater
-    echo "  Note: in-app updates have been disabled in $(_data_dir)/deadsync.ini"
+    echo "  Note: in-app updates are disabled for package manager installs."
     echo "  Updates are managed by pacman / your AUR helper."
     echo
     echo "  Changelog:"
@@ -70,7 +32,8 @@ post_install() {
 }
 
 post_upgrade() {
-    local _ver="$1" _old_ver="$2"
+    local _ver="${1%%-*}"  # strip pkgrel suffix (e.g. 0.4.345-1 -> 0.4.345)
+    local _old_ver="$2"
 
     echo
     echo " ╔═══════════════════════════════════════════════╗"
@@ -78,19 +41,19 @@ post_upgrade() {
     echo " ╚═══════════════════════════════════════════════╝"
     echo
     echo "  Installed to  : /opt/deadsync"
-    echo "  User data     : $(_data_dir)"
+    echo "  User data     : \$XDG_DATA_HOME (default: ~/.local/share/deadsync)"
     echo
 
     if _ver_lt "${_old_ver}" "${_XDG_MIGRATION_VER}"; then
-        _migrate_data_dir
+        echo "  NOTICE: This release moves user data to the XDG data directory."
+        echo "  Your data will be migrated from ~/.deadsync/ on next launch."
         echo
     fi
 
     if _ver_lt "${_old_ver}" "${_UPDATER_SINCE}"; then
-        _disable_updater
-        echo "  Note: in-app updates have been disabled in $(_data_dir)/deadsync.ini"
-        echo "  (upgrade from v${_old_ver}, before the updater was introduced)."
-        echo "  Updates are managed by pacman / your AUR helper."
+        echo "  NOTICE: In-app updates have been introduced but are disabled"
+        echo "  for package manager installs. This will be configured on"
+        echo "  next launch."
         echo
     fi
 
