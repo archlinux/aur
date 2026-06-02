@@ -1,0 +1,21 @@
+pkgbase = herd-bin
+	pkgdesc = GitHub-native orchestration platform for AI coding agents
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/Herd-OS/herd
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = git
+	depends = github-cli
+	optdepends = docker: self-hosted worker runner containers
+	optdepends = docker-compose: legacy docker-compose-based runner deployment
+	provides = herd
+	conflicts = herd
+	conflicts = herd-git
+	source_x86_64 = herd-0.8.2-x86_64::https://github.com/Herd-OS/herd/releases/download/v0.8.2/herd-linux-amd64
+	sha256sums_x86_64 = fdb8b662f8cb613fe6f5807662b67042728c01756087d5ebf613518395acf86e
+	source_aarch64 = herd-0.8.2-aarch64::https://github.com/Herd-OS/herd/releases/download/v0.8.2/herd-linux-arm64
+	sha256sums_aarch64 = 38e25b241e3a3c106c2bd128a2a5a4133f57ca74adffc4766da1319f8099367e
+
+pkgname = herd-bin
