@@ -1,18 +1,17 @@
 pkgbase = perkeep
 	pkgdesc = Perkeep (née Camlistore) is a set of open source formats, protocols, and software for modeling, storing, searching, sharing and synchronizing data in the post-PC era
-	pkgver = 0.11
-	pkgrel = 2
-	url = https://perkeep.org/
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://perkeep.org
 	arch = x86_64
 	arch = armv7h
-	license = Apache
+	license = Apache-2.0
 	makedepends = go>=1.15
 	depends = glibc
 	optdepends = libjpeg-turbo: Fast JPEG support
 	optdepends = docker: Run fallback image if ImagesMagick is not installed on the host
 	optdepends = imagemagick: HEIC decoding (JPEG thumbnails)
-	source = https://perkeep.org/dl/perkeep-0.11-src.zip
-	sha256sums = 9ca95022a5b7547dbcfa0cc6558676c02d3a282f8a4b3c950d8d68291b40a4eb
+	source = perkeep-0.12.tar.gz::https://github.com/perkeep/perkeep/archive/v0.12.tar.gz
+	b2sums = b77c45ed842c8ef8cbbfa02948f0975b50b72540c501db7de1bb66f15147bed6d544b8133fd46ed6c9e4acd8b9da27d5b13892d5f18e281a776bde40efd953fb
 
 pkgname = perkeep
-
