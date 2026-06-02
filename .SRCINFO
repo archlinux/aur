@@ -1,0 +1,21 @@
+pkgbase = python-causal-conv1d
+	pkgdesc = Causal depthwise conv1d in CUDA with a PyTorch interface
+	pkgver = 1.6.2.post1
+	pkgrel = 1
+	url = https://github.com/state-spaces/causal-conv1d
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-packaging
+	makedepends = cuda
+	makedepends = gcc15
+	makedepends = ninja
+	depends = python
+	depends = python-pytorch
+	source = https://files.pythonhosted.org/packages/source/c/causal-conv1d/causal_conv1d-1.6.2.post1.tar.gz
+	sha256sums = 245e314ea21064ded7a5bf6b3b842b644aa6f92e45cecfe3e935629744c35ff4
+
+pkgname = python-causal-conv1d
