@@ -1,6 +1,6 @@
 # Maintainer: Nicholas Wilkins <nickwilkins5757@gmail.com>
 pkgname=gladiator
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Evolutionary chess engine trainer with CPU heuristic and neural network variants"
 arch=('any')

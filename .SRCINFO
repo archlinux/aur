@@ -1,6 +1,6 @@
 pkgbase = gladiator
 	pkgdesc = Evolutionary chess engine trainer with CPU heuristic and neural network variants
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Nicholas-Wilkins/Gladiator
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = gladiator
 	optdepends = python-pytorch: required for the NN engine (GPU users: run install.py instead)
 	optdepends = cuda: NVIDIA GPU acceleration
 	optdepends = rocm-core: AMD GPU acceleration
-	source = gladiator-0.1.1.tar.gz::https://github.com/Nicholas-Wilkins/Gladiator/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 7a5bc824892f803bad0ab33dec369666dae1a393acf1db012e1b177b94c73ec7
+	source = gladiator-0.1.2.tar.gz::https://github.com/Nicholas-Wilkins/Gladiator/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 987d6304a41f2b6bffe080d97554e2d0fe63d4892c52510bee04395ca54343d0
 
 pkgname = gladiator
