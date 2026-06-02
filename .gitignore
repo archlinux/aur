@@ -1,0 +1,7 @@
+# Ignore everything by default
+*
+
+# Whitelist the essentials
+!.gitignore
+!.SRCINFO
+!PKGBUILD
