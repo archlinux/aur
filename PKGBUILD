@@ -2,7 +2,7 @@
 
 pkgname=python-borgstore
 _name=${pkgname#python-}
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A experimental key/value store implementation, supporting multiple backends'
 arch=(any)
@@ -21,7 +21,7 @@ optdepends=('python-requests: REST and rclone backends'
             'python-paramiko: sftp backend')
 source=("git+$url.git#tag=$pkgver?signed")
 validpgpkeys=('6D5BEF9ADD2075805747B70F9F88FB52FAF7B393') # Thomas Waldmann <tw@waldmann-edv.de>
-b2sums=('40d4739c9ce429ac047bfb3a65669fe5cff285a711f03d29967176b4a517abf9fd4df7b62ea56670b5f70570d21f66a8d72cacc2714fc4bedadc96de17fce75b')
+b2sums=('128ab12c4a9fbda1e972629783619ef90b5a2041f2d9eeda964e3b4b294f1da03e00c91663a5ae42ada15b12bc94f58a316ea613fa394217ad8a1b0a772dc3d3')
 
 build() {
     cd $_name
@@ -33,7 +33,7 @@ check() {
     cd $_name
     python -m venv --system-site-packages test-env
     test-env/bin/python -m installer dist/*.whl
-    test-env/bin/python -P -m pytest
+    PATH="$PWD/test-env/bin:$PATH" test-env/bin/python -P -m pytest
 }
 
 package() {
