@@ -12,14 +12,13 @@ optdepends=(
   'gcc: build C/C++ projects with GCC'
   'clang: build C/C++ projects with Clang'
 )
-source=("$pkgname-$pkgver.tar.gz::${SRC_URL}")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dexoron/dcr/archive/refs/tags/v0.7.0.tar.gz")
 sha256sums=('4936f315eaa121096a541109c19ee950cdb8e69bb2e3dcd004fbdb7814bdf371')
 
 build() {
   cd "$srcdir/$pkgname-0.7.0"
-  export CARGO_PROFILE_RELEASE_LTO=false
-  export RUSTFLAGS="${RUSTFLAGS:-}"
-  export RUSTFLAGS="${RUSTFLAGS/-C link-arg=-fuse-ld=lld/}"
+  unset CFLAGS CXXFLAGS LDFLAGS
+  export RUSTFLAGS="-C linker=cc"
   cargo build --release --locked
 }
 
