@@ -17,7 +17,7 @@ pkgbase = citron-neo-nightly-bin
 	conflicts = citron-neo-git
 	conflicts = citron-neo-bin
 	options = !strip
-	source = citron_nightly-05e71276f-linux-x86_64.AppImage::https://github.com/citron-neo/CI/releases/download/nightly-linux/citron_nightly-05e71276f-linux-x86_64.AppImage
-	sha256sums = c8b3007a85abb240a45a9bba093fdea8e6ee7a4a98c4d4740d0c16834e29188e
+	source = citron_nightly-16bff1183-linux-x86_64.AppImage::https://github.com/citron-neo/CI/releases/download/nightly-linux/citron_nightly-16bff1183-linux-x86_64.AppImage
+	sha256sums = a6fc91392ac1e4580914f9d3f58bd96cbb666dcf00dadc558aaac0297b7b779a
 
 pkgname = citron-neo-nightly-bin
