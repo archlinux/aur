@@ -10,9 +10,10 @@
 
 pkgname=caddy-he
 _pkgname=caddy
-pkgver=2.11.2
-pkgrel=2
+pkgver=2.11.3
+pkgrel=1
 pkgdesc='Fast web server with automatic HTTPS (with Hurricane Electric DNS module)'
+provides=(caddy)
 conflicts=(caddy)
 arch=(x86_64)
 url='https://github.com/caddyserver/caddy'
@@ -39,8 +40,8 @@ source=(
   "$_pkgname-disable-executable-altering-commands.patch::https://src.fedoraproject.org/rpms/caddy/raw/rawhide/f/0001-Disable-commands-that-can-alter-the-binary.patch"
   import-he-module.patch
 )
-sha512sums=('05965d0ac5ac3eb9e9de5b1c3c95ca30ee982cae806fffc099463b5634f2eb5f52f6ae020a28c53da6556fa3a2b599dce0d0da5b00ee49a685c432f9a2e57f6a'
-            'fe9a2badd9d385aed0f5e625d99eaf4fa67862e076c4fd7b28a26984aaaae7310887759d3a4a97a128fffb7dc4b266717d902b234e19643b0c2d818849d165e3'
+sha512sums=('ba086524507cf013b143305bfdaf87402d326f76b4b9451d68b15415b37eb1418126a3f80e842bb79331564302c67198353eaa6e6968591805d7321a64745db6'
+            'f379a8249ebf4ac315ece606ba60cb66b6f1edc67c560cd29a847d1a05f8175583c3b0b8b8de50cb7cea41cb3186fd2f6d81d87f45eb76f5912eb37a84522362'
             'e6cdf5f81af01d0a6290ef9503d0bd90244684a6305e5638f079c234b2bc6454688daea3ea9d1b6a6f00eeba0375e9c4372e64c5cb49b5d1206384d2a7201273'
             '6c9d5dce22f1f0f4e222d4adeccd93c486b3be2ac221a7f8a58933b22ce91fe3da8ad38e6db7212846e4ab6336ebc058df16215a43636b965dfed469b3aaa2f6'
             '55ee8d3f8b14f9adddc7a1026addcea4f85b4bae4cd512fd4da2a5e8adaae4b6fd0f486d2e3847f75518f4710a897b4fca84e48ee15700b968bad762125c4742'
