@@ -2,7 +2,7 @@
 
 pkgname=python-lance-namespace
 _pkgname=lance_namespace
-pkgver=0.7.7
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Lance Namespace interface and plugin registry"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/l/$_pkgname/${_pkgname}-${pkgver}.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/lance-format/lance-namespace/main/LICENSE")
-sha256sums=('d00b525f2e26993a6c61668e798bca6c808605ab8a79f29f86a1a1af92d91ae2'
+sha256sums=('c4a79ee221a3b2315c29863ad12d85fcf219a13158e26149d63e21dc4b4673a7'
             'febc00dc5a0557ca8afbcdc6d3896731dc42f4cecabd87e6c98326212f8dbf36')
 
 build() {
