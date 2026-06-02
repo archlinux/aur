@@ -49,7 +49,7 @@ package() {
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/org.musescore.MuseScore4portable.desktop"\
-            "${pkgdir}/usr/share/applications/${appname}.desktop"
+            "${pkgdir}/usr/share/applications/org.musescore.MuseScore4portable.desktop"
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/"
