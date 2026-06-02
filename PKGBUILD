@@ -1,13 +1,14 @@
 # Maintainer: HAHWUL <hahwul@gmail.com>
 pkgname=dalfox
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful open-source XSS scanner and utility focused on automation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hahwul/dalfox"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
+options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hahwul/dalfox/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
