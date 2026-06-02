@@ -1,0 +1,18 @@
+
+pkgbase = sqlose-bin
+pkgname = sqlose-bin
+pkgver = {{PKGVER}}
+pkgrel = 1
+pkgdesc = Sqlose - SQL development environment
+url = https://github.com/xonoxc/Sqlose
+arch = x86_64
+license = custom:Commercial
+depends = gtk3
+depends = libxss
+depends = nss
+depends = alsa-lib
+optdepends = fuse2: for running AppImages
+provides = sqlose
+conflicts = sqlose
+source = https://github.com/xonoxc/Sqlose/releases/download/v{{VERSION}}/Sqlose-Linux-{{VERSION}}.AppImage
+sha256sums = {{SHA256SUM}}
