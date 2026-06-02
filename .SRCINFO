@@ -1,6 +1,6 @@
 pkgbase = concurrently
 	pkgdesc = Run multiple commands concurrently
-	pkgver = 10.0.1
+	pkgver = 10.0.3
 	pkgrel = 1
 	url = https://github.com/open-cli-tools/concurrently
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = concurrently
 	provides = conc
 	conflicts = nodejs-concurrently
 	replaces = nodejs-concurrently
-	noextract = concurrently-10.0.1.tgz
+	noextract = concurrently-10.0.3.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = concurrently-10.0.1.tgz::https://registry.npmjs.org/concurrently/-/concurrently-10.0.1.tgz
-	b2sums = a441b6b0efbc8ff9b01888a401b51fd8649d2e8ce1fdeca7db65dfdaf895e223424ac577595569d612a5a436fa1068d17e130c25f902a884c4472d9f7b291585
+	source = concurrently-10.0.3.tgz::https://registry.npmjs.org/concurrently/-/concurrently-10.0.3.tgz
+	b2sums = 14f5007a0697e030b7c71b68c89da4d04dc2da2f81a12b5b15ccb7271ccd08529caf05fdd5c51f648625e5d0867755887f39ec94571e22913cecfcdafdd3d5b5
 
 pkgname = concurrently
