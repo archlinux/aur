@@ -1,7 +1,7 @@
 pkgbase = mx3
 	pkgdesc = Gesture remapping driver for Logitech MX Master 3 mice on Linux
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enBonnet/mx3-linux-driver
 	arch = x86_64
 	license = MIT
