@@ -11,8 +11,8 @@ depends=('cava' 'wayland' 'ffmpeg' 'libxkbcommon' 'libgl' 'dbus')
 makedepends=('cargo' 'git')
 provides=('cava-bg')
 conflicts=('cava-bg')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/leriart/cava-bg/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/leriart/cava-bg/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('91994bc7b7f1b022418e3a2ee19b6deb1bcddfdb1936551166c60dbb8b346d0d')
 
 build() {
   cd "$pkgname-$pkgver"
