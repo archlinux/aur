@@ -4,13 +4,13 @@
 pkgbase=dictype
 pkgname=(dictype dictype-fcitx)
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='real-time voice-to-text input on Linux'
 arch=('x86_64')
 url='https://github.com/Xinkai/dictype'
 license=('MIT')
 _depends_common=(
-  libprotobuf.so=34.1.0-64
+  libprotobuf.so=35.0.0-64
   libgrpc++.so=1.80-64
 )
 makedepends=(
