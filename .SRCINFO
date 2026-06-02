@@ -1,0 +1,27 @@
+pkgbase = river-bar-git
+	pkgdesc = A small status bar for the River Wayland compositor
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/vighd/river-bar
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = fontconfig
+	depends = freetype2
+	depends = river
+	optdepends = ttf-nerd-fonts-symbols: Nerd Font icon glyphs for the module icons (clock, battery, ...)
+	optdepends = ttf-jetbrains-mono: a monospace text font (or any other TTF/OTF face)
+	optdepends = wireplumber: audio module (wpctl)
+	optdepends = libpulse: audio module live updates (pactl subscribe)
+	optdepends = bluez-utils: bluetooth module (bluetoothctl)
+	optdepends = pacman-contrib: pacman module (checkupdates)
+	optdepends = iputils: network module connectivity check (ping)
+	optdepends = wireless_tools: network module Wi-Fi SSID (iwgetid)
+	optdepends = iwd: network module Wi-Fi SSID alternative (iwctl)
+	provides = river-bar
+	conflicts = river-bar
+	source = river-bar::git+https://github.com/vighd/river-bar.git
+	sha256sums = SKIP
+
+pkgname = river-bar-git
