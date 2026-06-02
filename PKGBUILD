@@ -5,7 +5,7 @@
 
 pkgname=pokerth
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Client to online Poker game written in C++/Qt"
 arch=('x86_64')
@@ -28,7 +28,7 @@ makedepends=(
    'qt6-websockets'
 )
 
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/pokerth/pokerth/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pokerth/pokerth/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('f5ddd47270dfcbcade9c5f5e1ab53686')
 
 build() {
