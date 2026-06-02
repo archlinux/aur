@@ -2,7 +2,7 @@
 
 pkgname=gplay-apk-downloader-cli-git
 pkgver=r287.5ab3c6ee
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to download APKs from Google Play Store with split APK merging and ADB install'
 arch=('any')
 url='https://github.com/alltechdev/gplay-apk-downloader'
@@ -16,7 +16,7 @@ depends=(
 makedepends=('git')
 optdepends=(
   'apkeditor: split APK merging (supplies APKEditor.jar; pulls in a Java runtime)'
-  'android-sdk-build-tools: sign merged APKs (apksigner)'
+  'android-sdk-build-tools: sign merged APKs (apksigner) + parse APK split metadata (aapt)'
   'android-tools: install APKs to device via ADB'
 )
 provides=("${pkgname%-git}")
