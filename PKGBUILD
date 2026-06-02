@@ -1,14 +1,14 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgbase=librefang-git
-pkgname=('librefang-git' 'librefang-desktop-git' 'librefang-whatsapp-gateway-git' 'python-librefang-sdk-git')
+pkgname=("librefang-git" "librefang-desktop-git" "librefang-whatsapp-gateway-git")
 pkgver=2026.5.31beta.16.r0.g2bef7a0f5
-pkgrel=1
+pkgrel=2
 pkgdesc='LibreFang is an open-source Agent Operating System written in Rust. (GIT version with patches for local STT and TTS support) '
 arch=('x86_64' 'aarch64')
 url='https://github.com/librefang/librefang'
 license=('MIT' 'Apache-2.0')
-makedepends=('rust' 'cargo' 'git' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'nodejs' 'npm' 'pnpm' 'node-gyp' 'python' 'nodejs-addon-api' 'libvips' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=('rust' 'cargo' 'git' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'nodejs' 'npm' 'pnpm' 'node-gyp' 'python' 'nodejs-addon-api' 'libvips' )
 source=(
     "${pkgbase}::git+https://github.com/librefang/librefang.git"
     "librefang.sysusers"
@@ -89,9 +89,6 @@ build() {
     cd "${_gwdir}/node_modules/better-sqlite3"
     npx node-gyp rebuild
 
-    # Build Python SDK
-    cd "${srcdir}/${pkgbase}/sdk/python"
-    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -100,17 +97,6 @@ check() {
     cargo test --frozen --release -p librefang-types --lib 2>/dev/null || true
 }
 
-package_python-librefang-sdk-git() {
-    pkgdesc='Official Python client and SDK for the LibreFang Agent OS'
-    depends=('python')
-    provides=('python-librefang-sdk')
-    conflicts=('python-librefang-sdk')
-
-    cd "${srcdir}/${pkgbase}/sdk/python"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
-
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
 
 package_librefang-git() {
     pkgdesc='terminal interface and daemon for the LibreFang Agent OS'
