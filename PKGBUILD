@@ -13,7 +13,7 @@ export DOTNET_SYSTEM_NET_DISABLEIPV6
 
 _pkgname="ryujinx"
 pkgname="$_pkgname-canary"
-pkgver=1.3.288
+pkgver=1.3.308
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://git.ryujinx.app/projects/Ryubing"
@@ -26,6 +26,7 @@ conflicts=("$_pkgname")
 depends=(
   'alsa-lib'
   'fontconfig'
+  'hicolor-icon-theme'
   'jack'
   'libpulse'
   'libx11'
@@ -90,13 +91,14 @@ package() {
 
   # launcher
   local _launcher="$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm644 "$_pkgsrc"/distribution/linux/Ryujinx.desktop "$_launcher"
+  install -Dm644 "$_pkgsrc"/distribution/linux/app.ryujinx.Ryujinx.desktop "$_launcher"
 
+  desktop-file-edit --remove-key="Version" "$_launcher"
   desktop-file-edit --set-key="Exec" --set-value="$_pkgname %f" "$_launcher"
   desktop-file-edit --set-icon="$_pkgname" "$_launcher"
 
   # icon
-  install -Dm644 "$_pkgsrc"/distribution/misc/Logo.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
+  install -Dm644 "$_pkgsrc"/distribution/misc/Logo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
 
   # mimetype
   install -Dm644 "$_pkgsrc"/distribution/linux/mime/Ryujinx.xml "$pkgdir/usr/share/mime/packages/$_pkgname.xml"
