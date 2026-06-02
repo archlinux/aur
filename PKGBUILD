@@ -1,6 +1,6 @@
 # Maintainer: Mestik78 <mestik@gmail.com>
 pkgname=bonsai-pomodoro
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A beautiful Terminal User Interface (TUI) Pomodoro application written in Rust, inspired by Forest."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Mestik78/bonsai-pomodoro/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a2489ccbfc88df245a48bb2a39b83ab7eba278d6e3a0e63bdfdad70506ed00ab')
+sha256sums=('e22c4101275a0f2b577df93873128c1846b6529d8aa19daddbfebc4ce4a5f802')
 
 build() {
     cd "$pkgname-$pkgver"
