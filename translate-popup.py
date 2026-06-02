@@ -69,10 +69,12 @@ def save_config(lang_a, lang_b):
         json.dump({"lang_a": lang_a, "lang_b": lang_b}, f)
 
 
-def do_translate(text, source_code, target_code):
+def do_translate(text, source_code, target_code, inferred_source_code=None):
     tgt_name = LANG_BY_CODE.get(target_code, target_code)
     if source_code == "auto":
-        label = f"? → {tgt_name}"
+        # Use the inferred source name if provided, otherwise fall back to "Auto"
+        src_name = LANG_BY_CODE.get(inferred_source_code, "Auto") if inferred_source_code else "Auto"
+        label = f"{src_name} → {tgt_name}"
         cmd = ["trans", "-brief", "-no-ansi", "-no-warn", "-t", target_code, text]
     else:
         src_name = LANG_BY_CODE.get(source_code, source_code)
@@ -197,6 +199,21 @@ window {
     color: #444;
     font-size: 11px;
     font-family: monospace;
+}
+#copy-btn {
+    background: transparent;
+    border: none;
+    color: #444;
+    font-size: 11px;
+    padding: 2px 4px;
+    min-height: 0;
+    min-width: 0;
+}
+#copy-btn:hover {
+    color: #7eb8f7;
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 /* Language picker dialog */
 #picker-window {
@@ -496,6 +513,14 @@ class TranslateWindow(Gtk.Window):
         self._lang_display.set_xalign(0)
         footer.pack_start(self._lang_display, True, True, 0)
 
+        copy_btn = Gtk.Button(label="⎘ copy")
+        copy_btn.set_name("copy-btn")
+        copy_btn.set_relief(Gtk.ReliefStyle.NONE)
+        copy_btn.set_no_show_all(True)
+        copy_btn.connect("clicked", self._on_copy)
+        self._copy_btn = copy_btn
+        footer.pack_end(copy_btn, False, False, 0)
+
         settings_btn = Gtk.Button(label="⚙ languages")
         settings_btn.set_name("settings-btn")
         settings_btn.set_relief(Gtk.ReliefStyle.NONE)
@@ -576,8 +601,11 @@ class TranslateWindow(Gtk.Window):
             source = "auto"
             target = self._lang_b
 
+        # For auto-detect (Latin-script pairs), infer display name from lang_a
+        inferred = self._lang_a if source == "auto" else None
+
         def run():
-            label, result = do_translate(text, source, target)
+            label, result = do_translate(text, source, target, inferred_source_code=inferred)
             GLib.idle_add(self._show_result, label, result)
 
         self._translate_thread = threading.Thread(target=run, daemon=True)
@@ -589,11 +617,25 @@ class TranslateWindow(Gtk.Window):
         self._lang_display.set_text(label)
         self._result.show()
         self._sep.show()
+        self._copy_btn.show()
         self.resize(450, 1)
+
+    def _on_copy(self, widget):
+        text = self._result.get_text()
+        if text:
+            clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+            clipboard.set_text(text, -1)
+            self._copy_btn.set_label("✓ copied")
+            GLib.timeout_add(1500, self._reset_copy_label)
+
+    def _reset_copy_label(self):
+        self._copy_btn.set_label("⎘ copy")
+        return False
 
     def _hide_result(self):
         self._sep.hide()
         self._result.hide()
+        self._copy_btn.hide()
         self._update_lang_display()
         self.resize(450, 1)
 
