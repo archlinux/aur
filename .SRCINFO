@@ -1,0 +1,29 @@
+pkgbase = transmission-client-gtk
+	pkgdesc = GTK client for an existing Transmission daemon (remote RPC; fork of transmission-gtk)
+	pkgver = 4.1.1.r3.gd175c88
+	pkgrel = 1
+	url = https://github.com/DeathKhan/transmission/tree/transmission-client-gtk
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = glibmm-2.68
+	makedepends = intltool
+	makedepends = ninja
+	depends = curl
+	depends = gtk4
+	depends = gtkmm-4.0
+	depends = hicolor-icon-theme
+	depends = libb64
+	depends = libdeflate
+	depends = libevent
+	depends = libnatpmp
+	depends = libsoup3
+	depends = miniupnpc
+	optdepends = libnotify: desktop notifications
+	optdepends = transmission-cli: transmission-daemon and web UI for torrents managed remotely
+	options = !lto
+	source = git+https://github.com/DeathKhan/transmission.git#branch=transmission-client-gtk
+	sha256sums = SKIP
+
+pkgname = transmission-client-gtk
