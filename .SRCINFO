@@ -1,7 +1,7 @@
 pkgbase = docker-sbx
 	pkgdesc = Docker sandboxes - run AI coding agents in isolated microVM sandboxes
 	pkgver = 0.31.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://docs.docker.com/ai/sandboxes/
 	arch = x86_64
 	license = LicenseRef-Docker-Proprietary

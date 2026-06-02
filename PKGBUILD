@@ -1,7 +1,7 @@
 # Maintainer: Joschka Thurner <git@joschkathurner.de>
 pkgname=docker-sbx
 pkgver=0.31.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Docker sandboxes - run AI coding agents in isolated microVM sandboxes"
 arch=('x86_64')
 url="https://docs.docker.com/ai/sandboxes/"
