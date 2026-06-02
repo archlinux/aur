@@ -1,0 +1,16 @@
+pkgbase = crispasr
+	pkgdesc = Multilingual speech-to-text and text-to-speech engine with many ASR and TTS backends
+	pkgver = 0.6.11
+	pkgrel = 1
+	url = https://github.com/CrispStrobe/CrispASR
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = shaderc
+	depends = gcc-libs
+	depends = glibc
+	depends = vulkan-icd-loader
+	source = crispasr-0.6.11.tar.gz::https://github.com/CrispStrobe/CrispASR/archive/refs/tags/v0.6.11.tar.gz
+	sha256sums = 60a1f6f82bd4fb6c36eb14492f7bcb8ea3895729d8f3fbd5a4d436c0ee158878
+
+pkgname = crispasr
