@@ -30,10 +30,6 @@ sha256sums=('a16b4d61a9f7618e7817efa93978aa18cb828e067100693316ce68939d404239')
 prepare() (
   cd "$_pkgsrc"
 
-  # fix links
-  sed -E -e 's#git+ssh://git@github.com#git+https://github.com#g' \
-    -i package-lock.json
-
   # remove targets
   local _package=$(cat package.json)
   echo "$_package" \
@@ -45,7 +41,7 @@ prepare() (
     > package.tmp && mv package.tmp package.json
 
   # disable updater
-  sed -E -e '/autoUpdater/d' -i main.js
+  sed -E -e '/autoUpdater/d' -i main.ts
 )
 
 build() (
@@ -75,12 +71,7 @@ build() (
 
   npm install --no-audit --no-fund --ignore-scripts
 
-  npm ls fsevents || true
-  rm -rf node_modules/fsevents
-  mkdir -p node_modules/fsevents
-
-  npm exec -c 'webpack --config ./webpack.main.js'
-  npm exec -c 'webpack --config ./webpack.renderer.js'
+  npm exec -c "node ./esbuild.js"
   npm exec -c "electron-builder ${_electron_builder_options[*]}"
 )
 
@@ -115,7 +106,7 @@ Exec=$_pkgname %U
 Icon=$_pkgname
 Terminal=false
 MimeType=x-scheme-handler/jitsi-meet;
-StartupWMClass=Jitsi Meet
+StartupWMClass=jitsi-meet
 Categories=VideoConference;AudioVideo;Audio;Video;Network;
 END
 
