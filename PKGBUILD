@@ -1,7 +1,7 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=tempstash
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="stash a copy of a file for a specified period of time"
 arch=(any)
 url="https://sr.ht/~minshall/tempstash/"
