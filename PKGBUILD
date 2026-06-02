@@ -2,7 +2,7 @@
 _pkgname=todo-or-not
 pkgname=python-todo-or-not
 pkgver=0.14.7
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A simple tool that checks your project for TODOs and FIXMEs"
 arch=(any)
@@ -20,13 +20,16 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/Start-Out/todo-or-not/archive/refs/tags/v${pkgver}.tar.gz")
+source=("https://github.com/Start-Out/todo-or-not/archive/refs/tags/v${pkgver}.tar.gz"
+	"0001-Fixed-cli-issue.patch")
 noextract=()
-sha256sums=('61e4030c547f28c5561084e8933e5b7e002109a0a1f06c92d004b3da84da3cdd')
+sha256sums=('61e4030c547f28c5561084e8933e5b7e002109a0a1f06c92d004b3da84da3cdd'
+            'e520f43da5236233062e8b79e219ebd2dc18cf2fc9999a11d1bd481d53209894')
 validpgpkeys=()
 
 prepare() {
 	cd "$_pkgname-$pkgver"
+	patch -Np1 -i ../0001-Fixed-cli-issue.patch
 }
 
 build() {

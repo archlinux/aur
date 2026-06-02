@@ -1,0 +1,26 @@
+From 11853aeec006e9feb751ce45a9f95670c347f0a2 Mon Sep 17 00:00:00 2001
+From: Miles Ward <milesward2004@gmail.com>
+Date: Tue, 2 Jun 2026 10:29:49 -1000
+Subject: [PATCH] Fixed cli issue.
+
+Before: cli not properly detecting entry point.
+After: CLI now properly detecting entry point.
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 5a02083..0795a09 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -31,5 +31,5 @@ requires = ["poetry-core"]
+ build-backend = "poetry.core.masonry.api"
+ 
+ [tool.poetry.scripts]
+-todoon = "todo_or_not:todo_check.typer_todoon"
+-todoignore-util = "todo_or_not:todo_check.typer_todo_ignore_util"
++todoon = "todo_or_not.todo_check:typer_todoon"
++todoignore-util = "todo_or_not.todo_check:typer_todo_ignore_util"
+-- 
+2.54.0
+
