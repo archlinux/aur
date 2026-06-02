@@ -1,0 +1,6 @@
+*.tar.*
+*.tar
+*.whl
+pkg/
+src/
+LICENSE

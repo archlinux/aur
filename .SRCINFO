@@ -1,0 +1,23 @@
+pkgbase = python-cloudpathlib-bin
+	pkgdesc = Python pathlib-style classes for cloud storage services such as Amazon S3, Azure Blob Storage, and Google Cloud Storage.
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = https://github.com/deedy5/cloudpathlib
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit-core
+	depends = python-typing_extensions
+	depends = python-pydantic-core
+	depends = python-importlib-metadata
+	provides = python-cloudpathlib
+	conflicts = python-cloudpathlib
+	source = https://files.pythonhosted.org/packages/c2/5b/ba933f896d9b0b07608d575a8501e2b4e32166b60d84c430a4a7285ebe64/cloudpathlib-0.24.0-py3-none-any.whl
+	source = https://github.com/drivendataorg/cloudpathlib/raw/refs/tags/v0.24.0/LICENSE
+	b2sums = a815b5338b99489dfe5928a5c5d854eb1593cbf2e4fe282402614604727c00d418077d96496acb1ecf1832ba9f56693fa6bbb0e34dafd0d8ca0346cf8807c6f2
+	b2sums = 98a5980106760131fc6267156b73980d3fb944761a5025c5db5b3f850df5b2c1962b7e21fb0833dd247f8b5de41f69ce63c3eee2bbca72bbce3ad7fb7228e363
+
+pkgname = python-cloudpathlib-bin
