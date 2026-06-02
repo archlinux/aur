@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=cjose
-pkgver=0.6.2.4
+pkgver=0.6.2.6
 pkgrel=1
 pkgdesc='C library implementing the Javascript Object Signing and Encryption (JOSE)'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(openssl
          jansson)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.gz")
-sha256sums=('138f0115811c76e77632318115b7cf7b64da8bf0de5859c485af1259c6acc9e4')
+sha256sums=('71614e6e0ed9e7619c3e36c0acfc59d8ded855b538568da536dd4de13d398d72')
 
 build() {
 	cd "$_archive"
