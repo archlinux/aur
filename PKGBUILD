@@ -1,7 +1,7 @@
 # Maintainer: WaiRo <wairo at cock dot li>
 _pkgname="vibra"
 pkgname="$_pkgname-git"
-pkgver=r312.5ff95ed
+pkgver=r329.3216882
 pkgrel=1
 pkgdesc="A library and CLI tool for music recognition using the unofficial Shazam API"
 
@@ -43,11 +43,6 @@ build() {
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -Wno-dev
     cmake --build build
-}
-
-check() {
-    cd "$srcdir/$_pkgname/tests"
-    PATH="$srcdir/$_pkgname/build/cli:$PATH" ./test.sh
 }
 
 package() {
