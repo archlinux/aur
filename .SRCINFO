@@ -1,7 +1,7 @@
 pkgbase = zen-browser-twilight-bin
 	pkgdesc = Zen Browser (Twilight Build) - Performance oriented Firefox-based web browser
 	pkgver = 1.21t
-	pkgrel = 11
+	pkgrel = 12
 	url = https://zen-browser.app/
 	install = zen-browser-twilight-bin.install
 	arch = x86_64
@@ -33,9 +33,9 @@ pkgbase = zen-browser-twilight-bin
 	b2sums = bc733dba0aad89145425cf6e82a22379c1115b736f0938203e80d7e78f3e0f4c6a4c6abab0ceb36d5eecb009163b77d0b8f2145ffcf6b985a8f142f6fabaec6d
 	b2sums = f75e803fa9da53ab9c263cc357f388de87137393fac90e86dfb528029de1434d887c2c25050ea167fbe9959d2eec11f81c85f28010126bd0c46884b59bb6ae41
 	b2sums = f83302f32649f214d97f2cadf41d353d7d76fc3b50b6dabc6e25256dc52b7a98aed024a14a88966d0a4f18ee5546ad8f45b4de626aa6ed38c9f8e7a99ef151c3
-	source_x86_64 = zen.linux-x86_64-1.21t-11.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz
-	b2sums_x86_64 = 59abaaf016f67c9717b5b3ce2a97d06ba513495f4ba66ff7cad95cfa5fe463468119dbd06979a65d3b9c77ee743c0f1fdf8edf448f702a55ce0366fa642299ba
-	source_aarch64 = zen.linux-aarch64-1.21t-11.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-aarch64.tar.xz
-	b2sums_aarch64 = 322d4edb9732d4be0b8dde105231649048390ec94b8a7006888979c5e2d07157482fd5ddf41db4c79449bb8d7dfb45c3954a638a22ccfb37f79dcbe40ba0049d
+	source_x86_64 = zen.linux-x86_64-1.21t-12.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz
+	b2sums_x86_64 = 4c29b5677d1f3934cda007cbc0d8a8cfd76dec731aa9057c0cc1e1995d5695b2893e6bdec95206043523a82e1e24984431185b82c69dc7f7858a77a5b5d64731
+	source_aarch64 = zen.linux-aarch64-1.21t-12.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-aarch64.tar.xz
+	b2sums_aarch64 = 7f8cd6422c5b66cc7360da93fefcb7cf72ad4cb2963f8199a72ee69489a29e644817d8ae9dd5c617286f4c0a602428fc5661598e00fe16d30a106dbe79e38d88
 
 pkgname = zen-browser-twilight-bin
