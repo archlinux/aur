@@ -1,7 +1,7 @@
 # Maintainer: bytesketch
 
 pkgname=lpack-git
-pkgver=r3.g79de796
+pkgver=r6.g4c89bed
 pkgrel=1
 pkgdesc="A lightweight Linux packaging system and portable package manager using the .lpk format"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
