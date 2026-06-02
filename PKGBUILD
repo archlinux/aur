@@ -1,13 +1,13 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=torbrowser-launcher-git
-pkgver=0.3.6.r6.gac85ac4
+pkgver=0.3.9.r6.g4bfb202
 pkgrel=1
 pkgdesc="Securely and easily download, verify, install and launch Tor Browser"
 arch=('any')
 url="https://github.com/micahflee/torbrowser-launcher"
 license=('MIT')
-depends=('python' 'python-pyqt5' 'python-requests' 'python-pysocks' 'python-gpgme'
+depends=('python' 'pyside6' 'python-requests' 'python-pysocks' 'python-gpgme'
          'gnupg' 'tor' 'hicolor-icon-theme' 'dbus-glib')
 makedepends=('git' 'python-setuptools' 'python-distro')
 optdepends=('apparmor: support for apparmor profiles')
