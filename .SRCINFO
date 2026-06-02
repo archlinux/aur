@@ -1,0 +1,15 @@
+pkgbase = casket
+	pkgdesc = LUKS2 encrypted vault manager — each vault is a single .img file
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/HerauxValle/Casket
+	arch = any
+	license = MIT
+	depends = python
+	depends = cryptsetup
+	depends = btrfs-progs
+	depends = udisks2
+	source = casket-1.0.2.tar.gz::https://github.com/HerauxValle/Casket/archive/v1.0.2.tar.gz
+	sha256sums = c4af383e25d22571b98cba9a0286e1d4846a22d743404f14617c799c2cb92999
+
+pkgname = casket
