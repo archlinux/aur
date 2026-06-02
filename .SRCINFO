@@ -1,15 +1,21 @@
 pkgbase = git-delta-git
 	pkgdesc = A syntax-highlighting pager for git
-	pkgver = r.319.f89300a
+	pkgver = 0.19.2.r3.gf85c46ba
 	pkgrel = 1
 	url = https://github.com/dandavison/delta
-	arch = any
-	license = custom
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
 	makedepends = git
-	makedepends = rust
-	provides = delta
-	source = git+https://github.com/dandavison/delta.git
+	depends = libgcc_s.so
+	depends = libgit2.so
+	provides = git-delta
+	conflicts = git-delta
+	options = !lto
+	source = git-delta-git::git+https://github.com/dandavison/delta
 	md5sums = SKIP
 
 pkgname = git-delta-git
-

@@ -1,37 +1,48 @@
-# Maintainer: Matus Benko <matus.benko@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Matus Benko <matus.benko@gmail.com>
 
 pkgname=git-delta-git
-_pkgname=delta
-pkgver=r.319.f89300a
+pkgver=0.19.2.r3.gf85c46ba
 pkgrel=1
 pkgdesc="A syntax-highlighting pager for git"
-arch=('any')
+arch=(x86_64 aarch64 i686 armv7h)
 url="https://github.com/dandavison/delta"
-license=('custom')
-depends=()
-makedepends=('git' 'rust')
-provides=('delta')
-source=(git+https://github.com/dandavison/$_pkgname.git)
+license=(MIT)
+depends=(libgcc_s.so libgit2.so)
+makedepends=(cargo git)
+provides=(git-delta)
+conflicts=(git-delta)
+options=(!lto)
+source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git -C "$pkgname" describe --long --tags | sed 's/-/.r/;s/-/./'
+}
+
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd "$pkgname"
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  cargo build --release --locked
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cd "$pkgname"
+    cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "$srcdir/$_pkgname"
-  cargo test --release --locked
+    export RUSTUP_TOOLCHAIN=stable
+    cd "$pkgname"
+    cargo test --frozen --all-features
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+    cd "$pkgname"
+    install -Dm755 target/release/delta -t "$pkgdir/usr/bin"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 
-  install -Dm755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
