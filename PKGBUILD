@@ -4,23 +4,18 @@ pkgver=r0.0000000
 pkgrel=1
 pkgdesc="XDG-compliant rm replacement that trashes instead of deletes"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
-url="https://codeberg.org/5unekku/toss"
-license=('Apache-2.0')
+url="https://gitlab.com/5unekku/toss"
+license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 provides=('toss')
 conflicts=('toss-musl-git')
-source=("$pkgname::git+https://codeberg.org/5unekku/toss.git")
+source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    local desc
-    if desc=$(git describe --long --tags --abbrev=7 2>/dev/null); then
-        echo "$desc" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-    else
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-    fi
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
