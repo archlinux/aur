@@ -1,7 +1,7 @@
 pkgbase = opencloud-git
 	pkgdesc = Open source platform for file management, sharing & collaboration - git build
 	pkgver = 7.1.0.r0.g83360f9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opencloud.eu
 	install = opencloud.install
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = opencloud-git
 	makedepends = go
 	makedepends = pnpm
 	depends = glibc
+	depends = sqlite
 	optdepends = opencloud-web: if wanting to use a customized web interface
 	provides = opencloud
 	conflicts = opencloud

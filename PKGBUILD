@@ -3,12 +3,12 @@
 _pkgname=opencloud
 pkgname=opencloud-git
 pkgver=7.1.0.r0.g83360f9
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source platform for file management, sharing & collaboration - git build"
 url="https://opencloud.eu"
 arch=('aarch64' 'x86_64')
 license=(Apache-2.0)
-depends=(glibc)
+depends=(glibc sqlite)
 makedepends=(
   git
   go
@@ -57,7 +57,7 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
 
   make generate
-  make -C opencloud build
+  make TAGS="disable_crypt libsqlite3" -C opencloud build
 }
 
 package() {
