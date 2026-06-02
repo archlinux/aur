@@ -1,18 +1,17 @@
 # Maintainer: detestern <detestern@proton.me>
 pkgname=karincore-git
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="KarinCore - Modern and secure proxy client"
 arch=('x86_64')
 url="https://github.com/detestern/KarinCore"
 license=('MIT')
 
-depends=('webkit2gtk-4.1' 'gtk3' 'cairo' 'pango' 'glib2' 'xray' 'openvpn')
+depends=('webkit2gtk-4.1' 'gtk3' 'cairo' 'pango' 'glib2' 'xray' 'openvpn' 'wireguard-tools')
 makedepends=('npm' 'rust' 'cargo' 'git')
 provides=('karincore')
 conflicts=('karincore')
 
-# Убрали sudoers из source, так как он теперь прилетит вместе с git-репозиторием
 source=("KarinCore::git+https://github.com/detestern/KarinCore.git"
         "karin-proxy-daemon.service")
 sha256sums=('SKIP' 'SKIP')
