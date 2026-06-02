@@ -1,14 +1,14 @@
 # Maintainer: thefangeddeity
 pkgname=ele-messenger-client
 pkgver=1.3.2
-pkgrel=1
+pkgrel=3
 pkgdesc="ELE Messenger desktop client — resilience-first household chat"
 arch=('x86_64')
 url="https://github.com/thefangeddeity/ele-messenger"
 license=('GPL3')
 depends=('gtk3' 'libsecret' 'mpv')
 source=("ele-messenger-client-$pkgver-linux-x64.tar.gz::https://github.com/thefangeddeity/ele-messenger/releases/download/v$pkgver/ele-messenger-client-$pkgver-linux-x64.tar.gz")
-sha256sums=('de904dcb42487171cd05dce54689cc07846b167467151e5d4c31b7db2cbf9e88')
+sha256sums=('c37e565d64b21a9f125750f76948362ef472ee1a881100e8c5732609b2f34ecc')
 
 package() {
     install -dm755 "$pkgdir/usr/lib/ele-messenger-client"
