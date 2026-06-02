@@ -5,7 +5,7 @@
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=clementine
-pkgver=1.4.1+62+g56cfc4543
+pkgver=1.4.1+78+gb55eca391
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
@@ -26,9 +26,10 @@ optdepends=(
   'gst-plugins-ugly: "Ugly" plugin libraries'
   'gst-libav: Libav plugin'
   'gvfs: Various devices support')
+options=(!lto)
 # NB commits are chosen corresponding a git tag https://github.com/clementine-player/Clementine/tags
-source=("git+https://github.com/clementine-player/Clementine.git#commit=56cfc45430b8d484d74c480dfafc516ec15d0b38")
-sha256sums=('7ffdd9f45b8ccecc02a06a8f358bfac29640845ae001b67fa8a5b0766af98b79')
+source=("git+https://github.com/clementine-player/Clementine.git#commit=b55eca391353ed61d54f8ed009b7638856c256f5")
+sha256sums=('ff277db4ade8927e4d714384ae7054a0e0dd1b0c335272eae45487bf62b4c39b')
 
 pkgver() {
   cd Clementine
@@ -41,7 +42,7 @@ prepare() {
 
 build() {
   #export LDFLAGS="-Wl,--copy-dt-needed-entries"
-  export CXXFLAGS+=" -Wno-error=cpp  -Wno-unused-result"
+  export CXXFLAGS+=" -Wno-error=cpp  -Wno-unused-result -Wno-error=stringop-overflow"
 
   local _flags=(
     #-DCMAKE_CXX_FLAGS="-fpermissive"
