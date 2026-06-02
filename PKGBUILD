@@ -1,11 +1,11 @@
 pkgname=dcr-git
-pkgver=r0.g0000000
+pkgver=r153.f21f50f
 pkgrel=1
 pkgdesc="Cargo-like utility to manage C/C++ projects (development branch)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dexoron/dcr"
-license=('MIT')
-depends=('gcc-libs')
+license=('GPL-3.0-or-later')
+depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'git')
 provides=('dcr')
 conflicts=('dcr')
@@ -18,11 +18,14 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-\)*g/r/;s/-/./g' | sed 's/^v//'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "${pkgname}"
+  unset CFLAGS CXXFLAGS LDFLAGS
+  export RUSTFLAGS="-C linker=cc"
+
   cargo build --release --locked
 }
 
