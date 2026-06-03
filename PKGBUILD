@@ -3,7 +3,7 @@
 _pkgname=ssh-multisession-resume
 pkgname=${_pkgname}-git
 _srcname=${_pkgname}-source
-pkgver=0.r14.g2f5195c
+pkgver=0.r16.g98cd868
 pkgrel=1
 pkgdesc='Persistent multi-session SSH auto-resume utility backed by tmux'
 arch=('any')
@@ -42,13 +42,12 @@ package() {
 
   install -Dm755 ssh-multisession-resume "${pkgdir}/usr/lib/${_pkgname}/ssh-multisession-resume"
   install -Dm755 client/install.sh "${pkgdir}/usr/lib/${_pkgname}/client/install.sh"
-  install -Dm755 client/auto-resume.sh "${pkgdir}/usr/lib/${_pkgname}/client/auto-resume.sh"
-  install -Dm755 client/auto-screen.sh "${pkgdir}/usr/lib/${_pkgname}/client/auto-screen.sh"
+  install -Dm644 client/auto-resume.sh "${pkgdir}/usr/lib/${_pkgname}/client/auto-resume.sh"
+  install -Dm644 client/auto-screen.sh "${pkgdir}/usr/lib/${_pkgname}/client/auto-screen.sh"
   install -Dm644 client/tmux-auto-resume.conf "${pkgdir}/usr/lib/${_pkgname}/client/tmux-auto-resume.conf"
   install -Dm644 client/screen-auto-resume.screenrc "${pkgdir}/usr/lib/${_pkgname}/client/screen-auto-resume.screenrc"
   install -Dm644 client/screen-hangup-off.screenrc "${pkgdir}/usr/lib/${_pkgname}/client/screen-hangup-off.screenrc"
   install -Dm755 server/install.sh "${pkgdir}/usr/lib/${_pkgname}/server/install.sh"
-  install -Dm644 server/01-sshd-auto-resume.conf "${pkgdir}/usr/lib/${_pkgname}/server/01-sshd-auto-resume.conf"
   install -Dm755 tests/smoke.sh "${pkgdir}/usr/share/${_pkgname}/tests/smoke.sh"
 
   # System-wide profile.d hook: enables the SSH menu without per-user setup.
