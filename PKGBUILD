@@ -6,8 +6,8 @@ pkgdesc='fast archive manager — extract and compress tar, zip, 7z, rar, zst, x
 arch=('x86_64' 'aarch64')
 url='https://gitlab.com/5unekku/arxman'
 license=('GPL-3.0-only')
-depends=('bzip2' 'xz')
-makedepends=('cargo')
+depends=('bzip2' 'xz' 'zstd')
+makedepends=('cargo' 'pkgconf')
 optdepends=(
     'p7zip: 7z compression and rar extraction fallback'
     'unrar: rar extraction'
@@ -31,6 +31,7 @@ build() {
     cd "$srcdir/$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export ZSTD_SYS_USE_PKG_CONFIG=1
     cargo build --frozen --release
 }
 
