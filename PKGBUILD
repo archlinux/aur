@@ -1,7 +1,7 @@
 # Maintainer: Andrey Kolchenko <andrey@kolchenko.me>
 
 pkgname='dolphin-anty-bin'
-pkgver=2026.70.214
+pkgver=2026.147.225
 pkgrel=1
 pkgdesc='Antidetect browser for multi-accounting'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('binutils' 'grep' 'coreutils')
 _file="${pkgname%-*}-${pkgver}.rpm"
 
 source=("${_file}::https://dolphin-anty-cdn.com/anty-app/dolphin-anty-linux-x86_64-latest.rpm")
-sha256sums=('1e8470794bbd106bb9cc7e4b175e31899f485af53d713d623bf5b7ae44080ace')
+sha256sums=('e8c5de3881d4008face9e729d681af2dbe9a7f1e2753f5592ff2a4b2e70bf0c6')
 
 pkgver() {
     strings "${_file}" | grep -m 1 'dolphin_anty-[^[:space:]]*' | cut -d- -f2-2
