@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=colima
-pkgver=0.10.0
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Container runtimes on macOS (and Linux) with minimal setup."
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('colima')
 license=('MIT')
 makedepends=('go>=1.20' 'git' 'gzip' 'tar' 'gcc')
 source=(  "https://github.com/abiosoft/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('c91bdb0268b38bda95af2b29c6b7b3ee27e33c4c759efaa04d3f4ad8506dd3c5')
+sha256sums=('595f4ed25316f7de2896939bfd78cf419b13807c05705e7ba658fbcc7eaf60bf')
 
 build() {
 	cd "${pkgname}-${pkgver}"
