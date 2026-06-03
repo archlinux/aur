@@ -3,7 +3,7 @@
 _pkgname=ssh-multisession-resume
 pkgname=${_pkgname}-git
 _srcname=${_pkgname}-source
-pkgver=0.r23.gd80cb19
+pkgver=0.r25.g79a8693
 pkgrel=1
 pkgdesc='Persistent multi-session SSH auto-resume utility backed by tmux'
 arch=('any')
