@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-irc-client-bin
 _pkgname=Simple-Irc-Client
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="💻 Desktop clients for Simple Irc Client.(Prebuilt version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('337079269dad228223d4ca4a94b960f38b5d35c54017dda02162f5637c616f97')
+sha256sums=('92848fc35555bb6988eb6619d928040845749c98e97227bd204b0b0b950ad837')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
