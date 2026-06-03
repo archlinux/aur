@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=reManager
+Comment=Manage mods on reMarkable tablets
+Exec=/usr/bin/reManager
+Icon=reManager
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=remarkable;tablet;mods;vellum;
+StartupWMClass=reManager
