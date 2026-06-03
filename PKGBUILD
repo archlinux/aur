@@ -1,11 +1,12 @@
+# Maintainer: Capricornus007 <Capricornus007 at gmail dot com>
+# Co-Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Matthew McGinn <mamcgi@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
-# Contributor: foalsrock <foalsrock at gmail dot-com>
+# Contributor: foalsrock <foalsrock at gmail dot com>
 # Contributor: jebaum <jebaum at ucla dot edu>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fzf-git
-pkgver=0.28.0.r2.g205f885
+pkgver=v0.73.1.r12.g838ac755
 pkgrel=1
 epoch=2
 pkgdesc="Command-line fuzzy finder"
