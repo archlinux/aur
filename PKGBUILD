@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 # GitHub Action (it runs `updpkgsums` against the published release
 # tarball before pushing). 'SKIP' is the in-repo placeholder; for a
 # manual local build run `updpkgsums` here first.
-sha256sums=('c9e43eacc88d830396dbfe85a614dd29e6685f2023aad60b6f611b68c772eb16')
+sha256sums=('7edc64c1fd0e7d33be78be7de5e87a7cea5df61fc7acff9ce461abce0cf6a6d5')
 
 build() {
   cd "${pkgname}-${pkgver}"
