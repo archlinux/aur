@@ -30,6 +30,7 @@ makedepends=(
   "git"
 )
 depends=(
+  "bash"
   "nodejs"
   "glibc"
   "libstdc++.so"
