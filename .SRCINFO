@@ -4,6 +4,7 @@ pkgbase = blackarch-wallpapers-git
 	pkgrel = 1
 	url = https://github.com/BlackArch/blackarch-artwork
 	arch = any
+	license = custom:unknown
 	makedepends = git
 	source = git+https://github.com/BlackArch/blackarch-artwork.git
 	sha256sums = SKIP

@@ -5,6 +5,7 @@ pkgver=1.r0.g0000000
 pkgrel=1
 pkgdesc="Official BlackArch Linux wallpapers (git version)"
 arch=('any')
+license=('custom:unknown')
 url="https://github.com/BlackArch/blackarch-artwork"
 
 makedepends=('git')
