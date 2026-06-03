@@ -1,0 +1,18 @@
+pkgbase = cosmic-ext-applet-minimon-bin
+	pkgdesc = Customizable system monitor applet for COSMIC
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/cosmic-utils/minimon-applet
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = gcc-libs
+	depends = libxkbcommon
+	provides = cosmic-ext-applet-minimon
+	conflicts = cosmic-ext-applet-minimon
+	noextract = cosmic-ext-applet-minimon-1.1.1-1.fc44.x86_64.rpm
+	options = !strip
+	source_x86_64 = cosmic-ext-applet-minimon-1.1.1-1.fc44.x86_64.rpm::https://github.com/cosmic-utils/minimon-applet/releases/download/v1.1.1/cosmic-ext-applet-minimon-1.1.1-1.fc44.x86_64.rpm
+	sha256sums_x86_64 = c6e980b2c3c49bb627bd2f5094eb1ab6a0e9e790699f7175146b0a7d8199ed12
+
+pkgname = cosmic-ext-applet-minimon-bin
