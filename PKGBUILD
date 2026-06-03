@@ -6,7 +6,7 @@
 # Do not push the template verbatim to AUR; push the rendered file.
 
 pkgname=hpd-handheld-power-daemon
-pkgver=2.2.2
+pkgver=2.2.3
 # pkgrel is static (not a placeholder): reset to 1 when bumping pkgver,
 # increment for packaging-only respins of the same version.
 pkgrel=1
@@ -16,11 +16,12 @@ url="https://github.com/CiroDev-Git/hpd-handheld-power-daemon"
 license=('GPL-3.0-or-later')
 depends=('dbus' 'polkit' 'systemd')
 makedepends=('rust' 'cargo' 'pkgconf' 'systemd-libs')
+conflicts=('power-profiles-daemon')
 backup=('etc/hpd/config.toml.example')
 install="hpd.install"
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1e4d23492d9c0e65f516ff925300eabce373223dfff7e79235a812e85450e6d6')
+sha256sums=('ee6cfaadffe876f92ec3efb36838c9336d9b6dc9284495acc498231e135a1084')
 
 prepare() {
     cd "$pkgname-$pkgver"

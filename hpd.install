@@ -44,49 +44,43 @@ _post_setup() {
     systemctl try-reload-or-restart dbus.service 2>/dev/null || true
 }
 
+# power-profiles-daemon fights hpd over platform_profile/EPP. Masking
+# (not just disabling) also blocks D-Bus activation — the root cause of
+# hpd dying one second after boot when KDE/Gamescope requests
+# net.hadess.PowerProfiles and PPD is auto-started by the bus.
+# `systemctl cat` exits non-zero when the unit does not exist at all,
+# making this a safe no-op on systems that never had PPD installed.
+_neutralize_ppd() {
+    if systemctl cat power-profiles-daemon.service >/dev/null 2>&1; then
+        systemctl disable --now power-profiles-daemon.service 2>/dev/null || true
+        systemctl mask power-profiles-daemon.service 2>/dev/null || true
+        echo "==> power-profiles-daemon masked — hpd is now the sole power manager."
+    fi
+}
+
 pre_install() {
     _migrate_from_install_sh
 }
 
 post_install() {
     _post_setup
+    # Mask PPD before enabling hpd so D-Bus activation cannot revive it
+    # between the enable and the first start.
+    _neutralize_ppd
     # Appliance daemon: enable + start on install so the user has zero
     # manual systemctl steps. `|| true` keeps chroot / offline installs
     # (no running systemd) from failing the transaction.
     systemctl enable --now hpd.service 2>/dev/null || true
-
-    # Detect whether power-profiles-daemon is installed and active —
-    # both fight over platform_profile/EPP and must not co-run. Warn
-    # loudly so the user does not silently lose hpd at every reboot.
-    _ppd_active=0
-    systemctl is-active --quiet power-profiles-daemon.service 2>/dev/null && _ppd_active=1
-
-    if [ "$_ppd_active" = "1" ]; then
-        cat <<EOF
+    cat <<EOF
 
 ==> hpd installed, enabled and started.
     Status:   systemctl status hpd   |   hpdctl status
     Logs:     journalctl -fu hpd
-    Optional: sudo cp /etc/hpd/config.toml.example /etc/hpd/config.toml
+    Optional config: sudo cp /etc/hpd/config.toml.example /etc/hpd/config.toml
 
-  ! WARNING: power-profiles-daemon is active. Both daemons write the
-  ! same power knobs; the one that starts last at boot wins and the
-  ! other is stopped. Run the following command to make hpd the sole
-  ! power manager and avoid losing it on every reboot:
-
+    If steamos-manager (Steam Game Mode) is installed, run once:
       hpdctl doctor --fix
 EOF
-    else
-        cat <<EOF
-
-==> hpd installed, enabled and started.
-    Status:   systemctl status hpd   |   hpdctl status
-    Logs:     journalctl -fu hpd
-    Make hpd the sole power manager (neutralizes power-profiles-daemon /
-    steamos-manager + installs polkit):  hpdctl doctor --fix
-    Optional: sudo cp /etc/hpd/config.toml.example /etc/hpd/config.toml
-EOF
-    fi
 }
 
 pre_upgrade() {
@@ -95,6 +89,9 @@ pre_upgrade() {
 
 post_upgrade() {
     _post_setup
+    # Mask PPD first — must happen before restarting hpd so the daemon
+    # does not get killed by a D-Bus-activated PPD during the restart window.
+    _neutralize_ppd
     # Pick up the new on-disk binary. `restart` (not `try-restart`) so
     # this also brings the service back if pre_upgrade's migration had to
     # stop it. Gated on `is-enabled` to respect a user who deliberately
