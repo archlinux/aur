@@ -6,8 +6,8 @@ pkgdesc="A fast, lightweight Unix shell written in Cpp"
 arch=('x86_64')
 url="https://gitlab.com/cpp4692517/shell"
 license=('MIT')
-makedepends=('git' 'xmake' 'lua5.4')
-depends=('lua5.4')
+makedepends=('git' 'xmake' 'lua=5.4')
+depends=('lua=5.4')
 source=("git+https://gitlab.com/cpp4692517/shell.git")
 sha256sums=('SKIP')
 
