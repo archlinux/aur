@@ -1,6 +1,6 @@
 pkgbase = gopac
 	pkgdesc = A warm, beautiful TUI for Arch Linux package management
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/the-daonm/gopac
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gopac
 	depends = glibc
 	optdepends = yay: AUR helper
 	optdepends = paru: AUR helper
-	source = gopac-1.4.3.tar.gz::https://github.com/the-daonm/gopac/archive/v1.4.3.tar.gz
-	sha256sums = 646f7d5993859bd2dffdb3254ef447afd57287d9b1c6f668007bf715f4671791
+	source = gopac-1.5.0.tar.gz::https://github.com/the-daonm/gopac/archive/v1.5.0.tar.gz
+	sha256sums = 840118334848e22a5a572d6528e2025b4d90de2cf80a026dae65d7f59eb1419e
 
 pkgname = gopac
