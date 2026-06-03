@@ -1,6 +1,6 @@
 pkgbase = baml
-	pkgdesc = BAML - the language for agents (built from source)
-	pkgver = 0.11.0.alpha.4780
+	pkgdesc = BAML wrapper - toolchain manager and launcher (built from source)
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/BoundaryML/baml
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = baml
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = gcc
+	source = baml-0.1.0.tar.gz::https://github.com/BoundaryML/baml/archive/refs/tags/baml-wrapper-0.1.0.tar.gz
+	sha256sums = bcfb0297e5f8c37338daf9fb24f51f526c60d38fd56c536f0e66981951a72fdc
 	provides = baml
 	conflicts = baml-bin
-	source = baml-0.11.0.alpha.4780.tar.gz::https://github.com/BoundaryML/baml/archive/refs/tags/baml-language-0.11.0-alpha.4780.tar.gz
-	sha256sums = 7ae286bf5e74992b06c69a4d8c88acff498bc77c838c9542ca4a561cc62e7fa6
 
 pkgname = baml
