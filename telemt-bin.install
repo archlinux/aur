@@ -1,8 +1,4 @@
 post_install() {
-    if command -v systemctl >/dev/null 2>&1; then
-        systemctl daemon-reload >/dev/null 2>&1 || true
-    fi
-
     echo ":: Copy /etc/telemt/telemt.toml.sample to /etc/telemt/telemt.toml before starting telemt.service"
     echo ":: Generate a secret with: openssl rand -hex 16"
     echo ":: Then enable the service with: systemctl enable --now telemt.service"
@@ -10,8 +6,6 @@ post_install() {
 
 post_upgrade() {
     if command -v systemctl >/dev/null 2>&1; then
-        systemctl daemon-reload >/dev/null 2>&1 || true
-
         if systemctl is-active --quiet telemt.service; then
             systemctl restart telemt.service
         fi
