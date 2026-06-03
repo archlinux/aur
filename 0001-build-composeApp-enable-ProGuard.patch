@@ -1,0 +1,27 @@
+From 2b94eee66ff52f1a830a639a18b80c7169927985 Mon Sep 17 00:00:00 2001
+From: DeepChirp <DeepChirp@outlook.com>
+Date: Wed, 3 Jun 2026 10:06:05 +0800
+Subject: [PATCH] build(composeApp): enable ProGuard
+
+Enable code shrinking and obfuscation to reduce the final application
+size for release builds.
+---
+ composeApp/build.gradle.kts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/composeApp/build.gradle.kts b/composeApp/build.gradle.kts
+index a76ba06..8b4db0f 100644
+--- a/composeApp/build.gradle.kts
++++ b/composeApp/build.gradle.kts
+@@ -96,7 +96,7 @@ compose.desktop {
+       linux { iconFile = project.file("icons/app.png") }
+ 
+       buildTypes.release.proguard {
+-        isEnabled.set(false)
++        isEnabled.set(true)
+         version.set("7.8.2")
+         configurationFiles.from("compose-desktop.pro")
+       }
+-- 
+2.54.0
+
