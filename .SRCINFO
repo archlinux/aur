@@ -1,6 +1,6 @@
 pkgbase = zephyr-clash-bin
 	pkgdesc = A modern Mihomo GUI client
-	pkgver = 2.3.4
+	pkgver = 2.3.5
 	pkgrel = 1
 	url = https://github.com/Juwan-Hwang/Zephyr
 	install = zephyr-clash-bin.install
@@ -20,7 +20,7 @@ pkgbase = zephyr-clash-bin
 	conflicts = zephyr-clash
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/Juwan-Hwang/Zephyr/releases/download/v2.3.4/Zephyr_2.3.4_amd64-full.deb
-	sha256sums_x86_64 = 5db4fa32a2b9b7bb371db56214fb86124f14893d78799485e53ff477c6cb3544
+	source_x86_64 = https://github.com/Juwan-Hwang/Zephyr/releases/download/v2.3.5/Zephyr_2.3.5_amd64-full.deb
+	sha256sums_x86_64 = 8ab0f5353290b1cedbe882337a226973c493a5a0f07373221906403fd7ffb34f
 
 pkgname = zephyr-clash-bin
