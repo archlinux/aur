@@ -3,7 +3,7 @@
 
 pkgname=kind-bin
 pkgdesc="Kubernetes IN Docker - local clusters for testing Kubernetes"
-pkgver=0.31.0
+pkgver=0.32.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/kubernetes-sigs/kind"
@@ -12,7 +12,7 @@ provides=('kind')
 conflicts=('kind')
 _binary=kind-linux-amd64
 source=("$_binary-$pkgver::https://github.com/kubernetes-sigs/kind/releases/download/v$pkgver/$_binary")
-sha256sums=('eb244cbafcc157dff60cf68693c14c9a75c4e6e6fedaf9cd71c58117cb93e3fa')
+sha256sums=('50030de23cf40a18505f20426f6a8506bedf13c6e509244bd1fa9463721b0f54')
 
 package() {
   install -Dm 755 "$srcdir/$_binary-$pkgver" "$pkgdir/usr/bin/kind"
