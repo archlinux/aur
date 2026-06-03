@@ -9,6 +9,6 @@ pkgbase = bettery
 	makedepends = cargo
 	depends = glibc
 	source = bettery-0.1.0.tar.gz::https://github.com/gopal-lohar/bettery/archive/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = c4049d82a7725cace10199c278737d1828b15e1c7f938f3e271aca024d2f62ce
 
 pkgname = bettery

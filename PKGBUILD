@@ -28,3 +28,4 @@ package() {
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/bettery"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/bettery" 2>/dev/null || true
 }
+sha256sums=('c4049d82a7725cace10199c278737d1828b15e1c7f938f3e271aca024d2f62ce')
