@@ -1,5 +1,5 @@
 pkgname=ml-kem
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Pure C implementation of ML-KEM (FIPS 203)"
 arch=('x86_64')
