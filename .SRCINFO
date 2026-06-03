@@ -1,18 +1,18 @@
 pkgbase = mingw-w64-headers-git
 	pkgdesc = MinGW-w64 headers for Windows (git version)
-	pkgver = 9.0.0.20211016
+	pkgver = 14.0.0.r65.gb536c4fdb
 	pkgrel = 1
 	url = https://www.mingw-w64.org/
 	arch = any
 	groups = mingw-w64-toolchain
 	groups = mingw-w64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = git
-	provides = mingw-w64-headers=9.0.0.20211016
+	provides = mingw-w64-headers=14.0.0.r65.gb536c4fdb
 	conflicts = mingw-w64-headers
 	options = !strip
-	options = staticlibs
-	options = !buildflags
+	options = !libtool
+	options = !emptydirs
 	source = git+https://git.code.sf.net/p/mingw-w64/mingw-w64
 	sha256sums = SKIP
 

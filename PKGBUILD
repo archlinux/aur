@@ -4,27 +4,26 @@
 # Contributor: rubenvb < vanboxem dot ruben at gmail dot com >
 # Contributor: rkitover < rkitover at gmail dot com >
 
-_pkgver=9.0.0
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-headers-git
-pkgver=9.0.0.20211016
+pkgver=14.0.0.r65.gb536c4fdb
 pkgrel=1
 pkgdesc="MinGW-w64 headers for Windows (git version)"
 arch=('any')
 url="https://www.mingw-w64.org/"
-license=('custom')
+license=('LicenseRef-custom')
 groups=('mingw-w64-toolchain' 'mingw-w64')
 makedepends=('git')
 provides=("mingw-w64-headers=${pkgver}")
 conflicts=('mingw-w64-headers')
-options=('!strip' 'staticlibs' '!buildflags')
+options=('!strip' '!libtool' '!emptydirs')
 source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/mingw-w64"
-  echo "${_pkgver}.`git log -1 --date=short --format=%cd | sed s/-//g`"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -35,7 +34,6 @@ build() {
     ../mingw-w64/mingw-w64-headers/configure \
       --prefix=/usr/${_target} \
       --enable-sdk=all \
-      --enable-secure-api \
       --host=${_target}
     popd
   done
