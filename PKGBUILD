@@ -1,7 +1,7 @@
 # Maintainer: c0des1ayr <rplatinumedition+git@gmail.com>
 # Contributor: Subhamoy Biswas <hey@neosubhamoy.com>
 pkgname=neodlp-arch-libs
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Modern video/audio downloader based on yt-dlp with browser integration. Modified to use external aria2c, deno and yt-dlp."
 arch=('x86_64' 'aarch64')
