@@ -1,0 +1,20 @@
+pkgbase = clangen-bin
+	pkgdesc = Warrior Cats fan game (PyInstaller bundle)
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = https://clangen.io
+	arch = x86_64
+	license = MPL-2.0
+	license = CC-BY-NC-4.0
+	depends = glibc
+	provides = clangen
+	conflicts = clangen
+	options = !strip
+	source = clangen-bin-0.13.2.tar.xz::https://clangen.io/api/v1/Update/Channels/stable/Releases/v0.13.2/Artifacts/linux2.35
+	source = LICENSE.md::https://raw.githubusercontent.com/ClanGenOfficial/clangen/development/LICENSE.md
+	source = clangen.desktop
+	sha256sums = e74e4db9c3edf44290d08ab39758cf1e90cad12a0a4334bdf824e9919247a611
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = clangen-bin

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Clangen
+Comment=Warrior Cats fan game
+Exec=clangen
+Icon=clangen
+Categories=Game;RolePlaying;
+Terminal=false
+StartupWMClass=Clangen
