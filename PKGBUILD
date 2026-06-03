@@ -1,6 +1,6 @@
 # Maintainer: Alex Sutila <alexsutila2020@gmail.com>
 pkgname=libretro-irogb-git
-pkgver=r806.6970cb0
+pkgver=0.0
 pkgrel=1
 # epoch=1
 pkgdesc="Gameboy Color System core"

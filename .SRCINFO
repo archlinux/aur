@@ -1,15 +1,14 @@
 pkgbase = libretro-irogb-git
 	pkgdesc = Gameboy Color System core
-	pkgver = r806.6970cb0
+	pkgver = 0.0
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/alexsutila/irogb
 	arch = x86_64
 	arch = aarch64
 	groups = libretro
 	license = GPL3
 	makedepends = git
-	makedepends = base-devel
+	makedepends = cmake
 	depends = libretro-core-info
 	source = libretro-irogb::git+https://github.com/alexsutila/irogb.git
 	sha256sums = SKIP
