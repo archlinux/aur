@@ -3,8 +3,8 @@
 
 _realname=lunela-master
 pkgname=lunela
-pkgver=2.2
-pkgrel=1
+pkgver=2.3
+pkgrel=2
 pkgdesc="Print ephemeris of the moon and more in a terminal without internet connection."
 arch=('any')
 url="https://gitlab.com/brunoy/lunela.git"
