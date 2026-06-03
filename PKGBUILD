@@ -1,5 +1,5 @@
 pkgname=fuck-netease-music-git
-pkgver=0.1.0.r34.gefb40fc
+pkgver=0.1.0.r35.g16a604f
 pkgrel=1
 pkgdesc="Rolling NetEase Cloud Music Linux port packaged from the GitHub Release AppImage"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 noextract=('fuck-netease-music-x64.AppImage')
 sha256sums=(
-  '2b5685f6df4d6bb9eb6874cf4770b6e36dd0fbdc5744d746e72425356742dbfe'
+  '0dce9bee90a3a127b19f343c22f99ee833c8b42d7744ffa7e9d4ecc500eaccd7'
   'SKIP'
   'SKIP'
   'SKIP'
