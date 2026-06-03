@@ -1,0 +1,25 @@
+pkgbase = quire
+	pkgdesc = Simple GNOME utility for working with local PDF files
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://gitlab.com/fvtronics/quire
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = appstream
+	makedepends = blueprint-compiler
+	makedepends = cargo
+	makedepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = cairo
+	depends = glib2
+	depends = gtk4
+	depends = libadwaita
+	depends = poppler-glib
+	replaces = folios
+	source = quire-0.2.3.tar.gz::https://gitlab.com/fvtronics/quire/-/archive/v0.2.3/quire-v0.2.3.tar.gz
+	sha256sums = 5dfafe47ab0c4b089cbb5dea328db453b9ecb73e50a55d5c9e35368ed0d85445
+
+pkgname = quire
