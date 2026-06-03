@@ -1,15 +1,15 @@
 pkgbase = kensaku-bin
 	pkgdesc = Quick and easy search for Japanese kanji, radicals, and words
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/LiteracyFanatic/kensaku
 	arch = x86_64
 	license = MIT
 	depends = dotnet-runtime
 	options = !strip
-	source = https://github.com/LiteracyFanatic/kensaku/releases/download/v0.2.0/kensaku-linux-x64
-	source = https://github.com/LiteracyFanatic/kensaku/releases/download/v0.2.0/kensaku.db
-	sha256sums = e5b31a5a9a7b0ed721dcfac5f3fbc815c1c624fa6065b8a3d7308bc2264ccaac
+	source = kensaku-linux-x64-0.2.1::https://github.com/LiteracyFanatic/kensaku/releases/download/v0.2.1/kensaku-linux-x64
+	source = kensaku-0.2.1.db::https://github.com/LiteracyFanatic/kensaku/releases/download/v0.2.1/kensaku.db
+	sha256sums = deac2bb09470e40ca17620e3dc5e3604e0f56753ec0001f826c22065454df6c8
 	sha256sums = a0ebb33ffaedc9a78fa79e8d7f5d066ae88ba126125029f2b08e40fa7c155b4e
 
 pkgname = kensaku-bin
