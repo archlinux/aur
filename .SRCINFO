@@ -1,6 +1,6 @@
 pkgbase = swaypwd-bin
 	pkgdesc = Print the working directory of the foreground process in the focused Sway window
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://gitlab.com/bullbytes/swaypwd
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = swaypwd-bin
 	conflicts = swaypwd-git
 	options = !strip
 	options = !debug
-	source = swaypwd-0.2.1-x86_64::https://gitlab.com/api/v4/projects/80488692/packages/generic/swaypwd/0.2.1/swaypwd-x86_64
-	source = swaypwd-0.2.1-man.1::https://gitlab.com/api/v4/projects/80488692/packages/generic/swaypwd/0.2.1/swaypwd.1
-	source = LICENSE::https://gitlab.com/bullbytes/swaypwd/-/raw/v0.2.1/LICENSE
-	b2sums = c33bf7a10b2f93881ce4933aa281a14424113622629683f93df6fc189a0131d4dc98896a701b76bf1de62fc19c4fc2d8ef2d78445c0cf187f35a593815e9310e
-	b2sums = d3c0f3567e6db112af269866469ba298e0cc308564552bc4d59ac3f28c06cd277ab8b3b61ec6782e78369f8d2d90e774b6296b381fe54cfd96ae50bfa62588b3
+	source = swaypwd-0.2.2-x86_64::https://gitlab.com/api/v4/projects/80488692/packages/generic/swaypwd/0.2.2/swaypwd-x86_64
+	source = swaypwd-0.2.2-man.1::https://gitlab.com/api/v4/projects/80488692/packages/generic/swaypwd/0.2.2/swaypwd.1
+	source = LICENSE::https://gitlab.com/bullbytes/swaypwd/-/raw/v0.2.2/LICENSE
+	b2sums = 96c11a4021a6b98c7d770341bf7385eb2b639c9fce31dbd0a71989b8e95feaef397b83bf4bcc78022504aa8aadf034c7dd09b2f63013bf691ada2841835277c4
+	b2sums = 655ba9561604fc161a1dcb00f00a78f0cf747faa345a28698a04b17898bf2b92ce3139cb27288d4e421f1f008b583370443dc487cd0f1e0cdd10246d31c9fd8b
 	b2sums = b6829320f725e3e45c4807ef5deb4738a691fb3ab146d8531b81fdbccd8376a826c8ec76165985cdf37d534f68e395652c96841ba7636c4bd34c49b7c7b3a9ec
 
 pkgname = swaypwd-bin
