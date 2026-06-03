@@ -3,7 +3,7 @@
 pkgname=qtox-toktok
 _pkgname=qTox
 pkgver=1.18.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Powerful Tox client written in C++/Qt (TokTok fork)'
 arch=('x86_64')
 url='https://github.com/TokTok/qTox'
@@ -15,7 +15,7 @@ source=("https://github.com/TokTok/qTox/releases/download/v${pkgver}/qTox-${pkgv
 sha512sums=('b2f0886e885206a70dc3915bd6d7ca0051ce8c4b15c3f42f1e769583cf11609a7ff2cdb47715404db17ee638ce5636d128064bef50314c711194a9840cc8bfae')
 
 build() {
-  cd ${_pkgname}-v${pkgver}
+  cd ${_pkgname}-${pkgver}
   cmake -S . -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUPDATE_CHECK=OFF \
@@ -24,11 +24,11 @@ build() {
 }
 
 check() {
-  cd ${_pkgname}-v${pkgver}
+  cd ${_pkgname}-${pkgver}
   cmake --build build --target test
 }
 
 package() {
-  cd ${_pkgname}-v${pkgver}
+  cd ${_pkgname}-${pkgver}
   DESTDIR="$pkgdir" cmake --install build
 }
