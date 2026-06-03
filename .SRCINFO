@@ -1,0 +1,22 @@
+pkgbase = thinkorswim-bin
+	pkgdesc = Schwab thinkorswim trading platform
+	pkgver = 1991.3.0
+	pkgrel = 1
+	url = https://www.schwab.com/trading/thinkorswim/download
+	arch = x86_64
+	license = LicenseRef-thinkorswim
+	makedepends = java-runtime=21
+	depends = bash
+	depends = bubblewrap
+	depends = java-runtime=21
+	options = !strip
+	source = thinkorswim_installer-1991.3.0.sh::https://tosmediaserver.schwab.com/installer/InstFiles/thinkorswim_installer.sh
+	source = thinkorswim.sh
+	source = thinkorswim.desktop
+	source = os-release.thinkorswim
+	sha256sums = 37f846f2f2826f634970d03eb77555dce58f4cc3eebc4212f548214ad1310be0
+	sha256sums = 473b5b946490313a137c15228f4b4b23d7ec61e076cdc68d3e4f0a0b2f01e2f0
+	sha256sums = aefb05dec001465d46ef69594fbcd33284e09d421bab7c810c56fa5cbf152154
+	sha256sums = f3f769bbfbb3950f7318be6879f260fbe43ec87cdbaa89fd3d0475a844dbb6cc
+
+pkgname = thinkorswim-bin

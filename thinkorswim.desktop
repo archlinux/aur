@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=thinkorswim
+Comment=Trading platform
+Exec=thinkorswim
+Icon=thinkorswim
+Terminal=false
+Categories=Office;Finance;
+StartupNotify=true
