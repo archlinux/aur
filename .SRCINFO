@@ -1,6 +1,6 @@
 pkgbase = ima2-gen
 	pkgdesc = Local OAuth image generation studio for GPT Image 2 workflows
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://lidge-jun.github.io/ima2-gen/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = ima2-gen
 	optdepends = python-numpy: ComfyUI bridge support
 	optdepends = python-pillow: ComfyUI bridge support
 	optdepends = python-pytorch: ComfyUI bridge support
-	noextract = ima2-gen-2.0.0.tgz
+	noextract = ima2-gen-2.0.1.tgz
 	options = !debug
-	source = ima2-gen-2.0.0.tgz::https://registry.npmjs.org/ima2-gen/-/ima2-gen-2.0.0.tgz
-	sha256sums = 4f34a7a9e27020b7e98e115079220fd42c29b4946c243098f4c43c97a67a0f1e
+	source = ima2-gen-2.0.1.tgz::https://registry.npmjs.org/ima2-gen/-/ima2-gen-2.0.1.tgz
+	sha256sums = 552f8395386de75145f29ce40b9e07afce3e63fc4bf560816f1bacba8b1db79a
 
 pkgname = ima2-gen
