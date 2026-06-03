@@ -1,0 +1,5 @@
+[reqlog-bin]
+source = "github"
+github = "SagarMaheshwary/reqlog"
+use_latest_release = true
+prefix = "v"
