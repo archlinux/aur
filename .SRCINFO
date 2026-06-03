@@ -1,0 +1,24 @@
+pkgbase = torrent-tui
+	pkgdesc = ⚡A lightweight tui based bit torrent client
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/ryadios/torrent-tui
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = nodejs
+	depends = bun
+	provides = torrent-tui
+	noextract = torrent-tui-0.0.4.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = torrent-tui-0.0.4.tgz::https://registry.npmjs.org/torrent-tui/-/torrent-tui-0.0.4.tgz
+	b2sums = 42a1d0709a4c767a6ba7baddb33067af9c84f28899b0c42fc67cb9c0a96c7eb9d21c0b0675db7679f46ef90d26723752567e8fc5eb4b13912afedebd58fe8ec3
+
+pkgname = torrent-tui
