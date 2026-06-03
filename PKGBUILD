@@ -2,7 +2,7 @@
 
 pkgauthor="ryadios"
 pkgname="torrent-tui"
-pkgdesc="⚡A lightweight tui based bit torrent client"
+pkgdesc="⚡A lightweight TUI based BitTorrent client"
 pkgver=0.0.4
 pkgrel=1
 
