@@ -1,0 +1,27 @@
+pkgbase = nodejs-gtfs
+	pkgdesc = Loads transit data in GTFS format into a SQLite database and provides some methods to query for agencies, routes, stops, times, fares, calendars and other GTFS data.
+	pkgver = 4.18.7
+	pkgrel = 1
+	url = https://github.com/BlinkTagInc/node-gtfs
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	depends = glibc
+	depends = libstdc++.so
+	provides = node-gtfs=4.18.7
+	provides = gtfs-import=4.18.7
+	provides = gtfs-export=4.18.7
+	provides = gtfsrealtime-update=4.18.7
+	conflicts = node-gtfs
+	conflicts = gtfs-import
+	conflicts = gtfs-export
+	conflicts = gtfsrealtime-update
+	noextract = gtfs-4.18.7.tgz
+	source = https://registry.npmjs.org/gtfs/-/gtfs-4.18.7.tgz
+	source = node-gtfs::git+https://github.com/BlinkTagInc/node-gtfs.git
+	sha256sums = 4f8217bab5b505df6d3e7de516bdb37c892fb4948152bc0aa0cf75ecac236a60
+	sha256sums = SKIP
+
+pkgname = nodejs-gtfs
