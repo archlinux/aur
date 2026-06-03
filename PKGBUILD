@@ -1,5 +1,5 @@
 pkgname=mark-shot
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc='Qt 6 Wayland screenshot selection and annotation tool'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=(
     'tesseract-data-chi_sim: simplified Chinese OCR data for tesseract'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2e8545d98604b07ac91e2450a30f1b7a9e36d8ef45c9ed277261e19293720943')
+sha256sums=('f5160e16ed9667f75b90928e588d80083695fc40471d6c9589a71ecf46a6e1cd')
 
 build() {
     cmake -S "${pkgname}-${pkgver}" -B build -G Ninja \
