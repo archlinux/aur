@@ -37,8 +37,8 @@ depends=(adacurses
          gnatcoll-zlib
          gnatcoverage-bin
          gnatdoc
-         gnatstudio
-         gnatstudio-appimage
+#         gnatstudio
+#         gnatstudio-appimage
          gnatstudio-bin
          gnatsymbolize
          gprbuild
