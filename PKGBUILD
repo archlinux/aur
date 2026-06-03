@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=ralphex-bin
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="CLI tool that orchestrates Claude Code to execute implementation plans autonomously"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/umputun/ralphex/v$
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/umputun/ralphex/releases/download/v${pkgver}/ralphex_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/umputun/ralphex/releases/download/v${pkgver}/ralphex_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('155d97114b2d9b7f66181d0ba258aca57f97b8b957dd1662745bf57218c41ef3')
-sha256sums_x86_64=('095baf9631647333aa97243ea614178b6c6e4afa8d385421d2f052819477fa46')
-sha256sums_aarch64=('a5b6da5780353893ede5803b1b30faceecc30177261831270f51e02138d34180')
+sha256sums_x86_64=('d33c4916ae45ab85b4da591a0a7e43c86f5e787fec9a980ea783f61ff11359bc')
+sha256sums_aarch64=('7d1edac98fc806ac665e7334fe5ec0c03cc21d59d389f8a83f2f61e5d5dfaa20')
 
 latestver() {
     gh api --paginate repos/umputun/ralphex/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name | test("^ralphex_[0-9.]+_linux_amd64\\.tar\\.gz$")) and any(.assets[]; .name | test("^ralphex_[0-9.]+_linux_arm64\\.tar\\.gz$"))) | .tag_name' |
