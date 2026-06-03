@@ -44,5 +44,5 @@ package() {
 
     # Create binary symlinks
     mkdir -p "$pkgdir/usr/bin"
-    ln -sf "/usr/lib/node_modules/$_pkgname/bin/reasonix.js" "$pkgdir/usr/bin/reasonix"
+    ln -sf "/usr/lib/node_modules/$_pkgname/bin/reasonix.js" "$pkgdir/usr/bin/deepseek-reasonix-tui"
 }
