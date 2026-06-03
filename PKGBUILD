@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-gui
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="PySide6 desktop GUI for the Control-OFC fan control daemon"
 arch=('any')
@@ -11,13 +11,13 @@ license=('MIT')
 # (the platform check happens after the import). Arch's
 # `python-pyqtgraph` package omits the dep upstream; declaring it here
 # is load-bearing on clean systems. See DEC-103. Do not remove.
-depends=('control-ofc-daemon>=1.8.2' 'python' 'pyside6' 'python-httpx'
+depends=('control-ofc-daemon>=1.8.3' 'python' 'pyside6' 'python-httpx'
          'python-pyqtgraph' 'python-numpy' 'python-colorama'
          'hicolor-icon-theme')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'scdoc')
 install=control-ofc-gui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4e31268bb3be43ef386e86b58bb00a72aa967ed365658693d772441c5ef27940')
+sha256sums=('a5ab90f6825cf79b90c7ea906a5c792bdaa69a1f55560ed698159452e93fb8d8')
 
 build() {
     cd "$pkgname-$pkgver"
