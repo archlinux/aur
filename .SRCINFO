@@ -1,0 +1,19 @@
+pkgbase = aquacontrol
+	pkgdesc = Suite di controllo per Aquaero 6 LT
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/raffaele-90/aquacontrol
+	install = aquacontrol.install
+	arch = any
+	license = GPL3
+	depends = python
+	depends = pyside6
+	depends = python-hidapi
+	optdepends = python-pynvml: supporto lettura sensori GPU Nvidia
+	provides = aquacontrol
+	conflicts = openaquaero
+	replaces = openaquaero
+	source = aquacontrol-3.1.0.tar.gz::https://github.com/raffaele-90/aquacontrol/archive/refs/tags/v3.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = aquacontrol
