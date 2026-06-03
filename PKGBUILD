@@ -3,7 +3,7 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 _base=pydna
 pkgname=python-${_base}
-pkgver=5.5.11
+pkgver=5.5.13
 pkgrel=1
 pkgdesc="Representing double stranded DNA and functions for simulating cloning and homologous recombination between DNA molecules"
 arch=(any)
@@ -19,7 +19,7 @@ optdepends=('python-scipy: gel simulation'
   'python-requests: download'
   'python-cai2: express')
 source=("git+${url}.git?#tag=v${pkgver}")
-sha512sums=('1a891a5c2adf338af7aa7353bac8cd7fbb1d2dfb52b5d2dc0c324452fb9a5dcc1cddd0736034ee37089fd1fe766f3f27fea041ef47bf01f6aea835743fc2eeac')
+sha512sums=('e3dba599c756802b41d587d036e36997443463e6bee998543f1bb490baba4e960ccafc9a98798b59c2c97dd08e23cdbe69dfdbb649c76e50d083c7d21c7d2f2d')
 
 build() {
   cd ${_base}
