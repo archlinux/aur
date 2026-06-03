@@ -1,7 +1,7 @@
 # Maintainer: Jack Reitano <thnikk645@gmail.com>
 pkgname=pybar-bin
 _pkgname=pybar
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Statusbar for Sway and Hyprland"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/pybar-arch.zip")
-sha256sums=('bd26f3bd527c8a6112a76f8e60a65bd6ff7d4fb50e1d05aef061597f11de4c3a')
+sha256sums=('85c727768d7573303d106465fa0d834ddc6982e8e74918a074997e74a28e4733')
 
 package() {
     # Install the application support files
