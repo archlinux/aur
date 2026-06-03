@@ -1,0 +1,22 @@
+pkgbase = vara-hf
+	pkgdesc = High performance HF software modem, run through Wine
+	pkgver = 4.9.0
+	pkgrel = 1
+	url = https://varamodem.com/
+	arch = x86_64
+	license = LicenseRef-VARA-Shareware
+	depends = wine
+	depends = winetricks
+	depends = bash
+	depends = util-linux
+	options = !strip
+	source = vara-hf-4.9.0.zip::https://downloads.winlink.org/VARA%20Products/VARA%20HF%20v4.9.0%20%20setup.zip
+	source = VARA-Terms-of-use.pdf::https://varamodem.com/wp-content/uploads/2026/04/Terms-of-use.pdf
+	source = vara-hf
+	source = vara-hf.desktop
+	sha256sums = 5ad7d75c722e4414705dec998c28a711b7567f8568bea75cb84e8aa7c991f48a
+	sha256sums = 6e4feabf958622bde6ec3fb6a80e99c6452887b0fb57f62b1701b5fd7958cee6
+	sha256sums = 54ed8eeed9e5925ab930f51314f6c85904b94b6c77971aaf63093b1f5f930fcb
+	sha256sums = 31415cabdedf5c0fca6fffd524e4b1decf0acc4b0c85f64f2bb12bc436581170
+
+pkgname = vara-hf

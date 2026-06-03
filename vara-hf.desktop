@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=VARA HF
+Comment=HF software modem via Wine
+Exec=vara-hf
+Terminal=false
+Categories=Network;HamRadio;
+StartupNotify=true

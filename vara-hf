@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+readonly data_dir="${XDG_DATA_HOME:-$HOME/.local/share}/vara-hf"
+readonly local_version_markerfile="$data_dir/version"
+export WINEPREFIX="$data_dir/prefix"
+export WINEDLLOVERRIDES='mscoree=d;mshtml=d'
+readonly exe="$WINEPREFIX/drive_c/VARA/VARA.exe"
+readonly shared_dir='/usr/share/vara-hf'
+
+mkdir -p "$data_dir"
+exec 9>"$data_dir/install.lock"
+flock 9
+
+readonly packaged_version="$(<"$shared_dir/version")"
+readonly installed_version="$(cat "$local_version_markerfile" 2>/dev/null || :)"
+
+install_required=false
+if [[ -z "$installed_version" ]] || [[ ! -e "$exe" ]]; then
+  printf 'Installing VARA HF %s ...\n' "$packaged_version" >&2
+  install_required=true
+elif [[ "$installed_version" != "$packaged_version" ]]; then
+  printf 'Updating VARA HF %s -> %s ...\n' "$installed_version" "$packaged_version" >&2 
+  install_required=true
+fi
+
+if $install_required; then
+  winetricks -q vb6run
+  wine "$shared_dir/VARA-setup.exe" /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP- '/DIR=C:\VARA'
+
+  if [[ ! -e "$exe" ]]; then
+    printf 'Error: Installer did not create main executable %s.\n' "$exe" >&2
+    exit 1
+  fi
+
+  printf '%s\n' "$packaged_version" > "$local_version_markerfile"
+fi
+
+exec 9>&-
+
+printf 'Starting VARA HF %s ...\n' "$packaged_version" >&2
+exec wine "$exe" "$@"
