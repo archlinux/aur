@@ -1,13 +1,15 @@
 pkgbase = motionpro-gui
 	pkgdesc = Array Networks VPN Client for Linux (gui)
-	pkgver = 9.4.0.505
+	pkgver = 9.4.5.13
 	pkgrel = 1
 	url = https://support.arraynetworks.net/prx/001/http/supportportal.arraynetworks.net/downloads/downloads.html
+	install = motionpro-gui.install
 	arch = x86_64
 	license = unknown
 	depends = freetype2
 	depends = qt5-base
-	source = https://support.arraynetworks.net/prx/001/http/supportportal.arraynetworks.net/downloads/pkg_9_4_0_505/MP_Linux_1.2.18/MotionPro_Linux_Ubuntu_x64_build-8383-34.sh
-	sha256sums = 5e9f123829a9bacef290768282c6e071ee811659440ab67cf2192f6394e36869
+	depends = libxml2-legacy
+	source = https://support.arraynetworks.net/prx/001/http/supportportal.arraynetworks.net/downloads/pkg_9_4_5_8/MP_Linux-1.2.19-cr2025/MotionPro_Linux_Ubuntu_x64.sh
+	sha256sums = 9e54ef8621d16c31b08b746ff3016aa042f672a6d15972d9c307969a547c0d5a
 
 pkgname = motionpro-gui
