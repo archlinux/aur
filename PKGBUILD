@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A Linux resource & process monitor inspired by Windows 11's Task Manager"
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,7 +28,7 @@ options=(!strip)
 source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}-1_${_barch[0]}.deb")
 sha256sums=('87f838dd4476de000fa0b1b216e4a6323e1cad587eab2a8066161aa1669cda40')
-sha256sums_x86_64=('ef5623fcba0466baf0f63d2c8ec8529cc2bdf24c0330de3e069260515da411c8')
+sha256sums_x86_64=('1685347cdd675637a783e126965ecf98d91da619583ce71ba138170fcc84ebe3')
 
 
 package() {
