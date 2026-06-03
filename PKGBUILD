@@ -1,6 +1,6 @@
-# Maintainer: c3rt1fiedd <aur.c3rt@gmail.com>
+# Maintainer: c3rt1fiedd <aur.c3rt at gmail dot com>
 pkgname=geforcenow-native
-pkgver=4.0.0  # Bump on major releae (update)
+pkgver=2.0.85  # switched to actual version (just found it out sorry)
 pkgrel=1
 pkgdesc="NVIDIA GeForce NOW official beta Linux client (Flatpak)"
 install=gfn.install
