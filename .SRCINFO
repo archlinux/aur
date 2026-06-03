@@ -1,0 +1,23 @@
+pkgbase = python-aws_sdk_transcribe_streaming
+	pkgdesc = aws_sdk_transcribe_streaming client.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://pypi.org/project/aws_sdk_transcribe_streaming
+	arch = any
+	license = Apache-2.0
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-smithy-aws-core
+	depends = python-smithy-aws-event-stream
+	depends = python-smithy-json
+	depends = python-smithy-core
+	depends = python-smithy-http
+	depends = python-awscrt
+	source = https://files.pythonhosted.org/packages/source/a/aws_sdk_transcribe_streaming/aws_sdk_transcribe_streaming-0.6.0.tar.gz
+	sha256sums = ac7b2fd83c77dac30b807c87d6334fbb968f6a3710928ac1b6faa5a37cb00d1a
+
+pkgname = python-aws_sdk_transcribe_streaming
