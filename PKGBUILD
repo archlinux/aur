@@ -149,7 +149,7 @@ DLAGENTS="${DLAGENTS[@]/curl /curl -L}"
 set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
-_pkgver='1.4.6'
+_pkgver='1.4.7'
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 _sfx=''
@@ -165,6 +165,7 @@ _HBB=( # dates are retrieved from git fetch; tig. Every version gets a specific 
   '1.4.4:20251117-a86eda749e6fa33c282bab680e6b504d3ad87539'
   '1.4.5:20251117-073403edbf1fffcb3acfe8cbe7582ee873b23398'
   '1.4.6:20260302-48c37de3e6c4e399af6f51ca20e8e3e1fd037976'
+  '1.4.7:20260601-df6badca5bf81b4e9836256cf8e31c993ad70dd1'
 )
 _pkgverhbb="$(_fn_VCL "${_pkgver}" -eq "${_HBB[@]}")"; unset _HBB; test "$(_vercmp "${_pkgver}" '1.3.7')" -lt 0 -o ! -z "${_pkgverhbb}" || exit 1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
@@ -275,8 +276,8 @@ source+=("${_vcs[@]}")
     )
   fi
 ####
-md5sums=('7e97019ef5eb91cb62cbd5bf4ebec65d'
-         '5c2218c15c7912ffe9da8bba179763c5'
+md5sums=('b8fe2a5b56837cb922bd8d2eb563249a'
+         '3e63d043eee02563ee590923adaea311'
          '6acc4b5b14befec55ef84006b60c7ff5'
          'a77a4586f30f77de2eed63e160b3a051'
          '54a30a570a89caa701d9c0b139b39170'
@@ -292,8 +293,8 @@ md5sums=('7e97019ef5eb91cb62cbd5bf4ebec65d'
          '03485098fb64a000a4f7cd97e468dfff'
          'a3efc04e00cede00296f1a0dc323e8d1'
          'cc8e5418ff0c163228aabbe385ba2596')
-sha256sums=('d0004f3880c19aefe2713696f0147efa03fdba5c566a39236b95820a4f24c0d0'
-            '8c5f064135b257e627b7b2ef25c27f746ef9ed57489ae93b58c39251b1858a63'
+sha256sums=('895030877bc23e2902c6c560cacff17eafefb77852042c501ef0e6c3c2fa1574'
+            'efe344917d229b4fdef4271bde3a14993b46f3270513c07f0bcffd9db91337c5'
             '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
             '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
             '976944c6c163ed0810207f54bb4b5d5cf41aa4e4673133f188e0b0ada5eafc8e'
