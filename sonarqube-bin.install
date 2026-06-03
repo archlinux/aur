@@ -12,7 +12,6 @@ post_install() {
 }
 
 post_upgrade() {
-  systemctl daemon-reload
   if systemctl is-active --quiet sonarqube; then
     systemctl restart sonarqube
     echo ":: sonarqube.service restarted"
