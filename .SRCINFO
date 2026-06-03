@@ -1,0 +1,15 @@
+pkgbase = ot
+	pkgdesc = program to print text from folder
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://codeberg.org/quik/just_programs
+	arch = x86_64
+	license = Unlicense
+	makedepends = gcc
+	makedepends = make
+	makedepends = unzip
+	depends = gcc-libs
+	source = ot-0.0.1.zip::https://codeberg.org/quik/just_programs/archive/main:OutpuText.zip
+	sha256sums = dc222082a6712febae1ae040ef060fc536904583b2348687834ed2ca8a3cf3f5
+
+pkgname = ot
