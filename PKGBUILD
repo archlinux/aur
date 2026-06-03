@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-applet-caffeine-git
-pkgver=r47.4f74476
+pkgver=r60.e427a1a
 pkgrel=1
 pkgdesc="Caffeine Applet for the COSMIC™ desktop"
 arch=('x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target host-tuple
 }
 
 build() {
