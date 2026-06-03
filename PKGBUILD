@@ -3,7 +3,7 @@
 pkgname=python-onnx-simplifier
 _pkgname=onnx-simplifier
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Simplify your ONNX model by removing redundant operators'
 arch=('x86_64')
 url='https://github.com/daquexian/onnx-simplifier'
@@ -72,11 +72,15 @@ prepare() {
 build() {
     cd "$_pkgname"
 
-    # Use system protobuf and system onnxruntime; the bundled C++/pybind11
-    # extension is configured via these env vars, which setup.py reads.
-    export ONNX_OPT_USE_SYSTEM_PROTOBUF=1
-    # CMake 4.x requires minimum version 3.5 - bundled submodules have older versions
-    export CMAKE_ARGS="-DONNXSIM_BUILTIN_ORT=OFF -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+    # Build onnxsim's vendored onnx C++ against its OWN BUNDLED protobuf, NOT the
+    # system one (ONNX_OPT_USE_SYSTEM_PROTOBUF=OFF). onnxsim statically embeds the
+    # onnx descriptors; sharing the system libprotobuf descriptor pool with
+    # python-onnx (a hard depend that onnxsim imports at load) makes protobuf 35
+    # ABORT the interpreter on the duplicate onnx/onnx-ml.proto registration —
+    # SIGABRT on `import onnxsim` for every user. A separate static protobuf pool
+    # sidesteps the collision (verified: import + simplify works, no crash).
+    # CMake 4.x needs a minimum policy version of 3.5 for the older bundled submodules.
+    export CMAKE_ARGS="-DONNXSIM_BUILTIN_ORT=OFF -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DONNX_OPT_USE_SYSTEM_PROTOBUF=OFF"
 
     # PEP517 build (setuptools backend) instead of the legacy
     # `python setup.py bdist_wheel`/`install`; the custom build_ext still drives

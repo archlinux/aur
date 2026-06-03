@@ -1,7 +1,7 @@
 pkgbase = python-onnx-simplifier
 	pkgdesc = Simplify your ONNX model by removing redundant operators
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daquexian/onnx-simplifier
 	arch = x86_64
 	license = Apache-2.0
