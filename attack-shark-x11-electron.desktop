@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Attack Shark X11 Driver
+Name=Attack Shark X11
 Comment=Configuration tool for the Attack Shark X11 gaming mouse
-Exec=attack-shark-x11-driver
+Exec=attack-shark-x11-electron
 Icon=attack-shark-x11
 Terminal=false
 Type=Application
