@@ -1,6 +1,6 @@
 pkgbase = blurt
 	pkgdesc = Fast, local, push-to-toggle speech-to-text dictation (Whisper) that types into the focused window
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/kaukauk/blurt
 	install = blurt.install
@@ -23,7 +23,7 @@ pkgbase = blurt
 	optdepends = ydotool: typing on Wayland (alternative)
 	optdepends = xclip: copy transcription to clipboard on X11
 	optdepends = wl-clipboard: copy transcription to clipboard on Wayland
-	source = blurt-0.1.1.tar.gz::https://github.com/kaukauk/blurt/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 9e94a4926f36a2dbf2c461d7f97153c4d525a91bd81fe6889243819ded9f40a2
+	source = blurt-0.1.2.tar.gz::https://github.com/kaukauk/blurt/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 0ee00fa2671d409d30e854b935b8146fb38100d8a21b3d349ea6866ba1c144a8
 
 pkgname = blurt
