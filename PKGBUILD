@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartos
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Barto central job scheduling server"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('mariadb: local database server'
 makedepends=('cargo')
 install=bartos.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/barto/archive/v$pkgver.tar.gz")
-sha256sums=('f096c3bd82f1e609c0c522f9631f234f072d0559774b5961ae68dce3ce800982')
+sha256sums=('0906cd4062329509f88a48bc07c8b8511dc27b8cb8227bdeea2302c9103afbd0')
 
 prepare() {
     cd "barto-$pkgver"
