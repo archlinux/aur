@@ -1,5 +1,27 @@
 # MachCtrl Changelog
 
+## v2.0.2 — 2026-06-03
+
+### Fixes
+- Fans now apply saved settings on boot without needing to open the app
+  (broadcast_loop now always reads sensors, not only when clients are connected)
+- Service reliably enabled on boot via symlink fallback if systemctl preset fails
+- nct6775 kernel module auto-loaded on install (motherboard fans now detected correctly)
+- About panel blank screen fixed (osName passed as prop instead of accessing data directly)
+- Version number and distro name now dynamic (read from package.json and /etc/os-release)
+- Sidebar labels showing raw key names (sideOverview, sideCpu, etc.) fixed
+
+### Performance
+- Images converted from PNG to WebP (~80% size reduction)
+- electron-builder updated to v26, vite updated to v6
+
+### AUR / Packaging
+- PKGBUILD: nct6775 module loaded on post_install and post_upgrade
+- PKGBUILD: service enable with symlink fallback for broader compatibility
+- pkgdesc now in English per AUR convention
+- Wayland support in launcher (--ozone-platform=wayland auto-detected)
+- nodejs/npm moved to makedepends (fixes install on Manjaro and other derivatives)
+
 ## v2.0.0 — 2026-06-01
 
 ### New Features

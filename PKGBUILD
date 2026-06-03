@@ -1,6 +1,6 @@
 # Maintainer: araujo791 <https://github.com/araujo791>
 pkgname=machctrl
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Hardware Monitor and Optimizer for Linux — CPU, GPU, RAM, Fans, Temperature | Requires KDE Plasma or GNOME"
 arch=('x86_64')

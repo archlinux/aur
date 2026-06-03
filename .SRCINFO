@@ -1,6 +1,6 @@
 pkgbase = machctrl
 	pkgdesc = Hardware Monitor and Optimizer for Linux — CPU, GPU, RAM, Fans, Temperature | Requires KDE Plasma or GNOME
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/araujo791/machctrl
 	install = machctrl.install
@@ -19,7 +19,7 @@ pkgbase = machctrl
 	provides = machctrl
 	conflicts = machctrl-git
 	conflicts = machctrl-bin
-	source = machctrl-2.0.1.tar.gz::https://github.com/araujo791/machctrl/archive/refs/heads/main.tar.gz
+	source = machctrl-2.0.2.tar.gz::https://github.com/araujo791/machctrl/archive/refs/heads/main.tar.gz
 	sha256sums = SKIP
 
 pkgname = machctrl
