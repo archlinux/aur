@@ -1,7 +1,7 @@
 # Maintainer: Liam Tölke <liamtoelke@gmail.com>
 
 pkgname=osu-tracker-bin
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Statistics tracker for osu!"
 arch=(x86_64)
@@ -12,14 +12,14 @@ provides=(osu-tracker)
 conflicts=(osu-tracker)
 options=(!strip)
 source=(
-  "https://github.com/respektive/osu-tracker/releases/download/v$pkgver/osu-tracker-$pkgver.AppImage"
+  "https://github.com/respektive/osu-tracker/releases/download/v$pkgver/osu-tracker-$pkgver-linux-x86_64.AppImage"
   "https://raw.githubusercontent.com/respektive/osu-tracker/main/public/icon.png"
   "https://raw.githubusercontent.com/respektive/osu-tracker/main/LICENSE.md"
   "osu-tracker.desktop"
   "osu-tracker"
 )
 noextract=("osu-tracker-$pkgver.AppImage")
-sha256sums=('1508ad61a4ce43d5d40e1c93250c60431fa943a2fa2a4125455471007aac4517'
+sha256sums=('0c6bc2aebf8d0ce7c19c7be78b58c66467bf8c865a41289af1dd76a26e4bb22f'
             '5ca041d9863fd0d2bb7c760ea65c4adba76242d221ed042a8d477ab843b94b84'
             '7fbaabf8f0106f727c4ffe508592f0e59fe57c31ca3e5ce9921a32495fa5677e'
             'dbb4a0b56353da6e4d676293e5807ca078b63d919226c2cf03bd3e8f2224feeb'
@@ -28,7 +28,7 @@ package() {
   cd "$srcdir"
 
   # Install binary and launch script
-  install -Dm755 "osu-tracker-$pkgver.AppImage" "$pkgdir/opt/osu-tracker/osu-tracker.AppImage"
+  install -Dm755 "osu-tracker-$pkgver-linux-x86_64.AppImage" "$pkgdir/opt/osu-tracker/osu-tracker.AppImage"
   install -Dm755 -t "$pkgdir/usr/bin" osu-tracker
 
   # Install pixmap, desktop and license file
