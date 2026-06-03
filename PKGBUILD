@@ -1,7 +1,7 @@
 # Maintainer: Daniel Vigh <vighd@digital.co.hu>
 
 pkgname=river-bar
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='A small status bar for the River and niri Wayland compositors'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   'iwd: network module Wi-Fi SSID alternative (iwctl)'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vighd/river-bar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('192990914abf802738a41fb1fd020b40f5c37561c620503782419005ef1406f0')
+sha256sums=('e72241bdbf1981fd1561bfc35b67e3c4a2eab79cd9d0e9484c0ddf3f730f84ad')
 
 build() {
   cd "${pkgname}-${pkgver}"
