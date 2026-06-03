@@ -2,7 +2,7 @@
 # Based on https://aur.archlinux.org/packages/caddy-cloudflare
 
 pkgname=caddy-cloudflare-l4
-pkgver_caddy=2.11.3
+pkgver_caddy=2.11.4
 pkgver_cloudflare=0.2.4
 pkgver_l4=0.1.1
 pkgver="$pkgver_caddy.$pkgver_cloudflare.$pkgver_l4"
