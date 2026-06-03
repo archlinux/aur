@@ -1,4 +1,4 @@
-pkgname=iso-commander
+pkgname=iso-commander-bin
 pkgver=7.1.8
 pkgrel=2
 pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
@@ -7,7 +7,7 @@ url="https://github.com/siyia2/iso-commander"
 license=('GPL3')
 depends=('coreutils' 'glibc' 'readline' 'util-linux' 'xz' 'zstd')
 optdepends=(
-    'ntfs-3g: NTFS formatting for Windows live USB creation (writes use the ntfs3 kernel driver)'
+    'ntfs-3g: NTFS formatting for Windows live USB creation (writes use the native kernel driver)'
     'dosfstools: FAT32 formatting for Windows live USB creation'
     'parted: GPT partition layout for Windows live USB creation'
 )
