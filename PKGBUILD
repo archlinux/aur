@@ -14,7 +14,7 @@
 
 _pkgname="waterfox"
 pkgname="$_pkgname"
-pkgver="6.6.13"
+pkgver="6.6.14"
 pkgrel=1
 pkgdesc="A customizable, privacy‑focused web browser"
 url="https://github.com/BrowserWorks/waterfox"
@@ -108,8 +108,8 @@ source=(
   '0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch'
   '0002-Fix-sandbox-to-build-with-glibc-2.43.patch'
 )
-sha256sums=('1e2863d4c533af73995f66e1b517416b501573956eec1619e8854c6b4ecf3f77'
-            '488f92d42d7ef459b0dd912e70eced3a32db074428d6f761b29612f2b4aabb77'
+sha256sums=('148fc4ecc545f3e6f373a87c774c86fee5e94badd438e1445e6b502a72a0ffa9'
+            'e3f532fb33a31233a9c24e6f649cfaf77c2d1a0d0d916960c7c1f3a6418db8b7'
             '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286'
             '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
             '404e780b1488625989c6dd8e2234e50ed01401b7cb1e99e79dee87f4f4f584f8')
