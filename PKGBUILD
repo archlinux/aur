@@ -11,9 +11,16 @@ optdepends=(
     'dosfstools: FAT32 formatting for Windows live USB creation'
     'parted: GPT partition layout for Windows live USB creation'
 )
-source=("isocmd::https://github.com/siyia2/iso-commander/releases/download/v${pkgver}/isocmd")
-md5sums=('90c543acf24246b37a3dc7cac9e8c31d')
+source=(
+    "isocmd::https://github.com/siyia2/iso-commander/releases/download/v${pkgver}/isocmd"
+    "isocmd.1::https://raw.githubusercontent.com/siyia2/iso-commander/v${pkgver}/man/isocmd.1"
+)
+
+# Binary and manpage checksums
+md5sums=('90c543acf24246b37a3dc7cac9e8c31d'
+         'a4d0bcbbe64f996ecaa19d3bbd890bbd')
 
 package() {
     install -Dm755 "${srcdir}/isocmd" "${pkgdir}/usr/bin/isocmd"
+    install -Dm644 "${srcdir}/isocmd.1" "${pkgdir}/usr/share/man/man1/isocmd.1"
 }
