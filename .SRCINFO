@@ -1,0 +1,21 @@
+pkgbase = ds4u-git
+	pkgdesc = DualSense 4 You — DualSense controller manager (git)
+	pkgver = r33.g4ac16f0
+	pkgrel = 1
+	url = https://git.yokai.digital/deadYokai/ds4u
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = clang
+	makedepends = lld
+	depends = hidapi
+	depends = libxkbcommon
+	depends = openssl
+	provides = ds4u
+	conflicts = ds4u
+	source = ds4u-git::git+https://git.yokai.digital/deadYokai/ds4u.git
+	sha256sums = SKIP
+
+pkgname = ds4u-git
