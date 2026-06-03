@@ -1,6 +1,6 @@
 pkgbase = mydumper
 	pkgdesc = A high performance MySQL backup tool.
-	pkgver = 0.21.3_1
+	pkgver = 1.0.3_1
 	pkgrel = 1
 	url = https://github.com/mydumper/mydumper
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = mydumper
 	depends = glib2
 	depends = mariadb-libs
 	depends = pcre2
-	source = https://github.com/mydumper/mydumper/archive/v0.21.3-1/mydumper-0.21.3-1.tar.gz
-	sha256sums = a6a6b4db319e67663410f26462597dfe22a0b34600ee35ada4180df07d8c6ce7
+	source = https://github.com/mydumper/mydumper/archive/v1.0.3-1/mydumper-1.0.3-1.tar.gz
+	sha256sums = 5ffec51824d758589db788d138804b04e1b8ce51198137be3a0cd2eb855f02a7
 
 pkgname = mydumper
