@@ -1,6 +1,6 @@
 pkgbase = debounced
 	pkgdesc = Userspace keyboard debounce daemon with FlashTap support
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/VillageOfGamers/key-debouncer
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = debounced
 	makedepends = make
 	depends = libevdev
 	depends = systemd
-	source = debounced-2.0.tar.gz::https://github.com/VillageOfGamers/key-debouncer/archive/refs/tags/v2.0.tar.gz
-	sha256sums = SKIP
+	source = debounced-2.1.tar.gz::https://github.com/VillageOfGamers/key-debouncer/archive/refs/tags/v2.1.tar.gz
+	sha256sums = 4827ad077c4843b13c1d9212be7ed3a7fa8899c39a3ee1fefb6b8870b0618ec8
 
 pkgname = debounced
