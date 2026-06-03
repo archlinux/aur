@@ -3,7 +3,7 @@
 
 pkgname=python-pyftdi
 _name=${pkgname#python-}
-pkgver=0.57.1
+pkgver=0.57.2
 pkgrel=1
 pkgdesc="FTDI device driver written in pure Python"
 arch=(any)
@@ -25,7 +25,7 @@ checkdepends=(
 )
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
 # source=(https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl)
-sha512sums=('0f0a9115afe9fe3948edede3977a617d41884d697084b4ec1601abeb1822d4baf2c48bc46affa470fca57f92da41679049988b4defaed9fce9ce8b84bec50ac8')
+sha512sums=('c0adee63f619069b9d96c57adb447e23db0a942e9ed477bc42d9f507b5160a7b07d70627856588d90aa198c2b356645e3b847cbca2facb080dd0b15d635c29ff')
 
 build() {
   cd $_name-$pkgver
