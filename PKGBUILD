@@ -1,6 +1,6 @@
 # Maintainer: Eric Lee <well dot dragonfly dot aaww at mask dot me>
 pkgname=grok-build-bin
-pkgver=0.2.16
+pkgver=0.2.20
 pkgrel=1
 pkgdesc="Grok Build — xAI's terminal coding agent CLI"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!strip' '!debug' '!emptydirs')
 source_x86_64=("grok-${pkgver}-linux-x86_64::https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-${pkgver}-linux-x86_64")
 source_aarch64=("grok-${pkgver}-linux-aarch64::https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-${pkgver}-linux-aarch64")
 
-b2sums_x86_64=('fee9082721e40aa4a4da727ca80ae8d487fd598128b1e44b9a62e3370bf9059289c83e16e4acb65abc8d585ad0a2fd66248618c125056a12104ef09653b18590')
-b2sums_aarch64=('51b76f42810b4dae6285ef6966436f0c77020923650472fa3526c55783bd2e14d8adb1dfd87645343cc049c9eeaa870deb1dfcab97090786065d5d86ca89bd82')
+b2sums_x86_64=('1b62057d21bfc36544bf77be515a2919630d4ab93c4bfb4c01f26ff9236e304298ae2bd100209676492fb1aed86829bc9b28b55ca7aba3b9942bb3669685ca42')
+b2sums_aarch64=('604fc9d6976adc8de21345c924eda3e3aceddf8e284ef42a20017e63cb01802454993c69854b0bd9eb33bbc353d8e8c4427cdbcc2bde5408571499a068f2d6c8')
 
 package() {
     install -Dm755 "${srcdir}/grok-${pkgver}-linux-${CARCH}" \
