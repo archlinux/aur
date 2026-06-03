@@ -5,6 +5,7 @@ pkgdesc="Linux-first game streaming host"
 arch=('x86_64')
 url="https://github.com/papi-ux/polaris"
 license=('GPL3')
+depends=('miniupnpc')
 
 source=(
   "Polaris-arch-x86_64.pkg.tar.zst::https://github.com/papi-ux/polaris/releases/download/v${pkgver}/Polaris-arch-x86_64.pkg.tar.zst"

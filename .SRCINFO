@@ -6,6 +6,7 @@ pkgbase = polaris-gamestream-bin
 	install = polaris-gamestream-bin.install
 	arch = x86_64
 	license = GPL3
+	depends = miniupnpc
 	noextract = Polaris-arch-x86_64.pkg.tar.zst
 	source = Polaris-arch-x86_64.pkg.tar.zst::https://github.com/papi-ux/polaris/releases/download/v1.1.0/Polaris-arch-x86_64.pkg.tar.zst
 	sha256sums = SKIP
