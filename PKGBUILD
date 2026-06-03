@@ -94,10 +94,11 @@ package() {
   install -d "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/priestess" << WRAPPER
 #!/bin/bash
-export ELECTRON_OZONE_PLATFORM_HINT="${ELECTRON_OZONE_PLATFORM_HINT:-auto}"
-export ELECTRON_ENABLE_WAYLAND_ACTIVATION_TOKEN_HACK="${ELECTRON_ENABLE_WAYLAND_ACTIVATION_TOKEN_HACK:-1}"
-exec /opt/priestess/${_pkgreal} "$@"
+export ELECTRON_OZONE_PLATFORM_HINT="\${ELECTRON_OZONE_PLATFORM_HINT:-auto}"
+export ELECTRON_ENABLE_WAYLAND_ACTIVATION_TOKEN_HACK="\${ELECTRON_ENABLE_WAYLAND_ACTIVATION_TOKEN_HACK:-1}"
+exec /opt/priestess/${_pkgreal} "\$@"
 WRAPPER
+  chmod 755 "${pkgdir}/usr/bin/priestess"
   chmod 755 "${pkgdir}/usr/bin/priestess"
 
   # Desktop entry
