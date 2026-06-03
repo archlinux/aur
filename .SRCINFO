@@ -1,16 +1,16 @@
 pkgbase = deepseek-reasonix-tui
-	pkgdesc = DeepSeek-native coding agent: cache-first loop, flash-first cost control, tool-call repair.
-	pkgver = 0.53.2
-	pkgrel = 1
-	url = https://github.com/esengine/DeepSeek-Reasonix
-	arch = any
-	license = MIT
-	makedepends = jq
-	depends = nodejs>=22
-	depends = npm
-	provides = reasonix
-	conflicts = reasonix
-	source = reasonix-0.53.2.tgz::https://registry.npmjs.org/reasonix/-/reasonix-0.53.2.tgz
-	sha256sums = 257a6188e68993ad9f091e1b8886ff31e590a265614152446899dbb10fe4cf63
+       pkgdesc = Cache-first DeepSeek coding agent for the terminal.
+       pkgver = 1.0.0
+       pkgrel = 1
+       url = https://github.com/esengine/DeepSeek-Reasonix
+       arch = any
+       license = MIT
+       depends = nodejs>=22
+       depends = npm
+       makedepends = jq
+       provides = reasonix
+       conflicts = reasonix
+       source = reasonix-1.0.0.tgz::https://registry.npmjs.org/reasonix/-/reasonix-1.0.0.tgz
+       sha256sums = fbdc40d47cf8358bc68a60d55c3e11f465b2bb72cfa1d2a1d7b1144de4c727cd
 
 pkgname = deepseek-reasonix-tui

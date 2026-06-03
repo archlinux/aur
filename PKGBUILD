@@ -1,9 +1,9 @@
 # Maintainer: coffee <coffee@coffeecat.top>
 pkgname=deepseek-reasonix-tui
 _pkgname=reasonix
-pkgver=0.53.2
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="DeepSeek-native coding agent: cache-first loop, flash-first cost control, tool-call repair."
+pkgdesc="Cache-first DeepSeek coding agent for the terminal."
 arch=('any')
 url="https://github.com/esengine/DeepSeek-Reasonix"
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('jq')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
-sha256sums=('257a6188e68993ad9f091e1b8886ff31e590a265614152446899dbb10fe4cf63')
+sha256sums=('fbdc40d47cf8358bc68a60d55c3e11f465b2bb72cfa1d2a1d7b1144de4c727cd')
 
 prepare() {
     cd "$srcdir"
@@ -40,9 +40,9 @@ package() {
 
     # Clean up: remove npm-related artifacts that shouldn't ship
     rm -rf "$moddir/node_modules/.cache"
+    chmod +x "$pkgdir/usr/lib/node_modules/reasonix/bin/reasonix.js"
 
     # Create binary symlinks
     mkdir -p "$pkgdir/usr/bin"
-    ln -sf "/usr/lib/node_modules/$_pkgname/dist/cli/index.js" "$pkgdir/usr/bin/reasonix"
-    ln -sf "/usr/lib/node_modules/$_pkgname/dist/cli/index.js" "$pkgdir/usr/bin/dsnix"
+    ln -sf "/usr/lib/node_modules/$_pkgname/bin/reasonix.js" "$pkgdir/usr/bin/reasonix"
 }
