@@ -1,7 +1,7 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=pipdeptree
-pkgver=2.35.3
+pkgver=3.0.0
 pkgrel=1
 arch=(any)
 pkgdesc='Command line utility to show dependency tree of Python packages'
@@ -14,7 +14,7 @@ optdepends=(
 )
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('73238b3336698032abdabaa5508c404ce8c293ec7dcaa41e96c3d14734ce9f72')
+sha256sums=('aa5f74efbe200bd861876986f70f7375cdce8ac54be2052ac317040856c34f3f')
 
 #prepare() {
 #  cd $pkgname-$pkgver
