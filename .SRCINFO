@@ -1,7 +1,7 @@
 pkgbase = aicube-isp-wine
 	pkgdesc = Wine AiCube 辅助开发，图形配置界面自动生成配置代码与程序框架；远程现场升级 APP 发布；单片机在线升级仿真调试平台软件；ISP 下载
-	pkgver = 6.96V+plus
-	pkgrel = 1
+	pkgver = 6.96X
+	pkgrel = 2
 	url = https://www.stcai.com/gjrj
 	install = aicube-isp-wine.install
 	arch = x86_64
@@ -27,10 +27,10 @@ pkgbase = aicube-isp-wine
 	replaces = stc-isp-wine
 	options = !strip
 	options = !debug
-	source = http://www.stcaimcu.com/data/download/Tools/AiCube-ISP-v6.96V-plus.zip
+	source = http://www.stcaimcu.com/data/download/Tools/AiCube-ISP-v6.96X.zip
 	source = aicube-isp-wine.install
 	source = icon.svg
-	sha256sums = 97abbe01f9863df6477b7aa5d58b46dfb3f6bc8d93cfd5751cfe5800a0d827ab
+	sha256sums = a92bbaaca15d2134ad3a4a1b8a0498a9a95712a03ce232614bd504330cd457fe
 	sha256sums = aa592f476dee3501ee22b26b5311826d6a6dd6ed03f7a94945016e058af4af24
 	sha256sums = c04d3cf704c9055e4b0bb010d946c5e90710677c459def826f762c8e9d717538
 

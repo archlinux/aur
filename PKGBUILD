@@ -3,9 +3,9 @@
 pkgbase=aicube-isp-wine
 pkgname=(aicube-isp-wine)
 _name=AiCube-ISP
-_tagname=6.96V-plus
+_tagname=6.96X
 pkgver=${_tagname//-/+}
-pkgrel=1
+pkgrel=2
 pkgdesc="Wine AiCube 辅助开发，图形配置界面自动生成配置代码与程序框架；远程现场升级 APP 发布；单片机在线升级仿真调试平台软件；ISP 下载"
 arch=('x86_64')
 url="https://www.stcai.com/gjrj"
@@ -34,7 +34,7 @@ source=(
     "${pkgname}.install"
     "icon.svg"
 )
-sha256sums=('97abbe01f9863df6477b7aa5d58b46dfb3f6bc8d93cfd5751cfe5800a0d827ab'
+sha256sums=('a92bbaaca15d2134ad3a4a1b8a0498a9a95712a03ce232614bd504330cd457fe'
             'aa592f476dee3501ee22b26b5311826d6a6dd6ed03f7a94945016e058af4af24'
             'c04d3cf704c9055e4b0bb010d946c5e90710677c459def826f762c8e9d717538')
 # noextract=("${_name}-v${pkgver}.zip")
