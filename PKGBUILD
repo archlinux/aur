@@ -2,7 +2,7 @@
 # Contributor: eduardosm
 
 pkgname=subtitleedit
-pkgver=5.0.0rc1
+pkgver=5.0.0rc2
 pkgrel=2
 pkgdesc='An advanced subtitle editor and converter'
 arch=('any')
@@ -18,7 +18,7 @@ options=('!strip')
 source=("SubtitleEdit-Linux-x64-${pkgver}.tar.gz::https://github.com/SubtitleEdit/subtitleedit/releases/download/v${pkgver//rc/-rc}/SubtitleEdit-Linux-x64.tar.gz"
         'subtitleedit.desktop'
         'subtitleedit.png')
-b2sums=('53b167a8c4e0a4a779f495655a974394389775c7f29b5d59c0a466f4c773fc9f12dd1e8b3122d14c29cf0302d885a760ce6b005990563d903d391b17a69db32d'
+b2sums=('a71a276ce4e219d8a2de9cb3df81a4bd7f390f15675a383a5d783695b463f6100f7cddd43ef5c36239cdd89d9f92b928dfa401aafa81f9d712a87a0a04cf854f'
         'bbeafd804a2d0ad6de03886771ecafbf3ebaa6ad86f449f2609c413114f898370102d1303135db0e21d04ca2612d40055c8f4de2458fc4a907f709e84940133b'
         'eefd5090791d860aa17f209ccf1d277b6e394af12bce07ecdebae5782b53cd9721c6d53e8034c038c0bdce5ffd09ba0c954aa90aa9cd9fbcffc1558d1010dc26')
 
@@ -30,5 +30,5 @@ package() {
     install -Dm644 -t "${pkgdir}"/usr/share/applications subtitleedit.desktop
     install -Dm644 -t "${pkgdir}"/usr/share/pixmaps subtitleedit.png
 
-    install -Dm644 "${startdir}"/LICENSES/MIT.txt "${pkgdir}"/usr/share/licenses/subtitleedit/LICENSE
+    install -Dm644 -t "${pkgdir}"/usr/share/licenses/subtitleedit LICENSE
 }
