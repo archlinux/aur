@@ -1,5 +1,5 @@
 pkgname=baml
-pkgver=0.11.0.alpha.4753
+pkgver=0.11.0.alpha.4768
 pkgrel=1
 pkgdesc="BAML - the language for agents (built from source)"
 arch=('x86_64' 'aarch64')
@@ -9,24 +9,24 @@ makedepends=('rust' 'cargo' 'cmake' 'gcc')
 provides=('baml')
 conflicts=('baml-bin')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/BoundaryML/baml/archive/refs/tags/baml-language-0.11.0-alpha.4753.tar.gz")
-sha256sums=('6cdf8da2bf26623e74c096c3746c9d325561b9720e612fda6d56814466adcc64')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/BoundaryML/baml/archive/refs/tags/baml-language-0.11.0-alpha.4768.tar.gz")
+sha256sums=('120848611cdf5caa25ec5ded6465baeb3146136cad871842dc8fd60c5757b33d')
 
 prepare() {
-    cd "baml-baml-language-0.11.0-alpha.4753/baml_language"
+    cd "baml-baml-language-0.11.0-alpha.4768/baml_language"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked
 }
 
 build() {
-    cd "baml-baml-language-0.11.0-alpha.4753/baml_language"
+    cd "baml-baml-language-0.11.0-alpha.4768/baml_language"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --release --frozen --bin baml-cli
 }
 
 package() {
-    cd "baml-baml-language-0.11.0-alpha.4753/baml_language"
+    cd "baml-baml-language-0.11.0-alpha.4768/baml_language"
     install -Dm755 "target/release/baml-cli" "$pkgdir/usr/bin/baml-cli"
     ln -s baml-cli "$pkgdir/usr/bin/baml"
 }
