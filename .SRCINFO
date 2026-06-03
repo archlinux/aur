@@ -1,7 +1,7 @@
 pkgbase = arxman-git
 	pkgdesc = fast archive manager — extract and compress tar, zip, 7z, rar, zst, xz, bz2 and more
 	pkgver = r4.ba1f8b8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/5unekku/arxman
 	arch = x86_64
 	arch = aarch64

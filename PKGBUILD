@@ -1,7 +1,7 @@
 # Maintainer: 5unekku <jimmy.bungalo8@gmail.com>
 pkgname=arxman-git
 pkgver=r4.ba1f8b8
-pkgrel=1
+pkgrel=2
 pkgdesc='fast archive manager — extract and compress tar, zip, 7z, rar, zst, xz, bz2 and more'
 arch=('x86_64' 'aarch64')
 url='https://gitlab.com/5unekku/arxman'
@@ -38,4 +38,9 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     install -Dm755 target/release/arx "$pkgdir/usr/bin/arx"
+
+    local bin=target/release/arx
+    install -Dm644 <("$bin" --completions bash) "$pkgdir/usr/share/bash-completion/completions/arx"
+    install -Dm644 <("$bin" --completions fish) "$pkgdir/usr/share/fish/vendor_completions.d/arx.fish"
+    install -Dm644 <("$bin" --completions zsh)  "$pkgdir/usr/share/zsh/site-functions/_arx"
 }
