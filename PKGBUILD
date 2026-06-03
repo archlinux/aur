@@ -1,7 +1,7 @@
 # Maintainer: Hec <hec@heccraft.com>
 pkgname=uutils-coreutils-shim
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Replaces GNU coreutils with uutils coreutils"
 arch=('any')
 url="https://uutils.github.io/"
@@ -18,4 +18,6 @@ package() {
 
   # owned by util-linux
   rm -f $pkgdir/usr/bin/{kill,more,uptime}
+  # owned by inetutils
+  rm -f $pkgdir/usr/bin/hostname
 }
