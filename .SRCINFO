@@ -1,0 +1,23 @@
+pkgbase = reqlog-ui-bin
+	pkgdesc = A lightweight web UI for reqlog — search and trace logs directly from your browser
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/SagarMaheshwary/reqlog-ui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = reqlog
+	provides = reqlog-ui
+	conflicts = reqlog-ui
+	options = !strip
+	source = README-0.4.0.md::https://raw.githubusercontent.com/SagarMaheshwary/reqlog-ui/v0.4.0/readme.md
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/SagarMaheshwary/reqlog-ui/v0.4.0/LICENSE
+	sha256sums = fddf1c93fe658c7bf873dda8fcfd6de94f4fc8abfd7e1e25987946ae70958429
+	sha256sums = a48f5e717b8c3981015ab444bdb56d9dd1e79b0657674b31ab45cef12e35f15d
+	source_x86_64 = reqlog-ui-x86_64-0.4.0.tgz::https://github.com/SagarMaheshwary/reqlog-ui/releases/download/v0.4.0/reqlog-ui-linux-amd64.tar.gz
+	sha256sums_x86_64 = fdad489605344284ad337cb583291aeefe4bd95d2ed99f6cab933e7047a835ec
+	source_aarch64 = reqlog-ui-aarch64-0.4.0.tgz::https://github.com/SagarMaheshwary/reqlog-ui/releases/download/v0.4.0/reqlog-ui-linux-arm64.tar.gz
+	sha256sums_aarch64 = 568365a4941158542b33880d75a06e6252ca687a2f9bad186e0549855e6049a2
+
+pkgname = reqlog-ui-bin

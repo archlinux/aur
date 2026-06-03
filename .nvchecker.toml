@@ -1,0 +1,5 @@
+[reqlog-ui-bin]
+source = "github"
+github = "SagarMaheshwary/reqlog-ui"
+use_latest_release = true
+prefix = "v"
