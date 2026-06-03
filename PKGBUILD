@@ -4,7 +4,7 @@
 
 pkgname=python-google-resumable-media
 _pkg="google_resumable_media"
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Utilities for Google Media Downloads and Resumable Uploads"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 	'python-google-auth: for extra functionality')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('f7cfb224846a9dd444d125115dfbe8ef02a2b893e78f087762fe716a255a734b')
+sha256sums=('e324bc9d0fdae4c52a08ae90456edc4e71ece858399e1217ac0eb3a51d6bc6ee')
 
 build() {
 	cd "$_pkg-$pkgver"
