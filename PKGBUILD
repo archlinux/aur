@@ -1,6 +1,6 @@
 # Maintainer: Dmitriy Q atsip-help <at> yandex <dot> ru
 pkgname=meshtastic-desktop-bin
-pkgver=2.7.14beta19
+pkgver=2.7.14beta21
 pkgrel=1
 pkgdesc="Meshtastic Desktop Application"
 arch=('any')
