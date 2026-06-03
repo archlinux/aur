@@ -45,8 +45,9 @@ build() {
   cp rust/target/release/rustagent dist/rustagent
 
   # 4. Build C edition (cagent)
+  # -Wno-stringop-truncation / -Wno-format-truncation: gcc 误报，buffer 大小实际够用
   cd c
-  make
+  make CFLAGS="-std=c11 -Wall -Wextra -Wno-unused-parameter -Wno-stringop-truncation -Wno-format-truncation -O2 -g -D_GNU_SOURCE -Ivendor/linenoise"
   cd "${srcdir}/bash-agent-${pkgver}"
 }
 
