@@ -1,40 +1,32 @@
-# Maintainer: Mathieu Lemay <acidrain1@gmail.com>
-# Contributor: James An <james@jamesan.ca>
-# Contributor: katanasov <pranayama111@gmail.com>
-
-_pkgname=evolution-on
-pkgname="$_pkgname-git"
-pkgver=v3.24.2.r6.g5f77162
+# Maintainer: Ash <xash at riseup d0t net>
+pkgname=evolution-on-git
+pkgver=3.60.2.r0.gf461f32
 pkgrel=1
-pkgdesc='Plugin to put evolution in system tray.'
-arch=('i686' 'x86_64')
-url="https://github.com/zsugabubus/$_pkgname"
-license=('GPL')
-depends=('evolution>=2.30' 'gconf' 'libnotify')
-makedepends=('git' 'autoconf>=2.53' 'automake>=1.8''libtool>=1.4.3' 'glib2>=2.2.0' 'pkgconf>=1.5.1' 'intltool>=0.25' 'gnome-common>=2.3.0')
-provides=("$_pkgname")
-conflicts=("$_pkgname" 'evolution-tray' 'evolution-tray-arch')
-replaces=('evolution-tray' 'evolution-tray-arch')
-install="$pkgname.install"
-source=("$_pkgname"::"git+https://github.com/zsugabubus/$_pkgname.git")
-md5sums=('SKIP')
+pkgdesc="Tray plugin for the Evolution email client (patched for evolution 3.60.x)"
+arch=('x86_64')
+url="https://github.com/awsms/evolution-on"
+license=('GPL2')
+depends=('evolution' 'libnotify' 'libappindicator')
+makedepends=('git' 'gnome-common' 'intltool')
+provides=('evolution-on')
+conflicts=('evolution-on')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    (
-        set -o pipefail
-        git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+  cd evolution-on
+  git describe --tags --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$_pkgname"
-    ./autogen.sh --prefix=/usr
-    make
+  cd evolution-on
+  ./autogen.sh --prefix=/usr --libdir=/usr/lib --with-libappindicator=yes
+  make
 }
 
 package() {
-    cd "$_pkgname"
-    make DESTDIR="$pkgdir/" install
+  cd evolution-on
+  make DESTDIR="$pkgdir" install
+  rm -f "$pkgdir/usr/lib/evolution/plugins/liborg-gnome-evolution-on.la"
 }
