@@ -15,8 +15,13 @@ Wrapper options:
   -h, --help       Show this help.
 
 Common bootstrap options:
-  --yes            Pass --noconfirm to package installs.
-  --no-packages    Restore dotfiles only; skip pacman/yay installs.
+  --yes            Pass --noconfirm to package changes.
+  --dry-run        Show package changes without installing/removing packages.
+  --no-packages    Restore dotfiles only; skip package changes.
+  --no-prune-packages
+                   Skip keep-list package pruning.
+  --remove-packages
+                   Remove packages listed in packages/remove.txt.
   --no-theme       Skip Omarchy theme selection.
 EOF
 }
