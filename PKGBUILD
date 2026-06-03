@@ -1,33 +1,33 @@
 # deps.json
-_spirv_reflect_commit=e55086b044225f9b511ae44dbf9b079d3625943f
-_rstd_commit=036d65a66790f0635fa22cd31f3a24610b717502
-_wavsen_commit=609676c524e3c2364dfb46c0f0f8c601f346102a
+_spirv_reflect_tag=vulkan-sdk-1.4.321.0
+_rstd_commit=629bda81eb98856ca023f0f87f57dde8d22b4823
+_wavsen_commit=236348381b8670175e2f20ab8b29a02b61622037
 # aur/quickjs-ng is a static version...
 _quickjs_commit=3c051980ab7e783dfbfb1c70c014ce5e05ecf24c
 
 pkgname=open-wallpaper-engine
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
 url=https://github.com/waywallen/open-wallpaper-engine
 license=(GPL-2.0-only)
-depends=(libgcc libstdc++ glibc lz4 freetype2 libpipewire ffmpeg vulkan-icd-loader
+depends=(libgcc libstdc++ glibc lz4 freetype2 libpulse ffmpeg vulkan-icd-loader
          "waywallen>=0.1.5" cef glslang fontconfig)
-makedepends=(cmake ninja git "clang>=21" lld argparse eigen glad glfw vulkan-headers nlohmann-json
+makedepends=(cmake ninja git "clang>=21" lld argparse eigen3 glad glfw vulkan-headers nlohmann-json
              waywallen-display)
 source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver"
-        "git+https://github.com/KhronosGroup/SPIRV-Reflect.git#commit=$_spirv_reflect_commit"
+        "git+https://github.com/KhronosGroup/SPIRV-Reflect.git#tag=$_spirv_reflect_tag"
         "git+https://github.com/hypengw/rstd.git#commit=$_rstd_commit"
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
         "git+https://github.com/quickjs-ng/quickjs.git#commit=$_quickjs_commit"
         "0001-use-system-deps.diff")
-sha256sums=('802f00c291bd6e3a59d5edb8933a83a381d0e5a42dc4a3d4faa6acd39e6f121b'
+sha256sums=('474c6d74e646f20424cc7ea322f02b55f6a05c238df8f93470f9959ac4e91346'
             '287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca'
-            '4084a64ce856093b1648792ed9f0c00fea9c61d59997577b2f21128a7fe0a1ec'
-            'f39e96c654b7459ab7c8f81df3c2b983636a08a6807fd1bd5b00bcb110bfb7d7'
+            '80036965e852d207379f91bae11a9baf957a3751f6194a1d5c047bdbb451dc9d'
+            '7fa1166cfa3a8974071dda4f63b8453e3a702691d2a60740b9228a7cc13509aa'
             '9ca66e359212494be96f10736090e45eca6593f2977b83a075358456d2c51b7a'
-            '6061fd9e0f9080928605ad97a22807d4cd8e63b11be15f6d7f313af8578a7cae')
+            '5eca2e78179d9959526c7f9a034d5c688835ec65515700279372ec39e7a5a4a7')
 
 prepare() {
     cd "$srcdir/$pkgname"

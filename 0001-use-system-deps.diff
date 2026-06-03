@@ -1,13 +1,13 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index db76e90..52fecc6 100644
+index db76e90..8dafda6 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -18,6 +18,9 @@ endif()
  
  find_package(PkgConfig REQUIRED)
  
-+find_package(Eigen3 REQUIRED)
-+find_package(nlohmann_json REQUIRED)
++find_package(Eigen3 3.4.0 REQUIRED)
++find_package(nlohmann_json 3.12.0 REQUIRED)
 +find_package(argparse REQUIRED)
  
  include_directories(SYSTEM third_party)
@@ -17,15 +17,15 @@ index db76e90..52fecc6 100644
  
  if(BUILD_WEWEB)
 -    include(${CMAKE_SOURCE_DIR}/cmake/CEF.cmake)
-+    find_package(CEF REQUIRED)
++    find_package(CEF 147.0.7727.118 REQUIRED)
  endif()
  
  add_subdirectory(src)
 diff --git a/deps.json b/deps.json
-index 9296ced..0b485d5 100644
+index 60348f7..206ed59 100644
 --- a/deps.json
 +++ b/deps.json
-@@ -1,39 +1,4 @@
+@@ -1,27 +1,4 @@
  [
 -  {
 -    "dest": "build/_flatpak_deps/eigen-src",
@@ -42,7 +42,6 @@ index 9296ced..0b485d5 100644
 -  },
 -  {
 -    "dest": "build/_flatpak_deps/nlohmann_json-src",
--    "disable-shallow-clone": false,
 -    "type": "archive",
 -    "url": "https://github.com/nlohmann/json/archive/refs/tags/v3.12.0.tar.gz",
 -    "sha256": "4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187",
@@ -51,21 +50,10 @@ index 9296ced..0b485d5 100644
 -      "exclude_from_all": true
 -    }
 -  },
--  {
--    "commit": "a37dadd1ed5949ab0accd7087b7c5c57800eab43",
--    "dest": "build/_flatpak_deps/cubeb-src",
--    "disable-shallow-clone": true,
--    "type": "git",
--    "url": "https://github.com/mozilla/cubeb.git",
--    "x-cmake": {
--      "name": "cubeb",
--      "exclude_from_all": true
--    }
--  },
    {
      "dest": "build/_flatpak_deps/spirv_reflect-src",
-     "disable-shallow-clone": false,
-@@ -46,29 +11,6 @@
+     "type": "archive",
+@@ -32,29 +9,6 @@
        "exclude_from_all": true
      }
    },
@@ -94,8 +82,8 @@ index 9296ced..0b485d5 100644
 -  },
    {
      "dest": "build/_flatpak_deps/rstd-src",
-     "disable-shallow-clone": false,
-@@ -102,16 +44,5 @@
+     "disable-shallow-clone": true,
+@@ -88,16 +42,5 @@
        "name": "quickjs",
        "exclude_from_all": true
      }
@@ -111,21 +99,50 @@ index 9296ced..0b485d5 100644
 -      "source_subdir": "cmake-noop"
 -    }
    }
--]
-\ No newline at end of file
-+]
+ ]
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 0c922de..9a0f064 100644
+index 0c922de..04ad44c 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -6,6 +6,7 @@ find_package(OpenGL REQUIRED)
  find_package(Threads REQUIRED)
  find_package(Vulkan REQUIRED)
  find_package(Freetype REQUIRED)
-+find_package(glslang REQUIRED)
++find_package(glslang 16.3.0 REQUIRED)
  pkg_check_modules(LZ4 REQUIRED liblz4)
  pkg_check_modules(FONTCONFIG REQUIRED IMPORTED_TARGET fontconfig)
  
+diff --git a/src/Scene/CMakeLists.txt b/src/Scene/CMakeLists.txt
+index 9f35acb..94b4b7b 100644
+--- a/src/Scene/CMakeLists.txt
++++ b/src/Scene/CMakeLists.txt
+@@ -54,7 +54,7 @@ target_sources(owe-base
+          Lighting/Lighting.cppm
+          Scene/Scene.cppm)
+ target_link_libraries(owe-base
+-  PUBLIC rstd::rstd rstd.cppstd Eigen3::Eigen wavsen::audio owe-types nlohmann_json
++  PUBLIC rstd::rstd rstd.cppstd Eigen3::Eigen wavsen::audio owe-types nlohmann_json::nlohmann_json
+   PRIVATE ${LZ4_LIBRARIES}
+           ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+ target_include_directories(owe-base
+@@ -73,7 +73,7 @@ target_sources(owe-script
+   PUBLIC FILE_SET cxx_modules TYPE CXX_MODULES FILES Script/Script.cppm)
+ target_link_libraries(owe-script
+   PUBLIC  owe-base
+-  PRIVATE qjs nlohmann_json)
++  PRIVATE qjs nlohmann_json::nlohmann_json)
+ target_include_directories(owe-script
+   PUBLIC  .. . Utils/include
+   PRIVATE Utils Utils/include/Utils Script)
+@@ -127,7 +127,7 @@ target_sources(owe-parse
+          Text/Text.cppm)
+ target_link_libraries(owe-parse
+   PUBLIC owe-base owe-shader-compile owe-script
+-  PRIVATE nlohmann_json ${LZ4_LIBRARIES} Freetype::Freetype PkgConfig::FONTCONFIG)
++  PRIVATE nlohmann_json::nlohmann_json ${LZ4_LIBRARIES} Freetype::Freetype PkgConfig::FONTCONFIG)
+ target_include_directories(owe-parse
+   PUBLIC  .. . Utils/include
+   PRIVATE Utils Utils/include/Utils Scene Particle)
 diff --git a/src/Vulkan/CMakeLists.txt b/src/Vulkan/CMakeLists.txt
 index 7731bb3..3ec665e 100644
 --- a/src/Vulkan/CMakeLists.txt
@@ -153,7 +170,7 @@ index 2290f09..dfe9299 100644
  #include "Utils/Sha.hpp"
  module wescene.shader_compile;
 diff --git a/src/Web/CMakeLists.txt b/src/Web/CMakeLists.txt
-index d429e15..1198b85 100644
+index d429e15..be8029e 100644
 --- a/src/Web/CMakeLists.txt
 +++ b/src/Web/CMakeLists.txt
 @@ -10,7 +10,7 @@ add_library(owe-web-host STATIC
@@ -161,16 +178,16 @@ index d429e15..1198b85 100644
  target_include_directories(owe-web-host PUBLIC .)
  target_link_libraries(owe-web-host
 -    PUBLIC libcef_lib libcef_dll_wrapper nlohmann_json)
-+    PUBLIC ${CEF_LIBRARIES} nlohmann_json)
++    PUBLIC ${CEF_LIBRARIES} nlohmann_json::nlohmann_json)
  target_compile_features(owe-web-host PUBLIC cxx_std_20)
 -weweb_apply_cef_target_settings(owe-web-host)
 +SET_LIBRARY_TARGET_PROPERTIES(owe-web-host)
  set_property(TARGET owe-web-host PROPERTY POSITION_INDEPENDENT_CODE ON)
 diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
-index b8b6131..0c67101 100644
+index aa15331..a5571ea 100644
 --- a/third_party/CMakeLists.txt
 +++ b/third_party/CMakeLists.txt
-@@ -56,10 +56,6 @@ set(USE_WINMM OFF)
+@@ -48,10 +48,6 @@ set(BUILD_TESTING           OFF CACHE INTERNAL "")
  
  fetchdeps(${CMAKE_SOURCE_DIR}/deps.json)
  
@@ -179,10 +196,10 @@ index b8b6131..0c67101 100644
 -add_library(Eigen3::Eigen ALIAS eigen)
 -target_include_directories(eigen SYSTEM INTERFACE ${eigen_SOURCE_DIR})
  
- # Audio output is now handled by wavsen::audio (cubeb-backed). cubeb
- # itself is fetched via deps.json above and consumed transitively through
+ # Audio output is handled by wavsen::audio (pulse/pipewire-backed,
+ # selectable via WAVSEN_AUDIO_BACKEND in the wavsen subtree).
 diff --git a/viewer/CMakeLists.txt b/viewer/CMakeLists.txt
-index b92f956..f9ee42a 100644
+index b92f956..fe5d9bb 100644
 --- a/viewer/CMakeLists.txt
 +++ b/viewer/CMakeLists.txt
 @@ -75,11 +75,10 @@ if(BUILD_WEWEB)
@@ -195,16 +212,31 @@ index b92f956..f9ee42a 100644
          CXX_SCAN_FOR_MODULES ON
 -        BUILD_RPATH   "\$ORIGIN"
 -        INSTALL_RPATH "\$ORIGIN"
-+        BUILD_RPATH   "\$ORIGIN:\$ORIGIN/../lib/cef"
++        BUILD_RPATH   "\$ORIGINi:\$ORIGIN/../lib/cef"
 +        INSTALL_RPATH "\$ORIGIN:\$ORIGIN/../lib/cef"
          BUILD_WITH_INSTALL_RPATH ON)
 -    weweb_stage_cef_runtime(WebViewer)
  endif()
+diff --git a/viewer/WebViewer.cpp b/viewer/WebViewer.cpp
+index 2c970a0..47d38a3 100644
+--- a/viewer/WebViewer.cpp
++++ b/viewer/WebViewer.cpp
+@@ -168,8 +168,8 @@ int main(int argc, char** argv) {
+     auto exe_dir = viewer::ExecutableDir(argv[0]);
+ 
+     weweb::BrowserHost::InitOptions opts;
+-    opts.resources_dir = exe_dir;
+-    opts.locales_dir   = exe_dir / "locales";
++    opts.resources_dir = std::filesystem::path("/usr/lib/cef");
++    opts.locales_dir   = opts.resources_dir / "locales";
+     if (int port = p.get<int>("--remote-debugging-port"); port > 0) {
+         opts.enable_remote_debugging = true;
+         opts.remote_debugging_port   = port;
 diff --git a/waywallen/CMakeLists.txt b/waywallen/CMakeLists.txt
-index 838fad9..b3ed336 100644
+index 4c96545..a05652a 100644
 --- a/waywallen/CMakeLists.txt
 +++ b/waywallen/CMakeLists.txt
-@@ -94,8 +94,8 @@ if(BUILD_WEWEB)
+@@ -99,8 +99,8 @@ if(BUILD_WEWEB)
      # Install layout: <prefix>/share/waywallen/weweb/{bin, libcef.so, ...}.
      set_target_properties(waywallen-weweb-renderer PROPERTIES
          CXX_SCAN_FOR_MODULES ON
@@ -215,14 +247,15 @@ index 838fad9..b3ed336 100644
          BUILD_WITH_INSTALL_RPATH ON
      )
      target_include_directories(waywallen-weweb-renderer
-@@ -123,41 +123,11 @@ if(BUILD_WEWEB)
+@@ -128,7 +128,6 @@ if(BUILD_WEWEB)
      target_compile_options(waywallen-weweb-renderer PRIVATE
          -Wall -Wextra -Wpedantic
      )
 -    weweb_stage_cef_runtime(waywallen-weweb-renderer)
  
--    set(_WEWEB_INSTALL_DIR share/waywallen/weweb)
-+    set(_WEWEB_INSTALL_DIR ${CMAKE_INSTALL_BINDIR})
+     # weweb bin + CEF runtime sit flat in the plugin dir (beside the
+     # wescene `bin/` subdir) so the weweb bin's `$ORIGIN` rpath resolves
+@@ -137,35 +136,6 @@ if(BUILD_WEWEB)
      install(TARGETS waywallen-weweb-renderer
          RUNTIME DESTINATION ${_WEWEB_INSTALL_DIR}
      )
@@ -255,32 +288,46 @@ index 838fad9..b3ed336 100644
 -                DESTINATION ${_WEWEB_INSTALL_DIR})
 -        endif()
 -    endforeach()
-     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/renderers/weweb.toml
-         DESTINATION share/waywallen/renderers
-     )
-diff --git a/waywallen/renderers/weweb.toml b/waywallen/renderers/weweb.toml
-index ea25703..5efab44 100644
---- a/waywallen/renderers/weweb.toml
-+++ b/waywallen/renderers/weweb.toml
-@@ -2,7 +2,7 @@
+ endif()
  
- [renderer]
- name = "weweb-renderer"
--bin  = "../weweb/waywallen-weweb-renderer"
-+bin  = "../../../bin/waywallen-weweb-renderer"
- types = ["web"]
- priority = 100
- version = "0.1.2"
+ # --- Generate the plugin manifest -----------------------------------------
+@@ -200,24 +170,6 @@ set(_OWE_FILES
+     wallpaper_engine.lua
+     bin/waywallen-wescene-renderer
+ )
+-if(BUILD_WEWEB)
+-    list(APPEND _OWE_FILES waywallen-weweb-renderer)
+-    foreach(_f IN LISTS CEF_BINARY_FILES)
+-        if(NOT _f IN_LIST _CEF_SKIP)
+-            list(APPEND _OWE_FILES ${_f})
+-        endif()
+-    endforeach()
+-    foreach(_f IN LISTS CEF_RESOURCE_FILES)
+-        if(_f STREQUAL "locales")
+-            file(GLOB _owe_paks RELATIVE ${CEF_RESOURCE_DIR}/locales
+-                ${CEF_RESOURCE_DIR}/locales/*.pak)
+-            list(TRANSFORM _owe_paks PREPEND "locales/")
+-            list(APPEND _OWE_FILES ${_owe_paks})
+-        else()
+-            list(APPEND _OWE_FILES ${_f})
+-        endif()
+-    endforeach()
+-endif()
+ list(SORT _OWE_FILES)
+ string(JOIN "\n" _owe_files_txt ${_OWE_FILES})
+ file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/owe-files.txt "${_owe_files_txt}\n")
 diff --git a/waywallen/web_main.cpp b/waywallen/web_main.cpp
-index 9993824..5405828 100644
+index 9993824..8b63ea6 100644
 --- a/waywallen/web_main.cpp
 +++ b/waywallen/web_main.cpp
-@@ -479,7 +479,7 @@ int main(int argc, char** argv) {
-     });
- 
+@@ -481,8 +481,8 @@ int main(int argc, char** argv) {
      // BrowserHost::Init wants resources / locales relative to argv[0].
--    auto exe_dir = executable_dir(argv[0]);
-+    auto exe_dir = std::filesystem::path("/usr/lib/cef");
+     auto exe_dir = executable_dir(argv[0]);
      weweb::BrowserHost::InitOptions ho;
-     ho.resources_dir = exe_dir;
-     ho.locales_dir   = exe_dir / "locales";
+-    ho.resources_dir = exe_dir;
+-    ho.locales_dir   = exe_dir / "locales";
++    ho.resources_dir = std::filesystem::path("/usr/lib/cef");
++    ho.locales_dir   = ho.resources_dir / "locales";
+     ho.cache_dir     = derive_cache_dir(opts.workshop_id);
+     if (opts.remote_debugging_port > 0) {
+         ho.enable_remote_debugging = true;
