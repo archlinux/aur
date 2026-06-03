@@ -1,10 +1,13 @@
+# Maintainer: Riski Andriyanto <putra7a@gmail.com>
+
 pkgname=comicrd-bin
-pkgver=0.7.0
+_pkgname=comicrd
+pkgver=0.7.1
 pkgrel=1
-pkgdesc="ComicRD desktop app"
+pkgdesc="Lightweight high-performance desktop comic reader built with Tauri 2"
 arch=('x86_64')
 url="https://github.com/andrizan/comicRD"
-license=('custom')
+license=('MIT')
 depends=(
   'webkit2gtk-4.1'
   'gtk3'
@@ -15,8 +18,8 @@ depends=(
 )
 provides=('comicrd')
 conflicts=('comicrd')
-source=("comicrd-${pkgver}-linux-x86_64.tar.gz::https://github.com/andrizan/comicRD/releases/download/v${pkgver}/comicrd-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('309fed6726cdb912a08e6db9bf29f738f53c3e039910ca3f3e686ebcb296f4c5')
+source=("${_pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/andrizan/comicRD/releases/download/v${pkgver}/comicrd-${pkgver}-linux-x86_64.tar.gz")
+sha256sums=('84b42479928ebfbc10a0da521d19da027bd42425bc7114ae12638b735a61876b')
 
 package() {
   install -Dm755 "${srcdir}/comicrd-${pkgver}/comicrd" "${pkgdir}/usr/bin/comicrd"
