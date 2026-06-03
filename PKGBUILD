@@ -4,7 +4,7 @@
 pkgname=classin-bin
 _pkgname=classin
 pkgver=6.0.7.3367
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary remote classroom application by EEO."
 arch=('x86_64')
 url="https://www.eeo.cn/cn/classin"
