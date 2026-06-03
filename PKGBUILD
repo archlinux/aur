@@ -4,7 +4,7 @@
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.75
-pkgrel=8
+pkgrel=9
 pkgdesc='Native replacement for the Steam runtime using system libraries'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
@@ -38,6 +38,7 @@ depends=(
   'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'sdl2_ttf' 'sdl_image' 'sdl_mixer' 'sdl_ttf'
   'vulkan-icd-loader' 'vulkan-driver' 'lib32-vulkan-driver' 'lib32-vulkan-icd-loader'
   'lib32-libappindicator-gtk2' 'lib32-libindicator-gtk2' 'lib32-libdbusmenu-glib' 'lib32-libdbusmenu-gtk2'
+  'flac1.3'
 )
 source=(steam-native.sh)
 sha512sums=('0715b35160436c6bc6da5a02ebe3550e4a5c4354c01fa42dc09af7e2e6b0f993193d33fb9726b60e4969a1637545f453d527b0115e229bca0f6ffc84a17d69cc')
