@@ -1,7 +1,7 @@
 pkgbase = picori-bin
 	pkgdesc = Decompilation of The Legend of Zelda: The Minish Cap (USA/JP/EU)
-	pkgver = v0.3.2
-	pkgrel = 2
+	pkgver = v0.4.0
+	pkgrel = 1
 	url = https://github.com/999sian/tmc
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = picori-bin
 	depends = yad
 	source = https://gitlab.com/linuxbombay/picori/-/archive/1.0.0/picori-1.0.0.tar.bz2
 	sha256sums = f88044425f155c8fc57ac3878865d8b22e1fc206c75bfb5e0a134310a5cbc442
-	source_x86_64 = https://github.com/999sian/tmc/releases/download/v0.3.2-experimental/tmc-usa-linux-x86_64-v0.3.2-experimental.tar.gz
-	sha256sums_x86_64 = 14756b00061193e2e99db80c7a91d422566974cfebb49251324f28bddc2c2263
+	source_x86_64 = https://github.com/999sian/tmc/releases/download/v0.4.0-experimental/tmc-usa-linux-x86_64-v0.4.0-experimental.tar.gz
+	sha256sums_x86_64 = 2766ed71c2357408cb7ccb37dabc6d014c3b46045d089ea75c5e81b114440144
 
 pkgname = picori-bin
