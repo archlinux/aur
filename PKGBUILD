@@ -1,6 +1,6 @@
 # Maintainer: SathyaG
 pkgname=lm-get
-pkgver=0.6.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Search and download GGUF models from Hugging Face"
 arch=('x86_64')
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"
-	go build -trimpath -ldflags="-s -w -X main.version=$pkgver" -o "$pkgname" .
+	go build -trimpath -ldflags="-s -w -X main.version=$pkgver" -o "$pkgname" ./cmd/lm-get
 }
 
 package() {
