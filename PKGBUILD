@@ -1,11 +1,11 @@
 pkgbase=eim-bin
 pkgname=('eim-cli' 'eim-gui')
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/espressif/idf-im-ui"
 license=('Apache-2.0')
-depends=('ccache' 'dfu-util')
+depends=('bison' 'ccache' 'cmake' 'dfu-util' 'flex' 'git' 'gperf' 'libffi' 'libusb' 'openssl' 'python' 'python-pip' 'wget')
 makedepends=('unzip')
 options=('!strip')
 
