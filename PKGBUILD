@@ -1,40 +1,46 @@
-# Maintainer: Aditya Hebballe <adityahebbale@gmail.com>
+# Maintainer: brave <aur-release@brave.com>
 
 pkgname=brave-origin-bin
 pkgver=1.91.168
-pkgrel=1
-pkgdesc='The minimalist browser from the makers of Brave (stable binary release).'
+pkgrel=2
+epoch=1
+pkgdesc='The minimalist browser from the makers of Brave (binary release).'
 arch=(x86_64 aarch64)
-url='https://brave.com/origin/download'
+url=https://brave.com/origin/download
 license=('MPL2')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font')
+depends=(alsa-lib gtk3 libxss nss ttf-font)
 optdepends=('cups: Printer support'
-            'mesa: Hardware accelerated rendering'
-            'libglvnd: Support multiple different OpenGL drivers at any given time'
-            'libgnome-keyring: gnome keyring support')
-provides=("${pkgname}" "${pkgname%-bin}")
-conflicts=()
-source=("$pkgname.sh")
+	'libgnome-keyring: Enable GNOME keyring support'
+	'libnotify: Native notification support')
+provides=("$pkgname" "${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 options=(!strip)
-source_x86_64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-source_aarch64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
-sha256sums=('9b50a38b3166158ceeb11a30868b422b6c6a004cf0d09ade9426d69fdbff5f4a')
-sha256sums_x86_64=('0be6dc947eda8b56670a89cc49943c11c71c9b5ba74c3651c3db6b655ee066f3')
-sha256sums_aarch64=('85b6d18b10f12250d188b60c37369c985a237912d933eda040a6e94f0f3091a2')
+source=($pkgname.sh "${pkgname%-bin}.desktop")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-origin-${pkgver}-linux-amd64.zip")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-origin-${pkgver}-linux-arm64.zip")
+
+noextract=("${pkgname}-${pkgver}-x86_64.zip" "${pkgname}-${pkgver}-aarch64.zip")
+sha256sums=('5ff70ee473f35c2fc7642c422c8abe20aaac0d7cc30a3292744eb9fbeafba1bd'
+            'c70bc71c696b6764247070375ae111bd76c8bad9c7bda4d46e03975b95571a8a')
+sha256sums_x86_64=('ba53d589f55cb165ee4c38e804a5578710041be9287dfd3ab4b2c5c9e648d307')
+sha256sums_aarch64=('99ea600ff7dd98a36d23abf2a02b647c29c030dbfd551828181e6abdcaac3701')
 
 prepare() {
-  mkdir -p brave
-  tar -xf data.tar.xz -C brave
-  rm -rf "brave/opt/brave.com/${pkgname%-bin}/cron"
+	mkdir -p brave
+	bsdtar -xf "$pkgname-$pkgver-$CARCH.zip" -C brave
+	chmod +x brave/brave
 }
 
 package() {
-    cp -a --no-preserve=ownership --reflink=auto brave/opt "$pkgdir/opt"
-    cp -a --no-preserve=ownership --reflink=auto brave/usr "$pkgdir/usr"
-    rm -f "$pkgdir/usr/bin/${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}-stable"
-    install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/${pkgname%-bin}-stable"
-    ln -s "${pkgname%-bin}-stable" "$pkgdir/usr/bin/${pkgname%-bin}"
-    install -Dm0644 "brave/opt/brave.com/${pkgname%-bin}/product_logo_128.png" "$pkgdir/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" "brave/opt/brave.com/${pkgname%-bin}/LICENSE"
-    chmod 4755 "$pkgdir/opt/brave.com/${pkgname%-bin}/chrome-sandbox"
+	install -dm0755 "$pkgdir/opt"
+	cp -a brave "$pkgdir/opt/$pkgname"
+	chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
+	install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "${pkgname%-bin}.desktop"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" brave/LICENSE
+	pushd "$pkgdir/usr/"
+	for size in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
+		install -Dm0644 "$pkgdir/opt/$pkgname/product_logo_${size/x*/}.png" \
+			"share/icons/hicolor/$size/apps/brave-origin.png"
+	done
 }
