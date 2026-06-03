@@ -1,7 +1,7 @@
 # Maintainer: Norbert <sandwich@archworks.co>
 
 pkgname=semaphore-bin
-pkgver=2.18.4
+pkgver=2.18.8
 pkgrel=1
 pkgdesc="Modern UI for Ansible (Binary Release)"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_x86_64=("https://github.com/semaphoreui/semaphore/releases/download/v${pk
 source_aarch64=("https://github.com/semaphoreui/semaphore/releases/download/v${pkgver}/semaphore_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('3fde097494ba8433a972b3cdf175a4feff66005e21d4009b07437686220b9a00'
             'fb2699dfd2c5873ae5ffb340bb38d88ea7ab39034f338ba2915e8e91320e9945')
-sha256sums_x86_64=('bf6b8116824dc818879a40a90bf884194ea4e1e5fe0b3fce1e033927aa609e5b')
-sha256sums_aarch64=('dd52d98fdc20e7cccefffb1c35b57c234b88ca6022ab9fa92278fd79842c50e4')
+sha256sums_x86_64=('5ade6001cf4f2f9fc1fa733043908ad6e059aabb7045a9f8d899aa988b98efc4')
+sha256sums_aarch64=('c2455a986af0bf4f840885aa4ef3dd63b6829cd8059d0a95b1761a57c10f04f4')
 
 package() {
   install -Dm755 "semaphore" "${pkgdir}/usr/bin/semaphore"
