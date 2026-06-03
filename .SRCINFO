@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-appgrid-rc
 	pkgdesc = A modern application launcher for KDE Plasma (release candidate)
-	pkgver = 1.9.0_rc.4
+	pkgver = 1.9.0_rc.5
 	pkgrel = 1
 	url = https://appgrid.xarbit.dev
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = plasma6-applets-appgrid-rc
 	depends = appstream-qt
 	provides = plasma6-applets-appgrid
 	conflicts = plasma6-applets-appgrid
-	source = plasma6-applets-appgrid-rc-1.9.0_rc.4.tar.gz::https://github.com/xarbit/plasma6-applet-appgrid/archive/refs/tags/v1.9.0-rc.4.tar.gz
-	sha256sums = 0d59a423c85a8053d224718d7fca66cff922d826862c6d940af9135bc2ce417f
+	source = plasma6-applets-appgrid-rc-1.9.0_rc.5.tar.gz::https://github.com/xarbit/plasma6-applet-appgrid/archive/refs/tags/v1.9.0-rc.5.tar.gz
+	sha256sums = 298a439bfd9814adbfa2c679342830a3b78700881530d5549cc26cc3e584d68b
 
 pkgname = plasma6-applets-appgrid-rc
