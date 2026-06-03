@@ -1,4 +1,4 @@
-pkgbase = iso-commander
+pkgbase = iso-commander-bin
 	pkgdesc = The Fastest ISO Manager on the Planet, written in C++
 	pkgver = 7.1.8
 	pkgrel = 2
@@ -19,4 +19,4 @@ pkgbase = iso-commander
 	md5sums = 90c543acf24246b37a3dc7cac9e8c31d
 	md5sums = a4d0bcbbe64f996ecaa19d3bbd890bbd
 
-pkgname = iso-commander
+pkgname = iso-commander-bin
