@@ -1,20 +1,22 @@
 pkgbase = picosnitch
 	pkgdesc = Monitor network traffic per executable using BPF
-	pkgver = 1.0.3
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://elesiuta.github.io/picosnitch/
-	arch = any
-	license = GPL3
-	makedepends = python-setuptools
-	depends = python-bcc
-	depends = python-dash
-	depends = dbus-python
-	depends = python-geoip2
-	depends = python-pandas
-	depends = python-plotly
-	depends = python-psutil
-	depends = python-requests
-	source = picosnitch-1.0.3.tar.gz::https://github.com/elesiuta/picosnitch/releases/download/v1.0.3/picosnitch.tar.gz
-	sha256sums = 6ba975417f52a5d1660752e637d333db660035b8e41264422ee437a07cbf42a1
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = clang
+	makedepends = llvm
+	depends = python>=3.12
+	depends = libbpf
+	optdepends = libnotify: desktop notifications via notify-send
+	optdepends = python-psycopg: PostgreSQL remote logging
+	optdepends = python-pymysql: MariaDB / MySQL remote logging
+	source = https://files.pythonhosted.org/packages/source/p/picosnitch/picosnitch-2.0.3.tar.gz
+	sha256sums = b658420a5d75088d7e355d2ff290802fc0a8ee0d170ce25f2c9d73909a9360a7
 
 pkgname = picosnitch
