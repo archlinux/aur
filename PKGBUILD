@@ -1,6 +1,6 @@
 # Maintainer: thefangeddeity
 pkgname=ele-messenger
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Resilience-first household chat platform. Degrades gracefully from LAN to BLE when infrastructure fails."
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('tailscale: for Tailscale transport layer')
 backup=('usr/lib/ele-messenger/config.json')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v$pkgver.tar.gz"
         "ele-messenger.install")
-sha256sums=('a765bae4b6c76b22ac253779ab415f53e291e439e8e72df92af8ed7efb2e7f84'
+sha256sums=('90749709d74478d2d0460944fdeb18cf43817e4f2a57b1db714acb0bbaa5be04'
             'SKIP')
 package() {
     cd "$srcdir/ele-messenger-$pkgver/pkg"
