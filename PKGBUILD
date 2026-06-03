@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=liveplay-bin
 _pkgname=LivePlay
-pkgver=1.3.0
+pkgver=2.0.8
 _electronversion=28
 pkgrel=1
 pkgdesc="A free, open-source audio playback system designed for live sound operators who need reliable, flexible cue management.(Prebuilt version.Use system-wide electron)"
@@ -15,6 +15,9 @@ depends=(
     "electron${_electronversion}"
     'ffmpeg'
 )
+makedepends=(
+    'asar'
+)
 options=(
     '!emptydirs'
 )
@@ -23,7 +26,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/tdoukinitsas/liveplay/v${pkgver}/LICENCE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b7a67e909abf9fa720cf82cb29cac7873dec4d30b5a71f1b14cf0c5437849012'
+sha256sums=('c764739dcd4dc34c7b592bba33e029375e661d3f6c857ba27b49fad27ac376ed'
             '20b067f86de375aae6db0f283ab2e65de24d537733b89bd58432c101259d84cf'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
@@ -58,6 +61,10 @@ prepare() {
     rm -rf "${srcdir}/opt/${_pkgname}/resources/app-update.yml"
     ln -sf "/usr/bin/ffmpeg" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@ffmpeg-installer/linux-x64/ffmpeg"
     ln -sf "/usr/bin/ffprobe" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@ffprobe-installer/ffprobe"
+    asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar"
+    find "${srcdir}/app.asar.unpacked/electron" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/opt/${_pkgname}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
