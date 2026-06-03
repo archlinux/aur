@@ -3,7 +3,7 @@
 _pkgauthor=tjblackheart
 _pkgname=andcli
 pkgname=${_pkgname}-bin
-pkgver=2.6.2
+pkgver=2.7.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A 2FA TUI for your shell"
@@ -22,9 +22,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_linux_${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_linux_${_barch[1]}")
 sha256sums=('d45afd6fb9c249b4daef3c0362a71ff3c9cfa607c8162c29af42a5546e9b3246'
-            'c3b62f975eea42c320c8b78be3b56b930cfcc60c91bb7360fdae4a20f04aff87')
-sha256sums_x86_64=('4da129c26a4c66ff42e8af11c3fee2a9cbd5a1215d16223f43925c76479e9308')
-sha256sums_aarch64=('1523f3bd4827447cba700881346e2d54eeeb4d43cfa7477cff418f00af272045')
+            '7b58c12721cef0b66e00a010ec0a571693a9b0d6ca9561eb5a9ca4971ea26f5e')
+sha256sums_x86_64=('15c3eed110c5b92c5473d73fa401c255de180cd52b6f9a753b3027456990347f')
+sha256sums_aarch64=('3612ca4cbc35b412146c5abd6ad49fec5a34af031bae260a012dd6bcd9c66bcf')
 
 
 package() {
