@@ -23,7 +23,7 @@ pkgbase = napcat-qq
 	sha256sums = fecf169a5e052b9b475d9c28594f5f57557c4424391bf1e6190e2d1a33eeb8e2
 	source_x86_64 = linuxqq_3.2.23-44343_amd64.deb::https://dldir1.qq.com/qqfile/qq/QQNT/94704804/linuxqq_3.2.23-44343_amd64.deb
 	sha256sums_x86_64 = a4252719c1beb8adce0da09ebfc310ce50c79ea548f5cce429505765d0bfba84
-	source_arm64 = linuxqq_3.2.23-44343_amd64.deb::https://dldir1.qq.com/qqfile/qq/QQNT/94704804/linuxqq_3.2.23-44343_arm64.deb
+	source_arm64 = linuxqq_3.2.23-44343_arm64.deb::https://dldir1.qq.com/qqfile/qq/QQNT/94704804/linuxqq_3.2.23-44343_arm64.deb
 	sha256sums_arm64 = 870ed3c0e417e9bb3a021c1d56518bc2fbba82d1c3e1871384f64ab7e21923f7
 
 pkgname = napcat-qq
