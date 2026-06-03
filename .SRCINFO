@@ -1,0 +1,20 @@
+pkgbase = python-khali-git
+	pkgdesc = Uses khal, vdirsyncer and at to sync calendars and set alarms.
+	pkgver = 1.0.0.r22.6eeae92
+	pkgrel = 1
+	url = https://codeberg.org/dhruva_sambrani/khali
+	arch = any
+	license = LicenseRef-None
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-dateutil
+	source = git+https://codeberg.org/dhruva_sambrani/khali.git
+	sha256sums = SKIP
+
+pkgname = python-khali-git
+	depends = khal-git
+	depends = vdirsyncer
+	depends = at
