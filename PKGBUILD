@@ -1,7 +1,7 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 _pkgname=ansel
 pkgname="${_pkgname}-git"
-pkgver=0.0.0.r2686.g58d4f3ee9f
+pkgver=0.0.0.r3593.gcf46f0cd7b
 pkgrel=1
 pkgdesc="Ansel is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs."
 arch=("i686" "x86_64")
@@ -70,8 +70,6 @@ build() {
   # prefix and absolute path breaks RPATH, though we don't need RPATH because we
   # are installing to system library dirs and
   # <https://github.com/aurelienpierreeng/ansel/pull/258> gets merged.
-  #
-  # `osm-gps-map` in official still depends on `libsoup2`, not 3.
   cmake -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
@@ -85,7 +83,6 @@ build() {
         -DUSE_LIBRAW=ON \
         -DUSE_BUNDLED_LIBRAW=OFF \
         -DUSE_COLORD=ON \
-        -DWITH_LIBSOUP2=ON \
         -DBUILD_CURVE_TOOLS=OFF \
         -DBUILD_NOISE_TOOLS=OFF \
         -DRAWSPEED_ENABLE_LTO=ON
