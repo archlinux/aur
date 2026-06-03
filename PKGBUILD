@@ -1,6 +1,6 @@
 # Maintainer: Ryan Bas <ryanbas21@github>
 pkgname=camlwm-git
-pkgver=0.2.0
+pkgver=0.2.0.r67.c53ce93
 pkgrel=1
 pkgdesc="xmonad-style tiling window manager for X11, written in OCaml"
 arch=('x86_64')
