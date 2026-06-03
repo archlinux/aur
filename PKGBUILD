@@ -1,6 +1,6 @@
 # Maintainer: YourName <your-email@example.com>
 pkgname=attack-shark-x11-electron
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Cross-platform driver for the Attack Shark X11 gaming mouse with Electron GUI"
 arch=('x86_64')
