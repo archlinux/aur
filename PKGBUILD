@@ -1,7 +1,7 @@
 # Maintainer: Agil Mammadov <mammadovagil@proton.me>
 pkgname=container-magic
 _name=${pkgname//-/_}
-pkgver=5.4.2
+pkgver=5.8.0
 pkgrel=1
 pkgdesc="Container development tools"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-wheel python-setuptools)
 #conflicts=(cm)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 	"LICENSE::https://raw.githubusercontent.com/markhedleyjones/container-magic/v$pkgver/LICENSE")
-sha256sums=('ef7231accb5316f8bda7c53a7c7ab89cb1217933caa0167eebe1939c98ed8616'
+sha256sums=('b78cac6c064c98848add96629aa2f44ee432301a0acfec8a3e36e13f299d0a8b'
             '21aca9786832c0545aeb9e32c5e385acdbfbdcf2dcf141d59923da4864670dd0')
 
 build() {
