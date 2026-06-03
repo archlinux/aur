@@ -1,7 +1,7 @@
 # Maintainer: mateball9333-debug <mateball9333-debug@users.noreply.github.com>
 
 pkgname=qtiker-git
-pkgver=0.2.0.r0.g42e79f7
+pkgver=0.2.3.r0.g5fe3ece
 pkgrel=1
 pkgdesc='Small Qt clicker game for Linux'
 arch=('x86_64')

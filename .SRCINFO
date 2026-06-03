@@ -1,6 +1,6 @@
 pkgbase = qtiker-git
 	pkgdesc = Small Qt clicker game for Linux
-	pkgver = 0.2.0.r0.g42e79f7
+	pkgver = 0.2.3.r0.g5fe3ece
 	pkgrel = 1
 	url = https://github.com/mateball9333-debug/qtiker
 	arch = x86_64
