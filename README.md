@@ -16,6 +16,14 @@ Update locally with:
 ./scripts/update-pkgbuild
 ```
 
+Publish the current package files to the AUR with:
+
+```sh
+./scripts/publish-aur
+```
+
+The publish script expects AUR SSH access to be available in your local environment and uses your configured Git identity for the AUR commit. `AUR_REPO_URL` and `AUR_BRANCH` can be set to override the default AUR remote and branch. `COMMIT_MSG` can be set to override the default commit message.
+
 The GitHub Actions workflow runs daily and can also be triggered manually. It checks the latest upstream GitHub release, updates `pkgver`, resets `pkgrel` to `1`, refreshes the SHA-256 checksum, regenerates `.SRCINFO`, and commits the package metadata when anything changed.
 
 ## Dependency mapping
