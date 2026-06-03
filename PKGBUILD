@@ -3,7 +3,7 @@
 pkgbase=nixl
 pkgname=('nixl' 'python-nixl')
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA Inference Xfer Library: high-throughput, low-latency point-to-point data transfer for distributed inference'
 arch=('x86_64')
 url='https://github.com/ai-dynamo/nixl'
@@ -17,6 +17,7 @@ depends=(
   'gflags'
   'hwloc'
   'numactl'
+  'tomlplusplus'
 )
 makedepends=(
   'meson'
@@ -25,7 +26,6 @@ makedepends=(
   'git'
   'pkgconf'
   'asio'
-  'tomlplusplus'
   'taskflow'
   'pybind11'
   'python'
