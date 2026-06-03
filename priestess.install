@@ -1,0 +1,31 @@
+#!/bin/bash
+# arg: $1 = action (post_install, post_upgrade, pre_remove, etc.)
+
+post_install() {
+  echo ":: PRTS 安装完成"
+  echo "   "
+  echo "   运行 prts 启动"
+  echo "   如需启动时显示窗口，使用:"
+  echo "     PRTS_SHOW_ON_START=1 prts"
+  echo "   "
+  echo "   Wayland (Niri/GNOME/KDE): 托盘图标通过 SNI 协议注册。"
+  echo "   如果托盘图标不可见，安装 waybar 的 tray 模块或使用"
+  echo "   PRTS_SHOW_ON_START=1 环境变量。"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  :
+}
+
+op=$1
+shift
+
+case "$op" in
+  post_install) post_install "$@" ;;
+  post_upgrade) post_upgrade "$@" ;;
+  pre_remove)   pre_remove "$@" ;;
+esac

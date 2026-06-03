@@ -1,0 +1,490 @@
+diff --git a/package.json b/package.json
+index 68efb29..8a3a469 100644
+--- a/package.json
++++ b/package.json
+@@ -11,6 +11,7 @@
+     "dist": "electron-builder",
+     "dist:mac": "electron-builder --mac",
+     "dist:win": "electron-builder --win",
++    "dist:linux": "electron-builder --linux",
+     "lint": "node scripts/check-assets.js"
+   },
+   "keywords": [
+@@ -36,6 +37,9 @@
+       "!**/.DS_Store",
+       "package.json"
+     ],
++    "asarUnpack": [
++      "assets/**"
++    ],
+     "directories": {
+       "buildResources": "assets/build"
+     },
+@@ -56,6 +60,14 @@
+         "zip"
+       ]
+     },
++    "linux": {
++      "icon": "assets/character/icon.png",
++      "target": [
++        "AppImage",
++        "deb"
++      ],
++      "category": "Utility"
++    },
+     "nsis": {
+       "oneClick": false,
+       "allowToChangeInstallationDirectory": true
+diff --git a/scripts/run-electron.js b/scripts/run-electron.js
+index de2505b..b0d0489 100644
+--- a/scripts/run-electron.js
++++ b/scripts/run-electron.js
+@@ -96,6 +96,16 @@ function ensureValidSignature(devApp) {
+ const env = { ...process.env };
+ delete env.ELECTRON_RUN_AS_NODE;
+ 
++// On Linux, hint Electron to use the Wayland backend so the tray icon
++// appears via the StatusNotifierItem protocol (required on Niri, GNOME
++// Wayland, KDE Wayland, and other compositors without X11 systray).
++if (process.platform === "linux") {
++  env.ELECTRON_OZONE_PLATFORM_HINT = env.ELECTRON_OZONE_PLATFORM_HINT || "auto";
++  // Suppress the misleading XDG activation token warning at startup.
++  env.ELECTRON_ENABLE_WAYLAND_ACTIVATION_TOKEN_HACK =
++    env.ELECTRON_ENABLE_WAYLAND_ACTIVATION_TOKEN_HACK || "1";
++}
++
+ let child;
+ let logTail = null;
+ let devAppPath = null;
+diff --git a/src/main/chat.js b/src/main/chat.js
+index 0a6b679..57a4001 100644
+--- a/src/main/chat.js
++++ b/src/main/chat.js
+@@ -112,6 +112,9 @@ function commonBinDirs() {
+     path.join(home, ".deno", "bin"),
+     path.join(home, ".codex", "bin"),
+     path.join(home, ".claude", "local"),
++    "/home/linuxbrew/.linuxbrew/bin",
++    "/snap/bin",
++    "/var/lib/flatpak/exports/bin",
+     "/opt/homebrew/bin",
+     "/usr/local/bin",
+     "/usr/bin",
+@@ -1249,7 +1252,7 @@ function send(text) {
+   const providerInfo = ensureProviderAvailability()[provider];
+   if (!providerInfo?.available) {
+     pushSystem(
+-      "No local Claude Code or Codex CLI was found. Install and authenticate one of them, then reopen the tray menu or send again."
++      "未检测到 Claude Code 或 Codex CLI。请安装并登录其中任一，然后重新打开托盘菜单或再次发送消息。"
+     );
+     emitStatus("idle", { error: "missing-cli" });
+     return { ok: false, reason: "missing-cli" };
+@@ -1342,7 +1345,7 @@ async function launchProviderTurn({ trimmed, provider, cwd, agentMode, sharedTra
+   } catch (error) {
+     turnLaunching = false;
+     pushSystem(
+-      `Failed to launch \`${providerLabel(provider)}\`: ${error.message}. Is the CLI installed and on PATH?`
++      `启动 \`${providerLabel(provider)}\` 失败: ${error.message}。请确认 CLI 已安装且在 PATH 中。`
+     );
+     finalizeAssistant("");
+     currentProvider = null;
+@@ -1366,7 +1369,7 @@ async function launchProviderTurn({ trimmed, provider, cwd, agentMode, sharedTra
+       } catch (error) {
+         if (shouldIgnoreNonJsonLine(line)) continue;
+         // Non-JSON line — surface as system note for transparency.
+-        pushSystem(`Unparsed: ${line.slice(0, 200)}`);
++        pushSystem(`未解析的输出: ${line.slice(0, 200)}`);
+       }
+     }
+   });
+@@ -1377,7 +1380,7 @@ async function launchProviderTurn({ trimmed, provider, cwd, agentMode, sharedTra
+ 
+   proc.on("error", (error) => {
+     if (currentProcess !== proc) return;
+-    pushSystem(`\`${providerLabel(provider)}\` process error: ${error.message}`);
++    pushSystem(`\`${providerLabel(provider)}\` 进程出错: ${error.message}`);
+     finalizeAssistant("");
+     currentProcess = null;
+     currentProvider = null;
+@@ -1425,7 +1428,7 @@ async function launchProviderTurn({ trimmed, provider, cwd, agentMode, sharedTra
+     if (code !== 0 && code !== null) {
+       const stderrSummary = stderrText.slice(-400);
+       pushSystem(
+-        `\`${providerLabel(provider)}\` exited with code ${code}.${stderrSummary ? "\n" + stderrSummary : ""}`
++        `\`${providerLabel(provider)}\` 退出码 ${code}。${stderrSummary ? "\n" + stderrSummary : ""}`
+       );
+     } else if (claudeResultErrored) {
+       pushSystem(
+diff --git a/src/main/main.js b/src/main/main.js
+index b77a3e4..7661609 100644
+--- a/src/main/main.js
++++ b/src/main/main.js
+@@ -221,7 +221,9 @@ function createPopover() {
+     // Resize only through the renderer's explicit edge handles. Native resize
+     // on a frameless Windows window can treat a long press near the border as
+     // an OS resize gesture and fight the custom drag implementation.
+-    resizable: false,
++    // On Linux (Wayland) the custom pointer-screen delta approach doesn't
++    // work reliably, so enable native resize instead.
++    resizable: process.platform !== "darwin",
+     movable: false,
+     minimizable: false,
+     maximizable: false,
+@@ -248,7 +250,7 @@ function createPopover() {
+     }
+   });
+ 
+-  popover.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
++  popover.setVisibleOnAllWorkspaces(true, process.platform === "darwin" ? { visibleOnFullScreen: true } : undefined);
+   // Sit in the normal window stacking order — other apps can come over the
+   // top. The popover still only disappears when the tray icon is clicked
+   // again (no blur-to-hide handler), so it doesn't vanish on focus change.
+@@ -271,10 +273,19 @@ function positionPopover() {
+   const winBounds = popover.getBounds();
+   // Center the popover beside the tray icon. Windows commonly puts the tray
+   // at the bottom of the screen, while macOS puts it at the top.
+-  let x = Math.round(trayBounds.x + trayBounds.width / 2 - winBounds.width / 2);
+-  const below = Math.round(trayBounds.y + trayBounds.height + 6);
+-  const above = Math.round(trayBounds.y - winBounds.height - 6);
+-  let y = below + winBounds.height <= work.y + work.height ? below : above;
++  // On Wayland (Niri, GNOME, KDE) tray.getBounds() may return all zeros;
++  // fall back to top-right of the primary display.
++  const hasValidBounds = trayBounds.width > 0 && trayBounds.height > 0;
++  let x, y;
++  if (hasValidBounds) {
++    x = Math.round(trayBounds.x + trayBounds.width / 2 - winBounds.width / 2);
++    const below = Math.round(trayBounds.y + trayBounds.height + 6);
++    const above = Math.round(trayBounds.y - winBounds.height - 6);
++    y = below + winBounds.height <= work.y + work.height ? below : above;
++  } else {
++    x = work.x + work.width - winBounds.width - 16;
++    y = work.y + 8;
++  }
+   // Clamp inside the active display so we never spill off-screen.
+   x = Math.max(work.x + 4, Math.min(work.x + work.width - winBounds.width - 4, x));
+   y = Math.max(work.y + 4, Math.min(work.y + work.height - winBounds.height - 4, y));
+@@ -351,7 +362,7 @@ function createDesktopPet() {
+     backgroundColor: "#00000000",
+     alwaysOnTop: true,
+     focusable: true,
+-    title: "PRTS Desktop Pet",
++    title: "PRTS 桌面宠物",
+     webPreferences: {
+       preload: path.join(__dirname, "preload.js"),
+       contextIsolation: true,
+@@ -526,10 +537,10 @@ async function toggleAgentMode(nextValue) {
+     const warning = platform.agentModeWarning();
+     const result = await dialog.showMessageBox({
+       type: "warning",
+-      title: "Enable agent mode?",
++      title: "开启代理模式？",
+       message: warning.message,
+       detail: warning.detail,
+-      buttons: ["Cancel", "Enable agent mode"],
++      buttons: ["取消", "开启代理模式"],
+       defaultId: 0,
+       cancelId: 0
+     });
+@@ -553,7 +564,7 @@ function buildUsageBackendMenuItem() {
+ 
+   if (available.length === 0) {
+     return {
+-      label: "Usage backend: no local CLI found",
++      label: "后端: 未检测到本地 CLI",
+       enabled: false
+     };
+   }
+@@ -561,13 +572,13 @@ function buildUsageBackendMenuItem() {
+   if (available.length === 1) {
+     const provider = availability.providers[available[0]];
+     return {
+-      label: `Usage backend: ${provider.label}`,
++      label: `后端: ${provider.label}`,
+       enabled: false
+     };
+   }
+ 
+   return {
+-    label: "Usage backend",
++    label: "后端",
+     submenu: available.map((providerKey) => {
+       const provider = availability.providers[providerKey];
+       return {
+@@ -584,7 +595,7 @@ function buildContextMenu() {
+   const all = settings.getAll();
+   return Menu.buildFromTemplate([
+     {
+-      label: "Open Chat",
++      label: "打开对话",
+       click: () => {
+         if (!popover) createPopover();
+         if (!popover.isVisible()) {
+@@ -596,7 +607,7 @@ function buildContextMenu() {
+     },
+     { type: "separator" },
+     {
+-      label: "Agent mode (full screen control)",
++      label: "代理模式（全屏控制）",
+       type: "checkbox",
+       checked: Boolean(all.agentMode),
+       click: (item) => {
+@@ -605,14 +616,14 @@ function buildContextMenu() {
+     },
+     buildUsageBackendMenuItem(),
+     {
+-      label: "Auto-screenshot each turn",
++      label: "每轮自动截图",
+       type: "checkbox",
+       visible: Boolean(all.agentMode),
+       checked: all.autoScreenshot !== false,
+       click: (item) => settings.set({ autoScreenshot: item.checked })
+     },
+     {
+-      label: "Desktop pet while idle",
++      label: "闲置时显示桌面宠物",
+       type: "checkbox",
+       checked: all.desktopPet !== false,
+       click: (item) => {
+@@ -625,26 +636,26 @@ function buildContextMenu() {
+       }
+     },
+     {
+-      label: "Show desktop pet now",
++      label: "显示桌面宠物",
+       enabled: all.desktopPet !== false,
+       click: () => showDesktopPet()
+     },
+     {
+-      label: "Desktop pet size",
++      label: "桌面宠物大小",
+       enabled: all.desktopPet !== false,
+       submenu: Object.keys(DESKTOP_PET_SIZES).map((sizeKey) => ({
+-        label: sizeKey[0].toUpperCase() + sizeKey.slice(1),
++        label: sizeKey === "small" ? "小" : sizeKey === "medium" ? "中" : "大",
+         type: "radio",
+         checked: (all.desktopPetSize || "medium") === sizeKey,
+         click: () => setDesktopPetSize(sizeKey)
+       }))
+     },
+     {
+-      label: "Set chat directory…",
++      label: "设置聊天目录…",
+       click: async () => {
+         const current = (all.chatCwd || "").trim();
+         const result = await dialog.showOpenDialog({
+-          title: "Choose project folder for chat",
++          title: "选择聊天工作目录",
+           defaultPath: current || app.getPath("home"),
+           properties: ["openDirectory", "createDirectory"]
+         });
+@@ -654,18 +665,18 @@ function buildContextMenu() {
+       }
+     },
+     {
+-      label: "Clear chat directory",
++      label: "清除聊天目录",
+       enabled: Boolean((all.chatCwd || "").trim()),
+       click: () => settings.set({ chatCwd: "" })
+     },
+     { type: "separator" },
+     {
+-      label: "Reveal data folder",
++      label: "打开数据文件夹",
+       click: () => shell.openPath(app.getPath("userData"))
+     },
+     { type: "separator" },
+     {
+-      label: "Quit",
++      label: "退出",
+       accelerator: "CmdOrCtrl+Q",
+       click: () => app.quit()
+     }
+@@ -677,7 +688,7 @@ function syncTrayTooltip() {
+   const cwd = (settings.get("chatCwd") || "").trim();
+   const availability = chat.getProviderAvailability({ refresh: false });
+   const active = availability.activeProvider;
+-  const provider = active ? availability.providers[active].shortLabel : "Ready";
++  const provider = active ? availability.providers[active].shortLabel : "就绪";
+   tray.setToolTip(cwd ? `PRTS · ${provider} · ${cwd}` : `PRTS · ${provider}`);
+ }
+ 
+@@ -762,7 +773,7 @@ function maybeNotifyDoneNotification(event) {
+   try {
+     new Notification({
+       title: "PRTS",
+-      body: "Response complete.",
++      body: "回复完成。",
+       silent: false
+     }).show();
+   } catch (error) {
+@@ -852,6 +863,15 @@ app.whenReady().then(() => {
+ 
+   createPopover();
+   scheduleDesktopPet();
++
++  // On compositors without a visible system tray (Niri, GNOME Wayland
++  // without AppIndicator extension, etc.), the tray icon is registered as
++  // a StatusNotifierItem but may not be visible. Set PRTS_SHOW_ON_START=1
++  // to show the popover immediately at launch so the app is usable.
++  if (process.env.PRTS_SHOW_ON_START === "1") {
++    positionPopover();
++    showPopover();
++  }
+ });
+ 
+ app.on("window-all-closed", () => {
+@@ -897,7 +917,7 @@ ipcMain.handle("settings:get", () => buildSettingsState());
+ 
+ ipcMain.handle("settings:pick-cwd", async () => {
+   const result = await dialog.showOpenDialog({
+-    title: "Choose project folder for chat",
++    title: "选择聊天工作目录",
+     defaultPath: settings.get("chatCwd") || app.getPath("home"),
+     properties: ["openDirectory", "createDirectory"]
+   });
+diff --git a/src/main/platform.js b/src/main/platform.js
+index afc74fe..81583ed 100644
+--- a/src/main/platform.js
++++ b/src/main/platform.js
+@@ -23,6 +23,18 @@ function agentModeWarning() {
+     };
+   }
+ 
++  if (process.platform === "linux") {
++    return {
++      message:
++        "Agent mode lets her run any command on your Linux system without asking permission for each tool.",
++      detail:
++        "She will be able to take screenshots (via PipeWire/xdg-desktop-portal), read and edit files, " +
++        "and run any shell command. Linux permissions (PolKit, AppArmor, SELinux) may still restrict " +
++        "certain actions depending on your distribution.\n\n" +
++        "Only enable this if you trust the conversation. You can turn it off any time from the tray menu."
++    };
++  }
++
+   return {
+     message:
+       "Agent mode lets her run any command on your computer without asking permission for each tool.",
+@@ -51,6 +63,15 @@ function agentModePrompt() {
+     );
+   }
+ 
++  if (process.platform === "linux") {
++    return (
++      "- 你可以读取本轮自动附上的屏幕截图；\n" +
++      "- 需要额外截图时，可使用 `gnome-screenshot`、`spectacle`、`grim` 或 `maim` 等工具；\n" +
++      "- 可用 `ydotool`、`xdotool`（X11）或 `wtype`（Wayland）操控鼠标与键盘；\n" +
++      "- 任何终端命令都可以直接执行。\n"
++    );
++  }
++
+   return (
+     "- 你可以读取本轮自动附上的屏幕截图；\n" +
+     "- 需要额外截图或操作鼠标键盘时，使用当前系统已安装的自动化工具；\n" +
+diff --git a/src/renderer/index.html b/src/renderer/index.html
+index 8b38a6a..f9bbef7 100644
+--- a/src/renderer/index.html
++++ b/src/renderer/index.html
+@@ -15,8 +15,8 @@
+         <span class="agent-badge" id="agentBadge" hidden>⚡ agent</span>
+       </div>
+       <div class="bar-actions">
+-        <button type="button" id="clearBtn" class="ghost" title="Clear conversation">Clear</button>
+-        <button type="button" id="cancelBtn" class="ghost" title="Stop response" disabled>Stop</button>
++        <button type="button" id="clearBtn" class="ghost" title="清除对话">清除</button>
++        <button type="button" id="cancelBtn" class="ghost" title="停止回复" disabled>停止</button>
+       </div>
+     </header>
+ 
+diff --git a/src/renderer/renderer.js b/src/renderer/renderer.js
+index 1f47922..4000cff 100644
+--- a/src/renderer/renderer.js
++++ b/src/renderer/renderer.js
+@@ -1006,7 +1006,7 @@ function renderHistory(history) {
+   if (!lastHistory.length) {
+     const empty = document.createElement("div");
+     empty.className = "empty-state";
+-    empty.textContent = "Say something to start.";
++    empty.textContent = "和她说点什么吧。";
+     chatStream.append(empty);
+     currentAssistantId = null;
+     return;
+@@ -1217,16 +1217,16 @@ composer.addEventListener("submit", async (event) => {
+   }, 200);
+   const result = await window.chatApi.send(text);
+   if (result?.ok === false) {
+-    showBubble(`Send failed: ${result.reason}`, 3000);
++    showBubble(`发送失败: ${result.reason}`, 3000);
+   }
+ });
+ 
+ cancelBtn.addEventListener("click", () => window.chatApi.cancel());
+ 
+ clearBtn.addEventListener("click", () => {
+-  if (!confirm("Clear current session? Long-term memory will be kept.")) return;
++  if (!confirm("清除当前对话？长期记忆将继续保留。")) return;
+   window.chatApi.clear();
+-  showBubble("Conversation cleared.", 1800);
++  showBubble("对话已清除。", 1800);
+ });
+ 
+ window.chatApi.onHistory((history) => renderHistory(history));
+@@ -1246,12 +1246,12 @@ window.chatApi.onStatus((event) => {
+     resetInactivityTimers();
+     if (event.error) {
+       setBaseMood("cry");
+-      showBubble(`Error: ${event.error}`, 4000);
++      showBubble(`错误: ${event.error}`, 4000);
+       setTimeout(() => {
+         if (baseMood === "cry") setBaseMood("idle");
+       }, 2200);
+     } else if (event.cancelled) {
+-      showBubble("Stopped.", 1600);
++      showBubble("已停止。", 1600);
+     } else {
+       flashPunch(0.08);
+       // Settle into the expression she chose for this reply; default to happy.
+@@ -1305,16 +1305,16 @@ function refreshComposerMeta() {
+   const provider = backendReady
+     ? providerInfo?.shortLabel ||
+       (activeProvider === "codex" ? "Codex" : activeProvider ? "Claude" : "No CLI")
+-    : "No CLI";
++    : "未检测到 CLI";
+   const cwd = (payload?.chatCwd || "").trim();
+-  const queueSuffix = queueLength > 0 ? ` · ${queueLength} queued` : "";
+-  const runningSuffix = chatRunning ? " · sends when ready" : "";
++  const queueSuffix = queueLength > 0 ? ` · ${queueLength} 排队中` : "";
++  const runningSuffix = chatRunning ? " · 发送中" : "";
+   if (cwd) {
+     const truncated = cwd.length > 42 ? "…" + cwd.slice(-41) : cwd;
+-    cwdLine.textContent = `${provider} · cwd · ${truncated}${queueSuffix}${runningSuffix}`;
++    cwdLine.textContent = `${provider} · ${truncated}${queueSuffix}${runningSuffix}`;
+     cwdLine.title = cwd;
+   } else {
+-    cwdLine.textContent = `${provider} · cwd · $HOME  ·  right-click tray to set${queueSuffix}${runningSuffix}`;
++    cwdLine.textContent = `${provider} · $HOME · 右键托盘菜单设置${queueSuffix}${runningSuffix}`;
+     cwdLine.title = "";
+   }
+   if (providerBadge) providerBadge.textContent = provider;
+@@ -1322,9 +1322,9 @@ function refreshComposerMeta() {
+   sendBtn.disabled = !backendReady;
+   composerInput.placeholder = backendReady
+     ? chatRunning
+-      ? "Message queues while she responds…  (Shift+Enter for newline)"
+-      : "Talk to her…  (Shift+Enter for newline)"
+-    : "Install Claude Code or Codex CLI first…";
++      ? "她在回复时可以继续输入消息排队…（Shift+Enter 换行）"
++      : "和她说点什么…（Shift+Enter 换行）"
++    : "请先安装 Claude Code 或 Codex CLI…";
+ }
+ 
+ function renderSettings(payload) {
+@@ -1386,7 +1386,7 @@ loadAllFrames()
+   })
+   .catch((error) => {
+     console.error("Failed to load frames:", error);
+-    showBubble("Failed to load character frames.", 6000);
++    showBubble("角色立绘加载失败。", 6000);
+   });
+ 
+ window.chatApi.getHistory().then(renderHistory);
