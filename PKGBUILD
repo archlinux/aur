@@ -5,12 +5,12 @@ pkgver=2.0.1
 pkgrel=1
 pkgdesc="Jellyfin & Emby media client for Linux (binary release)"
 arch=('x86_64')
-url="https://github.com/Moonfin-Client/Mobile-Desktop"
+url="https://github.com/Moonfin-Client/Moonfin-Core"
 license=('GPL-3.0-or-later')
 depends=('gtk3' 'glib2' 'libsecret' 'webkit2gtk-4.1')
 provides=('moonfin')
 conflicts=('moonfin')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Moonfin-Client/Mobile-Desktop/releases/download/${pkgver}/Moonfin_Linux_v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Moonfin-Client/Moonfin-Core/releases/download/${pkgver}/Moonfin_Linux_v${pkgver}.tar.gz")
 sha256sums=('f36dfa910fad138c5502eb489e6be75e7e853ff7c0c32e045a0fd5740a588afa')
 
 package() {
