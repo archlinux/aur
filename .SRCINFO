@@ -1,6 +1,6 @@
 pkgbase = refine
 	pkgdesc = Tweak advanced settings in GNOME
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://tesk.page/refine/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = refine
 	depends = libadwaita
 	depends = python
 	depends = python-gobject
-	source = refine::git+https://gitlab.gnome.org/TheEvilSkeleton/Refine.git#tag=0.7.1
-	b2sums = 17668d046ecd633a3c68b1a3f93db15cff8e4d0d007425da41cea68b7c599da2c34a81780ae230fe2951a7fdd2e0a5e3ada6eb395d20d047ae5a56585b309d35
+	source = refine::git+https://gitlab.gnome.org/TheEvilSkeleton/Refine.git#tag=0.8.0
+	b2sums = 23e79d7092ec2077aff2a5c6f1bf7e0a6bc5fc68c42d29d3e56a9a29ef27530fb6485f2372cc1aae366704db129661a49d9dd0f118f7bff896364eefc6d92724
 
 pkgname = refine
