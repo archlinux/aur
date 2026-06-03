@@ -1,13 +1,13 @@
 pkgbase = lm-get
 	pkgdesc = Search and download GGUF models from Hugging Face
-	pkgver = 0.6.3
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/GSathyaPrakash/lm-get
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = lm-get-0.6.3.tar.gz::https://github.com/GSathyaPrakash/lm-get/archive/refs/tags/v0.6.3.tar.gz
+	depends = glibc
+	source = lm-get-0.8.0.tar.gz::https://github.com/GSathyaPrakash/lm-get/archive/refs/tags/v0.8.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = lm-get
-	depends = glibc
