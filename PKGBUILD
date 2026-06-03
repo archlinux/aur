@@ -1,13 +1,13 @@
 # Maintainer: Christopher Sieh (stelzo) <stelzo@steado.de>
 pkgname=minot
 pkgver=0.7.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A versatile toolset for debugging and verifying stateful robot perception software."
 arch=('x86_64' 'aarch64')
 url="https://github.com/uos/minot"
 license=('MIT' 'Apache-2.0')
 depends=('libgcc' 'glibc')
-makedepends=('cargo' 'zensical')
+makedepends=('cargo')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
@@ -19,7 +19,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   cargo build --release --locked --no-default-features --features embed-mt-pubsub,embed-coord
 
-  cd "$srcdir/$pkgname-$pkgver/docs/" && zensical build --clean && cd -
+  # cd "$srcdir/$pkgname-$pkgver/docs/" && zensical build --clean && cd -
 
   mkdir -p "$srcdir/completions"
   "$CARGO_TARGET_DIR/release/minot" completions bash > "$srcdir/completions/bash"
@@ -39,10 +39,10 @@ package() {
   install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE-APACHE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 
-  install -d "$pkgdir/usr/share/doc/$pkgname"
-  cp -a "$srcdir/$pkgname-$pkgver/docs/site/." "$pkgdir/usr/share/doc/$pkgname/"
-  find "$pkgdir/usr/share/doc/$pkgname/" -type d -exec chmod 755 {} +
-  find "$pkgdir/usr/share/doc/$pkgname/" -type f -exec chmod 644 {} +
+  # install -d "$pkgdir/usr/share/doc/$pkgname"
+  # cp -a "$srcdir/$pkgname-$pkgver/docs/site/." "$pkgdir/usr/share/doc/$pkgname/"
+  # find "$pkgdir/usr/share/doc/$pkgname/" -type d -exec chmod 755 {} +
+  # find "$pkgdir/usr/share/doc/$pkgname/" -type f -exec chmod 644 {} +
 
   install -Dm644 "$srcdir/$pkgname-$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 
