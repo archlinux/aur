@@ -15,8 +15,8 @@ pkgbase = iso-commander
 	optdepends = dosfstools: FAT32 formatting for Windows live USB creation
 	optdepends = parted: GPT partition layout for Windows live USB creation
 	source = isocmd::https://github.com/siyia2/iso-commander/releases/download/v7.1.8/isocmd
-	source = isocmd.1::https://raw.githubusercontent.com/siyia2/iso-commander/v7.1.8/man/isocmd.1
+	source = isocmd.1::https://raw.githubusercontent.com/siyia2/iso-commander/refs/heads/main/man/isocmd.1
 	md5sums = 90c543acf24246b37a3dc7cac9e8c31d
-	md5sums = a4d0bcbbe64f996ecaa19d3bbd890bbd
+	md5sums = SKIP
 
 pkgname = iso-commander
