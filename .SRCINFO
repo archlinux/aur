@@ -16,6 +16,7 @@ pkgbase = iso-commander
 	optdepends = ntfs-3g: NTFS formatting for Windows live USB creation (writes use the ntfs3 kernel driver)
 	optdepends = dosfstools: FAT32 formatting for Windows live USB creation
 	optdepends = parted: GPT partition layout for Windows live USB creation
+	conflicts = iso-commander-bin
 	source = iso-commander-7.1.8.tar.gz::https://github.com/siyia2/iso-commander/archive/v7.1.8.tar.gz
 	md5sums = 52d7105c2837fb99ed23dbe28f4aa9c1
 
