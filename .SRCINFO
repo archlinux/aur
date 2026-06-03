@@ -1,0 +1,18 @@
+pkgbase = graf
+	pkgdesc = Sovereign-native Janus-native version control for operators and agents
+	pkgver = 0.5.48.alpha.2
+	pkgrel = 1
+	url = https://git.sovereign-society.org/markus/graf
+	arch = x86_64
+	license = custom:LCL-1.0
+	checkdepends = bash
+	makedepends = bash
+	makedepends = git
+	makedepends = janus
+	depends = glibc
+	provides = graf
+	conflicts = graf-git
+	source = graf-0.5.48.alpha.2.tar.gz::https://git.sovereign-society.org/markus/graf/archive/v0.5.48-alpha.2.tar.gz
+	sha256sums = 20d87fc1c878b25b8384f3ba39ca7f11ade06014d4dcd60cd51eed9986c28148
+
+pkgname = graf
