@@ -1,7 +1,7 @@
 # Maintainer: mateball9333-debug <mateball9333-debug@users.noreply.github.com>
 
 pkgname=qtiker-git
-pkgver=0.1.2.r0.g64221ca
+pkgver=0.2.0.r0.g42e79f7
 pkgrel=1
 pkgdesc='Small Qt clicker game for Linux'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd qtiker
-    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' || printf '0.1.1.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' || printf '0.2.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
