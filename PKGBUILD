@@ -1,19 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pinac-workspace-git
 _pkgname='PINAC Workspace'
-pkgver=3.0.1.r0.g4f6c51e
-_electronversion=35
+pkgver=r30.7836d9a
 _nodeversion=22
 pkgrel=1
-pkgdesc='A modern-looking privacy-first AI chat for desktops.(Use system-wide electron)'
+pkgdesc='A local, minimal & secure desktop AI assistant for everyone.'
 arch=('any')
-url="https://pinacworkspace.pages.dev/"
-_ghurl="https://github.com/pinacai/PINAC_Workspace"
-license=('GPL-3.0-only')
+url="https://github.com/pinacai/PINAC_Workspace"
+license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
-    "electron${_electronversion}"
+    'webkit2gtk-4.1'
+    'gtk3'
 )
 makedepends=(
     'gendesk'
@@ -24,13 +23,10 @@ makedepends=(
     'python'
     'jq'
     'uv'
+    'rustup'
 )
-source=(
-    "${pkgname%-git}.git::git+${_ghurl}.git"
-    "${pkgname%-git}.sh"
-)
-sha256sums=('SKIP'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+source=("${pkgname%-git}.git::git+${url}.git")
+sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -43,73 +39,51 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-_get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname%-git}.git/app/package.json" | tr -d '^')
-    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
-    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
-}
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
-    _get_electron_version
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-git}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " "${srcdir}/${pkgname%-git}.sh"
     gendesk -f -n -q \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-        echo "maxsockets=10"
-    } >> .npmrc
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        } >> .npmrc
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-        cp .npmrc app/.npmrc
-    fi
-    cp .env.example .env
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i "s/\/\${version}//g" app/electron-builder.json5
-    NODE_ENV=development    npm install
-    cd "${srcdir}/${pkgname%-git}.git/app"
+	local HOME="${srcdir}/.electron-gyp"
+    export CARGO_HOME="${srcdir}/.cargo"
+	export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+	export NPM_CONFIG_MAXSOCKETS=32
+	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+		{
+			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+            export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+	        export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+		}
+		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+	fi
+    rustup default stable
     _ensure_local_nvm
+    cd desktop
+    sed -i "s/\"active\"\: true\,/\"active\"\: false\,/g" src-tauri/tauri.conf.json
     NODE_ENV=development    npm install
-    NODE_ENV=development    npm install typescript --save-dev
-    sed -i "s/components\/GreetingText/components\/greetingText/g" src/pages/Home.tsx
+    cp src-tauri/icons/128x128@2x.png src-tauri/icons/256x256.png
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git/backend"
+    cp .env.example .env
     python -m venv venv
     source venv/bin/activate
     uv sync
     uv pip install -e .
-    cd "${srcdir}/${pkgname%-git}.git/app"
-    NODE_ENV=production     npx tsc
-    NODE_ENV=production     npx vite build
-    find electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
-    local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config=electron-builder.json5"
+    cd "${srcdir}/${pkgname%-git}.git/desktop"
+    NODE_ENV=production     npm run tauri build
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/app/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/release/linux-"*/resources/{app.asar.unpacked,backend} "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/public/icon/Round App Logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm755 "${srcdir}/${pkgname%-git}.git/desktop/src-tauri/target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    _icon_sizes=(32x32 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${pkgname%-git}.git/desktop/src-tauri/icons/${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
+    done
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

@@ -1,10 +1,10 @@
 pkgbase = pinac-workspace-git
-	pkgdesc = A modern-looking privacy-first AI chat for desktops.(Use system-wide electron)
-	pkgver = 3.0.1.r0.g4f6c51e
+	pkgdesc = A local, minimal & secure desktop AI assistant for everyone.
+	pkgver = r30.7836d9a
 	pkgrel = 1
-	url = https://pinacworkspace.pages.dev/
+	url = https://github.com/pinacai/PINAC_Workspace
 	arch = any
-	license = GPL-3.0-only
+	license = MIT
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = nvm
@@ -13,12 +13,12 @@ pkgbase = pinac-workspace-git
 	makedepends = python
 	makedepends = jq
 	makedepends = uv
-	depends = electron35
-	provides = pinac-workspace=3.0.1
+	makedepends = rustup
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = pinac-workspace=r30.7836d9a
 	conflicts = pinac-workspace
 	source = pinac-workspace.git::git+https://github.com/pinacai/PINAC_Workspace.git
-	source = pinac-workspace.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = pinac-workspace-git
