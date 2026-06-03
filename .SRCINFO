@@ -1,0 +1,13 @@
+pkgbase = pkll-bin
+	pkgdesc = Port process killer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yofabr/pkll
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	source = pkll-bin-1.0.0.tar.xz::https://github.com/yofabr/pkll/releases/download/v1.0.0/pkll-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = dad495873fe3d9391fc37be093f2a3e5594fc35cbb81d7f11243e4ba2a2c6f44
+
+pkgname = pkll-bin
