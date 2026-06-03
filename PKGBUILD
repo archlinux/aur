@@ -26,14 +26,14 @@ function build() {
 	cd "${srcdir}/tuwunel"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --locked
+	cargo build --frozen --release --locked --all-features
 }
 
 function check() {
 	cd "${srcdir}/tuwunel"
 	export RUSTUP_TOOLCHAIN=stable
 	export TUWUNEL_DATABASE_PATH=/tmp/tuwunel-smoketest.db
-	cargo test --frozen --release --locked
+	cargo test --frozen --release --locked --all-features
 }
 
 function package() {
