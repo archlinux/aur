@@ -1,6 +1,6 @@
 pkgbase = river-delta
 	pkgdesc = Keyboard-driven launcher and system console for wlr-layer-shell compositors: apps, network, Bluetooth, display, storage, keyboard, pass
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/vighd/river-delta
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = river-delta
 	optdepends = wl-clipboard: Ctrl+V paste on Wayland
 	optdepends = xclip: Ctrl+V paste on X11
 	optdepends = libnotify: desktop notifications
-	source = river-delta-1.4.0.tar.gz::https://github.com/vighd/river-delta/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 5d75f12a2c59439542c9c4ac9982ae225ac6a8e115c71905a23fb08e81f580c4
+	source = river-delta-1.4.1.tar.gz::https://github.com/vighd/river-delta/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = 9ce615ebf1668a6e276e5287433a0c756bd65b41c89e39fe199f7ca4f3ed7434
 
 pkgname = river-delta
