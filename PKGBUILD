@@ -3,7 +3,7 @@
 
 pkgname=bash-agent
 pkgver=4.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight coding agent that runs in your terminal - Bash/Go/Rust/C editions + tcode tmux UI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lloydzhou/bash-agent"
