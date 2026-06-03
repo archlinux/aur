@@ -21,7 +21,6 @@ sha512sums=('8203af6ff588fec038a8fbe19913397534fbf93af48a5035a67b3142bc1c2d6b16b
             '06e458dad58d837051c1a53d06a8887087b565a036c520381e23f90a7cfe2181ec64f447e0d653c4832a2372056bcee27752e92704dedfe70972b48e156e2af7'
             'cb1cc2c78ed98fbf4a86847568ed713ae91ec2c314fde441ae7ec650dfbe3b6584f23c1c6be51a2d1d6bf7b13d07d82dc57009120006e32189da1499392ff5b5'
             '06617ae3d07a1aa20ae344a6e9bc551ee9e7eed9c68ae459d6531ce8b490c8f0db74dc3e7d0d2109adb1b21f9491f209368da6ac02f06ac6ff472fe9f143f26c')
-options=(!strip)
 depends=('ffmpeg')
 makedepends=('go' 'alsa-lib' 'v4l-utils')
 backup=(etc/go2rtc.yaml)
@@ -38,8 +37,9 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build .
+  export GOPATH="${srcdir}"
+  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
+  go build -ldflags="-compressdwarf=false -linkmode=external" .
 }
 
 package() {
