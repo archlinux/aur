@@ -28,8 +28,10 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s /usr/share/Bettbox/Bettbox "${pkgdir}/usr/bin/Bettbox"
 
-  # 桌面快捷方式
+  # 桌面快捷方式（添加 StartupWMClass 修复窗口图标）
   install -Dm644 "${srcdir}/usr/share/applications/Bettbox.desktop" \
+    "${pkgdir}/usr/share/applications/Bettbox.desktop"
+  sed -i '/^StartupNotify=true/a StartupWMClass=com.appshub.bettbox' \
     "${pkgdir}/usr/share/applications/Bettbox.desktop"
 
   # 图标
