@@ -1,6 +1,7 @@
 # Maintainer: Daniel Korbelainen <officialpand@gmail.com>
+# pkgver and sha256sums are set by CI (.github/workflows/release.yml) from the git tag.
 pkgname=sniptext
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Screen text extractor with OCR and spell correction"
 arch=('any')
@@ -38,7 +39,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('31dd01b566c900ef3fbffec1ee07f2fffe079c9821c7945af31aad1267e943dd')
+sha256sums=('3c863023462586ecfcf5e8d555da0f2c03b5696a4dff81f7323e41e8f4198f8f')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -59,4 +60,7 @@ package() {
 
     # Install desktop entry
     install -Dm644 sniptext.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+    # Install man page
+    install -Dm644 man/sniptext.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
 }
