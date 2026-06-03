@@ -1,12 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=autofilm-git
-pkgver=1.2.5.r36.g71d73d8
+pkgver=1.5.1.r38.g2917380
 pkgrel=1
 pkgdesc="A small project to provide Strm direct-link playback for Emby and Jellyfin servers, recommended for use with MediaWarp."
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/Akimio521/AutoFilm"
 license=('AGPL-3.0-only')
 provides=(${pkgname%-git})
@@ -46,9 +44,11 @@ options=('!strip' '!debug')
 # install=${pkgname}.install
 source=(
     "${pkgname}::git+${url}.git"
+    "alist-client-rs::git+https://github.com/AkimioJR/alist-client-rs.git"
     "${pkgname%-git}.service"
 )
 sha256sums=('SKIP'
+            'SKIP'
             '244dab4d8afffd786c394570bddf8c1e1d8313dd64f8f05977e06c70da9b2c39')
 
 pkgver() {
@@ -62,6 +62,10 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+    git submodule init
+    git config submodule.alist-client-rs.url "$srcdir/alist-client-rs"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -78,7 +82,8 @@ package() {
 cd /usr/share/${pkgname%-git}/
 exec ${pkgname%-git} "\$@"
 EOF
-    install -Dm0644 "${srcdir}/${pkgname}/config/config.yaml.example" "${pkgdir}/usr/share/${pkgname%-git}/config/config.yaml"
+    install -Dm0644 "${srcdir}/${pkgname}"/config/config.example.yaml "${pkgdir}/etc/${pkgname%-git}/config.yaml"
+    install -Dm0644 "${srcdir}/${pkgname}"/config/config.example.old.yaml "${pkgdir}/etc/${pkgname%-git}/config..old.yaml"
     install -dm0644 "${pkgdir}/usr/share/${pkgname%-git}/logs"
     install -Dvm644 "${srcdir}/${pkgname%-git}.service" -t "${pkgdir}/usr/lib/systemd/system/"
 }
