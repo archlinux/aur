@@ -1,0 +1,21 @@
+pkgbase = runner-run-bin
+	pkgdesc = Universal project task runner (prebuilt binary)
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/kjanat/runner
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = runner-run
+	conflicts = runner-run
+	source_x86_64 = https://github.com/kjanat/runner/releases/download/v0.12.0/runner-v0.12.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a4b65651fd2fdd7ab750b76935f715a682d0780508bbd7f527f7a29534f4ed08
+	source_aarch64 = https://github.com/kjanat/runner/releases/download/v0.12.0/runner-v0.12.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 146bf899a24aa8e3fc4b4fe6af07228062f0a9e62d4d502dedb2831a7fda28a0
+	source_armv7h = https://github.com/kjanat/runner/releases/download/v0.12.0/runner-v0.12.0-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = 8c64fcb2e8f66ee32b2dceab9d9c07ba0fe8f34f92c15f3a3c0a9741c25bed35
+
+pkgname = runner-run-bin
