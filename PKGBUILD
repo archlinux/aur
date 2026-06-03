@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=motrix-next-bin
-pkgver=3.9.2
+pkgver=3.9.3
 pkgrel=1
 pkgdesc="A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust"
 arch=('x86_64' 'aarch64')
@@ -17,10 +17,10 @@ depends=(
     libsoup3
     webkit2gtk-4.1
 )
-source=("LICENSE")
+source=("LICENSE-MIT")
 sha256sums=('82e71190970399412c9e40fc3f4e2dc1cb070d56433ee7f25af7a4e67f401f0e')
-sha256sums_x86_64=('650e293798bf6f428134054c27a98da089b68eff92e8796efd770d661797d2cb')
-sha256sums_aarch64=('a911c6392f523c80a6a5b322272d8f2ef8f618cb047bdae895e59697da683ebc')
+sha256sums_x86_64=('ae29062814d1c51365781b4300ff7a8c5304821f31a919e4c0797f9b44d89b2d')
+sha256sums_aarch64=('43dbb28726ee301d289afedfa2c63a206deced60e69541464e38824eebcd0c90')
 source_x86_64=("$pkgname-$pkgver-x86_64.deb::$url/releases/download/v$pkgver/MotrixNext_${pkgver}_amd64.deb")
 source_aarch64=("$pkgname-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/MotrixNext_${pkgver}_arm64.deb")
 
@@ -40,5 +40,5 @@ package() {
     sed -i '/^Categories=/c\Categories=Network;FileTransfer;' \
         "$pkgdir/usr/share/applications/MotrixNext.desktop"
 
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

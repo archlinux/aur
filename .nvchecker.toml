@@ -1,0 +1,4 @@
+[motrix-next-bin]
+source = "git"
+git = "https://github.com/AnInsomniacy/motrix-next.git"
+prefix = "v"
