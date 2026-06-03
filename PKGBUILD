@@ -2,7 +2,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname="modsecurity-crs"
-pkgver=4.26.0
+pkgver=4.27.0
 pkgrel=1
 pkgdesc="OWASP ModSecurity Core Rule Set"
 url="https://github.com/coreruleset/coreruleset"
@@ -12,18 +12,25 @@ depends=("libmodsecurity")
 optdepends=("geoip-database: for coutry-based rules"
             "nginx: HTTP server"
             "angie: HTTP server"
-            "apache: HTTP server")
-source=("https://github.com/coreruleset/coreruleset/archive/refs/tags/v$pkgver.tar.gz"
+            "apache: HTTP server"
+            "python: rules-check.py"
+            "python-msc-pyparser: rules-check.py"
+            "bash: php-dictionary-creator.sh")
+source=("coreruleset-$pkgver.tar.gz::https://github.com/coreruleset/coreruleset/archive/refs/tags/v$pkgver.tar.gz"
+        "https://github.com/coreruleset/coreruleset/releases/download/v$pkgver/coreruleset-$pkgver.tar.gz.asc"
         "https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/modsecurity.conf-recommended"
         "https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/unicode.mapping")
-b2sums=('dd633a0fd98b794e186bbfe17f5d643579fdfd6848f13322a42d4236f7d27bf90e83e30ff7dad173d6218473c6d50a2b803681f62860f74796cdd11fdbcc7c90'
+b2sums=('b547eb3f6b9e78df1fc00a456cd62322a9e3e322eab21dab9b5f7282451f39a8b6299874f0c4ffe46b9419fd4c48074a0b0059b5b735b4a2d971d7d5d4f90a80'
+        'SKIP'
         '378937cb32877e1bb22a2e08389da144be8004233e6d77c917c848ecfba5897cae85bd5c921e5a8eefb14a12b07050e6cd642c485351d25b6e9e8aef9ab84c1f'
         '81760f570952b472dcdd3a5b5a2214136e21d1a1cdf65b6d16c615ef4ac6df056b37eebe9ce1f175aa72c664fa7405b1e6edc57847e64511cc64d969ad4490e7')
+# See https://coreruleset.org/docs/1-getting-started/1-1-crs-installation/#verifying-releases
+validpgpkeys=('36006F0E0BA167832158821138EEACA1AB8A6E72')
 backup=("etc/modsecurity/modsecurity.conf"
         "etc/modsecurity/crs/crs-setup.conf"
         "etc/modsecurity/crs/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf"
         "etc/modsecurity/crs/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf")
-options=("!strip")
+options=(!strip !debug)
 install="modsecurity-crs.install"
 
 prepare(){
