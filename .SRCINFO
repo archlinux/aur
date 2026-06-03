@@ -1,6 +1,6 @@
 pkgbase = bento-bin
 	pkgdesc = Fancy stream processing made operationally mundane
-	pkgver = 1.16.1
+	pkgver = 1.18.0
 	pkgrel = 0
 	url = https://warpstreamlabs.github.io/bento/
 	arch = aarch64
@@ -8,9 +8,9 @@ pkgbase = bento-bin
 	license = MIT
 	provides = bento
 	conflicts = bento
-	source = https://github.com/warpstreamlabs/bento/releases/download/v1.16.1/bento_1.16.1_linux_amd64.tar.gz
-	sha256sums = ddfc779e46d348668fbaf481e59a46d3d4c0c90b7110472ac3446ad59acb8b0b
-	source_aarch64 = https://github.com/warpstreamlabs/bento/releases/download/v1.16.1/bento_1.16.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 86ed053f1c6f598674f531081fa821d08246fff3a762138aebdad8945fe694f3
+	source = https://github.com/warpstreamlabs/bento/releases/download/v1.18.0/bento_1.18.0_linux_amd64.tar.gz
+	sha256sums = cb4dcb766db997ac3f0ae406c6b4f3cbac0507af0eb0190c2cd0a91041d8bf7c
+	source_aarch64 = https://github.com/warpstreamlabs/bento/releases/download/v1.18.0/bento_1.18.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b583fc09de7d417a32fcfb07c9f1833a771e41bd84506dd070f930cc362fb06a
 
 pkgname = bento-bin
