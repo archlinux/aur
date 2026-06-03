@@ -1,0 +1,15 @@
+pkgbase = vuetorrent-bin
+	pkgdesc = Modern web UI for qBittorrent
+	pkgver = 2.34.0
+	pkgrel = 1
+	url = https://github.com/VueTorrent/VueTorrent
+	arch = any
+	license = GPL-3.0-only
+	optdepends = qbittorrent: BitTorrent client with WebUI support
+	optdepends = qbittorrent-nox: Headless BitTorrent client with WebUI support
+	provides = vuetorrent=2.34.0
+	conflicts = vuetorrent
+	source = vuetorrent-2.34.0.zip::https://github.com/VueTorrent/VueTorrent/releases/download/v2.34.0/vuetorrent.zip
+	sha256sums = 22f34c20f6a5704e3b37c3ed73956af7bda5536c10458575c52b0618851b665e
+
+pkgname = vuetorrent-bin
