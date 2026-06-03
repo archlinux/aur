@@ -1,11 +1,13 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Capricornus007 <Capricornus007 at proton dot me>
+# Co-Maintainer: Ted Alff <twa022 at gmail dot com>
+# Co-Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Alexandre Filgueira <alexfilgueira@cinnarch.com>
 # Based on gnome-control-center:
 # Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Jan de Groot <jgc@archlinux.org>
 
 pkgname=cinnamon-control-center-git
-pkgver=4.4.0.r6.g2398dbe
+pkgver=6.7.1.unstable.r0.g5fb7b03
 pkgrel=1
 pkgdesc="The Control Center for Cinnamon"
 arch=('i686' 'x86_64')
@@ -16,7 +18,7 @@ depends=('cinnamon-settings-daemon>=4.4.0.r9.g206ce2d' 'cinnamon-menus' 'colord'
 optdepends=('cinnamon-translations: i18n'
             'gnome-color-manager: for color management tasks'
             'gnome-online-accounts: for the online accounts module')
-makedepends=('git' 'gnome-online-accounts' 'intltool' 'python')
+makedepends=('git' 'gnome-online-accounts' 'python' 'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!emptydirs')
@@ -25,37 +27,19 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}"/${pkgname%-git}
-
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${srcdir}"/${pkgname%-git}
-
-    NOCONFIGURE=1 ./autogen.sh
+    :
 }
 
 build() {
-    cd "${srcdir}"/${pkgname%-git}
-
-    ./configure --prefix=/usr \
-                --sysconfdir=/etc \
-                --localstatedir=/var \
-                --enable-systemd
-
-    #https://bugzilla.gnome.org/show_bug.cgi?id=656229
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
-    make
+    arch-meson "${srcdir}/${pkgname%-git}" build
+    meson compile -C build
 }
 
 package() {
-    cd "${srcdir}"/${pkgname%-git}
-
-    # https://github.com/linuxmint/Cinnamon/pull/7382#issuecomment-374894901
-    # /usr/bin/cinnamon-control-center is not meant for users, it is a development troubleshooting tool.
-    # Just install the shell libs/headers.
-    make -C shell  DESTDIR="${pkgdir}" install-{libcinnamon_control_center_includeHEADERS,libLTLIBRARIES,pkgconfigDATA}
-    make -C panels DESTDIR="${pkgdir}" install
-
+    DESTDIR="${pkgdir}" meson install -C build
     install -d -o root -g 102 -m 750 "${pkgdir}"/usr/share/polkit-1/rules.d
 }

@@ -1,6 +1,6 @@
 pkgbase = cinnamon-control-center-git
 	pkgdesc = The Control Center for Cinnamon
-	pkgver = 4.4.0.r6.g2398dbe
+	pkgver = 6.7.1.unstable.r0.g5fb7b03
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon-control-center
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = cinnamon-control-center-git
 	license = GPL
 	makedepends = git
 	makedepends = gnome-online-accounts
-	makedepends = intltool
 	makedepends = python
+	makedepends = meson
 	depends = cinnamon-settings-daemon>=4.4.0.r9.g206ce2d
 	depends = cinnamon-menus
 	depends = colord
@@ -26,4 +26,3 @@ pkgbase = cinnamon-control-center-git
 	sha256sums = SKIP
 
 pkgname = cinnamon-control-center-git
-
