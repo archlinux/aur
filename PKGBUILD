@@ -3,25 +3,27 @@
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname='alice-vision'
-pkgver=3.3.1
-pkgrel=4
+pkgver=3.3.5
+pkgrel=1
 options=('!debug') # debug package is kinda big -- needs investigation!
 pkgdesc="Photogrammetric Computer Vision Framework which provides 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
 url="https://alicevision.org/"
 license=('MPL-2.0' 'MIT')
 depends=('boost-libs' 'geogram' 'coin-or-clp' 'coin-or-coinutils' 'coin-or-lemon' 'ceres-solver' 'openmesh' 'jemalloc' 'zlib'
-         'alembic' 'popsift' 'assimp' 'onnxruntime' 'cuda' 'openimageio' 'usd')
+         'alembic' 'popsift' 'assimp' 'onnxruntime' 'openimageio' 'usd' 'flann')
 makedepends=('boost' 'eigen' 'freetype2' 'flann' 'cctag' 'onnx' 'swig' 'expat'
              'git' 'cmake' 'doxygen' 'python-sphinx' 'nanoflann' 'metis' 'libe57format')
 optdepends=('apriltag: Recognition of Apriltags'
-			'libe57format: e57 3d imaging format I/O')
+			'libe57format: e57 3d imaging format I/O'
+			'cuda: enables CUDA backend for depthMap computation'
+			'adaptivecpp: enables SYCL backend for depthMap computation')
 source=("git+https://github.com/alicevision/AliceVision.git#tag=v${pkgver}"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "fix-default-ocio-path.patch"
         "alicevision.sh")
 
-sha256sums=('395661cda7ac46e9f694a568a8e7caf42989da64d2e0b206a667881d10ddae71'
+sha256sums=('58bd6e880540e778cec285f472b11830a89c423161b7ca9f65522ca096159334'
             'SKIP'
             '3f02c715f27498ac8982edee3e3af151b0cd2a9cb83da37fef3b7fec1e34b169'
             'b474a12823b1fb0e1613bba0d7bd455f63124aa8c29b3d00df94f0a3c00ab900')
@@ -71,6 +73,9 @@ prepare() {
   sed '/Boost::system/d' -i src/aliceVision/sensorDB/CMakeLists.txt
   sed 's|serialization system thread|serialization thread|g' -i src/CMakeLists.txt
 
+  # fix errors from manually specifying a toolchain
+  sed 's|if (NOT _alicevision_acpp_extra_args|if (FALSE AND NOT _alicevision_acpp_extra_args|g' -i src/CMakeLists.txt
+
   # fix build against newer cuda
   sed 's|\(<< "\\t- clock frequency (kHz):\)|//\1|g' -i src/aliceVision/gpu/gpu.cpp
   sed 's|ALICEVISION_CUDA_CC_LIST_BASIC 50 52 60 61 62 70 72 75 80 86 87 89 90|ALICEVISION_CUDA_CC_LIST_BASIC 75 80 86 87 89 90|g' -i src/CMakeLists.txt
@@ -78,7 +83,8 @@ prepare() {
   # patch build against newer usd
   sed 's|<pxr/usd/usd/zipFile.h>|<pxr/usd/sdf/zipFile.h>|g' -i src/software/export/main_exportUSD.cpp
   sed 's|UsdZipFileWriter|SdfZipFileWriter|g' -i src/software/export/main_exportUSD.cpp
-  sed '/usdShade/a usd_ms' -i src/software/export/CMakeLists.txt
+  sed '/usd/a usd_ms' -i src/software/export/CMakeLists.txt
+  sed '/PUBLIC usd/a usd_ms' -i src/aliceVision/sfmDataIO/CMakeLists.txt
 }
 
 build() {
@@ -92,13 +98,14 @@ build() {
     -DALICEVISION_BUILD_DEPENDENCIES=OFF \
     -DALICEVISION_INSTALL_MESHROOM_PLUGIN=ON \
     -DALICEVISION_BUILD_SWIG_BINDINGS=ON \
+    -DALICEVISION_USE_CUDA=AUTO \
+    -DALICEVISION_USE_SYCL=AUTO \
     -DALICEVISION_BUILD_DOC=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SYSTEM_INCLUDE_PATH='/usr/include/python"${python_version}/' \
     -DCMAKE_SKIP_INSTALL_RPATH=ON
 
   make -C build
-
 }
 
 package() {
