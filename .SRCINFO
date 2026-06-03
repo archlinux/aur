@@ -17,6 +17,6 @@ pkgbase = iso-commander
 	source = isocmd::https://github.com/siyia2/iso-commander/releases/download/v7.1.8/isocmd
 	source = isocmd.1::https://raw.githubusercontent.com/siyia2/iso-commander/refs/heads/main/man/isocmd.1
 	md5sums = 90c543acf24246b37a3dc7cac9e8c31d
-	md5sums = SKIP
+	md5sums = a4d0bcbbe64f996ecaa19d3bbd890bbd
 
 pkgname = iso-commander
