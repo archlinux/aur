@@ -434,7 +434,7 @@ package() {
     info_file=chrome/installer/linux/common/chromium-browser.info
     . $info_file; PACKAGE=chromium
     export $(grep -o '^[A-Z_]*' $info_file)
-    sed -E -e 's/@@([A-Z_]*)@@/\${\1}/g' -e '/<update_contact>/d' $tmpl_file | envsubst
+    sed -E -e 's/@@([A-Z_]*)/\${\1}/g' -e '/<update_contact>/d' $tmpl_file | envsubst
   ) \
   | install -Dvm644 /dev/stdin "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
 
