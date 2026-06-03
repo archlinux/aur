@@ -1,0 +1,4 @@
+[twingate]
+source = "regex"
+url = "https://packages.twingate.com/deb:twingate-latest/versions"
+regex = "(\\d+(?:\\.\\d+)+)"
