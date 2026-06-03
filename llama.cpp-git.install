@@ -1,13 +1,7 @@
 post_upgrade() {
-  systemctl daemon-reload
-
   if systemctl --quiet is-active llama.cpp.service; then
     systemctl restart llama.cpp.service
   fi
-}
-
-post_remove() {
-  systemctl daemon-reload
 }
 
 pre_remove() {
