@@ -1,6 +1,6 @@
 pkgbase = river-bar
 	pkgdesc = A small status bar for the River and niri Wayland compositors
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/vighd/river-bar
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = river-bar
 	optdepends = iputils: network module connectivity check (ping)
 	optdepends = wireless_tools: network module Wi-Fi SSID (iwgetid)
 	optdepends = iwd: network module Wi-Fi SSID alternative (iwctl)
-	source = river-bar-1.2.1.tar.gz::https://github.com/vighd/river-bar/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = e72241bdbf1981fd1561bfc35b67e3c4a2eab79cd9d0e9484c0ddf3f730f84ad
+	source = river-bar-1.3.0.tar.gz::https://github.com/vighd/river-bar/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 59bf6748dc6c8d0d03487b2f402feca8f6c8a8700ae4180f7d1da57cd1f93cc0
 
 pkgname = river-bar
