@@ -1,0 +1,21 @@
+pkgbase = python-aws-sdk-signers
+	pkgdesc = Standalone HTTP Request Signers for Amazon Web Services.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/aws-sdk-signers
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-freezegun
+	checkdepends = python-smithy-aws-event-stream
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	source = aws-sdk-signers::git+https://github.com/smithy-lang/smithy-python.git#tag=aws-sdk-signers/v0.3.0
+	sha256sums = 68ebb6567862fffa9c31e5d5494064086b046967dd9f2ce5d2cada816b3679c6
+
+pkgname = python-aws-sdk-signers
