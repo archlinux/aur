@@ -1,14 +1,14 @@
 pkgbase = sbsondemand
 	pkgdesc = Unofficial SBS on Demand desktop app.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/sbsondemand/
 	arch = x86_64
 	arch = arm7h
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
-	depends = electron-castlab-bin
+	depends = libelectron-electron-meta
 	depends = libelectron
 	depends = nss
 	depends = gtk3
