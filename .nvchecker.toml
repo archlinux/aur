@@ -1,0 +1,4 @@
+[rmapi]
+source = "git"
+git = "https://github.com/ddvk/rmapi.git"
+prefix = "v"
