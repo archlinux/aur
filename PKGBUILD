@@ -11,7 +11,7 @@ license=('Unlicense')
 depends=('gcc-libs')
 makedepends=('gcc' 'make' 'unzip')
 source=("$pkgname-$pkgver.zip::https://codeberg.org/quik/just_programs/archive/main:OutpuText.zip")
-sha256sums=('dc222082a6712febae1ae040ef060fc536904583b2348687834ed2ca8a3cf3f5')
+sha256sums=('e61df94e1729912df51afff4efb7ec91744bb0fcc72672864028897e49a6cf8c')
 
 build() {
   cd "$srcdir/just_programs/"
