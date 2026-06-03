@@ -1,5 +1,5 @@
 pkgbase = dehelper-bin
-	pkgdesc = 德语助手 (Eudic German Helper) by EUSOFT — repackaged from the official .deb
+	pkgdesc = 德语助手 (Eudic German Helper) by EUSOFT — self-contained repackage of the official .deb (bundles its own Qt, no compilation)
 	pkgver = 13.5.2
 	pkgrel = 1
 	url = https://www.eudic.net
