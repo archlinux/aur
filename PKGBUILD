@@ -1,7 +1,7 @@
 # Maintainer: Kyrillos Kamal <kyrillos@example.com>
 pkgname=netmon-gui
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Modern network monitor for Arch Linux with PySide6 GUI - speed test, bandwidth, connections, quota tracking"
 arch=('any')
 url="https://github.com/KyrilosKamal/NetMon"
@@ -35,9 +35,9 @@ source=(
     "netmon-gui-128.png"
     "netmon-gui-256.png"
 )
-sha256sums=('922a818cbdd81ab05e20aa90ab62dad7089a301a1db327a146f31a86a4288a10'
-            'bb8dbd776b5502e7648067b637797f579a12557ad55b81b4ca235e94a6a4ea2d'
-            'fe80d4007ef98553bde7a68b3405ff81aa7279aea083f4d8bfd070824b5a2015'
+sha256sums=('2098819184fe815ce1d73208cb3790b8726d319a77af9a6ed90bf582ade51517'
+            'f911d1979855525ce31098090673cb03517be30f5e7bcf79138cafa9af70ae06'
+            '25dd2de83ce2bd4a0f2cc08152d374b2533e8a65416f7644a0037c073517c954'
             'fdfab3a0a58b622d42c232c0a32ed7d7c3acbfb43de78ff1893a6b2340a41da8'
             'f3c6cf08023e22405a6d15daca4b8d4cdbe0d5da947173aebeeb2bf646133c95'
             '5829242709676430a1763e3f6b602ce936e684f1ace752ba6178f3cdd7eeb4f9'
