@@ -11,7 +11,7 @@ pkgbase = attack-shark-x11-electron
 	depends = libusb
 	options = !strip
 	source = -.tar.gz::https://github.com/dressedinblack5/attack-shark-x11-electron/archive/refs/tags/1.2.1.tar.gz
-	source = attack-shark-x11-driver.desktop
+	source = attack-shark-x11-electron.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 
