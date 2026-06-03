@@ -1,0 +1,22 @@
+pkgbase = progit-bin
+	pkgdesc = Blazing-fast terminal issue tracker with Kanban, Forgejo/GitLab sync, and plugin marketplace
+	pkgver = 0.8.2_beta
+	pkgrel = 1
+	url = https://progit.sovereign-society.org
+	arch = x86_64
+	license = LCL-1.0
+	depends = gcc-libs
+	depends = openssl
+	optdepends = minisign: for signature verification
+	provides = progit
+	conflicts = progit
+	source = https://git.sovereign-society.org/ProGit/progit/releases/download/v0.8.2-beta/prog-v0.8.2-beta-x86_64-unknown-linux-gnu.tar.gz
+	source = https://git.sovereign-society.org/ProGit/progit/releases/download/v0.8.2-beta/prog-v0.8.2-beta-x86_64-unknown-linux-gnu.tar.gz.minisig
+	source = https://git.sovereign-society.org/ProGit/progit/releases/download/v0.8.2-beta/SHA256SUMS
+	source = https://git.sovereign-society.org/ProGit/progit/releases/download/v0.8.2-beta/SHA256SUMS.minisig
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = progit-bin
