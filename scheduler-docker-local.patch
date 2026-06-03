@@ -1,0 +1,29 @@
+--- a/plugins/scheduler-docker-local/functions.go	2026-06-03 16:35:03.625002434 +0200
++++ b/plugins/scheduler-docker-local/functions.go	2026-06-03 16:35:24.245947793 +0200
+@@ -17,7 +17,7 @@
+ func deleteCrontab() error {
+ 	result, err := common.CallExecCommand(common.ExecCommandInput{
+ 		Command: "crontab",
+-		Args:    []string{"-l", "-u", "dokku"},
++		Args:    []string{"-l"},
+ 	})
+ 	if err != nil || result.ExitCode != 0 {
+ 		return nil
+@@ -25,7 +25,7 @@
+
+ 	result, err = common.CallExecCommand(common.ExecCommandInput{
+ 		Command: "crontab",
+-		Args:    []string{"-r", "-u", "dokku"},
++		Args:    []string{"-r"},
+ 	})
+ 	if err != nil {
+ 		return fmt.Errorf("Unable to remove schedule file: %w", err)
+@@ -169,7 +169,7 @@
+
+ 	result, err := common.CallExecCommand(common.ExecCommandInput{
+ 		Command: "crontab",
+-		Args:    []string{"-u", "dokku", tmpFile.Name()},
++		Args:    []string{tmpFile.Name()},
+ 	})
+ 	if err != nil {
+ 		return fmt.Errorf("Unable to update schedule file: %w", err)

@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=dokku
-pkgver=0.38.15
+pkgver=0.38.17
 pkgrel=1
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('x86_64')
@@ -23,6 +23,7 @@ depends=(
   'herokuish'
   'inetutils'
   'jq'
+  'logrotate'
   'man-db'
   'netrc'
   'net-tools'
@@ -39,10 +40,12 @@ depends=(
 )
 source=("${url}/archive/v${pkgver}.zip"
         "${pkgname}.install"
-        "fix_go_work_missing_builds.patch")
-sha256sums=('4af1bfa552b4d30a3d5b9be711f380a3f12cc8d4c1225aa4b2062b64a727358d'
-            'dba725cb3d0009b6fb1134a53ab566c2125627c0aa8c5bee931beb650c5ed633'
-            '21edd6f85494f3ab15e0262bae7d2bf7add81875374c3420dbeb3ff1acebcde8')
+        "fix_go_work_missing_builds.patch"
+        "scheduler-docker-local.patch")
+sha256sums=('4a5eeb7f9489fbf2869379daf47561eba74ad0b9ec44d83458715cfc4b08a784'
+            'd614323822b83612688a1192daedb3f7bf69f0d1a0e1df08411f5c32e4adde05'
+            '21edd6f85494f3ab15e0262bae7d2bf7add81875374c3420dbeb3ff1acebcde8'
+            '88466a2d07d7ccbef6a32848dbe280e1be0636f8c4ed7977f1211f08f1258a3a')
 install="${pkgname}.install"
 
 build() {
@@ -57,6 +60,9 @@ build() {
 
   # Fix go.work missing builds issue
   patch -p1 -i "$srcdir/fix_go_work_missing_builds.patch"
+
+  # Fix scheduler-docker-local plugin
+  patch -p1 -i "$srcdir/scheduler-docker-local.patch"
 
   # Add .core and build go plugins
   for plugin in plugins/*; do
