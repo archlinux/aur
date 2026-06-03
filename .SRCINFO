@@ -1,6 +1,6 @@
 pkgbase = league-of-gays
 	pkgdesc = League of Gays Launcher — private MOBA client launcher (self-hosted)
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://lol.meisgaming.net
 	changelog = CHANGELOG.md
@@ -11,7 +11,7 @@ pkgbase = league-of-gays
 	depends = electron>=42
 	provides = league-of-gays
 	conflicts = league-of-gays
-	source = league-of-gays-src-0.2.1.tar.gz::https://lol.meisgaming.net/launcher/league-of-gays-src-0.2.1.tar.gz
+	source = league-of-gays-src-0.3.0.tar.gz::https://lol.meisgaming.net/launcher/league-of-gays-src-0.3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = league-of-gays
