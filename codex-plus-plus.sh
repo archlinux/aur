@@ -128,6 +128,13 @@ enable_injection() {
   stop_running_launchers
   stop_running_codex_apps
 
+  apply_injection
+}
+
+apply_injection() {
+  require_root
+  ensure_state_dir
+
   if [[ ! -x "${INJECTED_BIN}" ]]; then
     echo "Injected launcher not found: ${INJECTED_BIN}" >&2
     exit 1
@@ -136,7 +143,7 @@ enable_injection() {
   backup_current_upstream
   ln -sfnT "${INJECTED_BIN}" "${UPSTREAM_BIN}"
   save_state enabled
-  echo "Codex++ injection enabled."
+  echo "Codex++ injection applied."
 }
 
 disable_injection() {
@@ -181,7 +188,7 @@ reapply_if_enabled() {
     exit 0
   fi
 
-  enable_injection
+  apply_injection
 }
 
 run_injected() {
@@ -195,6 +202,7 @@ usage() {
   cat <<'EOF'
 Usage:
   codex-plus-plus enable
+  codex-plus-plus apply
   codex-plus-plus disable
   codex-plus-plus status
   codex-plus-plus stop
@@ -215,6 +223,9 @@ main() {
   case "${command}" in
     enable)
       enable_injection
+      ;;
+    apply)
+      apply_injection
       ;;
     disable)
       disable_injection

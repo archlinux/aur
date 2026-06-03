@@ -1,6 +1,6 @@
 post_install() {
-  echo "Enabling Codex++ injection for openai-codex-desktop..."
-  /usr/bin/codex-plus-plus enable
+  echo "Applying Codex++ injection for openai-codex-desktop..."
+  /usr/bin/codex-plus-plus apply
 }
 
 post_upgrade() {
