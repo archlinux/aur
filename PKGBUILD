@@ -28,15 +28,17 @@ package() {
   install -Dm755 _build/default/bin/main.exe "$pkgdir/usr/bin/camlwm"
   install -Dm644 camlwm.desktop "$pkgdir/usr/share/xsessions/camlwm.desktop"
 
-  # Install libraries to the system findlib path so ocamlfind can resolve
-  # camlwm.core/camlwm.wm when recompiling user configs at runtime.
-  local _libdir="$pkgdir/usr/lib/ocaml/camlwm"
+  # Install libraries so ocamlfind can resolve camlwm.core/camlwm.wm when
+  # recompiling user configs at runtime. Path is $(dirname binary)/../lib/camlwm
+  # which recompile.ml auto-discovers via OCAMLPATH.
+  local _libdir="$pkgdir/usr/lib/camlwm"
   install -d "$_libdir"
   install -m644 _build/install/default/lib/camlwm/META "$_libdir/"
   for sub in core wm xlib; do
     install -d "$_libdir/$sub"
-    install -m644 _build/install/default/lib/camlwm/$sub/*.{cmxa,cmi,cmx,a} \
-      "$_libdir/$sub/" 2>/dev/null || true
+    find _build/install/default/lib/camlwm/$sub/ \
+      \( -name "*.cmxa" -o -name "*.cmi" -o -name "*.cmx" -o -name "*.a" \) \
+      -exec install -m644 {} "$_libdir/$sub/" \;
   done
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
