@@ -1,18 +1,18 @@
 # Maintainer: AltoXorg <machinademoniko@gmail.com>
 
 _reponame=Ghostship
-_torch_commit=963a1f6830f1080a33f581c8b935c49060899214
-_lus_commit=8c55f607f2249f3ac696fc0f7277553fe3ce75a6
+_torch_commit=4e021e10381fe5fabc8dd90b92a982aebe3c7934
+_lus_commit=e9c1ef943d932ab723509ec96b37e9c35457c5d2
 _sdl_gcdb_commit=07a5c6b80262a208200573186eb5d5ac2518e89d  # This needs to be updated on every package release
 
 pkgname=ghostship
-pkgver=1.0.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A yet another definitive port of Super Mario 64 coming out of Harbour Masters"
 license=("MIT")
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://github.com/HarbourMasters/${_reponame}"
-depends=("sdl2" "zenity" "libzip" "tinyxml2" "fmt" "spdlog")
+depends=("sdl2" "libzip" "tinyxml2" "fmt" "spdlog")
 makedepends=("git" "cmake" "ninja" "nlohmann-json")  # nlohmann-json is set as required on LUS's CMakeLists.txt but not dynamic linked
 install="ghostship.install"
 source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_reponame}/archive/refs/tags/${pkgver}.tar.gz"
@@ -21,9 +21,9 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "https://github.com/mdqinc/SDL_GameControllerDB/raw/${_sdl_gcdb_commit}/gamecontrollerdb.txt"
         "ghostship-fix-mtxf_copy-incorrect-values.patch"
         "ghostship.desktop")
-sha256sums=('9e44f10eb9bb3c7865b7a237e8ef506852c180490690640d51b23c4fa8fa2ea1'
-            'c9a7ab62ddac02afd455c77fb46a4e74321f00ee31248ca3f567afcfed731c34'
-            '0828b92327156da8683615bb2490c93f1acb141fcf6934b55140b4d801ca66f4'
+sha256sums=('4eedff54318070346ba060fb97584875018f503fee6ea853aba4b17cc12ae956'
+            'd128c2c599fdf5017afa2838d911522c02f09e3da98563613e4df81e6fedf21d'
+            '36af8a16d09f6be293bbda837b69f807854f8c4209dc7bc12b6c83ca3afbce2f'
             'f7309161d315a520392b5e4cf7bb409ad18b613807a9b3266a33664e4de02d3c'
             '938879042af21330e36476fb88cd383e85c1b7e19d95cb74957fd1266ef83854'
             '230c28306ca1bd47976d3fb69d2cb50078b59e7ead713f187d804cd009b870e8')
@@ -80,15 +80,20 @@ package() {
   install -dm755 "${pkgdir}/${SHIP_PREFIX}" "${pkgdir}/usr/bin/"
 
   # Main executable & assets to /opt
-  cp -r build/assets "${pkgdir}/${SHIP_PREFIX}"
+  cp -r build/{assets,.tcc} "${pkgdir}/${SHIP_PREFIX}"
   install -m755 build/Ghostship "${pkgdir}/${SHIP_PREFIX}"
   install -m644 -t "${pkgdir}/${SHIP_PREFIX}" \
+        libultraship/libtcc.so \
         build/config.yml \
         build/ghostship.o2r \
         "${srcdir}/gamecontrollerdb.txt"
 
-  # Link executable to /usr/bin, add to desktop entry & icons
-  ln -s "${SHIP_PREFIX}/Ghostship" "${pkgdir}/usr/bin/Ghostship"
+  cat > "${pkgdir}/usr/bin/Ghostship" <<RUNSCRIPT
+#!/bin/sh
+export LD_LIBRARY_PATH="${SHIP_PREFIX}"
+exec "${SHIP_PREFIX}/Ghostship"
+RUNSCRIPT
+  chmod +x "${pkgdir}/usr/bin/Ghostship"
   install -Dm644 "${srcdir}/ghostship.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 logo.png "${pkgdir}/usr/share/pixmaps/ghostship.png"
 
