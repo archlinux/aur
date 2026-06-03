@@ -1,0 +1,4 @@
+[try-rs]
+source = "git"
+git = "https://github.com/tassiovirginio/try-rs.git"
+prefix = "v"
