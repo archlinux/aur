@@ -13,7 +13,7 @@ depends=(adacurses
          ada_language_server
          ada-libfswatch
          adasat
-         adasockets
+#         adasockets
          ada_spawn
          ada-web-server
          ahven
@@ -38,6 +38,8 @@ depends=(adacurses
          gnatcoverage-bin
          gnatdoc
          gnatstudio
+         gnatstudio-appimage
+         gnatstudio-bin
          gnatsymbolize
          gprbuild
          gprbuild-toolbox
@@ -58,5 +60,5 @@ depends=(adacurses
          sdlada
          spark2014-bin
          templates_parser
-         vulkada
+ #        vulkada
          xmlada)
