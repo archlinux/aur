@@ -2,7 +2,7 @@
 # Contributor: shinya-saita <>
 pkgname='bokuchi'
 pkgver='0.8.5'
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, cross-platform Markdown editor"
 arch=('x86_64')
 url="https://github.com/Bokuchi-Editor/bokuchi"
@@ -18,6 +18,8 @@ prepare() {
 
     rm -rf src-tauri/target
 
+    # Upstream v0.8.5 tarball still declares 0.8.4 in app metadata.
+    # Patch metadata to pkgver so Tauri builds Bokuchi_0.8.5_* artifacts.
     jq --arg version "$pkgver" '.version = $version' package.json > package.json.tmp
     mv package.json.tmp package.json
 
