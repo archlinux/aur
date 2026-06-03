@@ -1,7 +1,7 @@
 pkgbase = go-music-dl-bin
 	pkgdesc = 一个基于 Go 语言的全网音乐搜索与下载工具。支持 CLI 命令行与 Web 服务双模式，内置网易云、QQ、酷狗、Bilibili、汽水音乐等 10+ 个主流平台，支持多源并发搜索与无损音质解析.(Prebuilt version)
 	pkgver = 1.0.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://music.zkkp.nyc.mn/
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -11,6 +11,6 @@ pkgbase = go-music-dl-bin
 	provides = go-music-dl=1.0.30
 	conflicts = go-music-dl
 	source = go-music-dl-1.0.30.rpm::https://github.com/guohuiyuan/go-music-dl/releases/download/v1.0.30/music-dl-desktop-go-linux-amd64.rpm
-	sha256sums = 05b66b48f4a8176fa0110c4d86c51f0b0d313ba44816952dcd6fd8ba68e9cb21
+	sha256sums = 9564a14f3336665c9a8b3b0f13fa64693e245b5ffe4bb4cd1fdb737115b178a0
 
 pkgname = go-music-dl-bin
