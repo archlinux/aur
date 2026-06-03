@@ -1,0 +1,12 @@
+pkgbase = dgrep
+	pkgdesc = A small recursive grep-like tool written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/davide-leva/dgrep
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = dgrep-0.1.0.tar.gz::https://github.com/davide-leva/dgrep/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 097499e4fa65eb7e4fb478913ecd59401cf0273454e3e42e091548586366a5a8
+
+pkgname = dgrep
