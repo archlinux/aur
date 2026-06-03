@@ -2,11 +2,11 @@
 
 pkgname='zoi'
 _tag="Prod-Release-$pkgver"
-pkgver=1.15.0
+pkgver=1.16.1
 pkgrel=1
-pkgdesc="Universal Package Manager & Environment Setup Tool"
+pkgdesc="Advanced Package Manager & Environment Orchestrator"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi"
+url="https://gitlab.com/zillowe/zillwen/zusty/zoi"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
@@ -21,7 +21,7 @@ optdepends=(
 
 source=("$url/-/archive/$_tag/Zoi-Prod-Release-$pkgver.tar.gz"
   "LICENSE::$url/-/raw/main/LICENSE")
-sha512sums=('5542766c9c83981146a5947eba15c1686f557393eca35653e6920676a6c073525a19ce902405b8a1bae15a87dc58cba7688337977967e4157f7c09167b800761'
+sha512sums=('df70f8496347ec135e2e1b3f0da5a8a0ec4942958a8955883a6753bcd1cc13e0f865209926d1f62f25652e2eef37b12f9b26af28165d8cb897b23b93575b098d'
   'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
 
 build() {

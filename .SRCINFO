@@ -1,8 +1,8 @@
 pkgbase = zoi
-	pkgdesc = Universal Package Manager & Environment Setup Tool
-	pkgver = 1.15.0
+	pkgdesc = Advanced Package Manager & Environment Orchestrator
+	pkgver = 1.16.1
 	pkgrel = 1
-	url = https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi
+	url = https://gitlab.com/zillowe/zillwen/zusty/zoi
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
@@ -15,9 +15,9 @@ pkgbase = zoi
 	optdepends = less: for viewing files
 	provides = zoi
 	conflicts = zoi
-	source = https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi/-/archive/Prod-Release-/Zoi-Prod-Release-1.15.0.tar.gz
-	source = LICENSE::https://gitlab.com/Zillowe/Zillwen/Zusty/Zoi/-/raw/main/LICENSE
-	sha512sums = 5542766c9c83981146a5947eba15c1686f557393eca35653e6920676a6c073525a19ce902405b8a1bae15a87dc58cba7688337977967e4157f7c09167b800761
+	source = https://gitlab.com/zillowe/zillwen/zusty/zoi/-/archive/Prod-Release-/Zoi-Prod-Release-1.16.1.tar.gz
+	source = LICENSE::https://gitlab.com/zillowe/zillwen/zusty/zoi/-/raw/main/LICENSE
+	sha512sums = df70f8496347ec135e2e1b3f0da5a8a0ec4942958a8955883a6753bcd1cc13e0f865209926d1f62f25652e2eef37b12f9b26af28165d8cb897b23b93575b098d
 	sha512sums = e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea
 
 pkgname = zoi
