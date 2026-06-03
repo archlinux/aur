@@ -1,0 +1,22 @@
+pkgbase = gitlab-inbox-bin
+	pkgdesc = A glanceable desktop inbox for GitLab things that need your reply (via glab)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/KannarFr/glab-desktop-ui
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = librsvg
+	depends = libayatana-appindicator
+	depends = glab
+	depends = hicolor-icon-theme
+	optdepends = xdg-utils: open items in your default browser
+	optdepends = mako: Wayland notification daemon for click-to-open notifications (or dunst/swaync)
+	provides = gitlab-inbox
+	conflicts = gitlab-inbox
+	source = gitlab-inbox-0.1.0-linux-x86_64.tar.gz::https://github.com/KannarFr/glab-desktop-ui/releases/download/v0.1.0/gitlab-inbox-0.1.0-linux-x86_64.tar.gz
+	sha256sums = 42ff320603fde4f2d51043147b2019276a4dad0d55c2ae8953ddfb631605fa4a
+
+pkgname = gitlab-inbox-bin
