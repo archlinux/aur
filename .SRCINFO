@@ -1,15 +1,17 @@
 pkgbase = pingtop
-	pkgdesc = Ping multiple servers and show results in a top-like terminal UI.
-	pkgver = 0.4.0
+	pkgdesc = htop-style live dashboard for ping
+	pkgver = 0.7.2
 	pkgrel = 1
-	url = https://pypi.org/project/pingtop/
-	arch = any
-	license = MIT
-	makedepends = python-setuptools
-	depends = python
-	depends = python-click
-	depends = python-panwid
-	source = https://github.com/laixintao/pingtop/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 5bc1923d3fc9b53d56681a45ff403550bb893b68508c63760f8636f3e32387cf
-
+	url = https://github.com/guerrieroriccardo/pingtop
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	conflicts = pingtop-bin
+	provides = pingtop
+	
+	source = https://github.com/guerrieroriccardo/pingtop/releases/download/v0.7.2/pingtop-0.7.2.tar.gz
+	sha256sums = 3bcba9d7831224242fe251f6800b5671ad6e4612a898f542a39148ea6d232b75
+	
 pkgname = pingtop
