@@ -49,10 +49,9 @@ source=("${url}.git")
 sha256sums=('SKIP')
 
 prepare() {
-  # makepkg downloads git sources as bundles, clone into a working directory
-  if [[ ! -d "${srcdir}/${_pkgreal}" ]]; then
-    git clone --branch main "${url}.git" "${srcdir}/${_pkgreal}"
-  fi
+  mkdir -p "${srcdir}"
+  rm -rf "${srcdir:?}/${_pkgreal}"
+  git clone --depth 1 --branch main "${url}.git" "${srcdir}/${_pkgreal}"
 }
 
 build() {
