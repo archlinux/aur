@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+exec /opt/js8call-bin/JS8Call.AppImage "$@"

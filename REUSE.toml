@@ -1,0 +1,14 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    ".gitignore",
+    "README.md",
+    "js8call",
+    "js8call.desktop",
+    "update.sh",
+]
+SPDX-FileCopyrightText = "2026 Rico Beier-Grunwald"
+SPDX-License-Identifier = "0BSD"

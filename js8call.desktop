@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=JS8Call
+Comment=Weak-signal HF messaging for amateur radio
+Exec=js8call
+Icon=js8call
+Terminal=false
+Categories=Network;HamRadio;
+StartupNotify=true

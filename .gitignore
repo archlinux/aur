@@ -1,0 +1,6 @@
+# makepkg build products and remote source downloads
+src/
+pkg/
+*.pkg.tar.*
+*.AppImage
+js8call_icon-*.png
