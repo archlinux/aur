@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 4.9.1 ➙ 5.4.0
-              : 2026-05-30 ➙ 2026-06-03
+ Tags         : 5.1.0 ➙ 5.4.1
+              : 2026-05-31 ➙ 2026-06-03
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-06-03   : 5.4.1
+              - **5.4.1**
+            
+                * Some code clean ups
+              - update Changelog
 
  2026-06-03   : 5.4.0
               - **5.4.0**
@@ -48,26 +54,4 @@
                 * Improve way shadow "install.conf" is created. If file exists and is correct then
                   dont write it again.
  2026-05-30   ⋯
-              - update Changelog
-
- 2026-05-30   : 4.9.1
-              - **4.9.1**
-            
-                * Fix broken efi tool installin "uki" layout.
-            
-                  efi tool installs only work in bls layout. kernel-install (as of systemd version 260)
-                  provides no clear way to specify the layout at run time. We work around this for
-                  (non-kernel) efi tools by using a "shadow" kernel-install config with bls layout.
-            
-                  Please reinstall any efi tools (e.g. pacman -Syu edk2-shell) to ensure latest version
-                  is installed in $BOOT.
-            
-                * Efi tool ALPM hook now triggers on sd-boot.
-            
-                * Set default layout to "uki" in /etc/kernel/install.conf
-            
-                  May need to be changed manually.
-            
-                * Some code tidy ups.
- 2026-05-29   ⋯
               - update Changelog
