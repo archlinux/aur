@@ -1,6 +1,6 @@
 pkgbase = caddy-custom
 	pkgdesc = Caddy web server with plugins
-	pkgver = 2.11.3
+	pkgver = 2.11.4
 	pkgrel = 1
 	url = https://github.com/caddyserver/caddy
 	arch = x86_64
@@ -17,12 +17,12 @@ pkgbase = caddy-custom
 	source = plugin-list
 	source = caddy.sysusers
 	source = caddy.tmpfiles
-	source = caddy-2.11.3.tar.gz::https://github.com/caddyserver/caddy/archive/refs/tags/v2.11.3.tar.gz
-	source = caddy-dist-2.11.3.tar.gz::https://github.com/caddyserver/dist/archive/refs/tags/v2.11.3.tar.gz
+	source = caddy-2.11.4.tar.gz::https://github.com/caddyserver/caddy/archive/refs/tags/v2.11.4.tar.gz
+	source = caddy-dist-2.11.4.tar.gz::https://github.com/caddyserver/dist/archive/refs/tags/v2.11.4.tar.gz
 	sha256sums = SKIP
 	sha256sums = 1dbef6bd4a096fcbab353a6bec0f6e34f8b6d2470e422c380642c2bd8ff83c20
 	sha256sums = c3119c98b285c4bf10c0581fba09b87df3999e0e5a335d94f074eae454a99e70
-	sha256sums = de751e6b7ca769f0dc1f9b0a1949c7b149c115efde3aaf53182da2bf6a94c825
-	sha256sums = d6f7c2b148aacfc9288c135d2bdc65abfe37db84f62f5ace2c8f2ed253af6a29
+	sha256sums = 2c3d02078286a6282cdb4d1d8744077788d556659dac0b64d8ed5886a7e5aeb9
+	sha256sums = be6a69751f8b16f1b0f05016fc12bd6ff374c3451941d109823ff87e115bcdf1
 
 pkgname = caddy-custom
