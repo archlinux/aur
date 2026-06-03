@@ -1,5 +1,5 @@
 pkgbase = aero-sync-git
-	pkgdesc = Zero-Wattage Sovereign RGB Screen Synchronization for ASUS TUF/ROG Laptops
+	pkgdesc = Low-latency Wayland screen-to-keyboard RGB synchronization for ASUS Aura laptops
 	pkgver = 1.1.0.r7.gd9f4532
 	pkgrel = 1
 	url = https://github.com/sathwik4444/aerosync

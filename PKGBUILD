@@ -2,7 +2,7 @@
 pkgname=aero-sync-git
 pkgver=1.1.0.r7.gd9f4532
 pkgrel=1
-pkgdesc="Zero-Wattage Sovereign RGB Screen Synchronization for ASUS TUF/ROG Laptops"
+pkgdesc="Low-latency Wayland screen-to-keyboard RGB synchronization for ASUS Aura laptops"
 arch=('x86_64')
 url="https://github.com/sathwik4444/aerosync"
 license=('MIT')
