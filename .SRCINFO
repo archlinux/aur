@@ -1,0 +1,19 @@
+pkgbase = qt6-mpvqml-git
+	pkgdesc = Bridge between MPV (libmpv + MpvQt) and Qt6 QML
+	pkgver = 1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/alexindigo/mpvqml
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = mpv
+	depends = mpvqt
+	provides = qt6-mpvqml
+	conflicts = qt6-mpvqml
+	source = qt6-mpvqml-git::git+https://github.com/alexindigo/mpvqml.git
+	sha256sums = SKIP
+
+pkgname = qt6-mpvqml-git
