@@ -1,15 +1,12 @@
 # Maintainer: Brandon Doornbos <b.doornbos at pm dot me>
+# Co-maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait-bin
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
-pkgdesc="Powerful, fast and elegant task / TODO manager (GUI & TUI, CalDAV & local). Cfait is a powerful yet simple tasks / TODO CalDAV client. (TUI and GUI)"
+pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local)"
 arch=('x86_64')
 url="https://codeberg.org/trougnouf/cfait"
 license=('GPL-3.0-or-later')
-conflicts=('cfait')
-options=('!strip' '!emptydirs')
-source_x86_64=("https://github.com/trougnouf/cfait/releases/download/v1.0.4/cfait_1.0.4-1_amd64.deb")
-sha256sums_x86_64=('3b631c84cdaa2f183fb97b419014f56195e0af5cb3386fb27faaf7d15b67cae5')
 depends=(
     'gcc-libs'
     'glibc'
@@ -18,6 +15,7 @@ depends=(
     'vulkan-icd-loader'       # Required by the GUI to load Vulkan drivers for rendering
     'org.freedesktop.secrets' # Required to store the CalDAV password
 )
+# Optional dependencies for the GUI and specific features
 optdepends=(
     'vulkan-driver: Required by the GUI for hardware-accelerated rendering'
     'wayland: Required by the GUI for Wayland session support'
@@ -27,8 +25,21 @@ optdepends=(
     'libxrandr: Required by the GUI for X11 monitor layout support'
     'xdg-desktop-portal: Required by the GUI for the file picker (export/import)'
 )
+
+options=('!strip' '!emptydirs')
+source=("https://codeberg.org/trougnouf/cfait/releases/download/v1.0.5/cfait-linux-v1.0.5.tar.xz")
+sha256sums=('c24f38e3af9ee9d7beec09a215f3137a25d6d8d32bdf2aa901da90461fe4dfb0')
+replaces=('rustycal' 'rustache' 'fairouille')
 provides=('cfait' 'cfait-gui')
+conflicts=('cfait')
 
 package() {
-    tar -xJ -f data.tar.xz -C "${pkgdir}"
+    cd "cfait-linux-${pkgver}"
+
+    install -Dm755 cfait -t "${pkgdir}/usr/bin/"
+    install -Dm755 cfait-gui -t "${pkgdir}/usr/bin/"
+    install -Dm644 cfait.desktop -t "${pkgdir}/usr/share/applications/"
+    install -Dm644 cfait.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
