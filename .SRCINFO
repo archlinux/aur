@@ -10,6 +10,6 @@ pkgbase = graf-bin
 	conflicts = graf
 	conflicts = graf-git
 	source = graf-0.5.48-alpha.2-x86_64::https://git.sovereign-society.org/markus/graf/releases/download/v0.5.48-alpha.2/graf-0.5.48-alpha.2-x86_64
-	sha256sums = SKIP
+	sha256sums = 74a491499bcae0e9228ed0b7e5f070c7c967c4a5ad547ac334613e3ea401227b
 
 pkgname = graf-bin

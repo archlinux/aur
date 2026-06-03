@@ -19,7 +19,7 @@ _binary_asset='graf-0.5.48-alpha.2-x86_64'
 _binary_name='graf-0.5.48-alpha.2-x86_64'
 
 source=("${_binary_name}::${_upstream_repo}/releases/download/${_upstream_tag}/${_binary_asset}")
-sha256sums=('SKIP')
+sha256sums=('74a491499bcae0e9228ed0b7e5f070c7c967c4a5ad547ac334613e3ea401227b')
 
 package() {
     local source_path="${srcdir}/${_binary_name}"
