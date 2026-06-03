@@ -1,6 +1,6 @@
 pkgbase = media-hoarder-bin
 	pkgdesc = The media frontend for data hoarders and movie lovers.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/theMK2k/Media-Hoarder
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = media-hoarder-bin
 	depends = electron40
 	depends = mediainfo
 	depends = vlc
-	provides = media-hoarder=1.5.2
+	provides = media-hoarder=1.5.3
 	conflicts = media-hoarder
-	source = media-hoarder-1.5.2.rpm::https://github.com/theMK2k/Media-Hoarder/releases/download/v1.5.2/media-hoarder-1.5.2-linux-x64.rpm
-	source = LICENSE-1.5.2::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v1.5.2/LICENSE.md
+	source = media-hoarder-1.5.3.rpm::https://github.com/theMK2k/Media-Hoarder/releases/download/v1.5.3/media-hoarder-1.5.3-linux-x64.rpm
+	source = LICENSE-1.5.3::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v1.5.3/LICENSE.md
 	source = media-hoarder.sh
-	sha256sums = b598c78557028ce50f6e1b2f2ace089902c69e3c03d7967ba4fd8c82df742ec4
+	sha256sums = 311936f1da000ec9ffb140f5cb0533bcc1d6fd804efaf86a7dc469f7362d44a4
 	sha256sums = 3c67fce0428a3d133bb589cd1db329789ec235049af1412511f89420c99ae9a6
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
