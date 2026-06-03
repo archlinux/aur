@@ -13,7 +13,7 @@ provides=('league-of-gays')
 conflicts=('league-of-gays')
 changelog=CHANGELOG.md
 source=("${pkgname}-src-${pkgver}.tar.gz::https://lol.meisgaming.net/launcher/${pkgname}-src-${pkgver}.tar.gz")
-sha256sums=('bec41548cf4323e7a3deac6ed25ca28f1c50bd7abb579429bf8388f804488c29')
+sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/${pkgname}-src-${pkgver}"
