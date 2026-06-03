@@ -1,6 +1,6 @@
 # Maintainer: Markus Maiwald <markus@maiwald.work>
 pkgname=progit-bin
-pkgver=0.8.2_beta
+pkgver=0.8.3_beta
 pkgrel=1
 pkgdesc="Blazing-fast terminal issue tracker with Kanban, Forgejo/GitLab sync, and plugin marketplace"
 arch=('x86_64')
