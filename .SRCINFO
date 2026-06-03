@@ -1,8 +1,8 @@
 pkgbase = headsetkontrol
 	pkgdesc = Interface for HeadsetControl (by Sapd) written with Kirigami and KDE Framework
 	pkgver = 2.0.4
-	pkgrel = 3
-	url = https://gitlab.com/TheBill2001/headsetkontrol
+	pkgrel = 4
+	url = https://gitlab.com/billtran1632001/headsetkontrol
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -19,7 +19,7 @@ pkgbase = headsetkontrol
 	depends = kiconthemes
 	depends = kstatusnotifieritem
 	depends = knotifyconfig
-	source = https://gitlab.com/TheBill2001/headsetkontrol/-/archive/v2.0.4/headsetkontrol-v2.0.4.tar.gz
+	source = https://gitlab.com/billtran1632001/headsetkontrol/-/archive/v2.0.4/headsetkontrol-v2.0.4.tar.gz
 	sha256sums = 360eaef86aa966cf20af567d38e04db6659134607174b92f9c87525f63d25208
 
 pkgname = headsetkontrol
