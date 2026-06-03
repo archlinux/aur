@@ -1,12 +1,12 @@
 pkgbase = ttf-ioskeley-mono-unhinted
 	pkgdesc = Iosevka configuration to mimic Berkeley Mono - unhinted TTF version
-	pkgver = 2.0.0beta1
+	pkgver = 2.0.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ahatem/IoskeleyMono
 	arch = any
 	license = OFL-1.1
-	source = IoskeleyMono-Normal.zip::https://github.com/ahatem/IoskeleyMono/releases/download/v2.0.0-beta.1/IoskeleyMono-Normal.zip
-	sha256sums = 00693cd2ce76e93fccc357b0357a92b5ec2e17fa3cd994e67355baafbe98f8b7
+	source = IoskeleyMono-2.0.0.zip::https://github.com/ahatem/IoskeleyMono/releases/download/v2.0.0/IoskeleyMono.zip
+	sha256sums = dc37763fbb82cbb99611955ee3196c774c164c716c0f659b4bddbe3d370c3204
 
 pkgname = ttf-ioskeley-mono-unhinted
