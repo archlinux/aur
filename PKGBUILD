@@ -1,5 +1,5 @@
 pkgname=swiftpoint-x1-control-panel
-pkgver=3.0.8.9
+pkgver=3.1.0.0
 pkgrel=1
 pkgdesc="Control panel for Swiftpoint devices"
 arch=('x86_64')
@@ -7,14 +7,16 @@ url="https://support.swiftpoint.com/portal/en/kb/articles/swiftpoint-x1-control-
 license=('custom')
 options=(!debug)
 source=(
-   	"Swiftpoint_X1_Control_Panel_${pkgver}.tar.xz::https://swiftpointdrivers.blob.core.windows.net/pro/beta/linux/Swiftpoint%20X1%20Control%20Panel%20${pkgver}-df346765.tar.xz"
+   	"Swiftpoint_X1_Control_Panel_${pkgver}.tar.xz::https://swiftpointdrivers.blob.core.windows.net/pro/beta/linux/Swiftpoint%20X1%20Control%20Panel%20${pkgver}-438f5771.tar.xz"
 	"com.swiftpoint.png::https://support.swiftpoint.com/portal/api/publicImages/236657000020283222?portalId=edbsn0d3aa90196a4e3b6b39dfa53f41ea57346e362747d42eef1744d58b0281647e9"
 	"com.swiftpoint.X1_Control_Panel.desktop"
+	"swiftpoint-x1-control-panel.service"
 )
 install=Swiftpoint_X1_Control_Panel.install
-sha256sums=('4f10864b1899740b458095d6b6e9cfb917dacc715e3e6a631b677230187238be'
+sha256sums=('c104f30f59bc15341c2f6e7f5b90341454b523ce2dc2c8253d34967691c1c0ae'
             'a7117e87abf569325fe6257d5ec5e7043b156d06feebd9ac22bd54f181b936f9'
-            '1f392375193f0ce122b0d0c8f10e3f50b6ca60f0fbfdd6e3f26f3b765ee14c0d')
+            '1f392375193f0ce122b0d0c8f10e3f50b6ca60f0fbfdd6e3f26f3b765ee14c0d'
+	    '0b06cc7dd26a4743b7333b2ebf575828c73c8e652ea572fa177cfcbdc9faed23')
 
 package() {
 	cd "${srcdir}/Swiftpoint X1 Control Panel ${pkgver}"
@@ -46,4 +48,6 @@ EOF
         	"$pkgdir/usr/share/applications/com.swiftpoint.X1_Control_Panel.desktop"
 	install -Dm644 "Swiftpoint X1 Control Panel Licence.txt" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "${srcdir}/swiftpoint-x1-control-panel.service" \
+    		"$pkgdir/usr/lib/systemd/user/swiftpoint-x1-control-panel.service"
 }

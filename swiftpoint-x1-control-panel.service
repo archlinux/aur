@@ -1,0 +1,10 @@
+[Unit]
+Description=Swiftpoint X1 Control Panel
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/swiftpoint-x1-control-panel
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
