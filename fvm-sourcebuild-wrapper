@@ -2,7 +2,7 @@
 
 set -euo pipefail
 shopt -s inherit_errexit
-#set -x
+set -x
 
 _git() {
 	git -c safe.bareRepository=all "$@"
@@ -26,12 +26,24 @@ ARCH_FLUTTER_ENGINE_URL="${ARCH_FLUTTER_ENGINE_URL:-https://github.com/flutter/e
 ARCH_FLUTTER_DEPOT_TOOL_URL="${ARCH_FLUTTER_DEPOT_TOOL_URL:-https://chromium.googlesource.com/chromium/tools/depot_tools.git}"
 readonly flutter_outdir="linux_release_$ARCH_FLUTTER_TARGET_CPU"
 
+if [[ -v FVM_CACHE_PATH_OVERRIDE ]]; then
+	>&2 echo 'Overriding FVM_CACHE_PATH.'
+	export FVM_CACHE_PATH="$FVM_CACHE_PATH_OVERRIDE"
+fi
+
 _setup_build_env()
 {
 	export \
 		PATH="$(pwd)/.engine-src/depot_tools:$PATH" \
 		DEPOT_TOOLS_UPDATE=0 \
 		VPYTHON_BYPASS='manually managed python not supported by chrome operations'
+}
+
+_setup_python_env()
+{
+	python3.11 -m venv '.python-env'
+	export PATH="$(pwd)/.python-env/bin:$PATH"
+	pip install httplib2 pysocks six configparser
 }
 
 setup_flutter_env()
@@ -102,19 +114,6 @@ _prepare_build_3_27_and_lower()
 	local -r outdir="$1"
 	local -r version="$2"
 
-	if [[ $(vercmp "$version" '3.14.0') == -1 ]]; then
-		local -r python_exec='python3.11'
-	else
-		local -r python_exec='python3'
-	fi
-
-	if ! "$python_exec" --version &>/dev/null; then
-		>&2 echo "Engine version $version requires $python_exec."
-		return 1
-	fi
-
-	sed -i "s/exec \"python3\"/exec \"$python_exec\"/" '.engine-src/depot_tools/vpython3'
-
 	_setup_build_env
 
 	local -r engine_src_dir="$(pwd)/.engine-src/engine"
@@ -140,8 +139,6 @@ EOF
 		--shallow \
 		--no-bootstrap \
 	|| { >&2 echo '`gclient.py sync` command failed.'; return 1; }
-
-	sed -i "s/'python3'/'$python_exec'/" 'src/flutter/DEPS'
 
 	gclient.py runhooks \
 		|| { >&2 echo '`gclient.py runhooks` command failed.'; return 1; }
@@ -228,19 +225,6 @@ _prepare_build()
 {
 	local -r version="$1"
 
-	if [[ $(vercmp "$version" '3.14.0') == -1 ]]; then
-		local -r python_exec='python3.11'
-	else
-		local -r python_exec='python3'
-	fi
-
-	if ! "$python_exec" --version &>/dev/null; then
-		>&2 echo "Engine version $version requires $python_exec."
-		return 1
-	fi
-
-	sed -i "s/exec \"python3\"/exec \"$python_exec\"/" '.engine-src/depot_tools/vpython3'
-
 	_setup_build_env
 
 	local -r engine_src_dir="$(pwd)/.engine-src/flutter"
@@ -259,24 +243,36 @@ solutions = [
 ]
 EOF
 
-	gclient.py sync -n -D -R \
-		--with_branch_heads \
-		--with_tags \
-		--output-json='gclient-sync.json' \
-		--shallow \
-		--no-bootstrap \
-	|| { >&2 echo '`gclient.py sync` command failed.'; return 1; }
+	_run_gclient()
+	{
+		gclient.py sync -n -D \
+			--output-json='gclient-sync.json' \
+			--shallow \
+			--no-history \
+			--no-bootstrap \
+			--verbose \
+			"$@"
+	}
 
-	####sed -i "s/'python3'/'$python_exec'/" 'engine/src/flutter/DEPS'
+	_run_gclient -R \
+		|| { >&2 echo '`gclient.py sync` command failed.'; return 1; }
+
+	if (( $(vercmp "$version" '3.44.0') >= 0 )); then
+		sed -i "/recursedeps = \\[/a\\  'engine/src/flutter/third_party/angle'," 'src/flutter/DEPS'
+		_run_gclient \
+			|| { >&2 echo '`gclient.py sync` command failed.'; return 1; }
+	fi
 
 	gclient.py runhooks \
 		|| { >&2 echo '`gclient.py runhooks` command failed.'; return 1; }
 
 	cd 'engine/src'
 
-	sed -i 's|prefix = rebased_clang_dir|prefix= ""|g' 'build/toolchain/linux/BUILD.gn' # use system clang
-	sed -i 's|}/|}|g' 'build/toolchain/linux/BUILD.gn' # use system clang
-	sed -i 's|rebase|#|g' 'build/toolchain/linux/BUILD.gn'
+	sed -i \
+		-e 's|prefix = rebased_clang_dir|prefix= ""|g' \
+		-e 's|}/|}|g' \
+		-e 's|rebase|#|g' \
+		'build/toolchain/linux/BUILD.gn' # use system clang
 
 	if [[ -e 'third_party/angle/BUILD.gn' ]]; then
 		sed -i 's|$wayland_dir|//third_party/angle/third_party/wayland|' \
@@ -285,12 +281,21 @@ EOF
 			'third_party/angle/src/third_party/volk/BUILD.gn'
 		sed -i 's|import("//build/config/chromecast_build.gni")||' 'third_party/angle/src/tests/BUILD.gn'
 	fi
+	if [[ -e 'flutter/third_party/angle/BUILD.gn' ]]; then
+		sed -i 's|$wayland_dir|//flutter/third_party/angle/third_party/wayland|' \
+			'flutter/third_party/angle/BUILD.gn' \
+			'flutter/third_party/angle/src/common/vulkan/BUILD.gn' \
+			'flutter/third_party/angle/src/third_party/volk/BUILD.gn'
+		sed -i 's|"//build/config/linux/libdrm"|"$angle_root/third_party/libdrm"|' 'flutter/third_party/angle/src/libANGLE/renderer/gl/BUILD.gn'
+		sed -i 's|angle_build_tests = angle_has_build|angle_build_tests = false|' 'flutter/third_party/angle/gni/angle.gni'
+		sed -i 's|defines = \[|defines = [ "_DEFAULT_SOURCE", |' 'flutter/third_party/angle/third_party/libdrm/BUILD.gn'
+	fi
 
 	sed -i '/-Wno-deprecated-literal-operator/d' 'build/config/compiler/BUILD.gn'
 	sed -i '/G_DEFINE_AUTOPTR_CLEANUP_FUNC(PangoLayout, g_object_unref)/d' 'flutter/shell/platform/linux/fl_accessible_text_field.cc'
 
 	# Not our problem.
-	sed -i 's/"-Werror",//' 'build/config/compiler/BUILD.gn'
+	sed -i 's/"-Werror",/"-Wno-error=int-conversion", "-Wno-error=implicit-function-declaration"/' 'build/config/compiler/BUILD.gn'
 
 	if [[ -f 'third_party/dart/build/dart/prebuilt_dart_sdk.gni' ]]; then
 		cat > 'third_party/dart/build/dart/prebuilt_dart_sdk.gni' <<-EOF
@@ -392,6 +397,8 @@ _download()
 
 build_engine()
 {
+	_setup_python_env
+
 	local -r fvm_cache_dir="$(fvm.real api context | yq -er '.context.fvmDir')"
 	local -r fvm_version_cache="$(fvm.real api context | yq -er '.context.versionsCachePath')"
 	local -r engine_version="$(_get_engine_version "$fvm_cache_dir")"
