@@ -7,5 +7,5 @@
 -                -Wall -Wextra -Werror -Werror=suggest-override
 +                -Wall -Wextra #-Werror -Werror=suggest-override
          )
-     endif()
- endfunction()
+         # Set SYSTEM property on OpenVINO dependencies to suppress extra warnings from their headers
+         # when building via OPENVINO_EXTRA_MODULES

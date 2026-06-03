@@ -1,6 +1,6 @@
 pkgbase = intel-npu-compiler
 	pkgdesc = Intel Neural Processing Unit (NPU) compiler
-	pkgver = 2026.12.1rc1
+	pkgver = 2026.20rc1
 	pkgrel = 1
 	url = https://github.com/openvinotoolkit/npu_compiler/
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = intel-npu-compiler
 	depends = pugixml
 	depends = zlib
 	depends = zstd
-	source = git+https://github.com/openvinotoolkit/npu_compiler.git#tag=npu_ud_2026_12_1_rc1
-	source = git+https://github.com/openvinotoolkit/openvino.git#commit=b7f9dbfa7944a1c576b87a4061c298636ae9f2a7
+	source = git+https://github.com/openvinotoolkit/npu_compiler.git#tag=npu_ud_2026_20_rc1
+	source = git+https://github.com/openvinotoolkit/openvino.git#commit=e4e180d12fa7df6240235926d4ab8084df40e0a1
 	source = git+https://github.com/openvinotoolkit/npu_plugin_elf.git
 	source = git+https://github.com/intel-staging/npu-compiler-llvm.git
 	source = git+https://github.com/intel/npu-nn-cost-model.git
@@ -49,12 +49,13 @@ pkgbase = intel-npu-compiler
 	source = git+https://github.com/ARM-software/kleidiai.git
 	source = git+https://github.com/herumi/xbyak_riscv.git
 	source = 010-intel-npu-compiler-llvm-disable-atomic-check.patch
+	source = 020-intel-npu-compiler-disable-werror.patch
 	source = 030-intel-npu-compiler-fix-install.patch
 	source = 040-intel-npu-compiler-npu-plugin-elf-fix-install.patch
 	source = 010-openvino-disable-werror.patch
 	source = 020-openvino-gtest-gcc15-fix.patch
-	sha256sums = cc6733807e6ed1d95e3ae55f500b3c24d53de6315e71ad871e3e26eccc57d506
-	sha256sums = 49d646021bd209d2263981aa57193516fedae862cfca5823bf81a69dce6303fb
+	sha256sums = a68848fa14e009ec97c5975ed060657b30d2a57ff2f1641ef400722b7133feaa
+	sha256sums = 11188d9f4bd13efe9d028be220fafb5e5d4a537fc08ae393e704ccf42b10e454
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -85,9 +86,10 @@ pkgbase = intel-npu-compiler
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 6aea796acf3bbd3091dfeecbebfdbed1bd6023d343f49834c1d83fbb4a1d3eb8
-	sha256sums = e1824ef4d3e2db7cdbabebf3c4fe565989541164345ee7714f9b7505ccc364c4
+	sha256sums = 1b18dca84d13d475800df80c2522f74f994c4276bbca4c3e3b8a561523e78df8
+	sha256sums = 69e9a88710548ff49abcbbdb3fc0a7350bb0d0354366e11370dd3fa460baa1b4
 	sha256sums = e4734603808ad0402819eb36578f1eabb80524f4f82aed45f31736c5d184b2ef
-	sha256sums = ba2d8b40b8921acc70e0212138eb2b5db2b7311058b1092236356cf0dfe725f9
+	sha256sums = 7aaccaf45a449a751019f272287a74fa3ed80809a7c990b16790590f1d93e0cf
 	sha256sums = e7ec20d4fb173ae29b5b1f682e7b85efa3f5359ee355b959a7f51148c84ecc7f
 
 pkgname = intel-npu-compiler
