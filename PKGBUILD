@@ -1,6 +1,6 @@
 # Maintainer: thongor77 <magetriste@proton.me>
 pkgname=nmlinux
-pkgver=1.2.9
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A free Linux adaptation of NETworkManager — network GUI for KDE/Linux"
 arch=('any')
@@ -23,10 +23,13 @@ optdepends=(
     'traceroute: Traceroute alternative (tracepath used by default)'
     'python-hwdata: OUI vendor lookup in IP Scanner'
     'nm-connection-editor: Edit connections from Connection Manager'
+    'samba: SMB/NFS browser — SMB share listing (smbclient)'
+    'nfs-utils: SMB/NFS browser — NFS export listing (showmount)'
+    'openssl: TLS Inspector certificate chain'
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://github.com/thongor77/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('29884e280852ebbcf628fcc54149dec3d573b51a75d5506dd04c760d8962c708')
+sha256sums=('eb5935be73bd8a558e0fe4413ad0e299983e7c1c04a95a6171f5c8014f5be322')
 
 build() {
     cd "${pkgname}-${pkgver}"
