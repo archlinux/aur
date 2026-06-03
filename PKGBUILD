@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go' 'git')
 optdepends=('yay: AUR helper' 'paru: AUR helper')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bde15462693b9563c2f2d2a9558fdec724f34270c217ed7b98308cc2b2ef63e6')
+sha256sums=('66460ba4ed6caf7ce7784975de577763b1d1361b3fa9998f9d7a1a6a3e31b502')
 
 build() {
   cd "$pkgname-$pkgver"
