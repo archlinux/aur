@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-userspacefs
 _name=${pkgname#python-}
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Cross-platform user-space file systems for Python"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
 )
 conflicts=('python-fusepyng')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('4663e926c1fbde1f49434746653a928a1d9990fc17390af3e2e40ef5657cdf51')
+sha256sums=('0e5629c1121247c90b4a486b344f48069c57b41ecf7b0d0b1b07a25c2f5498b3')
 
 build() {
   cd "$_name-$pkgver"
