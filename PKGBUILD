@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=caffeine-applet-git
-pkgver=r12.78706c2
+pkgver=r17.ade6a2b
 pkgrel=1
 pkgdesc="A simple COSMIC applet that prevents your system from going idle by creating a systemd-inhibit lock session."
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {

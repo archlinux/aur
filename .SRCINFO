@@ -1,6 +1,6 @@
 pkgbase = caffeine-applet-git
 	pkgdesc = A simple COSMIC applet that prevents your system from going idle by creating a systemd-inhibit lock session.
-	pkgver = r12.78706c2
+	pkgver = r17.ade6a2b
 	pkgrel = 1
 	url = https://github.com/codevardhan/caffeine-applet
 	arch = x86_64
