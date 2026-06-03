@@ -1,6 +1,6 @@
 # Maintainer: Ryan Bas <ryanbas21@github>
 pkgname=camlwm-git
-pkgver=0.2.0.r67.c53ce93
+pkgver=0.2.0.r68.75f7580
 pkgrel=1
 pkgdesc="xmonad-style tiling window manager for X11, written in OCaml"
 arch=('x86_64')
@@ -26,7 +26,10 @@ build() {
 package() {
   cd CamlWM
   install -Dm755 _build/default/bin/main.exe "$pkgdir/usr/bin/camlwm"
-  install -Dm644 camlwm.desktop "$pkgdir/usr/share/xsessions/camlwm.desktop"
+
+  # Do not install an X session desktop file here. Users may already own
+  # /usr/share/xsessions/camlwm.desktop from local display-manager setup, and
+  # packaging it would create an unnecessary pacman file conflict.
 
   # Install libraries so ocamlfind can resolve camlwm.core/camlwm.wm when
   # recompiling user configs at runtime. Path is $(dirname binary)/../lib/camlwm

@@ -1,6 +1,6 @@
 pkgbase = camlwm-git
 	pkgdesc = xmonad-style tiling window manager for X11, written in OCaml
-	pkgver = 0.2.0.r67.c53ce93
+	pkgver = 0.2.0.r68.75f7580
 	pkgrel = 1
 	url = https://github.com/ryanbas21/CamlWM
 	arch = x86_64
