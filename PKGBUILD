@@ -92,7 +92,7 @@ package() {
 
   # Wrapper script
   install -d "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/priestess" << 'WRAPPER'
+  cat > "${pkgdir}/usr/bin/priestess" << WRAPPER
 #!/bin/bash
 export ELECTRON_OZONE_PLATFORM_HINT="${ELECTRON_OZONE_PLATFORM_HINT:-auto}"
 export ELECTRON_ENABLE_WAYLAND_ACTIVATION_TOKEN_HACK="${ELECTRON_ENABLE_WAYLAND_ACTIVATION_TOKEN_HACK:-1}"
