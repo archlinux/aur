@@ -1,15 +1,19 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=geary-hide-sidebar
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="GTK3 module that hides/collapses Geary's left Mail sidebar (Ctrl+Shift+M toggle + auto by window size)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/akitaonrails/geary-hide-sidebar-module"
 license=('MIT')
-# geary is the whole point; gtk3/glib2 are what the module links against (and
-# are pulled in by geary anyway, but listed for correctness).
-depends=('geary' 'gtk3' 'glib2')
+# gtk3/glib2 are what the module links against. pacman has no "either/or"
+# dependency, and geary-git conflicts with geary without providing it — so we
+# pair each module variant with one Geary: this *source* package targets
+# geary-git (the build-from-source, dev branch that ships dark-mode previews),
+# while geary-hide-sidebar-bin targets the stable `geary`. Pick the module that
+# matches your Geary.
+depends=('geary-git' 'gtk3' 'glib2')
 makedepends=('pkgconf')
 checkdepends=('xorg-server-xvfb')
 # Pacman should auto-swap when moving between the source and binary variants.
@@ -22,7 +26,7 @@ install="$pkgname.install"
 # geary-hide-sidebar-module while the package is geary-hide-sidebar.
 _archive="geary-hide-sidebar-module-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8095b061bcf5684a56351eee2479e8147c2034c3e5c3fcb336de7f02318c46f7')
+sha256sums=('b14376bcb79eef153bbd9a8dacca7c456996361bced6d7a10a8e908b65a13380')
 
 build() {
     cd "$_archive"
