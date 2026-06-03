@@ -4,7 +4,7 @@
 
 ## 现状
 
-PX13 kernel jack detection 在 `linux-cachyos-px13` 0017 patch 落地后已经工作:插拔耳机 `Headphone Jack` / `Headset Mic Jack` 两个 ALSA kctl 正确翻转 `false` ↔ `true`。验证方法:
+PX13 kernel jack detection 由本包 DKMS 的 0017 patch(rt721-sdca,AMD ACP70 jack-detect IRQ)提供:插拔耳机 `Headphone Jack` / `Headset Mic Jack` 两个 ALSA kctl 正确翻转 `false` ↔ `true`。验证方法:
 
 ```bash
 alsactl store -f /tmp/c1 1 && grep -A1 'Headphone Jack' /tmp/c1
@@ -99,4 +99,4 @@ WantedBy=default.target
 - 维护成本:`wpctl status` 输出格式跟 WirePlumber 版本绑,易碎
 - AUR 硬件 quirks 包不建议带 daemon
 
-打包**仅**修硬件层(`linux-cachyos-px13` 0017 + 这个包的 UCM)。WP 自动切换由 dotfiles / 上游 PipeWire / 桌面环境负责。
+打包**仅**修硬件层(本包 DKMS 的 0017 + UCM)。WP 自动切换由 dotfiles / 上游 PipeWire / 桌面环境负责。

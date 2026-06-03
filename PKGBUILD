@@ -7,7 +7,7 @@ pkgname=asus-proart-px13-quirks
 # newer kernel; bump pkgrel for packaging-only changes (UCM, btusb, patches).
 _kver=7.0.10
 pkgver=${_kver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Hardware quirks for ASUS ProArt PX13 (HN7306EA): TAS2783 audio DKMS + UCM configs + MT7925 btusb autosuspend disable"
 arch=('any')
 url="https://aur.archlinux.org/packages/asus-proart-px13-quirks"
@@ -95,6 +95,7 @@ source=(
     0015-to-help-alsa-find-them.patch
     0016-cleanup-controls.patch
     0017-ASoC-rt721-sdca-enable-jack-detect-irq-on-AMD-ACP70.patch
+    0019-soundwire-amd-add-clock-init-control-function.patch
 )
 # Per-file mainline source, saved under each file's basename (all unique).
 for _f in "${_src_files[@]}"; do
@@ -131,6 +132,7 @@ sha256sums=('8704e2350ece61e4fbfc6fab0e1555e9dadc4e50509f727c704cae137de7e372'
             '929ff4b238982b98a7d79473efba2403887353ef89b68c327795090b504b04a1'
             'be215990daff3959349f84c859699f65d9cdacfb3eba9ed4d2392faf6ce29a41'
             '3df85635993af6fd76dc18fa28b53723bc22eb6bb42836d84e3a962d7825b6e3'
+            '8d6378841d3847d64885c36bdeef8fe3db74fedf700fcb51b94c329d60794389'
             'e6b9405525ebbec06ea27544a0cfd871020ff0952a6df25a2cc851d31822766e'
             '0804ef869734742872008653fdc4a1c2b0eab39929521a4ad2cbb4e72f598b01'
             '1407d9c11d3578f94e06d7f60512aa3fa901dc3d192341c26e769c43cdb41184'
