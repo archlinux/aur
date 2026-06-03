@@ -84,7 +84,9 @@ package() {
 
     # /usr/bin/vutureland → symlink so realpath() in the launcher resolves correctly
     install -dm755 "$pkgdir/usr/bin"
-    ln -s /usr/share/vutureland/bin/vutureland "$pkgdir/usr/bin/vutureland"
+    ln -s /usr/share/vutureland/bin/vutureland       "$pkgdir/usr/bin/vutureland"
+    ln -s /usr/share/vutureland/welcome_to_vutureland.sh \
+                                                     "$pkgdir/usr/bin/vutureland-setup"
 
     # License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

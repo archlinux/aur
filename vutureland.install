@@ -8,16 +8,38 @@ post_install() {
     echo ""
     echo "  Run the first-time setup wizard to configure your desktop:"
     echo ""
-    echo "    bash /usr/share/vutureland/welcome_to_vutureland.sh"
+    echo "      vutureland-setup"
+    echo "    or"
+    echo "      bash /usr/share/vutureland/welcome_to_vutureland.sh"
     echo ""
-    echo "  This sets up ~/.config/hypr, starts services, applies a"
-    echo "  default Waybar layout, and sets the initial wallpaper."
+    echo "  This wizard:"
+    echo "    - installs any missing dependencies (pacman + AUR)"
+    echo "    - seeds ~/.config/vutureland/ from the package templates"
+    echo "    - writes ~/.config/hypr/hyprland.lua entry point"
+    echo "    - configures monitors / workspaces (minimal mode)"
+    echo "    - applies a default Waybar layout"
+    echo "    - sets an initial wallpaper (generates colour theme)"
     echo ""
 }
 
 post_upgrade() {
     echo ""
-    echo "  Vutureland upgraded to $(pacman -Q vutureland-git | awk '{print $2}')"
-    echo "  No action needed — your ~/.config/vutureland/ user data is untouched."
+    echo "  Vutureland upgraded."
+    echo ""
+    echo "  Your ~/.config/vutureland/ user data is untouched. To pick up new"
+    echo "  templates, scripts and modules from this release run:"
+    echo ""
+    echo "      vutureland-setup --sync"
+    echo ""
+    echo "  This refreshes package files in ~/.config/vutureland/ but leaves"
+    echo "  your user_settings.lua, wallust color outputs and waybar layouts"
+    echo "  alone."
+    echo ""
+}
+
+pre_remove() {
+    echo ""
+    echo "  Vutureland will be removed. Your ~/.config/vutureland/ user data"
+    echo "  is kept — delete it manually if you no longer need it."
     echo ""
 }
