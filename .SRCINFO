@@ -28,8 +28,8 @@ pkgbase = neodlp-arch-libs
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = NeoDLP_0.4.5_amd64.deb::https://github.com/neosubhamoy/neodlp/releases/download/v0.4.5/NeoDLP_0.4.5_amd64.deb
-	sha256sums_x86_64 = ae9f10e3ee2211ce38d69f2f7ac5d211e017dd263aa344b86bd0a2f66bd5567f
+	sha256sums_x86_64 = a187630c9d7b9a15d5a22c3fcc807fe5eb15f7a144366971bbc05d2eebc29406
 	source_aarch64 = NeoDLP_0.4.5_arm64.deb::https://github.com/neosubhamoy/neodlp/releases/download/v0.4.5/NeoDLP_0.4.5_arm64.deb
-	sha256sums_aarch64 = 0bb3b735ae89025279ee9c551c62e0ce21ac95d2278beface5c5d5cef866cfe3
+	sha256sums_aarch64 = e78a567c6788fa3f3a8ed8c32f0b9dc93a4ed5d13acc1a5fd274ce959467806a
 
 pkgname = neodlp-arch-libs
