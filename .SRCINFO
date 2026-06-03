@@ -9,6 +9,7 @@ pkgbase = moonfin-bin
     depends = glib2
     depends = libsecret
     depends = webkit2gtk-4.1
+    depends = mpv
     provides = moonfin
     conflicts = moonfin
     source = moonfin-bin-2.0.1.tar.gz::https://github.com/Moonfin-Client/Moonfin-Core/releases/download/2.0.1/Moonfin_Linux_v2.0.1.tar.gz
