@@ -12,6 +12,6 @@ pkgbase = league-of-gays
 	provides = league-of-gays
 	conflicts = league-of-gays
 	source = league-of-gays-src-0.2.1.tar.gz::https://lol.meisgaming.net/launcher/league-of-gays-src-0.2.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = e605ee2af88cb79dc208875bfab548028477142f3f1d1a238e27db9ed14f5e74
 
 pkgname = league-of-gays
