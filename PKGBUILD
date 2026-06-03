@@ -1,6 +1,6 @@
 # Maintainer: li0shang <li0shang@163.com>
 pkgname="zed-cn"
-pkgver="20260531"
+pkgver="20260602"
 pkgrel=1
 pkgdesc=" zed-loc (Zed 汉化) github-TC999/zed-loc"
 arch=('x86_64')
@@ -8,8 +8,8 @@ license=("custom:Copyright (c) 2015 Abner Lee All Rights Reserved.")
 url="https://github.com/TC999/zed-loc"
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/TC999/zed-loc/releases/download/20260531/zed-linux-x86_64.tar.gz")
-sha512sums=('00d012346550638342a9142991b68c1df82a94bd7b6ae9341995b8d25938cd965f3eaa436856b66f253d13939f0f8371a471b1dc34bd0e2ef088bb81f6b8ca68')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/TC999/zed-loc/releases/download/20260602/zed-linux-x86_64.tar.gz")
+sha512sums=('c78a1467bce4ce639eac8c86a0565b44484cc6682245ccdd609e9df43bb45ee51a01e8cd972fd328e7b250eab9abb46cb147090735ad5472c9b6a787cce0272c')
 
 # 解压源码包
 prepare() {
@@ -41,9 +41,10 @@ package() {
     fi
   done
 
-  # 如果需要：桌面文件
-  install -Dm644 "$srcdir/zed-dev.app/share/applications/*.desktop" "$pkgdir/usr/share/applications/zed-cn.desktop"
-
+  # 安装桌面文件
+  # 查找任意 .desktop 文件
+  desktop_file=$(find "$srcdir/zed-dev.app/share/applications" -maxdepth 1 -name "*.desktop" 2>/dev/null | head -n1)
+  install -Dm644 "$desktop_file" "$pkgdir/usr/share/applications/zed-cn.desktop" 
   # 移除调试符号（避免生成debug包）
   find "$pkgdir" -name "*.debug" -delete
   strip --strip-all "$pkgdir/opt/$pkgname/bin/zed" 2>/dev/null || true
