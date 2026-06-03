@@ -4,7 +4,7 @@
 
 pkgname=nodejs-gemini-cli
 _npmname=@google/gemini-cli
-pkgver=0.44.1
+pkgver=0.45.0
 pkgrel=1
 pkgdesc="The official Google Gemini CLI"
 arch=('any')
@@ -13,7 +13,7 @@ license=('Apache-2.0')
 depends=('nodejs>=20')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_npmname/-/${_npmname##*/}-$pkgver.tgz")
-sha256sums=('fcf5dc9f01eb602e64c204f7112bf33e17ba5e36f737a8ed374821c838ab2cf9')
+sha256sums=('c0565a62ea189cd28ee871cb0b1aea53d8ba7ac48168ffdd32c2b6271f5cd131')
 
 
 package() {
