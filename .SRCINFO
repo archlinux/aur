@@ -1,0 +1,21 @@
+pkgbase = python-gepa
+	pkgdesc = Optimize prompts, code, and more via reflective text evolution
+	pkgver = 0.0.27
+	pkgrel = 1
+	url = https://github.com/gepa-ai/gepa
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-litellm: for the full extra (LLM backends, AUR)
+	optdepends = python-datasets: for the full extra (dataset adapters)
+	optdepends = python-mlflow: for the full extra (experiment tracking, AUR)
+	optdepends = python-wandb: for the full extra (experiment tracking, AUR)
+	optdepends = python-tqdm: for the full extra (progress bars)
+	source = https://files.pythonhosted.org/packages/source/g/gepa/gepa-0.0.27.tar.gz
+	sha256sums = 02ecb19e4aa6a1f5bb2994cd54b2057f25cd5e8cd662fee514303b2a8ba0a738
+
+pkgname = python-gepa
