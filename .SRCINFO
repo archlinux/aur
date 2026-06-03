@@ -17,7 +17,7 @@ pkgbase = ele-messenger
 	backup = usr/lib/ele-messenger/config.json
 	source = ele-messenger-1.3.5.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v1.3.5.tar.gz
 	source = ele-messenger.install
-	sha256sums = 4a60f6a83373ce89fe9affb06dfe6667b6165f46c6fc05ad2414ea192d6c35e1
+	sha256sums = cb641859d0560e2de68de0b7637e4e350127ef6f25b2c5d6e01584eb7d49abd5
 	sha256sums = SKIP
 
 pkgname = ele-messenger

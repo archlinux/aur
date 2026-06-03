@@ -12,7 +12,7 @@ optdepends=('tailscale: for Tailscale transport layer')
 backup=('usr/lib/ele-messenger/config.json')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v$pkgver.tar.gz"
         "ele-messenger.install")
-sha256sums=('4a60f6a83373ce89fe9affb06dfe6667b6165f46c6fc05ad2414ea192d6c35e1'
+sha256sums=('cb641859d0560e2de68de0b7637e4e350127ef6f25b2c5d6e01584eb7d49abd5'
             'SKIP')
 package() {
     cd "$srcdir/ele-messenger-$pkgver/pkg"
