@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://www.buaa.team"
 license=('MIT')
 makedepends=("java-environment=${_javaversion}" "imagemagick")
-depends=("java-runtime>=${_javaversion}" "bash" "hicolor-icon-theme")
+depends=("java-runtime>=${_javaversion}" "hicolor-icon-theme")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BUAASubnet/${_reponame}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh"

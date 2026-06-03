@@ -8,7 +8,6 @@ pkgbase = ubaa
 	makedepends = java-environment=21
 	makedepends = imagemagick
 	depends = java-runtime>=21
-	depends = bash
 	depends = hicolor-icon-theme
 	source = ubaa-1.7.4.tar.gz::https://github.com/BUAASubnet/UBAA/archive/v1.7.4.tar.gz
 	source = ubaa.desktop
