@@ -1,7 +1,7 @@
 pkgbase = python-rouge-score
 	pkgdesc = Pure python implementation of ROUGE-1.5.5 (Google's ROUGE metric)
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google-research/google-research/tree/master/rouge
 	arch = any
 	license = Apache-2.0
@@ -12,6 +12,7 @@ pkgbase = python-rouge-score
 	depends = python
 	depends = python-absl
 	depends = python-nltk
+	depends = nltk-data
 	depends = python-numpy
 	depends = python-six
 	source = rouge_score-0.1.2.tar.gz::https://files.pythonhosted.org/packages/source/r/rouge_score/rouge_score-0.1.2.tar.gz

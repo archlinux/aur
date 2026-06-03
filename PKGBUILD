@@ -3,7 +3,7 @@
 pkgname=python-rouge-score
 _pkgname=rouge_score
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure python implementation of ROUGE-1.5.5 (Google's ROUGE metric)"
 arch=('any')
 url="https://github.com/google-research/google-research/tree/master/rouge"
@@ -12,6 +12,7 @@ depends=(
     'python'
     'python-absl'
     'python-nltk'
+    'nltk-data'
     'python-numpy'
     'python-six'
 )
@@ -35,7 +36,10 @@ build() {
 
 check() {
     cd "$_pkgname-$pkgver"
-    PYTHONPATH="$PWD:$PYTHONPATH" python -c "import rouge_score; from rouge_score import rouge_scorer"
+    # rouge_score pulls nltk's stemmer, and nltk 3.9 eagerly loads the wordnet
+    # corpus on that import, so the package cannot even be imported without the
+    # nltk data (shipped by the nltk-data depend). Exercise a real score.
+    PYTHONPATH="$PWD:$PYTHONPATH" python -c "from rouge_score import rouge_scorer; s=rouge_scorer.RougeScorer(['rouge1','rougeL'], use_stemmer=True); print('rouge1', s.score('the quick brown fox','the quick brown fox')['rouge1'].fmeasure)"
 }
 
 package() {
