@@ -1,7 +1,7 @@
 pkgbase = league-of-gays
 	pkgdesc = League of Gays Launcher — private MOBA client launcher (self-hosted)
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lol.meisgaming.net
 	changelog = CHANGELOG.md
 	arch = x86_64
