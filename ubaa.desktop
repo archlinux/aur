@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=UBAA
+Comment=Cross-platform Compose Multiplatform client for Beihang University campus services
+Comment[zh_CN]=用于北航校园服务的跨平台Compose Multiplatform客户端
+Exec=/usr/bin/ubaa
+Icon=ubaa
+Terminal=false
+Categories=Education
+Keywords=UBAA;BUAA
