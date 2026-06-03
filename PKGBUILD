@@ -51,7 +51,13 @@ sha256sums=('ff02f96b9204c6406f088bdbf0dbc56471bb2d5d8232b807143806b88d5c501c')
 # download). Kept out of the main source=/sha256sums= so update-aur-local.sh's
 # single-entry sha256sums patching keeps working.
 _ortbase="https://github.com/microsoft/onnxruntime/releases/download/v${_ortver}"
-_mdlbase="https://huggingface.co/RapidAI/RapidOCR/resolve/v3.8.0/onnx/PP-OCRv5/rec"
+# ModelScope is the PRIMARY model host. HuggingFace's resolve/ CDN returns HTTP
+# 429 (rate limit) for shared/cloud build IPs, so it is only a manual fallback:
+#   https://huggingface.co/RapidAI/RapidOCR/resolve/v3.8.0/onnx/PP-OCRv5/rec
+# makepkg's source=() has no per-file mirror fallback (unlike the Flatpak
+# manifest's mirror-urls), so the reliable host must be the primary one. This
+# matches the primary/fallback order in linux/fetch-ocr-models.sh.
+_mdlbase="https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.8.0/onnx/PP-OCRv5/rec"
 
 source_x86_64=(
     "onnxruntime-linux-x64-${_ortver}.tgz::${_ortbase}/onnxruntime-linux-x64-${_ortver}.tgz"
