@@ -1,4 +1,5 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Capricornus007 <Capricornus007 at proton dot me>
+# Co-Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Alexandre Filgueria <alexfilgueira@antergos.com>
 # Contributor:  Jan de Groot <jan@archlinux.org>
 
