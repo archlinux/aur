@@ -2,7 +2,7 @@
 
 _name=litecli
 pkgname=${_name}-git
-pkgver=v1.13.0.r157.gf4c3052
+pkgver=v1.13.0.r195.g6a3e595
 pkgrel=1
 pkgdesc="A command-line client for SQLite databases that has auto-completion ""\
 and syntax highlighting."
@@ -17,7 +17,9 @@ depends=(
 	'python-sqlparse'
 	'python-configobj'
 	'python-cli_helpers'
-	'python-llm'
+)
+optdepends=(
+	'python-llm: enable LLM/AI special commands'
 )
 makedepends=(python-build python-installer python-wheel python-setuptools python-setuptools-scm)
 source=("git+https://github.com/dbcli/litecli.git")
