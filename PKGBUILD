@@ -5,9 +5,9 @@
 
 pkgname=lbry-desktop
 pkgver=0.53.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative'
+pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative (no active development)'
 changelog=changelog
 url="https://github.com/lbryio/${pkgname}"
 license=('MIT')
