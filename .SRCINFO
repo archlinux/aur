@@ -1,6 +1,6 @@
 pkgbase = zejtron-bin
 	pkgdesc = Unified Linux introspection toolkit for paths, ports, processes, files, services, and diagnostics
-	pkgver = 2.4.2
+	pkgver = 2.4.3
 	pkgrel = 1
 	url = https://github.com/oxyzenQ/zejtron
 	arch = x86_64
