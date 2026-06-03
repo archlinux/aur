@@ -1,0 +1,23 @@
+post_install() {
+  echo "Polaris installed successfully."
+  echo ""
+  echo "Next steps:"
+  echo "  sudo polaris --setup-host"
+  echo "  systemctl --user enable --now polaris"
+  echo "  open https://localhost:47990"
+}
+
+post_upgrade() {
+  echo "Polaris was upgraded."
+  echo ""
+  echo "If something breaks after upgrade:"
+  echo "  sudo polaris --setup-host"
+  echo ""
+  echo "Then restart user service:"
+  echo "  systemctl --user restart polaris"
+}
+
+post_remove() {
+  echo "Polaris removed."
+  echo "Config is kept in ~/.config/polaris"
+}

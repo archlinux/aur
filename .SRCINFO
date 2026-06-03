@@ -1,0 +1,13 @@
+pkgbase = polaris-gamestream-bin
+	pkgdesc = Linux-first game streaming host
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/papi-ux/polaris
+	install = polaris-gamestream-bin.install
+	arch = x86_64
+	license = GPL3
+	noextract = Polaris-arch-x86_64.pkg.tar.zst
+	source = Polaris-arch-x86_64.pkg.tar.zst::https://github.com/papi-ux/polaris/releases/download/v1.1.0/Polaris-arch-x86_64.pkg.tar.zst
+	sha256sums = SKIP
+
+pkgname = polaris-gamestream-bin
