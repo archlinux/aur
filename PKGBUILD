@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=liteparse-bin
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='Fast local document parser for PDF, DOCX, XLSX, PPTX, and images with built-in OCR'
 arch=('x86_64' 'aarch64')
@@ -28,9 +28,9 @@ source_aarch64=(
     "${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/${_gh_repo}/releases/download/crates-v${pkgver}/lit-linux-arm64.tar.gz"
     "pdfium-${_pdfium_ver}-aarch64.tgz::https://github.com/run-llama/pdfium-binaries/releases/download/chromium%2F${_pdfium_ver}/pdfium-linux-arm64.tgz"
 )
-sha256sums_x86_64=('34d77db0f6bc2431c3edc9b65fef95960f7cd5667bfb5bc1747006b54bac79b9'
+sha256sums_x86_64=('7870983881cf9c7a0078759b9f6028644bb345599a605defef01a25b08af3a7f'
                    '3e8326bc517d071c569efc23f6e18d60a83c7b775c714bb571c609fffebd5320')
-sha256sums_aarch64=('db7248d3c9838536a4351e31cc1786b9fd875743a9c87be9f7258a07c96d0b55'
+sha256sums_aarch64=('74e7a1be935608b53ccf1cb39957f0b514b8a935552f1033d2d10e9f8acb69ca'
                     '9fc1c556fb5b9764f9f6f474161d871776c25a507cb82ba25006beb658c29cea')
 
 latestver() {
