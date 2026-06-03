@@ -1,7 +1,7 @@
 # Maintainer: Jordan Cannon <LiteracyFanatic@gmail.com>
 pkgname=kensaku-bin
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Quick and easy search for Japanese kanji, radicals, and words'
 arch=('x86_64')
 url="https://github.com/LiteracyFanatic/kensaku"
