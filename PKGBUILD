@@ -6,8 +6,8 @@ pkgdesc="A fast, lightweight Unix shell written in Cpp"
 arch=('x86_64')
 url="https://gitlab.com/cpp4692517/shell"
 license=('MIT')
-makedepends=('git' 'xmake' 'lua')
-depends=('lua')
+makedepends=('git' 'xmake' 'lua54')
+depends=('lua54')
 source=("git+https://gitlab.com/cpp4692517/shell.git")
 sha256sums=('SKIP')
 
@@ -18,9 +18,8 @@ build() {
 
 package() {
     cd shell
-    xmake install -o "$pkgdir/usr/bin/"
-
-    install -Dm644 LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
+    xmake install --root -o "$pkgdir/usr/bin/"
+    install -Dm644 LICENCE \
+	"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    	
 }

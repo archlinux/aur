@@ -7,8 +7,8 @@ pkgbase = squish
 	license = MIT
 	makedepends = git
 	makedepends = xmake
-	makedepends = lua
-	depends = lua
+	makedepends = lua54
+	depends = lua54
 	source = git+https://gitlab.com/cpp4692517/shell.git
 	sha256sums = SKIP
 
