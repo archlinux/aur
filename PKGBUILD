@@ -49,14 +49,14 @@ source=("${url}.git#branch=main")
 sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${_pkgreal}"
+  cd "$(find "${srcdir}" -mindepth 1 -maxdepth 1 -type d | head -1)"
 
   npm install
   npx electron-builder --linux dir
 }
 
 package() {
-  cd "${srcdir}/${_pkgreal}"
+  cd "$(find "${srcdir}" -mindepth 1 -maxdepth 1 -type d | head -1)"
 
   local build_dir
   if [[ -d "dist/linux-unpacked" ]]; then
