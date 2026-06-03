@@ -8,7 +8,7 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler-git
-pkgver=2026.12rc1.r1.g3af33f6
+pkgver=2026.20rc1.r1.g30d2bb8
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) compiler (git version)'
 arch=('x86_64')
@@ -104,10 +104,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '6aea796acf3bbd3091dfeecbebfdbed1bd6023d343f49834c1d83fbb4a1d3eb8'
-            '3d13c41f7fac3568573680e84a01ed79727fe36587b1bc0285877d12ceea6e5a'
-            'e1824ef4d3e2db7cdbabebf3c4fe565989541164345ee7714f9b7505ccc364c4'
+            '1b18dca84d13d475800df80c2522f74f994c4276bbca4c3e3b8a561523e78df8'
+            '69e9a88710548ff49abcbbdb3fc0a7350bb0d0354366e11370dd3fa460baa1b4'
             'e4734603808ad0402819eb36578f1eabb80524f4f82aed45f31736c5d184b2ef'
-            'ba2d8b40b8921acc70e0212138eb2b5db2b7311058b1092236356cf0dfe725f9'
+            '7aaccaf45a449a751019f272287a74fa3ed80809a7c990b16790590f1d93e0cf'
             'e7ec20d4fb173ae29b5b1f682e7b85efa3f5359ee355b959a7f51148c84ecc7f')
 
 export GIT_LFS_SKIP_SMUDGE='1'
@@ -207,7 +207,7 @@ build() {
         -DENABLE_SYSTEM_PUGIXML:BOOL='ON' \
         -DENABLE_SYSTEM_TBB:BOOL='ON' \
         -Wno-dev
-    cmake --build build --target compilerTest profilingTest vpuxCompilerL0Test loaderTest
+    cmake --build build --target openvino_intel_npu_compiler compilerTest profilingTest vpuxCompilerL0Test loaderTest
 }
 
 package() {

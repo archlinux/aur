@@ -1,3 +1,14 @@
+--- a/src/vpux_compiler/CMakeLists.txt
++++ b/src/vpux_compiler/CMakeLists.txt
+@@ -156,7 +156,7 @@ endif()
+ include(${PROJECT_SOURCE_DIR}/cmake/npu_compiler_version.cmake)
+ npu_compiler_configure_version(${COMPILER_LIB})
+ 
+-install_target_with_debug_files(${COMPILER_LIB} ${INSTALL_DESTINATION}/lib ${INSTALL_COMPONENT})
++install_target_with_debug_files(${COMPILER_LIB} lib ${INSTALL_COMPONENT})
+ 
+ install(TARGETS ${COMPILER_LIB}
+         ARCHIVE DESTINATION ${OV_CPACK_RUNTIMEDIR} COMPONENT ${VPUX_INTERNAL_COMPONENT}
 --- a/src/vpux_driver_compiler/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/CMakeLists.txt
 @@ -30,7 +30,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -15,9 +26,18 @@
      DESTINATION ${INSTALL_DESTINATION}
 -    COMPONENT ${INSTALL_COMPONENT})
 +    COMPONENT ${INSTALL_COMPONENT})]]
+--- a/src/vpux_driver_compiler/cmake/build_manifest.cmake
++++ b/src/vpux_driver_compiler/cmake/build_manifest.cmake
+@@ -48,5 +48,5 @@ configure_file(
+ 
+ install(
+     FILES ${CMAKE_CURRENT_BINARY_DIR}/build_manifest.json
+-    DESTINATION ${INSTALL_DESTINATION}
++    DESTINATION share/intel-npu-compiler
+     COMPONENT ${INSTALL_COMPONENT})
 --- a/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
-@@ -93,13 +93,13 @@ add_dependencies(${TARGET_NAME} VPUXLoader)
+@@ -63,13 +63,13 @@ add_dependencies(${TARGET_NAME} VPUXLoader)
  ov_add_api_validator_post_build_step(TARGET ${TARGET_NAME})
  
  # Install library related files to component
@@ -32,10 +52,10 @@
 +        DESTINATION include
          COMPONENT ${INSTALL_COMPONENT})
  
- # Install library for plugin if building for plugin and not for driver
+ # Install the openvino_intel_npu_compiler library to the same path of mlir_compiler
 --- a/src/vpux_driver_compiler/test/functional/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/test/functional/CMakeLists.txt
-@@ -67,7 +67,7 @@ endif()
+@@ -65,7 +65,7 @@ endif()
  if(ENABLE_PREBUILT_LLVM_MLIR_LIBS)
      find_package(MLIR REQUIRED CONFIG)
  endif()
@@ -44,12 +64,13 @@
  target_include_directories(${FUNCTIONAL_TARGET}
      SYSTEM PRIVATE
          $<BUILD_INTERFACE:${LLVM_SOURCE_DIR}/include>
-@@ -89,4 +89,4 @@ ov_link_system_libraries(${FUNCTIONAL_TARGET}
- ov_add_api_validator_post_build_step(TARGET vpuxCompilerL0Test)
+@@ -77,5 +77,5 @@ ov_add_api_validator_post_build_step(TARGET vpuxCompilerL0Test)
  
- # Install functional test to component
--install_target_with_debug_files(vpuxCompilerL0Test ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
-+install(TARGETS ${FUNCTIONAL_TARGET} RUNTIME DESTINATION bin COMPONENT ${INSTALL_COMPONENT})
+ # Install functional test to CiD component
+ if(BUILD_COMPILER_FOR_DRIVER)
+-    install_target_with_debug_files(vpuxCompilerL0Test ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
++    install(TARGETS ${FUNCTIONAL_TARGET} RUNTIME DESTINATION bin COMPONENT ${INSTALL_COMPONENT})
+ endif()
 --- a/src/vpux_driver_compiler/test/smoke/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/test/smoke/CMakeLists.txt
 @@ -12,6 +12,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -58,26 +79,32 @@
  add_executable(compilerTest compilerTest.cpp)
 +set_target_properties(compilerTest PROPERTIES OUTPUT_NAME intel-npu-compilerTest)
  target_link_libraries(compilerTest
-     PUBLIC
-         ${LINK_COMPILER_LIBRARY} # VCL function
-@@ -23,15 +24,17 @@ ov_add_api_validator_post_build_step(TARGET compilerTest)
+     PRIVATE
+         ${COMPILER_LOADER_DLL} # VCL function
+@@ -23,6 +24,7 @@ ov_add_api_validator_post_build_step(TARGET compilerTest)
  
  # profilingTest to check profiling API
  add_executable(profilingTest profilingTest.c)
 +set_target_properties(profilingTest PROPERTIES OUTPUT_NAME intel-npu-profilingTest)
- target_link_libraries(profilingTest PUBLIC ${LINK_COMPILER_LIBRARY})
- ov_add_api_validator_post_build_step(TARGET profilingTest)
+ target_link_libraries(profilingTest
+     PRIVATE
+         ${COMPILER_LOADER_DLL})
+@@ -30,6 +32,7 @@ ov_add_api_validator_post_build_step(TARGET profilingTest)
  
  # loaderTest to check npu_elf
  add_executable(loaderTest loaderTest.cpp)
 +set_target_properties(loaderTest PROPERTIES OUTPUT_NAME intel-npu-loaderTest)
- target_link_libraries(loaderTest PUBLIC npu_elf npu_llvm_utils npu_ov_utils LLVMSupport)
- ov_add_api_validator_post_build_step(TARGET loaderTest)
+ target_link_libraries(loaderTest
+     PRIVATE
+         npu_elf
+@@ -39,7 +42,7 @@ ov_add_api_validator_post_build_step(TARGET loaderTest)
  
- # Install smoke tests to component
--install_target_with_debug_files(compilerTest ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
--install_target_with_debug_files(profilingTest ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
--install_target_with_debug_files(loaderTest ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
-+install(TARGETS compilerTest RUNTIME DESTINATION bin COMPONENT ${INSTALL_COMPONENT})
-+install(TARGETS profilingTest RUNTIME DESTINATION bin COMPONENT ${INSTALL_COMPONENT})
-+install(TARGETS loaderTest RUNTIME DESTINATION bin COMPONENT ${INSTALL_COMPONENT})
+ # Install functional test to CiD component
+ if(BUILD_COMPILER_FOR_DRIVER)
+-    install_target_with_debug_files(compilerTest ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
+-    install_target_with_debug_files(profilingTest ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
+-    install_target_with_debug_files(loaderTest ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
++    install_target_with_debug_files(compilerTest bin ${INSTALL_COMPONENT})
++    install_target_with_debug_files(profilingTest bin ${INSTALL_COMPONENT})
++    install_target_with_debug_files(loaderTest bin ${INSTALL_COMPONENT})
+ endif()
