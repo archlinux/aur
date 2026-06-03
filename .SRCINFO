@@ -1,14 +1,14 @@
 pkgbase = nodejs-appium-execute-driver-plugin
 	pkgdesc = Plugin for batching and executing driver commands with Appiums
-	pkgver = 6.0.3
+	pkgver = 6.0.4
 	pkgrel = 1
 	url = https://www.npmjs.com/package/@appium/execute-driver-plugin
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = nodejs-appium-execute-driver-plugin-6.0.3.tgz
-	source = nodejs-appium-execute-driver-plugin-6.0.3.tgz::https://registry.npmjs.org/@appium/execute-driver-plugin/-/execute-driver-plugin-6.0.3.tgz
-	sha256sums = 0a62fda7b5a96d8ffb4744d9b03c9fc623bad89c417ec499919ab9084ab034ae
+	noextract = nodejs-appium-execute-driver-plugin-6.0.4.tgz
+	source = nodejs-appium-execute-driver-plugin-6.0.4.tgz::https://registry.npmjs.org/@appium/execute-driver-plugin/-/execute-driver-plugin-6.0.4.tgz
+	sha256sums = 53efd6cefb9f86d9a6221b6529a35f0e337b1d2e2d659ac2fc01b41999ed7552
 
 pkgname = nodejs-appium-execute-driver-plugin
