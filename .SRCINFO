@@ -1,6 +1,6 @@
 pkgbase = cinnamon-desktop-git
 	pkgdesc = Library with common API for various Cinnamon modules
-	pkgver = 4.4.1.r7.gf2c6cb7
+	pkgver = 6.7.1.unstable.r1.g8cc65c7
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon-desktop
 	arch = i686
@@ -16,12 +16,9 @@ pkgbase = cinnamon-desktop-git
 	depends = gtk3
 	depends = libxkbfile
 	depends = libpulse
-	provides = cinnamon-desktop=4.4.1.r7.gf2c6cb7
+	provides = cinnamon-desktop=6.7.1.unstable.r1.g8cc65c7
 	conflicts = cinnamon-desktop
 	source = git+https://github.com/linuxmint/cinnamon-desktop.git
-	source = config.diff
 	sha512sums = SKIP
-	sha512sums = 556e5d3781d985a031f0b08dd4e972ebc37058e0862fec5935df7dfbf7dfecebeccd10e78136e75d9fa5f184b8201cb0bc90154fca419861d9d33ac9645cf983
 
 pkgname = cinnamon-desktop-git
-

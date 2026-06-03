@@ -3,7 +3,7 @@
 # Contributor:  Jan de Groot <jan@archlinux.org>
 
 pkgname=cinnamon-desktop-git
-pkgver=4.4.1.r7.gf2c6cb7
+pkgver=6.7.1.unstable.r1.g8cc65c7
 pkgrel=1
 pkgdesc="Library with common API for various Cinnamon modules"
 arch=('i686' 'x86_64')
@@ -13,10 +13,8 @@ depends=('accountsservice' 'gtk3' 'libxkbfile' 'libpulse')
 makedepends=('git' 'meson' 'samurai' 'gobject-introspection' 'intltool')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
-source=("git+${url}.git"
-        "config.diff")
-sha512sums=('SKIP'
-            '556e5d3781d985a031f0b08dd4e972ebc37058e0862fec5935df7dfbf7dfecebeccd10e78136e75d9fa5f184b8201cb0bc90154fca419861d9d33ac9645cf983')
+source=("git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}"/${pkgname%-git}
@@ -26,9 +24,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}"/${pkgname%-git}
-
-    # Adjust configuration
-    patch -Np1 -i ../config.diff
 }
 
 build() {
