@@ -18,6 +18,7 @@ sha256sums=('SKIP')
 build() {
     cd "$srcdir/${pkgname}-src-${pkgver}"
     npm ci --prefer-offline
+    npx vite build renderer
     npx electron-builder --linux --dir
 }
 
