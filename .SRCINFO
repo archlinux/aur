@@ -1,6 +1,6 @@
 pkgbase = pororoca-bin
 	pkgdesc = Pororoca is a HTTP testing tool, inspired by Postman, but with many improvements.
-	pkgver = 3.10.0
+	pkgver = 3.10.1
 	pkgrel = 1
 	url = https://pororoca.io/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pororoca-bin
 	provides = pororoca
 	conflicts = pororoca
 	options = !strip
-	source = pororoca-bin-3.10.0-1.deb::https://github.com/alexandrehtrb/Pororoca/releases/download/3.10.0/Pororoca_3.10.0_amd64.deb
-	sha256sums = a0252e137f31c145f4e4c8da4575a1c3ee6d3ce66c197e331088147f690094eb
+	source = pororoca-bin-3.10.1-1.deb::https://github.com/alexandrehtrb/Pororoca/releases/download/3.10.1/Pororoca_3.10.1_amd64.deb
+	sha256sums = 783d1ae218068d0dd0abcc0aa09727fb2660c7a40e5d317a7df8e63ec816bc58
 
 pkgname = pororoca-bin
