@@ -2,7 +2,7 @@
 # Contributor: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 
 pkgname=zuban
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A Mypy-compatible Python Language Server built in Rust"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("git+https://github.com/zubanls/zuban.git#tag=v${pkgver}"
         "git+https://github.com/python/typeshed.git"
         "git+https://github.com/davidhalter/mypy.git"
         "git+https://github.com/typeddjango/django-stubs.git")
-sha256sums=('a8867cd5107835ac8a3422910b1f67e001af38f61b0e7cb9c8a6844a5c731794'
+sha256sums=('01272c96ec7f151cd063b16436de64734d52bdc3836be6a65ba121d5e29d0b11'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -32,7 +32,7 @@ build() {
     cd "${pkgname}/deploy/pypi/zuban"
     CFLAGS+=" -ffat-lto-objects"
     ./pre-maturin-build.sh
-    maturin build
+    maturin build --release
 }
 
 package() {
