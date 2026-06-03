@@ -1,0 +1,24 @@
+pkgbase = file-manager-bin
+	pkgdesc = A Linux desktop file manager built with Rust and Iced
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/nsjsv/File_Manager
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = alsa-lib
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = libxkbcommon
+	depends = wayland
+	depends = xdg-utils
+	optdepends = ffmpeg: video preview and video metadata support
+	optdepends = ffmpegthumbnailer: video thumbnail support
+	optdepends = p7zip: 7z archive preview support
+	optdepends = unrar: rar archive preview support
+	provides = file-manager
+	conflicts = file-manager
+	source_x86_64 = file-manager-v0.0.1-x86_64.tar.gz::https://github.com/nsjsv/File_Manager/releases/download/v0.0.1/file-manager-v0.0.1-x86_64.tar.gz
+	sha256sums_x86_64 = 05293b040f12fee3b628e65999196be525a453b925887eb324bfa67e9fb89140
+
+pkgname = file-manager-bin
