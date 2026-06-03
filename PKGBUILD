@@ -1,5 +1,5 @@
 pkgname=nusgmon-git
-pkgdesc="Record, log, and analyze your internet usage (systemd-service)"
+pkgdesc="Lightweight CLI to record and analyze network usage per interface"
 depends=('python' 'python-psutil' 'systemd')
 makedepends=('git')
 pkgver=108
