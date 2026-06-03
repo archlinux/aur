@@ -7,11 +7,11 @@ pkgrel=1
 _javaversion=21
 pkgdesc="Cross-platform Compose Multiplatform client for Beihang University campus services"
 arch=('x86_64')
-url="https://github.com/BUAASubnet/${_reponame}"
+url="https://www.buaa.team"
 license=('MIT')
 makedepends=("java-environment=${_javaversion}" "imagemagick")
 depends=("java-runtime>=${_javaversion}" "bash" "hicolor-icon-theme")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BUAASubnet/${_reponame}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh"
         "0001-build-composeApp-enable-ProGuard.patch")
