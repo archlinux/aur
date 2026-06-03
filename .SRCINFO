@@ -1,6 +1,6 @@
 pkgbase = gnome-tuner-panel
 	pkgdesc = Plugin for Tuner that adds panel mode switcher to Tweaks appearance page.
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://altlinux.space/alt-gnome/tunerpanel
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gnome-tuner-panel
 	depends = gtk4
 	depends = libadwaita
 	depends = libpeas-2
-	source = git+https://altlinux.space/alt-gnome/tunerpanel.git#tag=0.4.6
-	sha256sums = 80959f9bf4d538f08ef248acb8cdb527e511e20031b7e514dac5d69fd4802249
+	source = git+https://altlinux.space/alt-gnome/tunerpanel.git#tag=0.4.7
+	sha256sums = 560aa02d65c0ce758825368fb0c69c835c930eec09e904b13137ee942984e976
 
 pkgname = gnome-tuner-panel
