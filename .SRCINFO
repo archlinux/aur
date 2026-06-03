@@ -12,6 +12,6 @@ pkgbase = gopac
 	optdepends = yay: AUR helper
 	optdepends = paru: AUR helper
 	source = gopac-1.5.0.tar.gz::https://github.com/the-daonm/gopac/archive/v1.5.0.tar.gz
-	sha256sums = 840118334848e22a5a572d6528e2025b4d90de2cf80a026dae65d7f59eb1419e
+	sha256sums = 1d3aaec59318b7eeccf863df1e970851240b17007fc24c5670aa82dec6dcb887
 
 pkgname = gopac
