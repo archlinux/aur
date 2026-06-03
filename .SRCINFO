@@ -1,6 +1,6 @@
 pkgbase = openhuman-core-bin
 	pkgdesc = Core binary for OpenHuman
-	pkgver = 0.57.11
+	pkgver = 0.57.13
 	pkgrel = 1
 	url = https://github.com/tinyhumansai/openhuman
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = openhuman-core-bin
 	depends = libxtst
 	depends = openssl
 	depends = xdotool
-	provides = openhuman-core=0.57.11
+	provides = openhuman-core=0.57.13
 	conflicts = openhuman-core
 	options = !strip
 	options = !debug
-	source_x86_64 = openhuman-core-0.57.11-x86_64.tar.gz::https://github.com/tinyhumansai/openhuman/releases/download/v0.57.11/openhuman-core-0.57.11-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 2770d83de347489bda4d6e1f73965cae660bcc4a8fe59bd406f69734ce164438
-	source_aarch64 = openhuman-core-0.57.11-aarch64.tar.gz::https://github.com/tinyhumansai/openhuman/releases/download/v0.57.11/openhuman-core-0.57.11-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a4a359ce0a3a7293cff1508ec6638ccda580bc90d89bd0ddf78552db6a22ed25
+	source_x86_64 = openhuman-core-0.57.13-x86_64.tar.gz::https://github.com/tinyhumansai/openhuman/releases/download/v0.57.13/openhuman-core-0.57.13-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ea186d337902e04e252f1a7f7afed7c9f3da00dca8122667c55ca7a75b26d8d9
+	source_aarch64 = openhuman-core-0.57.13-aarch64.tar.gz::https://github.com/tinyhumansai/openhuman/releases/download/v0.57.13/openhuman-core-0.57.13-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = fe6e1bbf5d1e7513a560666b9a68aa68ba9cf571b4d31066fb6a8ceed85791ab
 
 pkgname = openhuman-core-bin
