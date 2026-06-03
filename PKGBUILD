@@ -6,7 +6,7 @@ url="https://github.com/matrix-construct/tuwunel"
 license=("Apache-2.0")
 arch=("x86_64")
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 makedepends=("rust" "cargo" "git" "clang" "linux-api-headers" "linux-headers" "llvm" "libc++" "autoconf")
 depends=("gcc-libs" "glibc" "liburing")
 source=("git+https://github.com/matrix-construct/tuwunel#tag=v${pkgver}")
