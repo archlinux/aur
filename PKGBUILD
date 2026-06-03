@@ -1,23 +1,26 @@
 # Maintainer: ChickenJockey7
 pkgname=squish
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="A unix based shell written in cpp"
+pkgdesc="A fast, lightweight Unix shell written in Cpp"
 arch=('x86_64')
 url="https://gitlab.com/cpp4692517/shell"
 license=('MIT')
-makedepends=('git' 'cmake' 'make' 'gcc')
-depends=('lua')
+makedepends=('git' 'xmake' 'lua')
+depends=('lua>=5.2' 'lua<=5.4')
 source=("git+https://gitlab.com/cpp4692517/shell.git")
 sha256sums=('SKIP')
 
 build() {
     cd shell
-    cmake -B build -DCMAKE_BUILD_TYPE=Release
-    cmake --build build 2>/dev/null
+    xmake   
 }
 
 package() {
     cd shell
-    DESTDIR="$pkgdir" cmake --install build
+    sudo xmake install --root -o "$pkgdir/usr/bin/"
+
+    install -Dm644 LICENSE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 }
