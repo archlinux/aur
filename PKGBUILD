@@ -82,9 +82,10 @@ package() {
   install -d "${pkgdir}/opt/priestess"
   cp -a "${build_dir}"/* "${pkgdir}/opt/priestess/"
 
-  # Electron-builder with productName "PRTS" produces a binary named "prts"
-  if [[ -f "${pkgdir}/opt/priestess/prts" ]]; then
-    chmod 755 "${pkgdir}/opt/priestess/prts"
+  # The binary is named after the "name" field in package.json
+  local _bin="${pkgdir}/opt/priestess/${_pkgreal}"
+  if [[ -f "${_bin}" ]]; then
+    chmod 755 "${_bin}"
   fi
 
   chmod 4755 "${pkgdir}/opt/priestess/chrome-sandbox" 2>/dev/null || true
@@ -95,7 +96,7 @@ package() {
 #!/bin/bash
 export ELECTRON_OZONE_PLATFORM_HINT="${ELECTRON_OZONE_PLATFORM_HINT:-auto}"
 export ELECTRON_ENABLE_WAYLAND_ACTIVATION_TOKEN_HACK="${ELECTRON_ENABLE_WAYLAND_ACTIVATION_TOKEN_HACK:-1}"
-exec /opt/priestess/prts "$@"
+exec /opt/priestess/${_pkgreal} "$@"
 WRAPPER
   chmod 755 "${pkgdir}/usr/bin/priestess"
 
