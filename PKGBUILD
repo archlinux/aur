@@ -14,6 +14,8 @@ makedepends=(
 	'git'
 	'cargo'
 	'asciidoctor'
+	'nodejs'
+	'npm'
 	'pnpm'
 	'libgit2'
 )
