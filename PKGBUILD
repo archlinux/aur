@@ -9,7 +9,7 @@
 
 pkgname=hpd-handheld-power-daemon-bin
 _realname=hpd-handheld-power-daemon
-pkgver=2.2.2
+pkgver=2.2.3
 # pkgrel is static (not a placeholder): reset to 1 when bumping pkgver,
 # increment for packaging-only respins of the same version.
 pkgrel=1
@@ -19,12 +19,12 @@ url="https://github.com/CiroDev-Git/hpd-handheld-power-daemon"
 license=('GPL-3.0-or-later')
 depends=('dbus' 'polkit' 'systemd')
 provides=("$_realname=$pkgver")
-conflicts=("$_realname")
+conflicts=("$_realname" 'power-profiles-daemon')
 backup=('etc/hpd/config.toml.example')
 install="hpd.install"
 options=(!strip !debug)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/hpd-$pkgver-x86_64-linux.tar.gz")
-sha256sums=('0ea9d5b27fa95a7ab576b32e5d1abb865ee7a2e3b28117757af51fa991cabe8f')
+sha256sums=('a609bb96f87192e6af9829276d87903dfadb4da982bf46c092bbd3146b3e7049')
 
 package() {
     cd "hpd-$pkgver-x86_64-linux"
