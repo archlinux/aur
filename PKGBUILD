@@ -1,6 +1,6 @@
 # Maintainer: meatyari <https://github.com/MeatyAri>
 pkgname=slideflare-git
-pkgver=r70.f9b97ab
+pkgver=0  # dynamically overridden by pkgver()
 pkgrel=1
 pkgdesc="⚡ Blazing fast, interactive presentation tool for developers, educators, and creators"
 arch=('x86_64' 'aarch64')
