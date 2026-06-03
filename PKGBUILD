@@ -4,7 +4,7 @@ pkgver=1.17.10
 pkgrel=1
 pkgdesc="基于 Mihomo（Clash.Meta 内核）的多平台代理客户端"
 arch=('x86_64' 'aarch64')
-url="https://github.com/appshubcc/Bettbox"
+url="https://github.com/lyj404/bettbox-aur"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk3'
@@ -12,8 +12,8 @@ depends=(
   'libkeybinder3'
 )
 options=('!strip' '!debug')
-source_x86_64=("${url}/releases/download/v${pkgver}/Bettbox-${pkgver}-linux-amd64.deb")
-source_aarch64=("${url}/releases/download/v${pkgver}/Bettbox-${pkgver}-linux-arm64.deb")
+source_x86_64=("https://github.com/appshubcc/Bettbox/releases/download/v${pkgver}/Bettbox-${pkgver}-linux-amd64.deb")
+source_aarch64=("https://github.com/appshubcc/Bettbox/releases/download/v${pkgver}/Bettbox-${pkgver}-linux-arm64.deb")
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 
