@@ -6,11 +6,12 @@
 
 pkgname=priestess-arknights
 _pkgreal=claude-code-but-priestess
+_upstream_url=https://github.com/SVAH-X/claude-code-but-priestess
 pkgver=0.5.1
 pkgrel=1
 pkgdesc="桌面伴侣普瑞赛斯 (Priestess) — 基于 Claude Code / Codex CLI 后端的 Electron 托盘应用"
 arch=('x86_64')
-url="https://github.com/SVAH-X/claude-code-but-priestess"
+url="https://github.com/aklnaaw/claude-code-but-priestess"
 license=('custom:UNLICENSED')
 depends=(
   'cairo'
@@ -44,16 +45,11 @@ depends=(
 )
 makedepends=('git' 'nodejs' 'npm')
 install=priestess.install
-source=("${url}.git#branch=main"
-        "linux-compat.patch")
-sha256sums=('SKIP'
-            'SKIP')
+source=("${url}.git#branch=main")
+sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/${_pkgreal}"
-
-  # Apply Linux compatibility patches (Wayland, tray, Chinese i18n)
-  patch -p1 -i "${srcdir}/linux-compat.patch"
 
   npm install
   npx electron-builder --linux dir
