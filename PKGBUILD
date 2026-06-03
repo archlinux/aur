@@ -1,9 +1,10 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Capricornus007 <Capricornus007 at proton dot me>
+# Co-Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Alexandre Filgueira <alexfilgueira@antergos.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=cinnamon-session-git
-pkgver=4.4.1.r1.ga582be4
+pkgver=6.7.1.unstable.r2.ge01c8c3
 pkgrel=1
 pkgdesc="The Cinnamon Session Handler"
 arch=('i686' 'x86_64')
@@ -30,8 +31,6 @@ build() {
     meson --prefix=/usr \
           --libexecdir=lib/${pkgname%-git} \
           --buildtype=plain \
-          -Dgconf=false \
-          -Ddocbook=false \
           ..
     samu
 }
