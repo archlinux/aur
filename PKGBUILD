@@ -10,7 +10,7 @@ depends=('coreutils' 'glibc' 'readline' 'util-linux' 'xz' 'zstd')
 makedepends=('gcc' 'make')
 conflicts=('iso-commander-bin')
 optdepends=(
-    'ntfs-3g: NTFS formatting for Windows live USB creation (writes use the ntfs3 kernel driver)'
+    'ntfsprogs: NTFS formatting for Windows live USB creation'
     'dosfstools: FAT32 formatting for Windows live USB creation'
     'parted: GPT partition layout for Windows live USB creation'
 )
