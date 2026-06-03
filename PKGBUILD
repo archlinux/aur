@@ -2,7 +2,7 @@
 
 pkgname=qtox-toktok
 _pkgname=qTox
-pkgver=1.18.4
+pkgver=1.18.5
 pkgrel=3
 pkgdesc='Powerful Tox client written in C++/Qt (TokTok fork)'
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('qt6-svg' 'tox' 'libexif' 'ffmpeg' 'qrencode' 'sqlcipher' 'openal' 'libglvnd')
 optdepends=('sonnet>=6.0: spell checking support' 'xscreensaver>=1.2: auto-away status support')
 makedepends=('base-devel' 'cmake' 'qt6-tools')
-source=("https://github.com/TokTok/qTox/releases/download/v1.18.4/v${pkgver}.tar.xz")
-sha512sums=('b2af8c3d73925cbe573cfe41a9e97e5432226427e00ce5a04ee570cff14a465bc6df9c55ebddce0e56fa3fb31f7248d1ae521a30b6ae77deee6cf2335a33554c')
+source=("https://github.com/TokTok/qTox/releases/download/v${pkgver}/qTox-${pkgver}.tar.xz")
+sha512sums=('b2f0886e885206a70dc3915bd6d7ca0051ce8c4b15c3f42f1e769583cf11609a7ff2cdb47715404db17ee638ce5636d128064bef50314c711194a9840cc8bfae')
 
 build() {
   cd ${_pkgname}-v${pkgver}
