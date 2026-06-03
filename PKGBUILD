@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <https://rys.rs/contact>
 
 pkgname=samrewritten
-pkgver=1.3.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Unlock achievements and stats on Steam, and more!"
 url="https://github.com/PaulCombal/SamRewritten"
@@ -10,8 +10,8 @@ arch=('x86_64')
 makedepends=('cargo' 'gtk4' 'pkg-config')
 depends=('gtk4')
 optdepends=('libadwaita: for Adwaita styling')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PaulCombal/SamRewritten/archive/v${pkgver}.tar.gz")
-sha256sums=('559d20a7db2f11c7de8eb9ab957da87d973c552cc3a90a6a0297e4f0be455ae0')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PaulCombal/SamRewritten/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('95756ca7872d9613154111816492afb046a55f8019448230ca5e17de39df9f8a')
 
 prepare() {
 	cd "${srcdir}/SamRewritten-${pkgver}"
@@ -39,4 +39,11 @@ package() {
 	install -Dm644 "assets/icon_256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/samrewritten.png"
 	install -Dm644 "package/samrewritten.desktop" "${pkgdir}/usr/share/applications/samrewritten.desktop"
 	install -Dm644 "assets/org.samrewritten.SamRewritten.gschema.xml" "${pkgdir}/usr/share/glib-2.0/schemas/org.samrewritten.SamRewritten.gschema.xml"
+
+	for dir in locale/*/; do
+		install -Dm644 \
+			"${dir}/LC_MESSAGES/"*.mo \
+			-t "${pkgdir}/usr/share/locale/$(basename "${dir}")/LC_MESSAGES"
+	done
+
 }
