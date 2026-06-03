@@ -1,6 +1,6 @@
 pkgbase = kyber-launcher-inofficial-appimage
 	pkgdesc = Inofficial Linux build of the Kyber mod launcher for Star Wars: Battlefront II (2017). Not endorsed by the Kyber team.
-	pkgver = 0.1.0_beta.6.2
+	pkgver = 0.1.0_beta.6.3
 	pkgrel = 1
 	url = https://github.com/simonlinuxcraft/kyber-linuxport-unofficial
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = kyber-launcher-inofficial-appimage
 	optdepends = vulkan-tools: vulkaninfo, useful for bug reports
 	optdepends = gamemode: keeps the CPU governor on performance while BF2 runs
 	options = !strip
-	noextract = KyberLinuxPort-0.1.0-beta.6.2-x86_64.AppImage
-	source = KyberLinuxPort-0.1.0-beta.6.2-x86_64.AppImage::https://github.com/simonlinuxcraft/kyber-linuxport-unofficial/releases/download/v0.1.0-beta.6.2/KyberLinuxPort-x86_64.AppImage
-	sha256sums = 8fc272960ab4ffc1595c1a0a41097732e7a8bbbb1228e984dfe9b2f9d61f7b9d
+	noextract = KyberLinuxPort-0.1.0-beta.6.3-x86_64.AppImage
+	source = KyberLinuxPort-0.1.0-beta.6.3-x86_64.AppImage::https://github.com/simonlinuxcraft/kyber-linuxport-unofficial/releases/download/v0.1.0-beta.6.3/KyberLinuxPort-x86_64.AppImage
+	sha256sums = 55e1494899573abeadede05dccec9b684a9c563a7b930650af747b6754ef3f00
 
 pkgname = kyber-launcher-inofficial-appimage
