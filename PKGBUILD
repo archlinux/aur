@@ -1,13 +1,13 @@
 # Maintainer: ChickenJockey7
 pkgname=squish
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, lightweight Unix shell written in Cpp"
 arch=('x86_64')
 url="https://gitlab.com/cpp4692517/shell"
 license=('MIT')
 makedepends=('git' 'xmake' 'lua')
-depends=('lua>=5.2' 'lua<5.5')
+depends=('lua')
 source=("git+https://gitlab.com/cpp4692517/shell.git")
 sha256sums=('SKIP')
 
