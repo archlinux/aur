@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 226039 2017-04-27 13:52:30Z felixonmars $
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Capricornus007 <Capricornus007 at proton dot me>
+# Co-Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: csslayer <wengxt AT gmail com>
 
 pkgname=fcitx5-rime-git
-pkgver=5.0.0.r1.gc90df10
-pkgrel=2
+pkgver=5.1.13.r2.ge84ffa1
+pkgrel=1
 pkgdesc="RIME input method for fcitx5"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx5-rime"
