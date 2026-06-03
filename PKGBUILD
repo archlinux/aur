@@ -3,7 +3,7 @@
 pkgname=nethermind-ethereum-bin
 pkgver=1.38.0
 _commit=c07a4d65
-pkgrel=6
+pkgrel=7
 pkgdesc='A robust execution client for Ethereum node operators'
 arch=('x86_64' 'aarch64')
 url='https://downloads.nethermind.io/'
@@ -13,12 +13,16 @@ depends=('bash' 'zlib')
 provides=('nethermind' 'Nethermind.Runner')
 conflicts=('nethermind' 'Nethermind.Runner')
 backup=('etc/nethermind/NLog.config')
+source=(
+  "https://github.com/NethermindEth/nethermind/raw/${_commit}/LICENSE-LGPL"
+)
 source_x86_64=(
   "https://github.com/NethermindEth/nethermind/releases/download/${pkgver}/nethermind-${pkgver}-${_commit}-linux-x64.zip"
 )
 source_aarch64=(
   "https://github.com/NethermindEth/nethermind/releases/download/${pkgver}/nethermind-${pkgver}-${_commit}-linux-arm64.zip"
 )
+sha256sums=('e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118')
 sha256sums_x86_64=('7b0fd8f10b5188887a40dbbc6383ccaf383c97640d267828ce2db9519053a154')
 sha256sums_aarch64=('688ae850769cb75a675cb99a01026674ea0cf62e70368d27eef193cefac2dd51')
 
