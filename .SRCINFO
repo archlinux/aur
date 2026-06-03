@@ -1,0 +1,19 @@
+pkgbase = qbittorrent-tui-bin
+	pkgdesc = A terminal-based user interface for monitoring and managing qBittorrent.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/nickvanw/qbittorrent-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = qbt-tui
+	conflicts = qbittorrent-tui
+	options = !strip
+	source = CONFIG-EXAMPLE-0.1.5.toml::https://raw.githubusercontent.com/nickvanw/qbittorrent-tui/v0.1.5/config.example.toml
+	sha256sums = 3c0b7f9703a23d64992e23025834ff9b16bf5c6d92170d1a662abde6be81db98
+	source_x86_64 = qbt-tui-x86_64-0.1.5.tgz::https://github.com/nickvanw/qbittorrent-tui/releases/download/v0.1.5/qbt-tui_0.1.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 20642b268daf1353b3ad82fa4b79aa34a093cb228f352ea39b05d604abe7c113
+	source_aarch64 = qbt-tui-aarch64-0.1.5.tgz::https://github.com/nickvanw/qbittorrent-tui/releases/download/v0.1.5/qbt-tui_0.1.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 535a4e20c249b7936397a30a1b3b165964bdcf8248dd5b32d6a526f55d46411b
+
+pkgname = qbittorrent-tui-bin
