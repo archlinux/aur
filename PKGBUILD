@@ -7,7 +7,7 @@
 
 pkgname=joplin-server
 pkgver=3.6.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Joplin Server for self-hosting Joplin Notes"
 url="https://github.com/laurent22/joplin/tree/v${pkgver}/packages/server"
 license=('Custom')
@@ -33,6 +33,19 @@ prepare() {
   rm -r "${srcdir}/joplin-${pkgver}/packages/app-mobile"
   rm -r "${srcdir}/joplin-${pkgver}/packages/app-clipper"
   rm -r "${srcdir}/joplin-${pkgver}/packages/app-cli"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/default-plugins"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/doc-builder"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/editor"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/generate-plugin-doc"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/generator-joplin"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/onenote-converter"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/pdf-viewer"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/plugin-repo-cli"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/plugins"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/react-native-alarm-notification"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/react-native-saf-x"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/transcribe"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/whisper-voice-typing"
   msg2 "Remove onenote-converter from package.json - not used for Server"
   sed --in-place '/onenote-converter/d' "${srcdir}/joplin-${pkgver}/packages/lib/package.json"
 }
@@ -81,6 +94,5 @@ package() {
     install -Dm644 joplin-server.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     install -Dm644 joplin-server.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 joplin-server.env "${pkgdir}/etc/${pkgname}.env"
-  
 }
 
