@@ -1,14 +1,14 @@
 pkgbase = python-pyevtk
 	pkgdesc = Export data as binary VTK files
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyscience-projects/pyevtk
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-wheel
+	makedepends = python-versioneer
 	depends = python-numpy
 	source = pyevtk-1.7.0.tar.gz::https://github.com/pyscience-projects/pyevtk/archive/v1.7.0.tar.gz
 	sha512sums = ba29bdb42c424c58a424e41022e81bd803b5ec73b66faf9f56b9c743e11339ef6881959ac29017fc114d59c97a663d244577f6ca7b3ed0eecd3606806e95539c
