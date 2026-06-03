@@ -13,11 +13,15 @@ fzf, then opens a capo-shell for the selected cluster.
 Arguments:
   command      Command to pass through to capo-shell (default: \$SHELL or bash)
 
-Environment variables:
+Environment variables (override/extend config file):
   MANAGEMENT_KUBECONFIGS                    Semicolon-separated list of management kubeconfig paths
   KUBECONFIG                                Semicolon-separated management cluster kubeconfig paths (additional)
-  MULTI_CAPO_SHELL_CUSTOM_COLUMN_<name>     yq expression for an extra fzf preview column
+  MULTI_CAPO_SHELL_CUSTOM_COLUMN_<name>     yq expression for an extra fzf preview column (overrides config)
   MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION   yq expression for a custom cluster display name
+
+Config file: \${XDG_CONFIG_HOME:-\$HOME/.config}/capo-shell/config.yaml
+  management_clusters[].{kubeconfig,context}   cluster sources (merged with env vars above)
+  custom_fields.<name>                          jq expressions for fzf preview columns (used if no env columns set)
 EOF
   exit 0
 fi
@@ -27,31 +31,57 @@ if ! command -v fzf &>/dev/null; then
   exit 1
 fi
 
-declare -a management_kubeconfigs=()
-mapfile -t management_kubeconfigs < <(
+_capo_config="${XDG_CONFIG_HOME:-$HOME/.config}/capo-shell/config.yaml"
+declare -a _mgmt_kubeconfigs=()
+declare -a _mgmt_contexts=()
+
+while IFS= read -r _kc; do
+  [[ -n "$_kc" ]] && _mgmt_kubeconfigs+=("$_kc") && _mgmt_contexts+=("")
+done < <(
   [[ -v MANAGEMENT_KUBECONFIGS ]] && echo -e "${MANAGEMENT_KUBECONFIGS//;/\\n}"
   [[ -v KUBECONFIG ]] && echo -e "${KUBECONFIG//;/\\n}"
 )
+
+if [[ -f "$_capo_config" ]]; then
+  while IFS= read -r _kc && IFS= read -r _ctx; do
+    _expanded="$(envsubst <<< "$_kc")"
+    [[ -n "$_expanded" ]] && _mgmt_kubeconfigs+=("$_expanded") && _mgmt_contexts+=("$_ctx")
+  done < <(yq -r '.management_clusters[] | (.kubeconfig, (.context // ""))' "$_capo_config")
+fi
 
 declare -a custom_columns=()
 for custom_column_var in ${!MULTI_CAPO_SHELL_CUSTOM_COLUMN_*}; do
   custom_columns+=("${!custom_column_var}")
 done
+if [[ "${#custom_columns[@]}" -eq 0 ]] && [[ -f "$_capo_config" ]]; then
+  while IFS= read -r _expr; do
+    [[ -n "$_expr" ]] && custom_columns+=("$_expr")
+  done < <(yq -r '(.custom_fields // {}) | to_entries[] | select(.key != "friendly_name") | .value' "$_capo_config")
+fi
 if [[ "${#custom_columns[@]}" -gt 0 ]]; then
   printf -v custom_columns_string "\\(%s):" "${custom_columns[@]}"
 else
   custom_columns_string=""
 fi
 
+if [[ ! -v MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION ]] && [[ -f "$_capo_config" ]]; then
+  _friendly_expr="$(yq -r '.custom_fields.friendly_name // empty' "$_capo_config")"
+  [[ -n "$_friendly_expr" ]] && MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION="$_friendly_expr"
+fi
 MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION="${MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION:-\"\"}"
 
-if [[ "${#management_kubeconfigs[@]}" -gt 0 ]]; then
+if [[ "${#_mgmt_kubeconfigs[@]}" -gt 0 ]]; then
   shopt -s lastpipe
-  for mgmt_kubeconfig in "${management_kubeconfigs[@]}"; do
-    export KUBECONFIG="$mgmt_kubeconfig"
-    for context in $(kubectl config get-contexts -o name); do
+  for _i in "${!_mgmt_kubeconfigs[@]}"; do
+    export KUBECONFIG="${_mgmt_kubeconfigs[$_i]}"
+    if [[ -n "${_mgmt_contexts[$_i]}" ]]; then
+      _contexts=("${_mgmt_contexts[$_i]}")
+    else
+      mapfile -t _contexts < <(kubectl config get-contexts -o name)
+    fi
+    for context in "${_contexts[@]}"; do
       (kubectl --context "$context" get cluster -A -o yaml || true) | yq -r --arg kubeconfig "$KUBECONFIG" --arg context "$context" '.items | map("\($kubeconfig):\($context):\(.metadata.namespace):\(.metadata.name):'"$custom_columns_string"'\(('"${MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION}"') as $custom_name | if $custom_name == "" then .metadata.name else "\($custom_name) (\(.metadata.name))" end)")[]'
     done
-  done | fzf --sync --preview="awk -v name={} 'BEGIN{split(name,splitted,\":\"); print splitted[2] \"@\" splitted[1]}'" -d : --with-nth=$((4 + ${#custom_columns[@]})),$((5 + ${#custom_columns[@]})) | IFS=: read -r mgmt_kubeconfig mgmt_context namespace name _
+  done | fzf --sync --preview="awk -v name={} 'BEGIN{split(name,splitted,\":\"); print splitted[2] \"@\" splitted[1]}'" -d : --with-nth=5..$((5 + ${#custom_columns[@]})) | IFS=: read -r mgmt_kubeconfig mgmt_context namespace name _
   exec env KUBECONFIG="$mgmt_kubeconfig" KUBECONFIG_CONTEXT="$mgmt_context" capo-shell "$namespace" "$name" "${@}"
 fi

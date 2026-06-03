@@ -1,7 +1,7 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=capo-shell
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Wrapper to start a tool or shell with KUBECONFIG and OS_ environment variables to interact with cluster-api-provider-openstack clusters"
 license=('APACHE')
@@ -9,8 +9,8 @@ arch=('any')
 depends=('kubectl' 'yq')
 optdepends=('fzf: needed for multi-capo-shell' 'moreutils: needed for sponge for CAPO_SHELL_KUBECONFIG_FILTER')
 source=("$pkgname" "multi-capo-shell")
-sha512sums=('3f88b57b358bed41a34ba96f68e65ab0a04ceabbfbd5aa6bb92ec4980c1d2d83f8ba4c735516c5fee20aafd338c386de4d5fd74098070818aa455f31302e8ee0'
-            '24753d9a0cdd55a2b8449ef093f4638c284a8a066d2b5481a6074ea99fae7163adb975b456f2b378d168529742b243f2ad4fdeb92b114c3951906558a06a0a15')
+sha512sums=('2cb29d0f40d721101f58e1dc2bbd436d2a88fbead27f815239a3d97acf9870d0e292ddf91c5dd9dd1368bb092fffdaa36f7db6784f447afe92d5d8dd053b8e99'
+            '8e5ccdc2544b26531b03865aa324e545c825baafeb9fd7928393789daa2db0a15d1002fe194aa65b7d92089c37d0a3921841d65b0b961a432b88d12299419216')
 
 package() {
   for file in "${source[@]}"; do

@@ -15,10 +15,15 @@ Arguments:
   name         Name of the cluster
   command      Command to run (default: \$SHELL or bash)
 
-Environment variables:
+Environment variables (override config file):
   KUBECONFIG_CONTEXT              kubectl context to use for the management cluster
   CAPO_SHELL_KUBECONFIG_FILTER    yq expression to filter the workload kubeconfig
   CAPO_SHELL_SSHUTTLE_HOST        SSH host to proxy API server traffic via sshuttle
+
+Config file: \${XDG_CONFIG_HOME:-\$HOME/.config}/capo-shell/config.yaml
+  transforms.{clusters,contexts,users}   jq expressions applied to workload kubeconfig sections
+  sshuttle_host                          global SSH proxy host
+  management_clusters[].sshuttle_host    per-cluster SSH proxy host (matched by KUBECONFIG path)
 EOF
   exit 0
 fi
@@ -28,6 +33,36 @@ name="${2?}"
 shift
 shift
 envs=()
+
+_capo_config="${XDG_CONFIG_HOME:-$HOME/.config}/capo-shell/config.yaml"
+if [[ -f "$_capo_config" ]]; then
+  if [[ ! -v CAPO_SHELL_SSHUTTLE_HOST ]]; then
+    _sshuttle=""
+    if [[ -v KUBECONFIG ]]; then
+      while IFS= read -r _kc && IFS= read -r _sh; do
+        if [[ "$(envsubst <<< "$_kc")" == "$KUBECONFIG" ]] && [[ -n "$_sh" ]]; then
+          _sshuttle="$(envsubst <<< "$_sh")"
+          break
+        fi
+      done < <(yq -r '.management_clusters[] | (.kubeconfig, (.sshuttle_host // ""))' "$_capo_config")
+    fi
+    if [[ -z "$_sshuttle" ]]; then
+      _sshuttle="$(yq -r '.sshuttle_host // empty' "$_capo_config")"
+      [[ -n "$_sshuttle" ]] && _sshuttle="$(envsubst <<< "$_sshuttle")"
+    fi
+    [[ -n "$_sshuttle" ]] && CAPO_SHELL_SSHUTTLE_HOST="$_sshuttle"
+  fi
+  if [[ ! -v CAPO_SHELL_KUBECONFIG_FILTER ]]; then
+    _filter=""
+    _t="$(yq -r '.transforms.clusters // empty' "$_capo_config")"
+    [[ -n "$_t" ]] && _filter="${_filter:+$_filter | }.clusters |= map($_t)"
+    _t="$(yq -r '.transforms.contexts // empty' "$_capo_config")"
+    [[ -n "$_t" ]] && _filter="${_filter:+$_filter | }.contexts |= map($_t)"
+    _t="$(yq -r '.transforms.users // empty' "$_capo_config")"
+    [[ -n "$_t" ]] && _filter="${_filter:+$_filter | }.users |= map($_t)"
+    [[ -n "$_filter" ]] && CAPO_SHELL_KUBECONFIG_FILTER="$_filter"
+  fi
+fi
 
 function cleanup() {
   [[ -v NEW_KUBECONFIG ]] && [[ -f "$NEW_KUBECONFIG" ]] && rm -f "$NEW_KUBECONFIG"
