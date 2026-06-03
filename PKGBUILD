@@ -4,13 +4,6 @@
 # for Arch Linux. The upstream binary is a self-contained Qt5 WebEngine bundle:
 # it ships its own Qt5, GTK3, GStreamer, etc. under /usr/share/eusoft-dehelper,
 # so only the base system libraries below need to come from Arch.
-#
-# Unlike the 'dehelper' package (which strips the bundle and links against the
-# system Qt5, dragging in a from-source build of the deprecated qt5-webkit),
-# this -bin package keeps the upstream bundle intact: it installs by simply
-# extracting the .deb — no compilation, no qt5-webkit, no Qt build toolchain.
-# Tradeoff: a larger on-disk footprint, but a fast, self-contained install that
-# is decoupled from system Qt updates. It also tracks the latest upstream build.
 
 pkgname=dehelper-bin
 pkgver=13.5.2
