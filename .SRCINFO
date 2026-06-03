@@ -1,6 +1,6 @@
 pkgbase = hive-bin
 	pkgdesc = Folder-as-agent pipeline for autonomous software tasks
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/ivankuznetsov/hive
 	install = hive.install
@@ -11,8 +11,8 @@ pkgbase = hive-bin
 	provides = hive
 	conflicts = hive
 	conflicts = apache-hive
-	noextract = hive-cli-0.1.10.gem
-	source = https://github.com/ivankuznetsov/hive/releases/download/v0.1.10/hive-cli-0.1.10.gem
-	sha256sums = e19f91c8d214c12d5624f2e65cd1aace75e379de2fd5d73b4895d8cce84c0782
+	noextract = hive-cli-0.1.11.gem
+	source = https://github.com/ivankuznetsov/hive/releases/download/v0.1.11/hive-cli-0.1.11.gem
+	sha256sums = ae8392d407ec35ee05a4ac3b8564b80761b31130e0ec17fcd5618a41d6449847
 
 pkgname = hive-bin
