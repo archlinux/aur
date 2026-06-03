@@ -1,6 +1,6 @@
 pkgbase = waybar-weather
 	pkgdesc = A waybar weather module with automatic geolocation lookup
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/wneessen/waybar-weather
 	install = waybar-weather_install.sh
@@ -12,7 +12,7 @@ pkgbase = waybar-weather
 	license = MIT
 	makedepends = go
 	options = !debug
-	source = https://github.com/wneessen/waybar-weather/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 400ae7b0d4aaa946d2b5d4c1079806a19c28406ff25698c6a55ca507b45604fb
+	source = https://github.com/wneessen/waybar-weather/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 31743a2d8ffd176089261e8fb2f6ccb00b31b5a407c6bd1d5f5ef394cf4f12bf
 
 pkgname = waybar-weather

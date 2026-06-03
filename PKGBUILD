@@ -1,7 +1,7 @@
 # Maintainer: Winni Neessen <wn@neessen.dev>
 
 pkgname=waybar-weather
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A waybar weather module with automatic geolocation lookup'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ install="${pkgname}_install.sh"
 source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('b17ceab96fdb42479f89ac196433d20c0cd25d97cdf06c431d1223193c41a5d9')
+sha256sums=('31743a2d8ffd176089261e8fb2f6ccb00b31b5a407c6bd1d5f5ef394cf4f12bf')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
