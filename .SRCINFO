@@ -9,7 +9,6 @@ pkgbase = ubaa-git
 	makedepends = java-environment=21
 	makedepends = imagemagick
 	depends = java-runtime>=21
-	depends = bash
 	depends = hicolor-icon-theme
 	provides = ubaa
 	conflicts = ubaa

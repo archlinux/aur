@@ -13,7 +13,7 @@ license=('MIT')
 makedepends=("git" "java-environment=${_javaversion}" "imagemagick")
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-depends=("java-runtime>=${_javaversion}" "bash" "hicolor-icon-theme")
+depends=("java-runtime>=${_javaversion}" "hicolor-icon-theme")
 source=("git+https://github.com/BUAASubnet/${_reponame}.git"
         "${_pkgname}.desktop"
         "${_pkgname}.sh")
