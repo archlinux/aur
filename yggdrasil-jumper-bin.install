@@ -4,7 +4,6 @@ post_install() {
 
 post_upgrade() {
     if systemctl is-active --quiet yggdrasil-jumper.service; then
-        systemctl daemon-reload
         systemctl restart yggdrasil-jumper.service
     fi
 }
