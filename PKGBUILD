@@ -3,7 +3,7 @@
 pkgname=zapret2-bin
 _pkgbase=${pkgname%-bin}
 pkgver=0.9.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Anti-DPI software (prebuilt binaries)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bol-van/$_pkgbase"
