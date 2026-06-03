@@ -37,6 +37,6 @@ depends = nss
 depends = pango
 depends = udev
 depends = zlib
-source = https://github.com/aklnaaw/claude-code-but-priestess.git#branch=main
+source = https://github.com/aklnaaw/claude-code-but-priestess.git
 sha256sums = SKIP
 pkgname = priestess-arknights

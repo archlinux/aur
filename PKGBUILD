@@ -45,18 +45,25 @@ depends=(
 )
 makedepends=('git' 'nodejs' 'npm')
 install=priestess.install
-source=("${url}.git#branch=main")
+source=("${url}.git")
 sha256sums=('SKIP')
 
+prepare() {
+  # makepkg downloads git sources as bundles, clone into a working directory
+  if [[ ! -d "${srcdir}/${_pkgreal}" ]]; then
+    git clone --branch main "${url}.git" "${srcdir}/${_pkgreal}"
+  fi
+}
+
 build() {
-  cd "$(find "${srcdir}" -mindepth 1 -maxdepth 1 -type d | head -1)"
+  cd "${srcdir}/${_pkgreal}"
 
   npm install
   npx electron-builder --linux dir
 }
 
 package() {
-  cd "$(find "${srcdir}" -mindepth 1 -maxdepth 1 -type d | head -1)"
+  cd "${srcdir}/${_pkgreal}"
 
   local build_dir
   if [[ -d "dist/linux-unpacked" ]]; then
