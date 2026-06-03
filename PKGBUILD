@@ -1,7 +1,7 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 
 pkgname=fleet-desktop
-pkgver=1.55.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='Menu bar icon that gives visibility into the security posture of your machine.'
 arch=(x86_64)
@@ -14,14 +14,14 @@ optdepends=(
   'fleet-orbit: integration with Fleet Orbit OSQuery'
 )
 source=(
-  'https://github.com/fleetdm/fleet/archive/refs/tags/orbit-v1.55.0.tar.gz'
+  'https://github.com/fleetdm/fleet/archive/refs/tags/orbit-v1.56.0.tar.gz'
   'fleet-desktop-orbit-link.hook'
   'fleet-desktop-orbit-link.sh'
   'fleet-desktop-orbit-link-cleanup.hook'
   'fleet-desktop-orbit-link-cleanup.sh'
 )
 sha512sums=(
-  '5804cf78f53fd804a3d3485128031b48d38a98f27caa9f01e2665d4884d120d7184171787a50d27c339737e82264e13ebbceecab3577e5f657c0e5ddea1eef57'
+  '62d730fea5c7baece74cfd8f432b8be6db140413947497e537c4d1378ef5df520b1d6d4783a3b6940f5c82685f1379f18866e06e435792efa947ab24c04020a2'
   '5d3257fee65c6613f45e0b78eb6af68697a8096dfdd37a0f9ea32fd32b21545ae3095f1e47e88c49128f32336aefa744f7670ca4ba9b477f0fa76492ed97ab98'
   '2b17ea1dedc1410ab5e96f84f1d8465b5dbff8508adf8e873691587252a934f8526162dd2dc1a4db5d7fa747b3db51bfd010a347f33c5f52abfaeaa9b95ed0d4'
   '74ab0fd342d9e4a6457862b23eb12d04a63854beff1e2b429c55695a88f68b2d70d0f5853f96903afa5e59823a266ffc70a2ad83845f7349c9ec349bc90e7e79'
@@ -36,7 +36,7 @@ build() {
 
   isodate="$(TZ=UTC date +'%Y-%m-%dT%H:%M:%SZ')"
   importpath='github.com/fleetdm/fleet/v4/orbit/pkg/build'
-  commitsha='4334017b38b8fee093db454d427b64d1459a0a0f'
+  commitsha='bad1bc5494128eb00c8e9789de0d6d02c353b0d1'
 
   ldflags="-s -w"
   ldflags="${ldflags} -X ${importpath}.Version=v${pkgver}"
