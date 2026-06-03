@@ -2,7 +2,7 @@
 
 _pkgname=carton
 pkgname="${_pkgname}-bin"
-pkgver=0.2.0 # renovate: datasource=github-releases depName=821869798/carton
+pkgver=0.3.0 # renovate: datasource=github-releases depName=821869798/carton
 pkgrel=1
 pkgdesc="A Windows and Linux GUI client for sing-box.(主打高性能和易用性，非electron tauri等web套皮)"
 arch=('x86_64' 'aarch64')
@@ -22,12 +22,12 @@ source_aarch64=("${_pkgname}-v${pkgver}-arm64-portable.tar.gz::https://github.co
 
 sha256sums=('d0f7cd798fd03274d6742245e320bbd2133dfdb7161c4470df4ea862b4fa57dd'
             'ddcf47960f17c5652904b24ad99a4a92af03dab850b8f29e50401d2a4a038138')
-sha256sums_x86_64=('8eef03eb9f3c0d6c4e6d3489f86e1bccfab85cf32705d27fd2bd168d28940a47')
-sha256sums_aarch64=('3d16a4dc06977be3a5c9d692cc947b4769cd5426164a5d7ed62ef4ea632593de')
+sha256sums_x86_64=('ebe4fdefd4714eee28aa4e7c69ac63d20d0ab812b7385da827c7d5dfe64d1d7b')
+sha256sums_aarch64=('af09073af7afca7c72354c7bbaff323673173a402d7f1d1c971d68cd90d0f0c4')
 
 package() {
     install -dm755 "${pkgdir}/opt/${_pkgname}"
-    cp -p "${srcdir}"/{"${_pkgname}",*.so} "${pkgdir}/opt/${_pkgname}/"
+    cp -p "${srcdir}"/{"${_pkgname}",sing-box,*.so} "${pkgdir}/opt/${_pkgname}/"
 
     patchelf --set-rpath '$ORIGIN' "${pkgdir}/opt/${_pkgname}/${_pkgname}"
 
@@ -44,7 +44,7 @@ Icon=carton_icon
 Type=Application
 Comment=A Windows and Linux GUI client for sing-box.
 Terminal=false
-Categories=Network;
+Categories=Utility;
 EOF
 
     # Icon images
