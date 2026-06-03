@@ -1,20 +1,19 @@
 pkgbase = podbox-bin
 	pkgdesc = Podman-native container environment manager
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/bethropolis/podbox
-	arch = x86_64
 	license = MIT
-	depends = podman
 	optdepends = fish: default shell in prebuilt images
 	optdepends = openssh: for SSH agent forwarding
-	provides = podbox
+	depends = podman
 	conflicts = podbox
-	options = !strip
-	options = !debug
-	source = https://github.com/bethropolis/podbox/releases/download/v0.3.0/podbox-v0.3.0-linux-x86_64.tar.gz
-	source = https://github.com/bethropolis/podbox/releases/download/v0.3.0/podbox-guest-v0.3.0-linux-x86_64-musl.tar.gz
-	sha256sums = 7d27f926c4e2445c0a27c26d16bd12a2b8b6fc5ac6cd83686217638b11a4897a
-	sha256sums = 10e261a25aedae2fd21564d95fef65ad714c5f69adeaebc40f40bf341979ad31
-
+	provides = podbox
+	arch = x86_64
+	source_x86_64 = https://github.com/bethropolis/podbox/releases/download/v0.3.2/podbox-guest-v0.3.2-linux-x86_64-musl.tar.gz
+	sha256sums_x86_64 = 95bb1e461580f023935f10ef388c1bb219c461cfe8a27a0db850795d53fe70d1
+	arch = x86_64
+	source_x86_64 = https://github.com/bethropolis/podbox/releases/download/v0.3.2/podbox-v0.3.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 261ea9a17c576d8fc9e2ef2e01453fddd646535135f290a999c3f082567b5913
+	
 pkgname = podbox-bin
