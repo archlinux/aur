@@ -1,6 +1,6 @@
 # Maintainer: Frederick Price <fprice@pricemail.ca>
 pkgname=volumepanning.lv2
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Mono-to-stereo LV2 plugin with volume, pan, mute, and bypass controls"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/rickprice/VolumePanning.lv2"
 license=('BSD-3-Clause')
 makedepends=('lv2' 'gcc')
 source=("VolumePanning.lv2-$pkgver.tar.gz::https://github.com/rickprice/VolumePanning.lv2/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e25e59e01bd97ac61344decd96dd354430a52e81210bc9514ab2e6c25b06eefd')
+sha256sums=('091e0a0cf9b8035e58cf61ad734018cb87ccffd630e1705516cf713ba112a2e4')
 
 build() {
     cd "VolumePanning.lv2-$pkgver"
