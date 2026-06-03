@@ -1,7 +1,7 @@
 pkgbase = chrome-remote-desktop
 	pkgdesc = Access other computers or allow another user to access your computer securely over the Internet
 	pkgver = 149.0.7827.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://remotedesktop.google.com
 	install = chrome-remote-desktop.install
 	arch = x86_64

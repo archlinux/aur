@@ -1,7 +1,4 @@
 post_install() {
-  # Create chrome-remote-desktop group
-  [[ $(cat /etc/group) == *chrome-remote-desktop* ]] || groupadd -r chrome-remote-desktop
-
   tput setaf 0 2>/dev/null
   if [[ "$?" == "0" ]]; then
     tput sgr0

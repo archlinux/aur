@@ -7,7 +7,7 @@
 
 pkgname=chrome-remote-desktop
 pkgver=149.0.7827.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Access other computers or allow another user to access your computer securely over the Internet"
 arch=("x86_64")
 url="https://remotedesktop.google.com"
@@ -53,6 +53,9 @@ package() {
   cp -r "${srcdir}/opt/"* "${pkgdir}/opt"
   install -Dm644 "${srcdir}/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
   install -Dm644 "${srcdir}/lib/systemd/system/${pkgname}@.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service"
+  install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf" <<END
+g ${pkgname} -
+END
   install -Dm644 "${srcdir}/pamrule" "${pkgdir}/etc/pam.d/${pkgname}"
   install -Dm755 "${srcdir}/crd" "${pkgdir}/usr/bin/crd"
   install -dm755 "${pkgdir}/etc/chromium/native-messaging-hosts"
