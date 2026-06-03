@@ -1,12 +1,13 @@
 pkgbase = passbolt-cli
 	pkgdesc = Passbolt CLI tool
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://passbolt.com
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = https://github.com/passbolt/go-passbolt-cli/archive/refs/tags/v0.4.2.tar.gz
-	sha256sums = 549dced914c7b6febfacb2fdb223f525621dedb685290e496cd8c168dcf72a46
+	source = https://github.com/passbolt/go-passbolt-cli/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 327c82a82f3c60a088c20717822af136cb946091903bf15016a288137f5e20ba
 
 pkgname = passbolt-cli
