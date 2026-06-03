@@ -1,0 +1,4 @@
+[joker]
+source = "git"
+git = "https://github.com/candid82/joker.git"
+prefix = "v"
