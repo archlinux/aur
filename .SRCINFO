@@ -1,5 +1,5 @@
 pkgbase = river-bar-git
-	pkgdesc = A small status bar for the River Wayland compositor
+	pkgdesc = A small status bar for the River and niri Wayland compositors
 	pkgver = r1.0000000
 	pkgrel = 1
 	url = https://github.com/vighd/river-bar
@@ -9,7 +9,8 @@ pkgbase = river-bar-git
 	makedepends = git
 	depends = fontconfig
 	depends = freetype2
-	depends = river-classic
+	optdepends = river-classic: River compositor support — rivertags/title modules (zriver_status_manager_v1; NOT the incompatible river 0.4+)
+	optdepends = niri: niri compositor support — niriworkspaces/nirititle modules
 	optdepends = ttf-nerd-fonts-symbols: Nerd Font icon glyphs for the module icons (clock, battery, ...)
 	optdepends = ttf-jetbrains-mono: a monospace text font (or any other TTF/OTF face)
 	optdepends = wireplumber: audio module (wpctl)

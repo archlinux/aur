@@ -4,16 +4,18 @@ pkgname=river-bar-git
 _pkgname=river-bar
 pkgver=r1.0000000
 pkgrel=1
-pkgdesc='A small status bar for the River Wayland compositor'
+pkgdesc='A small status bar for the River and niri Wayland compositors'
 arch=('x86_64')
 url='https://github.com/vighd/river-bar'
 license=('MIT')
-# river-classic is the legacy River (zriver_status_manager_v1 / zriver_control_v1)
-# this bar talks to. The rewritten 'river' 0.4+ drops those protocols and
-# conflicts with river-classic, so it is NOT a valid dependency here.
-depends=('fontconfig' 'freetype2' 'river-classic')
+# No compositor package is required to build or run: the bar renders nothing
+# until it finds a supported compositor's interface at runtime, so River and
+# niri support are optdepends rather than hard depends.
+depends=('fontconfig' 'freetype2')
 makedepends=('go' 'git')
 optdepends=(
+  'river-classic: River compositor support — rivertags/title modules (zriver_status_manager_v1; NOT the incompatible river 0.4+)'
+  'niri: niri compositor support — niriworkspaces/nirititle modules'
   'ttf-nerd-fonts-symbols: Nerd Font icon glyphs for the module icons (clock, battery, ...)'
   'ttf-jetbrains-mono: a monospace text font (or any other TTF/OTF face)'
   'wireplumber: audio module (wpctl)'
@@ -31,8 +33,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  # No tags yet: r<commit-count>.<short-hash> (standard -git fallback).
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # <tag>.r<commits-since-tag>.g<short-hash>, leading 'v' stripped — e.g.
+  # 1.1.0.r3.gdeadbee. Sorts above the old tagless r<count>.<hash> scheme.
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
