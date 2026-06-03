@@ -1,7 +1,7 @@
 pkgbase = go-regal-bin
 	pkgdesc = A linter and language server for Rego
-	pkgver = v0.40.0
-	pkgrel = 4
+	pkgver = v0.41.1
+	pkgrel = 5
 	url = https://github.com/open-policy-agent/regal
 	arch = x86_64
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = go-regal-bin
 	conflicts = go-regal-git
 	source = regal-license::https://raw.githubusercontent.com/open-policy-agent/regal/refs/heads/main/LICENSE
 	sha256sums = SKIP
-	source_x86_64 = regal_Linux::https://github.com/open-policy-agent/regal/releases/download/v0.40.0/regal_Linux_x86_64
-	sha256sums_x86_64 = 0301464f1b2ea4e2458cec63cdde4557db09bcbe47505a7bbbfe6bf47aeab234
-	source_aarch64 = regal_Linux::https://github.com/open-policy-agent/regal/releases/download/v0.40.0/regal_Linux_arm64
-	sha256sums_aarch64 = af9c2e76a6422628eb82cc228e259cf45e48934eb14c24558d8a7302b085fd99
+	source_x86_64 = regal_Linux::https://github.com/open-policy-agent/regal/releases/download/v0.41.1/regal_Linux_x86_64
+	sha256sums_x86_64 = 6769dcd8e88bc5ba5ff4fac500e4a99d55b3eec3d1d0842833d84f6820a2a80f
+	source_aarch64 = regal_Linux::https://github.com/open-policy-agent/regal/releases/download/v0.41.1/regal_Linux_arm64
+	sha256sums_aarch64 = 225ddfa49fad51d923a4ea2dd53a94557d610b2fb55ae76f6203ca8c0f26b061
 
 pkgname = go-regal-bin
