@@ -1,6 +1,6 @@
 pkgbase = motrix-next
 	pkgdesc = A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust
-	pkgver = 3.9.2
+	pkgver = 3.9.3
 	pkgrel = 1
 	url = https://github.com/AnInsomniacy/motrix-next
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = motrix-next
 	depends = libsoup3
 	depends = webkit2gtk-4.1
 	options = !lto
-	source = motrix-next-3.9.2.tar.gz::https://github.com/AnInsomniacy/motrix-next/archive/v3.9.2.tar.gz
-	sha256sums = c775c87205c4c445ee925fbfea0f7b2be1f67d1c83b8c39e67a5ff3d59d07e0e
+	source = motrix-next-3.9.3.tar.gz::https://github.com/AnInsomniacy/motrix-next/archive/v3.9.3.tar.gz
+	sha256sums = 918a64cd48f375da2363cee9a53a5ad46188d3657c597da501dbc40da9f8b045
 
 pkgname = motrix-next
