@@ -16,7 +16,7 @@ backup=()
 options=(!debug)
 source=(
   https://github.com/rtrussell/BBCSDL/archive/${_tarball}/BBCSDL-${_tarball}.tar.gz
-  https://www.bbcbasic.co.uk/bbcsdl/bbclinux.zip
+  bbclinux_$pkgver.zip::https://www.bbcbasic.co.uk/bbcsdl/bbclinux.zip
 )
 
 noextract=()
@@ -29,7 +29,7 @@ prepare() {
   cd ${srcdir}/
   tar -xf BBCSDL-${_tarball}.tar.gz -C ${srcdir}
   mv BBCSDL-${_tarball} ${pkgname}-${pkgver}
-  unzip -f bbclinux.zip Box2D231.so bbc256x.png
+  unzip -f bbclinux_$pkgver.zip Box2D231.so bbc256x.png
   sed -e "s/..\/BBCSDL\/src\/bbdata_x86_64.nas/src\/bbdata_x86_64.nas/" -i ${srcdir}/${pkgname}-${pkgver}/console/linux/makefile
   cat << EOF > bbcsdl.desktop
 [Desktop Entry]
