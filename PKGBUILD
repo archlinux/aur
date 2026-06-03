@@ -6,8 +6,8 @@ _branch=main
 
 pkgbase=ollama-git
 pkgname=(ollama-git ollama-rocm-git ollama-cuda-git ollama-vulkan-git ollama-docs-git)
-pkgver=0.30.1rc0.r1.gc95270816913
-pkgrel=1
+pkgver=0.30.4rc0.r1.gad8cda255d97
+pkgrel=2
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(aarch64 x86_64)
 url='https://github.com/ollama/ollama'
@@ -15,13 +15,13 @@ license=(MIT)
 options=(!lto)
 depends=(gcc-libs glibc)
 makedepends=(cmake
-             ninja
              git
              go
              rocm-toolchain
              hipblas
              cuda
              clblast
+             spirv-headers
              vulkan-headers
              vulkan-icd-loader
              shaderc)
@@ -29,7 +29,7 @@ source=("git+$url.git#branch=$_branch"
         ollama-ld.conf
         ollama.service
         sysusers.conf
-        tmpfiles.d)
+        tmpfiles.conf)
 b2sums=('SKIP'
         '121a7854b5a7ffb60226aaf22eed1f56311ab7d0a5630579525211d5c096040edbcfd2608169a4b6d83e8b4e4855dbb22f8ebf3d52de78a34ea3d4631b7eff36'
         'b2567ca9222da664aa52d290bfdea34bec7f03ea0553888a849aad582fc340c17176ede35abd366ca159615af32617fcc23279f3ce1566422ba22f0e46783cf8'
@@ -57,12 +57,11 @@ build() {
 
   local cmake_options=(
     -B build
-    -G Ninja
     -W no-dev
     -D CMAKE_BUILD_TYPE=Release
     -D CMAKE_INSTALL_PREFIX=/usr
+    -D OLLAMA_LLAMA_BACKENDS="cuda_v13;rocm_v7_2;vulkan"
     -D AMDGPU_TARGETS="$(rocm-supported-gfx)"
-    -D GPU_TARGETS="$(rocm-supported-gfx)"
     # Sync GPU targets from CMakePresets.json
     # For CUDA 12
     # -D CMAKE_CUDA_ARCHITECTURES="50;52;53;60;61;62;70;72;75;80;86;87;89;90;90a"
@@ -73,18 +72,24 @@ build() {
   cmake "${cmake_options[@]}"
   cmake --build build
   go build .
+
+  DESTDIR=staging-install cmake --install build
 }
 
 package_ollama-git() {
   conflicts=("${pkgname%-git}")
   provides=("${pkgname%-git}=$pkgver")
-  DESTDIR="$pkgdir" cmake --install ollama/build --component CPU
+
+  cp -r ollama/staging-install/* "$pkgdir"
+  rm -r "$pkgdir/usr/lib/ollama/rocm"*
+  rm -r "$pkgdir/usr/lib/ollama/cuda"*
+  rm -r "$pkgdir/usr/lib/ollama/vulkan"*
 
   install -Dm755 ${pkgbase%-git}/ollama "$pkgdir/usr/bin/ollama"
   install -dm755 "$pkgdir/var/lib/ollama"
   install -Dm644 ollama.service "$pkgdir/usr/lib/systemd/system/ollama.service"
   install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/ollama.conf"
-  install -Dm644 tmpfiles.d "$pkgdir/usr/lib/tmpfiles.d/ollama.conf"
+  install -Dm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/ollama.conf"
   install -Dm644 ollama/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   ln -s /var/lib/ollama "$pkgdir/usr/share/ollama"
@@ -96,8 +101,8 @@ package_ollama-rocm-git() {
   pkgdesc='Create, run and share large language models (LLMs) with ROCm'
   depends+=(ollama hipblas)
 
-  DESTDIR="$pkgdir" cmake --install ollama/build --component HIP
-  rm -rf "$pkgdir"/usr/lib/ollama/rocm/rocblas/library
+  mkdir -p "$pkgdir/usr/lib/ollama"
+  cp -r ollama/staging-install/usr/lib/ollama/rocm* "$pkgdir/usr/lib/ollama"
 }
 
 package_ollama-cuda-git() {
@@ -106,7 +111,8 @@ package_ollama-cuda-git() {
   pkgdesc='Create, run and share large language models (LLMs) with CUDA'
   depends+=(ollama cuda)
 
-  DESTDIR="$pkgdir" cmake --install ollama/build --component CUDA
+  mkdir -p "$pkgdir/usr/lib/ollama"
+  cp -r ollama/staging-install/usr/lib/ollama/cuda* "$pkgdir/usr/lib/ollama"
 }
 
 package_ollama-vulkan-git() {
@@ -115,13 +121,15 @@ package_ollama-vulkan-git() {
   pkgdesc='Create, run and share large language models (LLMs) with Vulkan'
   depends=(ollama vulkan-icd-loader)
 
-  DESTDIR="$pkgdir" cmake --install ollama/build --component Vulkan
+  mkdir -p "$pkgdir/usr/lib/ollama"
+  cp -r ollama/staging-install/usr/lib/ollama/vulkan* "$pkgdir/usr/lib/ollama"
 }
 
 package_ollama-docs-git() {
   conflicts=("${pkgname%-git}")
   provides=("${pkgname%-git}=$pkgver")
   pkgdesc='Documentation for Ollama'
+  depends=()
 
   install -d "$pkgdir/usr/share/doc"
   cp -r ollama/docs "$pkgdir/usr/share/doc/ollama"

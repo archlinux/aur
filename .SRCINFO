@@ -1,19 +1,19 @@
 pkgbase = ollama-git
 	pkgdesc = Create, run and share large language models (LLMs) with ROCm
-	pkgver = 0.30.1rc0.r1.gc95270816913
-	pkgrel = 1
+	pkgver = 0.30.4rc0.r1.gad8cda255d97
+	pkgrel = 2
 	url = https://github.com/ollama/ollama
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = git
 	makedepends = go
 	makedepends = rocm-toolchain
 	makedepends = hipblas
 	makedepends = cuda
 	makedepends = clblast
+	makedepends = spirv-headers
 	makedepends = vulkan-headers
 	makedepends = vulkan-icd-loader
 	makedepends = shaderc
@@ -24,7 +24,7 @@ pkgbase = ollama-git
 	source = ollama-ld.conf
 	source = ollama.service
 	source = sysusers.conf
-	source = tmpfiles.d
+	source = tmpfiles.conf
 	b2sums = SKIP
 	b2sums = 121a7854b5a7ffb60226aaf22eed1f56311ab7d0a5630579525211d5c096040edbcfd2608169a4b6d83e8b4e4855dbb22f8ebf3d52de78a34ea3d4631b7eff36
 	b2sums = b2567ca9222da664aa52d290bfdea34bec7f03ea0553888a849aad582fc340c17176ede35abd366ca159615af32617fcc23279f3ce1566422ba22f0e46783cf8
@@ -32,7 +32,7 @@ pkgbase = ollama-git
 	b2sums = e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed
 
 pkgname = ollama-git
-	provides = ollama=0.30.1rc0.r1.gc95270816913
+	provides = ollama=0.30.4rc0.r1.gad8cda255d97
 	conflicts = ollama
 
 pkgname = ollama-rocm-git
@@ -41,7 +41,7 @@ pkgname = ollama-rocm-git
 	depends = glibc
 	depends = ollama
 	depends = hipblas
-	provides = ollama-rocm=0.30.1rc0.r1.gc95270816913
+	provides = ollama-rocm=0.30.4rc0.r1.gad8cda255d97
 	conflicts = ollama-rocm
 
 pkgname = ollama-cuda-git
@@ -50,17 +50,18 @@ pkgname = ollama-cuda-git
 	depends = glibc
 	depends = ollama
 	depends = cuda
-	provides = ollama-cuda=0.30.1rc0.r1.gc95270816913
+	provides = ollama-cuda=0.30.4rc0.r1.gad8cda255d97
 	conflicts = ollama-cuda
 
 pkgname = ollama-vulkan-git
 	pkgdesc = Create, run and share large language models (LLMs) with Vulkan
 	depends = ollama
 	depends = vulkan-icd-loader
-	provides = ollama-vulkan=0.30.1rc0.r1.gc95270816913
+	provides = ollama-vulkan=0.30.4rc0.r1.gad8cda255d97
 	conflicts = ollama-vulkan
 
 pkgname = ollama-docs-git
 	pkgdesc = Documentation for Ollama
-	provides = ollama-docs=0.30.1rc0.r1.gc95270816913
+	depends = 
+	provides = ollama-docs=0.30.4rc0.r1.gad8cda255d97
 	conflicts = ollama-docs
