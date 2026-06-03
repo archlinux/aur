@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=26.1.0_devel.220118.558053ef20a.d41d8cd
+pkgver=26.2.0_devel.223596.f1c30d65e15.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=(
@@ -26,6 +26,7 @@ makedepends=(
     'ninja'
     'glslang'
     'directx-headers'
+    'python'
     'python-mako'
     'python-ply'
     'cbindgen'
@@ -54,7 +55,6 @@ depends=(
     'libxcb'
     'glibc'
     'zlib'
-    'python'
     'xcb-util-keysyms'
 )
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
@@ -121,7 +121,7 @@ declare -A _crates=(
 )
 
 for _crate in "${!_crates[@]}"; do
-  source+=($_crate-${_crates[$_crate]}.tar.gz::https://crates.io/api/v1/crates/$_crate/${_crates[$_crate]}/download)
+  source+=($_crate-${_crates[$_crate]}.tar.gz::https://static.crates.io/crates/$_crate/${_crates[$_crate]}/download)
 done
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
