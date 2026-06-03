@@ -1,6 +1,6 @@
 pkgbase = seadrive-cli
 	pkgdesc = The Seafile Drive client enables you to access files on the server without syncing to local disk. It works like a network drive.
-	pkgver = 3.0.20
+	pkgver = 3.0.21
 	pkgrel = 1
 	url = https://www.seafile.com/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = seadrive-cli
 	depends = hicolor-icon-theme
 	depends = fuse2
 	options = !strip
-	source_x86_64 = SeaDrive-cli-x86_64-3.0.20.AppImage::https://sos-ch-dk-2.exo.io/seafile-downloads/SeaDrive-cli-x86_64-3.0.20.AppImage
-	sha256sums_x86_64 = 47c6c210083a29d4a7f0a0305bcae1fe7143e95353ef799b6ca295a548f11638
+	source_x86_64 = SeaDrive-cli-x86_64-3.0.21.AppImage::https://sos-ch-dk-2.exo.io/seafile-downloads/SeaDrive-cli-x86_64-3.0.21.AppImage
+	sha256sums_x86_64 = d74ea35ae5892eaad9ff58a5fe38a506becfb15e7815afe85c7369d194de2d83
 
 pkgname = seadrive-cli

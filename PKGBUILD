@@ -1,6 +1,6 @@
 # Maintainer: Lucas Schwiderski <lucas@lschwiderski.de>
 pkgname=seadrive-cli
-pkgver=3.0.20
+pkgver=3.0.21
 pkgrel=1
 pkgdesc="The Seafile Drive client enables you to access files on the server without syncing to local disk. It works like a network drive."
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!strip')
 
 _appimage="SeaDrive-cli-${CARCH}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://sos-ch-dk-2.exo.io/seafile-downloads/${_appimage}")
-sha256sums_x86_64=('47c6c210083a29d4a7f0a0305bcae1fe7143e95353ef799b6ca295a548f11638')
+sha256sums_x86_64=('d74ea35ae5892eaad9ff58a5fe38a506becfb15e7815afe85c7369d194de2d83')
 
 prepare() {
     chmod +x "${_appimage}"
