@@ -6,19 +6,19 @@ pkgver=0.0.1
 pkgrel=1
 pkgdesc="program to print text from folder"
 arch=('x86_64')
-url="https://codeberg.org/quik/just_programs"
+url="https://github.com/QUIK1001/ot"
 license=('Unlicense')
 depends=('gcc-libs')
-makedepends=('gcc' 'make' 'unzip')
-source=("$pkgname-$pkgver.zip::https://codeberg.org/quik/just_programs/archive/main:OutpuText.zip")
-sha256sums=('e61df94e1729912df51afff4efb7ec91744bb0fcc72672864028897e49a6cf8c')
+makedepends=('make' 'gcc')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/QUIK1001/ot/releases/download/ot-0.0.1/ot.tar.gz")
+sha256sums=('62cb53b1b6429bfa3edae416724514405751b738b85679a392fb21056d554a59')
 
 build() {
-  cd "$srcdir/just_programs/"
+  cd "$srcdir"
   make MODE=release
 }
 
 package() {
-  cd "$srcdir/just_programs/"
+  cd "$srcdir"
   make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
