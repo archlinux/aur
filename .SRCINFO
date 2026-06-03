@@ -1,0 +1,22 @@
+pkgbase = python-smithy-aws-event-stream
+	pkgdesc = Smithy components for Amazon Event Streams.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/smithy-aws-event-stream
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-freezegun
+	checkdepends = python-smithy-json
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-smithy-core
+	source = smithy-aws-event-stream::git+https://github.com/smithy-lang/smithy-python.git#tag=smithy-aws-event-stream/v0.3.0
+	sha256sums = 68ebb6567862fffa9c31e5d5494064086b046967dd9f2ce5d2cada816b3679c6
+
+pkgname = python-smithy-aws-event-stream
