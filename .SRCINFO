@@ -4,6 +4,7 @@ pkgbase = blackarch-xfce-theme-git
 	pkgrel = 1
 	url = https://github.com/BlackArch/blackarch-config-xfce
 	arch = any
+	license = custom:unknown
 	makedepends = git
 	provides = blackarch-xfce-theme
 	conflicts = blackarch-xfce-theme
