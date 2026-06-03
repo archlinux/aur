@@ -1,6 +1,6 @@
 pkgbase = pelagos
 	pkgdesc = Fast Linux container runtime — OCI-compatible, namespaces, cgroups v2, seccomp, networking, image management
-	pkgver = 0.65.21
+	pkgver = 0.65.22
 	pkgrel = 1
 	url = https://github.com/pelagos-containers/pelagos
 	install = pelagos.install
@@ -14,7 +14,7 @@ pkgbase = pelagos
 	optdepends = passt: rootless networking (pelagos run without sudo)
 	optdepends = fuse-overlayfs: rootless overlay filesystem on kernels < 5.11
 	optdepends = dnsmasq: production-grade DNS backend for container name resolution
-	source = pelagos-0.65.21.tar.gz::https://github.com/pelagos-containers/pelagos/archive/refs/tags/v0.65.21.tar.gz
-	sha256sums = 07eff4c046c5e31b7af0006d797decde13160b5a3f17efa506c323a4443e92fb
+	source = pelagos-0.65.22.tar.gz::https://github.com/pelagos-containers/pelagos/archive/refs/tags/v0.65.22.tar.gz
+	sha256sums = 9d3d7dd92c90479885afa13ea17e81811c38493dc3b9cce5c2b65dfc73312511
 
 pkgname = pelagos
