@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=clauge-bin
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="One window. Every dev tool."
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('clauge')
 conflicts=('clauge')
 source_x86_64=("clauge_${pkgver}_amd64.deb::https://github.com/ansxuman/Clauge/releases/download/v${pkgver}/Clauge_${pkgver}_amd64.deb")
 source_aarch64=("clauge_${pkgver}_arm64.deb::https://github.com/ansxuman/Clauge/releases/download/v${pkgver}/Clauge_${pkgver}_arm64.deb")
-sha256sums_x86_64=('82efd6f4a6ca2c16a7d3945be4382df012c77c0c4a0a1cb59b169e3e30db6b9e')
-sha256sums_aarch64=('6c774df36e501b1380007315091febda9795f24cdd9f6f94f1dcee83e5882c4c')
+sha256sums_x86_64=('f534b0cd651ce1036466dbca8a21444069580ca1992af02cda7cf5ed6c5137a2')
+sha256sums_aarch64=('bd76bb3e6cb01472837dc2048d6c8cfe4bd56d30fa89bfd25ef08d41eedecf5f')
 
 package() {
     local _debfile
