@@ -1,7 +1,7 @@
 # Maintainer: ChickenJockey7
 pkgname=squish
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="A fast, lightweight Unix shell written in Cpp"
 arch=('x86_64')
 url="https://gitlab.com/cpp4692517/shell"
@@ -18,7 +18,7 @@ build() {
 
 package() {
     cd shell
-    xmake install --root -o "$pkgdir/usr/bin/"
+    xmake install --root --installdir="$pkgdir/usr"
     install -Dm644 LICENCE \
 	"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     	
