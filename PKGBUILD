@@ -41,8 +41,8 @@ prepare() {
 	cd radicle-explorer
 	pnpm import
 	pnpm install \
-		--shamefully-hoist \
 		--dangerously-allow-all-builds \
+		--shamefully-hoist \
 		# EOL
 
 	cd radicle-httpd
@@ -52,7 +52,8 @@ prepare() {
 build() {
 	cd radicle-explorer
 	export VITE_RUNTIME_CONFIG=true
-	pnpm build
+	pnpm --config.verifyDepsBeforeRun=false \
+		build
 
 	# _Disable_ cross-toolchain LTO because we are using different toolchains
 	# for C/C++ and Rust code (i.e., LLVM LTO is incompatible with GCC LTO).
