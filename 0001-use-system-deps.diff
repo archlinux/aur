@@ -1,22 +1,33 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 82b7a2d..d20603e 100644
+index e50aaff..ae52044 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -28,7 +28,7 @@ option(WAYWALLEN_BUILD_UI      "Build the Qt/QML UI"                   ON)
- option(WAYWALLEN_BUILD_PLUGINS "Build renderer plugins (image, video)" ON)
+@@ -33,7 +33,7 @@ option(WAYWALLEN_CARGO_OFFLINE "Pass --frozen to cargo (offline + locked, for fl
  
  if(WAYWALLEN_BUILD_DAEMON)
--    include(FetchCorrosion)
+     include(FetchDeps)
+-    fetchdeps(${CMAKE_CURRENT_SOURCE_DIR}/deps.json NAMES Corrosion)
 +    find_package(Corrosion 0.6.1 REQUIRED)
-     # NOTE: no LOCKED here — Cargo.lock is gitignored in this repo, so cargo
-     # must be allowed to (re)generate it on a fresh checkout. Flip to FROZEN
-     # if a committed Cargo.lock is added later for reproducible builds.
+     # FROZEN = --locked --offline; requires a committed/staged Cargo.lock
+     # and a vendored CARGO_HOME (set by the flatpak manifest).
+     set(_waywallen_corrosion_extra "")
 diff --git a/deps.json b/deps.json
-index 91cc43b..c8ec931 100644
+index 2a66377..1318819 100644
 --- a/deps.json
 +++ b/deps.json
 @@ -1,39 +1,4 @@
  [
+-  {
+-    "commit": "1499b14e4906a2890f5cee1547c8848db261753d",
+-    "tag": "v0.6.1",
+-    "dest": "build/_flatpak_deps/Corrosion-src",
+-    "disable-shallow-clone": false,
+-    "type": "git",
+-    "url": "https://github.com/corrosion-rs/corrosion.git",
+-    "x-cmake": {
+-      "name": "Corrosion"
+-    }
+-  },
 -  {
 -    "dest": "build/_flatpak_deps/asio-src",
 -    "disable-shallow-clone": false,
@@ -41,30 +52,6 @@ index 91cc43b..c8ec931 100644
 -      "exclude_from_all": true
 -    }
 -  },
--  {
--    "commit": "a37dadd1ed5949ab0accd7087b7c5c57800eab43",
--    "dest": "build/_flatpak_deps/cubeb-src",
--    "disable-shallow-clone": true,
--    "type": "git",
--    "url": "https://github.com/mozilla/cubeb.git",
--    "x-cmake": {
--      "name": "cubeb",
--      "exclude_from_all": true
--    }
--  },
    {
-     "commit": "9fdc3ebeda7289bd1db7d2fb0b978e6ed0b1a63e",
+     "commit": "629bda81eb98856ca023f0f87f57dde8d22b4823",
      "dest": "build/_flatpak_deps/rstd-src",
-diff --git a/plugins/CMakeLists.txt b/plugins/CMakeLists.txt
-index 9ec52b1..347c371 100644
---- a/plugins/CMakeLists.txt
-+++ b/plugins/CMakeLists.txt
-@@ -3,7 +3,7 @@ option(WAYWALLEN_BUILD_VIDEO_PLUGIN "Build the ffmpeg+Vulkan video plugin" ON)
- option(WAYWALLEN_BUILD_MPV_PLUGIN   "Build the libmpv+EGL/GBM video plugin" OFF)
- 
- include(${CMAKE_SOURCE_DIR}/cmake/FetchDeps.cmake)
--fetchdeps(${CMAKE_SOURCE_DIR}/deps.json NAMES rstd cubeb wavsen)
-+fetchdeps(${CMAKE_SOURCE_DIR}/deps.json NAMES rstd wavsen)
- 
- add_subdirectory(../bridge waywallen-bridge-build)
- 

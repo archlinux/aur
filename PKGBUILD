@@ -1,14 +1,14 @@
 # TODO: Use system qmlmaterial, remove qt6-shadertools and git-lfs
 
 # deps.json
-_rstd_commit=036d65a66790f0635fa22cd31f3a24610b717502
+_rstd_commit=629bda81eb98856ca023f0f87f57dde8d22b4823
 _ncrequest_commit=404868aa2aa4481e262f25d8f7d053f42b61b7b8
-_wavsen_commit=609676c524e3c2364dfb46c0f0f8c601f346102a
-_qml_material_commit=8072ee668c08f8de59b4286cce56de5e3ea3af59
+_wavsen_commit=236348381b8670175e2f20ab8b29a02b61622037
+_qml_material_commit=e6d500030ef57cea5c3af9d6b96afa62c76439d4
 _qextra_commit=2b947f16cfba8ba21c16f2a5dd953c152db78c4a
 
 pkgname=waywallen
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
@@ -26,13 +26,13 @@ source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
         "git+https://github.com/hypengw/QmlMaterial.git#commit=$_qml_material_commit"
         "git+https://github.com/hypengw/QExtra.git#commit=$_qextra_commit"
         "0001-use-system-deps.diff")
-sha256sums=('5eab80e16f2d52af687abdd5d5d48d4473b1859622b10d3815132c4cc44d38f3'
-            '4084a64ce856093b1648792ed9f0c00fea9c61d59997577b2f21128a7fe0a1ec'
+sha256sums=('8f9af5d851c6ab3b01dae32da0f65a761a5257911a735992b1ce895a6ccee791'
+            '80036965e852d207379f91bae11a9baf957a3751f6194a1d5c047bdbb451dc9d'
             '939c717802fc9e0ef13e54f547d6f7d1b2b99730eb31c6ef06211a3ffd5495e6'
-            'f39e96c654b7459ab7c8f81df3c2b983636a08a6807fd1bd5b00bcb110bfb7d7'
-            '47d13023405957b2ff893d77e492e5f1c4651b9210fbb836defc67e4e5af773e'
+            '7fa1166cfa3a8974071dda4f63b8453e3a702691d2a60740b9228a7cc13509aa'
+            'c2b349e6c313a5ab1452dd2fef8643a88f5fb750e32f544a3646ab7b29a323c5'
             '2966fd1c0be043d85a6c9b6b787650bc3585ad4417c808bb696b43f55cb060d5'
-            '8c3d497f311ff6294a931320fcd9a79e445eda24cbaa4857048556c1a1fcc9a2')
+            '45b5b4ceed2bca55a47b2a8e7d6f23825f29e61da8c064ad21ed1061ae27c867')
 
 prepare() {
     cd "$pkgname"
@@ -69,6 +69,7 @@ build() {
         -DFETCHCONTENT_SOURCE_DIR_QML_MATERIAL="$srcdir/QmlMaterial" \
         -DFETCHCONTENT_SOURCE_DIR_QEXTRA="$srcdir/QExtra" \
         -DWAYWALLEN_BUILD_MPV_PLUGIN=OFF \
+        -DWAYWALLEN_CARGO_OFFLINE=ON \
         -DQML_MATERIAL_BUILD_TYPE=STATIC
     cmake --build build
 }
