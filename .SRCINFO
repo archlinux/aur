@@ -1,7 +1,7 @@
 pkgbase = bokuchi
 	pkgdesc = A lightweight, cross-platform Markdown editor
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bokuchi-Editor/bokuchi
 	arch = x86_64
 	license = MIT
