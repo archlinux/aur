@@ -2,7 +2,7 @@
 
 pkgname=cosmic-applet-yapcap-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='COSMIC panel applet for Codex, Claude Code, Cursor, Gemini, and Copilot usage'
 arch=('x86_64')
 url='https://github.com/TopiCsarno/yapcap'
@@ -15,8 +15,8 @@ depends=(
   'wayland'
   'libxkbcommon'
 )
-provides=('yapcap')
-conflicts=('yapcap')
+provides=('cosmic-applet-yapcap')
+conflicts=('cosmic-applet-yapcap')
 options=('!strip')
 source_x86_64=("yapcap-${pkgver}-x86_64-linux.tar.gz::${url}/releases/download/v${pkgver}/yapcap-${pkgver}-x86_64-linux.tar.gz")
 sha256sums_x86_64=('68fa1b9d618d9c40020f95c8991d2f1a1b99f3936617667693f488e8143a3d18')
