@@ -2,7 +2,7 @@
 # Maintainer: Adrian Insaurralde <adrianinsaval at gmail dot com>
 
 pkgname=freecad-git
-pkgver=1.2.0.47011.gc083a08b9d
+pkgver=1.2.0.47101.g07de249ec7
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
@@ -21,6 +21,7 @@ openmpi
 pybind11
 pyside6
 pyside6-tools
+python-lark-parser
 python-yaml
 python-matplotlib
 python-packaging

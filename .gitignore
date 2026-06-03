@@ -4,3 +4,4 @@ FreeCAD/
 *.tar.xz
 *.tar.gz
 *.tar.zst
+*.log
