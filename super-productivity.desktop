@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Super Productivity
-Exec=superproductivity %U
+Exec=super-productivity %U
 Terminal=false
 Type=Application
 Icon=superproductivity

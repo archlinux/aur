@@ -1,98 +1,69 @@
-# Maintainer: Anna <morganamilo@gmail.com>
+# Maintainer: Jonathan Grotelüschen <tippfehlr@archlinux.org>
+# Contributor: Mahdi Sarikhani <mahdisarikhani@outlook.com>
+# Contributor: Anna <morganamilo@gmail.com>
 
-pkgname=superproductivity-git
-_pkgname=superproductivity
-_reponame=super-productivity
-pkgver=6.4.0.r10.g0cfb7af2e
+pkgname=super-productivity-git
+_name=super-productivity
+pkgver=18.8.0.r82.gfcc421639
 pkgrel=1
-pkgdesc='To Do List / Time Tracker with Jira Integration.'
-arch=('x86_64')
-url="http://super-productivity.com/"
+pkgdesc="An advanced todo list app with timeboxing and time tracking capabilities"
+arch=('any')
+url="https://super-productivity.com"
 license=('MIT')
-depends=('alsa-lib' 'gtk3' 'gconf' 'libxss' 'libxtst' 'nss' 'nspr' 
-'xdg-utils' 'xprintidle' 'libnotify' 'libappindicator-gtk3' 'electron>=10')
-makedepends=('git' 'npm' 'yarn' 'python')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${_reponame}::git+https://github.com/johannesjo/${_reponame}"
-        "${_pkgname}.desktop"
-        "${_pkgname}.sh")
-md5sums=('SKIP'
-         '2497ef16691da7fe4dc3c9d6ce6a8bcf'
-         '6532676c1c13ae77f24205b3e3e97db9')
+_electron=electron41
+depends=('bash' $_electron 'hicolor-icon-theme')
+makedepends=('cargo' 'nvm' 'git')
+provides=($_name 'superproductivity')
+conflicts=($_name 'superproductivity')
+source=(
+	"git+https://github.com/super-productivity/super-productivity"
+	"$_name.desktop"
+	"$_name.sh"
+)
+sha256sums=('SKIP'
+            '195157267a8c6159a7ecbf47930431f46913d1e06edb96ed200e3a77f9e8ee45'
+            '6d4e3f28b3be0530a473af6a6f6270045cc2c60cac8cf02a9a3bd43036ccd448')
 
-pkgver() {
-	cd ${srcdir}/${_reponame}
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+_ensure_local_nvm() {
+	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+	export NVM_DIR="$srcdir/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 }
 
 prepare() {
-	cd "${srcdir}/${_reponame}"
+	_ensure_local_nvm
 
-	electronVer=$(electron --version | tail -c +2)
+	sed -i "s/@ELECTRON@/$_electron/" $_name.sh
 
-	# Nodejs script for package version replacement
-	replacement=$(cat <<-END
-			d = JSON.parse(fs.readFileSync('package.json'));
-			d.devDependencies.electron = "$electronVer";
-			fs.writeFileSync('package.json', JSON.stringify(d, null, 2));
-	END
-	)
-	# Change electron version to the one in the system
-	node -e "${replacement}"
+	cd $_name
+	nvm install
+}
 
-	# Edit electron builder config so only the linux-unpacked package is built
-	sed -i '/- AppImage/d' electron-builder.yaml
-	# Replacing deb with dir
-	sed -i 's/- deb/dir/' electron-builder.yaml
-	sed -i '/- snap/d' electron-builder.yaml
-	# No snap
-	sed -i '/snap/d' electron-builder.yaml
-	sed -i '/grade: stable/d' electron-builder.yaml
+pkgver() {
+	cd $_name
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${srcdir}/${_reponame}"
+	_ensure_local_nvm
 
-	yarn --cache-folder "${srcdir}/yarn-cache"
-
-  # Better configuration for npm cache and calling installed binaries
-  export npm_config_cache="${srcdir}/npm_cache"
-  
-	# use system electron version
-	# see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
-	electronDist=$(dirname $(realpath $(which electron)))
-	electronVer=$(electron --version | tail -c +2)
-
-	# Building angular and electron-builder
-	yarn buildFrontend:prod && yarn electron:build
-
-	# Building the app
-	npx electron-builder --linux dir --x64 --dir \
-	 -c.electronDist="${electronDist}" -c.electronVersion="${electronVer}"
+	cd $_name
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	npm install
+	npm run build
+	npx electron-builder --linux --dir \
+		--config.electronDist="/usr/lib/$_electron" \
+		--config.electronVersion="$(cat /usr/lib/$_electron/version)"
 }
 
 package() {
-	cd "${srcdir}"
+	install -Dm755 $_name.sh "$pkgdir/usr/bin/$_name"
+	install -Dm644 $_name.desktop -t "$pkgdir/usr/share/applications/"
 
-	# Install asar file
-	install -Dm644 "${_reponame}/app-builds/linux-unpacked/resources/app.asar" \
-	 "${pkgdir}/usr/lib/${_pkgname}/resources/app.asar"
-
-	# Install start script
-	install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
-
-	# Install shortcut
-	install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
-	# Installing icons
-	for size in 16 32 48 128 256 512; do
-		icon_file="${_reponame}/build/icons/${size}x${size}.png"
-		if [ -n "$icon_file" ]; then
-			install -Dm644 "${icon_file}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_pkgname}.png"
-		fi
+	cd $_name
+	install -Dm644 .tmp/app-builds/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/$_name/"
+	for i in 16 32 48 64 128 256 512 1024; do
+		install -Dm644 "build/icons/${i}x${i}.png" "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_name.png"
 	done
-
-	# Copying Licence
-	install -Dm644 "${_reponame}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
