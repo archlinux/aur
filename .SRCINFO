@@ -1,0 +1,22 @@
+pkgbase = ronmodmanager-bin
+	pkgdesc = Ready or Not mod manager
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/SavageCore/RoNModManager
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	provides = ronmodmanager
+	conflicts = ronmodmanager
+	options = !strip
+	source_x86_64 = ronmodmanager-0.0.9.AppImage::https://github.com/SavageCore/RoNModManager/releases/download/v0.0.9/RoN.Mod.Manager_0.0.9_amd64.AppImage
+	source_x86_64 = uk.savagecore.ronmodmanager.png::https://github.com/SavageCore/RoNModManager/raw/v0.0.9/src-tauri/icons/icon.png
+	source_x86_64 = uk.savagecore.ronmodmanager.desktop::https://github.com/SavageCore/RoNModManager/raw/v0.0.9/packaging/aur/uk.savagecore.ronmodmanager.desktop
+	sha256sums_x86_64 = APPIMAGE_SHA256
+	sha256sums_x86_64 = ICON_SHA256
+	sha256sums_x86_64 = DESKTOP_SHA256
+
+pkgname = ronmodmanager-bin
