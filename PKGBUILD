@@ -2,7 +2,7 @@
 
 pkgname=declan-setup
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Declan's Omarchy dotfiles bootstrap command"
 arch=('any')
 url='https://github.com/dclnc/declan-dotfiles'
