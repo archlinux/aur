@@ -1,0 +1,22 @@
+pkgbase = ikun-music-desktop-bin
+	pkgdesc = LX Music modified version.(Prebuilt version.Use system-wide electron)LX Music修改版,增加了一些音质并对UI进行了一些修改
+	pkgver = 3.3.0_fix.7
+	pkgrel = 1
+	url = https://github.com/ikunshare/ikun-music-desktop
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = Apache-2.0
+	depends = electron37
+	provides = lx-music-desktop
+	conflicts = ikun-music-desktop
+	source = ikun-music-desktop.sh
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = ikun-music-desktop-3.3.0_fix.7-aarch64.deb::https://github.com/ikunshare/ikun-music-desktop/releases/download/v3.3.0-fix.7/ikun-music-desktop_3.3.0-fix.7_arm64.deb
+	sha256sums_aarch64 = a69089d581a01d055c52c1733ecb2eaff46530342e43214196cdd1a2cff081eb
+	source_armv7h = ikun-music-desktop-3.3.0_fix.7-armv7h.deb::https://github.com/ikunshare/ikun-music-desktop/releases/download/v3.3.0-fix.7/ikun-music-desktop_3.3.0-fix.7_armv7l.deb
+	sha256sums_armv7h = cc62a510b0dc63c1b3dd2f87eea3430f5ca43a9683ac0935fb5dc22aa52af011
+	source_x86_64 = ikun-music-desktop-3.3.0_fix.7-x86_64.deb::https://github.com/ikunshare/ikun-music-desktop/releases/download/v3.3.0-fix.7/ikun-music-desktop_3.3.0-fix.7_amd64.deb
+	sha256sums_x86_64 = ee55d81b219dbf2040f325ffa3bb9f2710e52e4383fe36b04ea2c91172b0624c
+
+pkgname = ikun-music-desktop-bin
