@@ -2,7 +2,7 @@
 
 pkgname=emptty-bin
 
-pkgver=0.12.1
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Dead simple CLI Display Manager on TTY"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('xorg-server: default display server'
 backup=('etc/emptty/conf')
 provides=('emptty')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$arch-$pkgver.tar.gz")
-sha512sums=('c83e16482369e3dbcdc24053e1a05da8b42d597cfe9a50aed91ebb0f02eee9d12f5789903f89e90472bca23b17e2083e721fb5ae674094d01e6258de572a82dc')
+sha512sums=('fb8e84a7caf34a5a3f11891b501043ef7a00f16fefca65612ff20b86cb855f2d6ce09e94dc712b3f770affb05b266cdb6d32ce043619cf47370d109c42bf21b9')
 
 package() {
   install -DZs "usr/bin/emptty" -m 755 -t "/usr/bin"
