@@ -1,0 +1,24 @@
+pkgbase = vandelay-bin
+	pkgdesc = Migration and backup tool that imports mail/calendar/contacts and exports to JMAP
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/stalwartlabs/vandelay
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = vandelay=1.0.0
+	conflicts = vandelay
+	options = !strip
+	source = vandelay-1.0.0-Apache-2.0.txt::https://raw.githubusercontent.com/stalwartlabs/vandelay/v1.0.0/LICENSES/Apache-2.0.txt
+	source = vandelay-1.0.0-MIT.txt::https://raw.githubusercontent.com/stalwartlabs/vandelay/v1.0.0/LICENSES/MIT.txt
+	sha256sums = a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2
+	sha256sums = 23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3
+	source_x86_64 = vandelay-1.0.0-x86_64.tar.xz::https://github.com/stalwartlabs/vandelay/releases/download/v1.0.0/vandelay-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 32ea0ef35e4098cf947d18803d6df01464a629737dcae5d9e211ed57e8244aa8
+	source_aarch64 = vandelay-1.0.0-aarch64.tar.xz::https://github.com/stalwartlabs/vandelay/releases/download/v1.0.0/vandelay-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 2057abf07a16b028fc1a8a0d949c3fe8273fa6eb1cf2316baca26d90b8a3c6a4
+
+pkgname = vandelay-bin
