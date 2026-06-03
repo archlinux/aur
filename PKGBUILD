@@ -1,7 +1,7 @@
 # Maintainer: Kevin <info@borunsky.de>
 
 pkgname=wowusky
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Minimalist World of Warcraft addon manager for Linux'
 arch=('any')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 # GitHub Action (it runs `updpkgsums` against the published release
 # tarball before pushing). 'SKIP' is the in-repo placeholder; for a
 # manual local build run `updpkgsums` here first.
-sha256sums=('7edc64c1fd0e7d33be78be7de5e87a7cea5df61fc7acff9ce461abce0cf6a6d5')
+sha256sums=('bda9b72036afae71edf8f5c51c65a387fa1ece5d41c37f6c72cb805d97623294')
 
 build() {
   cd "${pkgname}-${pkgver}"
