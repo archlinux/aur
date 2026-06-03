@@ -34,7 +34,7 @@ package() {
   sed -i '/^StartupNotify=true/a StartupWMClass=com.appshub.bettbox' \
     "${pkgdir}/usr/share/applications/Bettbox.desktop"
 
-  # 图标
+  # 图标（确保尺寸正确）
   for size in 128 256; do
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/${size}x${size}/apps/Bettbox.png" \
       "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/Bettbox.png"
