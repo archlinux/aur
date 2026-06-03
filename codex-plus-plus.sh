@@ -11,6 +11,73 @@ STATE_DIR="/var/lib/${PKGNAME}"
 STATE_FILE="${STATE_DIR}/state"
 DEFAULT_STATE="enabled"
 
+launcher_processes() {
+  pgrep -f "^/usr/lib/${PKGNAME}/bin/codex-plus-plus-upstream( |$)" 2>/dev/null || true
+}
+
+codex_app_processes() {
+  pgrep -f "^/bin/bash ${UPSTREAM_BIN}( |$)" 2>/dev/null || true
+  pgrep -f "/usr/lib/openai-codex-desktop/resources/app\\.asar" 2>/dev/null || true
+}
+
+process_tree() {
+  local pid="$1"
+  local child
+
+  while IFS= read -r child; do
+    [[ -n "${child}" ]] || continue
+    process_tree "${child}"
+  done < <(pgrep -P "${pid}" 2>/dev/null || true)
+
+  printf '%s\n' "${pid}"
+}
+
+stop_process_roots() {
+  local root_pid
+  local target_pid
+  local targets=()
+
+  while IFS= read -r root_pid; do
+    [[ -n "${root_pid}" ]] || continue
+    [[ "${root_pid}" == "$$" ]] && continue
+    while IFS= read -r target_pid; do
+      [[ -n "${target_pid}" ]] || continue
+      targets+=("${target_pid}")
+    done < <(process_tree "${root_pid}")
+  done
+
+  ((${#targets[@]} > 0)) || return 0
+  mapfile -t targets < <(printf '%s\n' "${targets[@]}" | awk '!seen[$0]++')
+
+  for target_pid in "${targets[@]}"; do
+    kill -TERM "${target_pid}" 2>/dev/null || true
+  done
+
+  for _ in {1..30}; do
+    local any_running=0
+    for target_pid in "${targets[@]}"; do
+      if kill -0 "${target_pid}" 2>/dev/null; then
+        any_running=1
+        break
+      fi
+    done
+    ((any_running == 0)) && return 0
+    sleep 0.1
+  done
+
+  for target_pid in "${targets[@]}"; do
+    kill -KILL "${target_pid}" 2>/dev/null || true
+  done
+}
+
+stop_running_launchers() {
+  stop_process_roots < <(launcher_processes)
+}
+
+stop_running_codex_apps() {
+  stop_process_roots < <(codex_app_processes)
+}
+
 require_root() {
   if (( EUID != 0 )); then
     echo "This command must run as root." >&2
@@ -58,6 +125,8 @@ backup_current_upstream() {
 enable_injection() {
   require_root
   ensure_state_dir
+  stop_running_launchers
+  stop_running_codex_apps
 
   if [[ ! -x "${INJECTED_BIN}" ]]; then
     echo "Injected launcher not found: ${INJECTED_BIN}" >&2
@@ -73,6 +142,8 @@ enable_injection() {
 disable_injection() {
   require_root
   ensure_state_dir
+  stop_running_launchers
+  stop_running_codex_apps
 
   if [[ ! -f "${BACKUP_BIN}" ]]; then
     echo "Backup launcher not found: ${BACKUP_BIN}" >&2
@@ -114,6 +185,8 @@ reapply_if_enabled() {
 }
 
 run_injected() {
+  stop_running_launchers
+  stop_running_codex_apps
   exec /usr/lib/${PKGNAME}/bin/codex-plus-plus-upstream \
     --app-path /usr/lib/${PKGNAME}/app "$@"
 }
@@ -124,6 +197,7 @@ Usage:
   codex-plus-plus enable
   codex-plus-plus disable
   codex-plus-plus status
+  codex-plus-plus stop
   codex-plus-plus run [codex args...]
   codex-plus-plus hook-reapply
 EOF
@@ -147,6 +221,10 @@ main() {
       ;;
     status)
       print_status
+      ;;
+    stop)
+      stop_running_launchers
+      stop_running_codex_apps
       ;;
     run)
       shift
