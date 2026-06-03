@@ -1,0 +1,4 @@
+[athens]
+source = "git"
+git = "https://github.com/gomods/athens.git"
+prefix = "v"
