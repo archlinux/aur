@@ -1,13 +1,13 @@
 pkgbase = volumepanningstereo.lv2
 	pkgdesc = LV2 plugin that processes stereo input with volume, pan, mute, and bypass controls
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/rickprice/VolumePanningStereo.lv2
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = pkg-config
 	depends = lv2
-	source = volumepanningstereo.lv2-0.1.1.tar.gz::https://github.com/rickprice/VolumePanningStereo.lv2/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 9a8d1c0c3893feec0c4307c9d5fcc2db76a7f184d2ca076f0160f6fa66669e66
+	source = volumepanningstereo.lv2-0.1.2.tar.gz::https://github.com/rickprice/VolumePanningStereo.lv2/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 69e2529c407375fb016fcf5cc0c8a88dcfd145c0b59a24555f012b3f4b2e5eaf
 
 pkgname = volumepanningstereo.lv2
