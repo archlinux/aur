@@ -1,0 +1,19 @@
+pkgbase = python-fla-core
+	pkgdesc = Core operations for flash-linear-attention
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/fla-org/flash-linear-attention
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pytorch
+	depends = python-einops
+	depends = python-triton
+	source = https://files.pythonhosted.org/packages/source/f/fla_core/fla_core-0.5.0.tar.gz
+	sha256sums = 476dd94711702af81cc4827010d9209f6053d8cdceac8e43d3c8497071f07a81
+
+pkgname = python-fla-core
