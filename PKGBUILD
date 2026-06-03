@@ -4,7 +4,7 @@
 
 pkgname=dvdrip
 pkgver=0.98.11
-pkgrel=15
+pkgrel=16
 pkgdesc="DVD Ripper and Encoder - Backup and compression utility for DVDs"
 arch=('x86_64')
 license=('custom')
@@ -21,6 +21,8 @@ sha1sums=('b91d65e7307b5fecd1509ace03c02564ac9591c0'
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  sed -i 's/\#include <stdio.h>/\#include <stdio.h>\n\#include <string.h>/' src/dvdrip-splitpipe.c
 
   # install module in vendor directories.
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor

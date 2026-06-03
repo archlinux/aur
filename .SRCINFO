@@ -1,7 +1,7 @@
 pkgbase = dvdrip
 	pkgdesc = DVD Ripper and Encoder - Backup and compression utility for DVDs
 	pkgver = 0.98.11
-	pkgrel = 15
+	pkgrel = 16
 	url = https://www.exit1.org/dvdrip/
 	arch = x86_64
 	license = custom
@@ -22,4 +22,3 @@ pkgbase = dvdrip
 	sha1sums = ec76242fb295d42dd77ffb9b3defdff10583d029
 
 pkgname = dvdrip
-
