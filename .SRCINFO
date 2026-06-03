@@ -1,0 +1,16 @@
+pkgbase = cmdh-bin
+	pkgdesc = Decentralized registry and offline search tool for AI Agents
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Xuepoo/cmdhub-oss
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cmdh
+	conflicts = cmdh
+	source_x86_64 = https://github.com/Xuepoo/cmdhub-oss/releases/download/v0.1.0/cmdh-linux-x86_64
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/Xuepoo/cmdhub-oss/releases/download/v0.1.0/cmdh-linux-aarch64
+	sha256sums_aarch64 = SKIP
+
+pkgname = cmdh-bin
