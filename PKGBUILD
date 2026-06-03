@@ -2,7 +2,7 @@
 
 pkgname=finkeeper24-bin
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="FinKeeper24 - менеджер личных финансов (Personal Finance Manager)"
 arch=('x86_64')
 url="https://finkeeper24.ru"
@@ -36,7 +36,10 @@ Icon=/opt/finkeeper24/lib/FinKeeper24.png
 Terminal=false
 Type=Application
 Categories=Office;Finance;
-StartupWMClass=FinKeeper24
+# App ID, который окно Compose Desktop репортит на Wayland (= имя главного класса
+# ru.homebudget.finkeeper.MainKt). Должен совпадать с ним, иначе Dock (Niri/DMS)
+# не сопоставит окно с .desktop → дефолтная иконка и кривое имя.
+StartupWMClass=ru-homebudget-finkeeper-MainKt
 EOF
 
 	# Запуск командой finkeeper24
