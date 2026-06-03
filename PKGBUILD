@@ -1,6 +1,6 @@
 # Maintainer: daonm <https://github.com/the-daonm>
 pkgname=gopac-bin
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A warm, beautiful TUI for Arch Linux package management (Binary)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('yay: AUR helper' 'paru: AUR helper')
 source=("gopac-${pkgver}::${url}/releases/download/v${pkgver}/gopac"
         "LICENCE-${pkgver}::${url}/releases/download/v${pkgver}/LICENCE"
         "gopac.fish-${pkgver}::${url}/releases/download/v${pkgver}/gopac.fish")
-sha256sums=('ce67a558dc435ff858afa617a0622dfe312890ea429d155b67dc3ffc3141c59b' '7b057371634a495f9b2d47a44d2fcb3c5ac0a9d43034c57c0f7914160eb3954f' '54feeb751e7b2d3295004205cc66b3615713fb33f90fb19e651beb04807c432d')
+sha256sums=('0302f68bb3f657ae2d5064508611efd0be336faae8ddd63b4109d694e08f0bb4' '7b057371634a495f9b2d47a44d2fcb3c5ac0a9d43034c57c0f7914160eb3954f' '54feeb751e7b2d3295004205cc66b3615713fb33f90fb19e651beb04807c432d')
 
 package() {
   install -Dm755 "gopac-${pkgver}" "$pkgdir/usr/bin/gopac"
