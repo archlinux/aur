@@ -1,6 +1,6 @@
 pkgbase = sing-box-extended
 	pkgdesc = Sing-box with extended features.
-	pkgver = 1.13.12~extended~2.1.5
+	pkgver = 1.13.12~extended~2.2.0
 	pkgrel = 1
 	url = https://github.com/shtorm-7/sing-box-extended
 	arch = i686
@@ -21,9 +21,9 @@ pkgbase = sing-box-extended
 	conflicts = sing-box-beta
 	conflicts = sing-box-extended-bin
 	backup = etc/sing-box/config.json
-	source = sing-box-extended-1.13.12-extended-2.1.5.tar.gz::https://github.com/shtorm-7/sing-box-extended/archive/v1.13.12-extended-2.1.5.tar.gz
+	source = sing-box-extended-1.13.12-extended-2.2.0.tar.gz::https://github.com/shtorm-7/sing-box-extended/archive/v1.13.12-extended-2.2.0.tar.gz
 	source = sing-box.rules
-	sha256sums = 3f9a01e0ddb51e36e3f1b005d0eb8e1efc23d23b6ca593562766795f4573abc8
+	sha256sums = d91e705b0de1e8ad0ed0f05ea37b4d66b4484e5ad1f78369cc10dbff8a23bffc
 	sha256sums = 1365536e1875043b969e2e18d7313ab7c6f7f9f63387f25506bb04362b44f206
 
 pkgname = sing-box-extended
