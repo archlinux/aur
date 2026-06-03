@@ -1,0 +1,20 @@
+pkgbase = radboard-bin
+	pkgdesc = Desktop Kanban board for Radicle
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://radboard.mikolajczyk.org
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = openssl
+	provides = radboard
+	conflicts = radboard
+	options = !strip
+	options = !debug
+	source = radboard-0.5.1.deb::https://dl.mikolajczyk.org/radboard/v0.5.1/radboard-amd64.deb
+	sha256sums = 1bd2292e2753fdb1bc10efc841da5cc250f0092390c3601de7bd906eae2a637b
+
+pkgname = radboard-bin
