@@ -1,0 +1,4 @@
+[moltis]
+source = "git"
+git = "https://github.com/moltis-org/moltis.git"
+prefix = "v"
