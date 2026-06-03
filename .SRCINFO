@@ -13,7 +13,7 @@ pkgbase = gopac-bin
 	source = gopac-1.5.0::https://github.com/the-daonm/gopac/releases/download/v1.5.0/gopac
 	source = LICENCE-1.5.0::https://github.com/the-daonm/gopac/releases/download/v1.5.0/LICENCE
 	source = gopac.fish-1.5.0::https://github.com/the-daonm/gopac/releases/download/v1.5.0/gopac.fish
-	sha256sums = d4f5de86a32176d25ceb4b699f8d746739e0c8d534c68b5341fd4323e2c12fb6
+	sha256sums = b89909a97b3406f5b110d081d9fe8affd92f7ee371ba343333a1cfaa418646ac
 	sha256sums = 7b057371634a495f9b2d47a44d2fcb3c5ac0a9d43034c57c0f7914160eb3954f
 	sha256sums = 54feeb751e7b2d3295004205cc66b3615713fb33f90fb19e651beb04807c432d
 
