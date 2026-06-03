@@ -1,4 +1,4 @@
-# Maintainer: hwangsihu
+# Maintainer: Sihu Hwang
 
 pkgname=python-yandex-music-api
 _name=${pkgname#python-}
