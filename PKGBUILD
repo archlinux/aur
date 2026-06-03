@@ -1,5 +1,5 @@
 pkgname=git-flow-rs
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='GUI and reimplementation for gitflow with extended logic for CI/CD'
 arch=('x86_64')

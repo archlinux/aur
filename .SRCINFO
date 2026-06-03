@@ -1,6 +1,6 @@
 pkgbase = git-flow-rs
 	pkgdesc = GUI and reimplementation for gitflow with extended logic for CI/CD
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/Emiliopg91/git-flow-rs
 	install = git-flow-rs.install
@@ -16,7 +16,7 @@ pkgbase = git-flow-rs
 	depends = libgcc
 	depends = libpng
 	depends = zlib-ng-compat
-	source = git+https://github.com/Emiliopg91/git-flow-rs.git#tag=2.2.2
+	source = git+https://github.com/Emiliopg91/git-flow-rs.git#tag=2.3.0
 	sha256sums = SKIP
 
 pkgname = git-flow-rs
