@@ -13,7 +13,7 @@ optdepends=('yay: AUR helper' 'paru: AUR helper')
 source=("gopac-${pkgver}::${url}/releases/download/v${pkgver}/gopac"
         "LICENCE-${pkgver}::${url}/releases/download/v${pkgver}/LICENCE"
         "gopac.fish-${pkgver}::${url}/releases/download/v${pkgver}/gopac.fish")
-sha256sums=('b89909a97b3406f5b110d081d9fe8affd92f7ee371ba343333a1cfaa418646ac' '7b057371634a495f9b2d47a44d2fcb3c5ac0a9d43034c57c0f7914160eb3954f' '54feeb751e7b2d3295004205cc66b3615713fb33f90fb19e651beb04807c432d')
+sha256sums=('b67887946dd78a961b66248f6ad530e6a10f198454e99da71b2937a4cf5d1781' '7b057371634a495f9b2d47a44d2fcb3c5ac0a9d43034c57c0f7914160eb3954f' '54feeb751e7b2d3295004205cc66b3615713fb33f90fb19e651beb04807c432d')
 
 package() {
   install -Dm755 "gopac-${pkgver}" "$pkgdir/usr/bin/gopac"
