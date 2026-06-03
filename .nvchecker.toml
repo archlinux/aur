@@ -1,0 +1,4 @@
+[minimon-applet-for-cosmic]
+source = "git"
+git = "https://github.com/cosmic-utils/minimon-applet.git"
+prefix = "v"
