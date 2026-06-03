@@ -13,6 +13,8 @@ ProtectSystem=full
 ProtectHome=true
 PrivateTmp=true
 PrivateDevices=true
+# Grants WebUI write access
+#ReadWritePaths=/etc/go2rtc.yaml
 
 [Install]
 WantedBy=multi-user.target
