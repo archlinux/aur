@@ -12,8 +12,8 @@ depends=(
   'gcc-libs'
   'libxkbcommon'
 )
-provides=('cosmic-ext-applet-minimon')
-conflicts=('cosmic-ext-applet-minimon')
+provides=('cosmic-applet-minimon')
+conflicts=('cosmic-applet-minimon' 'minimon-applet')
 options=('!strip')
 _asset="cosmic-ext-applet-minimon-1.1.1-1.fc44.x86_64.rpm"
 source_x86_64=("${_asset}::${url}/releases/download/v${pkgver}/${_asset}")
