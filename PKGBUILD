@@ -1,7 +1,7 @@
 # Maintainer: Doridian <archlinux at doridian dot net>
 
 pkgname=polymath
-pkgver=1.4.1.11
+pkgver=1.4.2.0
 pkgrel=1
 pkgdesc='Advanced keyboard layout customization tool for Flux keyboards'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   'udev.rules'
 )
 sha256sums=(
-  '7a5ea8af2ad1631ff4c25d17186b84c4379171e4b68104998593974f9044c058'
+  'ad7b18d885a246768fe0e6822d638ccdeb2cd9d85ad4b876583d22bf0a1374c1'
   'SKIP'
 )
 
