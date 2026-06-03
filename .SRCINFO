@@ -1,0 +1,27 @@
+pkgbase = python-smithy-http
+	pkgdesc = HTTP components for Smithy tooling.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/smithy-http
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-freezegun
+	checkdepends = python-awscrt
+	checkdepends = python-yarl
+	checkdepends = python-smithy-json
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-smithy-core
+	optdepends = python-awscrt: awscrt
+	optdepends = python-aiohttp: aiohttp
+	optdepends = python-yarl: aiohttp
+	source = smithy-http::git+https://github.com/smithy-lang/smithy-python.git#tag=smithy-http/v0.4.1
+	sha256sums = 1279c4d41b6f87f7703ff67b5490ce1fcf7441236aa4ad40d8a794bdd9419766
+
+pkgname = python-smithy-http
