@@ -3,16 +3,16 @@
 pkgname='python-aiogithubapi'
 _module=${pkgname#python-}
 pkgver='26.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Asynchronous Python client for the GitHub API"
 url="https://github.com/ludeeus/aiogithubapi"
 depends=(
 	'python>=3.14'
 	'python-aiohttp>=3.8'
-	'python-async-timeout>=4'
+	'python-backoff'
 )
 
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
