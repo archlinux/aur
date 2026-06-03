@@ -1,26 +1,22 @@
 # Maintainer: Alex Sutila <alexsutila2020@gmail.com>
-pkgname=libretro-irogb
+pkgname=libretro-irogb-git
 pkgver=r806.6970cb0
 pkgrel=1
-epoch=1
+# epoch=1
 pkgdesc="Gameboy Color System core"
 arch=('x86_64' 'aarch64')
-url=https://github.com/alexsutila/irogb
-license=(GPL3)
-groups=(libretro)
-depends=(
-  libretro-core-info
-)
+url="https://github.com/alexsutila/irogb"
+license=('GPL3')
+groups=('libretro')
+depends=('libretro-core-info')
 makedepends=(
   git
-  base-devel
+  cmake
 )
 source=(
   libretro-irogb::git+https://github.com/alexsutila/irogb.git
 )
-sha256sums=(
-  SKIP
-)
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/libretro-irogb"
