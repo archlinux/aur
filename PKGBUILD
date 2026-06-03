@@ -3,7 +3,7 @@
 _pkgname=ssh-multisession-resume
 pkgname=${_pkgname}-git
 _srcname=${_pkgname}-source
-pkgver=0.r22.gdca3527
+pkgver=0.r23.gd80cb19
 pkgrel=1
 pkgdesc='Persistent multi-session SSH auto-resume utility backed by tmux'
 arch=('any')
@@ -15,7 +15,6 @@ checkdepends=('tmux' 'screen')
 optdepends=(
   'sudo: allow non-root installer runs to apply SSHD changes'
 )
-install=${_pkgname}.install
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_srcname}::git+https://github.com/Bit-Loop/${_pkgname}.git")

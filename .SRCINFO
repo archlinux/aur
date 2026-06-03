@@ -1,9 +1,8 @@
 pkgbase = ssh-multisession-resume-git
 	pkgdesc = Persistent multi-session SSH auto-resume utility backed by tmux
-	pkgver = 0.r22.gdca3527
+	pkgver = 0.r23.gd80cb19
 	pkgrel = 1
 	url = https://github.com/Bit-Loop/ssh-multisession-resume
-	install = ssh-multisession-resume.install
 	arch = any
 	license = MIT
 	checkdepends = tmux
