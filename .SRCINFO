@@ -1,0 +1,20 @@
+pkgbase = evolution-on-fork-git
+	pkgdesc = Tray plugin for the Evolution email client (patched for evolution 3.60.x)
+	pkgver = 3.60.2.r0.gf461f32
+	pkgrel = 1
+	url = https://github.com/awsms/evolution-on
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = intltool
+	depends = evolution
+	depends = libnotify
+	depends = libappindicator
+	provides = evolution-on
+	conflicts = evolution-on
+	conflicts = evolution-on-git
+	source = git+https://github.com/awsms/evolution-on.git
+	sha256sums = SKIP
+
+pkgname = evolution-on-fork-git
