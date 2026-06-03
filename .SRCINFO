@@ -1,6 +1,6 @@
 pkgbase = shed-sh
 	pkgdesc = A Linux shell with a powerful line editor and IPC socket extensibility
-	pkgver = 0.24.0
+	pkgver = 0.25.3
 	pkgrel = 1
 	url = https://github.com/km-clay/shed
 	install = shed.install
