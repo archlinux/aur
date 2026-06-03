@@ -1,5 +1,5 @@
 pkgname=neocmakelsp
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=3.0
 pkgdesc='CMake LSP implementation based on Tower and Tree-sitter'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ source=(
 )
 options+=(!lto)
 sha256sums=(
-   '55ae5a731fa3b7091dc8474420ba76f61a5228067ce71d69cc0d3fcc5d6f83dd'
+   '99420a3c340ec5665df625f398d6ebb5e4ab5f10c4b1d7c937f8e1e646ed27c6'
 )
 
 build() {
