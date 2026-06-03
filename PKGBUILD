@@ -1,4 +1,6 @@
-# Maintainer: Needed!
+# Maintainer: JudgeManganese
+# Maintainer: nomis6432
+# Maintainer: yhu420
 
 pkgname=samrewritten-git
 pkgver=1.4.1.r0.g4953d56
@@ -7,7 +9,7 @@ pkgdesc="Unlock achievements and stats on Steam, and more!"
 url="https://github.com/PaulCombal/SamRewritten"
 license=('GPL-3.0-only')
 arch=('x86_64')
-makedepends=('rust>=1.95' 'cargo' 'gtk4' 'pkg-config' 'git' 'gettext')
+makedepends=('rust>=1.95' 'cargo' 'gtk4' 'pkg-config' 'git')
 depends=('gtk4')
 optdepends=('libadwaita: for Adwaita styling')
 source=("git+https://github.com/PaulCombal/SamRewritten.git")
