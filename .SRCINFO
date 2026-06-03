@@ -1,7 +1,7 @@
 pkgbase = squish
 	pkgdesc = A fast, lightweight Unix shell written in Cpp
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cpp4692517/shell
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = squish
 	makedepends = xmake
 	makedepends = lua
 	depends = lua>=5.2
-	depends = lua<=5.4
+	depends = lua<5.5
 	source = git+https://gitlab.com/cpp4692517/shell.git
 	sha256sums = SKIP
 
