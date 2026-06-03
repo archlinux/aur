@@ -1,0 +1,19 @@
+post_install() {
+  cat <<'EOF'
+==> blurt installed. To finish setup:
+    1. Enable it at login:   systemctl --user enable --now blurt.service
+       (or add `blurt daemon` to your desktop's autostart)
+    2. Bind a hotkey to:     blurt toggle
+       (Settings -> Keyboard -> Shortcuts, in your desktop)
+    On X11, the mouse forward button also toggles recording automatically,
+    and pressing Space stops while recording.
+
+    First run downloads the Whisper model (~1.5 GB) to ~/.cache/huggingface.
+    GPU is used automatically when CUDA is available, otherwise CPU.
+    Install xdotool (X11) or wtype/ydotool (Wayland) so blurt can type.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
