@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r4036.40ce476b2
+pkgver=r4042.94d2a330e
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -235,7 +235,7 @@ prepare() {
 build() {
 	cd "$srcdir/$_pkgname"
 
-	export BUILDPRESET=linux-ninja-gnu
+	export BUILDPRESET=linux-ninja-clang
 
 	# Needed to have correct title version
 	git remote set-url origin ${url}
