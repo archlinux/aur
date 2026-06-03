@@ -5,7 +5,7 @@
 
 pkgname=seerr
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=(x86_64 aarch64)
 url='https://github.com/seerr-team/seerr'
@@ -98,7 +98,7 @@ package() {
   fd -iu -t d    'osx-bin'                                    "${nmdir}" -X rm -rf "{}"
   fd -iu -t d    'test' -E '*test@*' -E '*minutesTo*'         "${nmdir}" -X rm -rf "{}"
   fd -iu -t d    '^doc$|^docs$'                               "${nmdir}" -X rm -rf "{}"
-  fd -iu -t d    'cli$'                                       "${nmdir}" -X rm -rf "{}"
+  fd -iu -t d    '@npmcli$'                                   "${nmdir}" -X rm -rf "{}"
   fd -iu -t d    'example'                                    "${nmdir}" -X rm -rf "{}"
   fd -iu -t d    '@next\+swc-linux-x64-gnu'                   "${nmdir}" -X rm -rf "{}"
   fd -iu -t d    '@swc\+core-linux-x64-gnu'                   "${nmdir}" -X rm -rf "{}"
