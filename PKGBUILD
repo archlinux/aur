@@ -12,7 +12,6 @@ license=(GPL-2.0-or-later LGPL-2.0-or-later)
 depends=(discount
          djvulibre
          freetype2
-         gcc-libs
          glibc
          karchive
          kbookmarks
@@ -33,6 +32,7 @@ depends=(discount
          kxmlgui
          libkexiv2
          libspectre
+         libstdc++
          libtiff
          phonon-qt6
          poppler-qt6
