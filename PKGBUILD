@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Devin Desktop (next channel) - formerly Windsurf Editor"
 arch=('x86_64')
 url="https://docs.devin.ai"
-license=('custom')
+license=('custom:Proprietary')
 
 # APT repository configuration
 _apt_base="https://windsurf-stable.codeiumdata.com/mQfcApCOdSLoWOSI/apt"
@@ -22,14 +22,14 @@ depends=(
     'gtk3'
     'alsa-lib'
 )
-makedepends=('curl')
+makedepends=()
 optdepends=(
     'bash-completion: for bash shell completions'
     'zsh: for zsh shell completions'
 )
 provides=("windsurf-next")
 conflicts=("windsurf-next")
-options=('!strip')
+options=('!strip' '!debug')
 
 source=(
     "${pkgname}-${pkgver}.deb::${_apt_base}/pool/main/d/devin-desktop-next/${_debfile}"
@@ -41,10 +41,14 @@ sha256sums=(
     'f153268fe14cd9a71bb866d1d099bf11758da60146d44a9c03babd97ce2c5c30'
     'f15127ef9ff42b2eddf5e0b476a27a0f65e3813de911c9154a577746b47e8188'
     'c2845c4efacb3eb7f0c5756ec9b2f68f3b24af11cc2db6965a4e5f4e744cf539'
+
 )
 
 prepare() {
     cd "$srcdir"
+
+    # Clean up any previous extraction
+    rm -rf deb-extract
 
     # Extract the .deb file (ar archive)
     mkdir -p deb-extract
@@ -80,8 +84,12 @@ package() {
     fi
 
     # Copy all files to /opt
+    if [[ -z "$_installdir" || ! -d "$_installdir" ]]; then
+        echo "Error: Installation directory not found!" >&2
+        return 1
+    fi
     install -dm755 "$pkgdir/opt/$pkgname"
-    cp -r "$_installdir"/* "$pkgdir/opt/$pkgname/"
+    cp -a "$_installdir"/. "$pkgdir/opt/$pkgname/"
 
     # Create symlink for the executable
     # The binary may be named differently (devin-desktop-next vs windsurf-next)
@@ -94,12 +102,14 @@ package() {
         _bin=$(find "$pkgdir/opt/$pkgname" -maxdepth 1 -type f -name 'devin-*' -executable | head -1)
         : "${_bin:=$(find "$pkgdir/opt/$pkgname" -maxdepth 1 -type f -name 'windsurf-*' -executable | head -1)}"
         _binname=$(basename "$_bin")
-        if [[ -n "$_binname" ]]; then
-            # Symlink in /opt so /opt/windsurf-next/windsurf-next works
-            ln -sf "$_binname" "$pkgdir/opt/$pkgname/$pkgname"
-            # Symlink in /usr/bin
-            ln -sf "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+        if [[ -z "$_binname" ]]; then
+            echo "Error: Could not find executable in $pkgdir/opt/$pkgname" >&2
+            return 1
         fi
+        # Symlink in /opt so /opt/windsurf-next/windsurf-next works
+        ln -sf "$_binname" "$pkgdir/opt/$pkgname/$pkgname"
+        # Symlink in /usr/bin
+        ln -sf "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
     fi
 
     # Install the desktop entry files
