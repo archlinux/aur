@@ -10,7 +10,7 @@ pkgname='sd-boot'
 pkgdesc='Tools to install linux kernels via kernel-install from systemd'
 _gitname='sd-boot'
 
-pkgver="5.2.0"
+pkgver="5.3.0"
 pkgrel=1
 url="https://github.com/gene-git/sd-boot"
 
@@ -50,6 +50,7 @@ checkdepends=(
     clang
     valgrind
     linux
+    edk2-shell
 )
 
 backup=(
