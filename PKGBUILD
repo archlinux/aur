@@ -17,4 +17,10 @@ install=polaris-gamestream-bin.install
 
 package() {
   bsdtar -xf Polaris-arch-x86_64.pkg.tar.zst -C "$pkgdir"
+
+  # ensure no pacman metadata leaks
+  find "$pkgdir" -name ".PKGINFO" -delete
+  find "$pkgdir" -name ".BUILDINFO" -delete
+  find "$pkgdir" -name ".MTREE" -delete
+  find "$pkgdir" -name ".INSTALL" -delete
 }
