@@ -1,7 +1,7 @@
 pkgname=vesc-tool
-pkgver=6.06
-_pkgver=6_06
-pkgrel=6
+pkgver=7.00
+_pkgver=7_00
+pkgrel=1
 pkgdesc="VESC ESC graphical configuration tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="https://vesc-project.com/vesc_tool"
@@ -12,7 +12,7 @@ conflicts=('vesc_tool-git')
 source=("$pkgname"::"git+https://github.com/vedderb/vesc_tool.git#branch=release_$_pkgver"
         'vesc-tool.desktop')
 sha256sums=('SKIP'
-            '8984cc19ffc82a56d700dde8d49c189c70ec9c6a5f0309871cdfe052121907f5')
+            '03d9bf65f8273d1b5e6f945b93a51719833179b8d20f83d839dc7f7422ef5080')
 options=(!debug)
 
 build() {

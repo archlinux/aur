@@ -1,7 +1,7 @@
 pkgbase = vesc-tool
 	pkgdesc = VESC ESC graphical configuration tool
-	pkgver = 6.06
-	pkgrel = 6
+	pkgver = 7.00
+	pkgrel = 1
 	url = https://vesc-project.com/vesc_tool
 	arch = i686
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = vesc-tool
 	depends = qt5-svg
 	conflicts = vesc_tool-git
 	options = !debug
-	source = vesc-tool::git+https://github.com/vedderb/vesc_tool.git#branch=release_6_06
+	source = vesc-tool::git+https://github.com/vedderb/vesc_tool.git#branch=release_7_00
 	source = vesc-tool.desktop
 	sha256sums = SKIP
-	sha256sums = 8984cc19ffc82a56d700dde8d49c189c70ec9c6a5f0309871cdfe052121907f5
+	sha256sums = 03d9bf65f8273d1b5e6f945b93a51719833179b8d20f83d839dc7f7422ef5080
 
 pkgname = vesc-tool
