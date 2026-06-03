@@ -11,7 +11,6 @@ url="https://github.com/theyamo/${_gitname}"
 license=('GPL-2.0-only')
 depends=('glibc' 'libgcc' 'libstdc++' 'hicolor-icon-theme' 'sdl2-compat')
 makedepends=('acme' 'git' 'ldc')
-#makedepends=('acme' 'gcc-d' 'git' 'ldc')
 provides=('cheesecutter')
 conflicts=('cheesecutter-stereo')
 source=("git+${url}")
@@ -24,7 +23,6 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_gitname}"
-    #sed -i -r 's/^COMFLAGS=.*/COMFLAGS=-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now/' Makefile
     make
 }
 
