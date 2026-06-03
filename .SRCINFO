@@ -1,6 +1,6 @@
 pkgbase = python-commiefetch
 	pkgdesc = Communist-themed system information tool — like neofetch, but red
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/amalxloop/commiefetch
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-commiefetch
 	depends = python
 	provides = commiefetch
 	conflicts = commiefetch
-	source = commiefetch-1.1.0.tar.gz::https://files.pythonhosted.org/packages/source/c/commiefetch/commiefetch-1.1.0.tar.gz
-	sha256sums = 4f90a45957a21f294cf32ed4c1e638d7d277408d3ad39582f0b03b4d68aa7caa
+	source = commiefetch-1.1.1.tar.gz::https://files.pythonhosted.org/packages/source/c/commiefetch/commiefetch-1.1.1.tar.gz
+	sha256sums = 19889f980dba6ba9e422cc79b3a8f9cef08d004a483b2a0e44b5a42cf4ad34bd
 
 pkgname = python-commiefetch
