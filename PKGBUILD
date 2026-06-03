@@ -5,7 +5,7 @@
 
 pkgname=vmd
 pkgver=2.0.1a1
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Molecular Dynamics (official binary build)"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=('custom')
@@ -40,6 +40,7 @@ package() {
   ./configure
   cd src; make install
   sed -i 's|set defaultvmddir=.*|set defaultvmddir=/usr/lib/vmd|' "${pkgdir}/usr/bin/vmd"
+  sed -i '2i unsetenv WAYLAND_DISPLAY' "${pkgdir}/usr/bin/vmd"
 
   install -Dm644 ${srcdir}/vmd.desktop ${pkgdir}/usr/share/applications/vmd.desktop
   install -Dm644 ${srcdir}/vmd.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/vmd.png
