@@ -1,0 +1,21 @@
+pkgbase = python-django-ratelimit
+	pkgdesc = Cache-based rate-limiting for Django views
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/jsocol/django-ratelimit
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-django
+	checkdepends = python-pymemcache
+	checkdepends = python-django-redis
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-django
+	source = django-ratelimit-4.1.0.tar.gz::https://github.com/jsocol/django-ratelimit/archive/refs/tags/v4.1.0.tar.gz
+	sha256sums = d9563bab593ab2c48df1bf20aae3f9bf5bd4a02e5b0ca34a9dc53e66276b6018
+
+pkgname = python-django-ratelimit
