@@ -1,6 +1,6 @@
 pkgbase = hyprlayer-bin
 	pkgdesc = CLI for managing thoughts for AI coding agents
-	pkgver = 1.5.6
+	pkgver = 1.5.7
 	pkgrel = 1
 	url = https://github.com/BrightBlock/hyprlayer-cli
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = hyprlayer-bin
 	license = MIT
 	provides = hyprlayer
 	conflicts = hyprlayer
-	source_x86_64 = hyprlayer-bin-1.5.6-x86_64::https://github.com/BrightBlock/hyprlayer-cli/releases/download/v1.5.6/hyprlayer-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 822577272d748ba5ed6b9d66bffe053bbd7929da46ea905ca9504fe28e8f3f72
-	source_aarch64 = hyprlayer-bin-1.5.6-aarch64::https://github.com/BrightBlock/hyprlayer-cli/releases/download/v1.5.6/hyprlayer-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = 6eb57945d3793e677ebb9dba8484cfdf34aef976359d5c4378761ce8b34e37ee
+	source_x86_64 = hyprlayer-bin-1.5.7-x86_64::https://github.com/BrightBlock/hyprlayer-cli/releases/download/v1.5.7/hyprlayer-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 00717fb92f8acad5b644cc5e87630296a8031208c72c25f38366fc6e14ce7d39
+	source_aarch64 = hyprlayer-bin-1.5.7-aarch64::https://github.com/BrightBlock/hyprlayer-cli/releases/download/v1.5.7/hyprlayer-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = c0d8ce2ab9e5cdeccfeb695e17b445b4aa1b341ea94cae6f0bd8a9f6d08f4578
 
 pkgname = hyprlayer-bin
