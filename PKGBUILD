@@ -11,7 +11,7 @@ pkgver=0.5.2
 pkgrel=1
 pkgdesc="桌面伴侣普瑞赛斯 (Priestess) — 基于 Claude Code / Codex CLI 后端的 Electron 托盘应用"
 arch=('x86_64')
-url="https://github.com/aklnaaw/priestess-arknights"
+url="https://github.com/aklnaaw/claude-code-but-priestess"
 license=('custom:UNLICENSED')
 depends=(
   'cairo'
