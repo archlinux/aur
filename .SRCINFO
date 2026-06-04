@@ -1,0 +1,15 @@
+pkgbase = nmem-cli
+	pkgdesc = CLI and TUI for Nowledge Mem - AI memory management
+	pkgver = 0.8.8
+	pkgrel = 1
+	url = https://mem.nowledge.co/docs/cli
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	makedepends = python-build
+	makedepends = python-wheel
+	depends = python>=3.11
+	source = https://files.pythonhosted.org/packages/source/n/nmem-cli/nmem_cli-0.8.8.tar.gz
+	sha256sums = 20db38bf0227b8e1045b8e75c4e8c0ce47cb3c8ed4fc4528dab277867c71b00a
+
+pkgname = nmem-cli
