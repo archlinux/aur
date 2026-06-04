@@ -2,7 +2,7 @@
 
 pkgname=optiscaler-client-bin
 pkgver=1.0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Modern desktop client for installing, updating and configuring OptiScaler across game libraries"
 arch=('x86_64')
 url="https://github.com/Agustinm28/Optiscaler-Client"
@@ -34,9 +34,13 @@ package() {
   # ensure binary is executable
   chmod +x "$pkgdir/opt/optiscaler-client/OptiscalerClient"
 
-  # FIXED LAUNCHER (critical for .NET/Avalonia bundle)
+  # FIXED LAUNCHER (critical .NET/Avalonia fix)
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/optiscaler-client" << 'EOF'
 #!/bin/bash
+
+export DOTNET_BUNDLE_EXTRACT_BASE_DIR="$HOME/.cache/optiscaler-client"
+mkdir -p "$DOTNET_BUNDLE_EXTRACT_BASE_DIR"
+
 APPDIR="/opt/optiscaler-client"
 cd "$APPDIR" || exit 1
 exec "$APPDIR/OptiscalerClient" "$@"
