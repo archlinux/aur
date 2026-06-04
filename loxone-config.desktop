@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Loxone Config
+GenericName=Home Automation Configuration
+Comment=Configure and program Loxone Miniserver
+Exec=loxone-config
+Icon=loxone-config-bin
+Terminal=false
+Type=Application
+Categories=Settings;System;
+StartupNotify=true
+StartupWMClass=loxoneconfig.exe

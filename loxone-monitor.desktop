@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Loxone Monitor
+GenericName=Home Automation Monitor
+Comment=Monitor Loxone Miniserver events and logs
+Exec=loxone-monitor
+Icon=loxone-config-bin
+Terminal=false
+Type=Application
+Categories=Settings;System;
+StartupNotify=true
+StartupWMClass=loxonemonitor.exe

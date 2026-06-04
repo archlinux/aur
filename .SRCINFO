@@ -1,0 +1,25 @@
+pkgbase = loxone-config-bin
+	pkgdesc = Loxone Config - home automation configuration software (Wine)
+	pkgver = 17.0.3.31
+	pkgrel = 1
+	url = https://www.loxone.com
+	arch = x86_64
+	license = LicenseRef-Loxone-Proprietary
+	makedepends = xorg-server-xvfb
+	makedepends = icoutils
+	depends = wine
+	depends = wine-mono
+	options = !strip
+	options = emptydirs
+	source = LoxoneConfigSetup_17000331.zip::https://updatefiles.loxone.com/LoxConfig/LoxoneConfigSetup_17000331.zip
+	source = loxone-config.sh
+	source = loxone-config.desktop
+	source = loxone-monitor.sh
+	source = loxone-monitor.desktop
+	sha256sums = 7a254cf4e9909dc865152c9d76cd92abd633e7c73f7f2906d64363e5b05bcc76
+	sha256sums = 9005ac2866496b9d1dbc85887e81e59a14e4b4a9a3e0530ab2049eedb492f1c4
+	sha256sums = 3ff9c4f99a924d74e3240dba49fbdce737113e1072f9f7aadf6d9fe6c76260b1
+	sha256sums = 0deb0cee30573b7f4492329946eeb0159c9c48a5808546789af4b8123986ac63
+	sha256sums = f9524c4977cbb05e3144c7c4c5d8f4914778a6998bdde5f243ddbe298980786c
+
+pkgname = loxone-config-bin
