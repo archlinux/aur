@@ -1,7 +1,7 @@
 # Maintainer : Eric Lesiuta <elesiuta@gmail.com>
 
 pkgname=picosnitch
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Monitor network traffic per executable using BPF'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('libnotify: desktop notifications via notify-send'
             'python-psycopg: PostgreSQL remote logging'
             'python-pymysql: MariaDB / MySQL remote logging')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b658420a5d75088d7e355d2ff290802fc0a8ee0d170ce25f2c9d73909a9360a7')
+sha256sums=('56d13cd0ccdbc15735efa881e13dba5b44d228fd946c79ede02d5c7768eece58')
 
 build() {
     cd "${pkgname}-${pkgver}"
