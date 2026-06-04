@@ -1,0 +1,27 @@
+pkgbase = graywolf-aprs-git
+	pkgdesc = APRS radio transceiver, digipeater, and Internet gateway (git version)
+	pkgver = 0.13.15.r0.gHASH
+	pkgrel = 1
+	url = https://github.com/chrissnell/graywolf
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = go
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	depends = glibc
+	provides = graywolf-aprs
+	conflicts = graywolf-aprs
+	options = !lto
+	install = graywolf-aprs-git.install
+	source = graywolf::git+https://github.com/chrissnell/graywolf.git
+	source = graywolf-aprs-git.service
+	source = graywolf-aprs-git.sysusers
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = graywolf-aprs-git
