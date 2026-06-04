@@ -1,0 +1,17 @@
+post_install() {
+    echo
+    echo "==> music-tui installed."
+    echo
+    echo "On first launch open Settings (press 3), set your music directory (e),"
+    echo "then scan it (r)."
+    echo
+    echo "Optional, for full visuals:"
+    echo "  - a Nerd Font for the transport icons"
+    echo "  - kitty >= 0.40 for album art and 2x transport icons"
+    echo "    (other terminals run fine; those two features degrade gracefully)"
+    echo
+}
+
+post_upgrade() {
+    echo "==> music-tui upgraded. Restart the app to pick up the new version."
+}
