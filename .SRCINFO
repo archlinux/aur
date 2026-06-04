@@ -1,6 +1,6 @@
 pkgbase = hyprcorrect-bin
 	pkgdesc = Keyboard-driven desktop spelling and typo corrector (prebuilt binary)
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/jondkinney/hyprcorrect
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = hyprcorrect-bin
 	depends = wayland
 	depends = wtype
 	optdepends = wl-clipboard: enables the clipboard / selection fallback when the keystroke buffer is empty
-	provides = hyprcorrect=0.2.5
+	provides = hyprcorrect=0.2.6
 	conflicts = hyprcorrect
 	conflicts = hyprcorrect-git
 	options = !debug
-	source_x86_64 = hyprcorrect-0.2.5-x86_64.tar.gz::https://github.com/jondkinney/hyprcorrect/releases/download/v0.2.5/hyprcorrect-0.2.5-x86_64.tar.gz
-	sha256sums_x86_64 = 67f7ea7b89106c0ed2d481edcbc8acbb49fb3904961b3671f60bfb59712d4c28
-	source_aarch64 = hyprcorrect-0.2.5-aarch64.tar.gz::https://github.com/jondkinney/hyprcorrect/releases/download/v0.2.5/hyprcorrect-0.2.5-aarch64.tar.gz
-	sha256sums_aarch64 = 6a085db39e1e6cf5421c54d2f039233d2e1b6219654b919dabdd41db247c725c
+	source_x86_64 = hyprcorrect-0.2.6-x86_64.tar.gz::https://github.com/jondkinney/hyprcorrect/releases/download/v0.2.6/hyprcorrect-0.2.6-x86_64.tar.gz
+	sha256sums_x86_64 = f8515a2ececfd5b8b219b08dd288cc57b7c345220606f40418e8df2604f15606
+	source_aarch64 = hyprcorrect-0.2.6-aarch64.tar.gz::https://github.com/jondkinney/hyprcorrect/releases/download/v0.2.6/hyprcorrect-0.2.6-aarch64.tar.gz
+	sha256sums_aarch64 = c002b570159d891b29715d6e1b13546bee1b303f8a2d39fd8ac70403c81b2c54
 
 pkgname = hyprcorrect-bin
