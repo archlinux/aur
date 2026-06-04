@@ -1,11 +1,12 @@
 pkgbase = quark-downloader
 	pkgdesc = Interactive CLI and GUI wrapper for yt-dlp
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Aspenini/quark-downloader
 	arch = x86_64
 	license = MIT
 	makedepends = crystal
+	makedepends = shards
 	depends = ffmpeg
 	depends = gc
 	depends = hicolor-icon-theme
@@ -17,7 +18,7 @@ pkgbase = quark-downloader
 	depends = zlib
 	optdepends = deno: JavaScript runtime support for YouTube downloads
 	optdepends = nodejs: JavaScript runtime support for YouTube downloads
-	source = quark-downloader-0.2.1.tar.gz::https://github.com/Aspenini/quark-downloader/archive/refs/tags/v0.2.1.tar.gz
+	source = quark-downloader-0.3.0.tar.gz::https://github.com/Aspenini/quark-downloader/archive/refs/tags/v0.3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = quark-downloader

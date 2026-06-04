@@ -1,13 +1,13 @@
 # Maintainer: Aspenini <aspeninifeltner@gmail.com>
 pkgname=quark-downloader
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Interactive CLI and GUI wrapper for yt-dlp'
 arch=('x86_64')
 url='https://github.com/Aspenini/quark-downloader'
 license=('MIT')
 depends=('ffmpeg' 'gc' 'hicolor-icon-theme' 'libevent' 'openssl' 'pcre2' 'tk' 'yt-dlp' 'zlib')
-makedepends=('crystal')
+makedepends=('crystal' 'shards')
 optdepends=(
   'deno: JavaScript runtime support for YouTube downloads'
   'nodejs: JavaScript runtime support for YouTube downloads'
