@@ -1,18 +1,18 @@
 # Maintainer: amalxloop <amalrockz568@gmail.com>
 
 pkgname=python-commiefetch
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Communist-themed system information tool — like neofetch, but red"
 arch=('any')
 url="https://github.com/amalxloop/commiefetch"
-license=('MIT')
+license=('GPL3')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 provides=('commiefetch')
 conflicts=('commiefetch')
 source=("commiefetch-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/commiefetch/commiefetch-$pkgver.tar.gz")
-sha256sums=('8ebae7c39adb0e2d76fdb48217c95acda19e93990239b9efe6723240fe80914a')
+sha256sums=('0f58142615b931537cb08df9b1169831087f340e3fe8eb70abfe6a73a03450c0')
 
 build() {
   cd "$srcdir/commiefetch-$pkgver"
