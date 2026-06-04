@@ -1,5 +1,5 @@
 pkgname=mcpls
-pkgver=0.3.6+30+gd2545ef
+pkgver=0.3.6
 pkgrel=1
 url="https://github.com/bug-ops/mcpls"
 pkgdesc="Universal MCP to LSP bridge - expose Language Server Protocol capabilities as MCP tools for AI agents"
