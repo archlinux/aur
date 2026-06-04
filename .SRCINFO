@@ -1,0 +1,21 @@
+pkgbase = beatboss-bin
+	pkgdesc = BeatBoss Music Player - music streaming and download app (Flutter desktop)
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/TheVolecitor/BeatBoss
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = patchelf
+	depends = gtk3
+	depends = mpv
+	depends = webkit2gtk-4.1
+	depends = libsecret
+	provides = beatboss
+	conflicts = beatboss
+	noextract = beatboss-1.9.0.deb
+	options = !strip
+	options = !debug
+	source = beatboss-1.9.0.deb::https://github.com/TheVolecitor/BeatBoss/releases/download/Release_1.9/BeatBoss-1.9.0-linux.deb
+	sha256sums = 1d57338fdc131887a96ef281d94a68af49929876e3e2bccae5eb17e46a6f1284
+
+pkgname = beatboss-bin
