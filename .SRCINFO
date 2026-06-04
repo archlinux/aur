@@ -1,6 +1,6 @@
 pkgbase = agent-cli
 	pkgdesc = A suite of local AI-powered command-line tools
-	pkgver = 0.96.10
+	pkgver = 0.97.0
 	pkgrel = 1
 	url = https://github.com/basnijholt/agent-cli
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = agent-cli
 	provides = agent-cli
 	conflicts = python-agent-cli
 	replaces = python-agent-cli
-	source = agent-cli-0.96.10.tar.gz::https://github.com/basnijholt/agent-cli/archive/refs/tags/v0.96.10.tar.gz
-	sha256sums = c8642d31ad61055314fcf5a2537ea68393f8b2945c6d78c1a3d8db49d3009773
+	source = agent-cli-0.97.0.tar.gz::https://github.com/basnijholt/agent-cli/archive/refs/tags/v0.97.0.tar.gz
+	sha256sums = c636486597f166d462e1f78264c84ebc7521526710dbaa23b7680e05ac8c9ef1
 
 pkgname = agent-cli
