@@ -1,6 +1,6 @@
 # Maintainer: KannarFr <kannarfr@gmail.com>
 pkgname=gitlab-inbox-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A glanceable desktop inbox for GitLab things that need your reply (via glab)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ _dist="gitlab-inbox-${pkgver}-linux-x86_64"
 source=("$_dist.tar.gz::$url/releases/download/v${pkgver}/${_dist}.tar.gz")
 # sha256 of the release tarball; refresh with `updpkgsums` (pacman-contrib) on
 # each new release, then regenerate .SRCINFO.
-sha256sums=('2d4ede7bce0c94f6fd9459346cca10bf30434a01ac9739c3c98aa0138740f916')
+sha256sums=('7cd0e7f4b3461b4b1fc8ffbb476d898ab544e14321d24a9e6cc8e12718e21c37')
 
 package() {
   cd "$srcdir/$_dist"
