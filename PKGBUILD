@@ -8,7 +8,7 @@ url='https://github.com/slatkin/goflux'
 license=('custom')
 depends=('webkit2gtk-4.1')
 source=("$pkgname-$pkgver-linux-x86_64.tar.gz::https://github.com/slatkin/goflux/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('5b07d65b14818c600d77902061cf07e9d3dfd4cc579e4bfcda2ea006e2d8f5b1')
 
 package() {
   cd "$pkgname-$pkgver"
