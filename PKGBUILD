@@ -25,9 +25,11 @@ build() {
   cd ..
 
   go build -v \
-    -tags webkit2_41 \
+    -tags webkit2_41,production \
     -ldflags "-s -w" \
     -o "$pkgname" .
+
+  chmod -R u+w "$srcdir/go/pkg/mod"
 }
 
 package() {
