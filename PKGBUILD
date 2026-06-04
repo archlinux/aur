@@ -9,7 +9,7 @@ license=('LicenseRef-Proprietary')
 depends=('gtk3' 'nss' 'alsa-lib')
 options=(!strip !debug)
 source=("${pkgname}-${pkgver}.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-3.0.0.AppImage")
-sha256sums=('d8fd52cd80618caf2d962fb5b1811608eb42bf153dec2cc6e4ba793fa59269e7')
+sha256sums=('ab6934e36197f7baa828f730c789293b665551b237519e6336c53a0ccec87f81')
 
 package() {
     cd "${srcdir}"
