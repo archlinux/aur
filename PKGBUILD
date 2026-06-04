@@ -3,7 +3,7 @@
 _pkgname="xbright"
 pkgname="${_pkgname}-git"
 pkgver=1.0_1.r72.20201130.8b7fe6f
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI to change monitor brightness on X11 (using XRandR). Supports presets."
 arch=(
   "i686"
@@ -32,6 +32,7 @@ makedepends=(
   "git"       # To download the source.
   "go"        # To build.
   "zopfli"    # To size-optimise PNG files.
+  "parallel"  # To size-optimise PNG files.
   "libglvnd"  # Dependency 'libGL.so' and corresponding header files.
 )
 optdepends=()
@@ -64,9 +65,7 @@ prepare() {
   git log > git.log
 
   printf '%s\n' " --> Size-optimising PNG files ..."
-  zopflipng -m -y icon.png icon.png
-  zopflipng -m -y pics/settings.png pics/settings.png
-  zopflipng -m -y pics/sliders.png pics/sliders.png
+  printf '%s\n' icon.png pics/settings.png pics/sliders.png | parallel -j "`nproc`" zopflipng -m -y {} {}
 }
 
 pkgver() {
