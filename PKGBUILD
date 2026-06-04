@@ -1,20 +1,21 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=slos-gimpainter
-pkgver=20220429
+pkgver=20250702
+_commit=b28d9dce2e913cdd6b7e2b895ecd9f97c9372dee
 pkgrel=1
 arch=('any')
-pkgdesc='A brush package for GIMP 2.10.20 or Later'
+pkgdesc='A brush package for GIMP 2.10.20 or later'
 url="https://github.com/SenlinOS/SLOS-GIMPainter"
 license=('MIT')
 depends=('gimp')
-_commit=c2550f554dc9e59da343a5fee4e406afcb51c1f1
-source=("20220429.zip::https://github.com/SenlinOS/SLOS-GIMPainter/archive/$_commit.zip")
-sha256sums=('e828a75aafc3de56fad2091f65074c079ed1abe93827017fde6ead067d5b3c06')
+source=("$pkgver.zip::https://github.com/SenlinOS/SLOS-GIMPainter/archive/$_commit.zip")
+sha256sums=('dc4ce8d6a266ae7d29ea6c18bcf3978b9df5d26b62d2cdc6610e9d20986c16a1')
 
 package() {
-  mkdir -p "$pkgdir/usr/share/gimp/2.0"
+  dir=usr/share/gimp/3.0
+  mkdir -p "$pkgdir/${dir}"
   cd SLOS-GIMPainter-$_commit
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  mv {brushes,dynamics,tool-presets} "$pkgdir/usr/share/gimp/2.0"
+  mv {brushes,dynamics,tool-presets} "$pkgdir/${dir}"
 }
