@@ -8,10 +8,7 @@ arch=('x86_64')
 url="https://github.com/Agustinm28/Optiscaler-Client"
 license=('MIT')
 
-depends=(
-  'glibc'
-  'gcc-libs'
-)
+depends=('glibc' 'gcc-libs')
 
 provides=('optiscaler-client')
 conflicts=('optiscaler-client')
@@ -28,36 +25,25 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/pixmaps"
 
-  # extract app
-  bsdtar -xf optiscaler-client.tar.gz -C "$pkgdir/opt/optiscaler-client" --strip-components=1
+  # IMPORTANT: preserve archive exactly (NO strip-components)
+  bsdtar -xf optiscaler-client.tar.gz -C "$pkgdir/opt/optiscaler-client"
 
-  # ensure binary is executable
-  chmod +x "$pkgdir/opt/optiscaler-client/OptiscalerClient"
-
-  # FIXED LAUNCHER (critical .NET/Avalonia fix)
+  # launcher (safe for .NET/Avalonia)
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/optiscaler-client" << 'EOF'
 #!/bin/bash
-
-export DOTNET_BUNDLE_EXTRACT_BASE_DIR="$HOME/.cache/optiscaler-client"
-mkdir -p "$DOTNET_BUNDLE_EXTRACT_BASE_DIR"
-
 APPDIR="/opt/optiscaler-client"
 cd "$APPDIR" || exit 1
 exec "$APPDIR/OptiscalerClient" "$@"
 EOF
 
-  # desktop entry
+  # desktop file
   install -Dm644 optiscaler-client.desktop \
     "$pkgdir/usr/share/applications/optiscaler-client.desktop"
 
-  # icon (safe fallback)
+  # icon fallback
   if [ -f "$pkgdir/opt/optiscaler-client/assets/icon.png" ]; then
     install -Dm644 \
       "$pkgdir/opt/optiscaler-client/assets/icon.png" \
-      "$pkgdir/usr/share/pixmaps/optiscaler-client.png"
-  elif [ -f "$pkgdir/opt/optiscaler-client/icon.png" ]; then
-    install -Dm644 \
-      "$pkgdir/opt/optiscaler-client/icon.png" \
       "$pkgdir/usr/share/pixmaps/optiscaler-client.png"
   fi
 }
