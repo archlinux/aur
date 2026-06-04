@@ -4,3 +4,5 @@ pkg/
 *.tar.zst
 *.zip
 font-patcher-*
+.claude*
+.claude-flow/
