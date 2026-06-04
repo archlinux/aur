@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=thinkorswim
+Comment=Schwab thinkorswim trading platform
+Exec=thinkorswim
+Icon=thinkorswim
+Terminal=false
+Categories=Office;Finance;
+StartupWMClass=thinkorswim
