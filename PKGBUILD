@@ -1,7 +1,7 @@
 # Maintainer: Bryson Kelly <https://github.com/brysonak>
 pkgname=buf-cli
 _binname=buf
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 _srcdir="buf-$pkgver"
 pkgdesc="A fast, safe bootable USB image flasher"
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=()
 makedepends=('rust' 'cargo')
 source=("buf-$pkgver.tar.gz::https://github.com/brysonak/buf/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('563735885656571011c121fbbfcba7ca80427b152ee9bff1c12127e1a92540e2')
 
 prepare() {
     cd "$_srcdir"
