@@ -25,7 +25,7 @@
  fi
  
  run_test() {
-@@ -73,25 +73,24 @@
+@@ -88,25 +88,24 @@
        echo "PASS $name"
        PASS=$((PASS + 1))
      else
