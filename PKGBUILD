@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Easy userspace bandwidth manager for Linux"
 
-pkgver=2.3.0
+pkgver=2.6.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -35,7 +35,7 @@ sha256sums=('c5a1efd991607f243aa908891e4850ce87f20c490237520551f6e41daa9701be'
             'df41f581b3bcec0f061c17d7e24b7d2f9d56d065fd12079f5c783239615e27d0'
             'fc6b0de69d88ccce9e0632562ab3214db2fffdb565e1d81489e67696c3c64497'
             'ca9afbfe436189bc5f49ae4109135223dd00fc7f4f61f052605225abc329a7b7')
-sha256sums_x86_64=('95300dd6e47cd3c4fc68fa3e255e03ad5660fa32321637c1876ce83d8880691c')
+sha256sums_x86_64=('5212c73e531aafc2d6c36793edc55c5b7678a2d7cc7f7f0aebbbb41a5a2a9154')
 
 
 case ${CARCH} in
