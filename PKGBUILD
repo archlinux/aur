@@ -5,7 +5,7 @@
 # CI (.github/workflows/aur-release.yml) on every release; the values below
 # are only a checked-in reference snapshot.
 pkgname=runner-run
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='Universal project task runner'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 checkdepends=('just')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kjanat/runner/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c332de64bc6ca265262aced4ea677fb560d309d5ae6b63517eed864ebd3d3c5f')
+sha256sums=('bea0357da5db7f7cca1155bf82ad7fa37285bc734ee4474e762439d33326e647')
 
 prepare() {
 	cd "runner-$pkgver"
@@ -26,10 +26,9 @@ prepare() {
 build() {
 	cd "runner-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	# `run` rides the default `run` feature; name both bins explicitly so a
-	# future default-feature change can't silently drop one.
 	cargo build --frozen --release --bin runner --bin run
+	env CARGO_TARGET_DIR=target/man \
+		cargo run --frozen --features man -- man --output man
 }
 
 check() {
@@ -82,4 +81,7 @@ package() {
 	# PowerShell has no system autoload dir on Linux — pwsh users dot-source
 	# this file from their `$PROFILE`:  . /usr/share/runner/runner.ps1
 	install -Dm0644 "$g/runner.ps1" "$pkgdir/usr/share/runner/runner.ps1"
+
+	# Man pages rendered into ./man by build(). makepkg gzips them (zipman).
+	install -Dm0644 -t "$pkgdir/usr/share/man/man1/" man/*.1
 }
