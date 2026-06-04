@@ -1,6 +1,6 @@
 # Maintainer: MaoYaotang <maoyaotang@163.com>
 pkgname=apktool-toolbox
-pkgver=1.3.0
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="APK全能工具箱 - 解包/打包/签名/查壳/刷机包签名/ADB设备管理"
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
     unzip
     java-runtime-common
     android-apktool-git
+    android-signapk-git
 )
 makedepends=(
 )
