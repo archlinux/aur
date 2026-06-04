@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Max Browser
+Comment=Chromium-based browser with Firefox WebExtensions support
+Exec=/usr/bin/max-browser %U
+Terminal=false
+Type=Application
+Icon=max-browser
+Categories=Network;WebBrowser;
+StartupWMClass=Max Browser
+MimeType=x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;text/html;
+Keywords=browser;web;internet;chromium;firefox;
+StartupNotify=true
