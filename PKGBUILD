@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=harmony
-_pkgver=2.0.3
+_pkgver=2.0.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f962f26faed7190877ba33fcbc5c9a7d')
-b2sums=('0dc685fa4d49307d608f26a67bdf2f8979fdc8e51d18de31f1c80673a22916dbf3035279cdda967eb1050a85a63ec83424b5dee34e8a8b9f7772314b7555cf68')
+md5sums=('6cdf258b8ae47bf9d9f48e397f320747')
+b2sums=('11392387279585535aa410bcf4bbf0ed7fa0abc7e2be3fb7adc5864fbefd838c8ff9717aa93adc0e3f5c49a1c4065aa9b6fbc3003e1e5520985ab735e681e0f7')
 
 build() {
   mkdir build
