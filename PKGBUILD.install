@@ -1,0 +1,9 @@
+post_install() {
+    echo "==> Vinput: Local ASR models (zipformer/fire-red) must be downloaded separately."
+    echo "==> See setup instructions: https://github.com/xander-lin/vinput#local-models-optional"
+    echo "==> Cloud providers (doubao/qwen) only need API keys configured."
+}
+
+post_upgrade() {
+    post_install
+}
