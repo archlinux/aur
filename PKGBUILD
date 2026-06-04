@@ -1,8 +1,8 @@
 # Maintainer: Mark Austin <ganthore@gmail.com>
 
 pkgname=(gaia-amd gaia-amd-webui)
-pkgver=0.19.0
-pkgrel=6
+pkgver=0.20.0
+pkgrel=1
 pkgdesc="AI-powered inference engine for AMD hardware"
 arch=(x86_64)
 url="https://github.com/amd/gaia"
@@ -70,7 +70,7 @@ makedepends=(
     libappindicator
 )
 
-sha256sums=(ecac14989bb17ba6f07fe8dc274df8458195b7ef16504b3301bcbf707066ae3c
+sha256sums=(489e59da7dc6dd52c3f40053ca3d24af4d03c9906ef45b56b0a69a2e8fee56bc
             96ab23bd2b0d3d402a6c3160f0f5016f582994533723b503098deb042ebbcb03
             13598d2e9294b09ac7cf26739a0ae42acc4993fc2e63ac94a7867ec3d22c99df
             3d185692ac7bd9834643052cb570a6a214878bf74f9e6e14b8c5115493bc7c7e)
@@ -183,7 +183,9 @@ build() {
     local _electronver
     _electronver=$(cat /usr/lib/electron40/version)
     cd "$srcdir/gaia-$pkgver/src/gaia/apps/webui"
+    ELECTRON_BUILDER_OFFLINE=true \
     ./node_modules/.bin/electron-builder --linux dir --x64 \
+        --publish never \
         -c.electronDist=/usr/lib/electron40 \
         -c.electronVersion="$_electronver"
 }
