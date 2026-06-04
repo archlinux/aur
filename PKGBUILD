@@ -3,7 +3,7 @@
 pkgname=python-chatterbox-tts
 _pkgname=chatterbox_tts
 pkgver=0.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source TTS and Voice Conversion by Resemble AI (zero-shot voice cloning)'
 arch=('any')
 url='https://github.com/resemble-ai/chatterbox'
@@ -19,10 +19,9 @@ depends=(
   'python-omegaconf'
   'python-safetensors'
   'python-pyloudnorm'
-  # Runtime deps not yet packaged for Arch — first-import will fail until these land:
-  #   python-conformer       (used by models/s3gen/matcha/decoder.py)
-  #   python-s3tokenizer     (used by models/s3tokenizer/s3tokenizer.py)
-  #   python-resemble-perth  (imported as `perth` at top of tts_turbo.py)
+  'python-conformer'       # models/s3gen/matcha/decoder.py
+  'python-s3tokenizer'     # models/s3tokenizer/s3tokenizer.py
+  'python-resemble-perth'  # imported as `perth` at top of tts_turbo.py
 )
 makedepends=(
   'python-build'
