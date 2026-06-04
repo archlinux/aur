@@ -20,7 +20,7 @@ source=("https://github.com/melpomenex/incrementum-tauri/releases/download/v${pk
 sha256sums=('055b9fda725644fec044f7cf2efbc01be9661ade0e7dfd0c040c53625d04056d')
 
 package() {
-    bsdtar -xf "${srcdir}/incrementum-1.47.6-1-x86_64.pkg.tar.zst" -C "${pkgdir}"
+    bsdtar -xf "${srcdir}/incrementum-1.47.6-1-x86_64.pkg.tar.zst" -C "${pkgdir}" --exclude='.BUILDINFO' --exclude='.MTREE' --exclude='.PKGINFO'
 
     # Create desktop entry (upstream does not ship one)
     install -d "${pkgdir}/usr/share/applications"
