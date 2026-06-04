@@ -1,0 +1,23 @@
+pkgbase = ttf-google-sans-hinted
+	pkgdesc = Google Sans fonts (GoogleSans, GoogleSansDisplay), optionally Nerd Fonts patched and/or ttfautohint hinted
+	pkgver = 1
+	pkgrel = 1
+	url = https://flutter.googlesource.com/gallery-assets
+	arch = any
+	license = custom
+	makedepends = python
+	makedepends = python-fonttools
+	makedepends = parallel
+	makedepends = fontforge
+	makedepends = ttfautohint
+	provides = ttf-google-sans
+	provides = ttf-font-nerd
+	conflicts = ttf-google-sans
+	options = !strip
+	options = !zipman
+	source = fonts.tar.gz::https://flutter.googlesource.com/gallery-assets/+archive/refs/heads/master/lib/fonts.tar.gz
+	source = font-patcher-3.4.0::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FontPatcher.zip
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ttf-google-sans-hinted
