@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Temurin Java 25 Shell
-Comment=Temurin Java 25 Shell
+Name=Temurin Java @MAJORVER@ Shell
+Comment=Temurin Java @MAJORVER@ Shell
 Keywords=java;shell
-Exec=/usr/lib/jvm/java-25-temurin/bin/jshell
+Exec=/usr/lib/jvm/java-@MAJORVER@-temurin/bin/jshell
 Terminal=true
 Type=Application
 Categories=Application;System;

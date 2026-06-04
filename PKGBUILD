@@ -10,7 +10,7 @@
 _majorver=26
 _completever=26.0.1
 _updatever=8
-pkgrel=1
+pkgrel=2
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
 #_tag_ver=${_majorver}+${_updatever}
@@ -57,9 +57,9 @@ source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/downlo
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
 sha256sums=('8e512f13e575a43655fc92319436c94890c137b9035cc6bd6f9cf24239704d3a'
-            '3dfaf29b2913adfb993fc07f3963b6d0f737e8c5f4d2b1b73bb8fcf96bba896b'
-            '4898a30b713aef4cbda17727a99a5337ec467126891474454ed8010f4ce8dc7e'
-            'dcc9cc253e1ceb14f8ebda2b047c1ec2a412eac16da574bd587bd2d5f0a53afe')
+            '18f0afce940156a66435d822faaf4cce7ca9cb702b09203598358b040ee48707'
+            '95d1ca7e2313cdf6a7ef8ea3a7a963297523e10a3f73a64ff48b043a79b7e7cd'
+            'fb1d5497a09c7233331ca289c25f3d675dcd9269fe9b4b7c5a41ba711904c585')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-temurin
 _jdkdir=jdk-${_tag_ver}
@@ -90,6 +90,11 @@ package() {
     install -Dm 644 \
       "${srcdir}/freedesktop-${f}.desktop" \
       "${pkgdir}/usr/share/applications/${f}-${pkgname}.desktop"
+    sed -i "s/@MAJORVER@/${_majorver}/g" \
+      "${pkgdir}/usr/share/applications/${f}-${pkgname}.desktop"
   done
 
+  # Update install file
+  sed -i "s/THIS_JDK='.*'/THIS_JDK='java-${_majorver}-temurin'/g" \
+    "${startdir}/install_jdk-temurin.sh"
 }

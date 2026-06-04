@@ -1,7 +1,7 @@
 pkgbase = jdk-temurin
 	pkgdesc = Temurin (OpenJDK 26 Java binaries by Adoptium, formerly AdoptOpenJDK)
 	pkgver = 26.0.1.u8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://adoptium.net/
 	install = install_jdk-temurin.sh
 	arch = x86_64
@@ -45,8 +45,8 @@ pkgbase = jdk-temurin
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
 	sha256sums = 8e512f13e575a43655fc92319436c94890c137b9035cc6bd6f9cf24239704d3a
-	sha256sums = 3dfaf29b2913adfb993fc07f3963b6d0f737e8c5f4d2b1b73bb8fcf96bba896b
-	sha256sums = 4898a30b713aef4cbda17727a99a5337ec467126891474454ed8010f4ce8dc7e
-	sha256sums = dcc9cc253e1ceb14f8ebda2b047c1ec2a412eac16da574bd587bd2d5f0a53afe
+	sha256sums = 18f0afce940156a66435d822faaf4cce7ca9cb702b09203598358b040ee48707
+	sha256sums = 95d1ca7e2313cdf6a7ef8ea3a7a963297523e10a3f73a64ff48b043a79b7e7cd
+	sha256sums = fb1d5497a09c7233331ca289c25f3d675dcd9269fe9b4b7c5a41ba711904c585
 
 pkgname = jdk-temurin
