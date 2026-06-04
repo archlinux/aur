@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="幻想结界工坊 - 视频字幕处理和管理工具 (Video subtitle processing & management tool)"
 arch=('x86_64')
 url="https://github.com/Fairy-Oracle-Sanctuary/Fairy-Kekkai-Workshop"
-license=('MIT')
+license=('GPL3')
 depends=(
     'ffmpeg'
     'yt-dlp'
