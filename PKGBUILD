@@ -31,12 +31,21 @@ build() {
 check() {
     cd "$_pkgname-$pkgver"
 
+    # tests/test_version.py reads importlib.metadata.version("aiorwlock"), which
+    # needs the installed .dist-info; run against the built wheel in a temp prefix
+    # (testing the bare source tree would only pass if aiorwlock were already
+    # installed system-wide).
+    local _site
+    rm -rf "$srcdir/_check"
+    python -m installer --destdir="$srcdir/_check" dist/*.whl
+    _site=$(python -c "import site; print(site.getsitepackages()[0])")
+
     # 1) upstream test suite (pytest-asyncio config comes from the repo's setup.cfg)
-    PYTHONPATH="$PWD:$PYTHONPATH" python -m pytest tests/ -v
+    PYTHONPATH="$srcdir/_check$_site:$PYTHONPATH" python -m pytest tests/ -v
 
     # 2) smoke test simulating real use: many concurrent readers may hold the lock
     #    together, but a writer is mutually exclusive with all of them.
-    PYTHONPATH="$PWD:$PYTHONPATH" python - <<'PY'
+    PYTHONPATH="$srcdir/_check$_site:$PYTHONPATH" python - <<'PY'
 import asyncio
 from aiorwlock import RWLock
 
