@@ -1,3 +1,4 @@
+# Maintainer: willker <wz dot willker at gmail dot com>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
@@ -14,7 +15,6 @@ depends=(aurorae
          breeze-gtk
          discover
          drkonqi
-         flatpak-kcm
          kactivitymanagerd
          kde-cli-tools
          kde-gtk-config
@@ -67,6 +67,7 @@ depends=(aurorae
 )
 optdepends=('breeze-grub: Breeze theme for GRUB'
             'breeze-plymouth: Breeze theme for Plymouth'
+            'flatpak-kcm: Flatpak Permissions Management KCM'
             'kgamma: Adjust gamma settings on X'
             'kwin-x11: X11 window manager'
             'plasma-workspace-wallpapers: Additional wallpapers'
