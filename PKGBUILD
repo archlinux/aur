@@ -2,15 +2,16 @@
 
 pkgname=ez2lazer
 pkgver=2026.531.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Ez to Lazer, As a cool client. (a fork of osu!lazer)"
 arch=(x86_64)
 url="https://github.com/SK-la/Ez2Lazer"
 license=("MIT" "custom:CC-BY-NC 4.0")
+makedepends=(dotnet-sdk)
 depends=(
   zlib
   libgl
-  fuse2
+  dotnet-runtime-8.0
   osu-mime
 )
 provides=(ez2lazer)
