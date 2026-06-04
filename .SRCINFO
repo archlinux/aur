@@ -1,6 +1,6 @@
 pkgbase = waywarp
 	pkgdesc = A high-performance keyboard-driven mouse control tool for Wayland compositors (compiled from source)
-	pkgver = 0.1.4
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/Xuepoo/waywarp
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = waywarp
 	depends = pango
 	depends = libxkbcommon
 	depends = wayland
-	source = https://github.com/Xuepoo/waywarp/archive/v0.1.4.tar.gz
+	source = https://github.com/Xuepoo/waywarp/archive/v0.1.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = waywarp
