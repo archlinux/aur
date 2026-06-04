@@ -1,19 +1,19 @@
 pkgbase = plexamp-bin
 	pkgdesc = Modern music client for Plex.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.13.1
+	pkgver = 4.13.2
 	pkgrel = 1
 	url = https://www.plex.tv/plexamp
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron41
 	depends = pipewire-jack
-	provides = plexamp=4.13.1
+	provides = plexamp=4.13.2
 	conflicts = plexamp
-	source = plexamp-4.13.1-x86_64.AppImage::https://plexamp.plex.tv/plexamp.plex.tv/desktop/Plexamp-4.13.1.AppImage
+	source = plexamp-4.13.2-x86_64.AppImage::https://plexamp.plex.tv/plexamp.plex.tv/desktop/Plexamp-4.13.2.AppImage
 	source = LICENSE.html
 	source = plexamp.sh
-	sha256sums = a7d63868462f10f14f7d58f6e8c8acfaef8d9b539bf5fb13597f128b2a87775b
+	sha256sums = 8714416fe4e5fdae0050858f8d72974d6eb985b8c02e224b26975718fa1ce300
 	sha256sums = 4ca4de54abb5b0239320564e0ea21cbfd42d2da2ced5f87740cf9d5c566c1b9b
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = plexamp-bin
