@@ -1,13 +1,13 @@
 pkgbase = sonic-bridge
 	pkgdesc = An ultra-fast, lightweight physical music aesthetic and listening translation middleware for AI Agents under the LRMD protocol.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/Xuepoo/sonic-bridge
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	source = sonic-bridge-0.6.0.tar.gz::https://github.com/Xuepoo/sonic-bridge/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 33930268e88a3fa18a4c9b3cecf008c326b525eadb759ffbb724a4382014965c
+	source = sonic-bridge-0.7.0.tar.gz::https://github.com/Xuepoo/sonic-bridge/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 3dbefdc514670e8b654ce8deac8144b8536969e2355669949a3059b414a90379
 
 pkgname = sonic-bridge

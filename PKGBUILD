@@ -1,5 +1,5 @@
 pkgname=sonic-bridge
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="An ultra-fast, lightweight physical music aesthetic and listening translation middleware for AI Agents under the LRMD protocol."
 arch=('x86_64' 'aarch64')
@@ -7,7 +7,7 @@ url="https://github.com/Xuepoo/sonic-bridge"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Xuepoo/sonic-bridge/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('33930268e88a3fa18a4c9b3cecf008c326b525eadb759ffbb724a4382014965c')
+sha256sums=('3dbefdc514670e8b654ce8deac8144b8536969e2355669949a3059b414a90379')
 
 build() {
   cd "$pkgname-$pkgver"
