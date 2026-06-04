@@ -2,7 +2,7 @@
 
 _npmname=sqlite3
 pkgname=nodejs-$_npmname
-pkgver=5.1.7
+pkgver=6.0.1
 pkgrel=1
 pkgdesc='Asynchronous, non-blocking SQLite3 bindings'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(nodejs nodejs-node-pre-gyp)
 makedepends=(jq moreutils npm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fbfa89d06de316a51cf7d4734a19c61b876bb685d33593992617c12d0a950732')
+sha256sums=('920660d97c783abf6584f814a40bc34480812796cf07fb9585f6a50f36000516')
 
 prepare() {
 	cd "${pkgname/js}-$pkgver"
