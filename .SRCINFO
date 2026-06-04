@@ -1,7 +1,7 @@
 pkgbase = ml-kem
 	pkgdesc = Pure C implementation of ML-KEM (FIPS 203)
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kstzv/ml-kem
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = ml-kem
 	makedepends = make
 	makedepends = gcc
 	depends = glibc
+	options = !lto
+	options = !strip
 	source = https://github.com/kstzv/ml-kem/archive/refs/tags/v1.0.2.tar.gz
 	sha256sums = SKIP
 
