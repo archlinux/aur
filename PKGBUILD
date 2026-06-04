@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 # The real checksum is computed automatically by the `Publish to AUR`
 # GitHub Action (it runs `updpkgsums` against the published release
 # tarball before pushing). 'SKIP' is the in-repo placeholder.
-sha256sums=('6fdaadb590e7ff6fb7128698804dc219528aab5fcd7641715e7bc861ac8cceb6')
+sha256sums=('effb4723d8745a3f60e9a14a064090b78fa7118f1942120f9d7d010667b8f429')
 
 prepare() {
   cd "${pkgname}-${pkgver}/desktop"
