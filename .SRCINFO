@@ -1,7 +1,7 @@
 pkgbase = randrctl
 	pkgdesc = Lightweight profile based screen manager for X
 	pkgver = 1.11.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://github.com/koiuo/randrctl
 	install = randrctl.install
 	arch = any
