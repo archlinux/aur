@@ -1,0 +1,4 @@
+src
+pkg
+*.log
+openocd-esp32-v*
