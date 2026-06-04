@@ -2,7 +2,7 @@
 # https://github.com/AshBuk/dabri
 
 pkgname=dabri
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Offline speech-to-text desktop application using Whisper"
 arch=('x86_64')
@@ -34,18 +34,20 @@ makedepends=(
     # Vulkan SDK for GPU acceleration
     'vulkan-headers'
     'shaderc'
+    # SPIRV-Headers cmake config - required by whisper.cpp >= v1.8.5 Vulkan backend
+    'spirv-headers'
 )
 options=('!lto')
 # Whisper.cpp version (pinned for reproducibility)
-_whisper_version=1.8.4
+_whisper_version=1.8.6
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/AshBuk/dabri/archive/refs/tags/v${pkgver}.tar.gz"
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    'c67f71818897dbe45ee319b6c3a40293a28f1b8f6dcf384623556915a7d0b88d'
-    'b26f30e52c095ccb75da40b168437736605eb280de57381887bf9e2b65f31e66'
+    '1d08658438c11de850d24f9bb16190d9a60bc9cbdf595543ebaccb93775105b6'
+    'f8e632016ceae556f3132a16c7f704be1e7715595041f474fa81a2b64c1abf7c'
 )
 
 prepare() {
