@@ -6,7 +6,7 @@ pkgname="${_pkgname}-git"
 #_jdkversion=21
 #_jdkversion=26
 pkgver=26.05.05+145.r2787.20260601.479734f2
-pkgrel=1
+pkgrel=2
 pkgdesc="Matrix client for desktop written in Kotlin and using the Matrix Rust SDK, designed to be fully keyboard controllable, multi account, hirarchical spaces. Design in the tradition of SchildiChat clients."
 arch=(
   "aarch64"
@@ -43,8 +43,8 @@ makedepends=(
   "gradle"
   #"java-environment=${_jdkversion}"
   "java-environment"
-  'zopfli'   # To size-optimise PNG files.
-  'parallel' # To size-optimise PNG files.
+  #'zopfli'   # To size-optimise PNG files.
+  #'parallel' # To size-optimise PNG files.
 )
 depends=(
   #'java-runtime' # Seems to bundle it's own java runtime in '.../lib/runtime'.
@@ -103,8 +103,8 @@ prepare() {
   git config submodule.matrix-rust-sdk.url "${srcdir}/matrix-rust-sdk-schildi"
   git -c protocol.file.allow=always submodule update
 
-  printf '%s\n' " --> Size-optimising PNG files ..."
-  find "${srcdir}/${_pkgname}" -name '*.png' -type f | parallel -j "`nproc`" zopflipng -m -y {} {}
+  #printf '%s\n' " --> Size-optimising PNG files ..."
+  #find "${srcdir}/${_pkgname}" -name '*.png' -type f | parallel -j "`nproc`" zopflipng -m -y {} {}
 
   #printf '%s\n' " --> DEBUG INFO: Listing all 'gradle' tasks ..."
   #gradle -g "${GRADLE_USER_HOME}" "${_gradle_default_options[@]}" tasks --all
@@ -213,10 +213,6 @@ package() {
   install -Dvm644 -t "${pkgdir}/usr/share/applications" launcher/schildichat-revenge.desktop
   install -dvm755 "${pkgdir}/usr/share/pixmaps"
   ln -sv "${_targetdir}/lib"/schildichat-revenge.png "${pkgdir}/usr/share/pixmaps"/
-
-  # Already done in `prepare()`.
-  #printf '%s\n' " --> Size-optimising PNG files ..."
-  #find "${pkgdir}" -name '*.png' -type f | parallel -j "`nproc`" zopflipng -m -y {} {}
 
   printf '%s\n' " --> Installing basic documentation ..."
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log README.md "${srcdir}/keybindings-readme.md"
