@@ -1,5 +1,5 @@
 pkgbase = bluestar-manager-bin
-	pkgdesc = (UNOFFICIAL PACKAGE) A powerful mod manager for Sonic Racing: CrossWorlds on PC
+	pkgdesc = A powerful mod manager for Sonic Racing: CrossWorlds on PC
 	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/Red1Fouad/Crossworlds-mod-manager-RED1
