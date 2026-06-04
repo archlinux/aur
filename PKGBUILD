@@ -1,7 +1,7 @@
 # Maintainer: Anntóin Wilkinson <anntoin@gmail.com>
 pkgname=mansnip
 _pkgname=llm-manpage-tool
-pkgver=0.6.5
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="The universal manual indexer"
 arch=(any)
@@ -11,12 +11,8 @@ depends=('python>=3.2')
 makedepends=(python-build python-installer python-setuptools)
 optdepends=('python-mcp: mcp server support')
 source=("${_pkgname}-$pkgver.tar.gz::https://github.com/day50-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("ad81a77a26b0977d8f42e9110a5f6c64847f5571e05a23f7831e87c909044045")
+sha256sums=("ea9ed0f695eafabf7407409a598ef9060d7775f0908cd3b6337bf61918670de2")
 
-prepare() {
-	cd "$_pkgname-$pkgver"
-	sed -i "s/^version = \".*\"/version = \"$pkgver\"/" pyproject.toml
-}
 
 build() {
 	cd "$_pkgname-$pkgver"
