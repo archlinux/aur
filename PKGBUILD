@@ -28,11 +28,15 @@ b2sums=('3acaafbdf319706718b9dc26207768a6c4c105bd95f6c5a72b000bf90e274cbf2799014
         '05b89792c16d415e380dd0b3a2cec04e12406646531f0ce9d8c7aeff29cdd56b452ee4411aa07f404d2511bb315cc619567eee328b39c8b78f93ed88ddd9c7d6'
         '808783618bb9f38e42adfa29e98610963bde12e67fc9ff17447650881433e6bd648b35f281ba96e59806676642253fb9e55c3a5bb4d18a19cfd18a3630faeb9b')
 
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  npm ci --cache "${srcdir}/npm-cache" --no-audit --no-fund --no-update-notifier
+}
+
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  npm ci --cache "${srcdir}/npm-cache"
   npm run build
-  npm prune --omit=dev
+  npm prune --omit=dev --no-audit --no-fund
 
   # Clean up empty directories left behind by npm prune.
   find node_modules -type d -empty -delete
