@@ -1,6 +1,6 @@
 pkgbase = shelly-gnome
 	pkgdesc = Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager.
-	pkgver = 2.3.1.gnome1
+	pkgver = 2.3.2.1.gnome1
 	pkgrel = 1
 	url = https://github.com/Terrabade/Shelly-ALPM-GNOME
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = shelly-gnome
 	conflicts = shelly
 	conflicts = shelly-bin
 	conflicts = shelly-git
-	source = shelly-gnome-2.3.1.gnome1.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v2.3.1.gnome1.tar.gz
-	sha256sums = dd40325a72d5806a8b735a711038393618b6b273eb719f2d7829ac7aa81a34dd
+	source = shelly-gnome-2.3.2.1.gnome1.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v2.3.2.1.gnome1.tar.gz
+	sha256sums = ba291992abab082ee169e02726980e19794d6bed5493d42bf4b3ed93e176e769
 
 pkgname = shelly-gnome

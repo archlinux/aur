@@ -1,6 +1,6 @@
 # Maintainer: Terrabade <terrabade@protonmail.com>
 pkgname=shelly-gnome
-pkgver=2.3.1.gnome1
+pkgver=2.3.2.1.gnome1
 pkgrel=1
 pkgdesc="Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager."
 arch=('x86_64')
@@ -34,7 +34,7 @@ makedepends=('dotnet-sdk-10.0' 'clang' 'gettext')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v${pkgver}.tar.gz")
 
-sha256sums=('dd40325a72d5806a8b735a711038393618b6b273eb719f2d7829ac7aa81a34dd')
+sha256sums=('ba291992abab082ee169e02726980e19794d6bed5493d42bf4b3ed93e176e769')
 
 build() {
   cd "$srcdir/Shelly-ALPM-GNOME-${pkgver}"
@@ -51,6 +51,14 @@ build() {
       msgfmt "$po_file" -o "shelly-ui-${lang}.mo"
     fi
   done
+  
+  # Compile tray service translations
+    for po_file in Shelly-Notifications/po/*.po; do
+      if [ -f "$po_file" ]; then
+        lang=$(basename "$po_file" .po)
+        msgfmt "$po_file" -o "shelly-notifications-${lang}.mo"
+      fi
+    done
 }
 
 package() {
@@ -130,6 +138,14 @@ EOF
       install -Dm644 "$mo_file" "$pkgdir/usr/share/locale/$lang/LC_MESSAGES/shelly-ui.mo"
     fi
   done
+  
+  # Install tray service translations
+    for mo_file in shelly-notifications-*.mo; do
+      if [ -f "$mo_file" ]; then
+        lang=$(echo "$mo_file" | sed 's/shelly-notifications-\(.*\)\.mo/\1/')
+        install -Dm644 "$mo_file" "$pkgdir/usr/share/locale/$lang/LC_MESSAGES/shelly-notifications.mo"
+      fi
+    done
 
   # Install Flatpak integration script
   cat <<'SCRIPT' | install -Dm755 /dev/stdin "$pkgdir/usr/bin/shelly-flatpak-integrate"
