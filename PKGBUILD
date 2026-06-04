@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xterminal-bin
 _pkgname=XTerminal
-_aarch64_ver=5.6.9
-_x86_64_ver=5.6.9
+_aarch64_ver=5.7.17
+_x86_64_ver=5.7.17
 case "${CARCH}" in
     aarch64)
         pkgver="${_aarch64_ver}"
@@ -42,8 +42,8 @@ source_x86_64=("${pkgname%-bin}-${_x86_64_ver}-x86_64.rpm::https://cdn-cn.xtermi
 sha256sums=('8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af'
             'a273949f3f2352eb4c4347717b5330695ef3c155c687f19064af628ab47a9cda'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('67f67f6cda02526551025e9d012fde190b67caed38e37f0609db6b642ff003fe')
-sha256sums_x86_64=('80e77dee15ad07341a2a3716ed398f5a4644cee14f3f7ac5e19f6888cc579a44')
+sha256sums_aarch64=('ac1ae844db81df42473c4c8cbfb1977b1bf2cfe0b12c16d381e80af52932db26')
+sha256sums_x86_64=('f6ee2aab31dfe99d4e0347315c67a1210d254efb2168be36db7868185ff9c24b')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
