@@ -1,6 +1,6 @@
 # Maintainer: Leo <i@hardrain980.com>
 pkgname=qbittorrent-enhanced-nox
-pkgver=5.1.3.10
+pkgver=5.2.1.10
 pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt and libtorrent (Enhanced Edition), w/o GUI"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 	"qbittorrent-nox.tmpfiles"
 )
 sha256sums=(
-	'b153428db354775de59b850751ad9d6bafb418dde115b3208b41eab14308f6d1'
+	'ee5e05db67ba52a9380b01501260473bcd6595b4750c5775c037ed3b6815e30b'
 	'SKIP'
 	'SKIP'
 	'SKIP'
