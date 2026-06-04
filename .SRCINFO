@@ -1,5 +1,5 @@
 pkgbase = promptr-bin
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	pkgdesc = GTK4 overlay prompt for opencode
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = promptr-bin
 	depends = gtksourceview5
 	depends = gtk4-layer-shell
 	source_x86_64 = promptr-${pkgver}-x86_64.tar.gz::https://packages.toxdes.com/releases/promptr_${pkgver}_amd64.tar.gz
-	sha256sums_x86_64 = 2099158fda1e58c0300a33b1879f8a0a19fef4fc04266ad53e789a4ee6004bbc
+	sha256sums_x86_64 = 90a49ac8a61e492e9d7208e09b70143a18debeb2dc0bce74c196bb9f0fab9c3c
 	source_aarch64 = promptr-${pkgver}-aarch64.tar.gz::https://packages.toxdes.com/releases/promptr_${pkgver}_arm64.tar.gz
-	sha256sums_aarch64 = 17607ed8e0baf2d1bd6abc6a6d06337c06ac690d6805af20cfe741eb780298cb
+	sha256sums_aarch64 = d0002260ea79277681329c19e2ec4179ae63467f1859e56b73d1634d3c24e605
 
 pkgname = promptr-bin
