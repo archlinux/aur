@@ -3,6 +3,7 @@ pkgbase = cdduck-bin
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/mikelexp/CDDuck
+	install = cdduck.install
 	arch = x86_64
 	license = MIT
 	depends = glibc

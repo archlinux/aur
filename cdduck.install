@@ -1,0 +1,25 @@
+post_install() {
+  cat <<'EOF'
+
+CDDuck installed to /usr/bin/cdduck.
+
+Add this to your shell rc:
+
+  cdd() {
+      local dir
+      dir="$(cdduck)" || return
+      if [ -n "$dir" ]; then
+          cd -- "$dir"
+      fi
+  }
+
+For fish:
+
+  function cdd
+      set dir (cdduck)
+      if test -n "$dir"
+          cd -- "$dir"
+      end
+  end
+EOF
+}
