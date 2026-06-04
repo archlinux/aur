@@ -1,7 +1,7 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=aracrypt
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PE encryptor for Linux — encrypts Windows executables into self-decrypting containers"
 arch=('x86_64')
 url="https://github.com/kvunoff/aracrypt"
