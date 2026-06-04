@@ -1,7 +1,7 @@
 pkgbase = openvino
 	pkgdesc = A toolkit for optimizing and deploying deep learning models
 	pkgver = 2026.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openvino.ai/
 	arch = x86_64
 	license = Apache-2.0
@@ -10,6 +10,7 @@ pkgbase = openvino
 	makedepends = flatbuffers
 	makedepends = git
 	makedepends = git-lfs
+	makedepends = level-zero-headers
 	makedepends = ocl-icd
 	makedepends = onetbb
 	makedepends = opencv

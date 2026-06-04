@@ -7,7 +7,7 @@ pkgname=(
     'openvino-intel-npu-plugin'
     'python-openvino')
 pkgver=2026.2.0
-pkgrel=1
+pkgrel=2
 _commit=52ddc07385712456dd9f8c5ecf05d7e49c6da329
 pkgdesc='A toolkit for optimizing and deploying deep learning models'
 arch=('x86_64')
@@ -18,6 +18,7 @@ makedepends=(
     'flatbuffers'
     'git'
     'git-lfs'
+    'level-zero-headers'
     'ocl-icd'
     'onetbb'
     'opencv'
