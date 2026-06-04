@@ -1,8 +1,8 @@
 pkgbase = python-kicad-mcp-pro
-	pkgdesc = A professional Model Context Protocol server for KiCad EDA
-	pkgver = 3.5.1
+	pkgdesc = A Model Context Protocol server for KiCad EDA workflows
+	pkgver = 3.7.3
 	pkgrel = 1
-	url = https://github.com/oaslananka/kicad-mcp-pro
+	url = https://github.com/oaslananka/kicad-mcp
 	arch = any
 	license = MIT
 	makedepends = git
@@ -14,11 +14,16 @@ pkgbase = python-kicad-mcp-pro
 	depends = python
 	depends = python-authlib
 	depends = python-anyio
+	depends = python-click
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-exporter-otlp
+	depends = python-opentelemetry-sdk
 	depends = python-pydantic
 	depends = python-pydantic-settings
 	depends = python-rich
 	depends = python-starlette
 	depends = python-structlog
+	depends = python-urllib3
 	depends = python-typer
 	depends = python-yaml
 	depends = python-kicad
@@ -33,7 +38,7 @@ pkgbase = python-kicad-mcp-pro
 	optdepends = freerouting
 	provides = python-kicad-mcp-pro
 	conflicts = python-kicad-mcp-pro
-	source = kicad-mcp-pro::git+https://github.com/oaslananka/kicad-mcp-pro.git#tag=v3.5.1
-	sha256sums = 9bc6de42c94702149e41facc15878ec2f4fa601741a09a1441bec82490aa856f
+	source = kicad-mcp-pro::git+https://github.com/oaslananka/kicad-mcp.git#tag=v3.7.3
+	sha256sums = 473145c30cf897d11b417d574bc3c82b7427bc42455c599860c2487dabd5373a
 
 pkgname = python-kicad-mcp-pro
