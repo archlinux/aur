@@ -1,7 +1,7 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=aracrypt
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="PE encryptor for Linux — encrypts Windows executables into self-decrypting containers"
 arch=('x86_64')
 url="https://github.com/kvunoff/aracrypt"
@@ -18,5 +18,5 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 target/release/aracrypt "$pkgdir/usr/bin/aracrypt"
+  install -Dm755 target/release/AraCrypt "$pkgdir/usr/bin/aracrypt"
 }
