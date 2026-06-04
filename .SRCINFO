@@ -12,9 +12,9 @@ pkgbase = phnx-bin
 	provides = phnx
 	arch = aarch64
 	source_aarch64 = https://github.com/protibimbok/phnx/releases/download/v1.0.0/phnx_linux_arm64.tar.gz
-	sha256sums_aarch64 = 3ab6ed85f1a29d37a5ff4388fe6b41dc60cd6e1c54de46e0a61d1475972062ec
+	sha256sums_aarch64 = a57aaa1d6301fb7a2f0ecad6c6793bed2b28af8a719720d43527a8dc184c20c4
 	arch = x86_64
 	source_x86_64 = https://github.com/protibimbok/phnx/releases/download/v1.0.0/phnx_linux_amd64.tar.gz
-	sha256sums_x86_64 = 3e3b9d12b8910b520d9c32238cdf7fee444e7fbdaa88bc45812c0cb183fe367f
+	sha256sums_x86_64 = aacda60af8e0cdc592064a95a0a9447143c8aac4066dd5753bfe00bae8a1a544
 	
 pkgname = phnx-bin
