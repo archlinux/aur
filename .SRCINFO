@@ -1,6 +1,6 @@
 pkgbase = ansible-core-git
 	pkgdesc = Radically simple IT automation platform
-	pkgver = r55321.0a2bac10dad
+	pkgver = r55459.8b062bb2674
 	pkgrel = 1
 	url = https://github.com/ansible/ansible
 	arch = any
@@ -12,7 +12,6 @@ pkgbase = ansible-core-git
 	makedepends = git
 	depends = python
 	depends = python-pyyaml
-	depends = python-paramiko
 	depends = python-jinja
 	depends = python-resolvelib
 	depends = python-typing_extensions

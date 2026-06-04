@@ -9,13 +9,13 @@
 # Contributor: atweiden <archbaum@gmail.com>
 
 pkgname=ansible-core-git
-pkgver=r55321.0a2bac10dad
+pkgver=r55459.8b062bb2674
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
 url='https://github.com/ansible/ansible'
 license=('GPL-3.0-only')
-depends=('python' 'python-pyyaml' 'python-paramiko' 'python-jinja' 'python-resolvelib' 'python-typing_extensions')
+depends=('python' 'python-pyyaml' 'python-jinja' 'python-resolvelib' 'python-typing_extensions')
 provides=('ansible-core' 'python-ansible')
 replaces=('ansible-core' 'python-ansible')
 conflicts=('ansible-core' 'python-ansible')
