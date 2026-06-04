@@ -1,11 +1,14 @@
 post_install() {
   systemctl daemon-reload
 
-  # Generate a fan config tailored to this machine's hardware.
+  # Generate a fan config tailored to this machine's hardware, then validate
+  # it so any problems surface at install time (matches the .deb postinst).
   local config="/etc/powercurve/fan.toml"
   if [ ! -f "$config" ]; then
     mkdir -p /etc/powercurve
-    powercurve fan-detect --generate > "$config" 2>/dev/null || true
+    if powercurve fan-detect --generate > "$config" 2>/dev/null; then
+      powercurve config || true
+    fi
   fi
 
   systemctl enable --now com.vintagetechie.PowerCurve.service
