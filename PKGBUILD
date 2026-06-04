@@ -1,6 +1,6 @@
 # Maintainer: indyfive11 <203553604+indyfive11@users.noreply.github.com>
 pkgname=gabagent
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Claude Code-style AI coding assistant built on the Gab AI Developer API"
 arch=('any')
@@ -20,12 +20,18 @@ depends=(
   'python-jsonlines'
   'python-ddgs'
 )
+# Voice mode runs gabagent as the BRAIN (gab --voice-serve); the starlette/uvicorn optdepends below enable
+# it. The hands-free voice FRONT-END (microphone, wake word, STT/TTS) is a separate project, voice-agent,
+# which has no AUR package yet — install it from https://github.com/indyfive11/voice-agent. The brain works
+# standalone over its HTTP+SSE protocol regardless.
 optdepends=(
   'python-playwright: headless browser support for JS-rendered pages'
+  'python-starlette: voice mode brain (gab --voice-serve)'
+  'python-uvicorn: voice mode brain (gab --voice-serve)'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('342e0e8f4c271d3d4ce74b6c8223bfeb52838b07e8d456734c734a0b119b097e')
+sha256sums=('a614db3a3e8ac598e7e7dece090b680ad6a75ad0a18b1760c5cda35cfc40df00')
 
 build() {
   cd "$pkgname-$pkgver"
