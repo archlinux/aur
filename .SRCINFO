@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-addnoise-git
 	pkgdesc = Plugin for Vapoursynth: addnoise (GIT version)
-	pkgver = 3.0.gcd48f73
+	pkgver = 1.2.1.1.0.gddf8d03
 	pkgrel = 1
 	url = https://github.com/wwww-wwww/vs-noise
 	arch = any

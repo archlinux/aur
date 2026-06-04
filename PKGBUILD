@@ -2,7 +2,7 @@
 
 _plug=addnoise
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=3.0.gcd48f73
+pkgver=1.2.1.1.0.gddf8d03
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
