@@ -1,0 +1,12 @@
+pkgbase = araloader
+	pkgdesc = Build self-decrypting Windows executables from C byte array payloads
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kvunoff/AraLoader
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	source = araloader-0.1.0.tar.gz::https://github.com/kvunoff/AraLoader/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 7ffb48d9711ea26105e4eb3332c12b83ce044619e3e80312e922099792721b39
+
+pkgname = araloader
