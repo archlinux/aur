@@ -22,7 +22,7 @@ index db76e90..8dafda6 100644
  
  add_subdirectory(src)
 diff --git a/deps.json b/deps.json
-index 60348f7..206ed59 100644
+index fdb192f..23a0bb9 100644
 --- a/deps.json
 +++ b/deps.json
 @@ -1,27 +1,4 @@
@@ -199,10 +199,10 @@ index aa15331..a5571ea 100644
  # Audio output is handled by wavsen::audio (pulse/pipewire-backed,
  # selectable via WAVSEN_AUDIO_BACKEND in the wavsen subtree).
 diff --git a/viewer/CMakeLists.txt b/viewer/CMakeLists.txt
-index b92f956..fe5d9bb 100644
+index 1777116..4b1ccac 100644
 --- a/viewer/CMakeLists.txt
 +++ b/viewer/CMakeLists.txt
-@@ -75,11 +75,10 @@ if(BUILD_WEWEB)
+@@ -76,11 +76,10 @@ if(BUILD_WEWEB)
          PkgConfig::GLFW
          Vulkan::Vulkan
          argparse::argparse
@@ -212,16 +212,24 @@ index b92f956..fe5d9bb 100644
          CXX_SCAN_FOR_MODULES ON
 -        BUILD_RPATH   "\$ORIGIN"
 -        INSTALL_RPATH "\$ORIGIN"
-+        BUILD_RPATH   "\$ORIGINi:\$ORIGIN/../lib/cef"
-+        INSTALL_RPATH "\$ORIGIN:\$ORIGIN/../lib/cef"
++        BUILD_RPATH   "\$ORIGIN:$ORIGIN/../lib/cef"
++        INSTALL_RPATH "\$ORIGIN:$ORIGIN/../lib/cef"
          BUILD_WITH_INSTALL_RPATH ON)
 -    weweb_stage_cef_runtime(WebViewer)
  endif()
 diff --git a/viewer/WebViewer.cpp b/viewer/WebViewer.cpp
-index 2c970a0..47d38a3 100644
+index 44ae475..61a0d70 100644
 --- a/viewer/WebViewer.cpp
 +++ b/viewer/WebViewer.cpp
-@@ -168,8 +168,8 @@ int main(int argc, char** argv) {
+@@ -3,6 +3,7 @@
+ #include <GLFW/glfw3.h>
+ 
+ #include <argparse/argparse.hpp>
++#include <filesystem>
+ 
+ #include "BrowserHost.hpp"
+ #include "Manifest.hpp"
+@@ -169,8 +170,8 @@ int main(int argc, char** argv) {
      auto exe_dir = viewer::ExecutableDir(argv[0]);
  
      weweb::BrowserHost::InitOptions opts;
@@ -233,29 +241,31 @@ index 2c970a0..47d38a3 100644
          opts.enable_remote_debugging = true;
          opts.remote_debugging_port   = port;
 diff --git a/waywallen/CMakeLists.txt b/waywallen/CMakeLists.txt
-index 4c96545..a05652a 100644
+index 7c4e5d4..8766ed5 100644
 --- a/waywallen/CMakeLists.txt
 +++ b/waywallen/CMakeLists.txt
-@@ -99,8 +99,8 @@ if(BUILD_WEWEB)
-     # Install layout: <prefix>/share/waywallen/weweb/{bin, libcef.so, ...}.
+@@ -101,8 +101,8 @@ if(BUILD_WEWEB)
+     # workspace shared libs (waywallen::bridge / wavsen / rstd) in <prefix>/lib.
      set_target_properties(waywallen-weweb-renderer PROPERTIES
          CXX_SCAN_FOR_MODULES ON
 -        BUILD_RPATH   "$ORIGIN"
--        INSTALL_RPATH "$ORIGIN"
-+        BUILD_RPATH   "$ORIGIN:$ORIGIN/../lib/cef"
-+        INSTALL_RPATH "$ORIGIN:$ORIGIN/../lib/cef"
+-        INSTALL_RPATH "$ORIGIN;$ORIGIN/../../lib"
++        BUILD_RPATH   "$ORIGIN;$ORIGIN/../lib/cef"
++        INSTALL_RPATH "$ORIGIN;$ORIGIN/../lib/cef"
          BUILD_WITH_INSTALL_RPATH ON
      )
      target_include_directories(waywallen-weweb-renderer
-@@ -128,7 +128,6 @@ if(BUILD_WEWEB)
+@@ -131,44 +131,14 @@ if(BUILD_WEWEB)
      target_compile_options(waywallen-weweb-renderer PRIVATE
          -Wall -Wextra -Wpedantic
      )
 -    weweb_stage_cef_runtime(waywallen-weweb-renderer)
  
-     # weweb bin + CEF runtime sit flat in the plugin dir (beside the
-     # wescene `bin/` subdir) so the weweb bin's `$ORIGIN` rpath resolves
-@@ -137,35 +136,6 @@ if(BUILD_WEWEB)
+     # weweb bin + CEF runtime install to <prefix>/bin/weweb (out of
+     # share/ for the ELF permission limit); the weweb bin's `$ORIGIN`
+     # rpath resolves libcef.so etc. in the same folder.
+-    set(_WEWEB_INSTALL_DIR bin/weweb)
++    set(_WEWEB_INSTALL_DIR ${CMAKE_INSTALL_BINDIR})
      install(TARGETS waywallen-weweb-renderer
          RUNTIME DESTINATION ${_WEWEB_INSTALL_DIR}
      )
@@ -291,36 +301,35 @@ index 4c96545..a05652a 100644
  endif()
  
  # --- Generate the plugin manifest -----------------------------------------
-@@ -200,24 +170,6 @@ set(_OWE_FILES
-     wallpaper_engine.lua
-     bin/waywallen-wescene-renderer
+@@ -206,22 +176,7 @@ set(_OWE_FILES
+     ../../../../bin/waywallen-wescene-renderer
  )
--if(BUILD_WEWEB)
--    list(APPEND _OWE_FILES waywallen-weweb-renderer)
+ if(BUILD_WEWEB)
+-    list(APPEND _OWE_FILES ../../../../bin/weweb/waywallen-weweb-renderer)
 -    foreach(_f IN LISTS CEF_BINARY_FILES)
 -        if(NOT _f IN_LIST _CEF_SKIP)
--            list(APPEND _OWE_FILES ${_f})
+-            list(APPEND _OWE_FILES ../../../../bin/weweb/${_f})
 -        endif()
 -    endforeach()
 -    foreach(_f IN LISTS CEF_RESOURCE_FILES)
 -        if(_f STREQUAL "locales")
 -            file(GLOB _owe_paks RELATIVE ${CEF_RESOURCE_DIR}/locales
 -                ${CEF_RESOURCE_DIR}/locales/*.pak)
--            list(TRANSFORM _owe_paks PREPEND "locales/")
+-            list(TRANSFORM _owe_paks PREPEND "../../../../bin/weweb/locales/")
 -            list(APPEND _OWE_FILES ${_owe_paks})
 -        else()
--            list(APPEND _OWE_FILES ${_f})
+-            list(APPEND _OWE_FILES ../../../../bin/weweb/${_f})
 -        endif()
 -    endforeach()
--endif()
++    list(APPEND _OWE_FILES ../../../../${CMAKE_INSTALL_BINDIR}/waywallen-weweb-renderer)
+ endif()
  list(SORT _OWE_FILES)
  string(JOIN "\n" _owe_files_txt ${_OWE_FILES})
- file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/owe-files.txt "${_owe_files_txt}\n")
 diff --git a/waywallen/web_main.cpp b/waywallen/web_main.cpp
-index 9993824..8b63ea6 100644
+index 5f164a9..f5dfca5 100644
 --- a/waywallen/web_main.cpp
 +++ b/waywallen/web_main.cpp
-@@ -481,8 +481,8 @@ int main(int argc, char** argv) {
+@@ -482,8 +482,8 @@ int main(int argc, char** argv) {
      // BrowserHost::Init wants resources / locales relative to argv[0].
      auto exe_dir = executable_dir(argv[0]);
      weweb::BrowserHost::InitOptions ho;
