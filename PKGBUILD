@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=nmem-cli
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI and TUI for Nowledge Mem - AI memory management"
 arch=('any')
 url="https://mem.nowledge.co/docs/cli"
