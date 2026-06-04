@@ -13,7 +13,7 @@ conflicts=('cdduck')
 install=cdduck.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/cdduck-${pkgver}-linux-x86_64.tar.gz")
 # Placeholder checksum; scripts/aur-update.sh replaces this before publishing to AUR.
-sha256sums=('14c8c49e3e02b4299dc24a51fce9190eb306c30ea67faa1d8cabbc335fd40044')
+sha256sums=('b2db377376475625ae036d669a4c609f253aad1cdef7c7d6aab43dac377e0474')
 
 package() {
   cd "${srcdir}"
