@@ -1,13 +1,15 @@
 pkgbase = blender-mcp-git
 	pkgdesc = Connect Blender to Claude AI via Model Context Protocol for prompt-assisted 3D modeling
-	pkgver = r139.7636d13
+	pkgver = r149.494fb5b
 	pkgrel = 1
 	url = https://github.com/ahujasid/blender-mcp
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-pip
 	depends = python
-	depends = python-pip
+	depends = python-requests
+	depends = python-tomli
 	provides = blender-mcp
 	conflicts = blender-mcp
 	source = blender-mcp-git::git+https://github.com/ahujasid/blender-mcp.git
