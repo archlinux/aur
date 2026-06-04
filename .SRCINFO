@@ -1,0 +1,19 @@
+pkgbase = python-json-log-formatter
+	pkgdesc = JSON log formatter for the Python logging module
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/marselester/json-log-formatter
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-ujson
+	checkdepends = python-simplejson
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = json-log-formatter-1.1.1.tar.gz::https://github.com/marselester/json-log-formatter/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 71b0f37d2ed79431b9710e97c6faa27169e1e78140745a7c588ecf294ec5b318
+
+pkgname = python-json-log-formatter
