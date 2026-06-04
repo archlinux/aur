@@ -1,7 +1,7 @@
 pkgbase = ttmt-beta
 	pkgdesc = ToonTown MultiTool BETA, pre-release smoke-test channel. Expect bugs. For stable use, install toontown-multitool instead.
 	pkgver = 0.7.0alpha.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/flossbud/ToonTown-MultiTool
 	arch = any
