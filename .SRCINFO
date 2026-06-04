@@ -1,6 +1,6 @@
 pkgbase = aion-git
 	pkgdesc = Keyboard-first terminal UI for Google Calendar
-	pkgver = 0.1.16.r2.gac4c84b
+	pkgver = 0.1.17.r0.g2706c7d
 	pkgrel = 1
 	url = https://github.com/brandonpollack23/aion
 	arch = x86_64

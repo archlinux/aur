@@ -1,6 +1,6 @@
 # Maintainer: Brandon Pollack <brandonpollack23@gmail.com>
 pkgname=aion-git
-pkgver=0.1.16.r2.gac4c84b
+pkgver=0.1.17.r0.g2706c7d
 pkgrel=1
 pkgdesc="Keyboard-first terminal UI for Google Calendar"
 arch=('x86_64' 'aarch64')
