@@ -1,0 +1,14 @@
+pkgbase = aedle
+	pkgdesc = An idle management daemon for wayland, written in Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.sr.ht/~aeldit/aedle
+	arch = any
+	license = GPL-2.0-only
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = https://git.sr.ht/~aeldit/aedle/archive/1.0.0.tar.gz
+	sha256sums = f6685a5bb17f2f0ce3af8c96d5b1c1ab050ec6ecc723643cfb748b42412cebe2
+
+pkgname = aedle
