@@ -1,0 +1,20 @@
+pkgbase = numnum-bin
+	pkgdesc = A text editor that does math - units, currencies and percentages in plain language
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/rudrabhoj/numnum
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = gcc-libs
+	provides = numnum
+	conflicts = numnum
+	options = !strip
+	options = !lto
+	options = !debug
+	source = https://github.com/rudrabhoj/numnum/releases/download/v0.2.2/NumNum-0.2.2-archlinux-x86_64.pkg.tar.zst
+	sha256sums = 85f90f4501d477813be24cd5a61e79a03101a6af80325b07226fcd10816d9749
+
+pkgname = numnum-bin
