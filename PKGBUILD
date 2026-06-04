@@ -2,8 +2,8 @@
 
 _pkgname="robrix"
 pkgname="${_pkgname}-git"
-pkgver=1.0.0.alpha.1.r2721.20260601.3b485170
-pkgrel=2
+pkgver=1.0.0.alpha.1.r2737.20260603.743db930
+pkgrel=1
 pkgdesc="Multi-Platform Matrix client. Written in Rust, built on top of Matrix Rust SDK, using the Makepad UI toolkit and the Robius app dev framework."
 arch=(
   "aarch64"
@@ -170,7 +170,7 @@ package() {
   printf '%s\n' " --> Installing basic documentation ..."
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log AGENTS.md README.md SPLASH.md
   printf '%s\n' " --> Installing license ..."
-  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-MIT 'License Attributions.md'
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-MIT
   ## Optional convenience: Symlink commond license texts which are present system-wide and not already installed for this package
   local _license
   cd "${pkgdir}/usr/share/licenses/${pkgname}"

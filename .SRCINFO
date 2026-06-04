@@ -1,7 +1,7 @@
 pkgbase = robrix-git
 	pkgdesc = Multi-Platform Matrix client. Written in Rust, built on top of Matrix Rust SDK, using the Makepad UI toolkit and the Robius app dev framework.
-	pkgver = 1.0.0.alpha.1.r2721.20260601.3b485170
-	pkgrel = 2
+	pkgver = 1.0.0.alpha.1.r2737.20260603.743db930
+	pkgrel = 1
 	url = https://github.com/project-robius/robrix
 	arch = aarch64
 	arch = armv7h
@@ -32,7 +32,7 @@ pkgbase = robrix-git
 	depends = libwayland-client.so
 	depends = libwayland-egl.so
 	depends = libxkbcommon.so
-	provides = robrix=1.0.0.alpha.1.r2721.20260601.3b485170
+	provides = robrix=1.0.0.alpha.1.r2737.20260603.743db930
 	conflicts = robrix
 	conflicts = robrix-bin
 	options = !lto
