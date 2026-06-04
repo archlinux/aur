@@ -1,0 +1,23 @@
+# makepkg build directories
+/src/
+/pkg/
+
+# VCS source checkouts created by makepkg
+/pidscope/
+/betaflight-blackbox-tools/
+/inav-blackbox-tools/
+
+# Built packages
+/*.pkg.tar
+/*.pkg.tar.*
+/*.src.tar.gz
+/*.src.tar.zst
+
+# makepkg logs / metadata
+/*.log
+/*.log.*
+/*.sig
+
+# Keep AUR metadata tracked
+!.SRCINFO
+!PKGBUILD
