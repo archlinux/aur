@@ -1,7 +1,7 @@
 # Maintainer: restitux <restitux@ohea.xyz>
 pkgname=decky-loader
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Arch build of Decky Loader, a homebrew plugin launcher for the Steam Deck."
 arch=('x86_64')
 url="https://github.com/SteamDeckHomebrew/decky-loader"
@@ -34,6 +34,11 @@ build() {
   sed -i 's/python = ".*"/python = ">=3.11"/' pyproject.toml
   # Remove poetry dynamic-versioning logic as it was breaking the build and is unused here
   sed -i '/\[tool\.poetry-dynamic-versioning\]/,/^[[:space:]]*enable/ s/enable = true/enable = false/' pyproject.toml
+  # poetry-core 2.x drops gitignored files even when listed in `include` if the
+  # build dir doesn't have a parent directory with a .gitignore, as the decky-loader
+  # repo's gitignore is used instead (I think?). Edit pyproject.toml to explicitly
+  # include the static assets.
+  sed -i 's|"decky_loader/static/\*"|{ path = "decky_loader/static/**/*", format = ["wheel"] }|' pyproject.toml
   poetry version $pkgver
   poetry build --format wheel
   cd ..
