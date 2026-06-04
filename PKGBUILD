@@ -13,7 +13,7 @@ source_x86_64=(throne-$_appver-debian-system-qt-x64.deb::$url/releases/download/
 )
 sha256sums=('1d7019ed30127fb3c7219016ed9e08bdc4809c65af13d2b02e59eed87a69082d'
             'ba44fe899a7ae34474a497a797299587d1e286e7a574578804083220caefe1bb')
-sha256sums_x86_64=('099a914861189e48a6c15a14c3ea5ca043e68b484da2c328768fcef10a1c81aa')
+sha256sums_x86_64=('54d007be949b6059237142366e59e0e9b3b21e3ab2279fa55e7ad1da9bb3e60f')
 
 prepare() {
   cd "$srcdir"
