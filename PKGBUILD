@@ -3,8 +3,7 @@
 pkgname=hikari-git
 _pkgname=hikari
 pkgver=r486.2f0f6d7
-pkgrel=1
-epoch=1
+pkgrel=2
 pkgdesc='Stacking Wayland compositor with additional tiling capabilities, heavily inspired by the Calm Window manager (cwm)'
 url='https://codeberg.org/thomasadam/hikari'
 license=('GPL-3.0-or-later')
@@ -23,6 +22,8 @@ depends=(
   'wlroots0.19'
   'xorg-xwayland'
 )
+provides=('hikari')
+conflicts=('hikari')
 makedepends=('meson' 'wayland-protocols' 'git')
 source=(git+"https://codeberg.org/thomasadam/hikari.git")
 sha256sums=('SKIP')
