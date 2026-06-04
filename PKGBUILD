@@ -2,7 +2,7 @@
 
 pkgname=optiscaler-client-bin
 pkgver=1.0.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Modern desktop client for installing, updating and configuring OptiScaler across game libraries"
 arch=('x86_64')
 url="https://github.com/Agustinm28/Optiscaler-Client"
@@ -14,6 +14,7 @@ provides=('optiscaler-client')
 conflicts=('optiscaler-client')
 
 source=(
+  # IMPORTANT: hard-pinned stable release asset (not fragile redirect chain)
   "optiscaler-client.tar.gz::https://github.com/Agustinm28/Optiscaler-Client/releases/download/OptiscalerClient-${pkgver}/OptiscalerClient-${pkgver}-linux-x64.tar.gz"
   "optiscaler-client.desktop"
 )
@@ -25,10 +26,13 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/pixmaps"
 
-  # IMPORTANT: preserve archive exactly (NO strip-components)
+  # Extract EXACTLY as upstream ships (critical fix)
   bsdtar -xf optiscaler-client.tar.gz -C "$pkgdir/opt/optiscaler-client"
 
-  # launcher (safe for .NET/Avalonia)
+  # Ensure binary is executable
+  chmod +x "$pkgdir/opt/optiscaler-client/OptiscalerClient" || true
+
+  # Launcher (simple + safe for .NET/Avalonia)
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/optiscaler-client" << 'EOF'
 #!/bin/bash
 APPDIR="/opt/optiscaler-client"
@@ -36,14 +40,18 @@ cd "$APPDIR" || exit 1
 exec "$APPDIR/OptiscalerClient" "$@"
 EOF
 
-  # desktop file
+  # Desktop entry
   install -Dm644 optiscaler-client.desktop \
     "$pkgdir/usr/share/applications/optiscaler-client.desktop"
 
-  # icon fallback
+  # Icon (robust fallback)
   if [ -f "$pkgdir/opt/optiscaler-client/assets/icon.png" ]; then
     install -Dm644 \
       "$pkgdir/opt/optiscaler-client/assets/icon.png" \
+      "$pkgdir/usr/share/pixmaps/optiscaler-client.png"
+  elif [ -f "$pkgdir/opt/optiscaler-client/icon.png" ]; then
+    install -Dm644 \
+      "$pkgdir/opt/optiscaler-client/icon.png" \
       "$pkgdir/usr/share/pixmaps/optiscaler-client.png"
   fi
 }
