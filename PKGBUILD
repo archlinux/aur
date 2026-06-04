@@ -1,0 +1,25 @@
+# Maintainer: Radu Macocian <radu@macocian.com>
+pkgname=omni-launcher
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Application launcher overlay built on Quickshell, with calculator, unit/currency conversion, unicode search and Giphy search"
+arch=('any')
+url="https://git.estatecloud.org/radumaco/omni-launcher"
+license=('GPL-3.0-or-later')
+depends=('quickshell' 'wl-clipboard' 'curl' 'python' 'glib2')
+optdepends=('hyprland: close-on-workspace-change and focus-grab integration')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('48922f27a6cf06c7d78313ddc52c92cf5b1b434f80bfe6e1f7d0f41f631bea98')
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+
+    install -dm755 "$pkgdir/usr/share/$pkgname"
+    install -m644 qml/* "$pkgdir/usr/share/$pkgname/"
+
+    install -Dm755 bin/omni-launcher          "$pkgdir/usr/bin/omni-launcher"
+    install -Dm755 bin/omni-launcher-toggle   "$pkgdir/usr/bin/omni-launcher-toggle"
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
