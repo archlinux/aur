@@ -1,9 +1,9 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
 # Unstable build from GitHub releases: https://github.com/openlyst/builds/releases
 pkgname=docan-unstable
-pkgver=4.0.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="AI chat app with Liquid Glass UI (unstable build from GitHub)"
+pkgdesc="Chat app with Liquid Glass UI (unstable build from GitHub)"
 arch=('x86_64')
 url="https://openlyst.ink"
 license=('GPL3')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('docan')
 conflicts=('docan')
 options=('!strip')
-source=("docan-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-15/docan-4.0.0-2026-02-25-linux-x64.zip")
+source=("docan-unstable-${pkgver}.zip::https://gitlab.com/api/v4/projects/79691113/packages/generic/github-mirror/build-4/docan-3.0.0-2026-02-08-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
@@ -26,7 +26,7 @@ package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/docan.desktop" <<EOF
 [Desktop Entry]
 Name=Docan
-Comment=AI chat app with Liquid Glass UI (unstable build from GitHub
+Comment=Chat app with Liquid Glass UI (unstable build from GitHub)
 Exec=/opt/docan/docan
 Icon=docan
 Type=Application
