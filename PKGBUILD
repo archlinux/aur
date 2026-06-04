@@ -1,7 +1,7 @@
 # Maintainer: Yarok
 # contributor: dmitrysvd
 pkgname=yandex-music-beta
-pkgver=5.104.2
+pkgver=5.105.3
 pkgrel=1
 pkgdesc="Official Yandex Music App for Linux (beta release)"
 arch=('x86_64')
@@ -23,18 +23,17 @@ optdepends=(
 )
 options=('!strip')
 source=("https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_amd64_${pkgver}.deb")
-sha256sums=('82f7cbb337692a08d66e5623a63d4d45653b14e7f933c62b7b14859e6b0b475e')
+sha256sums=('d2ebc8c5460a1d98d13302a655076678453831105ea992c72094b9f6a84441b6')
 
 package() {
     tar -xf data.tar.xz --directory "${pkgdir}"
 
     # Remove Cyrillic from the path
     mv "${pkgdir}/opt/Яндекс Музыка" "${pkgdir}/opt/yandex-music"
-    sed -i 's|/opt/Яндекс Музыка|/opt/yandex-music|g' "${pkgdir}/usr/share/applications/yandexmusic.desktop"
+    local_desktop="${pkgdir}/usr/share/applications/yandexmusic.desktop"
 
-    # Fix menu category
-    sed -i 's|Categories=Audio;|Categories=AudioVideo;Audio;|g' "${pkgdir}/usr/share/applications/yandexmusic.desktop"
-
-    # Fix GTK version error for Gnome users
-    sed -i 's|Exec="/opt/yandex-music/yandexmusic"|Exec="/opt/yandex-music/yandexmusic" --gtk-version=3|' "${pkgdir}/usr/share/applications/yandexmusic.desktop"
+    sed -i -e 's|/opt/Яндекс Музыка|/opt/yandex-music|g' \
+           -e 's|Categories=Audio;|Categories=AudioVideo;Audio;|g' \
+           -e 's|Exec="/opt/yandex-music/yandexmusic"|Exec="/opt/yandex-music/yandexmusic" --gtk-version=3|' \
+           "$local_desktop"
 }
