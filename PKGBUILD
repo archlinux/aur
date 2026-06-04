@@ -3,7 +3,7 @@
 _pkgname="gtfs-planner"
 pkgname="${_pkgname}-git"
 pkgver=r76.20260603.ed129a1
-pkgrel=1
+pkgrel=2
 pkgdesc='"Bus Planning": A desktop application for visualizing and planning trips using GTFS (General Transit Feed Specification) public transit data. Built with Go, React, and MapLibre GL.'
 arch=(
   "aarch64"
@@ -186,9 +186,9 @@ package() {
 
   printf '%s\n' " --> Installing application icon and .desktop file ..."
   install -Dvm644 build/appicon.png                                "${pkgdir}/usr/share/pixmaps"/bus-planning.png
-  ln -svr "${pkgdir}/usr/share/pixmaps"/bus-planning.png           "${pkgdir}/usr/share/pixmaps"/gtfs-planner.png
+  #ln -svr "${pkgdir}/usr/share/pixmaps"/bus-planning.png           "${pkgdir}/usr/share/pixmaps"/gtfs-planner.png
   install -Dvm644 "${srcdir}/gtfs-planner.desktop"                 "${pkgdir}/usr/share/applications"/bus-planning.desktop
-  ln -svr "${pkgdir}/usr/share/applications"/bus-planning.desktop  "${pkgdir}/usr/share/applications"/gtfs-planner.desktop
+  #ln -svr "${pkgdir}/usr/share/applications"/bus-planning.desktop  "${pkgdir}/usr/share/applications"/gtfs-planner.desktop
 
   printf '%s\n' " --> Installing basic documentation ..."
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log README.md DEVELOPMENT.md CLAUDE.md "${srcdir}/gtfs-config.readme.txt"

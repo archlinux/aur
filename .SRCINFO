@@ -1,7 +1,7 @@
 pkgbase = gtfs-planner-git
 	pkgdesc = "Bus Planning": A desktop application for visualizing and planning trips using GTFS (General Transit Feed Specification) public transit data. Built with Go, React, and MapLibre GL.
 	pkgver = r76.20260603.ed129a1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/klaustopher/gtfs-planner
 	arch = aarch64
 	arch = armv7h
