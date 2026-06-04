@@ -1,0 +1,74 @@
+# shellcheck shell=bash
+
+_clean_python_legacy() {
+    # The previous Python implementation shipped these units. A fresh
+    # install of this Rust package inherits the symlinks created by
+    # `systemctl --global enable …`, which systemd then reports as
+    # `not-found active exited` — noisy in `systemctl status` and keeps
+    # the old drop-in wired up if the daemon still has its .so loaded.
+    rm -f /etc/systemd/user/default.target.wants/noise-reduction-pipewire.service \
+          /etc/systemd/user/default.target.wants/biglinux-microphone.service \
+          /usr/lib/systemd/user/noise-reduction-pipewire.service \
+          /usr/lib/systemd/user/big-microphone-noise-reduction.service
+
+    # Generated configs the Python configurator wrote to the user's home.
+    # Leaving them in place would either recreate the old topology
+    # (Python wrote `source-gtcrn-smart.conf`, `source-rnnoise-*`,
+    # `big-output-filter.conf`) or reload an outdated drop-in from a
+    # previous Rust version (`zeroramp` builtin, per-app routing rule,
+    # standalone `filter-chain.conf`). Cleanup is per-user, best-effort.
+    #
+    # The current Rust binary writes `10-biglinux-microphone.conf` and
+    # `biglinux-microphone-output.conf` itself on next launch via
+    # `biglinux-microphone-cli autostart`, so we only delete files that
+    # are *not* part of the active layout.
+    for home in /home/*; do
+        # Python-era mic chains.
+        for stale in \
+            "${home}/.config/pipewire/filter-chain.conf.d/source-gtcrn-smart.conf" \
+            "${home}/.config/pipewire/filter-chain.conf.d/source-ulunas-smart.conf" \
+            "${home}/.config/pipewire/filter-chain.conf.d/source-rnnoise.conf" \
+            "${home}/.config/pipewire/filter-chain.conf.d/source-rnnoise-smart.conf" \
+            "${home}/.config/pipewire/filter-chain.conf.d/source-rnnoise-config.conf" \
+            "${home}/.config/pipewire/filter-chain.conf.d/big-output-filter.conf" \
+            "${home}/.config/pipewire/filter-chain.conf.d/20-biglinux-output.conf" \
+            "${home}/.config/pipewire/big-output-filter.conf" \
+            "${home}/.config/pipewire/filter-chain.conf" \
+            "${home}/.config/pipewire/pipewire.conf.d/50-biglinux-microphone-realtime.conf" \
+            "${home}/.config/wireplumber/wireplumber.conf.d/50-biglinux-output-routing.conf" \
+            "${home}/.config/wireplumber/wireplumber.conf.d/50-biglinux-microphone-routing.conf"; do
+            rm -f "${stale}"
+        done
+
+        # The runtime override file the Python plugin wrote to /run is
+        # cleaned up by the Rust binary on every `apply_live`, but if
+        # the package is upgraded while the user is logged out the file
+        # may persist on tmpfs through the next login.
+        runtime_dir="/run/user/$(stat -c '%u' "${home}" 2>/dev/null)"
+        if [ -d "${runtime_dir}" ]; then
+            rm -f "${runtime_dir}/gtcrn-ladspa-controls"
+        fi
+    done
+
+    # Reset systemd's "failed" memory for the units this package owns.
+    # An old version of these binaries may have crash-looped before
+    # being replaced; without this the new binary cannot start the
+    # unit until the user manually clears the state.
+    systemctl daemon-reload
+}
+
+post_install() {
+    _clean_python_legacy
+    systemctl --global enable biglinux-microphone.service
+}
+
+post_upgrade() {
+    _clean_python_legacy
+    systemctl --global enable biglinux-microphone.service
+}
+
+pre_remove() {
+    systemctl --global disable biglinux-microphone.service
+    systemctl --global disable biglinux-microphone-output.service
+    systemctl --global disable biglinux-microphone-echocancel.service
+}
