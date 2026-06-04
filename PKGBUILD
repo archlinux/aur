@@ -8,7 +8,7 @@ __pkgname=$_pkgname-catppuccin
 
 pkgname=$__pkgname-next
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Upcoming FireDragon v13"
 url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
 arch=(x86_64 aarch64)
@@ -85,7 +85,7 @@ options=(
   !makeflags
 )
 source=(
-  $_pkgname-v$_pkgver.source.tar.zst::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
+  $_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
   fix-wasm32-wasi-target.patch
   0023-bgo-969412-glibc-2.43.patch
 )
