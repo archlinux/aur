@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OptiScaler Client
+Comment=Manage OptiScaler installations
+Exec=optiscaler-client
+Icon=optiscaler-client
+Terminal=false
+Type=Application
+Categories=Game;
