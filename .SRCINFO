@@ -1,7 +1,7 @@
 pkgbase = bigbashview-framework
 	pkgdesc = Framework for BigBashView
 	pkgver = r53.34d776b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/biglinux/bbv-framework
 	arch = any
 	license = MIT
@@ -11,5 +11,5 @@ pkgbase = bigbashview-framework
 
 pkgname = bigbashview-framework-git
 	depends = geticons
-	provides = bigbashview-framework=r53.34d776b
+	provides = bbv-framework=r53.34d776b
 	conflicts = bbv-framework
