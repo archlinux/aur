@@ -3,7 +3,7 @@
 # Check for new version at https://github.com/porter-dev/releases/releases
 
 pkgname=porter-cli
-pkgver=0.68.22
+pkgver=0.68.23
 pkgrel=1
 pkgdesc="CLI for Porter.dev, a Kubernetes powered PaaS that runs in your own cloud."
 arch=('x86_64' 'aarch64')
@@ -14,16 +14,16 @@ source_x86_64=(
   "https://github.com/porter-dev/releases/releases/download/v${pkgver}/docker-credential-porter_${pkgver}_linux_amd64"
 )
 sha256sums_x86_64=(
-'0dba800b6072700c6d6154ef2c74a32675bd4823246571a3ac89c8974ff129a2'
-'75527389de30f93d079528805bbe4f93401975191f8bef164f3d8dba42baa07e'
+'35f09cb557d3440e9c3dd86eb656021cb832cb709324c9993ec63640e359292e'
+'3a54d091a7376d7391a0a8715d5b19a32a876bc9e226fa97dfd64483764cb1bb'
 )
 source_aarch64=(
   "https://github.com/porter-dev/releases/releases/download/v${pkgver}/porter_${pkgver}_linux_arm64"
   "https://github.com/porter-dev/releases/releases/download/v${pkgver}/docker-credential-porter_${pkgver}_linux_arm64"
 )
 sha256sums_aarch64=(
-'31ea02aeab7dc2600382b6ac4c340b23d30ad8fe3101a88dbc8e91e66b634c90'
-'ad769bb325734edc8f1f1388b963e99515371b58c0e8e600207f81567343cda8'
+'6c9717162cc0b30180058fb2a09f86f161664654d8e54147cbc9943551367fb8'
+'36034f9fbb23aa26ff6a247987ba51dbd8da78037e34eb9757dafcd6637c56e5'
 )
 
 
