@@ -7,7 +7,7 @@ pkgname=(
     'openvino-intel-npu-plugin'
     'python-openvino')
 pkgver=2026.2.0
-pkgrel=2
+pkgrel=3
 _commit=52ddc07385712456dd9f8c5ecf05d7e49c6da329
 pkgdesc='A toolkit for optimizing and deploying deep learning models'
 arch=('x86_64')
@@ -56,7 +56,8 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?s
         'git+https://github.com/ARM-software/kleidiai.git'
         'git+https://github.com/herumi/xbyak_riscv.git'
         '010-openvino-change-install-paths.patch'
-        '020-openvino-disable-werror.patch')
+        '020-openvino-disable-werror.patch'
+        '030-openvino-ignore-system-onnx.patch')
 sha256sums=('c33bfd5ecc535a4317c8484637f4e36d34e70832b9ec77c257ae48cf0ae58e71'
             'SKIP'
             'SKIP'
@@ -82,7 +83,8 @@ sha256sums=('c33bfd5ecc535a4317c8484637f4e36d34e70832b9ec77c257ae48cf0ae58e71'
             'SKIP'
             'SKIP'
             'fa1d3bc0b89fb36ef254b572958b806f76b37dac2faab53a148ba9db9cbffd0d'
-            '07814fc576c6bced01c2d37e1f0d5c13f90ebb3c0e4fa404b3c5d367d83dc48c')
+            '07814fc576c6bced01c2d37e1f0d5c13f90ebb3c0e4fa404b3c5d367d83dc48c'
+            '30835fc8bc6cfcb5c140fe66f473865e56fec6e2842da542d69cf03f4b34f904')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 
 export GIT_LFS_SKIP_SMUDGE='1'
@@ -123,6 +125,7 @@ prepare() {
     
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-change-install-paths.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-disable-werror.patch"
+    patch -d openvino -Np1 -i "${srcdir}/030-openvino-ignore-system-onnx.patch"
     
     install -d -m755 {benchmark_app,licenses}
     install -d -m755 intel-gpu-plugin/usr/lib/openvino
