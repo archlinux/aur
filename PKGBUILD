@@ -7,7 +7,7 @@ arch=(any)
 url="https://github.com/TamtamHero/fw-fanctrl"
 license=('BSD-3')
 groups=()
-depends=('python>=3.13' python-watchdog fw-ectool-git python-jsonschema)
+depends=('python>=3.13' python-watchdog framework-system python-jsonschema)
 makedepends=('git' 'python-setuptools>=75.2.0' 'python-build' 'python-installer' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -43,7 +43,7 @@ package() {
 		--python-prefix-dir "${pkgdir}/usr" \
 		--prefix-dir "/usr" \
 		--sysconf-dir "/etc" \
-		--no-ectool \
+		--ignore-tool framework_tool \
 		--no-pip-install \
 		--no-pre-uninstall \
 		--no-post-install \

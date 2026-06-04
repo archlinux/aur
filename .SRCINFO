@@ -12,7 +12,7 @@ pkgbase = fw-fanctrl-git
 	makedepends = python-wheel
 	depends = python>=3.13
 	depends = python-watchdog
-	depends = fw-ectool-git
+	depends = framework-system
 	depends = python-jsonschema
 	provides = fw-fanctrl
 	conflicts = fw-fanctrl
