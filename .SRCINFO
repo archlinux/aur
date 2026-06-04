@@ -4,12 +4,15 @@ pkgbase = wayinhibit
 	pkgrel = 1
 	url = https://github.com/MedCy1/wayinhibit
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = glibc
 	depends = gcc-libs
-	source = wayinhibit-0.4.0::https://github.com/MedCy1/wayinhibit/releases/download/v0.4.0/wayinhibit-x86_64
 	source = LICENSE::https://raw.githubusercontent.com/MedCy1/wayinhibit/v0.4.0/LICENSE
-	sha256sums = e63e1bf780ae1e754957bbfde93a35761cc0013470d43a674f15f5ac76d75325
 	sha256sums = c6f47d3c350962a79fc1501510e8e1cc8fbcc6502d8421505ba1b9fbd1ef6237
+	source_x86_64 = wayinhibit-0.4.0::https://github.com/MedCy1/wayinhibit/releases/download/v0.4.0/wayinhibit-x86_64
+	sha256sums_x86_64 = e63e1bf780ae1e754957bbfde93a35761cc0013470d43a674f15f5ac76d75325
+	source_aarch64 = wayinhibit-0.4.0::https://github.com/MedCy1/wayinhibit/releases/download/v0.4.0/wayinhibit-aarch64
+	sha256sums_aarch64 = fb39f8d7da4670c82a993e4a486c0c827a5e89493b3c278970c9ea5146468eea
 
 pkgname = wayinhibit
