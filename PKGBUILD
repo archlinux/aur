@@ -2,7 +2,7 @@
 # Maintainer: k0kubun <takashikkbn@gmail.com>
 pkgname=xremap-kde-bin
 pkgdesc='Dynamic key remapper for X11 and Wayland (KDE Wayland Version)'
-pkgver=0.15.7
+pkgver=0.15.8
 pkgrel=1
 
 provides=('xremap')
@@ -13,12 +13,12 @@ options=('!debug')
 
 source=("LICENSE-$pkgver::https://raw.githubusercontent.com/xremap/xremap/v$pkgver/LICENSE")
 sha256sums=('60365594c733128ba50f05de00c4a6f07fed0a6e8bbd93817f39ded3980f7343')
+sha256sums_x86_64=('cb68521995a72e4567e4bb6e5afe9f2366df722ec75d94aa4be808d18d8f6dd1')
+sha256sums_aarch64=('dcdc38fe3f015e7103ef3038231a7e213a07667f051c6d2bfaa5d31ba9fdfcd7')
 
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/xremap/xremap/releases/download/v$pkgver/xremap-linux-x86_64-kde.zip")
-sha256sums_x86_64=('6651930cb139336034e3d5641c6bbc5ff0ddc082f5763cbd54c13d717c0214b6')
 
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/xremap/xremap/releases/download/v$pkgver/xremap-linux-aarch64-kde.zip")
-sha256sums_aarch64=('e6f4afe09ced0eb5c2b82dcd26bdc71023c888cc523dc2abc256506985272e56')
 
 package() {
 	cd "$srcdir/"
