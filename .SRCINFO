@@ -1,7 +1,7 @@
 pkgbase = openvino-git
 	pkgdesc = A toolkit for optimizing and deploying deep learning models (git version)
-	pkgver = 2026.1.2.r366.gde348846562
-	pkgrel = 2
+	pkgver = 2026.2.0.r206.gce500e96fff
+	pkgrel = 1
 	url = https://docs.openvino.ai/
 	arch = x86_64
 	license = Apache-2.0
@@ -49,6 +49,7 @@ pkgbase = openvino-git
 	source = git+https://github.com/herumi/xbyak_riscv.git
 	source = 010-openvino-change-install-paths.patch
 	source = 020-openvino-disable-werror.patch
+	source = 030-openvino-ignore-system-onnx.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -75,6 +76,7 @@ pkgbase = openvino-git
 	sha256sums = SKIP
 	sha256sums = fa1d3bc0b89fb36ef254b572958b806f76b37dac2faab53a148ba9db9cbffd0d
 	sha256sums = 74a11ff976c25cbd1fb231ee751411c0b60c228bc71da64d6d8c17fb7fa77767
+	sha256sums = 7cc3e9bd78bcdecc9c317e68ea7aba2bdeb40edd2d561beb7d17b0db0b83f300
 
 pkgname = openvino-git
 	depends = glibc
@@ -85,7 +87,7 @@ pkgname = openvino-git
 	depends = snappy
 	optdepends = openvino-intel-gpu-plugin-git: for Intel GPU plugin
 	optdepends = openvino-intel-npu-plugin-git: for Intel NPU plugin
-	provides = openvino=2026.1.2.r366.gde348846562
+	provides = openvino=2026.2.0.r206.gce500e96fff
 	provides = intel-openvino-git
 	conflicts = openvino
 	conflicts = intel-openvino-git
@@ -99,7 +101,7 @@ pkgname = openvino-intel-gpu-plugin-git
 	depends = libstdc++
 	depends = ocl-icd
 	depends = onetbb
-	depends = openvino=2026.1.2.r366.gde348846562
+	depends = openvino=2026.2.0.r206.gce500e96fff
 	depends = pugixml
 	provides = openvino-intel-gpu-plugin
 	conflicts = openvino-intel-gpu-plugin
@@ -113,7 +115,7 @@ pkgname = openvino-intel-npu-plugin-git
 	depends = libstdc++
 	depends = onetbb
 	depends = opencv
-	depends = openvino=2026.1.2.r366.gde348846562
+	depends = openvino=2026.2.0.r206.gce500e96fff
 	depends = pugixml
 	provides = openvino-intel-npu-plugin
 	conflicts = openvino-intel-npu-plugin
@@ -123,7 +125,7 @@ pkgname = python-openvino-git
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	depends = openvino=2026.1.2.r366.gde348846562
+	depends = openvino=2026.2.0.r206.gce500e96fff
 	depends = python
 	depends = python-numpy
 	depends = python-openvino-telemetry
