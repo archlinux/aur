@@ -1,6 +1,6 @@
 pkgbase = launchy-steam
 	pkgdesc = Configurable Steam compatibility tool launcher with per-game settings UI
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/Chloe-ko/launchy
 	install = launchy-steam.install
@@ -14,9 +14,9 @@ pkgbase = launchy-steam
 	depends = python-gobject
 	depends = gtk4
 	depends = libadwaita
-	source = launchy-steam-0.1.4.tar.gz::https://github.com/Chloe-ko/launchy/archive/v0.1.4.tar.gz
+	source = launchy-steam-0.1.5.tar.gz::https://github.com/Chloe-ko/launchy/archive/v0.1.5.tar.gz
 	source = launchy-steam.install
-	sha256sums = 1ff22329ec8047928171ea2685a9f080116ea3e39f12d6b862316ae3b365ce60
+	sha256sums = ef6efd7c8b3690659d15a82dba908c5e446d1095b1e70828c33169274b3e6f13
 	sha256sums = d13b6296dec6a269c079bfa0644b5e3ed232ac0e51cb07010c3f624e6f4cfc21
 
 pkgname = launchy-steam

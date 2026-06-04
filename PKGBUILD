@@ -1,6 +1,6 @@
 # Maintainer: Lilly <lilly@hibana.me>
 pkgname=launchy-steam
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Configurable Steam compatibility tool launcher with per-game settings UI"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Chloe-ko/launchy/archive/v${pkgver}.tar.gz"
         "launchy-steam.install")
-sha256sums=('1ff22329ec8047928171ea2685a9f080116ea3e39f12d6b862316ae3b365ce60'
+sha256sums=('ef6efd7c8b3690659d15a82dba908c5e446d1095b1e70828c33169274b3e6f13'
             'd13b6296dec6a269c079bfa0644b5e3ed232ac0e51cb07010c3f624e6f4cfc21')
 
 build() {
