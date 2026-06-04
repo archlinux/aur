@@ -1,8 +1,9 @@
+# Creator: Sanpi <sanpi+aur@homecomputing.fr>
 # Maintainer: italoghost <eduprodive at posteo dot me>
-# Contributor: Sanpi <sanpi+aur@homecomputing.fr>
+# Maintainer: Kaleb
 pkgname=rpcs3-bin
 _pkgname=rpcs3
-pkgver=0.0.40.18876
+pkgver=0.0.41.19433
 pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator (Latest Binary)'
 arch=('x86_64')
@@ -10,10 +11,10 @@ url='https://rpcs3.net/'
 license=('GPL-2.0-only')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-options=('!strip' '!zipman')
+options=('!strip' '!zipman' '!emptydirs' '!debug')
 depends=(
   'glibc'
-  'gcc-libs'
+  'libgcc'
   'zlib'
   'bash'
   'libx11'
@@ -23,8 +24,14 @@ depends=(
   'alsa-lib'
   'fontconfig'
   'freetype2'
+  'e2fsprogs'
+  'libstdc++'
+  'gmp'
+  'libdrm'
+  'libgpg-error'
 )
-makedepends=('curl')
+optdepends=('wayland')
+makedepends=('curl' 'jq')
 
 # Source the GitHub API to trigger the build, the actual AppImage is fetched in prepare()
 source=("${_pkgname}::https://api.github.com/repos/RPCS3/rpcs3-binaries-linux/releases/latest")
@@ -33,7 +40,7 @@ sha256sums=('SKIP')
 pkgver() {
     # Cleanly fetch the latest tag name from GitHub API and format it
     curl -s "https://api.github.com/repos/RPCS3/rpcs3-binaries-linux/releases/latest" | \
-    grep -oP '"name": "\K0[^"]+' | sed 's/-/./g'
+    jq -r '(.name | gsub("-"; "."))'
 }
 
 prepare() {
