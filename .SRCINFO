@@ -1,13 +1,18 @@
 pkgbase = python-applicationinsights
-	pkgdesc = Application Insights SDK for Python
-	pkgver = 1.0.0b15
+	pkgdesc = Application Insights SDK for Python (telemetry for Microsoft Azure Application Insights)
+	pkgver = 0.11.10
 	pkgrel = 1
 	url = https://github.com/Microsoft/ApplicationInsights-Python
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
-	source = https://github.com/microsoft/ApplicationInsights-Python/archive/refs/tags/v1.0.0b15.tar.gz
-	sha256sums = eabe3c863cfff7e6af461c8cfbfb33ccda81d054595f65a628ddc5c7aa43c399
+	makedepends = git
+	depends = python
+	source = git+https://github.com/microsoft/ApplicationInsights-Python.git#commit=a2f17aa9d7ad72c9ca5fec8b2e95d2d0f535fefc
+	sha256sums = SKIP
 
 pkgname = python-applicationinsights
-
