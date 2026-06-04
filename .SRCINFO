@@ -1,0 +1,13 @@
+pkgbase = terminal-oscilloscope
+	pkgdesc = A terminal-based oscilloscope with CRT phosphor physics.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/leonyaognev/terminal-oscilloscope.git
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = nim
+	source = git+https://github.com/leonyaognev/terminal-oscilloscope.git
+	sha256sums = SKIP
+
+pkgname = terminal-oscilloscope
