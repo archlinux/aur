@@ -1,7 +1,7 @@
 pkgname=grabit
-pkgver=0.2.0.r71.g11b7da9
+pkgver=0.3.0.r82.gf39fadf
 pkgrel=1
-pkgdesc="Screenshot, screen-recording, OCR, and uploader for wlroots Wayland compositors"
+pkgdesc="Screenshot, screen-recording, OCR, and uploader for wlroots and KDE Plasma 6 Wayland compositors"
 arch=('x86_64' 'aarch64')
 url="https://heliopolis.live/creations/grabit"
 license=('AGPL-3.0-or-later')
