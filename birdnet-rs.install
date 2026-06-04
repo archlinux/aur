@@ -1,0 +1,47 @@
+post_install() {
+  cat <<'EOF'
+
+==> birdnet-rs is installed but not yet running. To start it:
+
+      sudo systemctl enable --now birdnet-rs
+
+    On first start this automatically downloads the pre-converted BirdNET
+    model (via birdnet-rs-fetch-model.service) into /var/lib/birdnet-rs/models
+    and then launches the analyzer + web dashboard.
+
+==> Dashboard:  http://localhost:8080
+    From the dashboard you can pick the audio input device and sample rate.
+
+==> Config & data live under /var/lib/birdnet-rs (created on first run):
+      config.yaml   - thresholds, latitude/longitude, integrations (MQTT,
+                      BirdWeather, range filter). Edit, then: systemctl restart birdnet-rs
+      birdnet.db    - detections
+      clips/        - saved audio clips
+      models/       - downloaded model files
+
+==> The BirdNET model is CC BY-NC-SA 4.0 (Cornell Lab): non-commercial use,
+    attribution and share-alike. See /usr/share/doc/birdnet-rs/MODEL_LICENSE.
+
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+
+==> birdnet-rs upgraded. If it is running, apply the new version with:
+
+      sudo systemctl restart birdnet-rs
+
+EOF
+}
+
+post_remove() {
+  cat <<'EOF'
+
+==> Runtime data was left in /var/lib/birdnet-rs (database, clips, downloaded
+    model). Remove it manually if you no longer need it:
+
+      sudo rm -rf /var/lib/birdnet-rs
+
+EOF
+}
