@@ -1,6 +1,6 @@
 pkgbase = waywarp-bin
 	pkgdesc = A high-performance keyboard-driven mouse control tool for Wayland compositors (precompiled binary)
-	pkgver = 0.1.4
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/Xuepoo/waywarp
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = waywarp-bin
 	depends = wayland
 	provides = waywarp
 	conflicts = waywarp
-	source = https://github.com/Xuepoo/waywarp/releases/download/v0.1.4/waywarp-v0.1.4-x86_64-unknown-linux-gnu.tar.gz
+	source = https://github.com/Xuepoo/waywarp/releases/download/v0.1.7/waywarp-v0.1.7-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = SKIP
 
 pkgname = waywarp-bin
