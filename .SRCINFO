@@ -37,6 +37,7 @@ pkgbase = vutureland-git
 	depends = ttf-fantasque-nerd
 	depends = noto-fonts
 	depends = noto-fonts-emoji
+	depends = adw-gtk3
 	optdepends = hyprshot: region screenshot support
 	optdepends = ffmpeg: video wallpaper support
 	optdepends = mpvpaper: animated video wallpapers

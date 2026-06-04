@@ -38,6 +38,9 @@ depends=(
     'ttf-fantasque-nerd'
     'noto-fonts'
     'noto-fonts-emoji'
+    # GTK3 / GTK4 theme that honours @define-color overrides — required for
+    # the wallust palette to actually colour every GTK application.
+    'adw-gtk3'
 )
 optdepends=(
     'hyprshot: region screenshot support'
