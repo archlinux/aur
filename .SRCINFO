@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-preview-bin
 	pkgver = 11.0.0.sdk100preview4.26230.115
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://dotnet.microsoft.com
 	arch = aarch64
@@ -46,7 +46,7 @@ pkgname = dotnet-runtime-preview-bin
 
 pkgname = aspnet-runtime-preview-bin
 	pkgdesc = The ASP.NET Core runtime
-	depends = dotnet-runtime-preview-bin>=1:11.0.0.sdk100preview4.26230.115-1
+	depends = dotnet-runtime-preview-bin>=1:11.0.0.sdk100preview4.26230.115-2
 	provides = aspnet-runtime-preview=11.0.0.sdk100preview4.26230.115
 	provides = aspnet-runtime-11.0=11.0.0.sdk100preview4.26230.115
 	conflicts = aspnet-runtime-preview
@@ -61,7 +61,7 @@ pkgname = dotnet-targeting-pack-preview-bin
 
 pkgname = aspnet-targeting-pack-preview-bin
 	pkgdesc = The ASP.NET Core targeting pack
-	depends = dotnet-targeting-pack-preview-bin>=1:11.0.0.sdk100preview4.26230.115-1
+	depends = dotnet-targeting-pack-preview-bin>=1:11.0.0.sdk100preview4.26230.115-2
 	provides = aspnet-targeting-pack-preview=11.0.0.sdk100preview4.26230.115
 	provides = aspnet-targeting-pack-11.0=11.0.0.sdk100preview4.26230.115
 	conflicts = aspnet-targeting-pack-preview
@@ -69,9 +69,9 @@ pkgname = aspnet-targeting-pack-preview-bin
 
 pkgname = dotnet-sdk-preview-bin
 	pkgdesc = The .NET Core SDK
-	depends = dotnet-runtime-preview-bin>=1:11.0.0.sdk100preview4.26230.115-1
-	depends = dotnet-targeting-pack-preview-bin>=1:11.0.0.sdk100preview4.26230.115-1
-	optdepends = dotnet-aspnet-targeting-pack-preview-bin: Build ASP.NET Core applications
+	depends = dotnet-runtime-preview-bin>=1:11.0.0.sdk100preview4.26230.115-2
+	depends = dotnet-targeting-pack-preview-bin>=1:11.0.0.sdk100preview4.26230.115-2
+	optdepends = aspnet-targeting-pack-preview-bin: Build ASP.NET Core applications
 	provides = dotnet-sdk-preview=11.0.0.sdk100preview4.26230.115
 	provides = dotnet-sdk-11.0=11.0.0.sdk100preview4.26230.115
 	conflicts = dotnet-sdk-preview
