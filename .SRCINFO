@@ -1,31 +1,78 @@
 pkgbase = dotnet-core-preview-bin
-	pkgver = 8.0.0.sdk100+preview.1
-	pkgrel = 2
-	url = https://www.microsoft.com/net/core
-	arch = armv7h
+	pkgver = 11.0.0.sdk100preview4.26230.115
+	pkgrel = 1
+	epoch = 1
+	url = https://dotnet.microsoft.com
 	arch = aarch64
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	options = staticlibs
 	source = dotnet.sh
-	source = register-completions.bash
-	source = register-completions.fish
-	source = register-completions.zsh
-	sha512sums = e61b9e3e5a2305646a616d598378230c9755c5dd5363692cc363f8f4add3807563c324dd86f3a7ae9d358c82d730608e7b293935a2b6c81c0c0f62d752a0a1cf
-	sha512sums = 9f977e0bd12abc0dda4d914f369c58fce502b4030cf91d4248b32242d98fe5a2bbd8446502feeb914561f310dfd3c113bb6da19bfd5dfa6233109e62d22fa966
-	sha512sums = 1de3f09b96c44429b026277bb135a019b7577df2dec5f695ce51d18daefe2c1736b3359ab95f2abc46f7320c445b968e5582df92bb2bcad3ac5cfc5a32d3c5b6
-	sha512sums = f2be62d9cce00357b7b18ae83b976841037830b7b9ed1b67445f76e02550c904be5ab023366441199f9bb3dfd602004b0334395ffdde6c313910c1da5c39c4a3
-	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/1fb6d1b1-e976-4e94-9009-229ee313dfa5/5476a83dcda6d51617598cff9db793bd/dotnet-sdk-8.0.100-preview.1.23115.2-linux-arm.tar.gz
-	sha512sums_armv7h = b1d9f2bad2c00412c2efa1821e972df317fa6bb5e2eb51e34c871d10d20b8717ec48ddb2b10990fac50a056774d66b3444a8a459da418b1d70fb53d9e7277ba7
-	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/57c316ef-4b1d-4b1e-b180-f38302132d3d/b938e1b373897fadfb25ff4b55ca32e6/dotnet-sdk-8.0.100-preview.1.23115.2-linux-arm64.tar.gz
-	sha512sums_aarch64 = 98518887927605051312554499e197c14b32e8100fe8d8015a4556fdca3a347a3d2215d14069d33b27d978489f3e958c11baf18ba33e1b98580d2eb64cc1097b
-	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/e2578737-231b-493c-a6ee-f181496fe679/18038808d2621094ebe172ca011a7c22/dotnet-sdk-8.0.100-preview.1.23115.2-linux-x64.tar.gz
-	sha512sums_x86_64 = 23a14c92e402161ed8d42ec9cb25a97868a1b72348195d28cffa00a12815f019308b56485e4375c0d0a33d9a683d83cc1e1a2a517eea44af8fb353171b6c3f64
+	sha512sums = 768151c7179fb6a126b3de9cae01e363e8894f6fab384b1e2c5066c2adca4578638983b1b62aea10dd18045e6d6e8f8ea13280481134de94f004a118919b2c06
+	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.4.26230.115/dotnet-sdk-11.0.100-preview.4.26230.115-linux-arm64.tar.gz
+	sha512sums_aarch64 = f0488bfd17cc9dbb53cf4390505ffde58efd286af8d9599f53b6c652990c726dcf7bba0499982aa9e2d9fe2208f43166d145ec80ac26397047ae178f28d0e2f3
+	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.4.26230.115/dotnet-sdk-11.0.100-preview.4.26230.115-linux-x64.tar.gz
+	sha512sums_x86_64 = f4c74518bc9c8b92b18fbae299c7916b16d8ffad0f3e1768fb76f8c3b7b4ad3875bb8718ae2311083324fa8d58d6adcfcc3e4aed177f269432b72e7b3a9dd8ae
+	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.4.26230.115/dotnet-sdk-11.0.100-preview.4.26230.115-linux-arm.tar.gz
+	sha512sums_armv7h = 005eac84e3e16aaeeb4377e3b882ab9ce3af076735ca5aae7230c4f61c185365438d05e4f05945c8d5c31ceed356e184b55e8feb046b01dcad651e85fe0913c8
 
-pkgname = dotnet-core-host-preview-bin
-	pkgdesc = A generic driver for the .NET Core Command Line Interface (preview, binary)
+pkgname = dotnet-host-preview-bin
+	pkgdesc = A generic driver for the .NET Core Command Line Interface
 	depends = glibc
-	provides = dotnet-host
-	provides = dotnet-host=8.0.0
+	depends = libgcc
+	depends = libstdc++
+	depends = sh
+	provides = dotnet-host-preview=11.0.0.sdk100preview4.26230.115
+	provides = dotnet-host=11.0.0.sdk100preview4.26230.115
 	conflicts = dotnet-host
-	replaces = dotnet-host-preview
+
+pkgname = dotnet-runtime-preview-bin
+	pkgdesc = The .NET Core runtime
+	depends = dotnet-host>=11.0.0.sdk100preview4.26230.115
+	depends = glibc
+	depends = icu
+	depends = krb5
+	depends = libgcc
+	depends = libstdc++
+	depends = libunwind
+	depends = openssl
+	depends = zlib
+	optdepends = lttng-ust2.12: CoreCLR tracing
+	provides = dotnet-runtime-preview=11.0.0.sdk100preview4.26230.115
+	provides = dotnet-runtime-11.0=11.0.0.sdk100preview4.26230.115
+	conflicts = dotnet-runtime-preview
+	conflicts = dotnet-runtime-11.0
+
+pkgname = aspnet-runtime-preview-bin
+	pkgdesc = The ASP.NET Core runtime
+	depends = dotnet-runtime-preview-bin>=1:11.0.0.sdk100preview4.26230.115-1
+	provides = aspnet-runtime-preview=11.0.0.sdk100preview4.26230.115
+	provides = aspnet-runtime-11.0=11.0.0.sdk100preview4.26230.115
+	conflicts = aspnet-runtime-preview
+	conflicts = aspnet-runtime-11.0
+
+pkgname = dotnet-targeting-pack-preview-bin
+	pkgdesc = The .NET Core targeting pack
+	provides = dotnet-targeting-pack-preview=11.0.0.sdk100preview4.26230.115
+	provides = dotnet-targeting-pack-11.0=11.0.0.sdk100preview4.26230.115
+	conflicts = dotnet-targeting-pack-preview
+	conflicts = dotnet-targeting-pack-11.0
+
+pkgname = aspnet-targeting-pack-preview-bin
+	pkgdesc = The ASP.NET Core targeting pack
+	depends = dotnet-targeting-pack-preview-bin>=1:11.0.0.sdk100preview4.26230.115-1
+	provides = aspnet-targeting-pack-preview=11.0.0.sdk100preview4.26230.115
+	provides = aspnet-targeting-pack-11.0=11.0.0.sdk100preview4.26230.115
+	conflicts = aspnet-targeting-pack-preview
+	conflicts = aspnet-targeting-pack-11.0
+
+pkgname = dotnet-sdk-preview-bin
+	pkgdesc = The .NET Core SDK
+	depends = dotnet-runtime-preview-bin>=1:11.0.0.sdk100preview4.26230.115-1
+	depends = dotnet-targeting-pack-preview-bin>=1:11.0.0.sdk100preview4.26230.115-1
+	optdepends = dotnet-aspnet-targeting-pack-preview-bin: Build ASP.NET Core applications
+	provides = dotnet-sdk-preview=11.0.0.sdk100preview4.26230.115
+	provides = dotnet-sdk-11.0=11.0.0.sdk100preview4.26230.115
+	conflicts = dotnet-sdk-preview
+	conflicts = dotnet-sdk-11.0
