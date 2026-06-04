@@ -1,0 +1,19 @@
+pkgbase = mby-git
+	pkgdesc = Terminal client for Emby media server (git)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/slatkin/mby
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nasm
+	makedepends = git
+	depends = mpv
+	depends = openssl
+	provides = mby
+	conflicts = mby
+	source = mby-git::git+https://github.com/slatkin/mby.git
+	sha256sums = SKIP
+
+pkgname = mby-git
