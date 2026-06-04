@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="KitchenOwl is a self-hosted grocery list and recipe manager."
 
-pkgver=0.7.8
+pkgver=0.7.9
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -35,7 +35,7 @@ sha256sums=('f9dedaa5f945914ec5d191e781568b785ffdbf833eef1e4f8893375595d04fac'
             '15c3bbe7db615abc3745c5d013e0c04b6e47ad48265ecdc077d59dadcdb1bffa'
             '06f7b7e317e1732feda0bce957af7bf7b8a797147d865951df21532cb949863b'
             '8ec1df01450010aefb23728c69b8ff6eb2d9ceae9e1e1464374c6f0ae36a30c1')
-sha256sums_x86_64=('9508e1e957985f830604890623689eb56e931b32429ee590713b81f7653e8212')
+sha256sums_x86_64=('6ab6b704c1debd87ce6161e827bd95083465b5eb04db8ac255bc9db84718f417')
 
 package() {
 	cd "${srcdir}/" || exit
