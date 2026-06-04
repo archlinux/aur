@@ -2,15 +2,17 @@
 
 pkgname=meridian-git
 pkgver=1.43.0.r0.gf9b35fb
-pkgrel=1
+pkgrel=2
 pkgdesc="Use your Claude Max subscription with OpenCode, OpenClaw, Pi, Droid, Aider, Crush, Cline."
 arch=(any)
 url="https://github.com/rynfar/meridian"
 license=(MIT)
 depends=(nodejs)
 makedepends=(bun git)
+optdepends=('meridian-plugin-opencode-scrub-git: scrub OpenCode-identifying prompt fingerprints before they reach Claude')
 provides=(meridian)
 conflicts=(meridian)
+install=meridian-git.install
 source=(meridian::git+https://github.com/rynfar/meridian.git)
 sha512sums=('SKIP')
 

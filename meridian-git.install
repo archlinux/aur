@@ -1,0 +1,56 @@
+post_install() {
+  cat <<'EOF'
+
+Meridian is installed, but this package does not install or enable a systemd
+service. Start Meridian manually with `meridian`, or manage your own user unit
+if you want it to run in the background.
+
+For OpenCode, add the provider endpoint and Meridian OpenCode plugin to
+~/.config/opencode/opencode.json. Minimal snippet:
+
+{
+  "provider": {
+    "anthropic": {
+      "options": {
+        "apiKey": "x",
+        "baseURL": "http://127.0.0.1:3456"
+      }
+    }
+  },
+  "plugin": [
+    "/usr/lib/meridian/plugin/meridian.ts"
+  ]
+}
+
+Convenience command to merge that into an existing OpenCode config:
+
+mkdir -p "$HOME/.config/opencode"
+test -f "$HOME/.config/opencode/opencode.json" || printf '{}\n' > "$HOME/.config/opencode/opencode.json"
+tmp=$(mktemp)
+jq '
+  .provider.anthropic.options.apiKey = (.provider.anthropic.options.apiKey // "x") |
+  .provider.anthropic.options.baseURL = "http://127.0.0.1:3456" |
+  .plugin = (((.plugin // []) | map(select(. != "/usr/lib/meridian/plugin/meridian.ts"))) + ["/usr/lib/meridian/plugin/meridian.ts"])
+' "$HOME/.config/opencode/opencode.json" > "$tmp" && mv "$tmp" "$HOME/.config/opencode/opencode.json"
+
+Recommended for OpenCode: install meridian-plugin-opencode-scrub-git, then
+enable the compiled plugin in ~/.config/meridian/plugins.json:
+
+mkdir -p "$HOME/.config/meridian"
+test -f "$HOME/.config/meridian/plugins.json" || printf '{"plugins":[]}\n' > "$HOME/.config/meridian/plugins.json"
+tmp=$(mktemp)
+jq '
+  .plugins = (((.plugins // []) | map(select(.path != "/usr/lib/meridian/node_modules/@rynfar/meridian-plugin-opencode-scrub/dist/index.js"))) + [{"path":"/usr/lib/meridian/node_modules/@rynfar/meridian-plugin-opencode-scrub/dist/index.js","enabled":true}])
+' "$HOME/.config/meridian/plugins.json" > "$tmp" && mv "$tmp" "$HOME/.config/meridian/plugins.json"
+
+After changing OpenCode config, restart OpenCode. If Meridian is already
+running, reload Meridian plugins with:
+
+curl -fsS -X POST http://127.0.0.1:3456/plugins/reload
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
