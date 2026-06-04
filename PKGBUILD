@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-bin
-pkgver=0.8.11
+pkgver=0.8.12
 pkgrel=1
 pkgdesc="Moshpit agent daemon — passphrase unlock (pre-compiled MUSL static binary)"
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,9 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mpa.tar.gz")
 source_x86_64=("mpa-x86_64::${_base}/mpa-x86_64-unknown-linux-musl")
 source_aarch64=("mpa-aarch64::${_base}/mpa-aarch64-unknown-linux-musl")
-sha256sums=('bb8333a795a8482fd8b82fae431853d28944b1804ba6bf802aa582a1c9370d3c')
-sha256sums_x86_64=('e8cd8dc4991d84510542c4f6e19d9b26bd1f5f87ba842849ba57cdb9ee29baf1')
-sha256sums_aarch64=('30d9ee7db432feafbb76475fdb1f6771222492c186d4c6d64d390d678861663c')
+sha256sums=('9c5f02bc0451373608b0627d690039e254a886431aacb43042751ac6097acea3')
+sha256sums_x86_64=('00a9f7b7f23dff1345ced1b30caaa344cf8ee2b26e7fcb9848ef2be212cb2056')
+sha256sums_aarch64=('dcfbed9163988ae33561f2ddf9d7bb1e49b81700d2405ca170cd656662ce5699')
 
 package() {
     install -Dm755 "mpa-${CARCH}" "$pkgdir/usr/bin/mpa"
