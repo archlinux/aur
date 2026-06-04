@@ -11,7 +11,6 @@ pkgbase = flclash-myflavor-bin
 	depends = libkeybinder3
 	provides = flclash-myflavor=1.19.26
 	conflicts = flclash-myflavor
-	conflicts = flclash-bin
 	source = flclash-myflavor.sh
 	sha256sums = debddc0c8728bcbc552d0826ef0b5a4cd33e20df01752baa85e54498ec8ec3d5
 	source_x86_64 = flclash-myflavor-1.19.26-x86_64.deb::https://github.com/myflavor/FlClash/releases/download/v1.19.26/FlClash-1.19.26-linux-amd64.deb
