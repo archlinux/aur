@@ -3,13 +3,13 @@ pkgname=beyondallreason
 electronver=42
 pkgver=1.2988.0
 electronver=42
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest release of BYAR-Chobby, the launcher for Beyond All Reason - An open source RTS game built on top of the Spring RTS Engine"
 arch=(x86_64)
 url="https://beyondallreason.info"
 license=('GPL')
 depends=(electron${electronver})
-makedepends=(nodejs-lts-jod git)
+makedepends=(nodejs git jq npm)
 conflicts=(beyondallreason-appimage)
 source=("git+https://github.com/beyond-all-reason/BYAR-Chobby.git#tag=v$pkgver"
   "git+https://github.com/beyond-all-reason/spring-launcher.git#commit=2c0a6e17b50ab04ea592c53963c571e5ccb071ba"

@@ -5,8 +5,10 @@ pkgbase = beyondallreason
 	url = https://beyondallreason.info
 	arch = x86_64
 	license = GPL
-	makedepends = nodejs-lts-jod
+	makedepends = nodejs
 	makedepends = git
+	makedepends = jq
+	makedepends = npm
 	depends = electron42
 	conflicts = beyondallreason-appimage
 	source = git+https://github.com/beyond-all-reason/BYAR-Chobby.git#tag=v1.2988.0
