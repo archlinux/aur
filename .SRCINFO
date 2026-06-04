@@ -1,0 +1,21 @@
+pkgbase = bc-java-git
+	pkgdesc = Bouncy Castle Crypto APIs for Java
+	pkgver = 1rv84.r369.g88c3623
+	pkgrel = 1
+	url = https://www.bouncycastle.org/java.html
+	arch = any
+	license = MIT
+	makedepends = ant
+	makedepends = strip-nondeterminism
+	depends = java-runtime-headless
+	source = git+https://github.com/bcgit/bc-java.git
+	sha512sums = SKIP
+
+pkgname = bcprov-git
+	pkgdesc = Bouncy Castle Provider (bcprov) for Java
+	depends = java-runtime-headless
+
+pkgname = bcpkix-git
+	pkgdesc = Bouncy Castle PKIX/X.509 (bcpkix) for Java
+	depends = bcprov-git
+	depends = java-runtime-headless
