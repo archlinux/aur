@@ -25,7 +25,7 @@ sha256sums=(
 build() {
   cd "$srcdir/$pkgname"
 
-  rustup update
+  command -v rustup && rustup update
   cargo build --release
 
   pandoc docs/sigrun.1.md -s -t man -o sigrun.1
