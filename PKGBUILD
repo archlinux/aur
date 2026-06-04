@@ -1,7 +1,7 @@
 # Maintainer: Agil Mammadov <mammadovagil@proton.me>
 pkgname=container-magic
 _name=${pkgname//-/_}
-pkgver=5.8.1
+pkgver=5.8.0
 pkgrel=1
 pkgdesc="Container development tools"
 arch=('any')
