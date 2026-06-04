@@ -11,7 +11,7 @@
 @@ -2699,6 +2700,102 @@
      pluginInstallCandidates().forEach(clearForcedInstallButtonLabel);
    }
- 
+
 +  function pluginNavButtonCandidates() {
 +    return Array.from(document.querySelectorAll(selectors.pluginNavButton))
 +      .filter((button) => button instanceof HTMLElement && isPluginNavButton(button));
@@ -113,7 +113,7 @@
      if (!codexPlusSettings().forcePluginInstall) return;
 @@ -7590,6 +7687,8 @@
    }
- 
+
    function scanDeferred() {
 +    unlockPluginNavButtons();
 +    refreshPluginNavUnlockLoop();
