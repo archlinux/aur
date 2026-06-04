@@ -69,8 +69,8 @@ package()
 
     ## Install the reference manual documentation.
     #
-    mv docs/gtkada_rm/doc_obj/gnatdoc/html \
-       "${pkgdir}/usr/share/doc/${pkgname}/gtkada_rm"
+    # mv docs/gtkada_rm/doc_obj/gnatdoc/html \
+    #   "${pkgdir}/usr/share/doc/${pkgname}/gtkada_rm"
 
 
     ## Install the license.
