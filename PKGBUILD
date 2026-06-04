@@ -1,7 +1,7 @@
 # Maintainer: Daniel Korbelainen <officialpand@gmail.com>
 # pkgver and sha256sums are set by CI (.github/workflows/release.yml) from the git tag.
 pkgname=sniptext
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Screen text extractor with OCR and spell correction"
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3c863023462586ecfcf5e8d555da0f2c03b5696a4dff81f7323e41e8f4198f8f')
+sha256sums=('1c266ae00732aee3b6338de02df5988f133378222d56a17211b58bbf52261cdd')
 
 build() {
     cd "$pkgname-$pkgver"

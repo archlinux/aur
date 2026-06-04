@@ -1,6 +1,6 @@
 pkgbase = sniptext
 	pkgdesc = Screen text extractor with OCR and spell correction
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/dkorbelainen/sniptext
 	install = sniptext.install
@@ -34,7 +34,7 @@ pkgbase = sniptext
 	optdepends = wl-clipboard: Wayland clipboard
 	optdepends = maim: X11 screenshots
 	optdepends = xclip: X11 clipboard
-	source = sniptext-0.3.2.tar.gz::https://github.com/dkorbelainen/sniptext/archive/v0.3.2.tar.gz
-	sha256sums = 3c863023462586ecfcf5e8d555da0f2c03b5696a4dff81f7323e41e8f4198f8f
+	source = sniptext-0.4.0.tar.gz::https://github.com/dkorbelainen/sniptext/archive/v0.4.0.tar.gz
+	sha256sums = 1c266ae00732aee3b6338de02df5988f133378222d56a17211b58bbf52261cdd
 
 pkgname = sniptext
