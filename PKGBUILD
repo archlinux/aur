@@ -9,7 +9,7 @@
 
 pkgname=mastodon
 pkgver=4.5.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(any)
 url=https://github.com/mastodon/mastodon
@@ -20,6 +20,7 @@ depends=(corepack
          libidn
          libpqxx
          libvips
+	 libheif
          libxml2
          libxslt
          libyaml

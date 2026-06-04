@@ -1,7 +1,7 @@
 pkgbase = mastodon
 	pkgdesc = Your self-hosted, globally interconnected microblogging community
 	pkgver = 4.5.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mastodon/mastodon
 	install = mastodon.install
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = mastodon
 	depends = libidn
 	depends = libpqxx
 	depends = libvips
+	depends = libheif
 	depends = libxml2
 	depends = libxslt
 	depends = libyaml
