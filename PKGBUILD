@@ -1,6 +1,6 @@
 # Maintainer: W3TI SERVIÇOS DE INFORMÁTICA LTDA <contato@w3ti.com.br>
 pkgname=prosa
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Editor de texto moderno, open source e em modo escuro — suíte W3TI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('xdg-utils: abrir links externos')
 options=('!strip' '!debug')
 source=("prosa-${pkgver}.deb::https://github.com/britors/Prosa/releases/download/v${pkgver}/prosa_${pkgver}_amd64.deb")
 noextract=("prosa-${pkgver}.deb")
-sha256sums=('ee6840eb99a8f9ce9bffb4b101d10aff6a2697af6c7267faea09855e303e4e41')
+sha256sums=('805b2b4ba6eef5605af165b71a1f08216177b68c27a7298ac72f68a0615a2974')
 
 package() {
   cd "${srcdir}"
@@ -22,6 +22,12 @@ package() {
   # Symlink em /usr/bin (o after-install do .deb não roda na AUR).
   install -dm755 "${pkgdir}/usr/bin"
   ln -sf /opt/Prosa/prosa "${pkgdir}/usr/bin/prosa"
+
+  # O .deb já instala os ícones hicolor 16→1024; acrescentamos só o fallback
+  # legado em /usr/share/pixmaps, que alguns ambientes ainda consultam.
+  install -Dm644 \
+    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/prosa.png" \
+    "${pkgdir}/usr/share/pixmaps/prosa.png"
 
   # O chrome-sandbox precisa de setuid root.
   if [ -f "${pkgdir}/opt/Prosa/chrome-sandbox" ]; then
