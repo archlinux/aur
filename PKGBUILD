@@ -5,7 +5,7 @@ _pkgname=repos
 pkgname=${_pkgname}-bin
 pkgdesc="Interactive CLI tool for managing multiple git repositories"
 
-pkgver=1.0.2
+pkgver=1.1.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,8 +27,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}")
 sha256sums=('4968aae2669870a43427f40882b344a5d7ce9f7a5f44e4bc5b64d8c45e97d0a8'
-            'eddca6745edb6ecd2893c9b234a6364ed1f1c8b38f9c0dd413ae125a3ca4f701')
-sha256sums_x86_64=('d5521cde9d97117a0d380b749e456a423bd23abc8f2969ad50c388364227767d')
+            'b49b27fe1279ba636800a13470cbc189d96a3def7bf5273414bee36a1bd36483')
+sha256sums_x86_64=('85628f24fc6120bb1895d09131dd3a43fcb55ae9d73cdb869bd8b8d20cd1b96c')
 
 
 package() {
