@@ -34,6 +34,10 @@ depends=(
     'network-manager-applet'
     'gnome-keyring'
     'clipvault'
+    # Fonts used by the bundled Hyprland/Waybar/rofi configs.
+    'ttf-fantasque-nerd'
+    'noto-fonts'
+    'noto-fonts-emoji'
 )
 optdepends=(
     'hyprshot: region screenshot support'
