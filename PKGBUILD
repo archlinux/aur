@@ -1,8 +1,8 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=grimmory
-pkgver=3.1.0
-pkgrel=2
-pkgdesc="Self hosted ebook reader"
+pkgver=3.2.0
+pkgrel=1
+pkgdesc="Self hosted ebook reader and library"
 arch=('x86_64')
 url="https://grimmory.org/"
 license=('AGPL-3.0')
@@ -21,7 +21,7 @@ grimmory.tmpfiles
 grimmory.install
 )
 sha512sums_x86_64=(
-0366e0aab682763cd984a342375be0945944e59124227a6401927d542603cb12f6c7f6fc86c8f44cc3153137c26ff706017ec0a3dcc31ae1efbc76617ce4e74b
+6c15c12e2c18b8b4dc29d510c12fbeefd7be94b21a8114b235d47879b46c3fc92b8f61da34e40e5f4b732ad891822d6748396c129b39e7229e9c939e38e89c6e
 'SKIP'
 'SKIP'
 'SKIP'
