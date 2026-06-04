@@ -3,7 +3,7 @@
 _pkgname="gtfs-planner"
 pkgname="${_pkgname}-git"
 pkgver=r76.20260603.ed129a1
-pkgrel=2
+pkgrel=3
 pkgdesc='"Bus Planning": A desktop application for visualizing and planning trips using GTFS (General Transit Feed Specification) public transit data. Built with Go, React, and MapLibre GL.'
 arch=(
   "aarch64"
@@ -90,14 +90,14 @@ source=(
   "licensing-info.txt"
 )
 sha256sums=(
-  'SKIP'  # Main upstream source.
-  'SKIP'  # gtfs-planner.desktop  # TODO: Add correct checksum.
-  'SKIP'  # gtfs-config.yaml      # TODO: Add correct checksum.
-  'SKIP'  # gtfs-config.json      # TODO: Add correct checksum.
-  'SKIP'  # gtfs-config.readme.txt  # TODO: Add correct checksum.
-  'SKIP'  # gtfs-manager.sh       # TODO: Add correct checksum.
-  'SKIP'  # gtfs-planner.sh       # TODO: Add correct checksum.
-  'SKIP'  # licensing-info.txt    # TODO: Add correct checksum.
+  'SKIP'                                                              # Main upstream source.
+  '2eb7f377f5d40dbf6c65b26c67fe7c9f4c56e3deab18f75847b27d392630edb8'  # gtfs-planner.desktop
+  '06fb0a08fdf721e2f88683a98424b3c0c25d0ce2824561cfb1bf828b760eecef'  # gtfs-config.yaml
+  'acaa91df5fe867fb44a73957619ad74a1f3fcee557f576de35fb839b960984c2'  # gtfs-config.json
+  '99bc7f08687775af0127795213b79c7b08a84bf2fd4ad641fbf592d66e19542a'  # gtfs-config.readme.txt
+  '063ad49b888b3a99aba0f7c914e59f721cd4919ef634be888ba835d45a0eaef7'  # gtfs-manager.sh
+  'ca5a9c093919042d39ae57cd0dfaa82b9e53ac793ae73d7db813c25cca0e61c1'  # gtfs-planner.sh
+  '3b365dca9ccd2d8408ee8cc4ddf1a48e561ad639e4a898c91961bbd73e113247'  # licensing-info.txt
 )
 #options+=('!lto' 'debug' '!strip')
 
