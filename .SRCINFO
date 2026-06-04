@@ -1,6 +1,6 @@
 pkgbase = pori
 	pkgdesc = Pori: Systemd Mount Manager
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Pori
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pori
 	depends = hicolor-icon-theme
 	depends = glibc
 	provides = Pori
-	source = pori-0.0.1.tar.gz::https://github.com/Seafoam-Labs/Pori/archive/v0.0.1.tar.gz
-	sha256sums = SKIP
+	source = pori-0.0.2.tar.gz::https://github.com/Seafoam-Labs/Pori/archive/v0.0.2.tar.gz
+	sha256sums = 2eb8d4b6e3007c4f6a700bbb6fb20f199f757d62d5737d0dbc9fbfa58bf636f5
 
 pkgname = pori
