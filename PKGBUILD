@@ -1,5 +1,5 @@
 pkgname=sfptool
-pkgver=1.3.5
+pkgver=1.3.10
 pkgrel=1
 pkgdesc="Desktop utility for reading and programming SFP and QSFP transceivers"
 arch=('x86_64' 'aarch64')
@@ -10,11 +10,11 @@ makedepends=('cargo' 'cmake' 'conan' 'desktop-file-utils' 'emscripten' 'fmt' 'gi
 provides=('sfptool')
 conflicts=('sfptool-bin')
 source=(
-  "sfp-tool-v${pkgver}.tar.gz::https://jonasled.dev/jonasled/sfp-tool/-/archive/v1.3.5/sfp-tool-v1.3.5.tar.gz"
+  "sfp-tool-v${pkgver}.tar.gz::https://jonasled.dev/jonasled/sfp-tool/-/archive/v1.3.10/sfp-tool-v1.3.10.tar.gz"
   "transceivertool-ae0163efc991402f1e0231078e69379471613ee4.tar.gz::https://github.com/robinchrist/TransceiverTool/archive/ae0163efc991402f1e0231078e69379471613ee4.tar.gz"
   "cppcodec-v0.2.tar.gz::https://github.com/tplgy/cppcodec/archive/refs/tags/v0.2.tar.gz"
 )
-sha256sums=('1bbecbb788b7ebeb17ae16e79233bae4ca3dc2448f311393157a0e28668f0e89' '77b030fc853dbd3f94d31d99c66e3e2a7c81c7c1654ba5cae01581b0959018ac' '0edaea2a9d9709d456aa99a1c3e17812ed130f9ef2b5c2d152c230a5cbc5c482')
+sha256sums=('c66adf56101983d22b6ce1a1b10e593cd6f0fa8ff5c348870ef921e409738726' '77b030fc853dbd3f94d31d99c66e3e2a7c81c7c1654ba5cae01581b0959018ac' '0edaea2a9d9709d456aa99a1c3e17812ed130f9ef2b5c2d152c230a5cbc5c482')
 
 prepare() {
   cd "$srcdir/sfp-tool-v${pkgver}"
@@ -37,7 +37,7 @@ from pathlib import Path
 
 config_path = Path("src-tauri/tauri.conf.json")
 config = json.loads(config_path.read_text())
-config["version"] = "1.3.5"
+config["version"] = "1.3.10"
 config.setdefault("bundle", {})["createUpdaterArtifacts"] = False
 config_path.write_text(json.dumps(config, indent=2))
 PY
