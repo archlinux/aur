@@ -8,8 +8,7 @@ pkgname=uptime-kuma
 pkgver=2.4.0
 pkgrel=1
 pkgdesc='A fancy self-hosted monitoring tool'
-
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/louislam/${pkgname}"
 license=('MIT')
 depends=('nodejs')
@@ -34,6 +33,9 @@ build() {
   npm ci --cache "${srcdir}/npm-cache"
   npm run build
   npm prune --omit=dev
+
+  # Clean up empty directories left behind by npm prune.
+  find node_modules -type d -empty -delete
 }
 
 package() {
@@ -41,6 +43,8 @@ package() {
 
   cd "${srcdir}/${pkgname}-${pkgver}"
   cp --recursive . "$pkgdir"/usr/lib/node_modules/$pkgname
+
+  install -vDm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   install -vDm644 "$srcdir"/config.env "$pkgdir"/etc/uptime-kuma/config.env
 
