@@ -1,0 +1,16 @@
+pkgbase = zsh-ai-git
+	pkgdesc = Transform natural language into shell commands instantly via zsh plugin
+	pkgver = r145.7375e30
+	pkgrel = 1
+	url = https://github.com/matheusml/zsh-ai
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh>=5.0
+	depends = curl
+	depends = perl
+	optdepends = jq: improved JSON parsing
+	source = git+https://github.com/matheusml/zsh-ai.git#branch=main
+	sha256sums = SKIP
+
+pkgname = zsh-ai-git
