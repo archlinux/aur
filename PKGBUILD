@@ -2,7 +2,7 @@
 pkgname=toontown-multitool
 epoch=1
 pkgver=0.7.0alpha.2
-pkgrel=1
+pkgrel=2
 _upstream=0.7.0-alpha.2
 pkgdesc="Multiboxing input control for Toontown Rewritten and Corporate Clash"
 arch=('any')
