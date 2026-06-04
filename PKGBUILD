@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui
-pkgver=3.2.6
+pkgver=3.2.7
 pkgrel=1
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
@@ -29,7 +29,7 @@ source=(
   $url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
   ${pkgname:1}-updategeo.{service,timer}
 )
-b2sums=('49b2952649486e8b54f55b8beefb439f1c5d85513fbb6946e68fbdfb9a26fe80a85cd2e067e2f66823e2519ff2cd21f30671bdbcbd257be70fb85e92a34bfaf6'
+b2sums=('741eae4d3207267ef9d1979accc4bfd90e115ea250941f3d347d2308da2a53482ef7cc7d766cebb3206558c6c55a8c94318fe6d6d9f7f802eaba67a3de5f8e40'
         'a6f4eba028beba4f94d78ce40080e531939f98c9fa265c7a27d6ea17777cb549cd65be0193e390850fc418457e204f478c36f87b66844cb0abc69c893192e970'
         'da9c55306c37438f79adfb550d1d0003f14c4d597b170e4424428fc07040391fd904d63f738c46ac92ba13d8c8577b3e4a74bfe119d0f7b914d3e7839c4a0336')
 
