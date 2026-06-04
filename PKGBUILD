@@ -2,7 +2,7 @@
 
 pkgname=ishaans-termchat-bin
 _pkgname=termchat
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Minimal anonymous terminal chatrooms — lightweight single-binary TUI client'
 arch=('x86_64' 'aarch64' 'i686')
@@ -17,9 +17,9 @@ source_x86_64=("termchat-linux-amd64-${pkgver}::${_base_url}/termchat-linux-amd6
 source_aarch64=("termchat-linux-arm64-${pkgver}::${_base_url}/termchat-linux-arm64")
 source_i686=("termchat-linux-386-${pkgver}::${_base_url}/termchat-linux-386")
 
-sha256sums_x86_64=('f0aefc29c45cbe3eb84f182adead71db01baf674cfe59ed88aab12ea410b10d3')
-sha256sums_aarch64=('64c385cdd3d3d673af14a0dfe4f8baee0bb69c399fefc1a421d4cea08c23dad6')
-sha256sums_i686=('811d83f5c87b6783cad4acab5086578916146f0ed300756ee7594c55c0041b69')
+sha256sums_x86_64=('7c903bf6517bb9c069d687c62996d1aa7651cf442bc4756a7e451983d18f94a4')
+sha256sums_aarch64=('adc7990ef1ea9ffa01474194df14ffc712611b58c2d6c9ffc4391084be865d27')
+sha256sums_i686=('acad651ef6c88921e70557dc54b4510f98d0bce3291a57037a24e874c9739faf')
 
 # Man page and license from the source repo
 source=("termchat.1::https://raw.githubusercontent.com/ishaan-jindal/termchat/cli-v${pkgver}/doc/termchat.1"
