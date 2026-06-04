@@ -1,0 +1,17 @@
+pkgbase = owa-epanet-git
+	pkgdesc = Hydraulic and water quality modeling tool for water distribution networks (EPANET)
+	pkgver = r1577.f36ba6c
+	pkgrel = 1
+	url = https://github.com/OpenWaterAnalytics/EPANET
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = epanet
+	provides = runepanet
+	conflicts = epanet
+	conflicts = runepanet
+	source = owa-epanet-git::git+https://github.com/OpenWaterAnalytics/EPANET.git
+	sha256sums = SKIP
+
+pkgname = owa-epanet-git
