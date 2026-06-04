@@ -1,6 +1,6 @@
 pkgbase = proto-bin
 	pkgdesc = Pluggable multi-language version manager
-	pkgver = 0.57.3
+	pkgver = 0.57.4
 	pkgrel = 1
 	url = https://github.com/moonrepo/proto
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = proto-bin
 	optdepends = rustup: support for Rust toolchains
 	provides = proto
 	conflicts = proto
-	source_x86_64 = proto-0.57.3-x86_64.tar.xz::https://github.com/moonrepo/proto/releases/download/v0.57.3/proto_cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 479459d081882a96012d765b569c0f6786ecbfce7a122f0dacbb833cbbd75d10
-	source_aarch64 = proto-0.57.3-aarch64.tar.xz::https://github.com/moonrepo/proto/releases/download/v0.57.3/proto_cli-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 99a7139c45b4b2c8caf89a0db701d1ad567a76bb324562c888bf2d9dac7ed14e
+	source_x86_64 = proto-0.57.4-x86_64.tar.xz::https://github.com/moonrepo/proto/releases/download/v0.57.4/proto_cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 22ca64764f7e84994010761e14de12fb47cf6015033c33672b247c54269a8f5f
+	source_aarch64 = proto-0.57.4-aarch64.tar.xz::https://github.com/moonrepo/proto/releases/download/v0.57.4/proto_cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 6e1f69ab268f09e833976f9b3715285179dd3540345b6933402a493c8cede374
 
 pkgname = proto-bin
