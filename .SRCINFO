@@ -1,0 +1,13 @@
+pkgbase = kurolaunch-bin
+	pkgdesc = CLI generator for scaffolding Minecraft Helios Launcher projects
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kiroku67/kurolaunch
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = kurolaunch-bin-0.1.0.tar.gz::https://github.com/kiroku67/kurolaunch/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 96c08db0a43e8485c1e028c8f27702af5f9b2453ace34747d968d69656ce8840
+
+pkgname = kurolaunch-bin
