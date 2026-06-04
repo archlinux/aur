@@ -1,0 +1,13 @@
+pkgbase = open-meb
+	pkgdesc = Arch Linux tabanlı sistemler için MEB sertifika yöneticisi
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mx-merts/OPEN-MEB
+	arch = any
+	license = MIT
+	depends = openssl
+	depends = wget
+	source = open-meb::https://raw.githubusercontent.com/mx-merts/OPEN-MEB/main/open-meb
+	sha256sums = SKIP
+
+pkgname = open-meb
