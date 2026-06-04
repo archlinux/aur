@@ -37,6 +37,9 @@ check() {
 
     # Unittests
     uv --no-progress run --frozen -- pytest -m once --cov --cov-report=term
+
+    # Check if it runs outside of UV environment
+    python -m click_extra --version
 }
 
 package() {
