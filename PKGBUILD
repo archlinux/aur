@@ -9,7 +9,7 @@ pkgdesc="Multi-platform proxy client based on ClashMeta, simple and easy to use,
 arch=('x86_64')
 url="https://github.com/myflavor/FlClash"
 license=('GPL-3.0-only')
-conflicts=("${pkgname%-bin}" 'flclash-bin')
+conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 
 depends=(
