@@ -2,7 +2,7 @@
 
 _pkgname=lotus
 pkgname=$_pkgname-git
-pkgver=1.1.2.r193.gd421274dc
+pkgver=1.36.0.r30.gabe268e40
 pkgrel=1
 pkgdesc='Filecoin client in Go'
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip') # stripping removes information embeded into lotus after buil
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  VERSION=$(git tag | grep -ve "-dev" | sed 's/-/~/g' | sort --version-sort --reverse | sed 's/~/-/g' | head -n1)
+  VERSION=$(git tag | grep -e '^v' | grep -ve "-dev" | sed 's/-/~/g' | sort --version-sort --reverse | sed 's/~/-/g' | head -n1)
   COUNT=$(git rev-list "$VERSION.." --count)
   CHKSUM=$(git rev-list master | head -n1)
   VERSION=$(echo "$VERSION" | sed 's/^v//' | sed 's/-//')
@@ -38,6 +38,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  GOFLAGS="-trimpath -buildmode=pie" make lotus # build one first to avoid rebuilding deps
   GOFLAGS="-trimpath -buildmode=pie" make build
 }
 
