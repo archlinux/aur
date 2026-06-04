@@ -4,3 +4,7 @@
 !ashell.service
 !.gitignore
 !ashell-bin.install
+!.nvchecker.toml
+!LICENSE
+!LICENSES/
+!LICENSES/*

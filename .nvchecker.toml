@@ -1,0 +1,4 @@
+[ashell-bin]
+source = "github"
+github = "MalpenZibo/ashell"
+use_max_release = true
