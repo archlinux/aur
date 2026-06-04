@@ -2,7 +2,7 @@
 
 pkgname=optiscaler-client-bin
 pkgver=1.0.5
-pkgrel=7
+pkgrel=8
 pkgdesc="Modern desktop client for installing, updating and configuring OptiScaler across game libraries"
 arch=('x86_64')
 url="https://github.com/Agustinm28/Optiscaler-Client"
@@ -13,9 +13,10 @@ depends=('glibc' 'gcc-libs')
 provides=('optiscaler-client')
 conflicts=('optiscaler-client')
 
+options=(!strip)
+
 source=(
-  # IMPORTANT: hard-pinned stable release asset (not fragile redirect chain)
-  "optiscaler-client.tar.gz::https://github.com/Agustinm28/Optiscaler-Client/releases/download/OptiscalerClient-${pkgver}/OptiscalerClient-${pkgver}-linux-x64.tar.gz"
+  "optiscaler-client.zip::https://github.com/Agustinm28/Optiscaler-Client/releases/download/OptiscalerClient-${pkgver}/OptiscalerClient-${pkgver}-linux-x64.zip"
   "optiscaler-client.desktop"
 )
 
@@ -26,32 +27,21 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/pixmaps"
 
-  # Extract EXACTLY as upstream ships (critical fix)
-  bsdtar -xf optiscaler-client.tar.gz -C "$pkgdir/opt/optiscaler-client"
+  # IMPORTANT: unzip preserves structure better for this type of app
+  bsdtar -xf optiscaler-client.zip -C "$pkgdir/opt/optiscaler-client"
 
-  # Ensure binary is executable
-  chmod +x "$pkgdir/opt/optiscaler-client/OptiscalerClient" || true
-
-  # Launcher (simple + safe for .NET/Avalonia)
+  # DO NOT cd tricks unless needed
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/optiscaler-client" << 'EOF'
 #!/bin/bash
-APPDIR="/opt/optiscaler-client"
-cd "$APPDIR" || exit 1
-exec "$APPDIR/OptiscalerClient" "$@"
+exec /opt/optiscaler-client/OptiscalerClient "$@"
 EOF
 
-  # Desktop entry
   install -Dm644 optiscaler-client.desktop \
     "$pkgdir/usr/share/applications/optiscaler-client.desktop"
 
-  # Icon (robust fallback)
   if [ -f "$pkgdir/opt/optiscaler-client/assets/icon.png" ]; then
     install -Dm644 \
       "$pkgdir/opt/optiscaler-client/assets/icon.png" \
-      "$pkgdir/usr/share/pixmaps/optiscaler-client.png"
-  elif [ -f "$pkgdir/opt/optiscaler-client/icon.png" ]; then
-    install -Dm644 \
-      "$pkgdir/opt/optiscaler-client/icon.png" \
       "$pkgdir/usr/share/pixmaps/optiscaler-client.png"
   fi
 }
