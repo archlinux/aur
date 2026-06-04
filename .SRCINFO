@@ -1,0 +1,13 @@
+pkgbase = folio-cli-bin
+	pkgdesc = A modern, fast CLI application for the Hungarian Kreta e-diary system.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/CsPS0/folio-cli
+	arch = x86_64
+	license = MIT
+	provides = folio-cli
+	conflicts = folio-cli
+	source = folio-cli-linux-1.0.3::https://github.com/CsPS0/folio-cli/releases/download/v1.0.3/folio-cli-linux
+	sha256sums = a2fa26b22c19735fddbc802221b04f62cd462443df381be2df650000c213aadf
+
+pkgname = folio-cli-bin
