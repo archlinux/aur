@@ -2,19 +2,21 @@
 pkgname=steamdepotdownloadergui
 _pkgname=SteamDepotDownloaderGUI
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Downgrade Steam games to older versions with ease using DepotDownloader"
 arch=('x86_64')
 url="https://github.com/mmvanheusden/SteamDepotDownloaderGUI"
 license=('GPL-3.0-only')
 depends=('glibc' 'webkit2gtk-4.1' 'libgcc' 'gtk3' 'cairo' 'libsoup3' 'bzip2' 'openssl' 'gdk-pixbuf2' 'hicolor-icon-theme' 'glib2' 'pango'
 	 'bash')
-makedepends=('cargo' 'pnpm')
+makedepends=('cargo' 'pnpm' 'cargo-tauri')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9605010e33a37ea965e5e5e0c271b4b283a58f22492c5bafb01b72e03af3daee')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
+	pnpm c --location project set store-dir "${srcdir}/pnpm-store" #don't put pnpm files in user's home
+	pnpm c --location project set cacheDir "${srcdir}/pnpm-cache"
 	pnpm i
 	export RUSTUP_TOOLCHAIN=stable
 	cd "$srcdir/$_pkgname-$pkgver/src-tauri"
@@ -25,7 +27,7 @@ build() {
 	cd "$srcdir/$_pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CFLAGS="$CFLAGS -ffat-lto-objects"
-	pnpm tauri build -b deb -t "$(rustc -vV | sed -n 's/host: //p')"
+	cargo tauri build -b deb -t "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 package() {
