@@ -1,0 +1,3 @@
+[gitmsg]
+source = "npm"
+npm = "@razakadam74/gitmsg"

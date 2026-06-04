@@ -1,0 +1,20 @@
+pkgbase = gitmsg
+	pkgdesc = Fast, offline, deterministic Conventional Commit message generator. No LLM, no API key, no network.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/lance0/punt
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = gitmsg
+	noextract = gitmsg-0.5.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = gitmsg-0.5.0.tgz::https://registry.npmjs.org/@razakadam74/gitmsg/-/gitmsg-0.5.0.tgz
+	b2sums = fd202e3f179ec5bb7a545f0836fa6ef321e90ecc3529a007456f51cfd9db72c6518346787d20aa8a6de97851334436fe64db7c0f86c801e71b59c80e87c0f832
+
+pkgname = gitmsg
