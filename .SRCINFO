@@ -1,0 +1,17 @@
+pkgbase = mesen-ce
+	pkgdesc = Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/nesdev-org/MesenCE
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = dotnet-sdk-8.0
+	depends = sdl2
+	depends = libevdev
+	replaces = mesen
+	options = lto
+	options = !strip
+	source = mesen-ce-2.2.0.tar.gz::https://github.com/nesdev-org/MesenCE/archive/refs/tags/2.2.0.tar.gz
+	sha256sums = 3308832fc62a51d91e878f568657135753b094fd27afb9193157ec642c5b45a9
+
+pkgname = mesen-ce
