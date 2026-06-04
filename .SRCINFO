@@ -1,6 +1,6 @@
 pkgbase = radicle-explorer-git
 	pkgdesc = open source, peer-to-peer code collaboration stack built on Git
-	pkgver = 0.24.0.r12.g4eae95ab4
+	pkgver = 0.25.0.r43.gdded3703e
 	pkgrel = 1
 	url = https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z4V1sjrXqjvFdnCUbxPFqd5p4DtH5
 	arch = x86_64
