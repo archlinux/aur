@@ -1,0 +1,19 @@
+pkgbase = citadel-bin
+	pkgdesc = Citadel infrastructure control plane binary
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sovereign-society.org/Citadel/citadel
+	arch = x86_64
+	arch = aarch64
+	license = custom:LCL-1.0
+	depends = glibc
+	provides = citadel
+	conflicts = citadel
+	source = https://git.sovereign-society.org/Citadel/citadel/releases/download/v0.1.0/citadel_0.1.0_linux_amd64
+	source = https://git.sovereign-society.org/Citadel/citadel/releases/download/v0.1.0/citadel_0.1.0_linux_arm64
+	source = https://git.sovereign-society.org/Citadel/citadel/releases/download/v0.1.0/SHA256SUMS
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = citadel-bin
