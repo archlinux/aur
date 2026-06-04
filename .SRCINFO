@@ -1,7 +1,7 @@
 pkgbase = openvino-git
 	pkgdesc = A toolkit for optimizing and deploying deep learning models (git version)
 	pkgver = 2026.1.2.r366.gde348846562
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openvino.ai/
 	arch = x86_64
 	license = Apache-2.0
@@ -73,8 +73,8 @@ pkgbase = openvino-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 8bb27db4afdfa1a28ed1ddd7db7c523c8d9cecf39ee5027c7908d7ba79348fae
-	sha256sums = 07814fc576c6bced01c2d37e1f0d5c13f90ebb3c0e4fa404b3c5d367d83dc48c
+	sha256sums = fa1d3bc0b89fb36ef254b572958b806f76b37dac2faab53a148ba9db9cbffd0d
+	sha256sums = 74a11ff976c25cbd1fb231ee751411c0b60c228bc71da64d6d8c17fb7fa77767
 
 pkgname = openvino-git
 	depends = glibc

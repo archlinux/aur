@@ -7,7 +7,7 @@ pkgname=(
     'openvino-intel-npu-plugin-git'
     'python-openvino-git')
 pkgver=2026.1.2.r366.gde348846562
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for optimizing and deploying deep learning models (git version)'
 arch=('x86_64')
 url='https://docs.openvino.ai/'
@@ -80,8 +80,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '8bb27db4afdfa1a28ed1ddd7db7c523c8d9cecf39ee5027c7908d7ba79348fae'
-            '07814fc576c6bced01c2d37e1f0d5c13f90ebb3c0e4fa404b3c5d367d83dc48c')
+            'fa1d3bc0b89fb36ef254b572958b806f76b37dac2faab53a148ba9db9cbffd0d'
+            '74a11ff976c25cbd1fb231ee751411c0b60c228bc71da64d6d8c17fb7fa77767')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -141,6 +141,7 @@ build() {
     export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
     export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
     
+    export CXXFLAGS+=" -isystem${srcdir}/openvino/thirdparty/level_zero/level-zero/include"
     export CXXFLAGS+=" -isystem${srcdir}/openvino/thirdparty/ocl/clhpp_headers/include"
     
     # note: does not accept 'None' build type
