@@ -1,0 +1,16 @@
+pkgbase = sofia2
+	pkgdesc = Source Finding Application (SoFiA 2) for automated source finding in spectral-line data cubes
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://gitlab.com/SoFiA-Admin/SoFiA-2
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = make
+	depends = wcslib
+	depends = libgomp
+	depends = glibc
+	source = sofia2-2.7.0.tar.gz::https://gitlab.com/SoFiA-Admin/SoFiA-2/-/archive/v2.7.0/SoFiA-2-v2.7.0.tar.gz
+	sha256sums = 373fdbb9235490a6ad2e4906c5c10cec7da1f34f503de6dfc26466fcf28e2e7b
+
+pkgname = sofia2
