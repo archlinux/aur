@@ -1,13 +1,13 @@
 pkgbase = ampache
 	pkgdesc = PHP web based audio/video streaming application and file manager
-	pkgver = 7.9.6
+	pkgver = 7.9.7
 	pkgrel = 1
 	url = http://www.ampache.org/
 	install = ampache.install
 	arch = any
 	license = GPL
 	depends = mariadb>=10.0
-	depends = php>=8.4
+	depends = php>=8.5
 	optdepends = lame: all transcoding/downsampling
 	optdepends = vorbis-tools: all transcoding
 	optdepends = flac: flac transcoding/downsampling
@@ -16,10 +16,10 @@ pkgbase = ampache
 	conflicts = ampache-git
 	conflicts = ampache-development
 	options = !strip
-	source = https://github.com/ampache/ampache/releases/download/7.9.6/ampache-7.9.6_all_php8.4_squashed.zip
+	source = https://github.com/ampache/ampache/releases/download/7.9.7/ampache-7.9.7_all_php8.5_squashed.zip
 	source = nginx-example.conf
 	source = ampache.install
-	sha256sums = 3a7ee8bb40f17135c6ff2da74b6b6047331d8f3f307d5bf5818202377e509baa
+	sha256sums = 057e6628f8eb98a784039d0ff22f06cac4dcb7222b8e5a107cd216f847f1aeb4
 	sha256sums = d579f125fc85b6862dc2bd950b6aa3a4ffdad219323b8ee2c93282c8f223c3eb
 	sha256sums = bd9bad5e2825dbc203a7f8e478ba44657de559ce6fe4bd6d079089bbe47734db
 
