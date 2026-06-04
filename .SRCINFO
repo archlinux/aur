@@ -1,0 +1,18 @@
+pkgbase = screamer
+	pkgdesc = Fast Subnet Discovery
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ifritnoises/screamer
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-scapy
+	depends = python-colorama
+	source = screamer-0.1.1.tar.gz::https://github.com/ifritnoises/screamer/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 645861f4594bebd3dc9e3460c4778ded96458026417e289206ff5efd58a07bc7
+
+pkgname = screamer
