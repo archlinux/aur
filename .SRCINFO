@@ -1,0 +1,26 @@
+pkgbase = vendi-git
+	pkgdesc = vendiOS CLI, installer, and supporting libraries (git)
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/VendavalSC/vendiOS
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = util-linux
+	depends = parted
+	depends = dosfstools
+	depends = e2fsprogs
+	depends = btrfs-progs
+	depends = arch-install-scripts
+	depends = limine
+	depends = efibootmgr
+	depends = reflector
+	depends = fastfetch
+	provides = vendi
+	conflicts = vendi
+	source = vendi::git+https://github.com/VendavalSC/vendiOS.git
+	sha256sums = SKIP
+
+pkgname = vendi-git
