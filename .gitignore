@@ -1,0 +1,22 @@
+# makepkg build directories
+/src/
+/pkg/
+
+# Downloaded AppImage source
+/*.AppImage
+
+# Built packages
+/*.pkg.tar
+/*.pkg.tar.*
+/*.src.tar.gz
+/*.src.tar.zst
+
+# makepkg logs / signatures
+/*.log
+/*.log.*
+/*.sig
+
+# Keep AUR files tracked
+!.SRCINFO
+!PKGBUILD
+!.gitignore
