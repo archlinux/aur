@@ -1,5 +1,5 @@
 [agentsview-bin]
 source = "github"
-github = "wesm/agentsview"
+github = "kenn-io/agentsview"
 use_latest_release = true
 prefix = "v"
