@@ -1,0 +1,2 @@
+* The main software is licensed unter 'MIT' license; see file 'LICENSE'.
+* The wrapper scripts '/usr/bin/gtfs-manager' and '/usr/bin/gtfs-planner' are licensed under GNU General Public License version 3.0 only, see file 'GPL-3.0-only.txt'.

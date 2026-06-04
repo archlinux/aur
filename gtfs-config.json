@@ -1,0 +1,9 @@
+{
+  "agencies": [
+    {
+      "path": "/var/cache/gtfs-data/feeds/germany_latest.zip"
+    }
+  ],
+  "downloadTimeout": 10000,
+  "sqlitePath": "/var/cache/gtfs-data/sqlite/germany_latest.gtfs.sqlite"
+}

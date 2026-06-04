@@ -1,0 +1,8 @@
+# URL to download the GTFS feed from
+feed_url: "https://download.gtfs.de/germany/free/latest.zip"
+
+# Local path to store the downloaded GTFS feed
+feed_path: "/var/cache/gtfs-data/feeds/germany_latest.zip"
+
+# Path to the SQLite database
+database_path: "/var/cache/gtfs-data/sqlite/germany_latest.gtfs.sqlite"

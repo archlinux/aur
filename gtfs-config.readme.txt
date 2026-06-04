@@ -1,0 +1,17 @@
+* The '/etc/gtfs-planner/gtfs-config.yaml' is the config file expected by 'bus-planning' and 'gtfs-manager', and created from the template at 'https://github.com/klaustopher/gtfs-planner/blob/main/gtfs-config.yaml'.
+
+* The '/etc/gtfs-planner/gtfs-config.json' is the config file expected by 'gtfs-import', and created from the template at 'https://github.com/BlinkTagInc/node-gtfs/blob/master/config-sample.json' or 'https://github.com/BlinkTagInc/node-gtfs/blob/master/config-sample-full.json'.
+
+  IMPORTANT: Both config files should set the same values!
+
+Reason for the doubled config:
+
+Upstream's 'gtfs-manager' would call on import 'upx gtfs-import' (provided with some wrapped config or so), which in turn would download some local node modules, etc. pp., and is not suitable for system-wide installation. See https://github.com/klaustopher/gtfs-planner/issues/14.
+
+So a wrapper, '/usr/bin/gtfs-manager' is created, which on 'import' action would directly call 'gtfs-import' from the 'nodejs-gtfs' package (dependency), and it needs a JSON config and not a YAML config.
+This is a dirty workaround, but that was the way to make it functioning.
+
+Also upstream's 'bus-planning' is wrapped in '/usr/bin/gtfs-planner', because it is hardcoded to search for config file in './gtfs-config.yaml' to read out where the GTFS data is stored. So the wrapper does 'cd' into the containing directory first.
+
+
+Those config files here can be used system-wide, but you can also use your own by specifying the '--config <configfile>' argument to the wrappers.
