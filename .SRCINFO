@@ -1,20 +1,20 @@
 pkgbase = liveplay-bin
 	pkgdesc = A free, open-source audio playback system designed for live sound operators who need reliable, flexible cue management.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.0.8
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://tdoukinitsas.github.io/liveplay/
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = asar
-	depends = electron28
+	depends = electron42
 	depends = ffmpeg
-	provides = liveplay=2.0.8
+	provides = liveplay=2.1.1
 	conflicts = liveplay
 	options = !emptydirs
-	source = liveplay-2.0.8.rpm::https://github.com/tdoukinitsas/liveplay/releases/download/v2.0.8/liveplay-2.0.8.x86_64.rpm
-	source = LICENSE-2.0.8.txt::https://raw.githubusercontent.com/tdoukinitsas/liveplay/v2.0.8/LICENCE.txt
+	source = liveplay-2.1.1.rpm::https://github.com/tdoukinitsas/liveplay/releases/download/v2.1.1/liveplay-2.1.1.x86_64.rpm
+	source = LICENSE-2.1.1.txt::https://raw.githubusercontent.com/tdoukinitsas/liveplay/v2.1.1/LICENCE.txt
 	source = liveplay.sh
-	sha256sums = c764739dcd4dc34c7b592bba33e029375e661d3f6c857ba27b49fad27ac376ed
+	sha256sums = d159f222566f5805faa9d9c18afcdfc4dba5c2615ea04a2028d7ffce7dcc2f8b
 	sha256sums = 20b067f86de375aae6db0f283ab2e65de24d537733b89bd58432c101259d84cf
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 

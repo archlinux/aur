@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=liveplay-bin
 _pkgname=LivePlay
-pkgver=2.0.8
-_electronversion=28
+pkgver=2.1.1
+_electronversion=42
 pkgrel=1
 pkgdesc="A free, open-source audio playback system designed for live sound operators who need reliable, flexible cue management.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/tdoukinitsas/liveplay/v${pkgver}/LICENCE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c764739dcd4dc34c7b592bba33e029375e661d3f6c857ba27b49fad27ac376ed'
+sha256sums=('d159f222566f5805faa9d9c18afcdfc4dba5c2615ea04a2028d7ffce7dcc2f8b'
             '20b067f86de375aae6db0f283ab2e65de24d537733b89bd58432c101259d84cf'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
@@ -72,7 +72,12 @@ package() {
 	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+    done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
