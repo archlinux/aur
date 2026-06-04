@@ -3,8 +3,8 @@
 # Contributor: Marcin Mielniczuk <marmistrz dot dev at zoho dot eu>
 
 pkgname=wasi-sdk-bin
-pkgver=32.0
-pkgrel=2
+pkgver=33.0
+pkgrel=1
 pkgdesc="WASI-enabled WebAssembly C/C++ toolchain"
 arch=('x86_64')
 url="https://github.com/WebAssembly/${pkgname%%-bin}"
@@ -13,7 +13,7 @@ options=(staticlibs !strip)
 source=(
     "https://github.com/WebAssembly/${pkgname%%-bin}/releases/download/${pkgname%%-bin}-${pkgver%%.*}/${pkgname%%-bin}-${pkgver}-x86_64-linux.tar.gz"
 )
-b2sums=('62b83e2db70b24361962b392551c604b21c59535b8d34a5e652447d7b722b033327334f0e17381d28eaa6dcb31fb02aad9978c66b761fb592b6de502012aeb57')
+b2sums=('62e8075f7517f6396f417fba52a1c062fd22a9222b6e93916def184fe079a9233f77f25c813e65a22a58bb656f08461c2402cc0d3c1eb06ec6e1d64e3d269254')
 
 package() {
     install -d -m 755 "${pkgname%%-bin}-$pkgver-x86_64-linux" "$pkgdir/opt"
