@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-settings-git
-pkgver=26.02.0.r41.ga678b79
+pkgver=26.02.0.r42.gf3bbaba
 pkgrel=1
 pkgdesc="Settings application for Plasma Mobile"
 arch=('any')
