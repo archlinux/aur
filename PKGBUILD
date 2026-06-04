@@ -2,10 +2,10 @@
 pkgname=vega-cli-bin
 _pkgname=vega
 pkgver=1.2.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Amazon Vega CLI (KeplerVersionManager) — installs and manages the Vega SDK in \$HOME/vega"
 arch=('x86_64')
-url="https://developer.amazon.com/docs/vega/install-vega-sdk.html"
+url="https://developer.amazon.com/docs/vega/latest/install-vega-sdk.html"
 license=('custom:Amazon-PML')
 depends=('curl' 'tar' 'gzip' 'lz4' 'nodejs')
 optdepends=(

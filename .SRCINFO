@@ -1,8 +1,8 @@
 pkgbase = vega-cli-bin
 	pkgdesc = Amazon Vega CLI (KeplerVersionManager) — installs and manages the Vega SDK in $HOME/vega
 	pkgver = 1.2.22
-	pkgrel = 1
-	url = https://developer.amazon.com/docs/vega/install-vega-sdk.html
+	pkgrel = 2
+	url = https://developer.amazon.com/docs/vega/latest/install-vega-sdk.html
 	install = vega-cli-bin.install
 	arch = x86_64
 	license = custom:Amazon-PML
