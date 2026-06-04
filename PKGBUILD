@@ -4,7 +4,7 @@
 pkgbase=bigbashview
 pkgname=${pkgbase}-git
 _pkgver=3.8.1
-pkgver=3.8.1_r484.2ee7f3c
+pkgver=3.8.1_r486.a11017c
 pkgrel=1
 arch=('any')
 license=('GPL')
@@ -20,9 +20,8 @@ pkgver() {
 }
 
 package() {
-    depends=('bigbashview-framework' 'pyside6' 'python-six' 'webkit2gtk-4.1'
-            'python-pyqt6-webengine' 'ttf-lato' 'python-setproctitle' 'python-webpy'
-            'python-pyqt5-webengine')
+    depends=('pyside6' 'python-six' 'webkit2gtk-4.1' 'qt6-webengine' 'ttf-lato'
+                    'python-setproctitle' 'python-webpy' 'bbv-framework')
     provides=("${pkgbase}=${_pkgver}")
     conflicts=("${pkgbase}")
 
