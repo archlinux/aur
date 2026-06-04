@@ -3,7 +3,7 @@
 _pkgname="robrix"
 pkgname="${_pkgname}-git"
 pkgver=1.0.0.alpha.1.r2737.20260603.743db930
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-Platform Matrix client. Written in Rust, built on top of Matrix Rust SDK, using the Makepad UI toolkit and the Robius app dev framework."
 arch=(
   "aarch64"
@@ -31,8 +31,8 @@ replaces=()
 makedepends=(
   "git"
   "cargo"
-  'zopfli'   # To size-optimise PNG files.
-  'parallel' # To size-optimise PNG files.
+  #'zopfli'   # To size-optimise PNG files.
+  #'parallel' # To size-optimise PNG files.
 
   'alsa-lib'
   'openssl'
@@ -82,17 +82,14 @@ prepare() {
   export CARGO_HOME="${srcdir}/.cargo"
   export CARGO_TARGET_DIR=target
 
-  #printf '%s\n' " --> Size-optimising PNG files ..."
-  #find "${srcdir}/_pkgname" -name '*.png' -type f | parallel -j "`nproc`" zopflipng -m -y {} {}
-
   printf '%s\n' " --> Downloading rust dependencies ..."
   cargo fetch --locked --target host-tuple
 
   printf '%s\n' " --> Generating git log ..."
   git log . > git.log
 
-  printf '%s\n' " --> Size-optimising PNG files ..."
-  find "${srcdir}/${_pkgname}" -name '*.png' -type f | parallel -j "`nproc`" zopflipng -m -y {} {}
+  #printf '%s\n' " --> Size-optimising PNG files ..."
+  #find "${srcdir}/${_pkgname}" -name '*.png' -type f | parallel -j "`nproc`" zopflipng -m -y {} {}
 }
 
 
