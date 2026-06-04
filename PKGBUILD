@@ -23,7 +23,6 @@ source=(
   "tmpfiles.conf"
   "config.env"
 )
-noextract=("${pkgname}-${pkgver}.tar.gz")
 
 b2sums=('3acaafbdf319706718b9dc26207768a6c4c105bd95f6c5a72b000bf90e274cbf27990143d90c7d4509ac9e9ff592b7f6f3061cf283e604a3f855b1906a3a3f19'
         'cf7ae62ce26e77a0ef5498024e9bc6921034373586b82d16936eef5e0d8cceca367b8f7dbd959b09d12ba9bfb41b146eab0d3cd5ecc9f9088eaac33813084b81'
@@ -32,16 +31,25 @@ b2sums=('3acaafbdf319706718b9dc26207768a6c4c105bd95f6c5a72b000bf90e274cbf2799014
         '05b89792c16d415e380dd0b3a2cec04e12406646531f0ce9d8c7aeff29cdd56b452ee4411aa07f404d2511bb315cc619567eee328b39c8b78f93ed88ddd9c7d6'
         '808783618bb9f38e42adfa29e98610963bde12e67fc9ff17447650881433e6bd648b35f281ba96e59806676642253fb9e55c3a5bb4d18a19cfd18a3630faeb9b')
 
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  npm ci --omit=dev --cache "${srcdir}/npm-cache"
+}
+
 package() {
-  npm install --global --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tar.gz --cache npm-cache
+  install -dm755 "$pkgdir"/usr/lib/node_modules/$pkgname
+
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cp --recursive . "$pkgdir"/usr/lib/node_modules/$pkgname
 
   cp --recursive "$srcdir"/dist "$pkgdir"/usr/lib/node_modules/$pkgname/
 
-  install -vDm644 config.env "$pkgdir"/etc/uptime-kuma/config.env
+  install -vDm644 "$srcdir"/config.env "$pkgdir"/etc/uptime-kuma/config.env
 
   # systemd integration
-  install -vDm644 uptime-kuma.service \
+  install -vDm644 "$srcdir"/uptime-kuma.service \
      "$pkgdir"/usr/lib/systemd/system/$pkgname.service
-  install -vDm644 sysusers.conf "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
-  install -vDm644 tmpfiles.conf "$pkgdir"/usr/lib/tmpfiles.d/$pkgname.conf
+  install -vDm644 "$srcdir"/sysusers.conf "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
+  install -vDm644 "$srcdir"/tmpfiles.conf "$pkgdir"/usr/lib/tmpfiles.d/$pkgname.conf
 }
