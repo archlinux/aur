@@ -5,7 +5,7 @@
 # by CI (.github/workflows/aur-release.yml) on every release; the values below
 # are only a checked-in reference snapshot.
 pkgname=runner-run-bin
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='Universal project task runner (prebuilt binary)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -20,12 +20,15 @@ conflicts=('runner-run')
 # each arch downloads to a distinct file — no `name::` rename needed (and
 # none with a literal arch that namcap would flag).
 _url="https://github.com/kjanat/runner/releases/download/v$pkgver/runner-v$pkgver"
+# Arch-independent man pages (one archive for all arches).
+source=("$_url-man.tar.gz")
 source_x86_64=("$_url-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_url-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7h=("$_url-armv7-unknown-linux-gnueabihf.tar.gz")
-sha256sums_x86_64=('a4b65651fd2fdd7ab750b76935f715a682d0780508bbd7f527f7a29534f4ed08')
-sha256sums_aarch64=('146bf899a24aa8e3fc4b4fe6af07228062f0a9e62d4d502dedb2831a7fda28a0')
-sha256sums_armv7h=('8c64fcb2e8f66ee32b2dceab9d9c07ba0fe8f34f92c15f3a3c0a9741c25bed35')
+sha256sums=('539a16cc758bca45fba5886efbb7858db9f73946066d0f0910c75c7bcf3cc10c')
+sha256sums_x86_64=('5af3e275d07ebd6486b53bedf0804fc138d3f7e4e5a645508d2a18f9ae508cca')
+sha256sums_aarch64=('daf8c24a6965d1a8b0021377817ea13d72420098949918da584b702c156ad0da')
+sha256sums_armv7h=('e907e087d500332048d5ebb4c51ce52f24b3969c709b2889df6e74f068fffd73')
 
 package() {
 	# Archives are flat: runner, run, README.md, LICENSE at the root.
@@ -68,4 +71,7 @@ package() {
 	# PowerShell has no system autoload dir on Linux — pwsh users dot-source
 	# this file from their `$PROFILE`:  . /usr/share/runner/runner.ps1
 	install -Dm0644 "$g/runner.ps1" "$pkgdir/usr/share/runner/runner.ps1"
+
+	# Man pages from the -man.tar.gz source (flat *.1 in $srcdir). zipman gzips.
+	install -Dm0644 -t "$pkgdir/usr/share/man/man1/" "$srcdir"/*.1
 }
