@@ -1,7 +1,7 @@
 pkgbase = randrctl
 	pkgdesc = Lightweight profile based screen manager for X
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/koiuo/randrctl
 	install = randrctl.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = randrctl
 	makedepends = python-installer
 	makedepends = python-pbr
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python
 	depends = python-argcomplete
 	depends = python-yaml
