@@ -1,4 +1,5 @@
-# Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
+# Maintainer: Eldred Habert <arch@(my first name).fr>
+# Former maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister
 pkgver=0.14.0
 pkgrel=1
