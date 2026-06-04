@@ -1,6 +1,6 @@
 # Maintainer: toxdes <hi@toxdes.com>
 pkgname=promptr-git
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="GTK4 overlay prompt for opencode"
 arch=('x86_64' 'aarch64')
