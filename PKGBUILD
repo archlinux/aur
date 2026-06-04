@@ -55,14 +55,23 @@ check() {
     #        isolation dynaconf's CI runs them under (pytest-xdist); in a single
     #        process they contaminate later tests. The library itself is fully
     #        covered by the 480 that run here plus the smoke test below.
-    PYTHONPATH="$PWD:$PYTHONPATH" python -m pytest tests/ \
+    # test_cli (runs the `dynaconf` console script) and test_inspect (reads
+    # importlib.metadata.version) need the INSTALLED package, so run against the
+    # built wheel in a temp prefix with its bin/ on PATH and site/ on PYTHONPATH
+    # (the bare source tree only passes those if dynaconf is already installed).
+    local _site
+    rm -rf "$srcdir/_check"
+    python -m installer --destdir="$srcdir/_check" dist/*.whl
+    _site=$(python -c "import site; print(site.getsitepackages()[0])")
+    PYTHONPATH="$srcdir/_check$_site:$PYTHONPATH" PATH="$srcdir/_check/usr/bin:$PATH" \
+        python -m pytest tests/ \
         --ignore=tests/test_redis.py --ignore=tests/test_vault.py \
         --ignore=tests/test_django.py --ignore=tests/test_flask.py
 
     # 2) smoke test simulating real use: layered TOML + YAML config with an
     #    environment selected, a .env-style env-var override, and a validator,
     #    exactly as an app wires dynaconf at startup.
-    PYTHONPATH="$PWD:$PYTHONPATH" python - <<'PY'
+    PYTHONPATH="$srcdir/_check$_site:$PYTHONPATH" python - <<'PY'
 import os, tempfile
 os.chdir(tempfile.mkdtemp())
 open('settings.toml', 'w').write('[default]\nname="demo"\nport=8080\n[production]\nport=9090\n')
