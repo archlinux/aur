@@ -1,6 +1,6 @@
 pkgbase = late-sh-cli-bin
 	pkgdesc = Companion CLI for the Late.sh terminal clubhouse (prebuilt version)
-	pkgver = 0.28.8
+	pkgver = 0.29.10
 	pkgrel = 1
 	url = https://late.sh
 	arch = x86_64
