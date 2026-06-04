@@ -1,0 +1,36 @@
+post_install() {
+    echo ""
+    echo "=========================================="
+    echo " Fairy Kekkai Workshop 安装完成！"
+    echo "=========================================="
+    echo ""
+    echo "正在通过 pip 安装 Python 依赖..."
+    echo "(PySide6, PySide6-Fluent-Widgets, openai 等)"
+    echo ""
+
+    pip install --break-system-packages \
+        PySide6-Fluent-Widgets \
+        openai \
+        spark_ai_python \
+        fast_ssim 2>/dev/null \
+    || pip install \
+        PySide6-Fluent-Widgets \
+        openai \
+        spark_ai_python \
+        fast_ssim 2>/dev/null \
+    || echo "警告: pip 安装失败，请手动执行: sudo pip install PySide6-Fluent-Widgets openai spark_ai_python fast_ssim"
+
+    echo ""
+    echo "启动方式:"
+    echo "  命令行: fairy-kekkai-workshop"
+    echo "  桌面: 在应用程序菜单中找到 'Fairy Kekkai Workshop'"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "正在卸载 Fairy Kekkai Workshop..."
+}

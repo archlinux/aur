@@ -1,0 +1,23 @@
+pkgbase = fairy-kekkai-workshop
+	pkgdesc = 幻想结界工坊 - 视频字幕处理和管理工具 (Video subtitle processing & management tool)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Fairy-Oracle-Sanctuary/Fairy-Kekkai-Workshop
+	install = fairy-kekkai-workshop.install
+	arch = x86_64
+	license = MIT
+	depends = ffmpeg
+	depends = yt-dlp
+	depends = python
+	depends = python-pip
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-requests
+	depends = python-av
+	depends = python-imageio
+	depends = python-opencv
+	depends = python-srt
+	source = fairy-kekkai-workshop::git+https://github.com/Fairy-Oracle-Sanctuary/Fairy-Kekkai-Workshop.git#commit=6fc100f8dfd3b8db9130a2020e1d914ad792fcf1
+	sha256sums = SKIP
+
+pkgname = fairy-kekkai-workshop
