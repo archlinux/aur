@@ -1,0 +1,23 @@
+pkgbase = bmcctl-bin
+	pkgdesc = AMI MegaRAC CLI for ASRock Rack BMCs: Redfish + 1Password.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/j4y-w4lk3r/bmcctl
+	license = MIT
+	optdepends = ipmitool: required for `bmcctl fru` and `bmcctl mc` (everything else uses Redfish)
+	optdepends = 1password-cli: required for credential storage and retrieval (the `op` binary)
+	depends = glibc
+	conflicts = bmcctl
+	conflicts = bmcctl-git
+	provides = bmcctl
+	arch = aarch64
+	source_aarch64 = https://github.com/j4y-w4lk3r/bmcctl/releases/download/v0.1.0/bmcctl_0.1.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d8a0db90ce3444dd30a6e637029a29e530f733e1b14b2b650e1c0c49127ab845
+	arch = armv7h
+	source_armv7h = https://github.com/j4y-w4lk3r/bmcctl/releases/download/v0.1.0/bmcctl_0.1.0_Linux_armv7.tar.gz
+	sha256sums_armv7h = 07a17d0f4ad87a076f838b30bd552c17bd7304261093cdc4aadabbdba785022a
+	arch = x86_64
+	source_x86_64 = https://github.com/j4y-w4lk3r/bmcctl/releases/download/v0.1.0/bmcctl_0.1.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 754a1f0370433580077c765213e561390a84c464247bf56a6e56ca73d95f2717
+	
+pkgname = bmcctl-bin
