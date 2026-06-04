@@ -1,7 +1,7 @@
 pkgbase = fafarunner-bin
 	pkgdesc = Enjoy smooth gameplay, stunning graphics, and endless fun
-	pkgver = 3.0.0
-	pkgrel = 0
+	pkgver = 3.1.0
+	pkgrel = 393
 	url = https://github.com/fafarunner/fafarunner
 	arch = x86_64
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = fafarunner-bin
 	provides = fafarunner
 	conflicts = fafarunner
 	options = !debug
-	source_x86_64 = https://github.com/fafarunner/fafarunner/releases/download/v3.0.0/fafarunner-3.0.0-linux-amd64.deb
-	sha256sums_x86_64 = b09d2ba7a143de5d99abd578920a2888a5016870f658dae345a2e1de0be2d3f0
-	source_aarch64 = https://github.com/fafarunner/fafarunner/releases/download/v3.0.0/fafarunner-3.0.0-linux-aarch64.deb
-	sha256sums_aarch64 = bdc8fce156d5e9a6e3d908a2cbdeeb901f07e570ee28cbae07d75dcb73396ebe
+	source_x86_64 = https://github.com/fafarunner/fafarunner/releases/download/v3.1.0.393/fafarunner-3.1.0.393-linux-amd64.deb
+	sha256sums_x86_64 = 820cf2188223ec49d911c530249f8854a5fc8be581ff639d95df6f2dbe394a56
+	source_aarch64 = https://github.com/fafarunner/fafarunner/releases/download/v3.1.0.393/fafarunner-3.1.0.393-linux-aarch64.deb
+	sha256sums_aarch64 = 08140ab7188d7acbd60a5a58ea3b4b8087f2196e8877f8070c8a235923594f65
 
 pkgname = fafarunner-bin
