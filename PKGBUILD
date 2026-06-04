@@ -2,7 +2,7 @@
 # Maintainer: j4y <j4y_w4lk3r@pobox.com>
 
 pkgname='bmcctl-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='AMI MegaRAC CLI for ASRock Rack BMCs: Redfish + 1Password.'
 url='https://github.com/j4y-w4lk3r/bmcctl'
@@ -14,13 +14,13 @@ depends=('glibc')
 optdepends=('ipmitool: required for `bmcctl fru` and `bmcctl mc` (everything else uses Redfish)' '1password-cli: required for credential storage and retrieval (the `op` binary)')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/j4y-w4lk3r/bmcctl/releases/download/v${pkgver}/bmcctl_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('d8a0db90ce3444dd30a6e637029a29e530f733e1b14b2b650e1c0c49127ab845')
+sha256sums_aarch64=('82569ad1e3f8e1f2a76238c10fc7994d90ae6ccf940743200ea83b84407075de')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/j4y-w4lk3r/bmcctl/releases/download/v${pkgver}/bmcctl_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('07a17d0f4ad87a076f838b30bd552c17bd7304261093cdc4aadabbdba785022a')
+sha256sums_armv7h=('e2d8467e5b5dcc98bf7155da609e1d28b4d5d890138a88e24d0fcad372b9f403')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/j4y-w4lk3r/bmcctl/releases/download/v${pkgver}/bmcctl_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('754a1f0370433580077c765213e561390a84c464247bf56a6e56ca73d95f2717')
+sha256sums_x86_64=('aa5a95863fcf3b340e7d971d453f303ec874ea81e7602fcbb708daf095b34ea2')
 
 package() {
   install -Dm755 "./bmcctl" "${pkgdir}/usr/bin/bmcctl"

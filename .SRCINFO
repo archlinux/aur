@@ -1,6 +1,6 @@
 pkgbase = bmcctl-bin
 	pkgdesc = AMI MegaRAC CLI for ASRock Rack BMCs: Redfish + 1Password.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/j4y-w4lk3r/bmcctl
 	license = MIT
@@ -11,13 +11,13 @@ pkgbase = bmcctl-bin
 	conflicts = bmcctl-git
 	provides = bmcctl
 	arch = aarch64
-	source_aarch64 = https://github.com/j4y-w4lk3r/bmcctl/releases/download/v0.1.0/bmcctl_0.1.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = d8a0db90ce3444dd30a6e637029a29e530f733e1b14b2b650e1c0c49127ab845
+	source_aarch64 = https://github.com/j4y-w4lk3r/bmcctl/releases/download/v0.2.0/bmcctl_0.2.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 82569ad1e3f8e1f2a76238c10fc7994d90ae6ccf940743200ea83b84407075de
 	arch = armv7h
-	source_armv7h = https://github.com/j4y-w4lk3r/bmcctl/releases/download/v0.1.0/bmcctl_0.1.0_Linux_armv7.tar.gz
-	sha256sums_armv7h = 07a17d0f4ad87a076f838b30bd552c17bd7304261093cdc4aadabbdba785022a
+	source_armv7h = https://github.com/j4y-w4lk3r/bmcctl/releases/download/v0.2.0/bmcctl_0.2.0_Linux_armv7.tar.gz
+	sha256sums_armv7h = e2d8467e5b5dcc98bf7155da609e1d28b4d5d890138a88e24d0fcad372b9f403
 	arch = x86_64
-	source_x86_64 = https://github.com/j4y-w4lk3r/bmcctl/releases/download/v0.1.0/bmcctl_0.1.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 754a1f0370433580077c765213e561390a84c464247bf56a6e56ca73d95f2717
+	source_x86_64 = https://github.com/j4y-w4lk3r/bmcctl/releases/download/v0.2.0/bmcctl_0.2.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = aa5a95863fcf3b340e7d971d453f303ec874ea81e7602fcbb708daf095b34ea2
 	
 pkgname = bmcctl-bin
