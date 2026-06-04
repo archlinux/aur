@@ -1,0 +1,5 @@
+[qjump]
+source = "github"
+github = "jabbalaci/qjump"
+use_max_tag = true
+prefix = "v"
