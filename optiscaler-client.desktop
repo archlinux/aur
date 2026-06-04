@@ -6,3 +6,4 @@ Icon=optiscaler-client
 Terminal=false
 Type=Application
 Categories=Game;
+StartupNotify=true
