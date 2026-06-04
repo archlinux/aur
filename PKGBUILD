@@ -1,39 +1,35 @@
-# Maintainer: Jesco Topp <jesco.topp@gmail.com>
-pkgname=starnet2-bin
-pkgver=2.0.2
-pkgrel=1
+# Maintainer: Adam Mlady <adam.mlady@elevated.ovh>
+
+_pkgname="starnet2"
+pkgname="${_pkgname}-bin"
 pkgdesc="StarNet2 is the 2nd iteration of a neural network to remove stars from (nonlinear) astronomical images."
+pkgver=2.5.1
+pkgrel=1
+
 arch=("x86_64")
-url="https://www.starnetastro.com/"
+url="https://starnetastro.com/cli-tools/starnet/"
 license=('custom')
-groups=()
+provides=('starnet2-bin')
+conflicts=('starnet2-bin')
+
 depends=('bash')
-makedepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=(https://starnetastro.com/wp-content/uploads/2022/03/StarNetv2CLI_linux.zip)
-noextract=()
-md5sums=() #autofill using updpkgsums
-sha256sums=('504ce100ef08c39c0059d70a096075573e3cb3ec93d44015db6a60c014b76e96')
+
+source=("https://download.starnetastro.com/starnet2_linux_${pkgver}-0205_ORT_x64_cli.zip")
+sha256sums=("9330a1b118c45f96f26efd0e3e49cb3115091851847512cf27af24c880ee7ccd")
 
 package() {
-  cd "StarNetv2CLI_linux"
+  _srcdir="${srcdir}/starnet2_linux_${pkgver}-0205_ORT_x64_cli"
 
-  dest="$pkgdir/opt/${pkgname}"
+  # Install Licenses
+  install -Dm644 "${_srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/STARNET2_LICENSE.txt"
+  install -Dm644 "${_srcdir}/lib/"*.txt -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  install -Dm644 "${_srcdir}/lib/opencv-licenses/"* -t "${pkgdir}/usr/share/licenses/${_pkgname}/opencv-licenses/"
 
-  install -D -t "$dest" -m 644 *.pb *.so.? README.txt *.tif
-  install -D -t "$dest" -m 755 starnet++ run_starnet.sh
-  install -D -t "$pkgdir/usr/share/licenses/${pkgname}/LICENSE" -m 644 LICENSE
+  # Install Readme
+  install -Dm644 "${_srcdir}/README.txt" -t "${pkgdir}/usr/share/doc/${_pkgname}/"
 
-  # no symlink in /usr/bin because starnet++ script needs to be in the same folder as its libs
-  #mkdir "$pkgdir"/usr/bin/
-  #ln -s /opt/${pkgname}/starnet++ "$pkgdir"/usr/bin/starnet++
+  # Install Application
+  install -Dm755 "${_srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "${_srcdir}/StarNet2_weights.onnx" -t "${pkgdir}/usr/lib/${_pkgname}/"
+  install -Dm644 "${_srcdir}/lib/"*.so* -t "${pkgdir}/usr/lib/${_pkgname}/"
 }
-
-
