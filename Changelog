@@ -1,9 +1,26 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 5.1.0 ➙ 5.4.1
-              : 2026-05-31 ➙ 2026-06-03
+ Tags         : 5.2.0 ➙ 5.6.0
+              : 2026-06-01 ➙ 2026-06-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-06-04   : 5.6.0
+              - **5.6.0**
+            
+                * The loader entry plugin is now installed in /usr/lib/kernel/install.d.
+                  This allows administrators to over-ride in /etc/kernel/install.d/xxx.
+            
+                  i.e. /usr/lib/kernel/install.d/95-sd-boot-loaderentry-modify.install
+            
+                * Switch /etc/sd-boot/config to /etc/sd-boot/config.yaml
+                  Yaml config will be auto created from existing config.
+                  This adds a new dependency on *libyaml*.
+            
+                * Package dependencies updated.
+                * Some code tidy up. Simplify style used to check for nullptr.
+ 2026-06-03   ⋯
+              - update Changelog
 
  2026-06-03   : 5.4.1
               - **5.4.1**
@@ -35,23 +52,4 @@
                 * Shadow "install.con" for non-kernels now sets generator in addition to layout = bls.
                   Also fixes missing "newline" bug.
  2026-05-31   ⋯
-              - update Changelog
-
- 2026-05-31   : 5.1.0
-              - **5.1.0**
-            
-                * Avoid double "//" in efi tool shadow directory path name.
-                * Error messages to stderr instead of stdout.
-                * Code structure re-org.
-                * More code tidy ups.
-                * Add standalone tools (installed in /usr/bin):
-            
-                  * sd-boot-efi-tool-update <oper> <package-name>
-                  * sd-boot-kernel-update <oper> <package-name>
-            
-                  Where <oper> is add or remove or inspect (see man kernel-install).
-                  Note that <package-name> must be already installed via pacman.
-                * Improve way shadow "install.conf" is created. If file exists and is correct then
-                  dont write it again.
- 2026-05-30   ⋯
               - update Changelog

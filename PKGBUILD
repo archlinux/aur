@@ -10,27 +10,24 @@ pkgname='sd-boot'
 pkgdesc='Tools to install linux kernels via kernel-install from systemd'
 _gitname='sd-boot'
 
-pkgver="5.4.1"
+pkgver="5.6.0"
 pkgrel=1
 url="https://github.com/gene-git/sd-boot"
 
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 
-#install='sd-boot.install'
-
-# To build docs uncommont sphinx/texlive
 depends=(
-    bash
     dracut
     efifs
+    glibc
+    libyaml
     rsync
     systemd
-    glibc
-    util-linux-libs     # provides libblkid
     sbctl
     systemd
     systemd-ukify
+    util-linux-libs     # provides libblkid
 )
 optdepends=(
     'edk2-shell: efi-shell (installed into EFI partition'
@@ -38,16 +35,16 @@ optdepends=(
 )
 
 makedepends=(
-    git
     gcc
+    git
     meson
 )
 
 # clang provides clang-tidy (static source code analysis)
-# linux is used to test installing a kernel 
+# linux/edk2-shell are used to test installing a kernel/efi tool
 checkdepends=(
-    cppcheck
     clang
+    cppcheck
     valgrind
     linux
     edk2-shell
@@ -55,6 +52,7 @@ checkdepends=(
 
 backup=(
     etc/sd-boot/config
+    etc/sd-boot/config.yaml
     etc/sd-boot/kernel.packages
     etc/sd-boot/efi-tool.packages
     etc/sd-boot/edk2-shell.image
