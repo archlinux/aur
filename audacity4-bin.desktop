@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Audacity 4
+Comment=Record and edit audio files
+Exec=audacity4
+Icon=audacity
+Terminal=false
+Categories=AudioVideo;Audio;AudioVideoEditing;
