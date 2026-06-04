@@ -4,7 +4,7 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=GDevelop
-pkgver=5.6.270
+pkgver=5.6.271
 _electronversion=32
 pkgrel=1
 pkgdesc="A full-featured, no-code, open-source game development software.(Prebuilt version.Use system-wide electron)"
@@ -32,8 +32,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-5-${pkgver}.AppImage")
 sha256sums=('0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('31a8efa7d81fecd303d54994c29bb23087c7d5c6ff83dc6be88caa396d82a8dd')
-sha256sums_x86_64=('de43c56e361c3338288d2edf8986f9d52264b2d096005e8b170d0217d4afa816')
+sha256sums_aarch64=('c49a23b120272208f02e1b84225a49a157e7ff8dd841c2df1443d371b4506bf5')
+sha256sums_x86_64=('ef8c64f0a3294ff4ab5486aeb85e7b3d72a41f5d2105894122dda12da9e58059')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
