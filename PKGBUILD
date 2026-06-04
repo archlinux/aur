@@ -2,7 +2,7 @@
 
 pkgname=playback-appimage
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Playback software for Epilogue Operator devices"
 arch=('x86_64')
 url="https://www.epilogue.co"
@@ -28,11 +28,11 @@ _install_path="/opt/appimages/$_filename"
 source=(
   "$_appimage::https://releases.epilogue.co/desktop/playback/$pkgver/release/linux/$_filename"
   "playback.sh"
-  "60-gb-operator.rules"
+  "60-epilogue-operator.rules"
 )
 sha512sums=('7180507f561916fc4596516d211da10eeacb62a8b9947eb0538c70d118f4c267fedef15787ef41eb9c262861a14ea21cd79cf36be894ce1d40009c00301cb945'
             '2ea22a28795914314d73b52fe94d0e7875b54ae3a1240c62f408c33e26f1a06099f273a7af43e439fe6259e7a4270d18f944f5aedfc5295bd1de4f3223ef4dad'
-            'af2c3f33e02de571bebaa4ec9097922f78e9c5d27d7c308ae15a3387dfad39029b229e998ef2ad0759bfe40774121b690e6702082cbc544a29a9f10616bc282d')
+            '70eb653fd613331c4c94b8e4175751b6d00abd534ff39e758a98945129a72d47fb4a7575a430099c1b36b86a29646b74a87bd158c6c14348664405756e84eec5')
 
 prepare () {
   rm -rf ./squashfs-root
@@ -58,7 +58,7 @@ package() {
   install -Dm755 "playback.sh" "$pkgdir/usr/bin/playback"
 
   # Install udev rules for GB Operator device access
-  install -Dm644 "60-gb-operator.rules" "$pkgdir/usr/lib/udev/rules.d/60-gb-operator.rules"
+  install -Dm644 "60-epilogue-operator.rules" "$pkgdir/usr/lib/udev/rules.d/60-epilogue-operator.rules"
 
   # Install license
   install -Dm644 "squashfs-root/usr/share/licenses/playback/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
