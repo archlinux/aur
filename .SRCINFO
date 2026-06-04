@@ -1,6 +1,6 @@
 pkgbase = labymodlauncher-bin
 	pkgdesc = Laby Launcher (official)
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://www.laby.net/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = labymodlauncher-bin
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
-	source = labymodlauncher-bin-3.0.1.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-3.0.1.AppImage
-	sha256sums = 138c93b2eae7a26b85ef6cf27b4e9871dd2a5e0e2e4c78fb63e116ea599a9e80
+	source = labymodlauncher-bin-3.0.2.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-3.0.2.AppImage
+	sha256sums = e7d68b2e3443c6a832096c0715b60aecfca5d65fae7fa9e7889f339cd84c44cd
 
 pkgname = labymodlauncher-bin
