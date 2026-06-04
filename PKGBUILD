@@ -2,9 +2,9 @@
 
 _name=igua
 pkgname=${_name}
-pkgver=0.2.0
+pkgver=0.2.1
 _version=${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Iterative Gene clUster Analysis, a high-throughput method for gene cluster family identification."
 url="https://github.com/zellerlab/IGUA"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ depends=('python' 'python-scipy' 'python-gb-io' 'python-rich' 'python-numpy' 'py
 makedepends=('python-maturin' 'python-build' 'python-installer')
 optdepends=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${_version}.tar.gz")
-sha256sums=(36195121e30bbd7620c3b7f568d51000dc30bc80eab6d59ff4cbbfc0e34b05fb)
+sha256sums=(1c60f629624d0c67b7dbd14d0b38ed31dbec29729657270e6faf18a6328af0f5)
 
 build() {
     cd "${srcdir}/${_name}-${_version}"
@@ -23,7 +23,7 @@ build() {
 check() {
     local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    whl="${srcdir}/${_name}-${_version}/dist/${_name}-${_version}-cp38-abi3-linux_${machine}.whl"
+    whl="${srcdir}/${_name}-${_version}/dist/${_name}-${_version}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
 
     rm -rf "${srcdir}/env"
     python -m venv --symlinks --system-site-packages "${srcdir}/env"
@@ -38,7 +38,7 @@ check() {
 package() {
     local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    whl="${srcdir}/${_name}-${_version}/dist/${_name}-${_version}-cp38-abi3-linux_${machine}.whl"
+    whl="${srcdir}/${_name}-${_version}/dist/${_name}-${_version}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
 
     python -m installer --prefix="${pkgdir}/usr" "$whl"
     install -Dm644  ${srcdir}/${_name}-${_version}/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

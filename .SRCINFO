@@ -1,7 +1,7 @@
 pkgbase = igua
 	pkgdesc = Iterative Gene clUster Analysis, a high-throughput method for gene cluster family identification.
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/zellerlab/IGUA
 	arch = i686
 	arch = pentium4
@@ -23,7 +23,7 @@ pkgbase = igua
 	depends = python-anndata
 	depends = python-biopython
 	depends = mmseqs2
-	source = https://files.pythonhosted.org/packages/source/i/igua/igua-0.2.0.tar.gz
-	sha256sums = 36195121e30bbd7620c3b7f568d51000dc30bc80eab6d59ff4cbbfc0e34b05fb
+	source = https://files.pythonhosted.org/packages/source/i/igua/igua-0.2.1.tar.gz
+	sha256sums = 1c60f629624d0c67b7dbd14d0b38ed31dbec29729657270e6faf18a6328af0f5
 
 pkgname = igua
