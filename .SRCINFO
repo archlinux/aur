@@ -1,15 +1,12 @@
 pkgbase = goflux
 	pkgdesc = Miniflux desktop reader
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/slatkin/goflux
 	arch = x86_64
 	license = custom
-	makedepends = go
-	makedepends = npm
-	makedepends = imagemagick
 	depends = webkit2gtk-4.1
-	source = goflux-0.1.0.tar.gz::https://github.com/slatkin/goflux/archive/v0.1.0.tar.gz
-	sha256sums = c929b0063d8af00217555ab70fba8208dda53ffbff1c4a5363922a61db5a692e
+	source = goflux-0.1.1-linux-x86_64.tar.gz::https://github.com/slatkin/goflux/releases/download/v0.1.1/goflux-0.1.1-linux-x86_64.tar.gz
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
 
 pkgname = goflux
