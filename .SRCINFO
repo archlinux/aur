@@ -1,6 +1,6 @@
 pkgbase = avalonia86
 	pkgdesc = A cross-platform configuration manager for the 86Box emulator
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/notBald/Avalonia86
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = avalonia86
 	makedepends = gendesk
 	depends = dotnet-runtime
 	optdepends = 86box>=2.0: emulator used with this configuration manager
-	source = avalonia86-1.5.0.tar.gz::https://github.com/notBald/Avalonia86/archive/refs/tags/v1.5.0.tar.gz
-	md5sums = 20dd20b39247caf9e776727c432dedf7
+	source = avalonia86-1.5.1.tar.gz::https://github.com/notBald/Avalonia86/archive/refs/tags/v1.5.1.tar.gz
+	md5sums = 0715b92db745ae15b704c7ceb6a67f58
 
 pkgname = avalonia86
