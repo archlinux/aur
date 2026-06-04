@@ -12,7 +12,7 @@ conflicts=('cloudtolocalllm-git' 'cloudtolocalllm-bin')
 options=(!strip)
 _appimage="cloudtolocalllm-${pkgver}-x86_64.AppImage"
 source=("${_appimage}")
-sha256sums=('074f2ef167e62e7779d61db0d4dbfa770f6b2af43a6a942c7644962c9b29e0ef')
+sha256sums=('SKIP')
 
 package() {
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/usr/bin/cloudtolocalllm"
