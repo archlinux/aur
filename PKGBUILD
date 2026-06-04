@@ -90,8 +90,8 @@ sha256sums=('1b6f680ba816a7085adb29b5141212eacccc02659545db2fb59452c470fad546'
 
 prepare() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
-	patch -p1 < ${srcdir}/postgres-path.patch
-	patch -p1 < ${srcdir}/sh-serverhome.patch
+	patch -p1 < "${srcdir}/postgres-path.patch"
+	patch -p1 < "${srcdir}/sh-serverhome.patch"
 	rm cli/LICENSE  # deploy would've picked this up, duplicating standard /usr/share/licenses/spdx/AGPL-3.0-only
 
 	# Patches to avoid calling npm in package scripts
@@ -99,7 +99,7 @@ prepare() {
 	pnpm install --filter immich --frozen-lockfile --offline  # sometimes pnpm fetch doesn't give us the node_modules folder
 	sharp_dir="$(pnpm patch sharp | sed -n '3p' | sed 's/^[[:space:]]*//')"
 	cd "$sharp_dir"
-	patch -p1 < ${srcdir}/sharp.patch
+	patch -p1 < "${srcdir}/sharp.patch"
 	cd "$srcdir/${pkgbase}-${pkgver}"
 	pnpm patch-commit "$sharp_dir"  # Second, this runs the scripts
 
