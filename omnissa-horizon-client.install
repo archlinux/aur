@@ -9,23 +9,16 @@ EULA() {
 	EOM
 }
 
-hosts_add() {
-  if ! grep -q 'view-localhost' /etc/hosts; then
-    echo '127.0.0.2 view-localhost # added by omnissa-horizon-client' >> /etc/hosts
-  fi
-}
-
 hosts_remove() {
   sed -i '/view-localhost/d' /etc/hosts
 }
 
 post_install() {
   EULA
-  hosts_add
 }
 
 post_upgrade() {
-  hosts_add
+  hosts_remove
 }
 
 post_remove() {

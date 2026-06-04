@@ -1,0 +1,7 @@
+{
+  "key" : {
+    "type" : 1,
+    "name" : "view-localhost"
+  },
+  "address" : [ 127, 0, 0, 2 ]
+}

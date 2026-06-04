@@ -24,10 +24,12 @@ url='https://customerconnect.omnissa.com/downloads/info/slug/virtual_desktop_and
 license=('custom')
 source=("${pkgbase}-${_long_ver}.tar.gz::https://download3.omnissa.com/software/${_cart}/Omnissa-Horizon-Client-Linux-${_long_ver}.tar.gz"
         'horizon-icon.svg'
-        'horizon-usb.service')
+        'horizon-usb.service'
+        'view-localhost.rr')
 sha256sums=('acd30479cec91ee693bbd685880fa3834f3678f8dd336511bb9d732f134f71d7'
             'ef412bcc6d3e3d45e161861a8fb2abebc1403e7e2d84c52a16552d9091efd5b0'
-            '2e9ecddd7cd4d5f65c794065898d3b6ac8e6dd97d05114f7f3775da82263c6d2')
+            '2e9ecddd7cd4d5f65c794065898d3b6ac8e6dd97d05114f7f3775da82263c6d2'
+            'b7b1153892e512ff6c0436b11d8a79c96f5f4ce86d788432f82ec510483c8a27')
 
 prepare() {
 	cd "${srcdir}/Omnissa-Horizon-Client-Linux-${_long_ver}/x64/"
@@ -137,6 +139,10 @@ package_omnissa-horizon-client() {
 		install -D -m0644 "${srcdir}/icons/horizon-client-${SIZE}.png" \
 			"${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/horizon-client.png"
 	done
+
+	# dns name view-localhost
+	install -D -m0644 "${srcdir}/view-localhost.rr" \
+		"${pkgdir}/usr/lib/systemd/resolve/static.d/view-localhost.rr"
 }
 
 package_omnissa-horizon-client-next() {
