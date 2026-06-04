@@ -8,7 +8,7 @@ _pkgbase='logisim-evolution'
 pkgbase="${_pkgbase}-git"
 pkgname="${_pkgbase}-git"
 pkgver=4.1.0+135.r6037.20260526.6dbb73b33
-pkgrel=1
+pkgrel=2
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
 pkgdesc='An educational tool for designing and simulating digital logic circuits.'
@@ -25,8 +25,8 @@ makedepends=(
   'gradle>=8.5'
   # 'java-environment>=21'  # Versioned dependency seems not to be honoured here; `yay` wants to install jdk-openjdk version 17 which gives 'gradle' error.
   'jdk-openjdk>=21'
-  'zopfli' # To size-reduce PNG files
-  'parallel' # To size-reduce PNG files
+  #'zopfli' # To size-reduce PNG files.
+  #'parallel' # To size-reduce PNG files.
 )
 
 source=(
@@ -70,8 +70,8 @@ build() {
   printf '%s\n' " --> Building with 'gradle shadowJar' ..."
   gradle --gradle-user-home "${srcdir}/.gradle" --build-cache --no-configuration-cache --no-daemon --console verbose shadowJar
 
-  printf '%s\n' " --> Size-optimising PNG files ..."
-  printf '%s\n' build/resources/main/resources/logisim/img/*.png | parallel -j "`nproc`" zopflipng -m -y {} {}
+  #printf '%s\n' " --> Size-optimising PNG files ..."
+  #printf '%s\n' build/resources/main/resources/logisim/img/*.png | parallel -j "`nproc`" zopflipng -m -y {} {}
 }
 
 package() {
