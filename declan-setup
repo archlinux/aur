@@ -22,7 +22,8 @@ Common bootstrap options:
                    Skip keep-list package pruning.
   --remove-packages
                    Remove packages listed in packages/remove.txt.
-  --no-theme       Skip Omarchy theme selection.
+  --apply-theme    Re-run Omarchy theme selection after restoring files.
+  --no-theme       Skip Omarchy theme selection. This is the default.
 EOF
 }
 
