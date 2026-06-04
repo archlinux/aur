@@ -1,6 +1,6 @@
 pkgname=proton-vpn-qt-app
-pkgver=1.9.0
-pkgrel=3
+pkgver=1.9.1
+pkgrel=1
 pkgdesc="A Qt GUI frontend for the ProtonVPN CLI"
 arch=('x86_64')
 url="https://github.com/wheat32/proton-vpn-qt-app"
@@ -12,7 +12,6 @@ depends=(
 )
 optdepends=(
     'curl: display public IP address'
-    'systemd: have the app auto-start'
     'libnatpmp: enables port forwarding'
 )
 makedepends=(
