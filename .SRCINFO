@@ -1,0 +1,10 @@
+pkgbase = oa-bin
+	pkgdesc = OA - High-performance C++ library for ML, audio, and compute (pre-built binaries)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/empyrealm/oa
+	arch = x86_64
+	license = MIT
+	source = https://github.com/empyrealm/oa/releases/download/v0.0.1/oa-0.0.1-linux-x86_64.tar.gz
+
+pkgname = oa-bin
