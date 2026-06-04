@@ -1,24 +1,25 @@
 # Maintainer: DeepChirp <deepchirp@archlinuxcn.org>
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
+
 pkgname=losslesscut
 _pkgname=LosslessCut
-_appname="no.mifi.${pkgname}"
-_reponame=lossless-cut
-pkgver=3.68.0
+_appid="no.mifi.losslesscut"
+pkgver=3.69.0
 _electronversion=38
-pkgrel=8
+pkgrel=1
 pkgdesc="The swiss army knife of lossless video/audio editing"
 arch=('x86_64')
-url="https://github.com/mifi/${_reponame}"
+url="https://losslesscut.app/"
 license=('GPL-2.0-only')
 depends=("electron${_electronversion}" 'ffmpeg' 'bash' 'hicolor-icon-theme')
-makedepends=('nodejs-lts-jod' 'npm' 'yarn' 'node-gyp' 'librsvg')
+makedepends=('git' 'nodejs-lts-jod' 'npm' 'yarn' 'node-gyp' 'librsvg')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}::git+https://github.com/mifi/lossless-cut.git#tag=v${pkgver}?signed"
     "fix-wayland-icon.patch"
     "${pkgname}.sh"
 )
-sha256sums=('b4b2e0d4ba06de0243dfa3be5ec964b28f6c694c412487143b9c68d54b94fbb0'
+validpgpkeys=('1DB3130F9B5EEF992F2742C125AB36E3E81CBC26') # Mikael Finstad <finstaden@gmail.com>
+sha256sums=('8c0d0443f98eecdaea64f3002acc86cc57f1d5bec2f30a7066994ddc6e38c12a'
             '305ce3d79e36b8a13fe03d8e64caa05270f6f0b81ae5cb7ed0ebd2b56d7c0e95'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 
@@ -31,7 +32,7 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname}.sh"
 
-    cd "${srcdir}/${_reponame}-${pkgver}"
+    cd "${pkgname}"
 
     # Fix the window title bar icon
     patch -Np1 -i "${srcdir}/fix-wayland-icon.patch"
@@ -45,9 +46,8 @@ prepare() {
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -e "
         s/\/app\/bin\/run.sh/${pkgname}/g;
-        s/${_appname}/${pkgname}/g
-    " -i "${_appname}.desktop"
-    sed -i "s/${_appname}/${pkgname}/g" "${_appname}.appdata.xml"
+        s/${_appid}/${pkgname}/g
+    " -i "${_appid}.desktop"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
 
     yarn config set --home enableTelemetry 0
@@ -55,7 +55,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${_reponame}-${pkgver}"
+    cd "${pkgname}"
 
     export npm_config_cache="$srcdir/npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -147,7 +147,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${_reponame}-${pkgver}"
+    cd "${pkgname}"
 
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
@@ -163,6 +163,6 @@ package() {
             "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}.png"
     done
 
-    install -Dm644 "${_appname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${_appname}.appdata.xml" -t "${pkgdir}/usr/share/metainfo"
+    install -Dm644 "${_appid}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_appid}.appdata.xml" -t "${pkgdir}/usr/share/metainfo"
 }
