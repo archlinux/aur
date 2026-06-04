@@ -1,0 +1,20 @@
+pkgbase = phnx-bin
+	pkgdesc = PHP + Nginx local development environment manager
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/protibimbok/phnx
+	license = MIT
+	optdepends = composer: PHP dependency manager
+	optdepends = wp-cli: WordPress CLI
+	depends = nginx
+	depends = php-fpm
+	conflicts = phnx
+	provides = phnx
+	arch = aarch64
+	source_aarch64 = https://github.com/protibimbok/phnx/releases/download/v1.0.0/phnx_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3ab6ed85f1a29d37a5ff4388fe6b41dc60cd6e1c54de46e0a61d1475972062ec
+	arch = x86_64
+	source_x86_64 = https://github.com/protibimbok/phnx/releases/download/v1.0.0/phnx_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3e3b9d12b8910b520d9c32238cdf7fee444e7fbdaa88bc45812c0cb183fe367f
+	
+pkgname = phnx-bin
