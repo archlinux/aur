@@ -1,9 +1,9 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl
-pkgver=1.0.4
+pkgver=1.0.5
 _gittag="v${pkgver}"
 _gitprefix="${pkgname}-${pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="A simple systemd service to better control Framework Laptop's fan(s)"
 arch=(any)
 url="https://github.com/TamtamHero/${pkgname}"
@@ -23,8 +23,8 @@ source=(
   "${_gitprefix}.tar.gz::https://github.com/TamtamHero/fw-fanctrl/archive/refs/tags/${_gittag}.tar.gz"
 )
 noextract=()
-sha512sums=('ed33709cb7d12e6b89aebbf38b2a2bbcdf4ed23f5f419c4b79eade9b14fecdf1ad9c29cdaabc5e094381cfaf8bb91c8093602a36ae4f927a3568f37a86823b4f')
-b2sums=('8628340b752f90214f8903103beed0e411efb67e7830625c130f8fd92e0be86da9cd2c0d3be732fc99dd1c04eb9754e0a0440bff7409fb6b8307a0e7fd813ba1')
+sha512sums=('6ad9e83e5737b0ad4e8e6d67c00151c4a0d3e889d7aa2975ffd92e46881976529279dc01084b5b3299561e5ed8b25abc02f5051f26a558b0ed317ada038d5af1')
+b2sums=('54373fc9c01a810d6acb69920789ba551bd2797650f9ed030ab206f06ba26f647b0a111e6d4eb617e18fa47724db1e47149442ade60016911753ae0267f05ab0')
 
 build() {
 	cd "${srcdir}/${_gitprefix}"
