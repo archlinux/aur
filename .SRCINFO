@@ -1,0 +1,22 @@
+pkgbase = prosa
+	pkgdesc = Editor de texto moderno, open source e em modo escuro — suíte W3TI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/britors/Prosa
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = nss
+	depends = libnotify
+	depends = libxtst
+	depends = libxss
+	depends = libsecret
+	depends = at-spi2-core
+	optdepends = xdg-utils: abrir links externos
+	noextract = prosa-0.1.0.deb
+	options = !strip
+	options = !debug
+	source = prosa-0.1.0.deb::https://github.com/britors/Prosa/releases/download/v0.1.0/prosa_0.1.0_amd64.deb
+	sha256sums = ee6840eb99a8f9ce9bffb4b101d10aff6a2697af6c7267faea09855e303e4e41
+
+pkgname = prosa
