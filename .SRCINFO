@@ -1,0 +1,27 @@
+pkgbase = python-kicad-mcp
+	pkgdesc = KiCad MCP integrated with the KiCad IPC API.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/Huaqiu-Electronics/kicad-mcp
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-dotenv
+	depends = python-psutil
+	depends = python-typing_extensions
+	depends = python-mcp
+	depends = python-typechat
+	depends = python-pynng
+	optdepends = kicad-hq
+	provides = python-kicad-mcp
+	conflicts = python-kicad-mcp
+	source = kicad-mcp::git+https://github.com/Huaqiu-Electronics/kicad-mcp.git#tag=v0.1.5
+	sha256sums = e925e3b38e29d5cc71f1a41fbd093ae9d99fb1af9d74ff86f399deeedc2fc455
+
+pkgname = python-kicad-mcp
