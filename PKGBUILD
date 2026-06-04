@@ -1,6 +1,6 @@
 # Maintainer: Xuepoo <xuepoo@users.noreply.github.com>
 pkgname=waywarp-scanner
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="High-performance Wayland GUI layout scanner for AI Agents"
 arch=('any')
