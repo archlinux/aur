@@ -1,14 +1,14 @@
 pkgbase = hister-bin
 	pkgdesc = Web history on steroids - blazing fast, content-based search for visited websites
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asciimoo/hister
 	install = hister.install
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-or-later
 	depends = sqlite
-	depends = postgresql
+	optdepends = postgresql: For an alternate database
 	conflicts = hister
 	conflicts = hister-git
 	options = !lto

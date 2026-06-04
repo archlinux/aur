@@ -1,13 +1,14 @@
 #Maintainer: Shadowbee <shadowbee.contact@proton.me>
 pkgname=hister-bin
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 conflicts=('hister' 'hister-git')
 url="https://github.com/asciimoo/hister"
 license=('AGPL-3.0-or-later')
-depends=('sqlite' 'postgresql')
+depends=('sqlite')
+optdepends=('postgresql: For an alternate database')
 install=hister.install
 options=(!lto)
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/hister_${pkgver}_linux_amd64"
