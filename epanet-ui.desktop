@@ -1,9 +1,10 @@
 [Desktop Entry]
+Type=Application
 Name=EPANET UI
 Comment=Hydraulic and water distribution network modeling tool
 Exec=epanet-ui
 Icon=epanet-ui
 Terminal=false
-Type=Application
 Categories=Science;Engineering;
 StartupNotify=true
+StartupWMClass=epanet-ui
