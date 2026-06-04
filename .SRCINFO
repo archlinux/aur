@@ -13,7 +13,7 @@ pkgbase = python-samila
 	depends = python-art
 	depends = python-matplotlib
 	depends = python-pillow
-	source = https://github.com/sepandhaghighi/samila/archive/v1.6.tar.gz
+	source = python-samila-1.6.tgz::https://github.com/sepandhaghighi/samila/archive/v1.6.tar.gz
 	sha256sums = b8fc75ca8204bdcc765a2e18486f2b9fe1956ca21150f52452288df09ff073cd
 
 pkgname = python-samila
