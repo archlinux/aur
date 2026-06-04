@@ -1,6 +1,6 @@
 pkgbase = dotnet-preview-bin
 	pkgver = 11.0.0.sdk100+preview.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -16,64 +16,4 @@ pkgbase = dotnet-preview-bin
 	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.4.26230.115/dotnet-sdk-11.0.100-preview.4.26230.115-linux-arm64.tar.gz
 	sha512sums_aarch64 = f0488bfd17cc9dbb53cf4390505ffde58efd286af8d9599f53b6c652990c726dcf7bba0499982aa9e2d9fe2208f43166d145ec80ac26397047ae178f28d0e2f3
 
-pkgname = dotnet-host-preview-bin
-	pkgdesc = A generic driver for the .NET Core Command Line Interface (preview, binary)
-	depends = gcc-libs
-	depends = glibc
-	provides = dotnet-host
-	provides = dotnet-host=11.0.0
-	conflicts = dotnet-host
-
-pkgname = aspnet-runtime-preview-bin
-	pkgdesc = The ASP.NET Core runtime (preview, binary)
-	depends = dotnet-runtime-preview-bin
-	provides = aspnet-runtime=11.0.0
-	provides = aspnet-runtime-11.0
-	conflicts = aspnet-runtime=11.0.0
-	conflicts = aspnet-runtime-11.0
-
-pkgname = dotnet-runtime-preview-bin
-	pkgdesc = The .NET Core runtime (preview, binary)
-	depends = dotnet-host>=11.0.0
-	depends = gcc-libs
-	depends = glibc
-	depends = icu
-	depends = libunwind
-	depends = zlib
-	depends = openssl
-	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime=11.0.0
-	provides = dotnet-runtime-11.0
-	conflicts = dotnet-runtime=11.0.0
-	conflicts = dotnet-runtime-11.0
-
-pkgname = dotnet-sdk-preview-bin
-	pkgdesc = The .NET Core SDK (preview, binary)
-	depends = glibc
-	depends = gcc-libs
-	depends = dotnet-runtime-preview-bin
-	depends = dotnet-targeting-pack-preview-bin
-	depends = netstandard-targeting-pack
-	depends = aspnet-runtime-preview-bin
-	depends = aspnet-targeting-pack-preview-bin
-	provides = dotnet-sdk-preview-bin
-	provides = dotnet-sdk=11.0.0.sdk100+preview.4
-	provides = dotnet-sdk-11.0=11.0.0.sdk100+preview.4
-	conflicts = dotnet-sdk=11.0.0.sdk100+preview.4
-	conflicts = dotnet-sdk-11.0
-
-pkgname = dotnet-targeting-pack-preview-bin
-	pkgdesc = The .NET Core targeting pack (preview, binary)
-	depends = netstandard-targeting-pack
-	provides = dotnet-targeting-pack=11.0.0
-	provides = dotnet-targeting-pack-11.0
-	conflicts = dotnet-targeting-pack=11.0.0
-	conflicts = dotnet-targeting-pack-11.0
-
-pkgname = aspnet-targeting-pack-preview-bin
-	pkgdesc = The ASP.NET Core targeting pack (preview, binary)
-	depends = dotnet-targeting-pack-preview-bin
-	provides = aspnet-targeting-pack=11.0.0
-	provides = aspnet-targeting-pack-11.0
-	conflicts = aspnet-targeting-pack=11.0.0
-	conflicts = aspnet-targeting-pack-11.0
+pkgname = dotnet-preview-bin
