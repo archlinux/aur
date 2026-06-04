@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=plasma-meta
+pkgname=plasma-meta-deflatpak
 pkgver=6.6
 pkgrel=2
 pkgdesc='Meta package to install KDE Plasma'

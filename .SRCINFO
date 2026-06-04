@@ -1,4 +1,4 @@
-pkgbase = plasma-meta
+pkgbase = plasma-meta-deflatpak
 	pkgdesc = Meta package to install KDE Plasma
 	pkgver = 6.6
 	pkgrel = 2
@@ -11,7 +11,6 @@ pkgbase = plasma-meta
 	depends = breeze-gtk
 	depends = discover
 	depends = drkonqi
-	depends = flatpak-kcm
 	depends = kactivitymanagerd
 	depends = kde-cli-tools
 	depends = kde-gtk-config
@@ -63,6 +62,7 @@ pkgbase = plasma-meta
 	depends = xdg-desktop-portal-kde
 	optdepends = breeze-grub: Breeze theme for GRUB
 	optdepends = breeze-plymouth: Breeze theme for Plymouth
+	optdepends = flatpak-kcm: Flatpak Permissions Management KCM
 	optdepends = kgamma: Adjust gamma settings on X
 	optdepends = kwin-x11: X11 window manager
 	optdepends = plasma-workspace-wallpapers: Additional wallpapers
@@ -72,4 +72,4 @@ pkgbase = plasma-meta
 	optdepends = sddm-kcm: SDDM configuration module
 	optdepends = wacomtablet: Drawing tablet settings on X
 
-pkgname = plasma-meta
+pkgname = plasma-meta-deflatpak
