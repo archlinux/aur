@@ -1,6 +1,6 @@
 # Maintainer: def1de contact@def1de.com
 pkgname=dumpr
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Rust CLI tool for generating repository dumps with directory trees and concatenated source output."
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'git')
 
 # Release tarball from the git tag v${pkgver}
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7598b62fc8176c751977287b5fc3f29fa9e0ed0c015ffa4887b504867294c1b6')
+sha256sums=('c11f0ecbb2d7dcededd15e169fe5cdad7f521c4a5c1df4e6ba460c3f0638550a')
 
 build() {
   cd "${pkgname}-${pkgver}"
