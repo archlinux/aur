@@ -1,0 +1,25 @@
+pkgbase = incrementum-bin
+	pkgdesc = A Spaced Repetition System built with Tauri
+	pkgver = 1.47.6
+	pkgrel = 1
+	url = https://github.com/melpomenex/incrementum-tauri
+	arch = x86_64
+	license = Apache-2.0
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = gcc-libs
+	depends = glibc
+	depends = zstd
+	optdepends = notebooklm-py: NotebookLM integration for AI-powered flashcard generation
+	optdepends = python-notebooklm: Alternative NotebookLM package
+	provides = incrementum
+	conflicts = incrementum
+	options = !strip
+	options = !lto
+	options = !debug
+	source = https://github.com/melpomenex/incrementum-tauri/releases/download/v1.47.6/incrementum-1.47.6-1-x86_64.pkg.tar.zst
+	sha256sums = 055b9fda725644fec044f7cf2efbc01be9661ade0e7dfd0c040c53625d04056d
+
+pkgname = incrementum-bin
