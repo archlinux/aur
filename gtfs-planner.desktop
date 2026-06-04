@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Bus Planning
-Comment=GTFS Planner: A desktop application for visualizing and planning trips using GTFS (General Transit Feed Specification) public transit data.
+Name=GTFS Planner
+Comment=A desktop application for visualising and planning trips using GTFS (General Transit Feed Specification) public transit data.
 Categories=Utility;
-Exec=bus-planning
-Icon=bus-planning
+Exec=gtfs-planner
+Icon=gtfs-planner
 Terminal=false
 

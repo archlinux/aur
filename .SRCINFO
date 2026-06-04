@@ -1,7 +1,7 @@
 pkgbase = gtfs-planner-git
 	pkgdesc = "Bus Planning": A desktop application for visualizing and planning trips using GTFS (General Transit Feed Specification) public transit data. Built with Go, React, and MapLibre GL.
-	pkgver = r76.20260603.ed129a1
-	pkgrel = 3
+	pkgver = 1.0.0+6.r142.20260604.e650168
+	pkgrel = 1
 	url = https://github.com/klaustopher/gtfs-planner
 	arch = aarch64
 	arch = armv7h
@@ -10,12 +10,9 @@ pkgbase = gtfs-planner-git
 	arch = i686
 	arch = x86_64
 	license = MIT
-	license = GPL-3.0-only
 	makedepends = git
 	makedepends = go>=1.24.0
 	makedepends = wails
-	makedepends = nodejs>=18
-	makedepends = npm
 	makedepends = at-spi2-core
 	makedepends = cairo
 	makedepends = gdk-pixbuf2
@@ -26,10 +23,7 @@ pkgbase = gtfs-planner-git
 	makedepends = pango
 	makedepends = webkit2gtk-4.1
 	makedepends = zlib
-	depends = bash
-	depends = coreutils
 	depends = glibc
-	depends = gtfs-import
 	depends = libatk-1.0.so
 	depends = libcairo.so
 	depends = libcairo-gobject.so
@@ -46,30 +40,13 @@ pkgbase = gtfs-planner-git
 	depends = libgdk-3.so
 	depends = libwebkit2gtk-4.1.so
 	depends = libz.so
-	provides = gtfs-planner=r76.20260603.ed129a1
-	provides = bus-planning
-	provides = bus-planning-git=r76.20260603.ed129a1
+	provides = gtfs-planner=1.0.0+6.r142.20260604.e650168
 	conflicts = gtfs-planner
 	conflicts = gtfs-planner-bin
-	conflicts = bus-planning
-	conflicts = bus-planning-bin
-	backup = etc/gtfs-planner/gtfs-config.yaml
-	backup = etc/gtfs-planner/gtfs-config.json
+	conflicts = bus-planning<1
 	source = gtfs-planner::git+https://github.com/klaustopher/gtfs-planner.git
 	source = gtfs-planner.desktop
-	source = gtfs-config.yaml
-	source = gtfs-config.json
-	source = gtfs-config.readme.txt
-	source = gtfs-manager.sh
-	source = gtfs-planner.sh
-	source = licensing-info.txt
 	sha256sums = SKIP
-	sha256sums = 2eb7f377f5d40dbf6c65b26c67fe7c9f4c56e3deab18f75847b27d392630edb8
-	sha256sums = 06fb0a08fdf721e2f88683a98424b3c0c25d0ce2824561cfb1bf828b760eecef
-	sha256sums = acaa91df5fe867fb44a73957619ad74a1f3fcee557f576de35fb839b960984c2
-	sha256sums = 99bc7f08687775af0127795213b79c7b08a84bf2fd4ad641fbf592d66e19542a
-	sha256sums = 063ad49b888b3a99aba0f7c914e59f721cd4919ef634be888ba835d45a0eaef7
-	sha256sums = ca5a9c093919042d39ae57cd0dfaa82b9e53ac793ae73d7db813c25cca0e61c1
-	sha256sums = 3b365dca9ccd2d8408ee8cc4ddf1a48e561ad639e4a898c91961bbd73e113247
+	sha256sums = ff944a9bcff83cd19da138f86b4109911c725be6b314c611a7bba188b2ad7c9b
 
 pkgname = gtfs-planner-git
