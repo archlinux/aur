@@ -13,23 +13,37 @@ conflicts=('feishin')
 
 source=(
   "feishin.tar.xz::https://github.com/jeffvli/feishin/releases/download/v${pkgver}/Feishin-linux-x64.tar.xz"
+  "feishin.desktop"
 )
 
 noextract=("feishin.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 package() {
   mkdir -p "$pkgdir/opt/feishin"
   mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/share/applications"
+  mkdir -p "$pkgdir/usr/share/pixmaps"
 
+  # Extract full Electron app as-is (IMPORTANT)
   bsdtar -xf feishin.tar.xz -C "$pkgdir/opt/feishin"
 
+  # Launcher
   cat > "$pkgdir/usr/bin/feishin" << 'EOF'
 #!/bin/bash
-exec /opt/feishin/feishin "$@"
+exec /opt/feishin/Feishin-linux-x64/feishin "$@"
 EOF
 
   chmod +x "$pkgdir/usr/bin/feishin"
+
+  # Desktop entry
+  install -Dm644 feishin.desktop \
+    "$pkgdir/usr/share/applications/feishin.desktop"
+
+  # Icon
+  install -Dm644 \
+    "$pkgdir/opt/feishin/Feishin-linux-x64/resources/assets/icons/icon.png" \
+    "$pkgdir/usr/share/pixmaps/feishin.png"
 
   # cleanup
   find "$pkgdir" -name ".PKGINFO" -delete
