@@ -9,6 +9,8 @@ pkgbase = radicle-explorer
 	makedepends = git
 	makedepends = cargo
 	makedepends = asciidoctor
+	makedepends = nodejs
+	makedepends = npm
 	makedepends = pnpm
 	makedepends = libgit2
 	source = radicle-explorer::git+https://seed.radicle.xyz/z4V1sjrXqjvFdnCUbxPFqd5p4DtH5.git#tag=releases/0.24.0
