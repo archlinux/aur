@@ -1,36 +1,37 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-
-_upstreamver='2.0'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='pyrgg'
-
-
-pkgname="python-${_pypi_package}"
-pkgver="${_upstreamver}"
+_pkgname='pyrgg'
+_pkgauthor='sepandhaghighi'
+pkgname="python-${_pkgname}"
+pkgver=2.0
 pkgrel=1
 pkgdesc="A Random Graph Generator"
+
 arch=('any')
-url='https://github.com/sepandhaghighi/pyrgg'
+url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('MIT')
+
 optdepends=()
 depends=('python' 'python-art' 'python-yaml')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-source=("${url}/archive/v${pkgver}.tar.gz")
+
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('989019b582dddb0b52baeee84417984f80d781f1211947c7f560be0af1539f4a')
+
+_pypi_package=${_pkgname}
+_pypi_version=${pkgver}
 
 
 build() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
