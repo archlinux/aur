@@ -6,9 +6,9 @@
 pkgname=ticemu
 pkgver=2.0
 url='https://ce-programming.github.io/CEmu/'
-pkgrel=2
+pkgrel=3
 makedepends=('git' 'cmake' 'ninja')
-depends=('qt6-base' 'libarchive' 'libusb' 'gcc-libs' 'glibc')
+depends=('qt6-base' 'libarchive' 'libusb' 'libgcc' 'libstdc++' 'glibc')
 pkgdesc='Third-party TI-84 Plus CE / TI-83 Premium CE emulator, focused on developer features'
 license=('GPL-3.0-or-later')
 arch=('x86_64')

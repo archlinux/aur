@@ -1,7 +1,7 @@
 pkgbase = ticemu
 	pkgdesc = Third-party TI-84 Plus CE / TI-83 Premium CE emulator, focused on developer features
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ce-programming.github.io/CEmu/
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -11,7 +11,8 @@ pkgbase = ticemu
 	depends = qt6-base
 	depends = libarchive
 	depends = libusb
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	depends = glibc
 	source = ticemu::git+https://github.com/CE-Programming/CEmu.git#tag=v2.0
 	source = git+https://github.com/CE-Programming/zdis.git
