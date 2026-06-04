@@ -2,13 +2,13 @@
 ## Based on rtorrent [community]
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rtorrent-git
-pkgver=0.9.7.r109.g1da0e34
+pkgver=0.9.7.r520.g44d39713
 pkgrel=1
 pkgdesc='A ncurses BitTorrent client written in C++, based on the libTorrent libraries for Unix.'
 url='https://github.com/rakshasa/rtorrent/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('curl' 'libtorrent-git' 'xmlrpc-c')
+depends=('curl' 'libtorrent-git' 'tinyxml2')
 makedepends=('git' 'autoconf-archive')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}")
@@ -25,7 +25,7 @@ build() {
 	cd "$srcdir/$pkgname"
 	autoreconf -iv
 	export CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
-	./configure --prefix=/usr --enable-debug --with-xmlrpc-c
+	./configure --prefix=/usr --enable-debug --with-xmlrpc-
 	make
 }
 
