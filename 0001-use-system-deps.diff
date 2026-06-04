@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e50aaff..ae52044 100644
+index 386a3bf..e0b6ba1 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -33,7 +33,7 @@ option(WAYWALLEN_CARGO_OFFLINE "Pass --frozen to cargo (offline + locked, for fl
@@ -12,10 +12,10 @@ index e50aaff..ae52044 100644
      # and a vendored CARGO_HOME (set by the flatpak manifest).
      set(_waywallen_corrosion_extra "")
 diff --git a/deps.json b/deps.json
-index 2a66377..1318819 100644
+index 22a50d4..5217445 100644
 --- a/deps.json
 +++ b/deps.json
-@@ -1,39 +1,4 @@
+@@ -1,42 +1,4 @@
  [
 -  {
 -    "commit": "1499b14e4906a2890f5cee1547c8848db261753d",
@@ -25,7 +25,8 @@ index 2a66377..1318819 100644
 -    "type": "git",
 -    "url": "https://github.com/corrosion-rs/corrosion.git",
 -    "x-cmake": {
--      "name": "Corrosion"
+-      "name": "Corrosion",
+-      "find_package_args": "GLOBAL"
 -    }
 -  },
 -  {
@@ -37,7 +38,8 @@ index 2a66377..1318819 100644
 -    "url": "https://github.com/chriskohlhoff/asio.git",
 -    "x-cmake": {
 -      "name": "asio",
--      "exclude_from_all": true
+-      "exclude_from_all": true,
+-      "find_package_args": "GLOBAL"
 -    }
 -  },
 -  {
@@ -49,7 +51,8 @@ index 2a66377..1318819 100644
 -    "url": "https://github.com/taocpp/PEGTL.git",
 -    "x-cmake": {
 -      "name": "pegtl",
--      "exclude_from_all": true
+-      "exclude_from_all": true,
+-      "find_package_args": "GLOBAL"
 -    }
 -  },
    {
