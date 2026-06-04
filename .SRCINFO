@@ -1,15 +1,14 @@
 pkgbase = python-smcp
 	pkgdesc = A Python solver for sparse matrix cone programs.
-	pkgver = 0.4.6
-	pkgrel = 5
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://smcp.readthedocs.io
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools
 	depends = python-cvxopt
 	depends = python-chompack
-	source = https://github.com/cvxopt/smcp/archive/v0.4.6.tar.gz
-	md5sums = 0ebf84f5080f7e4dd80b9b9149314a71
+	source = https://github.com/cvxopt/smcp/archive/v0.5.tar.gz
+	md5sums = 64334f460a4791c4356d5b737f5713fe
 
 pkgname = python-smcp
-
