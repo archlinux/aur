@@ -1,7 +1,7 @@
 pkgbase = owa-epanet-ui-bin
 	pkgdesc = Hydraulic and water quality modeling tool for water distribution networks (EPANET) GUI
 	pkgver = 1.0.2
-	pkgrel = 7
+	pkgrel = 2
 	url = https://github.com/OpenWaterAnalytics/EPANET-UI
 	arch = x86_64
 	license = custom
