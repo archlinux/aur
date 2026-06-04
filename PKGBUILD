@@ -2,7 +2,7 @@
 pkgname=mby
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Terminal music browser for YouTube Music"
+pkgdesc="Terminal client for Emby media server"
 arch=('x86_64')
 url="https://github.com/slatkin/mby"
 license=('MIT')
