@@ -1,7 +1,7 @@
 pkgbase = csstidy
 	pkgdesc = A program that optimises, formats and fixes CSS code
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Cerdic/CSSTidy
 	arch = any
 	license = LGPL-2.1-or-later
