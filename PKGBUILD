@@ -1,22 +1,25 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=avm
-pkgver=15.0.0
-pkgrel=2
-pkgdesc='AOM Video Model - the reference software for next codec from Alliance for Open Media'
+pkgver=1.0.0
+pkgrel=1
+epoch=1
+pkgdesc='AOM Video Model - the reference software for AV2 codec from Alliance for Open Media'
 arch=('x86_64')
-url='https://gitlab.com/AOMediaCodec/avm/'
-license=('BSD-3-Clause')
+url='https://github.com/AOMediaCodec/avm/'
+license=('BSD-3-Clause-Clear')
 depends=(
-    'glibc')
+    'glibc'
+    'libgcc'
+    'libstdc++')
 makedepends=(
     'cmake'
     'git'
     'perl'
     #'python' # for tests
     'yasm')
-source=("git+https://gitlab.com/AOMediaCodec/avm.git#tag=research-v${pkgver}")
-sha256sums=('5c1ce0553fd0e94d7f262d048a13587b504c6d30588d9b92d135d1fb51c08fa1')
+source=("git+https://github.com/AOMediaCodec/avm.git#tag=v${pkgver}")
+sha256sums=('41ea97e28d03b5d3f0e236d9d240458deb265711ef61466484b4926506b935c1')
 
 build() {
     # NOTE: set ENABLE_TESTS to ON for tests
@@ -30,7 +33,7 @@ build() {
         -DCONFIG_TENSORFLOW_LITE:STRING='0' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         -DENABLE_DOCS:BOOL='OFF' \
-        -DENABLE_EXAMPLES:BOOL='OFF' \
+        -DENABLE_EXAMPLES:BOOL='ON' \
         -DENABLE_TESTS:BOOL='OFF' \
         -Wno-dev
     cmake --build build
@@ -38,7 +41,7 @@ build() {
 
 # NOTE: uncomment for tests (takes an extraordinary long time to run)
 #check() {
-#    export LIBAOM_TEST_DATA_PATH="${srcdir}/testdata"
+#    export LIBAVM_TEST_DATA_PATH="${srcdir}/testdata"
 #    cmake --build build --target testdata runtests
 #}
 

@@ -1,16 +1,19 @@
 pkgbase = avm
-	pkgdesc = AOM Video Model - the reference software for next codec from Alliance for Open Media
-	pkgver = 15.0.0
-	pkgrel = 2
-	url = https://gitlab.com/AOMediaCodec/avm/
+	pkgdesc = AOM Video Model - the reference software for AV2 codec from Alliance for Open Media
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/AOMediaCodec/avm/
 	arch = x86_64
-	license = BSD-3-Clause
+	license = BSD-3-Clause-Clear
 	makedepends = cmake
 	makedepends = git
 	makedepends = perl
 	makedepends = yasm
 	depends = glibc
-	source = git+https://gitlab.com/AOMediaCodec/avm.git#tag=research-v15.0.0
-	sha256sums = 5c1ce0553fd0e94d7f262d048a13587b504c6d30588d9b92d135d1fb51c08fa1
+	depends = libgcc
+	depends = libstdc++
+	source = git+https://github.com/AOMediaCodec/avm.git#tag=v1.0.0
+	sha256sums = 41ea97e28d03b5d3f0e236d9d240458deb265711ef61466484b4926506b935c1
 
 pkgname = avm
