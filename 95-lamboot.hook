@@ -1,0 +1,43 @@
+# Pacman alpm hook — refreshes LamBoot BLS entries + .install-manifest
+# after any operation that changes a kernel or its modules.
+#
+# Why this exists: Arch's `linux` (and linux-lts, linux-zen, linux-hardened)
+# packages drop /boot/vmlinuz-* + /usr/lib/modules/<ver>/vmlinuz directly,
+# and trigger /usr/share/libalpm/hooks/90-mkinitcpio-install.hook to
+# rebuild the initramfs. Neither pacman itself nor mkinitcpio refreshes
+# LamBoot's BLS entries or its .install-manifest sha256s. Without this
+# hook, a `pacman -Syu` that bumps the kernel leaves:
+#   - BLS entry `version` field referring to the old kernel
+#   - .install-manifest sha256s referring to the old vmlinuz/initramfs
+# Both surface as red Xs in LamBoot's menu and false-positive tamper
+# warnings in the audit log.
+#
+# Trigger choice: Path triggers on the kernel images themselves are
+# more robust than Package triggers on `linux*` — they fire whether
+# the operator updates via `pacman`, an AUR helper, or
+# linux-{lts,zen,hardened,rt,etc.} variants we didn't enumerate.
+#
+# When = PostTransaction: pacman has finished placing the new vmlinuz
+# and 90-mkinitcpio-install.hook has finished writing the new
+# initramfs. Now we re-stamp BLS + manifest.
+#
+# Exec = lamboot-install --update --signed --quiet: --update reads
+# the existing manifest, --quiet suppresses interactive output,
+# --signed keeps the signed-binary path consistent across updates.
+# v0.11.15: --update no longer die()s when efibootmgr is missing, so
+# this hook still completes its BLS + manifest work even on hosts
+# where efibootmgr was not pacstrapped (NVRAM update logs PARTIAL).
+
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/modules/*/vmlinuz
+Target = boot/vmlinuz-*
+
+[Action]
+Description = Refreshing LamBoot BLS entries...
+When = PostTransaction
+Exec = /usr/bin/lamboot-install --update --signed --quiet
+NeedsTargets
