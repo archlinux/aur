@@ -3,7 +3,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts510
-pkgver=5.10.254
+pkgver=5.10.258
 pkgrel=1
 pkgdesc="LTS ${pkgver%.*} Linux"
 url='https://www.kernel.org'
@@ -13,6 +13,7 @@ makedepends=(
   bc kmod libelf pahole cpio perl tar xz
   xmlto python-six python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
+makedepends+=('gcc15')
 options=('!strip')
 _srcname=linux-${pkgver%.*}
 source=(
@@ -35,7 +36,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
 md5sums=('753adc474bf799d569dec4f165ed92c3'
          'SKIP'
-         'ebee6382ed44a6ec4fa617e87b3e89ed'
+         'bae71ea2d119fa27278c6999de4fd3e7'
          '8b8fa773fe9c7938a76ba07ca2933ed8'
          'd31360693fb06a0d69c1f126350baa6d'
          'c1f10e50f7ca23d07ae83ae6252854d5'
@@ -45,7 +46,7 @@ md5sums=('753adc474bf799d569dec4f165ed92c3'
          '6140c1a5cd25145548ed5867d13ee7d9')
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '0830372392a5b3ae070f2d82f55b83b95fac21cf75f89e9052ae982225a89e7e'
+            '58457548e0ada2ac536bf00e4a6a4aff14000dc0c00fe30d54e8bbc0d36bdcea'
             'ddc8d7c604a2f8373a25674d06cd377fdf80adca9bd426f4c8a50f3d52403001'
             '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e'
             '453ad77883c50b5d5b1373241a5a27a5f7cdc11c5b66dd929338fc622de6cf14'
@@ -57,6 +58,12 @@ sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+
+_makeopts=(
+  #CC='gcc-5' CXX='g++-5' HOSTCC='gcc-5' HOSTCXX='g++-5' # LD='ld.gold'
+  CC='gcc-15' CXX='g++-15' HOSTCC='gcc-15' HOSTCXX='g++-15'
+  #LDFLAGS='-z max-page-size=0x200000' # http://lists.gnu.org/archive/html/bug-binutils/2018-03/msg00193.html
+)
 
 prepare() {
   cd $_srcname
@@ -90,13 +97,13 @@ prepare() {
   cp "../${source[3]}" .config
   make olddefconfig
 
-  make -s kernelrelease > version
+  make -s kernelrelease > version "${_makeopts[@]}"
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  if :; then
+  if ! :; then
     export PATH="${PWD}:${PATH}"
     cat > 'gcc' << EOF
 #!/usr/bin/bash
@@ -109,7 +116,7 @@ EOF
   fi
   nice -n1 make -j1 htmldocs < /dev/null & # -i SPHINXOPTS='-T --keep-going' &
   local _pid_docs="$!"
-  nice -n2 make all
+  nice -n2 make all "${_makeopts[@]}"
   wait "${_pid_docs}"
 }
 
