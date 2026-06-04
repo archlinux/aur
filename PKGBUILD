@@ -1,8 +1,8 @@
 # Maintainer: AndyHazz <andy.nmc@gmail.com>
 pkgname=libfprint-goodix53x5
 pkgver=1.94.10
-pkgrel=7
-pkgdesc="libfprint with Goodix HTK32 (27c6:5385/5395) driver - Dell XPS 13 7390 / XPS 15 9570"
+pkgrel=8
+pkgdesc="libfprint with Goodix HTK32 (27c6:5335/5385/5395) driver - Dell XPS 13 9305 / XPS 13 7390 / XPS 15 9570"
 arch=('x86_64')
 url="https://github.com/AndyHazz/goodix53x5-libfprint"
 license=('LGPL-2.1-or-later')
