@@ -5,7 +5,7 @@
 # See: https://github.com/JanDamek/puklic#%EF%B8%8F-disclaimer
 
 pkgname=puklic-bin
-pkgver=1.2.14
+pkgver=1.2.26
 pkgrel=1
 pkgdesc="Lightweight native Discord client (Compose Multiplatform, Kotlin Multiplatform)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ provides=("puklic=${pkgver}")
 conflicts=('puklic')
 
 source=("puklic_${pkgver}_amd64.deb::https://github.com/JanDamek/puklic/releases/download/v${pkgver}/puklic_${pkgver}-1_amd64.deb")
-sha256sums=('c00669da8f201e9eda572ffa0e23e99d1bbed5a830c0ced2f3c9bc0983e1fff6')
+sha256sums=('5a00d196c8a52747fedf91b460b698978e17316d6c11f9b3b28d3c2e35c976b0')
 
 install="${pkgname}.install"
 
