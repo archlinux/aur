@@ -1,6 +1,6 @@
 pkgname=vacs-bin
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="VACS voice communication client"
 arch=('x86_64')
 url="https://vacs.network/"
@@ -45,6 +45,23 @@ package() {
   ar x "vacs_${pkgver}_amd64.deb"
 
   tar -xf data.tar.* -C "$pkgdir"
+
+  # Fix vacs:// URL handler for VATSIM Connect authentication.
+  # The upstream desktop file declares the protocol handler but does not pass
+  # the callback URL to the application, which KDE rejects.
+  local desktop_file="$pkgdir/usr/share/applications/vacs.desktop"
+
+  if [[ ! -f "$desktop_file" ]]; then
+    error "Unable to find VACS desktop file: $desktop_file"
+    return 1
+  fi
+
+  sed -i 's|^Exec=vacs-client$|Exec=vacs-client %u|' "$desktop_file"
+
+  if ! grep -qx 'Exec=vacs-client %u' "$desktop_file"; then
+    error "Unable to fix vacs:// handler in $desktop_file"
+    return 1
+  fi
 
   # Remove Debian-specific metadata
   rm -rf "$pkgdir/DEBIAN"

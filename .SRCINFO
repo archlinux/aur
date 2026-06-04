@@ -1,7 +1,7 @@
 pkgbase = vacs-bin
 	pkgdesc = VACS voice communication client
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vacs.network/
 	arch = x86_64
 	license = MIT
