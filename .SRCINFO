@@ -14,6 +14,6 @@ pkgbase = wowusky
 	depends = python
 	depends = nodejs
 	source = wowusky-0.11.0.tar.gz::https://github.com/borunsky/wowusky/archive/refs/tags/v0.11.0.tar.gz
-	sha256sums = 4650a39cf2b56ad3fb5a0edc65cb47bc00243d86153aefbc0c610c240204cb92
+	sha256sums = 9d96d9f38265b4989d7ec12ceec13b954d2bafa411eb5a73340533895d3656ce
 
 pkgname = wowusky
