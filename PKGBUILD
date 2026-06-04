@@ -1,6 +1,6 @@
 # Maintainer: Yves Motteux <yvesmotteux@gmail.com>
 pkgname=ficflow-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Track and organize your fanfiction reading list"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE"
     "ficflow.desktop"
 )
-sha256sums=('98e1a81e67896334c79c97dc3da418347551fc2035ae6c311cf6aa284a635ff2'
+sha256sums=('e7e9f6b3b1c9299f0674b4888c5c295ede275abbd79fd643c407eebb5a3f2ffc'
             'dd43ed1ab15872dc0176283c90316eb5cdcff4c207194578d14cb45a97d1ab3f'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '6b208aae52b09a4716c788d1aa5d43addc8ff9b55154df459cf9f96f601e6835')
