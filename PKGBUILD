@@ -1,8 +1,8 @@
 # Maintainer: Borna Punda <borna at punda dot dev>
 
 pkgname=coderabbit
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc='AI-powered code review CLI tool'
 arch=('x86_64' 'aarch64')
 url='https://www.coderabbit.ai/cli'
@@ -13,8 +13,8 @@ options=('!strip') # Prevent stripping JS from prepackaged Bun executable
 source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://cli.coderabbit.ai/releases/${pkgver}/coderabbit-linux-x64.zip")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://cli.coderabbit.ai/releases/${pkgver}/coderabbit-linux-arm64.zip")
 
-sha256sums_x86_64=('c9b9d942453ea46b179d05ffc0faeb71767ef264aa888007801035025223e2ca')
-sha256sums_aarch64=('8c5d1376d92f2d1befddbdeeb431e8d909fa4ad836d09815fe49cf142bc8a9ae')
+sha256sums_x86_64=('4a47c88c2b4b64304807e771ba21315659175aadfb5701f69e97ac39cdd546a5')
+sha256sums_aarch64=('35f3455c0c360596fdd73ba1e4c70d7d111a2e1995c93a7f7c86607b4816d1d5')
 
 package() {
 	install -Dm755 "${srcdir}/coderabbit" "${pkgdir}/usr/bin/coderabbit"
