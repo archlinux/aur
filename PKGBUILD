@@ -1,9 +1,9 @@
 # Maintainer: kylon
 pkgbase="pqhex"
 pkgname="pqhex-git"
-pkgver=1.0
-_version=1.0
-pkgrel=3
+pkgver=1.2.d55a245
+_version=1.2
+pkgrel=1
 pkgdesc="The Pokemon Quest save editor"
 url="https://github.com/kylon/PQHex"
 arch=("x86_64")
@@ -38,6 +38,6 @@ build() {
 
 package() {
     install -Dm755 ${srcdir}/build/PQHex -t "${pkgdir}/usr/bin/"
-    install -Dm644 ${srcdir}/pqhex.ico -t "${pkgdir}/usr/icons/hicolor/256x256/apps/"
+    install -Dm644 ${srcdir}/pqhex.ico -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
     install -Dm644 pqhex.desktop -t "${pkgdir}/usr/share/applications/"
 }
