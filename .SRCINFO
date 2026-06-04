@@ -1,0 +1,12 @@
+pkgbase = inspire
+	pkgdesc = CLI that prints a random inspirational quote
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mihajasoaalain/inspire
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = inspire-0.1.0.tar.gz::https://github.com/mihajasoaalain/inspire/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = d3b9ff60caed1392be6d706304aff0cc4b9894750d52cbe9b3f130769a681045
+
+pkgname = inspire
