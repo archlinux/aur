@@ -1,0 +1,4 @@
+[comfy-desktop]
+source = "git"
+git = "https://github.com/Comfy-Org/Comfy-Desktop.git"
+prefix = "v"

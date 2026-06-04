@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Comfy Desktop
+Exec=comfy-desktop %U
+Terminal=false
+Type=Application
+Icon=comfyui-desktop-2
+StartupWMClass=Comfy Desktop
+Comment=Comfy Desktop
+Categories=AudioVideo;Graphics;3DGraphics;
