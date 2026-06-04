@@ -1,7 +1,7 @@
 pkgbase = s3dns
 	pkgdesc = Find S3 AWS/GCP/Azure buckets while surfing. S3DNS acts as DNS server.
-	pkgver = 0.2.14
-	pkgrel = 1
+	pkgver = 0.2.15
+	pkgrel = 2
 	url = https://github.com/olizimmermann/s3dns
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = s3dns
 	depends = python-dnspython
 	depends = python-requests
 	depends = python-yaml
-	source = s3dns-0.2.14.tar.gz::https://github.com/olizimmermann/s3dns/archive/refs/tags/v0.2.14.tar.gz
-	sha256sums = a8f15306b68e1aa61392556fb14db0bad458881768b12aa86f7e70e03f39be7f
+	source = s3dns-0.2.15.tar.gz::https://github.com/olizimmermann/s3dns/archive/refs/tags/v0.2.15.tar.gz
+	sha256sums = 1ea978ff233c0ebf07157aa788814f96b7b307f09c031737db196eb2533044e1
 
 pkgname = s3dns
