@@ -1,5 +1,5 @@
 # Maintainer: DOGSOHA <2221577113@qq.com>
-# Contributor: baby2016
+# Maintainer: Baby2016 <baby2016@example.com>
 
 pkgname=fairy-kekkai-workshop
 pkgver=2.0.0
