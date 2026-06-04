@@ -1,6 +1,6 @@
 pkgbase = mesen-ce-git
 	pkgdesc = Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS)
-	pkgver = r3674.22424d7
+	pkgver = r3707.317f89d
 	pkgrel = 1
 	url = https://github.com/nesdev-org/MesenCE
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = mesen-ce-git
 	options = !strip
 	options = !debug
 	source = mesen-ce::git+https://github.com/nesdev-org/MesenCE.git
+	source = mesen-disable-shortcut-creation.patch
 	sha256sums = SKIP
+	sha256sums = a2feb9ae42788dcc2113e606b37ac1ccff37546ee844f798ee06d507d63f2a98
 
 pkgname = mesen-ce-git

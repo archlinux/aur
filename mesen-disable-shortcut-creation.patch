@@ -1,0 +1,25 @@
+diff --git a/UI/ViewModels/SetupWizardViewModel.cs b/UI/ViewModels/SetupWizardViewModel.cs
+index 513e027e..a8fd385c 100644
+--- a/UI/ViewModels/SetupWizardViewModel.cs
++++ b/UI/ViewModels/SetupWizardViewModel.cs
+@@ -21,7 +21,7 @@ namespace Mesen.ViewModels
+ 
+ 		[Reactive] public string InstallLocation { get; set; }
+ 
+-		[Reactive] public bool CreateShortcut { get; set; } = true;
++		[Reactive] public bool CreateShortcut { get; set; } = false;
+ 		[Reactive] public bool CheckForUpdates { get; set; } = true;
+ 		[Reactive] public bool IsOsx { get; set; } = OperatingSystem.IsMacOS();
+ 
+diff --git a/UI/Windows/SetupWizardWindow.axaml b/UI/Windows/SetupWizardWindow.axaml
+index 3bd17561..b93d904f 100644
+--- a/UI/Windows/SetupWizardWindow.axaml
++++ b/UI/Windows/SetupWizardWindow.axaml
+@@ -85,7 +85,6 @@
+ 				</c:OptionSection>
+ 
+ 				<c:OptionSection Header="{l:Translate lblMiscOptions}" Margin="0 25 0 0" IsVisible="{Binding !IsOsx}">
+-					<CheckBox Content="{l:Translate chkCreateShortcut}" IsChecked="{Binding CreateShortcut}" />
+ 					<CheckBox Content="{l:Translate chkCheckForUpdates}" IsChecked="{Binding CheckForUpdates}" />
+ 				</c:OptionSection>
+ 			</StackPanel>

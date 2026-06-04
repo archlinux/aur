@@ -3,7 +3,7 @@
 # Contributor: kleines Filmröllchen <kleines@filmroellchen.eu>
 
 pkgname=mesen-ce-git
-pkgver=r3674.22424d7
+pkgver=r3707.317f89d
 pkgrel=1
 pkgdesc="Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS)"
 arch=('x86_64')
@@ -14,11 +14,10 @@ makedepends=(dotnet-sdk-8.0 git zip clang coreutils)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!strip !debug) # Reportedly, these break with C#..?
-source=(${pkgname%-git}::'git+https://github.com/nesdev-org/MesenCE.git')
-sha256sums=('SKIP')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
+source=(${pkgname%-git}::'git+https://github.com/nesdev-org/MesenCE.git'
+  mesen-disable-shortcut-creation.patch)
+sha256sums=('SKIP'
+  'a2feb9ae42788dcc2113e606b37ac1ccff37546ee844f798ee06d507d63f2a98')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -30,6 +29,7 @@ prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
 	sed -i -e 's/Exec=Mesen/Exec=mesen-ce/' -e 's/Icon=Mesen/Icon=mesen-ce/' 'Linux/appimage/Mesen.desktop'
+	patch -Np1 -i ../mesen-disable-shortcut-creation.patch
 }
 
 build() {
