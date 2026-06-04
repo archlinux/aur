@@ -1,7 +1,7 @@
 # Maintainer: P6g9YHK6 <https://github.com/P6g9YHK6>
 pkgname=openpilot-cabana
 _pkgname=openpilot-cabana
-pkgver=1.1.2.43.g6337309
+pkgver=1.1.2.45.g2640968
 pkgrel=1
 epoch=1
 pkgdesc="CAN Bus Visualizer & Analyzer - Qt-based graphical tool for viewing, analyzing, and reverse-engineering raw CAN bus data"
@@ -35,7 +35,7 @@ provides=('cabana')
 conflicts=('openpilot-cabana-git')
 options=(!lto)
 
-source=("git+https://github.com/deanlee/openpilot-cabana.git#commit=63373099a6d88965467b8e28126eae2de4ef2aae"
+source=("git+https://github.com/deanlee/openpilot-cabana.git#commit=26409681a0fbbc64c6e3a22773560f1dee91d5d4"
         "archlinux.patch"
         "cabana.desktop"
         "cabana-icon.svg")
