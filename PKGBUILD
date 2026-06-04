@@ -5,7 +5,7 @@ pkgbase=btcd
 pkgname=('btcd' 'btcwallet')
 pkgver=0.25.0
 _pkgver_btcd=v0.25.0
-_pkgver_btcwallet=v0.16.17
+_pkgver_btcwallet=v0.16.18
 pkgrel=1
 pkgdesc="btcd an alternative full node Bitcoin implementation written in Go and btcwallet a secure Bitcoin wallet daemon written in Go "
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ conflicts=('btcd')
 source=(git+https://github.com/btcsuite/btcd#tag=$_pkgver_btcd
         git+https://github.com/btcsuite/btcwallet#tag=$_pkgver_btcwallet)
 sha256sums=('b3c4d32b9e2350b268695dc01bedd0e5e8398e18d9264fda30b6375f693b4402'
-            '967f843c2b43695d5ea40e2d73920240fe6541a79fa89e3c90646ff0db44918c')
+            '69fb5a70e603f81966d80286bf01ff3ae90be4988d141334d270e75f99fbf426')
 
 prepare() {
   export GOPATH="$srcdir"
