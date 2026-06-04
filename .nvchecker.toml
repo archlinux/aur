@@ -1,0 +1,4 @@
+[homebox-bin]
+source = "git"
+git = "https://github.com/sysadminsmedia/homebox.git"
+prefix = "v"

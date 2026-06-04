@@ -1,0 +1,9 @@
+HBOX_OPTIONS_GITHUB_RELEASE_CHECK=false
+HBOX_MODE=production
+HBOX_STORAGE_CONN_STRING=file:///var/lib/homebox?no_tmp_dir=true
+HBOX_STORAGE_PREFIX_PATH=data
+HBOX_DATABASE_SQLITE_PATH=/var/lib/homebox/data/homebox.db?_pragma=busy_timeout=2000&_pragma=journal_mode=WAL&_fk=1&_time_format=sqlite
+
+# Extra flags to pass to homebox
+FLAGS=""
+
