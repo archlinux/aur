@@ -1,0 +1,22 @@
+pkgbase = adguardvpn-web-git
+	pkgdesc = AdGuard VPN Web Controller
+	pkgver = r5.6a17fde
+	pkgrel = 1
+	url = https://github.com/xaoyao/adguardvpn-web
+	arch = x86_64
+	license = MIT
+	makedepends = cargo-zigbuild
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	optdepends = adguardvpn-cli-bin: Fast, flexible and reliable VPN solution for command-line enthusiasts.
+	provides = adguardvpn-web
+	conflicts = adguardvpn-web
+	options = !lto
+	options = !debug
+	options = !strip
+	backup = etc/adguardvpn-web/config.toml
+	source = adguardvpn-web-git::git+https://github.com/xaoyao/adguardvpn-web.git
+	sha256sums = SKIP
+
+pkgname = adguardvpn-web-git
