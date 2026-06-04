@@ -6,7 +6,7 @@
 _name=click-extra
 pkgname=python-${_name}
 pkgver=7.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Drop-in replacement for Click to make user-friendly and colorful CLI.'
 
 url='https://github.com/kdeldycke/click-extra'
