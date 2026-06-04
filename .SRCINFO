@@ -1,0 +1,21 @@
+pkgbase = victus-fan-control-git
+	pkgdesc = HP Victus fan control CLI and GTK app
+	pkgver = 0.r1.g284944b
+	pkgrel = 1
+	url = https://github.com/rarebek/victus-fan-control
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = gtk3
+	depends = polkit
+	depends = python
+	depends = python-gobject
+	optdepends = libnotify: desktop notifications
+	optdepends = nvidia-utils: NVIDIA GPU stats
+	provides = victus-fan-control
+	conflicts = victus-fan-control
+	source = git+https://github.com/rarebek/victus-fan-control.git
+	sha256sums = SKIP
+
+pkgname = victus-fan-control-git
