@@ -7,14 +7,14 @@ pkgname=asus-proart-px13-quirks
 # newer kernel; bump pkgrel for packaging-only changes (UCM, btusb, patches).
 _kver=7.0.10
 pkgver=${_kver}
-pkgrel=3
+pkgrel=5
 pkgdesc="Hardware quirks for ASUS ProArt PX13 (HN7306EA): TAS2783 audio DKMS + UCM configs + MT7925 btusb autosuspend disable"
 arch=('any')
 url="https://aur.archlinux.org/packages/asus-proart-px13-quirks"
 license=('CC0-1.0' 'GPL-2.0-only')
 # No kernel dependency: the audio codec patches build as DKMS modules against
 # whatever kernel headers are installed. Works on any distro kernel near $_kver.
-depends=('dkms' 'alsa-ucm-conf' 'pipewire' 'wireplumber' 'linux-firmware-other>=1:20260519')
+depends=('dkms' 'alsa-ucm-conf>=1.2.16' 'pipewire' 'wireplumber' 'linux-firmware-other>=1:20260519')
 makedepends=('patchutils')
 optdepends=(
     'sof-firmware: SOF firmware for AMD ACP'
@@ -68,7 +68,6 @@ _ksrc="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain"
 source=(
     'codecs_tas2783_init.conf'
     'sof-soundwire_tas2783.conf'
-    'sof-soundwire_acp-dmic.conf'
     'conf.d_amd-soundwire_ASUSTeK-ProArtPX13.conf'
     '51-amd-sdw-channels.conf'
     '99-echo-cancel.conf'
@@ -105,8 +104,7 @@ done
 # Fill in with updpkgsums; kept SKIP-free so the mainline fetch is verified.
 sha256sums=('8704e2350ece61e4fbfc6fab0e1555e9dadc4e50509f727c704cae137de7e372'
             '06feb24e7a3a5a5f59da7e0e1ed02c76b1b48e83a6942433ba232ae6c2dca138'
-            'bbbc4eafdbdacfc9af5b58922bb21118da59c88320dae037925ceed5ebfa02ed'
-            '9ae059bbaffdc4adf1ffb728d54b099adaded7ea6d9cb8eb224fbe5c3c4fb029'
+            '3f824d1905d50700760930146bf78b340432186a2dc6711f60bc1559d2c86183'
             'a426f056bb4fc3169fe68e8c08172379899e7f03edeb5199b5e7d6c06444444d'
             '2a68adee036530d1fa9e59fba0268d414c31f7c5d4b2ea1e93a11ceb469f4642'
             '289f0457bebb51a1a6e2f6a555ebea829b484be837361afc71f7a81fee1e323c'
@@ -183,19 +181,25 @@ prepare() {
         install -Dm644 "$srcdir/${f##*/}" "$tree/$f"
     done
 
-    # Apply nealstar's patches in numeric order (a dependent chain). 0009 also
-    # drops a declaration in include/sound/soc_sdw_utils.h, which a DKMS module
-    # cannot patch; the symbol has no out-of-tree callers, so filter that hunk.
+    # Apply nealstar's patches in source[] order (a dependent chain, declared
+    # 0001..0019 in numeric order). Driving from source[] rather than a
+    # "$srcdir"/0*.patch glob keeps stale patches left in src/ by a prior build
+    # from being picked up. 0009 also drops a declaration in
+    # include/sound/soc_sdw_utils.h, which a DKMS module cannot patch; the symbol
+    # has no out-of-tree callers, so filter that hunk.
     pushd "$tree" >/dev/null
-    local p
-    for p in "$srcdir"/0*.patch; do
-        case "$(basename "$p")" in
+    local s name
+    for s in "${source[@]}"; do
+        name="${s%%::*}"        # drop ::url suffix (kernel sources); patches are bare
+        name="${name##*/}"
+        [[ $name == 0*.patch ]] || continue
+        case "$name" in
             0009-*)
-                msg2 "applying $(basename "$p") (header hunk filtered)"
-                filterdiff -x '*/soc_sdw_utils.h' "$p" | patch -p1 ;;
+                msg2 "applying $name (header hunk filtered)"
+                filterdiff -x '*/soc_sdw_utils.h' "$srcdir/$name" | patch -p1 ;;
             *)
-                msg2 "applying $(basename "$p")"
-                patch -p1 < "$p" ;;
+                msg2 "applying $name"
+                patch -p1 < "$srcdir/$name" ;;
         esac
     done
     popd >/dev/null
@@ -214,13 +218,13 @@ package() {
     ln -s ti/audio/tas2783/1714-1-0x8.bin.zst "${pkgdir}/usr/lib/firmware/1714-1-8.bin.zst"
     ln -s ti/audio/tas2783/1714-1-0xB.bin.zst "${pkgdir}/usr/lib/firmware/1714-1-B.bin.zst"
 
-    # ALSA UCM device files (new files in alsa-ucm-conf namespace, no conflict)
+    # ALSA UCM device files for tas2783 (alsa-ucm-conf ships no tas2783 support).
+    # acp-dmic.conf is intentionally NOT shipped: alsa-ucm-conf >= 1.2.16 owns
+    # sof-soundwire/acp-dmic.conf, and the conf.d redirect reuses upstream's copy.
     install -Dm644 "${srcdir}/codecs_tas2783_init.conf" \
         "${pkgdir}/usr/share/alsa/ucm2/codecs/tas2783/init.conf"
     install -Dm644 "${srcdir}/sof-soundwire_tas2783.conf" \
         "${pkgdir}/usr/share/alsa/ucm2/sof-soundwire/tas2783.conf"
-    install -Dm644 "${srcdir}/sof-soundwire_acp-dmic.conf" \
-        "${pkgdir}/usr/share/alsa/ucm2/sof-soundwire/acp-dmic.conf"
 
     # UCM card-longname override: inlines the upstream amd-soundwire trampoline +
     # tas2783 spk_init + AMD ACP70 DMIC redirect (device 4). Beats the
