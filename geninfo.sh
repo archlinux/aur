@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-## need install yq and jq
-
 pkgbase=$(awk -F= '/pkgbase=/{print $2}' PKGBUILD)
 pkgver=$(awk -F= '/pkgver=/{print $2}' PKGBUILD)
 tmp_pkgname=$(mktemp)
@@ -21,7 +19,12 @@ _gen_pkgname() {
 ## _pkgdescs
 _gen_pkgdescs() {
     for info in $infos; do
-        pkgdesc=$(yq eval -o=json "src/${pkgbase}-${pkgver}/${info}/pyproject.toml" | jq -r '.project.description')
+        pkgdesc=$(python3 -c "
+import tomllib
+with open('src/${pkgbase}/${info}/pyproject.toml', 'rb') as f:
+    data = tomllib.load(f)
+print(data.get('project', {}).get('description', ''))
+")
         echo "    \"$pkgdesc\""
     done
     echo ")"
@@ -39,11 +42,16 @@ _gen_urls() {
 _gen_depends() {
     for info in $infos; do
         depends=($(
-            yq eval -o=json "src/${pkgbase}-${pkgver}/${info}/pyproject.toml" | \
-            jq -r '.project.dependencies.[]' 2>/dev/null | \
-            grep -oP '^([a-zA-Z0-9_-]+)' | \
-            tr 'A-Z' 'a-z' | \
-            sed 's|^|python-|' | \
+            python3 -c "
+import tomllib, sys
+with open('src/${pkgbase}/${info}/pyproject.toml', 'rb') as f:
+    data = tomllib.load(f)
+deps = data.get('project', {}).get('dependencies', [])
+for dep in deps:
+    name = dep.split('>')[0].split('<')[0].split('=')[0].split('~')[0].split('!')[0].strip().lower().replace('_', '-').replace('.', '-')
+    if name:
+        print(f'python-{name}')
+" 2>/dev/null | \
             sed 's|python-python|python|' | \
             sort -u
         ))
@@ -59,11 +67,18 @@ _gen_depends() {
 _gen_optdepends() {
     for info in $infos; do
         depends=($(
-            yq eval -o=json "src/${pkgbase}-${pkgver}/${info}/pyproject.toml" | \
-            jq -r '.project."optional-dependencies".[].[]' 2>/dev/null | \
-            grep -oP '^([a-zA-Z0-9_-]+)' | \
-            tr 'A-Z' 'a-z' | \
-            sed 's|^|python-|' | \
+            python3 -c "
+import tomllib, sys
+with open('src/${pkgbase}/${info}/pyproject.toml', 'rb') as f:
+    data = tomllib.load(f)
+opt = data.get('project', {}).get('optional-dependencies', {})
+for group, deps in opt.items():
+    for dep in deps:
+        name = dep.split('>')[0].split('<')[0].split('=')[0].split('~')[0].split('!')[0].strip().lower().replace('_', '-').replace('.', '-')
+        if name:
+            print(f'python-{name}')
+" 2>/dev/null | \
+            sed 's|python-python|python|' | \
             sed 's|-python||g' | \
             sed 's|_|-|g' | \
             sed 's|python-psycopg2-binary|python-psycopg2|g' | \
@@ -76,9 +91,9 @@ _gen_optdepends() {
 }
 
 makepkg -do
-infos=$(find "src/${pkgbase}-${pkgver}" -mindepth 2 -type f -name "pyproject.toml" |
+infos=$(find "src/${pkgbase}" -mindepth 2 -type f -name "pyproject.toml" |
     grep -vP '.git|_template' |
-    sed -e "s|^src/${pkgbase}-${pkgver}/||g" -e "s|/pyproject.toml$||g" |
+    sed -e "s|^src/${pkgbase}/||g" -e "s|/pyproject.toml$||g" |
     tr 'A-Z' 'a-z' |
     sort -u
 )

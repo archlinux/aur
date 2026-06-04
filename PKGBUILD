@@ -1,15 +1,16 @@
-# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Maintainer: taotieren <admin@taotieren.com>
+# Contributor: Aseem Athale <athaleaseem@gmail.com>
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgbase=opentelemetry-python-contrib
-pkgver=0.61b0
+pkgver=0.63b1
 pkgrel=1
 arch=("any")
 _url="https://github.com/open-telemetry/${pkgbase}"
 license=("Apache-2.0")
-makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
-source=("${pkgbase}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('9da506cfd588aeb65220f127ede5a6fc11fbe0df14ff195612b7166c94574872d95a59e9662b4c80ddcb8d0119f3145f48c035cc802b91c1865d80ecd929b5ff')
+makedepends=('git' 'python-build' 'python-hatchling' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("${pkgbase}::git+${_url}.git#tag=v${pkgver}")
+b2sums=('4b0a7f51555b7f1f30413e71cd9935dc2b54b69d16ab0191222ad8dad9b1cb786a8e161386fc6ae0cc34572bfbc21bfc38484efa2c1e9cf42ac33ab3b71608c4')
 
 # run './geninfo.sh' to generate following variables
 pkgname=(
@@ -24,17 +25,16 @@ pkgname=(
     "python-opentelemetry-instrumentation-openai-v2"
     "python-opentelemetry-instrumentation-vertexai"
     "python-opentelemetry-instrumentation-weaviate"
+    "python-opentelemetry-instrumentation-aio-pika"
     "python-opentelemetry-instrumentation-aiohttp-client"
     "python-opentelemetry-instrumentation-aiohttp-server"
     "python-opentelemetry-instrumentation-aiokafka"
     "python-opentelemetry-instrumentation-aiopg"
-    "python-opentelemetry-instrumentation-aio-pika"
     "python-opentelemetry-instrumentation-asgi"
     "python-opentelemetry-instrumentation-asyncclick"
     "python-opentelemetry-instrumentation-asyncio"
     "python-opentelemetry-instrumentation-asyncpg"
     "python-opentelemetry-instrumentation-aws-lambda"
-    "python-opentelemetry-instrumentation-boto"
     "python-opentelemetry-instrumentation-boto3sqs"
     "python-opentelemetry-instrumentation-botocore"
     "python-opentelemetry-instrumentation-cassandra"
@@ -75,6 +75,7 @@ pkgname=(
     "python-opentelemetry-instrumentation-urllib"
     "python-opentelemetry-instrumentation-urllib3"
     "python-opentelemetry-instrumentation-wsgi"
+    "python-opentelemetry-opamp-client"
     "python-opentelemetry-contrib-instrumentations"
     "python-opentelemetry-distro"
     "python-opentelemetry-instrumentation"
@@ -99,17 +100,16 @@ _pkgdescs=(
     "OpenTelemetry Official OpenAI instrumentation"
     "OpenTelemetry Official VertexAI instrumentation"
     "OpenTelemetry Official Weaviate Client Instrumentation"
+    "OpenTelemetry Aio-pika instrumentation"
     "OpenTelemetry aiohttp client instrumentation"
     "Aiohttp server instrumentation for OpenTelemetry"
     "OpenTelemetry aiokafka instrumentation"
     "OpenTelemetry aiopg instrumentation"
-    "OpenTelemetry Aio-pika instrumentation"
     "ASGI instrumentation for OpenTelemetry"
     "Async Click instrumentation for OpenTelemetry"
     "OpenTelemetry instrumentation for asyncio"
     "OpenTelemetry instrumentation for AsyncPG"
     "OpenTelemetry AWS Lambda instrumentation"
-    "OpenTelemetry Boto instrumentation"
     "Boto3 SQS service tracing for OpenTelemetry"
     "OpenTelemetry Botocore instrumentation"
     "OpenTelemetry Cassandra instrumentation"
@@ -150,6 +150,7 @@ _pkgdescs=(
     "OpenTelemetry urllib instrumentation"
     "OpenTelemetry urllib3 instrumentation"
     "WSGI Middleware for OpenTelemetry"
+    "OpenTelemetry OpAMP client"
     "OpenTelemetry Contrib Instrumentation Packages"
     "OpenTelemetry Python Distro"
     "Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python"
@@ -174,17 +175,16 @@ _urls=(
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-openai-v2"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-weaviate"
+    "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-aio-pika"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-aiohttp-client"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-aiohttp-server"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-aiokafka"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-aiopg"
-    "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-aio-pika"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-asgi"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-asyncclick"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-asyncio"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-asyncpg"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-aws-lambda"
-    "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-boto"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-boto3sqs"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-botocore"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-cassandra"
@@ -225,6 +225,7 @@ _urls=(
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-urllib"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-urllib3"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-wsgi"
+    "${_url}/tree/main/opamp/opentelemetry-opamp-client"
     "${_url}/tree/main/opentelemetry-contrib-instrumentations"
     "${_url}/tree/main/opentelemetry-distro"
     "${_url}/tree/main/opentelemetry-instrumentation"
@@ -249,23 +250,22 @@ _depends=(
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-genai"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-genai"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http python-wrapt"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-typing_extensions"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-typing-extensions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-instrumentation-dbapi python-wrapt"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-wrapt"
     "python-asgiref python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-typing_extensions python-wrapt"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-typing-extensions python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-instrumentation python-opentelemetry-propagator-aws-xray python-opentelemetry-semantic-conventions"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-wrapt"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-propagator-aws-xray python-opentelemetry-semantic-conventions python-wrapt"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-wrapt"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-propagator-aws-xray python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-wrapt"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-wrapt"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-instrumentation-wsgi python-opentelemetry-semantic-conventions python-opentelemetry-util-http"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-wrapt"
@@ -276,10 +276,10 @@ _depends=(
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
-    "python-opentelemetry-api python-opentelemetry-instrumentation"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-instrumentation-dbapi"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-instrumentation-dbapi"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-packaging python-wrapt"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-packaging python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-instrumentation-dbapi"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-instrumentation-dbapi"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-wrapt"
@@ -293,14 +293,15 @@ _depends=(
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-packaging python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-instrumentation-dbapi"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-instrumentation-asgi python-opentelemetry-semantic-conventions python-opentelemetry-util-http"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-psutil"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-psutil"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http"
-    "python-opentelemetry-instrumentation-aiohttp-client python-opentelemetry-instrumentation-aiohttp-server python-opentelemetry-instrumentation-aiokafka python-opentelemetry-instrumentation-aiopg python-opentelemetry-instrumentation-aio-pika python-opentelemetry-instrumentation-asgi python-opentelemetry-instrumentation-asyncclick python-opentelemetry-instrumentation-asyncio python-opentelemetry-instrumentation-asyncpg python-opentelemetry-instrumentation-aws-lambda python-opentelemetry-instrumentation-boto python-opentelemetry-instrumentation-boto3sqs python-opentelemetry-instrumentation-botocore python-opentelemetry-instrumentation-cassandra python-opentelemetry-instrumentation-celery python-opentelemetry-instrumentation-click python-opentelemetry-instrumentation-confluent-kafka python-opentelemetry-instrumentation-dbapi python-opentelemetry-instrumentation-django python-opentelemetry-instrumentation-elasticsearch python-opentelemetry-instrumentation-falcon python-opentelemetry-instrumentation-fastapi python-opentelemetry-instrumentation-flask python-opentelemetry-instrumentation-grpc python-opentelemetry-instrumentation-httpx python-opentelemetry-instrumentation-jinja2 python-opentelemetry-instrumentation-kafka-python python-opentelemetry-instrumentation-logging python-opentelemetry-instrumentation-mysql python-opentelemetry-instrumentation-mysqlclient python-opentelemetry-instrumentation-pika python-opentelemetry-instrumentation-psycopg python-opentelemetry-instrumentation-psycopg2 python-opentelemetry-instrumentation-pymemcache python-opentelemetry-instrumentation-pymongo python-opentelemetry-instrumentation-pymssql python-opentelemetry-instrumentation-pymysql python-opentelemetry-instrumentation-pyramid python-opentelemetry-instrumentation-redis python-opentelemetry-instrumentation-remoulade python-opentelemetry-instrumentation-requests python-opentelemetry-instrumentation-sqlalchemy python-opentelemetry-instrumentation-sqlite3 python-opentelemetry-instrumentation-starlette python-opentelemetry-instrumentation-system-metrics python-opentelemetry-instrumentation-threading python-opentelemetry-instrumentation-tornado python-opentelemetry-instrumentation-tortoiseorm python-opentelemetry-instrumentation-urllib python-opentelemetry-instrumentation-urllib3 python-opentelemetry-instrumentation-wsgi"
+    "python-opentelemetry-api python-protobuf python-uuid-utils"
+    "python-opentelemetry-instrumentation-aio-pika python-opentelemetry-instrumentation-aiohttp-client python-opentelemetry-instrumentation-aiohttp-server python-opentelemetry-instrumentation-aiokafka python-opentelemetry-instrumentation-aiopg python-opentelemetry-instrumentation-asgi python-opentelemetry-instrumentation-asyncclick python-opentelemetry-instrumentation-asyncio python-opentelemetry-instrumentation-asyncpg python-opentelemetry-instrumentation-aws-lambda python-opentelemetry-instrumentation-boto3sqs python-opentelemetry-instrumentation-botocore python-opentelemetry-instrumentation-cassandra python-opentelemetry-instrumentation-celery python-opentelemetry-instrumentation-click python-opentelemetry-instrumentation-confluent-kafka python-opentelemetry-instrumentation-dbapi python-opentelemetry-instrumentation-django python-opentelemetry-instrumentation-elasticsearch python-opentelemetry-instrumentation-falcon python-opentelemetry-instrumentation-fastapi python-opentelemetry-instrumentation-flask python-opentelemetry-instrumentation-grpc python-opentelemetry-instrumentation-httpx python-opentelemetry-instrumentation-jinja2 python-opentelemetry-instrumentation-kafka-python python-opentelemetry-instrumentation-logging python-opentelemetry-instrumentation-mysql python-opentelemetry-instrumentation-mysqlclient python-opentelemetry-instrumentation-pika python-opentelemetry-instrumentation-psycopg python-opentelemetry-instrumentation-psycopg2 python-opentelemetry-instrumentation-pymemcache python-opentelemetry-instrumentation-pymongo python-opentelemetry-instrumentation-pymssql python-opentelemetry-instrumentation-pymysql python-opentelemetry-instrumentation-pyramid python-opentelemetry-instrumentation-redis python-opentelemetry-instrumentation-remoulade python-opentelemetry-instrumentation-requests python-opentelemetry-instrumentation-sqlalchemy python-opentelemetry-instrumentation-sqlite3 python-opentelemetry-instrumentation-starlette python-opentelemetry-instrumentation-system-metrics python-opentelemetry-instrumentation-threading python-opentelemetry-instrumentation-tornado python-opentelemetry-instrumentation-tortoiseorm python-opentelemetry-instrumentation-urllib python-opentelemetry-instrumentation-urllib3 python-opentelemetry-instrumentation-wsgi"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-sdk"
     "python-opentelemetry-api python-opentelemetry-semantic-conventions python-packaging python-wrapt"
     "python-opentelemetry-api python-opentelemetry-sdk python-wrapt"
@@ -309,7 +310,7 @@ _depends=(
     "python-opentelemetry-instrumentation python-opentelemetry-sdk"
     "python-opentelemetry-sdk"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-sdk python-opentelemetry-semantic-conventions python-requests"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-wrapt"
     "python"
 )
 _optdepends=(
@@ -324,19 +325,18 @@ _optdepends=(
     "python-openai"
     "python-google-cloud-aiplatform"
     "python-weaviate-client"
+    "python-aio-pika"
     "python-aiohttp"
     "python-aiohttp"
     "python-aiokafka"
     "python-aiopg"
-    "python-aio-pika"
     "python-asgiref"
     "python-asyncclick"
     ""
     "python-asyncpg"
     ""
-    "python-boto"
     "python-boto3"
-    "python-botocore"
+    "python-aiobotocore python-botocore"
     "python-cassandra-driver python-scylla-driver"
     "python-celery"
     "python-click"
@@ -376,6 +376,7 @@ _optdepends=(
     "python-urllib3"
     ""
     ""
+    ""
     "python-opentelemetry-exporter-otlp"
     ""
     ""
@@ -392,7 +393,7 @@ build() {
     for ((i=0; i<${#pkgname[@]}; i++)); do
         _pkgname="${pkgname[i]#*-}"
         _dirname=$(echo "${_urls[i]}" | sed -e "s|^${_url}/tree/main/||g" -e "s|${_pkgname}$||g")
-        python -m build --wheel --no-isolation "${pkgbase}-${pkgver}/${_dirname}${_pkgname}"
+        python -m build --wheel --no-isolation "${pkgbase}/${_dirname}${_pkgname}"
     done
 }
 
@@ -406,7 +407,7 @@ main() {
             depends=(${_depends[i]})
             optdepends=(${_optdepends[i]})
 
-            cd \"${pkgbase}-${pkgver}/${_dirname}${_pkgname}\"
+            cd \"${pkgbase}/${_dirname}${_pkgname}\"
             python -m installer --destdir=\"\${pkgdir}\" dist/*.whl
             if [[ -f README.rst ]]; then
                 install -Dm644 README.rst \"\${pkgdir}/usr/share/doc/python-${_pkgname}/README.rst\"
