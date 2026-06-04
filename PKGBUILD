@@ -1,6 +1,6 @@
 # Maintainer: Avery Visentin <averyvisentin@gmail.com>
 
-_pypiname=terminal_tetris
+pypiname=terminal_tetris
 pkgname=terminal-tetris
 pkgver=0.0.10
 pkgrel=3
