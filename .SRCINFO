@@ -1,6 +1,6 @@
 pkgbase = uutils-grep-git
 	pkgdesc = Rust implementation of grep
-	pkgver = 0.1.0.r35.c614a57
+	pkgver = 0.1.0.r39.f4798cb
 	pkgrel = 1
 	url = https://github.com/uutils/grep
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = uutils-grep-git
 	makedepends = git
 	depends = gcc-libs
 	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
-	provides = tar
-	conflicts = tar
+	provides = grep
+	conflicts = grep
 	source = uutils-grep::git+https://github.com/uutils/grep.git
 	b2sums = SKIP
 
