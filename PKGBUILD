@@ -2,14 +2,14 @@
 # Contributor: MaryJaneInChain <maryjaneinchain@gmail.com>
 
 pkgname=tic-80-git
-pkgver=1.2.3054.ae1195a
+pkgver=1.2.3077.9b79d49
 pkgrel=1
 pkgdesc='TIC-80 tiny computer emulator'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://tic80.com/"
 license=('MIT')
 depends=('glibc' 'libgcc' 'libstdc++' 'libglvnd' 'curl')
-makedepends=('git' 'cmake' 'ruby-rake' 'glu')
+makedepends=('git' 'cmake' 'ruby' 'ruby-rake' 'glu')
 provides=("tic-80")
 
 _gitname=TIC-80
