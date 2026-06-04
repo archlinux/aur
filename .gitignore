@@ -3,3 +3,4 @@ pkg/
 *.tar.gz
 *.tar.zst
 *.zip
+font-patcher-*
