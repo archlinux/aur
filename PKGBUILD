@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=stdplus-git
-pkgver=r272.c6262a4
-pkgrel=2
+pkgver=r279.9b9648d
+pkgrel=1
 pkgdesc="stdplus is a c++ project containing commonly used classes and functions for the Linux platform."
 url="https://github.com/openbmc/stdplus"
 arch=($CARCH)
@@ -20,6 +20,7 @@ depends=(
 makedepends=(
     cmake
     git
+    gtest
     function2
     ninja
     meson
