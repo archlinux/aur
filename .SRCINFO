@@ -1,0 +1,14 @@
+pkgbase = oa-sdk-git
+	pkgdesc = OA SDK - Development headers and libraries for OA (git version)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/empyrealm/oa
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = oa-git
+	source = git+https://github.com/empyrealm/oa.git
+	sha256sums = SKIP
+
+pkgname = oa-sdk-git
