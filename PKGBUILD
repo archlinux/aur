@@ -1,7 +1,7 @@
-# Maintainer: justice-reaper <tu@email.com>
+# Maintainer: justice-reaper <justice.reaper.io@gmail.com>
 pkgname=acp6x-victus-16e1-dkms
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched AMD ACP6x Audio Driver for HP Victus 16-e1xxx (fixes internal microphone)"
 arch=('x86_64')
 url="https://bugzilla.kernel.org/show_bug.cgi?id=218926"

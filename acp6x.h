@@ -5,7 +5,7 @@
  * Copyright (C) 2021 Advanced Micro Devices, Inc. All rights reserved.
  */
 
-#include "acp6x_chip_offset_byte.h"
+/* acp6x_chip_offset_byte.h not needed for machine driver */
 
 #define ACP_DEVICE_ID 0x15E2
 #define ACP6x_PHY_BASE_ADDRESS 0x1240000
