@@ -1,15 +1,16 @@
 pkgbase = terminal-tetris
 	pkgdesc = A simple Tetris game for the terminal.
 	pkgver = 0.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/averyvisentin/terminal-tetris
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = base-devel
 	depends = python-blessed
-	depends = python-installer
-	source = terminal-tetris-0.0.10.tar.gz::https://files.pythonhosted.org/packages/source/t/terminal_tetris/terminal_tetris-0.0.10.tar.gz
+	source = https://files.pythonhosted.org/packages/source/t//-0.0.10.tar.gz
 	sha256sums = cc0fe8f333b5e5aa8d67ca6a99e9ad8c3e9db6786e4c704da12d3d9a6551c708
 
 pkgname = terminal-tetris
