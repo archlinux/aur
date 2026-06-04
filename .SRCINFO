@@ -1,11 +1,14 @@
 pkgbase = miasma
 	pkgdesc = Trap AI web scrapers in an endless poison pit.
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/austin-weeks/miasma
 	arch = x86_64
-	license = GPLv3-only
+	license = GPL-3.0-only
 	makedepends = cargo
+	depends = libgcc
+	depends = glibc
+	depends = sqlite
 	options = !lto
 	backup = usr/lib/systemd/system/miasma.service
 	source = miasma-0.2.7.tar.gz::https://github.com/austin-weeks/miasma/archive/refs/tags/v0.2.7.tar.gz
