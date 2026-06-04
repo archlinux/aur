@@ -1,5 +1,5 @@
 pkgname=roton-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Roton Screen Recording App (binary release)"
 arch=("x86_64")
@@ -14,8 +14,8 @@ source=(
 )
 
 sha256sums=(
-  '4a3f78599a9a3a60b8ffc9ead24d5ce8ad6318f06dc97f9557debecf9a19b2d8'
-  '0767117be62ce9dc8bd04bf393845475dd688512599d4b58ec8ac8f4afad7705'
+  '9309e3354a02e407ef791c86ff53c66f27598e81536d6ac61071453f178760a4'
+  '2c469268af4fe045b3858f43cb726bc6abf4245b46f876ee1270e9d65890d40f'
   'SKIP'
 )
 
