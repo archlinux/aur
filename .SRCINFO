@@ -1,6 +1,6 @@
 pkgbase = wowusky
 	pkgdesc = Minimalist World of Warcraft addon manager for Linux
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/borunsky/wowusky
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = wowusky
 	makedepends = npm
 	depends = python
 	depends = nodejs
-	source = wowusky-0.13.0.tar.gz::https://github.com/borunsky/wowusky/archive/refs/tags/v0.13.0.tar.gz
-	sha256sums = baa3dd7b0d0da4efffe4b9bda14505b765ce2287bee66d115f26813045224118
+	source = wowusky-0.14.0.tar.gz::https://github.com/borunsky/wowusky/archive/refs/tags/v0.14.0.tar.gz
+	sha256sums = b8e18a4ca8ac08152c7a2ab1648079500478da5d49d4e15535ecb02df436828e
 
 pkgname = wowusky
