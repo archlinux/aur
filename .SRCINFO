@@ -1,6 +1,6 @@
 pkgbase = moshpit-agent-systemd-creds-unstable-bin
 	pkgdesc = Moshpit agent daemon — systemd credentials unlock with post-quantum ML-DSA support (pre-compiled MUSL static binary)
-	pkgver = 0.8.12
+	pkgver = 0.8.13
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = moshpit-agent-systemd-creds-unstable-bin
 	conflicts = moshpit-agent-fido2-unstable-bin
 	conflicts = moshpit-agent-ssh-agent-piggyback-unstable-bin
 	conflicts = moshpit-agent-full-unstable-bin
-	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.12/dist-mpa.tar.gz
-	sha256sums = 9c5f02bc0451373608b0627d690039e254a886431aacb43042751ac6097acea3
-	source_x86_64 = mpa-systemd-creds-unstable-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.12/mpa-systemd-creds-unstable-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 026556131b1fa6166f9cfb545ae8dff671b1b4bdd9beadf59fa88a6fbad34170
-	source_aarch64 = mpa-systemd-creds-unstable-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.12/mpa-systemd-creds-unstable-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = 5ab22bce2bea13d6fdf9a0f0f8006679983f11b44f61d911eda5465538b4b7ff
+	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.13/dist-mpa.tar.gz
+	sha256sums = e5c2fc63265ff6c74d67479a4e6c1376bd6b0180e74c8ccc5574826c003d2abf
+	source_x86_64 = mpa-systemd-creds-unstable-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.13/mpa-systemd-creds-unstable-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 9a550d060444b6cce802dad4dcd3c830808ec261d13bc961b507cb903b14468f
+	source_aarch64 = mpa-systemd-creds-unstable-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.13/mpa-systemd-creds-unstable-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 3c943c4c95bac758dd9a97bfce03ddbf5cea1a31751c92895975a2875c586a0b
 
 pkgname = moshpit-agent-systemd-creds-unstable-bin
