@@ -3,26 +3,26 @@
 #
 # https://wiki.archlinux.org/title/AUR_submission_guidelines#Publishing_new_package_content
 ################################################################################
-pkgbase=freenginx
+pkgbase='freenginx'
 pkgname=($pkgbase $pkgbase'-src')
-pkgver=1.30.0
+pkgver='1.30.1'
 pkgrel=1
 _prefix_relative='etc/'$pkgbase
 _prefix_full='/'$_prefix_relative
-arch=(x86_64)
+arch=('x86_64')
 url='https://'$pkgbase'.org'
 options=(strip !debug)
-license=(custom)
-makedepends=(pcre2 zlib openssl geoip mailcap libxcrypt)
-checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi 
-              perl-cache-memcached memcached ffmpeg) 
-source=($url/download/$pkgbase-$pkgver.tar.gz{,.asc}
-        freenginx.service
-        logrotate
-        nginx.c.patch
-        ngx_setproctitle.c.patch)
+license=('custom')
+makedepends=('pcre2' 'zlib' 'openssl' 'geoip' 'mailcap' 'libxcrypt')
+checkdepends=('perl' 'perl-gd' 'perl-io-socket-ssl' 'perl-fcgi' 
+              'perl-cache-memcached' 'memcached' 'ffmpeg')
+source=($url'/download/'$pkgbase'-'$pkgver'.tar.gz'{,'.asc'}
+        'freenginx.service'
+        'logrotate'
+        'nginx.c.patch'
+        'ngx_setproctitle.c.patch')
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-sha512sums=('81d0589e55dda7bfc52aec661448990aa94b54f62c61605bcc0ff04c38fc765ac76e0d61a51899f0557e498411be6f80425f7c94a98c497c126b2c8041ed85c2'
+sha512sums=('48a48713f7437877e23a29c65b50fa8ee8cb605cf54f6a3aae40e95a760fde064c3a098343c9a521a809f2aeac0a46606e6e57dd2870bba11e4bb9442e98567e'
             'SKIP'
             '2fb3e090e0b44ed9dadf2dee11a045bf422ba80f427ff642e478c533cf756c9727a2bfafbb8e034ef45192699afb6e34fc662a7899e18808cb51ca02f3f30464'
             '24f5ee73b0e9d8775d36aa250d63401abd7c9d474babd6acc197a4e995eb6e668b15d08794145f3d5acd0a77b854be3e3d2cbc0e0f3e1b416b877baa95dc0f0f'
@@ -69,11 +69,11 @@ prepare() {
   for patch_src in "${source[@]}"; do
     #src="${patch_src%%::*}"
     #src="${patch_src##*/}"
-    [[ $patch_src = *.patch ]] || continue
-    echo -n "Applying \"$patch_src\"... "
-    patch -d "$srcdir/$pkgbase-$pkgver" -Np1 < "$srcdir/$patch_src"
+    [[ $patch_src = *'.patch' ]] || continue
+    echo -n 'Applying "'$patch_src'"... '
+    patch -d $srcdir'/'$pkgbase'-'$pkgver -Np1 < $srcdir'/'$patch_src
   done
-  cp -r $pkgbase'-'$pkgver{,-src}
+  cp -r $pkgbase'-'$pkgver{,'-src'}
 }
 
 build() {
@@ -105,16 +105,16 @@ build() {
 
 package_freenginx() {
   pkgdesc='Lightweight web server, IMAP/POP3 and TCP/UDP proxy server'
-  depends=(pcre2 zlib openssl geoip mailcap libxcrypt)
-  backup=($_prefix_relative/fastcgi.conf
-          $_prefix_relative/fastcgi_params
-          $_prefix_relative/koi-win
-          $_prefix_relative/koi-utf
-          $_prefix_relative/freenginx.conf
-          $_prefix_relative/scgi_params
-          $_prefix_relative/uwsgi_params
-          $_prefix_relative/win-utf
-          etc/logrotate.d/$pkgbase)
+  depends=('pcre2' 'zlib' 'openssl' 'geoip' 'mailcap' 'libxcrypt')
+  backup=($_prefix_relative'/fastcgi.conf'
+          $_prefix_relative'/fastcgi_params'
+          $_prefix_relative'/koi-win'
+          $_prefix_relative'/koi-utf'
+          $_prefix_relative'/freenginx.conf'
+          $_prefix_relative'/scgi_params'
+          $_prefix_relative'/uwsgi_params'
+          $_prefix_relative'/win-utf'
+          'etc/logrotate.d/'$pkgbase)
 
   cd $pkgbase'-'$pkgver
   make DESTDIR="$pkgdir" install
@@ -122,6 +122,7 @@ package_freenginx() {
   sed -e '2s|\<user\s\+\w\+;|user http;|' \
     -e '3s|1|auto|' \
     -e '8i \error_log  /var/log/'$pkgbase'/error.log  error;' \
+    -e '9s|logs/nginx\.pid;|logs/freenginx\.pid;|' \
     -e '18s|mime\.types;|\/etc\/nginx\/mime\.types;  # mailpcap reference|' \
     -e '21s|[#]||;22s|[#]||;23s|[#]||;25s|[#]||;25s|logs|/var/log/'$pkgbase'|' \
     -e '34i \\n    types_hash_max_size 4096;\n\n    server_tokens off;\n\n    root /usr/share/'$pkgbase'/html;' \
@@ -133,7 +134,7 @@ package_freenginx() {
     -e '17i fastcgi_param  SERVER_SOFTWARE    '$pkgbase';' \
     -i $pkgdir$_prefix_full'/fastcgi_params'
 
-  rm $pkgdir$_prefix_full'/'*.default
+  rm $pkgdir$_prefix_full'/'*'.default'
   rm $pkgdir$_prefix_full'/mime.types'  # in mailcap
 
   install -d $pkgdir'/var/lib/'$pkgbase
@@ -154,8 +155,7 @@ package_freenginx() {
 
   rmdir $pkgdir'/run'
 
-  gzip -q9 objs/nginx.8 && \
-  install -Dm0644 'objs/nginx.8.gz' $pkgdir'/usr/share/man/man8/'$pkgbase'.8'
+  install -Dm0644 'objs/nginx.8' $pkgdir'/usr/share/man/man8/'$pkgbase'.8'
 
   for i in ftdetect ftplugin indent syntax; do
     install -Dm644 'contrib/vim/'$i'/nginx.vim' \
