@@ -1,0 +1,19 @@
+pkgbase = python-django-simple-history
+	pkgdesc = Store Django model history (track changes, view/revert to prior states)
+	pkgver = 3.11.0
+	pkgrel = 1
+	url = https://github.com/jazzband/django-simple-history
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python
+	depends = python-django
+	optdepends = python-asgiref: async-safe historical-user tracking middleware
+	source = django-simple-history-3.11.0.tar.gz::https://github.com/jazzband/django-simple-history/archive/refs/tags/3.11.0.tar.gz
+	sha256sums = 142343fc0a83d20b73ffef444009244f450165cdb7134e5303be7bdab9c28373
+
+pkgname = python-django-simple-history
