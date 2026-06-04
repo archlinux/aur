@@ -1,7 +1,7 @@
 pkgbase = terminal-tetris
 	pkgdesc = A simple Tetris game for the terminal.
 	pkgver = 0.0.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/averyvisentin/terminal-tetris
 	arch = any
 	license = MIT

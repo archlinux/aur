@@ -3,7 +3,7 @@
 pypiname=terminal_tetris
 pkgname=terminal-tetris
 pkgver=0.0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple Tetris game for the terminal."
 arch=('any')
 url="https://github.com/averyvisentin/terminal-tetris"
