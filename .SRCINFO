@@ -14,10 +14,8 @@ pkgbase = mytimer
 	depends = python-art
 	depends = python-jdatetime
 	depends = python-colorama
-	provides = mytimer
 	conflicts = python-mytimer
-	replaces = python-mytimer
-	source = https://files.pythonhosted.org/packages/source/m/mytimer/mytimer-2.6.tar.gz
-	sha256sums = 8cdf37bc369f9674f711caaf5e67077a7589dc70ddfc18048dec460199415d27
+	source = mytimer-2.6.tgz::https://github.com/sepandhaghighi/mytimer/archive/v2.6.tar.gz
+	sha256sums = 5c891ab9d018a8d01eea4fcb9bff6f75d413ed5ee725436691f422319df6b63c
 
 pkgname = mytimer
