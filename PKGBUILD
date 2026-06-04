@@ -5,13 +5,13 @@
 # Original: https://github.com/SVAH-X/claude-code-but-priestess
 
 pkgname=priestess-arknights
-_pkgreal=claude-code-but-priestess
+_pkgreal=priestess-arknights
 _upstream_url=https://github.com/SVAH-X/claude-code-but-priestess
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="桌面伴侣普瑞赛斯 (Priestess) — 基于 Claude Code / Codex CLI 后端的 Electron 托盘应用"
 arch=('x86_64')
-url="https://github.com/aklnaaw/claude-code-but-priestess"
+url="https://github.com/aklnaaw/priestess-arknights"
 license=('custom:UNLICENSED')
 depends=(
   'cairo'
@@ -125,7 +125,7 @@ DESKTOP
   cat > "${pkgdir}/usr/share/metainfo/priestess.metainfo.xml" << APPDATA
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>local.claude-code-but-priestess.menubar</id>
+  <id>local.priestess-arknights.menubar</id>
   <name>Priestess</name>
   <name xml:lang="zh_CN">普瑞赛斯</name>
   <summary>Desktop companion — Priestess from Arknights</summary>
