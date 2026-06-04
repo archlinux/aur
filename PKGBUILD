@@ -1,7 +1,7 @@
 pkgbase=eim-bin
 pkgname=('eim-cli' 'eim-gui')
-pkgver=0.13.0
-pkgrel=2
+pkgver=0.13.1
+pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/espressif/idf-im-ui"
 license=('Apache-2.0')
@@ -16,10 +16,10 @@ sha256sums=('eb574ade90f636523bb00078df0b92dfd8e289c31f136af257953e689ac84d69')
 sha256sums_x86_64=('c028091edef37c029b6f77c18bfa561db692e460406abda5bcd5256aa0dc4ec1'
                    'e0718365128452c7401ba7ff188a2122c876bc4b78ef614cfb68c7b0f830265f'
                    '780e992f87e6622361a1cb54681d4d215d8b2c0232e96f55aaa682b0ee51bc41')
-sha256sums_aarch64=('49af3c20b2686d85dc3cfc60fde008ce3a9cc15273d4f2baffd15aa80147d9fe'
-                    'e4300a200c2a50caa0efe184b49af3f5e9d68567e5ea48f249337d5ff7a3067b'
+sha256sums_aarch64=('7e6f97b600383d10ed8c04a69a882c5ae7e9290456440bbe2780486f59170833'
+                    '23d14d90f57f33e14bb764c59433cc4f8d4ec3cc3d08fe19946945d926da5510'
                     '780e992f87e6622361a1cb54681d4d215d8b2c0232e96f55aaa682b0ee51bc41')
-sha256sums_armv7h=('398dd4e330da84d1766614d3fdd9695ae0ec19e4b01202fba20da2a6a593ef0c')
+sha256sums_armv7h=('60b02546b7d6130b002541cc79b5725850f85756a289c64654f722ed37c3b040')
 
 source_x86_64+=("cli-x64.zip::${url}/releases/download/v${pkgver}/eim-cli-linux-x64.zip"
                 "gui-x64.zip::${url}/releases/download/v${pkgver}/eim-gui-linux-x64.zip"
