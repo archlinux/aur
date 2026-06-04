@@ -1,7 +1,7 @@
 # Maintainer: Sergey Morozov <12103270+v4n6@users.noreply.github.com>
 _appname=copilot-language-server
 pkgname=${_appname}-bin
-pkgver=1.500.0
+pkgver=1.501.0
 epoch=1
 pkgrel=1
 
@@ -16,11 +16,11 @@ source=("https://raw.githubusercontent.com/github/copilot-language-server-releas
 source_aarch64=("https://github.com/github/copilot-language-server-release/releases/download/${pkgver}/${_appname}-linux-arm64-${pkgver}.zip")
 source_x86_64=("https://github.com/github/copilot-language-server-release/releases/download/${pkgver}/${_appname}-linux-x64-${pkgver}.zip")
 sha256sums=('9e48ecfa18e2b15169746a3c97beda4d1d6c6796097038498ca434ca7e0ccd44')
-sha256sums_aarch64=('33dcf6046833ff5a79abbe74b6c6f9fc35fdabbc0a760594b200bdbbf9e7d2cd')
-sha256sums_x86_64=('ffb1cb199f7a41211962869d4554f974878b7fd0048f2b8e9f14ce37ba5c578a')
+sha256sums_aarch64=('5876367208c929a037149026cd28aa1c2aebcdf64844d521f2c6e1536a7136c2')
+sha256sums_x86_64=('90494a5d7482160627a58ad4258a618892cb532e7064dc6707f6265b3e79f9e8')
 b2sums=('ddb0252f3de49c63f92963fdad8a31a0ff582380a66a2b76f136b09021e878c6c4bb7c6f2eb4fbb3135a38b7f4a47d2ded25a05069bd3d055d7c718775b7bf54')
-b2sums_aarch64=('0503060096aaa3b2cdef486224d35d31f98fdc360da64f5aedfd62ccaa792cf07ede541a7a639359e4db3e25924866ed214acf6890454ce04966bfb79858515e')
-b2sums_x86_64=('d16d3e43a080ee7679eda3908872d99c1dde7436506eabf6bd59d5fd2b771395edff30d4a26de556124d597873db90079d367426e3ec137c23e1b8c22ac74f37')
+b2sums_aarch64=('944e3f5fdf3a675baa6052ba7e031e3b6787416836bd0094cb4e7331f799e1546ccfbfb2d9e4f067dae9583b88ccdcd3a9f0cf6dedfe4f4f66b40ee74f85da42')
+b2sums_x86_64=('f35f039957e2ccd01c674ace9156eca1a9753927691ff02393339d3f41824d3d0f6073061d11279f6192453b50e3695d3d919a35a60a9766ca8cc28051eb8949')
 
 options=("!strip")
 
