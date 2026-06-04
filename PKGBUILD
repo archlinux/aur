@@ -1,7 +1,7 @@
 # Maintainer: T4toh <https://github.com/T4toh>
 pkgname=twriter-bin
 _pkgname=tWriter
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Editor de novelas en ES/EN con conversor RAE de diálogos, gramática vía LanguageTool, export EPUB"
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('twriter')
 options=('!strip' '!debug')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.deb::https://github.com/T4toh/tWriter/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('93f37343ad0f9f80ab7e838e4e58d4905132e500822058f07384238f0fd9cf70')
+sha256sums=('bf67e0a24f35e6a4aa554b7aaf8036d0eb2f94138cc459b3e4a9c3d904b7a8c8')
 
 package() {
     cd "${srcdir}"
