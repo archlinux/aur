@@ -3,26 +3,26 @@
 pkgname=randrctl
 pkgdesc="Lightweight profile based screen manager for X"
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="http://github.com/koiuo/randrctl"
 license=('GPL3')
-makedepends=('git' 'python-build' 'python-installer' 'python-pbr' 'python-wheel' 'python-hatchling')
+makedepends=('git' 'python-build' 'python-installer' 'python-pbr' 'python-wheel' 'python-hatchling' 'python-hatch-vcs')
 depends=('python' 'python-argcomplete' 'python-yaml' 'xorg-xrandr')
 optdepends=('bash-completion: bash shell prompt auto-completions')
 install="randrctl.install"
-source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/koiuo/$pkgname/archive/$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/koiuo/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('733a93997c2592a917afcf91e16e70c41f2ef47c1531d220adbc1fc08c012277')
 
 
 build() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
   python -m randrctl setup completion > bash_completion
