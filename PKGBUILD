@@ -4,14 +4,14 @@ pkgver=0.1.16.r2.gac4c84b
 pkgrel=1
 pkgdesc="Keyboard-first terminal UI for Google Calendar"
 arch=('x86_64' 'aarch64')
-url="https://github.com/semos-labs/aion"
+url="https://github.com/brandonpollack23/aion"
 license=('MIT')
 depends=()
 makedepends=('git' 'bun')
 provides=('aion')
 conflicts=('aion')
 options=('!strip')
-source=("$pkgname::git+https://github.com/semos-labs/aion.git")
+source=("$pkgname::git+https://github.com/brandonpollack23/aion.git")
 sha256sums=('SKIP')
 
 pkgver() {

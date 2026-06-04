@@ -2,7 +2,7 @@ pkgbase = aion-git
 	pkgdesc = Keyboard-first terminal UI for Google Calendar
 	pkgver = 0.1.16.r2.gac4c84b
 	pkgrel = 1
-	url = https://github.com/semos-labs/aion
+	url = https://github.com/brandonpollack23/aion
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = aion-git
 	provides = aion
 	conflicts = aion
 	options = !strip
-	source = aion-git::git+https://github.com/semos-labs/aion.git
+	source = aion-git::git+https://github.com/brandonpollack23/aion.git
 	sha256sums = SKIP
 
 pkgname = aion-git
