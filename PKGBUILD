@@ -1,23 +1,18 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=nmem-cli
 pkgver=0.8.8
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI and TUI for Nowledge Mem - AI memory management"
 arch=('any')
 url="https://mem.nowledge.co/docs/cli"
 license=('MIT')
-depends=('python>=3.11')
-makedepends=('python-installer' 'python-build' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/n/nmem-cli/nmem_cli-${pkgver}.tar.gz")
-sha256sums=('20db38bf0227b8e1045b8e75c4e8c0ce47cb3c8ed4fc4528dab277867c71b00a')
-
-build() {
-    cd "nmem_cli-${pkgver}"
-    python -m build --wheel --no-isolation
-}
+depends=('python' 'python-rich' 'python-httpx' 'python-pyperclip' 'python-qrcode' 'python-textual')
+makedepends=('python-installer')
+_wheelname="nmem_cli-${pkgver}-py3-none-any.whl"
+source=("https://files.pythonhosted.org/packages/py3/n/nmem-cli/${_wheelname}")
+noextract=("${_wheelname}")
+sha256sums=('3a004d23765744e134bd12552626bdea1068989bb671bb174c96473d5e5e7f32')
 
 package() {
-    cd "nmem_cli-${pkgver}"
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
+    python -m installer --destdir="$pkgdir" "${srcdir}/${_wheelname}"
 }
