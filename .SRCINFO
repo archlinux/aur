@@ -1,6 +1,6 @@
 pkgbase = milou-git
 	pkgdesc = A dedicated search application built on top of Baloo
-	pkgver = 6.6.90.r5.g5554688
+	pkgver = 6.6.90.r6.gadac27a
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/milou
 	arch = x86_64
