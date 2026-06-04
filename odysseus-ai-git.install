@@ -1,0 +1,56 @@
+post_install() {
+    echo ""
+    echo "=== Odysseus AI: Post-install setup ==="
+    echo ""
+    echo "Creating Python virtual environment..."
+    python -m venv /usr/lib/odysseus-ai/venv
+    /usr/lib/odysseus-ai/venv/bin/pip install --quiet \
+        -r /usr/lib/odysseus-ai/requirements.filtered.txt \
+        chromadb-client fastembed youtube-transcript-api caldav mcp \
+        "pydantic-settings>=2.0"
+    echo "[ok] Dependencies installed"
+
+    echo ""
+    echo "Initialising database..."
+    cd /usr/lib/odysseus-ai && /usr/lib/odysseus-ai/venv/bin/python setup.py
+    chown -R "$SUDO_USER:$SUDO_USER" /usr/lib/odysseus-ai/data /usr/lib/odysseus-ai/logs 2>/dev/null || true
+
+    echo ""
+    echo "--- Enable the service ---"
+    echo "  systemctl --user enable --now odysseus-ai"
+    echo ""
+    echo "Then open http://localhost:7000"
+    echo "Note: On first start, fastembed downloads ~30MB of ML models. Give it a minute."
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "=== Odysseus AI upgraded ==="
+    echo "Updating dependencies..."
+    /usr/lib/odysseus-ai/venv/bin/pip install --quiet \
+        -r /usr/lib/odysseus-ai/requirements.filtered.txt \
+        chromadb-client fastembed youtube-transcript-api caldav mcp \
+        "pydantic-settings>=2.0"
+    cd /usr/lib/odysseus-ai && /usr/lib/odysseus-ai/venv/bin/python setup.py
+    echo "Restart the service:"
+    echo "  systemctl --user restart odysseus-ai"
+    echo ""
+}
+
+pre_remove() {
+    systemctl --user stop odysseus-ai 2>/dev/null || true
+    systemctl --user disable odysseus-ai 2>/dev/null || true
+    systemctl stop odysseus-ai 2>/dev/null || true
+    systemctl disable odysseus-ai 2>/dev/null || true
+}
+
+post_remove() {
+    echo ""
+    echo "=== Odysseus AI removed ==="
+    echo "Venv and data are NOT deleted. Clean up manually if needed:"
+    echo "  sudo rm -rf /usr/lib/odysseus-ai/venv"
+    echo "  sudo rm -rf /usr/lib/odysseus-ai/data"
+    echo "  rm -rf ~/.config/odysseus-ai"
+    echo ""
+}
