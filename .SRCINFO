@@ -1,6 +1,6 @@
 pkgbase = postgrest-bin
 	pkgdesc = Serve a RESTful API from any Postgres database
-	pkgver = 14.11
+	pkgver = 14.12
 	pkgrel = 1
 	url = https://github.com/PostgREST/postgrest
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = postgrest-bin
 	provides = postgrest
 	provides = postgrest-bin
 	conflicts = postgrest
-	source = https://github.com/PostgREST/postgrest/releases/download/v14.11/postgrest-v14.11-linux-static-x86-64.tar.xz
-	sha512sums = 4271dd90eff56e06a28693a5de24dc7aec1f5831021c9c337ba59816e76716fd3a169c73edfaf22355c89f5200af0396dc8e40ca9ed89c11bebca474368f23f0
+	source = https://github.com/PostgREST/postgrest/releases/download/v14.12/postgrest-v14.12-linux-static-x86-64.tar.xz
+	sha512sums = 2817f7bd243f4a648983a232f37539d19e128f192b8bf35417d5d334421e0b45f9ec0a9d8b9aede6626bcbed3e4412d4a02923fa344365a8a0fabb18b342e12a
 
 pkgname = postgrest-bin
