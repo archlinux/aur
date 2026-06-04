@@ -1,7 +1,7 @@
 pkgbase = finkeeper24-bin
 	pkgdesc = FinKeeper24 - менеджер личных финансов (Personal Finance Manager)
 	pkgver = 2.0.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://finkeeper24.ru
 	arch = x86_64
 	license = Apache-2.0

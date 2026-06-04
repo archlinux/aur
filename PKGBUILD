@@ -2,7 +2,7 @@
 
 pkgname=finkeeper24-bin
 pkgver=2.0.3
-pkgrel=2
+pkgrel=1
 pkgdesc="FinKeeper24 - менеджер личных финансов (Personal Finance Manager)"
 arch=('x86_64')
 url="https://finkeeper24.ru"
