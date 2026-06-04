@@ -1,6 +1,6 @@
 # Maintainer: WinnerWind <archaur543258@winnerwind.in>
 pkgrel=1
-pkgver=0.28.8
+pkgver=0.29.10
 pkgname=late-sh-cli-bin
 pkgdesc='Companion CLI for the Late.sh terminal clubhouse (prebuilt version)'
 arch=(x86_64)
