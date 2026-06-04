@@ -2,7 +2,7 @@
 
 pkgname=python-kicad-mcp-pro
 _name=${pkgname#python-}
-pkgver=3.7.3
+pkgver=3.7.4
 pkgrel=1
 pkgdesc="A Model Context Protocol server for KiCad EDA workflows"
 provides=(${pkgname})
@@ -53,7 +53,7 @@ optdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('473145c30cf897d11b417d574bc3c82b7427bc42455c599860c2487dabd5373a')
+sha256sums=('650f2196b6b56e8092116d24605ca10436828fc08a5f738415d240f2ed7acdb3')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
