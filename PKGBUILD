@@ -1,6 +1,6 @@
 # Maintainer: Denis Gordenin <support@yutovo.ru>
 pkgname=yutovo
-pkgver=1.5.3
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Arbitrary precision graphical WYSIWYG calculator inside a text editor"
 arch=(x86_64)
@@ -17,19 +17,23 @@ source=(
     "boost_1_83_0::https://archives.boost.io/release/1.83.0/source/boost_1_83_0.zip"
     "libgmp::https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz"
     "libmpfr::https://www.mpfr.org/mpfr-4.2.1/mpfr-4.2.1.tar.gz"
-    "yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#commit=87054b4665d5046bb54b1ebf002ae94f2ca40049"
-    "rapidjson::git+https://github.com/Tencent/rapidjson.git#commit=f54b0e47a08782a6131cc3d60f94d038fa6e0a51"
-    "yutovo-solver::git+https://github.com/denprog/yutovo-solver.git#commit=fa936d23b22e3612dc7184734fb11d4ce8ac4ae3"
+    "mpc::https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz"
+    "symengine::https://github.com/symengine/symengine/archive/refs/tags/v0.14.0.tar.gz"
+    "yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#commit=809bb96b79c709b60a020e3f44a6fd84b889ea73"
+    "rapidjson::git+https://github.com/Tencent/rapidjson.git#tag=v1.1.0"
+    "yutovo-solver::git+https://github.com/denprog/yutovo-solver.git#commit=60416df6dc8ab644fea7d43b77b646dfee0a236f"
     "mathgl-8.0.3.tar.gz::https://downloads.sourceforge.net/mathgl/mathgl-8.0.3.tar.gz"
     "libharu::git+https://github.com/libharu/libharu.git#commit=0c598becaadaef8e3d12b883f9fc2864a118c12d"
     "stb_image.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image.h"
     "stb_image_write.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image_write.h"
-    "yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#commit=13f746f835fbbb3b6bd7832e1aac48d30f3325ad"
-    "yutovo-library::git+https://github.com/denprog/yutovo-library.git#commit=dc7e56c26d90cdf9641ed05d06fb35a87c0a3edc"
-    "yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#commit=7eb01a7884441ba86342e93b7694c2e08d41a905"
+    "yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#commit=d12c9ad07044a5daa96a89e411f0a365223d340f"
+    "yutovo-library::git+https://github.com/denprog/yutovo-library.git#commit=2cba3d4249e5fadc3948905fc213a46e84e12b5a"
+    "yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#commit=0aeb529cbc6ba30007c7f47cd457c5ca2e603b0d"
 )
 
 sha256sums=(
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -91,10 +95,23 @@ build() {
     make -sj && make install
     cd ..
 
+    echo "Building mpc"
+    cd mpc-1.3.1
+    ./configure --enable-static --disable-shared --prefix=$YUTOVO_DEPLOY --libdir=$YUTOVO_DEPLOY/lib --with-gmp=$YUTOVO_DEPLOY --with-mpfr=$YUTOVO_DEPLOY
+    make -sj && make install
+    cd ..
+
+    echo "Building symengine"
+    cd symengine-0.14.0
+    mkdir -p build && cd build
+    cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DBUILD_BENCHMARKS=OFF -DWITH_MPFR=True -DWITH_MPC=True -DBUILD_SHARED_LIBS=False -DCMAKE_INSTALL_PREFIX=$YUTOVO_DEPLOY ..
+    make -sj && make install
+    cd ../..
+
     echo "Building yutovo-calculator"
     cd yutovo-calculator
     mkdir -p build && cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=$YUTOVO_DEPLOY ..
+    cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=$YUTOVO_DEPLOY ..
     make -sj && make install
     cd ../..
 
@@ -107,7 +124,7 @@ build() {
     echo "Building yutovo-solver"
     cd yutovo-solver
     mkdir -p build && cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$YUTOVO_DEPLOY ..
+    cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$YUTOVO_DEPLOY ..
     make -sj && make install
     cd ../..
 
@@ -132,7 +149,7 @@ build() {
     echo "Building yutovo-editor"
     cd yutovo-editor
     mkdir -p build && cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=$YUTOVO_DEPLOY ..
+    cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=$YUTOVO_DEPLOY ..
     make -sj8 && make install
     cd ../..
 
@@ -144,7 +161,7 @@ build() {
     echo "Building yutovo-desktop"
     cd yutovo-desktop
     mkdir -p build && cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$YUTOVO_DEPLOY ..
+    cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$YUTOVO_DEPLOY ..
     make -sj8 && make install
     cd ../..
 }
@@ -152,16 +169,23 @@ build() {
 package() {
     echo "package"
     mkdir -p $pkgdir/usr/bin
+    mkdir -p $pkgdir/usr/share/icons/hicolor/16x16/apps
+    mkdir -p $pkgdir/usr/share/icons/hicolor/32x32/apps
+    mkdir -p $pkgdir/usr/share/icons/hicolor/64x64/apps
     mkdir -p $pkgdir/usr/share/icons/hicolor/256x256/apps
     mkdir -p $pkgdir/usr/share/icons/hicolor/256x256/mimetypes
     mkdir -p $pkgdir/usr/share/applications/
     mkdir -p $pkgdir/usr/share/mime/packages/
+    mkdir -p $pkgdir/usr/share/metainfo/
     mkdir -p $pkgdir/usr/share/yutovo/translations/
 
     cp $YUTOVO_DEPLOY/bin/yutovo-desktop $pkgdir/usr/bin/
     cp -r $srcdir/yutovo-desktop/build/src/*.qm $pkgdir/usr/share/yutovo/translations/
     cp -r $srcdir/yutovo-library/library $pkgdir/usr/share/yutovo/
     cp $srcdir/yutovo-desktop/setup/Arch/run.sh $pkgdir/usr/bin/yutovo
+    cp $srcdir/yutovo-desktop/setup/yutovo-16.png $pkgdir/usr/share/icons/hicolor/16x16/apps/yutovo.png
+    cp $srcdir/yutovo-desktop/setup/yutovo-32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/yutovo.png
+    cp $srcdir/yutovo-desktop/setup/yutovo-64.png $pkgdir/usr/share/icons/hicolor/64x64/apps/yutovo.png
     cp $srcdir/yutovo-desktop/src/images/mainicon.png $pkgdir/usr/share/icons/hicolor/256x256/apps/yutovo.png
     cp $srcdir/yutovo-desktop/src/images/mainicon.png $pkgdir/usr/share/icons/hicolor/256x256/mimetypes/application-x-yut.png
 
@@ -171,5 +195,6 @@ package() {
     chmod -R -w $pkgdir/usr/share/yutovo/library
 
     cp $srcdir/yutovo-desktop/setup/Arch/yutovo.desktop $pkgdir/usr/share/applications/
-    cp $srcdir/yutovo-desktop/setup/yut.xml $pkgdir/usr/share/mime/packages/
+    cp $srcdir/yutovo-desktop/setup/yutovo.xml $pkgdir/usr/share/mime/packages/
+    cp $srcdir/yutovo-desktop/setup/com.yutovo.yutovo.metainfo.xml $pkgdir/usr/share/metainfo/
 }
