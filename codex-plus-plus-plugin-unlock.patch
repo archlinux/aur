@@ -1,17 +1,8 @@
 --- a/assets/inject/renderer-inject.js
 +++ b/assets/inject/renderer-inject.js
-@@ -65,6 +65,7 @@
-   const codexServiceTierRequestOverrideVersion = "2";
-   const codexAppServerModelRequestPatchVersion = "1";
-   const codexPluginMarketplaceUnlockVersion = "10";
-+  const codexPluginNavUnlockVersion = "1";
-   const codexThreadScrollMaxEntries = 120;
-   const codexThreadScrollSaveThrottleMs = 120;
-   const codexThreadScrollRestoreWindowMs = 3200;
-@@ -2699,6 +2700,102 @@
-     pluginInstallCandidates().forEach(clearForcedInstallButtonLabel);
-   }
-
+@@ -67,0 +68 @@
++  const codexPluginNavUnlockVersion = "2";
+@@ -2701,0 +2703,154 @@
 +  function pluginNavButtonCandidates() {
 +    return Array.from(document.querySelectorAll(selectors.pluginNavButton))
 +      .filter((button) => button instanceof HTMLElement && isPluginNavButton(button));
@@ -23,26 +14,92 @@
 +    return !!button.querySelector?.(selectors.pluginSvgPath);
 +  }
 +
-+  function navigateToCodexPlugins(event) {
-+    event?.preventDefault?.();
-+    event?.stopPropagation?.();
-+    event?.stopImmediatePropagation?.();
-+    const state = { ...(history.state || {}), codexPlusOpenPlugins: true };
-+    history.pushState(state, "", "/skills");
-+    window.dispatchEvent(new PopStateEvent("popstate", { state }));
-+    sendCodexPlusDiagnostic("plugin_nav_button_opened", {});
++  function reactPropKeys(element) {
++    return Object.keys(element || {}).filter((key) => key.startsWith("__reactProps"));
++  }
++
++  function reactPropsFor(element) {
++    return reactPropKeys(element)
++      .map((key) => element[key])
++      .filter((props) => props && typeof props === "object");
++  }
++
++  function reactFiberFor(element) {
++    const key = Object.keys(element || {}).find((key) => key.startsWith("__reactFiber"));
++    return key ? element[key] : null;
++  }
++
++  function reactPropHandlersFor(element) {
++    const handlers = reactPropsFor(element)
++      .map((props) => props.onClick)
++      .filter((handler) => typeof handler === "function");
++    const fiber = reactFiberFor(element);
++    [
++      fiber?.memoizedProps?.onClick,
++      fiber?.pendingProps?.onClick,
++      fiber?.alternate?.memoizedProps?.onClick,
++      fiber?.alternate?.pendingProps?.onClick,
++    ].forEach((handler) => {
++      if (typeof handler === "function") handlers.push(handler);
++    });
++    return Array.from(new Set(handlers));
++  }
++
++  function reactClickHandlerFor(element) {
++    for (const handler of reactPropHandlersFor(element)) {
++      if (typeof handler === "function") return handler;
++    }
++    return null;
++  }
++
++  function isUsefulPluginNavClickHandler(handler) {
++    if (typeof handler !== "function") return false;
++    const source = Function.prototype.toString.call(handler);
++    if (/^\s*(?:\(\)\s*=>\s*\{\s*\}|function\s*[^(]*\([^)]*\)\s*\{\s*\})\s*$/.test(source)) return false;
++    if (source.includes("navigateToCodexPlugins")) return false;
++    return true;
++  }
++
++  function isSkillsRouteClickHandler(handler) {
++    if (!isUsefulPluginNavClickHandler(handler)) return false;
++    const source = Function.prototype.toString.call(handler);
++    return source.includes("Uy(") || source.includes("/skills");
++  }
++
++  function isSkillsNavButton(button) {
++    const text = (button.textContent || "").trim();
++    return /^(Skills|技能)$/.test(text);
++  }
++
++  function pluginNavFallbackClickHandler(button) {
++    const ownSkillsHandler = reactPropHandlersFor(button).find(isSkillsRouteClickHandler);
++    if (ownSkillsHandler) return ownSkillsHandler;
++    const currentHandler = reactClickHandlerFor(button);
++    if (isUsefulPluginNavClickHandler(currentHandler)) return currentHandler;
++    const nav = button.closest?.('nav[role="navigation"]');
++    const candidates = Array.from(nav?.querySelectorAll?.(selectors.pluginNavButton) || []);
++    for (const candidate of candidates) {
++      if (candidate === button) continue;
++      const handlers = reactPropHandlersFor(candidate);
++      const skillsHandler = handlers.find(isSkillsRouteClickHandler);
++      if (skillsHandler) return skillsHandler;
++    }
++    const skillsButton = candidates.find((candidate) => candidate !== button && isSkillsNavButton(candidate));
++    const skillsHandler = reactClickHandlerFor(skillsButton);
++    if (isUsefulPluginNavClickHandler(skillsHandler)) return skillsHandler;
++    return null;
 +  }
 +
 +  function patchReactPluginNavProps(element) {
-+    Object.keys(element)
-+      .filter((key) => key.startsWith("__reactProps"))
-+      .forEach((key) => {
-+        const props = element[key];
-+        if (!props || typeof props !== "object") return;
++    const pluginHandler = pluginNavFallbackClickHandler(element);
++    reactPropsFor(element)
++      .forEach((props) => {
 +        props.disabled = false;
 +        props["aria-disabled"] = false;
 +        props["data-disabled"] = undefined;
-+        props.onClick = navigateToCodexPlugins;
++        if (pluginHandler && !isUsefulPluginNavClickHandler(props.onClick)) {
++          props.onClick = pluginHandler;
++        }
 +      });
 +  }
 +
@@ -74,19 +131,11 @@
 +    return Array.from(new Set(nodes));
 +  }
 +
-+  function installPluginNavGuard(button) {
-+    if (button.dataset.codexPluginNavUnlocked === codexPluginNavUnlockVersion) return;
-+    button.dataset.codexPluginNavUnlocked = codexPluginNavUnlockVersion;
-+    ["pointerdown", "mousedown", "mouseup", "click"].forEach((eventName) => {
-+      button.addEventListener(eventName, navigateToCodexPlugins, true);
-+    });
-+  }
-+
 +  function unlockPluginNavButtons() {
 +    if (!codexPlusSettings().pluginMarketplaceUnlock) return;
 +    pluginNavButtonCandidates().forEach((button) => {
++      button.dataset.codexPluginNavUnlocked = codexPluginNavUnlockVersion;
 +      pluginNavUnlockNodes(button).forEach(clearPluginNavDisabledState);
-+      installPluginNavGuard(button);
 +    });
 +  }
 +
@@ -108,23 +157,8 @@
 +    }, codexForcePluginInstallRefreshIntervalMs);
 +  }
 +
-   function unblockPluginInstallButtons() {
-     if (pluginPatchDisabledInRelayMode()) return;
-     if (!codexPlusSettings().forcePluginInstall) return;
-@@ -7590,6 +7687,8 @@
-   }
-
-   function scanDeferred() {
+@@ -7592,0 +7748,2 @@
 +    unlockPluginNavButtons();
 +    refreshPluginNavUnlockLoop();
-     if (pluginPatchDisabledInRelayMode()) {
-       clearPluginPatchArtifacts();
-       refreshForcePluginInstallUnlockLoop();
-@@ -7645,6 +7744,7 @@
-       ".composer-footer",
-       selectors.appHeader,
-       selectors.archiveNav,
+@@ -7647,0 +7805 @@
 +      selectors.pluginNavButton,
-       ...(pluginPatchDisabledInRelayMode() ? [] : [selectors.disabledInstallButton]),
-     ].join(", ");
-   }

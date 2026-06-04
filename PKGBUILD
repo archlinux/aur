@@ -2,7 +2,7 @@
 
 pkgname=codex-plus-plus
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Codex++ auto-injector bridge for openai-codex-desktop'
 arch=('x86_64')
 url='https://github.com/BigPizzaV3/CodexPlusPlus'
@@ -31,7 +31,7 @@ sha256sums=(
   '7543fe883622c00467cf457e67c7d0fc0b5db9b639472a66dcb9d6a385f788db'
   '2669ce573262d96ea38f085280899e729bc8b542890c6bbdb01e23853e2cd661'
   '4097d1937593ca1e2e5dcf3bbed65f85a2cb066e4d336ad286061a822aacfd8e'
-  '806d84ec35d935973782b42f964e2e3d3c347e35dda77251ea87ebd50359ff25'
+  '73b3a68f7c96d632ef82bc34bdac09496c9fd23b834ee858ab3c554074651932'
   '187f5bada32771e5197506208c362778e98fa63fd6e13151e7675047932172a9'
 )
 
