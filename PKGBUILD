@@ -16,5 +16,5 @@ source=("https://github.com/rudrabhoj/numnum/releases/download/v${pkgver}/NumNum
 sha256sums=('85f90f4501d477813be24cd5a61e79a03101a6af80325b07226fcd10816d9749')
 
 package() {
-    bsdtar -xf "${srcdir}/NumNum-0.2.2-archlinux-x86_64.pkg.tar.zst" -C "${pkgdir}"
+    bsdtar -xf "${srcdir}/NumNum-0.2.2-archlinux-x86_64.pkg.tar.zst" -C "${pkgdir}" --exclude='.BUILDINFO' --exclude='.MTREE' --exclude='.PKGINFO'
 }
