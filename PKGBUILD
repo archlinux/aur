@@ -3,7 +3,7 @@ pkgname=beyondallreason
 electronver=42
 pkgver=1.2988.0
 electronver=42
-pkgrel=3
+pkgrel=4
 pkgdesc="The latest release of BYAR-Chobby, the launcher for Beyond All Reason - An open source RTS game built on top of the Spring RTS Engine"
 arch=(x86_64)
 url="https://beyondallreason.info"
@@ -17,7 +17,7 @@ source=("git+https://github.com/beyond-all-reason/BYAR-Chobby.git#tag=v$pkgver"
 
 b2sums=('e7bf39475b03da7bb4611b6ac716dbfbcf514afdcad0349ba8e17f456627087bb7bfe8d67f5eeb31eb039bbf79bc74d20bcf170e7b49b6a41a1889bebfe7175a'
         '8bf68c86c60a72c06c3bb042dc21a4a66bb389a912579998587df8e5213fa2eef2172a506d91bfaaf86b57d8d37b3cec85825c1581ec14d4bc7b55ac2ca44969'
-        '4d74e6526a526559c07738e0c4f042f200dd35f9a0fd7129242de4c7843c458ee6bc519cf146bf23302211f304a2e840cfda0ad0679ed1b72e4e81d406bf9ac5'
+        'f60a49716afae0ff71e76e497852ae6849407dcbf302a0098c914b1b75a672043beda334e2ac311a11237d6907ffa51ab035607786ad2adfcdc12cf58c78b21b'
         '29bad1442d12fe970722e2d4ab6f4daea47b8d3014b1d4dc11eab5b790329c434f7b109a21a396138313a10cd36821f9c711515ed4666466c71e7f0b90ff65c5')
 
 prepare() {
@@ -65,18 +65,17 @@ build() {
 package() {
   cd "./spring-launcher"
 
-  mkdir -p $pkgdir/{usr/bin,opt/beyondallreason}
+  mkdir -p $pkgdir/usr/{bin,share/beyondallreason}
 
-  cp -a dist/linux*unpacked/** $pkgdir/opt/beyondallreason
+  cp -a dist/linux*unpacked/resources/** $pkgdir/usr/share/beyondallreason
 
-  mv $pkgdir/opt/beyondallreason/bin/pr-downloader $pkgdir/usr/bin/pr-downloader
+  rm -r $pkgdir/usr/share/beyondallreason/app.asar.unpacked/node_modules/7zip-bin/linux/arm*
 
-  rm -r $pkgdir/opt/beyondallreason/resources/app.asar.unpacked/node_modules/7zip-bin/linux/arm*
-
-  install -Dm644 $srcdir/app/chobby/dist_cfg/config.json $pkgdir/opt/beyondallreason
+  install -Dm644 $srcdir/app/chobby/dist_cfg/config.json $pkgdir/usr/share/beyondallreason
 
   install -Dm755 $srcdir/run.sh $pkgdir/usr/bin/beyondallreason
-
+  install -Dm755 dist/linux*unpacked/bin/pr-downloader $pkgdir/usr/bin/
+  
   install -Dm644 $srcdir/app/chobby/dist_cfg/build/icon.png $pkgdir/usr/share/icons/hicolor/128x128/apps/beyondallreason.png
   install -Dm644 $srcdir/beyondallreason.desktop $pkgdir/usr/share/applications/beyondallreason.desktop
 }

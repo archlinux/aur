@@ -9,4 +9,4 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 mkdir -p "$XDG_CONFIG_HOME/bar"
 
-electron42 /opt/beyondallreason/resources/app.asar --disable-launcher-update -w $XDG_CONFIG_HOME/bar -c /opt/beyondallreason/config.json "$@"
+electron42 /usr/share/beyondallreason/app.asar --disable-launcher-update -w $XDG_CONFIG_HOME/bar -c /usr/share/beyondallreason/config.json "$@"
