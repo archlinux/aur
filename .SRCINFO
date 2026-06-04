@@ -1,6 +1,6 @@
 pkgbase = simplevoice-bin
 	pkgdesc = Simplevoice — fast speech-to-text transcription (Tauri)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/MaciejKolerski/simplevoice
 	install = simplevoice-bin.install
@@ -24,7 +24,7 @@ pkgbase = simplevoice-bin
 	conflicts = simplevoice
 	options = !strip
 	options = !debug
-	source_x86_64 = Simplevoice_0.1.1_amd64.deb::https://github.com/MaciejKolerski/simplevoice/releases/download/v0.1.1/Simplevoice_0.1.1_amd64.deb
-	sha256sums_x86_64 = 27abb65194692859b4387f1302c7be8ae0e24080653b6874a310777b31e30a6e
+	source_x86_64 = Simplevoice_0.1.2_amd64.deb::https://github.com/MaciejKolerski/simplevoice/releases/download/v0.1.2/Simplevoice_0.1.2_amd64.deb
+	sha256sums_x86_64 = a763d78637941e517e6cc55d95eca29463ece872d58cb5072d9e5acd2481145f
 
 pkgname = simplevoice-bin
