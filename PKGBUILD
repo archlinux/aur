@@ -1,6 +1,6 @@
 # Maintainer: Castor <whoisyoges@castorisdead.xyz>
 pkgname=managedssh
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A terminal-first SSH connection manager built in Go, featuring a simple text-based UI and secure encrypted credential storage for managing and connecting to hosts."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go>=1.26')
 
 # Pull tarball from GitHub (man page is inside)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mylovelytools/managedssh/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('023d730c8a8d18a241823b50f4621b839fe7453475addb9ebb207104146cba6d')
+sha256sums=('bded94815a69d4ff4dc3fe85d5e81272f78abcfa60e7054f8097b19cb601799c')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
