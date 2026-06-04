@@ -1,8 +1,8 @@
 pkgbase = openless-bin
 	pkgdesc = Hold a key, speak, release — AI-polished text appears at your cursor in any app.
-	pkgver = 1.2.23
-	pkgrel = 2
-	url = https://github.com/appergb/openless
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://github.com/Open-Less/openless
 	arch = x86_64
 	license = MIT
 	depends = libayatana-appindicator
@@ -11,7 +11,7 @@ pkgbase = openless-bin
 	depends = xdotool
 	provides = openless
 	conflicts = openless
-	source_x86_64 = OpenLess_1.2.23_amd64.deb::https://github.com/appergb/openless/releases/download/v1.2.23-tauri/OpenLess_1.2.23_amd64.deb
-	md5sums_x86_64 = 8b668c07e516fe8806a0d025e06b60d5
+	source_x86_64 = OpenLess_1.3.5_amd64.deb::https://github.com/Open-Less/openless/releases/download/v1.3.5-tauri/OpenLess_1.3.5_amd64.deb
+	md5sums_x86_64 = 605b1e35c72e67cf79ef28940a44c622
 
 pkgname = openless-bin
