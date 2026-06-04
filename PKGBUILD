@@ -7,26 +7,15 @@ arch=('x86_64')
 url="https://github.com/slatkin/mby"
 license=('MIT')
 depends=('mpv' 'openssl')
-makedepends=('rust' 'cargo' 'nasm')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/slatkin/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('743a4893cab437a8fb167b3cfbda763c97e72c00bf223b29a5389681ffd1f55d')
-
-prepare() {
-    cd "${pkgname}-${pkgver}"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
-
-build() {
-    cd "${pkgname}-${pkgver}"
-    cargo build --frozen --release
-}
+source=("${pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/slatkin/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
+sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "scripts/mby.lua" "${pkgdir}/usr/share/${pkgname}/scripts/mby.lua"
-    install -Dm644 "fonts/Material-Design-Iconic-Font.ttf" \
+    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "mby.lua" "${pkgdir}/usr/share/${pkgname}/scripts/mby.lua"
+    install -Dm644 "Material-Design-Iconic-Font.ttf" \
         "${pkgdir}/usr/share/${pkgname}/fonts/Material-Design-Iconic-Font.ttf"
-    install -Dm644 "dist/config.toml" "${pkgdir}/usr/share/${pkgname}/config.toml"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "config.toml" "${pkgdir}/usr/share/${pkgname}/config.toml"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 2>/dev/null || true
 }
