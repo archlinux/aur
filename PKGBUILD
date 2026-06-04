@@ -1,6 +1,6 @@
 # Maintainer: KIRILL100-10 (Kirill Nadtochaev) <Kirillnadtocaev@gmail.com>
 pkgname=temperature-converter-cli
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Simple and lightweight CLI temperature converter with RU/EN localization"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/KIRILL100-10/temperature-converter-cli"
 license=('MIT')
 depends=('python')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KIRILL100-10/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9366951a7ab64d0fb72dc378e142e54a7671acac8ee80d377aef455d5a3c3ed8')
+sha256sums=('de5f7c81ec666300f2cb6a3d3672904b1eb2e12f02056b74abca8685cd2857ca')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
