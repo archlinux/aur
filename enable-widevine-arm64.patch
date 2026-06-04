@@ -4,7 +4,7 @@
  library_widevine_cdm_available =
      (is_chromeos &&
       (target_cpu == "x64" || target_cpu == "arm" || target_cpu == "arm64")) ||
--    (target_os == "linux" && target_cpu == "x64") ||
+-    (target_os == "linux" && (target_cpu == "x64" || target_cpu == "arm64")) ||
 +    (target_os == "linux" && (target_cpu == "x64" || target_cpu == "arm" || target_cpu == "arm64")) ||
      (target_os == "mac" && (target_cpu == "x64" || target_cpu == "arm64")) ||
      (target_os == "win" &&
