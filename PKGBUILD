@@ -1,60 +1,53 @@
 # Maintainer: bobrik <an9rax@gmail.com>
 
 pkgname=dota2-minify-rc-bin
-pkgver=1.14rc4
+pkgver=1.14rc5
 pkgrel=1
 pkgdesc="Dota 2 Mod Patcher & Toolkit — prebuilt release candidate binary"
 arch=('x86_64')
 url="https://github.com/Egezenn/dota2-minify"
 license=('GPL-3.0-or-later')
 depends=(
-  'freetype2'
-  'fontconfig'
-  'hicolor-icon-theme'
+    'freetype2'
+    'fontconfig'
+    'hicolor-icon-theme'
 )
 makedepends=('7zip')
 provides=('dota2-minify')
 conflicts=('dota2-minify' 'dota2-minify-bin')
-options=('!strip')
 
+# https://github.com/Egezenn/dota2-minify/releases
 _tag="Minify-v${pkgver}"
 source=("${pkgname}-${pkgver}.zip::https://github.com/Egezenn/dota2-minify/releases/download/${_tag}/Minify-v${pkgver}-linux.zip")
-sha256sums=('e90cab3a9d0d5f2c1b5cd557883df75405fb912a456342ae4841402571d21a47')
+sha256sums=('527ff74e38401a93391ea0dadcccd7bd09031a47e22334df4c6a327e0839c6be')
 
 noextract=("${pkgname}-${pkgver}.zip")
 
 prepare() {
-  cd "${srcdir}"
-  7za x "${pkgname}-${pkgver}.zip"
+    cd "${srcdir}"
+    7za x "${pkgname}-${pkgver}.zip"
 }
 
 package() {
-  # Zip layout matches the stable binary release:
-  #   Minify          (ELF executable)
-  #   _internal/      (PyInstaller bundled libraries)
-  #   bin/            (images, data files)
-  #   mods/           (included mods)
-  #   LICENSE
-  #   README.md
+    # Zip layout matches the stable binary release:
+    #   Minify          (ELF executable)
+    #   _internal/      (PyInstaller bundled libraries)
+    #   bin/            (images, data files)
+    #   mods/           (included mods)
+    #   LICENSE
+    #   README.md
 
-  install -dm755 "${pkgdir}/usr/share/dota2-minify"
+    install -dm755 "${pkgdir}/usr/share/dota2-minify"
 
-  (
-    cd "${srcdir}" || exit
-    for _item in *; do
-      [[ "${_item}" = *.zip ]] && continue
-      cp -a --no-preserve=ownership "${_item}" "${pkgdir}/usr/share/dota2-minify/"
-    done
-  )
+    (
+        cd "${srcdir}" || exit
+        for _item in Minify _internal bin mods LICENSE README.md; do
+            cp -a --no-preserve=ownership "${_item}" "${pkgdir}/usr/share/dota2-minify/"
+        done
+    )
 
-  # Keep the packaged tree read-only and run from a per-user copy because
-  # Minify writes config, logs, and downloaded helper binaries beside itself.
-  install -dm755 "${pkgdir}/usr/share/dota2-minify/config"
-  install -dm755 "${pkgdir}/usr/share/dota2-minify/logs"
-  install -dm755 "${pkgdir}/usr/share/dota2-minify/bin/rescomproot"
-
-  install -dm755 "${pkgdir}/usr/bin"
-  cat >"${pkgdir}/usr/bin/dota2-minify" <<EOF
+    install -dm755 "${pkgdir}/usr/bin"
+    cat >"${pkgdir}/usr/bin/dota2-minify" <<EOF
 #!/bin/sh
 set -eu
 
@@ -63,22 +56,19 @@ runtime_root="\${XDG_DATA_HOME:-\$HOME/.local/share}/dota2-minify"
 runtime_version="${pkgver}-${pkgrel}"
 version_file="\$runtime_root/.package-version"
 
-mkdir -p "\$runtime_root" "\$runtime_root/config" "\$runtime_root/logs"
+mkdir -p "\$runtime_root"
 
 if [ ! -x "\$runtime_root/Minify" ] || [ ! -f "\$version_file" ] || [ "\$(cat "\$version_file")" != "\$runtime_version" ]; then
-  tar -C "\$system_root" \
-    --exclude='./config' \
-    --exclude='./logs' \
-    -cf - . | tar -C "\$runtime_root" -xf -
+  tar -C "\$system_root" -cf - . | tar -C "\$runtime_root" -xf -
   printf '%s\n' "\$runtime_version" > "\$version_file"
 fi
 
 exec "\$runtime_root/Minify" "\$@"
 EOF
-  chmod 755 "${pkgdir}/usr/bin/dota2-minify"
+    chmod 755 "${pkgdir}/usr/bin/dota2-minify"
 
-  install -dm755 "${pkgdir}/usr/share/applications"
-  cat >"${pkgdir}/usr/share/applications/dota2-minify.desktop" <<'EOF'
+    install -dm755 "${pkgdir}/usr/share/applications"
+    cat >"${pkgdir}/usr/share/applications/dota2-minify.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=Dota 2 Minify
@@ -90,9 +80,9 @@ Categories=Game;
 Keywords=dota2;mod;patcher;
 EOF
 
-  install -Dm644 "${pkgdir}/usr/share/dota2-minify/bin/images/logo.png" \
-    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/dota2-minify.png"
+    install -Dm644 "${pkgdir}/usr/share/dota2-minify/bin/images/logo.png" \
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/dota2-minify.png"
 
-  install -Dm644 "${pkgdir}/usr/share/dota2-minify/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${pkgdir}/usr/share/dota2-minify/LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
