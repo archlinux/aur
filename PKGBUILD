@@ -10,37 +10,37 @@
 # https://wiki.archlinux.org/title/AUR_submission_guidelines#Publishing_new_package_content
 ################################################################################
 
-pkgbase=nginx-without-server-header
-_pkgbase=nginx
+pkgbase='nginx-without-server-header'
+_pkgbase='nginx'
 pkgname=($pkgbase $pkgbase'-src')
-pkgver=1.30.0
+pkgver='1.30.2'
 pkgrel=1
 _prefix_relative='etc/nginx'
 _prefix_full='/'$_prefix_relative
-arch=(x86_64)
+arch=('x86_64')
 url='https://nginx.org'
-license=(BSD-2-Clause)
-makedepends=(pcre2 zlib openssl geoip mailcap libxcrypt)
-checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
-              memcached ffmpeg)
-conflicts=(nginx nginx-src)
-install=nginx.install
-source=($url/download/nginx-$pkgver.tar.gz{,.asc}
-        nginx.service
-        logrotate
-        ngx_http_core_module.c.patch
-        ngx_http_core_module.h.patch
-        ngx_http_header_filter_module.c.patch
-        ngx_http_special_response.c.patch
-        ngx_http_v2_filter_module.c.patch
-        ngx_http_v3_filter_module.c.patch)
+license=('BSD-2-Clause')
+makedepends=('pcre2' 'zlib' 'openssl' 'geoip' 'mailcap' 'libxcrypt')
+checkdepends=('perl' 'perl-gd' 'perl-io-socket-ssl' 'perl-fcgi' 'perl-cache-memcached'
+              'memcached' 'ffmpeg')
+conflicts=('nginx' 'nginx-src')
+install='nginx.install'
+source=($url'/download/nginx-'$pkgver'.tar.gz'{,'.asc'}
+        'nginx.service'
+        'logrotate'
+        'ngx_http_core_module.c.patch'
+        'ngx_http_core_module.h.patch'
+        'ngx_http_header_filter_module.c.patch'
+        'ngx_http_special_response.c.patch'
+        'ngx_http_v2_filter_module.c.patch'
+        'ngx_http_v3_filter_module.c.patch')
 
 # https://nginx.org/en/pgp_keys.html
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8'  # Maxim Dounin <mdounin@mdounin.ru>
               '43387825DDB1BB97EC36BA5D007C8D7C15D87369'  # Roman Arutyunyan <r.arutyunyan@f5.com>
               'D6786CE303D9A9022998DC6CC8464D549AF75C0A'  # Sergey Kandaurov <s.kandaurov@f5.com>
               '13C82A63B603576156E30A4EA0EA981B66B0D967') # Konstantin Pavlov <thresh@nginx.com>
-sha512sums=('9df502279583ea305e2d7a4cbe67c54cbcdb880f1caf010d582eea8839bda3bc6dd5e244bb79e848a70ad0c9fda9927cb8d9d8c5fc1bc49acc2da9e734543d7c'
+sha512sums=('dbba779a15595a77f340795c3a06bf5f846f351a14738f36085b3251f053c6b2946f112640754b8470b541ca45319fb599111cffc06e5cf2ac2384e64d16348c'
             'SKIP'
             '490e973fac48c0b27d35c722d190c1103fc0e6f71362580739f47eea4373f2a7206a8722866c740c916a4be7e789db80d4ce56a67e751f1183e420cb314a32d8'
             '25b1054176b694dda940528df45432bdc80191ad9dd6f11b7bb02da43b3c38c592448664774ccde779bb6953f9d32a4fd55349dbad9b43a7db38a1410a47dc24'
@@ -90,34 +90,34 @@ prepare() {
   for patch_src in "${source[@]}"; do
     #src="${patch_src%%::*}"
     #src="${patch_src##*/}"
-    [[ $patch_src = *.patch ]] || continue
-    echo -n "Applying \"$patch_src\"... "
-    patch -d "$srcdir/$_pkgbase-$pkgver" -Np1 < "$srcdir/$patch_src"
+    [[ $patch_src = *'.patch' ]] || continue
+    echo -n 'Applying "'$patch_src'"... '
+    patch -d $srcdir'/'$_pkgbase'-'$pkgver -Np1 < $srcdir'/'$patch_src
   done
   ### END PATCHING ###
-  cp -r $_pkgbase'-'$pkgver{,-src}
+  cp -r $_pkgbase'-'$pkgver{,'-src'}
 }
 
 
 build() {
-  cd $_pkgbase-$pkgver
+  cd $_pkgbase'-'$pkgver
 
   ./configure \
     --prefix=$_prefix_full \
-    --conf-path=$_prefix_full/nginx.conf \
-    --sbin-path=/usr/bin/nginx \
-    --pid-path=/run/nginx.pid \
-    --lock-path=/run/lock/nginx.lock \
-    --user=http \
-    --group=http \
-    --http-log-path=/var/log/nginx/access.log \
-    --error-log-path=/var/log/nginx/error.log \
-    --http-client-body-temp-path=/var/lib/nginx/client-body \
-    --http-proxy-temp-path=/var/lib/nginx/proxy \
-    --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
-    --http-scgi-temp-path=/var/lib/nginx/scgi \
-    --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-    --modules-path=/usr/lib/nginx/modules \
+    --conf-path=$_prefix_full'/nginx.conf' \
+    --sbin-path='/usr/bin/nginx' \
+    --pid-path='/run/nginx.pid' \
+    --lock-path='/run/lock/nginx.lock' \
+    --user='http' \
+    --group='http' \
+    --http-log-path='/var/log/nginx/access.log' \
+    --error-log-path='/var/log/nginx/error.log' \
+    --http-client-body-temp-path='/var/lib/nginx/client-body' \
+    --http-proxy-temp-path='/var/lib/nginx/proxy' \
+    --http-fastcgi-temp-path='/var/lib/nginx/fastcgi' \
+    --http-scgi-temp-path='/var/lib/nginx/scgi' \
+    --http-uwsgi-temp-path='/var/lib/nginx/uwsgi' \
+    --modules-path='/usr/lib/nginx/modules' \
     --with-cc-opt="$CFLAGS $CPPFLAGS" \
     --with-ld-opt="$LDFLAGS" \
     "${_common_flags[@]}"
@@ -127,16 +127,16 @@ build() {
 
 package_nginx-without-server-header() {
   pkgdesc='Lightweight web server, IMAP/POP3 and TCP/UDP proxy server, without HTTP server header'
-  depends=(pcre2 zlib openssl geoip mailcap libxcrypt)
-  backup=($_prefix_relative/fastcgi.conf
-          $_prefix_relative/fastcgi_params
-          $_prefix_relative/koi-win
-          $_prefix_relative/koi-utf
-          $_prefix_relative/nginx.conf
-          $_prefix_relative/scgi_params
-          $_prefix_relative/uwsgi_params
-          $_prefix_relative/win-utf
-          etc/logrotate.d/nginx)
+  depends=('pcre2' 'zlib' 'openssl' 'geoip' 'mailcap' 'libxcrypt')
+  backup=($_prefix_relative'/fastcgi.conf'
+          $_prefix_relative'/fastcgi_params'
+          $_prefix_relative'/koi-win'
+          $_prefix_relative'/koi-utf'
+          $_prefix_relative'/nginx.conf'
+          $_prefix_relative'/scgi_params'
+          $_prefix_relative'/uwsgi_params'
+          $_prefix_relative'/win-utf'
+          'etc/logrotate.d/nginx')
 
   cd $_pkgbase'-'$pkgver
   make DESTDIR="$pkgdir" install
@@ -155,7 +155,7 @@ package_nginx-without-server-header() {
     -e '/^\s*#fastcgi_param\s\s*SERVER_SOFTWARE\s\s*nginx\/\$nginx_version;/a\fastcgi_param  SERVER_SOFTWARE    nginx;' \
     -i $pkgdir$_prefix_full'/fastcgi_params'
 
-  rm "$pkgdir$_prefix_full"/*.default
+  rm $pkgdir$_prefix_full'/'*'.default'
   rm $pkgdir$_prefix_full'/mime.types'  # in mailcap
 
   install -d $pkgdir'/var/lib/nginx'
@@ -176,8 +176,7 @@ package_nginx-without-server-header() {
 
   rmdir $pkgdir'/run'
 
-  gzip -q9 objs/nginx.8 && \
-  install -Dm0644 'objs/nginx.8.gz' $pkgdir'/usr/share/man/man8/nginx.8'
+  install -Dm0644 'objs/nginx.8' $pkgdir'/usr/share/man/man8/nginx.8'
 
   for i in ftdetect ftplugin indent syntax; do
     install -Dm644 'contrib/vim/'$i'/nginx.vim' \
