@@ -3,11 +3,11 @@
 pkgname=python-typechat-git
 _name=${pkgname%-git}
 _name=${_name#python-}
-pkgver=r408.246f677
-pkgrel=1
+pkgver=r410.d493376
+pkgrel=3
 pkgdesc="TypeChat is a library that makes it easy to build natural language interfaces using types."
-provides=(${pkgname})
-conflicts=(${pkgname})
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 arch=('any')
 url="https://github.com/microsoft/TypeChat"
 _pydeps=(
