@@ -1,0 +1,27 @@
+pkgbase = python-dynaconf
+	pkgdesc = The dynamic configurator for your Python project (12-factor settings, layered envs, multiple formats)
+	pkgver = 3.2.13
+	pkgrel = 1
+	url = https://github.com/dynaconf/dynaconf
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	checkdepends = python-configobj
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-redis: Redis settings backend
+	optdepends = python-hvac: HashiCorp Vault settings backend
+	optdepends = python-boto3: AWS-backed Vault loader
+	optdepends = python-configobj: INI file support
+	optdepends = python-commentjson: JSON-with-comments support
+	optdepends = python-jinja: Jinja templating in setting values
+	optdepends = python-django: Django framework integration
+	optdepends = python-flask: Flask extension integration
+	source = dynaconf-3.2.13.tar.gz::https://github.com/dynaconf/dynaconf/archive/refs/tags/3.2.13.tar.gz
+	sha256sums = 82211b97b36eed6b2c0b8951b151d77e69110d59696afd4005e4efe7ad3880d1
+
+pkgname = python-dynaconf
