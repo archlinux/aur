@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
 pkgver=1.8.2.r30.g56d8c83
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
@@ -75,4 +75,6 @@ check() {
 package() {
   cd "${pkgname%-git}"
   make prefix=/usr libexecdir=/lib DESTDIR="$pkgdir/" install
+
+  ln -s /usr/lib/pascube "$pkgdir/usr/bin/"
 }
