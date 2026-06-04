@@ -1,6 +1,6 @@
 # Maintainer: Leo <i@hardrain980.com>
 pkgname=qbittorrent-enhanced
-pkgver=5.1.3.10
+pkgver=5.2.1.10
 pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt and libtorrent (Enhanced Edition)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('python: needed for torrent search tab')
 provides=('qbittorrent')
 conflicts=('qbittorrent')
 source=("qbittorrent-enhanced-$pkgver.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-$pkgver.tar.gz")
-sha256sums=('b153428db354775de59b850751ad9d6bafb418dde115b3208b41eab14308f6d1')
+sha256sums=('ee5e05db67ba52a9380b01501260473bcd6595b4750c5775c037ed3b6815e30b')
 
 build() {
 	cd qBittorrent-Enhanced-Edition-release-$pkgver
