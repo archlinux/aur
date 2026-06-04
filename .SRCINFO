@@ -1,0 +1,14 @@
+pkgbase = aracrypt
+	pkgdesc = PE encryptor for Linux — encrypts Windows executables into self-decrypting containers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kvunoff/aracrypt
+	arch = x86_64
+	license = MIT
+	license = BSD
+	makedepends = cargo
+	depends = fasm
+	source = aracrypt-0.1.0.tar.gz::https://github.com/kvunoff/aracrypt/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = aracrypt
