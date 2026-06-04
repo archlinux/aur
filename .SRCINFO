@@ -1,16 +1,16 @@
 pkgbase = wt-bin
 	pkgdesc = A fast, simple Git worktree helper
-	pkgver = 0.1.28
+	pkgver = 0.1.29
 	pkgrel = 1
 	url = https://github.com/timvw/wt
 	license = MIT
 	conflicts = wt
 	provides = wt
 	arch = aarch64
-	source_aarch64 = https://github.com/timvw/wt/releases/download/v0.1.28/wt_0.1.28_linux_arm64.tar.gz
-	sha256sums_aarch64 = a591714799409306473370851aee7d8f26ad93fec70f9d6af9efcd9520d4660a
+	source_aarch64 = https://github.com/timvw/wt/releases/download/v0.1.29/wt_0.1.29_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7fd5e14614106bcef0042c1b5895521d5152ee5b0b0a6880af1828bfe7401a43
 	arch = x86_64
-	source_x86_64 = https://github.com/timvw/wt/releases/download/v0.1.28/wt_0.1.28_linux_amd64.tar.gz
-	sha256sums_x86_64 = bcf78e981ca397c2cf630d7147d334722beb182eb68602a8854014a5e4e4433b
+	source_x86_64 = https://github.com/timvw/wt/releases/download/v0.1.29/wt_0.1.29_linux_amd64.tar.gz
+	sha256sums_x86_64 = b100bcce5430f255adbbbbd272689ea6de9a7dfb51cd41967b4af755ae4bc942
 	
 pkgname = wt-bin
