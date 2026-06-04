@@ -2,7 +2,7 @@
 # Maintainer: Saad Khan <sakib.saad.khan@gmail.com>
 
 pkgname='phnx-bin'
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='PHP + Nginx local development environment manager'
 url='https://github.com/protibimbok/phnx'
@@ -14,10 +14,10 @@ depends=('nginx' 'php-fpm')
 optdepends=('composer: PHP dependency manager' 'wp-cli: WordPress CLI')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/protibimbok/phnx/releases/download/v${pkgver}/phnx_linux_arm64.tar.gz")
-sha256sums_aarch64=('ac1970b74fbf852ae0cbd31012ee1f03da8796147055a73778c41407b0eeb857')
+sha256sums_aarch64=('893d5c2fb28832d6e4881b5d5744e01b23cad7a289bc2ca039b84bfe4b99bc8e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/protibimbok/phnx/releases/download/v${pkgver}/phnx_linux_amd64.tar.gz")
-sha256sums_x86_64=('038ca7b3628a0c45bc3b78574ff14babe42004f6377753cc59d535959c65f1e8')
+sha256sums_x86_64=('4d990395e9fd051e5bb4efeac9a8c3562d7b97e2bd95381fae7bf2df4f4c049e')
 
 package() {
   install -Dm755 "./phnx" "${pkgdir}/usr/bin/phnx"
