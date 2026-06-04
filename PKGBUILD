@@ -2,7 +2,7 @@
 
 pkgname=optiscaler-client-bin
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern desktop client for installing, updating and configuring OptiScaler across game libraries"
 arch=('x86_64')
 url="https://github.com/Agustinm28/Optiscaler-Client"
@@ -17,7 +17,7 @@ provides=('optiscaler-client')
 conflicts=('optiscaler-client')
 
 source=(
-  "optiscaler-client.tar.gz::https://github.com/Agustinm28/OptiScaler-Client/releases/download/v${pkgver}/OptiscalerClient-${pkgver}-linux-x64.tar.gz"
+  "optiscaler-client.tar.gz::https://github.com/Agustinm28/Optiscaler-Client/releases/download/OptiscalerClient-${pkgver}/OptiscalerClient-${pkgver}-linux-x64.tar.gz"
   "optiscaler-client.desktop"
 )
 
