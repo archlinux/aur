@@ -3,7 +3,7 @@
 _pkgname="xbright"
 pkgname="${_pkgname}-git"
 pkgver=1.0_1.r72.20201130.8b7fe6f
-pkgrel=2
+pkgrel=1
 pkgdesc="GUI to change monitor brightness on X11 (using XRandR). Supports presets."
 arch=(
   "i686"

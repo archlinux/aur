@@ -1,7 +1,7 @@
 pkgbase = xbright-git
 	pkgdesc = GUI to change monitor brightness on X11 (using XRandR). Supports presets.
 	pkgver = 1.0_1.r72.20201130.8b7fe6f
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/MicahParks/xbright
 	arch = i686
 	arch = x86_64
