@@ -5,8 +5,11 @@ set -euo pipefail
 APPDIR="${CODEXPP_OPENAI_CODEX_APP_DIR:-/usr/lib/openai-codex-desktop}"
 APP_ASAR="${APPDIR}/resources/app.asar"
 WEBVIEW_DIR="${APPDIR}/content/webview"
+PLUGIN_AUTH_UNLOCK_FILE="${CODEXPP_PLUGIN_AUTH_UNLOCK_FILE:-/usr/lib/codex-plus-plus/webview/plugin-auth-unlocked.js}"
 HTTP_PYTHON_BIN="${CODEXPP_OPENAI_CODEX_PYTHON:-/usr/bin/python}"
 RENDERER_PORT="${CODEXPP_RENDERER_PORT:-}"
+PATCHED_WEBVIEW_DIR=""
+RUNTIME_WEBVIEW_DIR=""
 HTTP_PID=""
 ELECTRON_PID=""
 
@@ -56,6 +59,39 @@ PY
   return 1
 }
 
+create_patched_webview_dir() {
+  local entry
+  local name
+  local target_dir
+
+  if [[ ! -f "${PLUGIN_AUTH_UNLOCK_FILE}" ]]; then
+    echo "Codex++ plugin auth unlock file not found: ${PLUGIN_AUTH_UNLOCK_FILE}" >&2
+    exit 1
+  fi
+
+  PATCHED_WEBVIEW_DIR="$(mktemp -d "${TMPDIR:-/tmp}/codex-plus-plus-webview.XXXXXX")"
+  install -dm755 "${PATCHED_WEBVIEW_DIR}/assets"
+
+  for entry in "${WEBVIEW_DIR}"/*; do
+    name="$(basename "${entry}")"
+    if [[ "${name}" == "assets" ]]; then
+      continue
+    fi
+    ln -s "${entry}" "${PATCHED_WEBVIEW_DIR}/${name}"
+  done
+
+  for entry in "${WEBVIEW_DIR}/assets"/*; do
+    name="$(basename "${entry}")"
+    if [[ "${name}" == plugin-auth-*.js ]]; then
+      ln -s "${PLUGIN_AUTH_UNLOCK_FILE}" "${PATCHED_WEBVIEW_DIR}/assets/${name}"
+    else
+      ln -s "${entry}" "${PATCHED_WEBVIEW_DIR}/assets/${name}"
+    fi
+  done
+
+  RUNTIME_WEBVIEW_DIR="${PATCHED_WEBVIEW_DIR}"
+}
+
 cleanup() {
   if [[ -n "${ELECTRON_PID}" ]]; then
     wait "${ELECTRON_PID}" 2>/dev/null || true
@@ -63,6 +99,9 @@ cleanup() {
   if [[ -n "${HTTP_PID}" ]]; then
     kill "${HTTP_PID}" 2>/dev/null || true
     wait "${HTTP_PID}" 2>/dev/null || true
+  fi
+  if [[ -n "${PATCHED_WEBVIEW_DIR}" ]]; then
+    rm -rf "${PATCHED_WEBVIEW_DIR}"
   fi
 }
 
@@ -109,7 +148,9 @@ export BUILD_FLAVOR="${BUILD_FLAVOR:-prod}"
 export NODE_ENV="${NODE_ENV:-production}"
 export ELECTRON_RENDERER_URL="http://127.0.0.1:${RENDERER_PORT}/"
 
-"${HTTP_PYTHON_BIN}" -m http.server "${RENDERER_PORT}" --bind 127.0.0.1 --directory "${WEBVIEW_DIR}" >/dev/null 2>&1 &
+create_patched_webview_dir
+
+"${HTTP_PYTHON_BIN}" -m http.server "${RENDERER_PORT}" --bind 127.0.0.1 --directory "${RUNTIME_WEBVIEW_DIR}" >/dev/null 2>&1 &
 HTTP_PID="$!"
 
 if ! wait_for_port "${RENDERER_PORT}"; then

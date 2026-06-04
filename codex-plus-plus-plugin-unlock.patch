@@ -1,0 +1,130 @@
+--- a/assets/inject/renderer-inject.js
++++ b/assets/inject/renderer-inject.js
+@@ -65,6 +65,7 @@
+   const codexServiceTierRequestOverrideVersion = "2";
+   const codexAppServerModelRequestPatchVersion = "1";
+   const codexPluginMarketplaceUnlockVersion = "10";
++  const codexPluginNavUnlockVersion = "1";
+   const codexThreadScrollMaxEntries = 120;
+   const codexThreadScrollSaveThrottleMs = 120;
+   const codexThreadScrollRestoreWindowMs = 3200;
+@@ -2699,6 +2700,102 @@
+     pluginInstallCandidates().forEach(clearForcedInstallButtonLabel);
+   }
+ 
++  function pluginNavButtonCandidates() {
++    return Array.from(document.querySelectorAll(selectors.pluginNavButton))
++      .filter((button) => button instanceof HTMLElement && isPluginNavButton(button));
++  }
++
++  function isPluginNavButton(button) {
++    const text = (button.textContent || "").trim();
++    if (/^(Plugins|插件)$/.test(text)) return true;
++    return !!button.querySelector?.(selectors.pluginSvgPath);
++  }
++
++  function navigateToCodexPlugins(event) {
++    event?.preventDefault?.();
++    event?.stopPropagation?.();
++    event?.stopImmediatePropagation?.();
++    const state = { ...(history.state || {}), codexPlusOpenPlugins: true };
++    history.pushState(state, "", "/skills");
++    window.dispatchEvent(new PopStateEvent("popstate", { state }));
++    sendCodexPlusDiagnostic("plugin_nav_button_opened", {});
++  }
++
++  function patchReactPluginNavProps(element) {
++    Object.keys(element)
++      .filter((key) => key.startsWith("__reactProps"))
++      .forEach((key) => {
++        const props = element[key];
++        if (!props || typeof props !== "object") return;
++        props.disabled = false;
++        props["aria-disabled"] = false;
++        props["data-disabled"] = undefined;
++        props.onClick = navigateToCodexPlugins;
++      });
++  }
++
++  function clearPluginNavDisabledState(element) {
++    if (!(element instanceof HTMLElement)) return;
++    if ("disabled" in element) element.disabled = false;
++    element.removeAttribute("disabled");
++    element.removeAttribute("aria-disabled");
++    element.removeAttribute("data-disabled");
++    element.removeAttribute("inert");
++    element.classList.remove("disabled", "opacity-50", "cursor-not-allowed", "pointer-events-none");
++    element.style.pointerEvents = "auto";
++    element.style.opacity = "";
++    element.style.cursor = "pointer";
++    element.tabIndex = 0;
++    patchReactPluginNavProps(element);
++  }
++
++  function pluginNavUnlockNodes(button) {
++    const nodes = [button];
++    button.querySelectorAll?.("[disabled], [aria-disabled], [data-disabled], .cursor-not-allowed, .pointer-events-none")
++      .forEach((node) => nodes.push(node));
++    let parent = button.parentElement;
++    for (let depth = 0; parent && depth < 3; depth += 1, parent = parent.parentElement) {
++      if (parent.matches?.("button, [role='button'], [disabled], [aria-disabled], [data-disabled], .cursor-not-allowed, .pointer-events-none")) {
++        nodes.push(parent);
++      }
++    }
++    return Array.from(new Set(nodes));
++  }
++
++  function installPluginNavGuard(button) {
++    if (button.dataset.codexPluginNavUnlocked === codexPluginNavUnlockVersion) return;
++    button.dataset.codexPluginNavUnlocked = codexPluginNavUnlockVersion;
++    ["pointerdown", "mousedown", "mouseup", "click"].forEach((eventName) => {
++      button.addEventListener(eventName, navigateToCodexPlugins, true);
++    });
++  }
++
++  function unlockPluginNavButtons() {
++    if (!codexPlusSettings().pluginMarketplaceUnlock) return;
++    pluginNavButtonCandidates().forEach((button) => {
++      pluginNavUnlockNodes(button).forEach(clearPluginNavDisabledState);
++      installPluginNavGuard(button);
++    });
++  }
++
++  function refreshPluginNavUnlockLoop() {
++    const shouldRun = codexPlusSettings().pluginMarketplaceUnlock;
++    if (!shouldRun) {
++      clearInterval(window.__codexPluginNavUnlockRefreshTimer);
++      window.__codexPluginNavUnlockRefreshTimer = null;
++      return;
++    }
++    if (window.__codexPluginNavUnlockRefreshTimer) return;
++    window.__codexPluginNavUnlockRefreshTimer = setInterval(() => {
++      if (!codexPlusSettings().pluginMarketplaceUnlock) {
++        clearInterval(window.__codexPluginNavUnlockRefreshTimer);
++        window.__codexPluginNavUnlockRefreshTimer = null;
++        return;
++      }
++      unlockPluginNavButtons();
++    }, codexForcePluginInstallRefreshIntervalMs);
++  }
++
+   function unblockPluginInstallButtons() {
+     if (pluginPatchDisabledInRelayMode()) return;
+     if (!codexPlusSettings().forcePluginInstall) return;
+@@ -7590,6 +7687,8 @@
+   }
+ 
+   function scanDeferred() {
++    unlockPluginNavButtons();
++    refreshPluginNavUnlockLoop();
+     if (pluginPatchDisabledInRelayMode()) {
+       clearPluginPatchArtifacts();
+       refreshForcePluginInstallUnlockLoop();
+@@ -7645,6 +7744,7 @@
+       ".composer-footer",
+       selectors.appHeader,
+       selectors.archiveNav,
++      selectors.pluginNavButton,
+       ...(pluginPatchDisabledInRelayMode() ? [] : [selectors.disabledInstallButton]),
+     ].join(", ");
+   }
