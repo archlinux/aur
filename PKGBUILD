@@ -1,7 +1,7 @@
 # Maintainer: Yougraj <yougrajbora.developer@gmail.com>
 
 pkgname=suyoratex-git
-pkgver=r3.c1969ec  # Don't worry about changing this, it auto-updates
+pkgver=r6.acd72c7  # Don't worry about changing this, it auto-updates
 pkgrel=1
 pkgdesc="A frictionless LaTeX Live Editor"
 arch=('any')
