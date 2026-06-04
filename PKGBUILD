@@ -9,7 +9,7 @@
 # Contributor: coolkehon <coolkehon@gmail.com>
 
 pkgname=task-git
-pkgver=3.4.2.r13.gf551619
+pkgver=3.4.2.r78.gd1afef4
 pkgrel=1
 epoch=1
 pkgdesc="A command-line todo list manager"
@@ -58,7 +58,6 @@ package() {
 
   # Note that we rename the bash completion script for bash-completion > 1.99, until upstream does so.
   install -Dm644 "$pkgdir/usr/share/doc/task/scripts/bash/task.sh" "$pkgdir/usr/share/bash-completion/completions/task"
-  install -Dm644 "$pkgdir/usr/share/doc/task/scripts/fish/task.fish" "$pkgdir/usr/share/fish/vendor_completions.d/task.fish"
 
   install -Dm644 "$pkgdir/usr/share/doc/task/scripts/vim/ftdetect/task.vim" "$pkgdir/usr/share/vim/vimfiles/ftdetect/task.vim"
   install -Dm644 "$pkgdir/usr/share/doc/task/scripts/vim/syntax/taskdata.vim" "$pkgdir/usr/share/vim/vimfiles/syntax/taskdata.vim"

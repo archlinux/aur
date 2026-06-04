@@ -1,6 +1,6 @@
 pkgbase = task-git
 	pkgdesc = A command-line todo list manager
-	pkgver = 3.4.2.r13.gf551619
+	pkgver = 3.4.2.r78.gd1afef4
 	pkgrel = 1
 	epoch = 1
 	url = https://taskwarrior.org/
