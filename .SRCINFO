@@ -1,7 +1,7 @@
 pkgbase = agate-bin
 	pkgdesc = Very simple server for the Gemini hypertext protocol
 	pkgver = 3.3.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbrubeck/agate
 	arch = x86_64
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = agate-bin
 	sha256sums = c74d88a5a449892a79221f6931989f60019dbcc9fcc8ecf57da34dca5778b80e
 	sha256sums = 7d044c20605bdd974775cdb1ae2229dbe9c86884f8a403f75818ac5bd37f567f
 	sha256sums = 8dc4041d1a673eeb87118385fbc60c74ee9422535251e16f64f5c76e8e7b72cf
-	sha256sums = 0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9
+	sha256sums = b7edf837f2719f56c7c728813862fe1f1dc96bfdbaeb060450943d0b979710dc
 	source_x86_64 = agate-3.3.23-x86_64.gz::https://github.com/mbrubeck/agate/releases/download/v3.3.23/agate.x86_64-unknown-linux-gnu.gz
 	sha256sums_x86_64 = b0888975f236223d20a1163dd3228df6595673510b9917d7dc267abe4aca26c9
 	source_aarch64 = agate-3.3.23-aarch64.gz::https://github.com/mbrubeck/agate/releases/download/v3.3.23/agate.aarch64-unknown-linux-gnu.gz

@@ -3,7 +3,7 @@
 
 pkgname=agate-bin
 pkgver=3.3.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Very simple server for the Gemini hypertext protocol"
 arch=(x86_64 aarch64 armv6h armv7h)
 url="https://github.com/mbrubeck/agate"
@@ -26,7 +26,7 @@ sha256sums=(
     "c74d88a5a449892a79221f6931989f60019dbcc9fcc8ecf57da34dca5778b80e"
     "7d044c20605bdd974775cdb1ae2229dbe9c86884f8a403f75818ac5bd37f567f"
     "8dc4041d1a673eeb87118385fbc60c74ee9422535251e16f64f5c76e8e7b72cf"
-    "0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9"
+    "b7edf837f2719f56c7c728813862fe1f1dc96bfdbaeb060450943d0b979710dc"
 )
 sha256sums_x86_64=("b0888975f236223d20a1163dd3228df6595673510b9917d7dc267abe4aca26c9")
 sha256sums_aarch64=("b1cc2cf6c9197a1896b12c4ac1b2f2f8e98a7991ddd6734aa917f47e299e316c")
