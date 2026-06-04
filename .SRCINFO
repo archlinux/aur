@@ -1,11 +1,10 @@
 pkgbase = flclash-myflavor-bin
-	pkgdesc = Multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free. (Forked by myflavor)
+	pkgdesc = Multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free, follows the mainline mihomo core updates. (Forked by myflavor)
 	pkgver = 1.19.26
 	pkgrel = 1
 	url = https://github.com/myflavor/FlClash
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = bsdtar
 	depends = libayatana-appindicator
 	depends = ayatana-ido
 	depends = libdbusmenu-glib

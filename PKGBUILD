@@ -5,7 +5,7 @@ pkgname=flclash-myflavor-bin
 _pkgname=FlClash
 pkgver=1.19.26
 pkgrel=1
-pkgdesc="Multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free. (Forked by myflavor)"
+pkgdesc="Multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free, follows the mainline mihomo core updates. (Forked by myflavor)"
 arch=('x86_64')
 url="https://github.com/myflavor/FlClash"
 license=('GPL-3.0-only')
@@ -19,9 +19,7 @@ depends=(
     'libdbusmenu-glib'
     'libkeybinder3'
 )
-makedepends=(
-    'bsdtar'
-)
+
 
 # 公共源文件：我们刚才创建的本地启动脚本
 source=(
