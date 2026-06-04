@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=asciidoctor-web-pdf-git
-pkgver=1.0.0.alpha.16.r8.g3fe542a
-pkgrel=11
+pkgver=1.0.0.alpha.16.r22.gf1a84c1
+pkgrel=1
 pkgdesc="A PDF converter for AsciiDoc based on web technologies. It allows complex layouts to be defined with CSS and JavaScript, while writing the content in AsciiDoc."
 arch=($CARCH)
 url="https://github.com/Mogztter/asciidoctor-web-pdf"
@@ -50,6 +50,7 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${pkgname%-git}"
+    export PUPPETEER_SKIP_DOWNLOAD=true
     npm install -g --prefix "${pkgdir}/usr" $(npm pack)
 
     # Non-deterministic race in npm gives 777 permissions to random directories.

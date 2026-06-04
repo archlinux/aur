@@ -1,7 +1,7 @@
 pkgbase = asciidoctor-web-pdf-git
 	pkgdesc = A PDF converter for AsciiDoc based on web technologies. It allows complex layouts to be defined with CSS and JavaScript, while writing the content in AsciiDoc.
-	pkgver = 1.0.0.alpha.16.r8.g3fe542a
-	pkgrel = 11
+	pkgver = 1.0.0.alpha.16.r22.gf1a84c1
+	pkgrel = 1
 	url = https://github.com/Mogztter/asciidoctor-web-pdf
 	arch = x86_64
 	license = MIT
