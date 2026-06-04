@@ -4,7 +4,7 @@
 pkgname=ferrumc-bin
 pkgver=0.1.0.rc2
 pkgrel=1
-pkgdesc="A reimplementation of the minecraft server in rust (precompiled binary)"
+pkgdesc="A reimplementation of the Minecraft server in Rust (precompiled binary)"
 url="https://github.com/ferrumc-rs/ferrumc"
 arch=("x86_64" "aarch64")
 provides=("ferrumc")
