@@ -9,6 +9,8 @@ pkgbase = uutils-grep-git
 	makedepends = git
 	depends = gcc-libs
 	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
+	provides = tar
+	conflicts = tar
 	source = uutils-grep::git+https://github.com/uutils/grep.git
 	b2sums = SKIP
 
