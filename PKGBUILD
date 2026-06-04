@@ -1,5 +1,5 @@
 pkgname=throne-sysqt-bin
-pkgver=1.1.2
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box) not pack the Qt libraries"
 arch=('x86_64')
