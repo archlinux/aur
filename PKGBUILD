@@ -3,8 +3,8 @@
 
 pkgname=easyeda-pro-electron
 _pkgname=easyeda-pro
-pkgver=2.2.47.7
-pkgrel=2
+pkgver=3.2.148
+pkgrel=1
 pkgdesc="EasyEDA Professional Edition. Run with system electron."
 arch=("x86_64" "aarch64")
 url="https://pro.easyeda.com/"
@@ -20,8 +20,8 @@ source_x86_64=("$_pkgname-x86_64-$pkgver.zip::https://image.easyeda.com/files/ea
 source_aarch64=("$_pkgname-aarch64-$pkgver.zip::https://image.easyeda.com/files/easyeda-pro-linux-arm64-$pkgver.zip")
 sha256sums=('ab64abe7821e4ea37a0e4d1f77c94f37d6a51c7df2038ba7b609c640adf8e51d'
             '89289056ed4b5d051280e3a69dfb550b6914f470f201be1ca3b165ddd4f3e435')
-sha256sums_x86_64=('2a504564c2d49189309c29da1e24eb7c3166d9cd09a38c4d19478c9c6f2bde29')
-sha256sums_aarch64=('0c47ce6257aa07d4a2831e20811cfd7f2d1b78508bb3e3158086307325334524')
+sha256sums_x86_64=('3238496cdb38d7fcecfd09d8972dd938c579c6c5e513f5e296848a328be445f8')
+sha256sums_aarch64=('0c18605d5c037a6661f396861d80e646139905cd5eed69bcfcbb06e100e0de14')
 
 prepare() {
     curl -sSfL -o "LICENSE-$pkgver.html" "https://easyeda.com/page/legal"
