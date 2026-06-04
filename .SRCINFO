@@ -1,17 +1,19 @@
 pkgbase = roton-bin
 	pkgdesc = Roton Screen Recording App (binary release)
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/ferdinankurnian/roton
 	arch = x86_64
 	license = MIT
-	depends = slurp
+	depends = scrop
 	depends = ffmpeg
 	depends = pipewire-pulse
 	depends = wl-screenrec
-	source = roton-0.1.0.tar.gz::https://github.com/ferdinankurnian/roton/releases/download/v0.1.0/roton-v0.1.0-linux-x86_64.tar.gz
+	source = roton-1.0.0.tar.gz::https://github.com/ferdinankurnian/roton/releases/download/v1.0.0/roton-v1.0.0-linux-x86_64.tar.gz
+	source = README-1.0.0.md::https://raw.githubusercontent.com/ferdinankurnian/roton/v1.0.0/README.md
 	source = roton.desktop
-	sha256sums = b9d7c76746ce8eeedf7da36df65f0bd94a19a6eb983432f69db079008c621d5d
+	sha256sums = 4a3f78599a9a3a60b8ffc9ead24d5ce8ad6318f06dc97f9557debecf9a19b2d8
+	sha256sums = 0767117be62ce9dc8bd04bf393845475dd688512599d4b58ec8ac8f4afad7705
 	sha256sums = SKIP
 
 pkgname = roton-bin
