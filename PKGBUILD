@@ -119,8 +119,8 @@ build() {
 	pnpm exec nest build --type-check
 
 	cd ../
-	SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm --filter immich --frozen-lockfile build
-	pnpm --filter immich --frozen-lockfile --prod --no-optional deploy output/server-pruned
+	SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm --filter immich build
+	pnpm --filter immich --prod --no-optional deploy output/server-pruned
 
 	# build sdk and web
 	export NODE_OPTIONS=--max-old-space-size=4096  # prevent OOM
