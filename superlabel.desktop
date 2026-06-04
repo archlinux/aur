@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=superlabel
+Comment=Object detection dataset annotation tool
+Exec=superlabel %U
+Icon=superlabel
+Terminal=false
+Categories=Graphics;Development;
