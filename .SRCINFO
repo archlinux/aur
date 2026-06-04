@@ -1,0 +1,17 @@
+pkgbase = python-typeshed_client
+	pkgdesc = Retrieve information from typeshed and other typing stubs
+	pkgver = 2.12.0
+	pkgrel = 1
+	url = https://github.com/JelleZijlstra/typeshed_client
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-importlib_resources
+	depends = python-typing_extensions
+	source = typeshed_client-2.12.0.tar.gz::https://github.com/JelleZijlstra/typeshed_client/archive/refs/tags/v2.12.0.tar.gz
+	b2sums = d24a5fc0e35ae035ccb6d5b9228f3945fe5cd46c12329b38b515aba90451bf2ad128608df07020460d9cb8866471f346cc99e3cff27ea566ab26c084fa39c26a
+
+pkgname = python-typeshed_client

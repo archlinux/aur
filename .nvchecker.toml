@@ -1,0 +1,4 @@
+[python-typeshed_client]
+source = "git"
+git = "https://github.com/JelleZijlstra/typeshed_client.git"
+prefix = "v"
