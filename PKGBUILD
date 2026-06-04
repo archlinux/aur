@@ -1,25 +1,41 @@
 # Maintainer: Kevin <info@borunsky.de>
 
 pkgname=wowusky
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Minimalist World of Warcraft addon manager for Linux'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/borunsky/wowusky'
 license=('MIT')
-depends=('python' 'tk')
-makedepends=('python-build' 'python-installer' 'python-setuptools>=77' 'python-wheel')
+depends=('python' 'nodejs')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools>=77'
+  'python-wheel'
+  'npm'
+)
 checkdepends=('python-pytest')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 # The real checksum is computed automatically by the `Publish to AUR`
 # GitHub Action (it runs `updpkgsums` against the published release
-# tarball before pushing). 'SKIP' is the in-repo placeholder; for a
-# manual local build run `updpkgsums` here first.
-sha256sums=('e4f0b12c1d516e46221d2a2e4feb5d6e0164dc66cd6cb82f70fb235657a39c31')
+# tarball before pushing). 'SKIP' is the in-repo placeholder.
+sha256sums=('04d2e52a95a1504f0fb6830a72129931637dafecdcf25debda250e8c3e28e006')
+
+prepare() {
+  cd "${pkgname}-${pkgver}/desktop"
+  npm ci --prefer-offline
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
+
+  # Python bridge package
   python -m build --wheel --no-isolation
+
+  # Electron renderer + main
+  cd desktop
+  npm run dist:dir
 }
 
 check() {
@@ -29,18 +45,31 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgver}"
+
+  # ── Python bridge ───────────────────────────────────────────────────────────
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 README.md  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 LICENSE    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # Desktop entry + scalable icon
+  # ── Electron app ────────────────────────────────────────────────────────────
+  # Install the unpacked Electron dir to /usr/lib/wowusky-desktop/
+  local _app_dir="${pkgdir}/usr/lib/wowusky-desktop"
+  install -dm755 "${_app_dir}"
+  cp -r desktop/dist/linux-unpacked/. "${_app_dir}/"
+
+  # Wrapper script so /usr/bin/wowusky launches the Electron shell
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/wowusky" <<'EOF'
+#!/bin/sh
+exec /usr/lib/wowusky-desktop/wowusky-desktop "$@"
+EOF
+
+  # ── Desktop integration ─────────────────────────────────────────────────────
   install -Dm644 packaging/wowusky.desktop \
                  "${pkgdir}/usr/share/applications/wowusky.desktop"
   install -Dm644 packaging/wowusky.svg \
                  "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wowusky.svg"
 
-  # Raster icons
   for sz in 32 64 128 256 512; do
     if [ -f "packaging/wowusky-${sz}.png" ]; then
       install -Dm644 "packaging/wowusky-${sz}.png" \
