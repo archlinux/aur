@@ -1,7 +1,7 @@
 pkgbase = beer
 	pkgdesc = Print beer ASCII art in your terminal
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bailuocf/beer
 	arch = any
 	license = MIT
