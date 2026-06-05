@@ -1,0 +1,22 @@
+pkgbase = voice-agent-git
+	pkgdesc = Real-time spoken assistant for Claude (Pipecat, local-first): mic→STT→brain→TTS with wake word, barge-in, and voice machine-control
+	pkgver = r27.5a4c0dd
+	pkgrel = 1
+	url = https://github.com/indyfive11/voice-agent
+	install = voice-agent-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = uv
+	depends = portaudio
+	depends = espeak-ng
+	depends = rsync
+	optdepends = pipewire: recommended audio backend — echo-cancel source enables wake-over-music
+	optdepends = ffmpeg: wake-word training tooling + audio capture
+	optdepends = ollama: run a local LLM brain (BRAIN=local)
+	provides = voice-agent
+	conflicts = voice-agent
+	source = voice-agent-git::git+https://github.com/indyfive11/voice-agent.git
+	sha256sums = SKIP
+
+pkgname = voice-agent-git

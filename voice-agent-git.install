@@ -1,0 +1,33 @@
+post_install() {
+	cat <<'MSG'
+==> voice-agent installed.
+
+  First run:   voice-agent
+               (bootstraps ~/.local/share/voice-agent + a uv venv; downloads the
+                Python deps + STT/TTS models on first launch — multi-GB, needs network)
+
+  Config:      edit ~/.local/share/voice-agent/.env — pick a brain (it's pluggable):
+                 default local Anthropic brain → set ANTHROPIC_API_KEY
+                 fully local                   → LLM_PROVIDER=ollama (no cloud key)
+                 external brain                → BRAIN=gabagent (voice shell needs no LLM key)
+
+  Brains:      voice-agent          (brain per .env BRAIN=)
+               voice-agent gab      (gabagent brain, if installed)
+               voice-agent local    (local LLM: Ollama/Anthropic/OpenAI per .env)
+               voice-agent debug    (gabagent + brain-side debug log)
+
+  Update:      after a package upgrade, run  voice-agent --update
+               (re-syncs code; preserves your .env / wakewords / logs / models / venv)
+
+  Audio:       needs a working PipeWire/PulseAudio setup + a microphone.
+  Wake word:   the speaker-specific model is NOT shipped — open-mic works without it;
+               train your own per the repo's wake-train docs.
+MSG
+}
+
+post_upgrade() {
+	cat <<'MSG'
+==> voice-agent upgraded. Run  voice-agent --update  to sync the new code into your
+    working copy (~/.local/share/voice-agent), preserving your config + data.
+MSG
+}
