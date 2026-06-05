@@ -1,4 +1,4 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
 # Contributor: Yufan You <ouuansteve at gmail>
 
 _pkgname=kawaii-gcc
