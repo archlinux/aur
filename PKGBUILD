@@ -6,7 +6,7 @@ _pkgname=gohan
 pkgname=${_pkgname}
 pkgdesc="A simple, fast static site generator written in Go with differential builds"
 
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 _ghversion=v${pkgver}
 
@@ -23,7 +23,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}"{-bin,-git})
 
 source=("${_pkgname}-${pkgver}.tgz::${url}/archive/${_ghversion}.tar.gz")
-sha256sums=('64ffba2c02b3b7b05834ac0de417dcea022201736ae65727de24bd0f7cf113a8')
+sha256sums=('10020a6dcdb65458d60f94646e6d6fc3cd5734ccadf195a0ea99ffda7a5f8642')
 
 
 prepare() {
