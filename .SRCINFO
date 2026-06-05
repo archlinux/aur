@@ -1,7 +1,7 @@
 pkgbase = clash-nyanpasu-git
 	pkgdesc = A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​
 	pkgver = 2.0.0.r6931.f6538a47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libnyanpasu/clash-nyanpasu
 	arch = x86_64
 	arch = aarch64
