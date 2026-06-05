@@ -10,7 +10,7 @@ pkgbase = biglinux-driver-manager
 	source = biglinux-driver-manager::git+https://github.com/biglinux/biglinux-driver-manager.git
 	sha512sums = SKIP
 
-pkgname = biglinux-driver-manager-git
+pkgname = biglinux-driver-manager
 	depends = python>=3.10
 	depends = python-gobject
 	depends = gtk4

@@ -2,7 +2,7 @@
 # Contributor: Bruno Goncalves <bigbruno@gmail.com>
 
 pkgbase=biglinux-driver-manager
-pkgname=${pkgbase}-git
+pkgname=${pkgbase}
 pkgver=r216.f449c7c
 pkgrel=2
 arch=('any')
