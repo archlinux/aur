@@ -7,3 +7,7 @@
 !PKGBUILD
 !.SRCINFO
 !.pre-commit-config.yaml
+!LICENSE
+!LICENSES/0BSD.txt
+!LICENSES
+!REUSE.toml
