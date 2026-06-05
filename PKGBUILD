@@ -1,9 +1,9 @@
-# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
+# Maintainer: Agil Mammadov <mammadovagil@proton.me>
 # Contributor: Alex Hirzel <alex at hirzel period us>
 
 pkgname='python-strictdoc'
 _name=${pkgname#python-}
-pkgver=0.23.0
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="Software for technical documentation and requirements management."
 url="https://github.com/strictdoc-project/strictdoc"
@@ -41,7 +41,7 @@ makedepends=('python-pipreqs' 'python-setuptools')
 license=('Apache-2.0')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('d447d39f6b325280160d7338ecb385707135e2115f4d2e1325b7270eefd87ba022b7da822606bf6949b25bd376f8cbf8419b7f03493521c58f9a8707c9773375')
+sha512sums=('cad4fa22260388dd400bd4caf1df5ac0e0c53a645203ba09d0325b3ae3aac92f8a80f492e5263cbddcaccc1ce5d8aa433f8b715f948eb40357cdcec0647560ab')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
