@@ -13,7 +13,6 @@ license=('BSD-2-Clause')
 url='https://github.com/bterwijn/invocation_tree'
 
 depends=('python' 'python-graphviz')
-optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
