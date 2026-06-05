@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.9.29
+pkgver=0.9.30
 _electronversion=41
 _nodever=24
 pkgrel=1
