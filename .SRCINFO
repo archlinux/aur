@@ -1,6 +1,6 @@
 pkgbase = moshpits-unstable-bin
 	pkgdesc = moshpits server with post-quantum support — SSH and Mosh inspired remote terminal server (pre-compiled binary)
-	pkgver = 0.8.15
+	pkgver = 0.8.16
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	install = moshpits.install
@@ -13,13 +13,13 @@ pkgbase = moshpits-unstable-bin
 	conflicts = moshpits
 	conflicts = moshpits-bin
 	replaces = moshpits-bin
-	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.15/dist-mps.tar.gz
+	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.16/dist-mps.tar.gz
 	source = mps.service
-	sha256sums = 8c1f9f3005b1c9e588565aeceff070b2c75c01c60866f018b33b1f9bc097831f
+	sha256sums = dc4104bbe1f44f9494ea1796478f5b3315773bd720a2cf93add58afba9f8a633
 	sha256sums = SKIP
-	source_x86_64 = mps-unstable-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.15/mps-unstable-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 5cc9d62fd4c66e68bc2350a52ce19e9d30edf44c11a44a0eec4f3a0e35161b38
-	source_aarch64 = mps-unstable-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.15/mps-unstable-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = bcb23e8ac7408c2bcdc9f55c32fc03402abb1425494dbdda6c3ab88cdbcfc675
+	source_x86_64 = mps-unstable-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.16/mps-unstable-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 29721480b61e2648992c39e7b150df49990ad2f338ae5f6c4853c77011bb6e5d
+	source_aarch64 = mps-unstable-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.16/mps-unstable-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 88d9b7f1432b6ba9dc578a23ba6e6654404de994ef8d86ba75a7d1b8f7498924
 
 pkgname = moshpits-unstable-bin
