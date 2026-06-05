@@ -1,0 +1,5 @@
+[databow]
+source = "github"
+github = "columnar-tech/databow"
+prefix = "v"
+use_latest_release = true
