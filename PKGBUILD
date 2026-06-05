@@ -6,7 +6,7 @@
 
 _pkgname=xul-anchor-graft
 pkgname="${_pkgname}"
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Per-user add-on signing authority for libxul-family browsers"
 arch=('any')
@@ -45,7 +45,7 @@ checkdepends=(
 
 # _repo_git_url="ssh://git@${_url}.git"  # If you have SSH configured for Codeberg
 _repo_git_url="https://${_url}.git"  # Anonymous machine-ready access
-source=("${_pkgname}::git+${_repo_git_url}?signed#tag=v${pkgver}")
+source=("${_pkgname}::git+${_repo_git_url}?signed#tag=v${pkgver}"
 # To build a checkout instead of a published tag,
 #   either use `xul-anchor-graft-git` for the master,
 #   or use a local checkout (where you may or may not have done any changes) ::
@@ -55,8 +55,12 @@ source=("${_pkgname}::git+${_repo_git_url}?signed#tag=v${pkgver}")
 #   where CONTEXT is any path within the repo including the root itself.
 # The entire `-C CONTEXT` option is optional if your current directory
 #   (from `makepkg`'s PoV) is already somewhere inside the repo.
+        "xag-extensions.hook"
+       )
 
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'fb653372e663638fbe85a12a9080281563d3a9bf1d61a7393688dc1b880e4f32'
+           )
 validpgpkeys=(
   "E627ACE54546B9DA33F31C47EA82A8B4E968D242"  # "0zitro <94910351+0zitro@users.noreply.github.com>"
 )
@@ -81,6 +85,11 @@ package() {
   cd "${_pkgname}" || return 1;
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  # Informational pacman hook: notes per-user that the shared extension drop changed. It signs
+  # and installs nothing (those are per-user, behind the user's passphrase) -- see the file.
+  install -Dm644 "${srcdir}"/xag-extensions.hook \
+    "${pkgdir}/usr/share/libalpm/hooks/xag-extensions.hook"
 
   # Ship the licence (Elastic-2.0 is not in the `licenses` package).
   install -Dm644 LICENCE.md "${pkgdir}/usr/share/licenses/${_pkgname}/LICENCE.md"

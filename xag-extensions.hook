@@ -1,0 +1,18 @@
+# Installed by xul-anchor-graft to /usr/share/libalpm/hooks/.
+#
+# Informational only: it does no signing or installing (those are per-user and need the user's
+# passphrase-locked key, which a root hook has no business touching). It just notes that the
+# shared, browser-agnostic extension drop changed, so each user knows to reconcile -- lazily at
+# their next `xag launch`, or eagerly with `xag sync`. The trigger keys on the path, so it fires
+# for any package that lands or removes files there, whatever the package is named.
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = usr/share/xag/extensions/*
+
+[Action]
+Description = xag: bundled extensions changed (apply per-user with `xag sync` or `xag launch`)
+When = PostTransaction
+Exec = /bin/sh -c 'echo ">> xag: extensions under /usr/share/xag/extensions changed; each user applies them with \`xag sync\` or their next \`xag launch <browser>\`."'
