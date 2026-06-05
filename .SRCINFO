@@ -5,7 +5,6 @@ pkgbase = starnet2-bin
 	url = https://starnetastro.com/cli-tools/starnet/
 	arch = x86_64
 	license = custom
-	depends = bash
 	provides = starnet2-bin
 	conflicts = starnet2-bin
 	source = https://download.starnetastro.com/starnet2_linux_2.5.1-0205_ORT_x64_cli.zip
