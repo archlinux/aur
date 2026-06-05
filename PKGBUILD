@@ -10,7 +10,7 @@ pkgdesc="A super \"coolorful\" shell for Hyprland! (latest-commit version)"
 license=('BSD-3-Clause')
 url="https://github.com/retrozinndev/colorshell"
 pkgrel=1
-pkgver=2.1.2.r114.g8e56451
+pkgver=2.1.2.r115.g62b9fd6
 arch=('any')
 sha256sums=('SKIP')
 provides=("$_pkgname")
@@ -69,7 +69,6 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    git checkout lua
     pnpm install
 }
 
