@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vtk
-pkgver=9.6.1
+pkgver=9.6.2
 pkgrel=1
 pkgdesc='Software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -8,8 +8,8 @@ license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-jsoncpp' 'mingw-w64-expat' 'mingw-w64-netcdf' 'mingw-w64-libtiff' 'mingw-w64-libjpeg-turbo' 'mingw-w64-freetype2' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-hdf5' 'mingw-w64-freeglut' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-double-conversion' 'mingw-w64-pugixml' 'mingw-w64-libtheora' 'mingw-w64-gl2ps' 'mingw-w64-cgns' 'mingw-w64-libharu' 'mingw-w64-verdict' 'mingw-w64-scnlib')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 options=('!buildflags' 'staticlibs' '!strip')
-source=("https://www.vtk.org/files/release/${pkgver:0:3}/VTK-${pkgver}.tar.gz")
-sha256sums=('47ca9af899165a33b935533046acce7c0aa3c007f0b57880665bb89d9986543f')
+source=("https://www.vtk.org/files/release/${pkgver:0:3}/VTK-${pkgver}.tar.gz" MR13293.patch)
+sha256sums=('aed12cec12a9609179bf66329070266627ca64244a10856a452b2a17ffb04a1d' SKIP)
 
 _architectures="x86_64-w64-mingw32"
 
@@ -21,7 +21,7 @@ prepare() {
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12940.patch | patch -p1
 
   # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
-  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/13293.patch | sed "s|cxx.inc.in|cxx.in|g" | patch -p1
+  patch -p1 -i "${srcdir}"/MR13293.patch
 }
 
 build() {
