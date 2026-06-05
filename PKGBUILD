@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=kiro-cli
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Prompt to code to deployment in your terminal'
 arch=(aarch64 x86_64)
@@ -12,18 +12,18 @@ url='https://kiro.dev/cli/'
 #   Service Terms: https://aws.amazon.com/service-terms/
 #   Privacy Notice: https://aws.amazon.com/privacy/
 license=(LicenseRef-Kiro)
-depends=(glibc libgcc sh)
+depends=(glibc libgcc libstdc++ sh)
 conflicts=(amazon-q)
 options=(!debug)
 source=(Kiro-LICENSE.txt)
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.zst::https://desktop-release.q.us-east-1.amazonaws.com/$pkgver/kirocli-x86_64-linux.tar.zst")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.zst::https://desktop-release.q.us-east-1.amazonaws.com/$pkgver/kirocli-aarch64-linux.tar.zst")
 sha256sums=('1840298f83a857294aa3f5adfc85835127499df54c557d8c3df76f04a56acf55')
-sha256sums_aarch64=('fb5ba6af32dc457d527c8bab1cb5b44c9a781933142bf35cb59ee0a4c8dc4189')
-sha256sums_x86_64=('662aa7958f8ebff130df2e86a95e26c43fe29697fbe422eacdb39c0ee56cc3bc')
+sha256sums_aarch64=('6ce074966188c57a6a191b0cd29207fbf52c4595de68d7105515c46ad439a349')
+sha256sums_x86_64=('b91bb40a88c6cb07d90ee55c03ff4d9a54bd976af37b7fc425be293f93022373')
 b2sums=('67ddcca288e9f92ee33d5f1e56dd66164542f4f85421a0c6004f55ff94b961b8db6908b249dea65c68c048925acf11c82d0f6c24f7da3948249ecf2aa4ce3880')
-b2sums_aarch64=('337e2375a27cd336625dc288de3e5f0c3dead7145bc4e8a68308dc8c8a6686e08dd70f3819938692a3dc4f7efc58fa0f668f6522457500b8458cae3f66e3c7c6')
-b2sums_x86_64=('0eea7d02586edcd95c95a7eafaf4047d091c52af9c53457dbde8db0f79c275c74ecb3e92c0e5edcdaf5884cea4147a8b5d87613fbfb474f9d0c888ea517d0683')
+b2sums_aarch64=('4a513a3ab159b7a161a2decbb9089ac6c2404508258dd5bc50e116cc98945c331b144fc0955148b507dfcb69879db30fe56e3e2da5b930108249a69cf9590fd7')
+b2sums_x86_64=('f966ed6918f5157826cd49443d281b2394995c0571ce5661ceef3aff89c7401cec7a335c4ed044ced3df33a07895c135ccbd135386f2b010c660948d1bb00907')
 
 prepare() {
     cd kirocli/bin
