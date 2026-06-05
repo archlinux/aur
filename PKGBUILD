@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=liteparse-bin
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc='Fast local document parser for PDF, DOCX, XLSX, PPTX, and images with built-in OCR'
 arch=('x86_64' 'aarch64')
@@ -18,20 +18,11 @@ conflicts=('liteparse')
 options=('!debug')
 
 _gh_repo='run-llama/liteparse'
-_pdfium_ver=7847
 
-source_x86_64=(
-    "${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/${_gh_repo}/releases/download/crates-v${pkgver}/lit-linux-x64.tar.gz"
-    "pdfium-${_pdfium_ver}-x86_64.tgz::https://github.com/run-llama/pdfium-binaries/releases/download/chromium%2F${_pdfium_ver}/pdfium-linux-x64.tgz"
-)
-source_aarch64=(
-    "${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/${_gh_repo}/releases/download/crates-v${pkgver}/lit-linux-arm64.tar.gz"
-    "pdfium-${_pdfium_ver}-aarch64.tgz::https://github.com/run-llama/pdfium-binaries/releases/download/chromium%2F${_pdfium_ver}/pdfium-linux-arm64.tgz"
-)
-sha256sums_x86_64=('7870983881cf9c7a0078759b9f6028644bb345599a605defef01a25b08af3a7f'
-                   '3e8326bc517d071c569efc23f6e18d60a83c7b775c714bb571c609fffebd5320')
-sha256sums_aarch64=('74e7a1be935608b53ccf1cb39957f0b514b8a935552f1033d2d10e9f8acb69ca'
-                    '9fc1c556fb5b9764f9f6f474161d871776c25a507cb82ba25006beb658c29cea')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/${_gh_repo}/releases/download/crates-v${pkgver}/lit-linux-x64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/${_gh_repo}/releases/download/crates-v${pkgver}/lit-linux-arm64.tar.gz")
+sha256sums_x86_64=('4bfb967489c8c71c955f892a4dbcab58285a8ff7178a0c9e3e246619da6da8ab')
+sha256sums_aarch64=('407804f33df1d361c13354285f5a7880ed26956adaeeaf876992daf7d27886c4')
 
 latestver() {
     gh api --paginate "repos/${_gh_repo}/releases" --jq \
@@ -41,11 +32,12 @@ latestver() {
 
 package() {
     case "${CARCH}" in
-        x86_64)  install -Dm755 lit-linux-x64 "${pkgdir}/usr/lib/liteparse/liteparse" ;;
-        aarch64) install -Dm755 lit-linux-arm64 "${pkgdir}/usr/lib/liteparse/liteparse" ;;
+        x86_64)  _srcdir=lit-linux-x64 ;;
+        aarch64) _srcdir=lit-linux-arm64 ;;
     esac
 
-    install -Dm755 lib/libpdfium.so "${pkgdir}/usr/lib/liteparse/libpdfium.so"
+    install -Dm755 "${_srcdir}/lit" "${pkgdir}/usr/lib/liteparse/liteparse"
+    install -Dm755 "${_srcdir}/libpdfium.so" "${pkgdir}/usr/lib/liteparse/libpdfium.so"
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/liteparse" <<'WRAPPER'
 #!/bin/sh
