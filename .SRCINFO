@@ -1,13 +1,13 @@
 pkgbase = overte-appimage
 	pkgdesc = Overte open source virtual worlds platform.
-	pkgver = 2025.12.1
+	pkgver = 2026.04.1
 	pkgrel = 1
 	url = https://github.com/overte-org/overte
 	arch = x86_64
 	license = Apache-2.0
-	noextract = overte-appimage-2025.12.1.AppImage
+	noextract = overte-appimage-2026.04.1.AppImage
 	options = !strip
-	source_x86_64 = overte-appimage-2025.12.1.AppImage::https://overte-public.fra1.digitaloceanspaces.com/build/overte/release/2025.12.1/Overte-2025.12.1-x86_64.AppImage
-	sha256sums_x86_64 = 154f33d494bed7faf940dcc7f625deb5ab3933d7f38f690e08e00d1d505b0940
+	source_x86_64 = overte-appimage-2026.04.1.AppImage::https://overte-public.fra1.digitaloceanspaces.com/build/overte/release/2026.04.1/Overte-2026.04.1-x86_64.AppImage
+	sha256sums_x86_64 = dc39f5b4694a1c48cfb1454a8922f6a25fa4db5820bf937113ebf4086aa99145
 
 pkgname = overte-appimage
