@@ -3,7 +3,7 @@
 pkgname=uutils-diffutils-shim
 pkgver=0.5.0
 pkgrel=1
-pkgdesc='Replaces supported GNU diffutils commands with uutils diffutils'
+pkgdesc='Replaces supported GNU diffutils with uutils diffutils'
 arch=('any')
 url='https://uutils.github.io/diffutils/'
 license=('MIT')

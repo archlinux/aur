@@ -1,5 +1,5 @@
 pkgbase = uutils-diffutils-shim
-	pkgdesc = Replaces supported GNU diffutils commands with uutils diffutils
+	pkgdesc = Replaces supported GNU diffutils with uutils diffutils
 	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://uutils.github.io/diffutils/
