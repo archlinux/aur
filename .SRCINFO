@@ -1,6 +1,6 @@
 pkgbase = delineate
 	pkgdesc = View and edit graphs
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/SeaDve/Delineate
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = delineate
 	depends = libadwaita
 	depends = webkitgtk-6.0
 	options = !lto
-	source = git+https://github.com/SeaDve/Delineate.git#tag=v0.1.1
-	sha256sums = bc7b5481771586e9f61841e8727b356c9409446bfc044fafdd3099a8fa244665
+	source = git+https://github.com/SeaDve/Delineate.git#tag=v0.1.2
+	sha256sums = 5ea8a08ee1aeec5078e9a90d909e268a8e90a358024da8c510f5aea77cc19c76
 
 pkgname = delineate

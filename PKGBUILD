@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=delineate
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='View and edit graphs'
 arch=(x86_64)
@@ -28,7 +28,7 @@ makedepends=(
 )
 options=(!lto)
 source=("git+https://github.com/SeaDve/Delineate.git#tag=v$pkgver")
-sha256sums=('bc7b5481771586e9f61841e8727b356c9409446bfc044fafdd3099a8fa244665')
+sha256sums=('5ea8a08ee1aeec5078e9a90d909e268a8e90a358024da8c510f5aea77cc19c76')
 
 prepare() {
   cd Delineate
