@@ -15,8 +15,8 @@ provides=(swift-language)
 conflicts=(swift-language)
 source_x86_64=("https://download.swift.org/${_pkgname}/linux/${_pkgname}-${pkgver}-x86_64.tar.gz")
 source_aarch64=("https://download.swift.org/${_pkgname}/linux/${_pkgname}-${pkgver}-aarch64.tar.gz")
-sha256sums_x86_64=('dc5f94308b33455530f4150b412527596a33c8525a7d59b025b598520e92d121')
-sha256sums_aarch64=('e664899868b2dea9a1e7a7fbad0521c24aceeca14bbcbb22ba5cda1f62c37ed4')
+sha256sums_x86_64=('21ad3d6376af0b423435f1f7295364add66c7173ea342654f4ae536c20ae88ba')
+sha256sums_aarch64=('cb53dfea98f23a2bf62e89c2abbbf2f331ba5ad8ebc4a68a37e918b964848627')
 
 package() {
   install -D -m 0755 ${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
