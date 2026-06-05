@@ -200,9 +200,10 @@ done
 
 cd /opt/bestclient/game
 export LD_LIBRARY_PATH="/opt/bestclient/game${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-# Disable LSFG-VK (lossless scaling frame generation) Vulkan layer which causes
-# a SIGSEGV crash on startup when injected into the BestClient Vulkan context.
-export DISABLE_VULKAN_LAYERS="VkLayer_LS_frame_generation"
+# Disable LSFG-VK Vulkan layer (/etc/vulkan/implicit_layer.d/VkLayer_LS_frame_generation.json)
+# which causes a SIGSEGV crash during Vulkan initialization (std::codecvt in liblsfg-vk.so).
+# DISABLE_LSFG is the official disable_environment key defined in the layer JSON.
+export DISABLE_LSFG=1
 exec ./DDNet "$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$pkgname"
