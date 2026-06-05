@@ -1,15 +1,16 @@
 pkgbase = pg-migrate-bin
 	pkgdesc = Move your databases to PostgreSQL
-	pkgver = 1.0.0rc2
+	pkgver = 1.0.0rc3
 	pkgrel = 1
 	url = https://gitlab.com/dalibo/pg_migrate
 	arch = x86_64
 	license = PostgreSQL
 	provides = pg-migrate
 	conflicts = pg-migrate
-	source = pg-migrate-bin-1.0.0rc2.tar.zst::https://gitlab.com/dalibo/pg_migrate/-/releases/v1.0.0-rc.2/downloads/pg-migrate_linux_amd64.pkg.tar.zst
-	source = LICENSE-1.0.0rc2::https://gitlab.com/dalibo/pg_migrate/-/raw/v1.0.0-rc.2/LICENSE
-	sha256sums = 64a2503a52a56375c13b797583cbd77a6e78c6cd230fa506300c2536fbe8da67
+	options = !debug
+	source = pg-migrate-bin-1.0.0rc3.tar.zst::https://gitlab.com/dalibo/pg_migrate/-/releases/v1.0.0-rc.3/downloads/pg-migrate_linux_amd64.pkg.tar.zst
+	source = LICENSE-1.0.0rc3::https://gitlab.com/dalibo/pg_migrate/-/raw/v1.0.0-rc.3/LICENSE
+	sha256sums = 3b8228565392019f044c2de17ebd1e6a138bda2b01ceec813e54698f48132387
 	sha256sums = 26fedda6745ec0fabac275f0934bb47def7b60e7f728f1c6da359794f7d1330c
 
 pkgname = pg-migrate-bin
