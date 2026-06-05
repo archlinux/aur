@@ -1,4 +1,4 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
 # Contributor: Sebastian Meßlinger <sebastian.messlinger@posteo.de>
 pkgname=dnslookup-git
 pkgver=1.10.0.r1.gbbd6081
