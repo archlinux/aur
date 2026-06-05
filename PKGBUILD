@@ -4,12 +4,61 @@
 _pkgname=BestClient
 pkgname=bestclient
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="DDRaceNetwork modification that adds new features"
 arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
 license=('custom')
-depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader' 'highway' 'libogg' 'sdl2' 'libpulse' 'libmodplug' 'libopenmpt' 'srt' 'libssh' 'opencore-amr' 'snappy' 'aom' 'gsm' 'lame' 'openjpeg2' 'speex' 'libvorbis' 'xvidcore' 'libva' 'libvpl' 'libvdpau' 'ocl-icd' 'libsoxr')
+depends=(
+	# ── DDNet binary direct NEEDED ────────────────────────────────────────
+	'curl'              # libcurl.so.4
+	'dbus'              # libdbus-1.so.3
+	'freetype2'         # libfreetype.so.6
+	'glew'              # libGLEW.so (symlink target in game dir)
+	'glib2'             # libgobject-2.0.so.0, libglib-2.0.so.0
+	'libglvnd'          # libGL.so.1
+	'libnotify'         # libnotify.so.4
+	'libpulse'          # libpulse.so.0, libpulse-simple.so.0
+	'sdl2'              # libSDL2-2.0.so.0
+	'vulkan-icd-loader' # libvulkan.so.1
+
+	# ── libavformat 6.1.1 (bundled FFmpeg) system NEEDED ─────────────────
+	'gmp'               # libgmp.so.10
+	'gnutls'            # libgnutls.so.30
+	'libmodplug'        # libmodplug.so.1
+	'libopenmpt'        # libopenmpt.so.0
+	'libssh'            # libssh.so.4
+	'srt'               # libsrt.so.1.5
+
+	# ── libavcodec 6.1.1 (bundled FFmpeg) system NEEDED ──────────────────
+	'aom'               # libaom.so.3
+	'cairo'             # libcairo.so.2
+	'dav1d'             # libdav1d.so.7
+	'gsm'               # libgsm.so.1
+	'lame'              # libmp3lame.so.0
+	'librsvg'           # librsvg-2.so.2
+	'libvorbis'         # libvorbis.so.0, libvorbisenc.so.2
+	'libwebp'           # libwebp.so.7, libwebpmux.so.3
+	'opencore-amr'      # libopencore-amrnb.so.0, libopencore-amrwb.so.0
+	'openjpeg2'         # libopenjp2.so.7
+	'opus'              # libopus.so.0
+	'snappy'            # libsnappy.so.1
+	'speex'             # libspeex.so.1
+	'libva'             # libva.so.2, libva-drm.so.2, libva-x11.so.2
+	'libvpl'            # libvpl.so.2
+	'wavpack'           # libwavpack.so.1
+	'xvidcore'          # libxvidcore.so.4
+	'xz'                # liblzma.so.5
+
+	# ── libavutil 6.1.1 (bundled FFmpeg) system NEEDED ───────────────────
+	'libdrm'            # libdrm.so.2
+	'libvdpau'          # libvdpau.so.1
+	'libx11'            # libX11.so.6
+	'ocl-icd'           # libOpenCL.so.1
+
+	# ── libswresample 6.1.1 (bundled FFmpeg) system NEEDED ───────────────
+	'libsoxr'           # libsoxr.so.0
+)
 makedepends=('patchelf' 'gcc')
 optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.')
 install="$pkgname.install"
