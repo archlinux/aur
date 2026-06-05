@@ -21,10 +21,10 @@
 pkgbase=java21-jetbrains
 pkgname=('jre21-jetbrains' 'jdk21-jetbrains')
 _majorver=21
-_ver=21.0.4
-_hgver=21.0.4
-_jbver1=509
-_jbver2=17
+_ver=21.0.11
+_hgver=21.0.11
+_jbver1=1163
+_jbver2=116
 pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
 _hg_tag=jb${_hgver}-b${_jbver1}.${_jbver2}
@@ -40,10 +40,10 @@ source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=$_hg_tag
   freedesktop-java.desktop
   freedesktop-jconsole.desktop
   freedesktop-jshell.desktop)
-sha256sums=('SKIP'
-  'b1007ce4c8cbe6b1cc3e6ce78b3c7bc1a26d76145c7c759baf7a04d8bc1bbfe3'
-  '113abd0cbb73a34cc7268a97056453f3394632d5fe05d9d1e9f1d8895f8d279d'
-  '51dbaaa20b382c5220d560f4068896ba4a5643d3b7ce63c72cb42ba142689475')
+sha256sums=('cc81d62937482421bb3938937f676710ead8b09690a04213c9c9bc33f045e659'
+            'b1007ce4c8cbe6b1cc3e6ce78b3c7bc1a26d76145c7c759baf7a04d8bc1bbfe3'
+            '113abd0cbb73a34cc7268a97056453f3394632d5fe05d9d1e9f1d8895f8d279d'
+            '51dbaaa20b382c5220d560f4068896ba4a5643d3b7ce63c72cb42ba142689475')
 
 case "${CARCH}" in
 x86_64) _JARCH='x86_64' ;;
