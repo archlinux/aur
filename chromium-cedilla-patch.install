@@ -1,0 +1,23 @@
+_apply() {
+    if [ -x /usr/bin/chromium-cedilla-patch ] && [ -f /usr/lib/chromium/chromium ]; then
+        /usr/bin/chromium-cedilla-patch /usr/lib/chromium/chromium || true
+    fi
+}
+
+post_install() {
+    echo ":: Applying ' + c -> ç patch to Chromium..."
+    _apply
+    echo ":: Done. Restart Chromium completely to test ('+c -> ç)."
+    echo ":: The patch re-applies automatically after every chromium upgrade."
+}
+
+post_upgrade() {
+    _apply
+}
+
+post_remove() {
+    if [ -f /usr/lib/chromium/chromium.orig ]; then
+        echo ":: Restoring pristine Chromium binary..."
+        cp -a /usr/lib/chromium/chromium.orig /usr/lib/chromium/chromium || true
+    fi
+}

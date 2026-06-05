@@ -1,0 +1,14 @@
+pkgbase = chromium-cedilla-patch
+	pkgdesc = Make ' + c produce ç in Chromium on native Wayland (no IME): byte-pattern patch of the hardcoded compose table + pacman hook to auto-reapply after upgrades
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lcassa/chromium-wayland-cedilla-fix
+	install = chromium-cedilla-patch.install
+	arch = any
+	license = MIT
+	depends = chromium
+	depends = python
+	source = chromium-cedilla-patch-1.0.0.tar.gz::https://github.com/lcassa/chromium-wayland-cedilla-fix/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = df5bca1bae2471652e33f957b5c23b34f300c37ea9234d5df17a8144ce8bf894
+
+pkgname = chromium-cedilla-patch
