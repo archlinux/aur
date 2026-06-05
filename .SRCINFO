@@ -1,7 +1,7 @@
 pkgbase = biglinux-driver-manager
 	pkgdesc = Application to manage kernel and mesa drivers for BigLinux
 	pkgver = r216.f449c7c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/biglinux/biglinux-driver-manager
 	install = biglinux-driver-manager.install
 	arch = any
@@ -19,3 +19,5 @@ pkgname = biglinux-driver-manager-git
 	depends = hicolor-icon-theme
 	depends = avahi
 	depends = nss-mdns
+	provides = biglinux-driver-manager=r216.f449c7c
+	conflicts = biglinux-driver-manager

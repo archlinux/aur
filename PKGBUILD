@@ -4,7 +4,7 @@
 pkgbase=biglinux-driver-manager
 pkgname=${pkgbase}-git
 pkgver=r216.f449c7c
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('MIT')
 url="https://github.com/biglinux/biglinux-driver-manager"
@@ -30,6 +30,8 @@ package() {
     'avahi'
     'nss-mdns'
     )
+    provides=("${pkgbase}=${pkgver}")
+    conflicts=("${pkgbase}")
 
     cd ${srcdir}/${pkgbase}
 
