@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-vinput-git
 _pkgname=fcitx5-vinput
-pkgver=0.1.0.r9.c116ee6
+pkgver=0.1.0.r122.14727a0
 pkgrel=2
 pkgdesc="Voice input addon for fcitx5: push-to-talk ASR via CapsLock"
 arch=('x86_64')
