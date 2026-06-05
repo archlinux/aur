@@ -2,12 +2,11 @@
 
 pkgname=protoc-gen-connect-go
 _pkgname=connect-go
-pkgver=1.19.1
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Protoc plugin to generate Go code'
 arch=(x86_64)
 url=https://connectrpc.com/
-_ghurl=https://github.com/connectrpc/${_pkgname}
 license=(Apache-2.0)
 depends=(glibc)
 makedepends=(
@@ -15,13 +14,19 @@ makedepends=(
   go
 )
 options=(!debug)
+_ghurl=https://github.com/connectrpc/${_pkgname}
 source=(${_pkgname}::git+${_ghurl}.git#tag=v${pkgver})
-sha256sums=('f7591148998df7571b86d6325a786e166393a4794e31e7937257b8fe1c738990')
+sha256sums=('86523e5f55e0935ff8ceba0eacb77ed282aff918fe5faa59d9c54fe32e38f4a7')
 
 prepare() {
   cd ${_pkgname}
 
-  export GOFLAGS='-mod=readonly'
+  local -a _goflags
+  _goflags=(
+    -mod=readonly
+  )
+
+  export GOFLAGS="${_goflags[*]}"
 
   rm -rf out
 
@@ -35,7 +40,15 @@ prepare() {
 build() {
   cd ${_pkgname}
 
-  local _ldflags
+  local -a _goflags
+  _goflags=(
+    -buildmode=pie
+    -trimpath
+    -mod=vendor
+    -modcacherw
+  )
+
+  local -a _ldflags
   _ldflags=(
     -s
     -w
@@ -47,7 +60,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOPATH="${srcdir}"
-  export GOFLAGS='-buildmode=pie -trimpath -mod=vendor -modcacherw'
+  export GOFLAGS="${_goflags[*]}"
 
   go build \
     -v \
