@@ -2,7 +2,7 @@
 _base=numpy-typing-compat
 pkgname=python-${_base}
 pkgdesc="Static typing compatibility layer for older versions of NumPy"
-pkgver=20251206.2.4
+pkgver=20260602.2.5
 pkgrel=1
 arch=(any)
 url="https://github.com/jorenham/${_base}"
@@ -10,7 +10,7 @@ license=(BSD-3-Clause)
 depends=(python)
 makedepends=(python-build python-installer python-numpy python-uv-build python-jinja python-wheel)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base//-/_}-${pkgver}.tar.gz)
-sha512sums=('eba8d37b28f9a17b8f2679a6017d40adc418e898802a4674550deed16074780136bc336bd547f79de1fd53a28fa688299dbe41dc17403aba173f4f355f9f6b93')
+sha512sums=('52e9ca85da0bf3293418ddd04b7812363b9fbf5b3530f4fec2a78c0eea88ea25637c84409a7effd2cac91feac7d5d48507b82da6ad921e6c73879e53a4dc6602')
 
 build() {
   cd ${_base//-/_}-${pkgver}
