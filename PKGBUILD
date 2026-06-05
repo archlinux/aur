@@ -2,8 +2,8 @@
 
 pkgname=omp-bin
 pkgver=15.9.1
-pkgrel=2
-pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more (release binary)"
+pkgrel=3
+pkgdesc="oh-my-pi (omp): AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more (release binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/can1357/oh-my-pi"
 license=('MIT')
