@@ -1,6 +1,6 @@
-# Maintainer: Aridan <https://github.com/actuallyaridan>
+# Maintainer: actuallyaridan <https://github.com/actuallyaridan>
 pkgname=linux-devmgmt
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A faithful recreation of the Windows Device Manager"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt6-base')
 makedepends=('cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/actuallyaridan/linux-devmgmt/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('049ad5ed78e677f8fbb1841b10a7a11ede714e3d6690eb7e19ec8cff77a4ef38')
+sha256sums=('38e28e82df1e1a381b1cd62a516c801acd7e1d3df3374a545fc1d36bf8e2c611')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build \
