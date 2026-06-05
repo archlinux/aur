@@ -1,0 +1,19 @@
+pkgbase = sish-bin
+	pkgdesc = HTTP(S)/WS(S)/TCP Tunnels to localhost using only SSH
+	pkgver = 2.23.0
+	pkgrel = 1
+	url = https://github.com/antoniomika/sish
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = openssh
+	provides = sish
+	conflicts = sish
+	options = !strip
+	source_x86_64 = sish-x86_64-2.23.0.tgz::https://github.com/antoniomika/sish/releases/download/v2.23.0/sish-2.23.0.linux-amd64.tar.gz
+	sha256sums_x86_64 = 965dec4c1a17ecc44ea0bed479f8aa841630cf411886c49047bc0646df616170
+	source_aarch64 = sish-aarch64-2.23.0.tgz::https://github.com/antoniomika/sish/releases/download/v2.23.0/sish-2.23.0.linux-arm64.tar.gz
+	sha256sums_aarch64 = ca8141d9062de174bb794befb4cdb197ed2fb2280d15454c35819d8f19655ca4
+
+pkgname = sish-bin

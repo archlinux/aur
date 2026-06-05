@@ -1,0 +1,5 @@
+[sish-bin]
+source = "github"
+github = "antoniomika/sish"
+use_latest_release = true
+prefix = "v"
