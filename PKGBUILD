@@ -78,6 +78,7 @@ package() {
     'Icon=posthog-code' \
     'Categories=Development;' \
     'StartupWMClass=PostHog Code' \
+    'MimeType=x-scheme-handler/posthog-code;' \
     'Terminal=false' \
     > "${pkgdir}/usr/share/applications/posthog-code.desktop"
 }
