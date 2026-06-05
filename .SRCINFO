@@ -1,0 +1,20 @@
+pkgbase = simpmusic
+	pkgdesc = SimpMusic with environment fixes for Wayland
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/maxrave-dev/SimpMusic
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = hicolor-icon-theme
+	depends = gstreamer
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = yt-dlp
+	provides = simpmusic
+	conflicts = simpmusic
+	conflicts = simpmusic-bin
+	options = !strip
+	source = SimpMusic-x86_64.AppImage::https://github.com/maxrave-dev/SimpMusic/releases/download/v1.3.0/SimpMusic-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = simpmusic
