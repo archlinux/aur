@@ -4,7 +4,7 @@ pkgver=1.1
 pkgrel=1
 pkgdesc="A simple and easy to use tool to configure, script, and mount cloud drives using rclone"
 arch=('any')
-url="https://github.com/themix88/Clone-WIZ/Rclone-WIZ"
+url="https://github.com/themix88/Clone-WIZ"
 license=('GPL3')
 
 depends=(
