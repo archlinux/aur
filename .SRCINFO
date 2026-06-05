@@ -1,12 +1,12 @@
 pkgbase = cargo-shear
 	pkgdesc = Remove unused dependencies in a Rust project
-	pkgver = 1.12.4
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/Boshen/cargo-shear
 	arch = x86_64
 	license = MIT
 	depends = cargo
-	source = cargo-shear-1.12.4.tar.gz::https://github.com/Boshen/cargo-shear/archive/v1.12.4.tar.gz
-	sha512sums = 579d121fa9aa35c6e01f7a56eb6be9f89b6936d8764b202fe6f26173a581cb8bf6b0d03edda5673477e739e89076fde6e3dacde6c15abb3eeab761d6a35cc0c5
+	source = cargo-shear-1.13.0.tar.gz::https://github.com/Boshen/cargo-shear/archive/v1.13.0.tar.gz
+	sha512sums = c9b7103f39a2b1dd6da03dd6604e326790c021d00b5022c6b3dadb8a6346954e1cf8efddab43ceaa7af34347ce3dc6069e84ace66a0fb86a542ad30db5e241d8
 
 pkgname = cargo-shear
