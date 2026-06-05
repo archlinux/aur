@@ -4,7 +4,7 @@ pkgbase=python-sphinx-asdf
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Sphinx plugin for generating documentation from ASDF schemas"
 arch=('any')
@@ -16,10 +16,10 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-pytest'
 #             'python-pytest-xdist'
               'python-sphinx'
-              'python-asdf'
+              'python-yaml'
               'python-mistune>=3')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('7f3472b9e70a8a5d41e8b1de39447967fbceae728f7fc897f7379c3dcfa39ecf')
+sha256sums=('64c86d990dd586512737afeb9003f578c3eb447504c44f0984449ef5b78a4b64')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
