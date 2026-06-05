@@ -2,7 +2,7 @@
 pkgname=pwsp-bin
 _pkgname=pipewire-soundpad
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lets you play audio files through your microphone (Pre-built binaries)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/arabianq/pipewire-soundpad"
@@ -26,9 +26,9 @@ package() {
   install -Dm755 "${srcdir}/pwsp-daemon" "${pkgdir}/usr/bin/pwsp-daemon"
   install -Dm755 "${srcdir}/pwsp-gui" "${pkgdir}/usr/bin/pwsp-gui"
 
-  install -Dm644 "$_srcsrc/assets/pwsp-gui.desktop" "${pkgdir}/usr/share/applications/pwsp-gui.desktop"
-  install -Dm644 "$_srcsrc/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pwsp.png"
-  install -Dm644 "$_srcsrc/assets/pwsp-daemon.service" "${pkgdir}/usr/lib/systemd/user/pwsp-daemon.service"
+  install -Dm644 "$_srcsrc/pwsp-gui/assets/pwsp-gui.desktop" "${pkgdir}/usr/share/applications/pwsp-gui.desktop"
+  install -Dm644 "$_srcsrc/pwsp-gui/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pwsp.png"
+  install -Dm644 "$_srcsrc/pwsp-gui/assets/pwsp-daemon.service" "${pkgdir}/usr/lib/systemd/user/pwsp-daemon.service"
   
   install -Dm644 "$_srcsrc/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
