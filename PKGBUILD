@@ -3,10 +3,12 @@
 
 _pkgname=splayer
 pkgname=splayer
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.1.1
+pkgrel=1
+
 epoch=1
 pkgdesc="Splayer | A minimalist music player"
+
 arch=('x86_64' 'aarch64')
 url="https://github.com/imsyy/SPlayer"
 license=("AGPL-3.0-only")
@@ -29,15 +31,16 @@ depends=(
 optdepends=(
   'http-parser: required by some Electron builds'
   'libappindicator: for system tray icon support'
+  'mpv: for mpv playback engine support'
 )
 options=(!strip !debug)
 
 if [ "$CARCH" = "x86_64" ]; then
     _arch_pkg="x64"
-    _sha256="8f79803c4768b56ab80e3acd03a35e78d037d8a6b230de73157a9c30ce484fef"
+    _sha256="e358ad88f634029fd015ae1537631d913f875020600387db429211be0d94b92d"
 elif [ "$CARCH" = "aarch64" ]; then
     _arch_pkg="aarch64"
-    _sha256="e5a3b25f89a41432ca1ad633340fb2ae516dd76b0bab4e9e2cc52e8a196baca4"
+    _sha256="022ec08c8597941038426dd349f28d2ea6add757044ee2e8eeda7878c00d0839"
 else
     error "Unsupported architecture: $CARCH"
     exit 1
