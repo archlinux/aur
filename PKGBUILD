@@ -1,6 +1,6 @@
 # Maintainer: Francisco V. <fvasquez dot public at fvtronics dot com>
 pkgname=quire
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Simple GNOME utility for working with local PDF files"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
     'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b1839eccaf84ddac374f23c7a85c1bafe1539aefe1749fd7a9129558cd618a30')
+sha256sums=('adfad39c9d877f9af02cd4aca8a99a2233a4e9c729539522f1d8cc5662782b59')
 
 prepare() {
     cd "$pkgname"
