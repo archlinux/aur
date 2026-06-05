@@ -2,7 +2,7 @@
 
 _plug=cranexpr
 pkgname=vapoursynth-plugin-${_plug}-bin
-pkgver=0.7.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (binary release)"
 arch=('x86_64')
