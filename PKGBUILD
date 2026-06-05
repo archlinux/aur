@@ -3,7 +3,7 @@
 
 pkgname=freedroid
 _srcsufix="-sdl2-port"
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="a clone of the classic game 'Paradroid' on Commodore 64"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=( #https://downloads.sourceforge.net/sourceforge/freedroid/$pkgname-$pkgv
         "${pkgname}-${pkgver}.tgz::https://github.com/ReinhardPrix/FreedroidClassic/archive/refs/tags/${pkgname}-${pkgver}${_srcsufix}.tar.gz"
 	freedroid.desktop
 	paraicon.png)
-sha256sums=('e668f65f3b311257139f64d0c1c9d091b3ea7c50490ba50f82dc9c34bef9df9b'
+sha256sums=('3422ab02ddb8940f1482d091aa30bd13a663f1ca209b5d8283a8ec2b89e80cce'
             'b76e84adc15e8d83722e91843db80bbb664b3e330e03561977de90a06d4d8baf'
             '29e9d5bc1a5833c10fc8b26fac1f4a64338d3a624e18d280abe1d29837202239')
 
