@@ -1,4 +1,4 @@
-pkgbase = torctl-gui-git
+pkgbase = torctl-gui
 	pkgdesc = Graphical interface for torctl/tor
 	pkgver = 0.r0.g0
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = torctl-gui-git
 	source = git+https://github.com/s-n-alexeyev/torctl-gui.git
 	sha256sums = SKIP
 
-pkgname = torctl-gui-git
+pkgname = torctl-gui

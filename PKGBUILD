@@ -32,7 +32,7 @@ package() {
 
   install -Dm 755 "$_gitname" "$pkgdir/usr/bin/$_gitname"
 
-  install -Dm 644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
+  install -Dm 644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<'EOF'
 [Desktop Entry]
 Name=Managing tor/torctl
 Name[ru]=Управление tor/torctl
@@ -49,5 +49,5 @@ StartupNotify=true
 EOF
 
   install -Dm 644 "$_gitname/tor.svg" \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/torctl-gui-git.svg"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/torctl-gui.svg"
 }
