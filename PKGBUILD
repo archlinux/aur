@@ -32,6 +32,7 @@ depends=(
     'nss'
     'pango'
 )
+makedepends=('imagemagick')
 provides=('deepseek-reasonix-desktop' 'reasonix-desktop')
 conflicts=('deepseek-reasonix-desktop' 'reasonix-desktop')
 options=('!strip' '!debug')
@@ -43,12 +44,14 @@ source=(
     'reasonix-desktop.sh'
     'reasonix-desktop.desktop'
     "LICENSE::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/main-v2/LICENSE"
+    "appicon.png::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/main-v2/desktop/build/appicon.png"
 )
 sha256sums=(
     'd9cbaaeb566344499e0ee5ef9ff57d487050923b9a81e74c4ad86d18746109f6'
     'SKIP'
     'SKIP'
     'SKIP'
+    '6778d9b903b3ff5ea8873f9f284be79f8a1d13ddfc3bbd1296bebc09d5d58116'
 )
 
 package() {
@@ -65,6 +68,22 @@ package() {
     # Install .desktop entry
     install -Dm644 "${srcdir}/reasonix-desktop.desktop" \
         "${pkgdir}/usr/share/applications/reasonix-desktop.desktop"
+
+    # Install icons
+    # 1024x1024 (original size from upstream)
+    install -Dm644 "${srcdir}/appicon.png" \
+        "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/reasonix-desktop.png"
+
+    # Generate common sizes for better desktop environment compatibility
+    for size in 48 128 256 512; do
+        install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
+        convert "${srcdir}/appicon.png" -resize "${size}x${size}" \
+            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/reasonix-desktop.png"
+    done
+
+    # Fallback icon for non-icon-theme environments
+    install -Dm644 "${srcdir}/appicon.png" \
+        "${pkgdir}/usr/share/pixmaps/reasonix-desktop.png"
 
     # Install license
     install -Dm644 "${srcdir}/LICENSE" \
