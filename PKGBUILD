@@ -2,23 +2,23 @@
 
 pkgname=python-json2xml
 _name=${pkgname#python-}
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Simple Python Library to convert JSON to XML"
 arch=('any')
 url="https://json2xml.readthedocs.io/"
 license=('Apache-2.0')
-makedepends=('python-setuptools')  # unless it only requires distutils
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')  # unless it only requires distutils
 depends=('python-defusedxml' 'python-urllib3' 'python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('ed6a61a06e84ab60f63d8602cf152620fac6bad1a4a1c00b45366c8be1d7593e1aa58e412d03e9304cdf77d384fecbfb338208ac07e141831f0807fbae661571')
+sha512sums=('c3af9026d995ba53a98f7e485f78cc2f4e2e19e89fc0dc63e694d244d15cff8b97887f59755786cc39979f8c771dcd6bf8d0ac6f0e86fe73c2ccb93b45cdfb74')
 
 build() {
     cd "$_name-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$_name-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
