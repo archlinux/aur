@@ -1,0 +1,15 @@
+pkgbase = tree-sitter-d2
+	pkgdesc = Tree Sitter grammar for d2lang
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/ravsii/tree-sitter-d2
+	arch = x86_64
+	license = MIT
+	checkdepends = tree-sitter-cli
+	makedepends = tree-sitter-cli
+	depends = glibc
+	depends = tree-sitter
+	source = tree-sitter-d2-0.7.2::https://github.com/ravsii/tree-sitter-d2/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = 7df50a08ca19b20ee11843b1842b615f3a907182f7e38a5b2ff73e85260ab8bd
+
+pkgname = tree-sitter-d2
