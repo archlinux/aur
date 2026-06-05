@@ -10,14 +10,12 @@
 #   3. makepkg --printsrcinfo > .SRCINFO
 #   4. git add PKGBUILD .SRCINFO && git commit && git push
 #
-# Push target requires an AUR account and an uploaded SSH public key;
-# see https://aur.archlinux.org/account. Not configured on desk yet --
-# this PKGBUILD lives in the alter-cli repo as a staging area until
-# the AUR credential is in place.
+# Push target requires an AUR account with an uploaded SSH public key;
+# see https://aur.archlinux.org/account.
 
 pkgname=truealter-cli
 _npmname='@truealter/cli'
-pkgver=0.8.0
+pkgver=0.8.10
 pkgrel=1
 pkgdesc='ALTER identity CLI -- login once, authenticated everywhere'
 arch=('any')
@@ -27,15 +25,11 @@ depends=('nodejs>=20')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${_npmname}/-/cli-${pkgver}.tgz")
 noextract=("cli-${pkgver}.tgz")
-# sha256 pinned to published 0.8.0 tarball.
+# sha256 pinned to published 0.8.10 tarball.
 # Recompute on every pkgver bump:
 #   curl -fsSL https://registry.npmjs.org/@truealter/cli/-/cli-${pkgver}.tgz \
 #     -o cli-${pkgver}.tgz && sha256sum cli-${pkgver}.tgz
-# CI rejects 'SKIP' values via .github/workflows/ci.yml.
-# NOTE: /boogie-time §1.3 still gates Phase A on major version >= 1.0.0;
-# this PKGBUILD tracks the latest public minor for keep-pace hygiene
-# and will move to v1.0.0 in the launch-trigger PR.
-sha256sums=('a36cca9d989ece5aeda22de95633f2e7abd363d55b026e2ca5985151197888d9') # pragma: allowlist secret
+sha256sums=('3da81dee1061763a2e4f621c5b31ca531b242ba601a3c1af2006379fb13359e1')
 
 package() {
   cd "${srcdir}"
