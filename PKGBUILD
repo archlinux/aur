@@ -39,7 +39,7 @@ package() {
       "$pkgdir/usr/share/icons/hicolor/32x32/apps/documind.png"
 
     install -Dm644 "$srcdir/256x256@2.png" \
-        "$pkgdir/usr/share/icons/hicolor/256x256@2x/apps/documind.png"
+        "$pkgdir/usr/share/icons/hicolor/256x256@2/apps/documind.png"
 
   if [ -d "$srcdir/models" ]; then
     install -d "$pkgdir/usr/lib/documind"
