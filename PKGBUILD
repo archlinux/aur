@@ -3,7 +3,7 @@
 _pkgbase=photoprism-onnxruntime
 pkgbase="$_pkgbase-bin"
 pkgname=($pkgbase $_pkgbase-cuda-bin)
-pkgver=1.25.1
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="AI-Powered Photos App for the Decentralized Web (onnx runtime)"
 arch=('x86_64')
@@ -21,8 +21,8 @@ noextract=(
 	"cuda.tar.gz"
 )
 
-sha256sums=('eb566a49cfc49ef0642f809b69340b5bb656c7c4905ba873526d226f2c005816'
-            'ddfc4ca4ccc9cd5345d3820edab710ee84e749569d052eed92c42693d3b448a8')
+sha256sums=('1254da24fb389cf39dc0ff3451ab48301740ffbfcbaf646849df92f80ee92c57'
+            'cb7df7ee2ca0f962c7ce7c839aeae36223d146a91fb4646d62fb0046f297479f')
 
 _package() {
 	mkdir -p "$srcdir/$1"
