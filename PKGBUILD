@@ -1,11 +1,11 @@
 # Maintainer: Daniel Vigh <vighd@digital.co.hu>
 
 pkgname=river-bar
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A small status bar for the River and niri Wayland compositors'
 arch=('x86_64')
-url='https://github.com/vighd/river-bar'
+url='https://codeberg.org/vighd/river-bar'
 license=('MIT')
 # No compositor package is required to build or run: the bar renders nothing
 # until it finds a supported compositor's interface at runtime, so River and
@@ -25,11 +25,11 @@ optdepends=(
   'wireless_tools: network module Wi-Fi SSID (iwgetid)'
   'iwd: network module Wi-Fi SSID alternative (iwctl)'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vighd/river-bar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('59bf6748dc6c8d0d03487b2f402feca8f6c8a8700ae4180f7d1da57cd1f93cc0')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('e415951896dad0da9789a2bc31a0d7e7cf4b51f9fb75090240754408beb31ba4')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
 
   export CGO_ENABLED=1
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
 
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
