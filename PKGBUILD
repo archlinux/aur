@@ -5,7 +5,7 @@
 _branch=main
 _pkgname=yaml-language-server
 pkgname=${_pkgname}-git
-pkgver=r1389.afb9b966
+pkgver=r1483.fcbcbf9e
 pkgrel=1
 pkgdesc='YAML Language Server, git main build'
 url="https://github.com/redhat-developer/${_pkgname}"
@@ -16,12 +16,21 @@ provides=(yaml-language-server)
 depends=(nodejs)
 makedepends=(jq yarn)
 options=('!emptydirs' '!strip')
-source=("${pkgname}::git+${url}.git#branch=${_branch}")
-sha256sums=('SKIP')
+source=("${pkgname}::git+${url}.git#branch=${_branch}"
+        "pin-langserver-types.patch")
+sha256sums=('SKIP'
+            '7f11a669b1e3e2de9e96ef3752b182aa4f2dee2ecfbdf87169752ba880736d36')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd $pkgname
+  patch -p1 < "$srcdir/pin-langserver-types.patch"
+  yarn --frozen-lockfile
+  yarn compile
 }
 
 check() {
@@ -30,11 +39,6 @@ check() {
   yarn test
 }
 
-build() {
-  cd $pkgname
-  yarn --frozen-lockfile
-  yarn compile
-}
 package() {
   cd $pkgname
 
