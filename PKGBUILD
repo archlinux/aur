@@ -25,5 +25,5 @@ package() {
 
   install -Dm644 "${srcdir}/dota-config-sync.desktop" "${pkgdir}/usr/share/applications/dota-config-sync.desktop"
   
-  install -Dm644 "${srcdir}/application_icon.png" "${pkgdir}/usr/share/pixmaps/dota-config-sync.png"
+  install -Dm644 "${srcdir}/icono.png" "${pkgdir}/usr/share/pixmaps/dota-config-sync.png"
 }
