@@ -1,0 +1,24 @@
+pkgbase = exilecompass-bin
+	pkgdesc = Path of Exile 2 game overlay (campaign guide, stash regex, build tracker)
+	pkgver = 0.1.15
+	pkgrel = 1
+	url = https://github.com/juddisjudd/exilecompass
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = xdotool
+	provides = exilecompass
+	conflicts = exilecompass
+	options = !strip
+	options = !debug
+	source = ExileCompass_0.1.15_amd64.deb::https://github.com/juddisjudd/exilecompass/releases/download/v0.1.15/ExileCompass_0.1.15_amd64.deb
+	sha256sums = db750c580560eac5b4403f39981dd20022a3c29eaf4159ec5c2e0fb7aa13afa3
+
+pkgname = exilecompass-bin
