@@ -1,6 +1,6 @@
 pkgbase = marchat-bin
 	pkgdesc = Terminal chat with WebSockets (official release binaries)
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Cod-e-Codes/marchat
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = marchat-bin
 	license = MIT
 	depends = glibc
 	options = !strip
-	source_x86_64 = marchat-v1.1.0-linux-amd64.zip::https://github.com/Cod-e-Codes/marchat/releases/download/v1.1.0/marchat-v1.1.0-linux-amd64.zip
-	sha256sums_x86_64 = 66d8d6b08746e087d7831c3e705956f46068d35bfeea75c7154f31143be70719
-	source_aarch64 = marchat-v1.1.0-linux-arm64.zip::https://github.com/Cod-e-Codes/marchat/releases/download/v1.1.0/marchat-v1.1.0-linux-arm64.zip
-	sha256sums_aarch64 = 76efd9de78da9e5b7065969371598f172a24d971dd5baf91cdd7a36a02229b0a
+	source_x86_64 = marchat-v1.2.0-linux-amd64.zip::https://github.com/Cod-e-Codes/marchat/releases/download/v1.2.0/marchat-v1.2.0-linux-amd64.zip
+	sha256sums_x86_64 = 818352b09e0b522aeb1d0d23f89adbab18e561727c9ef78bea93c90560c7d25a
+	source_aarch64 = marchat-v1.2.0-linux-arm64.zip::https://github.com/Cod-e-Codes/marchat/releases/download/v1.2.0/marchat-v1.2.0-linux-arm64.zip
+	sha256sums_aarch64 = 727198c2795f2928b78900ff3ea273dfb5fb97242093940ee812329616128beb
 
 pkgname = marchat-bin
