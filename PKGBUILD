@@ -1,5 +1,5 @@
 pkgname=kawai-focus-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Kawai-Focus is a focus-training app based on the Pomodoro timer."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'libsoup3' 'gtk3' 'cairo' 'gdk-pixbuf2' 'glib2' 'pango
 
 source=("Kawai-Focus_${pkgver}_amd64.deb::https://github.com/Arduinum/kawai-focus-v2/releases/download/${pkgver}-alpha.1/Kawai-Focus_${pkgver}_amd64.deb")
 
-sha256sums=('26195884b612cec86389305f4377c30af28b23c780795429d2fa930b811fa386')
+sha256sums=('d4e915924a828c26a9a98a1d5f25268ea3e8b284f7a8e64889565c42ac0a52b1')
 
 package() {
 

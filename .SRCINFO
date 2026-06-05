@@ -1,6 +1,6 @@
 pkgbase = kawai-focus-bin
 	pkgdesc = Kawai-Focus is a focus-training app based on the Pomodoro timer.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Arduinum/kawai-focus-v2
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = kawai-focus-bin
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = gst-plugins-ugly
-	source = Kawai-Focus_0.2.0_amd64.deb::https://github.com/Arduinum/kawai-focus-v2/releases/download/0.2.0-alpha.1/Kawai-Focus_0.2.0_amd64.deb
-	sha256sums = 26195884b612cec86389305f4377c30af28b23c780795429d2fa930b811fa386
+	source = Kawai-Focus_0.3.0_amd64.deb::https://github.com/Arduinum/kawai-focus-v2/releases/download/0.3.0-alpha.1/Kawai-Focus_0.3.0_amd64.deb
+	sha256sums = d4e915924a828c26a9a98a1d5f25268ea3e8b284f7a8e64889565c42ac0a52b1
 
 pkgname = kawai-focus-bin
