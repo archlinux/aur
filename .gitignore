@@ -1,0 +1,25 @@
+# Built package files
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# Build directories
+pkg/
+src/
+
+# Makepkg artifacts
+*.log
+*.sig
+
+# Development artifacts
+.DS_Store
+*.swp
+*~
+
+# AUR metadata (generated, not committed)
+# Note: .SRCINFO should be committed, but don't ignore it!
+# .SRCINFO is required for the AUR
+
+# Editor backups
+*~
+*.bak
