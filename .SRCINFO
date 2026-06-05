@@ -9,7 +9,7 @@ pkgbase = waydroid-biglinux
 	source = git+https://github.com/biglinux/waydroid-biglinux.git
 	sha512sums = SKIP
 
-pkgname = waydroid-biglinux-git
+pkgname = waydroid-biglinux
 	depends = waydroid
 	depends = python-pyclip
 	depends = bigbashview

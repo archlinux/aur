@@ -3,7 +3,7 @@
 # Contributor: Bruno Goncalves <bigbruno@gmail.com>
 
 pkgbase=waydroid-biglinux
-pkgname=${pkgbase}-git
+pkgname=${pkgbase}
 pkgver=r25.f84180a
 pkgrel=1
 arch=('any')
