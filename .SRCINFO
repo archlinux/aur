@@ -19,6 +19,6 @@ pkgbase = documind
 	options = !emptydirs
 	options = !debug
 	source_x86_64 = documind-1.0.0.tar.gz::https://github.com/Parth2684/documind-native/releases/download/v1.0.0/documind-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 61501049a420d2039cca62e6fea72e12b11fd99d3cc18c5b1bb6ad76d4c5ca22
+	sha256sums_x86_64 = 20e96f68e830b7df6b29eaa25970777461f4648153b557cee0c508ee06fb3f2f
 
 pkgname = documind
