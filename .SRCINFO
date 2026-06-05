@@ -1,6 +1,6 @@
 pkgbase = fresh-editor-bin
 	pkgdesc = A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins
-	pkgver = 0.3.10
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = https://sinelaw.github.io/fresh/
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = fresh-editor-bin
 	provides = fresh-editor
 	conflicts = fresh-editor
 	options = !debug
-	source_x86_64 = fresh-editor-0.3.10-x86_64.tar.xz::https://github.com/sinelaw/fresh/releases/download/v0.3.10/fresh-editor-x86_64-unknown-linux-gnu.tar.xz
+	source_x86_64 = fresh-editor-0.3.12-x86_64.tar.xz::https://github.com/sinelaw/fresh/releases/download/v0.3.12/fresh-editor-x86_64-unknown-linux-gnu.tar.xz
 	source_x86_64 = https://raw.githubusercontent.com/sinelaw/fresh/master/LICENSE
-	sha256sums_x86_64 = d508ab906ac7d7572132cc5e169602473b0bfad093b68bc0e10ffdd87b4c85de
+	sha256sums_x86_64 = e876bb6c4d81ae6301d3e3bc841da9f20a35a3b2010289c64ebfe61dbc2ef3dc
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = fresh-editor-0.3.10-aarch64.tar.xz::https://github.com/sinelaw/fresh/releases/download/v0.3.10/fresh-editor-aarch64-unknown-linux-gnu.tar.xz
+	source_aarch64 = fresh-editor-0.3.12-aarch64.tar.xz::https://github.com/sinelaw/fresh/releases/download/v0.3.12/fresh-editor-aarch64-unknown-linux-gnu.tar.xz
 	source_aarch64 = https://raw.githubusercontent.com/sinelaw/fresh/master/LICENSE
-	sha256sums_aarch64 = 1c1c68f6b8208d12245974bf1b6f131ad9983b3aa1583539c1794860c7c20199
+	sha256sums_aarch64 = b38ef8b632f9e956b33f412e2d9b0be3117a440136e657c42bf8505746f2df9f
 	sha256sums_aarch64 = SKIP
 
 pkgname = fresh-editor-bin
