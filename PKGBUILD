@@ -1,7 +1,7 @@
 # Maintainer: Ivan <vanakrikun0@gmail.com>
 pkgname=sword-bin
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A modern Linux package manager: install from pacman, the AUR, and Flatpak in one click"
 arch=('x86_64')
 url="https://github.com/ivngineer/sword"
@@ -32,7 +32,7 @@ provides=('sword')
 conflicts=('sword' 'sword-git')
 install=sword-bin.install
 source_x86_64=("https://github.com/ivngineer/sword/releases/download/v${pkgver}/sword-x86_64.tar.gz")
-sha256sums_x86_64=('1f42416fb8f27cf8da603e251bb34dfed0f06a0db494a90df12d74a04bb3c2fa')
+sha256sums_x86_64=('2fd6cfb5c872f10ea6bfe37450e6c8ac6760c1d926728f6bf5be10e53e4798c1')
 
 package() {
     # Main Tauri executable and the Go sidecar must live in the SAME directory:
