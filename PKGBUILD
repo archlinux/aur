@@ -12,7 +12,7 @@ depends=('vapoursynth>=75')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${url}/releases/download/v${pkgver}/${_plug}-x86_64-unknown-linux-gnu.zip")
-sha256sums=('94cd3dd434561f62f2cc32bc44f654df4f2a65ebf36fe96f7e6006a0f0745366')
+sha256sums=('e695f9ec51f723de943c1fb589345f97ae53049aa6f1ebd7762865d764f4c01f')
 
 package() {
     _plugindir=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")

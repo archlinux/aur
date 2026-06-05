@@ -9,6 +9,6 @@ pkgbase = vapoursynth-plugin-cranexpr-bin
 	provides = vapoursynth-plugin-cranexpr
 	conflicts = vapoursynth-plugin-cranexpr
 	source = https://github.com/sgt0/cranexpr/releases/download/v0.9.0/cranexpr-x86_64-unknown-linux-gnu.zip
-	sha256sums = 94cd3dd434561f62f2cc32bc44f654df4f2a65ebf36fe96f7e6006a0f0745366
+	sha256sums = e695f9ec51f723de943c1fb589345f97ae53049aa6f1ebd7762865d764f4c01f
 
 pkgname = vapoursynth-plugin-cranexpr-bin
