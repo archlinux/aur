@@ -1,10 +1,10 @@
 # Maintainer: Daniel Vigh <vighd@digital.co.hu>
 pkgname=river-delta
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Keyboard-driven launcher and system console for wlr-layer-shell compositors: apps, network, Bluetooth, display, storage, keyboard, pass"
 arch=('x86_64' 'aarch64')
-url="https://github.com/vighd/river-delta"
+url="https://codeberg.org/vighd/river-delta"
 license=('MIT')
 depends=('libxkbcommon' 'freetype2' 'fontconfig')
 makedepends=('go' 'pkgconf')
@@ -24,11 +24,11 @@ optdepends=(
   'xclip: Ctrl+V paste on X11'
   'libnotify: desktop notifications'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('25ae3ae414df47dbd0ab7adce5bfea1f1aa421addaf65b9b9516ad7f7816fb97')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('5d79c0cfb860eaff237c4196e97e3da33a435739e5942acc1e29a10a4a2c0f3a')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -39,12 +39,12 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   go test ./...
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 config.sample.toml "$pkgdir/usr/share/$pkgname/config.sample.toml"
