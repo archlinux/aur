@@ -1,0 +1,27 @@
+pkgbase = inmarsat-sniffer-git
+	pkgdesc = Standalone Inmarsat L-band decoder — STD-C EGC + Aero ACARS/ADS-C/CPDLC
+	pkgver = r128.2827b3a
+	pkgrel = 1
+	url = https://github.com/alphafox02/inmarsat-sniffer
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	optdepends = airspy
+	optdepends = bladerf
+	optdepends = hackrf
+	optdepends = libacars
+	optdepends = libuhd
+	optdepends = libsdrplay
+	optdepends = libsodium
+	optdepends = mosquitto
+	optdepends = rtl-sdr
+	optdepends = soapysdr
+	optdepends = zeromq
+	provides = inmarsat-sniffer
+	source = inmarsat-sniffer-git::git+https://github.com/alphafox02/inmarsat-sniffer.git
+	sha256sums = SKIP
+
+pkgname = inmarsat-sniffer-git
