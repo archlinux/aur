@@ -1,4 +1,4 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
 # Contributor: Sean V Kelley <seanvk@posteo.de>
 pkgname=jitterdebugger-git
 pkgver=0.3.r70.g045a274
