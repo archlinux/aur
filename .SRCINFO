@@ -1,0 +1,24 @@
+pkgbase = iridium-sniffer-git
+	pkgdesc = Standalone Iridium satellite burst detector and demodulator in C
+	pkgver = r149.eb2f8d7
+	pkgrel = 1
+	url = https://github.com/alphafox02/iridium-sniffer
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = fftw
+	optdepends = bladerf
+	optdepends = hackrf
+	optdepends = libacars
+	optdepends = libuhd
+	optdepends = libsdrplay
+	optdepends = soapysdr
+	optdepends = zeromq
+	provides = iridium-sniffer
+	source = iridium-sniffer-git::git+https://github.com/alphafox02/iridium-sniffer.git
+	sha256sums = SKIP
+
+pkgname = iridium-sniffer-git
