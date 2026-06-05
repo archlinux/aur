@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=python-nllw
-pkgver=0.1.5
-pkgrel=3
+pkgver=0.1.6
+pkgrel=2
 pkgdesc="Simultaneous Machine Translation (SimulMT) with NLLB model optimization — NoLanguageLeftWaiting"
 arch=('any')
 url="https://github.com/QuentinFuxa/NoLanguageLeftWaiting"
@@ -25,8 +25,8 @@ makedepends=(
   'python-setuptools-scm'
   'python-wheel'
 )
-source=("https://files.pythonhosted.org/packages/47/84/cd9e2c8ed1ac942911f8ab9378fd875bd85a62af81025cb56b9b4435314b/nllw-${pkgver}.tar.gz")
-sha256sums=('67f9c13fff6b43c2e05b2e762e7001471329dbdb34634b56a2cab639807b1b9a')
+source=("https://files.pythonhosted.org/packages/d5/8f/6f34851f73156bb0289d962d1588de49bf5170dc1ff245c086f90e2b6076/nllw-${pkgver}.tar.gz")
+sha256sums=('b68196b9a7e8f981fc5b57b3cea5e7db166e3dfd0371ab0444e1046d735541c6')
 
 build() {
   cd "nllw-${pkgver}"
