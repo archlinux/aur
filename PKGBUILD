@@ -1,7 +1,7 @@
 # Maintainer: Rick Price <fprice@pricemail.ca>
 
 pkgname=midi-daemon
-pkgver=0.4.1
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A Lua-scriptable MIDI routing daemon"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gcc-libs' 'glibc')
 makedepends=('cargo')
 install=midi-daemon.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rickprice/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0d36c2c45bc0fa99874775bd155f2996e8e5cdc6b373a04f5595c5fd9ebb47be')
+sha256sums=('7cb7937822d94b1a3043691a9776d03e236091b629dd43973cc4b27858a74f42')
 
 prepare() {
     cd "$pkgname-$pkgver"
