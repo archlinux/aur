@@ -1,11 +1,15 @@
 pkgbase = torctl-gui
-	pkgdesc = Graphical interface for torctl/tor
-	pkgver = 0.r0.g0
+	pkgdesc = The script serves as a graphical interface for torctl/tor
+	pkgver = v1.1.0.r1.g0aebddc
 	pkgrel = 1
 	url = https://github.com/s-n-alexeyev/torctl-gui
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = coreutils
+	makedepends = make
+	makedepends = fakeroot
+	makedepends = gcc
 	depends = torctl
 	depends = tor
 	depends = yad
@@ -15,7 +19,6 @@ pkgbase = torctl-gui
 	depends = libnotify
 	depends = systemd
 	provides = torctl-gui
-	conflicts = torctl-gui
 	source = git+https://github.com/s-n-alexeyev/torctl-gui.git
 	sha256sums = SKIP
 
