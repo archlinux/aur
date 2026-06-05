@@ -2,13 +2,14 @@
 
 pkgname=omp-bin
 pkgver=15.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more (release binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/can1357/oh-my-pi"
 license=('MIT')
 depends=('glibc')
-optdepends=('chromium: browser tool (headless web automation)'
+optdepends=('bash-completion: bash tab-completion for omp'
+            'chromium: browser tool (headless web automation)'
             'python: persistent Python eval cells')
 provides=("oh-my-pi=$pkgver")
 conflicts=('oh-my-pi' 'omp')
