@@ -1,0 +1,19 @@
+pkgbase = copyklom
+	pkgdesc = GUI backup utility for Linux with full, incremental and differential backup support
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/Klomix/CopyKlom
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = tar
+	depends = cronie
+	depends = rsync
+	source = copyklom-3.0.tar.gz::https://github.com/Klomix/CopyKlom/archive/refs/tags/v3.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = copyklom
