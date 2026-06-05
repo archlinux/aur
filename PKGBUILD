@@ -26,7 +26,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r1297.a9c6806
+pkgver=r1416.aa9ed3d2
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor + first-party mshell desktop (mango heritage)"
 url="https://github.com/kenanpelit/margo"
@@ -245,6 +245,7 @@ build() {
   cargo build --frozen --release \
     --features mshell/wasm-plugins \
     -p mshell -p mshellctl -p mshellshare -p mpicker -p mwizard \
+    -p mkeys \
     -p margo-portal
 }
 
@@ -279,7 +280,7 @@ package() {
   for bin in \
       margo start-margo \
       mctl mlock mlayout mscreenshot mvisual mlogind mpower mplay \
-      mshell mshellctl mshellshare mpicker mwizard; do
+      mshell mshellctl mshellshare mpicker mwizard mkeys; do
     install -Dm755 "$CARGO_TARGET_DIR/release/$bin" "$pkgdir/usr/bin/$bin"
   done
 
