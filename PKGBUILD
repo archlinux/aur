@@ -1,8 +1,8 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codewhale-bin
-pkgver=0.8.52
-pkgrel=2
+pkgver=0.8.53
+pkgrel=1
 # Upstream renamed DeepSeek-TUI → CodeWhale on 2026-05-24. The `deepseek`
 # and `deepseek-tui` binaries became thin stubs that exec the real
 # codewhale binaries from PATH; the stubs print a deprecation warning and
@@ -24,14 +24,14 @@ _relurl="https://github.com/Hmbown/CodeWhale/releases/download/v${pkgver}"
 
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Hmbown/CodeWhale/v${pkgver}/LICENSE")
 sha256sums=('91873e17f073f4dcddc63799a0a6fdeb44a281440b6c5e0b9d8ea2aa7f7ffd95')
-sha256sums_x86_64=('9f47132906c588edc2365352c6be30b0c2ffdb8bf384e3ce08714c146c1dfc33'
-                   '69a33be33bb1cad09cc67d0a564e1766e364fbd01bf1bb78bd8d4c6e5e8ebb22'
-                   '1f6ee66155c0fb9a51e0b9e3a4777426489e22bf9dc9726918b2145685b01e4c'
-                   'a586e72b49d74e209132b78a5c3250063fe13beb61984139d3dc92a484191932')
-sha256sums_aarch64=('1b610e746cc80c6b8caf3e62d3893fc8a6e7fcb98a05d95ae6b0b839bfe28bb0'
-                    'e92e27824b17cb699deacddd97873318100153d2264980751d5993bf848f8069'
-                    '897f9cc748a1d32c14fb6afd9cd18330a1a85a3da9d8d67521e1c773899e895d'
-                    '1b805ea775aa9b6318a3a7903204fb4f2ce7e5fd0c452c79f404cd86d361e35c')
+sha256sums_x86_64=('57104d1f6a38884924d0fae7b991c33c40a3be6f8045747d4ff055f10aaf62dc'
+                   '0c189693873840587f04a3e51b96b72a41f4653c4d420a99ec85b01f839a104c'
+                   '829a4c926af47084df814e5d99fabb06e99938af8fbfb3a6601de3c8da357573'
+                   '70ba8fd94d02b862335b03e577eb327e3ff1535f3528fad9a926f7370a3b6fad')
+sha256sums_aarch64=('a98fdc00ebff200d3ca2e2a678409a13e5ce8b9fb0d830eadc9adc6c807391db'
+                    'ddaf3321ab51b33a8c9fd9e5186067fe6cd9ecb7c489f4696ccc31ea1906054c'
+                    'c6f4d2510e2fbee41be0247d458f9703088a1a64e2fb99adc530b17e1aa2b8d7'
+                    '74256d81cf8da3bb76c03953dc0b7ce53119439ab5c9252f4da15d2b184d8f5a')
 
 source_x86_64=(
     "codewhale-${pkgver}-x86_64::${_relurl}/codewhale-linux-x64"
