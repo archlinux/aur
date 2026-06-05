@@ -1,7 +1,7 @@
 # Maintainer: Cedric Krause <cedware-dev@protonmail.com>
 pkgname=bountui
-pkgver=0.13.2
-pkgrel=19
+pkgver=0.13.3
+pkgrel=20
 pkgdesc="A terminal-based user interface for interacting with HashiCorp Boundary"
 arch=("any")
 url="https://github.com/Cedware/bountui"
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/Cedware/bountui/archive/refs/tags/v0.13.2.tar.gz")
+source=("https://github.com/Cedware/bountui/archive/refs/tags/v0.13.3.tar.gz")
 noextract=()
-sha256sums=('c3f2b026c20839f91f35578b69524f3f8cafcfaeeda9657ad48b6d4709013895')
+sha256sums=('3e52dbd3fb1e0e82ce6fcaa088e1901c0a431cf132c2a0538271228634b279b7')
 validpgpkeys=()
 
 prepare() {
