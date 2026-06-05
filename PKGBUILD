@@ -1,53 +1,99 @@
 # Maintainer: Patrick Lorio <patrick@playit.gg>
-# Contributor: Gilwiljam <gillbilljam@gmail.com>
-# Contributor: Samuel Corsi-House <chouse.samuel@gmail.com>
 
-_pkgname=playit
 pkgname=playit-bin
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
-pkgdesc="A tunneling tool to host a game server without port forwarding or sharing public IP (Binary version, does not setup background service)"
-arch=('x86_64' 'aarch64' 'i686' 'armv7h')
-url="https://github.com/playit-cloud/playit-agent"
+pkgdesc='A tunneling tool to host a game server without port forwarding or sharing public IP (Binary version)'
+arch=('x86_64' 'aarch64' 'armv7h' 'i686')
+url='https://playit.gg'
 license=('BSD-2-Clause')
+depends=('logrotate')
 provides=('playit')
 conflicts=('playit')
+install="${pkgname}.install"
 
-source=("LICENSE.txt::https://raw.githubusercontent.com/playit-cloud/playit-agent/master/LICENSE.txt")
+_release_base="https://builds.playit.gg/${pkgver}"
+_raw_base="https://raw.githubusercontent.com/playit-cloud/playit-agent/v${pkgver}"
 
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.pkg.tar.zst::https://github.com/playit-cloud/playit-agent/releases/download/v${pkgver}/playit_x86_64.pkg.tar.zst")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.pkg.tar.zst::https://github.com/playit-cloud/playit-agent/releases/download/v${pkgver}/playit_aarch64.pkg.tar.zst")
-source_i686=("${_pkgname}-${pkgver}-i686.pkg.tar.zst::https://github.com/playit-cloud/playit-agent/releases/download/v${pkgver}/playit_i686.pkg.tar.zst")
-source_armv7h=("${_pkgname}-${pkgver}-armv7h.pkg.tar.zst::https://github.com/playit-cloud/playit-agent/releases/download/v${pkgver}/playit_armv7h.pkg.tar.zst")
+source=(
+  "playit::${_raw_base}/linux/playit"
+  "logrotate.conf::${_raw_base}/linux/logrotate.conf"
+  "playit.service::${_raw_base}/linux/playit.service"
+  "playit.openrc::${_raw_base}/linux/playit.openrc"
+  "LICENSE.txt::${_raw_base}/LICENSE.txt"
+)
+source_x86_64=(
+  "playit-cli-linux-amd64::${_release_base}/playit-cli-linux-amd64"
+  "playit-linux-amd64::${_release_base}/playit-linux-amd64"
+)
+source_aarch64=(
+  "playit-cli-linux-aarch64::${_release_base}/playit-cli-linux-aarch64"
+  "playit-linux-aarch64::${_release_base}/playit-linux-aarch64"
+)
+source_armv7h=(
+  "playit-cli-linux-armv7::${_release_base}/playit-cli-linux-armv7"
+  "playit-linux-armv7::${_release_base}/playit-linux-armv7"
+)
+source_i686=(
+  "playit-cli-linux-i686::${_release_base}/playit-cli-linux-i686"
+  "playit-linux-i686::${_release_base}/playit-linux-i686"
+)
 
-sha256sums=('SKIP')
-sha256sums_x86_64=('ad8dff2dd89fb74c2045b9ace68399c6a62ba0481085d762b9eb389830307bf1')
-sha256sums_aarch64=('7821a091555943e13fc0315442a7996dffd3c326bb48f48e9a07fd7077d2ca42')
-sha256sums_i686=('15d916733c6ebf09fe41b7f9c0f00f5655323600e90bd678353e17a88c7e4700')
-sha256sums_armv7h=('e56135b8fa5583595e685609beb57d73e5cd46b91deff99158c30555a4b1aca9')
+sha256sums=('daa9b021f23bddaa04c29532088ab3f1967591bba11ed98eb8ced4d53e67858d'
+            '22fc22988fd86ecf62cba09847442cfd628a7a6d7e6dcdffd3833f1f3cb8a9d8'
+            '8029085b8db14175a1a7a7f4f626bc224be969d6c68283de38a4942575ee2842'
+            'fd6b309c4e1008b81675a2ad0ea27e709f02f405a502816c238a73c60b497da9'
+            'f9d32c6b4a6055b2bfa48543d68119efc46ea4606f0d9cc973cb273dcd59be9c')
+sha256sums_x86_64=('ac812035d416f0d10628023ac1c2dfccc1cf4610a72fde42516ca34ad7ae9755'
+                   '544cc9b93384c81d0bbccc7ced5f855594412bd7cc72011d414b73f265fb7ce6')
+sha256sums_aarch64=('647924241fbafaa5616cf8630153f181759fe3cd95cca2821eabe659f90e5d3e'
+                    '8a1c51e72d00caec1688def8c20c1c67c714b99dff05a4147f3639d3fad61594')
+sha256sums_armv7h=('4426464a96e2708f96b0414b74b63132e0edbd682989c87f203b58451c6c4d73'
+                   '99a512d42280103133f13b6e5fb236ee07242f2d6d11da38e3a8cafd13593245')
+sha256sums_i686=('7f8e16c51bd10157b6df6676c21dd5a43054a53583af3f94a7976fe012c72d8a'
+                 'a984232367d411a9a592b9d04a81eb0a0df27994a6464f49b9393e7276b93cbd')
 
 package() {
-    local pkgfile
-    local extractdir="$srcdir/extracted"
+  local cli_bin
+  local daemon_bin
 
-    pkgfile="$(find "$srcdir" -maxdepth 1 -name "${_pkgname}-${pkgver}-${CARCH}.pkg.tar.zst" -print -quit)"
+  case "${CARCH}" in
+    x86_64)
+      cli_bin='playit-cli-linux-amd64'
+      daemon_bin='playit-linux-amd64'
+      ;;
+    aarch64)
+      cli_bin='playit-cli-linux-aarch64'
+      daemon_bin='playit-linux-aarch64'
+      ;;
+    armv7h)
+      cli_bin='playit-cli-linux-armv7'
+      daemon_bin='playit-linux-armv7'
+      ;;
+    i686)
+      cli_bin='playit-cli-linux-i686'
+      daemon_bin='playit-linux-i686'
+      ;;
+    *)
+      printf 'Unsupported architecture: %s\n' "${CARCH}" >&2
+      return 1
+      ;;
+  esac
 
-    rm -rf "$extractdir"
-    mkdir -p "$extractdir"
+  install -Dm0755 "${srcdir}/${cli_bin}" "${pkgdir}/opt/playit/agent"
+  install -Dm0755 "${srcdir}/${daemon_bin}" "${pkgdir}/opt/playit/playitd"
+  install -Dm0755 "${srcdir}/playit" "${pkgdir}/opt/playit/playit"
 
-    bsdtar -xf "$pkgfile" -C "$extractdir"
+  install -Dm0644 "${srcdir}/logrotate.conf" "${pkgdir}/etc/logrotate.d/playit"
+  install -Dm0644 "${srcdir}/playit.service" "${pkgdir}/opt/playit/share/init/systemd/playit.service"
+  install -Dm0755 "${srcdir}/playit.openrc" "${pkgdir}/opt/playit/share/init/openrc/playit"
+  install -Dm0644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 
-    # for playit-bin, only install binary files
+  install -dm0750 "${pkgdir}/etc/playit"
+  install -dm0750 "${pkgdir}/var/log/playit"
+  install -dm0755 "${pkgdir}/usr/local/bin"
 
-    install -Dm755 "$extractdir/opt/playit/playit"  "$pkgdir/opt/playit/playit"
-    install -Dm755 "$extractdir/opt/playit/playitd" "$pkgdir/opt/playit/playitd"
-    install -Dm755 "$extractdir/opt/playit/agent" "$pkgdir/opt/playit/agent"
-
-    mkdir -p "$pkgdir/usr/bin"
-
-    ln -s /opt/playit/playit  "$pkgdir/usr/bin/playit"
-    ln -s /opt/playit/playitd "$pkgdir/usr/bin/playitd"
-
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  ln -s /opt/playit/playit "${pkgdir}/usr/local/bin/playit"
+  ln -s /opt/playit/playitd "${pkgdir}/usr/local/bin/playitd"
 }
 
