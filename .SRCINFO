@@ -5,8 +5,8 @@ pkgbase = run0-sudo
 	url = https://codeberg.org/nathawat/run0-sudo-shim
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = zig
-	depends = systemd>=256.0
+	makedepends = zig>=0.16.0
+	depends = systemd>=256
 	provides = sudo
 	conflicts = sudo
 	source = run0-sudo-1.0.0.tar.gz::https://codeberg.org/nathawat/run0-sudo-shim/archive/v1.0.0.tar.gz
