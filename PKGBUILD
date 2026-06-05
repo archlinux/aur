@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpits-bin
-pkgver=0.8.17
+pkgver=0.8.18
 pkgrel=1
 pkgdesc="moshpits server — SSH and Mosh inspired remote terminal server (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -19,9 +19,9 @@ source=("${_base}/dist-mps.tar.gz" "mps.service")
 source_x86_64=("mps-x86_64::${_base}/mps-x86_64-unknown-linux-musl")
 source_aarch64=("mps-aarch64::${_base}/mps-aarch64-unknown-linux-musl")
 # First entry is the release dist tarball; local sidecar file is intentionally SKIP.
-sha256sums=('5676eb81f16549b5a62b61295ab2879b264a8cd66badf741396d111680f28427' 'SKIP')
-sha256sums_x86_64=('9f997cf1966113dd37c0085cfe451591b8f72b8056a96aad3d643431e64b15eb')
-sha256sums_aarch64=('175ef85156769ea16a9311fffb435990c71cc79b4fb250b78527c39b833e7bf0')
+sha256sums=('37b5aa12096929bf5e42b25dac826e9375d494998976624fcdbbb8d95c238ef1' 'SKIP')
+sha256sums_x86_64=('0550ee9e82f4a590593f5a77b0452b76698ff9b2066904f1fe2eaf3b61604812')
+sha256sums_aarch64=('f8cce1ee16c66dc9e6729debe24a7c93b37e8ae0e6a432ecb1bd585da156d6a1')
 
 package() {
     install -Dm755 "mps-${CARCH}" "$pkgdir/usr/bin/mps"
