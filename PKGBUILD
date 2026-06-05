@@ -11,10 +11,8 @@ license=('GPL3')
 depends=()
 makedepends=('go')
 source=("https://codeberg.org/fausty/go2webp/archive/v${pkgver}.tar.gz")
-sha256sums=(
-  # update with the real checksum after first release
-  'SKIP'
-)
+sha256sums=('7a043401761d62186510e560bc65110bf2d800ffd3d2f75c16d9152503b3512f')
+
 build() {
   cd go2webp
 

@@ -8,6 +8,6 @@ pkgbase = go2webp
 	license = GPL3
 	makedepends = go
 	source = https://codeberg.org/fausty/go2webp/archive/v1.0.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 7a043401761d62186510e560bc65110bf2d800ffd3d2f75c16d9152503b3512f
 
 pkgname = go2webp
