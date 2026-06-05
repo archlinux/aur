@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-ssh-agent-piggyback
-pkgver=0.8.16
+pkgver=0.8.17
 pkgrel=1
 pkgdesc="Moshpit agent daemon — SSH agent piggyback unlock backend"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('moshpit-agent' 'moshpit-agent-fido2' 'moshpit-agent-systemd-creds'
 depends=()
 makedepends=('cargo' 'cmake' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/moshpit/archive/v$pkgver.tar.gz")
-sha256sums=('4bba792fe457934056e169100ffdd1662ad1b920efad3014e7a8819daea11f67')
+sha256sums=('996a6f4b8c29ab592bd4ef2f44a36b4675ea6e1cfed9c9d89de2bcc840329793')
 
 prepare() {
     cd "moshpit-$pkgver"
