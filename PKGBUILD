@@ -1,4 +1,4 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
 # Contributor: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=imgcatr-git
 pkgver=0.1.4.r3.g4e1d839
