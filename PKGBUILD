@@ -13,7 +13,7 @@ optdepends=(
     'tesseract-data-chi_sim: simplified Chinese OCR data for tesseract'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d3ca056690d28ad8978f3bc4a86167551cd63aeb881faebbc160d5e3b45ada7f')
+sha256sums=('85c56fe72d924cd1b996afa2915a9261badd93132a7dce4dd2f568e0862def14')
 
 build() {
     cmake -S "${pkgname}-${pkgver}" -B build -G Ninja \

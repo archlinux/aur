@@ -19,6 +19,6 @@ pkgbase = mark-shot
 	optdepends = tesseract: fallback OCR backend
 	optdepends = tesseract-data-chi_sim: simplified Chinese OCR data for tesseract
 	source = mark-shot-0.1.20.tar.gz::https://github.com/jswysnemc/mark-shot/archive/refs/tags/v0.1.20.tar.gz
-	sha256sums = d3ca056690d28ad8978f3bc4a86167551cd63aeb881faebbc160d5e3b45ada7f
+	sha256sums = 85c56fe72d924cd1b996afa2915a9261badd93132a7dce4dd2f568e0862def14
 
 pkgname = mark-shot
