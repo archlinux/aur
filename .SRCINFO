@@ -1,0 +1,24 @@
+pkgbase = whichllm
+	pkgdesc = Auto-detect your hardware and rank local LLMs by what actually fits and performs best
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/Andyyyy64/whichllm
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.11
+	depends = python-typer
+	depends = python-rich
+	depends = python-httpx
+	depends = python-psutil
+	depends = python-dbgpu
+	optdepends = python-nvidia-ml-py: NVIDIA GPU detection (pulls in nvidia-utils ~900MB)
+	provides = whichllm=0.5.8
+	conflicts = whichllm-git
+	source = whichllm-0.5.8.tar.gz::https://github.com/Andyyyy64/whichllm/archive/refs/tags/v0.5.8.tar.gz
+	sha256sums = d419f8a0fcfbc2ecd20563cbd7ff26f90a634df8132002bd75542a353efe86c0
+
+pkgname = whichllm
