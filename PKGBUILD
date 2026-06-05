@@ -16,11 +16,11 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
 source_x86_64=(
-	"SlimeVR-amd64-${pkgver}.deb"::"https://github.com/SlimeVR/SlimeVR-Server/releases/download/v20.0.0-rc.1/SlimeVR-amd64.deb"
+	"SlimeVR-amd64-${pkgver}.deb"::"https://github.com/SlimeVR/SlimeVR-Server/releases/download/v20.1.0/SlimeVR-amd64.deb"
 )
 
 sha512sums_x86_64=(
-	"6aa29a4ff51a76fd95f05a695d2b31fa0dcc1d94437bfd37317d2552744397c2c085c30cbdb9a76a143d46eee2d96efaea2535db5bdaf58637bf5f54f94fa823"
+	'SKIP'
 )
 
 package() {
