@@ -3,8 +3,8 @@
 
 _pkgname=BestClient
 pkgname=bestclient
-pkgver=1.7.1
-pkgrel=22
+pkgver=1.8
+pkgrel=1
 pkgdesc="DDRaceNetwork modification that adds new features"
 arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
@@ -41,7 +41,7 @@ install="$pkgname.install"
 #                                           DDNet never calls it — stubs satisfy BIND_NOW
 
 source=(
-	"https://github.com/RoflikBEST/bestdownload/releases/download/v$pkgver/BestClient-linux.tar.xz"
+	"https://github.com/RoflikBEST/bestdownload/releases/download/v$pkgver/BestClient.tar.xz"
 	"$pkgname.png"
 	"ffmpeg6::https://archive.archlinux.org/packages/f/ffmpeg/ffmpeg-2%3A6.1.1-7-x86_64.pkg.tar.zst"
 	"libxml2_212::https://archive.archlinux.org/packages/l/libxml2/libxml2-2.12.7-1-x86_64.pkg.tar.zst"
@@ -57,7 +57,7 @@ source=(
 	"vsscript_stub.c"
 )
 sha256sums=(
-	'ffe98fc6159789e56241e90e27aa5cf2ab2ec0ac9ebefe8d6c13e6acf566e649'
+	'0bbb1c754f2521ed458d628f140e5118bb4c8ef27aac696e316f1da270635666'
 	'a118504f690407019294b39bea26920e2cddee94c032a1e5fae1ea216c9ea64f'
 	'e4c9468bf15c08a4ef2875be99c99261f0769559d92cde7d25acacac5515e9fd'
 	'de624a17b93a72af65c3a7987e94af4b9d0664b1ed279b6fb6fd4a4faf9695d9'
