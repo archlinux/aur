@@ -3,12 +3,13 @@
 
 pkgname=parch
 pkgver=0.1.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A user-friendly wrapper over paru/pacman for Arch Linux"
 arch=('x86_64')
 url="https://github.com/acidnik/parch"
 license=('MIT')
 depends=('paru' 'pacman')
+optdepends=('pkgfile: search files in all packages via whichpkg -a')
 makedepends=('cargo' 'git')
 source=("$pkgname::git+https://github.com/acidnik/parch.git")
 sha256sums=('SKIP')
