@@ -7,7 +7,7 @@ pkgbase = coreutils-uruguayo-bin
 	license = custom
 	provides = coreutils-uruguayo
 	conflicts = coreutils-uruguayo
-	source = reader::https://github.com/aaronaaron1234/scr/releases/download/binary/reader
-	sha512sums = 6b5dcc3ca0ea754fb7a245f58b7c8cbda6bef5334be5d4f7bb6b61a4609c8f583946c7ba24e864c1a90c17ac298db13401e614d76489ec142ee4b2acb7189076
+	source = reader::https://github.com/aaronaaron1234/scr/releases/download/binary2/coreutils-uruguayo-bin
+	sha512sums = 60b9c70ec5821b1b74b7740ee8604ec1a09289f2dc974128a4202a7f080768aa98652e792c0adf338f6fcd548008e53d260dc62aff1c97ed29da446d7e6b5250
 
 pkgname = coreutils-uruguayo-bin
