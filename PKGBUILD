@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dockit-bin
 _pkgname=DocKit
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="GUI clients for elasticsearch, opensearch and etc.(Prebuilt version)"
 arch=('x86_64')
@@ -14,10 +14,8 @@ depends=(
     'gtk3'
     'webkit2gtk-4.1'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
-)
-sha256sums=('58e42a4aa414abe075b584874b4ef075bfd5f07c2b9ae8865849da18188aa629')
+source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
+sha256sums=('sha256:73d714862c7e7a9322af5878319528bf554f5bd8b0fe24fbd65a9419297f6c4f')
 prepare() {
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
