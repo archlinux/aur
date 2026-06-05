@@ -1,4 +1,4 @@
-# Maintainer: nathawat <nathawat at noreply dot codeberg dot org>
+# Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=rg-grep
 pkgver=1.0.0
