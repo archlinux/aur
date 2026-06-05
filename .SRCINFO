@@ -1,6 +1,6 @@
 pkgbase = spice-crypt
 	pkgdesc = Tool to decrypt encrypted LTSpice models
-	pkgver = 3.0.0rc1
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/jtsylve/spice-crypt
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = spice-crypt
 	depends = libgcc
 	depends = python
 	depends = python-cryptography
-	source = spice-crypt::git+https://github.com/jtsylve/spice-crypt#tag=v3.0.0rc1
-	sha512sums = 529cab66d8ff0ed5b76a753cd0765d36c7e0169ccd2ec6d4be8f5868b86e451eab31de73eb200954261ade4683c5305a80fa4ffb6a00820290f667c196e49f71
-	b2sums = 471b2a31e6896ddd4e8c227321ad155149a1383b0e04c0ad8c8a12f19c5a3ea1fc727a42a84b596460edcb845ee17b83160898cadf59b99f46bd2bc974eb836b
+	source = spice-crypt::git+https://github.com/jtsylve/spice-crypt#tag=v3.0.1
+	sha512sums = cb5e4056d0ebbb5d65ac71e9eb431372ee4cd56b47f839389f6304f7f9783a75e81754ec4642350ab610e8238eacf6a8e1239d5cd1063758a952e163f4e6e868
+	b2sums = 75f14a98a7e37ea4b114d0e19ed40ed96fb65ab905f1dff9c49af97e30787944797af60c062a72d4114e07bfbb1cd80238e2b4e126a6f9e8ed4b702f88bdda2f
 
 pkgname = spice-crypt
