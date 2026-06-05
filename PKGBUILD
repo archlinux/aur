@@ -10,7 +10,7 @@ depends=('gtk3' 'webkit2gtk-4.1')
 optdepends=('nvidia-utils: NVIDIA GPU fan control via NVML')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6ec53a5d102d334eec35a13c3d1ed30980a773ed1d6e363ac509ee850e4eab20')
+sha256sums=('187532377f0ae0e4757fc9bede53a15453ecc5a051c95a12d028f7cc2be547bc')
 
 build() {
     cd "Fanflow-$pkgver"
@@ -29,7 +29,7 @@ package() {
     install -Dm644 "packaging/fanflow.desktop" \
         "$pkgdir/usr/share/applications/fanflow.desktop"
 
-    install -Dm644 "packaging/fancontroller.svg" \
+    install -Dm644 "packaging/fanflow.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/fanflow.svg"
 
     install -Dm644 LICENSE \
