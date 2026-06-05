@@ -6,7 +6,6 @@ pkgbase = openscreen-appimage
 	arch = x86_64
 	license = MIT
 	depends = fuse
-	provides = openscreen
 	conflicts = openscreen-bin
 	options = !debug
 	options = !strip

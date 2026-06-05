@@ -10,7 +10,7 @@ license=('MIT')
 groups=()
 depends=('fuse')
 optdepends=()
-provides=('openscreen')
+provides=()
 conflicts=('openscreen-bin')
 options=(!debug !strip)
 source=(
@@ -27,7 +27,7 @@ prepare() {
   echo "==> Extracting AppImage..."
   (
     cd $srcdir
-    $srcdir/Openscreen-$pkgver.AppImage --appimage-extract > /dev/null
+    $srcdir/Openscreen-$pkgver.AppImage --appimage-extract >/dev/null
   )
 }
 
