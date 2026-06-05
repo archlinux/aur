@@ -1,6 +1,6 @@
 # Maintainer: yeet <support@yeet.cx>
 pkgname=yeet-bin
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="yeet daemon and associated tools"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ package() {
   bsdtar -xf "yeet-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst" -C "${pkgdir}"
   rm -f "${pkgdir}/.PKGINFO" "${pkgdir}/.INSTALL" "${pkgdir}/.MTREE" "${pkgdir}/.BUILDINFO"
 }
-sha256sums_x86_64=('7cabaea2d5f177c55a53414deec43b71a0223c36a9dbc9903e3ee3fd39d7e232'
+sha256sums_x86_64=('aa8afe319555238fb564a23214a06cba2299857d6461195e9ab8b9f509ed17e1'
                    'SKIP')
-sha256sums_aarch64=('50176eb1a1cf6c64b31d737268562cdae4637318921ec964aca44f95e49cb320'
+sha256sums_aarch64=('2790febcf47e79d931c11fab767643167edb6aeee687e6c622064f04b81fda0d'
                     'SKIP')
