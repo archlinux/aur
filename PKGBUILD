@@ -2,7 +2,7 @@
 pkgname=clash-nyanpasu-git
 _pkgname=clash-nyanpasu
 _pkgver=2.0.0
-pkgver=2.0.0.r5805.f78b7180
+pkgver=2.0.0.r6931.f6538a47
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​"
 arch=('x86_64' 'aarch64')
@@ -46,7 +46,7 @@ prepare(){
 	echo "Running nightly preparation..."
 	pnpm prepare:nightly --disable-updater
 
-	pnpm check
+	pnpm prepare:check
 
 	echo "Disabling bundle in config..."
 	local _conf="backend/tauri/tauri.nightly.conf.json"
