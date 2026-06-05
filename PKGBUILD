@@ -1,6 +1,6 @@
 # Maintainer: Nonantiy <nonantiy1@gmail.com>
 pkgname=narwhal
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='TUI database client with a built-in MCP server'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT' 'Apache')
 depends=('gcc-libs')
 makedepends=('cargo' 'cmake' 'clang')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('930d544b77023b677688d2cd51cba223a5c005c8a5aba7cd4ac3b0a3131889ae')  # `sha256sum v1.2.0.tar.gz`
+sha256sums=('56dcb3bbeec4aace943cd6f10a31dae7f6366593cd19a49397f11983cd800387')  # `sha256sum v2.0.0.tar.gz`
 
 prepare() {
     cd "$pkgname-$pkgver"
