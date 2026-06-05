@@ -1,5 +1,5 @@
 pkgname=openmodelica
-pkgver=1.26.7
+pkgver=1.26.8
 pkgrel=1
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
@@ -10,13 +10,11 @@ depends=('java-environment' 'lapack' 'openscenegraph' 'boost-libs' 'qt6-webengin
 provides=('openmodelica-omc')
 makedepends=('gcc-fortran' 'cmake' 'boost')
 options=('!lto')
-source=("https://github.com/OpenModelica/OpenModelica/releases/download/v${pkgver}/OpenModelica-src-with-submodules.zip")
-sha256sums=('d10452033473333e216d0a9e4fa2c1e2ef24ffa9c1bfde0acd4c045f2107b613')
+source=("https://github.com/OpenModelica/OpenModelica/releases/download/v${pkgver}/OpenModelica-v${pkgver}-src-with-submodules.zip")
+sha256sums=('8dce70c01a414d86146c4fd5ee721af88705c7b11eefb34d0a04a7b8f1d238ae')
 
 prepare() {
   cd "OpenModelica-v${pkgver}"
-  curl -L https://github.com/OpenModelica/OpenModelica/pull/15573.patch | patch -p1
-  echo "v${pkgver}" > OMVERSION.txt
 }
 
 build() {
