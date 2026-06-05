@@ -1,6 +1,6 @@
 pkgname=collapseloader-bin
-pkgver=0.2.9
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="A user-friendly loader for many minecraft clients"
 arch=('x86_64')
 url="https://github.com/dest4590/CollapseLoader"
@@ -9,14 +9,14 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'pipewire' 'pipewire-
 makedepends=('squashfs-tools')
 provides=('collapseloader')
 conflicts=('collapseloader-git')
-source=("collapseloader__${pkgver}_HOTFIX_amd64.AppImage::https://github.com/dest4590/CollapseLoader/releases/download/0.2.9/CollapseLoader__0.2.9_HOTFIX_amd64.AppImage")
-sha256sums=('df7a746152a3c6f9a4ea8356db0e847f80f55bd381956ede5a3353e8239ccb90')
-noextract=("collapseloader__${pkgver}_HOTFIX_amd64.AppImage")
+source=("collapseloader__${pkgver}_amd64.AppImage::https://github.com/dest4590/CollapseLoader/releases/download/1.2.1/CollapseLoader_1.2.1_amd64.AppImage")
+sha256sums=('5acff82363ce0ccb5332f6f93ad5b21a6947259515eeef67888bc028c656ca1e')
+noextract=("collapseloader__${pkgver}_amd64.AppImage")
 
 prepare() {
     cd "$srcdir"
-    chmod +x "collapseloader__${pkgver}_HOTFIX_amd64.AppImage"
-    ./"collapseloader__${pkgver}_HOTFIX_amd64.AppImage" --appimage-extract
+    chmod +x "collapseloader__${pkgver}_amd64.AppImage"
+    ./"collapseloader__${pkgver}_amd64.AppImage" --appimage-extract
 }
 
 package() {
