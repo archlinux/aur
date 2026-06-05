@@ -1,6 +1,6 @@
 # Maintainer: MedCy1 <mederick.roge@gmail.com>
 pkgname=wayinhibit
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A small Wayland idle inhibitor written in Rust"
 arch=('x86_64' 'aarch64')
@@ -21,15 +21,15 @@ source_aarch64=(
 )
 sha256sums=(
     'c6f47d3c350962a79fc1501510e8e1cc8fbcc6502d8421505ba1b9fbd1ef6237'
-    'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-    'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-    'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+    '487ae78d81aba7992879e608d7778cfe27313e53b6a32fc28baed17a75087973'
+    '54ce8eb65d4c986dcbf5fff16752ebf00a59ffe4210adcfac3f3643221acd3ea'
+    '9fde874e1d4133fab14a6df2b191d2a0d1687a4472963ca11ade6975e10625f1'
 )
 sha256sums_x86_64=(
-    'e63e1bf780ae1e754957bbfde93a35761cc0013470d43a674f15f5ac76d75325'
+    'dff4a02edf8873e1e1dc5e367567f97f95351e9696e4e0930fa6ceffd9752898'
 )
 sha256sums_aarch64=(
-    'fb39f8d7da4670c82a993e4a486c0c827a5e89493b3c278970c9ea5146468eea'
+    '6d9099ed31a7923580f041628e2635f74f891199f4b69a9e744c20f793721adc'
 )
 
 package() {
