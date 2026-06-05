@@ -8,7 +8,7 @@ url="https://github.com/Rumyp/revreader"
 license=('MIT')
 depends=('python' 'python-pyqt6')
 source=("https://github.com/Rumyp/revreader/archive/refs/tags/v1.0.tar.gz")
-sha256sums=('4dc86faaa35613461d82c4d2aecb66bf34a36b05eb2d657bdbdc84414f1b7930')
+sha256sums=('0e8c7d82aa0b764b54aa9e797c16497a5a3e3ef41773719b2ade61813e96ab87')
 
 package() {
   cd "$srcdir/revreader-1.0" || return
