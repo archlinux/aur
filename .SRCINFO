@@ -1,0 +1,16 @@
+pkgbase = k_and_b-bin
+	pkgdesc = Search and play music videos from Bilibili, manage playlists and favorites, enjoy synced rolling lyrics, and all the music player features.(Prebuilt version)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/AgainsTurb/K-and-B-Music
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = k_and_b=1.5.0
+	conflicts = k_and_b
+	source = k_and_b-1.5.0.rpm::https://github.com/AgainsTurb/K-and-B-Music/releases/download/v1.5.0/k_and_b-1.5.0-1.x86_64.rpm
+	sha256sums = 1fb8dbe83b3e4c7de18aad5389018ca80c1e9570b8fe3493d35a8c004b81685c
+
+pkgname = k_and_b-bin
