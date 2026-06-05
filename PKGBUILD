@@ -10,7 +10,7 @@ depends=('gtk3' 'webkit2gtk-4.1')
 optdepends=('nvidia-utils: NVIDIA GPU fan control via NVML')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('187532377f0ae0e4757fc9bede53a15453ecc5a051c95a12d028f7cc2be547bc')
+sha256sums=('418d07b6275e20725911ee8933ece17366c43f80d0996647a7bcfc6a262e6177')
 
 build() {
     cd "Fanflow-$pkgver"
