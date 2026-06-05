@@ -1,0 +1,15 @@
+pkgbase = moltorino-bin
+	pkgdesc = A fork of Chatterino7 with pinned messages, polls, predictions, and more
+	pkgver = 7.5.5
+	pkgrel = 1
+	url = https://moltorino.com
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = fuse2
+	provides = moltorino
+	conflicts = moltorino
+	options = !strip
+	source = Moltorino.AppImage::https://moltorino.com/downloads/Moltorino.AppImage
+	sha256sums = SKIP
+
+pkgname = moltorino-bin
