@@ -12,7 +12,7 @@ source=("git+$url")
 sha256sums=('SKIP')
 
 depends=()
-makedepends=('git')
+makedepends=('git' 'arm-none-eabi-gcc')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"

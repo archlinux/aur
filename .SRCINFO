@@ -6,6 +6,7 @@ pkgbase = sflasher-git
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = arm-none-eabi-gcc
 	source = git+https://github.com/bhmsgame06/sflasher
 	sha256sums = SKIP
 
