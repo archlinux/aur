@@ -41,8 +41,10 @@ package() {
   install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   # Install icon (grabbed from source directory)
-  install -Dm644 "${srcdir}/${_pkgname}-app/apps/desktop-windows/ic_launcher.png" "${pkgdir}/usr/share/icons/hicolor/192x192/apps/${_pkgname}.png"
-  install -Dm644 "${srcdir}/${_pkgname}-app/apps/ios/Chroma/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/${_pkgname}-app/apps/ios/Chroma/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/${_pkgname}-app/apps/ios/Chroma/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/${_pkgname}-app/apps/desktop-windows/ic_launcher.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/${_pkgname}-app/apps/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${_pkgname}.png"
   install -Dm644 "${srcdir}/${_pkgname}-app/apps/desktop-windows/ic_launcher.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
   # Install license
