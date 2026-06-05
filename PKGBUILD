@@ -1,7 +1,7 @@
 # Maintainer: Declan <dclnc@users.noreply.github.com>
 
 pkgname=declan-setup
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Declan's Omarchy dotfiles bootstrap command"
 arch=('any')
