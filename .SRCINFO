@@ -1,7 +1,7 @@
 pkgbase = min-ed-launcher
 	pkgdesc = Minimal Elite Dangerous Launcher
-	pkgver = 0.12.2
-	pkgrel = 3
+	pkgver = 0.13.0
+	pkgrel = 1
 	url = https://github.com/rfvgyhn/min-ed-launcher
 	install = min-ed-launcher.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = min-ed-launcher
 	depends = hicolor-icon-theme
 	depends = libstdc++
 	options = !strip
-	source = https://github.com/rfvgyhn/min-ed-launcher/archive/refs/tags/v0.12.2.tar.gz
-	sha256sums = 524a731a311a9a05e3ae1f83fa3f5bb487279da43da673fdabd82398809daa87
+	source = https://github.com/rfvgyhn/min-ed-launcher/archive/refs/tags/v0.13.0.tar.gz
+	sha256sums = 6cac04e1d5e6161465ddefeb1c360c5ecd68892e43aab928cf886ca0da9fe424
 
 pkgname = min-ed-launcher

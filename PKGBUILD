@@ -1,8 +1,8 @@
 # Maintainer: Zachary M <minein12 at protonmail dot com>
 
 pkgname='min-ed-launcher'
-pkgver=0.12.2
-pkgrel=3
+pkgver=0.13.0
+pkgrel=1
 pkgdesc='Minimal Elite Dangerous Launcher'
 url='https://github.com/rfvgyhn/min-ed-launcher'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
     'libstdc++'
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('524a731a311a9a05e3ae1f83fa3f5bb487279da43da673fdabd82398809daa87')
+sha256sums=('6cac04e1d5e6161465ddefeb1c360c5ecd68892e43aab928cf886ca0da9fe424')
 install=${pkgname}.install
 options=(!strip)
 
