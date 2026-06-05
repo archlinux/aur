@@ -1,4 +1,4 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=flamelens-git
 pkgver=0.1.0.r5.ge15be2f
 pkgrel=1
