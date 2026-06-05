@@ -1,0 +1,16 @@
+pkgbase = cider-2
+	pkgdesc = A new look into listening and enjoying Apple Music (Pre-compiled)(PAID)
+	pkgver = 3.1.8
+	pkgrel = 1
+	url = https://cider.sh
+	arch = x86_64
+	license = AGPL3
+	depends = alsa-lib
+	depends = gtk3
+	depends = nss
+	provides = cider
+	conflicts = cider
+	source = https://github.com/lori28167/lori28167/releases/download/1/cider-v3.1.8-linux-x64.pkg.tar.zst
+	sha256sums = bbc031d8da8ac47866ce69b8786522e97a5f3d71f2e859ddba3b6996751fcdee
+
+pkgname = cider-2
