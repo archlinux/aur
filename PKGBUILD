@@ -2,7 +2,7 @@
 # Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=bisq2
-pkgver=2.1.10
+pkgver=2.1.11
 pkgrel=1
 pkgdesc="The Decentralized Trading Platform"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('java-environment=21' 'git')
 source=("git+https://github.com/bisq-network/bisq2#tag=v$pkgver"
   "git+https://github.com/bisq-network/bitcoind.git"
   "bisq2.desktop")
-sha256sums=('17169ec54b9aa1a711434fef952d69c9f53b198a6adcccd205fbf4ba9668121d'
+sha256sums=('2ef4b1424eb64b346344dcb8748b2824761eae380a2d58883a1fb7e9f7fc4d45'
             'SKIP'
             '4168bef82a5330ddaaa7b5055b1107d6eb912cd6b071c29220262173a4b8d61f')
 
