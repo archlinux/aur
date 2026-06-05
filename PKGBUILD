@@ -20,13 +20,18 @@ makedepends=(
 )
 options=('!emptydirs' '!strip')
 source=("${pkgname}::git+${url}.git#branch=${_branch}"
-        "run-language-server-tests.js")
+        "upgrade-mocha.patch")
 sha256sums=('SKIP'
-            '5a34db42d4676f780e28f06b270be2ee6b9aa806e94e4298d7413d1fe9b664f5')
+            'bce127996664dc603403448fe6371891eca964763112dde06d0d75d0b4ddb18b')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "${srcdir}/${pkgname}"
+  patch -p1 < "$srcdir/upgrade-mocha.patch"
 }
 
 build() {
@@ -40,7 +45,7 @@ build() {
 
 check() {
   cd "${pkgname}/packages/language-server"
-  node "$srcdir/run-language-server-tests.js"
+  pnpm test
 }
 
 package() {
