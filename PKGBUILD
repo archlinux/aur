@@ -1,6 +1,6 @@
 # Maintainer: Sanjaya Danushka <dsanjaya712@gmail.com>
 pkgname=neoarch-git
-pkgver=1.2.beta
+pkgver=2.0
 pkgrel=1
 pkgdesc="NeoArch Package Manager for Arch Linux"
 arch=('any')
@@ -25,11 +25,11 @@ package() {
   install -d "$pkgdir/opt/neoarch"
   cp -r Neoarch "$pkgdir/opt/neoarch/"
   # Make scripts executable
-  chmod +x "$pkgdir/opt/neoarch/Neoarch/install_arch_deps.sh"
+  chmod +x "$pkgdir/opt/neoarch/Neoarch/scripts/install_arch_deps.sh"
   chmod +x "$pkgdir/opt/neoarch/Neoarch/bin/neoarch.sh"
-  chmod +x "$pkgdir/opt/neoarch/Neoarch/install_desktop_entry.sh"
+  chmod +x "$pkgdir/opt/neoarch/Neoarch/scripts/install_desktop_entry.sh"
   # Install desktop file
-  install -Dm644 "$pkgdir/opt/neoarch/Neoarch/aurora.desktop" "$pkgdir/usr/share/applications/neoarch.desktop"
+  install -Dm644 "$pkgdir/opt/neoarch/Neoarch/packaging/aurora.desktop" "$pkgdir/usr/share/applications/neoarch.desktop"
   sed -i 's|/home/test/New Folder/Aurora|/opt/neoarch/Neoarch|g' "$pkgdir/usr/share/applications/neoarch.desktop"
   # Install icon
   install -Dm644 "$pkgdir/opt/neoarch/Neoarch/assets/icons/NeoarchLogo.svg" "$pkgdir/usr/share/pixmaps/neoarch.svg"
