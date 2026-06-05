@@ -1,0 +1,4 @@
+[alist]
+source = "git"
+git = "https://github.com/AlistGo/alist.git"
+prefix = "v"
