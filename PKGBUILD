@@ -1,14 +1,16 @@
 pkgname=jcef-jetbrains-git
 pkgdesc="A simple framework for embedding Chromium-based browsers into Java-based applications. (Used for JetBrainsRuntime)"
-pkgver=137.0.17.api1.21.r1156.8d939c80
+pkgver=144.0.15.api1.21.r1207.5b93e5b9
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/JetBrains/jcef"
 license=('BSD')
 depends=('java-runtime' 'libxcursor' 'at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa' 'libcups' 'pango' 'libxrandr' 'alsa-lib' 'nss')
 makedepends=('jdk21-openjdk' 'cmake' 'git' 'ninja' 'python' 'ant' 'unzip' 'zip')
-source=("git+$url.git#branch=dev")
-sha256sums=('SKIP')
+source=("git+$url.git#branch=dev"
+        'vcpkg-add-thrift-gcc15-fix.patch')
+sha256sums=('SKIP'
+            '5787d11d112401addafb396286bf9a577ed601f15e5e84728b92db7fbb13d54d')
 provides=('jcef-jetbrains')
 conflicts=('jcef-jetbrains')
 
@@ -18,6 +20,17 @@ pkgver() {
     count=$(git rev-list --count HEAD)
     sha=$(git rev-parse --short HEAD)
     echo "$ver.r$count.$sha"
+}
+
+prepare() {
+    # Temp fix for vcpkg thrift's failure to build with gcc 15
+    # https://github.com/microsoft/vcpkg/issues/47928
+    # https://github.com/apache/thrift/pull/3078
+
+    cd $srcdir/jcef
+    git submodule deinit -f .
+    git submodule update --init --recursive
+    patch -p1 --dir=third_party/vcpkg < "$srcdir/vcpkg-add-thrift-gcc15-fix.patch"
 }
 
 build() {
