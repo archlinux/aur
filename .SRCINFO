@@ -1,17 +1,23 @@
 pkgbase = reterminatevt-git
 	pkgdesc = https://www.reddit.com/r/linux/comments/1srbr7m/config_vtn_in_2026/
 	pkgver = 1.2026.06.02.r0.g53f14df
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/n3rdopolis/reterminatevt
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
 	makedepends = meson
+	depends = alsa-utils
 	depends = cage
-	depends = kanshi
 	depends = foot
 	depends = foot-terminfo
+	depends = socat
+	depends = wl-clipboard
+	depends = kanshi
+	depends = perl-net-dbus
+	depends = polkit
+	optdepends = fenrir
 	provides = reterminatevt=1.2026.06.02.r0
 	conflicts = reterminatevt
 	source = reterminatevt::git+https://gitlab.freedesktop.org/n3rdopolis/reterminatevt.git

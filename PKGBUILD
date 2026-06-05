@@ -3,17 +3,26 @@
 _pkgname="reterminatevt"
 pkgname="$_pkgname-git"
 pkgver=1.2026.06.02.r0.g53f14df
-pkgrel=1
+pkgrel=2
 pkgdesc="https://www.reddit.com/r/linux/comments/1srbr7m/config_vtn_in_2026/"
 url='https://gitlab.freedesktop.org/n3rdopolis/reterminatevt'
 license=('GPL2')
 arch=('x86_64')
 
+optdepends=(
+  'fenrir'
+)
+
 depends=(
+  'alsa-utils'
   'cage'
-  'kanshi'
   'foot'
   'foot-terminfo'
+  'socat'
+  'wl-clipboard'
+  'kanshi'
+  'perl-net-dbus'
+  'polkit'
 )
 
 makedepends=(
