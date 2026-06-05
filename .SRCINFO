@@ -1,6 +1,6 @@
 pkgbase = sioyek-dev
-	pkgdesc = PDF viewer for research papers and technical books (development branch)
-	pkgver = 2.0.0.r1086.g719e2070
+	pkgdesc = PDF viewer for research papers (development branch, bundled MuPDF)
+	pkgver = 2.0.0.r1107.gfa4cd23
 	pkgrel = 1
 	url = https://github.com/ahrm/sioyek
 	arch = x86_64
