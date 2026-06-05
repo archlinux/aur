@@ -15,7 +15,7 @@ _enable_libsyncthing=${MINGW_W64_SYNCTHING_TRAY_ENABLE_LIBSYNCTHING:-ON}
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=2.1.1
+pkgver=2.1.2
 [[ $BUILD_BEFORE_TAGGING ]] && _pkgver=branch=master || _pkgver=tag=v$pkgver
 pkgrel=1
 arch=('any')
