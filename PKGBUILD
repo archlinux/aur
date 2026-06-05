@@ -6,7 +6,7 @@
 # Contributors: CodeImp
 
 pkgname=veeam
-pkgver=13.0.1.404
+pkgver=13.0.2.2
 pkgrel=1
 pkgdesc="Veeam Agent for Linux"
 arch=(x86_64)
@@ -16,8 +16,8 @@ license=(custom:veeam)
 depends=(ncurses lvm2 fuse mlocate veeamblksnap-dkms)
 source=("https://repository.veeam.com/backup/linux/agent-13/rpm/el/10/x86_64/veeam-$pkgver-1.el10.x86_64.rpm"
         "https://repository.veeam.com/backup/linux/agent-13/rpm/el/10/x86_64/veeam-libs-$pkgver-1.x86_64.rpm")
-sha256sums=('afc42f2844f21aa43235bbbf2e94fa2f4db96d86b237c3914c49faa14b2c36a2'
-            'e7fce9fced0d2374e69bc3b37b43bd8498fd70f26212f4aeb9a9f467139137dd')
+sha256sums=('1259c6de3dd607e12eaf0288f88d5fb85d63087b44651c6fef38605b976454fa'
+            '353fbb3058ad4fed43894e7b8ecb9c0ab3ad720ab98706794160bea5de478245')
 noextract=("veeam-$pkgver-1.el10.x86_64.rpm"
            "veeam-libs-$pkgver-1.x86_64.rpm")
 backup=('etc/veeam/veeam.ini'
