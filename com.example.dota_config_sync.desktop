@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Dota 2 Config Sync
+Comment=Sincronizador de configuraciones de Dota 2
+Exec=dota-config-sync
+Icon=dota-config-sync
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupWMClass=com.example.dota_config_sync
