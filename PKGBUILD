@@ -12,7 +12,7 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=3.0.0
+pkgver=3.1.0
 _tag=
 pkgrel=1
 
@@ -24,7 +24,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 
 provides=('cosmostrix')
-conflicts=('cosmostrix')
+conflicts=('cosmostrix' 'cosmostrix-git')
 
 options=('!strip')
 
