@@ -1,6 +1,6 @@
 pkgbase = moshpit-agent-full
 	pkgdesc = Moshpit agent daemon — all Linux unlock backends (secret-service, fido2, tpm, systemd-creds, fprintd, ssh-agent-piggyback)
-	pkgver = 0.8.16
+	pkgver = 0.8.17
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = moshpit-agent-full
 	conflicts = moshpit-agent-secret-service
 	conflicts = moshpit-agent-tpm
 	conflicts = moshpit-agent-fprintd
-	source = moshpit-agent-full-0.8.16.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.16.tar.gz
-	sha256sums = 4bba792fe457934056e169100ffdd1662ad1b920efad3014e7a8819daea11f67
+	source = moshpit-agent-full-0.8.17.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.17.tar.gz
+	sha256sums = 996a6f4b8c29ab592bd4ef2f44a36b4675ea6e1cfed9c9d89de2bcc840329793
 
 pkgname = moshpit-agent-full
