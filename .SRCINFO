@@ -1,6 +1,6 @@
 pkgbase = open-adventure
 	pkgdesc = Port of the 'Colossal Cave Adventure' text-based adventure game
-	pkgver = 1.20
+	pkgver = 1.21
 	pkgrel = 1
 	url = http://www.catb.org/~esr/open-adventure/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = open-adventure
 	makedepends = asciidoc
 	makedepends = libedit
 	conflicts = advent
-	source = https://gitlab.com/esr/open-adventure/-/archive/1.20/open-adventure-1.20.tar.bz2
-	sha256sums = d976df7b90d9b5cb3c93f3ac99b12392e60852557b2651e7c4dc15f51a74a5ad
+	source = https://gitlab.com/esr/open-adventure/-/archive/1.21/open-adventure-1.21.tar.bz2
+	sha256sums = 8ddff48254f868999957bef5f9a1606140d8cacae4a4d87f676fd819876e57c6
 
 pkgname = open-adventure

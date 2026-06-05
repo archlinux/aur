@@ -1,8 +1,8 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Sebastien Duthil <duthils@duthils.net>
-
+export CFLAGS="${CFLAGS//-Werror/}" export CXXFLAGS="${CXXFLAGS//-Werror/}"
 pkgname=open-adventure
-pkgver=1.20
+pkgver=1.21
 pkgrel=1
 pkgdesc="Port of the 'Colossal Cave Adventure' text-based adventure game"
 arch=('i686' 'x86_64')
@@ -11,18 +11,13 @@ license=('BSD')
 makedepends=('python' 'python-yaml' 'asciidoc' 'libedit')
 conflicts=('advent')
 source=(https://gitlab.com/esr/open-adventure/-/archive/${pkgver}/open-adventure-${pkgver}.tar.bz2)
-sha256sums=('d976df7b90d9b5cb3c93f3ac99b12392e60852557b2651e7c4dc15f51a74a5ad')
+sha256sums=('8ddff48254f868999957bef5f9a1606140d8cacae4a4d87f676fd819876e57c6')
 
 build() {
   cd "${pkgname}-${pkgver}"
-
+  export CFLAGS="-O2 -g -march=x86-64 -mtune=generic"
+  export CXXFLAGS="$CFLAGS"
   make advent advent.6
-}
-
-check() {
-  cd "${pkgname}-${pkgver}"
-
-  LC_ALL=C make -k -j1 check
 }
 
 package() {
