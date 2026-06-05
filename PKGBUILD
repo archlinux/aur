@@ -4,7 +4,7 @@
 _pkgname=BestClient
 pkgname=bestclient
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="DDRaceNetwork modification that adds new features"
 arch=('x86_64')
 url="https://github.com/RoflikBEST/bestdownload"
@@ -200,6 +200,9 @@ done
 
 cd /opt/bestclient/game
 export LD_LIBRARY_PATH="/opt/bestclient/game${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+# Disable LSFG-VK (lossless scaling frame generation) Vulkan layer which causes
+# a SIGSEGV crash on startup when injected into the BestClient Vulkan context.
+export DISABLE_VULKAN_LAYERS="VkLayer_LS_frame_generation"
 exec ./DDNet "$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$pkgname"
