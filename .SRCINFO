@@ -1,6 +1,6 @@
 pkgbase = konbucase
 	pkgdesc = Convert case of your text
-	pkgver = 4.5.0
+	pkgver = 4.5.1
 	pkgrel = 1
 	url = https://github.com/ryonakano/konbucase
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = konbucase
 	depends = libhandy
 	depends = sassc
 	depends = libadwaita
-	source = konbucase-4.5.0.tar.gz::https://github.com/ryonakano/konbucase/archive/4.5.0.tar.gz
+	source = konbucase-4.5.1.tar.gz::https://github.com/ryonakano/konbucase/archive/4.5.1.tar.gz
 	source = git+https://github.com/ryonakano/chcase#commit=0ce179bd1766309514a2495b01ad0fec69586ef8
-	sha256sums = 0d6d1414f9be9e93918bd1ca3a9289d67e69294ba0122cdfc883302cf522a13f
+	sha256sums = 933fdab189afa9cf6e18d8a821665fc9092fecd08af6c84be50de8e248885669
 	sha256sums = c13da7bb68933f72c7ca1adc1c3a4fc55dee4466d2f6507097ca6656bbcff299
 
 pkgname = konbucase
