@@ -12,7 +12,7 @@ _pkgbase=gdal
 provides=('gdal')
 conflicts=('gdal')
 pkgname=(gdal-hdf4 python-gdal-hdf4)
-pkgver=3.12.4
+pkgver=3.13.1
 pkgrel=1
 pkgdesc="Translator library for raster and vector geospatial data formats"
 arch=(x86_64)
@@ -38,7 +38,7 @@ options=('!emptydirs')
 changelog=$pkgbase.changelog
 
 source=(https://github.com/OSGeo/${_pkgbase}/releases/download/v${pkgver}/${_pkgbase}-${pkgver}.tar.gz)
-md5sums=('230b563d42d2aff4bd6362539442f378')
+md5sums=('87755f5d45d555986e80390944109654')
 
 build() {
   export PATH="$(pwd)/build/apps:$PATH"
