@@ -1,6 +1,6 @@
 
 pkgname=labymodlauncher-bin
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="Laby Launcher (official)"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://www.laby.net/"
 license=('LicenseRef-Proprietary')
 depends=('gtk3' 'nss' 'alsa-lib')
 options=(!strip !debug)
-source=("${pkgname}-${pkgver}.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-3.0.4.AppImage")
-sha256sums=('eeaa5b9bb887145ba29317a153b0d9aa293d0586fc5ac04539296902b82292a9')
+source=("${pkgname}-${pkgver}.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-3.0.5.AppImage")
+sha256sums=('29f43a1700ca6750be6cc2e375a42be6cdb20c9d576b1aff67de745f829dd507')
 
 package() {
     cd "${srcdir}"
