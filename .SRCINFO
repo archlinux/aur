@@ -1,6 +1,6 @@
 pkgbase = t3code-nightly-bin
 	pkgdesc = T3 Code nightly desktop app packaged from the upstream AppImage
-	pkgver = 0.0.25_nightly.20260605.473
+	pkgver = 0.0.25_nightly.20260605.475
 	pkgrel = 1
 	url = https://t3.codes
 	arch = x86_64
@@ -33,15 +33,15 @@ pkgbase = t3code-nightly-bin
 	depends = xdg-utils
 	depends = zlib
 	optdepends = openai-codex: use the system-installed Codex CLI
-	provides = t3code-nightly=0.0.25_nightly.20260605.473
+	provides = t3code-nightly=0.0.25_nightly.20260605.475
 	conflicts = t3code-nightly
 	options = !debug
 	options = !emptydirs
 	options = !strip
-	source = T3-Code-0.0.25-nightly.20260605.473-x86_64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v0.0.25-nightly.20260605.473/T3-Code-0.0.25-nightly.20260605.473-x86_64.AppImage
+	source = T3-Code-0.0.25-nightly.20260605.475-x86_64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v0.0.25-nightly.20260605.475/T3-Code-0.0.25-nightly.20260605.475-x86_64.AppImage
 	source = t3code-icon.png
 	source = LICENSE
-	sha256sums = 7cba431fcd34482624d2326382f0841d2bceeee71fdd511af238e6ad9ad54b59
+	sha256sums = b59ca74a28619b7056e2255230c1c3421a6d7372756e2d1e482a626e9d0453e5
 	sha256sums = 52c86008b11f90f36b8a8f4cc43b1352d5fda9084c6e5691b806f5bca1a968b6
 	sha256sums = 935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43
 
