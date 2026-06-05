@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-full-bin
-pkgver=0.8.13
+pkgver=0.8.14
 pkgrel=1
 pkgdesc="Moshpit agent daemon — all MUSL-portable unlock backends: FIDO2, systemd-creds, SSH agent (pre-compiled static binary)"
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,9 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mpa.tar.gz")
 source_x86_64=("mpa-full-x86_64::${_base}/mpa-full-x86_64-unknown-linux-musl")
 source_aarch64=("mpa-full-aarch64::${_base}/mpa-full-aarch64-unknown-linux-musl")
-sha256sums=('e5c2fc63265ff6c74d67479a4e6c1376bd6b0180e74c8ccc5574826c003d2abf')
-sha256sums_x86_64=('f0908a257175e065acc7c0df1f03ac39506db4485dba4aa283017296ade9d255')
-sha256sums_aarch64=('046b1d225e0d793413474e39aadaaaa3306464fe1f81b117a6587577b2df356c')
+sha256sums=('2509d51a72f32ad585ca1239d49f9e6c0923052a9b91e98108615913fba24acd')
+sha256sums_x86_64=('4d80ecab8a5e27921bc11e95b780ade7fe3ba4934b83feba08f0dd2b1c3ab4a5')
+sha256sums_aarch64=('3f094af94871a8884da16f6474de7ff0f5386110e5e5a4a6a076bd4a35e45e5e')
 
 package() {
     install -Dm755 "mpa-full-${CARCH}" "$pkgdir/usr/bin/mpa"
