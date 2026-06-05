@@ -1,7 +1,7 @@
 # Maintainer: Rudy Rivera <rodolfo.rivera@gmail.com>
 pkgname=pocketcli
-pkgver=1.4.6
-pkgrel=3
+pkgver=1.4.7
+pkgrel=1
 pkgdesc="Terminal UI client for Pocket Casts - stream podcasts and audiobooks from your terminal"
 arch=('any')
 url="https://github.com/foforivera/pocketcli"
