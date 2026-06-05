@@ -1,6 +1,6 @@
 pkgbase = libinput-noaccum
 	pkgdesc = libinput with ACC_V120_TRIGGER_THRESHOLD set to 1 for smooth high-resolution scrolling
-	pkgver = 1.31.2
+	pkgver = 1.31.3
 	pkgrel = 1
 	url = https://wayland.freedesktop.org/libinput/doc/latest/
 	arch = x86_64
@@ -30,8 +30,8 @@ pkgbase = libinput-noaccum
 	provides = libinput.so
 	conflicts = libinput
 	conflicts = libinput.so
-	source = git+https://gitlab.freedesktop.org/libinput/libinput.git#tag=1.31.2
-	b2sums = 8b0a76d3765e06283000745a91c95fecc8d2bfc7da36222ad0def041282f237ebd56006d11efd87c845a936631fea527666fee99b6e9e1e2f176681ff083ac9a
+	source = git+https://gitlab.freedesktop.org/libinput/libinput.git#tag=1.31.3
+	b2sums = 197f8c4d6be126e8b8a4825109dd37405a1205f80b25595c259d42606e317525aae5def846f4bb3c3cfad09ccd9d65b53d39d34127623ea6c47db6e8cfaf3188
 
 pkgname = libinput-noaccum
 	optdepends = libinput-tools: debug utilities
