@@ -1,6 +1,6 @@
 pkgbase = cockpit-tools
 	pkgdesc = Universal AI IDE account manager for Antigravity / Codex / GitHub Copilot / Windsurf / Kiro / Cursor / Gemini-cli / CodeBuddy
-	pkgver = 0.24.12
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/jlcodes99/cockpit-tools
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = cockpit-tools
 	depends = libsoup3
 	depends = gdk-pixbuf2
 	depends = hicolor-icon-theme
-	source = cockpit-tools::git+https://github.com/jlcodes99/cockpit-tools.git#tag=v0.24.12
-	sha256sums = 05b1461ff14166e1c3fc8c082afda524c2ac88c60afccb4be51714bfe52df4d0
+	source = cockpit-tools::git+https://github.com/jlcodes99/cockpit-tools.git#tag=v0.25.0
+	sha256sums = a6122b8442bb599149858802900d45017cc9cd7c49ad4534d56323592dd8119b
 
 pkgname = cockpit-tools
