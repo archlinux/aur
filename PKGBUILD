@@ -2,7 +2,7 @@
 # Contributor: Nik <acidnik@users.noreply.github.com>
 
 pkgname=parch
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A user-friendly wrapper over paru/pacman for Arch Linux"
 arch=('x86_64')
