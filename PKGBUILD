@@ -1,32 +1,33 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.0.35'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='invocation-tree'
-
-pkgname="python-${_pypi_package}"
-pkgver="${_upstreamver}"
-pkgrel=1
+pkgname="python-invocation-tree"
 pkgdesc="Generate an invocation tree of functions calls"
+pkgver=0.0.35
+pkgrel=1
+
+_pypi_package=${pkgname##python-}
+_pypi_version=${pkgver}
+
 arch=('any')
-url='https://github.com/bterwijn/invocation_tree'
 license=('BSD-2-Clause')
+url='https://github.com/bterwijn/invocation_tree'
+
 depends=('python' 'python-graphviz')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
+
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 sha256sums=('8ae20331c897370b23a96f9ad2b09185341d6f97ad7c80be962c5970626f8b6f')
 
 
 build() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
