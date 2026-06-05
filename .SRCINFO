@@ -1,6 +1,6 @@
 pkgbase = forkgram
 	pkgdesc = Fork of the Telegram Desktop messaging app
-	pkgver = 6.8.4
+	pkgver = 6.8.5
 	pkgrel = 1
 	url = https://github.com/Forkgram/tdesktop
 	arch = x86_64
@@ -50,10 +50,10 @@ pkgbase = forkgram
 	optdepends = xdg-desktop-portal: desktop integration
 	conflicts = forkgram-bin
 	options = !lto
-	source = forkgram-6.8.4.tar.gz::https://github.com/Forkgram/tdesktop/releases/download/v6.8.4/frk-v6.8.4-full.tar.gz
+	source = forkgram-6.8.5.tar.gz::https://github.com/Forkgram/tdesktop/releases/download/v6.8.5/frk-v6.8.5-full.tar.gz
 	source = telegram-tdlib::git+https://github.com/tdlib/td.git
 	source = 0001-revert-cmake-patch.patch
-	sha256sums = 291f3d7c0a3d2fe2da7e8f32fc5d2baf9a1543557bf977a73eec9f1c4fdd685c
+	sha256sums = 61dabc699ad9ed3786402fa2108872d4be0941771bb65984409bcab3b059366e
 	sha256sums = SKIP
 	sha256sums = cf669c8a03f8ffcfb0898534c394324f9d59909e0526b86d63190d662a3dd861
 
