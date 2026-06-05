@@ -1,15 +1,15 @@
 pkgbase = veeamblksnap-dkms
 	pkgdesc = Veeam Agent for Linux kernel modules (DKMS)
-	pkgver = 13.0.1.404
+	pkgver = 13.0.2.2
 	pkgrel = 1
 	url = https://www.veeam.com/products/downloads.html
 	arch = x86_64
 	license = LicenseRef-GPL-2.0
 	depends = dkms
 	conflicts = blksnap
-	source = https://repository.veeam.com/backup/linux/agent-13/rpm/el/10/x86_64/blksnap-13.0.1.404-1.noarch.rpm
+	source = https://repository.veeam.com/backup/linux/agent-13/rpm/el/10/x86_64/blksnap-13.0.2.2-1.noarch.rpm
 	source = dkms.conf
-	sha256sums = 7cf2d8613710fd3c40564ecb1a623de880273e668713c6675731c573302ae3c9
+	sha256sums = 604c30ba739720a376c106c799c2beda82296b628ccb758a97d1f279d39667a9
 	sha256sums = 21a182149740160df2d3475fad4142a08d8fc850e0234d32922472f7e4aa66fc
 
 pkgname = veeamblksnap-dkms
