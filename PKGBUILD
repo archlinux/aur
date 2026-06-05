@@ -1,5 +1,5 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
-_versioncode=36
+_versioncode=38
 pkgname=fluent-lyrics-bin
 pkgver="0.0.$_versioncode"
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
   "fluent-lyrics.sh"
   "fluent-lyrics.png::${url}/raw/main/assets/icons/logo-rounded.png"
   )
-sha256sums=('dc67015d4dd2f40a03befac46b50a64eefd1f8d8eaaa14d447e18cf25b537793'
+sha256sums=('e367ddab35b8d7a83f32d7c4d423efb598087133e12da87246fa2794e5d15c12'
             '29a9f40ec748ba132cd776862f99f84442f8018e1d4b6996691ee9ddf7ad917d'
             '22bda8e153e0a8b97c2657a1fb49c9d0907b93e0b83e2a15664019d14ae97f3e'
             '8e331b6e8925e78030fdc86417e7f8fbf987a30261d1cf09432e5baaff027282')
