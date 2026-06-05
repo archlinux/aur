@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-full-unstable-bin
-pkgver=0.8.14
+pkgver=0.8.15
 pkgrel=1
 pkgdesc="Moshpit agent daemon — all MUSL-portable unlock backends + post-quantum ML-DSA support (pre-compiled static binary)"
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mpa.tar.gz")
 source_x86_64=("mpa-full-unstable-x86_64::${_base}/mpa-full-unstable-x86_64-unknown-linux-musl")
 source_aarch64=("mpa-full-unstable-aarch64::${_base}/mpa-full-unstable-aarch64-unknown-linux-musl")
-sha256sums=('2509d51a72f32ad585ca1239d49f9e6c0923052a9b91e98108615913fba24acd')
-sha256sums_x86_64=('7f32c1d55eb89b59ec2402a662a1f365eb34124fc956ebc8925d949dc9175429')
-sha256sums_aarch64=('24d9e0eb9c553d98645af7c8a3408304e1ad19fbd1d8949b63e877bfe3f0edc0')
+sha256sums=('d1021a091ea4a557a82d290b289ef6be394d6160d36a89437dca0bb9e6dc5239')
+sha256sums_x86_64=('ca23386924eef4662dd2b9f0b1ad2f6323e63bf78fef8521cdbf4863a9412d68')
+sha256sums_aarch64=('94ddf8e2353db13881c26f11cfe137a8d9a9b154d4a4885470565b7031c60b37')
 
 package() {
     install -Dm755 "mpa-full-unstable-${CARCH}" "$pkgdir/usr/bin/mpa"
