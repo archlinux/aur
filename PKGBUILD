@@ -2,7 +2,7 @@
 
 _pkgname=bling
 pkgname="${_pkgname}-git"
-pkgver=r34.8b35ee1
+pkgver=r34.da1d146
 pkgrel=1
 pkgdesc="Minimal system info fetcher made in C"
 url="https://codeberg.org/mazylol/bling"
