@@ -1,4 +1,5 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
+
 pkgname=terminaltexteffects-git
 pkgver=0.12.1.r9.g1613a8c
 pkgrel=1
