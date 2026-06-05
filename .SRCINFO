@@ -1,7 +1,7 @@
 pkgbase = hister-bin
 	pkgdesc = Web history on steroids - blazing fast, content-based search for visited websites
 	pkgver = 0.15.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/asciimoo/hister
 	install = hister.install
 	arch = x86_64

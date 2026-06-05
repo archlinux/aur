@@ -1,7 +1,7 @@
 #Maintainer: Shadowbee <shadowbee.contact@proton.me>
 pkgname=hister-bin
 pkgver=0.15.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 conflicts=('hister' 'hister-git')
@@ -22,8 +22,18 @@ sha256sums_aarch64=('a75a9dd9f91fbfe62f86633be7aeab4e28dfc6a87e82380aa790a4beb3a
 
 _ghrepo="asciimoo/hister"
 
+build() {
+  ./hister-bin-${pkgver} completion bash > hister.bash
+  ./hister-bin-${pkgver} completion zsh > hister.zsh
+  ./hister-bin-${pkgver} completion fish > hister.fish
+}
+
 package() {
   install -Dm755 hister-bin-${pkgver} "$pkgdir/usr/bin/hister"
   install -Dm644 "$srcdir/hister.service" "$pkgdir/usr/lib/systemd/user/hister.service"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm644 hister.bash "$pkgdir/usr/share/bash-completion/completions/hister"
+  install -Dm644 hister.zsh "$pkgdir/usr/share/zsh/site-functions/_hister"
+  install -Dm644 hister.fish "$pkgdir/usr/share/fish/vendor_completions.d/hister.fish"
 }
