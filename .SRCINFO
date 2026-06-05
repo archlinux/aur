@@ -1,7 +1,7 @@
 pkgbase = pocketcli
 	pkgdesc = Terminal UI client for Pocket Casts - stream podcasts and audiobooks from your terminal
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/foforivera/pocketcli
 	arch = any
 	license = MIT
