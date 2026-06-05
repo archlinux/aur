@@ -9,6 +9,7 @@ export ELECTRON_FORCE_IS_PACKAGED=true
 export ELECTRON_DISABLE_SECURITY_WARNINGS=true
 export NODE_ENV=production
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export LD_LIBRARY_PATH="${_APPDIR}/lib:${LD_LIBRARY_PATH}"
 
 # 1. Display System Optimization (X11 & Wayland)
 # Use 'auto' to allow modern Electron (v20+) to detect the best platform
