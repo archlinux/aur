@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aionui
 _pkgname=AionUi
-pkgver=2.1.10
+pkgver=2.1.11
 _electronversion=37
 _nodeversion=22
 pkgrel=1
