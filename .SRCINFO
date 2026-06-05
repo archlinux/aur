@@ -1,16 +1,21 @@
 pkgbase = biglinux-driver-manager
-	pkgdesc = Complete driver manager and hardware info
-	pkgver = 2022_10_07
-	pkgrel = 2351
+	pkgdesc = Application to manage kernel and mesa drivers for BigLinux
+	pkgver = r216.f449c7c
+	pkgrel = 1
 	url = https://github.com/biglinux/biglinux-driver-manager
+	install = biglinux-driver-manager.install
 	arch = any
-	license = GPL
-	depends = bigbashview
-	depends = kdialog
-	depends = inxi
-	depends = zenity
-	depends = python-ansi2html
-	source = git+https://github.com/biglinux/biglinux-driver-manager.git
-	md5sums = SKIP
+	license = MIT
+	makedepends = git
+	source = biglinux-driver-manager::git+https://github.com/biglinux/biglinux-driver-manager.git
+	sha512sums = SKIP
 
-pkgname = biglinux-driver-manager
+pkgname = biglinux-driver-manager-git
+	depends = python>=3.10
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = polkit
+	depends = hicolor-icon-theme
+	depends = avahi
+	depends = nss-mdns
