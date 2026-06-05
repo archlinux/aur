@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-fido2-unstable-bin
-pkgver=0.8.16
+pkgver=0.8.17
 pkgrel=1
 pkgdesc="Moshpit agent daemon — FIDO2/YubiKey unlock with post-quantum ML-DSA support (pre-compiled MUSL static binary)"
 arch=('x86_64' 'aarch64')
@@ -21,9 +21,9 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mpa.tar.gz")
 source_x86_64=("mpa-fido2-unstable-x86_64::${_base}/mpa-fido2-unstable-x86_64-unknown-linux-musl")
 source_aarch64=("mpa-fido2-unstable-aarch64::${_base}/mpa-fido2-unstable-aarch64-unknown-linux-musl")
-sha256sums=('e6b2919d698fe5f9699bda108be3cd99f03f893fe54c95f05967aa9aaf676504')
-sha256sums_x86_64=('c8d9940b7d5222efe96a92166d589bd8ad3b0dcc2f10143e04708d25d085a228')
-sha256sums_aarch64=('39e4fea843b213248f20d55b0f4bdcede4667f82b877f4fd4e5beef2e79e9911')
+sha256sums=('5e03a37fba9b52f30892f54416008c01ff834cb9c5f8d6b28b3b73be8b1f2f21')
+sha256sums_x86_64=('d97e222c0003ccb1ed3f1b2ea011d195e6d57864a7b9ddefe2cc18f6d89f3fb7')
+sha256sums_aarch64=('7298ef7dc16c2006501b25bc7b2cbc02dcd5ca9053ecae387947ab534b632008')
 
 package() {
     install -Dm755 "mpa-fido2-unstable-${CARCH}" "$pkgdir/usr/bin/mpa"
