@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=proton-mail
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=(any)
@@ -13,18 +13,13 @@ depends=(bash $_electron hicolor-icon-theme)
 makedepends=(git jq nodejs-lts-jod yarn)
 source=(ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@$pkgver
         proton-mail.desktop
-        proton-mail.sh
-        fix-resources-path.patch)
+        proton-mail.sh)
 b2sums=('SKIP'
         'f0a2b4eca51362b204f487c6484e07080b2d953f38acb3b7ce81a05394fe2f57e5fd42f8806111c467aa528e539654a6b1adc3965328668c4734b3eecf3407e9'
-        '45d089576f2260cc425b6c9bdde79e882b24c7dd4b8173f485fb67a0d0ccaf451dbba6f403f3bd8a0d622d99132d076da79984525ed8f89e97738557e8e23bad'
-        'e43bd152b71c8c049ddfb1306983a3591a8220ef1c2816d7a2deeca2cd4519cf622d735901ddc58455123343778cf21707a7287120aae0b4e285585dd9b79f51')
+        '45d089576f2260cc425b6c9bdde79e882b24c7dd4b8173f485fb67a0d0ccaf451dbba6f403f3bd8a0d622d99132d076da79984525ed8f89e97738557e8e23bad')
 
 prepare() {
     cd ProtonWebClients
-
-    # Fix resources path for system electron
-    patch -Np1 -i "$srcdir/fix-resources-path.patch"
 
     # Find out which major release of electron this version of proton-mail requires
     local _electron_major=$(jq --raw-output '.devDependencies.electron' < "applications/inbox-desktop/package.json" | sed 's/^[~^]\?\([0-9]\+\)\(\.[0-9]\+\)*$/\1/')
