@@ -1,7 +1,7 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=geary-hide-sidebar
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="GTK3 module that hides/collapses Geary's left Mail sidebar (Ctrl+Shift+M toggle + auto by window size)"
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ install="$pkgname.install"
 # geary-hide-sidebar-module while the package is geary-hide-sidebar.
 _archive="geary-hide-sidebar-module-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b14376bcb79eef153bbd9a8dacca7c456996361bced6d7a10a8e908b65a13380')
+sha256sums=('c0413a599a6fb31879433df24d45110eca360524716e332b0f666bfa096b0de6')
 
 build() {
     cd "$_archive"
