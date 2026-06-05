@@ -32,8 +32,9 @@ package() {
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "AGENTS.md" "${pkgdir}/usr/share/doc/${pkgname}/AGENTS.md"
+    install -Dm644 "CLA.md" "${pkgdir}/usr/share/doc/${pkgname}/CLA.md"
     install -Dm644 "CLAUDE.md" "${pkgdir}/usr/share/doc/${pkgname}/CLAUDE.md"
+    install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
     install -Dm644 "CLI_README.md" "${pkgdir}/usr/share/doc/${pkgname}/CLI_README.md"
     install -Dm644 "CONTRIBUTING.md" "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTING.md"
     install -Dm644 "BLACKBOX_RULES.md" "${pkgdir}/usr/share/doc/${pkgname}/BLACKBOX_RULES.md"
