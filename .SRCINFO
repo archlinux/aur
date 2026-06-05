@@ -1,6 +1,6 @@
 pkgbase = simplex-chat
 	pkgdesc = The first messaging network operating without user identifiers of any kind (CLI client)
-	pkgver = 6.5.1
+	pkgver = 6.5.2
 	pkgrel = 1
 	url = https://github.com/simplex-chat/simplex-chat
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = simplex-chat
 	conflicts = simplex-chat-git
 	options = !lto
 	options = !debug
-	source = simplex-chat-6.5.1.tar.gz::https://github.com/simplex-chat/simplex-chat/archive/refs/tags/v6.5.1.tar.gz
-	sha256sums = 05e62b09581a875b3c8dee41387e287c67b6375a00e041282c8c32bba9431e07
+	source = simplex-chat-6.5.2.tar.gz::https://github.com/simplex-chat/simplex-chat/archive/refs/tags/v6.5.2.tar.gz
+	sha256sums = 0134b625b4ccdc431864d9803ebd3756ee4f1698047ab02677eafef7c9f7543f
 
 pkgname = simplex-chat
