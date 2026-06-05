@@ -1,4 +1,4 @@
-pkgbase = openscreen-bin
+pkgbase = openscreen
 	pkgdesc = Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio.
 	pkgver = 1.4.0
 	pkgrel = 1
@@ -22,4 +22,4 @@ pkgbase = openscreen-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = openscreen-bin
+pkgname = openscreen
