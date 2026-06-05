@@ -2,34 +2,33 @@
 
 pkgname=comicrd-bin
 _pkgname=comicrd
-pkgver=0.7.1
+pkgver=1.0.0a1
 pkgrel=1
-pkgdesc="Lightweight high-performance desktop comic reader built with Tauri 2"
+pkgdesc="ComicRD desktop comic reader built with Flutter and Rust"
 arch=('x86_64')
 url="https://github.com/andrizan/comicRD"
 license=('MIT')
 depends=(
-  'webkit2gtk-4.1'
+  'gcc-libs'
+  'glib2'
+  'glibc'
   'gtk3'
-  'libayatana-appindicator'
-  'librsvg'
-  'openssl'
   'hicolor-icon-theme'
+  'libepoxy'
 )
 provides=('comicrd')
 conflicts=('comicrd')
 source=("${_pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/andrizan/comicRD/releases/download/v${pkgver}/comicrd-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('84b42479928ebfbc10a0da521d19da027bd42425bc7114ae12638b735a61876b')
+sha256sums=('33e5b47f9114b3f3e685b55d970b0ae0071ddac3a46da8af1791a71371fea0fc')
 
 package() {
-  install -Dm755 "${srcdir}/comicrd-${pkgver}/comicrd" "${pkgdir}/usr/bin/comicrd"
-  install -Dm644 "${srcdir}/comicrd-${pkgver}/comicrd.desktop" "${pkgdir}/usr/share/applications/comicrd.desktop"
+  cp -R --no-preserve=ownership "${srcdir}/comicrd-${pkgver}-linux-x86_64/opt" "${pkgdir}/"
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -sf /opt/comicrd/ComicRD "${pkgdir}/usr/bin/comicrd"
+  install -Dm644 "${srcdir}/comicrd-${pkgver}-linux-x86_64/usr/share/applications/comicrd.desktop" "${pkgdir}/usr/share/applications/comicrd.desktop"
+  install -Dm644 "${srcdir}/comicrd-${pkgver}-linux-x86_64/usr/share/icons/hicolor/512x512/apps/comicrd.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/comicrd.png"
 
-  if [ -f "${srcdir}/comicrd-${pkgver}/comicrd.png" ]; then
-    install -Dm644 "${srcdir}/comicrd-${pkgver}/comicrd.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/comicrd.png"
-  fi
-
-  if [ -f "${srcdir}/comicrd-${pkgver}/LICENSE" ]; then
-    install -Dm644 "${srcdir}/comicrd-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/comicrd-bin/LICENSE"
+  if [ -f "${srcdir}/comicrd-${pkgver}-linux-x86_64/usr/share/licenses/comicrd-bin/LICENSE" ]; then
+    install -Dm644 "${srcdir}/comicrd-${pkgver}-linux-x86_64/usr/share/licenses/comicrd-bin/LICENSE" "${pkgdir}/usr/share/licenses/comicrd-bin/LICENSE"
   fi
 }

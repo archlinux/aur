@@ -1,19 +1,19 @@
 pkgbase = comicrd-bin
-	pkgdesc = Lightweight high-performance desktop comic reader built with Tauri 2
-	pkgver = 0.7.1
+	pkgdesc = ComicRD desktop comic reader built with Flutter and Rust
+	pkgver = 1.0.0a1
 	pkgrel = 1
 	url = https://github.com/andrizan/comicRD
 	arch = x86_64
 	license = MIT
-	depends = webkit2gtk-4.1
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
 	depends = gtk3
-	depends = libayatana-appindicator
-	depends = librsvg
-	depends = openssl
 	depends = hicolor-icon-theme
+	depends = libepoxy
 	provides = comicrd
 	conflicts = comicrd
-	source = comicrd-0.7.1-linux-x86_64.tar.gz::https://github.com/andrizan/comicRD/releases/download/v0.7.1/comicrd-0.7.1-linux-x86_64.tar.gz
-	sha256sums = 84b42479928ebfbc10a0da521d19da027bd42425bc7114ae12638b735a61876b
+	source = comicrd-1.0.0a1-linux-x86_64.tar.gz::https://github.com/andrizan/comicRD/releases/download/v1.0.0a1/comicrd-1.0.0a1-linux-x86_64.tar.gz
+	sha256sums = 33e5b47f9114b3f3e685b55d970b0ae0071ddac3a46da8af1791a71371fea0fc
 
 pkgname = comicrd-bin
