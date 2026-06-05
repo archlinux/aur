@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=23.0.0_r581483.5c5f736c661c
+pkgver=23.0.0_r583284.c3e9d05ce804
 pkgrel=1
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -13,10 +13,10 @@ provides=(libclc)
 conflicts=(libclc)
 makedepends=(llvm-minimal-git clang-minimal-git clang-opencl-headers-minimal-git spirv-llvm-translator-minimal-git cmake git python ninja )
 source=("git+https://github.com/llvm/llvm-project.git"
-        revert-10644a1-v2.patch
+        revert-10644a1-v3.patch
 )
 sha256sums=('SKIP'
-            '3c17242360a2578222f843f983c1867b8c0ceefda5ae869f27f9260a3f73d46d')
+            '4f215e748c4c1a59f621ae58d2685651c442e3e79fa77c4c0153bd201f02a4de')
 options=(!lto !debug)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
@@ -40,7 +40,7 @@ prepare() {
 
   # https://github.com/llvm/llvm-project/commit/10644a143922816b8326e8be0d1790220ba2cd6b.patch removes the libclc.pc needed by mesa
   # the commit can't be reverted cleanly, manually created a patch
-  patch -Np1 -i "$srcdir"/revert-10644a1-v2.patch
+  patch -Np1 -i "$srcdir"/revert-10644a1-v3.patch
 }
 
 pkgver() {
@@ -57,7 +57,7 @@ pkgver() {
     echo "${_pkgver}"
 }
 
-_targets=( amdgcn-amd-amdhsa-llvm spirv64-unknown-vulkan nvptx64-- nvptx64--nvidiacl nvptx64-nvidia-cuda spirv32-mesa-mesa3d spirv64-mesa-mesa3d )
+_targets=( amdgcn-amd-amdhsa-llvm spirv64-unknown-vulkan nvptx64-- nvptx64--nvidiacl nvptx64-nvidia-cuda spirv32-unknown-unknown spirv64-unknown-unknown )
 build() {
     export CC=clang
     export CXX=clang++

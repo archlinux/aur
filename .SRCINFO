@@ -1,6 +1,6 @@
 pkgbase = libclc-minimal-git
 	pkgdesc = companion package to llvm-minimal-git, Library requirements of the OpenCL C programming language
-	pkgver = 23.0.0_r581483.5c5f736c661c
+	pkgver = 23.0.0_r583284.c3e9d05ce804
 	pkgrel = 1
 	url = https://libclc.llvm.org/
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = libclc-minimal-git
 	options = !lto
 	options = !debug
 	source = git+https://github.com/llvm/llvm-project.git
-	source = revert-10644a1-v2.patch
+	source = revert-10644a1-v3.patch
 	sha256sums = SKIP
-	sha256sums = 3c17242360a2578222f843f983c1867b8c0ceefda5ae869f27f9260a3f73d46d
+	sha256sums = 4f215e748c4c1a59f621ae58d2685651c442e3e79fa77c4c0153bd201f02a4de
 
 pkgname = libclc-minimal-git
