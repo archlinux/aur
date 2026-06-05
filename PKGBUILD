@@ -3,7 +3,7 @@ pkgname=clash-nyanpasu-git
 _pkgname=clash-nyanpasu
 _pkgver=2.0.0
 pkgver=2.0.0.r6931.f6538a47
-pkgrel=2
+pkgrel=3
 pkgdesc="A Clash GUI based on tauri. Clash Nyanpasu! (∠・ω< )⌒☆​"
 arch=('x86_64' 'aarch64')
 url="https://github.com/libnyanpasu/clash-nyanpasu"
@@ -82,7 +82,7 @@ package(){
 	local _backend_icons="backend/tauri/icons"
 	install -Dm644 "${_backend_icons}/32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
 	install -Dm644 "${_backend_icons}/128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
-	install -Dm644 "${_backend_icons}/128x128@2x.png" "${pkgdir}/usr/share/icons/hicolor/128x128@2/apps/${_pkgname}.pngg"
+	install -Dm644 "${_backend_icons}/128x128@2x.png" "${pkgdir}/usr/share/icons/hicolor/128x128@2/apps/${_pkgname}.png"
 	install -Dm644 "${_backend_icons}/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
 	if [ -f frontend/nyanpasu/src/assets/image/logo.svg ]; then
