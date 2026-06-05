@@ -1,6 +1,6 @@
 # Maintainer: itlxrd <ilyakm@icloud.com>
 pkgname=psysonic-bin
-pkgver=1.46.0
+pkgver=1.47.0
 pkgrel=1
 pkgdesc="Desktop music player for Subsonic API-compatible servers (pre-built binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
     'xorg-xwayland'
 )
 source=("https://github.com/Psychotoxical/psysonic/releases/download/app-v${pkgver}/Psysonic_${pkgver}_amd64.deb")
-sha256sums=('c0da54fbc294b9cebf73bcd92ab09d307dbf5334b878cfb5613de13e8a1eca67')
+sha256sums=('50f3caecd452063b9bedded6597b7ae264b423e4f87bbff8f288a5dc9f1372f5')
 
 package() {
     mkdir -p "${srcdir}/data"
