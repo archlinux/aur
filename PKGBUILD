@@ -1,6 +1,6 @@
 # Maintainer: Ismet Togay <ismet.togay@gmail.com>
 pkgname=auggie-bin
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="Augment Code's agentic AI CLI for context-aware code analysis and automation"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('bash: for bash completion'
 source=("https://registry.npmjs.org/@augmentcode/auggie/-/auggie-${pkgver}.tgz"
         "LICENSE")
 noextract=("auggie-${pkgver}.tgz")
-sha512sums=('53d197c1846fbffef724e395286c974019298ef12b9d0b02e8c8ad374cdb8462317b97e2f050cb8efcb6fd45b80bdcc64c450d329a819d4fd26412138aa1a463'
+sha512sums=('f3934c7f4ce28ad2010a77ac4c766f0340cea3787831bf9a045557aa0624a630f3a80013a132a6c8a2a81bdd0e6a65c9eabb6cfcd07589f358c5ca9d521fa462'
             '3d195f09523a15f7e406e345ba95015e05df571f5d7bdc7af1444922c2a3f3cf795292fb72897b51f3bbb006db5e947c7cb0ded8dcf09c32b80aef97db3f9910')
 
 package() {
