@@ -1,6 +1,6 @@
 pkgbase = bm-terminal-music-player
 	pkgdesc = A minimalist terminal music player.
-	pkgver = 0.1.6
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/zyoung11/BM
 	arch = x86_64
