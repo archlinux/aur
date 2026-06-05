@@ -1,6 +1,6 @@
 pkgbase = ghost-downloader-bin
 	pkgdesc = A multi-threading async downloader with QThread based on PyQt/PySide (Prebuilt version)多线程下载器,协程下载器
-	pkgver = 3.10.3
+	pkgver = 3.10.4
 	pkgrel = 1
 	url = https://github.com/XiaoYouChR/Ghost-Downloader-3
 	arch = aarch64
@@ -18,13 +18,14 @@ pkgbase = ghost-downloader-bin
 	depends = python-loguru
 	depends = python-orjson
 	depends = ffmpeg
+	optdepends = n-m3u8dl-re
 	provides = ghost-downloader
 	conflicts = ghost-downloader
 	source = ghost-downloader.sh
 	sha256sums = b0592310f06c0ad828c080f34159209e8bb04d2228faf8f3461502de0d4d41ff
-	source_aarch64 = ghost-downloader-3.10.3-aarch64.deb::https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v3.10.3/Ghost-Downloader-v3.10.3-Linux-arm64.deb
-	sha256sums_aarch64 = f048371f9fbd62abeeb53165c9bbbfaf9cf83b4b464e3b1d579dac0cf1299720
-	source_x86_64 = ghost-downloader-3.10.3-x86_64.deb::https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v3.10.3/Ghost-Downloader-v3.10.3-Linux-x86_64.deb
-	sha256sums_x86_64 = aa1dc0384949ccf2198a92f8ec76a06e3aee49ca7bf85efb8ebb160aeb41a253
+	source_aarch64 = ghost-downloader-3.10.4-aarch64.deb::https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v3.10.4/Ghost-Downloader-v3.10.4-Linux-arm64.deb
+	sha256sums_aarch64 = 9da591d8f8a2cc0f8180652e0df15676885d2ec1f798a754891f06829288e784
+	source_x86_64 = ghost-downloader-3.10.4-x86_64.deb::https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v3.10.4/Ghost-Downloader-v3.10.4-Linux-x86_64.deb
+	sha256sums_x86_64 = 0634dd252a10a60e620a0dc63307540bdbe400588c19e318f15380453a0c705b
 
 pkgname = ghost-downloader-bin
