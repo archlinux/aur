@@ -1,4 +1,4 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=neco-git
 pkgver=0.2.0.r0.ge7a1b30
 pkgrel=1
