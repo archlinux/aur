@@ -1,11 +1,26 @@
 pkgbase = snx-rs
 	pkgdesc = Rust client for Checkpoint VPN tunnels
 	pkgver = 6.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ancwrd1/snx-rs
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = cargo
+	makedepends = gtk4
+	makedepends = webkitgtk-6.0
+	source = snx-rs-6.0.6.tar.gz::https://github.com/ancwrd1/snx-rs/archive/refs/tags/v6.0.6.tar.gz
+	sha256sums = 6ff3b966e96af1090ed890cefd4d3675d91b6dbb5918973874b59acd88728686
+
+pkgname = snx-rs-headless
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	depends = sqlite
+	conflicts = snx-rs<6.0.6-2
+	replaces = snx-rs<6.0.6-2
+
+pkgname = snx-rs
+	depends = snx-rs-headless
 	depends = fontconfig
 	depends = glib2
 	depends = glibc
@@ -13,9 +28,4 @@ pkgbase = snx-rs
 	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = openssl
-	depends = sqlite
 	depends = webkitgtk-6.0
-	source = snx-rs-6.0.6.tar.gz::https://github.com/ancwrd1/snx-rs/archive/refs/tags/v6.0.6.tar.gz
-	sha256sums = 6ff3b966e96af1090ed890cefd4d3675d91b6dbb5918973874b59acd88728686
-
-pkgname = snx-rs
