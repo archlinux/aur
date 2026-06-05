@@ -1,35 +1,25 @@
-# Maintainer: Izu <ccatdev@proton.me>
-
+# Maintainer: Aridan <https://github.com/actuallyaridan>
 pkgname=linux-devmgmt
-pkgver=2.0.2
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A faithful recreation of the Windows Device Manager"
-arch=(x86_64)
-url="https://github.com/actuallyaridan/$pkgname"
-license=(GPL-3.0-only)
-depends=(glibc libgcc libstdc++ qt6-base)
-makedepends=(cmake)
-source=(
-    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-    "$pkgname.desktop"
-)
-sha256sums=('177869c8b7fa1db72ed8a87f9362d4338253c17512675b22d03e1097f2fc6db9')
-            'a1dc439ef9ea952fca24bf46abc603ce34dfe13af32d673c55d473cfc07d7a19')
+arch=('x86_64' 'aarch64')
+url="https://github.com/actuallyaridan/linux-devmgmt"
+license=('MIT')
+depends=('qt6-base')
+makedepends=('cmake' 'ninja')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/actuallyaridan/linux-devmgmt/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('049ad5ed78e677f8fbb1841b10a7a11ede714e3d6690eb7e19ec8cff77a4ef38')
 
 build() {
-  cd $pkgname-$pkgver
-
-  cmake -B build \
-    -DCMAKE_BUILD_TYPE='None'
-
-  cmake --build build
+    cmake -S "$pkgname-$pkgver" -B build \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build
 }
 
 package() {
-  cd $pkgname-$pkgver
-
-  install -vDm 755 "build/devmgmt" -t "$pkgdir/usr/bin"
-  install -vDm 644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname/"
-
-  install -vDm 644 "$srcdir/linux-devmgmt.desktop" -t "$pkgdir/usr/share/applications"
+    DESTDIR="$pkgdir" cmake --install build
+    install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
