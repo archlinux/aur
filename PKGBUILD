@@ -10,6 +10,8 @@ license=('GPL2')
 arch=('x86_64')
 
 depends=(
+  'cage'
+  'kanshi'
   'foot'
   'foot-terminfo'
 )

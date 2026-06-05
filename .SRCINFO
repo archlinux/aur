@@ -8,6 +8,8 @@ pkgbase = reterminatevt-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = meson
+	depends = cage
+	depends = kanshi
 	depends = foot
 	depends = foot-terminfo
 	provides = reterminatevt=1.2026.06.02.r0
