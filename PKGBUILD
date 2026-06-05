@@ -1,5 +1,5 @@
 pkgname=lufux-git
-pkgver=1.1.5
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Minimalist GUI tool to create bootable USB drives"
 arch=('any')
@@ -24,7 +24,8 @@ package() {
   install -Dm755 "main.py" "${pkgdir}/usr/share/lufux/main.py"
   install -Dm644 "windows_logic.py" "${pkgdir}/usr/share/lufux/windows_logic.py"
   install -Dm644 "universal_logic.py" "${pkgdir}/usr/share/lufux/universal_logic.py"
-  
+  install -Dm644 "deps_logic.py" "${pkgdir}/usr/share/lufux/deps_logic.py"
+
   install -Dm644 "lufux.desktop" "${pkgdir}/usr/share/applications/lufux.desktop"
   install -Dm644 "lufux.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/lufux.svg"
 }
