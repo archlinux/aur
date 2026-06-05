@@ -1,7 +1,7 @@
 # Maintainer: Izu <ccatdev@proton.me>
 
 pkgname=linux-devmgmt
-pkgver=2.0
+pkgver=2.0.1.1
 pkgrel=1
 pkgdesc="A faithful recreation of the Windows Device Manager"
 arch=(x86_64)
@@ -13,7 +13,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "$pkgname.desktop"
 )
-sha256sums=('77c6517769a100de2f9fa54f005379a2cf5db966135507e29e6b77edb569e0a6'
+sha256sums=('b223d1d5b0aad949f083c2b3da0974123e5a536c383a26071ed56e0259d7aa8f')
             'a1dc439ef9ea952fca24bf46abc603ce34dfe13af32d673c55d473cfc07d7a19')
 
 build() {
