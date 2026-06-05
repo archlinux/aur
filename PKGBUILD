@@ -4,7 +4,7 @@
 
 pkgname=nodejs-gemini-cli
 _npmname=@google/gemini-cli
-pkgver=0.45.1
+pkgver=
 pkgrel=1
 pkgdesc="The official Google Gemini CLI"
 arch=('any')
