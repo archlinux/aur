@@ -1,4 +1,4 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=jj-git
 pkgver=1.9.2.r3.gab3eb1e
 pkgrel=1
