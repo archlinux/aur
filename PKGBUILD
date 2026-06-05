@@ -2,7 +2,7 @@
 
 pkgname=geary-hide-sidebar-bin
 _pkgname=geary-hide-sidebar
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="GTK3 module that hides/collapses Geary's left Mail sidebar (prebuilt binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ install="$_pkgname.install"
 options=('!strip' '!debug')
 # aarch64 users build the source package (geary-hide-sidebar) instead.
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
-sha256sums_x86_64=('a77ea19318f3b9fe48fb4ba21860cefcab4c0de409c235044013e4ad143a6312')
+sha256sums_x86_64=('fef37f2c6a4284fdb9ef73cc61f8638a0abb5c6ce65d69eb179698da840638be')
 
 package() {
     # The release tarball packs these files flat at the top level.
