@@ -1,6 +1,6 @@
 pkgbase = whatsapp-ultra-fast-bin
 	pkgdesc = A lightweight WhatsApp Web client built with Tauri and Rust for Linux.
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/ramdanolii14/WhatsappUltraFast
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = whatsapp-ultra-fast-bin
 	depends = libnotify
 	depends = xdg-user-dirs
 	optdepends = xdg-desktop-portal-kde: Portal support for KDE Plasma
-	source = whatsapp-ultra-fast-0.1.2.pkg.tar.zst::https://github.com/ramdanolii14/WhatsappUltraFast/releases/download/0.1.2/whatsapp-ultra-fast-0.1.2-1-x86_64.pkg.tar.zst
-	sha256sums = 5eda339103038759b577523c9007687a189288e5989d2a4a4880801252d1e574
+	source = whatsapp-ultra-fast-0.1.3.pkg.tar.zst::https://github.com/ramdanolii14/WhatsappUltraFast/releases/download/0.1.3/whatsapp-ultra-fast-0.1.3-1-x86_64.pkg.tar.zst
+	sha256sums = 4c55b35b41b5bb6ff4f33a0c87949a6bdcedb8b6db8abf6274b8df595b430d19
 
 pkgname = whatsapp-ultra-fast-bin
