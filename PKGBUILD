@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: m4ce-w1ndu (Simone Rolando) <simon.rolando@proton.me>
 
 pkgname=chroma-app
 _pkgname=chroma
