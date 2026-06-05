@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ter-music
-pkgver=1.11.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="This is a music player that can be used in the terminal~"
 arch=($CARCH)
@@ -41,7 +41,7 @@ backup=()
 options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('d7375e1055d3e0cc650552e98a88f50bae45e921c5368bf4a457fe6e0f6393e0')
+sha256sums=('53f50b001ef3c968e7245a7c95240981522c12eb85dfa9cc40ad5e4dda525ba0')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx

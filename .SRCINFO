@@ -1,6 +1,6 @@
 pkgbase = ter-music
 	pkgdesc = This is a music player that can be used in the terminal~
-	pkgver = 1.11.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/YXZL985/ter-music
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = ter-music
 	provides = ter-music-cn
 	conflicts = ter-music
 	conflicts = ter-music-cn
-	source = ter-music::git+https://github.com/YXZL985/ter-music.git#tag=v1.11.1
-	sha256sums = d7375e1055d3e0cc650552e98a88f50bae45e921c5368bf4a457fe6e0f6393e0
+	source = ter-music::git+https://github.com/YXZL985/ter-music.git#tag=v2.0.0
+	sha256sums = 53f50b001ef3c968e7245a7c95240981522c12eb85dfa9cc40ad5e4dda525ba0
 
 pkgname = ter-music
