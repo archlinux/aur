@@ -1,0 +1,23 @@
+pkgbase = rclone-wiz
+	pkgdesc = A simple and easy to use tool to configure, script, and mount cloud drives using rclone
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/themix88/Clone-WIZ/Rclone-WIZ
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-pyqt6
+	depends = rclone
+	depends = fuse3
+	optdepends = konsole: Supported terminal for rclone config
+	optdepends = alacritty: Supported terminal for rclone config
+	optdepends = gnome-terminal: Supported terminal for rclone config
+	optdepends = xterm: Supported terminal for rclone config
+	source = rclone-wiz.py
+	source = rclone-wiz.desktop
+	source = rclone-wiz.svg
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rclone-wiz

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Rclone-WIZ
+Comment=Guided Rclone config and mount manager
+Exec=rclone-wiz
+Icon=rclone-wiz
+Terminal=false
+Type=Application
+Categories=Utility;FileTools;System;
