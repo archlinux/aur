@@ -1,16 +1,16 @@
 pkgbase = lease
 	pkgdesc = A FIFO semaphore utility that manages resource ownership by processes
-	pkgver = 1.0.5
-	pkgrel = 2
+	pkgver = 1.0.6
+	pkgrel = 1
 	url = https://github.com/cherio/lease
 	arch = x86_64
 	license = MIT
 	depends = perl
 	provides = lease
 	conflicts = lease
-	source = lease-1.0.5-lease::https://raw.githubusercontent.com/cherio/lease/refs/tags/v1.0.5/lease
-	source = lease-1.0.5-lease.1::https://raw.githubusercontent.com/cherio/lease/refs/tags/v1.0.5/doc/lease.1
-	sha256sums = 9b0f52f40aa8e995f20d597fcda8de09a38263e7875d302158c59fc1389646d8
-	sha256sums = f0d8e736c42b0aa7fe1a43a9b0ac54b60506415a97d257ea4c8d8b9f9e88885b
+	source = lease-1.0.6-lease::https://raw.githubusercontent.com/cherio/lease/refs/tags/v1.0.6/lease
+	source = lease-1.0.6-lease.1::https://raw.githubusercontent.com/cherio/lease/refs/tags/v1.0.6/doc/lease.1
+	sha256sums = 020d8816256d6a70c828d63b8ed5df38519a6bb6265bee68bc967a5a8cd163cd
+	sha256sums = e85df862f9500864f8cf950ee98584a2fc04ce7c0806c0c4980adaa5c128719d
 
 pkgname = lease
