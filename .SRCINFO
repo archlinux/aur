@@ -1,12 +1,13 @@
 pkgbase = revreader
+	pkgdesc = Minimal Python EPUB reader (terminal + Qt GUI)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Rumyp/revreader
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = python-pyqt6
+	source = https://github.com/Rumyp/revreader/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 18eedd86dd28844ac109193a623ccf0d17fbf45f3b8f3ba61fa83a8bd10ab605
+
 pkgname = revreader
-pkgver = 1.0.1
-pkgrel = 1
-pkgdesc = "Minimal Python EPUB reader (terminal + Qt GUI)"
-arch = x86_64
-url = https://github.com/Rumyp/revreader
-license = MIT
-depends = python
-depends = python-pyqt6
-source = https://github.com/Rumyp/revreader/archive/refs/tags/v1.0.1.tar.gz
-sha256sums = 18eedd86dd28844ac109193a623ccf0d17fbf45f3b8f3ba61fa83a8bd10ab605
