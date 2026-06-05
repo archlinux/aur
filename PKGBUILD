@@ -1,7 +1,7 @@
 # Maintainer: Sean E. Russell <ser@ser1.net> -> also the developer
 
 pkgname=legume
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A minimalist, distributed, database-free issue tracker using traditional TODO/FIXME code comments."
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -34,4 +34,4 @@ package() {
   install -Dm644 "${srcdir}"/${pkgname}-v${pkgver}/CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 "${srcdir}"/${pkgname}-v${pkgver}/man1/leg.1.gz "${pkgdir}/usr/share/man/man1/legume.1.gz"
 }
-sha256sums=('509c0bfea2447a717c33fc793f0a7a3d2f9a8ebe48789d7d58591c647d0839b1')
+sha256sums=('474b3649c710c9dd543d84c4596840c6b5bf6714ccb974600186ce6a2f1ecb2f')
