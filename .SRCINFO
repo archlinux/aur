@@ -5,7 +5,7 @@ pkgbase = rg-grep
 	url = https://codeberg.org/nathawat/rg-grep-shim
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = zig
+	makedepends = zig>=0.16.0
 	depends = ripgrep
 	provides = grep
 	conflicts = grep
