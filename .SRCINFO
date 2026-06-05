@@ -1,0 +1,25 @@
+pkgbase = gtcrn-ladspa-git
+	pkgdesc = GTCRN Speech Enhancement LADSPA plugin using ONNX Runtime
+	pkgver = r100.6ee156e
+	pkgrel = 1
+	url = https://github.com/biglinux/gtcrn-ladspa
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = python-onnx
+	makedepends = python-onnxruntime-cpu
+	makedepends = python-typing_extensions
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	depends = onnxruntime-cpu
+	provides = gtcrn-ladspa
+	provides = ladspa-host
+	source = gtcrn-ladspa::git+https://github.com/biglinux/gtcrn-ladspa.git
+	sha512sums = SKIP
+
+pkgname = gtcrn-ladspa-git
+	provides = gtcrn-ladspa-r100.6ee156e
+	conflicts = gtcrn-ladspa
