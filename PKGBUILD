@@ -2,8 +2,8 @@
 
 _name="graphite"
 pkgname="lib32-${_name}"
-pkgver=1.3.14
-pkgrel=2
+pkgver=1.3.15
+pkgrel=1
 pkgdesc='A "smart font" system to handle the complexities of lesser-known languages of the world (32-bit)'
 arch=(
   'x86_64'
@@ -30,7 +30,7 @@ source=(
   "${_url}/releases/download/${pkgver}/${_pkgsrc}.tgz"
   "${_name}_gcc15.patch"
 )
-sha256sums=('f99d1c13aa5fa296898a181dff9b82fb25f6cc0933dbaa7a475d8109bd54209d'
+sha256sums=('c6bc8b4252724665297f7cad0c55897285c673f9b8e6db3522ace833593fe0b1'
             '2296d1c189cfb129403f83e7a704a333147856b37475320965c463386ef9d8ef')
 
 prepare() {
@@ -44,6 +44,8 @@ build() {
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   local cmake_options=(
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
     -G 'Unix Makefiles'
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
@@ -57,20 +59,21 @@ build() {
   )
 
   cd "${srcdir}"
-  cmake -B "${_pkgsrc}/build" -S "${_pkgsrc}" "${cmake_options[@]}"
-  cmake --build "${_pkgsrc}/build"
+  cmake "${cmake_options[@]}"
+  cmake --build "${cmake_options[1]}"
 }
 
 check() {
-  local excluded_tests="nametabletest" # fails with CFLAGS=+" -march=native"
-  local ctest_flags=(
+  local ctest_exclude_regex="nametabletest" # fails with CFLAGS=+" -march=native"
+  local ctest_options=(
+    --test-dir "${_pkgsrc}/build"
     --output-on-failure
     --parallel "$(nproc)"
-    --exclude-regex "${excluded_tests}"
+    --exclude-regex "${ctest_exclude_regex}"
   )
 
   cd "${srcdir}"
-  ctest --test-dir "${_pkgsrc}/build" "${ctest_flags[@]}"
+  ctest "${ctest_options[@]}"
 }
 
 package() {
