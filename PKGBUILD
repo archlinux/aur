@@ -3,7 +3,7 @@
 
 pkgname=lease
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A FIFO semaphore utility that manages resource ownership by processes"
 arch=('x86_64')
 url="https://github.com/cherio/lease"
@@ -16,8 +16,8 @@ conflicts=("lease")
 
 _prj_src_url="https://raw.githubusercontent.com/cherio/lease/refs/tags/v$pkgver"
 source=(
-	"$_prj_src_url/lease"
-	"$_prj_src_url/doc/lease.1"
+	"$pkgname-$pkgver-lease::$_prj_src_url/lease"
+	"$pkgname-$pkgver-lease.1::$_prj_src_url/doc/lease.1"
 )
 
 sha256sums=('9b0f52f40aa8e995f20d597fcda8de09a38263e7875d302158c59fc1389646d8'
@@ -25,6 +25,6 @@ sha256sums=('9b0f52f40aa8e995f20d597fcda8de09a38263e7875d302158c59fc1389646d8'
 
 package() {
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/man/man1"
-	install -m755 "./$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -m644 "./$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
+	install -m755 "./$pkgname-$pkgver-$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -m644 "./$pkgname-$pkgver-$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
 }
