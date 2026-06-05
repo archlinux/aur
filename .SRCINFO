@@ -13,6 +13,7 @@ pkgbase = robrix-git
 	license = Apache-2.0
 	makedepends = git
 	makedepends = cargo
+	makedepends = cargo-license
 	makedepends = alsa-lib
 	makedepends = openssl
 	makedepends = libgcc

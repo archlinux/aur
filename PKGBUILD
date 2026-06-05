@@ -31,6 +31,7 @@ replaces=()
 makedepends=(
   "git"
   "cargo"
+  "cargo-license"
   #'zopfli'   # To size-optimise PNG files.
   #'parallel' # To size-optimise PNG files.
 
@@ -85,6 +86,9 @@ prepare() {
   printf '%s\n' " --> Downloading rust dependencies ..."
   cargo fetch --locked --target host-tuple
 
+  printf '%s\n' " --> Fetching licenses of dependencies ..."
+  cargo license --avoid-build-deps --avoid-dev-deps --color never --output LICENSES_THIRDPARTY.txt
+
   printf '%s\n' " --> Generating git log ..."
   git log . > git.log
 
@@ -127,6 +131,9 @@ build() {
 
   printf '%s\n' " --> Building ..."
   cargo build "${_cargo_build_options[@]}"
+
+  #printf '%s\n' " --> running ..."
+  #cargo run "${_cargo_build_options[@]}"
 }
 
 
@@ -167,7 +174,7 @@ package() {
   printf '%s\n' " --> Installing basic documentation ..."
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log AGENTS.md README.md SPLASH.md
   printf '%s\n' " --> Installing license ..."
-  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-MIT
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-MIT LICENSES_THIRDPARTY.txt
   ## Optional convenience: Symlink commond license texts which are present system-wide and not already installed for this package
   local _license
   cd "${pkgdir}/usr/share/licenses/${pkgname}"
