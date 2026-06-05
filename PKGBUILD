@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "$_pkgname"/bin/lsdl2srb2 \
+  install -Dm755 "$_pkgname"/bin/lsdl2srb2retro \
     "$pkgdir"/usr/bin/srb2retro
 
   # icon + .desktop
