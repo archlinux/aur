@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-bin
 _pkgname=Mustang
-pkgver=0.9.29
+pkgver=0.9.30
 _electronversion=41
 pkgrel=1
 pkgdesc="New full-featured desktop email, chat and video conference client.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman")
 sha256sums=('b235d2b5410c8a5f6d176a8dfbf3afaadb7165d27659285d1916fe7e0044aa89'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('55d032ef30e8029deb0f76e987c3e67f835966cdeccde75c34a0a80b62233b3d')
-sha256sums_x86_64=('e4bfcc519f9e2edd81318d44cbf7a7418b3f5e747c47a8bb990cb6197e373786')
+sha256sums_aarch64=('ef770a622396253a272f3333fb30f3baec93267c2706051c0dfb9906677b6c29')
+sha256sums_x86_64=('3200020f82debafbc31c775c9d1a798d5e0dffbf4eeed44f69e1d2a3fab108c3')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
