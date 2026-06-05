@@ -1,6 +1,6 @@
 pkgbase = smart-updater
 	pkgdesc = A lightweight, intelligent, and beautiful GUI update tool for CachyOS
-	pkgver = 1.3.7.1_alpha
+	pkgver = 1.3.8_alpha
 	pkgrel = 1
 	url = https://github.com/UniqueSpirit/smart-updater
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = smart-updater
 	depends = python
 	depends = python-pyqt6
 	depends = pacman-contrib
-	source = smart-updater-1.3.7.1_alpha.tar.gz::https://github.com/UniqueSpirit/smart-updater/archive/refs/tags/v1.3.7.1-alpha.tar.gz
-	sha256sums = c1e904eb278d7fb17961ba716a112683c6071e0288facb2ca65fb2c01ef81c13
+	source = smart-updater-1.3.8_alpha.tar.gz::https://github.com/UniqueSpirit/smart-updater/archive/refs/tags/v1.3.8-alpha.tar.gz
+	sha256sums = 44734679752a13eb490cdaf71cd15901f6058efed98145f16d872a97f5a1ee37
 
 pkgname = smart-updater
