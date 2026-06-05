@@ -1,4 +1,4 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=kernel-hardening-checker-git
 pkgver=0.6.6.r40.g0b96b5b
 pkgrel=1
