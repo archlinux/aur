@@ -2,7 +2,7 @@
 
 _pkgname=labwc
 pkgname=labwc-hdr-metadata-git
-pkgver=0.9.5.r131.gbce14a5a
+pkgver=0.20.0.r1.g579e5329
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox (HDR metadata test)'
 url="https://github.com/labwc/labwc"
@@ -15,9 +15,11 @@ optdepends=("bemenu: default launcher via Alt+F3"
 conflicts=(labwc-git labwc)
 provides=(labwc-git labwc)
 source=("git+https://github.com/labwc/${_pkgname}.git"
-	'labwc-wlroots021.patch')
+        'labwc-format-check.patch'
+        'labwc-wlroots021.patch')
 md5sums=('SKIP'
-         'ccd04c2a977980257ac9fbb479cf6cb9')
+         'd632d08efedc7edf4ad2967f0030c5c6'
+         '3307da7662ace4b73aa2dbd545b5422c')
 
 
 pkgver() {
@@ -27,6 +29,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
+  patch -Np1 -i ../labwc-format-check.patch
   patch -Np1 -i ../labwc-wlroots021.patch
 }
 

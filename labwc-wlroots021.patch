@@ -12,7 +12,7 @@ index 87a42198..df293d7c 100644
  	} toplevel_capture;
  
 diff --git a/meson.build b/meson.build
-index 22dc5bdc..a6e39a5b 100644
+index 8684732f..553ea0f5 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -51,9 +51,9 @@ endif
@@ -27,6 +27,19 @@ index 22dc5bdc..a6e39a5b 100644
  )
  
  wlroots_has_xwayland = wlroots.get_variable('have_xwayland') == 'true'
+diff --git a/src/decorations/xdg-deco.c b/src/decorations/xdg-deco.c
+index e195e02f..406e604a 100644
+--- a/src/decorations/xdg-deco.c
++++ b/src/decorations/xdg-deco.c
+@@ -118,7 +118,7 @@ void
+ xdg_server_decoration_init(void)
+ {
+ 	struct wlr_xdg_decoration_manager_v1 *xdg_deco_mgr = NULL;
+-	xdg_deco_mgr = wlr_xdg_decoration_manager_v1_create(server.wl_display);
++	xdg_deco_mgr = wlr_xdg_decoration_manager_v1_create(server.wl_display, 2);
+ 	if (!xdg_deco_mgr) {
+ 		wlr_log(WLR_ERROR, "unable to create the XDG deco manager");
+ 		exit(EXIT_FAILURE);
 diff --git a/src/server.c b/src/server.c
 index d0c8c04c..444fc5ed 100644
 --- a/src/server.c

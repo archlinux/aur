@@ -1,6 +1,6 @@
 pkgbase = labwc-hdr-metadata-git
 	pkgdesc = stacking wayland compositor with look and feel from openbox (HDR metadata test)
-	pkgver = 0.9.5.r131.gbce14a5a
+	pkgver = 0.20.0.r1.g579e5329
 	pkgrel = 1
 	url = https://github.com/labwc/labwc
 	arch = x86_64
@@ -25,8 +25,10 @@ pkgbase = labwc-hdr-metadata-git
 	conflicts = labwc-git
 	conflicts = labwc
 	source = git+https://github.com/labwc/labwc.git
+	source = labwc-format-check.patch
 	source = labwc-wlroots021.patch
 	md5sums = SKIP
-	md5sums = ccd04c2a977980257ac9fbb479cf6cb9
+	md5sums = d632d08efedc7edf4ad2967f0030c5c6
+	md5sums = 3307da7662ace4b73aa2dbd545b5422c
 
 pkgname = labwc-hdr-metadata-git
