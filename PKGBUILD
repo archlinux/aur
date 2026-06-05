@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: rpkak <rpkak@users.noreply.github.com>
 pkgname=vulkan-memory-allocator
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Easy to integrate Vulkan memory allocation library"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('vulkan-devel')
 depends=('vulkan-headers')
 makedepends=('cmake' 'doxygen' 'git')
 source=("$pkgname::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git#tag=v$pkgver")
-b2sums=('9a4b31f0ba03da19f9de08224b7a5a3a8956f713d9ff1723cebf7404427f16c3562944c5e22222eb18ae7a1902ba1f71c759171062edc7eb06a35c82e0316742')
+b2sums=('cb3a1c0ec59c67c457da44de7d92055c4a548a50544a81ca514cd115080fd13c996db73e55fb70ff1aa2febc7bab34566fcf454a43b55ec06302f1b9f3dfdbd0')
 
 prepare() {
 	cd $pkgname
@@ -20,12 +20,13 @@ prepare() {
 
 build() {
 	local options=(
+		-B build
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D VMA_BUILD_DOCUMENTATION=ON
-		-Wno-dev
+		-W no-dev
 	)
-	cmake "${options[@]}" -B build -S $pkgname
+	cmake "${options[@]}" $pkgname
 	cmake --build build
 }
 
