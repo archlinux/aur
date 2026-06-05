@@ -1,7 +1,7 @@
 pkgname="coreutils-uruguayo-bin"
 pkgver="0.232"
 pkgrel=3
-pkgdesc="a binary version of coreutils-uruguayo (written in c++)! this package is NOT affiliated with (or supported by) GNU, coreutils, in any way"
+pkgdesc="a binary version of coreutils-uruguayo (written in c++)!"
 provides=("coreutils-uruguayo")
 conflicts=("coreutils-uruguayo")
 arch=("x86_64")
