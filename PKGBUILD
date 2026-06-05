@@ -2,8 +2,8 @@
 pkgname=astra3dengine-git
 _binname=astra-3d-engine
 pkgver=v0.0.1.alpha.21.r0.ge330ffb
-pkgrel=1
-pkgdesc='A 3D engine for creative projects.'
+pkgrel=2
+pkgdesc='A joking 3D engine.'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/Astra3DEngine/Astra3DEngine'
 license=('GPL-3.0-only')

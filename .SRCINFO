@@ -1,7 +1,7 @@
 pkgbase = astra3dengine-git
-	pkgdesc = A 3D engine for creative projects.
+	pkgdesc = A joking 3D engine.
 	pkgver = v0.0.1.alpha.21.r0.ge330ffb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Astra3DEngine/Astra3DEngine
 	arch = x86_64
 	arch = aarch64
