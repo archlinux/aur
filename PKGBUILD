@@ -1,14 +1,14 @@
 # Maintainer: rumyp <chief@rumyp.org>
 pkgname=revreader
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Minimal Python EPUB reader (terminal + Qt GUI)"
 arch=('x86_64')
 url="https://github.com/Rumyp/revreader"
 license=('MIT')
 depends=('python' 'python-pyqt6')
-source=("https://github.com/Rumyp/revreader/archive/refs/tags/v1.0.2.tar.gz")
-sha256sums=('35737a444009e1f25e50a584f9fb4a921cff871354d356c43ce1157f974bb2a0')
+source=("https://github.com/Rumyp/revreader/archive/refs/tags/v1.0.3.tar.gz")
+sha256sums=('a8296c456953a7e1d21f1b54c7cf4d99c2f8cdcd799242be173c3b78d4570b42')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}" || return
