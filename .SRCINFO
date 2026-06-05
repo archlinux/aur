@@ -1,18 +1,18 @@
 pkgbase = nemo-megasync
 	pkgdesc = MEGASync extension for the Nemo file browser
-	pkgver = 4.0.2
-	pkgrel = 3
-	url = https://mega.co.nz/#sync
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://mega.io/desktop#downloadapps
 	install = nemo-megasync.install
-	arch = i686
 	arch = x86_64
 	license = custom:The Clarified Artistic License
 	depends = hicolor-icon-theme
 	depends = nemo
 	depends = megasync
-	provides = nemo-megasync
-	source = https://mega.nz/linux/MEGAsync/Debian_10.0/nemo-megasync_4.0.2.orig.tar.gz
-	sha256sums = d28819affd647b1fe4aab74022fa23279a36e800b11570998636387e2c4fabac
+	provides = nemo-megasync=6.2.0
+	options = !strip
+	options = !debug
+	source = nemo-megasync-6.2.0-1-x86_64.tar.zst::https://mega.nz/linux/repo/Arch_Extra/x86_64/nemo-megasync-6.2.0-1-x86_64.pkg.tar.zst
+	sha256sums = 9ce1b0ad4dc4d89a0d878a9075c2948df4dec99bfa75c6e41cbca64f6e0595b9
 
 pkgname = nemo-megasync
-

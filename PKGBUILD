@@ -1,47 +1,22 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
-#
-# Contributor: Pival81 <pival801 at gmail dot com>
-#
+# Maintainer: RaCoMed <mouhamed.kammoun at proton dot me>
+# Ex-Maintainer: ValHue <vhuelamo at gmail dot com>
+# Ex-Contributor: Pival81 <pival801 at gmail dot com>
 pkgname="nemo-megasync"
-pkgver="4.0.2"
-pkgrel="3"
+pkgver="6.2.0"
+pkgrel="1"
 pkgdesc="MEGASync extension for the Nemo file browser"
-arch=('i686' 'x86_64')
-url="https://mega.co.nz/#sync"
+arch=('x86_64')
+url="https://mega.io/desktop#downloadapps"
 license=('custom:The Clarified Artistic License')
 depends=('hicolor-icon-theme' 'nemo' 'megasync')
-provides=("${pkgname}")
+provides=(nemo-megasync=${pkgver})
+options=('!strip' '!debug')
 
-source=("https://mega.nz/linux/MEGAsync/Debian_10.0/${pkgname}_${pkgver}.orig.tar.gz")
-
-sha256sums=('d28819affd647b1fe4aab74022fa23279a36e800b11570998636387e2c4fabac')
+source=("nemo-megasync-${pkgver}-${pkgrel}-x86_64.tar.zst::https://mega.nz/linux/repo/Arch_Extra/x86_64/nemo-megasync-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+sha256sums=('9ce1b0ad4dc4d89a0d878a9075c2948df4dec99bfa75c6e41cbca64f6e0595b9')
 
 install="${pkgname}.install"
 
-prepare() {
-    export DESKTOP_DESTDIR=${pkgdir}/usr
+package () {
+    cp -r usr $pkgdir/
 }
-
-build() {
-	cd "${pkgname}-${pkgver}"
-	qmake-qt5 
-	make
-}
-
-package() {
-	cd "${pkgname}-${pkgver}"
-	install -m755 -d "${pkgdir}/usr/lib/nemo/extensions-3.0"
-	install -m755 libMEGAShellExtNemo.so.1.0.0 -D "${pkgdir}/usr/lib/nemo/extensions-3.0/"
-
-	install -m755 -d "${pkgdir}/usr/share/icons/hicolor/32x32/emblems"
-	install -m755 -d "${pkgdir}/usr/share/icons/hicolor/64x64/emblems"
-	install -m644 ./data/emblems/32x32/* -D "${pkgdir}/usr/share/icons/hicolor/32x32/emblems/"
-	install -m644 ./data/emblems/64x64/* -D "${pkgdir}/usr/share/icons/hicolor/64x64/emblems/"
-	
-	cd "${pkgdir}/usr/lib/nemo/extensions-3.0/"
-	ln -s "libMEGAShellExtNemo.so.1.0.0" "libMEGAShellExtNemo.so"
-	ln -s "libMEGAShellExtNemo.so.1.0.0" "libMEGAShellExtNemo.so.1"
-	ln -s "libMEGAShellExtNemo.so.1.0.0" "libMEGAShellExtNemo.so.1.0"
-}
-
-# vim:set ts=4 sw=4 ft=sh et syn=sh:
