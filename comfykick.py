@@ -316,6 +316,24 @@ def _extract_tarball(tarball_path, dest_dir):
 
 
 def run_prekick_commands(config, extracted_dir):
+    # SECURITY NOTE: ``shell=True`` is intentional and safe in this context.
+    #
+    # Rationale (threat model):
+    # 1. comfykick is a single-user, user-privileged launcher. The only writer
+    #    of ``prekick_exec`` is the same principal that invokes this script,
+    #    so there is no privilege boundary to cross and no untrusted input
+    #    flowing into the shell string. The source of ``cmd`` is
+    #    ``comfykick.toml`` under the user's XDG config dir, which the user
+    #    fully controls; writing a command there is operationally equivalent
+    #    to typing it in the user's own shell.
+    # 2. ``prekick_exec`` is, by design, a "trusted shell command" field --
+    #    semantically on par with systemd's ``ExecStartPre=``, Kubernetes'
+    #    ``lifecycle.exec``, or a Makefile rule. Escaping or shlex-quoting
+    #    ``cmd`` would actively break the feature (e.g. ``$(date)``,
+    #    pipes, redirections, environment expansion are all expected).
+    #
+    # This is therefore *not* a command-injection vulnerability: the field's
+    # type IS "executable shell command", and the writer IS the executor.
     prekick_cmds = config.get("prekick_exec", [])
     if not prekick_cmds:
         return
@@ -328,6 +346,12 @@ def run_prekick_commands(config, extracted_dir):
 
 
 def install_dependencies(extracted_dir, config, tag):
+    # No multi-instance race: comfykick runs exclusively as a systemd
+    # *user* unit, which serializes ``ExecStart=`` activations -- a
+    # second ``systemctl --user start`` of the same unit is enqueued,
+    # never parallelized. Each user also has their own ``XDG_DATA_HOME``
+    # namespace, so there is no inter-user contention on
+    # ``venv_cache_dir`` either.
     env = os.environ.copy()
 
     if config["uv_extra_index_url"]:

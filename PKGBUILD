@@ -25,7 +25,7 @@ source=(LICENSE
         comfykick.toml)
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'ebdbf62a292a1e8c5d636f9565b9c574f65079dbf4c1fee87cf7743cca31c33e'
+            'ae7552a05718ca6070b68bca29b8f6008c2b4fec9e63a8b415f5231801df1392'
             'a5438512c37eee0570c36bfa2fbdcbb3797d7023510925039a63f6cbe76ba36d'
             'adce6073a337a64f4749a74fdb9f75d3061b9eb209c860e007eb38888e3449cb')
 
