@@ -7,3 +7,6 @@ aur_key.pub
 *.deb
 pkg/
 src/
+
+# Git source clone (created by makepkg)
+Synkromium/
