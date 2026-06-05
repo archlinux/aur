@@ -75,9 +75,12 @@ package() {
         "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/reasonix-desktop.png"
 
     # Generate common sizes for better desktop environment compatibility
+    # Use magick (ImageMagick 7+) with convert fallback for older ImageMagick 6
+    _magick="magick"
+    command -v magick &>/dev/null || _magick="convert"
     for size in 48 128 256 512; do
         install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-        convert "${srcdir}/appicon.png" -resize "${size}x${size}" \
+        ${_magick} "${srcdir}/appicon.png" -resize "${size}x${size}" \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/reasonix-desktop.png"
     done
 
