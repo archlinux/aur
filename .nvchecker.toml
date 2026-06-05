@@ -1,0 +1,4 @@
+[roundcubemail-plugin-thunderbird-labels]
+source = "git"
+git = "https://github.com/mike-kfed/roundcube-thunderbird_labels.git"
+prefix = "v"

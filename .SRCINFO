@@ -1,0 +1,13 @@
+pkgbase = roundcubemail-plugin-thunderbird-labels
+	pkgdesc = Thunderbird Labels Plugin for Roundcube Webmail
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/mike-kfed/roundcube-thunderbird_labels
+	arch = any
+	license = BSD-2-clause
+	depends = roundcubemail
+	backup = etc/webapps/roundcubemail/plugins/thunderbird_labels/config.inc.php
+	source = https://github.com/mike-kfed/roundcube-thunderbird_labels/archive/refs/tags/v1.6.2.tar.gz
+	b2sums = e1efce7154eb7791e6b36afcb7246cb337a26d0e64f3c1d4ca8224a17c43789434c96d944235e6b46f27850803418a1f988f99cceed8346c6137458439e46793
+
+pkgname = roundcubemail-plugin-thunderbird-labels
