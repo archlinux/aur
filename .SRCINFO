@@ -1,0 +1,16 @@
+pkgbase = fanflow
+	pkgdesc = Fan controller for Linux with a native HTML GUI (hwmon + NVIDIA NVML)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Smokey-thc/Fanflow
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	optdepends = nvidia-utils: NVIDIA GPU fan control via NVML
+	source = fanflow-0.1.0.tar.gz::https://github.com/Smokey-thc/Fanflow/archive/v0.1.0.tar.gz
+	sha256sums = 6ec53a5d102d334eec35a13c3d1ed30980a773ed1d6e363ac509ee850e4eab20
+
+pkgname = fanflow
