@@ -1,6 +1,6 @@
 pkgname="coreutils-uruguayo-bin"
-pkgver="0.23"
-pkgrel=1
+pkgver="0.231"
+pkgrel=2
 pkgdesc="a binary version of coreutils-uruguayo (written in c++)! this package is NOT affiliated with (or supported by) GNU, coreutils, in any way"
 provides=("coreutils-uruguayo")
 conflicts=("coreutils-uruguayo")
@@ -12,5 +12,5 @@ source=("reader::https://github.com/aaronaaron1234/scr/releases/download/binary/
 sha512sums=('6b5dcc3ca0ea754fb7a245f58b7c8cbda6bef5334be5d4f7bb6b61a4609c8f583946c7ba24e864c1a90c17ac298db13401e614d76489ec142ee4b2acb7189076')
 
 package() {
-	install -Dm755 "${srcdir}/reader" "${pkgdir}/usr/bin/reader"
+	install -Dm755 "${srcdir}/coreutils-uruguayo" "${pkgdir}/usr/bin/coreutils-uruguayo"
 }
