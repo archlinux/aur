@@ -17,7 +17,7 @@ depends=(adacurses
          ada_spawn
          ada-web-server
          ahven
-         alire
+#         alire     # Requires python-e3-testsuite, which conflicts with python-e3-core.
          aunit
          florist
          gnatcoll-core

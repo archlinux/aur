@@ -13,7 +13,6 @@ pkgbase = all-ada
 	depends = ada_spawn
 	depends = ada-web-server
 	depends = ahven
-	depends = alire
 	depends = aunit
 	depends = florist
 	depends = gnatcoll-core
