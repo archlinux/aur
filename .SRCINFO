@@ -1,5 +1,5 @@
 pkgbase = python-argparse-from-file
-	pkgdesc = Wrapper around argparse to prepend options from a user configuration file
+	pkgdesc = Wrapper around Python argparse to prepend options from a user configuration file
 	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/bulletmark/argparse-from-file
