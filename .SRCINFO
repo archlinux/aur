@@ -1,6 +1,6 @@
 pkgbase = moshpit-keygen-unstable-bin
 	pkgdesc = Asymmetric key generation and inspection tool for moshpit — X25519, P-384, P-256, and ML-DSA post-quantum identity keys (pre-compiled binary)
-	pkgver = 0.8.16
+	pkgver = 0.8.17
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = moshpit-keygen-unstable-bin
 	conflicts = moshpit-keygen
 	conflicts = moshpit-keygen-bin
 	replaces = moshpit-keygen-bin
-	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.16/dist-mp-keygen.tar.gz
-	sha256sums = da8e1779e0463320aa8a92054ffae266b5000f8922b64cf5483c8cdf89874e25
-	source_x86_64 = mp-keygen-unstable-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.16/mp-keygen-unstable-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = a6a16f7de5755bc18619fef6348120c640573b1ebcb116d999887272f5a46a82
-	source_aarch64 = mp-keygen-unstable-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.16/mp-keygen-unstable-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = 8639471bf5bffe9b6bdbb71c84489d3c1e9385d0576d30b966edf65d26193213
+	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.17/dist-mp-keygen.tar.gz
+	sha256sums = 721143b9655444680ef252335cf74580e16739f4bdd97283fc4845c8cbfd85cd
+	source_x86_64 = mp-keygen-unstable-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.17/mp-keygen-unstable-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 21867225193233012338e1818841487379b006d77baf6f185f57b525a9b35bd7
+	source_aarch64 = mp-keygen-unstable-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.17/mp-keygen-unstable-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = ece1dfc689ed2d2de92eb7d8333528e6a70948bd3fc729e2fd1172572d45325e
 
 pkgname = moshpit-keygen-unstable-bin
