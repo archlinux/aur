@@ -1,7 +1,7 @@
 pkgbase = coreutils-uruguayo-bin
 	pkgdesc = a binary version of coreutils-uruguayo (written in c++)! this package is NOT affiliated with (or supported by) GNU, coreutils, in any way
-	pkgver = 0.231
-	pkgrel = 2
+	pkgver = 0.232
+	pkgrel = 3
 	url = https://github.com/aaronaaron1234/scr
 	arch = x86_64
 	license = custom
