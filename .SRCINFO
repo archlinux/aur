@@ -1,6 +1,6 @@
 pkgbase = moshpit-agent-systemd-creds
 	pkgdesc = Moshpit agent daemon — systemd credentials unlock backend
-	pkgver = 0.8.15
+	pkgver = 0.8.16
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = moshpit-agent-systemd-creds
 	conflicts = moshpit-agent-tpm
 	conflicts = moshpit-agent-fprintd
 	conflicts = moshpit-agent-full
-	source = moshpit-agent-systemd-creds-0.8.15.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.15.tar.gz
-	sha256sums = 53cc3b71d52283eba1af14fdb5f89a85400035078f9e159faee7ab48adce3d36
+	source = moshpit-agent-systemd-creds-0.8.16.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.16.tar.gz
+	sha256sums = 4bba792fe457934056e169100ffdd1662ad1b920efad3014e7a8819daea11f67
 
 pkgname = moshpit-agent-systemd-creds
