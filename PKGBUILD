@@ -1,12 +1,13 @@
-# Maintainer: envolution
+# Maintainer: dj_pask
+# former maintainer: envolution
 # Contributor: Felix Braun <hazzl@falix.de>
 # Contributor: Laurinyecz Zalán <laurinyeczzalan@gmail.com>
 # Contributor: Ernesto Castellotti <mail@ernestocastellotti.it>
 # shellcheck shell=bash disable=SC2034,SC2154
-# 14.04.2026 dj_pask modified only pkgver and md5sums for last boosteroid official version support
+# 14.04.2026 dj_pask new mantainer
 
 pkgname=boosteroid
-pkgver=1.10.12
+pkgver=1.10.13
 pkgrel=1
 pkgdesc="Boosteroid client desktop"
 arch=('x86_64')
@@ -26,8 +27,8 @@ source=(
   "${_custom_name}.md5::https://boosteroid.com/linux/installer/boosteroid-install-x64.md5"
   boosteroid.sh
 )
-md5sums=('52202d129a2d8ac5c6893f148205f7f8'
-         '0458249fd19e3c9569e3235b25e70381'
+md5sums=('e369b6f28af7d29ee782741bb38aa25e'
+         'ccae0a79ae5dc53b82d65afa152c7d1b'
          '033cc5b68298d0fe7d36887b5db6f200')
 noextract=("${_custom_name}.deb")
 
@@ -35,7 +36,8 @@ prepare() {
   #prep deb file for installation
   msg2 "Decompressing Debian package..."
   ar xv "${_custom_name}.deb" >/dev/null
-  tar -xf data.tar.bz2 >/dev/null
+  #tar -xf data.tar.bz2 >/dev/null
+  tar -xf data.tar.xz >/dev/null
   tar -xf control.tar.gz >/dev/null
 
   #Versioning confirmation and MD5 verification
