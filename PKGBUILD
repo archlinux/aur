@@ -1,4 +1,4 @@
-# Maintainer: nightsidearch <nightsidemail@gmail.com>
+# Maintainer: Your Name <your-email@provider.com>
 pkgname=openrc-manager-gui
 pkgver=1.0.0
 pkgrel=1
@@ -8,31 +8,29 @@ url="https://github.com"
 license=('GPL3')
 depends=('qt6-base' 'kde-cli-tools')
 makedepends=('qt6-base' 'pkgconf' 'cmake')
-source=("main.cpp" "CMakeLists.txt" "openrc-manager-gui.pc" "openrc-manager-gui.desktop" "openrc-manager-gui.svg")
-sha256sums=('b261f07e8d17be9cd4303a4a8e49c658e987ccece720ca057dfc6f927b0e67a1'
-            '2868896c82f3a53fcf20f2d9c96a70de35c6d460ef225e123445907b48852b51'
-            'fd4a542e86d08182b3cdfb5fee1eb0b8228d18b20be2780f1694bcc49a3e30c1'
-            '3493605324912d9e2fc9e54227faeb49837eb9a7860e6d8dd52d4b20edc67edc'
-            'c14831791a803016a39dc6930ee2e85a9b45f2f6302f7a9de1d3c103e04074ba')
+# Mudamos a fonte para baixar direto do link oficial do seu GitHub
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v1.0.0.tar.gz")
+sha256sums=('SKIP') # Use SKIP para o arquivo tar.gz externo inicial
 
 build() {
-    cd "$srcdir"
+    # O GitHub extrai os arquivos dentro de uma pasta com o nome do projeto e versão
+    cd "${srcdir}/${pkgname}-${pkgver}"
     cmake -B build -S . -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
 }
 
 package() {
-    cd "$srcdir"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     
-    # Install the compiled binary executable
+    # Instala o executável compilado
     install -Dm755 build/openrc-manager-gui "$pkgdir/usr/bin/openrc-manager-gui"
     
-    # Install the launch icon (SVG vector format)
+    # Instala o ícone
     install -Dm644 openrc-manager-gui.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/openrc-manager-gui.svg"
     
-    # Install the KDE Plasma desktop launcher
+    # Instala o lançador do menu do KDE (.desktop)
     install -Dm644 openrc-manager-gui.desktop "$pkgdir/usr/share/applications/openrc-manager-gui.desktop"
     
-    # Install the pkgconfig metadata file
+    # Instalar o metadado pkgconfig (.pc)
     install -Dm644 openrc-manager-gui.pc "$pkgdir/usr/lib/pkgconfig/openrc-manager-gui.pc"
 }
