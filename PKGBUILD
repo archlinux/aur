@@ -9,7 +9,7 @@ pkgdesc="Unlock achievements and stats on Steam, and more!"
 url="https://github.com/PaulCombal/SamRewritten"
 license=('GPL-3.0-only')
 arch=('x86_64')
-makedepends=('rust>=1.95' 'cargo' 'gtk4' 'pkg-config' 'git')
+makedepends=('cargo' 'gtk4' 'pkg-config' 'git')
 depends=('gtk4')
 optdepends=('libadwaita: for Adwaita styling')
 source=("git+https://github.com/PaulCombal/SamRewritten.git")
@@ -20,6 +20,19 @@ conflicts=('samrewritten')
 prepare() {
   cd "${srcdir}/SamRewritten"
   export RUSTUP_TOOLCHAIN=stable
+
+  # A versioned 'rust' makedepend can't enforce the MSRV: rustup's 'provides'
+  # are unversioned, so pacman treats rust>=X as unmet even on a new toolchain.
+  local required installed
+  required="$(sed -n 's/^rust-version = "\(.*\)"/\1/p' Cargo.toml)"
+  installed="$(rustc --version | cut -d' ' -f2)"
+  if [ -n "$required" ] && (( $(vercmp "$installed" "$required") < 0 )); then
+    error "SamRewritten requires Rust >= ${required}, but found ${installed}."
+    msg2 "rustup users:        rustup update stable"
+    msg2 "'rust' pkg users:    sudo pacman -Syu rust"
+    return 1
+  fi
+
   cargo fetch --locked --target host-tuple
 }
 

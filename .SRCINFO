@@ -5,7 +5,6 @@ pkgbase = samrewritten-git
 	url = https://github.com/PaulCombal/SamRewritten
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = rust>=1.95
 	makedepends = cargo
 	makedepends = gtk4
 	makedepends = pkg-config
