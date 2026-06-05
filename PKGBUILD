@@ -1,13 +1,10 @@
 # 上游模板：micdn/scripts/package/PKGBUILD.proto
 # 维护目录：~/aur-packages/micdn
-#
-# micdn.sysusers / micdn.tmpfiles 在 v0.2.2 未进 GitHub，故作为 AUR 侧附加文件；
-# 上游打新 tag 并提交后可改回仅从 scripts/package/ 安装。
 
 pkgname=micdn
-pkgver=0.2.2
-pkgrel=2
-pkgdesc="Beangle minimal CDN (static, Maven, npm, blob)"
+pkgver=0.2.3
+pkgrel=1
+pkgdesc="Beangle minimal CDN (static, Maven, npm, blob, www)"
 arch=('x86_64')
 url='https://github.com/beangle/micdn'
 license=('GPL-3.0-or-later')
@@ -16,7 +13,7 @@ makedepends=('ldc' 'dub' 'git' 'zlib' 'openssl')
 optdepends=(
   'systemd: service unit micdn.service'
 )
-backup=()
+backup=('etc/micdn/micdn.xml')
 install=micdn.install
 source=(
   "git+https://github.com/beangle/micdn.git#tag=v${pkgver}"
@@ -24,8 +21,8 @@ source=(
   "micdn.sysusers"
   "micdn.tmpfiles"
 )
-sha256sums=('1eb4d71933a1b7dae9001be3ea168f63481dc15f3e22b128425c6bfff335d0a1'
-            '4b955005cdc45b4de6a0d8ca718e47c1f3cbdbed958fc07d408d2bebb8e8cf60'
+sha256sums=('8187f3381a9efcfca603977feced1efec623ea87e9453f9be3915ff395dda870'
+            'f5feb564ee3d732263ef4b1b52e573f918b05b75b4063be6e85fbdc882830888'
             '346a3b0bdb0fd0737be566b1a9aba853fb9f1361b70ddc14e33719d57ce078f9'
             'd80affc81230b473551692a51165df4be18daf9b93d8d3d780711598f1c2405f')
 
@@ -42,7 +39,7 @@ build() {
 # 可选：chroot 内单测失败时可整段注释
 check() {
   cd micdn
-  dub test --build=unittest --compiler=ldc2
+  dub test --config=unittest --compiler=ldc2
 }
 
 package() {

@@ -21,6 +21,11 @@ post_install() {
 
 post_upgrade() {
   post_install
+
+  if [ -f /etc/micdn/micdn.xml ] && grep -q 'doc location=' /etc/micdn/micdn.xml 2>/dev/null; then
+    echo "注意: v0.2.3 起 www <doc> 改为 name + npm|dir|zip 属性，并可选 try-file。"
+    echo "      请对照 docs/release-v0.2.3.md 或 CHANGELOG 手动迁移 /etc/micdn/micdn.xml"
+  fi
 }
 
 pre_remove() {
