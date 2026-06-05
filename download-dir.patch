@@ -1,0 +1,11 @@
+--- download_model.sh	2026-05-25 09:08:02.982065314 +0200
++++ download_model.sh	2026-06-07 00:06:14.572722868 +0200
+@@ -8,7 +8,7 @@
+ Q4_IMATRIX_FILE="DeepSeek-V4-Flash-Q4KExperts-F16HC-F16Compressor-F16Indexer-Q8Attn-Q8Shared-Q8Out-chat-v2-imatrix.gguf"
+ MTP_FILE="DeepSeek-V4-Flash-MTP-Q4K-Q8_0-F32.gguf"
+ 
+-ROOT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
++ROOT=/var/lib/ds4
+ OUT_DIR=${DS4_GGUF_DIR:-"$ROOT/gguf"}
+ case "$OUT_DIR" in
+     /*) ;;
