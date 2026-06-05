@@ -1,5 +1,8 @@
+apt-downloads/
 pkg
 src
 *.xz
 *.deb
 *.zst
+NAMCAP.md
+deb-contents
