@@ -1,11 +1,11 @@
 pkgname=jcef-jetbrains-git
 pkgdesc="A simple framework for embedding Chromium-based browsers into Java-based applications. (Used for JetBrainsRuntime)"
 pkgver=144.0.15.api1.21.r1207.5b93e5b9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/JetBrains/jcef"
 license=('BSD')
-depends=('java-runtime' 'libxcursor' 'at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa' 'libcups' 'pango' 'libxrandr' 'alsa-lib' 'nss')
+depends=('java-runtime' 'libxcursor' 'at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa' 'libcups' 'pango' 'libxrandr' 'alsa-lib' 'nss' 'libxdamage')
 makedepends=('jdk21-openjdk' 'cmake' 'git' 'ninja' 'python' 'ant' 'unzip' 'zip')
 source=("git+$url.git#branch=dev"
         'vcpkg-add-thrift-gcc15-fix.patch')
