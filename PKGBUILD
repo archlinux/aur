@@ -52,28 +52,11 @@ sha256sums=(
 )
 
 package() {
-    # makepkg auto-extracts Reasonix-linux-amd64.tar.gz into srcdir.
-    # Try common Electron-app layouts to find the Reasonix top-level directory.
-    local _appdir
-    if [[ -d "${srcdir}/Reasonix" ]]; then
-        _appdir="${srcdir}/Reasonix"
-    elif [[ -d "${srcdir}/Reasonix-${pkgver}" ]]; then
-        _appdir="${srcdir}/Reasonix-${pkgver}"
-    elif [[ -d "${srcdir}/Reasonix-linux-x64" ]]; then
-        _appdir="${srcdir}/Reasonix-linux-x64"
-    else
-        # Fallback: pick the first directory found
-        _appdir=$(find "${srcdir}" -maxdepth 1 -type d \
-            ! -name '.' ! -name '..' 2>/dev/null | head -1)
-        if [[ -z "${_appdir}" ]]; then
-            error "Could not find Reasonix application directory in ${srcdir}"
-            return 1
-        fi
-    fi
-
-    # Install the app bundle into /opt/Reasonix
+    # Upstream tarball contains only the reasonix-desktop binary (flat).
+    # Install it into /opt/Reasonix
     install -d "${pkgdir}/opt/Reasonix"
-    cp -a "${_appdir}/." "${pkgdir}/opt/Reasonix/"
+    install -Dm755 "${srcdir}/reasonix-desktop" \
+        "${pkgdir}/opt/Reasonix/reasonix-desktop"
 
     # Install wrapper script
     install -Dm755 "${srcdir}/reasonix-desktop.sh" \
@@ -82,22 +65,6 @@ package() {
     # Install .desktop entry
     install -Dm644 "${srcdir}/reasonix-desktop.desktop" \
         "${pkgdir}/usr/share/applications/reasonix-desktop.desktop"
-
-    # Install icons (try several common paths)
-    local _icon
-    _icon=$(find "${_appdir}" -name '*.png' -path '*/icons/*' 2>/dev/null | head -1)
-    if [[ -z "${_icon}" ]]; then
-        _icon=$(find "${_appdir}" -name '*icon*' -o -name '*Icon*' 2>/dev/null | head -1)
-    fi
-    if [[ -z "${_icon}" ]]; then
-        _icon=$(find "${_appdir}" -path '*/resources/app-dist/*.png' 2>/dev/null | head -1)
-    fi
-    if [[ -n "${_icon}" ]]; then
-        local _icon_size
-        _icon_size=$(identify -format '%w' "${_icon}" 2>/dev/null || echo 256)
-        install -Dm644 "${_icon}" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icon_size}x${_icon_size}/apps/reasonix-desktop.png"
-    fi
 
     # Install license
     install -Dm644 "${srcdir}/LICENSE" \
