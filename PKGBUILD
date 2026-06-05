@@ -25,6 +25,8 @@ depends=('glibc' 'openssh')
 
 options=(!strip)
 
+install="${_appname}.install"
+
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}.${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}.${_barch[1]}.tar.gz")
 sha256sums_x86_64=('965dec4c1a17ecc44ea0bed479f8aa841630cf411886c49047bc0646df616170')
