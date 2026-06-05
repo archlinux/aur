@@ -1,4 +1,4 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
 
 pkgname=whichllm-git
 _pkgname=whichllm
