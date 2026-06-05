@@ -2,7 +2,7 @@
 _base=skimpy
 pkgname=python-${_base}
 pkgdesc="A light weight tool for creating summary statistics from dataframes"
-pkgver=0.0.20
+pkgver=0.0.21
 pkgrel=1
 arch=(any)
 url="https://github.com/aeturrell/${_base}"
@@ -15,7 +15,7 @@ makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest python-polars)
 optdepends=('python-polars: for polars data frame support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('51b8553c95549711da220e30e8b2676376c1fedbb1311faec048a1082b9b64e7dedfbca3fba3599d2d979d772bbfb8444af3a554f87c1150e3ffee59888a4255')
+sha512sums=('faab346d089d3f406037c37e97e4036750d6ca1bba2dff09b42c4f673e16056f935f5f48de0801a6eb3e8f97ca5508e762757daff79e3a79636eab02fcde0016')
 
 build() {
   cd ${_base}-${pkgver}
