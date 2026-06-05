@@ -1,6 +1,6 @@
 # Maintainer: notliad <notliad@gmail.com>
 pkgname=liftoff
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Fast CLI project launcher — detect, install and start projects in one command'
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url='https://github.com/notliad/liftoff'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/notliad/liftoff/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6a8637808e3408c8a27852357d9c55bee56913d24d48e5cd22617c78db738414')
+sha256sums=('b13aa222eebb5d3b27dccfc92a2c0a3bb719b34b83b336a277a1f5be3bfb615a')
 
 build() {
     cd "$pkgname-$pkgver"
