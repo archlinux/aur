@@ -1,32 +1,32 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.3.77'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='memory-graph'
-
-pkgname="python-${_pypi_package}"
-pkgver="${_upstreamver}"
-pkgrel=1
+pkgname="python-memory-graph"
 pkgdesc="Generate intuitive graphs of your Python data"
+pkgver=0.3.77
+pkgrel=1
+
+_pypi_package=${pkgname##python-}
+_pypi_version=${pkgver}
+
 arch=('any')
-url='https://github.com/bterwijn/memory_graph'
 license=('BSD-2-Clause')
+url='https://github.com/bterwijn/memory_graph'
+
 depends=('python' 'python-graphviz' 'python-numpy' 'python-pandas')
-optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
+
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 sha256sums=('cdbc913d2ed0b8306f3d853fca77f4470a8346256b7eae1069f92fbec0d23a66')
 
 
 build() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
