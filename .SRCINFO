@@ -1,6 +1,6 @@
 pkgbase = python-httpx2
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pydantic/httpx2
 	arch = any
 	license = BSD-3-Clause

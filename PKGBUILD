@@ -5,7 +5,7 @@ _name0=httpx2
 pkgbase=python-$_name0
 pkgname=(python-$_name1 python-$_name0)
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/pydantic/httpx2'
 license=('BSD-3-Clause')
@@ -17,6 +17,7 @@ sha256sums=('acc194991760d5e3ededf29906abb2686f5c0f0cf53be16f6e29de322cc0d831')
 
 prepare() {
   cd "$srcdir"/$_name0
+  sed -i 's/loop="asyncio"/loop="asyncio", ws="none"/' tests/httpx2/conftest.py
   sed -i 's/ISO-8859-1/WINDOWS-1252/' tests/httpx2/client/test_client.py
 }
 
