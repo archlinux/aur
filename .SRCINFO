@@ -1,6 +1,6 @@
 pkgbase = nostr-vpn-bin
 	pkgdesc = GTK4/libadwaita desktop client for Nostr VPN, a Tailscale-style private mesh VPN (prebuilt)
-	pkgver = 4.0.60
+	pkgver = 4.0.62
 	pkgrel = 1
 	url = https://github.com/mmalmi/nostr-vpn
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = nostr-vpn-bin
 	depends = curl
 	depends = xdg-utils
 	depends = nostr-vpn-cli
-	provides = nostr-vpn=4.0.60
+	provides = nostr-vpn=4.0.62
 	conflicts = nostr-vpn
 	conflicts = nostr-vpn-git
-	source = nostr-vpn-bin-4.0.60.deb::https://github.com/mmalmi/nostr-vpn/releases/download/v4.0.60/nostr-vpn-v4.0.60-linux-x64.deb
+	source = nostr-vpn-bin-4.0.62.deb::https://github.com/mmalmi/nostr-vpn/releases/download/v4.0.62/nostr-vpn-v4.0.62-linux-x64.deb
 	source = LICENSE
-	sha256sums = 3f2735d8594348930f298228c9530fb937bf09d5784aceece6948c3f4284d68d
+	sha256sums = 8752d7c2fad01182df3b546146843705baf6e19a35ab76f48082e2be8398d929
 	sha256sums = 0db560024163fbcc5ee5cff1971684ca448da90088f341db083a38548846c3d5
 
 pkgname = nostr-vpn-bin
