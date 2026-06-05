@@ -1,51 +1,43 @@
-# Maintainer: YourName <your-email@example.com>
+# Maintainer: dressedinblack5 <dressedinblack5@proton.me>
 pkgname=attack-shark-x11-electron
-pkgver=1.2.1
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Cross-platform driver for the Attack Shark X11 gaming mouse with Electron GUI"
 arch=('x86_64')
 url="https://github.com/dressedinblack5/attack-shark-x11-electron"
 license=('MIT')
 depends=('electron' 'libusb')
-makedepends=('npm' 'typescript')
+makedepends=('bun')
 options=('!strip')
-source=("-.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz" "attack-shark-x11-electron.desktop")
-sha256sums=('SKIP' 'SKIP')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  npm install --legacy-peer-deps --ignore-scripts
+  cd "$srcdir/$pkgname-v$pkgver"
+  bun install
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-  npm run build
+  cd "$srcdir/$pkgname-v$pkgver"
+  bun run build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  # Install the app files
+  cd "$srcdir/$pkgname-v$pkgver"
   install -d "$pkgdir/usr/lib/$pkgname"
   cp -r out/* "$pkgdir/usr/lib/$pkgname/"
 
-  # Install production dependencies
   install -d "$pkgdir/usr/lib/$pkgname"
   cp package.json "$pkgdir/usr/lib/$pkgname/"
   cd "$pkgdir/usr/lib/$pkgname"
-  npm install --production --legacy-peer-deps --ignore-scripts
+  bun install --production
 
-  # Create a wrapper script to run the app
   install -d "$pkgdir/usr/bin"
   echo '#!/bin/sh' > "$pkgdir/usr/bin/attack-shark-x11-electron"
   echo 'exec electron /usr/lib/attack-shark-x11-electron/main/index.js "$@"' >> "$pkgdir/usr/bin/attack-shark-x11-electron"
   chmod +x "$pkgdir/usr/bin/attack-shark-x11-electron"
 
-  # Install license
-  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # Install desktop entry
-  install -Dm644 "$srcdir/attack-shark-x11-electron.desktop" "$pkgdir/usr/share/applications/attack-shark-x11-electron.desktop"
-
-  # Install icon (assuming cs-mouse.svg is the icon)
-  install -Dm644 "$srcdir/$pkgname-$pkgver/assets/cs-mouse.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/attack-shark-x11.svg"
+  install -Dm644 "$srcdir/$pkgname-v$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgname-v$pkgver/assets/attack-shark-x11-electron.desktop" "$pkgdir/usr/share/applications/attack-shark-x11-electron.desktop"
+  install -Dm644 "$srcdir/$pkgname-v$pkgver/assets/cs-mouse.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/attack-shark-x11.svg"
 }
