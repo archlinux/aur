@@ -28,6 +28,8 @@ package() {
   chmod +x "$pkgdir/opt/neoarch/Neoarch/scripts/install_arch_deps.sh"
   chmod +x "$pkgdir/opt/neoarch/Neoarch/bin/neoarch.sh"
   chmod +x "$pkgdir/opt/neoarch/Neoarch/scripts/install_desktop_entry.sh"
+  # Fix entry point reference from aurora_home.py to -m neoarch
+  sed -i 's|aurora_home.py|-m neoarch|' "$pkgdir/opt/neoarch/Neoarch/bin/neoarch.sh"
   # Install desktop file
   install -Dm644 "$pkgdir/opt/neoarch/Neoarch/packaging/aurora.desktop" "$pkgdir/usr/share/applications/neoarch.desktop"
   sed -i 's|/home/test/New Folder/Aurora|/opt/neoarch/Neoarch|g' "$pkgdir/usr/share/applications/neoarch.desktop"
