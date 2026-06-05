@@ -67,6 +67,7 @@ prepare() {
   cp -f "$srcdir"/audio_06_16kHz.wav "$srcdir"/${_name//-voice/}-python-sdk-${_name//speechmatics-/}-v$pkgver/tests/${_name//speechmatics-/}/assets/audio_06_16kHz.wav
   cd "$srcdir"/${_name//-voice/}-python-sdk-${_name//speechmatics-/}-v$pkgver/sdk/${_name//speechmatics-/}
   sed -i "s/0.0.0/$pkgver/" speechmatics/voice/__init__.py
+  rm ${_name//-voice/}/__init__.py
 }
 
 build() {
