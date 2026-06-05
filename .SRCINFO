@@ -1,0 +1,15 @@
+pkgbase = ear-native
+	pkgdesc = Native desktop client for Sony WH/WF headphones
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/dest4590/ear-native
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = bluez
+	depends = dbus
+	source = ear-native-1.2.tar.gz::https://github.com/dest4590/ear-native/archive/refs/tags/v1.2.tar.gz
+	b2sums = SKIP
+
+pkgname = ear-native
