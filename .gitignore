@@ -1,1 +1,15 @@
 *.tar*
+*.pkg.tar.*
+pkg/
+src/
+*.log
+*.new
+node_modules/
+package.json
+package-lock.json
+npm-debug.log
+.npm/
+
+# AUR requires these hidden files to be tracked despite a global `.*` rule
+!.gitignore
+!.SRCINFO
