@@ -4,7 +4,7 @@
 # Contributor: 01189998819991197253 <dev.ben01189998819991197253+aur@gmail.com>
 
 pkgname=clonehero
-pkgver=1.1.0.6085_final
+pkgver=1.1.0.6142_final
 _upstream_ver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="Clone Hero is a free rhythm game, which can be played with any 5 or 6 button guitar controller, game controllers, or just your standard computer keyboard."
@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}.tar"::"https://github.com/clonehero-game/releases/
         "$pkgname"
         "LICENSE")
 
-sha256sums=('c72effdd20cd80ac3aee2900ec2b5154ada036b7e3ab1e1c4c379152491204aa'
+sha256sums=('572971d93092283c5d0d52006a26b52ab8e8fb128dcfb42a3496de26c8aa231d'
             '01125237ef90f8435523fed5ae09246a76eb562408c50e76597964b5675385cf'
             'a97d85930ac4844b3c5e90d4da8faa7a9b5267909d45be59b1fa39abc76df5fe'
             '9ec629974241b111ac33433a5971b26040ac2af749cab5760179f4af9c3298d7'
@@ -38,7 +38,7 @@ package() {
     install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 
     install -d "$pkgdir/usr/lib"
-    cp -a "$srcdir/Standalone" "$pkgdir/usr/lib/$pkgname"
+    cp -a "$srcdir/Linux - Standalone" "$pkgdir/usr/lib/$pkgname"
 
     find "$pkgdir/usr/lib/$pkgname" -type d -exec chmod 755 {} +
     chmod 755 "$pkgdir/usr/lib/$pkgname/$pkgname" \
@@ -48,6 +48,6 @@ package() {
 
     # Install script, .desktop launcher with icon
     install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$srcdir/Standalone/clonehero_Data/Resources/UnityPlayer.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm644 "$pkgdir/usr/lib/$pkgname/clonehero_Data/Resources/UnityPlayer.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
