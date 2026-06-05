@@ -3,7 +3,6 @@
 pkgname=yaabsa-bin
 pkgver=1.4.2
 pkgrel=1
-epoch=
 pkgdesc="Unofficial feature rich, responsive, modern client for Audiobookshelf"
 arch=('x86_64')
 url="https://github.com/Vito0912/yaabsa"
