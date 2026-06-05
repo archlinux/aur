@@ -2,11 +2,11 @@
 Version=1.0
 Name=LCAR 2025
 Comment=Programa de Apuração dos Resultados em Atividade Rural (versão 2025)
-Path=/usr/bin
-Exec=lcar2025
+Path=/usr/share/java/lcar2025
+Exec=/usr/bin/lcar2025
 Icon=lcar2025
 StartupWMClass=serpro-ppgd-app-PgdAtividadeRural
 Terminal=false
 StartupNotify=false
 Type=Application
-Categories=Application;
+Categories=Office;Finance;
