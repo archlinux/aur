@@ -1,0 +1,14 @@
+post_install() {
+    echo ":: complex-dwm-slock-git security notes:"
+    echo " 1. A default PAM service file has been created at /etc/pam.d/slock."
+    echo " 2. To prevent bypassing the locker via VT switching (Ctrl+Alt+Fn),"
+    echo "    add 'Option \"DontVTSwitch\" \"true\"' to your Xorg ServerFlags."
+    echo " 3. To prevent killing X via Ctrl+Alt+Backspace (if enabled),"
+    echo "    add 'Option \"DontZap\" \"true\"' to your Xorg ServerFlags."
+    echo " "
+    echo " See /usr/share/doc/complex-dwm-slock-git/README.md for more details."
+}
+
+post_upgrade() {
+    post_install
+}
