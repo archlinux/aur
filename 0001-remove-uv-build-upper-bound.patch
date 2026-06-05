@@ -1,0 +1,11 @@
+--- pyproject.toml	1970-01-01 01:00:00.000000000 +0100
++++ pyproject.toml.new	2026-06-05 02:48:29.257842976 +0100
+@@ -47,7 +47,7 @@
+ addopts = ["--import-mode=importlib"]
+ 
+ [build-system]
+-requires = ["uv_build>=0.9.21,<0.10.0"]
++requires = ["uv_build>=0.9.21"]
+ build-backend = "uv_build"
+ 
+ [dependency-groups]
