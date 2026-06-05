@@ -9,7 +9,7 @@
 # Maintainer: Alex Kneipp <aur.usable613@passmail.net>
 pkgname=fchart3-git
 pkgver=0.12.0.r31.99fd498
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python project for creating high-quality astronomical finder charts and maps"
 arch=(any)
 url="https://github.com/skybber/fchart3"
@@ -17,8 +17,8 @@ license=('GPL')
 groups=()
 depends=(python)
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools') # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
@@ -63,5 +63,5 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	#make DESTDIR="$pkgdir/" install
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
