@@ -1,0 +1,12 @@
+pkgbase = uutils-findutils-shim
+	pkgdesc = Replaces GNU findutils with uutils findutils
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://uutils.github.io/findutils/
+	arch = any
+	license = MIT
+	depends = uutils-findutils
+	provides = findutils
+	conflicts = findutils
+
+pkgname = uutils-findutils-shim
