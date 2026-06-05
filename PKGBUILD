@@ -40,7 +40,8 @@ depends=(
     'noto-fonts-emoji'
     # GTK3 / GTK4 theme that honours @define-color overrides — required for
     # the wallust palette to actually colour every GTK application.
-    'adw-gtk3'
+    # Package provides /usr/share/themes/adw-gtk3{,-dark}/.
+    'adw-gtk-theme'
 )
 optdepends=(
     'hyprshot: region screenshot support'
