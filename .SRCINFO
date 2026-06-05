@@ -1,0 +1,15 @@
+pkgbase = dota-config-sync-bin
+	pkgdesc = Aplicación gráfica para sincronizar configuraciones locales y userdata entre cuentas de Dota 2
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jaguar-17/dota_config_sync
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = glib2
+	provides = dota-config-sync
+	conflicts = dota-config-sync
+	source = https://github.com/jaguar-17/dota_config_sync/releases/download/v1.0.0/dota-config-sync-linux-x64.tar.gz
+	sha256sums = 3c4c32249b2c5d516e4e634fd3bf24f4debfca87b0da3c9ec80324042f7db09a
+
+pkgname = dota-config-sync-bin
