@@ -8,7 +8,10 @@ arch=(x86_64)
 url=https://github.com/museslabs/phonto
 license=(GPL-3.0-or-later)
 
-depends=(wayland gst-plugin-va)
+depends=(wayland gst-plugins-good gst-plugins-bad gst-plugin-va)
+optdepends=(
+    'gst-libav: ffmpeg-based software decoding fallback'
+)
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
 sha256sums=(205505094128583d8364090754d1f367216fd07d4ae04b6fba20640cc71a9403)
