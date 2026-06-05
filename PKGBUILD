@@ -28,8 +28,8 @@
 # time — .SRCINFO regen does NOT recompute hashes.
 
 pkgname=uyap-editor-bin
-pkgver=5.4.16
-pkgrel=5
+pkgver=5.4.17
+pkgrel=1
 pkgdesc='UYAP Document and Template Editor (Turkish judicial system)'
 arch=('x86_64')
 url='https://uyap.gov.tr/UYAP-Editor'
@@ -52,7 +52,7 @@ replaces=('uyap')
 options=('!strip')
 install="${pkgname}.install"
 
-_zipurl='https://rayp.adalet.gov.tr/resimler/2/dosya/uyap-pardus-5-4-16-amd6429-12-20252-41-pm.zip'
+_zipurl='https://rayp.adalet.gov.tr/resimler/2/dosya/uyapeditor-5417-amd6403-06-20263-09-pm.zip'
 
 source=(
     "${pkgname}-${pkgver}.zip::${_zipurl}"
@@ -64,7 +64,7 @@ source=(
     'LICENSE'
     "${pkgname}.install"
 )
-sha256sums=('2e3643111cce9d0d0c71e8300ef85d02f7591b96b43f9aabdb98564aa6bcd0a8'
+sha256sums=('df6974081a71a521e5290badab50fdc3d5083d6577ba58219e163bf1596fc258'
             'd9a8cdea5b14235c252ad21abd7ecdef5ce9347d85d624d4ce0d0da615d9d8cd'
             '6311a3cd1a68c7312d6633fdd8e00dd47988907722ac609d00d68762b430c1eb'
             '0cc1749ba298862da0a26172af44dbcc1396ad9f36ca160d6c6b0cbad6eae929'
