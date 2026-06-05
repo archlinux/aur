@@ -1,0 +1,17 @@
+pkgbase = openrc-manager-gui
+	pkgdesc = Modern Qt6 C++ graphical user interface to manage OpenRC services and view boot logs in real-time
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nightsidearch
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = qt6-base
+	makedepends = pkgconf
+	makedepends = cmake
+	depends = qt6-base
+	depends = kde-cli-tools
+	source = openrc-manager-gui-1.0.0.tar.gz::https://github.com/nightsidearch/openrc-manager-gui/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 7752c53b6a2018aa2bba3a3f007e644178e33560952a856a175bed1a29a546a8
+
+pkgname = openrc-manager-gui
