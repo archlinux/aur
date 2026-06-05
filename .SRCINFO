@@ -1,0 +1,17 @@
+pkgbase = juju-bin
+	pkgdesc = Juju — open source application modelling tool by Canonical (binary release)
+	pkgver = 4.0.11
+	pkgrel = 1
+	url = https://juju.is
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	provides = juju
+	conflicts = juju
+	conflicts = juju-bin
+	source_x86_64 = juju-bin-4.0.11-linux-amd64.tar.xz::https://github.com/juju/juju/releases/download/v4.0.11/juju-4.0.11-linux-amd64.tar.xz
+	sha256sums_x86_64 = 4fdd505173376fa48e6a6fda84c2763a2923cc50c0ebaec609251f6964c99ffc
+	source_aarch64 = juju-bin-4.0.11-linux-arm64.tar.xz::https://github.com/juju/juju/releases/download/v4.0.11/juju-4.0.11-linux-arm64.tar.xz
+	sha256sums_aarch64 = 874cae059c6166831205716e1744c7d43a9fa5da24daa8db8117dcdb88ba0192
+
+pkgname = juju-bin
