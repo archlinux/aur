@@ -39,7 +39,6 @@ pkgbase = all-ada
 	depends = gpr
 	depends = gtkada
 	depends = ini_file_manager
-	depends = inotify-ada
 	depends = kazakov_simple_components
 	depends = langkit
 	depends = libadalang

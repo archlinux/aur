@@ -46,7 +46,7 @@ depends=(adacurses
          gpr
          gtkada
          ini_file_manager
-         inotify-ada
+#         inotify-ada                   # Depends on alire.
          kazakov_simple_components
          langkit
          libadalang
