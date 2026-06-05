@@ -55,7 +55,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
     # skip some tests that need lots of online data or cost lots of time --ignore=docs/_build
-    pytest \
+    pytest --ignore=docs/_build \
         --ignore=specutils/io/asdf/tags/tests/test_spectra.py \
         --ignore=specutils/io/default_loaders/tests/test_apogee.py \
         --deselect=specutils/tests/test_loaders.py::test_ctypye_not_compliant[remote_data_path0] \
