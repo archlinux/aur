@@ -2,7 +2,7 @@
 # Contributor: simonsmh <simonsmh@gmail.com>
 
 pkgname="okteto"
-pkgver=3.19.0
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="Build better applications by developing and testing your code directly in Kubernetes"
 arch=('aarch64' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('go')
 optdepends=('kubectl')
 _pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3bb13c8740112262bfb006ff02435b0d3c7b52d47c5c49788e05b2844fa27fc0')
+sha256sums=('b92904b0bce510f6225cd152447099419b33edda77a66b6844190386383dfce6')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
