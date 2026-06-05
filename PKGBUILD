@@ -3,7 +3,7 @@
 # Maintainer: tblFlip <root@tblflip.de>
 _pkgname=surrealdb
 pkgname="${_pkgname}-bin"
-pkgver=3.0.5
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64' 'aarch64')
@@ -21,11 +21,11 @@ sha256sums=(
 )
 
 sha256sums_x86_64=(
-	"48dbeba4896765f33e07acc25224073f0850c190872052b917ebda1f7b4375cb"
+	"38acb60d94d2a061e9c135b63f313402780d9edc3c7120daa39dcd3a37f80deb"
 )
 
 sha256sums_aarch64=(
-	"86837a439a549ba35f78f463857ae74f0aa08b49bb473ca0fa09a122eaa6374e"
+	"3ff91e392a784aad1b1d7f7e6f2320b3ca57e3b122542be21bf8466d12d60ed2"
 )
 
 package() {
