@@ -4,7 +4,7 @@
 pkgbase=biglinux-noise-reduction-pipewire
 pkgname=${pkgbase}-git
 pkgver=r257.c64018b
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('GPL-3.0-or-later')
 url="https://github.com/biglinux/biglinux-noise-reduction-pipewire"

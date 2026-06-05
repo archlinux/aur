@@ -70,5 +70,4 @@ post_upgrade() {
 pre_remove() {
     systemctl --global disable biglinux-microphone.service
     systemctl --global disable biglinux-microphone-output.service
-    systemctl --global disable biglinux-microphone-echocancel.service
 }

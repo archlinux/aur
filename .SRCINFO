@@ -1,7 +1,7 @@
 pkgbase = biglinux-noise-reduction-pipewire
 	pkgdesc = AI-powered microphone noise reduction with GTK4/libadwaita interface for PipeWire
 	pkgver = r257.c64018b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/biglinux/biglinux-noise-reduction-pipewire
 	install = biglinux-noise-reduction-pipewire.install
 	arch = x86_64
