@@ -1,7 +1,7 @@
 pkgbase = irpf2024
 	pkgdesc = Brazilian physical person income tax (IRPF) program (2024 version)
-	pkgver = 2024.1.8
-	pkgrel = 2
+	pkgver = 2024.1.9
+	pkgrel = 1
 	url = https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf
 	arch = any
 	license = LicenseRef-Custom
@@ -9,14 +9,15 @@ pkgbase = irpf2024
 	depends = hicolor-icon-theme
 	depends = java-runtime=11
 	depends = sh
+	optdepends = cups: for print support
 	optdepends = gvfs: for importing pre-filled data from a gov.br account
-	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2024/irpf/arquivos/IRPF2024-1.8.zip
+	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2024/irpf/arquivos/IRPF2024-1.9.zip
 	source = irpf.desktop
 	source = irpf.sh
 	source = LICENSE
-	sha256sums = 214ee63d9965bfdccc795323cd647fc25ce154fbd26b58a900c66eef6b07b6b0
-	sha256sums = d3b319688872734c99e88c43c0f1a2d4ed72dd00f40d98cd3f2fd12837949c46
-	sha256sums = cb1b9d3741eba83e4574a87211dcf368e15f09925c8766fe318dd81f2b56059c
+	sha256sums = 7ac23329a3a03a62b094e81dff0f3f346e8df3c880ff72aab925e827b081b963
+	sha256sums = df33e609bdc176519910c40538a84d567e4dce16723bb80f571c9b6d95b7666e
+	sha256sums = 4a1ba8871a721fab0bff904ef9414277bfad74ed7a932deadb29819a8ce16ecc
 	sha256sums = a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67
 
 pkgname = irpf2024

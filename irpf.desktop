@@ -2,11 +2,11 @@
 Version=1.0
 Name=IRPF 2024
 Comment=Programa do Imposto de Renda Pessoa Física (versão 2024)
-Path=/usr/bin
-Exec=irpf2024
+Path=/usr/share/java/irpf2024
+Exec=/usr/bin/irpf2024
 Icon=irpf2024
 StartupWMClass=serpro-ppgd-app-IRPFPGD
 Terminal=false
 StartupNotify=false
 Type=Application
-Categories=Application;
+Categories=Office;Finance;

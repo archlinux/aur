@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=irpf2024
-pkgver=2024.1.8
-pkgrel=2
+pkgver=2024.1.9
+pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) program (2024 version)'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf'
@@ -12,6 +12,7 @@ depends=(
     'java-runtime=11'
     'sh')
 optdepends=(
+    'cups: for print support'
     'gvfs: for importing pre-filled data from a gov.br account')
 makedepends=(
     'icoutils')
@@ -19,9 +20,9 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arq
         'irpf.desktop'
         'irpf.sh'
         'LICENSE')
-sha256sums=('214ee63d9965bfdccc795323cd647fc25ce154fbd26b58a900c66eef6b07b6b0'
-            'd3b319688872734c99e88c43c0f1a2d4ed72dd00f40d98cd3f2fd12837949c46'
-            'cb1b9d3741eba83e4574a87211dcf368e15f09925c8766fe318dd81f2b56059c'
+sha256sums=('7ac23329a3a03a62b094e81dff0f3f346e8df3c880ff72aab925e827b081b963'
+            'df33e609bdc176519910c40538a84d567e4dce16723bb80f571c9b6d95b7666e'
+            '4a1ba8871a721fab0bff904ef9414277bfad74ed7a932deadb29819a8ce16ecc'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
 
 prepare() {
@@ -33,7 +34,7 @@ package() {
     install -D -m755 irpf.sh "${pkgdir}/usr/bin/${pkgname}"
     install -D -m644 irpf.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 "IRPF${pkgver%%.*}"/{irpf,pgd-updater}.jar -t "${pkgdir}/usr/share/java/${pkgname}"
+    install -D -m644 "IRPF${pkgver%%.*}"/{{irpf,pgd-updater}.jar,IRPF.acb} -t "${pkgdir}/usr/share/java/${pkgname}"
     install -D -m644 "IRPF${pkgver%%.*}/Leia-me.htm" -t "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "IRPF${pkgver%%.*}/help" "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "IRPF${pkgver%%.*}/"lib{,-modulos} "${pkgdir}/usr/share/java/${pkgname}"
