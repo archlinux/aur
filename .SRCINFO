@@ -1,6 +1,6 @@
 pkgbase = mesen-ce-git
 	pkgdesc = Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS)
-	pkgver = r3707.317f89d
+	pkgver = r3710.20ba206
 	pkgrel = 1
 	url = https://github.com/nesdev-org/MesenCE
 	arch = x86_64

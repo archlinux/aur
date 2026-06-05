@@ -3,7 +3,7 @@
 # Contributor: kleines Filmröllchen <kleines@filmroellchen.eu>
 
 pkgname=mesen-ce-git
-pkgver=r3707.317f89d
+pkgver=r3710.20ba206
 pkgrel=1
 pkgdesc="Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS)"
 arch=('x86_64')
