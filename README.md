@@ -6,24 +6,31 @@ Originally made for the Razer Blade 16 - RZ09-0510 (2024), but should work on ot
 
 ## Install
 
+### Arch Linux (AUR) — recommended
+
+Dependencies are handled automatically.
+
+```bash
+yay -S alc298-hda-init
+systemctl --user enable --now alc298-hda-init.service
+```
+Updates automatically with `yay -Syu`.
+
+### Manual
+
+**1. Install dependencies**
+
+```bash
+sudo pacman -S alsa-utils
+```
+
+**2. Clone and install**
+
 ```bash
 git clone https://github.com/yorukai/alc298-hda-init.git
 cd alc298-hda-init
 makepkg -si
-```
-
-Enable the service:
-
-```bash
-sudo systemctl enable --now alc298-hda-init.service
-```
-
-## Usage
-
-Run manually:
-
-```bash
-sudo alc298-hda-init
+systemctl --user enable --now alc298-hda-init.service
 ```
 
 ## Notes

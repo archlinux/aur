@@ -1,7 +1,16 @@
 #!/bin/bash
 set -euo pipefail
 
+exec > >(systemd-cat -t alc298-hda-init -p info)
+exec 2> >(systemd-cat -t alc298-hda-init -p err)
+
+trap 'echo "FAILED at line $LINENO: $BASH_COMMAND"' ERR
+
 readonly codec="ALC298"
+readonly wait_timeout_seconds=30
+readonly retry_interval_seconds=1
+
+echo "Starting codec initialization"
 
 if [[ $EUID -ne 0 ]]; then
     echo "Please run as root (sudo)." >&2
@@ -13,10 +22,59 @@ command -v hda-verb >/dev/null || {
     exit 1
 }
 
-card=$(
-    grep -l "Codec:.*$codec" /proc/asound/card*/codec* \
-    | sed -E 's#.*/card([0-9]+)/.*#\1#' \
-    | head -1)
+find_codec_card() {
+    local codec_files=()
+    local card=""
+
+    mapfile -t codec_files < <(compgen -G "/proc/asound/card*/codec*" || true)
+    [[ ${#codec_files[@]} -gt 0 ]] || return 1
+
+    card=$(
+        grep -l "Codec:.*$codec" "${codec_files[@]}" 2>/dev/null \
+        | sed -E 's#.*/card([0-9]+)/.*#\1#' \
+        | head -n 1 || true)
+    [[ -n $card ]] || return 1
+
+    printf '%s\n' "$card"
+}
+
+wait_for_codec_card() {
+    local card=""
+    local start_time=$SECONDS
+    local elapsed=0
+
+    until card=$(find_codec_card); do
+        elapsed=$((SECONDS - start_time))
+        if (( elapsed >= wait_timeout_seconds )); then
+            echo "Timed out waiting for $codec codec file after ${wait_timeout_seconds}s" >&2
+            return 1
+        fi
+
+        echo "Waiting for $codec codec file (${elapsed}/${wait_timeout_seconds}s)"
+        sleep "$retry_interval_seconds"
+    done
+
+    printf '%s\n' "$card"
+}
+
+wait_for_hwdev() {
+    local hwdev=$1
+    local start_time=$SECONDS
+    local elapsed=0
+
+    until [[ -e $hwdev ]]; do
+        elapsed=$((SECONDS - start_time))
+        if (( elapsed >= wait_timeout_seconds )); then
+            echo "Timed out waiting for ALSA hardware device $hwdev after ${wait_timeout_seconds}s" >&2
+            return 1
+        fi
+
+        echo "Waiting for ALSA hardware device $hwdev (${elapsed}/${wait_timeout_seconds}s)"
+        sleep "$retry_interval_seconds"
+    done
+}
+
+card=$(wait_for_codec_card)
 
 [[ -n ${card:-} ]] || {
     echo "$codec not found" >&2
@@ -24,6 +82,7 @@ card=$(
 }
 
 hwdev="/dev/snd/hwC${card}D0"
+wait_for_hwdev "$hwdev"
 
 echo "Setting up ALC298 codec on card $hwdev"
 
@@ -32,3 +91,5 @@ verbs=("0x20 0x500 0x7" "0x20 0x500 0x7" "0x20 0x500 0x10" "0x20 0x500 0x10" "0x
 for v in "${verbs[@]}"; do
     hda-verb "$hwdev" $v &>/dev/null
 done
+
+echo "Codec initialization completed successfully"
