@@ -23,6 +23,8 @@ sha256sums_aarch64=('a75a9dd9f91fbfe62f86633be7aeab4e28dfc6a87e82380aa790a4beb3a
 _ghrepo="asciimoo/hister"
 
 build() {
+  chmod +x hister-bin-${pkgver}
+
   ./hister-bin-${pkgver} completion bash > hister.bash
   ./hister-bin-${pkgver} completion zsh > hister.zsh
   ./hister-bin-${pkgver} completion fish > hister.fish
