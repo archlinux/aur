@@ -1,0 +1,3 @@
+[python-opensearch]
+source = "pypi"
+pypi = "opensearch-py"
