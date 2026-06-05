@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=MicYou
+Comment=Use an Android device as a wireless microphone
+Exec=micyou
+Icon=micyou
+Terminal=false
+Categories=AudioVideo;Audio;
+StartupWMClass=MicYou
