@@ -1,24 +1,23 @@
 pkgbase = irpf2022
 	pkgdesc = Brazilian physical person income tax (IRPF) program (2022 version)
-	pkgver = 2022.2.2
+	pkgver = 2022.2.3
 	pkgrel = 1
 	url = https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf
 	arch = any
 	license = LicenseRef-Custom
-	makedepends = imagemagick
-	makedepends = librsvg
+	makedepends = icoutils
 	depends = hicolor-icon-theme
 	depends = java-runtime=11
 	depends = sh
-	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2022/irpf/arquivos/IRPF2022-2.2.zip
-	source = https://upload.wikimedia.org/wikipedia/commons/e/e8/Logo_Receita_Federal_do_Brasil.svg
+	optdepends = cups: for print support
+	optdepends = gvfs: for importing pre-filled data from a gov.br account
+	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2022/irpf/arquivos/IRPF2022-2.3.zip
 	source = irpf.desktop
 	source = irpf.sh
 	source = LICENSE
-	sha256sums = f069777c149cd3c780c002e3c31fa099431465cb54ee1431872384d430cb8c77
-	sha256sums = 60c46521699aa3aeaadcb6a51b2727f3e9eb0c23a99334903c01f858c16f8f73
-	sha256sums = ab9e1e5aeec398d345bd5f3778a3f16817214f27ff34348dd0053017db3888c7
-	sha256sums = 9bef9107689f5ef5a5b812518fdb108f43a9c237c57b3985b88bc676c5fd71f4
+	sha256sums = 6a50be7833936ee843a88cdc5c0769031cbe2d35b37ae0b7b780b30db8683c79
+	sha256sums = da94b677c77a9637cda73811c133f9cb838a243916c497065fab5cd654c56edc
+	sha256sums = 5b07c9124145ad8e2a8c436c759e17e8ab69304b6a5ddb5a0308b2382e4b4251
 	sha256sums = a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67
 
 pkgname = irpf2022

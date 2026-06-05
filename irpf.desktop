@@ -2,10 +2,11 @@
 Version=1.0
 Name=IRPF 2022
 Comment=Programa do Imposto de Renda Pessoa Física (versão 2022)
-Path=/usr/bin
-Exec=irpf2022
+Path=/usr/share/java/irpf2022
+Exec=/usr/bin/irpf2022
 Icon=irpf2022
+StartupWMClass=serpro-ppgd-app-IRPFPGD
 Terminal=false
 StartupNotify=false
 Type=Application
-Categories=Application;
+Categories=Office;Finance;
