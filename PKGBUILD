@@ -4,7 +4,7 @@
 
 _reponame=seadrive-fuse
 pkgname=seadrive-daemon
-pkgver=3.0.22
+pkgver=3.0.23
 pkgrel=1
 pkgdesc="SeaDrive daemon with FUSE interface"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('GPL-3.0-only')
 depends=('libsearpc' 'sqlite' 'curl' 'fuse2' 'libevent' 'openssl' 'argon2'
 	 'glib2' 'zlib' 'util-linux-libs' 'jansson' 'glibc' 'libwebsockets')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('422f4942b5773aa6a16b177df890bf390c47a505cc1cd16059f9778379d0b2eb4168fd43f2f783dc727b20630e2b903d4b77eb5c8c9d2df29f45bbfd00f40013')
+b2sums=('b5fd9aa97814d6f0349da92db1ca9ab4979422a618df4b5091e5c6a1612d187cb2a79b43bbb975ee6fb4b51dad7c35edca9010b2a00ff214d579c7b6421d37fd')
 
 build() {
   cd "$srcdir/$_reponame-$pkgver"
