@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=peerbeat
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Local-first music player with LAN peer-to-peer sharing"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('flutter' 'rust' 'cargo' 'cmake' 'ninja' 'clang' 'pkgconf' 'git' 'i
 provides=('peerbeat')
 conflicts=('peerbeat-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f0149baf16c78df09334e3626ad57464fcd86eebaa1aa392e9cbc0fe69894b5f')
+sha256sums=('d2afced8964ba5d02ba2a21d4f14fc098a9d7edca98b863b44cfba3453dc98cb')
 
 prepare() {
   cd "PeerBeat-${pkgver}"
