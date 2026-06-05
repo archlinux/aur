@@ -1,41 +1,32 @@
-# Maintainer: Morozyuk Daniil <morozyuk.d.p@gmail.com>
-
+# Maintainer: Aridan <https://github.com/actuallyaridan>
 pkgname=linux-devmgmt-git
-pkgver=r7.0ef905b
-pkgrel=2
-pkgdesc="Linux device management tool"
-arch=('x86_64')
+pkgver=r0.unknown
+pkgrel=1
+pkgdesc="A faithful recreation of the Windows Device Manager (git)"
+arch=('x86_64' 'aarch64')
 url="https://github.com/actuallyaridan/linux-devmgmt"
-license=('GPL-3.0-or-later')
+license=('MIT')
 depends=('qt6-base')
-makedepends=('git' 'cmake')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=(
-    "${pkgname}::git+https://github.com/actuallyaridan/linux-devmgmt.git"
-    "device-manager.desktop"
-)
-sha256sums=('SKIP' 'SKIP')
-
-prepare() {
-    cp "${srcdir}/device-manager.desktop" "${srcdir}/${pkgname}/device-manager.desktop"
-}
+makedepends=('cmake' 'ninja' 'git')
+provides=('linux-devmgmt')
+conflicts=('linux-devmgmt')
+source=("$pkgname::git+https://github.com/actuallyaridan/linux-devmgmt.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${pkgname}"
-    cmake -B build -S . \
-        -DCMAKE_BUILD_TYPE=None \
+    cmake -S "$pkgname" -B build \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
 }
 
 package() {
-    cd "${pkgname}"
-    install -Dm755 build/devmgmt "${pkgdir}/usr/bin/devmgmt"
-    install -Dm644 device-manager.desktop "${pkgdir}/usr/share/applications/device-manager.desktop"
+    DESTDIR="$pkgdir" cmake --install build
+    install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
