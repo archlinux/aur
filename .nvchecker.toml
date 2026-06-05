@@ -1,0 +1,4 @@
+[gauth]
+source = "git"
+git = "https://github.com/pcarrier/gauth.git"
+prefix = "v"
