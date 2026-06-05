@@ -13,7 +13,6 @@ pkgbase = langkit
 	makedepends = python-coverage
 	makedepends = python-docutils
 	makedepends = python-e3-core
-	makedepends = python-e3-testsuite
 	makedepends = python-funcy
 	makedepends = python-mako
 	makedepends = python-pexpect

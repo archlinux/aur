@@ -35,7 +35,7 @@ makedepends=(
     python-coverage
     python-docutils
     python-e3-core
-    python-e3-testsuite
+#    python-e3-testsuite
     python-funcy
     python-mako
     python-pexpect
@@ -147,11 +147,12 @@ package()
 
     ## Install the langkit Python package itself.
     #
-    pip install \
-        --root="$pkgdir" \
-        --prefix=/usr \
-        --no-deps \
+    pip install              \
+        --root="$pkgdir"     \
+        --prefix=/usr        \
+        --no-deps            \
         --no-build-isolation \
+        --ignore-installed   \
         .
     
     
