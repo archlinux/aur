@@ -1,4 +1,4 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Wei-Ning Huang <aitjcize@gmail.com>
 
