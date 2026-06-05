@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gale
-pkgver=1.13.4
+pkgver=1.13.5
 pkgrel=1
 pkgdesc="A modern mod manager for Thunderstore"
 arch=('x86_64')
@@ -17,12 +17,19 @@ makedepends=(
   'pnpm'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kesomannen/gale/archive/refs/tags/$pkgver.tar.gz"
-        "$pkgname.desktop")
-sha256sums=('f2a5d5f3af37f9b6b23bce7d054ac78d86fe96479852dfb2905df265103f138f'
-            '4de7796da59ef55bf7bbcde65a53b051245f80b3284ab53be20c4728345c4ff1')
+        "$pkgname.desktop"
+        'pnpm-workspace.yaml')
+sha256sums=('46796495ec79763e2bffcc44d1d12f6f03ae7ac3d7f79bdb8650b90ab7a24b8c'
+            '4de7796da59ef55bf7bbcde65a53b051245f80b3284ab53be20c4728345c4ff1'
+            'ac02d96368617c760f093cfe61fdec64b6244007ab3553e0d6621f706f54a353')
 
 prepare() {
+  cp -f pnpm-workspace.yaml "$pkgname-$pkgver/"
+
   cd "$pkgname-$pkgver"
+  export PNPM_HOME="$srcdir/pnpm-home"
+  pnpm install --frozen-lockfile
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --manifest-path src-tauri/Cargo.toml --locked --target host-tuple
 }
@@ -33,7 +40,6 @@ build() {
   export PNPM_HOME="$srcdir/pnpm-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  pnpm install --frozen-lockfile
   cargo tauri build --no-bundle -- --frozen
 }
 
