@@ -1,6 +1,6 @@
 pkgname=mshark
 _pkgname=mshark
-pkgver=0.0.28
+pkgver=0.0.29
 pkgrel=1
 pkgdesc="Simple packet capture tool"
 arch=('any')
