@@ -1,4 +1,4 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=pkg.sh-git
 pkgver=0.2.0.r0.g4d4c643
 pkgrel=1
