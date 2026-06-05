@@ -1,4 +1,4 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=matrix-webcam-git
 pkgver=0.4.2.r0.g7cbc54c
 pkgrel=1
