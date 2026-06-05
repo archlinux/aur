@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Riccardo Berto <riccardo at rcrdbrt dot-symbol com>
 # Contributor: Moses Narrow <moe-narrow@use.startmail.com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
