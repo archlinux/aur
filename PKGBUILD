@@ -7,7 +7,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=6.3.1.0
+pkgver=6.4.0.2
 pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
@@ -44,14 +44,12 @@ source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
         'meganz-sdk'::'git+https://github.com/meganz/sdk.git'
         '010-megasync-sdk-fix-cmake-dependencies-detection.patch'
         '020-megasync-app-fix-cmake-dependencies-detection.patch'
-        '030-megasync-app-disable-isolated-gfx-for-disabling-freeimage-in-sdk.patch'
-        '040-megasync-sdk-add-missing-icu-link-library.patch')
-sha256sums=('fc98f3220d70f01838accb7f600368df30b4b4f0f0d742ceb9d1d29946f9d5df'
+        '030-megasync-app-disable-isolated-gfx-for-disabling-freeimage-in-sdk.patch')
+sha256sums=('e36708b696a4acb602f131a03b4af3a40998f9b021bf7d1ae0d2392533bb4e28'
             'SKIP'
             '5219537875385e9399b1a76a5775722053880cdfc0c33b5726504e020e11ad70'
             'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171'
-            '6a2b12ac8f210ece16216168aa699e57218577e7fea6e971d0e9b398ad78c89f'
-            'badfbb3f2107d8af2d6754dad9696aa62fa8e5030b6319086549c6f7a15d39ad')
+            '6a2b12ac8f210ece16216168aa699e57218577e7fea6e971d0e9b398ad78c89f')
 
 prepare() {
     # https://github.com/meganz/MEGAsync/issues/1010#issuecomment-2726028797
@@ -64,7 +62,6 @@ prepare() {
     patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/010-megasync-sdk-fix-cmake-dependencies-detection.patch"
     patch -d MEGAsync -Np1 -i "${srcdir}/020-megasync-app-fix-cmake-dependencies-detection.patch"
     patch -d MEGAsync -Np1 -i "${srcdir}/030-megasync-app-disable-isolated-gfx-for-disabling-freeimage-in-sdk.patch"
-    patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/040-megasync-sdk-add-missing-icu-link-library.patch"
 }
 
 build() {
