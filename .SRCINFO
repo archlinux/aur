@@ -1,0 +1,13 @@
+pkgbase = libautomata
+	pkgdesc = Stateful automata-based string matching library
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/maandree/libautomata
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	source = libautomata-1.0.tar.gz::https://codeberg.org/maandree/libautomata/archive/1.0.tar.gz
+	sha256sums = 2d98255861b0ad1e3d3436ae742ff495515548ab7475b5a707e12643b958c5da
+
+pkgname = libautomata
