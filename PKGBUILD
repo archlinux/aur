@@ -7,7 +7,7 @@ _execname=(ctg{,x})
 pkgname=${_appname}-bin
 pkgdesc="A modern git based age-encrypted secrets manager for teams"
 
-pkgver=0.5.6
+pkgver=0.6.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -35,8 +35,8 @@ source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/downlo
 sha256sums=('bab397ebf1b6b15a50a98e59eb00077ee4fb42821b0c84f564df00663ec30767'
             'f23c6fdb2a5fb41913a9509586ac4c350ffc5f804183c0fae4bacba60b5a8ad1'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('ecf8c3ee54cd51393d5ccd1b49cdd14d303bd2d3ef5f9f168f84388a4e74527c')
-sha256sums_aarch64=('b8ff5bf8fd2a1464e715785007e28c0e9e2158ef2f777a1b0c9e581689dd591f')
+sha256sums_x86_64=('39d8415c3ba2c74d05c382e36e0473f0bda00bce974310c46c7a8a99c7a78296')
+sha256sums_aarch64=('084a88d7f941840a6f7efb8e3c26b770b77a39f803a9c35f1b5eef05ecdcf525')
 
 
 package() {
