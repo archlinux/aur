@@ -1,6 +1,6 @@
 pkgbase = xul-anchor-graft-git
 	pkgdesc = Per-user add-on signing authority for libxul-family browsers (git version)
-	pkgver = 0.5.0.r0.g19386fd
+	pkgver = 0.6.0.r0.g990a772
 	pkgrel = 1
 	url = https://codeberg.org/0zitro-ffa/xul-anchor-graft
 	arch = any
@@ -18,10 +18,12 @@ pkgbase = xul-anchor-graft-git
 	depends = python-typer
 	depends = nss
 	depends = bubblewrap
-	provides = xul-anchor-graft=0.5.0.r0.g19386fd-1
+	provides = xul-anchor-graft=0.6.0.r0.g990a772-1
 	conflicts = xul-anchor-graft
 	source = xul-anchor-graft::git+https://codeberg.org/0zitro-ffa/xul-anchor-graft.git?signed
+	source = xag-extensions.hook
 	validpgpkeys = E627ACE54546B9DA33F31C47EA82A8B4E968D242
 	sha256sums = SKIP
+	sha256sums = fb653372e663638fbe85a12a9080281563d3a9bf1d61a7393688dc1b880e4f32
 
 pkgname = xul-anchor-graft-git
