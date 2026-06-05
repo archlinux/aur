@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-sh-bin
 pkgdesc="A Linux shell with a powerful line editor and IPC socket extensibility"
 
-pkgver=0.25.4
+pkgver=0.26.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,12 +29,18 @@ install=shed.install
 
 options=(!strip)
 
-source=("README-${pkgver}.md::${_ghurlraw}/README.md"
-		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
-source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}")
-sha256sums=('df31130893847f2264b5a20ef796dc33cb52bca006211c77d97267d7193d940d'
-            '63935e295aec98532c3dc36362522aa977e38a5ec53b6d68644d8659a050b98b')
-sha256sums_x86_64=('af3621f232d4a3512bd71e61920722788567bb78f4b985fcb38a5f7f8f65cdae')
+source=("README-${pkgver}.md::${_ghurlraw}/README.md")
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
+sha256sums=('df31130893847f2264b5a20ef796dc33cb52bca006211c77d97267d7193d940d')
+sha256sums_x86_64=('c28fd735f561cd8bfc4404a2f474106cf0b2c90e3eddf5eda07003400d3ba539')
+
+case ${CARCH} in
+  ${arch[0]})
+    _CARCH=${_barch[0]}
+    ;;
+esac
+
+BIN_DIR="${_appname}-${pkgver}-${_CARCH}"
 
 prepare() {
 	cd "${srcdir}/" || exit
@@ -47,11 +53,11 @@ prepare() {
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_appname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "${BIN_DIR}/${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 git/examples/*.sh -t "$pkgdir/usr/share/${_appname}/examples/"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${BIN_DIR}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
