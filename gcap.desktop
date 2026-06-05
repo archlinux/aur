@@ -2,11 +2,11 @@
 Version=1.0
 Name=GCAP 2024
 Comment=Programa de Apuração dos Ganhos de Capital (versão 2024)
-Path=/usr/bin
-Exec=gcap2024
+Path=/usr/share/java/gcap2024
+Exec=/usr/bin/gcap2024
 Icon=gcap2024
 StartupWMClass=br-gov-serpro-gcap-app-PGDGCAP
 Terminal=false
 StartupNotify=false
 Type=Application
-Categories=Application;
+Categories=Office;Finance;

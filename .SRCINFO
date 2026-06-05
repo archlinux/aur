@@ -1,6 +1,6 @@
 pkgbase = gcap2024
 	pkgdesc = Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains (2024 version)
-	pkgver = 2024.1.6
+	pkgver = 2024.1.7
 	pkgrel = 1
 	url = https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/gcap
 	arch = any
@@ -9,13 +9,14 @@ pkgbase = gcap2024
 	depends = hicolor-icon-theme
 	depends = java-runtime
 	depends = sh
-	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2024/gcap/GCAP2024v1.6.zip
+	optdepends = cups: for print support
+	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2024/gcap/GCAP2024v1.7.zip
 	source = gcap.desktop
 	source = gcap.sh
 	source = LICENSE
-	sha256sums = d05605c9697a6ebcd2276e62535a848523bc69622df47b88208221042a86bf73
-	sha256sums = f3291fbf520575410198b3ca04d8ccdacce33a421eda5ed805816752d9b9ec01
-	sha256sums = ca4f5c4f7973f0c84ab4e494dd11752d7e3e663c6819991df28668a6c5d823b3
+	sha256sums = 0331604be3d321c707d0543d8a13667d78619dcab82aa948cc773dc24b754cdc
+	sha256sums = 307c72649ee8cdce776f85629ca7acd707895551992fc966ab297a5f4eb4c4b9
+	sha256sums = 2172933661b13d4802fe981c7e1a805d35adfcb245010b8c756ec98c551e3841
 	sha256sums = a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67
 
 pkgname = gcap2024

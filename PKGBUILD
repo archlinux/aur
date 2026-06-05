@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gcap2024
-pkgver=2024.1.6
+pkgver=2024.1.7
 pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains (2024 version)'
 arch=('any')
@@ -11,15 +11,17 @@ depends=(
     'hicolor-icon-theme'
     'java-runtime'
     'sh')
+optdepends=(
+    'cups: for print support')
 makedepends=(
     'icoutils')
 source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/gcap/GCAP${pkgver%%.*}v${pkgver#*.}.zip"
         'gcap.desktop'
         'gcap.sh'
         'LICENSE')
-sha256sums=('d05605c9697a6ebcd2276e62535a848523bc69622df47b88208221042a86bf73'
-            'f3291fbf520575410198b3ca04d8ccdacce33a421eda5ed805816752d9b9ec01'
-            'ca4f5c4f7973f0c84ab4e494dd11752d7e3e663c6819991df28668a6c5d823b3'
+sha256sums=('0331604be3d321c707d0543d8a13667d78619dcab82aa948cc773dc24b754cdc'
+            '307c72649ee8cdce776f85629ca7acd707895551992fc966ab297a5f4eb4c4b9'
+            '2172933661b13d4802fe981c7e1a805d35adfcb245010b8c756ec98c551e3841'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
 
 prepare() {
@@ -31,7 +33,7 @@ package() {
     install -D -m644 gcap.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 "GCAP${pkgver%%.*}/GCAP.jar" "${pkgdir}/usr/share/java/${pkgname}/gcap.jar"
-    install -D -m644 "GCAP${pkgver%%.*}/pgd-updater.jar" -t "${pkgdir}/usr/share/java/${pkgname}"
+    install -D -m644 "GCAP${pkgver%%.*}"/{pgd-updater.jar,GCAP.acb} -t "${pkgdir}/usr/share/java/${pkgname}"
     install -D -m644 "GCAP${pkgver%%.*}/Leia_me.htm" -t "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "GCAP${pkgver%%.*}/help" "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "GCAP${pkgver%%.*}/lib" "${pkgdir}/usr/share/java/${pkgname}"
