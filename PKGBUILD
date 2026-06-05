@@ -1,7 +1,7 @@
 # Maintainer: doclic <doclic@tutanota.com>
 
 pkgname=mesen-ce
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ replaces=(mesen)
 # The package breaks when stripped for some reason ¯\_(ツ)_/¯
 options=(lto !strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nesdev-org/MesenCE/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3308832fc62a51d91e878f568657135753b094fd27afb9193157ec642c5b45a9')
+sha256sums=('2afa2d722708dcbb01b1763aca877225948402261f1daa97cbcb0c89fb101659')
 
 build() {
 	cd "MesenCE-${pkgver}"
