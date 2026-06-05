@@ -1,10 +1,11 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
-#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+#  Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='moor'
 pkgname="$_pkgname-git"
-pkgver=2.1.1.r0.g36e76c6
+pkgver=2.13.4.r14.g83fbcc2
 pkgrel=1
 epoch=1
 pkgdesc='Pager designed to just do the right thing without any configuration (development version)'
@@ -69,10 +70,16 @@ check() {
 package() {
   cd "$_pkgname"
 
-  install -vDm0755 -t "$pkgdir/usr/bin" moor
-  install -vDm0644 -t "$pkgdir/usr/share/man/man1" moor.1
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm0755 -t "$pkgdir/usr/bin" moor
+  install -Dm0644 -t "$pkgdir/usr/share/man/man1" moor.1
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+  for _dir in doc licenses; do
+    pushd "$pkgdir/usr/share/$_dir"
+    ln -srf "$pkgname" "$_pkgname"
+    popd
+  done > /dev/null
 }
 
 # eof
