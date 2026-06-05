@@ -2,55 +2,43 @@
 # Contributor: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 
 pkgname=surrealdb
-pkgver=3.0.4
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
 url="https://github.com/surrealdb/surrealdb"
 license=("BUSL-1.1")
-depends=("gcc-libs" "glibc")
-makedepends=("rustup" "cargo-make" "clang" "patch" "git")
-checkdepends=("rustup" "cargo-make" "clang" "patch" "git")
+depends=("gcc-libs" "glibc" "llvm-libs")
+makedepends=("rustup" "curl" "llvm" "cmake" "binutils" "clang" "qemu-user-static" "musl" "openssl" "pkgconf" "base-devel" "protobuf")
 provides=("surrealdb")
 conflicts=("surrealdb-bin")
 
 source=(
 	"https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver//_/-}/LICENSE"
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
-	"fix_rust_being_rust.sh"
 )
 
 sha256sums=(
 	"98a94ac615f88370865016487b436fa404560910bd329794ed7502277a94b805"
-	"e27974efdf943b41b1a3b205decad02154365a56d1d5fd305f760b18f1fdcade"
-	"c35407a2d41e0f6bc3b635c898a99d0fd56490218bd3d9e126d20ce341a79846"
+	"3d6c622378d07faf775387ed103f3b8d2a5f22bad4c5f912b5112526cb2444c6"
 )
 
 prepare() {
 	cd "$pkgname-${pkgver//_/-}" || exit
-	rustup toolchain install 1.91.0
-	rustup override set 1.91.0
+	rustup toolchain install 1.92
+	rustup override set 1.92
 	rustup target add "$CARCH-unknown-linux-gnu"
-
-	# https://github.com/rust-rocksdb/rust-rocksdb/issues/995
-	# https://github.com/rust-rocksdb/rust-rocksdb/issues/991
-	# The current definition of "a steaming heap of rubbish". :)
-	# I better go wash my paws now. :)
-	cargo fetch
-	cd ..
-	bash ./fix_rust_being_rust.sh
+    cargo fetch --locked --target x86_64-unknown-linux-gnu
 }
 
 build() {
 	cd "$pkgname-${pkgver//_/-}" || exit
-
-	# Now for some hilarious reason, rquickjs is really picky about lto in some situations.
-	# It also doesnt quite help that rustc blankly reports that as E0463.
-	export CFLAGS="${CFLAGS//-flto=[^ ]*/ }"
-	export CXXFLAGS="${CXXFLAGS//-flto=[^ ]*/ }"
-	export LDFLAGS="${LDFLAGS//-flto=[^]*/ }"
-
-	cargo build --release --locked --target "$CARCH-unknown-linux-gnu"
+    export CFLAGS="${CFLAGS//-flto=[^ ]*/ }"
+    export CXXFLAGS="${CXXFLAGS//-flto=[^ ]*/ }"
+    export LDFLAGS="${LDFLAGS//-flto=[^]*/ }"
+    export LLVM_LINK_SHARED=1
+    export RUSTFLAGS="-C link-arg=-lLLVM"
+    cargo build --release --locked --target x86_64-unknown-linux-gnu
 }
 
 package() {
