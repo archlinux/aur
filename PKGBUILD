@@ -1,7 +1,7 @@
 # Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=tetris-cli
-pkgver=23.96.1
+pkgver=26.61.1
 pkgrel=1
 pkgdesc="A tetris game that runs in a terminal"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('git' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 conflict=("${pkgname}-bin" "${pkgname}-git")
-sha256sums=('3f8da3ec0625e3906b1af7870daf55b189ae0b3c08aa15ebff535e3ef6c6be8c')
+sha256sums=('342b447ef28ff4c5f9bfdd286cdfad692ddd883ac97e3a8e0cfdc588d56e38b7')
 
 build() {
   cd "${pkgname}-${pkgver}"
