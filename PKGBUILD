@@ -1,4 +1,4 @@
-# Maintainer: RiverOnVenus <error@zhui.dev>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
 # Contributor: YeahSure <lapdogpdx.yahoo.com>
 pkgname=colout-git
 pkgver=1.1.r7.g6a8fe89
