@@ -1,35 +1,33 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.6.3'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='cocode'
-
-
-pkgname="${_pypi_package}"
-pkgver="${_upstreamver}"
+pkgname="cocode"
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A powerful command-line tool for analyzing and processing code repositories"
+
 arch=('any')
-url='https://github.com/Pipelex/cocode'
 license=('MIT')
+url='https://github.com/Pipelex/cocode'
+
+_pypi_package=${pkgname}
+_pypi_version=${pkgver}
 
 provides=("${_pypi_package}")
 makedepends=('python' 'python-click' 'python-rich' 'python-typer' 'python-typing_extensions' 'python-pygithub' 'python-pydantic' 'python-pathspec' 'pipelex')
 
-source=("${_pypi_package}-${_upstreamver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a783be4e47074cb3549dd5a33a51f84b0bfd04da1e279cbb980eab1c5ab8632b')
+source=("${_pypi_package}-${_pypi_version}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('cd88460303e4b781200a9c59751f90360ed15e55e9a78eb71ee95359be105e83')
 
 build() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
