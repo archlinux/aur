@@ -3,8 +3,8 @@
 
 pkgname=battery-stats-git
 _pkgname=battery-stats
-pkgver=0.5.6.11.g8a42539
-pkgrel=2
+pkgver=0.5.6.20.g402605a
+pkgrel=1
 pkgdesc="Log battery charge, show gnuplot graphs."
 arch=('any')
 url="https://github.com/petterreinholdtsen/battery-stats.git"
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../${_pkgname} -DCMAKE_INSTALL_PREFIX=/usr
+  cmake ../${_pkgname} -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 }
 
 package() {

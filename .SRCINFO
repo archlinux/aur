@@ -1,7 +1,7 @@
 pkgbase = battery-stats-git
 	pkgdesc = Log battery charge, show gnuplot graphs.
-	pkgver = 0.5.6.11.g8a42539
-	pkgrel = 2
+	pkgver = 0.5.6.20.g402605a
+	pkgrel = 1
 	url = https://github.com/petterreinholdtsen/battery-stats.git
 	arch = any
 	license = GPLv2
