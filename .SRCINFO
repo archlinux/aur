@@ -1,0 +1,24 @@
+pkgbase = peerbeat
+	pkgdesc = Local-first music player with LAN peer-to-peer sharing
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/RamazanBerk20/PeerBeat
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = flutter
+	makedepends = rust
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = imagemagick
+	depends = gtk3
+	depends = alsa-lib
+	provides = peerbeat
+	conflicts = peerbeat-bin
+	source = peerbeat-0.1.0.tar.gz::https://github.com/RamazanBerk20/PeerBeat/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f0149baf16c78df09334e3626ad57464fcd86eebaa1aa392e9cbc0fe69894b5f
+
+pkgname = peerbeat
