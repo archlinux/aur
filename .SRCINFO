@@ -1,0 +1,22 @@
+pkgbase = selint
+	pkgdesc = Static code analysis tool for SELinux policy source files
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/SELinuxProject/selint
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = check
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = autoconf-archive
+	makedepends = bison
+	makedepends = flex
+	makedepends = help2man
+	makedepends = uthash
+	makedepends = pkgconf
+	depends = confuse
+	backup = etc/selint.conf
+	source = selint-1.5.1.tar.gz::https://github.com/SELinuxProject/selint/archive/refs/tags/v1.5.1.tar.gz
+	sha256sums = 9748467a10be72cb29bcebbdcbb9df98edc7ac4e625c2c6386f0d26fb0b85695
+
+pkgname = selint
