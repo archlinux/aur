@@ -1,6 +1,6 @@
 pkgbase = gtfs-planner-git
 	pkgdesc = A desktop application for visualizing and planning trips using GTFS (General Transit Feed Specification) public transit data. Built with Go, React, and MapLibre GL.
-	pkgver = 1.0.0+6.r142.20260604.e650168
+	pkgver = 1.0.0+13.r148.20260605.95f1c45
 	pkgrel = 1
 	url = https://github.com/klaustopher/gtfs-planner
 	arch = aarch64
@@ -40,7 +40,7 @@ pkgbase = gtfs-planner-git
 	depends = libgdk-3.so
 	depends = libwebkit2gtk-4.1.so
 	depends = libz.so
-	provides = gtfs-planner=1.0.0+6.r142.20260604.e650168
+	provides = gtfs-planner=1.0.0+13.r148.20260605.95f1c45
 	conflicts = gtfs-planner
 	conflicts = gtfs-planner-bin
 	conflicts = bus-planning<1

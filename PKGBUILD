@@ -2,7 +2,7 @@
 
 _pkgname="gtfs-planner"
 pkgname="${_pkgname}-git"
-pkgver=1.0.0+6.r142.20260604.e650168
+pkgver=1.0.0+13.r148.20260605.95f1c45
 pkgrel=1
 pkgdesc='A desktop application for visualizing and planning trips using GTFS (General Transit Feed Specification) public transit data. Built with Go, React, and MapLibre GL.'
 arch=(
@@ -85,16 +85,7 @@ prepare() {
   export GOPATH="${srcdir}/.go"
   export GOBIN="${GOPATH}/bin"
   export NPM_DIR="${srcdir}/.npm"
-
-  if [ -n wails.json.bak ]; then
-    cp wails.json wails.json.bak
-  fi
-  printf '%s\n' " --> Patching 'wails.json' to make 'npm' using '${srcdir}/.npm-cache' as cache ..."
-  sed -i -E \
-    -e "s|npm install\"|npm install --cache=${srcdir}/.npm-cache --verbose\"|" \
-    -e "s|npm run build\"|npm run build --cache=${srcdir}/.npm-cache --verbose\"|" \
-    -e "s|npm run dev\"|npm run dev --cache=${srcdir}/.npm-cache --verbose\"|" \
-    wails.json
+  export npm_config_cache="${srcdir}/.npm-cache"
 
   printf '%s\n' " --> Downloading go dependencies ..."
   go mod download -x -modcacherw
@@ -134,6 +125,8 @@ build() {
   export GOPATH="${srcdir}/.go"
   export GOBIN="${GOPATH}/bin"
   export NPM_DIR="${srcdir}/.npm"
+  export npm_config_cache="${srcdir}/.npm-cache"
+  export npm_config_offline=true
 
   printf '%s\n' " --> Building application ('wails build') ..."
   wails build -v 2 -trimpath -tags webkit2_41,desktop,production  # 'webkit2_41' needed to use webkit2gtk-4.1 instead of the unavailable and outdated webkit2gtk-4.0.
@@ -147,6 +140,8 @@ check() {
   export GOPATH="${srcdir}/.go"
   export GOBIN="${GOPATH}/bin"
   export NPM_DIR="${srcdir}/.npm"
+  export npm_config_cache="${srcdir}/.npm-cache"
+  export npm_config_offline=true
 
   printf '%s\n' " --> Checking ..."
   go test -v
@@ -160,6 +155,8 @@ package() {
   export GOPATH="${srcdir}/.go"
   export GOBIN="${GOPATH}/bin"
   export NPM_DIR="${srcdir}/.npm"
+  export npm_config_cache="${srcdir}/.npm-cache"
+  export npm_config_offline=true
 
 
   printf '%s\n' " --> Installing main application ..."
@@ -170,7 +167,7 @@ package() {
   install -Dvm644 "${srcdir}/gtfs-planner.desktop"                 "${pkgdir}/usr/share/applications"/gtfs-planner.desktop
 
   printf '%s\n' " --> Installing basic documentation ..."
-  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log README.md DEVELOPMENT.md CLAUDE.md
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log README.md DEVELOPMENT.md CLAUDE.md CHANGELOG.md
   printf '%s\n' " --> Installing license ..."
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE"
 }
