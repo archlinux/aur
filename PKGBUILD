@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="Open-source language for AI Agents to create and run repeatable AI workflows"
 
 arch=('any')
-url='https://github.com/Pipelex/pipelex'
 license=('MIT')
+url='https://github.com/Pipelex/pipelex'
 
 _pypi_package=${pkgname}
 _pypi_version=${pkgver}
