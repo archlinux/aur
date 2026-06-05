@@ -316,8 +316,13 @@ class RcloneKdeApp(QMainWindow):
                 "echo \"Creating mount directory if it doesn't exist...\"\n"
                 "mkdir -p \"$MOUNT_PATH\"\n\n"
                 "echo \"Mounting $REMOTE to $MOUNT_PATH...\"\n"
-                "# --vfs-cache-mode writes is required for normal file editing\n"
-                "rclone mount \"$REMOTE\" \"$MOUNT_PATH\" --vfs-cache-mode writes\n"
+                "# --vfs-cache-mode full and buffer flags significantly improve performance\n"
+                "rclone mount \"$REMOTE\" \"$MOUNT_PATH\" \\\n"
+                "  --vfs-cache-mode full \\\n"
+                "  --dir-cache-time 72h \\\n"
+                "  --buffer-size 128M \\\n"
+                "  --vfs-read-chunk-size 32M \\\n"
+                "  --vfs-read-chunk-size-limit off\n"
             )
             self.text_script.setPlainText(script_content)
             
