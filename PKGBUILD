@@ -2,7 +2,7 @@
 # Contributor: Bruno Goncalves <bigbruno@gmail.com>
 
 pkgbase=gtcrn-ladspa
-pkgname=${pkgbase}-git
+pkgname=${pkgbase}
 pkgdesc="GTCRN Speech Enhancement LADSPA plugin using ONNX Runtime"
 pkgver=r100.6ee156e
 pkgrel=1

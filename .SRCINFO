@@ -20,4 +20,4 @@ pkgbase = gtcrn-ladspa
 	source = gtcrn-ladspa::git+https://github.com/biglinux/gtcrn-ladspa.git
 	sha512sums = SKIP
 
-pkgname = gtcrn-ladspa-git
+pkgname = gtcrn-ladspa
