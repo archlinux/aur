@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec java -Xmx512m -jar /usr/share/java/lcar/PgdAtividadeRural.jar "$@"
+exec env -C /usr/share/java/lcar java -Xmx512m -jar /usr/share/java/lcar/PgdAtividadeRural.jar "$@"

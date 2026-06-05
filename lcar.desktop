@@ -2,11 +2,11 @@
 Version=1.0
 Name=LCAR 2026
 Comment=Programa de Apuração dos Resultados em Atividade Rural
-Path=/usr/bin
-Exec=lcar
+Path=/usr/share/java/lcar
+Exec=/usr/bin/lcar
 Icon=lcar
 StartupWMClass=serpro-ppgd-app-PgdAtividadeRural
 Terminal=false
 StartupNotify=false
 Type=Application
-Categories=Application;
+Categories=Office;Finance;

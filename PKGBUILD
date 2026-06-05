@@ -2,7 +2,7 @@
 
 pkgname=lcar
 pkgver=2026.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for getting rural activity results'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/lcar'
@@ -11,6 +11,8 @@ depends=(
     'hicolor-icon-theme'
     'java-runtime'
     'sh')
+optdepends=(
+    'cups: for print support')
 makedepends=(
     'icoutils')
 source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/ar/AR${pkgver%%.*}v${pkgver#*.}.zip"
@@ -18,8 +20,8 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/ar/AR${p
         'lcar.sh'
         'LICENSE')
 sha256sums=('693515ad355b96a78fa7ab6d4e1ecce7830876bffa3df728938f224fe10f056e'
-            'fb61ffa205784f53a159d781b077fd772457f3fb0937b6c73653cfbc9613b33d'
-            'c3a773b9d773e300a4d9ab077eea584d5dfeedf1960fa17db0afb1d55869730d'
+            '5ad5cd0e50661c83f2569b5d57bed7bcf1af05180fed7767cb0fd8952c454f17'
+            '554f867c58d5c75cb40eeeda51e36f34a36f83019735234d192be2e044cc96c9'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
 
 prepare() {
@@ -30,7 +32,7 @@ package() {
     install -D -m755 lcar.sh "${pkgdir}/usr/bin/${pkgname}"
     install -D -m644 lcar.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 "AR${pkgver%%.*}"/{PgdAtividadeRural,pgd-updater}.jar -t "${pkgdir}/usr/share/java/${pkgname}"
+    install -D -m644 "AR${pkgver%%.*}"/{{PgdAtividadeRural,pgd-updater}.jar,ARURAL.acb} -t "${pkgdir}/usr/share/java/${pkgname}"
     install -D -m644 "AR${pkgver%%.*}/Leia_me.htm" -t "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "AR${pkgver%%.*}/help" "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "AR${pkgver%%.*}/lib" "${pkgdir}/usr/share/java/${pkgname}"
