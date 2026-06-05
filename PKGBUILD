@@ -2,7 +2,7 @@
 
 _pkgname='dev-proxy'
 pkgname="${_pkgname}-bin"
-pkgver=3.0.0
+pkgver=3.0.1
 _pkgver="$(echo $pkgver | sed 's|_|-|g')"
 pkgrel=1
 pkgdesc="Simulate API failures, throttling, and chaos — all from your command line."
@@ -13,7 +13,7 @@ provides=(${_pkgname})
 options=('!strip')
 makedepends=('unzip')
 source=(${url}/releases/download/v${_pkgver}/${_pkgname}-linux-x64-v${_pkgver}.zip)
-sha256sums=('145a53fff08c167db93ff601a3584704f0bfb1e721612ce08372ff6b584199d8')
+sha256sums=('870ba80453804fe16a8fb857779ff4887896fa488dfa1de6e8829f88d8c99de6')
 
 package() {
     _pkgexe=$([[ "$_pkgver" =~ beta ]] && echo "devproxy-beta" || echo "devproxy")
