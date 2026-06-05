@@ -1,12 +1,14 @@
 pkgbase = go2webp
 	pkgdesc = CLI tool for converting images and folders of images to WebP format
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/fausty/go2webp
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = go
+	depends = glibc
+	depends = libwebp
 	source = https://codeberg.org/fausty/go2webp/archive/v1.0.0.tar.gz
 	sha256sums = 7a043401761d62186510e560bc65110bf2d800ffd3d2f75c16d9152503b3512f
 
