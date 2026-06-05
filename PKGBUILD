@@ -25,8 +25,8 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64.tar.gz")
-sha256sums_x86_64=('2b24fd958c5a2500acf9fe97eb663080fa9a5e58d649de0c1f6bed56953c1bb2')
-sha256sums_aarch64=('4ca294879f469d43a2f5571f2030abbb2976a2a66233d8d3f1879910c6097db2')
+sha256sums_x86_64=('dc0d7bb712793a0d2f2888f85722d9dd73a10cb92e9ff9472d2620975289cf4a')
+sha256sums_aarch64=('ede5461d511e4d692d0ebbb49537d63e92b1b60130c21419dd505674c2f9a186')
 
 package() {
     # The release tarball is named after the host arch — $CARCH is set
