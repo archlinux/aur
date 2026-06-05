@@ -2,7 +2,7 @@
 
 pkgname=cnmatrix
 pkgver=0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='C interface to a few matrix backends'
 arch=('x86_64')
 url='https://github.com/cntools/cnmatrix/'
@@ -17,6 +17,9 @@ source=("https://github.com/cntools/cnmatrix/archive/v${pkgver}/${pkgname}-${pkg
 sha256sums=('c9c43791b258feb25436288b1e219566903d72a158c81480a2185f21b0648426')
 
 build() {
+    # for allowing the use of a different cblas provider
+    export CFLAGS+=" $(pkg-config --cflags cblas)"
+    
     cmake -B build -S "${pkgname}-${pkgver}" \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
