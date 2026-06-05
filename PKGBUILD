@@ -2,12 +2,12 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=pori
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pori: Systemd Mount Manager"
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Pori"
 license=('GPL-3.0-only')
-provides=('Pori')
+provides=('pori')
 depends=(
     'gtk4'
     'glib2'
@@ -48,5 +48,4 @@ Categories=System;Utility;
 Terminal=false
 EOF
 }
-sha256sums=('2eb8d4b6e3007c4f6a700bbb6fb20f199f757d62d5737d0dbc9fbfa58bf636f5')
 sha256sums=('fa18732e7b5cbdd966ed01fceb9f3fc19c7f96c5dc9498371d32b1a425e94012')
