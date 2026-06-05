@@ -1,7 +1,7 @@
 post_install() {
     chmod a+x /opt/trueconf/client/trueconf
     chmod a+x /opt/trueconf/client/trueconf-autostart
-    chmod a+x /opt/trueconf/client/qt5/libexec/QtWebEngineProcess
+    chmod a+x /opt/trueconf/client/qt6/libexec/QtWebEngineProcess
 
     ln -f -s /opt/trueconf/client/trueconf /usr/bin/trueconf
 

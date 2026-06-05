@@ -2,7 +2,7 @@
 
 pkgbase='trueconf-client'
 pkgname='trueconf'
-pkgver=8.5.4.112
+pkgver=8.6.0.1187
 pkgrel='1'
 pkgdesc='TrueConf for Linux is a video conferencing app with advanced collaboration tools and user-friendly UI. All you need to get started is any PC or laptop with an Internet connection.'
 arch=('x86_64')
@@ -14,26 +14,23 @@ depends=('freetype2' 'lame' 'libidn' 'speex' 'v4l-utils' 'libxext' 'libx11' 'lib
          'libxkbcommon' 'libxkbcommon-x11' 'alsa-lib' 'hunspell' 'gsl' 'libmfx'
          'libva' 'opencv' 'c-ares' 'avahi' 'nss' 'xcb-util-wm' 'xcb-util-keysyms'
          'xcb-util-image' 'xcb-util-renderutil' 'double-conversion' 'gtk3' 'lshw'
+         'qt6-base' 'qt6-multimedia' 'qt6-svg' 'qt6-webengine' 'qt6-tools' 'qt6-shadertools'
         )
 install="${pkgname}.install"
 _channel=stable
 source=("$mirror/$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst")
-sha512sums=('7c5bc049cdf27e79d7c460da02e58e177154651c439379d6ede26383d272f7a1487730baf39610c3b83836012dabfdc653ea725f7cea11b023ced4cae2c809b6')
+sha512sums=('dea9b4a7ad59c62759d51245e3753441535e3ffa1e78337ca07178c8903a528276867eccf353f731abf393a683984459dabce73f2797d104f9d6074b0792ca55')
 
 package() {
   cd "${srcdir}"
   install -Dm 755 "${srcdir}/opt/${pkgname}/client/TrueConf" "${pkgdir}/opt/${pkgname}/client/TrueConf"
   install -Dm 755 "${srcdir}/opt/${pkgname}/client/${pkgname}" "${pkgdir}/opt/${pkgname}/client/${pkgname}"
-  install -Dm 755 "${srcdir}/opt/${pkgname}/client/qt.conf" "${pkgdir}/opt/${pkgname}/client/qt.conf"
   install -Dm 755 "${srcdir}/opt/${pkgname}/client/${pkgname}-autostart" "${pkgdir}/opt/${pkgname}/client/${pkgname}-autostart"
   install -Dm 644 "${srcdir}/opt/${pkgname}/client/${pkgname}_client-autostart.desktop" "${pkgdir}/opt/${pkgname}/client/${pkgname}_client-autostart.desktop"
   install -Dm 644 "${srcdir}/usr/share/metainfo/${pkgname}.appdata.xml" "${pkgdir}/usr/share/metainfo/${pkgname}.appdata.xml"
   install -Dm 644 "${srcdir}/usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm 644 "${srcdir}/usr/share/pixmaps/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm 644 "${srcdir}/usr/share/pixmaps/${pkgname}16.png" "${pkgdir}/usr/share/pixmaps/${pkgname}16.png"
-  #qt5
-  install -m755 -d "${pkgdir}/opt/${pkgname}/client/qt5"
-  cp -r "${srcdir}/opt/${pkgname}/client/qt5/"* "${pkgdir}/opt/${pkgname}/client/qt5"
   #libs
   install -m755 -d "${pkgdir}/opt/${pkgname}/client/lib"
   cp -r "${srcdir}/opt/${pkgname}/client/lib/"* "${pkgdir}/opt/${pkgname}/client/lib"
