@@ -1,7 +1,7 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=peerbeat-bin
 _pkgname=peerbeat
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Local-first music player with LAN peer-to-peer sharing (prebuilt binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip')
 source=("PeerBeat-${pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${pkgver}/PeerBeat-${pkgver}-linux-x86_64.tar.gz"
         "peerbeat.desktop::${url}/raw/v${pkgver}/packaging/linux/peerbeat.desktop"
         "PeerBeat.png::${url}/raw/v${pkgver}/assets/icon/PeerBeat.png")
-sha256sums=('658b8839760b5d10d5cdda760eb2a722620cd17b329af3a5ea47314c7445acd9'
+sha256sums=('a4eb1455d012c671f6be359992f46f93a70672e6a48e604af68efe92762ab8a4'
             'ddc45118db49b11a954d811200cf7479dbbec9e9ef2bedbfaa2bd5e7eb86ca30'
             '562d8fe3b0ffc5f2c2a2ae81aa43f95a20a85875950b82b30e589c0695c7c9f0')
 
