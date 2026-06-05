@@ -11,7 +11,7 @@ pkgname=uniclipboard-git
 _pkgname=uniclipboard
 # pkgver 是 AUR web 上展示用的 snapshot；makepkg 实际编译时调用下方 pkgver() 重算。
 # CI 在 push 前会用 git describe 的当前值 sed 替换，保持 web 视图不过期。
-pkgver=0.10.0.r9.gdf79879
+pkgver=0.14.0.alpha.4.r66.gb2202de
 pkgrel=1
 pkgdesc="Real-time clipboard sync across macOS, Windows and Linux — local-first, peer-to-peer, and end-to-end encrypted"
 arch=('x86_64' 'aarch64')
@@ -51,6 +51,12 @@ prepare() {
 
 build() {
   cd "$_pkgname"
+  # ADR-008 D13: build + stage the standalone `uniclipd` daemon as a Tauri
+  # sidecar before `tauri build`, so package() can ship it next to the GUI and
+  # the GUI spawns it as a sibling (uc-daemon-local spawn.rs). This also
+  # satisfies the externalBin reference declared in tauri.conf.json. uniclipd
+  # shares the GUI's crate graph, so no extra makedepends beyond the GUI's.
+  bun run daemon:sidecar
   # --no-bundle 跳过 .deb/.rpm/.AppImage 生成，PKGBUILD 自己负责安装路径。
   # 这样不需要 dpkg/rpm-build/appimagetool 这些额外 makedepends。
   bun run tauri build --no-bundle
@@ -61,6 +67,10 @@ package() {
 
   install -Dm755 "src-tauri/target/release/$_pkgname" \
                  "$pkgdir/usr/bin/$_pkgname"
+
+  # ADR-008 D13: ship the daemon next to the GUI so it spawns as a sibling.
+  install -Dm755 "src-tauri/target/release/uniclipd" \
+                 "$pkgdir/usr/bin/uniclipd"
 
   install -Dm644 "packaging/linux/$_pkgname.desktop" \
                  "$pkgdir/usr/share/applications/$_pkgname.desktop"
