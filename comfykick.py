@@ -1,0 +1,456 @@
+#!/usr/bin/env python3
+
+import json
+import os
+import shutil
+import subprocess
+import sys
+import tarfile
+import tempfile
+import tomllib
+import urllib.request
+from pathlib import Path
+
+import yaml
+
+PROJECT_NAME = "comfykick"
+
+PROJECT_VERSION = "v1.0"
+
+PROJECT_DIR = Path(__file__).resolve().parent
+
+GITHUB_API_LATEST = "https://api.github.com/repos/Comfy-Org/ComfyUI/releases/latest"
+GITHUB_API_TAG = "https://api.github.com/repos/Comfy-Org/ComfyUI/releases/tags/{}"
+
+XDG_CACHE_HOME = Path(os.environ.get("XDG_CACHE_HOME", os.path.expanduser("~/.cache")))
+XDG_CONFIG_HOME = Path(os.environ.get("XDG_CONFIG_HOME", os.path.expanduser("~/.config")))
+XDG_DATA_HOME = Path(os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share")))
+
+DEFAULTS = {
+    "base_dir": XDG_DATA_HOME / PROJECT_NAME / "base",
+    "comfyui_extra_options": [
+        "--disable-xformers",
+        "--fast",
+        "--preview-method auto",
+        "--use-pytorch-cross-attention",
+        "--verbose WARNING",
+    ],
+    "enable_manager": True,
+    "extra_model_paths_yaml": "",
+    "extra_python_package": [],
+    "listen": "localhost",
+    "output_dir": XDG_DATA_HOME / PROJECT_NAME / "output",
+    "port": 8188,
+    "prekick_exec": [],
+    "release_cache_dir": XDG_DATA_HOME / PROJECT_NAME / "release_cache",
+    "runtime_dir": XDG_CACHE_HOME / PROJECT_NAME,
+    "update": True,
+    "venv_cache_dir": XDG_DATA_HOME / PROJECT_NAME / "venv_cache",
+    "version": "latest",
+    "uv_extra_index_url": "",
+}
+
+
+def log(level, msg, *args, _order=("DEBUG", "INFO", "WARNING", "ERROR")):
+    level = level.upper()
+    if level not in _order:
+        raise ValueError(f"unknown log level: {level!r}")
+    threshold = (
+        os.environ.get("COMFYKICK_LOG")
+        or os.environ.get("LOG_LEVEL")
+        or "INFO"
+    ).upper()
+    if threshold not in _order:
+        threshold = "INFO"
+    if _order.index(level) < _order.index(threshold):
+        return
+    text = msg % args if args else msg
+    print(f"{level}: {text}", file=sys.stderr)
+    if level == "ERROR":
+        sys.exit(1)
+
+
+# Path-style options: an explicit "" is a sentinel meaning
+# "use the built-in default" rather than "inherit from a lower-priority
+# layer". Other keys drop "" so that omitting them still inherits.
+_PATH_KEYS = (
+    "base_dir",
+    "output_dir",
+    "release_cache_dir",
+    "runtime_dir",
+    "venv_cache_dir",
+)
+
+
+def _read_toml(path):
+    try:
+        with open(path, "rb") as f:
+            data = tomllib.load(f)
+    except (FileNotFoundError, tomllib.TOMLDecodeError, IsADirectoryError, PermissionError):
+        return {}
+
+    if not isinstance(data, dict):
+        return {}
+
+    cleaned = {}
+    for key, value in data.items():
+        if key in _PATH_KEYS:
+            # Keep "" as a sentinel meaning "use the built-in default"
+            # instead of dropping it.
+            cleaned[key] = value
+        elif isinstance(value, str) and value.strip() == "":
+            continue
+        else:
+            cleaned[key] = value
+    return cleaned
+
+
+def _load_config():
+    config_files = [
+        Path(f"/etc/{PROJECT_NAME}.toml"),
+        XDG_CONFIG_HOME / f"{PROJECT_NAME}.toml",
+        PROJECT_DIR / "dev" / f"{PROJECT_NAME}.toml",
+    ]
+
+    config = dict(DEFAULTS)
+    for path in config_files:
+        if path.is_file():
+            config = {**config, **_read_toml(path)}
+
+    # Path-style keys explicitly set to "" should fall back to the
+    # built-in default rather than inherit from a lower-priority file.
+    for key in _PATH_KEYS:
+        if config.get(key) == "":
+            config[key] = DEFAULTS[key]
+    return config
+
+
+def _resolve_extra_model_paths(config):
+    """Parse ``config['extra_model_paths_yaml']`` and return the list of
+    model sub-directories declared under sections with
+    ``is_default: true``.
+
+    Returns an empty list when:
+      - the value is empty
+      - the file does not exist
+      - the yaml has no section with ``is_default: true``
+
+    Exits with an error when:
+      - the yaml cannot be parsed
+      - the top-level is not a mapping
+      - a ``is_default: true`` section has a missing or relative ``base_path``
+    """
+    raw = config["extra_model_paths_yaml"]
+    if not raw:
+        return []
+    path = Path(raw)
+    if not path.is_file():
+        log("WARNING", "extra_model_paths_yaml not found: %s", raw)
+        return []
+
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f)
+    except yaml.YAMLError as e:
+        log("ERROR", "failed to parse %s: %s", raw, e)
+
+    # An empty file or a file that contains only comments yields ``None``
+    # from ``yaml.safe_load``; treat that as "no sections defined".
+    if data is None:
+        return []
+    if not isinstance(data, dict):
+        log("ERROR", "%s must be a mapping at the top level.", raw)
+
+    extra_dirs = []
+    for section_name, section in data.items():
+        if not isinstance(section, dict):
+            continue
+        if section.get("is_default") is not True:
+            continue
+        base_path = section.get("base_path")
+        if not (isinstance(base_path, str) and base_path):
+            log(
+                "ERROR",
+                "section '%s' in %s is marked is_default but has no base_path.",
+                section_name, raw,
+            )
+        if not Path(base_path).is_absolute():
+            log(
+                "ERROR",
+                "section '%s' in %s has a relative base_path '%s'. "
+                "Please use an absolute path.",
+                section_name, raw, base_path,
+            )
+        for key, value in section.items():
+            if key == "base_path":
+                continue
+            if isinstance(value, str):
+                items = value.splitlines()
+            elif isinstance(value, list):
+                items = value
+            else:
+                continue
+            for item in items:
+                if not isinstance(item, str):
+                    continue
+                item = item.strip()
+                if not item:
+                    continue
+                extra_dirs.append(Path(base_path) / item)
+    return extra_dirs
+
+
+def create_directories(config, extra_dirs):
+    base_dir = Path(config["base_dir"])
+    output_dir = Path(config["output_dir"])
+    release_cache_dir = Path(config["release_cache_dir"])
+    runtime_dir = Path(config["runtime_dir"])
+    venv_cache_dir = Path(config["venv_cache_dir"])
+
+    base_dir.mkdir(parents=True, exist_ok=True)
+    (base_dir / "custom_nodes").mkdir(parents=True, exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    release_cache_dir.mkdir(parents=True, exist_ok=True)
+    runtime_dir.mkdir(parents=True, exist_ok=True)
+    venv_cache_dir.mkdir(parents=True, exist_ok=True)
+
+    for d in extra_dirs:
+        d.mkdir(parents=True, exist_ok=True)
+
+
+def _api_request(url):
+    timeout = 30
+    req = urllib.request.Request(url)
+    req.add_header("Accept", "application/vnd.github+json")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return json.load(resp)
+    except TimeoutError:
+        log("ERROR", "Timed out after %s seconds while requesting %s", timeout, url)
+
+
+def _resolve_version(config, release_cache_dir):
+    # Determine which ComfyUI version will be run.
+    version = config["version"]
+    update = config["update"]
+
+    if update:
+        url = (
+            GITHUB_API_LATEST
+            if version == "latest"
+            else GITHUB_API_TAG.format(version)
+        )
+        data = _api_request(url)
+        return data["tag_name"], data["tarball_url"]
+
+    if version == "latest":
+        latest_link = release_cache_dir / "latest"
+        if not latest_link.is_symlink():
+            log("ERROR", "No cached 'latest' version and update is disabled.")
+        tarball_name = os.readlink(latest_link)
+        return tarball_name[: -len(".tar.gz")], None
+
+    return version, None
+
+
+def _ensure_tarball(tag, release_cache_dir, tarball_url=None, is_latest=False, refresh=False):
+    # Make sure the tarball for ``tag`` is present in the cache directory.
+    tarball_name = f"{tag}.tar.gz"
+    tarball_path = release_cache_dir / tarball_name
+
+    if refresh:
+        log("INFO", "Refreshing cached tarball for %s ...", tag)
+        tarball_path.unlink(missing_ok=True)
+        if is_latest:
+            (release_cache_dir / "latest").unlink(missing_ok=True)
+
+    if not tarball_path.exists():
+        if tarball_url is None:
+            log(
+                "ERROR",
+                "Cached tarball for %s is missing or corrupted, "
+                "and update is disabled.",
+                tag,
+            )
+        log("INFO", "Downloading ComfyUI %s ...", tag)
+        tmp_fd, tmp_name = tempfile.mkstemp(
+            prefix=f"comfykick_{tag}.tar.gz_",
+            dir="/tmp",
+        )
+        os.close(tmp_fd)
+        tmp_path = Path(tmp_name)
+        try:
+            urllib.request.urlretrieve(tarball_url, tmp_path)
+            shutil.move(tmp_path, tarball_path)
+        except Exception:
+            tmp_path.unlink(missing_ok=True)
+            raise
+
+    if is_latest:
+        latest_link = release_cache_dir / "latest"
+        if latest_link.is_symlink() or latest_link.is_file():
+            latest_link.unlink()
+        latest_link.symlink_to(tarball_name)
+
+    return tarball_path
+
+
+def _extract_tarball(tarball_path, dest_dir):
+    try:
+        with tarfile.open(tarball_path, "r:gz") as tar:
+            tar.extractall(dest_dir, filter="data")
+    except (tarfile.TarError, OSError, EOFError) as e:
+        log(
+            "WARNING",
+            "Failed to extract %s: %s; treating as corrupted.",
+            tarball_path, e,
+        )
+        shutil.rmtree(dest_dir, ignore_errors=True)
+        return None
+
+    entries = list(dest_dir.iterdir())
+    if len(entries) == 1 and entries[0].is_dir():
+        return entries[0]
+
+    return dest_dir
+
+
+def run_prekick_commands(config, extracted_dir):
+    prekick_cmds = config.get("prekick_exec", [])
+    if not prekick_cmds:
+        return
+    env = os.environ.copy()
+    for cmd in prekick_cmds:
+        if not isinstance(cmd, str) or not cmd.strip():
+            continue
+        log("INFO", "Running command: [%s]", cmd)
+        subprocess.run(cmd, shell=True, cwd=str(extracted_dir), env=env, check=True)
+
+
+def install_dependencies(extracted_dir, config, tag):
+    env = os.environ.copy()
+
+    if config["uv_extra_index_url"]:
+        env["UV_EXTRA_INDEX_URL"] = config["uv_extra_index_url"]
+
+    venv_cache_dir = Path(config["venv_cache_dir"])
+    venv_link = extracted_dir / ".venv"
+    if venv_link.is_symlink():
+        venv_link.unlink()
+    elif venv_link.exists():
+        shutil.rmtree(venv_link)
+    venv_link.symlink_to(venv_cache_dir)
+
+    def run(cmd):
+        subprocess.run(cmd, cwd=str(extracted_dir), env=env, check=True)
+
+    run(["uv", "--quiet", "venv", "--allow-existing"])
+    run(["uv", "--quiet", "sync", "--inexact"])
+    log("INFO", "Installing basic dependencies ...")
+    run(["uv", "pip", "install", "--requirements", "requirements.txt"])
+
+    if config["enable_manager"]:
+        manager_req = extracted_dir / "manager_requirements.txt"
+        if not manager_req.exists():
+            log(
+                "ERROR",
+                "manager_requirements.txt is missing from ComfyUI <%s>. "
+                "This is unexpected; Please report a bug to %s repo",
+                tag, PROJECT_NAME,
+            )
+        log("INFO", "Installing manager dependencies ...")
+        run(["uv", "pip", "install", "--requirements", "manager_requirements.txt"])
+
+    extra_pkgs = config.get("extra_python_package", [])
+    if extra_pkgs:
+        log("INFO", "Installing extra dependencies ...")
+        for pkg in extra_pkgs:
+            run(["uv", "pip", "install", "--no-build-isolation", pkg])
+
+
+def launch_comfyui(config, extracted_dir):
+    env = os.environ.copy()
+
+    args = ["uv", "--directory", str(extracted_dir), "run", "main.py"]
+    args.extend([
+        "--base-directory", config["base_dir"],
+        "--listen", config["listen"],
+        "--output-directory", config["output_dir"],
+        "--port", str(config["port"]),
+        "--temp-directory", config["runtime_dir"],
+    ])
+    if config["extra_model_paths_yaml"]:
+        args.extend(["--extra-model-paths-config", config["extra_model_paths_yaml"]])
+    if config["enable_manager"]:
+        args.append("--enable-manager")
+    for opt in config["comfyui_extra_options"]:
+        args.extend(opt.split())
+
+    os.execvpe("uv", args, env)
+
+
+def main():
+    log("INFO", "Starting %s %s", PROJECT_NAME, PROJECT_VERSION)
+
+    config = _load_config()
+
+    log("INFO", "Loaded configuration:")
+    for key in sorted(config):
+        print(f"  > {key} = {config[key]!r}", file=sys.stderr)
+
+    extra_dirs = _resolve_extra_model_paths(config)
+
+    create_directories(config, extra_dirs)
+
+    release_cache_dir = Path(config["release_cache_dir"])
+    tag, tarball_url = _resolve_version(config, release_cache_dir)
+    tarball_path = _ensure_tarball(
+        tag,
+        release_cache_dir,
+        tarball_url=tarball_url,
+        is_latest=(config["version"] == "latest"),
+    )
+
+    log("INFO", "Extracting ComfyUI %s ...", tag)
+    prefix = f"_run-{tag}-"
+    runtime_dir = Path(config["runtime_dir"])
+    for old in runtime_dir.iterdir():
+        if old.is_dir() and old.name.startswith("_run-"):
+            shutil.rmtree(old, ignore_errors=True)
+    work_temp = tempfile.mkdtemp(prefix=prefix, dir=config["runtime_dir"])
+
+    extracted_dir = _extract_tarball(tarball_path, Path(work_temp))
+    if extracted_dir is None:
+        log("INFO", "Re-preparing tarball for %s ...", tag)
+        tarball_path = _ensure_tarball(
+            tag,
+            release_cache_dir,
+            tarball_url=tarball_url,
+            is_latest=(config["version"] == "latest"),
+            refresh=True,
+        )
+        extracted_dir = _extract_tarball(tarball_path, Path(work_temp))
+        if extracted_dir is None:
+            log(
+                "ERROR",
+                "Re-preparing tarball for %s is still corrupted; giving up.",
+                tag,
+            )
+
+    # hack. See <https://github.com/Comfy-Org/ComfyUI/issues/8764>
+    user_dir = extracted_dir / "user"
+    user_dir.mkdir(exist_ok=True)
+
+    run_prekick_commands(config, extracted_dir)
+
+    install_dependencies(extracted_dir, config, tag)
+
+    log(
+        "INFO",
+        "Kicking ComfyUI %s on http://%s:%s ...", tag, config["listen"], config["port"],
+    )
+    launch_comfyui(config, extracted_dir)
+
+
+if __name__ == "__main__":
+    main()

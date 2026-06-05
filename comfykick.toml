@@ -1,0 +1,125 @@
+# # ComfyKick configuration
+# #
+# # This is a user-facing example. Edit a copy of this file at one of the
+# # following locations (highest priority last):
+# #   - ~/.config/comfykick.toml ($XDG_CONFIG_HOME/comfykick.toml)
+# #   - /etc/comfykick.toml
+# #
+# # Omit a key (e.g. comment it out as `# output_dir = /tmp`) to inherit
+# # its value from a lower-priority config file, or to fall back to the
+# # built-in default.
+
+# # ---------------------------------------------------------------------------
+# # Network
+# # ---------------------------------------------------------------------------
+
+# # Hostname or IP address that ComfyUI binds to.
+# # Use "0.0.0.0" to listen on all interfaces.
+# # Default: localhost
+# listen                 = "localhost"
+
+# # TCP port that ComfyUI listens on.
+# # Default: 8188
+# port                   = 8188
+
+# # ---------------------------------------------------------------------------
+# # ComfyUI source
+# # ---------------------------------------------------------------------------
+
+# # ComfyUI release to run. Either "latest" (follow the newest GitHub
+# # release) or a specific tag such as "v0.23.0".
+# # Default: latest
+# version                = "latest"
+
+# # Check the release update.
+# # Set to false to using previously offline cached release tarball.
+# # Default: true
+# update                 = true
+
+# # ---------------------------------------------------------------------------
+# # Filesystem layout
+# # ---------------------------------------------------------------------------
+
+# # ComfyUI base directory (settings, models, custom nodes, ...).
+# # Leave empty to use the default value.
+# # Default: ~/.local/share/comfykick/base ($XDG_DATA_HOME/comfykick/base)
+# base_dir               = ""
+
+# # Directory where ComfyUI writes generated images / videos.
+# # Leave empty to use the default value.
+# # Default: ~/.local/share/comfykick/output ($XDG_DATA_HOME/comfykick/output)
+# output_dir             = ""
+
+# # Temp directory to contain the running ComfyUI source tree.
+# # Point to tmpfs drive (e.g. `/tmp/comfykick`) to improve performance.
+# # Leave empty to use the default value.
+# # Default: ~/.cache/comfykick ($XDG_CACHE_HOME/comfykick)
+# runtime_dir            = ""
+
+# # Directory to cache ComfyUI release tarballs.
+# # Leave empty to use the default value.
+# # Default: ~/.local/share/comfykick/release_cache ($XDG_DATA_HOME/comfykick/release_cache)
+# release_cache_dir      = ""
+
+# # Directory to cache venv.
+# # Leave empty to use the default value.
+# # Default: ~/.local/share/comfykick/venv_cache ($XDG_DATA_HOME/comfykick/venv_cache)
+# venv_cache_dir         = ""
+
+# # Path to ComfyUI extra_model_paths.yaml file.
+# # Leave empty to disable this feature.
+# # Default: disabled
+# extra_model_paths_yaml = ""
+
+# # ---------------------------------------------------------------------------
+# # ComfyUI launch options
+# # ---------------------------------------------------------------------------
+
+# # Toggle to install and enable ComfyUI-Manager.
+# # Default: true
+# enable_manager         = true
+
+# # Extra command-line options forwarded to ComfyUI.
+# # Each entry is split on whitespace and appended to the final argv, so
+# # `["--fast", "--verbose WARNING"]` becomes `--fast --verbose WARNING`.
+# # See https://github.com/Comfy-Org/ComfyUI for the full list of flags.
+# # Default: [
+# #     "--disable-xformers",
+# #     "--fast",
+# #     "--preview-method auto",
+# #     "--use-pytorch-cross-attention",
+# #     "--verbose WARNING",
+# # ]
+# comfyui_extra_options  = [
+#     "--disable-xformers",
+#     "--fast",
+#     "--preview-method auto",
+#     "--use-pytorch-cross-attention",
+#     "--verbose WARNING",
+# ]
+
+# # ---------------------------------------------------------------------------
+# # Extra setup
+# # ---------------------------------------------------------------------------
+
+# # Extra index URL for uv installing Python packages.
+# # Useful for select specific the PyTorch variant or mirror.
+# # e.g. `https://download.pytorch.org/whl/cu130` (CUDA)
+# #      `https://download.pytorch.org/whl/rocm7.2` (ROCm)
+# #      `https://download.pytorch.org/whl/xpu` (XPU)
+# # Leave empty to use environment's default.
+# # Default: ""
+# uv_extra_index_url     = ""
+
+# # Extra Python packages install.
+# # Can use this to bake in custom-node dependencies that are not yet
+# # pinned in ComfyUI's own requirements files.
+# # e.g. `["matrix-nio", "foo==1.2.3", "bar>=4.5.6"]`
+# # Default: []
+# extra_python_package   = []
+
+# # Shell commands to run before the ComfyUI start.
+# # The working directory is ComfyUI source tree directory.
+# # e.g. `["mkdir -p \"$PWD\"/dir", "/path/to/my.sh"]`
+# # Default: []
+# prekick_exec           = []

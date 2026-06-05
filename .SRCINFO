@@ -1,0 +1,24 @@
+pkgbase = comfykick
+	pkgdesc = The official way to launch ComfyUI is suck, this is better.
+	pkgver = v1.0
+	pkgrel = 1
+	url = https://github.com/KFERMercer/ComfyKick
+	install = comfykick.install
+	arch = any
+	license = GPL-3.0-only
+	depends = python
+	depends = python-yaml
+	depends = uv
+	optdepends = cuda: CUDA support
+	optdepends = rocm-hip-sdk: ROCm support
+	optdepends = intel-compute-runtime: Intel XPU support
+	source = LICENSE
+	source = comfykick.py
+	source = comfykick.service
+	source = comfykick.toml
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = ebdbf62a292a1e8c5d636f9565b9c574f65079dbf4c1fee87cf7743cca31c33e
+	sha256sums = a5438512c37eee0570c36bfa2fbdcbb3797d7023510925039a63f6cbe76ba36d
+	sha256sums = adce6073a337a64f4749a74fdb9f75d3061b9eb209c860e007eb38888e3449cb
+
+pkgname = comfykick

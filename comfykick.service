@@ -1,0 +1,10 @@
+[Unit]
+Description=Better ComfyUI Deploy Wrapper
+After=local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/share/comfykick/comfykick.py
+
+[Install]
+WantedBy=default.target

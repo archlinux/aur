@@ -1,0 +1,11 @@
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.venv
+dev/
+pkg/
+src/
+*.pkg.tar.zst
