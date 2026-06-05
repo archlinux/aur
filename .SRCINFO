@@ -1,6 +1,6 @@
 pkgbase = hexkit
 	pkgdesc = Hex map editor for tabletop games
-	pkgver = 0.2.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/trinvh/hexkit
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = hexkit
 	depends = libsecret
 	depends = hidapi
 	depends = hicolor-icon-theme
-	source = hexkit-0.2.0.rpm::https://github.com/trinvh/hexkit/releases/download/v0.2.0/Hexkit-0.2.0-1.x86_64.rpm
-	sha256sums = 05ded257ec03e28098e85e34bacae30b0bb3d9123112aebed10f8918929a7b80
+	source = hexkit-0.3.2.rpm::https://github.com/trinvh/hexkit/releases/download/v0.3.2/Hexkit-0.3.2-1.x86_64.rpm
+	sha256sums = dc536eb074e57e77f7a9e4410addf9729ea8852a76e610e4d3ad42677a89589e
 
 pkgname = hexkit
