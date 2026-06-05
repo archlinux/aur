@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=irpf2025
-pkgver=2025.1.7
+pkgver=2025.1.8
 pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) program (2025 version)'
 arch=('any')
@@ -12,6 +12,7 @@ depends=(
     'java-runtime=11'
     'sh')
 optdepends=(
+    'cups: for print support'
     'gvfs: for importing pre-filled data from a gov.br account')
 makedepends=(
     'icoutils')
@@ -19,9 +20,9 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arq
         'irpf.desktop'
         'irpf.sh'
         'LICENSE')
-sha256sums=('935852b029f2d6ea321985bf0617c5b3bd6eba3a83aab58739fe0043f8b1cad9'
-            '0942ffba1e625b087bae0b9e41f1c60ad319db4f50dc4286762a27ae0dd63fe1'
-            '10aa441be25e72c23d74a17839bde2f1be54a9ee9885ee7dd144027c23f2cf1d'
+sha256sums=('8a225b26acf4bea40118d6a2502d889e875e9687c25391e1648632638047c34c'
+            '258f86f0f62d822e97d97c5f6206333b7e792be25fb5d056383efbb12d613d3a'
+            '330209f61e7edc67fafb4b52a077554b177872f021606d07247906f2dd429021'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
 
 prepare() {
