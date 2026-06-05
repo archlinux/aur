@@ -2,8 +2,8 @@
 
 _pkgname=swiftly
 pkgname=swiftly-bin
-pkgver=1.1.1
-pkgrel=4
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="A Swift toolchain installer and manager, written in Swift."
 arch=('x86_64' 'aarch64')
 url="https://swiftlang.github.io/swiftly/"
