@@ -24,25 +24,30 @@ source_x86_64=(
   "documind-${pkgver}.tar.gz::https://github.com/Parth2684/documind-native/releases/download/v${pkgver}/documind-linux-x86_64.tar.gz"
 )
 
-sha256sums_x86_64=('61501049a420d2039cca62e6fea72e12b11fd99d3cc18c5b1bb6ad76d4c5ca22')
+sha256sums_x86_64=('20e96f68e830b7df6b29eaa25970777461f4648153b557cee0c508ee06fb3f2f')
 
 package() {
     install -Dm755 "$srcdir/documind" "$pkgdir/usr/bin/documind"
 
     install -Dm644 "$srcdir/documind.desktop" \
-    "$pkgdir/usr/share/applications/documind.desktop"
+        "$pkgdir/usr/share/applications/documind.desktop"
 
     install -Dm644 "$srcdir/128x128.png" \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/documind.png"
+        "$pkgdir/usr/share/icons/hicolor/128x128/apps/documind.png"
 
     install -Dm644 "$srcdir/32x32.png" \
-      "$pkgdir/usr/share/icons/hicolor/32x32/apps/documind.png"
+        "$pkgdir/usr/share/icons/hicolor/32x32/apps/documind.png"
 
-    install -Dm644 "$srcdir/256x256@2.png" \
-        "$pkgdir/usr/share/icons/hicolor/256x256@2/apps/documind.png"
+    install -Dm644 "$srcdir/128x128@2.png" \
+        "$pkgdir/usr/share/icons/hicolor/128x128@2/apps/documind.png"
 
-  if [ -d "$srcdir/models" ]; then
     install -d "$pkgdir/usr/lib/documind"
-    cp -r "$srcdir/models" "$pkgdir/usr/lib/documind/"
-  fi
+
+    if [ -d "$srcdir/models" ]; then
+        cp -r "$srcdir/models" "$pkgdir/usr/lib/documind/"
+    fi
+
+    if [ -d "$srcdir/voices" ]; then
+        cp -r "$srcdir/voices" "$pkgdir/usr/lib/documind/"
+    fi
 }
