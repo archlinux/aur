@@ -6,7 +6,7 @@ pkgver=r1.0000000
 pkgrel=1
 pkgdesc='A small status bar for the River and niri Wayland compositors'
 arch=('x86_64')
-url='https://github.com/vighd/river-bar'
+url='https://codeberg.org/vighd/river-bar'
 license=('MIT')
 # No compositor package is required to build or run: the bar renders nothing
 # until it finds a supported compositor's interface at runtime, so River and
@@ -28,7 +28,7 @@ optdepends=(
 )
 provides=('river-bar')
 conflicts=('river-bar')
-source=("${_pkgname}::git+https://github.com/vighd/river-bar.git")
+source=("${_pkgname}::git+https://codeberg.org/vighd/river-bar.git")
 sha256sums=('SKIP')
 
 pkgver() {
