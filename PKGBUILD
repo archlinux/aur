@@ -26,8 +26,12 @@ optdepends=(
 provides=("pkgbuild-manager")
 conflicts=("pkgbuild-manager-git")
 install=pkgbuild-manager.install
+# FIX: sha256sums must not be 'SKIP' in releases published to the AUR.
+# Replace with the real hash before publishing:
+#   sha256sums=('PUT_REAL_SHA256_HASH_HERE')
+# To generate: makepkg -g
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/johnpetersa19/PKGBUILD_Manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c9e8a2a0e38b731b62632d685ac813a9e53e4a19405894d390a126ed08ecda0d')
+sha256sums=('932004c78dae9f80b9bfbfda0f2e6aba4e47386ae087010ddc3fff3e37fbdd39')
 
 build() {
   arch-meson "$_pkgname-$pkgver" build --buildtype=release
