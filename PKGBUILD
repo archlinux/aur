@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit
-pkgver=0.8.13
+pkgver=0.8.14
 pkgrel=1
 pkgdesc="moshpit client — SSH and Mosh inspired remote terminal client written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT' 'Apache-2.0')
 depends=('moshpit-keygen')
 makedepends=('cargo' 'cmake' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/moshpit/archive/v$pkgver.tar.gz")
-sha256sums=('7ccb5e299f8854b629edcdbb11ef8c62ae003b3d04d28e1de80b425c955d49ed')
+sha256sums=('f50c993d95a171885134d231ea1dbe268a8c6617bc63c04be9ee951a72051b2c')
 
 prepare() {
     cd "moshpit-$pkgver"
