@@ -42,9 +42,11 @@ The [ComfyUI](https://github.com/Comfy-Org/ComfyUI) is designed to be run from a
 
 #### Install (Manual)
 
-- [`comfykick.py`](https://raw.githubusercontent.com/KFERMercer/ComfyKick/refs/heads/master/comfykick.py) → `/usr/share/comfykick/comfykick.py`
+- Install: `python3` `python-yaml` `uv`
 
-- [`comfykick.service`](https://raw.githubusercontent.com/KFERMercer/ComfyKick/refs/heads/master/comfykick.service) → `/usr/lib/systemd/user/comfykick.service`
+- [`comfykick.py`](https://raw.githubusercontent.com/KFERMercer/ComfyKick/refs/heads/master/comfykick.py) → `~/.local/share/comfykick/comfykick.py`
+
+- [`comfykick-user.service`](https://raw.githubusercontent.com/KFERMercer/ComfyKick/refs/heads/master/comfykick-user.service) → `~/.config/systemd/user/comfykick.service` (or `$XDG_CONFIG_HOME/systemd/user/comfykick.service`)
 
 - [`comfykick.toml`](https://raw.githubusercontent.com/KFERMercer/ComfyKick/refs/heads/master/comfykick.toml) → `~/.config/comfykick.toml` (or `$XDG_CONFIG_HOME/comfykick.toml`)
 
