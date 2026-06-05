@@ -1,6 +1,6 @@
 # Maintainer: fabillo <fabillo@archlinux.org>
 pkgname="intiface-central-bin"
-pkgver="3.0.4"
+pkgver="3.1.0"
 pkgrel=1
 pkgdesc="Frontend application for the Buttplug Sex Toy Control Library"
 arch=(x86_64)
@@ -15,12 +15,12 @@ provides=('intiface-central')
 conflicts=('intiface-central')
 source=(intiface_central.desktop
         run_intiface_central
-        "$pkgname-$pkgver.zip::$url/releases/download/v$pkgver+40/intiface-central-v$pkgver-linux-ubuntu-24.04-x64.zip"
-	"LICENSE.md::https://raw.githubusercontent.com/intiface/intiface-central/v$pkgver+40/LICENSE.md"
+        "$pkgname-$pkgver.zip::$url/releases/download/v$pkgver+42/intiface-central-v$pkgver-linux-ubuntu-24.04-x64.zip"
+	"LICENSE.md::https://raw.githubusercontent.com/intiface/intiface-central/v$pkgver+42/LICENSE.md"
 )
 sha256sums=('SKIP'
             'SKIP'
-	    '795d3e980923dd30aabd8a7063facc0220220d266ca8f0b9d9a240e01828bd31'
+	    '3fe3cbdcda93f52d9772e8a0d95741950016334c5b8c8499562a20a75f7656bc'
 	    'SKIP'
 )
 
