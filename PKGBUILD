@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="All-in-one, batteries-included LLM CLI Tool"
 
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}.tar.gz")
-sha256sums=('a6f40b6877a2dc8bc920434e68398510329d19988c913ecf2669e52872e474ac'
+sha256sums=('f00b65560e32745c3d003858c5639e1c031f1d810f3d854bdf83deda6624f266'
             '16d0b134f225596b5046ab790bcf7b516039826c01dce6b92f3e404c5eabfa3d')
-sha256sums_x86_64=('623e4a548cc83969cc9c8eed4e2acd79e0cf615b6482a72ba58b2f9090b0660d')
-sha256sums_aarch64=('0193f3f3e08ef2bbba948a8a363f8516dcd6bc95f7d2820a4e4b28cd7b4a97ed')
+sha256sums_x86_64=('67d8e7e4bda06de1819ad4a4b38a087ab9ad852afdd6d630607c0068981c74a3')
+sha256sums_aarch64=('dee78a17140aa7e411a1d16c3f9a2037811e209422ea8cc2a8b022535c719090')
 
 
 package() {
