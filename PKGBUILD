@@ -3,7 +3,7 @@
 pkgname=go2webp
 _pkgname=go2webp
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool for converting images and folders of images to WebP format'
 url='https://codeberg.org/fausty/go2webp'
 arch=('x86_64' 'aarch64')
