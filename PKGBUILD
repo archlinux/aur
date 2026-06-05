@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-fprintd
-pkgver=0.8.17
+pkgver=0.8.18
 pkgrel=1
 pkgdesc="Moshpit agent daemon — fingerprint (fprintd) unlock backend"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('moshpit-agent' 'moshpit-agent-fido2' 'moshpit-agent-systemd-creds'
 depends=('fprintd' 'dbus')
 makedepends=('cargo' 'cmake' 'gcc' 'dbus')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/moshpit/archive/v$pkgver.tar.gz")
-sha256sums=('996a6f4b8c29ab592bd4ef2f44a36b4675ea6e1cfed9c9d89de2bcc840329793')
+sha256sums=('c6e032c7deba10e657369d420d2606799cbd328111acc5b6df1ca24cbc56d0ee')
 
 prepare() {
     cd "moshpit-$pkgver"
