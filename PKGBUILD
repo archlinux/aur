@@ -1,7 +1,7 @@
 # Maintainer: Juwan Hwang <juwan.hwang at proton dot me>
 pkgname=zephyr-clash-bin
 _pkgname=zephyr
-pkgver=2.3.5
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="A modern Mihomo GUI client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('zephyr-clash')
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("https://github.com/Juwan-Hwang/Zephyr/releases/download/v${pkgver}/Zephyr_${pkgver}_amd64-full.deb")
-sha256sums_x86_64=('8ab0f5353290b1cedbe882337a226973c493a5a0f07373221906403fd7ffb34f')
+sha256sums_x86_64=('160aa6ad04e350d394af2e6c6971047eaeda1f422c640cc676ca1aaf8b52ef0b')
 
 package() {
     bsdtar -xf data.tar.gz -C "$pkgdir/"
