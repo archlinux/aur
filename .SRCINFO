@@ -1,17 +1,17 @@
 pkgbase = drakontech-bin
 	pkgdesc = A Visual IDE for JavaScript Development.(Prebuilt version.Use system-wide electron)
-	pkgver = 2026.05.24
+	pkgver = 2026.06.04
 	pkgrel = 1
 	url = https://github.com/stepan-mitkin/drakon.tech.desktop
 	arch = x86_64
 	license = Unlicense
 	depends = electron32
-	provides = drakontech=2026.05.24
+	provides = drakontech=2026.06.04
 	conflicts = drakontech
 	options = !emptydirs
-	source = drakontech-2026.05.24.rpm::https://github.com/stepan-mitkin/drakon.tech.desktop/releases/download/v2026.05.24/drakontech-2026.05.24-1.x86_64.rpm
+	source = drakontech-2026.06.04.rpm::https://github.com/stepan-mitkin/drakon.tech.desktop/releases/download/v2026.06.04/drakontech-2026.06.04-1.x86_64.rpm
 	source = drakontech.sh
-	sha256sums = c33cf8e901befdd3adb68cac34e0590ce99624a3b11f8c45021a31c29f6e6d53
+	sha256sums = 6f91bb0bb6e771326dc24a0fb6fc3c87fd942b284b0621dc260b65b8b5782a80
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = drakontech-bin

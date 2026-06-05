@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=drakontech-bin
 _pkgname=DrakonTech
-pkgver=2026.05.24
+pkgver=2026.06.04
 _electronversion=32
 pkgrel=1
 pkgdesc="A Visual IDE for JavaScript Development.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c33cf8e901befdd3adb68cac34e0590ce99624a3b11f8c45021a31c29f6e6d53'
+sha256sums=('6f91bb0bb6e771326dc24a0fb6fc3c87fd942b284b0621dc260b65b8b5782a80'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
