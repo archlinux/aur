@@ -1,7 +1,7 @@
 # Maintainer: Alp Sahin <alp@sahin.club>
 pkgname=brain-fm
 _reponame=brain-fm-linux
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Unofficial Brain.fm desktop app (Tauri) with MPRIS media-key support and a system tray"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'hicolor-icon-theme')
 makedepends=('cargo' 'pkgconf')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AlpSha/$_reponame/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5607ae59eff97405ad1430addadd425c9d2d557ccca0c3a03177277556aa8cf2')
+sha256sums=('5e9ff8285f4f7dcac8e46cb7939d5476e1fa0162ce2592ede97e71d9ccd2ef08')
 
 prepare() {
   cd "$_reponame-$pkgver/src-tauri"

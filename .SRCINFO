@@ -1,6 +1,6 @@
 pkgbase = brain-fm
 	pkgdesc = Unofficial Brain.fm desktop app (Tauri) with MPRIS media-key support and a system tray
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/AlpSha/brain-fm-linux
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = brain-fm
 	depends = libayatana-appindicator
 	depends = hicolor-icon-theme
 	options = !lto
-	source = brain-fm-0.1.0.tar.gz::https://github.com/AlpSha/brain-fm-linux/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 5607ae59eff97405ad1430addadd425c9d2d557ccca0c3a03177277556aa8cf2
+	source = brain-fm-0.1.1.tar.gz::https://github.com/AlpSha/brain-fm-linux/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 5e9ff8285f4f7dcac8e46cb7939d5476e1fa0162ce2592ede97e71d9ccd2ef08
 
 pkgname = brain-fm
