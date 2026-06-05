@@ -2,7 +2,7 @@
 
 pkgname=chroma-app
 _pkgname=chroma
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A cross-platform color palette and design token manager"
 arch=('x86_64' 'aarch64')
