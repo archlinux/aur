@@ -1,0 +1,20 @@
+pkgbase = chroma-app
+	pkgdesc = A cross-platform color palette and design token manager
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/M-Tre-Consulting/chroma-app
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = jsoncpp
+	source = chroma-app::git+https://github.com/M-Tre-Consulting/chroma-app.git
+	source = chroma.desktop
+	sha256sums = SKIP
+	sha256sums = 659b7596a6aecbb7c7194b5160d28d2521a8987aada5512a71f586dc9da03c11
+
+pkgname = chroma-app

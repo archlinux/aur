@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Chroma
+Comment=A cross-platform color palette and design token manager
+Exec=chroma
+Icon=chroma
+Terminal=false
+Type=Application
+Categories=Development;Graphics;Utility;
+Keywords=color;palette;token;design;
