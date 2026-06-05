@@ -2,7 +2,7 @@
 # Maintainer: Riccardo Guerriero <aur@guer.ro>
 
 pkgname='pingtop-bin'
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='htop-style live dashboard for ping'
 url='https://github.com/guerrieroriccardo/pingtop'
@@ -12,10 +12,10 @@ provides=('pingtop')
 conflicts=('pingtop')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/guerrieroriccardo/pingtop/releases/download/v${pkgver}/pingtop_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('036db5e0a41c1ed97b671aa54244244ea17c658fa8b3243858d34df53724c4ca')
+sha256sums_aarch64=('ac966395a968c3e60a1e5af60b2c21a9b65fbd8433054a54171e8338146a1d9a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/guerrieroriccardo/pingtop/releases/download/v${pkgver}/pingtop_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('08472785d7d2383619f64f999a96cca310ef2a342b2d3eb3f46affa5896a4f83')
+sha256sums_x86_64=('49b99de453e30e27a807b41aa00340a4bbf8959304a902042755512132fa49b0')
 
 package() {
   install -Dm755 "./pingtop" "${pkgdir}/usr/bin/pingtop"

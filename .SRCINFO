@@ -1,16 +1,16 @@
 pkgbase = pingtop-bin
 	pkgdesc = htop-style live dashboard for ping
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/guerrieroriccardo/pingtop
 	license = Apache-2.0
 	conflicts = pingtop
 	provides = pingtop
 	arch = aarch64
-	source_aarch64 = https://github.com/guerrieroriccardo/pingtop/releases/download/v0.12.0/pingtop_0.12.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 036db5e0a41c1ed97b671aa54244244ea17c658fa8b3243858d34df53724c4ca
+	source_aarch64 = https://github.com/guerrieroriccardo/pingtop/releases/download/v0.13.0/pingtop_0.13.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ac966395a968c3e60a1e5af60b2c21a9b65fbd8433054a54171e8338146a1d9a
 	arch = x86_64
-	source_x86_64 = https://github.com/guerrieroriccardo/pingtop/releases/download/v0.12.0/pingtop_0.12.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 08472785d7d2383619f64f999a96cca310ef2a342b2d3eb3f46affa5896a4f83
+	source_x86_64 = https://github.com/guerrieroriccardo/pingtop/releases/download/v0.13.0/pingtop_0.13.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 49b99de453e30e27a807b41aa00340a4bbf8959304a902042755512132fa49b0
 	
 pkgname = pingtop-bin
