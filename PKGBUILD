@@ -1,14 +1,14 @@
 # Maintainer: Vincent Bernardoff <vb AT luminar DOT eu DOT org>
 
 pkgname=ngnk-git
-pkgver=r4241.e4b2dc4d
+pkgver=r4621.e8a04bbc
 pkgrel=1
 pkgdesc="simple fast vector programming language"
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
-url="https://codeberg.org/ngn/k"
+url="https://codeberg.org/growler/k"
 license=('AGPL3')
 depends=()
-source=('git+https://codeberg.org/ngn/k.git'
+source=('git+https://codeberg.org/growler/k.git'
         'license.patch')
 sha256sums=('SKIP'
             '61b833a1de88f9b737db7e089a2d1bca33ba70a11c3b8fb13b8afc273fe32558')
