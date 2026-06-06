@@ -2,7 +2,7 @@
 
 pkgname=avm
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='AOM Video Model - the reference software for AV2 codec from Alliance for Open Media'
 arch=('x86_64')
@@ -24,6 +24,8 @@ sha256sums=('41ea97e28d03b5d3f0e236d9d240458deb265711ef61466484b4926506b935c1')
 build() {
     # NOTE: set ENABLE_TESTS to ON for tests
     # NOTE: disabled DIP_EXT_PRUNING and ML_PART_SPLIT to avoid dependency on libtensorflow-lite (heavy)
+    export CFLAGS+=' -DNDEBUG'
+    export CXXFLAGS+=' -DNDEBUG'
     cmake -B build -S avm \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
