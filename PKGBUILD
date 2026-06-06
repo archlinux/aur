@@ -13,13 +13,13 @@ conflicts=('ttcli' 'ttcli-git')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/j4y-w4lk3r/ttcli/releases/download/v${pkgver}/ttcli_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('c008c650f66359877f0dc52743e1caeb4e9c8de4768b20cea90d4a8a13fa7db9')
+sha256sums_aarch64=('77ce8aa62895de1913d87c32b57264e0994403490b14b44bacc2bd5873876f2b')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/j4y-w4lk3r/ttcli/releases/download/v${pkgver}/ttcli_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('6d3c64ab0a784c027f0780eb73159c2e3674ad4d045137ddb1e7a7059ae8a505')
+sha256sums_armv7h=('61bd50392c9f417d39aff09bc69a0d5ee8126398b9ec6ede40968ab2339200ba')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/j4y-w4lk3r/ttcli/releases/download/v${pkgver}/ttcli_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('e8fc83e451c0c1f990b175aefb2d01a398fc86562c4d46b4c15bc21772b60ba0')
+sha256sums_x86_64=('fffcd82716bb2879a91482822c0baa7fed4c4cc62956e22b80fc216fd097e965')
 
 package() {
   install -Dm755 "./ttcli" "${pkgdir}/usr/bin/ttcli"
