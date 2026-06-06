@@ -1,29 +1,9 @@
 pkgbase = odysseus-ai-git
-	pkgdesc = Self-hosted AI workspace (chat, agents, deep research, email, calendar)
-	pkgver = r915.dev
+	pkgdesc = THIS PACKAGE DOES NOT WORK. Sorry for wasting your time.
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/pewdiepie-archdaemon/odysseus
-	install = odysseus-ai-git.install
-	arch = x86_64
-	arch = aarch64
+	arch = any
 	license = MIT
-	makedepends = git
-	depends = python
-	depends = python-pip
-	depends = tmux
-	optdepends = searxng: web search backend
-	optdepends = ntfy: desktop/push notifications
-	optdepends = ollama: local model serving
-	provides = odysseus-ai
-	conflicts = odysseus-ai
-	backup = etc/odysseus/env
-	source = odysseus::git+https://github.com/pewdiepie-archdaemon/odysseus.git#branch=dev
-	source = odysseus.service
-	source = odysseus.desktop
-	source = odysseus-ai-git.svg
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = odysseus-ai-git

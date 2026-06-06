@@ -1,47 +1,30 @@
 post_install() {
     echo ""
-    echo "╔══════════════════════════════════════════════════════╗"
-    echo "║              Odysseus installed!                     ║"
-    echo "╠══════════════════════════════════════════════════════╣"
-    echo "║                                                      ║"
-    echo "║  1. Enable & start the service (per user):           ║"
-    echo "║     systemctl --user enable --now odysseus           ║"
-    echo "║                                                      ║"
-    echo "║  2. On first start, your admin password is printed   ║"
-    echo "║     in the service log. Check it with:               ║"
-    echo "║     journalctl --user -u odysseus -n 40              ║"
-    echo "║                                                      ║"
-    echo "║  3. Open http://localhost:7000 and log in.           ║"
-    echo "║     Change your password in Settings immediately.    ║"
-    echo "║                                                      ║"
-    echo "║  Config file: /etc/odysseus/env                      ║"
-    echo "║  Data & DB:   /var/lib/odysseus/                     ║"
-    echo "║                                                      ║"
-    echo "╚══════════════════════════════════════════════════════╝"
-    echo ""
-
-    # Make sure lingering is enabled so user services survive logout
-    if command -v loginctl &>/dev/null; then
-        local user
-        user="$(logname 2>/dev/null || echo "$SUDO_USER")"
-        if [ -n "$user" ]; then
-            loginctl enable-linger "$user" 2>/dev/null || true
-        fi
-    fi
-}
-
-post_upgrade() {
-    echo ""
-    echo "  Odysseus upgraded. Restart the service to apply:"
-    echo "    systemctl --user restart odysseus"
-    echo ""
-}
-
-post_remove() {
-    echo ""
-    echo "  Odysseus removed."
-    echo "  Your data at /var/lib/odysseus/ was NOT deleted."
-    echo "  Remove manually if no longer needed:"
-    echo "    sudo rm -rf /var/lib/odysseus"
+    echo "  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
+    echo "  ░                                                             ░"
+    echo "  ░                                                             ░"
+    echo "  ░        ███████╗ ██████╗ ██████╗ ██████╗ ██╗   ██╗          ░"
+    echo "  ░        ██╔════╝██╔═══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝          ░"
+    echo "  ░        ███████╗██║   ██║██████╔╝██████╔╝ ╚████╔╝           ░"
+    echo "  ░        ╚════██║██║   ██║██╔══██╗██╔══██╗  ╚██╔╝            ░"
+    echo "  ░        ███████║╚██████╔╝██║  ██║██║  ██║   ██║             ░"
+    echo "  ░        ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝            ░"
+    echo "  ░                                                             ░"
+    echo "  ░   this package does not work and i gave up trying.         ░"
+    echo "  ░   it is out of my league. i am sorry for your time.        ░"
+    echo "  ░                                                             ░"
+    echo "  ░   do it the real way:                                       ░"
+    echo "  ░                                                             ░"
+    echo "  ░   git clone https://github.com/pewdiepie-archdaemon/        ░"
+    echo "  ░               odysseus.git ~/odysseus                       ░"
+    echo "  ░   cd ~/odysseus                                             ░"
+    echo "  ░   python3 -m venv venv                                      ░"
+    echo "  ░   source venv/bin/activate                                  ░"
+    echo "  ░   pip install -r requirements.txt                           ░"
+    echo "  ░   python setup.py                                           ░"
+    echo "  ░   python -m uvicorn app:app --host 127.0.0.1 --port 7000   ░"
+    echo "  ░                                                             ░"
+    echo "  ░                                                             ░"
+    echo "  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
     echo ""
 }
