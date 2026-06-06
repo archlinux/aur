@@ -14,7 +14,7 @@ depends=(
     'openrgb'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4b89df7fa98a5b39b5f26070adadcb88c95e31b15da1fa8a6fa6418cd0117677')
+sha256sums=('c358900f71c196da3c388e54ae3d17fad945f3c610e6207a1960b10306456500')
 
 package() {
     cd "$pkgname-$pkgver"
