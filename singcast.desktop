@@ -7,3 +7,4 @@ Icon=singcast
 StartupWMClass=Singcast
 Comment=A clash GUI client based on Flutter
 Categories=Network;
+MimeType=x-scheme-handler/clash;
