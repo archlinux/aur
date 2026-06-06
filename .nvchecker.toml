@@ -1,0 +1,5 @@
+[julius-bin]
+source = "github"
+github = "praetorian-inc/julius"
+use_latest_release = true
+prefix = "v"
