@@ -1,0 +1,12 @@
+[Unit]
+Description=Makeblock mLink Background Daemon
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/makeblock/mlink
+ExecStart=/opt/makeblock/mlink/mnode /opt/makeblock/mlink/app.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,20 @@
+post_install() {
+    chmod +x /opt/makeblock/mlink/mlink
+    chmod +x /opt/makeblock/mlink/mnode
+
+    echo "========================================================================="
+    echo "=> mLink installed successfully inside /opt/makeblock/mlink/ !"
+    echo "=>"
+    echo "=> To start the background driver right now: sudo systemctl start mlink"
+    echo "=> To ensure it loads automatically on boot: sudo systemctl enable mlink"
+    echo "========================================================================="
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    systemctl stop mlink.service 2>/dev/null || true
+    systemctl disable mlink.service 2>/dev/null || true
+}
