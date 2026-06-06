@@ -1,7 +1,7 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd-daemon-bin
 _pkgname=skwd-daemon
-pkgver=r76.79aa807
+pkgver=r77.9887ef6
 pkgrel=1
 pkgdesc='Daemon for Skwd Shell, a collection of Quickshell programs and widgets precompiled'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'imagemagick' 'ffmpeg' 'alsa-lib' 'libpulse' 'wayland' 'mesa')
 optdepends=(
   'ollama: local LLM for automated wallpaper tagging'
-  'steamcmd: Steam Workshop Wallpaper Engine downloads'
+  'steamcmd: Steam Workshop Wallpaper Engine downloads when the Steam client is not running'
   'linux-wallpaperengine: Wallpaper Engine scene rendering'
 )
 provides=("$_pkgname=$pkgver")
@@ -18,7 +18,7 @@ conflicts=("$_pkgname" "$_pkgname-debug")
 options=('!debug' '!strip')
 install="$_pkgname.install"
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
-sha256sums=('884abd984c40c3880f4c01338e7807849a5edebadcf6acdf5c543f8d6998fc45')
+sha256sums=('f212c027fa151a82e3ff5039c974c520f149f15bbf5b2ea2d718a29927ffc3aa')
 
 package() {
   cd "$_pkgname-$pkgver-x86_64"
@@ -27,6 +27,8 @@ package() {
   install -Dm755 bin/skwd             "$pkgdir/usr/bin/skwd"
   install -Dm755 bin/skwd-paper       "$pkgdir/usr/bin/skwd-paper"
   install -Dm755 bin/skwd-paper-still "$pkgdir/usr/bin/skwd-paper-still"
+
+  install -Dm644 lib/libsteam_api.so "$pkgdir/usr/lib/skwd-daemon/libsteam_api.so"
 
   install -Dm644 data/skwd-daemon.service "$pkgdir/usr/lib/systemd/user/skwd-daemon.service"
   install -Dm644 data/host/shell.qml      "$pkgdir/usr/share/skwd/skwd-daemon/host/shell.qml"
