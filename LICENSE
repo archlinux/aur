@@ -1,0 +1,88 @@
+PiLauncher Source Available License and Notices
+
+Copyright (c) 2026 PiLauncher Project Authors.
+
+PiLauncher is an independent third-party Minecraft launcher developed by the
+community. This project is not an official Minecraft product and is not
+approved by, endorsed by, or associated with Mojang Studios or Microsoft.
+
+Minecraft is a trademark of Mojang Studios. Minecraft game content, official
+assets, trademarks, accounts, authentication services, and related intellectual
+property belong to their respective owners. PiLauncher does not distribute the
+Minecraft game itself. Users are responsible for owning a valid Minecraft
+license and complying with Minecraft, Microsoft, Mojang Studios, and any
+third-party service terms.
+
+1. Source Availability
+
+The source code of PiLauncher is published primarily for transparency,
+security review, code review, education, and personal non-commercial use.
+
+Subject to the restrictions below, you may:
+
+- read, study, and review the source code;
+- build and run the software for personal, non-commercial use;
+- make local modifications for personal, non-commercial use;
+- quote limited portions of the code or documentation for review, research,
+  or discussion, with attribution.
+
+2. Restrictions
+
+Unless you have prior written permission from the copyright holder, you may
+not:
+
+- sell, rent, sublicense, or otherwise charge for PiLauncher or modified
+  versions of PiLauncher;
+- bundle PiLauncher with any paid service, membership program, subscription,
+  commercial launcher, or monetized distribution;
+- redistribute PiLauncher binaries, installers, packaged builds, or modified
+  versions as a competing or derivative launcher project;
+- remove or obscure copyright, license, attribution, or disclaimer notices;
+- use the PiLauncher name, branding, or interface in a way that implies
+  official association with Mojang Studios, Microsoft, Minecraft, or the
+  original PiLauncher project;
+- distribute Minecraft game files, official launcher assets, copyrighted game
+  content, account credentials, access tokens, or other protected third-party
+  materials through this project;
+- use this software to bypass authentication, enable piracy, or violate the
+  rights or terms of Mojang Studios, Microsoft, mod platforms, or other
+  third-party services.
+
+3. Contributions
+
+At the time of this license, PiLauncher is in early development. Pull requests
+and redistribution-oriented forks may be temporarily limited by the project
+maintainers. Contribution rules may be added separately when the project
+architecture becomes stable.
+
+Unless a separate written agreement says otherwise, any contribution submitted
+to this project may be used, modified, and distributed by the project
+maintainers as part of PiLauncher under this license or a later project
+license.
+
+4. Third-Party Components
+
+PiLauncher includes or depends on third-party open-source libraries, tools,
+icons, assets, services, and platform APIs. Those components remain governed by
+their own licenses and terms. This license applies only to the PiLauncher
+project materials to the extent they are owned or licensable by the PiLauncher
+project authors.
+
+5. No Warranty
+
+The software is provided "as is", without warranty of any kind, express or
+implied, including but not limited to the warranties of merchantability,
+fitness for a particular purpose, and non-infringement.
+
+In no event shall the authors or copyright holders be liable for any claim,
+damage, data loss, account issue, service interruption, or other liability,
+whether in an action of contract, tort, or otherwise, arising from, out of, or
+in connection with the software or the use of the software.
+
+6. Permission Requests
+
+For permissions beyond this license, including redistribution, commercial use,
+or derivative launcher projects, contact the project maintainer:
+
+admail1024@gmail.com
+
