@@ -1,18 +1,40 @@
 post_install() {
     systemctl daemon-reload
-    # Clear any stale state so a fresh install never disables devices
+
+    # Clear stale state so a fresh install never disables devices
     rm -f /var/lib/joytoggle/state.json
+
+    # Pre-create the state file as user-owned so the app can write it without
+    # a second pkexec call (fixes KDE double password prompt).
+    touch /var/lib/joytoggle/state.json
+    _OWNER=$(logname 2>/dev/null || echo "")
+    if [ -n "$_OWNER" ] && id "$_OWNER" &>/dev/null; then
+        chown "$_OWNER:$_OWNER" /var/lib/joytoggle
+        chown "$_OWNER:$_OWNER" /var/lib/joytoggle/state.json
+    else
+        # Fallback: world-writable so any user can write without pkexec
+        chmod 777 /var/lib/joytoggle
+        chmod 666 /var/lib/joytoggle/state.json
+    fi
+
     systemctl enable --now joytoggle.service
-    chown $(logname):$(logname) /var/lib/joytoggle 2>/dev/null || true
     echo ""
     echo "JoyToggle installed! Launch from your app launcher or run: joytoggle"
     echo ""
 }
 
 post_upgrade() {
-    # Only reload the unit file — do not restart the service mid-session
-    # as it would re-apply saved state and could disable live devices
+    # Only reload the unit file — do not restart mid-session as it would
+    # re-apply saved state and could disable live devices
     systemctl daemon-reload
+
+    # Ensure state file stays user-writable after upgrade
+    if [ -f /var/lib/joytoggle/state.json ]; then
+        _OWNER=$(logname 2>/dev/null || echo "")
+        if [ -n "$_OWNER" ] && id "$_OWNER" &>/dev/null; then
+            chown "$_OWNER:$_OWNER" /var/lib/joytoggle/state.json 2>/dev/null || true
+        fi
+    fi
 }
 
 post_remove() {

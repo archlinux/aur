@@ -1,7 +1,7 @@
 pkgbase = joytoggle
 	pkgdesc = Enable or disable joystick and sim controller devices without unplugging
-	pkgver = 1.0.0
-	pkgrel = 6
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/Mirkko/joytoggle
 	install = joytoggle.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = joytoggle
 	depends = libadwaita
 	depends = polkit
 	depends = systemd
-	source = joytoggle-1.0.0.tar.gz::https://github.com/Mirkko/joytoggle/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 7eef8f5a9569795053444c2e0d6e32ed587fac4a45d0cf69a352a7ea6f515283
+	source = joytoggle-1.0.1.tar.gz::https://github.com/Mirkko/joytoggle/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 395fba7583c30fe7371441bd81439ed2b1c48e3649fa94001e61c218221d62f5
 
 pkgname = joytoggle
