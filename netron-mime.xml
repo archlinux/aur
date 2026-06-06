@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+
+  <!-- ONNX -->
+  <mime-type type="application/x-onnx">
+    <comment>ONNX Model</comment>
+    <comment xml:lang="zh_CN">ONNX 模型</comment>
+    <glob pattern="*.onnx"/>
+    <glob pattern="*.onnxtxt"/>
+  </mime-type>
+
+  <!-- ONNX Runtime -->
+  <mime-type type="application/x-ort">
+    <comment>ONNX Runtime Model</comment>
+    <comment xml:lang="zh_CN">ONNX Runtime 模型</comment>
+    <glob pattern="*.ort"/>
+  </mime-type>
+
+  <!-- TensorFlow Lite -->
+  <mime-type type="application/x-tflite">
+    <comment>TensorFlow Lite Model</comment>
+    <comment xml:lang="zh_CN">TensorFlow Lite 模型</comment>
+    <glob pattern="*.tflite"/>
+    <glob pattern="*.tfl"/>
+    <glob pattern="*.lite"/>
+  </mime-type>
+
+  <!-- TensorFlow Protocol Buffer -->
+  <mime-type type="application/x-tensorflow-pb">
+    <comment>TensorFlow Protocol Buffer Model</comment>
+    <comment xml:lang="zh_CN">TensorFlow Protocol Buffer 模型</comment>
+    <glob pattern="*.pb"/>
+  </mime-type>
+
+  <!-- TensorFlow SavedModel text -->
+  <mime-type type="application/x-tensorflow-pbtxt">
+    <comment>TensorFlow Protocol Buffer Text</comment>
+    <comment xml:lang="zh_CN">TensorFlow Protocol Buffer 文本</comment>
+    <glob pattern="*.pbtxt"/>
+    <glob pattern="*.graphdef"/>
+  </mime-type>
+
+  <!-- PyTorch -->
+  <mime-type type="application/x-pytorch">
+    <comment>PyTorch Model</comment>
+    <comment xml:lang="zh_CN">PyTorch 模型</comment>
+    <glob pattern="*.pt"/>
+    <glob pattern="*.pt1"/>
+    <glob pattern="*.pt2"/>
+    <glob pattern="*.pth"/>
+    <glob pattern="*.ptl"/>
+    <glob pattern="*.ptmf"/>
+    <glob pattern="*.pyt"/>
+    <glob pattern="*.pyth"/>
+    <glob pattern="*.pytorch"/>
+    <glob pattern="*.torchmodel"/>
+    <glob pattern="*.torchscript"/>
+    <glob pattern="*.chkpt"/>
+  </mime-type>
+
+  <!-- SafeTensors -->
+  <mime-type type="application/x-safetensors">
+    <comment>SafeTensors Model</comment>
+    <comment xml:lang="zh_CN">SafeTensors 模型</comment>
+    <glob pattern="*.safetensors"/>
+  </mime-type>
+
+  <!-- GGUF -->
+  <mime-type type="application/x-gguf">
+    <comment>GGUF Model</comment>
+    <comment xml:lang="zh_CN">GGUF 模型</comment>
+    <glob pattern="*.gguf"/>
+  </mime-type>
+
+  <!-- Keras -->
+  <mime-type type="application/x-keras">
+    <comment>Keras Model</comment>
+    <comment xml:lang="zh_CN">Keras 模型</comment>
+    <glob pattern="*.keras"/>
+  </mime-type>
+
+  <!-- Core ML -->
+  <mime-type type="application/x-coreml">
+    <comment>Core ML Model</comment>
+    <comment xml:lang="zh_CN">Core ML 模型</comment>
+    <glob pattern="*.mlmodel"/>
+    <glob pattern="*.mlmodelc"/>
+    <glob pattern="*.mlpackage"/>
+  </mime-type>
+
+  <!-- ML.NET -->
+  <mime-type type="application/x-mlnet">
+    <comment>ML.NET Model</comment>
+    <comment xml:lang="zh_CN">ML.NET 模型</comment>
+    <glob pattern="*.mlnet"/>
+  </mime-type>
+
+  <!-- Caffe -->
+  <mime-type type="application/x-caffe">
+    <comment>Caffe Model</comment>
+    <comment xml:lang="zh_CN">Caffe 模型</comment>
+    <glob pattern="*.caffemodel"/>
+  </mime-type>
+
+  <!-- Caffe prototxt -->
+  <mime-type type="application/x-caffe-prototxt">
+    <comment>Caffe Prototxt</comment>
+    <comment xml:lang="zh_CN">Caffe Prototxt 描述文件</comment>
+    <glob pattern="*.prototxt"/>
+  </mime-type>
+
+  <!-- CNTK -->
+  <mime-type type="application/x-cntk">
+    <comment>CNTK Model</comment>
+    <comment xml:lang="zh_CN">CNTK 模型</comment>
+    <glob pattern="*.cntk"/>
+    <glob pattern="*.dnn"/>
+  </mime-type>
+
+  <!-- PaddlePaddle -->
+  <mime-type type="application/x-paddle">
+    <comment>PaddlePaddle Model</comment>
+    <comment xml:lang="zh_CN">PaddlePaddle 模型</comment>
+    <glob pattern="*.paddle"/>
+    <glob pattern="*.pdmodel"/>
+    <glob pattern="*.pdiparams"/>
+    <glob pattern="*.pdparams"/>
+    <glob pattern="*.pdopt"/>
+    <glob pattern="*.pdstates"/>
+  </mime-type>
+
+  <!-- MindSpore -->
+  <mime-type type="application/x-mindir">
+    <comment>MindSpore Model</comment>
+    <comment xml:lang="zh_CN">MindSpore 模型</comment>
+    <glob pattern="*.mindir"/>
+  </mime-type>
+
+  <!-- OpenVINO -->
+  <mime-type type="application/x-openvino">
+    <comment>OpenVINO Model</comment>
+    <comment xml:lang="zh_CN">OpenVINO 模型</comment>
+    <glob pattern="*.ot"/>
+  </mime-type>
+
+  <!-- TensorRT -->
+  <mime-type type="application/x-tensorrt">
+    <comment>TensorRT Model</comment>
+    <comment xml:lang="zh_CN">TensorRT 模型</comment>
+    <glob pattern="*.engine"/>
+    <glob pattern="*.trt"/>
+    <glob pattern="*.trtmodel"/>
+    <glob pattern="*.plan"/>
+    <glob pattern="*.dlc"/>
+  </mime-type>
+
+  <!-- NCNN -->
+  <mime-type type="application/x-ncnn">
+    <comment>NCNN Model</comment>
+    <comment xml:lang="zh_CN">NCNN 模型</comment>
+    <glob pattern="*.ncnnmodel"/>
+    <glob pattern="*.param"/>
+  </mime-type>
+
+  <!-- MNN -->
+  <mime-type type="application/x-mnn">
+    <comment>MNN Model</comment>
+    <comment xml:lang="zh_CN">MNN 模型</comment>
+    <glob pattern="*.mnn"/>
+  </mime-type>
+
+  <!-- TNN -->
+  <mime-type type="application/x-tnn">
+    <comment>TNN Model</comment>
+    <comment xml:lang="zh_CN">TNN 模型</comment>
+    <glob pattern="*.tnnproto"/>
+    <glob pattern="*.tnnmodel"/>
+  </mime-type>
+
+  <!-- MLIR -->
+  <mime-type type="application/x-mlir">
+    <comment>MLIR Model</comment>
+    <comment xml:lang="zh_CN">MLIR 模型</comment>
+    <glob pattern="*.mlir"/>
+    <glob pattern="*.mlirbc"/>
+  </mime-type>
+
+  <!-- Rockchip NPU -->
+  <mime-type type="application/x-rknn">
+    <comment>RKNN Model</comment>
+    <comment xml:lang="zh_CN">RKNN 模型</comment>
+    <glob pattern="*.rknn"/>
+  </mime-type>
+
+  <!-- Ascend OM -->
+  <mime-type type="application/x-ascend-om">
+    <comment>Ascend OM Model</comment>
+    <comment xml:lang="zh_CN">Ascend OM 模型</comment>
+    <glob pattern="*.om"/>
+  </mime-type>
+
+  <!-- Cambricon -->
+  <mime-type type="application/x-cambricon">
+    <comment>Cambricon Model</comment>
+    <comment xml:lang="zh_CN">Cambricon 模型</comment>
+    <glob pattern="*.cambricon"/>
+  </mime-type>
+
+  <!-- MegEngine -->
+  <mime-type type="application/x-megengine">
+    <comment>MegEngine Model</comment>
+    <comment xml:lang="zh_CN">MegEngine 模型</comment>
+    <glob pattern="*.mge"/>
+  </mime-type>
+
+  <!-- K210 KModel -->
+  <mime-type type="application/x-kmodel">
+    <comment>K210 Model</comment>
+    <comment xml:lang="zh_CN">K210 模型</comment>
+    <glob pattern="*.kmodel"/>
+  </mime-type>
+
+  <!-- Xilinx -->
+  <mime-type type="application/x-xmodel">
+    <comment>Xilinx Model</comment>
+    <comment xml:lang="zh_CN">Xilinx 模型</comment>
+    <glob pattern="*.xmodel"/>
+  </mime-type>
+
+  <!-- BigDL -->
+  <mime-type type="application/x-bigdl">
+    <comment>BigDL Model</comment>
+    <comment xml:lang="zh_CN">BigDL 模型</comment>
+    <glob pattern="*.bigdl"/>
+  </mime-type>
+
+  <!-- TorchServe -->
+  <mime-type type="application/x-mar">
+    <comment>TorchServe Archive</comment>
+    <comment xml:lang="zh_CN">TorchServe 归档</comment>
+    <glob pattern="*.mar"/>
+  </mime-type>
+
+  <!-- ARM NN -->
+  <mime-type type="application/x-armnn">
+    <comment>ARM NN Model</comment>
+    <comment xml:lang="zh_CN">ARM NN 模型</comment>
+    <glob pattern="*.armnn"/>
+  </mime-type>
+
+  <!-- Circle -->
+  <mime-type type="application/x-circle">
+    <comment>Circle Model</comment>
+    <comment xml:lang="zh_CN">Circle 模型</comment>
+    <glob pattern="*.circle"/>
+  </mime-type>
+
+  <!-- NNEF -->
+  <mime-type type="application/x-nnef">
+    <comment>NNEF Model</comment>
+    <comment xml:lang="zh_CN">NNEF 模型</comment>
+    <glob pattern="*.nnef"/>
+  </mime-type>
+
+  <!-- Torch7 -->
+  <mime-type type="application/x-torch7">
+    <comment>Torch7 Model</comment>
+    <comment xml:lang="zh_CN">Torch7 模型</comment>
+    <glob pattern="*.t7"/>
+  </mime-type>
+
+  <!-- UFF -->
+  <mime-type type="application/x-uff">
+    <comment>UFF Model</comment>
+    <comment xml:lang="zh_CN">UFF 模型</comment>
+    <glob pattern="*.uff"/>
+  </mime-type>
+
+  <!-- KANN -->
+  <mime-type type="application/x-kann">
+    <comment>KANN Model</comment>
+    <comment xml:lang="zh_CN">KANN 模型</comment>
+    <glob pattern="*.kann"/>
+  </mime-type>
+
+  <!-- Netron -->
+  <mime-type type="application/x-netron">
+    <comment>Netron Model</comment>
+    <comment xml:lang="zh_CN">Netron 模型</comment>
+    <glob pattern="*.netron"/>
+  </mime-type>
+
+  <!-- CatBoost -->
+  <mime-type type="application/x-catboost">
+    <comment>CatBoost Model</comment>
+    <comment xml:lang="zh_CN">CatBoost 模型</comment>
+    <glob pattern="*.cbm"/>
+  </mime-type>
+
+  <!-- XGBoost -->
+  <mime-type type="application/x-xgboost">
+    <comment>XGBoost Model</comment>
+    <comment xml:lang="zh_CN">XGBoost 模型</comment>
+    <glob pattern="*.xgb"/>
+    <glob pattern="*.xgboost"/>
+  </mime-type>
+
+  <!-- Espressif -->
+  <mime-type type="application/x-espdl">
+    <comment>Espressif DL Model</comment>
+    <comment xml:lang="zh_CN">Espressif DL 模型</comment>
+    <glob pattern="*.espdl"/>
+  </mime-type>
+
+  <!-- LiteRT LM -->
+  <mime-type type="application/x-litertlm">
+    <comment>LiteRT LM Model</comment>
+    <comment xml:lang="zh_CN">LiteRT LM 模型</comment>
+    <glob pattern="*.litertlm"/>
+  </mime-type>
+
+</mime-info>

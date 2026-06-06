@@ -1,0 +1,10 @@
+# makepkg build artifacts
+pkg/
+src/
+*.pkg.tar.zst
+*.rpm
+*.tar.gz
+*.log
+
+# Downloaded source files
+LICENSE-*
