@@ -1,7 +1,7 @@
 # Maintainer: Nguyen Hoang Ky <nhktmdzhg at gmail dot com>
 pkgname=coccoc-browser-stable
 _pkgname=coccoc-browser
-pkgver=145.0.7632.176
+pkgver=147.0.7727.150
 pkgrel=1
 _pkgrel=1
 pkgdesc="The web browser from Coc Coc. Coc Coc is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
@@ -55,7 +55,7 @@ source=(
     "LICENSE.html"
 )
 sha256sums=(
-    'f42d6b27e94dae5d803006add43c339b3cae4de4ca2f1e554ca0c1f1ef383040'
+    '33041142210774cc936391372f1840edafbf4ff78010606809ff0d8621719181'
     'fae326b92e97b28dafc9e1ed3958486bb0455cb5cebe3cad3484f92bde30b804'
     '22bf4605260a7432eee169b0afbfae6782b9812c2bc776fdc1a887f6e2b10ec6'
 )
