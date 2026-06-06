@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-devstatus
 pkgver=0.5.0
-_vdrapi=12
-pkgrel=15
+_vdrapi=13
+pkgrel=16
 pkgdesc="displays the status of all available dvb devices"
 url="https://gitlab.com/kamel5/devstatus"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
