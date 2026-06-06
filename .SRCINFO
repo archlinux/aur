@@ -1,6 +1,6 @@
 pkgbase = quire
 	pkgdesc = Simple GNOME utility for working with local PDF files
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://codeberg.org/FVtronics/Quire
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = quire
 	depends = gtk4
 	depends = libadwaita
 	depends = poppler-glib
-	source = quire-0.2.5.tar.gz::https://codeberg.org/FVtronics/Quire/archive/v0.2.5.tar.gz
-	sha256sums = adfad39c9d877f9af02cd4aca8a99a2233a4e9c729539522f1d8cc5662782b59
+	source = quire-0.2.6.tar.gz::https://codeberg.org/FVtronics/Quire/archive/v0.2.6.tar.gz
+	sha256sums = c7d9338b6280ad9079c2d9e1ac3ccd294ce573d9ac406a0fc033cf1f79b7bcce
 
 pkgname = quire
