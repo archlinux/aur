@@ -1,7 +1,7 @@
 # Maintainer: Christian Balcom <robot.inventor@gmail.com>
 
 pkgname=damascene-volume
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='PipeWire volume control panel built with Damascene'
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     'LICENSE-MIT'
 )
-sha256sums=('9240852e04ba87e5ff34aab84b3f5bfed2711774fbb37e62ad6189bef7528fb4'
+sha256sums=('f7fff4ebc2709106bd7ec0a5da2d2eb2721bfa86d87d1b8aa5c94a6be40840cf'
             '9f00c7ed7074fac147074cf3440eb30099ca20ffce962d9fda4188d84bcdface')
 
 prepare() {
