@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/davide-leva/rnum"
 license=('MIT')
 depends=()
-makedepends=('rust' 'cargo' 'pkg-config')
+makedepends=('rust' 'pkg-config')
 source=("https://github.com/davide-leva/rnum/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
