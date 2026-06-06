@@ -1,0 +1,21 @@
+pkgbase = jellyhaj-git
+	pkgdesc = Terminal client for Jellyfin reimplementing parts of the web ui
+	pkgver = v0.2.0.r1.gd519137
+	pkgrel = 1
+	url = https://github.com/owo-uwu-nyaa/jellyhaj
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	depends = mpv
+	depends = sqlite
+	depends = dbus
+	provides = jellyhaj
+	conflicts = jellyhaj
+	options = !lto
+	source = git+https://github.com/owo-uwu-nyaa/jellyhaj.git
+	sha256sums = SKIP
+
+pkgname = jellyhaj-git
