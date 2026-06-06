@@ -1,6 +1,6 @@
 # Maintainer: RookDash <metzs843@gmail.com>
 pkgname=hwsonnet
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Modern hardware information and monitoring tool for Linux"
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ optdepends=(
 )
 makedepends=('git')
 
-source=("git+https://github.com/Varionetzwerk/hwsonnet.git#tag=v${pkgver}")
+source=("git+https://github.com/Varionetzwerk/hwsonnet.git#tag=v1.0.1${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
