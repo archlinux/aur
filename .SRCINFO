@@ -1,8 +1,8 @@
 pkgbase = odysseus-ai-git
 	pkgdesc = A self-hosted AI workspace with chat, agents, deep research, calendar, notes and more
-	pkgver = 2026.06.02
+	pkgver = 2026.06.06
 	pkgrel = 1
-	url = https://pewdiepie-archdaemon.github.io/odysseus/
+	url = https://github.com/pewdiepie-archdaemon/odysseus
 	install = odysseus-ai-git.install
 	arch = any
 	license = MIT
@@ -16,6 +16,10 @@ pkgbase = odysseus-ai-git
 	conflicts = odysseus-ai
 	backup = etc/odysseus-ai/odysseus.env
 	source = odysseus-ai-git::git+https://github.com/pewdiepie-archdaemon/odysseus.git
+	source = odysseus-ai-git.desktop
+	source = odysseus-ai-git.svg
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = odysseus-ai-git

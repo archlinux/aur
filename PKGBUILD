@@ -1,10 +1,10 @@
 # Maintainer: Taxin <https://github.com/taxin-404>
 pkgname=odysseus-ai-git
 pkgrel=1
-pkgver=2026.06.02
+pkgver=2026.06.06
 pkgdesc="A self-hosted AI workspace with chat, agents, deep research, calendar, notes and more"
 arch=('any')
-url="https://pewdiepie-archdaemon.github.io/odysseus/"
+url="https://github.com/pewdiepie-archdaemon/odysseus"
 license=('MIT')
 depends=(
     'python>=3.11'
@@ -18,8 +18,12 @@ optdepends=(
 makedepends=('git')
 provides=('odysseus-ai')
 conflicts=('odysseus-ai')
-source=("$pkgname::git+https://github.com/pewdiepie-archdaemon/odysseus.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/pewdiepie-archdaemon/odysseus.git"
+        "odysseus-ai-git.desktop"
+        "odysseus-ai-git.svg")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 install="$pkgname.install"
 
 backup=(
