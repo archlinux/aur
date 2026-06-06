@@ -1,14 +1,14 @@
 # Maintainer: Horace Liu <im.liuhq@gmail.com>
 
 pkgname=which-key-wayland
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="About A key-hint panel for Wayland, inspired by the Neovim plugin which-key.nvim and the Helix editor style"
 arch=('x86_64')
 url="https://github.com/liuhq/which-key.wayland"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e5e8dc89e50cbbb7059016f579a5576c35cb330197b9b4f74a37222dc17d4e12')
+sha256sums=('dd87a94fa7f7eec1fcfaf89972fdb7fb003b4b53e958cbb186b327ee5ab8af9b')
 makedepends=(rust)
 depends=(libxkbcommon)
 options=(!debug)
