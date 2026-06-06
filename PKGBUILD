@@ -1,7 +1,7 @@
 # Maintainer: SLIGHTLKE <SLIGHTLKE@outlook.com>
 pkgname=steam-appimage
 pkgver=1.0.0.85.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam AppImage"
 arch=('x86_64')
 url="https://github.com/ivan-hc/Steam-appimage"
@@ -10,7 +10,7 @@ depends=('xdg-utils')
 options=(!strip)
 
 source=(
-  "Steam-1.0.0.85-7-anylinux-x86_64.AppImage::https://gh-proxy.org/https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.85-7%402026-06-01_1780312474/Steam-1.0.0.85-7-anylinux-x86_64.AppImage"
+  "Steam-1.0.0.85-7-anylinux-x86_64.AppImage::https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.85-7%402026-06-01_1780312474/Steam-1.0.0.85-7-anylinux-x86_64.AppImage"
 )
 sha256sums=('899904c2314d79d3e1791c66df59c810a0b198e7539fa33e833c1ac53358f110')
 
