@@ -2,9 +2,11 @@
 # Maintainer: sukanka
 
 _pkgname=linuxqq
-_base_pkgver=3.2.28_260429
+_base_pkgver=3.2.29_260528
 _update_pkgver=${_base_pkgver}
 #_md5=08c52833
+_nt_ver=9.9.31
+_md5=00e6a3e7
 pkgname=linuxqq-nt-bwrap
 pkgver="${_update_pkgver//-/_}"
 pkgrel=1
@@ -27,20 +29,21 @@ provides=('qq' 'linuxqq')
 conflicts=('linuxqq')
 options=('!emptydirs')
 install="${pkgname}.install"
-source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_${_base_pkgver}_amd64_01.deb")
-source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_${_base_pkgver}_arm64_01.deb")
-source_loong64=("https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_${_base_pkgver}_loongarch64_01.deb")
+_url_prefix="https://qqdl.gtimg.cn/qqfile/QQNT/${_nt_ver}/release/${_md5}"
+source_x86_64=("${_url_prefix}/QQ_${_base_pkgver}_amd64_01.deb")
+source_aarch64=("${_url_prefix}/QQ_${_base_pkgver}_arm64_01.deb")
+source_loong64=("${_url_prefix}/QQ_${_base_pkgver}_loongarch64_01.deb")
 source=('start.sh' 'start_normal.sh' 'start_mac_fix.sh' 'start_inner.sh' 'config.json' 'resolv.conf' 'xdg-open.sh')
 sha256sums=('2748a351259d378ab9773000cbf1ea0448de5ae92f28bb9e366fa795e1715739'
-	'46958947a35bde1cea2a2f2da6e8296fcb6752d84b6c62b2a49f6959d3235912'
-	'801d778cb2cecca21cc294651ac5c85ad1c8cdd8c805c9d491740dd13bb9c7dc'
-	'3c78b576aa5d07e4cacde95d1088530503478bb0d43d19371c5da56f675d9861'
-	'bb2ec0f104da4da7422d9b0f51c71d0ab38ed2a21764a7a643ab42689e098e4b'
-	'cc002ee0eb2e8702c97d16f4ce628841cd5fe10195875a075432e92248741424'
-	'f1c778b5a8b23bc77fd8e5e89056fea07309794c9a44ec38134a176cf1f7b675')
-sha256sums_x86_64=('68e79d74acdc0c5a70efa8ea1d8b6410b51a21906843774d382f32e0e3a1f0d7')
-sha256sums_aarch64=('80c49f4f2ee631cb9b730db737bc48983736a0776c5ae1a5b2702acc0eeb2428')
-sha256sums_loong64=('6bc61d0883af0c1162e7e28a06c21db531d8266888412e4af546f3feabb7af42')
+            '46958947a35bde1cea2a2f2da6e8296fcb6752d84b6c62b2a49f6959d3235912'
+            '801d778cb2cecca21cc294651ac5c85ad1c8cdd8c805c9d491740dd13bb9c7dc'
+            '3c78b576aa5d07e4cacde95d1088530503478bb0d43d19371c5da56f675d9861'
+            'bb2ec0f104da4da7422d9b0f51c71d0ab38ed2a21764a7a643ab42689e098e4b'
+            'cc002ee0eb2e8702c97d16f4ce628841cd5fe10195875a075432e92248741424'
+            'f1c778b5a8b23bc77fd8e5e89056fea07309794c9a44ec38134a176cf1f7b675')
+sha256sums_x86_64=('1e3828079673c94994bc0f4780d5d8528647639920659862d49d1c2f2a198e25')
+sha256sums_aarch64=('5bcd8ccda401fbfa1821a7c3c758f84a253c317568f0b9c2d74426a24749e9a6')
+sha256sums_loong64=('cd02e76157983e328212f67eca972cfa07268d1d17c6f35f06ad4a508d085aa9')
 
 prepare() {
 	local base_ver=${_base_pkgver}
