@@ -24,7 +24,7 @@
 pkgname=odysseus-ai-git
 _pkgname=odysseus
 pkgver=r856.73673258
-pkgrel=2
+pkgrel=3
 pkgdesc="Self-hosted AI workspace with prebuilt Python 3.12 venv, tracking upstream main"
 arch=('x86_64')
 url='https://github.com/pewdiepie-archdaemon/odysseus'
@@ -205,16 +205,35 @@ build() {
   msg2 "Installing locked JS dependencies..."
   npm ci --omit=dev
 
-  # ---- Syntax check the Python code ----
+  # ---- Syntax check the Python code (compileall would write .pyc files that
+  # embed the absolute makepkg $srcdir path into the package — we do NOT want
+  # that. Python's runtime is fast enough to compile on first import, and
+  # the heavier smoke test is in check() below.) ----
   msg2 "Running Python syntax check..."
-  "$srcdir/venv/bin/python3.12" -m compileall -q \
-    app.py src core routes services mcp_servers || error "Python syntax check failed"
+  "$srcdir/venv/bin/python3.12" -c "
+import ast, pathlib, sys
+errors = []
+for p in ['app.py','src','core','routes','services','mcp_servers']:
+    for f in pathlib.Path(p).rglob('*.py'):
+        try:
+            ast.parse(f.read_text(), filename=str(f))
+        except SyntaxError as e:
+            errors.append(f'{f}: {e}')
+if errors:
+    for e in errors: print(e, file=sys.stderr)
+    sys.exit(1)
+print('ok')
+" || error "Python syntax check failed"
 }
 
 check() {
   cd "$_pkgname"
   msg2 "Running import smoke test..."
-  VIRTUAL_ENV="$srcdir/venv" python - <<'PY' || error "Import smoke test failed"
+  # Use the venv's python3.12 directly — the system 'python' (e.g. 3.14) is
+  # missing every dependency we just installed into the venv. Setting
+  # VIRTUAL_ENV alone doesn't help; only the venv's interpreter has the
+  # bcrypt/chromadb/etc. packages on its path.
+  "$srcdir/venv/bin/python3.12" - <<'PY' || error "Import smoke test failed"
 import importlib
 for m in ["app", "core.constants", "core.auth", "core.database",
          "src.config", "src.embeddings", "src.readiness",
@@ -227,6 +246,12 @@ PY
 
 package() {
   cd "$_pkgname"
+
+  # ---- Defensive: strip any __pycache__ dirs that may have been created
+  # during sed/compileall/check. .pyc files in here would embed the
+  # makepkg $srcdir absolute path into the installed package. ----
+  find . -type d -name __pycache__ -prune -exec rm -rf {} + 2>/dev/null || true
+  find . -type f -name '*.pyc' -delete 2>/dev/null || true
 
   # ---- Install app source tree to /usr/lib/odysseus-ai/app ----
   install -dm755 "$pkgdir/usr/lib/odysseus-ai/app"
