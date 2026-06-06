@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Maxime Poulin <maxpoulin64@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Damian Nowak <damian.nowak@atlashost.eu>
@@ -7,7 +7,7 @@
 
 _pkgname="inspircd"
 pkgname="$_pkgname"
-pkgver=4.10.1
+pkgver=4.11.0
 pkgrel=1
 pkgdesc='Modular Internet Relay Chat (IRC) server'
 url="https://github.com/inspircd/inspircd"
@@ -41,7 +41,7 @@ install='inspircd.install'
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"https://github.com/inspircd/inspircd/archive/v$pkgver.$_pkgext")
-sha256sums=('c41474dd2b094e86cde6295266192f4234ce98a4c6046c827bfbd53b7bba0f77')
+sha256sums=('7f2ea0731a7e337e6ebaa1335bb22d576cba779baefaa311e15558624b5ca31a')
 
 build() {
   local _config_opts=(
