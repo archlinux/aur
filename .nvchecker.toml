@@ -1,0 +1,4 @@
+[vtzero]
+source = "git"
+git = "https://github.com/mapbox/vtzero.git"
+prefix = "v"
