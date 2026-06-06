@@ -6,7 +6,7 @@ _install_path='opt'
 
 pkgname='beeper-bin'
 pkgver=4.2.908
-pkgrel=1
+pkgrel=2
 pkgdesc='The ultimate messaging app'
 depends=('libappindicator-gtk3' 'libnotify' 'libsecret' 'hicolor-icon-theme')
 url='https://www.beeper.com/beta'
@@ -36,13 +36,34 @@ _package_beeper() {
 
   rm -f "$pkgdir/$_install_path/beeper/beepertexts.desktop"
 
-  local _main_dir="$pkgdir/$_install_path/beeper/resources/app/build/main"
+  local _app_dir="$pkgdir/$_install_path/beeper/resources/app"
+  local _main_dir="$_app_dir/build/main"
   local _linux_config_file
-  _linux_config_file=$(grep -lE 'export\{[a-zA-Z0-9_]+ as registerLinuxConfig\};' "$_main_dir"/*.mjs | head -n1)
-  if [ -z "$_linux_config_file" ]; then
-    echo "error: could not find file exporting registerLinuxConfig in $_main_dir" >&2
-    return 1
+  local _main_mjs_files
+  local _oldnull
+
+  _linux_config_file=""
+
+  if [ -d "$_main_dir" ]; then
+    _oldnull=$(shopt -p nullglob)
+    shopt -s nullglob
+    _main_mjs_files=("$_main_dir"/*.mjs)
+    eval "$_oldnull"
+
+    if [ -n "${_main_mjs_files[*]}" ]; then
+      _linux_config_file=$(grep -lE 'export\{[a-zA-Z0-9_]+ as registerLinuxConfig\};' "${_main_mjs_files[@]}" 2>/dev/null | head -n1)
+    fi
   fi
+
+  if [ -z "$_linux_config_file" ] && [ -d "$_app_dir" ]; then
+    _linux_config_file=$(grep -R -lE 'export\{[a-zA-Z0-9_]+ as registerLinuxConfig\};' "$_app_dir" --include='*.mjs' 2>/dev/null | head -n1)
+  fi
+
+  if [ -z "$_linux_config_file" ]; then
+    echo "warning: could not find file exporting registerLinuxConfig in $_app_dir; skipping patch" >&2
+    return 0
+  fi
+
   sed -i 's/export{[a-zA-Z0-9_]* as registerLinuxConfig};/const noopFunc=function(){};export{noopFunc as registerLinuxConfig};/' "$_linux_config_file"
 }
 
