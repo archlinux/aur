@@ -10,8 +10,8 @@ pkgrel=1
 arch=("x86_64")
 url="https://starnetastro.com/cli-tools/starnet/"
 license=('custom')
-provides=('starnet2-bin')
-conflicts=('starnet2-bin')
+provides=('starnet2')
+conflicts=('starnet2')
 
 source=("https://download.starnetastro.com/starnet2_linux_${pkgver}-0205_ORT_x64_cli.zip")
 sha256sums=("9330a1b118c45f96f26efd0e3e49cb3115091851847512cf27af24c880ee7ccd")
