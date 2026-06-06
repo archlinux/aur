@@ -1,6 +1,6 @@
 # Maintainer: Xuelin Yang <xuelin@adamanteye.cc>
 pkgname=astroimagej-bin
-pkgver=6.0.7.02
+pkgver=6.0.8.00
 pkgrel=1
 pkgdesc="A simple and powerful tool for astronomical image analysis and precise photometry."
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
 	"astroimagej.desktop"
 )
 sha256sums=(
-	'79a7c296da40201114635a6110d1aca3bb26358240b00d51948b4c3cdb55d6f9'
+	'af4a09d2d01d5a6a510200fdf971d251a782b14a5874d24298f747b74acb2869'
 	'af13f0eae5cd27d52dc2a8a2fb574840feafc0ca7d6c7c983bb0123485e0ca8b'
 )
 
