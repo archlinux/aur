@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-recsearch
 pkgver=0.3.7
-_vdrapi=12
-pkgrel=18
+_vdrapi=13
+pkgrel=19
 pkgdesc="Search your recordings and find the one you are looking for"
 url="https://github.com/flensrocker/vdr-plugin-recsearch"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
