@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=bartos-bin
-pkgver=1.5.7
+pkgver=1.5.8
 pkgrel=1
 pkgdesc="Barto central job scheduling server (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -22,9 +22,9 @@ _base="https://github.com/rustyhorde/barto/releases/download/v${pkgver}"
 source=("${_base}/dist-bartos.tar.gz")
 source_x86_64=("bartos-x86_64::${_base}/bartos-x86_64-unknown-linux-musl")
 source_aarch64=("bartos-aarch64::${_base}/bartos-aarch64-unknown-linux-musl")
-sha256sums=('fa4e355b10afafe9d35cb67e6cbf98c26a4a1b034ae362bf9bfe6cbde5ce324a')
-sha256sums_x86_64=('85b763cb6fabafbce0d830082d95bb98e823ff0bae78bc08cb6f69b02afa5fa7')
-sha256sums_aarch64=('182ec3bdd4eb86d9b3560633ce8b7c84736283dd34f1b76cdb25bc871e63b2fd')
+sha256sums=('83afc636e0e83e0ab8298d554acf85fff1d332aa3884ab136b7bb718dba20039')
+sha256sums_x86_64=('6e00fdb50292d8fcf05339b538707c307c46f19f6285e76fa523d846b99533ce')
+sha256sums_aarch64=('7549d9907172acda9b91e87bfb53f3eecaeeb5e5715e290d3216ebc6ab5762b4')
 
 package() {
     install -Dm755 "bartos-${CARCH}" "$pkgdir/usr/bin/bartos"
@@ -57,9 +57,15 @@ package() {
     install -Dm644 bartos/bartos.service \
         "$pkgdir/usr/lib/systemd/system/bartos.service"
 
-    # Logrotate
-    install -Dm644 bartos/bartos.logrotate \
-        "$pkgdir/etc/logrotate.d/bartos"
+    # Log rotation helper script
+    install -Dm755 bartos/bartos-logrotate \
+        "$pkgdir/usr/lib/bartos/bartos-logrotate"
+
+    # Systemd timer for log rotation
+    install -Dm644 bartos/bartos-logrotate.service \
+        "$pkgdir/usr/lib/systemd/system/bartos-logrotate.service"
+    install -Dm644 bartos/bartos-logrotate.timer \
+        "$pkgdir/usr/lib/systemd/system/bartos-logrotate.timer"
 
     # Example config
     install -Dm644 bartos/bartos.toml.example \
