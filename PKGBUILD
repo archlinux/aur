@@ -6,7 +6,7 @@
 
 _pkgname=xul-anchor-graft
 pkgname="${_pkgname}"
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Per-user add-on signing authority for libxul-family browsers"
 arch=('any')
