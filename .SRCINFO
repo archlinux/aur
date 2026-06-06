@@ -1,6 +1,6 @@
 pkgbase = csm-bin
 	pkgdesc = Terminal UI for running multiple Claude Code sessions as tabs
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/AbdelzaherAbdelgwad/claude-sessions-manager-tui
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = csm-bin
 	conflicts = csm
 	options = !strip
 	options = !debug
-	source = LICENSE-0.1.2::https://raw.githubusercontent.com/AbdelzaherAbdelgwad/claude-sessions-manager-tui/v0.1.2/LICENSE
+	source = LICENSE-0.1.3::https://raw.githubusercontent.com/AbdelzaherAbdelgwad/claude-sessions-manager-tui/v0.1.3/LICENSE
 	sha256sums = ffadef1b35435bbe565d5cc82397052e5447bbace85ca53e86268f64c13f1fed
-	source_x86_64 = csm-0.1.2-linux-x64::https://github.com/AbdelzaherAbdelgwad/claude-sessions-manager-tui/releases/download/v0.1.2/csm-linux-x64
-	sha256sums_x86_64 = 4c1bbd953808c9ed04a8115c2951b043b0f548a2debb66f158e8ab128022f8df
-	source_aarch64 = csm-0.1.2-linux-arm64::https://github.com/AbdelzaherAbdelgwad/claude-sessions-manager-tui/releases/download/v0.1.2/csm-linux-arm64
-	sha256sums_aarch64 = faf315d9b20a8d7eb5ddb8ce289f38ad3a6666d2856d50da7e5fdaeb960a165c
+	source_x86_64 = csm-0.1.3-linux-x64::https://github.com/AbdelzaherAbdelgwad/claude-sessions-manager-tui/releases/download/v0.1.3/csm-linux-x64
+	sha256sums_x86_64 = 696f969a5b1a784647889940750d4fefbf96ee89b76b070c05a99f1b32305490
+	source_aarch64 = csm-0.1.3-linux-arm64::https://github.com/AbdelzaherAbdelgwad/claude-sessions-manager-tui/releases/download/v0.1.3/csm-linux-arm64
+	sha256sums_aarch64 = b24c567c33489a83459e7d33ddf0441957fb48a122b0888f7079b217060e6f7a
 
 pkgname = csm-bin
