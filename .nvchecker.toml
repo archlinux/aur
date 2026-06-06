@@ -1,0 +1,5 @@
+[no-mistakes-bin]
+source = "github"
+github = "kunchenguid/no-mistakes"
+use_latest_release = true
+prefix = "v"
