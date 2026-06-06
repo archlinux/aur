@@ -4,8 +4,8 @@
 pkgbase=vdr-mp3
 pkgname=('vdr-mp3' 'vdr-mplayer')
 pkgver=0.10.5
-_vdrapi=12
-pkgrel=6
+_vdrapi=13
+pkgrel=7
 url="https://github.com/vdr-projects/vdr-plugin-mp3"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
