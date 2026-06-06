@@ -38,7 +38,7 @@ depends=(
 )
 optdepends=()
 source=(
-  "${_pkgname}::git+${url}.git"        # schildi-revenge source code.
+  "${_pkgname}::git+${url}.git"  # Main upstream source.
 )
 sha256sums=(
   'SKIP'  # Main upstream source.
