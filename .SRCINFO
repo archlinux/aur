@@ -1,0 +1,23 @@
+pkgbase = chawa-whatsapp-web-client
+	pkgdesc = WhatsApp Web client based on GTK4 and WebKitGTK
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ramdanolii14/Chawa-Whatsapp-Web-Client
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkg-config
+	depends = gtk4
+	depends = webkitgtk-6.0
+	depends = libnotify
+	depends = libva
+	depends = libva-mesa-driver
+	depends = mesa
+	depends = gstreamer
+	depends = gst-plugins-bad
+	depends = gst-plugin-va
+	source = chawa-whatsapp-web-client-1.0.tar.gz::https://github.com/ramdanolii14/Chawa-Whatsapp-Web-Client/archive/v1.0.tar.gz
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+
+pkgname = chawa-whatsapp-web-client
