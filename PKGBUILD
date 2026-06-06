@@ -8,11 +8,10 @@ pkgdesc="TUI manager for gocryptfs encrypted vaults"
 arch=('x86_64')
 url="https://github.com/guirossibrum/guicrypt-tui"
 license=('MIT')
-depends=('gocryptfs' 'libsecret')
-makedepends=('cmake' 'ftxui' 'nlohmann-json')
+depends=('gocryptfs' 'libsecret' 'ftxui')
+makedepends=('cmake' 'nlohmann-json')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
-validpgpkeys=('SKIP')
 
 build() {
   cmake -B build \
