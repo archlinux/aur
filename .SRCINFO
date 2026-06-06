@@ -1,22 +1,20 @@
 pkgbase = odysseus-ai-git
-	pkgdesc = A self-hosted AI workspace with chat, agents, deep research, calendar, notes and more (VCS version)
-	pkgver = 2026.06.04.r778.c916224
+	pkgdesc = A self-hosted AI workspace with chat, agents, deep research, calendar, notes and more
+	pkgver = 2026.06.02
 	pkgrel = 1
-	url = https://github.com/pewdiepie-archdaemon/odysseus
-	install = odysseus-ai-git.install
+	url = https://pewdiepie-archdaemon.github.io/odysseus/
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python>=3.11
 	depends = tmux
+	optdepends = python-pymupdf: PDF form-filling support (AGPL-3.0)
+	optdepends = chromadb: local vector memory server
+	optdepends = searxng: local web search provider
 	provides = odysseus-ai
 	conflicts = odysseus-ai
-	backup = etc/odysseus-ai/odysseus.env
-	source = git+https://github.com/pewdiepie-archdaemon/odysseus.git
-	source = odysseus-ai.desktop
-	source = odysseus-ai.svg
+	install = odysseus-ai-git.install
+	source = odysseus-ai-git::git+https://github.com/pewdiepie-archdaemon/odysseus.git
 	sha256sums = SKIP
-	sha256sums = f21605f96ec6067504d15c788fe009890d07364f14e78da6e071cb8b922e43df
-	sha256sums = 9d909012e4daf1a8bf4bec2bf4912ce546da8ce7828ec2cea6ca55886e94f916
 
 pkgname = odysseus-ai-git

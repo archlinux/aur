@@ -1,57 +1,59 @@
 # Maintainer: Taxin <https://github.com/taxin-404>
 pkgname=odysseus-ai-git
-_pkgname=odysseus-ai
-pkgver=2026.06.04.r778.c916224
 pkgrel=1
-pkgdesc="A self-hosted AI workspace with chat, agents, deep research, calendar, notes and more (VCS version)"
+pkgver=2026.06.02
+pkgdesc="A self-hosted AI workspace with chat, agents, deep research, calendar, notes and more"
 arch=('any')
-url="https://github.com/pewdiepie-archdaemon/odysseus"
+url="https://pewdiepie-archdaemon.github.io/odysseus/"
 license=('MIT')
 depends=(
     'python>=3.11'
     'tmux'
 )
+optdepends=(
+    'python-pymupdf: PDF form-filling support (AGPL-3.0)'
+    'chromadb: local vector memory server'
+    'searxng: local web search provider'
+)
 makedepends=('git')
 provides=('odysseus-ai')
 conflicts=('odysseus-ai')
-source=("git+https://github.com/pewdiepie-archdaemon/odysseus.git"
-        "odysseus-ai.desktop"
-        "odysseus-ai.svg")
-sha256sums=('SKIP'
-            'f21605f96ec6067504d15c788fe009890d07364f14e78da6e071cb8b922e43df'
-            '9d909012e4daf1a8bf4bec2bf4912ce546da8ce7828ec2cea6ca55886e94f916')
+source=("$pkgname::git+https://github.com/pewdiepie-archdaemon/odysseus.git")
+sha256sums=('SKIP')
 install="$pkgname.install"
 
 backup=(
-    "etc/$_pkgname/odysseus.env"
+    "etc/odysseus-ai/odysseus.env"
 )
 
 pkgver() {
-    cd "$srcdir/odysseus"
-    printf "%s.r%s.%s" "$(git log -1 --format="%cd" --date=format:"%Y.%m.%d")" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    cd "$srcdir/$pkgname"
+    git log -1 --format="%cd" --date=format:"%Y.%m.%d"
 }
 
 prepare() {
-    cd "$srcdir/odysseus"
-    grep -v -E '^(pytest|pytest-asyncio)' requirements.txt > requirements.filtered.txt
+    cd "$srcdir/$pkgname"
+    grep -v -E '^(PyMuPDF|pytest|pytest-asyncio|duckduckgo-search|#|$)' requirements.txt > requirements.filtered.txt
 }
 
 package() {
-    cd "$srcdir/odysseus"
+    cd "$srcdir/$pkgname"
 
-    install -dm755 "$pkgdir/usr/lib/$_pkgname"
+    # --- Application files ---
+    install -dm755 "$pkgdir/usr/lib/odysseus-ai"
     cp -r \
         app.py setup.py \
-        companion core routes services src scripts config mcp_servers static licenses \
+        core routes services src scripts config mcp_servers static licenses \
         requirements.txt requirements.filtered.txt \
-        "$pkgdir/usr/lib/$_pkgname/"
+        "$pkgdir/usr/lib/odysseus-ai/"
 
-    install -dm777 "$pkgdir/usr/lib/$_pkgname/services/cache/search"
-    install -dm777 "$pkgdir/usr/lib/$_pkgname/services/cache/content"
+    # --- Cache dirs ---
+    install -dm755 "$pkgdir/usr/lib/odysseus-ai/services/cache/search"
+    install -dm755 "$pkgdir/usr/lib/odysseus-ai/services/cache/content"
 
     # --- Launcher wrapper ---
     install -dm755 "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/$_pkgname" <<'EOF'
+    cat > "$pkgdir/usr/bin/odysseus-ai" <<'EOF'
 #!/bin/bash
 APPDIR=/usr/lib/odysseus-ai
 exec "$APPDIR/venv/bin/uvicorn" app:app \
@@ -60,15 +62,15 @@ exec "$APPDIR/venv/bin/uvicorn" app:app \
     --port "${ODYSSEUS_PORT:-7000}" \
     "$@"
 EOF
-    chmod 755 "$pkgdir/usr/bin/$_pkgname"
+    chmod 755 "$pkgdir/usr/bin/odysseus-ai"
 
     # --- Default env config ---
-    install -dm755 "$pkgdir/etc/$_pkgname"
-    install -Dm644 .env.example "$pkgdir/etc/$_pkgname/odysseus.env"
+    install -dm755 "$pkgdir/etc/odysseus-ai"
+    install -Dm644 .env.example "$pkgdir/etc/odysseus-ai/odysseus.env"
 
     # --- Systemd user service ---
     install -dm755 "$pkgdir/usr/lib/systemd/user"
-    cat > "$pkgdir/usr/lib/systemd/user/$_pkgname.service" <<'EOF'
+    cat > "$pkgdir/usr/lib/systemd/user/odysseus-ai.service" <<'EOF'
 [Unit]
 Description=Odysseus AI Workspace
 After=network.target
@@ -87,7 +89,7 @@ EOF
 
     # --- System service ---
     install -dm755 "$pkgdir/usr/lib/systemd/system"
-    cat > "$pkgdir/usr/lib/systemd/system/$_pkgname.service" <<'EOF'
+    cat > "$pkgdir/usr/lib/systemd/system/odysseus-ai.service" <<'EOF'
 [Unit]
 Description=Odysseus AI Workspace (system)
 After=network.target
@@ -107,19 +109,19 @@ WantedBy=multi-user.target
 EOF
 
     # --- Data dirs ---
-    install -dm750 "$pkgdir/var/lib/$_pkgname"
+    install -dm750 "$pkgdir/var/lib/odysseus-ai"
 
     # --- Desktop entry ---
-    install -Dm644 "$srcdir/odysseus-ai.desktop" \
-        "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -Dm644 "$srcdir/odysseus-ai-git.desktop" \
+        "$pkgdir/usr/share/applications/odysseus-ai.desktop"
 
     # --- Icon ---
-    install -Dm644 "$srcdir/odysseus-ai.svg" \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+    install -Dm644 "$srcdir/odysseus-ai-git.svg" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/odysseus-ai.svg"
 
     # --- License ---
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # --- Docs ---
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
