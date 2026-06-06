@@ -14,6 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
+  cd "$srcdir/$pkgname-$pkgver"
   cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -22,5 +23,6 @@ build() {
 }
 
 package() {
+  cd "$srcdir/$pkgname-$pkgver"
   DESTDIR="$pkgdir" cmake --install build
 }
