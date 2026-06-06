@@ -89,7 +89,7 @@ _gradle_default_options=(
 
 
 prepare() {
-  cd ${srcdir}/${_pkgname}
+  cd "${srcdir}/${_pkgname}"
 
   #export JAVA_HOME="/usr/lib/jvm/java-${_jdkversion}-openjdk"
   export GRADLE_USER_HOME="${srcdir}/.gradle"
@@ -124,7 +124,7 @@ prepare() {
 
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
+  cd "${srcdir}/${_pkgname}"
 
   _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' -e 's|-(sc)|.\1|' -e 's|-([0-9]+)$|+\1|')"
   _rev="$(git rev-list --count HEAD)"
@@ -142,7 +142,7 @@ pkgver() {
 
 
 build() {
-  cd ${srcdir}/${_pkgname}
+  cd "${srcdir}/${_pkgname}"
 
   #export JAVA_HOME="/usr/lib/jvm/java-${_jdkversion}-openjdk"
   export GRADLE_USER_HOME="${srcdir}/.gradle"
@@ -163,7 +163,7 @@ build() {
 
 
 # check() {
-#   cd ${srcdir}/${_pkgname}
+#   cd "${srcdir}/${_pkgname}"
 # 
 #   #export JAVA_HOME="/usr/lib/jvm/java-${_jdkversion}-openjdk"
 #   export GRADLE_USER_HOME="${srcdir}/.gradle"
@@ -182,7 +182,7 @@ build() {
 
 
 package() {
-  cd ${srcdir}/${_pkgname}
+  cd "${srcdir}/${_pkgname}"
 
   #export JAVA_HOME="/usr/lib/jvm/java-${_jdkversion}-openjdk"
   export GRADLE_USER_HOME="${srcdir}/.gradle"
