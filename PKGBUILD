@@ -11,5 +11,6 @@ source=("$pkgname-$pkgver.tar.xz::https://github.com/danimroca/Sekiro-Tool-Manag
 sha256sums=('SKIP')
 
 package() {
-    install -Dm755 sekiro-launcher "$pkgdir/usr/bin/sekiro-launcher"
+    install -Dm755 "$srcdir/sekiro-launcher-x86_64-unknown-linux-gnu/sekiro-launcher" \
+        "$pkgdir/usr/bin/sekiro-launcher"
 }
