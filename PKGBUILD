@@ -1,4 +1,4 @@
-# Maintainer: Michael Shaw <michaelsshaw44@gmail.com>
+# Maintainer: Michael Shaw <m@michaelsshaw.com>
 # Contributor: Peter Jung <admin@ptr1337.dev>
 # Contributor: Diego Roux <diegoroux04 at protonmail dot com>
 # Contributor: grant0417 <grant0417@protonmail.com>
@@ -7,7 +7,7 @@
 
 _target=x86_64-elf
 pkgname=$_target-gcc
-pkgver=15.2.0
+pkgver=16.1.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for x86_64-elf target'
 arch=(x86_64)
@@ -19,7 +19,7 @@ options=(!emptydirs)
 source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz.sig")
 
-sha256sums=('438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e'
+sha256sums=('50efb4d94c3397aff3b0d61a5abd748b4dd31d9d3f2ab7be05b171d36a510f79'
             'SKIP')
 
 _basedir=gcc-$pkgver
