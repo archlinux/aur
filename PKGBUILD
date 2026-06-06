@@ -1,6 +1,6 @@
 # Maintainer: xhdndmm <xhdndmm@gmail.com>
 
-pkgname=123pan-bin
+pkgname=123pan-cli-bin
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="123pan-cli-bin"
