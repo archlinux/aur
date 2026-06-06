@@ -1,7 +1,7 @@
 # Maintainer: Viachaslau Khalikin <viachaslavic'at'outlook'dot'com>
 
 pkgname=libretro-gme-git
-pkgver=r168.de22a26
+pkgver=r173.818629a
 pkgrel=1
 pkgdesc="libretro port of blargg's Game_Music_Emu library"
 arch=('x86_64')
@@ -22,7 +22,6 @@ pkgver() {
 }
 
 build() {
-  sed -i 's/std=c99/std=gnu99/' "${pkgname%-git}"/Makefile
   make -C "${pkgname%-git}"
 }
 

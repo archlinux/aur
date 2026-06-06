@@ -1,6 +1,6 @@
 pkgbase = libretro-gme-git
 	pkgdesc = libretro port of blargg's Game_Music_Emu library
-	pkgver = r168.de22a26
+	pkgver = r173.818629a
 	pkgrel = 1
 	url = https://github.com/libretro/libretro-gme
 	arch = x86_64
