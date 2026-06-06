@@ -1,7 +1,7 @@
 # ena
 
 pkgname=vocab
-pkgver=0.21
+pkgver=0.22
 pkgrel=1
 pkgdesc="English/Turkish vocabulary tool"
 arch=('any')
