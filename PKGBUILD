@@ -12,7 +12,7 @@ options=(staticlibs !strip !buildflags)
 source=("$url/fftw-${pkgver}.tar.gz")
 sha256sums=('5630c24cdeb33b131612f7eb4b1a9934234754f9f388ff8617458d0be6f239a1')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd "${srcdir}/fftw-${pkgver}"
