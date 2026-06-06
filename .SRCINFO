@@ -1,7 +1,7 @@
 pkgbase = equibop-bin
 	pkgdesc = A custom Discord desktop app with Equicord pre-installed (binary release)
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Equicord/Equibop
 	arch = aarch64
 	arch = x86_64

@@ -5,7 +5,7 @@ pkgname=equibop-bin
 _appname=equibop-desktop
 pkgver=3.2.1
 _electronversion=40
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom Discord desktop app with Equicord pre-installed (binary release)"
 arch=(
     'aarch64'
@@ -56,8 +56,8 @@ GenericName=Internet Messenger
 Type=Application
 Categories=Network;InstantMessaging;Chat;
 Keywords=discord;vencord;electron;chat;equibop
-MimeType=x-scheme-handler/discord
-Exec=${pkgname%-bin}
+MimeType=x-scheme-handler/discord;
+Exec=${pkgname%-bin} %U
 Icon=${pkgname%-bin}
 StartupWMClass=equibop
 END
