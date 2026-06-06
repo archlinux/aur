@@ -3,7 +3,7 @@
 _pkgauthor=dd86k
 _pkgname=binco
 pkgname=${_pkgname}-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Binary-Text Encoder-Decoder"
@@ -20,8 +20,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}.tar.gz")
 sha256sums=('2d712644ddda1385230a1612324733541dbfc645132bb22d6bf55a8282a2f1b5'
-            '1c190272d4b8d05eabc48d304797c02478e473fb04b280d147eab85a8ffa0e9a')
-sha256sums_x86_64=('1da6e21f48ead0a0c1b16d6823fcc977eaecf1c072d6f5f513d178b5e3837bf7')
+            '0cb42b8d4739edde8e17b33e7c79e79e987b21c5e44d296a732a86d7dcde87bc')
+sha256sums_x86_64=('0217505ce34410d4b30b115fa065888499e572c83ab499f810b52a6fc3aaed0a')
 
 
 package() {
