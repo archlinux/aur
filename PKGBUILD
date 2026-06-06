@@ -1,6 +1,6 @@
 # Maintainer: David O Neill <dmz.oneill@gmail.com>
 pkgname=dfakeseeder
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="BitTorrent seeding simulator for testing and development"
 arch=('any')
