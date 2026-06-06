@@ -1,7 +1,7 @@
 # Maintainer: vidasik <https://github.com>
 pkgname=nvfsys-git
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist and stylish system information fetch tool written in Lua"
 arch=('any')
 url="https://github.com/vidasik/novafetch"
