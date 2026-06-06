@@ -1,7 +1,7 @@
 pkgbase = aurora-gui-git
 	pkgdesc = Wayland-first GTK4 GUI for Arch Linux package management (pacman + AUR via yay/paru)
 	pkgver = 0.0.0.r0.g0000000
-	pkgrel = 37
+	pkgrel = 38
 	url = https://github.com/ahmoodio/aurora
 	install = aurora.install
 	arch = x86_64
