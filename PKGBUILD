@@ -47,6 +47,9 @@ prepare() {
 	# Should be in mujs package.
 	mkdir thirdparty/mujs
 	cp ../regexp.h thirdparty/mujs
+
+	# No idea what that is
+	sed -e '/autoheaderid/d' -i source/html/md.c Makelists
 }
 
 build() {
