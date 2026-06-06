@@ -7,16 +7,16 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/pewdiepie-archdaemon/odysseus"
 license=('MIT')
 depends=(
-    'python>=3.11'
-    'tmux'           # Cookbook background downloads/serves
+    'python'
+    'python-pip'
+    'tmux'
 )
 optdepends=(
     'searxng: web search backend'
-    'chromadb: standalone vector memory service (uses embedded client by default)'
     'ntfy: desktop/push notifications'
     'ollama: local model serving'
 )
-makedepends=('git' 'python-pip')
+makedepends=('git')
 provides=('odysseus-ai')
 conflicts=('odysseus-ai')
 backup=('etc/odysseus/env')
@@ -39,16 +39,8 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --abbrev-ref HEAD)"
 }
 
-prepare() {
-    cd "$srcdir/odysseus"
-    # Create a clean venv for building/checking deps
-    python3 -m venv "$srcdir/build-venv"
-}
-
 build() {
     cd "$srcdir/odysseus"
-    # Install all pip deps into a venv that will live at /opt/odysseus/venv
-    # We build it here under srcdir then relocate in package()
     python3 -m venv "$srcdir/venv"
     "$srcdir/venv/bin/pip" install --quiet --upgrade pip
     "$srcdir/venv/bin/pip" install --quiet -r requirements.txt
@@ -61,7 +53,7 @@ package() {
     install -dm755 "$pkgdir/opt/odysseus"
     cp -r . "$pkgdir/opt/odysseus/"
 
-    # Drop things that must NOT ship in the package
+    # Drop things that must NOT ship
     rm -rf \
         "$pkgdir/opt/odysseus/.git" \
         "$pkgdir/opt/odysseus/data" \
@@ -72,29 +64,33 @@ package() {
     # --- Relocate the venv → /opt/odysseus/venv ---
     cp -r "$srcdir/venv" "$pkgdir/opt/odysseus/venv"
 
-    # Fix venv shebangs so they point to the installed path, not srcdir
-    find "$pkgdir/opt/odysseus/venv/bin" -type f -exec \
-        sed -i "s|$srcdir/venv|/opt/odysseus/venv|g" {} \;
+    # Fix venv shebangs to point at installed path, not srcdir
+    find "$pkgdir/opt/odysseus/venv/bin" -type f | \
+        xargs -r grep -rlI "$srcdir/venv" | \
+        xargs -r sed -i "s|$srcdir/venv|/opt/odysseus/venv|g"
 
-    # --- Runtime data dirs (empty, owned by odysseus system user) ---
-    install -dm750 "$pkgdir/var/lib/odysseus"
-    install -dm750 "$pkgdir/var/lib/odysseus/data"
-    install -dm750 "$pkgdir/var/lib/odysseus/data/uploads"
-    install -dm750 "$pkgdir/var/lib/odysseus/data/personal_docs"
-    install -dm750 "$pkgdir/var/lib/odysseus/data/personal_uploads"
-    install -dm750 "$pkgdir/var/lib/odysseus/data/tts_cache"
-    install -dm750 "$pkgdir/var/lib/odysseus/data/generated_images"
-    install -dm750 "$pkgdir/var/lib/odysseus/data/deep_research"
-    install -dm750 "$pkgdir/var/lib/odysseus/data/chroma"
-    install -dm750 "$pkgdir/var/lib/odysseus/data/rag"
-    install -dm750 "$pkgdir/var/lib/odysseus/data/memory_vectors"
-    install -dm750 "$pkgdir/var/lib/odysseus/logs"
+    # --- Runtime data dirs ---
+    local dirs=(
+        var/lib/odysseus
+        var/lib/odysseus/data
+        var/lib/odysseus/data/uploads
+        var/lib/odysseus/data/personal_docs
+        var/lib/odysseus/data/personal_uploads
+        var/lib/odysseus/data/tts_cache
+        var/lib/odysseus/data/generated_images
+        var/lib/odysseus/data/deep_research
+        var/lib/odysseus/data/chroma
+        var/lib/odysseus/data/rag
+        var/lib/odysseus/data/memory_vectors
+        var/lib/odysseus/logs
+    )
+    for d in "${dirs[@]}"; do
+        install -dm755 "$pkgdir/$d"
+    done
 
-    # --- Config file → /etc/odysseus/env ---
+    # --- Config → /etc/odysseus/env ---
     install -dm755 "$pkgdir/etc/odysseus"
-    install -Dm640 .env.example "$pkgdir/etc/odysseus/env"
-
-    # Patch the default data/log paths in the bundled config
+    install -Dm644 .env.example "$pkgdir/etc/odysseus/env"
     sed -i \
         -e 's|^#\s*DATABASE_URL=.*|DATABASE_URL=sqlite:////var/lib/odysseus/data/app.db|' \
         -e 's|^#\s*APP_BIND=.*|APP_BIND=127.0.0.1|' \
@@ -112,7 +108,7 @@ package() {
 
     # --- Icon ---
     install -Dm644 "$srcdir/odysseus-ai-git.svg" \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/odysseus-ai-git.svg"
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/odysseus.svg"
 
     # --- License ---
     install -Dm644 LICENSE \

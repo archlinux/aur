@@ -8,11 +8,10 @@ pkgbase = odysseus-ai-git
 	arch = aarch64
 	license = MIT
 	makedepends = git
-	makedepends = python-pip
-	depends = python>=3.11
+	depends = python
+	depends = python-pip
 	depends = tmux
 	optdepends = searxng: web search backend
-	optdepends = chromadb: standalone vector memory service (uses embedded client by default)
 	optdepends = ntfy: desktop/push notifications
 	optdepends = ollama: local model serving
 	provides = odysseus-ai
