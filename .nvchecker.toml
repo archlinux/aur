@@ -1,0 +1,5 @@
+[z-jail]
+source = "github"
+github = "Division-36/Z-Jail"
+use_latest_release = true
+prefix = "v"

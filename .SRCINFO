@@ -1,0 +1,16 @@
+pkgbase = z-jail
+	pkgdesc = A lightweight, multi-layer Linux sandbox for secure, auditable code execution
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Division-36/Z-Jail
+	arch = x86_64
+	license = LicenseRef-AXIOM
+	makedepends = make
+	makedepends = nasm
+	depends = bash
+	provides = z-jail
+	options = !strip
+	source = git+https://github.com/Division-36/Z-Jail.git#tag=v1
+	sha256sums = 8abf2e80a8c0876c366fb75754f4998112d43291f7abb83f7817bcc641d4c353
+
+pkgname = z-jail
