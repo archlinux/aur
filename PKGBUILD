@@ -2,8 +2,8 @@
 
 _intpkgname=open-webui
 pkgname=$_intpkgname-uv
-pkgver=0.9.5
-pkgrel=5
+pkgver=0.9.6
+pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
