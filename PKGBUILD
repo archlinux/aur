@@ -1,25 +1,26 @@
 # Maintainer: Geoff Clements <ro2kz0@gmail.com>
 pkgname=vibe_player
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A music player for the Lyrion music server'
-url='https://github.com/GeoffClements/Vibe'
+url='https://github.com/GeoffClements/lms-player'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 arch=('x86_64' 'aarch64')
 license=('MIT')
 makedepends=('cargo' 'clang')
 depends=('libdbus' 'libpipewire')
-sha256sums=('3a944892f147a3875b30648fe31326c5fa820beff5e3e7e8b4d5ca15fe3956de')
+sha256sums=('2469995aed0b6855d05ffdbbd27f1ea3526f0506c214aeb72214caa61dd60caa')
 
+_pkg_alt_name="lms-player"
 _vibe_features="--no-default-features --features=pipewire,notify"
 
 prepare() {
-  cd "Vibe-${pkgver}"
+  cd "${_pkg_alt_name}-${pkgver}"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's|host: ||p')"
 }
 
 build() {
-  cd "${srcdir}/Vibe-${pkgver}"
+  cd "${srcdir}/${_pkg_alt_name}-${pkgver}"
 
   if [[ $CARCH != x86_64 ]]; then
     export CARGO_PROFILE_RELEASE_LTO=off
@@ -29,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/Vibe-${pkgver}"
+  cd "${srcdir}/${_pkg_alt_name}-${pkgver}"
 
   install -Dm755 target/release/vibe "${pkgdir}/usr/bin/vibe"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
