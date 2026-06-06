@@ -4,7 +4,7 @@ _gitauthor=yagnikpt
 _gitname=flashback
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="A command-line knowledge store. It captures text, URLs, and commands, extracts structured metadata, and makes everything searchable"
+pkgdesc="A command-line knowledge store. It captures text, URLs, and commands, extracts structured metadata, and makes everything searchable."
 
 pkgver=0.1.2
 pkgrel=1

@@ -1,5 +1,5 @@
 pkgbase = flashback-bin
-	pkgdesc = A command-line knowledge store. It captures text, URLs, and commands, extracts structured metadata, and makes everything searchable
+	pkgdesc = A command-line knowledge store. It captures text, URLs, and commands, extracts structured metadata, and makes everything searchable.
 	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/yagnikpt/flashback
