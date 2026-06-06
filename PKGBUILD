@@ -1,7 +1,7 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgbase=linux-wsl2-waydroid
-pkgver=6.18.20.1
+pkgver=6.18.33.1
 pkgrel=1
 pkgdesc='Linux WSL2'
 url='https://github.com/microsoft/WSL2-Linux-Kernel'
@@ -41,16 +41,12 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=(
-  'SKIP'
-  '47ef4597da75dbc120f13adc6b6155d85bd64cc89fbc6cec12e321be73a86f8a'
-  '5d0cc65e1c7ec377bd68fce21f130047c58ca57bb3cd5c1350b4d29b26e2b022'
-)
-b2sums=(
-  'SKIP'
-  '9d1ea7aa8cf7ded184ef3b29465489b7ba7e92f2052b6110ee359840b1d064b8e9cc30c1c25cfbc2908bd55a7f1f6551fbe4818b6516588bcc50664bf1cb8852'
-  '3703d2ffd57f80af85847930e59126d377cad89b54291ebae1c0c0a2ba9f2193f19bf54b81579c62527fdc1fa7c430b9b0cab9bba83bf72b6f89afe0b06f7dea'
-)
+sha256sums=('5c2974bd2294304ac08ac9d8b75548aae5bc86339a2a5e32ff6a3927dbfc47f3'
+            '47ef4597da75dbc120f13adc6b6155d85bd64cc89fbc6cec12e321be73a86f8a'
+            '5d0cc65e1c7ec377bd68fce21f130047c58ca57bb3cd5c1350b4d29b26e2b022')
+b2sums=('67a9faf3fc2e87a15d950bef7a73db9629d6a76923be375ecf6cbb720e43ad125e7760a96908d296a965a1c955c587a4959ac26e96933ce56750ca693f27d2ad'
+        '9d1ea7aa8cf7ded184ef3b29465489b7ba7e92f2052b6110ee359840b1d064b8e9cc30c1c25cfbc2908bd55a7f1f6551fbe4818b6516588bcc50664bf1cb8852'
+        '3703d2ffd57f80af85847930e59126d377cad89b54291ebae1c0c0a2ba9f2193f19bf54b81579c62527fdc1fa7c430b9b0cab9bba83bf72b6f89afe0b06f7dea')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
