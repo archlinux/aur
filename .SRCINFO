@@ -9,7 +9,7 @@ pkgbase = doudou-unstable
 	provides = doudou
 	conflicts = doudou
 	options = !strip
-	source = doudou-unstable-19.0.0.zip::https://github.com/openlyst/builds/releases/download/build-97/doudou-19.0.0-2026-06-04-linux-x64.zip
+	source = doudou-unstable-19.0.0.zip::https://github.com/openlyst/builds/releases/download/build-99/doudou-19.0.0-2026-06-04-linux-x64.zip
 	sha256sums = SKIP
 
 pkgname = doudou-unstable
