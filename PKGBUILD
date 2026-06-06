@@ -48,7 +48,7 @@ prepare() {
 	mkdir thirdparty/mujs
 	cp ../regexp.h thirdparty/mujs
 
-	# No idea what that is
+	# No idea what that is for
 	sed -e '/autoheaderid/d' -i source/html/md.c Makelists
 }
 
