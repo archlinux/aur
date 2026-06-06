@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=miniter-bin
 _pkgname=miniter
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Basic video editor (for simple tasks)"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('miniter')
 options=('!strip')
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::https://github.com/mlm-games/miniter/releases/download/${pkgver}/miniter-${pkgver}-x86_64.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::https://github.com/mlm-games/miniter/releases/download/${pkgver}/miniter-${pkgver}-aarch64.AppImage")
-sha256sums_x86_64=('899449873431f06c76a98f9c736dc3e681568028bed8fca021e477016ba4d6b7')
-sha256sums_aarch64=('3835cc5d8e802c123712151a77298adbc120d0d4bf747fd6367eb7b05872de3b')
+sha256sums_x86_64=('47006ad5ee579452924cad319642b4f55930d70261d96ba4396b9afcb92a5624')
+sha256sums_aarch64=('ab78c78b7a453d2550d12198cfe8378c931c93460f9ad38a6a61ff85c84af111')
 prepare() {
   chmod +x "${_pkgname}-${pkgver}-${CARCH}.AppImage"
   "./${_pkgname}-${pkgver}-${CARCH}.AppImage" --appimage-extract
