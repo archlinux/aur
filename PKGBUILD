@@ -4,7 +4,7 @@ pkgname='piped-html-proxy-git'
 _componentname="${pkgname%'-git'}"
 _componentnameshort="${_componentname#'piped-'}"
 pkgver=r57.f8b03e6
-pkgrel=1
+pkgrel=2
 pkgdesc='Express.js proxy for Piped that injects OpenGraph meta to the HTML body.'
 arch=('any')
 url="https://github.com/JuniorJPDJ/piped-html-proxy"
@@ -40,6 +40,7 @@ prepare() {
 
 build() {
 	cd 'piped-html-proxy'
+	npm audit fix --force
 	npm ci
 }
 
