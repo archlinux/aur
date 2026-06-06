@@ -1,0 +1,135 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+pkgname=emeditor-wine
+pkgver=26.1.1
+msi="/usr/share/${pkgname}/emed64_${pkgver}.msi"
+
+prefix="${EMEDITOR_WINEPREFIX:-${HOME}/.wine-emeditor}"
+app="${prefix}/drive_c/users/${USER}/AppData/Local/Programs/EmEditor/EmEditor.exe"
+ui_font="${EMEDITOR_WINE_UI_FONT:-Noto Sans CJK SC}"
+lang="${EMEDITOR_WINE_LANG:-zh_CN.utf8}"
+
+pick_dpi() {
+  if [[ -n "${EMEDITOR_WINE_DPI:-}" ]]; then
+    printf '%s\n' "${EMEDITOR_WINE_DPI}"
+    return
+  fi
+
+  local xft line width pxw mmw phys dpi
+  xft="$(xrdb -query 2>/dev/null | awk '$1 == "Xft.dpi:" {print int($2 + 0.5); exit}')"
+  line="$(xrandr --listmonitors 2>/dev/null | awk 'NR == 2 {print $0}')"
+  width="$(printf '%s\n' "${line}" | sed -n 's/.* \([0-9][0-9]*\)\/\([0-9][0-9]*\)x.*/\1 \2/p')"
+  pxw="${width%% *}"
+  mmw="${width##* }"
+  phys=0
+
+  if [[ "${pxw}" =~ ^[0-9]+$ && "${mmw}" =~ ^[0-9]+$ && "${mmw}" -gt 0 ]]; then
+    phys="$(( (pxw * 254 + mmw * 5) / (mmw * 10) ))"
+  fi
+
+  dpi="${xft:-96}"
+  if [[ "${phys}" -gt "${dpi}" ]]; then
+    dpi="${phys}"
+  fi
+
+  if [[ "${pxw}" =~ ^[0-9]+$ && "${pxw}" -ge 3800 && "${dpi}" -lt 192 ]]; then
+    dpi=192
+  elif [[ "${dpi}" -ge 220 ]]; then
+    dpi=240
+  elif [[ "${dpi}" -ge 170 ]]; then
+    dpi=192
+  elif [[ "${dpi}" -ge 130 ]]; then
+    dpi=168
+  else
+    dpi=120
+  fi
+
+  printf '%s\n' "${dpi}"
+}
+
+hex_utf16le() {
+  printf '%s' "$1" | iconv -f UTF-8 -t UTF-16LE | od -An -tx1 -v | tr -d ' \n'
+}
+
+zero_hex() {
+  local bytes="$1"
+  local out=""
+  while ((bytes > 0)); do
+    out="${out}00"
+    bytes=$((bytes - 1))
+  done
+  printf '%s' "${out}"
+}
+
+set_logfont() {
+  local value="$1"
+  local height="$2"
+  local facehex padchars padhex common fonthex
+
+  facehex="$(hex_utf16le "${ui_font}")"
+  padchars=$((32 - ${#ui_font}))
+  if ((padchars < 0)); then
+    padchars=0
+  fi
+  padhex="$(zero_hex $((padchars * 2)))"
+  common="000000000000000000000000900100000000008600000000${facehex}${padhex}"
+  fonthex="${height}${common}"
+  wine reg add 'HKCU\Control Panel\Desktop\WindowMetrics' /v "${value}" /t REG_BINARY /d "${fonthex}" /f >/dev/null
+}
+
+configure_prefix() {
+  local dpi="$1"
+
+  wine reg add 'HKCU\Software\EmSoft\EmEditor v3\Common' /v UseDirectWrite /t REG_DWORD /d 0 /f >/dev/null
+  wine reg add 'HKCU\Software\Wine\X11 Driver' /v Decorated /t REG_SZ /d N /f >/dev/null
+  wine reg add 'HKCU\Software\Wine\X11 Driver' /v Managed /t REG_SZ /d Y /f >/dev/null
+  wine reg add 'HKCU\Control Panel\Desktop' /v LogPixels /t REG_DWORD /d "${dpi}" /f >/dev/null
+  wine reg add 'HKCU\Control Panel\Desktop' /v AppliedDPI /t REG_DWORD /d "${dpi}" /f >/dev/null
+  wine reg add 'HKCU\Control Panel\Desktop' /v Win8DpiScaling /t REG_DWORD /d 1 /f >/dev/null
+  wine reg add 'HKLM\Software\Microsoft\Windows NT\CurrentVersion\FontSubstitutes' /v 'MS Shell Dlg' /t REG_SZ /d "${ui_font}" /f >/dev/null
+  wine reg add 'HKLM\Software\Microsoft\Windows NT\CurrentVersion\FontSubstitutes' /v 'MS Shell Dlg 2' /t REG_SZ /d "${ui_font}" /f >/dev/null
+
+  set_logfont MenuFont 08000000
+  set_logfont MessageFont 08000000
+  set_logfont StatusFont 08000000
+  set_logfont IconFont 08000000
+  set_logfont SmCaptionFont 08000000
+  set_logfont CaptionFont 0a000000
+}
+
+install_emeditor() {
+  if [[ ! -f "${msi}" ]]; then
+    printf 'missing installer: %s\n' "${msi}" >&2
+    exit 1
+  fi
+
+  mkdir -p "${prefix}"
+  wine msiexec /i "${msi}" /qn
+  wineserver -w || true
+  wineserver -k || true
+}
+
+export WINEPREFIX="${prefix}"
+export LANG="${lang}"
+export LC_ALL="${lang}"
+export LANGUAGE="${EMEDITOR_WINE_LANGUAGE:-zh_CN:en_US}"
+
+dpi="$(pick_dpi)"
+configure_prefix "${dpi}"
+
+if [[ ! -f "${app}" ]]; then
+  install_emeditor
+  configure_prefix "${dpi}"
+fi
+
+args=()
+for arg in "$@"; do
+  if [[ -e "${arg}" ]]; then
+    args+=("$(winepath -w "${arg}")")
+  else
+    args+=("${arg}")
+  fi
+done
+
+exec wine "${app}" "${args[@]}"
