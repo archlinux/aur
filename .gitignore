@@ -10,3 +10,4 @@
 !pear-desktop.install
 !com.github.th_ch.youtube_music.desktop
 !pear-desktop.sh
+!pnpm-workspace.yaml

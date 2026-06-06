@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pear-desktop-git
 _app_id=com.github.th_ch.youtube_music
-pkgver=3.11.0.r393.g8bd86e8
+pkgver=3.11.0.r419.g3669208
 pkgrel=1
 _nodeversion=24
 _electronversion=41
@@ -23,10 +23,12 @@ conflicts=("${pkgname%-git}" 'youtube-music')
 install="${pkgname%-git}.install"
 source=('git+https://github.com/pear-devs/pear-desktop.git'
         "${pkgname%-git}.sh"
-        "${_app_id}.desktop")
+        "${_app_id}.desktop"
+        'pnpm-workspace.yaml')
 sha256sums=('SKIP'
             'bf77b9390f6657d6b58613600cc76178da9ffa97cce55b8d0ba50b4c2ab7f996'
-            '19a3c15cb705d56c205bdcd3d473545226b641952ed87677afd5b6c70a5573b4')
+            '19a3c15cb705d56c205bdcd3d473545226b641952ed87677afd5b6c70a5573b4'
+            '86df55e8f68c2236ac81b3366aefac35e4111c02a0b91324b6e6cddff9bdfbac')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -45,9 +47,14 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd "${pkgname%-git}"
+  cp -f pnpm-workspace.yaml "${pkgname%-git}/"
+
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+
+  cd "${pkgname%-git}"
+  export PNPM_HOME="$srcdir/pnpm-home"
+  pnpm install --no-frozen-lockfile
 
   sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/${pkgname%-git}.sh"
 }
@@ -59,7 +66,6 @@ build() {
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   _ensure_local_nvm
-  pnpm install --frozen-lockfile
   pnpm clean
   pnpm build
   pnpm electron-builder --linux dir \
