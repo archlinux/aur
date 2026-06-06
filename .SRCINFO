@@ -1,7 +1,7 @@
 pkgbase = caelestia-rgb-sync
 	pkgdesc = Sync RGB lighting to caelestia desktop shell accent color
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FoxlikeCreature/caelestia-rgb-sync
 	arch = any
 	license = MIT
@@ -11,6 +11,6 @@ pkgbase = caelestia-rgb-sync
 	depends = inotify-tools
 	depends = openrgb
 	source = caelestia-rgb-sync-1.0.0.tar.gz::https://github.com/FoxlikeCreature/caelestia-rgb-sync/archive/v1.0.0.tar.gz
-	sha256sums = 0bfb12c0792e76cb4a1fedd46f881a5cc5b3561220f2a71f51a8cbab6b3010a3
+	sha256sums = 4b89df7fa98a5b39b5f26070adadcb88c95e31b15da1fa8a6fa6418cd0117677
 
 pkgname = caelestia-rgb-sync
