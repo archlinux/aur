@@ -1,7 +1,7 @@
 # Maintainer: Edwar Diaz <edwardiaz.dev@gmail.com>
 
 pkgname=cliprithm-bin
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Prebuilt Cliprithm AppImage packaged for Arch Linux"
 arch=('x86_64')
@@ -11,12 +11,13 @@ depends=('ffmpeg' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 
 optdepends=('xdg-desktop-portal: improved desktop integration for file dialogs and portals')
 provides=('cliprithm')
 conflicts=('cliprithm')
-source=("Cliprithm_1.3.1_amd64.AppImage::https://github.com/BOTOOM/Cliprithm/releases/download/cliprithm-v1.3.1/Cliprithm_1.3.1_amd64.AppImage" "cliprithm.png::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.3.1/src-tauri/icons/128x128.png" "LICENSE::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.3.1/LICENSE")
-sha256sums=('54892bc60c67f087b4d9ce1be0e4f4a67bf672f5c1df94d48b8f6901268af3df' 'c7f874d897675e666ae09da79dfefeed2aa5bf9f51da33bf931050c5087b6a80' 'd90660ef692577f22ad72ccabe19ff6d10c4047d5a8345bf748f0c044932b52c')
-noextract=('Cliprithm_1.3.1_amd64.AppImage')
+source=("Cliprithm_1.3.2_amd64.AppImage::https://github.com/BOTOOM/Cliprithm/releases/download/cliprithm-v1.3.2/Cliprithm_1.3.2_amd64.AppImage" "cliprithm.png::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.3.2/src-tauri/icons/128x128.png" "LICENSE::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.3.2/LICENSE")
+sha256sums=('a2a9a1aff2d4193b2bcb650e75efaa7bfe2ae4c46cecfbcfc2a1b605cd41fdb5' 'c7f874d897675e666ae09da79dfefeed2aa5bf9f51da33bf931050c5087b6a80' 'd90660ef692577f22ad72ccabe19ff6d10c4047d5a8345bf748f0c044932b52c')
+noextract=('Cliprithm_1.3.2_amd64.AppImage')
+options=('!strip')
 
 package() {
-  install -Dm755 "$srcdir/Cliprithm_1.3.1_amd64.AppImage" "$pkgdir/opt/cliprithm/cliprithm.AppImage"
+  install -Dm755 "$srcdir/Cliprithm_1.3.2_amd64.AppImage" "$pkgdir/opt/cliprithm/cliprithm.AppImage"
   install -Dm644 "$srcdir/cliprithm.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/cliprithm.png"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
