@@ -1,8 +1,9 @@
 # Maintainer: logan_reed <liulingzhang.work@icloud.com>
+# Contributor: springtwr <springtwr@outlook.com>
 
 pkgname=trae-cn
-pkgver=2.3.33255
-pkgrel=2
+pkgver=2.3.37195
+pkgrel=1
 pkgdesc="AI-powered IDE by ByteDance (Chinese Domestic Version)"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
@@ -16,12 +17,12 @@ optdepends=('libappindicator-gtk3: System tray support'
 options=('!strip' '!debug')
 install=${pkgname}.install
 source=("trae-cn.sh" "trae-cn.desktop")
-source_x86_64=("Trae_CN-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.33255/linux/Trae_CN-linux-x64.tar.gz")
-source_aarch64=("Trae_CN-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.33255/linux/Trae_CN-linux-arm64.tar.gz")
+source_x86_64=("Trae_CN-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.37195/linux/Trae_CN-linux-x64.tar.gz")
+source_aarch64=("Trae_CN-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.37195/linux/Trae_CN-linux-arm64.tar.gz")
 b2sums=('f7998b11d3f97f84895231ca1ca9a05bd3a97106f363744fc5f13402c15c419cc56d09e52c9366bfbd75c016b0aada69286bef8879df4925df0ef446212d7c45'
             '02d2c5d433e4d56a958bc7766563d977d79070f06c94bfa5829d2eb3c20c50111c3ff5174109bdb6f8f20cafdf4730f053f37c3a7a03e6b0f466446981dcc407')
-b2sums_x86_64=('7ee9088ef4a4336fb925bf8352648d3fba55aa8b5badd61c5cae1f080e0ddbccd9bea12516f2191459a62006f78ab0c4b4c129f9a365a7fbc3954a8b2805eea4')
-b2sums_aarch64=('e9073d568d7abb481a50b1661443c9c9b06b4335a4816f876089a21d82d5dda454eab7eb7791245034768fda4d11b48b76c05cc4b59a86e0b20fa77a70d028f8')
+b2sums_x86_64=('16f3674975db74b27cfc29949e6ebbdaff2f19f673b9271e1fd5cbc17eb7a619d9cb5b73e7b237d76236287680360b50a839b447f560a3efafbf97c2eaf32215')
+b2sums_aarch64=('07ed47dbf68e74546771e8277b43a27498f94dc0c5599da9478c3190c2dd693a7fded3bda5e8c840a9a967794e03e0fc526f16658a70c81c397aca4e1698c721')
 
 package() {
     install -d "${pkgdir}/opt/trae-cn"
