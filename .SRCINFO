@@ -1,0 +1,16 @@
+pkgbase = markdown-query
+	pkgdesc = A jq-like command-line tool for Markdown processing
+	pkgver = 0.5.31
+	pkgrel = 1
+	url = https://mqlang.org/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	source = mq-0.5.31.tar.gz::https://github.com/harehare/mq/archive/refs/tags/v0.5.31.tar.gz
+	sha256sums = 9be94d114a4cec216733c357b642aaf5be40dc352f43c300ff8b1460135f0b82
+
+pkgname = markdown-query
