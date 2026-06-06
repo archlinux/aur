@@ -2,7 +2,7 @@
 _base=scikit-fem
 pkgname=python-${_base}
 pkgdesc="Simple finite element assemblers"
-pkgver=12.0.1
+pkgver=12.0.2
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/kinnala/${_base}"
@@ -11,7 +11,7 @@ depends=(python-scipy)
 makedepends=(python-build python-installer python-flit-core)
 checkdepends=(python-pytest python-matplotlib python-meshio python-jax python-shapely)
 source=(https://pypi.org/packages/source/${_base::1}/${_base//-/_}/${_base//-/_}-${pkgver}.tar.gz)
-sha512sums=('e0840763e57e097e249ceb2156218f090902c4e8588251d979458136b72d26559d82a3833430f06a9c80f82ecdfcce863af45fdff2fb83a7044ab8dc73348c05')
+sha512sums=('58e85c67df6737160a82586158df83611dbae3f22b946eafdb798953f7888d28d190985a8fcd382cd9b24d86e353156ecadcaacdf86902182399cdf90ab1b00c')
 
 build() {
   cd ${_base}-${pkgver}
