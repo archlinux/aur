@@ -4,13 +4,14 @@ pkgver=26.10.1
 _pkgver=26.10
 _minor=499
 _rhel=10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library files for AMD Advanced Media Framework (RDNA3 and Up Only)"
 arch=(x86_64)
 url="https://repo.radeon.com/amf"
 license=('LicenseRef-AMDGPUPROEULA')
-depends=('libstdc++' 'libgcc' 'libdrm' 'glibc' 'python')
-optdepends=('amf-headers: Header files for development')
+depends=('libstdc++' 'libgcc' 'libdrm' 'glibc' 'python' 'vulkan-radeon')
+optdepends=('amf-headers: Header files for development'
+	    'rocm-opencl-runtime: ROCm OpenCL integration')
 provides=('amf-amdgpu-pro')
 conflicts=('amf-amdgpu-pro')
 source=("https://repo.radeon.com/amf/${pkgver}/rhel/${_rhel}/packages/main/x86_64/amf-amdgpu-pro-${_pkgver}.${_minor}-1.x86_64.rpm"
