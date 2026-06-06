@@ -1,0 +1,18 @@
+pkgbase = gecit-unofficial
+	pkgdesc = DPI bypass tool using eBPF and fake TLS ClientHello injection
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/ycftbwc/gecit-unofficial
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	makedepends = clang
+	makedepends = llvm
+	makedepends = make
+	depends = systemd
+	source = git+https://github.com/ycftbwc/gecit-unofficial.git
+	md5sums = SKIP
+
+pkgname = gecit-unofficial
