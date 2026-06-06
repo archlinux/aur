@@ -1,0 +1,11 @@
+pkgbase = microbit-udev
+	pkgdesc = Udev rules allowing WebUSB access for BBC micro:bit in web editors (Makeblock, MakeCode)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/cherradiyacyn/microbit-aur
+	arch = any
+	license = unlicense
+	source = 60-microbit.rules::https://codeberg.org/cherradiyacyn/microbit-aur/raw/branch/master/60-microbit.rules
+	sha256sums = 1e7ef518d235b914bd863be38641bc9613742364d998fa9db770e615aa464903
+
+pkgname = microbit-udev
