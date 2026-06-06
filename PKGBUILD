@@ -1,61 +1,65 @@
-# Maintainer: diplomat
+# Contributor: diplomat
+# Maintainer: Julian Xhokaxhiu <https://julianxhokaxhiu.com>
 
 pkgname=open-webui
-pkgver=0.8.12
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
 license=('BSD-3-Clause')
-depends=('python' 'npm')
-makedepends=('git' 'nodejs-lts')
+depends=('uv')
 optdepends=('ollama' 'tika-server')
-conflicts=('open-webui-git' 'open-webui-no-venv')
-source=("git+https://github.com/open-webui/open-webui.git#tag=v$pkgver"
-        "open-webui.service"
-        "open-webui.conf"
-        "open-webui.install"
-        "LICENSE")
-b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+conflicts=('open-webui-uv' 'open-webui-git' 'open-webui-openrc' 'open-webui-no-venv' 'open-webui-dinit')
+source=("LICENSE::https://raw.githubusercontent.com/open-webui/open-webui/refs/tags/v$pkgver/LICENSE"
+        "${pkgname}.env"
+        "${pkgname}.override"
+        "${pkgname}.service"
+        "${pkgname}.install"
+        "${pkgname}.sysusers"
+        "${pkgname}.tmpfiles")
+sha256sums=('5f1bd74c48bf13ab0f82e177ad9e637313b92533d20ead2593d49347a47fc232'
+            '1e5f9ca7c238342ee75bd12210e90a0181fc044e6ed94cc3d494c4f15ea2a71c'
+            '576562a1788303dbdf9e3df4239ea0c43cdab39276e48542f1550f6346dae8f1'
+            'ce16bf13d39bac56659a249b6bb0314697ffd5976e9e85ebd580c95c15177019'
+            'dbf2a9e54801e598ebf9656777318ecb09ceea37c3464b692389f1c900f46f1c'
+            'c22c0b924ff6ba983091b0b94b645c8fe22012170aa65e616e7c82711fed3821'
+            '7ee594b5c323a55851ff79b9addbf303f1e263f68ca66538e20e72694ae2a467')
 options=(!strip !debug)
+install="${pkgname}.install"
 
 _appprefix="/opt"
 _appdataprefix="/var/opt"
 
 prepare() {
-    cd "$srcdir/$pkgname"
-}
+cat > "${srcdir}/${pkgname}.sh" << EOF
+#!/bin/sh
+DATA_DIR="\${DATA_DIR:-/var/lib/${pkgname}}"
+KEY_FILE="\${DATA_DIR}/secret_key"
 
-build() {
-    cd "$srcdir/$pkgname"
-    export PATH="/usr/lib/node_modules/node/bin:$PATH"
-    python -m venv .venv
-    source .venv/bin/activate
-    pip install --upgrade pip setuptools wheel
-    [ -f requirements.txt ] && pip install -r requirements.txt
-    export NODE_OPTIONS="--max_old_space_size=4096"
-    npm install --legacy-peer-deps
-    npm run build
-    deactivate
-}
+if [ ! -f "\$KEY_FILE" ]; then
+    SECRET=\$(head -c 32 /dev/urandom | base64 | tr -d "\n=")
+    printf '%s\n' "\$SECRET" > "\$KEY_FILE"
+    chmod 600 "\$KEY_FILE"
+    echo "${pkgname}: generated new WEBUI_SECRET_KEY, saved to \$KEY_FILE"
+fi
 
-check() {
-    return 0
+echo "${pkgname}: WEBUI_SECRET_KEY loaded from \$KEY_FILE"
+export WEBUI_SECRET_KEY="\$(cat "\$KEY_FILE")"
+
+export DATA_DIR
+exec uvx --python 3.11 ${pkgname}@${pkgver} serve
+EOF
 }
 
 package() {
-    install -Dm644 "$srcdir/open-webui.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
-    install -d "$pkgdir/usr/share/$pkgname"
-    install -Dm644 "$srcdir/open-webui.conf" "$pkgdir/usr/share/$pkgname/$pkgname.conf"
-    install -d "$pkgdir/${_appprefix}/$pkgname"
-    install -d "$pkgdir/${_appdataprefix}/$pkgname/data"
-    cp -R "$srcdir/$pkgname/." "$pkgdir/${_appprefix}/$pkgname"
-    rm -rf "$pkgdir/${_appprefix}/$pkgname/.git"
-    chmod 755 "$pkgdir/${_appprefix}/$pkgname"
-    find "$pkgdir/${_appprefix}/$pkgname" -type d -exec chmod 755 {} \;
-    find "$pkgdir/${_appprefix}/$pkgname" -type f -exec chmod 644 {} \;
-    chmod 700 "$pkgdir/${_appdataprefix}/$pkgname"
-    find "$pkgdir/${_appdataprefix}/$pkgname" -type d -exec chmod 700 {} \;
-    find "$pkgdir/${_appdataprefix}/$pkgname" -type f -exec chmod 640 {} \;
+  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "${srcdir}/${pkgname}.env" "${pkgdir}/etc/${pkgname}/environment"
+  install -Dm644 "${srcdir}/${pkgname}.override" "${pkgdir}/etc/${pkgname}/override"
+  install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+
+  # License
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }

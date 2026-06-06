@@ -1,3 +1,8 @@
-pkg/
-src/
-open-webui/
+# Ignore everything
+*
+
+# ...but
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!open-webui.*

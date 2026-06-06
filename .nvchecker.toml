@@ -1,4 +1,0 @@
-[open-webui]
-source = "git"
-git = "https://github.com/open-webui/open-webui.git"
-prefix = "v"
