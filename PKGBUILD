@@ -1,5 +1,5 @@
 pkgname=aurora-gui-bin
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Prebuilt Wayland-first GTK4 GUI for Arch Linux package management (pacman + AUR via yay/paru)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ install='aurora.install'
 # https://github.com/ahmoodio/aurora/releases/download/v<version>/aurora-linux-x86_64.tar.gz
 _asset_name='aurora-linux-x86_64.tar.gz'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ahmoodio/aurora/releases/download/v${pkgver}/${_asset_name}")
-sha256sums=('SKIP')
+sha256sums=('b3466f0f84ff892d400c50a96d35167948ffbfb6aa139c74f7c6efb147a522c7')
 
 _pick_file() {
   local p
