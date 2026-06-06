@@ -37,7 +37,7 @@ depends=(
 )
 makedepends=(
   'git'
-  'bun'
+  'pnpm'
   'nodejs'
   'python'
 )
@@ -59,12 +59,12 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  bun install --frozen-lockfile
+  pnpm install --frozen-lockfile
 }
 
 build() {
   cd "$srcdir/$_pkgname"
-  bun run dist:desktop:linux
+  pnpm run dist:desktop:linux
 
   local _appimage
   _appimage=$(find release/ -name '*.AppImage' -print -quit)
