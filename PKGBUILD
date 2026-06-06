@@ -2,7 +2,7 @@
 
 pkgname=ter-music
 pkgver=2.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc="This is a music player that can be used in the terminal~"
 arch=($CARCH)
 url="https://github.com/YXZL985/ter-music"
@@ -26,6 +26,8 @@ depends=(
     ncurses
     libpng
     libjpeg
+    libxml2
+    sqlite
 # ter-music-server
     impacket
     python
@@ -41,7 +43,7 @@ backup=()
 options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('53f50b001ef3c968e7245a7c95240981522c12eb85dfa9cc40ad5e4dda525ba0')
+sha256sums=('5f27b61792f3c95ec6b7e40852074eb282a9ee75599af149cebb74e2faf5ad0d')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
