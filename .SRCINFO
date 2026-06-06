@@ -1,7 +1,7 @@
 pkgbase = asteria
 	pkgdesc = Astrological chart calculator and analyzer with AI interpretations
 	pkgver = 2.4.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alamahant/Asteria
 	install = asteria.install
 	arch = i686
@@ -22,6 +22,6 @@ pkgbase = asteria
 	source = asteria.install
 	sha256sums = b7e9a0035b308a9da4c14ee65cf47e4828b6b3d1a4e4a0245a774c4698c0451f
 	sha256sums = 032a71d18cff92c9bf960020abda28d44c8f0c678072dcbab561e9aeb0399fbc
-	sha256sums = 05d1636fbc12f3649b1c83f6f62e4a1dcec50fcb192b1c5a98b830757c2b48ae
+	sha256sums = bec2b835191bd5a8c4ea7e11e495ccf8e30c225076d94629d17acf7fca80d97e
 
 pkgname = asteria
