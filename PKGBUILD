@@ -1,10 +1,10 @@
 # Maintainer: Yassine <cherradiyacyn@icloud.com>
 pkgname=mlink-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The background link program/driver for Makeblock mBlock robot communication"
 arch=('x86_64')
-url="https://www.mblock.cc"
+url="https://codeberg.org/cherradiyacyn/mlink-aur"
 license=('custom')
 depends=('glibc' 'gcc-libs' 'bash')
 provides=('mlink')
@@ -12,7 +12,7 @@ conflicts=('mlink')
 install=mlink.install
 options=('!strip')
 
-source=("mlink-${pkgver}.deb::https://github.com/cherradiyacyn/mlink-arch/releases/download/v1.2.0/mLink-1.2.0-amd64.deb"
+source=("mlink-${pkgver}.deb::https://codeberg.org/cherradiyacyn/mlink-aur/releases/download/v1.2.0/mLink-1.2.0-amd64.deb"
         "mlink.service")
 sha256sums=('28bc63f356636c4be185acf4b1e341e165d7e726de67bfd6713d5d19f75695ed'
             'f7b301ac2c2fef280e6444cf74ffdff1a2ace509091324f263e8e220d0bf3e66')
