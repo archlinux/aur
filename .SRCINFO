@@ -1,0 +1,16 @@
+pkgbase = bt-dualboot-ng
+	pkgdesc = Sync Bluetooth pairing keys between dualboot Linux and Windows
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/awsl1414/bt-dualboot
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = chntpw
+	source = https://files.pythonhosted.org/packages/19/af/6d68dc435993d204f140c0b164cb96b2dad5427d86f304bb8c343eb91c72/bt_dualboot_ng-2.0.1.tar.gz
+	b2sums = e02f9dff5b084a4352807dd636d42e0ca6b16efd7231963a1f50c25c57286a324750a33f5e2e853ef0d4af52005060f9844b7674c41ad3a9fb2bbfa9bb809306
+
+pkgname = bt-dualboot-ng
