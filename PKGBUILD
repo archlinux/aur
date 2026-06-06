@@ -1,6 +1,6 @@
 # Maintainer: Critlist <critlist at proton dot me>
 pkgname=restohack
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="A faithful restoration of Hack v1.0.3 (1984-85), modernized and maintained"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=('ncurses' 'glibc')
 makedepends=('cmake' 'gcc' 'git')
 source=("restoHack-${pkgver}.tar.gz::https://github.com/Critlist/restoHack/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4a70e2516291bf782b3c01c941771c1a5214c8dc45183b1cfe099deb72a46a22')
+sha256sums=('637a8d4fdfdf1d7b5435c5a5b05349b99aec6e43ca692f5af83c70e8f4877ea9')
 keywords=('hack' 'nethack' 'retro' 'game' 'unix' 'bsd-games''roguelike' 'preservation' 'dungeon''nethack')
 
 build() {
