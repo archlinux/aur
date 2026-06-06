@@ -1,0 +1,25 @@
+pkgbase = yukigram-rua-bin
+	pkgdesc = Yet another unofficial tdesktop client, but forked from yukigram
+	pkgver = 6.8.2
+	pkgrel = 2
+	url = https://github.com/Revincx/Yukigram
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = fontconfig
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = freetype2
+	optdepends = geoclue: geoinformation support
+	optdepends = geocode-glib-2: geocoding support
+	optdepends = webkit2gtk: embedded browser features
+	optdepends = xdg-desktop-portal: desktop integration
+	provides = yukigram-desktop
+	provides = yukigram-rua
+	conflicts = yukigram-desktop
+	conflicts = yukigram-rua
+	source = yukigram-rua-6.8.2-2-x86_64.tar.gz::https://github.com/Revincx/Yukigram/releases/download/6.8.2-2/yukigram-rua-6.8.2-2-x86_64.tar.gz
+	sha256sums = 7575687a5eb18d9d95778ef296295e121a765fb7382b352bea35949323247e94
+
+pkgname = yukigram-rua-bin
