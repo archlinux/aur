@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-space-bar-git
 	pkgdesc = GNOME Shell extension that shows workspaces buttons in top panel
-	pkgver = 37.r1.g0e3fd25
+	pkgver = 37.r3.g7a1b1f2
 	pkgrel = 1
 	url = https://github.com/christopher-l/space-bar
 	arch = any

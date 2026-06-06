@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-space-bar-git
-pkgver=37.r1.g0e3fd25
+pkgver=37.r3.g7a1b1f2
 pkgrel=1
 pkgdesc="GNOME Shell extension that shows workspaces buttons in top panel"
 arch=('any')
@@ -24,10 +24,15 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd space-bar
   export PNPM_HOME="$srcdir/pnpm-home"
   pnpm install --frozen-lockfile
+}
+
+build() {
+  cd space-bar
+  export PNPM_HOME="$srcdir/pnpm-home"
   sh scripts/build.sh
 }
 
