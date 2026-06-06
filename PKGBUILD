@@ -31,7 +31,7 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 ytmgo "$pkgdir/usr/bin/ytmgo"
-  install -Dm644 ytmgo-logo.png "$pkgdir/usr/share/pixmaps/ytmgo.png"
+  install -Dm644 ytmgo-icon.png "$pkgdir/usr/share/pixmaps/ytmgo.png"
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/ytmgo.desktop" <<EOF
 [Desktop Entry]
 Type=Application
