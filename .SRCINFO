@@ -1,6 +1,6 @@
 pkgbase = vicinae-appimage-bin
 	pkgdesc = Raycast like FOSS app on Linux
-	pkgver = 0.21.5
+	pkgver = 0.21.6
 	pkgrel = 1
 	url = https://github.com/vicinaehq/vicinae
 	arch = x86_64
