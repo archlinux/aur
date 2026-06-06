@@ -1,0 +1,5 @@
+[brutus-bin]
+source = "github"
+github = "praetorian-inc/brutus"
+use_latest_release = true
+prefix = "v"
