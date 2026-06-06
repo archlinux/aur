@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=mat-cat
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='A fast cat/bat alternative with syntax highlighting, a built-in pager, and zero-copy I/O'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=('mat')
 conflicts=('mat')
 source=("mat::git+https://github.com/tenseleyFlow/mat.git#tag=v$pkgver"
-        "paige::git+https://github.com/tenseleyFlow/paige#commit=a58b621de32940d79c85e6e408138266fd903542")
+        "paige::git+https://github.com/tenseleyFlow/paige#commit=4004f7a5cfa36897cb8b29df51dd9f4fef98ec82")
 sha256sums=('SKIP'
             'SKIP')
 

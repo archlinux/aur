@@ -1,6 +1,6 @@
 pkgbase = mat-cat
 	pkgdesc = A fast cat/bat alternative with syntax highlighting, a built-in pager, and zero-copy I/O
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/tenseleyFlow/mat
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = mat-cat
 	depends = glibc
 	provides = mat
 	conflicts = mat
-	source = mat::git+https://github.com/tenseleyFlow/mat.git#tag=v0.7.2
-	source = paige::git+https://github.com/tenseleyFlow/paige#commit=a58b621de32940d79c85e6e408138266fd903542
+	source = mat::git+https://github.com/tenseleyFlow/mat.git#tag=v0.7.3
+	source = paige::git+https://github.com/tenseleyFlow/paige#commit=4004f7a5cfa36897cb8b29df51dd9f4fef98ec82
 	sha256sums = SKIP
 	sha256sums = SKIP
 
