@@ -1,7 +1,7 @@
 # Maintainer: Sam Vervaeck <samvv at pm dot me>
 pkgname=evcape
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A small tool for making the CapsLock/Control key act as an Escape-key on Linux/Wayland"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/samvv/evcape"
@@ -23,4 +23,4 @@ package() {
   install -Dm644  "evcape-${pkgver}/evcape.service" -t "$pkgdir/usr/lib/systemd/system/"
   install -Dm0755 "evcape-${pkgver}/build/evcape"   -t "$pkgdir/usr/bin/"
 }
-sha256sums=('4d59956f510556ddbd989efc7d87c00504cc9a9912956e5af3125d29735c7003')
+sha256sums=('fcf913617ea7da76df5d83d631cc28b2805a4da5673bd87833b08cb80b8cae24')
