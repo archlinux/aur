@@ -1,18 +1,18 @@
 pkgbase = bws-bin
 	pkgdesc = Bitwarden Secrets Manager CLI
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://bitwarden.com/
 	arch = aarch64
 	arch = x86_64
 	license = custom:BITWARDEN SOFTWARE DEVELOPMENT KIT LICENSE AGREEMENT
 	provides = bws
 	conflicts = bws
-	source = https://raw.githubusercontent.com/bitwarden/sdk-sm/refs/tags/bws-v2.0.0/LICENSE
+	source = https://raw.githubusercontent.com/bitwarden/sdk-sm/refs/tags/bws-v2.1.0/LICENSE
 	sha256sums = SKIP
-	source_aarch64 = https://github.com/bitwarden/sdk-sm/releases/download/bws-v2.0.0/bws-aarch64-unknown-linux-gnu-2.0.0.zip
-	sha256sums_aarch64 = 49a250d4f3121c67155c195afbad4ced90a92a878c3256ca091276b82e7ad131
-	source_x86_64 = https://github.com/bitwarden/sdk-sm/releases/download/bws-v2.0.0/bws-x86_64-unknown-linux-gnu-2.0.0.zip
-	sha256sums_x86_64 = a8340ce01da609200441f2eca0e591173e124f012c88a16afda574279c052013
+	source_aarch64 = https://github.com/bitwarden/sdk-sm/releases/download/bws-v2.1.0/bws-aarch64-unknown-linux-gnu-2.1.0.zip
+	sha256sums_aarch64 = 18253757286e119d450133a87eb463bf8c1ce418ce24c834f4f250d60cba6f9e
+	source_x86_64 = https://github.com/bitwarden/sdk-sm/releases/download/bws-v2.1.0/bws-x86_64-unknown-linux-gnu-2.1.0.zip
+	sha256sums_x86_64 = ba8233c3a4aee5d43e3c73bbd04d99e9bc5aba13bbbfd06d89b073abe732b860
 
 pkgname = bws-bin
