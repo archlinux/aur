@@ -1,0 +1,19 @@
+pkgbase = markup-swift
+	pkgdesc = A minimal, fast markdown editor with live preview
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yourusername/Markup
+	arch = x86_64
+	arch = aarch64
+	license = custom:CC-BY-NC-SA
+	makedepends = cargo
+	makedepends = rust
+	depends = gtk3
+	depends = libxcb
+	depends = libxkbcommon
+	depends = wayland
+	depends = fontconfig
+	source = https://github.com/yourusername/Markup/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = markup-swift
