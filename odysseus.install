@@ -5,8 +5,8 @@ post_install() {
     chown -R "$REAL_USER:$REAL_USER" /opt/odysseus-ai-git
 
     echo "==> Running first-time setup as $REAL_USER..."
-    sudo -u "$REAL_USER" \
-        HOME="$(getent passwd "$REAL_USER" | cut -d: -f6)" \
+    sudo -u "$REAL_USER" -i \
+        ODYSSEUS_SKIP_RUN_HINT=1 \
         /opt/odysseus-ai-git/venv/bin/python /opt/odysseus-ai-git/setup.py
 
     echo "==> Enabling and starting Odysseus service..."
@@ -24,11 +24,13 @@ post_install() {
 post_upgrade() {
     REAL_USER="${SUDO_USER:-$USER}"
 
-    echo "==> Updating Python dependencies..."
+    # venv is rebuilt fresh by makepkg build() — just fix ownership and restart
     chown -R "$REAL_USER:$REAL_USER" /opt/odysseus-ai-git
+
     sudo -u "$REAL_USER" \
-        /opt/odysseus-ai-git/venv/bin/pip install \
-        -r /opt/odysseus-ai-git/requirements.txt --quiet
+        XDG_RUNTIME_DIR="/run/user/$(id -u "$REAL_USER")" \
+        DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$REAL_USER")/bus" \
+        systemctl --user daemon-reload
 
     sudo -u "$REAL_USER" \
         XDG_RUNTIME_DIR="/run/user/$(id -u "$REAL_USER")" \
