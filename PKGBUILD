@@ -2,7 +2,7 @@
 
 pkgname=kdenlive-appimage-pure
 _pkgname=kdenlive
-pkgver=26.04.1
+pkgver=26.04.2
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework (AppImage build)"
 arch=('x86_64')
@@ -14,8 +14,8 @@ depends=('fuse2')
 options=(!strip)
 _filename="${_pkgname}-${pkgver}-${arch}.AppImage"
 _folder="${pkgver%.*}"
-source_x86_64=("kdenlive-26.04.1-x86_64.AppImage::https://download.kde.org/stable/kdenlive/26.04/linux/kdenlive-26.04.1-x86_64.AppImage")
-sha256sums_x86_64=('3db4bb8c745479c60e8a5abdeca4e61476dc90f8926c8e33bf7b8b5fcc9a5c7a')
+source_x86_64=("kdenlive-26.04.2-x86_64.AppImage::https://download.kde.org/stable/kdenlive/26.04/linux/kdenlive-26.04.2-x86_64.AppImage")
+sha256sums_x86_64=('37548767032e2fd9bcb97002d588e119d1af5ea88dc12cec39409865522c45a5')
 
 prepare() {
 	cd "${srcdir}"
