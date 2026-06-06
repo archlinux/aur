@@ -5,9 +5,15 @@ pkgbase = sekiro-launcher-iced-bin
 	url = https://github.com/danimroca/Sekiro-Tool-Manager
 	arch = x86_64
 	license = MIT
+<<<<<<< HEAD
 	provides = sekiro-launcher-iced
 	conflicts = sekiro-launcher-iced
 	source = sekiro-launcher-iced-bin-0.1.3.tar.gz::https://github.com/danimroca/Sekiro-Tool-Manager/releases/download/v0.1.3/sekiro-launcher-iced-x86_64-unknown-linux-gnu.tar.gz
+=======
+	provides = sekiro-launcher
+	conflicts = sekiro-launcher
+	source = sekiro-launcher-iced-bin-0.1.0.tar.xz::https://github.com/danimroca/Sekiro-Tool-Manager/releases/download/v0.1.0/sekiro-launcher-x86_64-unknown-linux-gnu.tar.xz
+>>>>>>> 0f87391 (fix: correct source URL, provides and conflicts)
 	sha256sums = SKIP
 
 pkgname = sekiro-launcher-iced-bin
