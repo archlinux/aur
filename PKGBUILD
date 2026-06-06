@@ -9,7 +9,7 @@ url="https://github.com/anomalyco/unused-pkg-remover"
 license=('MIT')
 depends=(
   'python'
-  'python-pyside6'
+  'pyside6'
   'pacman'
   'expac'
   'polkit'
