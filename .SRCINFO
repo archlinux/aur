@@ -8,7 +8,7 @@ pkgbase = z-jail
 	makedepends = make
 	makedepends = nasm
 	depends = bash
-	provides = z-jail
+	provides = z_jail
 	options = !strip
 	source = git+https://github.com/Division-36/Z-Jail.git#tag=v1
 	sha256sums = 8abf2e80a8c0876c366fb75754f4998112d43291f7abb83f7817bcc641d4c353

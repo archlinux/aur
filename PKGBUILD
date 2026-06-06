@@ -21,7 +21,7 @@ license=('LicenseRef-AXIOM')
 makedepends=('make' 'nasm')
 depends=('bash')
 
-provides=("${_appname}")
+provides=("${_appname//-/_}")
 
 options=(!strip)
 
