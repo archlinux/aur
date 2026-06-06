@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Typst Studio
+Comment=Typst editor with Tinymist LSP and live HTML preview
+Exec=typst-studio %F
+Icon=typst-studio
+Terminal=false
+Type=Application
+Categories=Office;TextEditor;
+MimeType=text/plain;
+StartupWMClass=typst-studio
