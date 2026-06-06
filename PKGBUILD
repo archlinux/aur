@@ -1,7 +1,7 @@
 # Maintainer: PolJak <polesnik.jaka@gmail.com>
 
 pkgname=curd-polland-git
-pkgver=1.5.1.polland
+pkgver=1.5.2.polland
 pkgrel=1
 pkgdesc="Watch anime in CLI with AniList Tracking, Discord RPC, Intro/Outro/Filler/Recap Skipping, etc. (Git version)"
 arch=('x86_64' 'aarch64')
