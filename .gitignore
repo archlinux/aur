@@ -1,0 +1,9 @@
+# Ignore build and package directories created by makepkg
+/pkg/
+/src/
+
+# Ignore package files
+*.pkg.*
+
+# Ignore npm package file
+*.tgz
