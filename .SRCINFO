@@ -1,6 +1,6 @@
 pkgbase = moshpit-agent-fido2-unstable-bin
 	pkgdesc = Moshpit agent daemon — FIDO2/YubiKey unlock with post-quantum ML-DSA support (pre-compiled MUSL static binary)
-	pkgver = 0.8.18
+	pkgver = 0.8.19
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = moshpit-agent-fido2-unstable-bin
 	conflicts = moshpit-agent-systemd-creds-unstable-bin
 	conflicts = moshpit-agent-ssh-agent-piggyback-unstable-bin
 	conflicts = moshpit-agent-full-unstable-bin
-	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.18/dist-mpa.tar.gz
-	sha256sums = 9005e4521d86a0f9158d9e9e58a9d4db78f5c302e1b85c79c1811696f8e46712
-	source_x86_64 = mpa-fido2-unstable-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.18/mpa-fido2-unstable-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 4b776cca66f4558e31d3988587b3be7cf85bd4a80116a2bc16a86ae1c2d7096a
-	source_aarch64 = mpa-fido2-unstable-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.18/mpa-fido2-unstable-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = 0d1b5f1c31c40c366c9549c23f1294636438c21188412b99714362900b255161
+	source = https://github.com/rustyhorde/moshpit/releases/download/v0.8.19/dist-mpa.tar.gz
+	sha256sums = 54c0046ff7ec5f92aee946229f3709618f8a71d893c96b379a2223810fd66ebe
+	source_x86_64 = mpa-fido2-unstable-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.19/mpa-fido2-unstable-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 7ce0024836cb85410185d2c96713276238430423e1f6e3fb86642f4692590475
+	source_aarch64 = mpa-fido2-unstable-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.8.19/mpa-fido2-unstable-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 2ac81cd90ac82b2141332a797906358106e57db3a1fc955441aa45018a47bfed
 
 pkgname = moshpit-agent-fido2-unstable-bin
