@@ -13,7 +13,7 @@ options=('!buildflags' 'staticlibs' '!strip')
 source=("http://ceres-solver.org/ceres-solver-${pkgver}.tar.gz")
 sha256sums=('48b2302a7986ece172898477c3bcd6deb8fb5cf19b3327bc49969aad4cede82d')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd $srcdir/ceres-solver-$pkgver
