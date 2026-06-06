@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('raylib')
 makedepends=('odin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JuanPerdomo00/openmanagerc/archive/refs/heads/main.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('33df64197d47688194f2676ab6f2ef7d12e081ce33556dea1ff0526074cc74db')
 
 build() {
     cd "$srcdir/openmanagerc-main"
