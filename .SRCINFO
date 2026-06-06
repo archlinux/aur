@@ -1,16 +1,14 @@
 pkgbase = pocketcli
-	pkgdesc = Terminal UI client for Pocket Casts - stream podcasts and audiobooks from your terminal
-	pkgver = 1.5.0
+	pkgdesc = Terminal UI client for Pocket Casts - browse podcasts, sync playback, manage subscriptions
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/foforivera/pocketcli
 	arch = any
 	license = MIT
 	depends = python
-	depends = mpv
 	depends = python-httpx
-	depends = python-rich
-	depends = python-click
-	source = pocketcli-1.5.0.py::https://raw.githubusercontent.com/foforivera/pocketcli/main/pocketcli.py
-	sha256sums = SKIP
+	depends = mpv
+	source = pocketcli.py::https://raw.githubusercontent.com/foforivera/pocketcli/v1.6.0/pocketcli.py
+	sha256sums = 23cc2d16beb3e7dce8fb09764109a14693cec6cc1e7327cf2f842251f067bc74
 
 pkgname = pocketcli
