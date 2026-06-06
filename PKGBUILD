@@ -3,7 +3,7 @@
 
 pkgname=fluffychat-localflutter
 _pkgname=fluffychat
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Chat with your friends, be careful about your flutter environment"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ source=(
 )
 options+=(!lto)
 sha256sums=(
-  '9b0066a4f8ab090c3b8464f8a585f10b05ab8e296686d5d646b4d12034d23460'
+  'c3ccd008b6a2c90618c7cca90b9013b30ce0038d28c6c12dc37afde3f95b0259'
 )
 
 prepare() {
