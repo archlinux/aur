@@ -2,12 +2,12 @@
 
 pkgname=appflowy
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source alternative to Notion – you own your data and customizations"
 arch=('x86_64')
 url="https://appflowy.com"
 license=('AGPL-3.0-or-later')
-conflicts=('appflowy-bin')
+conflicts=('appflowy-bin' 'appflowy-git')
 depends=(
     'glib2>=2.80'
     'gst-plugins-base-libs'

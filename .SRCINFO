@@ -1,7 +1,7 @@
 pkgbase = appflowy
 	pkgdesc = Open-source alternative to Notion – you own your data and customizations
 	pkgver = 0.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://appflowy.com
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -25,6 +25,7 @@ pkgbase = appflowy
 	optdepends = kdialog: file picker on KDE Plasma
 	optdepends = zenity: file picker on GNOME/GTK
 	conflicts = appflowy-bin
+	conflicts = appflowy-git
 	options = !lto
 	options = !debug
 	options = !buildflags
