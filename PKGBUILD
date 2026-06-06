@@ -1,6 +1,6 @@
 pkgname=terminal-fireworks
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Fireworks for the terminal"
 arch=('any')
 url="https://github.com/chloem3ow/terminal-fireworks"
@@ -17,4 +17,4 @@ package() {
     cd "$srcdir/$pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
-sha256sums=('62600d9b40cc43803d48086a1cad09348f6236fd8a94424734f01d96f3e33d02')
+sha256sums=('d60e04336707c5bb54ac49a3b80f1add771150a4e35109be8d8a140a75b8a428')
