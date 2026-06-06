@@ -1,18 +1,17 @@
 pkgbase = eden-preview-pgo-bin
 	pkgdesc = The Eden Nintendo Switch emulator AppImage for preview builds such as release candidates (PGO build).
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://git.eden-emu.dev/eden-emu/eden
 	arch = x86_64
 	license = GPL-3.0-or-later
-	depends = zlib
 	depends = hicolor-icon-theme
 	provides = eden-preview
 	conflicts = eden-preview-bin
 	options = !strip
-	source_x86_64 = Eden-Linux-0.2.0-amd64.AppImage::https://git.eden-emu.dev/eden-emu/eden/releases/download/v0.2.0/Eden-Linux-v0.2.0-amd64-clang-pgo.AppImage
-	source_x86_64 = eden-preview.xml::https://git.eden-emu.dev/eden-emu/eden/raw/tag/v0.2.0/dist/dev.eden_emu.eden.xml
-	sha256sums_x86_64 = 68c8b5ace9772b0016a73c77089968b84708dace06ae5c9a472e21fab030465f
+	source_x86_64 = Eden-Linux-0.2.1-amd64.AppImage::https://git.eden-emu.dev/eden-emu/eden/releases/download/v0.2.1/Eden-Linux-v0.2.1-amd64-clang-pgo.AppImage
+	source_x86_64 = eden-preview.xml::https://git.eden-emu.dev/eden-emu/eden/raw/tag/v0.2.1/dist/dev.eden_emu.eden.xml
+	sha256sums_x86_64 = 7a28bf988b0648831989722bdbaa90ab31371b403808199813e0ea7c8b25ba6d
 	sha256sums_x86_64 = c3b5931f7dee681f00bbbb4ceecb26c2bfd0e56bb00e58e85ebd98eb700b84e7
 
 pkgname = eden-preview-pgo-bin
