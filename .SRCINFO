@@ -1,6 +1,6 @@
 pkgbase = vocab
 	pkgdesc = English/Turkish vocabulary tool
-	pkgver = 0.20
+	pkgver = 0.21
 	pkgrel = 1
 	url = https://github.com/whyghost/vocab
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = vocab
 	depends = bash
 	depends = sqlite
 	depends = python
-	source = vocab-0.20.tar.gz::https://github.com/whyghost/vocab/archive/refs/tags/v0.20.tar.gz
-	sha256sums = fd7bf170d94a29326347e568abffa4c727c42923d5cb57066de787eb620b3ce0
+	source = vocab-0.21.tar.gz::https://github.com/whyghost/vocab/archive/refs/tags/v0.21.tar.gz
+	sha256sums = eef4e04c3daa293fec501689aa656ca71cff6b16d74f5bec7f12e060e5921af9
 
 pkgname = vocab
