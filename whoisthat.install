@@ -1,0 +1,10 @@
+post_install() {
+    if ! command -v tun2socks &>/dev/null; then
+        echo ":: WARNING: tun2socks binary not found."
+        echo "   Install 'tun2socks' or 'tun2socks-bin' for TUN mode VPN support."
+    fi
+}
+
+post_upgrade() {
+    post_install
+}

@@ -3,12 +3,14 @@ pkgbase = whoisthat
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/kvunoff/whoisthat
+	install = whoisthat.install
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = go
 	depends = xray
-	depends = tun2socks
+	optdepends = tun2socks: for TUN mode VPN support
+	optdepends = tun2socks-bin: for TUN mode VPN support (alternative)
 	source = whoisthat-0.1.1.tar.gz::https://github.com/kvunoff/whoisthat/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = SKIP
 
