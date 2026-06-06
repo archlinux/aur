@@ -6,10 +6,10 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 declare -r _pkgname="lightning"
-declare -r _tag="55617a524e234b4c1651fa1e93d81a848e2d597f"
+declare -r _tag="70b91189d80283531ced3ca038337ba2ad3ebff6"
 
 pkgname="core-lightning"
-pkgver="26.06"
+pkgver="26.06.1"
 pkgrel="1"
 pkgdesc="Lightning Network implementation focusing on specification compliance and performance."
 arch=("x86_64")
@@ -31,7 +31,7 @@ source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/rustyrussell/lnprototest.git"
     "git+https://github.com/valyala/gheap.git"
     "git+https://github.com/zserge/jsmn.git")
-sha512sums=("785bf814660ee3e84e7dbba3de691068396d61d95f1cbaa8d9fa1723eeaf010e714f3226075bd0da040a673c70b24c41771e7681cf5c6057012223ef08567a23"
+sha512sums=("3ef0700afd821c8d2e38622adabec69989325c3323146f2cc2ec29f581752076fe7a21594721efc7da836dffdb3e9d7ff3cff7875376141098acd5aa954e8885"
     "SKIP"
     "SKIP"
     "SKIP"
