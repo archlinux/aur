@@ -1,6 +1,6 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=('textparser')
-pkgver='1.0.0'
+pkgver='1.0.1'
 pkgrel=1
 options=(!debug)
 pkgdesc='Flexible and eazy to integrate text parser library written in C.'
@@ -13,7 +13,7 @@ depends=('glibc' 'pcre2' 'json-c' 'python')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bokic/$pkgname/archive/refs/tags/${pkgver}.tar.gz")
 
-sha512sums=('f02b19d742037a74dc67762e74e9fe77dc3b400f7785476ceb400942fe5a0489d8b764c881e11869abd26ba2d159d79f1640aee12ba8a199abb0817adb1e4ae8')
+sha512sums=('030f90e0f1cdbec116823f5508c54d30563cb1c745912c16cd6887b4b7ecef2c082947393fbe2e50c7d92dfc7dd240391837eedce482f750af4b6faaf1fb418e')
 
 build() {
     (cd $pkgname-$pkgver/definitions; ./regenerate.sh)
