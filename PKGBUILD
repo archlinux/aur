@@ -34,7 +34,7 @@ sha256sums=('f7cee29e2a2b5a7bf5959e1bcde7cd6120c8f22d473167671c573b10fa0ae938')
 build() {
 	cd "${srcdir}/${_appname}/" || exit 1
 
-	make
+	make bare
 }
 
 check() {
