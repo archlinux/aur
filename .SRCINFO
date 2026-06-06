@@ -1,16 +1,17 @@
 pkgbase = python-randcrack-git
 	pkgdesc = Python random module cracker / predictor
-	pkgver = 0.1.5.r28.6b8d738
+	pkgver = 0.3.0.r45.dc94a3c
 	pkgrel = 1
 	url = https://github.com/tna0y/Python-random-module-cracker
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = git
-	makedepends = python-setuptools
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	source = python-randcrack-git::git+https://github.com/tna0y/Python-random-module-cracker
-	sha512sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-randcrack-git
-
