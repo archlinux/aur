@@ -1,0 +1,15 @@
+pkgbase = probed-git
+	pkgdesc = Public Resource Overseeing and Broadcasting Endpoint Daemon
+	pkgver = r10.c0b6060
+	pkgrel = 1
+	url = https://github.com/oversea-suite/PROBEd
+	arch = any
+	license = LGPLv2.1
+	depends = bash
+	depends = python
+	provides = probed
+	conflicts = probed
+	source = git+https://github.com/oversea-suite/PROBEd.git
+	sha256sums = SKIP
+
+pkgname = probed-git
