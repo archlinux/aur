@@ -1,6 +1,6 @@
 pkgbase = python-sli-ui-toolkit
 	pkgdesc = Reusable PyQt UI toolkit primitives for SLI desktop tools
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/Loganavter/sli-ui-toolkit
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-sli-ui-toolkit
 	depends = python
 	depends = python-pyqt6
 	depends = python-markdown
-	source = https://files.pythonhosted.org/packages/source/s/sli-ui-toolkit/sli_ui_toolkit-0.2.9.tar.gz
-	sha256sums = 6126083a0ad7144ed4ccb2267b3676476ebbd62e40db9769b84856917156b9c8
+	source = https://files.pythonhosted.org/packages/source/s/sli-ui-toolkit/sli_ui_toolkit-0.2.10.tar.gz
+	sha256sums = 526bd15cc0e31f97e9fcf711d20db5004cd77901a71120740cffe0095db755a9
 
 pkgname = python-sli-ui-toolkit
