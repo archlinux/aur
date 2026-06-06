@@ -7,7 +7,7 @@ _execname=(ctg{,x})
 pkgname=${_appname}-bin
 pkgdesc="A modern git based age-encrypted secrets manager for teams"
 
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,11 +32,11 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}-APACHE::${_ghurlraw}/LICENSE-APACHE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}-${_gitversion}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}-${_gitversion}.tar.gz")
-sha256sums=('bab397ebf1b6b15a50a98e59eb00077ee4fb42821b0c84f564df00663ec30767'
+sha256sums=('aa34e433443d880b1b4d8f43325f0ed5d4b4bcc0ac2a452157509862d1fe3728'
             'f23c6fdb2a5fb41913a9509586ac4c350ffc5f804183c0fae4bacba60b5a8ad1'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('39d8415c3ba2c74d05c382e36e0473f0bda00bce974310c46c7a8a99c7a78296')
-sha256sums_aarch64=('084a88d7f941840a6f7efb8e3c26b770b77a39f803a9c35f1b5eef05ecdcf525')
+sha256sums_x86_64=('bf4755e4e8e97ddcd05dc2f3b5dc8178e9a9e77f5446a3d532bf54700ab73ded')
+sha256sums_aarch64=('369a0691ba63a8d7f2bc1c584346dbf6482e719296c0955e2b5d49c834f4e3d0')
 
 
 package() {
