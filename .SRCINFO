@@ -1,6 +1,6 @@
 pkgbase = python-kicad-mcp-pro
 	pkgdesc = A Model Context Protocol server for KiCad EDA workflows
-	pkgver = 3.7.6
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/oaslananka/kicad-mcp
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = python-kicad-mcp-pro
 	optdepends = freerouting
 	provides = python-kicad-mcp-pro
 	conflicts = python-kicad-mcp-pro
-	source = kicad-mcp-pro::git+https://github.com/oaslananka/kicad-mcp.git#tag=v3.7.6
-	sha256sums = 8ae13e957d6655a822934929fef532a5cc6afb174f5db1602de4d2785d71b2aa
+	source = kicad-mcp-pro::git+https://github.com/oaslananka/kicad-mcp.git#tag=v3.8.0
+	sha256sums = 27b798c7d4bacc47ea04fbadf480e396745ef5416c69597a40632862afaa0815
 
 pkgname = python-kicad-mcp-pro
