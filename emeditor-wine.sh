@@ -110,10 +110,38 @@ install_emeditor() {
   wineserver -k || true
 }
 
+sync_desktop_entry() {
+  local data_home desktop_dir desktop
+
+  data_home="${XDG_DATA_HOME:-${HOME}/.local/share}"
+  desktop_dir="${data_home}/applications/wine/Programs"
+  desktop="${desktop_dir}/EmEditor.desktop"
+
+  mkdir -p "${desktop_dir}"
+  cat >"${desktop}" <<'EOF'
+[Desktop Entry]
+Name=EmEditor
+Exec=emeditor-wine %F
+Type=Application
+StartupNotify=true
+Comment=Launch EmEditor with the emeditor-wine wrapper
+Icon=accessories-text-editor
+StartupWMClass=emeditor.exe
+Categories=Utility;TextEditor;Development;
+MimeType=text/plain;
+EOF
+
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database "${data_home}/applications" >/dev/null 2>&1 || true
+  fi
+}
+
 export WINEPREFIX="${prefix}"
 export LANG="${lang}"
 export LC_ALL="${lang}"
 export LANGUAGE="${EMEDITOR_WINE_LANGUAGE:-zh_CN:en_US}"
+
+sync_desktop_entry
 
 dpi="$(pick_dpi)"
 configure_prefix "${dpi}"
@@ -121,6 +149,7 @@ configure_prefix "${dpi}"
 if [[ ! -f "${app}" ]]; then
   install_emeditor
   configure_prefix "${dpi}"
+  sync_desktop_entry
 fi
 
 args=()

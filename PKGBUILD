@@ -2,7 +2,7 @@
 
 pkgname=emeditor-wine
 pkgver=26.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='EmEditor text editor running through Wine'
 arch=('x86_64')
 url='https://www.emeditor.com/'
@@ -26,7 +26,7 @@ source=(
 )
 sha256sums=(
   'bc54ae3700a657c159f176b8f5ad646a4cfef3090d8097ff8dfa99067340f5b5'
-  'e0f86425b027acb9e8fb8e95ba778161bfe04230a9090102a1df0d427c8f481c'
+  'c3f95dcfb34d26be4786105d39246b8de6a88e9437fac112edd5fe54b9b31663'
   'da053ee4741dada7f257eebe4697d3a438553c529c63c4f0c0cf04b128128f8b'
 )
 
