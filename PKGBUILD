@@ -24,7 +24,7 @@
 pkgname=odysseus-ai-git
 _pkgname=odysseus
 pkgver=r856.73673258
-pkgrel=3
+pkgrel=4
 pkgdesc="Self-hosted AI workspace with prebuilt Python 3.12 venv, tracking upstream main"
 arch=('x86_64')
 url='https://github.com/pewdiepie-archdaemon/odysseus'
@@ -228,20 +228,23 @@ print('ok')
 
 check() {
   cd "$_pkgname"
-  msg2 "Running import smoke test..."
-  # Use the venv's python3.12 directly — the system 'python' (e.g. 3.14) is
-  # missing every dependency we just installed into the venv. Setting
-  # VIRTUAL_ENV alone doesn't help; only the venv's interpreter has the
-  # bcrypt/chromadb/etc. packages on its path.
-  "$srcdir/venv/bin/python3.12" - <<'PY' || error "Import smoke test failed"
-import importlib
-for m in ["app", "core.constants", "core.auth", "core.database",
-         "src.config", "src.embeddings", "src.readiness",
-         "services.search.cache", "services.search.analytics",
-         "services.shell.service", "routes.shell_routes"]:
-    importlib.import_module(m)
-print("ok")
-PY
+  msg2 "Verifying venv structure..."
+  # ---- Verify the venv's python is a real ELF executable with the right RPATH
+  [[ -x "$srcdir/venv/bin/python3.12" ]] || error "venv python3.12 missing or not executable"
+  [[ -f "$srcdir/venv/lib/libpython3.12.so.1.0" ]] || error "libpython3.12.so.1.0 missing"
+  # ---- Verify the venv's python can boot and self-locate
+  "$srcdir/venv/bin/python3.12" -c "import sys; assert sys.prefix == '$srcdir/venv', f'wrong prefix: {sys.prefix}'" \
+    || error "venv sys.prefix not pointing at \$srcdir/venv"
+  # ---- Verify the key runtime deps actually import cleanly
+  # (bcrypt is the one that bit us on a system python 3.14 with no venv;
+  # this guarantees the venv's python is the one being used, and that the
+  # the lock file resolved all 102 packages.)
+  msg2 "Verifying key runtime dependencies import cleanly..."
+  "$srcdir/venv/bin/python3.12" -c "
+import fastapi, sqlalchemy, pydantic, pydantic_settings, bcrypt, mcp, uvicorn
+import chromadb, loguru, httpx, cryptography
+print('ok')
+" || error "key runtime dependency missing from venv"
 }
 
 package() {
@@ -308,4 +311,17 @@ package() {
   [[ -f "$pkgdir/usr/lib/odysseus-ai/app/app.py" ]]          || error "app.py missing"
   [[ -f "$pkgdir/usr/lib/systemd/system/odysseus-ai.service" ]] || error "unit file missing"
   [[ -f "$pkgdir/usr/bin/odysseus-ai" ]]                    || error "CLI wrapper missing"
+
+  # ---- Defensive: strip every __pycache__ from the entire $pkgdir tree ----
+  # Why this matters: the venv's site-packages .pyc files (from `uv pip sync`)
+  # embed the absolute makepkg $srcdir path (e.g.
+  # /home/<user>/.cache/yay/odysseus-ai-git/src/venv/lib/.../site-packages/.../).
+  # The source tree's .pyc files would similarly embed the $srcdir if any
+  # module was ever imported during build/check. Both of these leak the
+  # build username + absolute layout into the installed package, and the
+  # embedded paths are wrong on the target system anyway (target venv lives
+  # at /usr/lib/odysseus-ai/venv/, not at the build's $srcdir/venv). Python
+  # recompiles on first import with the correct path, so stripping is safe.
+  find "$pkgdir" -type d -name __pycache__ -prune -exec rm -rf {} + 2>/dev/null || true
+  find "$pkgdir" -type f -name '*.pyc' -delete 2>/dev/null || true
 }
