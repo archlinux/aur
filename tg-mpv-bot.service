@@ -1,0 +1,16 @@
+[Unit]
+Description=tg-mpv-bot — Telegram mpv remote control
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/tg-mpv-bot
+Restart=on-failure
+RestartSec=5
+# Put BOT_TOKEN / ALLOWED_USERS / hooks here (see /usr/share/doc/tg-mpv-bot/env.example):
+EnvironmentFile=%h/.config/tg-mpv-bot.env
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target

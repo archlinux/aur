@@ -1,0 +1,19 @@
+pkgbase = tg-mpv-bot-git
+	pkgdesc = Telegram remote control for mpv — browse your library, stream links, control playback from your phone
+	pkgver = 1.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/antlis/tg-mpv-bot
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mpv
+	depends = python
+	depends = python-aiogram
+	depends = python-aiohttp
+	depends = yt-dlp
+	provides = tg-mpv-bot
+	conflicts = tg-mpv-bot
+	source = git+https://github.com/antlis/tg-mpv-bot.git
+	sha256sums = SKIP
+
+pkgname = tg-mpv-bot-git
