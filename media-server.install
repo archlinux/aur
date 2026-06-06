@@ -1,0 +1,23 @@
+post_install() {
+    systemctl daemon-reload
+    echo "media-server installed."
+    echo "Enable and start it with: systemctl enable --now media-server.service"
+    echo "Optional tokens/overrides live in /etc/media-server/media-server.env"
+    echo "The service runs as a systemd DynamicUser; its data is stored in"
+    echo "/var/lib/media-server (created automatically on first start)."
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl try-restart media-server.service || true
+}
+
+pre_remove() {
+    systemctl disable --now media-server.service 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl daemon-reload
+    echo "NOTE: service data in /var/lib/media-server was left in place."
+    echo "Remove it manually if no longer needed: rm -rf /var/lib/media-server"
+}
