@@ -19,7 +19,7 @@ pkgbase = hwsonnet
 	optdepends = pciutils: PCI device listing for GPU fallback
 	optdepends = usbutils: USB device info
 	optdepends = python-reportlab: PDF export support
-	source = git+https://github.com/Varionetzwerk/hwsonnet.git#tag=v1.0.11.0.1
+	source = git+https://github.com/Varionetzwerk/hwsonnet.git#tag=v1.0.1
 	sha256sums = SKIP
 
 pkgname = hwsonnet

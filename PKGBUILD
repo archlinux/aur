@@ -25,7 +25,7 @@ optdepends=(
 )
 makedepends=('git')
 
-source=("git+https://github.com/Varionetzwerk/hwsonnet.git#tag=v1.0.1${pkgver}")
+source=("git+https://github.com/Varionetzwerk/hwsonnet.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
