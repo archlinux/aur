@@ -1,7 +1,7 @@
 pkgbase = vdr-trayopenng
 	pkgdesc = Open or close the CD/DVD tray via the menu or via a function key of the remote control
 	pkgver = 1.0.2
-	pkgrel = 18
+	pkgrel = 19
 	url = http://www.uli-eckhardt.de/vdr/trayopenng.en.shtml
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = vdr-trayopenng
 	arch = aarch64
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=12
+	depends = vdr-api=13
 	backup = etc/vdr/conf.avail/50-trayopenng.conf
 	source = https://www.uli-eckhardt.de/vdr/download/vdr-trayopenng-1.0.2.tgz
 	source = 50-trayopenng.conf
