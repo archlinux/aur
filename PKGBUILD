@@ -6,7 +6,7 @@
 
 pkgname=ytmgo
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal-based YouTube Music client — search, download, queue, and play music from the keyboard"
 arch=('x86_64' 'aarch64')
 url="https://github.com/anas1412/ytmgo"

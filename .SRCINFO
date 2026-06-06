@@ -1,7 +1,7 @@
 pkgbase = ytmgo
 	pkgdesc = A terminal-based YouTube Music client — search, download, queue, and play music from the keyboard
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anas1412/ytmgo
 	arch = x86_64
 	arch = aarch64
