@@ -1,6 +1,6 @@
 # Maintainer: slatkin@gmail.com
 pkgname=mby
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Terminal client for Emby media server"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/slatkin/mby"
 license=('MIT')
 depends=('mpv' 'openssl')
 source=("${pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/slatkin/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('ae1527128c6466e291b8ae2d11e26f27d794e0fe119381a0c4edaff794e6bccd')
+sha256sums=('a60248fffd09e84b4917a5c5628cede2f5f19bf7e4c4065350736e7e408eef13')
 
 package() {
     cd "${pkgname}-${pkgver}"
