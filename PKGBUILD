@@ -1,5 +1,5 @@
 pkgname=mingw-w64-nlopt
-pkgver=2.10.1
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="nonlinear optimization library (mingw-w64)"
 arch=(any)
@@ -9,9 +9,9 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://github.com/stevengj/nlopt/archive/v${pkgver}.tar.gz")
-sha256sums=('30d13ce16da119db3e987784f7864e35a562ec62c186352fae55cd003e6c58ff')
+sha256sums=('53e552d83e9294d67db37f0f4a23f15933a9ef698485301a18b98b40004cf0de')
 
-_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd "$srcdir/nlopt-$pkgver"
