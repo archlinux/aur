@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.3] - 2026-06-06
+### Changed
+- Updated min sdk version to ^3.12.0
+- Updated dependencies
+
+### Fixed
+- Fixed dependency registration issue (#83)
+
 ## [1.4.2] - 2026-02-21
 ### Changed
 - Updated min sdk version to ^3.11.0
@@ -107,6 +115,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial release
 
+[1.4.3]: https://github.com/Skycoder42/podman_backup/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/Skycoder42/podman_backup/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/Skycoder42/podman_backup/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/Skycoder42/podman_backup/compare/v1.3.5...v1.4.0
