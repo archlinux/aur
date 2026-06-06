@@ -1,0 +1,15 @@
+pkgbase = nvfsys-git
+	pkgdesc = Minimalist and stylish system information fetch tool written in Lua
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vidasik/novafetch
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = lua
+	provides = nvfsys
+	conflicts = nvfsys
+	source = git+https://github.com/vidasik/novafetch.git
+	sha256sums = SKIP
+
+pkgname = nvfsys-git
