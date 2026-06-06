@@ -4,12 +4,12 @@ pkgname=pilauncher-bin
 _pkgname=pilauncher
 _appname=PiLauncher
 pkgver=0.1.32
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern gamepad-friendly Minecraft launcher built with Tauri (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/MrShellad/pilauncher'
 license=('custom')
-depends=('fuse2' 'gtk3' 'webkit2gtk-4.1')
+depends=('dbus' 'fontconfig' 'gcc-libs' 'glibc' 'gtk3' 'hicolor-icon-theme' 'systemd-libs' 'webkit2gtk-4.1')
 provides=('pilauncher')
 conflicts=('pilauncher')
 options=('!strip')
@@ -26,8 +26,9 @@ sha256sums=(
 package() {
   local appimage="${srcdir}/${_appname}_${pkgver}_amd64.AppImage"
   local extract_dir="${srcdir}/appimage-extract"
-  local desktop_source
+  local appdir
   local icon_source
+  local icon_dir
 
   chmod +x "${appimage}"
   rm -rf "${extract_dir}"
@@ -38,26 +39,21 @@ package() {
     APPIMAGE_EXTRACT_AND_RUN=1 "${appimage}" --appimage-extract >/dev/null
   )
 
-  install -dm755 "${pkgdir}/opt/${_pkgname}"
-  install -Dm755 "${appimage}" "${pkgdir}/opt/${_pkgname}/${_appname}_${pkgver}_amd64.AppImage"
+  appdir="${extract_dir}/squashfs-root"
+
+  install -Dm755 "${appdir}/usr/bin/${_appname}" "${pkgdir}/opt/${_pkgname}/usr/bin/${_appname}"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/pilauncher" <<SCRIPT
 #!/bin/sh
-exec env APPIMAGE_EXTRACT_AND_RUN=1 APPIMAGELAUNCHER_DISABLE=1 \\
-  /opt/${_pkgname}/${_appname}_${pkgver}_amd64.AppImage "\$@"
+export APPDIR=/opt/${_pkgname}
+export GDK_BACKEND="\${GDK_BACKEND:-x11}"
+export WEBKIT_DISABLE_DMABUF_RENDERER="\${WEBKIT_DISABLE_DMABUF_RENDERER:-1}"
+cd /opt/${_pkgname}/usr || exit 1
+exec /opt/${_pkgname}/usr/bin/${_appname} "\$@"
 SCRIPT
 
-  desktop_source="$(find "${extract_dir}/squashfs-root" -type f -iname 'pilauncher.desktop' | head -n1)"
-  if [[ -n "${desktop_source}" ]]; then
-    install -Dm644 "${desktop_source}" "${pkgdir}/usr/share/applications/pilauncher.desktop"
-    sed -i \
-      -e 's|^Exec=.*|Exec=pilauncher %U|' \
-      -e 's|^Icon=.*|Icon=pilauncher|' \
-      -e 's|^Categories=.*|Categories=Game;|' \
-      "${pkgdir}/usr/share/applications/pilauncher.desktop"
-  else
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/pilauncher.desktop" <<DESKTOP
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/pilauncher.desktop" <<DESKTOP
 [Desktop Entry]
 Type=Application
 Version=1.0
@@ -72,10 +68,12 @@ Categories=Game;
 Keywords=Minecraft;Launcher;PiLauncher;
 X-AppImage-Version=0.1.32
 DESKTOP
-  fi
 
-  icon_source="$(find "${extract_dir}/squashfs-root" -type f \( -iname 'pilauncher.png' -o -iname 'logo.png' \) | head -n1)"
-  if [[ -n "${icon_source}" ]]; then
-    install -Dm644 "${icon_source}" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pilauncher.png"
-  fi
+  while IFS= read -r icon_source; do
+    icon_dir="${icon_source#${appdir}/usr/share/icons/hicolor/}"
+    icon_dir="${icon_dir%/apps/*}"
+    install -Dm644 "${icon_source}" "${pkgdir}/usr/share/icons/hicolor/${icon_dir}/apps/pilauncher.png"
+  done < <(find "${appdir}/usr/share/icons/hicolor" -type f -iname "${_appname}.png")
+
+  install -Dm644 "${appdir}/${_appname}.png" "${pkgdir}/usr/share/pixmaps/pilauncher.png"
 }
