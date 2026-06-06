@@ -6,9 +6,9 @@ post_install() {
         -r /usr/lib/odysseus-ai/requirements.filtered.txt
     echo "[ok] Dependencies installed"
 
-    echo ""
-    echo "=== Initialising database ==="
-    cd /usr/lib/odysseus-ai && /usr/lib/odysseus-ai/venv/bin/python setup.py
+    # Create required data directories
+    mkdir -p /usr/lib/odysseus-ai/data/{uploads,personal_docs,personal_uploads,tts_cache,generated_images,deep_research,chroma,rag,memory_vectors}
+    mkdir -p /usr/lib/odysseus-ai/logs
     chown -R "${SUDO_USER:-root}:${SUDO_USER:-root}" \
         /usr/lib/odysseus-ai/data \
         /usr/lib/odysseus-ai/logs 2>/dev/null || true
@@ -27,7 +27,6 @@ post_upgrade() {
     echo "=== Odysseus AI: Updating dependencies ==="
     /usr/lib/odysseus-ai/venv/bin/pip install --quiet \
         -r /usr/lib/odysseus-ai/requirements.filtered.txt
-    cd /usr/lib/odysseus-ai && /usr/lib/odysseus-ai/venv/bin/python setup.py
     echo ""
     echo "Restart the service:"
     echo "  systemctl --user restart odysseus-ai"
