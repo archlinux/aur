@@ -1,0 +1,5 @@
+[amf-amdgpu]
+source = "regex"
+url = "https://repo.radeon.com/amf/"
+regex = 'href="(\d+(?:\.\d+)+)/"'
+sort_version_key = "parse_version"
