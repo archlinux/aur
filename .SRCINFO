@@ -1,0 +1,16 @@
+pkgbase = germ-git
+	pkgdesc = GEneral Resource Manager
+	pkgver = r6.2139a9b
+	pkgrel = 1
+	url = https://github.com/oversea-suite/germ
+	arch = any
+	license = LGPLv2.1
+	depends = bash
+	depends = python
+	depends = probed
+	provides = germ
+	conflicts = germ
+	source = germ-source::git+https://github.com/oversea-suite/germ.git
+	sha256sums = SKIP
+
+pkgname = germ-git
