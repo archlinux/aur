@@ -1,5 +1,5 @@
 # Maintainer: steffeno <steffeno dash etc at protonmail dot com>
-#
+
 pkgname=python-randcrack-git
 _pkgname=randcrack
 pkgver=0.3.0.r45.dc94a3c
@@ -8,7 +8,6 @@ pkgdesc="Python random module cracker / predictor"
 arch=('any')
 url='https://github.com/tna0y/Python-random-module-cracker'
 license=('MIT')
-
 depends=('python')
 makedepends=(
     'git'
