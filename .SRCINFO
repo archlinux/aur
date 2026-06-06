@@ -1,0 +1,21 @@
+pkgbase = chili3d
+	pkgdesc = Browser-based 3D CAD application (OpenCascade WASM + Three.js)
+	pkgver = 0.6.1
+	pkgrel = 2
+	url = https://chili3d.com
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = nodejs
+	makedepends = npm
+	depends = python
+	depends = xdg-utils
+	options = !debug
+	options = !strip
+	source = https://github.com/xiangechen/chili3d/archive/refs/tags/0.6.1.tar.gz
+	source = chili3d.in
+	source = chili3d.desktop
+	sha256sums = 6844f4b917dd64e12a0918bbab37e6f9f3174d308589b3c3f4fa2e50b85f0488
+	sha256sums = 8c806cf555f90e13f384414f9d8fd0c1c9ca68d39b8ffb3374ba44fc3ae659c7
+	sha256sums = 5fbaf0a8f85a34770ccb73ffc4caa10df7766ce94f087ee16958b373a9797489
+
+pkgname = chili3d

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Chili3D
+GenericName=3D CAD
+Comment=Browser-based 3D CAD for online model design and editing
+Exec=chili3d
+Icon=chili3d
+Categories=Graphics;Engineering;
+StartupNotify=true
+Terminal=false
+Keywords=CAD;3D;modeling;STEP;OpenCascade;

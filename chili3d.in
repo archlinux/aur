@@ -1,0 +1,29 @@
+#!/bin/bash
+set -euo pipefail
+
+root=/usr/share/chili3d
+port="${CHILI3D_PORT:-8765}"
+url="http://127.0.0.1:${port}/"
+
+if [[ ! -d ${root} ]]; then
+  echo "chili3d: missing ${root}" >&2
+  exit 1
+fi
+
+cd "${root}"
+
+python3 -m http.server "${port}" --bind 127.0.0.1 &
+server_pid=$!
+
+cleanup() {
+  kill "${server_pid}" 2>/dev/null || true
+}
+trap cleanup EXIT INT TERM
+
+if command -v xdg-open >/dev/null 2>&1; then
+  xdg-open "${url}" >/dev/null 2>&1 || true
+else
+  echo "Open ${url} in your browser"
+fi
+
+wait "${server_pid}"
