@@ -1,17 +1,17 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd-daemon
-pkgver=r76.79aa807
+pkgver=r77.9887ef6
 pkgrel=1
 pkgdesc='Daemon for Skwd Shell, a collection of Quickshell programs and widgets'
 arch=('x86_64')
 url='https://github.com/liixini/skwd-daemon'
 license=('MIT')
-makedepends=('cargo' 'gcc' 'clang' 'pkgconf' 'ffmpeg' 'alsa-lib' 'libpulse' 'wayland' 'wayland-protocols' 'mesa')
+makedepends=('cargo' 'gcc' 'clang' 'pkgconf' 'patchelf' 'ffmpeg' 'alsa-lib' 'libpulse' 'wayland' 'wayland-protocols' 'mesa')
 depends=('gcc-libs' 'imagemagick' 'ffmpeg' 'alsa-lib' 'libpulse' 'wayland' 'mesa')
 options=('!debug' '!lto')
 optdepends=(
   'ollama: local LLM for automated wallpaper tagging'
-  'steamcmd: Steam Workshop Wallpaper Engine downloads'
+  'steamcmd: Steam Workshop Wallpaper Engine downloads when the Steam client is not running'
   'linux-wallpaperengine: Wallpaper Engine scene rendering'
 )
 install="${pkgname}.install"
@@ -45,6 +45,9 @@ package() {
   install -Dm755 target/release/skwd "$pkgdir/usr/bin/skwd"
   install -Dm755 target/release/skwd-paper "$pkgdir/usr/bin/skwd-paper"
   install -Dm755 target/release/skwd-paper-still "$pkgdir/usr/bin/skwd-paper-still"
+
+  install -Dm644 target/release/libsteam_api.so "$pkgdir/usr/lib/skwd-daemon/libsteam_api.so"
+  patchelf --set-rpath '$ORIGIN/../lib/skwd-daemon' "$pkgdir/usr/bin/skwd-daemon"
 
   install -Dm644 data/skwd-daemon.service "$pkgdir/usr/lib/systemd/user/skwd-daemon.service"
   install -Dm644 data/host/shell.qml "$pkgdir/usr/share/skwd/skwd-daemon/host/shell.qml"
