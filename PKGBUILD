@@ -1,6 +1,6 @@
 # Maintainer: tobocop <tobias.perelstein@gmail.com>
 pkgname=lilbee-cuda
-pkgver=0.6.66b489
+pkgver=0.6.66b490
 pkgrel=1
 pkgdesc="Local search engine and personal encyclopedia for your notes, code, and PDFs (CUDA build)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ conflicts=('lilbee')
 provides=('lilbee')
 options=('!strip' '!debug')
 source_x86_64=("lilbee-${pkgver}-cu125::${url}/releases/download/v${pkgver}/lilbee-linux-${CARCH}-cu125")
-sha256sums_x86_64=('13b4d0305368ad720e5fe5f329a11f820dc937a33350c7397a378f992a509b76')
+sha256sums_x86_64=('70d3e42daeb70035506e2f23e6aace3a3ebb85ce7d35482b346a89aa924a7437')
 source=("lilbee.service::${url}/raw/v${pkgver}/packaging/systemd/lilbee.service")
 sha256sums=('8987137080f5b5353ca4a5bc82aa56c92c450c158e8558fa48fa8bff2cb1c69d')
 
