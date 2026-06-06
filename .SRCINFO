@@ -1,0 +1,21 @@
+pkgbase = ttcli-bin
+	pkgdesc = TickTick CLI: tasks, lists, pomodoro/focus over the private web API.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/j4y-w4lk3r/ttcli
+	license = MIT
+	depends = glibc
+	conflicts = ttcli
+	conflicts = ttcli-git
+	provides = ttcli
+	arch = aarch64
+	source_aarch64 = https://github.com/j4y-w4lk3r/ttcli/releases/download/v0.1.0/ttcli_0.1.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c008c650f66359877f0dc52743e1caeb4e9c8de4768b20cea90d4a8a13fa7db9
+	arch = armv7h
+	source_armv7h = https://github.com/j4y-w4lk3r/ttcli/releases/download/v0.1.0/ttcli_0.1.0_Linux_armv7.tar.gz
+	sha256sums_armv7h = 6d3c64ab0a784c027f0780eb73159c2e3674ad4d045137ddb1e7a7059ae8a505
+	arch = x86_64
+	source_x86_64 = https://github.com/j4y-w4lk3r/ttcli/releases/download/v0.1.0/ttcli_0.1.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e8fc83e451c0c1f990b175aefb2d01a398fc86562c4d46b4c15bc21772b60ba0
+	
+pkgname = ttcli-bin
