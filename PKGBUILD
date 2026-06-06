@@ -20,7 +20,7 @@ depends=(
     'python-beautifulsoup4'
     'python-charset-normalizer'
     'python-numpy'
-    'python-chromadb-client'
+    'python-chromadb'
     'python-fastembed'
     'python-youtube-transcript-api'
     'python-markdown'
