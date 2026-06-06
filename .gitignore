@@ -1,11 +1,16 @@
+# makepkg build artifacts
 pkg/
 src/
-odysseus/        # upstream git clone (re-cloned by makepkg)
+odysseus/
 *.pkg.tar.*
 *.pkg.tar.*.sig
 .DS_Store
-node_modules/
+
+# python
 __pycache__/
 *.pyc
 .venv/
 venv/
+
+# node
+node_modules/
