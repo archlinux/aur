@@ -61,7 +61,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_C_COMPILER=clang \
         -DCMAKE_CXX_COMPILER=clang++ \
-        -DCMAKE_LINKER=lld \
+        -DCMAKE_LINKER_TYPE=LLD \
         -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
         -DFETCHCONTENT_SOURCE_DIR_RSTD="$srcdir/rstd" \
         -DFETCHCONTENT_SOURCE_DIR_NCREQUEST="$srcdir/ncrequest" \
