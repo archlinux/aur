@@ -1,8 +1,8 @@
-pkgbase = run0-sudo-shim-git
-	pkgdesc = An imitation of sudo, using run0 internally - WARNING: !!! THIS REPLACES SUDO !!!
-	pkgver = 1.2.0.r8.g84b51f4
+pkgbase = run0-sudo-shim-selinux
+	pkgdesc = sudo imitation using run0 internally, patched to default-inject --via-shell so escalated commands run in a proper SELinux domain (e.g. pacman -> rpm_t). WARNING: !!! THIS REPLACES SUDO !!!
+	pkgver = 1.3.0
 	pkgrel = 1
-	url = https://github.com/LordGrimmauld/run0-sudo-shim
+	url = https://github.com/nikicat/run0-sudo-shim
 	arch = any
 	license = BSD-3-Clause
 	makedepends = git
@@ -10,7 +10,11 @@ pkgbase = run0-sudo-shim-git
 	depends = systemd>=256.0
 	provides = sudo
 	conflicts = sudo
-	source = run0-sudo-shim-git::git+https://github.com/LordGrimmauld/run0-sudo-shim
+	conflicts = run0-sudo-shim-git
+	backup = etc/run0-sudo-shim.conf
+	source = run0-sudo-shim-selinux::git+https://github.com/nikicat/run0-sudo-shim#tag=1.3.0
+	source = run0-sudo-shim.conf
+	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = run0-sudo-shim-git
+pkgname = run0-sudo-shim-selinux
