@@ -1,0 +1,5 @@
+[tpaper-bin]
+source = "github"
+github = "yagnikpt/tpaper"
+use_latest_release = true
+prefix = "v"
