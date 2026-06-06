@@ -1,0 +1,16 @@
+pkgbase = blob-bin
+	pkgdesc = A minimal note manager that stays out of your way.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/aaravmaloo/blob
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	provides = blob
+	conflicts = blob
+	source_x86_64 = https://github.com/aaravmaloo/blob/releases/download/v0.0.3/blob-linux-amd64
+	sha256sums_x86_64 = 2914d057216ba0886e343177f3c2f2503ee995f7e8b2e5bde9f696f9aaa6b453
+	source_aarch64 = https://github.com/aaravmaloo/blob/releases/download/v0.0.3/blob-linux-arm64
+	sha256sums_aarch64 = e021213eac1fb457256d5d2d49f5a3343e6da9561e40fde8a769fccc8565a059
+
+pkgname = blob-bin
