@@ -2,7 +2,3 @@
 /src/
 *.pkg.tar.zst
 *.pkg.tar.xz
-
-# Kernel source fetched by makepkg per source=() (vendored at build, not committed)
-*.c
-*.h
