@@ -12,7 +12,7 @@ options=(!strip !buildflags staticlibs)
 source=("https://github.com/protocolbuffers/${_pkgname}/releases/download/v$pkgver/${_pkgname}-$pkgver.tar.gz")
 sha256sums=('8f907baca4b34a3b4854103ba5811e418fb6e2ff11fe0d8df9e8280b11d79926')
 
-_architectures="x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
