@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=rufin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Native GTK4 Jellyfin/Subsonic Client in Rust'
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ optdepends=(
 conflicts=('rufin-git')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/screwys/Rufin/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('343a2480eb532be48ee8de0429b5e4b36cbcea2dbea9586cd096ac5a24baef3d')
+sha256sums=('f50078f9d025c6c023d204556cad7e3ab9b3cd3f5482ba8b1359a3116299191f')
 
 prepare() {
   cd "Rufin-${pkgver}" || return
@@ -49,13 +49,6 @@ build() {
 
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release -p rufin-app
-}
-
-check() {
-  cd "Rufin-${pkgver}" || return
-
-  export CARGO_TARGET_DIR=target
-  cargo test --frozen --workspace
 }
 
 package() {
@@ -78,7 +71,7 @@ package() {
     data/icons/hicolor/64x64/apps/*.png
 
   local lang po_file
-  for po_file in po/*.po; do
+  for po_file in locales/*.po; do
     [[ -f $po_file ]] || continue
     lang=${po_file##*/}
     lang=${lang%.po}
