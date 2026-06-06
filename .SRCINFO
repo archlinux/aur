@@ -1,7 +1,7 @@
 pkgbase = vdr-remote
 	pkgdesc = Extends the remote control capabilities of vdr
 	pkgver = 0.7.0
-	pkgrel = 19
+	pkgrel = 20
 	url = http://www.escape-edv.de/endriss/vdr/
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = vdr-remote
 	arch = aarch64
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=12
+	depends = vdr-api=13
 	backup = etc/vdr/conf.avail/50-remote.conf
 	source = http://www.escape-edv.de/endriss/vdr/vdr-remote-0.7.0.tgz
 	source = av7110_ir_vdr_perms.conf
