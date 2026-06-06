@@ -1,7 +1,7 @@
 # Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=keepmenu
-pkgver=1.4.4
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="dmenu/rofi frontend for KeePass databases"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('dmenu: dmenu backend'
             'pinentry: secure passphrase entry')
 
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha256sums=('b7bb4976810fecfd8097a9a9a6af62fe14fce421fba2e672429e711ff614d5b9')
+sha256sums=('e58b5538076ccb85a46355c9147cbbba1b2dff842288cd2b21953608120c0112')
 install=${pkgname}.install
 
 prepare() {
