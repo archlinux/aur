@@ -1,4 +1,4 @@
-# Maintainer: Achintya <achintyaprakash@outlook.com>
+# Maintainer: Achintya <achintya22052000@gmail.com>
 pkgname=paruz-bin
 pkgver=0.1.0
 pkgrel=1
