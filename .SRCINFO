@@ -1,0 +1,26 @@
+pkgbase = zalo-for-linux-bin
+	pkgdesc = Zalo for Linux
+	pkgver = 26.5.20
+	pkgrel = 1
+	url = https://github.com/doandat943/zalo-for-linux
+	arch = x86_64
+	license = MIT
+	depends = sqlite
+	depends = glibc
+	depends = zlib
+	optdepends = wl-clipboard: paste images from clipboard on Wayland
+	optdepends = xclip: paste images from clipboard on X11
+	provides = zalo
+	conflicts = zalo
+	options = !strip
+	options = !debug
+	source = zalo.AppImage::https://github.com/doandat943/zalo-for-linux/releases/download/26.5.20/Zalo-26.5.20+ZaDark-26.2-806dffa.AppImage
+	source = zalo.desktop
+	source = Zalo.png
+	source = zalo
+	sha256sums = f393d26688043e4012571579dab94260e299901b486a821e9869b913b68701b8
+	sha256sums = 3c54d9828c0e4b763226516ab1d7984c72777e70165983795f5d77c8db93fec9
+	sha256sums = 54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445
+	sha256sums = a14fe90cebf219764340d5297e87f3b982a3131d04a3561132b089e47cf6386d
+
+pkgname = zalo-for-linux-bin
