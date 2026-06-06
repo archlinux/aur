@@ -1,0 +1,16 @@
+diff --git a/aic_btusb/aic_btusb.h b/aic_btusb/aic_btusb.h
+index 2f8241d..ed1a1b4 100644
+--- a/aic_btusb/aic_btusb.h
++++ b/aic_btusb/aic_btusb.h
+@@ -37,9 +37,9 @@
+ 
+ 
+ #ifdef CONFIG_PLATFORM_UBUNTU
+-#define CONFIG_BLUEDROID        1 /* bleuz 0, bluedroid 1 */
++#define CONFIG_BLUEDROID        0 /* bleuz 0, bluedroid 1 */
+ #else
+-#define CONFIG_BLUEDROID        1 /* bleuz 0, bluedroid 1 */
++#define CONFIG_BLUEDROID        0 /* bleuz 0, bluedroid 1 */
+ #endif
+ 
+ 

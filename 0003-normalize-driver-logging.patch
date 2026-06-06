@@ -1283,42 +1283,6 @@ diff -urN base/drivers/aic8800/aic8800_fdrv/aic_vendor.c work/drivers/aic8800/ai
  					mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
  			break;
  		default:
-diff -urN base/drivers/aic8800/aic8800_fdrv/aicwf_debug.h work/drivers/aic8800/aic8800_fdrv/aicwf_debug.h
---- base/drivers/aic8800/aic8800_fdrv/aicwf_debug.h	2025-11-21 14:56:47.000000000 +0800
-+++ work/drivers/aic8800/aic8800_fdrv/aicwf_debug.h	2026-04-18 12:23:05.355702804 +0800
-@@ -21,14 +21,14 @@
- #define AICWFDBG(level, args, arg...)	\
- do {	\
- 	if (aicwf_dbg_level & level) {	\
--		printk(AICWF_LOG#level")\t" args, ##arg); \
-+		AICWFDBG(LOGINFO, AICWF_LOG#level")\t" args, ##arg); \
- 	}	\
- } while (0)
- 
- #define RWNX_DBG(fmt, ...)	\
- do {	\
- 	if (aicwf_dbg_level & LOGTRACE) {	\
--		printk(AICWF_LOG"LOGTRACE)\t"fmt , ##__VA_ARGS__); 	\
-+		AICWFDBG(LOGINFO, AICWF_LOG"LOGTRACE)\t"fmt , ##__VA_ARGS__); 	\
- 	}	\
- } while (0)
- 
-@@ -38,13 +38,13 @@
- #define RWNX_DBG(fmt, ...)	\
- 	do {	\
- 		if (aicwf_dbg_level & LOGTRACE) {	\
--			printk(AICWF_LOG"LOGTRACE"")\t" fmt, ##__VA_ARGS__); \
-+			AICWFDBG(LOGINFO, AICWF_LOG"LOGTRACE"")\t" fmt, ##__VA_ARGS__); \
- 		}	\
- 	} while (0)
- #define AICWFDBG(args, level)	\
- do {	\
- 	if (aicwf_dbg_level & level) {	\
--		printk(AICWF_LOG"(%s)\t" ,#level);	\
-+		AICWFDBG(LOGINFO, AICWF_LOG"(%s)\t" ,#level);	\
- 		printf args;	\
- 	}	\
- } while (0)
 diff -urN base/drivers/aic8800/aic8800_fdrv/aicwf_pcie.c work/drivers/aic8800/aic8800_fdrv/aicwf_pcie.c
 --- base/drivers/aic8800/aic8800_fdrv/aicwf_pcie.c	2026-04-18 12:53:55.637731758 +0800
 +++ work/drivers/aic8800/aic8800_fdrv/aicwf_pcie.c	2026-04-18 12:54:28.378042079 +0800
@@ -2500,9 +2464,9 @@ diff -urN base/drivers/aic8800/aic8800_fdrv/aicwf_txrxif.h work/drivers/aic8800/
 -#define txrx_info(fmt, ...)         printk("aicsdio: " fmt, ##__VA_ARGS__)
 -#define sdio_info(fmt, ...)         printk("aicsdio: " fmt, ##__VA_ARGS__)
 -#define usb_info(fmt, ...)          printk("aicusb: " fmt, ##__VA_ARGS__)
-+#define txrx_info(fmt, ...)         AICWFDBG(LOGINFO, "aicsdio: " fmt, ##__VA_ARGS__)
-+#define sdio_info(fmt, ...)         AICWFDBG(LOGINFO, "aicsdio: " fmt, ##__VA_ARGS__)
-+#define usb_info(fmt, ...)          AICWFDBG(LOGINFO, "aicusb: " fmt, ##__VA_ARGS__)
++#define txrx_info(fmt, ...)         AICWFDBG(LOGDEBUG, "aicsdio: " fmt, ##__VA_ARGS__)
++#define sdio_info(fmt, ...)         AICWFDBG(LOGDEBUG, "aicsdio: " fmt, ##__VA_ARGS__)
++#define usb_info(fmt, ...)          AICWFDBG(LOGDEBUG, "aicusb: " fmt, ##__VA_ARGS__)
  #else
  #define txrx_info(fmt, ...)
  #define sdio_info(fmt, ...)
@@ -6308,7 +6272,7 @@ diff -urN base/drivers/aic8800/aic8800_fdrv/rwnx_rx.c work/drivers/aic8800/aic88
  
      if (ieee80211_is_assoc_req(mgmt->frame_control) && rwnx_vif->wdev.iftype == NL80211_IFTYPE_AP) {
 -        printk("ASSOC_REQ: sta_idx %d MAC %pM\n", rwnx_vif->ap.aic_index, mgmt->sa);
-+        AICWFDBG(LOGINFO, "ASSOC_REQ: sta_idx %d MAC %pM\n", rwnx_vif->ap.aic_index, mgmt->sa);
++        AICWFDBG(LOGDEBUG, "ASSOC_REQ: sta_idx %d MAC %pM\n", rwnx_vif->ap.aic_index, mgmt->sa);
          sta->sta_idx = rwnx_vif->ap.aic_index;
          len = skb->len - (mgmt->u.assoc_req.variable - skb->data);
  
@@ -6342,18 +6306,18 @@ diff -urN base/drivers/aic8800/aic8800_fdrv/rwnx_rx.c work/drivers/aic8800/aic88
      }
      if (ieee80211_is_deauth(mgmt->frame_control) && rwnx_vif->wdev.iftype == NL80211_IFTYPE_AP) {
 -        printk("DEAUTH: sta_idx %d MAC %pM reason:%x\n", rwnx_vif->ap.aic_index, mgmt->sa, mgmt->u.deauth.reason_code);
-+        AICWFDBG(LOGINFO, "DEAUTH: sta_idx %d MAC %pM reason:%x\n", rwnx_vif->ap.aic_index, mgmt->sa, mgmt->u.deauth.reason_code);
++        AICWFDBG(LOGDEBUG, "DEAUTH: sta_idx %d MAC %pM reason:%x\n", rwnx_vif->ap.aic_index, mgmt->sa, mgmt->u.deauth.reason_code);
      }
      if (ieee80211_is_disassoc(mgmt->frame_control) && rwnx_vif->wdev.iftype == NL80211_IFTYPE_AP) {
 -        printk("DISASSOC: sta_idx %d MAC %pM reason:%x\n", rwnx_vif->ap.aic_index, mgmt->sa, mgmt->u.disassoc.reason_code);
-+        AICWFDBG(LOGINFO, "DISASSOC: sta_idx %d MAC %pM reason:%x\n", rwnx_vif->ap.aic_index, mgmt->sa, mgmt->u.disassoc.reason_code);
++        AICWFDBG(LOGDEBUG, "DISASSOC: sta_idx %d MAC %pM reason:%x\n", rwnx_vif->ap.aic_index, mgmt->sa, mgmt->u.disassoc.reason_code);
      }
  #endif
  
  	/*if (ieee80211_is_mgmt(mgmt->frame_control) &&
  	    (skb->len <= 24 || skb->len > 768)) {
 -	    printk("mgmt err\n");
-+	    AICWFDBG(LOGINFO, "mgmt err\n");
++	    AICWFDBG(LOGERROR, "mgmt err\n");
  	    return;
  	}*/
  
@@ -7206,7 +7170,7 @@ diff -urN base/drivers/aic8800/aic8800_fdrv/usb_host.c work/drivers/aic8800/aic8
  	struct rwnx_txhdr *txhdr;
 -	printk("%s enter \n", __func__);
 -	//printk("sdio_host_tx_cfm_handler, %d, 0x%08x\r\n", queue_idx, data[1]);
-+	AICWFDBG(LOGINFO, "%s enter \n", __func__);
++	AICWFDBG(LOGTRACE, "%s enter \n", __func__);
 +	//AICWFDBG(LOGINFO, "sdio_host_tx_cfm_handler, %d, 0x%08x\r\n", queue_idx, data[1]);
  	// TX confirmation descriptors have been received
  	// REG_SW_SET_PROFILING(env->pthis, SW_PROF_IRQ_E2A_TXCFM);

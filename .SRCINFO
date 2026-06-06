@@ -1,5 +1,5 @@
 pkgbase = aic8800d80-pcie-dkms
-	pkgdesc = DKMS module for AIC8800D80 PCIe Wi-Fi adapters (Ugreen CM958 and similar)
+	pkgdesc = DKMS modules for AIC8800D80 PCIe Wi-Fi and companion USB Bluetooth adapters (Ugreen CM958 and similar)
 	pkgver = 6.4.3.0
 	pkgrel = 3
 	url = https://www.aicsemi.com/
@@ -12,11 +12,19 @@ pkgbase = aic8800d80-pcie-dkms
 	source = 0001-linux-6.13-plus-compat.patch
 	source = 0002-export-pci-modalias.patch
 	source = 0003-normalize-driver-logging.patch
+	source = 0004-aic-btusb-bluez.patch
 	source = aic8800d80-sleep-hook
+	source = aic8800d80-btusb.conf
+	source = dkms.conf
+	source = aic.rules
 	sha256sums = c929c2ff22ba0b55e26ecaccb57f04edc11bb84767d31ac068b8087dd4a8c53a
 	sha256sums = 6e8562dcb93f114bdbf759506967f9504ffc5fc9043b94b616449ba43d1d34ef
 	sha256sums = 98699379ab9b302c0e5059d6a16e1598ad3ace7cfb15570c988c994c12a0333f
-	sha256sums = c9664b1f0866926e25c1df9e23feede9784c6ef1b3a247b72863a7ad217447d6
+	sha256sums = 60744f321ef8f069e10efeb579a20a6114aeefa5796c0da2d9e0e0c91965ff8e
+	sha256sums = cf5532c0254f9f0f6ce80b6f0eda15f3103cebfdb6af500c9d38cd04cda0295b
 	sha256sums = 1d34e929c3570cfae9aea2b79d3e143ca89c41ad165457e10c143c2bb74489da
+	sha256sums = 17abd63c992a6929015475561fb183e955ad1402d25c64cfd1e63a40290fa21b
+	sha256sums = 88d8e7274bc799eada757fabc87ec90dade6f3e6757075f4ba5fc7537f2acee8
+	sha256sums = 8f35c85a2fa9435bb9b393c6f51eee990c588b42c6ff0c8cbc0c97f6294e19be
 
 pkgname = aic8800d80-pcie-dkms

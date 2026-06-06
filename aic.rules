@@ -1,0 +1,12 @@
+# Vendor USB install media (AIC / Tenda / Ugreen / Cudy): eject virtual disk after driver/firmware setup.
+# Same idea as https://aur.archlinux.org/packages/aic8800d80-dkms upstream tree.
+KERNEL=="sd*", ATTRS{idVendor}=="a69c", ATTRS{idProduct}=="5721", SYMLINK+="aicudisk", RUN+="/usr/bin/eject /dev/%k"
+KERNEL=="sd*", ATTRS{idVendor}=="a69c", ATTRS{idProduct}=="5723", SYMLINK+="tendaudisk", RUN+="/usr/bin/eject /dev/%k"
+KERNEL=="sd*", ATTRS{idVendor}=="a69c", ATTRS{idProduct}=="5724", SYMLINK+="ugreenax900", RUN+="/usr/bin/eject /dev/%k"
+KERNEL=="sd*", ATTRS{idVendor}=="a69c", ATTRS{idProduct}=="5725", SYMLINK+="tendaudiskv2", RUN+="/usr/bin/eject /dev/%k"
+KERNEL=="sd*", ATTRS{idVendor}=="a69c", ATTRS{idProduct}=="5726", SYMLINK+="tendaudiskv3", RUN+="/usr/bin/eject /dev/%k"
+KERNEL=="sd*", ATTRS{idVendor}=="a69c", ATTRS{idProduct}=="5727", SYMLINK+="tendaudiskv4", RUN+="/usr/bin/eject /dev/%k"
+KERNEL=="sd*", ATTRS{idVendor}=="a69c", ATTRS{idProduct}=="572a", SYMLINK+="tendaudiskv5", RUN+="/usr/bin/eject /dev/%k"
+KERNEL=="sd*", ATTRS{idVendor}=="a69c", ATTRS{idProduct}=="572c", SYMLINK+="cudydiskv2", RUN+="/usr/bin/eject /dev/%k"
+
+# PCIe 0xa69c:0x8d80 is bound via the module's PCI table / modalias; no udev rule needed unless you blacklist the driver.
