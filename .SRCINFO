@@ -1,6 +1,6 @@
 pkgbase = rs-pug-git
 	pkgdesc = Terminal YouTube music player with mpv, yt-dlp and Lua plugin support
-	pkgver = r54.dcde3e6
+	pkgver = r58.ffa82a3
 	pkgrel = 1
 	url = https://github.com/JustRoccat/rs-pug
 	arch = x86_64
