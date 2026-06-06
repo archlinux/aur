@@ -3,8 +3,8 @@
 
 pkgname=marktext-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.17.1
-pkgrel=2
+pkgver=0.19.1
+pkgrel=1
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=(x86_64)
 url=https://www.marktext.cc
@@ -18,14 +18,14 @@ depends=(gtk3
          nss)
 _source() {
 	local _github=https://github.com/marktext/marktext
-	echo $pkgname-$pkgver.tar.gz::$_github/releases/download/v$pkgver/$_pkgname-x64.tar.gz
-	echo $pkgname-$pkgver.desktop::$_github/raw/v$pkgver/resources/linux/$_pkgname.desktop
+	echo $pkgname-$pkgver.tar.gz::$_github/releases/download/v$pkgver/$_pkgname-linux-$pkgver.tar.gz
+	echo $pkgname-$pkgver.desktop::$_github/raw/v$pkgver/packages/desktop/build/linux/$_pkgname.desktop
 	for s in 16 24 32 48 64 128 256 512; do
-		echo $pkgname-${s}x${s}.png::$_github/raw/v$pkgver/resources/icons/${s}x${s}/$_pkgname.png
+		echo $pkgname-${s}x${s}.png::$_github/raw/v$pkgver/packages/desktop/build/icons/${s}x${s}/$_pkgname.png
 	done
 }
 source=($(_source))
-sha256sums=('6e333bcd1e8ae0cd93e1de52bdb966fdd9b8896986acb72f13d23ae100872e5c'
+sha256sums=('d1ecc7e47fe2cfdd6191330dd9360fdaae47508f458f179cc5f4948b7f3e6f1d'
             '95c55fae2e35c1b022d69736e496b04b24caba9cb7d7a7d4613076ea85d2b7cf'
             '27ef0b9185f38bdf516db32fa8900e3bfd182937bb14f63a978713d74ad97fa2'
             'f67f6826499b5fa25a931b706a7d500972c049fb23f406f4692206dfe1a302fc'
@@ -43,7 +43,7 @@ prepare() {
 
 package() {
 	install -d "$pkgdir/usr/lib"
-	cp -rT "$_pkgname-x64" "$pkgdir/usr/lib/$_pkgname"
+	cp -rT "$_pkgname-linux-$pkgver" "$pkgdir/usr/lib/$_pkgname"
 	install -d "$pkgdir/usr/bin"
 	ln -sf "/usr/lib/marktext/marktext" "$pkgdir/usr/bin/marktext"
 	install -Dm644 "$pkgname-$pkgver.desktop" \
@@ -52,7 +52,7 @@ package() {
 		install -Dm644 "$pkgname-${s}x${s}.png" \
 			"$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/$_pkgname.png"
 	done
-	cd "$_pkgname-x64"
+	pushd "$_pkgname-linux-$pkgver"
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
-		{LICENSE,LICENSE.electron.txt,LICENSES.chromium.html}
+		{LICENSE.electron.txt,LICENSES.chromium.html}
 }
