@@ -1,12 +1,12 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=steamguard-cli-bin
-pkgver=0.17.1
-pkgrel=7
+pkgver=0.18.1
+pkgrel=1
 pkgdesc="A linux utility for generating 2FA codes for Steam and managing Steam trade confirmations."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/dyc3/steamguard-cli'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 options=('!debug')
 
 optdepends=(
@@ -18,18 +18,21 @@ optdepends=(
 )
 provides=('steamguard-cli')
 conflicts=('steamguard-cli' 'steamguard-cli-git')
-source=(
-	"https://github.com/dyc3/steamguard-cli/releases/download/v${pkgver}/steamguard"
-)
-sha256sums=('dfde53c5f594815b69349e6b70cbb26fbf9ddb30938aa13352048967279ac501')
+
+source_x86_64=("steamguard-${pkgver}-x86_64::https://github.com/dyc3/steamguard-cli/releases/download/v${pkgver}/steamguard-linux-x86_64")
+sha256sums_x86_64=('ea675060e802b9df728be3291c4fd0e894fd22a0299f0a3ea775e48ddd2f4e98')
+
+source_aarch64=("steamguard-${pkgver}-aarch64::https://github.com/dyc3/steamguard-cli/releases/download/v${pkgver}/steamguard-linux-aarch64")
+sha256sums_aarch64=('521bea40147cfb42d48bae7a5398c342066c93143b9a4282f40604ce61ea73ce')
 
 latestver() {
-	gh api --paginate repos/dyc3/steamguard-cli/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "steamguard")) | .tag_name' |
-	head -1 | sed 's/^v//'
+	gh api --paginate repos/dyc3/steamguard-cli/releases --jq \
+		'.[] | select(.prerelease == false and .draft == false) | .tag_name' |
+		sed -nE 's/^v([0-9]+(\.[0-9]+)*)$/\1/p' | sort -V | tail -1
 }
 
 package() {
-	install -Dm755 "${srcdir}"/steamguard "${pkgdir}/usr/bin/steamguard"
+	install -Dm755 "${srcdir}/steamguard-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/steamguard"
 
     # Generate shell completions
     "${pkgdir}/usr/bin/steamguard" completion --shell bash | \
