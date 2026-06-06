@@ -1,0 +1,5 @@
+[pius-bin]
+source = "github"
+github = "praetorian-inc/pius"
+use_latest_release = true
+prefix = "v"
