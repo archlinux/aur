@@ -1,6 +1,6 @@
 pkgbase = magic
 	pkgdesc = A VLSI layout system
-	pkgver = 8.3.657
+	pkgver = 8.3.658
 	pkgrel = 1
 	url = http://opencircuitdesign.com/magic/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = magic
 	optdepends = glu: Vector fonts for OpenGL renderer
 	optdepends = cairo: 2D accelerated graphics, alternative to OGL
 	optdepends = blt: to create a tree diagram of the cell hierarchy in a design
-	source = magic::git+https://github.com/RTimothyEdwards/magic#tag=8.3.657
-	b2sums = 5fc3aa94075844e4cf1bc23ab2c4123ef7940bdde163618b929337f8dc5774082606d09ce4fcff862c0117f32413c6d8677061e164c168777ed7507c6a2855a0
+	source = magic::git+https://github.com/RTimothyEdwards/magic#tag=8.3.658
+	b2sums = 8e800f0ae4ebba1b7ac1a30a8228b10c43ab1ba4dd814c96f343135d576a626e64196bcb0bc1f3dda0184757b6cb57e374804a717eea3165aacc3e672df81af5
 
 pkgname = magic
