@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=airr
-_pkgver=1.6.1
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-tibble
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c25f2f8832be3a6a1945f2b629fbd31b')
-b2sums=('864f2fa7d0475721a0580167a7bdde198048c764bdd7d2cc90b79630d0f5fca90af466c82545235a0b54ec7db66ad849328a048bf2c02629a766351d6d9b906a')
+md5sums=('bbd29d5491e4f970d1093064d7e27902')
+b2sums=('47459c82724ba296227b75fec5c79523eaef00a23a63cd11fca2c26f75e82749f8c0f88c9cc79f4325895b9067b6f9305c4b163d351f0ea5c5c36dbdd5a95770')
 
 build() {
   mkdir build
