@@ -3,7 +3,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=vnu
-pkgver=26.5.22
+pkgver=26.5.29
 _commit=d3efb7d93855d9c12fdc7b764e81f873f6e47186
 pkgrel=1
 pkgdesc="The Nu Html Checker, a command line tool for HTML5 markup validation"
@@ -17,8 +17,8 @@ install=post_install.install
 source=("vnu"
         "https://registry.npmjs.org/vnu-jar/-/vnu-jar-$pkgver.tgz"
         "https://raw.githubusercontent.com/validator/validator/$_commit/CREDITS")
-sha256sums=('96cd47b569b8c79a60f3bea22159444919b418ef20d8beb4b223a6389aabbf25'
-            '3d6d1fd3753e4f090e1a43b1471f9bc7d06b8bbbff9f65197aa406ca35138859'
+sha256sums=('255ba98828be8e3f237f7b98b030431408b1b4096f5c956d2dbc957be7bb0b67'
+            '099f20e34164042861e6925d8ed692ab50611fbb526e3672c0fcadde67ea89be'
             'b7f78e603da0e9aa19adb63a3c12af5c8c16e40c43ac115a017cc7ed2517e9fb')
 
 package() {
