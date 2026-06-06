@@ -1,7 +1,7 @@
 # Maintainer: Michi <michael.h.25511@proton.me>
 pkgname=filec
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multithreaded file size counter"
 arch=('x86_64')
 url="https://codeberg.org/MichiDexi/filec"

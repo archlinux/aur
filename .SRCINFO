@@ -1,7 +1,7 @@
 pkgbase = filec
 	pkgdesc = Multithreaded file size counter
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/MichiDexi/filec
 	arch = x86_64
 	license = GPLv3
