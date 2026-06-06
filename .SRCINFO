@@ -1,0 +1,24 @@
+pkgbase = magicseteditor-genevensis-fork-git
+	pkgdesc = The premier open-source desktop environment for building, managing, and rendering custom trading card expansions.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://magicseteditor.com/
+	arch = x86_64
+	arch = i686
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = gendesk
+	makedepends = boost
+	depends = wxwidgets-gtk3
+	depends = hunspell
+	depends = glibc
+	depends = libgcc
+	depends = wxwidgets-common
+	depends = libstdc++
+	provides = magicseteditor
+	conflicts = magicseteditor
+	source = magicseteditor-genevensis-fork-git-2.5.0.tar.gz::https://codeload.github.com/G-e-n-e-v-e-n-s-i-S/MagicSetEditor2/tar.gz/refs/tags/v2.5.0
+	sha256sums = 178e40bbf3fa36a77f523303314b7b46368883c7e5f20d7627a7cfd33ebd10d9
+
+pkgname = magicseteditor-genevensis-fork-git
