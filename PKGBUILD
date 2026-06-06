@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://codeberg.org/zynskeyfolf/zddccpl"
 license=('GPL-3.0-or-later')
 depends=('qt5-base' 'ddcutil')
+provides=('zddccpl')
 makedepends=('git' 'cmake' 'make' 'qt5-base' 'ddcutil')
 source=("git+https://codeberg.org/zynskeyfolf/zddccpl")
 sha256sums=(SKIP)

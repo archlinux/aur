@@ -12,6 +12,7 @@ pkgbase = zddccpl-git
 	makedepends = ddcutil
 	depends = qt5-base
 	depends = ddcutil
+	provides = zddccpl
 	source = git+https://codeberg.org/zynskeyfolf/zddccpl
 	sha256sums = SKIP
 
