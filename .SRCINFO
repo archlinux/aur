@@ -1,6 +1,6 @@
 pkgbase = python-userspacefs
 	pkgdesc = Cross-platform user-space file systems for Python
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://thelig.ht/code/userspacefs
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-userspacefs
 	depends = python-aiohttp
 	depends = python-typing_extensions
 	conflicts = python-fusepyng
-	source = https://files.pythonhosted.org/packages/source/u/userspacefs/userspacefs-3.2.0.tar.gz
-	sha256sums = 0e5629c1121247c90b4a486b344f48069c57b41ecf7b0d0b1b07a25c2f5498b3
+	source = https://files.pythonhosted.org/packages/source/u/userspacefs/userspacefs-3.2.1.tar.gz
+	sha256sums = e446c70aaadb7bf0a757beb8fc8392ce090567ee261252451274be1e7cba7558
 
 pkgname = python-userspacefs
