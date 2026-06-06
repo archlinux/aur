@@ -4,23 +4,25 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20260525.6b4b7c8d1
+pkgver=20260606.558f53f95
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=(x86_64 armv7h aarch64)
 url=https://mupdf.com/
 license=(AGPL3)
 makedepends=(git glu libxi)
-depends=(gumbo-parser harfbuzz jbig2dec libarchive libgl
+depends=(gumbo-parser harfbuzz libarchive libgl
          libjpeg-turbo libxrandr mujs openjpeg2)
-source=(git+https://github.com/ArtifexSoftware/mupdf.git
-        git+https://github.com/ArtifexSoftware/extract.git
-        git+https://github.com/ArtifexSoftware/thirdparty-cmark-gfm.git
-        git+https://github.com/ArtifexSoftware/thirdparty-freeglut.git
-        git+https://github.com/ArtifexSoftware/thirdparty-lcms2.git#branch=lcms2mt
-	https://raw.githubusercontent.com/ArtifexSoftware/mujs/refs/heads/master/regexp.h
+source=(git://git.ghostscript.com/mupdf.git
+        git://git.ghostscript.com/extract.git
+        git://git.ghostscript.com/jbig2dec.git
+        git://git.ghostscript.com/thirdparty-cmark-gfm.git
+        git://git.ghostscript.com/thirdparty-freeglut.git
+        git://git.ghostscript.com/thirdparty-lcms2.git#branch=lcms2mt
+        https://cgit.ghostscript.com/cgi-bin/cgit.cgi/mujs.git/plain/regexp.h
         desktop)
 sha256sums=(SKIP
+            SKIP
             SKIP
             SKIP
             SKIP
@@ -39,7 +41,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 	rm -fr thirdparty/*
-	cp -a ../extract ../thirdparty-* thirdparty
+	cp -a ../extract ../jbig2dec ../thirdparty-* thirdparty
 	rename thirdparty- '' thirdparty/*
 
 	# Should be in mujs package.
@@ -52,8 +54,9 @@ build() {
 	export USE_SYSTEM_LIBS=yes
 	export CFLAGS+=' -D TOFU_CJK -D TOFU_NOTO' # only embed Base14 fonts and Charis SIL
 	sed 's/$(HAVE_X11)/no/g' -i Makefile # prevent building useless binaries
-	sed 's/$(USE_SYSTEM_MUJS)/yes/g' -i Makethird
 	sed 's/$(USE_SYSTEM_GLUT)/no/g' -i Makethird Makefile
+	sed 's/$(USE_SYSTEM_JBIG2DEC)/no/g' -i Makethird
+	sed 's/$(USE_SYSTEM_MUJS)/yes/g' -i Makethird
 	sed 's/$(SYS_BROTLI_LIBS)/-lbrotlienc -lbrotlidec/g' -i Makethird
 	make archive=yes build=release
 }
