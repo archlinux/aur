@@ -1,6 +1,6 @@
 pkgbase = nmlinux
 	pkgdesc = A free Linux adaptation of NETworkManager — network GUI for KDE/Linux
-	pkgver = 1.3.2
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://github.com/thongor77/nmlinux
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = nmlinux
 	optdepends = samba: SMB/NFS browser — SMB share listing (smbclient)
 	optdepends = nfs-utils: SMB/NFS browser — NFS export listing (showmount)
 	optdepends = openssl: TLS Inspector certificate chain
-	source = https://github.com/thongor77/nmlinux/archive/refs/tags/v1.3.2.tar.gz
-	sha256sums = 1b3c1c7d3dcdb07301744aca153925bca89e2b9e5ea6725b8d6cbd578e6a93b7
+	source = https://github.com/thongor77/nmlinux/archive/refs/tags/v1.3.5.tar.gz
+	sha256sums = db3f450e3ed95cdcf20ce979669a0a01a00bf6147da245d2b8b60d2765661ab6
 
 pkgname = nmlinux
