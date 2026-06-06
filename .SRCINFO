@@ -1,7 +1,7 @@
 pkgbase = trae-us
 	pkgdesc = AI-powered IDE by ByteDance (US CDN)
-	pkgver = 2.3.33256
-	pkgrel = 2
+	pkgver = 2.3.37196
+	pkgrel = 1
 	url = https://www.trae.cn/
 	install = trae.install
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = trae-us
 	optdepends = xdg-utils: Open URLs and files with default applications
 	optdepends = python: Python extension support
 	optdepends = nodejs: Node.js extension scripts
-	provides = trae=2.3.33256
+	provides = trae=2.3.37196
 	conflicts = trae
 	conflicts = trae-bin
 	options = !strip
@@ -27,9 +27,9 @@ pkgbase = trae-us
 	source = trae.desktop
 	b2sums = 2331b0d37fff8478ea37cbf9e5c2e70a59631aae6efb44741fc6c1a8dce65557098e9dffa8c30148ef27432802bec3d1eda279021421e5d3f979e80900662726
 	b2sums = 656c5d6bea6ef15185e0d8ee0181276f6de3bfae8e66a2c65772a5f1354727952dd020dca057246139a2bab8f4805057fa2db367a6ba0a1b90d9ffd7fcab8412
-	source_x86_64 = Trae-linux-x64-2.3.33256-2.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.33256/linux/Trae-linux-x64.tar.gz
-	b2sums_x86_64 = b55d522590e182ce4505e4eb533797ff49391768b90dfa134a2f8e903073437e3907442957e8f80c8ab4d6669337c0704a95079b7f1a27f51f6dd6d3b63a9236
-	source_aarch64 = Trae-linux-arm64-2.3.33256-2.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.33256/linux/Trae-linux-arm64.tar.gz
-	b2sums_aarch64 = 80da785e654d62250a85844f405e15bcc8e9fd2e900a06297ee1a60873825cf7781a112e72ee609ebdc6bbc8ef5d42fe6e4a485e6ad92115b35d0c1dd172a940
+	source_x86_64 = Trae-linux-x64-2.3.37196-1.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.37196/linux/Trae-linux-x64.tar.gz
+	b2sums_x86_64 = 4822ee76b455387ebcaf8e247562afe3f37ffdd88fb8543f0c499c7f7b2ac338261f3cfef6c2c43636d4e1a952d6a1d5560c8f6984d31797ce1ced103d23eaae
+	source_aarch64 = Trae-linux-arm64-2.3.37196-1.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.37196/linux/Trae-linux-arm64.tar.gz
+	b2sums_aarch64 = 58e7e2eebb14e09d52e20cfca2b9200502aac9b9f377a85b7a949fdedf30332fc5b8bfc68b82a3d5ca0126d877afd90aca9cb0d2dcf18e9f7e99f2127952802b
 
 pkgname = trae-us
