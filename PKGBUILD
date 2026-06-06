@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-daemon
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)"
 arch=('x86_64')
@@ -23,12 +23,12 @@ backup=('etc/control-ofc/daemon.toml'
 install=control-ofc-daemon.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('619413882355ed0a6e479a290b1f1c02d410f24f14e24a8ba6f4cabaacf658c6')
+sha256sums=('f11c4358f5ba94f690eff2073ba0b55673c05b09ca70c4bef3901fee0615643f')
 
 prepare() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
