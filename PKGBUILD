@@ -1,6 +1,6 @@
 # Maintainer: Wiktor Zykubek <dev at wzykubek dot xyz>
 pkgname=gotmplfmt
-pkgver=1.0.22
+pkgver=1.0.25
 pkgrel=1
 pkgdesc="Formatter for Go HTML templates."
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv7h' 'aarch64' 'riscv64')
@@ -9,7 +9,7 @@ url="https://github.com/miekg/gotmplfmt"
 depends=('glibc')
 makedepends=('go>=1.24')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/miekg/gotmplfmt/archive/v${pkgver}.tar.gz")
-sha256sums=('5b2daa692fe3b0c0e512470ad2c83f904629e27ea6c3a12ffaa8fb802da53916')
+sha256sums=('87b80b40607d0eb1ef828b8443e38776feec1c139b4b0ab879b464d898fe2e3f')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
