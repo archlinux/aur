@@ -4,7 +4,7 @@
 
 pkgname=zen-browser
 pkgver=1.20.2b
-pkgrel=1
+pkgrel=2
 pkgdesc='Firefox-based web browser built from upstream release source snapshot'
 url='https://zen-browser.app'
 arch=('x86_64')
@@ -85,12 +85,12 @@ _srcroot='zen-source'
 source=(
   "$_srcroot-$pkgver.tar.zst::https://github.com/zen-browser/desktop/releases/download/$pkgver/zen.source.tar.zst"
   "$pkgname.desktop"
-  #'https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/150.0.2-1/0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch'
-  #'https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/149.0.2-1/0003-Bug-2016618-Fix-Linux-sandbox-build-breakage-on-glib.patch' # Commented out until figured out
-  'https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/149.0.2-1/0004-Use-wasm32-wasip1-target.patch'
+  '0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch'
+  '0004-Use-wasm32-wasip1-target.patch'
 )
 sha256sums=('d2089d193acbbeca626a0496e78dc39d6fb7a428d5b2e3dd84b9aca7ff42f6f2'
             'af16fec9a88cbfffee34a6a4eb5b3074931477fcefee252840d77cf146568851'
+            'c7d6572fe1ac76f6adbfb10102f284fd55690396ac0a275a5cfea9a2efa22b58'
             '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89')
 noextract=("$_srcroot-$pkgver.tar.zst")
 
@@ -101,8 +101,7 @@ prepare() {
 
   cd "$srcdir/$_srcroot"
 
-  #patch -Np1 -i "$srcdir/0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch" # Commented out until figured out
-  #patch -Np1 -i "$srcdir/0003-Bug-2016618-Fix-Linux-sandbox-build-breakage-on-glib.patch" # Commented out until figured out
+  patch -Np1 -i "$srcdir/0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
   patch -Np1 -i "$srcdir/0004-Use-wasm32-wasip1-target.patch"
 
   cat >"$srcdir/mozconfig" <<EOF
