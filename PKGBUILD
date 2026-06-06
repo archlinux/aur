@@ -180,7 +180,7 @@ _minor=11
 #_rcver=rc8
 pkgver=${_major}.${_minor}
 _tagrel=1
-pkgrel=1
+pkgrel=2
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements.'
 _kernver="$pkgver-$pkgrel"
@@ -850,8 +850,9 @@ source+=(
     0015-to-help-alsa-find-them.patch
     0016-cleanup-controls.patch
     0017-ASoC-rt721-sdca-enable-jack-detect-irq-on-AMD-ACP70.patch
+    0018-async-codec-resume.patch
 )
 b2sums+=(
-    SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+    SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
     SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
 )
