@@ -1,6 +1,6 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=trackerboy-git
-pkgver=v0.2.0.r331.9188399
+pkgver=v0.2.0.r332.09ac81c
 pkgrel=1
 pkgdesc="Trackerboy is a cross-platform music tracker for creating Gameboy music."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(gcc-libs glibc qt6-base rtmidi)
 makedepends=('cmake>=3.12' git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(${pkgname%-git}::'git+https://github.com/ISSOtm/trackerboy.git#branch=patch-1'
+source=(${pkgname%-git}::'git+https://github.com/stoneface86/trackerboy.git'
         'git+https://github.com/stoneface86/libtrackerboy.git#tag=cpp-last'
         find_rtmidi.patch)
 sha256sums=(SKIP
@@ -34,7 +34,7 @@ build() {
 
 	CFLAGS="-DNDEBUG ${CFLAGS-}" cmake -S . -B build -DCMAKE_BUILD_TYPE=None -DENABLE_UNITY=ON \
 		-Wno-dev -DFETCHCONTENT_FULLY_DISCONNECTED=ON -DCPM_USE_LOCAL_PACKAGES=ON \
-		-DCPM_libtrackerboy_SOURCE="$srcdir/libtrackerboy"
+		-DCPM_libtrackerboy_SOURCE="$srcdir/libtrackerboy" -DBUILD_TESTING=ON
 
 	cmake --build build --target all
 }
@@ -42,7 +42,7 @@ build() {
 check() {
 	cd "$srcdir/${pkgname%-git}"
 
-	ctest --test-dir build --output-on-failure
+	ctest --test-dir build --output-on-failure --progress --parallel --no-tests=error
 }
 
 package() {
