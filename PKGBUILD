@@ -39,27 +39,25 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
-    python -m venv venv
-    venv/bin/pip install -r requirements.txt --quiet
+    : # venv is created in post_install as the real user
 }
 
 package() {
     cd "$pkgname"
 
-    # Install app to /opt
+    # Install app to /opt (no venv — built at install time)
     install -dm755 "$pkgdir/opt/$pkgname"
     cp -r . "$pkgdir/opt/$pkgname/"
 
-    # Remove build artifacts not needed at runtime
+    # Remove stuff not needed at runtime
     rm -rf "$pkgdir/opt/$pkgname/.git"
     rm -rf "$pkgdir/opt/$pkgname/.github"
     rm -rf "$pkgdir/opt/$pkgname/tests"
 
-    # Use the upstream service file, patched for our install path
+    # Patch and install the upstream service file
     install -dm755 "$pkgdir/usr/lib/systemd/user"
     sed \
-        -e "s|User=YOURUSER|# User managed by systemd --user|" \
+        -e "s|User=YOURUSER|# run as user via systemd --user|" \
         -e "s|WorkingDirectory=.*|WorkingDirectory=/opt/$pkgname|" \
         -e "s|ExecStart=.*|ExecStart=/opt/$pkgname/venv/bin/uvicorn app:app --host 127.0.0.1 --port 7000|" \
         -e "s|EnvironmentFile=.*|EnvironmentFile=-/opt/$pkgname/.env|" \

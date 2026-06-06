@@ -4,6 +4,14 @@ post_install() {
     echo "==> Setting ownership of /opt/odysseus-ai-git to $REAL_USER..."
     chown -R "$REAL_USER:$REAL_USER" /opt/odysseus-ai-git
 
+    echo "==> Creating Python virtual environment..."
+    sudo -u "$REAL_USER" python -m venv /opt/odysseus-ai-git/venv
+
+    echo "==> Installing Python dependencies (this may take a few minutes)..."
+    sudo -u "$REAL_USER" \
+        /opt/odysseus-ai-git/venv/bin/pip install \
+        -r /opt/odysseus-ai-git/requirements.txt --quiet
+
     echo "==> Running first-time setup as $REAL_USER..."
     sudo -u "$REAL_USER" -i \
         ODYSSEUS_SKIP_RUN_HINT=1 \
@@ -24,8 +32,12 @@ post_install() {
 post_upgrade() {
     REAL_USER="${SUDO_USER:-$USER}"
 
-    # venv is rebuilt fresh by makepkg build() — just fix ownership and restart
     chown -R "$REAL_USER:$REAL_USER" /opt/odysseus-ai-git
+
+    echo "==> Updating Python dependencies..."
+    sudo -u "$REAL_USER" \
+        /opt/odysseus-ai-git/venv/bin/pip install \
+        -r /opt/odysseus-ai-git/requirements.txt --quiet
 
     sudo -u "$REAL_USER" \
         XDG_RUNTIME_DIR="/run/user/$(id -u "$REAL_USER")" \
