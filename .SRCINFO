@@ -1,0 +1,18 @@
+pkgbase = linktui
+	pkgdesc = A TUI for managing WiFi, Bluetooth and VPN connections on Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/austinemk/linktui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = networkmanager
+	depends = bluez
+	provides = linktui
+	conflicts = linktui-bin
+	conflicts = linktui-git
+	source = linktui-0.1.0.tar.gz::https://github.com/austinemk/linktui/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = linktui
