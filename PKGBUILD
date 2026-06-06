@@ -32,6 +32,10 @@ package() {
     "$pkgdir/usr/lib/systemd/user/tg-mpv-bot.service"
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/tg-mpv-bot" <<'EOF'
 #!/bin/sh
+# Same config file the systemd unit reads — quote values containing spaces.
+[ -f "$HOME/.config/tg-mpv-bot.env" ] && {
+  set -a; . "$HOME/.config/tg-mpv-bot.env"; set +a
+}
 exec python /usr/share/tg-mpv-bot/bot.py "$@"
 EOF
 }
