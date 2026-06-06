@@ -12,7 +12,7 @@ depends=('bash' 'curl' 'gawk')
 makedepends=('go' 'rust' 'make' 'gcc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lloydzhou/bash-agent/archive/refs/tags/v${pkgver}.tar.gz"
         "tcode::https://github.com/lloydzhou/bash-agent/releases/download/v${pkgver}/tcode")
-sha256sums=('a9bc205e2419e0b684e594632849c0d12132e2be4076cb6aa7b3f18a372e6607'
+sha256sums=('cb02781ea586219d9a2c3b5383bc3347da5b761176dfe2bb1492db6a5622e0e3'
             '74aabd0135a1a8e2d0d399e372df8023f257552f84bba7fb3a459ba5f3962ae7')
 options=('!strip')
 
