@@ -113,7 +113,9 @@ sudo usermod -aG docker odysseus
 sudo systemctl restart odysseus-ai
 ```
 
-> **Warning:** Adding any user to the `docker` group is root-equivalent — the docker socket is unconfined. Only do this on a trusted local machine.## Optional Python deps
+> **Warning:** Adding any user to the `docker` group is root-equivalent — the docker socket is unconfined. Only do this on a trusted local machine.
+
+## Optional Python deps
 
 To install faster-whisper (STT), PyMuPDF (PDF RAG, AGPL), kokoro (TTS), duckduckgo-search, or markitdown without modifying the read-only venv:
 
@@ -160,6 +162,29 @@ systemctl status odysseus-ai
 journalctl -u odysseus-ai -n 50 --no-pager
 curl -fsS http://127.0.0.1:7000/api/health
 ```
+
+### `yay -S` fails with "libasan exists in filesystem" / `libgfortran` / `libubsan` / etc.
+
+This means your `/usr/lib/` has files from a **manually installed gcc** (or `pacman` failed to track them in its DB). The `uv` package depends on `gcc-libs`, and pacman refuses to install `gcc-libs` when its files are already on disk. Two fixes:
+
+1. **If those files really came from a custom gcc build** (the common case for users on the latest compiler): pacman can take ownership with `--overwrite`. Run the install manually:
+
+   ```bash
+   sudo pacman -S --overwrite '/usr/lib/lib*' uv
+   ```
+
+2. **If you don't actually need the custom gcc**: find the source and remove the strays:
+
+   ```bash
+   sudo find /usr/lib -maxdepth 1 -name 'libasan*' -o -name 'libubsan*' \
+       -o -name 'libgfortran*' -o -name 'libgomp*' -o -name 'libatomic*' \
+       -o -name 'libquadmath*' -o -name 'libobjc*' -o -name 'liblsan*' \
+       -o -name 'libtsan*'
+   # verify you don't need any of them, then:
+   sudo pacman -S --overwrite '*' gcc-libs
+   ```
+
+   This is a system-level issue, not an odysseus-ai-git bug. Most users never hit it.
 
 ### Roll back to a previous AUR commit
 

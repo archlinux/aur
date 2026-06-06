@@ -24,7 +24,7 @@
 pkgname=odysseus-ai-git
 _pkgname=odysseus
 pkgver=r856.73673258
-pkgrel=10
+pkgrel=12
 pkgdesc="Self-hosted AI workspace with prebuilt Python 3.12 venv, tracking upstream main"
 arch=('x86_64')
 url='https://github.com/pewdiepie-archdaemon/odysseus'
@@ -79,7 +79,7 @@ source=(
 sha256sums=('SKIP'
             'ceb52bebe3cf25c77087b0529d64d480184f452f3cdbe2a1a920b2c2581ffbe2'
             '977a9230896cd23b78c712f16857ad605879b74c3076793d95827aaa702c14b9'
-            '88e068640724cc4edf32ea2485fbf0c7f0dac7334602a35aa76532a28deeb20d'
+            '83fd58a89da27b1211d7727f0d83f9d6f3633d15e117c6df1097445af6fb542d'
             '8fee9c720af5531a42dff4a96ea07983e861b1d61df9ed70d2749ea4cb718d86'
             'fcbcbfe2323150d8fb89d37979173f8ba33fca5ebe8e948c46f3195fde59c7c3'
             'c1464cb1073ea2f8b298f282e16eab71b9474e9d65a2963bfc543df4be2164f9'
@@ -90,7 +90,7 @@ sha256sums=('SKIP'
             '295f647c0e114eea7a56c3d77e173c0a245c55c612df268b34521b907acfb58e'
             'f620d18d6797b871c6a77cedbe57033d46bff4229aa616a6d791d58a9e08844c'
             '2e2872c6cfc42b2e543255846ae0d07fd157f13aba1cb5cee3a95dcffe3e0314'
-            '810bf0d929d43088fec7749d4c246ecf7f43416ae1ca6ac93fd803e2aa40048a'
+            '11933a234233ea483e306ef3f6401737d51ef3107c47fbe94741f2c97626c65a'
             '4674cc172af2a0de35fc4f0fea59da77a204264e8008f0452b71aa90faf77bb2')
 
 pkgver() {
