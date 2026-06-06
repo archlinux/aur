@@ -1,6 +1,6 @@
 # Maintainer: Bjoern Foersterling <bjoern.foersterling@gmail.com>
 pkgname=mdtoc
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 epoch=
 pkgdesc="Command line Markdown viewer/editor/toc generator."
