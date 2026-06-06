@@ -1,0 +1,21 @@
+pkgbase = amf-amdgpu
+	pkgdesc = Library files for AMD Advanced Media Framework (RDNA3 and Up Only)
+	pkgver = 26.10.1
+	pkgrel = 1
+	url = https://repo.radeon.com/amf
+	arch = x86_64
+	license = LicenseRef-AMDGPUPROEULA
+	depends = libstdc++
+	depends = libgcc
+	depends = libdrm
+	depends = glibc
+	depends = python
+	optdepends = amf-headers: Header files for development
+	provides = amf-amdgpu-pro
+	conflicts = amf-amdgpu-pro
+	source = https://repo.radeon.com/amf/26.10.1/rhel/10.0/packages/main/x86_64/amf-amdgpu-pro-26.10.499-1.x86_64.rpm
+	source = https://repo.radeon.com/amf/26.10.1/rhel/10.0/packages/main/x86_64/libamdenc-amdgpu-pro-26.10.499-1.x86_64.rpm
+	sha256sums = ba909ce03df2a4ef9f2cdaaca01f83b3ada75cd5cd9d8054ec98bae388845b9e
+	sha256sums = 78ef56510930eebbfd09854b16f18c12fe04b08854dbd567607b040bd7c2a6c5
+
+pkgname = amf-amdgpu
