@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Odysseus AI
-Comment=Self-hosted AI Workspace
-Exec=xdg-open http://localhost:7000
-Icon=odysseus-ai
-Terminal=false
-Type=Application
-Categories=Network;AI;
-Keywords=ai;chat;llm;ollama;

@@ -1,0 +1,57 @@
+post_install() {
+    # Create system user/group
+    if ! getent group odysseus &>/dev/null; then
+        groupadd --system odysseus
+    fi
+    if ! getent passwd odysseus &>/dev/null; then
+        useradd --system \
+            --gid odysseus \
+            --home-dir /var/lib/odysseus \
+            --shell /usr/bin/nologin \
+            --comment "Odysseus AI workspace" \
+            odysseus
+    fi
+
+    # Set ownership
+    chown -R odysseus:odysseus /opt/odysseus/data 2>/dev/null || true
+    chown -R odysseus:odysseus /var/lib/odysseus
+    chown -R odysseus:odysseus /var/log/odysseus
+    chmod 750 /etc/odysseus
+    chown root:odysseus /etc/odysseus
+    chown root:odysseus /etc/odysseus/odysseus.env
+
+    # Install Python deps into the system for the odysseus user
+    # (uses --break-system-packages since Arch uses system Python)
+    echo "==> Installing Python dependencies (this may take a minute)..."
+    pip install --break-system-packages -r /opt/odysseus/requirements.txt --quiet
+
+    systemctl daemon-reload
+    systemctl enable --now odysseus
+
+    echo ""
+    echo "==> Odysseus installed and started."
+    echo "    Running at http://127.0.0.1:7000"
+    echo "    Config: /etc/odysseus/odysseus.env"
+    echo ""
+    echo "    Grab your admin password:"
+    echo "      journalctl -u odysseus -f"
+    echo ""
+}
+
+post_upgrade() {
+    pip install --break-system-packages -r /opt/odysseus/requirements.txt --quiet
+    systemctl daemon-reload
+    echo "==> Restart the service to apply the upgrade: systemctl restart odysseus"
+}
+
+pre_remove() {
+    systemctl stop odysseus 2>/dev/null || true
+    systemctl disable odysseus 2>/dev/null || true
+}
+
+post_remove() {
+    echo "==> Odysseus removed."
+    echo "    User data in /var/lib/odysseus has been left intact."
+    echo "    To fully purge: rm -rf /var/lib/odysseus /etc/odysseus"
+    echo "    To remove the system user: userdel odysseus && groupdel odysseus"
+}

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Odysseus
+GenericName=AI Workspace
+Comment=Self-hosted AI workspace — chat, agents, research, and more
+Exec=xdg-open http://127.0.0.1:7000
+Icon=odysseus
+Terminal=false
+Categories=Network;Office;Science;
+Keywords=AI;LLM;chat;ollama;self-hosted;
+StartupNotify=false
