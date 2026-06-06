@@ -4,5 +4,5 @@ Name=guicrypt-tui
 Comment=Manage gocryptfs encrypted vaults from a TUI
 Categories=Utility;Security;
 Terminal=false
-Exec=foot --class=guicrypt-tui -e guicrypt-tui
+Exec=omarchy-launch-or-focus-tui guicrypt-tui
 Icon=document-encrypt
