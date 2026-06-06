@@ -1,7 +1,7 @@
 pkgbase = magicseteditor-genevensis-fork-git
 	pkgdesc = The premier open-source desktop environment for building, managing, and rendering custom trading card expansions.
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://magicseteditor.com/
 	arch = x86_64
 	arch = i686

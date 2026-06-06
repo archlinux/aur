@@ -6,7 +6,7 @@
 # Maintainer: Thomas Flucke <tflucke@protonmail.com>
 pkgname=magicseteditor-genevensis-fork-git
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The premier open-source desktop environment for building, managing, and rendering custom trading card expansions."
 arch=("x86_64" "i686")
@@ -31,7 +31,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "MagicSetEditor2-$pkgver"
-    gendesk -n -f --pkgname="$pkgname" --pkgdesc="A program to help create Magic: the Gathering cards and sets." --exec="magicseteditor"
+    gendesk -n -f --pkgname="$pkgname-git" --pkgdesc="A program to help create Magic: the Gathering cards and sets." --exec="magicseteditor"
 }
 
 build() {
@@ -43,7 +43,7 @@ build() {
 
 package() {
 	cd "MagicSetEditor2-$pkgver"
-	install -Dm755 "$pkgname.desktop" "${pkgdir}/usr/share/applications/$pkgname.desktop"
+	install -Dm755 "$pkgname.desktop" "${pkgdir}/usr/share/applications/magicseteditor.desktop"
     install -Dm755 "./build/magicseteditor" "${pkgdir}/usr/bin/magicseteditor"
 	mkdir -p $pkgdir/usr/share/magicseteditor/{resource,data}
 	cp -r data/*.mse-locale "${pkgdir}/usr/share/magicseteditor/data"
