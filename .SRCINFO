@@ -1,6 +1,6 @@
 pkgbase = kodi-git
 	pkgver = r71439.3640aaaed83
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -90,7 +90,7 @@ pkgbase = kodi-git
 	b2sums = 954caea7ae3cc91034ce1ba802e445f4989b9a75ec34b9373b523a312d7ed6296f14c32579edb5ef094379fbd1f48dd94d7dbc9a34ecdb263d765c23b63a81d4
 
 pkgname = kodi-git
-	pkgdesc = A software media player and entertainment hub for digital media (master branch, gles renderer)
+	pkgdesc = A software media player and entertainment hub for digital media (master branch, gl renderer)
 	depends = bluez-libs
 	depends = curl
 	depends = dav1d
