@@ -24,7 +24,7 @@ makedepends=(
     'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b6bed4534bf876a170124b6c110ad8c5550f652ff1d351d85a773b7c3aefe946')
+sha256sums=('dc59ae164b68050aa216429acaf1ea3d69e416085995b5348810c81374f9ed5a')
 
 build() {
     cd "$srcdir/SunSync-$pkgver"

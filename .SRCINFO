@@ -17,6 +17,6 @@ pkgbase = sunsync
 	optdepends = libkscreen: virtual display mode switching (kscreen-doctor)
 	optdepends = qt6-tools: virtual display helpers (qdbus6)
 	source = sunsync-0.1.0.tar.gz::https://github.com/OscarTienda/SunSync/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = b6bed4534bf876a170124b6c110ad8c5550f652ff1d351d85a773b7c3aefe946
+	sha256sums = dc59ae164b68050aa216429acaf1ea3d69e416085995b5348810c81374f9ed5a
 
 pkgname = sunsync
