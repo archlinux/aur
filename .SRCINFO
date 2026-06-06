@@ -1,0 +1,20 @@
+pkgbase = jmidiracc-git
+	pkgdesc = Customizable Jack MIDI control panel with CC and sysex macro support
+	pkgver = r1
+	pkgrel = 1
+	url = https://codeberg.org/zynskeyfolf/jmidiracc
+	arch = x86_64
+	groups = pro-audio
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = qt6-base
+	makedepends = jack
+	depends = qt6-base
+	depends = jack
+	provides = jmidiracc
+	source = git+https://codeberg.org/zynskeyfolf/jmidiracc
+	sha256sums = SKIP
+
+pkgname = jmidiracc-git
