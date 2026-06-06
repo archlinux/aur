@@ -2,7 +2,7 @@
 
 _pkgname="openfga"
 pkgname="${_pkgname}-bin"
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="High performance and flexible authorization/permission engine built for developers and inspired by Google Zanzibar"
 arch=(
@@ -53,15 +53,15 @@ sha256sums=('6f5b8d7257f4158b3800346d9fa0679e1041c92987b0303f04439a54e3488580'
             'ac8e4f66ab7fd0540f58d3de61940f0dea1494fa05b4b984796c1db41a053ea1'
             '1929be63a6466a045939235754e2d2cfd4ca430c304698a6089614c6b8eec6d1'
             'a5e381b4a754fd6d091eca196a257a7187e0abb98bd52e967237748656d3fbba'
-            'b95c19bf1d5461201429ebd24fe2097055bbfdb00fcca1176fbb6a936b797ab2'
+            'e4b2a2d7490763fb338989151aa4a53feed799bfff63b739fcdd77a372075fdf'
             '1c46d7b2bed94d457d745f28cabeb31f8d6c81dd9035bc5d24039989ee1e1bff'
-            'e12d25fe8b4147a735fcb9ad5fa447ca620dc17262bbd04ee650b7bb26636321'
-            '4ff82be98806f499c14b24d0a65f9e315065ec8c5e6cb707bb3f53881a353a3e'
-            '0e8b50cd46c622ba1f703179f2a12e49debc0bad7d4cc39dca706557f6861177'
-            'f73f462503cbbfac8d87c5f305ee6b9fe5c7a750239e5aa0fe90528b46bb57a2')
-sha256sums_aarch64=('45575ddb0c8328a1c22ece4029e2a4b94cc5dad3af28163af83af634f24bde48')
-sha256sums_i686=('39f56afe02ee91a4f6fb912c3f6f11015c68dd03d93b2f2bcedda9e733accf78')
-sha256sums_x86_64=('a443c35322278c6bdf50af89c4f65871b59201b722eb77c58c92a7dda6f8bc8f')
+            '1c377771db956e310c8109ed70dfa1d19d6c8213b80cdc4f3ff40234e6d393fc'
+            '08e4cff7e2aaf271d66d45082eeb69b99c24702e700e5b90d95aff7f0931618f'
+            '7bc15e645ca4ae7eca0bc3eb9edd9fb31dcd7054db004307e5cd16ed1dce48e8'
+            '85149ba1358f647fd2c777c6f2237c36c5318e6468df7d9f78bec11543842700')
+sha256sums_aarch64=('af42a422631ec6f4f21a7a71758bd514ed363fb4629606d7096b6f6dde35afe8')
+sha256sums_i686=('efcac747665f000c9e232e8d14a74d1bed39be72b0a752360222014612e049ed')
+sha256sums_x86_64=('54fa82228ada006e72d0566bf12a4831045561c0a367f92fc7352a7063b0b786')
 
 verify() {
   export COSIGN_EXPERIMENTAL=true
