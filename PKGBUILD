@@ -2,7 +2,7 @@
 
 pkgname=pidscope-git
 _pkgname=pidscope
-pkgver=26.05.0.r0.gdbbb5fb
+pkgver=26.06.0.rc1.r0.g992a12c
 pkgrel=1
 pkgdesc='GNU Octave graphical blackbox flight log analyzer for FPV drone PID tuning'
 arch=('x86_64' 'aarch64')
@@ -33,7 +33,7 @@ pkgver() {
   cd "${srcdir}/pidscope"
 
   git describe --tags --long --abbrev=7 2>/dev/null \
-    | sed 's/^v//;s/-/.r/;s/-/./g'
+    | sed -E 's/^v//;s/-([0-9]+)-g/.r\1.g/;s/-/./g'
 }
 
 build() {
