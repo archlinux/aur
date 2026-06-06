@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = libtorch
+Target = libtorch-cuda
+Target = libtorch-rocm
+
+[Action]
+Description = Fixing ELF alignment in libtorch_cpu.so for audacity-openvino...
+When = PostTransaction
+Exec = /usr/share/audacity-openvino/elf_fix.py

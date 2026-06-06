@@ -1,0 +1,7 @@
+post_install() {
+    /usr/share/audacity-openvino/elf_fix.py
+}
+
+post_upgrade() {
+    /usr/share/audacity-openvino/elf_fix.py
+}

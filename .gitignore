@@ -2,5 +2,8 @@ pkg/
 src/
 audacity/
 openvino-plugins-ai-audacity/
+__pycache__/
 *.tar.zst
+*.pyc
+cachyos-bugreport.log
 AGENTS.md

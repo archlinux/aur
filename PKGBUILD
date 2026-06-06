@@ -4,8 +4,7 @@
 
 pkgname=audacity-openvino
 pkgver=3.7.7
-pkgrel=6
-epoch=2
+pkgrel=8
 
 # Auto-track latest 3.7.x release tag; override with explicit pkgver if needed
 _audacity_tag_prefix=Audacity-3.7
@@ -13,13 +12,14 @@ pkgdesc="Audacity - Digital audio editor with AI support via openvino (mod-openv
 arch=(x86_64)
 url="https://audacityteam.org"
 license=(GPL-3.0-or-later)
+install=audacity-openvino.install
 depends=(
   libtorch whisper.cpp-openvino
-  alsa-lib expat flac gcc-libs glibc gtk3
-  jack lame libid3tag libmad libogg libsbsms libsndfile libsoxr
-  libvorbis lilv mpg123 opusfile portaudio portmidi portsmf
+  glibc
+  libid3tag libmad libsbsms libsndfile libsoxr
+  lilv opusfile portaudio portmidi portsmf
   vamp-plugin-sdk wavpack openvino-models
-  python soundtouch sqlite suil twolame util-linux-libs wxwidgets-gtk3
+  python soundtouch sqlite suil twolame wxwidgets-gtk3
 )
 optdepends=(
   'intel-compute-runtime: Intel GPU acceleration for OpenVINO'
@@ -44,9 +44,15 @@ source=(
    "git+https://github.com/intel/openvino-plugins-ai-audacity.git#tag=v3.7.1-R4.2"
    "audacity-openvino"
    "audacity-openvino.desktop"
+   "audacity-openvino.install"
+   "audacity-openvino-elf-fix.hook"
    "CHANGELOG"
+   "elf_fix.py"
 )
 sha256sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -197,4 +203,8 @@ package() {
   install -Dm644 "$srcdir/audacity-openvino.desktop" "$shortcut"
   # Install changelog
   install -Dm644 "$srcdir/CHANGELOG" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG"
+
+  # Install ELF alignment fix script and pacman hook
+  install -Dm755 "$srcdir/elf_fix.py" "${pkgdir}/usr/share/audacity-openvino/elf_fix.py"
+  install -Dm644 "$srcdir/audacity-openvino-elf-fix.hook" "${pkgdir}/usr/share/libalpm/hooks/audacity-openvino-elf-fix.hook"
 }

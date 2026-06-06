@@ -4,10 +4,13 @@
 # SPDX-License-Identifier: GPL-3.0-only AND MIT
 
 libtorch_cuda="/opt/libtorch-cuda"
+libtorch_rocm="/opt/libtorch-rocm"
 libtorch_cpu="/opt/libtorch-cpu"
 
 if [ -d "$libtorch_cuda" ]; then
 	export LD_LIBRARY_PATH="/opt/libtorch-cuda/lib:/usr/lib"
+elif [ -d "$libtorch_rocm" ]; then
+	export LD_LIBRARY_PATH="/opt/libtorch-rocm/lib:/usr/lib"
 elif [ -d "/opt/libtorch" ]; then
 	export LD_LIBRARY_PATH="/opt/libtorch/lib:/usr/lib"
 elif [ -d "$libtorch_cpu" ]; then
