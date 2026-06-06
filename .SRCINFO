@@ -1,0 +1,21 @@
+pkgbase = codeforces-tui
+	pkgdesc = Terminal UI for Codeforces practice
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/simonwinther/codeforces-tui
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	makedepends = go
+	optdepends = python: system Python for optional cloudscraper submit flow
+	optdepends = chromium: browser-backed auth and diagnostics
+	optdepends = firefox: browser cookie auth and user-agent detection
+	provides = cftui
+	provides = codeforce-tui
+	conflicts = cftui
+	conflicts = codeforce-tui
+	options = !debug
+	source = codeforces-tui-0.2.2.tar.gz::https://github.com/simonwinther/codeforces-tui/releases/download/v0.2.2/codeforces-tui-0.2.2.tar.gz
+	sha256sums = 100259f539ac61d0e2bd6c4f5fa681453657a96079aa961e8542ccbd2cc5ad2c
+
+pkgname = codeforces-tui
