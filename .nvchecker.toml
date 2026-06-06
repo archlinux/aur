@@ -1,0 +1,5 @@
+[liminate-bin]
+source = "github"
+github = "rmichaelthomas/liminate"
+use_latest_release = true
+prefix = "v"
