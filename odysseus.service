@@ -8,11 +8,8 @@ Wants=network.target
 Type=simple
 User=odysseus
 Group=odysseus
-WorkingDirectory=/opt/odysseus
+WorkingDirectory=/opt/odysseus-ai-git
 EnvironmentFile=/etc/odysseus/odysseus.env
-ExecStartPre=/bin/bash -c 'if [ ! -f /var/lib/odysseus/.setup_done ]; then \
-    python /opt/odysseus/setup.py && \
-    touch /var/lib/odysseus/.setup_done; fi'
 ExecStart=/usr/bin/python -m uvicorn app:app \
     --host ${APP_BIND} \
     --port ${APP_PORT}
@@ -20,12 +17,10 @@ Restart=on-failure
 RestartSec=5s
 StandardOutput=journal
 StandardError=journal
-
-# Hardening
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
-ReadWritePaths=/var/lib/odysseus /opt/odysseus/data /var/log/odysseus
+ReadWritePaths=/var/lib/odysseus /opt/odysseus-ai-git/data /var/log/odysseus
 ProtectHome=true
 
 [Install]
