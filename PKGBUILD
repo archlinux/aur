@@ -1,5 +1,5 @@
 pkgname=umanag
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A basic User Management tool for Unix using Zenity"
 arch=('any')

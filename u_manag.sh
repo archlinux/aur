@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# u_manag - Basic User Management tool for Unix
+# u_manag - Basic User Management tool for Unix (v1.0.0)
 # Uses Zenity for a simple GUI interface and pkexec for root escalation.
 
 # Check for root privileges; if not root, relaunch using pkexec

@@ -1,0 +1,9 @@
+# Project-specific ignores
+GEMINI.md
+
+# Build artifacts
+*.deb
+*.tar.gz
+pkg/
+src/
+umanag-*.pkg.tar.*
