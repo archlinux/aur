@@ -1,6 +1,6 @@
 pkgbase = raifetch
 	pkgdesc = A Superfast (<5ms) and feature rich System Information Fetch Tool written in Rust
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Prithiv-0/raifetch
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = raifetch
 	license = GPL3
 	makedepends = cargo
 	makedepends = rust
-	source = raifetch-0.1.0.tar.gz::https://github.com/Prithiv-0/raifetch/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 5c1c31fa304a00f9eadf6e2c7984e1809ba10ea762736108ebb408780a56ac41
+	source = raifetch-0.1.2.tar.gz::https://github.com/Prithiv-0/raifetch/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 5b8b16b8cc0dccaa7ac5b5af47097c85b560f6e6eb14e34300bfdb2e55f40574
 
 pkgname = raifetch

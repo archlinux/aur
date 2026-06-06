@@ -1,5 +1,5 @@
 pkgname=raifetch
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A Superfast (<5ms) and feature rich System Information Fetch Tool written in Rust"
 arch=('x86_64' 'aarch64')
@@ -20,3 +20,4 @@ package() {
   install -Dm644 config/default.toml "$pkgdir/etc/raifetch/config.toml.example"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('5b8b16b8cc0dccaa7ac5b5af47097c85b560f6e6eb14e34300bfdb2e55f40574')
