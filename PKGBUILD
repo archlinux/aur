@@ -11,5 +11,5 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/danimroca/Sekiro-Tool-Manag
 sha256sums=('SKIP')
 
 package() {
-    install -Dm755 sekiro-launcher-iced "$pkgdir/usr/bin/sekiro-launcher-iced"
+    install -Dm755 sekiro-launcher "$pkgdir/usr/bin/sekiro-launcher"
 }
