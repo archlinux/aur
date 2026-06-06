@@ -1,6 +1,6 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=mullvad-socks5-proxy
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="SOCKS5 Proxy with WireGuard using Mullvad VPN"
 url="https://github.com/dcelasun/mullvad-socks5-proxy"
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('bash' 'socat' 'iproute2' 'python')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('12c5737e38b8afcbd3a326beadbc6f16c2f157560fb9f225719c99eb68da773f')
+sha256sums=('e5ed01636d7851e8564cd3bdcef921182ae3c56fc750d35ad3e74cd72a503d84')
 
 package() {
     install -dm755 "${pkgdir}"/etc/mullvad-socks5-proxy
