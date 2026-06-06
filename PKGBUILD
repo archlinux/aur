@@ -1,7 +1,7 @@
 # Maintainer: jaso
 
 pkgname=kute-bin
-pkgver=1.7
+pkgver=1.8.0
 pkgrel=2
 pkgdesc="A minimal music player for Wayland"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "kute.desktop"
   "kute.png::https://raw.githubusercontent.com/H33aven/kute/main/kute.png"
 )
-sha256sums=('9a33916b262df4c13fae2432327f7fdf43b6ea8061b4b9530d9f98a36f40d701'
+sha256sums=('8a251fdfd7ce96f764fd06cf6e93009d0a200aacaf886a53e7ea946dcdb87261'
             'e57da3bf9ff1ed0602ca3f048321128e619a2fd5f9cc45f7344a8aec90d376c9'
             'cff8a12ac9522adf676ac96f3586d9d85f007abb061281a66ea958a0e1347378')
 
