@@ -1,0 +1,11 @@
+pkgbase = asm6809
+	pkgdesc = asm6809 portable cross assembler targeting the Motorola 6809 and Hitachi 6309
+	pkgver = 2.17
+	pkgrel = 1
+	url = https://www.6809.org.uk/asm6809/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	source = https://www.6809.org.uk/asm6809//dl/asm6809-2.17.tar.gz
+	sha256sums = a6d36dd29cb3b26505c46595c1f0f1c4d7e66d3838f6347ce33ce27f4b35cffa
+
+pkgname = asm6809
