@@ -5,7 +5,7 @@ If installing this without prior configuration, the initial configuration
 needs to be initialised. Run the following commands as root:
 
   cd /etc/opencloud
-  opencloud init
+  opencloud-server init
   chmod 640 opencloud.yaml
   chown root:opencloud opencloud.yaml
 
