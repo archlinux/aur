@@ -1,0 +1,9 @@
+imagequant-*.tar.gz
+
+*.pkg.tar
+*.pkg.tar.*
+
+pkg/
+src/
+
+*.log

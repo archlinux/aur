@@ -1,0 +1,19 @@
+pkgbase = python-imagequant
+	pkgdesc = Python bindings for libimagequant
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/wanadev/imagequant-python
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-pycparser
+	makedepends = python-installer
+	depends = python
+	depends = libimagequant
+	depends = python-cffi
+	optdepends = python-pillow
+	source = https://files.pythonhosted.org/packages/source/i/imagequant/imagequant-1.1.5.tar.gz
+	sha256sums = 0a8fbf5f4587f1809d6b7db9a05f915c71399c2990e7ade7c7a5f21a2361384e
+
+pkgname = python-imagequant
