@@ -1,8 +1,9 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=maigret
-pkgver=0.4.4
-pkgrel=5
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="Collect a dossier on a person by username from thousands of sites"
 arch=(any)
 url="https://github.com/soxoj/maigret"
@@ -12,9 +13,13 @@ depends=(
   python-aiodns
   python-aiohttp
   python-aiohttp-socks
+  python-alive-progress
+  python-asgiref
   python-cloudscraper
   python-colorama
+  python-curl_cffi
   python-dateutil
+  python-flask
   python-jinja
   python-mock
   python-networkx
@@ -22,58 +27,37 @@ depends=(
   python-python-socks
   python-pyvis
   python-requests
-  python-tqdm
+  python-werkzeug
   python-xhtml2pdf
   python-xmind
-  socid-extractor
+  'socid-extractor>=0.1.0'
 )
 makedepends=(
   python-build
   python-installer
-  python-setuptools
+  python-poetry-core
   python-wheel
 )
-checkdepends=(
-  python-pytest
-  python-pytest-httpserver
-  python-reportlab
-)
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  "dont-install-tests-etc.patch"
-  "fix-pytest-crash.patch"
-)
-sha256sums=(
-  'f890ad0986f94b1674324a17c011ec6a955e62fd87feb578707589371f08847f'
-  '00ce7e030d3733bc55661e11de5399604a17d9540576100e6ea2d059a88642cd'
-  'f68c7d967aa2b1294bc7376eac39c4975a7cdf5464cbada1820acc48e325a941'
-)
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('e1cc37b008ccf83ec64039c0b5c7219c607da8bcd1423157f299c3c58aa84dce')
 
 _archive="$pkgname-$pkgver"
+
+latestver() {
+  curl -fsSL "https://pypi.org/pypi/$pkgname/json" | jq -r '.info.version'
+}
 
 prepare() {
   cd "$_archive"
 
-  patch --forward --strip=1 --input="$srcdir/dont-install-tests-etc.patch"
-  patch --forward --strip=1 --input="$srcdir/fix-pytest-crash.patch"
+  sed -i '/^update_sitesmd = /d' pyproject.toml
+  sed -i 's/socid-extractor = ">=0.0.27,<0.0.29"/socid-extractor = ">=0.1.0,<0.2.0"/' pyproject.toml
 }
 
 build() {
   cd "$_archive"
 
   python -m build --wheel --no-isolation
-}
-
-check() {
-  cd "$_archive"
-
-  # Deselected tests fail due to DeprecationWarning or AssertionError
-  pytest \
-    --deselect tests/test_activation.py::test_import_aiohttp_cookies \
-    --deselect tests/test_report.py::test_html_report \
-    --deselect tests/test_report.py::test_html_report_broken \
-    --deselect tests/test_report.py::test_text_report \
-    --deselect tests/test_report.py::test_text_report_broken
 }
 
 package() {

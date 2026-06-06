@@ -3,5 +3,3 @@
 !.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
-!fix-pytest-crash.patch
-!dont-install-tests-etc.patch
