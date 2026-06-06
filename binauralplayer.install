@@ -1,0 +1,14 @@
+post_install() {
+  # warning notice about possible sound issues when using pure ALSA-based setup:
+  echo "-----------------------------------------------------------------------"
+  echo "Note:" 
+  echo "In case you don't use PulseAudio or PipeWire and get a following error:"
+  echo "\"No audio output device available\""
+  echo "You can always use a PulseAudio emulation (such as apulse),"
+  echo "without ever running a PulseAudio server."
+  echo "-----------------------------------------------------------------------"
+}
+
+post_upgrade() {
+    post_install
+}
