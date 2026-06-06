@@ -1,12 +1,12 @@
 # Maintainer: Robin Marchart <robin.marchart at gmail dot com>
 pkgname='jellyhaj-git'
-pkgver=v0.2.0.r1.gd519137
+pkgver=v0.2.0.r18.ga8539d7
 pkgrel=1
 pkgdesc="Terminal client for Jellyfin reimplementing parts of the web ui"
 arch=('x86_64' 'aarch64')
 url="https://github.com/owo-uwu-nyaa/jellyhaj"
 license=('MIT')
-depends=('mpv' 'sqlite' 'dbus')
+depends=('mpv' 'sqlite' 'dbus' 'chafa')
 makedepends=('cargo' 'clang' 'git')
 provides=('jellyhaj')
 conflicts=('jellyhaj')
