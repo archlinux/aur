@@ -1,5 +1,5 @@
 pkgbase = protonup-qt
-	pkgdesc = Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris
+	pkgdesc = Install and manage GE-Proton, Luxtorpeda & more for Steam, Lutris and Heroic
 	pkgver = 2.15.0
 	pkgrel = 1
 	url = https://davidotek.github.io/protonup-qt
