@@ -1,0 +1,11 @@
+pkgbase = magicseteditor-full-magic-pack-git
+	pkgdesc = Pack containing nearly all public Magic templates for MSE, except outdated ones.
+	pkgver = 2.5.8
+	pkgrel = 1
+	url = https://magicseteditor.com/
+	arch = any
+	license = GPL-2.0-only
+	source = magicseteditor-full-magic-pack-git-d5a825b6c08d5a9b092b54595a33a84facf49ae1.tar.gz::https://codeload.github.com/MagicSetEditorPacks/Full-Magic-Pack/tar.gz/d5a825b6c08d5a9b092b54595a33a84facf49ae1
+	sha256sums = d05d5d59a272610ad13e5fc2048688913277e7a3cf586673b9ec320ac489fc5e
+
+pkgname = magicseteditor-full-magic-pack-git
