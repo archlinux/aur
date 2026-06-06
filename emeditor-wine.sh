@@ -159,8 +159,17 @@ import_optional_fonts() {
     SegoeIcons.ttf \
     segoeui.ttf \
     segoeuib.ttf \
+    segoeuii.ttf \
+    segoeuil.ttf \
     segoeuisl.ttf \
     segoeuiz.ttf \
+    seguiemj.ttf \
+    seguili.ttf \
+    seguisb.ttf \
+    seguisbi.ttf \
+    seguisli.ttf \
+    seguisym.ttf \
+    webdings.ttf \
     msyh.ttc \
     msyhbd.ttc \
     msyhl.ttc; do
@@ -171,8 +180,17 @@ import_optional_fonts() {
   register_font_if_present SegoeIcons.ttf 'Segoe Fluent Icons (TrueType)'
   register_font_if_present segoeui.ttf 'Segoe UI (TrueType)'
   register_font_if_present segoeuib.ttf 'Segoe UI Bold (TrueType)'
+  register_font_if_present segoeuii.ttf 'Segoe UI Italic (TrueType)'
+  register_font_if_present segoeuil.ttf 'Segoe UI Light (TrueType)'
   register_font_if_present segoeuisl.ttf 'Segoe UI Semilight (TrueType)'
   register_font_if_present segoeuiz.ttf 'Segoe UI Bold Italic (TrueType)'
+  register_font_if_present seguiemj.ttf 'Segoe UI Emoji (TrueType)'
+  register_font_if_present seguili.ttf 'Segoe UI Light Italic (TrueType)'
+  register_font_if_present seguisb.ttf 'Segoe UI Semibold (TrueType)'
+  register_font_if_present seguisbi.ttf 'Segoe UI Semibold Italic (TrueType)'
+  register_font_if_present seguisli.ttf 'Segoe UI Semilight Italic (TrueType)'
+  register_font_if_present seguisym.ttf 'Segoe UI Symbol (TrueType)'
+  register_font_if_present webdings.ttf 'Webdings (TrueType)'
   register_font_if_present msyh.ttc 'Microsoft YaHei UI (TrueType)'
   register_font_if_present msyhbd.ttc 'Microsoft YaHei UI Bold (TrueType)'
   register_font_if_present msyhl.ttc 'Microsoft YaHei UI Light (TrueType)'
