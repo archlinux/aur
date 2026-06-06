@@ -23,7 +23,7 @@ makedepends=(
     'pkg-config'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('00054fa45d910cef6d2caaca2f6523db7e7d5f77d72246ad8a2de8b3e845c5c9')
 
 _reponame="Chawa-Whatsapp-Web-Client"
 
