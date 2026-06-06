@@ -1,7 +1,7 @@
 # Maintainer: bytesketch
 
 pkgname=lpack-git
-pkgver=r9.g743fc69
+pkgver=r11.g53ff256
 pkgrel=1
 pkgdesc="A lightweight Linux packaging system and portable package manager using the .lpk format"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -43,4 +43,6 @@ package() {
     install -Dm644 \
         LICENSE \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    "${srcdir}/lpack/target/release/lpack" trust "${srcdir}/lpack/dist/bytesketch-lpack.signature-v1"
 }
