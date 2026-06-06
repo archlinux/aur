@@ -1,32 +1,54 @@
 post_install() {
+    # Get the real user who ran yay/sudo
+    REAL_USER="${SUDO_USER:-$USER}"
+    REAL_HOME=$(getent passwd "$REAL_USER" | cut -d: -f6)
+
+    echo "==> Running first-time setup as $REAL_USER..."
+    cd /opt/odysseus-ai-git
+
+    # Run setup.py as the real user — it detects a TTY and prompts
+    # for admin username + password interactively
+    sudo -u "$REAL_USER" /opt/odysseus-ai-git/venv/bin/python setup.py
+
+    # Fix ownership of data dir created by setup.py
+    chown -R "$REAL_USER:$REAL_USER" /opt/odysseus-ai-git/data
+    chown "$REAL_USER:$REAL_USER" /opt/odysseus-ai-git/.env 2>/dev/null || true
+
+    # Enable and start the systemd user service
+    sudo -u "$REAL_USER" \
+        XDG_RUNTIME_DIR="/run/user/$(id -u "$REAL_USER")" \
+        systemctl --user enable --now odysseus
+
     echo ""
-    echo "==> Odysseus installed to /opt/odysseus-ai-git"
-    echo ""
-    echo "    First-time setup (run this once as your user):"
-    echo ""
-    echo "      cd /opt/odysseus-ai-git"
-    echo "      python setup.py"
-    echo ""
-    echo "    This will create data dirs, copy .env.example → .env,"
-    echo "    and ask you to set an admin username + password."
-    echo ""
-    echo "    Then enable and start the service for your user:"
-    echo ""
-    echo "      systemctl --user enable --now odysseus"
-    echo ""
-    echo "    Open: http://localhost:7000"
+    echo "==> Odysseus is running at http://localhost:7000"
+    echo "    Log in with the credentials you just set."
     echo ""
 }
 
 post_upgrade() {
-    cd /opt/odysseus-ai-git
-    venv/bin/pip install -r requirements.txt --quiet
-    echo "==> Restart the service: systemctl --user restart odysseus"
+    REAL_USER="${SUDO_USER:-$USER}"
+
+    echo "==> Updating Python dependencies..."
+    sudo -u "$REAL_USER" /opt/odysseus-ai-git/venv/bin/pip install \
+        -r /opt/odysseus-ai-git/requirements.txt --quiet
+
+    sudo -u "$REAL_USER" \
+        XDG_RUNTIME_DIR="/run/user/$(id -u "$REAL_USER")" \
+        systemctl --user restart odysseus
+
+    echo "==> Odysseus updated and restarted."
 }
 
 pre_remove() {
-    systemctl --user stop odysseus 2>/dev/null || true
-    systemctl --user disable odysseus 2>/dev/null || true
+    REAL_USER="${SUDO_USER:-$USER}"
+
+    sudo -u "$REAL_USER" \
+        XDG_RUNTIME_DIR="/run/user/$(id -u "$REAL_USER")" \
+        systemctl --user stop odysseus 2>/dev/null || true
+
+    sudo -u "$REAL_USER" \
+        XDG_RUNTIME_DIR="/run/user/$(id -u "$REAL_USER")" \
+        systemctl --user disable odysseus 2>/dev/null || true
 }
 
 post_remove() {
@@ -34,7 +56,7 @@ post_remove() {
 
     echo ""
     echo "==> Odysseus removed."
-    echo "    Your data in /opt/odysseus-ai-git/data was removed with the app."
-    echo "    If you had the data dir elsewhere, remove it manually."
+    echo "    Your data was inside /opt/odysseus-ai-git/data — already gone."
+    echo "    To keep data next time, back up that folder before removing."
     echo ""
 }
