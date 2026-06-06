@@ -18,6 +18,6 @@ pkgbase = chawa-whatsapp-web-client
 	depends = gst-plugins-bad
 	depends = gst-plugin-va
 	source = chawa-whatsapp-web-client-1.0.tar.gz::https://github.com/ramdanolii14/Chawa-Whatsapp-Web-Client/archive/v1.0.tar.gz
-	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	sha256sums = 00054fa45d910cef6d2caaca2f6523db7e7d5f77d72246ad8a2de8b3e845c5c9
 
 pkgname = chawa-whatsapp-web-client
