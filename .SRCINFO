@@ -1,6 +1,6 @@
 pkgbase = hwsonnet
 	pkgdesc = Modern hardware information and monitoring tool for Linux
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Varionetzwerk/hwsonnet
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = hwsonnet
 	optdepends = pciutils: PCI device listing for GPU fallback
 	optdepends = usbutils: USB device info
 	optdepends = python-reportlab: PDF export support
-	source = git+https://github.com/Varionetzwerk/hwsonnet.git#tag=v1.0.1
+	source = git+https://github.com/Varionetzwerk/hwsonnet.git#tag=v1.0.2
 	sha256sums = SKIP
 
 pkgname = hwsonnet

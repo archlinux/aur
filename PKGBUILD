@@ -1,6 +1,6 @@
 # Maintainer: RookDash <metzs843@gmail.com>
 pkgname=hwsonnet
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Modern hardware information and monitoring tool for Linux"
 arch=('x86_64' 'aarch64')
