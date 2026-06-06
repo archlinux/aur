@@ -2,7 +2,7 @@
 # Maintainer: Lolka Team <support@lolka.app>
 
 pkgname=lolka-bin
-pkgver=1.0.86
+pkgver=1.0.100
 pkgrel=1
 #epoch=1
 _pkgname=Lolka
@@ -21,7 +21,7 @@ optdepends=(
 )
 
 source=("${_pkgname}_${pkgver}_amd64.deb::https://storage.yandexcloud.net/lolka-electron/releases/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=("419cc5bd37beb6d016c8112750dbc7c60c6d491be23500e913e19add4f871729")
+sha256sums=("15c25d3c45314d859db3753764d1b0e6d91d2528c410ef070f502483bdfc9b2c")
 install=${pkgname}.install
 
 prepare() {
