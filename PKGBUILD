@@ -9,8 +9,8 @@ url="https://github.com/DenebTM/dupimg"
 license=('AGPL-3.0-only')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("${pkgname}-${pkgver}.tar.gz::https://crates.io/api/v1/crates/${pkgname}/${pkgver}/download")
-sha256sums=('f123d0d78d022bd2cda686d0a71a708461a2615f33a032d2fc5ea809a4fd05fe')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DenebTM/dupimg/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ec9e52e26402e0fc744a6df585479142e138e28c21c672099e3d6468069d4749')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

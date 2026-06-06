@@ -7,7 +7,7 @@ pkgbase = dupimg
 	license = AGPL-3.0-only
 	makedepends = cargo
 	depends = gcc-libs
-	source = dupimg-1.0.0.tar.gz::https://crates.io/api/v1/crates/dupimg/1.0.0/download
-	sha256sums = f123d0d78d022bd2cda686d0a71a708461a2615f33a032d2fc5ea809a4fd05fe
+	source = dupimg-1.0.0.tar.gz::https://github.com/DenebTM/dupimg/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = ec9e52e26402e0fc744a6df585479142e138e28c21c672099e3d6468069d4749
 
 pkgname = dupimg
