@@ -2,7 +2,7 @@
 
 pkgname=appflowy
 pkgver=0.12.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source alternative to Notion – you own your data and customizations"
 arch=('x86_64')
 url="https://appflowy.com"
@@ -21,6 +21,7 @@ _flutter_ver=3.27.4
 makedepends=(
     'clang'
     'cmake'
+    'git'
     'ninja'
     'pkg-config'
     'sqlite'
@@ -37,12 +38,12 @@ optdepends=(
 options=('!lto' '!debug' '!buildflags')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/AppFlowy-IO/AppFlowy/archive/refs/tags/${pkgver}.tar.gz"
-    "flutter-${_flutter_ver}-linux.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutter_ver}-stable.tar.xz"
+    "flutter::git+ssh://git@github.com/flutter/flutter.git#tag=${_flutter_ver}"
     "appflowy.desktop"
 )
 sha256sums=(
     'cd7c1f999cec3b5a47fce32333bdf5dd2662ebe597fda094912d4826ad2bc039'
-    '64df4273de625433c7ba41967932b782f5f9abf3199db8330782d64508379344'
+    'SKIP'
     '55c02d13249b333088ee452e76c8f36254e510651023549dc7e35efca02ca821'
 )
 
