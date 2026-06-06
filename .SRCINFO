@@ -1,13 +1,13 @@
 pkgbase = knfmt
 	pkgdesc = C code formatter (OpenBSD KNF, limited .clang-format support)
-	pkgver = 5.3.0
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = https://github.com/mptre/knfmt
 	arch = x86_64
 	license = ISC
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/mptre/knfmt/releases/download/v5.3.0/knfmt-5.3.0.tar.gz
-	sha256sums = 7e5db953839e6d4ad4dac8d8e791173c431528ffddf9574dc3b19681bd4c6d56
+	source = https://github.com/mptre/knfmt/releases/download/v5.3.1/knfmt-5.3.1.tar.gz
+	sha256sums = e0086a8dc93d94515b4f77e591c8b14a2f4911215fc0e538471127ffeff3cc9f
 
 pkgname = knfmt
