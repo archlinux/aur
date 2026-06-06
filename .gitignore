@@ -1,5 +1,5 @@
-*.deb
-*.rpm
-*.tar.gz
-*.tar.zst
-*.zip
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO

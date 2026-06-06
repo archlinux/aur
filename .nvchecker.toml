@@ -1,0 +1,5 @@
+[python-rq]
+source = "github"
+github = "rq/rq"
+use_latest_release = true
+prefix = "v"

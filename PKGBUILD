@@ -1,27 +1,36 @@
 # Maintainer: Radu Potop <radu@wooptoo.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Élie Bouttier <elie+aur@bouttier.eu>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 basename='rq'
-pkgname='python-rq'
-pkgver=2.9
-pkgrel=2
+pkgname=python-${basename}
+pkgver=2.9.1
+pkgrel=1
 pkgdesc="Simple job queues for Python"
+
 arch=(any)
 license=("BSD-2-Clause")
-url="https://github.com/rq/rq"
-makedepends=("python-hatch" "python-installer")
-depends=('python' 'python-click' 'python-croniter' 'python-redis')
+url="https://github.com/${basename}/${basename}"
+
+makedepends=('python-hatch' 'python-installer')
+depends=('python' 'python-click' 'python-croniter' 'python-redis' 'python-setproctitle' 'python-typing_extensions' 'python-greenlet')
+
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fafc5aca369b9a5dc6da4231837b24b5a2d02b3e029b5759461a2ec78f723027')
+sha256sums=('ff739323cf20b79c9e39edf281e64fb074162f8273a15490c3156371b31cc131')
 
 build() {
-    cd "$srcdir/$basename-$pkgver"
+    cd "${srcdir}/${basename}-${pkgver}"
+
     hatch build -c -t wheel
 }
 
 package() {
-    cd "$srcdir/$basename-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "${srcdir}/${basename}-${pkgver}"
+
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
