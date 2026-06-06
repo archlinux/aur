@@ -11,9 +11,8 @@ pkgdesc="Userspace quirks for ASUS ProArt PX13 (HN7306EA): TAS2783/ACP UCM + Pip
 arch=('any')
 url="https://aur.archlinux.org/packages/asus-proart-px13-quirks"
 license=('CC0-1.0')
-depends=('alsa-ucm-conf>=1.2.16' 'pipewire' 'wireplumber' 'linux-firmware-other>=1:20260519')
+depends=("linux-cachyos-px13>=${pkgver}" 'alsa-ucm-conf>=1.2.16' 'pipewire' 'wireplumber' 'linux-firmware-other>=1:20260519')
 optdepends=(
-    'linux-cachyos-px13: kernel with the TAS2783 + suspend/resume audio patches in-tree'
     'sof-firmware: SOF firmware for AMD ACP'
     'alsa-utils: alsactl store to persist channel assignments'
     'bluez: enables the BT stack the btusb quirk applies to'

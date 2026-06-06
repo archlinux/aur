@@ -6,11 +6,11 @@ pkgbase = asus-proart-px13-quirks
 	url = https://aur.archlinux.org/packages/asus-proart-px13-quirks
 	arch = any
 	license = CC0-1.0
+	depends = linux-cachyos-px13>=7.0.11
 	depends = alsa-ucm-conf>=1.2.16
 	depends = pipewire
 	depends = wireplumber
 	depends = linux-firmware-other>=1:20260519
-	optdepends = linux-cachyos-px13: kernel with the TAS2783 + suspend/resume audio patches in-tree
 	optdepends = sof-firmware: SOF firmware for AMD ACP
 	optdepends = alsa-utils: alsactl store to persist channel assignments
 	optdepends = bluez: enables the BT stack the btusb quirk applies to
