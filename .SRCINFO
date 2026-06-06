@@ -1,0 +1,15 @@
+pkgbase = vrandr
+	pkgdesc = Vim-style TUI for xrandr, built with Ratatui
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/letongzhuo/vrandr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = xorg-xrandr
+	source = vrandr-0.1.0.tar.gz::https://github.com/letongzhuo/vrandr/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 54884a21aac048b828f586185e97b91ffd2faf666d146fe93274226768035aed
+
+pkgname = vrandr
