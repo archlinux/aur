@@ -5,33 +5,21 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/odysseus
+WorkingDirectory=/var/lib/odysseus
 
-# Load the config file
 EnvironmentFile=/etc/odysseus/env
-
-# Tell setup.py where runtime data lives and skip the interactive prompt
-Environment=ODYSSEUS_DATA_DIR=/var/lib/odysseus/data
-Environment=ODYSSEUS_LOG_DIR=/var/lib/odysseus/logs
 Environment=ODYSSEUS_SKIP_ADMIN_PROMPT=1
 Environment=ODYSSEUS_SKIP_RUN_HINT=1
-
-# Override data-relative defaults so the app finds its DB and dirs
 Environment=DATABASE_URL=sqlite:////var/lib/odysseus/data/app.db
 
-# Run setup on every start — it's idempotent, skips what already exists.
-# This handles first-boot DB init + admin creation without a separate hook.
 ExecStartPre=/opt/odysseus/venv/bin/python /opt/odysseus/setup.py
-
-# Start the server
 ExecStart=/opt/odysseus/venv/bin/python -m uvicorn app:app \
     --host 127.0.0.1 \
-    --port 7000
+    --port 7000 \
+    --app-dir /opt/odysseus
 
 Restart=on-failure
 RestartSec=5
-
-# Keep logs tidy
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=odysseus

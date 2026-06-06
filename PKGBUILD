@@ -64,12 +64,12 @@ package() {
     # --- Relocate the venv → /opt/odysseus/venv ---
     cp -r "$srcdir/venv" "$pkgdir/opt/odysseus/venv"
 
-    # Fix venv shebangs to point at installed path, not srcdir
+    # Fix venv shebangs to point at installed path
     find "$pkgdir/opt/odysseus/venv/bin" -type f | \
         xargs -r grep -rlI "$srcdir/venv" | \
         xargs -r sed -i "s|$srcdir/venv|/opt/odysseus/venv|g"
 
-    # --- Runtime data dirs ---
+    # --- Runtime data dirs at /var/lib/odysseus ---
     local dirs=(
         var/lib/odysseus
         var/lib/odysseus/data
@@ -87,6 +87,12 @@ package() {
     for d in "${dirs[@]}"; do
         install -dm755 "$pkgdir/$d"
     done
+
+    # --- Symlink data/ and logs/ into /opt/odysseus so setup.py finds them ---
+    # setup.py uses BASE_DIR (which is /opt/odysseus) to build paths,
+    # so we point those paths at the real writable locations.
+    ln -s /var/lib/odysseus/data "$pkgdir/opt/odysseus/data"
+    ln -s /var/lib/odysseus/logs "$pkgdir/opt/odysseus/logs"
 
     # --- Config → /etc/odysseus/env ---
     install -dm755 "$pkgdir/etc/odysseus"
