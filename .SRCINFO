@@ -1,6 +1,6 @@
 pkgbase = tickerbar
-	pkgdesc = Multi-market price ticker for Waybar (crypto, stocks, indices, forex) — no API key
-	pkgver = 0.1.0
+	pkgdesc = Multi-market price ticker for Waybar (crypto, stocks, indices, commodities, forex, rates) — no API key
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/mryll/tickerbar
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tickerbar
 	depends = gcc-libs
 	depends = openssl
 	options = !debug
-	source = tickerbar-0.1.0.tar.gz::https://github.com/mryll/tickerbar/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 5b01be084f3a932881f259d772085099ba42796de03b186b126c5fe487052eaa
+	source = tickerbar-0.2.0.tar.gz::https://github.com/mryll/tickerbar/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = b23e0a8c094c3025fa757debdef2f9c07357da913b6b32f23072bfb6072f03eb
 
 pkgname = tickerbar
