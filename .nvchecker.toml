@@ -1,0 +1,5 @@
+[otf-e73]
+source = 'github'
+github = 'scruss/E73'
+use_max_tag = true
+prefix = 'v'
