@@ -1,0 +1,5 @@
+[titus-bin]
+source = "github"
+github = "praetorian-inc/titus"
+use_latest_release = true
+prefix = "v"
