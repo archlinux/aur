@@ -1,11 +1,13 @@
 pkgbase = gamevox-launcher-bin
 	pkgdesc = Voice Chat built for gamers.
 	pkgver = 0.0.58
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gamevox.com/
 	install = gamevox-launcher-bin.install
 	arch = x86_64
 	license = custom
+	makedepends = jq
+	makedepends = curl
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = gst-plugins-bad
