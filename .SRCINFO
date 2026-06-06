@@ -1,0 +1,17 @@
+pkgbase = cftui
+	pkgdesc = Terminal workflow for Codeforces practice and contests
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/simonwa01/codeforce-tui
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	makedepends = go
+	optdepends = python: system Python for optional cloudscraper submit flow
+	optdepends = chromium: browser-backed auth and diagnostics
+	optdepends = firefox: browser cookie auth and user-agent detection
+	options = !debug
+	source = cftui-0.2.1.tar.gz::https://github.com/simonwa01/codeforce-tui/releases/download/v0.2.1/cftui-0.2.1.tar.gz
+	sha256sums = a3ae7f6e5ea8596b0bd7ead7e5d33329e0a895a90ca39ad35676b9e73274c6ad
+
+pkgname = cftui
