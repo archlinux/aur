@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=AppFlowy
+GenericName=AppFlowy
+Comment=Open-source alternative to Notion
+Exec=appflowy %U
+Icon=appflowy
+Terminal=false
+Type=Application
+Categories=Office;Productivity;
+MimeType=x-scheme-handler/appflowy-flutter;
+Keywords=AppFlowy;Office;Document;Database;Note;Kanban;
+StartupNotify=true
