@@ -1,8 +1,8 @@
 pkgbase = easytier
-	pkgdesc = A simple, decentralized mesh VPN with WireGuard support.
+	pkgdesc = A simple, decentralized mesh VPN with WireGuard support
 	pkgver = 2.6.4
-	pkgrel = 4
-	url = https://github.com/EasyTier/EasyTier
+	pkgrel = 5
+	url = https://easytier.cn/
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
@@ -14,34 +14,36 @@ pkgbase = easytier
 	makedepends = cargo
 	makedepends = protobuf
 	makedepends = rust-bindgen
-	makedepends = clang
-	makedepends = llvm
-	makedepends = lld
 	makedepends = sqlite
 	makedepends = nodejs
 	makedepends = pnpm
 	depends = glibc
 	depends = libgcc
 	depends = zstd
+	options = !lto
 	source = EasyTier-2.6.4.tar.gz::https://github.com/EasyTier/EasyTier/archive/refs/tags/v2.6.4.tar.gz
+	source = 0001-build-update-pnpm-config-for-v11-compatibility.patch
 	source = easytier.service
 	source = config.toml
 	sha256sums = 352c0866da709415a837405a6ce4f51b8dfae27e5d5c1da1fb4d8f7338e46795
-	sha256sums = c3a88a02c96ccbed58908d91da89338c2d093ec3e571f3861c36a5cd0a92bb21
+	sha256sums = 70049779ad48f5257ecf36a5c92ed92c86e1f5f9e6a74650fe716ffb98a09803
+	sha256sums = dd9e71f35055e2442187b630a6ff0c519d6f0bb5d0e206d0cb43e36759ab47fc
 	sha256sums = 05518beea8b047d5e9b9adb14f26f85a91e4eea81ead7eeb4743f8978e1fd842
 
 pkgname = easytier
-	pkgdesc = A simple, decentralized mesh VPN with WireGuard support.
 	depends = easytier-core
 	depends = easytier-cli
 	depends = easytier-web
 
 pkgname = easytier-core
+	pkgdesc = A simple, decentralized mesh VPN with WireGuard support - Core daemon
 	backup = etc/easytier/config.toml
 
 pkgname = easytier-cli
+	pkgdesc = A simple, decentralized mesh VPN with WireGuard support - Command-line interface
 
 pkgname = easytier-web
+	pkgdesc = A simple, decentralized mesh VPN with WireGuard support - Web management interface
 	depends = glibc
 	depends = libgcc
 	depends = zstd
