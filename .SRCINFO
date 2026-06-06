@@ -57,5 +57,7 @@ pkgbase = odysseus-ai-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = odysseus-ai-git
