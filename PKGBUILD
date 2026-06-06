@@ -8,7 +8,7 @@ url="https://github.com/foforivera/pocketcli"
 license=('MIT')
 depends=('python' 'python-httpx' 'mpv')
 source=("pocketcli.py::https://raw.githubusercontent.com/foforivera/pocketcli/v${pkgver}/pocketcli.py")
-sha256sums=('23cc2d16beb3e7dce8fb09764109a14693cec6cc1e7327cf2f842251f067bc74')
+sha256sums=('c79e75e66ec5ef04a69e8eb0ef91d2cc58d4ef2661f5243687fafcb7c483d583')
 
 package() {
     install -Dm755 "${srcdir}/pocketcli.py" "${pkgdir}/usr/bin/pocketcli"
