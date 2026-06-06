@@ -1,22 +1,18 @@
 post_install() {
-    # Get the real user who ran yay/sudo
     REAL_USER="${SUDO_USER:-$USER}"
-    REAL_HOME=$(getent passwd "$REAL_USER" | cut -d: -f6)
+
+    echo "==> Setting ownership of /opt/odysseus-ai-git to $REAL_USER..."
+    chown -R "$REAL_USER:$REAL_USER" /opt/odysseus-ai-git
 
     echo "==> Running first-time setup as $REAL_USER..."
-    cd /opt/odysseus-ai-git
+    sudo -u "$REAL_USER" \
+        HOME="$(getent passwd "$REAL_USER" | cut -d: -f6)" \
+        /opt/odysseus-ai-git/venv/bin/python /opt/odysseus-ai-git/setup.py
 
-    # Run setup.py as the real user — it detects a TTY and prompts
-    # for admin username + password interactively
-    sudo -u "$REAL_USER" /opt/odysseus-ai-git/venv/bin/python setup.py
-
-    # Fix ownership of data dir created by setup.py
-    chown -R "$REAL_USER:$REAL_USER" /opt/odysseus-ai-git/data
-    chown "$REAL_USER:$REAL_USER" /opt/odysseus-ai-git/.env 2>/dev/null || true
-
-    # Enable and start the systemd user service
+    echo "==> Enabling and starting Odysseus service..."
     sudo -u "$REAL_USER" \
         XDG_RUNTIME_DIR="/run/user/$(id -u "$REAL_USER")" \
+        DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$REAL_USER")/bus" \
         systemctl --user enable --now odysseus
 
     echo ""
@@ -29,11 +25,14 @@ post_upgrade() {
     REAL_USER="${SUDO_USER:-$USER}"
 
     echo "==> Updating Python dependencies..."
-    sudo -u "$REAL_USER" /opt/odysseus-ai-git/venv/bin/pip install \
+    chown -R "$REAL_USER:$REAL_USER" /opt/odysseus-ai-git
+    sudo -u "$REAL_USER" \
+        /opt/odysseus-ai-git/venv/bin/pip install \
         -r /opt/odysseus-ai-git/requirements.txt --quiet
 
     sudo -u "$REAL_USER" \
         XDG_RUNTIME_DIR="/run/user/$(id -u "$REAL_USER")" \
+        DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$REAL_USER")/bus" \
         systemctl --user restart odysseus
 
     echo "==> Odysseus updated and restarted."
@@ -44,10 +43,12 @@ pre_remove() {
 
     sudo -u "$REAL_USER" \
         XDG_RUNTIME_DIR="/run/user/$(id -u "$REAL_USER")" \
+        DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$REAL_USER")/bus" \
         systemctl --user stop odysseus 2>/dev/null || true
 
     sudo -u "$REAL_USER" \
         XDG_RUNTIME_DIR="/run/user/$(id -u "$REAL_USER")" \
+        DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$REAL_USER")/bus" \
         systemctl --user disable odysseus 2>/dev/null || true
 }
 
