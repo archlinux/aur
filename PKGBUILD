@@ -4,7 +4,7 @@
 
 pkgname=the-honkers-railway-launcher-git
 _pkgname="${pkgname%-git}"
-pkgver=1.15.0.r0.g4d79ee6
+pkgver=1.15.1.r0.g9266f1a
 pkgrel=1
 pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/the-honkers-railway-launcher"
