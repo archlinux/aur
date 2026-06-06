@@ -1,24 +1,27 @@
 pkgbase = odysseus-ai-git
-	pkgdesc = Self-hosted AI workspace with chat, agents, deep research, calendar, email, and more
+	pkgdesc = Self-hosted AI workspace (chat, agents, deep research, email, calendar)
 	pkgver = r915.dev
 	pkgrel = 1
 	url = https://github.com/pewdiepie-archdaemon/odysseus
-	install = odysseus.install
-	arch = any
+	install = odysseus-ai-git.install
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
+	makedepends = python-pip
 	depends = python>=3.11
-	depends = python-pip
-	depends = nodejs
-	depends = npm
-	optdepends = tmux: required for Cookbook background model downloads and serving
-	optdepends = ollama: local model serving via Ollama
+	depends = tmux
+	optdepends = searxng: web search backend
+	optdepends = chromadb: standalone vector memory service (uses embedded client by default)
+	optdepends = ntfy: desktop/push notifications
+	optdepends = ollama: local model serving
 	provides = odysseus-ai
 	conflicts = odysseus-ai
-	source = odysseus-ai-git::git+https://github.com/pewdiepie-archdaemon/odysseus.git#branch=dev
+	backup = etc/odysseus/env
+	source = odysseus::git+https://github.com/pewdiepie-archdaemon/odysseus.git#branch=dev
+	source = odysseus.service
 	source = odysseus.desktop
 	source = odysseus.svg
-	source = odysseus.install
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

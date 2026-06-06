@@ -1,30 +1,31 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: your name <your@email.com>
 pkgname=odysseus-ai-git
 pkgver=r915.dev
 pkgrel=1
-pkgdesc="Self-hosted AI workspace with chat, agents, deep research, calendar, email, and more"
-arch=('any')
+pkgdesc="Self-hosted AI workspace (chat, agents, deep research, email, calendar)"
+arch=('x86_64' 'aarch64')
 url="https://github.com/pewdiepie-archdaemon/odysseus"
 license=('MIT')
 depends=(
     'python>=3.11'
-    'python-pip'
-    'nodejs'
-    'npm'
+    'tmux'           # Cookbook background downloads/serves
 )
 optdepends=(
-    'tmux: required for Cookbook background model downloads and serving'
-    'ollama: local model serving via Ollama'
+    'searxng: web search backend'
+    'chromadb: standalone vector memory service (uses embedded client by default)'
+    'ntfy: desktop/push notifications'
+    'ollama: local model serving'
 )
-makedepends=('git')
+makedepends=('git' 'python-pip')
 provides=('odysseus-ai')
 conflicts=('odysseus-ai')
-install=odysseus.install
+backup=('etc/odysseus/env')
+install=odysseus-ai-git.install
 source=(
-    "$pkgname::git+https://github.com/pewdiepie-archdaemon/odysseus.git#branch=dev"
-    'odysseus.desktop'
-    'odysseus.svg'
-    'odysseus.install'
+    "odysseus::git+https://github.com/pewdiepie-archdaemon/odysseus.git#branch=dev"
+    "odysseus.service"
+    "odysseus.desktop"
+    "odysseus.svg"
 )
 sha256sums=(
     'SKIP'
@@ -34,46 +35,86 @@ sha256sums=(
 )
 
 pkgver() {
-    cd "$pkgname"
+    cd "$srcdir/odysseus"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --abbrev-ref HEAD)"
 }
 
+prepare() {
+    cd "$srcdir/odysseus"
+    # Create a clean venv for building/checking deps
+    python3 -m venv "$srcdir/build-venv"
+}
+
 build() {
-    : # venv is created in post_install as the real user
+    cd "$srcdir/odysseus"
+    # Install all pip deps into a venv that will live at /opt/odysseus/venv
+    # We build it here under srcdir then relocate in package()
+    python3 -m venv "$srcdir/venv"
+    "$srcdir/venv/bin/pip" install --quiet --upgrade pip
+    "$srcdir/venv/bin/pip" install --quiet -r requirements.txt
 }
 
 package() {
-    cd "$pkgname"
+    cd "$srcdir/odysseus"
 
-    # Install app to /opt (no venv — built at install time)
-    install -dm755 "$pkgdir/opt/$pkgname"
-    cp -r . "$pkgdir/opt/$pkgname/"
+    # --- App source → /opt/odysseus ---
+    install -dm755 "$pkgdir/opt/odysseus"
+    cp -r . "$pkgdir/opt/odysseus/"
 
-    # Remove stuff not needed at runtime
-    rm -rf "$pkgdir/opt/$pkgname/.git"
-    rm -rf "$pkgdir/opt/$pkgname/.github"
-    rm -rf "$pkgdir/opt/$pkgname/tests"
+    # Drop things that must NOT ship in the package
+    rm -rf \
+        "$pkgdir/opt/odysseus/.git" \
+        "$pkgdir/opt/odysseus/data" \
+        "$pkgdir/opt/odysseus/logs" \
+        "$pkgdir/opt/odysseus/.env" \
+        "$pkgdir/opt/odysseus/venv"
 
-    # Patch and install the upstream service file
-    install -dm755 "$pkgdir/usr/lib/systemd/user"
-    sed \
-        -e "s|User=YOURUSER|# run as user via systemd --user|" \
-        -e "s|WorkingDirectory=.*|WorkingDirectory=/opt/$pkgname|" \
-        -e "s|ExecStart=.*|ExecStart=/opt/$pkgname/venv/bin/uvicorn app:app --host 127.0.0.1 --port 7000|" \
-        -e "s|EnvironmentFile=.*|EnvironmentFile=-/opt/$pkgname/.env|" \
-        odysseus-ui.service > "$pkgdir/usr/lib/systemd/user/odysseus.service"
+    # --- Relocate the venv → /opt/odysseus/venv ---
+    cp -r "$srcdir/venv" "$pkgdir/opt/odysseus/venv"
 
-    # Desktop entry
+    # Fix venv shebangs so they point to the installed path, not srcdir
+    find "$pkgdir/opt/odysseus/venv/bin" -type f -exec \
+        sed -i "s|$srcdir/venv|/opt/odysseus/venv|g" {} \;
+
+    # --- Runtime data dirs (empty, owned by odysseus system user) ---
+    install -dm750 "$pkgdir/var/lib/odysseus"
+    install -dm750 "$pkgdir/var/lib/odysseus/data"
+    install -dm750 "$pkgdir/var/lib/odysseus/data/uploads"
+    install -dm750 "$pkgdir/var/lib/odysseus/data/personal_docs"
+    install -dm750 "$pkgdir/var/lib/odysseus/data/personal_uploads"
+    install -dm750 "$pkgdir/var/lib/odysseus/data/tts_cache"
+    install -dm750 "$pkgdir/var/lib/odysseus/data/generated_images"
+    install -dm750 "$pkgdir/var/lib/odysseus/data/deep_research"
+    install -dm750 "$pkgdir/var/lib/odysseus/data/chroma"
+    install -dm750 "$pkgdir/var/lib/odysseus/data/rag"
+    install -dm750 "$pkgdir/var/lib/odysseus/data/memory_vectors"
+    install -dm750 "$pkgdir/var/lib/odysseus/logs"
+
+    # --- Config file → /etc/odysseus/env ---
+    install -dm755 "$pkgdir/etc/odysseus"
+    install -Dm640 .env.example "$pkgdir/etc/odysseus/env"
+
+    # Patch the default data/log paths in the bundled config
+    sed -i \
+        -e 's|^#\s*DATABASE_URL=.*|DATABASE_URL=sqlite:////var/lib/odysseus/data/app.db|' \
+        -e 's|^#\s*APP_BIND=.*|APP_BIND=127.0.0.1|' \
+        -e 's|^#\s*APP_PORT=.*|APP_PORT=7000|' \
+        -e 's|^#\s*AUTH_ENABLED=.*|AUTH_ENABLED=true|' \
+        "$pkgdir/etc/odysseus/env"
+
+    # --- systemd user service ---
+    install -Dm644 "$srcdir/odysseus.service" \
+        "$pkgdir/usr/lib/systemd/user/odysseus.service"
+
+    # --- Desktop entry ---
     install -Dm644 "$srcdir/odysseus.desktop" \
         "$pkgdir/usr/share/applications/odysseus.desktop"
 
-    # Icon
+    # --- Icon ---
     install -Dm644 "$srcdir/odysseus.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/odysseus.svg"
 
-    # License
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    # Docs
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    # --- License ---
+    install -Dm644 LICENSE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
