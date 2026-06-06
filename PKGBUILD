@@ -1,6 +1,6 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl
-pkgver=1.0.5
+pkgver=1.1.0
 _gittag="v${pkgver}"
 _gitprefix="${pkgname}-${pkgver}"
 pkgrel=1
@@ -10,7 +10,7 @@ url="https://github.com/TamtamHero/${pkgname}"
 _giturl="${url}.git"
 license=('BSD-3')
 groups=()
-depends=('python>=3.12' python-watchdog fw-ectool-git python-jsonschema)
+depends=('python>=3.12' python-watchdog framework-system python-jsonschema)
 makedepends=('git' 'python-setuptools>=75.2.0' 'python-build' 'python-installer' 'python-wheel')
 provides=()
 conflicts=()
@@ -23,8 +23,8 @@ source=(
   "${_gitprefix}.tar.gz::https://github.com/TamtamHero/fw-fanctrl/archive/refs/tags/${_gittag}.tar.gz"
 )
 noextract=()
-sha512sums=('6ad9e83e5737b0ad4e8e6d67c00151c4a0d3e889d7aa2975ffd92e46881976529279dc01084b5b3299561e5ed8b25abc02f5051f26a558b0ed317ada038d5af1')
-b2sums=('54373fc9c01a810d6acb69920789ba551bd2797650f9ed030ab206f06ba26f647b0a111e6d4eb617e18fa47724db1e47149442ade60016911753ae0267f05ab0')
+sha512sums=('1854eff1602d783d584b6859fb8229867ff3a835f21b6b67c75a29ce607dac05f4b8d4ffd014e05a09c9e44cef1c0fdfb3f03fac6a5bfa5b8b15d441e83370dc')
+b2sums=('41c724ad097b661a197ebf10f0f088a67c696e51e5362b3293c94b56612103a93dcbbee9c32d8ebfc90413668caee61a12942fee0663d9ab4135d34fc3199f00')
 
 build() {
 	cd "${srcdir}/${_gitprefix}"
@@ -44,7 +44,7 @@ package() {
 		--python-prefix-dir "${pkgdir}/usr" \
 		--prefix-dir "/usr" \
 		--sysconf-dir "/etc" \
-		--no-ectool \
+		--ignore-tool framework_tool \
 		--no-pip-install \
 		--no-pre-uninstall \
 		--no-post-install \
