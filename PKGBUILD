@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-satip
 pkgver=2.5.1
-pkgrel=2
-_vdrapi=12
+pkgrel=3
+_vdrapi=13
 pkgdesc="Integrates SAT>IP network devices seamlessly into VDR"
 url="https://github.com/FireFlyVDR/vdr-plugin-satip"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')

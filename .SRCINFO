@@ -1,7 +1,7 @@
 pkgbase = vdr-satip
 	pkgdesc = Integrates SAT>IP network devices seamlessly into VDR
 	pkgver = 2.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FireFlyVDR/vdr-plugin-satip
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = vdr-satip
 	license = GPL2
 	depends = curl
 	depends = pugixml
-	depends = vdr-api=12
+	depends = vdr-api=13
 	options = !emptydirs
 	backup = etc/vdr/conf.avail/50-satip.conf
 	source = vdr-satip-2.5.1.tar.gz::https://github.com/FireFlyVDR/vdr-plugin-satip/archive/refs/tags/v2.5.1.tar.gz
