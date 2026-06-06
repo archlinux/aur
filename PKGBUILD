@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-radio
 pkgver=2.0.0
-pkgrel=3
-_vdrapi=12
+pkgrel=4
+_vdrapi=13
 pkgdesc="Display an background image while the vdr is switched to radio channels"
 url='https://github.com/vdr-projects/vdr-plugin-radio'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
