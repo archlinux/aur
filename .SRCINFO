@@ -1,0 +1,17 @@
+pkgbase = guicrypt-tui
+	pkgdesc = TUI manager for gocryptfs encrypted vaults
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/guirossibrum/guicrypt-tui
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ftxui
+	makedepends = nlohmann-json
+	depends = gocryptfs
+	depends = libsecret
+	source = guicrypt-tui-1.0.0.tar.gz::https://github.com/guirossibrum/guicrypt-tui/archive/v1.0.0.tar.gz
+	validpgpkeys = SKIP
+	sha256sums = SKIP
+
+pkgname = guicrypt-tui
