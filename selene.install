@@ -1,0 +1,12 @@
+post_install() {
+    echo "------------------------------------------------------"
+    echo "Note from the Selene author:"
+    echo "Selene is designed for the light Adwaita theme."
+    echo "Users of dark system themes can force light mode with:"
+    echo "QT_STYLE_OVERRIDE=adwaita Selene"
+    echo "------------------------------------------------------"
+}
+
+post_upgrade() {
+    post_install
+}
