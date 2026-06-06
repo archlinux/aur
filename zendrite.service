@@ -24,8 +24,8 @@ StateDirectory=zendrite
 LogsDirectory=zendrite
 ConfigurationDirectory=zendrite
 # If you want to connect to postgresql with Unix Domain Socket...
-ReadWritePaths=-/var/run/postgresql
-ReadWritePaths=-/run/postgresql
+BindReadOnlyPaths=-/var/run/postgresql
+BindReadOnlyPaths=-/run/postgresql
 PrivateTmp=true
 PrivateDevices=true
 PrivateIPC=true

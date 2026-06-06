@@ -14,6 +14,6 @@ pkgbase = zendrite
 	source = git+https://codefloe.com/pat-s/zendrite.git#tag=v2.3.2
 	source = zendrite.service
 	sha256sums = 98b4c6bd6445aa56ba774b3f0e45a6978ecc8a79490580e92a035613f2a7baf5
-	sha256sums = 6a0ab9d5818d533d408c0f0c3d9473f6969c9ee61ab5978b0ea6ca7ca03177ad
+	sha256sums = 8eb2c645705cd432b6d16cda65f31f06fa97f513b9d3d90e4c6e5a87bfb39513
 
 pkgname = zendrite
