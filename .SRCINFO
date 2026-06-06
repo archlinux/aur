@@ -1,0 +1,15 @@
+pkgbase = python-hibpwned
+	pkgdesc = Python API wrapper for haveibeenpwned.com
+	pkgver = 1.3.9
+	pkgrel = 1
+	url = https://github.com/plasticuproject/hibpwned
+	arch = any
+	license = LGPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-requests
+	source = python-hibpwned-1.3.9.tar.gz::https://files.pythonhosted.org/packages/source/h/hibpwned/hibpwned-1.3.9.tar.gz
+	sha256sums = 60b18d77ee81e47c84e013cd68184b3b420e71dc7a9df371bd7723ae6e8e72a6
+
+pkgname = python-hibpwned
