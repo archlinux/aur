@@ -1,0 +1,24 @@
+pkgbase = itarmykit-bin
+	pkgdesc = Desktop shell for BaseTool load-testing workflows
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://itarmy.com.ua
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = gtk3
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = util-linux-libs
+	depends = xdg-utils
+	optdepends = libayatana-appindicator: system tray icon support
+	provides = itarmykit
+	conflicts = itarmykit
+	options = !debug
+	source = itarmykit-2.1.0-amd64.deb::https://github.com/armyuait-rgb/itarmykit-basetool-releases/releases/download/v2.1.0/itarmykit-linux-amd64.deb
+	sha256sums = 52f60a58c6651108465e644a501d9d1326c3d9ac8e6785a9435a53f1f91b4896
+
+pkgname = itarmykit-bin
