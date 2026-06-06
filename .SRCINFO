@@ -1,0 +1,16 @@
+pkgbase = thingy-runner
+	pkgdesc = Sakura-themed TUI editor with code execution
+	pkgver = 1.2.2-1
+	pkgrel = 1
+	url = https://github.com/Velox0/thingy
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = ncurses
+	depends = curl
+	makedepends = gcc
+	makedepends = make
+	source = thingy-runner-1.2.2.tar.gz::https://github.com/Velox0/thingy/archive/v1.2.2/v1.2.2.tar.gz
+	sha256sums = 522ed55d2df14cec2c5a4a9a7228230c3ff6a16d71bf30f8d5d4cdfaaa54af33
+
+pkgname = thingy-runner
