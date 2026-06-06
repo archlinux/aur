@@ -1,158 +1,191 @@
-# Maintiner: anon at sansorgan.es
+# Maintainer: Max Maisel <max dot maisel at posteo dot de>
+# Contributor: anon at sansorgan.es
 # Contributor: Sean Anderson <seanga2@gmail.com>
 # Contributor: Daniel Bermond <danielbermond@yahoo.com>
 # Contributor: Sidney Crestani <sidneycrestani@archlinux.net>
 # Contributor: sxe <sxxe@gmx.de>
-# Conttributor: xiretza <xiretza+aur@gmail.com>
+# Contributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: heavysink <winstonwu91 at gmail>
+
+# This wine-valve now no longer confilicts with the default wine installation.
+# Replace your regular `wine` command with the wrapper in
+# `/opt/wine-valve/wine-valve` to launch an application though `wine-valve`
+# from this package.
+
 pkgname=wine-valve
 epoch=5
-pkgver=9.0.3
-_pkgver='9.0-3'
+pkgver=11.0.1b5
+_pkgver='11.0-1-beta5'
 pkgrel=1
-pkgdesc='A compatibility layer for running Windows programs (Valve version)'
-arch=('i686' 'x86_64')
-url='https://github.com/ValveSoftware/wine.git'
-license=('LGPL')
-_depends=(
-    'sdl2'                  'lib32-sdl2'
-    'fontconfig'            'lib32-fontconfig'
-    'lcms2'                 'lib32-lcms2'
-    'libxml2'               'lib32-libxml2'
-    'libxcursor'            'lib32-libxcursor'
-    'libxrandr'             'lib32-libxrandr'
-    'libxdamage'            'lib32-libxdamage'
-    'libxi'                 'lib32-libxi'
-    'gettext'               'lib32-gettext'
-    'freetype2'             'lib32-freetype2'
-    'glu'                   'lib32-glu'
-    'libsm'                 'lib32-libsm'
-    'gcc-libs'              'lib32-gcc-libs'
-    'libpcap'               'lib32-libpcap'
-    'desktop-file-utils'
-    'libgphoto2'
-    'faudio'                'lib32-faudio'
-    'vkd3d'                 'lib32-vkd3d'
-)
-makedepends=('autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex' 'mingw-w64-gcc'
-    'giflib'                'lib32-giflib'
-    'libpng'                'lib32-libpng'
-    'gnutls'                'lib32-gnutls'
-    'libxinerama'           'lib32-libxinerama'
-    'libxcomposite'         'lib32-libxcomposite'
-    'libxmu'                'lib32-libxmu'
-    'libxxf86vm'            'lib32-libxxf86vm'
-    'libldap'               'lib32-libldap'
-    'mpg123'                'lib32-mpg123'
-    'openal'                'lib32-openal'
-    'v4l-utils'             'lib32-v4l-utils'
-    'libpulse'              'lib32-libpulse'
-    'alsa-lib'              'lib32-alsa-lib'
-    'libxcomposite'         'lib32-libxcomposite'
-    'mesa'                  'lib32-mesa'
-    'libgl'                 'lib32-libgl'
-    'opencl-icd-loader'     'lib32-opencl-icd-loader'
-    'libxslt'               'lib32-libxslt'
-    'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
-    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
-    'samba'		    'opencl-headers'
-    'vulkan-headers' 'autoconf'
-)
-optdepends=(
-    'giflib'                'lib32-giflib'
-    'libpng'                'lib32-libpng'
-    'libldap'               'lib32-libldap'
-    'gnutls'                'lib32-gnutls'
-    'mpg123'                'lib32-mpg123'
-    'openal'                'lib32-openal'
-    'v4l-utils'             'lib32-v4l-utils'
-    'libpulse'              'lib32-libpulse'
-    'alsa-plugins'          'lib32-alsa-plugins'
-    'alsa-lib'              'lib32-alsa-lib'
-    'libjpeg-turbo'         'lib32-libjpeg-turbo'
-    'libxcomposite'         'lib32-libxcomposite'
-    'libxinerama'           'lib32-libxinerama'
-    'ncurses'               'lib32-ncurses'
-    'opencl-icd-loader'     'lib32-opencl-icd-loader'
-    'libxslt'               'lib32-libxslt'
-    'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
-    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
-    'cups'
-    'samba'
-    'dosbox'
-)
-options=('staticlibs' '!lto' '!debug')
-install="$pkgname.install"
+
 source=("https://github.com/ValveSoftware/wine/archive/proton-wine-${_pkgver}.tar.gz"
         '30-win32-aliases.conf'
-        'wine-binfmt.conf'
-        'futex.patch')
+        'launch-wine-valve.sh')
+sha256sums=('dfb54bf898980f080ae1b01f8114241e22d2aabb600c2e3bd28a351290a8c160'
+            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
+            'e42c9a226fbaf10075048ab993a15753233ec4222877926b8ec6b6aa6ce14bab')
 
-if [ "$CARCH" = 'i686' ] 
-then
-    # strip lib32 etc. on i686
-    _depends=(${_depends[@]/*32-*/})
-    makedepends=(${makedepends[@]/*32-*/} ${_depends[@]})
-    optdepends=(${optdepends[@]/*32-*/})
-    provides=("wine=${pkgver}" "wine-valve=${pkgver}")
-    conflicts=('wine' 'wine-staging' 'wine-staging-git')
-else
-    makedepends=(${makedepends[@]} ${_depends[@]})
-    provides=("wine=${pkgver}" "bin32-wine=${pkgver}" "wine-wow64=${pkgver}" "wine-valve=${pkgver}")
-    conflicts=('wine' 'wine-staging' 'wine-staging-git' 'bin32-wine' 'wine-wow64')
-    replaces=('bin32-wine')
-fi
+pkgdesc='A compatibility layer for running Windows programs (Valve version)'
+url='https://github.com/ValveSoftware/wine.git'
+arch=('x86_64')
+options=('staticlibs' '!lto' '!debug')
+license=('LGPL')
 
+depends=(
+  desktop-file-utils
+  fontconfig
+  freetype2
+  libgcc
+  gettext
+  glib2
+  glibc
+  libpcap
+  libunwind
+  libx11
+  libxcursor
+  libxext
+  libxkbcommon
+  libxi
+  libxrandr
+  lib32-fontconfig
+  lib32-freetype2
+  lib32-gettext
+  lib32-libpcap
+  lib32-libxcursor
+  lib32-libxi
+  lib32-libxrandr
+  systemd-libs
+  wayland
+)
+makedepends=(
+  alsa-lib
+  git
+  gnutls
+  gst-plugins-base-libs
+  libcups
+  libgphoto2
+  libpulse
+  libxcomposite
+  libxinerama
+  libxml-perl
+  libxxf86vm
+  lib32-alsa-lib
+  lib32-gnutls
+  lib32-gst-plugins-base-libs
+  lib32-libpulse
+  lib32-libxcomposite
+  lib32-libxinerama
+  lib32-libxxf86vm
+  lib32-mesa
+  lib32-v4l-utils
+  lib32-vulkan-icd-loader
+  mesa
+  mingw-w64-gcc
+  pcsclite
+  perl
+  samba
+  sane
+  sdl2
+  unixodbc
+  v4l-utils
+  vulkan-headers
+  vulkan-icd-loader
+)
+optdepends=(
+  alsa-lib
+  alsa-plugins
+  cups
+  dosbox
+  gnutls
+  gst-plugins-bad
+  gst-plugins-base
+  gst-plugins-base-libs
+  gst-plugins-good
+  gst-plugins-ugly
+  gstreamer
+  libgphoto2
+  libpulse
+  libusb
+  libxcomposite
+  libxinerama
+  lib32-alsa-lib
+  lib32-alsa-plugins
+  lib32-gnutls
+  lin32-gst-plugins-base-libs
+  lib32-libpulse
+  lib32-libxcomposite
+  lib32-libxinerama
+  pcsclite
+  perl
+  samba
+  sane
+  sdl2
+  unixodbc
+  v4l-utils
+  wine-gecko
+  wine-mono
+)
+
+makedepends=(${makedepends[@]} ${depends[@]})
+install="$pkgname.install"
 
 prepare() {
-    cd "wine-proton-wine-${_pkgver}/"
-    
-    # fix path of opencl headers
-    sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
-    patch -p1 < ../futex.patch
-    ./dlls/winevulkan/make_vulkan
-    ./tools/make_specfiles
+  # Get rid of old build dirs
+  rm -rf "$pkgname"
+  rm -rf $srcdir/$pkgname-{32,64}-build
 
-    # Doesn't compile without remove these flags as of 4.10
-    # std=gnu17 is required for gcc-15
-    export CFLAGS="${CFLAGS/-fno-plt/} -ffat-lto-objects -std=gnu17"
-    export CROSSCFLAGS="-std=gnu17"
-    export LDFLAGS="${LDFLAGS/-Wl,-z,now/}"
+  # Allow ccache to work
+  mv "wine-proton-wine-$_pkgver" "$pkgname"
+  cd "$pkgname"
 
-    # Get rid of old build dirs
-    rm -rf $srcdir/$pkgname-{32,64}-build
-    mkdir $srcdir/$pkgname-32-build
+  ./dlls/winevulkan/make_vulkan
+  ./tools/make_specfiles
 
-    autoreconf -f
-    ./tools/make_requests
+  # Set cross-compilation flags
+  export CROSSCFLAGS="-O2 -pipe -g"
+  export CROSSCXXFLAGS="-O2 -pipe -g"
+  export CROSSLDFLAGS="-Wl,-O1"
+
+  autoreconf -f
+  ./tools/make_requests
 }
 
 build() {
-  cd "$srcdir"
-
   msg2 "Building Wine-64..."
+  mkdir -p "$pkgname-64-build"
+  cd "$pkgname-64-build"
 
-  mkdir $pkgname-64-build
-  cd "$srcdir/$pkgname-64-build"
-  ../wine-proton-wine-${_pkgver}/configure \
-    --prefix=/usr \
-    --libdir=/usr/lib \
+  # * OpenCL fails builing with undefined references
+  # * FFMpeg fails building because of a bundled plugin that
+  #   needs a different version
+
+  ../$pkgname/configure \
+    --prefix=/opt/wine-valve \
+    --libdir=/opt/wine-valve/lib \
     --with-x \
+    --with-wayland \
     --with-gstreamer \
+    --without-opencl \
+    --without-ffmpeg \
     --enable-win64 \
     --disable-tests
 
   make
 
+  cd ..
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   msg2 "Building Wine-32..."
-  cd "$srcdir/$pkgname-32-build"
-  CPPFLAGS="-I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-4 -I/usr/lib/gstreamer-1.0/include -I/usr/include/orc-0.4 -I/usr/include/gudev-1.0 -I/usr/include/libdrm -pthread" ../wine-proton-wine-${_pkgver}/configure \
-    --prefix=/usr \
+  mkdir -p "$pkgname-32-build"
+  cd "$pkgname-32-build"
+  ../$pkgname/configure \
+    --prefix=/opt/wine-valve \
     --with-x \
+    --with-wayland \
     --with-gstreamer \
-    --libdir=/usr/lib32 \
+    --without-opencl \
+    --without-ffmpeg \
+    --libdir=/opt/wine-valve/lib \
     --with-wine64=$srcdir/$pkgname-64-build \
     --disable-tests
 
@@ -160,39 +193,31 @@ build() {
 }
 
 package() {
-    depends=(${_depends[@]})
-    
-    # package wine 32-bit
-    # (according to the wine wiki, this reverse 32-bit/64-bit packaging order is important)
-    msg2 'Packaging Wine-32...'
-    
-    cd "$pkgname"-32-build
-    
-    make prefix="$pkgdir/usr" \
-         libdir="$pkgdir/usr/lib32" \
-         dlldir="$pkgdir/usr/lib32/wine" install
+  # (according to the wine wiki, this reverse 32-bit/64-bit packaging order is important)
+  msg2 "Packaging Wine-32..."
+  cd "$srcdir/$pkgname-32-build"
 
-        # package wine 64-bit
-    msg2 'Packaging Wine-64...'
-        
-    cd "${srcdir}/${pkgname}"-64-build
-        
-    make prefix="$pkgdir/usr" \
-         libdir="$pkgdir/usr/lib" \
-         dlldir="$pkgdir/usr/lib/wine" install
-    # font aliasing settings for Win32 applications
-    install -d "$pkgdir"/etc/fonts/conf.{avail,d}
-    install -m644 "${srcdir}/30-win32-aliases.conf" "${pkgdir}/etc/fonts/conf.avail"
-    ln -s ../conf.avail/30-win32-aliases.conf       "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
-    
-    # wine binfmt
-    install -D -m644 "${srcdir}/wine-binfmt.conf"   "${pkgdir}/usr/lib/binfmt.d/wine.conf"
+  make prefix="$pkgdir/opt/wine-valve" \
+    libdir="$pkgdir/opt/wine-valve/lib" \
+    dlldir="$pkgdir/opt/wine-valve/lib/wine" install
 
-  i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib32/wine/i386-windows/*.dll
-  x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.dll
+  msg2 "Packaging Wine-64..."
+  cd "$srcdir/$pkgname-64-build"
+
+  make prefix="$pkgdir/opt/wine-valve" \
+    libdir="$pkgdir/opt/wine-valve/lib" \
+    dlldir="$pkgdir/opt/wine-valve/lib/wine" install
+
+  # font aliasing settings for Win32 applications
+  msg2 "Packaging Config..."
+  install -d "$pkgdir"/opt/wine-valve/etc/fonts/conf.{avail,d}
+  install -m644 "${srcdir}/30-win32-aliases.conf" "${pkgdir}/opt/wine-valve/etc/fonts/conf.avail"
+  ln -s ../conf.avail/30-win32-aliases.conf       "${pkgdir}/opt/wine-valve/etc/fonts/conf.d/30-win32-aliases.conf"
+
+  i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/opt/wine-valve/lib/wine/i386-windows/*.dll
+  x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/opt/wine-valve/lib/wine/x86_64-windows/*.dll
+
+  install -m755 "${srcdir}/launch-wine-valve.sh" "${pkgdir}/opt/wine-valve/wine-valve"
 }
 
-sha256sums=('df33e623a864cfd9a48a51dd2979d5dc25a03266729faa35f09388be2fb61523'
-            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
-            '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
-            '7c73a0fd35d8905d5d0fc33f5cf1558f77b4d70e544c92034ffe41a9d50d8c40')
+# vim:set ts=8 sts=2 sw=2 et:
