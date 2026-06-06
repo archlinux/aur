@@ -1,6 +1,6 @@
 pkgbase = linux-cachyos-px13
 	pkgdesc = Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements. + TAS2783 codec patches for ASUS ProArt PX13 (HN7306EA)
-	pkgver = 7.0.9
+	pkgver = 7.0.11
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -30,7 +30,8 @@ pkgbase = linux-cachyos-px13
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.9-1/cachyos-7.0.9-1.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.11-1/cachyos-7.0.11-1.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.11-1/cachyos-7.0.11-1.tar.gz.asc
 	source = config
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/misc/dkms-clang.patch
 	source = 0001-ALSA-tas2783-sdw-add-Playback-to-volume-control.patch
@@ -50,7 +51,10 @@ pkgbase = linux-cachyos-px13
 	source = 0015-to-help-alsa-find-them.patch
 	source = 0016-cleanup-controls.patch
 	source = 0017-ASoC-rt721-sdca-enable-jack-detect-irq-on-AMD-ACP70.patch
-	b2sums = ffa4da16bbd6313fb85b916a770383df817a43f8e1135f8c4c4a5d29d8cc692e3ecb4f71ecba4bc51173c10f88e8d7a9c159a5ffd6bd21d23382916ffe28b3f6
+	validpgpkeys = E18447AC260021D31F3FF6C4C8A2A4774B8B63C4
+	validpgpkeys = E8B9AA39F054E30E8290D492C3C4820857F654FE
+	b2sums = e37b762176e39b36bb607bd34817ed1579055c4c59edfabd377064ac8321503d0cdad6777aead4eb93f390561ab02a55da02d812a8a42f4785a5061fd1e38fc8
+	b2sums = SKIP
 	b2sums = 7bb5113dbc67e8e2ce5c5473ae1b08973af5adba0a6a14c64a213bb116e5a172d40b7c274b85ad15553511484ee1f120e0372251e242c6f87ce6920235f0c136
 	b2sums = c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e
 	b2sums = SKIP
@@ -87,7 +91,7 @@ pkgname = linux-cachyos-px13
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
-	provides = linux-cachyos-lto=7.0.9-1
+	provides = linux-cachyos-lto=7.0.11-1
 	replaces = linux-cachyos-lto
 
 pkgname = linux-cachyos-px13-headers
@@ -106,5 +110,5 @@ pkgname = linux-cachyos-px13-headers
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
-	provides = linux-cachyos-lto-headers=7.0.9-1
+	provides = linux-cachyos-lto-headers=7.0.11-1
 	replaces = linux-cachyos-lto-headers

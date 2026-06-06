@@ -7,6 +7,7 @@ build.log
 
 # Source caches downloaded by makepkg per PKGBUILD source=()
 cachyos-*.tar.gz
+cachyos-*.tar.gz.asc
 cachyos-*.tar.xz
 dkms-clang.patch
 
