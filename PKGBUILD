@@ -1,7 +1,7 @@
 # Maintainer: David Yusaku <davidyusaku13 at gmail dot com>
 
 pkgname=termul-manager
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='Project-aware terminal that treats workspaces as first-class citizens'
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
   'linux-integration-fixes.patch'
   'form-control-theme.patch'
 )
-sha256sums=('0881dbb563144879e8837c042bca58fa1fcfbc9bc39a97539d8a118f2d2858d7'
+sha256sums=('aecb93bfad512371d6144485193a443523fa2dd56072b1612892468248dc498f'
             'f1eb85aacb293e1f72e7c68d156e733185081b92c2d1ae44a62966041a629e78'
             'ff9fc001c5824d2c889f9a719439d113874724fd5d8940036e7c586a36663afd'
             '01e5030b5add9fc9acfb303e45d4497ff7e2733e2e149dd2b836874edabc2169')
