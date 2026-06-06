@@ -1,7 +1,7 @@
 # Maintainer: Nex <nexvlif@gmail.com>
 
 pkgname=nuripaper
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A straightforward wallpaper tool for dynamic and static backgrounds"
 arch=('x86_64')
