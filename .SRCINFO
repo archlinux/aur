@@ -1,8 +1,9 @@
+pkgbase = rnum
 pkgname = rnum
 pkgver = 0.1.3
 pkgrel = 1
-pkgdesc = Rational numbers library and CLI
-url = https://github.com/USERNAME/rnum
+pkgdesc = Rational numbers REPL calculator written in Rust
+url = https://github.com/davide-leva/rnum
 arch = x86_64
 license = MIT
 groups =
