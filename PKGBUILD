@@ -1,6 +1,6 @@
 # Maintainer: Katestheimeno <katestheimeno@gmail.com>
 pkgname=wj
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Cross-project daily task & time tracker via an append-only TSV event log"
 # The CLI is pure bash (arch-independent), but the package also ships the
@@ -14,7 +14,7 @@ makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Placeholder: after the v$pkgver tag is pushed, run `updpkgsums` to pin the
 # real checksum (needs pacman-contrib). SKIP lets you build/test before then.
-sha256sums=('1fcf7131eef70e89ad6e1c9a03c05005ddf8d27255621c378b6de59ae79e8dd0')
+sha256sums=('0ad779ecd61450ddf5547276a07792f2e4306292f6747616f623503e919162cc')
 
 prepare() {
     # Fetch Go modules here so build() can run without network (clean chroots).
@@ -38,6 +38,7 @@ package() {
     install -Dm644 wj.1             "$pkgdir/usr/share/man/man1/wj.1"
     install -Dm644 LICENSE          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md        "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 wj.cfg.example   "$pkgdir/usr/share/doc/$pkgname/wj.cfg.example"
 
     # Bash completion is fully static, so generate it at build time.
     # zsh users use `eval "$(wj completion zsh)"` (see README) — its output is
