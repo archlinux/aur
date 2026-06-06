@@ -1,8 +1,8 @@
 # Maintainer: Andrew <itspixelatd@proton.me>
 pkgname=arch-scripts
-pkgver=1.3.1
+pkgver=1.4.3
 pkgrel=1
-pkgdesc="A useful CLI tool to do stuff in Arch Linux."
+pkgdesc="Multipurpose CLI tool, to install, update, and configure arch easily."
 arch=('any')
 url="https://github.com/pixelated11/arch-scripts"
 license=('GPL3')
