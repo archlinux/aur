@@ -1,7 +1,7 @@
 pkgbase = vdr-iptv
 	pkgdesc = Integrates multicast IPTV transport streams seamlessly into VDR
-	pkgver = 2.6.12
-	pkgrel = 2
+	pkgver = 2.6.13
+	pkgrel = 1
 	url = https://github.com/Zabrimus/vdr-plugin-iptv
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = vdr-iptv
 	arch = aarch64
 	license = GPL2
 	depends = curl
-	depends = vdr-api=12
+	depends = vdr-api=13
 	optdepends = vlc: Needed for vlc2iptv
 	backup = etc/vdr/conf.avail/50-iptv.conf
 	backup = etc/vdr/plugins/iptv/vlcinput/3Sat.conf
@@ -23,7 +23,7 @@ pkgbase = vdr-iptv
 	backup = etc/vdr/plugins/iptv/vlcinput/zdf-iptv.conf
 	backup = etc/vdr/plugins/iptv/vlcinput/zdf_info-iptv.conf
 	backup = etc/vdr/plugins/iptv/vlcinput/zdf_kultur-iptv.conf
-	source = vdr-iptv-2.6.12.tar.gz::https://github.com/Zabrimus/vdr-plugin-iptv/archive/v2.6.12.tar.gz
+	source = vdr-iptv-2.6.13.tar.gz::https://github.com/Zabrimus/vdr-plugin-iptv/archive/v2.6.13.tar.gz
 	source = vdr-iptv-fix_vlc2iptv.patch
 	source = https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/3Sat.conf
 	source = https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/Bundesligen-TV.conf
@@ -35,7 +35,7 @@ pkgbase = vdr-iptv
 	source = https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/zdf_info-iptv.conf
 	source = https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/zdf_kultur-iptv.conf
 	source = 50-iptv.conf
-	sha256sums = 3a00bac781d7a19ce804c472f6be2792952440a3dfa3de0fcd7840e8c2421f30
+	sha256sums = f79b7a2229607a2ebd0aa4e2dc8617b44aef3eb3829ff70a1ade59a794a6c274
 	sha256sums = d4a39fae860ce961b2aab8b721cef7f37e80640c50cc9c06d5f9d2b9c265379d
 	sha256sums = 9c8e99d0c82ef5af5141ff89ffd411e0feb3ee6ff2416fee03d9b09e2edb2a6c
 	sha256sums = c5ead86e396eb0f2bbfced5913f381764131575379b2930bd0e86f6d2df3f774
