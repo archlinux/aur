@@ -1,0 +1,30 @@
+pkgbase = heroic-absolking-git
+	pkgdesc = A personal fork of Heroic Games Launcher with a cleaned-up sidebar, Amazon UI removed, and an Adwaita theme
+	pkgver = r2869.7ea6a6ed
+	pkgrel = 1
+	url = https://github.com/AbsolKing/HeroicGamesLauncher
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = nodejs>=22
+	makedepends = pnpm
+	makedepends = python
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = libnotify
+	depends = gnome-keyring
+	optdepends = gamemode: Optimized gaming performance
+	optdepends = gamescope: Micro-compositor for gaming
+	optdepends = mangohud: Performance overlay
+	optdepends = vkd3d: DirectX 12 to Vulkan translation
+	optdepends = lib32-vkd3d: DirectX 12 to Vulkan translation (32-bit)
+	provides = heroic-games-launcher
+	conflicts = heroic-games-launcher
+	conflicts = heroic-games-launcher-bin
+	conflicts = heroic-games-launcher-git
+	options = !strip
+	source = heroic-absolking-git::git+https://github.com/AbsolKing/HeroicGamesLauncher.git
+	sha256sums = SKIP
+
+pkgname = heroic-absolking-git
