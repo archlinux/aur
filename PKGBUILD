@@ -79,6 +79,12 @@ with open('libtorch/lib/libtorch_cpu.so', 'r+b') as f:
     else:
         print('No ELF alignment issues in libtorch_cpu.so')
 "
+
+    # Suppress rocshmem warning in downstream builds.
+    # rocshmem is not packaged in Arch; the find_package call in LoadHIP.cmake
+    # is optional (not REQUIRED) but still emits a CMake warning when missing.
+    sed -i '/find_package_and_print_version(rocshmem)/s/^/# /' \
+        libtorch/share/cmake/Caffe2/public/LoadHIP.cmake
 }
 
 package() {
