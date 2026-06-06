@@ -1,4 +1,4 @@
-pkgbase = 123pan-bin
+pkgbase = 123pan-cli-bin
 	pkgdesc = 123pan-cli-bin
 	pkgver = 1.0.1
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = 123pan-bin
 	source = 123pan-cli.zip::https://github.com/123panNextGen/123pan-cli/releases/download/v1.0.1/123pan-cli-linux.zip
 	sha256sums = 1e413f036bd6e3781b4890408d3ef54e52e7830e69bd1458857142a8663f9732
 
-pkgname = 123pan-bin
+pkgname = 123pan-cli-bin
