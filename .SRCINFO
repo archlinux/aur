@@ -1,6 +1,6 @@
 pkgbase = aretext-bin
 	pkgdesc = Minimalist text editor that never slows you down.
-	pkgver = 1.6.2
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/aretext/aretext
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = aretext-bin
 	provides = aretext
 	conflicts = aretext
 	conflicts = aretext-git
-	source_x86_64 = aretext-x86_64-1.6.2.tar.gz::https://github.com/aretext/aretext/releases/download/v1.6.2/aretext_v1.6.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5c1f050b34e588d505cbfb265b809159489401f6cfb292e8ca85688c6d7533b3
-	source_aarch64 = aretext-aarch64-1.6.2.tar.gz::https://github.com/aretext/aretext/releases/download/v1.6.2/aretext_v1.6.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7b90fa9d76568169fbbe20c9c74906c887ec30e1ed8c3f635560e9e3b41febdb
+	source_x86_64 = aretext-x86_64-1.7.0.tar.gz::https://github.com/aretext/aretext/releases/download/v1.7.0/aretext_v1.7.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 42f7f713a67c3c793dd30b4aca3a10c4226827cddb7677a8e03047d1adc8abff
+	source_aarch64 = aretext-aarch64-1.7.0.tar.gz::https://github.com/aretext/aretext/releases/download/v1.7.0/aretext_v1.7.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 99f7568770e9230be2bc86dbfc27ad9272feb87f340d485cdc1f8769006e03cf
 
 pkgname = aretext-bin

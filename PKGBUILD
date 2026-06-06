@@ -4,7 +4,7 @@
 _pkgauthor=aretext
 _pkgname=aretext
 pkgname=${_pkgname}-bin
-pkgver=1.6.2
+pkgver=1.7.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Minimalist text editor that never slows you down."
@@ -20,8 +20,8 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('5c1f050b34e588d505cbfb265b809159489401f6cfb292e8ca85688c6d7533b3')
-sha256sums_aarch64=('7b90fa9d76568169fbbe20c9c74906c887ec30e1ed8c3f635560e9e3b41febdb')
+sha256sums_x86_64=('42f7f713a67c3c793dd30b4aca3a10c4226827cddb7677a8e03047d1adc8abff')
+sha256sums_aarch64=('99f7568770e9230be2bc86dbfc27ad9272feb87f340d485cdc1f8769006e03cf')
 
 
 case ${CARCH} in
