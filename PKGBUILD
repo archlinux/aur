@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-unstable-bin
-pkgver=0.8.18
+pkgver=0.8.19
 pkgrel=1
 pkgdesc="Moshpit agent daemon — passphrase unlock with post-quantum ML-DSA support (pre-compiled MUSL static binary)"
 arch=('x86_64' 'aarch64')
@@ -21,9 +21,9 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mpa.tar.gz")
 source_x86_64=("mpa-unstable-x86_64::${_base}/mpa-unstable-x86_64-unknown-linux-musl")
 source_aarch64=("mpa-unstable-aarch64::${_base}/mpa-unstable-aarch64-unknown-linux-musl")
-sha256sums=('9005e4521d86a0f9158d9e9e58a9d4db78f5c302e1b85c79c1811696f8e46712')
-sha256sums_x86_64=('f434df1a3bbd6d6fc411ae72fe1be34efe8dca9dcde5b16567c21842fe3b2340')
-sha256sums_aarch64=('9d38ecb9136c502f4dd4bfca763b207fd5c5a34fee50107cb1d383f3e3262454')
+sha256sums=('54c0046ff7ec5f92aee946229f3709618f8a71d893c96b379a2223810fd66ebe')
+sha256sums_x86_64=('c3ffa8d0ec152c5e8181899f28f40e1222ccf74e1fa4211ff9d99540daef90f9')
+sha256sums_aarch64=('36edbbfce8ffcb4beae3ae8daa1b01bbd03de684c753f4d0b5db52d0fa25ad66')
 
 package() {
     install -Dm755 "mpa-unstable-${CARCH}" "$pkgdir/usr/bin/mpa"
