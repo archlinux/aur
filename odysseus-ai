@@ -32,6 +32,10 @@ source_env() {
 run_uvicorn() {
     source_env
     export PYTHONHOME="$VENV"
+    # Prepend the install-extra target so user-added Python packages
+    # (installed via `odysseus-ai-install-extra`) are importable here too,
+    # not just under the systemd unit.
+    export PYTHONPATH="/var/lib/odysseus-ai/python-extra${PYTHONPATH:+:$PYTHONPATH}"
     cd "$STATE_DIR"
     exec "$VENV/bin/uvicorn" app:app \
         --app-dir "$APP_DIR" \
@@ -51,6 +55,9 @@ systemctl_action() {
 }
 
 show_status() {
+    # Source the env file so APP_PORT / APP_BIND come from the actual config
+    # the service is using, not from our compile-time defaults.
+    source_env
     if command -v systemctl >/dev/null 2>&1; then
         echo "=== systemctl status $SERVICE ==="
         sudo systemctl --no-pager --full status "$SERVICE" || true
@@ -134,7 +141,16 @@ case "${1:-}" in
     start)       systemctl_action start ;;
     stop)        systemctl_action stop ;;
     restart)     systemctl_action restart ;;
-    reload)      systemctl_action reload ;;
+    reload)
+        # The systemd unit has no ExecReload=, so a bare `reload` would fail.
+        # If the unit ever grows one, prefer it; otherwise fall back to restart.
+        if command -v systemctl >/dev/null 2>&1 \
+            && systemctl cat "$SERVICE" 2>/dev/null | grep -q '^ExecReload='; then
+            systemctl_action reload
+        else
+            systemctl_action restart
+        fi
+        ;;
     logs)        shift; show_logs "$@" ;;
     password)    show_password ;;
     env)         show_env ;;

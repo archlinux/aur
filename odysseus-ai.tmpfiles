@@ -1,1 +1,18 @@
+# /etc/odysseus-ai
 d /etc/odysseus-ai 0750 root odysseus -
+
+# /var/lib/odysseus-ai (data + services + static live here, symlinked
+# from /usr/lib/odysseus-ai/app/services, /usr/lib/odysseus-ai/app/static
+# so the upstream CWD-relative paths resolve to writable state)
+d /var/lib/odysseus-ai 0750 odysseus odysseus -
+d /var/lib/odysseus-ai/data 0750 odysseus odysseus -
+d /var/lib/odysseus-ai/services 0750 odysseus odysseus -
+d /var/lib/odysseus-ai/static 0750 odysseus odysseus -
+d /var/lib/odysseus-ai/python-extra 0750 odysseus odysseus -
+
+# /var/cache/odysseus-ai (Hugging Face model cache, fastembed)
+d /var/cache/odysseus-ai 0750 odysseus odysseus -
+d /var/cache/odysseus-ai/fastembed 0750 odysseus odysseus -
+
+# /var/log/odysseus-ai
+d /var/log/odysseus-ai 0750 odysseus odysseus -

@@ -1,12 +1,48 @@
 #!/usr/bin/env bash
-# Install optional Python deps (e.g. faster-whisper, pymupdf) into the
-# shipped venv. Run with the package names you want:
+# Install optional Python deps (e.g. faster-whisper, pymupdf) into a
+# writable target directory. The systemd unit prepends this target to
+# PYTHONPATH, so the extras are importable at runtime.
+#
+# Usage:
 #   sudo odysseus-ai-install-extra faster-whisper pymupdf
-# Then `sudo systemctl restart odysseus-ai`.
+#   sudo systemctl restart odysseus-ai
+#
+# Why --target and not --user or venv-site-packages?
+#   --user inside a venv is wrong: the venv's site-packages is loaded
+#   before the user site-packages, so installs silently land in
+#   ~/.local/lib/ and never get imported. The odysseus user also
+#   cannot write to /usr/lib/odysseus-ai/venv/ (root-owned, read-only).
+#   --target /var/lib/odysseus-ai/python-extra puts the packages in a
+#   writable state dir that the systemd unit and the CLI wrapper add
+#   to PYTHONPATH explicitly.
 set -euo pipefail
+
 VENV="/usr/lib/odysseus-ai/venv"
+TARGET="/var/lib/odysseus-ai/python-extra"
+
 if [[ $# -eq 0 ]]; then
     echo "Usage: $0 <pip-package> [<pip-package> ...]" >&2
     exit 1
 fi
-exec sudo -u odysseus "$VENV/bin/pip" install --user "$@"
+
+if [[ $EUID -ne 0 ]]; then
+    echo "odysseus-ai-install-extra: must be run as root (use sudo)" >&2
+    exit 1
+fi
+
+# Create the target dir if missing (tmpfiles also does this at boot, but
+# doing it here means the first run before the next boot works too).
+install -d -o odysseus -g odysseus -m 0750 "$TARGET"
+
+# Run pip as the odysseus user so any per-user pip state goes to
+# /var/lib/odysseus-ai/.cache, not /root/.cache. Use runuser, not sudo,
+# because the install-extra helper is already root.
+runuser -u odysseus -- env \
+    PYTHONHOME="$VENV" \
+    "$VENV/bin/python" -m pip install --upgrade --target "$TARGET" "$@"
+
+cat <<EOF
+==> Installed extras into $TARGET
+==> Restart the service to pick them up:
+==>   sudo systemctl restart odysseus-ai
+EOF

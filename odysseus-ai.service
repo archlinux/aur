@@ -16,6 +16,12 @@ WorkingDirectory=/var/lib/odysseus-ai
 # venv machinery overrides sys.prefix at Python level, but the C-level
 # lib-dynload lookup happens earlier and needs PYTHONHOME.
 Environment=PYTHONHOME=/usr/lib/odysseus-ai/venv
+# PYTHONPATH lets users drop extra Python packages into
+# /var/lib/odysseus-ai/python-extra via `odysseus-ai-install-extra` without
+# touching the read-only venv. The install-extra helper writes here and
+# the systemd unit prepends the path so the service picks up the new
+# packages on next start.
+Environment=PYTHONPATH=/var/lib/odysseus-ai/python-extra
 EnvironmentFile=-/etc/odysseus-ai/odysseus-ai.env
 
 # Security notice: this unit exposes an admin-only shell-execution surface
@@ -24,17 +30,6 @@ EnvironmentFile=-/etc/odysseus-ai/odysseus-ai.env
 # would defeat those directives. Keep the bind at 127.0.0.1. See
 # /etc/odysseus-ai/odysseus-ai.env for the full threat model excerpt.
 
-# --- First-boot setup. ConditionPathExists=! prevents re-runs. ---
-ConditionPathExists=!/var/lib/odysseus-ai/data/auth.json
-ExecStartPre=+/usr/bin/systemd-run \
-  --quiet \
-  --property=User=odysseus \
-  --property=Group=odysseus \
-  --setenv=ODYSSEUS_SKIP_ADMIN_PROMPT=1 \
-  --setenv=ODYSSEUS_ADMIN_USER=admin \
-  --working-directory=/var/lib/odysseus-ai \
-  /usr/lib/odysseus-ai/venv/bin/python /usr/lib/odysseus-ai/app/setup.py
-
 ExecStart=/usr/lib/odysseus-ai/venv/bin/uvicorn app:app \
   --app-dir /usr/lib/odysseus-ai/app \
   --host 127.0.0.1 --port 7000
@@ -42,6 +37,10 @@ ExecStart=/usr/lib/odysseus-ai/venv/bin/uvicorn app:app \
 ExecStartPost=/usr/bin/curl -fsS --max-time 30 \
   --retry 30 --retry-delay 1 --retry-connrefused \
   http://127.0.0.1:7000/api/health
+
+# First-boot setup (admin account, data dirs, sqlite schema) is performed
+# by the .install scriptlet as root, not by the unit. This keeps the
+# service free of unit-scope conditional logic.
 
 Restart=on-failure
 RestartSec=5

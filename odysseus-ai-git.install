@@ -8,7 +8,8 @@ _post_install_upgrade_common() {
   # 1. Create the system user (idempotent)
   systemd-sysusers odysseus-ai.conf
 
-  # 2. Create /etc/odysseus-ai/ (idempotent)
+  # 2. Create /etc/odysseus-ai/ and all /var/lib|/var/cache|/var/log/odysseus-ai
+  #    subdirs (idempotent — tmpfiles is a no-op if the dirs already exist).
   systemd-tmpfiles --create odysseus-ai.conf
 
   # 3. Generate /etc/odysseus-ai/odysseus-ai.env on first install only
@@ -41,7 +42,10 @@ _post_install_upgrade_common() {
 
   # 5. chown the state dirs to the odysseus user (idempotent; run AFTER
   #    the symlinks script so /var/lib/odysseus-ai/ itself is odysseus-owned).
-  chown -R odysseus:odysseus /var/lib/odysseus-ai /var/cache/odysseus-ai /var/log/odysseus-ai
+  # The dirs are created by systemd-tmpfiles in step 2, so this is just a
+  # defensive pass in case ownership was wrong (e.g. on a system where
+  # tmpfiles ran before the sysusers user existed).
+  chown -R odysseus:odysseus /var/lib/odysseus-ai /var/cache/odysseus-ai /var/log/odysseus-ai 2>/dev/null || true
 
   # 6. Always re-run setup.py as odysseus (idempotent; guarded by the
   #    `if os.path.exists(auth_path)` check inside setup.py, so the
@@ -55,6 +59,9 @@ _post_install_upgrade_common() {
   # "Start the server with: python -m uvicorn app:app..." line) and
   # replace it with our own clean progress summary. setup.py's stderr
   # (real errors) is shown as-is.
+  # We use runuser, not sudo: this scriptlet already runs as root
+  # (pacman invokes it that way), and pulling sudo into a scriptlet
+  # adds an undeclared runtime dependency on a configured sudoers file.
   local -a setup_env=(
     ODYSSEUS_SKIP_ADMIN_PROMPT=1
     PYTHONHOME=/usr/lib/odysseus-ai/venv
@@ -70,7 +77,7 @@ _post_install_upgrade_common() {
   fi
   local setup_log
   setup_log=$(mktemp /tmp/odysseus-setup.XXXXXX.log)
-  if sudo -u odysseus env -i \
+  if runuser -u odysseus -- env -i \
        PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin \
        "${setup_env[@]}" \
        bash -c 'cd /var/lib/odysseus-ai && /usr/lib/odysseus-ai/venv/bin/python /usr/lib/odysseus-ai/app/setup.py' \
@@ -100,7 +107,7 @@ post_install() {
 ==>   1. (Optional) Edit /etc/odysseus-ai/odysseus-ai.env to add API keys
 ==>      (LLM_HOST, OPENAI_API_KEY, etc.). Defaults are sane for local-only.
 ==>
-==>   2. Start the service (it will auto-enable on boot):
+==>   2. Start the service and enable it on boot:
 ==>        sudo systemctl enable --now odysseus-ai
 ==>
 ==>   3. Open http://127.0.0.1:7000 and log in as 'admin'.
@@ -145,14 +152,14 @@ EOF
 }
 
 pre_remove() {
-  if systemctl is-active --quiet odysseus-ai.service; then
-    systemctl stop odysseus-ai.service
-  fi
-  if systemctl is-enabled --quiet odysseus-ai.service 2>/dev/null; then
-    systemctl disable odysseus-ai.service
+  # Defensive: removal should succeed even if systemd is missing, the unit
+  # was never loaded, or systemctl exits non-zero for any reason.
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl stop odysseus-ai.service 2>/dev/null || true
+    systemctl disable odysseus-ai.service 2>/dev/null || true
   fi
   cat <<'EOF'
-==> Odysseus service stopped and disabled.
+==> Odysseus service stopped and disabled if it existed.
 ==> To fully uninstall, also remove:
 ==>   sudo rm -rf /var/lib/odysseus-ai /var/cache/odysseus-ai /var/log/odysseus-ai
 ==>   sudo rm -rf /etc/odysseus-ai

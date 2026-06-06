@@ -24,7 +24,7 @@
 pkgname=odysseus-ai-git
 _pkgname=odysseus
 pkgver=r856.73673258
-pkgrel=7
+pkgrel=10
 pkgdesc="Self-hosted AI workspace with prebuilt Python 3.12 venv, tracking upstream main"
 arch=('x86_64')
 url='https://github.com/pewdiepie-archdaemon/odysseus'
@@ -40,13 +40,8 @@ depends=(
 makedepends=(
   'git'              # source=() is git+...
   'npm'              # for JS deps
+  'uv'               # builds the relocatable Python 3.12 venv (Arch [extra])
 )
-# uv is not a hard makedepends: AUR packages can only pull from the
-# [core] [extra] [multilib] repos. uv lives in AUR/[extra] on some
-# mirrors and is sometimes installed by users via `pip install uv` or
-# `cargo install uv` or the official installer. The build() function
-# does a `uv --version` check and errors out cleanly if it's missing.
-# Document in the README that `pacman -S uv` (AUR) is required.
 optdepends=(
   'nvidia-utils: NVIDIA GPU detection in Cookbook'
   'rocminfo: AMD GPU detection in Cookbook'
@@ -58,7 +53,7 @@ optdepends=(
   'python-duckduckgo-search: alternative web search backend'
   'python-markitdown: docx/pptx/xlsx parsing for RAG'
 )
-provides=()
+provides=('odysseus-ai')
 conflicts=('odysseus-ai')
 backup=('etc/odysseus-ai/odysseus-ai.env')
 install=odysseus-ai-git.install
@@ -82,21 +77,21 @@ source=(
   "LICENSE"
 )
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            'ceb52bebe3cf25c77087b0529d64d480184f452f3cdbe2a1a920b2c2581ffbe2'
+            '977a9230896cd23b78c712f16857ad605879b74c3076793d95827aaa702c14b9'
+            '88e068640724cc4edf32ea2485fbf0c7f0dac7334602a35aa76532a28deeb20d'
+            '8fee9c720af5531a42dff4a96ea07983e861b1d61df9ed70d2749ea4cb718d86'
+            'fcbcbfe2323150d8fb89d37979173f8ba33fca5ebe8e948c46f3195fde59c7c3'
+            'c1464cb1073ea2f8b298f282e16eab71b9474e9d65a2963bfc543df4be2164f9'
+            'c8f0c2378fa72d90aa710765895be4ff47ee4160615a5066b9bc5311af6ea71f'
+            '7adc77d6aef90a3fd86f9e31795881d48ee7f9d635714982356229cf7e007187'
+            '0627cc6cd18e1307740907442272cb26fa4615f5183ad08e946438a88de10f9d'
+            'd43eb701dd137d95bca167c0c86f18692faea573fe7333840248297587f43cbe'
+            '295f647c0e114eea7a56c3d77e173c0a245c55c612df268b34521b907acfb58e'
+            'f620d18d6797b871c6a77cedbe57033d46bff4229aa616a6d791d58a9e08844c'
+            '2e2872c6cfc42b2e543255846ae0d07fd157f13aba1cb5cee3a95dcffe3e0314'
+            '810bf0d929d43088fec7749d4c246ecf7f43416ae1ca6ac93fd803e2aa40048a'
+            '4674cc172af2a0de35fc4f0fea59da77a204264e8008f0452b71aa90faf77bb2')
 
 pkgver() {
   cd "$_pkgname"
@@ -106,7 +101,10 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
-  # ---- Pre-flight: verify uv is the right major ----
+  # ---- Pre-flight: verify uv is available and recent enough ----
+  if ! command -v uv >/dev/null 2>&1; then
+    error "uv is required to build this package (pacman -S uv)"
+  fi
   if ! uv --version | grep -qE '^uv (0\.(4-9|[1-9][0-9]*)|[1-9][0-9]*\.)'; then
     error "uv >= 0.4 required (got: $(uv --version))"
   fi
@@ -132,36 +130,128 @@ prepare() {
   # The validator's fallback also needs to use CWD
   sed -i 's|base_dir = Path(__file__).parent.parent$|base_dir = Path(os.getcwd())|' src/config.py
 
-  # ---- Patch every other Path(__file__).parent.parent (with/without .resolve())
-  # that points to a writable data/static/cache/services/logs directory. The
-  # upstream app uses these for runtime writes which would all hit the
-  # read-only /usr/lib/odysseus-ai/app/ tree. Make them CWD-relative so they
-  # land in /var/lib/odysseus-ai/ (== WorkingDirectory=).
-  # Files known to use this pattern:
-  #   core/auth.py
-  #   mcp_servers/email_server.py
-  #   routes/{contacts,document,email_helpers,emoji}_routes.py
-  #   services/search/cache.py
-  #   src/{secret_storage,tool_execution}.py
-  grep -rl 'Path(__file__).*\.parent\.parent' . \
-    --include='*.py' \
-    --exclude-dir=node_modules \
-    --exclude-dir=__pycache__ \
-    --exclude-dir=.git \
-  | while read -r f; do
-      # Skip the two constants.py files (handled by the explicit sed above)
-      case "$f" in
-        ./core/constants.py|./src/constants.py) continue ;;
-      esac
-      # Replace the .parent.parent literal with os.getcwd()
-      sed -i 's|Path(__file__)\(\.resolve()\)\?\.parent\.parent|Path(os.getcwd())|g' "$f"
-      # Make sure `import os` is present at top of file; pathlib.Path is used,
-      # so the file must already have `from pathlib import Path` (and many
-      # import both `os` and `pathlib`). Check & inject if missing.
-      if ! grep -qE '^(import os\b|from os\b)' "$f"; then
-        sed -i '1i import os' "$f"
-      fi
-    done
+  # ---- Patch the allowlist of remaining Path(__file__).parent.parent uses.
+  # Upstream uses this pattern both for runtime writes (data/, services/,
+  # static/, cache/, logs/) AND for read-only asset paths (templates,
+  # migration files, packaged resources). A broad sed would patch the
+  # latter too, breaking them on a read-only /usr/lib/odysseus-ai/app/.
+  # The list below is explicit: each entry has been verified to use the
+  # path for a runtime write. When upstream adds a new file that needs
+  # the same treatment, add it here deliberately — never via a broad sed.
+  # Files that already have dedicated handling above are excluded:
+  #   core/constants.py, src/constants.py  (BASE_DIR sed)
+  #   src/config.py                         (Pydantic Field sed)
+  #   src/rag_singleton.py                  (rag_singleton.py.patch)
+  for f in \
+    core/auth.py \
+    mcp_servers/email_server.py \
+    mcp_servers/rag_server.py \
+    mcp_servers/memory_server.py \
+    mcp_servers/image_gen_server.py \
+    routes/contacts_routes.py \
+    routes/document_routes.py \
+    routes/email_helpers.py \
+    routes/emoji_routes.py \
+    routes/codex_routes.py \
+    services/search/cache.py \
+    services/search/analytics.py \
+    src/secret_storage.py \
+    src/tool_execution.py
+  do
+    [[ -f "$f" ]] || error "Expected path file missing: $f"
+    sed -i 's|Path(__file__)\(\.resolve()\)\?\.parent\.parent|Path(os.getcwd())|g' "$f"
+    # Make sure `import os` is present at MODULE level. The file's runtime
+    # path now references os.getcwd() / os.path.join etc., so os must be
+    # in scope. We require column-0 (no leading whitespace) because an
+    # `import os` indented inside a function or class is NOT module-level
+    # and won't make `os` available at the top of the file.
+    # Inject AFTER any shebang, encoding comment, and `from __future__`
+    # imports to avoid breaking Python's syntax rules.
+    if ! grep -qE '^(import os\b|from os\b)' "$f"; then
+      python - "$f" <<'PY'
+from pathlib import Path
+import sys
+
+p = Path(sys.argv[1])
+s = p.read_text()
+lines = s.splitlines()
+insert_at = 0
+
+# Preserve shebang, encoding comment, and from __future__ imports.
+while insert_at < len(lines):
+    line = lines[insert_at]
+    if (
+        line.startswith("#!") or
+        line.lstrip().startswith("#") and "coding" in line or
+        line.startswith("from __future__") or
+        line.startswith("import __future__")
+    ):
+        insert_at += 1
+        continue
+    break
+
+lines.insert(insert_at, "import os")
+p.write_text("\n".join(lines) + "\n")
+PY
+    fi
+  done
+
+  # ---- Patch the allowlist of os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+  # uses. Same rationale as the Path() allowlist above: only files that
+  # need a runtime-write path to be CWD-relative are listed. core/constants.py
+  # and src/constants.py are handled by the dedicated BASE_DIR sed above.
+  for f in \
+    routes/embedding_routes.py \
+    src/builtin_mcp.py \
+    src/embeddings.py \
+    src/mcp_manager.py
+  do
+    [[ -f "$f" ]] || error "Expected path file missing: $f"
+    # Two distinct forms in the wild:
+    #   os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  (most common)
+    #   os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/"  (only in constants.py, already handled)
+    sed -i 's|os\.path\.dirname(os\.path\.dirname(os\.path\.abspath(__file__)))|os.getcwd()|g' "$f"
+    # `os` is almost always already imported in these files (they use
+    # os.environ / os.path heavily), but verify and inject at module level
+    # if not.
+    if ! grep -qE '^(import os\b|from os\b)' "$f"; then
+      python - "$f" <<'PY'
+from pathlib import Path
+import sys
+
+p = Path(sys.argv[1])
+s = p.read_text()
+lines = s.splitlines()
+insert_at = 0
+
+while insert_at < len(lines):
+    line = lines[insert_at]
+    if (
+        line.startswith("#!") or
+        line.lstrip().startswith("#") and "coding" in line or
+        line.startswith("from __future__") or
+        line.startswith("import __future__")
+    ):
+        insert_at += 1
+        continue
+    break
+
+lines.insert(insert_at, "import os")
+p.write_text("\n".join(lines) + "\n")
+PY
+    fi
+  done
+
+  # ---- Use the committed package-lock.json verbatim for `npm ci` ----
+  # The AUR source ships a pinned package-lock.json so the build is
+  # deterministic and not at the mercy of the npm registry at build time.
+  # We overwrite any upstream-cloned package-lock.json with ours; the
+  # upstream one is missing/regenerated by `npm install` invocations that
+  # the maintainer may have run locally.
+  cp -f "$srcdir/package-lock.json" package-lock.json
+  if ! command -v node >/dev/null 2>&1; then
+    error "nodejs is required to build this package (provides npm)"
+  fi
 
   # ---- Clean any leftover node_modules from upstream clone ----
   rm -rf node_modules
