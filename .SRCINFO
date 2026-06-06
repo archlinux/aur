@@ -1,6 +1,6 @@
 pkgbase = astroimagej
 	pkgdesc = A simple and powerful tool for astronomical image analysis and precise photometry.
-	pkgver = 6.0.7.02
+	pkgver = 6.0.8.00
 	pkgrel = 1
 	url = https://github.com/AstroImageJ/astroimagej
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = astroimagej
 	makedepends = jdk17-openjdk
 	makedepends = jdk25-openjdk
 	depends = java-runtime>=25
-	source = astroimagej-6.0.7.02.tar.gz::https://github.com/AstroImageJ/astroimagej/archive/refs/tags/6.0.7.02.tar.gz
+	source = astroimagej-6.0.8.00.tar.gz::https://github.com/AstroImageJ/astroimagej/archive/refs/tags/6.0.8.00.tar.gz
 	source = aij
 	source = astroimagej.desktop
-	sha256sums = 0cefe4af359ca3b68630f3bdeac1cc4bebfd20b0f4094493b5abb18edca4aa88
+	sha256sums = d7d29001aed087b8aef1b6d4852fd58b8aef9cd7b471e3770d16a4179978c674
 	sha256sums = 2862d88ade6f411c7d013a542a9adfb89bf87a63d7dcddc9940b54fdf7551b6d
 	sha256sums = 1b32cc64c00ce92daef1d14bfaf37868f4d0f3b4949f1d5a824cf32aee1c1f87
 
