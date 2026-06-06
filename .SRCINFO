@@ -1,7 +1,7 @@
 pkgbase = vdr-filebrowser
 	pkgdesc = filebrowser with custom commands for vdr
 	pkgver = 0.2.3
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/vdr-projects/vdr-plugin-filebrowser
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = vdr-filebrowser
 	arch = aarch64
 	license = GPL3
 	depends = gcc-libs
-	depends = vdr-api=12
+	depends = vdr-api=13
 	conflicts = vdr-plugin-filebrowser
 	replaces = vdr-plugin-filebrowser
 	backup = var/lib/vdr/plugins/filebrowser/commands.conf
