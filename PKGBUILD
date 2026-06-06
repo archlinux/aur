@@ -1,5 +1,5 @@
 pkgname=rendermd
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Terminal Markdown renderer with syntax-aware output, hot reload, and fuzzy search'
 arch=('x86_64' 'aarch64')
