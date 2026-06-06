@@ -1,6 +1,6 @@
 pkgbase = codeforces-tui
 	pkgdesc = Terminal UI for Codeforces practice
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/simonwinther/codeforces-tui
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = codeforces-tui
 	conflicts = cftui
 	conflicts = codeforce-tui
 	options = !debug
-	source = codeforces-tui-0.2.2.tar.gz::https://github.com/simonwinther/codeforces-tui/releases/download/v0.2.2/codeforces-tui-0.2.2.tar.gz
-	sha256sums = 100259f539ac61d0e2bd6c4f5fa681453657a96079aa961e8542ccbd2cc5ad2c
+	source = codeforces-tui-0.2.3.tar.gz::https://github.com/simonwinther/codeforces-tui/releases/download/v0.2.3/codeforces-tui-0.2.3.tar.gz
+	sha256sums = 30f79fa9c0f2879149a6c004321c1391a79eff8cd31549dc060d4580d6b61dd9
 
 pkgname = codeforces-tui

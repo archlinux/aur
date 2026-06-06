@@ -1,5 +1,5 @@
 pkgname=codeforces-tui
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Terminal UI for Codeforces practice'
 arch=('x86_64' 'aarch64')
@@ -14,15 +14,15 @@ optdepends=(
   'chromium: browser-backed auth and diagnostics'
   'firefox: browser cookie auth and user-agent detection'
 )
-source=("codeforces-tui-0.2.2.tar.gz::https://github.com/simonwinther/codeforces-tui/releases/download/v0.2.2/codeforces-tui-0.2.2.tar.gz")
-sha256sums=('100259f539ac61d0e2bd6c4f5fa681453657a96079aa961e8542ccbd2cc5ad2c')
+source=("codeforces-tui-0.2.3.tar.gz::https://github.com/simonwinther/codeforces-tui/releases/download/v0.2.3/codeforces-tui-0.2.3.tar.gz")
+sha256sums=('30f79fa9c0f2879149a6c004321c1391a79eff8cd31549dc060d4580d6b61dd9')
 
-_build_version='v0.2.2'
-_build_commit='local'
-_build_date='2026-06-06T00:00:00Z'
+_build_version='v0.2.3'
+_build_commit='22705c3'
+_build_date='2026-06-06T04:13:30Z'
 
 build() {
-  cd "codeforces-tui-0.2.2"
+  cd "codeforces-tui-0.2.3"
   export CGO_ENABLED=0
   export GOPATH="${srcdir}/gopath"
   export GOCACHE="${srcdir}/gocache"
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  cd "codeforces-tui-0.2.2"
+  cd "codeforces-tui-0.2.3"
   install -Dm755 "cftui" "${pkgdir}/usr/bin/cftui"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
