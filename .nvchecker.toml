@@ -1,0 +1,5 @@
+[scribe-rs-bin]
+source = "github"
+github = "isene/scribe"
+use_latest_release = true
+prefix = "v"
