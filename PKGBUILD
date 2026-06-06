@@ -1,6 +1,6 @@
 pkgname=youtube
 _pkgname=Youtube
-pkgver=1.1.7.3aur
+pkgver=1.1.7.3aur2
 pkgrel=1
 pkgdesc="Unnofficial Youtube desktop application"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('1774107b78a0f2a6b54b5867c4bea0219950a698f86e7aa3f072ecb2c5deac5f')
+sha256sums=('2173259573d00129100da4eb9a44bef8f8e7ec48ab3955294d2b649b75767c96')
 
 package() {
     install -dm755 "$pkgdir/opt/$_pkgname"
