@@ -1,11 +1,12 @@
 pkgname=rnum
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Rational numbers REPL calculator written in Rust"
 arch=('x86_64')
 url="https://github.com/davide-leva/rnum"
 license=('MIT')
 makedepends=('cargo')
+options=('!debug')
 source=("https://github.com/davide-leva/rnum/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
