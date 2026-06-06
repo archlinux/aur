@@ -1,6 +1,6 @@
 pkgbase = wiredpanda
 	pkgdesc = Software designed to help students learn about logic circuits and simulate them in an easy and friendly way
-	pkgver = 5.0.1
+	pkgver = 5.1.2
 	pkgrel = 1
 	url = https://gibis-unifesp.github.io/wiRedPanda/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wiredpanda
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-svg
-	source = wiredpanda-5.0.1.tar.gz::https://github.com/GIBIS-UNIFESP/wiRedPanda/archive/410ae117d45864d8828af27cad5adbd1a8e79d0d.tar.gz
-	sha256sums = 53540432928a030b51ffd36b2d21ac3ef5b2fa6bbb9abe478e344ef818319cca
+	source = wiredpanda-5.1.2.tar.gz::https://github.com/GIBIS-UNIFESP/wiRedPanda/archive/refs/tags/v5.1.2.tar.gz
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = wiredpanda
