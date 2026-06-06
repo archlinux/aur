@@ -5,3 +5,4 @@ Exec=/usr/bin/zalo
 Icon=/opt/zalo/icon.png
 Terminal=false
 Type=Application
+StartupWMClass=zalo-for-linux
