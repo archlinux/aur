@@ -3,8 +3,8 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgbase=vdr
 pkgname=(vdr vdr-examples)
-pkgver=2.8.1
-_vdrapi=12
+pkgver=2.8.2
+_vdrapi=13
 pkgrel=1
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.bz2::http://git.tvdr.de/?p=vdr.git;a=snapshot;h=re
         'shutdown-wrapper.c'
         'vdr.service'
         'vdr.sysuser')
-sha256sums=('8b3355ae5421bf9709e907d48ee4916d9a4af07ed5c6107c565a0a3e93b72aa9'
+sha256sums=('237460477b980354286162604b9228c0414950e9c64ccd2f9fe8a47aacd3efe7'
             '6d5a69501e65046b708841c38f066f4598baa7c4b52f382e70fe2f69c01a233f'
             'cb44edeed0c7a8c1110d5963934dd6c9a79f7e7618ecc1dafb38bbe05d982f7a'
             '86f2469f459e2aabfc0ab703fc8435e458e89c4879376e900160d083924097b3'
