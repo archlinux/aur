@@ -1,14 +1,26 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
+# Contributor: Yassine <cherradiyacyn@icloud.com>
+
 pkgname=sxcs-git
 _pkgname=sxcs
-pkgver=1.1.0.r13.g772d2d0
+pkgver=1.2.1.r0.g72034a5
 pkgrel=1
 pkgdesc='minimal X11 color picker and magnifier'
 url='https://codeberg.org/NRK/sxcs'
-arch=('i686' 'x86_64')
-license=('GPL-3.0')
-depends=('libx11' 'libxcursor')
-makedepends=('gcc')
+arch=(
+    'i686'
+    'x86_64'
+)
+license=('GPL-3.0-or-later')
+depends=(
+    'libx11'
+    'libxrender'
+)
+makedepends=(
+    'gcc'
+    'git'
+)
+options=(!debug)
 provides=('sxcs')
 source=("$_pkgname::git+$url.git#branch=master")
 sha256sums=('SKIP')
@@ -21,7 +33,7 @@ pkgver() {
 build() {
     cd "$_pkgname"
     export CC="${CC:-gcc}"
-    ${CC} -o sxcs sxcs.c ${CFLAGS} ${LDFLAGS} -s -lX11 -lXcursor
+    ${CC} -o sxcs sxcs.c ${CFLAGS} ${LDFLAGS} -s -lX11 -lXrender
 }
 
 package() {

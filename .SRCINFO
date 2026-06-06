@@ -1,15 +1,17 @@
 pkgbase = sxcs-git
 	pkgdesc = minimal X11 color picker and magnifier
-	pkgver = 1.1.0.r13.g772d2d0
+	pkgver = 1.2.1.r0.g72034a5
 	pkgrel = 1
 	url = https://codeberg.org/NRK/sxcs
 	arch = i686
 	arch = x86_64
-	license = GPL-3.0
+	license = GPL-3.0-or-later
 	makedepends = gcc
+	makedepends = git
 	depends = libx11
-	depends = libxcursor
+	depends = libxrender
 	provides = sxcs
+	options = !debug
 	source = sxcs::git+https://codeberg.org/NRK/sxcs.git#branch=master
 	sha256sums = SKIP
 
