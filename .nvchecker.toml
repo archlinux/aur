@@ -1,0 +1,5 @@
+[flashback-bin]
+source = "github"
+github = "yagnikpt/flashback"
+use_latest_release = true
+prefix = "v"

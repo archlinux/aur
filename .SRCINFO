@@ -1,0 +1,19 @@
+pkgbase = flashback-bin
+	pkgdesc = A command-line knowledge store. It captures text, URLs, and commands, extracts structured metadata, and makes everything searchable
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/yagnikpt/flashback
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = flashback
+	conflicts = flashback
+	options = !strip
+	source_x86_64 = flashback-x86_64-0.1.2.tgz::https://github.com/yagnikpt/flashback/releases/download/v0.1.2/flashback_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = f520f6a4560036d13bb91f2adfd2827cbfdfb7b2ab57910330e9cacf6e4d4a81
+	source_aarch64 = flashback-aarch64-0.1.2.tgz::https://github.com/yagnikpt/flashback/releases/download/v0.1.2/flashback_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ecbf06cb8632a91a546b1933d39f071d24067188790bfc306609655f15b06ebe
+
+pkgname = flashback-bin
