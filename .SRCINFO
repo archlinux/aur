@@ -21,7 +21,7 @@ pkgbase = odysseus-ai-git
 	source = odysseus::git+https://github.com/pewdiepie-archdaemon/odysseus.git#branch=dev
 	source = odysseus.service
 	source = odysseus.desktop
-	source = odysseus.svg
+	source = odysseus-ai-git.svg
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

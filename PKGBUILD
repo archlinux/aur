@@ -25,7 +25,7 @@ source=(
     "odysseus::git+https://github.com/pewdiepie-archdaemon/odysseus.git#branch=dev"
     "odysseus.service"
     "odysseus.desktop"
-    "odysseus.svg"
+    "odysseus-ai-git.svg"
 )
 sha256sums=(
     'SKIP'
@@ -111,8 +111,8 @@ package() {
         "$pkgdir/usr/share/applications/odysseus.desktop"
 
     # --- Icon ---
-    install -Dm644 "$srcdir/odysseus.svg" \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/odysseus.svg"
+    install -Dm644 "$srcdir/odysseus-ai-git.svg" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/odysseus-ai-git.svg"
 
     # --- License ---
     install -Dm644 LICENSE \
