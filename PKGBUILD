@@ -2,8 +2,8 @@
 
 _pkgname=opencloud
 pkgname=opencloud-git
-pkgver=7.1.0.r0.g83360f9
-pkgrel=2
+pkgver=7.1.0.r7.g4414bd0
+pkgrel=1
 pkgdesc="Open source platform for file management, sharing & collaboration - git build"
 url="https://opencloud.eu"
 arch=('aarch64' 'x86_64')
@@ -56,12 +56,25 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
 
+  # generate web assets
   make generate
+
+  # generate binary
   make TAGS="disable_crypt libsqlite3" -C opencloud build
+
+  # generate shell completions
+  for shell in bash fish zsh; do
+    ./opencloud/bin/opencloud completion "$shell" > "$shell.completion"
+  done
 }
 
 package() {
   install -vDm755 "${_pkgname}/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}-server"
+
+  # shell completions
+  install -vDm644 ${_pkgname}/bash.completion "$pkgdir/usr/share/bash-completion/completions/opencloud"
+  install -vDm644 ${_pkgname}/fish.completion "$pkgdir/usr/share/fish/vendor_completions.d/opencloud.fish"
+  install -vDm644 ${_pkgname}/zsh.completion "$pkgdir/usr/share/zsh/site-functions/_opencloud"
 
   # systemd integration
   install -vDm640 -t "${pkgdir}/etc/${_pkgname}" "${_pkgname}.env"
