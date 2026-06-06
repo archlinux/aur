@@ -4,7 +4,7 @@ _gitauthor=yagnikpt
 _gitname=tpaper
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="A terminal-based note-taking app built around the idea of buffers and blocks"
+pkgdesc="A terminal-based note-taking app built around the idea of buffers and blocks."
 
 pkgver=0.2.0
 pkgrel=1

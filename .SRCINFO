@@ -1,5 +1,5 @@
 pkgbase = tpaper-bin
-	pkgdesc = A terminal-based note-taking app built around the idea of buffers and blocks
+	pkgdesc = A terminal-based note-taking app built around the idea of buffers and blocks.
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/yagnikpt/tpaper
