@@ -110,6 +110,78 @@ install_emeditor() {
   wineserver -k || true
 }
 
+font_file_sources() {
+  if [[ -n "${EMEDITOR_WINE_FONTS_DIR:-}" ]]; then
+    tr ':' '\n' <<<"${EMEDITOR_WINE_FONTS_DIR}"
+  fi
+
+  printf '%s\n' \
+    "${HOME}/.wine-emeditor-fonts" \
+    "${HOME}/.wine-emeditor-step/drive_c/windows/Fonts" \
+    "${HOME}/.wine/drive_c/windows/Fonts" \
+    "${HOME}/.local/share/fonts" \
+    "/usr/share/fonts"
+}
+
+copy_optional_font() {
+  local filename="$1"
+  local source found
+
+  while IFS= read -r source; do
+    [[ -d "${source}" ]] || continue
+    found="$(find "${source}" -iname "${filename}" -type f -print -quit 2>/dev/null || true)"
+    if [[ -n "${found}" ]]; then
+      install -Dm644 "${found}" "${prefix}/drive_c/windows/Fonts/${filename}"
+      return 0
+    fi
+  done < <(font_file_sources)
+
+  return 1
+}
+
+register_font_if_present() {
+  local filename="$1"
+  local name="$2"
+
+  if [[ -f "${prefix}/drive_c/windows/Fonts/${filename}" ]]; then
+    wine reg add 'HKLM\Software\Microsoft\Windows NT\CurrentVersion\Fonts' \
+      /v "${name}" /t REG_SZ /d "${filename}" /f >/dev/null
+  fi
+}
+
+import_optional_fonts() {
+  local font
+
+  mkdir -p "${prefix}/drive_c/windows/Fonts"
+
+  for font in \
+    segmdl2.ttf \
+    SegoeIcons.ttf \
+    segoeui.ttf \
+    segoeuib.ttf \
+    segoeuisl.ttf \
+    segoeuiz.ttf \
+    msyh.ttc \
+    msyhbd.ttc \
+    msyhl.ttc; do
+    [[ -f "${prefix}/drive_c/windows/Fonts/${font}" ]] || copy_optional_font "${font}" || true
+  done
+
+  register_font_if_present segmdl2.ttf 'Segoe MDL2 Assets (TrueType)'
+  register_font_if_present SegoeIcons.ttf 'Segoe Fluent Icons (TrueType)'
+  register_font_if_present segoeui.ttf 'Segoe UI (TrueType)'
+  register_font_if_present segoeuib.ttf 'Segoe UI Bold (TrueType)'
+  register_font_if_present segoeuisl.ttf 'Segoe UI Semilight (TrueType)'
+  register_font_if_present segoeuiz.ttf 'Segoe UI Bold Italic (TrueType)'
+  register_font_if_present msyh.ttc 'Microsoft YaHei UI (TrueType)'
+  register_font_if_present msyhbd.ttc 'Microsoft YaHei UI Bold (TrueType)'
+  register_font_if_present msyhl.ttc 'Microsoft YaHei UI Light (TrueType)'
+
+  if [[ -z "${EMEDITOR_WINE_UI_FONT:-}" && -f "${prefix}/drive_c/windows/Fonts/msyh.ttc" ]]; then
+    ui_font="Microsoft YaHei UI"
+  fi
+}
+
 sync_desktop_entry() {
   local data_home desktop_dir desktop
 
@@ -125,7 +197,7 @@ Exec=emeditor-wine %F
 Type=Application
 StartupNotify=true
 Comment=Launch EmEditor with the emeditor-wine wrapper
-Icon=accessories-text-editor
+Icon=emeditor-wine
 StartupWMClass=emeditor.exe
 Categories=Utility;TextEditor;Development;
 MimeType=text/plain;
@@ -142,6 +214,7 @@ export LC_ALL="${lang}"
 export LANGUAGE="${EMEDITOR_WINE_LANGUAGE:-zh_CN:en_US}"
 
 sync_desktop_entry
+import_optional_fonts
 
 dpi="$(pick_dpi)"
 configure_prefix "${dpi}"
