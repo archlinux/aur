@@ -1,0 +1,17 @@
+pkgbase = recontrack
+	pkgdesc = Extract tracking codes from websites
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/reconurge/recontrack
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-requests
+	source = recontrack-0.0.1.tar.gz::https://github.com/reconurge/recontrack/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = 4cb1b2b8f90c9bf6d8906f306ad3de195d8b03ec9766ac0c4f1dcd190a79ed52
+
+pkgname = recontrack
