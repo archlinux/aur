@@ -2,14 +2,14 @@
 # Maintainer: Julian Xhokaxhiu <https://julianxhokaxhiu.com>
 
 pkgname=open-webui
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
 license=('BSD-3-Clause')
-depends=('uv')
-optdepends=('ollama' 'tika-server')
+depends=('uv' 'ollama')
+optdepends=('tika-server')
 conflicts=('open-webui-uv' 'open-webui-git' 'open-webui-openrc' 'open-webui-no-venv' 'open-webui-dinit')
 source=("LICENSE::https://raw.githubusercontent.com/open-webui/open-webui/refs/tags/v$pkgver/LICENSE"
         "${pkgname}.env"
@@ -19,9 +19,9 @@ source=("LICENSE::https://raw.githubusercontent.com/open-webui/open-webui/refs/t
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 sha256sums=('5f1bd74c48bf13ab0f82e177ad9e637313b92533d20ead2593d49347a47fc232'
-            '1e5f9ca7c238342ee75bd12210e90a0181fc044e6ed94cc3d494c4f15ea2a71c'
+            'ae29c92ae8f30565aa686e39cd05cd178266e3a6461ecbafe291829f675d6700'
             '576562a1788303dbdf9e3df4239ea0c43cdab39276e48542f1550f6346dae8f1'
-            'ce16bf13d39bac56659a249b6bb0314697ffd5976e9e85ebd580c95c15177019'
+            '8cde3e05a807e73f85d9c20183dd82dcfef7d2400d8bf3303bfef33641598b45'
             'dbf2a9e54801e598ebf9656777318ecb09ceea37c3464b692389f1c900f46f1c'
             'c22c0b924ff6ba983091b0b94b645c8fe22012170aa65e616e7c82711fed3821'
             '7ee594b5c323a55851ff79b9addbf303f1e263f68ca66538e20e72694ae2a467')

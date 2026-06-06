@@ -1,6 +1,7 @@
 [Unit]
 Description=Open WebUI – Self-hosted AI platform
-After=network.target
+After=network.target ollama.service
+Requires=ollama.service
 
 [Service]
 Type=simple
