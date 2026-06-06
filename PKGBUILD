@@ -7,7 +7,7 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B7.r190.g7f31ecf5
+pkgver=B7.r238.gc8edf1ea
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
@@ -22,16 +22,14 @@ source=("${_pkgname}::git+https://github.com/gnif/LookingGlass.git"
         "cimgui::git+https://github.com/cimgui/cimgui.git"
         "imgui::git+https://github.com/ocornut/imgui.git"
         "wayland-protocols::git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git"
-        "nanosvg::git+https://github.com/memononen/nanosvg.git"
-        "nettle4-compat.patch")
+        "nanosvg::git+https://github.com/memononen/nanosvg.git")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '0b0cfe95179fef4d5443a66536c6bb628996340c667ad87fbb1bd57cf759e1aec007e44e1a210a4eb63516cc213a47eb9cfe41d18916508d1718ba3e050ddf48')
+            'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -52,11 +50,6 @@ prepare() {
 	git submodule init
 	git submodule set-url -- imgui "${srcdir}/imgui"
 	git -c protocol.file.allow=always submodule update
-
-	cd "${srcdir}/${_pkgname}"
-	for patch in "${srcdir}"/*.patch; do
-		patch -p1 < "${patch}"
-	done
 }
 
 build() {
