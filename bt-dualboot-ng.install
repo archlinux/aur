@@ -1,0 +1,7 @@
+post_install() {
+    echo "CLI 命令为 bt-dualboot（非 bt-dualboot-ng）"
+}
+
+post_upgrade() {
+    :
+}
