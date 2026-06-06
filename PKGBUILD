@@ -2,7 +2,7 @@
 
 _pkgname="dolphin-memory-engine"
 pkgname="${_pkgname}-bin"
-pkgver=2026.05.06
+pkgver=2026.06.04
 pkgrel=1
 pkgdesc="A RAM search made specifically to search, monitor, and edit the Dolphin emulator's emulated memory"
 arch=(
@@ -35,7 +35,7 @@ source_x86_64=(
 )
 sha256sums=('24cef39d9bd752569dd3853c0726c71a098ef1299be63a21394cac74f27d66b8'
             'fbd3f331ea8f7218eda808c7c9ace7c63522ac1482a9f52f3191ab94cb524775')
-sha256sums_x86_64=('0933896c685c24473800184bdd33fa80a0aa5369b4466d2e868f2cb73f812861')
+sha256sums_x86_64=('36b49acce128e5b641a32c0914390d0432ea4ba9923555a0a850306d149cb3d8')
 
 prepare() {
   cd "${srcdir}"
