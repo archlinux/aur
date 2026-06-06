@@ -11,7 +11,7 @@ options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz")
 sha256sums=('01c5946f063178cf05a9cac4906eb06ba3b784a0f03a68e8ef757ec368dc077a')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd hmat-oss-$pkgver
