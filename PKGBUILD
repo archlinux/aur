@@ -1,8 +1,8 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=tuicr
-pkgver=0.16.1
+pkgver=0.17.1
 pkgrel=1
-pkgdesc='a terminal UI for local code review'
+pkgdesc='a terminal UI for local code review (vibe-coded)'
 arch=(
     'x86_64'
     'aarch64'
@@ -13,14 +13,17 @@ license=('MIT')
 makedepends=(
     'cargo'
 )
-options=(!lto !debug)
+options=(
+    !lto
+    !debug
+)
 provides=('tuicr')
 conflicts=(
     'tuicr-git'
     'tuicr-bin'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('224858fecd39fa2b0bcd2e8b27171be5c295449bbfd60d0c5c023855622e063d')
+sha256sums=('7c1396ca355e45d13a597a451e921b520690931c2aa7152f82b5fb4204179f35')
 
 prepare() {
     cd "$pkgname-$pkgver"

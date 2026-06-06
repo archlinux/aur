@@ -1,6 +1,6 @@
 pkgbase = tuicr
-	pkgdesc = a terminal UI for local code review
-	pkgver = 0.16.1
+	pkgdesc = a terminal UI for local code review (vibe-coded)
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/agavra/tuicr
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = tuicr
 	conflicts = tuicr-bin
 	options = !lto
 	options = !debug
-	source = tuicr-0.16.1.tar.gz::https://github.com/agavra/tuicr/archive/refs/tags/v0.16.1.tar.gz
-	sha256sums = 224858fecd39fa2b0bcd2e8b27171be5c295449bbfd60d0c5c023855622e063d
+	source = tuicr-0.17.1.tar.gz::https://github.com/agavra/tuicr/archive/refs/tags/v0.17.1.tar.gz
+	sha256sums = 7c1396ca355e45d13a597a451e921b520690931c2aa7152f82b5fb4204179f35
 
 pkgname = tuicr
