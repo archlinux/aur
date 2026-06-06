@@ -1,7 +1,7 @@
 # Maintainer: Robin Marchart <robin.marchart at gmail dot com>
 pkgname='jellyhaj-git'
 pkgver=v0.2.0.r18.ga8539d7
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal client for Jellyfin reimplementing parts of the web ui"
 arch=('x86_64' 'aarch64')
 url="https://github.com/owo-uwu-nyaa/jellyhaj"
