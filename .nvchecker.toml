@@ -1,0 +1,5 @@
+[augustus-bin]
+source = "github"
+github = "praetorian-inc/augustus"
+use_latest_release = true
+prefix = "v"
