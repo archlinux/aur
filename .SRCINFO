@@ -1,0 +1,21 @@
+pkgbase = python-signxml
+	pkgdesc = Python XML Signature and XAdES library
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://github.com/XML-Security/signxml
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python
+	depends = python-certifi
+	depends = python-cryptography
+	depends = python-lxml
+	optdepends = python-pyinstaller: collect signxml data files when freezing apps
+	source = signxml-4.4.0.tar.gz::https://files.pythonhosted.org/packages/source/s/signxml/signxml-4.4.0.tar.gz
+	sha256sums = 038781783520e5d7bae4aa9c1e35f24fe9062730459da72009ce55126b56fa0f
+
+pkgname = python-signxml
