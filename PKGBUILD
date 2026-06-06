@@ -1,6 +1,6 @@
 # Maintainer: mmrmagno <mmr@marc-os.com>
 pkgname=mangolib-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Music library manager, downloader, and iPod sync tool"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('mangolib')
 source_x86_64=("mangolib::${url}/releases/download/v${pkgver}/mangolib-linux-amd64")
 source_aarch64=("mangolib::${url}/releases/download/v${pkgver}/mangolib-linux-arm64")
 
-sha256sums_x86_64=('31976e25ffa3b6c21e08e5988363f797182fa5c3bdfd91129dbe3c3d95bdb6f4')
-sha256sums_aarch64=('ae70ccdbfe2993b5d5d9b90d0538261032fa1ab0121407dc4d437b0740087f57')
+sha256sums_x86_64=('e4ed8e54db1b127ffec497d5ac57c21b3b24bb7d667bd6baad3ce666dbcb9be0')
+sha256sums_aarch64=('a4dfbb92005f111d1caccdc1c1f80d341710d82415efb3dd3fcc0b8d6481c36b')
 
 package() {
     install -Dm755 "${srcdir}/mangolib" "${pkgdir}/usr/bin/mangolib"
