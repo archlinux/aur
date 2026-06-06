@@ -4,7 +4,7 @@ pkgname='discord-chat-exporter-plus-cli'
 _apkgname='DiscordChatExporter'
 _gpkgname='DiscordChatExporterPlus'
 _sdk='10.0'
-pkgver=2.47.1
+pkgver=2.47.2
 pkgrel=1
 
 pkgdesc='Exports Discord chat logs to a file (without the political bloat)'
@@ -18,7 +18,7 @@ source=(
   "$pkgname"
 )
 b2sums=(
-  e8a924b3e1963ab974d308f4a69e78e7806b2642aad0bba7e5e4780a4eb2f62f09e6b19a8ac4b16e88f969e6b042cfb253b6b5f666f7d43cae38f597bfdcf359
+  c5dc30c4609387fe182fae49f824ad43ee64ee4364cc554945287712c231b346f9fa45f7924371b03ffe6b78c74b1cf4c1199749a083d680ac8b99f0f511edad
   f04af622af8aee1c08beb6444aa7e46db9c55180a7cd87f0fceb2dce9d27052883be6322074a8944ff51af142e8d104d5ae89c2b54e79700769d1dabc38328e0
 )
 
