@@ -3,6 +3,7 @@ pkgbase = odysseus-ai-git
 	pkgver = 2026.06.02
 	pkgrel = 1
 	url = https://pewdiepie-archdaemon.github.io/odysseus/
+	install = odysseus-ai-git.install
 	arch = any
 	license = MIT
 	makedepends = git
@@ -13,7 +14,7 @@ pkgbase = odysseus-ai-git
 	optdepends = searxng: local web search provider
 	provides = odysseus-ai
 	conflicts = odysseus-ai
-	install = odysseus-ai-git.install
+	backup = etc/odysseus-ai/odysseus.env
 	source = odysseus-ai-git::git+https://github.com/pewdiepie-archdaemon/odysseus.git
 	sha256sums = SKIP
 
