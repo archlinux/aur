@@ -7,7 +7,7 @@
 
 pkgname=akkoma
 pkgver=3.19.0
-pkgrel=1
+pkgrel=2
 _erlangver=29.0
 _elixirver=1.20.0
 pkgdesc='faster-paced fork of Pleroma'
