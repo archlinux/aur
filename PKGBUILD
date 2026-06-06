@@ -14,7 +14,7 @@ source=(
   "kute.desktop"
   "kute.png::https://raw.githubusercontent.com/H33aven/kute/main/kute.png"
 )
-sha256sums=('8a251fdfd7ce96f764fd06cf6e93009d0a200aacaf886a53e7ea946dcdb87261'
+sha256sums=('db3237fd3c08a54cc7a6376f846d98762736cfbdaa198f7fec9ee7ab7fa002d3'
             'e57da3bf9ff1ed0602ca3f048321128e619a2fd5f9cc45f7344a8aec90d376c9'
             'cff8a12ac9522adf676ac96f3586d9d85f007abb061281a66ea958a0e1347378')
 
