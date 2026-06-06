@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=WireView Pro II
+Comment=Thermal Grizzly WireView Pro II GPU power monitor
+Exec=/usr/lib/wireview-linux/WireView2
+Icon=wireview-linux
+Terminal=false
+Type=Application
+Categories=Utility;System;Monitor;
+StartupWMClass=WireView2
