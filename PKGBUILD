@@ -3,7 +3,7 @@
 pkgauthor="ryadios"
 pkgname="torrent-tui"
 pkgdesc="⚡A lightweight TUI based BitTorrent client"
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 
 arch=("x86_64")
@@ -23,7 +23,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('42a1d0709a4c767a6ba7baddb33067af9c84f28899b0c42fc67cb9c0a96c7eb9d21c0b0675db7679f46ef90d26723752567e8fc5eb4b13912afedebd58fe8ec3')
+b2sums=('d95f1a1f5cc8557d9ed48ed451d71c7dda4c4181a0c73814f3309c3587df090d077b07d54cc2701ab2d725f6279976decc1a30859683df30c1d07e357e359e69')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
