@@ -1,0 +1,20 @@
+pkgbase = boomtypr-bin
+	pkgdesc = A sleek typing test experience in terminal.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/yagnikpt/boomtypr
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = boomtypr
+	conflicts = boomtypr
+	options = !strip
+	source_x86_64 = boomtypr-x86_64-1.1.1.tgz::https://github.com/yagnikpt/boomtypr/releases/download/v1.1.1/boomtypr_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7aaf9b4ef98129b6d9f576aae398a95e3e2eaa04e4e4d70b4856069101913393
+	source_i686 = boomtypr-i686-1.1.1.tgz::https://github.com/yagnikpt/boomtypr/releases/download/v1.1.1/boomtypr_Linux_i386.tar.gz
+	sha256sums_i686 = fb6a86bffb7516601bbbdce07939193065d6e9483840586aa47a5e95f42463f1
+	source_aarch64 = boomtypr-aarch64-1.1.1.tgz::https://github.com/yagnikpt/boomtypr/releases/download/v1.1.1/boomtypr_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 997ec6f4159a14e180c2cd962403703de7801e2cb48bbc58e53e0ed0149f2e4a
+
+pkgname = boomtypr-bin
