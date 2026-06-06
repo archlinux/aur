@@ -46,10 +46,10 @@ package() {
     # --- Application files ---
     install -dm755 "$pkgdir/usr/lib/odysseus-ai"
     cp -r \
-        app.py setup.py \
-        core routes services src scripts config mcp_servers static licenses \
-        requirements.txt requirements.filtered.txt \
-        "$pkgdir/usr/lib/odysseus-ai/"
+    app.py setup.py \
+    companion core routes services src scripts config mcp_servers static licenses \
+    requirements.txt requirements.filtered.txt \
+    "$pkgdir/usr/lib/odysseus-ai/"
 
     # --- Cache dirs ---
     install -dm755 "$pkgdir/usr/lib/odysseus-ai/services/cache/search"
