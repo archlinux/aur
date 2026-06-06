@@ -1,0 +1,20 @@
+pkgbase = cursor-companion
+	pkgdesc = Animated pet companion for the KDE Plasma cursor
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/NEOLPAR/cursor-companion
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyqt6
+	depends = python-pyqt6-webengine
+	depends = qt6-tools
+	depends = xdg-utils
+	source = cursor-companion-0.1.1.tar.gz::https://github.com/NEOLPAR/cursor-companion/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 46de54a2fa5976d458ac2d7b6f2b6f8fb762abe561d92a46ab0a06cc9ac0c6bb
+
+pkgname = cursor-companion
