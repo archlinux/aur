@@ -1,0 +1,14 @@
+# Informational only -- prints the post-install notes shipped with the package.
+#
+# The message text lives in the namebind repo (assets/usr/share/namebind/) so it
+# stays coupled to the service it documents and is installed to
+# /usr/share/namebind/post-install.txt by scripts/install-assets.sh. This
+# scriptlet merely displays it, so it never needs to change when the message does.
+
+post_install() {
+  cat /usr/share/namebind/post-install.txt
+}
+
+post_upgrade() {
+  post_install
+}

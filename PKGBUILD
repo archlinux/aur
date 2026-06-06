@@ -12,7 +12,7 @@
 
 _pkgname=namebind
 pkgname="${_pkgname}-git"
-pkgver=0.6.0.r0.g06757cf
+pkgver=0.7.0.r0.g29b9ac8
 pkgrel=1
 pkgdesc="Per-app network namespaces; reach host services by name, not port number (git version)"
 arch=('any')  # pure Python + console script + a systemd unit
@@ -25,6 +25,10 @@ arch=('any')  # pure Python + console script + a systemd unit
 _url="codeberg.org/0zitro-ffa/namebind"
 url="https://${_url}"
 license=('Elastic-2.0')   # Elastic License 2.0; not in `licenses`, shipped below
+
+# Prints /usr/share/namebind/post-install.txt (shipped from the repo's assets/).
+# Stable shim: the message it shows is in the repo, so this never changes with it.
+install="${_pkgname}.install"
 
 depends=(
   'python'
