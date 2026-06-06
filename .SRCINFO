@@ -1,7 +1,7 @@
 pkgbase = vdr-extrecmenung
 	pkgdesc = provides additional functions to VDR's recordings menu
 	pkgver = 2.0.15
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://gitlab.com/kamel5/extrecmenung
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vdr-extrecmenung
 	arch = aarch64
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=12
+	depends = vdr-api=13
 	replaces = vdr-extrecmenu
 	backup = etc/vdr/conf.avail/50-extrecmenung.conf
 	source = https://gitlab.com/kamel5/extrecmenung/-/archive/v2.0.15/extrecmenung-v2.0.15.tar.bz2
