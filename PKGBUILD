@@ -3,7 +3,7 @@
 _pkgname="robrix"
 pkgname="${_pkgname}-git"
 pkgver=1.0.0.alpha.1.r2741.20260605.7291b335
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-Platform Matrix client. Written in Rust, built on top of Matrix Rust SDK, using the Makepad UI toolkit and the Robius app dev framework."
 arch=(
   "aarch64"
@@ -31,9 +31,9 @@ replaces=()
 makedepends=(
   "git"
   "cargo"
-  "cargo-license"
-  #'zopfli'   # To size-optimise PNG files.
-  #'parallel' # To size-optimise PNG files.
+  #"cargo-license" # Commented out: Upstream now has this kind of information 'licenses/', see https://github.com/project-robius/robrix/issues/890#issuecomment-4607634663. We install directly from upstream.
+  #'zopfli'        # To size-optimise PNG files.
+  #'parallel'      # To size-optimise PNG files.
 
   'alsa-lib'
   'openssl'
@@ -86,8 +86,9 @@ prepare() {
   printf '%s\n' " --> Downloading rust dependencies ..."
   cargo fetch --locked --target host-tuple
 
-  printf '%s\n' " --> Fetching licenses of dependencies ..."
-  cargo license --avoid-build-deps --avoid-dev-deps --color never --output LICENSES_THIRDPARTY.txt
+  ### Commented out: Upstream now has this kind of information 'licenses/', see https://github.com/project-robius/robrix/issues/890#issuecomment-4607634663. We install directly from upstream.
+  # printf '%s\n' " --> Fetching licenses of dependencies ..."
+  # cargo license --avoid-build-deps --avoid-dev-deps --color never --output LICENSES_THIRDPARTY.txt
 
   printf '%s\n' " --> Generating git log ..."
   git log . > git.log
@@ -174,7 +175,11 @@ package() {
   printf '%s\n' " --> Installing basic documentation ..."
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log AGENTS.md README.md SPLASH.md
   printf '%s\n' " --> Installing license ..."
-  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-MIT LICENSES_THIRDPARTY.txt
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-MIT #LICENSES_THIRDPARTY.txt
+  local _f
+  find licenses/ -mindepth 1 -maxdepth 1 -type f | while read _f; do
+    install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/thirdparty" "${_f}"
+  done
   ## Optional convenience: Symlink commond license texts which are present system-wide and not already installed for this package
   local _license
   cd "${pkgdir}/usr/share/licenses/${pkgname}"
