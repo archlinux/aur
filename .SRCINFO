@@ -1,7 +1,7 @@
 pkgbase = vdr-chanman
 	pkgdesc = Change channel with a multi level choice
 	pkgver = 0.0.13
-	pkgrel = 12
+	pkgrel = 13
 	url = https://github.com/vdr-projects/vdr-plugin-chanman
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = vdr-chanman
 	arch = aarch64
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=12
+	depends = vdr-api=13
 	backup = etc/vdr/conf.avail/50-chanman.conf
 	source = vdr-chanman-0.0.13.tar.gz::https://github.com/vdr-projects/vdr-plugin-chanman/archive/0.0.13.tar.gz
 	sha256sums = 054c03452bb8971d743ed8a6da99e68d12f116e2a8874fbca3df9869de9e098d
