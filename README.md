@@ -9,13 +9,31 @@ sudo pacman -S odysseus-ai-git
 sudo systemctl enable --now odysseus-ai
 ```
 
-Open `http://127.0.0.1:7000` and log in with the admin password printed during `post_install` (also visible via `journalctl -u odysseus-ai`).
-
-To find the password again:
+Open `http://127.0.0.1:7000` and log in as `admin`. To find the auto-generated first-boot password:
 
 ```bash
-sudo journalctl -u odysseus-ai | grep -i 'admin password'
+odysseus-ai password
 ```
+
+(This runs `sudo` internally to read `/etc/odysseus-ai/odysseus-ai.env`, which is mode 0640 root:odysseus.)
+
+### CLI subcommands
+
+The `odysseus-ai` command is a thin wrapper with subcommands for the common operations. Run as your regular user; `sudo` is invoked internally where needed.
+
+| Command | What it does |
+|---|---|
+| `odysseus-ai` (no args) | Run uvicorn in the foreground (development mode) |
+| `odysseus-ai status` | `systemctl status` + `curl /api/health` |
+| `odysseus-ai start` | `sudo systemctl start odysseus-ai` |
+| `odysseus-ai stop` | `sudo systemctl stop odysseus-ai` |
+| `odysseus-ai restart` | `sudo systemctl restart odysseus-ai` |
+| `odysseus-ai logs [-f] [-n N]` | `sudo journalctl -u odysseus-ai` |
+| `odysseus-ai password` | Print the first-boot admin password |
+| `odysseus-ai env` | Print the effective env (secrets redacted) |
+| `odysseus-ai help` | Usage |
+
+**Do NOT run `python -m uvicorn app:app` directly** — that uses the system Python (3.14), which doesn't have bcrypt/fastapi/etc. Use the systemd service (`sudo systemctl start odysseus-ai`) or the `odysseus-ai` wrapper.
 
 ## What this package installs
 
@@ -87,13 +105,20 @@ sudo systemctl restart odysseus-ai
 
 ### Forgot admin password
 
+The admin password is stored in `/etc/odysseus-ai/odysseus-ai.env` (mode 0640 root:odysseus). View it with:
+
 ```bash
-sudo -u odysseus rm /var/lib/odysseus-ai/data/auth.json
-sudo systemctl restart odysseus-ai
-sudo journalctl -u odysseus-ai | grep -i 'admin password'
+odysseus-ai password
 ```
 
-A new password is auto-generated and printed to the journal.
+If you rotated the password in the web UI and forgot the new one, reset it by deleting the auth store and restarting (a new random password will be generated and shown in the install log; you can also re-read it with `odysseus-ai password` after the reset):
+
+```bash
+sudo systemctl stop odysseus-ai
+sudo -u odysseus rm /var/lib/odysseus-ai/data/auth.json
+sudo systemctl start odysseus-ai
+odysseus-ai password
+```
 
 ### Corrupt SQLite DB
 

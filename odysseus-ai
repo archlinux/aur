@@ -1,23 +1,147 @@
 #!/usr/bin/env bash
-# CLI wrapper for running Odysseus without systemd.
-# Sources /etc/odysseus-ai/odysseus-ai.env and exec's uvicorn in the foreground.
+# CLI wrapper for Odysseus — self-hosted AI workspace.
+#
+# Subcommands:
+#   (none)   — run uvicorn in the foreground (development mode)
+#   status   — show systemd unit status + /api/health
+#   start    — systemctl start odysseus-ai
+#   stop     — systemctl stop odysseus-ai
+#   restart  — systemctl restart odysseus-ai
+#   reload   — systemctl reload odysseus-ai (or restart if no ExecReload)
+#   logs     — tail the journal (use -f to follow, -n N for last N lines)
+#   password — print the first-boot admin password from /etc/odysseus-ai/odysseus-ai.env
+#   env      — print the effective environment (after sourcing the env file)
+#   help     — this message
+#
+# All systemd-bound subcommands run `sudo systemctl` internally; you'll be
+# prompted for your sudo password if needed.
 set -euo pipefail
 
 ENV_FILE="/etc/odysseus-ai/odysseus-ai.env"
 STATE_DIR="/var/lib/odysseus-ai"
 VENV="/usr/lib/odysseus-ai/venv"
 APP_DIR="/usr/lib/odysseus-ai/app"
+SERVICE="odysseus-ai"
 
-if [[ -r "$ENV_FILE" ]]; then
-    set -a; source "$ENV_FILE"; set +a
-fi
+source_env() {
+    if [[ -r "$ENV_FILE" ]]; then
+        set -a; source "$ENV_FILE"; set +a
+    fi
+}
 
-# PYTHONHOME is needed because the shipped Python 3.12 binary's
-# compile-time lib-dynload path doesn't match the venv location.
-export PYTHONHOME="$VENV"
+run_uvicorn() {
+    source_env
+    export PYTHONHOME="$VENV"
+    cd "$STATE_DIR"
+    exec "$VENV/bin/uvicorn" app:app \
+        --app-dir "$APP_DIR" \
+        --host "${APP_BIND:-127.0.0.1}" \
+        --port "${APP_PORT:-7000}" \
+        "$@"
+}
 
-cd "$STATE_DIR"
-exec "$VENV/bin/uvicorn" app:app \
-    --app-dir "$APP_DIR" \
-    --host "${APP_BIND:-127.0.0.1}" \
-    --port "${APP_PORT:-7000}"
+systemctl_action() {
+    # Args: <action> [extra systemctl args...]
+    local action="$1"; shift
+    if ! command -v systemctl >/dev/null 2>&1; then
+        echo "odysseus-ai: systemd is not available on this system" >&2
+        exit 1
+    fi
+    exec sudo systemctl "$action" "$SERVICE" "$@"
+}
+
+show_status() {
+    if command -v systemctl >/dev/null 2>&1; then
+        echo "=== systemctl status $SERVICE ==="
+        sudo systemctl --no-pager --full status "$SERVICE" || true
+    else
+        echo "odysseus-ai: systemd is not available on this system" >&2
+    fi
+    echo
+    local hp="${APP_PORT:-7000}"
+    echo "=== /api/health on 127.0.0.1:${hp} ==="
+    if curl -fsS --max-time 5 "http://127.0.0.1:${hp}/api/health" 2>/dev/null; then
+        echo
+    else
+        echo "  (no response — service may not be running, or the bind/port differs)"
+        echo "  hint: APP_BIND / APP_PORT in $ENV_FILE"
+    fi
+}
+
+show_password() {
+    # Use sudo for the existence check too, since the file is mode 0640
+    # root:odysseus and the current user can't stat it.
+    if ! sudo test -f "$ENV_FILE"; then
+        echo "odysseus-ai: $ENV_FILE does not exist" >&2
+        echo "           the package may not have completed post_install." >&2
+        exit 1
+    fi
+    # File is mode 0640 root:odysseus; the current user may not be able to
+    # read it directly. Use sudo to read it as root. This is the same
+    # privilege you need to `cat` it manually.
+    local pw
+    pw=$(sudo grep '^ODYSSEUS_ADMIN_PASSWORD=' "$ENV_FILE" \
+         | head -1 \
+         | sed -E 's/^ODYSSEUS_ADMIN_PASSWORD=["'"'"']?//; s/["'"'"']?$//') || {
+        echo "odysseus-ai: failed to read $ENV_FILE (sudo or file permissions)" >&2
+        exit 1
+    }
+    if [[ -z "$pw" ]]; then
+        echo "odysseus-ai: ODYSSEUS_ADMIN_PASSWORD is empty in $ENV_FILE" >&2
+        echo "           (this is normal after a password reset; the current" >&2
+        echo "           password hash is in /var/lib/odysseus-ai/data/auth.json)" >&2
+        exit 1
+    fi
+    echo "$pw"
+}
+
+show_env() {
+    # The env file is mode 0640 root:odysseus; read it via sudo so this
+    # subcommand works as a regular user. Then mask secrets.
+    local env_dump
+    if sudo test -f "$ENV_FILE"; then
+        env_dump=$(sudo grep -vE '^\s*(#|$)' "$ENV_FILE" || true)
+    else
+        env_dump=""
+    fi
+    # Mask any var whose name contains PASSWORD, SECRET, TOKEN, or KEY
+    local line key val
+    while IFS='=' read -r key val; do
+        case "$key" in
+            ODYSSEUS_ADMIN_PASSWORD|ODYSSEUS_INTERNAL_TOKEN|\
+            *_PASSWORD|*_SECRET|*_TOKEN|*_API_KEY|*API_KEY)
+                printf '%s=<redacted>\n' "$key"
+                ;;
+            *)
+                printf '%s=%s\n' "$key" "$val"
+                ;;
+        esac
+    done <<< "$env_dump"
+}
+
+show_logs() {
+    exec sudo journalctl -u "$SERVICE" "$@"
+}
+
+show_help() {
+    sed -n '2,/^set -euo pipefail$/p' "$0" \
+        | sed -e 's/^# \{0,1\}//' -e '/^$/d' -e '/^set -euo pipefail$/d'
+}
+
+case "${1:-}" in
+    "")          run_uvicorn ;;
+    status)      show_status ;;
+    start)       systemctl_action start ;;
+    stop)        systemctl_action stop ;;
+    restart)     systemctl_action restart ;;
+    reload)      systemctl_action reload ;;
+    logs)        shift; show_logs "$@" ;;
+    password)    show_password ;;
+    env)         show_env ;;
+    help|--help|-h) show_help ;;
+    *)
+        echo "odysseus-ai: unknown subcommand '$1'" >&2
+        echo "  run 'odysseus-ai help' for usage" >&2
+        exit 2
+        ;;
+esac

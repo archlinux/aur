@@ -51,6 +51,10 @@ _post_install_upgrade_common() {
   # (see systemd unit comment).
   # On first install, pass ODYSSEUS_ADMIN_PASSWORD from the env file so
   # the admin user is created with the password the env file advertises.
+  # Capture setup.py's stdout (which contains the misleading
+  # "Start the server with: python -m uvicorn app:app..." line) and
+  # replace it with our own clean progress summary. setup.py's stderr
+  # (real errors) is shown as-is.
   local -a setup_env=(
     ODYSSEUS_SKIP_ADMIN_PROMPT=1
     PYTHONHOME=/usr/lib/odysseus-ai/venv
@@ -64,11 +68,24 @@ _post_install_upgrade_common() {
       setup_env+=(ODYSSEUS_ADMIN_PASSWORD="$first_pw")
     fi
   fi
-  sudo -u odysseus env -i \
-    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin \
-    "${setup_env[@]}" \
-    bash -c 'cd /var/lib/odysseus-ai && /usr/lib/odysseus-ai/venv/bin/python /usr/lib/odysseus-ai/app/setup.py' \
-    || true
+  local setup_log
+  setup_log=$(mktemp /tmp/odysseus-setup.XXXXXX.log)
+  if sudo -u odysseus env -i \
+       PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin \
+       "${setup_env[@]}" \
+       bash -c 'cd /var/lib/odysseus-ai && /usr/lib/odysseus-ai/venv/bin/python /usr/lib/odysseus-ai/app/setup.py' \
+       >"$setup_log" 2>&1; then
+    echo "  [ok] setup.py: data dirs created, database initialized"
+    if (( env_was_created )); then
+      echo "  [ok] setup.py: admin account created"
+    else
+      echo "  [skip] setup.py: auth.json already exists (admin preserved)"
+    fi
+  else
+    echo "  [warn] setup.py exited non-zero; full log:"
+    sed 's/^/      /' "$setup_log"
+  fi
+  rm -f "$setup_log"
 
   # 7. Reload systemd
   systemctl daemon-reload
@@ -78,12 +95,30 @@ post_install() {
   _post_install_upgrade_common
   cat <<'EOF'
 
-==> Odysseus installed. Next steps:
-==>   1. Edit /etc/odysseus-ai/odysseus-ai.env to add API keys (LLM_HOST etc.)
-==>      The first-boot admin password is set; the file is mode 0640 root:odysseus.
-==>   2. Enable and start the service:
+==> Odysseus installed. Quick start:
+==>
+==>   1. (Optional) Edit /etc/odysseus-ai/odysseus-ai.env to add API keys
+==>      (LLM_HOST, OPENAI_API_KEY, etc.). Defaults are sane for local-only.
+==>
+==>   2. Start the service (it will auto-enable on boot):
 ==>        sudo systemctl enable --now odysseus-ai
-==>   3. Open http://127.0.0.1:7000  (or  http://<lan-ip>:7000  if you change APP_BIND)
+==>
+==>   3. Open http://127.0.0.1:7000 and log in as 'admin'.
+==>
+==>   To find the admin password (printed once on first install):
+==>        odysseus-ai password
+==>
+==>   CLI subcommands (all run as your regular user, sudo prompted as needed):
+==>        odysseus-ai status     # systemctl status + /api/health
+==>        odysseus-ai start|stop|restart
+==>        odysseus-ai logs [-f]  # journalctl -u odysseus-ai
+==>        odysseus-ai password   # print the admin password
+==>        odysseus-ai env        # show effective env (secrets redacted)
+==>
+==>   DO NOT run `python -m uvicorn app:app` — that uses the system Python
+==>   (3.14) and fails with "Could not import module app". The systemd unit
+==>   (or `odysseus-ai`) uses the shipped Python 3.12 venv at
+==>   /usr/lib/odysseus-ai/venv/.
 ==>
 ==> SECURITY: this package exposes an admin-only shell-execution surface
 ==>   (POST /api/shell/exec, /api/shell/stream) that is NOT sandboxed.
@@ -96,8 +131,16 @@ post_upgrade() {
   _post_install_upgrade_common
   cat <<'EOF'
 ==> Odysseus upgraded. setup.py was re-run; data/auth.json is intact.
-==> Check /etc/odysseus-ai/odysseus-ai.env.pacnew (if any) and merge with:
+==>
+==> If you customized /etc/odysseus-ai/odysseus-ai.env, check for a
+==> .pacnew file and merge:
 ==>   sudo DIFFPROG=meld pacdiff
+==>
+==> New CLI subcommands available (run as your regular user):
+==>   odysseus-ai status     # systemctl status + /api/health
+==>   odysseus-ai password   # print the first-boot admin password
+==>   odysseus-ai env        # show effective env (secrets redacted)
+==>   odysseus-ai logs [-f]  # journalctl -u odysseus-ai
 EOF
 }
 
