@@ -1,7 +1,7 @@
 # Maintainer: Egor Tensin <egor@tensin.name>
 pkgname=config-links
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Config file sharing'
 arch=(any)
 url="https://github.com/egor-tensin/$pkgname"
@@ -21,7 +21,7 @@ package() {
 
     install -D -m 0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 
-    find bin -type f -exec install -D -m 0644 -t "$pkgdir/usr/lib/$pkgname/bin" {} ';'
+    find bin -type f -exec install -D -m 0755 -t "$pkgdir/usr/lib/$pkgname/bin" {} ';'
     find lib -type f -exec install -D -m 0644 -t "$pkgdir/usr/lib/$pkgname/lib" {} ';'
 
     install -d "$pkgdir/usr/bin"
