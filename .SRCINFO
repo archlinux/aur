@@ -1,0 +1,22 @@
+pkgbase = clai-desktop-bin
+	pkgdesc = Desktop app for building, running, and supervising small teams of AI agents
+	pkgver = 26.6.6
+	pkgrel = 1
+	url = https://github.com/juacker/clai
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsecret
+	depends = openssl
+	depends = bubblewrap
+	depends = hicolor-icon-theme
+	conflicts = clai
+	options = !strip
+	options = !debug
+	source = https://github.com/juacker/clai/releases/download/v26.6.6/clai_26.6.6_amd64.deb
+	source = https://github.com/juacker/clai/raw/v26.6.6/LICENSE
+	sha256sums = 232a4cac9a3b2382358967c782e392103b559585ad06cad00a8c59e32456ae00
+	sha256sums = SKIP
+
+pkgname = clai-desktop-bin
