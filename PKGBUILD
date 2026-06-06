@@ -24,7 +24,7 @@ pkgver() {
 package() {
   cd tg-mpv-bot
   install -d "$pkgdir/usr/share/tg-mpv-bot"
-  cp -r bot.py src "$pkgdir/usr/share/tg-mpv-bot/"
+  cp -r bot.py src assets "$pkgdir/usr/share/tg-mpv-bot/"
   install -Dm644 .env.example "$pkgdir/usr/share/doc/tg-mpv-bot/env.example"
   install -Dm644 README.md "$pkgdir/usr/share/doc/tg-mpv-bot/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
