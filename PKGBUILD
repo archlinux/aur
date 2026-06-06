@@ -24,7 +24,7 @@
 pkgname=odysseus-ai-git
 _pkgname=odysseus
 pkgver=r856.73673258
-pkgrel=12
+pkgrel=15
 pkgdesc="Self-hosted AI workspace with prebuilt Python 3.12 venv, tracking upstream main"
 arch=('x86_64')
 url='https://github.com/pewdiepie-archdaemon/odysseus'
@@ -81,14 +81,14 @@ sha256sums=('SKIP'
             '977a9230896cd23b78c712f16857ad605879b74c3076793d95827aaa702c14b9'
             '83fd58a89da27b1211d7727f0d83f9d6f3633d15e117c6df1097445af6fb542d'
             '8fee9c720af5531a42dff4a96ea07983e861b1d61df9ed70d2749ea4cb718d86'
-            'fcbcbfe2323150d8fb89d37979173f8ba33fca5ebe8e948c46f3195fde59c7c3'
+            '089ff2f58c09c17e7254749e022cad62710a6b6968a808cbbe9861384a087425'
             'c1464cb1073ea2f8b298f282e16eab71b9474e9d65a2963bfc543df4be2164f9'
             'c8f0c2378fa72d90aa710765895be4ff47ee4160615a5066b9bc5311af6ea71f'
             '7adc77d6aef90a3fd86f9e31795881d48ee7f9d635714982356229cf7e007187'
             '0627cc6cd18e1307740907442272cb26fa4615f5183ad08e946438a88de10f9d'
             'd43eb701dd137d95bca167c0c86f18692faea573fe7333840248297587f43cbe'
             '295f647c0e114eea7a56c3d77e173c0a245c55c612df268b34521b907acfb58e'
-            'f620d18d6797b871c6a77cedbe57033d46bff4229aa616a6d791d58a9e08844c'
+            '67c3cae7d473062978a70fd4d86ee683c9659b843fb178c9dfa4a9d953200220'
             '2e2872c6cfc42b2e543255846ae0d07fd157f13aba1cb5cee3a95dcffe3e0314'
             '11933a234233ea483e306ef3f6401737d51ef3107c47fbe94741f2c97626c65a'
             '4674cc172af2a0de35fc4f0fea59da77a204264e8008f0452b71aa90faf77bb2')
@@ -350,11 +350,15 @@ package() {
   install -dm755 "$pkgdir/usr/lib/odysseus-ai/app"
   # Copy the parts that are actually needed at runtime. node_modules
   # is large; we ship it because @anthropic-ai/sdk is a runtime dep.
+  # `static/` is the web UI (login.html, app.js, fonts/, js/, etc.) and
+  # MUST be installed; the app reads it via CWD-relative paths
+  # (e.g. abs_join(BASE_DIR, "static/login.html")).
   cp -ra app.py setup.py src core routes services mcp_servers scripts integrations \
-        companion config licenses package.json package-lock.json node_modules .env.example \
+        companion config licenses static \
+        package.json package-lock.json node_modules .env.example \
         "$pkgdir/usr/lib/odysseus-ai/app/" 2>/dev/null || \
   cp -ra app.py setup.py src core routes services mcp_servers scripts \
-        package.json package-lock.json node_modules .env.example \
+        static package.json package-lock.json node_modules .env.example \
         "$pkgdir/usr/lib/odysseus-ai/app/"
 
   # ---- Install the relocatable venv ----

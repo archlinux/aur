@@ -3,11 +3,16 @@ d /etc/odysseus-ai 0750 root odysseus -
 
 # /var/lib/odysseus-ai (data + services + static live here, symlinked
 # from /usr/lib/odysseus-ai/app/services, /usr/lib/odysseus-ai/app/static
-# so the upstream CWD-relative paths resolve to writable state)
+# so the upstream CWD-relative paths resolve to writable state).
+# NOTE: /var/lib/odysseus-ai/static is NOT here on purpose — the
+# .install post_install hook (via odysseus-ai-symlinks.sh) creates it
+# as a symlink to /usr/lib/odysseus-ai/app/static. If we let
+# systemd-tmpfiles create it as a real dir, the symlinks script has to
+# rm -rf it later, and `systemd-tmpfiles --create` prints a scary
+# "already exists and is not a directory" warning in the meantime.
 d /var/lib/odysseus-ai 0750 odysseus odysseus -
 d /var/lib/odysseus-ai/data 0750 odysseus odysseus -
 d /var/lib/odysseus-ai/services 0750 odysseus odysseus -
-d /var/lib/odysseus-ai/static 0750 odysseus odysseus -
 d /var/lib/odysseus-ai/python-extra 0750 odysseus odysseus -
 
 # /var/cache/odysseus-ai (Hugging Face model cache, fastembed)
