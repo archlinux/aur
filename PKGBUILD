@@ -4,7 +4,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=cartridges-fast-git
-pkgver=2.10.1.r0.gce584a0
+pkgver=r1416.gcb0d7d0
 pkgrel=1
 pkgdesc="A GTK4 + Libadwaita game launcher"
 arch=(any)
@@ -24,7 +24,12 @@ b2sums=('SKIP')
 
 pkgver() {
   cd cartridges
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
+  if git describe --long --tags >/dev/null 2>&1; then
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  else
+    printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
 }
 
 build() {
