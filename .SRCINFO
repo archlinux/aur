@@ -1,0 +1,23 @@
+pkgbase = tusic
+	pkgdesc = Lightweight TUI Music Player. Play from YouTube or ~/Music folder easily.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/eminfedar/tusic
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	makedepends = patch
+	depends = yt-dlp
+	provides = tusic
+	conflicts = tusic-git
+	conflicts = tusic-bin
+	options = !debug
+	options = !lto
+	source = tusic-0.1.3.tar.gz::https://github.com/eminfedar/tusic/archive/refs/tags/v0.1.3.tar.gz
+	source = 0001-use-yt-dlp-from-system.patch
+	sha256sums = fc11e5605e51007a6e578b50d72a0610af08d93fea5f7806a7aa9736cbf8f94e
+	sha256sums = a5d50a8f71978732320819126fc745c296c04c6c2721b79c931e3e1d25f35df5
+
+pkgname = tusic

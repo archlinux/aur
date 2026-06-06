@@ -1,0 +1,307 @@
+From 58b6b84ea8587c84b6591eda3a4a8d8e5372d772 Mon Sep 17 00:00:00 2001
+From: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
+Date: Sat, 6 Jun 2026 17:02:23 +0300
+Subject: [PATCH] clean(yt-dlp): dont download yt-dlp yourself and use the
+ systems one
+
+---
+ Cargo.lock         | 52 ----------------------------
+ Cargo.toml         |  5 ---
+ src/config.rs      |  6 ----
+ src/download.rs    | 84 ----------------------------------------------
+ src/main.rs        |  6 ----
+ src/youtube/mod.rs | 20 +++++------
+ 6 files changed, 9 insertions(+), 164 deletions(-)
+ delete mode 100644 src/download.rs
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 5a06010..039a9fd 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -820,18 +820,6 @@ dependencies = [
+  "crossbeam-utils",
+ ]
+ 
+-[[package]]
+-name = "console"
+-version = "0.16.3"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d64e8af5551369d19cf50138de61f1c42074ab970f74e99be916646777f8fc87"
+-dependencies = [
+- "encode_unicode",
+- "libc",
+- "unicode-width",
+- "windows-sys 0.61.2",
+-]
+-
+ [[package]]
+ name = "convert_case"
+ version = "0.10.0"
+@@ -1313,19 +1301,6 @@ version = "2.0.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "117240f60069e65410b3ae1bb213295bd828f707b5bec6596a1afc8793ce0cbc"
+ 
+-[[package]]
+-name = "downloader"
+-version = "0.2.8"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "9ac1e888d6830712d565b2f3a974be3200be9296bc1b03db8251a4cbf18a4a34"
+-dependencies = [
+- "futures",
+- "rand 0.8.6",
+- "reqwest 0.12.28",
+- "thiserror 1.0.69",
+- "tokio",
+-]
+-
+ [[package]]
+ name = "dtoa"
+ version = "1.0.11"
+@@ -1365,12 +1340,6 @@ version = "1.16.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "91622ff5e7162018101f2fea40d6ebf4a78bbe5a49736a2020649edf9693679e"
+ 
+-[[package]]
+-name = "encode_unicode"
+-version = "1.0.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "34aa73646ffb006b8f5147f3dc182bd4bcb190227ce861fc4a4844bf8e3cb2c0"
+-
+ [[package]]
+ name = "encoding_rs"
+ version = "0.8.35"
+@@ -2225,19 +2194,6 @@ dependencies = [
+  "serde_core",
+ ]
+ 
+-[[package]]
+-name = "indicatif"
+-version = "0.18.4"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "25470f23803092da7d239834776d653104d551bc4d7eacaf31e6837854b8e9eb"
+-dependencies = [
+- "console",
+- "portable-atomic",
+- "unicode-width",
+- "unit-prefix",
+- "web-time",
+-]
+-
+ [[package]]
+ name = "indoc"
+ version = "2.0.7"
+@@ -5254,8 +5210,6 @@ dependencies = [
+  "cpal",
+  "crossterm",
+  "dirs",
+- "downloader",
+- "indicatif",
+  "notify",
+  "rand 0.10.1",
+  "ratatui",
+@@ -5343,12 +5297,6 @@ version = "0.2.6"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "ebc1c04c71510c7f702b52b7c350734c9ff1295c464a03335b00bb84fc54f853"
+ 
+-[[package]]
+-name = "unit-prefix"
+-version = "0.5.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "81e544489bf3d8ef66c953931f56617f423cd4b5494be343d9b9d3dda037b9a3"
+-
+ [[package]]
+ name = "untrusted"
+ version = "0.9.0"
+diff --git a/Cargo.toml b/Cargo.toml
+index d443ce1..ef473a9 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -50,11 +50,6 @@ rusty_ytdl = { version = "0.7", default-features = false, features = [
+     "rustls-tls",
+ ] } # only for searching.
+ 
+-# yt-dlp downloader
+-downloader = {version="0.2", default-features = false, features = ["rustls-tls"]}
+-indicatif="0.18"
+-
+-
+ [package.metadata.generate-rpm]
+ assets = [
+     { source = "target/release/tusic", dest = "/usr/bin/tusic", mode = "755" },
+diff --git a/src/config.rs b/src/config.rs
+index cb1733a..4b33923 100644
+--- a/src/config.rs
++++ b/src/config.rs
+@@ -38,12 +38,6 @@ impl Config {
+             .join("config.toml")
+     }
+ 
+-    pub fn config_dir() -> PathBuf {
+-        dirs::config_dir()
+-            .unwrap_or_else(|| PathBuf::from("."))
+-            .join("tusic")
+-    }
+-
+     /// Load the config from disk, falling back to defaults if missing or invalid.
+     pub fn load() -> Self {
+         match std::fs::read_to_string(Self::config_path()) {
+diff --git a/src/download.rs b/src/download.rs
+deleted file mode 100644
+index 6ec0cf0..0000000
+--- a/src/download.rs
++++ /dev/null
+@@ -1,84 +0,0 @@
+-use std::{
+-    fs::{create_dir_all, Permissions},
+-    os::unix::fs::PermissionsExt,
+-    path::Path,
+-    sync::Arc,
+-};
+-
+-use downloader::{progress::Reporter, Download, Downloader};
+-use indicatif::{ProgressBar, ProgressStyle};
+-
+-struct DownloadProgress {
+-    pb: ProgressBar,
+-}
+-
+-impl DownloadProgress {
+-    fn new(max_progress: u64) -> Self {
+-        let pb = ProgressBar::new(max_progress);
+-
+-        pb.set_style(ProgressStyle::with_template("{spinner:.green} [{elapsed_precise}] [{wide_bar:.cyan/blue}] {bytes}/{total_bytes} ({bytes_per_sec}, {eta})")
+-                .unwrap()
+-                .progress_chars("#>-"));
+-
+-        Self { pb }
+-    }
+-}
+-
+-impl Reporter for DownloadProgress {
+-    fn done(&self) {
+-        self.pb.println("done!");
+-    }
+-    fn progress(&self, current: u64) {
+-        self.pb.set_position(current);
+-    }
+-    fn set_message(&self, message: &str) {
+-        self.pb.println(message);
+-    }
+-    fn setup(&self, max_progress: Option<u64>, _message: &str) {
+-        self.pb.set_length(max_progress.unwrap_or(0));
+-        self.pb.println("Downloading yt-dlp...");
+-    }
+-}
+-
+-pub fn download_ytdlp(config_dir: &Path) -> anyhow::Result<()> {
+-    // Create config dir if not exists
+-    if !config_dir.exists() {
+-        create_dir_all(config_dir)?;
+-    }
+-
+-    let ytdlp_path = config_dir.join("yt-dlp");
+-    if ytdlp_path.exists() {
+-        // yt-dlp already exists, no need to download
+-        return Ok(());
+-    }
+-
+-    let mut downloader = Downloader::builder()
+-        .download_folder(config_dir)
+-        .parallel_requests(8)
+-        .build()?;
+-
+-    #[cfg(target_os = "linux")]
+-    let yt_dlp_url = "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_linux";
+-    #[cfg(target_os = "macos")]
+-    let yt_dlp_url = "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_macos";
+-    #[cfg(target_os = "windows")]
+-    let yt_dlp_url = "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe";
+-
+-    let dl = Download::new(yt_dlp_url)
+-        .file_name(&ytdlp_path)
+-        .progress(Arc::new(DownloadProgress::new(0)));
+-
+-    let result = downloader.download(&[dl])?;
+-
+-    for r in result {
+-        match r {
+-            Err(e) => println!("Error: {e}"),
+-            Ok(s) => {
+-                std::fs::set_permissions(&ytdlp_path, Permissions::from_mode(0o0775))?;
+-                println!("Download Success: {}", &s);
+-            }
+-        };
+-    }
+-
+-    Ok(())
+-}
+diff --git a/src/main.rs b/src/main.rs
+index 07e9fcc..0174e90 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -2,7 +2,6 @@ mod app;
+ mod audio;
+ mod cli;
+ mod config;
+-mod download;
+ mod model;
+ mod msg;
+ mod playlist;
+@@ -20,16 +19,11 @@ use crate::{app::App, audio::rodio::RodioBackend, config::Config, youtube::Youtu
+ fn main() -> anyhow::Result<()> {
+     let _args = Args::parse();
+ 
+-    // Download yt_dlp if not downloaded:
+-    let config_dir = config::Config::config_dir();
+-    download::download_ytdlp(&config_dir)?;
+-
+     // Youtube Download and Config path
+     let config = Config::load();
+     let music_download_dir = config.download_dir();
+     let yt_service = smol::block_on(async_compat::Compat::new(YoutubeService::new(
+         music_download_dir,
+-        &config_dir,
+     )))?;
+ 
+     let backend = RodioBackend::new()?;
+diff --git a/src/youtube/mod.rs b/src/youtube/mod.rs
+index 41ef622..4dd8bec 100644
+--- a/src/youtube/mod.rs
++++ b/src/youtube/mod.rs
+@@ -3,7 +3,7 @@ use anyhow::Error;
+ use rusty_ytdl::search::{SearchOptions, SearchResult};
+ use std::path::{Path, PathBuf};
+ use yt_dlp::{
+-    client::{Libraries, LibraryInstaller},
++    client::{Libraries,},
+     Downloader, VideoSelection,
+ };
+ 
+@@ -51,16 +51,14 @@ pub struct YoutubeService {
+ }
+ 
+ impl YoutubeService {
+-    pub async fn new(download_dir: PathBuf, config_dir: &Path) -> anyhow::Result<Self> {
+-        // Install yt-dlp:
+-        let ytdlp_path = config_dir.join("yt-dlp");
+-        if !ytdlp_path.exists() {
+-            let installer = LibraryInstaller::new(config_dir.to_path_buf());
+-            println!(
+-                "Downloading yt-dlp binary, please wait (this may take a minute, size: 36MB~)"
+-            );
+-            installer.install_youtube(None).await?;
+-        }
++    pub async fn new(download_dir: PathBuf) -> anyhow::Result<Self> {
++        let ytdlp_path = std::env::var_os("PATH")
++            .and_then(|paths| {
++                std::env::split_paths(&paths)
++                    .map(|p| p.join("yt-dlp"))
++                    .find(|p| p.exists())
++            })
++            .ok_or_else(|| anyhow::anyhow!("yt-dlp is not found in PATH"))?;
+ 
+         let libraries = Libraries::new(ytdlp_path, PathBuf::from("ffmpeg"));
+ 
+-- 
+2.54.0
+
