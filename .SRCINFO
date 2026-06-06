@@ -1,0 +1,12 @@
+pkgbase = pgcli-zsh-completion
+	pkgdesc = Zsh completion for pgcli
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = https://github.com/nonZero/pgcli-zsh-completion
+	arch = any
+	license = 0BSD
+	depends = zsh
+	depends = postgresql
+	depends = pgcli=4.5.0
+
+pkgname = pgcli-zsh-completion
