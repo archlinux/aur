@@ -1,4 +1,4 @@
-# Maintainer: pinsl <johannes.neyer at gmail dot com>
+# Maintainer: funnes <johannes.neyer at gmail dot com>
 
 pkgname=nrfutil
 pkgver=8.2.0 
