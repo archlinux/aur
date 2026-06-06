@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="matlab-proxy"
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="Open a MATLAB® desktop in a web browser tab"
 arch=(
@@ -33,7 +33,7 @@ depends=(
 #   'python-pytest-mock'
 #   # 'python-pytest-aiohttp'
 #   # 'python-pytest-playwright'
-#   # 'python-pytest-asyncio'
+#   'python-pytest-asyncio'
 # )
 makedepends=(
   'npm>=11.6'
@@ -54,10 +54,8 @@ conflicts=(
 _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
-  "${pkgname}_python3.14_event_loop.patch::${url}/pull/83.patch?full_index=1"
 )
-sha256sums=('c101678cf128a01306fbc5baea09fe76a006a4eb0f95f37970173ce51343ef4f'
-            '2aa24bda0a46e4b14d5f39fa1b8fa6abbb41d6871b786a358d707f25386054b4')
+sha256sums=('6846a7e724595a7dd011554a23779b145d1a1bc6ac007232b3bf227a66feb6dd')
 
 _source() {
   export NPM_CONFIG_CACHE="${srcdir}/.npm"
@@ -66,10 +64,7 @@ _source() {
 prepare() {
   _source
 
-  cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "${srcdir}/${pkgname}_python3.14_event_loop.patch"
-
-  cd "gui"
+  cd "${srcdir}/${_pkgsrc}/gui"
   npm install
 }
 
