@@ -2,16 +2,16 @@
 
 pkgname=go2webp
 _pkgname=go2webp
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='CLI tool for converting images and folders of images to WebP format'
 url='https://codeberg.org/fausty/go2webp'
 arch=('x86_64' 'aarch64')
 license=('GPL3')
-depends=()
+depends=('glibc' 'libwebp')
 makedepends=('go')
 source=("https://codeberg.org/fausty/go2webp/archive/v${pkgver}.tar.gz")
-sha256sums=('89eee8764d9759d08cb4ee40f2502e298bff802c2b0a9c3c5559c265df8dc44a')
+sha256sums=('92c42e1bc03a1311d97e062d78f22de9c6a10263c3847e9ea2268b79e243264c')
 
 build() {
   cd go2webp
