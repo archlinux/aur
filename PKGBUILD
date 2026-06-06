@@ -3,17 +3,20 @@
 pkgname=asteria
 _pkgname=Asteria
 pkgver=2.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Astrological chart calculator and analyzer with AI interpretations'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/alamahant/${_pkgname}"
 license=('AGPL-3.0-only')
-depends=('qt6-base' 'qt6-svg' 'qt6-webengine' 'qt6-positioning' 'hicolor-icon-theme')
+depends=('qt6-base' 'qt6-svg' 'qt6-webengine' 'qt6-positioning' 'qt6-charts' 'hicolor-icon-theme')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "swisseph-2.10.3final.tar.gz::https://github.com/aloistr/swisseph/archive/refs/tags/v2.10.3final.tar.gz")
+        "swisseph-2.10.3final.tar.gz::https://github.com/aloistr/swisseph/archive/refs/tags/v2.10.3final.tar.gz"
+        "asteria.install")
 sha256sums=('b7e9a0035b308a9da4c14ee65cf47e4828b6b3d1a4e4a0245a774c4698c0451f'
-            '032a71d18cff92c9bf960020abda28d44c8f0c678072dcbab561e9aeb0399fbc')
+            '032a71d18cff92c9bf960020abda28d44c8f0c678072dcbab561e9aeb0399fbc'
+	    '05d1636fbc12f3649b1c83f6f62e4a1dcec50fcb192b1c5a98b830757c2b48ae')
+install="asteria.install"
 
 prepare(){
   #first copy the Swiss Ephemeris into the Asteria build directory (it needs to be compiled statically with Asteria) as 'swisseph':
