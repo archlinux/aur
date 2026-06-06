@@ -6,8 +6,33 @@ The package is built, tested, and committed locally. To push to the AUR
 ## Option A: register this host's SSH key on your AUR account
 
 1. Log in to https://aur.archlinux.org/account/petrouil/edit
-2. Paste this public key into the "SSH Public Key" field:
+2. Paste this public key into the "SSH Public Key" field.
+   **The exact text — including the trailing `petrouil@archimidis` comment —
+   must match byte-for-byte. A single typo in the base64 will silently
+   register a DIFFERENT key. To be safe, run this from a terminal:**
+   ```bash
+   xclip -selection clipboard < ~/.ssh/id_rsa.pub   # or use xdotool, pbcopy, etc.
    ```
+   …then paste into the form. The key is:
+   ```
+   ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDRp79O8+QzXOtqz1ZCH2sWd57jrAh1w2TlOd+4qVRXM479P8qCmXfYouk1WTthE41xGn3t9/tEG7VPakLpGS3jcj0NXgzO03w1hfJIXK0u5WfDRlsbnTtaEebRdpLQvSfHZMH4sKObfErnm+8Pr4G2Skc6uqbWKvBRU8rqmNkKEXHa5W+pnUMcFq0Oh1Y/dTPB3fGvbiBE4UpItBqQOV3N6Zd/2Vl4+THV75BGK+RCRKN6F476PArByNOpQYV9t8ztiWVfiRPeSlXO2MZ+VhdF7ZOtHPOC1CRaqJB8Ue+q2qlvt65SUYfoCe3UAA2ar+w9B/jMCbY0UStotaNKBngenP350mNWFb7Hi0lXMncPluxOxePXb3R8U7b67B761FTwqrIRYcTqUBOWkLn6meClW58AmfluFg828r7092M3cyD7YcNyjxtRbiQvjfVfmvQ7sS/CPGzW1J2Ce8PXdUmuPMNcTpZmZa7qbXnptNQNiRi99PmdMsD22+dLWarw+W8= petrouil@archimidis
+   ```
+   SHA256 fingerprint: `lNZ5Z0fydn2UWepomy8WuGTCamcuaAh54BnNr31Hbls`
+3. Click "Save" (or "Update")
+4. Then run the push:
+   ```bash
+   cd /home/petrouil/tmp3/odysseus-ai-git
+   git push -u origin master
+   ```
+
+**Verify the upload worked** before pushing:
+```bash
+ssh-keyscan -t ed25519 aur.archlinux.org >/dev/null 2>&1   # prime known_hosts
+ssh -T -o IdentitiesOnly=yes -i ~/.ssh/id_rsa aur@aur.archlinux.org
+# Expected: "petrouil" or similar welcome if the key matches.
+# If you get "Permission denied (publickey)" the AUR-side key is
+# different — re-paste, very carefully, or use Option B below.
+```
    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDRp79O8+QzXOtqz1ZCH2sWd57jrAh1w2TlOd+4qVRXM479P8qCmXfYouk1WTthE41xGn3t9/tEG7VPakLpGS3jcj0NXgzO03w1hfJIXK0u5WfDRlsbnTtaEebRdpLQvSfHZMH4sKObfErnm+8Pr4G2Skc6uqbWKvBRU8rqmNkKEXHa5W+pnUMcFq0Oh1Y/dTPB3fGvbiBE4UpItBqQOV3N6Zd/2Vl4+THV75BGK+RCRKN6F476PArByNOpQYV9t8ztiWVfiRPeSlXO2MZ+VhdF7ZOtHPOC1CRaqJB8Ue+q2qlvt65SUYfoCe3UAA2ar+w9B/jMCbY0UStotaNKBngenP350mNWFb7Hi0lXMncPluxOxePXb3R8U7b67B761FTwqrIRYcTqUBOWkLn6meClW58AmfluFg828r7092M3cyD7YcNyjxtRbiQvjfVfmvQ7sS/CPGzW1J2Ce8PXdUmuPMNcTpZmZa7qbXnptNQNiRi99PmdMsD22+dLWarw+W8= petrouil@archimidis
    ```
 3. Click "Save" (or "Update")
