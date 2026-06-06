@@ -9,7 +9,7 @@ _skia_commit=c30d2c4f604a9b65a98e847ba008ac6e1a936eda
 pkgname=friction
 pkgver=1.0.0_rc.3
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Motion graphics and animation app"
 url="https://friction.graphics/"
@@ -46,6 +46,11 @@ prepare() {
   # Required to create static library
   sed -i '/HOST string/ a set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fno-lto")\nset(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-lto")' \
          "$pkgname-$_pkgver/src/gperftools/CMakeLists.txt"
+
+  # Fix for Clang 19+ half-float conversion error
+  sed -i '/vcvtph2ps25/ s|return|//return|' \
+         "$pkgname-$_pkgver/src/skia/third_party/skcms/src/Transform_inl.h"
+
 }
 
 build() {
