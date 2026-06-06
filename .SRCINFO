@@ -1,0 +1,16 @@
+pkgbase = massdilate-git
+	pkgdesc = Image denoising utility with temporal averaging and PRNU cancellation
+	pkgver = r1
+	pkgrel = 1
+	url = https://codeberg.org/zynskeyfolf/massdilate
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	depends = qt6-base
+	provides = massdilate
+	source = git+https://codeberg.org/zynskeyfolf/massdilate
+	sha256sums = SKIP
+
+pkgname = massdilate-git
