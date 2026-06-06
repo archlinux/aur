@@ -45,7 +45,7 @@ build() {
     cmake -B build -S "$pkgname" -G Ninja \
         -DCMAKE_C_COMPILER=clang \
         -DCMAKE_CXX_COMPILER=clang++ \
-        -DCMAKE_LINKER=lld \
+        -DCMAKE_LINKER_TYPE=LLD \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=None \
         -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
