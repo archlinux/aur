@@ -6,10 +6,10 @@
 # Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 
 pkgname=akkoma
-pkgver=3.18.0
+pkgver=3.19.0
 pkgrel=1
-_erlangver=28.4.1
-_elixirver=1.19.5
+_erlangver=29.0
+_elixirver=1.20.0
 pkgdesc='faster-paced fork of Pleroma'
 url='https://akkoma.dev/AkkomaGang/akkoma'
 license=('AGPL-3.0-or-later' 'CC-BY-4.0' 'CC-BY-SA-4.0')
