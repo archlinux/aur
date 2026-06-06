@@ -1,0 +1,83 @@
+[Unit]
+Description=Odysseus — self-hosted AI workspace
+Documentation=https://github.com/pewdiepie-archdaemon/odysseus
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=odysseus
+Group=odysseus
+WorkingDirectory=/var/lib/odysseus-ai
+# PYTHONHOME is needed because the shipped Python 3.12 binary's
+# compile-time lib-dynload path doesn't match the venv location. The
+# venv machinery overrides sys.prefix at Python level, but the C-level
+# lib-dynload lookup happens earlier and needs PYTHONHOME.
+Environment=PYTHONHOME=/usr/lib/odysseus-ai/venv
+EnvironmentFile=-/etc/odysseus-ai/odysseus-ai.env
+
+# Security notice: this unit exposes an admin-only shell-execution surface
+# (POST /api/shell/exec, /api/shell/stream) that is NOT sandboxed. Do NOT
+# tighten SystemCallFilter/RestrictNamespaces below — the shell endpoint
+# would defeat those directives. Keep the bind at 127.0.0.1. See
+# /etc/odysseus-ai/odysseus-ai.env for the full threat model excerpt.
+
+# --- First-boot setup. ConditionPathExists=! prevents re-runs. ---
+ConditionPathExists=!/var/lib/odysseus-ai/data/auth.json
+ExecStartPre=+/usr/bin/systemd-run \
+  --quiet \
+  --property=User=odysseus \
+  --property=Group=odysseus \
+  --setenv=ODYSSEUS_SKIP_ADMIN_PROMPT=1 \
+  --setenv=ODYSSEUS_ADMIN_USER=admin \
+  --working-directory=/var/lib/odysseus-ai \
+  /usr/lib/odysseus-ai/venv/bin/python /usr/lib/odysseus-ai/app/setup.py
+
+ExecStart=/usr/lib/odysseus-ai/venv/bin/uvicorn app:app \
+  --app-dir /usr/lib/odysseus-ai/app \
+  --host 127.0.0.1 --port 7000
+
+ExecStartPost=/usr/bin/curl -fsS --max-time 30 \
+  --retry 30 --retry-delay 1 --retry-connrefused \
+  http://127.0.0.1:7000/api/health
+
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=300
+TimeoutStopSec=30
+
+# --- State directories (auto-created by systemd at boot) ---
+StateDirectory=odysseus-ai
+CacheDirectory=odysseus-ai
+LogsDirectory=odysseus-ai
+RuntimeDirectory=odysseus-ai
+
+# --- Hardening ---
+NoNewPrivileges=yes
+LockPersonality=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RestrictNamespaces=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHome=yes
+ProtectSystem=strict
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectProc=invisible
+ProtectClock=yes
+ProtectHostname=yes
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0077
+ReadWritePaths=/var/lib/odysseus-ai /var/cache/odysseus-ai /var/log/odysseus-ai
+ReadOnlyPaths=/etc/odysseus-ai
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+[Install]
+WantedBy=multi-user.target

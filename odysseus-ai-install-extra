@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Install optional Python deps (e.g. faster-whisper, pymupdf) into the
+# shipped venv. Run with the package names you want:
+#   sudo odysseus-ai-install-extra faster-whisper pymupdf
+# Then `sudo systemctl restart odysseus-ai`.
+set -euo pipefail
+VENV="/usr/lib/odysseus-ai/venv"
+if [[ $# -eq 0 ]]; then
+    echo "Usage: $0 <pip-package> [<pip-package> ...]" >&2
+    exit 1
+fi
+exec sudo -u odysseus "$VENV/bin/pip" install --user "$@"

@@ -1,0 +1,13 @@
+--- a/src/rag_singleton.py
++++ b/src/rag_singleton.py
+@@ -41,8 +41,8 @@ def get_rag_manager():
+     try:
+         from src.rag_vector import VectorRAG
+
+-        base_dir = Path(__file__).parent.parent
+-        persist_dir = os.path.join(base_dir, "data", "rag")
++        # AUR package: use CWD-relative path (WorkingDirectory=/var/lib/odysseus-ai)
++        persist_dir = os.path.join("data", "rag")
+
+         rag_instance = VectorRAG(persist_directory=persist_dir)
+         if not rag_instance.healthy:

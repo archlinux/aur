@@ -1,30 +1,118 @@
+# vim:set et sw=2 ts=2:
+#
+# /var/lib/odysseus-ai and /etc/odysseus-ai are owned by the AUR package.
+# The install hooks below are idempotent and safe to re-run.
+#
+
+_post_install_upgrade_common() {
+  # 1. Create the system user (idempotent)
+  systemd-sysusers odysseus-ai.conf
+
+  # 2. Create /etc/odysseus-ai/ (idempotent)
+  systemd-tmpfiles --create odysseus-ai.conf
+
+  # 3. Generate /etc/odysseus-ai/odysseus-ai.env on first install only
+  # Generate the random password FIRST, write the env file with it, then
+  # pass the SAME password to setup.py via ODYSSEUS_ADMIN_PASSWORD so the
+  # password the user reads from the env file is the one that actually
+  # works at /api/auth/login. (setup.py defaults to its own random
+  # password when ODYSSEUS_ADMIN_PASSWORD is unset, which would mismatch.)
+  local env_was_created=0
+  if [[ ! -f /etc/odysseus-ai/odysseus-ai.env ]]; then
+    local token pw
+    token=$(tr -dc 'a-f0-9' </dev/urandom | head -c 64)
+    pw=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 20)
+    sed -e "s|^ODYSSEUS_INTERNAL_TOKEN=.*$|ODYSSEUS_INTERNAL_TOKEN=\"${token}\"|" \
+        -e "s|^ODYSSEUS_ADMIN_PASSWORD=.*$|ODYSSEUS_ADMIN_PASSWORD=\"${pw}\"|" \
+        /usr/share/odysseus-ai/odysseus-ai.env.example \
+      > /etc/odysseus-ai/odysseus-ai.env
+    chmod 0640 /etc/odysseus-ai/odysseus-ai.env
+    chown root:odysseus /etc/odysseus-ai/odysseus-ai.env
+    echo "==> Generated /etc/odysseus-ai/odysseus-ai.env"
+    echo "==> First-boot admin password (SAVE THIS): ${pw}"
+    env_was_created=1
+  fi
+
+  # 4. Wire up the in-source-tree write symlinks (drill 1). This creates
+  #    /var/lib/odysseus-ai/services/ and /var/lib/odysseus-ai/static/ as
+  #    a side effect (mkdir -p). We chown AFTER so /var/lib/odysseus-ai
+  #    itself is also owned by odysseus.
+  /usr/lib/odysseus-ai/libexec/odysseus-ai-symlinks.sh
+
+  # 5. chown the state dirs to the odysseus user (idempotent; run AFTER
+  #    the symlinks script so /var/lib/odysseus-ai/ itself is odysseus-owned).
+  chown -R odysseus:odysseus /var/lib/odysseus-ai /var/cache/odysseus-ai /var/log/odysseus-ai
+
+  # 6. Always re-run setup.py as odysseus (idempotent; guarded by the
+  #    `if os.path.exists(auth_path)` check inside setup.py, so the
+  #    admin-creation branch only fires on first boot).
+  # Run directly (not via systemd-run) so we wait for completion and
+  # see any errors. PYTHONHOME is needed for the venv's Python 3.12
+  # (see systemd unit comment).
+  # On first install, pass ODYSSEUS_ADMIN_PASSWORD from the env file so
+  # the admin user is created with the password the env file advertises.
+  local -a setup_env=(
+    ODYSSEUS_SKIP_ADMIN_PROMPT=1
+    PYTHONHOME=/usr/lib/odysseus-ai/venv
+    HOME=/var/lib/odysseus-ai
+  )
+  if (( env_was_created )) && [[ -f /etc/odysseus-ai/odysseus-ai.env ]]; then
+    local first_pw
+    first_pw=$(grep '^ODYSSEUS_ADMIN_PASSWORD=' /etc/odysseus-ai/odysseus-ai.env \
+               | head -1 | sed -E 's/^ODYSSEUS_ADMIN_PASSWORD=["'"'"']?//; s/["'"'"']?$//')
+    if [[ -n "$first_pw" ]]; then
+      setup_env+=(ODYSSEUS_ADMIN_PASSWORD="$first_pw")
+    fi
+  fi
+  sudo -u odysseus env -i \
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin \
+    "${setup_env[@]}" \
+    bash -c 'cd /var/lib/odysseus-ai && /usr/lib/odysseus-ai/venv/bin/python /usr/lib/odysseus-ai/app/setup.py' \
+    || true
+
+  # 7. Reload systemd
+  systemctl daemon-reload
+}
+
 post_install() {
-    echo ""
-    echo "  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
-    echo "  ░                                                             ░"
-    echo "  ░                                                             ░"
-    echo "  ░        ███████╗ ██████╗ ██████╗ ██████╗ ██╗   ██╗          ░"
-    echo "  ░        ██╔════╝██╔═══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝          ░"
-    echo "  ░        ███████╗██║   ██║██████╔╝██████╔╝ ╚████╔╝           ░"
-    echo "  ░        ╚════██║██║   ██║██╔══██╗██╔══██╗  ╚██╔╝            ░"
-    echo "  ░        ███████║╚██████╔╝██║  ██║██║  ██║   ██║             ░"
-    echo "  ░        ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝            ░"
-    echo "  ░                                                             ░"
-    echo "  ░   this package does not work and i gave up trying.         ░"
-    echo "  ░   it is out of my league. i am sorry for your time.        ░"
-    echo "  ░                                                             ░"
-    echo "  ░   do it the real way:                                       ░"
-    echo "  ░                                                             ░"
-    echo "  ░   git clone https://github.com/pewdiepie-archdaemon/        ░"
-    echo "  ░               odysseus.git ~/odysseus                       ░"
-    echo "  ░   cd ~/odysseus                                             ░"
-    echo "  ░   python3 -m venv venv                                      ░"
-    echo "  ░   source venv/bin/activate                                  ░"
-    echo "  ░   pip install -r requirements.txt                           ░"
-    echo "  ░   python setup.py                                           ░"
-    echo "  ░   python -m uvicorn app:app --host 127.0.0.1 --port 7000   ░"
-    echo "  ░                                                             ░"
-    echo "  ░                                                             ░"
-    echo "  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
-    echo ""
+  _post_install_upgrade_common
+  cat <<'EOF'
+
+==> Odysseus installed. Next steps:
+==>   1. Edit /etc/odysseus-ai/odysseus-ai.env to add API keys (LLM_HOST etc.)
+==>      The first-boot admin password is set; the file is mode 0640 root:odysseus.
+==>   2. Enable and start the service:
+==>        sudo systemctl enable --now odysseus-ai
+==>   3. Open http://127.0.0.1:7000  (or  http://<lan-ip>:7000  if you change APP_BIND)
+==>
+==> SECURITY: this package exposes an admin-only shell-execution surface
+==>   (POST /api/shell/exec, /api/shell/stream) that is NOT sandboxed.
+==>   See the security notice in /etc/odysseus-ai/odysseus-ai.env and the
+==>   AUR README.
+EOF
+}
+
+post_upgrade() {
+  _post_install_upgrade_common
+  cat <<'EOF'
+==> Odysseus upgraded. setup.py was re-run; data/auth.json is intact.
+==> Check /etc/odysseus-ai/odysseus-ai.env.pacnew (if any) and merge with:
+==>   sudo DIFFPROG=meld pacdiff
+EOF
+}
+
+pre_remove() {
+  if systemctl is-active --quiet odysseus-ai.service; then
+    systemctl stop odysseus-ai.service
+  fi
+  if systemctl is-enabled --quiet odysseus-ai.service 2>/dev/null; then
+    systemctl disable odysseus-ai.service
+  fi
+  cat <<'EOF'
+==> Odysseus service stopped and disabled.
+==> To fully uninstall, also remove:
+==>   sudo rm -rf /var/lib/odysseus-ai /var/cache/odysseus-ai /var/log/odysseus-ai
+==>   sudo rm -rf /etc/odysseus-ai
+==>   sudo userdel odysseus
+EOF
 }

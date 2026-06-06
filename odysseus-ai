@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# CLI wrapper for running Odysseus without systemd.
+# Sources /etc/odysseus-ai/odysseus-ai.env and exec's uvicorn in the foreground.
+set -euo pipefail
+
+ENV_FILE="/etc/odysseus-ai/odysseus-ai.env"
+STATE_DIR="/var/lib/odysseus-ai"
+VENV="/usr/lib/odysseus-ai/venv"
+APP_DIR="/usr/lib/odysseus-ai/app"
+
+if [[ -r "$ENV_FILE" ]]; then
+    set -a; source "$ENV_FILE"; set +a
+fi
+
+# PYTHONHOME is needed because the shipped Python 3.12 binary's
+# compile-time lib-dynload path doesn't match the venv location.
+export PYTHONHOME="$VENV"
+
+cd "$STATE_DIR"
+exec "$VENV/bin/uvicorn" app:app \
+    --app-dir "$APP_DIR" \
+    --host "${APP_BIND:-127.0.0.1}" \
+    --port "${APP_PORT:-7000}"

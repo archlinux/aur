@@ -1,0 +1,12 @@
+# CHANGELOG
+
+r856.73673258 — initial working release
+  - Tracks upstream commit 73673258 ("fix(caldav): include owner in calendar ID hash to prevent PK collision")
+  - All drills 1-10 fully implemented (setup.py idempotency, env vars, health
+    probe, MCP deps, secrets, shell-RCE risk surfaced, CWD-relative paths,
+    cache/services symlinks, prebuilt relocatable venv, admin password sync
+    with env file)
+  - Verified end-to-end: install -> setup.py -> service start -> /api/health
+    200 -> /api/auth/login 200 -> protected endpoints 200
+  - Recovery recipes verified: forgot-password (rm auth.json + restart),
+    corrupt-DB (mv app.db + restart), upgrade (re-runs setup.py)

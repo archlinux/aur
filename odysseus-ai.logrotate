@@ -1,0 +1,10 @@
+/var/log/odysseus-ai/*.log {
+    daily
+    rotate 14
+    compress
+    delaycompress
+    missingok
+    notifempty
+    copytruncate
+    create 0640 odysseus odysseus
+}
