@@ -1,6 +1,6 @@
 # Maintainer: vMohammad <vmohammad@vmohammad.dev>
 pkgname=framr
-pkgver=0.10.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A Wayland screenshot tool written in Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!lto')
 depends=('wayland' 'libxkbcommon' 'dbus' 'cairo' 'libxcursor' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-plugins-bad' 'gst-plugin-rav1e')
 makedepends=('cargo' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('79970238b46564f94b42c5af9a34fab6c1e24d3c5895fadcef66dd5538b64800')
+sha256sums=('45d61e645d468ba123cfacc045344d7a06249ca004a3934fb3cda08626f2eb5a')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
