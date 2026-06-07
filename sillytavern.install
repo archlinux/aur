@@ -1,0 +1,8 @@
+post_install() {
+	echo ":: Configuration: ~/.config/sillytavern/config.yaml"
+	echo ":: User data:     ~/.local/share/sillytavern/"
+}
+
+post_upgrade() {
+	post_install
+}
