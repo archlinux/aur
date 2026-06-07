@@ -1,6 +1,6 @@
 pkgbase = omniroute-bin
 	pkgdesc = OmniRoute desktop app (prebuilt AppImage)
-	pkgver = 3.8.12
+	pkgver = 3.8.13
 	pkgrel = 1
 	url = https://github.com/diegosouzapw/OmniRoute
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = omniroute-bin
 	provides = omniroute
 	conflicts = omniroute
 	options = !strip
-	source = OmniRoute-3.8.12.AppImage::https://github.com/diegosouzapw/OmniRoute/releases/download/v3.8.12/OmniRoute-3.8.12.AppImage
-	sha256sums = 36de2856cef7d74bd61a45ae72531e79438716cdc797bc6bb62f53348a895edf
+	source = OmniRoute-3.8.13.AppImage::https://github.com/diegosouzapw/OmniRoute/releases/download/v3.8.13/OmniRoute-3.8.13.AppImage
+	sha256sums = a89d5dfeaf5021837e1f76e0ce024851e1f4c138dd5fbcda50b5d0e6ffec5d1e
 
 pkgname = omniroute-bin
