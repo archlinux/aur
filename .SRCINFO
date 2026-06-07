@@ -1,6 +1,6 @@
 pkgbase = simgear
 	pkgdesc = A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications
-	pkgver = 2024.1.5
+	pkgver = 2024.1.6
 	pkgrel = 1
 	url = https://gitlab.com/flightgear/simgear
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = simgear
 	depends = openscenegraph
 	depends = xz
 	depends = zlib
-	source = https://gitlab.com/flightgear/simgear/-/archive/2024.1.5/simgear-2024.1.5.tar.gz
-	sha256sums = b396b53825a2d7dad1619800598dbd535fd93ad983379fe60d14532151592c69
+	source = https://gitlab.com/flightgear/simgear/-/archive/2024.1.6/simgear-2024.1.6.tar.gz
+	sha256sums = 34d3cca4c11a44e55115f2f5f23878b20d1fd44f1ce51657825efda566cc79b9
 
 pkgname = simgear
