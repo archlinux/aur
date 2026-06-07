@@ -2,7 +2,8 @@
 Type=Application
 Name=GTFS Planner
 Comment=A desktop application for visualising and planning trips using GTFS (General Transit Feed Specification) public transit data.
-Categories=Utility;
+Keywords=Route;Map;Travel;Bus;Train;Transit
+Categories=Utility;Maps;Internet
 Exec=gtfs-planner
 Icon=gtfs-planner
 Terminal=false
