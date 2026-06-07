@@ -1,0 +1,12 @@
+pkgbase = ellipsis-git
+	pkgver = r22.5f6c049
+	pkgrel = 1
+	arch = any
+	license = unknown
+	makedepends = git
+	provides = ellipsis
+	conflicts = ellipsis
+	source = ellipsis::git+https://github.com/chuck-flowers/ellipsis
+	sha256sums = SKIP
+
+pkgname = ellipsis-git
