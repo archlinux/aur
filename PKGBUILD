@@ -1,4 +1,4 @@
-# Maintainer: Davi <davi@local>
+# Maintainer: davi <me@justdavi.dev>
 
 pkgname=leafyrino-git
 _pkgname=leafyrino
