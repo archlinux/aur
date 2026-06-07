@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Kakera
+Comment=Visual novel library, launcher, and playtime tracker
+Exec=kakera
+Icon=kakera
+Terminal=false
+Categories=Game;
