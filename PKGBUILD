@@ -106,6 +106,11 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
+  export CFLAGS+=" -ffile-prefix-map=${srcdir}=. -fmacro-prefix-map=${srcdir}=."
+  export CXXFLAGS+=" -ffile-prefix-map=${srcdir}=. -fmacro-prefix-map=${srcdir}=."
+
+  rm -rf build
+
   local -a cmake_options=(
     -S .
     -B build
