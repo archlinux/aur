@@ -2,7 +2,7 @@
 # Upstream author: Umputun <https://github.com/umputun>
 
 pkgname=revdiff
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="TUI for reviewing diffs, files, and documents with inline annotations"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/umputun/revdiff/archive/v$pkgver.tar.gz")
-sha256sums=('35d0554ef59f9ac28300d4d62c3a593bd39387e1ce40ecde244191b3858d5acc')
+sha256sums=('ba87373ccbf1de46b1560edd14aec62bc75a3e0539228bf6df50e6fdca331074')
 
 build() {
   cd "$pkgname-$pkgver"
