@@ -1,7 +1,7 @@
 # Maintainer: Shrike Linux Uganda <rootied@proton.me>
 pkgname=shrike-walkman
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Retro Walkman/Boombox with shuffle, recording, internet radio with search, custom stations"
 arch=('x86_64')
 url="https://shrikelinuxug.org"
