@@ -1,12 +1,14 @@
 # Maintainer: Dr. Daniel Dumke <reinschrift@dumke.me>
 pkgname=reinschrift
 pkgver=0.23.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your todos in plain Markdown — native GNOME app and CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/danst0/ReinschriftTodo"
 license=('GPL-3.0-or-later')
-depends=('gtk4' 'libadwaita' 'alsa-lib' 'openssl' 'gcc-libs' 'glibc')
+# !lto: the ring crate's C/asm objects don't survive makepkg's default -flto=auto
+options=('!lto')
+depends=('gtk4' 'libadwaita' 'alsa-lib' 'openssl' 'gcc-libs' 'glibc' 'hicolor-icon-theme')
 makedepends=('cargo' 'cmake' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a43de2378d26a231fc91757cef9909beb5e4239657cced902fe66e1184cb8212')
