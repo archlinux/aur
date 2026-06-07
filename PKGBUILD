@@ -1,6 +1,6 @@
 # Maintainer: dougEfresh <dchimento@gmail.com>
 pkgname=pi-ext-cursor-sdk
-pkgver=0.1.36
+pkgver=0.1.37
 pkgrel=1
 pkgdesc='pi provider extension backed by Cursor SDK local agents'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
   'gcc'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fitchmultz/pi-cursor-sdk/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('753422de8fc5b58e05f7eb6487d917ed9547adfda5009d18e370a6a90e105d76')
+sha256sums=('fd3a5ca3661dc81700e8c3610c4436acb2709ee42aa9d8c2b9d836b4e6c78457')
 options=('!strip' '!debug')
 install='pi-ext.install'
 
