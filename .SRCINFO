@@ -1,0 +1,18 @@
+pkgbase = edirstat-git
+	pkgdesc = A fast, cross-platform disk usage analyzer with work-stealing multithreading, zero-copy snapshots, deduplication, and an interactive treemap GUI. (Development Git Version)
+	pkgver = 1.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Xangelix/edirstat
+	arch = x86_64
+	license = MIT
+	makedepends = cargo-nightly
+	makedepends = rust-nightly
+	makedepends = git
+	provides = edirstat
+	conflicts = edirstat
+	source = edirstat::git+https://github.com/Xangelix/edirstat.git
+	source = edirstat.desktop
+	sha512sums = SKIP
+	sha512sums = 5cbf9075b721335159eb3317cd3f787ac406fa7c398a2dea114870d362688f67809bbaaede155d8e1ad3a2830c35132ae37a02e24d9dabd60326b2b7e66a02b3
+
+pkgname = edirstat-git
