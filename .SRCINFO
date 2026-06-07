@@ -1,6 +1,6 @@
 pkgbase = xfce4-genmon-plugin-git
 	pkgdesc = plugin that monitors customizable programs stdout for the Xfce4 panel
-	pkgver = r834.164b4a3
+	pkgver = r1202.48e9662
 	pkgrel = 1
 	arch = x86_64
 	license = LGPL2

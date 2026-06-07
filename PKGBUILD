@@ -1,8 +1,9 @@
-# Maintainer: budRich <of budlabs>
+# Maintainer: Capricornus007 <sihaogang at gmail dot com>
+# Co-Maintainer: budRich <of budlabs>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Kevin Hanselman <kevin.hanselman@gmail.com>
 pkgname=xfce4-genmon-plugin-git
-pkgver=r834.164b4a3
+pkgver=r1202.48e9662
 pkgrel=1
 pkgdesc="plugin that monitors customizable programs stdout for the Xfce4 panel"
 arch=('x86_64')
@@ -21,14 +22,14 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}" 
-    ./autogen.sh
-    ./configure --prefix=/usr
-    make
+  # 修正：直接指定正確的源碼目錄名稱「xfce4-genmon-plugin」
+  meson setup --prefix=/usr \
+              --buildtype=plain \
+              "xfce4-genmon-plugin" build
+
+  meson compile -C build
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}" 
-    make DESTDIR="$pkgdir/" install
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  DESTDIR="$pkgdir" meson install -C build
 }
