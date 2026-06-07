@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 pkgbase = fchart3
 	pkgdesc = A Python project for creating high-quality astronomical finder charts and maps
 	pkgver = 0.12.0
