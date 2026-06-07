@@ -1,4 +1,5 @@
-# Maintainer:  Josh Dye <jpenguin@duck.com>
+# Maintainer: Sadie K <zulc22db+oss@gmail.com>
+# Previous maintainer: Josh Dye <jpenguin@duck.com>
 
 pkgname=ttf-apple-fontpack
 pkgver=1
@@ -9,7 +10,7 @@ url='https://www.macintoshrepository.org/37914-apple-font-pack'
 license=('custom')
 depends=()
 conflicts=()
-source=("https://filedn.com/lHGef0SOQKnBTotcJeEfshJ/Fonts/AppleFontPack.zip")
+source=("http://web.archive.org/web/0if_/https://filedn.com/lHGef0SOQKnBTotcJeEfshJ/Fonts/AppleFontPack.zip")
 md5sums=('a810992b68c37f988c772fa4765e9402')
 
 package() {
