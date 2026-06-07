@@ -6,7 +6,7 @@
 
 _pkgname=garcon
 pkgname=$_pkgname-git
-pkgver=garcon.4.17.1.18.g563e07f
+pkgver=garcon.4.21.0.207.g9c215ec
 pkgrel=1
 pkgdesc="Freedesktop.org compliant menu library"
 arch=(i686 x86_64)
@@ -30,17 +30,11 @@ pkgver() {
 
 
 build() {
-    cd $pkgname/
-    ./autogen.sh \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --libexecdir=/usr/lib \
-        --localstatedir=/var \
-        --disable-static \
-        --disable-debug
-    make
+    arch-meson "$pkgname" build \
+        -D b_ndebug=true
+    meson compile -C build
 }
 
 package() {
-    make -C $pkgname DESTDIR="$pkgdir" install
+    meson install -C build --destdir "$pkgdir"
 }
