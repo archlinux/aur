@@ -1,6 +1,8 @@
-# Maintainer: dandenkijin <denkijin at proton dot me>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: dandenkijin <denkijin at proton dot me>
+
 pkgname=yt-x
-pkgver=0.4.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Browse youtube from your terminal"
 arch=(any)
@@ -24,9 +26,10 @@ optdepends=(
 provides=(yt-x)
 source=($pkgname-$pkgver::https://raw.githubusercontent.com/Benexl/$pkgname/refs/tags/v$pkgver/$pkgname)
 noextract=()
-b2sums=('819a3e7ddcf450bbc9f38b8bc5808445f347423877bbc2ce008f3028a2d85bb741d4e9b60fc7885edbb52dab33a04c24c69beb01441e8f7ae1a4dfceeb37578e')
+b2sums=('9ee98a7610c6652da3fa80b11d5756e308f7d50a706736ee79cce5cd5bb01e7fd8c91d870fbd6e739f7dcc6e9ade88705c3aa017572bdeec418b78d677cc4271')
 
 package() {
   cd "$srcdir/"
+
   install -D "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
 }

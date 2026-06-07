@@ -1,0 +1,5 @@
+[yt-x]
+source = "github"
+github = "Benexl/yt-x"
+use_latest_release = true
+prefix = "v"
