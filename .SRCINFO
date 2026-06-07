@@ -1,0 +1,22 @@
+pkgbase = vgmi-git
+	pkgdesc = Gemini client with vim-like keybindings written in C
+	pkgver = r498.08b497e
+	pkgrel = 1
+	url = https://github.com/RealMelkor/Vgmi
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = ISC
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = libressl
+	provides = vgmi
+	conflicts = vgmi
+	source = vgmi::git+https://github.com/RealMelkor/Vgmi.git
+	source = git+https://github.com/termbox/termbox2.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = vgmi-git
