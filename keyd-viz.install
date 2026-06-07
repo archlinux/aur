@@ -1,0 +1,39 @@
+post_install() {
+	cat <<'EOF'
+==> keyd-viz installed.
+
+    The broker daemon streams keyd's live state to the GUI with no extra
+    permissions. Enable it (layers only, the safe default):
+
+        sudo systemctl enable --now keydviz-helperd
+
+    Then launch the GUI:  keydviz
+
+    Keypress glow is opt-in (it reads /dev/input). To turn it on:
+
+        sudo install -Dm644 /usr/share/keyd-viz/keypresses.conf.sample \
+             /etc/systemd/system/keydviz-helperd.service.d/keypresses.conf
+        sudo systemctl daemon-reload && sudo systemctl restart keydviz-helperd
+
+EOF
+}
+
+post_upgrade() {
+	systemctl daemon-reload 2>/dev/null || true
+	if systemctl is-enabled --quiet keydviz-helperd 2>/dev/null; then
+		echo "==> restart the broker to pick up the new version:  sudo systemctl restart keydviz-helperd"
+	fi
+}
+
+post_remove() {
+	cat <<'EOF'
+==> keyd-viz removed.
+
+    The opt-in keypress drop-in (if you created it) and the dedicated
+    'keyd-viz' system user are left in place. To remove them:
+
+        sudo rm -f /etc/systemd/system/keydviz-helperd.service.d/keypresses.conf
+        sudo userdel keyd-viz
+
+EOF
+}
