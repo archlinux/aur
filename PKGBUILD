@@ -1,4 +1,3 @@
-cat << 'EOF' > PKGBUILD
 # Maintainer: Shrike Linux Uganda <rootied@proton.me>
 pkgname=shrike-control-center
 pkgver=1.3
@@ -18,7 +17,8 @@ source=("https://codeberg.org/root1/Shrike-Linux-Uganda/archive/v${pkgver}.tar.g
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
-    cd "$srcdir/Shrike-Linux-Uganda/shrike-control-center"
+    # Automatically find the Codeberg root folder (handles case changes)
+    cd "$srcdir"/Shrike-Linux-Uganda/shrike-control-center 2>/dev/null || cd "$srcdir"/shrike-linux-uganda/shrike-control-center
     
     install -Dm755 shrike-cc.py "$pkgdir/usr/share/shrike-cc/shrike-cc.py"
     install -Dm644 dashboard.html "$pkgdir/usr/share/shrike-cc/templates/dashboard.html"
@@ -29,4 +29,3 @@ package() {
     install -Dm644 shrike-control-center.desktop "$pkgdir/usr/share/applications/shrike-control-center.desktop"
     install -Dm644 shrike-control-center-autostart.desktop "$pkgdir/etc/xdg/autostart/shrike-control-center-autostart.desktop"
 }
-EOF

@@ -1,6 +1,22 @@
-# Generate the required AUR metadata
-makepkg --printsrcinfo > .SRCINFO
+pkgbase = shrike-control-center
+	pkgdesc = Shrike Control Centre - Secure Web-Based Server & File Manager GUI
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://shrikelinuxug.org
+	install = shrike-control-center.install
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-flask
+	depends = python-psutil
+	depends = firefox
+	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/v1.3.tar.gz
+	source = shrike-cc.service
+	source = shrike-control-center.desktop
+	source = shrike-control-center-autostart.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
-# Tell Git who you are for this repo
-git config user.name "root1"  # Use your AUR username here
-git config user.email "rootied@proton.me" # Use your AUR email here
+pkgname = shrike-control-center
