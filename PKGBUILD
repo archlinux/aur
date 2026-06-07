@@ -1,14 +1,27 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=alizams-git
-pkgver=1.9.10.r16.g784b25b
+pkgver=1.10.0.r22.g5ea515f
 pkgrel=1
 pkgdesc="Qt6 DICOM Viewer"
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
-url="https://www.aliza-dicom-viewer.com/"
-license=(GPL3)
-depends=(qt6-base qt6-5compat insight-toolkit)
-makedepends=(git cmake eigen qt6-svg)
+arch=(x86_64 i686 armv7h aarch64)
+url="https://github.com/AlizaMedicalImaging/AlizaMS"
+license=(GPL-3.0-only)
+depends=(
+    glibc
+    hicolor-icon-theme
+    itk
+    libgcc
+    libstdc++
+    qt6-5compat
+    qt6-base
+    )
+makedepends=(
+    cmake
+    eigen
+    git
+    qt6-svg
+    )
 provides=(alizams)
 conflicts=(alizams)
 source=("git+https://github.com/AlizaMedicalImaging/AlizaMS.git")
@@ -19,22 +32,19 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd AlizaMS
-  [[ -d build ]] || mkdir build
-}
-
 build() {
-  cd AlizaMS/build
-  cmake .. -Wno-dev \
-    -DCMAKE_BUILD_TYPE=None \
-    -DALIZA_QT_VERSION:STRING=6 \
-    -DCMAKE_INSTALL_PREFIX=/usr
+  local _flags=(
+    -DALIZA_QT_VERSION:STRING=6
+  )
 
-  make
+  cmake -B build -S "AlizaMS" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
+  cmake --build build
 }
 
 package() {
-  cd AlizaMS/build
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
