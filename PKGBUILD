@@ -1,6 +1,6 @@
 # Maintainer: Miran Kljun <miran.kljun@gmail.com>
 pkgname=rclone-wiz
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A simple and easy to use tool to configure, script, and mount cloud drives using rclone"
 arch=('any')

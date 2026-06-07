@@ -4,6 +4,7 @@ import subprocess
 import os
 import stat
 import shutil
+import re
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                              QHBoxLayout, QLabel, QComboBox, QLineEdit,
                              QPushButton, QTextEdit, QGroupBox, QFileDialog,
@@ -11,9 +12,12 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
 from PyQt6.QtGui import QFont, QAction
 from PyQt6.QtCore import Qt, QThread, pyqtSignal
 
-# --- Background Worker Threads ---
+# ==========================================
+# Worker Threads (Non-blocking I/O)
+# ==========================================
 
 class MountThread(QThread):
+    """Handles the execution of the bash mount script in an isolated thread."""
     error_signal = pyqtSignal(str)
     success_signal = pyqtSignal(str)
 
@@ -24,29 +28,37 @@ class MountThread(QThread):
 
     def run(self):
         try:
+            # Initialize subprocess with pipe capture for stdout/stderr evaluation
             self.process = subprocess.Popen(["bash", self.script_path],
                                             stdout=subprocess.PIPE,
                                             stderr=subprocess.PIPE,
                                             text=True)
             try:
+                # Wait briefly to catch immediate initialization errors (e.g., invalid flags)
                 _, err = self.process.communicate(timeout=1.5)
                 if self.process.returncode != 0:
                     self.error_signal.emit(f"Process exited with code {self.process.returncode}:\n{err}")
             except subprocess.TimeoutExpired:
+                # A timeout implies the mount process successfully daemonized/stayed open
                 self.success_signal.emit(f"Status: Drive mounted via {os.path.basename(self.script_path)}")
         except Exception as e:
             self.error_signal.emit(str(e))
 
     def stop(self):
+        # Send SIGTERM to the active subprocess if it exists
         if self.process:
             self.process.terminate()
 
 class ConfigThread(QThread):
+    """Spawns an interactive terminal for rclone configuration."""
     finished_signal = pyqtSignal()
 
     def run(self):
+        # Ordered list of supported terminal emulators
         terminals = [["konsole", "-e"], ["alacritty", "-e"], ["gnome-terminal", "--"], ["xterm", "-e"]]
         cmd = None
+        
+        # Resolve the first available terminal emulator in the system PATH
         for term in terminals:
             if shutil.which(term[0]):
                 cmd = term + ["rclone", "config"]
@@ -54,13 +66,18 @@ class ConfigThread(QThread):
                 
         if cmd:
             try:
+                # Block execution until the user closes the terminal window
                 subprocess.run(cmd, check=True)
             except Exception:
+                # Suppress exceptions resulting from manual terminal termination
                 pass
+        
         self.finished_signal.emit()
 
 
-# --- Main GUI Application ---
+# ==========================================
+# Main GUI Controller (View/ViewModel)
+# ==========================================
 
 class RcloneKdeApp(QMainWindow):
     def __init__(self):
@@ -68,7 +85,13 @@ class RcloneKdeApp(QMainWindow):
         self.setWindowTitle("Rclone-WIZ")
         self.resize(750, 650)
         
-        self.script_path = os.path.expanduser("~/rclone_mount_script.sh")
+        # Establish a dedicated configuration directory to isolate application state
+        self.config_dir = os.path.expanduser("~/.config/rclone-wiz")
+        os.makedirs(self.config_dir, exist_ok=True)
+        
+        # State variables
+        self.script_path = "" 
+        self.legacy_script_path = os.path.expanduser("~/rclone_mount_script.sh") # Fallback for v1.0 users
         self.mount_thread = None
         self.config_thread = None
         
@@ -76,7 +99,7 @@ class RcloneKdeApp(QMainWindow):
         self._populate_remotes()
 
     def _build_ui(self):
-        # Menu Bar
+        # Initialize menu bar and define core application actions
         menubar = self.menuBar()
         file_menu = menubar.addMenu("File")
         exit_action = QAction("Exit", self)
@@ -84,25 +107,21 @@ class RcloneKdeApp(QMainWindow):
         file_menu.addAction(exit_action)
         
         help_menu = menubar.addMenu("Help")
-        
-        # New Tutorial Action
         tutorial_action = QAction("EXAMPLE Tutorial: Add Google Drive", self)
         tutorial_action.triggered.connect(self._show_tutorial)
         help_menu.addAction(tutorial_action)
-        
         help_menu.addSeparator()
-        
         about_action = QAction("About", self)
         about_action.triggered.connect(self._show_about)
         help_menu.addAction(about_action)
 
-        # Central Widget and Main Layout
+        # Configure primary widget hierarchy and main vertical layout
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         main_layout = QVBoxLayout(central_widget)
         main_layout.setSpacing(15)
 
-        # Step 0: Configuration Group
+        # UI Group: Initialization / Rclone Config Access
         grp_config = QGroupBox("Step 0: Configuration")
         lay_config = QHBoxLayout()
         lay_config.addWidget(QLabel("Need to add a new drive or edit an existing one?"))
@@ -113,13 +132,16 @@ class RcloneKdeApp(QMainWindow):
         grp_config.setLayout(lay_config)
         main_layout.addWidget(grp_config)
 
-        # Step 1: Remote Selection Group
+        # UI Group: Remote Target Selection
         grp_remote = QGroupBox("Step 1: Select Cloud Drive (Remote)")
         lay_remote = QHBoxLayout()
         lay_remote.addWidget(QLabel("Configured Remotes:"))
         self.combo_remote = QComboBox()
         self.combo_remote.setMinimumWidth(250)
-        self.combo_remote.currentTextChanged.connect(self._update_script)
+        
+        # intercept the signal here to reset the path field
+        self.combo_remote.currentTextChanged.connect(self._on_remote_changed)
+        
         lay_remote.addWidget(self.combo_remote)
         
         btn_refresh = QPushButton("↻ Refresh")
@@ -129,7 +151,7 @@ class RcloneKdeApp(QMainWindow):
         grp_remote.setLayout(lay_remote)
         main_layout.addWidget(grp_remote)
 
-        # Step 2: Mount Point Group
+        # UI Group: Local Mount Point Resolution
         grp_mount = QGroupBox("Step 2: Choose Local Mount Folder")
         lay_mount = QHBoxLayout()
         lay_mount.addWidget(QLabel("Mount Path:"))
@@ -142,10 +164,28 @@ class RcloneKdeApp(QMainWindow):
         lay_mount.addWidget(btn_browse)
         grp_mount.setLayout(lay_mount)
         main_layout.addWidget(grp_mount)
-
-        # Step 3: Script Generator Group
+        
+        # UI Group: Bash Script Rendering and Persistence
         grp_script = QGroupBox("Step 3: Review Generated Bash Script")
         lay_script = QVBoxLayout()
+        
+        # Header action: File system script lookup
+        lay_script_header = QHBoxLayout()
+        self.btn_load_script = QPushButton("📂 Load Existing Script")
+        self.btn_load_script.setEnabled(False)
+        self.btn_load_script.clicked.connect(self._load_existing_script)
+        self.btn_load_script.setToolTip("Evaluate local state for pre-existing script configurations.")
+        lay_script_header.addWidget(self.btn_load_script)
+        
+        # Helpful hint label next to the button
+        lbl_script_hint = QLabel("<i>(If a script loads, the drive is already mounted)</i>")
+        lbl_script_hint.setStyleSheet("color: #888888; margin-left: 10px;")
+        lay_script_header.addWidget(lbl_script_hint)
+        
+        lay_script_header.addStretch()
+        lay_script.addLayout(lay_script_header)
+
+        # Render monospaced text block for script preview
         self.text_script = QTextEdit()
         font = QFont("Monospace")
         font.setStyleHint(QFont.StyleHint.TypeWriter)
@@ -154,14 +194,14 @@ class RcloneKdeApp(QMainWindow):
         grp_script.setLayout(lay_script)
         main_layout.addWidget(grp_script)
 
-        # Step 4: Actions and Status
+        # UI Group: Execution Controls and Process Status
         lay_actions = QHBoxLayout()
         self.lbl_status = QLabel("Status: Waiting for configuration...")
         self.lbl_status.setStyleSheet("color: #888888;")
         lay_actions.addWidget(self.lbl_status)
         lay_actions.addStretch()
         
-        # Autostart Button - Starts Disabled
+        # Default initialization state: Disabled until validation passes
         self.btn_autostart = QPushButton("🚀 Add to Autostart")
         self.btn_autostart.setEnabled(False)
         self.btn_autostart.clicked.connect(self._add_to_autostart)
@@ -172,7 +212,6 @@ class RcloneKdeApp(QMainWindow):
         self.btn_stop.clicked.connect(self._stop_script)
         lay_actions.addWidget(self.btn_stop)
         
-        # Run Button - Starts Disabled
         self.btn_run = QPushButton("▶ Save & Run Script")
         self.btn_run.setEnabled(False)
         self.btn_run.clicked.connect(self._run_script)
@@ -181,8 +220,15 @@ class RcloneKdeApp(QMainWindow):
         
         main_layout.addLayout(lay_actions)
 
+    def _on_remote_changed(self, remote_name):
+        """Clears the mount path when switching remotes to prevent FUSE overlap errors."""
+        self.entry_path.blockSignals(True)
+        self.entry_path.clear()
+        self.entry_path.blockSignals(False)
+        self._update_script()
+
     def _show_about(self):
-        # Create a Dialog instead of a MessageBox for better HTML support
+        """Renders the About dialog with external link delegation."""
         dialog = QDialog(self)
         dialog.setWindowTitle("About Rclone-WIZ")
         dialog.resize(400, 350)
@@ -190,16 +236,16 @@ class RcloneKdeApp(QMainWindow):
         layout = QVBoxLayout(dialog)
         
         text_browser = QTextBrowser()
-        text_browser.setOpenExternalLinks(True) # Required to make the links work
+        # Enable URL resolution and external OS browser launching
+        text_browser.setOpenExternalLinks(True) 
         
-        # This is your HTML content
         about_html = """
         <div style="font-family: sans-serif;">
             <h2 style="color: #3daee9;">Rclone-WIZ 1.1</h2>
             <p>A simple and easy-to-use tool to configure, script, and mount cloud drives using rclone.</p>
             <hr>
             <p><b>Created by:</b> Miran Kljun<br>
-            2026	&copy; - GPL 3.0<br>
+            2026    &copy; - GPL 3.0<br>
             <a href="https://github.com/themix88/">github.com/themix88/</a></p>
             <hr>
             Source: <li><a href="https://github.com/themix88/Clone-WIZ/Rclone-WIZ">GitHub</a></li>
@@ -212,11 +258,9 @@ class RcloneKdeApp(QMainWindow):
             </ul>
         </div>
         """
-        
         text_browser.setHtml(about_html)
         layout.addWidget(text_browser)
         
-        # Add a "Close" button
         btn_close = QPushButton("Close")
         btn_close.clicked.connect(dialog.accept)
         layout.addWidget(btn_close)
@@ -224,13 +268,12 @@ class RcloneKdeApp(QMainWindow):
         dialog.exec()
 
     def _show_tutorial(self):
-        """Displays a formatted HTML dialog guiding the user through GDrive setup."""
+        """Renders a static HTML tutorial overlay for common configuration paths."""
         dialog = QDialog(self)
         dialog.setWindowTitle("Tutorial: Setting up Google Drive")
         dialog.resize(550, 480)
         
         layout = QVBoxLayout(dialog)
-        
         text_browser = QTextBrowser()
         text_browser.setOpenExternalLinks(True)
         
@@ -267,6 +310,7 @@ class RcloneKdeApp(QMainWindow):
         dialog.exec()
 
     def _launch_config(self):
+        """Initializes the background terminal process to prevent UI blocking."""
         self.btn_config.setEnabled(False)
         self.lbl_status.setText("Status: Rclone config running in Konsole...")
         self.lbl_status.setStyleSheet("color: #3daee9;") 
@@ -276,12 +320,14 @@ class RcloneKdeApp(QMainWindow):
         self.config_thread.start()
 
     def _on_config_finished(self):
+        """Callback invoked upon termination of the configuration subprocess."""
         self.btn_config.setEnabled(True)
         self.lbl_status.setText("Status: Config closed. Remotes updated.")
         self.lbl_status.setStyleSheet("")
         self._populate_remotes()
 
     def _populate_remotes(self):
+        """Executes 'rclone listremotes' and parses standard output to populate UI."""
         self.combo_remote.clear()
         try:
             result = subprocess.run(["rclone", "listremotes"], capture_output=True, text=True, check=True)
@@ -295,28 +341,38 @@ class RcloneKdeApp(QMainWindow):
         self._update_script()
 
     def _browse(self):
+        """Invokes native OS dialog for directory selection."""
         directory = QFileDialog.getExistingDirectory(self, "Select Mount Folder")
         if directory:
             self.entry_path.setText(directory)
 
     def _update_script(self):
-        """Generates the bash script text and manages the Enable/Disable states of the buttons based on required info."""
+        """Validates current state constraints and orchestrates bash script payload generation."""
         remote = self.combo_remote.currentText()
         path = self.entry_path.text()
         
-        # Check if we have valid info
+        # Evaluate validation rules: Valid remote syntax and defined target path
         is_valid = bool(remote and path and "Error" not in remote and "No remotes" not in remote)
 
+        if bool(remote and "Error" not in remote and "No remotes" not in remote):
+            # Compute absolute target path for script persistence
+            self.script_path = os.path.join(self.config_dir, f"{remote}_mount.sh")
+            self.btn_load_script.setEnabled(True)
+        else:
+            self.btn_load_script.setEnabled(False)
+
         if is_valid:
+            # Construct optimized Bash script payload
             script_content = (
                 "#!/bin/bash\n\n"
-                "# Auto-generated rclone mount script\n"
+                "# Automatically generated by Rclone-WIZ\n"
                 f"REMOTE=\"{remote}:\"\n"
                 f"MOUNT_PATH=\"{path}\"\n\n"
+                "# Verify target directory exists prior to mount initiation\n"
                 "echo \"Creating mount directory if it doesn't exist...\"\n"
                 "mkdir -p \"$MOUNT_PATH\"\n\n"
                 "echo \"Mounting $REMOTE to $MOUNT_PATH...\"\n"
-                "# --vfs-cache-mode full and buffer flags significantly improve performance\n"
+                "# Execute rclone mount with optimized VFS caching and buffer limits for stream performance\n"
                 "rclone mount \"$REMOTE\" \"$MOUNT_PATH\" \\\n"
                 "  --vfs-cache-mode full \\\n"
                 "  --dir-cache-time 72h \\\n"
@@ -326,22 +382,79 @@ class RcloneKdeApp(QMainWindow):
             )
             self.text_script.setPlainText(script_content)
             
-            # Enable the buttons since information is valid
+            # Enable execution pipelines upon validation pass
             self.btn_autostart.setEnabled(True)
-            # Only enable the Run button if the script isn't actively running
             if self.mount_thread is None: 
                 self.btn_run.setEnabled(True)
                 
         else:
+            # Fallback state for incomplete parameters
             self.text_script.setPlainText("# Please configure a remote and select a mount path to generate the script.")
-            
-            # Disable the buttons because information is missing
             self.btn_autostart.setEnabled(False)
             if self.mount_thread is None:
                 self.btn_run.setEnabled(False)
 
+    def _load_existing_script(self):
+        """Reads previously serialized script objects to synchronize UI state, including legacy paths."""
+        if not self.script_path:
+            return
+            
+        current_remote = self.combo_remote.currentText()
+        target_load_path = None
+        is_legacy = False
+        
+        # 1. Primary check: Native config directory
+        if os.path.exists(self.script_path):
+            target_load_path = self.script_path
+            
+        # 2. Fallback check: Legacy root directory (v1.0 backwards compatibility)
+        elif os.path.exists(self.legacy_script_path):
+            try:
+                # Verify if the legacy script actually belongs to the currently selected remote
+                with open(self.legacy_script_path, "r") as f:
+                    legacy_content = f.read()
+                if f'REMOTE="{current_remote}:"' in legacy_content:
+                    target_load_path = self.legacy_script_path
+                    is_legacy = True
+            except Exception:
+                pass # Fail silently on legacy read and default to "Not Found" logic
+        
+        if target_load_path:
+            try:
+                with open(target_load_path, "r") as f:
+                    content = f.read()
+                
+                self.text_script.setPlainText(content)
+                
+                # Extract MOUNT_PATH variable via regex to ensure GUI synchronization
+                match = re.search(r'^MOUNT_PATH="(.*?)"', content, re.MULTILINE)
+                if match:
+                    saved_path = match.group(1)
+                    
+                    # Suppress signal emission to prevent recursive calls to _update_script()
+                    self.entry_path.blockSignals(True)
+                    self.entry_path.setText(saved_path)
+                    self.entry_path.blockSignals(False)
+                    
+                    # Toggle dependent execution state
+                    self.btn_autostart.setEnabled(True)
+                    if self.mount_thread is None:
+                        self.btn_run.setEnabled(True)
+
+                if is_legacy:
+                    self.lbl_status.setText(f"Status: Loaded legacy script for '{current_remote}' (Will migrate on save)")
+                    self.lbl_status.setStyleSheet("color: #f67400;") # Orange warning/info
+                else:
+                    self.lbl_status.setText(f"Status: Loaded existing script for '{current_remote}'")
+                    self.lbl_status.setStyleSheet("color: #27ae60;") # Green success
+                    
+            except Exception as e:
+                QMessageBox.critical(self, "Error", f"Failed to load script payload:\n{e}")
+        else:
+            QMessageBox.information(self, "Not Found", f"No existing script found for '{current_remote}'.\nIt will be created when you click 'Save & Run'.")
+
     def _save_script(self):
-        """Helper method to ensure the script is saved to disk before mounting or autostarting."""
+        """Serializes current script payload to disk and sets execution flags (chmod +x)."""
         script_content = self.text_script.toPlainText().strip()
         if not script_content or "# Please configure" in script_content:
             return False
@@ -349,22 +462,29 @@ class RcloneKdeApp(QMainWindow):
         try:
             with open(self.script_path, "w") as f:
                 f.write(script_content)
+            
+            # Apply standard execution permissions to the generated bash file
             st = os.stat(self.script_path)
             os.chmod(self.script_path, st.st_mode | stat.S_IEXEC)
             return True
         except Exception as e:
-            QMessageBox.critical(self, "File Error", f"Failed to save the script:\n{e}")
+            QMessageBox.critical(self, "File Error", f"I/O Exception while persisting script:\n{e}")
             return False
 
     def _add_to_autostart(self):
+        """Generates XDG-compliant .desktop entries for KDE/GNOME initialization execution."""
         if not self._save_script():
             QMessageBox.warning(self, "Missing Info", "Please configure a remote and mount path first.")
             return
             
+        remote = self.combo_remote.currentText()
         autostart_dir = os.path.expanduser("~/.config/autostart")
         os.makedirs(autostart_dir, exist_ok=True)
-        desktop_file_path = os.path.join(autostart_dir, "rclone_mount_script.desktop")
         
+        # Dynamically allocate desktop file names to support discrete mount entries
+        desktop_file_path = os.path.join(autostart_dir, f"rclone_mount_{remote}.desktop")
+        
+        # Construct standard .desktop initialization payload
         desktop_entry = (
             "[Desktop Entry]\n"
             "Type=Application\n"
@@ -372,7 +492,7 @@ class RcloneKdeApp(QMainWindow):
             "Hidden=false\n"
             "NoDisplay=false\n"
             "X-GNOME-Autostart-enabled=true\n"
-            "Name=Rclone Auto-Mount\n"
+            f"Name=Rclone Auto-Mount ({remote})\n"
             "Comment=Mounts rclone drive automatically on user login\n"
         )
         
@@ -380,12 +500,22 @@ class RcloneKdeApp(QMainWindow):
             with open(desktop_file_path, "w") as f:
                 f.write(desktop_entry)
             QMessageBox.information(self, "Autostart Enabled", 
-                "The mount script has been added to your autostart applications!\n\n"
+                f"The mount script for '{remote}' has been added to your autostart applications!\n\n"
                 f"File created at:\n{desktop_file_path}")
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Failed to create autostart entry:\n{e}")
+            QMessageBox.critical(self, "Error", f"Failed to serialize autostart entry:\n{e}")
 
     def _run_script(self):
+        """Prepares and dispatches the background thread for script execution with overlap prevention."""
+        path = self.entry_path.text()
+
+        # Check for existing Linux FUSE mount points
+        if os.path.exists(path) and os.path.ismount(path):
+            QMessageBox.warning(self, "Mount Overlap Detected", 
+                                f"The directory '{path}' is already an active mount point.\n\n"
+                                "Please unmount it first or select a different folder to prevent FUSE errors.")
+            return
+
         if not self._save_script():
             QMessageBox.warning(self, "Missing Info", "Please complete Steps 1 and 2.")
             return
@@ -393,7 +523,7 @@ class RcloneKdeApp(QMainWindow):
         self.lbl_status.setText("Status: Executing bash script...")
         self.lbl_status.setStyleSheet("color: #3daee9;")
         
-        # State management while running
+        # Lock interface interactions during active execution contexts
         self.btn_run.setEnabled(False)
         self.btn_stop.setEnabled(True)
         self.btn_config.setEnabled(False)
@@ -410,31 +540,39 @@ class RcloneKdeApp(QMainWindow):
     def _on_mount_error(self, err_msg):
         self.lbl_status.setText("Status: Script Failed")
         self.lbl_status.setStyleSheet("color: #ed1515;") 
-        QMessageBox.critical(self, "Script Error", f"The script encountered an error:\n{err_msg}")
+        QMessageBox.critical(self, "Script Error", f"The background subprocess encountered an error:\n{err_msg}")
         
+        # Restore execution state
         self.btn_run.setEnabled(True)
         self.btn_stop.setEnabled(False)
         self.btn_config.setEnabled(True)
 
     def _stop_script(self):
+        """Terminates active threads and performs an unmount operation via FUSE."""
         path = self.entry_path.text()
         
+        # Dispatch SIGTERM to background worker if currently active
         if self.mount_thread:
             self.mount_thread.stop()
             self.mount_thread = None
         
+        # Attempt to gracefully unmount the specified target directory
         subprocess.run(["fusermount", "-uz", path], check=False, capture_output=True)
         
-        self.lbl_status.setText("Status: Script stopped and drive unmounted.")
+        self.lbl_status.setText("Status: Process terminated and drive unmounted.")
         self.lbl_status.setStyleSheet("")
         
+        # Unlock standard execution state controls
         self.btn_run.setEnabled(True)
         self.btn_stop.setEnabled(False)
         self.btn_config.setEnabled(True)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    
+    # Enforce standard KDE styling where available
     app.setStyle("Breeze")
+    
     window = RcloneKdeApp()
     window.show()
     sys.exit(app.exec())

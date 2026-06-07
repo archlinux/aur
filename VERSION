@@ -1,3 +1,26 @@
-VERSION FILE
+VESION FILE - RCLONE-WIZ
 
-1.2 - Included version file
+
+All notable changes to this project will be documented in this file from now on.
+
+[1.3] - 2026-06-07
+
+Added
+Dynamic Script Management: Introduced a dedicated ~/.config/rclone-wiz/ directory, allowing users to save and manage individual mount scripts for multiple cloud remotes simultaneously.
+
+Legacy Migration Support: Implemented an automatic detection system to identify and migrate legacy scripts from ~/rclone_mount_script.sh to the new configuration directory upon saving.
+
+Added os.path.ismount() checks to prevent FUSE errors when attempting to mount over existing active mount points.
+
+Added a "Load Existing Script" button to auto-populate fields based on existing configuration files.
+
+Added informative status hints to the UI to notify users when a drive is already mounted.
+
+State Synchronization: Implemented signal blocking for input fields to prevent recursive triggers and UI conflicts when loading existing scripts.
+
+UX Refinements: Standardized the GUI layout with improved spacing and visual indicators for load/migration states.
+
+Fixed
+FUSE Overlap Prevention: Implemented automatic clearing of the "Mount Path" field when switching between different remotes to ensure users do not accidentally target an incorrect or currently mounted directory.
+
+Concurrency Handling: Refined background worker thread logic to ensure cleaner process termination and unmount sequences.
