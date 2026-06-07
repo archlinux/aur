@@ -1,6 +1,6 @@
 pkgbase = fcitx5-mozc-ext-neologd
 	pkgdesc = Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)
-	pkgver = 3.33.6133.102.ga16dde4
+	pkgver = 3.33.6133.102.ga16dde4.xb1b79e9
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -14,6 +14,9 @@ pkgbase = fcitx5-mozc-ext-neologd
 	makedepends = zsh
 	makedepends = ruby
 	makedepends = xz
+	makedepends = unzip
+	makedepends = ruby-csv
+	makedepends = ruby-nkf
 	depends = qt6-base
 	depends = fcitx5
 	provides = fcitx5-mozc=3.33.6133.102
@@ -29,18 +32,17 @@ pkgbase = fcitx5-mozc-ext-neologd
 	conflicts = fcitx-mozc-ut-unified-full
 	conflicts = fcitx5-mozc
 	source = git+https://github.com/fcitx/mozc.git#commit=a16dde4
-	source = https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
-	source = https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
+	source = https://www.post.japanpost.jp/service/search/zipcode/download/office/zip/jigyosyo.zip
+	source = https://www.post.japanpost.jp/service/search/zipcode/download/kogaki/zip/ken_all.zip
 	source = git+https://chromium.googlesource.com/breakpad/breakpad#commit=8be0e31
 	source = git+https://github.com/google/googletest.git#commit=d72f9c8
 	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=38d3462
 	source = git+https://github.com/open-source-parsers/jsoncpp.git#commit=ca98c98
 	source = git+https://github.com/google/protobuf.git#commit=199a436
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=5c01794
-	source = git+https://github.com/reasonset/mozcdict-ext.git#commit=574160e
+	source = git+https://github.com/reasonset/mozcdict-ext.git#commit=b1b79e9
 	source = git+https://github.com/neologd/mecab-ipadic-neologd.git#commit=abc61e3
 	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP

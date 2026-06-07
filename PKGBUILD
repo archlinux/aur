@@ -14,24 +14,24 @@ _gtest_commit=d72f9c8
 _japanese_usage_dictionary_commit=38d3462
 _jsoncpp_commit=ca98c98
 _protobuf_commit=199a436
-_dictext_commit=574160e
+_dictext_commit=b1b79e9
 _neologd_commit=abc61e3
 
 _pkgbase=mozc
 pkgname=fcitx5-mozc-ext-neologd
 pkgdesc="Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)"
-pkgver=3.33.6133.102.ga16dde4
+pkgver=3.33.6133.102.ga16dde4.xb1b79e9
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/google/mozc"
 license=('custom')
 depends=('qt6-base' 'fcitx5')
-makedepends=('pkg-config' 'python' 'bazelisk' 'git' 'clang' 'python-six' 'zsh' 'ruby' 'xz')
+makedepends=('pkg-config' 'python' 'bazelisk' 'git' 'clang' 'python-six' 'zsh' 'ruby' 'xz' 'unzip' 'ruby-csv' 'ruby-nkf')
 conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'fcitx-mozc' 'fcitx5-mozc-ut' 'fcitx5-mozc-ut-full' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full' 'fcitx5-mozc')
 provides=('fcitx5-mozc=3.33.6133.102')
 source=(git+https://github.com/fcitx/mozc.git#commit=${_mozc_commit}
-        https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
-        https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
+        https://www.post.japanpost.jp/service/search/zipcode/download/office/zip/jigyosyo.zip
+        https://www.post.japanpost.jp/service/search/zipcode/download/kogaki/zip/ken_all.zip
         git+https://chromium.googlesource.com/breakpad/breakpad#commit=${_breakpad_commit}
         git+https://github.com/google/googletest.git#commit=${_gtest_commit}
         git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=${_japanese_usage_dictionary_commit}
@@ -63,7 +63,7 @@ pkgver() {
   local _build=$(awk -F'[ =]+' '/^BUILD_OSS/ {print $2}' src/version.bzl)
 
   # As before, build it with revision (102) for Linux
-  printf "%s.%s.%s.102.g%s" "$_major" "$_minor" "$_build" "${_mozc_commit}"
+  printf "%s.%s.%s.102.g%s.x%s" "$_major" "$_minor" "$_build" "${_mozc_commit}" "$_dictext_commit"
 }
 
 prepare() {
@@ -124,6 +124,10 @@ build() {
   CFLAGS="${CFLAGS} -fvisibility=hidden"
   CXXFLAGS="${CXXFLAGS} -fvisibility=hidden"
 
+  # Explicitly specify Clang to prevent Bazel from leaking GCC system headers and violating sandbox
+  export CC=clang
+  export CXX=clang++
+  
   cd mozc/src
 
   QT_BASE_PATH="$(pkg-config --variable=prefix Qt6Core)/include/qt6" ../scripts/build_fcitx5_bazel
