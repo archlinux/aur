@@ -8,7 +8,7 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=flightgear
-pkgver=2024.1.5
+pkgver=2024.1.6
 pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('x86_64')
@@ -36,7 +36,7 @@ depends=('dbus'
 makedepends=('boost' 'cmake' 'plib' 'qt6-svg' 'qt6-tools')
 optdepends=('flightgear-data: Base data package')
 source=("https://gitlab.com/flightgear/flightgear/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d433fcf51bf05c96d5a6ae54a2161bf0545bbe2f69fd43470be9e479f505c52c')
+sha256sums=('9b1993cb6d8933a2f5b7376fe26b18e7c15de31b853a7aa39df49648869445f8')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -44,12 +44,17 @@ prepare() {
 }
 
 build() {
-    cmake -B build -S "${pkgname}-${pkgver}" \
-        -D CMAKE_BUILD_TYPE=Release \
-        -D CMAKE_INSTALL_PREFIX=/usr \
-        -D CHECK_FOR_QT5=OFF \
-        -D FG_DATA_DIR=/usr/share/flightgear/data \
+    local cmake_options=(
+        -B build
+        -D CMAKE_BUILD_TYPE=Release
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D CHECK_FOR_QT5=OFF
+        -D ENABLE_CCACHE=ON
+        -D FG_DATA_DIR=/usr/share/flightgear/data
         -D SYSTEM_SQLITE=ON
+        -S "${pkgname}-${pkgver}"
+    )
+    cmake "${cmake_options[@]}"
     cmake --build build
 }
 
