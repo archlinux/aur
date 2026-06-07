@@ -10,6 +10,7 @@ pkgbase = core-lightning
 	makedepends = net-tools
 	makedepends = python-mako
 	makedepends = rust
+	makedepends = uv
 	depends = bitcoin-cli
 	depends = gcc-libs
 	depends = glibc
