@@ -3,7 +3,7 @@
 pkgname=serycade-git
 pkgdesc='Some tui games i made because i was bored. Currently pong and a maze'
 pkgver=r40.c265bc9
-pkgrel=1
+pkgrel=2
 license=('CDDL-1.0')
 url='https://serenit.ie/projects#serycade'
 arch=('x86_64' 'aarch64')
@@ -44,7 +44,7 @@ build() {
 
     # Also using local gradle directory to avoid weird conflicts
     cd "$srcName"
-    gradle -g "$srcdir/gradle" "linkReleaseExecutable$target"
+    gradle --no-daemon -g "$srcdir/gradle" "linkReleaseExecutable$target"
 }
 
 package() {
