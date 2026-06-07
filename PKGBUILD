@@ -3,6 +3,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="An unofficial site-specific browser wrapper for the Pandora web service."
 arch=('x86_64')
+url=https://github.com/Logawinner/Lindora
 license=('custom')
 depends=('qt6-base' 'qt6-webengine' 'qt6-svg')
 makedepends=('cmake')
