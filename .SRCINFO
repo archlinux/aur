@@ -1,0 +1,17 @@
+pkgbase = todo-ratatui-git
+	pkgdesc = A simple TUI to-do list manager written in Rust using Ratatui
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vsk11-12/To-do-list-app-based-on-rust
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = todo-tui
+	conflicts = todo-tui
+	source = git+https://github.com/vsk11-12/To-do-list-app-based-on-rust.git
+	md5sums = SKIP
+
+pkgname = todo-ratatui-git
