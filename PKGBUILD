@@ -3,7 +3,7 @@
 pkgname=aqueous-git
 pkgbase=aqueous
 pkgver=0.1.0 # Will be updated by pkgver()
-pkgrel=5
+pkgrel=6
 pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
@@ -14,9 +14,9 @@ depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'xdg-desktop-portal-wlr' 'wlroots0.20' 'wl-clipboard'
          'xdg-desktop-portal-gtk' 'libnotify'
          # NativeAOT runtime link targets (BCL dlopens/dynlinks against these).
-         'zlib' 'krb5' 'openssl')
+         'zlib' 'krb5' 'openssl' 'scenefx')
 makedepends=('dotnet-sdk-10.0' 'clang' 'lld' 'llvm' 'zlib' 'krb5' 'openssl'
-             'git' 'wayland-protocols')
+             'git' 'wayland-protocols' 'scenefx')
 optdepends=('ly: tuigreeter'
             'greetd: minimal login manager for tuigreet'
             'tabby: recommended terminal emulator'
