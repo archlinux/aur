@@ -1,0 +1,23 @@
+pkgbase = st-tabbed-aegix-git
+	pkgdesc = Aegix Linux's tabbed (suckless) build: tmux-style Ctrl+b keybinds, ARGB transparency, pywal theming via X resources, and sticky tab naming. Ships the stt launcher (st in tabs).
+	pkgver = r284.de75a0e
+	pkgrel = 1
+	url = https://github.com/aegixlinux/tabbed
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxft
+	depends = freetype2
+	depends = fontconfig
+	depends = st
+	optdepends = st-aegix-git: transparent, pywal-themed terminals (recommended st over stock)
+	optdepends = dmenu: tab rename prompt (Ctrl+b ,)
+	optdepends = xorg-xprop: backs the tab rename prompt
+	optdepends = picom: compositor required for terminal transparency
+	provides = tabbed
+	conflicts = tabbed
+	source = tabbed::git+https://github.com/AegixLinux/tabbed.git#branch=master
+	sha256sums = SKIP
+
+pkgname = st-tabbed-aegix-git
