@@ -4,7 +4,7 @@
 pkgname=nostr-vpn-cli-git
 _pkgname=nostr-vpn
 _binname=nvpn
-pkgver=4.0.70.r1.gfaeb500
+pkgver=4.0.70.r3.g7418b1b
 pkgrel=1
 pkgdesc='nvpn CLI/daemon for Nostr VPN, a Tailscale-style private mesh VPN (git master)'
 arch=('x86_64' 'aarch64')
