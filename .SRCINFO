@@ -1,13 +1,18 @@
 pkgbase = gitflow
-	pkgdesc = A collection of git extetions for Vincent Driessen's branching model.
-	pkgver = 1.9.1_dev
+	pkgdesc = Gitflow is a Git extension that implements the Gitflow AVH branching model.
+	pkgver = 1.0.0_beta.1
 	pkgrel = 1
-	url = https://github.com/petervanderdoes/gitflow-avh
-	arch = any
-	license = BSD
-	depends = git
-	source = gitflow.git::git://github.com/petervanderdoes/gitflow-avh.git
-	md5sums = SKIP
+	url = https://github.com/ImKairat-Rust-Lab/gitflow
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = gitflow
+	conflicts = gitflow
+	options = !lto
+	source = git+https://github.com/ImKairat-Rust-Lab/gitflow.git#tag=v1.0.0-beta.1
+	sha256sums = SKIP
 
 pkgname = gitflow
-

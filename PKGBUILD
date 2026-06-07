@@ -1,27 +1,26 @@
-# Maintainer: Quey-Liang Kao<s101062801@m101.nthu.edu.tw>
-# Contributor: Eduardo Leggiero <https://www.leggiero.uk/>
-# Contributor: Kai Korla <balticer@balticer.de>
-# Contributor: Techlive Zheng <techlivezheng@gmail.com>
-# Contributor: Ernie Brodeur <ebrodeur@ujami.net>
+# Maintainer: Kairat Kubanychbek uulu <https://github.com/ImKairat>
 
 pkgname=gitflow
-pkgver=1.9.1_dev
+pkgver=1.0.0_beta.1
 pkgrel=1
-pkgdesc="A collection of git extetions for Vincent Driessen's branching model."
-arch=('any')
-url='https://github.com/petervanderdoes/gitflow-avh'
-license=('BSD')
-depends=('git')
-source=("$pkgname.git::git://github.com/petervanderdoes/gitflow-avh.git")
-md5sums=('SKIP')
+pkgdesc="Gitflow is a Git extension that implements the Gitflow AVH branching model."
+arch=('x86_64' 'aarch64')
+url="https://github.com/ImKairat-Rust-Lab/gitflow"
+license=('GPL-3.0-only')
+depends=('gcc-libs')
+makedepends=('cargo' 'git')
+provides=('gitflow')
+conflicts=('gitflow')
+options=('!lto')
+source=("git+https://github.com/ImKairat-Rust-Lab/gitflow.git#tag=v1.0.0-beta.1")
+sha256sums=('SKIP')
 
-prepare() {
-  cd $srcdir/${pkgname}.git
-  git submodule init
-  git submodule update
+build() {
+  cd gitflow
+  cargo build --release --locked
 }
 
 package() {
-  cd $srcdir/${pkgname}.git
-  make install prefix=$pkgdir/usr
+  cd gitflow
+  install -Dm755 "target/release/gitflow" "$pkgdir/usr/bin/gitflow"
 }
