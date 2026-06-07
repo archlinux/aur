@@ -1,7 +1,7 @@
 pkgname=('mingw-w64-protobuf')
 _pkgname=protobuf
 pkgver=35.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Protocol Buffers - Google's data interchange format (mingw-w64)"
 arch=('any')
 url='https://developers.google.com/protocol-buffers/'
