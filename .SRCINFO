@@ -1,6 +1,6 @@
 pkgbase = google-calendar-tui-bin
 	pkgdesc = Read-only terminal agenda for Google Calendar via GNOME Online Accounts (prebuilt binary)
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/akitaonrails/google-calendar-tui
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = google-calendar-tui-bin
 	depends = gcc-libs
 	depends = dbus
 	depends = gnome-online-accounts
-	provides = google-calendar-tui=0.1.3
+	provides = google-calendar-tui=0.1.4
 	conflicts = google-calendar-tui
 	conflicts = google-calendar-tui-debug
 	options = !strip
 	options = !debug
-	source_x86_64 = google-calendar-tui-0.1.3-x86_64.tar.gz::https://github.com/akitaonrails/google-calendar-tui/releases/download/v0.1.3/google-calendar-tui-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a3923e4e23d98b835e27fd82846e575503889dd8116bb7c525d7ef28fc9d976c
-	source_aarch64 = google-calendar-tui-0.1.3-aarch64.tar.gz::https://github.com/akitaonrails/google-calendar-tui/releases/download/v0.1.3/google-calendar-tui-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 9b740eb30f25d7f12bb8788ae88702b0dedfd4e185ea7b4b22bca924f080577f
+	source_x86_64 = google-calendar-tui-0.1.4-x86_64.tar.gz::https://github.com/akitaonrails/google-calendar-tui/releases/download/v0.1.4/google-calendar-tui-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2655d855337b8bf808e5a7e4ee6ecc441e94dbe3cf8a1321fa278a52117a9258
+	source_aarch64 = google-calendar-tui-0.1.4-aarch64.tar.gz::https://github.com/akitaonrails/google-calendar-tui/releases/download/v0.1.4/google-calendar-tui-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 1b51bbee6bfd7b960cbde6e3b6808ab2c3499e24b58c4dfa7009d3ed9e1e4191
 
 pkgname = google-calendar-tui-bin
