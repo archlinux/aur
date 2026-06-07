@@ -1,7 +1,7 @@
 # Maintainer: zyoung11 <zy3180250@163.com>
 pkgname='bm-terminal-music-player'
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="A minimalist terminal music player."
 arch=('x86_64')
 url="https://github.com/zyoung11/BM"
