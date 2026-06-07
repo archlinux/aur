@@ -1,7 +1,7 @@
 # Maintainer: tuanapi <tuanapi@proton.me>
 pkgname=openanime
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial OpenAnime Linux client - Compiled from source (WebGPU/Vulkan support)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tuanapi/OpenAnime-Linux"
@@ -10,7 +10,7 @@ depends=('gtk3' 'nss' 'libxss' 'alsa-lib' 'libxtst' 'libxkbfile')
 makedepends=('nodejs' 'npm' 'git')
 provides=("${pkgname}")
 conflicts=("${pkgname}-bin")
-source=("git+https://github.com/tuanapi/OpenAnime-Linux.git#tag=v${pkgver}")
+source=("git+https://github.com/tuanapi/OpenAnime-Linux.git#tag=v${pkgver}-${pkgrel}")
 sha256sums=('SKIP')
 
 build() {
