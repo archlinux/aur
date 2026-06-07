@@ -1,6 +1,6 @@
 pkgbase = melo
 	pkgdesc = A stylish TUI music player for local libraries that follows your terminal/omarchy theme
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/mbonikev/melo
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = melo
 	depends = alsa-lib
 	depends = libnotify
 	depends = dbus
-	source = melo-0.1.0.tar.gz::https://github.com/mbonikev/melo/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = e76545167e7823fd33ce025d9bdf8b4a4f79b145d204e44f8911e5f5852b4549
+	source = melo-0.1.1.tar.gz::https://github.com/mbonikev/melo/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = b89b1615f7ecb937293d0b8349242b1faae98bab5f4c21c4dd5206ab42b3792d
 
 pkgname = melo
