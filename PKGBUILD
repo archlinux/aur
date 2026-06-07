@@ -33,4 +33,8 @@ package() {
 exec /usr/lib/rplayer-bin/rplayer.AppImage "$@"
 WRAPPER
     chmod 755 "$pkgdir/usr/bin/rplayer"
+    install -Dm644 "id.ramdanolii.idrspectrum.desktop" \
+        "$pkgdir/usr/share/applications/id.ramdanolii.idrspectrum.desktop"
+    install -Dm644 "id.ramdanolii.idrspectrum.svg" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/id.ramdanolii.idrspectrum.svg"
 }
