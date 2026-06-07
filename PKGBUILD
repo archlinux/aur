@@ -1,7 +1,7 @@
 # Maintainer: Sapphic Angels <chloe@sapphic.moe>
 pkgname=chiri
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="A cross-platform CalDAV task management app. Currently in very early alpha!"
 arch=('x86_64' 'aarch64')
 url="https://github.com/chiriapp/chiri"
