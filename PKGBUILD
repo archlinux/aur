@@ -13,15 +13,20 @@ md5sums=('SKIP')
 
 build() {
     cd "$srcdir/ldpl-LDPL-5.1.0"
-    make
+    make PREFIX="/usr"
 }
 
 package() {
     cd "$srcdir/ldpl-LDPL-5.1.0"
-    install -d "$pkgdir/usr/bin/"
-    install -d "$pkgdir/usr/lib/ldpl/"
-    install -m 755 build/ldpl "$pkgdir/usr/bin/ldpl"
-    install src/ldpl_lib/ldpl_lib.cpp "$pkgdir/usr/lib/ldpl/"
-    install src/ldpl_lib/BigInt.hpp "$pkgdir/usr/lib/ldpl/"
+    mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/share/man/man1"
+    mkdir -p "$pkgdir/usr/lib/ldpl"
+    cp build/ldpl "$pkgdir/usr/bin/ldpl"
+    cp man/ldpl.1 "$pkgdir/usr/share/man/man1/ldpl.1"
+    cp src/ldpl_lib/ldpl_lib.cpp "$pkgdir/usr/lib/ldpl/ldpl_lib.cpp"
+    cp src/ldpl_lib/BigInt.hpp "$pkgdir/usr/lib/ldpl/BigInt.hpp"
+    chmod 755 "$pkgdir/usr/bin/ldpl"
+    chmod 755 "$pkgdir/usr/share/man/man1/ldpl.1"
+    chmod 755 "$pkgdir/usr/lib/ldpl/ldpl_lib.cpp"
+    chmod 755 "$pkgdir/usr/lib/ldpl/BigInt.hpp"
 }
-
