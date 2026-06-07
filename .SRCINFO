@@ -1,6 +1,6 @@
 pkgbase = icbm
 	pkgdesc = It's a ClipBoard Manager! For wlroots-based wayland WMs. Written in Rust (🚀🚀🚀)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://codeberg.org/pheenty/icbm
 	arch = any
@@ -8,9 +8,8 @@ pkgbase = icbm
 	makedepends = git
 	makedepends = cargo
 	depends = cliphist
-	depends = wtype
 	depends = wl-clipboard
-	source = git+https://codeberg.org/pheenty/icbm#tag=0.1.0
+	source = git+https://codeberg.org/pheenty/icbm#tag=0.2.0
 	md5sums = SKIP
 
 pkgname = icbm

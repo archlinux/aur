@@ -1,13 +1,13 @@
 # Maintainer: Ted pheenty Lukin <fedorlukin2006@gmail.com>
 
 pkgname=icbm
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="It's a ClipBoard Manager! For wlroots-based wayland WMs. Written in Rust (🚀🚀🚀)"
 arch=(any)
 url="https://codeberg.org/pheenty/icbm"
 license=('GPL-3.0-or-later')
-depends=(cliphist wtype wl-clipboard)
+depends=(cliphist wl-clipboard)
 makedepends=(git cargo)
 source=("git+$url#tag=$pkgver")
 md5sums=('SKIP')
