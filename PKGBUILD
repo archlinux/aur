@@ -2,7 +2,7 @@
 _pkgname=openanime
 pkgname="${_pkgname}-bin"
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial OpenAnime Linux istemcisi - WebGPU/Vulkan destekli"
 arch=('x86_64')
 url="https://github.com/tuanapi/OpenAnime-Linux"
@@ -12,7 +12,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
 _appimage="OpenAnime-${pkgver}.AppImage"
-source=("${_appimage}::https://github.com/tuanapi/OpenAnime-Linux/releases/download/v${pkgver}/${_appimage}")
+source=("${_appimage}::https://github.com/tuanapi/OpenAnime-Linux/releases/download/v${pkgver}-${pkgrel}/${_appimage}")
 sha256sums=('SKIP')
 noextract=("${_appimage}")
 
