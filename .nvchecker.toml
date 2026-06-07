@@ -1,0 +1,5 @@
+[flightgear-data]
+source = "gitlab"
+gitlab = "flightgear/fgdata"
+use_max_tag = true
+prefix = "v"
