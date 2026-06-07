@@ -1,0 +1,13 @@
+pkgbase = ball-simulator-git
+	pkgdesc = A simple TTY simulator of a ball bouncing around
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/fur-git/ball-simulator
+	arch = x86_64
+	license = Unlicense
+	makedepends = gcc
+	makedepends = git
+	source = git+https://github.com/fur-git/ball-simulator.git
+	sha256sums = SKIP
+
+pkgname = ball-simulator-git
