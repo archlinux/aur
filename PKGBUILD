@@ -5,7 +5,7 @@ _pkgname=perry
 pkgname=${_pkgname}-bin
 pkgdesc="Native TypeScript compiler that compiles TypeScript to native executables"
 
-pkgver=0.5.1125
+pkgver=0.5.1129
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -34,8 +34,8 @@ source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/downlo
 sha256sums=('9356ad3b1d634c61ceef7652f39779ab785286262a9ce4c1591c440e125be579'
             'c871483477d7105432645affac5be5edbd92b41a6faedb4c692e0681e46ada09'
             'dfdebdfbae47153c486750ce859fe5b1b1fdab83a876feed07551ddf1502cb47')
-sha256sums_x86_64=('054f829783fb70c39e2ab39220b38af568fa89f8c2673e1460c14931cc633bfe')
-sha256sums_aarch64=('4ab054d3084ffd6c2a995174371ed3d7083a086102da1b2411671d3ac2902877')
+sha256sums_x86_64=('056c2391af80cc47d8aba4d691b32b0d5b0013607d6fe20728f261f55a814ef8')
+sha256sums_aarch64=('716923f9e00045100de09e6e593e297df0d169c1452da3be787217a07f56ded6')
 
 
 prepare() {
