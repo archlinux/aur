@@ -1,0 +1,7 @@
+post_remove() {
+  cat << EOF
+
+==> To remove Leafyrino settings and cache, delete ~/.local/share/Leafyrino7
+
+EOF
+}
