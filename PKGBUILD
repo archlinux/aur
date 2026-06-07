@@ -2,7 +2,7 @@
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 # Contributor: Jonathan Bangert <jonathan@bangert.dk>
 pkgname=music-assistant-desktop
-pkgver=0.3.7
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
@@ -37,7 +37,7 @@ makedepends=(
 )
 conflicts=('music-assistant-desktop-git' 'music-assistant-desktop-bin' 'music-assistant-companion-git' 'music-assistant-app-git' 'music-assistant-desktop-app-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('65ff8eb5ace688753de942f534e9ba3055760d962e79c6b36f8e91c8ae782789')
+sha256sums=('48277e36535ced50cc4d9d7580b4828e4275912a3bdc0dec2153fe29a7ac626b')
 # ring + lto is failing: https://github.com/briansmith/ring/issues/2746
 options=('!lto')
 
