@@ -1,7 +1,7 @@
 # Maintainer: Vadim Gerasimov <angryvadik@gmail.com>
 pkgname=media-server
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 # Web client release to bundle. Must share the same minor version as pkgver
 # (the project keeps the server and web-client minor versions in lockstep).
 _webver=0.7.2
@@ -50,6 +50,11 @@ package() {
     "$pkgdir/usr/lib/systemd/system/media-server.service"
   install -Dm644 "packaging/systemd/media-server.env" \
     "$pkgdir/etc/media-server/media-server.env"
+
+  # sysusers.d entry creating the dedicated `media-server` user/group. pacman's
+  # systemd-sysusers alpm hook processes this automatically on install.
+  install -Dm644 "packaging/systemd/media-server.sysusers" \
+    "$pkgdir/usr/lib/sysusers.d/media-server.conf"
 
   # license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

@@ -2,9 +2,15 @@ post_install() {
     systemctl daemon-reload
     echo "media-server installed."
     echo "Enable and start it with: systemctl enable --now media-server.service"
-    echo "Optional tokens/overrides live in /etc/media-server/media-server.env"
-    echo "The service runs as a systemd DynamicUser; its data is stored in"
-    echo "/var/lib/media-server (created automatically on first start)."
+    echo
+    echo "The service runs as a dedicated 'media-server' system user; its data is"
+    echo "stored in /var/lib/media-server (created automatically on first start)."
+    echo
+    echo "To let it read/write media you own, add yourself to the media-server"
+    echo "group and grant it access to your library, e.g.:"
+    echo "    sudo usermod -aG media-server \"\$USER\""
+    echo "    sudo setfacl -m g:media-server:x \"\$HOME\""
+    echo "    sudo setfacl -R -m g:media-server:rwX -m d:g:media-server:rwX \"\$HOME/Videos\""
 }
 
 post_upgrade() {
@@ -20,4 +26,5 @@ post_remove() {
     systemctl daemon-reload
     echo "NOTE: service data in /var/lib/media-server was left in place."
     echo "Remove it manually if no longer needed: rm -rf /var/lib/media-server"
+    echo "The 'media-server' system user/group was left in place as well."
 }
