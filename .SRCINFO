@@ -1,0 +1,14 @@
+pkgbase = ttf-to-ae3dc-git
+	pkgdesc = Convert ttf to format for ae3dc engine
+	pkgver = 1.0.2.r123.gabcdef
+	pkgrel = 1
+	url = https://github.com/Rul991/ttf-to-ae3dc
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	source = git+https://github.com/Rul991/ttf-to-ae3dc
+	sha256sums = SKIP
+
+pkgname = ttf-to-ae3dc-git
