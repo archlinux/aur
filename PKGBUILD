@@ -6,7 +6,7 @@
 # Contributor: KokaKiwi <kokakiwi+aur at kokakiwi [dot] net>
 
 pkgname=tor-unstable
-pkgver=0.4.9.8
+pkgver=0.4.9.9
 pkgrel=1
 pkgdesc='Anonymizing overlay network (with alpha/beta/rc)'
 arch=('i686' 'x86_64' 'armv7h')
@@ -35,15 +35,15 @@ source=("https://dist.torproject.org/tor-${pkgver/_/-}.tar.gz"{,.sha256sum{,.asc
         'tor.service'
         'tor.sysusers'
         'tor.tmpfiles')
-sha256sums=('ac1f394e2dd2ab0877d27d928fd0d9e86662fe3ca6afdffb9fd9b6f0f96d05de'
-            'f0b0b952fcf79e5fe5a9444c9a5aff9b5789cd6445d47dd2274594192df2766c'
+sha256sums=('bd75ba7fd68f607c7806fcf70156a300aa926e9ad69a5e56a8e6414f5227e833'
+            '3441d307c81518cf06d141798e9f85086ab5cf56d377bbce82fae47e8b4fb086'
             'SKIP'
             'e450b141cbe657a152d56a931ff1eb76c6b17dbe7354b3fa188d8a5043779f11'
             '6354475c4ee4de0c1204ccc6ae20dea8e812f83f3134ee2d665592a2cfe327e5'
             '04eec05b4e61efccc58c5da657363f0c1059d7f122cb15c32331a201af2d7f94'
             '07bedb17660a3673b31b0005b6505065c90b32f2c6b28b969241da675560f926')
-b2sums=('d9f2ea4231161a39ed02e832afaa224ebdf6d16ae210fac4b8e7bacc47ad8876cff4cb93f6376954b38fe1a030d88bd2accf784f89d08f0fc4b2b0940b5a1c91'
-        'a4b35c92c3fec8abf45780ac544698df77da3a0bb86ef9515e647497b4ac2c372ec36a352ea389ad7daf5a8d9696f79102e3c1ffb2cf0cdff0501341c8a9bbed'
+b2sums=('0ccf4a9a8a15852cbc811b6848326415be6b5db6dae1bc0de6c21d35a2e2401bf1f674d62f49f61bb3e70619b40115d11fcc5a350b2a1db1202ab44bd1897b0a'
+        '6c6f608e79229e4f04e004685f1b6b5c12fe5b01271ebf8e83450947c41ceece4eaee3c18f3d052f7f43e826a3b5709c154565d031e0b439de585d80e223572d'
         'SKIP'
         '770da249c40981c3937383f17e6e4432667868505876fd673312e669f2c46a0810aab579b654a8eed4a6ea573a0844fbe79d8145f358eb47fd7bc5dd89a32554'
         '79d35290cd40e407d3102366d585d37e3b50b41e30b7046f8b1c6a7ee199137701b3c5c4e63f5967d6185b66d675b71157d1ef673648162921323732bb0546cf'
