@@ -1,7 +1,7 @@
 # Maintainer: Christopher Price <pricechrispy at gmail dot com>
 
 pkgname=foomuuri
-pkgver=0.32
+pkgver=0.33
 pkgrel=1
 pkgdesc="Multizone bidirectional nftables firewall"
 arch=('x86_64')
@@ -13,9 +13,9 @@ optdepends=('dbus-python: D-Bus interface for dynamic zone/interface changes'
             'python-gobject: D-Bus mainloop'
             'python-lxml: HTML/XML parsing in iplist filters'
             'python-prometheus_client: foomuuri_exporter for Prometheus metrics')
-makedepends=('make' 'flake8' 'python-pylint')
+makedepends=('make' 'python-ruff' 'python-pylint' 'ty')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FoobarOy/foomuuri/archive/v$pkgver.tar.gz")
-sha256sums=('7740026745ae1ba4a5dd90e71a06c324f31b53dda90e066d09aff308a233fab8')
+sha256sums=('690211dcb05a6ee83e7f53279d73549b77aa0223be59d67ac0ecb6323ce29009')
 
 options=()
 
