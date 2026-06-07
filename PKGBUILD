@@ -24,7 +24,7 @@ prepare() {
 
 build() {
     cd kloak
-    make all
+    make all RONN=true
 }
 
 package() {
