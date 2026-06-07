@@ -1,6 +1,6 @@
 # Maintainer: Vadim Gerasimov <angryvadik@gmail.com>
 pkgname=media-server
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 # Web client release to bundle. Must share the same minor version as pkgver
 # (the project keeps the server and web-client minor versions in lockstep).
@@ -12,13 +12,14 @@ license=('GPL-3.0-or-later')
 depends=('ffmpeg' 'openssl' 'systemd')
 makedepends=('cargo' 'git')
 install="$pkgname.install"
+backup=('etc/media-server/media-server.env')
 source=(
   "$pkgname-$pkgver::git+https://github.com/dog4ik/media-server.git#tag=v$pkgver"
   "media-server-web-$_webver-dist.tar.gz::https://github.com/dog4ik/media-server-web/releases/download/v$_webver/dist.tar.gz"
 )
-# Replace the second SKIP with the real checksum: `updpkgsums`.
+# git source uses SKIP (tag-pinned); tarball pins a real checksum (`updpkgsums`).
 sha256sums=('SKIP'
-            'SKIP')
+            'ea7c0ca491df6d9af73218dab9a65098d2f9de23ab1a0f451f98e2766d8314f7')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -28,8 +29,9 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   export CARGO_TARGET_DIR=target
-  # Build against the committed .sqlx query cache: no sqlx-cli or database needed.
   export SQLX_OFFLINE=true
+  # disable LTO so the linking succeeds
+  export CFLAGS+=" -ffat-lto-objects"
   cargo build --frozen --release --bin media-server
 }
 
