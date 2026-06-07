@@ -1,4 +1,4 @@
-# Maintainer: ramdanolii14<developer@nyanpixel.my.id>
+# Maintainer: Ramdan Olii<developer@nyanpixel.my.id>
 
 pkgname=rplayer-bin
 pkgver=1.0
