@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.20.0] - 2026-06-06
+
+### Added
+- Wizard to create Timer and Service Units as requested by [Issue 44](https://github.com/plrigaux/sysd-manager/issues/44)
+
+### Fixed
+- [Issue 56](https://github.com/plrigaux/sysd-manager/issues/55) Laggy filtering, delay set at 350ms
+
 ## [2.19.6] - 2026-05-20
 
 ### Fixed
