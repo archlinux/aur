@@ -98,6 +98,5 @@ open('icon.png','wb').write(d[best[0]:best[0]+best[1]])
 
 latestver() {
     curl -fsSL https://cheatengine.org/downloads.php |
-        grep -oP 'CheatEngineLinux\K[0-9]+' | head -1 |
-        sed 's/\(.\)\(.\)/\1.\2/'
+        grep -aoP 'Download Cheat Engine \K[0-9]+(\.[0-9]+)+(?= For Linux)'
 }
