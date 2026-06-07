@@ -1,15 +1,15 @@
 pkgbase = openfst
 	pkgdesc = Library for constructing, combining, optimizing, and searching weighted finite-state transducers (FSTs)
-	pkgver = 1.8.4
+	pkgver = 1.8.5
 	pkgrel = 1
 	url = https://www.openfst.org
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	depends = gcc-libs
 	depends = glibc
 	options = !libtool
 	options = !lto
-	source = https://www.openfst.org/twiki/pub/FST/FstDownload/openfst-1.8.4.tar.gz
-	sha256sums = a8ebbb6f3d92d07e671500587472518cfc87cb79b9a654a5a8abb2d0eb298016
+	source = https://www.openfst.org/twiki/pub/FST/FstDownload/openfst-1.8.5.tar.gz
+	sha256sums = 895f98d04e98815b6c5c6b94427d112300f2996f14687b2a2bd536d9bd0ff7ec
 
 pkgname = openfst
