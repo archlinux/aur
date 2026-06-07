@@ -1,6 +1,6 @@
 pkgbase = singcast-cli
 	pkgdesc = A clash core based on sing-box
-	pkgver = 1.1.10
+	pkgver = 1.1.11
 	pkgrel = 1
 	url = https://github.com/mapleafgo/singcast-cli
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = singcast-cli
 	license = MIT
 	provides = singcast-cli
 	conflicts = singcast-cli
-	source_x86_64 = singcast-cli-x86_64.tar.gz::https://github.com/mapleafgo/singcast-cli/releases/download/v1.1.10/singcast-v1.1.10-linux-amd64.tar.gz
-	sha256sums_x86_64 = fb4535a502e8be72bb1d2fe946fe90858784b0f18ae1791ffc6821aa161bbd33
-	source_aarch64 = singcast-cli-aarch64.tar.gz::https://github.com/mapleafgo/singcast-cli/releases/download/v1.1.10/singcast-v1.1.10-linux-arm64.tar.gz
-	sha256sums_aarch64 = 34925b4657720a873feef0691e4eabca3fed9ddb4aae448e79a3fac8e9194b4a
+	source_x86_64 = singcast-cli-x86_64.tar.gz::https://github.com/mapleafgo/singcast-cli/releases/download/v1.1.11/singcast-v1.1.11-linux-amd64.tar.gz
+	sha256sums_x86_64 = c3781bedee8ca286f00cbd808175d3dd2909f80a12e99f4f0a6e8370c547d116
+	source_aarch64 = singcast-cli-aarch64.tar.gz::https://github.com/mapleafgo/singcast-cli/releases/download/v1.1.11/singcast-v1.1.11-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8f77d76edf6907a270d7f44fd15af6850ae2dd61d3445840db00da824f55e3e5
 
 pkgname = singcast-cli
