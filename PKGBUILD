@@ -8,12 +8,13 @@ pkgdesc='Terminal-native speech-to-text with Vulkan GPU acceleration'
 arch=('x86_64')
 url="https://github.com/kristoferlund/${_pkgname}"
 license=('MIT')
-depends=('ffmpeg' 'vulkan-icd-loader')
+depends=('alsa-lib' 'ffmpeg' 'openssl' 'vulkan-icd-loader')
 optdepends=(
   'wl-clipboard: Wayland clipboard support'
   'xclip: X11 clipboard support'
 )
-conflicts=('ostt' 'ostt-cuda-release-bin')
+conflicts=('ostt' ostt-{cuda,vulkan} ostt-{cuda,vulkan}-bin 'ostt-cuda-release-bin')
+provides=('ostt' 'ostt-vulkan')
 options=('!strip')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu-vulkan.tar.gz"
