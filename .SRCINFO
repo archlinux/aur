@@ -1,6 +1,6 @@
 pkgbase = margo-git
 	pkgdesc = Rust/Smithay Wayland tiling compositor + first-party mshell desktop (mango heritage)
-	pkgver = r1416.aa9ed3d2
+	pkgver = r1503.2f9d0404
 	pkgrel = 1
 	url = https://github.com/kenanpelit/margo
 	arch = x86_64
@@ -73,10 +73,10 @@ pkgbase = margo-git
 	optdepends = blocky: local DNS resolver controlled by the ndns widget
 	optdepends = curl: used by the nip public-IP widget (already pulled by base)
 	optdepends = fprintd: opt-in fingerprint login for mlogind (pam_fprintd)
-	provides = margo=r1416.aa9ed3d2
+	provides = margo=r1503.2f9d0404
 	provides = wayland-compositor
-	provides = mshell=r1416.aa9ed3d2
-	provides = margo-mshell-git=r1416.aa9ed3d2
+	provides = mshell=r1503.2f9d0404
+	provides = margo-mshell-git=r1503.2f9d0404
 	conflicts = margo
 	conflicts = margo-mshell-git
 	conflicts = mshell
