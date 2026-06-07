@@ -3,29 +3,60 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir-git
-pkgver=2.23.0.r204.g639580d
-pkgrel=1
+pkgver=2.29.0.dev.r135.gf55b60e
+pkgrel=2
 pkgdesc="Canonical's display server"
 url="https://github.com/canonical/mir"
 arch=(x86_64 i686 armv7h aarch64)
 license=('GPL-2.0-or-later OR GPL-3.0-or-later')
-depends=(boost-libs libglvnd lttng-ust libepoxy libxml++2.6 libinput yaml-cpp
-         libxkbcommon  freetype2  hicolor-icon-theme libxcursor
-		 libdisplay-info pixman
-         egl-wayland wayland
-         libevdev umockdev
-
-         glib2 glibc gcc-libs util-linux-libs libxcb libxkbcommon-x11 libdrm mesa libx11 gtest glibmm sh
-
-         # capnproto google-glog gflags liburcu nettle libevdev protobuf python-gobject
-         )
-makedepends=(git glm doxygen graphviz cmake boost wlcs glmark2
-			 xorg-xwayland
-             python-pillow python-dbus # required
-             #gcovr lcov valgrind
-             python-dbusmock
-             glib2-devel
-             )
+depends=(
+    boost-libs
+    egl-wayland
+    freetype2
+    glib2
+    glibc
+    glibmm
+    gtest
+    hicolor-icon-theme
+    libdisplay-info
+    libdrm
+    libepoxy
+    libgcc
+    libglvnd
+    libinput
+    libstdc++
+    libx11
+    libxcb
+    libxcursor
+    libxkbcommon
+    libxkbcommon-x11
+    libxml++2.6
+    lttng-ust
+    mesa
+    pixman
+    sh
+    systemd-libs
+    util-linux-libs
+    wayland
+    yaml-cpp
+    )
+makedepends=(
+    boost
+    cargo
+    cmake
+    doxygen
+    git
+    glib2-devel
+    glm
+    glmark2
+    graphviz
+    python-dbus
+    python-dbusmock
+    python-pillow
+    umockdev
+    wlcs
+    xorg-xwayland
+    )
 optdepends=('qterminal: required for miral demos'
             'ttf-ubuntu-font-family: required for miral demos'
             'qt5-wayland: required for miral demos'
@@ -42,12 +73,15 @@ pkgver() {
 }
 
 build() {
-  export CFLAGS+=" -Wno-error=array-bounds"
-  export CXXFLAGS+=" -Wno-error=array-bounds"
-
   local _flags=(
+    -DMIR_FATAL_COMPILE_WARNINGS=OFF
+    -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/mir/
+    -DMIR_BUILD_INTERPROCESS_TESTS=OFF
     -DMIR_USE_PRECOMPILED_HEADERS=OFF
-    -Dglm_DIR:PATH=/usr/lib/cmake/glm
+    -DMIR_FATAL_COMPILE_WARNINGS=OFF
+    -DMIR_ENABLE_WLCS_TESTS=OFF
+    -DMIR_RUN_WLCS_TESTS=OFF
+    -DMIR_USE_LD=ld
   )
 
   cmake -B build -S "mir" -Wno-dev \
@@ -59,7 +93,9 @@ build() {
 }
 
 #check() {
-#  ctest --test-dir build --output-on-failure
+  #ctest --test-dir build --output-on-failure
+  #error: XDG_RUNTIME_DIR is invalid or not set in the environment
+  #Mir fatal error: Unable to bind Wayland socket
 #}
 
 package() {
