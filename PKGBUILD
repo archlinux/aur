@@ -3,7 +3,7 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-shell'
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('cmake' 'ninja' 'qt6-shadertools')
 provides=($pkgname)
 conflicts=($pkgname-git)
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('666c02f853243e7a332322331156e3aec754760feddba69299c5152b7070b607')
+sha256sums=('8eb0daf860ec32ba66d1a0ad3b6c418e27913346846e610a4a6374ca4a625aed')
 
 build() {
     cd "${srcdir}/release"
