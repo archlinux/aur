@@ -1,0 +1,7 @@
+# makepkg build artifacts — never commit these to the AUR
+*.pkg.tar.*
+*.tar.gz
+*.tar.zst
+*.tar.xz
+/src/
+/pkg/

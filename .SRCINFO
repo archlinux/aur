@@ -1,0 +1,19 @@
+pkgbase = python-searoute
+	pkgdesc = Python package for generating the shortest sea route between two points on Earth
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/genthalili/searoute-py
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-geojson
+	depends = python-networkx
+	optdepends = python-igraph: faster graph backend (igraph algorithm)
+	source = searoute-1.6.0.tar.gz::https://files.pythonhosted.org/packages/source/s/searoute/searoute-1.6.0.tar.gz
+	sha256sums = a2f9827b0aa0f1216f4696aa9cd9d358e9950cba496e8445dc2a3d5691862697
+
+pkgname = python-searoute
