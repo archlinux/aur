@@ -1,6 +1,6 @@
 # PKGBUILD
 pkgname=rbtr-git
-pkgver=r2.d0c2325
+pkgver=r19.1e52962
 pkgrel=1
 pkgdesc="A simple scheduler for generating btrfs snapshots"
 arch=('any')
