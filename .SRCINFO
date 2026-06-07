@@ -1,6 +1,6 @@
 pkgbase = android-sources
 	pkgdesc = Android SDK Sources, latest API
-	pkgver = 37.0_r01
+	pkgver = 37.0_r02
 	pkgrel = 5
 	url = https://developer.android.com/studio/index.html
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = android-sources
 	conflicts = android-sources-37.0
 	options = !strip
 	options = !debug
-	source = https://dl.google.com/android/repository/source-37.0_r01.zip
+	source = https://dl.google.com/android/repository/source-37.0_r02.zip
 	source = package.xml
-	sha256sums = 285295b766d9c31dda50cb051ef664673105dd34f63bc6d753bb89925e1d7dd7
-	sha256sums = b86d165fddd8368f2a2f634c0f8eb08a9d374cd6644848dbed02a195f9ca924a
+	sha256sums = a853f452b8ba94933eb56ed4e0f622991f9d6de6e0ac19923aa47414d79b9129
+	sha256sums = e7dad9312dca38886b38d58ac37cdfaece57b15a14b94f8a1f276ea7c9a52d09
 
 pkgname = android-sources

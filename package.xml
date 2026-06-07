@@ -149,7 +149,7 @@ January 16, 2019</license>
             <base-extension>true</base-extension>
         </type-details>
         <revision>
-            <major>1</major>
+            <major>2</major>
         </revision>
         <display-name>Sources for Android 37.0</display-name>
         <uses-license ref="android-sdk-license"/>

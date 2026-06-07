@@ -8,7 +8,7 @@
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
-_rev=r01
+_rev=r02
 _sdkint=37.0
 pkgname="android-sources"
 pkgver="${_sdkint}_${_rev}"
@@ -22,8 +22,8 @@ conflicts=("android-sources-${_sdkint}")
 options=('!strip' '!debug')
 source=("https://dl.google.com/android/repository/source-${_sdkint}_${_rev}.zip"
         "package.xml")
-sha256sums=('285295b766d9c31dda50cb051ef664673105dd34f63bc6d753bb89925e1d7dd7'
-            'b86d165fddd8368f2a2f634c0f8eb08a9d374cd6644848dbed02a195f9ca924a')
+sha256sums=('a853f452b8ba94933eb56ed4e0f622991f9d6de6e0ac19923aa47414d79b9129'
+            'e7dad9312dca38886b38d58ac37cdfaece57b15a14b94f8a1f276ea7c9a52d09')
 
 package() {
     # Install files
