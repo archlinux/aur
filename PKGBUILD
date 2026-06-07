@@ -2,16 +2,17 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.1.0.r132.g53f6b0e # Will be updated by pkgver()
-pkgrel=1
+pkgver=0.1.0 # Will be updated by pkgver()
+pkgrel=5
 pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
 license=('GPL3')
 depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'pixman' 'libdrm' 'libevdev' 'wlr-randr'
-         'noctalia-shell' 'libdecor' 'grim' 'xwayland-satellite'
-         'xdg-desktop-portal-wlr' 'wlroots0.20'
+         'noctalia-shell' 'libdecor' 'grim' 'slurp' 'xwayland-satellite'
+         'xdg-desktop-portal-wlr' 'wlroots0.20' 'wl-clipboard'
+         'xdg-desktop-portal-gtk' 'libnotify'
          # NativeAOT runtime link targets (BCL dlopens/dynlinks against these).
          'zlib' 'krb5' 'openssl')
 makedepends=('dotnet-sdk-10.0' 'clang' 'lld' 'llvm' 'zlib' 'krb5' 'openssl'
@@ -20,7 +21,8 @@ optdepends=('ly: tuigreeter'
             'greetd: minimal login manager for tuigreet'
             'tabby: recommended terminal emulator'
             'nemo: recommended file manager'
-            'firefox: web browser')
+            'firefox: web browser'
+            'wireplumber: volume/media key bindings (wpctl)')
 provides=('aqueous' 'riverdelta')
 conflicts=('aqueous' 'riverdelta')
 install=aqueous.install
@@ -129,7 +131,8 @@ build() {
     cd "$srcdir/aqueous/compositor"
     # -Dllvm forces the LLVM backend + LLD linker. Zig 0.16.0's self-hosted
     # ELF linker can't handle R_X86_64_PC64 in .sframe emitted by gcc >= 16.
-    zig build -Doptimize=ReleaseSafe -Dxwayland -Dllvm --prefix "$srcdir/river-dist" install
+    zig build -Doptimize=ReleaseSafe -Dxwayland -Dllvm -Dscenefx=true \
+        --prefix "$srcdir/river-dist" install
 }
 
 package() {
@@ -150,6 +153,14 @@ package() {
     install -Dm755 "$srcdir/aqueous/packaging/aqueous-init" "$pkgdir/usr/bin/aqueous-init"
     install -Dm755 "$srcdir/aqueous/packaging/aqueous-wm.sh" "$pkgdir/usr/bin/aqueous-wm"
     install -Dm644 "$srcdir/aqueous/aqueous.desktop" "$pkgdir/usr/share/wayland-sessions/aqueous.desktop"
+
+    # xdg-desktop-portal routing config. Pins ScreenCast/Screenshot to the
+    # wlroots backend (xdg-desktop-portal-wlr) so screen sharing works out of
+    # the box and is not silently won by a competing backend (cosmic/gtk).
+    # Installed system-wide; the 'aqueous' filename stem is applied because the
+    # session sets XDG_CURRENT_DESKTOP=Aqueous (see packaging/aqueous-init).
+    install -Dm644 "$srcdir/aqueous/packaging/aqueous-portals.conf" \
+        "$pkgdir/usr/share/xdg-desktop-portal/aqueous-portals.conf"
     install -Dm644 "$srcdir/aqueous/wm.toml" "$pkgdir/etc/xdg/aqueous/wm.toml"
     install -Dm644 "$srcdir/aqueous/wm.toml" "$pkgdir/usr/share/aqueous/wm.toml"
 
