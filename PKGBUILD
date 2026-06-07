@@ -75,7 +75,7 @@ build() {
     unset CFLAGS CXXFLAGS
 
     # Build feature list - include all compile-time features
-    local features="channel-lark,channel-matrix,channel-nostr,observability-otel,observability-prometheus,browser-native,sandbox-landlock,sandbox-bubblewrap,rag-pdf,whatsapp-web,plugins-wasm,hardware,voice-wake,embedded-web,memory-postgres,probe,webauthn"
+    local features="channels-full,channel-matrix,channel-nostr,channel-wechat,channel-line,observability-otel,observability-prometheus,browser-native,sandbox-landlock,sandbox-bubblewrap,rag-pdf,whatsapp-web,plugins-wasm,hardware,voice-wake,embedded-web,memory-postgres,probe,webauthn"
 
     # Add Raspberry Pi GPIO support for ARM architectures
     if [[ "$CARCH" == "aarch64" ]] || [[ "$CARCH" == "armv7h" ]]; then
