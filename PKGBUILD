@@ -27,5 +27,6 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 	install -Dm755 target/release/rbtr "$pkgdir/usr/bin/rbtr"
+	install -Dm644 rbtrd.service "$pkgdir/usr/lib/systemd/system/rbtrd.service"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
