@@ -1,7 +1,7 @@
 # Maintainer: Ramdan Olii<developer@nyanpixel.my.id>
 
 pkgname=rplayer-bin
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Pemutar musik audio native untuk Arch Linux dengan visualisasi spektrum dan grafik kurs IDR"
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
 )
 options=('!strip')
 source=("IDR-Spectrum-Player-x86_64.AppImage::https://github.com/ramdanolii14/Rplayer/releases/download/v${pkgver}/IDR-Spectrum-Player-x86_64.AppImage")
-sha256sums=('c6c631dfdd2593077987c8032fc2bbb2d69f595139e2981bfd8fbad4259ee8e2')
+sha256sums=('8b9d58159de3b864861e7a013277680c3f27657f11723b857658f59635ba6cab')
 
 package() {
     install -Dm755 "IDR-Spectrum-Player-x86_64.AppImage" \
