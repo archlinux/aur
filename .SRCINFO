@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-abseil-cpp
 	pkgdesc = Collection of C++ library code designed to augment the C++ standard library (mingw-w64)
 	pkgver = 20260107.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://abseil.io
 	arch = any
 	license = Apache

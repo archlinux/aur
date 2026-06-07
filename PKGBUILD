@@ -1,6 +1,6 @@
 pkgname=mingw-w64-abseil-cpp
 pkgver=20260107.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of C++ library code designed to augment the C++ standard library (mingw-w64)'
 arch=('any')
 url='https://abseil.io'
@@ -20,15 +20,15 @@ prepare() {
 build() {
   cd "${srcdir}/abseil-cpp-$pkgver"
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -B build-${_arch} .
-    make -C build-${_arch}
+    ${_arch}-cmake -DCMAKE_CXX_STANDARD=17 -B build-${_arch} .
+    cmake --build build-${_arch}
   done
 }
 
 package() {
+  cd "$srcdir"/abseil-cpp-$pkgver
   for _arch in $_architectures; do
-    cd "$srcdir"/abseil-cpp-$pkgver/build-${_arch}
-    make install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" cmake --build build-${_arch} --target install
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
