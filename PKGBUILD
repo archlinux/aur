@@ -40,7 +40,7 @@ options=('!strip' '!debug')
 _relurl="https://github.com/esengine/DeepSeek-Reasonix/releases/download/desktop-v${pkgver}"
 
 source=(
-    "Reasonix-linux-amd64.tar.gz::${_relurl}/Reasonix-linux-amd64.tar.gz"
+    "Reasonix-${pkgver}-linux-amd64.tar.gz::${_relurl}/Reasonix-linux-amd64.tar.gz"
     'reasonix-desktop.sh'
     'reasonix-desktop.desktop'
     "LICENSE::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/main-v2/LICENSE"
