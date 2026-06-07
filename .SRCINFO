@@ -1,0 +1,14 @@
+pkgbase = shrikeusb-cli
+	pkgdesc = Terminal-based USB ISO Burner for Shrike Linux
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://shrikelinuxug.org
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	depends = glibc
+	depends = sudo
+	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/main.tar.gz
+	md5sums = SKIP
+
+pkgname = shrikeusb-cli
