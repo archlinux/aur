@@ -1,16 +1,16 @@
 # Maintainer: DeathKhan <DeathKhan@users.noreply.github.com>
 pkgname=typst-studio-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Typst editor with Tinymist LSP and live HTML preview"
 arch=('x86_64')
 url="https://github.com/DeathKhan/typst-studio"
 license=('GPL-3.0-or-later')
-depends=('typst' 'fuse2' 'gtk3')
+depends=('typst' 'gtk3')
 optdepends=(
   'tinymist: external language server if not using the bundled binary'
 )
-makedepends=('imagemagick')
+makedepends=('imagemagick' 'squashfs-tools')
 provides=('typst-studio')
 conflicts=('typst-studio')
 options=('!debug')
@@ -27,16 +27,23 @@ sha256sums=(
 
 prepare() {
   chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
+  cd "${srcdir}"
+  rm -rf squashfs-root app.squashfs
+
+  # Extract without FUSE so end users never need libfuse at runtime.
+  local offset
+  offset="$("./${pkgname}-${pkgver}.AppImage" --appimage-offset)"
+  tail -c +$((offset + 1)) "${pkgname}-${pkgver}.AppImage" > app.squashfs
+  unsquashfs -force -no-xattrs -d squashfs-root app.squashfs
 }
 
 package() {
   install -dm755 "${pkgdir}/opt/typst-studio"
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" \
-    "${pkgdir}/opt/typst-studio/typst-studio.AppImage"
+  cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/typst-studio/"
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/typst-studio" <<'EOF'
 #!/bin/sh
-exec /opt/typst-studio/typst-studio.AppImage "$@"
+exec /opt/typst-studio/AppRun "$@"
 EOF
 
   install -Dm644 "${srcdir}/typst-studio.desktop" \

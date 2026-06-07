@@ -1,13 +1,13 @@
 pkgbase = typst-studio-bin
 	pkgdesc = Desktop Typst editor with Tinymist LSP and live HTML preview
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DeathKhan/typst-studio
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = imagemagick
+	makedepends = squashfs-tools
 	depends = typst
-	depends = fuse2
 	depends = gtk3
 	optdepends = tinymist: external language server if not using the bundled binary
 	provides = typst-studio
