@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-gui
-pkgver=1.32.0
+pkgver=1.33.0
 pkgrel=1
 pkgdesc="PySide6 desktop GUI for the Control-OFC fan control daemon"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('control-ofc-daemon>=1.12.0' 'python' 'pyside6' 'python-httpx'
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'scdoc')
 install=control-ofc-gui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a5d0c00e631776c535c74181c16478ba6232a68f3738cc49cd411495a66c6fde')
+sha256sums=('a821efba54fcd384bd8862773a8f3bc427741f9d27bede96bb78ef60874eadca')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -62,6 +62,14 @@ package() {
     for guide in manual/*.md; do
         install -Dm644 "$guide" \
             "$pkgdir/usr/share/doc/$pkgname/manual/$(basename "$guide")"
+    done
+
+    # Hardware/sensor reference docs (docs/19–23) — the manual pages link to
+    # them via ../docs/… relative paths, so ship them alongside the manual to
+    # keep the installed copy's links resolving (DEC-145).
+    for refdoc in docs/19_*.md docs/20_*.md docs/21_*.md docs/22_*.md docs/23_*.md; do
+        install -Dm644 "$refdoc" \
+            "$pkgdir/usr/share/doc/$pkgname/docs/$(basename "$refdoc")"
     done
 
     # License
