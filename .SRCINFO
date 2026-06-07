@@ -1,6 +1,6 @@
 pkgbase = yandex-music-bin
 	pkgdesc = Official Yandex Music desktop app repackaged from the Debian package
-	pkgver = 5.103.2
+	pkgver = 5.105.3
 	pkgrel = 1
 	url = https://music.yandex.ru/download/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = yandex-music-bin
 	conflicts = yandex-music-windows
 	options = !strip
 	options = !debug
-	source = Yandex_Music_amd64_5.103.2.deb::https://desktop.app.music.yandex.net/stable/Yandex_Music_amd64_5.103.2.deb
-	sha256sums = 48a7c9c09aa5be8c6346ccdda73991ff0d97a354bedb89a46a4140543e6dbd7b
+	source = Yandex_Music_amd64_5.105.3.deb::https://desktop.app.music.yandex.net/stable/Yandex_Music_amd64_5.105.3.deb
+	sha256sums = d2ebc8c5460a1d98d13302a655076678453831105ea992c72094b9f6a84441b6
 
 pkgname = yandex-music-bin
