@@ -1,6 +1,6 @@
 # Maintainer: Tanay Pant <tanaypant@protonmail.com>
 pkgname=tokyo-notes-git
-pkgver=r102.geabdc86
+pkgver=r107.g2cd9dae
 pkgrel=1
 pkgdesc="A minimal GTK4 Markdown note-taking app"
 arch=('any')
@@ -23,7 +23,7 @@ package() {
 
     # Install main application files
     install -dm755 "$pkgdir/usr/share/tokyo-notes"
-    cp -r assets themes core ui markdown main.py style.css "$pkgdir/usr/share/tokyo-notes/"
+    cp -r assets themes core ui markdown translations main.py style.css "$pkgdir/usr/share/tokyo-notes/"
 
     # Install launcher script
     install -dm755 "$pkgdir/usr/bin"
