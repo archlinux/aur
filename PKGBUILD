@@ -2,7 +2,7 @@
 
 _pkgname=converternow
 pkgname=$_pkgname-bin
-pkgver=4.6.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="The Unit Converter app: easy, immediate and multi-platform (binary release)"
 url="https://github.com/ferraridamiano/ConverterNOW"
@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=($_pkgname-linux-x64-$pkgver.tar.gz::"$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz"
         logo.png::"$url/blob/v4.6.0/assets/logo.png?raw=true")
-sha256sums=('491f48449bbb7ffcbd47484d75474f8528af190fc8e944b5abf701c704843dc2'
+sha256sums=('e4d74823e4f1283789300afab290eb777e59c2a141b41d221121fb538499e86c'
             'e90c2c6ed0020191173eb18bbb3d42d42977570da787941b2b6bc7cb18fdea57')
 
 prepare() {
