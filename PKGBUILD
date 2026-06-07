@@ -10,7 +10,8 @@ depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-b
 optdepends=('ttf-iosevka: Crisp monospace button icons' 'pulseaudio: System audio recording')
 makedepends=('gcc' 'pkgconf')
 
-source=("https://codeberg.org/root1/Shrike-Linux-Uganda/archive/v${pkgver}.tar.gz")
+# Download the main branch directly from Codeberg
+source=("https://codeberg.org/root1/Shrike-Linux-Uganda/archive/main.tar.gz")
 md5sums=('SKIP')
 
 build() {

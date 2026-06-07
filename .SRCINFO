@@ -15,7 +15,7 @@ pkgbase = shrike-walkman
 	depends = gst-libav
 	optdepends = ttf-iosevka: Crisp monospace button icons
 	optdepends = pulseaudio: System audio recording
-	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/v1.5.tar.gz
+	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/main.tar.gz
 	md5sums = SKIP
 
 pkgname = shrike-walkman
