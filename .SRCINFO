@@ -1,6 +1,6 @@
 pkgbase = arctis-sound-manager
 	pkgdesc = Linux GUI for SteelSeries Arctis headsets — all GG/Sonar features: mixer, EQ, ANC, mic processing, surround
-	pkgver = 1.1.58
+	pkgver = 1.1.59
 	pkgrel = 1
 	url = https://github.com/loteran/Arctis-Sound-Manager
 	install = arctis-sound-manager.install
@@ -24,7 +24,7 @@ pkgbase = arctis-sound-manager
 	depends = curl
 	depends = swh-plugins
 	depends = noise-suppression-for-voice
-	source = arctis-sound-manager-1.1.58.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v1.1.58/arctis-sound-manager-1.1.58.tar.gz
-	sha256sums = fb1cb6718923bc39bc88bbb346e1d7028e5e141615292c9562c68c804201491e
+	source = arctis-sound-manager-1.1.59.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v1.1.59/arctis-sound-manager-1.1.59.tar.gz
+	sha256sums = 0a71e2d695c3840faf03aa4983a994d0f137fb71ad8d9327106c6e9e81cceec1
 
 pkgname = arctis-sound-manager
