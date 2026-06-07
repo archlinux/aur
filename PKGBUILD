@@ -40,7 +40,6 @@ depends=(
     'fontconfig'
     'nlohmann-json'
     'libpipewire'
-    'magic_enum'
 )
 makedepends=(
     'git'

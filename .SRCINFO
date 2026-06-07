@@ -37,7 +37,6 @@ pkgbase = mayaflux-dev-bin
 	depends = fontconfig
 	depends = nlohmann-json
 	depends = libpipewire
-	depends = magic_enum
 	optdepends = doxygen: for documentation generation
 	optdepends = vulkan-extra-layers: additional Vulkan layers
 	optdepends = vulkan-extra-tools: additional Vulkan tools
