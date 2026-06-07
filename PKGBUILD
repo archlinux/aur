@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A fast, keyboard-driven terminal UI for todo.txt"
 
-pkgver=2026.5.12
+pkgver=2026.6.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('f62f40c11e62b25707de5d5c7083372e78cf9df2e526cf58bddbe5e29cf3a824')
-sha256sums_aarch64=('f62f40c11e62b25707de5d5c7083372e78cf9df2e526cf58bddbe5e29cf3a824')
+sha256sums_x86_64=('31b9bb26cc7b0909979333b74ef246df6303b424ff533335d9f10ef1237d09d6')
+sha256sums_aarch64=('31b9bb26cc7b0909979333b74ef246df6303b424ff533335d9f10ef1237d09d6')
 
 
 case ${CARCH} in
