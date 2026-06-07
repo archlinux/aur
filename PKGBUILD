@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=enpasscli
 _pkgname=enpass-cli
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Enpass commandline client"
 arch=('x86_64' 'aarch64')
