@@ -5,12 +5,12 @@
 
 pkgname=ditrigon
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A popular and easy to use graphical IRC (chat) client'
 arch=('x86_64')
 url='https://github.com/bluewww/ditrigon'
 license=('GPL-2.0-or-later')
-depends=('dbus-glib' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk2-compat'
+depends=('dbus-glib' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk4'
          'libcanberra' 'openssl' 'pango' 'pciutils')
 makedepends=('git' 'glib2-devel' 'intltool' 'iso-codes' 'lua' 'meson' 'perl' 'python-cffi' 'python-setuptools')
 optdepends=('enchant: Spell check'

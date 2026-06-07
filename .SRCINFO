@@ -1,7 +1,7 @@
 pkgbase = ditrigon
 	pkgdesc = A popular and easy to use graphical IRC (chat) client
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bluewww/ditrigon
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -18,7 +18,7 @@ pkgbase = ditrigon
 	depends = desktop-file-utils
 	depends = gdk-pixbuf2
 	depends = glib2
-	depends = gtk2-compat
+	depends = gtk4
 	depends = libcanberra
 	depends = openssl
 	depends = pango
