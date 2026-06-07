@@ -8,12 +8,17 @@ arch=("any")
 url="https://github.com/rpizerow2-rgb/pmgui"
 license=("MIT")
 depends=("python" "python-pyqt6" "yay" "polkit")
-makedepends=("python-setuptools")
+makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rpizerow2-rgb/pmgui/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=("SKIP")
 
+build() {
+  cd "${pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
