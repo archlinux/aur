@@ -20,7 +20,7 @@ package() {
     cd "$srcdir/ldpl-LDPL-5.1.0"
     install -d "$pkgdir/usr/bin/"
     install -d "$pkgdir/usr/lib/ldpl/"
-    install -m 775 build/ldpl "$pkgdir/usr/bin/ldpl"
+    install -m 755 build/ldpl "$pkgdir/usr/bin/ldpl"
     install src/ldpl_lib/ldpl_lib.cpp "$pkgdir/usr/lib/ldpl/"
     install src/ldpl_lib/BigInt.hpp "$pkgdir/usr/lib/ldpl/"
 }
