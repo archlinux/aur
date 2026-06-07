@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Eppie Preview
+Comment=Open protocol encrypted p2p email with Proton Mail support
+Exec=eppie-preview
+Icon=eppie-preview
+Terminal=false
+Type=Application
+Categories=Network;Email;
+StartupWMClass=Eppie
+StartupNotify=true

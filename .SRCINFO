@@ -1,0 +1,27 @@
+pkgbase = eppie-preview-bin
+	pkgdesc = Open protocol encrypted p2p email with Proton Mail support
+	pkgver = 1.2.18.preview
+	pkgrel = 1
+	url = https://github.com/Eppie-io/Eppie-App
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = icu
+	depends = libx11
+	depends = libice
+	depends = libsm
+	provides = eppie
+	conflicts = eppie
+	conflicts = eppie-bin
+	options = !strip
+	options = !debug
+	source = https://github.com/Eppie-io/Eppie-App/releases/download/v1.2.18-preview/eppie.desktop-linux-x64.tar.gz
+	source = eppie.desktop
+	source = eppie-wrapper
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = eppie-preview-bin

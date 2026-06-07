@@ -1,0 +1,4 @@
+#!/bin/sh
+export GDK_BACKEND=x11
+export GDK_PROGRAM_NAME=Eppie
+exec /opt/eppie/Eppie --class Eppie "$@"
