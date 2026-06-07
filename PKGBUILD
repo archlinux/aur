@@ -18,7 +18,7 @@ build() {
 }
 
 package() {
-	cd "IwdTUI/${pkgver}"
-	install -Dm755 "target/release/iwdtui" "$pkgdir/usr/bin/iwdtui"
+	cd "IwdTUI-${pkgver}"
+	install -Dm755 "target/release/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
 }
 
