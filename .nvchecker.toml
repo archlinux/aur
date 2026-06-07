@@ -1,0 +1,4 @@
+[acarsdec]
+source = "git"
+git = "https://github.com/f00b4r0/acarsdec.git"
+prefix = "v"
