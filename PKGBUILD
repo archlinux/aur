@@ -1,6 +1,6 @@
 # Maintainer: C-Yassin <c.yassin.org@gmail.com>
 pkgname=flameget
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="A GTK4 Download Manager wrapping Aria2, Curl, and YT-DLP"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "https://files.pythonhosted.org/packages/ca/85/3e379cb2f2e214764c1e15485d1e2ec6d6f839b29289a1202fc26c93e07d/${_plugin_whl}"
         "https://files.pythonhosted.org/packages/py3/a/aria2p/${_aria2p_whl}")
 
-sha256sums=('4cf728ac633c35fc280b93eb9a5dc791c7556c530284ff3c94c8de2afb0ccd9f'
+sha256sums=('4c305cf3fda6c780322baa3e190d1762c34e11841e8c9ed000ef97395bc6acb6'
             '601b3b940e49bc45ba48fcdb2327850a75ba23c7e91709b5abbff5d4b914fa0b'
             'c3c0a87958dacc6b3ad194b5320811baf1e593ddaf83542320d439f6a82f865d')
 sha256sums_x86_64=('4f2ec561e8f9fadece7deadc6ce0624fbdedd852222c3eb194c22153b1323129')
