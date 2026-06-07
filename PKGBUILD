@@ -15,7 +15,7 @@ depends=(
   'glib2'
   'gtk3'
   'hicolor-icon-theme'
-  'libsoup'
+  'libsoup3'
   'pango'
   'webkit2gtk-4.1'
 )
