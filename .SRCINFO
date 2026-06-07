@@ -11,6 +11,6 @@ pkgbase = ccat-rs
 	depends = gcc-libs
 	depends = oniguruma
 	source = ccat-rs-0.3.0.tar.gz::https://github.com/zhiyuHD/ccat/releases/download/v0.3.0/ccat-rs-0.3.0.tar.gz
-	sha256sums = 05e5c77535015000c647cbd2e2051943c1034d3e7b2a07335be8a838b07e9cad
+	sha256sums = ac1fed5673647ba0d33dcfab6a7cb4aea006b1f00f982ada99dbd3ee9132d282
 
 pkgname = ccat-rs
