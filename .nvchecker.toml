@@ -1,0 +1,5 @@
+[gravityfile-bin]
+source = "github"
+github = "Epistates/gravityfile"
+use_latest_release = true
+prefix = "v"
