@@ -1,0 +1,2 @@
+# Persistent state directory
+d /var/lib/nullclaw 0750 nullclaw nullclaw -

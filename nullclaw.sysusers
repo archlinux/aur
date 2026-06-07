@@ -1,0 +1,2 @@
+# Create nullclaw system user
+u nullclaw - "NullClaw AI assistant daemon user" /var/lib/nullclaw
