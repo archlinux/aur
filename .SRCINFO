@@ -1,5 +1,5 @@
 pkgbase = playit-bin
-	pkgdesc = Making it easy to play games with friends. Makes your server public
+	pkgdesc = Tool to make your locally running game server public (Binary Version)
 	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://playit.gg

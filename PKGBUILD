@@ -5,7 +5,7 @@
 pkgname=playit-bin
 pkgver=1.0.9
 pkgrel=1
-pkgdesc='Making it easy to play games with friends. Makes your server public'
+pkgdesc='Tool to make your locally running game server public (Binary Version)'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url='https://playit.gg'
 license=('BSD-2-Clause')
