@@ -8,7 +8,7 @@ url='https://github.com/slatkin/anus'
 license=('MIT')
 depends=('webkit2gtk-4.1')
 source=("$pkgname-$pkgver-linux-x86_64.tar.gz::https://github.com/slatkin/anus/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('c3b02b0578965f68170d8a681ac81700f9746c6bb1d75fe85931ecc701a8a83a')
+sha256sums=('3c3f041baa1935e4eb9567ba51ca72eb7924e72bf12cc7b02f85eeca2b3a8528')
 
 package() {
   cd "$pkgname-$pkgver"
@@ -21,4 +21,7 @@ package() {
     install -Dm644 "icons/${sz}x${sz}/$pkgname.png" \
       "$pkgdir/usr/share/icons/hicolor/${sz}x${sz}/apps/$pkgname.png"
   done
+
+  install -Dm644 "$pkgname.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 }

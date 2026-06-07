@@ -7,6 +7,6 @@ pkgbase = anus
 	license = MIT
 	depends = webkit2gtk-4.1
 	source = anus-3.0.1-linux-x86_64.tar.gz::https://github.com/slatkin/anus/releases/download/v3.0.1/anus-3.0.1-linux-x86_64.tar.gz
-	sha256sums = c3b02b0578965f68170d8a681ac81700f9746c6bb1d75fe85931ecc701a8a83a
+	sha256sums = 3c3f041baa1935e4eb9567ba51ca72eb7924e72bf12cc7b02f85eeca2b3a8528
 
 pkgname = anus
