@@ -1,0 +1,25 @@
+pkgbase = fchart3
+	pkgdesc = A Python project for creating high-quality astronomical finder charts and maps
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/skybber/fchart3
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-skyfield
+	depends = python-pillow
+	depends = python-skia
+	depends = python-cairo
+	depends = python-astroquery
+	provides = fchart3
+	conflicts = fchart3
+	source = fchart3::git+https://github.com/skybber/fchart3.git#tag=RELEASE-0.12.0
+	sha256sums = cbd0960ce71e54643af01bacf655c429589386f737f896d9110f87419803b5dc
+
+pkgname = fchart3
