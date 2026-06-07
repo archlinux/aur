@@ -1,5 +1,5 @@
 pkgname=nm-sidebar
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='GTK4/libadwaita NetworkManager sidebar for Wayland desktops'
 arch=('x86_64')
@@ -19,22 +19,27 @@ makedepends=(
   'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a59d2ed69315a2c2fead4786b9ab1a3ef2ce11a1a7e5e3912f6e1ec0cda56c38')
+sha256sums=('69cb23c50109e448cdbc9607d6b1e4fa0794dd7850213882345fb454c63880d6')
 
 _github_repo='Relz/network-manager-sidebar'
-_source_dir="$srcdir/${_github_repo##*/}-$pkgver"
-_build_dir="$srcdir/build-$pkgver-$pkgrel"
+_source_name="${_github_repo##*/}-$pkgver"
+_build_name="build-$pkgver-$pkgrel"
 
 build() {
-  rm -rf "$_build_dir"
-  meson setup "$_build_dir" "$_source_dir" \
+  local source_dir="$srcdir/$_source_name"
+  local build_dir="$srcdir/$_build_name"
+
+  rm -rf "$build_dir"
+  meson setup "$build_dir" "$source_dir" \
     --prefix=/usr \
     --libdir=lib \
     --libexecdir=libexec \
     --buildtype=plain
-  meson compile -C "$_build_dir"
+  meson compile -C "$build_dir"
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C "$_build_dir"
+  local build_dir="$srcdir/$_build_name"
+
+  DESTDIR="$pkgdir" meson install -C "$build_dir"
 }
