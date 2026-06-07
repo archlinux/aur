@@ -25,7 +25,7 @@ optdepends=(
 )
 conflicts=('atmosphera-git')
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('f6649a4d134b26c4f252910a6c6f684bc361d3a923f73c40d2c9eade307cc8d8')
 
 package() {
   cd "$srcdir/$pkgname"
