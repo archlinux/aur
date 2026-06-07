@@ -3,7 +3,7 @@
 pkgname=ccgui-bin
 _pkgname=ccgui
 _appname=ccgui
-pkgver=0.5.2
+pkgver=0.5.7
 pkgrel=1
 pkgdesc='Next-generation VibeCoding editor (prebuilt binary)'
 arch=('x86_64')
@@ -14,12 +14,12 @@ provides=('ccgui')
 conflicts=('ccgui')
 options=('!strip')
 source=(
-  "${_appname}_${pkgver}_amd64.AppImage::https://github.com/zhukunpenglinyutong/desktop-cc-gui/releases/download/v0.5.2/ccgui_0.5.2_amd64.AppImage"
+  "${_appname}_${pkgver}_amd64.AppImage::https://github.com/zhukunpenglinyutong/desktop-cc-gui/releases/download/v0.5.7/ccgui_0.5.7_amd64.AppImage"
   'LICENSE'
 )
 noextract=("${_appname}_${pkgver}_amd64.AppImage")
 sha256sums=(
-  'ccb921965fc8a256ad8cb670fbf58fb99d9e9a4cd7a09898828d261ce157f508'
+  '0401eef1a6d950ed45706e5e51927fa7a94aa6237b4246c2747dca244425f3c3'
   '7ee7adbd9c6ba3df8397de73285eeac6d21f9692482c0dc92d5c3f11884dae49'
 )
 
@@ -69,6 +69,6 @@ StartupNotify=true
 StartupWMClass=cc-gui
 Categories=Development;IDE;
 Keywords=AI;Claude Code;Codex;Gemini;Opencode;ccgui;
-X-AppImage-Version=0.5.2
+X-AppImage-Version=0.5.7
 DESKTOP
 }
