@@ -5,7 +5,7 @@ _pkgname=sabiql
 pkgname=${_pkgname}-bin
 pkgdesc="A fast, driver-less TUI to browse, query, and edit PostgreSQL databases"
 
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
-sha256sums=('45bd8723f279b2d582d48f4ccce4eea34c02a5cf651aaa536c24b1b2cb43814b'
+sha256sums=('395a7d1b3d6f0e437998a3ae2842dddbb2ff0555e06c565fb7c093947c5b6ed8'
             '74812e48d7ae28605df88571cdcf5002bb1de19b89c8a05a07ccfecd9c1962e4')
-sha256sums_x86_64=('44bc51397cba44813270d24d08027fc3c112bcd4bf3b999bb51800c430a8d462')
-sha256sums_aarch64=('e0a80ee0e30b288cdab6d7a6d53504b705902b27b99cb4b0d7308334ee175e73')
+sha256sums_x86_64=('c8602b3ad212895c8bb370238a6feded92ec9136c254cb6af6c704728828cb6d')
+sha256sums_aarch64=('0a9846538c62aacdf4733000c79c5a9dde36f771f58288cd6788325e43fb04e8')
 
 
 package() {
