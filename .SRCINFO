@@ -1,6 +1,6 @@
 pkgbase = rclone-wiz
 	pkgdesc = A simple and easy to use tool to configure, script, and mount cloud drives using rclone
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/themix88/Clone-WIZ/
 	arch = any
@@ -17,6 +17,8 @@ pkgbase = rclone-wiz
 	source = rclone-wiz.desktop
 	source = rclone-wiz.svg
 	source = LICENSE
+	source = VERSION
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -38,4 +38,6 @@ package() {
 
     # 4. Copy license file GPL3 from the source directory to the package
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+
+    # 5. Copy version file from the source directory to the package
+    install -Dm644 "$srcdir/VERSION" "$pkgdir/usr/bin/rclone-wiz"
