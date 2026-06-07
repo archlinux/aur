@@ -3,6 +3,7 @@ pkgbase = intel-advisor-standalone
 	pkgver = 2026.0.0.266
 	pkgrel = 1
 	url = https://www.intel.com/content/www/us/en/developer/tools/oneapi/advisor.html
+	install = intel-advisor.install
 	arch = x86_64
 	license = custom
 	depends = glibc

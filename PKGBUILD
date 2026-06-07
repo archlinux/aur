@@ -47,6 +47,7 @@ optdepends=(
 )
 conflicts=('intel-advisor')
 provides=("intel-advisor=${pkgver}")
+install="intel-advisor.install"
 source=(
     "intel-advisor-${pkgver}.sh::https://registrationcenter-download.intel.com/akdlm/IRC_NAS/68057580-a03d-4490-87e2-b2a6092b6675/intel-advisor-2026.0.0.266_offline.sh"
     "intel-advisor.desktop"
@@ -69,6 +70,8 @@ build() {
 }
 
 package() {
+    LD_PRELOAD="" "${srcdir}/intel-advisor-${pkgver}_offline/install.sh" --silent --eula accept --action remove --ignore-errors || true
+
     LD_PRELOAD="" "${srcdir}/intel-advisor-${pkgver}_offline/install.sh" \
         --silent \
         --eula accept \

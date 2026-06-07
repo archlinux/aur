@@ -1,0 +1,6 @@
+post_remove() {
+    rm -rf "$HOME/.intel/advixe" 2>/dev/null || true
+    rm -f "$HOME/.intel/intel-sw-install-history.json" 2>/dev/null || true
+    rm -rf /opt/intel/oneapi/logs 2>/dev/null || true
+    rm -rf /var/lib/intel/installer 2>/dev/null || true
+}
