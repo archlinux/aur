@@ -1,5 +1,5 @@
 pkgname=nm-sidebar
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='GTK4/libadwaita NetworkManager sidebar for Wayland desktops'
 arch=('x86_64')
@@ -19,20 +19,22 @@ makedepends=(
   'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('038c1043f3331bb50c455473c08df44d42a60172bb14162093a4f3c325630c23')
+sha256sums=('a59d2ed69315a2c2fead4786b9ab1a3ef2ce11a1a7e5e3912f6e1ec0cda56c38')
 
 _github_repo='Relz/network-manager-sidebar'
-_source_dir="${_github_repo##*/}-$pkgver"
+_source_dir="$srcdir/${_github_repo##*/}-$pkgver"
+_build_dir="$srcdir/build-$pkgver-$pkgrel"
 
 build() {
-  meson setup build "$_source_dir" \
+  rm -rf "$_build_dir"
+  meson setup "$_build_dir" "$_source_dir" \
     --prefix=/usr \
     --libdir=lib \
     --libexecdir=libexec \
     --buildtype=plain
-  meson compile -C build
+  meson compile -C "$_build_dir"
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" meson install -C "$_build_dir"
 }
