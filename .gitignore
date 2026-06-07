@@ -1,0 +1,7 @@
+*.pkg.tar.*
+*.log
+/src/
+/pkg/
+/pacman/
+revertme-makepkg-remove-libdepends-and-libprovides.patch
+patch-reproducible-builds.patch
