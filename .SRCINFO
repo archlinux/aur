@@ -1,6 +1,6 @@
 pkgbase = tb-tdl
 	pkgdesc = Terminal based to-do list
-	pkgver = 1.0.5
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/nicitel3333/tb-tdl
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = tb-tdl
 	depends = python
 	depends = python-textual
 	depends = python-requests
-	source = tb-tdl-1.0.5.tar.gz::https://github.com/nicitel3333/tb-tdl/archive/refs/tags/v1.0.5.tar.gz
+	source = tb-tdl-1.1.0.tar.gz::https://github.com/nicitel3333/tb-tdl/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = tb-tdl
