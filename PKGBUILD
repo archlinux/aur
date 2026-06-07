@@ -37,6 +37,10 @@ prepare() {
   # undefined reference to absl::lts_20250814::log_internal::LogMessageFatal::LogMessageFatal(char const*, int, char const*)
   echo "target_link_libraries(vtkRemotingServerManager PRIVATE absl_log_internal_message)" >> Remoting/ServerManager/CMakeLists.txt
 
+  # absl/types/compare.h:60:12: error: 'partial_ordering' has not been declared in 'std'
+  # see also https://github.com/abseil/abseil-cpp/commit/bcce85e
+  echo "target_compile_definitions(RemotingServerManager PRIVATE ABSL_OPTION_USE_STD_ORDERING=0)" >> Remoting/ServerManager/CMakeLists.txt
+
   # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/13293.patch | patch -p1 -d VTK
 }
