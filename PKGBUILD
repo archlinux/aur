@@ -15,8 +15,8 @@ source=("prizrak-box.sh")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.zst::${url}/releases/download/v1.0.21-alpha16/linux-arm64-aur.tar.zst")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.zst::${url}/releases/download/v1.0.21-alpha16/linux-amd64-aur.tar.zst")
 sha256sums=('4497d4c2cfb24ca0665cbeabf377a6bc850a8cfd6dd17469b0dc937a9ed6bf65')
-sha256sums_aarch64=('bb941d89fe4d79824c2ee440d450b07e9830152e327b39492dd3547c151d7ebb')
-sha256sums_x86_64=('8ae362f33358d795bb232e17914400c3892f6c8fd075448c9fdbebd2cf235846')
+sha256sums_aarch64=('4780abf493b12910fbe948ccb20936175b1daee43635c811bd4fc6ea7894587f')
+sha256sums_x86_64=('666ec793912aaec54547ac36141238516112d97320ef2241684c05c5c165f6c5')
 
 _get_electron_version() {
   _elec_ver="$(strings "${srcdir}/usr/lib/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
