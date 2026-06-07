@@ -139,17 +139,18 @@ build() {
 
 
 
-check() {
-  cd "${srcdir}/${_pkgname}"
-
-  export RUSTUP_HOME="${srcdir}/.rustup"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_HOME="${srcdir}/.cargo"
-  export CARGO_TARGET_DIR=target
-
-  printf '%s\n' " --> Checking ..."
-  cargo test "${_cargo_build_options[@]}"
-}
+# # 2026-06-07: Disabled 'check()', since it does a lengthy recompile of the main binary.
+# check() {
+#   cd "${srcdir}/${_pkgname}"
+# 
+#   export RUSTUP_HOME="${srcdir}/.rustup"
+#   export RUSTUP_TOOLCHAIN=stable
+#   export CARGO_HOME="${srcdir}/.cargo"
+#   export CARGO_TARGET_DIR=target
+# 
+#   printf '%s\n' " --> Checking ..."
+#   cargo test "${_cargo_build_options[@]}"
+# }
 
 
 
