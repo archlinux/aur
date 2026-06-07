@@ -9,9 +9,9 @@
 # upstream releases.
 
 pkgname=mtroamd
-pkgver=1.5.4
+pkgver=1.6.0
 pkgrel=1
-pkgdesc="Persistent terminal daemon over QUIC — mosh+tmux in one daemon, with multi-client handoff"
+pkgdesc="Persistent terminal daemon over QUIC - like mosh+tmux in one daemon, with multi-client handoff"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/AG-Studio-Apps/mtroamd"
 license=('AGPL-3.0-or-later')
