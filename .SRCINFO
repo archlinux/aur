@@ -1,7 +1,7 @@
 pkgbase = caelestia-rgb-sync
 	pkgdesc = Sync RGB lighting to caelestia desktop shell accent color
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/FoxlikeCreature/caelestia-rgb-sync
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = caelestia-rgb-sync
 	depends = python-tomli-w
 	depends = inotify-tools
 	depends = openrgb
-	source = caelestia-rgb-sync-1.0.0.tar.gz::https://github.com/FoxlikeCreature/caelestia-rgb-sync/archive/v1.0.0.tar.gz
-	sha256sums = 643390bdee1dccc19f181dff73419bb257e26dba1a178335cb9c52758720c698
+	source = caelestia-rgb-sync-1.1.0.tar.gz::https://github.com/FoxlikeCreature/caelestia-rgb-sync/archive/v1.1.0.tar.gz
+	sha256sums = 55cd07c69265370c848e59edf43f389acd7dcb729e98cca69abacba785af189a
 
 pkgname = caelestia-rgb-sync
