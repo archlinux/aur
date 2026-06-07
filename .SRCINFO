@@ -1,0 +1,23 @@
+pkgbase = hyprmonitor-git
+	pkgdesc = Auto-configures Hyprland monitors with an optional drag-and-drop GUI
+	pkgver = r53.f40bb77
+	pkgrel = 1
+	url = https://github.com/Janmuixi/hyprmonitors
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = hyprland
+	depends = libnotify
+	depends = wayland
+	depends = libxkbcommon
+	depends = fontconfig
+	provides = hyprmonitor
+	provides = hyprmonitor-gui
+	conflicts = hyprmonitor
+	conflicts = hyprmonitor-gui
+	source = hyprmonitor-git::git+https://github.com/Janmuixi/hyprmonitors.git
+	sha256sums = SKIP
+
+pkgname = hyprmonitor-git
