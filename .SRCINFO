@@ -1,6 +1,6 @@
 pkgbase = google-calendar-tui
 	pkgdesc = Read-only terminal agenda for Google Calendar via GNOME Online Accounts
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/akitaonrails/google-calendar-tui
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = google-calendar-tui
 	conflicts = google-calendar-tui-bin
 	options = !lto
 	options = !debug
-	source = google-calendar-tui-0.1.0.tar.gz::https://github.com/akitaonrails/google-calendar-tui/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = dece808f67a8a7dd27ba7fc567fbffff129813b6abde347207fa9052147d820e
+	source = google-calendar-tui-0.1.1.tar.gz::https://github.com/akitaonrails/google-calendar-tui/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = cb38c7adda578ca39585508c706c64d44e525f1bf408299baa7ba2ac8a6965ad
 
 pkgname = google-calendar-tui
