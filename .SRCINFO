@@ -1,7 +1,7 @@
 pkgbase = kloak-whonix
 	pkgdesc = Anti keystroke deanonymization tool (Whonix)
 	pkgver = 0.8.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Whonix/kloak
 	arch = x86_64
 	license = GPL2

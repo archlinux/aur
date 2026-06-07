@@ -1,6 +1,6 @@
 pkgname=kloak-whonix
 pkgver=0.8.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Anti keystroke deanonymization tool (Whonix)"
 arch=('x86_64')
 url="https://github.com/Whonix/kloak"
@@ -17,19 +17,13 @@ pkgver() {
     git describe --tags --abbrev=0 | sed 's/-\([0-9]*\)$/.\1/' | sed 's/^v//'
 }
 
-prepare() {
-    cd kloak
-    sed -i '/ronn/d' Makefile
-    mkdir -p auto-generated-man-pages
-    touch auto-generated-man-pages/kloak.8
-}
-
 build() {
     cd kloak
-    make all
+    make kloak
 }
 
 package() {
     cd kloak
-    make DESTDIR="$pkgdir" install
+    install -Dm755 kloak "$pkgdir/usr/bin/kloak"
+    install -Dm644 etc/apparmor.d/usr.bin.kloak "$pkgdir/etc/apparmor.d/usr.bin.kloak"
 }
