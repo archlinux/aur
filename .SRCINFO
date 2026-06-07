@@ -9,7 +9,7 @@ pkgbase = bigbashview
 	source = git+https://github.com/biglinux/bigbashview.git
 	sha512sums = SKIP
 
-pkgname = bigbashview-git
+pkgname = bigbashview
 	depends = pyside6
 	depends = python-six
 	depends = webkit2gtk-4.1
@@ -19,4 +19,3 @@ pkgname = bigbashview-git
 	depends = python-webpy
 	depends = bbv-framework
 	provides = bigbashview=3.8.1
-	conflicts = bigbashview

@@ -2,7 +2,7 @@
 # Contributor: barnabedikartola
 
 pkgbase=bigbashview
-pkgname=${pkgbase}-git
+pkgname=${pkgbase}
 _pkgver=3.8.1
 pkgver=3.8.1_r486.a11017c
 pkgrel=1
@@ -23,7 +23,6 @@ package() {
     depends=('pyside6' 'python-six' 'webkit2gtk-4.1' 'qt6-webengine' 'ttf-lato'
                     'python-setproctitle' 'python-webpy' 'bbv-framework')
     provides=("${pkgbase}=${_pkgver}")
-    conflicts=("${pkgbase}")
 
     mkdir -p "${pkgdir}"/usr/{bin,lib/bbv,share}
     cp -r "${srcdir}/${pkgbase}/${pkgbase}"/usr/* "${pkgdir}/usr/"
