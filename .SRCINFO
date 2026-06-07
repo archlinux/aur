@@ -1,6 +1,6 @@
 pkgbase = netpeek
 	pkgdesc = Mordern network scanner for GNOME
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/ZingyTomato/NetPeek
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = netpeek
 	depends = gtk4
 	depends = libadwaita
 	depends = glib2
-	source = git+https://github.com/ZingyTomato/NetPeek.git#tag=v0.2.6
-	sha256sums = db4f242baced2dc975e6371c03e9ed3975cd1024b4a06ed445859b44eab355be
+	source = git+https://github.com/ZingyTomato/NetPeek.git#tag=v0.2.7
+	sha256sums = 87befd36df1aa8a1eee16e38c3a64d7918c687ddd41342b04a279e9d5ff2d7a2
 
 pkgname = netpeek
