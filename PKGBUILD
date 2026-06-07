@@ -5,9 +5,9 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=30.0
-_pkgver=30.0.93
-pkgrel=0.93
+pkgver=31.0
+_pkgver=31.0.90
+pkgrel=0.90
 pkgdesc="The extensible, customizable, self-documenting real-time display editor. Pretest version"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -25,15 +25,14 @@ provides=('emacs' 'emacs-nativecomp')
 conflicts=('emacs-nox')
 #
 # You'll need to grab this key and add it BY HAND to your local keyring.
-# All PGP Keyservers are all but dead thanks to the EU. 
 #
-#    gpg --keyserver hkps://keys.openpgp.org --recv-keys 12BB9B400EE3F77282864D18272B5C54E015416A
+#    gpg --keyserver hkps://keys.openpgp.org --recv-keys 8DC2487E51ABDD90B5C4753F0F56D0553B6D411B
 # 
-validpgpkeys=('12BB9B400EE3F77282864D18272B5C54E015416A')
+validpgpkeys=('8DC2487E51ABDD90B5C4753F0F56D0553B6D411B')
 #
 source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig}
         nemacs)
-b2sums=('5c9a48eae9beaaa1a2ab2c4f3d4e3c4d1f4d71c180c07dfe1569df79d750479f7d96bbb6786608a2da748de89fdbd870b25ef04d27fec2c8f0642be76b945dc2'
+b2sums=('cb7cf526a5e1efa2843af9e46b16953966a509457e88b87e3568bef9c39e4e05ae302fc880096d1b85e217f68f8cb1cbf4c5086c8387e08a382b76bd31793e6d'
         'SKIP'
         '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0')
 
@@ -55,6 +54,8 @@ build() {
     --without-m17n-flt
     --with-libotf
     --without-imagemagick
+# Support Wayland.
+    --with-pgtk
 # Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
 # dconf and gconf break font settings set in ~/.emacs
 # If you insist you'll need to play gymnastics with
@@ -67,6 +68,8 @@ build() {
     --with-native-compilation=aot
 # welcome to the new syntax highlighting world.
     --with-tree-sitter
+# This will make emacsclient faster, so why not?
+    --with-dbus
 )
   ./configure "${confopts[@]}"
   make
@@ -78,10 +81,12 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
+  # Emacs ctags is gone! I'm leaving this as historical reference.
+  #
   # remove conflict with ctags package
-  mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
+  #mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
   #mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1}
-  mv "$pkgdir"/usr/share/man/man1/{ctags.1,ctags.emacs.1}
+  #mv "$pkgdir"/usr/share/man/man1/{ctags.1,ctags.emacs.1}
 
   install -D -m 755 "$srcdir"/nemacs "$pkgdir"/usr/bin/nemacs
 
