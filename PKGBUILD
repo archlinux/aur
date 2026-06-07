@@ -9,7 +9,7 @@
 
 pkgname=hpd-handheld-power-daemon-bin
 _realname=hpd-handheld-power-daemon
-pkgver=2.5.0
+pkgver=2.5.1
 # pkgrel is static (not a placeholder): reset to 1 when bumping pkgver,
 # increment for packaging-only respins of the same version.
 pkgrel=1
@@ -24,7 +24,7 @@ backup=('etc/hpd/config.toml.example')
 install="hpd.install"
 options=(!strip !debug)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/hpd-$pkgver-x86_64-linux.tar.gz")
-sha256sums=('2f481e5bc9e6128450fcbc2c8f3c04fa45461fd9d54bd165e5f5de3b09a3f7e9')
+sha256sums=('c82dfbcb9e770d62ba7a226081708a82b7f725a9eea7b09c5ad9a97ced65beb3')
 
 package() {
     cd "hpd-$pkgver-x86_64-linux"
