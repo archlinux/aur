@@ -1,6 +1,6 @@
 # Maintainer: FoxlikeCreature <safonovkirill113@gmail.com>
 pkgname=caelestia-rgb-sync
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Sync RGB lighting to caelestia desktop shell accent color'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
     'openrgb'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('45cc5d5c6fb189933a07daf9f8bdd38b62009440fe51bcb4b7995a32e4f6c5bd')
+sha256sums=('78a10a02c45cdbbbb0b4a7343240d4c81dd260f0a79517f36f8e146ef59e73ea')
 
 package() {
     cd "$pkgname-$pkgver"
