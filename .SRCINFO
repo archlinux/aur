@@ -1,5 +1,5 @@
 pkgbase = sjpeg-git
-	pkgdesc = SJPEG image encoder with PNG, JPEG, and OpenGL support
+	pkgdesc = SJPEG image encoder (alternative jpeg encoder)
 	pkgver = r330.46da5ae
 	pkgrel = 1
 	url = https://github.com/webmproject/sjpeg
