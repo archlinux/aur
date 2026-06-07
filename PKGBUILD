@@ -1,31 +1,27 @@
-# Maintainer: Ignacio Losiggio <iglosiggio@dc.uba.ar>
+# Maintainer: Daniil Mikhailov <danok123danok@gmail.com>
 pkgname=ldpl
-pkgver=4.4
+pkgver=5.1.0
 pkgrel=1
-pkgdesc="COBOL inspired language, designed to be expressive, fast, readable and easy to learn."
+pkgdesc="A compiled programming language designed to be plain and readable."
 arch=('x86_64')
-url="https://www.ldpl-lang.org/"
-license=('GPL3')
-depends=('gcc-libs')
-makedepends=('awk')
-source=("https://github.com/Lartu/$pkgname/archive/$pkgver.tar.gz"
-        "dont-do-mandb.patch" "lpm-flags.patch")
-md5sums=('13fa289ccd761a36702fe37b51f90378'
-         '97bd2394689ba8c4c161edde2317eefd'
-         'c4cb95cca6596d629299ac58e0d0e551')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/dont-do-mandb.patch"
-	patch -p1 -i "$srcdir/lpm-flags.patch"
-}
+url="https://ldpl-lang.org"
+license=('Apache-2.0')
+depends=()
+makedepends=('git' 'gcc')
+source=("https://github.com/Lartu/ldpl/archive/refs/tags/LDPL-5.1.0.tar.gz")
+md5sums=('SKIP')
 
 build() {
-	cd "$pkgname-$pkgver/src"
-	make LFLAGS="$LDFLAGS" LPMFLAGS="$CXXFLAGS $LDFLAGS"
+    cd "$srcdir/ldpl-LDPL-5.1.0"
+    make
 }
 
 package() {
-	cd "$pkgname-$pkgver/src"
-	make PREFIX=/usr DESTDIR="$pkgdir/" install
+    cd "$srcdir/ldpl-LDPL-5.1.0"
+    install -d "$pkgdir/usr/bin/"
+    install -d "$pkgdir/usr/lib/ldpl/"
+    install -m 775 build/ldpl "$pkgdir/usr/bin/ldpl"
+    install src/ldpl_lib/ldpl_lib.cpp "$pkgdir/usr/lib/ldpl/"
+    install src/ldpl_lib/BigInt.hpp "$pkgdir/usr/lib/ldpl/"
 }
+
