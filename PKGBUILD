@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.8.2.r30.g56d8c83
-pkgrel=2
+pkgver=1.8.2.r56.g753bbc3
+pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
@@ -39,10 +39,8 @@ optdepends=(
 )
 provides=("${pkgname%-git}" 'pascube')
 conflicts=("${pkgname%-git}" 'pascube')
-source=('git+https://github.com/benjamimgois/goverlay.git'
-        'Makefile.patch')
-sha256sums=('SKIP'
-            '4b47ea503845996a3b5dc45589084ba28306f7931a6fead4bc730dfedacc4f82')
+source=('git+https://github.com/benjamimgois/goverlay.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -56,9 +54,6 @@ prepare() {
   # Set StartupWMClass
   desktop-file-edit --set-key=StartupWMClass --set-value="${pkgname%-git}" \
     "data/io.github.benjamimgois.${pkgname%-git}.desktop"
-
-  # Don't build pascube in install
-  patch -Np1 -i ../Makefile.patch
 }
 
 build() {

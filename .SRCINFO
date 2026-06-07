@@ -1,7 +1,7 @@
 pkgbase = goverlay-git
 	pkgdesc = A GUI to help manage Vulkan/OpenGL overlays
-	pkgver = 1.8.2.r30.g56d8c83
-	pkgrel = 2
+	pkgver = 1.8.2.r56.g753bbc3
+	pkgrel = 1
 	url = https://github.com/benjamimgois/goverlay
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -35,8 +35,6 @@ pkgbase = goverlay-git
 	conflicts = goverlay
 	conflicts = pascube
 	source = git+https://github.com/benjamimgois/goverlay.git
-	source = Makefile.patch
 	sha256sums = SKIP
-	sha256sums = 4b47ea503845996a3b5dc45589084ba28306f7931a6fead4bc730dfedacc4f82
 
 pkgname = goverlay-git
