@@ -1,0 +1,20 @@
+pkgbase = ostt-vulkan-release-bin
+	pkgdesc = Terminal-native speech-to-text with Vulkan GPU acceleration
+	pkgver = 0.0.20
+	pkgrel = 1
+	url = https://github.com/kristoferlund/ostt
+	arch = x86_64
+	license = MIT
+	depends = ffmpeg
+	depends = vulkan-icd-loader
+	optdepends = wl-clipboard: Wayland clipboard support
+	optdepends = xclip: X11 clipboard support
+	conflicts = ostt
+	conflicts = ostt-cuda-release-bin
+	options = !strip
+	source = ostt-vulkan-release-bin-0.0.20.tar.gz::https://github.com/kristoferlund/ostt/releases/download/v0.0.20/ostt-x86_64-unknown-linux-gnu-vulkan.tar.gz
+	source = ostt-vulkan-release-bin-0.0.20-LICENSE::https://github.com/kristoferlund/ostt/raw/v0.0.20/LICENSE
+	sha256sums = df97a08adf83810d9f27bd40456207e99ed53c2cc3e3c066e75730ca5aa4c7f0
+	sha256sums = 8bcb6bd9c06c2cce21a54db8e1455c1aa154275667828f772dd74d03272e65bd
+
+pkgname = ostt-vulkan-release-bin
