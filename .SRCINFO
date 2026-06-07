@@ -1,0 +1,21 @@
+pkgbase = mboxshell-git
+	pkgdesc = Fast terminal viewer for MBOX files of any size without loading them into memory
+	pkgver = 0.4.2.r2.g2bd40a9
+	pkgrel = 1
+	url = https://github.com/dcarrero/mboxshell
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = mboxshell
+	conflicts = mboxshell
+	source = git+https://github.com/dcarrero/mboxshell.git
+	sha256sums = SKIP
+
+pkgname = mboxshell-git
