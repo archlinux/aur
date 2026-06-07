@@ -1,0 +1,21 @@
+post_upgrade() {
+  cat <<'EOF'
+
+libfprint-goodix53x5 notice
+===========================
+
+This update changes the image preprocessing used to produce enrolled prints.
+Fingerprints enrolled with an earlier build are NOT compatible with the new
+matcher path and may stop verifying. You must delete and re-enroll:
+
+  fprintd-delete "$USER"
+  fprintd-enroll          # or use your desktop's fingerprint settings
+
+This re-enrollment is a one-time requirement for this update; routine future
+updates will not need it unless the preprocessing changes again.
+
+The driver now detaches the cdc_acm kernel driver itself, so the old
+/etc/udev/rules.d/91-goodix-fingerprint.rules unbind rule is obsolete. If you
+added it manually, you can remove it.
+EOF
+}
