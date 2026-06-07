@@ -19,12 +19,12 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir/archdoctor"
   cargo build --release --locked
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/archdoctor"
   install -Dm755 "target/release/archdoctor" "$pkgdir/usr/bin/archdoctor"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/archdoctor/README.md"
 }
