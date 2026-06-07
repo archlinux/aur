@@ -1,6 +1,6 @@
 pkgbase = ignition-startup
 	pkgdesc = Manage startup apps and scripts
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/flattool/ignition
 	arch = any
@@ -13,11 +13,9 @@ pkgbase = ignition-startup
 	depends = gjs
 	depends = gtk4
 	depends = libadwaita
-	source = git+https://github.com/flattool/ignition.git#tag=2.4.0
+	source = git+https://github.com/flattool/ignition.git#tag=2.4.1
 	source = git+https://github.com/flattool/gir-ts-types.git
-	source = git+https://github.com/flattool/gobjectify.git
-	sha256sums = 536b135c0f376c2617847f2adc20edd0c916d537b59f8c305f993e2c96b4e354
-	sha256sums = SKIP
+	sha256sums = 7fcf6796bd3a84777512f11fae049f680408424d0590e4816377a6734c092b95
 	sha256sums = SKIP
 
 pkgname = ignition-startup
