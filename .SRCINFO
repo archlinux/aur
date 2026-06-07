@@ -1,6 +1,6 @@
 pkgbase = waybox-git
 	pkgdesc = Openbox clone on Wayland (git version)
-	pkgver = 0.2.2.r41.g557bb4a
+	pkgver = 0.2.2.r47.g044ce8f
 	pkgrel = 1
 	url = https://github.com/wizbright/waybox
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = waybox-git
 	depends = glibc
 	depends = libevdev
 	depends = libinput
-	depends = libwlroots-0.19.so
+	depends = libwlroots-0.20.so
 	depends = libxkbcommon
 	depends = libxml2
 	depends = wayland
