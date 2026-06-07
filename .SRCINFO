@@ -1,7 +1,7 @@
 pkgbase = sshuttlee
 	pkgdesc = Lightweight, fast and beautiful SSH + SFTP client
 	pkgver = 26.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sshuttlee/sshuttlee
 	arch = x86_64
 	license = Apache-2.0
@@ -17,6 +17,6 @@ pkgbase = sshuttlee
 	depends = libssh2
 	conflicts = sshuttlee-bin
 	source = sshuttlee-26.0.0.tar.gz::https://github.com/sshuttlee/sshuttlee/archive/refs/tags/26.0.0.tar.gz
-	sha256sums = 5bd8744eb10e0a977baac2277deabc779285dcade70b7f69cc9094988d1ad4cb
+	sha256sums = 0ee125ef3fa71a952c711fceffd7f3dea13270250c62e45ae6807308a300125f
 
 pkgname = sshuttlee

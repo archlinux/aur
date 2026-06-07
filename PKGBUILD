@@ -2,7 +2,7 @@
 
 pkgname=sshuttlee
 pkgver=26.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, fast and beautiful SSH + SFTP client"
 arch=('x86_64')
 url="https://github.com/sshuttlee/sshuttlee"
@@ -11,7 +11,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'openssl' 'libssh2')
 makedepends=('cargo' 'pnpm' 'nodejs' 'pkgconf' 'librsvg')
 conflicts=('sshuttlee-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sshuttlee/sshuttlee/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5bd8744eb10e0a977baac2277deabc779285dcade70b7f69cc9094988d1ad4cb')
+sha256sums=('0ee125ef3fa71a952c711fceffd7f3dea13270250c62e45ae6807308a300125f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
