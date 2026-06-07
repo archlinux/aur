@@ -1,0 +1,14 @@
+pkgbase = otf-nerd-fonts
+	pkgdesc = Nerd Fonts is a project that patches developer targeted fonts with a high number of glyphs ; This is only otf
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	license = MIT
+	license = OFL
+	makedepends = git
+	provides = ttf-font-nerd
+	source = nerd-fonts::git+https://github.com/ryanoasis/nerd-fonts.git#depth=1
+	sha256sums = SKIP
+
+pkgname = otf-nerd-fonts
