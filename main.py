@@ -144,3 +144,11 @@ app = QApplication(sys.argv)
 gui = PMGui()
 gui.show()
 sys.exit(app.exec())
+def main():
+    app = QApplication(sys.argv)
+    gui = PMGui()
+    gui.show()
+    sys.exit(app.exec())
+
+if __name__ == '__main__':
+    main()
