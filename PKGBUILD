@@ -1,6 +1,6 @@
 # Maintainer: Miran Kljun <miran.kljun@gmail.com>
 pkgname=rclone-wiz
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A simple and easy to use tool to configure, script, and mount cloud drives using rclone"
 arch=('any')
@@ -21,9 +21,9 @@ optdepends=(
     'xterm: Supported terminal for rclone config'
 )
 
-# We include the .desktop file in the source array so makepkg finds it
-source=("rclone-wiz.py" "rclone-wiz.desktop" "rclone-wiz.svg" "LICENSE")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+# We include the .desktop file and VERSION in the source array so makepkg finds them
+source=("rclone-wiz.py" "rclone-wiz.desktop" "rclone-wiz.svg" "LICENSE" "VERSION")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     # 1. Install the executable
@@ -32,10 +32,12 @@ package() {
     # 2. Install the desktop file
     install -Dm644 "$srcdir/rclone-wiz.desktop" "$pkgdir/usr/share/applications/rclone-wiz.desktop"
 
-    # 3. FIX: Install the icon to a standard directory
-    # The system looks for 'rclone-wiz' here by default
+    # 3. Install the icon to a standard directory
     install -Dm644 "$srcdir/rclone-wiz.svg" "$pkgdir/usr/share/pixmaps/rclone-wiz.svg"
 
-    # 4. Copy license file GPL3 from the source directory to the package
+    # 4. Copy license file GPL3
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # 5. Put VERSION file to the application's shared data directory
+    install -Dm644 "$srcdir/VERSION" "$pkgdir/usr/share/$pkgname/VERSION"
 }
