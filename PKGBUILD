@@ -1,7 +1,7 @@
 pkgname=sjpeg-git
 pkgver=r330.46da5ae
 pkgrel=1
-pkgdesc="SJPEG image encoder with PNG, JPEG, and OpenGL support"
+pkgdesc="SJPEG image encoder (alternative jpeg encoder)"
 arch=('x86_64')
 url="https://github.com/webmproject/sjpeg"
 license=('Apache-2.0')
