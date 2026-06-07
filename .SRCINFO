@@ -1,0 +1,13 @@
+pkgbase = fencecat
+	pkgdesc = Walkdir cat with markdown fenced code output
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Xangelix/fencecat
+	arch = x86_64
+	license = MIT
+	makedepends = cargo-nightly
+	makedepends = rust-nightly
+	source = fencecat-0.4.0.tar.gz::https://github.com/Xangelix/fencecat/archive/v0.4.0.tar.gz
+	sha512sums = 0eb21beade222f6ad0adcc9a130da75fcaea569e5218cfe0889cc40440c1d2b405f211b05f16708fe8a417dabf918105b53f1f4c83650a08d4f1dd78eff0b275
+
+pkgname = fencecat
