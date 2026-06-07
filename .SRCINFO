@@ -22,6 +22,6 @@ pkgbase = rplayer-bin
 	source = id.ramdanolii.idrspectrum.desktop::https://github.com/ramdanolii14/Rplayer/releases/download/v1.1/id.ramdanolii.idrspectrum.desktop
 	sha256sums = 8b9d58159de3b864861e7a013277680c3f27657f11723b857658f59635ba6cab
 	sha256sums = 4572e3790c327dd1e1166f583e781950187b6caa7a2fac2fb12c9f38d4c61d7b
-	sha256sums = 45b821b358e3c6046b39b3aadaaec5e73959c077e10317b8520fe9a0088720bc
+	sha256sums = cb9675ef59e3866a8120a369c5b9148ca9190fcb1605d88226b5b58d81a6cae1
 
 pkgname = rplayer-bin
