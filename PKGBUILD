@@ -1,7 +1,7 @@
 # Maintainer: Mbonikev <mb0ni@proton.me>
 pkgname=melo-bin
 _pkgname=melo
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A stylish TUI music player for local libraries that follows your terminal/omarchy theme (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64.tar.gz")
 
 # Replace SKIP with the real checksums: `updpkgsums` (after uploading the assets).
-sha256sums_x86_64=('3c7136354d468e95a3792dea8e79713d3cdfb2da454e2bdfaeff225a9d289fdc')
-sha256sums_aarch64=('bad1dc36de75909fbdd69ff17cfe6509a496fdc0d3416b50de48034f50a9dfeb')
+sha256sums_x86_64=('ff9322debd6671656a132841f0bed32680f772d3bce03c30599980d295b13ae4')
+sha256sums_aarch64=('db61aa76becc06615ae60c5911caef9030cc4f2ec595a38df29bfc33bda076e0')
 
 package() {
     install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"

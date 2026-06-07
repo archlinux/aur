@@ -1,6 +1,6 @@
 pkgbase = melo-bin
 	pkgdesc = A stylish TUI music player for local libraries that follows your terminal/omarchy theme (prebuilt binary)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/mbonikev/melo
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = melo-bin
 	conflicts = melo
 	options = !debug
 	options = !strip
-	source_x86_64 = melo-0.1.0-x86_64.tar.gz::https://github.com/mbonikev/melo/releases/download/v0.1.0/melo-0.1.0-x86_64.tar.gz
-	sha256sums_x86_64 = 3c7136354d468e95a3792dea8e79713d3cdfb2da454e2bdfaeff225a9d289fdc
-	source_aarch64 = melo-0.1.0-aarch64.tar.gz::https://github.com/mbonikev/melo/releases/download/v0.1.0/melo-0.1.0-aarch64.tar.gz
-	sha256sums_aarch64 = bad1dc36de75909fbdd69ff17cfe6509a496fdc0d3416b50de48034f50a9dfeb
+	source_x86_64 = melo-0.1.1-x86_64.tar.gz::https://github.com/mbonikev/melo/releases/download/v0.1.1/melo-0.1.1-x86_64.tar.gz
+	sha256sums_x86_64 = ff9322debd6671656a132841f0bed32680f772d3bce03c30599980d295b13ae4
+	source_aarch64 = melo-0.1.1-aarch64.tar.gz::https://github.com/mbonikev/melo/releases/download/v0.1.1/melo-0.1.1-aarch64.tar.gz
+	sha256sums_aarch64 = db61aa76becc06615ae60c5911caef9030cc4f2ec595a38df29bfc33bda076e0
 
 pkgname = melo-bin
