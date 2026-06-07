@@ -1,0 +1,18 @@
+pkgbase = shrike-wifi-qr
+	pkgdesc = Validates WiFi passwords via NetworkManager and generates QR codes
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://shrikelinuxug.org
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = gtk3
+	depends = qrencode
+	depends = wireless_tools
+	depends = networkmanager
+	depends = libnotify
+	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/main.tar.gz
+	md5sums = SKIP
+
+pkgname = shrike-wifi-qr
