@@ -1,7 +1,7 @@
 pkgbase = zulu-25-bin
 	pkgdesc = Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.
-	pkgver = 25.0.2
-	pkgrel = 10
+	pkgver = 25.0.3
+	pkgrel = 9
 	url = https://www.azul.com/downloads/
 	install = zulu-25-bin.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = zulu-25-bin
 	provides = java-runtime-headless-openjdk=25
 	provides = java-runtime=25
 	provides = java-runtime-openjdk=25
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu25.32.21-ca-jdk25.0.2-linux_x64.tar.gz
-	sha256sums_x86_64 = 946ad9766d98fc6ab495a1a120072197db54997f6925fb96680f1ecd5591db4e
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu25.34.17-ca-jdk25.0.3-linux_x64.tar.gz
+	sha256sums_x86_64 = 3a93235f4e5b313232647916219e91dc5cca0b9835c9b52a404ba58c43571697
 
 pkgname = zulu-25-bin
