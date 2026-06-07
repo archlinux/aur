@@ -1,0 +1,20 @@
+pkgbase = lindora
+	pkgdesc = An unofficial site-specific browser wrapper for the Pandora web service.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-webengine
+	depends = qt6-svg
+	source = main.cpp
+	source = CMakeLists.txt
+	source = lindora-native.desktop
+	source = https://raw.githubusercontent.com/Logawinner/Lindora/main/Lindora.svg
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lindora

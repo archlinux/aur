@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Lindora
+Comment= An unofficial site-specific browser wrapper for the Pandora web service.
+Exec=/usr/local/bin/lindora-native
+Terminal=false
+Type=Application
+Icon=lindora
+Categories=AudioVideo;Audio;Player;Qt;
+StartupWMClass=lindora-native
