@@ -1,7 +1,7 @@
 pkgbase = polybarman
 	pkgdesc = Plugin manager for Polybar
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/mohterbaord/polybarman
 	install = polybarman.install
 	arch = any

@@ -23,6 +23,6 @@ More Info: https://codeberg.org/mohterbaord/polybarman
 HELP
 }
 
-post_updgrade() {
+post_upgrade() {
   post_install
 }

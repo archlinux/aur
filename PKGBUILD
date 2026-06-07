@@ -2,7 +2,7 @@
 
 pkgname=polybarman
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Plugin manager for Polybar'
 arch=( 'any' )
 url="https://codeberg.org/mohterbaord/${pkgname}"
