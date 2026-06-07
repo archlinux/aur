@@ -1,10 +1,10 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: Illia Zavadzkyi <i68281124@gmail.com>
 pkgname=uni-update
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Cross-distro system updater — one command to update them all"
 arch=('x86_64' 'aarch64')
-url="https://github.com/YOUR_USERNAME/uni-update"
+url="https://github.com/user14923929/uni-update"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cmake' 'gcc')
@@ -15,7 +15,7 @@ optdepends=(
     'rust: for --cargo support'
     'npm: for --npm support'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/YOUR_USERNAME/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/user14923929/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')  # заменить на реальный sha256 перед публикацией
 
 build() {
