@@ -1,11 +1,13 @@
 # Maintainer: Christian Balcom <robot.inventor@gmail.com>
 pkgname=tristim
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Wayland compositor color validation with USB display colorimeters (CLI + GUI)'
 arch=('x86_64')
 url='https://github.com/computer-whisperer/tristim'
-license=('MIT OR Apache-2.0')
+# The binaries link tristim-driver (GPL-2.0-or-later, derived from the
+# ArgyllCMS instrument drivers); the rest of the workspace is MIT OR Apache-2.0.
+license=('GPL-2.0-or-later')
 # wayland, libxkbcommon, and vulkan-icd-loader are dlopen'd by tristim-gui at
 # runtime, so they do not show up in ldd output — they belong in depends anyway.
 depends=('glibc' 'gcc-libs' 'systemd-libs' 'libusb'
@@ -14,7 +16,9 @@ makedepends=('cargo')
 optdepends=('xdg-desktop-portal: file open/save dialogs in tristim-gui'
             'argyllcms: build ICC profiles from exported .ti3 measurements')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f20978460312e28cbd36330f2159832f7a11fe40fdce63d9604123166c23ce7e')
+# Placeholder until the release tag exists — run `updpkgsums` against the
+# published tag before pushing to the AUR.
+sha256sums=('6577b7337d0aa410a1f0de508555bf767844d8f8b5495ff8ce7bf24888473e15')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -48,4 +52,6 @@ package() {
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 LICENSE-MIT LICENSE-APACHE \
     -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 tristim-driver/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-GPL2"
 }
