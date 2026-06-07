@@ -2,7 +2,7 @@
 # Based on shattered-pixel-dungeon package
 
 pkgname=remixed-dungeon
-pkgver=32.3.fix.4.3
+pkgver=32.3.fix.5
 pkgrel=1
 pkgdesc='Classig roguelike game with pixel graphics, remix of Pixel Dungeon'
 arch=(any)
@@ -22,7 +22,7 @@ source=(
   "${pkgname}.desktop"
 )
 b2sums=(
-  'c87238ff3d6511b564e046b2698ad5072e30d86c792ff4378396545bd2c6fbaddd75156a350bb22a9b3a81712b1f01277ddfa7f22c37d999602b93604d4efdbd'
+  '4404cbe43bf62d0793213503a2d7228be47e5b6162b0dba241175cf15f9274d94a28a7900f97fbc4ab781d6167420c132cf02611cae2562fae74ef62f4320cff'
   'f6b83b27e643536d51d0a2e1acaa8efff58fee65f31e495ee10c6d8fb2efad0eedd50788d7c7e632712e4112e229814ad7210cae0f7298d6bda61b595f126145'
   '58e8e707e57607fcb9a831abadd6412bba85b39e885d7526a84e028960c8e1a631c5a8c1475b5448e4bf506331f5948dd33803baba229dc290dbb5a4326c8410'
 )
