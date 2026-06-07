@@ -1,6 +1,6 @@
 pkgbase = fencecat-git
 	pkgdesc = Walkdir cat with markdown fenced code output
-	pkgver = 1.1.0.r23.g33f7d83
+	pkgver = 0.4.0.r0.gd19d115
 	pkgrel = 1
 	url = https://github.com/Xangelix/fencecat
 	arch = x86_64
