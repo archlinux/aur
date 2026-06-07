@@ -1,0 +1,23 @@
+pkgbase = nats-top-bin
+	pkgdesc = A top-like tool for monitoring NATS servers
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/nats-io/nats-top
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	license = MIT
+	depends = glibc
+	provides = nats-top
+	conflicts = nats-top
+	source_x86_64 = nats-top-bin-0.6.4-x86_64.tar.gz::https://github.com/nats-io/nats-top/releases/download/v0.6.4/nats-top_0.6.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = b2923e529171f559fa21f15a525593762ecb2b2e1b868dcb4bf95d8212fa33a9
+	source_aarch64 = nats-top-bin-0.6.4-aarch64.tar.gz::https://github.com/nats-io/nats-top/releases/download/v0.6.4/nats-top_0.6.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 570d80000f0c66caa4f750f57699f7eb8e8b7007e723d346a348ca6739c9f711
+	source_armv7h = nats-top-bin-0.6.4-armv7h.tar.gz::https://github.com/nats-io/nats-top/releases/download/v0.6.4/nats-top_0.6.4_linux_armv7.tar.gz
+	sha256sums_armv7h = e93d424da2a2485ae004fdff3cad5bff5d564b775fc19d496109f5e8a20f317e
+	source_i686 = nats-top-bin-0.6.4-i686.tar.gz::https://github.com/nats-io/nats-top/releases/download/v0.6.4/nats-top_0.6.4_linux_386.tar.gz
+	sha256sums_i686 = 8281b03dff22d5abd6a0f5d95b7bbf315d3d55f64adbb56633c712e63a783d75
+
+pkgname = nats-top-bin

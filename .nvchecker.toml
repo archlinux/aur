@@ -1,0 +1,4 @@
+[nats-top-bin]
+source = "git"
+git = "https://github.com/nats-io/nats-top.git"
+prefix = "v"
