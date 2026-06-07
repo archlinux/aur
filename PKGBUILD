@@ -2,8 +2,8 @@
 
 pkgname=zapret2-bin
 _pkgbase=${pkgname%-bin}
-pkgver=0.9.5.2
-pkgrel=3
+pkgver=1.0
+pkgrel=1
 pkgdesc="Anti-DPI software (prebuilt binaries)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bol-van/$_pkgbase"
@@ -24,7 +24,7 @@ backup=(
 install=$_pkgbase.install
 options=('!strip' '!debug')
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/bol-van/$_pkgbase/releases/download/v$pkgver/$_pkgbase-v$pkgver.tar.gz")
-sha256sums=('4f8612fc617c9a1937ca215f85bb6d7005f5455e152a8f7f1dd666c38a080dc8')
+sha256sums=('7b2c6418c63be3fccbaa791fb6e8174ddecf4977e4304cdab9556933d1e5376a')
 
 latestver() {
     curl -fsSL "https://api.github.com/repos/bol-van/$_pkgbase/releases" |
