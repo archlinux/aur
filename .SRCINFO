@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-extras
 	pkgdesc = Collection of mkinitcpio hooks for busybox based initramfs
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
 	url = https://gitlab.com/allddd/mkinitcpio-extras
 	arch = aarch64
@@ -22,7 +22,7 @@ pkgbase = mkinitcpio-extras
 	conflicts = mkinitcpio-nfs-utils
 	conflicts = mkinitcpio-tinyssh
 	options = !debug
-	source = https://gitlab.com/allddd/mkinitcpio-extras/-/archive/v4/mkinitcpio-extras-v4.tar.gz
-	sha256sums = 18eabdd47162bcb7f5df9660e80afa76efa00e88813793c646f42c7410ba6cf2
+	source = https://gitlab.com/allddd/mkinitcpio-extras/-/archive/v5/mkinitcpio-extras-v5.tar.gz
+	sha256sums = 1fccd7c5053596944bb757f0ab0bf2266bf425c48e7469950fc91ae1813f8ba5
 
 pkgname = mkinitcpio-extras

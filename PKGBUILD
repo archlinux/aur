@@ -1,7 +1,7 @@
 # Maintainer: allddd <me (at) allddd (dot) onl>
 
 pkgname=mkinitcpio-extras
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc='Collection of mkinitcpio hooks for busybox based initramfs'
 arch=(
@@ -33,7 +33,7 @@ conflicts=(
 )
 options=('!debug')
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('18eabdd47162bcb7f5df9660e80afa76efa00e88813793c646f42c7410ba6cf2')
+sha256sums=('1fccd7c5053596944bb757f0ab0bf2266bf425c48e7469950fc91ae1813f8ba5')
 
 prepare() {
     cd "${srcdir}/${pkgname}-v${pkgver}/lib/klibc"
