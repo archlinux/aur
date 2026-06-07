@@ -1,0 +1,28 @@
+--- setup.py	2026-06-05 20:26:46.000000000 +0800
++++ setup.py.new	2026-06-07 18:34:46.101429083 +0800
+@@ -72,24 +72,7 @@
+ 
+ 
+ def _should_build_cuda() -> bool:
+-    force_cuda = os.getenv("FORCE_CUDA", "0") == "1"
+-    if force_cuda:
+-        return True
+-    torch_cuda_version = getattr(torch.version, "cuda", None)
+-    if CUDA_HOME is None or torch_cuda_version is None:
+-        return False
+-    nvcc_cuda_version = _get_nvcc_cuda_version()
+-    if nvcc_cuda_version is None:
+-        return False
+-    if nvcc_cuda_version != torch_cuda_version:
+-        logger.warning(
+-            "Skipping TorchRL CUDA extension build because nvcc CUDA %s does not "
+-            "match PyTorch CUDA %s. Set FORCE_CUDA=1 to build anyway.",
+-            nvcc_cuda_version,
+-            torch_cuda_version,
+-        )
+-        return False
+-    return True
++    return False
+ 
+ 
+ def _get_build_cuda_version() -> str | None:

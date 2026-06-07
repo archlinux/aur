@@ -1,28 +1,66 @@
 #  Maintainer: crl <crl18039102576@126.com>
 
-pkgname=python-torchrl
-pkgver=0.12.0
+pkgbase=python-torchrl
+pkgname=(python-torchrl python-torchrl-cuda)
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A modular, primitive-first, python-first PyTorch library for Reinforcement Learning."
 url="https://github.com/pytorch/rl"
 arch=(x86_64)
 license=('MIT')
-depends=(python python-cloudpickle python-tensordict python-numpy python-pytorch python-packaging)
-makedepends=(python-wheel python-installer python-setuptools gcc)
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('04a53fddc8c41a3d0da5ebc3601d205c24d747858b44dba527ae63147844157d')
+depends=(python python-cloudpickle python-tensordict python-numpy python-packaging)
+makedepends=(python-build python-wheel python-installer python-setuptools gcc cuda python-pytorch ninja)
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz" "setup.patch" "cuda-flags.patch")
+sha256sums=(
+    '5f6fe32178f30a37880eae9ba689b9f9e59fdd79bdf482b02981c61794284b81'
+    '3916428ad174568ea43162a133ac5588f135a6a242cfcd6e8e2c0eca7bfb80c3'
+    '21c2864cb9a7de0faaa600bf266ab05c1e6bd3d3e879c2ac5697f74e0732e0f5'
+)
+
+prepare() {
+    cd "${srcdir}"
+    rm -rf "rl-cuda-$pkgver"
+    cp -a "rl-$pkgver" "rl-cuda-$pkgver"
+    cd "${srcdir}/rl-$pkgver"
+    patch -p0 -i "${srcdir}/setup.patch"
+    cd "${srcdir}/rl-cuda-$pkgver"
+    patch -p0 -i "${srcdir}/cuda-flags.patch"
+}
 
 build() {
-    cd rl-$pkgver
+    export TORCHRL_BUILD_VERSION="$pkgver"
+
+    cd "${srcdir}/rl-$pkgver"
     export CXXFLAGS="$CXXFLAGS -DGLOG_USE_GLOG_EXPORT"
     export CFLAGS="$CFLAGS -DGLOG_USE_GLOG_EXPORT"
+    unset CUDA_HOME
+    python -m build --wheel --no-isolation --skip-dependency-check
+
+    cd "${srcdir}/rl-cuda-$pkgver"
+    export CXXFLAGS="$CXXFLAGS -DGLOG_USE_GLOG_EXPORT"
+    export CFLAGS="$CFLAGS -DGLOG_USE_GLOG_EXPORT"
+    export CUDAFLAGS="$CUDAFLAGS -DGLOG_USE_GLOG_EXPORT"
+    export CUDA_HOME="/opt/cuda"
+    export FORCE_CUDA=1
     python -m build --wheel --no-isolation --skip-dependency-check
 }
 
-package() {
+package_python-torchrl() {
+    depends+=("python-pytorch")
+
     cd rl-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
-    
+
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
+
+package_python-torchrl-cuda() {
+    depends+=("python-pytorch-cuda" "cuda")
+    conflicts=("python-torchrl")
+    provides=("python-torchrl")
+    cd rl-cuda-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
