@@ -1,0 +1,22 @@
+pkgbase = ganbaru-ai-bin
+	pkgdesc = Local, privacy-first productivity app for reducing procrastination and burnout
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/opengrimoire/ganbaru-ai
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = libarchive
+	depends = alsa-lib
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	provides = ganbaru-ai
+	conflicts = ganbaru-ai
+	noextract = ganbaru-ai_0.1.4_amd64.deb
+	options = !strip
+	options = !debug
+	source_x86_64 = ganbaru-ai_0.1.4_amd64.deb::https://github.com/opengrimoire/ganbaru-ai/releases/download/app-v0.1.4/ganbaru-ai_0.1.4_amd64.deb
+	sha256sums_x86_64 = 8a9ca8968d6270eb1a9a24542fe90d6fea1d8def1eb28f48fb5931a7aab7ac44
+
+pkgname = ganbaru-ai-bin
