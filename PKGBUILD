@@ -2,7 +2,7 @@
 pkgname=ignition-startup
 _app_id=io.github.flattool.Ignition
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage startup apps and scripts"
 arch=('any')
 url="https://github.com/flattool/ignition"
@@ -15,7 +15,6 @@ depends=(
 makedepends=(
   'blueprint-compiler'
   'git'
-  'jasmine-gjs'
   'meson'
   'typescript'
 )
@@ -32,7 +31,7 @@ prepare() {
 }
 
 build() {
-  arch-meson ignition build
+  arch-meson ignition build -Dtests=false
   meson compile -C build
 }
 

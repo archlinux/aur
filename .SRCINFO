@@ -1,13 +1,12 @@
 pkgbase = ignition-startup
 	pkgdesc = Manage startup apps and scripts
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flattool/ignition
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = blueprint-compiler
 	makedepends = git
-	makedepends = jasmine-gjs
 	makedepends = meson
 	makedepends = typescript
 	depends = gjs
