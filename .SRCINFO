@@ -1,0 +1,23 @@
+pkgbase = browsec-desktop
+	pkgdesc = Browsec Desktop VPN client
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://browsec.com/en/linux-vpn
+	arch = x86_64
+	license = custom
+	makedepends = binutils
+	makedepends = tar
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = libnotify
+	depends = libappindicator-gtk3
+	options = !strip
+	options = !debug
+	source = browsec-desktop_1.1.0_amd64.deb::https://github.com/brwinfo/desktop-release/releases/download/v1.1.0/browsec-desktop_1.1.0_amd64.deb
+	sha256sums = 2e79a4ee2645c77a257937681a501bcb2afeca5ad8346e6af4f1f45bc753322d
+
+pkgname = browsec-desktop
