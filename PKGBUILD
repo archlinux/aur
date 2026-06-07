@@ -5,12 +5,12 @@
 
 # LuaJIT has a "rolling release" where the HEAD ref of the 'v2.1' branch should be followed.
 # The patch version in this package corresponds to the timestamp of the HEAD ref.
-# The latest HEAD ref hash and its timestamp can be retrieved via:
-#   $ curl -s https://api.github.com/repos/LuaJIT/LuaJIT/commits/v2.1 | jq -r '.sha,(.commit.committer.date | fromdate)'
-_commit=b925b3e3fc6771171602323b45fbe9fb8fc90369
+# The latest HEAD ref timestamp and its hash suitable for 'pkgver' can be retrieved via:
+#   $ curl -s https://api.github.com/repos/LuaJIT/LuaJIT/commits/v2.1 | jq -r "\"2.1.\(.commit.committer.date | fromdate)+\(.sha[0:7])\""
 
 pkgname=mingw-w64-luajit
-pkgver=2.1.1780076327
+pkgver=2.1.1780076327+b925b3e
+_commit=${pkgver##*+}
 pkgrel=1
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua 5.1'
 arch=('any')
@@ -29,7 +29,7 @@ build() {
 
   for _target in ${_targets}; do
     if [ ! -d ${srcdir}/LuaJIT-build-${_target} ]; then
-      cp -R $srcdir/LuaJIT-${_commit} ${srcdir}/LuaJIT-build-${_target}
+      cp -R $srcdir/LuaJIT-${_commit}*/ ${srcdir}/LuaJIT-build-${_target}
     fi
     cd ${srcdir}/LuaJIT-build-${_target}/src
 
@@ -55,7 +55,7 @@ check() {
 
     # Make sure that pkgver matches packaged commit
     local _ct=${pkgver##*.}
-    test "${_ct}" == "$(cat .relver)"
+    test "${_ct%%+*}" == "$(cat .relver)"
   done
 }
 
