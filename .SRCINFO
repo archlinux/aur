@@ -1,7 +1,7 @@
 pkgbase = bodyslide
 	pkgdesc = BodySlide and Outfit Studio, a tool to convert, create, and customize outfits and bodies for Bethesda games.
 	pkgver = 5.7.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ousnius/BodySlide-and-Outfit-Studio
 	arch = x86_64
 	license = GPL-3.0-only

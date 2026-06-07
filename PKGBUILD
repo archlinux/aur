@@ -3,7 +3,7 @@
 pkgname=bodyslide
 _pkgname=BodySlide
 pkgver=5.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc='BodySlide and Outfit Studio, a tool to convert, create, and customize outfits and bodies for Bethesda games.'
 arch=('x86_64')
 
@@ -34,8 +34,8 @@ sha256sums=('SKIP'
 
 
 prepare() {
-#	mv BodySlide-and-Outfit-Studio-${pkgver} ${pkgname}
-	ln -sf ${srcdir}/nifly ${pkgname}/lib/ #|| echo "nifly exist"
+	ln -sr BodySlide-and-Outfit-Studio ${pkgname}
+	ln -sf ${srcdir}/nifly/* ${pkgname}/lib/nifly
 }
 
 build() {
