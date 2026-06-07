@@ -1,0 +1,122 @@
+--- src/pdf2djvu-0.9.19/pdf-backend.hh
++++ src/pdf2djvu-0.9.19/pdf-backend.hh
+@@ -63,7 +63,12 @@
+     typedef ::Splash Splash;
+     typedef ::SplashColor Color;
+     typedef ::SplashFont Font;
+-    typedef ::SplashCoord Coord;
++#include <poppler-config.h>
++#if POPPLER_VERSION >= 260500
++    typedef double Coord;
++#else
++    typedef ::SplashCoord Coord;
++#endif
+     typedef ::SplashPath Path;
+     typedef ::SplashGlyphBitmap GlyphBitmap;
+     typedef ::SplashBitmap Bitmap;
+--- src/pdf2djvu-0.9.19/pdf-backend.cc
++++ src/pdf2djvu-0.9.19/pdf-backend.cc
+@@ -411,7 +411,11 @@ pdf::Metadata::Metadata(pdf::Document &document)
+     char tzs = 0; int tzh = 0, tzm = 0;
+     if (!pdf::dict_lookup(info_dict, field.first, &object)->isString())
+       continue;
++#if POPPLER_VERSION > 260300
++    const char *input = object.getString().c_str();
++#else
+     const char *input = pdf::get_c_string(object.getString());
++#endif
+     if (input[0] == 'D' && input[1] == ':')
+       input += 2;
+     int year = scan_date_digits(input, 4);
+@@ -474,7 +474,11 @@ void pdf::set_color(splash::Color &result, uint8_t r, uint8_t g, uint8_t b)
+ bool pdf::Environment::antialias = false;
+ 
+ pdf::Renderer::Renderer(pdf::splash::Color &paper_color, bool monochrome)
++#if POPPLER_VERSION > 260100
++: pdf::splash::OutputDevice(monochrome ? splashModeMono1 : splashModeRGB8, 4, paper_color),
++#else
+ : pdf::splash::OutputDevice(monochrome ? splashModeMono1 : splashModeRGB8, 4, false, paper_color),
++#endif
+   catalog(NULL)
+ {
+   this->setFontAntialias(pdf::Environment::antialias);
+@@ -503,7 +503,12 @@ bool pdf::get_glyph(splash::Splash *splash, splash::Font *font,
+   if (font == nullptr)
+     return false;
+   splash::ClipResult clip_result;
++#if POPPLER_VERSION > 251200 && POPPLER_VERSION < 260100
++  const SplashClip* clip_ptr = const_cast<SplashClip*>(&splash->getClip());
++  if (!font->getGlyph(code, 0, 0, bitmap, static_cast<int>(x), static_cast<int>(y), clip_ptr, &clip_result))
++#else
+-  if (!font->getGlyph(code, 0, 0, bitmap, static_cast<int>(x), static_cast<int>(y), const_cast<SplashClip*>(&splash->getClip()), &clip_result))
++  if (!font->getGlyph(code, 0, 0, bitmap, static_cast<int>(x), static_cast<int>(y), splash->getClip(), &clip_result))
++#endif
+     return false;
+   return (clip_result != splashClipAllOutside);
+ }
+@@ -542,7 +542,11 @@ void pdf::Renderer::convert_path(pdf::gfx::State *state, splash::Path &splash_pa
+     {
+       double x1, y1, x2, y2, x3, y3;
+       state->transform(subpath->getX(0), subpath->getY(0), &x1, &y1);
++#if POPPLER_VERSION > 260400
++      splash_path.moveTo(x1, y1);
++#else
+       splash_path.moveTo(static_cast<splash::Coord>(x1), static_cast<splash::Coord>(y1));
++#endif
+       int j = 1;
+       int n_points = subpath->getNumPoints();
+       while (j < n_points)
+@@ -552,17 +556,25 @@ void pdf::Renderer::convert_path(pdf::gfx::State *state, splash::Path &splash_pa
+           state->transform(subpath->getX(j), subpath->getY(j), &x1, &y1);
+           state->transform(subpath->getX(j + 1), subpath->getY(j + 1), &x2, &y2);
+           state->transform(subpath->getX(j + 2), subpath->getY(j + 2), &x3, &y3);
++#if POPPLER_VERSION > 260400
++          splash_path.curveTo(x1, y1, x2, y2, x3, y3);
++#else
+           splash_path.curveTo(
+             static_cast<splash::Coord>(x1), static_cast<splash::Coord>(y1),
+             static_cast<splash::Coord>(x2), static_cast<splash::Coord>(y2),
+             static_cast<splash::Coord>(x3), static_cast<splash::Coord>(y3)
+           );
++#endif
+           j += 3;
+         }
+         else
+         {
+           state->transform(subpath->getX(j), subpath->getY(j), &x1, &y1);
++#if POPPLER_VERSION > 260400
++          splash_path.lineTo(x1, y1);
++#else
+           splash_path.lineTo(static_cast<splash::Coord>(x1), static_cast<splash::Coord>(y1));
++#endif
+           j++;
+         }
+       }
+--- src/pdf2djvu-0.9.19/pdf-dpi.cc
++++ src/pdf2djvu-0.9.19/pdf-dpi.cc
+@@ -91,7 +91,11 @@ class DpiGuessDevice : public pdf::OutputDevice
+ 
+ void DpiGuessDevice::process_image(pdf::gfx::State *state, int width, int height)
+ {
++#if POPPLER_VERSION > 260100
++  const std::array<double, 6> &ctm = state->getCTM();
++#else
+   const double *ctm = state->getCTM();
++#endif
+   double h_dpi = 72.0 * width / hypot(ctm[0], ctm[1]);
+   double v_dpi = 72.0 * height / hypot(ctm[2], ctm[3]);
+   this->min_ = std::min(this->min_, std::min(h_dpi, v_dpi));
+--- src/pdf2djvu-0.9.19/pdf-unicode.cc
++++ src/pdf2djvu-0.9.19/pdf-unicode.cc
+@@ -109,7 +109,12 @@ std::string pdf::string_as_utf8(const pdf::String *string)
+ 
+ std::string pdf::string_as_utf8(pdf::Object &object)
+ {
++#if POPPLER_VERSION > 260300
++    pdf::String str = pdf::String(object.getString());
++    return pdf::string_as_utf8(&str);
++#else
+     return pdf::string_as_utf8(object.getString());
++#endif
+ }
+ 
