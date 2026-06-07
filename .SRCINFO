@@ -1,0 +1,19 @@
+pkgbase = kaiten-wall-bin
+	pkgdesc = A wayland random wallpaper switcher that pulls from Wallhaven
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Yustinia/kaiten-wall
+	arch = x86_64
+	license = MIT
+	depends = awww
+	optdepends = matugen: color scheme generation from wallpaper
+	optdepends = wallust: color scheme generation from wallpaper
+	provides = kaiten-wall
+	conflicts = kaiten-wall
+	conflicts = kaiten-wall-git
+	source = kaiten::https://github.com/Yustinia/kaiten-wall/releases/download/v0.3.0/kaiten-v0.3.0
+	source = LICENSE::https://raw.githubusercontent.com/Yustinia/kaiten-wall/refs/tags/v0.3.0/LICENSE
+	sha256sums = 2d55c961797ea5573420e6714096b03b6bf8f210a5e5e77897b835e0421711fa
+	sha256sums = b5f06d4368701fcac19f44fd37984f07faa4c0c387b29391d0245d97bd24f3c4
+
+pkgname = kaiten-wall-bin
