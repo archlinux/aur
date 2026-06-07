@@ -1,8 +1,9 @@
 syntax: glob
 
-/NOTES.md
+/Makefile
 /src/
 /pkg/
 /*.tar.gz
 /*.tar.zst
 /*.log
+/LICENSE
