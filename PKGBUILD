@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=nurl
-pkgver=0.3.13
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Generate Nix fetcher calls from repository URLs'
 url='https://github.com/nix-community/nurl'
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nix-community/nurl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('638e8dc6b1146b041fd3631497a82aa223fc2c4ce5f2e2d7abe8d390e711111d')
-b2sums=('ca5324d61b33b8a59a18f1ac268754284f437e5828eb8c2758692aa70d42f4780fb3af8d2d91271fb9c7441f4a6c55faa993cc1e0494a2259e6384ee500982ee')
+sha256sums=('ecd34bdb9f7c481b5a0138a816dd3350d579bbe18f560fb9221d4f6537432693')
+b2sums=('7e621f24fbd78277170c083c888b3985e597f0308d9363232d34c09b4df23543ee7f2cea36badac0260d4a46859d8f0c1a510655ba6d1d2400ebb00adb347fc6')
 options=(!lto)
 
 case $CARCH in
