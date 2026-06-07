@@ -1,0 +1,18 @@
+pkgbase = bitlaforge
+	pkgdesc = A terminal UI for running solo Bitcoin mining as the lottery it really is — wraps minerd in a Catppuccin Mocha Textual TUI
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/jetomev/bitlaforge
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-textual
+	depends = python-rich
+	depends = python-tomli-w
+	optdepends = cpuminer: pooler cpuminer (recommended) — provides /usr/bin/minerd
+	optdepends = cpuminer-multi: multi-algorithm cpuminer fork
+	optdepends = cpuminer-opt: heavily optimized multi-algo variant
+	source = bitlaforge-0.1.3.tar.gz::https://github.com/jetomev/bitlaforge/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 0e9cf5e871c724cb22796191ae51657849237632c4ace2778c51f18ca0894fbc
+
+pkgname = bitlaforge
