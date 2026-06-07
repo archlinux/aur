@@ -11,7 +11,7 @@ pkgver=26.2.4.1
 pkgrel=1
 url="https://www.libreoffice.org/"
 license=('MPL-2.0' 'LGPL-3.0-or-later')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 
 optdepends=(
   'coin-or-mp: required by the Calc solver'
@@ -30,10 +30,12 @@ provides=(
 
 options=("!strip" "!debug")
 
-_dl_url="https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64"
+_dl_url="https://dev-builds.libreoffice.org/pre-releases/rpm"
 
-source=("$_dl_url/${_pkgnamefmt}_${pkgver}_Linux_x86-64_rpm.tar.gz"{,.asc})
-sha256sums=('SKIP' 'SKIP')
+source_x86_64=("$_dl_url/x86_64/${_pkgnamefmt}_${pkgver}_Linux_x86-64_rpm.tar.gz"{,.asc})
+source_aarch64=("$_dl_url/aarch64/${_pkgnamefmt}_${pkgver}_Linux_aarch64_rpm.tar.gz"{,.asc})
+sha256sums_x86_64=('SKIP' 'SKIP')
+sha256sums_aarch64=('SKIP' 'SKIP')
 validpgpkeys=(
   C2839ECAD9408FBE9531C3E9F434A1EFAFEEAEA3 # LibreOffice Build Team (CODE SIGNING KEY) <build@documentfoundation.org>
 )
