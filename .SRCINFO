@@ -1,6 +1,6 @@
 pkgbase = android-platform
 	pkgdesc = Android SDK Platform, latest API
-	pkgver = 37.0_r01
+	pkgver = 37.0_r02
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = android-platform
 	conflicts = android-platform-37.0
 	options = !strip
 	options = !debug
-	source = https://dl.google.com/android/repository/platform-37.0_r01.zip
+	source = https://dl.google.com/android/repository/platform-37.0_r02.zip
 	source = package.xml
-	sha256sums = 19bdcf42de0cb0e9500a27da6833fc30cdd49a7ec690aa5cabaa0ef893af9ebe
-	sha256sums = 40cb5852ef96e55df36ec07769efe4367734a2b44679c3854e81b406bc4e43cf
+	sha256sums = 840b23e827f96e64aea4c89a1194aac3dc5f6bad37edb231c5c795d890330e8d
+	sha256sums = cf8d623db9b8fb3112f2a15c6e1d246a85f300e04742c86f51819b998b77a499
 
 pkgname = android-platform
 	depends = android-sdk

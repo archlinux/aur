@@ -150,7 +150,7 @@ January 16, 2019</license>
             <layoutlib api="15"/>
         </type-details>
         <revision>
-            <major>1</major>
+            <major>2</major>
         </revision>
         <display-name>Android SDK Platform 37.0</display-name>
         <uses-license ref="android-sdk-license"/>
