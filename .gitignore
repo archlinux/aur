@@ -1,5 +1,8 @@
-/src
-/pkg
-/*.pkg.tar.zst
-/*.tar.gz
-/*.tar.xz
+**/*
+
+!PKGBUILD
+!.SRCINFO
+!.gitrepo
+!.gitignore
+!playit.install
+!update.sh

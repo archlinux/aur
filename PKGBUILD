@@ -1,50 +1,55 @@
-# Maintainer: swweetp <swweetp@outlook.com>
+# Maintainer: Patrick Lorio <patrick@playit.gg>
+# Contributor: swweetp <swweetp@outlook.com>
 # Contributor: Amirul Fitri <tounghacker@gmail.com>
 
 pkgname=playit
-pkgver=1.0.5
+pkgver=1.0.9
 pkgrel=1
-pkgdesc="A tunneling tool to host a game server without port forwarding or sharing public IP"
-arch=('x86_64')
-url="https://playit.gg"
-depends=('glibc' 'gcc-libs')
+pkgdesc='Tool to make your locally running game server public'
+arch=('x86_64' 'aarch64' 'armv7h' 'i686')
+url='https://playit.gg'
 license=('BSD-2-Clause')
+depends=('logrotate' 'systemd')
 makedepends=('cargo')
-source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/playit-cloud/playit-agent/archive/refs/tags/v${pkgver}.tar.gz"
-  "systemd-service.patch"
-  "tmpfiles.conf"
-)
-sha256sums=('c2e7c8252425c2f04e5cba2bc209b48d12675740df0448bb03022ca3d3168fa4'
-            '397a63ab9c3c329ff5c3a2817bc426dc8023c9f86c5f92feac41196f248cee05'
-            '91c4f8c54d07f5877de216263e586ac96a6cf33e29219f1436e8447adb62cf9d')
-options=(!lto)
+conflicts=('playit-bin' 'playit-bin-debug')
+install="${pkgname}.install"
+# ring's native objects can fail to link with Arch package LTO enabled.
+options=('!lto')
+
+_repo='playit-cloud/playit-agent'
+_source_dir="playit-agent-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_repo}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('9f32e5be5781e6d8918a8478b180a5a7552a83de880601910a6e71f02de0912c')
 
 prepare() {
-  cd "playit-agent-${pkgver}"
-  patch -Np1 -i ../systemd-service.patch
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --offline --target "${CARCH}-unknown-linux-gnu"
+  cd "${srcdir}/${_source_dir}"
+
+  cargo fetch --locked
 }
 
 build() {
-  cd "playit-agent-${pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
-}
+  cd "${srcdir}/${_source_dir}"
 
-check() {
-  cd "playit-agent-${pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --package playit-cli --bin playit-cli
+  cargo build --frozen --release --package playitd --bin playitd
 }
 
 package() {
-  cd "playit-agent-${pkgver}"
-  install -Dm755 target/release/playit-cli target/release/playitd target/release/playitd-{service,tray,windows-setup} -t "${pkgdir}"/usr/bin/
-  install -Dm644 linux/playit.service "${pkgdir}"/usr/lib/systemd/system/playit.service
-  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-  install -Dm644 linux/logrotate.conf "${pkgdir}"/etc/logrotate.d/playit
-  install -Dm644 ../tmpfiles.conf "${pkgdir}"/usr/lib/tmpfiles.d/playit.conf
+  cd "${srcdir}/${_source_dir}"
+
+  install -Dm0755 target/release/playit-cli "${pkgdir}/opt/playit/agent"
+  install -Dm0755 target/release/playitd "${pkgdir}/opt/playit/playitd"
+  install -Dm0755 linux/playit "${pkgdir}/opt/playit/playit"
+
+  install -Dm0644 linux/logrotate.conf "${pkgdir}/etc/logrotate.d/playit"
+  install -Dm0644 linux/playit.service "${pkgdir}/usr/lib/systemd/system/playit.service"
+  install -Dm0644 linux/playit.sysusers "${pkgdir}/usr/lib/sysusers.d/playit.conf"
+  install -Dm0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+
+  install -dm0750 "${pkgdir}/etc/playit"
+  install -dm0755 "${pkgdir}/usr/bin"
+
+  ln -s /opt/playit/playit "${pkgdir}/usr/bin/playit"
+  ln -s /opt/playit/playitd "${pkgdir}/usr/bin/playitd"
 }
