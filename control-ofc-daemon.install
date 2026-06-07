@@ -5,7 +5,7 @@ post_install() {
    Start now:        sudo systemctl enable --now control-ofc-daemon
    Load modules:     sudo systemctl start systemd-modules-load   (or reboot)
    Setup guide:      man control-ofc-daemon
-   Hardware check:   open the GUI -> Diagnostics -> Fans -> Hardware Readiness
+   Hardware check:   open the GUI -> Diagnostics -> Troubleshooting
 EOF
 }
 
