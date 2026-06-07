@@ -51,12 +51,10 @@ depends=(
 
   #--- PDL::Graphics::PGPLOT
   pgplot
-  # WARN: does not build with gcc v14-16 (2026-06-07)
-  # waiting for 2.36
   perl-pgplot
 
   #--- PDL::IO::FITS
-  # WARN: a dependency does not build with gcc v14-16 (2026-06-07)
+  # WARN: a dependency does not build with gcc v15-16 (2026-06-07)
   # https://github.com/Starlink/perl-Starlink-AST/issues/2
   # https://github.com/asb-capfan/TkZinc/issues/26
   perl-astro-fits-header
