@@ -1,0 +1,15 @@
+pkgbase = novaread
+	pkgdesc = Minimalist and stylish system information fetch tool written in Lua
+	pkgver = 26.06
+	pkgrel = 1
+	url = https://github.com/vidasik/novaread
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = lua
+	provides = novaread
+	conflicts = novaread
+	source = git+https://github.com/vidasik/novaread.git
+	sha256sums = SKIP
+
+pkgname = novaread
