@@ -1,45 +1,47 @@
-# Maintainer: Mark Austin <ganthore@gmail.com>
+# Maintainer: Rocket Aaron <rocka@archlinuxcn.org>
 
+_pkgname=keysmith
 pkgname=keysmith-git
-pkgver=v0.1.r199.g52bdf6e
+pkgver=24.01.90.r315.g3f593f7
 pkgrel=1
-pkgdesc="An application to generate two-factor authentication (2FA) tokens."
-url="https://github.com/KDE/keysmith"
-arch=('i686' 'x86_64')
-license=('GPL')
-
-depends=('frameworkintegration' 'libsodium' 'qt5-base')
-makedepends=('cmake' 'extra-cmake-modules' 'git')
-provides=('keysmith' 'keysmith-git')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=("keysmith")
-
-options=('!libtool' '!emptydirs')
-
-source=("git+https://github.com/KDE/keysmith.git")
-
+pkgdesc='OTP client for Plasma Mobile and Desktop'
+url='https://invent.kde.org/utilities/keysmith'
+arch=(x86_64)
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(glibc
+         kconfig
+         kcoreaddons
+         kdbusaddons
+         ki18n
+         kirigami
+         kirigami-addons
+         kwindowsystem
+         libsodium
+         libstdc++
+         openssl
+         prison
+         qqc2-desktop-style
+         qt6-base
+         qt6-declarative
+         qt6-multimedia)
+makedepends=(extra-cmake-modules
+             git)
+provides=(keysmith)
+conflicts=(keysmith)
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd keysmith
-  git describe --long | sed 's/-/.r/;s/-/./'
-}
-
-prepare() {
-	cd keysmith
+  cd "$_pkgname"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd keysmith
-	mkdir -pv build
-	cmake -S . -B build -G "Unix Makefiles"
-	cd build
-	make all
+  cmake -B build -S "$_pkgname" \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-        cd keysmith/build
-	make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
