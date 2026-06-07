@@ -1,7 +1,7 @@
 # Maintainer: rahmerh <rahmerh@users.noreply.github.com>
 
 pkgname=sax-git
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A simple but smart archiving and extraction tool"
 arch=('x86_64')

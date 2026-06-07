@@ -1,6 +1,6 @@
 pkgbase = sax-git
 	pkgdesc = A simple but smart archiving and extraction tool
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/rahmerh/sax
 	arch = x86_64
