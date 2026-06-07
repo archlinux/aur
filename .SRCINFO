@@ -1,0 +1,24 @@
+pkgbase = atmosphera
+	pkgdesc = Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alexindigo/atmosphera
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = noctalia-qs
+	depends = imagemagick
+	depends = brightnessctl
+	depends = ffmpeg
+	depends = qt6-multimedia
+	depends = python
+	depends = wlr-randr
+	optdepends = cliphist: For clipboard history support
+	optdepends = wlsunset: For supporting NightLight
+	optdepends = power-profiles-daemon: For power profile management
+	optdepends = ddcutil: For external display brightness control
+	conflicts = atmosphera-git
+	source = git+https://github.com/alexindigo/atmosphera.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = atmosphera
