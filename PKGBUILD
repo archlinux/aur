@@ -1,7 +1,7 @@
 # Maintainer: Markus Maiwald <markus@maiwald.work>
 pkgname=sober-bin
-_upstream_version=0.3.0
-pkgver=0.3.0
+_upstream_version=0.4.2
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Local-first repository governance assistant with deterministic review readiness'
 arch=('x86_64')
