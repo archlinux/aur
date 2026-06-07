@@ -1,6 +1,6 @@
 pkgname=kloak-whonix
-pkgver=0.8.0.1
-pkgrel=4
+pkgver=0.8.5.1
+pkgrel=1
 pkgdesc="Anti keystroke deanonymization tool (Whonix)"
 arch=('x86_64')
 url="https://github.com/Whonix/kloak"
