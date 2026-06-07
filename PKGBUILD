@@ -31,7 +31,7 @@ sha256sums=(
 options=('!debug')
 
 build() {
-  unzip -f linux64.zip
+  unzip -u linux64.zip
 }
 
 package() {
