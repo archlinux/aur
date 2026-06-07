@@ -4,7 +4,7 @@
 pkgname=perl-pgplot
 _dist=PGPLOT
 pkgver=2.35
-pkgrel=2
+pkgrel=3
 pkgdesc='PGPLOT module for Perl'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
@@ -30,6 +30,8 @@ build() {
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   /usr/bin/perl Makefile.PL
+  # WARN: remove in 2.36
+  sed -i 's/^CCFLAGS =\(.*\)$/CCFLAGS =\1 -std=gnu17/' Makefile
   make
 }
 
