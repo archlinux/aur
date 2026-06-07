@@ -1,4 +1,13 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
+syntax: glob
+
+/Makefile
+/src/
+/pkg/
+/*.tar.zst
+/*.log
+/ch-remote
+/ch-remote-static
+/cloud-hypervisor-static
+/Apache-2.0.txt
+/BSD-3-Clause.txt
+/CC-BY-4.0.txt
