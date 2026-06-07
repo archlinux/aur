@@ -3,27 +3,20 @@
 
 pkgname=waybox
 pkgver=0.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Openbox clone on Wayland'
 url="https://github.com/wizbright/waybox"
 arch=('x86_64')
 license=('MIT')
-depends=('bash' 'glibc' 'libevdev' 'libinput' 'libwlroots.so=12-64' 'libxkbcommon' 'libxml2' 'wayland')
-makedepends=('meson' 'wayland-protocols')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/wizbright/${pkgname}/archive/${pkgver}.tar.gz
-        0001-missing_libxml2_import.patch)
-b2sums=('68a2eac9d8f3986a75365ddcf9fcc33c2578e96d4024eb44b4b7ea90e018dc43bf44d3a82fbae105dcea80bf1ff193a9b76c660d934ef145d4eecd949e2eb8e0'
-        'eaacd3fc5cd167db7739434eab50b619cf2b063780bfbe166fee70736fd186fbeae149548114ba82f7c5207f83e37550ccef619b42c2ea1011e5bae0da329ed7')
+depends=('bash' 'glibc' 'libevdev' 'libinput' 'libwlroots-0.18.so' 'libxkbcommon' 'libxml2' 'wayland')
+makedepends=('git' 'meson' 'wayland-protocols')
+#source=("git+https://github.com/wizbright/${pkgname}.git#tag=${pkgver}")
+source=("git+https://github.com/wizbright/${pkgname}.git#commit=b2e686171f3b5874f30cc19495416de81482a0e9")
+b2sums=('2c7b4c433ab091ea9fdcb160b542346d16b03b32621db955831806fe2c59b635227bb8240d0035b3ce6c31a974a76d6ea18321613fbd7d807f681a5c9656d858')
 
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch -Np2 -i "$srcdir"/0001-missing_libxml2_import.patch
-}
 
 build() {
-  export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig'
-  arch-meson "$pkgname-$pkgver" build
+  arch-meson "$pkgname" build
   meson compile -C build
 }
 
@@ -31,6 +24,5 @@ package() {
   meson install -C build --destdir "$pkgdir"
 
   mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
-  install -m 644 "$pkgname-${pkgver}"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname
+  install -m 644 "$pkgname"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname
 }
-
