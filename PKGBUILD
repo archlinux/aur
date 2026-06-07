@@ -7,7 +7,7 @@ pkgname=${_appname}-bin
 pkgdesc="A fast terminal UI for reviewing Git diffs"
 
 pkgver=0.1.0
-pkgrel=16
+pkgrel=17
 _gitversion=v${pkgver}-alpha.${pkgrel}
 
 arch=('x86_64')
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}-${pkgrel}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}-${pkgrel}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}-${pkgrel}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums=('fa02cc018e373cf4f4e06f9328c2391a4850cf5b23a598b67bc136102db0a8ce'
+sha256sums=('fd1a82ee706a33cbf7d8e5c8090d6eeb87857634994c4f6971145bca936d05fe'
             'ac1c162eee0bc8161b18d934bb406dae9d7624a261fbb7bf58d4aeb7ea1736b8')
-sha256sums_x86_64=('6b65ea899c58d0dfcc90b4d1f3e4c886c27beb5e21992334614b7dc7ab04cfcc')
+sha256sums_x86_64=('5325731ef96f00d6ab2967e8560b52f7013ad05c00f0e7841f43a115f3f0f2b1')
 
 
 package() {
