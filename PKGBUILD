@@ -1,7 +1,7 @@
 # Maintainer: A. Karmanov <a.karmanov@inventati.org>
 
 pkgname=gixy-next
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Nginx configuration static analyzer'
 arch=('any')
@@ -27,7 +27,7 @@ checkdepends=('python-pytest')
 conflicts=('gixy' 'gixy-git' 'gixy-ng' 'gixy-ng-git')
 _srcname="gixy_next-${pkgver}"
 source=("https://files.pythonhosted.org/packages/source/g/${pkgname}/${_srcname}.tar.gz")
-b2sums=('70ddb9594b58644c7993af49418f3ee9af3765d4c73db223d179d073dba8563398db7aa263ae1e3396d9cb203acad523356ea78a95e99e06e47ec797976075a4')
+b2sums=('5b4432f7473b9fe8e2e56c12a98d8522688ed3958ecbb9bb945784ca547030efb479096966b3d3cdad58dd8c32ae2d33b8c4c4fc0c0d23fa832edcb4f1a2b2fe')
 
 build() {
   cd "$_srcname"
