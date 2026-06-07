@@ -2,7 +2,7 @@
 _github_user_name='sevaa'
 pkgname=dwex
 pkgver=4.80
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI viewer for DWARF debug information'
 arch=('x86_64')
 url="https://github.com/${_github_user_name}/${pkgname}"
@@ -14,12 +14,14 @@ optdepends=()
 backup=()
 options=()
 install=
-source=("https://github.com/${_github_user_name}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz" \
+source=("https://github.com/${_github_user_name}/${pkgname}/raw/refs/tags/${pkgver}/LICENSE"
+        "https://github.com/${_github_user_name}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.png" "${pkgname}.desktop")
 noextract=()
-sha256sums=(a4ee32a394ab111786d1d296ad611a4cda4fdb56d9470531d71b3c7f8b922a2d \
-            d92d16891381310a4b18cc8ae59a1a0ac99a07ca80599a7e3c003970622ba03f \
-            155036828925419fe6ab40d600d5e5ada249e1b47095d17bddf7aa694a0cdb6d)
+sha256sums=('96ec745235ecae021cd0db62f896a21ecdd46495795fdb713fa714c6f9a508ac'
+            'a4ee32a394ab111786d1d296ad611a4cda4fdb56d9470531d71b3c7f8b922a2d'
+            'd92d16891381310a4b18cc8ae59a1a0ac99a07ca80599a7e3c003970622ba03f'
+            '155036828925419fe6ab40d600d5e5ada249e1b47095d17bddf7aa694a0cdb6d')
 validpgpkeys=()
 
 prepare() {
@@ -27,27 +29,29 @@ prepare() {
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "${pkgname}-${pkgver}"
 
     python setup.py build --verbose
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "${pkgname}-${pkgver}"
 
     python setup.py check --verbose --strict
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "${pkgname}-${pkgver}"
 
-    # Install the program.
+    mkdir -p "${pkgdir}/usr"/{bin,lib,share/licenses/${pkgname}}
+
     python setup.py install --verbose --single-version-externally-managed --compile --optimize=2 \
-        --prefix=/usr "--root=$pkgdir"
+        --prefix=/usr "--root=${pkgdir}"
 
-    # Install desktop shortcut and icons.
+    install -D --preserve-timestamps --mode=644 \
+        "--target-directory=${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
     install --verbose --preserve-timestamps -D \
-        "--target-directory=$pkgdir/usr/share/applications" "$srcdir/${pkgname}.desktop"
+        "--target-directory=${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
     install --verbose --preserve-timestamps -D \
-        "--target-directory=$pkgdir/usr/share/icons/hicolor/48x48/apps" "$srcdir/${pkgname}.png"
+        "--target-directory=${pkgdir}/usr/share/icons/hicolor/48x48/apps" "${srcdir}/${pkgname}.png"
 }
