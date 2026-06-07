@@ -14,10 +14,10 @@ depends=('podman')
 optdepends=('fish: default shell in prebuilt images' 'openssh: for SSH agent forwarding')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bethropolis/podbox/releases/download/v${pkgver}/podbox-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('3792b117e2f2ab4bf27ca56cf4a905902fc87c7a97227369fb49142b68472448')
+sha256sums_aarch64=('7388a8cb6ec3d05bbeb953d6ad9e5504f4aac7518969bb1593d75335ad766037')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bethropolis/podbox/releases/download/v${pkgver}/podbox-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('83ca9a4c3ec59bef995be12a127834d9a0f7ceb969c7fbcaedb50828b599d074')
+sha256sums_x86_64=('ee8134b182bb55bb2a0dc19ad2f0b8fb817d30576d02441512a23ae8dccdd23a')
 
 package() {
   install -Dm755 "./podbox" "${pkgdir}/usr/bin/podbox"
