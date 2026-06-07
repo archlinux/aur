@@ -2,7 +2,7 @@
 # Maintainer: bethropolis <bethropolis at gmail dot com>
 
 pkgname='localgo-bin'
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc='LocalSend v2.1 protocol implementation — LAN file transfer CLI'
 url='https://github.com/bethropolis/localgo'
@@ -13,10 +13,10 @@ conflicts=('localgo' 'localgo-git')
 optdepends=('xclip: clipboard support on X11' 'xsel: clipboard support on X11 (alternative)' 'wl-clipboard: clipboard support on Wayland')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bethropolis/localgo/releases/download/v${pkgver}/localgo_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('ac420917dca897b330e292c4e05e4b1da8afa61788b45ad81d1e9606ccf7da43')
+sha256sums_aarch64=('41aafdee7de9e9d6705ffc07d89a69618afc4e2d181bfb2a926e4f5f3f130cc4')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bethropolis/localgo/releases/download/v${pkgver}/localgo_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('6e260aa2bd43e064749ce9771f235829d6d2c9b545a74a1779ad8d0d7def345f')
+sha256sums_x86_64=('ceeb77480f30d691c3ddba415f782ec6563b212817f70564d9b8f07bb7bb10f8')
 
 package() {
   install -Dm755 "./localgo" "${pkgdir}/usr/bin/localgo"
