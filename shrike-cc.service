@@ -1,0 +1,13 @@
+[Unit]
+Description=Shrike Control Centre (Web)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/usr/share/shrike-cc
+ExecStart=/usr/bin/python3 /usr/share/shrike-cc/shrike-cc.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

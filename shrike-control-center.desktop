@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Shrike Control Centre
+Comment=Open Shrike Web Control Centre
+Exec=firefox http://localhost:8080
+Icon=preferences-system
+Terminal=false
+Type=Application
+Categories=System;Settings;

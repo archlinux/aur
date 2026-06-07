@@ -1,0 +1,6 @@
+# Generate the required AUR metadata
+makepkg --printsrcinfo > .SRCINFO
+
+# Tell Git who you are for this repo
+git config user.name "root1"  # Use your AUR username here
+git config user.email "rootied@proton.me" # Use your AUR email here
