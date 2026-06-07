@@ -1,6 +1,6 @@
 pkgbase = reqlog-bin
 	pkgdesc = Fast CLI for searching, tracing, and streaming logs across files, Docker containers, and remote hosts
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/SagarMaheshwary/reqlog
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = reqlog-bin
 	provides = reqlog
 	conflicts = reqlog
 	options = !strip
-	source = README-0.8.0.md::https://raw.githubusercontent.com/SagarMaheshwary/reqlog/v0.8.0/README.md
-	source = LICENSE-0.8.0::https://raw.githubusercontent.com/SagarMaheshwary/reqlog/v0.8.0/LICENSE
+	source = README-0.8.1.md::https://raw.githubusercontent.com/SagarMaheshwary/reqlog/v0.8.1/README.md
+	source = LICENSE-0.8.1::https://raw.githubusercontent.com/SagarMaheshwary/reqlog/v0.8.1/LICENSE
 	sha256sums = 81c788fb97f122d89c483b045f99ee6233d3f4e69b52af768ed9e98cf0b918f3
 	sha256sums = 9f88798985c010e225b1ec2a9336fd560317a5be0553e45e188d25287e514a58
-	source_x86_64 = reqlog-x86_64-0.8.0.tgz::https://github.com/SagarMaheshwary/reqlog/releases/download/v0.8.0/reqlog-linux-amd64.tar.gz
-	sha256sums_x86_64 = d687effd6529712b3a5d422479e75095ed485f17ebaeaa135de9f398fc592b2b
-	source_aarch64 = reqlog-aarch64-0.8.0.tgz::https://github.com/SagarMaheshwary/reqlog/releases/download/v0.8.0/reqlog-linux-arm64.tar.gz
-	sha256sums_aarch64 = c2d56cf1a4889f0dd1dd73a47b9be044923b5ff2cf442fe665fe9a28b0ae92dc
+	source_x86_64 = reqlog-x86_64-0.8.1.tgz::https://github.com/SagarMaheshwary/reqlog/releases/download/v0.8.1/reqlog-linux-amd64.tar.gz
+	sha256sums_x86_64 = 81184b52f88a3caa9cedefb85a7a6d57cb3a789f6768b92138ce98fb994d71d1
+	source_aarch64 = reqlog-aarch64-0.8.1.tgz::https://github.com/SagarMaheshwary/reqlog/releases/download/v0.8.1/reqlog-linux-arm64.tar.gz
+	sha256sums_aarch64 = 32eff05ee328059de1c51dd60fe1a8cfc6e61b994ed59e1d4336257b6799cfbf
 
 pkgname = reqlog-bin
