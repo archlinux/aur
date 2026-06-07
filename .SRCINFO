@@ -1,6 +1,6 @@
 pkgbase = scribe-rs-bin
 	pkgdesc = Modal text editor for writers written in Rust
-	pkgver = 0.1.53
+	pkgver = 0.1.54
 	pkgrel = 1
 	url = https://github.com/isene/scribe
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = scribe-rs-bin
 	provides = scribe
 	conflicts = scribe-rs
 	options = !strip
-	source = README-0.1.53.md::https://raw.githubusercontent.com/isene/scribe/v0.1.53/README.md
-	sha256sums = c765b8006f33078ccea7b55475b6700acef7e6bcaf097625ea330c8c14f73249
-	source_x86_64 = scribe-x86_64-0.1.53::https://github.com/isene/scribe/releases/download/v0.1.53/scribe-linux-x86_64
-	sha256sums_x86_64 = 6694516bb7c36fd5e847d15860fd291496bfbb161a989973c03b7a8ff431027e
-	source_aarch64 = scribe-aarch64-0.1.53::https://github.com/isene/scribe/releases/download/v0.1.53/scribe-linux-aarch64
-	sha256sums_aarch64 = 3152bf68a0c98f30d0abe9ac0291b04a9dfc4ccd01565635164b6d593b4868b9
+	source = README-0.1.54.md::https://raw.githubusercontent.com/isene/scribe/v0.1.54/README.md
+	sha256sums = 0ff85d9bcfe9a1581bc6581d14c08a2d52821fb62bac832b86a10df1a61bf28b
+	source_x86_64 = scribe-x86_64-0.1.54::https://github.com/isene/scribe/releases/download/v0.1.54/scribe-linux-x86_64
+	sha256sums_x86_64 = ddb746f540b37339777ce19f8bbd59632a35a19ebf72f8626a9d53f3bd1ba9c1
+	source_aarch64 = scribe-aarch64-0.1.54::https://github.com/isene/scribe/releases/download/v0.1.54/scribe-linux-aarch64
+	sha256sums_aarch64 = 053ea54028dcffce6c06f916eb20da6efce9d2682abe883ceabcd2e0418e31c6
 
 pkgname = scribe-rs-bin
