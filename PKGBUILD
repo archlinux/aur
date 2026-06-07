@@ -1,27 +1,33 @@
-# Maintainer: Narthana Epa (triarius) <narthana.epa@gmail.com>
-# Contributor: Joe Hillenbrand (joehillen) <joehillen@gmail.com>
+# Maintainer: vyogami
 
-_pkgname=paruz
 pkgname=paruz-git
-pkgver=r26.e7aaf49
-pkgrel=2
-pkgdesc="A fzf terminal UI for paru or pacman"
-arch=("any")
-url="https://github.com/joehillen/paruz"
-license=("UNLICENSE")
-depends=("bash" "fzf")
-makedepends=("git")
-conflicts=("paruz")
-provides=("paruz")
-optdepends=("paru: for AUR support")
-source=("git+https://github.com/joehillen/paruz.git")
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="A terminal UI (TUI) for the paru AUR helper (latest git)"
+arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
+url="https://github.com/Vyogami/paruz"
+license=('MIT')
+depends=('paru' 'pacman')
+makedepends=('go' 'git')
+provides=('paruz')
+conflicts=('paruz')
+options=('!debug')
+source=("${pkgname}::git+https://github.com/Vyogami/paruz.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname" || return 1
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${srcdir}/${pkgname}"
+	git describe --long --abbrev=7 --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+		|| printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+build() {
+	cd "${srcdir}/${pkgname}"
+	export CGO_ENABLED=0
+	export GOFLAGS="-trimpath -mod=readonly -modcacherw"
+	go build -ldflags "-s -w -X main.version=v${pkgver}" -o paruz ./cmd/paruz
 }
 
 package() {
-  install -Dm775 "$srcdir/$_pkgname/paruz" "$pkgdir/usr/bin/paruz"
+	install -Dm755 "${srcdir}/${pkgname}/paruz" "${pkgdir}/usr/bin/paruz"
 }
