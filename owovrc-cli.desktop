@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OWOVRC (CLI)
+Comment=Yet another VRChat integration for the OWO Skin haptic vest
+Exec=/usr/bin/OWOVRC.CLI
+Icon=owovrc
+Terminal=True
+Type=Application
+Categories=Utility;
