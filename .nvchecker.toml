@@ -1,0 +1,5 @@
+["mboxshell"]
+source = "git"
+git = "https://github.com/dcarrero/mboxshell.git"
+include_regex = "v\\d+\\.\\d+\\.\\d+"
+version_format = "{raw_version:1}"
