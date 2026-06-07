@@ -1,6 +1,6 @@
 pkgbase = tuxedo
 	pkgdesc = A fast, keyboard-driven terminal UI for todo.txt.
-	pkgver = 2026.6.1
+	pkgver = 2026.6.2
 	pkgrel = 1
 	url = https://github.com/webstonehq/tuxedo
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = tuxedo
 	conflicts = tuxedo-bin
 	options = !strip
 	options = !debug
-	source = tuxedo-2026.6.1.tar.gz::https://github.com/webstonehq/tuxedo/archive/refs/tags/v2026.6.1.tar.gz
-	sha256sums = f13861610b6aa11fb840caff4d05d4bbdfd07d1f51c536d6c452339695c8bec5
+	source = tuxedo-2026.6.2.tar.gz::https://github.com/webstonehq/tuxedo/archive/refs/tags/v2026.6.2.tar.gz
+	sha256sums = e5c03b7948c7a968ef15bec48fb02a0ce13ac5dbf9ea263ce30a6abdc579a81f
 
 pkgname = tuxedo

@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=tuxedo
-pkgver=2026.6.1
+pkgver=2026.6.2
 pkgrel=1
 pkgdesc='A fast, keyboard-driven terminal UI for todo.txt.'
 arch=(
@@ -21,7 +21,7 @@ options=(
 provides=('tuxedo')
 conflicts=('tuxedo-git' 'tuxedo-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f13861610b6aa11fb840caff4d05d4bbdfd07d1f51c536d6c452339695c8bec5')
+sha256sums=('e5c03b7948c7a968ef15bec48fb02a0ce13ac5dbf9ea263ce30a6abdc579a81f')
 
 prepare() {
     cd "$pkgname-$pkgver"
