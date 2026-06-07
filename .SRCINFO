@@ -11,6 +11,6 @@ pkgbase = melo
 	depends = libnotify
 	depends = dbus
 	source = melo-0.1.0.tar.gz::https://github.com/mbonikev/melo/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = da0852a1e77f6b91e31aa5aa313d160008a6d51b71f6a346ddab70df5d0f0a2f
+	sha256sums = e76545167e7823fd33ce025d9bdf8b4a4f79b145d204e44f8911e5f5852b4549
 
 pkgname = melo

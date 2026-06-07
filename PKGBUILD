@@ -9,7 +9,7 @@ license=('MIT')
 depends=('alsa-lib' 'libnotify' 'dbus')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('da0852a1e77f6b91e31aa5aa313d160008a6d51b71f6a346ddab70df5d0f0a2f')
+sha256sums=('e76545167e7823fd33ce025d9bdf8b4a4f79b145d204e44f8911e5f5852b4549')
 
 prepare() {
     cd "$pkgname-$pkgver"
