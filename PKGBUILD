@@ -1,6 +1,6 @@
 # Maintainer: Hugh Whelan <brickhousedevelopers@gmail.com>
 pkgname=scidcommunity
-pkgver=5.1.3.43
+pkgver=5.1.3.44
 pkgrel=1
 pkgdesc="Enhanced fork of Scid chess database with Chess.com/Lichess integration, tablebase lookup, improved search, and additional training features"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('tcl' 'tk')
 makedepends=('gcc' 'make' 'git')
 # Commit hash that includes the ui_tcltk.h fix for system-wide installations
-_commit="86ffa35d103023431a47ea138f87f3d656d5fb20"
+_commit="1b050ea7bf4c755303bd7def3862fc1bf803f259"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/whelanh/scidCommunity/archive/${_commit}.tar.gz")
 sha256sums=('SKIP')  # Safe to skip: integrity verified by commit hash
 
