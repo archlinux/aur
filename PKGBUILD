@@ -13,7 +13,7 @@ makedepends=(dotnet-sdk-8.0 git zip clang coreutils)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!strip !debug) # Reportedly, these break with C#..?
-source=(${pkgname%-git}::'git+https://github.com/nesdev-org/Mesen2.git')
+source=(${pkgname%-git}::'git+https://github.com/nesdev-org/MesenCE.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -28,7 +28,8 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/bin/linux-x64/Release/linux-x64/publish"
-	install -Dm 755 Mesen "$pkgdir/usr/bin/${pkgname%-git}"
-	install -Dm 644 "$srcdir/${pkgname%-git}/Linux/appimage/Mesen.desktop" "$pkgdir/usr/share/applications/Mesen.desktop"
+	cd "$srcdir/${pkgname%-git}"
+	install -Dm 755 "bin/linux-x64/Release/linux-x64/publish/Mesen" "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm 644 "Linux/appimage/Mesen.desktop" "$pkgdir/usr/share/applications/Mesen.desktop"
+	install -Dm 644 "Linux/appimage/Mesen.48x48.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/Mesen.png"
 }

@@ -16,7 +16,7 @@ pkgbase = mesen2-git
 	conflicts = mesen2
 	options = !strip
 	options = !debug
-	source = mesen2::git+https://github.com/nesdev-org/Mesen2.git
+	source = mesen2::git+https://github.com/nesdev-org/MesenCE.git
 	sha256sums = SKIP
 
 pkgname = mesen2-git
