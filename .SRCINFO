@@ -1,16 +1,16 @@
 pkgbase = tiri
 	pkgdesc = A tiling Wayland compositor derived from niri
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/pablocpas/tiri
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = clang
 	makedepends = rust
-	source = tiri-0.1.0.tar.gz::https://github.com/pablocpas/tiri/releases/download/tiri-v0.1.0/tiri-0.1.0.tar.gz
-	source = tiri-0.1.0-vendored-dependencies.tar.xz::https://github.com/pablocpas/tiri/releases/download/tiri-v0.1.0/tiri-0.1.0-vendored-dependencies.tar.xz
-	b2sums = 31fbfc9b1ee7b219aea2210ec9806d54822ebcae0a10b886f829f035001db9ff11a02d62900bde5359d392127ceb8a745a5de6e6dd4222dacd5750a33099f70c
-	b2sums = 272c0b32b5882155ab51d9ac1c7b9837549aae4b4e59f0d1ab0a22facb0ab38091729d5435a3caf7294d683b11c25711c8fc2296343262b0babfa097668d55fa
+	source = tiri-0.1.1.tar.gz::https://github.com/pablocpas/tiri/releases/download/tiri-v0.1.1/tiri-0.1.1.tar.gz
+	source = tiri-0.1.1-vendored-dependencies.tar.xz::https://github.com/pablocpas/tiri/releases/download/tiri-v0.1.1/tiri-0.1.1-vendored-dependencies.tar.xz
+	b2sums = a638f6cca8ccb46bcc063efdaf4b7c49604455ab73010c547ff407e91b2743c7f69d8d5065647b7f513f8ca664eeb0b8c3fd5f6f317cc25f1962215aba64d263
+	b2sums = 6e7ea9fa763d89c1005a1e649a39ee1c80642431420f5d3c372b7863c9c465482e64811bfbfd3003c425adad7cc92ff786793846af4d40a2eeaecff3057733f4
 
 pkgname = tiri
 	depends = cairo
