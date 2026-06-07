@@ -1,7 +1,7 @@
 # Maintainer: Dr. Daniel Dumke <reinschrift@dumke.me>
 pkgname=reinschrift
-pkgver=0.23.9
-pkgrel=2
+pkgver=0.24.5
+pkgrel=1
 pkgdesc="Manage your todos in plain Markdown — native GNOME app and CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/danst0/ReinschriftTodo"
@@ -11,7 +11,7 @@ options=('!lto')
 depends=('gtk4' 'libadwaita' 'alsa-lib' 'openssl' 'gcc-libs' 'glibc' 'hicolor-icon-theme')
 makedepends=('cargo' 'cmake' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a43de2378d26a231fc91757cef9909beb5e4239657cced902fe66e1184cb8212')
+sha256sums=('c379f598486bab66cf641ca946108ce9610cd921cde7d96fa894fe3c4b16d215')
 
 prepare() {
   cd "ReinschriftTodo-$pkgver"
@@ -46,6 +46,14 @@ package() {
   install -Dm644 icon/todos-256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/me.dumke.Reinschrift.png"
   install -Dm644 icon/todos-128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/me.dumke.Reinschrift.png"
   install -Dm644 icon/todos-64.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/me.dumke.Reinschrift.png"
+
+  # gettext-Kataloge (msgfmt aus base-devel)
+  local po lang
+  for po in po/*.po; do
+    lang="$(basename "$po" .po)"
+    install -d "$pkgdir/usr/share/locale/$lang/LC_MESSAGES"
+    msgfmt -o "$pkgdir/usr/share/locale/$lang/LC_MESSAGES/reinschrift.mo" "$po"
+  done
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
