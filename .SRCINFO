@@ -1,0 +1,21 @@
+pkgbase = sddm-theme-aurora-greeter-git
+	pkgdesc = A premium, dynamic SDDM greeter theme with hardware-accelerated video loops and companion CLI ctl tool.
+	pkgver = r7.0a1baf8
+	pkgrel = 1
+	url = https://github.com/Execorn/aurora-greeter
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sddm
+	depends = qt6-5compat
+	depends = qt6-declarative
+	depends = qt6-multimedia
+	depends = gst-plugins-good
+	depends = gst-libav
+	depends = python
+	provides = sddm-theme-aurora-greeter
+	conflicts = sddm-theme-aurora-greeter
+	source = git+https://github.com/Execorn/aurora-greeter.git
+	md5sums = SKIP
+
+pkgname = sddm-theme-aurora-greeter-git
