@@ -1,0 +1,15 @@
+# AUR build artifacts
+pkg/
+src/
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.zip
+
+# Pacman package files
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# makepkg log files
+*.log
