@@ -1,6 +1,6 @@
 pkgbase = codemux-bin
 	pkgdesc = The Agentic Development Environment for Builders
-	pkgver = 0.7.9
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/Zeus-Deus/codemux
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = codemux-bin
 	provides = codemux
 	conflicts = codemux
 	options = !strip
-	source = https://github.com/Zeus-Deus/codemux/releases/download/v0.7.9/codemux_0.7.9_amd64.AppImage
-	sha256sums = 3664b3b46b6866b178c1dae9cf1ec718938b8197b0c3a138aee0ba27472c100d
+	source = https://github.com/Zeus-Deus/codemux/releases/download/v0.8.0/codemux_0.8.0_amd64.AppImage
+	sha256sums = 5e47db270f9b2c262ae07293d0170db91574af1b7bc4c4967af4c3702de8d2ab
 
 pkgname = codemux-bin
