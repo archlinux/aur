@@ -1,0 +1,17 @@
+pkgbase = nats-top-git
+	pkgdesc = A top-like tool for monitoring NATS servers
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/nats-io/nats-top
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = nats-top-git::git+https://github.com/nats-io/nats-top
+	sha256sums = SKIP
+
+pkgname = nats-top-git
