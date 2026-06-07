@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Outfit Studio
-Exec=/usr/bin/OutfitStudio %U
+Exec=/opt/BodySlide/OutfitStudio %U
 Terminal=false
 Type=Application
 Icon=OutfitStudio

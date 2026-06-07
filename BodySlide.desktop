@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=BodySlide
-Exec=/usr/bin/BodySlide %U
+Exec=/opt/BodySlide/BodySlide %U
 Terminal=false
 Type=Application
 Icon=BodySlide
