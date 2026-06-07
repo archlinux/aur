@@ -1,0 +1,20 @@
+pkgbase = gresistor3
+	pkgdesc = Resistor color code calculator
+	pkgver = 3.2.7
+	pkgrel = 2
+	url = https://gresistor.stethewwolf.eu
+	arch = any
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = gtk3
+	depends = python
+	depends = python-cairo
+	depends = python-gobject
+	source = gresistor3-3.2.7::git+https://github.com/stethewwolf/gResistor.git#tag=3.2.7
+	sha256sums = SKIP
+
+pkgname = gresistor3
