@@ -1,16 +1,16 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=sdl2_sound
-pkgver=2.0.4
+pkgver=2.0.6
 pkgrel=1
-pkgdesc="An abstract soundfile decoder"
+pkgdesc='An abstract soundfile decoder'
 arch=('i686' 'x86_64')
-url="https://icculus.org/SDL_sound/"
+url='https://icculus.org/SDL_sound/'
 license=('Zlib')
 depends=('sdl2')
 makedepends=('cmake' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/icculus/SDL_sound/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6f8b324ce23382929ab90ded7fcd6e303b66cb22b4e15b4e3c3a99f500a4eec1')
+sha256sums=('63be57cc80bcd29aeed6c29700759871c44c90251a7508b8d0eacd8d9cece30c')
 
 _srcdir="SDL_sound-${pkgver}"
 
@@ -27,7 +27,7 @@ package() {
 	# handle conflict with sdl_sound
 	mv "$pkgdir"/usr/bin/playsound{,-sdl2}
 
-	cd ${_srcdir}
+	cd "${_srcdir}"
 
 	# docs
 	install -Dm644 -t "$pkgdir"/usr/share/doc/${pkgname} docs/*
