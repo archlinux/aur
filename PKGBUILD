@@ -1,48 +1,52 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
-# Maintainer: Pranav Sharma <pranav.sharma.ama@gmail.com>
+# Contributor: sudopluto
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=miracle-wm
-pkgver=0.7.1
+pkgver=0.9.1
 pkgrel=1
-pkgdesc="Wayland compositor based on mir"
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+pkgdesc="Wayland tiling window manager built on Mir"
+arch=(x86_64)
 url="https://github.com/miracle-wm-org/miracle-wm"
-license=('GPL-3.0-or-later')
-depends=('mir'
-         # implicit depends
-         'libglvnd' 'yaml-cpp' 'bash' 'json-c' 'gcc-libs' 'libevdev' 'glib2' 'pcre2' 'glibc' 'wayland'
-         'python' 'python-tenacity' 'python-dbus-next'
-         'libxkbcommon'
+license=(GPL-3.0-only)
+depends=(
+    mir
+    libnotify
+    wasmedge
     )
-makedepends=('cmake' 'nlohmann-json' 'ninja' 'glm' 'boost')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6ed205691c2c01e71d38242986e79434e0ba278e1a700530199def43d311ccc6')
+makedepends=(
+    git
+    cmake
+    nlohmann-json
+    glm
+    boost
+    #mold # preferred linker
+    )
+source=("git+https://github.com/miracle-wm-org/miracle-wm.git#tag=v${pkgver}"
+        #0001-bugfix-only-install-libmirrenderer-dev-if-it-is-avai.patch
+        #0002-task-remove-version-checks-in-order-to-assume-latest.patch
+    )
+sha256sums=('62e6134bc05455998deced5d1cee63395d917ac379b37a1183fd7482fd5ecb93')
 
 prepare() {
-    sed -i 's/python3/python/g' $srcdir/${pkgname}-${pkgver}/session/usr/bin/libexec/miracle-wm-wait-sni-ready
-    sed -i 's/python3/python/g' $srcdir/${pkgname}-${pkgver}/tools/check_license.py
+  cd miracle-wm
+  #patch -Np1 -i ../0001-bugfix-only-install-libmirrenderer-dev-if-it-is-avai.patch
+  #patch -Np1 -i ../0002-task-remove-version-checks-in-order-to-assume-latest.patch
 }
 
 build() {
+  local _flags=(
+    -DSYSTEMD_INTEGRATION=ON
+  )
 
-    local _flags=(
-        -B build 
-        -S "${pkgname}-${pkgver}" 
-        -GNinja
-        -Wno-dev
-        -DCMAKE_BUILD_TYPE=None
-        -DCMAKE_INSTALL_PREFIX=/usr
-        -DCMAKE_INSTALL_LIBDIR=lib
-        # miracle-wm options
-        -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/$pkgname/
-        -DSYSTEMD_INTEGRATION=ON
-    )
+  cmake -B build -S "miracle-wm" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
 
-    cmake "${_flags[@]}"
-    cmake --build build
+  cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
