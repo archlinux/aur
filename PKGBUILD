@@ -3,7 +3,7 @@
 # namebind runs host-native processes -- ordinary binaries on the host, not
 # container images -- each inside its own per-app network namespace, so every
 # app gets a stable IP and its services are reached by name
-# (`<svc>.<app>.localhost`) instead of by remembered port numbers. podman owns
+# (`<svc>.<app>.<domain>`) instead of by remembered port numbers. podman owns
 # the per-app pod (the shared netns + bridge IP + refcounted lifecycle); the
 # host process is `nsenter`'d into it and dropped back to the caller's identity.
 #
@@ -12,7 +12,7 @@
 
 _pkgname=namebind
 pkgname="${_pkgname}-git"
-pkgver=0.7.0.r0.g29b9ac8
+pkgver=0.19.1.r1.g59bb419
 pkgrel=1
 pkgdesc="Per-app network namespaces; reach host services by name, not port number (git version)"
 arch=('any')  # pure Python + console script + a systemd unit
@@ -33,14 +33,19 @@ install="${_pkgname}.install"
 depends=(
   'python'
   'python-typer'   # the CLI framework (also a wheel runtime dependency)
+  'python-kdl-py'  # KDL parser for the central config (also a wheel runtime dependency)
   'podman'         # the per-app pod == the network namespace + bridge IP (rootful)
-  'nftables'       # nft: the portless DNAT rules installed inside the pod netns
+  'nftables'       # nft: the portless DNAT rules + the kernelspace egress masquerade
+  'passt'          # pasta: userspace egress (the default egress mode)
   'sudo'           # the CLI elevates its one privileged call (systemd-run/podman)
 )
-# `nsenter` + `setpriv` (util-linux), `ip` (iproute2) and `systemctl` +
-# `systemd-run` (systemd) are part of `base` and assumed present.
+# `nsenter` + `setpriv` (util-linux), `ip` (iproute2; also ipvlan/veth) and
+# `systemctl` + `systemd-run` (systemd) are part of `base` and assumed present.
 optdepends=(
-  'dnsmasq: resolve <svc>.<app>.localhost names by watching /var/lib/namebind/hosts.d'
+  'dnsmasq: resolve <svc>.<app>.<domain> names by watching /var/lib/namebind/hosts.d'
+  'docker: join Docker containers to the fabric via the libnetwork driver (namebind-docker.service)'
+  'iptables-nft: kernelspace host-nat egress -- reads the FORWARD policy, inserts the DOCKER-USER accept'
+  'iputils: arping for the direct-link external-ip duplicate-address check (best-effort)'
 )
 makedepends=(
   'python-build'
