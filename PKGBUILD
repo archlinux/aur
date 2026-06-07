@@ -1,4 +1,5 @@
-# Maintainer: Limao Luo <luolimao+AUR@gmail.com>
+# Maintainer: Capricornus007 <sihaogang at gmail dot com>
+# Co-Maintainer: Limao Luo <luolimao+AUR@gmail.com>
 #
 # (Added from garcon package)
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
