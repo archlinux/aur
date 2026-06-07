@@ -1,6 +1,6 @@
 pkgname=feishin-bin
 pkgver=1.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern web-based music player (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/jeffvli/feishin"

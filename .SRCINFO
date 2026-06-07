@@ -1,7 +1,7 @@
 pkgbase = feishin-bin
 	pkgdesc = Modern web-based music player (prebuilt binary)
 	pkgver = 1.13.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jeffvli/feishin
 	arch = x86_64
 	license = GPL3
