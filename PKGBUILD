@@ -1,6 +1,6 @@
 # Maintainer: Himalian <Himalian9227@proton.me>, phucvinh57 <npvinh0507@gmail.com>
 pkgname=biopass-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="An alternative to Windows Hello/Howdy"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=('biopass')
 conflicts=('biopass')
 source_x86_64=("biopass_${pkgver}_amd64.deb::https://github.com/TickLabVN/biopass/releases/download/${pkgver}/biopass_${pkgver}_amd64.deb")
 source_aarch64=("biopass_${pkgver}_arm64.deb::https://github.com/TickLabVN/biopass/releases/download/${pkgver}/biopass_${pkgver}_arm64.deb")
-sha256sums_x86_64=('2faa7e82906bfe1a1b8b7e1b8b60ae58056b0f582997737b8334a78d0588548c')
-sha256sums_aarch64=('f336ba617b3d883178dc43b9d48366a7b54233f071ebdbed78f5f4cd2863e427')
+sha256sums_x86_64=('3b5cbba8bcfe0b841c1a5f18881b733667295618053377275ca458a8a469745e')
+sha256sums_aarch64=('d1e334cc7a99ab0dc8d92acbb7a65c853354391ef1953707c462d4d35a7a85c5')
 options=(!strip !debug)
 backup=('etc/ld.so.conf.d/biopass.conf')
 install=biopass-bin.install
@@ -61,8 +61,8 @@ package() {
     return 1
   fi
 
-  # The published 1.1.0 bundles still embed CI build paths in RUNPATH. Replace
-  # them with the packaged native lib location used by the helper and face libs.
+  # Published bundles may embed CI build paths in RUNPATH. Replace them with the
+  # packaged native lib location used by the helper and face libs.
   patchelf --set-rpath /usr/lib/biopass "${helper_path}"
   for so_file in "${pkgdir}"/usr/lib/biopass/libbiopass_*.so; do
     patchelf --set-rpath /usr/lib/biopass "${so_file}"
