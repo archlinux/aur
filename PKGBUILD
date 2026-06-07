@@ -2,11 +2,10 @@
 # Maintainer: David Rosenstrauch <darose@darose.net>
 
 pkgname=lastpass
-pkgver=4.147.2
+pkgver=4.151.5
 pkgrel=1
 _universalver=4.49.0-1
-#_chromever=4.89.0
-_amo_file=4602959
+_amo_file=4731825
 _crx_id=hdokiejnpimakedhajhdlcegeplioahd
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
@@ -25,23 +24,14 @@ source=("${pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/
         "lastpass_policy_sources.json"
         "lastpass_policy_install.json"
         "License.txt")
-#noextract=("${pkgname}-${pkgver}.xpi"
-#           "lpchrome-${_chromever}.crx")
 noextract=("${pkgname}-${pkgver}.xpi")
-sha256sums=('bb779789289e7fc39f1590d933bc6b1ac59e096ae537a55bb1ae4947f196cea0'
+sha256sums=('32c872e52a8b30c17e7fc40d4115ec42cc193efc80b742aefa07ce13e5c94fed'
             '826e383a6bad905d942e22b14aee67dbc39e8f7a5243d706af787c8fcec6f158'
             'e8eb3b585809d6644807727c5bd0a74ead96dd2c5a7e6d2ce29e0b6ea28b9e59'
             '82af9e9296f92e92ca325449e0c2b2deb3c21f65afea45aeb823090cb32aad76'
             'f82b920620575654fcbc0baf9b5d6c275835cbfc05b779ad309de5c6411c8bc9'
             '1c061cb5352d84dd6cde4dd6ce3889d41a31fd38acc4d97a7d69709e3d5ac693'
             '17a871edf1134c498f6e91465f5b3138ba5af7d822e4c253cda81ab929906388')
-#b2sums=('e0e73f2d084358d41658b338890fba7fb3e0929c638e002c527e63c7d8d0a1c3bbafcf0a8bdbed94d4341465410389cdd60e8d30409e3154dfa46a2cc242590a'
-#        'cd9333866516a0dc43b653106224e5ef1a228c340adac93a2541d4f337b6b865c5eed043cf914a552b390d23a471ff1f21f8439d15282b77fb69dcbd6ffa01c1'
-#        '258c7e2b37d424f8bec7d9932a7d854e8edcc45c5f316dfe1a0a61a2f26460714358f15414946d49b16ad205f029d6ba27641e883de610632c95dece4e032821'
-#        '6d7576cc4bb96be15073066d07d94981c8914427dcf35d912510566f45d67115b80fca86dd5b038a853518ff51eb50db2e68f68a8834ab4d732b0da54e0e8555'
-#        '85900c7c9d6c8cd81e334d03a67de31e9bc444f416af1b0d828d63ad84599a4e267971cbd10e381ff1d318dda6abac5e0c7f48f98bd8455b808eb58471982140'
-#        'e093927964018f60260fff02aa7c8ad1f011d032dfb96db2eb7d7e0c4e2bd185ac321ad0c467ac0bf7d92c0fe1f814d8bda43a30b41bcc8574c0133c57376619'
-#        'b0bcb7be17134a256ae9ec91de2b907ebd48f55c381348be803f2735b42857968b86efdd31dbde1e6bcd7162c8f3ce787215772af5d31569a28b5ad93e3683eb')
 
 # 64-bit?
 if [[ $CARCH = x86_64 ]]; then
@@ -50,9 +40,6 @@ fi
 
 prepare() {
     cd "${srcdir}"
-
-    #tail -c +307 lpchrome-${_chromever}.crx > lpchrome-${_chromever}.zip
-    #unzip -qqo lpchrome-${_chromever}.zip -d lpchrome-${_chromever}
 
     unzip -qqo "${pkgname}-${pkgver}.xpi" -d "${pkgname}-${pkgver}"
 }
