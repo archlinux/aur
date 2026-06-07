@@ -1,0 +1,18 @@
+pkgbase = shrike-updater
+	pkgdesc = Graphical package manager for Pacman and Trizen
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://shrikelinuxug.org
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = gtk3
+	depends = xfce4-terminal
+	depends = sudo
+	depends = pacman
+	optdepends = trizen: AUR support
+	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/main.tar.gz
+	md5sums = SKIP
+
+pkgname = shrike-updater
