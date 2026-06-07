@@ -1,7 +1,7 @@
 # Maintainer: vyogami
 
 pkgname=paruz-git
-pkgver=1.1.0
+pkgver=1.1.5.r0.gff4fb6c
 pkgrel=1
 pkgdesc="A terminal UI (TUI) for the paru AUR helper (latest git)"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('paru' 'pacman')
 makedepends=('go' 'git')
 provides=('paruz')
-conflicts=('paruz')
+conflicts=('paruz' 'paruz-bin')
 options=('!debug')
 source=("${pkgname}::git+https://github.com/Vyogami/paruz.git")
 sha256sums=('SKIP')
@@ -30,4 +30,5 @@ build() {
 
 package() {
 	install -Dm755 "${srcdir}/${pkgname}/paruz" "${pkgdir}/usr/bin/paruz"
+	install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,6 +1,6 @@
 pkgbase = paruz-git
 	pkgdesc = A terminal UI (TUI) for the paru AUR helper (latest git)
-	pkgver = 1.1.0.r0.g6d0a8a1
+	pkgver = 1.1.5.r0.gff4fb6c
 	pkgrel = 1
 	url = https://github.com/Vyogami/paruz
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = paruz-git
 	depends = pacman
 	provides = paruz
 	conflicts = paruz
+	conflicts = paruz-bin
 	options = !debug
 	source = paruz-git::git+https://github.com/Vyogami/paruz.git
 	sha256sums = SKIP
