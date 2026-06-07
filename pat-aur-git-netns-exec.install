@@ -1,0 +1,11 @@
+post_install() {
+  chmod u+s '/usr/lib/pat-aur/netns-exec'
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	chmod u-s '/usr/lib/pat-aur/netns-exec'
+}
