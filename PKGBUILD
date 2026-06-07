@@ -1,7 +1,7 @@
 # Maintainer: Rick Price <fprice@pricemail.ca>
 
 pkgname=midi-daemon
-pkgver=0.4.5
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="A Lua-scriptable MIDI routing daemon"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gcc-libs' 'glibc')
 makedepends=('cargo')
 install=midi-daemon.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rickprice/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('41470728c390da998808d4935871c6a91c9b6bc2f123b57cabc06a358c05bd32')
+sha256sums=('e15a91bca81c90a77b9f880426408df81ba83db94aa88ee8dff7914e57ef00b4')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -62,6 +62,11 @@ EOF
     # Example Lua routes — copy to /etc/midi-daemon/routes.d/ to activate
     for lua in routes.d/*.lua; do
         install -Dm644 "$lua" "$pkgdir/usr/share/doc/$pkgname/examples/$lua"
+    done
+
+    # TouchOSC layout samples — companion layouts for the example routes
+    for tosc in TouchOSC/*.tosc; do
+        install -Dm644 "$tosc" "$pkgdir/usr/share/doc/$pkgname/examples/$tosc"
     done
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
