@@ -1,0 +1,34 @@
+pkgbase = perl-travel-status-motis-git
+	pkgdesc = Commandline client + Perl module for arrival/departure of MOTIS routing interfaces. Can show the arrivals/departures at a specific public transit stop, give details on individual trips, and look up stops by name or geo coordinates.
+	pkgver = 0.03+r21.20260419.gee32b1e
+	pkgrel = 1
+	epoch = 0
+	url = https://finalrewind.org/projects/Travel-Status-MOTIS/
+	arch = any
+	license = Artistic-1.0-Perl
+	license = CC0-1.0
+	checkdepends = perl-file-slurp
+	checkdepends = perl-test-compile
+	checkdepends = perl-test-pod
+	makedepends = curl>8.7.1
+	makedepends = git
+	makedepends = perl-class-accessor>=0.16
+	makedepends = perl-module-build
+	depends = perl>=5.20.0
+	depends = perl-class-accessor>=0.16
+	depends = perl-datetime
+	depends = perl-datetime-format-iso8601
+	depends = perl-getopt-long
+	depends = perl-json
+	depends = perl-list-moreutils
+	depends = perl-lwp-protocol-https
+	depends = perl-uri
+	provides = perl-travel-status-motis=0.03+r21.20260419.gee32b1e
+	conflicts = perl-travel-status-motis
+	options = !emptydirs
+	source = Travel-Status-MOTIS::git+https://git.finalrewind.org/Travel-Status-MOTIS
+	source = transport-apis::git+https://github.com/public-transport/transport-apis.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = perl-travel-status-motis-git
