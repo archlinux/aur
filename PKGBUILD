@@ -10,12 +10,15 @@
 # every upstream tag.
 
 pkgname=mtroamd-bin
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Persistent terminal daemon over QUIC - like mosh+tmux in one daemon, with multi-client handoff (pre-built)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/AG-Studio-Apps/mtroamd"
 license=('AGPL-3.0-or-later')
+# minisign is load-bearing: prepare() verifies the signed checksum
+# manifest with the upstream release key before any binary is trusted.
+makedepends=('minisign')
 conflicts=('mtroamd')
 provides=("mtroamd=${pkgver}" "mtroam=${pkgver}")
 
@@ -67,10 +70,10 @@ source_armv7h=(
 # Placeholder sums; `make aur-prep` rewrites these from the published
 # SHA256SUMS after every upstream release. Do NOT publish the
 # PKGBUILD with SKIP — defeats the point of per-arch hashes.
-sha256sums_x86_64=('152ca07fb6b0d7d2d544ac3bf4b82d9eb1fe72c91ccb97abdbe2add346cc7190'
-    'faa39c05fde0d5288d077acd6aa9c3312a7f860871c5305a00f41d97ec253703'
-    '64e282b8ad1ed45827fa3c9ecd3d32d8ec582453438a720db8c3199e45346144'
-    'f82615dfd51dc53849cefbac6e51bc58b9c137c177be736cc8b50ab65f62bdc1'
+sha256sums_x86_64=('5bedb68e8844cb003ecdb7a30e8bd642ba7525a93a351a3f5d11b0df479d5e52'
+    '65dbe02187b43c34cd93f423ed36dbb06781381865a11febe6c353543b924cd1'
+    '3a6b42c59f69c18483a60864037cae933a821353670fb80048ea6679f1888988'
+    '62ec8bc66280a9285a5e0152ef8c0516474f99834709309d97bcfde4e8f7ea63'
     '94456aa9549f507040d2c779011533159a05eb485b7f64be388d2ddb5aaa68c0'
     'b41207e58dd6bf8b25f0946e2223b28f02a94336cd9193afdab51da63213872d'
     '0457f311f1ffb879bf9bf3e4a903eb66485a5e406952eae3e840ea7684e516c5'
@@ -79,10 +82,10 @@ sha256sums_x86_64=('152ca07fb6b0d7d2d544ac3bf4b82d9eb1fe72c91ccb97abdbe2add346cc
     '28718aaac4e7b6eb5b2f33228438a43a9a1cd700b796420f2485b36d27990688'
     '3ca2b4fdddb7e702f6c3a695dcf447580805549cacef75c93babf9a6870eff36'
     'd32a77244b77488c5906d3552bbcd9c03e7914a1ab5321073bb2709209c5251c')
-sha256sums_aarch64=('0ee039d537f5dd6937b4b5f5b6e524f1a39fa3c66bd5cfafe90f0b8be97c1e41'
-    '0f113eec76e2b185e25e02c7d18f189ac9973f5397d93c26e5dd416a471e9958'
-    '64e282b8ad1ed45827fa3c9ecd3d32d8ec582453438a720db8c3199e45346144'
-    'f82615dfd51dc53849cefbac6e51bc58b9c137c177be736cc8b50ab65f62bdc1'
+sha256sums_aarch64=('b29b444a56fc1e25e4e0f0705cca3bc1329815dd299b9b69e2371a21306501be'
+    '1749315980b3b025b5d3f18d7d41d5f579f3ba385a8348041f8df2fa31e0dddc'
+    '3a6b42c59f69c18483a60864037cae933a821353670fb80048ea6679f1888988'
+    '62ec8bc66280a9285a5e0152ef8c0516474f99834709309d97bcfde4e8f7ea63'
     '94456aa9549f507040d2c779011533159a05eb485b7f64be388d2ddb5aaa68c0'
     'b41207e58dd6bf8b25f0946e2223b28f02a94336cd9193afdab51da63213872d'
     '0457f311f1ffb879bf9bf3e4a903eb66485a5e406952eae3e840ea7684e516c5'
@@ -91,10 +94,10 @@ sha256sums_aarch64=('0ee039d537f5dd6937b4b5f5b6e524f1a39fa3c66bd5cfafe90f0b8be97
     '28718aaac4e7b6eb5b2f33228438a43a9a1cd700b796420f2485b36d27990688'
     '3ca2b4fdddb7e702f6c3a695dcf447580805549cacef75c93babf9a6870eff36'
     'd32a77244b77488c5906d3552bbcd9c03e7914a1ab5321073bb2709209c5251c')
-sha256sums_armv7h=('533f1225d4cb1538c3e77a351c6b1d11eb2ff6c2e2210c0629d7a2fa8711b035'
-    'ddaaad78867af758456cd5460b82ee56cff453fbec1eeea92e377905fa04a496'
-    '64e282b8ad1ed45827fa3c9ecd3d32d8ec582453438a720db8c3199e45346144'
-    'f82615dfd51dc53849cefbac6e51bc58b9c137c177be736cc8b50ab65f62bdc1'
+sha256sums_armv7h=('b8b4b2422daafc15403cd4c34e3007f0ada0d6017b8aab36f0691e456cc58051'
+    '5a95b96690271b8457805c8fc6e7fdaefd7dea49f2120b7f867bb60a34224d40'
+    '3a6b42c59f69c18483a60864037cae933a821353670fb80048ea6679f1888988'
+    '62ec8bc66280a9285a5e0152ef8c0516474f99834709309d97bcfde4e8f7ea63'
     '94456aa9549f507040d2c779011533159a05eb485b7f64be388d2ddb5aaa68c0'
     'b41207e58dd6bf8b25f0946e2223b28f02a94336cd9193afdab51da63213872d'
     '0457f311f1ffb879bf9bf3e4a903eb66485a5e406952eae3e840ea7684e516c5'
@@ -104,12 +107,23 @@ sha256sums_armv7h=('533f1225d4cb1538c3e77a351c6b1d11eb2ff6c2e2210c0629d7a2fa8711
     '3ca2b4fdddb7e702f6c3a695dcf447580805549cacef75c93babf9a6870eff36'
     'd32a77244b77488c5906d3552bbcd9c03e7914a1ab5321073bb2709209c5251c')
 
-# Optional but recommended: minisign-verify the signed manifest
-# before makepkg trusts any of these files. Users with `minisign`
-# installed can run `minisign -V -p docs/release-public-key.txt -m
-# SHA256SUMS` against the public key shipped in the upstream repo.
+# Embedded upstream minisign public key (primary release-signing key,
+# keyID 94562DC3EC2D6EB4 — mirrors docs/release-public-key.txt and the
+# daemon's self-update roster). prepare() verifies SHA256SUMS against
+# its detached signature with this key, so the signature is a
+# load-bearing build-time gate (provenance) rather than advisory. The
+# per-arch sha256sums arrays above still gate per-binary integrity;
+# this gate authenticates the manifest those sums live in.
+_minisign_pubkey='RWS0bi3swy1WlKoCoCnTQtCYAvt01ue3mMxhVy/Q6qxmVOdPpt8eIyQ1'
 
 prepare() {
+    # Authenticate the signed checksum manifest before trusting it.
+    # minisign -V also verifies the global signature over the trusted
+    # comment, and exits non-zero on any failure → makepkg aborts.
+    minisign -V -P "${_minisign_pubkey}" \
+        -m "${srcdir}/SHA256SUMS" \
+        -x "${srcdir}/SHA256SUMS.minisig"
+
     case "$CARCH" in
         x86_64)  _arch=linux-amd64 ;;
         aarch64) _arch=linux-arm64 ;;
