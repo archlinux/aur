@@ -3,14 +3,14 @@
 _pkgname=wf-config-hjson
 pkgname=wayfire-plugins-wfconfig-hjson
 pkgver=0.9.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayfire plugin to read/write the configuration in the hjson format. Usage: wayfire --backend hjson-config-backend --config /path/to/config/file.hjson"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/wayfireplugins/${_pkgname}"
 license=('MIT')
 depends=(
         'wayfire'
-        'wlroots0.17'
+        'wlroots0.18'
 )
 makedepends=('meson'
             'ninja'
