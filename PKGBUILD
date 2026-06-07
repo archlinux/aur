@@ -1,7 +1,7 @@
 # Maintainer: vyogami
 
 pkgname=paruz
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="A terminal UI (TUI) for the paru AUR helper"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -16,10 +16,10 @@ source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v
 source_armv6h=("${pkgname}-${pkgver}-armv6h.tar.gz::${url}/releases/download/v${pkgver}/paruz_linux_v6.tar.gz")
 source_armv7h=("${pkgname}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/paruz_linux_v7.tar.gz")
 
-sha256sums_x86_64=('0b4a36e3905da2b11e5731ede8244abd5c9ed241dccf034ccfcc8bbcd9aab443')
-sha256sums_aarch64=('49b9b3c91c7cf769d467a87d6d9da2f8c3dd42575c1d7ce6e9cfc6699bec9c48')
-sha256sums_armv6h=('457ae0b6a5645b43fc9cd637bc621319dd276692107b6625971c83c350e37da9')
-sha256sums_armv7h=('b84ead61146c66e5155535a8173641deb7272efad4018960266addc60303b956')
+sha256sums_x86_64=('ea0ca5b8eabb706ac0506429bc2f3454ed986396802e8388bbfaa60262be5f41')
+sha256sums_aarch64=('e61d21e8c452985bca386231baa660612eace3cbb50b7b8d2c4452e8c89e1866')
+sha256sums_armv6h=('3867a756da18b00444ab3edfc3ef9475fda841e4f0cc254d241eec60a6043265')
+sha256sums_armv7h=('f0cbb345aff637c2a6e6501244864b750566b9c2d3fba21b1d178e2d9db78b71')
 
 package() {
 	install -Dm755 "${srcdir}/paruz" "${pkgdir}/usr/bin/paruz"
