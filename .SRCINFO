@@ -1,0 +1,20 @@
+pkgbase = shrike-trimmer
+	pkgdesc = Video Trimmer
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://shrikelinuxug.org
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = gtk3
+	depends = ffmpeg
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-libav
+	depends = gst-plugin-gtk
+	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/main.tar.gz
+	md5sums = SKIP
+
+pkgname = shrike-trimmer
