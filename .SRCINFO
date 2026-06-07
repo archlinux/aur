@@ -1,0 +1,13 @@
+pkgbase = genpass
+	pkgdesc = A simple but efficient password generator optimized for cryptographic security
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/JuanPerdomo00/generador-password
+	arch = x86_64
+	license = GPL3
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	source = genpass-1.0.0.tar.gz::https://github.com/JuanPerdomo00/generador-password/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = genpass
