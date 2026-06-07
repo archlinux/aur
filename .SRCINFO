@@ -1,12 +1,12 @@
 pkgbase = anus
 	pkgdesc = Miniflux desktop reader
-	pkgver = 0.3.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/slatkin/anus
 	arch = x86_64
 	license = MIT
 	depends = webkit2gtk-4.1
-	source = anus-0.3.0-linux-x86_64.tar.gz::https://github.com/slatkin/anus/releases/download/v0.3.0/anus-0.3.0-linux-x86_64.tar.gz
-	sha256sums = ca17333172c8e14d6d7e80309743b71f82d181936872754fabcb8249091d0bb1
+	source = anus-3.0.1-linux-x86_64.tar.gz::https://github.com/slatkin/anus/releases/download/v3.0.1/anus-3.0.1-linux-x86_64.tar.gz
+	sha256sums = c3b02b0578965f68170d8a681ac81700f9746c6bb1d75fe85931ecc701a8a83a
 
 pkgname = anus
