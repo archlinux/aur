@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-fido2
-pkgver=0.8.19
+pkgver=0.8.20
 pkgrel=1
 pkgdesc="Moshpit agent daemon — FIDO2/YubiKey unlock backend"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('moshpit-agent' 'moshpit-agent-systemd-creds' 'moshpit-agent-ssh-agen
 depends=('libfido2')
 makedepends=('cargo' 'cmake' 'gcc' 'libfido2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/moshpit/archive/v$pkgver.tar.gz")
-sha256sums=('79e356c52a7f8605abc46b7c1a172d0e6be9ae65ba5ec98261894d612f269bab')
+sha256sums=('7252155af6b64ffeba1c111a6f98cfef42bdc5a4de50e9aead1cd8acda3479a0')
 
 prepare() {
     cd "moshpit-$pkgver"
