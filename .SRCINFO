@@ -1,0 +1,35 @@
+pkgbase = ditrigon
+	pkgdesc = A popular and easy to use graphical IRC (chat) client
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/bluewww/ditrigon
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = intltool
+	makedepends = iso-codes
+	makedepends = lua
+	makedepends = meson
+	makedepends = perl
+	makedepends = python-cffi
+	makedepends = python-setuptools
+	depends = dbus-glib
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk2-compat
+	depends = libcanberra
+	depends = openssl
+	depends = pango
+	depends = pciutils
+	optdepends = enchant: Spell check
+	optdepends = iso-codes: Display language names instead of codes
+	optdepends = lua: Lua plugin
+	optdepends = perl: Perl plugin
+	optdepends = python-cffi: Python plugin
+	options = !debug
+	source = git+https://github.com/bluewww/ditrigon.git#tag=v1.6.0
+	sha256sums = 23da16b15091922e06eb5dc4db9818c8dcd0ee7626b56a18caf49365195f2e83
+
+pkgname = ditrigon
