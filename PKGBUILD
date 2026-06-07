@@ -2,8 +2,8 @@
 # Contributor: kleines Filmröllchen <kleines@filmroellchen.eu>
 
 pkgname=mesen2-git
-pkgver=r3343.af9eda35
-pkgrel=1
+pkgver=r3714.aec7718c
+pkgrel=2
 pkgdesc="Multi-system emulator (NES, SNES, Game Boy and PC Engine)"
 arch=('x86_64')
 url="https://www.mesen.ca"
@@ -13,11 +13,8 @@ makedepends=(dotnet-sdk-8.0 git zip clang coreutils)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!strip !debug) # Reportedly, these break with C#..?
-source=(${pkgname%-git}::'git+https://github.com/SourMesen/Mesen2.git')
+source=(${pkgname%-git}::'git+https://github.com/nesdev-org/Mesen2.git')
 sha256sums=('SKIP')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -33,4 +30,5 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}/bin/linux-x64/Release/linux-x64/publish"
 	install -Dm 755 Mesen "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm 644 "$srcdir/${pkgname%-git}/Linux/appimage/Mesen.desktop" "$pkgdir/usr/share/applications/Mesen.desktop"
 }
