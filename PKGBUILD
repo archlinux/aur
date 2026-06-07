@@ -2,7 +2,7 @@
 
 _pkgname=MangoHud
 pkgname=mangohud-git
-pkgver=0.8.1.r75.g4bcf06a
+pkgver=0.8.4.r11.g2c1dc52
 pkgrel=1
 pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more"
 url='https://github.com/flightlessmango/MangoHud'
@@ -21,23 +21,29 @@ makedepends=(
     'vulkan-headers'
 )
 depends=(
-    'gcc-libs'
     'glfw'
     'glibc'
     'hicolor-icon-theme'
+    'libcap'
+    'libdrm'
+    'libgcc'
     'libglvnd'
+    'libstdc++'
     'libx11'
     'libxkbcommon'
+    'mesa'
     'python'
     'python-matplotlib'
     'python-numpy'
     'sh'
+    'systemd-libs'
+    'vulkan-icd-loader'
     'wayland'
+    'yaml-cpp'
 )
 optdepends=(
     'dbus: mangohudctl'
     'libxnvctrl: NVIDIA GPU metrics on older GPUs'
-    'vulkan-icd-loader: Vulkan support'
 )
 provides=('mangohud' 'mangoapp')
 replaces=('mangoapp')
