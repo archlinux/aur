@@ -1,6 +1,6 @@
 pkgbase = bangen-bin
 	pkgdesc = ✨ Colorful animated ASCII banners in your terminal
-	pkgver = 2.2.5
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/programmersd21/bangen
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = bangen-bin
 	provides = bangen
 	conflicts = bangen
 	options = !strip
-	source = README-2.2.5.md::https://raw.githubusercontent.com/programmersd21/bangen/2.2.5/README.md
-	source = LICENSE-2.2.5::https://raw.githubusercontent.com/programmersd21/bangen/2.2.5/LICENSE
+	source = README-2.3.0.md::https://raw.githubusercontent.com/programmersd21/bangen/2.3.0/README.md
+	source = LICENSE-2.3.0::https://raw.githubusercontent.com/programmersd21/bangen/2.3.0/LICENSE
 	sha256sums = 5f8af593ed54cdafe718bfdcc25572c27e87c0cab3016d8f798ba0fb2abf6179
 	sha256sums = e47ee26134da1053f49b3ba41d8c376e772f1957afded5c1b71049aab6081bad
-	source_x86_64 = bangen-x86_64-2.2.5.tgz::https://github.com/programmersd21/bangen/releases/download/2.2.5/bangen-linux-2.2.5.tar.gz
-	sha256sums_x86_64 = 3b8e9c5431c7cab999f9f528a9b01c56ce72bdc0c2127ee66c39ce3ac0858f9d
+	source_x86_64 = bangen-x86_64-2.3.0.tgz::https://github.com/programmersd21/bangen/releases/download/2.3.0/bangen-linux-2.3.0.tar.gz
+	sha256sums_x86_64 = 1cc5eedbd468743be5a1d2b22f6b55873a781ae38327ddb6cee5611a7c2e6790
 
 pkgname = bangen-bin
