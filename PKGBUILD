@@ -3,7 +3,7 @@
 
 pkgname=rimgo
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An alternative frontend for Imgur. Originally based on rimgu."
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/rimgo/rimgo"
