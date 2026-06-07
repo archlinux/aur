@@ -1,28 +1,27 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=orchestrator
-pkgver=3.2.6
-_pkgrelease=-21
+pkgver=3.2.6.21
 pkgrel=1
 pkgdesc='MySQL replication topology management and HA'
 arch=(x86_64)
 url='https://github.com/percona/orchestrator'
 license=('Apache-2.0')
 conflicts=("${pkgname}-bin")
-depends=(glibc)
+depends=(glibc bash)
 makedepends=('go')
 options=(!lto)
-source=("$pkgname-$pkgver$_pkgrelease.tar.gz::$url/archive/refs/tags/v$pkgver$_pkgrelease.tar.gz")
+source=("$pkgname-${pkgver%.*}-${pkgver##*.}.tar.gz::$url/archive/refs/tags/v${pkgver%.*}-${pkgver##*.}.tar.gz")
 sha256sums=('9dceea9e30a246b2e6cbb26a34346666c35aff5a85f312c8ced7e19553ab0a41')
 
 prepare() {
-  cd "$pkgname-$pkgver$_pkgrelease"
+  cd "$pkgname-${pkgver%.*}-${pkgver##*.}"
   export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
   go mod download -modcacherw
 }
 
 build() {
-  cd "$pkgname-$pkgver$_pkgrelease"
+  cd "$pkgname-${pkgver%.*}-${pkgver##*.}"
   mkdir -p bin
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -41,7 +40,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver$_pkgrelease"
+  cd "$pkgname-${pkgver%.*}-${pkgver##*.}"
   install -d "$pkgdir/usr/bin"
   install -Dm755 bin/$pkgname "$pkgdir/usr/share/$pkgname/$pkgname"
   ln -s /usr/share/$pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
