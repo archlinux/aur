@@ -1,7 +1,7 @@
 # Maintainer: Gaou Piou <i.am.piou@gmail.com>
 
 pkgname=drops-cursor-theme
-pkgver=2026.05.15.070136
+pkgver=2026.06.05.200310
 pkgrel=1
 _pkgid=2330173
 pkgdesc="HDPI cursor theme drawn from scratch, available in 32/48/64/96px sizes"

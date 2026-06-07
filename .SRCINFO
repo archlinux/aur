@@ -1,6 +1,6 @@
 pkgbase = drops-cursor-theme
 	pkgdesc = HDPI cursor theme drawn from scratch, available in 32/48/64/96px sizes
-	pkgver = 2026.05.15.070136
+	pkgver = 2026.06.05.200310
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/2330173
 	install = drops-cursor-theme.install
