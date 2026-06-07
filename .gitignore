@@ -5,3 +5,4 @@
 !.gitrepo
 !.gitignore
 !playit-bin.install
+!update.sh

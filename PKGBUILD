@@ -1,25 +1,28 @@
 # Maintainer: Patrick Lorio <patrick@playit.gg>
+# Contributor: Gilwiljam <gillbilljam@gmail.com>
+# Contributor: Samuel Corsi-House <chouse.samuel@gmail.com>
 
 pkgname=playit-bin
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
-pkgdesc='A tunneling tool to host a game server without port forwarding or sharing public IP (Binary version)'
+pkgdesc='Making it easy to play games with friends. Makes your server public'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url='https://playit.gg'
 license=('BSD-2-Clause')
-depends=('logrotate')
-provides=('playit')
-conflicts=('playit')
+depends=('logrotate' 'systemd')
+provides=("playit=${pkgver}")
+conflicts=('playit' 'playit-debug')
 install="${pkgname}.install"
 
+_repo='playit-cloud/playit-agent'
 _release_base="https://builds.playit.gg/${pkgver}"
-_raw_base="https://raw.githubusercontent.com/playit-cloud/playit-agent/v${pkgver}"
+_raw_base="https://raw.githubusercontent.com/${_repo}/v${pkgver}"
 
 source=(
   "playit::${_raw_base}/linux/playit"
   "logrotate.conf::${_raw_base}/linux/logrotate.conf"
   "playit.service::${_raw_base}/linux/playit.service"
-  "playit.openrc::${_raw_base}/linux/playit.openrc"
+  "playit.sysusers::${_raw_base}/linux/playit.sysusers"
   "LICENSE.txt::${_raw_base}/LICENSE.txt"
 )
 source_x86_64=(
@@ -40,18 +43,18 @@ source_i686=(
 )
 
 sha256sums=('daa9b021f23bddaa04c29532088ab3f1967591bba11ed98eb8ced4d53e67858d'
-            '22fc22988fd86ecf62cba09847442cfd628a7a6d7e6dcdffd3833f1f3cb8a9d8'
-            '8029085b8db14175a1a7a7f4f626bc224be969d6c68283de38a4942575ee2842'
-            'fd6b309c4e1008b81675a2ad0ea27e709f02f405a502816c238a73c60b497da9'
+            '0e22e81c51c31325dd2acff4ec7399ceede0e83384547457ef64ec52fa72cdd1'
+            '066b84e12162c344eb602cc4550447bf7ee05c8b6d2975ea94e356fc9977050d'
+            'a07e7ae69701e99224bfcd8a464b028c7e7eef241017900701b70ac903e42d39'
             'f9d32c6b4a6055b2bfa48543d68119efc46ea4606f0d9cc973cb273dcd59be9c')
-sha256sums_x86_64=('ac812035d416f0d10628023ac1c2dfccc1cf4610a72fde42516ca34ad7ae9755'
-                   '544cc9b93384c81d0bbccc7ced5f855594412bd7cc72011d414b73f265fb7ce6')
-sha256sums_aarch64=('647924241fbafaa5616cf8630153f181759fe3cd95cca2821eabe659f90e5d3e'
-                    '8a1c51e72d00caec1688def8c20c1c67c714b99dff05a4147f3639d3fad61594')
-sha256sums_armv7h=('4426464a96e2708f96b0414b74b63132e0edbd682989c87f203b58451c6c4d73'
-                   '99a512d42280103133f13b6e5fb236ee07242f2d6d11da38e3a8cafd13593245')
-sha256sums_i686=('7f8e16c51bd10157b6df6676c21dd5a43054a53583af3f94a7976fe012c72d8a'
-                 'a984232367d411a9a592b9d04a81eb0a0df27994a6464f49b9393e7276b93cbd')
+sha256sums_x86_64=('4d1e9584c7c771f0f4727fca435376c2c07b1bf84149eba2ac00bd8c3100ba25'
+                   '01f8790c239ba44e89ac5c569a3dfb653e9ac3242d00d8ada8ae6fd610a380b5')
+sha256sums_aarch64=('df196e0d6f8cd0c39d4954c298306d86b0090aca6575a03c6d2566aa04fbed98'
+                    '83d11379f1f7ad7e0d3c373eb3c8c7813aaf6bf0dbad47d00e477b4d91c882cd')
+sha256sums_armv7h=('6ad02a6de002d103399bbd54b73aef6cc2d09c153da6aeb7b9457a052d3391ee'
+                   '0c69d4f86f28e2e7202da06242730f23ff4586fd992d3bbf873fc6388db02b5b')
+sha256sums_i686=('adf808ba74581752104bd040d162fba1d4ceb64def43828e116154338347dd2e'
+                 'f65de81eca52d5d8ecf0c4943dda92f9ee616fdc238877f775e9245f485009ac')
 
 package() {
   local cli_bin
@@ -85,15 +88,13 @@ package() {
   install -Dm0755 "${srcdir}/playit" "${pkgdir}/opt/playit/playit"
 
   install -Dm0644 "${srcdir}/logrotate.conf" "${pkgdir}/etc/logrotate.d/playit"
-  install -Dm0644 "${srcdir}/playit.service" "${pkgdir}/opt/playit/share/init/systemd/playit.service"
-  install -Dm0755 "${srcdir}/playit.openrc" "${pkgdir}/opt/playit/share/init/openrc/playit"
+  install -Dm0644 "${srcdir}/playit.service" "${pkgdir}/usr/lib/systemd/system/playit.service"
+  install -Dm0644 "${srcdir}/playit.sysusers" "${pkgdir}/usr/lib/sysusers.d/playit.conf"
   install -Dm0644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 
   install -dm0750 "${pkgdir}/etc/playit"
-  install -dm0750 "${pkgdir}/var/log/playit"
-  install -dm0755 "${pkgdir}/usr/local/bin"
+  install -dm0755 "${pkgdir}/usr/bin"
 
-  ln -s /opt/playit/playit "${pkgdir}/usr/local/bin/playit"
-  ln -s /opt/playit/playitd "${pkgdir}/usr/local/bin/playitd"
+  ln -s /opt/playit/playit "${pkgdir}/usr/bin/playit"
+  ln -s /opt/playit/playitd "${pkgdir}/usr/bin/playitd"
 }
-
