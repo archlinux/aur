@@ -2,7 +2,7 @@
 
 _pkgname=foomuuri
 pkgname=foomuuri-git
-pkgver=r430.2bf0652
+pkgver=r754.8054f2c
 pkgrel=1
 pkgdesc="Multizone bidirectional nftables firewall"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('dbus-python: D-Bus interface for dynamic zone/interface changes'
             'python-gobject: D-Bus mainloop'
             'python-lxml: HTML/XML parsing in iplist filters'
             'python-prometheus_client: foomuuri_exporter for Prometheus metrics')
-makedepends=('make' 'flake8' 'python-pylint' 'git')
+makedepends=('make' 'python-ruff' 'python-pylint' 'ty' 'git')
 conflicts=('foomuuri')
 provides=('foomuuri')
 source=("git+https://github.com/FoobarOy/foomuuri.git")
