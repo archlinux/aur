@@ -5,7 +5,7 @@
 _pkgname='pat-aur'
 pkgbase=${_pkgname}-git
 pkgname=(${_pkgname}-client-git ${_pkgname}-client-firmware-git ${_pkgname}-netns-exec-git ${_pkgname}-host-git)
-pkgver=r557.daf9690
+pkgver=r558.ff0dbf6
 pkgrel=1
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
@@ -52,11 +52,13 @@ package_pat-aur-client-git() {
 }
 
 package_pat-aur-client-flatpak-git() {
+	arch=('any')
 	depends+=('pat-aur-client-git' 'libboost_json.so' 'flatpak')
 	pkgdesc='Flatpak updates support for pat-aur.'
 }
 
 package_pat-aur-client-firmware-git() {
+	arch=('any')
 	depends+=('pat-aur-client-git' 'fwupd')
 	pkgdesc='firmware updates support for pat-aur.'
 }
@@ -64,6 +66,7 @@ package_pat-aur-client-firmware-git() {
 # This will make netns-exec tool actually work. Without this, the tool is impotent. This is an optional install as it is a setuid
 # executable and not everyone will need or want network namespaces for pat-aur.
 package_pat-aur-netns-exec-git() {
+	arch=('any')
 	depends+=('pat-aur-client-git')
 	pkgdesc='Execute a process in a specified network namespace.'
 	install="${pkgbase}-netns-exec.install"

@@ -1,6 +1,6 @@
 pkgbase = pat-aur-git
 	pkgdesc = AUR helper and tool to build Arch Linux packages in clean containers.
-	pkgver = r557.daf9690
+	pkgver = r558.ff0dbf6
 	pkgrel = 1
 	url = https://gitlab.com/patlefort/pat-aur
 	arch = x86_64
@@ -30,12 +30,14 @@ pkgname = pat-aur-client-git
 
 pkgname = pat-aur-client-firmware-git
 	pkgdesc = firmware updates support for pat-aur.
+	arch = any
 	depends = pat-aur-client-git
 	depends = fwupd
 
 pkgname = pat-aur-netns-exec-git
 	pkgdesc = Execute a process in a specified network namespace.
 	install = pat-aur-git-netns-exec.install
+	arch = any
 	depends = pat-aur-client-git
 
 pkgname = pat-aur-host-git
@@ -62,6 +64,7 @@ pkgname = pat-aur-host-git
 
 pkgname = pat-aur-client-flatpak-git
 	pkgdesc = Flatpak updates support for pat-aur.
+	arch = any
 	depends = pat-aur-client-git
 	depends = libboost_json.so
 	depends = flatpak
