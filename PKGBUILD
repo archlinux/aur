@@ -1,73 +1,41 @@
-# Maintainer: witt <1989161762 at qq dot com>
-
-pkgname=intellij-idea-community-edition-bin
-_pkgname=${pkgname%-bin}
+pkgname=intellij-idea-community-bin
+pkgver=2026.1.3
 pkgrel=1
-_buildver=252.27397.103
-_majorver=2025.2.4
-pkgver="${_majorver}_${_buildver}"
-jbr_ver=21.0.6
-jbr_build=aarch64-b895
-jbr_minor=109
-arch=('x86_64' 'aarch64')
-pkgdesc="an open-source IDE for Java, Groovy, Kotlin, Scala and Android development. "
+pkgdesc="IntelliJ IDEA Community Edition – JetBrains IDE for JVM development"
+arch=('x86_64')
 url="https://www.jetbrains.com/idea/"
-license=('Apache-2.0')
-options=(!strip)
-conflicts=('intellij-idea-community-edition-jre' 'intellij-idea-community-edition')
-provides=('intellij-idea-community-edition' 'intellij-idea-community-edition-jre')
-backup=("opt/${_pkgname}/bin/idea64.vmoptions" "opt/${_pkgname}/bin/idea.properties")
-depends=('giflib' 'libxtst' 'libxrender')
-optdepends=(
-  # 'intellij-idea-ultimate-edition-jre: JetBrains custom JRE (Recommended)' 'java-environment: Required if intellij-idea-ultimate-edition-jre is not installed'
-  'libdbusmenu-glib: For global menu support'
-)
-source=(
-  "${_pkgname}.desktop"
-  "LICENSE-${pkgver}::https://raw.githubusercontent.com/JetBrains/intellij-community/refs/heads/master/LICENSE.txt"
-)
-source_x86_64=("https://download.jetbrains.com/idea/ideaIC-${_majorver}.tar.gz")
-source_aarch64=("https://download.jetbrains.com/idea/ideaIC-${_majorver}-aarch64.tar.gz"
-                "https://cache-redirector.jetbrains.com/intellij-jbr/jbr-$jbr_ver-linux-$jbr_build.$jbr_minor.tar.gz"
-                 "fsnotifier-${pkgver}::https://github.com/JetBrains/intellij-community/raw/master/bin/linux/aarch64/fsnotifier")
-sha256sums=('64746b03736aa97c0917ac8b96d135dae7891834b845e2b0b8442b1b5c2c48ab'
-            'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('3c152de654fa948e12e5fba4c04ed0200e472556a8081ddc2d4c22e5831d6020')
-sha256sums_aarch64=('7d7a7d54eb55b13206ead9c3ab115b05998a0a510c13ebf0b33541270112523c'
-                    '04fbf6d6a0e15f8bc0ae8ff9fdcf80995eb2ce6be1ef6f543618ba66d86498e5'
-                    'aa812c5acac06435217b9018aa3e187a3546ea8d3cf136481a2d50aee4b9b23a')
+license=('Apache')
+depends=('java-runtime')
+optdepends=('git: version control integration')
+provides=('intellij-idea-community')
+conflicts=('intellij-idea-community')
 
-prepare() {
-  # # Extract the JRE from the main pacakge
-  [ -d "$srcdir/jbr" ] && rm -rf "$srcdir"/jbr
-
-  # https://youtrack.jetbrains.com/articles/IDEA-A-48/JetBrains-IDEs-on-AArch64#linux
-  if [ "${CARCH}" == "aarch64" ]; then
-    cp -a "$srcdir/jbr-${jbr_ver}-linux-${jbr_build}.${jbr_minor}" "$srcdir"/jbr
-    cp -f "fsnotifier-${pkgver}" "$srcdir/idea-IC-$_buildver/bin/fsnotifier"
-    chmod +x "$srcdir/idea-IC-$_buildver/bin/fsnotifier"
-    rm -rf "$srcdir/idea-IC-$_buildver/jbr"
-  else
-    mv "$srcdir/idea-IC-$_buildver/jbr" "$srcdir"/jbr
-  fi
-}
+source=("idea-$pkgver.tar.gz::https://github.com/JetBrains/intellij-community/releases/download/idea%2F${pkgver}/idea-${pkgver}.tar.gz")
+sha256sums=('54d7938d7d892fc738890986b74115cf4ed11d7e74bac6888e912ecd783db837')
 
 package() {
-  install -d "$pkgdir/opt/$_pkgname" "$pkgdir/usr/bin"
-  mv "idea-IC-${_buildver}/"* "$pkgdir/opt/${_pkgname}"
-  mv "$srcdir"/jbr "$pkgdir/opt/${_pkgname}"
+    local srcdir_idea
+    srcdir_idea="$(fd -t d '^idea-' "$srcdir" | head -n1)"
 
-  # https://youtrack.jetbrains.com/issue/IDEA-185828
-  chmod +x "$pkgdir/opt/${_pkgname}/plugins/maven/lib/maven3/bin/mvn"
+    if [[ -z "$srcdir_idea" ]]; then
+        printf "ERROR: IntelliJ directory not found in srcdir\n"
+        exit 1
+    fi
 
-  ln -s "/opt/$_pkgname/bin/idea" "$pkgdir/usr/bin/$_pkgname"
-  install -D -m644 "$srcdir/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
-  install -D -m644 "$pkgdir/opt/${_pkgname}/bin/idea.svg" "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
+    install -d "$pkgdir/opt/intellij-idea-community"
+    cp -r "$srcdir_idea"/* "$pkgdir/opt/intellij-idea-community/"
 
-  install -Dm644 "$srcdir/LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+    install -d "$pkgdir/usr/bin"
+    ln -s /opt/intellij-idea-community/bin/idea.sh "$pkgdir/usr/bin/idea-community"
 
-  # workaround FS#40934
-  sed -i 's|lcd|on|'  "$pkgdir/opt/$_pkgname/bin/"*.vmoptions
+    install -d "$pkgdir/usr/share/applications"
+    cat > "$pkgdir/usr/share/applications/intellij-idea-community.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=IntelliJ IDEA Community
+Exec=/opt/intellij-idea-community/bin/idea.sh
+Icon=/opt/intellij-idea-community/bin/idea.png
+Terminal=false
+Categories=Development;IDE;
+EOF
 }
-
-# vim:set ts=2 sw=2 et:
