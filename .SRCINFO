@@ -1,6 +1,6 @@
 pkgbase = typst-studio-bin
 	pkgdesc = Desktop Typst editor with Tinymist LSP and live HTML preview
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/DeathKhan/typst-studio
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = typst-studio-bin
 	provides = typst-studio
 	conflicts = typst-studio
 	options = !debug
-	source = typst-studio-bin-0.1.0.AppImage::https://github.com/DeathKhan/typst-studio/releases/download/v0.1.0/Typst.Studio-0.1.0.AppImage
+	source = typst-studio-bin-0.2.0.AppImage::https://github.com/DeathKhan/typst-studio/releases/download/v0.2.0/typst-studio-0.2.0.AppImage
 	source = typst-studio.desktop
-	source = icon.png::https://github.com/DeathKhan/typst-studio/raw/v0.1.0/build/icon.png
-	sha256sums = 890f050d2227c6204a22d377750b4fa760820f075e0276c6b015d952a63fb0df
+	source = icon.png::https://github.com/DeathKhan/typst-studio/raw/v0.2.0/build/icon.png
+	sha256sums = 92a93e11929b7ca7ed62add92cfd55d62591356efb500383d450a999c7db8a5e
 	sha256sums = f34ee73cc0aef77b2d210aee0ce3cfdd305c3ee05ae995aaaaa61a9e2ff6b6cf
 	sha256sums = f0f39b2bc53cc60c4a461364ccbd21b9773daf4d8134070c1bfbefad08a05b21
 
