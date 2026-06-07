@@ -1,7 +1,7 @@
 pkgbase = owovrc-cli-bin
 	pkgdesc = Yet another VRChat integration for the OWO Skin haptic vest.
 	pkgver = beta7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sync1211/owoskin-vrc
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,7 +15,7 @@ pkgbase = owovrc-cli-bin
 	source = owovrc-128x128.png
 	source = owovrc-64x64.png
 	source = owovrc-32x32.png
-	sha256sums = dcda210554894cee8705d89b891635a182dfd4b9dab521282ba9b646cb3418a6
+	sha256sums = c6c4b943b594ac852de2a5ba15a2a04b16498c6cad6177cc2f40afdbb4bca313
 	sha256sums = dd893c8b0852163fe16497a8662dac9324270f388fd988c51727aa24731d12a0
 	sha256sums = 1420bbf64c57cba914b7f5eb89e9b6191feb294726aec291f3571295ee0b06a9
 	sha256sums = 944e88525cfd75ea76392832adba591835a49d7998e63bd4a7efb080b8fdbc51
