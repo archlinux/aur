@@ -1,0 +1,40 @@
+pkgbase = transito-git
+	pkgdesc = A data-provider-agnostic public transportation app that lets you route between locations using openly available public GTFS feeds.
+	pkgver = 0.10.0.r570.20250628.6aee3c3
+	pkgrel = 1
+	url = http://mr.lrdu.org/transito
+	arch = aarch64
+	arch = armv7h
+	arch = armv8h
+	arch = loong64
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go>=1.24.0
+	makedepends = sh
+	makedepends = libglvnd
+	makedepends = libxkbcommon
+	makedepends = libxkbcommon-x11
+	makedepends = mesa
+	makedepends = sqlite3
+	makedepends = vulkan-headers
+	makedepends = wayland
+	depends = glibc
+	depends = libEGL.so
+	depends = libwayland-client.so
+	depends = libwayland-cursor.so
+	depends = libwayland-egl.so
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxfixes
+	depends = libxkbcommon.so
+	depends = libxkbcommon-x11.so
+	provides = transito=0.10.0.r570.20250628.6aee3c3
+	conflicts = transito
+	conflicts = transito-bin
+	source = transito::git+https://git.sr.ht/~mil/transito
+	sha256sums = SKIP
+
+pkgname = transito-git
