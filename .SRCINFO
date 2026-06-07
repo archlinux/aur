@@ -1,0 +1,21 @@
+pkgbase = shrike-walkman
+	pkgdesc = Retro Walkman/Boombox with shuffle, recording, internet radio with search, custom stations
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://shrikelinuxug.org
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = gtk3
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-libav
+	optdepends = ttf-iosevka: Crisp monospace button icons
+	optdepends = pulseaudio: System audio recording
+	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/v1.5.tar.gz
+	md5sums = SKIP
+
+pkgname = shrike-walkman
