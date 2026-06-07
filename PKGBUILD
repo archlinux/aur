@@ -1,8 +1,8 @@
 # Maintainer: jsjolund <j dot sjolund at gmail dot com>
 
 pkgname=zabbix-agent2-plugin-nvidia-gpu
-pkgver=7.4.10
-pkgrel=2
+pkgver=7.4.11
+pkgrel=1
 epoch=1
 pkgdesc="Loadable plugin for Nvidia GPU integration in Zabbix agent2"
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(
 	"$url/$pkgname-$pkgver.tar.gz"
 	"nvidia.conf"
 )
-sha256sums=("38037a05c8c5022df5258a39ee8f1ff714117e0158ccd3a8ab36301c724417bd"
+sha256sums=("cbd61e6889e60dd5b6f3d4d7e8a5c31dfbecd72feee5e96922c30efca838484a"
             "a1bc60b828016590d0606bc194c393e792c257114addb9347969d79711ac0f2d")
 
 build() {
