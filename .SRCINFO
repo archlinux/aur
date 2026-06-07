@@ -1,0 +1,20 @@
+pkgbase = shrike-radio
+	pkgdesc = Radio, Local Music/Video Player, Fixed Visualizer + Spacebar Control
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://shrikelinuxug.org
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = gtk3
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-libav
+	depends = yt-dlp
+	depends = wget
+	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/main.tar.gz
+	md5sums = SKIP
+
+pkgname = shrike-radio
