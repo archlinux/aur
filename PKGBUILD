@@ -2,7 +2,11 @@
 # Contributor: fabillo <fabillo@archlinux.org>
 
 pkgname=intiface-central
-pkgver=3.0.1
+pkgver=3.1.0+42
+_btp_commit=893b03c253dc22dc3ffffc2f9dc748da9ad9c14a
+_btp_dart_commit=6d91665a3e5faa389e9a626c9b0bb79c6f126d57
+_int_ifc_commit=77cb0ff9174a3f82a989a535976b90a14c371203
+_fvm_ver=3.44.1
 pkgrel=1
 pkgdesc="Intiface Central (Buttplug Frontend) Application for Desktop and Mobile "
 arch=('x86_64')
@@ -10,18 +14,16 @@ url="https://intiface.com/central/"
 license=('GPL-3.0-only')
 depends=('gtk3' 'openssl' 'bash' 'hicolor-icon-theme' 'libayatana-appindicator')
 makedepends=('rustup' 'fvm' 'cmake' 'ninja' 'unzip')
-source=("buttplug::git+https://github.com/buttplugio/buttplug#commit=1c5dbb5c9c8e7f04afe57c67a4924d240be73890"
-    "buttplug_dart::git+https://github.com/buttplugio/buttplug_dart#commit=6d91665a3e5faa389e9a626c9b0bb79c6f126d57"
-    "$pkgname::git+https://github.com/intiface/intiface-central#tag=v${pkgver}+37"
-    "intiface-engine-flutter-bridge-license.md::https://raw.githubusercontent.com/intiface/$pkgname/v$pkgver/intiface-engine-flutter-bridge/LICENSE.md"
+source=("buttplug::git+https://github.com/buttplugio/buttplug#commit=${_btp_commit}"
+    "buttplug_dart::git+https://github.com/buttplugio/buttplug_dart#commit=${_btp_dart_commit}"
+    "${pkgname}::git+https://github.com/intiface/intiface-central#commit=${_int_ifc_commit}"
     'intiface_central.desktop'
     'run_intiface_central')
-sha512sums=('SKIP'
+sha256sums=('SKIP'
     'SKIP'
     'SKIP'
-    'f8ea2b3c07735021cd574e868f8433ed378049dbe42346d04c7488a62c28b267fdac04ce8a93ad9b01d1dc5fb7c32e6bbc5a35d1c03a84f440938d84b998853d'
-    '3163ea9db8867daf0fe35580ebbbce966b4a783462a149d5a3a6aea04145262fbbd3aaf3ce82c5addf0ff9ca7a7424daab7e564f72106083b1ba3605d02996de'
-    'c12f219a3de9b1587473c56bf999a0320980c9e4c9dcffa0b656fd82e1bd33e110054b52f6f6cade9815e222041f021c82ab8f0729bf21f75545b5d3fa096e32'
+    'b7169ffb0e258fb9fa91981c7ab862ee1308f168c8a61771efd2803e787ae586'
+    '7ded01ad0a04a0daf72bfdc3d1393cfa8dcc11aa64c9bba74eaa880f02eb652b'
 )
 
 prepare() {
@@ -30,7 +32,7 @@ prepare() {
     rustup set profile minimal
     rustup toolchain install stable
     rustup override set stable
-    fvm use 3.38.9 --force
+    fvm use $_fvm_ver --force
     fvm flutter config --enable-linux-desktop
 }
 
@@ -42,7 +44,6 @@ build() {
 package() {
     install -Dm755 "run_intiface_central" "$pkgdir/usr/lib/intiface_central/run_intiface_central"
     install -Dm644 "intiface_central.desktop" "$pkgdir/usr/share/applications/intiface_central.desktop"
-    install -Dm644 "intiface-engine-flutter-bridge-license.md" "$pkgdir/usr/share/licenses/$pkgname/intiface-engine-flutter-bridge-license.md"
 
     cd "$srcdir/$pkgname/build/linux/x64/release/bundle/"
     install -Dm755 "intiface_central" "$pkgdir/usr/lib/intiface_central/intiface_central"
