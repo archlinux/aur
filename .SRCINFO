@@ -1,23 +1,28 @@
 pkgbase = intel-advisor-standalone
-	pkgdesc = The standalone version of Intel Advisor
-	pkgver = 2020.u2
+	pkgdesc = Intel Advisor for oneAPI (standalone version) – design and analysis tool for performant code
+	pkgver = 2026.0.0.266
 	pkgrel = 1
-	url = https://software.intel.com/content/www/us/en/develop/tools/advisor.html
+	url = https://www.intel.com/content/www/us/en/developer/tools/oneapi/advisor.html
 	arch = x86_64
 	license = custom
-	makedepends = git
-	makedepends = gettext
 	depends = glibc
-	depends = attr
+	depends = qt6-base
+	depends = libxcb
+	depends = libxkbcommon
+	depends = at-spi2-atk
+	depends = gtk3
+	depends = level-zero-loader
+	optdepends = nss: GUI improvements
+	optdepends = xdg-utils: opening documentation
+	provides = intel-advisor=2026.0.0.266
 	conflicts = intel-advisor
-	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/16786/advisor_2020_update2.tar.gz
-	source = intel-advisor.png
+	noextract = intel-advisor-2026.0.0.266.sh
+	options = !strip
+	source = intel-advisor-2026.0.0.266.sh::https://registrationcenter-download.intel.com/akdlm/IRC_NAS/68057580-a03d-4490-87e2-b2a6092b6675/intel-advisor-2026.0.0.266_offline.sh
 	source = intel-advisor.desktop
-	source = license.txt
-	sha256sums = 96ed9a2a9cdda0ab64a535b321feb7ae6e62efefc9d93868bb1476c85973e132
-	sha256sums = fda3789f672fbb71402a26d5b06fe9845c433f17f17ad08d04470713b9043078
-	sha256sums = f2822853a9809c05663794291ee204c4f0867a140c511fc5fd9c8173ab12fa39
-	sha256sums = e13bba8c55cf874988dbb541d8a72f53dd0942fca48f49bfbe9d82174bb73808
+	source = intel-advisor.png
+	sha384sums = 02aa34c8fb76bf4e97a2d1bd1500f5f9ccce542c2cdf304b239298228663975dea8bd3a52a2297e1921a0975e4674014
+	sha384sums = 6d9ae2c2403aa397e5d6de4dcaa7090cf12358b5834a47e7ca56db2c613087eab20fff7c703233ebf2c7f8cd26b954c7
+	sha384sums = 5ee33b385752148cccaa82d6bb586c3e5ec7f272ca7f1a8cd5420392a5e4367ab4bed141b8621c9a360e5cad06a85f9a
 
 pkgname = intel-advisor-standalone
-
