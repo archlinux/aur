@@ -5,7 +5,7 @@
 # LICENSE file alongside it. The modulejail package it builds is licensed
 # under GPL-3.0-only by its upstream author (declared in license= below).
 pkgname=modulejail
-pkgver=1.3.6
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Proactively shrink Linux kernel-module attack surface by blacklisting unused modules'
 arch=('any')
@@ -13,8 +13,17 @@ url='https://github.com/jnuyens/modulejail'
 license=('GPL-3.0-only')
 depends=()
 optdepends=('kmod: provides modprobe, which consumes the generated blacklist file at runtime'
-            'util-linux: logger(1) for syslog integration')
+            'util-linux: logger(1) for syslog integration'
+            'mkinitcpio: enables the initramfs strip hook that --install-initramfs-hook drops'
+            'curl: required by --self-update (wget also works)')
 makedepends=('sequoia-sqv')
+# Pacman .install file: post_install / post_upgrade run
+#   `modulejail --install-initramfs-hook --yes` so the mkinitcpio strip
+# hook and pacman trigger get deployed on every install. pre_remove
+# removes them before the binary itself goes. Content lives at
+# packaging/aur/modulejail.install in the upstream repo and is shipped
+# into the AUR repo alongside this PKGBUILD by scripts/publish-aur.sh.
+install=$pkgname.install
 # Source filenames deliberately avoid the .sig/.sign/.asc extensions so
 # makepkg's built-in gpg verifier does NOT auto-trigger; the sole verifier
 # is sequoia-sqv invoked from prepare() (per AUR comment from Velocifyer
@@ -24,7 +33,7 @@ makedepends=('sequoia-sqv')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tarball-signature::${url}/releases/download/v${pkgver}/v${pkgver}.tar.gz.sig"
         'modulejail-signing-key.gpg')
-sha256sums=('584823480589a064446af50217ab77e160568f8e56d9be5275d8a5dc5d4b85fb'
+sha256sums=('d02cf18d830b28e7eb57585de87e4406cfad47b0edc87b306e8f02f885c2b46b'
             'SKIP'
             '5b4f8bef3957b8d8f91475aeb40f398dc87b550b7bdc8458b72661112b033433')
 

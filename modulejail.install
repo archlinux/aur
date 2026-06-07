@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: 0BSD
+# shellcheck shell=bash
+# pacman install hooks for modulejail. Installs the mkinitcpio strip hook
+# (and the matching pacman trigger) on install/upgrade so the modulejail
+# blacklist never gets baked into rebuilt initramfs cpios. See upstream
+# gh #19 and docs/DEFENSE-IN-DEPTH.md for the threat-model framing.
+#
+# The hook content itself comes from `modulejail --install-initramfs-hook
+# --yes`, which is the same source-of-truth used by the .deb postinst and
+# the .rpm %post. Best-effort: a failure here does NOT roll back pacman.
+
+post_install() {
+    if ! /usr/bin/modulejail --install-initramfs-hook; then
+        cat <<EOF
+modulejail: warning: --install-initramfs-hook failed during post_install.
+modulejail: This is non-fatal; the modulejail binary is still installed.
+modulejail: Re-run manually after fixing the underlying issue:
+modulejail:     sudo modulejail --install-initramfs-hook
+EOF
+    fi
+}
+
+post_upgrade() {
+    # Re-run on every upgrade so hook content stays in sync with the
+    # newly-installed modulejail binary (heredoc content can evolve).
+    post_install
+}
+
+pre_remove() {
+    # Uninstall the hook while the modulejail binary is still present.
+    if ! /usr/bin/modulejail --uninstall-initramfs-hook; then
+        echo "modulejail: warning: --uninstall-initramfs-hook failed during pre_remove" >&2
+    fi
+}
