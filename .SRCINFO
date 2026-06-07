@@ -1,6 +1,6 @@
 pkgbase = reinschrift
 	pkgdesc = Manage your todos in plain Markdown — native GNOME app and CLI
-	pkgver = 0.24.7
+	pkgver = 0.24.8
 	pkgrel = 1
 	url = https://github.com/danst0/ReinschriftTodo
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = reinschrift
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
-	source = reinschrift-0.24.7.tar.gz::https://github.com/danst0/ReinschriftTodo/archive/refs/tags/v0.24.7.tar.gz
-	sha256sums = 139aef8713a9a8fb900fb94ab487762b59c23a55471e8d3ad3730a188449bd79
+	source = reinschrift-0.24.8.tar.gz::https://github.com/danst0/ReinschriftTodo/archive/refs/tags/v0.24.8.tar.gz
+	sha256sums = 2d733330580008a616971ac8492ea242491e801bcae719dbb52b795f9dba91d8
 
 pkgname = reinschrift
