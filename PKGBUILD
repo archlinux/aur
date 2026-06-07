@@ -1,15 +1,10 @@
 # Maintainer: CrystalSky <hello@crystalsky.dev>
 #
-# Reference PKGBUILD for the AUR package robot36-linux.
-# Copy to your AUR checkout at: https://aur.archlinux.org/robot36-linux.git
-#
-# Build:  makepkg -si
-# Regenerate .SRCINFO: makepkg --printsrcinfo > .SRCINFO
-# Upload: makepkg --srcinfo && git add -A && git commit && git push
+# PKGBUILD for the AUR package robot36-linux.
 
 pkgname=robot36-linux
 pkgdesc="SSTV Decoder for Linux - decodes Slow Scan Television images from audio input"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 arch=('x86_64')
 url="https://git.crystalsky.dev/CrystalSky/robot36-linux"
@@ -28,19 +23,15 @@ makedepends=(
     'pkg-config'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-# Replace SKIP with the actual sha256sum when cutting a release
 sha256sums=('SKIP')
-# For git-based PKGBUILD (tracks main branch), use instead:
-# source=("${pkgname}::git+${url}.git")
-# sha256sums=('SKIP')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$srcdir"/*/
     ./build.sh
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$srcdir"/*/
 
     # Jar
     install -Dm644 build/robot36.jar \
