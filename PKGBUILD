@@ -1,5 +1,5 @@
 pkgname=itarmykit-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Desktop shell for BaseTool load-testing workflows"
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=('itarmykit')
 conflicts=('itarmykit')
 options=('!debug')
 source=("itarmykit-${pkgver}-amd64.deb::https://github.com/armyuait-rgb/itarmykit-basetool-releases/releases/download/v${pkgver}/itarmykit-linux-amd64.deb")
-sha256sums=('52f60a58c6651108465e644a501d9d1326c3d9ac8e6785a9435a53f1f91b4896')
+sha256sums=('7697a52fbbfe327dc8557e544a9292b4e07388cd5e559686b95951628e3b895d')
 
 latestver() {
   gh api repos/armyuait-rgb/itarmykit-basetool-releases/releases --jq \
