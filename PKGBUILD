@@ -5,7 +5,7 @@ pkgver=1.2.0
 pkgrel=1
 pkgdesc="GUI tool to find and remove unused Arch Linux packages — orphans, pacman cache, Flatpak runtimes, broken packages, AUR build deps, Steam/Proton junk, and more"
 arch=('any')
-url="https://github.com/anomalyco/unused-pkg-remover"
+url="https://github.com/dressedinblack5/unused-pkg-remover"
 license=('MIT')
 depends=(
   'python'
@@ -29,18 +29,20 @@ optdepends=(
   'heroic-games-launcher: Stale launcher runner cleaning'
   'bottles: Stale launcher runner cleaning'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/anomalyco/$pkgname/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dressedinblack5/$pkgname/archive/main.tar.gz"
         "unused-pkg-remover.desktop")
 sha256sums=('SKIP'
             'SKIP')
 
+_sourcedir="$srcdir/$pkgname-main"
+
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$_sourcedir"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$_sourcedir"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 assets/unused-pkg-remover.png \
