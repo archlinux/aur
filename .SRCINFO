@@ -1,0 +1,18 @@
+pkgbase = robot36-linux
+	pkgdesc = SSTV Decoder for Linux - decodes Slow Scan Television images from audio input
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://git.crystalsky.dev/CrystalSky/robot36-linux
+	arch = x86_64
+	license = ISC
+	makedepends = java-environment
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = java-runtime
+	depends = alsa-lib
+	optdepends = pipewire: PipeWire audio backend
+	optdepends = jack: JACK audio backend
+	source = robot36-linux-0.1.1.tar.gz::https://git.crystalsky.dev/CrystalSky/robot36-linux/archive/v0.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = robot36-linux
