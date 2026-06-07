@@ -1,7 +1,7 @@
 pkgbase = whoisthat
 	pkgdesc = Modern terminal-based VPN client with Xray-core backend
-	pkgver = 0.1.11
-	pkgrel = 7
+	pkgver = 0.1.12
+	pkgrel = 1
 	url = https://github.com/kvunoff/whoisthat
 	install = whoisthat.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = whoisthat
 	depends = xray
 	optdepends = tun2socks: for TUN mode VPN support
 	optdepends = tun2socks-bin: for TUN mode VPN support (alternative)
-	source = whoisthat-0.1.11.tar.gz::https://github.com/kvunoff/whoisthat/archive/refs/tags/v0.1.11.tar.gz
+	source = whoisthat-0.1.12.tar.gz::https://github.com/kvunoff/whoisthat/archive/refs/tags/v0.1.12.tar.gz
 	sha256sums = SKIP
 
 pkgname = whoisthat
