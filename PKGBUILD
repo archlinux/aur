@@ -14,7 +14,7 @@
 # Contributor: txtsd
 
 pkgname=python-mempalace
-pkgver=3.3.5
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='The highest-scoring AI memory system, with 30x context compression and a temporal knowledge graph.'
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 provides=('mempalace')
 conflicts=('mempalace')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:7:1}/${pkgname:7}/${pkgname:7}-$pkgver.tar.gz")
-sha256sums=('6ff74f22fcb801749707dea31fcf7a1903bdac94411e737652003ab362d3ca8e')
+sha256sums=('3947a4331166c993ea2ba13b57da479e1da1d09ed056bafd570e4db5f84436ab')
 
 build() {
     cd "${srcdir}/${pkgname:7}-${pkgver}"
