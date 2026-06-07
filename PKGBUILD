@@ -70,8 +70,6 @@ build() {
 }
 
 package() {
-    LD_PRELOAD="" "${srcdir}/intel-advisor-${pkgver}_offline/install.sh" --silent --eula accept --action remove --ignore-errors || true
-
     LD_PRELOAD="" "${srcdir}/intel-advisor-${pkgver}_offline/install.sh" \
         --silent \
         --eula accept \
