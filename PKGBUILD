@@ -1,6 +1,7 @@
+# Maintainer: Capricornus007 <sihaogang at gmail dot com>
 pkgname=xfce4-smartbookmark-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=0.4.6.r22.g6be4a75
+pkgver=xfce4.smartbookmark.plugin.0.6.0.r119.g592b830
 pkgrel=1
 pkgdesc='Plugin for the Xfce4 panel that lets you quicksearch from selected websites'
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ provides=('xfce4-smartbookmark-plugin')
 makedepends=('xfce4-dev-tools' 'intltool' 'git')
 options=('!libtool')
 install=xfce4-smartbookmark-plugin.install
-source=('git://git.xfce.org/panel-plugins/xfce4-smartbookmark-plugin')
+source=('git+https://gitlab.xfce.org/panel-plugins/xfce4-smartbookmark-plugin')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,21 +23,13 @@ pkgver() {
     }
 
 build() {
-	cd "$_pkgname"/
+  meson setup --prefix=/usr \
+              --buildtype=plain \
+              "${pkgname%-git}" build
 
-	./autogen.sh --prefix=/usr \
-		--sysconfdir=/etc \
-		--libexecdir=/usr/lib \
-		--localstatedir=/var \
-		--disable-static \
-		--enable-maintainer-mode \
-		--disable-debug
-	make
+  meson compile -C build
 }
 
 package() {
-	cd "$_pkgname"
-
-	make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" meson install -C build
 }
-
