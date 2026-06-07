@@ -1,6 +1,6 @@
 pkgbase = vimyt-bin
 	pkgdesc = TUI for YT Music with vim keybindings
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Sadoaz/vimyt
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = vimyt-bin
 	depends = glibc
 	provides = vimyt
 	conflicts = vimyt
-	source = README-1.0.1.md::https://raw.githubusercontent.com/Sadoaz/vimyt/v1.0.1/README.md
-	source = LICENSE-1.0.1::https://raw.githubusercontent.com/Sadoaz/vimyt/v1.0.1/LICENSE
+	source = README-1.0.2.md::https://raw.githubusercontent.com/Sadoaz/vimyt/v1.0.2/README.md
+	source = LICENSE-1.0.2::https://raw.githubusercontent.com/Sadoaz/vimyt/v1.0.2/LICENSE
 	sha256sums = 1b53c84d937c9d0da90bbd33acf99e3cf3ee9a4648e7155ed53403c136762c77
 	sha256sums = e744fab298a55e291cb494d25a96ae70eadd4861dde0f6d64e89112e1ca128fb
-	source_x86_64 = vimyt-x86_64-1.0.1::https://github.com/Sadoaz/vimyt/releases/download/v1.0.1/vimyt-linux-amd64
-	sha256sums_x86_64 = 20277a508f40af6029221f33ae567555bdc9d44fde9c151c6ab086789c285a89
-	source_aarch64 = vimyt-aarch64-1.0.1::https://github.com/Sadoaz/vimyt/releases/download/v1.0.1/vimyt-linux-arm64
-	sha256sums_aarch64 = 46460e8d0311b4df6832021a4a882a28c89f6c2734b0115bf79e27a25718396b
+	source_x86_64 = vimyt-x86_64-1.0.2.tgz::https://github.com/Sadoaz/vimyt/releases/download/v1.0.2/vimyt-v1.0.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = 76d885aacb392c42adfe41a5b1c5067c962803e2ed67d1641cd2885182c6afa3
+	source_aarch64 = vimyt-aarch64-1.0.2.tgz::https://github.com/Sadoaz/vimyt/releases/download/v1.0.2/vimyt-v1.0.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9c7bd10c54ff7693672f2a05eceb22c37e2fce930d87d20b2b25cde0210c28a4
 
 pkgname = vimyt-bin
