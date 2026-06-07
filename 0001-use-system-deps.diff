@@ -1,18 +1,19 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index db76e90..8dafda6 100644
+index db76e90..45b68dc 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -18,6 +18,9 @@ endif()
+@@ -18,6 +18,10 @@ endif()
  
  find_package(PkgConfig REQUIRED)
  
 +find_package(Eigen3 3.4.0 REQUIRED)
 +find_package(nlohmann_json 3.12.0 REQUIRED)
 +find_package(argparse REQUIRED)
++find_package(qjs REQUIRED) # >= 0.14.0 in deps.json, but version is not supported in extra/quickjs-ng
  
  include_directories(SYSTEM third_party)
  add_subdirectory(third_party)
-@@ -26,7 +29,7 @@ option(BUILD_WESCENE "Build the wescene (Wallpaper Engine *scene*) renderer" ON)
+@@ -26,7 +30,7 @@ option(BUILD_WESCENE "Build the wescene (Wallpaper Engine *scene*) renderer" ON)
  option(BUILD_WEWEB   "Build the weweb (Wallpaper Engine *web*) renderer"     ON)
  
  if(BUILD_WEWEB)
@@ -22,7 +23,7 @@ index db76e90..8dafda6 100644
  
  add_subdirectory(src)
 diff --git a/deps.json b/deps.json
-index fdb192f..23a0bb9 100644
+index fdb192f..151ad46 100644
 --- a/deps.json
 +++ b/deps.json
 @@ -1,27 +1,4 @@
@@ -83,10 +84,22 @@ index fdb192f..23a0bb9 100644
    {
      "dest": "build/_flatpak_deps/rstd-src",
      "disable-shallow-clone": true,
-@@ -88,16 +42,5 @@
-       "name": "quickjs",
+@@ -76,28 +30,5 @@
+       "name": "wavsen",
        "exclude_from_all": true
      }
+-  },
+-  {
+-    "dest": "build/_flatpak_deps/quickjs-src",
+-    "disable-shallow-clone": false,
+-    "tag": "v0.14.0",
+-    "commit": "3c051980ab7e783dfbfb1c70c014ce5e05ecf24c",
+-    "type": "git",
+-    "url": "https://github.com/quickjs-ng/quickjs.git",
+-    "x-cmake": {
+-      "name": "quickjs",
+-      "exclude_from_all": true
+-    }
 -  },
 -  {
 -    "dest": "build/_flatpak_deps/cef-src",
@@ -99,7 +112,9 @@ index fdb192f..23a0bb9 100644
 -      "source_subdir": "cmake-noop"
 -    }
    }
- ]
+-]
++]
+\ No newline at end of file
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index 0c922de..04ad44c 100644
 --- a/src/CMakeLists.txt
