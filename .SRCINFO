@@ -1,13 +1,13 @@
 pkgbase = realitlscanner
 	pkgdesc = A TLS server scanner for Reality
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/XTLS/RealiTLScanner
 	arch = x86_64
 	license = MPL2
 	makedepends = go
 	depends = glibc
-	source = RealiTLScanner-0.2.1.tar.gz::https://github.com/XTLS/RealiTLScanner/archive/v0.2.1.tar.gz
-	sha256sums = cd9da78b6922053f51dcb318b8f258c80d3a08f708a96a0baa66bf86bb907013
+	source = RealiTLScanner-0.2.3.tar.gz::https://github.com/XTLS/RealiTLScanner/archive/v0.2.3.tar.gz
+	sha256sums = 55c389bea50e2a26c2965d99a8666c45d81e0f7ab70e57c32aaf689a53222edd
 
 pkgname = realitlscanner

@@ -2,7 +2,7 @@
 
 pkgname=realitlscanner
 _pkgname=RealiTLScanner
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A TLS server scanner for Reality "
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MPL2')
 depends=('glibc')
 makedepends=('go')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('cd9da78b6922053f51dcb318b8f258c80d3a08f708a96a0baa66bf86bb907013')
+sha256sums=('55c389bea50e2a26c2965d99a8666c45d81e0f7ab70e57c32aaf689a53222edd')
 build() {
     cd "${srcdir}"/"${_pkgname}-${pkgver}"/
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
