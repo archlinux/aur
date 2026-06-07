@@ -1,0 +1,16 @@
+pkgbase = shrike-service-manager
+	pkgdesc = A simple GTK3 GUI to manage systemd services
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://shrikelinuxug.org
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = gtk3
+	depends = polkit
+	depends = systemd
+	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/main.tar.gz
+	md5sums = SKIP
+
+pkgname = shrike-service-manager
