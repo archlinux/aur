@@ -1,6 +1,6 @@
 pkgbase = mov-watch
 	pkgdesc = Terminal-based movie and TV show streaming
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/leoallday/mov-watch
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = mov-watch
 	depends = fzf
 	provides = mov-watch
 	conflicts = mov-watch
-	source = https://github.com/leoallday/mov-watch/archive/refs/tags/v2.3.0.tar.gz
+	source = https://github.com/leoallday/mov-watch/archive/refs/tags/v2.3.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = mov-watch
