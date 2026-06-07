@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 
 pkgname=zapret2
-pkgver=0.9.5.2
+pkgver=1.0
 pkgrel=1
 pkgdesc="Anti-DPI software"
 arch=('x86_64')
@@ -28,7 +28,7 @@ backup=(
 )
 install=$pkgname.install
 source=($pkgname::git+$url.git#tag=v$pkgver)
-sha256sums=('1dc5749e222523775e58150d95cfbf62f4c34ae06e678ab8661fc437522c40ed')
+sha256sums=('4831cac8abae28f1a51220f040f9ab0303eb978c4ba34e69d570991464606c27')
 
 prepare() {
   cd $pkgname/ipset
