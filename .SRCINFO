@@ -1,15 +1,16 @@
 pkgbase = mpvc-git
 	pkgdesc = A mpc-like control interface for mpv.
-	pkgver = 1.3.r24.g6890b36
+	pkgver = 1.8.fish.r0.gd3dda65
 	pkgrel = 1
 	url = https://github.com/lwilletts/mpvc
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
+	makedepends = git
 	depends = mpv
 	depends = socat
 	depends = bc
 	provides = mpvc
+	conflicts = mpvc
 	source = git+https://github.com/lwilletts/mpvc
 	md5sums = SKIP
 
