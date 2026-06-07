@@ -1,8 +1,8 @@
 # Maintainer: Jevgenijs Protopopovs <jevgenij@protopopov.lv>
 pkgname='kefir'
 pkgver='0.5.1'
-pkgrel='2'
-pkgdesc='C17/C23 language compiler for x86_64 systems'
+pkgrel='3'
+pkgdesc='(Package discontinued; to be removed in near future) C17/C23 language compiler for x86_64 systems'
 arch=('x86_64')
 provides=('kefir' 'kefir-debug')
 conflicts=('kefir' 'kefir-debug')

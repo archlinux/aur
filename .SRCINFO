@@ -1,7 +1,7 @@
 pkgbase = kefir
-	pkgdesc = C17/C23 language compiler for x86_64 systems
+	pkgdesc = (Package discontinued; to be removed in near future) C17/C23 language compiler for x86_64 systems
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kefir.protopopov.lv
 	arch = x86_64
 	license = GPL3
