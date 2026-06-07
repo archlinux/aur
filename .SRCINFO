@@ -17,9 +17,8 @@ pkgbase = gtcrn-ladspa-git
 	depends = onnxruntime-cpu
 	provides = gtcrn-ladspa
 	provides = ladspa-host
+	conflicts = gtcrn-ladspa
 	source = gtcrn-ladspa::git+https://github.com/biglinux/gtcrn-ladspa.git
 	sha512sums = SKIP
 
 pkgname = gtcrn-ladspa-git
-	provides = gtcrn-ladspa-r100.6ee156e
-	conflicts = gtcrn-ladspa

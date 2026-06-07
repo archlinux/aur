@@ -12,6 +12,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'onnxruntime-cpu')
 makedepends=('cargo' 'clang' 'git' 'python-onnx' 'python-onnxruntime-cpu' 'python-typing_extensions' 'rust')
 provides=("${_pkgname}" 'ladspa-host')
+conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/biglinux/gtcrn-ladspa.git")
 sha512sums=('SKIP')
 
@@ -39,9 +40,6 @@ build() {
 }
 
 package() {
-    provides=("${_pkgname}-${pkgver}")
-    conflicts=("${_pkgname}")
-
     cd "${_pkgname}/ladspa"
 
     install -Dm755 "target/release/libgtcrn_ladspa_ort.so" "${pkgdir}/usr/lib/ladspa/libgtcrn_ladspa.so"
