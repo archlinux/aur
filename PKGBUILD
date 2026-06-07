@@ -1,6 +1,6 @@
 # Maintainer: leoallday
 pkgname=mov-watch
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Terminal-based movie and TV show streaming"
 arch=('any')
