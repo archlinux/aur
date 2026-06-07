@@ -1,7 +1,7 @@
 pkgbase = kwin-dual-mode
 	pkgdesc = An easy to use, but flexible, wayland compositor. Patched with a dual-mode monitor identifier hack
-	pkgver = 6.6.4
-	pkgrel = 1
+	pkgver = 6.6.5
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
@@ -74,18 +74,18 @@ pkgbase = kwin-dual-mode
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
 	optdepends = plasma-keyboard: virtual keyboard
-	provides = kwin=6.6.4
+	provides = kwin=6.6.5
 	provides = kwin-dual-mode
 	conflicts = kwin
-	source = https://download.kde.org/stable/plasma/6.6.4/kwin-6.6.4.tar.xz
-	source = https://download.kde.org/stable/plasma/6.6.4/kwin-6.6.4.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/6.6.5/kwin-6.6.5.tar.xz
+	source = https://download.kde.org/stable/plasma/6.6.5/kwin-6.6.5.tar.xz.sig
 	source = 0001-Dirty-hack-Add-native-resolution-to-display-edid-id.patch
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 3f9439760580a977d018daf4b35b62e5a1700def7b21c8dfbfc789d21378d7ad
+	sha256sums = 6c187ce7a5506090b438ef900103836fa0537674dde8b31e5b497ef321643cb4
 	sha256sums = SKIP
 	sha256sums = 2a4b657e82c4a602d46e83aad1d279be7337bed761861262fcbb4fcb50fed565
 

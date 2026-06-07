@@ -2,9 +2,9 @@
 
 pkgname=kwin-dual-mode
 _pkgname=kwin
-pkgver=6.6.4
+pkgver=6.6.5
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use, but flexible, wayland compositor. Patched with a dual-mode monitor identifier hack'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -83,7 +83,7 @@ optdepends=('plasma-keyboard: virtual keyboard')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         0001-Dirty-hack-Add-native-resolution-to-display-edid-id.patch)
-sha256sums=('3f9439760580a977d018daf4b35b62e5a1700def7b21c8dfbfc789d21378d7ad'
+sha256sums=('6c187ce7a5506090b438ef900103836fa0537674dde8b31e5b497ef321643cb4'
             'SKIP'
             '2a4b657e82c4a602d46e83aad1d279be7337bed761861262fcbb4fcb50fed565')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
@@ -91,6 +91,7 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1'  # Nicolas Fella <nicolas.fella@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+
 
 prepare() {
   patch -d $_pkgname-$pkgver -p1 < 0001-Dirty-hack-Add-native-resolution-to-display-edid-id.patch
