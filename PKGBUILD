@@ -1,6 +1,6 @@
 # Maintainer: Vadim Gerasimov <angryvadik@gmail.com>
 pkgname=media-server
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 # Web client release to bundle. Must share the same minor version as pkgver
 # (the project keeps the server and web-client minor versions in lockstep).
