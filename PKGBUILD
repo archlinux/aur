@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="TUI database client with a built-in MCP server"
 
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc' 'dbus')
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('6984515ffbf8f5db7b6c3d95ea4d84e687998fcd8636cecee14e10504f9f23e6')
+sha256sums_x86_64=('f408188d907d10ee3ad2182a3819c00ded3cb708e5165268c713280d612085ed')
 
 case ${CARCH} in
   ${arch[0]})
