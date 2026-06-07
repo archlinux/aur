@@ -1,6 +1,6 @@
 pkgbase = tmpo-bin
 	pkgdesc = A minimal CLI time tracker for developers
-	pkgver = 0.8.4
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://github.com/DylanDevelops/tmpo
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tmpo-bin
 	license = MIT
 	provides = tmpo
 	conflicts = tmpo
-	source_x86_64 = tmpo-x86_64-0.8.4.tgz::https://github.com/DylanDevelops/tmpo/releases/download/v0.8.4/tmpo_0.8.4_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 1e6b86c9146f0fb51cb6591ab0520a620bd91f996c66ec06e17fd6b5011f8999
-	source_aarch64 = tmpo-aarch64-0.8.4.tgz::https://github.com/DylanDevelops/tmpo/releases/download/v0.8.4/tmpo_0.8.4_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 41919df92373544af8b3e0a17f70101aadb57b14ca7db16ebdc789a762944ae0
+	source_x86_64 = tmpo-x86_64-0.8.5.tgz::https://github.com/DylanDevelops/tmpo/releases/download/v0.8.5/tmpo_0.8.5_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8f18017cd23422bb7dfde183eba7403b7bfc616514534b65d1690069d88ffed5
+	source_aarch64 = tmpo-aarch64-0.8.5.tgz::https://github.com/DylanDevelops/tmpo/releases/download/v0.8.5/tmpo_0.8.5_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 73771d2245937b770b8990046803b2aca882729c29fd15264d6c8e3a245a58be
 
 pkgname = tmpo-bin
