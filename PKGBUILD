@@ -8,11 +8,11 @@ depends=(gcc-libs)
 makedepends=(gcc-fortran git python sox subversion unzip wget)
 arch=('x86_64')
 url='https://github.com/kaldi-asr/kaldi'
-license=('APACHE')
+license=('Apache-2.0')
 options=(!lto)
-_commit='01aadd7c19372e3eacadec88caabd86162f33d69'
+_commit='e02e35f0254bb033fab73d1df99fc34123e31d56'
 source=("${url}/archive/${_commit}.tar.gz")
-sha256sums=('b7f6789806e5d8015bfaa1940cebfc5ed59251988f31dd162e2c4382ec523829')
+sha256sums=('fd77fa31e8f21ccbc050bd0ee9ab80e3e0d83ad827b4e5a4d9a4cf7144ff62c1')
 
 build () {
 	cd $srcdir/$_pkgname-$_commit/tools
