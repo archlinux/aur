@@ -1,7 +1,7 @@
 # Maintainer: lemon <lemonadorable@gmail.com>
 
 pkgname=micyou-git
-pkgver=1.3.4hotfix.r518.ge1257b3
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Turn your Android device into a wireless microphone (development version)"
 arch=('x86_64')
