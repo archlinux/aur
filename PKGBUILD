@@ -1,7 +1,7 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgname=zeroclaw-git
-pkgver=0.8.0.beta.2.r11.g40be7738f
+pkgver=0.8.0.beta.2.r86.ga486993c9
 pkgrel=1
 pkgdesc="Fast, small, and fully autonomous AI assistant infrastructure — deploy anywhere, swap anything (Rust, Git VCS version)"
 arch=('x86_64' 'aarch64' 'armv7h')
