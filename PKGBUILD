@@ -1,7 +1,7 @@
 # Maintainer: tioguda  <guda.flavio@gmail.com>
 
 pkgbase=bigbashview-framework
-pkgname=${pkgbase}-git
+pkgname=${pkgbase}
 _pkgname=bbv-framework
 pkgver=r53.34d776b
 pkgrel=2

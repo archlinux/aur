@@ -9,7 +9,7 @@ pkgbase = bigbashview-framework
 	source = git+https://github.com/biglinux/bbv-framework.git
 	sha512sums = SKIP
 
-pkgname = bigbashview-framework-git
+pkgname = bigbashview-framework
 	depends = geticons
 	provides = bbv-framework=r53.34d776b
 	conflicts = bbv-framework
