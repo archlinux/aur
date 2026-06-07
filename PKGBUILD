@@ -19,7 +19,7 @@ _url_github='https://github.com/mpryor/nothing-less'
 url="${_url_github}"
 
 provides=("${_execname}")
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-poetry' 'python-hatchling')
 depends=('python' 'python-textual' 'python-packaging' 'python-rich' 'python-pyperclip')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
