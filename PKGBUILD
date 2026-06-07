@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=portfolio-file-manager
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A minimalist file manager for those who want to use Linux mobile devices."
 arch=('any')
@@ -23,7 +23,7 @@ checkdepends=(
   'xorg-server-xvfb'
 )
 source=("git+https://github.com/tchx84/Portfolio.git#tag=v$pkgver")
-sha256sums=('246969b8bcabfb2b1077de1ab9ff1adc4be101c2dfce2caeadf5fb61ac8bfea1')
+sha256sums=('f0f060aa348587806bc6902284a0d1df07c36ca26ec29c5731abfa1d68e91ebd')
 
 build() {
   arch-meson Portfolio build
