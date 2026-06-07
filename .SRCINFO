@@ -1,6 +1,6 @@
 pkgbase = ezbar
 	pkgdesc = GPU-rendered status bar for Sway (iced + wlr-layer-shell), with pluggable widgets
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/birdayz/ezbar
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ezbar
 	optdepends = sway: the wlroots compositor ezbar targets
 	optdepends = noto-fonts-emoji: emoji glyphs in the bar
 	options = !lto
-	source = ezbar-0.1.9.tar.gz::https://github.com/birdayz/ezbar/archive/refs/tags/v0.1.9.tar.gz
-	sha256sums = f930c187047065d15b5a5bb1628aa3a631e5a861c425b60e3f27087125ef5724
+	source = ezbar-0.1.10.tar.gz::https://github.com/birdayz/ezbar/archive/refs/tags/v0.1.10.tar.gz
+	sha256sums = f664eb5bb2df30cc36756bb88e9e735dc90d6592865f61d547ba7ee7dd23dc65
 
 pkgname = ezbar
