@@ -1,6 +1,6 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=es40-git
-pkgver=0.65.r90.g58ff1d7
+pkgver=0.65.r141.gc0309bf
 pkgrel=1
 pkgdesc='AlphaServer ES40 emulator'
 arch=('x86_64' 'aarch64') # aarch64 not tested but there's a macOS version
@@ -17,6 +17,10 @@ sha512sums=('SKIP')
 pkgver() {
 	cd $pkgname
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	ln -fs ../../build/src/config.h $pkgname/src
 }
 
 build() {
