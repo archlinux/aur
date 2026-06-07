@@ -78,85 +78,46 @@ prepare() {
 }
 
 package() {
-    cd "$srcdir"
-
-    # Create directory structure
     install -d "$pkgdir/usr/lib"
     install -d "$pkgdir/usr/include"
     install -d "$pkgdir/usr/bin"
     install -d "$pkgdir/usr/share/MayaFlux"
     install -d "$pkgdir/usr/share/licenses/$pkgname"
 
-    # Extract the pre-built tarball
-    if [ -f "MayaFlux-${pkgver}-dev-linux-arch.tar.gz" ]; then
-        tar -xzf "MayaFlux-${pkgver}-dev-linux-arch.tar.gz" -C "$srcdir"
+    local extract_dir="${srcdir}/MayaFlux-${pkgver}-dev-extracted"
+    mkdir -p "$extract_dir"
+    tar -xzf "${srcdir}/MayaFlux-${pkgver}-dev-linux-arch.tar.gz" -C "$extract_dir"
+
+    [[ -d "$extract_dir/lib" ]]     && cp -r "$extract_dir/lib/"*     "$pkgdir/usr/lib/"
+    [[ -d "$extract_dir/include" ]] && cp -r "$extract_dir/include/"* "$pkgdir/usr/include/"
+    [[ -d "$extract_dir/bin" ]]     && cp -r "$extract_dir/bin/"*     "$pkgdir/usr/bin/"
+    [[ -d "$extract_dir/share" ]]   && cp -r "$extract_dir/share/"*   "$pkgdir/usr/share/"
+
+    if [[ -f "$extract_dir/LICENSE" ]]; then
+        install -Dm644 "$extract_dir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
 
-    # Copy files from extracted package
-    if [ -d "MayaFlux-${pkgver}-dev" ]; then
-        cd "MayaFlux-${pkgver}-dev"
-
-        # Copy libraries
-        if [ -d "lib" ]; then
-            cp -r lib/* "$pkgdir/usr/lib/"
-        fi
-
-        # Copy headers
-        if [ -d "include" ]; then
-            cp -r include/* "$pkgdir/usr/include/"
-        fi
-
-        # Copy binaries
-        if [ -d "bin" ]; then
-            cp -r bin/* "$pkgdir/usr/bin/"
-        fi
-
-        # Copy share content
-        if [ -d "share" ]; then
-            cp -r share/* "$pkgdir/usr/share/"
-        fi
-
-        # Copy license if available
-        if [ -f "LICENSE" ]; then
-            install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-        elif [ -f "LICENSE.txt" ]; then
-            install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-        fi
-
-        # Copy README if available
-        if [ -f "README.md" ]; then
-            install -Dm644 README.md "$pkgdir/usr/share/MayaFlux/README.md"
-        fi
-    else
-        echo "ERROR: Extracted MayaFlux directory not found"
-        return 1
+    if [[ -f "$extract_dir/README.md" ]]; then
+        install -Dm644 "$extract_dir/README.md" "$pkgdir/usr/share/MayaFlux/README.md"
     fi
 
-    # Create environment setup file
     install -d "$pkgdir/etc/profile.d"
-    cat >"$pkgdir/etc/profile.d/mayaflux.sh" <<'EOF'
+    cat > "$pkgdir/etc/profile.d/mayaflux.sh" <<'EOF'
 #!/bin/sh
-# MayaFlux environment configuration
-
 export MAYAFLUX_ROOT="/usr"
 export CMAKE_PREFIX_PATH="/usr:$CMAKE_PREFIX_PATH"
 EOF
-
     chmod 755 "$pkgdir/etc/profile.d/mayaflux.sh"
 
-    # Create pkg-config file if needed
-    if [ -f "$pkgdir/usr/lib/pkgconfig/MayaFlux.pc" ]; then
-        # Fix paths in pkg-config file if necessary
+    if [[ -f "$pkgdir/usr/lib/pkgconfig/MayaFlux.pc" ]]; then
         sed -i 's|^prefix=.*|prefix=/usr|' "$pkgdir/usr/lib/pkgconfig/MayaFlux.pc"
     fi
 
-    # Fix permissions
     find "$pkgdir/usr/lib" -type f -name "*.so*" -exec chmod 755 {} \;
     find "$pkgdir/usr/bin" -type f -exec chmod 755 {} \;
 
-    # RT scheduling limits
     install -d "$pkgdir/etc/security/limits.d"
-    cat > "$pkgdir/etc/security/limits.d/50-mayaflux.conf" << 'EOF'
+    cat > "$pkgdir/etc/security/limits.d/50-mayaflux.conf" <<'EOF'
 @mayaflux    -    rtprio     95
 @mayaflux    -    memlock    unlimited
 @mayaflux    -    nice       -19
