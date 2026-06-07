@@ -1,0 +1,21 @@
+pkgbase = reinschrift
+	pkgdesc = Manage your todos in plain Markdown — native GNOME app and CLI
+	pkgver = 0.23.9
+	pkgrel = 1
+	url = https://github.com/danst0/ReinschriftTodo
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = clang
+	depends = gtk4
+	depends = libadwaita
+	depends = alsa-lib
+	depends = openssl
+	depends = gcc-libs
+	depends = glibc
+	source = reinschrift-0.23.9.tar.gz::https://github.com/danst0/ReinschriftTodo/archive/refs/tags/v0.23.9.tar.gz
+	sha256sums = a43de2378d26a231fc91757cef9909beb5e4239657cced902fe66e1184cb8212
+
+pkgname = reinschrift
