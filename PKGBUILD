@@ -1,4 +1,4 @@
-pkgname=intellij-idea-community-bin
+pkgname=intellij-idea-community-edition-bin
 pkgver=2026.1.3
 pkgrel=1
 pkgdesc="IntelliJ IDEA Community Edition – JetBrains IDE for JVM development"
