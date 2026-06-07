@@ -2,9 +2,9 @@
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=upscayl-ncnn
-_pkgver=20240601-103425
+_pkgver=20251207-174704
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Fork of the NCNN implementation of Real-ESRGAN"
 arch=(x86_64)
 url="https://github.com/upscayl/upscayl-ncnn"
@@ -15,7 +15,7 @@ source=("git+https://github.com/upscayl/upscayl-ncnn.git#tag=${_pkgver}"
         cmake.patch
         "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-ubuntu.zip"
         )
-b2sums=('ad38145faafb1fe03e7ffec0bcd72da1b4f274a6eeaeba1e70981a1a30384e46543c2c23040e87842caa66bd35f3434f6bb9469e885211f5684ce765de4ec93d'
+b2sums=('b99442918a10a705ad62e6dda8e5c9f82d553b7d4f9c6e163ec6c082e5338400430f7f3cea42e5492a12f431ab5c110f5b9c65bd2280e2965c161f9f7ebc31fb'
         'f3460741da1310ba91193d16fd3d170e4b3244accd0eb451cde37f6a77cd6bc1da086ae62ae7ad943b08d23107ce67e6483941db0b9edbfdcea05217bcb98c47'
         'c16c05c343501272f5b4df6db7e7f8c592c4f8c8170ca0a0181c4433d1889ddea702d65fc134013bdaca302eeeab6e5b6d6fbad407adb7a2afa0acbefd6f4eca')
 
