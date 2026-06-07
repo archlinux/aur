@@ -13,12 +13,12 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MatiasGabrielAraoz/IwdT
 sha256sums=('46a16ba99fcb3ce461d7d2221824a41a7fc455cc6261d16e067a6bed62a3365d')
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "IwdTUI-${pkgver}"
 	cargo build --release --locked
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "IwdTUI/${pkgname}"
 	install -Dm755 "target/release/iwdtui" "$pkgdir/usr/bin/iwdtui"
 }
 
