@@ -2,7 +2,7 @@
 
 pkgname=opentubex-git
 _pkgname=OpenTubeX
-pkgver=r10568.384af5b94
+pkgver=r10590.77ca2cd97
 pkgrel=1
 pkgdesc='A fork of the open source desktop YouTube player FreeTube with additional features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -31,7 +31,6 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  export PNPM_CONFIG_STRICT_DEP_BUILDS=false
   pnpm install --frozen-lockfile
   pnpm build
 }
