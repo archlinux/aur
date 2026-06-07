@@ -1,6 +1,6 @@
 pkgbase = play-emu
 	pkgdesc = Play! is an experimental Playstation 2 emulator.
-	pkgver = 0.69
+	pkgver = 0.76
 	pkgrel = 1
 	url = https://purei.org/
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = play-emu
 	makedepends = ninja
 	makedepends = nlohmann-json
 	makedepends = vulkan-icd-loader
+	makedepends = vulkan-headers
 	depends = qt6-base
 	depends = openal
 	depends = glew
@@ -24,7 +25,7 @@ pkgbase = play-emu
 	depends = icu
 	depends = zlib
 	optdepends = vulkan-driver: packaged vulkan driver
-	source = play-emu::git+https://github.com/jpd002/Play-.git#tag=0.69
+	source = play-emu::git+https://github.com/jpd002/Play-.git#tag=0.76
 	source = git+https://github.com/jpd002/Play-Dependencies.git
 	source = git+https://github.com/jpd002/Play--Framework.git
 	source = git+https://github.com/jpd002/Play--CodeGen.git
@@ -35,7 +36,7 @@ pkgbase = play-emu
 	source = git+https://github.com/gulrak/filesystem.git
 	source = git+https://github.com/facebook/zstd.git
 	source = git+https://github.com/Cyan4973/xxHash.git
-	sha256sums = 06bcb6928939e703364de09581b4634c31847bbb7782cb0dbfccab123b90125c
+	sha256sums = 3fe23fef164a7eae2e301590bffaea335a56ab3221642b37c905d381bdf7a1a9
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

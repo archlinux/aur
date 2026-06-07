@@ -2,7 +2,7 @@
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=play-emu
-pkgver=0.69
+pkgver=0.76
 pkgrel=1
 pkgdesc="Play! is an experimental Playstation 2 emulator."
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(qt6-base openal glew
 
          # namcap implicit depends
          hicolor-icon-theme sqlite libglvnd bzip2 curl openssl libevdev glibc icu zlib)
-makedepends=(git cmake ninja nlohmann-json vulkan-icd-loader)
+makedepends=(git cmake ninja nlohmann-json vulkan-icd-loader vulkan-headers)
 optdepends=('vulkan-driver: packaged vulkan driver')
 source=("${pkgname%-git}::git+https://github.com/jpd002/Play-.git#tag=${pkgver}"
         "git+https://github.com/jpd002/Play-Dependencies.git"
@@ -25,7 +25,7 @@ source=("${pkgname%-git}::git+https://github.com/jpd002/Play-.git#tag=${pkgver}"
         "git+https://github.com/gulrak/filesystem.git"
         "git+https://github.com/facebook/zstd.git"
         "git+https://github.com/Cyan4973/xxHash.git")
-sha256sums=('06bcb6928939e703364de09581b4634c31847bbb7782cb0dbfccab123b90125c'
+sha256sums=('3fe23fef164a7eae2e301590bffaea335a56ab3221642b37c905d381bdf7a1a9'
             'SKIP'
             'SKIP'
             'SKIP'
