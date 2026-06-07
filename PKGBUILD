@@ -1,7 +1,7 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=hyprcorrect-bin
 _pkgname=hyprcorrect
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Keyboard-driven desktop spelling and typo corrector (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -25,8 +25,8 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64.tar.gz")
-sha256sums_x86_64=('dc0d7bb712793a0d2f2888f85722d9dd73a10cb92e9ff9472d2620975289cf4a')
-sha256sums_aarch64=('ede5461d511e4d692d0ebbb49537d63e92b1b60130c21419dd505674c2f9a186')
+sha256sums_x86_64=('409473e6bab96e16f09d4eca77ea066bc74772184f6d21a53b8e35ddd33536c6')
+sha256sums_aarch64=('97e48b220bc4d1378bf0729f2c97b5c08d9526d2f00aed25769e2aecbc637d0c')
 
 package() {
     # The release tarball is named after the host arch — $CARCH is set
