@@ -1,0 +1,9 @@
+# Shipped to the AUR repo by CI (release.yml `assets`). With assets present
+# the deploy action stages `git add --all`, so without this file the source
+# tarball downloaded by updpkgsums lands in the AUR commit — and aurweb
+# rejects blobs larger than ~488 KiB (DEC-145).
+*.tar.gz
+*.tar.xz
+*.tar.zst
+src/
+pkg/
