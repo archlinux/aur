@@ -5,6 +5,7 @@ pkgver=1.3.4hotfix.r518.ge1257b3
 pkgrel=1
 pkgdesc="Turn your Android device into a wireless microphone (development version)"
 arch=('x86_64')
+keywords=('android' 'audio' 'microphone' 'pipewire' 'pulseaudio' 'wireless')
 url="https://github.com/LanRhyme/MicYou"
 license=('GPL-3.0-only')
 depends=(
@@ -40,7 +41,7 @@ source=(
 )
 b2sums=(
   'SKIP'
-  '48b0b8b956dbb51c082b900d30fc541c22a67fc1334cf66fe06fe6b1a102850a63d03a7efd438e27384412f3cc38faece419268fd09457305d12bfc1cd1548f5'
+  'd72476f0b91fe3ec793d69b6a4c3546607149d1779a1e357284df23e7801aadff39fd5566a002fb4eb0d5393f8d03d4edc65408db8ddb485b8b912362015410e'
 )
 
 pkgver() {

@@ -6,4 +6,5 @@ Exec=micyou
 Icon=micyou
 Terminal=false
 Categories=AudioVideo;Audio;
+Keywords=android;audio;microphone;pipewire;pulseaudio;wireless;
 StartupWMClass=MicYou
