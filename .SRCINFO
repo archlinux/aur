@@ -21,7 +21,7 @@ pkgbase = biglinux-noise-reduction-pipewire
 	source = biglinux-noise-reduction-pipewire::git+https://github.com/biglinux/biglinux-noise-reduction-pipewire.git
 	sha512sums = SKIP
 
-pkgname = biglinux-noise-reduction-pipewire-git
+pkgname = biglinux-noise-reduction-pipewire
 	depends = pipewire>=1.4
 	depends = wireplumber>=0.5
 	depends = gtcrn-ladspa

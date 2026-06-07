@@ -2,7 +2,7 @@
 # Contributor: Bruno Goncalves <bigbruno@gmail.com>
 
 pkgbase=biglinux-noise-reduction-pipewire
-pkgname=${pkgbase}-git
+pkgname=${pkgbase}
 pkgver=r257.c64018b
 pkgrel=2
 arch=('x86_64')
