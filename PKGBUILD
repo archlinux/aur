@@ -1,6 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Alex S. <shantanna_at_hotmail_dot_com>
 # Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
+# Contributor: Marco Scardovi <scardracs_at_disroot_dot_org>
 
 # Hardware support is limited. Nvidia cards should work fine.
 # If you're running a hybrid setup, try with primusrun/optirun.
@@ -11,7 +12,7 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve-studio
-pkgver=20.3.3
+pkgver=21.0
 pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 arch=('x86_64')
@@ -25,7 +26,7 @@ makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 source=("file://DaVinci_Resolve_Studio_${pkgver}_Linux.zip"
         "davinci-control-panels-setup.sh")
-sha256sums=('8306b47a38dfe039ee626484b32d7fe1e6c55eafa716a5ae0192b6f56a805136'
+sha256sums=('195ace6db61c4becca683b6b625775aba31a79777ca0f0b7c439f625b04c82c1'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8')
 install="${pkgname}.install"
 options=('!strip')
@@ -44,7 +45,7 @@ prepare() {
   mv lib/* "${srcdir}/squashfs-root/libs"
   popd
 
-  rm -rf squashfs-root/installer squashfs-root/installer* squashfs-root/AppRun squashfs-root/AppRun*
+  rm -rf squashfs-root/{installer*,AppRun*,CentOSUpdate}
 
   while IFS= read -r -d '' _file; do
     chmod 0755 "${_file}"
@@ -56,37 +57,20 @@ prepare() {
   done < <(find "squashfs-root" -type f -print0)
 
   # Prepare list of paths for patchelf
-  _patchelf_paths=("libs"
-                   "libs/plugins/sqldrivers"
-                   "libs/plugins/xcbglintegrations"
-                   "libs/plugins/imageformats"
-                   "libs/plugins/platforms"
-                   "libs/Fusion"
-                   "plugins"
-                   "bin"
-                   "BlackmagicRAWSpeedTest/BlackmagicRawAPI"
-                   "BlackmagicRAWSpeedTest/plugins/platforms"
-                   "BlackmagicRAWSpeedTest/plugins/imageformats"
-                   "BlackmagicRAWSpeedTest/plugins/mediaservice"
-                   "BlackmagicRAWSpeedTest/plugins/audio"
-                   "BlackmagicRAWSpeedTest/plugins/xcbglintegrations"
-                   "BlackmagicRAWSpeedTest/plugins/bearer"
-                   "BlackmagicRAWPlayer/BlackmagicRawAPI"
-                   "BlackmagicRAWPlayer/plugins/mediaservice"
-                   "BlackmagicRAWPlayer/plugins/imageformats"
-                   "BlackmagicRAWPlayer/plugins/audio"
-                   "BlackmagicRAWPlayer/plugins/platforms"
-                   "BlackmagicRAWPlayer/plugins/xcbglintegrations"
-                   "BlackmagicRAWPlayer/plugins/bearer"
-                   "Onboarding/plugins/xcbglintegrations"
-                   "Onboarding/plugins/qtwebengine"
-                   "Onboarding/plugins/platforms"
-                   "Onboarding/plugins/imageformats"
-                   "DaVinci Control Panels Setup/plugins/platforms"
-                   "DaVinci Control Panels Setup/plugins/imageformats"
-                   "DaVinci Control Panels Setup/plugins/bearer"
-                   "DaVinci Control Panels Setup/AdminUtility/PlugIns/DaVinciKeyboards"
-                   "DaVinci Control Panels Setup/AdminUtility/PlugIns/DaVinciPanels")
+  _patchelf_paths=(
+    "libs"
+    "libs/plugins/"{sqldrivers,xcbglintegrations,imageformats,platforms}
+    "libs/Fusion"
+    "plugins"
+    "bin"
+    "BlackmagicRAWSpeedTest/BlackmagicRawAPI"
+    "BlackmagicRAWSpeedTest/plugins/"{platforms,imageformats,mediaservice,audio,xcbglintegrations,bearer}
+    "BlackmagicRAWPlayer/BlackmagicRawAPI"
+    "BlackmagicRAWPlayer/plugins/"{mediaservice,imageformats,audio,platforms,xcbglintegrations,bearer}
+    "Onboarding/plugins/"{xcbglintegrations,qtwebengine,platforms,imageformats}
+    "DaVinci Control Panels Setup/plugins/"{platforms,imageformats,bearer}
+    "DaVinci Control Panels Setup/AdminUtility/PlugIns/"{DaVinciKeyboards,DaVinciPanels}
+  )
   for _index in "${!_patchelf_paths[@]}"
   do
     _patchelf_paths[${_index}]="/opt/${_pkgname}/${_patchelf_paths[${_index}]}"
@@ -100,14 +84,17 @@ prepare() {
     sed -i "s|RESOLVE_INSTALL_LOCATION|/opt/${_pkgname}|g" "${_file}"
   done < <(find . -type f '(' -name "*.desktop" -o -name "*.directory" -o -name "*.directory" -o -name "*.menu" ')' -print0)
 
-  rm "squashfs-root/libs/libglib-2.0.so.0" \
-     "squashfs-root/libs/libgio-2.0.so.0" \
-     "squashfs-root/libs/libgmodule-2.0.so.0"
+  rm squashfs-root/libs/libglib-2.0.so.0{,.6800.4} \
+     squashfs-root/libs/libgio-2.0.so.0{,.6800.4} \
+     squashfs-root/libs/libgmodule-2.0.so.0{,.6800.4} \
+     squashfs-root/libs/libgobject-2.0.so.0{,.6800.4} \
+     squashfs-root/libs/libc++.so.1{,.0} \
+     squashfs-root/libs/libc++abi.so.1{,.0}
   ln -s "../BlackmagicRAWPlayer/BlackmagicRawAPI" "squashfs-root/bin/"
-  ln -s /usr/lib/libglib-2.0.so.0 "squashfs-root/libs/libglib-2.0.so.0"
-  ln -s /usr/lib/libgio-2.0.so.0 "squashfs-root/libs/libgio-2.0.so.0"
-  ln -s /usr/lib/libgmodule-2.0.so.0 "squashfs-root/libs/libgmodule-2.0.so.0"
-  ln -s /usr/lib/libgdk_pixbuf-2.0.so.0 "squashfs-root/libs/libgdk_pixbuf-2.0.so.0"
+  ln -s -t squashfs-root/libs/ \
+    /usr/lib/lib{glib,gio,gmodule,gobject}-2.0.so.0 \
+    /usr/lib/libgdk_pixbuf-2.0.so.0 \
+    /usr/lib/lib{c++,c++abi}.so.1
 
   echo "StartupWMClass=resolve" >> "squashfs-root/share/DaVinciResolve.desktop"
 
@@ -138,8 +125,7 @@ package() {
   # Distribute files into other directories
   pushd "${pkgdir}/opt/${_pkgname}"
   install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/configs" \
-    "share/default-config.dat" \
-    "share/log-conf.xml"
+    share/{default-config.dat,log-conf.xml}
   install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/DolbyVision" \
     "share/default_cm_config.bin"
   install -d -m 0755 "${pkgdir}/opt/${_pkgname}/.license"
