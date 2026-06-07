@@ -16,7 +16,7 @@ optdepends=('st-aegix-git: transparent, pywal-themed terminals (recommended st o
             'picom: compositor required for terminal transparency')
 provides=('tabbed')
 conflicts=('tabbed')
-source=("$_pkgname::git+https://github.com/AegixLinux/tabbed.git#branch=master")
+source=("$_pkgname::git+https://github.com/AegixLinux/tabbed.git")
 sha256sums=('SKIP')
 
 pkgver() {
