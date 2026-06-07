@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plank-player-git
-pkgver=5.26.90.r236.ga2e4a88
+pkgver=5.26.90.r237.gff2fe4a
 pkgrel=1
 pkgdesc="Multimedia Player for playing local files on Plasma Bigscreen allowing navigation with just a remote control (Git version)"
 arch=('any')
