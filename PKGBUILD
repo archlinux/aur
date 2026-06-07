@@ -19,14 +19,22 @@ source=("${_pkgname}-${pkgver%%_*}.zip::https://github.com/CERTCC/kaiju/releases
 sha256sums=('a4813e1b8a00a3172aad2d078b38cb1a0c78ea9a138c25943eab60c842fe2103')
 
 latestver() {
-  local gv kv
+  local gv kv try
   gv=$(pacman -Si ghidra 2>/dev/null | awk '/^Version/{print $3; exit}' | sed 's/-.*//')
   [ -z "$gv" ] && return 1
-  kv=$(gh api --paginate repos/CERTCC/kaiju/releases --jq \
-    ".[] | select(.prerelease == false and .draft == false) | .assets[] | select(.name | test(\"ghidra_${gv}_\")) | .name" |
-    head -1 | grep -oP '20\K[0-9]+(?=_kaiju)')
+  # Asset Ghidra version may omit trailing components (12.1.2 -> 12.1 in asset name)
+  try=$gv
+  while [ -n "$try" ]; do
+    kv=$(gh api --paginate repos/CERTCC/kaiju/releases --jq \
+      ".[] | select(.prerelease == false and .draft == false) | .assets[] | select(.name | test(\"ghidra_${try}_\")) | .name" |
+      head -1 | grep -oP '20\K[0-9]+(?=_kaiju)')
+    [ -n "$kv" ] && break
+    # Strip last version component and retry
+    try=${try%.*}
+    [[ "$try" == *"."* ]] || break
+  done
   [ -z "$kv" ] && return 1
-  echo "${kv}_${gv}"
+  echo "${kv}_${try}"
 }
 
 package() {
