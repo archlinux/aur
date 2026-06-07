@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-hidetopbar-git
 	pkgdesc = GNOME extension to hide the top bar except in overview mode
-	pkgver = 124.r1.g52051e3
+	pkgver = 124.r5.g755cc63
 	pkgrel = 1
 	url = https://gitlab.gnome.org/tuxor1337/hidetopbar
 	install = gschemas.install
