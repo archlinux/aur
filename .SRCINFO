@@ -1,20 +1,20 @@
 pkgbase = clock-tui-bin
 	pkgdesc = A terminal clock app with clock, timer, stopwatch, countdown, and clock widgets (prebuilt binary)
-	pkgver = 0.6.6
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://github.com/akitaonrails/clock-tui
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = gcc-libs
-	provides = clock-tui=0.6.6
+	provides = clock-tui=0.6.7
 	conflicts = clock-tui
 	conflicts = clock-tui-debug
 	options = !strip
 	options = !debug
-	source_x86_64 = clock-tui-0.6.6-x86_64.tar.gz::https://github.com/akitaonrails/clock-tui/releases/download/v0.6.6/clock-tui-linux-x86_64.tar.gz
-	sha256sums_x86_64 = d1a7d12bb33cd01ee32389da0749d848bc84e10d029baf71f1bf38d34f311efc
-	source_aarch64 = clock-tui-0.6.6-aarch64.tar.gz::https://github.com/akitaonrails/clock-tui/releases/download/v0.6.6/clock-tui-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 42e4ac024a52b0ea8b109715fa13c2e8943eb7680fd79f393a2611de41bb3aa3
+	source_x86_64 = clock-tui-0.6.7-x86_64.tar.gz::https://github.com/akitaonrails/clock-tui/releases/download/v0.6.7/clock-tui-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6eb72e222fa5436c428c5c6cc3c5fa81364eec0c1cb22bdac94658831015e97a
+	source_aarch64 = clock-tui-0.6.7-aarch64.tar.gz::https://github.com/akitaonrails/clock-tui/releases/download/v0.6.7/clock-tui-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 6b5e75b25c010a2e148b2d7cfcba10f0e3eddd8b153fc330fec34d4836e91d50
 
 pkgname = clock-tui-bin
