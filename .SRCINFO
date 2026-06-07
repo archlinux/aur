@@ -1,12 +1,13 @@
 pkgbase = paruz-bin
 	pkgdesc = A TUI frontend for paru/yay package management
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/achintya-7/paruz
 	arch = x86_64
 	license = MIT
 	provides = paruz
 	conflicts = paruz
+	options = !strip
 	source = https://github.com/achintya-7/paruz/releases/download/v0.1.0/paruz-linux-x86_64.tar.gz
 	sha256sums = 7749b89f3f29e639efb836b14feca330b93473d6b8eda8a3b9f1366fd568bdaf
 
