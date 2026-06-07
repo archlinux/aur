@@ -1,4 +1,5 @@
-# Maintainer: Ivan Batrakov <blackfan321 at disroot dot org>
+# Maintainer: Agil Mammadov <mammadovagil@proton.me>
+# Contributor: Ivan Batrakov <blackfan321 at disroot dot org>
 # Contributor: NIgel Kukard <nkukard at LBSD dot net>
 # Contributor: RcrdBrt
 
