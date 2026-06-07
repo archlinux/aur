@@ -1,7 +1,7 @@
 # Maintainer: Pablo Pascual <pablocpascual@gmail.com>
 
 pkgname=tiri
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A tiling Wayland compositor derived from niri'
 arch=('x86_64')
@@ -46,8 +46,8 @@ source=(
   "${pkgname}-${pkgver}-vendored-dependencies.tar.xz::${url}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}-vendored-dependencies.tar.xz"
 )
 b2sums=(
-  'a638f6cca8ccb46bcc063efdaf4b7c49604455ab73010c547ff407e91b2743c7f69d8d5065647b7f513f8ca664eeb0b8c3fd5f6f317cc25f1962215aba64d263'
-  '6e7ea9fa763d89c1005a1e649a39ee1c80642431420f5d3c372b7863c9c465482e64811bfbfd3003c425adad7cc92ff786793846af4d40a2eeaecff3057733f4'
+  'f04dc92b75bb15de26f841e1b26d73a853c5bfc7a9defdddc461adea1ee2e7accc761f7423562d80c72fbfad85306fe257bbb31ab70bf7e13fd5cd25b571283d'
+  'e89bf8271e68c84a33ab633e2a6aba5c43c7ba76393e77935cbc893ad34750fe5042b0c1b7c99bb5098b3d883cf1ad859b3054c81ff728473e978eeb0442a377'
 )
 
 prepare() {
@@ -71,6 +71,7 @@ package() {
   install -Dpm0755 resources/tiri-session "${pkgdir}/usr/bin/tiri-session"
   install -Dpm0644 resources/tiri.desktop "${pkgdir}/usr/share/wayland-sessions/tiri.desktop"
   install -Dpm0644 resources/tiri-portals.conf "${pkgdir}/usr/share/xdg-desktop-portal/tiri-portals.conf"
+  install -Dpm0644 resources/profiles/i3.kdl "${pkgdir}/usr/share/tiri/profiles/i3.kdl"
   install -Dpm0644 resources/tiri.service "${pkgdir}/usr/lib/systemd/user/tiri.service"
   install -Dpm0644 resources/tiri-shutdown.target "${pkgdir}/usr/lib/systemd/user/tiri-shutdown.target"
   install -Dpm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
