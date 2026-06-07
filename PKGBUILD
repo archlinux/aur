@@ -22,8 +22,8 @@ optdepends=(
 )
 
 # We include the .desktop file and VERSION in the source array so makepkg finds them
-source=("rclone-wiz.py" "rclone-wiz.desktop" "rclone-wiz.svg" "LICENSE" "VERSION")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=("rclone-wiz.py" "rclone-wiz.desktop" "rclone-wiz.svg" "LICENSE" "VERSION" "README.md")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     # 1. Install the executable
@@ -40,4 +40,7 @@ package() {
 
     # 5. Put VERSION file to the application's shared data directory
     install -Dm644 "$srcdir/VERSION" "$pkgdir/usr/share/$pkgname/VERSION"
+
+    # 6. Put README file to the application's shared data directory
+    install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/$pkgname/README.md"
 }
