@@ -1,7 +1,7 @@
 # Maintainer: Sync1211 <dpf12110@gmail.com>
 pkgname=owovrc-cli-bin
 pkgver=beta7
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another VRChat integration for the OWO Skin haptic vest."
 arch=('x86_64')
 url="https://github.com/sync1211/owoskin-vrc"
