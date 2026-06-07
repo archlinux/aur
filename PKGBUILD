@@ -1,16 +1,15 @@
 # Maintainer: Bazizi Walid <walidbaz@users.noreply.github.com>
 pkgname=bac-countdown
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
-pkgdesc="Live BAC exam countdown script"
+pkgdesc="Live BAC exam countdown script with proper Arabic layout"
 arch=('any')
 url="https://github.com/walidbaz/bac-countdown"
 license=('MIT')
-depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-rich')
 
-# Use the GitHub v1.2 tag
+depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-arabic-reshaper' 'python-bidi')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/walidbaz/bac-countdown/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b5baf8f0976e8f31e60b5b27146378a3409e2993338c1fa4d10bbdce4e36b3ea')
+sha256sums=('SKIP')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
