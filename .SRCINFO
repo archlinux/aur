@@ -1,6 +1,6 @@
 pkgbase = moshpit-agent-tpm
 	pkgdesc = Moshpit agent daemon — TPM 2.0 sealed vault unlock backend
-	pkgver = 0.8.19
+	pkgver = 0.8.20
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = moshpit-agent-tpm
 	conflicts = moshpit-agent-secret-service
 	conflicts = moshpit-agent-fprintd
 	conflicts = moshpit-agent-full
-	source = moshpit-agent-tpm-0.8.19.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.19.tar.gz
-	sha256sums = 79e356c52a7f8605abc46b7c1a172d0e6be9ae65ba5ec98261894d612f269bab
+	source = moshpit-agent-tpm-0.8.20.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.20.tar.gz
+	sha256sums = 7252155af6b64ffeba1c111a6f98cfef42bdc5a4de50e9aead1cd8acda3479a0
 
 pkgname = moshpit-agent-tpm
