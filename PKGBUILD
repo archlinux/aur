@@ -1,9 +1,9 @@
 # Maintainer: sickhate <archate@gmail.com>
 pkgname=meh2
-_commit=6980166192bbf2d4e0e1562ff8a5368a3d222995
-pkgver=0.1.0.r75.6980166
+_commit=6e6b6634a47c442703dc758d700d089d8611a525
+pkgver=0.1.0.r81.6e6b663
 pkgrel=1
-pkgdesc="GTK4 Wayland widget system with Rhai scripting (fork of meh)"
+pkgdesc="GTK4 Wayland widget system with Rhai scripting (default build: no systray)"
 arch=('x86_64')
 url="https://github.com/sickhate/meh2"
 license=('GPL-3.0-or-later')
@@ -18,7 +18,7 @@ depends=(
 makedepends=('rust' 'cargo')
 options=('!debug' '!lto')
 source=("meh2-$pkgver.tar.gz::https://github.com/sickhate/meh2/archive/$_commit.tar.gz")
-sha256sums=('57b7bb2e2f31d90a7f5a173490a88a109d6f5c55d6afb2371d9f60b0f612bbc6')
+sha256sums=('be32e3ca0186f23d44ab1db0446f13acf17d694747b1a6e531142601405dff7b')
 
 prepare() {
     cd "$srcdir/meh2-$_commit"
@@ -31,13 +31,15 @@ build() {
     cd "$srcdir/meh2-$_commit"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --release --frozen --features default,builtin-default-config
+    # Default profile: rhai + dbus/inotify vars + animations — no systray or plugins.
+    # Use `cargo build --release --locked --features full` for tray + plugins + shader.
+    cargo build --release --locked
 }
 
 check() {
     cd "$srcdir/meh2-$_commit"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --release --frozen 2>/dev/null | grep -v '^$' | grep -v 'running 0 tests' | grep -v 'test result: ok. 0 passed' || true
+    cargo test --release --locked
 }
 
 package() {
