@@ -1,7 +1,7 @@
 pkgname=mark-shot
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
-_commit=33950220ce3efd67f8bf379ea0227f0934739403
+_commit=fef6ec2a293b77c115d39e715973a0a7f03828cb
 pkgdesc='Qt 6 Wayland screenshot selection and annotation tool'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jswysnemc/mark-shot'
