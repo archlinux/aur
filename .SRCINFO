@@ -1,0 +1,18 @@
+pkgbase = anus-git
+	pkgdesc = Miniflux desktop reader (git)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/slatkin/anus
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = npm
+	makedepends = imagemagick
+	makedepends = git
+	depends = webkit2gtk-4.1
+	provides = anus
+	conflicts = anus
+	source = anus-git::git+https://github.com/slatkin/anus.git
+	sha256sums = SKIP
+
+pkgname = anus-git
