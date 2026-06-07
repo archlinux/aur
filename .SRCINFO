@@ -1,6 +1,6 @@
 pkgbase = hyprcorrect-git
 	pkgdesc = Keyboard-driven desktop spelling and typo corrector (latest main)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/jondkinney/hyprcorrect
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = hyprcorrect-git
 	depends = wayland
 	depends = wtype
 	optdepends = wl-clipboard: enables the clipboard / selection fallback when the keystroke buffer is empty
-	provides = hyprcorrect=0.4.0
+	provides = hyprcorrect=0.4.1
 	conflicts = hyprcorrect
 	conflicts = hyprcorrect-bin
 	options = !debug
