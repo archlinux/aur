@@ -1,8 +1,8 @@
 # Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 _pkgname="cwcwm"
 pkgname="cwc"
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='Extensible Wayland compositor with dynamic window management'
 arch=('x86_64')
 url="https://github.com/Cudiph/cwcwm"
@@ -15,7 +15,7 @@ depends=(
   'hyprcursor'
   'libdrm'
   'libinput'
-  'libwlroots-0.19.so'
+  'libwlroots-0.20.so'
   'libxcb'
   'libxkbcommon'
   'lua51-lgi'
@@ -44,7 +44,7 @@ optdepends=(
 )
 
 source=("https://github.com/Cudiph/cwcwm/archive/v$pkgver.tar.gz")
-md5sums=('7699ff709eb548412cd615639b069eea')
+md5sums=('96f32897e6fa2fe89d0bbbe6eb1cf749')
 
 provides=('wayland-compositor')
 
