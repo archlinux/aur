@@ -1,7 +1,7 @@
 pkgbase = appflowy
 	pkgdesc = Open-source alternative to Notion – you own your data and customizations
 	pkgver = 0.12.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://appflowy.com
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -14,6 +14,7 @@ pkgbase = appflowy
 	makedepends = openssl
 	makedepends = unzip
 	makedepends = protobuf
+	makedepends = rsync
 	makedepends = rustup
 	makedepends = cargo-make
 	depends = glib2>=2.80
@@ -31,7 +32,7 @@ pkgbase = appflowy
 	options = !debug
 	options = !buildflags
 	source = appflowy-0.12.2.tar.gz::https://github.com/AppFlowy-IO/AppFlowy/archive/refs/tags/0.12.2.tar.gz
-	source = flutter::git+ssh://git@github.com/flutter/flutter.git#tag=3.27.4
+	source = flutter::git+https://github.com/flutter/flutter.git#tag=3.27.4
 	source = appflowy.desktop
 	sha256sums = cd7c1f999cec3b5a47fce32333bdf5dd2662ebe597fda094912d4826ad2bc039
 	sha256sums = SKIP
