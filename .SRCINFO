@@ -1,6 +1,6 @@
 pkgbase = ttf-to-ae3dc-git
 	pkgdesc = Convert ttf to format for ae3dc engine
-	pkgver = 1.0.2.r123.gabcdef
+	pkgver = 0.0.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/Rul991/ttf-to-ae3dc
 	arch = x86_64

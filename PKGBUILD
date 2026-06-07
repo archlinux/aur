@@ -1,6 +1,6 @@
 # Maintainer: Rul Envellman <archerartem6@gmail.com>
 pkgname=ttf-to-ae3dc-git
-pkgver=1.0.2.r0.g22f9dfd
+pkgver=0.0.0.r0.g0000000
 pkgrel=1
 pkgdesc="Convert ttf to format for ae3dc engine"
 arch=('x86_64')
