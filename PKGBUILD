@@ -18,8 +18,8 @@ sha256sums=('0d0f5dfab1e49f3cc8da7c69e9529d85d61a867eff940d372c7f55315a2ee70c')
 
 latestver() {
   curl -fsSL "${url}" |
-    perl -0ne 'print "$1\n" if /Current version:\s*([0-9]+(?:\.[0-9]+)*)/s' |
-    sed -n '1p'
+    grep -oP 'cronopete-\K[0-9]+(\.[0-9]+)*(?=-1-x86_64\.pkg\.tar\.zst)' |
+    sort -V | tail -1
 }
 
 package() {
