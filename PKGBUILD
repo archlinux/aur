@@ -11,8 +11,7 @@ depends=('mingw-w64-crt')
 source=("https://github.com/eliaskosunen/scnlib/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ece17b26840894cc57a7127138fe4540929adcb297524dec02c490c233ff46a7')
 
-_architectures="x86_64-w64-mingw32"
-
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd scnlib-${pkgver}
