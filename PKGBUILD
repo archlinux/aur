@@ -3,7 +3,7 @@
 # Contributor: Crush <crush@ccat.dev>
 
 pkgname=ccat-rs
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Universal file viewer — markdown, docx, images, PDF, audio, video, JSON, YAML, logs, ELF disasm, diff, gz, archives"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs' 'oniguruma')
 makedepends=('cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zhiyuHD/ccat/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7f4452b7cfd09188669664767f57bbca697cb5d8eb8c86826246769365ed06c7')
+sha256sums=('05e5c77535015000c647cbd2e2051943c1034d3e7b2a07335be8a838b07e9cad')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
