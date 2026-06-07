@@ -1,47 +1,30 @@
 # Maintainer: SZanko, szanko at protonmail dot com
+# Maintainer: Niko <aurpkgs@niko.lgbt>
+
 pkgname=rimgo
-rpkgver=2022-04-22
-pkgver=2022.04.22
-pkgrel=3
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="An alternative frontend for Imgur. Originally based on rimgu."
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
-url="https://codeberg.org/video-prize-ranch/rimgo"
+arch=('x86_64' 'aarch64')
+url="https://codeberg.org/rimgo/rimgo"
 options=(!lto)
 license=('AGPL3')
 provides=("${pkgname}")
-makedepends=('go>=1.17')
-source=("${pkgname}-${rpkgver}.tar.gz::${url}/archive/${rpkgver}.tar.gz")
-sha256sums=('d332f65e988247ee274a03de23bd86930fd4b2111d20ce01399c97c85d257241')
-backup=(
-  'etc/rimgo.conf'
-)
+backup=('etc/rimgo.conf')
 
-prepare() {
-  # prevent creation of a `go` directory in one's home.
-  # this directory cannot be removed with even `rm -rf` unless one becomes root
-  # or changes the write permissions.
-  export GOPATH="${srcdir}/gopath"
-  go clean -modcache
-}
-
-build() {
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_ENABLED=1
-
-  cd "$srcdir/$pkgname"
-  go mod vendor
-  go build
-  go clean -modcache
-}
+source=("rimgo.service" "rimgo.conf")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-linux-amd64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-linux-arm64.tar.gz")
+sha256sums=('d8266dd77f8459ce9b8048112ba95c4a2b29b825f0d0acb28304c5a240ec0bb3'
+            '145cd73c55a7bc133db7e981c1485d614fadb96a49680e0bd1320f25dc28fd93')
+sha256sums_x86_64=('08e95e1fb80ba556f4f5212326f98f324971a85b90853f50154c186cf90778e5')
+sha256sums_aarch64=('24a205871bafe7e36ae6d01d0884695f745408d23a3e70ef95376c25b79a6f7e')
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/"
   install -Dm755 -t "${pkgdir}/usr/bin" rimgo
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-  install -Dm644 ../../rimgo.service -t "$pkgdir/usr/lib/systemd/system/"
-  install -Dm644 ../../rimgo.conf -t "$pkgdir/etc/"
+  install -Dm644 rimgo.service -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 rimgo.conf -t "$pkgdir/etc/"
 }
