@@ -1,5 +1,5 @@
 pkgname=sparkplayer
-pkgver=0.7.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A fun, no-nonsense terminal audio and video player built with ratatui"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL-2.0-only')
 depends=('alsa-lib' 'gcc-libs' 'ffmpeg' 'sdl2' 'ttf-dejavu')
 makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dividebysandwich/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8e4946570693a66443ea5b2b46d14aca851d5a38e633dd373f09e31fb0d71799')
+sha256sums=('4e8a3a8ac33b65d7a40d00943af7865a030342d3557c7a672fe36c55816557a5')
 
 prepare() {
     cd "$pkgname-$pkgver"
