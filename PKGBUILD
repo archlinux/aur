@@ -1,7 +1,7 @@
 # Maintainer: florex <bburakozdemir01@gmail.com>
 pkgname=archdoctor-git
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist terminal system diagnostics tool for Arch Linux (TUI)"
 arch=('x86_64')
 url="https://github.com/florexdev/archdoctor"
