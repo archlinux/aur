@@ -3,7 +3,7 @@
 pkgname=gitflow
 pkgver=1.0.0_beta.1
 pkgrel=1
-pkgdesc="Gitflow is a Git extension that implements the Gitflow AVH branching model."
+pkgdesc="A high-performance, type-safe implementation of the Gitflow AVH branching model in Rust."
 arch=('x86_64' 'aarch64')
 url="https://github.com/ImKairat-Rust-Lab/gitflow"
 license=('GPL-3.0-only')

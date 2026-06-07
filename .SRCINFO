@@ -1,5 +1,5 @@
 pkgbase = gitflow
-	pkgdesc = Gitflow is a Git extension that implements the Gitflow AVH branching model.
+	pkgdesc = A high-performance, type-safe implementation of the Gitflow AVH branching model in Rust.
 	pkgver = 1.0.0_beta.1
 	pkgrel = 1
 	url = https://github.com/ImKairat-Rust-Lab/gitflow
