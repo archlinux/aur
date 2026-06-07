@@ -1,0 +1,13 @@
+pkgbase = c3fmt
+	pkgdesc = Code formatter for the C3 language
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/lmichaudel/c3fmt
+	arch = x86_64
+	license = MIT
+	makedepends = c3c
+	depends = tree-sitter
+	source = c3fmt-0.3.0.tar.gz::https://github.com/lmichaudel/c3fmt/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 490d4953ae70862efa4951ab70d2f2a5e31e0e12a3ab1e74bef6fcffca28b4a5
+
+pkgname = c3fmt
