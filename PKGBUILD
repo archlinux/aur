@@ -28,7 +28,7 @@
 pkgname=margo-git
 pkgver=r1503.2f9d0404
 pkgrel=1
-pkgdesc="Rust/Smithay Wayland tiling compositor + first-party mshell desktop (mango heritage)"
+pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
 arch=("x86_64")
 license=("GPL-3.0-or-later")
