@@ -48,9 +48,22 @@ sha256sums_x86_64=('85ca6be76c15ad7e32f9203607e92ff2c507fdc104b2f77e18f08fd02760
 sha256sums_aarch64=('5f03acbf155155b92b0a6fc1468958cd32540a04cb4aef497474615b15fab1b2')
 
 latestver() {
-    gh api --paginate repos/Comfy-Org/Comfy-Desktop/releases --jq \
+    local versions ver
+    versions=$(gh api --paginate repos/Comfy-Org/Comfy-Desktop/releases --jq \
         '.[] | select(.prerelease == false and .draft == false) | .tag_name' |
-        sed -nE 's/^v([0-9]+(\.[0-9]+)*)$/\1/p' | sort -V | tail -1
+        sed -nE 's/^v([0-9]+(\.[0-9]+)*)$/\1/p' | sort -rV)
+    # HEAD returns 404 even for valid assets (CDN quirk); use GET with
+    # --max-filesize 1 to read status from headers without downloading
+    # the ~120 MB .deb body.
+    for ver in $versions; do
+        local code
+        code=$(curl -sL -o /dev/null -w '%{http_code}' --max-filesize 1 \
+            "${_dl_base}/versions/${ver}/linux/deb/x64" 2>/dev/null)
+        if [[ "$code" == 200 ]]; then
+            echo "$ver"
+            return
+        fi
+    done
 }
 
 package() {
