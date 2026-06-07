@@ -1,4 +1,4 @@
-# Maintainer: Sergey Sokolov <mohterbaord at gmail dot com>
+# Maintainer: Sergei Sokolov <mohterbaord at gmail dot com>
 
 pkgname=polybarman
 pkgver=0.4.0
