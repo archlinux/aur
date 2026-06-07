@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=superseedr
-pkgver=1.0.7
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='A BitTorrent Client in your Terminal'
 arch=(x86_64 aarch64)
@@ -16,7 +16,7 @@ depends=(
 makedepends=(cargo python)
 # checkdepends=(cargo)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('93f6bffaa5d77a7a07152beb34e4a452da59eccc24d658b0e0402b73ae68dda1')
+sha256sums=('63b79fbfba6ebff9227ab25e9e4916f1c6c58e0f07779f971856153a06b79dd4')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
