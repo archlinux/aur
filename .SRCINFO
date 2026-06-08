@@ -9,6 +9,7 @@ pkgbase = humen-mcp-git
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
+	depends = openssl
 	provides = humen-mcp
 	conflicts = humen-mcp
 	backup = etc/humen-mcp.env
@@ -16,4 +17,3 @@ pkgbase = humen-mcp-git
 	sha256sums = SKIP
 
 pkgname = humen-mcp-git
-
