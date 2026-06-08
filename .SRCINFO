@@ -1,16 +1,16 @@
 pkgbase = seshat-bin
 	pkgdesc = A lightweight TUI SQL client for PostgreSQL
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/tardanoir/seshat
-	arch = x86_64
-	arch = aarch64
 	license = MIT
-	provides = seshat
 	conflicts = seshat
-	source_x86_64 = seshat_1.0.0_linux_amd64.tar.gz::https://github.com/tardanoir/seshat/releases/download/v1.0.0/seshat_1.0.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 795c0396474a91a1944fb277afdfafed71174b089152c6464309231dc14cae47
-	source_aarch64 = seshat_1.0.0_linux_arm64.tar.gz::https://github.com/tardanoir/seshat/releases/download/v1.0.0/seshat_1.0.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6fd8ff81b4b7829121ed24ef2ab74dd33f5fc1b232b45f0e4411262026965f12
-
+	provides = seshat
+	arch = aarch64
+	source_aarch64 = https://github.com/tardanoir/seshat/releases/download/v1.1.0/seshat_1.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = bdfec150080df391c4f71b72523b242853733da036c4c3ce16fbeea3cf02e153
+	arch = x86_64
+	source_x86_64 = https://github.com/tardanoir/seshat/releases/download/v1.1.0/seshat_1.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7343cd8ae9115aee8d52bc978ca030111211b56be7e5b48c38686ac0379e0a6a
+	
 pkgname = seshat-bin
