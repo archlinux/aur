@@ -1,0 +1,24 @@
+pkgbase = burrow-tunnel
+	pkgdesc = Turn any SSH server into a local proxy and a system-wide VPN
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/0443n/burrow
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = cmake
+	depends = polkit
+	depends = fontconfig
+	depends = libglvnd
+	depends = wayland
+	depends = libxkbcommon
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxi
+	depends = hicolor-icon-theme
+	options = !lto
+	source = burrow-0.1.1.tar.gz::https://github.com/0443n/burrow/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 12cce9db80e4fa15f69614e6c2607b4c465bc9b0f3684b166dddd7fc80194abb
+
+pkgname = burrow-tunnel
