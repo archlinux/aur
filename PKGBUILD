@@ -1,8 +1,8 @@
 # Maintainer: Benjamin Valdez <b.valdez.0509+aur<at>gmail.com>
 # Contributor: Bruce Zhang <zttt183525594<at>gmail.com>
 pkgname=inputactions-kwin
-pkgver=0.9.1.1
-pkgrel=2
+pkgver=0.9.2.0
+pkgrel=1
 pkgdesc="Bind keyboard, mouse, touchpad and touchscreen actions to system actions"
 arch=('x86_64')
 url="https://inputactions.org"
@@ -33,7 +33,7 @@ source=(
   "reminder.conf"
   "rebuild-reminder.hook"
 )
-sha256sums=('028eb76b2a0774d1f4460c4848f1b10166bb501db9d0a449e6c28a82afc6e645'
+sha256sums=('b4953af8d7ef595eb71e177bfaf3c732239d872502fb361e05961dfdca98aaa7'
             '3ae59b5bea1a0100cc8da51c6a810d70bc989462f2f84beaf6a4f9a06395f62f'
             '57a1e6c7c230c9149e85db13c5dc9f76a4e49c643a03f299750ddc977b36548a'
             '72a8f214c4982110feeb778bf5f915436aa47ff071d301078e6a9459e06a0b13')
