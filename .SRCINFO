@@ -1,0 +1,17 @@
+pkgbase = printbar
+	pkgdesc = Generic printer monitor for Waybar (IPP + SNMP + CUPS) — supplies, trays, jobs, panel text; instant push on print; Omarchy theming
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mryll/printbar
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	optdepends = cups: CUPS source, queue action and the instant-push service
+	optdepends = libnotify: desktop notifications
+	optdepends = xdg-utils: open the EWS / queue on click
+	options = !debug
+	source = printbar-0.1.0.tar.gz::https://github.com/mryll/printbar/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 2f0707e9647e5472190dacd5b9e603169ac892b2848bba301278c5b298443d0c
+
+pkgname = printbar
