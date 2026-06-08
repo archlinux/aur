@@ -1,0 +1,15 @@
+pkgbase = email-cli-lightjunction
+	pkgdesc = Rust email CLI with Gmail OAuth and generic IMAP/SMTP support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/email-cli
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = openssl
+	options = !lto
+	source = https://static.crates.io/crates/email-cli-lightjunction/email-cli-lightjunction-0.1.0.crate
+	sha256sums = d887a851cc92816c5e87cdb81848ed57307088f6e7bfd19b221a914f500c652b
+
+pkgname = email-cli-lightjunction
