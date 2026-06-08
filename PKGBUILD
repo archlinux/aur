@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=screamingfrogseospider-jre
-pkgver=24.0
+pkgver=24.1
 pkgrel=1
 pkgdesc="spiders websites’ links, images, CSS, script and apps from an SEO perspective. With bundled jre if you have issues with openjdk"
 arch=('x86_64' 'i686')
@@ -13,13 +13,15 @@ conflicts=('screamingfrogseospider')
 depends=('ttf-font')
 makedepends=('tar')
 source=(
-  "screamingfrogseospider_${pkgver}_all.deb::https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_all.deb?noredirect"
   "LICENSE"
   "screamingfrogseospider"
 )
-b2sums=('b804bfda181ab2cb84419edce3be33051ad81c20c45bf69d5fde735fbd268d13ca285e9e90ecd03a54dd550eccd4767a6c3dde6f75023d6e78c3057b98925031'
-        '6cde786ef5e5bf0e2d1cb9403eb9bbe6923731e22263e1cd2b3c3f0258d6efb4151eba5b59ee9e87894d17af75f1f72509bd389d1425a9fcab37ba51d9b50cd7'
+source_x86_64=("screamingfrogseospider_${pkgver}_amd64.deb::https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_amd64.deb")
+source_aarch64=("screamingfrogseospider_${pkgver}_arm64.deb::https://download.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_arm64.deb")
+b2sums=('6cde786ef5e5bf0e2d1cb9403eb9bbe6923731e22263e1cd2b3c3f0258d6efb4151eba5b59ee9e87894d17af75f1f72509bd389d1425a9fcab37ba51d9b50cd7'
         '7d0afe711366086d889a26237e96696b917552ea9023cbf5b11b4479943d1cd922c8adeafc3d988e5038a828775e810fdcce07ed5cad03c89da511747ed0c3cb')
+b2sums_x86_64=('0a41099a9cce3da86f026785997b7f809018badc25a3e45adcd7b8cfc6edf2bf7394d2522c0334a630ba6d188e8496118e3eb611f9c1c4597f02f0440ce5e53d')
+b2sums_aarch64=('530f57bee353df8a4aea2d7b7fca077e31371489501615ee158c836b4cbd8cbbbf874af7b0ba8d4a028a5e16c2e7e84465e8af2fece489593b2a9e61931a2d38')
 
 build() {
   msg "Extracting deb data..."
