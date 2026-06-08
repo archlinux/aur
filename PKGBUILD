@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ffbox-bin
 _pkgname=FFBox
-pkgver=5.3
+pkgver=5.4
 _electronversion=24
 pkgrel=1
 pkgdesc="An user-friendly ffmpeg GUI.(Prebuilt version.Use system-wide electron)一个多媒体转码百宝箱/一个 FFmpeg 的套壳"
@@ -13,6 +13,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'ffmpeg'
+    'nodejs'
 )
 options=(
     '!strip'
@@ -21,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Linux_${CARCH//_/-}_${_pkgname}_${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8b59527e1f4442357d89bc1a249e5e86384e94511d634829767e4af0d1c477db'
+sha256sums=('afb5b469bf8c96f65e08e9bbdca01eb13f34764b08c89056c139da51ac9f1e53'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
