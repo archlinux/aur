@@ -2,7 +2,7 @@
 pkgname=astrorama-elements
 _pkgname=Elements
 pkgver=6.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++/Python build framework that helps to organize the software into modules which are gathered into projects"
 url="https://github.com/astrorama/Elements"
 arch=('x86_64')
