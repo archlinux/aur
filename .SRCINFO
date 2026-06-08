@@ -1,12 +1,13 @@
 pkgbase = basecv-bin
 	pkgdesc = Command-line converter between number bases (decimal, hex, binary, octal, 2-36)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/lmathias/basecv
 	arch = x86_64
 	license = MIT
 	provides = basecv
 	conflicts = basecv
+	options = !strip
 	source = basecv-bin-0.1.0.tar.gz::https://codeberg.org/lmathias/basecv/releases/download/v0.1.0/basecv-0.1.0-linux-x64.tar.gz
 	sha256sums = ab7bcc9601c6cfa1f127736a14147c77cb4615f74038f7f54617d025d08613a7
 

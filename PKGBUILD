@@ -1,13 +1,16 @@
 # Maintainer: Luca Mathias <lmathias@pm.me>
 pkgname=basecv-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line converter between number bases (decimal, hex, binary, octal, 2-36)"
 arch=('x86_64')
 url="https://codeberg.org/lmathias/basecv"
 license=('MIT')
 provides=('basecv')
 conflicts=('basecv')
+# Dart `compile exe` output is an ELF with the AOT snapshot appended; stripping
+# discards it and breaks the binary, so disable makepkg's default strip.
+options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/lmathias/basecv/releases/download/v$pkgver/basecv-$pkgver-linux-x64.tar.gz")
 sha256sums=('ab7bcc9601c6cfa1f127736a14147c77cb4615f74038f7f54617d025d08613a7')
 
