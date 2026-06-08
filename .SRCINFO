@@ -1,6 +1,6 @@
 pkgbase = xfce4-fsguard-plugin-git
 	pkgdesc = File system usage monitor plugin for the Xfce4 panel
-	pkgver = 1.0.2.r23.g3c42868
+	pkgver = xfce4.fsguard.plugin.1.2.0.r15.gbdf46d8
 	pkgrel = 1
 	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-fsguard-plugin
 	install = xfce4-fsguard-plugin.install
@@ -15,8 +15,7 @@ pkgbase = xfce4-fsguard-plugin-git
 	provides = xfce4-fsguard-plugin
 	conflicts = xfce4-fsguard-plugin
 	options = !libtool
-	source = git://git.xfce.org/panel-plugins/xfce4-fsguard-plugin
+	source = git+https://gitlab.xfce.org/panel-plugins/xfce4-fsguard-plugin
 	sha256sums = SKIP
 
 pkgname = xfce4-fsguard-plugin-git
-
