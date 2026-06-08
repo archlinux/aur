@@ -3,7 +3,7 @@
 _pkgname=dusklight
 pkgname=${_pkgname}-git
 pkgver=1.3.1.r68.g93e33ec
-pkgrel=1
+pkgrel=2
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
@@ -37,6 +37,7 @@ build() {
   cd "$srcdir/dusklight"
 
   cmake -B build -GNinja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
@@ -51,10 +52,9 @@ build() {
 
 package() {
   install -Dm 755 "${srcdir}/dusklight/build/dusklight" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm 755 "${srcdir}/dusklight/build/libs/freeverb/libfreeverb.so" "${pkgdir}/usr/lib/libfreeverb.so"
 
-  install -dm 755 "${pkgdir}/usr/local/share/${_pkgname}"
-  cp -r "${srcdir}/dusklight/res" "${pkgdir}/usr/local/share/${_pkgname}/res"
+  install -dm 755 "${pkgdir}/usr/share/${_pkgname}"
+  cp -r "${srcdir}/dusklight/res" "${pkgdir}/usr/share/${_pkgname}/res"
 
   install -Dm 644 "${srcdir}/dusklight/platforms/freedesktop/1024x1024/apps/dev.twilitrealm.dusk.png" "${pkgdir}/usr/share/pixmaps/dev.twilitrealm.dusk.png"
   install -Dm 755 "${srcdir}/dusklight/platforms/freedesktop/dev.twilitrealm.dusk.desktop" "${pkgdir}/usr/share/applications/dev.twilitrealm.dusk.desktop"
