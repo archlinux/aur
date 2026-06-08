@@ -1,21 +1,22 @@
-# Maintainer : CoiledSpring
-# Original maintainer: Julien Savard <juju@juju2143.ca>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: CoiledSpring
+# Contributor: Julien Savard <juju@juju2143.ca>
 # Based on msp430-elf-gcc
 
 _target="sh3eb-elf"
 pkgname=${_target}-gcc
-pkgver=15.2.0
+pkgver=16.1.0
 pkgrel=1
 _islver=0.27
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=(i686 x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
 url="http://gcc.gnu.org"
-depends=("${_target}-binutils" 'libmpc' 'elfutils')
+depends=("${_target}-binutils" 'libmpc' 'elfutils' 'zlib' 'gmp' 'zstd' 'glibc' 'mpfr' 'bash')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs')
 source=("https://ftpmirror.gnu.org/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
 	"https://libisl.sourceforge.io/isl-${_islver}.tar.xz")
-sha256sums=('438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e'
+sha256sums=('50efb4d94c3397aff3b0d61a5abd748b4dd31d9d3f2ab7be05b171d36a510f79'
             '6d8babb59e7b672e8cb7870e874f3f7b813b6e00e6af3f8b04f7579965643d5c')
 
 prepare() {
