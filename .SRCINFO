@@ -1,7 +1,7 @@
 pkgbase = jplayer-bin
 	pkgdesc = Lightweight music player using yt-dlp and ffmpeg, bundled with a custom runtime via jpackage
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thelevnet/jplayer
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = jplayer-bin
 	depends = alsa-utils
 	provides = jplayer
 	conflicts = jplayer
+	options = !strip
+	options = !debug
 	source = https://github.com/thelevnet/jplayer/releases/download/v1.0.0/JPlayer.jar
 	source = https://raw.githubusercontent.com/thelevnet/jplayer/main/res/icon.svg
 	sha256sums = SKIP
