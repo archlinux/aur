@@ -1,7 +1,7 @@
 pkgbase = rah
 	pkgdesc = A simple AUR helper written in Rust
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.0.4
+	pkgrel = 3
 	url = https://deadgirl.dev/projects/rah
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = rah
 	depends = pacman
 	conflicts = rah-bin
 	options = !lto
-	source = rah-v2.0.1.tar.gz::https://gitlab.com/deadgirl/rah/-/archive/v2.0.1/rah-v2.0.1.tar.gz
+	source = rah-v2.0.4.tar.gz::https://gitlab.com/deadgirl/rah/-/archive/v2.0.4/rah-v2.0.4.tar.gz
 	md5sums = SKIP
 
 pkgname = rah
