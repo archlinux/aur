@@ -1,7 +1,7 @@
 pkgbase = xdg-desktop-portal-luminous
 	pkgdesc = xdg-desktop-portal backend for wlroots based compositors, providing screenshot and screencast
 	pkgver = 0.1.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/waycrate/xdg-desktop-portal-luminous
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = xdg-desktop-portal-luminous
 	makedepends = rust
 	makedepends = clang
 	depends = xdg-desktop-portal
+	depends = libxkbcommon
 	provides = xdg-desktop-portal-impl
 	provides = xdg-desktop-portal-luminous
 	conflicts = xdg-desktop-portal-luminous-git
