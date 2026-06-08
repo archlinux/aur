@@ -1,6 +1,6 @@
 pkgbase = framr-bin
 	pkgdesc = A Wayland screenshot tool written in Rust (pre-compiled binary)
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/vMohammad24/framr
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = framr-bin
 	provides = framr
 	conflicts = framr
 	options = !lto
-	source = framr-bin-0.12.0-bin::https://github.com/vMohammad24/framr/releases/download/v0.12.0/framr
-	source = framr-0.12.0.tar.gz::https://github.com/vMohammad24/framr/archive/refs/tags/v0.12.0.tar.gz
-	sha256sums = eca7656a4b9354fbc33223ed9a89202be66e5084468298f62cb95008bf6a7bac
-	sha256sums = 45d61e645d468ba123cfacc045344d7a06249ca004a3934fb3cda08626f2eb5a
+	source = framr-bin-0.12.1-bin::https://github.com/vMohammad24/framr/releases/download/v0.12.1/framr
+	source = framr-0.12.1.tar.gz::https://github.com/vMohammad24/framr/archive/refs/tags/v0.12.1.tar.gz
+	sha256sums = e8c7a2a0bcb8df2c68ad36d9d6e2f226a467823b24f9551eb3e77310ec3e39ef
+	sha256sums = 11fb4a038f250146ed8c3f35f90c7036dee0765fe62ec12fa324376e047bae8c
 
 pkgname = framr-bin
