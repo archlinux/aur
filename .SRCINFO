@@ -1,16 +1,16 @@
 pkgbase = emsmediasystem-bin
 	pkgdesc = An Electron-based media presentation tool that provides a dual-window approach to media playback,allows users to control media presentation from a management window.(Prebuilt version.Use system-wide electron)
-	pkgver = 6.4.3
+	pkgver = 6.5.0
 	pkgrel = 1
 	url = https://github.com/clockley/EjaxMediaSystem
 	arch = x86_64
 	license = LGPL-3.0-or-later
 	depends = electron34
-	provides = emsmediasystem=6.4.3
+	provides = emsmediasystem=6.5.0
 	conflicts = emsmediasystem
-	source = emsmediasystem-6.4.3-x86_64.AppImage::https://github.com/clockley/EjaxMediaSystem/releases/download/6.4.3/EMS.Media.System-6.4.3.AppImage
+	source = emsmediasystem-6.5.0-x86_64.AppImage::https://github.com/clockley/EjaxMediaSystem/releases/download/6.5.0/EMS.Media.System-6.5.0.AppImage
 	source = emsmediasystem.sh
-	sha256sums = 888fc597d8ec65735ab51ed50e0dc203b8c3d3def30bb88adcd0cca84867d53a
+	sha256sums = 03b1fc7268194ec531e2b0cadad1f1ebb81c15791d992d5e359c1db1b348d196
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = emsmediasystem-bin

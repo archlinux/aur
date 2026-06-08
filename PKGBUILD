@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=emsmediasystem-bin
 _pkgname=EMS.Media.System
-pkgver=6.4.3
+pkgver=6.5.0
 _electronversion=34
 pkgrel=1
 pkgdesc="An Electron-based media presentation tool that provides a dual-window approach to media playback,allows users to control media presentation from a management window.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('888fc597d8ec65735ab51ed50e0dc203b8c3d3def30bb88adcd0cca84867d53a'
+sha256sums=('03b1fc7268194ec531e2b0cadad1f1ebb81c15791d992d5e359c1db1b348d196'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
