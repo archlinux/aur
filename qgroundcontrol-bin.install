@@ -1,0 +1,7 @@
+post_install() {
+    echo ':: Serial connections to flight controllers require membership of the'
+    echo '   uucp group:'
+    echo '       usermod -aG uucp $USER'
+    echo ':: If ModemManager is installed it may interfere with serial ports;'
+    echo '   consider removing it or masking its service.'
+}

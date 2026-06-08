@@ -1,60 +1,53 @@
-# Maintainer: Kye Morton <pryre.dev@outlook.com>
+# Maintainer: TODO <TODO>
 pkgname=qgroundcontrol-bin
-pkgver=4.0.11
+pkgver=5.0.8
 pkgrel=1
-pkgdesc="Ground control for unmanned vehicles."
+pkgdesc='Cross-platform ground control station for MAVLink drones (extracted from official AppImage)'
 arch=('x86_64')
-url="https://github.com/mavlink/qgroundcontrol"
-license=('GPL3')
+url='https://github.com/mavlink/qgroundcontrol'
+license=('Apache-2.0 OR GPL-3.0-only')
+depends=('glibc' 'gcc-libs' 'libglvnd' 'libx11' 'libxcb' 'wayland' 'hicolor-icon-theme')
+optdepends=('speech-dispatcher: text-to-speech announcements')
+provides=('qgroundcontrol')
+conflicts=('qgroundcontrol')
+options=('!strip' '!debug')
+install="$pkgname.install"
 
-depends=( 'bzip2'
-		  'dbus'
-		  'flac'
-		  'gst-plugins-base-libs'
-		  'libasyncns'
-		  'libffi'
-		  'libgcrypt'
-		  'libgpg-error'
-		  'libogg'
-		  'libsndfile'
-		  'libsystemd'
-		  'libunwind'
-		  'libx11'
-		  'libxau'
-		  'libxcb'
-		  'libxdmcp'
-		  'libxext'
-		  'lz4'
-		  'orc'
-		  'pcre'
-		  'sdl2'
-		  'xz'
-		  'zlib'
-		  'icu' )
+_appimage="QGroundControl-${pkgver}-x86_64.AppImage"
+source=("${_appimage}::${url}/releases/download/v${pkgver}/QGroundControl-x86_64.AppImage")
+sha256sums=('06969c67ef58ea063def0a8271447a1cc385438c4a7df36813315b4475146737')
 
-source=('qgroundcontrol-'${pkgver}'-'${pkgrel}'.tar.bz2::https://github.com/mavlink/qgroundcontrol/releases/download/v'${pkgver}'/qgroundcontrol.tar.bz2')
-
-sha256sums=('dc65e595738fd89f165dc9f618205e08b2c1f9ee5bc1e354f53c98418c2c8a26')
-
-build() {
-	echo "[Desktop Entry]
-Type=Application
-Name=QGroundControl
-Comment=Ground control for unmanned vehicles
-Path=/opt/${pkgname}/
-Exec=/usr/bin/${pkgname}
-Icon=/opt/${pkgname}/qgroundcontrol.png
-Terminal=false
-Categories=Qt;Utility;" > "$srcdir/${pkgname}.desktop"
+prepare() {
+    chmod +x "${_appimage}"
+    ./"${_appimage}" --appimage-extract > /dev/null
 }
 
 package() {
-  mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/applications"
-  cp -R "$srcdir/${pkgname%-bin}" "${pkgdir}/opt/${pkgname}"
-  cp "$srcdir/${pkgname}.desktop" "${pkgdir}/opt/${pkgname}"
+    # Install the extracted AppDir to /opt
+    install -d "$pkgdir/opt"
+    cp -dr --no-preserve=ownership squashfs-root "$pkgdir/opt/qgroundcontrol"
 
-  ln -s "/opt/${pkgname}/qgroundcontrol-start.sh" "${pkgdir}/usr/bin/${pkgname}"
-  ln -s "/opt/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    # Trim dev headers and bundled docs not useful in a binary package
+    rm -rf "$pkgdir/opt/qgroundcontrol/usr/include" \
+           "$pkgdir/opt/qgroundcontrol/usr/share/doc"
+
+    # AppRun resolves APPDIR from its own real path, so a symlink suffices
+    install -d "$pkgdir/usr/bin"
+    ln -s /opt/qgroundcontrol/AppRun "$pkgdir/usr/bin/qgroundcontrol"
+
+    # Desktop entry, pointed at the /usr/bin launcher
+    install -Dm644 squashfs-root/usr/share/applications/org.mavlink.qgroundcontrol.desktop \
+        "$pkgdir/usr/share/applications/org.mavlink.qgroundcontrol.desktop"
+    sed -i 's/^Exec=.*/Exec=qgroundcontrol/' \
+        "$pkgdir/usr/share/applications/org.mavlink.qgroundcontrol.desktop"
+
+    # Icons (whichever sizes upstream actually ships)
+    local icon
+    for icon in squashfs-root/usr/share/icons/hicolor/*/apps/QGroundControl.png; do
+        install -Dm644 "$icon" "$pkgdir/usr/share/${icon#squashfs-root/usr/share/}"
+    done
+
+    # AppStream metadata
+    install -Dm644 squashfs-root/usr/share/metainfo/org.mavlink.qgroundcontrol.metainfo.xml \
+        "$pkgdir/usr/share/metainfo/org.mavlink.qgroundcontrol.metainfo.xml"
 }
-
-# vim:set ts=2 sw=2 et:
