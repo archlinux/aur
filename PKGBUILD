@@ -3,7 +3,7 @@
 # Contributor: KspLite <ksplite@outlook.com>
 # Contributor: Daniil Kovalev <daniil@kovalev.website>
 pkgname=0wgram
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 epoch=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
@@ -67,22 +67,23 @@ optdepends=(
 )
 
 _td_commit=51743dfd01dff6179e2d8f7095729caa4e2222e9
-commit="2ab549b3d7"
+commit="ccd109eb47"
 source=("git+${url}.git#commit=${commit}"
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
-  fix-lzma-link.patch
-        "tdesktop-fix-minizip-includes.patch")
+  fix-lzma-link.patch)
 
-sha512sums=('dfc41e641e3853e88251c3f201a586d2f57be83337d4bd5b42786b21d1ee6122918cc3bf12fbe2581e1606254a43ce17994630f55e9194b8b61aed3f68a768bd'
+sha512sums=('58f7bdeda6a5ebbe08044ac0390fb389673a2bc4b2530847b01f0fe765929812acaa310253bb7629b17ec7220b1e8bb35eff1a5e4cc119770919ff8cd1c3a4d4'
             'd622b8f3580ee49415546d025c4ba45f5b2de50b315fc379dc57c0427c5f815c7cc3820cca937c12182ee461641bb61f87ebc99b6c74a1a666cea9a08f0f41a0'
-            'e15cdc8513793f17e4b6ca2dfab5b4bbf22d0934c1e88038957b9004865edb4101a3133482708aab6844de3c1dfdac9c98970de684c1508634180d90c84345f7'
-            'd9765588e92f154d83b95dc2840207bf22b26b6ca37b4d5cdfdb5e27a00c9e1ebcc9cd475a96bbcc5b02c24f6892320e009f843aa6b172a1820814b952a772eb')
+            'e15cdc8513793f17e4b6ca2dfab5b4bbf22d0934c1e88038957b9004865edb4101a3133482708aab6844de3c1dfdac9c98970de684c1508634180d90c84345f7')
 
 prepare() {
     cd tdesktop
+    git config submodule.Telegram/lib_base.url https://github.com/clansty/lib_base.git
+    if [ -e Telegram/lib_base/.git ]; then
+        git -C Telegram/lib_base remote set-url origin https://github.com/clansty/lib_base.git || git -C Telegram/lib_base remote add origin https://github.com/clansty/lib_base.git
+    fi
     git submodule update --init --recursive
     patch -p1 --binary < "$srcdir"/fix-lzma-link.patch
-    patch -Np1 -d Telegram/lib_base -i "$srcdir"/tdesktop-fix-minizip-includes.patch
 }
 
 build() {
