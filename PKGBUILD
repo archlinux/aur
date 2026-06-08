@@ -1,6 +1,6 @@
 # Maintainer: ellie <ellie@ellierf.com>
 pkgname=python-kflow-py
-pkgver=0.1.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Declarative Kubernetes workflow orchestration with dependency-aware phases, state tracking, and pluggable Python runners"
 arch=('any')
@@ -8,8 +8,8 @@ url="https://github.com/1vers1on/kflow"
 license=('MIT')
 depends=('python' 'python-click' 'python-rich' 'python-yaml')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/46/f7/de3c84964793fc5000ba9f506a48b7c932fff067ae9bed28871ba92eda96/kflow_py-${pkgver}.tar.gz")
-sha256sums=('c88bfe0eeee9819b1171a175e657ad9f298500c7b8443796603cf9259231f78f')
+source=("https://files.pythonhosted.org/packages/03/74/d5eab9da8ae14a4c67fe61dc48830e0c171829985584194e0f559e3bc944/kflow_py-${pkgver}.tar.gz")
+sha256sums=('c1b07fef551a770f4f721d6ec86a29ccd973ef37de98cb56c27ccb2b555fa99f')
 
 build() {
     cd "kflow_py-${pkgver}"
