@@ -1,8 +1,14 @@
 --- a/assets/inject/renderer-inject.js
 +++ b/assets/inject/renderer-inject.js
-@@ -67,0 +68 @@
+@@ -65,6 +65,7 @@
+   const codexServiceTierRequestOverrideVersion = "2";
+   const codexAppServerModelRequestPatchVersion = "1";
+   const codexPluginMarketplaceUnlockVersion = "10";
 +  const codexPluginNavUnlockVersion = "2";
-@@ -2701,0 +2703,154 @@
+   const codexThreadScrollMaxEntries = 120;
+   const codexThreadScrollSaveThrottleMs = 120;
+   const codexThreadScrollRestoreWindowMs = 3200;
+@@ -2701,3 +2701,157 @@
 +  function pluginNavButtonCandidates() {
 +    return Array.from(document.querySelectorAll(selectors.pluginNavButton))
 +      .filter((button) => button instanceof HTMLElement && isPluginNavButton(button));
@@ -10,7 +16,7 @@
 +
 +  function isPluginNavButton(button) {
 +    const text = (button.textContent || "").trim();
-+    if (/^(Plugins|插件)$/.test(text)) return true;
++    if (/^(Plugins|插件)(\s+-\s+.*)?$/.test(text)) return true;
 +    return !!button.querySelector?.(selectors.pluginSvgPath);
 +  }
 +
@@ -157,8 +163,57 @@
 +    }, codexForcePluginInstallRefreshIntervalMs);
 +  }
 +
-@@ -7592,0 +7748,2 @@
-+    unlockPluginNavButtons();
-+    refreshPluginNavUnlockLoop();
-@@ -7647,0 +7805 @@
+-  function enablePluginEntry() {
++  function enablePluginEntry() {
+    if (pluginPatchDisabledInRelayMode()) return;
+    if (!codexPlusSettings().pluginEntryUnlock) return;
+@@ -7734,6 +7888,8 @@
+         installPluginBuildFlavorFilterPatch();
+         installPluginMarketplaceRequestPatch();
+       }
++      unlockPluginNavButtons();
++      refreshPluginNavUnlockLoop();
+       unblockPluginInstallButtons();
+       refreshForcePluginInstallUnlockLoop();
+     }
+@@ -7784,6 +7940,7 @@
+       ".composer-footer",
+       selectors.appHeader,
+       selectors.archiveNav,
 +      selectors.pluginNavButton,
+       ...(pluginPatchDisabledInRelayMode() ? [] : [selectors.disabledInstallButton]),
+     ].join(", ");
+   }
+--- a/crates/codex-plus-core/tests/cdp_bridge.rs
++++ b/crates/codex-plus-core/tests/cdp_bridge.rs
+@@ -156,2 +156,28 @@
+-#[test]
++#[test]
++fn injection_script_unlocks_plugin_nav_buttons_without_touching_zed_menu_template() {
++    let script = assets::injection_script(57321);
++
++    assert!(script.contains("codexPluginNavUnlockVersion"));
++    assert!(script.contains("function unlockPluginNavButtons()"));
++    assert!(script.contains("function refreshPluginNavUnlockLoop()"));
++    assert!(script.contains("selectors.pluginNavButton,"));
++    assert!(script.contains("button.dataset.codexPluginNavUnlocked"));
++    assert!(script.contains("props.onClick = pluginHandler"));
++
++    let nav_helpers = script
++        .find("function pluginNavButtonCandidates()")
++        .expect("script should define plugin nav helpers");
++    let enable_entry = script
++        .find("function enablePluginEntry()")
++        .expect("script should still define legacy plugin entry unlock");
++    assert!(nav_helpers < enable_entry);
++
++    let zed_item = script.find("function createZedRemoteOpenInMenuItem").unwrap();
++    let zed_scopes = script.find("function zedRemoteOpenInMenuScopes").unwrap();
++    let zed_template_block = &script[zed_item..zed_scopes];
++    assert!(!zed_template_block.contains("unlockPluginNavButtons"));
++    assert!(!zed_template_block.contains("selectors.pluginNavButton"));
++}
++
++#[test]
+ fn injection_script_keeps_plugin_marketplace_unlock_separate_from_entry_unlock() {
+     let script = assets::injection_script(57321);

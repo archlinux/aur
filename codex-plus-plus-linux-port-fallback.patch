@@ -47,12 +47,3 @@
      let selected = select_platform_loopback_port_with(9229, false, |_| false, || 43001);
  
      assert_eq!(selected, 9229);
-@@ -1086,7 +1086,7 @@
-         Ok(())
-     }
- 
--    async fn ensure_injection(&self, debug_port: u16, helper_port: u16) -> bool {
-+    async fn ensure_injection(&self, debug_port: u16, helper_port: u16, _app_dir: &Path) -> bool {
-         self.event(format!("inject:{debug_port}:{helper_port}"));
-         self.inject_error.is_none()
-     }
