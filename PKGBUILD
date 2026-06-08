@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leavepad-bin
 _pkgname=Leavepad
-pkgver=2.4.2
+pkgver=2.5.0
 _electronversion=41
 pkgrel=1
 pkgdesc="A multi-platform notepad. focuses on writing memos. File editing is not supported.(Prebuilt version.Use system-wide electron)"
@@ -18,12 +18,28 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kaishuu0123/leavepad/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d167d2ff3e517f21feef2f2492c97d3ddc2c648338a81237d7acc0c29cdf3f0f'
+sha256sums=('71c1b4ddf18678c8b5cb142e1ce5c6c31df2f35c8786efee8fd707017fe1e212'
             '2db6d2f8319742e183737299159ca2a72096629542c080492f13770b7d305c3b'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _main_exe=""
+    if [[ -n "${_app_dir}" ]]; then
+        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
+    fi
+    if [[ -n "${_main_exe}" ]]; then
+        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
+        if [[ -n "${_elec_ver}" ]]; then
+            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+            else
+                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+            fi
+        fi
+    else
+        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
+    fi
 }
 prepare() {
     sed -i -e "
@@ -31,7 +47,6 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
@@ -40,15 +55,21 @@ prepare() {
         rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    _get_electron_version
+    _check_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "${srcdir}/squashfs-root/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+    done
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
 }

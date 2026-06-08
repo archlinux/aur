@@ -1,18 +1,18 @@
 pkgbase = leavepad-bin
 	pkgdesc = A multi-platform notepad. focuses on writing memos. File editing is not supported.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.4.2
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/kaishuu0123/leavepad
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron41
-	provides = leavepad=2.4.2
+	provides = leavepad=2.5.0
 	conflicts = leavepad
-	source = leavepad-2.4.2-x86_64.AppImage::https://github.com/kaishuu0123/leavepad/releases/download/v2.4.2/leavepad-2.4.2.AppImage
-	source = LICENSE-2.4.2::https://raw.githubusercontent.com/kaishuu0123/leavepad/v2.4.2/LICENSE
+	source = leavepad-2.5.0-x86_64.AppImage::https://github.com/kaishuu0123/leavepad/releases/download/v2.5.0/leavepad-2.5.0.AppImage
+	source = LICENSE-2.5.0::https://raw.githubusercontent.com/kaishuu0123/leavepad/v2.5.0/LICENSE
 	source = leavepad.sh
-	sha256sums = d167d2ff3e517f21feef2f2492c97d3ddc2c648338a81237d7acc0c29cdf3f0f
+	sha256sums = 71c1b4ddf18678c8b5cb142e1ce5c6c31df2f35c8786efee8fd707017fe1e212
 	sha256sums = 2db6d2f8319742e183737299159ca2a72096629542c080492f13770b7d305c3b
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = leavepad-bin
