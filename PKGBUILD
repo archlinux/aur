@@ -1,20 +1,21 @@
-# Maintainer: Marek Darocha <aur@mdarocha.pl>
+# Maintainer: Karol Jarząbek <kar.jarzabek@gmail.com>
 pkgname=morfeusz2-bin
 pkgdesc="Morphological analyser Morfeusz, binary version"
 arch=('x86_64')
 url="http://morfeusz.sgjp.pl/"
 license=('BSD')
 
-pkgver=1.9.16
-_pkgdate=20201122
+pkgver=1.99.15
+_pkgdate=20260607
 pkgrel=1
 epoch=0
+options=('!strip')
 
 depends=('glibc')
 makedepends=()
 
-source_x86_64=("http://download.sgjp.pl/morfeusz/${_pkgdate}/Linux/20.04/64/morfeusz2-${pkgver}.sgjp.${_pkgdate}-Linux-amd64.tar.gz")
-sha256sums_x86_64=('f16625b2370112727164f61fe3965bcd037475df64c77e00ab1511039e78a52a')
+source_x86_64=("https://download.sgjp.pl/morfeusz/${_pkgdate}/Linux/manylinux_2_28/64/morfeusz2-${pkgver}.sgjp.${_pkgdate}-Linux-amd64.tar.gz")
+sha256sums_x86_64=('ff295460f1ae79b36fbed7032cfbf8e20c13738095b4575b6d3a763132404279')
 
 package() {
     cd "${srcdir}/morfeusz2-${pkgver}.sgjp.${_pkgdate}-Linux-amd64/"
