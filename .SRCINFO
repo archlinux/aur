@@ -1,7 +1,7 @@
 pkgbase = iup
 	pkgdesc = C cross platform GUI toolkit
 	pkgver = 3.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tecgraf.puc-rio.br/iup/
 	arch = x86_64
 	license = MIT
@@ -22,9 +22,13 @@ pkgbase = iup
 	source = https://downloads.sourceforge.net/project/iup/3.32/Docs%20and%20Sources/iup-3.32_Sources.tar.gz
 	source = https://downloads.sourceforge.net/project/iup/3.32/Docs%20and%20Sources/iup-3.32.pdf
 	source = fix-build-gcc-14.patch
+	source = fix-const-assign.patch
+	source = tecmake-fix-Linux7-build.patch
 	md5sums = d38402fc8820c3f4528021b6de60a982
 	md5sums = 727f67a17f75dea37304278be4f33849
 	md5sums = 87f23cb627785378c8403a6ca80c55d8
+	md5sums = d2bf8918aae5ce43f49e2efc782d0ca8
+	md5sums = 365f8c6971805c7c447f0e19e7095236
 
 pkgname = iup
 	pkgdesc = C cross platform GUI toolkit
