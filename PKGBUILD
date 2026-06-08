@@ -5,7 +5,7 @@ pkgver=r85.g962966d
 pkgrel=1
 pkgdesc="Window Assigment System Monitoring Advanced (git)"
 arch=('x86_64')
-url="https://github.com/Azencorporation/Wasma"
+url="https://codeberg.org/Azencorporation/Wasma"
 license=('Apache-2.0')
 depends=(
   'gcc-libs'
@@ -18,7 +18,7 @@ makedepends=('git' 'cargo')
 provides=('wasma')
 conflicts=('wasma')
 
-source=("git+https://github.com/Azencorporation/Wasma.git")
+source=("git+https://codeberg.org/Azencorporation/Wasma.git")
 sha256sums=('SKIP')
 
 pkgver() {
