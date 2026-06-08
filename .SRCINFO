@@ -1,17 +1,17 @@
 pkgbase = dotty
 	pkgdesc = Dotfiles and config manager with profiles, written in C++
-	pkgver = 0.1.1
-	pkgrel = 3
+	pkgver = 0.3.1
+	pkgrel = 4
 	url = https://github.com/Monjaris/dotty
 	arch = x86_64
-	license = AGPL-3.0-or-later
+	license = GPL-3.0-or-later
 	makedepends = xmake
 	depends = cli11
 	depends = git
 	depends = github-cli
 	depends = readline
 	depends = bat
-	source = git+https://github.com/Monjaris/dotty.git#tag=v0.1.1
+	source = git+https://github.com/Monjaris/dotty.git#tag=v0.3.1
 	sha256sums = SKIP
 
 pkgname = dotty

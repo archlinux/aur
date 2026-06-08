@@ -1,11 +1,11 @@
 # Maintainer: Monjaris ziyanovruzlu750@gmail.com
 pkgname=dotty
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.3.1
+pkgrel=4
 pkgdesc="Dotfiles and config manager with profiles, written in C++"
 arch=('x86_64')
 url="https://github.com/Monjaris/dotty"
-license=('AGPL-3.0-or-later')
+license=('GPL-3.0-or-later')
 source=("git+$url.git#tag=v$pkgver")
 
 depends=(
