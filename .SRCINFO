@@ -1,5 +1,5 @@
 pkgbase = solana
-	pkgver = 3.1.14
+	pkgver = 4.0.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/anza-xyz/agave
@@ -12,16 +12,16 @@ pkgbase = solana
 	makedepends = cargo
 	makedepends = systemd-libs
 	options = !lto
-	source = git+https://github.com/anza-xyz/agave.git#tag=v3.1.14
+	source = git+https://github.com/anza-xyz/agave.git#tag=v4.0.2
 	source = git+https://github.com/solana-program/token-2022.git#tag=cli@v5.5.0
 	source = solana.sysusers
 	source = solana.tmpfiles
 	source = solana-sbf_sdk-path.patch
-	sha256sums = f2a1d0d54f558bce7b17fa399c246767a41482ccac85a6fe137b155bfb531798
+	sha256sums = bb2d61322ad92abe033c79021c1d7f8a26b55b44662036f552e934acf4f348a6
 	sha256sums = a9a0f6e495f68a77e61ce44a39bed42608bd3afd6aa5ddf09e124b50e17d41a6
 	sha256sums = bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0
 	sha256sums = a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b
-	sha256sums = f2251e4057350ec795d6ea5402cffbaa5678883996e68ba8688c3f250cb9a173
+	sha256sums = a39c403d4b25062e3d887afe16d9d643f058f34b107d6b7b7041c5167a9f12e3
 
 pkgname = solana-cli
 	pkgdesc = Solana CLI tools
@@ -33,10 +33,12 @@ pkgname = solana-cli
 
 pkgname = agave-validator
 	pkgdesc = Agave validator and node operator tools for Solana
+	install = agave-validator.install
 	depends = bzip2
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
+	depends = libcap
 	optdepends = ocl-icd: OpenCL GPU signature verification via perf-libs (requires compatible GPU; opt-in via SOLANA_PERF_LIBS)
 	optdepends = intel-sgx-psw: SGX-backed signing enclave via perf-libs (requires SGX-capable CPU; opt-in via SOLANA_PERF_LIBS)
 

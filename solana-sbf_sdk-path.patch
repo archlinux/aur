@@ -1,19 +1,45 @@
-diff --git a/platform-tools-sdk/cargo-build-sbf/src/main.rs b/platform-tools-sdk/cargo-build-sbf/src/main.rs
-index 6d02499c..e7f7dde2 100644
---- a/platform-tools-sdk/cargo-build-sbf/src/main.rs
-+++ b/platform-tools-sdk/cargo-build-sbf/src/main.rs
-@@ -47,13 +47,7 @@ impl Default for Config<'_> {
-         Self {
-             cargo_args: vec![],
-             target_directory: None,
--            sbf_sdk: env::current_exe()
--                .expect("Unable to get current executable")
--                .parent()
--                .expect("Unable to get parent directory")
--                .to_path_buf()
--                .join("platform-tools-sdk")
--                .join("sbf"),
-+            sbf_sdk: std::path::Path::new("/usr/lib/solana/platform-tools-sdk/sbf").to_path_buf(),
-             sbf_out_dir: None,
-             platform_tools_version: None,
-             dump: false,
+diff --git a/platform-tools-sdk/cargo-build-sbf/src/toolchain.rs b/platform-tools-sdk/cargo-build-sbf/src/toolchain.rs
+index 2903bec190..fc74335614 100644
+--- a/platform-tools-sdk/cargo-build-sbf/src/toolchain.rs
++++ b/platform-tools-sdk/cargo-build-sbf/src/toolchain.rs
+@@ -39,24 +39,7 @@ const GITHUB_API_BYTES_RESPONSE_HEADERS: [(&str, &str); 3] = [
+ ];
+
+ fn find_installed_platform_tools() -> Vec<String> {
+-    let solana = home_dir().join(".cache").join("solana");
+-    let package = "platform-tools";
+-
+-    if let Ok(dir) = std::fs::read_dir(solana) {
+-        dir.filter_map(|e| match e {
+-            Err(_) => None,
+-            Ok(e) => {
+-                if e.path().join(package).is_dir() {
+-                    Some(e.path().file_name().unwrap().to_string_lossy().to_string())
+-                } else {
+-                    None
+-                }
+-            }
+-        })
+-        .collect::<Vec<_>>()
+-    } else {
+-        Vec::new()
+-    }
++    vec![DEFAULT_PLATFORM_TOOLS_VERSION.to_string()]
+ }
+
+ fn get_latest_platform_tools_version() -> Result<String, String> {
+@@ -128,12 +111,8 @@ pub(crate) fn validate_platform_tools_version(
+     }
+ }
+
+-pub(crate) fn make_platform_tools_path_for_version(version: &str) -> PathBuf {
+-    home_dir()
+-        .join(".cache")
+-        .join("solana")
+-        .join(version)
+-        .join("platform-tools")
++pub(crate) fn make_platform_tools_path_for_version(_version: &str) -> PathBuf {
++    PathBuf::from("/usr/lib/solana/platform-tools-sdk/sbf")
+ }
+
+ pub(crate) fn get_base_rust_version(platform_tools_version: &str) -> String {

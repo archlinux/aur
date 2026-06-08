@@ -7,7 +7,7 @@
 pkgbase=solana
 pkgname=(solana-cli agave-validator solana-dev solana)
 epoch=1
-pkgver=3.1.14
+pkgver=4.0.2
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
 _splTokenCliVersion=5.5.0
 pkgrel=1
@@ -20,19 +20,17 @@ source=(git+https://github.com/anza-xyz/agave.git#tag=v$pkgver
         $pkgbase.sysusers
         $pkgbase.tmpfiles
         $pkgbase-sbf_sdk-path.patch)
-sha256sums=('f2a1d0d54f558bce7b17fa399c246767a41482ccac85a6fe137b155bfb531798'
+sha256sums=('bb2d61322ad92abe033c79021c1d7f8a26b55b44662036f552e934acf4f348a6'
             'a9a0f6e495f68a77e61ce44a39bed42608bd3afd6aa5ddf09e124b50e17d41a6'
             'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
             'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b'
-            'f2251e4057350ec795d6ea5402cffbaa5678883996e68ba8688c3f250cb9a173')
+            'a39c403d4b25062e3d887afe16d9d643f058f34b107d6b7b7041c5167a9f12e3')
 options=(!lto)
 
 # Build lists
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/agave-build-lists.sh
 # Core binaries (non-DCOU)
 _MAIN_BINS=(
-  cargo-build-sbf
-  cargo-test-sbf
   solana-test-validator
   solana
   solana-keygen
@@ -43,23 +41,28 @@ _MAIN_BINS=(
   solana-faucet
   solana-stake-accounts
   solana-tokens
+  solana-bench-streamer
+  solana-poh-bench
+  rbpf-cli
+)
+
+# Platform bins https://github.com/anza-xyz/agave/blob/v$pkgver/platform-tools-sdk/cargo-build-sbf/Cargo.toml
+_PLATFORMBINS=(
+  cargo-build-sbf
+  cargo-test-sbf
 )
 
 # Root-workspace DCOU/tainted binaries
 _ROOT_DCOU_BINS=(
   agave-store-histogram
   solana-accounts-cluster-bench
-  solana-transaction-dos
-  solana-vortexor
 )
 
 # Devbins https://github.com/anza-xyz/agave/blob/v$pkgver/dev-bins/Cargo.toml
 _DEVBINS=(
   agave-ledger-tool
   agave-store-tool
-  solana-banking-bench
   solana-bench-tps
-  solana-dos
 )
 
 # Tainted packages to exclude from main workspace build
@@ -68,23 +71,24 @@ _dcou_tainted_packages=(
   agave-store-histogram
   agave-store-tool
   solana-accounts-cluster-bench
-  solana-banking-bench
   solana-bench-tps
-  solana-dos
   solana-local-cluster
-  solana-transaction-dos
-  solana-vortexor
 )
 
 # Packaging lists
 _solana_bins=(solana solana-keygen solana-gossip solana-faucet solana-stake-accounts solana-tokens)
-_validator_bins=(agave-validator agave-watchtower solana-genesis "${_ROOT_DCOU_BINS[@]}" solana-bench-tps solana-dos)
-_dev_bins=(cargo-build-sbf cargo-test-sbf solana-test-validator agave-ledger-tool agave-store-tool solana-banking-bench)
+_validator_bins=(agave-validator agave-watchtower solana-genesis "${_ROOT_DCOU_BINS[@]}" solana-bench-tps)
+_dev_bins=(cargo-build-sbf cargo-test-sbf solana-test-validator agave-ledger-tool agave-store-tool solana-bench-streamer solana-poh-bench rbpf-cli)
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cd "$srcdir/agave"
+
   patch -Np1 -i "../$pkgbase-sbf_sdk-path.patch"
+
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  cd "$srcdir/agave/platform-tools-sdk"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   cd "$srcdir/agave/dev-bins"
@@ -98,6 +102,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cd "$srcdir/agave"
+
   # Fix lints
   sed -i '/^\[workspace\.lints\.rust\]$/,+1d' Cargo.toml
   # Fix rocksdb
@@ -113,6 +118,13 @@ build() {
     excludeArgs+=(--exclude "$package")
   done
   cargo build --frozen --release --workspace "${main_binargs[@]}" "${excludeArgs[@]}"
+
+  # Build platform tools
+  local platform_binargs=()
+  for bin in "${_PLATFORMBINS[@]}"; do
+    platform_binargs+=(--bin "$bin")
+  done
+  cargo build --frozen --release --manifest-path platform-tools-sdk/Cargo.toml "${platform_binargs[@]}"
 
   # Root-workspace DCOU bins
   local root_dcou_binargs=()
@@ -162,7 +174,8 @@ package_solana-cli() {
 
 package_agave-validator() {
   pkgdesc="Agave validator and node operator tools for Solana"
-  depends=(bzip2 glibc libgcc libstdc++)
+  install=$pkgname.install
+  depends=(bzip2 glibc libgcc libstdc++ libcap)
   optdepends=(
     'ocl-icd: OpenCL GPU signature verification via perf-libs (requires compatible GPU; opt-in via SOLANA_PERF_LIBS)'
     'intel-sgx-psw: SGX-backed signing enclave via perf-libs (requires SGX-capable CPU; opt-in via SOLANA_PERF_LIBS)'
