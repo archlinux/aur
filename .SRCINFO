@@ -1,0 +1,20 @@
+pkgbase = python-cython-cmake
+	pkgdesc = CMake helpers for building Cython modules
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/scikit-build/cython-cmake
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-scikit-build-core
+	makedepends = python-build
+	makedepends = python-hatch-vcs
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = cython
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/cython_cmake/cython_cmake-0.2.2.tar.gz
+	b2sums = 082208f24972d733ab1be453665f86b1d9397a9822441a9f7cb1249e33bb228303027df950c52ba9cc425e74d6642615024f78aa36aabc6545d88afa4bd46242
+
+pkgname = python-cython-cmake
