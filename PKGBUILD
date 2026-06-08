@@ -2,12 +2,12 @@
 
 _pkgname=ashell
 pkgname="${_pkgname}-git"
-pkgver=r1159.b7eaaa6
+pkgver=r1876.79c00865
 pkgrel=1
 pkgdesc="A ready to go Wayland status bar for Hyprland and Niri"
 _git="https://github.com/MalpenZibo/${_pkgname}.git"
 url="${_git}"
-license=("MIT")
+license=("GPL-3.0-or-later")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 makedepends=(

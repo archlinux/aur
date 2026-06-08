@@ -1,10 +1,10 @@
 pkgbase = ashell-git
 	pkgdesc = A ready to go Wayland status bar for Hyprland and Niri
-	pkgver = r1020.8075b13
-	pkgrel = 2
+	pkgver = r1876.79c00865
+	pkgrel = 1
 	url = https://github.com/MalpenZibo/ashell.git
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
 	makedepends = wayland-protocols
