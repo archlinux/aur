@@ -1,6 +1,6 @@
 # Maintainer: Wasylq <wasylq@protonmail.com>
 pkgname=fss
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Scrapes all scenes and metadata from a studio URL'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Wasylq/FSS/archive/v${p
 # The real sha256 is populated by `updpkgsums` in the release workflow before
 # the package is committed to AUR — see .github/workflows/release.yml. The
 # 'SKIP' placeholder lets makepkg parse the file locally without the source.
-sha256sums=('77f2888386023d09e0f0fe62b32bac66d262981b7e1ac9936f03a91e3f5d6ab5')
+sha256sums=('49e0e113e73a585edc48542d77f643afcf8f33c263e883f99990700628810ad7')
 
 build() {
   cd "FSS-${pkgver}"
