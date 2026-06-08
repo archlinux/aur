@@ -1,6 +1,6 @@
 pkgbase = radar-omega
 	pkgdesc = Radar Omega - Advanced weather radar application (AppImage)
-	pkgver = 5.5.2
+	pkgver = 5.5.3
 	pkgrel = 1
 	url = https://radaromega.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = radar-omega
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
-	source = RadarOmega-5.5.2-x86_64.AppImage::https://dl.todesktop.com/200402kk4yak2og/linux/appImage/x64
-	sha256sums = C34E05F4A1B37E631A64F6F79AE0595FA56269E4861D39BA754DBB9BD7A2FC42
+	source = RadarOmega-5.5.3-x86_64.AppImage::https://dl.todesktop.com/200402kk4yak2og/linux/appImage/x64
+	sha256sums = c8f3b2bbb56ed37d1c2fb815b4d851e0083e073d07f038942571a615f828b845
 
 pkgname = radar-omega
