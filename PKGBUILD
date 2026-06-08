@@ -1,6 +1,6 @@
 pkgname=xfce4-diskperf-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=2.5.5.r23.gfe6abce
+pkgver=xfce4.diskperf.plugin.2.8.0.r124.g6d2e0ee
 pkgrel=1
 pkgdesc='Plugin for the Xfce4 panel displaying instant disk/partition performance'
 arch=('i686' 'x86_64')
@@ -10,10 +10,10 @@ groups=('xfce4-goodies')
 depends=('xfce4-panel')
 conflicts=('xfce4-diskperf-plugin')
 provides=('xfce4-diskperf-plugin')
-makedepends=('xfce4-dev-tools' 'intltool' 'git')
+makedepends=('xfce4-dev-tools' 'intltool' 'git' 'meson')
 options=('!libtool')
 install=xfce4-diskperf-plugin.install
-source=('git://git.xfce.org/panel-plugins/xfce4-diskperf-plugin')
+source=('git+https://gitlab.xfce.org/panel-plugins/xfce4-diskperf-plugin')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,21 +22,13 @@ pkgver() {
     }
 
 build() {
-	cd "$_pkgname"/
+  meson setup --prefix=/usr \
+              --buildtype=plain \
+              "$_pkgname" build
 
-	./autogen.sh --prefix=/usr \
-		--sysconfdir=/etc \
-		--libexecdir=/usr/lib \
-		--localstatedir=/var \
-		--disable-static \
-		--enable-maintainer-mode \
-		--disable-debug
-	make
+  meson compile -C build
 }
 
 package() {
-	cd "$_pkgname"
-
-	make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" meson install -C build
 }
-
