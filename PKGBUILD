@@ -1,5 +1,7 @@
 # Maintainer: Atmosphera App <atmosphera-app@proton.me>
 
+_gitname=atmosphera
+
 pkgname=atmosphera-git
 pkgver=0.1.0.r0.g0000000
 pkgrel=2
@@ -29,12 +31,12 @@ source=("git+$url.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/atmosphera"
+    cd "$srcdir/$_gitname"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 package() {
-  cd "$srcdir/atmosphera"
+  cd "$srcdir/$_gitname"
 
   install -dm755 "$pkgdir/etc/xdg/quickshell/atmosphera"
   cp -r ./* "$pkgdir/etc/xdg/quickshell/atmosphera/"
