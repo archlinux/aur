@@ -1,0 +1,18 @@
+pkgbase = sys-shred
+	pkgdesc = A forensic-grade, multi-threaded command-line utility for secure file erasure and anti-forensics.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/v1lleneuve/sys-shred
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = sys-shred-1.0.0.tar.gz::https://github.com/v1lleneuve/sys-shred/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = a844b3401b872acd9555f62565a48bebd38d1e449b6a5204204b3ee48fc55030
+
+pkgname = sys-shred
