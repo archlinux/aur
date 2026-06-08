@@ -1,0 +1,14 @@
+[Unit]
+Description=beellama.cpp Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/conf.d/beellama.conf
+ExecStart=/usr/bin/llama-server $LLAMA_ARGS
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
