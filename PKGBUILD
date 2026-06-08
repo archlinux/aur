@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=nightingale
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Machine learning powered Karaoke app (with scores!)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'alsa-lib' 'glib2' 'webkit2gtk-4.1' 'cairo' 'gtk3' 'gdk-pixbuf2' 'libsoup3')
 makedepends=('cargo' 'pnpm')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f3dc4128976a9ea3c6943856400f259d6ae47925580f994f10c8f671f2c56947')
+sha256sums=('ccb554c83bac7cd6cd90073ed2cf88cc5f659d5460567574b147de6557bf3014')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -18,6 +18,8 @@ prepare() {
 	cd "$srcdir/$pkgname-$pkgver/client/src-tauri"
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 	cd "$srcdir/$pkgname-$pkgver/client"
+	pnpm c --location project set store-dir "${srcdir}/pnpm-store"
+	pnpm c --location project set cacheDir "${srcdir}/pnpm-cache"
 	pnpm i
 }
 
