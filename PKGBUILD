@@ -5,9 +5,9 @@
 _pkgname='caelestia-shell'
 pkgname="$_pkgname-git"
 pkgver=2.0.1.r0.g8f49fdb
-pkgrel=1
+pkgrel=2
 pkgdesc='The desktop shell for the Caelestia dotfiles'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/caelestia-dots/shell'
 license=('GPL-3.0-only')
 depends=('caelestia-cli' 'quickshell-git' 'ddcutil' 'brightnessctl' 'app2unit' 'libcava' 'networkmanager'
