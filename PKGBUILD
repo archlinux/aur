@@ -1,7 +1,7 @@
 # Maintainer: Ismet Togay <ismet.togay@gmail.com>
 
 pkgname=command-code
-pkgver=0.33.0
+pkgver=0.33.2
 pkgrel=1
 pkgdesc='AI coding agent that continuously learns your coding taste'
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 noextract=("${pkgname}-${pkgver}.tgz")
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
         "$pkgname.license")
-sha256sums=('4440d175d444bb3f83b71040c812f48bfe3efe27a53e07b1f627eb294b84602f'
+sha256sums=('1d250b093d21f168c6914d2cb1f9bed959c298059c3885a8b912863b15b1ff2b'
             'd0dd3a7697c4b7844529345c317d74edcaa10b9fd495249151cbe653d7421c6c')
 
 package() {
