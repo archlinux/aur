@@ -1,10 +1,10 @@
 pkgname=lwe-git
-pkgver=0.9.9.beta.161.1ff82bc
+pkgver=0.9.9.beta.162.c7fb338
 pkgrel=1
 pkgdesc="Linux dynamic wallpaper shell for Wallpaper Engine content"
 arch=('x86_64' 'aarch64')
 url="https://github.com/YangYuS8/lwe"
-license=('MIT')
+license=('Apache-2.0')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'cargo-tauri' 'pnpm' 'nodejs')
 provides=('lwe')
