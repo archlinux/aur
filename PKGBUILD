@@ -1,6 +1,6 @@
 # Maintainer: fam007e <faisalmoshiur+gpg@gmail.com>
 pkgname=nerdfonts-installer-bin
-pkgver=2026.02.15
+pkgver=2026.06.09
 pkgrel=1
 pkgdesc="Interactive Nerd Fonts installer written in C"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('curl' 'unzip' 'fontconfig' 'jansson')
 makedepends=('gcc' 'make')
 source=("${url}/releases/download/v${pkgver}/nerdfonts-installer-${pkgver}.tar.gz")
-sha256sums=('05f9b09b1b308a25985e4172e21c92924fe9dc1789a110f181dd41998a8b57e4')
+sha256sums=('b15a69fb87896454a3cd6ba683d49b411d5c4442396edd430a2a146737de08ef')
 options=(!debug)
 
 build() {
