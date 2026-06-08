@@ -1,0 +1,18 @@
+pkgbase = new-api-privacy-filter-git
+	pkgdesc = Rust privacy redaction proxy for OpenAI-compatible New API deployments
+	pkgver = 0.2.1.r0.ga580860
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/new-api-privacy-filter
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = glibc
+	depends = openssl
+	provides = new-api-privacy-filter
+	conflicts = new-api-privacy-filter
+	source = new-api-privacy-filter::git+https://github.com/LIghtJUNction/new-api-privacy-filter.git
+	sha256sums = SKIP
+
+pkgname = new-api-privacy-filter-git
