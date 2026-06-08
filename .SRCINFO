@@ -1,6 +1,6 @@
 pkgbase = sortsort-bin
 	pkgdesc = CLI sorting algorithm visualizer
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/remememe/sortsort
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = sortsort-bin
 	provides = sortsort
 	conflicts = sortsort
 	options = !strip
-	source = README-0.1.1.md::https://raw.githubusercontent.com/remememe/sortsort/0.1.1/README.md
+	source = README-0.1.2.md::https://raw.githubusercontent.com/remememe/sortsort/0.1.2/README.md
 	sha256sums = 189a43dcfefe0dd716cde4952fff8df3d68c2523fb58dbab6b3f26c2bb7b3f99
-	source_x86_64 = sortsort-x86_64-0.1.1::https://github.com/remememe/sortsort/releases/download/0.1.1/sortsort-0.1.1-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 4e37aa23b98e9cbedae1f99babc15b592c9f75da2e5b3059f90fb27cec6f88fd
+	source_x86_64 = sortsort-x86_64-0.1.2::https://github.com/remememe/sortsort/releases/download/0.1.2/sortsort-0.1.2-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 71cf8b3e9f71275c45b284eb93584a46ec5d5cd6fb39a2920d1b713b03aef55c
 
 pkgname = sortsort-bin

@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="CLI sorting algorithm visualizer"
 
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -28,7 +28,7 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}")
 sha256sums=('189a43dcfefe0dd716cde4952fff8df3d68c2523fb58dbab6b3f26c2bb7b3f99')
-sha256sums_x86_64=('4e37aa23b98e9cbedae1f99babc15b592c9f75da2e5b3059f90fb27cec6f88fd')
+sha256sums_x86_64=('71cf8b3e9f71275c45b284eb93584a46ec5d5cd6fb39a2920d1b713b03aef55c')
 
 
 package() {
