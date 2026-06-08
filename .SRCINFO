@@ -1,0 +1,17 @@
+pkgbase = opencomal
+	pkgdesc = OpenCOMAL - a free Comal implementation
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/ProphetPX/opencomal
+	arch = x86_64
+	license = GPL
+	makedepends = bison
+	makedepends = flex
+	makedepends = gcc
+	makedepends = make
+	depends = ncurses
+	depends = readline
+	source = https://github.com/ProphetPX/opencomal/releases/download/v0.2.6/opencomal-0.2.6.tar.gz
+	sha256sums = de251ef4a917d55c7fb1257df894043044661179aec1aa771407631bbbf9da87
+
+pkgname = opencomal
