@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alice-ai-app-bin
 _pkgname=Alice-AI-App
-pkgver=1.4.3
+pkgver=1.4.4
 _electronversion=28
 pkgrel=1
 pkgdesc="A smart desktop AI assistant application built with Vue.js, Vite, and Electron. Advanced memory system, function calling, MCP support and more.(Prebuilt version.Use system-wide electron)"
@@ -12,13 +12,14 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'ffmpeg'
 )
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/pmbstyle/Alice/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4fa377736d502af7bd125ae920fe4eb4553fc82497ba2dbe671bacefc98997ea'
+sha256sums=('9b5d8c6b462c6f5566788b65dd5212627499530182fffbf5854bef962e710e49'
             '3e9927b4fcbf5507656ca5b5f90f71efb32fb5033321c0f6b9eeb69d50f4001a'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
@@ -58,6 +59,8 @@ prepare() {
     _check_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} +
+    ln -sf "/usr/bin/ffmpeg" "${srcdir}/squashfs-root/resources/backend/bin/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "${srcdir}/squashfs-root/resources/backend/bin/ffprobe"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
