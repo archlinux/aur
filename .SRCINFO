@@ -1,0 +1,21 @@
+pkgbase = cortexfs-git
+	pkgdesc = Provider-neutral AI API FUSE filesystem
+	pkgver = 0.1.0.r56.g9da7eb2
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/cortexfs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = fuse3
+	depends = libgcc
+	provides = cortexfs
+	provides = cortex-cli
+	conflicts = cortexfs
+	conflicts = cortex-cli
+	source = git+https://github.com/LIghtJUNction/cortexfs.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cortexfs-git
