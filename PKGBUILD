@@ -2,7 +2,7 @@
 # Maintainer: Riccardo Guerriero <aur@guer.ro>
 
 pkgname='pingtop'
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='htop-style live dashboard for ping'
 url='https://github.com/guerrieroriccardo/pingtop'
@@ -12,7 +12,7 @@ provides=('pingtop')
 conflicts=('pingtop-bin')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/guerrieroriccardo/pingtop/releases/download/v${pkgver}/pingtop-${pkgver}.tar.gz")
-sha256sums=('1265f84aeaf5bb67744315d7fa8b593d3c1ea51b24dc0200dfcfa0cabbe12129')
+sha256sums=('d4e61ffd946aa2fda3737b32a3586d560809dde8afb08ee1b456023b747eb67d')
 build() {
   cd "$pkgname-$pkgver"
   export CGO_ENABLED=0
