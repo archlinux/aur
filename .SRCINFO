@@ -1,0 +1,18 @@
+pkgbase = shrikedrop
+	pkgdesc = Local file transfer - reliable downloads for all file formats
+	pkgver = 1.1
+	pkgrel = 3
+	url = https://shrikelinuxug.org
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = gtk3
+	depends = glib2
+	depends = qrencode
+	depends = zip
+	depends = libnotify
+	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/main.tar.gz
+	md5sums = SKIP
+
+pkgname = shrikedrop
