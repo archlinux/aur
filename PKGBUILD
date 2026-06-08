@@ -1,6 +1,6 @@
 # Maintainer: Majd Bnat <magame2tec@gmail.com>
 pkgname=aegis-pentest
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="AI-driven web penetration testing orchestrator (PTES + OWASP WSTG)"
 arch=('any')
@@ -51,7 +51,7 @@ makedepends=(
   'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0bce5fa00653d2a0dcde56dd07c3ef16ac2aebf4b1899e8d37a76a77c4166747')
+sha256sums=('875a231deeb7ea091142961eebfbe494e37667a472a27281fbe51596d7aa0dc4')
 
 build() {
   cd "$pkgname-$pkgver"
