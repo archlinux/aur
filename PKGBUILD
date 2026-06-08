@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A colorful modal hex editor"
 
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}-${_gitversion}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}-${_gitversion}.tar.gz")
-sha256sums=('1a33db1d529985eb0f9d9cc1104b7ec5d76e24cf7cc82e26cd55821979a29a76'
+sha256sums=('4c3ced88b548b839830fdea8a0bd9c4ba4e1bdcf644eba9449e40cbe524d74d6'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('9f13022a0e333ad839eb7bcfee93fe010d2768b5ecd6cca6cdf97f7847ae3624')
-sha256sums_aarch64=('474442f4483393bfe425ac7ed1a83ba2c24a9ba6c79f484e01f2138a457839c8')
+sha256sums_x86_64=('ff39cfc0ad7f5853fa6a87e375ca6e5560195b6df283a48c189bae3f3496e7da')
+sha256sums_aarch64=('a15d09b28a937d00f0d1d189c694e209a3c81c2d323aa861d36fe299f32c1fc0')
 
 
 package() {
