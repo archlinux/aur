@@ -6,7 +6,7 @@
 
 pkgname='qt6-wasm'
 
-_qtver=6.11.0
+_qtver=6.11.1
 _emsdkver=4.0.7
 _emsdk=4.0.7
 
@@ -35,7 +35,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/sing
         'qtwasm_env.sh'
 )
 
-sha256sums=('acf3b3db04c9e5d0820e8324b097320388954c297cee83d2bd698789234f68a4'
+sha256sums=('252acef8c5ae68074d91cadba2ee4a83465051bbb970dd26e8f0daa0f3904e03'
             'b7262c64f4b5f0692f3bab063cafb09682495f98355677a3f1373d0520457bad'
             '9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865'
 )
