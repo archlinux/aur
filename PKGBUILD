@@ -1,6 +1,6 @@
 # Maintainer: Wilson Glasser <wilsonglasser@gmail.com>
 pkgname=oryxis-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Modern SSH client built in Rust (encrypted vault, P2P sync, AI, Kubernetes)'
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=('oryxis')
 options=('!strip' '!debug')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/oryxis-linux-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/oryxis-linux-aarch64.tar.gz")
-sha256sums_x86_64=('27f2f184142288e468318de046674c83de0f6c0054c6d397980cebc48b329358')
-sha256sums_aarch64=('0adb890f3a3b4896503f4b09d4423168443c7804112365a4294a2915c6dd65b0')
+sha256sums_x86_64=('ff9b9a0172f5441275715e353938495172ee6859149f37ab15caf1b03abeb4b0')
+sha256sums_aarch64=('b8938cb2d09e10d348ae436166b71ecc3e838e673a66aa14515c893b5568eea9')
 
 package() {
     install -Dm755 "$srcdir/oryxis" "$pkgdir/usr/bin/oryxis"
