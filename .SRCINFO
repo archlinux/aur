@@ -1,21 +1,21 @@
 pkgbase = splayer-bin
 	pkgdesc = 🎵 A music player with Jellyfin / Navidrome / Emby media server support.(Prebuilt version.Use system-wide electron)简约的跨平台音乐播放器，支持逐字歌词、桌面歌词、任务栏歌词、云盘音乐、本地音乐管理及流媒体播放
-	pkgver = 3.0.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = http://splayer.imsyy.top
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = asar
-	depends = electron38
+	depends = electron41
 	depends = libvips
-	provides = splayer=3.0.0
+	provides = splayer=3.1.1
 	conflicts = splayer
 	source = splayer.sh
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = splayer-3.0.0-aarch64.rpm::https://github.com/imsyy/SPlayer/releases/download/v3.0.0/splayer-3.0.0-aarch64.rpm
-	sha256sums_aarch64 = e64b723057bfca831891014e5867b86e69ac3b381b1680dc01b51307d5daa954
-	source_x86_64 = splayer-3.0.0-x86_64.rpm::https://github.com/imsyy/SPlayer/releases/download/v3.0.0/splayer-3.0.0-x86_64.rpm
-	sha256sums_x86_64 = e1cae6d3706875911117609aceb2905a32fd1d4c0d567853f143230facea916f
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = splayer-3.1.1-aarch64.rpm::https://github.com/imsyy/SPlayer/releases/download/v3.1.1/splayer-3.1.1-aarch64.rpm
+	sha256sums_aarch64 = 49de8289eb92456e1686016bd9e92929a4a5f47f625b315eae61593af2936a01
+	source_x86_64 = splayer-3.1.1-x86_64.rpm::https://github.com/imsyy/SPlayer/releases/download/v3.1.1/splayer-3.1.1-x86_64.rpm
+	sha256sums_x86_64 = 0050c7606365f4ef73fad18b5e80aec7b39383fcea736c1c283479059f35d942
 
 pkgname = splayer-bin
