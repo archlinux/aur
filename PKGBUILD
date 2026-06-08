@@ -1,7 +1,7 @@
 # Maintainer: lightjunction <<redacted-email>>
 pkgname=new-api-privacy-filter-git
 _pkgname=${pkgname%-git}
-pkgver=0.2.3.r0.gf24e588
+pkgver=0.2.3.r2.g41a36ed
 pkgrel=1
 pkgdesc='Rust privacy redaction proxy for OpenAI-compatible New API deployments'
 arch=('x86_64')
@@ -50,5 +50,6 @@ package() {
   install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "systemd/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 docs/deployment.md "$pkgdir/usr/share/doc/$pkgname/deployment.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
