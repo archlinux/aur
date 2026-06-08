@@ -16,7 +16,7 @@ _package="Project+.$_tag.Netplay.Linux.AppImage.zip"
 source=(
 	"$_package::$_url/download/$_tag/Project+.$_tag.Netplay.Linux.AppImage.zip"
 )
-sha256sums=('345a9236cd1397e65d3d119dd11acb7423f8a335f21f47503d991a8cb3050f00')
+sha256sums=('bef140a1a96994029153dca8c00b1750b9a5a764fb9db2dc68d7bb40e8a29e8a')
 
 prepare() {
     cd "$srcdir"
