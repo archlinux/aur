@@ -1,7 +1,7 @@
 # Maintainer: ced0180 <countbaster@gmail.com>
 
 pkgname=skull-shell-git
-pkgver=0.2.0.r8.gf4888cb
+pkgver=0.2.1.r9.gc8984a0
 pkgrel=1
 pkgdesc='Tiny POSIX-style shell written in C++20'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/skull-shell"
-    printf '0.2.0.r%s.g%s' \
+    printf '0.2.1.r%s.g%s' \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
 }
