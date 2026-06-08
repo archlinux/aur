@@ -1,7 +1,7 @@
 # Maintainer: Lev Netreba <dev@lev-net.xyz>
 pkgname=jplayer-bin
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Lightweight music player using yt-dlp and ffmpeg, bundled with a custom runtime via jpackage"
 arch=('x86_64')
 url="https://github.com/thelevnet/jplayer"
