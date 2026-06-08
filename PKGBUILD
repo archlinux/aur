@@ -12,12 +12,12 @@ b2sums=('ed882ebb14c34362273f73d2a7e16596f608e6b3b16f91fe5f6186a2ba001b3e3d57cc2
 
 build() {
     cd "$pkgname-$pkgver"
-    cargo build --release --locked --all-features
+    env -u CFLAGS -u CXXFLAGS -u LDFLAGS cargo build --release --locked --all-features
 }
 
 check() {
     cd "$pkgname-$pkgver"
-    cargo test --release --locked
+    env -u CFLAGS -u CXXFLAGS -u LDFLAGS cargo test --release --locked
 }
 
 package() {
