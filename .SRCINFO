@@ -1,6 +1,6 @@
 pkgbase = vrcx-0-bin
 	pkgdesc = Friendship management tool for VRChat (Tauri version)
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/Map1en/VRCX-0
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vrcx-0-bin
 	depends = libappindicator
 	provides = vrcx-0-bin
 	conflicts = vrcx-0-bin
-	source = https://github.com/Map1en/VRCX-0/releases/download/v2.4.0/VRCX-0_2.4.0_linux_x86_64.deb
-	sha256sums = a7ecd7370eb775d7159a47ae420b107821f80165beccd7598ce66af02fa16b9c
+	source = https://github.com/Map1en/VRCX-0/releases/download/v2.5.0/VRCX-0_2.5.0_linux_x86_64.deb
+	sha256sums = ca94336555fc3a5ef229ad701fdd5eb98c184f00cb8f0c06de3d06c091ded921
 
 pkgname = vrcx-0-bin
