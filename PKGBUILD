@@ -1,19 +1,20 @@
-# Maintainer: envolution
-# shellcheck shell=bash disable=SC2034,SC2154
+# Maintainer: clove3am (aka: Caltlgin) <clove.dev.mailbox.org>
+# Contributor: envolution
+
 pkgname=sttr
-pkgver=0.2.28
+pkgver=0.2.30
 pkgrel=1
 pkgdesc='cli app to perform various operations on string'
+arch=('x86_64' 'aarch64')
+url='https://github.com/abhimanyu003/sttr'
 license=('MIT')
-arch=(i686 x86_64 aarch64)
-url="https://github.com/abhimanyu003/sttr"
-depends=(glibc)
-makedepends=(go)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/abhimanyu003/sttr/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c0b5d8fac3d126178f7ec197567eb54566f35faa5d6f3f6d3b67c76197a56691')
+depends=('glibc')
+makedepends=('go')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('64c4ddd6f84c99f197053e96c489dea48c0bd83a33dfdd69ab209653bc38b9c8')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -23,10 +24,9 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 sttr "${pkgdir}/usr/bin/sttr"
-  install -Dm755 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm755 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 'sttr' -t "${pkgdir}/usr/bin"
+  install -Dm755 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm755 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
-# vim:set ts=2 sw=2 et:

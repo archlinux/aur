@@ -1,5 +1,4 @@
 [sttr]
-source="github"
-github="abhimanyu003/sttr"
-use_latest_tag=true
-prefix='v'
+source = "git"
+git = "https://github.com/abhimanyu003/sttr.git"
+prefix = "v"
