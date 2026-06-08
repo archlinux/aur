@@ -1,6 +1,6 @@
 pkgname=lug-wine-tkg-experimental-git
 pkgver=11.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Wine runner based on TKG builds + experimental patches for Star Citizen"
 arch=('x86_64')
 url="https://github.com/starcitizen-lug/lug-wine-experimental"
@@ -28,4 +28,12 @@ sha256sums=('1503cc2ee01942f2ef3d0b165a75b9480f7b20166877d940b040991c5b25ce12')
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
   cp -r "${srcdir}/${pkgname}-${pkgver}-1"/* "${pkgdir}/opt/${pkgname}/"
+
+  # Create symlinks in /usr/bin/ for system-wide CLI usage
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/bin/wine" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/bin/wine64" "${pkgdir}/usr/bin/${pkgname}64"
+  ln -s "/opt/${pkgname}/bin/winecfg" "${pkgdir}/usr/bin/${pkgname}-cfg"
+  ln -s "/opt/${pkgname}/bin/wineserver" "${pkgdir}/usr/bin/${pkgname}-server"
+  ln -s "/opt/${pkgname}/bin/wineboot" "${pkgdir}/usr/bin/${pkgname}-boot"
 }
