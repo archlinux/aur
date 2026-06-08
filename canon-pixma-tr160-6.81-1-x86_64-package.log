@@ -1,0 +1,13 @@
+deb2targz: converting 'cnijfilter2_6.81-1_amd64.deb' ...
+deb2targz: skipping section 'debian-binary'
+deb2targz: skipping section 'control.tar.xz'
+deb2targz: wrote 'cnijfilter2_6.81-1_amd64.tar.xz'
+install: creating directory 'usr/share/cups'
+install: creating directory 'usr/share/cups/model'
+'usr/share/ppd/canontr160.ppd' -> 'usr/share/cups/model/canontr160.ppd'
+install: creating directory '/build/canon-pixma-tr160/pkg/canon-pixma-tr160/usr/share/licenses'
+install: creating directory '/build/canon-pixma-tr160/pkg/canon-pixma-tr160/usr/share/licenses/canon-pixma-tr160'
+'./LICENSE-cnijfilter-6.81EN.txt' -> '/build/canon-pixma-tr160/pkg/canon-pixma-tr160/usr/share/licenses/canon-pixma-tr160/./LICENSE-cnijfilter-6.81EN.txt'
+'./LICENSE-cnijfilter-6.81FR.txt' -> '/build/canon-pixma-tr160/pkg/canon-pixma-tr160/usr/share/licenses/canon-pixma-tr160/./LICENSE-cnijfilter-6.81FR.txt'
+'./LICENSE-cnijfilter-6.81JP.txt' -> '/build/canon-pixma-tr160/pkg/canon-pixma-tr160/usr/share/licenses/canon-pixma-tr160/./LICENSE-cnijfilter-6.81JP.txt'
+'./LICENSE-cnijfilter-6.81SC.txt' -> '/build/canon-pixma-tr160/pkg/canon-pixma-tr160/usr/share/licenses/canon-pixma-tr160/./LICENSE-cnijfilter-6.81SC.txt'
