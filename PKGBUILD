@@ -1,6 +1,6 @@
 # Maintainer: toxdes <hi@toxdes.com>
 pkgname=promptr-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="GTK4 overlay prompt for opencode"
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,10 @@ license=('MIT')
 depends=('gtk4' 'gtksourceview5' 'gtk4-layer-shell')
 
 source_x86_64=("promptr-${pkgver}-x86_64.tar.gz::https://packages.toxdes.com/releases/promptr_${pkgver}_amd64.tar.gz")
-sha256sums_x86_64=('90a49ac8a61e492e9d7208e09b70143a18debeb2dc0bce74c196bb9f0fab9c3c')
+sha256sums_x86_64=('1a3166601657c71ee306390dd957f8aa251df0e0dd878b502dec91e8c709d221')
 
 source_aarch64=("promptr-${pkgver}-aarch64.tar.gz::https://packages.toxdes.com/releases/promptr_${pkgver}_arm64.tar.gz")
-sha256sums_aarch64=('d0002260ea79277681329c19e2ec4179ae63467f1859e56b73d1634d3c24e605')
+sha256sums_aarch64=('667d3d71cb662f84f760a50df2ad7aa1aeac8b8474efe8345d3f139d354bdbbf')
 
 package() {
   bsdtar -xf "${srcdir}/promptr-${pkgver}-${CARCH}.tar.gz" -C "${pkgdir}"
