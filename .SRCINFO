@@ -1,6 +1,6 @@
 pkgbase = threat-dragon-ng
 	pkgdesc = Electron Threat Modelling and diagramming tool by Mike Goodwin @ OWASP
-	pkgver = 2.5.0
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://owasp.org/www-project-threat-dragon/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = threat-dragon-ng
 	conflicts = threat-dragon-ng
 	conflicts = owasp-threat-dragon
 	options = !debug
-	source = threat-dragon-ng-2.5.0.deb::https://github.com/OWASP/threat-dragon/releases/download/v2.5.0/threat-dragon_2.5.0_amd64.deb
-	sha256sums = a7918fd1193ba02a50b3029149865d8f0100ef9facbaca625dbcc014929c20ae
+	source = threat-dragon-ng-2.6.2.deb::https://github.com/OWASP/threat-dragon/releases/download/v2.6.2/threat-dragon_2.6.2_amd64.deb
+	sha256sums = cbb8e50b07a5a864a70ffe4d9c66b4938b778ce249c295249d86807618b2dda3
 
 pkgname = threat-dragon-ng
