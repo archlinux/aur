@@ -1,13 +1,13 @@
 pkgbase = brother-hll8360cdw-lpr-bin
 	pkgdesc = LPR driver for Brother HL-L8360CDW printer
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hll8360cdw_us_eu_as
 	arch = i686
 	arch = x86_64
 	groups = base-devel
 	license = EULA
-	source = http://download.brother.com/welcome/dlf103237/hll8360cdwlpr-1.5.0-0.i386.deb
-	md5sums = 6b3a9fe88a156648ca475884bb2921d0
+	source = http://download.brother.com/welcome/dlf103237/hll8360cdwlpr-1.5.0-3.i386.deb
+	md5sums = 33dad0f92ff5854a772809a2be62fe89
 
 pkgname = brother-hll8360cdw-lpr-bin
