@@ -1,0 +1,4 @@
+[notesmd-cli]
+source = "git"
+git = "https://github.com/Yakitrak/notesmd-cli.git"
+prefix = "v"
