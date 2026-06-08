@@ -2,13 +2,14 @@
 
 pkgname=pidscope-git
 _pkgname=pidscope
-pkgver=26.06.0.rc1.r0.g992a12c
+pkgver=26.05.0.r0.gdbbb5fb
 pkgrel=1
 pkgdesc='GNU Octave graphical blackbox flight log analyzer for FPV drone PID tuning'
 arch=('x86_64' 'aarch64')
 url='https://github.com/dzikus/PIDscope'
 license=('GPL-3.0-or-later')
 depends=(
+  'gnu-free-fonts'
   'octave'
   'octave-control'
   'octave-image'
@@ -46,6 +47,21 @@ package() {
 
   install -dm755 "${pkgdir}/usr/share/pidscope"
   install -dm755 "${pkgdir}/usr/bin"
+
+  # Provide FreeSans font paths expected by PIDscope/Octave.
+  # The actual font files are provided by the gnu-free-fonts dependency.
+  install -dm755 "${pkgdir}/usr/share/fonts/opentype/freefont"
+
+  local font
+  for font in \
+    FreeSans.otf \
+    FreeSansBold.otf \
+    FreeSansOblique.otf \
+    FreeSansBoldOblique.otf
+  do
+    ln -s "/usr/share/fonts/gnu-free/${font}" \
+      "${pkgdir}/usr/share/fonts/opentype/freefont/${font}"
+  done
 
   install -m644 PIDscope.m VERSION "${pkgdir}/usr/share/pidscope/"
   cp -a src "${pkgdir}/usr/share/pidscope/"
