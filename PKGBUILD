@@ -1,7 +1,7 @@
-# Maintainer: Carlos Prieto <cprieto.ortiz@gmail.com>
+# Maintainer: Carlos Prieto <prietus@live.com>
 pkgname=murmur-bin
 _pkgname=murmur
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc='A native, opinionated IRC client. Subtle by default. IRCv3-ready. (prebuilt binary)'
 arch=('x86_64')
@@ -18,12 +18,16 @@ depends=(
   'gcc-libs'
   'glibc'
 )
+optdepends=(
+  'hunspell-en_us: English autocomplete (ghost text)'
+  'hunspell-es_es: Spanish autocomplete (ghost text)'
+)
 source_x86_64=(
   "$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/prietus/murmur/releases/download/v$pkgver/murmur-x86_64-unknown-linux-gnu.tar.gz"
   "$_pkgname-$pkgver-extras.tar.gz::https://github.com/prietus/murmur/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums_x86_64=('362a32feadb900ccb3aa5465b9c7cb224ae2f8454ab9aa1e9a6583debe33d443'
-                   'f96ebe1e771d1057eeae99d446daa7ae20cc7ac61fb86fc10839beb2d93114fa')
+sha256sums_x86_64=('8a2f2f4fe4ae96dfcff9448f0163e14763e0acfc280d33912b9c00f487ccd862'
+                   '13a21cd9b93831c130c148582336adc8387a97bc3b108c83d3eb07c52ba20cb5')
 
 package() {
   install -Dm755 "$srcdir/murmur" "$pkgdir/usr/bin/$_pkgname"
