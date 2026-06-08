@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codewhale
-pkgver=0.8.53
+pkgver=0.8.54
 pkgrel=1
 pkgdesc="CodeWhale (formerly DeepSeek-TUI) - DeepSeek-first agentic terminal for open-source coding models"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=('codewhale-tui' 'deepseek' 'deepseek-tui')
 conflicts=('codewhale-bin' 'codewhale-tui' 'deepseek' 'deepseek-tui' 'deepseek-tui-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bdd37e762a4ad2635fddd8eef864ceef1cfce00ac2601e563261c8d16859b096')
+sha256sums=('65a01225d0e8d5beb6e47a421946f1fac84781eddb400e8f443e991f342756d5')
 
 prepare() {
     cd "CodeWhale-${pkgver}"
@@ -30,15 +30,11 @@ build() {
     export CARGO_HOME="${srcdir}/.cargo"
     export RUSTUP_TOOLCHAIN=stable
 
-    # crates/cli ships two bins (codewhale + deepseek legacy shim);
-    # crates/tui ships two more (codewhale-tui + deepseek-tui shim).
-    # Build all four in one cargo invocation so they share the dep
-    # compile rather than re-doing it.
+    # crates/cli ships codewhale; crates/tui ships codewhale-tui.
+    # Upstream removed the deepseek/deepseek-tui legacy shims in v0.8.54.
     cargo build --frozen --release \
         --bin codewhale     \
-        --bin codewhale-tui \
-        --bin deepseek      \
-        --bin deepseek-tui
+        --bin codewhale-tui
 }
 
 package() {
@@ -46,10 +42,6 @@ package() {
 
     install -Dm755 "target/release/codewhale"     "${pkgdir}/usr/bin/codewhale"
     install -Dm755 "target/release/codewhale-tui" "${pkgdir}/usr/bin/codewhale-tui"
-    # Legacy shims; drop these two install lines once upstream removes
-    # them in v0.9.0.
-    install -Dm755 "target/release/deepseek"      "${pkgdir}/usr/bin/deepseek"
-    install -Dm755 "target/release/deepseek-tui"  "${pkgdir}/usr/bin/deepseek-tui"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
