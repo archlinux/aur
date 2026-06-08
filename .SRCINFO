@@ -1,0 +1,20 @@
+pkgbase = pmark-bin
+	pkgdesc = Tool for tagging processes for split routing and other purposes
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/asciimoth/p-mark
+	license = MIT OR GPL-3.0-or-later
+	depends = glibc
+	conflicts = pmark
+	provides = pmark
+	arch = aarch64
+	source_aarch64 = https://github.com/asciimoth/p-mark/releases/download/v0.1.2/pmark_0.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 006d96b33826f4cca72d9cc8d5ab427bc2fb4086d3f370524273fff11ae7e2b5
+	arch = i686
+	source_i686 = https://github.com/asciimoth/p-mark/releases/download/v0.1.2/pmark_0.1.2_linux_i686.tar.gz
+	sha256sums_i686 = 3eca5ca60a669619488a7cc32db5eecdc6d2524721ad6003a5e8af42c74a1a18
+	arch = x86_64
+	source_x86_64 = https://github.com/asciimoth/p-mark/releases/download/v0.1.2/pmark_0.1.2_linux_x86_64.tar.gz
+	sha256sums_x86_64 = aaa44e036f5f13d84b67fbc3e7461c7fec5a36e741f0134df42a65494795f620
+	
+pkgname = pmark-bin
