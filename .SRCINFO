@@ -1,13 +1,13 @@
 pkgbase = svault
 	pkgdesc = Local encrypted secret vault for developers
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/dafagareth/svault
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = svault-2.1.0.tar.gz::https://github.com/dafagareth/svault/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = f3b9b129353121b272bb3fdffd429e78fd7967d90c698c7b52620d215ff1d6cb
+	source = svault-2.2.0.tar.gz::https://github.com/dafagareth/svault/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = eae568219ffa8285bb58b0e47304329a32ff183821d3591793516dce23e06516
 
 pkgname = svault
