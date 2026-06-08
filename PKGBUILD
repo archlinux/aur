@@ -12,11 +12,11 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=3.9.0
+pkgver=4.0.0
 _tag=
 pkgrel=1
 
-pkgdesc="High-performance cinematic Matrix rain renderer for the terminal."
+pkgdesc="Production-grade cinematic Matrix rain renderer for serious terminal environments."
 arch=('x86_64' 'aarch64')
 url="https://github.com/oxyzenQ/cosmostrix"
 license=('MIT')
