@@ -29,6 +29,6 @@ package() {
   
   # Install Documentation and License
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 "RELEASE_NOTES.md" "$pkgdir/usr/share/doc/$pkgname/RELEASE_NOTES.md"
+  install -Dm644 "CHANGELOG.md" "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
