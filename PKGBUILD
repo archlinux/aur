@@ -1,13 +1,13 @@
 pkgname=lug-wine-tkg-experimental-git
 pkgver=11.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Wine runner based on TKG builds + experimental patches for Star Citizen"
 arch=('x86_64')
 url="https://github.com/starcitizen-lug/lug-wine-experimental"
 license=('LGPL')
 options=('!strip')
 provides=('wine' 'wine-staging' 'lug-wine-tkg-experimental')
-conflicts=('wine' 'wine-staging' 'lug-wine-tkg-experimental' 'lug-wine-tkg-staging-experimental-git' 'lug-wine-tkg-staging-experimental-wayland-git')
+conflicts=('wine' 'wine-staging' 'wine-cachyos' 'lug-wine-tkg-experimental' 'lug-wine-tkg-staging-experimental-git' 'lug-wine-tkg-staging-experimental-wayland-git')
 
 depends=(
   attr             lib32-attr
