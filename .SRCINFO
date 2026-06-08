@@ -1,0 +1,19 @@
+pkgbase = shrike-media-tools
+	pkgdesc = Professional Screen Recorder with Timer, Tray, and Hotkeys
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://shrikelinuxug.org
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = gtk3
+	depends = ffmpeg
+	depends = pipewire-pulse
+	depends = scrot
+	depends = libappindicator-gtk3
+	depends = libx11
+	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/main.tar.gz
+	md5sums = SKIP
+
+pkgname = shrike-media-tools
