@@ -1,0 +1,4 @@
+[papdieo]
+source = "git"
+git = "https://github.com/xiaotinglian/papdieo.git"
+prefix = "v"
