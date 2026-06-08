@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lynxhub-bin
 _pkgname=LynxHub
-pkgver=3.5.0
+pkgver=3.5.1
 _electronversion=40
 pkgrel=1
 pkgdesc="Manage and launch all your AI from a single dashboard.(Prebuild version.Use system-wide electron)"
@@ -23,8 +23,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/V${pkgver}/${_pkgname}-V${pkgver}-linux_aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/V${pkgver}/${_pkgname}-V${pkgver}-linux_x86_64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('48850ab6f3c574dc43c4a9c6ed7ae0170c566a2e2f60f7d10d1ae0ec49213def')
-sha256sums_x86_64=('e1b8bf03864d64c7657ee6f7908ade371b8ffe073aadb2675a6120b2019f3213')
+sha256sums_aarch64=('960ead35907f91e889e8b770eefe56ad03fb3f0cdb6f19a4a57693dfb32eae29')
+sha256sums_x86_64=('ea8d3165a3bf6722e123d48ab9ca0af23166a8d1ef1bcd4306b6904c3fbd5ccc')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
