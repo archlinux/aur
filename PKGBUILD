@@ -22,8 +22,6 @@ prepare() {
 
     export RUSTUP_TOOLCHAIN=stable
     cd "$pkgname"
-    ## TODO: remove after (0.3.0)
-    # cargo update
     cargo fetch --locked --target host-tuple
     ## TODO: figure out how to build against system katex
     make vendor/katex
