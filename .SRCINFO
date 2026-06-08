@@ -1,6 +1,6 @@
 pkgbase = steam-game-idler-git
 	pkgdesc = Idle Steam games and farm trading cards with Linux support
-	pkgver = 5.0.15.r1732.gb0ae1b43
+	pkgver = 5.0.17.r1740.g1b76e483
 	pkgrel = 1
 	url = https://github.com/bernardopg/SGI
 	arch = x86_64
@@ -10,16 +10,22 @@ pkgbase = steam-game-idler-git
 	makedepends = nodejs
 	makedepends = pnpm
 	makedepends = rust
+	makedepends = xdg-utils
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = openssl
 	depends = webkit2gtk-4.1
+	optdepends = webkit2gtk-4.2: newer WebKitGTK support (Wayland improvements)
+	optdepends = xdg-desktop-portal: file picker/screenshot portal support (Flatpak/sandbox)
+	optdepends = libappindicator-gtk3: tray icon on non-Ubuntu desktops (KDE, GNOME, etc.)
+	optdepends = gstreamer: hardware video decode (VA-API/VDPAU)
+	optdepends = libnotify: desktop notifications
 	provides = steam-game-idler
 	conflicts = steam-game-idler
 	options = !lto
 	options = !strip
 	options = !debug
-	source = git+https://github.com/bernardopg/SGI.git#commit=155e54de5d0548db7a0beafb3be02ad71e2ddc8c
+	source = git+https://github.com/bernardopg/SGI.git#commit=250e7d7e75d47bfa96c97cb9b94f651db91c7345
 	sha256sums = SKIP
 
 pkgname = steam-game-idler-git
