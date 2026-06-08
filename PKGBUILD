@@ -3,14 +3,14 @@
 # Contributor: Amos Wenger <amos@itch.io>
 
 pkgname=itch-setup-bin
-pkgver=1.27.0
+pkgver=1.29.0
 pkgrel=1
 pkgdesc="Installer for the itch.io desktop app"
 arch=(x86_64)
 url="https://itch.io/"
 license=(MIT)
 depends=(gtk3)
-_itchver=25.5.1
+_itchver=26.13.0
 source=("itch-${_itchver}.tar.gz::https://github.com/itchio/itch/archive/refs/tags/v${_itchver}.tar.gz"
         "itch-setup-LICENSE::https://raw.githubusercontent.com/itchio/itch-setup/master/LICENSE"
         'itch.desktop'
@@ -18,11 +18,11 @@ source=("itch-${_itchver}.tar.gz::https://github.com/itchio/itch/archive/refs/ta
 provides=(itch-setup)
 conflicts=(itch-setup itch)
 source_x86_64=("itch-setup-$(date +%F-%H)-amd64::https://itch.io/app/download?platform=linux")
-sha256sums=('0a7094bff90992e3788fd9f9df43a4a3c9233bfcf0f5da037e59af6b365a3249'
+sha256sums=('94843e035f4d41a0888e872da2cd100cea04cccd8a409c4e46a8a082fb92ec5b'
             'd50905ab2e78d6ed3773959d6fb3c1c2fee724cf497f1c441cacb3765eac30ff'
             '57e1c8ad285b89f3380cd028aa51e8083a8e4327cc5763d396caf607e905efcf'
             '985cf842686598dd7e4e153f6fd7c9ee901fd200403893235e2974b108653bcf')
-sha256sums_x86_64=('79b88978ff6199ab9f1b1ed3b2108d1245d680e62c5751bac4879cdd9b102b9f')
+sha256sums_x86_64=('16e87c1ea4704724e9e07a950ce122990f5c5dc8db269ae342c34919aca1074b')
 
 package() {
   install -Dm755 itch-setup-*-amd64 "${pkgdir}/usr/bin/itch-setup"
