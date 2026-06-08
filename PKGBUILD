@@ -1,6 +1,6 @@
 # Maintainer: MagicTerm <magicterm@users.noreply.github.com>
 pkgname=magicterm-bin
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Cross-platform SSH/SFTP client with E2E encryption"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('magicterm')
 conflicts=('magicterm')
 options=('!strip')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/D3FVLT/MagicTerm/releases/download/v${pkgver}/MagicTerm-${pkgver}-x86_64.AppImage")
-sha256sums=('3722fb0bc43a0e801032c87bc886c5ef8a23ed9d26452601dd045b90383f90ba')
+sha256sums=('ba391e2ee38e9d0736152f90c10f76c56c62a242ece7bb5a1b8d6ddb11b4e91f')
 
 prepare() {
     chmod +x "${pkgname}-${pkgver}.AppImage"
