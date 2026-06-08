@@ -1,7 +1,8 @@
 # Maintainer: Tymour Kadry <tymitaly@gmail.com>
 pkgname=dictapulse
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
+_whisperver=1.7.6
 pkgdesc="Local AI voice dictation for KDE Plasma (Wayland)"
 arch=('x86_64')
 url="https://github.com/Silverhairfx/DictaPulse"
@@ -18,15 +19,25 @@ optdepends=(
 )
 makedepends=(cmake extra-cmake-modules git
              vulkan-headers vulkan-icd-loader shaderc)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c2745aaf50b330a231c53a2d03da44f5aea44da96818c6e8403be296e68658a3')
+# whisper.cpp is normally pulled by CMake FetchContent during build(), which needs
+# network access and breaks clean-chroot (--nonetwork) builds. Vendor it as a real
+# source and point FetchContent at the unpacked tree so build() is fully offline.
+# Keep _whisperver in sync with the GIT_TAG in DictaPulse's CMakeLists.txt.
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "whisper.cpp-$_whisperver.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v$_whisperver.tar.gz"
+)
+sha256sums=('c2745aaf50b330a231c53a2d03da44f5aea44da96818c6e8403be296e68658a3'
+            '166140e9a6d8a36f787a2bd77f8f44dd64874f12dd8359ff7c1f4f9acb86202e')
 
 build() {
   cd "DictaPulse-$pkgver"
   cmake -B build -S . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DDICTAPULSE_ENABLE_VULKAN=ON
+    -DDICTAPULSE_ENABLE_VULKAN=ON \
+    -DFETCHCONTENT_SOURCE_DIR_WHISPER_CPP="$srcdir/whisper.cpp-$_whisperver" \
+    -DFETCHCONTENT_FULLY_DISCONNECTED=ON
   cmake --build build -j"$(nproc)"
 }
 
