@@ -19,7 +19,9 @@ pkgver() {
 build() {
   cd "$srcdir/sharkscript-standalone"
   export CGO_ENABLED=0
-  go mod download && go build -trimpath -ldflags="-s -w" -o shs main.go
+  go mod download
+  go mod verify
+  go build -mod=mod -trimpath -ldflags="-s -w" -o shs main.go
 }
 
 package() {
