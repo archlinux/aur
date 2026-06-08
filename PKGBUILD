@@ -3,8 +3,8 @@
 # Disclaimer: While this PKGBUILD is tested on multiple devices, it is fully vibe-coded.
 
 pkgname=chrony-git
-pkgver=4.8.r39.g866bede
-pkgrel=2
+pkgver=4.8.r49.gf537224
+pkgrel=1
 pkgdesc="Lightweight NTP client and server (git version)"
 arch=('x86_64')
 url="https://gitlab.com/chrony/chrony.git"
