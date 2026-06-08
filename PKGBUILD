@@ -1,15 +1,15 @@
 # Maintainer: Mbonikev <mb0ni@proton.me>
 pkgname=melo
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A stylish TUI music player for local libraries that follows your terminal/omarchy theme"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mbonikev/melo"
 license=('MIT')
-depends=('alsa-lib' 'libnotify' 'dbus')
+depends=('alsa-lib' 'dbus')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('da81f5a4a7f8418e458b3e4a008de4aa87a6f0288d9fcd936ffe62c51c980491')
+sha256sums=('db8f5df6e920f23b93297938faa780ea2b3f5fd0e6f140a860ddad1cc6d5bf40')
 
 prepare() {
     cd "$pkgname-$pkgver"
