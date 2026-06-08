@@ -1,18 +1,19 @@
-# Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
+# Maintainer: Echo J. <aidas957 at gmail dot com>
+# Contributor: Sven Karsten Greiner <sven@sammyshp.de>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 pkgname=acarsdec
-pkgver=3.7
+pkgver=4.5
 pkgrel=1
 pkgdesc="Multi-channel ACARS decoder"
 arch=('x86_64')
-url="https://github.com/TLeconte/acarsdec"
+url="https://github.com/f00b4r0/acarsdec"
 license=('GPL-2.0-only')
 depends=('airspy' 'rtl-sdr')
 makedepends=('cmake')
 optdepends=('acarsserv: Store messages in sqlite database')
-source=("https://github.com/TLeconte/acarsdec/archive/$pkgbase-$pkgver.tar.gz")
-sha256sums=('1cb8cab03642bfdfcefb7b003f292cfac0f11051ff07666e714bbb4905717005')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('bd42006077378617a58fa985d98efe364b978fef332b8c5ed05322bbeddf11be')
 
 build() {
   cmake -S "$pkgname-$pkgver" -B build \
