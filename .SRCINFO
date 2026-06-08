@@ -1,7 +1,7 @@
 pkgbase = lug-wine-tkg-staging-experimental-git
 	pkgdesc = Wine runner based on TKG builds + staging + experimental patches for Star Citizen
 	pkgver = 11.10
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/starcitizen-lug/lug-wine-experimental
 	arch = x86_64
 	license = LGPL
