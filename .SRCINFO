@@ -1,6 +1,6 @@
 pkgbase = slopsmith-desktop-testing-bin
 	pkgdesc = Slopsmith desktop app (testing channel: tracks latest release including alpha/beta)
-	pkgver = 0.2.9.beta.2
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/byrongamatos/slopsmith-desktop
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = slopsmith-desktop-testing-bin
 	provides = slopsmith-desktop
 	conflicts = slopsmith-desktop
 	conflicts = slopsmith-desktop-bin
-	noextract = slopsmith-desktop-0.2.9-beta.2.deb
+	noextract = slopsmith-desktop-0.2.9.deb
 	options = !strip
 	options = !debug
-	source = slopsmith-desktop-0.2.9-beta.2.deb::https://github.com/byrongamatos/slopsmith-desktop/releases/download/v0.2.9-beta.2/slopsmith-desktop_0.2.9-beta.2_amd64.deb
-	sha256sums = b6f61e8f8e23d47cb811fb8aa236a8f48328f46becaeed7fe0f44b6b5364655e
+	source = slopsmith-desktop-0.2.9.deb::https://github.com/byrongamatos/slopsmith-desktop/releases/download/v0.2.9/slopsmith-desktop_0.2.9_amd64.deb
+	sha256sums = 1be367c414db60d6d18754822e602202eff1ac5196f583efd407aff3bf216275
 
 pkgname = slopsmith-desktop-testing-bin

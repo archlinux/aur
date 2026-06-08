@@ -1,8 +1,8 @@
 # Maintainer: Ariejan de Vroom <ariejan.de.vroom@kabisa.nl>
 pkgname=slopsmith-desktop-testing-bin
 _pkgname=slopsmith-desktop
-_upstream_ver=0.2.9-beta.2
-pkgver=0.2.9.beta.2
+_upstream_ver=0.2.9
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Slopsmith desktop app (testing channel: tracks latest release including alpha/beta)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}" 'slopsmith-desktop-bin')
 options=('!strip' '!debug')
 source=("${_pkgname}-${_upstream_ver}.deb::${url}/releases/download/v${_upstream_ver}/${_pkgname}_${_upstream_ver}_amd64.deb")
-sha256sums=('b6f61e8f8e23d47cb811fb8aa236a8f48328f46becaeed7fe0f44b6b5364655e')
+sha256sums=('1be367c414db60d6d18754822e602202eff1ac5196f583efd407aff3bf216275')
 noextract=("${_pkgname}-${_upstream_ver}.deb")
 
 package() {
