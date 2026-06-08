@@ -2,7 +2,7 @@
 
 pkgname=linux-soundboard-git
 _pkgname=linux-soundboard
-pkgver=2.0.0.r1.g6079880
+pkgver=2.0.1.r12.g32af6dd
 pkgrel=1
 pkgdesc="Native Linux soundboard with full Wayland/X11 support and virtual microphone support"
 arch=('x86_64')
