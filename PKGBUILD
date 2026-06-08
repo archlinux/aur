@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=pe-bear
-pkgver=0.7.0.4
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Portable Executable reversing tool with a friendly GUI"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -12,7 +12,7 @@ makedepends=(git cmake)
 source=("git+https://github.com/hasherezade/pe-bear.git#tag=v${pkgver}"
         "git+https://github.com/capstone-engine/capstone.git"
         "git+https://github.com/hasherezade/bearparser.git")
-sha256sums=('fe31ba2bd94967aa99827e609ef9fc164b1231cb699666b20d8418424dc8d281'
+sha256sums=('6c2f974dc0775dd9f1397897f1d88d3a6b2cecafdc2608aa2ef3089064f6864f'
             'SKIP'
             'SKIP')
 
