@@ -1,6 +1,6 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=whoisthat
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Modern terminal-based VPN client with Xray-core backend"
 arch=('x86_64')
