@@ -1,0 +1,19 @@
+pkgbase = gpupaper
+	pkgdesc = Wayland layer-surface wallpaper runner powered by GLSL/WGSL fragment shaders (wgpu)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://prosjekt.klingenbergbygg.no/bl/gpupaper
+	arch = x86_64
+	license = MIT
+	depends = wayland
+	depends = libglvnd
+	optdepends = vulkan-icd-loader: Vulkan backend (generic loader)
+	optdepends = mesa: open-source Vulkan/OpenGL for AMD, Intel, and Raspberry Pi
+	optdepends = nvidia-utils: NVIDIA Vulkan/OpenGL support
+	provides = gpupaper
+	conflicts = gpupaper-git
+	conflicts = gpupaper-bin
+	source = gpupaper-v0.1.0-x86_64.tar.gz::https://prosjekt.klingenbergbygg.no/bl/gpupaper/releases/download/v0.1.0/gpupaper-v0.1.0-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = gpupaper
