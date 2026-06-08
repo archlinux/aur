@@ -1,0 +1,21 @@
+pkgbase = drain-rs-bin
+	pkgdesc = Battery-drain triage TUI for Linux written in Rust
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/isene/drain
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	depends = libgcc
+	provides = drain
+	conflicts = drain-rs
+	options = !strip
+	source = README-0.1.11.md::https://raw.githubusercontent.com/isene/drain/v0.1.11/README.md
+	sha256sums = a341e154df3afa0c2779e023fd3c4736a85fbb96b21c6e07769a7d9bfa77f8af
+	source_x86_64 = drain-x86_64-0.1.11::https://github.com/isene/drain/releases/download/v0.1.11/drain-linux-x86_64
+	sha256sums_x86_64 = d8b8925e89668733734f81c8b3bda3ab27e50b9154ae0af5a4f20f0dfc93f817
+	source_aarch64 = drain-aarch64-0.1.11::https://github.com/isene/drain/releases/download/v0.1.11/drain-linux-aarch64
+	sha256sums_aarch64 = eda369701ce81644e23494bf27a86779e8db93b75363f7b9e89dea4f78ee82d7
+
+pkgname = drain-rs-bin

@@ -1,0 +1,5 @@
+[drain-rs-bin]
+source = "github"
+github = "isene/drain"
+use_latest_release = true
+prefix = "v"
