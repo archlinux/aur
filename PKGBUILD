@@ -2,7 +2,7 @@
 
 pkgname=electerm-bin
 pkgver=3.15.32
-pkgrel=1
+pkgrel=2
 pkgdesc="An electron-based SSH/SFTP Connection manager and terminal"
 arch=('x86_64')
 url="https://electerm.html5beta.com"
@@ -30,6 +30,6 @@ package() {
         install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
-sha256sums=('d452b4d5094f8c6105967fb6526306f0d7ec6c00f687b3c542856b7a1ec37f48'
+sha256sums=('cda4ace13277929ee4cd73da548364d22cd857712148134b69fabc8a5bba01f2'
             'a9b7ccf11bec7796b217a7575d3324c16613a46bfc899e72ec2c11da28d0991e')
 
