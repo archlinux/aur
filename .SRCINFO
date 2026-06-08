@@ -1,0 +1,19 @@
+pkgbase = humen-mcp-git
+	pkgdesc = Human-in-the-loop MCP server
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/humen-mcp
+	arch = x86_64
+	license = MIT
+	makedepends = bun
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = humen-mcp
+	conflicts = humen-mcp
+	backup = etc/humen-mcp.env
+	source = git+https://github.com/LIghtJUNction/humen-mcp.git
+	sha256sums = SKIP
+
+pkgname = humen-mcp-git
+
