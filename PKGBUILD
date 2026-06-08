@@ -4,12 +4,12 @@
 
 pkgname=acarsdec
 pkgver=4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-channel ACARS decoder"
 arch=('x86_64')
 url="https://github.com/f00b4r0/acarsdec"
 license=('GPL-2.0-only')
-depends=('airspy' 'rtl-sdr')
+depends=('airspy' 'alsa-lib' 'cjson' 'libsndfile' 'rtl-sdr' 'soapysdr')
 makedepends=('cmake')
 optdepends=('acarsserv: Store messages in sqlite database')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -17,8 +17,12 @@ sha256sums=('bd42006077378617a58fa985d98efe364b978fef332b8c5ed05322bbeddf11be')
 
 build() {
   cmake -S "$pkgname-$pkgver" -B build \
+    -DALSA=ON \
     -DAIRSPY=ON \
-    -DRTLSDR=ON
+    -DCJSON=ON \
+    -DRTLSDR=ON \
+    -DSNDFILE=ON \
+    -DSOAPYSDR=ON
   cmake --build build
 }
 
