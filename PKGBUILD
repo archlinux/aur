@@ -3,10 +3,10 @@
 # Contributor: Morten Linderud <foxboron archlinux.org>
 
 pkgname=gopass-git
-pkgver=1.15.12.r4.g57f19d2c
+pkgver=1.16.1.r115.g8d9d1a32
 pkgrel=1
 pkgdesc="The slightly more awesome standard unix password manager for teams."
-arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/gopasspw/gopass"
 license=('MIT')
 makedepends=('go' 'git')
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd gopass
-  git describe --long --tags | sed -e 's/^v//;s/-/.r/;s/-/./g'
+  git describe --long --tags | sed -e 's/^v//;s/-rc/rc/;s/-/.r/;s/-/./g'
 }
 
 prepare() {
