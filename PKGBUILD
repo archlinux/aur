@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=splayer-git
 _pkgname=SPlayer
-pkgver=3.0.0.nightly.r34.g4dd8c53
-_electronversion=38
+pkgver=3.1.1.r0.g28b76ba
+_electronversion=41
 _nodeversion=22
 pkgrel=1
 pkgdesc="A minimalist music player.(Use system-wide electron) 一个简约的音乐播放器，支持逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理，音乐频谱，移动端基础适配 | 网易云音乐."
@@ -31,7 +31,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -45,9 +45,10 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/package.json" | tr -d '^')
-    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
-    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
+        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
+    [[ -z "${_elec_ver}" ]] && return 1
+    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -57,7 +58,6 @@ prepare() {
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
@@ -70,26 +70,25 @@ prepare() {
     export CARGO_HOME="${srcdir}/.cargo"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo 'link-workspace-packages=true'
-        echo 'fetch-retry-maxtimeout=10000'
-        echo "cache-dir=${srcdir}/.pnpm_cache"
-        echo "store-dir=${srcdir}/.pnpm_store"
-        echo "virtual-store-dir=${srcdir}/.pnpm_store"
-        echo "shamefully-hoist=true"
-        echo "virtual-store-dir-max-length=80"
-        echo "node-linker=hoisted"
-        echo "network-concurrency=32"
-    } >> .npmrc
+        export PNPM_LINK_WORKSPACE_PACKAGES=true
+        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_SHAMEFULLY_HOIST=true
+        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+        export PNPM_NODE_LINKER=hoisted
+        export PNPM_NETWORK_CONCURRENCY=32
+    }
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-        echo 'registry=https://registry.npmmirror.com'
-        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
-        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
-        } >> .npmrc
-        export RUSTUP_DIST_SERVER="https://rsproxy.cn"
-        export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+            export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+		    export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+        }
     fi
     _ensure_local_nvm
     if [ ! -f .env ]; then
@@ -114,14 +113,9 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    if find "${srcdir}/${pkgname//-/.}/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for subdir in "${srcdir}/${pkgname//-/.}/dist/linux-"*"/resources/"*; do
-            if [ -d "${subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${subdir}" "${pkgdir}/usr/lib/${pkgname%-git}"
-            fi
-        done
-    fi
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -exec dirname {} + | head -n 1)
+    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     _icon_sizes=(16x16 32x32 96x96 192x192 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname//-/.}/public/icons/favicon-${_icons}.png" \
