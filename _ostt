@@ -1,0 +1,2507 @@
+#compdef ostt
+
+autoload -U is-at-least
+
+_ostt() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" : \
+'-o+[Write transcription to file instead of stdout (record default command)]:FILE:_default' \
+'--output=[Write transcription to file instead of stdout (record default command)]:FILE:_default' \
+'-p+[Enable processing after transcription]' \
+'--process=[Enable processing after transcription]' \
+'-m+[Override transcription model for this run]:PROVIDER/MODEL:_default' \
+'--model=[Override transcription model for this run]:PROVIDER/MODEL:_default' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-c[Copy transcription to clipboard instead of stdout (record default command)]' \
+'--clipboard[Copy transcription to clipboard instead of stdout (record default command)]' \
+'--paste[Paste transcription into the focused app (record default command)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_ostt_commands" \
+"*::: :->ostt" \
+&& ret=0
+    case $state in
+    (ostt)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-command-$line[1]:"
+        case $line[1] in
+            (record)
+_arguments "${_arguments_options[@]}" : \
+'-o+[Write transcription to file instead of stdout]:FILE:_default' \
+'--output=[Write transcription to file instead of stdout]:FILE:_default' \
+'-p+[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'--process=[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'-m+[Override transcription model for this run]:PROVIDER/MODEL:_default' \
+'--model=[Override transcription model for this run]:PROVIDER/MODEL:_default' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-c[Copy transcription to clipboard instead of stdout]' \
+'--clipboard[Copy transcription to clipboard instead of stdout]' \
+'--paste[Paste transcription into the focused app]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(r)
+_arguments "${_arguments_options[@]}" : \
+'-o+[Write transcription to file instead of stdout]:FILE:_default' \
+'--output=[Write transcription to file instead of stdout]:FILE:_default' \
+'-p+[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'--process=[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'-m+[Override transcription model for this run]:PROVIDER/MODEL:_default' \
+'--model=[Override transcription model for this run]:PROVIDER/MODEL:_default' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-c[Copy transcription to clipboard instead of stdout]' \
+'--clipboard[Copy transcription to clipboard instead of stdout]' \
+'--paste[Paste transcription into the focused app]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(retry)
+_arguments "${_arguments_options[@]}" : \
+'-o+[Write transcription to file instead of stdout]:FILE:_default' \
+'--output=[Write transcription to file instead of stdout]:FILE:_default' \
+'-p+[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'--process=[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'-m+[Override transcription model for this run]:PROVIDER/MODEL:_default' \
+'--model=[Override transcription model for this run]:PROVIDER/MODEL:_default' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-c[Copy transcription to clipboard instead of stdout]' \
+'--clipboard[Copy transcription to clipboard instead of stdout]' \
+'--paste[Paste transcription into the focused app]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::index -- Recording index (1 = most recent, 2 = second most recent, etc.):_default' \
+&& ret=0
+;;
+(transcribe)
+_arguments "${_arguments_options[@]}" : \
+'-o+[Write transcription to file instead of stdout]:FILE:_default' \
+'--output=[Write transcription to file instead of stdout]:FILE:_default' \
+'-p+[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'--process=[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'-m+[Override transcription model for this run]:PROVIDER/MODEL:_default' \
+'--model=[Override transcription model for this run]:PROVIDER/MODEL:_default' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-c[Copy transcription to clipboard instead of stdout]' \
+'--clipboard[Copy transcription to clipboard instead of stdout]' \
+'--paste[Paste transcription into the focused app]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':file -- Path to the audio file to transcribe:_files' \
+&& ret=0
+;;
+(t)
+_arguments "${_arguments_options[@]}" : \
+'-o+[Write transcription to file instead of stdout]:FILE:_default' \
+'--output=[Write transcription to file instead of stdout]:FILE:_default' \
+'-p+[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'--process=[Enable processing after transcription. Optionally specify action ID to skip picker]' \
+'-m+[Override transcription model for this run]:PROVIDER/MODEL:_default' \
+'--model=[Override transcription model for this run]:PROVIDER/MODEL:_default' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-c[Copy transcription to clipboard instead of stdout]' \
+'--clipboard[Copy transcription to clipboard instead of stdout]' \
+'--paste[Paste transcription into the focused app]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':file -- Path to the audio file to transcribe:_files' \
+&& ret=0
+;;
+(replay)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::index -- Recording index (1 = most recent, 2 = second most recent, etc.):_default' \
+&& ret=0
+;;
+(rp)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::index -- Recording index (1 = most recent, 2 = second most recent, etc.):_default' \
+&& ret=0
+;;
+(auth)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_ostt__auth_commands" \
+"*::: :->auth" \
+&& ret=0
+
+    case $state in
+    (auth)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-auth-command-$line[1]:"
+        case $line[1] in
+            (login)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::provider -- Provider ID to log in to:_default' \
+&& ret=0
+;;
+(logout)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::provider -- Provider ID to log out from:_default' \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+'--format=[Output format]:FORMAT:(table json)' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__auth__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-auth-help-command-$line[1]:"
+        case $line[1] in
+            (login)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(logout)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(a)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_ostt__auth_commands" \
+"*::: :->auth" \
+&& ret=0
+
+    case $state in
+    (auth)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-auth-command-$line[1]:"
+        case $line[1] in
+            (login)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::provider -- Provider ID to log in to:_default' \
+&& ret=0
+;;
+(logout)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::provider -- Provider ID to log out from:_default' \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+'--format=[Output format]:FORMAT:(table json)' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__auth__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-auth-help-command-$line[1]:"
+        case $line[1] in
+            (login)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(logout)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(model)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_ostt__model_commands" \
+"*::: :->model" \
+&& ret=0
+
+    case $state in
+    (model)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-model-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--provider=[Filter by provider ID]:PROVIDER:_default' \
+'--format=[Output format]:FORMAT:(table json)' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'--installed[Show only downloaded local models]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(current)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(params)
+_arguments "${_arguments_options[@]}" : \
+'--format=[Output format]:FORMAT:(table json)' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::model -- Model to inspect. Defaults to the currently selected model:_default' \
+&& ret=0
+;;
+(select)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+':model:_default' \
+&& ret=0
+;;
+(local)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_ostt__model__local_commands" \
+"*::: :->local" \
+&& ret=0
+
+    case $state in
+    (local)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-model-local-command-$line[1]:"
+        case $line[1] in
+            (download)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+':model_id:_default' \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+':model_id:_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__model__local__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-model-local-help-command-$line[1]:"
+        case $line[1] in
+            (download)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__model__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-model-help-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(current)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(params)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(select)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(local)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__model__help__local_commands" \
+"*::: :->local" \
+&& ret=0
+
+    case $state in
+    (local)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-model-help-local-command-$line[1]:"
+        case $line[1] in
+            (download)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(history)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_ostt__history_commands" \
+"*::: :->history" \
+&& ret=0
+
+    case $state in
+    (history)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-history-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--limit=[Limit to N most recent entries]:LIMIT:_default' \
+'--format=[Output format]:FORMAT:(table json)' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(show)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::index -- History index (1 = most recent):_default' \
+&& ret=0
+;;
+(copy)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::index -- History index (1 = most recent):_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__history__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-history-help-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(show)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(copy)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(h)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_ostt__history_commands" \
+"*::: :->history" \
+&& ret=0
+
+    case $state in
+    (history)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-history-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--limit=[Limit to N most recent entries]:LIMIT:_default' \
+'--format=[Output format]:FORMAT:(table json)' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(show)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::index -- History index (1 = most recent):_default' \
+&& ret=0
+;;
+(copy)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'::index -- History index (1 = most recent):_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__history__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-history-help-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(show)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(copy)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(keyword)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_ostt__keyword_commands" \
+"*::: :->keyword" \
+&& ret=0
+
+    case $state in
+    (keyword)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-keyword-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--format=[Output format]:FORMAT:(table json)' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(add)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'*::keywords:_default' \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'*::keywords:_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__keyword__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-keyword-help-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(add)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(k)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_ostt__keyword_commands" \
+"*::: :->keyword" \
+&& ret=0
+
+    case $state in
+    (keyword)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-keyword-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--format=[Output format]:FORMAT:(table json)' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(add)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'*::keywords:_default' \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+'*::keywords:_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__keyword__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-keyword-help-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(add)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(replace)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(config)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_ostt__config_commands" \
+"*::: :->config" \
+&& ret=0
+
+    case $state in
+    (config)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-config-command-$line[1]:"
+        case $line[1] in
+            (path)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(list-devices)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__config__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-config-help-command-$line[1]:"
+        case $line[1] in
+            (path)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list-devices)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(c)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_ostt__config_commands" \
+"*::: :->config" \
+&& ret=0
+
+    case $state in
+    (config)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-config-command-$line[1]:"
+        case $line[1] in
+            (path)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(list-devices)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__config__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-config-help-command-$line[1]:"
+        case $line[1] in
+            (path)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list-devices)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(logs)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_ostt__logs_commands" \
+"*::: :->logs" \
+&& ret=0
+
+    case $state in
+    (logs)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-logs-command-$line[1]:"
+        case $line[1] in
+            (follow)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(path)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__logs__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-logs-help-command-$line[1]:"
+        case $line[1] in
+            (follow)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(path)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(process)
+_arguments "${_arguments_options[@]}" : \
+'-o+[Write result to file instead of stdout (shadows global -o)]:FILE:_default' \
+'--output=[Write result to file instead of stdout (shadows global -o)]:FILE:_default' \
+'--format=[Output format for \`ostt process list\`]:FORMAT:(table json)' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-c[Copy result to clipboard instead of stdout (shadows global -c)]' \
+'--clipboard[Copy result to clipboard instead of stdout (shadows global -c)]' \
+'--paste[Paste result into the focused app]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::index_or_action -- History index or action ID:_default' \
+'::action -- Action ID when the first argument is a history index:_default' \
+&& ret=0
+;;
+(p)
+_arguments "${_arguments_options[@]}" : \
+'-o+[Write result to file instead of stdout (shadows global -o)]:FILE:_default' \
+'--output=[Write result to file instead of stdout (shadows global -o)]:FILE:_default' \
+'--format=[Output format for \`ostt process list\`]:FORMAT:(table json)' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-c[Copy result to clipboard instead of stdout (shadows global -c)]' \
+'--clipboard[Copy result to clipboard instead of stdout (shadows global -c)]' \
+'--paste[Paste result into the focused app]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::index_or_action -- History index or action ID:_default' \
+'::action -- Action ID when the first argument is a history index:_default' \
+&& ret=0
+;;
+(launch)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'*::args -- Arguments to pass to the ostt instance (e.g. "-c", "-p clean"):_default' \
+&& ret=0
+;;
+(l)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'*::args -- Arguments to pass to the ostt instance (e.g. "-c", "-p clean"):_default' \
+&& ret=0
+;;
+(completions)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'::shell -- The shell to generate completions for:(bash elvish fish powershell zsh)' \
+":: :_ostt__completions_commands" \
+"*::: :->completions" \
+&& ret=0
+
+    case $state in
+    (completions)
+        words=($line[2] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-completions-command-$line[2]:"
+        case $line[2] in
+            (install)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+':shell:(bash elvish fish powershell zsh)' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__completions__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-completions-help-command-$line[1]:"
+        case $line[1] in
+            (install)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(daemon)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_ostt__daemon_commands" \
+"*::: :->daemon" \
+&& ret=0
+
+    case $state in
+    (daemon)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-daemon-command-$line[1]:"
+        case $line[1] in
+            (start)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(stop)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(restart)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(install)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(uninstall)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" : \
+'--model-id=[Model ID to load (defaults to the currently active local model)]:MODEL_ID:_default' \
+'--idle-timeout-secs=[Exit after this many seconds of inactivity (omit for no timeout)]:IDLE_TIMEOUT_SECS:_default' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__daemon__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-daemon-help-command-$line[1]:"
+        case $line[1] in
+            (start)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(stop)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(restart)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(install)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(uninstall)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(d)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_ostt__daemon_commands" \
+"*::: :->daemon" \
+&& ret=0
+
+    case $state in
+    (daemon)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-daemon-command-$line[1]:"
+        case $line[1] in
+            (start)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(stop)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(restart)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(install)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(uninstall)
+_arguments "${_arguments_options[@]}" : \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" : \
+'--model-id=[Model ID to load (defaults to the currently active local model)]:MODEL_ID:_default' \
+'--idle-timeout-secs=[Exit after this many seconds of inactivity (omit for no timeout)]:IDLE_TIMEOUT_SECS:_default' \
+'*--param=[Override a transcription param for this run, as key=value]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__daemon__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-daemon-help-command-$line[1]:"
+        case $line[1] in
+            (start)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(stop)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(restart)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(install)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(uninstall)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-help-command-$line[1]:"
+        case $line[1] in
+            (record)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(retry)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(transcribe)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(replay)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(auth)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__help__auth_commands" \
+"*::: :->auth" \
+&& ret=0
+
+    case $state in
+    (auth)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-help-auth-command-$line[1]:"
+        case $line[1] in
+            (login)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(logout)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(model)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__help__model_commands" \
+"*::: :->model" \
+&& ret=0
+
+    case $state in
+    (model)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-help-model-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(current)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(params)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(select)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(local)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__help__model__local_commands" \
+"*::: :->local" \
+&& ret=0
+
+    case $state in
+    (local)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-help-model-local-command-$line[1]:"
+        case $line[1] in
+            (download)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(history)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__help__history_commands" \
+"*::: :->history" \
+&& ret=0
+
+    case $state in
+    (history)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-help-history-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(show)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(copy)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(keyword)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__help__keyword_commands" \
+"*::: :->keyword" \
+&& ret=0
+
+    case $state in
+    (keyword)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-help-keyword-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(add)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(replace)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(config)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__help__config_commands" \
+"*::: :->config" \
+&& ret=0
+
+    case $state in
+    (config)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-help-config-command-$line[1]:"
+        case $line[1] in
+            (path)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list-devices)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(logs)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__help__logs_commands" \
+"*::: :->logs" \
+&& ret=0
+
+    case $state in
+    (logs)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-help-logs-command-$line[1]:"
+        case $line[1] in
+            (follow)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(path)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(process)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(launch)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(completions)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__help__completions_commands" \
+"*::: :->completions" \
+&& ret=0
+
+    case $state in
+    (completions)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-help-completions-command-$line[1]:"
+        case $line[1] in
+            (install)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(daemon)
+_arguments "${_arguments_options[@]}" : \
+":: :_ostt__help__daemon_commands" \
+"*::: :->daemon" \
+&& ret=0
+
+    case $state in
+    (daemon)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:ostt-help-daemon-command-$line[1]:"
+        case $line[1] in
+            (start)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(stop)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(restart)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(install)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(uninstall)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_ostt_commands] )) ||
+_ostt_commands() {
+    local commands; commands=(
+'record:Record audio with real-time visualization (default)' \
+'r:Record audio with real-time visualization (default)' \
+'retry:Retry transcription of a previous recording' \
+'transcribe:Transcribe a pre-recorded audio file' \
+'t:Transcribe a pre-recorded audio file' \
+'replay:Replay a previous recording using system audio player' \
+'rp:Replay a previous recording using system audio player' \
+'auth:Manage cloud provider credentials' \
+'a:Manage cloud provider credentials' \
+'model:Choose and manage cloud or local transcription models' \
+'history:View and browse transcription history' \
+'h:View and browse transcription history' \
+'keyword:Manage keywords for improved transcription accuracy' \
+'k:Manage keywords for improved transcription accuracy' \
+'replace:Manage deterministic text replace rules' \
+'config:Open configuration file in your preferred editor' \
+'c:Open configuration file in your preferred editor' \
+'logs:Show recent log entries from the application' \
+'process:Post-process a transcription from history' \
+'p:Post-process a transcription from history' \
+'launch:Launch ostt in a popup terminal window' \
+'l:Launch ostt in a popup terminal window' \
+'completions:Generate shell completion script' \
+'daemon:Manage the local model daemon' \
+'d:Manage the local model daemon' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt commands' commands "$@"
+}
+(( $+functions[_ostt__auth_commands] )) ||
+_ostt__auth_commands() {
+    local commands; commands=(
+'login:Add or update a cloud provider credential' \
+'logout:Remove a cloud provider credential' \
+'list:List authenticated providers' \
+'status:Show authentication status' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt auth commands' commands "$@"
+}
+(( $+functions[_ostt__auth__help_commands] )) ||
+_ostt__auth__help_commands() {
+    local commands; commands=(
+'login:Add or update a cloud provider credential' \
+'logout:Remove a cloud provider credential' \
+'list:List authenticated providers' \
+'status:Show authentication status' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt auth help commands' commands "$@"
+}
+(( $+functions[_ostt__auth__help__help_commands] )) ||
+_ostt__auth__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt auth help help commands' commands "$@"
+}
+(( $+functions[_ostt__auth__help__list_commands] )) ||
+_ostt__auth__help__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt auth help list commands' commands "$@"
+}
+(( $+functions[_ostt__auth__help__login_commands] )) ||
+_ostt__auth__help__login_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt auth help login commands' commands "$@"
+}
+(( $+functions[_ostt__auth__help__logout_commands] )) ||
+_ostt__auth__help__logout_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt auth help logout commands' commands "$@"
+}
+(( $+functions[_ostt__auth__help__status_commands] )) ||
+_ostt__auth__help__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt auth help status commands' commands "$@"
+}
+(( $+functions[_ostt__auth__list_commands] )) ||
+_ostt__auth__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt auth list commands' commands "$@"
+}
+(( $+functions[_ostt__auth__login_commands] )) ||
+_ostt__auth__login_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt auth login commands' commands "$@"
+}
+(( $+functions[_ostt__auth__logout_commands] )) ||
+_ostt__auth__logout_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt auth logout commands' commands "$@"
+}
+(( $+functions[_ostt__auth__status_commands] )) ||
+_ostt__auth__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt auth status commands' commands "$@"
+}
+(( $+functions[_ostt__completions_commands] )) ||
+_ostt__completions_commands() {
+    local commands; commands=(
+'install:Install completions to the standard system directory' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt completions commands' commands "$@"
+}
+(( $+functions[_ostt__completions__help_commands] )) ||
+_ostt__completions__help_commands() {
+    local commands; commands=(
+'install:Install completions to the standard system directory' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt completions help commands' commands "$@"
+}
+(( $+functions[_ostt__completions__help__help_commands] )) ||
+_ostt__completions__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt completions help help commands' commands "$@"
+}
+(( $+functions[_ostt__completions__help__install_commands] )) ||
+_ostt__completions__help__install_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt completions help install commands' commands "$@"
+}
+(( $+functions[_ostt__completions__install_commands] )) ||
+_ostt__completions__install_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt completions install commands' commands "$@"
+}
+(( $+functions[_ostt__config_commands] )) ||
+_ostt__config_commands() {
+    local commands; commands=(
+'path:Print the config file path' \
+'list-devices:List audio input devices for config selection' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt config commands' commands "$@"
+}
+(( $+functions[_ostt__config__help_commands] )) ||
+_ostt__config__help_commands() {
+    local commands; commands=(
+'path:Print the config file path' \
+'list-devices:List audio input devices for config selection' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt config help commands' commands "$@"
+}
+(( $+functions[_ostt__config__help__help_commands] )) ||
+_ostt__config__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt config help help commands' commands "$@"
+}
+(( $+functions[_ostt__config__help__list-devices_commands] )) ||
+_ostt__config__help__list-devices_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt config help list-devices commands' commands "$@"
+}
+(( $+functions[_ostt__config__help__path_commands] )) ||
+_ostt__config__help__path_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt config help path commands' commands "$@"
+}
+(( $+functions[_ostt__config__list-devices_commands] )) ||
+_ostt__config__list-devices_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt config list-devices commands' commands "$@"
+}
+(( $+functions[_ostt__config__path_commands] )) ||
+_ostt__config__path_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt config path commands' commands "$@"
+}
+(( $+functions[_ostt__daemon_commands] )) ||
+_ostt__daemon_commands() {
+    local commands; commands=(
+'start:Start the daemon for the active local model' \
+'stop:Stop the running daemon' \
+'restart:Restart the daemon with the currently active local model' \
+'status:Show daemon status (running, model, PID, service)' \
+'install:Install daemon as a login service (auto-start on login)' \
+'uninstall:Remove the daemon login service' \
+'run:\[Internal\] Run the daemon process — used by the service manager and daemon start' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt daemon commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__help_commands] )) ||
+_ostt__daemon__help_commands() {
+    local commands; commands=(
+'start:Start the daemon for the active local model' \
+'stop:Stop the running daemon' \
+'restart:Restart the daemon with the currently active local model' \
+'status:Show daemon status (running, model, PID, service)' \
+'install:Install daemon as a login service (auto-start on login)' \
+'uninstall:Remove the daemon login service' \
+'run:\[Internal\] Run the daemon process — used by the service manager and daemon start' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt daemon help commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__help__help_commands] )) ||
+_ostt__daemon__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon help help commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__help__install_commands] )) ||
+_ostt__daemon__help__install_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon help install commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__help__restart_commands] )) ||
+_ostt__daemon__help__restart_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon help restart commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__help__run_commands] )) ||
+_ostt__daemon__help__run_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon help run commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__help__start_commands] )) ||
+_ostt__daemon__help__start_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon help start commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__help__status_commands] )) ||
+_ostt__daemon__help__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon help status commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__help__stop_commands] )) ||
+_ostt__daemon__help__stop_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon help stop commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__help__uninstall_commands] )) ||
+_ostt__daemon__help__uninstall_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon help uninstall commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__install_commands] )) ||
+_ostt__daemon__install_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon install commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__restart_commands] )) ||
+_ostt__daemon__restart_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon restart commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__run_commands] )) ||
+_ostt__daemon__run_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon run commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__start_commands] )) ||
+_ostt__daemon__start_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon start commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__status_commands] )) ||
+_ostt__daemon__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon status commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__stop_commands] )) ||
+_ostt__daemon__stop_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon stop commands' commands "$@"
+}
+(( $+functions[_ostt__daemon__uninstall_commands] )) ||
+_ostt__daemon__uninstall_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt daemon uninstall commands' commands "$@"
+}
+(( $+functions[_ostt__help_commands] )) ||
+_ostt__help_commands() {
+    local commands; commands=(
+'record:Record audio with real-time visualization (default)' \
+'retry:Retry transcription of a previous recording' \
+'transcribe:Transcribe a pre-recorded audio file' \
+'replay:Replay a previous recording using system audio player' \
+'auth:Manage cloud provider credentials' \
+'model:Choose and manage cloud or local transcription models' \
+'history:View and browse transcription history' \
+'keyword:Manage keywords for improved transcription accuracy' \
+'replace:Manage deterministic text replace rules' \
+'config:Open configuration file in your preferred editor' \
+'logs:Show recent log entries from the application' \
+'process:Post-process a transcription from history' \
+'launch:Launch ostt in a popup terminal window' \
+'completions:Generate shell completion script' \
+'daemon:Manage the local model daemon' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt help commands' commands "$@"
+}
+(( $+functions[_ostt__help__auth_commands] )) ||
+_ostt__help__auth_commands() {
+    local commands; commands=(
+'login:Add or update a cloud provider credential' \
+'logout:Remove a cloud provider credential' \
+'list:List authenticated providers' \
+'status:Show authentication status' \
+    )
+    _describe -t commands 'ostt help auth commands' commands "$@"
+}
+(( $+functions[_ostt__help__auth__list_commands] )) ||
+_ostt__help__auth__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help auth list commands' commands "$@"
+}
+(( $+functions[_ostt__help__auth__login_commands] )) ||
+_ostt__help__auth__login_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help auth login commands' commands "$@"
+}
+(( $+functions[_ostt__help__auth__logout_commands] )) ||
+_ostt__help__auth__logout_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help auth logout commands' commands "$@"
+}
+(( $+functions[_ostt__help__auth__status_commands] )) ||
+_ostt__help__auth__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help auth status commands' commands "$@"
+}
+(( $+functions[_ostt__help__completions_commands] )) ||
+_ostt__help__completions_commands() {
+    local commands; commands=(
+'install:Install completions to the standard system directory' \
+    )
+    _describe -t commands 'ostt help completions commands' commands "$@"
+}
+(( $+functions[_ostt__help__completions__install_commands] )) ||
+_ostt__help__completions__install_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help completions install commands' commands "$@"
+}
+(( $+functions[_ostt__help__config_commands] )) ||
+_ostt__help__config_commands() {
+    local commands; commands=(
+'path:Print the config file path' \
+'list-devices:List audio input devices for config selection' \
+    )
+    _describe -t commands 'ostt help config commands' commands "$@"
+}
+(( $+functions[_ostt__help__config__list-devices_commands] )) ||
+_ostt__help__config__list-devices_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help config list-devices commands' commands "$@"
+}
+(( $+functions[_ostt__help__config__path_commands] )) ||
+_ostt__help__config__path_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help config path commands' commands "$@"
+}
+(( $+functions[_ostt__help__daemon_commands] )) ||
+_ostt__help__daemon_commands() {
+    local commands; commands=(
+'start:Start the daemon for the active local model' \
+'stop:Stop the running daemon' \
+'restart:Restart the daemon with the currently active local model' \
+'status:Show daemon status (running, model, PID, service)' \
+'install:Install daemon as a login service (auto-start on login)' \
+'uninstall:Remove the daemon login service' \
+'run:\[Internal\] Run the daemon process — used by the service manager and daemon start' \
+    )
+    _describe -t commands 'ostt help daemon commands' commands "$@"
+}
+(( $+functions[_ostt__help__daemon__install_commands] )) ||
+_ostt__help__daemon__install_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help daemon install commands' commands "$@"
+}
+(( $+functions[_ostt__help__daemon__restart_commands] )) ||
+_ostt__help__daemon__restart_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help daemon restart commands' commands "$@"
+}
+(( $+functions[_ostt__help__daemon__run_commands] )) ||
+_ostt__help__daemon__run_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help daemon run commands' commands "$@"
+}
+(( $+functions[_ostt__help__daemon__start_commands] )) ||
+_ostt__help__daemon__start_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help daemon start commands' commands "$@"
+}
+(( $+functions[_ostt__help__daemon__status_commands] )) ||
+_ostt__help__daemon__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help daemon status commands' commands "$@"
+}
+(( $+functions[_ostt__help__daemon__stop_commands] )) ||
+_ostt__help__daemon__stop_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help daemon stop commands' commands "$@"
+}
+(( $+functions[_ostt__help__daemon__uninstall_commands] )) ||
+_ostt__help__daemon__uninstall_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help daemon uninstall commands' commands "$@"
+}
+(( $+functions[_ostt__help__help_commands] )) ||
+_ostt__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help help commands' commands "$@"
+}
+(( $+functions[_ostt__help__history_commands] )) ||
+_ostt__help__history_commands() {
+    local commands; commands=(
+'list:List transcription history' \
+'show:Show a transcription from history' \
+'copy:Copy a transcription from history to clipboard' \
+    )
+    _describe -t commands 'ostt help history commands' commands "$@"
+}
+(( $+functions[_ostt__help__history__copy_commands] )) ||
+_ostt__help__history__copy_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help history copy commands' commands "$@"
+}
+(( $+functions[_ostt__help__history__list_commands] )) ||
+_ostt__help__history__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help history list commands' commands "$@"
+}
+(( $+functions[_ostt__help__history__show_commands] )) ||
+_ostt__help__history__show_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help history show commands' commands "$@"
+}
+(( $+functions[_ostt__help__keyword_commands] )) ||
+_ostt__help__keyword_commands() {
+    local commands; commands=(
+'list:List transcription keywords' \
+'add:Add transcription keywords' \
+'remove:Remove transcription keywords' \
+    )
+    _describe -t commands 'ostt help keyword commands' commands "$@"
+}
+(( $+functions[_ostt__help__keyword__add_commands] )) ||
+_ostt__help__keyword__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help keyword add commands' commands "$@"
+}
+(( $+functions[_ostt__help__keyword__list_commands] )) ||
+_ostt__help__keyword__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help keyword list commands' commands "$@"
+}
+(( $+functions[_ostt__help__keyword__remove_commands] )) ||
+_ostt__help__keyword__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help keyword remove commands' commands "$@"
+}
+(( $+functions[_ostt__help__launch_commands] )) ||
+_ostt__help__launch_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help launch commands' commands "$@"
+}
+(( $+functions[_ostt__help__logs_commands] )) ||
+_ostt__help__logs_commands() {
+    local commands; commands=(
+'follow:Follow the latest log file' \
+'path:Print the latest log file path' \
+    )
+    _describe -t commands 'ostt help logs commands' commands "$@"
+}
+(( $+functions[_ostt__help__logs__follow_commands] )) ||
+_ostt__help__logs__follow_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help logs follow commands' commands "$@"
+}
+(( $+functions[_ostt__help__logs__path_commands] )) ||
+_ostt__help__logs__path_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help logs path commands' commands "$@"
+}
+(( $+functions[_ostt__help__model_commands] )) ||
+_ostt__help__model_commands() {
+    local commands; commands=(
+'list:List available transcription models' \
+'current:Show the currently selected transcription model' \
+'params:List supported transcription params for a transcription model' \
+'select:Select the active transcription model' \
+'local:Manage local transcription models' \
+    )
+    _describe -t commands 'ostt help model commands' commands "$@"
+}
+(( $+functions[_ostt__help__model__current_commands] )) ||
+_ostt__help__model__current_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help model current commands' commands "$@"
+}
+(( $+functions[_ostt__help__model__list_commands] )) ||
+_ostt__help__model__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help model list commands' commands "$@"
+}
+(( $+functions[_ostt__help__model__local_commands] )) ||
+_ostt__help__model__local_commands() {
+    local commands; commands=(
+'download:Download a local model' \
+'remove:Remove a downloaded local model' \
+    )
+    _describe -t commands 'ostt help model local commands' commands "$@"
+}
+(( $+functions[_ostt__help__model__local__download_commands] )) ||
+_ostt__help__model__local__download_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help model local download commands' commands "$@"
+}
+(( $+functions[_ostt__help__model__local__remove_commands] )) ||
+_ostt__help__model__local__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help model local remove commands' commands "$@"
+}
+(( $+functions[_ostt__help__model__params_commands] )) ||
+_ostt__help__model__params_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help model params commands' commands "$@"
+}
+(( $+functions[_ostt__help__model__select_commands] )) ||
+_ostt__help__model__select_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help model select commands' commands "$@"
+}
+(( $+functions[_ostt__help__process_commands] )) ||
+_ostt__help__process_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help process commands' commands "$@"
+}
+(( $+functions[_ostt__help__record_commands] )) ||
+_ostt__help__record_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help record commands' commands "$@"
+}
+(( $+functions[_ostt__help__replace_commands] )) ||
+_ostt__help__replace_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help replace commands' commands "$@"
+}
+(( $+functions[_ostt__help__replay_commands] )) ||
+_ostt__help__replay_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help replay commands' commands "$@"
+}
+(( $+functions[_ostt__help__retry_commands] )) ||
+_ostt__help__retry_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help retry commands' commands "$@"
+}
+(( $+functions[_ostt__help__transcribe_commands] )) ||
+_ostt__help__transcribe_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt help transcribe commands' commands "$@"
+}
+(( $+functions[_ostt__history_commands] )) ||
+_ostt__history_commands() {
+    local commands; commands=(
+'list:List transcription history' \
+'show:Show a transcription from history' \
+'copy:Copy a transcription from history to clipboard' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt history commands' commands "$@"
+}
+(( $+functions[_ostt__history__copy_commands] )) ||
+_ostt__history__copy_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt history copy commands' commands "$@"
+}
+(( $+functions[_ostt__history__help_commands] )) ||
+_ostt__history__help_commands() {
+    local commands; commands=(
+'list:List transcription history' \
+'show:Show a transcription from history' \
+'copy:Copy a transcription from history to clipboard' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt history help commands' commands "$@"
+}
+(( $+functions[_ostt__history__help__copy_commands] )) ||
+_ostt__history__help__copy_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt history help copy commands' commands "$@"
+}
+(( $+functions[_ostt__history__help__help_commands] )) ||
+_ostt__history__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt history help help commands' commands "$@"
+}
+(( $+functions[_ostt__history__help__list_commands] )) ||
+_ostt__history__help__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt history help list commands' commands "$@"
+}
+(( $+functions[_ostt__history__help__show_commands] )) ||
+_ostt__history__help__show_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt history help show commands' commands "$@"
+}
+(( $+functions[_ostt__history__list_commands] )) ||
+_ostt__history__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt history list commands' commands "$@"
+}
+(( $+functions[_ostt__history__show_commands] )) ||
+_ostt__history__show_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt history show commands' commands "$@"
+}
+(( $+functions[_ostt__keyword_commands] )) ||
+_ostt__keyword_commands() {
+    local commands; commands=(
+'list:List transcription keywords' \
+'add:Add transcription keywords' \
+'remove:Remove transcription keywords' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt keyword commands' commands "$@"
+}
+(( $+functions[_ostt__keyword__add_commands] )) ||
+_ostt__keyword__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt keyword add commands' commands "$@"
+}
+(( $+functions[_ostt__keyword__help_commands] )) ||
+_ostt__keyword__help_commands() {
+    local commands; commands=(
+'list:List transcription keywords' \
+'add:Add transcription keywords' \
+'remove:Remove transcription keywords' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt keyword help commands' commands "$@"
+}
+(( $+functions[_ostt__keyword__help__add_commands] )) ||
+_ostt__keyword__help__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt keyword help add commands' commands "$@"
+}
+(( $+functions[_ostt__keyword__help__help_commands] )) ||
+_ostt__keyword__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt keyword help help commands' commands "$@"
+}
+(( $+functions[_ostt__keyword__help__list_commands] )) ||
+_ostt__keyword__help__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt keyword help list commands' commands "$@"
+}
+(( $+functions[_ostt__keyword__help__remove_commands] )) ||
+_ostt__keyword__help__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt keyword help remove commands' commands "$@"
+}
+(( $+functions[_ostt__keyword__list_commands] )) ||
+_ostt__keyword__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt keyword list commands' commands "$@"
+}
+(( $+functions[_ostt__keyword__remove_commands] )) ||
+_ostt__keyword__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt keyword remove commands' commands "$@"
+}
+(( $+functions[_ostt__launch_commands] )) ||
+_ostt__launch_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt launch commands' commands "$@"
+}
+(( $+functions[_ostt__logs_commands] )) ||
+_ostt__logs_commands() {
+    local commands; commands=(
+'follow:Follow the latest log file' \
+'path:Print the latest log file path' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt logs commands' commands "$@"
+}
+(( $+functions[_ostt__logs__follow_commands] )) ||
+_ostt__logs__follow_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt logs follow commands' commands "$@"
+}
+(( $+functions[_ostt__logs__help_commands] )) ||
+_ostt__logs__help_commands() {
+    local commands; commands=(
+'follow:Follow the latest log file' \
+'path:Print the latest log file path' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt logs help commands' commands "$@"
+}
+(( $+functions[_ostt__logs__help__follow_commands] )) ||
+_ostt__logs__help__follow_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt logs help follow commands' commands "$@"
+}
+(( $+functions[_ostt__logs__help__help_commands] )) ||
+_ostt__logs__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt logs help help commands' commands "$@"
+}
+(( $+functions[_ostt__logs__help__path_commands] )) ||
+_ostt__logs__help__path_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt logs help path commands' commands "$@"
+}
+(( $+functions[_ostt__logs__path_commands] )) ||
+_ostt__logs__path_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt logs path commands' commands "$@"
+}
+(( $+functions[_ostt__model_commands] )) ||
+_ostt__model_commands() {
+    local commands; commands=(
+'list:List available transcription models' \
+'current:Show the currently selected transcription model' \
+'params:List supported transcription params for a transcription model' \
+'select:Select the active transcription model' \
+'local:Manage local transcription models' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt model commands' commands "$@"
+}
+(( $+functions[_ostt__model__current_commands] )) ||
+_ostt__model__current_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model current commands' commands "$@"
+}
+(( $+functions[_ostt__model__help_commands] )) ||
+_ostt__model__help_commands() {
+    local commands; commands=(
+'list:List available transcription models' \
+'current:Show the currently selected transcription model' \
+'params:List supported transcription params for a transcription model' \
+'select:Select the active transcription model' \
+'local:Manage local transcription models' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt model help commands' commands "$@"
+}
+(( $+functions[_ostt__model__help__current_commands] )) ||
+_ostt__model__help__current_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model help current commands' commands "$@"
+}
+(( $+functions[_ostt__model__help__help_commands] )) ||
+_ostt__model__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model help help commands' commands "$@"
+}
+(( $+functions[_ostt__model__help__list_commands] )) ||
+_ostt__model__help__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model help list commands' commands "$@"
+}
+(( $+functions[_ostt__model__help__local_commands] )) ||
+_ostt__model__help__local_commands() {
+    local commands; commands=(
+'download:Download a local model' \
+'remove:Remove a downloaded local model' \
+    )
+    _describe -t commands 'ostt model help local commands' commands "$@"
+}
+(( $+functions[_ostt__model__help__local__download_commands] )) ||
+_ostt__model__help__local__download_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model help local download commands' commands "$@"
+}
+(( $+functions[_ostt__model__help__local__remove_commands] )) ||
+_ostt__model__help__local__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model help local remove commands' commands "$@"
+}
+(( $+functions[_ostt__model__help__params_commands] )) ||
+_ostt__model__help__params_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model help params commands' commands "$@"
+}
+(( $+functions[_ostt__model__help__select_commands] )) ||
+_ostt__model__help__select_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model help select commands' commands "$@"
+}
+(( $+functions[_ostt__model__list_commands] )) ||
+_ostt__model__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model list commands' commands "$@"
+}
+(( $+functions[_ostt__model__local_commands] )) ||
+_ostt__model__local_commands() {
+    local commands; commands=(
+'download:Download a local model' \
+'remove:Remove a downloaded local model' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt model local commands' commands "$@"
+}
+(( $+functions[_ostt__model__local__download_commands] )) ||
+_ostt__model__local__download_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model local download commands' commands "$@"
+}
+(( $+functions[_ostt__model__local__help_commands] )) ||
+_ostt__model__local__help_commands() {
+    local commands; commands=(
+'download:Download a local model' \
+'remove:Remove a downloaded local model' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'ostt model local help commands' commands "$@"
+}
+(( $+functions[_ostt__model__local__help__download_commands] )) ||
+_ostt__model__local__help__download_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model local help download commands' commands "$@"
+}
+(( $+functions[_ostt__model__local__help__help_commands] )) ||
+_ostt__model__local__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model local help help commands' commands "$@"
+}
+(( $+functions[_ostt__model__local__help__remove_commands] )) ||
+_ostt__model__local__help__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model local help remove commands' commands "$@"
+}
+(( $+functions[_ostt__model__local__remove_commands] )) ||
+_ostt__model__local__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model local remove commands' commands "$@"
+}
+(( $+functions[_ostt__model__params_commands] )) ||
+_ostt__model__params_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model params commands' commands "$@"
+}
+(( $+functions[_ostt__model__select_commands] )) ||
+_ostt__model__select_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt model select commands' commands "$@"
+}
+(( $+functions[_ostt__process_commands] )) ||
+_ostt__process_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt process commands' commands "$@"
+}
+(( $+functions[_ostt__record_commands] )) ||
+_ostt__record_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt record commands' commands "$@"
+}
+(( $+functions[_ostt__replace_commands] )) ||
+_ostt__replace_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt replace commands' commands "$@"
+}
+(( $+functions[_ostt__replay_commands] )) ||
+_ostt__replay_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt replay commands' commands "$@"
+}
+(( $+functions[_ostt__retry_commands] )) ||
+_ostt__retry_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt retry commands' commands "$@"
+}
+(( $+functions[_ostt__transcribe_commands] )) ||
+_ostt__transcribe_commands() {
+    local commands; commands=()
+    _describe -t commands 'ostt transcribe commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_ostt" ]; then
+    _ostt "$@"
+else
+    compdef _ostt ostt
+fi
