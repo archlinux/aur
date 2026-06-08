@@ -1,0 +1,18 @@
+pkgbase = shrike-ytdown
+	pkgdesc = GTK3 YouTube Channel Video, Audio (MP3) & Thumbnail Downloader
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://shrikelinuxug.org
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = gtk3
+	depends = yt-dlp
+	depends = ffmpeg
+	optdepends = python-mutagen: embed thumbnails in MP3 files
+	optdepends = xdg-utils: open output folder in file manager
+	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/main.tar.gz
+	md5sums = SKIP
+
+pkgname = shrike-ytdown
