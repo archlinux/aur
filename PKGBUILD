@@ -4,16 +4,16 @@
 
 _target=sh3eb-elf
 pkgname=${_target}-binutils
-pkgver=2.45
+pkgver=2.46.0
 pkgrel=1
 pkgdesc="GNU binary utilities for the ${_target} target."
 arch=(i686 x86_64)
 options=('!libtool' '!emptydirs')
 url='https://www.gnu.org/software/binutils/'
-license=(GPL-2.0-or-later GPL-3.0-or-later LGPL-2.0-or-later LGPL-3.0-or-later GFDL-1.3-only FSFAP)
-depends=('zlib' 'flex')
+license=(GPL-2.0-or-later GPL-3.0-or-later LGPL-2.0-or-later LGPL-3.0-or-later GFDL-1.3-only GFDL-1.3 FSFAP)
+depends=('zlib' 'zstd' 'binutils' 'jansson' 'libelf' 'glibc')
 source=(https://ftpmirror.gnu.org/binutils/binutils-${pkgver}.tar.bz2)
-sha256sums=('1393f90db70c2ebd785fb434d6127f8888c559d5eeb9c006c354b203bab3473e')
+sha256sums=('0f3152632a2a9ce066f20963e9bb40af7cf85b9b6c409ed892fd0676e84ecd12')
 
 prepare() {
   cd "${srcdir}/binutils-${pkgver}"
