@@ -1,20 +1,20 @@
 pkgbase = kodi-addon-pvr-zattoo
 	pkgdesc = Zattoo PVR Plugin for Kodi
-	pkgver = 21.0.1
+	pkgver = 21.0.7
 	pkgrel = 1
 	url = https://github.com/rbuehlma/pvr.zattoo
 	arch = any
 	groups = kodi
 	license = GPL
-	makedepends = cmake
+	makedepends = cmake3-bin
 	makedepends = git
 	depends = kodi
 	depends = kodi-addon-script-module-inputstreamhelper
 	provides = kodi-addon-pvr-zattoo
 	conflicts = kodi-addon-pvr-zattoo
-	source = https://github.com/rbuehlma/pvr.zattoo/archive/21.0.1-Omega.tar.gz
-	source = https://github.com/xbmc/xbmc/archive/21.0-Omega.tar.gz
-	sha256sums = 5908de86c038b3565d8b3a8d4578d4cac0d37287fc039808542b874d9fb2bffa
-	sha256sums = 7f54c1fd8456ac46221fbc85e447362bdc209163c6cb19fca98d106560071b7c
+	source = https://github.com/rbuehlma/pvr.zattoo/archive/21.0.7-Omega.tar.gz
+	source = https://github.com/xbmc/xbmc/archive/21.3-Omega.tar.gz
+	sha256sums = d57efceff2f451cc8864d429abed6c7d808ea5092fddf3ece3f598d4a5e26b1f
+	sha256sums = a60afcb556e4a00cb19fc35b7e77758107c9a8096c6ce9b66af5f92396be31aa
 
 pkgname = kodi-addon-pvr-zattoo
