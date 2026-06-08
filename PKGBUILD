@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=drawpen-bin
 _pkgname=DrawPen
-pkgver=0.0.51
+pkgver=0.0.52
 _electronversion=40
 pkgrel=1
 pkgdesc="A simple screen annotation.(Prebuild version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f8ccab00d35fce7959a9c2403fc4d7efde00055e119f8879dfbc77215a3a3016'
+sha256sums=('47eecfe40851b13201f50e64aac91692dd7918bab9a1c846a443b56417bcd30b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
