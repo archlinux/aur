@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gcc-libs' 'glibc')
 makedepends=('cargo')
 install=midi-daemon.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rickprice/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e15a91bca81c90a77b9f880426408df81ba83db94aa88ee8dff7914e57ef00b4')
+sha256sums=('46608798afa79288eb91034daba504e319e98bd38bccb3513047ec88b1d014d9')
 
 prepare() {
     cd "$pkgname-$pkgver"
