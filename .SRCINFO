@@ -1,0 +1,22 @@
+pkgbase = hyprpilot
+	pkgdesc = Programmatic control of Hyprland for AI agents and humans: typed IPC client, daemon with undo/snapshots, CLI, MCP server, input synthesis, and screen capture + OCR
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sumerchoudhary78/HyprPilot
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = hyprland
+	depends = gcc-libs
+	depends = glibc
+	optdepends = grim: screen capture for the Vision tools
+	optdepends = slurp: interactive region selection for capture
+	optdepends = tesseract: OCR for the Vision tools
+	optdepends = tesseract-data-eng: English language data for OCR
+	optdepends = wtype: text and key-chord input synthesis
+	optdepends = ydotool: input-synthesis fallback that drives Hyprland keybinds
+	source = hyprpilot-1.0.0.tar.gz::https://github.com/sumerchoudhary78/HyprPilot/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 1b308d0fb6d2ada3dc3de96df99c8a613ee2a75fe18921ef1e79b116b9eb307e
+
+pkgname = hyprpilot
