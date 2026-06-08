@@ -1,0 +1,5 @@
+[obs-wayland-hotkeys]
+source = "github"
+github = "leia-uwu/obs-wayland-hotkeys"
+prefix = "v"
+use_max_tag = "true"
