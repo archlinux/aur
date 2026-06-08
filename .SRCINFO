@@ -1,6 +1,6 @@
 pkgbase = git-ss-bin
 	pkgdesc = A Git plugin for sharing temporary snapshot branches.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/rijuyuezhu/git-ss
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = git-ss-bin
 	provides = git-ss
 	conflicts = git-ss
 	options = !strip
-	source = LICENSE-0.3.0::https://github.com/rijuyuezhu/git-ss/raw/v0.3.0/LICENSE
+	source = LICENSE-0.3.1::https://github.com/rijuyuezhu/git-ss/raw/v0.3.1/LICENSE
 	sha256sums = d9c5c3f4f9e4429b77f047f8b1740c17302b831611421a5a343e75203bea6c27
-	source_x86_64 = git-ss-0.3.0-x86_64::https://github.com/rijuyuezhu/git-ss/releases/download/v0.3.0/git-ss-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 56caa80a6788e38ba54c6bf17b6e6858e02cca69dc2fb9480dc77526591640a2
-	source_aarch64 = git-ss-0.3.0-aarch64::https://github.com/rijuyuezhu/git-ss/releases/download/v0.3.0/git-ss-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = 9e757d115e9b616e46be21f59f631f1465ace60ce9a288c495bfdf5ac0cbbe50
+	source_x86_64 = git-ss-0.3.1-x86_64::https://github.com/rijuyuezhu/git-ss/releases/download/v0.3.1/git-ss-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = d954e4d2f395fee478779f0dbb3e8ce90df8f2f5b102065058bfef69de853d29
+	source_aarch64 = git-ss-0.3.1-aarch64::https://github.com/rijuyuezhu/git-ss/releases/download/v0.3.1/git-ss-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 23c7c82c9aedd825768610a24fe070e09967f53f9c5717182785eac48a41b593
 
 pkgname = git-ss-bin
