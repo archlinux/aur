@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Simple LLM service identification - translate IP:Port to Ollama, vLLM, LiteLLM, or 60+ other AI services in seconds"
 
-pkgver=1.2.13
+pkgver=1.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('38668afbc2e723d05e01e7694a0b2af2a4f9e924914328fc382e1296bda2f9c4')
-sha256sums_aarch64=('21777b58b210dc1307e4d3d1151e9861559aed11a72c95a06a5efa704d320a9f')
+sha256sums_x86_64=('f4f88fc11cac163c7f7a2c9b5a514c911b45bac56299d8db4209d92427f39156')
+sha256sums_aarch64=('2be425f77ccd96d3b76eea667b3c14297108929c9fc46efca6bfefeba50a5e66')
 
 
 package() {
