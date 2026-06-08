@@ -1,8 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 # Contributor: robertfoster
 
-: ${aur_llamacpp_build_universal:=false}
-
 pkgname=llama.cpp-git
 pkgver=b9554.r2.19bba67c1f
 pkgrel=1
@@ -70,16 +68,8 @@ build() {
     -Wno-dev
   )
 
-  if [[ ${aur_llamacpp_build_universal} == true ]]; then
-    _cmake_options+=(
-      -DGGML_BACKEND_DL=ON
-      -DGGML_NATIVE=OFF
-      -DGGML_CPU_ALL_VARIANTS=ON
-    )
-  else
-    # makepkg sets SOURCE_DATE_EPOCH which disables GGML_NATIVE_DEFAULT
-    _cmake_options+=(-DGGML_NATIVE=ON)
-  fi
+  # makepkg sets SOURCE_DATE_EPOCH which disables GGML_NATIVE_DEFAULT
+  _cmake_options+=(-DGGML_NATIVE=ON)
 
   if [[ -n "${aur_llamacpp_cmakeopts:-}" ]]; then
     # shellcheck disable=SC2206
