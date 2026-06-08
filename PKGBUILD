@@ -6,7 +6,7 @@
 
 _pkgname=picard
 pkgname="${_pkgname}3"
-pkgver=3.0.0b1
+pkgver=3.0.0b4
 pkgrel=1
 pkgdesc="Official MusicBrainz tagger"
 arch=(x86_64)
@@ -41,7 +41,7 @@ optdepends=(
   'qt6-translations: full UI translation'
 )
 source=("http://data.musicbrainz.org/pub/musicbrainz/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('4d825a81f84a7283709ba162e694410c54fe98b0a45dfa09c7f479c32990ec4f')
+sha256sums=('48049cb90f54fa035269b923e4a97928ff01550a29246bb0d69b1402d9bca884')
 
 build() {
   cd $_pkgname-$pkgver
