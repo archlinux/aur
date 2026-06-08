@@ -1,6 +1,6 @@
 pkgbase = ralphex-bin
 	pkgdesc = CLI tool that orchestrates Claude Code to execute implementation plans autonomously
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://ralphex.com
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = ralphex-bin
 	provides = ralphex
 	conflicts = ralphex
 	options = !debug
-	source = LICENSE-1.5.0::https://raw.githubusercontent.com/umputun/ralphex/v1.5.0/LICENSE
+	source = LICENSE-1.5.1::https://raw.githubusercontent.com/umputun/ralphex/v1.5.1/LICENSE
 	sha256sums = 155d97114b2d9b7f66181d0ba258aca57f97b8b957dd1662745bf57218c41ef3
-	source_x86_64 = ralphex-bin-1.5.0-x86_64.tar.gz::https://github.com/umputun/ralphex/releases/download/v1.5.0/ralphex_1.5.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = d33c4916ae45ab85b4da591a0a7e43c86f5e787fec9a980ea783f61ff11359bc
-	source_aarch64 = ralphex-bin-1.5.0-aarch64.tar.gz::https://github.com/umputun/ralphex/releases/download/v1.5.0/ralphex_1.5.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7d1edac98fc806ac665e7334fe5ec0c03cc21d59d389f8a83f2f61e5d5dfaa20
+	source_x86_64 = ralphex-bin-1.5.1-x86_64.tar.gz::https://github.com/umputun/ralphex/releases/download/v1.5.1/ralphex_1.5.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5d3e0805bee85c8146f2094e0c16cc7717f51c968cef8db1565a830062c7d78e
+	source_aarch64 = ralphex-bin-1.5.1-aarch64.tar.gz::https://github.com/umputun/ralphex/releases/download/v1.5.1/ralphex_1.5.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0ac5e8a1b71901ac97424b3e0824a63131bfab1d135f401748ccf35084e42536
 
 pkgname = ralphex-bin
