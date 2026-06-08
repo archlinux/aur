@@ -1,6 +1,6 @@
 pkgbase = rsv-ng
 	pkgdesc = A runit service manager with smart completions, scaffolding, and more
-	pkgver = r42.fd16af6
+	pkgver = r46.6fcf41d
 	pkgrel = 1
 	url = https://gitlab.com/runit-rsv/rsv-main
 	arch = any
