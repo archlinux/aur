@@ -1,4 +1,4 @@
-# Maintainer: Carlos Prieto <prietus@live.com>
+# Maintainer: Carlos Prieto <prietus@live.com> 
 pkgname=murmur-bin
 _pkgname=murmur
 pkgver=0.3.8
