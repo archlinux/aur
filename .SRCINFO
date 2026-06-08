@@ -1,6 +1,6 @@
 pkgbase = clauge-bin
 	pkgdesc = One window. Every dev tool.
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://clauge.in
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = clauge-bin
 	depends = libsecret
 	provides = clauge
 	conflicts = clauge
-	source_x86_64 = clauge_3.1.0_amd64.deb::https://github.com/ansxuman/Clauge/releases/download/v3.1.0/Clauge_3.1.0_amd64.deb
-	sha256sums_x86_64 = f534b0cd651ce1036466dbca8a21444069580ca1992af02cda7cf5ed6c5137a2
-	source_aarch64 = clauge_3.1.0_arm64.deb::https://github.com/ansxuman/Clauge/releases/download/v3.1.0/Clauge_3.1.0_arm64.deb
-	sha256sums_aarch64 = bd76bb3e6cb01472837dc2048d6c8cfe4bd56d30fa89bfd25ef08d41eedecf5f
+	source_x86_64 = clauge_3.2.0_amd64.deb::https://github.com/ansxuman/Clauge/releases/download/v3.2.0/Clauge_3.2.0_amd64.deb
+	sha256sums_x86_64 = f5f1a03beaf3c7c6cde8cf1a1c7dfda0db777ab4340fc4d353e29b8d072de615
+	source_aarch64 = clauge_3.2.0_arm64.deb::https://github.com/ansxuman/Clauge/releases/download/v3.2.0/Clauge_3.2.0_arm64.deb
+	sha256sums_aarch64 = 8c32246ca7ccaf99eeead9489bc2964f7a704ea476f6f47769dce9cf201117e6
 
 pkgname = clauge-bin
