@@ -1,27 +1,29 @@
 pkgname=shs-git
 pkgver=r1
 pkgrel=1
-pkgdesc="SharkScript standalone interpreter"
+pkgdesc="Sharkscript standalone Compiler & VM"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mayshecry/sharkscript-standalone"
-license=('custom')
+license=('custom:Sharkscript')
 depends=('glibc')
 makedepends=('git' 'go')
+
 source=("git+https://github.com/mayshecry/sharkscript-standalone.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd sharkscript-standalone
+  cd "$srcdir/sharkscript-standalone"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd sharkscript-standalone
-  go mod tidy
+  cd "$srcdir/sharkscript-standalone"
+  export CGO_ENABLED=0
+  export GOFLAGS="-mod=readonly"
   go build -o shs main.go
 }
 
 package() {
-  cd sharkscript-standalone
+  cd "$srcdir/sharkscript-standalone"
   install -Dm755 shs "$pkgdir/usr/bin/shs"
 }

@@ -1,11 +1,11 @@
 pkgbase = shs-git
-	pkgdesc = SharkScript standalone interpreter
+	pkgdesc = Sharkscript standalone Compiler & VM
 	pkgver = r1
 	pkgrel = 1
 	url = https://github.com/mayshecry/sharkscript-standalone
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = custom:Sharkscript
 	makedepends = git
 	makedepends = go
 	depends = glibc
