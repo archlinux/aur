@@ -1,7 +1,7 @@
 pkgbase = ollaman-bin
 	pkgdesc = A modern desktop GUI for managing and interacting with Ollama AI models
 	pkgver = 2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ollaman.com
 	arch = x86_64
 	license = proprietary
@@ -13,9 +13,8 @@ pkgbase = ollaman-bin
 	depends = libxcomposite
 	depends = libxdamage
 	depends = libxrandr
-	depends = libgbm
-	depends = libasound
-	depends = libxshmfence
+	depends = mesa
+	depends = alsa-lib
 	source = https://dl.ollaman.com/updates/v2.9.1/linux/x86_64/OllaMan_2.9.1_amd64.deb
 	sha256sums = SKIP
 

@@ -1,7 +1,7 @@
 # Maintainer: pakrohk <pakrohk@gmail.com>
 pkgname=ollaman-bin
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern desktop GUI for managing and interacting with Ollama AI models"
 arch=('x86_64')
 url="https://ollaman.com"
@@ -15,9 +15,8 @@ depends=(
   'libxcomposite'
   'libxdamage'
   'libxrandr'
-  'libgbm'
-  'libasound'
-  'libxshmfence'
+  'mesa'
+  'alsa-lib'
 )
 source=("https://dl.ollaman.com/updates/v${pkgver}/linux/x86_64/OllaMan_${pkgver}_amd64.deb")
 sha256sums=('SKIP')  # بعداً عوض کن
