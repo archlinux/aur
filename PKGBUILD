@@ -24,8 +24,8 @@ package() {
     cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
 
     # Link to binary
-    ln -s "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
-    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    ln -sf "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
+    ln -sf "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
     install -Dm644 "$srcdir/application-$pkgver/$pkgname.desktop" \
