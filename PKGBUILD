@@ -1,10 +1,10 @@
 # Maintainer: Tom Hale <tom at hale dot ee>
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 _pkgname=ostt
-pkgname=ostt-vulkan-release-bin
+pkgname=ostt-vulkan-bin-release-git
 pkgver=0.0.20
 pkgrel=1
-pkgdesc='Terminal-native speech-to-text with Vulkan GPU acceleration'
+pkgdesc='Terminal-native speech-to-text with Vulkan GPU acceleration (latest Git binary release)'
 arch=('x86_64')
 url="https://github.com/kristoferlund/${_pkgname}"
 license=('MIT')
@@ -16,18 +16,21 @@ optdepends=(
 conflicts=('ostt' ostt-{cuda,vulkan} ostt-{cuda,vulkan}-bin 'ostt-cuda-release-bin')
 provides=('ostt' 'ostt-vulkan')
 options=('!strip')
+# shellcheck disable=SC2034
+_ver=$(git ls-remote --tags "${url}.git" | grep -oP 'refs/tags/v\K[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
 source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu-vulkan.tar.gz"
-  "${pkgname}-${pkgver}-LICENSE::${url}/raw/v${pkgver}/LICENSE"
+  "${_pkgname}-${_ver}-x86_64-unknown-linux-gnu-vulkan.tar.gz::${url}/releases/download/v${_ver}/${_pkgname}-x86_64-unknown-linux-gnu-vulkan.tar.gz"
+  "${_pkgname}-${_ver}-LICENSE::${url}/raw/v${_ver}/LICENSE"
 )
-sha256sums=(
-  'df97a08adf83810d9f27bd40456207e99ed53c2cc3e3c066e75730ca5aa4c7f0'
-  '8bcb6bd9c06c2cce21a54db8e1455c1aa154275667828f772dd74d03272e65bd'
-)
+sha256sums=('SKIP' 'SKIP')
+
+pkgver() {
+  git ls-remote --tags "${url}.git" | grep -oP 'refs/tags/v\K[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1
+}
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgname}-${_ver}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Generate and install shell completions
   for _shell in bash zsh fish; do
