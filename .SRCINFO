@@ -5,7 +5,7 @@ pkgbase = open-bin
 	url = https://github.com/awowogei/open
 	arch = x86_64
 	license = MIT
-	source = open-bin.tar.gz::https://github.com/awowogei/open/releases/latest/download/x86_64-unknown-linux-gnu.tar.gz
+	source = open-bin-0.1.1.tar.gz::https://github.com/awowogei/open/releases/latest/download/x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = SKIP
 
 pkgname = open-bin

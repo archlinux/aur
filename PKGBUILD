@@ -7,7 +7,7 @@ pkgdesc="A simpler alternative to xdg-open and xdg-mime"
 arch=('x86_64')
 url="https://github.com/awowogei/open"
 license=('MIT')
-source=("$pkgname.tar.gz::$url/releases/latest/download/x86_64-unknown-linux-gnu.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/releases/latest/download/x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('SKIP')
 
 pkgver() {
