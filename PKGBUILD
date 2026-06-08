@@ -2,23 +2,24 @@
 # Maintainer: Thomas Pellegatta <pellegatta.thomas@gmail.com>
 
 pkgname='tufw-git'
-pkgver=0.2.7
-pkgrel=2
+pkgver=0.2.8
+pkgrel=1
 pkgdesc='Terminal UI for ufw'
 url='https://github.com/peltho/tufw'
 arch=('aarch64' 'i686' 'x86_64')
 license=('MIT')
 provides=('tufw')
 conflicts=('tufw')
+depends=('ufw')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/peltho/tufw/releases/download/v0.2.7/tufw_0.2.7_linux_arm64.tar.gz")
-sha256sums_aarch64=('95f9949505b6686297b5218f95fcfc5cfadaf46ae1dd74d5595d81877f3c8742')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/peltho/tufw/releases/download/v${pkgver}/tufw_${pkgver}_linux_arm64.tar.gz")
+sha256sums_aarch64=('1bb904da956acc718649f910f7039e24ff014466188acd20761edb91e6b5d8c0')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/peltho/tufw/releases/download/v0.2.7/tufw_0.2.7_linux_386.tar.gz")
-sha256sums_i686=('352e1f4d1d055c69036d3659c7f7d0577b789228e3b9025d4251000cefa05471')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/peltho/tufw/releases/download/v${pkgver}/tufw_${pkgver}_linux_386.tar.gz")
+sha256sums_i686=('0ccf780d7ee0f8a26746ba7155d27744c1e29d3f30579f4a5415ca6ab14e5382')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/peltho/tufw/releases/download/v0.2.7/tufw_0.2.7_linux_amd64.tar.gz")
-sha256sums_x86_64=('fba191536cc928b0482de67784a821d3f1af3f388a8df258c749ac36d5614f3f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/peltho/tufw/releases/download/v${pkgver}/tufw_${pkgver}_linux_amd64.tar.gz")
+sha256sums_x86_64=('27353331e393326c5ebb02f1c9689ad633a1f19de1530b3c193d18707f6d37f2')
 
 package() {
   install -Dm755 "./tufw" "${pkgdir}/usr/bin/tufw"
