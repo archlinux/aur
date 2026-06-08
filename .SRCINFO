@@ -26,6 +26,7 @@ pkgbase = noctalia-greeter-git
         depends = libxkbcommon
         depends = pango
         depends = wayland
+        depends = wlr-randr
         optdepends = noctalia-git: Wallpaper and palette sync from Noctalia
         provides = noctalia-greeter
         conflicts = noctalia-greeter

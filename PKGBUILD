@@ -26,6 +26,7 @@ depends=(
   'libxkbcommon'
   'pango'
   'wayland'
+  'wlr-randr'
 )
 makedepends=(
   'git'
