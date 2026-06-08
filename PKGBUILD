@@ -2,14 +2,32 @@
 # Contributor: Dennis Twardowsky <aur@devpty.de>
 
 pkgname=noson-app-git
-pkgver=5.6.8.r4.g1230355
-pkgrel=2
+pkgver=5.7.1.r0.g261f21d
+pkgrel=1
 pkgdesc="SONOS controller for Linux platforms"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/janbar/noson-app"
 license=(GPL-3.0-only)
-depends=(qt5-base qt5-quickcontrols2 qt5-declarative)
-makedepends=(cmake git qt5-svg noson)
+depends=(
+    qt6-5compat
+    qt6-base
+    qt6-declarative
+    qt6-svg
+    flac
+    glibc
+    hicolor-icon-theme
+    libgcc
+    libstdc++
+    openssl
+    sh
+    zlib
+    )
+makedepends=(
+    cmake
+    git
+    libpulse
+    vulkan-headers
+    )
 provides=(noson-app)
 conflicts=(noson-app)
 source=("git+https://github.com/janbar/noson-app.git")
@@ -22,7 +40,6 @@ pkgver() {
 
 build() {
   local _flags=(
-    -DBUILD_LIBNOSON:BOOL=OFF
   )
 
   cmake -B build -S "noson-app" -Wno-dev \
