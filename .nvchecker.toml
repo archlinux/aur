@@ -1,0 +1,4 @@
+[python-discord]
+source = "git"
+git = "https://github.com/Rapptz/discord.py.git"
+prefix = "v"
