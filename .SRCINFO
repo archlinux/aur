@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal
 	pkgdesc = Desktop integration portals for sandboxed apps
-	pkgver = 1.20.4
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://flatpak.github.io/xdg-desktop-portal/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = xdg-desktop-portal
 	checkdepends = python-pytest-xdist
 	makedepends = docbook-xsl
 	makedepends = flatpak
+	makedepends = gamemode
 	makedepends = geoclue
 	makedepends = git
 	makedepends = glib2-devel
@@ -21,32 +22,36 @@ pkgbase = xdg-desktop-portal
 	makedepends = python-pytest
 	makedepends = python-sphinx
 	makedepends = python-sphinx-copybutton
-	makedepends = python-sphinxext-opengraph
 	makedepends = python-sphinx-furo
+	makedepends = python-sphinxext-opengraph
+	makedepends = rtkit
 	makedepends = umockdev
 	makedepends = xmlto
 	depends = fuse3
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
-	depends = gstreamer
 	depends = gst-plugins-base-libs
+	depends = gstreamer
 	depends = json-glib
 	depends = libgcc
 	depends = libgudev
 	depends = libpipewire
 	depends = pipewire
-	depends = rtkit
 	depends = systemd
 	depends = systemd-libs
-	optdepends = geoclue: Geolocation portal
+	optdepends = gamemode: GameMode portal
+	optdepends = geoclue: Location portal
+	optdepends = rtkit: Realtime portal
 	optdepends = xdg-desktop-portal-impl: Portal backends
-	source = git+https://github.com/flatpak/xdg-desktop-portal?signed#tag=1.20.4
-	source = git+https://gitlab.gnome.org/GNOME/libglnx.git#commit=ccea836b799256420788c463a638ded0636b1632
+	source = git+https://github.com/flatpak/xdg-desktop-portal?signed#tag=1.22.0
+	source = git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=c6f2359cc1d00f16e0a0e2527fa0bc1882b8b5ab
+	source = git+https://gitlab.gnome.org/GNOME/libglnx.git#commit=ff64d52116ae74f0d25e24f089db28921ea171ff
 	validpgpkeys = 9038F70CA72FAC9D10C6327B89AFE307C861D158
 	validpgpkeys = 8307C0A224BABDA1BABD0EB9A6EEEC9E0136164A
 	validpgpkeys = 6B0266175A1A8BC8892D3DF79E4D520F7EC588CF
-	b2sums = 5a8887f4b40135758471050df6853c996905c58eaeaefc78287e2112c1a685659952f0334416ca19140eb8059014c2e7bc9afbfb888e13a06f7cfc12b7648673
-	b2sums = f48f648508370cb14d86ba2a44f60e61ff0e301a94c587c790631f09aa0cdc3d70ef0054da06596c67a4011e123a83a62f9e4fdef43909205d25b8b88d9f086a
+	b2sums = efb8eb0a08f6d47d08b794ce17be434f9271364d67765f431e84de2bd1839a12b641ed0b4f3c5174ccfa3b4f34250230ded6bfc258fd223f12044893fb6b3619
+	b2sums = d8637ce7c2887fbf34b1d0788d04c9afefbbaa03252360639ee097fc075356876e0800ba9c5eb26c85f9265dcf05d0281aaedce70a953a38530203b7bcc09a9c
+	b2sums = 9d4bcd5c69a82fe19fef70d467d07e03daa97d640e1f1fd5bcaef28cb7f3d476b4bb0fdc4b4b7d584c4408082e110dc977cc40a046b1d1ce8e93c34eddd5795c
 
 pkgname = xdg-desktop-portal
