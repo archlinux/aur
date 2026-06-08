@@ -1,12 +1,13 @@
 diff --git a/Base/res/ladybird/about-pages/newtab.html b/Base/res/ladybird/about-pages/newtab.html
-index 07e0dc7f6d0..56550cfdd13 100644
+index e0291379622..accc8d29910 100644
 --- a/Base/res/ladybird/about-pages/newtab.html
 +++ b/Base/res/ladybird/about-pages/newtab.html
-@@ -3,10 +3,77 @@
+@@ -3,11 +3,78 @@
      <head>
          <meta charset="UTF-8" />
          <title>New Tab</title>
 +        <link rel="stylesheet" type="text/css" href="resource://ladybird/ladybird.css" />
+         <link rel="icon" type="image/png" href="resource://icons/48x48/app-browser.png" />
          <style>
 -            html {
 -                color-scheme: light dark;

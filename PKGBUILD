@@ -4,8 +4,8 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird
-pkgver=20260509
-pkgrel=2
+pkgver=20260608
+pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
 url='https://github.com/LadybirdBrowser/ladybird'
@@ -14,7 +14,7 @@ depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-tools qt6-wayland ttf-lib
 makedepends=(autoconf-archive automake cargo cmake git libtool make nasm ninja patch pkg-config tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
-  "git+$url#commit=ba26f8eee7c9912a9923081b141d3297f7a6f728" # 2026-05-09
+  "git+$url#commit=a82c7939d928ee66ae721d47e91d02857047f17e" # 2026-06-08
   "git+https://github.com/microsoft/vcpkg.git#commit=48cfe1e0e928341709d97fc3d2eff10ad6262c96" # 2026-05-05 (vcpkg.json:builtin-baseline)
   "hb-fc-whole-archive.patch"
   "new-tab.patch"
@@ -22,8 +22,8 @@ source=(
 sha256sums=(
   'SKIP'
   'SKIP'
-  'e78b3260cfd12e937edb38fb7c3bfb3c7dfd0d02c079b6144595f3e9a030b28c'
-  'c4cb53eb7ab7c9c9646ebbdfd8b6a7d8bc8ed0b4730a88503149057fdc263749'
+  '8d4c2c434fe2af69f4e7c868a8e1dac3f7c8d562c15f96030f71754d5e60d1fe'
+  '6181578991719a46beaf1440385e3ae3a569d860a14b45570cda7650f061141c'
 )
 
 prepare() {

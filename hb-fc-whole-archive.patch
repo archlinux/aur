@@ -2,11 +2,12 @@ diff --git a/UI/Qt/CMakeLists.txt b/UI/Qt/CMakeLists.txt
 index 927bfe3d995..857794cc5d2 100644
 --- a/UI/Qt/CMakeLists.txt
 +++ b/UI/Qt/CMakeLists.txt
-@@ -15,7 +15,7 @@ target_sources(ladybird PRIVATE
-     WebContentView.cpp
+@@ -32,7 +32,7 @@ target_sources(ladybird PRIVATE
+     WindowControlButton.cpp
      ladybird.qrc
  )
 -target_link_libraries(ladybird PRIVATE Qt::Core Qt::Gui Qt::Widgets)
 +target_link_libraries(ladybird PRIVATE Qt::Core Qt::Gui Qt::Widgets -Wl,--whole-archive harfbuzz fontconfig -Wl,--no-whole-archive)
- create_ladybird_bundle(ladybird)
- if (WIN32)
+
+ if (APPLE)
+     target_sources(ladybird PRIVATE
