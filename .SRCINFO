@@ -12,6 +12,7 @@ pkgbase = chiri-bin
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = gtk3
+	depends = libayatana-appindicator
 	depends = hicolor-icon-theme
 	depends = libsoup3
 	depends = pango
