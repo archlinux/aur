@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
   cd humen-mcp
-  git submodule update --init --recursive
+  git submodule update --init humen-mcp-webui
 }
 
 build() {
@@ -42,4 +42,3 @@ package() {
   install -dm755 "$pkgdir/usr/share/humen-mcp/web"
   cp -a humen-mcp-webui/dist/. "$pkgdir/usr/share/humen-mcp/web/"
 }
-
