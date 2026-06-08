@@ -6,9 +6,9 @@ pkgdesc="Python library for network analysis that uses contraction hierarchies."
 url="https://oturns.github.io/pandarm/"
 
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 
-arch=("any")
+arch=("x86_64")
 license=("AGPL-3.0-only")
 
 makedepends=(

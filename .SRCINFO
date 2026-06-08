@@ -1,9 +1,9 @@
 pkgbase = python-pandarm
 	pkgdesc = Python library for network analysis that uses contraction hierarchies.
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://oturns.github.io/pandarm/
-	arch = any
+	arch = x86_64
 	license = AGPL-3.0-only
 	checkdepends = python-osmnx
 	checkdepends = python-pytest
