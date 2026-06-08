@@ -3,7 +3,7 @@
 _pkgname=twitchmpv
 pkgname="${_pkgname}-git"
 pkgver=0.0.1.r3.9002501
-pkgrel=2
+pkgrel=3
 pkgdesc="Wrapper bash script for streamlink in order to more simply watch twitch from the terminal."
 arch=('any')
 url="https://github.com/Aethar01/twitchmpv"
@@ -14,7 +14,7 @@ provides=(twitchmpv)
 source=("git+${url}.git")
 
 pkgver() {
-  cd "$_basename"
+  cd "$_pkgname"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
