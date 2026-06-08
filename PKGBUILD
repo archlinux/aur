@@ -1,6 +1,6 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=viat
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1.314
 pkgdesc='A tool for managing virtual file attributes'
 url='https://github.com/v--/viat'
@@ -13,7 +13,7 @@ optdepends=(
   'python-pygit2: Git file tracker'
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('890822045b47d87b338614d96c52bdf5a5d0bbebd40cdba8b262cd4f98ecfbfc')
+sha256sums=('44c987b4e972b448007342587307950b32694f1f09e6ed9d99d94b29e5d4cd81')
 
 _fullsrcdir() {
     echo "$srcdir/$pkgname-$pkgver"
