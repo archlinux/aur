@@ -1,0 +1,5 @@
+[kubebuilder]
+source = "github"
+use_latest_release = true
+github = "kubernetes-sigs/kubebuilder"
+prefix = "v"
