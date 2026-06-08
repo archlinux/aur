@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lynxhub
 _pkgname=LynxHub
-pkgver=3.5.0
+pkgver=3.5.1
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=V${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('09c99e7ba3ff2c00c5ee8a2a503d2a14e7719b04f86e80cc6f6ac1eee1f582eb'
+sha256sums=('a00c9c270e607fc9413c231a43148172221469720c60e6d1ad93b1d05790eeb8'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
