@@ -1,16 +1,19 @@
 pkgbase = extempore-bin
 	pkgdesc = A cyber-physical programming environment
-	pkgver = 0.9.3
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/digego/extempore
 	arch = x86_64
 	groups = pro-audio
 	license = LicenseRef-extempore
+	depends = alsa-lib
 	provides = extempore
 	conflicts = extempore
-	source = https://github.com/digego/extempore/releases/download/v0.9.3/extempore-linux-x86_64-v0.9.3.zip
+	source = https://github.com/digego/extempore/releases/download/v0.11.2/extempore-linux-x86_64-v0.11.2.zip
 	source = LICENSE
-	sha256sums = 2800a610c92477c86c6995e05f4586ea5f265b950f895219f7fcc72527144dad
+	source = extempore.sh
+	sha256sums = c180fc1493816aec5ac80b4ebce20f93f6d83db6615ad09772c05638e415db6c
 	sha256sums = f4bd232731cf4d4ddc82026b26a6e08736c2f5e8770078f69a864d9a45bec070
+	sha256sums = 68d567be326d523dc08e9f0359fed59e40bece6366a02165207e22d00502b276
 
 pkgname = extempore-bin
