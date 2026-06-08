@@ -6,7 +6,7 @@
 # package (packaging/aur-bin/PKGBUILD).
 
 pkgname=svault
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Local encrypted secret vault for developers"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ url="https://github.com/dafagareth/svault"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dafagareth/svault/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eae568219ffa8285bb58b0e47304329a32ff183821d3591793516dce23e06516')
+sha256sums=('94f5e2816df813315ca88892f8c0ec8d9a3b2efb887d48588956de7d82c465ea')
 
 build() {
   cd "svault-$pkgver"
