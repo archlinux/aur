@@ -3,37 +3,48 @@
 # Contributor: lukpod
 
 pkgname=amule-git
-pkgver=2.3.3.r306.b71935541
-pkgrel=2
+pkgver=3.0.0.r1.dfcb3f048
+pkgrel=1
 pkgdesc="Client for the eD2k and Kad networks"
 arch=(x86_64)
 url="https://github.com/amule-project/amule"
 license=(GPL-2.0-or-later)
 depends=(
-  crypto++
-  gd
-  geoip
-  glib2
-  glibc
-  gtk3
-  hicolor-icon-theme
-  libayatana-appindicator
-  libgcc
-  libpng
-  libstdc++
-  libupnp
-  readline
-  wxwidgets-common
-  wxwidgets-gtk3
-  zlib
+    binutils
+    crypto++
+    gd
+    geoip
+    glib2
+    glibc
+    gtk3
+    hicolor-icon-theme
+    libayatana-appindicator
+    libgcc
+    libpng
+    libstdc++
+    libupnp
+    readline
+    wxwidgets-common
+    wxwidgets-gtk3
+    zlib
+    zstd
   )
-makedepends=(git boost cmake)
+makedepends=(
+    boost
+    cmake
+    git
+    )
 provides=(amule amule-daemon)
 conflicts=(amule)
 options=(!lto)
-source=("git+https://github.com/amule-project/amule.git"
-        #git+https://repo.or.cz/amule.git
-        amuled.systemd amuleweb.systemd amule.sysusers amule.tmpfiles)
+source=(
+    "git+https://github.com/amule-project/amule.git"
+    #git+https://repo.or.cz/amule.git
+    amuled.systemd
+    amuleweb.systemd
+    amule.sysusers
+    amule.tmpfiles
+    )
 sha256sums=('SKIP'
             '20ac6b60c5f3bf49c0b080dfc02409da3c9d01b154344188008c6a75ca69681e'
             'f4f43b1154ddccc9036a4291a58c6715f097b171fec62ea7aead0c9d9fa654f2'
