@@ -1,6 +1,6 @@
 pkgbase = kelivo
 	pkgdesc = A Flutter LLM Chat Client
-	pkgver = 1.1.15
+	pkgver = 1.1.16
 	pkgrel = 1
 	url = https://kelivo.psycheas.top
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = kelivo
 	depends = libkeybinder3
 	depends = libstdc++
 	depends = pango
-	source = kelivo-1.1.15.tar.gz::https://github.com/Chevey339/kelivo/archive/v1.1.15.tar.gz
+	source = kelivo-1.1.16.tar.gz::https://github.com/Chevey339/kelivo/archive/v1.1.16.tar.gz
 	source = com.psyche.kelivo.desktop
-	sha256sums = 4d7957024abc086115a17932041e70c0be41c3c2a557e8e8492d78e7e14e3602
+	sha256sums = 312756cba6f7d76d87e2e08a72ee89248dff8d734a4a37528767f1a55f7f0bdc
 	sha256sums = ecae7320d7a984c40804ff8c3e075ce45ff302052f94ba61abc1103b825f6bcd
 
 pkgname = kelivo
