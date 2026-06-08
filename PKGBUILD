@@ -3,7 +3,7 @@
 # Contributor: João Fernandes <joaofnds@joaofnds.com>
 
 pkgname='astro-bin'
-pkgver=0.0.40
+pkgver=0.0.41
 pkgrel=1
 pkgdesc='A habit tracker for your terminal with a GitHub style activity graph'
 url='https://astro.joaofnds.com/'
@@ -13,13 +13,13 @@ provides=('astro')
 conflicts=('astro')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/joaofnds/astro/releases/download/${pkgver}/astro_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('7b72dac4b457a9b177c54ba717384df1ea4696ee82bb4aeee9b9fdbf41c4d5c6')
+sha256sums_aarch64=('9108e38042f082a20ece8f2c8346b2485404dce655bf1cee980a0d179bd12f08')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/joaofnds/astro/releases/download/${pkgver}/astro_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('67ff04b8d81be322961e1c4fc15958a15132f5a70e08a0876a479d83825ed98b')
+sha256sums_i686=('6c759c19e78fb26849c3130a50b39640886dea3ba790a6a18c764c79d03aa7bc')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/joaofnds/astro/releases/download/${pkgver}/astro_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('98d6d5cea62d7e6e2ad2059b66b24402cbdd192e161d30746fbcfcd1deef4499')
+sha256sums_x86_64=('ada5c54ba289801d8377d746a5a829ff647d2a82a38cca65b83ae7d5d38bd67f')
 
 package() {
   install -Dm755 "./astro" "${pkgdir}/usr/bin/astro"
