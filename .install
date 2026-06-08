@@ -1,0 +1,7 @@
+post_install() {
+    fc-cache -fv /usr/share/fonts/hikvision-mvs
+}
+
+post_remove() {
+    fc-cache -fv
+}

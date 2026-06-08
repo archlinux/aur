@@ -2,20 +2,16 @@
 # Contributor: Reese Wang <thuwrx10 at gmail dot com>
 
 pkgname='hikvision-mvs'
-pkgver=5.0.0
-_pkgdate=260421
+pkgver=5.0.1
+_pkgdate=260512
 pkgrel=1
 pkgdesc="Machine Vision Software by Hikvision, for their industrial cameras."
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://www.hikrobotics.com/"
 license=('LGPL2.1' 'LGPL3' 'custom')
-source=("https://www.hikrobotics.com/cn2/source/support/software/MVS_Linux_STD_V${pkgver}_${_pkgdate}.zip"
-	'logo.svg'
-	'hikvision-mvs.desktop')
+source=("https://www.hikrobotics.com/cn2/source/support/software/MVS_Linux_STD_V${pkgver}_${_pkgdate}.zip")
 noextract=("${source[0]##*/}")
-sha256sums=('6602744f88c772a84dd12d00d0c37dd9b02d1003591c58bd30ebd4e673c0b02d'
-            '6be7b478c87b26e562ee385c91039b8b5d4927eb3d34a27089201edb2b2182fb'
-            '8e71020b983d2b49f012af025dce81d83301f280acf73f8062adf6dbe2b71a2c')
+sha256sums=('cd6c4e3352afb1f6395b9be8a692b4fa8a911ae7eea7ff1f9181970f221bf264')
 
 DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 -e https://www.hikrobotics.com/cn/machinevision/service/download/?module=0 -A "Mozilla" -o %o %u'
           "${DLAGENTS[@]}")
@@ -44,13 +40,12 @@ package() {
 	)
 	export FILENAME=MVS-${pkgver}_${arch_in_filename[$CARCH]}_20${_pkgdate}.tar.gz #why paru cant do this?
 	OPT=${pkgdir}/opt/MVS
-	install -Dm644 logo.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
-	install -Dm644 hikvision-mvs.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 	echo "Install MVS,Please wait..."
 	mkdir -p ${OPT}
 	tar -C ${OPT} -xzf "$srcdir/${FILENAME%%.tar.gz}/MVS.tar.gz"
-	#mkdir -p ${pkgdir}/usr/local/Qt-5.6.3/lib/fonts
-	install -Dm644 -t ${pkgdir}/usr/local/Qt-5.6.3/lib/fonts ${pkgdir}/opt/MVS/bin/Fonts/* 
+	install -Dm644 "$pkgdir/opt/MVS/bin/MVS.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -d "$pkgdir/usr/share/fonts/$pkgname"
+    cp -r "$pkgdir/opt/MVS/bin/Fonts/"* "$pkgdir/usr/share/fonts/$pkgname/"
 
 	echo "Set up the SDK environment..."
 	mkdir -p ${pkgdir}/etc/udev/rules.d
