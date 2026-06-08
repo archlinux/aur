@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron41-castlab-bin
-pkgver='41.5.0+wvcus'
+pkgver='41.7.1+wvcus'
 pkgrel=1
 pkgdesc="Electron for Content Security (ECS) is a fork of Electron created by castLabs to facilitate the use of Google's Widevine Content Decryption Module (CDM) for DRM-enabled playback within Electron"
 arch=('x86_64')
@@ -23,16 +23,20 @@ optdepends=(
 )
 options=('!strip')
 noextract=("${pkgname%-bin}-${pkgver}.zip")
-source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/electron-v${pkgver}-linux-x64.zip")
-sha256sums=('a4f31405be2a1f76f38b6b13d6e4c530c6cb9da271e8db607f7afee91adea0cf')
+source=(
+    "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/electron-v${pkgver}-linux-x64.zip"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('27330b780e705213f41ae42b1deb5479712b5b99124db3921c47529ac8b2e403'
+            '7583672050c8131697949cdba39fd2e86f6ed9555c063bc1bc81efc9e661d78e')
 prepare() {
     install -Dm755 -d "${srcdir}/${pkgname%-bin}"
     bsdtar -xf "${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/${pkgname%-bin}"
     chmod u+s "${srcdir}/${pkgname%-bin}/chrome-sandbox"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
-    cp -r --no-preserve=ownership --preserve=mode "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
-    ln -nfs "/usr/lib/${pkgname%-bin}/electron" "${pkgdir}/usr/bin/electron36-castlab"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -a "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/${pkgname%-bin}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
