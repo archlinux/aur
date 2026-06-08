@@ -1,6 +1,6 @@
 pkgbase = rovr
 	pkgdesc = A post-modern terminal file explorer
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/NSPC911/rovr
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = rovr
 	depends = python-tomli
 	depends = python-pillow
 	depends = python-textual
+	depends = python-uvloop
 	depends = python-jsonschema
 	depends = python-fastjsonschema
 	depends = python-rich-click
@@ -37,7 +38,7 @@ pkgbase = rovr
 	provides = rovr
 	conflicts = rovr-bin
 	conflicts = rovr-git
-	source = https://files.pythonhosted.org/packages/source/r/rovr/rovr-0.9.0.tar.gz
-	sha256sums = ab468336dd938be1dbccc032a8789bbe96d734a310423c9067c2176e45697fbf
+	source = https://files.pythonhosted.org/packages/source/r/rovr/rovr-0.9.1.tar.gz
+	sha256sums = 5fd9ecb4c5a06c42288f380b62b5f605fbc8170b1ac4a6cbf49651adc003b3fa
 
 pkgname = rovr
