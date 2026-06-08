@@ -2,7 +2,7 @@
 
 pkgname=codex-plus-plus
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Codex++ auto-injector bridge for openai-codex-desktop'
 arch=('x86_64')
 url='https://github.com/BigPizzaV3/CodexPlusPlus'
@@ -24,6 +24,7 @@ source=(
   'codex-plus-plus.sh'
   'plugin-auth-unlocked.js'
   "${pkgname}-plugin-unlock.patch"
+  "${pkgname}-linux-port-fallback.patch"
   '90-codex-plus-plus-reapply.hook'
 )
 sha256sums=(
@@ -32,12 +33,14 @@ sha256sums=(
   '2669ce573262d96ea38f085280899e729bc8b542890c6bbdb01e23853e2cd661'
   '4097d1937593ca1e2e5dcf3bbed65f85a2cb066e4d336ad286061a822aacfd8e'
   '73b3a68f7c96d632ef82bc34bdac09496c9fd23b834ee858ab3c554074651932'
+  '39842951ced163348ddd4e2d3ac21fa1b1c47af506d942a67fda475cf1a4b177'
   '187f5bada32771e5197506208c362778e98fa63fd6e13151e7675047932172a9'
 )
 
 prepare() {
   cd "${srcdir}/CodexPlusPlus-${pkgver}"
   patch -Np1 -i "${srcdir}/${pkgname}-plugin-unlock.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}-linux-port-fallback.patch"
 }
 
 build() {
