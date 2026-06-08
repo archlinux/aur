@@ -1,0 +1,60 @@
+# Maintainer: isra <israelzermeno82@gmail.com>
+pkgname=dmgr-desktop
+pkgver=2.1.0
+pkgrel=1
+pkgdesc="Modern device manager for Linux — Tauri + React (devices, drivers, audio, Bluetooth, kernel modules)"
+arch=('x86_64')
+url="https://github.com/Khinmmad/dmgr"
+license=('MIT')
+depends=('polkit' 'webkit2gtk-4.1' 'gtk3' 'libxkbcommon' 'wayland' 'libgl')
+optdepends=(
+    'pipewire-pulse: audio device switching (pactl)'
+    'pulseaudio: audio device switching (pactl)'
+    'wireplumber: audio device switching (wpctl)'
+    'alsa-utils: audio device listing fallback'
+    'bluez-utils: Bluetooth device management'
+)
+makedepends=('rust' 'cargo' 'nodejs' 'npm' 'pkg-config')
+provides=('dmgr-desktop')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+    # Frontend + Tauri backend (nested workspace under desktop/).
+    cd "$srcdir/dmgr-$pkgver/desktop"
+    npm install
+    npm run build
+    cargo build --release --locked --manifest-path src-tauri/Cargo.toml
+
+    # Privileged helper from the root workspace.
+    cd "$srcdir/dmgr-$pkgver"
+    cargo build --release --locked -p dmgr-polkit-helper
+}
+
+package() {
+    cd "$srcdir/dmgr-$pkgver"
+
+    # Main desktop binary (frontend embedded)
+    install -Dm755 desktop/src-tauri/target/release/dmgr-desktop \
+        "$pkgdir/usr/bin/dmgr-desktop"
+
+    # Privileged helper (invoked via pkexec)
+    install -Dm755 target/release/dmgr-polkit-helper \
+        "$pkgdir/usr/bin/dmgr-polkit-helper"
+
+    # Polkit policy
+    install -Dm644 resources/org.dmgr.DeviceManager.policy \
+        "$pkgdir/usr/share/polkit-1/actions/org.dmgr.DeviceManager.policy"
+
+    # Desktop entry + icon
+    install -Dm644 resources/dmgr-desktop.desktop \
+        "$pkgdir/usr/share/applications/dmgr-desktop.desktop"
+    install -Dm644 desktop/src-tauri/icons/128x128.png \
+        "$pkgdir/usr/share/icons/hicolor/128x128/apps/dmgr-desktop.png"
+    install -Dm644 desktop/src-tauri/icons/32x32.png \
+        "$pkgdir/usr/share/icons/hicolor/32x32/apps/dmgr-desktop.png"
+
+    # License
+    install -Dm644 LICENSE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
