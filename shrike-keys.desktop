@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Shrike Key Manager
+Comment=Generate and manage PGP and SSH keys
+Exec=/usr/bin/shrike-keys
+Icon=/usr/share/shrike-keys/key.svg
+Type=Application
+Categories=Utility;Security;
+Terminal=false
+StartupNotify=true
