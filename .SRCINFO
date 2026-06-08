@@ -1,11 +1,12 @@
 pkgbase = pidscope-bin
 	pkgdesc = GNU Octave graphical blackbox flight log analyzer for FPV drone PID tuning
 	pkgver = 26.05.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dzikus/PIDscope
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = squashfs-tools
+	depends = gnu-free-fonts
 	depends = hicolor-icon-theme
 	depends = ncurses
 	depends = readline
