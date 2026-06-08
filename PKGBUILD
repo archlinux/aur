@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <lightjunction@users.noreply.github.com>
 
 pkgname=cortexfs-git
-pkgver=0.1.0.r56.g9da7eb2
+pkgver=0.1.0.r59.g36379e8
 pkgrel=1
 pkgdesc="Provider-neutral AI API FUSE filesystem"
 arch=('x86_64')
@@ -33,6 +33,7 @@ build() {
 package() {
   cd "$srcdir/cortexfs"
   install -Dm755 target/release/cortex "$pkgdir/usr/bin/cortex"
+  install -Dm644 packaging/systemd/cortexfs@.service "$pkgdir/usr/lib/systemd/system/cortexfs@.service"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
