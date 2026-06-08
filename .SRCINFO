@@ -1,8 +1,8 @@
 pkgbase = noctalia-git
         pkgdesc = Lightweight Wayland shell built directly on Wayland and OpenGL ES
         pkgver = 5.0.0.r1191.g39a4a335c
-        pkgrel = 10
-        url = https://github.com/noctalia-dev/noctalia-shell
+        pkgrel = 11
+        url = https://github.com/noctalia-dev/noctalia
         arch = x86_64
         license = MIT
         makedepends = git
@@ -34,7 +34,7 @@ pkgbase = noctalia-git
         conflicts = noctalia
         conflicts = noctalia-bin
         options = !debug
-        source = noctalia::git+https://github.com/noctalia-dev/noctalia-shell.git#branch=main
+        source = noctalia::git+https://github.com/noctalia-dev/noctalia.git#branch=main
         sha256sums = SKIP
 
 pkgname = noctalia-git
