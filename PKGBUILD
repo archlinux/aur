@@ -1,27 +1,24 @@
 # Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
-# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 _pkgname=dusklight
 pkgname=${_pkgname}-git
-pkgver=1.3.0.r2.g0dc4751
-pkgrel=2
+pkgver=1.3.1.r68.g93e33ec
+pkgrel=1
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
 license=('CC0-1.0')
-depends=(libpng zlib libjpeg-turbo glibc libgcc sdl3 abseil-cpp freetype2 libstdc++ bash)
-makedepends=(git cmake ninja llvm vulkan-headers python python-markupsafe clang lld alsa-lib libpulse libxrandr patchelf)
+depends=(libpng zlib libjpeg-turbo glibc libgcc sdl3 abseil-cpp freetype2 libstdc++ rmlui fmt11)
+makedepends=(git cmake ninja llvm vulkan-headers python python-markupsafe clang lld alsa-lib libpulse libxrandr)
 replaces=(tp-dusk-git)
-conflicts=(tp-dusk)
+conflicts=(dusklight dusklight-bin)
 source=(
   "git+$url"
   "git+https://github.com/encounter/aurora.git"
-  "launcher.sh"
 )
 
 sha256sums=('SKIP'
-            'SKIP'
-            '71e621f84d9747788b55e02354e984e327dfaf23df151232067284443e81714a')
+            'SKIP')
 
 pkgver() {
 	cd "$srcdir/dusklight"
@@ -41,23 +38,24 @@ build() {
 
   cmake -B build -GNinja \
     -DCMAKE_BUILD_TYPE=None \
-	-DCMAKE_C_COMPILER=clang \
-	-DCMAKE_CXX_COMPILER=clang++ \
-	-DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
-	-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
-	-DCMAKE_C_FLAGS="${CFLAGS} -flto=thin -DNDEBUG" \
-	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -flto=thin -DNDEBUG" \
-	-DDUSK_ENABLE_UPDATE_CHECKER=OFF
+    -DCMAKE_C_COMPILER=clang \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
+    -DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
+    -DCMAKE_C_FLAGS="${CFLAGS} -flto=thin -DNDEBUG" \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -flto=thin -DNDEBUG" \
+    -DDUSK_ENABLE_UPDATE_CHECKER=OFF \
+    -DDUSK_PACKAGE_INSTALL=ON
   cmake --build build
 }
 
 package() {
-  install -Dm 755 "${srcdir}/dusklight/build/dusklight" "${pkgdir}/usr/share/${_pkgname}/dusklight"
-  install -Dm 755 "launcher.sh" "${pkgdir}/usr/bin/${_pkgname}"
-  cp -r "${srcdir}/dusklight/res" "${pkgdir}/usr/share/${_pkgname}/res"
+  install -Dm 755 "${srcdir}/dusklight/build/dusklight" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm 755 "${srcdir}/dusklight/build/libs/freeverb/libfreeverb.so" "${pkgdir}/usr/lib/libfreeverb.so"
+
+  install -dm 755 "${pkgdir}/usr/local/share/${_pkgname}"
+  cp -r "${srcdir}/dusklight/res" "${pkgdir}/usr/local/share/${_pkgname}/res"
 
   install -Dm 644 "${srcdir}/dusklight/platforms/freedesktop/1024x1024/apps/dev.twilitrealm.dusk.png" "${pkgdir}/usr/share/pixmaps/dev.twilitrealm.dusk.png"
   install -Dm 755 "${srcdir}/dusklight/platforms/freedesktop/dev.twilitrealm.dusk.desktop" "${pkgdir}/usr/share/applications/dev.twilitrealm.dusk.desktop"
-
-  patchelf --remove-rpath "${pkgdir}/usr/share/${_pkgname}/dusklight"
 }
