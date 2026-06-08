@@ -5,9 +5,11 @@ pkgrel=2
 pkgdesc="Command line soft phone"
 url="https://github.com/tmakkonen/sipcmd"
 arch=('i686' 'x86_64' 'armv6h')
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=("gcc-libs" "opal")
 makedepends=("ruby-ronn" "git")
+provides=("sipcmd")
+conflicts=("sipcmd")
 source=("sipcmd::git+https://github.com/tmakkonen/sipcmd.git")
 md5sums=('SKIP')
 
