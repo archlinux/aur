@@ -1,7 +1,7 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=rtl_power_fftw-git
 _pkgname=rtl-power-fftw
-pkgver=r129.b14d624
+pkgver=r168.cee9a22
 pkgrel=1
 pkgdesc="Power spectrum for RTLSDR dongles"
 arch=('i686' 'x86_64')
@@ -22,11 +22,13 @@ pkgver() {
 
 build() {
     cd "$srcdir/${_pkgname}"
-    mkdir build && cd build
-    cmake .. \
+    mkdir -p build
+    cmake -B build \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DCMAKE_WARN_DEPRECATED=OFF \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
-    make
+    cmake --build build/ --config Release
 }
 
 package() {
