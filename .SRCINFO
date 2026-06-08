@@ -1,6 +1,6 @@
 pkgbase = llamafile-bin
 	pkgdesc = Distribute and run LLMs with a single file
-	pkgver = 0.10.0
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/mozilla-ai/llamafile
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = llamafile-bin
 	conflicts = android-sdk-build-tools
 	conflicts = zipalign
 	options = !strip
-	source = llamafile-bin::https://github.com/mozilla-ai/llamafile/releases/download/0.10.0/llamafile-0.10.0.zip
-	sha256sums = 0e0376bcf2efe76c74ed5dc27e4f5e29e31a14162ca9e04c4c9e34645c65f6f7
+	source = llamafile-bin::https://github.com/mozilla-ai/llamafile/releases/download/0.10.3/llamafile-0.10.3.zip
+	sha256sums = 8ff91166a39bb9d387bf5f3115d02b4b2cbd93870f77eefd1d312e27dbf527f7
 
 pkgname = llamafile-bin
