@@ -1,0 +1,24 @@
+pkgbase = lucebox-git
+	pkgdesc = Fast LLM speculative inference server for consumer hardware
+	pkgver = r995.7c27e33
+	pkgrel = 1
+	url = https://lucebox.com
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = nlohmann-json
+	makedepends = patchelf
+	depends = cuda
+	depends = curl
+	depends = gcc-libs
+	depends = glibc
+	depends = libgomp
+	provides = lucebox
+	conflicts = lucebox
+	options = !lto
+	options = !debug
+	source = lucebox::git+https://github.com/Luce-Org/lucebox-hub.git
+	sha256sums = SKIP
+
+pkgname = lucebox-git
