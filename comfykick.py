@@ -396,8 +396,9 @@ def install_dependencies(extracted_dir, config, version_head):
 
     run(["uv", "--quiet", "venv", "--allow-existing"])
     run(["uv", "--quiet", "sync", "--inexact"])
+
     log("INFO", "Installing basic dependencies ...")
-    run(["uv", "pip", "install", "--requirements", "requirements.txt"])
+    run(["uv", "add", "--requirements", "requirements.txt"])
 
     if config["enable_manager"]:
         manager_req = extracted_dir / "manager_requirements.txt"
@@ -409,13 +410,16 @@ def install_dependencies(extracted_dir, config, version_head):
                 version_head, PROJECT_NAME,
             )
         log("INFO", "Installing manager dependencies ...")
-        run(["uv", "pip", "install", "--requirements", "manager_requirements.txt"])
+        run(["uv", "add", "--requirements", "manager_requirements.txt"])
 
     extra_pkgs = config.get("extra_python_package", [])
     if extra_pkgs:
-        log("INFO", "Installing extra dependencies ...")
+        log("INFO", "Installing extra packages ...")
         for pkg in extra_pkgs:
-            run(["uv", "pip", "install", "--no-build-isolation", pkg])
+            run(["uv", "add", "--no-build-isolation", pkg])
+
+    log("INFO", "Syncing venv packages ...")
+    run(["uv", "sync"])
 
 
 def launch_comfyui(config, extracted_dir):
