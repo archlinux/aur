@@ -1,10 +1,12 @@
 # Maintainer: KasaneTeto <kasanetetofanaccount at proton.me>
+# Contributor: Damglador <damglador at gmail.com>
 
 pkgname=undertalemodtool-avalonia-bin
 _pkgname=undertalemodtool-avalonia
 
-pkgver=2026.05.30
-pkgrel=2
+pkgver=2026.06.08
+_pkgver=$(date +"%Y.%m.%d")
+pkgrel=1
 arch=('x86_64')
 
 pkgdesc="The rewrite of UndertaleModTool with a cross-platform framework Avalonia"
@@ -16,30 +18,34 @@ provides=("$_pkgname")
 options=("!strip" "!debug")
 
 source=(
-  "${_pkgname}-${pkgver}.zip::https://nightly.link/luizzeroxis/UndertaleModTool/workflows/publish_gui_avalonia/avalonia/GUI-ubuntu-latest-Release-isBundled-true-isSingleFile-false.zip"
+  "${_pkgname}-${_pkgver}.zip::https://nightly.link/luizzeroxis/UndertaleModTool/workflows/publish_gui_avalonia/avalonia/GUI-ubuntu-latest-Release-isBundled-true-isSingleFile-false.zip"
   "${_pkgname}.desktop"
   "gamemaker-data.xml"
   "icon.png"
   )
 sha256sums=(
-  '8489221fa8502b7904a8e572fdbd35a5633d976328a7ff54c2ddb4ee89f1ad86'
+  'SKIP'
   'efdd09628785b8d27cda3a0d9ef434ae8435041a199f12b7be39f697297a84c0'
   '64c7b9ab34a2c519f99533b85a6ff8b4a50710ec6ee93024f3b239493dc9d61e'
   '4f501b7495960a291dfaa3a5c7b87b529170c47447c365d2407d1d317d97c51f'
   )
 
-noextract=("${_pkgname}-${pkgver}.zip")
+noextract=("${_pkgname}-${_pkgver}.zip")
 
 prepare() {
-  mkdir -p "${_pkgname}-${pkgver}"
-  bsdtar -xf "${_pkgname}-${pkgver}.zip" -C "${_pkgname}-${pkgver}"
+  mkdir -p "${_pkgname}-${_pkgver}"
+  bsdtar -xf "${_pkgname}-${_pkgver}.zip" -C "${_pkgname}-${_pkgver}"
+}
+
+pkgver() {
+  date +"%Y.%m.%d"
 }
 
 package() {
   install -d "$pkgdir/opt"
 
   # copy of the program files
-  cp -r --preserve=mode "${_pkgname}-${pkgver}" "$pkgdir/opt/${_pkgname}"
+  cp -r --preserve=mode "${_pkgname}-${_pkgver}" "$pkgdir/opt/${_pkgname}"
 
   # Linking the desktop in the path
   mkdir -p "$pkgdir/usr/bin"
