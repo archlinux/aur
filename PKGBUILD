@@ -1,7 +1,7 @@
 _dotnet_version=9.0
 _pkgname=LocalizationManager
 pkgname=${_pkgname,,}
-pkgver=0.7.13
+pkgver=0.7.14
 pkgrel=1
 pkgdesc="CLI tool and TUI editor for managing .NET .resx localization files."
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(dotnet-sdk "dotnet-targeting-pack-$_dotnet_version")
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/nickprotop/LocalizationManager/archive/refs/tags/v$pkgver.tar.gz"
         "0001-allow-not-publishing-single-file.diff"
         "0002-set-content-root-path-to-app-directory.diff")
-sha256sums=('806dd16905d59741e62029e97f6609a4b75095361b9396e7fca0f3cb7f83425c'
+sha256sums=('2ae6d6263ed5c7a51dfe85652e39ab3144c8d5769e8c02e70c3e99c3a7bd6435'
             '33698f1578eb8c4fedf8ed0ea287ea70c8ed23b1c4a14aab3953c44a3c562192'
             '8980627fbf922c0a44b21fc3cc8762f14c94a6a698b8acc318d2f249e668409e')
 
