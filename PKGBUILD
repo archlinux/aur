@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 
-_upstreamver='3.2.4'
+_upstreamver='3.4.2'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='fastmcp'
@@ -15,12 +15,17 @@ arch=('any')
 url='https://github.com/jlowin/fastmcp'
 license=('MIT')
 
-depends=('python' 'uvicorn' 'python-dotenv' 'python-pydantic-settings' 'python-pydantic' 'python-authlib' 'python-cryptography' 'python-rich' 'python-openai' 'python-httpx' 'python-pydantic-core' 'python-starlette' 'python-typing_extensions' 'python-anyio' 'python-pyperclip' 'python-exceptiongroup' 'python-openapi-pydantic' 'python-mcp' 'python-jsonschema-path' 'python-uncalled-for')
+depends=('python' 'uvicorn' 'python-dotenv' 'python-pydantic-settings' 'python-pydantic' 'python-authlib' 'python-cryptography' 'python-rich' 'python-openai' 'python-httpx' 'python-pydantic-core' 'python-starlette' 'python-typing_extensions' 'python-anyio' 'python-pyperclip' 'python-openapi-pydantic' 'python-mcp' 'python-jsonschema-path' 'python-uncalled-for')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling' 'python-uv-dynamic-versioning')
-optdepends=()
+optdepends=('python-cyclopts: server'
+            'python-griffelib: server'
+            'python-watchfiles: server'
+            'python-opentelemetry-api: server'
+            'python-py-key-value-aio: client/server'
+            'python-cachetools: memory')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('083ecb75b44a4169e7fc0f632f94b781bdb0ff877c6b35b9877cbb566fd4d4d1')
+sha256sums=('b468722946fc467c3796a6572f7a14d93d48c014cf8fea12910245220cbbe4e1')
 
 
 build() {
