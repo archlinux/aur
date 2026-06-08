@@ -12,7 +12,7 @@ depends=(cups)
 depends_x86_64=(lib32-glibc)
 install=$pkgname.install
 source=(http://download.brother.com/welcome/dlf106049/mfcl2800dwpdrv-$pkgver-$pkgrel.i386.rpm)
-sha1sums=(d72d121ebc2f0769d229284fdb29b829ee937741)
+sha1sums=(745e6f5dea8c58d6bd8c046de0054e74877e4207)
 
 package() {
   local -r model=MFCL2800DW
