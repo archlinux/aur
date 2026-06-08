@@ -1,7 +1,7 @@
 # Maintainer: Evilleader evilleader91@gmail.com
 
 pkgname=feishin-bin
-pkgver=1.13.0
+pkgver=null
 pkgrel=5
 pkgdesc="Modern web-based music player (prebuilt binary)"
 arch=('x86_64')
