@@ -31,6 +31,7 @@ makedepends=(
     'bison'
     'ccache'
     'python'
+    'patchelf'
 )
 optdepends=(
     'python: for Python bindings (if manually enabled)'
@@ -51,6 +52,17 @@ prepare() {
 build() {
     cd "$srcdir/ball"
 
+    # 清除 MGLTools 的旧 libz.so.1 污染（会导致 as/ld 链接失败）
+    # MGLTools 位于 /opt/mgltools/lib/，其 libz.so.1 版本过老
+    if [[ -n "$LD_LIBRARY_PATH" ]]; then
+        _rmpath="/opt/mgltools/lib"
+        LD_LIBRARY_PATH="${LD_LIBRARY_PATH//$_rmpath/}"
+        LD_LIBRARY_PATH="${LD_LIBRARY_PATH#:}"
+        LD_LIBRARY_PATH="${LD_LIBRARY_PATH%:}"
+        LD_LIBRARY_PATH="${LD_LIBRARY_PATH//::/:}"
+        export LD_LIBRARY_PATH
+    fi
+
     mkdir -p build
     cd build
 
@@ -70,7 +82,9 @@ build() {
         -DBALL_BUILD_CWL=OFF \
         -DBALL_BUILD_MMFF94=OFF \
         -DBALL_HAS_VIEW=ON \
-        -DCMAKE_EXE_LINKER_FLAGS="-lcurl -lmpg123"
+        -DCMAKE_EXE_LINKER_FLAGS="-lcurl -lmpg123" \
+        -DCMAKE_INSTALL_RPATH=/usr/lib \
+        -DCMAKE_BUILD_RPATH_USE_LINK_PATH=OFF
 
     ninja BALLView
 }
@@ -98,6 +112,13 @@ package() {
         install -Dm755 "$lib" "$pkgdir/usr/lib/$libname"
     done
 
+    # Clean RUNPATH: remove build-directory and PyMOL library paths
+    # to prevent runtime conflicts with old system libraries
+    patchelf --remove-rpath "$pkgdir/usr/bin/BALLView" 2>/dev/null || true
+    for lib in "$pkgdir/usr/lib/"lib*.so*; do
+        [ -f "$lib" ] && patchelf --remove-rpath "$lib" 2>/dev/null || true
+    done
+
     if [ -d "$srcdir/ball/data" ]; then
         cp -r "$srcdir/ball/data"/* "$pkgdir/usr/share/BALLView/"
     fi
@@ -108,6 +129,16 @@ package() {
 
     cat > "$pkgdir/usr/bin/ballview" << 'EOF'
 #!/bin/bash
+# Strip MGLTools paths from LD_LIBRARY_PATH — their old libz.so.1
+# breaks Qt6 WebEngine (requires ZLIB >= 1.2.9)
+if [[ -n "$LD_LIBRARY_PATH" ]]; then
+    _rmpath="/opt/mgltools/lib"
+    LD_LIBRARY_PATH="${LD_LIBRARY_PATH//$_rmpath/}"
+    LD_LIBRARY_PATH="${LD_LIBRARY_PATH#:}"
+    LD_LIBRARY_PATH="${LD_LIBRARY_PATH%:}"
+    LD_LIBRARY_PATH="${LD_LIBRARY_PATH//::/:}"
+    export LD_LIBRARY_PATH
+fi
 export QT_QPA_PLATFORM=xcb
 export BALL_DATA_PATH=/usr/share/BALLView
 exec /usr/bin/BALLView "$@"

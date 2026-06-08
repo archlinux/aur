@@ -14,6 +14,7 @@ pkgbase = ballview
 	makedepends = bison
 	makedepends = ccache
 	makedepends = python
+	makedepends = patchelf
 	depends = qt6-base
 	depends = qt6-webengine
 	depends = boost-libs
@@ -26,7 +27,7 @@ pkgbase = ballview
 	depends = mesa
 	depends = glu
 	optdepends = python: for Python bindings (if manually enabled)
-	source = git+https://github.com/BALL-Project/ball.git
+	source = git+https://github.com/BALL-Project/ball.git#tag=v1.7.4
 	sha256sums = SKIP
 
 pkgname = ballview
