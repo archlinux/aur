@@ -27,6 +27,7 @@ pkgver() {
 }
 
 prepare() {
+  # Patch ignore_3dstool.txt lookup path to be non-relative
   patch -Np1 -i "../$_reponame-paths.patch" -d "$_reponame"
 }
 
