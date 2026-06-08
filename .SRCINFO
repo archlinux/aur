@@ -1,6 +1,6 @@
 pkgbase = blockcheckw-bin
 	pkgdesc = Parallel DPI bypass strategy scanner (prebuilt binary)
-	pkgver = 0.8.7
+	pkgver = 0.8.9
 	pkgrel = 1
 	url = https://github.com/rcd27/blockcheckw
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = blockcheckw-bin
 	conflicts = blockcheckw
 	options = !strip
 	options = !debug
-	source = LICENSE-0.8.7::https://raw.githubusercontent.com/rcd27/blockcheckw/v0.8.7/LICENSE
+	source = LICENSE-0.8.9::https://raw.githubusercontent.com/rcd27/blockcheckw/v0.8.9/LICENSE
 	sha256sums = 368255ced66b701e18bb502017f0eab8864c99c68dfa242e77b48ebe1fecb938
-	source_x86_64 = blockcheckw-0.8.7-x86_64.tar.gz::https://github.com/rcd27/blockcheckw/releases/download/v0.8.7/blockcheckw-linux-x86_64.tar.gz
-	sha256sums_x86_64 = e062b7a6625b2b578a260ba6fa0b2bb0b78d6a7dd1944e75f472aec4b2026e45
-	source_aarch64 = blockcheckw-0.8.7-aarch64.tar.gz::https://github.com/rcd27/blockcheckw/releases/download/v0.8.7/blockcheckw-linux-arm64.tar.gz
-	sha256sums_aarch64 = 5e4cba5f1fd971c84460282ff826a54951f794f443e6677f8ad5bcac4da0821c
+	source_x86_64 = blockcheckw-0.8.9-x86_64.tar.gz::https://github.com/rcd27/blockcheckw/releases/download/v0.8.9/blockcheckw-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9a670f7ff9919c1bbe76dadd3720371b9316d6d33a4c63de9488b233bb4d5b62
+	source_aarch64 = blockcheckw-0.8.9-aarch64.tar.gz::https://github.com/rcd27/blockcheckw/releases/download/v0.8.9/blockcheckw-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0b9dc9b65a5e04a56f2babe4b089ca68925b452e2f2d3e7043a85a14451d4f8f
 
 pkgname = blockcheckw-bin
