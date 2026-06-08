@@ -1,6 +1,6 @@
 pkgbase = herd-bin
 	pkgdesc = GitHub-native orchestration platform for AI coding agents
-	pkgver = 0.8.17
+	pkgver = 0.8.18
 	pkgrel = 1
 	url = https://github.com/Herd-OS/herd
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = herd-bin
 	provides = herd
 	conflicts = herd
 	conflicts = herd-git
-	source_x86_64 = herd-0.8.17-x86_64::https://github.com/Herd-OS/herd/releases/download/v0.8.17/herd-linux-amd64
-	sha256sums_x86_64 = 2d9e86a1f492008e4ae57db7d3e6a6ad88af6e7b8f475fa0aa384985c09ba39e
-	source_aarch64 = herd-0.8.17-aarch64::https://github.com/Herd-OS/herd/releases/download/v0.8.17/herd-linux-arm64
-	sha256sums_aarch64 = a4b10c8031ba3852a2cbc0e6326cebd2c1fcfccafa5c6d2e9a2de4a749988d4e
+	source_x86_64 = herd-0.8.18-x86_64::https://github.com/Herd-OS/herd/releases/download/v0.8.18/herd-linux-amd64
+	sha256sums_x86_64 = 93cadd7c1b9bae29f7922a3c6bbe5421174ee6fa9b8725e856331d222dd2562d
+	source_aarch64 = herd-0.8.18-aarch64::https://github.com/Herd-OS/herd/releases/download/v0.8.18/herd-linux-arm64
+	sha256sums_aarch64 = 0073170fce9abfc45cb3c5e2ad4716537b465c32abc37e55a81a694c6a6aff3d
 
 pkgname = herd-bin
