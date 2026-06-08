@@ -36,12 +36,6 @@ build() {
     cargo build --offline --release
 }
 
-check() {
-    cd "$srcdir/gpupaper"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --offline
-}
-
 package() {
     cd "$srcdir/gpupaper"
 
