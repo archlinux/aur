@@ -3,7 +3,7 @@
 pkgname=pidscope-bin
 _pkgname=PIDscope
 pkgver=26.05.0
-pkgrel=2
+pkgrel=3
 pkgdesc='GNU Octave graphical blackbox flight log analyzer for FPV drone PID tuning'
 arch=('x86_64')
 url='https://github.com/dzikus/PIDscope'
@@ -12,6 +12,7 @@ makedepends=(
   'squashfs-tools'
 )
 depends=(
+  'gnu-free-fonts'
   'hicolor-icon-theme'
   'ncurses'
   'readline'
@@ -52,6 +53,21 @@ prepare() {
 package() {
   install -dm755 "${pkgdir}/opt/pidscope"
   cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/pidscope/"
+
+  # Provide FreeSans font paths expected by the AppImage/runtime.
+  # The actual font files are provided by the gnu-free-fonts dependency.
+  install -dm755 "${pkgdir}/usr/share/fonts/opentype/freefont"
+
+  local font
+  for font in \
+    FreeSans.otf \
+    FreeSansBold.otf \
+    FreeSansOblique.otf \
+    FreeSansBoldOblique.otf
+  do
+    ln -s "/usr/share/fonts/gnu-free/${font}" \
+      "${pkgdir}/usr/share/fonts/opentype/freefont/${font}"
+  done
 
   # Do not let bundled terminal libraries break host /bin/sh when Octave runs
   # blackbox_decode via system()/popen().
