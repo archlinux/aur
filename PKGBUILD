@@ -1,8 +1,8 @@
 # Maintainer: Tom Hale <tom at hale dot ee>
-# shellcheck shell=bash disable=SC2034,SC2154,SC2164
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164  # var unused / var not assigned / cd without || exit
 _pkgname=ostt
 pkgname=ostt-vulkan-bin-release-git
-pkgver=0.0.20
+pkgver=0.0.21
 pkgrel=1
 pkgdesc='Terminal-native speech-to-text with Vulkan GPU acceleration (latest Git binary release)'
 arch=('x86_64')
@@ -13,10 +13,9 @@ optdepends=(
   'wl-clipboard: Wayland clipboard support'
   'xclip: X11 clipboard support'
 )
-conflicts=('ostt' ostt-{cuda,vulkan} ostt-{cuda,vulkan}-bin 'ostt-cuda-release-bin')
+conflicts=('ostt' ostt-{cuda,vulkan} ostt-{cuda,vulkan}-bin 'ostt-cuda-bin-release-git')
 provides=('ostt' 'ostt-vulkan')
 options=('!strip')
-# shellcheck disable=SC2034
 _ver=$(git ls-remote --tags "${url}.git" | grep -oP 'refs/tags/v\K[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
 source=(
   "${_pkgname}-${_ver}-x86_64-unknown-linux-gnu-vulkan.tar.gz::${url}/releases/download/v${_ver}/${_pkgname}-x86_64-unknown-linux-gnu-vulkan.tar.gz"
