@@ -1,0 +1,4 @@
+[hashcards]
+source = "git"
+git = "https://github.com/eudoxia0/hashcards.git"
+prefix = "v"

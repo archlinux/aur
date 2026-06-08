@@ -1,14 +1,18 @@
 pkgbase = hashcards
 	pkgdesc = Plain text-based spaced repetition system for flashcards
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/eudoxia0/hashcards
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
-	depends = libgcc
+	makedepends = git
+	makedepends = openssh
+	depends = libgcc_s.so
 	options = !lto
-	source = hashcards-0.3.0.tar.gz::https://github.com/eudoxia0/hashcards/archive/v0.3.0.tar.gz
-	sha256sums = 8fb1b654f279a04db1ce5f4c5704c3f76a68079f55ae7dae3aacbe7ef4001cd9
+	source = hashcards::git+https://github.com/eudoxia0/hashcards#commit=423519f
+	source = eudoxia0.keys
+	sha256sums = c97181770fc354dd553c20d87e3212125423bb74c1011c6e2c9f8b1d75711e79
+	sha256sums = 0304ac02afcca0315861846a780945e8ef329553b480297d529768de0d172cda
 
 pkgname = hashcards
