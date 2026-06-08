@@ -1,7 +1,7 @@
 # Maintainer: Sven Nobis <aur@sven.to>
 
 pkgname=gardenctl-bin
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='gardenctl is a command-line client for the Gardener (version 2).'
 url='https://github.com/gardener/gardenctl-v2'
@@ -12,7 +12,7 @@ conflicts=('gardenctl')
 source=(
     "gardenctl::https://github.com/gardener/gardenctl-v2/releases/download/v${pkgver}/gardenctl_v2_linux_amd64"
     "gardenctl-profile.sh")
-sha256sums=('3627837835ecba58f50555f9429d52e4f9964da913913eb9db95a945ef5d578b'
+sha256sums=('2426747892e061b77664c0825859615f8bce8472992f8d284766b7119de2e10f'
             '1001ebb1a3066132794d914e18a17938c3d06a86e043d1c62bfc62efa5ee4893')
 
 build() {
