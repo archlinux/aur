@@ -1,0 +1,4 @@
+[melia-appimage]
+source = "git"
+git = "https://github.com/buxjr311/melia-app.git"
+prefix = "v"
