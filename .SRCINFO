@@ -1,6 +1,6 @@
 pkgbase = petiglyph
 	pkgdesc = petiglyph is a TUI and CLI tool for turning images and videos into custom font glyphs
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/petipoua/petiglyph
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = petiglyph
 	makedepends = cargo
 	depends = ffmpeg
 	depends = fontconfig
-	source = petiglyph-0.1.1.tar.gz::https://github.com/petipoua/petiglyph/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = d071f1969f23d6365eacb66403a4013acd72764eae0947fdabb181cbb094ef3c
+	source = petiglyph-0.1.2.tar.gz::https://github.com/petipoua/petiglyph/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 2c6a46cdeb5eb0b5856718eb6df991159eb1e76e65bcb617a2c9f54dd8905b48
 
 pkgname = petiglyph
