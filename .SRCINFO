@@ -1,0 +1,17 @@
+pkgbase = 7sh
+	pkgdesc = A minimal POSIX-compliant custom shell with native UTF-8 support by 7erez (Stable Release)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/the7erez/7sh
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	provides = 7sh
+	conflicts = 7sh-git
+	source = https://github.com/the7erez/7sh/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 927f3973da78e6d3175a1c88e0ca7674e259190fc377835b38442ee7a6c0e2b4
+
+pkgname = 7sh
