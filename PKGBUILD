@@ -2,7 +2,7 @@
 # Co-Maintainer: Kevin <github@kev314.dev>
 pkgname=noctalia-shell-git
 pkgver=2.3.1.r16.g330eac0
-pkgrel=8
+pkgrel=9
 pkgdesc="A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell. (git version)"
 arch=('any')
 url="https://github.com/noctalia-dev/noctalia"
@@ -29,12 +29,12 @@ source=("git+$url.git#branch=legacy-v4")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/noctalia-shell"
+    cd "$srcdir/noctalia"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 package() {
-  cd "$srcdir/noctalia-shell"
+  cd "$srcdir/noctalia"
   
   install -dm755 "$pkgdir/etc/xdg/quickshell/noctalia-shell"
   cp -r ./* "$pkgdir/etc/xdg/quickshell/noctalia-shell/"

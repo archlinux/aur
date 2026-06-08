@@ -1,7 +1,7 @@
 pkgbase = noctalia-shell-git
 	pkgdesc = A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell. (git version)
 	pkgver = 2.3.1.r16.g330eac0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/noctalia-dev/noctalia
 	arch = any
 	license = MIT
