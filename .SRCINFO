@@ -1,0 +1,16 @@
+pkgbase = shrike-encryptor
+	pkgdesc = Secure AES-256 Encryption for Files and Folders
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://shrikelinuxug.org
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = gtk3
+	depends = openssl
+	depends = tar
+	source = https://codeberg.org/root1/Shrike-Linux-Uganda/archive/main.tar.gz
+	md5sums = SKIP
+
+pkgname = shrike-encryptor
