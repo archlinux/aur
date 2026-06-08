@@ -366,11 +366,11 @@ def print_help():
   📷 挑挑拣拣 — 照片多轮筛选助手 (Pick Photo Helper)
 {'=' * 60}
 
-  用法:
-    python3 pick_photo_helper.py [-h | --help]
+用法:
+    pick-photo-helper [-h | --help]           # 从 AUR 安装后
+    python3 pick_photo_helper.py [-h | --help] # 手动运行
 
-  启动后在当前目录扫描 .jpg 图片，自动打开 loupe 浏览。
-
+启动后在当前目录扫描图片，自动打开 loupe 浏览。
   快捷键:
     Ctrl+Space    💝 收藏 / 💔 放回
     Ctrl+A        💝 一键全收藏
@@ -379,73 +379,18 @@ def print_help():
     关闭 loupe     ✕ 自动退出程序
 
   工作原理:
-    1. 在当前目录启动，所有 .jpg 列为第 0 轮
-    2. 在 loupe 中浏览图片，按 Ctrl+Space 收藏喜欢的 → 桌面通知
-    3. 按 Ctrl+Down → 收藏的图片复制到 layer1/ 作为第 1 轮
-    4. 继续筛选直到满意，关闭 loupe 即退出
-    5. 每一轮的结果保存在 layer<N>/ 子目录中
+	    1. 在当前目录启动，所有图片列为第 0 轮
+	    2. 在 loupe 中浏览图片，按 Ctrl+Space 收藏喜欢的 → 桌面通知
+	    3. 按 Ctrl+Down → 收藏的图片链接到 layer1/ 作为第 1 轮
+	    4. 继续筛选直到满意，关闭 loupe 即退出
+	    5. 每一轮的结果保存在 layer<N>/ 子目录中
 
-  依赖:
-    loupe (图片查看器)、systemd (scope 进程管理)、AT-SPI (窗口标题读取)
+	  依赖:
+	    loupe (图片查看器)、systemd (scope 进程管理)、AT-SPI (窗口标题读取)
 {'=' * 60}
 """
     print(help_text.strip())
 
-
-def find_terminal():
-    """Find an available terminal emulator.  Returns (cmd, arg_to_run)."""
-    for term, run_flag in [
-        ("gnome-terminal", "--"),
-        ("kgx", "--"),               # GNOME Console
-        ("konsole", "-e"),
-        ("xfce4-terminal", "-e"),
-        ("lxterminal", "-e"),
-        ("xterm", "-e"),
-    ]:
-        if shutil.which(term):
-            return term, run_flag
-    return None, None
-
-
-def ensure_terminal():
-    """
-    If we are not running inside a terminal (double-click launch),
-    re-launch ourselves in a terminal emulator and exit the original.
-    Returns True if the original process should continue (already in terminal).
-    Returns False after re-launching, so the caller returns immediately.
-    """
-    if sys.stdout.isatty():
-        return True  # already in terminal, continue normally
-
-    script = os.path.abspath(sys.argv[0])
-    term, run_flag = find_terminal()
-    if term is None:
-        # Last resort: no terminal found — show a GUI error and exit
-        subprocess.run(
-            ["zenity", "--error",
-             "--title=挑挑拣拣",
-             "--text=未找到可用的终端模拟器，请在终端中手动运行：\n\npython3 " + script],
-            check=False,
-        )
-        return False
-
-    # Build command: terminal -e python3 <script> --from-desktop
-    if term == "gnome-terminal":
-        subprocess.Popen(
-            [term, "--wait", "--", "python3", script, "--from-desktop"],
-            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-        )
-    elif term == "kgx":
-        subprocess.Popen(
-            [term, "--", "python3", script, "--from-desktop"],
-            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-        )
-    else:
-        subprocess.Popen(
-            [term, run_flag, "python3", script, "--from-desktop"],
-            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-        )
-    return False
 
 
 def send_fifo_command(code: str):
@@ -461,9 +406,6 @@ def send_fifo_command(code: str):
 
 
 def main():
-    # Parse flags
-    from_desktop = "--from-desktop" in sys.argv
-
     # Shortcut handler: write command code directly to FIFO, then exit
     if len(sys.argv) >= 3 and sys.argv[1] == "--cmd":
         send_fifo_command(sys.argv[2])
@@ -472,10 +414,6 @@ def main():
     if len(sys.argv) > 1 and sys.argv[1] in ("-h", "--help"):
         print_help()
         return
-
-    # Double-click: auto-open in terminal if not in one
-    if not ensure_terminal():
-        return  # parent process exits; child runs in terminal
 
     # Cleanup old FIFO
     if os.path.exists(CMD_FIFO):
@@ -572,12 +510,6 @@ def main():
         os.unlink(CMD_FIFO)
     unregister_keybindings()
 
-    # When double-click launched, keep terminal open so the user can read output
-    if from_desktop:
-        try:
-            input("\n  按 Enter 关闭窗口...")
-        except EOFError:
-            pass
 
 
 if __name__ == "__main__":
