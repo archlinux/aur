@@ -1,20 +1,18 @@
 pkgbase = python-pytest-arraydiff
 	pkgdesc = Pytest plugin to help with comparing array output from tests
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/astrofrog/pytest-arraydiff
 	arch = any
-	license = BSD
-	checkdepends = python-pytest
+	license = BSD-3-Clause
+	checkdepends = python-pytest-run-parallel
 	checkdepends = python-astropy
-	checkdepends = python-pandas
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/p/pytest-arraydiff/pytest-arraydiff-0.6.1.tar.gz
-	md5sums = ee1a683fa6a312d86dd8bd9342744f78
+	source = https://files.pythonhosted.org/packages/source/p/pytest_arraydiff/pytest_arraydiff-0.7.0.tar.gz
+	md5sums = 60df9d169cbb612108b978e9b35deebd
 
 pkgname = python-pytest-arraydiff
 	depends = python-numpy
-	depends = python-pytest>=4.6
+	depends = python-pytest>=6.2
