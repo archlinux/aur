@@ -1,0 +1,16 @@
+pkgbase = gnfetch-bin
+	pkgdesc = A neofetch/fastfetch alternative that renders system info as a graphical card or ANSI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Hibryda/gnfetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gnfetch
+	conflicts = gnfetch
+	source_x86_64 = gnfetch-0.1.0-x86_64.tar.gz::https://github.com/Hibryda/gnfetch/releases/download/v0.1.0/gnfetch-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 165a1e5d7c0a0fc20cec9bcdf49050802f64f45d25ac8b93afa78e19e51a967c
+	source_aarch64 = gnfetch-0.1.0-aarch64.tar.gz::https://github.com/Hibryda/gnfetch/releases/download/v0.1.0/gnfetch-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = d4b3b775ce7fec302018f16547108632871264ea185cd645037c972995e5d50f
+
+pkgname = gnfetch-bin
