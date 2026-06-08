@@ -1,6 +1,6 @@
 pkgbase = ffbox
 	pkgdesc = An user-friendly ffmpeg GUI.(Use system-wide electron)一个多媒体转码百宝箱/一个 FFmpeg 的套壳
-	pkgver = 5.3
+	pkgver = 5.4
 	pkgrel = 1
 	url = https://github.com/ttqftech/FFBox
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = ffbox
 	depends = electron24
 	depends = ffmpeg
 	conflicts = ffbox
-	source = ffbox-5.3::git+https://github.com/ttqftech/FFBox#tag=v5.3
+	source = ffbox-5.4::git+https://github.com/ttqftech/FFBox#tag=v5.4
 	source = ffbox.sh
-	sha256sums = 7692de3370427de3003622419adb3b6250c2ab2e10ba2e786eee3912f914ff29
+	sha256sums = 7a16a065d0aa972d56bb5d8700c001d915c2cf32472722a3f16fe1572135da82
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = ffbox
