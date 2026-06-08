@@ -1,7 +1,7 @@
 pkgbase = noctalia-greeter-git
         pkgdesc = Greetd greeter for Noctalia
         pkgver = 1.0.0.r26.gc2e01f1c3
-        pkgrel = 1
+        pkgrel = 2
         url = https://github.com/noctalia-dev/noctalia-greeter
         install = noctalia-greeter-git.install
         arch = x86_64

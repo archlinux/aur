@@ -3,7 +3,7 @@
 pkgname=noctalia-greeter-git
 _pkgname=noctalia-greeter
 pkgver=1.0.0.r32.g34599488c
-pkgrel=1
+pkgrel=2
 pkgdesc="Greetd greeter for Noctalia"
 arch=('x86_64')
 url="https://github.com/noctalia-dev/noctalia-greeter"
@@ -59,9 +59,6 @@ build() {
 
 package() {
   meson install -C build-release --destdir "${pkgdir}"
-
-  sed -i 's|/usr/local/bin/noctalia-greeter|/usr/bin/noctalia-greeter|g' \
-    "${pkgdir}/usr/bin/noctalia-greeter-session"
 
   install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
