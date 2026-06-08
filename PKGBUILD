@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=hygg
-pkgver=0.1.20
+pkgver=0.1.21
 pkgrel=1
 pkgdesc='Minimalistic Vim-like TUI document reader.'
 arch=(
@@ -10,18 +10,20 @@ arch=(
 url='https://github.com/kruseio/hygg'
 license=('AGPL-3.0')
 makedepends=('cargo') # 'clang' 'gcc-libs')
-options=(!lto !debug)
+options=(
+    !lto
+    !debug
+)
 provides=(
-    $pkgname
+    'hygg'
     'cli-epub-to-text'
     'cli-justify'
     'cli-pdf-to-text'
     'cli-text-reader'
-    'cli-justify'
 )
 conflicts=($pkgname-git $pkgname-bin)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('da3c0d659d3e599fc640e42851da52abd194ee38a74c5d1dffb629a68ac19f91')
+sha256sums=('c0f3005bf97940881d695b7e8bde55318daf4de48c927cb4a9150d3b86ccb181')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -37,12 +39,9 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${provides[0]}"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${provides[1]}"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${provides[2]}"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${provides[3]}"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${provides[4]}"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${provides[5]}"
+    for bin in "${provides[@]}"; do
+        install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$bin"
+    done
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }

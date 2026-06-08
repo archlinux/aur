@@ -1,6 +1,6 @@
 pkgbase = hygg
 	pkgdesc = Minimalistic Vim-like TUI document reader.
-	pkgver = 0.1.20
+	pkgver = 0.1.21
 	pkgrel = 1
 	url = https://github.com/kruseio/hygg
 	arch = x86_64
@@ -12,12 +12,11 @@ pkgbase = hygg
 	provides = cli-justify
 	provides = cli-pdf-to-text
 	provides = cli-text-reader
-	provides = cli-justify
 	conflicts = hygg-git
 	conflicts = hygg-bin
 	options = !lto
 	options = !debug
-	source = hygg-0.1.20.tar.gz::https://github.com/kruseio/hygg/archive/refs/tags/0.1.20.tar.gz
-	sha256sums = da3c0d659d3e599fc640e42851da52abd194ee38a74c5d1dffb629a68ac19f91
+	source = hygg-0.1.21.tar.gz::https://github.com/kruseio/hygg/archive/refs/tags/0.1.21.tar.gz
+	sha256sums = c0f3005bf97940881d695b7e8bde55318daf4de48c927cb4a9150d3b86ccb181
 
 pkgname = hygg
