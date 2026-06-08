@@ -1,6 +1,6 @@
 # Maintainer: rezky_nightky <rezky2399@proton.me>
 pkgname=zejtron-bin
-pkgver=2.4.5
+pkgver=2.4.6
 pkgrel=1
 pkgdesc="Unified Linux introspection toolkit for paths, ports, processes, files, services, and diagnostics"
 arch=('x86_64' 'aarch64')
