@@ -10,7 +10,7 @@ depends=('gcc-libs' 'hyprland') # Hyprland is a runtime dependency
 optdepends=('foot: The default terminal emulator used')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9cfef014f43802a22287f8282d48957834e804c6d99dad5e9dfa0abb762327d6')
+sha256sums=('e9a0f670fed493edb25166e0c01255252be58d6cf8d6252e2e31500d9b3586c0')
 
 prepare() {
   cd "$pkgname-$pkgver"
