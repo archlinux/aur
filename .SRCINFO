@@ -1,0 +1,17 @@
+pkgbase = huiontablet-driver-and-software
+	pkgdesc = Huion Tablet Driver Setting Software
+	pkgver = 15.0.0.175
+	pkgrel = 1
+	url = https://www.huion.com/download
+	install = huiontablet-driver-and-software.install
+	arch = x86_64
+	license = custom:Huion
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = xdotool
+	noextract = HuionTablet_LinuxDriver_v15.0.0.175.x86_64.deb
+	source = HuionTablet_LinuxDriver_v15.0.0.175.x86_64.deb
+	sha256sums = SKIP
+
+pkgname = huiontablet-driver-and-software
