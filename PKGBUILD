@@ -2,8 +2,8 @@
 
 pkgname=pidscope-git
 _pkgname=pidscope
-pkgver=26.05.0.r0.gdbbb5fb
-pkgrel=1
+pkgver=26.06.0.rc1.r0.g992a12c
+pkgrel=2
 pkgdesc='GNU Octave graphical blackbox flight log analyzer for FPV drone PID tuning'
 arch=('x86_64' 'aarch64')
 url='https://github.com/dzikus/PIDscope'
@@ -24,7 +24,7 @@ provides=('pidscope')
 conflicts=('pidscope'
            'pidscope-bin')
 source=(
-  'pidscope::git+https://github.com/dzikus/PIDscope.git'
+  'pidscope::git+https://github.com/dzikus/PIDscope.git#branch=pidscope'
   'betaflight-blackbox-tools::git+https://github.com/betaflight/blackbox-tools.git'
   'inav-blackbox-tools::git+https://github.com/iNavFlight/blackbox-tools.git'
 )
