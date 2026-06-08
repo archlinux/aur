@@ -2,14 +2,14 @@
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 _pkgname=dhewm3
 pkgname=$_pkgname-git
-pkgver=1.5.5_RC2.r13.g098f77e
+pkgver=1.5.5.r0.g455b88e
 pkgrel=1
 epoch=1
 pkgdesc="Doom 3 source port"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://dhewm3.org/"
 license=('GPL-3.0-or-later')
-depends=('glibc' 'hicolor-icon-theme' 'sdl2')
+depends=('glibc' 'hicolor-icon-theme' 'sdl3')
 makedepends=('cmake' 'curl' 'git' 'libbacktrace' 'libgcc' 'libstdc++' 'openal')
 optdepends=('doom3-data: for game data')
 provides=("$_pkgname=$pkgver")
@@ -37,6 +37,8 @@ build() {
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D DEDICATED=ON
 		-D REPRODUCIBLE_BUILD=ON
+		-D SDL2=OFF
+		-D SDL3=ON
 		-W no-dev
 	)
 	cmake "${options[@]}" $_pkgname/neo
