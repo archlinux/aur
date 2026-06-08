@@ -241,7 +241,7 @@ class RcloneKdeApp(QMainWindow):
         
         about_html = """
         <div style="font-family: sans-serif;">
-            <h2 style="color: #3daee9;">Rclone-WIZ 1.3</h2>
+            <h2 style="color: #3daee9;">Rclone-WIZ 1.4.1</h2>
             <p>A simple and easy-to-use tool to configure, script, and mount cloud drives using rclone.</p>
             <hr>
             <p><b>Created by:</b> Miran Kljun<br>
