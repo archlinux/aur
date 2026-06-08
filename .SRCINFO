@@ -22,11 +22,12 @@ pkgbase = chiri
 	depends = glib2
 	depends = gtk3
 	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
 	depends = libsoup3
 	depends = pango
 	depends = webkit2gtk-4.1
-	conflicts = caldav-tasks
 	replaces = caldav-tasks
+	conflicts = caldav-tasks
 	options = !strip
 	options = !emptydirs
 	source = git+https://github.com/chiriapp/chiri.git#tag=app-v0.9.0
