@@ -1,6 +1,6 @@
 _basepkgname=llamafile
 pkgname=llamafile
-pkgver=0.10.0
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="Distribute and run LLMs with a single file"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('llamafile' 'whisperfile' 'zipalign')
 conflicts=('llamafile-git' 'android-sdk-build-tools' 'zipalign')
 options=('!strip')
 source=("${pkgname}::${url}/releases/download/${pkgver}/llamafile-${pkgver}.zip")
-sha256sums=('0e0376bcf2efe76c74ed5dc27e4f5e29e31a14162ca9e04c4c9e34645c65f6f7')
+sha256sums=('8ff91166a39bb9d387bf5f3115d02b4b2cbd93870f77eefd1d312e27dbf527f7')
 
 package() {
   cd "${_basepkgname}-${pkgver}"
