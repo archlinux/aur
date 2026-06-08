@@ -3,7 +3,7 @@
 # -*- mode: sh -*-
 
 pkgname='betula'
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Self-hosted personal link collection manager'
 arch=('aarch64' 'armv7h' 'x86_64')
