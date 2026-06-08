@@ -2,11 +2,14 @@
 pkgname=moekoemusic-bin
 _pkgname='MoeKoe Music'
 _zhsname='萌音'
-pkgver=1.6.4
+pkgver=1.6.5
 _electronversion=39
 pkgrel=1
 pkgdesc="An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Prebuilt version.Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端"
-arch=('x86_64')
+arch=(
+    #'aarch64'
+    'x86_64'
+)
 url="https://music.moekoe.cn/"
 _ghurl="https://github.com/MoeKoeMusic/MoeKoeMusic"
 license=('MIT')
@@ -23,13 +26,14 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/MoeKoeMusic/MoeKoeMusic/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('31e0405592323f8e9e781d4deaa84b72c1fffad52f1c3348394d66c4f26eeb1b'
-            'f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505'
+#source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /_}-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /_}-amd64.deb")
+sha256sums=('f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums_x86_64=('336fe006e4c89a7fe1ec7769c6cdfc2038d44e7a884d4c9049523ada3294f156')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
