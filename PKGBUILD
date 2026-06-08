@@ -1,7 +1,7 @@
 # Maintainer: SLIGHTLKE <SLIGHTLKE@outlook.com>
 pkgname=steam-appimage
 pkgver=1.0.0.85.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Steam package based on AppImage"
 arch=('x86_64')
 url="https://github.com/ivan-hc/Steam-appimage"
@@ -26,7 +26,7 @@ package() {
                  "$pkgdir/opt/Steam/appimage/Steam-1.0.0.85-7-anylinux-x86_64.AppImage"
 
   install -dm755 "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/steam" << 'EOF'
+cat > "$pkgdir/usr/bin/steam" << 'EOF'
 #!/bin/sh
 export HOME=/opt/Steam
 exec /opt/Steam/appimage/Steam-1.0.0.85-7-anylinux-x86_64.AppImage
@@ -34,7 +34,7 @@ EOF
 
   chmod 755 "$pkgdir/usr/bin/steam"
   install -dm755 "$pkgdir/usr/share/applications"
-  cat > "$pkgdir/usr/share/applications/steam-appimage.desktop" << 'EOF'
+cat > "$pkgdir/usr/share/applications/steam-appimage.desktop" << 'EOF'
 [Desktop Entry]
 Version=1.0
 Type=Application
