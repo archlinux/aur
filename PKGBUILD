@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Hyprland Display Manager HyprDM full version"
 arch=('x86_64')
 conflicts=('hyprdm-rob')
-url="https://github.com/hyprcommunity/hyprdm"
+url="https://codeberg.org/Zamanhuseyinli/hyprdm"
 license=('BSD3')
 depends=(
     'hyprland'
@@ -32,7 +32,7 @@ makedepends=(
 provides=('hyprdm')
 conflicts=('hyprdm')
 
-source=("git+https://github.com/hyprcommunity/hyprdm.git")
+source=("git+https://codeberg.org/Zamanhuseyinli/hyprdm.git")
 sha256sums=('SKIP')
 
 pkgver() {
