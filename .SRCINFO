@@ -1,13 +1,13 @@
 pkgbase = asyncapi-cli-bin
 	pkgdesc = AsyncAPI CLI
-	pkgver = 6.0.0
-	pkgrel = 2
+	pkgver = 6.0.1
+	pkgrel = 0
 	url = https://www.asyncapi.com/tools/cli
 	arch = x86_64
 	license = Apache-2.0
 	depends = nodejs
 	options = !debug
-	source = https://github.com/asyncapi/cli/releases/download/v6.0.0/asyncapi.tar.gz
+	source = https://github.com/asyncapi/cli/releases/download/v6.0.1/asyncapi.tar.gz
 	sha256sums = 27bd33474467809b702c58be7596f45cc9629823bd78570429930cb191d1a932
 
 pkgname = asyncapi-cli-bin
