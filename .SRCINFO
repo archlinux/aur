@@ -1,0 +1,18 @@
+pkgbase = vautoshiftd-bin
+	pkgdesc = Virtual AutoShift daemon for QMK-style hold-to-shift on regular keyboards
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Boteium/vautoshiftd
+	install = vautoshiftd-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = systemd
+	options = !debug
+	backup = etc/default/vautoshiftd
+	source_x86_64 = https://github.com/Boteium/vautoshiftd/releases/download/v1.0.1/vautoshiftd-v1.0.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 3584bc1e969704838e212e06d0dd70e9f0d4e38dbed6200dd920a51bb40acc6b
+	source_aarch64 = https://github.com/Boteium/vautoshiftd/releases/download/v1.0.1/vautoshiftd-v1.0.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 6e00ded6074faa9d9cffdf2539f1129f6d5a1dacf5547235997974a43f5420dc
+
+pkgname = vautoshiftd-bin

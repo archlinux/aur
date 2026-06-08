@@ -1,0 +1,12 @@
+post_install() {
+  if type systemd_daemon_reload >/dev/null 2>&1; then
+    systemd_daemon_reload
+  fi
+  echo "Enable and start with: systemctl enable --now vautoshiftd.service"
+}
+
+post_upgrade() {
+  if type systemd_daemon_reload >/dev/null 2>&1; then
+    systemd_daemon_reload
+  fi
+}
