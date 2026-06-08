@@ -7,6 +7,6 @@
 # carve out using regex anyway.
 source = "regex"
 url = "https://www.buhl.de/shop/updates?category=9"
-regex = "(?ms)<h3 class=\"pname\">\\s*Steuer 2026\\s*</h3>.*?\\.exe"
+regex = "(?ms)<h3 class=\"pname\">\\s*(?:WISO )?Steuer 2026\\s*</h3>.*?\\.exe"
 from_pattern = "(?ms).*Version:.*?<span.*?>([0-9]+).0*([0-9]+)</span>.*2026Update..([0-9]+)\\.exe"
 to_pattern = "\\1.\\2.\\3"

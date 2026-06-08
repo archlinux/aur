@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=wiso-steuer-2026
-pkgver=33.6.3310
+pkgver=33.7.3410
 pkgrel=1
 pkgdesc='File your German tax return for the tax year 2025'
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=(
   'wiso-steuer-2026.desktop'
 )
 
-sha512sums=('5fd054b83570f48b7a7cf05bce02dadd520fa58064e90003fcfe6ed7296d010d609e2873f745d1261072551f27644de629d7374b5c7cfa7d155bdcc064b8d636'
+sha512sums=('090b305663f27bce262786cace4964aebbd4d2fba1888dfbcbad92282e6a09972d9546c6c6a7b3b0afcbb527103bd4e333817207f13b5237a32dc6a031fa4b04'
             'SKIP'
             'a5c60dcf26a22cf151caf32ad293ea1ac9ddac0e5c93cc14f25b5aa1fd886d4c4f149654d8498e3a0335c30ff178c7ad5b936141f0a01c3bd853836790997480'
             'f49b6c1d54c907253d2ad378c248f21da0ee98053b4bd090a9b92363c574902eb8364b0b8e2e759bdd09fcab315672c8d22fc06d9915207fb91170d9a7ef04ba')
