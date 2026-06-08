@@ -1,6 +1,6 @@
 pkgbase = pvetui-bin
 	pkgdesc = A terminal user interface (TUI) for Proxmox VE
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/devnullvoid/pvetui
 	license = MIT
@@ -11,13 +11,13 @@ pkgbase = pvetui-bin
 	conflicts = pvetui-git
 	provides = pvetui
 	arch = aarch64
-	source_aarch64 = https://github.com/devnullvoid/pvetui/releases/download/v1.4.0/pvetui_1.4.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = f2ce577c83fe30f6b319f8a1c01668c9451e1925317d5efd5f03569f308a2b99
+	source_aarch64 = https://github.com/devnullvoid/pvetui/releases/download/v1.4.1/pvetui_1.4.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = bcc823b63dbceeba6c22fd3af459799d11a436777d44f7a54c870ac7dc6ef633
 	arch = i686
-	source_i686 = https://github.com/devnullvoid/pvetui/releases/download/v1.4.0/pvetui_1.4.0_linux_386.tar.gz
-	sha256sums_i686 = 66e5d509c72ada623d36aa2591d6ce94cf10dbcec431d9b21927421a44c5bf12
+	source_i686 = https://github.com/devnullvoid/pvetui/releases/download/v1.4.1/pvetui_1.4.1_linux_386.tar.gz
+	sha256sums_i686 = 002131fb64a7447d2f4520cc214799c4876532120fb621707a4b6036e202a8a6
 	arch = x86_64
-	source_x86_64 = https://github.com/devnullvoid/pvetui/releases/download/v1.4.0/pvetui_1.4.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = d23f1e17583dd51d036828cc15cdb373e543262a08f1735bbeab84ca74f504bf
+	source_x86_64 = https://github.com/devnullvoid/pvetui/releases/download/v1.4.1/pvetui_1.4.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7f810c0ca0e4d316b93b15c87dee0d861471bd0f163551c2e66980996764464c
 	
 pkgname = pvetui-bin
