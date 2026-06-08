@@ -1,5 +1,5 @@
 # Maintainer: Rudolf Schmidt <info@rudolfschmidt.com>
-pkgname=simplex-desktop
+pkgname=simplex-desktop-fixed-bin
 pkgver=6.5.4
 pkgrel=1
 pkgdesc="The first messaging platform that has no user identifiers — desktop GUI client"
@@ -8,21 +8,18 @@ url="https://simplex.chat"
 license=('AGPL-3.0-only')
 depends=(
     'alsa-lib'
-    'brotli'
     'e2fsprogs'
-    'expat'
     'fontconfig'
     'freetype2'
-    'glib2'
+    'fribidi'
     'gmp'
-    'graphite'
     'harfbuzz'
-    'libbsd'
+    'jack2'
+    'java-runtime'
     'libdrm'
     'libglvnd'
     'libgpg-error'
-    'libmd'
-    'libpng'
+    'libusb'
     'libx11'
     'libxcb'
     'libxext'
@@ -30,13 +27,13 @@ depends=(
     'libxrender'
     'libxtst'
     'openssl'
-    'pcre'
     'xdg-utils'
     'zlib'
 )
-provides=('simplex-desktop')
-conflicts=('simplex-desktop-bin')
-source=("simplex-desktop-${pkgver}.deb::https://github.com/simplex-chat/simplex-chat/releases/download/v${pkgver}/simplex-desktop-ubuntu-24_04-x86_64.deb")
+provides=('simplex-desktop' 'simplex-desktop-bin')
+conflicts=('simplex-desktop' 'simplex-desktop-bin')
+options=('!debug' '!strip')
+source=("simplex-desktop-${pkgver}.deb::https://github.com/simplex-chat/simplex-chat/releases/download/v${pkgver}/simplex-desktop-ubuntu-24_04-${CARCH}.deb")
 sha256sums=('ccd538f7a65d6f7a5f32e5e4a149ad243efcdc79b0f1d2b449949d5ca4471223')
 
 package() {
