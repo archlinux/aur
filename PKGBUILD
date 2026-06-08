@@ -2,7 +2,7 @@
 pkgname=ulogviewer-bin
 _pkgname=ULogViewer
 pkgver=2026.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Log Viewer,supports reading, parsing and analysing various type of logs.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -53,7 +53,7 @@ prepare() {
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
     chmod 755 "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}"
     rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/__MACOSX"
-    touch "{PersistentState.json,Settings.json}"
+    touch {PersistentState.json,Settings.json}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
