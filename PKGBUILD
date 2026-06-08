@@ -1,4 +1,5 @@
-# Maintainer:  Chris Severance aur.severach AatT spamgourmet.com
+# Maintainer:  Zen Wen <zen.8841@gmail.com>
+# Contributor: Chris Severance aur.severach AatT spamgourmet.com
 # Contributor: Det <nimetonmaili g-mail>
 # Contributors: Charles Ghislain, Guillaume ALAUX, Daniel J Griffiths, Jason Chu, Geoffroy Carrier,
 #               Army, kfgz, Thomas Dziedzic, Dan Serban, jjacky, EasySly
@@ -30,7 +31,8 @@ pkgname="${_pkgname}${_major}"
 #_minor='391'; _bundleid='249192'; _hash='b291ca3e0c8548b5a51d5a5f50063037'
 #_minor='401'; _bundleid='249542'; _hash='4d245f941845490c91360409ecffb3b4'
 #_minor='431'; _bundleid='251398'; _hash='0d8f12bc927a4e2c9f8568ca567db4ee'
-_minor='441'; _bundleid='251646'; _hash='7ed26d28139143f38c58992680c214a5'
+#_minor='441'; _bundleid='251646'; _hash='7ed26d28139143f38c58992680c214a5'
+_minor='491'; _bundleid='253185'; _hash='f7fe8e644f724108bdb54139381e29a7'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Runtime Environment"
@@ -84,9 +86,9 @@ source=(
   #"https://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/${_pkgname}-${pkgver}-linux-x64.tar.gz" # Now /otn/, Oracle sso required
   "policytool-${_jname}.desktop"
 )
-md5sums=('9491b70851c08c0d439e4a4e49e9c9a0'
+md5sums=('f2d5a50cd9ac00501834d0c9275ea26d'
          'ef3ff483db5d38ed106e0b819006bdae')
-sha256sums=('e0f223c3adff8d6989c68ada452487aa767c3fd229980153e920877c5dc571a5'
+sha256sums=('db493e23bed1e1c6d605eaf9bc2d9c0f6e0dddd1d2d821aae2de3261c5062884'
             '614b2a74b53728b7914c1407126a7ecfed781a79fb11e9963528c7cad39dbca8')
 
 #PKGEXT='.pkg.tar.zst' # gz is much faster than .xz, zst is much faster than gz
