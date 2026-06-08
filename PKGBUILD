@@ -1,6 +1,6 @@
 # Maintainer: Woro <woro@tanieddosy.pl>
 pkgname=simplevoice-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Simplevoice — fast speech-to-text transcription (Tauri)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip' '!debug')
 install=simplevoice-bin.install
 # Tauri names the .deb as {productName}_{version}_amd64.deb.
 source_x86_64=("Simplevoice_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/Simplevoice_${pkgver}_amd64.deb")
-sha256sums_x86_64=('a763d78637941e517e6cc55d95eca29463ece872d58cb5072d9e5acd2481145f')
+sha256sums_x86_64=('4ea5f5600610f9afb371025679477b4519e812c81530037f0215cb498e1f4037')
 
 package() {
   tar -xf data.tar.gz -C "${pkgdir}/"
