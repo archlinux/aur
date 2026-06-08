@@ -1,7 +1,7 @@
 # Maintainer: Phil Kulak <phil@kulak.us>
 pkgname=matui
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An opinionated Matrix TUI client."
 makedepends=('cargo')
 arch=('x86_64')
