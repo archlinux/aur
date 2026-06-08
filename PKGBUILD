@@ -3,7 +3,7 @@
 _branch=master
 _pkgname=svelte-language-server
 pkgname=${_pkgname}-git
-pkgver=r1907.79799c80
+pkgver=r1910.9407413e
 pkgrel=1
 pkgdesc='Svelte Language Server, git master build'
 url="https://github.com/sveltejs/language-tools"
@@ -19,10 +19,8 @@ makedepends=(
   pnpm
 )
 options=('!emptydirs' '!strip')
-source=("${pkgname}::git+${url}.git#branch=${_branch}"
-        "upgrade-mocha.patch")
-sha256sums=('SKIP'
-            'bce127996664dc603403448fe6371891eca964763112dde06d0d75d0b4ddb18b')
+source=("${pkgname}::git+${url}.git#branch=${_branch}")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -31,7 +29,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
-  patch -p1 < "$srcdir/upgrade-mocha.patch"
 }
 
 build() {

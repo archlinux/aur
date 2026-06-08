@@ -1,6 +1,6 @@
 pkgbase = svelte-language-server-git
 	pkgdesc = Svelte Language Server, git master build
-	pkgver = r1907.79799c80
+	pkgver = r1909.201c9ae0
 	pkgrel = 1
 	url = https://github.com/sveltejs/language-tools
 	arch = any
@@ -13,8 +13,6 @@ pkgbase = svelte-language-server-git
 	options = !emptydirs
 	options = !strip
 	source = svelte-language-server-git::git+https://github.com/sveltejs/language-tools.git#branch=master
-	source = upgrade-mocha.patch
 	sha256sums = SKIP
-	sha256sums = bce127996664dc603403448fe6371891eca964763112dde06d0d75d0b4ddb18b
 
 pkgname = svelte-language-server-git
