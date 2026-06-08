@@ -1,0 +1,27 @@
+pkgbase = patent-bin
+	pkgdesc = A prior-art search for your code ideas. Stop building what already exists.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/r14dd/patent
+	install = patent.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	makedepends = openssl
+	makedepends = gcc
+	optdepends = ollama: powers the LLM verdict
+	provides = patent
+	conflicts = patent-git
+	conflicts = patent
+	options = !lto
+	options = !debug
+	source = patent.install
+	sha256sums = 24dff75c38b578cb7e8057366a764cb4313078f16bada568baf79ecde5cb49af
+	source_x86_64 = patent-bin-0.3.0.tar.xz::https://github.com/r14dd/patent/releases/download/v0.3.0/patent-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = beed7ebfe5659f8f0b8e7cd12b39b0bbf591730748083c47d86c4f93e136e6c6
+	source_aarch64 = patent-bin-0.3.0.tar.xz::https://github.com/r14dd/patent/releases/download/v0.3.0/patent-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 4f6daa9ca94ac8bfcbdcd66c4b3531f97802d02c40321eaafe6eae5dd0e884b0
+
+pkgname = patent-bin
