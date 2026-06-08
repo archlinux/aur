@@ -1,12 +1,12 @@
 pkgbase = gatotray
 	pkgdesc = A lightweight graphical system monitor for the desktop tray
 	pkgver = 5.1
-	pkgrel = 20260605
+	pkgrel = 20260608
 	url = https://github.com/gatopeich/gatotray
 	arch = x86_64
 	license = CC-BY
 	depends = gtk2
-	source = https://github.com/gatopeich/gatotray/archive/refs/tags/v5.1.20260605.tar.gz
+	source = https://github.com/gatopeich/gatotray/archive/refs/tags/v5.1.20260608.tar.gz
 	sha256sums = SKIP
 
 pkgname = gatotray
