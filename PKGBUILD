@@ -7,15 +7,12 @@ _author=PETDANCE
 _dist=Test-WWW-Mechanize
 pkgname=perl-${_dist@L}
 pkgver=1.60
-pkgrel=4
+pkgrel=5
 pkgdesc='Testing-specific WWW::Mechanize subclass'
 arch=('any')
-url=https://metacpan.org/release/$_author/$_dist-$pkgver
+url=https://metacpan.org/dist/$_dist
 license=('Artistic-2.0')
 depends=(
-    # Missing dep in perl-www-mechanize package (bug).
-    'perl-html-tree'
-
     'perl-carp'
     'perl-carp-assert-more>=1.16'
     'perl-html-form'

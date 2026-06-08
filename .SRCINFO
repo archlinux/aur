@@ -1,15 +1,14 @@
 pkgbase = perl-test-www-mechanize
 	pkgdesc = Testing-specific WWW::Mechanize subclass
 	pkgver = 1.60
-	pkgrel = 4
-	url = https://metacpan.org/release/PETDANCE/Test-WWW-Mechanize-1.60
+	pkgrel = 5
+	url = https://metacpan.org/dist/Test-WWW-Mechanize
 	arch = any
 	license = Artistic-2.0
 	checkdepends = perl-http-server-simple
 	checkdepends = perl-test-simple
 	checkdepends = perl-uri
 	makedepends = perl-extutils-makemaker
-	depends = perl-html-tree
 	depends = perl-carp
 	depends = perl-carp-assert-more>=1.16
 	depends = perl-html-form
