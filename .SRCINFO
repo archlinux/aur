@@ -1,0 +1,20 @@
+pkgbase = xlog-decoder-bin
+	pkgdesc = A tool to decode xlog files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/crowforkotlin/xlog-decoder
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libsoup3
+	depends = cairo
+	depends = pango
+	provides = xlog-decoder
+	conflicts = xlog-decoder
+	options = !strip
+	options = !debug
+	source = https://github.com/crowforkotlin/xlog-decoder/releases/download/1.0/xlog-decoder_1.0.0_amd64.deb
+	sha256sums = SKIP
+
+pkgname = xlog-decoder-bin
