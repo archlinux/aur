@@ -5,10 +5,11 @@ pkgbase = filezilla-server
 	url = https://filezilla-project.org/download.php?type=server
 	arch = x86_64
 	license = AGPL-3.0-only
+	makedepends = gcc15
 	makedepends = wxwidgets-gtk3
-	depends = pugixml
 	depends = libfilezilla
 	depends = libfilezilla.so
+	depends = pugixml
 	optdepends = wxwidgets-gtk3
 	source = https://sourceforge.net/projects/fabiololix-os-archive/files/src/FileZilla_Server_1.12.6_src.tar.xz
 	source = filezilla-server-Remove-demos-leftovers.patch
