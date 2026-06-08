@@ -1,7 +1,7 @@
 pkgbase = canon-pixma-tr160-complete
 	pkgdesc = Canon PIXMA TR160 printer driver (print-only, no scanner)
 	pkgver = 6.81
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.usa.canon.com/support/p/pixma-tr160
 	arch = x86_64
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = canon-pixma-tr160-complete
 	depends = libpng12
 	depends = libusb-compat
 	depends = libtiff
-	depends = libxml2
+	depends = libxml2-legacy
 	depends = gtk2
 	conflicts = cnijfilter2
 	source = https://gdlp01.c-wss.com/gds/2/0100012532/01/cnijfilter2-6.81-1-deb.tar.gz

@@ -1,14 +1,14 @@
-# Maintainer: Selene Bray-Hernandez <selebray1998@gmail.com>
+# Maintainer: Selene Bray-Hernandez <selebray1998 (at) gmail (dot) com>
 # Contributor: based on canon-pixma-mg3000-complete PKGBUILD by Peter Nagy
 
 pkgname=canon-pixma-tr160-complete
 pkgver=6.81
-pkgrel=1
+pkgrel=2
 pkgdesc='Canon PIXMA TR160 printer driver (print-only, no scanner)'
 arch=(x86_64)
 url='https://www.usa.canon.com/support/p/pixma-tr160'
 license=(custom)
-depends=(popt libpng12 libusb-compat libtiff libxml2 gtk2)
+depends=(popt libpng12 libusb-compat libtiff libxml2-legacy gtk2)
 makedepends=(deb2targz)
 conflicts=(cnijfilter2)
 
