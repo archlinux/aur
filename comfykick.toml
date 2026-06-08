@@ -107,9 +107,9 @@
 
 # # Extra index URL for uv installing Python packages.
 # # Useful for select specific the PyTorch variant or mirror.
-# # e.g. `https://download.pytorch.org/whl/cu130` (CUDA)
+# # e.g. `https://download.pytorch.org/whl/cu130`   (CUDA)
 # #      `https://download.pytorch.org/whl/rocm7.2` (ROCm)
-# #      `https://download.pytorch.org/whl/xpu` (XPU)
+# #      `https://download.pytorch.org/whl/xpu`     (XPU)
 # # Leave empty to use environment's default.
 # # Default: ""
 # uv_extra_index_url     = ""
@@ -117,7 +117,7 @@
 # # Extra Python packages install.
 # # Can use this to bake in custom-node dependencies that are not yet
 # # pinned in ComfyUI's own requirements files.
-# # e.g. `["matrix-nio", "foo==1.2.3", "bar>=4.5.6"]`
+# # e.g. `["flash-attn", "foo==1.2.3", "bar>=4.5.6"]`
 # # Default: []
 # extra_python_package   = []
 
