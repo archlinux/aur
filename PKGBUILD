@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tmax-bin
-pkgver=1.9.3
+pkgver=1.10.0
 _electronversion=30
 pkgrel=1
 pkgdesc="A powerful cross-platform multi-terminal app with tiling layouts, floating panels, and a keyboard-driven workflow. (Prebuilt version. Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2187a057ce6b5e38ea2621235202b4a43c610e7ca04c1f12af9c1a48b38ddb12'
+sha256sums=('1a9f8fd61427705baa537576322b8979fdfaaf288e88a6a84194905a545169c6'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
