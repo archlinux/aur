@@ -1,3 +1,17 @@
-post_install() { systemctl daemon-reload; systemctl enable shrike-cc; systemctl start shrike-cc; }
-post_upgrade() { systemctl daemon-reload; systemctl restart shrike-cc; }
-post_remove() { systemctl stop shrike-cc || true; systemctl disable shrike-cc || true; }
+post_install() { 
+    systemctl daemon-reload; 
+    systemctl enable shrike-cc; 
+    systemctl start shrike-cc; 
+    echo "==> Shrike Control Centre started on http://localhost:8080"
+    echo "==> Default Login: admin / shrike"
+}
+
+post_upgrade() { 
+    systemctl daemon-reload; 
+    systemctl restart shrike-cc; 
+}
+
+post_remove() { 
+    systemctl stop shrike-cc || true; 
+    systemctl disable shrike-cc || true; 
+}

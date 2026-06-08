@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrike CC - Login</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 4 Q8 8 3 10 Q7 10 10 9 L8 18 L11 15 L12 20 L13 15 L16 18 L14 9 Q17 10 21 10 Q16 8 12 4 Z' fill='%2389b4fa'/%3E%3C/svg%3E">
+    <style>
+        :root { --bg: #1e1e2e; --surface: #313244; --text: #cdd6f4; --primary: #89b4fa; }
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: var(--text); display: flex; height: 100vh; justify-content: center; align-items: center; }
+        .login-box { background-color: var(--surface); padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); width: 350px; text-align: center; }
+        .login-box svg { width: 60px; height: 60px; fill: var(--primary); stroke: none; margin-bottom: 10px; }
+        h2 { color: var(--primary); margin-top: 0; }
+        .form-group { text-align: left; margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-size: 13px; color: #a6adc8; }
+        input[type="text"], input[type="password"] { width: 100%; padding: 10px; border: 1px solid #45475a; border-radius: 4px; background-color: var(--bg); color: var(--text); box-sizing: border-box; font-size: 14px; }
+        input[type="text"]:focus, input[type="password"]:focus { outline: none; border-color: var(--primary); }
+        button { width: 100%; padding: 12px; border: none; border-radius: 4px; background-color: var(--primary); color: var(--bg); font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.2s; }
+        button:hover { background-color: #74c7ec; }
+        .error { color: #f38ba8; font-size: 13px; margin-bottom: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <svg viewBox="0 0 24 24"><path d="M12 4 Q8 8 3 10 Q7 10 10 9 L8 18 L11 15 L12 20 L13 15 L16 18 L14 9 Q17 10 21 10 Q16 8 12 4 Z"/></svg>
+        <h2>Shrike Control Centre</h2>
+        {% if error %}<div class="error">{{ error }}</div>{% endif %}
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required autocomplete="off" autofocus>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+</body>
+</html>
