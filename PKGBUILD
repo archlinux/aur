@@ -1,20 +1,21 @@
 # Maintainer: Maciek Makowski info+aur@mmakowski.com
-_branch=rocm
+_branch=main
 
 pkgname=ds4-rocm-git
-pkgver=r79.7a751eb
+pkgver=r303.59d9bc7
 pkgrel=1
 pkgdesc="Run DeepSeek4 LLM optimised for ROCm (AMD GPUs). Model weights are not included due to size. After installation run 'sudo ds4-download-model' to download."
 arch=(x86_64)
 url="https://github.com/antirez/ds4"
 license=('MIT')
 groups=()
-depends=('curl'
-         'hipblas')
+depends=('curl')
 makedepends=('curl'
              'git'
              'hip'
+             'hipcub'
              'hipblas'
+             'hipblaslt'
              'rocm-llvm'
              'rocminfo'
              'rocwmma')
