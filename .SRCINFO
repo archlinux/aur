@@ -1,6 +1,6 @@
 pkgbase = nuripaper
 	pkgdesc = A straightforward wallpaper tool for dynamic and static backgrounds
-	pkgver = 1.1.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/nexvlif/nuripaper
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = nuripaper
 	depends = wayland
 	depends = ffmpeg
 	depends = wlr-protocols
-	options = !debug
-	source = nuripaper-1.1.0.tar.gz::https://github.com/nexvlif/nuripaper/archive/v1.1.0.tar.gz
-	sha256sums = SKIP
+	depends = tomlplusplus
+	source = nuripaper-2.0.0.tar.gz::https://github.com/nexvlif/nuripaper/archive/v2.0.0.tar.gz
+	sha256sums = f2f8014f2264ea46d6a4f95a21cc0f2fb76b6d06d16f95071f249b366948445b
 
 pkgname = nuripaper
