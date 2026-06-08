@@ -1,0 +1,17 @@
+pkgbase = waterfowl-bin
+	pkgdesc = Desktop PostgreSQL database manager built with Tauri
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/fosslife/waterfowl
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = waterfowl
+	conflicts = waterfowl
+	options = !strip
+	options = !debug
+	source = waterfowl-0.2.2.deb::https://github.com/fosslife/waterfowl/releases/download/Waterfowl-v0.2.2/waterfowl_0.2.2_amd64.deb
+	sha256sums = d075e7a989179fe0deebc0694e9614a749d5dd3eb1204896f034b5ffaa0e8757
+
+pkgname = waterfowl-bin
