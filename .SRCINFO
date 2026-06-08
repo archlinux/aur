@@ -2,13 +2,13 @@ pkgbase = plasma-system-ai
 	pkgdesc = Plasma-supported structure for an AI-based Linux system
 	pkgver = 1.0.o1
 	pkgrel = 1
-	url = https://github.com/Zamanhuseyinli/Linux-AI
+	url = https://codeberg.org/Zamanhuseyinli/Linux-AI
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = python
 	depends = python-setuptools
-	source = git+https://github.com/Zamanhuseyinli/Linux-AI.git#branch=main
+	source = git+https://codeberg.org/Zamanhuseyinli/Linux-AI.git
 	md5sums = SKIP
 
 pkgname = plasma-system-ai

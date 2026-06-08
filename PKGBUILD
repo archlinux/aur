@@ -6,11 +6,11 @@ pkgver=1.0.o1
 pkgrel=1
 pkgdesc="Plasma-supported structure for an AI-based Linux system"
 arch=('any')
-url="https://github.com/Zamanhuseyinli/Linux-AI"
+url="https://codeberg.org/Zamanhuseyinli/Linux-AI"
 license=('GPL2')
 depends=('python' 'python-setuptools')
 makedepends=('git')
-source=("git+https://github.com/Zamanhuseyinli/Linux-AI.git#branch=main")
+source=("git+https://codeberg.org/Zamanhuseyinli/Linux-AI.git")
 md5sums=('SKIP')
 
 pkgver() {
