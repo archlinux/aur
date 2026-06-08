@@ -1,6 +1,6 @@
 # Maintainer: Trần Xuân Nhật  <xuannhat123456789@gmail.com>
 pkgname=gytm-git
-pkgver=r137.d19f033
+pkgver=r81.d19f033
 pkgrel=2
 pkgdesc="Minimal TUI based music streaming app for Youtube Music"
 arch=('x86_64')
@@ -14,9 +14,8 @@ source=("${pkgname%-git}::git+${url}.git#branch=main")
 sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  local _last_code_commit=$(git log -1 --format="%H" -- . ':(exclude)*.md' ':(exclude).github/*')
-  local _count=$(git rev-list --count $_last_code_commit)
-  local _short=$(git rev-parse --short=7 $_last_code_commit)
+  local _count=$(git rev-list --count HEAD -- . ':(exclude)*.md' ':(exclude).github/*')
+  local _short=$(git log -1 --format="%h" -- . ':(exclude)*.md' ':(exclude).github/*')
   printf "r%s.%s" "$_count" "$_short"
 }
 prepare() {
