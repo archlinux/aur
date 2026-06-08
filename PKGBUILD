@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deepchat-bin
 _pkgname=DeepChat
-pkgver=1.0.4
+pkgver=1.0.5
 _electronversion=40
 pkgrel=1
 pkgdesc="A smart assistant that connects powerful AI to your personal world.(Prebuilt version.Use system-wide electron)"
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dbbbf26ab3b2caf7726d70e556d9bc3d1c2190b822ebab40827ef09ae225e537'
+sha256sums=('d7b861b5c7ce79627e5c51f627bfacf69507cd07e4d7a4944c956438e21b76ee'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -68,6 +68,7 @@ prepare() {
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources/app.asar.unpacked" -type d \( -name "darwin" -o -name "win32" \) -exec rm -rf {} +
     find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} +
+    rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/classic-level/prebuilds/"{android-*,darwin-*,win32-*,linux-arm*}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
