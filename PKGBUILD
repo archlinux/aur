@@ -1,6 +1,6 @@
 pkgname=lug-wine-tkg-staging-experimental-wayland-git
 pkgver=11.10
-pkgrel=6
+pkgrel=7
 pkgdesc="Wine runner based on TKG builds + staging + experimental patches for Star Citizen (forces native Wine Wayland driver)"
 arch=('x86_64')
 url="https://github.com/starcitizen-lug/lug-wine-experimental"
@@ -26,14 +26,9 @@ source=("${pkgname}-${pkgver}-1.tar.gz::https://github.com/starcitizen-lug/lug-w
 sha256sums=('1a0e312edc241d95fb4ececc01b9e05cbead9a0ff16059e950a644ffdafcf9ae')
 
 package() {
-  mkdir -p "${pkgdir}/opt/${pkgname}"
-  cp -r "${srcdir}/${pkgname}-${pkgver}-1"/* "${pkgdir}/opt/${pkgname}/"
+  cd "${srcdir}/${pkgname}-${pkgver}-1"
 
-  # Create standard wine symlinks in /usr/bin/
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/bin/wine" "${pkgdir}/usr/bin/wine"
-  ln -s "/opt/${pkgname}/bin/wine64" "${pkgdir}/usr/bin/wine64"
-  ln -s "/opt/${pkgname}/bin/winecfg" "${pkgdir}/usr/bin/winecfg"
-  ln -s "/opt/${pkgname}/bin/wineserver" "${pkgdir}/usr/bin/wineserver"
-  ln -s "/opt/${pkgname}/bin/wineboot" "${pkgdir}/usr/bin/wineboot"
+  # Install to /usr
+  install -d "${pkgdir}/usr"
+  cp -dr bin include lib share "${pkgdir}/usr/"
 }
