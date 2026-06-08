@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=0.1.0
+Type=Application
+Name=OmniGlyph
+Comment=Emoji and Unicode symbol picker
+Exec=omniglyph
+Icon=omniglyph
+Terminal=false
+Categories=Utility;
+Keywords=emoji;symbol;unicode;picker;
+StartupNotify=false
