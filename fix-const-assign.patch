@@ -1,0 +1,48 @@
+--- iup/src/mot/iupmot_font.c
++++ iup/src/mot/iupmot_font.c
+@@ -37,14 +37,18 @@
+ static int motGetFontSize(const char* font_name)
+ {
+   int i = 0;
++  int size;
++  char *fn = strdup(font_name);
+   while (i < 8)
+   {
+-    font_name = strchr(font_name, '-')+1;
++    fn = strchr(fn, '-')+1;
+     i++;
+   }
+ 
+-  *(strchr(font_name, '-')) = 0;
+-  return atoi(font_name);
++  *(strchr(fn, '-')) = 0;
++  size = atoi(fn);
++  free(fn);
++  return size;
+ }
+ 
+ static XFontStruct* motLoadFont(const char* foundry, const char *typeface, int size, int bold, int italic, char *xlfd)
+--- iup/src/mot/iupmot_fontdlg.c
++++ iup/src/mot/iupmot_fontdlg.c
+@@ -78,14 +78,18 @@
+ static int motGetFontSize(const char* font_name)
+ {
+   int i = 0;
++  int size;
++  char * fn = strdup(font_name);
+   while (i < 8)
+   {
+-    font_name = strchr(font_name, '-')+1;
++    fn = strchr(fn, '-')+1;
+     i++;
+   }
+ 
+-  *(strchr(font_name, '-')) = 0;
+-  return atoi(font_name)/10;  /* deci-points to points */
++  *(strchr(fn, '-')) = 0;
++  size = atoi(fn)/10;  /* deci-points to points */
++  free(fn);
++  return size;
+ }
+ 
+ static int motFontDlgCompareSize(const void *a, const void *b)
