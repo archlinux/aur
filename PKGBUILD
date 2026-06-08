@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=orchestrator
-pkgver=3.2.6.21
+pkgver=3.2.6.22
 pkgrel=1
 pkgdesc='MySQL replication topology management and HA'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(glibc bash)
 makedepends=('go')
 options=(!lto)
 source=("$pkgname-${pkgver%.*}-${pkgver##*.}.tar.gz::$url/archive/refs/tags/v${pkgver%.*}-${pkgver##*.}.tar.gz")
-sha256sums=('9dceea9e30a246b2e6cbb26a34346666c35aff5a85f312c8ced7e19553ab0a41')
+sha256sums=('f780ac7a1df94bd6ef1917663c4803beca168486511e70334da006725b113954')
 
 prepare() {
   cd "$pkgname-${pkgver%.*}-${pkgver##*.}"
