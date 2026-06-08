@@ -12,7 +12,7 @@ depends=()
 makedepends=('dpkg')
 provides=('sipgate')
 conflicts=('sipgate-app-clinq')
-options=('!debug')
+options=('!debug' '!strip')
 source=(
 	"https://desktop.download.sipgate.com/${_distfile}"
 	"run-sipgate-desktop.sh"

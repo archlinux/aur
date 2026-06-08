@@ -10,6 +10,7 @@ pkgbase = sipgate
 	conflicts = sipgate-app-clinq
 	noextract = sipgate-2.39.6-amd64.deb
 	options = !debug
+	options = !strip
 	source = https://desktop.download.sipgate.com/sipgate-2.39.6-amd64.deb
 	source = run-sipgate-desktop.sh
 	b2sums = 3f6b909f4e655ff47fae2e4c9fe27d0f13372cda56d07193cb152ed7f9ec2da2192fcadaa44173f75d984924216d9f768ad62dac9882c49b7046d0bf8ba12bcf
