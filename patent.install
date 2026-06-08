@@ -1,0 +1,14 @@
+post_install() {
+    cat <<'EOF'
+==> Shell completion support is available.
+
+Append completion to your shell config:
+  patent --completions "$SHELL" >> ~/.$(basename "$SHELL")rc
+
+Restart your shell or source the config file to apply changes.
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
