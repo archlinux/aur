@@ -1,6 +1,6 @@
-# Maintainer: aman-sanin
+# Maintainer: Your Name <your_email@example.com>
 pkgname=phantimer
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A ghost timer window spawner for Hyprland"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'hyprland') # Hyprland is a runtime dependency
 optdepends=('foot: The default terminal emulator used')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7cb26c501570443c92043f5aacff3a174f25def189564bd001f26674b6613d41')
+sha256sums=('ee2df305f4fb4958af6f9a0ef54d37fb622324fe9d6c7295f3375c100998d9ab')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -40,4 +40,6 @@ package() {
   # Install the license (Required by Arch policy)
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
+  # (Optional) Install README if you want
+  #install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
