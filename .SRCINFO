@@ -1,6 +1,6 @@
 pkgbase = kubescape
 	pkgdesc = An open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters.
-	pkgver = 4.0.5
+	pkgver = 4.0.9
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/kubescape/kubescape
@@ -15,7 +15,7 @@ pkgbase = kubescape
 	makedepends = go>=2:1.20.0
 	provides = kubescape
 	conflicts = kubescape-bin
-	source = https://github.com/kubescape/kubescape/archive/v4.0.5/kubescape-4.0.5.tar.gz
-	sha512sums = c35cfcbd685b79430a3d060889833d78372b555a51467c6c41afa395832496db7c9e6f1b45a7bb7125b0a7f32b32a5d39ab949a128eb1ba4d8eb65d2169c8a72
+	source = https://github.com/kubescape/kubescape/archive/v4.0.9/kubescape-4.0.9.tar.gz
+	sha512sums = 3bf68cb6acf19a68344d2b8f5397b743a80a16886e4b51a7b21415d30c334e422106f3e276d737f2b05689a9cb8f82291196c1bc248afb65aeb357e4ce50e1e1
 
 pkgname = kubescape
