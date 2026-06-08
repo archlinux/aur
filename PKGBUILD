@@ -1,7 +1,7 @@
 # Maintainer: Asset Hoard <support@assethoard.com>
 pkgname=asset-hoard-bin
 _pkgname=asset-hoard
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="Game asset manager for organizing models, textures, sprites, and audio"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "https://releases.assethoard.com/v${pkgver}/asset-hoard_${pkgver}_x86_64.pkg.tar.zst"
   "https://releases.assethoard.com/v${pkgver}/asset-hoard_${pkgver}_x86_64.pkg.tar.zst.sig"
 )
-sha256sums=('0cd85d09f292847ee07de741e46ca8499beb04d36111899ddad0e53701acb59b' 'SKIP')
+sha256sums=('950e86a41cad898e049151128728962b469873ede55ec8e76a77b92f53cc360c' 'SKIP')
 validpgpkeys=('2FE350A912F4525659E418CAA9B027A1392E7305')
 options=('!strip')
 
