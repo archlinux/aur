@@ -1,7 +1,7 @@
 # Maintainer: Sven Nobis <aur@sven.to>
 
 pkgname=gardenlogin-bin
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='gardenlogin is kubectl credential plugin for Gardener K8s shoot cluster admin authentication.'
 url='https://github.com/gardener/gardenlogin'
