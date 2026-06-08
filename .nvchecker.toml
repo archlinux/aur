@@ -1,0 +1,5 @@
+[bruno]
+source = "github"
+use_latest_release = true
+github = "usebruno/bruno"
+prefix = "v"
