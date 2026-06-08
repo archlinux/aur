@@ -1,0 +1,13 @@
+pkgbase = ggf
+	pkgdesc = Great Go Fetch (ggf) - fast system info fetch utility for Linux
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/pyndys/ggf
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = ggf-0.2.1.tar.gz::https://github.com/pyndys/ggf/archive/refs/tags/v0.2.1.tar.gz
+	b2sums = 0d2691b69f17f0add359a409f5fccbd583046e3fd84cdc2eb86e4520a1b4c16fbfb16230268689fdbe4cb33816812a2716badd1385426654a37760e4388e2578
+
+pkgname = ggf
