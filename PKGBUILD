@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=bandcampsync
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Downloads your Bandcamp purchases automatically'
 arch=(any)
@@ -24,8 +24,8 @@ checkdepends=(
   python-pytest-mock
 )
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha512sums=('469357c4a0c8502041739f80d67536477f87267455394ecc6ad3c78f795807f619736e36e96ea1c00c33b14c555d43ec6ca9a7c22fa5e1f0688a6da2183cb230')
-b2sums=('54658ed00e356af311b08569e0944c53685e7364f7352fd5c13cf9eb2dbe46de675994c848e73b2fa010a426b189f9b1b3886305737a35aab186dd702f85c0e2')
+sha512sums=('9cb2cfedf648f03db2e733f153927be3737385e0325dd9a807aebe545828538f1ec9b785960349011744bfc91f9099e54c70709a744cd64fedf926fd9c342861')
+b2sums=('ecba46a323cd608da333c6e112eaa3adb0d68700fa81da4bd75ee88abb962283c14237af62907ec916ed7388a8bdf240fcb5f37e05a100ef3c01930b540c03cf')
 
 build() {
   cd "$pkgname"
