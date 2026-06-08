@@ -2,7 +2,7 @@
 # https://github.com/AshBuk/dabri
 
 pkgname=dabri
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Offline speech-to-text desktop application using Whisper"
 arch=('x86_64')
@@ -46,7 +46,7 @@ source=(
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    '1d08658438c11de850d24f9bb16190d9a60bc9cbdf595543ebaccb93775105b6'
+    '78a7d9a82f3192df3966b87caa8d299c8eec51638292208e2e4a113ece14dcb2'
     'f8e632016ceae556f3132a16c7f704be1e7715595041f474fa81a2b64c1abf7c'
 )
 
@@ -99,7 +99,7 @@ build() {
     export LD_LIBRARY_PATH="${PWD}/lib"
 
     go build -v \
-        -tags systray \
+        -tags systray,gtk \
         -ldflags "-s -w -X github.com/AshBuk/dabri/v2/internal/version.Version=${pkgver} -linkmode=external -extldflags '-Wl,-rpath,/usr/lib/${pkgname}'" \
         -o "${pkgname}" \
         ./cmd/dabri
