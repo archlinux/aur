@@ -375,10 +375,16 @@ class RcloneKdeApp(QMainWindow):
                 "# Execute rclone mount with optimized VFS caching and buffer limits for stream performance\n"
                 "rclone mount \"$REMOTE\" \"$MOUNT_PATH\" \\\n"
                 "  --vfs-cache-mode full \\\n"
-                "  --dir-cache-time 72h \\\n"
-                "  --buffer-size 128M \\\n"
-                "  --vfs-read-chunk-size 32M \\\n"
-                "  --vfs-read-chunk-size-limit off\n"
+                "  --vfs-cache-max-size 50G \\\n"    # Cap the disk usage to 50GB (adjust to your disk)
+                "  --vfs-cache-max-age 24h \\\n"    # Remove cache files older than 24 hours
+                "  --dir-cache-time 72h \\\n"       # Keep directory metadata in RAM longer
+                "  --buffer-size 64M \\\n"          # Lower individual buffer to save total RAM
+                "  --vfs-read-ahead 128M \\\n"      # Pre-fetch data for smoother reading
+                "  --attr-timeout 1h \\\n"          # Cache file attributes longer
+                "  --fast-list \\\n"                # Speeds up directory listing
+                "  --poll-interval 1m \\\n"         # Sync changes from cloud every minute
+                "  --daemon"                        # Run in background
+                #"  --vfs-read-chunk-size-limit off\n"
             )
             self.text_script.setPlainText(script_content)
             

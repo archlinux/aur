@@ -24,3 +24,11 @@ Fixed
 FUSE Overlap Prevention: Implemented automatic clearing of the "Mount Path" field when switching between different remotes to ensure users do not accidentally target an incorrect or currently mounted directory.
 
 Concurrency Handling: Refined background worker thread logic to ensure cleaner process termination and unmount sequences.
+
+
+[1.4] - 2026-06-15
+
+Added
+Enhanced VFS Caching: Updated the generated mount script to include optimized VFS caching parameters, such as --vfs-cache-max-size, --vfs-cache-max-age, and --buffer-size, to improve performance when streaming media files from cloud storage.
+Added --fast-list and --poll-interval options to the mount script for faster directory listing and more responsive updates when changes occur in the cloud storage.
+Added comments in the generated script to explain the purpose of each rclone option for better user understanding
