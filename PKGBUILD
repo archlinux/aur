@@ -1,7 +1,7 @@
 # Maintainer: nsprd <nsprd@pm.me>
 
 pkgname=gephi-git
-pkgver=0.11.1.r9296.53c9936dd
+pkgver=0.11.2.r9507.93e138cfb
 pkgrel=1
 pkgdesc="An open-source network visualization and analysis tool (git version)"
 arch=('any')
