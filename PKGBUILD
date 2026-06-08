@@ -2,7 +2,7 @@
 
 # SPDX-License-Identifier:  0BSD
 pkgname=kubectl-rook-ceph
-pkgver=0.9.4
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='kubectl plugin for managing Rook Ceph'
 arch=('x86_64')
@@ -11,9 +11,9 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('178b12b7beb225243cdedc7bb43b7ae7b475c9ab365b23f4a785d5a4ff75042f')
-sha512sums=('fc23e6a59000917ce40cafd553cbd246e21f336eaf873d47136f28ea342b628e0e761cff5f0d2fe7affc77467f67c37a709ae03ecbeeabe2c537022124ad1b15')
-b2sums=('2af021c5dae0304cbd126012dbadef916932db7ebce79d17d4b681627464d2bf1adebcd603f32979c0b5b4586621fcf5915e4fd65a9c761737ed2be75f920994')
+sha256sums=('5e580a42f1fda40a0ec4db0af24bc09f2ec0fcb02393ffb6ba2d7b08ea5c99e2')
+sha512sums=('5612e77a5e3b2a2f357f574b7834b9c0dab2e1cdd7a56dc8425733a85801513539ccc51fe62dd2d1efb924467de98b027a90ed282e6e0baefd2d461506d8827f')
+b2sums=('e789eda349b628c65b4a8b090d6d55dc2167316e6efd721357963f7daa4436e75633023675d4b52c00bf25e11908e52173e1d631e39e1e6c9741469198f9ed1b')
 
 build() {
   cd "${pkgname}-${pkgver}"
