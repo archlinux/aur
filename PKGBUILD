@@ -1,7 +1,7 @@
 # Maintainer: isra <israelzermeno82@gmail.com>
 pkgname=dmgr-desktop
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern device manager for Linux — Tauri + React (devices, drivers, audio, Bluetooth, kernel modules)"
 arch=('x86_64')
 url="https://github.com/Khinmmad/dmgr"
@@ -24,11 +24,11 @@ build() {
     cd "$srcdir/dmgr-$pkgver/desktop"
     npm install
     npm run build
-    cargo build --release --locked --manifest-path src-tauri/Cargo.toml
+    cargo build --release --manifest-path src-tauri/Cargo.toml
 
     # Privileged helper from the root workspace.
     cd "$srcdir/dmgr-$pkgver"
-    cargo build --release --locked -p dmgr-polkit-helper
+    cargo build --release -p dmgr-polkit-helper
 }
 
 package() {
