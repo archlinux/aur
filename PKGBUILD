@@ -1,8 +1,8 @@
 # Maintainer: Simonqvq <simon@outlook.com>
 
 pkgname=plymouth-theme-arch-slider-and-glow
-pkgver=r8.1e9fed9
-pkgrel=1
+pkgver=1
+pkgrel=3
 pkgdesc="Arch Linux themed Plymouth animation"
 url="https://github.com/SimonQvQ/ArchSliderGlowPlymouth"
 license=('MIT')
