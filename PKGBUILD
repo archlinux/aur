@@ -2,7 +2,7 @@
 # Maintainer: Monax (SMNX) <github.com/sleepy-monax>
 
 pkgname="paper-muncher-git"
-pkgver=0.2.2
+pkgver=0.3.1_1
 provides=("paper-muncher")
 conflicts=("paper-muncher")
 pkgrel=1
@@ -17,7 +17,7 @@ md5sums=("SKIP")
 
 pkgver() {
     cd paper-muncher
-    jq -r '.version' project.json | sed "s/^v//"
+    jq -r '.version' project.json | sed 's/^v//;s/-/_/g'
 }
 
 build() {
