@@ -2,10 +2,10 @@
 # Co-Maintainer: Lysec <itslysec@gmail.com>
 pkgname=noctalia-shell
 pkgver=4.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell."
 arch=('any')
-url="https://github.com/noctalia-dev/noctalia-shell"
+url="https://github.com/noctalia-dev/noctalia"
 license=('MIT')
 makedepends=('git')
 depends=(
