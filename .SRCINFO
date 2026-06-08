@@ -1,0 +1,16 @@
+pkgbase = trayd-git
+	pkgdesc = Minimalistic Wayland system tray daemon with IPC socket
+	pkgver = r44.g40f79ae
+	pkgrel = 1
+	url = https://github.com/Gigas002/trayd
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	depends = dbus
+	provides = trayd
+	conflicts = trayd
+	source = trayd::git+https://github.com/Gigas002/trayd.git
+	b2sums = SKIP
+
+pkgname = trayd-git
