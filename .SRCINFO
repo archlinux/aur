@@ -1,7 +1,7 @@
 pkgbase = dwex
 	pkgdesc = GUI viewer for DWARF debug information
 	pkgver = 4.80
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sevaa/dwex
 	arch = x86_64
 	license = BSD-3-Clause
@@ -14,9 +14,11 @@ pkgbase = dwex
 	source = https://github.com/sevaa/dwex/archive/refs/tags/4.80.tar.gz
 	source = dwex.png
 	source = dwex.desktop
+	source = 237e5d4f2fe93c72a1b09332d73cb52d871d220d.patch
 	sha256sums = 96ec745235ecae021cd0db62f896a21ecdd46495795fdb713fa714c6f9a508ac
 	sha256sums = a4ee32a394ab111786d1d296ad611a4cda4fdb56d9470531d71b3c7f8b922a2d
 	sha256sums = d92d16891381310a4b18cc8ae59a1a0ac99a07ca80599a7e3c003970622ba03f
 	sha256sums = 155036828925419fe6ab40d600d5e5ada249e1b47095d17bddf7aa694a0cdb6d
+	sha256sums = 357f80648cebcf8f2b757fc5609c1f7fd175673c658239fed5cbb30a958c97bc
 
 pkgname = dwex
