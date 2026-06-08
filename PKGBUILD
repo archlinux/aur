@@ -19,9 +19,8 @@ pkgver() {
 build() {
   cd "$srcdir/sharkscript-standalone"
   export CGO_ENABLED=0
-  export GOFLAGS="-mod=readonly"
   go mod tidy
-  go build -o shs main.go
+  go mod download && go mod download && go build -trimpath -ldflags="-s -w" -trimpath -ldflags="-s -w" -o shs main.go
 }
 
 package() {
