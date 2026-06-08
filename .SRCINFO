@@ -2,7 +2,7 @@ pkgbase = wasma-git
 	pkgdesc = Window Assigment System Monitoring Advanced (git)
 	pkgver = r85.g962966d
 	pkgrel = 1
-	url = https://github.com/Azencorporation/Wasma
+	url = https://codeberg.org/Azencorporation/Wasma
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
@@ -14,7 +14,7 @@ pkgbase = wasma-git
 	depends = libxkbcommon
 	provides = wasma
 	conflicts = wasma
-	source = git+https://github.com/Azencorporation/Wasma.git
+	source = git+https://codeberg.org/Azencorporation/Wasma.git
 	sha256sums = SKIP
 
 pkgname = wasma-git
