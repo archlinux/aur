@@ -2,9 +2,8 @@
 # Maintainer: snowdropQwQ <xpecnh2n@gmail.com>
 
 pkgname=micyou-bin
-_pkgver=1.3.4hotfix
-pkgver=1.3.4
-pkgrel=2
+pkgver=1.3.5
+pkgrel=1
 pkgdesc="Turn your Android device into a high-quality wireless microphone for your PC"
 arch=('x86_64')
 url="https://github.com/LanRhyme/MicYou"
@@ -17,15 +16,15 @@ optdepends=(
 provides=('micyou')
 conflicts=('micyou')
 options=('!strip')
-source=("https://github.com/LanRhyme/MicYou/releases/download/v${_pkgver}/MicYou-Linux-${_pkgver}.deb")
-sha256sums=('71651b8b04c21d3865a0638a1558f14a16444dccb39281be633882f2acc20caa')
-noextract=("MicYou-Linux-${_pkgver}.deb")
+source=("https://github.com/LanRhyme/MicYou/releases/download/v${pkgver}/MicYou-Linux-${pkgver}.deb")
+sha256sums=('b5137f85bb5d1f134af0ec52015975160a16c9e24a24a42408b1a262a0e740f6')
+noextract=("MicYou-Linux-${pkgver}.deb")
 
 package() {
     cd "$srcdir"
     
     # Extract deb
-    bsdtar -xf MicYou-Linux-${_pkgver}.deb
+    bsdtar -xf MicYou-Linux-${pkgver}.deb
     bsdtar -xf data.tar.zst -C "$pkgdir"
     
     # Install desktop file
