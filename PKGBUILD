@@ -20,6 +20,7 @@ build() {
   cd "$srcdir/sharkscript-standalone"
   export CGO_ENABLED=0
   export GOFLAGS="-mod=readonly"
+  go mod tidy
   go build -o shs main.go
 }
 
