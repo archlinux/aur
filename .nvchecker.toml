@@ -1,0 +1,5 @@
+[vcluster]
+source = "github"
+use_latest_release = true
+github = "loft-sh/vcluster"
+prefix = "v"
