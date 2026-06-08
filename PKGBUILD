@@ -5,12 +5,12 @@ _binname=junie
 provides=('junie')
 conflicts=('junie')
 
-pkgver=1231.2
+pkgver=1892.12
 pkgrel=1
 pkgdesc="Junie command‑line client"
 arch=('x86_64' 'aarch64')
 options=('!strip' 'staticlibs')
-url="https://github.com/jetbrains-junie/junie"
+url="https://github.com/jetbrains/junie"
 
 license=('LicenseRef-Junie')
 # License details: https://www.jetbrains.com/legal/docs/terms/jetbrains-junie/
@@ -37,7 +37,7 @@ depends=(
 makedepends=('git' 'unzip' 'curl' 'jq')
 optdepends=()
 
-source=("$pkgname::git+https://github.com/jetbrains-junie/junie.git"
+source=("$pkgname::git+https://github.com/jetbrains/junie.git"
         'LICENSE')
 sha512sums=('SKIP'
             'SKIP')
