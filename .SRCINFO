@@ -26,8 +26,8 @@ pkgbase = chiri
 	depends = libsoup3
 	depends = pango
 	depends = webkit2gtk-4.1
-	replaces = caldav-tasks
 	conflicts = caldav-tasks
+	replaces = caldav-tasks
 	options = !strip
 	options = !emptydirs
 	source = git+https://github.com/chiriapp/chiri.git#tag=app-v0.9.0
