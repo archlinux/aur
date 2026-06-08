@@ -1,0 +1,20 @@
+post_install() {
+    # Automatically register 7sh into the system's valid shells list
+    if ! grep -q "^/usr/bin/7sh$" /etc/shells; then
+        echo ">> Registering 7sh into /etc/shells..."
+        echo "/usr/bin/7sh" >> /etc/shells
+    fi
+    echo ">> Installation successful! You can now switch to 7sh using: chsh -s /usr/bin/7sh"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # Clean up and remove 7sh from allowed shells upon uninstallation
+    if grep -q "^/usr/bin/7sh$" /etc/shells; then
+        echo ">> Removing 7sh from /etc/shells..."
+        sed -i '\|^/usr/bin/7sh$|d' /etc/shells
+    fi
+}
