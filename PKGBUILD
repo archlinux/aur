@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=axonops-workbench-bin
 _pkgname=AxonOps.Workbench
-pkgver=1.0.8
-_electronversion=37
+pkgver=1.1.0
+_electronversion=41
 pkgrel=1
 pkgdesc="A desktop application built for Cassandra DB developers and DBAs.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -25,12 +25,28 @@ options=(
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
-sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('a2660189c4013abf171c012019fbf9af71ddb3cb73457df837fe2cdd7e721a83')
-sha256sums_x86_64=('ad89b1f86a91344f12995958756703c295d0fbc83e2684bfad483c9d4b867842')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/opt/${_pkgname//./ }/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums_aarch64=('ab5a4362a6160855c12862da4bd501d604bb1803562844145f3130e9ed3fcde7')
+sha256sums_x86_64=('88c0d9ff681ecf64415bb3ead3500089f7794e063174184747b7de55e452d1fb')
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _main_exe=""
+    if [[ -n "${_app_dir}" ]]; then
+        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
+    fi
+    if [[ -n "${_main_exe}" ]]; then
+        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
+        if [[ -n "${_elec_ver}" ]]; then
+            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+            else
+                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+            fi
+        fi
+    else
+        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
+    fi
 }
 prepare() {
     sed -i -e "
@@ -38,9 +54,8 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    _get_electron_version
+    _check_electron_version
     sed -i -e "
         s/\"\/opt\/${_pkgname//./ }\/${pkgname%-bin}\"/${pkgname%-bin}/g
         s/\/usr\/share\/icons\/hicolor\/256x256\/apps\/${pkgname%-bin}.png/${pkgname%-bin}/g
@@ -48,12 +63,14 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname//./ }/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname//./ }/resources/"{app.asar.unpacked,config,data,main} "${pkgdir}/usr/lib/${pkgname%-bin}"
-    _icon_sizes=(16x16 32x32 128x128 512x512 1024x1024)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
