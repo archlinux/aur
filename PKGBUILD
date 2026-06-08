@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.8.135.r7.gfd0ae0c
+pkgver=0.8.135.r13.gfeac623
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -59,17 +59,32 @@ prepare() {
 }
 
 build() {
-	cd build
-	../$_pkgname/configure \
-		--audio-drv-list="sdl" \
-		--disable-docs \
-		--disable-download \
-		--disable-werror \
-		--enable-pie \
-		--extra-cflags="-DXBOX=1" \
-		--ninja="$NINJA" \
-		--target-list="i386-softmmu" \
+	local options=(
+		--audio-drv-list="sdl"
+		--disable-docs
+		--disable-download
+		--disable-werror
+		--enable-pie
+		--extra-cflags="-DXBOX=1"
+		--ninja="$NINJA"
+		--target-list="i386-softmmu"
 		-Dbuildtype=plain
+	)
+	local flags
+	IFS=\  read -r -a flags <<< "$CFLAGS"
+	local defines
+	defines=$(echo | gcc "${flags[@]}" -dM -E -)
+	if grep -q __AVX512F__ <<< "$defines"; then
+		options+=(-Dx86_version=4)
+	elif grep -q __AVX2__ <<< "$defines"; then
+		options+=(-Dx86_version=3)
+	elif grep -q __SSE4_2__ <<< "$defines"; then
+		options+=(-Dx86_version=2)
+	else
+		options+=(-Dx86_version=1)
+	fi
+	cd build
+	../$_pkgname/configure "${options[@]}"
 	make qemu-system-i386
 }
 
@@ -89,6 +104,7 @@ package() {
 		'libxxhash.so'
 		'libz.so'
 	)
+
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	install -Dm755 ../build/qemu-system-i386 "$pkgdir"/usr/bin/$_pkgname
