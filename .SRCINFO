@@ -1,7 +1,7 @@
 pkgbase = python-flask-sqlalchemy-lite
 	pkgdesc = Integrate SQLAlchemy with Flask
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://flask-sqlalchemy-lite.readthedocs.io
 	arch = any
 	license = MIT

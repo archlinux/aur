@@ -2,7 +2,7 @@
 pkgname=python-flask-sqlalchemy-lite
 _pkgname=flask-sqlalchemy-lite
 pkgver='0.2.1'
-pkgrel=2
+pkgrel=3
 pkgdesc="Integrate SQLAlchemy with Flask"
 url="https://flask-sqlalchemy-lite.readthedocs.io"
 depends=(python-flask python-sqlalchemy python-asgiref)
@@ -15,7 +15,7 @@ sha256sums=('3df9f83b94b6cbd6d74667180615f38062f67002ffa31779f48e8baf34388f69')
 
 build() {
     cd "${_pkgname}-${pkgver}"
-    python -m build -wn
+    python -m build -wnx
 }
 
 package() {
