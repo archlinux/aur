@@ -1,7 +1,7 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 
 pkgname=libosmscout-git
-pkgver=r8217.74095f1
+pkgver=r8884.412f958
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/Framstag/libosmscout'
@@ -38,7 +38,7 @@ provides=(${pkgname%-git})
 source=("git+https://github.com/Framstag/libosmscout"
         '0001-dont-install-demos-and-tests.patch')
 sha256sums=('SKIP'
-            '7228c3d78463504148d5808d642167519466eb4269b41db767924e9602bfbd78')
+            'e38866d9740d698173fd2aade8254b16cac82ca6c06820a4dd68c6d4099def49')
 prepare() {
     cd libosmscout
 
