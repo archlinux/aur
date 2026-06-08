@@ -1,7 +1,7 @@
 diff --unified --recursive --text a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt	2022-11-09 13:37:21.000000000 +0100
-+++ b/CMakeLists.txt	2026-06-08 16:04:51.560324198 +0200
-@@ -37,8 +37,6 @@
++++ b/CMakeLists.txt	2026-06-08 16:16:59.083463389 +0200
+@@ -49,8 +49,6 @@
  # The library is pre-built and located in src/simplification/
  find_library(RDP_LIBRARY
    NAMES rdp librdp
@@ -10,7 +10,7 @@ diff --unified --recursive --text a/CMakeLists.txt b/CMakeLists.txt
    REQUIRED
  )
  message(STATUS "Found RDP library: ${RDP_LIBRARY}")
-@@ -60,21 +58,3 @@
+@@ -72,21 +70,3 @@
  
  # Install the extension module
  install(TARGETS cutil DESTINATION ${SKBUILD_PROJECT_NAME})
@@ -32,9 +32,10 @@ diff --unified --recursive --text a/CMakeLists.txt b/CMakeLists.txt
 -# Install header file
 -install(FILES ${SIMPLIFICATION_SRC_DIR}/header.h
 -        DESTINATION ${SKBUILD_PROJECT_NAME})
+Only in b: CMakeLists.txt.orig
 diff --unified --recursive --text a/src/simplification/rdp_p.pxd b/src/simplification/rdp_p.pxd
 --- a/src/simplification/rdp_p.pxd	2022-11-09 13:37:21.000000000 +0100
-+++ b/src/simplification/rdp_p.pxd	2026-06-08 16:01:43.255099308 +0200
++++ b/src/simplification/rdp_p.pxd	2026-06-08 16:16:59.083602092 +0200
 @@ -1,9 +1,9 @@
 -cdef extern from "header.h":
 +cdef extern from "/usr/include/librdp/header.h":
@@ -49,7 +50,7 @@ diff --unified --recursive --text a/src/simplification/rdp_p.pxd b/src/simplific
          size_t len
 diff --unified --recursive --text a/src/simplification/util.py b/src/simplification/util.py
 --- a/src/simplification/util.py	2022-11-09 13:37:21.000000000 +0100
-+++ b/src/simplification/util.py	2026-06-08 12:47:13.243957450 +0200
++++ b/src/simplification/util.py	2026-06-08 16:16:59.083708884 +0200
 @@ -9,7 +9,6 @@
  
  import os

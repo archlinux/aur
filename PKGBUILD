@@ -6,7 +6,7 @@ pkgdesc="Very fast Python LineString simplification using RDP or Visvalingam-Why
 url="https://github.com/urschrei/simplification"
 
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64")
 license=("LicenseRef-Blue-Oak-Model-License-1.0.0")
@@ -37,7 +37,7 @@ source=(
 )
 b2sums=(
     "f11d9ef27ac5b4e2578013d0b71b9078bf8f62ccef0526578cd540b5f047d84e06b21dad7a7cd436702b6f51270f449656408ff25c9079b27186e73ec5793a59"
-    "61e0867820e1e177d019b16b46aa3148a49496ea93723708e4204d90c8279c8636dfe7138d503532bdebcb6842354e61b85a889cd59006597028d3a7559a0515"
+    "6516fa24f87a6a6916b914281b809d11c32973eb8f44b839a1646a6a691d2e8a5227349b90f310f52a749ab3b445783dc832526a1ffcbf72297c5c90a8d51d07"
 )
 
 prepare() {
