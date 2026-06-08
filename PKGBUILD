@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction
 pkgname=humen-mcp-git
-pkgver=0.1.1.r0.g0000000
+pkgver=0.1.2.r0.g0000000
 pkgrel=1
 pkgdesc='Human-in-the-loop MCP server'
 arch=('x86_64')
@@ -11,12 +11,13 @@ makedepends=('bun' 'cargo' 'git')
 provides=('humen-mcp')
 conflicts=('humen-mcp')
 backup=('etc/humen-mcp.env')
+install=humen-mcp.install
 source=('git+https://github.com/LIghtJUNction/humen-mcp.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd humen-mcp
-  printf '0.1.1.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf '0.1.2.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
