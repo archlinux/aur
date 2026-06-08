@@ -5,13 +5,14 @@ _name=${pkgname#python-}
 pkgdesc="Very fast Python LineString simplification using RDP or Visvalingam-Whyatt"
 url="https://github.com/urschrei/simplification"
 
-pkgver=0.7.14
-pkgrel=3
+pkgver=0.7.16
+pkgrel=1
 
-arch=("any")
-license=("custom:Blue-Oak-Model-License-1.0.0")
+arch=("x86_64")
+license=("LicenseRef-Blue-Oak-Model-License-1.0.0")
 
 depends=(
+    "glibc"
     "librdp"
     "python"
     "python-numpy"
@@ -19,7 +20,9 @@ depends=(
 makedepends=(
     "cython"
     "python-build"
+    "python-cython-cmake"
     "python-installer"
+    "python-scikit-build-core"
     "python-setuptools-scm"
     "python-toml"
     "python-wheel"
@@ -33,8 +36,8 @@ source=(
     "system-wide-libraries.patch"
 )
 b2sums=(
-    "c3dd379a6d2f9c9c7c7b959c36f888d32ef5024c72af142952eb9b1ee3ef13ffb9169406198af6f86d7005ac74f28cfd43ef3caa9d79d1cd5712c17f37e59213"
-    "dabc6dbf3b1b18a87d6118b8a930ef489f82c39d133f601d7a997241e1442f4f08b22ab58af8507b5d569d0bda9aed5eaea28b96fbe35ed731eee4e92ccce608"
+    "f153fe7ff6420ca4462cf722227adfdcce43794994d7f75e2260c60214668b015b79cdb4597fd4b02eb2eba0e03a37e3386cca40de99c2edb35f611358c21ac0"
+    "61e0867820e1e177d019b16b46aa3148a49496ea93723708e4204d90c8279c8636dfe7138d503532bdebcb6842354e61b85a889cd59006597028d3a7559a0515"
 )
 
 prepare() {
@@ -49,9 +52,12 @@ build() {
 
 check() {
     cd "${srcdir}"/${_name}-${pkgver}
-    local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-    export PYTHONPATH="build/lib.linux-$CARCH-cpython-${python_version}"
-    python -m pytest .
+
+    local TEST_VENV="${srcdir}/test-venv"
+    python -m venv --system-site-packages "${TEST_VENV}"
+    "${TEST_VENV}"/bin/python -m installer dist/*.whl
+
+    "${TEST_VENV}"/bin/python -P -m pytest
 }
 
 package() {

@@ -1,84 +1,72 @@
-diff --unified --recursive --text a/setup.py b/setup.py
---- a/setup.py	2025-10-21 00:39:37.000000000 +0200
-+++ b/setup.py	2025-10-21 10:31:15.658954308 +0200
-@@ -5,40 +5,19 @@
- Created by Stephan Hügel on 2016-07-25
- """
- 
--import sys
--
- import numpy
- from Cython.Build import cythonize
- from setuptools import Extension, setup
- 
--# Set dynamic RPATH differently, depending on platform
--ldirs = []
--ddirs = []
--if "linux" in sys.platform:
--    # from http://stackoverflow.com/a/10252190/416626
--    # the $ORIGIN trick is not perfect, though
--    ldirs = ["-Wl,-rpath", "-Wl,$ORIGIN/"]
--    platform_lib = "librdp.so"
--if sys.platform == "darwin":
--    # You must compile your binary with rpath support for this to work
--    # RUSTFLAGS="-C rpath" cargo build --release
--    platform_lib = "librdp.dylib"
--    ldirs = ["-Wl,-rpath", "-Wl,@loader_path/"]
--if sys.platform == "win32":
--    ddirs = ["src/simplification/header.h"]
--    platform_lib = "rdp.dll"
--ddirs.append("header.h")
--
- 
- extension = Extension(
-     "simplification.cutil",
-     sources=["src/simplification/cutil.pyx"],
-     libraries=["rdp"],
--    depends=ddirs,
-+    depends=["/usr/include/librdp/header.h"],
-     language="c",
--    include_dirs=["src/simplification", numpy.get_include()],
--    library_dirs=["src/simplification"],
--    extra_link_args=ldirs,
-+    include_dirs=["/usr/include/librdp", numpy.get_include()],
-+    library_dirs=["/usr/lib"],
+diff --unified --recursive --text a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2022-11-09 13:37:21.000000000 +0100
++++ b/CMakeLists.txt	2026-06-08 16:04:51.560324198 +0200
+@@ -37,8 +37,6 @@
+ # The library is pre-built and located in src/simplification/
+ find_library(RDP_LIBRARY
+   NAMES rdp librdp
+-  PATHS ${SIMPLIFICATION_SRC_DIR}
+-  NO_DEFAULT_PATH
+   REQUIRED
  )
+ message(STATUS "Found RDP library: ${RDP_LIBRARY}")
+@@ -60,21 +58,3 @@
  
- extensions = cythonize(
-@@ -50,7 +29,7 @@
+ # Install the extension module
+ install(TARGETS cutil DESTINATION ${SKBUILD_PROJECT_NAME})
+-
+-# Install the shared library
+-if(APPLE)
+-  set(RDP_LIB_NAME "librdp.dylib")
+-elseif(UNIX)
+-  set(RDP_LIB_NAME "librdp.so")
+-elseif(WIN32)
+-  set(RDP_LIB_NAME "rdp.dll")
+-else()
+-  message(FATAL_ERROR "Unsupported platform: cannot determine RDP library name")
+-endif()
+-
+-install(FILES ${SIMPLIFICATION_SRC_DIR}/${RDP_LIB_NAME}
+-        DESTINATION ${SKBUILD_PROJECT_NAME})
+-
+-# Install header file
+-install(FILES ${SIMPLIFICATION_SRC_DIR}/header.h
+-        DESTINATION ${SKBUILD_PROJECT_NAME})
+diff --unified --recursive --text a/src/simplification/rdp_p.pxd b/src/simplification/rdp_p.pxd
+--- a/src/simplification/rdp_p.pxd	2022-11-09 13:37:21.000000000 +0100
++++ b/src/simplification/rdp_p.pxd	2026-06-08 16:01:43.255099308 +0200
+@@ -1,9 +1,9 @@
+-cdef extern from "header.h":
++cdef extern from "/usr/include/librdp/header.h":
+     struct ExternalArray:
+         void* data
+         size_t len
  
- setup(
-     package_data={
--        "simplification": [platform_lib],
-+        "simplification": ["librdp.so"],
-     },
-     ext_modules=[extension],
- )
+-cdef extern from "header.h":
++cdef extern from "/usr/include/librdp/header.h":
+     struct InternalArray:
+         void* data
+         size_t len
 diff --unified --recursive --text a/src/simplification/util.py b/src/simplification/util.py
---- a/src/simplification/util.py	2025-10-21 00:39:37.000000000 +0200
-+++ b/src/simplification/util.py	2025-10-21 10:32:44.481345820 +0200
-@@ -24,25 +24,7 @@
+--- a/src/simplification/util.py	2022-11-09 13:37:21.000000000 +0100
++++ b/src/simplification/util.py	2026-06-08 12:47:13.243957450 +0200
+@@ -9,7 +9,6 @@
+ 
+ import os
+ from ctypes import POINTER, Structure, c_double, c_size_t, c_void_p, cast, cdll
+-from subprocess import getoutput
+ from sys import platform
+ 
+ numpy_installed = True
+@@ -25,12 +24,7 @@
  extension = {"darwin": ".dylib", "win32": ".dll"}.get(platform, ".so")
  fpath = {"darwin": "", "win32": ""}.get(platform, os.path.join(file_path, ".libs"))
  
--# Python 3 check
--if version_info > (3, 0):
--    from subprocess import getoutput as spop
--
--    py3 = True
--else:
--    from subprocess import check_output as spop
--
--    py3 = False
--
 -try:
 -    lib = cdll.LoadLibrary(os.path.join(file_path, prefix + "rdp" + extension))
 -except OSError:
 -    # the Rust lib's been grafted by manylinux1
--    if not py3:
--        fname = spop(["ls", fpath]).split()[0]
--    else:
--        fname = spop(["ls %s" % fpath]).split()[0]
+-    fname = getoutput("ls %s" % fpath).split()[0]
 -    lib = cdll.LoadLibrary(os.path.join(file_path, ".libs", fname))
 +lib = cdll.LoadLibrary("/usr/lib/librdp.so")
  
