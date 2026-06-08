@@ -1,6 +1,6 @@
 pkgbase = niner
 	pkgdesc = Three-layer synthesized kick drum plugin (VST3, CLAP, Standalone)
-	pkgver = 0.7.8
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/hyperfocusdsp/niner
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = niner
 	provides = slammer
 	conflicts = slammer
 	replaces = slammer
-	source = niner-0.7.8.tar.gz::https://github.com/hyperfocusdsp/niner/archive/refs/tags/v0.7.8.tar.gz
-	sha256sums = 18fa3a9160a6503ba91c5424d07762600c32d016e3619dd98370b23c97b42e99
+	source = niner-1.0.0.tar.gz::https://github.com/hyperfocusdsp/niner/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 87b07eb619a2e4b30a5fd04787932191c92dba19f74b2d7aadb9731d0acfe5d4
 
 pkgname = niner
