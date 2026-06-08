@@ -2,7 +2,7 @@
 # Contributor: BALL Project
 
 pkgname=ballview
-pkgver=2.1.0
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="A free molecular modeling and molecular graphics tool with OpenGL visualization, molecular mechanics, and electrostatic calculations"
 arch=('x86_64')
