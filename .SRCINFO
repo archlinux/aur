@@ -1,0 +1,16 @@
+pkgbase = gnfetch
+	pkgdesc = A neofetch/fastfetch alternative that renders system info as a graphical card or ANSI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Hibryda/gnfetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	options = !lto
+	source = gnfetch-0.1.0.tar.gz::https://github.com/Hibryda/gnfetch/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 6e5644abdbe4d68f3f5f4fa29a77cdfc7085afce0fcedd306e0bb63b1e6c90d6
+
+pkgname = gnfetch
