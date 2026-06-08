@@ -4,13 +4,17 @@ pkgbase = n-dhcp4
 	pkgrel = 1
 	url = https://github.com/nettools/n-dhcp4
 	arch = x86_64
-	license = LGPL2.1
-	license = Apache
+	license = Apache-2.0 OR LGPL-2.1-or-later
 	makedepends = meson
 	makedepends = pkgconf
 	depends = glibc
-	source = git+https://github.com/nettools/n-dhcp4.git#tag=v1
-	sha256sums = SKIP
+	source = n-dhcp4-1.tar.gz::https://github.com/nettools/n-dhcp4/archive/refs/tags/v1.tar.gz
+	source = c-list-2e4b605c6217cd3c8a1ef773f82f5cc329ba650d.tar.gz::https://github.com/c-util/c-list/archive/2e4b605c6217cd3c8a1ef773f82f5cc329ba650d.tar.gz
+	source = c-siphash-7c42c592581906fef19458372b8db2b643278211.tar.gz::https://github.com/c-util/c-siphash/archive/7c42c592581906fef19458372b8db2b643278211.tar.gz
+	source = c-stdaux-11930d259212605a15430523472ef54e0c7654ee.tar.gz::https://github.com/c-util/c-stdaux/archive/11930d259212605a15430523472ef54e0c7654ee.tar.gz
+	sha256sums = 2ae4e4508d0293d7e438f1e6ea0ee62d2005d93f20af69e5bc47e1cd6d4a7caa
+	sha256sums = 291da93fae349429a7394fb0ccefb3c5362a250e5559404554f2d0fdd256ad50
+	sha256sums = 9f477499d2033e2b8488037778616bd13c3e6cf4ab7e86898893bdeb2fe02a10
+	sha256sums = 4e41125264fea030e0e468f783e6f7b74f937809e097e0259f03c334e1264cfd
 
 pkgname = n-dhcp4
-
