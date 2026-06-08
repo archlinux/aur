@@ -1,5 +1,5 @@
 pkgname=mingw-w64-sdl2_image
-pkgver=2.8.10
+pkgver=2.8.12
 pkgrel=1
 pkgdesc="SDL2 image libraries (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ depends=(mingw-w64-crt mingw-w64-sdl2 mingw-w64-libtiff mingw-w64-libjpeg-turbo 
 makedepends=(mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
 source=("https://github.com/libsdl-org/SDL_image/releases/download/release-$pkgver/SDL2_image-$pkgver.tar.gz")
-sha256sums=('ebc059d01c007a62f4b04f10cf858527c875062532296943174df9a80264fd65')
+sha256sums=('393f5efb50536ec13ca4f4affb69cc9966d3c3f969e6c5e701faddf9f9785381')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
