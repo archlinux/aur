@@ -1,7 +1,7 @@
 pkgbase = twitchmpv-git
 	pkgdesc = Wrapper bash script for streamlink in order to more simply watch twitch from the terminal.
 	pkgver = 0.0.1.r3.9002501
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aethar01/twitchmpv
 	arch = any
 	license = BSD-2-Clause
