@@ -1,12 +1,14 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 # Contributor: robertfoster
 
+: ${aur_llamacpp_build_universal:=false}
+
 pkgname=llama.cpp-git
-pkgver=b9169.r3.1348f67c58
+pkgver=b9554.r2.19bba67c1f
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
-url="https://github.com/ggerganov/llama.cpp"
+url="https://github.com/ggml-org/llama.cpp"
 license=("MIT")
 depends=(
   'gcc-libs'
@@ -16,6 +18,7 @@ depends=(
 makedepends=(
   'cmake'
   'git'
+  'ninja'
 )
 optdepends=(
   'python-huggingface-hub: convert_hf_to_gguf.py remote model downloads'
@@ -27,6 +30,7 @@ optdepends=(
   'python-tqdm: convert_hf_to_gguf.py GGUF helper support'
   'python-transformers: convert_hf_to_gguf.py tokenizer support'
   'python-yaml: convert_hf_to_gguf.py GGUF metadata support'
+  'rdma-core: RDMA transport for RPC backend'
 )
 conflicts=("${pkgname%%-git}" 'libggml' 'libggml-git')
 provides=("${pkgname%%-git}" 'libggml')
@@ -39,21 +43,51 @@ source=("${pkgname%%-git}::git+${url}"
 pkgver() {
   cd "${srcdir}/${pkgname%%-git}"
 
-  printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  cmake \
-    -B "${srcdir}/build" \
-    -S "${srcdir}/${pkgname%%-git}" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_FLAGS="${CFLAGS} -ffile-prefix-map=${srcdir}/=" \
-    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -ffile-prefix-map=${srcdir}/=" \
-    -DLLAMA_BUILD_TESTS=0 \
-    -DLLAMA_BUILD_WEBUI=0
+  local _commit_id _build_number
+  _commit_id=$(git -C "${srcdir}/${pkgname%%-git}" rev-parse HEAD)
+  _build_number=$(git -C "${srcdir}/${pkgname%%-git}" rev-list --count HEAD)
 
-  cmake --build build
+  local _cmake_options=(
+    -G Ninja
+    -B "${srcdir}/build"
+    -S "${srcdir}/${pkgname%%-git}"
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_C_FLAGS="${CFLAGS} -ffile-prefix-map=${srcdir}/="
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -ffile-prefix-map=${srcdir}/="
+    -DBUILD_SHARED_LIBS=ON
+    -DLLAMA_BUILD_TESTS=OFF
+    -DLLAMA_BUILD_NUMBER="${_build_number}"
+    -DLLAMA_BUILD_COMMIT="${_commit_id}"
+    -DLLAMA_OPENSSL=ON
+    -DGGML_LTO=ON
+    -DGGML_RPC=ON
+    -DGGML_OPENMP=ON
+    -Wno-dev
+  )
+
+  if [[ ${aur_llamacpp_build_universal} == true ]]; then
+    _cmake_options+=(
+      -DGGML_BACKEND_DL=ON
+      -DGGML_NATIVE=OFF
+      -DGGML_CPU_ALL_VARIANTS=ON
+    )
+  else
+    # makepkg sets SOURCE_DATE_EPOCH which disables GGML_NATIVE_DEFAULT
+    _cmake_options+=(-DGGML_NATIVE=ON)
+  fi
+
+  if [[ -n "${aur_llamacpp_cmakeopts:-}" ]]; then
+    # shellcheck disable=SC2206
+    _cmake_options+=(${aur_llamacpp_cmakeopts})
+  fi
+
+  cmake "${_cmake_options[@]}"
+  cmake --build "${srcdir}/build"
 }
 
 package() {
