@@ -7,7 +7,7 @@
 # release tarball still extracts to `burrow-$pkgver`.
 _pkgname=burrow
 pkgname=burrow-tunnel
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Turn any SSH server into a local proxy and a system-wide VPN"
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=('cargo' 'cmake')
 # release-profile LTO is unaffected. Per Arch's Rust package guidelines.
 options=('!lto')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4fc2df2dcd7e1bf042417e45d4de3695784f844041722279c1aebfcede93881f')
+sha256sums=('238612b8b93c85e2f29c1f4abbfe356b95121aed5be1be96d6d0d8dd413eedb9')
 
 build() {
   cd "$_pkgname-$pkgver"

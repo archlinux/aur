@@ -1,6 +1,6 @@
 pkgbase = burrow-tunnel
 	pkgdesc = Turn any SSH server into a local proxy and a system-wide VPN
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/0443n/burrow
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = burrow-tunnel
 	depends = libxi
 	depends = hicolor-icon-theme
 	options = !lto
-	source = burrow-0.2.0.tar.gz::https://github.com/0443n/burrow/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 4fc2df2dcd7e1bf042417e45d4de3695784f844041722279c1aebfcede93881f
+	source = burrow-0.2.1.tar.gz::https://github.com/0443n/burrow/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 238612b8b93c85e2f29c1f4abbfe356b95121aed5be1be96d6d0d8dd413eedb9
 
 pkgname = burrow-tunnel
