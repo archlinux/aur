@@ -1,0 +1,20 @@
+pkgbase = dictapulse-bin
+	pkgdesc = Local AI voice dictation for KDE Plasma (Wayland) — prebuilt Vulkan AppImage
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Silverhairfx/DictaPulse
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = ffmpeg
+	depends = hicolor-icon-theme
+	optdepends = ydotool: text injection via uinput (needs the ydotoold daemon running)
+	optdepends = wtype: text injection on wlroots/Wayland
+	optdepends = vulkan-icd-loader: GPU acceleration (with a Vulkan driver e.g. vulkan-radeon)
+	provides = dictapulse
+	conflicts = dictapulse
+	noextract = DictaPulse-0.1.1-x86_64.AppImage
+	options = !strip
+	source = DictaPulse-0.1.1-x86_64.AppImage::https://github.com/Silverhairfx/DictaPulse/releases/download/v0.1.1/DictaPulse-0.1.1-x86_64.AppImage
+	sha256sums = a61d2ea3828d6f6401ecc3a97dcd99c3158ee8f008332b3427b1023471830383
+
+pkgname = dictapulse-bin
