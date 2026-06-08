@@ -1,0 +1,27 @@
+pkgbase = firefox-esr-zh-bin
+	pkgdesc = Standalone web browser from mozilla.org - Extended Support Release
+	pkgver = 140.11.0
+	pkgrel = 1
+	url = http://www.mozilla.org/zh-CN/firefox/organizations/
+	install = firefox-esr.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = gtk3
+	depends = libxt
+	depends = dbus-glib
+	depends = nss
+	depends = ffmpeg4.4
+	provides = firefox=140.11.0
+	source = https://ftp.mozilla.org/pub/firefox/releases/140.11.0esr/linux-x86_64/zh-CN/firefox-140.11.0esr.tar.xz
+	source = firefox-esr.desktop
+	source = firefox-esr-safe.desktop
+	source = policies.json
+	sha512sums = ad610aa2bafa9cc7ec148cbf09cd3ec07f849d6af293c0d2fb4df1dc91e50f3ecac436583b3220401a61e3ad3c686c1561c3749a3a0bd848494edf67d96f9443
+	sha512sums = c585f6e8ac7abfc96ad4571940b6f0dcc3f7331a18a518b4fe5d19b45e4c2d96c394524ea5c115c8fdd256c9229ea2fabeb1fc04ca7102f1626fd20728aef47d
+	sha512sums = ab2fa2e08c7a65ac0bfe169a4b579e54b038bddabf838cd3df5ab341bd77be7c101092d0123598944d2174ab3a8fbc70dfbd692b2944016efdb7a69216a74428
+	sha512sums = 5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308
+
+pkgname = firefox-esr-zh-bin
