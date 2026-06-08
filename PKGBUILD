@@ -1,9 +1,9 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
 _pkgname="pyinfra"
 pkgname="$_pkgname"
-pkgver=3.8.0
+pkgver=3.9.2
 pkgrel=1
 pkgdesc="Automate infrastructure super fast at massive scale"
 url="https://github.com/pyinfra-dev/pyinfra"
@@ -33,7 +33,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums=('d3c59ae28a7ceea259829f41f5b14c1fb3f97917e05a7306bde1cc1110458e8b')
+sha256sums=('705576e62657b2ee5277e52f917aff152b8fc15c186543b23b39d1dd6e0482de')
 
 prepare() (
   python -m venv venv
