@@ -1,11 +1,69 @@
 PLAYIT_USER=playit
 PLAYIT_GROUP=playit
+PLAYIT_HOME=/nonexistent
 PLAYIT_MANAGER_FILE=/opt/playit/share/init/selected-manager
 SYSUSERS_CONFIG=/usr/lib/sysusers.d/playit.conf
 SYSTEMD_UNIT=/usr/lib/systemd/system/playit.service
 
 have_command() {
   command -v "$1" >/dev/null 2>&1
+}
+
+nologin_shell() {
+  if [ -x /usr/sbin/nologin ]; then
+    printf '%s\n' /usr/sbin/nologin
+  elif [ -x /sbin/nologin ]; then
+    printf '%s\n' /sbin/nologin
+  else
+    printf '%s\n' /bin/false
+  fi
+}
+
+group_exists() {
+  if have_command getent; then
+    getent group "$PLAYIT_GROUP" >/dev/null 2>&1
+  else
+    grep -q "^${PLAYIT_GROUP}:" /etc/group 2>/dev/null
+  fi
+}
+
+user_exists() {
+  if have_command id; then
+    id -u "$PLAYIT_USER" >/dev/null 2>&1
+  else
+    grep -q "^${PLAYIT_USER}:" /etc/passwd 2>/dev/null
+  fi
+}
+
+ensure_group() {
+  if group_exists; then
+    return 0
+  fi
+
+  if have_command groupadd; then
+    groupadd --system "$PLAYIT_GROUP"
+  elif have_command addgroup; then
+    addgroup -S "$PLAYIT_GROUP"
+  else
+    echo "Cannot create ${PLAYIT_GROUP} group: groupadd/addgroup not found" >&2
+    exit 1
+  fi
+}
+
+ensure_user() {
+  if user_exists; then
+    return 0
+  fi
+
+  shell="$(nologin_shell)"
+  if have_command useradd; then
+    useradd --system --gid "$PLAYIT_GROUP" --home-dir "$PLAYIT_HOME" --no-create-home --shell "$shell" "$PLAYIT_USER"
+  elif have_command adduser; then
+    adduser -S -D -H -h "$PLAYIT_HOME" -s "$shell" -G "$PLAYIT_GROUP" "$PLAYIT_USER"
+  else
+    echo "Cannot create ${PLAYIT_USER} user: useradd/adduser not found" >&2
+    exit 1
+  fi
 }
 
 remove_symlink_to_target() {
@@ -45,12 +103,12 @@ remove_legacy_unit_path() {
 }
 
 provision_user() {
-  if ! have_command systemd-sysusers; then
-    echo "Cannot provision ${PLAYIT_USER} user with systemd-sysusers: command not found" >&2
-    exit 1
+  if have_command systemd-sysusers; then
+    systemd-sysusers "$SYSUSERS_CONFIG"
+  else
+    ensure_group
+    ensure_user
   fi
-
-  systemd-sysusers "$SYSUSERS_CONFIG"
 }
 
 prepare_filesystem() {
@@ -82,13 +140,15 @@ configure_service() {
   handle_legacy_systemd_unit
   remove_legacy_unit_path /lib/systemd/system/playit.service
 
-  systemctl daemon-reload || true
-  systemctl enable playit || true
+  if have_command systemctl; then
+    systemctl daemon-reload || true
+    systemctl enable playit || true
 
-  if [ "$mode" = install ]; then
-    systemctl start playit || true
-  elif systemctl is-active --quiet playit; then
-    systemctl restart playit || true
+    if [ "$mode" = install ]; then
+      systemctl start playit || true
+    elif systemctl is-active --quiet playit; then
+      systemctl restart playit || true
+    fi
   fi
 }
 

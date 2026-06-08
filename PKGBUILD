@@ -3,13 +3,13 @@
 # Contributor: Amirul Fitri <tounghacker@gmail.com>
 
 pkgname=playit
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='Tool to make your locally running game server public'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url='https://playit.gg'
 license=('BSD-2-Clause')
-depends=('logrotate' 'systemd')
+depends=('logrotate')
 makedepends=('cargo')
 conflicts=('playit-bin' 'playit-bin-debug')
 install="${pkgname}.install"
@@ -19,7 +19,7 @@ options=('!lto')
 _repo='playit-cloud/playit-agent'
 _source_dir="playit-agent-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_repo}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9f32e5be5781e6d8918a8478b180a5a7552a83de880601910a6e71f02de0912c')
+sha256sums=('52b431a861c143f3fc78bfce8d7d5862bf865bc88da584cafb62a5fec39c0df4')
 
 prepare() {
   cd "${srcdir}/${_source_dir}"
@@ -44,6 +44,8 @@ package() {
 
   install -Dm0644 linux/logrotate.conf "${pkgdir}/etc/logrotate.d/playit"
   install -Dm0644 linux/playit.service "${pkgdir}/usr/lib/systemd/system/playit.service"
+  install -Dm0644 linux/playit.service "${pkgdir}/opt/playit/share/init/systemd/playit.service"
+  install -Dm0755 linux/playit.openrc "${pkgdir}/opt/playit/share/init/openrc/playit"
   install -Dm0644 linux/playit.sysusers "${pkgdir}/usr/lib/sysusers.d/playit.conf"
   install -Dm0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 
