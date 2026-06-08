@@ -63,6 +63,18 @@ index cda5177..60dff35 100644
  #===============================================================================
  # Load elements_subdir macro here
  # Examples:
+diff --git a/Pyston/Pyston/Graph/Cast.h b/Pyston/Pyston/Graph/Cast.h
+index eff889a..1cfb10d 100644
+--- a/Pyston/Pyston/Graph/Cast.h
++++ b/Pyston/Pyston/Graph/Cast.h
+@@ -25,6 +25,7 @@
+ #include <boost/units/detail/utility.hpp>
+ using boost::units::detail::demangle;
+ #else
++#include <boost/core/demangle.hpp>
+ using boost::core::demangle;
+ #endif
+ 
 diff --git a/SourceCatalog/CMakeLists.txt b/SourceCatalog/CMakeLists.txt
 index 0414d5e..722d55c 100644
 --- a/SourceCatalog/CMakeLists.txt
@@ -76,6 +88,18 @@ index 0414d5e..722d55c 100644
  
  
  #===== Libraries ===============================================================
+diff --git a/Table/src/lib/Row.cpp b/Table/src/lib/Row.cpp
+index 1c08dd9..b931241 100644
+--- a/Table/src/lib/Row.cpp
++++ b/Table/src/lib/Row.cpp
+@@ -32,6 +32,7 @@
+ #include <boost/units/detail/utility.hpp>
+ using boost::units::detail::demangle;
+ #else
++#include <boost/core/demangle.hpp>
+ using boost::core::demangle;
+ #endif
+ 
 diff --git a/XYDataset/CMakeLists.txt b/XYDataset/CMakeLists.txt
 index 57e011b..885077c 100644
 --- a/XYDataset/CMakeLists.txt

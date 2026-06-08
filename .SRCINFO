@@ -1,7 +1,7 @@
 pkgbase = astrorama-alexandria
 	pkgdesc = SDC-CH common library for the Euclid project
 	pkgver = 2.32.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/astrorama/Alexandria
 	arch = x86_64
 	license = LGPL-3.0-only
@@ -17,6 +17,6 @@ pkgbase = astrorama-alexandria
 	source = astrorama-alexandria-2.32.0.tar.gz::https://github.com/astrorama/Alexandria/archive/2.32.0.tar.gz
 	source = 0001-fix_build.patch
 	sha256sums = 74497287b96d370afd59577792e0c45a7b2b4c85babc8d108727746641828efa
-	sha256sums = d80447c1ec5759e0ceca67e2e224a6d0fcca8b4d6a70c76e6b734015db35d005
+	sha256sums = 2ed169762155995ada93fd9a6acd39e93579c786f10c090142bab7e2eff4bca7
 
 pkgname = astrorama-alexandria

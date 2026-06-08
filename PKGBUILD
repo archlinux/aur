@@ -2,7 +2,7 @@
 pkgname=astrorama-alexandria
 _pkgname=Alexandria
 pkgver=2.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SDC-CH common library for the Euclid project"
 url="https://github.com/astrorama/Alexandria"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=(
   '74497287b96d370afd59577792e0c45a7b2b4c85babc8d108727746641828efa'
-  'd80447c1ec5759e0ceca67e2e224a6d0fcca8b4d6a70c76e6b734015db35d005'
+  '2ed169762155995ada93fd9a6acd39e93579c786f10c090142bab7e2eff4bca7'
 )
 
 prepare() {
