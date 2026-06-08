@@ -2,11 +2,22 @@
 # Contributor: hoverth
 # Adapted from AUR package `organicmaps` by nesk_aur
 pkgname=comaps
-pkgver=2026.05.06_11
+pkgver=2026.06.05_11
 _tag="v${pkgver%%_*}-${pkgver##*_}"
-pkgrel=3
+pkgrel=1
 pkgdesc="CoMaps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
+depends=(
+	freetype2
+	glibc
+	harfbuzz
+	hicolor-icon-theme
+	icu
+	libglvnd
+	qt6-base
+	qt6-positioning
+	zlib
+)
 makedepends=(
 	cmake
 	cppdap
@@ -28,19 +39,6 @@ makedepends=(
 	vulkan-headers
 	wget
 )
-
-depends=(
-	freetype2
-	glibc
-	harfbuzz
-	hicolor-icon-theme
-	icu
-	libglvnd
-	qt6-base
-	qt6-positioning
-	zlib
-)
-
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
 license=('Apache-2.0')
 url="https://${pkgname}.app"
