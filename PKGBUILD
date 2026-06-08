@@ -38,6 +38,8 @@ package() {
   cd humen-mcp
   install -Dm755 target/release/humen-mcp "$pkgdir/usr/bin/humen-mcp"
   install -Dm644 packaging/systemd/humen-mcp.service "$pkgdir/usr/lib/systemd/system/humen-mcp.service"
+  install -Dm644 packaging/sysusers/humen-mcp.conf "$pkgdir/usr/lib/sysusers.d/humen-mcp.conf"
+  install -Dm644 packaging/tmpfiles/humen-mcp.conf "$pkgdir/usr/lib/tmpfiles.d/humen-mcp.conf"
   install -Dm640 env.example "$pkgdir/etc/humen-mcp.env"
   install -dm755 "$pkgdir/usr/share/humen-mcp/web"
   cp -a humen-mcp-webui/dist/. "$pkgdir/usr/share/humen-mcp/web/"
