@@ -1,16 +1,16 @@
 pkgbase = logx-bin
-	pkgdesc = Pretty-print JSON slog logs from stdin, files, or follow mode
-	pkgver = 0.2.1
+	pkgdesc = Tamper-evident, hash-chained slog audit log for Go with offline verification
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/AyoubTadlaoui/GoLogX
 	license = MIT
 	conflicts = GoLogX
 	provides = GoLogX
 	arch = aarch64
-	source_aarch64 = https://github.com/AyoubTadlaoui/GoLogX/releases/download/v0.2.1/GoLogX_0.2.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = d14b77a914604d8772aca2acb3d568e30e63862c0dc00b20b786bf0d06d87c8d
+	source_aarch64 = https://github.com/AyoubTadlaoui/GoLogX/releases/download/v0.2.2/GoLogX_0.2.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4a4589be74ae17b9129e6bdfbe4014e01a2df48f19326ff3f68371081b9df6ad
 	arch = x86_64
-	source_x86_64 = https://github.com/AyoubTadlaoui/GoLogX/releases/download/v0.2.1/GoLogX_0.2.1_linux_x86_64.tar.gz
-	sha256sums_x86_64 = aae1c0ce8c4f0565ec077f445b32cf7902485f0d2f2543b6ded0741fa1203977
+	source_x86_64 = https://github.com/AyoubTadlaoui/GoLogX/releases/download/v0.2.2/GoLogX_0.2.2_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 39f84df7569f10ae673ce596df422d06a3795a05915eb2df7f35e15d9ab8d1af
 	
 pkgname = logx-bin

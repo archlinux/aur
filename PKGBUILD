@@ -2,9 +2,9 @@
 # Maintainer: Ayoub Tadlaoui <atlas.kaisar@icloud.com>
 
 pkgname='logx-bin'
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
-pkgdesc='Pretty-print JSON slog logs from stdin, files, or follow mode'
+pkgdesc='Tamper-evident, hash-chained slog audit log for Go with offline verification'
 url='https://github.com/AyoubTadlaoui/GoLogX'
 arch=('aarch64' 'x86_64')
 license=('MIT')
@@ -12,10 +12,10 @@ provides=('GoLogX')
 conflicts=('GoLogX')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/AyoubTadlaoui/GoLogX/releases/download/v${pkgver}/GoLogX_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('d14b77a914604d8772aca2acb3d568e30e63862c0dc00b20b786bf0d06d87c8d')
+sha256sums_aarch64=('4a4589be74ae17b9129e6bdfbe4014e01a2df48f19326ff3f68371081b9df6ad')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/AyoubTadlaoui/GoLogX/releases/download/v${pkgver}/GoLogX_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('aae1c0ce8c4f0565ec077f445b32cf7902485f0d2f2543b6ded0741fa1203977')
+sha256sums_x86_64=('39f84df7569f10ae673ce596df422d06a3795a05915eb2df7f35e15d9ab8d1af')
 
 package() {
   install -Dm755 "./logx" "${pkgdir}/usr/bin/logx"
