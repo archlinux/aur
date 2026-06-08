@@ -1,6 +1,6 @@
 pkgbase = youwee-bin
 	pkgdesc = A beautifull YouTube, TikTok, Instagram and 1800+ sites downloader (yt-dlp GUI) and AI summary video content for cross-platform.
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/vanloctech/youwee
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = youwee-bin
 	depends = yt-dlp
 	depends = ffmpeg
 	depends = bun
-	provides = youwee=0.16.0
+	provides = youwee=0.17.0
 	conflicts = youwee
-	source = youwee-0.16.0.deb::https://github.com/vanloctech/youwee/releases/download/v0.16.0/Youwee-Linux.deb
-	source = LICENSE-0.16.0::https://raw.githubusercontent.com/vanloctech/youwee/v0.16.0/LICENSE
-	sha256sums = 03bf4499ba167a72af4e0c4cedea1a30741bee669df51fcaa8b6249d224a171f
+	source = youwee-0.17.0.deb::https://github.com/vanloctech/youwee/releases/download/v0.17.0/Youwee-Linux.deb
+	source = LICENSE-0.17.0::https://raw.githubusercontent.com/vanloctech/youwee/v0.17.0/LICENSE
+	sha256sums = 4b19e03337b665b14732411413444f3ce7b15dc6daa6f0edc8f78f24b148167d
 	sha256sums = 1cea78a161f726406b7611610171f5ac0e42b620126334e1150084179faf5b7b
 
 pkgname = youwee-bin
