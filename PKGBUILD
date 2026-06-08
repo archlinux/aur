@@ -1,7 +1,7 @@
 # Maintainer: 00ein00 <ein420@proton.me>
 pkgname=f2p-evo
 _pkgname=f2p-evo
-pkgver=0.3.37.r193.g8fa624c # auto-updated
+pkgver=0.3.39.r195.ged3947b # auto-updated
 pkgrel=1
 pkgdesc="F2P Evo — unofficial Hytale launcher (Rust + Tauri 2 + Vue 3) with multiplayer, mods, chat, and auto-updates"
 arch=('x86_64')
@@ -15,7 +15,7 @@ replaces=('f2p-evo')
 source=("git+$url.git"
   "F2P-Evo.desktop")
 sha256sums=('SKIP'
-  '1dbc9a72ea40f901584870540e18f309463d011c1bbbe362c19b85e4eff9b3d0')
+            '1dbc9a72ea40f901584870540e18f309463d011c1bbbe362c19b85e4eff9b3d0')
 
 pkgver() {
   cd "$_pkgname"
