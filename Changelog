@@ -1,9 +1,40 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 5.3.0 ➙ 5.6.2
-              : 2026-06-01 ➙ 2026-06-06
+ Tags         : 5.3.0 ➙ HEAD
+              : 2026-06-01 ➙ 2026-06-08
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-06-08   : HEAD
+              - **5.7.1**
+            
+                * Update sd-boot-find-boot-mounts
+                  - now works for non-root users
+                  - udev/libmount instead of low level libblk
+                  - Adds systemd-libs dependency.
+                  - Simpler, more robust and significantly faster.
+            
+                Timing example Machine with 2 disks (2 ESP, 2 XBOOTLDR):
+            
+                Previous:
+                  # time sd-boot-find-boot-mounts
+            
+                  1st:
+                    real    0.029 - 0.046s
+                    user    0.009 - 0.006s
+                    sys     0.020 - 0.012s
+            
+                New:
+                    # time sd-boot-find-boot-mounts
+            
+                    1st:
+                    real    0.003s
+                    user    0.000s
+                    sys     0.003s
+            
+                Some caching likely especially with previous approach.
+ 2026-06-06   ⋯
+              - update Changelog
 
  2026-06-06   : 5.6.2
               - **5.6.2**

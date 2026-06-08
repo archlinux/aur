@@ -10,7 +10,7 @@ pkgname='sd-boot'
 pkgdesc='Tools to install linux kernels via kernel-install from systemd'
 _gitname='sd-boot'
 
-pkgver="5.6.2"
+pkgver="5.7.1"
 pkgrel=1
 url="https://github.com/gene-git/sd-boot"
 
@@ -27,7 +27,8 @@ depends=(
     sbctl
     systemd
     systemd-ukify
-    util-linux-libs     # provides libblkid
+    systemd-libs        # libudev
+    util-linux-libs     # libmount
 )
 optdepends=(
     'edk2-shell: efi-shell (installed into EFI partition'
