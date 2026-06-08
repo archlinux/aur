@@ -1,6 +1,6 @@
 pkgbase = sax-git
-	pkgdesc = A simple but smart archiving and extraction tool
-	pkgver = 0.3.0
+	pkgdesc = A simple but smart archiving and extraction tool (latest Git commit)
+	pkgver = 0.3.0.r22.g9f8e185
 	pkgrel = 1
 	url = https://github.com/rahmerh/sax
 	arch = x86_64
@@ -8,9 +8,10 @@ pkgbase = sax-git
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
-	provides = sax
+	provides = sax=0.3.0.r22.g9f8e185
 	conflicts = sax
-	source = sax::git+https://github.com/rahmerh/sax.git
+	options = !lto
+	source = sax::git+https://github.com/rahmerh/sax.git#branch=main
 	sha256sums = SKIP
 
 pkgname = sax-git

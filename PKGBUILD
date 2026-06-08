@@ -1,26 +1,27 @@
 # Maintainer: rahmerh <rahmerh@users.noreply.github.com>
 
 pkgname=sax-git
-pkgver=0.3.0
+pkgver=0.3.0.r22.g9f8e185
 pkgrel=1
-pkgdesc="A simple but smart archiving and extraction tool"
+pkgdesc="A simple but smart archiving and extraction tool (latest Git commit)"
 arch=('x86_64')
 url="https://github.com/rahmerh/sax"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
-provides=('sax')
+provides=("sax=$pkgver")
 conflicts=('sax')
-source=('sax::git+https://github.com/rahmerh/sax.git')
+options=('!lto')
+source=('sax::git+https://github.com/rahmerh/sax.git#branch=main')
 sha256sums=('SKIP')
 
 pkgver() {
   cd sax
 
   local cargo_version
-  cargo_version="$(grep -m1 '^version =' Cargo.toml | cut -d '"' -f2)"
+  cargo_version="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -n 1)"
 
-  printf '%s.r%s.g%s' "$cargo_version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf '%s.r%s.g%s' "$cargo_version" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
