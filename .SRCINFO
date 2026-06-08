@@ -1,6 +1,6 @@
 pkgbase = csharpier
 	pkgdesc = An opinionated code formatter for C#
-	pkgver = 1.2.6
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://csharpier.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = csharpier
 	depends = aspnet-runtime-10.0
 	options = !strip
 	options = !debug
-	source = csharpier-1.2.6.tar.gz::https://github.com/belav/csharpier/archive/refs/tags/1.2.6.tar.gz
-	b2sums = 2f5692b013f9b0acbfc8ed8a21f28e55c2e3371c223f9f505c8867f65d319731a95282e196750da9ee804c1858c938c63ce41e2cc7afada67a4d15238f024bce
+	source = csharpier-1.3.0.tar.gz::https://github.com/belav/csharpier/archive/refs/tags/1.3.0.tar.gz
+	b2sums = 17e8861baff3a639fa03fbcf011d27e92fb00536280b7caaa7c303421ddeeb68dc66c88756a7509819289e49b761864ad20dfa1df6c1011bb547ae36713c36bc
 
 pkgname = csharpier
