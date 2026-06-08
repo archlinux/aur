@@ -2,7 +2,7 @@ pkgbase = colorsearch
 	pkgdesc = Search files by name and dominant color in images and videos
 	pkgver = 1.0.0
 	pkgrel = 2
-	url = https://github.com/Zamanhuseyinli/colorsearch
+	url = https://codeberg.org/Zamanhuseyinli/colorsearch
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = colorsearch
 	depends = python
 	depends = python-pyqt6
 	depends = python-pillow
-	source = git+https://github.com/Zamanhuseyinli/colorsearch.git
+	source = git+https://codeberg.org/Zamanhuseyinli/colorsearch.git
 	sha256sums = SKIP
 
 pkgname = colorsearch

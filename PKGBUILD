@@ -5,11 +5,11 @@ pkgver=1.0.0
 pkgrel=2
 pkgdesc="Search files by name and dominant color in images and videos"
 arch=('x86_64')
-url="https://github.com/Zamanhuseyinli/colorsearch"
+url="https://codeberg.org/Zamanhuseyinli/colorsearch"
 license=('GPL3')
 depends=('python' 'python-pyqt6' 'python-pillow')
 makedepends=('git' 'python-setuptools')
-source=("git+https://github.com/Zamanhuseyinli/colorsearch.git")
+source=("git+https://codeberg.org/Zamanhuseyinli/colorsearch.git")
 sha256sums=('SKIP')
 
 pkgver() {
