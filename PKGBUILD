@@ -11,7 +11,7 @@ provides=('magicterm')
 conflicts=('magicterm')
 options=('!strip')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/D3FVLT/MagicTerm/releases/download/v${pkgver}/MagicTerm-${pkgver}-x86_64.AppImage")
-sha256sums=('ba391e2ee38e9d0736152f90c10f76c56c62a242ece7bb5a1b8d6ddb11b4e91f')
+sha256sums=('fd5477fa3a01b3e58c01d4fd43275c0caa619885ab47c8d9429a823708c7d311')
 
 prepare() {
     chmod +x "${pkgname}-${pkgver}.AppImage"

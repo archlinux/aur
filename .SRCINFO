@@ -13,6 +13,6 @@ pkgbase = magicterm-bin
 	conflicts = magicterm
 	options = !strip
 	source = magicterm-bin-0.5.6.AppImage::https://github.com/D3FVLT/MagicTerm/releases/download/v0.5.6/MagicTerm-0.5.6-x86_64.AppImage
-	sha256sums = ba391e2ee38e9d0736152f90c10f76c56c62a242ece7bb5a1b8d6ddb11b4e91f
+	sha256sums = fd5477fa3a01b3e58c01d4fd43275c0caa619885ab47c8d9429a823708c7d311
 
 pkgname = magicterm-bin
