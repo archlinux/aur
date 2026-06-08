@@ -1,20 +1,20 @@
 pkgbase = p3x-redis-ui-bin
 	pkgdesc = A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app.(Prebuilt version.Use system-wide electron)
-	pkgver = 2026.4.3001
+	pkgver = 2026.4.3005
 	pkgrel = 1
 	url = https://www.corifeus.com/redis-ui
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron42
-	conflicts = p3x-redis-ui=2026.4.3001
-	source = LICENSE-2026.4.3001::https://raw.githubusercontent.com/patrikx3/redis-ui/v2026.4.3001/LICENSE
+	conflicts = p3x-redis-ui=2026.4.3005
+	source = LICENSE-2026.4.3005::https://raw.githubusercontent.com/patrikx3/redis-ui/v2026.4.3005/LICENSE
 	source = p3x-redis-ui.sh
 	sha256sums = 1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = p3x-redis-ui-2026.4.3001-aarch64.rpm::https://github.com/patrikx3/redis-ui/releases/download/v2026.4.3001/p3x-redis-ui-2026.4.3001.aarch64.rpm
-	sha256sums_aarch64 = 94612dcbb232a0b68fc9bde8c20a5c1ef778794228a87ba11d23ae31370cb399
-	source_x86_64 = p3x-redis-ui-2026.4.3001-x86_64.rpm::https://github.com/patrikx3/redis-ui/releases/download/v2026.4.3001/p3x-redis-ui-2026.4.3001.x86_64.rpm
-	sha256sums_x86_64 = 952076c88e2f1b41f1a8a8a1e5f12d18457843c06f6e10ec8e431f921d8ab9ef
+	source_aarch64 = p3x-redis-ui-2026.4.3005-aarch64.rpm::https://github.com/patrikx3/redis-ui/releases/download/v2026.4.3005/p3x-redis-ui-2026.4.3005.aarch64.rpm
+	sha256sums_aarch64 = d9d332896572e53cc898dd1580516959c80bf2d6aead88be335450c2f8e054b4
+	source_x86_64 = p3x-redis-ui-2026.4.3005-x86_64.rpm::https://github.com/patrikx3/redis-ui/releases/download/v2026.4.3005/p3x-redis-ui-2026.4.3005.x86_64.rpm
+	sha256sums_x86_64 = 278b216b88e5111dfa45a37ee76bc3bbfe037d304ac7dacbb7e3e149ba595c2a
 
 pkgname = p3x-redis-ui-bin
