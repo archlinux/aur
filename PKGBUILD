@@ -1,8 +1,4 @@
 # Maintainer: birrkan
-#
-# NOTE: The .deb file must be downloaded manually from:
-#   https://www.huion.com/download
-# Select your tablet model and download the Linux driver.
 
 # Package name and version
 pkgname=huiontablet-driver-and-software
@@ -15,13 +11,13 @@ arch=('x86_64')
 url="https://www.huion.com/download"
 license=('custom:Huion')
 
-# Runtime dependencies (most libs are bundled in /usr/lib/huiontablet/libs/)
-depends=('glibc' 'gcc-libs' 'libx11' 'xdotool')
-
-# Source: the official Huion .deb package
-source=("HuionTablet_LinuxDriver_v${pkgver}.x86_64.deb")
+direct_url="https://driverdl.huion.com/driver/Linux/HuionTablet_LinuxDriver_v15.0.0.175.x86_64.deb"
+source=("HuionTablet_LinuxDriver_v${pkgver}.x86_64.deb::${direct_url}")
 noextract=("HuionTablet_LinuxDriver_v${pkgver}.x86_64.deb")
 sha256sums=('SKIP')
+
+# Runtime dependencies (most libs are bundled in /usr/lib/huiontablet/libs/)
+depends=('glibc' 'gcc-libs' 'libx11' 'xdotool')
 
 # Pacman install script (post_install, pre_upgrade, etc.)
 install="${pkgname}.install"
@@ -38,3 +34,5 @@ package() {
 
     echo "-> Done."
 }
+
+# makepkg --printsrcinfo > .SRCINFO

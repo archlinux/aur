@@ -11,7 +11,7 @@ pkgbase = huiontablet-driver-and-software
 	depends = libx11
 	depends = xdotool
 	noextract = HuionTablet_LinuxDriver_v15.0.0.175.x86_64.deb
-	source = HuionTablet_LinuxDriver_v15.0.0.175.x86_64.deb
+	source = HuionTablet_LinuxDriver_v15.0.0.175.x86_64.deb::https://driverdl.huion.com/driver/Linux/HuionTablet_LinuxDriver_v15.0.0.175.x86_64.deb
 	sha256sums = SKIP
 
 pkgname = huiontablet-driver-and-software
