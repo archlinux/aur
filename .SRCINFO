@@ -1,0 +1,27 @@
+pkgbase = patent-git
+	pkgdesc = A prior-art search for your code ideas. Stop building what already exists.
+	pkgver = 0.3.0.r4.g2c68a1b
+	pkgrel = 1
+	url = https://github.com/r14dd/patent
+	install = patent.install
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	makedepends = openssl
+	makedepends = gcc
+	makedepends = git
+	optdepends = ollama: powers the LLM verdict
+	provides = patent
+	conflicts = patent
+	conflicts = patent-bin
+	options = !lto
+	options = !debug
+	source = patent-main::git+https://github.com/r14dd/patent.git#branch=main
+	source = patent.install
+	sha256sums = SKIP
+	sha256sums = 24dff75c38b578cb7e8057366a764cb4313078f16bada568baf79ecde5cb49af
+
+pkgname = patent-git
