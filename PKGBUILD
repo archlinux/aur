@@ -6,8 +6,8 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=2.26.0
-pkgrel=2
+pkgver=2.28.0
+pkgrel=1
 pkgdesc="Canonical's display server"
 url="https://github.com/canonical/mir"
 arch=(x86_64 i686)
@@ -66,7 +66,7 @@ optdepends=('qterminal: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos')
 options=(!lto)
 source=("git+https://github.com/canonical/mir.git#tag=v${pkgver}") # build issue with 2.26.0 archive
-sha256sums=('c7c58e4a4e34da0523337b481086bc166315bfd5678b6423f7a6673a114a4823')
+sha256sums=('89587c88303a19f5183128cc017639b7e17e935f4af0ab4935635e2c741964fa')
 
 build() {
   local _flags=(
