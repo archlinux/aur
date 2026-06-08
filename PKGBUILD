@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=belr
-pkgver=5.4.50
+pkgver=5.4.119
 pkgrel=1
 pkgdesc="A library for working with vCards"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=("bctoolbox>=$pkgver")
 makedepends=('cmake')
 source=("belr-$pkgver.tar.gz::https://github.com/BelledonneCommunications/belr/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b20945aee50a963e2cd991e38b3231686a529ea13edef61d42b8da6047621144')
+sha256sums=('f5ee859d058cf8b0953c6fd038c5033792866207a1cf8be27ca30aa7e716a3f6')
 
 build() {
   cmake -B build $pkgname-$pkgver \
