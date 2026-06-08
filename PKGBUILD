@@ -2,7 +2,7 @@
 pkgname=dictapulse-bin
 _appname=DictaPulse
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Local AI voice dictation for KDE Plasma (Wayland) — prebuilt Vulkan AppImage"
 arch=('x86_64')
 url="https://github.com/Silverhairfx/DictaPulse"
@@ -17,18 +17,20 @@ optdepends=(
 provides=('dictapulse')
 conflicts=('dictapulse')
 options=('!strip')   # prebuilt bundle — do not strip its libraries
-source=("$_appname-$pkgver-x86_64.AppImage::$url/releases/download/v$pkgver/$_appname-$pkgver-x86_64.AppImage")
-noextract=("$_appname-$pkgver-x86_64.AppImage")   # extracted manually in package()
+source=("$_appname-$pkgver-$CARCH.AppImage::$url/releases/download/v$pkgver/$_appname-$pkgver-$CARCH.AppImage")
+noextract=("$_appname-$pkgver-$CARCH.AppImage")   # extracted manually in package()
 sha256sums=('a61d2ea3828d6f6401ecc3a97dcd99c3158ee8f008332b3427b1023471830383')
 
 package() {
   cd "$srcdir"
-  chmod +x "$_appname-$pkgver-x86_64.AppImage"
-  ./"$_appname-$pkgver-x86_64.AppImage" --appimage-extract >/dev/null
+  chmod +x "$_appname-$pkgver-$CARCH.AppImage"
+  ./"$_appname-$pkgver-$CARCH.AppImage" --appimage-extract >/dev/null
 
   # Self-contained bundle goes in /opt (it ships its own Qt/KF6 libs).
   install -d "$pkgdir/opt/dictapulse"
   cp -a squashfs-root/. "$pkgdir/opt/dictapulse/"
+  # Drop empty icon-size dirs the bundle leaves behind (only a scalable svg ships).
+  find "$pkgdir/opt/dictapulse" -type d -empty -delete
 
   # Launcher on PATH.
   install -d "$pkgdir/usr/bin"
