@@ -1,6 +1,6 @@
 pkgbase = lagrange-bin
 	pkgdesc = A Beautiful Gemini Client.(Prebuilt version)
-	pkgver = 1.20.5
+	pkgver = 1.20.6
 	pkgrel = 1
 	url = https://gmi.skyjake.fi/lagrange/
 	arch = armv7h
@@ -10,17 +10,17 @@ pkgbase = lagrange-bin
 	depends = libdrm
 	depends = libgpg-error
 	depends = mesa
-	provides = lagrange=1.20.5
+	provides = lagrange=1.20.6
 	conflicts = lagrange
 	options = !strip
 	options = !emptydirs
-	source = LICENSE-1.20.5.md::https://raw.githubusercontent.com/skyjake/lagrange/v1.20.5/LICENSE.md
+	source = LICENSE-1.20.6.md::https://raw.githubusercontent.com/skyjake/lagrange/v1.20.6/LICENSE.md
 	source = lagrange.sh
 	sha256sums = d8dd2acc4ba121ca7da3c899c8c443484ab54526ed5933e34fffae2cedb28fbe
 	sha256sums = 574c9abedf1d4ff7d577a1e180faffeab850eb2aa4eaff000946025787185895
-	source_armv7h = lagrange-1.20.5-armv7h.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.20.5/Lagrange-1.20.5-armhf.AppImage
-	sha256sums_armv7h = e9e84c5188ebccc383e069c7f3c5bc454e7b736660cfb2fb85a94dca83808684
-	source_x86_64 = lagrange-1.20.5-x86_64.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.20.5/Lagrange-1.20.5-x86_64.AppImage
-	sha256sums_x86_64 = c6ca51103989bea0fe6957b498d47a16f8e81040fa60cabbbe33f2d5178bef17
+	source_armv7h = lagrange-1.20.6-armv7h.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.20.6/Lagrange-1.20.6-armhf.AppImage
+	sha256sums_armv7h = 080bc16d8d7b1c10dc3dd877cf9e384be4326b67f55551ce6198aaaaab313fa0
+	source_x86_64 = lagrange-1.20.6-x86_64.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.20.6/Lagrange-1.20.6-x86_64.AppImage
+	sha256sums_x86_64 = 17266b139518e6f160da527f05f8153ea608824174dac8ec6c7b8262d8901598
 
 pkgname = lagrange-bin
