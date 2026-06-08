@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: dydydd <admin@lidream.cn>
 
 pkgname=nyaterm-bin
 pkgver=1.1.5
