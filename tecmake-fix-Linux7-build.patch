@@ -1,0 +1,39 @@
+--- iup/tecmake.mak.orig	2026-06-08 13:06:34.954880099 +0200
++++ iup/tecmake.mak	2026-06-08 13:09:38.988882270 +0200
+@@ -1253,6 +1253,9 @@
+ endif
+ 
+ ifdef LINK_WEBKIT
++  ifneq ($(findstring Linux7, $(TEC_UNAME)), )
++    LIBS += webkit2gtk-4.1 gio-2.0
++  endif
+   ifneq ($(findstring Linux6, $(TEC_UNAME)), )
+     LIBS += webkit2gtk-4.1 gio-2.0
+   endif
+--- iup/srcweb/config.mak.orig	2026-06-08 13:11:13.809883388 +0200
++++ iup/srcweb/config.mak	2026-06-08 13:11:29.604883575 +0200
+@@ -35,6 +35,11 @@
+     LINK_WEBKIT = Yes
+     
+     ifdef USE_GTK3
++      ifneq ($(findstring Linux7, $(TEC_UNAME)), )
++        DEFINES += USE_WEBKIT2
++        STDINCS += $(GTK)/include/webkitgtk-4.1
++        STDINCS += $(GTK)/include/libsoup-3.0
++      endif
+       ifneq ($(findstring Linux6, $(TEC_UNAME)), )
+         DEFINES += USE_WEBKIT2
+         STDINCS += $(GTK)/include/webkitgtk-4.1
+--- iup/srcvled/config.mak.orig	2026-06-08 13:12:06.602884011 +0200
++++ iup/srcvled/config.mak	2026-06-08 13:15:47.534886617 +0200
+@@ -122,6 +122,10 @@
+   SRC += ../etc/iup.rc
+ endif
+ 
++ifneq ($(findstring Linux, $(TEC_SYSNAME)), )
++  LIBS += fontconfig
++endif
++
+ ifneq ($(findstring cygw, $(TEC_UNAME)), )
+   LIBS += fontconfig
+ endif

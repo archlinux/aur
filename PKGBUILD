@@ -32,12 +32,14 @@ source=(
   "https://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}.pdf"
   fix-build-gcc-14.patch
   fix-const-assign.patch
+  tecmake-fix-Linux7-build.patch
 )
 
 md5sums=('d38402fc8820c3f4528021b6de60a982'
          '727f67a17f75dea37304278be4f33849'
          '87f23cb627785378c8403a6ca80c55d8'
          'a4b8f2e79dd62b3caea4bd35d4080484'
+         'dd3ed71c7e06ba7ccdd283b0e07772cb'
 )
 
 prepare() {
@@ -71,6 +73,10 @@ prepare() {
 
   # fix build with recent gcc (assigning to const string)
   patch -p0 < "$srcdir"/fix-const-assign.patch
+
+  # patch for building with kernel 7.x
+  # temporary - remove when it is fixed in upstream
+  patch -p0 < "$srcdir"/tecmake-fix-Linux7-build.patch
 }
 
 _lua_iup_build_helper() {
