@@ -1,6 +1,6 @@
 pkgbase = go-configure-sw-hub
 	pkgdesc = Renesas/Dialog/Silego Go Configure software hub (greenpak designer)
-	pkgver = 6.53.003
+	pkgver = 6.54.001
 	pkgrel = 1
 	url = https://www.renesas.com/us/en/software-tool/go-configure-software-hub
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = go-configure-sw-hub
 	replaces = greenpak-designer
 	options = !strip
 	options = !debug
-	source = https://renesasweb-greenpak.s3.us-west-2.amazonaws.com/v6.53/go-configure-sw-hub-v6.53.003-debian-12-amd64.deb
-	b2sums = c5a43541b69d7974ad9b11cfdef608d2c979b799c85df1dd49670af7edda86de1fe535752ec13d0b0218e07865ab184b3e4051313edb1a0cff3cbcbcf7955799
+	source = https://renesasweb-greenpak.s3.us-west-2.amazonaws.com/v6.54/go-configure-sw-hub-v6.54.001-debian-13-amd64.deb
+	b2sums = 658cdc5bff65264b83782840255a44ba86843ef829434c7d0fd6fa75192a19af3d95ae0c2e62c802aaa8d1fcc2e7723a92c7facc3bfa59be0edd28a51686a647
 
 pkgname = go-configure-sw-hub

@@ -6,8 +6,8 @@
 # shellcheck disable=SC2034,SC2154,SC2148
 
 pkgname=go-configure-sw-hub
-_pkgver_major=6.53
-_pkgver_minor=003
+_pkgver_major=6.54
+_pkgver_minor=001
 pkgver=$_pkgver_major.$_pkgver_minor
 
 pkgrel=1
@@ -59,8 +59,8 @@ conflicts=('greenpak-designer-dev' 'greenpak-designer')
 replaces=('greenpak-designer-dev' 'greenpak-designer')
 options=('!strip' '!debug')
 
-source=("https://renesasweb-greenpak.s3.us-west-2.amazonaws.com/v${_pkgver_major}/go-configure-sw-hub-v${pkgver}-debian-12-amd64.deb")
-b2sums=('c5a43541b69d7974ad9b11cfdef608d2c979b799c85df1dd49670af7edda86de1fe535752ec13d0b0218e07865ab184b3e4051313edb1a0cff3cbcbcf7955799')
+source=("https://renesasweb-greenpak.s3.us-west-2.amazonaws.com/v${_pkgver_major}/go-configure-sw-hub-v${pkgver}-debian-13-amd64.deb")
+b2sums=('658cdc5bff65264b83782840255a44ba86843ef829434c7d0fd6fa75192a19af3d95ae0c2e62c802aaa8d1fcc2e7723a92c7facc3bfa59be0edd28a51686a647')
 
 package() {
     # Extract the package data
@@ -89,7 +89,7 @@ package() {
     install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
     ln -s "/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
 
-    # Patch graphviz sonames — app was built against Debian 12's older graphviz (soname 6),
+    # Patch graphviz sonames — app was built against an older graphviz (soname 6),
     # Arch ships soname 7/8. Only GP5 and GP6 link against graphviz.
     for _bin in GP5 GP6; do
         patchelf --replace-needed libgvc.so.6 libgvc.so.7 "${pkgdir}/opt/${pkgname}/bin/${_bin}"
