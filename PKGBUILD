@@ -26,20 +26,20 @@ pkgver() {
 prepare() {
     cd "$srcdir/gpupaper"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$srcdir/gpupaper"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    cargo build --offline --release
 }
 
 check() {
     cd "$srcdir/gpupaper"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen
+    cargo test --offline
 }
 
 package() {
@@ -47,7 +47,6 @@ package() {
 
     install -Dm755 "target/release/gpupaper" "$pkgdir/usr/bin/gpupaper"
 
-    # Example shaders
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Example shaders
