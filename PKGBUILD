@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Ausset <guillaume+arch@ausset.me>
 
 pkgname=colgrep
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Semantic code search powered by ColBERT"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 options=('!lto')
 conflicts=('colgrep-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lightonai/next-plaid/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3272cbd5a0ae0de7da85487ab2a3b8cde450298536e97bcd2f1625d626e808d8')
+sha256sums=('fe4597f692086c0c3a381a51ad7df75bf221401207f48df889ce1c29b77ee7b6')
 
 prepare() {
 	cd "${srcdir}/next-plaid-${pkgver}"
