@@ -9,7 +9,6 @@ pkgbase = nyaterm-bin
 	depends = bash
 	depends = cairo
 	depends = fontconfig
-	depends = gcc-libs
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = gtk3

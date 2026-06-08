@@ -14,7 +14,6 @@ depends=(
     bash
     cairo
     fontconfig
-    gcc-libs
     gdk-pixbuf2
     glib2
     gtk3
