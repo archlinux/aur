@@ -2,12 +2,14 @@
 
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
 import tarfile
 import tempfile
 import tomllib
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -19,8 +21,10 @@ PROJECT_VERSION = "v1.0"
 
 PROJECT_DIR = Path(__file__).resolve().parent
 
-GITHUB_API_LATEST = "https://api.github.com/repos/Comfy-Org/ComfyUI/releases/latest"
-GITHUB_API_TAG = "https://api.github.com/repos/Comfy-Org/ComfyUI/releases/tags/{}"
+COMFYUI_REPO = "Comfy-Org/ComfyUI"
+
+GITHUB_API_LATEST = f"https://api.github.com/repos/{COMFYUI_REPO}/releases/latest"
+GITHUB_API_TAG = f"https://api.github.com/repos/{COMFYUI_REPO}/releases/tags/{{}}"
 
 XDG_CACHE_HOME = Path(os.environ.get("XDG_CACHE_HOME", os.path.expanduser("~/.cache")))
 XDG_CONFIG_HOME = Path(os.environ.get("XDG_CONFIG_HOME", os.path.expanduser("~/.config")))
@@ -227,39 +231,61 @@ def _api_request(url):
             return json.load(resp)
     except TimeoutError:
         log("ERROR", "Timed out after %s seconds while requesting %s", timeout, url)
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            raise
+        log("ERROR", "HTTP error %s while requesting %s: %s", e.code, url, e)
 
 
 def _resolve_version(config, release_cache_dir):
-    # Determine which ComfyUI version will be run.
+    # Determine which ComfyUI ``version_head`` (a tag name, branch name, or
+    # 40-char commit hash) will be run, and which tarball URL to use.
     version = config["version"]
     update = config["update"]
 
-    if update:
-        url = (
-            GITHUB_API_LATEST
-            if version == "latest"
-            else GITHUB_API_TAG.format(version)
-        )
-        data = _api_request(url)
-        return data["tag_name"], data["tarball_url"]
-
+    # "latest" -- always consult the GitHub releases API when updating,
+    # otherwise rely on the cached ``latest`` symlink.
     if version == "latest":
+        if update:
+            data = _api_request(GITHUB_API_LATEST)
+            return data["tag_name"], data["tarball_url"]
         latest_link = release_cache_dir / "latest"
         if not latest_link.is_symlink():
             log("ERROR", "No cached 'latest' version and update is disabled.")
-        tarball_name = os.readlink(latest_link)
-        return tarball_name[: -len(".tar.gz")], None
+        return os.readlink(latest_link)[: -len(".tar.gz")], None
 
+    # 40-char SHA-1 commit hash -- fetched from the archive endpoint, not
+    # the releases API (releases are tag-based and don't cover arbitrary
+    # commits on a branch).
+    if re.match(r"^[0-9a-fA-F]{40}$", version):
+        version = version.lower()
+        if update:
+            return version, f"https://github.com/{COMFYUI_REPO}/archive/{version}.tar.gz"
+        return version, None
+
+    # Anything else is treated as a release tag first, and falls back to a
+    # branch archive URL when the API doesn't know about that release.
+    if update:
+        try:
+            data = _api_request(GITHUB_API_TAG.format(version))
+            return data["tag_name"], data["tarball_url"]
+        except urllib.error.HTTPError as e:
+            if e.code != 404:
+                raise
+            return version, f"https://github.com/{COMFYUI_REPO}/archive/refs/heads/{version}.tar.gz"
+
+    # update=False: hand the string back unchanged as the cache key.
+    # ``_ensure_tarball`` will either find the cache or error out.
     return version, None
 
 
-def _ensure_tarball(tag, release_cache_dir, tarball_url=None, is_latest=False, refresh=False):
-    # Make sure the tarball for ``tag`` is present in the cache directory.
-    tarball_name = f"{tag}.tar.gz"
+def _ensure_tarball(version_head, release_cache_dir, tarball_url=None, is_latest=False, refresh=False):
+    # Make sure the tarball for ``version_head`` is present in the cache directory.
+    tarball_name = f"{version_head}.tar.gz"
     tarball_path = release_cache_dir / tarball_name
 
     if refresh:
-        log("INFO", "Refreshing cached tarball for %s ...", tag)
+        log("INFO", "Refreshing cached tarball for %s ...", version_head)
         tarball_path.unlink(missing_ok=True)
         if is_latest:
             (release_cache_dir / "latest").unlink(missing_ok=True)
@@ -270,11 +296,11 @@ def _ensure_tarball(tag, release_cache_dir, tarball_url=None, is_latest=False, r
                 "ERROR",
                 "Cached tarball for %s is missing or corrupted, "
                 "and update is disabled.",
-                tag,
+                version_head,
             )
-        log("INFO", "Downloading ComfyUI %s ...", tag)
+        log("INFO", "Downloading ComfyUI %s ...", version_head)
         tmp_fd, tmp_name = tempfile.mkstemp(
-            prefix=f"comfykick_{tag}.tar.gz_",
+            prefix=f"comfykick_{version_head}.tar.gz_",
             dir="/tmp",
         )
         os.close(tmp_fd)
@@ -345,7 +371,7 @@ def run_prekick_commands(config, extracted_dir):
         subprocess.run(cmd, shell=True, cwd=str(extracted_dir), env=env, check=True)
 
 
-def install_dependencies(extracted_dir, config, tag):
+def install_dependencies(extracted_dir, config, version_head):
     # No multi-instance race: comfykick runs exclusively as a systemd
     # *user* unit, which serializes ``ExecStart=`` activations -- a
     # second ``systemctl --user start`` of the same unit is enqueued,
@@ -380,7 +406,7 @@ def install_dependencies(extracted_dir, config, tag):
                 "ERROR",
                 "manager_requirements.txt is missing from ComfyUI <%s>. "
                 "This is unexpected; Please report a bug to %s repo",
-                tag, PROJECT_NAME,
+                version_head, PROJECT_NAME,
             )
         log("INFO", "Installing manager dependencies ...")
         run(["uv", "pip", "install", "--requirements", "manager_requirements.txt"])
@@ -427,16 +453,16 @@ def main():
     create_directories(config, extra_dirs)
 
     release_cache_dir = Path(config["release_cache_dir"])
-    tag, tarball_url = _resolve_version(config, release_cache_dir)
+    version_head, tarball_url = _resolve_version(config, release_cache_dir)
     tarball_path = _ensure_tarball(
-        tag,
+        version_head,
         release_cache_dir,
         tarball_url=tarball_url,
         is_latest=(config["version"] == "latest"),
     )
 
-    log("INFO", "Extracting ComfyUI %s ...", tag)
-    prefix = f"_run-{tag}-"
+    log("INFO", "Extracting ComfyUI %s ...", version_head)
+    prefix = f"_run-{version_head}-"
     runtime_dir = Path(config["runtime_dir"])
     for old in runtime_dir.iterdir():
         if old.is_dir() and old.name.startswith("_run-"):
@@ -445,9 +471,9 @@ def main():
 
     extracted_dir = _extract_tarball(tarball_path, Path(work_temp))
     if extracted_dir is None:
-        log("INFO", "Re-preparing tarball for %s ...", tag)
+        log("INFO", "Re-preparing tarball for %s ...", version_head)
         tarball_path = _ensure_tarball(
-            tag,
+            version_head,
             release_cache_dir,
             tarball_url=tarball_url,
             is_latest=(config["version"] == "latest"),
@@ -458,7 +484,7 @@ def main():
             log(
                 "ERROR",
                 "Re-preparing tarball for %s is still corrupted; giving up.",
-                tag,
+                version_head,
             )
 
     # hack. See <https://github.com/Comfy-Org/ComfyUI/issues/8764>
@@ -467,11 +493,11 @@ def main():
 
     run_prekick_commands(config, extracted_dir)
 
-    install_dependencies(extracted_dir, config, tag)
+    install_dependencies(extracted_dir, config, version_head)
 
     log(
         "INFO",
-        "Kicking ComfyUI %s on http://%s:%s ...", tag, config["listen"], config["port"],
+        "Kicking ComfyUI %s on http://%s:%s ...", version_head, config["listen"], config["port"],
     )
     launch_comfyui(config, extracted_dir)
 

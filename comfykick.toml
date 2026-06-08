@@ -26,13 +26,16 @@
 # # ComfyUI source
 # # ---------------------------------------------------------------------------
 
-# # ComfyUI release to run. Either "latest" (follow the newest GitHub
-# # release) or a specific tag such as "v0.23.0".
+# # Choose which ComfyUI version to run.
+# # e.g. `latest`                                   (latest release)
+# #      `v0.24.0`                                  (specify release tag)
+# #      `master`                                   (specify branch snap)
+# #      `f49bdb655707b97952dcef40e12e5af1f08d2007` (40-char commit hash)
 # # Default: latest
 # version                = "latest"
 
-# # Check the release update.
-# # Set to false to using previously offline cached release tarball.
+# # Whether to check for and download updates.
+# # Set to false to use the previously offline-cached tarball.
 # # Default: true
 # update                 = true
 
