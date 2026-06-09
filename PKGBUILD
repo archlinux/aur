@@ -6,11 +6,11 @@
 _pkgname='aggregate6'
 pkgname="$_pkgname-git"
 pkgdesc='IPv4 and IPv6 prefix aggregation tool (development version)'
-pkgver=1.0.15.r0.g5888888
+pkgver=1.0.15.r4.g9d513e3
 pkgrel=1
 url='https://github.com/job/aggregate6'
 arch=('any')
-license=('BSD-2-Clause')  # SPDX-License-Identifier: BSD-2-Clause
+license=('BSD-2-Clause')
 makedepends=(
   'git'
   'python-build'
@@ -21,8 +21,9 @@ depends=(
   'python'
   'python-py-radix'
 )
-provides=("$_pkgname")
+provides=({,python-}"$_pkgname")
 conflicts=("${provides[@]}")
+options=('!strip')
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
@@ -42,6 +43,7 @@ prepare() {
 build() {
   cd "$_pkgname"
 
+  export PYTHONWARNINGS=ignore
   python -m build --wheel --no-isolation
 }
 
@@ -57,9 +59,10 @@ package() {
   rm -rf "$pkgdir/usr/man"
 
   for _dir in doc licenses; do
-    test -d "$pkgdir/usr/share/$_dir" || continue
-    cd "$pkgdir/usr/share/$_dir" && ln -srf "$pkgname" "$_pkgname"
-  done
+    pushd "$pkgdir/usr/share/$_dir"
+    ln -srf "$pkgname" "$_pkgname"
+    popd
+  done > /dev/null
 }
 
 # eof

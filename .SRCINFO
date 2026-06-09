@@ -1,6 +1,6 @@
 pkgbase = aggregate6-git
 	pkgdesc = IPv4 and IPv6 prefix aggregation tool (development version)
-	pkgver = 1.0.15.r0.g5888888
+	pkgver = 1.0.15.r4.g9d513e3
 	pkgrel = 1
 	url = https://github.com/job/aggregate6
 	arch = any
@@ -12,7 +12,10 @@ pkgbase = aggregate6-git
 	depends = python
 	depends = python-py-radix
 	provides = aggregate6
+	provides = python-aggregate6
 	conflicts = aggregate6
+	conflicts = python-aggregate6
+	options = !strip
 	source = aggregate6::git+https://github.com/job/aggregate6.git
 	sha256sums = SKIP
 
