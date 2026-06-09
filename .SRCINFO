@@ -1,6 +1,6 @@
 pkgbase = rproc-bin
 	pkgdesc = A Linux resource & process monitor inspired by Windows 11's Task Manager
-	pkgver = 0.3.0
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/Trystan-SA/rproc
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = rproc-bin
 	provides = rproc
 	conflicts = rproc
 	options = !strip
-	source = LICENSE-0.3.0::https://raw.githubusercontent.com/Trystan-SA/rproc/v0.3.0/LICENSE
+	source = LICENSE-0.3.5::https://raw.githubusercontent.com/Trystan-SA/rproc/v0.3.5/LICENSE
 	sha256sums = 87f838dd4476de000fa0b1b216e4a6323e1cad587eab2a8066161aa1669cda40
-	source_x86_64 = rproc-x86_64-0.3.0.deb::https://github.com/Trystan-SA/rproc/releases/download/v0.3.0/rproc_0.3.0-1_amd64.deb
-	sha256sums_x86_64 = 1685347cdd675637a783e126965ecf98d91da619583ce71ba138170fcc84ebe3
+	source_x86_64 = rproc-x86_64-0.3.5.deb::https://github.com/Trystan-SA/rproc/releases/download/v0.3.5/rproc_0.3.5-1_amd64.deb
+	sha256sums_x86_64 = 3d6ae8282e82dc7633ef9203b16e0f3f4fc87dcd6fb7f498b96a7f93091f65ef
 
 pkgname = rproc-bin
