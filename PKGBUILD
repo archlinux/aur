@@ -12,7 +12,7 @@ conflicts=('humen-mcp' 'humen-mcp-git')
 backup=('etc/humen-mcp.env')
 install=humen-mcp.install
 source=("https://github.com/LIghtJUNction/humen-mcp/releases/download/v${pkgver}/humen-mcp-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('891d6ea35169e5a131bdabe28636801c23dab8e998783e9ae739ee9d146ce07b')
+sha256sums=('bf75e5bf11aa6032247c60be335f72e91256974b5da73897974558621a1b8ec8')
 
 package() {
   cd "humen-mcp-${pkgver}-x86_64-unknown-linux-gnu"
