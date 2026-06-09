@@ -1,6 +1,6 @@
-# Maintainer: Minakami Sora <minakamisora@proton.me>
+# Maintainer: Efe Esen <halilefeesen@proton.me>
 
-_pkgauthor=MinakamiSora
+_pkgauthor=binaryharbinger
 _pkgname=riftbar
 
 pkgname=${_pkgname}-bin
