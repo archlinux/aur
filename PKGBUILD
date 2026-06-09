@@ -1,6 +1,6 @@
 # Maintainer: Moriaan Michiels <moriaan.michiels@gmail.com>
 pkgname=jcd-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Fuzzy cd alternative"
 arch=('x86_64')
