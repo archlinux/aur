@@ -1,7 +1,7 @@
 # Maintainer: Martin Siebenborn <m siebenborn at gmx dot de>
 # Contributor: Ankit Tyagi <civil tyagi At GoogleMail Dot Com>
 pkgname=getfem
-pkgver=v5.4.4
+pkgver=v5.5
 pkgrel=1
 pkgdesc="A finite element framework for partial differential equations"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('git'
              'python-setuptools')
 provides=('gmm')
 conflicts=('gmm')
-source=("$pkgname::git+https://github.com/getfem/getfem.git")
+source=("$pkgname::git+https://github.com/getfem/getfem.git#tag=$pkgver")
 sha512sums=('SKIP')
 build() {
     cd "$srcdir/$pkgname"
