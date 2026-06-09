@@ -2,7 +2,7 @@
 _pkgname=c43
 pkgbase=c47
 pkgname=(c47 r47)
-pkgver=00.109.03.02b0
+pkgver=00.109.03.03b0
 pkgrel=1
 pkgdesc="Emulator for the C47 pocket calculator"
 arch=(x86_64)
@@ -10,8 +10,15 @@ url="https://47calc.com"
 license=('GPL-3.0-or-later')
 depends=('glibc' 'gtk3' 'hicolor-icon-theme' 'bash' 'python' 'cairo' 'libpulse' 'glib2' 'gmp')
 makedepends=('meson' 'python-sphinx' 'doxygen' 'python-breathe' 'xlsxio' 'gendesk' 'icoutils' 'git')
-source=("https://gitlab.com/rpncalculators/c43/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('1326062c0a150f7c1d3d3d5cb034e3c554e50239b9a2bdaa307b9e00425d3c0b')
+source=("git+https://gitlab.com/rpncalculators/c43.git#tag=${pkgver}"
+	"git+https://github.com/swissmicros/DMCP_SDK.git"
+	"git+https://github.com/swissmicros/DMCP5_SDK.git"
+	"git+https://github.com/msteveb/jimtcl.git"
+	)
+sha256sums=('17f48865d792f6d57cc40bebce1859b05a89c3e129eb8933a481dea1b5fadc0e'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
 	cd "$srcdir"
@@ -29,17 +36,24 @@ prepare() {
 	--icon="${pkgbase/c/r}" \
 	--terminal=false \
 	--categories="Education;Office;Utilities;Science;Math"
+	cd "$srcdir/${_pkgname}"
+	git submodule init
+	for _submodule in {DMCP_SDK,DMCP5_SDK,jimtcl}
+	do
+		git config submodule.dep/${_submodule}.url "$srcdir/${_submodule}"
+	done
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
 	cd "$srcdir"
 	arch-meson --buildtype=custom -DDECNUMBER_FASTMUL=true \
-	${_pkgname}-${pkgver} build
+	${_pkgname} build
 
 	meson compile -C build
 
-	cd "$srcdir/${_pkgname}-${pkgver}/docs/code"
-	mkdir -p "$srcdir/${_pkgname}-${pkgver}/build/docs"
+	cd "$srcdir/${_pkgname}/docs/code"
+	mkdir -p "$srcdir/${_pkgname}/build/docs"
 	doxygen
 }
 
@@ -47,7 +61,7 @@ package_c47() {
 	cd "$srcdir"
 	install -dm755 "$pkgdir/usr/bin"
 	install -dm755 "$pkgdir/usr/share/$pkgname"
-	cp -a ${_pkgname}-${pkgver}/res "$pkgdir/usr/share/$pkgname/res"
+	cp -a ${_pkgname}/res "$pkgdir/usr/share/$pkgname/res"
 	install -Dm755 build/src/${pkgname}-gtk/${pkgname} "$pkgdir/usr/lib/$pkgname/$pkgname"
 	cat >> "$pkgdir/usr/bin/$pkgname" <<-EOF
 #!/usr/bin/env sh
@@ -69,7 +83,7 @@ EOF
 	chmod 755 "$pkgdir/usr/bin/$pkgname"
 
 	install -Dm644 "$srcdir/c47.desktop" "$pkgdir/usr/share/applications/c47.desktop"
-	cd "$srcdir/${_pkgname}-${pkgver}/res"
+	cd "$srcdir/${_pkgname}/res"
 	icotool -x "${pkgname}.ico"
 	_count=1
 	for _size in {16,24,32,48,64,128,256};
@@ -91,14 +105,14 @@ EOF
 
 	done
 	install -dm755 "$pkgdir/usr/share/doc/"
-	cp -a "$srcdir/${_pkgname}-${pkgver}/build/docs/html" "$pkgdir/usr/share/doc/${pkgname}"
+	cp -a "$srcdir/${_pkgname}/build/docs/html" "$pkgdir/usr/share/doc/${pkgname}"
 }
 package_r47() {
 	pkgdesc="${pkgdesc/C/R}"
 	cd "$srcdir"
 	install -dm755 "$pkgdir/usr/bin"
 	install -dm755 "$pkgdir/usr/share/$pkgname"
-	cp -a ${_pkgname}-${pkgver}/res "$pkgdir/usr/share/$pkgname/res"
+	cp -a ${_pkgname}/res "$pkgdir/usr/share/$pkgname/res"
 	install -Dm755 build/src/${pkgname/r/c}-gtk/${pkgname} "$pkgdir/usr/lib/$pkgname/$pkgname"
 	cat >> "$pkgdir/usr/bin/$pkgname" <<-EOF
 #!/usr/bin/env sh
@@ -120,7 +134,7 @@ EOF
 	chmod 755 "$pkgdir/usr/bin/$pkgname"
 
 	install -Dm644 "$srcdir/r47.desktop" "$pkgdir/usr/share/applications/r47.desktop"
-	cd "$srcdir/${_pkgname}-${pkgver}/res"
+	cd "$srcdir/${_pkgname}/res"
 	icotool -x "${pkgname}.ico"
 	_count=1
 	for _size in {16,24,32,48,64,128,256};
@@ -139,5 +153,5 @@ EOF
 
 	done
 	install -dm755 "$pkgdir/usr/share/doc/"
-	cp -a "$srcdir/${_pkgname}-${pkgver}/build/docs/html" "$pkgdir/usr/share/doc/${pkgname}"
+	cp -a "$srcdir/${_pkgname}/build/docs/html" "$pkgdir/usr/share/doc/${pkgname}"
 }
