@@ -17,13 +17,17 @@ post_install() {
     udevadm trigger --subsystem-match=usb 2>/dev/null || true
     udevadm trigger --subsystem-match=hidraw 2>/dev/null || true
 
+    # Start the service now for any active user sessions.
+    while IFS= read -r uid; do
+        DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${uid}/bus" \
+            systemctl --user -M "${uid}@.host" start nexus-open.service 2>/dev/null || true
+    done < <(loginctl list-sessions --no-legend | awk '{print $2}' | sort -u)
+
     echo ""
     echo "==> Nexus Open installed!"
     echo ""
     echo "Unplug and replug your iCUE Nexus — uaccess grants access automatically"
     echo "in your desktop session. No group membership needed."
-    echo ""
-    echo "To start at login: systemctl --user enable --now nexus-open.service"
     echo ""
 }
 
