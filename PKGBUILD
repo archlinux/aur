@@ -23,7 +23,8 @@ pkgname='jre11'
 #pkgver='11.0.21'; _build='9'; _hash='8819d0447e4d41b3bd1d9e1007728d17'
 #pkgver='11.0.25'; _build='9'; _hash='60e5d03cc24a4e1c8ab5d29303dbe066'
 #pkgver='11.0.26'; _build='7'; _hash='720377fa814b4b4491dea5837af261de'
-pkgver='11.0.28'; _build='12'; _hash='b9df5b5128bc4f4fac0e12c356ea6ae3'
+#pkgver='11.0.28'; _build='12'; _hash='b9df5b5128bc4f4fac0e12c356ea6ae3'
+pkgver='11.0.31'; _build='9'; _hash='ec89b195d0be4df08da18c8c76ca2174'
 _major="${pkgver%%.*}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Runtime Environment"
@@ -87,16 +88,16 @@ fi
 unset _srcfil
 unset XDG_DOWNLOAD_DIR
 
-md5sums=('3d76919afcf9798e5a81e5ed08a4f483'
+md5sums=('ec4dc4ed666eabc9c04978a4142b5937'
          '51c8839211cc53f09c9b11a8e28ed1ef')
-sha256sums=('ce66c1c4e223bdabcbf2420db3b8204361129df57f10a68c562bb6694be17696'
+sha256sums=('f779a84f3a003841a07eafb8566e4c48707be7f71a48b97bf05f846f45f03161'
             'f1081b08cfbb467277e95b3794191c9963398579733fa8832425b308b5917711')
 
 DLAGENTS=("${DLAGENTS[@]// -gqb \"\"/ -gq}")
 DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
 
 package() {
-  set -u
+  local -; set -u
   cd "jdk-${pkgver}"
 
   local _jvmdir="/usr/lib/jvm/java-${_major}-jdk"
@@ -128,6 +129,5 @@ package() {
   cp -a legal/* "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "${pkgname}" "${pkgdir}/usr/share/licenses/java${_major}-${pkgname}"
   ln -s "../../../share/licenses/${pkgname}" "${pkgdir}/${_jvmdir}/legal"
-  set +u
 }
 set +u
