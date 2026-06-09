@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=librechat
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source ChatGPT clone fully customizable and compatible with any AI provider"
 arch=('x86_64')
 url="https://github.com/danny-avila/LibreChat"
@@ -24,7 +24,7 @@ source=(
   librechat.install librechat.env librechat.service librechat.sysusers librechat-server.sh
 )
 sha256sums=('14d812ad0f36dd214db2a58df229fb5b8edd9609da4f459ecef59421ea737b03'
-            '8e5b58ecbbf5b68f31b83a0e0e4a8ffeb46410f0794eec061f6510c98d611ddc'
+            '063927ce15c895c49252b1d0e12dbf7aa15c6a335630576db7cee0c4beaf964f'
             'c1996fb6baa3f6decfdf27cac916ab6a9eb49bd9ff28e5a350dc9396c96ff0e4'
             '6d8d9cbf687b9978ca33be6ae270fe2a6a65938ee945d3dca5435531ba5cadf8'
             '98e0aa0ac2e301a82d1d9cb567f361cb86af09a9b7b7bf65a526098fc4789339'
