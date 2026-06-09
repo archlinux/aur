@@ -1,7 +1,7 @@
 # Maintainer: Tim Pearson <ttpears@gmail.com>
 pkgname=tmux-tad
 _pkgname=tad
-pkgver=0.11.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Tmux session and group manager with a native TUI dashboard"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('tad-bin' 'tad' 'tmux-tad-bin' 'tmux-tad-git')
 # passes — they only produce an empty tmux-tad-debug package.
 options=('!debug' '!strip')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4bd05c59c950b115c028dff145618613eba4dffb4fc6cd77b6cb7654bc2633b5')
+sha256sums=('15c61cd0d728c24c5d1c109b8729b447b5b73963b325b55f594a847be19c2794')
 
 prepare() {
     cd "$_pkgname-$pkgver"
