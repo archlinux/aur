@@ -6,7 +6,7 @@
 # under GPL-3.0-only by its upstream author (declared in license= below).
 pkgname=modulejail
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Proactively shrink Linux kernel-module attack surface by blacklisting unused modules'
 arch=('any')
 url='https://modulejail.com'
@@ -30,8 +30,15 @@ install=$pkgname.install
 # 2026-05-24: use sqv, not gpg). The signing key is shipped in this AUR
 # repo as modulejail-signing-key.gpg (sha256 below) so verification needs
 # no keyring state, no network beyond the source fetch, and no gpg.
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.tarball-signature::${url}/releases/download/v${pkgver}/v${pkgver}.tar.gz.sig"
+#
+# url= above is the project homepage (modulejail.com) and is used by
+# pacman -Si as the Homepage field; it does NOT host tarballs. The
+# source array hard-codes the GitHub URL where releases actually live -
+# do NOT substitute ${url} here, that was the v1.4.1-1 regression that
+# 404'd on every install (gh #21, AUR comment 2026-06-09).
+_source_host='https://github.com/jnuyens/modulejail'
+source=("${pkgname}-${pkgver}.tar.gz::${_source_host}/archive/refs/tags/v${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tarball-signature::${_source_host}/releases/download/v${pkgver}/v${pkgver}.tar.gz.sig"
         'modulejail-signing-key.gpg')
 sha256sums=('462bfbdbe4dfd176de5a68347d37cafb09058b93d422eba9bd7be75f2bf8fa6d'
             'SKIP'
