@@ -23,12 +23,12 @@ install="aivpn.install"
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --frozen --release
+  cargo build --release --offline
 }
 
 package() {
