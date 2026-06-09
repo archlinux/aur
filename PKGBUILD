@@ -23,6 +23,11 @@ package() {
     install -Dm644 packaging/systemd/nexus-open.service \
         "${pkgdir}/usr/lib/systemd/user/nexus-open.service"
 
+    # Preset enables the service automatically on first install.
+    printf 'enable nexus-open.service\n' | \
+        install -Dm644 /dev/stdin \
+        "${pkgdir}/usr/lib/systemd/user-preset/75-nexus-open.preset"
+
     install -Dm644 packaging/desktop/nexus-open.desktop \
         "${pkgdir}/usr/share/applications/nexus-open.desktop"
 
