@@ -1,19 +1,19 @@
 pkgname=homepage
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="A highly customizable homepage (or startpage / application dashboard) with Docker and service API integrations."
 arch=('any')
 url="https://github.com/gethomepage/homepage"
 license=('GPL-3.0-only')
-makedepends=('nodejs-lts-iron' 'pnpm' 'git')
-depends=('nodejs-lts-iron')
+makedepends=('nodejs>=22.22.2' 'pnpm' 'git')
+depends=('nodejs>=22.22.2')
 # FIX 1: Disable the -debug package
 options=('!debug')
 source=("https://github.com/gethomepage/homepage/archive/v${pkgver}.tar.gz"
         'homepage.service'
         'homepage.sysusers'
         'homepage.tmpfiles')
-sha256sums=('95fd78e3b7abb9db33435fa81a00bc95d7f13cd0fb00b7abde102ef6112d7df6'
+sha256sums=('4e11b0cf4a6b0b1e56a10145667fb93ecf6abeb4c2767375fc88f3d2b49cc04f'
             'ad7cf62a095823b9f7597d1c28c5ca6f6b424af1db0be0e813c5df87eab35dd6'
             'b35b3df75248f5dd1298cb1a13921cb40b66998608eae3a8bf0c36562d43d278'
             'e10cf0af4417326d32acffddd7104ce5e033dfbbf06f7f8f71bc92a1d6c37165')
