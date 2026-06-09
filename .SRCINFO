@@ -1,0 +1,13 @@
+pkgbase = android-vndk-32
+	pkgdesc = Additional Android libraries for Android 12L (API level 32). VNDK prebuilt variant.
+	pkgver = 32
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/prebuilts/vndk/v32
+	arch = any
+	license = custom
+	options = !strip
+	options = !debug
+	source = vndk::shallowclone+https://android.googlesource.com/platform/prebuilts/vndk/v32
+	sha256sums = SKIP
+
+pkgname = android-vndk-32
