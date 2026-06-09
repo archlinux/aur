@@ -25,7 +25,7 @@ depends=(glibc)
 makedepends=(nasm
 gcc make patch) # base-devel
 _so=libffmpeg.so
-conflicts=({nwjs,opera-beta,vivaldi{,-snapshot}}-ffmpeg-codecs)
+conflicts=({nwjs,vivaldi{,-snapshot}}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 prepare() {
   # List used funcs
