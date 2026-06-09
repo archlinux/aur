@@ -1,14 +1,16 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 
 : ${CARGO_HOME:=$SRCDEST/cargo-home}
 : ${CARGO_TARGET_DIR:=target}
 : ${RUSTUP_TOOLCHAIN:=stable}
 export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
+: ${_pkgver_provider:=25.12.0}
+
 _pkgname=('anyrun' 'anyrun-provider')
 pkgname="$_pkgname"
-pkgver=25.12.0
-pkgrel=2
+pkgver=26.6.1
+pkgrel=1
 pkgdesc="A wayland native, highly customizable runner"
 _url=(
   "https://github.com/anyrun-org/anyrun"
@@ -25,21 +27,24 @@ makedepends=(
   'cargo'
 )
 
-conflicts=("${_pkgname[1]}")
+conflicts=(
+  "${_pkgname[0]}-git"
+  "${_pkgname[1]}"
+)
 
 options=('!lto' '!strip')
 
 _pkgsrc=(
   "${_pkgname[0]}-$pkgver"
-  "${_pkgname[1]}-$pkgver"
+  "${_pkgname[1]}-$_pkgver_provider"
 )
 _pkgext="tar.gz"
 source=(
   "${_pkgsrc[0]}.$_pkgext"::"${_url[0]}/archive/refs/tags/v$pkgver.$_pkgext"
-  "${_pkgsrc[1]}.$_pkgext"::"${_url[1]}/archive/refs/tags/v$pkgver.$_pkgext"
+  "${_pkgsrc[1]}.$_pkgext"::"${_url[1]}/archive/refs/tags/v${_pkgver_provider}.$_pkgext"
 )
 sha256sums=(
-  '4213a2f65fd6139829128d3c7a7f4b54fec3181f8d549e212021341dd10c3d50'
+  '0b2abc1da9fdea12a753ca3024d5ede62209b82837d49eb5da35d99ba22a5790'
   'd9b4afcb7bafc4e4d43c64bd6ec8110ae3b858964d68d164c24c0c6505831dd6'
 )
 
