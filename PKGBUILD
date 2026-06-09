@@ -1,5 +1,5 @@
 pkgname=rnum
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Rational numbers REPL calculator written in Rust"
 arch=('x86_64')

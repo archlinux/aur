@@ -1,13 +1,13 @@
 pkgbase = rnum
 	pkgdesc = Rational numbers REPL calculator written in Rust
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/davide-leva/rnum
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	options = !debug
-	source = https://github.com/davide-leva/rnum/archive/refs/tags/v0.1.4yay .tar.gz
+	source = https://github.com/davide-leva/rnum/archive/refs/tags/v0.1.5yay .tar.gz
 	sha256sums = SKIP
 
 pkgname = rnum
