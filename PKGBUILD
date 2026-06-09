@@ -3,7 +3,7 @@
 # Contributor: noonov <noonov@gmail.com>
 
 pkgname=ttf-mplus-git
-pkgver=r286.71d438c
+pkgver=r605.c96971c
 pkgrel=1
 pkgdesc='A little nifty font family for everyday usage (git version)'
 _repo_name='MPLUS_FONTS'
@@ -24,10 +24,8 @@ pkgver() {
 }
 
 package() {
-  cd ${srcdir}/${_repo_name}/fonts/ttf
-
   install -d ${pkgdir}/usr/share/fonts/TTF
-  install -m644 *.ttf ${pkgdir}/usr/share/fonts/TTF/
+  install -m644 -t ${pkgdir}/usr/share/fonts/TTF/ ${srcdir}/${_repo_name}/fonts/MPLUS{1,1Code,2,CodeLatin,U}/ttf/*.ttf
 
   cd ${srcdir}/${_repo_name}
 
