@@ -6,7 +6,7 @@ _pkgname=openssl
 _ver=1.1.1w
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=9
+pkgrel=10
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('aarch64' 'x86_64')
 url='https://www.openssl.org'
@@ -39,6 +39,16 @@ source=(
 	CVE-2025-69420.patch
 	CVE-2025-69421.patch
 	CVE-2026-22795_CVE-2026-22796.patch
+	CVE-2026-28387.patch
+	CVE-2026-28388-1.patch
+	CVE-2026-28388-2.patch
+	CVE-2026-28389-1.patch
+	CVE-2026-28389-2.patch
+	CVE-2026-28389.tar
+	CVE-2026-28390-1.patch
+	CVE-2026-28390-2.patch
+	CVE-2026-28390-3.patch
+	CVE-2026-28390-4.patch
 	# https://git.almalinux.org/rpms/openssl/src/branch/c8s
 	CVE-2025-69419-1.patch
 	CVE-2025-69419-2.patch
@@ -67,6 +77,16 @@ sha256sums=('cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8'
             'a8872bd2e35b9e98f609280425a8f0c2aefdb53bf8e82867801dc1bd4929442a'
             'abbac0667f15870da50e19601bec90b4a3323e38e8d99bc2340037dff5091658'
             '5ae30f0101c5ce031c2a22531b099e16b1796bca1ef640dde087f0caaf34265d'
+            'eb815e57a59646b185576b6a04ba9803fcf2f77a41f4a611a39f1c8223177270'
+            '662786ba0e229616f0dde5c08b550e2ea4b81d6c51babe97db7aadf1438259f4'
+            'f6bcf54edac5382be399c33a50c9d7568c3f6316ec9cfe5d80b9c41bac4906ae'
+            'ae5fdc98beb183179362eac0ebdc8d9cfe5a3eec44552b6bf0106c4bdabb5de0'
+            'c94eb9553df3e351f4cd49b7d46f4901e7ec3cd9c1b4f67c04af390ee4a8e116'
+            'ab721837f629ee7bd3501d71345e028f871b8a5e5feb828b809b3138a706fdbf'
+            '61b0d0d876d68c4c4e1762ca69d22fd8d3c3d61959e1d32823ecc8e03971e624'
+            'd1bd3facfc13838171aa6ad353f7f1844d803d77f9c32b900c943c07c99476fc'
+            'c93a91e411c35eef8620927804ea4f4228063f503ae8ccc9adb4c248a57d3f6d'
+            'dd5c12716c5b558de8284689ce6feb7ee68f26cc8312be6380db96ddd9ea5a42'
             'd89423836be0cb5ca076e173ea373c4deeef3d6ffa17085ca8a0850b364d7d3b'
             '933c61f15a81ac9c50f66f8c6c059d09f94a116d7b4c4d534a41b1c8f0140160')
 validpgpkeys=(
@@ -113,6 +133,17 @@ prepare() {
 	patch -p1 -i "${srcdir}/CVE-2025-69420.patch"
 	patch -p1 -i "${srcdir}/CVE-2025-69421.patch"
 	patch -p1 -i "${srcdir}/CVE-2026-22795_CVE-2026-22796.patch"
+	patch -p1 -i "${srcdir}/CVE-2026-28387.patch"
+	patch -p1 -i "${srcdir}/CVE-2026-28388-1.patch"
+	patch -p1 -i "${srcdir}/CVE-2026-28388-2.patch"
+	patch -p1 -i "${srcdir}/CVE-2026-28389-1.patch"
+	patch -p1 -i "${srcdir}/CVE-2026-28389-2.patch"
+	patch -p1 -i "${srcdir}/CVE-2026-28390-1.patch"
+	patch -p1 -i "${srcdir}/CVE-2026-28390-2.patch"
+	patch -p1 -i "${srcdir}/CVE-2026-28390-3.patch"
+	patch -p1 -i "${srcdir}/CVE-2026-28390-4.patch"
+
+	cp -RTv ../test test
 }
 
 build() {
