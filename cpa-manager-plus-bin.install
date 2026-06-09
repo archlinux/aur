@@ -1,11 +1,20 @@
 post_install() {
     echo ":: Packaging issues? Report at: https://github.com/orange-guo/aur-packages"
-    echo ::\ Copy\ the\ example\ configuration\ before\ starting\ the\ service:
+    echo ::\ CPA\ Manager\ Plus\ needs\ a\ running\ CLIProxyAPI/CPA\ instance\ for\ management\ and\ usage\ collection.
+    echo ::\ It\ can\ connect\ to\ either\ a\ local\ cli-proxy-api\ service\ or\ a\ remote\ CPA\ endpoint.
+    echo ::\ Configure\ the\ user\ service\ before\ starting\ it:
     echo \ \ \ install\ -Dm600\ /usr/share/doc/cpa-manager-plus-bin/cpa-manager-plus.env.example\ ~/.config/cpa-manager-plus/cpa-manager-plus.env
     echo \ \ \ \$EDITOR\ ~/.config/cpa-manager-plus/cpa-manager-plus.env
-    echo ::\ CLIProxyAPI\ should\ enable\ usage-statistics-enabled\ for\ usage\ collection.
-    echo ::\ Only\ one\ Manager\ Server\ should\ consume\ the\ same\ CLIProxyAPI\ usage\ queue.
-    echo ::\ The\ user\ service\ stores\ data\ under\ ~/.local/state/cpa-manager-plus\ and\ listens\ on\ HTTP_ADDR\ from\ the\ env\ file.
+    echo ::\ Set\ CPA_UPSTREAM_URL\ and\ CPA_MANAGEMENT_KEY\ to\ match\ your\ CPA\ Management\ API.
+    echo ::\ Set\ CPA_MANAGER_ADMIN_KEY\ for\ logging\ in\ to\ the\ Manager\ web\ UI\;\ it\ is\ separate\ from\ CPA_MANAGEMENT_KEY.
+    echo ::\ Then\ start\ the\ user\ service:
+    echo \ \ \ systemctl\ --user\ enable\ --now\ cpa-manager-plus.service
+    echo ::\ After\ editing\ the\ env\ file\,\ restart\ the\ service:
+    echo \ \ \ systemctl\ --user\ restart\ cpa-manager-plus.service
+    echo ::\ The\ user\ service\ stores\ data\ and\ the\ SQLite\ database\ under\ ~/.local/state/cpa-manager-plus.
+    echo ::\ CPA\ Manager\ Plus\ persists\ the\ Manager\ Admin\ Key\ in\ SQLite\ on\ first\ initialization.
+    echo ::\ Changing\ CPA_MANAGER_ADMIN_KEY\ later\ requires:\ cpa-manager-plus\ reset-admin-key\ --db-path\ ~/.local/state/cpa-manager-plus/usage.sqlite\ --admin-key-file\ \<key-file\>
+    echo ::\ For\ usage\ collection\,\ enable\ usage-statistics-enabled\ in\ CPA\ and\ keep\ only\ one\ Manager\ Server\ consuming\ the\ same\ CPA\ usage\ queue.
     echo ::\ To\ start\ without\ an\ active\ login\ session\,\ enable\ linger:\ loginctl\ enable-linger\ \$USER
     echo ""
     echo ":: Service Management"

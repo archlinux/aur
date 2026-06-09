@@ -2,7 +2,7 @@
 # Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/cpa-manager-plus-bin
 pkgname=cpa-manager-plus-bin
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc=Management\ panel\ and\ analytics\ server\ for\ CLIProxyAPI
 arch=(x86_64 aarch64 )
 url=https://github.com/seakee/CPA-Manager-Plus
@@ -10,15 +10,15 @@ license=(MIT )
 depends=()
 makedepends=()
 checkdepends=()
-optdepends=(cli-proxy-api:\ local\ CLIProxyAPI\ backend )
+optdepends=(cli-proxy-api:\ local\ CLIProxyAPI\ backend\ for\ management\ and\ usage\ collection )
 options=(\!strip )
 provides=(cpa-manager-plus )
-conflicts=(cpa-manager-plus )
+conflicts=(cpa-manager-plus cpa-manager cpa )
 validpgpkeys=()
 install=cpa-manager-plus-bin.install
 source=(cpa-manager-plus.env.example cpa-manager-plus.service )
-sha256sums=('5ee18c2bdd87d89f6602431428b5d487f73d8dfd5476cef2099220fada7b62cc'
-            'f164707b79c36e00f19a60c714429c00f2145581b7ca4b1e6c1d502c3004ce08')
+sha256sums=('d3a612277579023580d18391c54c529029d21d4d971a4fe34b39c2b90a90d196'
+            '6d31dd15f87463d748b400dc0f00a07ec0f700de213dc4eaaaabdbe2e4135f35')
 sha256sums_x86_64=('238b141c4907b77051a0af9d3d4efab5061d9f3c5f25939e788f3bc5fb7b4f0c')
 sha256sums_aarch64=('059b6b60123b1079bb1ee599309ac842cee1b54b66c87d8a425505277cbe564a')
 source_x86_64=(cpa-manager-plus-bin-1.2.1-x86_64.tar.gz::https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.2.1/cpa-manager-plus_v1.2.1_linux_amd64.tar.gz )
