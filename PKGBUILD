@@ -3,8 +3,8 @@
 # Releases: https://persistent.oaistatic.com/codex-app-prod/appcast.xml
 
 pkgname=openai-codex-desktop
-pkgver=26.519.41501
-pkgrel=1
+pkgver=26.602.71036
+pkgrel=2
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
 url="https://developers.openai.com/codex/app/"
@@ -44,14 +44,12 @@ noextract=(
   'node-pty.tgz'
 )
 
-sha256sums=(
-  '7e46af58373b9acf799296b83e7c3cf19a5255d263b30cb437b495c35e9628bd'
-  'ad0e29650140c49d0335b1d356596aa8166f12b758f418a98446130e3278f250'
-  'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
-  '2e075990f5419d66dd98c83e4ec938d5497d1a4ad2e8c766bf3664c35edadf51'
-  'd3a00f4a4ddf2709d4f018222866df67d155ca36c9dbfa0dd1867d4c9267808d'
-  '75fac66236ae9a5fd46b56d5a9eb8cf1451e65916317d0e608834083b3bf5d1b'
-)
+sha256sums=('327851effb2411ffde830f44af32c3a7f785cfc72fd2a49fc2933c42ef0b5be5'
+            'ad0e29650140c49d0335b1d356596aa8166f12b758f418a98446130e3278f250'
+            'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
+            '2e075990f5419d66dd98c83e4ec938d5497d1a4ad2e8c766bf3664c35edadf51'
+            'd3a00f4a4ddf2709d4f018222866df67d155ca36c9dbfa0dd1867d4c9267808d'
+            '422200b52ee18a1e1f6deb21728301c9f333be2157360a744f8c2cf53926e315')
 
 prepare() {
   cd "${srcdir}"
@@ -133,6 +131,20 @@ EOF
   cp -a node_modules/node-pty "${srcdir}/app-extracted/node_modules/"
 
   cd "${srcdir}"
+  find app-extracted/node_modules/better-sqlite3 app-extracted/node_modules/node-pty \
+    -type f \( -name Makefile -o -name '*.mk' -o -name config.gypi \) -delete
+  find app-extracted/node_modules/better-sqlite3 app-extracted/node_modules/node-pty \
+    -type d -name .deps -prune -exec rm -rf '{}' +
+
+  local prebuild_root
+  for prebuild_root in app-extracted app.asar.unpacked; do
+    [[ -d "${prebuild_root}" ]] || continue
+    find "${prebuild_root}" -path '*/prebuilds/*' -type f -name '*.node' \
+      ! \( -path '*/linux-x64/*' -o -path '*/HID-linux-x64/*' -o -path '*/HID_hidraw-linux-x64/*' \) \
+      -delete
+    find "${prebuild_root}" -path '*/prebuilds/*' -type f -name '*musl*.node' -delete
+  done
+
   npx --yes asar pack app-extracted app.asar --unpack "{*.node,*.so}"
 }
 
