@@ -1,9 +1,9 @@
-# Maintainer : bwrsandman
-# Co-Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
-# thanks to txtsd <aur.archlinux@ihavea.quest> for contributing some parts of the PKGBUILD code
+# Maintainer : Niccolò Belli <niccolo.belli@linuxsystems.it>
+# Thanks to Lone_Wolf <lone_wolf@klaas-de-kat.nl> and txtsd <aur.archlinux@ihavea.quest> for contributing some parts of the PKGBUILD code
+# Thanks to bwrsandman for the original PKGBUILD
 
-pkgname=openmw-git
-pkgver=0.50.0.r1134.ge6b9c27884
+pkgname=openmw-stable-git
+pkgver=0.51.0.r0.gf4bec41444
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,16 +11,15 @@ url="http://www.openmw.org"
 license=('GPL-3.0-or-later' 'MIT' 'custom')
 depends=('openal' 'openscenegraph-openmw-git' 'mygui-openmw' 'bullet-dp' 'qt6-base' 'qt6-svg' 'qt6-tools' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp' 'sqlite')
 makedepends=('git' 'cmake' 'boost' 'debugedit')
-conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}")
-source=('git+https://gitlab.com/OpenMW/openmw.git'
+conflicts=('openmw' 'openmw-git')
+provides=('openmw')
+source=('git+https://gitlab.com/OpenMW/openmw.git#branch=openmw-51'
 )
-sha1sums=('SKIP'
-)
+sha1sums=('SKIP')
 options=(debug strip)
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/openmw"
   _tag="$(git describe --tags $(git rev-list --tags --max-count=1))"
   # We want the latest/highest minor version for _tag
   # First we strip off any openmw-*
@@ -50,7 +49,7 @@ build() {
   
   cmake \
         -B _build \
-        -S "${srcdir}/${pkgname%-git}"  \
+        -S "${srcdir}/openmw"  \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D CMAKE_BUILD_TYPE=RelWithDebInfo \
         -D OPENMW_USE_SYSTEM_RECASTNAVIGATION=ON \
@@ -62,7 +61,7 @@ build() {
 
 package() {
   make DESTDIR="$pkgdir" -C _build install
-  install -Dm 644 "${pkgname%-git}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 "openmw/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
