@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Variables & Things!
+export sysinfo_ver='1.1'
+export sysinfo_build='1000'
+
+# Check if Neofetch Exists
+if ! command -v neofetch >/dev/null; then
+	echo "I kindly say, please install neofetch: pacman -Syu neofetch"
+	echo "Or: *use another AUR package manager, i really don't care."
+	exit 1
+fi
+
+if [ "$1" = "--info" ]; then
+    echo "System Information Version : $sysinfo_ver"
+	echo "Build : $sysinfo_build"
+	echo "This app is based on neofetch"
+    exit 0
+fi
+
+if [ "$1" = "--ubuntu" ]; then
+    neofetch --ascii_distro ubuntu
+    exit 0
+fi
+
+if [ "$1" = "--kde-neon" ]; then
+    neofetch --ascii_distro kde
+    exit 0
+fi
+
+if [ -z "$1" ]; then
+    neofetch --ascii_distro os host kernel uptime packages shell resolution de wm theme icons terminal cpu gpu memory
+    exit 0
+fi
+
+if [ "$1" = "--fullinfo" ]; then
+	neofetch --ascii_distro title underline os host kernel uptime packages shell resolution de wm wm_theme theme icons term term_font cpu gpu memory gpu_driver cpu_usage disk battery font song local_ip public_ip users locale
+	exit 0
+fi
+
+if [ "$1" = "--help" ]; then
+    echo "[Usage:]"
+    echo "--ubuntu    Shows Ubuntu Logo"
+    echo "--kde-neon  Shows KDE Neon Logo"
+    echo "--help      Shows this dialog"
+    echo "--fullinfo  Shows Full Information about the System"
+    echo "--info      Shows Information about Sysinfo"
+    echo "no args     Minimal system info"
+    exit 0
+fi
+
+echo "Cannot find '$1', run 'sysinfo --help' to see all commands."

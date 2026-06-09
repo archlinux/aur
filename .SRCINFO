@@ -1,0 +1,11 @@
+pkgbase = sysinfo
+	pkgdesc = Simple neofetch-based system info wrapper
+	pkgver = 1.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = neofetch
+	source = sysinfo
+	sha256sums = SKIP
+
+pkgname = sysinfo
