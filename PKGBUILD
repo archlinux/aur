@@ -4,21 +4,21 @@
 
 _pkgbase=pvs-studio
 pkgname=${_pkgbase}-bin
-pkgver=7.42.105112.761
+pkgver=7.43.107142.799
 pkgrel=1
 pkgdesc='Static code analyzer for C and C++'
 arch=('x86_64')
 url='https://pvs-studio.com/en/pvs-studio/'
-license=('custom:pvs-studio')
+license=('LicenseRef-pvs-studio')
 optdepends=('how-to-use-pvs-studio-free: for adding special comments to a source code'
             'bash-completion: for bash completion'
             'strace: for analyzing via using strace logs')
-options=('!strip' '!debug')
+options=('!debug')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 _name=${_pkgbase}-${pkgver}-x86_64
 source=("${_name}.tgz::https://files.${_pkgbase}.com/${_name}.tgz")
-sha256sums=('0ced11d17855cc172a860f8cc19a89f10adb6ab7185992fb57474118e9bdabd7')
+sha256sums=('251e141b3c66c065cdbfd7db6478eb88ad81c871f7c444227e9ecdaabed0ee67')
 
 latestver() {
   local html ver
@@ -34,14 +34,13 @@ latestver() {
 }
 
 package() {
-  install -Dm755 -t "${pkgdir}/usr/bin" \
-    "${_name}/bin/${_pkgbase}" \
-    "${_name}/bin/${_pkgbase}-analyzer" \
-    "${_name}/bin/plog-converter"
+  install -Dm755 -t "${pkgdir}/usr/bin" bin/*
 
-  install -Dm644 "${_name}/etc/bash_completion.d/${_pkgbase}.sh" \
-    "${pkgdir}/etc/bash_completion.d/${_pkgbase}.sh"
+  install -Dm644 "etc/bash_completion.d/${_pkgbase}.sh" \
+    "${pkgdir}/usr/share/bash-completion/completions/plog-converter"
+  ln -s plog-converter \
+    "${pkgdir}/usr/share/bash-completion/completions/${_pkgbase}-analyzer"
 
-  install -Dm644 "${_name}/share/doc/${_pkgbase}/License.txt" \
+  install -Dm644 "share/doc/${_pkgbase}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
