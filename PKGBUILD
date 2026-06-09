@@ -12,7 +12,7 @@
 
 _pkgname=namebind
 pkgname="${_pkgname}-git"
-pkgver=0.19.1.r1.g59bb419
+pkgver=0.24.0.r1.g1838094
 pkgrel=1
 pkgdesc="Per-app network namespaces; reach host services by name, not port number (git version)"
 arch=('any')  # pure Python + console script + a systemd unit
@@ -32,11 +32,13 @@ install="${_pkgname}.install"
 
 depends=(
   'python'
-  'python-typer'   # the CLI framework (also a wheel runtime dependency)
-  'python-kdl-py'  # KDL parser for the central config (also a wheel runtime dependency)
+  'python-typer'              # the CLI framework (also a wheel runtime dependency)
+  'python-kdl-py'             # KDL parser for the central config (wheel runtime dep)
+  'python-pydantic'           # validated config + boundary models (Settings, Docker JSON)
+  'python-pydantic-settings'  # the env+KDL Settings source (wheel runtime dep)
   'podman'         # the per-app pod == the network namespace + bridge IP (rootful)
-  'nftables'       # nft: the portless DNAT rules + the kernelspace egress masquerade
-  'passt'          # pasta: userspace egress (the default egress mode)
+  'nftables'       # nft: the portless DNAT rules + the kernel egress masquerade
+  'passt'          # pasta: the default (userspace) host egress
   'sudo'           # the CLI elevates its one privileged call (systemd-run/podman)
 )
 # `nsenter` + `setpriv` (util-linux), `ip` (iproute2; also ipvlan/veth) and
@@ -44,8 +46,8 @@ depends=(
 optdepends=(
   'dnsmasq: resolve <svc>.<app>.<domain> names by watching /var/lib/namebind/hosts.d'
   'docker: join Docker containers to the fabric via the libnetwork driver (namebind-docker.service)'
-  'iptables-nft: kernelspace host-nat egress -- reads the FORWARD policy, inserts the DOCKER-USER accept'
-  'iputils: arping for the direct-link external-ip duplicate-address check (best-effort)'
+  'iptables-nft: kernel host egress (egress "host" via="kernel") -- reads the FORWARD policy, inserts the DOCKER-USER accept'
+  'iputils: arping for the managed-egress external-ip duplicate-address check (best-effort)'
 )
 makedepends=(
   'python-build'
