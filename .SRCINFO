@@ -1,18 +1,18 @@
 pkgbase = jellyfin-desktop-git-bin
-	pkgdesc = Jellyfin Desktop Client (Pre-compiled nightly AppImage)
-	pkgver = 20260607
-	pkgrel = 1
+	pkgdesc = A desktop client for Jellyfin (Nightly AppImage)
+	pkgver = 0.r978.3500d01
+	pkgrel = 2
+	epoch = 1
 	url = https://github.com/jellyfin/jellyfin-desktop
 	arch = x86_64
-	license = GPL2
-	provides = jellyfin-desktop
-	provides = jellyfin-desktop-git
-	provides = jellyfin-desktop-cef-git
+	license = GPL-2.0-only
+	makedepends = fuse2
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	provides = jellyfin-desktop=0.r978.3500d01
 	conflicts = jellyfin-desktop
-	conflicts = jellyfin-desktop-git
-	conflicts = jellyfin-desktop-cef-git
 	options = !strip
-	source = jellyfin-desktop-nightly.zip::https://nightly.link/jellyfin/jellyfin-desktop/workflows/build-linux-appimage/main/linux-appimage-x86_64.zip
+	source = linux-appimage-x86_64.zip::https://nightly.link/jellyfin/jellyfin-desktop/workflows/build-linux-appimage/main/linux-appimage-x86_64.zip
 	sha256sums = SKIP
 
 pkgname = jellyfin-desktop-git-bin
