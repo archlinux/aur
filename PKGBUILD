@@ -1,6 +1,6 @@
 # Maintainer: Okazakee <okazakee@proton.me>
 pkgname=tuxfans
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Fan curve controller for TUXEDO laptops"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Okazakee/tuxfans/archive/v$pkgver.tar.gz")
-sha256sums=('1db27a2ad44f1517f3c30ef997bd9504b6763c833962f3b4739e0c13f6b9745d')
+sha256sums=('bfaa4adcf32b18628b7055123b0236c81904da03de6f1a036294c805bc3fa4fc')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
