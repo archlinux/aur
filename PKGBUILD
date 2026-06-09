@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
-pkgver=4.4.22
+pkgver=4.4.23
 pkgrel=1
-_flutter_ver=3.32.8
+_flutter_ver=3.38.10
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
 arch=('x86_64' 'aarch64')
 url="https://ente.com/auth"
@@ -11,8 +11,9 @@ depends=(
   'gtk3'
   'libayatana-appindicator'
   'libsecret'
+  'polkit'
   'sqlite'
-  'zenity'
+  'xdg-user-dirs'
 )
 makedepends=(
   'chrpath'
@@ -24,10 +25,11 @@ makedepends=(
   'ninja'
   'unzip'
 )
+optdepends=('zenity: Required for importing files')
 source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/simple-icons/simple-icons.git'
         'enteauth.desktop')
-sha256sums=('0d41655349dd47ca21daaadae4bad0083d16e2b256b5d1e940819c70a60f0fa5'
+sha256sums=('41d79ef4e7e402df42684b94fb09c91162550d9990cb9b752b1b6c5fbd806b2f'
             'SKIP'
             'c06f6e30813bd035245e1fb79a8c1b6c5284d98cd98a70e46b18c5a39e7b9aee')
 
@@ -49,7 +51,7 @@ prepare() {
   fvm flutter clean
 
   # Download dependencies
-  fvm flutter pub get
+  fvm flutter pub get --enforce-lockfile
 }
 
 build() {
@@ -91,7 +93,7 @@ package() {
   fi
 
   # Not required at runtime as it's only used on Android
-  rm "build/linux/${FLUTTER_ARCH}/release/bundle/lib/libdartjni.so"
+  rm -f "build/linux/${FLUTTER_ARCH}/release/bundle/lib/libdartjni.so"
 
   install -Dm755 build/linux/${FLUTTER_ARCH}/release/bundle/enteauth -t \
     "$pkgdir/opt/$pkgname/"
@@ -100,7 +102,14 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/enteauth" "$pkgdir/usr/bin/"
 
-  install -Dm644 assets/icons/auth-icon.png "$pkgdir/usr/share/pixmaps/enteauth.png"
+  install -d "$pkgdir/usr/share/pixmaps"
+  ln -s /opt/ente-auth/data/flutter_assets/icons/auth-icon.png \
+    "$pkgdir/usr/share/pixmaps/"
+
+  install -d "$pkgdir/usr/share/polkit-1/actions"
+  ln -s /opt/ente-auth/data/flutter_assets/assets/polkit/com.ente.auth.policy \
+    "$pkgdir/usr/share/polkit-1/actions/"
+
   install -Dm644 linux/packaging/enteauth.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 linux/packaging/enteauth.appdata.xml -t "$pkgdir/usr/share/metainfo/"
 
