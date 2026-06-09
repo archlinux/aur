@@ -6,7 +6,7 @@ pkgdesc="Linux controller for Corsair iCUE Nexus display device"
 arch=('x86_64')
 url="https://github.com/mantonx/nexus-open"
 license=('MIT')
-depends=('libayatana-appindicator3' 'gtk3' 'libgl' 'libgles' 'libegl')
+depends=('libayatana-appindicator' 'gtk3' 'libgl' 'libgles' 'libegl')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-amd64.tar.gz")
 sha256sums=('3f4bb26bc0e28d1e39f92ddab7581c8cf4871b74e331bc46d11de24aab58e440')
 
