@@ -1,6 +1,6 @@
 # Maintainer: Sandwich Farm <maintainers@sandwich.farm>
 pkgname=hyprlax
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="Smooth parallax wallpaper animation for Hyprland and other Wayland compositors"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
   'niri: Niri scrollable workspaces'
 )
 source=("hyprlax-v${pkgver}.tar.gz::https://github.com/sandwichfarm/hyprlax/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d9d5db3b2363d4b0d1fa92763dd9ba6fc401151db93450f744f265f51f56d247')
+sha256sums=('8e559bfcbbb39f5972c8110e73c77b3d3f75aaf95903b939d47dd0f7300b441e')
 
 build() {
   cd "${srcdir}/hyprlax-${pkgver}"
