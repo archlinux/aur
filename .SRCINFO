@@ -1,0 +1,14 @@
+pkgbase = tailtui
+	pkgdesc = A brutalist, keyboard-centric terminal user interface for Tailscale
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Phundahl/tailtui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = tailscale
+	source = tailtui-1.1.0.tar.gz::https://github.com/Phundahl/tailtui/archive/v1.1.0.tar.gz
+	sha256sums = edd85463e0f9789c88a70b7875cafd10cf22205ba4381d87b6de4f1bf95c41e9
+
+pkgname = tailtui
