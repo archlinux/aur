@@ -1,0 +1,5 @@
+cpa-manager-plus.env.example
+cpa-manager-plus.service
+cpa-manager-plus-bin.install
+PKGBUILD
+.SRCINFO

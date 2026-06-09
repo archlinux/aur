@@ -1,0 +1,34 @@
+post_install() {
+    echo ":: Packaging issues? Report at: https://github.com/orange-guo/aur-packages"
+    echo ::\ Copy\ the\ example\ configuration\ before\ starting\ the\ service:
+    echo \ \ \ install\ -Dm600\ /usr/share/doc/cpa-manager-plus-bin/cpa-manager-plus.env.example\ ~/.config/cpa-manager-plus/cpa-manager-plus.env
+    echo \ \ \ \$EDITOR\ ~/.config/cpa-manager-plus/cpa-manager-plus.env
+    echo ::\ CLIProxyAPI\ should\ enable\ usage-statistics-enabled\ for\ usage\ collection.
+    echo ::\ Only\ one\ Manager\ Server\ should\ consume\ the\ same\ CLIProxyAPI\ usage\ queue.
+    echo ::\ The\ user\ service\ stores\ data\ under\ ~/.local/state/cpa-manager-plus\ and\ listens\ on\ HTTP_ADDR\ from\ the\ env\ file.
+    echo ::\ To\ start\ without\ an\ active\ login\ session\,\ enable\ linger:\ loginctl\ enable-linger\ \$USER
+    echo ""
+    echo ":: Service Management"
+    echo "   > User Level (Recommended):"
+    echo "     systemctl --user enable --now cpa-manager-plus.service"
+    echo "   > System Level:"
+    echo "     (System Service is not available for this package)"
+}
+
+post_upgrade() {
+    echo ":: Service Management"
+    echo "   > User Level:"
+    echo "     systemctl --user daemon-reload"
+    echo "     systemctl --user restart cpa-manager-plus.service"
+    echo "   > System Level:"
+    echo "     (System Service is not available for this package)"
+}
+
+post_remove() {
+    echo ":: Service Management"
+    echo "   > User Level:"
+    echo "     The service file has been removed. Stop the service if running:"
+    echo "     systemctl --user stop cpa-manager-plus.service"
+    echo "   > System Level:"
+    echo "     (System Service is not available for this package)"
+}

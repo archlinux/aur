@@ -1,0 +1,23 @@
+[Unit]
+Description=CPA Manager Plus
+Documentation=https://github.com/seakee/CPA-Manager-Plus
+
+[Service]
+Type=simple
+StateDirectory=cpa-manager-plus
+StateDirectoryMode=0700
+WorkingDirectory=%S/cpa-manager-plus
+EnvironmentFile=%E/cpa-manager-plus/cpa-manager-plus.env
+Environment=USAGE_DATA_DIR=%S/cpa-manager-plus
+Environment=USAGE_DB_PATH=%S/cpa-manager-plus/usage.sqlite
+Environment=CPA_MANAGER_DATA_KEY_PATH=%S/cpa-manager-plus/data.key
+ExecStart=/usr/bin/cpa-manager-plus
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=30s
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=default.target
