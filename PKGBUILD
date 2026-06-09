@@ -76,4 +76,7 @@ package() {
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/doc/gazelle-installer/LICENSE"
     install -Dm644 "NOTICE" "${pkgdir}/usr/share/doc/gazelle-installer/NOTICE"
 
+    # Install man page
+    install -Dm644 "man/minstall.1" "${pkgdir}/usr/share/man/man1/minstall.1"
+
 }
