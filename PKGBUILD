@@ -2,7 +2,7 @@
 # Contributor: HappyCadogt
 pkgname=cat-cursors-git
 pkgver=0.r1.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="A Cat Cursor Theme. Created by Bilibili user 406949928 (HappyCadogt), ported by GitHub user Tseshongfeeshur (Ryan)."
 arch=('any')
 url="https://github.com/Tseshongfeeshur/cat-cursors"
