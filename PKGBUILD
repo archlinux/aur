@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requestly-bin
 _pkgname=Requestly
-pkgver=26.3.3
+pkgver=26.6.8
 _electronversion=23
 pkgrel=1
 pkgdesc="Debug your network request across all platforms and browsers using a single app.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://requestly.com/"
-_ghurl="https://github.com/requestly/requestly-desktop-app"
+_ghurl="https://github.com/requestly/http-interceptor-desktop-app"
 license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -21,15 +21,31 @@ makedepends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-    "index.html-${pkgver}::https://raw.githubusercontent.com/requestly/requestly-desktop-app/v${pkgver}/src/loadingScreen/index.html"
+    "index.html-${pkgver}::https://raw.githubusercontent.com/requestly/http-interceptor-desktop-app/v${pkgver}/src/loadingScreen/index.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0f3c514c517d47ed0f6f6db80760675b8bdf110615d854833a0ea4c7e022aaa1'
+sha256sums=('2e6d49abb2966a5024718253654e282a33de423f6dfd92da109657d286018bac'
             '458836a4541233742fec5da1bf75b151cc0b1f879b0574f362ae793d055a233d'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _main_exe=""
+    if [[ -n "${_app_dir}" ]]; then
+        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
+    fi
+    if [[ -n "${_main_exe}" ]]; then
+        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
+        if [[ -n "${_elec_ver}" ]]; then
+            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+            else
+                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+            fi
+        fi
+    else
+        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
+    fi
 }
 prepare() {
     sed -i -e "
@@ -37,7 +53,6 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
@@ -46,13 +61,8 @@ prepare() {
         rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    _get_electron_version
+    _check_electron_version
     sed -i "s/AppRun/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    rm -rf "${srcdir}/squashfs-root/resources/app.asar"
-    find "${srcdir}/app.asar.unpacked/dist/main" -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/g" {} +
-    install -Dm644 "${srcdir}/index.html-${pkgver}" "${srcdir}/app.asar.unpacked/dist/loadingScreen/index.html"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/squashfs-root/resources/app.asar"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} +
     rm -rf \
         "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/win-version-info/prebuilds" \
@@ -62,19 +72,14 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	find "${srcdir}/squashfs-root/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
-    if find "${srcdir}/squashfs-root/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/squashfs-root/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
+	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    _icon_sizes=(16x16 32x32 64x64 128x128 256x256 512x512 1024x1024)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
 }
