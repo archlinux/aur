@@ -6,8 +6,8 @@ pkgdesc="Fuzzy cd alternative"
 arch=('x86_64')
 url="https://github.com/MnM72809/jcd"
 license=('MIT')
-provides=('jcd')
-conflicts=('jcd')
+provides=('jcd' 'jcd-debug')
+conflicts=('jcd' 'jcd-debug')
 source=("https://github.com/MnM72809/jcd/releases/download/v${pkgver}/jcd-${pkgver}-Linux.tar.gz")
 sha256sums=('99cd3d033568f0dbf8d0481f61a72df00329138b10378cd268ad6e63f2dbdb48')
 
