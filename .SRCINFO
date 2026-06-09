@@ -1,7 +1,7 @@
 pkgbase = hclient-cli-bin
 	pkgdesc = Lazycat Microserver CLI client (懒猫微服命令行客户端)
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lazycat.cloud/download
 	arch = x86_64
 	arch = aarch64

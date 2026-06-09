@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=hclient-cli-bin
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lazycat Microserver CLI client (懒猫微服命令行客户端)"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://lazycat.cloud/download"
