@@ -29,7 +29,7 @@
 1. Clone the repository: `git clone https://github.com/themix88/Clone-WIZ`
 2. makepkg -si
 
-### **OR INSTALL with any (AUR) helper or package manager like Shelly (GUI) or yay / parus.**
+### **OR INSTALL with any (AUR) helper or package manager like Shelly (GUI) or yay / paru.**
 
 
 ## **License**
