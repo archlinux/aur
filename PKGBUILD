@@ -6,7 +6,7 @@
 # Maintainer: Your Name <vaibhavmattoo1@gmail.com>
 pkgname=cxt
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line tool that aggregates file and directory contents into your clipboard, perfect for providing project context to AI chatbots"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/vaibhav-mattoo/cxt"
@@ -35,7 +35,7 @@ build() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features
+	cargo build --frozen --release
 }
 
 check() {
