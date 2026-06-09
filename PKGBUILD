@@ -9,12 +9,12 @@ pkgdesc="Collaboration suite service for office messaging, calendars, meetings, 
 arch=('x86_64')
 url="https://www.larksuite.com"
 _licensever=20260122
-license=('LicenseRef-Lark-User-${_licensever}')
+license=("LicenseRef-Lark-User-${_licensever}")
 depends=('gtk3' 'nspr' 'nss' 'libpulse' 'libmfx' 'alsa-lib')
 optdepends=('appmenu-gtk-module: Appmenu support')
 makedepends=('curl')
 replaces=('bytedance-lark-dev-bin')
-provides=('bytedance-lark=$pkgver' 'lark=$pkgver')
+provides=("bytedance-lark=$pkgver" "lark=$pkgver")
 options=('!emptydirs')
 source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info?platform=10
 	LICENSE-${_licensever}.html::http://www.larksuite.com/en_us/user-terms-of-service
