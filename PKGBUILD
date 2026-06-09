@@ -1,14 +1,14 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=httm
-pkgver=0.49.9
+pkgver=0.50.0
 pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS, BTRFS, or NILFS snapshots."
 arch=('x86_64')
 url="https://github.com/kimono-koans/httm"
 license=('MPL-2.0')
 conflicts=('httm-bin' 'httm-git')
-options=('!strip' '!emptydirs')
+options=('!strip' '!emptydirs' '!lto')
 #install='httm.install'
 depends=('gcc-libs')
 optdepends=('btrfs-progs: BTRFS support'
@@ -16,7 +16,7 @@ optdepends=('btrfs-progs: BTRFS support'
             'nilfs-utils: NILFS2 support')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('c2fb3b4a96dd62d0aebd21b4133f6b9206103c2d3bac2e54c2e1320d4112c72f807ffff4f383c7cf87c9b5d8a19e050b916f14c944d3b7c6fcb7794e56c79379')
+sha512sums=('a3c95342d636a93e06019ab85b7881df1499bdeab94db3cfb471123bdb7c37ec19351085f51b13031b5adc855e365290bbfb9f1b385ef91977dcb27ea82a4627')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
