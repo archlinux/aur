@@ -1,6 +1,6 @@
 # Maintainer: Juan Boullosa <jmboullosa@zentus.io>
 pkgname=wxextract
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Extract WeChat 4.x conversations on Linux into compact LLM-ready text + interactive HTML report"
 arch=('any')
@@ -28,7 +28,7 @@ makedepends=(
     'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/boujuan/extract-wechat-messages-linux/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('575cfa4036341aef389e10b6b7fae75c92503d17b44d75afc67b8abe852d6801')
+sha256sums=('3130f036dfc62b6ba7cb065e1c043646f8d1e9b6c1118bbf15c94d109e0f7bce')
 
 build() {
     cd "extract-wechat-messages-linux-$pkgver"
