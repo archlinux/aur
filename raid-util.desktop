@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RAID Util
+Comment=A simple and modern GUI for managing RAID.
+Exec=raid-util
+Icon=raid-util
+Terminal=false
+Type=Application
+Categories=Utility;
+
