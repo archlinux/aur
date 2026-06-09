@@ -1,6 +1,6 @@
 pkgbase = bambu-studio-nightly-bin
 	pkgdesc = BambuStudio nightly pre-release builds for Bambu Lab 3D printers
-	pkgver = 20260609.2014100
+	pkgver = 20260609.7d71b4d
 	pkgrel = 1
 	url = https://github.com/BenJule/BambuStudio
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = bambu-studio-nightly-bin
 	depends = glibc
 	depends = libsecret
 	depends = webkit2gtk
-	source = BambuStudio.AppImage::https://github.com/BenJule/BambuStudio/releases/download/nightly-20260609-2014100/BambuStudio_ubuntu-24.04_amd64_V02.07.01.11789.AppImage
-	sha256sums = db7fbc30ccd57ae1927cfa6811d35693f99fc4133cbdd7eaaa0723d633ad2ea5
+	source = BambuStudio.AppImage::https://github.com/BenJule/BambuStudio/releases/download/nightly-20260609-7d71b4d/BambuStudio_ubuntu-24.04_amd64_V02.07.01.11789.AppImage
+	sha256sums = 105e15d10d4cf581b2bd2685b9383012302d0a49b106f7c97d321d1969dbae63
 
 pkgname = bambu-studio-nightly-bin
