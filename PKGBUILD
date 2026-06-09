@@ -12,7 +12,7 @@ provides=('listen1')
 conflicts=('listen1-electron')
 source=(
   https://github.com/$pkgname/$pkgname\_desktop/releases/download/v$pkgver/$pkgname\_$pkgver\_linux_amd64.deb)
-sha256sums=('31fd195ef7ad2b1a48c9864b49467170554284774e3ce6b1f6e2cfa15cb43356')
+sha256sums=('a4b5624bcd5d78ab749d2adef1afcf33425d24705172b4c99622cf04613afa43')
 
 build() {
   mkdir -p "${srcdir}/dpkgdir"
