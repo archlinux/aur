@@ -1,6 +1,6 @@
 pkgbase = grok-build-bin
 	pkgdesc = Grok Build — xAI's terminal coding agent CLI
-	pkgver = 0.2.22
+	pkgver = 0.2.38
 	pkgrel = 1
 	url = https://x.ai/cli
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = grok-build-bin
 	options = !strip
 	options = !debug
 	options = !emptydirs
-	source_x86_64 = grok-0.2.22-linux-x86_64::https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-0.2.22-linux-x86_64
-	b2sums_x86_64 = 19f6eb8708816e6ef74b549552e247970d86b7d8bf85f49f70dbec7828fcd4016370aac3c3b0ec887edaeb471a3c987da806a92cf4620e63bd50dec244aa3768
-	source_aarch64 = grok-0.2.22-linux-aarch64::https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-0.2.22-linux-aarch64
-	b2sums_aarch64 = b6f7c082e3c14e617f9be795cb863abba9c684be5ea6424c50b8f533e7b672a6f158a7a8b94e20bbad632c58a21eac5098f2c28f3f992b93e5981534ad7cfcd5
+	source_x86_64 = grok-0.2.38-linux-x86_64::https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-0.2.38-linux-x86_64
+	b2sums_x86_64 = 680a4111f623c7282074721d8191da39e8dfe86d90888867987f1d42ca4dbea16bf9a143486b2390e9f3472e0e58a19561bac2ed549a71ac59876310f074ece1
+	source_aarch64 = grok-0.2.38-linux-aarch64::https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-0.2.38-linux-aarch64
+	b2sums_aarch64 = 59cd731752a573281baf9d8e8775e7db68949965853eb6408c535cb25cee4fd490d063982befe65295d52d40c08cb871e012bce7e4dd002d0eac7c77faa70c9a
 
 pkgname = grok-build-bin
