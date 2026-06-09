@@ -1,6 +1,6 @@
 # Maintainer: Taxin <https://github.com/taxin-404>
 pkgname=odysseus-ai
-pkgver=2026.06.02.f6b0dcb
+pkgver=2026.06.09.7690860
 pkgrel=1
 pkgdesc="A self-hosted AI workspace with chat, agents, deep research, calendar, notes and more"
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pewdiepie-archdaemon/odysseus/archive/refs/heads/main.tar.gz"
         "odysseus-ai.desktop"
         "odysseus-ai.svg")
-sha256sums=('61cc0c20affc945adbae74dfa8881ea9ce376d6674d676c03a431995c61886af'
+sha256sums=('a0a1a3fcc644cb3a5fbf9184e98d2f24001d6ccfcccef7951d671abf08ec0c2e'
             'f21605f96ec6067504d15c788fe009890d07364f14e78da6e071cb8b922e43df'
             '9d909012e4daf1a8bf4bec2bf4912ce546da8ce7828ec2cea6ca55886e94f916')
 install="$pkgname.install"
