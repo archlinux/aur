@@ -16,14 +16,14 @@ depends=(
 options=('!strip')
 install="${pkgname}.install"
 
-pkgver=0.4.573
+pkgver=0.4.601
 pkgrel=1
 
 # NOTE: aarch64 releases use "arm64" in the asset filename, not "aarch64".
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v${pkgver}/deadsync-v${pkgver}-x86_64-linux.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v${pkgver}/deadsync-v${pkgver}-arm64-linux.tar.gz")
-sha256sums_x86_64=('b6957b6f02951e9e5b99faa22512d52cd33b1802dd4c5dd3d9a352f9b0913d69')
-sha256sums_aarch64=('49d163e72b9a6208414c1e38d6218e85619caeb09485a82342074375791d842b')
+sha256sums_x86_64=('4e2269ffef03b7cbc5669f76e82deccd6d5086a8b46e213b060464205264908a')
+sha256sums_aarch64=('d41c05531b8dd0c9df4b29a8d6ec6f5aa4e74a107820f2bd1c9314cee5981738')
 
 package() {
     # The release tarball always extracts to a single "deadsync/" subdirectory.
