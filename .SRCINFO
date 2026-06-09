@@ -1,6 +1,6 @@
 pkgbase = bokuchi
 	pkgdesc = A lightweight, cross-platform Markdown editor
-	pkgver = 0.8.5
+	pkgver = 0.9.0
 	pkgrel = 2
 	url = https://github.com/Bokuchi-Editor/bokuchi
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = bokuchi
 	makedepends = npm
 	makedepends = rust
 	makedepends = openssl
-	makedepends = libappindicator
 	makedepends = librsvg
 	makedepends = xdotool
 	depends = webkit2gtk-4.1
@@ -21,7 +20,7 @@ pkgbase = bokuchi
 	depends = libsoup3
 	options = !lto
 	options = !debug
-	source = bokuchi-0.8.5.tar.gz::https://github.com/Bokuchi-Editor/bokuchi/archive/refs/tags/v0.8.5.tar.gz
+	source = bokuchi-0.9.0.tar.gz::https://github.com/Bokuchi-Editor/bokuchi/archive/refs/tags/v0.9.0.tar.gz
 	sha256sums = 89c5be35c08091075b6ce666e2df8da32c572d0188b6f4d086d7685e07e14dba
 
 pkgname = bokuchi
