@@ -2,8 +2,8 @@
 pkgname=octra-wallet
 # pkgver format: <commit-date:YYYYMMDD>.<short-sha>  e.g. 20260422.a42c32e
 # Both pkgver and _commit are rewritten by the release workflow.
-pkgver=20260608.a667311
-_commit=a6673113c63d85ee5c259aa1406ef912bce850a3
+pkgver=20260608.8182d97
+_commit=8182d9792001cb550de39a3bb519c0f348b97df3
 pkgrel=1
 pkgdesc="Octra network web client (webcli): send txs, encrypt/decrypt balances, stealth txs"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ provides=('octra-wallet')
 conflicts=('octra-wallet-bin' 'octra-wallet-git')
 source=("${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
         "octra-wallet.sh")
-sha256sums=('bdc92d67c1ed3238425ad6112d2473840b7a65206801d8fb042bb7a3660da073'
+sha256sums=('18f73e86e1d20f0999deb8352f5175a4d1b29e11b180ec900af76d2f153f036e'
             'f8f64d1d92d47ac5cf88c687f3a591b98db99ca6a09c4821dbb6ff70cda929e0')
 
 build() {
