@@ -22,7 +22,8 @@ package() {
   install -d "$pkgdir/usr/lib/raid-util"
 
   # Copiar solo el contenido del tarball
-  cp -r "$srcdir/RAID-Util/"* "$pkgdir/usr/lib/raid-util/"
+  cp "$srcdir"/* "$pkgdir/usr/lib/raid-util/"
+
 
   # Symlink del binario
   install -d "$pkgdir/usr/bin"
