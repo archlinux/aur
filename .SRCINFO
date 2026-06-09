@@ -1,6 +1,6 @@
 pkgbase = 3x-ui
 	pkgdesc = Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit
-	pkgver = 3.2.8
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/MHSanaei/3x-ui
 	arch = aarch64
@@ -20,10 +20,10 @@ pkgbase = 3x-ui
 	optdepends = speedtest-cli: Speedtest by Ookla
 	optdepends = ufw: Firewall Management
 	options = !debug
-	source = https://github.com/MHSanaei/3x-ui/archive/v3.2.8/3x-ui-3.2.8.tar.gz
+	source = https://github.com/MHSanaei/3x-ui/archive/v3.3.0/3x-ui-3.3.0.tar.gz
 	source = x-ui-updategeo.service
 	source = x-ui-updategeo.timer
-	b2sums = f6240690243692fec5f71ce3b1acdbce8be9bf2ce75aa2282d04711c66de88eef0be0e8bee954e974f989008b7dee489f0c3c525232f7535753876a46b82b9f0
+	b2sums = 1a8ddf2df3fef4a7e9604fe4a71eccfcf6fafb445ed02d7662417c854de7c84089a8cb5e75ed4b3500c8569ba1aef131507499f77e5b2fb61d8924c4d273e678
 	b2sums = a6f4eba028beba4f94d78ce40080e531939f98c9fa265c7a27d6ea17777cb549cd65be0193e390850fc418457e204f478c36f87b66844cb0abc69c893192e970
 	b2sums = da9c55306c37438f79adfb550d1d0003f14c4d597b170e4424428fc07040391fd904d63f738c46ac92ba13d8c8577b3e4a74bfe119d0f7b914d3e7839c4a0336
 
