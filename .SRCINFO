@@ -1,6 +1,6 @@
 pkgbase = ironcall-bin
 	pkgdesc = Ironcall - Local-first API client
-	pkgver = 0.7.9
+	pkgver = 0.7.10
 	pkgrel = 1
 	url = https://ironcall.dev
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = ironcall-bin
 	depends = libayatana-appindicator
 	provides = ironcall
 	conflicts = ironcall
-	source_x86_64 = ironcall-0.7.9-linux-x86_64.tar.gz::https://ironcall.dev/releases/desktop/0.7.9/ironcall-0.5.1-linux-x86_64.tar.gz
+	source_x86_64 = ironcall-0.7.10-linux-x86_64.tar.gz::https://ironcall.dev/releases/desktop/0.7.10/ironcall-0.5.1-linux-x86_64.tar.gz
 	source_x86_64 = ironcall.desktop
 	source_x86_64 = ironcall.png
-	sha256sums_x86_64 = 9983d321788182a8be595bc38e97d8d9402dd5059df78c1c49c730f1e3d8928b
+	sha256sums_x86_64 = eb353df6ac313824f84827cd7d8ee4c2303b5d7ba692cdfd376cb62eb80b33ce
 	sha256sums_x86_64 = d02152139e16601f82fad44673b4743262007af55d012e20eb7a004e23027519
 	sha256sums_x86_64 = 1a0afe0dca9ca6e7cdef7f94b5fe854a55ae0bfa3796e87537647f0983a385ef
 
