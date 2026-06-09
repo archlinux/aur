@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r77575.a6499b621e6
+pkgver=r79186.524f7e09755
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -20,6 +20,7 @@ depends=(
   harfbuzz
   icu
   libavif
+  libedit
   libgl
   libjpeg-turbo
   libjxl
