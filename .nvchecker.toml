@@ -1,5 +1,4 @@
 [git-big-picture]
-source = "github"
-github = "git-big-picture/git-big-picture"
-use_max_tag = true
+source = "git"
+git = "https://github.com/git-big-picture/git-big-picture.git"
 prefix = "v"
