@@ -1,7 +1,7 @@
 
 pkgname=labymodlauncher-bin
 pkgver=3.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A launcher for LabyMod, a Minecraft client that adds a bunch of useful features (official)"
 arch=('x86_64')
 url="https://www.laby.net/"
