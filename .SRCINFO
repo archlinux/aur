@@ -7,6 +7,8 @@ pkgbase = eclipse-rcptt-bin
 	arch = x86_64
 	license = EPL
 	depends = java-environment>=21
+	optdepends = libsecret: password storage
+	optdepends = webkit2gtk-4.1: HTML tooltips
 	provides = eclipse-rcptt=2.8.1-1
 	conflicts = eclipse-rcptt
 	options = !strip
