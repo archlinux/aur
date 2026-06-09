@@ -28,5 +28,5 @@ build() {
 package() {
 	cd "${_pkg}"
 	install -Dvm755 sqlar sqlarfs -t "${pkgdir}/usr/bin/"
-	install -Dvm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dvm644 README.md -t "${pkgdir}/usr/share/doc/${_pkg}/"
 }
