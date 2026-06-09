@@ -2,7 +2,7 @@
 
 _pkgname=Amethyst-Mod-Manager
 pkgname=amethyst-mod-manager
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 pkgdesc='A Linux native mod manager for a variety of games'
 arch=('any')
@@ -47,7 +47,7 @@ optdepends=(
     'kdialog: native dialog'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f4138512fd56eddd2e7e61e380505f2179a456928130a173e1b232fa2652ad89')
+sha256sums=('57e26ee7a5d2532175554c38ce8ba07f17b1129d540150f683886b9fe5294d6d')
 
 build() {
     cd "${_pkgname}-${pkgver}"
