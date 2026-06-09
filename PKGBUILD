@@ -49,7 +49,7 @@ source=(
   'README.native-port.md'
 )
 sha256sums=('2636d2f2812c82dd30883b18b8fbad9d8a656a8c913c4c4ebe0249297e1250b0'
-            'a02e2db6cd411b7f117bc69d57e9d1efb0c127ae476984247d231e8ab40ad5c2'
+            '3bc1e37f13edeb8c9f748f2689ff7ed94f40922a7d723e759e132fed52d612d7'
             '41e334ee463f79bab5bcff7a8aeb3239165b218f83077d6c1c962a8264f6abb6'
             'fae92ab2a78fabd39afe125f2ce348fa477a2b9900e66bd245bdf6850b38251e'
             '2f0fb5088079da1afc6aec382ab296b328874a0f1fff9e3e629a5dd12e80a7cf'
