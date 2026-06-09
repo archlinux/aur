@@ -1,15 +1,16 @@
 
 pkgname=labymodlauncher-bin
-pkgver=3.0.6
+pkgver=3.0.7
 pkgrel=1
-pkgdesc="Laby Launcher (official)"
+pkgdesc="A launcher for LabyMod, a Minecraft client that adds a bunch of useful features (official)"
 arch=('x86_64')
 url="https://www.laby.net/"
 license=('LicenseRef-Proprietary')
+provides=('labylauncher')
 depends=('gtk3' 'nss' 'alsa-lib')
 options=(!strip !debug)
-source=("${pkgname}-${pkgver}.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-3.0.6.AppImage")
-sha256sums=('9a686533a582bfef1f33a60e702fb9c2eb22c208b72175bd7de569d15f994378')
+source=("${pkgname}-${pkgver}.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-3.0.7.AppImage")
+sha256sums=('b8c1691624b011a36fe2b1f16d57979c1ff3332f341732ea6c029981fc1df8b1')
 
 package() {
     cd "${srcdir}"
@@ -18,9 +19,11 @@ package() {
 
     install -dm755 "${pkgdir}/opt/labymodlauncher-bin"
     cp -a squashfs-root/. "${pkgdir}/opt/labymodlauncher-bin/"
+    chmod 755 "${pkgdir}/opt/labymodlauncher-bin"
 
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/labymodlauncher-bin/AppRun" "${pkgdir}/usr/bin/labymodlauncher"
+    printf '%s\n'         '#!/bin/sh'         'export APPDIR=/opt/labymodlauncher-bin'         'export LD_LIBRARY_PATH="${APPDIR}/usr/lib:${LD_LIBRARY_PATH}"'         'export XDG_DATA_DIRS="${APPDIR}/usr/share/:${XDG_DATA_DIRS}:/usr/share/gnome:/usr/local/share/:/usr/share/"'         'export GSETTINGS_SCHEMA_DIR="${APPDIR}/usr/share/glib-2.0/schemas:${GSETTINGS_SCHEMA_DIR}"'         'exec "${APPDIR}/labymodlauncher" "$@"'         > "${pkgdir}/usr/bin/labymodlauncher"
+    chmod 755 "${pkgdir}/usr/bin/labymodlauncher"
 
     desktop=$(find squashfs-root -maxdepth 1 -name '*.desktop' | head -n1)
     if [ -n "${desktop}" ]; then

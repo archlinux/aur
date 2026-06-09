@@ -1,16 +1,17 @@
 pkgbase = labymodlauncher-bin
-	pkgdesc = Laby Launcher (official)
-	pkgver = 3.0.6
+	pkgdesc = A launcher for LabyMod, a Minecraft client that adds a bunch of useful features (official)
+	pkgver = 3.0.7
 	pkgrel = 1
 	url = https://www.laby.net/
 	arch = x86_64
 	license = LicenseRef-Proprietary
+	provides = labylauncher
 	options = !strip
 	options = !debug
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
-	source = labymodlauncher-bin-3.0.6.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-3.0.6.AppImage
-	sha256sums = 9a686533a582bfef1f33a60e702fb9c2eb22c208b72175bd7de569d15f994378
+	source = labymodlauncher-bin-3.0.7.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-3.0.7.AppImage
+	sha256sums = b8c1691624b011a36fe2b1f16d57979c1ff3332f341732ea6c029981fc1df8b1
 
 pkgname = labymodlauncher-bin
