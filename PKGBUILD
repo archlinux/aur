@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('gcc' 'unzip')
 source=("$pkgname::https://hub.darcs.net/stef204/vtlock/dist")
 install=vtlock.install
-sha256sums=('7c8e6fc79aea8cbea3081922c58e549a2e1b7c61904e393a5f7cc3ec54a9b531')
+sha256sums=('SKIP')
 
 build() {
     cd "$pkgname"
