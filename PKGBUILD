@@ -15,13 +15,7 @@ arch=('any')
 url='https://github.com/jlowin/fastmcp'
 license=('MIT')
 
-depends=('python' 'python-yaml' 'python-openai' 'python-py-key-value-aio' 'python-jsonschema-path' 'python-pydantic-settings' 'python-rich' 'python-uncalled-for' 'python-pyperclip' 'python-httpx' 'python-pydantic' 'python-platformdirs' 'python-jsonref' 'python-opentelemetry-api' 'python-google-genai' 'python-watchfiles' 'uvicorn' 'python-joserfc' 'python-anyio' 'python-cryptography' 'python-pydantic-core' 'python-mcp' 'python-httpcore' 'python-anthropic' 'python-griffelib' 'python-openapi-pydantic' 'python-exceptiongroup' 'python-typing_extensions' 'python-packaging' 'python-starlette' 'python-authlib' 'python-dotenv')
-optdepends=('python-cyclopts: server'
-            'python-griffelib: server'
-            'python-watchfiles: server'
-            'python-opentelemetry-api: server'
-            'python-py-key-value-aio: client/server'
-            'python-cachetools: memory')
+depends=('python' 'python-yaml' 'python-openai' 'python-py-key-value-aio' 'python-jsonschema-path' 'python-pydantic-settings' 'python-rich' 'python-uncalled-for' 'python-pyperclip' 'python-httpx' 'python-pydantic' 'python-platformdirs' 'python-jsonref' 'python-opentelemetry-api' 'python-google-genai' 'python-watchfiles' 'uvicorn' 'python-joserfc' 'python-anyio' 'python-cryptography' 'python-pydantic-core' 'python-mcp' 'python-httpcore' 'python-anthropic' 'python-griffelib' 'python-openapi-pydantic' 'python-exceptiongroup' 'python-typing_extensions' 'python-packaging' 'python-starlette' 'python-authlib' 'python-dotenv' 'python-cyclopts' 'python-cachetools')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz" "LICENSE")
 sha256sums=('290646e0955a516235a317151034559aa48336cb843d3f006131aedad8759bb4'
