@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=pragtical
-pkgver=3.11.2
+pkgver=3.12.0
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('meson>=0.63')
 source=(
   "https://github.com/pragtical/pragtical/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('5a1216ac41c98436cfc3ff00c4f9d2087351e7a21c32da6318a0a126d5fddb86')
+sha256sums=('75f1ff39387e049d3effbdca27dc3e209a2b3bace82ffffd660fac8586b49236')
 
 build() {
   cd "pragtical-$pkgver"
@@ -35,7 +35,7 @@ build() {
   fi
 
   arch-meson --wrap-mode default --buildtype release $pgo -Db_lto=true \
-    -Dstrip=true -Doptimization=3 $lua \
+    -Dstrip=true -Doptimization=3 -Drenderer_backend=sdlgpu $lua \
     build
 
   if [ -n "$PGO" ]; then
