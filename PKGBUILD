@@ -1,7 +1,7 @@
 # Maintainer: Kairat Kubanychbek uulu <https://github.com/ImKairat>
 
 pkgname=gitflow
-pkgver=1.0.0_beta.1
+pkgver=1.0.0_beta.2
 pkgrel=1
 pkgdesc="A high-performance, type-safe implementation of the Gitflow AVH branching model in Rust."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'git')
 provides=('gitflow')
 conflicts=('gitflow')
 options=('!lto')
-source=("git+https://github.com/ImKairat-Rust-Lab/gitflow.git#tag=v1.0.0-beta.1")
+source=("git+https://github.com/ImKairat-Rust-Lab/gitflow.git#tag=v1.0.0-beta.2")
 sha256sums=('SKIP')
 
 build() {
