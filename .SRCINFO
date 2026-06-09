@@ -1,8 +1,7 @@
-pkgbase = nextpnr-all-nightly
+pkgbase = nextpnr
 	pkgdesc = nextpnr portable FPGA place and route tool - ice40, ecp5, machxo2, nexus, and generic
-	pkgver = 20260603_nextpnr_0.9_85_ge953c250
+	pkgver = 0.10
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
 	arch = x86_64
 	license = custom:ISC
@@ -14,26 +13,25 @@ pkgbase = nextpnr-all-nightly
 	makedepends = gawk
 	makedepends = eigen
 	makedepends = boost
-	depends = yosys-nightly
-	depends = prjtrellis-nightly
-	depends = icestorm-nightly
-	depends = prjoxide-nightly
 	depends = python
 	depends = boost-libs
 	depends = qt5-base
-	provides = nextpnr-ecp5=0.9
-	provides = nextpnr-generic=0.9
-	provides = nextpnr-ice40=0.9
-	provides = nextpnr-machxo2=0.9
-	provides = nextpnr-nexus=0.9
+	depends = yosys
+	depends = prjtrellis
+	depends = prjtrellis-db-git
+	depends = icestorm-nightly
+	depends = prjoxide-nightly
+	provides = nextpnr-ecp5=0.10
+	provides = nextpnr-ice40=0.10
+	provides = nextpnr-nexus=0.10
+	provides = nextpnr-generic=0.10
 	conflicts = nextpnr-git
-	conflicts = nextpnr-ice40-nightly
 	conflicts = nextpnr-ecp5-nightly
-	conflicts = nextpnr-machxo2-nightly
+	conflicts = nextpnr-ice40-nightly
 	conflicts = nextpnr-nexus-nightly
 	conflicts = nextpnr-generic-nightly
 	options = !strip
-	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=e953c250
-	sha256sums = SKIP
+	source = https://github.com/YosysHQ/nextpnr/archive/refs/tags/nextpnr-0.10.tar.gz
+	sha256sums = 374393094cdf7b2aae415cebf0994840b4a355bb95e89c683ef19f95f0b14dc2
 
-pkgname = nextpnr-all-nightly
+pkgname = nextpnr
