@@ -5,9 +5,9 @@
 # Contributor: Alex Avance <aravance at gmail dot com>
 
 pkgname='sparklines'
-pkgdesc='Text-based sparkline command line mimicking those of Edward Tufte'
+pkgdesc='Text-based sparklines for the command line mimicking those of Edward Tufte'
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 url="https://github.com/deeplook/$pkgname"
 changelog="$pkgname.changelog"
 arch=('any')
