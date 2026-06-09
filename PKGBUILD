@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=animu-bin
 _pkgname=Animu
-pkgver=0.7.15
+pkgver=0.7.16
 _electronversion=42
 pkgrel=1
 pkgdesc="An easy to use desktop application for watching anime.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d1c9acd5f3bddaca5ad06816d5004fbdbf2e7843f675f380791f02c0d27266d4'
+sha256sums=('5799feda3b022213e07abe0554e431f2ccf4f126213e7b36548086e2efd6485b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
