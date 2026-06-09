@@ -1,6 +1,6 @@
 # Maintainer: Alex Macocian <amacocian@yahoo.com>
 pkgname=quick-visor
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Quickshell-based display manager overlay for Hyprland"
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
     'inotify-tools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AlexMacocian/quick-visor/archive/v${pkgver}.tar.gz")
-sha256sums=('10795e3d319865662b210d912a07ccd388e987006debbe49f1496c346b0ff1cd')
+sha256sums=('fa66be73f82c747181b2f9a01e355ecabcc0fbec03ba8166dc95c185dc5f3c84')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
