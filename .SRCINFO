@@ -1,10 +1,10 @@
 pkgbase = outwiker
 	pkgdesc = Outliner and personal wiki with keeping the tree of notes in the form of directories on a disk
-	pkgver = 3.3.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/jenyay/outwiker
 	arch = any
-	license = GPL-3.0-only
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
@@ -16,7 +16,7 @@ pkgbase = outwiker
 	depends = python-pyparsing
 	depends = python-rcssmin
 	depends = python-wxpython
-	source = outwiker-3.3.0.tar.gz::https://github.com/jenyay/outwiker/archive/refs/tags/3.3.0-stable.tar.gz
-	sha256sums = 6d2611cbc4a0857cb9ab6e40894c6c8836036fc929e246deb08d3a6ced9feb3b
+	source = outwiker-4.0.0.tar.gz::https://github.com/jenyay/outwiker/archive/4.0.0-stable.tar.gz
+	sha256sums = 5ed33e08ef2d549f5ed6806bd1e2297c154243bd47372fedf959eb57f20e7de7
 
 pkgname = outwiker

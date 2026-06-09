@@ -1,15 +1,16 @@
-# Maintainer: Brian Thompson <brianrobt@pm.me>
+# Contributor: Brian Thompson <brianrobt@pm.me>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: tee < teeaur at duck dot com >
 
 pkgname=outwiker
-pkgver=3.3.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Outliner and personal wiki with keeping the tree of notes in the form of directories on a disk'
 arch=('any')
 url='https://github.com/jenyay/outwiker'
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=(
     'python-hunspell'
     'python-idna'
@@ -23,8 +24,8 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver-stable.tar.gz")
-sha256sums=('6d2611cbc4a0857cb9ab6e40894c6c8836036fc929e246deb08d3a6ced9feb3b')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver-stable.tar.gz")
+sha256sums=('5ed33e08ef2d549f5ed6806bd1e2297c154243bd47372fedf959eb57f20e7de7')
 
 build() {
     cd "$pkgname-$pkgver-stable" || exit
