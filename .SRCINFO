@@ -1,6 +1,6 @@
 pkgbase = stripe-cli
 	pkgdesc = CLI for Stripe
-	pkgver = 1.42.4
+	pkgver = 1.42.5
 	pkgrel = 1
 	url = https://github.com/stripe/stripe-cli
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = stripe-cli
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = stripe-cli-1.42.4.tar.gz::https://github.com/stripe/stripe-cli/archive/v1.42.4.tar.gz
-	b2sums = a9fdd648b990211eed32b28c55ddba18ee48e124f44f1941297b494d25be27abfc554c718edf847f21529835b52af0c752f8e44857615383b04d29d746e5c223
+	source = stripe-cli-1.42.5.tar.gz::https://github.com/stripe/stripe-cli/archive/v1.42.5.tar.gz
+	b2sums = df105889d675fd69f649c0d68f387089df1508bece01e87fda4987826eff719a3153d535c4ce95945e36b26e099a7cd36bc9aba3baf5927d42bfc7f6d2b0f7c5
 
 pkgname = stripe-cli
