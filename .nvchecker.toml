@@ -1,0 +1,3 @@
+[rclip]
+source = "pypi"
+pypi = "rclip"
