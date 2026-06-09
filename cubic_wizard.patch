@@ -8,7 +8,7 @@
 -    ### TODO: FOR TESTING ONLY
 -    ### model.application.cubic_version = '2024.08-87-release~202402210132~ubuntu23.10.1'
 +    ### Lazy Band-aid Fix
-+    model.application.cubic_version = '2026.02.102-release~202602080449~ubuntu24.04.1'
++    model.application.cubic_version = '2026.06.104-release~202606062224~ubuntu22.04.1'
  
      # Get the running kernel version.
      model.application.kernel_version = constructor.get_kernel_version()
