@@ -7,7 +7,7 @@
 pkgname='sparklines'
 pkgdesc='Text-based sparkline command line mimicking those of Edward Tufte'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/deeplook/$pkgname"
 changelog="$pkgname.changelog"
 arch=('any')
@@ -26,6 +26,7 @@ optdepends=(
   'python-textual: needed to rune the example(s)'
 )
 provides=({,python-}"$pkgname")
+conflicts=("python-$pkgname")
 replaces=("python-$pkgname")
 options=('!strip')
 source=(
