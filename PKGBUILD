@@ -1,6 +1,6 @@
 # Maintainer: Keiran <keircn@proton.me>
 pkgname=seanime-bin
-pkgver=3.8.4
+pkgver=3.8.5
 pkgrel=1
 pkgdesc="A self-hosted media server for anime with anilist integration (pre-compiled binary)"
 arch=(x86_64)
@@ -10,7 +10,7 @@ provides=('seanime')
 conflicts=('seanime')
 depends=('systemd')
 source=("https://github.com/5rahim/seanime/releases/download/v${pkgver}/seanime-${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('1f905b2bda39df3e9c881e3bb4110ca79b8c7dbe0171958b21a5453200306324')
+sha256sums=('9fd8af1c0ca2165ea3b70bad7e6f180ee440ae1c21e8db44c0cb7e7c36028bdb')
 
 package() {
     cd "${srcdir}"
