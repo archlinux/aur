@@ -1,6 +1,6 @@
 # Maintainer: 7erez <the7erez@gmail.com>
 pkgname=7sh
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A minimal POSIX-compliant custom shell with native UTF-8 support by 7erez (Stable Release)"
 arch=('x86_64' 'aarch64')

@@ -1,6 +1,6 @@
 pkgbase = 7sh
 	pkgdesc = A minimal POSIX-compliant custom shell with native UTF-8 support by 7erez (Stable Release)
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/the7erez/7sh
 	arch = x86_64
