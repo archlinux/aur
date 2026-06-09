@@ -1,0 +1,16 @@
+pkgbase = wlsnap-bin
+	pkgdesc = Wayland screenshot utility - CLI-driven capture with editing, Pin, and scrolling support
+	pkgver = v0.1.0
+	pkgrel = 1
+	url = https://github.com/lingdiansr/wlsnap
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	depends = libxkbcommon
+	provides = wlsnap
+	conflicts = wlsnap
+	source = wlsnap-bin-v0.1.0::https://github.com/lingdiansr/wlsnap/releases/download/v0.1.0/wlsnap-v0.1.0-x86_64-linux
+	sha256sums = 06317134c1c1251440582e906e792ae6714fe50232f789b2523db295436f7ddc
+
+pkgname = wlsnap-bin

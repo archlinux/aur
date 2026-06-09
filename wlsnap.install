@@ -1,0 +1,15 @@
+post_install() {
+    echo "wlsnap has been installed."
+    echo ""
+    echo "Quick start:"
+    echo "  wlsnap --screen -o ~/screenshot.png   # Capture current screen"
+    echo "  wlsnap --screen --clipboard            # Copy to clipboard"
+    echo "  wlsnap --screen --stdout | wl-copy     # Pipe to another tool"
+    echo ""
+    echo "Config file will be auto-created at ~/.config/wlsnap/config.toml"
+    echo "See /usr/share/doc/wlsnap/config.example.toml for options."
+}
+
+post_upgrade() {
+    post_install
+}
