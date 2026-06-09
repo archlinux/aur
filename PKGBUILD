@@ -1,6 +1,6 @@
 # Maintainer: Mikołaj Mikołajczyk <mikolajczyk.mikolajm@gmail.com>
 pkgname=radboard-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Desktop Kanban board for Radicle"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('radboard')
 depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'openssl')
 options=('!strip' '!debug')
 source=("radboard-${pkgver}.deb::https://dl.mikolajczyk.org/radboard/v${pkgver}/radboard-amd64.deb")
-sha256sums=('a0a2b9ddc1429fe2e33f1ec56226959b1f4f3caa4f53ed90003c155894ee0a00')
+sha256sums=('8a54801501fd14bb20f6fc0725a45f95d826f120012a0e63a0672c7c997198a0')
 
 prepare() {
     cd "$srcdir"
