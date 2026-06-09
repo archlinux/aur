@@ -1,0 +1,13 @@
+diff --git CMakeLists.txt CMakeLists.txt
+index 42dcff3..51e4cc7 100644
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -16,7 +16,7 @@
+ #     with this program; if not, write to the Free Software Foundation, Inc.,
+ #     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ # */
+-cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+ if( NOT CMAKE_VERSION VERSION_LESS 3.1)
+ 	cmake_policy(SET CMP0054 NEW) # dont expand quoted strings in if()s
+ endif()
