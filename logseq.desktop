@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Logseq (Nightly)
+Comment=A privacy-first, open-source knowledge management platform
+Exec=logseq %u
+Icon=logseq
+Terminal=false
+StartupNotify=true
+Categories=Office;
+MimeType=x-scheme-handler/logseq;
+StartupWMClass=Logseq
