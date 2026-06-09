@@ -1,7 +1,7 @@
 pkgbase = steam-appimage
 	pkgdesc = Steam package based on AppImage
 	pkgver = 1.0.0.85.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/ivan-hc/Steam-appimage
 	arch = x86_64
 	license = GPL-3.0-or-later

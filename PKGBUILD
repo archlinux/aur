@@ -1,7 +1,7 @@
 # Maintainer: SLIGHTLKE <SLIGHTLKE@outlook.com>
 pkgname=steam-appimage
 pkgver=1.0.0.85.7
-pkgrel=5
+pkgrel=6
 pkgdesc="Steam package based on AppImage"
 arch=('x86_64')
 url="https://github.com/ivan-hc/Steam-appimage"
@@ -41,6 +41,7 @@ Type=Application
 Name=Steam
 Comment=Steam AppImage
 Exec=steam
+Categories=Game;
 Terminal=false
 EOF
 
