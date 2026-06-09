@@ -13,6 +13,6 @@ pkgbase = omni-launcher
 	depends = glib2
 	optdepends = hyprland: close-on-workspace-change and focus-grab integration
 	source = omni-launcher-0.0.2.tar.gz::https://git.estatecloud.org/radumaco/omni-launcher/archive/v0.0.2.tar.gz
-	sha256sums = 48922f27a6cf06c7d78313ddc52c92cf5b1b434f80bfe6e1f7d0f41f631bea98
+	sha256sums = f56914b4eaa25c525727d6b59e54f5561a0621778350dfe2d64b8581fc43823a
 
 pkgname = omni-launcher
