@@ -20,7 +20,7 @@ depends=(
   'python-colorama' 'python-defusedxml' 'python-glom' 'python-jsonschema' 'python-packaging'
   'python-peewee' 'python-lsp-jsonrpc' 'python-requests' 'python-rich'  'python-ruamel-yaml'
   'python-tomli' 'python-typing_extensions' 'python-urllib3' 'python-wcmatch' 'python-pydantic'
-  'python-starlette' 'python-mcp' 'python-fastmcp' 'python-semantic-version' 'python-toml'
+  'python-starlette' 'python-mcp' 'python-fastmcp-slim' 'python-semantic-version' 'python-toml'
   'python-opentelemetry-api' 'python-opentelemetry-exporter-otlp-proto-http' 'python-opentelemetry-sdk'
   'python-opentelemetry-instrumentation-requests' 'python-opentelemetry-instrumentation-threading'
 )
