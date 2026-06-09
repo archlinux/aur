@@ -1,8 +1,8 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-autoreject
 _name=${pkgname#python-}
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="Python package for automatically rejecting bad trials and sensors in EEG/MEG data"
 arch=('any')
 url="https://autoreject.github.io/stable/index.html"
