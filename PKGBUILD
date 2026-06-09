@@ -1,6 +1,6 @@
 # Maintainer: Juan Boullosa <jmboullosa@zentus.io>
 pkgname=wxextract
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Extract WeChat 4.x conversations on Linux into compact LLM-ready text + interactive HTML report"
 arch=('any')
@@ -18,6 +18,8 @@ optdepends=(
     'sqlcipher: faster + WAL-correct decrypt (falls back to pure-Python AES otherwise)'
     'wechat-bin: the AUR build of WeChat 4.x this tool targets (only needed to extract live data)'
     'rsync: faster snapshot copy (usually already installed)'
+    'python-requests: Instagram live --thread extraction (private API)'
+    'python-browser-cookie3: Instagram live --thread extraction (reads the browser session cookie; pip install if not in AUR)'
 )
 makedepends=(
     'python-build'
@@ -26,7 +28,7 @@ makedepends=(
     'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/boujuan/extract-wechat-messages-linux/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d15143739ae5d5c71bffb477fa40c434a207bf307151b294db04ffd55d91d87f')
+sha256sums=('575cfa4036341aef389e10b6b7fae75c92503d17b44d75afc67b8abe852d6801')
 
 build() {
     cd "extract-wechat-messages-linux-$pkgver"
