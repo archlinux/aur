@@ -6,13 +6,13 @@ pkgdesc="Application launcher overlay built on Quickshell, with calculator, unit
 arch=('any')
 url="https://git.estatecloud.org/radumaco/omni-launcher"
 license=('GPL-3.0-or-later')
-depends=('quickshell' 'wl-clipboard' 'curl' 'python' 'glib2')
+depends=('quickshell' 'qt6-declarative' 'wl-clipboard' 'curl' 'python' 'glib2')
 optdepends=('hyprland: close-on-workspace-change and focus-grab integration')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('48922f27a6cf06c7d78313ddc52c92cf5b1b434f80bfe6e1f7d0f41f631bea98')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
 
     install -dm755 "$pkgdir/usr/share/$pkgname"
     install -m644 qml/* "$pkgdir/usr/share/$pkgname/"
