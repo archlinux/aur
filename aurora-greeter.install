@@ -1,0 +1,15 @@
+post_install() {
+  echo ":: To configure the theme, set wallpapers, or create slideshows/playlists, use:"
+  echo "     sddm-aurora-ctl --help"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo ":: Note: Copied media files, custom playlists, and settings config were left intact."
+  echo "   To completely remove all leftover directories, run:"
+  echo "     sudo rm -rf /var/lib/sddm/.config/AuroraGreeter"
+  echo "     sudo rm -rf /usr/share/sddm/themes/aurora-greeter"
+}

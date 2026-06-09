@@ -12,6 +12,7 @@ makedepends=('git')
 provides=("sddm-theme-aurora-greeter")
 conflicts=("sddm-theme-aurora-greeter")
 source=("git+https://github.com/Execorn/aurora-greeter.git")
+install=aurora-greeter.install
 md5sums=('SKIP')
 
 pkgver() {
