@@ -1,4 +1,2 @@
-2.44.0-1 [2026-06-04]
-- [Desktop][Enterprise] Implemented the watermark policy directly on the page. 
-- [Desktop][BugFix] Evaluated all the rules under the block and exception lists.
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 149.0.7827.59.
+2.44.1-1 [2026-06-09]
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 149.0.7827.103.
