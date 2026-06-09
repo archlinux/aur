@@ -2,13 +2,15 @@
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 
 _opt_meson=1
+_opt_commit=''
+_opt_commit='#commit=c6c5a89c47511582a45b0ac9593f571381992375'
 
 set -u
 _pkgname='fdpp'
 pkgname='fdpp'
 #pkgname+='-git'
 epoch=0
-pkgver=1.9
+pkgver=1.10.r45.gc6c5a89c
 pkgrel=1
 pkgdesc='64 bit FreeDOS++ for dosemu2'
 arch=(
@@ -20,8 +22,9 @@ license=(
   'GPL-3.0-or-later'
 )
 depends=(
-  'comcom64'
-  'gcc-libs'
+  #'comcom64'
+  'libgcc'
+  'libstdc++'
   'glibc'
   'libelf'
 )
@@ -42,17 +45,16 @@ else
   makedepends+=("x86_64-elf-binutils")
   export CROSS_LD='x86_64-elf-ld'
 fi
-options=('!strip')
+options=('!strip' '!buildflags' '!lto')
 _srcdir="${pkgname%-git}-${pkgver%.r*}"
 source=(
   "${_srcdir}.tar.gz::${url}/archive/${pkgver%%.r*}.tar.gz"
 )
-md5sums=('d92a3c518a2af00c2e0e4035ac71df59')
-sha256sums=('65fdf0819d490c8ba32fc706309f483f0c6547ff65c860efbb4323e4138896ed')
-b2sums=('a7ae68d5056ab364a80ab6a3454389a1fad5a049a738d9fab8aebe0497d366267e1848493d70e34200e6805ddbfd19b0c6bc0b56c8c43949f1ff95da35ed72b2')
+md5sums=('5f9c5c7bfa7514f41512f38d894668da')
+sha256sums=('b2e036c19f7b02f8ef4d2254f3cc6f7d9a3462d582621e6b2e9cc4fc1623f17a')
 
 prepare() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
 
   local _pt
@@ -65,14 +67,15 @@ prepare() {
   done
 
   sed -e '/^PREFIX / s:/usr/local:/usr:g' -i 'fdpp/defs.mak'
-  set +u
 }
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
-  source[0]="git+${url}.git"
+  _opt_commit=''
+fi
+if [ "${pkgname%-git}" != "${pkgname}" ] || [ ! -z "${_opt_commit}" ]; then
+  source[0]="git+${url}.git${_opt_commit}"
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
-  b2sums[0]='SKIP'
   conflicts+=("${pkgname%-git}")
   provides+=("${pkgname%-git}=${pkgver%%.r*}")
   makedepends+=('git')
@@ -84,14 +87,13 @@ pkgver() {
 elif [ "${pkgver%.r*}" != "${pkgver}" ]; then
   source=("${source[@]/${pkgver}/${pkgver%.r*}}")
 pkgver() {
-  set -u
+  local -; set -u
   printf '%s\n' "${pkgver%.r*}"
-  set +u
 }
 fi
 
 build() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   if [ -s 'configure.meson' ] && [ "${_opt_meson}" -ne 0 ]; then
     if grep -qe '-- ' 'configure.meson'; then
@@ -105,11 +107,10 @@ build() {
     sed -E -e '/^prefix / s:= .+:= /usr:g' -i 'fdpp/defs.mak'
     nice make
   fi
-  set +u
 }
 
 package() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   if [ -s 'configure.meson' ] && [ "${_opt_meson}" -ne 0 ]; then
     meson install -C 'build' --destdir "${pkgdir}"
@@ -125,7 +126,5 @@ package() {
     ln -s fdppkrnl.*.map 'fdppkrnl.map'
   fi
   popd > /dev/null
-
-  set +u
 }
 set +u
