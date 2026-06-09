@@ -1,7 +1,7 @@
 # Maintainer: Wendy Labs Inc. <support@wendy.sh>
 pkgname=wendy-agent
-_pkgver=2026.06.05-173402
-_pkgtag=2026.06.05-173402
+_pkgver=2026.06.09-034757
+_pkgtag=2026.06.09-034757
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Wendy Agent - Runs on target devices for remote debugging and deployment"
@@ -23,8 +23,8 @@ source_x86_64=("${pkgname}-${_pkgver}-x86_64.tar.gz::https://github.com/wendylab
 source_aarch64=("${pkgname}-${_pkgver}-aarch64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/${_pkgtag}/wendy-agent-linux-arm64-${_pkgver}.tar.gz")
 
 # Checksums will be updated by CI
-sha256sums_x86_64=('a48d1714409fd323d13a862fd4419a73427c5cfa272574b0e7f2a201be13d25a')
-sha256sums_aarch64=('be7c2ca03e1348768b8d5fb904ec087080df2c7669da228d245f985ff222165a')
+sha256sums_x86_64=('d2dc01267560ef6b69efa76ff38d73e9555fc5961f75f32d21b73165e779c113')
+sha256sums_aarch64=('f3073bd967a3d41c64f0aaa4e8805e77afa5e4500b7530f69ff58faca0db8b39')
 
 package() {
     cd "${srcdir}"
