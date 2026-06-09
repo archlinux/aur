@@ -1,6 +1,6 @@
 pkgbase = radicle-desktop
 	pkgdesc = Radicle desktop app
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://radicle.dev/
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = radicle-desktop
 	depends = glib2
 	depends = gtk3
 	depends = hicolor-icon-theme
-	depends = libsoup
+	depends = libsoup3
 	depends = pango
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
 	options = !lto
-	source = radicle-desktop::git+https://seed.radicle.dev/z4D5UCArafTzTQpDZNQRuqswh3ury.git#commit=657ac9a6c1423686c7c2facc8e4519a43ba1e6b6
+	source = radicle-desktop::git+https://seed.radicle.dev/z4D5UCArafTzTQpDZNQRuqswh3ury.git#commit=3abba534376baf091316b030ccfea061d107d893
 	sha256sums = SKIP
 
 pkgname = radicle-desktop
