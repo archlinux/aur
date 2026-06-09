@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 
 pkgname="deezer"
-pkgver=7.1.230
+pkgver=7.1.240
 pkgrel=1
 
 # Keep this in sync with the formatter version used by aunetx/deezer-linux.
@@ -23,7 +23,7 @@ url="https://www.deezer.com/"
 license=('custom')
 depends=('electron41' 'hicolor-icon-theme' 'xdg-utils')
 provides=('deezer')
-makedepends=('p7zip' 'asar' 'imagemagick' 'npm')
+makedepends=('7zip' 'asar' 'imagemagick' 'npm')
 
 source=(
     "$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact-win32-x86-$pkgver"
@@ -65,7 +65,7 @@ noextract=(
     "mpris-service-${_mpris_ver}.tgz"
 )
 
-sha256sums=('b1400270205a367315e9a5b678d0f7b10686f47b150969b9a6b1921ce4be4f36'
+sha256sums=('65ac383ca35f10d690990c15f6a45fbee131feca7385b434f82867cfef46da66'
             'c33b398d8ae279a620cf2914c806f7ee00c47519e4f404874cfd90a68fc8d80f'
             '3a23339b7b00d5d6d59768699f585d2565fc1cd7d2c43a254206de3840546eb6'
             '951c80c9dc4848b31a5fcc9655b005f3a218b1ff735396168c13922ac658c83b'
