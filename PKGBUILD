@@ -7,7 +7,7 @@
 
 pkgname=grexa
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast Linux file content search with tabs, replace, and AI assistance"
 arch=('x86_64')
 url="https://github.com/visorcraft/Grexa"
@@ -55,7 +55,7 @@ build() {
 check() {
     export RUSTUP_TOOLCHAIN=stable
     cd "$pkgname"
-    cargo test --workspace --release --locked --no-run
+    cargo test --workspace --frozen
 }
 
 package() {
