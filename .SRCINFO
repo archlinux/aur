@@ -1,0 +1,13 @@
+pkgbase = browser-proxy
+	pkgdesc = Registers as your system default browser and routes every URL to the browser of your choice via TOML rules
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/maxischmaxi/browser-proxy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = browser-proxy-1.3.0.tar.gz::https://github.com/maxischmaxi/browser-proxy/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 4a88aca1294f3cd6d3eafcab547c631e4eb5e0f2d956166a04f07751230ac003
+
+pkgname = browser-proxy
