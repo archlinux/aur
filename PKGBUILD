@@ -27,7 +27,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   # Ensure compiler can find unzip.h from minizip
-  export CPPFLAGS="-I/usr/include/minizip {$CPPFLAGS}"
+  export CPPFLAGS="-I/usr/include/minizip ${CPPFLAGS}"
   export CFLAGS="-I/usr/include/minizip ${CFLAGS}"
 
   ./configure --prefix=/usr --sysconfdir=/etc \
