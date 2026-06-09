@@ -1,6 +1,6 @@
 # Maintainer: mryll <https://github.com/mryll>
 pkgname=logibar
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Waybar widgets and daemons for monitoring Logitech wireless peripheral battery levels'
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=('waybar-logitech-battery')
 provides=('waybar-logitech-battery')
 install=logibar.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mryll/logibar/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('91600c42c1049c068561dc3ff5ab3402edb2b827ca5c4259850ed0b6977b02d7')
+sha256sums=('11aba8b862dbfb452f3e4b24f94fb90c97290fef83d951c5a2230d21fd61e5d3')
 
 package() {
     cd "$pkgname-$pkgver"
