@@ -1,8 +1,8 @@
 # Maintainer: Koutheir Attouchi <koutheir at gmail dot com>
 _github_user_name='sevaa'
 pkgname=dwex
-pkgver=4.80
-pkgrel=3
+pkgver=4.81
+pkgrel=1
 pkgdesc='GUI viewer for DWARF debug information'
 arch=('x86_64')
 url="https://github.com/${_github_user_name}/${pkgname}"
@@ -17,14 +17,12 @@ install=
 source=("https://github.com/${_github_user_name}/${pkgname}/raw/refs/tags/${pkgver}/LICENSE"
         "https://github.com/${_github_user_name}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.png"
-        "${pkgname}.desktop"
-        '237e5d4f2fe93c72a1b09332d73cb52d871d220d.patch')
+        "${pkgname}.desktop")
 noextract=()
 sha256sums=('96ec745235ecae021cd0db62f896a21ecdd46495795fdb713fa714c6f9a508ac'
-            'a4ee32a394ab111786d1d296ad611a4cda4fdb56d9470531d71b3c7f8b922a2d'
+            '1badec319e90a8dbeefec65abb7e2728f89a59ea7300513417ef05b6c510dd8e'
             'd92d16891381310a4b18cc8ae59a1a0ac99a07ca80599a7e3c003970622ba03f'
-            '155036828925419fe6ab40d600d5e5ada249e1b47095d17bddf7aa694a0cdb6d'
-            '357f80648cebcf8f2b757fc5609c1f7fd175673c658239fed5cbb30a958c97bc')
+            '155036828925419fe6ab40d600d5e5ada249e1b47095d17bddf7aa694a0cdb6d')
 validpgpkeys=()
 
 prepare() {
@@ -47,8 +45,6 @@ package() {
     cd "${pkgname}-${pkgver}"
 
     mkdir -p "${pkgdir}/usr"/{bin,lib,share/licenses/${pkgname}}
-
-    patch --strip=1 --forward --unified --no-backup-if-mismatch --version-control=never "--input=${srcdir}/237e5d4f2fe93c72a1b09332d73cb52d871d220d.patch"
 
     python setup.py install --verbose --single-version-externally-managed --compile --optimize=2 \
         --prefix=/usr "--root=${pkgdir}"
