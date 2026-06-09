@@ -11,7 +11,7 @@ options=('!lto' '!debug')
 depends=('webkit2gtk-4.1' 'gtk3' 'gdk-pixbuf2' 'cairo' 'glib2' 'dbus' 'libsoup3')
 makedepends=('jq' 'npm' 'rust' 'openssl' 'librsvg' 'xdotool')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('89c5be35c08091075b6ce666e2df8da32c572d0188b6f4d086d7685e07e14dba')
+sha256sums=('4a3644e9dfa64980df5f4ddddeff0ec4e3a520538cd9b71b6e510c9cff5e52ca')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
