@@ -1,6 +1,6 @@
 pkgbase = nym-vpn-app
 	pkgdesc = NymVPN desktop client
-	pkgver = 1.30.0
+	pkgver = 2026.10.0
 	pkgrel = 1
 	url = https://github.com/nymtech/nym-vpn-client
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = nym-vpn-app
 	conflicts = nym-vpn-app
 	options = !debug
 	options = !lto
-	source = nym-vpn-app-1.30.0.tar.gz::https://github.com/nymtech/nym-vpn-client/archive/refs/tags/nym-vpn-app-v1.30.0.tar.gz
+	source = nym-vpn-app-2026.10.0.tar.gz::https://github.com/nymtech/nym-vpn-client/archive/refs/tags/nym-vpn-app-v2026.10.0.tar.gz
 	source = nym-vpn.desktop
 	source = nym-vpn.svg
-	sha256sums = 473fe9852a1c3fbffe6b9f0782bb5b6f255104de8a2f68a93741bab16450f845
+	sha256sums = fa459619241d06d3f95b42b95827a077da4fb8986aa35794e9a5679b3fb56632
 	sha256sums = 143fd3eb05ccc8d714cda55c83221ffe6c5f83d85d5cce8407c188a8e72952d8
 	sha256sums = 8058039c52c588e38285971c4c37d50fdb8e05e50bbc19d7ffeb89d662a21f1e
 
