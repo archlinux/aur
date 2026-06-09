@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 
 pkgname=opera-developer
-pkgver=133.0.5910.0
+pkgver=133.0.5917.0
 pkgrel=1
 pkgdesc='Fast, secure, easy-to-use web browser (Developer Stream)'
 arch=('x86_64')
@@ -72,7 +72,7 @@ source=(
 )
 
 sha256sums=(
-    '6da89f8c37f15908b0400c3aa5b715e693244f115250a1f2be83cbf3874cc8b2'
+    '75979ab1b9d878fbbf1fdacdb856111c130f52f599dc86076a6bcae8dcafa6cb'
     '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
     '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'
     'e5532d59117f527fc34f9f7af2aedf78719627fdf7b5527d84b2e71126764ec6'
