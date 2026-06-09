@@ -5,7 +5,7 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.88.0
+pkgver=1.88.1
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=(any)
@@ -83,7 +83,7 @@ optdepends=('gunicorn: proxy'
             'python-detect-secrets: proxy-runtime')
 provides=("python-$pkgname")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('4ff794493e40bd86c6f13e91dcb3e1aad697403fd46a96902196d93356ba48f4')
+sha256sums=('89c6b74cc7912d6365793006ff951c0450fe847625008dfe49de8a7dc4529aa5')
 
 
 prepare() {
