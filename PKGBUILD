@@ -1,7 +1,7 @@
 # Maintainer: insmtr <insmtr@insmtr.cn>
 pkgname=p4lang-pi
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="An implementation framework for a P4Runtime server"
 arch=('x86_64')
 url="https://github.com/p4lang/PI"
@@ -19,7 +19,7 @@ makedepends=(
     'git'
 )
 source=("git+https://github.com/p4lang/PI.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('58cbfbc4f76f5a6440572bd0bd496a6d4d43fa424403f7997af1737167fa6fa8')
 options=(!debug)
 
 prepare() {
