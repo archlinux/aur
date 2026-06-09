@@ -1,6 +1,6 @@
 # Maintainer: Taylor Beeston <beeston.taylor@gmail.com>
 pkgname=image-colorizer
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="Snap an image to a colorscheme extremely quickly"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
   'vulkan-radeon: for Vulkan support on AMD GPUs'
 )
 source=("$pkgname-$pkgver.crate::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('cbe6143e48659dddf8bcdcbfb74efd3498e3c46c51cb47e57ae35c1edf8bd3f0')
+sha256sums=('166384e40a25eb3a1ad5e23ec0b733a164aa76e8414e282a47daa803bfee9702')
 
 build() {
   cd "$pkgname-$pkgver"
