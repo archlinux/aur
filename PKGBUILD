@@ -10,7 +10,7 @@ pkgname='sd-boot'
 pkgdesc='Tools to install linux kernels via kernel-install from systemd'
 _gitname='sd-boot'
 
-pkgver="5.7.1"
+pkgver="5.8.0"
 pkgrel=1
 url="https://github.com/gene-git/sd-boot"
 
@@ -23,7 +23,6 @@ depends=(
     glibc
     libyaml
     rsync
-    systemd
     sbctl
     systemd
     systemd-ukify
