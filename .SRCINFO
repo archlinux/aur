@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-zoomvtools-git
 	pkgdesc = Zoomy reimplementation of VapourSynth MVTools
-	pkgver = r400.1c64158
+	pkgver = r417.907c149
 	pkgrel = 1
 	url = https://gitlab.com/shssoichiro/vapoursynth-zoomvtools
 	arch = x86_64
