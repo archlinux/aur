@@ -1,0 +1,15 @@
+diff -pNaru5 a/dev.c b/dev.c
+--- a/dev.c	2024-02-18 09:04:30.000000000 -0500
++++ b/dev.c	2026-06-08 23:32:48.439463786 -0400
+@@ -7,10 +7,11 @@
+ 
+ #include <errno.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
++#include <string.h>
+ #include <sys/ioctl.h>
+ #ifdef __linux__
+ 	#include <linux/fd.h>
+ 	#include <linux/cdrom.h>
+ 	#include <linux/hdreg.h>
