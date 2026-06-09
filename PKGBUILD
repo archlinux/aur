@@ -1,4 +1,4 @@
-# Maintainer: 7erez <your-email@example.com>
+# Maintainer: 7erez <the7erez@gmail.com> 
 pkgname=7sh-git
 pkgver=1.0.r3.890a213
 pkgrel=1
