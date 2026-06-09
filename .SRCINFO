@@ -1,7 +1,7 @@
 pkgbase = remidock
 	pkgdesc = Custom Qt/QML dock for KDE Plasma Wayland
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yousefvand/RemiDock
 	arch = x86_64
 	license = MIT

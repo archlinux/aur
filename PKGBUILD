@@ -1,8 +1,8 @@
-# Maintainer: Remisa Phillips <yousefvand@gmail.com>
+# Maintainer: Masoud Yousefvand <yousefvand@gmail.com>
 
 pkgname=remidock
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Custom Qt/QML dock for KDE Plasma Wayland'
 arch=('x86_64')
 url='https://github.com/yousefvand/RemiDock'
