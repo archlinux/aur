@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=retorrent-bin
 _pkgname=retorrent
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A BitTorrent client with an alpha/test UI, built in Rust"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source_aarch64=("${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https:/
 
 source=("icon.png::https://raw.githubusercontent.com/mlm-games/retorrent/refs/heads/master/fastlane/metadata/android/en-US/images/icon.png")
 
-sha256sums_x86_64=('7de2f71414864b4a5f8ff6813d8eda249e1a44d976a8910d82fb24fd2866c38b')
-sha256sums_aarch64=('a440a3b4dbad681c3f5d275b67729e92c8eabf8aabfddc680ff11a159510ea0f')
+sha256sums_x86_64=('e4cde0ee0223c2b27db2aa48e3175a049927a20f48c450832b983ef46a8d1503')
+sha256sums_aarch64=('a7d5f486517684a704e34f48475f43b3d447b52f1fbca702bb13a0d3307edb82')
 sha256sums=('SKIP') # for icon.png
 
 package() {
