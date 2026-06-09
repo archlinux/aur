@@ -1,6 +1,6 @@
 pkgbase = ghastty-git
 	pkgdesc = A Qt6 frontend for Ghostty that embeds libghostty (Wayland-only)
-	pkgver = 1.3.2.r16699.gcc8b18bfb
+	pkgver = 1.3.2.r16700.gb639bb721
 	pkgrel = 1
 	url = https://github.com/fuddlesworth/ghastty
 	arch = x86_64
