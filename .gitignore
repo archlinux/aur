@@ -11,4 +11,4 @@ pkg/
 *.ico
 
 # Packages
-*.zst
+*.pkg.tar.*
