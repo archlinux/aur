@@ -1,4 +1,4 @@
-# Maintainer: Seb <siiire@pm.me>
+# Maintainer: Siiire <siiire@pm.me>
 pkgname=jellyfin-desktop-git-bin
 pkgver=0.r978.3500d01
 pkgrel=3
