@@ -6,7 +6,7 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/abhigyanpatwari/GitNexus'
 license=('PolyForm-Noncommercial-1.0.0')
 depends=('nodejs>=22')
-makedepends=('npm')
+makedepends=('npm' 'python')
 options=('!strip')
 
 _upstream=GitNexus
@@ -36,26 +36,29 @@ prepare() {
 }
 
 build() {
-  local _root="${srcdir}/${_upstream}-${pkgver}"
-  local _src="${_root}/gitnexus"
+  local _src="${srcdir}/${_upstream}-${pkgver}/gitnexus"
 
   export HOME="${srcdir}/.home"
   export npm_config_cache="${srcdir}/npm-cache"
   export npm_config_userconfig=/dev/null
   export npm_config_audit=false
   export npm_config_fund=false
-  export npm_config_production=false
   export npm_config_yes=true
+  export npm_config_ignore_scripts=false
   export CI=true
-  export GITNEXUS_SKIP_OPTIONAL_GRAMMARS=1
+
+  unset GITNEXUS_SKIP_OPTIONAL_GRAMMARS
+  unset npm_config_production NPM_CONFIG_PRODUCTION
 
   mkdir -p "$HOME" "$npm_config_cache"
 
   cd "$_src"
 
-  npm ci --include=dev
+  npm ci --include=dev --include=optional
   PATH="$PWD/node_modules/.bin:$PATH" npm run build
-  npm prune --omit=dev
+
+  rm -rf node_modules
+  npm ci --omit=dev --include=optional
 }
 
 package() {
