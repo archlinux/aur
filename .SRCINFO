@@ -1,16 +1,16 @@
 pkgbase = ttypo-bin
 	pkgdesc = Terminal-based typing test (prebuilt binary)
-	pkgver = 0.1.21
+	pkgver = 0.1.22
 	pkgrel = 1
 	url = https://github.com/drewja/ttypo
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = ttypo=0.1.21
+	provides = ttypo=0.1.22
 	conflicts = ttypo
-	source_x86_64 = https://github.com/drewja/ttypo/releases/download/v0.1.21/ttypo-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 23df7a2d6fc3bad9f3d122dba105556f834d2b51931400ff34bb0f5733357485
-	source_aarch64 = https://github.com/drewja/ttypo/releases/download/v0.1.21/ttypo-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = dd82c78ff9bb3d004518a3940e319e5c53cb2dd866c5345e7ae0be2f9ba3293d
+	source_x86_64 = https://github.com/drewja/ttypo/releases/download/v0.1.22/ttypo-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 1c28567045aa9adc61efbb4491036fbdbaa7fd9f0a388907390072bf9c9b9709
+	source_aarch64 = https://github.com/drewja/ttypo/releases/download/v0.1.22/ttypo-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = d21b33cae110db069860540858935a2c4068608c83a4dc665fec33dcc5fdfd5c
 
 pkgname = ttypo-bin
