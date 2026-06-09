@@ -1,26 +1,29 @@
 # Maintainer: Pater Kleomenis <paterkleomenis@protonmail.com>
 pkgname=connected-desktop-bin
 _pkgname=connected-desktop
-pkgver=3.1.6
-pkgrel=3
+pkgver=3.1.7
+pkgrel=1
 pkgdesc="High-speed, offline, cross-platform ecosystem bridging devices (Binary)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/paterkleomenis/connected"
 license=('MIT' 'Apache-2.0')
 depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'openssl' 'dbus')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
-source=("connected-desktop-${pkgver}::https://github.com/paterkleomenis/connected/releases/download/${pkgver}/connected-desktop"
-        "https://raw.githubusercontent.com/paterkleomenis/connected/main/packaging/connected-desktop.desktop"
+
+source=("https://raw.githubusercontent.com/paterkleomenis/connected/main/packaging/connected-desktop.desktop"
         "https://raw.githubusercontent.com/paterkleomenis/connected/main/android/app/src/main/ic_launcher-playstore.png"
         "https://raw.githubusercontent.com/paterkleomenis/connected/main/LICENSE-MIT"
         "https://raw.githubusercontent.com/paterkleomenis/connected/main/LICENSE-APACHE")
+source_x86_64=("connected-desktop-${pkgver}::https://github.com/paterkleomenis/connected/releases/download/${pkgver}/connected-desktop-linux-x86_64")
+source_aarch64=("connected-desktop-${pkgver}::https://github.com/paterkleomenis/connected/releases/download/${pkgver}/connected-desktop-linux-aarch64")
 
-sha256sums=('b6efb9e056f69b7ce563b02e62e030754d4234e68418be9a9522498ce21c8580'
-            'baf3b2e0d55d9fcb23630a7a6c0eff68eb9b708f8f0ce8e698dcf8ea611666ad'
+sha256sums=('baf3b2e0d55d9fcb23630a7a6c0eff68eb9b708f8f0ce8e698dcf8ea611666ad'
             '89448ca4aa33837cea05777f33c93253145bb583b4a1e2f010bef666429e1899'
             'fdc5b45803bf8f5d4435509da25399414072b3d95badd6b09b2e84c2f1f198d5'
             '6bbe4ace8a1818f89b96dfdda9f9d4b9a178bc047c3dc2511a3d93d51f86d7ae')
+sha256sums_x86_64=('a5ae20726913e3e65873db55fade62bb63c89373393f5474a9b0ee270e360eb9')
+sha256sums_aarch64=('773c47f84623b91604496ef6af7dcc528c1841bdeebfbc276400823f0b928f4b')
 
 
 package() {
