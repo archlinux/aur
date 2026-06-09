@@ -1,0 +1,21 @@
+[Unit]
+Description=TabbyML self-hosted AI coding assistant
+Documentation=https://tabby.tabbyml.com/docs/
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=TABBY_ROOT=%E/tabbyml
+Environment=RUST_LOG=info
+Environment="TABBYML_SERVE_ARGS=--model StarCoder-1B --chat-model Qwen2-1.5B-Instruct"
+EnvironmentFile=-%E/tabbyml/tabbyml.env
+ExecStartPre=/usr/bin/mkdir -p %E/tabbyml
+WorkingDirectory=-%E/tabbyml
+ExecStart=/usr/bin/tabbyml serve $TABBYML_SERVE_ARGS
+Restart=on-failure
+RestartSec=5
+UMask=0077
+
+[Install]
+WantedBy=default.target

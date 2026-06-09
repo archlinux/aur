@@ -1,0 +1,66 @@
+# Installed as:
+#   ${XDG_CONFIG_HOME:-$HOME/.config}/tabbyml/config.toml
+#
+# The packaged systemd user service sets TABBY_ROOT to %E/tabbyml. For user
+# services, %E resolves to XDG_CONFIG_HOME when set, otherwise $HOME/.config.
+# Tabby reads config.toml from TABBY_ROOT.
+#
+# Documentation:
+#   https://tabby.tabbyml.com/docs/administration/config-toml/
+#   https://tabby.tabbyml.com/docs/administration/model/
+#   https://tabby.tabbyml.com/docs/administration/context/
+
+[model.completion.local]
+model_id = "StarCoder-1B"
+
+[model.chat.local]
+model_id = "Qwen2-1.5B-Instruct"
+
+[model.embedding.local]
+model_id = "Nomic-Embed-Text"
+
+# Remote model connector examples. Enable only the sections you need.
+#
+# [model.chat.http]
+# kind = "openai/chat"
+# model_name = "gpt-4o"
+# supported_models = ["gpt-4o", "gpt-4o-mini"]
+# api_endpoint = "https://api.openai.com/v1"
+# api_key = "your-api-key"
+#
+# [model.completion.http]
+# kind = "llama.cpp/completion"
+# model_name = "your-fim-model"
+# api_endpoint = "http://localhost:8081"
+# api_key = "secret-api-key"
+# prompt_template = "<|fim_prefix|>{prefix}<|fim_suffix|>{suffix}<|fim_middle|>"
+#
+# [model.embedding.http]
+# kind = "openai/embedding"
+# model_name = "text-embedding-3-small"
+# api_endpoint = "https://api.openai.com/v1"
+# api_key = "your-api-key"
+
+# Repository contexts are the OSS-compatible way to configure source-code context providers.
+#
+# [[repositories]]
+# name = "tabby"
+# git_url = "https://github.com/TabbyML/tabby.git"
+#
+# [[repositories]]
+# name = "local-project"
+# git_url = "file:///home/your-user/projects/local-project"
+
+# Developer documentation contexts use llms.txt when available, otherwise Tabby
+# uses Katana as a crawling backend. The AUR package exposes Katana as an optional dependency.
+
+# [answer]
+# system_prompt = """
+# You are Tabby, an AI coding assistant for software developers.
+# """
+
+# [[additional_languages]]
+# languages = ["swift"]
+# exts = ["swift"]
+# line_comment = "//"
+# top_level_keywords = ["import", "let", "var", "func", "return"]

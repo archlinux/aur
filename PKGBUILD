@@ -3,7 +3,7 @@
 
 pkgname=tabbyml-bin
 pkgver=0.32.0 # renovate: datasource=github-releases depName=TabbyML/tabby
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted AI coding assistant (prebuilt CPU binary)"
 arch=('x86_64')
 url="https://github.com/TabbyML/tabby"
@@ -13,9 +13,18 @@ optdepends=('katana: crawl developer documentation context providers (upstream r
 provides=("tabbyml=${pkgver}")
 conflicts=('tabbyml' 'tabbyml-git' 'tabbyml-cuda-bin' 'tabbyml-vulkan-bin')
 options=('!strip')
+install="${pkgname}.install"
 _asset='tabby_x86_64-manylinux_2_28'
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TabbyML/tabby/releases/download/v${pkgver}/${_asset}.tar.gz")
-sha256sums=('048b44cf251519398c67fd880dc9f0d44e2e01c56f1e4e2f2c83b26120b14497')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/TabbyML/tabby/releases/download/v${pkgver}/${_asset}.tar.gz"
+  "tabbyml.service"
+  "tabbyml.env"
+  "config.toml"
+)
+sha256sums=('048b44cf251519398c67fd880dc9f0d44e2e01c56f1e4e2f2c83b26120b14497'
+            '04fafa992e94e4ee0b3ed63439b3320315f1668655a3102dce7a5699461ee36a'
+            '4caaf10e38dd7f65ecd12be96bb46c4bb8478a92a1273fcbfd0d565dbcfcf046'
+            '019d34e8cde65c2ea7d198df2d1e0062bdbfa449510b4432fa90800364a64816')
 
 package() {
   install -Dm755 "$srcdir/$_asset/tabby" \
@@ -36,6 +45,10 @@ package() {
 export PATH="/usr/lib/tabbyml:${PATH}"
 exec /usr/lib/tabbyml/tabby "$@"
 EOF
+
+  install -Dm644 "$srcdir/tabbyml.service" "$pkgdir/usr/lib/systemd/user/tabbyml.service"
+  install -Dm644 "$srcdir/tabbyml.env" "$pkgdir/usr/share/doc/$pkgname/tabbyml.env"
+  install -Dm644 "$srcdir/config.toml" "$pkgdir/usr/share/doc/$pkgname/config.toml"
 
   local _license
   shopt -s nullglob
