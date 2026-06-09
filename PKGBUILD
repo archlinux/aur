@@ -1,7 +1,7 @@
 # Maintainer: Harsh Sharma <harsh@codelif.in>
 pkgname=whatevr-bin
 _pkgname=whatevr
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Native WhatsApp client for Linux (prebuilt whatevrd daemon + whatkevr Qt/Kirigami frontend)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('whatevr' 'whatevrd' 'whatkevr')
 conflicts=('whatevr' 'whatevr-git')
 install="$_pkgname.install"
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.zst::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.zst")
-sha256sums_x86_64=('64aef0ef8358621cf1860f2509f700c75396221fa776e014de813173f3d214fe')
+sha256sums_x86_64=('ccb28033e9e3dcd210fe04ad908a49280362fc1916d3189792a30be12bfd14bc')
 
 package() {
 	local root="$srcdir/$_pkgname-$pkgver-linux-$CARCH"
