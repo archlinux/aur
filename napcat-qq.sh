@@ -4,7 +4,12 @@ PLUGIN_DIR="$HOME/.config/napcat-qq-plugin"
 DATA_DIR="$HOME/.config/napcat-qq-plugin"
 
 mkdir -p "$DATA_DIR"
-cp -u -r /opt/napcat-qq/resources/app/app_launcher/napcat-base/* "$PLUGIN_DIR/"
+
+if command -v rsync >/dev/null 2>&1; then
+    rsync -a --update --exclude='config/' /opt/napcat-qq/resources/app/app_launcher/napcat-base/ "$PLUGIN_DIR/"
+else
+    cp -u -n -r /opt/napcat-qq/resources/app/app_launcher/napcat-base/* "$PLUGIN_DIR/"
+fi
 
 QQ_VERSION_CONFIG="$HOME/.config/QQ/versions/config.json"
 NAPCAT_VERSION="3.2.23-44343"

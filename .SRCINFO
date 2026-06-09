@@ -1,7 +1,7 @@
 pkgbase = napcat-qq
 	pkgdesc = 现代化的基于 NTQQ 的 Bot 协议端实现
 	pkgver = 4.18.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NapNeko/NapCatQQ
 	install = napcat-qq.install
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = napcat-qq
 	source = napcat-qq.sh
 	source = napcat-qq.install
 	sha256sums = 9d9273e7ea8c8a76742a69dabb3e7be5f45b8167c670ca70587e3619f0d8afad
-	sha256sums = 1f6608c939c43458a4f42702768beae98e5f54efb5f4cf63a6ef083a792d11b9
+	sha256sums = a55c0a1ba1c7d02139f0938526d8ece98c953330d6a7e00b41467c70d6a879ba
 	sha256sums = fecf169a5e052b9b475d9c28594f5f57557c4424391bf1e6190e2d1a33eeb8e2
 	source_x86_64 = linuxqq_3.2.23-44343_amd64.deb::https://dldir1.qq.com/qqfile/qq/QQNT/94704804/linuxqq_3.2.23-44343_amd64.deb
 	sha256sums_x86_64 = a4252719c1beb8adce0da09ebfc310ce50c79ea548f5cce429505765d0bfba84

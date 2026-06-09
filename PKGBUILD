@@ -1,7 +1,7 @@
 # Maintainer: Yuzuki <lxf74663@gmail.com>
 pkgname=napcat-qq
 pkgver=4.18.6
-pkgrel=2
+pkgrel=3
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64' 'aarch64')
 url="https://github.com/NapNeko/NapCatQQ"
@@ -16,14 +16,14 @@ source=("NapCat.Shell-${pkgver}.zip::https://github.com/NapNeko/NapCatQQ/release
         "napcat-qq.sh"
         "napcat-qq.install")
 sha256sums=('9d9273e7ea8c8a76742a69dabb3e7be5f45b8167c670ca70587e3619f0d8afad'
-            '1f6608c939c43458a4f42702768beae98e5f54efb5f4cf63a6ef083a792d11b9'
+            'a55c0a1ba1c7d02139f0938526d8ece98c953330d6a7e00b41467c70d6a879ba'
             'fecf169a5e052b9b475d9c28594f5f57557c4424391bf1e6190e2d1a33eeb8e2')
+sha256sums_x86_64=('a4252719c1beb8adce0da09ebfc310ce50c79ea548f5cce429505765d0bfba84')
+sha256sums_aarch64=('870ed3c0e417e9bb3a021c1d56518bc2fbba82d1c3e1871384f64ab7e21923f7')
 
 source_x86_64=("linuxqq_${_qqver}_amd64.deb::https://dldir1.qq.com/qqfile/qq/QQNT/${_qqvercode}/linuxqq_${_qqver}_amd64.deb")
-sha256sums_x86_64=('a4252719c1beb8adce0da09ebfc310ce50c79ea548f5cce429505765d0bfba84')
 
 source_aarch64=("linuxqq_${_qqver}_arm64.deb::https://dldir1.qq.com/qqfile/qq/QQNT/${_qqvercode}/linuxqq_${_qqver}_arm64.deb")
-sha256sums_aarch64=('870ed3c0e417e9bb3a021c1d56518bc2fbba82d1c3e1871384f64ab7e21923f7')
 
 package() {
     install -d "${pkgdir}/opt/napcat-qq"
