@@ -7,7 +7,7 @@ pkgbase = bootcommander
 	license = GPL
 	makedepends = cmake
 	depends = libopenblt
-	source = bootcommander-1.21.01.zip::https://netix.dl.sourceforge.net/project/openblt/OpenBLT%20stable/version%201.21.01/openblt_v012101.zip
+	source = bootcommander-1.21.01.zip::https://downloads.sourceforge.net/project/openblt/OpenBLT%20stable/version%201.21.01/openblt_v012101.zip
 	md5sums = 4dcab1bfc3a9c132310cef019c30d573
 
 pkgname = bootcommander

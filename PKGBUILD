@@ -8,7 +8,7 @@ url="https://www.feaser.com/openblt/doku.php?id=manual:bootcommander"
 license=('GPL')
 depends=('libopenblt')
 makedepends=('cmake')
-source=("$pkgname-$pkgver.zip::https://netix.dl.sourceforge.net/project/openblt/OpenBLT%20stable/version%20${pkgver}/openblt_v0${pkgver//.}.zip")
+source=("$pkgname-$pkgver.zip::https://downloads.sourceforge.net/project/openblt/OpenBLT%20stable/version%20${pkgver}/openblt_v0${pkgver//.}.zip")
 md5sums=('4dcab1bfc3a9c132310cef019c30d573')
 
 build() {
