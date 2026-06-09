@@ -2,7 +2,7 @@
 _appname=runjs
 pkgname="${_appname}-electron-bin"
 _pkgname=RunJS
-pkgver=4.0.5
+pkgver=4.0.6
 _electronversion=41
 pkgrel=1
 pkgdesc="A JavaScript playground. Write code with instant feedback and access to Node.js and browser APIs.(Prebuild version.Use system-wide electron)"
@@ -37,8 +37,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('f8d6f02b4a2fc7cc6ab547a72eb48fbe2cdcc4a70e99d48e554be3acda074d5d'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('4a4c0b2484c5609a6c3ba22f25f8f036eae9f68c8668fd4d85d2251254c3935f')
-sha256sums_x86_64=('67d99a55eb3c64decc4419d78bc712338201a5fa598edaede78412703611c098')
+sha256sums_aarch64=('3cee7999ddfa75b47eb18234a02674f16cc6b6f17c8f329a945ce74a938ceec7')
+sha256sums_x86_64=('0f4206a15b9a133363ca5401f79c7667e691447b68e614e01e69c21d77f225ad')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
