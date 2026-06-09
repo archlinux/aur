@@ -3,7 +3,7 @@
 # shellcheck disable=2034,2148,2154
 
 pkgname=comfykick
-pkgver=v1.1
+pkgver=v1.2
 pkgrel=1
 pkgdesc="The official ways to launch ComfyUI SUCK, this is better."
 arch=(any)
@@ -25,9 +25,9 @@ source=(LICENSE
         comfykick.toml)
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'a2ebca455d9ac1ab133c92f7bc13177a11db18e04c43bb47e64894a0b4832cd4'
-            'a5438512c37eee0570c36bfa2fbdcbb3797d7023510925039a63f6cbe76ba36d'
-            '0f48648701ad221382b6d5917f09dbf7e37c3a8a040cedb60e82b1c55485c99f')
+            'ce63c75e7a99933af4b20ef393d2293e13cb6bb7815b790f19731dd67ce751c7'
+            'f9df3e39609e8384afef2674f4ea9aca58373ade185e2c2fd601beb9d2bed295'
+            '98ec10fc96788d5bebdb3afdb8c4c0e77c69bdae5e606009f998857e0ad27849')
 
 package() {
     install -Dm644 comfykick.py "${pkgdir}/usr/share/${pkgname}/comfykick.py"
