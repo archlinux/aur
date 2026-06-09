@@ -1,7 +1,7 @@
 # Maintainer: Zoron <zoronlivingston at gmail>
 
 pkgname=eldiron-bin
-pkgver=0.9.11
+pkgver=0.9.12
 pkgrel=1
 pkgdesc="A cross platform classic RPG game creator written in Rust."
 arch=('x86_64')
