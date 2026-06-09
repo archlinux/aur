@@ -1,7 +1,7 @@
 # Maintainer: VenRoot <0ventox0@gmail.com>
 pkgname=ffmpeg-ui
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='A modern, feature-rich FFmpeg GUI wrapper built with Electron + Vite'
 arch=('x86_64' 'aarch64')
 url='https://github.com/VenRoot/ffmpeg-ui'
@@ -15,6 +15,9 @@ _electronbin=/usr/lib/${_electronpkg}/electron
 depends=(
   "${_electronpkg}"
   'ffmpeg'
+)
+optdepends=(
+  'yt-dlp: resolve YouTube and social-media video URLs'
 )
 makedepends=(
   'git'
@@ -59,7 +62,7 @@ package() {
   # Wraps the system Electron binary so no bundled copy is needed.
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<SCRIPT
 #!/bin/sh
-exec ${_electronbin} /usr/lib/${pkgname}/out/main/index.js "\$@"
+exec ${_electronbin} --ozone-platform=x11 /usr/lib/${pkgname}/out/main/index.js "\$@"
 SCRIPT
 
   # ── Desktop entry ─────────────────────────────────────────────────────────
