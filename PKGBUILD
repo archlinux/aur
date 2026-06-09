@@ -1,7 +1,8 @@
 # Maintainer: MaoYaoTng <maoyaotang@163.com>
+
 pkgname=onedriveqt
 _pkgname=OneDriveQt
-pkgver=1.3.6
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="OneDrive Qt6 同步客户端"
 arch=('x86_64')
@@ -13,7 +14,7 @@ source=(git+$url.git
 $pkgname.desktop
 $pkgname.svg)
 sha256sums=('SKIP'
-            'f174bbd4bc67e8db4d53fe5d2b3311570b1b1828ed724192bc382b3039e29ca2'
+            'bde70d2d73124f8baa7253c35eb4c6a84039fe2904cc5b400cab7e3a12eb8651'
             '64e9313c0da2d0765b920b8f7a6cab895347ff4079bd2b2d5d7d7b636668bcfc')
 
 package() {
