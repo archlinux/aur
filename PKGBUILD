@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=skills-manager-bin
-pkgver=1.14.1
+pkgver=1.23.0
 pkgrel=1
 epoch=
 pkgdesc="A lightweight desktop app to manage, sync, and organize AI agent skills across 15+ coding tools — Cursor, Claude Code, Codex, Copilot, and more."
@@ -21,7 +21,7 @@ provides=('skills-manager')
 conflicts=('skills-manager')
 replaces=()
 source_x86_64=("https://github.com/xingkongliang/skills-manager/releases/download/v$pkgver/skills-manager_${pkgver}_amd64.deb")
-b2sums_x86_64=('6e7e46658cf41dc2854cdc5a5d047a674a4fefcaabf57c83ae64d10dc48a1b4aefa8e2b96da3238503eb23bdd5d0a38594c97b87ec0ac3eeda3ac70f01949ab0')
+b2sums_x86_64=('9b8081d4a2ca990fbb9c9388a7e822b20477eda16362e1e1d2b32a5c99c3a9f2e3ba828603f65caa162774e7c6a0e4904538c0485a861d283e014d6332be87ef')
 
 package() {
 	cd $pkgdir
