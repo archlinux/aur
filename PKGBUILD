@@ -1,6 +1,7 @@
-# Maintainer: Felix Pehla <29adc1fd92@gmail.com>
+# Contributor: Felix Pehla <29adc1fd92@gmail.com>
 # Contributor: zapp-brannigan <fuerst.reinje@web.de>
 # Contributor: jgottula <justin@jgottula.com>
+# Maintainer: Štěpán Němec <stepnem@smrk.net>
 
 pkgname=vdo
 pkgver=8.3.1.1
