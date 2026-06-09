@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction
 pkgname=humen-mcp-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Human-in-the-loop MCP server'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('humen-mcp' 'humen-mcp-git')
 backup=('etc/humen-mcp.env')
 install=humen-mcp.install
 source=("https://github.com/LIghtJUNction/humen-mcp/releases/download/v${pkgver}/humen-mcp-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('6a61fd4f3325e851d97efff96593938e0d2b7ddae50dbc1f485320fda5aac7e0')
+sha256sums=('93a69109d46068c9fc7a68da92697d574c1f9d998d74f3cff012bc6ee5c23cdb')
 
 package() {
   cd "humen-mcp-${pkgver}-x86_64-unknown-linux-gnu"
@@ -22,5 +22,5 @@ package() {
   install -Dm644 packaging/tmpfiles/humen-mcp.conf "$pkgdir/usr/lib/tmpfiles.d/humen-mcp.conf"
   install -Dm640 env.example "$pkgdir/etc/humen-mcp.env"
   install -dm755 "$pkgdir/usr/share/humen-mcp/web"
-  cp -a web/. "$pkgdir/usr/share/humen-mcp/web/"
+  cp -a --no-preserve=ownership web/. "$pkgdir/usr/share/humen-mcp/web/"
 }
