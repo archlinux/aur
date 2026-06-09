@@ -1,0 +1,17 @@
+pkgbase = ffmpeg-ui
+	pkgdesc = A modern, feature-rich FFmpeg GUI wrapper built with Electron + Vite
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/VenRoot/ffmpeg-ui
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = electron42
+	depends = ffmpeg
+	source = ffmpeg-ui::git+https://github.com/VenRoot/ffmpeg-ui.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = ffmpeg-ui
