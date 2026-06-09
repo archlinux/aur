@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction
 pkgname=humen-mcp-git
-pkgver=0.1.3.r0.g0000000
+pkgver=0.1.4.r0.g0000000
 pkgrel=1
 pkgdesc='Human-in-the-loop MCP server'
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd humen-mcp
-  printf '0.1.3.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf '0.1.4.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -43,5 +43,5 @@ package() {
   install -Dm644 packaging/tmpfiles/humen-mcp.conf "$pkgdir/usr/lib/tmpfiles.d/humen-mcp.conf"
   install -Dm640 env.example "$pkgdir/etc/humen-mcp.env"
   install -dm755 "$pkgdir/usr/share/humen-mcp/web"
-  cp -a humen-mcp-webui/dist/. "$pkgdir/usr/share/humen-mcp/web/"
+  cp -a --no-preserve=ownership humen-mcp-webui/dist/. "$pkgdir/usr/share/humen-mcp/web/"
 }
