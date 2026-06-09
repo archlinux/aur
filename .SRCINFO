@@ -1,7 +1,7 @@
 pkgbase = leavepad-bin
-	pkgdesc = A multi-platform notepad. focuses on writing memos. File editing is not supported.(Prebuilt version.Use system-wide electron)
+	pkgdesc = A simple note-taking app with integrated file editor, built with Electron and Monaco Editor.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kaishuu0123/leavepad
 	arch = x86_64
 	license = AGPL-3.0-only
