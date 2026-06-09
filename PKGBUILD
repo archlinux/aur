@@ -1,13 +1,13 @@
 
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 pkgname=xmcl-electron-bin
-pkgver=0.56.4
+pkgver=0.56.7
 pkgrel=1
 pkgdesc="X Minecraft Launcher - An Open Source Minecraft Launcher with Modern UX. Provides a Disk Efficient way to manage all your Mods!"
 arch=('x86_64' 'aarch64')
 url="https://xmcl.app/"
 license=('MIT')
-depends=('electron39')
+depends=('electron41')
 makedepends=('libicns')
 checkdepends=()
 optdepends=(
@@ -25,8 +25,8 @@ source_x86_64=("xmcl_${pkgver}_x86_64.asar.gz::https://github.com/Voxelum/x-mine
 source_aarch64=("xmcl_${pkgver}_aarch64.asar.gz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/app-${pkgver}-linux-arm64.asar.gz")
 sha256sums=('cf229073fb478254b751a8198b23be961533101065ca712e323cf60cd15f3383'
             '2bec20067e7ef4c7265be764a06dc8b94d98fef53cf6c1ddca25f2f6814d7010')
-sha256sums_x86_64=('4a12b2082726a6c205e73f0e566343262db063f25d4d3707a3148d539e8301e0')
-sha256sums_aarch64=('4a12b2082726a6c205e73f0e566343262db063f25d4d3707a3148d539e8301e0')
+sha256sums_x86_64=('27b1e1f0e8299c8d1654863518cdcd2f26deb2bbf5c520372263c14076e601e2')
+sha256sums_aarch64=('27b1e1f0e8299c8d1654863518cdcd2f26deb2bbf5c520372263c14076e601e2')
 
 prepare() {
     icns2png -x dark.icns
@@ -39,6 +39,6 @@ package() {
     install -Dm 644 ${srcdir}/xmcl.desktop ${pkgdir}/usr/share/applications/xmcl.desktop
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/xmcl" <<EOF
 #!/usr/bin/bash
-exec electron39 /usr/lib/xmcl/xmcl.asar "\$@"
+exec electron41 /usr/lib/xmcl/xmcl.asar "\$@"
 EOF
 }
