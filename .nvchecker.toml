@@ -1,0 +1,5 @@
+[cxt-bin]
+source = "github"
+github = "vaibhav-mattoo/cxt"
+use_latest_release = true
+prefix = "v"
