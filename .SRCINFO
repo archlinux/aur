@@ -1,6 +1,6 @@
 pkgbase = netgen-lvs
 	pkgdesc = Layout Vs Schematic (LVS) for comparing SPICE or Verilog netlists
-	pkgver = 1.5.320
+	pkgver = 1.5.321
 	pkgrel = 1
 	url = http://opencircuitdesign.com/netgen/index.html
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = netgen-lvs
 	depends = bash
 	provides = netgen-lvs
 	conflicts = netgen-lvs-git
-	source = netgen::git+https://github.com/RTimothyEdwards/netgen#tag=1.5.320
-	b2sums = 0f8d7c63f98b11ae0eda39e3b75ab67df10f1936b82a8097c57eaf57c3b32c8bbb6755dd81df7c6fb8986d276d4d2f460376369b2dfe0506b065709398d894d1
+	source = netgen::git+https://github.com/RTimothyEdwards/netgen#tag=1.5.321
+	b2sums = d290e2377d5c69dccd9a46715e31e7a93d686f7883190aaf37c9d234d41666e41aeea32c8fa7b698ff90eb83a748266aeb7e8204ed9ba33b3efcc8643034cd22
 
 pkgname = netgen-lvs
