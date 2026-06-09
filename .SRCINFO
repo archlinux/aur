@@ -1,0 +1,16 @@
+pkgbase = infinispan-cli-bin
+	pkgdesc = Command-line interface for Infinispan data grid
+	pkgver = 16.2.1
+	pkgrel = 1
+	url = https://infinispan.org
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = infinispan-cli
+	conflicts = infinispan-cli
+	source_x86_64 = infinispan-cli-bin-16.2.1-x86_64.zip::https://github.com/infinispan/infinispan/releases/download/16.2.1/infinispan-cli-16.2.1-linux-x86_64.zip
+	sha256sums_x86_64 = 1afe341e7fd0eaa2b84542ed4127d28c5f59542c5e5dba80393c53260a3cf090
+	source_aarch64 = infinispan-cli-bin-16.2.1-aarch64.zip::https://github.com/infinispan/infinispan/releases/download/16.2.1/infinispan-cli-16.2.1-linux-aarch_64.zip
+	sha256sums_aarch64 = 08496d1990191d82b37df01e0ddf5b4057d16a07e8d8cca73bce5ed89885f2d6
+
+pkgname = infinispan-cli-bin
