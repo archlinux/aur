@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leavepad
 _pkgname=Leavepad
-pkgver=2.5.0
+pkgver=2.6.1
 _electronversion=41
 _nodeversion=24
-pkgrel=2
+pkgrel=1
 pkgdesc="A simple note-taking app with integrated file editor, built with Electron and Monaco Editor.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/kaishuu0123/leavepad"
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('25a3b5cce085d8bc0f9633162b21878d597d15cda6f80faf519b5c9e4c60cea2'
+sha256sums=('53ca6721f6781f8e32c6267211c166f78008e83ae378c40d94a802f5c713a713'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
