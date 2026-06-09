@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leavepad-bin
 _pkgname=Leavepad
-pkgver=2.5.0
+pkgver=2.6.1
 _electronversion=41
-pkgrel=2
+pkgrel=1
 pkgdesc="A simple note-taking app with integrated file editor, built with Electron and Monaco Editor.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/kaishuu0123/leavepad"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kaishuu0123/leavepad/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('71c1b4ddf18678c8b5cb142e1ce5c6c31df2f35c8786efee8fd707017fe1e212'
+sha256sums=('579505d89b75aa0dc57ce64a645ab2d2183e17b4e712b243e41c4c9ffb2082e0'
             '2db6d2f8319742e183737299159ca2a72096629542c080492f13770b7d305c3b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
