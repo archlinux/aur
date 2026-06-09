@@ -3,7 +3,7 @@
 pkgbase=mfgtools-git
 pkgname=(mfgtools{,-doc}-git
     python-libuuu-git)
-pkgver=1.5.201.r3.gab8dbdf
+pkgver=1.5.243.r7.g2431efa
 pkgrel=1
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
@@ -25,10 +25,11 @@ makedepends=(
     git
     ninja
     asciidoc
+    coreutils
     dblatex
     doxygen
     findutils
-    coreutils
+    graphviz
     texlive-fontutils
     meson
     python
@@ -57,7 +58,7 @@ pkgver() {
     cd "${srcdir}/${pkgbase}"
     (
         set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^uuu_//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^master//g;s/^uuu_//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
@@ -65,8 +66,8 @@ pkgver() {
 prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
     git -C "${srcdir}/mfgtools-doc-git" clean -dfx
-    #     cd "${srcdir}/${pkgbase}"
-    #     git submodule update --init --recursive
+
+    git -C "${srcdir}/${pkgbase}" tag -d master 2>/dev/null || true
 }
 
 build() {
