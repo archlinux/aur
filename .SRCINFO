@@ -1,13 +1,14 @@
 pkgbase = yt-dlp-ejs-anyruntime
 	pkgdesc = External JavaScript for yt-dlp supporting many runtimes (supports other than Deno)
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yt-dlp/ejs
 	arch = any
 	license = Unlicense
 	checkdepends = python-pytest
 	makedepends = git
 	makedepends = nodejs
+	makedepends = npm
 	makedepends = python-build
 	makedepends = python-hatch-vcs
 	makedepends = python-hatchling

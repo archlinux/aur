@@ -4,7 +4,7 @@
 
 pkgname=yt-dlp-ejs-anyruntime
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='External JavaScript for yt-dlp supporting many runtimes (supports other than Deno)'
 conflicts=(yt-dlp-ejs)
 replaces=(yt-dlp-ejs)
@@ -19,6 +19,7 @@ optdepends=(deno
 # bun is no longer supported
 makedepends=(git
              nodejs
+             npm
              python-build
              python-hatch-vcs
              python-hatchling
