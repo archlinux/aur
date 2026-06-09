@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=candle-cnc
-pkgver=10.11.1
+pkgver=11.2
 pkgrel=1
 pkgdesc="GRBL controller application with G-Code visualizer written in Qt"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('qt5-base' 'qt5-multimedia' 'qt5-script' 'qt5-serialport' 'qt5-tools' '
 makedepends=('cmake')
 conflicts=('candle-bin' 'candle-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Denvi/Candle/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f90c6dfe8f57a76ef35468920d4372a5c165b52663591c9c144199662b589d05')
+sha256sums=('ca6036977e4c6060171e49dc880b6e5f855aeeb3e56c15ecb68438cbd0c0e5ae')
 
 build() {
 	cmake \
