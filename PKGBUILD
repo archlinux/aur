@@ -1,7 +1,7 @@
 # Maintainer: ced0180 <countbaster@gmail.com>
 
 pkgname=skull-shell-git
-pkgver=0.2.3.r11.g8b26aa4
+pkgver=0.2.4.r20.ge9f6f7c
 pkgrel=1
 pkgdesc='Tiny POSIX-style shell written in C++20'
 arch=('x86_64' 'aarch64')
@@ -18,15 +18,20 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/skull-shell"
-    printf '0.2.3.r%s.g%s' \
+    printf '0.2.4.r%s.g%s' \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "$srcdir/skull-shell"
+    local skull_version='0.2.4'
+    local skull_commit
+    skull_commit="$(git rev-parse --short HEAD)"
     mapfile -t sources < <(find src -name '*.cpp' -print | sort)
     g++ ${CXXFLAGS:-} ${CPPFLAGS:-} -std=c++20 -Isrc "${sources[@]}" \
+        -DSKULL_VERSION=\"${skull_version}\" \
+        -DSKULL_GIT_COMMIT=\"${skull_commit}\" \
         -o skull \
         ${LDFLAGS:-} -ldl
 }
