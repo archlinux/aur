@@ -1,7 +1,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 
 pkgname='polarproxy-bin'
-pkgver=1.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Transparent TLS and SSL inspection proxy primarily designed for incident responders and malware researchers to intercept, decrypt, and re-encrypt TLS encrypted traffic from malware while saving it in a PCAP file.'
 arch=('x86_64')
@@ -12,32 +12,48 @@ source=("$pkgname.tar.gz::https://www.netresec.com/?download=PolarProxy"
 "polarproxy_icon.png"
 "polarproxy.desktop"
 )
-b2sums=('9014142e0fb4ba96f1647f1e2208d03541a84fe8b69369fb17e8aa4adfa19d30d1784d42708c26dba28e38f812686e2f7cd202c067719fa1d3bc6e9c8e1b9898'
+b2sums=('2035d46e9f185c525512ed638a7cea01d006a17a01fa802542010a8f5229151d633b52125add25fb49b4b93b027c9d4f63a100ee34eae385a9e561b76f8bb506'
         'd16df3c5469813bd5600bc8d56302c31e2e45ff0b6be582a3b12b28c9cfe64ac687aff8c4fdf49f6d09081b09242dd5df9ca1e88b345ccabf08f744094f5a4ea'
         'e805d3513b453b5f7be9e02c06426956bcf63928bdb983efafff6c62a5801a37039428c87665f8c63db84df0d3e837773b5d646695f39d79959f9e2821afca92')
+options=('!strip')
 
 pkgver() {
 	# Calculate the version from filename
-	echo $(curl -sI https://www.netresec.com/\?download\=PolarProxy | grep -o -E 'filename=.*$' | sed -e 's/filename=//' | grep -oP '\d+-\d+-\d+' | sed 's/-/./g')
+	echo $(curl -sI "https://www.netresec.com/?download=PolarProxy" | grep -oP 'PolarProxy_\K[0-9]+\.[0-9]+\.[0-9]+')
 }
 
 package() {
-	install -d "${pkgdir}/opt/${pkgname%-bin}"
-	install -d "${pkgdir}/usr/share/applications"
-	install -d "${pkgdir}/usr/share/icons"
-  install -d "${pkgdir}/etc/systemd/system/"
-  install -dm755 "${pkgdir}"/usr/bin/
+    local pkgname_no_bin="${pkgname%-bin}"
 
-	install -m644 "polarproxy_icon.png" "${pkgdir}/usr/share/icons/${pkgname%-bin}.png"
-	install -m644 "polarproxy.desktop" "${pkgdir}/usr/share/applications"
-  ln -s /opt/${pkgname%-bin}/PolarProxy "${pkgdir}"/usr/bin/polarproxy
+    # Create directories
+    install -d "${pkgdir}/opt/${pkgname_no_bin}"
+    install -d "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/usr/share/applications"
+    install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+    install -d "${pkgdir}/etc/systemd/system"
 
+    # Copy PolarProxy binary
+    cp -p "${srcdir}/PolarProxy" "${pkgdir}/opt/${pkgname_no_bin}/"
+    chmod +x "${pkgdir}/opt/${pkgname_no_bin}/PolarProxy"
 
-	install -m644 "${srcdir}/PolarProxy.service" "${pkgdir}/etc/systemd/system/"
-  cp -r "${srcdir}/"* "${pkgdir}/opt/${pkgname%-bin}"
-  chmod +x "${pkgdir}/opt/${pkgname%-bin}"/PolarProxy
+    # Symlink to /usr/bin
+    ln -s "/opt/${pkgname_no_bin}/PolarProxy" "${pkgdir}/usr/bin/polarproxy"
 
-  rm -rf "${pkgdir}/opt/${pkgname%-bin}"/polarproxy-bin.tar.gz
-  rm -rf "${pkgdir}/opt/${pkgname%-bin}"/polarproxy.desktop
-  rm -rf "${pkgdir}/opt/${pkgname%-bin}"/polarproxy_icon.png
+    # Copy icons and desktop entry
+    install -Dm644 "${srcdir}/polarproxy_icon.png" \
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname_no_bin}.png"
+    install -Dm644 "${srcdir}/polarproxy.desktop" \
+        "${pkgdir}/usr/share/applications/${pkgname_no_bin}.desktop"
+
+    # Copy systemd service
+    install -Dm644 "${srcdir}/polarproxy.service" \
+        "${pkgdir}/etc/systemd/system/polarproxy.service"
+
+    # Copy remaining supporting files (optional)
+    cp -r "${srcdir}/ruleset-"* "${pkgdir}/opt/${pkgname_no_bin}/"
+
+    # Remove unnecessary files
+    rm -f "${pkgdir}/opt/${pkgname_no_bin}"/polarproxy-bin.tar.gz
+    rm -f "${pkgdir}/opt/${pkgname_no_bin}"/polarproxy.desktop
+    rm -f "${pkgdir}/opt/${pkgname_no_bin}"/polarproxy_icon.png
 }
