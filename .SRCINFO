@@ -1,6 +1,6 @@
 pkgbase = envman-bin
 	pkgdesc = Manage Environment Variable collections
-	pkgver = 2.5.6
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/bitrise-io/envman
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = envman-bin
 	license = MIT
 	provides = envman
 	conflicts = envman
-	source = envman-2.5.6-README.md::https://github.com/bitrise-io/envman/raw/refs/tags/v2.5.6/README.md
-	source = envman-2.5.6-LICENSE::https://github.com/bitrise-io/envman/raw/refs/tags/v2.5.6/LICENSE
+	source = envman-2.6.1-README.md::https://github.com/bitrise-io/envman/raw/refs/tags/v2.6.1/README.md
+	source = envman-2.6.1-LICENSE::https://github.com/bitrise-io/envman/raw/refs/tags/v2.6.1/LICENSE
 	sha256sums = 3006e07e1922e1714966fdb0846a327cc17ff0eac152edb5df4a3a45e2d60aca
 	sha256sums = a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414
-	source_x86_64 = envman-2.5.6-x86_64::https://github.com/bitrise-io/envman/releases/download/v2.5.6/envman-Linux-x86_64
-	sha256sums_x86_64 = 57b85dd1bf81d0491545f760adeaf910ff0dc2890a08b013024842042f93581f
-	source_aarch64 = envman-2.5.6-aarch64::https://github.com/bitrise-io/envman/releases/download/v2.5.6/envman-Linux-arm64
-	sha256sums_aarch64 = 47e5c9227f378879cf0bfff2dc538166ee102184f70fb9523f134caafd569da5
+	source_x86_64 = envman-2.6.1-x86_64::https://github.com/bitrise-io/envman/releases/download/v2.6.1/envman-Linux-x86_64
+	sha256sums_x86_64 = 32eb86b092704d2dbea519720c1d7be8b4ab4111068bbcc4af586d451c0fec3a
+	source_aarch64 = envman-2.6.1-aarch64::https://github.com/bitrise-io/envman/releases/download/v2.6.1/envman-Linux-arm64
+	sha256sums_aarch64 = 8a7f854eebf855ad4e610de717c893ff5aa54cf921ef3d3c779929c8b1cce270
 
 pkgname = envman-bin
