@@ -1,0 +1,13 @@
+pkgbase = vtlock
+	pkgdesc = Block VT switching while X11/Wayland screen lockers are active
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://hub.darcs.net/stef204/vtlock
+	arch = x86_64
+	license = MIT
+	makedepends = darcs
+	depends = glibc
+	source = vtlock::https://hub.darcs.net/stef204/vtlock
+	sha256sums = SKIP
+
+pkgname = vtlock
