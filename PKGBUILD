@@ -1,7 +1,7 @@
 # Maintainer: Nathan <nate0001@gmail.com>
 
 pkgname=ghastty-git
-pkgver=1.3.2.r16700.gb639bb721
+pkgver=1.3.2.r16701.g69992a607
 pkgrel=1
 pkgdesc="A Qt6 frontend for Ghostty that embeds libghostty (Wayland-only)"
 arch=('x86_64')
