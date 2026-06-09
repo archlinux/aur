@@ -1,46 +1,59 @@
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname="justniffer"
-pkgname="${_pkgname}-bin"
-pkgver=0.6.12
+# This package is hard to use and maintain. It depends on constantly outdated python boost libpcap.
+# Use the compiled version justniffer which follows current versions.
+
+set -u
+pkgname='justniffer'
+pkgname+='-bin'
+pkgver=0.6.13
 pkgrel=1
 pkgdesc="TCP sniffer. It reassembles and reorders packets and displays the TCP flow in a customizable way."
 arch=('x86_64')
 url="https://onotelli.github.io/justniffer/"
-_url="https://github.com/onotelli/${_pkgname}"
+url='https://justniffer.sourceforge.net'
+_giturl="https://github.com/onotelli/${pkgname%-bin}"
 license=('GPL-3.0-or-later')
-depends=('boost183-libs' 'gcc-libs' 'glibc' 'libpcap') # 'boost-libs'
-makedepends=('gzip') # 'patchelf'
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-_pkgsrc="${_pkgname}-${pkgver}"
-source=("${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md")
-source_x86_64=("${_pkgsrc}-x86_64.deb::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}.noble_amd64.deb")
+depends=('glibc' 'libgcc' 'libstdc++') # 'libnids' the package includes its own custom version of libnids
+depends+=('libpcap')
+depends+=('boost183-libs')
+#depends+=('boost-libs')
+depends+=('python312')
+#makedepends=('patchelf')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+_srcdir="${pkgname%-bin}-${pkgver}"
+source=("${_srcdir}-README.md::${_giturl}/raw/refs/tags/v${pkgver}/README.md")
+source_x86_64=("${_srcdir}-x86_64.deb::${_giturl}/releases/download/v${pkgver}/${_srcdir//-/_}.noble_amd64.deb")
 noextract=("${source_x86_64[@]%%::*}")
+md5sums=('55af9038453818bf66d786f07a046135')
+md5sums_x86_64=('15cc823cb521f14b7bf31f302b8867e5')
 sha256sums=('c887ce8db4485df2d6838da4338a61e708dd1583064c6ffdc99c836f766c5ac8')
-sha256sums_x86_64=('dbcb469465d78031653193ca1b9bd07b327803c0b5c4bd340082402d017866fd')
+sha256sums_x86_64=('37634b80616eccbf289aab8ce902d38f53cbc58815d3dac8498923f47f9bca16')
 
 prepare() {
-  cd "${srcdir}"
-  mkdir -p "${_pkgsrc}-${CARCH}"
-  bsdtar -xf "${_pkgsrc}-${CARCH}.deb" data.tar.*
-  bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${_pkgsrc}-${CARCH}"
+  local -; set -u
+  mkdir -p "${_srcdir}-${CARCH}"
+  bsdtar -xf "${_srcdir}-${CARCH}.deb" data.tar.*
+  bsdtar -xzf data.tar.* --strip-components '1' -C "${_srcdir}-${CARCH}"
   rm -f data.tar.*
 
-  cd "${srcdir}/${_pkgsrc}-${CARCH}"
+  cd "${_srcdir}-${CARCH}"
   find . -type f -name '*.gz' -exec \
     gzip -fd {} \;
 
-  cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/bin"
-  # patchelf --replace-needed "libpcap.so.0.8" "libpcap.so" "${_pkgname}"
+  cd 'usr/bin'
+  # patchelf --replace-needed "libpcap.so.0.8" "libpcap.so" "${pkgname%-bin}"
 
-  cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/share"
-  rm -rf doc
+  cd "${srcdir}/${_srcdir}-${CARCH}/usr/share"
+  rm -rf 'doc'
 }
 
 package() {
-  cd "${srcdir}"
-  cp -vr --no-preserve=ownership "${_pkgsrc}-${CARCH}"/* "${pkgdir}"
+  local -; set -u
+  cp -vr --no-preserve='ownership' "${_srcdir}-${CARCH}"/* "${pkgdir}"
 
-  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "${_srcdir}-README.md" "${pkgdir}/usr/share/doc/${pkgname%-bin}/README.md"
 }
+set +u
