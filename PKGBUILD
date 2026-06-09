@@ -1,6 +1,6 @@
 # Maintainer: Daniel Vigh <vighd@digital.co.hu>
 pkgname=wlrun
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Keyboard-driven launcher and system console for wlr-layer-shell compositors: apps, network, Bluetooth, display, storage, keyboard, pass"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ optdepends=(
   'libnotify: desktop notifications'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a3801826eeac51b128cce88eebdbabfd883dfb50af4b9a098b8f0dddcdc0b6a4')
+sha256sums=('29a79ce8a046f76a7b15712b282398df37471b26ac5486fd4f5c068285d5327e')
 
 build() {
   cd "$pkgname"
