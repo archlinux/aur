@@ -1,6 +1,6 @@
 # Maintainer: Davide Carnemolla <herbrant@protonmail.com>
 pkgname=codexbar-cli
-pkgver=0.32.4
+pkgver=0.32.5
 pkgrel=1
 pkgdesc='AI coding provider usage tracker CLI'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=("CodexBarCLI-v${pkgver}-linux-x86_64.tar.gz::https://github.com/s
 source_aarch64=("CodexBarCLI-v${pkgver}-linux-aarch64.tar.gz::https://github.com/steipete/CodexBar/releases/download/v${pkgver}/CodexBarCLI-v${pkgver}-linux-aarch64.tar.gz")
 
 sha256sums=('14293556b79940745123d0160c71d27ed0e9fe9b8a848093f3ed78f4853caafe')
-sha256sums_x86_64=('cb0731e5951a458b394e51b281e3b74249eaab96d15891f2122cd085228a2279')
-sha256sums_aarch64=('7a113a60603d0f268044cb333d0fa31a27d475e98b5055b6c564b665e1471173')
+sha256sums_x86_64=('c28275e86ec7a243998d0e5802f7e924e5bc782c8c9e3d37782cea78d90f194f')
+sha256sums_aarch64=('9e2260714251de0f08971f32b00b83b1d9430baa7c007b146eff85dcd6f9dded')
 package() {
     # Binary crashes when argv[0] has no directory component (Swift Foundation
     # bug: uses argv[0] to resolve its own path for resource lookup).
