@@ -1,6 +1,6 @@
 pkgbase = narwhal
 	pkgdesc = TUI database client with a built-in MCP server
-	pkgver = 2.0.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/Nonanti/narwhal
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = narwhal
 	makedepends = cmake
 	makedepends = clang
 	depends = gcc-libs
-	source = narwhal-2.0.0.tar.gz::https://github.com/Nonanti/narwhal/archive/v2.0.0.tar.gz
-	sha256sums = 56dcb3bbeec4aace943cd6f10a31dae7f6366593cd19a49397f11983cd800387
+	source = narwhal-2.3.0.tar.gz::https://github.com/Nonanti/narwhal/archive/v2.3.0.tar.gz
+	sha256sums = e48071d1b9b5befebbb50a6d29c56817149b0623618ea6e85600b42c948cc4f7
 
 pkgname = narwhal
