@@ -1,7 +1,7 @@
 # Maintainer: Yuzuki <lxf74663@gmail.com>
 pkgname=napcat-qq
 pkgver=4.18.6
-pkgrel=1
+pkgrel=2
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64' 'aarch64')
 url="https://github.com/NapNeko/NapCatQQ"
@@ -12,7 +12,7 @@ install='napcat-qq.install'
 _qqvercode="94704804"
 _qqver="3.2.23-44343"
 
-source=("NapCat.Shell.zip::https://github.com/NapNeko/NapCatQQ/releases/download/v${pkgver}/NapCat.Shell.zip"
+source=("NapCat.Shell-${pkgver}.zip::https://github.com/NapNeko/NapCatQQ/releases/download/v${pkgver}/NapCat.Shell.zip"
         "napcat-qq.sh"
         "napcat-qq.install")
 sha256sums=('9d9273e7ea8c8a76742a69dabb3e7be5f45b8167c670ca70587e3619f0d8afad'
@@ -40,7 +40,7 @@ package() {
     # 解压 NapCat 注入文件
     _appdir="${pkgdir}/opt/napcat-qq/resources/app"
     install -d "${_appdir}/app_launcher/napcat-base"
-    unzip -q -o "${srcdir}/NapCat.Shell.zip" -d "${_appdir}/app_launcher/napcat-base/"
+    unzip -q -o "${srcdir}/NapCat.Shell-${pkgver}.zip" -d "${_appdir}/app_launcher/napcat-base/"
 
     #  清理基础目录下的 Windows 平台专用文件及多余的加载器
     rm -f "${_appdir}/app_launcher/napcat-base/"*.bat \
