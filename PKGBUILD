@@ -29,7 +29,7 @@ makedepends=(nasm git
 gcc make sed) # base-devel
 _so=libffmpeg.so
 conflicts=(${pkgname%-git}
-{nwjs,opera{,-developer},vivaldi{,-snapshot}}-ffmpeg-codecs)
+{nwjs,vivaldi{,-snapshot}}-ffmpeg-codecs)
 provides=("${conflicts[@]}")
 prepare() {
   # List used funcs

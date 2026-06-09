@@ -14,14 +14,10 @@ pkgbase = chromium-ffmpeg-git
 	depends = glibc
 	provides = chromium-ffmpeg
 	provides = nwjs-ffmpeg-codecs
-	provides = opera-ffmpeg-codecs
-	provides = opera-developer-ffmpeg-codecs
 	provides = vivaldi-ffmpeg-codecs
 	provides = vivaldi-snapshot-ffmpeg-codecs
 	conflicts = chromium-ffmpeg
 	conflicts = nwjs-ffmpeg-codecs
-	conflicts = opera-ffmpeg-codecs
-	conflicts = opera-developer-ffmpeg-codecs
 	conflicts = vivaldi-ffmpeg-codecs
 	conflicts = vivaldi-snapshot-ffmpeg-codecs
 	source = sigs.base64::https://chromium.googlesource.com/chromium/third_party/ffmpeg/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT
