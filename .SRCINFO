@@ -1,7 +1,7 @@
 pkgbase = ghastty-git
 	pkgdesc = A Qt6 frontend for Ghostty that embeds libghostty (Wayland-only)
 	pkgver = 1.3.2.r16701.g69992a607
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fuddlesworth/ghastty
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = ghastty-git
 	makedepends = cmake
 	makedepends = pkgconf
 	makedepends = vulkan-headers
+	depends = ghostty
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-svg

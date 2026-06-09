@@ -2,12 +2,15 @@
 
 pkgname=ghastty-git
 pkgver=1.3.2.r16701.g69992a607
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt6 frontend for Ghostty that embeds libghostty (Wayland-only)"
 arch=('x86_64')
 url="https://github.com/fuddlesworth/ghastty"
 license=('MIT')
 depends=(
+  'ghostty'            # terminfo (xterm-ghostty) + shell-integration resources;
+                       # libghostty locates them under /usr/share via exe-path
+                       # climb and exports GHOSTTY_RESOURCES_DIR/TERMINFO to the shell
   'qt6-base'
   'qt6-multimedia'
   'qt6-svg'
