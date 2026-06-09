@@ -1,0 +1,3 @@
+[python-coremltools]
+source = "pypi"
+pypi = "coremltools"
