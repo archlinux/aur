@@ -9,7 +9,7 @@ url='https://github.com/avitacco/jig'
 arch=('x86_64' 'aarch64')
 
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 
 source_x86_64=("https://github.com/avitacco/jig/releases/download/v${pkgver}/jig_${pkgver}_linux_amd64.tar.gz")
 sha256sums_x86_64=('1387814e3567340ed002e50325e7d1a8c3f1b88aa018b18183be635b5a89699c')

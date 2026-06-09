@@ -1,7 +1,7 @@
 pkgbase = jig
 	pkgdesc = A tool for building and publishing Puppet modules
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/avitacco/jig
 	arch = x86_64
 	arch = aarch64
