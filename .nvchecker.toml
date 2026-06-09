@@ -1,0 +1,4 @@
+[vfio-tools-git]
+source = "git"
+git = "https://github.com/PassthroughPOST/VFIO-Tools.git"
+use_commit = true
