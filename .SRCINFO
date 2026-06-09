@@ -1,5 +1,5 @@
 pkgbase = cxhair
-	pkgdesc = Custom crosshair overlay for Linux
+	pkgdesc = Calliexhair, A custom crosshair overlay for Linux
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/cab/calliexhair
