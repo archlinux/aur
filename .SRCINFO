@@ -1,6 +1,6 @@
 pkgbase = wxextract
 	pkgdesc = Extract WeChat 4.x conversations on Linux into compact LLM-ready text + interactive HTML report
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/boujuan/extract-wechat-messages-linux
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = wxextract
 	optdepends = rsync: faster snapshot copy (usually already installed)
 	optdepends = python-requests: Instagram live --thread extraction (private API)
 	optdepends = python-browser-cookie3: Instagram live --thread extraction (reads the browser session cookie; pip install if not in AUR)
-	source = wxextract-0.9.0.tar.gz::https://github.com/boujuan/extract-wechat-messages-linux/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = 3b2ee2c4b09bf2d7bde3be08d7772868137dd52282b635f8ca19b09d58106e0c
+	source = wxextract-0.9.1.tar.gz::https://github.com/boujuan/extract-wechat-messages-linux/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 42672019538137b63dc9c5bacf802c55af6d37018617063a47f0bb9b4ee87a22
 
 pkgname = wxextract
