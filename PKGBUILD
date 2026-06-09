@@ -5,7 +5,7 @@
 _module="glean_parser"
 _pkgname="python-${_module//_/-}"
 pkgname="$_pkgname"
-pkgver="19.2.0"
+pkgver="20.0.0"
 pkgrel=1
 pkgdesc="Tools for parsing the metadata for Mozilla's glean telemetry SDK"
 url="https://github.com/mozilla/glean_parser"
@@ -35,7 +35,7 @@ _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
 _dl_url="https://files.pythonhosted.org/packages/source"
 source=("$_pkgsrc.$_pkgext"::"$_dl_url/${_module::1}/$_module/$_pkgsrc.$_pkgext")
-sha256sums=('a0bdaf9d95af6a86543c96f520c2f47a079353f343fd3b09ab30b87cb9d6c836')
+sha256sums=('c6a8c615d49a18f70efdd209675fb25b6b93bc5dd6795f31fac1f02b9f9bed26')
 
 build() {
   cd "$_pkgsrc"
