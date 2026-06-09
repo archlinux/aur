@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-rs-bin
 pkgdesc="Terminal web browser written in Rust"
 
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,7 +29,7 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 sha256sums=('3e102a72cc961a1a579d0a03a7f7414ad2d7536a320edfe112d99951a1c9a3eb')
-sha256sums_x86_64=('a38563e04ab61f9c661b06baf9d2c668f3e9eee6a0e967025707f941fb9f0034')
+sha256sums_x86_64=('635fc806977fbe7ac7b07460e7a12b5d5d001f6dc98ed009fd8e4d1b7f489436')
 
 
 package() {
