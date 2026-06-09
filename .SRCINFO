@@ -1,0 +1,13 @@
+pkgbase = android-vndk-29
+	pkgdesc = Additional Android libraries for Android 10 (API level 29). VNDK prebuilt variant.
+	pkgver = 29
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/prebuilts/vndk/v29
+	arch = any
+	license = custom
+	options = !strip
+	options = !debug
+	source = vndk::shallowclone+https://android.googlesource.com/platform/prebuilts/vndk/v29
+	sha256sums = SKIP
+
+pkgname = android-vndk-29
