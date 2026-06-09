@@ -1,6 +1,6 @@
 # Maintainer: Lukash <lukash at aur dot archlinux dot org>
 pkgname=dmtl-bin
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Custom Linux launcher for DayZ"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('dmtl')
 conflicts=('dmtl')
 options=('!strip' '!debug')
 source=("https://github.com/69-Lukash/DMTLauncher/releases/download/v${pkgver}/DMTL-Linux.tar.gz")
-sha256sums=('3f7368f024b45d8546f4659b88cbbb94bbcb6b51e77b945277468c52ff592960')
+sha256sums=('11fe0571414da0b80eb4a5914bd5508ba26be5086556bbda18f0a9d574037f3c')
 
 package() {
     install -d "$pkgdir/opt/dmtl"
