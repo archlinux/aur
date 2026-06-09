@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=DualCPY
+GenericName=Dual-Screen Mirroring
+Comment=Multi-window scrcpy launcher for dual-screen Android handhelds
+Exec=dualcpy-linux
+Icon=dualcpy-linux
+Terminal=false
+Categories=Utility;System;
+Keywords=scrcpy;android;mirror;adb;handheld;dualscreen;
