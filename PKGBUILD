@@ -3,7 +3,7 @@
 pkgname=nextpnr
 pkgver=0.10
 pkgrel=1
-pkgdesc="nextpnr portable FPGA place and route tool - ice40, ecp5, machxo2, nexus, and generic"
+pkgdesc="nextpnr portable FPGA place and route tool - ice40, ecp5, nexus, and generic"
 arch=("x86_64")
 url="https://github.com/YosysHQ/nextpnr"
 license=("custom:ISC")
