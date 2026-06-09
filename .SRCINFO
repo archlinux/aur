@@ -1,0 +1,13 @@
+pkgbase = android-vndk-33
+	pkgdesc = Additional Android libraries for Android 13 (API level 33). VNDK prebuilt variant.
+	pkgver = 33
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/prebuilts/vndk/v33
+	arch = any
+	license = custom
+	options = !strip
+	options = !debug
+	source = vndk::shallowclone+https://android.googlesource.com/platform/prebuilts/vndk/v33
+	sha256sums = SKIP
+
+pkgname = android-vndk-33
