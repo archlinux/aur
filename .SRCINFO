@@ -1,0 +1,13 @@
+pkgbase = android-vndk-27
+	pkgdesc = Additional Android libraries for Android 8.1 (API level 27). VNDK prebuilt variant.
+	pkgver = 27
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/prebuilts/vndk/v27
+	arch = any
+	license = custom
+	options = !strip
+	options = !debug
+	source = vndk::shallowclone+https://android.googlesource.com/platform/prebuilts/vndk/v27
+	sha256sums = SKIP
+
+pkgname = android-vndk-27
