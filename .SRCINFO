@@ -1,21 +1,21 @@
 pkgbase = bbg-bin
 	pkgdesc = A static blog generator based on Electron Technology(Prebuilt version.Use system-wide electron)
-	pkgver = 20250929
+	pkgver = 20260608
 	pkgrel = 1
 	url = https://bbg.nekomoe.xyz/
 	arch = aarch64
 	arch = x86_64
 	license = Unlicense
-	depends = electron37
-	provides = bbg=20250929
+	depends = electron40
+	provides = bbg=20260608
 	conflicts = bbg
-	source = LICENSE-20250929::https://raw.githubusercontent.com/bbg-contributors/bbg/20250929/LICENSE
+	source = LICENSE-20260608::https://raw.githubusercontent.com/bbg-contributors/bbg/20260608/LICENSE
 	source = bbg.sh
 	sha256sums = 436a6d536138f203ac333858cff92a568be62797752b3adb94bcaa0f6ffe7ef6
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = bbg-20250929-aarch64.deb::https://github.com/bbg-contributors/bbg/releases/download/20250929/bbg-20250929-arm64.deb
-	sha256sums_aarch64 = a0657f4b6c01ad824b71c3533bf5207f6be6710fc601ae2ee16f42f1c3ac18d9
-	source_x86_64 = bbg-20250929-x86_64.deb::https://github.com/bbg-contributors/bbg/releases/download/20250929/bbg-20250929-amd64.deb
-	sha256sums_x86_64 = f37447eda3b228af5c560026eece18b7b3c733f214982596aaa1d7eb788c62a9
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = bbg-20260608-aarch64.deb::https://github.com/bbg-contributors/bbg/releases/download/20260608/bbg-20260608-arm64.deb
+	sha256sums_aarch64 = 0d388b18fdcb2bdf4e64e9acaf612094b1b4d7f57a65e2b850521d56bb93f697
+	source_x86_64 = bbg-20260608-x86_64.deb::https://github.com/bbg-contributors/bbg/releases/download/20260608/bbg-20260608-amd64.deb
+	sha256sums_x86_64 = eecad598b481d163daf6a579450dcfd3a86807b5502f58ded94bbf3d7bbe7f3b
 
 pkgname = bbg-bin
