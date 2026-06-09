@@ -6,9 +6,10 @@ pkgbase = vtlock
 	install = vtlock.install
 	arch = x86_64
 	license = MIT
-	makedepends = darcs
+	makedepends = gcc
+	makedepends = unzip
 	depends = glibc
-	source = vtlock::https://hub.darcs.net/stef204/vtlock
-	sha256sums = 14e33ec18b170249d9371c2538b4e2b8f6813247ae8f1332453b1e8a2ecec849
+	source = vtlock::https://hub.darcs.net/stef204/vtlock/dist
+	sha256sums = 82af50d409c1ffe34630879e9fdf77c37a831ba8a7a32407390bbd4209b9c269
 
 pkgname = vtlock

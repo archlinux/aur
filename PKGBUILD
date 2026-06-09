@@ -8,15 +8,10 @@ arch=('x86_64')
 url="https://hub.darcs.net/stef204/vtlock"
 license=('MIT')
 depends=('glibc')
-makedepends=('darcs')
-source=("$pkgname::https://hub.darcs.net/stef204/vtlock")
+makedepends=('gcc' 'unzip')
+source=("$pkgname::https://hub.darcs.net/stef204/vtlock/dist")
 install=vtlock.install
-sha256sums=('14e33ec18b170249d9371c2538b4e2b8f6813247ae8f1332453b1e8a2ecec849')
-
-pkgver() {
-    cd "$pkgname"
-    echo "1.0.0.r$(darcs log --count)"
-}
+sha256sums=('82af50d409c1ffe34630879e9fdf77c37a831ba8a7a32407390bbd4209b9c269')
 
 build() {
     cd "$pkgname"
