@@ -1,6 +1,6 @@
 pkgbase = whatevr
 	pkgdesc = Native WhatsApp client for Linux (whatevrd daemon + whatkevr Qt/Kirigami frontend)
-	pkgver = 0.1.6
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/codelif/whatevr
 	install = whatevr.install
@@ -33,7 +33,7 @@ pkgbase = whatevr
 	provides = whatkevr
 	conflicts = whatevr-git
 	conflicts = whatevr-bin
-	source = whatevr-0.1.6.tar.gz::https://github.com/codelif/whatevr/releases/download/v0.1.6/whatevr-0.1.6.tar.gz
-	sha256sums = ef17422bc15436ebbc744a615abfdde164eabdb5c28e594b063b7ddaa80030e2
+	source = whatevr-0.2.0.tar.gz::https://github.com/codelif/whatevr/releases/download/v0.2.0/whatevr-0.2.0.tar.gz
+	sha256sums = c1c61d54cd66a812afcd3b5c2844d74bd9acb10e6665da35491f052ed7938ee7
 
 pkgname = whatevr
