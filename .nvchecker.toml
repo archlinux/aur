@@ -1,0 +1,5 @@
+[dtsfmt]
+source = "github"
+github = "mskelton/dtsfmt"
+use_max_tag = true
+prefix = "v"
