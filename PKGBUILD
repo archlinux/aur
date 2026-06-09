@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ecubus-pro
-pkgver=0.8.64
+pkgver=0.8.65
 pkgrel=1
 pkgdesc="A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support"
 arch=(x86_64)
@@ -18,6 +18,14 @@ depends=(
     libstdc++
     java-runtime
     python
+    python-lxml
+    python-openpyxl
+    python-yaml
+    # AUR
+    python-canmatrix
+    python-doipclient
+    python-odxtools
+    python-udsoncan
 )
 makedepends=(
     git
@@ -28,15 +36,16 @@ makedepends=(
     nodejs
 )
 optdepends=(
-    "python-doipclient: A Diagnostic over IP (DoIP) client implementing ISO-13400-2."
-    "python-odxtools: Utilities to work with the ODX standard for automotive diagnostics"
-    "python-udsoncan: Implementation of the Unified Diagnostic Service (UDS) protocol (ISO-14229) used in the automotive industry."
+    # "python-doipclient: A Diagnostic over IP (DoIP) client implementing ISO-13400-2."
+    # "python-odxtools: Utilities to work with the ODX standard for automotive diagnostics"
+    # "python-udsoncan: Implementation of the Unified Diagnostic Service (UDS) protocol (ISO-14229) used in the automotive industry."
+    # "python-canmatrix: Canmatrix is a python package to read and write several CAN (Controller Area Network) database formats"
 )
 backup=()
 options=(!debug !strip)
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('58c10fdff6a50a6ebccbc1ac178c4479344bccffb17d92fb744e449eb848c4cc')
+sha256sums=('0453b77c65de8a3e05e1b196afcb5ad384382016b1dddabcc3be48aa1b2e1905')
 # noextract=("${pkgname}-${pkgver}.tar.gz")
 
 _pkgname=EcuBus-Pro
@@ -58,6 +67,7 @@ build() {
     npm run worker
     npm run api
     npm run cli:build:linux
+    npm run build:sdk
     npm run build:unpack
 }
 
