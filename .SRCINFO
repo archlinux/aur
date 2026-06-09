@@ -1,7 +1,7 @@
 pkgbase = image-garden
 	pkgdesc = Tool for creating test virtual machines
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/zygoon/image-garden
 	arch = any
 	license = Apache-2.0
@@ -19,7 +19,9 @@ pkgbase = image-garden
 	optdepends = qemu-system-riscv
 	optdepends = qemu-system-s390x
 	source = image-garden-0.5.tar.bz2::https://gitlab.com/zygoon/image-garden/-/archive/v0.5/image-garden-v0.5.tar.bz2
+	source = 0001-Add-support-for-Fedora-44.patch
 	sha256sums = 21b3114c61802d9596686d418116a23fada2663e1500afd266f9cd680e2a623e
+	sha256sums = bcbd18961bdb63c7098c28c0b398be414dfa4ff71fcf81961494a232d5fb72b3
 
 pkgname = image-garden
 	depends = make
