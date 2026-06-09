@@ -2,7 +2,7 @@
 pkgname=donutbrowser-bin
 _pkgname=Donut
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful browser orchestrator that puts you in control of your browsing experience. 🍩(Prebuilt version)"
 arch=(
     'aarch64'
@@ -18,6 +18,7 @@ depends=(
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
     'xdotool'
+    'libayatana-appindicator'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
