@@ -1,0 +1,4 @@
+[grexa]
+source = "git"
+git = "https://github.com/visorcraft/Grexa.git"
+prefix = "v"
