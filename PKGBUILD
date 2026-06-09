@@ -4,7 +4,7 @@
 _pkgname=squawk
 pkgname="${_pkgname}-cli"
 pkgver=2.57.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=(
 	x86_64
@@ -13,14 +13,10 @@ url=https://squawkhq.com/
 license=(
 	"Apache-2.0 OR MIT"
 )
-depends=(
-	glibc
-	libcrypto.so
-	libgcc_s.so
-	libssl.so
-)
 makedepends=(
 	cargo
+	libgcc
+	openssl
 )
 options=(
 	'!lto'
@@ -111,6 +107,14 @@ check() {
 }
 
 package() {
+	depends=(
+		glibc
+		libcrypto.so
+		libgcc_s.so
+		libssl.so
+	)
+
+	: "${depends[@]}"
 	: "${pkgdir:?}"
 
 	cd "${_pkgname}-${pkgver}"
