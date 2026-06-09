@@ -1,0 +1,21 @@
+pkgbase = findnumgame
+	pkgdesc = Игра на интуицию и визуальынй рассчет пространства на заданной линии
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jezzofficial/FindNumGame.git
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = python-cairo
+	depends = glib2
+	depends = hicolor-icon-theme
+	source = https://raw.githubusercontent.com/jezzofficial/FindNumGame/main/findnumgame.py
+	source = https://raw.githubusercontent.com/jezzofficial/FindNumGame/main/findnumgame.desktop
+	source = https://raw.githubusercontent.com/jezzofficial/FindNumGame/main/findnumgame-icon.png
+	sha256sums = 9c6a3f2bb946256614693916812118399a81d33ad0e2ebdcb2f656f72a7846e2
+	sha256sums = fbe3af6162823e93c8d65f225333af2e16a8aedd8746b298d02c42a6a49e040a
+	sha256sums = 91b56b661d31e8a776c11dfd2de1d52a452caf79b5278f1731b444cf17f04d7f
+
+pkgname = findnumgame
