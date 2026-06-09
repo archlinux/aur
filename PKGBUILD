@@ -1,7 +1,7 @@
 # Maintainer: Jakov Petrina <jkv.petrina@gmail.com>
 
 pkgname=mboxshell-git
-pkgver=0.4.2.r2.g2bd40a9
+pkgver=0.4.3.r0.g15d14bf
 pkgrel=1
 pkgdesc="Fast terminal viewer for MBOX files of any size without loading them into memory"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/mboxshell"
 
-  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
