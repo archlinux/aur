@@ -1,7 +1,7 @@
 # Maintainer: lightjunction <<redacted-email>>
 pkgname=new-api-privacy-filter-git
 _pkgname=${pkgname%-git}
-pkgver=0.2.3.r2.g41a36ed
+pkgver=0.2.3.r8.g61713e7
 pkgrel=1
 pkgdesc='Rust privacy redaction proxy for OpenAI-compatible New API deployments'
 arch=('x86_64')
