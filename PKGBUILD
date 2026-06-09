@@ -1,13 +1,13 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 _npmname=node-red
-pkgver=4.1.11
+pkgver=5.0.0
 pkgname=nodejs-${_npmname}
 pkgrel=1
 pkgdesc="A visual tool for wiring the Internet of Things."
 arch=(x86_64 i686 armv5 armv6h armv7h aarch64)
 url="https://nodered.org"
 license=("APACHE")
-depends=("nodejs>=18" "npm")
+depends=("nodejs>=24" "npm")
 makedepends=('desktop-file-utils' 'gendesk')
 optdepends=()
 backup=("etc/default/${pkgname}")
@@ -15,7 +15,7 @@ source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 		"${pkgname}.service"
 		"${pkgname}.default")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha256sums=('3fe4c5de7c3bf90b8faeb7d4692b877f7d4515cd21a81cb0ce5a310e27afa6fa'
+sha256sums=('e4ddc33df8d6b81a6fef6cb1b4bb88edd8673db955004ec7a90cd6ed865fad44'
             'cb3468c4f5c5883ed89aef13485c6c604d22f917cec714585dbadd4914fff3e8'
             'd08994475b06f270b2f1a2b3c99c22fd33f001dc2a10413460caded125f81f38')
 
