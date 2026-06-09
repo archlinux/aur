@@ -1,7 +1,7 @@
 # Maintainer: adrianpriza-ai <coreygit1@gmail.com>
 
 pkgname=alps-pm
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="A unified frontend for Linux package managers (Advanced Linux Package System)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -40,25 +40,33 @@ check() {
 package() {
     cd "alps-$pkgver"
 
-    install -Dm755 alps "$pkgdir/usr/bin/alps"
-    
-    ln -sf alps "$pkgdir/usr/bin/alps-pm"
+    install -Dm755 alps "$pkgdir/usr/bin/alps-pm"
+    ln -sf alps-pm "$pkgdir/usr/bin/alps"
 
-    if [ -x ./alps ]; then
-        ./alps completion bash > alps.bash 2>/dev/null && \
-            install -Dm644 alps.bash "$pkgdir/usr/share/bash-completion/completions/alps" && \
-            ln -sf alps "$pkgdir/usr/share/bash-completion/completions/alps-pm"
-            
-        ./alps completion zsh > _alps 2>/dev/null && \
-            install -Dm644 _alps "$pkgdir/usr/share/zsh/site-functions/_alps" && \
-            ln -sf _alps "$pkgdir/usr/share/zsh/site-functions/_alps-pm"
-            
-        ./alps completion fish > alps.fish 2>/dev/null && \
-            install -Dm644 alps.fish "$pkgdir/usr/share/fish/vendor_completions.d/alps.fish" && \
-            ln -sf alps.fish "$pkgdir/usr/share/fish/vendor_completions.d/alps-pm.fish"
+    local host_tmp
+    host_tmp=$(mktemp -d)
+    cp alps "$host_tmp/alps-pm"
+    ln -s alps-pm "$host_tmp/alps"
+    chmod +x "$host_tmp/alps-pm"
+
+    if "$host_tmp/alps-pm" completion bash >/dev/null 2>&1; then
+        mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+        "$host_tmp/alps" completion bash > "$pkgdir/usr/share/bash-completion/completions/alps"
+        "$host_tmp/alps-pm" completion bash > "$pkgdir/usr/share/bash-completion/completions/alps-pm"
+
+        mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d"
+        "$host_tmp/alps" completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/alps.fish"
+        "$host_tmp/alps-pm" completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/alps-pm.fish"
+
+        mkdir -p "$pkgdir/usr/share/zsh/site-functions"
+        "$host_tmp/alps" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_alps"
+        "$host_tmp/alps-pm" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_alps-pm"
     fi
+    rm -rf "$host_tmp"
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 README.md \
+        "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

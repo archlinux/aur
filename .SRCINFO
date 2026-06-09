@@ -1,6 +1,6 @@
 pkgbase = alps-pm
 	pkgdesc = A unified frontend for Linux package managers (Advanced Linux Package System)
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = https://github.com/adrianpriza-ai/alps
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = alps-pm
 	optdepends = base-devel: required for AUR makepkg fallback
 	optdepends = yay: preferred AUR helper
 	conflicts = alps
-	source = alps-pm-0.9.8.tar.gz::https://github.com/adrianpriza-ai/alps/archive/v0.9.8.tar.gz
+	source = alps-pm-0.9.9.tar.gz::https://github.com/adrianpriza-ai/alps/archive/v0.9.9.tar.gz
 	sha256sums = SKIP
 
 pkgname = alps-pm
