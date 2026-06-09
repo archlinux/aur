@@ -2,7 +2,7 @@
 pkgname=steamachievementnotifier-bin
 _pkgname="Steam Achievement Notifier"
 _mainver=1.9
-_subver=41
+_subver=42
 pkgver="${_mainver}.${_subver}"
 _electronversion=42
 pkgrel=1
@@ -14,7 +14,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    #'steam'
+    'steam'
 )
 makedepends=(
     'asar'
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname// /}_V${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3b7806b530058c0781b55075f7b543837744635cf7e13129d1f79b3c68032bce'
+sha256sums=('0f2485a9df2d966480e23ae4c0eeaf360cd6b4ad3ccf1ad49ffa87561a68f219'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
