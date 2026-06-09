@@ -12,7 +12,7 @@
 
 _pkgname=namebind
 pkgname="${_pkgname}"
-pkgver=0.26.1
+pkgver=0.27.2
 pkgrel=1
 pkgdesc="Per-app network namespaces; reach host services by name, not port number"
 arch=('any')  # pure Python + console script + a systemd unit
@@ -78,7 +78,7 @@ source=("${_pkgname}::git+${_repo_git_url}?signed#tag=v${pkgver}"
 #   (from `makepkg`'s PoV) is already somewhere inside the repo.
        )
 
-sha256sums=('4ef4ede0bb6f19813ee75fb767b844128786bd652ca8370a5818031c07478963'
+sha256sums=('95926406769ed3f3192b412dcdf97e987c5aec9f9baed80ba56f0869335361e4'
            )
 validpgpkeys=(
   "E627ACE54546B9DA33F31C47EA82A8B4E968D242"  # "0zitro <94910351+0zitro@users.noreply.github.com>"
