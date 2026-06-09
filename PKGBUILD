@@ -2,7 +2,7 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=3.11.2.1780539832
+pkgver=3.12.0.1780991633
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -43,7 +43,7 @@ build() {
   fi
 
   arch-meson --wrap-mode default --buildtype debugoptimized $pgo -Db_lto=true \
-    -Dstrip=true -Doptimization=3 $lua \
+    -Dstrip=true -Doptimization=3 -Drenderer_backend=sdlgpu $lua \
     build
 
   if [ -n "$PGO" ]; then
