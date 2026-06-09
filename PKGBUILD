@@ -1,4 +1,4 @@
-# Maintainer: 7erez <your-email@example.com>
+# Maintainer: 7erez <the7erez@gmail.com>
 pkgname=7sh
 pkgver=1.1.0
 pkgrel=1
@@ -9,10 +9,10 @@ license=('MIT')
 depends=('glibc')
 makedepends=('gcc' 'make')
 provides=('7sh')
-conflicts=('7sh-git') # عشان السيستم يعرف إنهم ميبقوش راكبين فوق بعض
-source=("https://github.com/the7erez/7sh/archive/refs/tags/v${pkgver}.tar.gz")
-# هنحسب الـ sha256sum الحقيقي في الخطوة الجاية
-sha256sums=('927f3973da78e6d3175a1c88e0ca7674e259190fc377835b38442ee7a6c0e2b4')
+conflicts=('7sh-git')
+
+source=("https://github.com/the7erez/7sh/archive/refs/tags/v\${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
