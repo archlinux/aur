@@ -1,0 +1,26 @@
+pkgbase = keyboard-volume-app-git
+	pkgdesc = Per-app volume control via keyboard with OSD overlay (Qt6)
+	pkgver = r0.1.0.142.gc1b301c
+	pkgrel = 1
+	url = https://github.com/Adiker/keyboard-volume-app
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = wayland
+	makedepends = layer-shell-qt
+	depends = qt6-base
+	depends = libevdev
+	depends = libpulse
+	depends = libpipewire
+	depends = taglib
+	depends = pipewire
+	depends = layer-shell-qt
+	provides = keyboard-volume-app
+	conflicts = keyboard-volume-app
+	source = keyboard-volume-app-git::git+https://github.com/Adiker/keyboard-volume-app.git#branch=main
+	sha256sums = SKIP
+
+pkgname = keyboard-volume-app-git
