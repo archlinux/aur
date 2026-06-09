@@ -1,6 +1,6 @@
 # Maintainer: mryll <https://github.com/mryll>
 pkgname=meteobar
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='Weather widget for Waybar using Open-Meteo — no API key required'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('otf-font-awesome: Font Awesome icon set (--icons fontawesome)')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mryll/meteobar/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1948412f492214aededc97aea3c78943309a88fc3eb0ed7290a0d53c063fb2e6')
+sha256sums=('1818f732423c94da57ae9ad1d98cd8b8508cc60fc8510953569b5a5186cbe6a9')
 
 build() {
     cd "$pkgname-$pkgver"
