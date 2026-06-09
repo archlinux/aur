@@ -1,5 +1,4 @@
 [dtsfmt]
-source = "github"
-github = "mskelton/dtsfmt"
-use_max_tag = true
+source = "git"
+git = "https://github.com/mskelton/dtsfmt.git"
 prefix = "v"
