@@ -1,0 +1,9 @@
+pkgbase = jig
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/avitacco/jig
+	arch = x86_64
+	source = https://github.com/avitacco/jig/releases/download/v1.2.0/jig_1.2.0_linux_amd64.tar.gz
+	sha256sums = 1387814e3567340ed002e50325e7d1a8c3f1b88aa018b18183be635b5a89699c
+
+pkgname = jig
