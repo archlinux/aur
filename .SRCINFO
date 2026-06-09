@@ -1,6 +1,6 @@
 pkgbase = lagrange
 	pkgdesc = Beautiful Gemini Client
-	pkgver = 1.20.6
+	pkgver = 1.20.7
 	pkgrel = 1
 	url = https://git.skyjake.fi/skyjake/lagrange
 	install = lagrange.install
@@ -22,7 +22,7 @@ pkgbase = lagrange
 	depends = mpg123
 	optdepends = libwebp: Webp decode support
 	optdepends = libjxl: JPEG XL image decoding
-	source = https://git.skyjake.fi/skyjake/lagrange/releases/download/v1.20.6/lagrange-1.20.6.tar.gz
-	sha256sums = 755cf006326f09cfe29fdedce78ba45df2ccff2f58113bb876c2ddac084930ff
+	source = https://git.skyjake.fi/skyjake/lagrange/releases/download/v1.20.7/lagrange-1.20.7.tar.gz
+	sha256sums = 979d83f69144512631d7386ab6b31ef97257157e1e3607ba58e0408377353c74
 
 pkgname = lagrange
