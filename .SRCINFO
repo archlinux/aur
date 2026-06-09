@@ -1,6 +1,6 @@
 pkgbase = kglobalacceld-git
 	pkgdesc = Daemon providing Global Keyboard Shortcut (Accelerator) functionality
-	pkgver = 6.6.90.r19.g3d2aa47
+	pkgver = 6.6.90.r21.g235b8e7
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/kglobalacceld
 	arch = any
