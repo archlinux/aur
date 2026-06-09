@@ -1,7 +1,7 @@
 pkgname='stork-agent'
-pkgver='2.4.0'
+pkgver='2.5.0'
 pkgrel='1'
-pkgdesc="The agent that monitors Kea DHCP and BIND 9 as part of ISC Stork."
+pkgdesc="The agent that monitors ISC BIND 9 DNS, ISC Kea DHCP, and other services as part of ISC Stork."
 arch=('any')
 url='https://gitlab.isc.org/isc-projects/stork'
 license=('MPL2')
@@ -12,7 +12,7 @@ _repo='stork'
 source=("https://downloads.isc.org/isc/${_repo}/${pkgver}/${_repo}-${pkgver}.tar.gz")
         # "https://gitlab.isc.org/isc-projects/${_repo}/-/archive/v${pkgver}/${_pkg}.tar.gz"
 sha512sums=(
-  '291e8811eca91659a509d7d35e78432c2be7d99ac19faca9fd357d3cd6c8182058bf70ce25a8fb5702ad8dc28fa523f99f43da6d53abe14537988732d986592d'
+  'cf46e86da8b08e07e97067096b4705a1ad8207152733cf814767c5ce3c48ba2ce12ce8028f7e2d07ecd3689b66080634a02f17f8636f0ea10d3b96e4b5b1b972'
 )
 
 build() {
