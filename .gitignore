@@ -5,5 +5,6 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!30-man8br0-ygg.conflist
-!40-man8br1.conflist
+!30-man8br0-ygg-v4only.conflist
+!30-man8br0-ygg-v6.conflist
+!yggoverlay.install

@@ -1,0 +1,26 @@
+{
+  "cniVersion": "1.0.0",
+  "name": "man8yggbr",
+  "plugins": [
+    {
+      "type": "bridge",
+      "bridge": "man8br0",
+      "isGateway": true,
+      "ipMasq": true,
+      "ipMasqBackend": "nftables",
+      "ipam": {
+        "type": "host-local",
+        "routes": [{ "dst": "0.0.0.0/0" }],
+        "ranges": [[{ "subnet": "10.4.0.0/24" }]]
+      }
+    },
+    {
+        "type": "portmap",
+        "capabilities": {"portMappings": true},
+        "backend": "nftables"
+    },
+    {
+       "type": "yggoverlay"
+    }
+  ]
+}

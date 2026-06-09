@@ -1,0 +1,46 @@
+remove_old_configs() {
+    # remove old version outdated configs to avoid conflicts with new ones
+    for f in /etc/cni/net.d/30-man8br0-ygg.conflist \
+            /etc/cni/net.d/40-man8br1.conflist; do
+        if [ -e "$f" ]; then
+            echo "yggoverlay: removing old version deprecated config file: $f"
+            rm -f "$f"
+        fi
+    done
+}
+
+select_cni_config() {
+    local cni_dir="/etc/cni/net.d"
+    local share_dir="/usr/share/yggoverlay"
+
+    mkdir -p "$cni_dir"
+
+    if ip -6 addr show scope global up \
+        | grep -oP '(?<=inet6 )([0-9a-f:]+)' \
+        | grep -qiE '^[23][0-9a-f]'; then
+
+        install -m644 "$share_dir/30-man8br0-ygg-v6.conflist" \
+            "$cni_dir/30-man8br0-ygg-v6.conflist"
+        echo "yggoverlay: global IPv6 detected, enabling IPv6 config"
+    else
+        install -m644 "$share_dir/30-man8br0-ygg-v4only.conflist" \
+            "$cni_dir/30-man8br0-ygg-v4only.conflist"
+        echo "yggoverlay: no global IPv6 detected, enabling IPv4-only config"
+    fi
+}
+
+pre_install() {
+    remove_old_configs
+}
+
+pre_upgrade() {
+    remove_old_configs
+}
+
+post_install() {
+    select_cni_config
+}
+
+post_upgrade() {
+    select_cni_config
+}
