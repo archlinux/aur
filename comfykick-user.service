@@ -1,6 +1,7 @@
 [Unit]
 Description=Better ComfyUI Deploy Wrapper
 After=local-fs.target
+Wants=network-online.target
 
 [Service]
 Type=simple
