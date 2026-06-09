@@ -1,8 +1,9 @@
 pkgbase = tabbyml-cuda-bin
 	pkgdesc = Self-hosted AI coding assistant (prebuilt CUDA binary)
 	pkgver = 0.32.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TabbyML/tabby
+	install = tabbyml-cuda-bin.install
 	arch = x86_64
 	license = Apache-2.0
 	depends = glibc
@@ -19,6 +20,12 @@ pkgbase = tabbyml-cuda-bin
 	conflicts = tabbyml-vulkan-bin
 	options = !strip
 	source = tabbyml-cuda-bin-0.32.0.tar.gz::https://github.com/TabbyML/tabby/releases/download/v0.32.0/tabby_x86_64-manylinux_2_28-cuda123.tar.gz
+	source = tabbyml.service
+	source = tabbyml.env
+	source = config.toml
 	sha256sums = ce1eb25870702a008583c31b147c70e5feda73501a9136196199ba1ace2d211e
+	sha256sums = 6a54b9f24851f7598af23a8e28e7164e1b2a6294a839341aee34e3b1748023d2
+	sha256sums = f1b5231d88bb43ddf6a154c74b017e3fa316f5bfa4d3c11d9ee8228da693972b
+	sha256sums = 019d34e8cde65c2ea7d198df2d1e0062bdbfa449510b4432fa90800364a64816
 
 pkgname = tabbyml-cuda-bin
