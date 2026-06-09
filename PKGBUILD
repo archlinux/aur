@@ -1,7 +1,4 @@
-# Maintainer: Thomas <Throdne@gmail.com>
-# Contributor: Cash Brunow <1apfuputl@mozmail.com>
-# Contributor: Michael Christoff <wxfanatic@gmail.com>
-# Developer: Dan Paulat
+# Maintainer: Throdne <Throdne@gmail.com>
 
 pkgname=supercell-wx-bin
 pkgver=0.6.0
