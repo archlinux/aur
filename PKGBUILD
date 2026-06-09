@@ -1,6 +1,6 @@
 # Maintainer: Radu Macocian <radu@macocian.com>
 pkgname=omni-launcher
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Application launcher overlay built on Quickshell, with calculator, unit/currency conversion, unicode search and Giphy search"
 arch=('any')

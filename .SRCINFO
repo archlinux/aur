@@ -1,17 +1,18 @@
 pkgbase = omni-launcher
 	pkgdesc = Application launcher overlay built on Quickshell, with calculator, unit/currency conversion, unicode search and Giphy search
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://git.estatecloud.org/radumaco/omni-launcher
 	arch = any
 	license = GPL-3.0-or-later
 	depends = quickshell
+	depends = qt6-declarative
 	depends = wl-clipboard
 	depends = curl
 	depends = python
 	depends = glib2
 	optdepends = hyprland: close-on-workspace-change and focus-grab integration
-	source = omni-launcher-0.0.1.tar.gz::https://git.estatecloud.org/radumaco/omni-launcher/archive/v0.0.1.tar.gz
+	source = omni-launcher-0.0.2.tar.gz::https://git.estatecloud.org/radumaco/omni-launcher/archive/v0.0.2.tar.gz
 	sha256sums = 48922f27a6cf06c7d78313ddc52c92cf5b1b434f80bfe6e1f7d0f41f631bea98
 
 pkgname = omni-launcher
