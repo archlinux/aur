@@ -8,7 +8,7 @@
 # Maintainer: Štěpán Němec <stepnem@smrk.net>
 
 pkgname=vdo
-pkgver=8.3.1.1
+pkgver=8.3.2.1
 pkgrel=1
 pkgdesc='Userspace tools for managing VDO volumes'
 arch=(x86_64)
@@ -17,7 +17,7 @@ license=(GPL-2.0-or-later)
 depends=(bash glibc util-linux-libs zlib)
 optdepends=('perl: for some of the example scripts')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dm-vdo/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('96ab08581e04847c92947e029c58146d8269052dfdcd687518cd26c77376638d')
+sha256sums=('d778eb3bd69ff613f88117e17afc57602bde3381401b0f3be8dcf3efe6f2e1fe')
 
 build() {
   cd "$pkgname-$pkgver"
