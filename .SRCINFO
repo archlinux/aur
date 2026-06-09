@@ -1,5 +1,5 @@
 pkgbase = leavepad-git
-	pkgdesc = A multi-platform notepad. focuses on writing memos. File editing is not supported.(Use system-wide electron)
+	pkgdesc = A simple note-taking app with integrated file editor, built with Electron and Monaco Editor.(Use system-wide electron)
 	pkgver = 2.5.0.r0.g8343493
 	pkgrel = 1
 	url = https://github.com/kaishuu0123/leavepad
