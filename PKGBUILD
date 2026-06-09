@@ -1,6 +1,6 @@
 # Maintainer: Alex Macocian <amacocian@yahoo.com>
 pkgname=rainbeau
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Hyprland theme engine that generates desktop configs and animated wallpapers"
 arch=('x86_64')
@@ -18,15 +18,25 @@ depends=(
 )
 makedepends=('go')
 optdepends=(
+    'bluetuith: Bluetooth panel launched from generated Waybar config'
+    'code: generated VS Code settings'
+    'firefox: generated Firefox theme files'
     'dunst: notification daemon config generation and reload'
     'glslviewer: GLSL shader wallpaper rendering'
+    'hyprchat: generated HyprChat theme'
+    'hyprlock: generated lock screen config'
+    'hyprtoolkit: generated Hyprtoolkit config'
     'mpvpaper: video, Lottie, and shader wallpapers'
+    'neovim: generated Neovim colorscheme and live reload'
+    'omni-launcher: generated Omni Launcher config'
+    'quick-visor: generated Quick Visor theme'
+    'wofi: generated launcher style'
     'jq: monitor discovery in generated wallpaper scripts'
     'bluez-utils: Bluetooth status script'
     'nvidia-utils: NVIDIA GPU usage and temperature scripts'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AlexMacocian/rainbeau/archive/v${pkgver}.tar.gz")
-sha256sums=('9b27d36d12b26537e577081c72aacc13e1723202c8d0efd3e6dbf70d0d78454e')
+sha256sums=('e8fe98f510d7fe343eb4ff507e079003301b8239888aa6f07f489da96c3c3c01')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
