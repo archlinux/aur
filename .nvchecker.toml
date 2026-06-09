@@ -1,0 +1,4 @@
+[zsh-ai-git]
+source = "git"
+git = "https://github.com/matheusml/zsh-ai.git"
+use_commit = true
