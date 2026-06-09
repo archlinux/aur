@@ -1,0 +1,23 @@
+pkgbase = grexa-bin
+	pkgdesc = Fast Linux file content search with tabs, replace, and AI assistance
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/visorcraft/Grexa
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kirigami
+	depends = hicolor-icon-theme
+	depends = poppler
+	optdepends = podman: container search via rootless Podman
+	optdepends = docker: container search via Docker
+	optdepends = kwalletmanager: API key storage (KDE)
+	optdepends = gnome-keyring: API key storage (non-KDE)
+	provides = grexa-cli
+	conflicts = grexa
+	noextract = grexa-bin-1.4.1.pkg.tar.zst
+	source = grexa-bin-1.4.1.tar.gz::https://github.com/visorcraft/Grexa/releases/download/v1.4.1/grexa-1.4.1-linux-x86_64.tar.gz
+	sha256sums = b3e9a3e45cb7b9c5820354f3b16b3b0f9732379ea6500a18122dca20c598fd0b
+
+pkgname = grexa-bin
