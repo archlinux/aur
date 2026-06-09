@@ -2,7 +2,7 @@
 # Maintainer: Ayoub Tadlaoui <atlas.kaisar@icloud.com>
 
 pkgname='logx-bin'
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Tamper-evident, hash-chained slog audit log for Go with offline verification'
 url='https://github.com/AyoubTadlaoui/GoLogX'
@@ -12,10 +12,10 @@ provides=('GoLogX')
 conflicts=('GoLogX')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/AyoubTadlaoui/GoLogX/releases/download/v${pkgver}/GoLogX_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('4a4589be74ae17b9129e6bdfbe4014e01a2df48f19326ff3f68371081b9df6ad')
+sha256sums_aarch64=('d66992c59cd2039604ea0b56a9afd2fb52f014accc59abdb47e03921341c1151')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/AyoubTadlaoui/GoLogX/releases/download/v${pkgver}/GoLogX_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('39f84df7569f10ae673ce596df422d06a3795a05915eb2df7f35e15d9ab8d1af')
+sha256sums_x86_64=('443d48607a0808487aa71e3676c87c3e62d6dfb2f44249cde3431f934e2f17aa')
 
 package() {
   install -Dm755 "./logx" "${pkgdir}/usr/bin/logx"
