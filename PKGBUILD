@@ -2,11 +2,11 @@
 
 pkgbase=dm-tools-appimage
 pkgname=(dm-tools-appimage)
-pkgver=2.1.5.3
-pkgrel=6
+pkgver=2.1.6.7
+pkgrel=1
 pkgdesc="DM-USB2FDCAN (Damiao 达妙) host computer software supports DM-USB2FDCAN series CAN cards"
 arch=('x86_64')
-url="https://gitee.com/kit-miao/dm-tools"
+url="https://github.com/dmBots/motor-debugging-tool"
 license=('LGPL-3.0-only AND LicenseRef-scancode-commercial-license')
 provides=(${pkgname%-appimage})
 conflicts=(${pkgname%-appimage})
@@ -16,9 +16,11 @@ depends=(
     glibc
     hicolor-icon-theme
     zlib
-    qt6-base
 )
-makedepends=(libarchive)
+makedepends=(
+    git
+    libarchive
+)
 optdepends=(
     "kh-ucanfd: KunHong UCANFD Linux driver"
     "openarm-can: A C++ library for CAN communication with OpenArm robotic hardware, supporting Damiao motors over CAN/CAN-FD interfaces."
@@ -27,21 +29,22 @@ optdepends=(
 backup=()
 options=(!debug !strip !lto)
 install=
+_name=DMTool-v${pkgver}-${CARCH}.AppImage
 source=(
-    "${pkgbase}-${pkgver}-${CARCH}.AppImage::${url}/releases/download/v${pkgver}/DMTool%20v${pkgver}-x86_64.AppImage"
+    "motor-debugging-tool::git+${url}.git"
 )
-sha256sums=('1dbcd3b642f8a771453b4080523a712b421257c6f3c1ebf3f356c2551ba669c0')
+sha256sums=('SKIP')
 noextract=()
 _install_path="/opt/appimages"
 
 prepare() {
-    cd ${srcdir}
-    chmod a+x ${pkgbase}-${pkgver}-${CARCH}.AppImage
-    "./${pkgbase}-${pkgver}-${CARCH}.AppImage" --appimage-extract >/dev/null
+    cd ${srcdir}/motor-debugging-tool/Linux/x86_64
+    chmod +x ${_name}
+    "./${_name}" --appimage-extract >/dev/null
     sed -i -e 's|Exec=serial-port-assistant|Exec=/usr/bin/dm-tools|g' \
         -e 's|Name=serial-port-assistant|Name=DMTool|g' \
         -e 's|Icon=send|Icon=dm-tools.png|g' \
-        "${srcdir}/squashfs-root/DMTool.desktop"
+        "squashfs-root/DMTool.desktop"
 }
 
 package() {
@@ -109,22 +112,27 @@ fi
 exec /${_install_path}/${pkgname}.AppImage "\$@"
 EOF
     install -vDm644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/99-dm-fdcan.rules" <<EOF
-SUBSYSTEM=="usb", ATTR{idVendor}=="34b7", ATTR{idProduct}=="6877", MODE="0666", GROUP="uucp"
-SUBSYSTEM=="usb_device", ATTR{idVendor}=="34b7", ATTR{idProduct}=="6877", MODE="0666", GROUP="uucp"
+SUBSYSTEM=="usb", ATTR{idVendor}=="34b7", ATTR{idProduct}=="6877", MODE="0666", GROUP="uucp", TAG+="uaccess"
+SUBSYSTEM=="usb_device", ATTR{idVendor}=="34b7", ATTR{idProduct}=="6877", MODE="0666", GROUP="uucp", TAG+="uaccess"
 
-KERNEL=="ttyUSB*", ATTRS{idVendor}=="34b7", ATTRS{idProduct}=="6877", MODE="0666", GROUP="uucp", SYMLINK+="ttyDM_FDCAN_%n"
-KERNEL=="ttyACM*", ATTRS{idVendor}=="34b7", ATTRS{idProduct}=="6877", MODE="0666", GROUP="uucp", SYMLINK+="ttyDM_FDCAN_%n"
+KERNEL=="ttyUSB*", ATTRS{idVendor}=="34b7", ATTRS{idProduct}=="6877", MODE="0666", SYMLINK+="ttyDM_FDCAN_%n"
+KERNEL=="ttyACM*", ATTRS{idVendor}=="34b7", ATTRS{idProduct}=="6877", MODE="0666", SYMLINK+="ttyDM_FDCAN_%n"
 EOF
-
-    install -vDm755 "${srcdir}"/${pkgbase}-${pkgver}-${CARCH}.AppImage "${pkgdir}"/${_install_path}/${pkgname}.AppImage
+    
+    cd ${srcdir}/motor-debugging-tool/Linux/x86_64
+    install -vDm755 ${_name} "${pkgdir}"/${_install_path}/${pkgname}.AppImage
 
     # local _icon
     # for _icon in 16 32 64 128 256; do
     #     install -Dm0644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/send.png" \
     #                 -t  "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps"
     # done
-    install -Dm0644 "${srcdir}/squashfs-root/send.png" \
+    install -Dm0644 "squashfs-root/send.png" \
         "${pkgdir}/usr/share/icons/hicolor/24x24/apps/${pkgbase%-appimage}.png"
-    install -Dm644 "${srcdir}/squashfs-root/DMTool.desktop" "${pkgdir}/usr/share/applications/${pkgbase%-appimage}.desktop"
-    install -Dm644 "${srcdir}/squashfs-root/LGPLv3.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "squashfs-root/DMTool.desktop" "${pkgdir}/usr/share/applications/${pkgbase%-appimage}.desktop"
+    install -Dm644 "squashfs-root"/*.txt -t  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    cd ${srcdir}/motor-debugging-tool/
+    install -vDm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -vDm644 *.pdf -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
