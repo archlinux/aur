@@ -1,0 +1,21 @@
+pkgbase = cxhair
+	pkgdesc = Custom crosshair overlay for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cab/calliexhair
+	arch = any
+	license = custom:unknown
+	depends = python
+	depends = python-pyqt5
+	depends = python-pynput
+	depends = python-pillow
+	source = crosshair_app.py
+	source = cxhair
+	source = crosshair_app.desktop
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cxhair

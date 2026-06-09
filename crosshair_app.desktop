@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Crosshair Overlay
+Comment=Custom crosshair overlay for Linux
+Exec=cxhair
+Icon=crosshair-app
+Terminal=false
+Categories=Utility;Game;
+StartupNotify=false
