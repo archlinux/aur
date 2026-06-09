@@ -18,7 +18,7 @@ package() {
         "${pkgdir}/usr/bin/nexus-open"
 
     install -Dm644 packaging/udev/99-corsair-nexus.rules \
-        "${pkgdir}/usr/lib/udev/rules.d/99-corsair-nexus.rules"
+        "${pkgdir}/usr/share/nexus-open/99-corsair-nexus.rules"
 
     install -Dm644 packaging/systemd/nexus-open.service \
         "${pkgdir}/usr/lib/systemd/user/nexus-open.service"
