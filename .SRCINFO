@@ -12,6 +12,7 @@ pkgbase = fdpp
 	makedepends = clang
 	makedepends = nasm-segelf
 	makedepends = thunk_gen
+	makedepends = nasm
 	makedepends = meson
 	makedepends = git
 	makedepends = git

@@ -34,7 +34,7 @@ makedepends=(
   'clang'
   'nasm-segelf' # See https://github.com/dosemu2/fdpp/issues/233#issuecomment-1788601563
   'thunk_gen'
-  #nasm          # to be removed after 1.7
+  'nasm'        # to be removed after 1.7, still needed as of 1.10
 )
 if [ "${_opt_meson}" -ne 0 ]; then
   makedepends+=('meson' 'git')
