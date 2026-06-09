@@ -6,53 +6,212 @@ pkgrel=1
 pkgdesc='A fast and secure web browser and Internet suite - Beta Stream'
 arch=('x86_64')
 url='https://www.opera.com/computer'
-license=('custom:opera')
+license=('LicenseRef-opera')
+options=(!strip !debug !zipman)
+backup=('etc/opera-beta/default')
 provides=('opera-beta')
-depends=('gtk3' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
+conflicts=('opera-beta-ffmpeg-codecs')
+replaces=('opera-beta-ffmpeg-codecs')
+
+depends=(
+    'alsa-lib'
+    'at-spi2-core'
+    'cairo'
+    'cups'
+    'curl'
+    'dbus'
+    'expat'
+    'gcc-libs'
+    'glib2'
+    'glibc'
+    'gtk3'
+    'hicolor-icon-theme'
+    'libnotify'
+    'libx11'
+    'libxcb'
+    'libxcomposite'
+    'libxdamage'
+    'libxext'
+    'libxfixes'
+    'libxkbcommon'
+    'libxrandr'
+    'libxss'
+    'mesa'
+    'nspr'
+    'nss'
+    'pango'
+    'systemd-libs'
+    'ttf-font'
+    'xdg-utils'
+)
+
 optdepends=(
-    'opera-beta-ffmpeg-codecs'
+    'qt5-base: Qt5 integration'
+    'qt6-base: Qt6 integration'
+    'egl-gbm'
     'upower: opera battery save'
 )
+
+# NOTE: Bump this version to match Opera Beta's underlying Chromium version if needed
+_nwjs_ffmpeg_version=0.112.0
+_upstream_deb_pkg='opera-beta'
+_debfile="${_upstream_deb_pkg}_${pkgver}_amd64.deb"
+_deburl="https://get.geo.opera.com/pub/opera-beta/${pkgver}/linux/${_debfile}"
+_ffmpeg_zip="${_nwjs_ffmpeg_version}-linux-x64.zip"
+
 source=(
-    "https://get.geo.opera.com/pub/${pkgname}/${pkgver}/linux/${pkgname}_${pkgver}_amd64.deb"
+    "${_deburl}"
     "opera"
     "default"
+    "nwjs-ffmpeg-${_ffmpeg_zip}::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/${_nwjs_ffmpeg_version}/${_ffmpeg_zip}"
 )
+
 sha256sums=(
-            'db7b0eccafc23e00abbf48beca3205a46ad71d8673ea1331aea98da4f91b25a2'
-            '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
-            '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231')
+    'db7b0eccafc23e00abbf48beca3205a46ad71d8673ea1331aea98da4f91b25a2'
+    '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
+    '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'
+    'e5532d59117f527fc34f9f7af2aedf78719627fdf7b5527d84b2e71126764ec6'
+)
 
 prepare() {
-    sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
-    sed -e "s/%operabin%/$pkgname\/$pkgname/g" \
+    sed -e 's|%pkgname%|opera-beta|g' \
+        -e 's|%operabin%|opera-beta/opera-beta|g' \
         -i "$srcdir/opera"
 
+    sed -e 's|%pkgname%|opera-beta|g' \
+        -i "$srcdir/default"
 }
 
 package() {
-    tar -xf data.tar.xz --exclude=usr/share/{lintian,menu} -C "$pkgdir/"
+    cd "$srcdir"
 
-	# get rid of the extra subfolder {i386,x86_64}-linux-gnu
-	(
-        cd "$pkgdir/usr/lib/"*-linux-gnu/
-        mv "$pkgname" ../
-	)
-    rm -rf "$pkgdir/usr/lib/"*-linux-gnu
+# Extract upstream package
 
-    # suid opera_sandbox
-    chmod 4755 "$pkgdir/usr/lib/$pkgname/opera_sandbox"
+    bsdtar -xf "$_debfile"
 
-	# install default options
-    install -Dm644 "$srcdir/default" "$pkgdir/etc/$pkgname/default"
+    bsdtar -xf data.tar.xz \
+        --exclude='usr/share/lintian' \
+        --exclude='usr/share/menu' \
+        -C "$pkgdir"
 
-	# install opera wrapper
-    rm "$pkgdir/usr/bin/$pkgname"
-    install -Dm755 "$srcdir/opera" "$pkgdir/usr/bin/$pkgname"
+# Normalize multiarch library layout
 
-	# license
-	install -Dm644 \
-        "$pkgdir/usr/share/doc/$pkgname/copyright" \
-        "$pkgdir/usr/share/licenses/$pkgname/copyright"
+    local libroot="$pkgdir/usr/lib"
+
+    local multiarch_dir
+    multiarch_dir="$(find "$libroot" \
+        -mindepth 1 \
+        -maxdepth 1 \
+        -type d \
+        -name '*-linux-gnu' \
+        | head -n1)"
+
+    if [[ -z "$multiarch_dir" ]]; then
+        echo 'ERROR: multiarch library directory not found'
+        return 1
+    fi
+
+    local upstream_libdir
+    upstream_libdir="$(find "$multiarch_dir" \
+        -mindepth 1 \
+        -maxdepth 1 \
+        -type d \
+        -name 'opera-beta' \
+        | head -n1)"
+
+    if [[ -z "$upstream_libdir" ]]; then
+        echo 'ERROR: upstream Opera payload directory not found'
+        return 1
+    fi
+
+    rm -rf "$libroot/opera-beta"
+    mv "$upstream_libdir" \
+        "$libroot/opera-beta"
+    rm -rf "$multiarch_dir"
+
+# Replace FFmpeg
+
+    bsdtar -xf "nwjs-ffmpeg-${_ffmpeg_zip}"
+
+    local ffmpeg_so
+    ffmpeg_so="$(find "$srcdir" \
+        -type f \
+        -name 'libffmpeg.so' \
+        | head -n1)"
+
+    if [[ -z "$ffmpeg_so" ]]; then
+        echo "ERROR: libffmpeg.so not found in $_ffmpeg_zip"
+        return 1
+    fi
+
+    rm -f "$pkgdir/usr/lib/opera-beta/libffmpeg.so"
+
+    install -Dm755 "$ffmpeg_so" \
+        "$pkgdir/usr/lib/opera-beta/libffmpeg.so"
+
+# Sandbox
+
+    if [[ -f "$pkgdir/usr/lib/opera-beta/opera_sandbox" ]]; then
+        chmod 4755 \
+            "$pkgdir/usr/lib/opera-beta/opera_sandbox"
+    fi
+
+# Defaults
+
+    install -Dm644 "$srcdir/default" \
+        "$pkgdir/etc/opera-beta/default"
+
+# Launcher
+
+    local upstream_binary
+
+    upstream_binary="$(find "$pkgdir/usr/lib/opera-beta" \
+        -maxdepth 1 \
+        -type f \
+        \( -name 'opera-beta' -o -name 'opera' \) \
+        | head -n1)"
+
+    if [[ -z "$upstream_binary" ]]; then
+        echo 'ERROR: upstream Opera executable not found'
+        return 1
+    fi
+
+    rm -f "$pkgdir/usr/bin/opera-beta"
+
+    install -Dm755 "$srcdir/opera" \
+        "$pkgdir/usr/bin/opera-beta"
+
+# Desktop entries
+
+    local desktop_dir="$pkgdir/usr/share/applications"
+
+    if [[ -d "$desktop_dir" ]]; then
+        find "$desktop_dir" \
+            -maxdepth 1 \
+            -type f \
+            -name '*.desktop' \
+            -print0 |
+        while IFS= read -r -d '' desktop_file; do
+            if grep -qi 'opera' "$desktop_file"; then
+                sed -i \
+                    -e 's|^Exec=.*|Exec=opera-beta %U|' \
+                    -e 's|^TryExec=.*|TryExec=opera-beta|' \
+                    "$desktop_file"
+            fi
+        done
+    fi
+
+# License
+
+    local copyright_file
+
+    copyright_file="$(find "$pkgdir/usr/share/doc" \
+        -type f \
+        -name copyright \
+        | head -n1)"
+
+    if [[ -n "$copyright_file" ]]; then
+        install -Dm644 "$copyright_file" \
+            "$pkgdir/usr/share/licenses/$pkgname/copyright"
+    fi
 }
-
