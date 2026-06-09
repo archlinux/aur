@@ -1,0 +1,45 @@
+_tabbyml_setup_user_config() {
+  local _target_user="${SUDO_USER:-}"
+  local _target_uid _runtime_dir _target_home
+
+  [[ -n "${_target_user}" && "${_target_user}" != root ]] || return 0
+
+  _target_uid=$(id -u "${_target_user}" 2>/dev/null) || return 0
+  _runtime_dir="/run/user/${_target_uid}"
+  _target_home=$(getent passwd "${_target_user}" | cut -d: -f6) || return 0
+
+  [[ -d "${_runtime_dir}" && -n "${_target_home}" ]] || return 0
+
+  # The inner script must expand variables as the target user, not at package install-script parse time.
+  # shellcheck disable=SC2016
+  runuser -u "${_target_user}" -- sh -lc '
+    set -eu
+    _config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/tabbyml"
+    mkdir -p "${_config_dir}"
+    cp -n /usr/share/doc/tabbyml-vulkan-bin/tabbyml.env "${_config_dir}/tabbyml.env"
+    cp -n /usr/share/doc/tabbyml-vulkan-bin/config.toml "${_config_dir}/config.toml"
+  ' || return 0
+
+  XDG_RUNTIME_DIR="${_runtime_dir}" runuser -u "${_target_user}" -- systemctl --user daemon-reload || return 0
+}
+
+post_install() {
+  _tabbyml_setup_user_config
+
+  cat <<'EOF'
+==> TabbyML was installed.
+==> Best-effort per-user config setup was attempted for the invoking user.
+==> If config was not copied automatically, run:
+==>   mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/tabbyml"
+==>   cp -n /usr/share/doc/tabbyml-vulkan-bin/tabbyml.env "${XDG_CONFIG_HOME:-$HOME/.config}/tabbyml/tabbyml.env"
+==>   cp -n /usr/share/doc/tabbyml-vulkan-bin/config.toml "${XDG_CONFIG_HOME:-$HOME/.config}/tabbyml/config.toml"
+==>   systemctl --user daemon-reload
+==>   systemctl --user enable --now tabbyml.service
+==> Edit "${XDG_CONFIG_HOME:-$HOME/.config}/tabbyml/tabbyml.env" for runtime options.
+==> Edit "${XDG_CONFIG_HOME:-$HOME/.config}/tabbyml/config.toml" for Tabby configuration.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

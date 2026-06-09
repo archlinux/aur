@@ -1,8 +1,9 @@
 pkgbase = tabbyml-vulkan-bin
 	pkgdesc = Self-hosted AI coding assistant (prebuilt Vulkan binary)
 	pkgver = 0.32.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TabbyML/tabby
+	install = tabbyml-vulkan-bin.install
 	arch = x86_64
 	license = Apache-2.0
 	depends = glibc
@@ -19,6 +20,12 @@ pkgbase = tabbyml-vulkan-bin
 	conflicts = tabbyml-cuda-bin
 	options = !strip
 	source = tabbyml-vulkan-bin-0.32.0.tar.gz::https://github.com/TabbyML/tabby/releases/download/v0.32.0/tabby_x86_64-manylinux_2_28-vulkan.tar.gz
+	source = tabbyml.service
+	source = tabbyml.env
+	source = config.toml
 	sha256sums = 33de79ba7de0520bb6b158faaac3c41f0690477f97b4f393f3883320b206113b
+	sha256sums = 65408048199058b54d6cf7d048361e3fa30308e7e68b40e4e92bed610deaad57
+	sha256sums = cae696b2a290de40cb08b423b64a2fd208dfb109640635b223430f3ab46fad04
+	sha256sums = 019d34e8cde65c2ea7d198df2d1e0062bdbfa449510b4432fa90800364a64816
 
 pkgname = tabbyml-vulkan-bin
