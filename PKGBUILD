@@ -10,7 +10,7 @@ provides=('labylauncher')
 depends=('gtk3' 'nss' 'alsa-lib')
 options=(!strip !debug)
 source=("${pkgname}-${pkgver}.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-3.0.7.AppImage")
-sha256sums=('b8c1691624b011a36fe2b1f16d57979c1ff3332f341732ea6c029981fc1df8b1')
+sha256sums=('b92966522388c56a884d693cf6ba9c42b61f0f71f075edb3ba2c52a882a26d5e')
 
 package() {
     cd "${srcdir}"
@@ -19,7 +19,8 @@ package() {
 
     install -dm755 "${pkgdir}/opt/labymodlauncher-bin"
     cp -a squashfs-root/. "${pkgdir}/opt/labymodlauncher-bin/"
-    chmod 755 "${pkgdir}/opt/labymodlauncher-bin"
+    chmod -R a+rX "${pkgdir}/opt/labymodlauncher-bin"
+    chmod 4755 "${pkgdir}/opt/labymodlauncher-bin/chrome-sandbox"
 
     install -dm755 "${pkgdir}/usr/bin"
     printf '%s\n'         '#!/bin/sh'         'export APPDIR=/opt/labymodlauncher-bin'         'export LD_LIBRARY_PATH="${APPDIR}/usr/lib:${LD_LIBRARY_PATH}"'         'export XDG_DATA_DIRS="${APPDIR}/usr/share/:${XDG_DATA_DIRS}:/usr/share/gnome:/usr/local/share/:/usr/share/"'         'export GSETTINGS_SCHEMA_DIR="${APPDIR}/usr/share/glib-2.0/schemas:${GSETTINGS_SCHEMA_DIR}"'         'exec "${APPDIR}/labymodlauncher" "$@"'         > "${pkgdir}/usr/bin/labymodlauncher"
