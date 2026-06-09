@@ -3,7 +3,7 @@
 # Co-Maintainer: Aethar <elliott.ashby88@gmail.com>
 pkgname=yt-x-git
 _pkgname=yt-x
-pkgver=v0.4.5.r4.fb5f39a
+pkgver=v0.8.6.r4.g976b047
 pkgrel=1
 pkgdesc="Browse youtube from your terminal"
 arch=(any)
@@ -16,13 +16,18 @@ depends=(
   'curl'
   'yt-dlp'
   'fzf'
-  'mpv'
-  'ffmpeg')
+  'sh'
+  'ffmpeg'
+  'ttf-jetbrains-mono-nerd')
 optdepends=(
   'gum'
   'chafa'
   'icat'
-  'imgcat')
+  'imgcat'
+  'mpv'
+  'kitty'
+  'bat')
+
 source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
