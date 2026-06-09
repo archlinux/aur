@@ -6,7 +6,7 @@
 pkgname=docker-desktop
 pkgver=4.77.0
 _revision=228796
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker Desktop is an easy-to-install application that enables you to locally build and share containerized applications and microservices."
 arch=('x86_64')
 url="https://www.docker.com/products/docker-desktop/"
@@ -38,7 +38,6 @@ package() {
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-offload" "${pkgdir}/usr/lib/docker/cli-plugins/docker-offload"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-pass" "${pkgdir}/usr/lib/docker/cli-plugins/docker-pass"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-sandbox" "${pkgdir}/usr/lib/docker/cli-plugins/docker-sandbox"
-    install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-sbom" "${pkgdir}/usr/lib/docker/cli-plugins/docker-sbom"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-scout" "${pkgdir}/usr/lib/docker/cli-plugins/docker-scout"
     install -m755 "${srcdir}/usr/bin/docker-credential-desktop" "${pkgdir}/usr/bin/docker-credential-desktop"
     cp -r "${srcdir}/opt" "${pkgdir}"
