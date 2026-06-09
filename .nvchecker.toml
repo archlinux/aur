@@ -1,0 +1,5 @@
+[git-big-picture]
+source = "github"
+github = "git-big-picture/git-big-picture"
+use_max_tag = true
+prefix = "v"
