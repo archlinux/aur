@@ -47,6 +47,7 @@ package_lua-luagobject-git() {
     pkgdesc='Use GObject-based libraries from Lua (Lua 5.5)'
     depends+=(lua)
     provides=('lua-luagobject')
+    replaces=('lgi' 'lua-lgi')
     conflicts=('lua-luagobject' 'lua-lgi' 'lua-lgi-git')
 
     cd $_pkgdir
@@ -76,6 +77,7 @@ package_lua51-luagobject-git() {
     pkgdesc='Use GObject-based libraries from Lua (Lua 5.1)'
     depends+=(lua51)
     provides=('lua51-luagobject')
+    replaces=('lua51-lgi')
     conflicts=('lua51-luagobject' 'lua51-lgi' 'lua51-lgi-git')
 
     cd ${_pkgdir}-51
@@ -93,6 +95,7 @@ package_lua53-luagobject-git() {
     pkgdesc='Use GObject-based libraries from Lua (Lua 5.3)'
     depends+=(lua53)
     provides=('lua53-luagobject')
+    replaces=('lua53-lgi')
     conflicts=('lua53-luagobject' 'lua53-lgi' 'lua53-lgi-git')
 
     cd ${_pkgdir}-53
@@ -110,6 +113,7 @@ package_lua54-luagobject-git() {
     pkgdesc='Use GObject-based libraries from Lua (Lua 5.4)'
     depends+=(lua54)
     provides=('lua54-luagobject')
+    replaces=('lua54-lgi')
     conflicts=('lua54-luagobject' 'lua54-lgi' 'lua54-lgi-git')
 
     cd ${_pkgdir}-54
@@ -123,5 +127,3 @@ package_lua54-luagobject-git() {
     install -Dm644 LICENSE \
         "$pkgdir/usr/share/licenses/$_pname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:

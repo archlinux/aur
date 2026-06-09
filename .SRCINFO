@@ -30,6 +30,8 @@ pkgname = lua-luagobject-git
 	conflicts = lua-luagobject
 	conflicts = lua-lgi
 	conflicts = lua-lgi-git
+	replaces = lgi
+	replaces = lua-lgi
 
 pkgname = lua51-luagobject-git
 	pkgdesc = Use GObject-based libraries from Lua (Lua 5.1)
@@ -42,6 +44,7 @@ pkgname = lua51-luagobject-git
 	conflicts = lua51-luagobject
 	conflicts = lua51-lgi
 	conflicts = lua51-lgi-git
+	replaces = lua51-lgi
 
 pkgname = lua53-luagobject-git
 	pkgdesc = Use GObject-based libraries from Lua (Lua 5.3)
@@ -54,6 +57,7 @@ pkgname = lua53-luagobject-git
 	conflicts = lua53-luagobject
 	conflicts = lua53-lgi
 	conflicts = lua53-lgi-git
+	replaces = lua53-lgi
 
 pkgname = lua54-luagobject-git
 	pkgdesc = Use GObject-based libraries from Lua (Lua 5.4)
@@ -66,3 +70,4 @@ pkgname = lua54-luagobject-git
 	conflicts = lua54-luagobject
 	conflicts = lua54-lgi
 	conflicts = lua54-lgi-git
+	replaces = lua54-lgi
