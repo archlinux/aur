@@ -6,35 +6,40 @@
 
 set -u
 pkgname='justniffer'
-pkgver=0.6.12
+pkgver=0.6.13
 pkgrel=1
 pkgdesc="TCP sniffer. It reassembles and reorders packets and displays the TCP flow in a customizable way."
 arch=('x86_64')
 arch+=('i686')
 url="https://onotelli.github.io/justniffer/"
 url='https://justniffer.sourceforge.net'
-_giturl='https://github.com/onotelli/justniffer'
+_giturl="https://github.com/onotelli/${pkgname%-bin}"
 license=('GPL-3.0-or-later')
-depends=('glibc' 'gcc-libs' 'libpcap' 'boost-libs' 'python') # 'libnids' the package includes its own custom version of libnids
-#depends+=('python')
+depends=('glibc' 'libgcc' 'libstdc++') # 'libnids' the package includes its own custom version of libnids
+depends+=('libpcap')
+depends+=('boost-libs')
+depends+=('python')
 # I suspect python2 is a makedepends. No python code goes into the package.
 #_verwatch=('https://sourceforge.net/projects/justniffer/files/' "\s\+${pkgname}_\([0-9.]\+\)\.tar\.gz" 'f')
 _patches=(
   #'0000-libnids-tcp-notify-struct-timeval.patch'
   '0001-io_service-to-io_context.patch'
 )
-_srcdir="justniffer-${pkgver}"
-source=("${_srcdir//-/_}.tar.gz::${_giturl}/archive/refs/tags/v${pkgver}.tar.gz" "${_patches[@]}")
+_srcdir="${pkgname%-bin}-${pkgver}"
+source=("${_srcdir}-README.md::${_giturl}/raw/refs/tags/v${pkgver}/README.md")
+source+=("${_srcdir//-/_}.tar.gz::${_giturl}/archive/refs/tags/v${pkgver}.tar.gz" "${_patches[@]}")
 if [ "$(vercmp "${pkgver}" "0.6.0")" -ge 0 ]; then
   _srcdir+='/main'
 fi
-md5sums=('8b08fae3922de7ef1981c5c516316cd3'
+md5sums=('55af9038453818bf66d786f07a046135'
+         'f8b30563fd692697902b335f7d617527'
          '53c7d7dd2f38aaf727fedc9236de8bff')
-sha256sums=('9a388d88e41a2cad8b8a6605a3ff6d781ca83e5cc1d30c795e884a44c5763202'
+sha256sums=('c887ce8db4485df2d6838da4338a61e708dd1583064c6ffdc99c836f766c5ac8'
+            'cc472c25a2931abec83a94ad0b4e40802be338136166e2f07a4a217bed5f73a6'
             '1c819bdb553f022fed906aece6d114de8c0bbdec8c4f6b7aa1a16c964fdb816e')
 
 prepare() {
-  set -u
+  local -; set -u
   cd "${_srcdir%%/*}"
 
   rm -rf '.svn' '.git'
@@ -81,11 +86,10 @@ if ! :; then
   rm -rf 'm4/' # http://stackoverflow.com/questions/3096989/libtool-version-mismatch-error
   mkdir 'm4'
 fi
-  set +u
 }
 
 build() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   if [ ! -s 'configure' ]; then
     autoreconf --force --install
@@ -106,14 +110,13 @@ build() {
     ./configure "${_conf[@]}"
   fi
   nice make -s
-  set +u
 }
 
 package() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   make -j1 DESTDIR="${pkgdir}" install
-  set +u
+  install -vDm644 "${srcdir}/${_srcdir%/main}-README.md" "${pkgdir}/usr/share/doc/${pkgname%-bin}/README.md"
 }
 set +u
 
