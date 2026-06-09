@@ -3,7 +3,7 @@
 pkgname=nyaterm-bin
 pkgver=1.1.5
 _pkgverfull=${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, high-performance terminal workspace built with Tauri 2, React, and Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nyakang/nyaterm"
