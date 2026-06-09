@@ -5,7 +5,7 @@
 
 pkgname=cronet
 pkgver=144.0.7559.254
-pkgrel=1
+pkgrel=2
 epoch=1
 _manual_clone=1
 # The following error occures on Abseil 20250512.0:
@@ -18,7 +18,7 @@ pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
 url="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet"
 license=('BSD-3-Clause')
-depends=(
+_depends=(
   glibc
   libgcc_s.so
   libgio-2.0.so
@@ -32,13 +32,18 @@ makedepends=(
   clang
   compiler-rt
   gn
+  glib2
+  glibc
   gtk3
   libcups
   libffi
+  libgcc
   libva
   libxkbcommon
   lld
   ninja
+  nspr
+  nss
   pango
   python
   rust
@@ -80,6 +85,7 @@ declare -gA _system_libs=(
   [zlib]=libz.so
   [zstd]=libzstd.so
 )
+makedepends+=("${!_system_libs[@]}")
 declare -gA _system_make_libs=(
   [jsoncpp]=jsoncpp
 )
@@ -154,6 +160,9 @@ if (( _system_abseil )); then
     [absl_types]=
     [absl_utility]=
   )
+  makedepends+=(
+    "${_system_libs[absl_base]}"
+  )
   _unwanted_bundled_libs+=(
     third_party/abseil-cpp/absl/algorithm
     third_party/abseil-cpp/absl/base
@@ -189,16 +198,23 @@ case "${_system_stdlib}" in
   )
   ;;&
 libc++)
-  depends+=(
+  _depends+=(
+    libc++
+  )
+  makedepends+=(
     libc++
   )
   ;;
 libstdc++)
-  depends+=(
+  _depends+=(
     libstdc++.so
   )
   _system_libs+=(
     [re2]=libre2.so
+  )
+  makedepends+=(
+    libstdc++
+    re2
   )
   _unwanted_bundled_libs+=(
     third_party/re2
@@ -206,7 +222,7 @@ libstdc++)
   ;;
 esac
 
-depends+=(${_system_libs[@]})
+_depends+=(${_system_libs[@]})
 makedepends+=("${_system_make_libs[@]}")
 
 prepare() {
@@ -397,6 +413,10 @@ build() {
 }
 
 package() {
+  depends=(
+    "${_depends[@]}"
+  )
+
   cd chromium-$pkgver/out/Release/cronet
 
   install -D "libcronet.${pkgver}.so" "${pkgdir}/usr/lib/libcronet.${pkgver}.so"
