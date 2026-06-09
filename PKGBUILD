@@ -3,7 +3,7 @@
 #
 
 pkgname=jig
-pkgdescr='A tool for building and publishing Puppet modules'
+pkgdesc='A tool for building and publishing Puppet modules'
 url='https://github.com/avitacco/jig'
 
 arch=('x86_64' 'aarch64')
