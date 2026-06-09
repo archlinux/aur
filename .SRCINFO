@@ -11,9 +11,9 @@ pkgbase = volt-llm
 	makedepends = python-wheel
 	makedepends = git
 	depends = python>=3.10
-	depends = python-pyside6
+	depends = pyside6
 	depends = python-fastapi
-	depends = python-uvicorn
+	depends = uvicorn
 	depends = python-httpx
 	depends = python-pydantic
 	depends = python-aiosqlite

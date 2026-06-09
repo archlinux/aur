@@ -8,7 +8,7 @@ pkgdesc="Volt — vLLM desktop manager: one-click model download, vLLM launcher,
 arch=('any')
 url="https://github.com/954510662-bot/Volt"
 license=('MIT')
-depends=('python>=3.10' 'python-pyside6' 'python-fastapi' 'python-uvicorn'
+depends=('python>=3.10' 'pyside6' 'python-fastapi' 'uvicorn'
          'python-httpx' 'python-pydantic' 'python-aiosqlite' 'python-psutil'
          'python-huggingface-hub' 'python-pip')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
