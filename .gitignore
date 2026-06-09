@@ -1,0 +1,6 @@
+vndk
+vndk.part
+src/
+pkg/
+DLAGENTS
+*.tar.*
