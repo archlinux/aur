@@ -1,7 +1,7 @@
 pkgbase = linux-arctis-manager
 	pkgdesc = An open-source replacement for SteelSeries GG, to manage your Arctis headset on Linux!
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elegos/Linux-Arctis-Manager
 	install = linux-arctis-manager.install
 	arch = x86_64
@@ -16,8 +16,10 @@ pkgbase = linux-arctis-manager
 	depends = python-pyusb
 	depends = python-ruamel-yaml
 	source = https://github.com/elegos/Linux-Arctis-Manager/archive/refs/tags/v2.4.1.tar.gz
+	source = no-enforce-systemd.patch
 	source = arctis-manager.service
 	sha256sums = 6210dffa7581d818a944716fe267fb90a50422c3eeb11fc7df97d78ea98e1749
+	sha256sums = 7e509ee9504c73d9a61cb9302908891108af280a1e427a75888351f44703799c
 	sha256sums = 025ae7546d8ffa8f4e2959208dca1254030e1c106a5d955d74b7b49b5cf98767
 
 pkgname = linux-arctis-manager

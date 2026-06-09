@@ -4,7 +4,7 @@
 pkgname=linux-arctis-manager
 _pkgname=Linux-Arctis-Manager
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source replacement for SteelSeries GG, to manage your Arctis headset on Linux!"
 arch=('x86_64')
 url="https://github.com/elegos/Linux-Arctis-Manager"
@@ -12,18 +12,25 @@ license=('GPL-3.0-only')
 depends=('python>=3.10' 'python-pulsectl' 'python-pyudev' 'python-dbus-next' 'pyside6' 'python-pyusb' 'python-ruamel-yaml')
 makedepends=('uv' 'python-installer')
 source=("https://github.com/elegos/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
+        "no-enforce-systemd.patch"
         "arctis-manager.service")
 install="linux-arctis-manager.install"
 sha256sums=('6210dffa7581d818a944716fe267fb90a50422c3eeb11fc7df97d78ea98e1749'
+            '7e509ee9504c73d9a61cb9302908891108af280a1e427a75888351f44703799c'
             '025ae7546d8ffa8f4e2959208dca1254030e1c106a5d955d74b7b49b5cf98767')
 
+prepare() {
+    cd "${_pkgname}-${pkgver}"
+    patch -p1 -i ../no-enforce-systemd.patch
+}
+
 build() {
-    cd "${_pkgname}-${pkgver}" || return
+    cd "${_pkgname}-${pkgver}"
     uv build --wheel --no-sources
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}" || return
+    cd "${_pkgname}-${pkgver}"
 
     python -m installer --destdir="$pkgdir" dist/*.whl
 

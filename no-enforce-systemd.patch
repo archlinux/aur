@@ -1,0 +1,30 @@
+--- a/src/linux_arctis_manager/scripts/gui.py
++++ b/src/linux_arctis_manager/scripts/gui.py
+@@ -16,7 +16,7 @@
+     parser = ArgumentParser()
+     parser.add_argument('--systray', action='store_true', help='Run systray app, instead of opening the main window')
+     parser.add_argument('--verbose', '-v', action='count', default=0, help='Increase verbosity (up to -vvvv)')
+-    parser.add_argument('--no-enforce-systemd', action='store_true', help='Do not enforce systemd unit')
++    parser.add_argument('--enforce-systemd', action='store_true', help='Do not enforce systemd unit')
+     args = parser.parse_args()
+ 
+     log_level = logging.CRITICAL
+@@ -27,6 +27,9 @@
+ 
+     logging.basicConfig(level=log_level, format='%(name)20s %(levelname)8s | %(message)s')
+ 
++    if __import__("os").system("systemctl is-active --user --quiet arctis-manager") != 0:
++        sys.exit("Arctis manager's daemon is not running, run `systemctl --user enable --now arctis-manager` to enable it for future boot")
++
+     app = QApplication(sys.argv)
+     app.setApplicationName('Arctis Manager')
+     app.setApplicationDisplayName('Arctis Manager')
+@@ -39,7 +42,7 @@
+         q_object = QMainApp(app, log_level)
+         app.setQuitOnLastWindowClosed(True)
+     
+-    if not args.no_enforce_systemd:
++    if args.enforce_systemd:
+         ensure_systemd_unit(True)
+ 
+     timer = QTimer()
