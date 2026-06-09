@@ -1,7 +1,7 @@
 # Maintainer: Andy Alt <arch_stanton5995 at proton dot me>
 
 pkgname=pcg-c
-pkgver=0.94.1
+pkgver=0.94.2
 pkgrel=1
 pkgdesc="PCG random number generation library for C"
 arch=('x86_64')
@@ -12,8 +12,8 @@ makedepends=(
   'ninja'
 )
 
-source=("https://github.com/andy5995/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('89a7dee8b511725e2f954d7f750a4515d310386f448d448dbb4737643b8526bb')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andy5995/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('48f2a55cbfb3b31185a8799571f606767f124aa2cc943e92979d260a5162c986')
 
 build() {
   arch-meson $pkgname-$pkgver build
