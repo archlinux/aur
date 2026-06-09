@@ -1,0 +1,22 @@
+pkgbase = tabbyml-bin
+	pkgdesc = Self-hosted AI coding assistant (prebuilt CPU binary)
+	pkgver = 0.32.0
+	pkgrel = 1
+	url = https://github.com/TabbyML/tabby
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = bash
+	optdepends = katana: crawl developer documentation context providers (upstream requires >= 1.1.2)
+	provides = tabbyml=0.32.0
+	conflicts = tabbyml
+	conflicts = tabbyml-git
+	conflicts = tabbyml-cuda-bin
+	conflicts = tabbyml-vulkan-bin
+	options = !strip
+	source = tabbyml-bin-0.32.0.tar.gz::https://github.com/TabbyML/tabby/releases/download/v0.32.0/tabby_x86_64-manylinux_2_28.tar.gz
+	sha256sums = 048b44cf251519398c67fd880dc9f0d44e2e01c56f1e4e2f2c83b26120b14497
+
+pkgname = tabbyml-bin
