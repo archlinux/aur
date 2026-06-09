@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.8.2.r56.g753bbc3
+pkgver=1.8.2.r74.g96f027c
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -30,11 +30,11 @@ makedepends=(
 )
 checkdepends=('appstream')
 optdepends=(
-  'gamemode: Feral GameMode daemon for CPU/GPU optimisation'
-  'protontricks: Required for Wine prefix manager'
+  'gamemode: Feral GameMode daemon (for the GameMode tweak)'
+  'protontricks: Proton prefix management'
   'vkbasalt: Vulkan post-processing effects'
-  'vksumi: Color grading Vulkan layer'
-  'zenergy-dkms: Displays AMD CPU power metrics'
+  'vksumi: Alternative Vulkan post-processor with 15 tunable parameters'
+  'zenergy-dkms: Displays AMD CPU power metrics in MangoHud'
   'zenity: FGMod GUI'
 )
 provides=("${pkgname%-git}" 'pascube')
