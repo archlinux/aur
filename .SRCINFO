@@ -1,0 +1,14 @@
+pkgbase = steamie
+	pkgdesc = A terminal-native Steam client written in Rust
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/LargeModGames/steamie
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	conflicts = steamie-bin
+	source = steamie-0.4.1.tar.gz::https://github.com/LargeModGames/steamie/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = steamie
