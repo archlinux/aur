@@ -1,7 +1,7 @@
 # Maintainer: stsg
 
 pkgname=express
-pkgver=3.65.52
+pkgver=3.66.47
 pkgrel=1
 pkgdesc="Official Express App for Linux"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
 )
 options=('!strip')
 source=("https://updates.express.ms/desktop/eXpress_${pkgver}_amd64.deb")
-sha256sums=('87c4fb68d341ee446eefb6a5b564dd02a1947cfcb426757fb65374e53ba2a53b')
+sha256sums=('67d5a7233ff3ee6999c64df575a7b714773124ffa96d11ddcb499900db6b3b7a')
 
 package() {
   tar -xf data.tar.xz --directory "${pkgdir}"
