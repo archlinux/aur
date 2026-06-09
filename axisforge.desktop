@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=AxisForge
+GenericName=Joystick Remapper
+Comment=Linux HOTAS / joystick remapper with action graphs, modes, trim, and an AI setup assistant.
+Exec=axisforge-gui
+Icon=axisforge
+Terminal=false
+Categories=Utility;Settings;HardwareSettings;
+Keywords=joystick;HOTAS;remap;flight;simulation;Star Citizen;DCS;XPlane;
+StartupWMClass=AxisForge
+StartupNotify=true

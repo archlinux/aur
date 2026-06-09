@@ -1,0 +1,43 @@
+# AxisForge udev rules.
+#
+# Allow regular users in the `input` group to read joystick devices, create
+# uinput/uhid virtual devices, and (importantly for Wine/Proton) read the
+# /dev/hidraw* nodes our virtual joysticks expose — so Wine's HID DirectInput
+# backend sees all 128 declared buttons instead of the 80-button cap that
+# joydev/evdev imposes on a single HID joystick.
+#
+# Install (the .deb/.rpm ship this automatically into
+# /usr/lib/udev/rules.d/; these steps are only for a from-source setup):
+#   sudo cp udev/99-axisforge.rules /etc/udev/rules.d/99-axisforge.rules
+#   sudo udevadm control --reload-rules && sudo udevadm trigger
+#   sudo usermod -aG input "$USER"   # then log out/in
+#
+# Verify:
+#   ls -l /dev/uinput /dev/uhid          # should be group `input`, mode 0660
+#   ls -l /dev/hidraw* | grep axisforge  # (after launching AxisForge once)
+#   id | grep input
+
+# uinput device for emitting virtual keyboard/mouse.
+KERNEL=="uinput", MODE="0660", GROUP="input", OPTIONS+="static_node=uinput"
+
+# uhid device for emitting virtual HID joysticks.
+KERNEL=="uhid", MODE="0660", GROUP="input", OPTIONS+="static_node=uhid"
+
+# Joystick event devices.
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="*VKB*", MODE="0660", GROUP="input"
+SUBSYSTEM=="input", KERNEL=="js*",    ATTRS{name}=="*VKB*", MODE="0660", GROUP="input"
+
+# /dev/hidraw* for AxisForge virtual joysticks. Wine's modern HID DirectInput
+# backend (Wine 8+, Proton 8+, including Proton-GE) opens these directly and
+# exposes the full 128-button HID descriptor — bypassing the kernel's
+# BTN_TRIGGER_HAPPY exhaustion that caps a single HID joystick at ~80 buttons
+# when read via joydev/evdev. Without this rule, Wine silently falls back to
+# the SDL/evdev path and high-numbered buttons are invisible to Star Citizen
+# and other DirectInput games.
+#
+# Matching: UHID devices are virtual and don't expose idVendor/idProduct as
+# sysfs attributes (those only exist on real USB devices). We match instead
+# on the parent HID device's KERNELS name, which uses the format
+# "<bus>:<vid>:<pid>.<instance>" — 0006 is BUS_VIRTUAL, 1209 is the AxisForge
+# vendor ID. The bus+vendor pair is unique enough on any sane system.
+KERNEL=="hidraw*", KERNELS=="0006:1209:*", MODE="0660", GROUP="input"

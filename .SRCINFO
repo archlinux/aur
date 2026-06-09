@@ -1,0 +1,27 @@
+pkgbase = axisforge-bin
+	pkgdesc = Linux HOTAS / joystick remapper with action graphs, trim, and an AI setup assistant
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://axisforge.app
+	install = axisforge.install
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = alsa-lib
+	depends = libayatana-appindicator
+	optdepends = pipewire-alsa: ALSA-bridged audio under PipeWire (recommended)
+	optdepends = xdg-utils: opens profiles/logs folders from the GUI menus
+	provides = axisforge
+	conflicts = axisforge
+	options = !strip
+	options = !debug
+	source = axisforge-1.0.0.AppImage::https://github.com/silentcid/axisforge-releases/releases/download/v1.0.0/AxisForge-1.0.0-x86_64.AppImage
+	source = axisforge.desktop
+	source = 99-axisforge.rules
+	noextract = axisforge-1.0.0.AppImage
+	sha256sums = eb5eac35cf47fa08118931bc505d0330dadd14ba3be056830c665ddf55b9f0b3
+	sha256sums = 7b8d44f8021b81c470e80799fe73e04feba8a90e330ed53034116c07a4bc1116
+	sha256sums = 04a92c0cc0eb37ae82a466cf55a6d93d11a1b7002b51b9e4060bb6e9a18cde27
+
+pkgname = axisforge-bin

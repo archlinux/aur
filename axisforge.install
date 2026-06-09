@@ -1,0 +1,55 @@
+# AUR install hook for axisforge-bin.
+# Runs after pacman writes the files. Reloads udev so the new rules apply
+# without a reboot, and reminds the user about the input-group requirement.
+
+post_install() {
+    _common_post_install_or_upgrade
+}
+
+post_upgrade() {
+    _common_post_install_or_upgrade
+}
+
+post_remove() {
+    # Reload udev so the removed rule is forgotten on next plug-in.
+    if command -v udevadm >/dev/null 2>&1; then
+        udevadm control --reload-rules || true
+        udevadm trigger || true
+    fi
+    cat <<'EOF'
+AxisForge removed. Per-user data is intact in ~/.config/axisforge/ — delete
+that yourself if you want a clean uninstall.
+EOF
+}
+
+_common_post_install_or_upgrade() {
+    if command -v udevadm >/dev/null 2>&1; then
+        udevadm control --reload-rules || true
+        udevadm trigger || true
+    fi
+    cat <<'EOF'
+
+================================================================================
+AxisForge is installed.
+
+If this is your first install:
+
+  1. Make sure your user is in the `input` group:
+       sudo usermod -aG input "$USER"
+     Then log out + log back in (group membership only applies to new sessions).
+
+  2. Verify the udev nodes are accessible:
+       ls -l /dev/uinput /dev/uhid
+     Both should show group=`input`, mode=0660.
+
+  3. Launch:
+       axisforge-gui            # the desktop app
+       axisforge --help         # CLI subcommands
+
+  4. (Optional, for Wine / Proton games) Whitelist AxisForge's VID:PID in
+     winebus so games inside the Wine prefix can see the virtual sticks. See:
+       https://github.com/silentcid/stickforge/blob/main/features.md#wine--proton-compatibility--enablehidraw-allowlist
+================================================================================
+
+EOF
+}
