@@ -1,0 +1,14 @@
+pkgbase = aspen
+	pkgdesc = Fast, byte-compatible reimplementation of tree(1) in C (GNU tree 2.3.2)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tenseleyFlow/aspen
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	source = aspen-0.1.0.tar.gz::https://github.com/tenseleyFlow/aspen/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ad10113502aa0f764b6d5ac91b58a5be92e1b3f125800f08d2224bad4997fb1e
+
+pkgname = aspen
