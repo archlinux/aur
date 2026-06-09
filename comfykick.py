@@ -46,7 +46,7 @@ DEFAULTS = {
     "output_dir": XDG_DATA_HOME / PROJECT_NAME / "output",
     "port": 8188,
     "prekick_exec": [],
-    "release_cache_dir": XDG_DATA_HOME / PROJECT_NAME / "release_cache",
+    "version_cache_dir": XDG_DATA_HOME / PROJECT_NAME / "version_cache",
     "runtime_dir": XDG_CACHE_HOME / PROJECT_NAME,
     "update": True,
     "venv_cache_dir": XDG_DATA_HOME / PROJECT_NAME / "venv_cache",
@@ -80,7 +80,7 @@ def log(level, msg, *args, _order=("DEBUG", "INFO", "WARNING", "ERROR")):
 _PATH_KEYS = (
     "base_dir",
     "output_dir",
-    "release_cache_dir",
+    "version_cache_dir",
     "runtime_dir",
     "venv_cache_dir",
 )
@@ -207,14 +207,14 @@ def _resolve_extra_model_paths(config):
 def create_directories(config, extra_dirs):
     base_dir = Path(config["base_dir"])
     output_dir = Path(config["output_dir"])
-    release_cache_dir = Path(config["release_cache_dir"])
+    version_cache_dir = Path(config["version_cache_dir"])
     runtime_dir = Path(config["runtime_dir"])
     venv_cache_dir = Path(config["venv_cache_dir"])
 
     base_dir.mkdir(parents=True, exist_ok=True)
     (base_dir / "custom_nodes").mkdir(parents=True, exist_ok=True)
     output_dir.mkdir(parents=True, exist_ok=True)
-    release_cache_dir.mkdir(parents=True, exist_ok=True)
+    version_cache_dir.mkdir(parents=True, exist_ok=True)
     runtime_dir.mkdir(parents=True, exist_ok=True)
     venv_cache_dir.mkdir(parents=True, exist_ok=True)
 
@@ -237,7 +237,7 @@ def _api_request(url):
         log("ERROR", "HTTP error %s while requesting %s: %s", e.code, url, e)
 
 
-def _resolve_version(config, release_cache_dir):
+def _resolve_version(config, version_cache_dir):
     # Determine which ComfyUI ``version_head`` (a tag name, branch name, or
     # 40-char commit hash) will be run, and which tarball URL to use.
     version = config["version"]
@@ -249,7 +249,7 @@ def _resolve_version(config, release_cache_dir):
         if update:
             data = _api_request(GITHUB_API_LATEST)
             return data["tag_name"], data["tarball_url"]
-        latest_link = release_cache_dir / "latest"
+        latest_link = version_cache_dir / "latest"
         if not latest_link.is_symlink():
             log("ERROR", "No cached 'latest' version and update is disabled.")
         return os.readlink(latest_link)[: -len(".tar.gz")], None
@@ -279,16 +279,16 @@ def _resolve_version(config, release_cache_dir):
     return version, None
 
 
-def _ensure_tarball(version_head, release_cache_dir, tarball_url=None, is_latest=False, refresh=False):
+def _ensure_tarball(version_head, version_cache_dir, tarball_url=None, is_latest=False, refresh=False):
     # Make sure the tarball for ``version_head`` is present in the cache directory.
     tarball_name = f"{version_head}.tar.gz"
-    tarball_path = release_cache_dir / tarball_name
+    tarball_path = version_cache_dir / tarball_name
 
     if refresh:
         log("INFO", "Refreshing cached tarball for %s ...", version_head)
         tarball_path.unlink(missing_ok=True)
         if is_latest:
-            (release_cache_dir / "latest").unlink(missing_ok=True)
+            (version_cache_dir / "latest").unlink(missing_ok=True)
 
     if not tarball_path.exists():
         if tarball_url is None:
@@ -313,7 +313,7 @@ def _ensure_tarball(version_head, release_cache_dir, tarball_url=None, is_latest
             raise
 
     if is_latest:
-        latest_link = release_cache_dir / "latest"
+        latest_link = version_cache_dir / "latest"
         if latest_link.is_symlink() or latest_link.is_file():
             latest_link.unlink()
         latest_link.symlink_to(tarball_name)
@@ -456,11 +456,11 @@ def main():
 
     create_directories(config, extra_dirs)
 
-    release_cache_dir = Path(config["release_cache_dir"])
-    version_head, tarball_url = _resolve_version(config, release_cache_dir)
+    version_cache_dir = Path(config["version_cache_dir"])
+    version_head, tarball_url = _resolve_version(config, version_cache_dir)
     tarball_path = _ensure_tarball(
         version_head,
-        release_cache_dir,
+        version_cache_dir,
         tarball_url=tarball_url,
         is_latest=(config["version"] == "latest"),
     )
@@ -478,7 +478,7 @@ def main():
         log("INFO", "Re-preparing tarball for %s ...", version_head)
         tarball_path = _ensure_tarball(
             version_head,
-            release_cache_dir,
+            version_cache_dir,
             tarball_url=tarball_url,
             is_latest=(config["version"] == "latest"),
             refresh=True,

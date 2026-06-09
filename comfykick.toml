@@ -59,10 +59,10 @@
 # # Default: ~/.cache/comfykick ($XDG_CACHE_HOME/comfykick)
 # runtime_dir            = ""
 
-# # Directory to cache ComfyUI release tarballs.
+# # Directory to cache ComfyUI version tarballs.
 # # Leave empty to use the default value.
-# # Default: ~/.local/share/comfykick/release_cache ($XDG_DATA_HOME/comfykick/release_cache)
-# release_cache_dir      = ""
+# # Default: ~/.local/share/comfykick/version_cache ($XDG_DATA_HOME/comfykick/version_cache)
+# version_cache_dir      = ""
 
 # # Directory to cache venv.
 # # Leave empty to use the default value.
