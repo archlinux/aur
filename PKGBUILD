@@ -1,4 +1,5 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: micleh https://github.com/legymhueck/kyocera-cups/blob/main/PKGBUILD
 # Contributor: MadPhysicist <jfoxrabinovitz at gmail dot com>
 
 # UTAX TA Triumph Adler printers TALinuxPackages-20141229.tar.gz are no longer included from 8.1404 to 8.1601
@@ -27,8 +28,9 @@ pkgname='kyocera-cups'
 #_pkgver='9.1-0'; _rev='20220203'
 #_pkgver='9.2-0'; _rev='20220928'
 #_pkgver='9.3-0'; _rev='20230720'
-_pkgver='9.4-0'; _rev='20240521'
-#https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/KyoceraLinuxPackages_20240521_tar_gz.download.gz
+#_pkgver='9.4-0'; _rev='20240521'
+_pkgver='10.0-0'; _rev='20260223' _revfake='20240521'
+#https://www.kyoceradocumentsolutions.us/content/dam/download-center-americas-cf/us/drivers/drivers/KyoceraLinuxPackages_20240521_tar_gz.download.gz
 pkgver="${_pkgver//-/.}.${_rev}"
 pkgrel='1'
 pkgdesc='PPD drivers for Kyocera CS ECOSYS FS KM TASKalfa KPDL printers copiers wide format'
@@ -38,7 +40,8 @@ arch=('i686' 'x86_64')
 url='https://www.kyoceradocumentsolutions.us/en/support/downloads.html' # select ECOSYS FS-4200dn
 license=('custom')
 depends=('glibc' 'gcc-libs' 'zlib' 'python' 'dbus' 'libcups' 'cups')
-depends+=('python-pypdf3' 'python-reportlab' 'python-setuptools')
+depends+=('python-reportlab' 'python-setuptools') # 'python-pdf3'
+depends+=('libstdc++' 'libgcc' 'python-pkg_resources')
 optdepends=(
   'qt5-base: knmd'
 )
@@ -49,11 +52,12 @@ options=('!strip')
 #source=("https://cdn.kyostatics.net/dlc/eu/driver/all/linux_8_1602_ecosys.-downloadcenteritem-Single-File.downloadcenteritem.tmp/Linux_8.1602_EC..._P5021_5026.zip")
 #source=("https://usa.kyoceradocumentsolutions.com/content/dam/kdc/kdag/downloads/technical/executables/drivers/kyoceradocumentsolutions/us/en/Kyocera_Linux_PPD_Ver_${pkgver}.tar.gz")
 _srcdir="KyoceraLinuxPackages_${_rev}.tar.gz"
-source=("${_srcdir}::https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/${_srcdir//./_}.download.gz")
+_srcdirfake="KyoceraLinuxPackages_${_revfake}.tar.gz"
+source=("${_srcdir}::https://www.kyoceradocumentsolutions.us/content/dam/download-center-americas-cf/us/drivers/drivers/${_srcdirfake//./_}.download.gz")
 #source=("https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/Kyocera_Linux_PPD_Ver_${pkgver}.tar.gz")
-md5sums=('0c191e9096aeb5004d6e5d583127a543'
+md5sums=('b6daeaf9383fc1f9928044d830a6426c'
          'd3e7d0fe76377b0b058a9fb497cdfafa')
-sha256sums=('7f9f1ca91cef018a6e56f2210d86f16afa00d0bf06b33ac32c875e49dc5439ef'
+sha256sums=('20f7c978db123007a3a6c6688698b49061ab69cdd7ec065b6728bd77d9a900e7'
             'c0ca7dba26542a9b75b51300da289e753cfaa0f43b09c9230041ab5c728b49a4')
 
 source+=('repack.sh')
@@ -73,21 +77,36 @@ fi
 declare -gA _bittage=([i686]='32bit' [x86_64]='64bit')
 
 prepare() {
-  set -u
+  local -; set -u
   # Set number of bits: '32bit' or '64bit', depending on ${CARCH}
   declare -A _suffix=([i686]='i386' [x86_64]='x86_64')
 
   local _ver='Redhat/Global'
-  local _fl="${_ver}/${_opt_kut}dialog_${_suffix[${CARCH}]}/${_opt_kut}dialog-${_pkgver}.${_suffix[${CARCH}]}.rpm"
+  local _rpm_dir="${_ver}/${_opt_kut}dialog_${_suffix[${CARCH}]}"
+  local _rpm_glob="${_rpm_dir}/${_opt_kut}dialog-*.${_suffix[${CARCH}]}.rpm"
+  local _matches=()
+  local _fl
+
+  shopt -s nullglob
+  _matches=(${_rpm_glob})
+  shopt -u nullglob
+
+  if [ "${#_matches[@]}" -eq 0 ]; then
+    error "No RPM matching '${_rpm_glob}' was found."
+    return 1
+  fi
+
+  # Prefer the highest version if more than one RPM is present.
+  _fl="$(printf '%s\n' "${_matches[@]}" | sort -V | tail -n 1)"
+
   set +u; msg2 "Extracting ${_fl}"; set +u
-  mkdir 'dta'
+  mkdir -p 'dta'
   bsdtar -C 'dta' -xf "${_fl}"
   rm -r 'dta/usr/lib/.build-id'
-  set +u
 }
 
 _package_UTAX() {
-  set -u
+  local -; set -u
   if [ -d 'LinuxPackagesTA' ]; then # _opt_UTAX
     cd 'LinuxPackagesTA'
     # Set language name: Default is English
@@ -114,11 +133,10 @@ _package_UTAX() {
     install -Dm755 "${_bittage[${CARCH}]}/Global/${_language}/filter/kyofilter_C" -t "${pkgdir}/usr/lib/cups/filter"
     cd ..
   fi
-  set +u
 }
 
 package() {
-  set -u
+  local -; set -u
   # Install the package
 
   cd 'dta'
@@ -130,15 +148,30 @@ package() {
   # From rpm postinstall
   local _ALTERNATE_PPD_DIRECTORY=/usr/share/cups/model/kyocera
   #local _PRIMARY_PPD_DIRECTORY=/usr/share/ppd/kyocera/
-  local _INSTALLED_PPD_DIRECTORY="/usr/share/kyocera/ppd${_pvx}"
-  local _TMP_INSTALL="/usr/share/kyocera${_pvx}/"
+  local _INSTALLED_PPD_DIRECTORY
+  local _TMP_INSTALL
   #local _PYTHON_DIRECTORY=/usr/share/kyocera/Python/
   #local _KYOCERA_CONFIG=/usr/share/kyocera
   #local _TMP_DIR=/tmp/kyocera_printers
   #local _CONFIG_TMP=/tmp/kyocera_config
 
   _ALTERNATE_PPD_DIRECTORY="${_ALTERNATE_PPD_DIRECTORY/kyocera/Kyocera}"
-  _INSTALLED_PPD_DIRECTORY="${_TMP_INSTALL}${_INSTALLED_PPD_DIRECTORY##*/}"
+
+  # Newer Kyocera bundles may not match _pkgver exactly (e.g. package 10.0 with _pkgver 9.4-0).
+  # Detect the actual install root and ppd directory from extracted payload.
+  _TMP_INSTALL="$(find "${pkgdir}/usr/share" -mindepth 1 -maxdepth 1 -type d -name 'kyocera*' | sort -V | head -n 1)"
+  if [ -z "${_TMP_INSTALL}" ]; then
+    error "Could not find installed kyocera directory under '${pkgdir}/usr/share'."
+    return 1
+  fi
+  _TMP_INSTALL="${_TMP_INSTALL#${pkgdir}}/"
+
+  _INSTALLED_PPD_DIRECTORY="$(find "${pkgdir}${_TMP_INSTALL}" -mindepth 1 -maxdepth 1 -type d -name 'ppd*' | sort -V | head -n 1)"
+  if [ -z "${_INSTALLED_PPD_DIRECTORY}" ]; then
+    error "Could not find installed ppd directory under '${pkgdir}${_TMP_INSTALL}'."
+    return 1
+  fi
+  _INSTALLED_PPD_DIRECTORY="${_INSTALLED_PPD_DIRECTORY#${pkgdir}}"
 
   # Change folders to be more like 8.1404 for comparison
   install -d "${pkgdir}/usr/share/cups/model"
@@ -149,8 +182,15 @@ package() {
 
   if :; then
     # Remove dialog launcher. It doesn't work for me.
-    rm "${pkgdir}/usr/bin/${_opt_kut}dialog${_pvx}"
-    rm -r "${pkgdir}/usr/share/applications/" "${pkgdir}/usr/share/doc/"
+    local _dialog_bins=()
+    shopt -s nullglob
+    _dialog_bins=("${pkgdir}/usr/bin/${_opt_kut}dialog"*)
+    shopt -u nullglob
+    if [ "${#_dialog_bins[@]}" -gt 0 ]; then
+      rm -f "${_dialog_bins[@]}"
+    fi
+
+    rm -rf "${pkgdir}/usr/share/applications/" "${pkgdir}/usr/share/doc/"
   else
     depends+=('qt5-base')
   fi
@@ -163,7 +203,16 @@ package() {
   # gzip "${pkgdir}${_ALTERNATE_PPD_DIRECTORY}"/*.ppd
 
   # Install LICENSES
-  install -Dpm644 "${srcdir}/LICENSES.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-  set +u
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
+  if [ -f "${srcdir}/LICENSES.txt" ]; then
+    install -Dpm644 "${srcdir}/LICENSES.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  else
+    if [ -f "${srcdir}/Third_Party_License.pdf" ]; then
+      install -Dpm644 "${srcdir}/Third_Party_License.pdf" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    fi
+    if [ -f "${srcdir}/README" ]; then
+      install -Dpm644 "${srcdir}/README" "${pkgdir}/usr/share/licenses/${pkgname}/README.txt"
+    fi
+  fi
 }
 set +u
