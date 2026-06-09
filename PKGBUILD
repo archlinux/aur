@@ -1,7 +1,7 @@
 # Maintainer: Yuzuki <lxf74663@gmail.com>
 pkgname=napcat-qq
 pkgver=4.18.6
-pkgrel=3
+pkgrel=4
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64' 'aarch64')
 url="https://github.com/NapNeko/NapCatQQ"
@@ -41,6 +41,13 @@ package() {
     _appdir="${pkgdir}/opt/napcat-qq/resources/app"
     install -d "${_appdir}/app_launcher/napcat-base"
     unzip -q -o "${srcdir}/NapCat.Shell-${pkgver}.zip" -d "${_appdir}/app_launcher/napcat-base/"
+
+    _napcat_mjs="${_appdir}/app_launcher/napcat-base/napcat.mjs"
+
+    # 注入 return null取消屏蔽第三方插件;
+    if [ -f "$_napcat_mjs" ]; then
+        sed -i -E 's/(getRejectReason\([a-zA-Z0-9, ]*\) *\{)/\1 return null;/g' "$_napcat_mjs"
+    fi
 
     #  清理基础目录下的 Windows 平台专用文件及多余的加载器
     rm -f "${_appdir}/app_launcher/napcat-base/"*.bat \
