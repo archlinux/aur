@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-insiders-bin
 _pkgname=visual-studio-code-insiders
-pkgver=1780966334
+pkgver=1780966446
 pkgrel=1
 pkgdesc="Visual Studio Code Insiders (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -22,62 +22,33 @@ optdepends=('glib2: Needed for move to trash functionality'
             'org.freedesktop.secrets: Needed for settings sync'
              # See https://github.com/MicrosoftDocs/live-share/issues/4650
             'icu69: Needed for live share' )
-source=(code-${pkgver}.desktop.in::https://raw.githubusercontent.com/microsoft/vscode/master/resources/linux/code.desktop
-        code-${pkgver}-url-handler.desktop.in::https://raw.githubusercontent.com/microsoft/vscode/master/resources/linux/code-url-handler.desktop
-        code-${pkgver}-workspace.xml.in::https://raw.githubusercontent.com/microsoft/vscode/master/resources/linux/code-workspace.xml
-        ${_pkgname}-bin.sh)
-source_x86_64=(code_x64_1780966334.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/a9580a647dec55b4b8404365a7a63db201d9240f/code-insider-x64-1780966334.tar.gz)
-source_aarch64=(code_arm64_1780966336.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/a9580a647dec55b4b8404365a7a63db201d9240f/code-insider-arm64-1780966336.tar.gz)
-source_armv7h=(code_armhf_1780966337.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/a9580a647dec55b4b8404365a7a63db201d9240f/code-insider-armhf-1780966337.tar.gz)
-
-sha256sums=('2f1782b30c4e040efff655fd9cf477930c5a0c81ddae27749b0cbb922c1d248e'
-            'c361efa7e02fcad759ed80d2fbab67877f33219b981578af6fffaf18aeb12d9b'
-            '3af748dd6578a1775e8eb7248ba397b7e11840df2ea6ee234ff76fee3dc306cf'
-            '4ba4e7bb90c05089a2aed7e1fbfade57f6878aebe8c3166c82dcaefc45141372')
-sha256sums_x86_64=('ecc5293e9ba08e23605b14c89802ca9bcf0354b1f4e7f3783638571975ab69ba')
-sha256sums_aarch64=('f994eb9e856803b48f8c4d31bebb429f7bebc86599f71ee841b542c66ad9130b')
-sha256sums_armv7h=('da941a4f5ab1a765643fa8aa3770f28bc6e1173094c021f1243153f32311ad7e')
-
-_set_meta_info() {
-  sed 's/@@NAME_LONG@@/Visual Studio Code Insiders/g' "$1" |\
-  sed 's/@@NAME_SHORT@@/code - insiders/g' |\
-  sed 's/@@NAME@@/code/g' |\
-  sed 's#@@EXEC@@#/usr/bin/code-insiders#g' |\
-  sed 's/@@ICON@@/visual-studio-code-insiders/g' |\
-  sed 's/@@URLPROTOCOL@@/vscode-insiders/g'
-}
-
-prepare() {
-  _set_meta_info "${srcdir}/code-${pkgver}.desktop.in" > "${srcdir}/code.desktop"
-  _set_meta_info "${srcdir}/code-${pkgver}-url-handler.desktop.in" > "${srcdir}/code-url-handler.desktop"
-  _set_meta_info "${srcdir}/code-${pkgver}-workspace.xml.in" > "${srcdir}/code-workspace.xml"
-}
-
-_pkg() {
-  if [ "${CARCH}" = "aarch64" ]; then
-    echo 'VSCode-linux-arm64'
-  elif [ "${CARCH}" = "armv7h" ]; then
-    echo 'VSCode-linux-armhf'
-  else
-    echo 'VSCode-linux-x64'
-  fi
-}
+source=(${_pkgname}-bin.sh)
+source_x86_64=(code_x64_1780966446.deb::https://vscode.download.prss.microsoft.com/dbazure/download/insider/a9580a647dec55b4b8404365a7a63db201d9240f/code-insiders_1.124.0-1780966446_amd64.deb)
+source_aarch64=(code_arm64_1780966447.deb::https://vscode.download.prss.microsoft.com/dbazure/download/insider/a9580a647dec55b4b8404365a7a63db201d9240f/code-insiders_1.124.0-1780966447_arm64.deb)
+source_armv7h=(code_armhf_1780966365.deb::https://vscode.download.prss.microsoft.com/dbazure/download/insider/a9580a647dec55b4b8404365a7a63db201d9240f/code-insiders_1.124.0-1780966365_armhf.deb)
+sha256sums=('bf8abef6671392bf1f11d203fd940cc44e764e9c6352be7799880535c2f15087')
+sha256sums_x86_64=('61dc5bdeca2f2946d2291d42ab500f9ee9703ab4554de4070c72884dab5b9e68')
+sha256sums_aarch64=('70ceb42d9eea0f45018f6d2637118189274690534d91aaf99b15cf0b7ab098f5')
+sha256sums_armv7h=('f4f7c6d7a3ce5c1819256b66ae6d1109d8dfbf9295e0e98f9141eab494c4db04')
 
 package() {
-  install -d "${pkgdir}/opt/${_pkgname}"
+  bsdtar -xf data.tar.xz -C "${pkgdir}/"
+
   install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/share/"{applications,pixmaps,mime/packages,licenses/${_pkgname}}
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -m644 "${srcdir}/$(_pkg)/resources/app/LICENSE.rtf" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.rtf"
-  install -m644 "${srcdir}/$(_pkg)/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  install -m644 "${srcdir}/code.desktop" "${pkgdir}/usr/share/applications/code-insiders.desktop"
-  install -m644 "${srcdir}/code-url-handler.desktop" "${pkgdir}/usr/share/applications/code-insiders-url-handler.desktop"
-  install -m644 "${srcdir}/code-workspace.xml" "${pkgdir}/usr/share/mime/packages/${_pkgname}-insiders-workspace.xml"
-  install -Dm 644 "${srcdir}/$(_pkg)/resources/completions/bash/code-insiders" "${pkgdir}/usr/share/bash-completion/completions/code-insiders"
-  install -Dm 644 "${srcdir}/$(_pkg)/resources/completions/zsh/_code-insiders" "${pkgdir}/usr/share/zsh/site-functions/_code-insiders"
-
-  cp -r "${srcdir}/$(_pkg)/"* "${pkgdir}/opt/${_pkgname}"
+  ln -s /usr/share/code-insiders/resources/app/LICENSE.rtf \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.rtf"
 
   # Launcher
   install -m755 "${srcdir}/${_pkgname}-bin.sh" "${pkgdir}/usr/bin/code-insiders"
+
+  # Fix the desktop entries
+  sed -i \
+    -e 's/^\(Exec=\)[^ ]*/\1code-insiders/g' \
+    "${pkgdir}"/usr/share/applications/*.desktop
+
+  # setuid on chrome-sandbox
+  # Comment out if using a kernel without user namespaces, like linux-hardened
+  chmod u-s "${pkgdir}/usr/share/code-insiders/chrome-sandbox"
 }

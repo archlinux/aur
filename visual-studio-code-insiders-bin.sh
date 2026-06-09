@@ -10,4 +10,4 @@ elif [[ -f $XDG_CONFIG_HOME/code-flags.conf ]]; then
 fi
 
 # Launch
-exec /opt/visual-studio-code-insiders/bin/code-insiders "$@" $CODE_USER_FLAGS
+exec /usr/share/code-insiders/bin/code-insiders "$@" $CODE_USER_FLAGS
