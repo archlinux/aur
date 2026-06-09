@@ -3,7 +3,7 @@
 _pkgauthor=jorgerojas26
 _pkgname=lazysql
 pkgname=${_pkgname}-bin
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="A cross-platform TUI database management tool written in Go"
 arch=('x86_64' 'i686' 'aarch64')
@@ -20,10 +20,10 @@ source_x86_64=("${_pkgname}_${pkgver}_${arch[0]}::${url}/releases/download/v${pk
 source_i686=("${_pkgname}_${pkgver}_${arch[1]}::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386.tar.gz")
 source_aarch64=("${_pkgname}_${pkgver}_${arch[2]}::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
 sha256sums=('d3624d0f12d16629f5a19146cf86b4d811a842df962c52e64a5e166692f498c3'
-            '6146b95f275073df8eb77e0e4790ff5ab3bdc79ecddb0de3113ec3be484e6d8a')
-sha256sums_x86_64=('4865ae00a7ef5ff0b37cbdbb1f3ec65795498939ac8f260d0823f3566718580d')
-sha256sums_i686=('e0ed6b434762f289a17896a0f140ea926dce9f47a9b0c769d9a1bf3f2db5c4d8')
-sha256sums_aarch64=('4e6a2289355009205e16edeeb63a8b3716a178c9f8ad11dd82cbd89952ab39b2')
+            '4469deffb03976847b6cbbf20274e7a12970ae62132bd347eda05bea9070fa6f')
+sha256sums_x86_64=('0471e340e4038bae2c04bf36744d5d5c9864afa488f3bd28e975397cc64851a4')
+sha256sums_i686=('66dcd261f5969394b4c232a7d80b16067f2c06b6945963980aa0c22a4e2fa181')
+sha256sums_aarch64=('cbb094d85cc44e6ee609a8c3e16c1bf32df0609a927ac2750b348aa181d57d78')
 
 
 package() {
