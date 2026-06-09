@@ -1,7 +1,7 @@
 pkgbase = findnumgame
 	pkgdesc = Игра на интуицию и визуальынй рассчет пространства на заданной линии
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.0.1
+	pkgrel = 2
 	url = https://github.com/jezzofficial/FindNumGame.git
 	arch = any
 	license = GPL-3.0-or-later

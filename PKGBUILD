@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Bogdanov <highjackyt@gmail.com>
 pkgname=findnumgame
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 pkgdesc="Игра на интуицию и визуальынй рассчет пространства на заданной линии"
 arch=('any')
 url="https://github.com/jezzofficial/FindNumGame.git"
