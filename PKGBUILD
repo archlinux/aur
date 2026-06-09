@@ -1,7 +1,7 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgname=zeroclaw-git
-pkgver=0.8.0.beta.2.r86.ga486993c9
+pkgver=0.8.0.beta.2.r125.g5eb5eba08
 pkgrel=1
 pkgdesc="Fast, small, and fully autonomous AI assistant infrastructure — deploy anywhere, swap anything (Rust, Git VCS version)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -74,13 +74,26 @@ build() {
     # unsetting prevents the C build from failing with 'timing not safe'
     unset CFLAGS CXXFLAGS
 
-    # Build feature list - include all compile-time features
-    local features="channels-full,channel-matrix,channel-nostr,channel-wechat,channel-line,observability-otel,observability-prometheus,browser-native,sandbox-landlock,sandbox-bubblewrap,rag-pdf,whatsapp-web,plugins-wasm,hardware,voice-wake,embedded-web,memory-postgres,probe,webauthn"
+    # Extract all features from Cargo.toml's [features] section
+    local all_features
+    all_features=$(awk '/^\[features\]/{p=1;next} /^\[/{p=0} p && /^[a-z][a-z0-9_-]* *=/{sub(/ *=.*/,"");print}' Cargo.toml)
 
-    # Add Raspberry Pi GPIO support for ARM architectures
-    if [[ "$CARCH" == "aarch64" ]] || [[ "$CARCH" == "armv7h" ]]; then
-        features="${features},peripheral-rpi"
-    fi
+    # Define features to exclude (meta-features, deprecated aliases, and simulation features)
+    local exclude="default ci-all fantoccini landlock metrics dev-sim"
+
+    local features=""
+    local feat
+    for feat in $all_features; do
+        # Skip if in exclude list
+        if [[ " $exclude " == *" $feat "* ]]; then
+            continue
+        fi
+        # Skip Raspberry Pi features on non-ARM architectures
+        if [[ "$feat" == "peripheral-rpi" ]] && [[ "$CARCH" != "aarch64" ]] && [[ "$CARCH" != "armv7h" ]]; then
+            continue
+        fi
+        features="${features:+$features,}$feat"
+    done
 
     cargo build \
         --release \
