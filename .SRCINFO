@@ -1,6 +1,6 @@
 pkgbase = youtui-player
 	pkgdesc = YouTube TUI player with playlist, thumbnails and Catppuccin themes
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/IvelOt/youtui-player
 	arch = x86_64
@@ -10,10 +10,11 @@ pkgbase = youtui-player
 	depends = mpv
 	depends = yt-dlp
 	depends = socat
+	depends = ffmpeg
 	optdepends = xclip: clipboard support on X11
 	optdepends = xsel: clipboard support on X11 (alternative)
 	optdepends = wl-clipboard: clipboard support on Wayland
-	source = youtui-player-1.2.0.tar.gz::https://github.com/IvelOt/youtui-player/archive/refs/tags/v1.2.0.tar.gz
-	b2sums = 903b8d4ec321d124d22495d52051415bdc9e4a9cc9a1b103490f6856a967d6b0c455c86ff4ebcb3e7a27e7fa9ef747070fada7bde19870c9a638fa1fc10d9611
+	source = youtui-player-1.3.0.tar.gz::https://github.com/IvelOt/youtui-player/archive/refs/tags/v1.3.0.tar.gz
+	b2sums = 95d53ce5d3d00127d2aefbe84ed47b4e3c3a0173931618f2a15da83a849b5e86dd9e9afeb5d91ae3ca24651894e026be8e0ceec441ff528417d6049b1a75aa14
 
 pkgname = youtui-player

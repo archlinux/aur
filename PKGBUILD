@@ -1,18 +1,18 @@
 # Maintainer: Levi Renato <levirenato at gmail dot com>
 pkgname=youtui-player
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="YouTube TUI player with playlist, thumbnails and Catppuccin themes"
 arch=('x86_64' 'aarch64')
 url="https://github.com/IvelOt/youtui-player"
 license=('MIT')
-depends=('mpv' 'yt-dlp' 'socat')
+depends=('mpv' 'yt-dlp' 'socat' 'ffmpeg')
 optdepends=('xclip: clipboard support on X11'
   'xsel: clipboard support on X11 (alternative)'
   'wl-clipboard: clipboard support on Wayland')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('903b8d4ec321d124d22495d52051415bdc9e4a9cc9a1b103490f6856a967d6b0c455c86ff4ebcb3e7a27e7fa9ef747070fada7bde19870c9a638fa1fc10d9611')
+b2sums=('95d53ce5d3d00127d2aefbe84ed47b4e3c3a0173931618f2a15da83a849b5e86dd9e9afeb5d91ae3ca24651894e026be8e0ceec441ff528417d6049b1a75aa14')
 
 prepare() {
   cd "youtui-player-$pkgver"
