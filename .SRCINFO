@@ -1,0 +1,13 @@
+pkgbase = android-vndk-34
+	pkgdesc = Additional Android libraries for Android 14 (API level 34). VNDK prebuilt variant.
+	pkgver = 34
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/prebuilts/vndk/v34
+	arch = any
+	license = custom
+	options = !strip
+	options = !debug
+	source = vndk::shallowclone+https://android.googlesource.com/platform/prebuilts/vndk/v34
+	sha256sums = SKIP
+
+pkgname = android-vndk-34
