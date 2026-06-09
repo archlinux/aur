@@ -2,13 +2,13 @@
 pkgname=retorrent-bin
 _pkgname=retorrent
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A BitTorrent client with an alpha/test UI, built in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/retorrent"
 license=('GPL3')
-depends=('gtk3' 'libappindicator-gtk3' 'glibc')
-optdepends=()
+depends=('gtk3' 'xdotool' 'glibc')
+optdepends=('libappindicator-gtk3: system tray icon')
 provides=('retorrent')
 conflicts=('retorrent')
 options=('!strip')
