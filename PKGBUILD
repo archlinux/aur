@@ -2,7 +2,7 @@
 
 pkgname=pentest-ghostwriter
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Local-first Arch Linux port of Ghostwriter for single-user offensive security workflows'
 arch=('x86_64')
 url='https://github.com/GhostManager/Ghostwriter'
@@ -49,7 +49,7 @@ source=(
   'README.native-port.md'
 )
 sha256sums=('2636d2f2812c82dd30883b18b8fbad9d8a656a8c913c4c4ebe0249297e1250b0'
-            '3bc1e37f13edeb8c9f748f2689ff7ed94f40922a7d723e759e132fed52d612d7'
+            '0dc916398fc88639481ec7156435b00864d2eb0d66154fe9a7a6fa63b8c452b0'
             '41e334ee463f79bab5bcff7a8aeb3239165b218f83077d6c1c962a8264f6abb6'
             'fae92ab2a78fabd39afe125f2ce348fa477a2b9900e66bd245bdf6850b38251e'
             '2f0fb5088079da1afc6aec382ab296b328874a0f1fff9e3e629a5dd12e80a7cf'
@@ -119,6 +119,23 @@ if 'STATICFILES_STORAGE =' not in text:
     )
 
 base.write_text(text, encoding='utf-8')
+
+profile = Path('ghostwriter/users/templates/users/profile.html')
+profile_text = profile.read_text(encoding='utf-8')
+
+profile_replacements = {
+    'href="{% url \'account_change_password\' %}"': 'href="#"',
+    'href="{% url \'account_email\' %}"': 'href="#"',
+    'href="{% url \'mfa_index\' %}"': 'href="#"',
+}
+
+for old, new in profile_replacements.items():
+    if old not in profile_text:
+        raise SystemExit(f"profile template marker not found: {old}")
+    profile_text = profile_text.replace(old, new, 1)
+
+profile.write_text(profile_text, encoding='utf-8')
+
 
 production = Path('config/settings/production.py')
 prod = production.read_text(encoding='utf-8')
@@ -251,6 +268,7 @@ package() {
   install -Dm644 "${srcdir}/ghostwriter.desktop" "${pkgdir}/usr/share/applications/ghostwriter.desktop"
   install -Dm644 "${srcdir}/stop-ghostwriter.desktop" "${pkgdir}/usr/share/applications/stop-ghostwriter.desktop"
   install -Dm644 "ghostwriter/static/images/favicons/favicon.ico" "${pkgdir}/usr/share/pixmaps/ghostwriter.ico"
+  rm -rf "${pkgdir}/opt/${pkgname}/app/ghostwriter/media"
   install -Dm644 "${srcdir}/0066_alter_reporttemplate_document.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0066_alter_reporttemplate_document.py"
   install -Dm644 "${srcdir}/0068_merge_pacmanics_local_document_and_upstream_0067.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0068_merge_pacmanics_local_document_and_upstream_0067.py"
   install -Dm644 "${srcdir}/README.native-port.md" "${pkgdir}/usr/share/doc/${pkgname}/README.native-port.md"
