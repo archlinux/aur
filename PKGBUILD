@@ -2,7 +2,7 @@
 
 pkgname=elfeed2
 pkgver=0.3.1
-pkgrel=2
+pkgrel=1
 pkgdesc="standalone feed reader and successor to elfeed"
 arch=('x86_64')
 url="https://github.com/skeeto/elfeed2"

@@ -1,7 +1,7 @@
 pkgbase = elfeed2
 	pkgdesc = standalone feed reader and successor to elfeed
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/skeeto/elfeed2
 	arch = x86_64
 	license = Unlicense
