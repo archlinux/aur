@@ -7,7 +7,9 @@
 #     lockscreen), `mlayout` (per-tag layout profile manager),
 #     `mscreenshot` (grim/slurp pipeline), `mvisual` (output
 #     monitor-profile manager), `mpicker` (native colour picker —
-#     frozen screencap + zoom lens, drops the hyprpicker dep)
+#     frozen screencap + zoom lens, drops the hyprpicker dep),
+#     `mvpn` (native Mullvad VPN control — full CLI + GTK4 layer-shell
+#     panel; drives the `mullvad` daemon, optional)
 #   * `mshell` first-party desktop shell (GTK4 + relm4 + layer-shell)
 #     and its `mshellctl` / `mshellshare` IPC siblings
 #   * `mwizard` first-launch setup wizard (writes the shell profile
@@ -26,7 +28,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r1503.2f9d0404
+pkgver=r1599.59a66bdf
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
@@ -124,7 +126,7 @@ optdepends=(
   "iwd: alternative wireless backend for the network widget"
   "ufw: needed by the mshell nufw firewall widget"
   "podman: needed by the mshell npodman widget"
-  "mullvad-vpn: needed by the mshell ndns VPN-switcher widget"
+  "mullvad-vpn: the VPN daemon driven by the mvpn binary (CLI + GTK panel)"
   "blocky: local DNS resolver controlled by the ndns widget"
   "curl: used by the nip public-IP widget (already pulled by base)"
   # mlogind (TUI login manager)
@@ -245,7 +247,7 @@ build() {
   cargo build --frozen --release \
     --features mshell/wasm-plugins \
     -p mshell -p mshellctl -p mshellshare -p mpicker -p mwizard \
-    -p mkeys \
+    -p mkeys -p mvpn \
     -p margo-portal
 }
 
@@ -280,7 +282,7 @@ package() {
   for bin in \
       margo start-margo \
       mctl mlock mlayout mscreenshot mvisual mlogind mpower mplay \
-      mshell mshellctl mshellshare mpicker mwizard mkeys; do
+      mshell mshellctl mshellshare mpicker mwizard mkeys mvpn; do
     install -Dm755 "$CARGO_TARGET_DIR/release/$bin" "$pkgdir/usr/bin/$bin"
   done
 
