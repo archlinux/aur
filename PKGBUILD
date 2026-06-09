@@ -2,13 +2,15 @@
 pkgname=nepdate
 pkgdesc='Standalone Nepali calendar widget and converter for Bikram Sambat and Gregorian calendars.'
 pkgver=2.2.5
-pkgrel=2
+pkgrel=3
 # _commithash=524477dbe6fb92f836a63d00ff7006e6c6a74072
 arch=(x86_64)
 url="https://github.com/khumnath/nepdate"
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt6-base' 'qt6-declarative')
 makedepends=('cmake' 'qt6-shadertools' 'qt6-tools')
 license=('GPL-3.0-or-later')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 # source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/524477dbe6fb92f836a63d00ff7006e6c6a74072.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
   "https://github.com/khumnath/nepdate/pull/52.patch")
@@ -19,21 +21,28 @@ prepare() {
   #     cd "${pkgname}-${_commithash}"
   cd "${pkgname}-${pkgver}"
   patch -p1 -i "../52.patch"
-  mkdir build
+  echo ${pkgver} >./resources/version.conf
 }
 
 build() {
   #     cd "${pkgname}-${_commithash}/build"
-  cd "${pkgname}-${pkgver}/build"
-  cmake ..
-  make all
+  cd "${pkgname}-${pkgver}"
+  cmake -B build -S . \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  #install binary
-  #     install -Dm755 "${srcdir}/${pkgname}-${_commithash}/build/bikram-calendar" "${pkgdir}/usr/bin/bikram-calendar"
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/build/bikram-calendar" "${pkgdir}/usr/bin/bikram-calendar"
-  #make .desktop file
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Install
+  DESTDIR="$pkgdir" cmake --install build
+
+  # License
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Desktop file
   install -d "${pkgdir}/usr/share/applications"
   echo "[Desktop Entry]
 Categories=Utility;Calendar;
