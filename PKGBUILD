@@ -1,5 +1,5 @@
 pkgname=qdia
-pkgver=0.60
+pkgver=0.63
 pkgrel=1
 pkgdesc="Simple schematic/diagram editor with focus on quick diagram generation with high quality graphics, inspired by xcircuit"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(gcc-libs
 makedepends=(cmake
              qt6-tools)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sunderme/qdia/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('349ef083af478120ba26c00fd497b8819002e3d34afa4816997af91c84dd515c')
+sha256sums=('a46dd3c7bc4dd4c4c85c6989deeb101a9e8517d31571092e0132fb7c051baadc')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
