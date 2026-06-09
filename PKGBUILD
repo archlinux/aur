@@ -2,22 +2,24 @@
 
 _pkgname=ttyrecall
 pkgname=$_pkgname-git
-pkgver=0.0.1.alpha.3.r5.gf33adb5
+pkgver=0.0.1.r59.g32949e4
 pkgrel=1
 pkgdesc="Recall, but for terminals"
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/kxxt/ttyrecall"
 license=('AGPL-3.0-or-later AND GPL-2.0-or-later AND MIT-0')
-depends=('gcc-libs' 'zstd')
-# Cannot use cargo-nightly here because of missing rust-src-nightly..
-makedepends=('cargo' 'rust-src' 'bpf-linker' 'git')
+depends=('gcc-libs' 'libbpf' 'libelf' 'pam' 'zlib' 'zstd')
+makedepends=('bpf' 'cargo' 'clang' 'git' 'npm' 'pkgconf' 'ripgrep')
+optdepends=('ripgrep: full-text search in the web UI and TUI')
 source=("$_pkgname::git+https://github.com/kxxt/ttyrecall.git"
-        "ttyrecalld.service")
+        "ttyrecalld.service"
+        "ttyrecall-web.service")
 b2sums=('SKIP'
-        'b416725ba80259f25fb448e2308e3a18c0fc4eeb4b0d5adb8e423b3a39c2f36df936bc7a639624ce33f689ed38851861fc6d1c1546fb6017c3ad3854ea041e98')
+        '8323fb059dcc4b2471be17193e37498158d697af09c359988fde6dd7aaac88203d5c0f4bcc68e49bbf6ea9f24fe4e64abf9e5c951a8f1b2ac1738d54646f1e0f'
+        '1b2652950f47ceff9ab78e95be83c57cc932869f7d4a8bef45a17e70ee29155bee3e4e8356ee79e7789725aff01a5e42a4054b60858194ead0f5da9b34061df6')
 provides=($_pkgname)
 conflicts=($_pkgname $_pkgname-bin)
-backup=('etc/ttyrecall/daemon.toml')
+backup=('etc/ttyrecall/config.toml')
 
 pkgver() {
   cd "$_pkgname"
@@ -27,15 +29,15 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
+  npm ci --prefix frontend
 }
 
 build() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable # Only the eBPF build need nightly toolchain
   export ZSTD_SYS_USE_PKG_CONFIG=1
-  export RUSTC_BOOTSTRAP=1 # HACK: building eBPF requires build-std=core, needs nightly
-  cargo xtask build --release
+  cargo xtask build --release --no-default-features --skip-frontend-deps
   local compgen="target/release/$_pkgname generate-completion"
   mkdir -p completions
   $compgen bash >"completions/$_pkgname"
@@ -48,7 +50,6 @@ check() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export ZSTD_SYS_USE_PKG_CONFIG=1
-  export RUSTC_BOOTSTRAP=1 # HACK: building eBPF requires build-std=core, needs nightly
   cargo test --frozen --release
 }
 
@@ -58,11 +59,15 @@ package() {
   install -Dm755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
   # Service
   install -vDm644 "$srcdir/ttyrecalld.service" "$pkgdir/usr/lib/systemd/system/ttyrecalld.service"
+  install -vDm644 "$srcdir/ttyrecall-web.service" "$pkgdir/usr/lib/systemd/system/ttyrecall-web.service"
+  # Web frontend
+  install -dm755 "$pkgdir/usr/share/ttyrecall/web"
+  cp -a frontend/dist/. "$pkgdir/usr/share/ttyrecall/web/"
   # Storage dir
   install -dm755 "$pkgdir/var/lib/ttyrecall"
   # Config
   install -dm755 "$pkgdir/etc/ttyrecall"
-  install -Dm644 -t "$pkgdir/etc/ttyrecall" etc/daemon.toml
+  install -Dm644 etc/config.toml "$pkgdir/etc/ttyrecall/config.toml"
   # Shell completions
   install -Dm644 "completions/$_pkgname" -t "$pkgdir/usr/share/bash-completion/completions/"
   install -Dm644 "completions/$_pkgname.elv" -t "$pkgdir/usr/share/elvish/lib/"

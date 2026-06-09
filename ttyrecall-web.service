@@ -1,10 +1,11 @@
 [Unit]
-Description=TTY Recall
+Description=TTY Recall Web UI
 Documentation=https://github.com/kxxt/ttyrecall
+After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/ttyrecall daemon --config /etc/ttyrecall/config.toml
+ExecStart=/usr/bin/ttyrecall web-service --config /etc/ttyrecall/config.toml
 Restart=on-failure
 RestartSec=30
 TimeoutStopSec=10
