@@ -6,15 +6,12 @@ arch=('x86_64')
 license=('MIT')
 url="https://github.com/mijocecr/raid-util"
 
-
 depends=(
-  'mdadm'          # manejo de RAID: crear, ensamblar, eliminar, zero-superblock
+  'mdadm'          # manejo de RAID
   'util-linux'     # lsblk, mount, umount, blkid, sfdisk
-  'smartmontools'  # smartctl (SMART health)
-  'gptfdisk'       # sgdisk (GPT)
+  'smartmontools'  # smartctl
+  'gptfdisk'       # sgdisk
 )
-
-
 
 options=('!debug' '!strip')
 
@@ -23,11 +20,15 @@ sha256sums=('SKIP')
 
 package() {
   install -d "$pkgdir/usr/lib/raid-util"
-  cp -r "$srcdir"/* "$pkgdir/usr/lib/raid-util/"
 
+  # Copiar solo el contenido del tarball
+  cp -r "$srcdir/RAID-Util/"* "$pkgdir/usr/lib/raid-util/"
+
+  # Symlink del binario
   install -d "$pkgdir/usr/bin"
   ln -s /usr/lib/raid-util/RAID-Util "$pkgdir/usr/bin/raid-util"
 
+  # Desktop + icono
   install -Dm644 "$srcdir/raid-util.desktop" "$pkgdir/usr/share/applications/raid-util.desktop"
   install -Dm644 "$srcdir/raid-util.png" "$pkgdir/usr/share/pixmaps/raid-util.png"
 }
