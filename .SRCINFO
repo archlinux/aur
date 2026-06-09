@@ -1,6 +1,6 @@
 pkgbase = peerbeat
 	pkgdesc = Local-first music player with LAN peer-to-peer sharing
-	pkgver = 0.3.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/RamazanBerk20/PeerBeat
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = peerbeat
 	depends = alsa-lib
 	provides = peerbeat
 	conflicts = peerbeat-bin
-	source = peerbeat-0.3.0.tar.gz::https://github.com/RamazanBerk20/PeerBeat/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 692e0f1e5c31ae4734d89a767e3bcc512ba2d7f7f8106497b3c0baee5f4bf3e7
+	source = peerbeat-0.5.0.tar.gz::https://github.com/RamazanBerk20/PeerBeat/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = c48782f998a834a6827e8d2a9db53b3c3e66712e8d9c6445035bbd67e5285418
 
 pkgname = peerbeat
