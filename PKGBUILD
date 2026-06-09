@@ -1,7 +1,7 @@
 # Maintainer: G-grbz <gkhn.gurbuz@hotmail.com>
 
 pkgname=g-tmce
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Tkinter app for creating and extracting MKV files with TMDB metadata"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   'zenity: GTK-native file dialogs'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c2a19afdc6a23c1864313c206d43075a36c0ccf691f3562314eaf6191d07ec90')
+sha256sums=('0d763adc1c64e31d0e7c2d964a7af0fdfff6b8dd979d4289ad98ffb5e74a55c5')
 
 package() {
   cd "G-TMCE-${pkgver}"
