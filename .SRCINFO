@@ -1,6 +1,6 @@
 pkgbase = wj
 	pkgdesc = Cross-project daily task & time tracker via an append-only TSV event log
-	pkgver = 0.12.22
+	pkgver = 0.12.23
 	pkgrel = 1
 	url = https://github.com/Katestheimeno/wj
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = wj
 	depends = sed
 	depends = util-linux
 	depends = coreutils
-	source = wj-0.12.22.tar.gz::https://github.com/Katestheimeno/wj/archive/refs/tags/v0.12.22.tar.gz
-	sha256sums = d75d4c585d3c25c842098bf82f03476990a60ed080b9ea8f90931a1de900c9a2
+	source = wj-0.12.23.tar.gz::https://github.com/Katestheimeno/wj/archive/refs/tags/v0.12.23.tar.gz
+	sha256sums = f47b3e25d8889d50f26c10cbaeed37e52abf777ef72c51365450af7250af5add
 
 pkgname = wj
