@@ -1,13 +1,12 @@
 pkgbase = cmuclmtk
 	pkgdesc = Language model tools for CMU Sphinx
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cmusphinx.github.io/
-	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
+	depends = glibc
 	source = http://downloads.sourceforge.net/cmusphinx/cmuclmtk-0.7.tar.gz
-	md5sums = 21bfb116d309e43e61def3692f98cdac
+	sha256sums = d23e47f00224667c059d69ac942f15dc3d4c3dd40e827318a6213699b7fa2915
 
 pkgname = cmuclmtk
-
