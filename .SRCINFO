@@ -1,6 +1,6 @@
 pkgbase = tmux-tad-bin
 	pkgdesc = Tmux session and group manager with a native TUI dashboard (prebuilt binary)
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/ttpears/tad
 	arch = x86_64
@@ -8,20 +8,20 @@ pkgbase = tmux-tad-bin
 	depends = tmux
 	depends = gcc-libs
 	depends = glibc
-	provides = tmux-tad=0.11.1
+	provides = tmux-tad=0.11.2
 	conflicts = tad-bin
 	conflicts = tad
 	conflicts = tmux-tad
 	conflicts = tmux-tad-git
 	options = !debug
 	options = !strip
-	source = tad-0.11.1::https://github.com/ttpears/tad/releases/download/v0.11.1/tad-v0.11.1-x86_64-linux
-	source = tad.bash-0.11.1::https://github.com/ttpears/tad/releases/download/v0.11.1/tad.bash
-	source = _tad-0.11.1::https://github.com/ttpears/tad/releases/download/v0.11.1/_tad
-	source = groups.yaml.example-0.11.1::https://github.com/ttpears/tad/releases/download/v0.11.1/groups.yaml.example
-	source = config.yaml.example-0.11.1::https://github.com/ttpears/tad/releases/download/v0.11.1/config.yaml.example
-	source = LICENSE-0.11.1::https://github.com/ttpears/tad/releases/download/v0.11.1/LICENSE
-	sha256sums = af07f6be819116ba96a7cd9827c04aaef770b529ceca80faa1372a560f767a66
+	source = tad-0.11.2::https://github.com/ttpears/tad/releases/download/v0.11.2/tad-v0.11.2-x86_64-linux
+	source = tad.bash-0.11.2::https://github.com/ttpears/tad/releases/download/v0.11.2/tad.bash
+	source = _tad-0.11.2::https://github.com/ttpears/tad/releases/download/v0.11.2/_tad
+	source = groups.yaml.example-0.11.2::https://github.com/ttpears/tad/releases/download/v0.11.2/groups.yaml.example
+	source = config.yaml.example-0.11.2::https://github.com/ttpears/tad/releases/download/v0.11.2/config.yaml.example
+	source = LICENSE-0.11.2::https://github.com/ttpears/tad/releases/download/v0.11.2/LICENSE
+	sha256sums = 944f23970102454f303af35d14060c08fec904fed94efbed25dfb56ca4906a06
 	sha256sums = 0372dd0eaa01ed0538e1413950a04412405be0305f2b81b148a7077893d4062c
 	sha256sums = 7cd74ed54d20443a0842afc292c7e65e5b4512e2175c73131660ba4c77ad3d7f
 	sha256sums = dd2c1038564861ec5992e7163fd61284c99cd6bfe68ff86e4ed4fc5d3d77ea4f
