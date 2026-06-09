@@ -1,16 +1,17 @@
 pkgbase = sqlar-fossil
 	pkgdesc = Compressed archives in SQLite databases, including a fuse filesystem
-	pkgver = 0ab1c6f50f
+	pkgver = 4824e73896
 	pkgrel = 1
-	url = https://sqlite.org/sqlar/doc/trunk/README.md
-	arch = any
+	url = https://sqlite.org/sqlar
+	arch = x86_64
 	license = Public Domain
 	makedepends = fossil
-	makedepends = gcc
-	makedepends = make
-	makedepends = glibc
-	makedepends = fuse3
+	depends = fuse2
+	depends = glibc
+	depends = zlib
 	provides = sqlar
 	conflicts = sqlar
+	source = fossil+https://sqlite.org/sqlar
+	sha1sums = SKIP
 
 pkgname = sqlar-fossil
