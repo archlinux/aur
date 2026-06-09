@@ -1,6 +1,6 @@
 pkgbase = phantimer
 	pkgdesc = A ghost timer window spawner for Hyprland
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/aman-sanin/phantimer
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = phantimer
 	depends = gcc-libs
 	depends = hyprland
 	optdepends = foot: The default terminal emulator used
-	source = phantimer-0.1.1.tar.gz::https://github.com/aman-sanin/phantimer/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = f477eb8b758218307bb0a542a737d7e5f9889d66b1e2ccd20482e56f6cfb874d
+	source = phantimer-0.1.2.tar.gz::https://github.com/aman-sanin/phantimer/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 7c0dfac53a162701fd5c830dc41a06d1e06117b7aef186c67c2f9659eec868aa
 
 pkgname = phantimer
