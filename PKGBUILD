@@ -19,6 +19,9 @@ sha256sums_armv6h=('8a4cd3a540d45985d8c37bf5ec69993b523ed1d93635bb9a1ea008fbfe25
 sha256sums_armv7h=($sha256sums_armv6h)
 sha256sums_x86_64=('e5e51d2640c2ff34ef3b436f3bdf37838120b15160d73dfbab82e90773b6b372')
 
+# Need to change the user agent string because Cloudflare may block curl and wget
+DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --user-agent Mozilla --retry-delay 3 -o %o %u')
+
 package() {
   # Extract
   tar -xf data.tar.gz --exclude="usr/share/lintian" -C "${pkgdir}"/
