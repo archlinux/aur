@@ -9,8 +9,8 @@ pkgdesc="Set contrast, brightness and gamma on wlroots-based compositors"
 arch=(i686 x86_64)
 url="https://github.com/mischw/$_pkgname"
 license=(MIT)
-depends=('gtk3' )
-makedepends=(git meson  wlroots)
+depends=('gtk3' 'glib2')
+makedepends=(git meson gettext wayland)
 #source=("git+$url.git#commit=e2385950d97a3baf1b6e2f064dd419ccec179586"
 source=("git+$url.git"
         "git+https://github.com/swaywm/wlr-protocols.git"
