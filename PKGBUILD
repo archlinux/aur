@@ -3,97 +3,66 @@
 # Contributor: Tavian Barnes <tavianator@tavianator.com>
 # Contributor: Rafał Wyszomirski <m6vuthzbw at mozmail dot com>
 
-## links
+## webpage
 # https://vpn.mozilla.org
-# https://github.com/mozilla-mobile/mozilla-vpn-client
-# https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 
 pkgname=mozillavpn
 pkgver=2.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
-url="https://vpn.mozilla.org"
+url="https://github.com/mozilla-mobile/mozilla-vpn-client"
 license=('MPL-2.0')
 depends=(
-  'dbus'
-  'freetype2'
   'hicolor-icon-theme'
-  'libtiff'
-  'libxcb'
-  'libxdmcp'
-  'libxmu'
-  'libxrender'
+  'libsecret'
   'polkit'
   'qt6-5compat'
-  'qt6-charts'
   'qt6-declarative'
-  'qt6-imageformats'
   'qt6-networkauth'
-  'qt6-shadertools'
   'qt6-svg'
   'qt6-websockets'
   'wireguard-tools'
-  'org.freedesktop.secrets'
 )
 makedepends=(
-  'clang'
-  'cmake'
-  'flex'
+  'rust'
   'go'
-  'python-lxml'
+  'ninja'
+  'python-click'
+  'python-jinja'
+  'python-jsonschema'
   'python-yaml'
   'qt6-tools'
-  'rust'
-  'llvm-libs'
 )
 optdepends=(
   'qt6-wayland: for Wayland support'
   'wayland-protocols: for Wayland support'
 )
-
 install=mozillavpn.install
+options=('!lto')
 
-_debian_series="resolute16"
-_dl_url="https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn"
-_pkgsrc="$pkgname-$pkgver"
-source=(
-  "$_dl_url/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
-)
-sha256sums=('ed5b4c5013a77fa1b57a7554f00ef629fd08aad64e0ca901d8e06595a6a7f96f')
-
-_cargo_env() {
-  : ${CARGO_HOME:=$SRCDEST/cargo-home}
-  export CARGO_HOME
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-
-  CFLAGS+=" -ffat-lto-objects"
-}
+_pkgsrc="${pkgname}"
+source=("${_pkgsrc}"::"git+${url}.git#tag=v${pkgver}")
+sha256sums=('8f1fe6874197da9a681136e186ac0820b2687ff54aa111e658cb5afbe9ec0679')
 
 prepare() {
-  _cargo_env
-
-  cd "$_pkgsrc"
-  cargo update
+  cd "${_pkgsrc}"
+  git submodule update --init --recursive --depth=1
 }
 
 build() {
-  _cargo_env
-
   local _cmake_options=(
+    -S "${_pkgsrc}"
     -B build
-    -S "$_pkgsrc"
+    -G Ninja
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -Wno-dev
   )
-
   cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 "$srcdir/$_pkgsrc/linux/org.mozilla.vpn.rules-others" "$pkgdir/usr/share/polkit-1/rules.d/org.mozilla.vpn.rules"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -Dm644 "${srcdir}/${_pkgsrc}/linux/org.mozilla.vpn.rules-others" "${pkgdir}/usr/share/polkit-1/rules.d/org.mozilla.vpn.rules"
 }
