@@ -1,11 +1,10 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.6.0'
+_upstreamver='0.6.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='inquirer-textual'
 _author='robvanderleek'
-
 
 pkgname="python-${_pypi_package}"
 pkgver="${_upstreamver}"
@@ -20,7 +19,7 @@ depends=('python' 'python-rich' 'python-textual' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('5e23a9346aa1aefe0026f54b99641270aaae35e62c3983db333cc170890812b9')
+sha256sums=('d8b0c959e4e58fd730a2fc3da4c92612bef757db1c664399cc7534be8c5b757a')
 
 
 build() {
