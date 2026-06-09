@@ -1,25 +1,18 @@
 # Maintainer: Max Gautier <mg@max.gautier.name>
 pkgname=msmtpq-systemd
+url="https://codeberg.org/VannTen/msmtpq-systemd"
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Systemd unit for queuing and sending mail"
 arch=(any)
-license=('GPL')
+license=('MIT')
 groups=()
 depends=(msmtp)
-source=(msmtp-flush-mail msmtp.path msmtpq-systemd msmtp.service)
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+source=("$pkgname-$pkgver::$url")
+sha512sums=('SKIP')
 
 package() {
-	for i in msmtp.{path,service}
-	do
-		install -Dm644 $i $pkgdir/usr/lib/systemd/user/$i
-	done
-	for i in msmtp{-flush-mail,q-systemd}
-	do
-		install -Dm755 $i $pkgdir/usr/bin/$i
-	done
+
+    make -C "$pkgname-$pkgver" DESTDIR=$pkgdir install
+    install -Dm 644 "$pkgname-$pkgver"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
