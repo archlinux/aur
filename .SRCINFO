@@ -1,6 +1,6 @@
 pkgbase = getfem
 	pkgdesc = A finite element framework for partial differential equations
-	pkgver = v5.4.4
+	pkgver = v5.5
 	pkgrel = 1
 	url = http://getfem.org
 	arch = x86_64
