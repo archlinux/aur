@@ -51,11 +51,12 @@ build() {
     local base_args=(
         --compile-no-warning-as-error
         -Wno-dev
-        -Wno-error=format-security
         -G Ninja
         -DCMAKE_BUILD_TYPE=Release
         -DSHERPA_ONNX_USE_PRE_INSTALLED_ONNXRUNTIME_IF_AVAILABLE=ON
     )
+    export CFLAGS="${CFLAGS} -Wno-error=format-security"
+    export CXXFLAGS="${CXXFLAGS} -Wno-error=format-security"
 
     cd "${pkgbase}-${pkgver}"
     cmake "${base_args[@]}" \
