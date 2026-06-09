@@ -20,7 +20,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/harehare/mq/v${pkgver}/LICENSE"
 )
 
-sha256sums=('84033abdc3a16022da755186b4b5648a7670fa0672fa95ca8f2794d3ab7f8749')
+sha256sums=('26d7095907aaa4e84c1cc79e37c5d6a5b19a939b378cda17baaaf84376cfd368')
 sha256sums_x86_64=('6ae604d66cf69b2acf1448abe8c7c68494cc41bd25d2efc6c6404afb5cc5b71a')
 
 package() {
