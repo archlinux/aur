@@ -7,15 +7,19 @@ pkgdesc="F2P Evo — unofficial Hytale launcher (Rust + Tauri 2 + Vue 3) with mu
 arch=('x86_64')
 url="https://git.sanhost.net/sanasol/f2p-evo"
 license=('custom')
-depends=('webkit2gtk-4.1' 'libayatana-appindicator')
-makedepends=('rust' 'nodejs' 'git' 'clang' 'pkgconf')
+depends=('webkit2gtk-4.1' 'libappindicator' 'gtk3' 'hicolor-icon-theme')
+optdepends=(
+  "noto-fonts-cjk: Chinese/Japanese/Korean support"
+  "noto-fonts-emoji: Emoji support"
+)
+makedepends=('rust' 'nodejs' 'git' 'clang' 'pkgconf' 'npm')
 provides=('f2p-evo')
 conflicts=('f2p-evo' 'hytale-f2p-git')
 replaces=('f2p-evo')
 source=("git+$url.git"
   "F2P-Evo.desktop")
 sha256sums=('SKIP'
-            '1dbc9a72ea40f901584870540e18f309463d011c1bbbe362c19b85e4eff9b3d0')
+  '1dbc9a72ea40f901584870540e18f309463d011c1bbbe362c19b85e4eff9b3d0')
 
 pkgver() {
   cd "$_pkgname"
