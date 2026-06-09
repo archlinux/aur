@@ -1,5 +1,4 @@
 [mboxshell]
-source = "github"
-github = "dcarrero/mboxshell"
-use_max_tag = true
+source = "git"
+git = "https://github.com/dcarrero/mboxshell.git"
 prefix = "v"
