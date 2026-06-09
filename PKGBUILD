@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 #  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
@@ -5,30 +6,34 @@
 
 _pkgname=sparklines
 pkgname="python-$_pkgname"
-pkgver=0.7.0
-pkgrel=1
 pkgdesc='Text-based sparkline command line mimicking those of Edward Tufte'
-arch=('any')
+pkgver=1.0.0
+pkgrel=1
 url="https://github.com/deeplook/$_pkgname"
-license=('MIT')  # SPDX-License-Identifier: MIT
-depends=(
-  'python'
-  'python-termcolor'
-)
+changelog="$pkgname.changelog"
+arch=('any')
+license=('MIT')
 makedepends=(
   'python-build'
   'python-installer'
   'python-wheel'
 )
-source=(
-  "https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
+depends=(
+  'python'
+  'python-termcolor'
 )
-sha256sums=(
-  'efd2ff5126dac53ea4212c1e225f286beaf1907b35204465b65010db2eec4b2a'
+optdepends=(
+  'python-psutil: needed to rune the example(s)'
+  'python-textual: needed to rune the example(s)'
 )
 provides=("$pkgname" "$_pkgname")
-conflicts=("$_pkgname")
-changelog="$pkgname.changelog"
+options=('!strip')
+source=(
+  "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+)
+sha256sums=(
+  'fe7a7b9293c769e8b60e5403b10c11543fc22c683ef1272385d9cff5142274c0'
+)
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -41,9 +46,11 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    CONTRIBUTORS.txt README.rst
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    CHANGELOG.md CONTRIBUTORS.txt README.md
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/examples" \
+    examples/*.*
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE.txt
 }
 

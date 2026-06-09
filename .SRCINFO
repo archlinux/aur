@@ -1,6 +1,6 @@
 pkgbase = python-sparklines
 	pkgdesc = Text-based sparkline command line mimicking those of Edward Tufte
-	pkgver = 0.7.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/deeplook/sparklines
 	changelog = python-sparklines.changelog
@@ -11,10 +11,12 @@ pkgbase = python-sparklines
 	makedepends = python-wheel
 	depends = python
 	depends = python-termcolor
+	optdepends = python-psutil: needed to rune the example(s)
+	optdepends = python-textual: needed to rune the example(s)
 	provides = python-sparklines
 	provides = sparklines
-	conflicts = sparklines
-	source = https://pypi.org/packages/source/s/sparklines/sparklines-0.7.0.tar.gz
-	sha256sums = efd2ff5126dac53ea4212c1e225f286beaf1907b35204465b65010db2eec4b2a
+	options = !strip
+	source = sparklines-1.0.0.tar.gz::https://github.com/deeplook/sparklines/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = fe7a7b9293c769e8b60e5403b10c11543fc22c683ef1272385d9cff5142274c0
 
 pkgname = python-sparklines
