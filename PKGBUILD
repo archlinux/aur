@@ -1,7 +1,7 @@
 # Maintainer: clove3am (aka: Caltlgin) <clove.dev.mailbox.org>
 
 pkgname='wayback-machine-archiver'
-pkgver=3.5.2
+pkgver=3.6.0
 pkgrel=1
 pkgdesc='Submit web pages to the Wayback Machine for archiving'
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
   'python-wheel'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d476980d70bbb95a4724d7f91d7778ac8b7836bb40b52cf92e7ffd02b6250af3')
+sha256sums=('b2fb1865d844c0582742b7ab86a6e7eff9e4edde13fa6fbb1cd7ec64b21053e5')
 
 build() {
   cd "${pkgname}-${pkgver}"
