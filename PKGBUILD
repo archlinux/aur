@@ -2,7 +2,7 @@
 
 pkgname=proton-authenticator-bin
 _name=${pkgname%-bin}
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='2FA app from Proton to securely sync and backup 2FA codes'
 arch=(x86_64)
@@ -22,8 +22,8 @@ depends=(cairo
 provides=($_name)
 conflicts=($_name)
 source_x86_64=(https://proton.me/download/authenticator/linux/ProtonAuthenticator_${pkgver}_amd64.deb)
-sha512sums_x86_64=('99de0004e9036c80f8565a1689266744030ed4790dc0cec9b04328c28b9114d08436ce49d41d80e18811943014a430fb93acb1fd9975471a0038587b246fe2fb')
-b2sums_x86_64=('54714daf7795657917a054d284db1920bc62c0023a7689d8f1672d03d99563252a65ef083f9c60f07b3c51aab3f32809213bd98d8e3b4067857a9cf6114e3a06')
+sha512sums_x86_64=('b438e6cc14a7c7fd22decd8e7bd00b11e2c3b5f490e8a3a751f3c8d9a2952604a974a50eda8f119aace88596266c6b446d72dfd3b840ee565d52fee7fe57d6d0')
+b2sums_x86_64=('823145b37b9c09d63a18811693efaf7f34bc837b3795ba1a3b74099f481e9aadcfd289286b5b9b9b9b26b05610c694c4b291d51aafb24fcadf36b7338af8956b')
 
 prepare() {
     tar -xf data.tar.gz
