@@ -14,8 +14,8 @@ pkgdesc="File opener using mimetypes and mailcap"
 license=('MIT')
 arch=('any')
 
-_url_pypi='https://pypi.org/project/picon/'
-_url_github='https://github.com/gokcehan/picon'
+_url_pypi='https://pypi.org/project/mopen/'
+_url_github='https://github.com/gokcehan/mopen'
 url="${_url_github}"
 
 provides=("${_pypi_package}")
