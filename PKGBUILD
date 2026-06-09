@@ -1,6 +1,6 @@
 # Maintainer: Andrew Marin <andrewmarin367@gmail.com>
 pkgname=vice-clipper
-pkgver=1.1.5
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Medal.tv-style game clip recorder for Linux — instant replay, session recording, and one-click sharing"
 arch=('x86_64')
@@ -27,6 +27,8 @@ depends=(
 optdepends=(
     'wf-recorder: Wayland fallback recording backend'
     'cloudflared: public share links that work outside your LAN'
+    'wl-clipboard: copy share links on Wayland'
+    'xclip: copy share links on X11'
 )
 makedepends=(
     'python-build'
@@ -35,7 +37,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/eklonofficial/Vice/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a4a95255941e243de7a10f1eaa4ea4e308b28cc161a9acf1843daf46b988de30')
+sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/Vice-$pkgver"
