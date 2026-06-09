@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=scratchmark
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Organized markdown editor"
 arch=('x86_64')
@@ -10,18 +10,19 @@ depends=(
   'gtk4'
   'gtksourceview5'
   'libadwaita'
+  'libspelling'
 )
 makedepends=(
   'cargo'
   'meson'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sevonj/scratchmark/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('10726b17614afeff5cf1194032e376ef8f3c9ca54701084ca32d2c522dd36b2c')
+sha256sums=('2e68f0db8ff72749ff11a927e97ff72c746d3714633971b868befd46d05f74fb')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc --print host-tuple)"
+  cargo fetch --target host-tuple
 }
 
 build() {
