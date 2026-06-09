@@ -21,7 +21,7 @@ source=(
     "https://raw.githubusercontent.com/jezzofficial/FindNumGame/main/findnumgame-icon.png"
 )
 sha256sums=('9c6a3f2bb946256614693916812118399a81d33ad0e2ebdcb2f656f72a7846e2'
-            'fbe3af6162823e93c8d65f225333af2e16a8aedd8746b298d02c42a6a49e040a'
+            '194732d6b8e94973d99b064fef72ff05025d0f7dcaea9ef64e75ac93129a60b6'
             '91b56b661d31e8a776c11dfd2de1d52a452caf79b5278f1731b444cf17f04d7f')
 
 package() {
