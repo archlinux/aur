@@ -1,0 +1,24 @@
+pkgbase = tabbyml-cuda-bin
+	pkgdesc = Self-hosted AI coding assistant (prebuilt CUDA binary)
+	pkgver = 0.32.0
+	pkgrel = 1
+	url = https://github.com/TabbyML/tabby
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = bash
+	depends = cuda
+	depends = nvidia-utils
+	optdepends = katana: crawl developer documentation context providers (upstream requires >= 1.1.2)
+	provides = tabbyml=0.32.0
+	conflicts = tabbyml
+	conflicts = tabbyml-git
+	conflicts = tabbyml-bin
+	conflicts = tabbyml-vulkan-bin
+	options = !strip
+	source = tabbyml-cuda-bin-0.32.0.tar.gz::https://github.com/TabbyML/tabby/releases/download/v0.32.0/tabby_x86_64-manylinux_2_28-cuda123.tar.gz
+	sha256sums = ce1eb25870702a008583c31b147c70e5feda73501a9136196199ba1ace2d211e
+
+pkgname = tabbyml-cuda-bin
