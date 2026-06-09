@@ -30,7 +30,8 @@ pkgname="${pkgbase}"
 #_pkgver='6.00'; _dl='8/0100007658/42';_suffix1='m17n';_suffix2='08' # more drivers than 8/0100007658/43
 #_pkgver='6.00'; _dl='8/0100007658/43';_suffix1='m17n';_suffix2='03'
 #_pkgver='6.10';  _dl='8/0100007658/45';_suffix1='m17n';_suffix2='01'
-_pkgver='6.20';  _dl='8/0100007658/47';_suffix1='m17n';_suffix2='20'
+#_pkgver='6.20';  _dl='8/0100007658/47';_suffix1='m17n';_suffix2='20'
+_pkgver='6.30';  _dl='8/0100007658/48';_suffix1='m17n';_suffix2='07'
 pkgver="${_pkgver}.${_suffix2}"
 pkgrel=1
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
@@ -40,31 +41,30 @@ arch=('x86_64' 'aarch64')
 url='https://www.canon-europe.com/support/business/products/office-printers/imagerunner/series/imagerunner-1730i.html'
 license=('GPL-2.0-only' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
-depends=('libcups' 'glibc' 'gcc-libs' 'libxml2-legacy' 'glib2' 'hicolor-icon-theme')
-optdepends=(
-  'libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
-  'jbigkit: solves some cpu hangs'
-  #'libjbig-shared: port of debian/fedora specific jbigkit functionality that can prevent cpu hangs on some models'
-  'ghostscript: necessary for printing on some devices'
-  'gtk3: for cnsetuputil2'
-  'gdk-pixbuf2: for cnsetuputil2'
-  'cairo: for cnsetuputil2'
-  'pango: for cnsetuputil2'
-  'at-spi2-core: for cnsetuputil2'
+depends=(libcups glibc libstdc++ libxml2-legacy libxml2 glib2 hicolor-icon-theme libjpeg6-turbo gtk3)
+optdepends=('jbigkit: solves some cpu hangs'
+            #'libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
+            #'libjbig-shared: port of debian/fedora specific jbigkit functionality that can prevent cpu hangs on some models'
+            'ghostscript: necessary for printing on some devices'
+            #'gtk3: for cnsetuputil2'
+            'at-spi2-core: for cnsetuputil2'
+            'gdk-pixbuf2: for cnsetuputil2'
+            'cairo: for cnsetuputil2'
+            'pango: for cnsetuputil2'
 )
-makedepends=('jbigkit' 'gzip' 'gtk3')
+makedepends=('jbigkit' 'gzip')
 provides=("cnrdrvcups-lb=${_pkgver}")
-conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
+conflicts=(cndrvcups-lb cndrvcups-common-lb)
 conflicts+=('cndrvcups-lb-bin' 'cnrdrvcups-lb')
-options=('!emptydirs' '!strip' '!libtool' '!debug')
+options=(!emptydirs !strip !libtool !debug)
 source=(
   "https://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
 )
-md5sums=('5b42c627a2079fd65cfdc611c6f61b82')
-sha512sums=('ac5ed49da292f4cf84652863762806d2fd3bdb0322c362e405151fb5769a3af5f11c21fe606395eeff933cc88a47fa1d1c3dbd232188cdf0d0db596562d7f868')
+md5sums=('fe47fb8aae918c4987117cc0eba6f888')
+sha512sums=('210aa05136c67a084b92e728666f1a2d6df25eb6fe94ea16f1e7d83b35a61da75ba918e157f4dabba1ef972465132cd5ae14646dfadf4945523b36896f971f8c')
 
 build() {
-  set -u
+  local -; set -u
   shopt -s nullglob
 
   #declare -A _archd=([i686]='32-bit_Driver' [x86_64]='64-bit_Driver')
@@ -147,13 +147,11 @@ build() {
   mv Documents/*/*.txt "${_dta}/usr/share/licenses/${pkgbase}/"
 
   shopt -u nullglob
-  set +u
 }
 
 package() {
-  set -u
+  local -; set -u
   mv dta/* "${pkgdir}"
   # grep -he '^*ModelName:' "${pkgdir}/usr/share/cups/model"/*.ppd | sort -u > "${startdir}/models.${pkgver}-ex${_opt_ppdlevel}.txt"
-  set +u
 }
 set +u
