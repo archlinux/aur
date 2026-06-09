@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawx
 _pkgname=ClawX
-pkgver=0.4.8
+pkgver=0.4.9
 _electronversion=40
 _nodeversion=24
 pkgrel=1
