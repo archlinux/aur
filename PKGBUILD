@@ -4,10 +4,10 @@
 
 pkgname=yt-dlp-ejs-anyruntime
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='External JavaScript for yt-dlp supporting many runtimes (supports other than Deno)'
 conflicts=(yt-dlp-ejs)
-replaces=(yt-dlp-ejs)
+provides=(yt-dlp-ejs)
 arch=(any)
 url='https://github.com/yt-dlp/ejs'
 license=(Unlicense)
