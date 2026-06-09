@@ -11,7 +11,7 @@ makedepends=('gcc' 'make')
 provides=('7sh')
 conflicts=('7sh-git')
 
-source=("https://github.com/the7erez/7sh/archive/refs/tags/v\${pkgver}.tar.gz")
+source=("https://github.com/the7erez/7sh/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {

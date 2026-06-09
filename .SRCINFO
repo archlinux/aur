@@ -11,7 +11,7 @@ pkgbase = 7sh
 	depends = glibc
 	provides = 7sh
 	conflicts = 7sh-git
-	source = https://github.com/the7erez/7sh/archive/refs/tags/v${pkgver}.tar.gz
+	source = https://github.com/the7erez/7sh/archive/refs/tags/v1.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = 7sh
