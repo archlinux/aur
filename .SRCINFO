@@ -3,11 +3,12 @@ pkgbase = vtlock
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://hub.darcs.net/stef204/vtlock
+	install = vtlock.install
 	arch = x86_64
 	license = MIT
 	makedepends = darcs
 	depends = glibc
 	source = vtlock::https://hub.darcs.net/stef204/vtlock
-	sha256sums = SKIP
+	sha256sums = 14e33ec18b170249d9371c2538b4e2b8f6813247ae8f1332453b1e8a2ecec849
 
 pkgname = vtlock

@@ -10,7 +10,8 @@ license=('MIT')
 depends=('glibc')
 makedepends=('darcs')
 source=("$pkgname::https://hub.darcs.net/stef204/vtlock")
-sha256sums=('SKIP')
+install=vtlock.install
+sha256sums=('14e33ec18b170249d9371c2538b4e2b8f6813247ae8f1332453b1e8a2ecec849')
 
 pkgver() {
     cd "$pkgname"

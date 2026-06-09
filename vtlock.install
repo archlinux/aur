@@ -1,0 +1,5 @@
+post_install() {
+    echo ">>> vtlock: To enable VT locking, set the setuid bit:"
+    echo "    sudo chmod u+s /usr/bin/vtlock"
+    echo ">>> Then create a wrapper script. Examples in /usr/share/doc/vtlock/README.md"
+}
