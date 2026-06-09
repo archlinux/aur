@@ -1,0 +1,3 @@
+[python-fastmcp-slim]
+source = "pypi"
+pypi = "fastmcp-slim"
