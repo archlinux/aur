@@ -1,7 +1,7 @@
 # Maintainer: llm96 <llm96@fervidex.net>
 
 pkgname=safetyhook
-pkgver=0.6.9
+pkgver=0.6.10
 pkgrel=1
 pkgdesc='C++23 procedure hooking library.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSL-1.0')
 depends=('zydis')
 makedepends=('git' 'cmake' 'doxygen')
 source=("https://github.com/cursey/safetyhook/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('2cd773fbcec62945e8fae4b1858ecc77e7cfa84d55df694cb38676d440dd47d2')
+sha256sums=('e30b8ec44a2eeb26ebe1a8006f03649de0686e5bbf1f5a9d29d98670a6c10f92')
 
 build() {
   cmake \
@@ -20,6 +20,7 @@ build() {
     -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D BUILD_SHARED_LIBS=ON \
+    -D CMKR_SKIP_GENERATION=ON \
     -D SAFETYHOOK_BUILD_DOCS=ON \
     -D SAFETYHOOK_FETCH_ZYDIS=OFF
   cmake --build build
