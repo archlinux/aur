@@ -1,13 +1,13 @@
 pkgbase = mby
 	pkgdesc = Terminal client for Emby media server
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/slatkin/mby
 	arch = x86_64
 	license = MIT
 	depends = mpv
 	depends = openssl
-	source = mby-0.3.1-linux-x86_64.tar.gz::https://github.com/slatkin/mby/releases/download/v0.3.1/mby-0.3.1-linux-x86_64.tar.gz
-	sha256sums = debfe9f4f55947b13f5539724b525c410add455f98c230ae64f504f11dd51b77
+	source = mby-0.3.2-linux-x86_64.tar.gz::https://github.com/slatkin/mby/releases/download/v0.3.2/mby-0.3.2-linux-x86_64.tar.gz
+	sha256sums = ee3c694c1328fa3f2570c6c2b621da9df00db96674009ed6354be063f2a5f069
 
 pkgname = mby
