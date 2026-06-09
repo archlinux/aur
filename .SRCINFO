@@ -1,6 +1,6 @@
 pkgbase = codexbar
 	pkgdesc = Waybar widget displaying OpenAI Codex subscription usage with colored progress bars
-	pkgver = 0.3.4
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/mryll/codexbar
 	arch = any
@@ -11,9 +11,10 @@ pkgbase = codexbar
 	depends = jq
 	optdepends = libnotify: desktop notifications on session expiry
 	optdepends = otf-font-awesome: OpenAI brand icon (Font Awesome >= 7.0.0)
+	optdepends = ttf-jetbrains-mono-nerd: aligned framed tooltip (--frame)
 	provides = waybar-codex-usage
 	conflicts = waybar-codex-usage
-	source = codexbar-0.3.4.tar.gz::https://github.com/mryll/codexbar/archive/refs/tags/v0.3.4.tar.gz
-	sha256sums = 1894b330e158604ee0a44f356447de092ba32f0f8dc2e1264549d94642a9ee77
+	source = codexbar-0.4.0.tar.gz::https://github.com/mryll/codexbar/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = e92c9a4bdfa2c9434f6a79fcd37d4cb0551bb08ddb3e66324884263fbbc26ccb
 
 pkgname = codexbar
