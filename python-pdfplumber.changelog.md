@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## 0.11.9 — 2026-01-05
+
+### Changed
+- Upgrade `pdfminer.six` from `20251107` to `20251230`. ([75bbed3](https://github.com/jsvine/pdfplumber/commit/75bbed3) + [1524ce4](https://github.com/jsvine/pdfplumber/commit/1524ce4) + [26687c3](https://github.com/jsvine/pdfplumber/commit/26687c3) + [9555532](https://github.com/jsvine/pdfplumber/commit/9555532))
+
+## [0.11.8] - 2025-11-08
+
+### Added
+- Add `edge_min_length_prefilter` table setting for initial edge filtering. Lowering this setting enables capturing small edge segments (e.g., dashed lines) that would be filtered out with the default minimum length of 1. Raising this setting would be less common but plausible. (h/t @bronislav). ([#1274](https://github.com/jsvine/pdfplumber/issues/1274)).
+
+### Changed
+- Upgrade `pdfminer.six` from `20250506` to `20251107` (h/t @henry-renner-v). ([0079187](https://github.com/jsvine/pdfplumber/pull/1348/commits/0079187ab5493f4440147cde83ee627cab081079))
+
 ## [0.11.7] - 2025-06-12
 
 ### Added

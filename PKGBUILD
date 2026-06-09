@@ -1,18 +1,18 @@
 # Maintainer: Falko Galperin <dr (dot) asasteghof (at) gmail (dot) com>
 pkgname=python-pdfplumber
-pkgver=0.11.7
+pkgver=0.11.9
 pkgrel=1
 pkgdesc="Plumb a PDF for detailed information about each char, rectangle, line, et cetera."
 arch=(any)
 url="https://github.com/jsvine/pdfplumber"
 license=('MIT')
 # See `prepare()` for why we use >= rather than == for python-pdfminer here.
-depends=('python>=3.8.0' 'python-pdfminer>=20250506' 'python-pillow>=9.1.0' 'python-pypdfium2>=4.18.0')
+depends=('python>=3.10.0' 'python-pdfminer>=20260107' 'python-pillow>=9.1.0' 'python-pypdfium2>=4.18.0')
 makedepends=('python-setuptools')
 changelog=$pkgname.changelog.md
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("fa67773e5e599de1624255e9b75d1409297c5e1d7493b386ce63648637c67368")
+sha256sums=("481224b678b2bbdbf376e2c39bf914144eef7c3d301b4a28eebf0f7f6109d6dc")
 
 prepare() {
   # Somewhat of an ugly hack, but see here: https://aur.archlinux.org/packages/python-pdfplumber#comment-864370
