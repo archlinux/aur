@@ -6,6 +6,6 @@ pkgbase = eldiron-bin
 	arch = x86_64
 	license = MIT
 	source = Eldiron-v0.9.11.deb::https://github.com/markusmoenig/Eldiron/releases/download/v0.9.11/Eldiron-Creator.deb
-	md5sums = 281c117fd1df16fc18044591b41841d8
+	md5sums = 5ac68ab1176035e211e8fc38599127f9
 
 pkgname = eldiron-bin

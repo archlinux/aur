@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/markusmoenig/Eldiron"
 license=('MIT')
 source=("Eldiron-v$pkgver.deb::https://github.com/markusmoenig/Eldiron/releases/download/v$pkgver/Eldiron-Creator.deb")
-md5sums=('281c117fd1df16fc18044591b41841d8')
+md5sums=('5ac68ab1176035e211e8fc38599127f9')
 
 package() {
   tar xvf data.tar.gz
