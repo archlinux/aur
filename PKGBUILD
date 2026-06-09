@@ -1,8 +1,8 @@
 # Maintainer: LeafEvans <https://github.com/leafevans>
 
 pkgname=sshuttlee
-pkgver=26.0.0
-pkgrel=3
+pkgver=26.1.0
+pkgrel=1
 pkgdesc="Lightweight, fast and beautiful SSH + SFTP client"
 arch=('x86_64')
 url="https://github.com/sshuttlee/sshuttlee"
@@ -11,7 +11,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'openssl' 'libssh2')
 makedepends=('cargo' 'pnpm' 'nodejs' 'pkgconf' 'librsvg')
 conflicts=('sshuttlee-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sshuttlee/sshuttlee/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('91ac686db5c9266985b5ec854af43706a90712ea14ea6d8530b37757a0b310b6')
+sha256sums=('c52e4778d4c0e7164575bd2821d45f9467ed784603ce157365b490ab70fab5b9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
