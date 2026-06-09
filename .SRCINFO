@@ -1,7 +1,7 @@
 pkgbase = sinergia-dd-burner
 	pkgdesc = Grabador de imágenes ISO a unidades USB seguro y minimalista
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nacho-Telmo/Sinergia
 	arch = any
 	license = GPL3

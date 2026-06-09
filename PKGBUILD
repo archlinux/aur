@@ -1,7 +1,7 @@
 # Maintainer: Ignacio <Nacho-Telmo>
 pkgname=sinergia-dd-burner
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Grabador de imágenes ISO a unidades USB seguro y minimalista"
 arch=('any')
 url="https://github.com/Nacho-Telmo/Sinergia"
