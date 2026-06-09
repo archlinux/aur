@@ -5,6 +5,7 @@ pkgbase = squawk-cli
 	url = https://squawkhq.com/
 	arch = x86_64
 	license = Apache-2.0 OR MIT
+	makedepends = glibc
 	makedepends = cargo
 	makedepends = libgcc
 	makedepends = openssl
