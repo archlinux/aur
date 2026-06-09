@@ -1,7 +1,7 @@
 # Maintainer: Matt <matthew.panton@gmail.com>
 pkgname=nexus-open
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux controller for Corsair iCUE Nexus display device"
 arch=('x86_64')
 url="https://github.com/mantonx/nexus-open"

@@ -17,10 +17,11 @@ post_install() {
     udevadm trigger --subsystem-match=usb 2>/dev/null || true
     udevadm trigger --subsystem-match=hidraw 2>/dev/null || true
 
-    # Start the service now for any active user sessions.
+    # Enable and start the service for any active user sessions.
+    # pacman never runs systemctl --user preset-all, so we enable explicitly.
     while IFS= read -r uid; do
-        DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${uid}/bus" \
-            systemctl --user -M "${uid}@.host" start nexus-open.service 2>/dev/null || true
+        systemctl --user -M "${uid}@.host" enable nexus-open.service 2>/dev/null || true
+        systemctl --user -M "${uid}@.host" start nexus-open.service 2>/dev/null || true
     done < <(loginctl list-sessions --no-legend | awk '{print $2}' | sort -u)
 
     echo ""
