@@ -15,6 +15,8 @@
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [
           pkgs.pacman
+	  pkgs.fakeroot
+
 
           (pkgs.writeShellApplication {
             name = "gensrcinfo";

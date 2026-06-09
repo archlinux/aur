@@ -2,7 +2,7 @@
 
 pkgname=tonearm
 
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 
 pkgdesc="Unofficial native GTK4 / Adwaita music streaming client for TIDAL"
