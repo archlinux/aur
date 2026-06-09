@@ -1,5 +1,5 @@
 pkgbase = comfykick
-	pkgdesc = The official way to launch ComfyUI is suck, this is better.
+	pkgdesc = The official ways to launch ComfyUI SUCK, this is better.
 	pkgver = v1.1
 	pkgrel = 1
 	url = https://github.com/KFERMercer/ComfyKick

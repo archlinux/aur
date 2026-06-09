@@ -1,5 +1,5 @@
 [Unit]
-Description=Better ComfyUI Deploy Wrapper
+Description=Better ComfyUI Launcher 
 After=local-fs.target
 Wants=network-online.target
 
