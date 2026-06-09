@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://github.com/mantonx/nexus-open"
 license=('MIT')
 depends=('libayatana-appindicator' 'gtk3' 'libgl' 'libgles' 'libegl')
+install=nexus-open.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-amd64.tar.gz")
 sha256sums=('3f4bb26bc0e28d1e39f92ddab7581c8cf4871b74e331bc46d11de24aab58e440')
 
@@ -27,19 +28,4 @@ package() {
 
     install -Dm644 LICENSE \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-post_install() {
-    echo ""
-    echo "==> Nexus Open installed!"
-    echo ""
-    echo "Unplug and replug your iCUE Nexus — uaccess grants access automatically"
-    echo "in your desktop session. No group membership needed."
-    echo ""
-    echo "To start at login: systemctl --user enable --now nexus-open.service"
-    echo ""
-}
-
-post_upgrade() {
-    post_install
 }

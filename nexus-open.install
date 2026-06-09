@@ -1,0 +1,24 @@
+pre_install() {
+    # Remove unowned udev rule from manual/source installs to avoid
+    # pacman's "file exists in filesystem" conflict error.
+    local rule=/usr/lib/udev/rules.d/99-corsair-nexus.rules
+    if [[ -f "$rule" ]] && ! pacman -Qo "$rule" &>/dev/null; then
+        echo "==> Removing unowned $rule (previously installed manually)"
+        rm -f "$rule"
+    fi
+}
+
+post_install() {
+    echo ""
+    echo "==> Nexus Open installed!"
+    echo ""
+    echo "Unplug and replug your iCUE Nexus — uaccess grants access automatically"
+    echo "in your desktop session. No group membership needed."
+    echo ""
+    echo "To start at login: systemctl --user enable --now nexus-open.service"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

@@ -3,6 +3,7 @@ pkgbase = nexus-open
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/mantonx/nexus-open
+	install = nexus-open.install
 	arch = x86_64
 	license = MIT
 	depends = libayatana-appindicator
