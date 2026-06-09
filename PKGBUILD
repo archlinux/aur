@@ -31,7 +31,7 @@ depends=(
 	'python-pillow'
 	'python-pydantic'
 	'python-mcp'
-	'python-fastmcp'
+	'python-fastmcp-slim'
 	'python-cohere'
 	'python-mistralai'
 	'python-anthropic'
