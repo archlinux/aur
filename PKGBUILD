@@ -15,7 +15,7 @@ pkgver=4.7rc1
 # 1. replace text with -text
 # 2. add -stable if not present
 _pkgver="$(printf '%s\n' "${pkgver}" | sed -E 's/^([0-9.]*)([a-z].*)$/\1-\2/; /-/!s/$/-stable/')"
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced cross-platform 2D and 3D game engine"
 arch=(
   'aarch64'
@@ -112,7 +112,7 @@ package_godot-rc-bin() {
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname%-bin}/README.md"
   install -vDm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE.txt"
 
-  # cd "${srcdir}/${_pkgsrc}/misc/logo"
+  cd "${srcdir}/${_pkgsrc}/misc/logo"
   install -vDm644 "icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.svg"
 
   cd "${srcdir}/${_pkgsrc}/misc/dist/linux"
@@ -148,7 +148,7 @@ package_godot-mono-rc-bin() {
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname%-bin}/README.md"
   install -vDm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE.txt"
 
-  # cd "${srcdir}/${_pkgsrc}/misc/logo"
+  cd "${srcdir}/${_pkgsrc}/misc/logo"
   install -vDm644 "icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.svg"
 
   cd "${srcdir}/${_pkgsrc}/misc/dist/linux"
