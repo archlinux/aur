@@ -66,7 +66,9 @@ prepare() {
 
 	export RUSTUP_TOOLCHAIN=stable
 
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch \
+		--locked \
+		--target host-tuple
 }
 
 build() {
