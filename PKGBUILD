@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=officecli
-pkgver=1.0.104
+pkgver=1.0.106
 pkgrel=1
 pkgdesc="The first and best Office suite designed for AI agents"
 arch=($CARCH)
@@ -14,18 +14,23 @@ depends=(
     glibc
     libgcc
     libstdc++
+    python
 )
 makedepends=(
     git
     dotnet-host
     dotnet-runtime
     dotnet-sdk
+    python-build
+    python-installer
+    python-wheel
+    python-setuptools
 )
 optdepends=()
 backup=()
 options=('!strip' '!debug' '!lto')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('9b41307a6bc8fe3e1e21c21855f420e358d9aed7ecdc6b8f8fd7ea49c1a6a3bf')
+sha256sums=('4de5548abd77d1baf845a61408cc7fd019544fe2fb7d45559c76a39b4d8417a1')
 noextract=()
 
 prepare() {
@@ -35,6 +40,8 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}/"
     ./build.sh
+    cd sdk/python
+    python -m build --wheel --no-isolation
 }
 
 package() {
@@ -48,5 +55,7 @@ package() {
     fi
     install -vDm644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
     install -vDm644 *.md -t ${pkgdir}/usr/share/doc/${pkgname}/
-    cp -R docs ${pkgdir}/usr/share/doc/${pkgname}/
+    cp -R examples ${pkgdir}/usr/share/doc/${pkgname}/
+    cd sdk/python
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
