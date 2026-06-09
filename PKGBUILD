@@ -1,7 +1,7 @@
 # Maintainer: Trystan Sarrade <trystan.sarrade at somanyways dot co>
 pkgname=rproc-bin
 _pkgname=rproc
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Resource & process monitor for Linux, inspired by the Windows 11 Task Manager"
 arch=('x86_64')
@@ -34,9 +34,9 @@ source=(
 # Each sum is tagged with the source it covers so the release workflow can
 # refresh them in place via sed without parsing the whole block.
 sha256sums=(
-  '7e90335206ece1ebff40b585dc0d08dd2a02a77bf6c7b7b2b8e338b4dfa15d58' # bin
+  '1f8a53fa70b50e285b7ad806517eb7e46ffb00a6caf39137194916962e167fa0' # bin
   '52c4f615f92932cadc8ac68bffbabf6d7edbcfbac817163bbfe45e27e4cf307c' # desktop
-  '8021bb62444de0dcd65e106c1020b17bd0a22c01ec1e53cb2344eb52928a3150' # metainfo
+  '33abc04448deb538c92833dbd6be8eb4edb0439f420f9c0fc79b486641d82795' # metainfo
   '5cab06b8d3e4da5283b55c2c71a109bb8a4e5eb38c113395a40c463d19edc481' # svg
   'c1c42884fd79f02b694186df52dc025afa3cdb67ad31489a73d1dafe31f08f95' # service
   '87f838dd4476de000fa0b1b216e4a6323e1cad587eab2a8066161aa1669cda40' # license
