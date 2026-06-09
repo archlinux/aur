@@ -1,6 +1,6 @@
 pkgname=gwyddion
 pkgver=2.71
-pkgrel=1
+pkgrel=2
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 url="https://gwyddion.net/"
 license=("GPL")
