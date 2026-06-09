@@ -2,7 +2,7 @@
 # Contributor: shinya-saita <>
 pkgname='bokuchi'
 pkgver='0.9.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight, cross-platform Markdown editor"
 arch=('x86_64')
 url="https://github.com/Bokuchi-Editor/bokuchi"
