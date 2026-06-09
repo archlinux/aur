@@ -1,7 +1,7 @@
 pkgname=cxhair
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Custom crosshair overlay for Linux"
+pkgdesc="Calliexhair, A custom crosshair overlay for Linux"
 arch=('any')
 url="https://github.com/cab/calliexhair"
 license=('custom:unknown')
