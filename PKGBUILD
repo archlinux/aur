@@ -26,7 +26,7 @@ package() {
   cp -r "$srcdir"/* "$pkgdir/usr/lib/raid-util/"
 
   install -d "$pkgdir/usr/bin"
-  ln -s /usr/lib/iscsi-util/ISCSI-Util "$pkgdir/usr/bin/raid-util"
+  ln -s /usr/lib/raid-util/RAID-Util "$pkgdir/usr/bin/raid-util"
 
   install -Dm644 "$srcdir/raid-util.desktop" "$pkgdir/usr/share/applications/raid-util.desktop"
   install -Dm644 "$srcdir/raid-util.png" "$pkgdir/usr/share/pixmaps/raid-util.png"
