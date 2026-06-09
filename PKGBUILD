@@ -2,7 +2,7 @@
 # Maintainer: SignalRidge <support@signalridge.com>
 
 pkgname='slipway-bin'
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Governance CLI for AI-assisted software delivery'
 url='https://github.com/signalridge/slipway'
@@ -12,10 +12,10 @@ provides=('slipway')
 conflicts=('slipway')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/signalridge/slipway/releases/download/v${pkgver}/slipway_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('7da0028073dc8648ab07bfdb90a9b39babec0281a9728c12313a9e42f25c448c')
+sha256sums_aarch64=('ec375bc268cf3c7dddfcfb3729752dc093d3da394b55baa6c6ac86513a0f8538')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/signalridge/slipway/releases/download/v${pkgver}/slipway_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('10414d5eb17620b40df6a22e2474fe38d85f525200ab2d1ae7429ca7c0d7fd3a')
+sha256sums_x86_64=('3721d353a4ed5fe31f30edf5f4f1207dae53e9785121deca684dbf2880850128')
 
 package() {
   install -Dm755 "./slipway" "${pkgdir}/usr/bin/slipway"
