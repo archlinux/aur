@@ -1,3 +1,4 @@
-[mboxshell]
-source = "github"
-github = "dcarrero/mboxshell"
+[mboxshell-git]
+source = "git"
+git = "https://github.com/dcarrero/mboxshell.git"
+use_commit = true
