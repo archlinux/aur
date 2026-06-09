@@ -1,13 +1,13 @@
 # Maintainer: Omar Emara <mail@OmarEmara.dev>
 pkgname=nnd-bin
-pkgver=0.77
+pkgver=0.78
 pkgrel=1
 pkgdesc="A debugger for Linux."
 arch=('x86_64')
 url="https://github.com/al13n321/nnd"
 license=('Apache-2.0')
 source=("nnd::https://github.com/al13n321/nnd/releases/download/v${pkgver}/nnd")
-sha256sums=('2bc24859eb247d2892b3afa682bedd782a4871e26a88a607e74bca32a587d483')
+sha256sums=('cbc17c74de589ae584acc8fa342a0d4a6d29466bfc930ebf946dc5367e80bee7')
 conflicts=('nnd')
 options=('!strip')
 
