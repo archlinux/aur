@@ -2,9 +2,9 @@
 # Contributor: Keeyou <hukeyue@vip.163.com>
 
 pkgname=yass-proxy
-pkgver=1.24.7
+pkgver=1.24.13
 pkgrel=1
-_pkgver=1.24.7
+_pkgver=1.24.13
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy"
 arch=(x86_64 aarch64)
@@ -17,8 +17,17 @@ checkdepends=(curl)
 provides=(yass-proxy)
 conflicts=(yass-proxy-git)
 source=("https://github.com/hukeyue/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.zst"
+        "gcc16.patch"
         )
-sha256sums=('651502762cbb775e83cd49feadcd3b2eb36863b34380e7451b41238dbf42c6bd')
+sha256sums=('43fd1af631eb67f5edebee89a7085ceacdaa2127076233eb69a3a701e5615d29'
+            'a546be83afef0d46bef5b4c654f0ee731a491c4ac9643bb3be2506abd1fff05d')
+
+prepare(){
+  SRC_DIR="${srcdir}/yass-${_pkgver}"
+  pushd $SRC_DIR
+  patch -Np1 -i ../gcc16.patch
+  popd
+}
 
 build(){
   SRC_DIR="${srcdir}/yass-${_pkgver}"

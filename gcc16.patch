@@ -1,0 +1,41 @@
+From 1929c6ddead8df50b564cdff1ebc82f52b1565fd Mon Sep 17 00:00:00 2001
+From: Keyue Hu <hukeyue@vip.163.com>
+Date: Wed, 20 May 2026 13:19:50 +0800
+Subject: [PATCH] core: embrace gcc 16.1 release
+
+---
+ CMakeLists.txt             | 5 +++++
+ src/config/config_impl.hpp | 1 +
+ 2 files changed, 6 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3967ddb6..0363c9d5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4168,6 +4168,11 @@ if (COMPILER_GCC OR COMPILER_CLANG)
+   # gcc and clang warning
+   add_compile_options(-Wno-unused-parameter -Wno-shadow)
+ 
++  # new gcc warning from 16.0
++  if (COMPILER_GCC AND CMAKE_C_COMPILER_VERSION VERSION_GREATER_EQUAL 16.0)
++    add_compile_options(-Wno-unused-but-set-variable)
++  endif()
++
+   # apple clang warnings
+   if (COMPILER_APPLE_CLANG)
+     add_compile_options(-Wno-shorten-64-to-32)
+diff --git a/src/config/config_impl.hpp b/src/config/config_impl.hpp
+index b5c647fc..9441081b 100644
+--- a/src/config/config_impl.hpp
++++ b/src/config/config_impl.hpp
+@@ -25,6 +25,7 @@
+ #ifndef H_CONFIG_CONFIG_IMPL
+ #define H_CONFIG_CONFIG_IMPL
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <string_view>
+-- 
+2.54.0
+
