@@ -9,17 +9,20 @@
      args = parser.parse_args()
  
      log_level = logging.CRITICAL
-@@ -27,6 +27,9 @@
+@@ -27,6 +27,12 @@
  
      logging.basicConfig(level=log_level, format='%(name)20s %(levelname)8s | %(message)s')
  
 +    if __import__("os").system("systemctl is-active --user --quiet arctis-manager") != 0:
-+        sys.exit("Arctis manager's daemon is not running, run `systemctl --user enable --now arctis-manager` to enable it for future boot")
++        __import__("os").system("systemctl start --user arctis-manager")
++        print("Arctis Manager background daemon is not running. Starting it temporarily...", file=sys.stderr)
++        print("To enable the service permanently across reboots, please run: systemctl --user enable arctis-manager", file=sys.stderr)
++        __import__("time").sleep(1)
 +
      app = QApplication(sys.argv)
      app.setApplicationName('Arctis Manager')
      app.setApplicationDisplayName('Arctis Manager')
-@@ -39,7 +42,7 @@
+@@ -39,7 +45,7 @@
          q_object = QMainApp(app, log_level)
          app.setQuitOnLastWindowClosed(True)
      
