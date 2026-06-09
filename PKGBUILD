@@ -1,4 +1,5 @@
-pkgname=sysinfo
+pkgbase=sysinfo-bin
+pkgname=sysinfo-bin
 pkgver=1.1
 pkgrel=1
 pkgdesc="Simple neofetch-based system info wrapper"
