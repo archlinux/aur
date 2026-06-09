@@ -1,14 +1,14 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=officecli
-pkgver=1.0.106
+pkgver=1.0.107
 pkgrel=1
 pkgdesc="The first and best Office suite designed for AI agents"
 arch=($CARCH)
 url="https://github.com/iOfficeAI/OfficeCLI"
 license=('Apache-2.0')
-provides=(${pkgname})
-conflicts=(${pkgname})
+provides=(${pkgname} ${pkgname}-sdk)
+conflicts=(${pkgname} ${pkgname}-sdk)
 replaces=()
 depends=(
     glibc
@@ -30,7 +30,7 @@ optdepends=()
 backup=()
 options=('!strip' '!debug' '!lto')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('4de5548abd77d1baf845a61408cc7fd019544fe2fb7d45559c76a39b4d8417a1')
+sha256sums=('fab270066bf4f86f668f49464d2dcef291557885326b05a190d7fae89270285c')
 noextract=()
 
 prepare() {
