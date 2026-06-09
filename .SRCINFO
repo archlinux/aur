@@ -1,6 +1,6 @@
 pkgbase = jellyhaj
 	pkgdesc = Terminal client for Jellyfin reimplementing parts of the web ui
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/owo-uwu-nyaa/jellyhaj
 	arch = x86_64
@@ -9,11 +9,12 @@ pkgbase = jellyhaj
 	makedepends = cargo
 	makedepends = clang
 	makedepends = git
+	depends = chafa
 	depends = mpv
 	depends = sqlite
 	depends = dbus
 	options = !lto
-	source = jellyhaj-0.2.0.tar.gz::https://github.com/owo-uwu-nyaa/jellyhaj/archive/v0.2.0.tar.gz
+	source = jellyhaj-0.2.1.tar.gz::https://github.com/owo-uwu-nyaa/jellyhaj/archive/v0.2.1.tar.gz
 	sha256sums = c9d39ae980e989f2e6398106592ef528b44754e6e97c6e61699176a9152f3aa0
 
 pkgname = jellyhaj
