@@ -1,6 +1,6 @@
---- src/nntp/mime/Mime.cpp	2022-06-28 17:07:04.610994313 -0400
-+++ src/nntp/mime/Mime.cpp	2022-06-28 17:07:04.610994313 -0400
-@@ -532,7 +532,7 @@
+--- a/src/nntp/mime/Mime.cpp
++++ b/src/nntp/mime/Mime.cpp
+@@ -532,7 +532,7 @@ list<CMimeField>::iterator CMimeHeader::FindField(const char* pszFieldName)
  #ifdef _WIN32
  	#include <io.h>
  #else

@@ -1,0 +1,11 @@
+--- a/src/stringfunctions.cpp
++++ b/src/stringfunctions.cpp
+@@ -356,7 +356,7 @@ std::string UriDecode(const std::string & sSrc)
+    // sign but are not followed by two hexadecimal characters
+    // (0-9, A-F) are reserved for future extension"
+    
+-static const char HEX2DEC[256] = 
++static const signed char HEX2DEC[256] = 
+ {
+     /*       0  1  2  3   4  5  6  7   8  9  A  B   C  D  E  F */
+     /* 0 */ -1,-1,-1,-1, -1,-1,-1,-1, -1,-1,-1,-1, -1,-1,-1,-1,

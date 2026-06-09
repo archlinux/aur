@@ -1,0 +1,104 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -416,11 +416,18 @@ IF(AUDIO_CAPTCHA)
+ ENDIF(AUDIO_CAPTCHA)
+ 
+ IF(FROST_SUPPORT OR FCP_SSL_SUPPORT)
+-	ADD_SUBDIRECTORY(libs/mbedtls)
+-	TARGET_LINK_LIBRARIES(fms mbedtls)
+-	TARGET_LINK_LIBRARIES(fms mbedcrypto)
+-	TARGET_LINK_LIBRARIES(fms mbedx509)
+-	INCLUDE_DIRECTORIES(libs/mbedtls/include)
++	MESSAGE(STATUS "Linking against system MbedTLS library.")
++	FIND_LIBRARY(MBEDTLS_LIBRARY NAMES mbedtls )
++	FIND_LIBRARY(MBEDCRYPTO_LIBRARY NAMES mbedcrypto mbedx509)
++	FIND_LIBRARY(MBEDX509_LIBRARY NAMES mbedx509)
++
++	IF(MBEDTLS_LIBRARY)
++		TARGET_LINK_LIBRARIES(fms ${MBEDTLS_LIBRARY})
++		TARGET_LINK_LIBRARIES(fms ${MBEDCRYPTO_LIBRARY})
++		TARGET_LINK_LIBRARIES(fms ${MBEDX509_LIBRARY})
++	ELSE(MBEDTLS_LIBRARY)
++		MESSAGE(FATAL ERROR: "Could not find mbedtls library.")
++	ENDIF(MBEDTLS_LIBRARY)
+ 
+ 	IF(FROST_SUPPORT)
+ 		ADD_DEFINITIONS(-DFROST_SUPPORT)
+diff --git a/include/freenet/fcpv2.h b/include/freenet/fcpv2.h
+index 49eda64..6395418 100644
+--- a/include/freenet/fcpv2.h
++++ b/include/freenet/fcpv2.h
+@@ -36,7 +36,7 @@
+ #endif
+ 
+ #ifdef FCP_SSL
+-	#include <mbedtls/net.h>
++	#include <mbedtls/net_sockets.h>
+ 	#include <mbedtls/ssl.h>
+ 	#include <mbedtls/ctr_drbg.h>
+ 	#include <mbedtls/entropy.h>
+diff --git a/src/freenet/frostidentity.cpp b/src/freenet/frostidentity.cpp
+index 531f647..4b41a92 100644
+--- a/src/freenet/frostidentity.cpp
++++ b/src/freenet/frostidentity.cpp
+@@ -10,7 +10,7 @@
+ 
+ FrostIdentity::FrostIdentity()
+ {
+-	mbedtls_rsa_init(&m_rsa,MBEDTLS_RSA_PKCS_V21,MBEDTLS_MD_SHA1);
++	mbedtls_rsa_init(&m_rsa);
+ }
+ 
+ FrostIdentity::~FrostIdentity()
+@@ -25,7 +25,7 @@ const bool FrostIdentity::FromPublicKey(const std::string &publickey)
+ 	std::vector<unsigned char> ndata;
+ 
+ 	mbedtls_rsa_free(&m_rsa);
+-	mbedtls_rsa_init(&m_rsa,MBEDTLS_RSA_PKCS_V21,MBEDTLS_MD_SHA1);
++	mbedtls_rsa_init(&m_rsa);
+ 
+ 	StringFunctions::Split(publickey,":",keyparts);
+ 
+@@ -34,10 +34,17 @@ const bool FrostIdentity::FromPublicKey(const std::string &publickey)
+ 		Base64::Decode(keyparts[0],edata);
+ 		Base64::Decode(keyparts[1],ndata);
+ 
+-		mbedtls_mpi_init(&m_rsa.N);
+-		mbedtls_mpi_init(&m_rsa.E);
+-		mbedtls_mpi_read_binary(&m_rsa.N,&ndata[0],ndata.size());
+-		mbedtls_mpi_read_binary(&m_rsa.E,&edata[0],edata.size());
++		mbedtls_mpi N, E;
++		mbedtls_mpi_init(&N);
++		mbedtls_mpi_init(&E);
++
++		mbedtls_mpi_read_binary(&N, ndata.data(), ndata.size());
++		mbedtls_mpi_read_binary(&E, edata.data(), edata.size());
++
++		mbedtls_rsa_import(&m_rsa, &N, NULL, NULL, NULL, &E);
++
++		mbedtls_mpi_free(&N);
++		mbedtls_mpi_free(&E);
+ 
+ 		m_publickey=publickey;
+ 
+@@ -84,17 +91,13 @@ const bool FrostIdentity::VerifySignature(const std::vector<unsigned char> &data
+ 	{
+ 		std::vector<unsigned char> sigdata;
+ 		std::vector<unsigned char> hashdata(20,0);
+-		unsigned long hashlen=hashdata.size();
+-		int rval;
+-
+-		rval=0;
++		int rval=0;
+ 
+ 		if(Base64::Decode(signature,sigdata)==true)
+ 		{
+-			mbedtls_sha1(&data[0],data.size(),&hashdata[0]);
++			mbedtls_sha1(data.data(), data.size(), hashdata.data());
+ 
+-			m_rsa.len=sigdata.size();
+-			rval=mbedtls_rsa_pkcs1_verify(&m_rsa,0,0,MBEDTLS_RSA_PUBLIC,MBEDTLS_MD_SHA1,hashdata.size(),&hashdata[0],&sigdata[0]);
++			rval=mbedtls_rsa_pkcs1_verify(&m_rsa, MBEDTLS_MD_SHA1, hashdata.size(), hashdata.data(), sigdata.data());
+ 
+ 			return (rval==0) ? true : false;
+ 		}
