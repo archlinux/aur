@@ -6,7 +6,7 @@ pkgname=python-$_name-rocm-git
 pkgdesc="Accessible large language models via k-bit quantization for PyTorch. (GIT Version, with ROCm support)"
 license=("MIT")
 url="https://github.com/bitsandbytes-foundation/$_name"
-pkgver=head.r1159.g4c9bbeef
+pkgver=0.49.2.r84.g4c9bbeef
 pkgrel=1
 arch=("x86_64")
 makedepends=(
@@ -35,13 +35,13 @@ source=("$pkgname::git+$url.git#branch=main")
 sha512sums=('SKIP')
 
 prepare() {
-    cd $pkgname
+    cd "$pkgname"
 }
 
 pkgver() {
-    cd $pkgname
+    cd "$pkgname"
 
-    printf "head.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --match '[0-9]*' | sed 's/^v//; s/-\(beta\|alpha\|rc\)/\1/g; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {
