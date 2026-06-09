@@ -1,0 +1,17 @@
+pkgbase = sjnmusicd-git
+	pkgdesc = SJNmusic daemon (Rust)
+	pkgver = r8.7d80656
+	pkgrel = 1
+	url = https://github.com/serverjonas/SJNmusic
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = alsa-lib
+	depends = yt-dlp
+	source = git+https://github.com/serverjonas/SJNmusic.git
+	sha256sums = SKIP
+
+pkgname = sjnmusicd-git
