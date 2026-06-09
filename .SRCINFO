@@ -1,6 +1,6 @@
 pkgbase = curseforge
 	pkgdesc = CurseForge desktop client for Linux
-	pkgver = 1.306.1_34456
+	pkgver = 1.308.1_34958
 	pkgrel = 1
 	url = https://curseforge.com
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = curseforge
 	depends = zlib
 	options = !strip
 	options = !debug
-	source = CurseForge_1.306.1-34456_amd64.deb::https://curseforge.overwolf.com/electron/linux/CurseForge_1.306.1-34456_amd64.deb
+	source = CurseForge_1.308.1-34958_amd64.deb::https://curseforge.overwolf.com/electron/linux/CurseForge_1.308.1-34958_amd64.deb
 	source = LICENSE
-	sha256sums = a76d261a501b1f1c1df2f90f5b530c74984b47545bea877879d3a74896a0ac57
+	sha256sums = 332eaae9a4210e1e6cc963e052c06d5f7c54b651c6d48e277260f72b274fd6f4
 	sha256sums = 135c7ffeb81f4a7ee95a5879651b679e0d1ef9d13c7aa7c262386ad97b48d62f
 
 pkgname = curseforge
