@@ -1,5 +1,5 @@
 pkgname=iopenpod
-pkgver=1.0.53
+pkgver=1.0.57
 pkgrel=1
 pkgdesc="Open source iPod sync tool - manage your iPod without iTunes"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 source=("https://github.com/TheRealSavi/iOpenPod/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=(
-    90fe46a66cfdd3d0b9c47f3997f8b2cb1ef264476e314e665b438c0406914588
+    068c237b908183c7e4759ea9d51605ca7c68633e3ec606cba1e2d40b6c4ea820
 )
 
 build() {
