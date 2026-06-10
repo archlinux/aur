@@ -2,7 +2,7 @@
 
 _appname=quota_warning
 pkgname=nextcloud-app-quota-warning
-pkgver=1.23.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="Send notifications to users when they have reached 85, 90 and 95% of their quota."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/nextcloud/quota_warning"
 license=('AGPL-3.0-or-later')
 makedepends=('yq' 'rsync')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('48cc686d703411cbab3747a59104cb670a8303a1508f362784aaaa28ce2d17e9eee7aecccc94e9e9e6f619da05962f15530b96516757cfdca40251331d046a53')
+sha512sums=('5c336f5bcf3d3a7674685923c5504e3caa8c1faabc0470cee413e8a19657af4509336d7979089f08da6dc310e343f08c15f620e74a4ddd514dc06b49f29e9e1b')
 
 # BEGIN Boilerplate nextcloud version calculation adopted from other packages
 _get_nextcloud_versions() {
