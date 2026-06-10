@@ -48,7 +48,7 @@ pkgbase = linux-lnl
 	b2sums_x86_64 = a3569058fb5d86df604568f3746c98285b23bd5f4d69abc34df84e05b29c73b4a2c55f589259ec7375591c825d09525bf7d4f5c29d5e3a5209dfaabaf834795a
 
 pkgname = linux-lnl
-	pkgdesc = The Linux kernel and modules (Lunar Lake xe GGTT FORCEWAKE hang fix)
+	pkgdesc = The Linux kernel and modules with out-of-tree Lunar Lake GGTT forcewake fix applied.
 	depends = coreutils
 	depends = initramfs
 	depends = kmod

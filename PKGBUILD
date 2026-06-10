@@ -1,12 +1,13 @@
 # Maintainer: greg2010 <greg2008200@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 #
-# linux-lnl: Arch's stock `linux` kernel plus one out-of-tree fix for a Lunar
-# Lake GPU hang. drm/xe/ggtt holds FORCEWAKE across GSM/GGTT page-table writes
-# so the GT cannot enter RC6 mid-update (Nikolay Mikhaylov, "lnl-fix-v2").
-# Installs alongside stock linux with a `-lnl` localversion; it does not
-# conflict with, replace, or provide `linux`.
+# linux-lnl: Arch's stock `linux` kernel with one out-of-tree patch applied,
+# fixing a Lunar Lake GPU hang -- drm/xe/ggtt holds FORCEWAKE across GSM/GGTT
+# page-table writes so the GT cannot enter RC6 mid-update (patch by Nikolay
+# Mikhaylov, "lnl-fix-v2"). Installs alongside stock linux with a `-lnl`
+# localversion; it does not conflict with, replace, or provide `linux`.
 # Patch: https://gitlab.freedesktop.org/-/project/13578/uploads/2482209d48277005d0eba0b21b69de57/lnl-fix-v2.patch
+# See this thread for details: https://gitlab.freedesktop.org/drm/xe/kernel/-/work_items/7513
 
 pkgbase=linux-lnl
 pkgver=7.0.11.arch1
@@ -106,7 +107,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules (Lunar Lake xe GGTT FORCEWAKE hang fix)"
+  pkgdesc="The $pkgdesc kernel and modules with out-of-tree Lunar Lake GGTT forcewake fix applied."
   depends=(
     coreutils
     initramfs
