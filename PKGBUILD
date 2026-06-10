@@ -1,6 +1,6 @@
 # Maintainer: François Pansera <contact@ironcall.dev>
 pkgname=ironcall-bin
-pkgver=0.7.11
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Ironcall - Local-first API client"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source_x86_64=(
     "ironcall.png"
 )
 sha256sums_x86_64=(
-    '2c4804359b023b2a37cc1e9a49cd2eabd8f9d6858df59920e56f6ddad05656eb'
+    '8e3f48ae76ad9c3e6cc456023e1f5899a3cdb15dec5fabcf0e3a64d9ca5c4fd9'
     'd02152139e16601f82fad44673b4743262007af55d012e20eb7a004e23027519'
     '1a0afe0dca9ca6e7cdef7f94b5fe854a55ae0bfa3796e87537647f0983a385ef'
 )
