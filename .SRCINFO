@@ -1,7 +1,7 @@
 pkgbase = azion-cli-bin
 	pkgdesc = Efficient creation and management of applications on Azion Edge Platform
 	pkgver = 4.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aziontech/azion
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,8 @@ pkgbase = azion-cli-bin
 	arch = armv7h
 	license = MIT
 	depends = glibc
+	provides = azion-cli
+	conflicts = azion-cli
 	source_x86_64 = azion-cli-bin-4.22.1-x86_64.zip::https://github.com/aziontech/azion/releases/download/4.22.1/azion_4.22.1_linux_amd64.zip
 	sha256sums_x86_64 = 4d2ea06f74b76b735dd438f6fdcd6043a4b2e94a7c008c82828a13ca5e498da2
 	source_aarch64 = azion-cli-bin-4.22.1-aarch64.zip::https://github.com/aziontech/azion/releases/download/4.22.1/azion_4.22.1_linux_arm64.zip
