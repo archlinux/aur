@@ -1,18 +1,18 @@
 pkgbase = zig-waybar-contrib-beta-bin
 	pkgdesc = High-performance Waybar modules written in Zig for efficient system monitoring (Beta binary version)
-	pkgver = 26.05.08
+	pkgver = 26.06.10
 	pkgrel = 1
 	url = https://codeberg.org/erffy/zig-waybar-contrib
 	arch = x86_64
 	license = GPL3
 	optdepends = fakeroot: updates module
-	provides = zig-waybar-contrib=26.05.08
+	provides = zig-waybar-contrib=26.06.10
 	conflicts = zig-waybar-contrib
-	source = zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.05.08/zig-waybar-contrib-release-26.05.08.zip
-	source = config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.05.08/config.waybar.jsonc
-	source = LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.05.08/LICENSE
-	md5sums = 2f5d50624eba208caaa0433a91fc5ce4
-	md5sums = 93ed2d07501c3e0ed7c0132d0265548b
-	md5sums = f1c10f726262b56101b2112a4ec181d2
+	source = zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.06.10/zig-waybar-contrib-release-26.06.10.zip
+	source = config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.06.10/config.waybar.jsonc
+	source = LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.06.10/LICENSE
+	sha256sums = 6d85a89890dc852b8c4f7195fa0aabbecc37a9981d6959b13f571a63c91802bf
+	sha256sums = c8f289240068ba61c222720aae665594ab8531f90ba5a23bc948a0ca97c04b2a
+	sha256sums = 4452bc2d13bcd25bdd45ca659672df16c273ab9d1e65c4064447eec382dc96d6
 
 pkgname = zig-waybar-contrib-beta-bin

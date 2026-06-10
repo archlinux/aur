@@ -1,8 +1,8 @@
-# Maintainer: Erffy <https://github.com/erffy>
+# Maintainer: erffy <https://codeberg.org/erffy>
 
 _pkgbase="zig-waybar-contrib"
 pkgname="${_pkgbase}-beta-bin"
-pkgver=26.05.08
+pkgver=26.06.10
 pkgrel=1
 pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring (Beta binary version)'
 arch=('x86_64')
@@ -14,13 +14,13 @@ optdepends=(
   'fakeroot: updates module'
 )
 source=(
-  "zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.05.08/zig-waybar-contrib-release-26.05.08.zip"
-  "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.05.08/config.waybar.jsonc"
-  "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.05.08/LICENSE"
+  "zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.06.10/zig-waybar-contrib-release-26.06.10.zip"
+  "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.06.10/config.waybar.jsonc"
+  "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.06.10/LICENSE"
 )
-md5sums=('2f5d50624eba208caaa0433a91fc5ce4'
-         '93ed2d07501c3e0ed7c0132d0265548b'
-         'f1c10f726262b56101b2112a4ec181d2')
+sha256sums=('6d85a89890dc852b8c4f7195fa0aabbecc37a9981d6959b13f571a63c91802bf'
+            'c8f289240068ba61c222720aae665594ab8531f90ba5a23bc948a0ca97c04b2a'
+            '4452bc2d13bcd25bdd45ca659672df16c273ab9d1e65c4064447eec382dc96d6')
 
 package() {
   cd "$srcdir"
