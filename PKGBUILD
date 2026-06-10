@@ -1,5 +1,5 @@
 pkgname=lumen-journal
-pkgver=1.1.29
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Encrypted journal app built with Rust and Flutter"
 arch=('x86_64')
