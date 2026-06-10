@@ -1,0 +1,21 @@
+pkgbase = unibackpack-git
+	pkgdesc = A Qt6 downloader for software used by greek universities
+	pkgver = r103.d1d12a7
+	pkgrel = 1
+	url = https://github.com/open-source-uom/UniBackpack
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = gcc-libs
+	depends = glibc
+	depends = polkit
+	depends = base-devel
+	provides = unibackpack
+	conflicts = unibackpack
+	source = unibackpack-git::git+https://github.com/open-source-uom/UniBackpack.git
+	sha256sums = SKIP
+
+pkgname = unibackpack-git
