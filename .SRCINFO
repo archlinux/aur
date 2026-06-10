@@ -1,7 +1,7 @@
 pkgbase = cachyos-store-bin
 	pkgdesc = Modern community store for CachyOS and Arch Linux built with NativePHP
-	pkgver = 1.1.3
-	pkgrel = 2
+	pkgver = 1.1.4
+	pkgrel = 1
 	url = https://github.com/satodu/panda-cachy-store
 	arch = x86_64
 	license = MIT
@@ -13,10 +13,10 @@ pkgbase = cachyos-store-bin
 	provides = cachyos-store
 	conflicts = cachyos-store
 	options = !strip
-	source = cachyos-store-bin-1.1.3.AppImage::https://github.com/satodu/panda-cachy-store/releases/download/1.1.3/CachyOS.Store-1.1.3.AppImage
+	source = cachyos-store-bin-1.1.4.AppImage::https://github.com/satodu/panda-cachy-store/releases/download/1.1.4/CachyOS.Store-1.1.4.AppImage
 	source = cachyos-store.desktop
 	source = icon.png
-	sha256sums = 882d7359ce48ab3d0a0f9a26cb7db403c98f483e9933945b94068afc99a9a677
+	sha256sums = 1cd228c199fb554a988c98127c063220245ad21f96a67d640c3a839946446173
 	sha256sums = a1931a972aef3224086634ab55c6d32fb78a4f6465ab04c6b3ac4d90f357181d
 	sha256sums = 4d815319531044f6a030c7b459e126693a9985f8742ae64011989bec8e551009
 

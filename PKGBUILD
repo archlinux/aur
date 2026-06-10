@@ -1,7 +1,7 @@
 # Maintainer: Panda <sato.du@gmail.com>
 pkgname=cachyos-store-bin
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.1.4
+pkgrel=1
 pkgdesc="Modern community store for CachyOS and Arch Linux built with NativePHP"
 arch=('x86_64')
 url="https://github.com/satodu/panda-cachy-store"
@@ -17,7 +17,7 @@ source=(
     "icon.png"
 )
 
-sha256sums=('882d7359ce48ab3d0a0f9a26cb7db403c98f483e9933945b94068afc99a9a677'
+sha256sums=('1cd228c199fb554a988c98127c063220245ad21f96a67d640c3a839946446173'
             'a1931a972aef3224086634ab55c6d32fb78a4f6465ab04c6b3ac4d90f357181d'
             '4d815319531044f6a030c7b459e126693a9985f8742ae64011989bec8e551009')
 
