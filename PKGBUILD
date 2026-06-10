@@ -2,7 +2,7 @@
 # Contributor: <add yourself when you start helping out>
 
 pkgname=claudex
-pkgver=0.9.2
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Query, search, and analyze Claude Code sessions from the command line (built from source)"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ conflicts=('claudex-bin' 'claudex-git')
 options=(!lto)
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4dab31e3f52c8a12ce059efaa03a2bb92f4aa79dec6e11ee0719dab8a4171a9d')
+sha256sums=('bd37307b56cf3f328e5296116f4f55e0f5809a7fb8d773b8fd6e9843783564c3')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -47,7 +47,7 @@ build() {
   # --frozen pairs with the `cargo fetch --locked` above: refuses
   # to touch the network during build, so a stale Cargo.lock fails
   # loudly instead of silently re-resolving.
-  cargo build --release --frozen
+  cargo build --release --frozen -p claudex-cli --bin claudex
 }
 
 package() {
