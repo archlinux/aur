@@ -1,0 +1,23 @@
+pkgbase = full-upgrade
+	pkgdesc = Orquestrador Bash modular para atualizar, manter e auditar máquinas Arch Linux
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/bernardopg/full-upgrade
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = pacman
+	optdepends = paru: atualização de pacotes AUR
+	optdepends = yay: alternativa ao paru para AUR
+	optdepends = reflector: atualização da mirrorlist
+	optdepends = pacman-contrib: paccache e pacdiff (.pacnew)
+	optdepends = flatpak: atualização de aplicações Flatpak
+	optdepends = fwupd: atualização de firmware
+	optdepends = btrfs-progs: snapshots e doctor de saúde btrfs
+	optdepends = snapper: snapshots pré-upgrade em btrfs
+	optdepends = smartmontools: doctor SMART de discos
+	source = full-upgrade-3.1.0.tar.gz::https://github.com/bernardopg/full-upgrade/archive/refs/tags/v3.1.0.tar.gz
+	sha256sums = 599796fb300e5e5924bd6c36c779a97063183fe5f9b387cf0a05842694ed5507
+
+pkgname = full-upgrade
