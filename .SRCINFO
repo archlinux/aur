@@ -1,6 +1,6 @@
 pkgbase = radboard-bin
 	pkgdesc = Desktop Kanban board for Radicle
-	pkgver = 0.8.5
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = https://radboard.mikolajczyk.org
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = radboard-bin
 	conflicts = radboard
 	options = !strip
 	options = !debug
-	source = radboard-0.8.5.deb::https://dl.mikolajczyk.org/radboard/v0.8.5/radboard-amd64.deb
-	sha256sums = 074d749422af2faa6b4229fa1b44b591c115d713a9c9cf7d20e6e8c23e00476a
+	source = radboard-0.8.6.deb::https://dl.mikolajczyk.org/radboard/v0.8.6/radboard-amd64.deb
+	sha256sums = 26fe2e4d2729b02de7ae0d14c8ebb72e7282421dafed95069027de3270ce9aef
 
 pkgname = radboard-bin
