@@ -4,7 +4,20 @@ pkgname=cudnn-pascal
 pkgver=9.10.2.21
 _cudaver=12
 pkgrel=2
-# manual-hint: compatibility-pinned to latest cuDNN redist verified with CUDA 12.x and Pascal support; do not blindly follow newest cuDNN.
+# Pascal boundary: cuDNN 9.11.0 removed Maxwell/Pascal/Volta support (9.11.0
+# release notes; its support matrix starts at Turing). Anything below 9.11 is
+# Pascal-capable, so track the newest pre-9.11 redist line and read the full
+# four-part version from its cuda12 archive filename (asset-verified).
+latestver() {
+  local _redist='https://developer.download.nvidia.com/compute/cudnn/redist'
+  local line
+  line=$(curl -fsSL "${_redist}/" |
+    grep -aoE 'redistrib_9\.([0-9]|10)\.[0-9]+\.json' |
+    grep -oE '9\.([0-9]|10)\.[0-9]+' | sort -uV | tail -1) || return 1
+  curl -fsSL "${_redist}/redistrib_${line}.json" |
+    grep -aoE "cudnn-linux-x86_64-9\.[0-9.]+_cuda${_cudaver}-archive\.tar\.xz" |
+    grep -oE '9\.[0-9]+\.[0-9]+\.[0-9]+' | sort -uV | tail -1
+}
 pkgdesc="NVIDIA cuDNN library for Pascal GPUs (CUDA 12.x; pinned to latest Pascal-supported cuDNN)"
 arch=("x86_64")
 url="https://developer.nvidia.com/cuDNN"
