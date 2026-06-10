@@ -1,8 +1,8 @@
 # Maintainer: Rodrigo Brito <rodrigo@w3ti.com.br>
 pkgname=fina
-pkgver=9.0.3
+pkgver=9.0.4
 pkgrel=1
-pkgdesc="Gerenciador de finanças pessoais (Electron + SQLite)"
+pkgdesc="Gerenciador de finanças pessoais"
 arch=('x86_64')
 url="https://github.com/britors/Fina"
 license=('GPL-3.0-only')
