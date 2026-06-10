@@ -8,7 +8,7 @@
 
 _pkgname="obs-studio"
 pkgname="$_pkgname-git"
-pkgver=32.1.0.r13.g1159bc8
+pkgver=32.1.2.r109.g84b8d16
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 url="https://github.com/obsproject/obs-studio"
@@ -137,9 +137,9 @@ prepare() {
     -i frontend/cmake/os-freebsd.cmake frontend/cmake/os-linux.cmake
 
   sed -e '/GuiPrivate/d' \
-    -i frontend/plugins/aja-output-ui/CMakeLists.txt \
-    frontend/plugins/decklink-output-ui/CMakeLists.txt \
-    frontend/plugins/frontend-tools/CMakeLists.txt
+    -i plugins/aja-output-ui/CMakeLists.txt \
+    plugins/decklink-output-ui/CMakeLists.txt \
+    plugins/frontend-tools/CMakeLists.txt
 }
 
 build() (

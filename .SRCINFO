@@ -1,6 +1,6 @@
 pkgbase = obs-studio-git
 	pkgdesc = Free, open source software for live streaming and recording
-	pkgver = 32.1.0.r13.g1159bc8
+	pkgver = 32.1.2.r109.g84b8d16
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
@@ -54,7 +54,7 @@ pkgbase = obs-studio-git
 	optdepends = sndio: sndio input client
 	optdepends = v4l2loopback-dkms: virtual camera support
 	optdepends = vlc: VLC Media Source
-	provides = obs-studio=32.1.0.r13
+	provides = obs-studio=32.1.2.r109
 	conflicts = obs-studio
 	options = !lto
 	options = !strip
