@@ -2,11 +2,11 @@
 # Contributor: Volt Contributors
 
 pkgname=volt-llm
-pkgver=0.2.10
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="Volt — vLLM desktop manager: one-click model download, vLLM launcher, API key management"
 arch=('any')
-url="https://github.com/954510662-bot/Volt"
+url="https://github.com/ZBcxy/Volt"
 license=('MIT')
 depends=('python>=3.10' 'pyside6' 'python-fastapi' 'uvicorn'
          'python-httpx' 'python-pydantic' 'python-aiosqlite' 'python-psutil'
@@ -17,7 +17,7 @@ optdepends=('nvidia-open: NVIDIA GPU driver'
             'vllm: inference engine (can be installed from within the app)')
 provides=('volt-llm' 'vllm-desktop')
 conflicts=('vllm-desktop')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/954510662-bot/Volt/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ZBcxy/Volt/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {

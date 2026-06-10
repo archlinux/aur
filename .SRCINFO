@@ -1,8 +1,8 @@
 pkgbase = volt-llm
 	pkgdesc = Volt — vLLM desktop manager: one-click model download, vLLM launcher, API key management
-	pkgver = 0.2.10
+	pkgver = 0.2.12
 	pkgrel = 1
-	url = https://github.com/954510662-bot/Volt
+	url = https://github.com/ZBcxy/Volt
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -27,7 +27,7 @@ pkgbase = volt-llm
 	provides = volt-llm
 	provides = vllm-desktop
 	conflicts = vllm-desktop
-	source = volt-llm-0.2.10.tar.gz::https://github.com/954510662-bot/Volt/archive/refs/tags/v0.2.10.tar.gz
+	source = volt-llm-0.2.12.tar.gz::https://github.com/ZBcxy/Volt/archive/refs/tags/v0.2.12.tar.gz
 	sha256sums = SKIP
 
 pkgname = volt-llm
