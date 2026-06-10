@@ -7,6 +7,7 @@ pkgdesc='Pure Rust interactive wlroots/Hyprland region and long screenshot tool'
 arch=('x86_64')
 url='https://github.com/xander-lin/screenshot'
 license=('MIT')
+options=(!debug)
 conflicts=(screenshot-cpp)
 replaces=(screenshot-cpp)
 depends=(
