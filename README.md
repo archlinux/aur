@@ -20,12 +20,18 @@ After installation, set the setuid bit so vtlock can lock VTs:
 
 ### Manual
 
-Clone the repository and compile:
+Clone the repository and build with make:
 
-    gcc -O2 -Wall -o vtlock vtlock.c
-    sudo mv vtlock /usr/local/bin/
-    sudo chown root:root /usr/local/bin/vtlock
+    git clone https://hub.darcs.net/stef204/vtlock
+    cd vtlock
+    make
+    sudo make install
     sudo chmod u+s /usr/local/bin/vtlock
+
+To install to /usr/bin instead, override PREFIX:
+
+    sudo make install PREFIX=/usr
+    sudo chmod u+s /usr/bin/vtlock
 
 ## Usage
 
