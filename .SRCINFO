@@ -1,6 +1,6 @@
 pkgbase = tgeraser
-	pkgdesc = Delete all your messages from chat/channel/dialog on Telegram
-	pkgver = 1.4.1
+	pkgdesc = Delete all your messages from chats and channels on Telegram
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/en9inerd/tgeraser
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = tgeraser
 	depends = python-pyasn1
 	depends = python-rsa
 	depends = python-telethon
-	source = https://files.pythonhosted.org/packages/source/t/tgeraser/tgeraser-1.4.1.tar.gz
-	sha256sums = ccd2d36c89526dd9424c84f84fd572f87ecdab81bc04ae93e847fc00f979f3a3
+	source = https://files.pythonhosted.org/packages/source/t/tgeraser/tgeraser-1.6.0.tar.gz
+	sha256sums = adc5e1d2f731fb3495e1b24ddf2ec604b711658ceadf93e15f2fe57f00969b71
 
 pkgname = tgeraser
