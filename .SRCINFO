@@ -1,7 +1,7 @@
 pkgbase = tabbyml-bin
 	pkgdesc = Self-hosted AI coding assistant (prebuilt CPU binary)
 	pkgver = 0.32.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TabbyML/tabby
 	install = tabbyml-bin.install
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = tabbyml-bin
 	source = tabbyml.env
 	source = config.toml
 	sha256sums = 048b44cf251519398c67fd880dc9f0d44e2e01c56f1e4e2f2c83b26120b14497
-	sha256sums = 04fafa992e94e4ee0b3ed63439b3320315f1668655a3102dce7a5699461ee36a
-	sha256sums = 4caaf10e38dd7f65ecd12be96bb46c4bb8478a92a1273fcbfd0d565dbcfcf046
+	sha256sums = 0add0c190349ff65fc804d02261c606a7d59235aa8a1a0edf0701b18fbd3c1d6
+	sha256sums = 1b8536492f16db6424d51f1fd51904d0b70ce8f57320b9f73422289bca31a89e
 	sha256sums = 019d34e8cde65c2ea7d198df2d1e0062bdbfa449510b4432fa90800364a64816
 
 pkgname = tabbyml-bin

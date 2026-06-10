@@ -3,7 +3,7 @@
 
 pkgname=tabbyml-bin
 pkgver=0.32.0 # renovate: datasource=github-releases depName=TabbyML/tabby
-pkgrel=2
+pkgrel=3
 pkgdesc="Self-hosted AI coding assistant (prebuilt CPU binary)"
 arch=('x86_64')
 url="https://github.com/TabbyML/tabby"
@@ -22,8 +22,8 @@ source=(
   "config.toml"
 )
 sha256sums=('048b44cf251519398c67fd880dc9f0d44e2e01c56f1e4e2f2c83b26120b14497'
-            '04fafa992e94e4ee0b3ed63439b3320315f1668655a3102dce7a5699461ee36a'
-            '4caaf10e38dd7f65ecd12be96bb46c4bb8478a92a1273fcbfd0d565dbcfcf046'
+            '0add0c190349ff65fc804d02261c606a7d59235aa8a1a0edf0701b18fbd3c1d6'
+            '1b8536492f16db6424d51f1fd51904d0b70ce8f57320b9f73422289bca31a89e'
             '019d34e8cde65c2ea7d198df2d1e0062bdbfa449510b4432fa90800364a64816')
 
 package() {

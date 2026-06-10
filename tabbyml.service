@@ -8,7 +8,6 @@ Wants=network-online.target
 Type=simple
 Environment=TABBY_ROOT=%E/tabbyml
 Environment=RUST_LOG=info
-Environment="TABBYML_SERVE_ARGS=--model StarCoder-1B --chat-model Qwen2-1.5B-Instruct"
 EnvironmentFile=-%E/tabbyml/tabbyml.env
 ExecStartPre=/usr/bin/mkdir -p %E/tabbyml
 WorkingDirectory=-%E/tabbyml
