@@ -3,7 +3,7 @@
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 # Contributor: Daenyth <Daenyth+Arch [at] gmail [dot] com>
 pkgname=rakudo
-pkgver=2026.04
+pkgver=2026.05
 pkgrel=1
 pkgdesc="Raku compiler for MoarVM"
 arch=(i686 x86_64 aarch64)
@@ -22,8 +22,8 @@ source=(
     "https://rakudo.org/dl/$pkgname/$pkgname-$pkgver.tar.gz.asc"
 )
 sha512sums=(
-    3219482c860c96ed2af4ec57f83410accc9c3e3923b3dd26647447b68440b15f359f4bba57c78b61fe63070301f82f9d4c57d36b77dc0769ac8609fd2ac39bb4
-    3f4aea4d8c1c77255a5329e1065327228a597eaa6ec2cc8d6c60ecd75c79e8912214c036e2a15597740f4ee72e0917fc356300fc64058fec5e8eff00ae9c838d
+    b89c9c6b2eea0d969752d388b264cbb9391cdf5e16d6342a236c01536896ad85f9484a2eb3e2e847f645757065cd56795d329729c469e1f201fb0756dd672aa3
+    5d8aa787e7e3cbdc18d65870ce2164d5308127ebaf5a57ed3030668d6819c399fdbf2bca9f9cddae11dc5188807c66be0221d03d03273609d3b3cde83aff5091
 )
 
 build() {
