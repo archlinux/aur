@@ -27,8 +27,8 @@ sha256sums=()
 
 prepare() {
   rm -rf "${srcdir}/screenshot"
-  git clone "${_github_url}" "${srcdir}/screenshot" || \
-    git clone "${_gitee_url}" "${srcdir}/screenshot"
+  git clone "${_gitee_url}" "${srcdir}/screenshot" || \
+    git clone "${_github_url}" "${srcdir}/screenshot"
   git -C "${srcdir}/screenshot" checkout "${_commit}"
 }
 
