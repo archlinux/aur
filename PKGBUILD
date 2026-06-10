@@ -1,8 +1,8 @@
 # Maintainer: LuoTianyi_arm64 <2153585992@qq.com>
 pkgname=astra3dengine-git
 _binname=astra-3d-engine
-pkgver=v0.0.1.alpha.21.r0.ge330ffb
-pkgrel=2
+pkgver=v0.0.1.beta.5.r4.g2b93bf7
+pkgrel=1
 pkgdesc='A joking 3D engine.'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/Astra3DEngine/Astra3DEngine'
@@ -57,7 +57,7 @@ Keywords=3Dengine;
 EOT
   local _res
   for _res in 16 32 48 64 128 256 512 1024; do
-    local _icon_path="build/icons/${_res}x${_res}.png"
+    local _icon_path="electron/icons/${_res}x${_res}.png"
     if [ -f "$_icon_path" ]; then
       install -Dm644 "$_icon_path" "$pkgdir/usr/share/icons/hicolor/${_res}x${_res}/apps/astra-3d-engine.png"
     fi
