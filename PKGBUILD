@@ -1,11 +1,11 @@
 # Maintainer: Diego Ernani (CapivaraVai) <dernani@gmail.com>
 
 pkgname=arch-update-vai
-pkgver=0.7.0.r1.gbafd124
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Script interativo para atualizar Arch Linux (pacman, AUR, Flatpak, Snap, fwupd) - git"
 arch=('any')
-url="https://github.com/CapivaraVai/arch-update-script-vai"
+url="https://codeberg.org/CapivaraVai/arch-update-vai"
 license=('GPL-3.0-or-later')
 depends=('bash' 'hicolor-icon-theme')
 makedepends=('git')
@@ -20,7 +20,7 @@ optdepends=(
   'konsole: abrir pelo atalho KDE'
 )
 
-source=("git+https://github.com/CapivaraVai/arch-update-script-vai.git")
+source=("git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
 sha256sums=('SKIP')
 
 pkgver() {
