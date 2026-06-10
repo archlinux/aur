@@ -1,7 +1,7 @@
 pkgbase = zl-compressor
 	pkgdesc = Sidechain and oversample capable compressor plugin by ZL Audio
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://zl-audio.github.io/plugins/zlcompressor/
 	arch = x86_64
 	groups = zl-audio
@@ -10,21 +10,29 @@ pkgbase = zl-compressor
 	makedepends = git
 	makedepends = cmake
 	makedepends = kfr
-	depends = alsa-lib
-	depends = libx11
-	depends = libxinerama
-	depends = libxext
+	makedepends = at-spi2-core
+	makedepends = cairo
+	makedepends = gtk3
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
+	makedepends = harfbuzz
+	makedepends = pango
+	makedepends = libsoup3
+	depends = expat
 	depends = freetype2
 	depends = fontconfig
-	depends = webkit2gtk
-	depends = glu
+	depends = nlopt
 	depends = highway
+	depends = zlib
+	depends = bzip2
+	depends = libpng
+	depends = brotli
 	source = git+https://github.com/ZL-Audio/ZLCompressor#tag=0.5.0
 	source = git+https://github.com/ZL-Audio/JUCE#tag=542dcc3
-	source = git+https://github.com/ZL-Audio/zldsp_fft.git#tag=455a40b
+	source = git+https://github.com/ZL-Audio/zldsp_fft.git#tag=959ff31
 	sha256sums = 1bdba1f65e2fb2332cff7c34e31009a66b337b340223f4b7419e37290d9dfa67
 	sha256sums = 9fd8b671b3f0d2001f9acc1a9c13b3e0d778c76ab884ee2c69f122ec68729659
-	sha256sums = ca881fdb227ffa83a02f41bc89121eada4aeb63081a6b7428edb1300ae1de44a
+	sha256sums = d31d805f958746d375debaa1790712e831c2e428aa693a2220013315ff08a882
 
 pkgname = zl-compressor-vst3
 	pkgdesc = Sidechain and oversample capable compressor plugin by ZL Audio (VST3 version)
@@ -39,14 +47,15 @@ pkgname = zl-compressor-lv2
 	groups = lv2-plugins
 
 pkgname = zl-compressor
-	depends = alsa-lib
-	depends = libx11
-	depends = libxinerama
-	depends = libxext
+	pkgdesc = Sidechain and oversample capable compressor plugin by ZL Audio (metapackage that requires all plugin formats)
+	depends = expat
 	depends = freetype2
 	depends = fontconfig
-	depends = webkit2gtk
-	depends = glu
+	depends = nlopt
 	depends = highway
+	depends = zlib
+	depends = bzip2
+	depends = libpng
+	depends = brotli
 	depends = zl-compressor-vst3
 	depends = zl-compressor-lv2
