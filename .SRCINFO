@@ -1,5 +1,5 @@
 pkgbase = arch-update-vai
-	pkgdesc = Script interativo para atualizar Arch Linux (pacman, AUR, Flatpak, Snap, fwupd) - git
+	pkgdesc = Script interativo para atualizar Arch Linux (pacman, AUR, Flatpak, Snap, fwupd)
 	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://codeberg.org/CapivaraVai/arch-update-vai
@@ -7,7 +7,6 @@ pkgbase = arch-update-vai
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = bash
-	depends = hicolor-icon-theme
 	optdepends = yay: suporte a AUR
 	optdepends = flatpak: suporte a Flatpak
 	optdepends = snapd: suporte a Snap
@@ -15,7 +14,6 @@ pkgbase = arch-update-vai
 	optdepends = reflector: atualizar mirrorlist automaticamente
 	optdepends = python: checar pacotes pip
 	optdepends = python-pip: checar pacotes pip
-	optdepends = konsole: abrir pelo atalho KDE
 	source = arch-update-vai::git+https://codeberg.org/CapivaraVai/arch-update-vai.git
 	sha256sums = SKIP
 
