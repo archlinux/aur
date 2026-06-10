@@ -24,19 +24,20 @@ optdepends=(
 
 #source=("arch-update-vai::git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
 #sha256sums=('SKIP')
-source=("git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
+source=("${pkgname}::git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
 sha256sums=('SKIP')
 
-
 pkgver() {
-  cd "$srcdir/arch-update-vai"
+  cd "$srcdir/${pkgname}"
   git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/arch-update-vai"
-  # programa
+  cd "$srcdir/${pkgname}"
   install -Dm755 update-vai.sh "$pkgdir/usr/bin/update-vai"
+  # resto...
+}
+
 
   # docs/licença
   [[ -f README.md ]] && install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
