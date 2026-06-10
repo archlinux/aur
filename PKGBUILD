@@ -2,7 +2,7 @@
 _pkgname=voiden
 
 pkgname=${_pkgname}-appimage
-pkgver=1.6.3
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Voiden API Client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('fuse2')
 conflicts=('voiden-beta-appimage')
 _appimage=Voiden-${pkgver}.AppImage
 source=("https://voiden.md/api/download/stable/linux/x64/${_appimage}")
-sha256sums=('d5c477d9df0cd7fe189d7b053b42bc788da62d0d8e9e90ce1f68ba4cdc772f17')
+sha256sums=('02ec86a453926e43bc656af2cbc859e1d6a57ac27a997457c9063304f77e2d0a')
 
 # install method based on https://wiki.archlinux.org/title/User:SergeyK/AppImage_package_guidelines
 
