@@ -1,4 +1,4 @@
-# Maintainer: 954510662-bot <954510662@qq.com>
+# Maintainer: ZBcxy <954510662@qq.com>
 # Contributor: Volt Contributors
 
 pkgname=volt-llm
