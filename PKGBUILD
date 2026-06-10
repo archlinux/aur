@@ -1,7 +1,7 @@
 # Maintainer: Masoud Yousefvand <yousefvand@gmail.com>
 
 pkgname=remidock
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=2
 pkgdesc='Custom Qt/QML dock for KDE Plasma Wayland'
 arch=('x86_64')
@@ -21,8 +21,8 @@ makedepends=(
   'gcc'
   'extra-cmake-modules'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/yousefvand/RemiDock/archive/refs/tags/v0.2.0.tar.gz")
-sha256sums=('ec030a915a1f25d0bb76bba6fac3d48e453d4c4894f37333c10d58d5a2e1702f')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/yousefvand/RemiDock/archive/refs/tags/v0.3.1.tar.gz")
+sha256sums=('2614608a2bf87201ccaeba5b3f5d91f494114b7abb3a6e80d26d01646ccef646')
 
 build() {
   cmake -S "RemiDock-${pkgver}" -B build -G Ninja \
