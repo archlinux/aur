@@ -12,7 +12,7 @@ diff --git a/src/Permissions/Permissions.js b/src/Permissions/Permissions.js
 index c0561b5..5352430 100644
 --- a/src/Permissions/Permissions.js
 +++ b/src/Permissions/Permissions.js
-@@ -39,22 +39,8 @@ export function Permissions({ window }) {
+@@ -39,28 +39,12 @@ export function Permissions({ window }) {
    window.add_action(action_permissions);
  }
  
@@ -29,6 +29,13 @@ index c0561b5..5352430 100644
 -  );
 -})();
 -
+ export function hasNetworkPermission() {
+-  const flatpak_info = getFlatpakInfo();
+-  const shared = flatpak_info.get_string_list("Context", "shared");
+-  return shared.includes("network");
++  return true;
+ }
+ 
  export function needsAdditionalPermissions({ demo }) {
 -  if (!demo["flatpak-finish-args"]) return false;
 -  return missing_permissions;
