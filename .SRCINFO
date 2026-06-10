@@ -1,0 +1,16 @@
+pkgbase = papt2
+	pkgdesc = pacman and yay wrapper with apt-like syntax for Arch Linux
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/MarkGMX8X/papt2
+	arch = any
+	license = GPL-3.0-only
+	depends = python
+	depends = pacman
+	depends = yay
+	depends = git
+	depends = base-devel
+	source = papt2-0.9.5.tar.gz::https://github.com/MarkGMX8X/papt2/archive/refs/tags/Papt2_0xx.tar.gz
+	sha256sums = 9a5658a3d6ad4d9b67aa4b16c3afb311ef577b6cd9d8321d0eae4f7435413011
+
+pkgname = papt2
