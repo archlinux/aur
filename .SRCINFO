@@ -1,15 +1,20 @@
 pkgbase = iris
-	pkgdesc = A simple and intuitive interface for reading in images of eyes, comparing them, and verifying their identity.
-	pkgver = 0.1
+	pkgdesc = Infrared Recognition & Identity System - password-less face unlock for SDDM on Thinkpad IR cameras
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = http://projectiris.co.uk/
+	url = https://github.com/lordhanya/iris
 	install = iris.install
-	arch = i686
 	arch = x86_64
-	license = GPL
-	depends = kdelibs
-	source = http://projectiris.co.uk/releases/source/iris-0.1.tar.gz
-	md5sums = 21ca4355c657f9a794217d79115e40cd
+	license = MIT
+	depends = python
+	depends = python-dlib
+	depends = python-opencv
+	depends = python-numpy
+	depends = v4l-utils
+	depends = linux-enable-ir-emitter
+	source = iris-1.0.0.tar.gz::https://github.com/lordhanya/iris/archive/v1.0.0.tar.gz
+	source = face_recognition_models-0.3.0.tar.gz::https://files.pythonhosted.org/packages/source/f/face_recognition_models/face_recognition_models-0.3.0.tar.gz
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	sha256sums = SKIP
 
 pkgname = iris
-

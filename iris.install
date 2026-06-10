@@ -1,39 +1,40 @@
-# This is a default template for a post-install scriptlet.  You can
-# remove any functions you don't need (and this header).
-
-# arg 1:  the new package version
-pre_install() {
-  /bin/true
-}
-
-# arg 1:  the new package version
 post_install() {
-  echo "The binaries are at /usr/bin/iris. Example eyes are at /usr/share/iris/" 
-  /bin/true
+  echo ""
+  echo "==> IRIS — Infrared Recognition & Identity System installed"
+  echo ""
+  echo "  Quick start:"
+  echo ""
+  echo "  1. Configure IRIS:"
+  echo "     mkdir -p ~/.config/iris"
+  echo "     cp /usr/share/iris/config.example.ini ~/.config/iris/config.ini"
+  echo "     # Edit ~/.config/iris/config.ini if needed"
+  echo ""
+  echo "  2. Enroll your face:"
+  echo "     iris-enroll --force"
+  echo ""
+  echo "  3. Test authentication:"
+  echo "     iris-auth --timeout 10"
+  echo ""
+  echo "  4. (Optional) Integrate with SDDM lock screen:"
+  echo "     sudo /usr/share/iris/scripts/install-pam.sh"
+  echo ""
+  echo "  Failsafe:"
+  echo "    Emergency disable:  iris-disable"
+  echo "    Re-enable:          iris-enable"
+  echo "    Restore PAM backup: sudo cp /etc/pam.d/sddm.backup /etc/pam.d/sddm"
+  echo ""
+  echo "  Docs: /usr/share/iris/docs/"
+  echo ""
 }
 
-# arg 1:  the new package version
-# arg 2:  the old package version
-pre_upgrade() {
-  /bin/true
-}
-
-# arg 1:  the new package version
-# arg 2:  the old package version
 post_upgrade() {
-  /bin/true
+  post_install
 }
 
-# arg 1:  the old package version
 pre_remove() {
-  /bin/true
+  if grep -q "pam_exec.so.*face_auth.sh" /etc/pam.d/sddm 2>/dev/null; then
+    echo "WARNING: IRIS PAM integration is still active in /etc/pam.d/sddm"
+    echo "  Remove the IRIS line before uninstalling:"
+    echo "  sudo sed -i '\|pam_exec.so.*face_auth.sh|d' /etc/pam.d/sddm"
+  fi
 }
-
-# arg 1:  the old package version
-post_remove() {
-  /bin/true
-}
-
-op=$1
-shift
-$op $*
