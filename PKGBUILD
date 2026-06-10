@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=supercell-wx-appimage
-pkgver=0.5.6
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A NEXRAD Level 2 and Level 3 radar viewing application"
 provides=('supercell-wx')
@@ -16,7 +16,7 @@ _filename=supercell-wx-v${pkgver}-x86_64.AppImage
 source=(
   https://github.com/dpaulat/supercell-wx/releases/download/v${pkgver}-release/${_filename}
 )
-sha256sums=('e7785100f76cd9b8ae6cdf51d2a5f4206d4f3e8c819afee975c920acbf27ce37')
+sha256sums=('f3793344fe78adfaff3ccd494cd98386086f677fac6a821e1642d0f2e2fc03be')
 
 prepare() {
   cd "${srcdir}"
