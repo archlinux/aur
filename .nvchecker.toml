@@ -1,0 +1,4 @@
+[fastly]
+source = "git"
+git = "https://github.com/fastly/cli.git"
+prefix = "v"

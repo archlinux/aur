@@ -9,11 +9,97 @@
 ### Enhancements:
 
 ### Dependencies:
+
+## [v15.2.0](https://github.com/fastly/cli/releases/tag/v15.2.0) (2026-06-10)
+
+### Bug Fixes:
+
+- fix(docs): corrected stale and missing API reference links in usage.json metadata([#1803](https://github.com/fastly/cli/pull/1803))
+- fix(compute): `serve --watch` no longer rebuilds on attribute-only (Chmod) filesystem events, preventing an endless rebuild loop when another process changes a watched file's metadata such as its access time ([#1808](https://github.com/fastly/cli/pull/1808))
+- fix(docs): expand and correct API reference links for `fastly service` subcommands in usage.json metadata ([#1810](https://github.com/fastly/cli/pull/1810))
+
+### Enhancements:
+
+- feat(dns): add support for DNS Zones and TSIG Keys ([#1809](https://github.com/fastly/cli/pull/1809))
+- fix(compute/init): Add starter kits for C++ language [#1807](https://github.com/fastly/cli/pull/1807)
+
+### Dependencies:
+
+- build(deps): `github.com/bodgit/sevenzip` from 1.6.1 to 1.6.2 ([#1795](https://github.com/fastly/cli/pull/1795))
+- build(deps): `github.com/minio/minlz` from 1.0.1 to 1.1.1 ([#1795](https://github.com/fastly/cli/pull/1795))
+- build(deps): `github.com/nwaples/rardecode/v2` from 2.2.0 to 2.2.2 ([#1795](https://github.com/fastly/cli/pull/1795))
+- build(deps): `go4.org` from 0.0.0-20230225012048-214862532bf5 to 0.0.0-20260112195520-a5071408f32f ([#1795](https://github.com/fastly/cli/pull/1795))
+- build(deps): `golang.org/x/net` from 0.53.0 to 0.54.0 ([#1795](https://github.com/fastly/cli/pull/1795))
+- build(deps): `golang.org/x/sys` from 0.44.0 to 0.45.0 ([#1801](https://github.com/fastly/cli/pull/1801))
+- build(deps): `golang.org/x/crypto` from 0.51.0 to 0.52.0 ([#1801](https://github.com/fastly/cli/pull/1801))
+- build(deps): `github.com/bodgit/sevenzip` from 1.6.2 to 1.6.4 ([#1801](https://github.com/fastly/cli/pull/1801))
+- build(deps): `github.com/nwaples/rardecode/v2` from 2.2.2 to 2.2.3 ([#1801](https://github.com/fastly/cli/pull/1801))
+- build(deps): `golang.org/x/net` from 0.54.0 to 0.55.0 ([#1801](https://github.com/fastly/cli/pull/1801))
+- build(deps): `github.com/rogpeppe/go-internal` from 1.14.1 to 1.15.0 ([#1813](https://github.com/fastly/cli/pull/1813))
+- build(deps): `github.com/stangelandcl/ppmd` from 0.1.0 to 0.1.1 ([#1813](https://github.com/fastly/cli/pull/1813))
+- build(deps): `github.com/mattn/go-colorable` from 0.1.14 to 0.1.15 ([#1813](https://github.com/fastly/cli/pull/1813))
+- build(deps): `github.com/mattn/go-runewidth` from 0.0.23 to 0.0.24 ([#1813](https://github.com/fastly/cli/pull/1813))
+- build(deps): `github.com/pierrec/lz4/v4` from 4.1.26 to 4.1.27 ([#1813](https://github.com/fastly/cli/pull/1813))
+- build(deps): `github.com/fastly/go-fastly/v15` from 15.0.1 to 15.0.2 ([#1813](https://github.com/fastly/cli/pull/1813))
+- build(deps): `golang.org/x/sys` from 0.45.0 to 0.46.0 ([#1819](https://github.com/fastly/cli/pull/1819))
+- build(deps): `golang.org/x/term` from 0.43.0 to 0.44.0 ([#1819](https://github.com/fastly/cli/pull/1819))
+- build(deps): `golang.org/x/crypto` from 0.52.0 to 0.53.0 ([#1819](https://github.com/fastly/cli/pull/1819))
+- build(deps): `golang.org/x/mod` from 0.36.0 to 0.37.0 ([#1819](https://github.com/fastly/cli/pull/1819))
+- build(deps): `golang.org/x/sync` from 0.20.0 to 0.21.0 ([#1819](https://github.com/fastly/cli/pull/1819))
+- build(deps): `golang.org/x/text` from 0.37.0 to 0.38.0 ([#1819](https://github.com/fastly/cli/pull/1819))
+- build(deps): `github.com/fastly/go-fastly/v15` from 15.0.2 to 15.0.3 ([#1819](https://github.com/fastly/cli/pull/1819))
+
+## [v15.1.0](https://github.com/fastly/cli/releases/tag/v15.1.0) (2026-05-13)
+
+### Bug Fixes:
+
+- fix(auth): honor deprecated `--profile`/`-o` when resolving the API token; an unknown profile name is now a hard error instead of a silent fallback to the default token ([#1792](https://github.com/fastly/cli/pull/1792))
+- fix(text): send deprecation warnings to stderr instead of stdout ([#1782](https://github.com/fastly/cli/pull/1782))
+
+### Enhancements:
+
+- feat(compute): add file field support for setup.kv_stores bulk import ([#1784](https://github.com/fastly/cli/pull/1784))
+- feat(compute): add support for cpp for compute ([#1773](https://github.com/fastly/cli/pull/1773))
+
+### Dependencies:
+
+- refactor(deps): migrate from `mholt/archiver/v3` to `mholt/archives` v0.1.5 ([#1787](https://github.com/fastly/cli/pull/1787))
+- build(deps): `golang.org/x/sys` from 0.43.0 to 0.44.0 ([#1785](https://github.com/fastly/cli/pull/1785))
+- build(deps): `golang.org/x/term` from 0.42.0 to 0.43.0 ([#1785](https://github.com/fastly/cli/pull/1785))
+- build(deps): `golang.org/x/crypto` from 0.50.0 to 0.51.0 ([#1785](https://github.com/fastly/cli/pull/1785))
+- build(deps): `golang.org/x/mod` from 0.35.0 to 0.36.0 ([#1785](https://github.com/fastly/cli/pull/1785))
+- build(deps): `golang.org/x/text` from 0.36.0 to 0.37.0 ([#1785](https://github.com/fastly/cli/pull/1785))
+
+## [v15.0.0](https://github.com/fastly/cli/releases/tag/v15.0.0) (2026-05-08)
+
+### Breaking:
+
+- breaking(ngwaf/workspace): change flag name to match API spec ([#1768](https://github.com/fastly/cli/pull/1768]))
+
+### Bug Fixes:
+
+- fix(compute/deploy): remove compute trial activation code because trials no longer exist ([#1730](https://github.com/fastly/cli/pull/1730))
+- fix(auth): SSO token expiration status now reflects the actual API token lifetime (~12 hours) instead of the internal JWT refresh token (~30 minutes), preventing spurious warnings and premature re-authentication [#1728](https://github.com/fastly/cli/pull/1728)
+- fix(argparser): skip ListVersions API call for numeric versions [#1774](https://github.com/fastly/cli/pull/1774)
+
+### Enhancements:
+
+- feat(service/backend): add support for the `max_use` and `max_lifetime` parameters ([#1779](https://github.com/fastly/cli/pull/1779))
+
+### Dependencies:
+
 - build(deps): `golang.org/x/term` from 0.41.0 to 0.42.0 ([#1726](https://github.com/fastly/cli/pull/1726))
 - build(deps): `golang.org/x/crypto` from 0.49.0 to 0.50.0 ([#1726](https://github.com/fastly/cli/pull/1726))
 - build(deps): `golang.org/x/mod` from 0.34.0 to 0.35.0 ([#1726](https://github.com/fastly/cli/pull/1726))
 - build(deps): `golang.org/x/net` from 0.52.0 to 0.53.0 ([#1726](https://github.com/fastly/cli/pull/1726))
 - build(deps): `golang.org/x/text` from 0.35.0 to 0.36.0 ([#1726](https://github.com/fastly/cli/pull/1726))
+- build(deps): `acifani/setup-tinygo` from 2 to 3 ([#1729](https://github.com/fastly/cli/pull/1729))
+- build(deps): `github.com/mattn/go-isatty` from 0.0.21 to 0.0.22 ([#1735](https://github.com/fastly/cli/pull/1735))
+- build(deps): `github.com/hashicorp/cap` from 0.12.0 to 0.13.0 ([#1771](https://github.com/fastly/cli/pull/1771))
+- build(deps): `github.com/Masterminds/semver/v3` from 3.4.0 to 3.5.0 ([#1775](https://github.com/fastly/cli/pull/1775))
+- build(deps): `github.com/fsnotify/fsnotify` from 1.9.0 to 1.10.1 ([#1775](https://github.com/fastly/cli/pull/1775))
+- build(deps): `github.com/klauspost/compress` from 1.18.5 to 1.18.6 ([#1775](https://github.com/fastly/cli/pull/1775))
+- build(deps): `github.com/fastly/go-fastly/v15` from 14.2.0 to 15.0.1([#1778](https://github.com/fastly/terraform-provider-fastly/pull/1778))
 
 ## [v14.3.1](https://github.com/fastly/cli/releases/tag/v14.3.1) (2026-04-13)
 
@@ -94,6 +180,8 @@
 - feat(service/version): add support for service validation. [#1695](https://github.com/fastly/cli/pull/1695)
 - feat(compute/build): Block version 1.93.0 of Rust to avoid a wasm32-wasip2 bug. ([#1653](https://github.com/fastly/cli/pull/1653))
 - feat(service/vcl): escape control characters when displaying VCL content for cleaner terminal output ([#1637](https://github.com/fastly/cli/pull/1637))
+
+- feat(compute/deploy): Apply \[setup.products] for enabling products during initial deploy or publish ([#1617](https://github.com/fastly/cli/pull/1617))
 
 ### Dependencies:
 
@@ -203,13 +291,13 @@ both the old and new forms are:
 - feat(compute/hashfiles): remove hashsum subcommand ([#1608](https://github.com/fastly/cli/pull/1608))
 - feat(ngwaf/rules): add support for CRUD operations for NGWAF rules ([#1605](https://github.com/fastly/cli/pull/1605))
 - feat(compute/deploy): added the `--no-default-domain` flag to allow for the skipping of automatic domain creation when deploying a Compute service([#1610](https://github.com/fastly/cli/pull/1610))
-- refactor(argparser/flags.go): add flag conversion utilities for converting string flags to bools and checking ascending and desecnding flags ([#1611](https://github.com/fastly/cli/pull/1611))
+- refactor(argparser/flags.go): add flag conversion utilities for converting string flags to bools and checking ascending and descending flags ([#1611](https://github.com/fastly/cli/pull/1611))
 - feat(service/purge): Add 'service purge' command as replacement for 'purge', with an unlisted and deprecated alias of 'purge'. ([#1612](https://github.com/fastly/cli/pull/1612))
 - feat(service/version): Add 'service version ...' commands as replacements for 'service-version ...', with unlisted and deprecated aliases of 'service-version ...'. ([#1614](https://github.com/fastly/cli/pull/1614))
 - feat(service/vcl): moved the `vcl` command under the `service` command, with an unlisted and deprecated alias of `vcl` ([#1616](https://github.com/fastly/cli/pull/1616))
 - feat(service/healthcheck): moved the `healthcheck` command under the `service` command, with an unlisted and deprecated alias of `healthcheck` ([#1619](https://github.com/fastly/cli/pull/1619))
 - feat(service/backend): moved the `backend` command under the `service` command, with an unlisted and deprecated alias of `backend` ([#1621](https://github.com/fastly/cli/pull/1621))
-- feat(service/acl): moved the `acl` and `aclentry` commands under the `service` command, with a unlisted and deprecated aliases of `acl` and `aclentry` ([#1621](https://github.com/fastly/cli/pull/1624))
+- feat(service/acl): moved the `acl` and `aclentry` commands under the `service` command, with unlisted and deprecated aliases of `acl` and `aclentry` ([#1621](https://github.com/fastly/cli/pull/1624))
 - feat(version): If the latest version is at least one major version higher than the current version, provide links to the release notes for the major version(s) so the user can review them before upgrading. ([#1623](https://github.com/fastly/cli/pull/1623))
 - feat(service/imageoptimizerdefaults): moved the `imageoptimizerdefaults` commands under the `service` command, with an unlisted and deprecated alias of `imageoptimizerdefaults` ([#1627](https://github.com/fastly/cli/pull/1627))
 - feat(service/alert): moved the `alerts` command to the `service alert` command, with an unlisted and deprecated alias of `alerts` ([#1616](https://github.com/fastly/cli/pull/1626))
@@ -220,6 +308,8 @@ both the old and new forms are:
 - feat(service/resourcelink): moved the `resource-link` commands under the `service` command, with an unlisted and deprecated alias of `resource-link` ([#1635](https://github.com/fastly/cli/pull/1635))
 - feat(service/logging): moved the `logging` commands under the `service` command, with an unlisted and deprecated alias of `logging` ([#1642](https://github.com/fastly/cli/pull/1642))
 - feat(service/auth): moved the `service-auth` commands under the `service` command and renamed to `auth`, with an unlisted and deprecated alias of `service-auth` ([#1643](https://github.com/fastly/cli/pull/1643))
+- feat(compute/build): improved error messaging for JavaScript builds with pre-flight toolchain verification including Bun runtime support ([#1640](https://github.com/fastly/cli/pull/1640))
+
 ### Bug fixes:
 
 - fix(docker): Use base image toolchain instead of reinstalling stable, which could pull in an unvalidated Rust version.
