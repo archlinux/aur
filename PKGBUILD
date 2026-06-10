@@ -1,12 +1,12 @@
 # Maintainer: William Varmus <0@willvar.tw>
 
 pkgname=proxysql-bin
-pkgver=3.0.2
-pkgrel=3
+pkgver=3.0.9
+pkgrel=1
 pkgdesc='High-performance MySQL proxy with query routing, caching, and load balancing'
 arch=('x86_64')
 url="https://proxysql.com/"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('gnutls' 'openssl')
 optdepends=('perl: for Galera cluster tools')
 provides=('proxysql')
@@ -16,7 +16,7 @@ install="${pkgname}.install"
 source=("proxysql_${pkgver}-ubuntu24_amd64.deb::https://github.com/sysown/proxysql/releases/download/v${pkgver}/proxysql_${pkgver}-ubuntu24_amd64.deb"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('d84b8b0599c4d2c9c0a04e33dfcc89e1cbcde9510a5193a4d1b52002a2a93358'
+sha256sums=('a20548b17ede6d9e014decb1eefb1cb0775f643932561388770d2f50c8d316ab'
             'SKIP'
             'SKIP')
 
