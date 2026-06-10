@@ -1,6 +1,6 @@
 # Maintainer: L1p0 <lipovicsmartin@l1p0-industries.hu>
 pkgname=l1p0-menus-git
-pkgver=1.0.2.r3.082109f
+pkgver=1.0.3.r0.72c9ffb
 pkgrel=1
 pkgdesc="GTK4 Layer Shell menus for Hyprland written in Python"
 arch=('any')
