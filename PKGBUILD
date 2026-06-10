@@ -2,7 +2,7 @@
 # Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs> 
 
 pkgname=transcrypt
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='A script to configure transparent encryption of files within a Git repository'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 )
 optdepends=('gnupg: config import/export support')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c5f5af35016474ffd1f8605be1eac2e2f17743737237065657e3759c8d8d1a66')
+sha256sums=('e28676a8ef781046c16b6c34acdb44b66b6d382d9c20cb810c883cc5be20dd28')
 
 package() {
   cd "${pkgname}-${pkgver}/"
