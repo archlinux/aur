@@ -19,7 +19,7 @@ pkgbase = mark-shot
 	optdepends = python: pinned-window OCR and LLM translation helpers
 	optdepends = tesseract: fallback OCR backend
 	optdepends = tesseract-data-chi_sim: simplified Chinese OCR data for tesseract
-	source = mark-shot-0.1.25::git+https://github.com/jswysnemc/mark-shot.git#commit=3f2ac56fb0d25838074c34168c5bfdd919c21586
+	source = mark-shot-0.1.25::git+https://github.com/jswysnemc/mark-shot.git#commit=da4917369ac139652f843df7d7ab24e9a8733198
 	sha256sums = SKIP
 
 pkgname = mark-shot
