@@ -1,0 +1,3 @@
+[git-archaeologist]
+source = "npm"
+npm = "git-archaeologist"
