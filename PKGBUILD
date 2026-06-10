@@ -4,8 +4,8 @@
 #https://comate-ide.bj.bcebos.com/updates/stable/linux/x64/latest.json
 pkgname=comate-bin
 _pkgname=Comate
-pkgver=2.0.0
-_version=69f76118f431176dda6c10db268f694dea1f3b78-253535543
+pkgver=2.1.2
+_version=abff953ef9fd72cfae07b2d96e0e66c91de5e5a6-256366291
 _electronversion=39
 pkgrel=1
 pkgdesc="Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)"
@@ -44,12 +44,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/${_version}/${_pkgname}-linux-x64.tar.gz")
-sha256sums=('ab16553a480ab238ca376fec78f44ad8399cb7a08aa4b43a14fe28773e0da3ae'
+sha256sums=('23cf0afd7454b922cb91f58d68e1406eb85ac5d8c685f6ad9b025f3d063c9dcf'
             'df2535dcf1679b8681a27f35a445c08300d34b0336af0dea07f0fbcd5ef5e946'
             '0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d'
             '787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
-sha256sums_x86_64=('c29b8da495e6a5471f9ca0a20ea412ef1304b5133484c2f5adc8eecfdb9bfe0e')
+sha256sums_x86_64=('23ce722ef823b33a5a648b4c74ef568d53d8ebb173189bf858588da9c5fc8a58')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
