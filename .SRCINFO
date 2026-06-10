@@ -1,4 +1,4 @@
-pkgbase = arch-update-vai
+pkgbase = arch-update-vai-bin
 	pkgdesc = Script interativo para atualizar Arch Linux (pacman, AUR, Flatpak, Snap, fwupd)
 	pkgver = 0.7.1
 	pkgrel = 1
@@ -14,7 +14,7 @@ pkgbase = arch-update-vai
 	optdepends = reflector: atualizar mirrorlist automaticamente
 	optdepends = python: checar pacotes pip
 	optdepends = python-pip: checar pacotes pip
-	source = arch-update-vai::git+https://codeberg.org/CapivaraVai/arch-update-vai.git
+	source = arch-update-vai-bin::git+https://codeberg.org/CapivaraVai/arch-update-vai.git
 	sha256sums = SKIP
 
-pkgname = arch-update-vai
+pkgname = arch-update-vai-bin
