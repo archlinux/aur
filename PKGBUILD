@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: Lēctia (Eden) Landau <lectia@wizard.enterprises>
 pkgname=anywherelan-bin
 pkgver=0.17.0
 pkgrel=1
