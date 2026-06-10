@@ -1,12 +1,12 @@
 pkgname=gitnexus
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc='Zero-server code intelligence engine for exploring repositories as a knowledge graph'
 arch=('x86_64' 'aarch64')
 url='https://github.com/abhigyanpatwari/GitNexus'
 license=('PolyForm-Noncommercial-1.0.0')
 depends=('nodejs>=22')
-makedepends=('npm' 'python')
+makedepends=('npm')
 options=('!strip')
 
 _upstream=GitNexus
@@ -14,7 +14,7 @@ _upstream=GitNexus
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('6df3abf4271af4b13b720729bf24f3b75d906ee72d3945b670691006e24dc554')
+sha256sums=('21f8b2b21f74f36845a954236b3ddfc536317ae5406191982c16d476c6881c56')
 
 prepare() {
   local _root="${srcdir}/${_upstream}-${pkgver}"
