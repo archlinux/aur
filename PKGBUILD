@@ -5,15 +5,15 @@
 
 pkgname=ocrodjvu-python3-git
 _pkgbasename='ocrodjvu'
-pkgver=0.14+25.r1436.1425cf9
-pkgrel=1.314
+pkgver=0.14+43.r1454.d5dee3d
+pkgrel=1
 pkgdesc="OCR for DjVu (Python 3 port)"
 arch=('i686' 'x86_64')
 url='https://github.com/FriedrichFroebel/ocrodjvu'
 license=('GPL-2.0-only')
 provides=(ocrodjvu)
 conflicts=(ocrodjvu)
-makedepends=(python python-build python-installer python-wheel git coreutils make libxslt docbook-xsl)
+makedepends=(python python-build python-installer python-wheel git coreutils make libxslt docbook-xsl python-setuptools)
 depends=(python python-lxml python-djvulibre-python)
 optdepends=('python-html5lib: HTML parser; required for the ``--html5`` option'
             'python-pyicu: required for the ``--word-segmentation=uax29`` option'
@@ -46,13 +46,13 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/ocrodjvu"
+    cd "$(_fullsrcdir)"
     make -C doc
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/ocrodjvu"
+    cd "$(_fullsrcdir)"
     python -m installer --destdir="$pkgdir" dist/*.whl
     make PREFIX="/usr" DESTDIR="$pkgdir" install_manpage
 }

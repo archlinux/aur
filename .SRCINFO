@@ -1,7 +1,7 @@
 pkgbase = ocrodjvu-python3-git
 	pkgdesc = OCR for DjVu (Python 3 port)
-	pkgver = 0.14+25.r1436.1425cf9
-	pkgrel = 1.314
+	pkgver = 0.14+43.r1454.d5dee3d
+	pkgrel = 1
 	url = https://github.com/FriedrichFroebel/ocrodjvu
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = ocrodjvu-python3-git
 	makedepends = make
 	makedepends = libxslt
 	makedepends = docbook-xsl
+	makedepends = python-setuptools
 	depends = python
 	depends = python-lxml
 	depends = python-djvulibre-python
