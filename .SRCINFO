@@ -1,0 +1,17 @@
+pkgbase = screenshot-rs
+	pkgdesc = Pure Rust interactive wlroots/Hyprland region and long screenshot tool
+	pkgver = 0.1.0
+	pkgrel = 10
+	url = https://github.com/xander-lin/screenshot
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = libxkbcommon
+	depends = wayland
+	optdepends = hyprland: tested wlroots compositor environment
+	optdepends = sway: alternative wlroots compositor environment
+	conflicts = screenshot-cpp
+	replaces = screenshot-cpp
+
+pkgname = screenshot-rs
