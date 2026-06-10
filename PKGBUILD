@@ -2,7 +2,7 @@
 
 pkgname=occ
 pkgauthor=cesarandreslopez
-pkgver=0.8.10
+pkgver=0.8.11
 pkgrel=1
 
 _npmname="${pkgname}"
@@ -23,7 +23,7 @@ options=(!strip emptydirs staticlibs zipman)
 source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
 
-b2sums=('d27b24b94bb938ecf82e139a3f9fba5ef6b12a46c84f2b1cf8dcff23923b706ace999e634cee39c94f6f86fc95ed5adf0b1489d1235abf2b3aa7e99bd439f8a2')
+b2sums=('721cacb33d5aaca2ca2f6dc3227761641b16181b2d30f48dec47fdcb8fca8a22ec5f81d2b8801b33e0635809ad0cadac704b88c65e692c2e7d891f7cf7423e44')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
