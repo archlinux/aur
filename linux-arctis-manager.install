@@ -65,6 +65,11 @@ post_install() {
     echo -e "${_b}:: ARCTIS MANAGER: INSTALLED v$1${_r}"
     echo -e "${_b}::${_r} -----------------------------------------------------------------------"
     _check_conflicts "$user_home"
+
+    echo -e "${_b}::${_r} ${_y}[RECOMMENDED]${_r} Start the background service automatically on startup:"
+    echo -e "${_b}::${_r}               ${_c}systemctl --user enable arctis-manager${_r}"
+    echo -e "${_b}::${_r}"
+
     echo -e "${_b}::${_r} ${_y}[TIP]${_r} To launch the system tray app automatically on login:"
     echo -e "${_b}::${_r}       ${_c}ln -sf /usr/share/applications/ArctisManagerSystray.desktop ~/.config/autostart/${_r}"
     echo -e "${_b}::${_r} -----------------------------------------------------------------------"
@@ -99,6 +104,12 @@ post_upgrade() {
         echo -e "${_b}::${_r} -----------------------------------------------------------------------"
         echo -e ""
     fi
+
+    if ! systemctl --user --global is-enabled arctis-manager &>/dev/null; then
+        echo -e "${_b}::${_r} ${_y}[RECOMMENDED]${_r} Start the background service automatically on startup:"
+        echo -e "${_b}::${_r}               ${_c}systemctl --user enable arctis-manager${_r}"
+        echo -e ""
+    fi
 }
 
 post_remove() {
@@ -109,6 +120,7 @@ post_remove() {
     echo -e "${_b}::${_r}"
     echo -e "${_b}::${_r} 1. ${_c}rm -rf ~/.config/arctis_manager${_r}"
     echo -e "${_b}::${_r} 2. ${_c}rm ~/.config/autostart/ArctisManagerSystray.desktop${_r}"
+    echo -e "${_b}::${_r} 3. ${_c}rm -f ~/.config/systemd/user/graphical-session.target.wants/arctis-manager.service${_r}"
     echo -e "${_b}::${_r} -----------------------------------------------------------------------"
     echo -e ""
 }
