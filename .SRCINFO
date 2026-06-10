@@ -1,6 +1,6 @@
 pkgbase = sysmanage-agent
 	pkgdesc = Cross-platform system management agent for SysManage
-	pkgver = 2.4.0.30
+	pkgver = 2.4.0.31
 	pkgrel = 1
 	url = https://github.com/bceverly/sysmanage-agent
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = sysmanage-agent
 	depends = python-alembic
 	depends = python-defusedxml
 	backup = etc/sysmanage-agent.yaml
-	source = sysmanage-agent-2.4.0.30.tar.gz::https://github.com/bceverly/sysmanage-agent/archive/refs/tags/v2.4.0.30.tar.gz
-	sha256sums = 28369869b719946e08fd8228ee5c7946aebd340b7947b6eb7122b5392f090ada
+	source = sysmanage-agent-2.4.0.31.tar.gz::https://github.com/bceverly/sysmanage-agent/archive/refs/tags/v2.4.0.31.tar.gz
+	sha256sums = 2f393abcf46f857fc2e2bbd82bca5939fd83cfd283f3559ecdfd8280a0c41671
 
 pkgname = sysmanage-agent
