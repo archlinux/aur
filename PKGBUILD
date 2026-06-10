@@ -8,7 +8,7 @@ arch=(any)
 url="https://www.bookman.de/"
 license=('custom')
 depends=('java-environment=25' 'java25-openjfx' 'ttf-liberation')
-makedepends=('jdk17-openjdk' 'unzip')
+makedepends=('jdk25-openjdk' 'unzip')
 # the bit.ly link looks suspicious, but that's what they use on their website.
 # Also the download is not versioned, so this will eventuelly break due to integrity checks failing.
 source=("${pkgname}-${pkgver}.zip::https://go.bookman.de/Microsoft"

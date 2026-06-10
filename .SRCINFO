@@ -5,7 +5,7 @@ pkgbase = bookman-cockpit
 	url = https://www.bookman.de/
 	arch = any
 	license = custom
-	makedepends = jdk17-openjdk
+	makedepends = jdk25-openjdk
 	makedepends = unzip
 	depends = java-environment=25
 	depends = java25-openjfx
