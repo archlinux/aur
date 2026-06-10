@@ -233,7 +233,6 @@ prepare() {
         libsoup
         libwebp
         libxml2
-        low_latency_layer
         meson
         nghttp2
         nvidia-libs/dxvk-nvapi
@@ -246,10 +245,12 @@ prepare() {
         openvr
         OpenXR-SDK
         protonfixes
-        pyroveil
         SPIRV-Headers
         vkd3d
         vkd3d-proton
+        vklayers/low_latency_layer
+        vklayers/pyroveil
+        vklayers/vkbasalt
         Vulkan-Headers
         Vulkan-Utility-Libraries
         wine
