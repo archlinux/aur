@@ -1,6 +1,6 @@
 pkgbase = eta-touchdrv-git
 	pkgdesc = Non-HID touchscreen drivers for Fatih IWBs but source code of server daemons are unavailable. They are provided by Vestel.
-	pkgver = 0.4.2.rc5.r89.g3a85f93
+	pkgver = 0.5.2.g3a85f93
 	pkgrel = 1
 	url = https://github.com/vrdons/eta-touchdrv
 	arch = x86_64
