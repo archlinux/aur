@@ -1,6 +1,6 @@
 # Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=rauncher-wayland
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Application launcher for Linux Wayland desktop"
 arch=("x86_64")
@@ -11,7 +11,7 @@ makedepends=("rust" "make")
 provides=("rauncher-wayland")
 conflicts=("rauncher-x11")
 source=("https://github.com/h3poteto/rauncher/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=("327e5e400f0077b2f12c53f8ff6f0407")
+md5sums=("b32f88f2a28f5328909d304a0d68e0fd")
 
 prepare() {
   cd "rauncher-${pkgver}"
