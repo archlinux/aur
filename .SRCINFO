@@ -1,7 +1,7 @@
 pkgbase = lucarned-bin
 	pkgdesc = Stop babysitting local AI agents. Just notifications, approve, and resume your Codex, Pi, or Claude code sessions anywhere.
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuchg/Lucarne
 	install = lucarned-bin.install
 	arch = x86_64
