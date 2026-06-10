@@ -4,7 +4,7 @@
 
 pkgname=bird2
 _pkgname=bird
-pkgver=2.19.0
+pkgver=2.19.1
 pkgrel=1
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
 arch=('x86_64')
@@ -19,7 +19,7 @@ backup=('etc/bird.conf')
 options=(!emptydirs)
 source=("https://gitlab.nic.cz/labs/bird/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz"
         'bird.service')
-sha256sums=('d20e0f7b981ca91c34a5293a42ff33e6d3223f97ea33daac588af36f6b98e04b'
+sha256sums=('7bbd6b4fdbc608ae84cb8468d6c5dbc21a74a2dc3242bafaae43a943a94d6697'
             '4aa1e8d41229badd276aa3747f613e7df34761892add2258c63bdb5097dfeb2b')
 
 prepare() {
