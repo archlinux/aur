@@ -1,7 +1,7 @@
 pkgbase = steamlogscrubber
-	pkgdesc = Steam log scrubber with optional Proton log collection; Proton logs require PROTON_LOG=1 %command% in the game launch options in Steam properties.
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgdesc = Steam log scrubber with CLI and GUI; Proton logs require PROTON_LOG=1 %command% in Steam launch options.
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/blakeblair/steamlogscrubber
 	arch = any
 	license = GPL-3.0-or-later
@@ -10,9 +10,10 @@ pkgbase = steamlogscrubber
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
+	depends = tk
 	optdepends = python-py7zr: 7z archive output support
 	optdepends = python-zstandard: zstd/tar.zst archive output support
-	source = steamlogscrubber-0.1.1.tar.gz::https://github.com/blakeblair/steamlogscrubber/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 54fb925cacf8cc3d44ffb28888e2aecf9535ad21c600d810d2c61a385aca8e66
+	source = steamlogscrubber-0.2.0.tar.gz::https://github.com/blakeblair/steamlogscrubber/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = e0078d6ce43b24a3ecff499b47950386f4e13e966d76e0d8575a95f7ebd41282
 
 pkgname = steamlogscrubber
