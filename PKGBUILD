@@ -3,7 +3,7 @@
 
 _name='powershell'
 pkgname="$_name-git"
-pkgver=7.7.0.preview.1.r11450.90d3b7f
+pkgver=7.7.0.preview.2.r11464.6ae5efc
 _major=${pkgver:0:1}
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
@@ -57,7 +57,7 @@ prepare() {
   export DOTNET_HOME="$srcdir/.dotnet"
   export NUGET_PACKAGES="$srcdir/.nuget"
   export DOTNET_INSTALL_DIR="$DOTNET_HOME"
-  export PATH="$PATH:$DOTNET_HOME"
+  export PATH="$DOTNET_HOME:$PATH"
   cd "$_name"
   
   ## Use public package sources
@@ -67,12 +67,15 @@ prepare() {
 
   ## Install specified version of dotnet and restore
   dotnet-install --jsonfile global.json
-  dotnet restore -r linux-x64 -p:SDKToUse=Microsoft.NET.Sdk
-  dotnet restore -r linux-x64 -p:SDKToUse=Microsoft.NET.Sdk src/Modules
+  for proj in "." "src/TypeCatalogGen" "src/ResGen" "src/Modules" "tools/wix"; do
+    dotnet restore "$proj" -r linux-x64 -p:SDKToUse=Microsoft.NET.Sdk
+  done
   
   ## Setup the build target to gather dependency information
-  cp "$srcdir/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets" "src/Microsoft.PowerShell.SDK/obj/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
-  dotnet msbuild src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj /t:_GetDependencies "/p:DesignTimeBuild=true;_DependencyFile=$(pwd)/src/TypeCatalogGen/$_name.inc"
+  pushd src/Microsoft.PowerShell.SDK
+  cp "$srcdir/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets" "obj/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
+  dotnet msbuild /t:_GetDependencies "/p:DesignTimeBuild=true;_DependencyFile=$srcdir/$_name/src/TypeCatalogGen/$_name.inc"
+  popd
   
   ## create the telemetry flag file
   touch DELETE_ME_TO_DISABLE_CONSOLEHOST_TELEMETRY
@@ -88,7 +91,7 @@ build() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
   export DOTNET_HOME="$srcdir/.dotnet"
   export NUGET_PACKAGES="$srcdir/.nuget"
-  export PATH="$PATH:$DOTNET_HOME"
+  export PATH="$DOTNET_HOME:$PATH"
 
   ## Generate resource binding C# files
   pushd src/ResGen
@@ -97,7 +100,7 @@ build() {
 
   ## Generate 'CorePsTypeCatalog.cs'
   pushd src/TypeCatalogGen
-  dotnet run ../System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs "$_name.inc"
+  dotnet run -- ../System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs "$_name.inc"
   popd
 
   ## Build native component
@@ -108,7 +111,7 @@ build() {
   popd
 
   ## Build powershell core
-  dotnet publish src/powershell-unix \
+  dotnet publish "src/$_name-unix" \
     -p:GenerateFullPaths=true \
     -p:ErrorOnDuplicatePublishOutputFiles=false \
     -p:IsWindows=false \
@@ -116,7 +119,8 @@ build() {
     -p:SDKToUse=Microsoft.NET.Sdk \
     --sc \
     -c Linux \
-    -r linux-x64
+    -r linux-x64 \
+    -o bin
 }
 
 check() {
@@ -126,35 +130,26 @@ check() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
   export DOTNET_HOME="$srcdir/dotnet"
   export NUGET_PACKAGES="$srcdir/.nuget"
-  export PATH="$PATH:$DOTNET_HOME"
+  export PATH="$DOTNET_HOME:$PATH"
   dotnet test -c Linux
 }
 
 package() {
   export NUGET_PACKAGES="$srcdir/.nuget"
   cd "$_name"
-  mkdir -p "$pkgdir/opt/microsoft/$_name/$_major"
   _dn="$(jq -r .sdk.version global.json | awk -F. '{print $1 ".0"}')"
-  mkdir -p "src/$_name-unix/bin/Linux/net$_dn/linux-x64/publish/ref"
-
-  # Reference assemblies
-  for file in $(cat src/TypeCatalogGen/$_name.inc); do
-    _asm="${file:0:-1}"
-    if [[ -z "$_asm" ]]; then
-      continue
-    fi
-    cp "$_asm" "src/$_name-unix/bin/Linux/net$_dn/linux-x64/publish/ref"
-  done
+  mkdir -p "$pkgdir/opt/microsoft/$_name/$_major"
+  mkdir -p "bin/Linux/net$_dn/linux-x64/publish/Modules"
 
   # Modules
   for dep in "$(grep PackageReference src/Modules/PSGalleryModules.csproj)"; do
     _modname="$(echo $dep | awk -F\" '{print $2}')"
     _modname="${_modname,,}"
     _modver="$(echo $dep | awk -F\" '{print $4}' | awk -F. '{print $1 "." $2 "." $3}')"
-    cp -r "$NUGET_PACKAGES/$_modname/$_modver/" "src/$_name-unix/bin/Linux/net$_dn/linux-x64/publish/Modules"
+    cp -r "$NUGET_PACKAGES/$_modname/$_modver/" "bin/Linux/net$_dn/linux-x64/publish/Modules"
   done
 
-  find "src/$_name-unix/bin/Linux/net$_dn/linux-x64/publish/Modules" \( \
+  find "bin/Linux/net$_dn/linux-x64/publish/Modules" \( \
     -name "*.nupkg" \
     -o -name "*.nupkg.sha512" \
     -o -name "*.nupkg.metadata" \
@@ -168,6 +163,9 @@ package() {
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/opt/microsoft/$_name/$_major/pwsh" "$pkgdir/usr/bin/pwsh"
+  for lib in libssl libcrypto; do
+    ln -s "/usr/lib/$lib.so.1.0.0" "$pkgdir/opt/microsoft/$_name/$_major/$lib.so.1.0.0"
+  done
 }
 
 # vim: ts=2 sw=2 et:
