@@ -1,0 +1,4 @@
+["rocmfp4-llama.cpp-git"]
+source = "git"
+git = "https://github.com/charlie12345/rocmfp4-llama"
+revision = "mtp-rocmfp4-strix"

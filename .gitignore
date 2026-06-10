@@ -1,0 +1,10 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!llama.cpp.conf
+!llama.cpp.service
+!llama.cpp.install
+!sysusers.conf
+!tmpfiles.conf
