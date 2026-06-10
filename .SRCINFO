@@ -1,39 +1,24 @@
 pkgbase = tls-client-git
-	pkgdesc = Go module and shared library providing a TLS Client is built upon https://github.com/Carcraftz/fhttp and https://github.com/Carcraftz/utls.
-	pkgver = 1.7.5+3.r262.20240513.077a497
-	pkgrel = 2
+	pkgdesc = net/http.Client-like HTTP client with selectable TLS fingerprints
+	pkgver = r371.1522d2e
+	pkgrel = 1
 	url = https://github.com/bogdanfinn/tls-client
-	arch = aarch64
-	arch = amd64
 	arch = x86_64
-	license = custom
+	arch = aarch64
+	license = BSD-4-Clause
+	makedepends = go
 	makedepends = git
-	makedepends = go>=1.18
-	source = tls-client::git+https://github.com/bogdanfinn/tls-client.git
+	depends = glibc
+	provides = tls-client
+	provides = lib-tls-client
+	provides = libtls-client.so
+	provides = tls-client.so
+	conflicts = tls-client
+	conflicts = lib-tls-client
+	conflicts = lib-tls-client-git
+	source = git+https://github.com/bogdanfinn/tls-client.git
 	source = tls-client.pc.in
 	sha256sums = SKIP
 	sha256sums = 082b1fb28aa31320960d5f523dc2419f09958602577ed3f5184f5bb55896a2bc
 
-pkgname = golang-github-bogdanfinn-tls-client-git
-	pkgdesc = Go module providing a TLS Client is built upon https://github.com/Carcraftz/fhttp and https://github.com/Carcraftz/utls.
-	arch = any
-	depends = 
-	optdepends = bash: For build scripts.
-	optdepends = go: To compile software using this module, and for examples.
-	provides = golang-github-bogdanfinn-tls-client=1.7.5+3.r262.20240513.077a497
-	conflicts = golang-github-bogdanfinn-tls-client
-	replaces = golang-tls-client-git
-	replaces = golang-bogdanfinn-tls-client-git
-
-pkgname = lib-tls-client-git
-	pkgdesc = Shared library providing a TLS Client is built upon https://github.com/Carcraftz/fhttp and https://github.com/Carcraftz/utls.
-	arch = aarch64
-	arch = amd64
-	arch = x86_64
-	depends = glibc
-	optdepends = nodejs: For some examples.
-	optdepends = python: For some examples.
-	optdepends = python-psutil: For some examples.
-	provides = lib-tls-client=1.7.5+3.r262.20240513.077a497
-	provides = tls-client.so
-	conflicts = lib-tls-client
+pkgname = tls-client-git

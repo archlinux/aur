@@ -1,190 +1,60 @@
-# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 
-_pkgbase=tls-client
-
-_gitservice='github'
-_gittld='com'
-_gitserver="${_gitservice}.${_gittld}"
-_gitauthor='bogdanfinn'
-_gitproject="${_pkgbase}"
-
-pkgbase="${_pkgbase}-git"
-pkgname=("golang-${_gitservice}-${_gitauthor}-${_pkgbase}-git" "lib-${_pkgbase}-git")
-pkgver=1.7.5+3.r262.20240513.077a497
-_releasever="$(awk -F. '{print $1"."$2"."$3}' <<<"${pkgver}")"
-pkgrel=2
-pkgdesc="Go module and shared library providing a TLS Client is built upon https://github.com/Carcraftz/fhttp and https://github.com/Carcraftz/utls."
-arch=(
-  'aarch64'
-  'amd64'
-  'x86_64'
-)
-url="https://${_gitserver}/${_gitauthor}/${_gitproject}"
-license=('custom')
-makedepends=(
-  'git'
-  'go>=1.18'
-)
-# checkdepends=(
-#   'go>=1.18'
-#   'nodejs'
-#   'nvm'
-#   'python>=3'
-# )
-source=(
-  "${_pkgbase}::git+${url}.git"
-  "${_pkgbase}.pc.in"
-)
-sha256sums=(
-  'SKIP'                                                             # main source: git+${url}.git
-  '082b1fb28aa31320960d5f523dc2419f09958602577ed3f5184f5bb55896a2bc' # ${_pkgbase}.pc.in
-)
+_pkgname=tls-client
+pkgname=tls-client-git
+pkgver=r371.1522d2e
+pkgrel=1
+pkgdesc="net/http.Client-like HTTP client with selectable TLS fingerprints"
+arch=('x86_64' 'aarch64')
+url="https://github.com/bogdanfinn/tls-client"
+license=('BSD-4-Clause')
+depends=('glibc')
+makedepends=('go' 'git')
+provides=('tls-client' 'lib-tls-client' 'libtls-client.so' 'tls-client.so')
+conflicts=('tls-client' 'lib-tls-client' 'lib-tls-client-git')
+source=("git+${url}.git" "${_pkgname}.pc.in")
+sha256sums=('SKIP'
+            '082b1fb28aa31320960d5f523dc2419f09958602577ed3f5184f5bb55896a2bc')
 
 pkgver() {
-  cd "${srcdir}/${_pkgbase}"
+  cd "${srcdir}/${_pkgname}"
 
-  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
-  _rev="$(git rev-list --count HEAD)"
-  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
-  _hash="$(git rev-parse --short HEAD)"
-
-  if [ -z "${_ver}" ]; then
-    error "Could not determine version."
-    return 1
-  else
-    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
-  fi
+  # Get the version number.
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "${srcdir}/${_pkgbase}"
-  export GOPATH="${srcdir}/go"
-  # export GOPATH="${srcdir}/go:/usr/share/gocode:/usr/share/gocode/src"
-
-  git log > "${srcdir}/git.log"
-
-  # Don't download main source dependencies, since we don't compile anyway (this is only a library).
-  # go get # Download dependencies
-  # go mod tidy
-  # mkdir -p build
-
-  # This is for the shared C library, this we want to compile.
-  cd cffi_dist
-  go get # Download dependencies
-  go mod tidy
+prepare(){
+  cd "${srcdir}/${_pkgname}/cffi_dist"
+  mkdir -p build/
+  export GOPATH="${srcdir}"
+  go mod edit -replace "github.com/bogdanfinn/tls-client=../"
+  go mod download -modcacherw
 }
 
 build() {
-  cd "${srcdir}/${_pkgbase}"
-  export GOPATH="${srcdir}/go"
-  # export GOPATH="${srcdir}/go:/usr/share/gocode:/usr/share/gocode/src"
-
-  sed -E -e "s|%%LIBVER%%|${_releasever}|g" "${srcdir}/${_pkgbase}.pc.in" > "${srcdir}/${_pkgbase}.pc"
-
-  # go build -x -v -o build ./... # This would only build examples and ??
-
-  go build -x -v ./tests
-
-  cd cffi_dist
-  go build -x -v -buildmode=c-shared -o tls-client.so
+  cd "${srcdir}/${_pkgname}/cffi_dist"
+  export CGO_ENABLED=1
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -buildmode=c-shared -o build/${_pkgname}.so .
+  sed "s|%%LIBVER%%|${pkgver}|g" "${srcdir}/${_pkgname}.pc.in" > build/${_pkgname}.pc
 }
 
-# check() {
-#   cd "${srcdir}/${_pkgbase}"
-#   export GOPATH="${srcdir}/go"
-# 
-#   # go test -x -v ./...
-# 
-#   # ./test-all.sh
-# 
-#   # cd tests
-#   # go test -x -v
-# }
-
-package_golang-github-bogdanfinn-tls-client-git() {
-  pkgdesc="Go module providing a TLS Client is built upon https://github.com/Carcraftz/fhttp and https://github.com/Carcraftz/utls."
-  arch=(
-    'any'
-  )
-  depends=()
-  optdepends=(
-    'bash: For build scripts.'
-    'go: To compile software using this module, and for examples.'
-  )
-  provides=(
-    "golang-github-bogdanfinn-tls-client=${pkgver}"
-  )
-  conflicts=(
-    "golang-github-bogdanfinn-tls-client"
-  )
-  replaces=(
-    'golang-tls-client-git'
-    'golang-bogdanfinn-tls-client-git'
-  )
-  cd "${srcdir}/${_pkgbase}"
-  install -d -v -m755 "${pkgdir}/usr/share/gocode/src/${_gitserver}/${_gitauthor}/${_gitproject}"
-  cp -rv *.go *.mod *.sum cffi_src cffi_dist tests  "${pkgdir}/usr/share/gocode/src/${_gitserver}/${_gitauthor}/${_gitproject}"/
-  if [ -e "test-all.sh" ]; then
-    install -D -v -m775 test-all.sh                        "${pkgdir}/usr/share/gocode/src/${_gitserver}/${_gitauthor}/${_gitproject}"/test-all.sh
-  fi
-  rm -rv "${pkgdir}/usr/share/gocode/src/${_gitserver}/${_gitauthor}/${_gitproject}"/cffi_dist/{*.so,*.h,Dockerfile*,example*}
-
-  for _docfile in "Readme.md"; do
-    echo "SECHS"
-    install -D -v -m644 "${_docfile}"                      "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/${_docfile}"
-  done
-  install -D -v -m644 "${srcdir}/git.log"                  "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/git.log"
-  install -d -v -m755                                      "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/examples"
-  cp -rv example/*                                         "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/examples"/
-
-  install -D -v -m644 LICENSE                              "${pkgdir}/usr/share/licenses/golang-github-bogdanfinn-tls-client-git/LICENSE"
-  ln -svf "/usr/share/licenses/golang-github-bogdanfinn-tls-client-git/LICENSE"  "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/LICENSE"
+check() {
+  cd "${srcdir}/${_pkgname}"
+  go test .
 }
 
-package_lib-tls-client-git() {
-  pkgdesc="Shared library providing a TLS Client is built upon https://github.com/Carcraftz/fhttp and https://github.com/Carcraftz/utls."
-  arch=(
-    'aarch64'
-    'amd64'
-    'x86_64'
-  )
-  depends=(
-    'glibc'
-    ### Even if the below mentioned `golang-` packages are installed and `$GOPATH` contains `/usr/share/gocode` and `/usr/share/gocode/src`, they are beeing downloaded nevertheless.
-    # 'golang-golang-x-crypto'
-    # 'golang-golang-x-net'
-    # 'golang-golang-x-sys'
-    # 'golang-golang-x-term'
-    # 'golang-golang-x-text'
-    # 'golang-golang-x-tools'
-  )
-  optdepends=(
-    'nodejs: For some examples.'
-    'python: For some examples.'
-    'python-psutil: For some examples.'
-  )
-  provides=(
-    "lib-tls-client=${pkgver}"
-    'tls-client.so'
-  )
-  conflicts=(
-    "lib-tls-client"
-  )
-
-  cd "${srcdir}/${_pkgbase}"
-
-  install -D -v -m644 "cffi_dist/tls-client.so"              "${pkgdir}/usr/lib/tls-client.so"
-  install -D -v -m644 "cffi_dist/tls-client.h"               "${pkgdir}/usr/include/tls-client.h"
-
-  install -D -v -m644 "${srcdir}/${_pkgbase}.pc"             "${pkgdir}/usr/share/pkgconfig/${_pkgbase}.pc"
-
-  for _docfile in "Readme.md"; do
-    install -D -v -m644 "${_docfile}"                        "${pkgdir}/usr/share/doc/lib-tls-client/${_docfile}"
-  done
-  install -D -v -m644 "${srcdir}/git.log"                    "${pkgdir}/usr/share/doc/lib-tls-client/git.log"
-  install -d -v -m755                                        "${pkgdir}/usr/share/doc/lib-tls-client/examples"
-  cp -rv cffi_dist/example*                                  "${pkgdir}/usr/share/doc/lib-tls-client/examples"/
-
-  install -D -v -m644 LICENSE                                "${pkgdir}/usr/share/licenses/lib-tls-client-git/LICENSE"
-  ln -svf "/usr/share/licenses/lib-tls-client-git/LICENSE"   "${pkgdir}/usr/share/doc/lib-tls-client/LICENSE"
+package() {
+  cd "${srcdir}/${_pkgname}"
+  install -Dm755 cffi_dist/build/${_pkgname}.so "${pkgdir}/usr/lib/lib${_pkgname}.so"
+  ln -s "lib${_pkgname}.so" "${pkgdir}/usr/lib/${_pkgname}.so"
+  install -Dm644 cffi_dist/build/${_pkgname}.h "${pkgdir}/usr/include/${_pkgname}.h"
+  install -Dm644 cffi_dist/build/${_pkgname}.pc "${pkgdir}/usr/lib/pkgconfig/${_pkgname}.pc"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 Readme.md "${pkgdir}/usr/share/doc/${pkgname}/Readme.md"
 }
