@@ -50,4 +50,3 @@ package() {
   install -Dm644 packaging/update-vai.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/arch-update-vai.svg"
 }
-
