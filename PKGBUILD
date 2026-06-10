@@ -23,17 +23,17 @@ optdepends=(
   'python-pip: checar pacotes pip'
 )
 
-source=("${pkgname}::git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
+source=("arch-update-vai::git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/arch-update-vai"
   echo "0.7.1.r$(git rev-list --count HEAD)"
 }
 
 
 package() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/arch-update-vai"
 
   # programa principal
   install -Dm755 update-vai.sh "$pkgdir/usr/bin/update-vai"
@@ -45,11 +45,11 @@ package() {
   [[ -f README.md ]] && install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   [[ -f CHANGELOG.md ]] && install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 
-  # arquivo .desktop (na pasta packaging)
+  # arquivo .desktop
   install -Dm644 packaging/update-vai.desktop \
     "$pkgdir/usr/share/applications/update-vai.desktop"
 
-  # ícone SVG (na pasta packaging)
+  # ícone SVG
   install -Dm644 packaging/update-vai.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/update-vai.svg"
 }
