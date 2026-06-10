@@ -2,30 +2,24 @@
 
 pkgname=screenshot-cpp
 pkgver=0.1.0
-pkgrel=8
-pkgdesc='Interactive wlroots/Hyprland region screenshot tool with image clipboard and optional file-reference mode'
+pkgrel=10
+pkgdesc='Pure Rust interactive wlroots/Hyprland region and long screenshot tool'
 arch=('x86_64')
 url='https://github.com/xander-lin/screenshot'
 license=('MIT')
 depends=(
-  'cairo'
-  'grim'
   'libxkbcommon'
   'wayland'
 )
 makedepends=(
+  'cargo'
   'git'
-  'meson'
-  'ninja'
-  'wayland-protocols'
-  'wlr-protocols'
 )
 optdepends=(
-  'wl-clipboard: inspect clipboard MIME types with wl-paste'
   'hyprland: tested wlroots compositor environment'
   'sway: alternative wlroots compositor environment'
 )
-_commit='39da87a679455c3f9558689894dac7adeabd5522'
+_commit='5b8e1231162305730c26a248f72e3dc2d1885925'
 _github_url='https://github.com/xander-lin/screenshot.git'
 _gitee_url='https://gitee.com/xander-lin/screenshot.git'
 source=()
@@ -39,12 +33,15 @@ prepare() {
 }
 
 build() {
-  arch-meson "${srcdir}/screenshot" "${srcdir}/build"
-  meson compile -C "${srcdir}/build"
+  cd "${srcdir}/screenshot"
+  cargo build --release --locked
 }
 
 package() {
-  meson install -C "${srcdir}/build" --destdir "${pkgdir}"
+  install -Dm755 "${srcdir}/screenshot/target/release/screenshot" \
+    "${pkgdir}/usr/bin/screenshot"
+  install -Dm644 "${srcdir}/screenshot/screenshot.1" \
+    "${pkgdir}/usr/share/man/man1/screenshot.1"
 
   install -Dm644 "${srcdir}/screenshot/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

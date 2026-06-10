@@ -1,20 +1,14 @@
 pkgbase = screenshot-cpp
-	pkgdesc = Interactive wlroots/Hyprland region screenshot tool with image clipboard and optional file-reference mode
+	pkgdesc = Pure Rust interactive wlroots/Hyprland region and long screenshot tool
 	pkgver = 0.1.0
-	pkgrel = 8
+	pkgrel = 10
 	url = https://github.com/xander-lin/screenshot
 	arch = x86_64
 	license = MIT
+	makedepends = cargo
 	makedepends = git
-	makedepends = meson
-	makedepends = ninja
-	makedepends = wayland-protocols
-	makedepends = wlr-protocols
-	depends = cairo
-	depends = grim
 	depends = libxkbcommon
 	depends = wayland
-	optdepends = wl-clipboard: inspect clipboard MIME types with wl-paste
 	optdepends = hyprland: tested wlroots compositor environment
 	optdepends = sway: alternative wlroots compositor environment
 
