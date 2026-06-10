@@ -1,7 +1,7 @@
 pkgbase = acc
 	pkgdesc = ACS script compiler for use with ZDoom and/or Hexen
 	pkgver = 1.60
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rheit/acc
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = acc
 	sha256sums = d1dd96235e883c638e202715039946fac58f2979e1f11cb2bbe2a24eefb5fe9a
 
 pkgname = acc
-

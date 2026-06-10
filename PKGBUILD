@@ -1,8 +1,9 @@
-# Maintainer: Jan Cholasta <grubber at grubber cz>
+# Maintainer: Eggbertx <eggbertxdev at gmail com>
+# Previous maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=acc
 pkgver=1.60
-pkgrel=1
+pkgrel=2
 pkgdesc='ACS script compiler for use with ZDoom and/or Hexen'
 arch=('i686' 'x86_64')
 url='https://github.com/rheit/acc'
@@ -21,6 +22,7 @@ prepare() {
 
 build() {
     cd acc-${pkgver}
+    sed -e 's/cmake_minimum_required(VERSION 2.4)/cmake_minimum_required(VERSION 3.5...4.0)/' -i CMakeLists.txt
     mkdir -p build
     cmake -B build -D CMAKE_BUILD_TYPE=Release
     make -C build
