@@ -4,7 +4,7 @@
 pkgname=gogh-git
 _pkgname=gogh
 _reponame=Gogh
-pkgver=1122.4dc3618
+pkgver=1130.380f90a
 pkgrel=1
 pkgdesc="Color Scheme for Gnome Terminal, Pantheon Terminal and Tilix"
 arch=('any')
