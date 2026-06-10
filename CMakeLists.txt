@@ -11,6 +11,7 @@ find_package(Qt6 REQUIRED COMPONENTS
     Widgets 
     WebEngineWidgets
     Svg
+    DBus
 )
 
 # Define your executable
@@ -22,6 +23,7 @@ target_link_libraries(lindora-native PRIVATE
     Qt6::Widgets 
     Qt6::WebEngineWidgets
     Qt6::Svg
+    Qt6::DBus
 )
 
 # Optional: Add compiler definitions

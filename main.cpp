@@ -18,6 +18,10 @@
 #include <QSvgRenderer>
 #include <QPixmap>
 #include <QPainter>
+#include <QProcess>
+#include <QtDBus/QDBusAbstractAdaptor>
+#include <QtDBus/QDBusConnection>
+#include <QDateTime>
 
 // Custom window class to intercept close events and hide to tray natively
 class LindoraWindow : public QMainWindow {
@@ -37,9 +41,9 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
     // MUST be before any window is created/mapped
-    app.setApplicationName("lindora-native");
+    app.setApplicationName("Lindora");
     app.setApplicationDisplayName("Lindora");
-    app.setDesktopFileName("lindora-native");
+    app.setDesktopFileName("lindora");
 
     QIcon appIcon("/usr/share/icons/hicolor/scalable/apps/lindora.svg");
     app.setWindowIcon(appIcon);
@@ -145,123 +149,166 @@ QSystemTrayIcon *trayIcon = new QSystemTrayIcon(trayIconImage, &window);
         app.quit(); 
     });
 
+    QAction *restartAction = trayMenu->addAction("Restart App");
+QObject::connect(restartAction, &QAction::triggered, []() {
+    QString program = QApplication::applicationFilePath();
+    QStringList arguments = QApplication::arguments();
+    
+    // Remove the first argument, which is the executable path itself
+    arguments.removeFirst(); 
+
+    // Start a new instance
+    QProcess::startDetached(program, arguments);
+    
+    // Quit the current instance
+    QApplication::quit();
+});
+
     trayIcon->setIcon(trayIconImage);
 
     trayIcon->setContextMenu(trayMenu);
 // ... inside main() after trayIcon initialization ...
 
 QTimer *timer = new QTimer(&window);
+
 QObject::connect(timer, &QTimer::timeout, [browser, trayIcon]() {
+
     QString scrapeJs =
     "(function() {"
+
     "  function text(el) {"
     "    return el ? el.innerText.trim() : '';"
     "  }"
 
     "  var track = "
-"    document.querySelector('[data-qa=\"mini_track_title\"]') || "
-"    document.querySelector('[data-qa=\"track_name\"]') || "
-"    document.querySelector('.Marquee__wrapper__content');"
+    "    document.querySelector('[data-qa=\"mini_track_title\"]') || "
+    "    document.querySelector('[data-qa=\"track_name\"]') || "
+    "    document.querySelector('.Marquee__wrapper__content');"
 
-"  var artist = "
-"    document.querySelector('[data-qa=\"mini_track_artist\"]') || "
-"    document.querySelector('[data-qa=\"artist_name\"]') || "
-"    document.querySelector('[data-qa=\"artistName\"]') || "
-"    document.querySelector('[data-qa=\"now_playing_artist\"]') || "
-"    document.querySelector('[data-qa=\"mini_player\"] [data-qa*=\"artist\"]') || "
-"    document.querySelector('[class*=\"artist\"]') || "
-"    document.querySelector('[class*=\"Artist\"]') || "
-"    document.querySelector('.nowPlayingTopInfo__current__artist') || "
-"    document.querySelector('.Marquee__wrapper__content') || "
-"    document.querySelector('.Marquee__wrapper__content + div') || "
-"    document.querySelector('a[href*=\"/artist/\"]') || "
-"    document.querySelector('span[aria-label*=\"artist\"]') || "
-"    document.querySelector('div[aria-label*=\"artist\"]') || "
-"    document.querySelector('[role=\"link\"][href*=\"artist\"]') || "
-"    document.querySelector('div[data-automation*=\"artist\"]') || "
-"    document.querySelector('span[data-automation*=\"artist\"]') || "
-"    document.querySelector('div[data-test*=\"artist\"]') || "
-"    document.querySelector('span[data-test*=\"artist\"]') || "
-"    document.querySelector('meta[property=\"music:musician\"]') || "
-"    null;"
+    "  var artist = "
+    "    document.querySelector('[data-qa=\"mini_track_artist\"]') || "
+    "    document.querySelector('[data-qa=\"artist_name\"]') || "
+    "    document.querySelector('[data-qa=\"artistName\"]') || "
+    "    document.querySelector('[data-qa=\"now_playing_artist\"]') || "
+    "    document.querySelector('[data-qa=\"mini_player\"] [data-qa*=\"artist\"]') || "
+    "    document.querySelector('[class*=\"artist\"]') || "
+    "    document.querySelector('[class*=\"Artist\"]') || "
+    "    document.querySelector('.nowPlayingTopInfo__current__artist') || "
+    "    document.querySelector('.Marquee__wrapper__content') || "
+    "    document.querySelector('.Marquee__wrapper__content + div') || "
+    "    document.querySelector('a[href*=\"/artist/\"]') || "
+    "    document.querySelector('span[aria-label*=\"artist\"]') || "
+    "    document.querySelector('div[aria-label*=\"artist\"]') || "
+    "    document.querySelector('[role=\"link\"][href*=\"artist\"]') || "
+    "    document.querySelector('div[data-automation*=\"artist\"]') || "
+    "    document.querySelector('span[data-automation*=\"artist\"]') || "
+    "    document.querySelector('div[data-test*=\"artist\"]') || "
+    "    document.querySelector('span[data-test*=\"artist\"]') || "
+    "    document.querySelector('meta[property=\"music:musician\"]') || "
+    "    null;"
+
+    // ⏱ TIMESTAMP ELEMENTS
+    "  var elapsed = document.querySelector('[data-qa=\"elapsed_time\"]');"
+    "  var remaining = document.querySelector('[data-qa=\"remaining_time\"]');"
 
     "  var song = text(track);"
     "  var artistName = text(artist);"
 
+    "  var elapsedTime = elapsed ? elapsed.innerText.trim() : '';"
+    "  var remainingTime = remaining ? remaining.innerText.trim() : '';"
+
+    "  var result = '';"
+
     "  if (song && artistName) {"
-    "    return song + ' - ' + artistName;"
+    "    result = song + ' - ' + artistName;"
     "  }"
 
-    "  if (song) {"
-    "    return song;"
+    "  if (!song && artistName) {"
+    "    result = artistName;"
     "  }"
 
-    "  return '';"
+    "  if (song && !artistName) {"
+    "    result = song;"
+    "  }"
+
+    "  if (elapsedTime || remainingTime) {"
+    "    result += ' | ' + elapsedTime + ' / ' + remainingTime;"
+    "  }"
+
+    "  return result;"
     "})();";
-        
+
     browser->page()->runJavaScript(scrapeJs, [trayIcon](const QVariant &v) {
         QString info = v.toString();
         if (!info.isEmpty()) {
             trayIcon->setToolTip(info);
         }
     });
+
 });
-timer->start(3000);
 
+timer->start(500);
+
+// 1. Declare the action once
 QAction *skipAction = trayMenu->addAction("Skip Song");
-QObject::connect(skipAction, &QAction::triggered, [browser]() {
 
+// 2. Define the trigger logic
+QObject::connect(skipAction, &QAction::triggered, [browser]() {
     QString skipJs =
     "(function() {"
-    "  function findBtn() {"
-    "    const candidates = Array.from(document.querySelectorAll('button, div[role=\"button\"], span[role=\"button\"]'));"
     ""
-    "    return candidates.find(el => {"
-    "      const a = (el.getAttribute('aria-label') || '').toLowerCase();"
-    "      const t = (el.innerText || '').toLowerCase();"
-    "      const c = (el.className || '').toLowerCase();"
-    ""
-    "      return ("
-    "        a.includes('skip') ||"
-    "        a.includes('next') ||"
-    "        a.includes('forward') ||"
-    "        t.includes('skip') ||"
-    "        t.includes('next') ||"
-    "        c.includes('skip') ||"
-    "        c.includes('next')"
-    "      );"
-    "    });"
-    "  }"
-    ""
-    "  let btn = findBtn();"
+    "  let btn ="
+    "      document.querySelector('[data-qa=\"t3_skip_forward_button\"]') ||"
+    "      document.querySelector('[data-qa=\"skip_button\"]') ||"
+    "      document.querySelector('.Tuner__Control__SkipForward__Button') ||"
+    "      document.querySelector('.Tuner__Control__Skip__Button') ||"
+    "      document.querySelector('[aria-label=\"Skip forwards\"]') ||"
+    "      document.querySelector('[aria-label=\"skip forwards\"]');"
     ""
     "  if (!btn) {"
-    "    const all = document.querySelectorAll('*');"
-    "    for (let el of all) {"
-    "      const a = (el.getAttribute && el.getAttribute('aria-label') || '').toLowerCase();"
-    "      if (a.includes('next') || a.includes('skip')) {"
-    "        btn = el;"
-    "        break;"
-    "      }"
-    "    }"
+    "      const candidates = Array.from("
+    "          document.querySelectorAll("
+    "              'button,[role=\"button\"],div[role=\"button\"],span[role=\"button\"]'"
+    "          )"
+    "      );"
+    ""
+    "      btn = candidates.find(el => {"
+    "          const aria = (el.getAttribute('aria-label') || '').toLowerCase();"
+    "          const dataqa = (el.getAttribute('data-qa') || '').toLowerCase();"
+    "          const cls = (el.className || '').toLowerCase();"
+    ""
+    "          return ("
+    "              dataqa === 't3_skip_forward_button' ||"
+    "              dataqa === 'skip_button' ||"
+    "              aria === 'skip forwards' ||"
+    "              aria === 'skip_forwards' ||"
+    "              cls.includes('tuner__control__skipforward__button') ||"
+    "              cls.includes('tuner__control__skip__button')"
+    "          );"
+    "      });"
     "  }"
     ""
-    "  if (btn) {"
-    "    btn.dispatchEvent(new MouseEvent('click', {"
+    "  if (!btn) return 'NOT_FOUND';"
+    "  if (btn.disabled) return 'DISABLED';"
+    "  if (btn.getAttribute('aria-disabled') === 'true') return 'ARIA_DISABLED';"
+    ""
+    "  btn.focus();"
+    "  btn.click();"
+    ""
+    "  btn.dispatchEvent(new MouseEvent('click', {"
     "      bubbles: true,"
     "      cancelable: true,"
     "      view: window"
-    "    }));"
-    "    btn.click();"
-    "  }"
+    "  }));"
+    ""
+    "  return 'CLICKED';"
     ""
     "})();";
 
     browser->page()->runJavaScript(skipJs);
 });
 
-// This connection keeps your visibility logic tied to the tray menu's state 
-// without altering your skipAction creation block above.
+// 3. Single Visibility Connection
 QObject::connect(trayMenu, &QMenu::aboutToShow, [browser, skipAction]() {
     QString checkJs =
     "(function() {"
@@ -269,68 +316,77 @@ QObject::connect(trayMenu, &QMenu::aboutToShow, [browser, skipAction]() {
     "    const candidates = Array.from(document.querySelectorAll('button, div[role=\"button\"], span[role=\"button\"]'));"
     "    return candidates.find(el => {"
     "      const a = (el.getAttribute('aria-label') || '').toLowerCase();"
-    "      const t = (el.innerText || '').toLowerCase();"
-    "      const c = (el.className || '').toLowerCase();"
-    "      return a.includes('skip') || a.includes('next') || a.includes('forward') || t.includes('skip') || t.includes('next') || c.includes('skip') || c.includes('next');"
+    "      const keywords = ['next', 'skip', 'forward', 'skip forward'];"
+    "      return keywords.some(k => a.includes(k));"
     "    });"
     "  }"
+    ""
     "  let btn = findBtn();"
     "  return !!(btn && !btn.disabled && btn.getAttribute('aria-disabled') !== 'true');"
     "})();";
 
     browser->page()->runJavaScript(checkJs, [skipAction](const QVariant &res) {
-        skipAction->setVisible(res.toBool());
+        if (skipAction)
+            skipAction->setVisible(res.toBool());
     });
 });
 
-QAction *prevAction = trayMenu->addAction("Previous Song");
-QObject::connect(prevAction, &QAction::triggered, [browser]() {
 
+QAction *prevAction = trayMenu->addAction("Previous Song");
+
+QObject::connect(prevAction, &QAction::triggered, [browser]() {
     QString prevJs =
-    "(function() {"
-    "  function findBtn() {"
-    "    const candidates = Array.from(document.querySelectorAll('button, div[role=\"button\"], span[role=\"button\"]'));"
-    ""
-    "    return candidates.find(el => {"
-    "      const a = (el.getAttribute('aria-label') || '').toLowerCase();"
-    "      const t = (el.innerText || '').toLowerCase();"
-    "      const c = (el.className || '').toLowerCase();"
-    ""
-    "      return ("
-    "        a.includes('previous') ||"
-    "        a.includes('back') ||"
-    "        a.includes('rewind') ||"
-    "        t.includes('previous') ||"
-    "        t.includes('back') ||"
-    "        c.includes('previous') ||"
-    "        c.includes('back')"
-    "      );"
-    "    });"
-    "  }"
-    ""
-    "  let btn = findBtn();"
-    ""
-    "  if (!btn) {"
-    "    const all = document.querySelectorAll('*');"
-    "    for (let el of all) {"
-    "      const a = (el.getAttribute && el.getAttribute('aria-label') || '').toLowerCase();"
-    "      if (a.includes('previous') || a.includes('back')) {"
-    "        btn = el;"
-    "        break;"
-    "      }"
-    "    }"
-    "  }"
-    ""
-    "  if (btn) {"
-    "    btn.dispatchEvent(new MouseEvent('click', {"
-    "      bubbles: true,"
-    "      cancelable: true,"
-    "      view: window"
-    "    }));"
-    "    btn.click();"
-    "  }"
-    ""
-    "})();";
+"(function() {"
+
+"  const selectors = ["
+"    '[data-qa=\"t3_skip_back_button\"]',"
+"    '[aria-label=\"Skip backwards\"]',"
+"    '[aria-label=\"skip_backwards\"]',"
+"    '.Tuner__Control__SkipBack__Button'"
+"  ];"
+
+"  let btn = null;"
+
+"  for (const s of selectors) {"
+"    btn = document.querySelector(s);"
+"    if (btn) break;"
+"  }"
+
+"  if (!btn) {"
+"    const candidates = Array.from("
+"      document.querySelectorAll('button,[role=\"button\"]')"
+"    );"
+
+"    btn = candidates.find(el => {"
+"      const a = (el.getAttribute('aria-label') || '').toLowerCase();"
+"      const d = (el.getAttribute('data-qa') || '').toLowerCase();"
+"      const c = (el.className || '').toLowerCase();"
+
+"      return ("
+"        d.includes('skip_back_button') ||"
+"        d.includes('skip_back') ||"
+"        a.includes('skip_backwards') ||"
+"        a.includes('skip backwards') ||"
+"        c.includes('skipbackbutton') ||"
+"        c.includes('skipback')"
+"      );"
+"    });"
+"  }"
+
+"  if (!btn)"
+"    return 'NOT_FOUND';"
+
+"  if (btn.disabled)"
+"    return 'DISABLED';"
+
+"  if (btn.getAttribute('aria-disabled') === 'true')"
+"    return 'ARIA_DISABLED';"
+
+"  btn.click();"
+
+"  return 'CLICKED';"
+
+"})();";
 
     browser->page()->runJavaScript(prevJs);
 });
@@ -388,6 +444,134 @@ QObject::connect(trayMenu, &QMenu::aboutToShow, [browser, prevAction]() {
     });
 });
 
+QAction *replayAction = trayMenu->addAction("Replay");
+
+QObject::connect(replayAction, &QAction::triggered, [browser]() {
+    QString replayJs =
+    "(function() {"
+    "  let btn ="
+    "      document.querySelector('[data-qa=\"replay_button\"]') ||"
+    "      document.querySelector('.Tuner__Control__Replay__Button') ||"
+    "      document.querySelector('[aria-label=\"Replay\"]');"
+    ""
+    "  if (!btn) {"
+    "      const candidates = Array.from("
+    "          document.querySelectorAll('button,[role=\"button\"],div[role=\"button\"],span[role=\"button\"]')"
+    "      );"
+    ""
+    "      btn = candidates.find(el => {"
+    "          const aria = (el.getAttribute('aria-label') || '').toLowerCase();"
+    "          const dataqa = (el.getAttribute('data-qa') || '').toLowerCase();"
+    "          const cls = (el.className || '').toLowerCase();"
+    ""
+    "          return ("
+    "              dataqa === 'replay_button' ||"
+    "              aria === 'replay' ||"
+    "              cls.includes('replaybutton') ||"
+    "              cls.includes('tuner__control__replay__button')"
+    "          );"
+    "      });"
+    "  }"
+    ""
+    "  if (!btn) return;"
+    "  if (btn.disabled) return;"
+    "  if (btn.getAttribute('aria-disabled') === 'true') return;"
+    ""
+    "  btn.focus();"
+    "  btn.click();"
+    ""
+    "  btn.dispatchEvent(new MouseEvent('click', {"
+    "      bubbles: true,"
+    "      cancelable: true,"
+    "      view: window"
+    "  }));"
+    ""
+    "})();";
+
+    browser->page()->runJavaScript(replayJs);
+});
+
+QObject::connect(trayMenu, &QMenu::aboutToShow,
+                 [browser, replayAction]() {
+
+    QString replayCheckJs =
+    "(function() {"
+    "  const btn = document.querySelector('[data-qa=\"replay_button\"]');"
+    ""
+    "  return !!("
+    "      btn &&"
+    "      !btn.disabled &&"
+    "      btn.getAttribute('aria-disabled') !== 'true'"
+    "  );"
+    "})();";
+
+    browser->page()->runJavaScript(
+        replayCheckJs,
+        [replayAction](const QVariant &res) {
+            if (replayAction)
+                replayAction->setVisible(res.toBool());
+        }
+    );
+});
+
+QAction *repeatAction = trayMenu->addAction("Repeat");
+
+QObject::connect(repeatAction, &QAction::triggered, [browser]() {
+    QString repeatJs =
+    "(function() {"
+    "  const btn = document.querySelector('[data-qa=\"tuner_repeat_button\"]');"
+    "  if (!btn) return;"
+    "  if (btn.disabled) return;"
+    "  if (btn.getAttribute('aria-disabled') === 'true') return;"
+    "  btn.click();"
+    "})();";
+
+    browser->page()->runJavaScript(repeatJs);
+});
+
+QObject::connect(trayMenu, &QMenu::aboutToShow,
+                 [browser, repeatAction]() {
+
+    QString repeatStateJs =
+    "(function() {"
+    "  const btn = document.querySelector('[data-qa=\"tuner_repeat_button\"]');"
+    ""
+    "  if (!btn)"
+    "    return { exists: false };"
+    ""
+    "  return {"
+    "    exists: true,"
+    "    checked: btn.getAttribute('aria-checked') || ''"
+    "  };"
+    "})();";
+
+    browser->page()->runJavaScript(
+        repeatStateJs,
+        [repeatAction](const QVariant &res) {
+
+            QVariantMap info = res.toMap();
+
+            bool exists = info.value("exists").toBool();
+
+            repeatAction->setVisible(exists);
+
+            if (!exists)
+                return;
+
+            QString checked = info.value("checked").toString();
+
+            if (checked == "false")
+                repeatAction->setText("Repeat: Off");
+            else if (checked == "true")
+                repeatAction->setText("Repeat: Playlist");
+            else if (checked == "mixed")
+                repeatAction->setText("Repeat: Song");
+            else
+                repeatAction->setText("Repeat");
+        }
+    );
+});
+
 // Add a Pause/Play option to the right-click menu
 QAction *pauseAction = trayMenu->addAction("Pause/Play");
 QObject::connect(pauseAction, &QAction::triggered, [browser]() {
@@ -397,10 +581,19 @@ QObject::connect(pauseAction, &QAction::triggered, [browser]() {
 "            document.querySelector('[data-qa=\"play_button\"]') || "
 "            document.querySelector('[data-qa=\"pause_button\"]');"
 
-"  if (btn) {"
-"    btn.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));"
-"  }"
-"})();";
+    "  if (btn) {"
+    "    const rect = btn.getBoundingClientRect();"
+    "    const x = rect.left + rect.width / 2;"
+    "    const y = rect.top + rect.height / 2;"
+    "    const opts = { bubbles: true, cancelable: true, view: window, clientX: x, clientY: y };"
+    "    btn.dispatchEvent(new PointerEvent('pointerdown', { ...opts, pointerId: 1, isPrimary: true }));"
+    "    btn.dispatchEvent(new MouseEvent('mousedown', opts));"
+    "    btn.dispatchEvent(new PointerEvent('pointerup', { ...opts, pointerId: 1, isPrimary: true }));"
+    "    btn.dispatchEvent(new MouseEvent('mouseup', opts));"
+    "    btn.dispatchEvent(new MouseEvent('click', opts));"
+    "    if (typeof btn.click === 'function') btn.click();"
+    "  }"
+    "})();";
     browser->page()->runJavaScript(pauseJs);
 });
 
@@ -415,7 +608,7 @@ QObject::connect(trayMenu, &QMenu::aboutToShow, [browser, pauseAction]() {
 
     browser->page()->runJavaScript(checkJs, [pauseAction](const QVariant &res) {
         QString state = res.toString();
-        pauseAction->setText(state == "PAUSE" ? "Pause" : "Play");
+        pauseAction->setText(state == "PAUSE" ? "Pause" : "Play/Pause");
         // You could also update an icon here if you use one
     });
 });
@@ -487,18 +680,13 @@ QObject::connect(thumbUpAction, &QAction::triggered, [browser]() {
 QObject::connect(trayMenu, &QMenu::aboutToShow, [browser, thumbUpAction]() {
     QString checkJs =
     "(function() {"
-    "  function findBtn() {"
-    "    const candidates = Array.from(document.querySelectorAll('button, div[role=\"button\"], span[role=\"button\"]'));"
-    "    return candidates.find(el => {"
-    "      const a = (el.getAttribute('aria-label') || '').toLowerCase();"
-    "      const t = (el.innerText || '').toLowerCase();"
-    "      const c = (el.className || '').toLowerCase();"
-    "      const isDislike = a.includes('dislike') || a.includes('thumb down') || t.includes('dislike');"
-    "      return (a.includes('like') || a.includes('thumb up') || t.includes('like')) && !isDislike;"
-    "    });"
-    "  }"
-    "  let btn = findBtn();"
-    "  return !!(btn && !btn.disabled && btn.getAttribute('aria-disabled') !== 'true');"
+    "  const btn = document.querySelector('[data-qa=\"thumbs_up_button\"]');"
+    "  if (!btn) return false;"
+
+    "  const disabled = btn.disabled || btn.getAttribute('aria-disabled') === 'true';"
+    "  const checked = btn.getAttribute('aria-checked') === 'true';"
+
+    "  return !disabled && !checked;"
     "})();";
 
     browser->page()->runJavaScript(checkJs, [thumbUpAction](const QVariant &res) {
@@ -577,55 +765,57 @@ QObject::connect(trayMenu, &QMenu::aboutToShow, [browser, thumbDownAction]() {
     });
 });
 
-// 1. Create the Replay action
-QAction *replayAction = trayMenu->addAction("Replay Song");
-
-// 2. Trigger Logic
-QObject::connect(replayAction, &QAction::triggered, [browser]() {
-    QString replayJs =
+QAction *shuffleAction = trayMenu->addAction("Shuffle");
+QObject::connect(shuffleAction, &QAction::triggered, [browser]() {
+    QString shuffleJs =
     "(function() {"
-    "  function findBtn() {"
-    "    const candidates = Array.from(document.querySelectorAll('button, div[role=\"button\"], span[role=\"button\"]'));"
-    "    return candidates.find(el => {"
-    "      const a = (el.getAttribute('aria-label') || '').toLowerCase();"
-    "      const t = (el.innerText || '').toLowerCase();"
-    "      const c = (el.className || '').toLowerCase();"
-    "      return a.includes('replay') || t.includes('replay') || c.includes('replay');"
-    "    });"
+    "  const candidates = Array.from(document.querySelectorAll('button, div[role=\"button\"], span[role=\"button\"]'));"
+    "  const btn = candidates.find(el => {"
+    "    const a = (el.getAttribute('aria-label') || '').toLowerCase();"
+    "    const t = (el.innerText || '').toLowerCase();"
+    "    return a.includes('shuffle') || t.includes('shuffle');"
+    "  });"
+    ""
+    "  if (btn) {"
+    "    btn.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));"
+    "    btn.click();"
     "  }"
-    "  let btn = findBtn();"
-    "  if (!btn) {"
-    "    const all = document.querySelectorAll('*');"
-    "    for (let el of all) {"
-    "      const a = (el.getAttribute && el.getAttribute('aria-label') || '').toLowerCase();"
-    "      if (a.includes('replay')) { btn = el; break; }"
-    "    }"
-    "  }"
-    "  if (btn) { btn.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window })); btn.click(); }"
     "})();";
-    browser->page()->runJavaScript(replayJs);
+    browser->page()->runJavaScript(shuffleJs);
 });
 
-// 3. Visibility Logic (Missing from your original duplicate)
-QObject::connect(trayMenu, &QMenu::aboutToShow, [browser, replayAction]() {
+// Optional: Keep the visibility synced if you want it to appear only when available
+QObject::connect(trayMenu, &QMenu::aboutToShow, [browser, shuffleAction]() {
     QString checkJs =
     "(function() {"
-    "  function findBtn() {"
-    "    const candidates = Array.from(document.querySelectorAll('button, div[role=\"button\"], span[role=\"button\"]'));"
-    "    return candidates.find(el => {"
-    "      const a = (el.getAttribute('aria-label') || '').toLowerCase();"
-    "      const t = (el.innerText || '').toLowerCase();"
-    "      const c = (el.className || '').toLowerCase();"
-    "      return a.includes('replay') || t.includes('replay') || c.includes('replay');"
-    "    });"
-    "  }"
-    "  let btn = findBtn();"
+    "  const candidates = Array.from(document.querySelectorAll('button, div[role=\"button\"], span[role=\"button\"]'));"
+    "  const btn = candidates.find(el => {"
+    "    const a = (el.getAttribute('aria-label') || '').toLowerCase();"
+    "    return a.includes('shuffle');"
+    "  });"
     "  return !!(btn && !btn.disabled && btn.getAttribute('aria-disabled') !== 'true');"
     "})();";
-    browser->page()->runJavaScript(checkJs, [replayAction](const QVariant &res) {
-        replayAction->setVisible(res.toBool());
+
+    browser->page()->runJavaScript(checkJs, [shuffleAction](const QVariant &res) {
+        shuffleAction->setVisible(res.toBool());
     });
 });
+
+// --- MPRIS INTEGRATION (NO MOC REQUIRED) ---
+QDBusConnection mprisConn = QDBusConnection::sessionBus();
+if (mprisConn.registerService("org.mpris.MediaPlayer2.lindora")) {
+    QObject *mprisObj = new QObject(&window);
+    mprisConn.registerObject("/org/mpris/MediaPlayer2", mprisObj, QDBusConnection::ExportAdaptors);
+
+    // Create a local bridge to call your existing actions
+    QObject *bridge = new QObject(&window);
+    
+    // Connect D-Bus signals directly to existing actions
+    // This assumes your QActions have slots named "trigger()" (which they do)
+    mprisConn.connect("org.mpris.MediaPlayer2", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player", "PlayPause", pauseAction, SLOT(trigger()));
+    mprisConn.connect("org.mpris.MediaPlayer2", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player", "Next", skipAction, SLOT(trigger()));
+    mprisConn.connect("org.mpris.MediaPlayer2", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player", "Previous", prevAction, SLOT(trigger()));
+}
 
     window.show();
     return app.exec();
