@@ -2,8 +2,7 @@
 pkgname=nepdate
 pkgdesc='Standalone Nepali calendar widget and converter for Bikram Sambat and Gregorian calendars.'
 pkgver=2.2.5
-pkgrel=3
-# _commithash=524477dbe6fb92f836a63d00ff7006e6c6a74072
+pkgrel=4
 arch=(x86_64)
 url="https://github.com/khumnath/nepdate"
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt6-base' 'qt6-declarative')
@@ -11,7 +10,6 @@ makedepends=('cmake' 'qt6-shadertools' 'qt6-tools')
 license=('GPL-3.0-or-later')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-# source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/524477dbe6fb92f836a63d00ff7006e6c6a74072.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
   "https://github.com/khumnath/nepdate/pull/52.patch")
 sha256sums=('3923230a1afc12ac867883e6c6e993aeeebc88dfd7aaf4f663fbd646efaeeb57'
@@ -22,6 +20,7 @@ prepare() {
   cd "${pkgname}-${pkgver}"
   patch -p1 -i "../52.patch"
   echo ${pkgver} >./resources/version.conf
+  echo "Built from AUR using tagged Git release at $(date)" >./resources/build_info.conf
 }
 
 build() {
