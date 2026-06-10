@@ -1,0 +1,8 @@
+post_install() {
+    setcap cap_net_admin,cap_net_raw+ep /usr/bin/sing-box || \
+        echo "WARNING: setcap failed — run manually: sudo setcap cap_net_admin,cap_net_raw+ep /usr/bin/sing-box"
+}
+
+post_upgrade() {
+    post_install
+}

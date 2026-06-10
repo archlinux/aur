@@ -1,8 +1,9 @@
 pkgbase = kvn-tui-bin
 	pkgdesc = Terminal VPN client for Arch Linux + Wayland with vim navigation
-	pkgver = 0.10.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/yarikov/kvn-tui
+	install = kvn-tui.install
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
@@ -10,7 +11,7 @@ pkgbase = kvn-tui-bin
 	depends = sing-box
 	provides = kvn-tui
 	conflicts = kvn-tui
-	source = https://github.com/yarikov/kvn-tui/releases/download/v0.10.1/kvn-tui-0.10.1-x86_64-linux.tar.gz
-	sha256sums = 6a17aa4eec7299937946fdad5351837c056c1d5228bf9d6853eb62e51169719d
+	source = https://github.com/yarikov/kvn-tui/releases/download/v0.11.0/kvn-tui-0.11.0-x86_64-linux.tar.gz
+	sha256sums = 9e63c08c9977cf83644e8d0257b4f66920aef0630f640082f45fc6f5822852f1
 
 pkgname = kvn-tui-bin
