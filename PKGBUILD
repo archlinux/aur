@@ -1,7 +1,7 @@
 # Maintainer: Maciej Borzecki <maciek.borzecki@gmail.com
 pkgname=image-garden
-pkgver=0.5
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Tool for creating test virtual machines"
 arch=(any)
 url="https://gitlab.com/zygoon/image-garden"
@@ -18,13 +18,9 @@ options=()
 install=
 source=(
 	"$pkgname-$pkgver.tar.bz2::https://gitlab.com/zygoon/${pkgname}/-/archive/v${pkgver}/image-garden-v${pkgver}.tar.bz2"
-	"0001-Add-support-for-Fedora-44.patch"
 )
 noextract=()
-sha256sums=(
-	'21b3114c61802d9596686d418116a23fada2663e1500afd266f9cd680e2a623e'
-	'bcbd18961bdb63c7098c28c0b398be414dfa4ff71fcf81961494a232d5fb72b3'
-)
+sha256sums=('2080e7bbe07105e2d679e72ad9b062ebd6c4314b485156087f107e852f74a384')
 
 prepare() {
 	cd "$pkgname-v$pkgver"
