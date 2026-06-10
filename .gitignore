@@ -1,0 +1,5 @@
+src/
+pkg/
+st/
+*.tar.zst
+AGENTS.md
