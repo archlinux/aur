@@ -2,12 +2,12 @@
 
 pkgname=goose-desktop
 pkgver=1.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
 url="https://github.com/aaif-goose/goose"
 license=("Apache-2.0")
-depends=()
+depends=("vulkan-icd-loader")
 optdepends=()
 makedepends=(
   "cargo"
@@ -16,6 +16,8 @@ makedepends=(
   "nodejs"
   "pnpm"
   "just"
+  "vulkan-headers"
+  "glslc"
 )
 
 # LTO breaks sqlx/sqlite linkage
@@ -38,7 +40,9 @@ prepare() {
 build() {
   cd "goose-${pkgver}"
 
-  just release-binary
+  cargo build --release --features vulkan -p goose-server
+  cargo run -p goose-server --bin generate_schema
+  just copy-binary
 
   cd ui/desktop
 
