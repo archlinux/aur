@@ -3,7 +3,7 @@
 # Contributors: bhushan, huma, adlaiff6, Invie, solarce
 
 pkgname=tmate-git
-pkgver=2.4.0.r29.gac919516
+pkgver=2.4.0.r30.g3e12f558
 pkgrel=1
 pkgdesc="Instant terminal sharing"
 arch=('x86_64')
@@ -11,6 +11,8 @@ url="https://tmate.io/"
 license=('ISC')
 depends=('libevent' 'libssh' 'libutempter' 'msgpack-c' 'ncurses')
 makedepends=('git')
+provides=('tmate')
+conflicts=('tmate')
 source=("git+https://github.com/tmate-io/tmate.git"
         "msgpack-v6.patch")
 sha256sums=('SKIP'
