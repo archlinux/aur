@@ -1,0 +1,17 @@
+pkgbase = azion-cli-git
+	pkgdesc = Efficient creation and management of applications on Azion Edge Platform
+	pkgver = 4.22.1
+	pkgrel = 1
+	url = https://github.com/aziontech/azion
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = azion-cli-git::git+https://github.com/aziontech/azion
+	sha256sums = SKIP
+
+pkgname = azion-cli-git
