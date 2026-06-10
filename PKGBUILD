@@ -2,7 +2,7 @@
 
 _pkgname="html2markdown"
 pkgname="${_pkgname}-bin"
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Convert HTML to Markdown. Even works with entire websites and can be extended through rules."
 arch=(
@@ -35,9 +35,9 @@ source_x86_64=(
   "html-to-markdown_${pkgver}_Linux_x86_64.tar.gz::${_url}/releases/download/v${pkgver}/html-to-markdown_Linux_x86_64.tar.gz"
 )
 sha256sums=('74545f65ae3774ef2fe4ecc48b208305929860e95cfda3f227bc4eb507e8e5b4')
-sha256sums_aarch64=('dfcb6623c49a59600a38957a4be783314f9732948a69c42409fbb125021a4773')
-sha256sums_i686=('72f5319eb6a4c57c33e3578d73c9cb19bfcfc55da6c1a9c20de1bc02aba52744')
-sha256sums_x86_64=('2d6be8c6d155c60b06254dd8b999cd0b114d1a05bf7eac511ed60cfeb012f087')
+sha256sums_aarch64=('4fc380e0fd86c333e2168bb703eaddbfbbefe19c93be144ae6a5a239d50042bc')
+sha256sums_i686=('d764daff79d467a7ea8f3bc1288641f718f3a42b3a78e4aa41ad5eab99241979')
+sha256sums_x86_64=('337588fd2f15b87869f1ad608506ab6b9ff5f65cf4cb33509ae07ab2852d5f80')
 
 package() {
   cd "${srcdir}"
