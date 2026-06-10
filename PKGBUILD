@@ -1,8 +1,8 @@
 # Maintainer: Blake Blair <contact@blakeblair.dev>
 pkgname=steamlogscrubber
 pkgver=0.1.1
-pkgrel=1
-pkgdesc="Steam and Proton log scrubber for safe support sharing"
+pkgrel=2
+pkgdesc="Steam log scrubber with optional Proton log collection; Proton logs require PROTON_LOG=1 %command% in the game launch options in Steam properties."
 arch=("any")
 url="https://github.com/blakeblair/steamlogscrubber"
 license=("GPL-3.0-or-later")

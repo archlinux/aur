@@ -1,7 +1,7 @@
 pkgbase = steamlogscrubber
-	pkgdesc = Steam and Proton log scrubber for safe support sharing
+	pkgdesc = Steam log scrubber with optional Proton log collection; Proton logs require PROTON_LOG=1 %command% in the game launch options in Steam properties.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blakeblair/steamlogscrubber
 	arch = any
 	license = GPL-3.0-or-later
