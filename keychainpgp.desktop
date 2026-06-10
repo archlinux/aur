@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=KeychainPGP
+Comment=Clipboard-first PGP encryption for desktop
+Exec=keychainpgp-ui
+Icon=keychainpgp
+Terminal=false
+Type=Application
+Categories=Utility;Security;

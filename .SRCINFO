@@ -1,0 +1,28 @@
+pkgbase = keychainpgp
+	pkgdesc = Clipboard-first PGP encryption for desktop & Android
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/KeychainPGP/keychainpgp
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = npm
+	makedepends = pkgconfig
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsecret
+	depends = openssl
+	depends = libsoup3
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = glib2
+	options = !lto
+	source = git+https://github.com/KeychainPGP/keychainpgp.git#tag=v0.2.3
+	source = keychainpgp.desktop
+	sha256sums = SKIP
+	sha256sums = 0c592d63855dc2d45ea3f103c0245597b2cd1fe15e378580124d001b200e6bc8
+
+pkgname = keychainpgp
