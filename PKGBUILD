@@ -1,4 +1,4 @@
-# Maintainer: slatkin@gmail.com
+# Maintainer: slatkin@woims.net
 pkgname=mbv
 pkgver=0.3.5
 pkgrel=1
