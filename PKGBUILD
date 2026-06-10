@@ -1,6 +1,6 @@
 # Maintainer: Roy <roymedina@me.com>
 pkgname=observer-ai
-pkgver=2.3.9
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Observer - AI-powered application built with Tauri"
 arch=('x86_64')
@@ -9,12 +9,14 @@ license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 makedepends=('git' 'openssl' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs' 'cargo-tauri' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Roy3838/Observer/archive/v$pkgver.tar.gz")
-sha256sums=('a346341b46ff4d1aa4dda21b26312c0a03982ae0b1ab25cd958f185bea951d06')
+sha256sums=('a6efde9c84476d2550d5d7917b5856bdc063574af67c6c88e36baa43e03b1102')
 
 prepare() {
     cd "$srcdir/Observer-$pkgver/app"
     # Disable updater artifacts for AUR build to avoid signing errors
     sed -i 's/"createUpdaterArtifacts": true/"createUpdaterArtifacts": false/' desktop/tauri.conf.json
+    # pnpm v11 uses allowBuilds in pnpm-workspace.yaml; approve all required build scripts
+    sed -i 's/: set this to true or false/: true/g' pnpm-workspace.yaml
     pnpm install
 }
 
