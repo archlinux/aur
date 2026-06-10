@@ -5,7 +5,7 @@ _pkgname='beeper'
 _install_path='opt'
 
 pkgname='beeper-bin'
-pkgver=4.2.909
+pkgver=4.2.914
 pkgrel=2
 pkgdesc='The ultimate messaging app'
 depends=('libappindicator-gtk3' 'libnotify' 'libsecret' 'hicolor-icon-theme')
@@ -16,8 +16,8 @@ options=('!strip' '!debug')
 conflicts=('beeper' 'beeper-v4-bin')
 provides=('beeper')
 
-source=('Beeper-4.2.909-x86_64.AppImage::https://beeper-desktop.download.beeper.com/builds/Beeper-Nightly-4.2.909-x86_64.AppImage')
-sha256sums=('9f9b1c65ef82057c7724d5c327a0a32731e7d0c70980c4b4bb9a029a1edab02f')
+source=('Beeper-4.2.914-x86_64.AppImage::https://beeper-desktop.download.beeper.com/builds/Beeper-Nightly-4.2.914-x86_64.AppImage')
+sha256sums=('9da4ab40de880571a1092852bced43f7cb979d462eb5668b474e119dd1becd8a')
 
 build() {
   local _filename="Beeper-${pkgver}-x86_64.AppImage"
