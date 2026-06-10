@@ -1,8 +1,8 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=snotify-git
-pkgver=0.1.2
-pkgrel=2
+pkgver=1.1.1.r2.g4caa594
+pkgrel=1
 epoch=1
 pkgdesc="Play sounds when receiving a notification."
 arch=("any")
@@ -16,6 +16,11 @@ makedepends=('go' 'git')
 backup=()
 source=("git+https://github.com/Kimiblock/snotify.git")
 sha256sums=('SKIP')
+
+pkgver() {
+	cd snotify
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
+}
 
 function prepare() {
 	cd "${srcdir}/snotify"
