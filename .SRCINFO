@@ -1,7 +1,7 @@
 pkgbase = wxmaxima
 	pkgdesc = A wxWidgets GUI for the computer algebra system Maxima
 	pkgver = 26.06.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wxmaxima-developers/wxmaxima
 	arch = x86_64
 	license = GPL-2.0-or-later

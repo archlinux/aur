@@ -6,7 +6,7 @@
 
 pkgname=wxmaxima
 pkgver=26.06.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A wxWidgets GUI for the computer algebra system Maxima"
 arch=(x86_64)
 url="https://github.com/${pkgname}-developers/${pkgname}"
@@ -25,7 +25,7 @@ build() {
     -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_STANDARD=14 \
+    -DCMAKE_CXX_STANDARD=20 \
     -DCMAKE_CXX_COMPILER=g++ \
     -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
     -Wno-dev
