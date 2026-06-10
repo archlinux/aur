@@ -1,0 +1,39 @@
+pkgbase = openlawsvpn
+	pkgdesc = AWS Client VPN client with SAML/SSO support — pure Go stack
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/openlawsvpn/go-openlawsvpn
+	install = openlawsvpn.install
+	arch = x86_64
+	arch = aarch64
+	arch = powerpc64le
+	license = LGPL-2.1-or-later
+	makedepends = go
+	makedepends = rust
+	makedepends = gtk4
+	makedepends = libadwaita
+	makedepends = openssl
+	source = openlawsvpn-1.1.1-1.tar.gz::https://github.com/openlawsvpn/go-openlawsvpn/archive/refs/tags/pkg/1.1.1-1.tar.gz
+	sha256sums = 166f61950019578e81b013c18ce1f3f52439a58e7f78d1d326b630d1a02d6ea0
+
+pkgname = openlawsvpn-daemon
+	pkgdesc = openlawsvpn VPN daemon (D-Bus system service)
+	depends = dbus
+	depends = polkit
+	depends = libcap
+
+pkgname = openlawsvpn-cli
+	pkgdesc = openlawsvpn CLI — headless VPN client with SAML/CRV1 support
+	depends = iproute2
+
+pkgname = openlawsvpn-gui
+	pkgdesc = openlawsvpn GTK4 GUI
+	license = LGPL-2.1-or-later
+	license = MIT
+	license = Apache-2.0
+	license = BSD-2-Clause
+	depends = openlawsvpn-daemon
+	depends = gtk4
+	depends = libadwaita
+	depends = dbus
+	depends = openssl

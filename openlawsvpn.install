@@ -1,0 +1,38 @@
+post_install() {
+    # Create system user/group for the daemon.
+    getent group openlawsvpn  >/dev/null || groupadd -r openlawsvpn
+    getent passwd openlawsvpn >/dev/null || \
+        useradd -r -g openlawsvpn -s /sbin/nologin \
+                -d /var/lib/openlawsvpn \
+                -c "openlawsvpn VPN daemon" openlawsvpn
+
+    # Add each active human user to the openlawsvpn group so they can call the daemon.
+    for u in $(getent passwd | awk -F: '$3>=1000 && $3<65534 {print $1}'); do
+        usermod -aG openlawsvpn "$u" 2>/dev/null || true
+    done
+
+    # Grant the daemon CAP_NET_ADMIN so it can create TUN devices without being root.
+    setcap cap_net_admin=eip /usr/lib/openlawsvpn/openlawsvpn-daemon
+
+    systemctl daemon-reload
+    systemctl preset openlawsvpn-daemon.service
+
+    echo "openlawsvpn-daemon installed. Start it with:"
+    echo "  systemctl start openlawsvpn-daemon"
+    echo "If your user was just added to the openlawsvpn group, log out and back in."
+}
+
+post_upgrade() {
+    setcap cap_net_admin=eip /usr/lib/openlawsvpn/openlawsvpn-daemon
+    systemctl daemon-reload
+    systemctl try-restart openlawsvpn-daemon.service || true
+}
+
+pre_remove() {
+    systemctl stop openlawsvpn-daemon.service 2>/dev/null || true
+    systemctl disable openlawsvpn-daemon.service 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl daemon-reload
+}
