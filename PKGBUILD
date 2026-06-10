@@ -1,6 +1,6 @@
 # Maintainer: dougefresh <dchimento@gmail.com>
 pkgname='pi-coding-agent-git'
-pkgver=0.75.3.r1.g734e08edf
+pkgver=0.79.0.r1.g734e08edf
 pkgrel=1
 pkgdesc="Coding agent CLI with read, bash, edit, write tools and session management"
 url="https://github.com/earendil-works/pi"
