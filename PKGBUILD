@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=libterminput
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Terminal input parsing library"
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ depends=()
 checkdepends=()
 makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(46158316ea5b2bd956016e68b476250586c0b12f8df1ef944a1c3f2d44f3dc9d)
+sha256sums=(8214a607b9c81cbded96774b5ac0f85563247e1fe8b8eec34699ba03866feaaa)
 
 build() {
   cd "$srcdir/$pkgname"
