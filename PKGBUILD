@@ -2,23 +2,38 @@
 
 _pkgname="superhtml"
 pkgname="${_pkgname}-bin"
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="HTML Language Server & Templating Language Library"
-arch=('aarch64' 'x86_64')
+arch=(
+  'aarch64'
+  'x86_64'
+)
 url="https://github.com/kristoff-it/${_pkgname}"
-license=('MIT')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+license=(
+  'MIT'
+)
+provides=(
+  "${_pkgname}"
+)
+conflicts=(
+  "${_pkgname}"
+)
 _pkgsrc="${url##*/}-${pkgver}"
-source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
-        "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
-source_aarch64=("${_pkgsrc}-aarch64.tar.xz::${url}/releases/download/v${pkgver}/aarch64-linux.tar.xz")
-source_x86_64=("${_pkgsrc}-x86_64.tar.xz::${url}/releases/download/v${pkgver}/x86_64-linux-musl.tar.xz")
-sha256sums=('645ac85d384585b909727a6bb14a549aac424405bcdfa9c25effddb433354fb1'
+source=(
+  "${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
+  "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
+)
+source_aarch64=(
+  "${_pkgsrc}-aarch64-linux.tar.xz::${url}/releases/download/v${pkgver}/aarch64-linux.tar.xz"
+)
+source_x86_64=(
+  "${_pkgsrc}-x86_64-linux-musl.tar.xz::${url}/releases/download/v${pkgver}/x86_64-linux-musl.tar.xz"
+)
+sha256sums=('ee07727542c03ad4b54b61dac8b4765ad4e2d2fe2963e07fac38609e94622ff8'
             'fce6401325da3777483f1567966de44f712d71bb5c7dcfc5cd15e292b968a7a2')
-sha256sums_aarch64=('2d21672c0a9290f4e4e2003a41c1b5ec16fae0419a62810abe4ac65546a62896')
-sha256sums_x86_64=('e6dd0bd6223d6fb925843800086ece2fb11d8973e08a2d9ccc7a76ce7d0a36e3')
+sha256sums_aarch64=('9fa2ed1ec830464c38929531693e7129ae6df3ccb1bb3f01fec3322ed5759fc5')
+sha256sums_x86_64=('b75c6eeef539416096eac38729ee54e5f3b248f039cab4f57660f29a88742f68')
 
 package() {
   cd "${srcdir}"
