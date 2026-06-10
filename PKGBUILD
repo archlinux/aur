@@ -1,6 +1,6 @@
 # Maintainer: typechecks
 pkgname=anitui
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="a tui for browsing and streaming anime"
 arch=('x86_64' 'aarch64')
