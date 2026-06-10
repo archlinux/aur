@@ -1,18 +1,18 @@
 pkgbase = poptracker
 	pkgdesc = universal, scriptable randomizer tracking solution that is open source, runs everywhere and supports auto-tracking.
-	pkgver = 0.35.1
+	pkgver = 0.35.2
 	pkgrel = 1
 	url = https://github.com/black-sliver/poptracker
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_ttf
 	depends = openssl
-	source = git+https://github.com/black-sliver/poptracker.git#tag=v0.35.1
+	source = git+https://github.com/black-sliver/poptracker.git#tag=v0.35.2
 	source = poptracker.desktop
-	sha256sums = d0ddc45ec502c791f5a6b11a96bac1e96daa54686cd486e625baa6a6a08c49fe
+	sha256sums = f28d6bdda509501dfae0bb23647bbede63ebd4d53114f0b3acf9245ff41e63a8
 	sha256sums = 6d84910cabcadf7c14bc74fc4c1fc6e3402ee8bbcce07d6e7b4609ea456fd8e7
 
 pkgname = poptracker
