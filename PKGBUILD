@@ -29,19 +29,14 @@ sha256sums=('SKIP'
 build() {
     cd "$srcdir/$pkgname"
 
-    # Build Rust core
-    cd core
-    cargo build --release
+    # Build Rust core and TUI via workspace
+    cargo build --release --locked
 
     # Copy Rust library into Flutter linux/lib
     install -Dm755 target/release/liblumen_core.so ../ui/linux/lib/liblumen_core.so
 
-    # Build Lumen TUI
-    cd ../tui
-    cargo build --release
-
     # Build Flutter UI
-    cd ../ui
+    cd ui
     flutter build linux --release
 }
 
@@ -49,7 +44,7 @@ package() {
     cd "$srcdir/$pkgname"
 
     # Install TUI binary
-    install -Dm755 tui/target/release/lumen "$pkgdir/usr/bin/lumen-cli"
+    install -Dm755 target/release/lumen "$pkgdir/usr/bin/lumen-cli"
 
     cd ui/build/linux/x64/release/bundle
 
