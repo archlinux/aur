@@ -1,7 +1,7 @@
 # Maintainer: Giorgio Gilestro <giorgio@gilest.ro>
 # Co-Maintainer: lapsus <yakov.till@gmail.com>
 pkgname=ccusage
-pkgver=20.0.8
+pkgver=20.0.9
 pkgrel=1
 pkgdesc="Analyze coding agent CLI token usage and costs from local data"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ options=('!strip' '!debug')
 _npm_base="https://registry.npmjs.org/@ccusage"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tgz::${_npm_base}/ccusage-linux-x64/-/ccusage-linux-x64-${pkgver}.tgz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tgz::${_npm_base}/ccusage-linux-arm64/-/ccusage-linux-arm64-${pkgver}.tgz")
-sha256sums_x86_64=('937c6341fdab0927f705682c30f7f21f62efd5e0e78e16289bb4c8413acb7622')
-sha256sums_aarch64=('5a351ae26a8ddc1bf4fae6f68ad245e70fecf1a2a67fae89d03b1e8fd4dd309e')
+sha256sums_x86_64=('0c4965f0683da168bb955688b425a520c420af4b1e6fe191b97abb2477048082')
+sha256sums_aarch64=('95bacc3e53c45473cd87f24f5e229e640c29b213a449ca27b3014f95d1af78ca')
 
 latestver() {
     curl -fsSL 'https://registry.npmjs.org/ccusage/latest' | jq -r '.version'
