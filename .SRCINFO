@@ -1,6 +1,6 @@
 pkgbase = arch-native-client
 	pkgdesc = Client-side tools for arch-native: package list sync and repo upgrade helper
-	pkgver = 1.3.0
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/adelmonte/arch-native
 	install = arch-native-client.install
@@ -9,7 +9,7 @@ pkgbase = arch-native-client
 	depends = rsync
 	depends = pacman
 	depends = python
-	source = arch-native-client-1.3.0.tar.gz::https://github.com/adelmonte/arch-native/archive/refs/tags/arch-native-client-v1.3.0.tar.gz
-	sha256sums = 2464988b0ad44436fb4bec683954aa73f1bdd7b2394ed9ec5d6593acaef57bb8
+	source = arch-native-client-1.3.2.tar.gz::https://github.com/adelmonte/arch-native/archive/refs/tags/arch-native-client-v1.3.2.tar.gz
+	sha256sums = 37e7c56f81f769c10e3ffab268f14fe3b8a2119f595f6baa04396d78863f4fa2
 
 pkgname = arch-native-client
