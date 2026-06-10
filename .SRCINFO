@@ -1,9 +1,10 @@
 pkgbase = opencode-desktop-bin
 	pkgdesc = OpenCode desktop client
 	pkgver = 1.17.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opencode.ai
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = gtk3
 	depends = nss
@@ -13,6 +14,7 @@ pkgbase = opencode-desktop-bin
 	depends = libsecret
 	depends = libnotify
 	depends = xdg-utils
+	depends = ripgrep
 	optdepends = libappindicator-gtk3: tray icon support
 	provides = opencode-desktop
 	conflicts = opencode-desktop
@@ -21,5 +23,7 @@ pkgbase = opencode-desktop-bin
 	sha256sums = 625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b
 	source_x86_64 = opencode-desktop-1.17.3-linux-amd64.deb::https://github.com/anomalyco/opencode/releases/download/v1.17.3/opencode-desktop-linux-amd64.deb
 	sha256sums_x86_64 = a66a9eca2c571225061905ff0a4e3dbae0112ef78fdb08cb5b1844e27d33f74e
+	source_aarch64 = opencode-desktop-1.17.3-linux-arm64.deb::https://github.com/anomalyco/opencode/releases/download/v1.17.3/opencode-desktop-linux-arm64.deb
+	sha256sums_aarch64 = 9a1bb220f0d2e2412f15e2473b96282078fb99e3d91703704c78c0b35f3b0429
 
 pkgname = opencode-desktop-bin

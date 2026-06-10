@@ -2,30 +2,34 @@
 
 pkgname=opencode-desktop-bin
 pkgver=1.17.3
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenCode desktop client"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://opencode.ai"
 license=('MIT')
 provides=('opencode-desktop')
 conflicts=('opencode-desktop')
-depends=('gtk3' 'nss' 'libxss' 'libxtst' 'alsa-lib' 'libsecret' 'libnotify' 'xdg-utils')
+depends=('gtk3' 'nss' 'libxss' 'libxtst' 'alsa-lib' 'libsecret' 'libnotify' 'xdg-utils' 'ripgrep')
 optdepends=('libappindicator-gtk3: tray icon support')
 options=('!debug')
 
 latestver() {
   gh api --paginate repos/anomalyco/opencode/releases --jq \
-    '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "opencode-desktop-linux-amd64.deb")) | .tag_name' |
+    '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "opencode-desktop-linux-amd64.deb") and any(.assets[]; .name == "opencode-desktop-linux-arm64.deb")) | .tag_name' |
     head -1 | sed -E 's/^v//'
 }
 
 source=("LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver}/LICENSE")
 source_x86_64=("opencode-desktop-${pkgver}-linux-amd64.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-amd64.deb")
+source_aarch64=("opencode-desktop-${pkgver}-linux-arm64.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-arm64.deb")
 sha256sums=('625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
 sha256sums_x86_64=('a66a9eca2c571225061905ff0a4e3dbae0112ef78fdb08cb5b1844e27d33f74e')
+sha256sums_aarch64=('9a1bb220f0d2e2412f15e2473b96282078fb99e3d91703704c78c0b35f3b0429')
 
 package() {
-  bsdtar -xf "${srcdir}/opencode-desktop-${pkgver}-linux-amd64.deb" data.tar.xz
+  local _debarch=amd64
+  [[ "${CARCH}" == aarch64 ]] && _debarch=arm64
+  bsdtar -xf "${srcdir}/opencode-desktop-${pkgver}-linux-${_debarch}.deb" data.tar.xz
   bsdtar -xf data.tar.xz -C "${pkgdir}"
 
   # Prune Debian/Ubuntu-specific and dead files
