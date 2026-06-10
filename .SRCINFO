@@ -8,8 +8,11 @@ pkgbase = lumen-journal
 	makedepends = git
 	makedepends = cargo
 	makedepends = flutter
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkg-config
 	depends = glibc
-	depends = libstdc++5
+	depends = gcc-libs
 	depends = gtk3
 	source = lumen-journal::git+https://github.com/crazygiscool/Lumen.git#tag=v2.2.3
 	source = lumen-journal.desktop

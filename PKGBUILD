@@ -5,8 +5,8 @@ pkgdesc="Encrypted journal app built with Rust and Flutter"
 arch=('x86_64')
 url="https://github.com/crazygiscool/lumen"
 license=('custom')
-depends=('glibc' 'libstdc++5' 'gtk3')
-makedepends=('git' 'cargo' 'flutter')
+depends=('glibc' 'gcc-libs' 'gtk3')
+makedepends=('git' 'cargo' 'flutter' 'cmake' 'ninja' 'pkg-config')
 
 source=("$pkgname::git+https://github.com/crazygiscool/Lumen.git#tag=v$pkgver"
         "lumen-journal.desktop"
