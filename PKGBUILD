@@ -5,15 +5,15 @@
 
 _extname=msgpack
 pkgname=php-$_extname
-pkgver=3.0.0
-pkgrel=5
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="PHP extension for interfacing with MessagePack"
 arch=('i686' 'x86_64')
 license=('BSD-3-Clause')
 url='https://github.com/msgpack/msgpack-php'
 depends=('php>=7.0')
 source=("https://pecl.php.net/get/$_extname-${pkgver}.tgz")
-sha256sums=('55306a84797d399c6b269181ec484634f18bea1330bbd9d7405043c597de69cd')
+sha256sums=('e30be355ab79aaea4568692fbd6073fd7c7f50ea8d3cf12edce40fc0c921d868')
 
 prepare() {
   cd "${srcdir}/${_extname}-${pkgver}"
