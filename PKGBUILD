@@ -1,7 +1,7 @@
 # Maintainer: AntiApple4life <antiapple at antiapple dot net>
 
 pkgname=alcom-beta-bin
-pkgver=1.1.6_rc.0
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="A fast open-source alternative of VRChat Creator Companion"
 arch=(x86_64)
@@ -11,7 +11,7 @@ provides=("${pkgname%-beta-bin}")
 conflicts=("${pkgname%-beta-bin}")
 depends=(webkit2gtk-4.1 gtk3)
 source=("https://github.com/vrc-get/vrc-get/releases/download/gui-v${pkgver//_/-}/alcom_${pkgver//_/-}-1_amd64.deb")
-sha256sums=('f6dbecceb98e6760dd8aed1ec0bb1ce5b608a972d86a4adc481ba868ec41b948')
+sha256sums=('ec979d7adf0fc892e09ce8686e09a2d7503c75ca655b812014497435e164194b')
 
 package() {
   cd "$srcdir"
