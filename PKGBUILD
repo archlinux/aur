@@ -7,8 +7,8 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="mozillavpn"
 pkgname="$_pkgname-git"
-pkgver=2.33.0.r44.ga57cfe8
-pkgrel=2
+pkgver=2.37.0.r48.ga41e47e
+pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
 license=('MPL-2.0')
@@ -27,13 +27,10 @@ depends=(
 )
 makedepends=(
   'cargo'
-  'clang'
   'cmake'
   'git'
   'go'
   'ninja'
-  'python-glean-parser' # AUR
-  'python-lxml'
   'python-yaml'
   'qt6-tools'
 )
@@ -70,8 +67,6 @@ pkgver() {
 }
 
 build() {
-  export CXXFLAGS+=" -Wno-error=unused-result"
-
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
