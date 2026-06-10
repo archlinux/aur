@@ -3,7 +3,7 @@
 pkgname=baidu-translate-client-bin
 _pkgname=BdTranslateClient
 _zhsname='百度翻译'
-pkgver=2.4.0
+pkgver=2.4.1
 _electronversion=11
 pkgrel=1
 pkgdesc="Baidu translate.(Prebuilt version.Use system-wide electron)${_zhsname}"
@@ -27,22 +27,19 @@ makedepends=(
     'icoutils'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.exe::https://fanyiapp.cdn.bcebos.com/fanyi-client/pkg/win/${pkgver}/%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91_Setup_${pkgver}.exe"
+    "${pkgname%-bin}-${pkgver}.exe::https://fanyiapp.cdn.bcebos.com/fanyi-client/pkg/win/${pkgver}/${_zhsname}_Setup_${pkgver}.exe"
     "${pkgname%-bin}.desktop"
     "LICENSE-${pkgver}.html::https://fanyi.baidu.com/static/webpage/agreement.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e0cc2846d97d9a23451fd99a03eef3c06fe9178c7d7a9df1c34988c76cd58277'
+sha256sums=('0b8bc402f46eed836022fd238f5e54578240796a6aac35cab1ce36027cd50f25'
             '344f302a9ec12eb2eac18f39c0368291eb7d815aaa3a34c65474b76d01cf3962'
             '1bac6150492bcebb1b2f74fc4a6712a8cd9317abf3107e6fa8ca357e5023bbf7'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
-    local _main_exe=""
-    if [[ -n "${_app_dir}" ]]; then
-        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
-    fi
+    local _main_exe="${_zhsname}.exe"
     if [[ -n "${_main_exe}" ]]; then
         local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
         if [[ -n "${_elec_ver}" ]]; then
