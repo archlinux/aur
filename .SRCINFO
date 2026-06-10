@@ -1,6 +1,6 @@
 pkgbase = electron-builder
 	pkgdesc = A complete solution to package and build a ready for distribution Electron app with “auto update” support out of the box
-	pkgver = 26.11.1
+	pkgver = 26.15.3
 	pkgrel = 1
 	url = https://www.electron.build/
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = electron-builder
 	depends = nodejs
 	depends = python
 	depends = python-setuptools
-	noextract = electron-builder-26.11.1.tgz
+	noextract = electron-builder-26.15.3.tgz
 	options = !strip
-	source = electron-builder-26.11.1.tgz::http://registry.npmmirror.com/electron-builder/-/electron-builder-26.11.1.tgz
-	sha256sums = b6bd817a01f80df54064319fe201d31a114090ad958ddca1ca8485f9dea4de18
+	source = electron-builder-26.15.3.tgz::http://registry.npmmirror.com/electron-builder/-/electron-builder-26.15.3.tgz
+	sha256sums = ba4a932b2bff1d82f5a56416d9c9d9ea0a2a20f46b92fc64fed2f070094122bb
 
 pkgname = electron-builder
