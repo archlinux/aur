@@ -1,13 +1,13 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 pkgname=bookman-cockpit
-pkgver=1.18.5
+pkgver=1.18.8.0
 pkgrel=1
 options=(!strip)
 pkgdesc="Bookman Cockpit"
 arch=(any)
 url="https://www.bookman.de/"
 license=('custom')
-depends=('java-environment=21' 'java21-openjfx' 'ttf-liberation')
+depends=('java-environment=25' 'java25-openjfx' 'ttf-liberation')
 makedepends=('jdk17-openjdk' 'unzip')
 # the bit.ly link looks suspicious, but that's what they use on their website.
 # Also the download is not versioned, so this will eventuelly break due to integrity checks failing.
@@ -17,15 +17,15 @@ source=("${pkgname}-${pkgver}.zip::https://go.bookman.de/Microsoft"
         "logback.xml"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('edeae43b505d4bd49af4bdd4ba3f43b9839fb5dc6e2d9fec14a313bddbe4b8e6'
+sha256sums=('e9dd2b1b9c570b2fec1f332d734f1230a55090cd841c40df69b4b0f996b9cdca'
             '5a0bd9ca7d0632eec36d9f3b4980741f70e47511ee070c1da6c7c778ed058106'
             'f2a742dabb4f1ac32867c3ba152355695220e4bd4a7ba032de98e3c5d2ed3309'
             'ef6cf40ff0a46853f2d5308c884e17328a6a36009f5697d5914bfbb720cac261'
             '32db57235ad25fadb8b2a4a02f7618c7a51df33b50df780613f06cb33fb977e3'
-            '69cc61018f38cc8389f3c6649059e3452113f6df6e327a9f61d1aaede7fbb808')
+            '391e9a86f4f2fde98ef42f287bd79bb810002cce7d5ba1ec600236d3098b59e2')
 
 build() {
-    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+    export JAVA_HOME=/usr/lib/jvm/java-25-openjdk
 
     "$JAVA_HOME/bin/javac" -d "$srcdir/classes" "OperatingSystemUtil.java"
     cd "$srcdir"
