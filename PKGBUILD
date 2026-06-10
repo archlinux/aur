@@ -1,3 +1,4 @@
+# Maintainer: mishalshanavas <mishalshanavas8@gmail.com>
 # Maintainer: Limao Luo <luolimao+AUR@gmail.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # (Added from network-manager package)
@@ -89,9 +90,9 @@ build() {
       meson compile -C build
 }
 
-#check() {
-#  meson test -C build --print-errorlogs
-#}
+check() {
+  meson test -C build --print-errorlogs
+}
 
 _pick() {
   local p="$1" f d; shift
