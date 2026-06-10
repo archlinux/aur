@@ -22,7 +22,7 @@ After installation, set the setuid bit so vtlock can lock VTs:
 
 Clone the repository and build with make:
 
-    git clone https://hub.darcs.net/stef204/vtlock
+    darcs clone https://hub.darcs.net/stef204/vtlock
     cd vtlock
     make
     sudo make install
@@ -35,9 +35,9 @@ To install to /usr/bin instead, override PREFIX:
 
 ## Usage
 
-vtlock "i3lock -n -c 000000"
+    vtlock "i3lock -n -c 000000"
 
-Replace the command with your preferred screen locker. The no-fork flag is important so vtlock knows when the child process exits and can restore VT switching.
+Replace the command with your preferred screen locker. The -n or --nofork flag (or equivalent for your screen locker) is important so vtlock knows when the child process exits and can restore VT switching.
 
 ## Wrapper examples
 
