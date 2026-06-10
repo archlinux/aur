@@ -1,7 +1,7 @@
 # Maintainer: Crosery <luoxi2024@gmail.com>
 
 pkgname=tokenicode-bin
-pkgver=0.10.8
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A beautiful desktop client for Claude Code — Tauri 2 + React 19 (with fcitx5 input method support)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 install="${pkgname}.install"
 source=("TOKENICODE_${pkgver}_amd64.AppImage::https://github.com/yiliqi78/TOKENICODE/releases/download/v${pkgver}/TOKENICODE_${pkgver}_amd64.AppImage"
         "${pkgname}.install")
-sha256sums=('13474e320bdde1e8a461208e531997ca592c144d142cc2b880e5e423f85202a9'
+sha256sums=('55f4022d158cb0367fded35bf28638b0b4975ebfee149591916c8953f42dcec2'
             'SKIP')
 noextract=("TOKENICODE_${pkgver}_amd64.AppImage")
 
