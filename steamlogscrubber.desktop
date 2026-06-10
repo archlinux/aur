@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Steam Log Scrubber
+Comment=Scrub Steam and Proton logs for safe sharing
+Exec=steamlogscrub-gui
+Icon=steamlogscrubber
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=true
