@@ -1,6 +1,6 @@
 pkgbase = arch-native
 	pkgdesc = Rebuild installed pacman packages from source with CPU-optimized compiler flags
-	pkgver = 1.3.0
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/adelmonte/arch-native
 	install = arch-native.install
@@ -15,7 +15,7 @@ pkgbase = arch-native
 	optdepends = nginx: to serve the local repo over HTTP
 	optdepends = artix-mirrorlist: for Artix Linux chroot support
 	backup = etc/arch-native.conf
-	source = arch-native-1.3.0.tar.gz::https://github.com/adelmonte/arch-native/archive/refs/tags/arch-native-v1.3.0.tar.gz
-	sha256sums = 25b791f0639ae30bf0985fa58a2ad65c23b879eb2cb01c3db97925fb9c84970e
+	source = arch-native-1.3.2.tar.gz::https://github.com/adelmonte/arch-native/archive/refs/tags/arch-native-v1.3.2.tar.gz
+	sha256sums = e6606bbd6266a22ce8847f3acad552497e65c4566e6c3e2eec3f27b3c3ba981c
 
 pkgname = arch-native
