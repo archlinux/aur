@@ -1,0 +1,19 @@
+pkgbase = muchrooms-git
+	pkgdesc = XMPP component for serving rooms
+	pkgver = r164.46ba3ff
+	pkgrel = 1
+	url = https://git.disroot.org/xmpp.rs/muchrooms
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	provides = muchrooms
+	conflicts = muchrooms
+	backup = etc/muchrooms/muchrooms.toml
+	source = git+https://git.disroot.org/xmpp.rs/muchrooms
+	source = muchrooms.conf
+	sha256sums = SKIP
+	sha256sums = 6037894b43e248e055c5953f40948d40506561a4212749b8833bb807deaa5313
+
+pkgname = muchrooms-git
