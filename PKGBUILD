@@ -15,8 +15,10 @@ optdepends=(
 	)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+$url.git)
-b2sums=('SKIP')
+source=("git+$url.git"
+        'com.rtosta.zapzap.nogpu.desktop')
+b2sums=('SKIP'
+        '35b0bad1219847bfc5a346e4d5006888d25dbeeef6c87c0c644d4b5db411a4137c3473d173409122802f5986ccbbd342e7180c487bf065f772c4773c4da7efea')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -33,5 +35,6 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 share/icons/$_pkgname.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg
   install -Dm664 share/applications/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
+  install -Dm664 "$srcdir"/com.rtosta.zapzap.nogpu.desktop "$pkgdir"/usr/share/applications/
   install -Dm664 share/metainfo/$_pkgname.appdata.xml "$pkgdir"/usr/share/metainfo/$_pkgname.appdata.xml
 }
