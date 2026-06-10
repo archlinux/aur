@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.15.0.r197.g7337364
+pkgver=0.16.0.r28.ge369d8f
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -20,6 +20,7 @@ makedepends=(
 	'cmake>=3.16.3'
 	'ffmpeg>=2:5.1.2'
 	'fmt>=12'
+	'freetype2>=2.14.1'
 	'git'
 	'half>=1.12'
 	'libgcc'
@@ -118,6 +119,7 @@ package() {
 		'libavformat.so'
 		'libavutil.so'
 		'libfmt.so'
+		'libfreetype.so'
 		'libgcc_s.so'
 		'libopenal.so'
 		'libpng16.so'
@@ -127,7 +129,6 @@ package() {
 		'libudev.so'
 		'libuuid.so'
 		'libxxhash.so'
-		'libz.so'
 		# 'libZydis.so'
 	)
 
