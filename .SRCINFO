@@ -1,0 +1,12 @@
+pkgbase = nerv
+	pkgdesc = Small terminal todo application written in Go
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/aman333nolawz/nerv
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = nerv-0.1.2.tar.gz::https://github.com/aman333nolawz/nerv/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = a02fab3d0ed72939e61a8a8dc4d5a1c7d8929b598746662ce3c95590084438c1
+
+pkgname = nerv
