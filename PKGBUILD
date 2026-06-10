@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mootool-bin
 _pkgname=MooTool
-pkgver=1.7.1
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Handy tool set for developers.(Prebuilt version)开发者常备小工具"
 arch=('x86_64')
@@ -19,9 +19,9 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/rememberber/MooTool/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1755abea58ac925a62a3bf2f2a4689518099ce00c1556f2cd439d14f4691707b'
+sha256sums=('0cde4ba1a915b24534f4fe577ecdd3a10c0f8ab7c97a145e21c567d667c797bb'
             '91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333'
-            '74b5601e17710cdf781ec411f54075c2c477370fdc317ff75c18bdae0662b498')
+            '5f67a15143aa1ae5b86188d2463faba82825373056c64a57721db7e1074baceb')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -34,7 +34,7 @@ prepare() {
     " "${srcdir}/opt/${_pkgname}/${_pkgname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
