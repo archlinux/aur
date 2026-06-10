@@ -3,8 +3,8 @@
 # Contributor: Matthew McGinn <mamcgi@gmail.com>
 
 pkgname=proxysql
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.0.9
+pkgrel=1
 pkgdesc='High-performance MySQL proxy with query routing, caching, and load balancing (built from source)'
 arch=('x86_64')
 url="https://proxysql.com/"
@@ -16,19 +16,11 @@ optdepends=('perl: for Galera cluster tools')
 backup=('etc/proxysql.cnf')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sysown/proxysql/archive/refs/tags/v${pkgver}.tar.gz"
-        "fix-libconfig-gcc15.patch"
         "fix-mariadb-cmake-version.patch"
         "fix-mariadb-zlib-cmake-version.patch"
-        "fix-mariadb-bool-c23.patch"
-        "fix-coredumper-cmake-version.patch"
         "fix-clickhouse-cpp-cmake-version.patch"
-        "fix-postgresql-bool-c23.patch"
-        "fix-btree-cstdint.patch")
-sha256sums=('ce81eb4d040cd0df34003b6370961b3caa3bf4c89fee8165e1a221d180a1222b'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+        "fix-postgresql-bool-c23.patch")
+sha256sums=('1660ab9869cee85fdf5fd35eeb6259eaff9b54ec67eb82cf7f605927afe0c650'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -49,20 +41,11 @@ exec /usr/bin/g++ -ffile-prefix-map=${srcdir}=/usr/src "\$@"
 EOF
   chmod +x "${srcdir}/wrapper-bin/gcc" "${srcdir}/wrapper-bin/g++"
 
-  # Apply GCC 15 compatibility patch to btree.h (missing <cstdint>)
-  patch -p0 < "${srcdir}/fix-btree-cstdint.patch"
-
-  # Modify deps/Makefile to apply GCC 15 patch after extracting libconfig
-  sed -i '/cd libconfig && tar -zxf libconfig-\*.tar.gz/a\\tcd libconfig/libconfig/lib \&\& patch -p2 < ../../../fix-libconfig-gcc15.patch' deps/Makefile
-
   # Modify re2 compilation to use global-dynamic TLS model for shared library compatibility
   sed -i 's/-fPIC -DMEMORY_SANITIZER/-fPIC -ftls-model=global-dynamic -DMEMORY_SANITIZER/g' deps/Makefile
 
   # Modify deps/Makefile to apply compatibility patches after extracting mariadb-connector-c
-  sed -i '/cd mariadb-client-library && tar -zxf mariadb-connector-c-.*-src.tar.gz/a\\tcd mariadb-client-library/mariadb_client \&\& patch -p0 < ../../fix-mariadb-cmake-version.patch\n\tcd mariadb-client-library/mariadb_client \&\& patch -p0 < ../../fix-mariadb-zlib-cmake-version.patch\n\tcd mariadb-client-library/mariadb_client \&\& patch -p0 < ../../fix-mariadb-bool-c23.patch' deps/Makefile
-
-  # Modify deps/Makefile to apply CMake version patch after extracting coredumper
-  sed -i '/cd coredumper && tar -zxf coredumper-.*\.tar\.gz/a\\tcd coredumper/coredumper \&\& patch -p0 < ../../fix-coredumper-cmake-version.patch' deps/Makefile
+  sed -i '/cd mariadb-client-library && tar -zxf mariadb-connector-c-.*-src.tar.gz/a\\tcd mariadb-client-library/mariadb_client \&\& patch -p0 < ../../fix-mariadb-cmake-version.patch\n\tcd mariadb-client-library/mariadb_client \&\& patch -p0 < ../../fix-mariadb-zlib-cmake-version.patch' deps/Makefile
 
   # Modify deps/Makefile to apply CMake version patch after extracting clickhouse-cpp
   sed -i '/cd clickhouse-cpp && tar -zxf v.*\.tar\.gz/a\\tcd clickhouse-cpp/clickhouse-cpp \&\& patch -p0 < ../../fix-clickhouse-cpp-cmake-version.patch' deps/Makefile
@@ -71,11 +54,8 @@ EOF
   sed -i '/cd postgresql && tar -zxf postgresql-.*\.tar\.gz/a\\tcd postgresql/postgresql \&\& patch -p0 < ../../fix-postgresql-bool-c23.patch' deps/Makefile
 
   # Copy patch files to deps directory so they're accessible during build
-  cp "${srcdir}/fix-libconfig-gcc15.patch" deps/
   cp "${srcdir}/fix-mariadb-cmake-version.patch" deps/
   cp "${srcdir}/fix-mariadb-zlib-cmake-version.patch" deps/
-  cp "${srcdir}/fix-mariadb-bool-c23.patch" deps/
-  cp "${srcdir}/fix-coredumper-cmake-version.patch" deps/
   cp "${srcdir}/fix-clickhouse-cpp-cmake-version.patch" deps/
   cp "${srcdir}/fix-postgresql-bool-c23.patch" deps/
 }
