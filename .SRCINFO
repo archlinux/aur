@@ -1,7 +1,7 @@
 pkgbase = toontown-multitool
 	pkgdesc = Multiboxing input control for Toontown Rewritten and Corporate Clash
-	pkgver = 0.7.0alpha.2
-	pkgrel = 2
+	pkgver = 0.7.0alpha.3
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/flossbud/ToonTown-MultiTool
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = toontown-multitool
 	depends = python-psutil
 	depends = python-yaml
 	depends = xdotool
-	source = toontown-multitool-0.7.0-alpha.2.tar.gz::https://github.com/flossbud/ToonTown-MultiTool/archive/refs/tags/v0.7.0-alpha.2.tar.gz
+	source = toontown-multitool-0.7.0-alpha.3.tar.gz::https://github.com/flossbud/ToonTown-MultiTool/archive/refs/tags/v0.7.0-alpha.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = toontown-multitool
