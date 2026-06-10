@@ -1,7 +1,7 @@
 # Maintainer: Aleksy Grabowski <qrdwibmkg@mozmail.com>
 # Contributor: spider-mario <spidermario@free.fr>
 pkgname=moarvm
-pkgver=2026.04
+pkgver=2026.05.1
 pkgrel=1
 pkgdesc="A VM with adaptive optimization and JIT compilation, built for Rakudo"
 arch=(i686 x86_64 aarch64)
@@ -19,8 +19,8 @@ source=(
     "https://moarvm.com/releases/MoarVM-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-    65dc2242c9e71a52b85e636c1779408127910d51ecd462fb8c7376dc7a97917f
-    8ae42b97b6124eef6508b7b9863b2974cd362aa69cf094a3ecafb6a76dfc217a
+    801a43c2e87bdbb5030318e3c649c52f859a10f2bd21b6f26d4da8e9fda0bddf
+    9f66cae523cbb8d4344a3ef69fdb44503b316b9794354da44c909a1196525165
 )
 
 build() {
