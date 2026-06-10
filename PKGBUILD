@@ -1,6 +1,6 @@
 # Maintainer: Sergey Baranovsky <cthutqspb@gmail.com>
 pkgname=rustormy-bin
-pkgver=0.4.4
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Minimal and neofetch-like weather CLI (precompiled binary)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('rustormy')
 conflicts=('rustormy')
 
 source=("https://github.com/Tairesh/rustormy/releases/download/v$pkgver/rustormy-v$pkgver-Linux.tar.gz")
-sha256sums=('6fca4141947b4e975018eb1b49925a94e4432728b5cf286ec9cbd494ae7a94fd')
+sha256sums=('a4dbbe7e3ca6e7afd33840ef092d9c94cab80ced605dfd090b783a194d951af1')
 
 package() {
   cd "$srcdir"  
