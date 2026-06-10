@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aionui
 _pkgname=AionUi
-pkgver=2.1.14
+pkgver=2.1.15
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -73,21 +73,13 @@ prepare() {
         export BUN_REGISTRY_MIRROR="https://registry.npmmirror.com"
         export BUN_BINARY_MIRROR_OVERRIDE="https://registry.npmmirror.com/-/binary/"
         export BUN_INSTALL_REWRITE="https://registry.npmjs.org/*=https://registry.npmmirror.com/\$1"
+        export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
         export BUN_INSTALL_NO_CACHE=1
         export BUN_INSTALL_DISABLE_DEFAULT_REGISTRY_FALLBACK=1
         export BUN_CACHE_DIR="${srcdir}/.bun_cache"
     fi
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i "s/target\: deb/target\: dir/g" electron-builder.yml
-    case "${CARCH}" in
-        aarch64)
-            sed -i "s/x64, arm64/arm64/g" electron-builder.yml
-            ;;
-        x86_64)
-            sed -i "s/x64, arm64/x64/g" electron-builder.yml
-            ;;
-    esac
     bun run postinstall || true
     bunx electron-builder install-app-deps
 }
@@ -97,14 +89,6 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
     bun run dist:linux
-    case "${CARCH}" in
-        aarch64)
-            ln -sf "/usr/bin/bun" "out/linux-arm64-unpacked/resources/bundled-bun/linux-arm64/bun"
-            ;;
-        x86_64)
-            ln -sf "/usr/bin/bun" "out/linux-unpacked/resources/bundled-bun/linux-x64/bun"
-            ;;
-    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
