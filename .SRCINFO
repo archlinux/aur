@@ -1,0 +1,20 @@
+pkgbase = plasma-theme-master
+	pkgdesc = Daemon and GUI to generate/synchronize and control theme dynamically across KDE Plasma and universal applications
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://github.com/SonOfMithras/plasma-theme-master
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = qt6-base
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kcolorscheme
+	optdepends = python-pipx: for Material You color generation support
+	optdepends = kvantum: for Kvantum theme support
+	optdepends = klassy: for window decoration preset switching support
+	source = plasma-theme-master-2.0.7.tar.gz::https://github.com/SonOfMithras/plasma-theme-master/archive/refs/tags/v2.0.7.tar.gz
+	sha256sums = ce6bc1c7788dee3582e1e7cd3909a07e5bc14ace5ad9156769dfb4a06c7f689d
+
+pkgname = plasma-theme-master
