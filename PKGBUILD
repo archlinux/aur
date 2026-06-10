@@ -2,7 +2,7 @@
 
 _pkgname='noita_proxy'
 pkgname="${_pkgname}-bin"
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='Noita Entangled Worlds mod'
 url='https://github.com/IntQuant/noita_entangled_worlds'
@@ -22,8 +22,8 @@ conflicts=(${_pkgname})
 source=(
     "${url}/releases/download/v${pkgver}/noita-proxy-linux.zip"
     "${_pkgname}.png::${_rawurl}/v${pkgver}/noita-proxy/assets/icon.png"
-    "LICENSE-APACHE::${_rawurl}/v${pkgver}/LICENSE-APACHE"
-    "LICENSE-MIT::${_rawurl}/v${pkgver}/LICENSE-MIT"
+    "${_rawurl}/v${pkgver}/LICENSE-APACHE"
+    "${_rawurl}/v${pkgver}/LICENSE-MIT"
     "noita_proxy.desktop"
 )
 sha256sums=('2e2498f1e46ab41c277480c48e33bd7ed03aa9955dad9753c1b034e9adc1604d'
