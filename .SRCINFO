@@ -1,6 +1,6 @@
 pkgbase = steamlogscrubber
 	pkgdesc = Steam and Proton log scrubber for safe support sharing
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/blakeblair/steamlogscrubber
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = steamlogscrubber
 	depends = python
 	optdepends = python-py7zr: 7z archive output support
 	optdepends = python-zstandard: zstd/tar.zst archive output support
-	source = steamlogscrubber-0.1.0.tar.gz::https://github.com/blakeblair/steamlogscrubber/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = cf91eb2c9caba5067b69732c768d2c9eb74559bc1f1d6a82b373e032a1132399
+	source = steamlogscrubber-0.1.1.tar.gz::https://github.com/blakeblair/steamlogscrubber/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 54fb925cacf8cc3d44ffb28888e2aecf9535ad21c600d810d2c61a385aca8e66
 
 pkgname = steamlogscrubber

@@ -1,6 +1,6 @@
 # Maintainer: Blake Blair <contact@blakeblair.dev>
 pkgname=steamlogscrubber
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Steam and Proton log scrubber for safe support sharing"
 arch=("any")
@@ -13,7 +13,7 @@ optdepends=(
 )
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cf91eb2c9caba5067b69732c768d2c9eb74559bc1f1d6a82b373e032a1132399')
+sha256sums=('54fb925cacf8cc3d44ffb28888e2aecf9535ad21c600d810d2c61a385aca8e66')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
