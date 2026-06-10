@@ -1,7 +1,7 @@
 # Maintainer: Captain Cave
 _pkgname=corona
 pkgname=solar2d-git
-pkgver=3729.r0.afb6ec98
+pkgver=3730.r0.770a60cd
 pkgrel=1
 install=solar2d-git.install
 pkgdesc="Solar2D (formerly Corona SDK) cross-platform game engine"
