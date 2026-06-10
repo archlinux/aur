@@ -1,7 +1,7 @@
 # Maintainer: Abdelzaher Abdelgwad <abdelzaher.abdelgwad@gmail.com>
 # Auto-generated from packaging/aur/PKGBUILD.template by .github/workflows/release.yml
 pkgname=csm-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Terminal UI for running multiple Claude Code sessions as tabs"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/AbdelzaherAbdelgwa
 source_x86_64=("csm-${pkgver}-linux-x64::${url}/releases/download/v${pkgver}/csm-linux-x64")
 source_aarch64=("csm-${pkgver}-linux-arm64::${url}/releases/download/v${pkgver}/csm-linux-arm64")
 sha256sums=('ffadef1b35435bbe565d5cc82397052e5447bbace85ca53e86268f64c13f1fed')
-sha256sums_x86_64=('696f969a5b1a784647889940750d4fefbf96ee89b76b070c05a99f1b32305490')
-sha256sums_aarch64=('b24c567c33489a83459e7d33ddf0441957fb48a122b0888f7079b217060e6f7a')
+sha256sums_x86_64=('f07cda1c4442d232ded1906cf443bc3c17c35f4567a43e45d535d627b58da7ef')
+sha256sums_aarch64=('871ea1e057940d2662c60472e5eeb34d6daafeabe0f4949579773a014ec5e54b')
 
 package() {
   install -Dm755 "${srcdir}/csm-${pkgver}-linux-"* "${pkgdir}/usr/bin/csm"
