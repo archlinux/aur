@@ -36,14 +36,22 @@ build() {
     # Copy Rust library into Flutter linux/lib
     install -Dm755 target/release/liblumen_core.so ../ui/linux/lib/liblumen_core.so
 
+    # Build Lumen TUI
+    cd ../tui
+    cargo build --release
+
     # Build Flutter UI
     cd ../ui
     flutter build linux --release
 }
 
 package() {
+    cd "$srcdir/$pkgname"
 
-    cd "$srcdir/$pkgname/ui/build/linux/x64/release/bundle"
+    # Install TUI binary
+    install -Dm755 tui/target/release/lumen "$pkgdir/usr/bin/lumen-cli"
+
+    cd ui/build/linux/x64/release/bundle
 
     # Install the entire bundle to /usr/lib/lumen-journal/
     install -d "$pkgdir/usr/lib/lumen-journal"
