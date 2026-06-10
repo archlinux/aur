@@ -1,0 +1,19 @@
+pkgbase = cwtch-ui-bin
+	pkgdesc = A Flutter based Cwtch UI
+	pkgver = 1.16.1
+	pkgrel = 1
+	url = https://cwtch.im
+	arch = x86_64
+	license = MIT
+	optdepends = tor: use system tor
+	provides = cwtch
+	provides = cwtch-ui
+	conflicts = cwtch
+	conflicts = cwtch-git
+	conflicts = libcwtch-go
+	conflicts = cwtch-bin
+	options = !strip
+	source_x86_64 = https://git.openprivacy.ca/cwtch.im/cwtch-ui/releases/download/v1.16.1/cwtch-1.16.1_amd64.deb
+	sha512sums_x86_64 = SKIP
+
+pkgname = cwtch-ui-bin
