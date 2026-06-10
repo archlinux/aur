@@ -1,13 +1,13 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep
 pkgver=2.6.4
-pkgrel=2.314
+pkgrel=3.314
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
 license=('GPL-3.0-only')
 checkdepends=(python-pytest)
-makedepends=(git python-uv-build python-build python-installer python-wheel python-click-man coreutils make)
+makedepends=(coreutils grep git python-uv-build python-build python-installer python-wheel python-click-man)
 depends=(python python-djvulibre-python
          python-click python-loguru python-pillow
          python-fpdf2 python-pdfrw)
@@ -22,22 +22,31 @@ _fullsrcdir() {
     echo "$srcdir/$pkgname-$pkgver"
 }
 
+# The project contains a GNU make job for docs/dpsprep.1, however it doesn't work without a virtual environment
 prepare() {
     cd "$(_fullsrcdir)"
-    sed --in-place Makefile \
-        --expression 's/uv run //g' \
-        --expression 's/uv version --short/grep --only-matching --perl-regexp "(?<=version\\s=\\s\\").*(?=\\")" pyproject.toml/g'
+
+    version=$(grep --only-matching --perl-regexp '(?<=version = ").*(?=")' pyproject.toml)
+    echo \
+"from click_man.core import write_man_pages
+from dpsprep.cli import dpsprep
+
+write_man_pages('dpsprep', dpsprep, target_dir='docs', version='$version')
+" > generate_man_page.py
 }
 
 check() {
     cd "$(_fullsrcdir)"
-    make test
+    pytest
 }
 
 build() {
     cd "$(_fullsrcdir)"
     python -m build --wheel --no-isolation
-    make docs/dpsprep.1
+
+    release_date=$(grep --only-matching --perl-regexp "(?<=$version - ).*" CHANGELOG.md)
+    SOURCE_DATE_EPOCH=$(date --date $release_date +'%s') PYTHONPATH=src python -m generate_man_page
+    cat docs/examples.man >> docs/dpsprep.1
 }
 
 package() {
