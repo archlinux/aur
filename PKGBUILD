@@ -5,11 +5,11 @@
 pkgname=lemonade-server
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)"
 pkgver=10.7.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
 license=('Apache-2.0')
-makedepends=('cmake' 'ninja' 'git' 'cli11' 'nlohmann-json' 'openssl' 'libdrm' 'nodejs' 'npm')
+makedepends=('cmake' 'ninja' 'git' 'cli11' 'nlohmann-json' 'mbedtls' 'libdrm' 'nodejs' 'npm')
 depends=('zstd' 'unzip' 'libwebsockets')
 provides=('lemonade-server')
 backup=('etc/lemonade/conf.d/zz-secrets.conf')
