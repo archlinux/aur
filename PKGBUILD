@@ -1,6 +1,6 @@
 # Maintainer: Nook Release Bot <release-bot@nook.local>
 pkgname=nook-beta-bin
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc='Nook Beta desktop collaboration app'
 arch=('x86_64')
@@ -11,11 +11,11 @@ optdepends=('libpulse: PulseAudio audio support')
 provides=('nook-beta')
 conflicts=('nook-beta')
 options=(!strip)
-source_x86_64=("nook-beta-0.2.10-linux-${pkgver}-${pkgrel}.deb::https://nook.cloudylake.io/download/beta/nook-beta-0.2.10-linux.deb")
-sha256sums_x86_64=('69709230fcb60b136d24b6824676cb6514fb76693f622af4d4a5151e23c15b09')
+source_x86_64=("nook-beta-0.2.11-linux-${pkgver}-${pkgrel}.deb::https://nook.cloudylake.io/download/beta/nook-beta-0.2.11-linux.deb")
+sha256sums_x86_64=('3ed9d97b5f1a3733aaca35ddfeb725c78538e862a6f66384890f0103d315a22a')
 
 package() {
-    bsdtar -xf "nook-beta-0.2.10-linux-${pkgver}-${pkgrel}.deb" -C "${srcdir}"
+    bsdtar -xf "nook-beta-0.2.11-linux-${pkgver}-${pkgrel}.deb" -C "${srcdir}"
 
     local data_archive
     local app_install_dir='nook-beta'
