@@ -1,8 +1,8 @@
 pkgname=openssh-gui-git
 _pkgname=OpenSSH-GUI
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
-pkgdesc="A GUI for OpenSSH configuration and management (GIT version, built from development branch)"
+pkgdesc="A GUI for OpenSSH configuration and management (Sourcepackage)"
 arch=('x86_64')
 url="https://github.com/frequency403/OpenSSH-GUI"
 license=('MIT')
