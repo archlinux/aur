@@ -11,5 +11,6 @@ pkgbase = screenshot-cpp
 	depends = wayland
 	optdepends = hyprland: tested wlroots compositor environment
 	optdepends = sway: alternative wlroots compositor environment
+	options = !debug
 
 pkgname = screenshot-cpp
