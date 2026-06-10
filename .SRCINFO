@@ -1,12 +1,22 @@
 pkgbase = unirtm-bin
-    pkgver = 0.0.0
-    pkgrel = 1
-    pkgdesc = UniRTM (Uni Runtime and Tools Manager) is a cross-platform developer toolchain manager.
-    url = https://github.com/snowdreamtech/UniRTM
-    arch = x86_64
-    arch = aarch64
-    license = MIT
-    provides = unirtm
-    conflicts = unirtm
-
+	pkgdesc = UniRTM (Uni Runtime and Tools Manager) is a cross-platform developer toolchain manager.
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/snowdreamtech/UniRTM
+	license = MIT
+	conflicts = unirtm
+	provides = unirtm
+	arch = aarch64
+	source_aarch64 = https://github.com/snowdreamtech/UniRTM/releases/download/v0.17.0/unirtm_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 458f837fae23739a9a2f71ae055aae9a72bd47be2976f4b4acdc34dc69e255af
+	arch = armv7h
+	source_armv7h = https://github.com/snowdreamtech/UniRTM/releases/download/v0.17.0/unirtm_Linux_armv7.tar.gz
+	sha256sums_armv7h = fb1747c6660dc1d663a73ff3af642cebd8557079fcb196ecb99f4b1b276f5ce5
+	arch = i686
+	source_i686 = https://github.com/snowdreamtech/UniRTM/releases/download/v0.17.0/unirtm_Linux_i386.tar.gz
+	sha256sums_i686 = c6e6e44171d92fa1aec3209a8e252187ccc6c495c7ddadb1fef1b1d1c8ae8528
+	arch = x86_64
+	source_x86_64 = https://github.com/snowdreamtech/UniRTM/releases/download/v0.17.0/unirtm_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 90f36b8667feb173039951cc049983a8e7b7c1ff28e0f22b5877804a89b1ab81
+	
 pkgname = unirtm-bin
