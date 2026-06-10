@@ -13,6 +13,13 @@ source=("$pkgname::https://hub.darcs.net/stef204/vtlock/dist")
 install=vtlock.install
 sha256sums=('SKIP')
 
+prepare() {
+    # Normalize file timestamps to prevent make clock skew warnings
+    # caused by zip extraction preserving server timestamps
+    cd "$pkgname"
+    touch *
+}
+
 build() {
     cd "$pkgname"
     make
