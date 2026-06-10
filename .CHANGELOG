@@ -1,5 +1,29 @@
-Version history
+Version History
 ===============
+
+0.10.33
+-------
+
+2026-06-09
+
+In the tweaker, when you hover over an assignment, the line will be printed
+in white. The so-assigned lix on the map will also be highlit in white,
+regardless of where that lix is or what that lix is currently doing.
+
+Added geoo's 2 levels from Level Design Contest 30,
+Cycle Decomposition and Misaligned, to `single/misc/contests/`.
+
+Fix #499: Now, the dark background of on-map tooltips span the full width
+of the text.
+
+Attribute the laser animation to Zanzindorf in `doc/thanks.txt`.
+
+Code: Remove the custom reimplementation of `al_convert_mask_to_alpha()`
+and revert to Allegro 5's. The custom implementation was an attempt to fix
+#431 (Magic Pink isn't converted on macOS), but it didn't help. In the
+meantime, a change to Allegro 5's image loaders have fixed #431.
+
+
 
 0.10.32
 -------
