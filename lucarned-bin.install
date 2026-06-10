@@ -1,0 +1,19 @@
+post_install() {
+    echo ""
+    echo "==> lucarned has been installed!"
+    echo ""
+    echo "To get started, run:"
+    echo "    lucarned init"
+    echo ""
+    echo "This will configure your AI agent notification bridge."
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> lucarned has been upgraded!"
+    echo ""
+    echo "If this is a major version update, you may want to re-run:"
+    echo "    lucarned init"
+    echo ""
+}
