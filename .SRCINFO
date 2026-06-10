@@ -16,6 +16,8 @@ pkgbase = davix-git
 	depends = libxml2
 	depends = openssl
 	depends = util-linux-libs
+	provides = davix
+	conflicts = davix
 	source = davix-git::git+https://github.com/cern-fts/davix.git
 	sha256sums = SKIP
 
