@@ -1,0 +1,14 @@
+pkgbase = limine-cli
+	pkgdesc = CLI tool for managing Limine bootloader
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/pigeonhands/limine-cli
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = rust
+	makedepends = cargo
+	depends = limine
+	source = limine-cli-0.0.1.tar.gz::https://static.crates.io/crates/limine-cli/limine-cli-0.0.1.crate
+	sha256sums = SKIP
+
+pkgname = limine-cli
