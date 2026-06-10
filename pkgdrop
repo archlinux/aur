@@ -4,38 +4,64 @@
 
 set -euo pipefail
 
-VERSION="1.0.0"
+VERSION="1.1.0"
 DEBUG="${DEBUG:-0}"
 INSTALL_DIR="$HOME/.local/opt"
 ASK_DEPENDENCIES="${ASK_DEPENDENCIES:-1}"
 
-log()   { [[ "$DEBUG" == "1" ]] && echo "[DEBUG] $*" >&2; }
-info()  { echo "[INFO] $*" ;}
-warn()  { echo "[WARN] $*" >&2;}
-fail()  { echo "[ERROR] $*" >&2; exit 1;}
+log()   { [[ "$DEBUG" == "1" ]] && echo "[DEBUG] $*" >&2 || true; }
+info()  { echo "[INFO] $*"; }
+warn()  { echo "[WARN] $*" >&2; }
+fail()  { echo "[ERROR] $*" >&2; exit 1; }
 
 show_help() {
 cat << 'EOF'
 pkgdrop - Universal package installer for Arch Linux
 
-Usage: pkgdrop <file>
+Usage: pkgdrop [OPTIONS] <file>
+
+Options:
+  -h, --help      Show this help message
+  -v, --version   Show version
+  -l, --list      List installed packages
 
 Examples:
   pkgdrop app.tar.xz        # Install tar.xz portable
-  pkgdrop app.deb           # Install debian package  
+  pkgdrop app.deb           # Install debian package
   pkgdrop app.AppImage      # Install AppImage
   pkgdrop app.pkg.tar.zst   # Install pacman package
 
 Environment Variables:
-  DEBUG=1        Show debug information
-  ASK_DEPENDENCIES=0  Skip dependency prompts
-  
+  DEBUG=1                  Show debug information
+  ASK_DEPENDENCIES=0       Skip dependency prompts
+
 Supported Formats:
   *.pkg.tar.*    → pacman (requires sudo)
   *.tar.xz       → tarportable (extraction + symlink)
   *.deb          → debtap (optional)
   *.AppImage     → AppImage (copy to bin)
 EOF
+}
+
+show_version() {
+    echo "pkgdrop $VERSION"
+}
+
+list_installed() {
+    if [[ -d "$INSTALL_DIR" ]]; then
+        echo "Installed packages in $INSTALL_DIR:"
+        ls -1 "$INSTALL_DIR" 2>/dev/null || echo "  (none)"
+    else
+        echo "No packages installed yet."
+    fi
+    
+    echo ""
+    echo "Symlinks in ~/.local/bin:"
+    if [[ -d "$HOME/.local/bin" ]]; then
+        ls -1 "$HOME/.local/bin" 2>/dev/null || echo "  (none)"
+    else
+        echo "  (none)"
+    fi
 }
 
 check_command() {
@@ -45,11 +71,11 @@ check_command() {
 install_helper() {
     local helper="$1"
     info "Installing $helper..."
-    
+
     if check_command yay; then
-        sudo yay -S --noconfirm --needed "$helper"
+        yay -S --noconfirm --needed "$helper"
     elif check_command paru; then
-        sudo paru -S --noconfirm --needed "$helper"
+        paru -S --noconfirm --needed "$helper"
     else
         sudo pacman -S --noconfirm --needed "$helper"
     fi
@@ -57,20 +83,18 @@ install_helper() {
 
 ensure_dependencies() {
     local missing=()
-    
-    # Required for all operations
+
     for cmd in tar find mkdir chmod ln rm echo grep head; do
         check_command "$cmd" || missing+=("$cmd")
     done
-    
-    # Pacman support
+
     if ! check_command pacman; then
         missing+=("pacman" "(base package)")
     fi
-    
+
     if [[ ${#missing[@]} -gt 0 ]]; then
         warn "Missing required packages: ${missing[*]}"
-        if [[ "$ASK_DEPENDENCIES" == "1" ]] && [[ "$INTERACTIVE" != "0" ]]; then
+        if [[ "$ASK_DEPENDENCIES" == "1" ]]; then
             read -p "Install missing packages? [Y/n] " -n 1 -r
             echo
             [[ $REPLY =~ ^[Nn]$ ]] || install_helper "base"
@@ -83,13 +107,13 @@ ensure_dependencies() {
 install_optional_helper() {
     local helper="$1"
     info "Installing optional dependency: $helper"
-    
+
     if check_command yay; then
         yay -S --noconfirm --needed "$helper" 2>/dev/null || return 1
     elif check_command paru; then
         paru -S --noconfirm --needed "$helper" 2>/dev/null || return 1
     else
-        pacman -S --noconfirm --needed "$helper" 2>/dev/null || return 1
+        sudo pacman -S --noconfirm --needed "$helper" 2>/dev/null || return 1
     fi
     return 0
 }
@@ -97,10 +121,10 @@ install_optional_helper() {
 detect_type() {
     local file="$1"
     case "$file" in
-        *.pkg.tar.*|*.pkg.tar.*) echo "pacman" ;;
-        *.tar.xz)                 echo "tarportable" ;;
-        *.deb)                    echo "debtap" ;;
-        *.AppImage)               echo "appimage" ;;
+        *.pkg.tar.zst|*.pkg.tar.xz|*.pkg.tar.gz) echo "pacman" ;;
+        *.tar.xz)                                 echo "tarportable" ;;
+        *.deb)                                    echo "debtap" ;;
+        *.AppImage)                               echo "appimage" ;;
         *) fail "Unknown format: $file" ;;
     esac
 }
@@ -115,32 +139,31 @@ install_pacman() {
 
 install_tarportable() {
     local file="$1"
-    local name="${file##*/}"
-    name="${name%.tar.xz}"
-    name="${name##*-linux-x86_64}"
-    [[ "$name" == "$file" ]] && name="${name##*/}"
-    
+    local basename="${file##*/}"
+    local name="${basename%.tar.xz}"
+    name="${name%%[-_]*linux*}"
+
     log "Installing tarportable: $name"
-    
+
     [[ -d "$INSTALL_DIR" ]] || mkdir -p "$INSTALL_DIR"
-    
+
     local target="$INSTALL_DIR/$name"
     [[ -d "$target" ]] && rm -rf "$target"
-    
+
     mkdir -p "$target"
     tar -xf "$file" -C "$target"
-    
-    local bin=$(find "$target" -type f \( -name "zen" -o -name "$name" -o -name "code" -o -name "firefox" -o -name "chrome" \) -executable 2>/dev/null | head -1)
-    [[ -z "$bin" ]] && bin=$(find "$target" -maxdepth 2 -type f -executable 2>/dev/null | head -1)
-    [[ -z "$bin" ]] && bin=$(find "$target" -maxdepth 3 -type f -executable 2>/dev/null | head -1)
-    
+
+    local bin=""
+    bin=$(find "$target" -maxdepth 2 -type f -executable -name "$name" ! -name "*.so*" ! -name "*.dylib" ! -name "*-bin" 2>/dev/null | head -1)
+    [[ -z "$bin" ]] && bin=$(find "$target" -maxdepth 2 -type f -executable ! -name "*.so*" ! -name "*.dylib" ! -name "updater" ! -name "*test" ! -name "*sender" ! -name "*-bin" 2>/dev/null | head -1)
+
     if [[ -n "$bin" ]]; then
         mkdir -p "$HOME/.local/bin"
         ln -sf "$bin" "$HOME/.local/bin/$name"
         info "Symlinked: $HOME/.local/bin/$name -> $bin"
     else
         warn "No binary found. Files installed to: $target"
-        info "Add $target/bin to your PATH if needed"
+        info "Add $target to your PATH if needed"
     fi
 }
 
@@ -148,7 +171,7 @@ install_debtap() {
     log "Installing .deb via debtap: $1"
     if ! check_command debtap; then
         warn "debtap not found."
-        if [[ "$ASK_DEPENDENCIES" == "1" ]] && [[ "$INTERACTIVE" != "0" ]]; then
+        if [[ "$ASK_DEPENDENCIES" == "1" ]]; then
             read -p "Install debtap? [Y/n] " -n 1 -r
             echo
             install_optional_helper "debtap" || fail "Cannot install .deb without debtap"
@@ -163,9 +186,9 @@ install_appimage() {
     local file="$1"
     local name="${file##*/}"
     name="${name%.AppImage}"
-    
+
     log "Installing AppImage: $name"
-    
+
     mkdir -p "$HOME/.local/bin"
     cp "$file" "$HOME/.local/bin/$name"
     chmod +x "$HOME/.local/bin/$name"
@@ -186,23 +209,34 @@ show_summary() {
 
 main() {
     local file="${1:-}"
-    
+
     if [[ "$file" == "-h" ]] || [[ "$file" == "--help" ]]; then
         show_help
         exit 0
     fi
-    
-    [[ -z "$file" ]] && fail "Usage: pkgdrop <file>\nTry: pkgdrop zen.linux-x86_64.tar.xz"
+
+    if [[ "$file" == "-v" ]] || [[ "$file" == "--version" ]]; then
+        show_version
+        exit 0
+    fi
+
+    if [[ "$file" == "-l" ]] || [[ "$file" == "--list" ]]; then
+        list_installed
+        exit 0
+    fi
+
+    [[ -z "$file" ]] && { show_help; exit 1; }
     [[ -f "$file" ]] || fail "File not found: $file"
-    
+
     ensure_dependencies
-    
-    local type=$(detect_type "$file")
+
+    local type
+    type=$(detect_type "$file")
     log "Detected type: $type"
-    
+
     local handler="install_$type"
     declare -F "$handler" >/dev/null || fail "No handler for: $type"
-    
+
     info "Installing: $file"
     "$handler" "$file"
     info "[OK] Installation complete"
