@@ -1,0 +1,25 @@
+pkgbase = batorrent-git
+	pkgdesc = A lightweight BitTorrent client built with C++, Qt 6, and libtorrent-rasterbar.
+	pkgver = 4.0.0.r1.g4234a3b
+	pkgrel = 1
+	url = https://github.com/Mateuscruz19/BATorrent
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = libtorrent-rasterbar
+	depends = qt6-svg
+	depends = qt6-declarative
+	depends = qtkeychain-qt6
+	depends = qt6-base
+	depends = openssl
+	depends = libstdc++
+	depends = glibc
+	depends = libgcc
+	provides = batorrent
+	conflicts = batorrent
+	source = batorrent-git::git+https://github.com/Mateuscruz19/BATorrent
+	b2sums = SKIP
+
+pkgname = batorrent-git
