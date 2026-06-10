@@ -6,3 +6,4 @@
 !.SRCINFO
 !*.install
 !*.patch
+!.pre-commit
