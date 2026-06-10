@@ -1,7 +1,5 @@
-#
 # Maintainer: Diego Ernani (CapivaraVai) <dernani@gmail.com>
-#
-#
+
 pkgname=arch-update-vai-bin
 pkgver=0.7.1
 pkgrel=1
@@ -21,26 +19,26 @@ optdepends=(
   'python-pip: checar pacotes pip'
 )
 
-source=("arch-update-vai-bin::git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
+source=("${pkgname}::git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/arch-update-vai-bin"
+  cd "$srcdir/${pkgname}"
   echo "0.7.1.r$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd "$srcdir/arch-update-vai-bin"
+  cd "$srcdir/${pkgname}"
 
   # binário
   install -Dm755 update-vai.sh "$pkgdir/usr/bin/arch-update-vai"
 
   # licença
-  [[ -f LICENSE ]] && install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # docs
-  [[ -f README.md ]] && install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  [[ -f CHANGELOG.md ]] && install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 
   # desktop entry
   install -Dm644 packaging/update-vai.desktop \
