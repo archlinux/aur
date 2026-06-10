@@ -1,4 +1,5 @@
 [motrix-next]
-source = "git"
-git = "https://github.com/AnInsomniacy/motrix-next.git"
+source = "github"
+github = "AnInsomniacy/motrix-next"
+use_latest_release = true
 prefix = "v"
