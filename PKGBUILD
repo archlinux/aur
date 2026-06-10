@@ -26,12 +26,12 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/arch-update-script-vai"
+  cd "$srcdir/${pkgname}"
 
   # programa
   install -Dm755 update-vai.sh "$pkgdir/usr/bin/update-vai"
 
-  # docs/licença (se existirem)
+  # docs/licença
   [[ -f README.md ]] && install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   [[ -f CHANGELOG.md ]] && install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
   [[ -f LICENSE ]] && install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -44,7 +44,7 @@ package() {
   install -Dm644 packaging/update-vai.1 \
     "$pkgdir/usr/share/man/man1/update-vai.1"
 
-  # systemd user units (opcionais)
+  # systemd user units
   install -Dm644 packaging/update-vai.service \
     "$pkgdir/usr/lib/systemd/user/update-vai.service"
   install -Dm644 packaging/update-vai.timer \
@@ -56,3 +56,4 @@ package() {
   install -Dm644 packaging/update-vai.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/update-vai.svg"
 }
+
