@@ -2,8 +2,8 @@
 pkgname=podman-desktop-git
 _pkgname='Podman Desktop'
 _flatpakname="io.podman_desktop.${_pkgname// /}"
-pkgver=r1.08307d1
-_electronversion=41
+pkgver=r10517.1c9ae4a
+_electronversion=42
 _nodeversion=24
 pkgrel=1
 pkgdesc="A graphical tool for developing on containers and Kubernetes.(Use system-wide electron)"
@@ -27,6 +27,7 @@ makedepends=(
     'curl'
     'pnpm'
     'jq'
+    'node-gyp'
 )
 optdepends=(
     "crc: crc plugin"
@@ -41,11 +42,16 @@ options=(
     '!strip'
     '!emptydirs'
 )
-source=("${pkgname%-git}.sh")
-sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+source=(
+    "${pkgname%-git}.git::git+${_ghurl}"
+    "${pkgname%-git}.sh"
+)
+sha256sums=('SKIP'
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
+    git fetch --tags
     git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
@@ -56,44 +62,42 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname%-git}.git/package.json" | tr -d '^')
-    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
-    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
+        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
+    [[ -z "${_elec_ver}" ]] && return 1
+    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
-    cd "${srcdir}"
-    git clone \
-        --depth 1 \
-        "${_ghurl}" \
-        "${pkgname%-git}.git"
     cd "${srcdir}/${pkgname%-git}.git"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _get_electron_version
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo 'link-workspace-packages=true'
-        echo 'fetch-retry-maxtimeout=10000'
-        echo "cache-dir="${srcdir}"/.pnpm_cache"
-        echo "store-dir="${srcdir}"/.pnpm_store"
-        echo "shamefully-hoist=true"
-        echo "virtual-store-dir-max-length=80"
-    } >> .npmrc
-    if [[ "$(curl -s cip.cc)" == *"中国"* ]]; then
-        {
-        echo 'registry=https://registry.npmmirror.com'
-        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
-        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
-        } >> .npmrc
-    fi
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+	HOME="${srcdir}/.electron-gyp"
+	{
+		export PNPM_LINK_WORKSPACE_PACKAGES=true
+		export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+		export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+		export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+		export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+		export PNPM_SHAMEFULLY_HOIST=true
+		export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+		export PNPM_NODE_LINKER=hoisted
+		export PNPM_NETWORK_CONCURRENCY=32
+	}
+	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+		{
+			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+			export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+			export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+		}
+	fi
     _ensure_local_nvm
     find packages -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/" {} +
     sed -i -e "
@@ -104,6 +108,7 @@ prepare() {
     sed -i "s/${_flatpakname}/${pkgname%-git}/" .flatpak-appdata.xml
     sed -i "s/\'flatpak\', \'tar.gz\'/\'dir\'/" .electron-builder.config.cjs
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
+    NODE_ENV=development    pnpm add -D -w node-addon-api
     NODE_ENV=development    pnpm install --no-lockfile
 }
 build() {
@@ -124,14 +129,8 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	find "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-git}" {} +
-    if find "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-git}"
-            fi
-        done
-    fi
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -exec dirname {} + | head -n 1)
+    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/.flatpak.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/buildResources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/buildResources/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
