@@ -3,7 +3,7 @@
 _pkgname=dusklight
 pkgname=${_pkgname}-git
 pkgver=1.3.1.r76.g7c5ed6a
-pkgrel=2
+pkgrel=3
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
@@ -45,7 +45,6 @@ build() {
     -DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
     -DCMAKE_C_FLAGS="${CFLAGS} -flto=thin -DNDEBUG" \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} -flto=thin -DNDEBUG" \
-    -DENABLE_ASAN=ON \
     -DDUSK_ENABLE_UPDATE_CHECKER=OFF \
     -DDUSK_PACKAGE_INSTALL=ON
   cmake --build build
