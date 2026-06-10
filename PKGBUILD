@@ -32,7 +32,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}/build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/usr \
         ..
   make
 }
