@@ -20,15 +20,14 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-_pkgsrc="${_pkgname}-${pkgver}"
 source_aarch64=(
-  "${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz"
+  "${_pkgname}_${pkgver}_Linux_arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz"
 )
 source_i686=(
-  "${_pkgsrc}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386.tar.gz"
+  "${_pkgname}_${pkgver}_Linux_i386.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386.tar.gz"
 )
 source_x86_64=(
-  "${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz"
+  "${_pkgname}_${pkgver}_Linux_x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz"
 )
 sha256sums_aarch64=('4dc735016e1910ca9269cbfe3d77f5699e39068f4a9555dce0bd753a48fd45ab')
 sha256sums_i686=('bfa1e674c6680b5921fc7935b439413c79e012870edc65028dd99f580a326882')
@@ -48,9 +47,9 @@ build() {
 
 package() {
   cd "${srcdir}"
-  install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -vDm644 "README.md"   -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -vDm644 "LICENSE"     -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
   cd "completions"
   install -vDm644 "${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
