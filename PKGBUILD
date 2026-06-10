@@ -4,7 +4,7 @@
 # Contributor: Chris Morgan <me@chrismorgan.info>
 
 pkgname=prince-bin
-pkgver=16.1
+pkgver=16.2
 pkgrel=1
 pkgdesc="Convert HTML documents to PDF with CSS"
 arch=(x86_64 aarch64)
@@ -19,8 +19,8 @@ source=('prince.sh')
 source_x86_64=("https://www.princexml.com/download/${pkgname%-bin}-$pkgver-linux-generic-x86_64.tar.gz")
 source_aarch64=("https://www.princexml.com/download/${pkgname%-bin}-$pkgver-linux-generic-aarch64.tar.gz")
 sha256sums=('a02a6159dd0ae8b2a2440c21ed370fd5057148cc6633214f8bc48228d23138fb')
-sha256sums_x86_64=('4accb66b7da93e7e43154054017e9ddeb8480f820aa9bb7d6ada95455cbd4404')
-sha256sums_aarch64=('39698c9ed345c245b0b846590ac1fdc965107cd837da5a1d5144ef91020b29d6')
+sha256sums_x86_64=('131eece0b07ee832adef8291c6056156b3d04bfebc11ca40274948f8e40a8bbc')
+sha256sums_aarch64=('4ea3d160724456d8174ec219bef1d1604ad351ed6229867bf1459e2cdbfab258')
 
 prepare() {
     cd "${pkgname%-bin}-$pkgver-linux-generic-$CARCH"
