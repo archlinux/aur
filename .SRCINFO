@@ -1,7 +1,7 @@
 pkgbase = zl-splitter
 	pkgdesc = Sidechain and oversample capable splitter plugin by ZL Audio
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://zl-audio.github.io/plugins/zlsplitter/
 	arch = x86_64
 	groups = zl-audio
@@ -9,18 +9,28 @@ pkgbase = zl-splitter
 	license = AGPL-3.0
 	makedepends = git
 	makedepends = cmake
-	depends = alsa-lib
-	depends = libx11
-	depends = libxinerama
-	depends = libxext
+	makedepends = kfr
+	makedepends = at-spi2-core
+	makedepends = cairo
+	makedepends = gtk3
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
+	makedepends = harfbuzz
+	makedepends = pango
+	makedepends = libsoup3
+	depends = expat
 	depends = freetype2
 	depends = fontconfig
-	depends = webkit2gtk
-	depends = glu
+	depends = nlopt
+	depends = highway
+	depends = zlib
+	depends = bzip2
+	depends = libpng
+	depends = brotli
 	source = git+https://github.com/ZL-Audio/ZLSplitter#tag=0.3.0
-	source = git+https://github.com/ZL-Audio/JUCE#tag=682426c
+	source = git+https://github.com/ZL-Audio/JUCE#tag=542dcc3
 	sha256sums = 04031f27982ab58b341a5beb496b52a4f905cb9cf8349904af18192256a795a9
-	sha256sums = 945b8ce25a0c515d3f143156a9b40e76af4ab092627b94547369fb813ba03558
+	sha256sums = 9fd8b671b3f0d2001f9acc1a9c13b3e0d778c76ab884ee2c69f122ec68729659
 
 pkgname = zl-splitter-vst3
 	pkgdesc = Sidechain and oversample capable splitter plugin by ZL Audio (VST3 version)
@@ -35,13 +45,15 @@ pkgname = zl-splitter-lv2
 	groups = lv2-plugins
 
 pkgname = zl-splitter
-	depends = alsa-lib
-	depends = libx11
-	depends = libxinerama
-	depends = libxext
+	pkgdesc = Sidechain and oversample capable splitter plugin by ZL Audio (metapackage that requires all plugin formats)
+	depends = expat
 	depends = freetype2
 	depends = fontconfig
-	depends = webkit2gtk
-	depends = glu
+	depends = nlopt
+	depends = highway
+	depends = zlib
+	depends = bzip2
+	depends = libpng
+	depends = brotli
 	depends = zl-splitter-vst3
 	depends = zl-splitter-lv2
