@@ -1,5 +1,6 @@
-# Maintainer: britors <rodrigo@w3ti.com.br>
-pkgname=draco-bin
+# Maintainer: Rodrigo Brito <rodrigo@w3ti.com.br>
+pkgbase=draco
+#pkgname=draco-bin
 pkgver=11.1.2
 pkgrel=1
 pkgdesc="Multi-database desktop client — explorer, query editor, table creator/editor, ERD, and more"

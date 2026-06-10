@@ -1,4 +1,4 @@
-pkgbase = draco-bin
+pkgbase = draco
 	pkgdesc = Multi-database desktop client — explorer, query editor, table creator/editor, ERD, and more
 	pkgver = 11.1.2
 	pkgrel = 1
