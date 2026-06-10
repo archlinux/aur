@@ -1,9 +1,9 @@
 # Maintainer: flossbud <flossbud27@gmail.com>
 pkgname=ttmt-beta
 epoch=1
-_upstream=0.7.0-alpha.2
-pkgver=0.7.0alpha.2
-pkgrel=2
+_upstream=0.7.0-alpha.3
+pkgver=0.7.0alpha.3
+pkgrel=1
 pkgdesc="ToonTown MultiTool BETA, pre-release smoke-test channel. Expect bugs. For stable use, install toontown-multitool instead."
 arch=('any')
 url="https://github.com/flossbud/ToonTown-MultiTool"
