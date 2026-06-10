@@ -36,7 +36,7 @@ if [[ "$LATEST_VERSION" == "$CURRENT_VERSION" ]]; then
 fi
 
 # Find the .deb asset and its SHA256 digest from the API
-ASSET_NAME="goose_${LATEST_VERSION}_amd64.deb"
+ASSET_NAME="goose_${LATEST_VERSION}_amd64-vulkan.deb"
 echo -e "${GREEN}Looking for asset: ${YELLOW}${ASSET_NAME}${NC}"
 
 # Extract the digest for the specific .deb file
