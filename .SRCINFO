@@ -1,0 +1,15 @@
+pkgbase = dsk-ditto
+	pkgdesc = Ultra fast and easy duplicate file finder. Awesome TUI/GUI to manage results.
+	pkgver = 0.5.5
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/jdefrancesco/dskDitto
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	provides = dskDitto
+	source = dsk-ditto-0.5.5.tgz::https://github.com/jdefrancesco/dskDitto/archive/refs/tags/v0.5.5.tar.gz
+	sha256sums = 0fbd700fc96647e44a1ca01ad5b31bab8e656d964fe9ee04e87914caceb5919b
+
+pkgname = dsk-ditto

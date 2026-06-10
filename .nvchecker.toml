@@ -1,0 +1,5 @@
+[dsk-ditto]
+source = "github"
+github = "jdefrancesco/dskDitto"
+use_latest_release = true
+prefix = "v"
