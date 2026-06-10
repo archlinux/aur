@@ -15,7 +15,7 @@ source=(
 )
 
 sha256sums=('f46d1d30e5cee605b9fc221d64520a6e2a3259ebfdbef2b973848376bf6af6e0'
-            '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
+            '7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3')
 
 options=('!debug')
 
