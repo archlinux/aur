@@ -23,7 +23,7 @@ optdepends=(
 )
 
 pkgver() {
-    cd "$srcdir/${pkgname}"
+    cd "$srcdir/arch-update-vai"
     git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
@@ -31,8 +31,8 @@ source=("${pkgname}::git+https://codeberg.org/CapivaraVai/${pkgname}.git")
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/${pkgname}"
-
+  #cd "$srcdir/${pkgname}"
+  cd "$srcdir/arch-update-vai"
   # programa
   install -Dm755 update-vai.sh "$pkgdir/usr/bin/update-vai"
 
