@@ -11,37 +11,31 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-git nm-cloud-setup-git)
-pkgver=1.45.4.r32631.gaa84b5f935
+_pppver=2.4.9
+pkgver=1.57.4dev+r13+g87a7700460
 pkgrel=1
 pkgdesc="Network Management daemon and user application"
-arch=(i686 x86_64)
-url=http://www.gnome.org/projects/$_gitname
-license=(GPL2 LGPL2.1)
+arch=(x86_64)
+url=https://networkmanager.dev/
+license=(GPL-2.0-or-later LGPL-2.1-or-later)
 checkdepends=(libx11 python-dbus)
-makedepends=(dnsmasq mobile-broadband-provider-info  meson ninja intltool dhclient openresolv iptables gobject-introspection gtk-doc ppp modemmanager
-              iproute2 nss polkit wpa_supplicant libsoup systemd libgudev audit
-             libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
-             glib2-docs)
+makedepends=(dnsmasq mobile-broadband-provider-info meson ninja intltool dhclient openresolv iptables gobject-introspection gtk-doc ppp modemmanager
+              iproute2 nss polkit wpa_supplicant systemd libgudev audit curl
+             libnewt libndp libteam vala perl-yaml python-gobject git jansson bluez-libs
+             glib2-docs nftables pacrunner glib2-devel)
 source=(git+https://github.com/$_gitname/$_gitname
     NetworkManager.conf
     20-connectivity.conf)
 sha256sums=('SKIP'
             '794915f947bb2eeb46301acff82a350aa691c187d4c43f07a13d971298b64928'
-            '477d609aefd991c48aca93dc7ea5a77ebebf46e0481184530cceda4c0d8d72c6')
+            '983b35fc1846785932135c4fcda467a5d790b86bc50599ebafa8fe064ba53489')
 sha512sums=('SKIP'
             '60f3cd070ec52c8937ee2701a8397766da0a9318d98d89c2a287e6f50ca3a3c7ea07a7debe26f5ad637bb4f24391d4107669d7581d934cbc3e4a09d7d775d4af'
-            'da52ba9603c279c1c865cc3bf63606e1daeeb2a22c68e4b0077e15c312e251b494c4f0c94bcb27c9f6923f8b69cd7ab9062d9b7ce499222d3d2240864ed9345f')
+            '54c55789cb1e4a52ee7dbdcf75b3a8a4712624a4db249014b64c07c090fbdfd2b907ecd8357d8e1ca9dd72f4a366009213c6102ba68e6f7a3503caced15a638d')
 
 pkgver() {
-    cd NetworkManager/
-    local ver=$({ echo 'changequote([,])dnl';
-     sed -rn 's/^m4_(define.*nm_.*_version.*)/\1dnl/p' configure.ac;
-      echo 'nm_major_version.nm_minor_version.nm_micro_version';
-                echo 'define(AC_INIT,$2)dnl'
-                grep '^AC_INIT(.*)' configure.ac; } | m4)
-  local rev=$(git rev-list --count HEAD)
-  local git=$(git rev-parse --short HEAD)
-  echo "$ver.r$rev.g$git"
+  cd NetworkManager/
+  git describe --tags | sed 's/-dev/dev/;s/-rc/rc/;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 build() {
@@ -53,7 +47,6 @@ build() {
         -D docs=true \
         -D introspection=true \
         -D ld_gc=true \
-        -D modify_system=true \
         -D polkit=true \
         -D teamdctl=true \
         -D wifi=true \
@@ -69,12 +62,14 @@ build() {
         -D dnsmasq=/usr/bin/dnsmasq \
         -D hostname_persist=default \
         -D iptables=/usr/bin/iptables \
+        -D ip6tables=/usr/bin/ip6tables \
         -D kernel_firmware_dir=/usr/lib/firmware \
         -D modem_manager=true \
         -D pppd_plugin_dir=/usr/lib/pppd/$_pppver \
         -D pppd=/usr/bin/pppd \
         -D resolvconf=/usr/bin/resolvconf \
         -D session_tracking=systemd \
+        -D session_tracking_consolekit=false \
         -D suspend_resume=systemd \
         -D system_ca_path=/etc/ssl/certs \
         -D systemd_journal=true \
@@ -82,9 +77,16 @@ build() {
         -D udev_dir=/usr/lib/udev \
         -D iwd=true \
         -D selinux=false \
-        -D qt=false
+        -D qt=false \
+        -D nbft=false \
+        -D clat=false \
+        -D ifcfg_rh=false \
+        -D ifupdown=false \
+        -D netconfig=no \
+        -D vapi=true
       )
       arch-meson NetworkManager build "${meson_args[@]}"
+      meson compile -C build
 }
 
 #check() {
@@ -102,18 +104,16 @@ _pick() {
 }
 
 package_networkmanager-git() {
-   depends=(iproute2 mobile-broadband-provider-info polkit wpa_supplicant libsoup openresolv libnewt libndp libteam curl bluez-libs libpsl audit libnm-git)
+   depends=(iproute2 mobile-broadband-provider-info polkit wpa_supplicant openresolv libnewt libndp libteam curl bluez-libs libpsl audit libnm-git jansson readline libmm-glib)
     optdepends=(
     'dnsmasq: connection sharing'
     'dhcpcd: alternative DHCP client'
     'bluez: Bluetooth support'
-    'openresolv: resolvconf support'
     'ppp: dialup connection support'
     'dhclient: External DHCP client'
     'modemmanager: cellular network support'
     'firewalld: firewall support'
     'iwd: wpa_supplicant alternative'
-    'polkit: let non-root users control networking'
     'nftables: connection sharing'
     'pacrunner: PAC proxy support'
 )
@@ -141,7 +141,7 @@ package_networkmanager-git() {
   _pick cloud "$pkgdir"/usr/lib/**/*nm-cloud-setup*
   _pick cloud "$pkgdir"/usr/share/man/**/nm-cloud-setup*
 
-  # Not actually packaged (https://bugs.archlinux.org/task/69138)
+  # OVS service override not packaged (https://bugs.archlinux.org/task/69138)
   _pick ovs "$pkgdir"/usr/lib/systemd/system/NetworkManager.service.d/NetworkManager-ovs.conf
 
   # Restore empty dir
@@ -150,11 +150,12 @@ package_networkmanager-git() {
 
 }
 
-  package_libnm-git() {
+package_libnm-git() {
   pkgdesc="NetworkManager client library"
   provides=(libnm)
   conflicts=(libnm)
-  depends=(glib2 nss libutil-linux systemd-libs)
+  depends=(glib2 nss util-linux-libs systemd-libs)
+  cd "$srcdir"
   mv libnm/* "$pkgdir"
 }
 
@@ -163,6 +164,7 @@ package_nm-cloud-setup-git() {
   depends=(networkmanager-git)
   conflicts=(nm-cloud-setup)
 
+  cd "$srcdir"
   mv cloud/* "$pkgdir"
 }
 
