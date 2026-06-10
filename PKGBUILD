@@ -1,13 +1,13 @@
 pkgname=lug-wine-tkg-staging-experimental-git
 pkgver=11.10
-pkgrel=7
+pkgrel=8
 pkgdesc="Wine runner based on TKG builds + staging + experimental patches for Star Citizen"
 arch=('x86_64')
 url="https://github.com/starcitizen-lug/lug-wine-experimental"
 license=('LGPL')
 options=('!strip')
-provides=("wine=${pkgver}" "wine-staging=${pkgver}" 'lug-wine-tkg-staging-experimental')
-conflicts=('wine' 'wine-staging' 'wine-cachyos' 'lug-wine-tkg-staging-experimental' 'lug-wine-tkg-experimental-git' 'lug-wine-tkg-staging-experimental-wayland-git')
+provides=('lug-wine-tkg-staging-experimental')
+conflicts=('lug-wine-tkg-staging-experimental' 'lug-wine-tkg-experimental-git' 'lug-wine-tkg-staging-experimental-wayland-git')
 
 depends=(
   attr             lib32-attr
@@ -26,9 +26,6 @@ source=("${pkgname}-${pkgver}-1.tar.gz::https://github.com/starcitizen-lug/lug-w
 sha256sums=('349c72417a1383a5cc887770e2b11f30133e40c47ae7a13fa34eb40ff7399713')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}-1"
-
-  # Install to /usr
-  install -d "${pkgdir}/usr"
-  cp -dr bin include lib share "${pkgdir}/usr/"
+  mkdir -p "${pkgdir}/opt/${pkgname}"
+  cp -r "${srcdir}/${pkgname}-${pkgver}-1"/* "${pkgdir}/opt/${pkgname}/"
 }
