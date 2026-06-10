@@ -1,6 +1,6 @@
 pkgbase = stably-orca-bin
 	pkgdesc = Stably AI Orca - Electron-based agentic coding IDE (prebuilt AppImage)
-	pkgver = 1.4.55
+	pkgver = 1.4.56
 	pkgrel = 1
 	url = https://github.com/stablyai/orca
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = stably-orca-bin
 	provides = stably-orca
 	conflicts = stably-orca
 	conflicts = stably-orca-git
-	noextract = stably-orca-bin-1.4.55.AppImage
+	noextract = stably-orca-bin-1.4.56.AppImage
 	options = !strip
 	options = !debug
-	source = stably-orca-bin-1.4.55.AppImage::https://github.com/stablyai/orca/releases/download/v1.4.55/orca-linux.AppImage
+	source = stably-orca-bin-1.4.56.AppImage::https://github.com/stablyai/orca/releases/download/v1.4.56/orca-linux.AppImage
 	source = stably-orca.sh
 	source = stably-orca.desktop
-	sha256sums = 676d1d16cb84293245e60eacdd34df4c93c955dd197eea273285b13796dcee2e
+	sha256sums = 6645440aea01ca850a0456308f55f5752b72526f2d569910fcde062b80244245
 	sha256sums = 99a4d39e313a217f68cae6eb5e5437f2522da037b99de989291e34524484795c
 	sha256sums = 6e05296c09a37e0c28b9a2886b804d167a0c025ef1e72f955e9ba744be2f1dcd
 
