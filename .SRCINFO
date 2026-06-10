@@ -1,6 +1,6 @@
 pkgbase = teleport-client-17
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure - Client-only 17.X branch (tsh, tctl)
-	pkgver = 17.7.24
+	pkgver = 17.7.25
 	pkgrel = 1
 	url = https://github.com/gravitational/teleport
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = teleport-client-17
 	provides = teleport-client-17
 	provides = tctl-17
 	provides = tsh-17
-	source = teleport-client-17.7.24.tar.gz::https://github.com/gravitational/teleport/archive/v17.7.24.tar.gz
-	sha256sums = 1345fe682a713d95df65bc8519c7b25b146503d3245f4614ff28e0107c11c182
+	source = teleport-client-17.7.25.tar.gz::https://github.com/gravitational/teleport/archive/v17.7.25.tar.gz
+	sha256sums = 0f9a9ded4442fd9347fe4bb45dd7c9b46d35d91606dd6412c37056cb918b7159
 
 pkgname = teleport-client-17

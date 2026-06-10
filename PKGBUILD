@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=teleport-client-17
-pkgver=17.7.24
+pkgver=17.7.25
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure - Client-only 17.X branch (tsh, tctl)"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc' 'libfido2')
 makedepends=('go>=1.16.0', 'git')
 provides=('teleport-client-17' 'tctl-17' 'tsh-17')
 source=("${pkgname%-*}-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1345fe682a713d95df65bc8519c7b25b146503d3245f4614ff28e0107c11c182')
+sha256sums=('0f9a9ded4442fd9347fe4bb45dd7c9b46d35d91606dd6412c37056cb918b7159')
 
 prepare() {
   cd "${pkgname%%-*}-${pkgver}"
