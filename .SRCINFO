@@ -1,0 +1,18 @@
+pkgbase = sing-box-windows-bin
+	pkgdesc = GUI for SingBox
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/xinggaoya/sing-box-windows
+	arch = x86_64
+	license = MIT
+	depends = jq
+	depends = curl
+	depends = libappindicator-gtk3
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	options = !strip
+	options = !debug
+	source = https://github.com/xinggaoya/sing-box-windows/releases/download/v2.3.0/sing-box-windows_2.3.0_amd64.deb
+	sha256sums = d9cb79e1cc3ee48bfc122fd53601ba5b87c1d3c5778c910f151cc380d422c711
+
+pkgname = sing-box-windows-bin
