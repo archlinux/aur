@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=divicards-bin
 _pkgname=Divicards
-pkgver=0.7.10
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Desktop application for Path of Exile divination cards.(Prebuilt version)"
 arch=('x86_64')
@@ -16,23 +16,25 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('0c7a2adbd0d9c56a600c7400f7fa871b3d04a6ec7d1e0e4f62feb9f5c6862857')
+sha256sums=('873dc9e851c4aad0db2ad05b6b2182620f24c1ef4af7ef0f8a50e3baa67f2723')
 prepare() {
-    bsdtar -xf "${srcdir}/data."*
     sed -i -e "
-        4i\Comment=${pkgdesc}/g
+        s/Categories=/Categories=Utility;/g
         s/Exec=app/Exec=${pkgname%-bin}/g
         s/Icon=app/Icon=${pkgname%-bin}/g
-    " "${srcdir}/usr/share/applications/app.desktop"
+        s/Comment=A Tauri App/Comment=${pkgdesc}/g
+        s/Name=${pkgname%-bin}/Name=${_pkgname}/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/app" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    _icon_sizes=(32x32 128x128 256x256@2)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/app.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-bin}.png"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
-    install -Dm644 "${srcdir}/usr/share/applications/app.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
