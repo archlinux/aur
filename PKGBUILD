@@ -3,7 +3,7 @@
 pkgname=noctalia-greeter-git
 _pkgname=noctalia-greeter
 pkgver=1.0.0.r32.g34599488c
-pkgrel=2
+pkgrel=3
 pkgdesc="Greetd greeter for Noctalia"
 arch=('x86_64')
 url="https://github.com/noctalia-dev/noctalia-greeter"
@@ -11,12 +11,10 @@ license=('MIT')
 options=('!debug')
 install=noctalia-greeter-git.install
 depends=(
-  'cage'
   'cairo'
   'dbus'
   'fontconfig'
   'freetype2'
-  'gcc-libs'
   'glib2'
   'glibc'
   'greetd'
@@ -26,7 +24,7 @@ depends=(
   'libxkbcommon'
   'pango'
   'wayland'
-  'wlr-randr'
+  'wlroots0.20'
 )
 makedepends=(
   'git'
