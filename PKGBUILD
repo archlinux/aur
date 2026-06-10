@@ -1,7 +1,7 @@
 # Maintainer: somnus0917 <somnus0917@users.noreply.github.com>
 pkgname=superlabel-bin
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="Lightweight desktop annotation tool for object detection datasets"
 arch=('x86_64')
 url="https://github.com/somnus0917/superlabel"
@@ -16,12 +16,10 @@ source=(
   "superlabel.desktop"
   "superlabel.png::https://github.com/somnus0917/superlabel/raw/v${pkgver}/src-tauri/icons/icon.png"
 )
-sha256sums=(
-  '846fd8b0209f208afb46d2dbc0a95424ede66f3f2201cff48f510dec1763c68b'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('d456e6408821f9be76e6cecd58a5b8a1da0803c9db0ddb1ef1613b3d7c77876b'
+            'cfab409231dbb9773fd2062085a3e2a807ddf4ec7c1352d41eb4a5737d2fc387'
+            '664056d4e98993590cd4e210e6b65a95e2e6ebe94d37fe8a27d0e6e65941f216'
+            '3bf049a9b66d1a355338d46940fe502b9206ff02a4fa89d5034991b8259104b4')
 
 package() {
   install -Dm755 "superlabel-${pkgver}.AppImage" "${pkgdir}/opt/superlabel/superlabel.AppImage"
