@@ -17,7 +17,7 @@
 pkgname=zennotes-bin
 _appname=ZenNotes
 pkgver=2.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Keyboard-first, local-first Markdown notes with vim motions and live preview"
 arch=('x86_64')
 url="https://github.com/ZenNotes/zennotes"
@@ -42,7 +42,28 @@ package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
   cp -a squashfs-root/. "${pkgdir}/opt/${pkgname}/"
 
-  # The Chromium sandbox helper must be setuid-root to work without --no-sandbox.
+  # `cp -a` re-applies the extracted squashfs root's mode (often 0700) onto
+  # /opt/zennotes-bin, leaving the tree untraversable for non-root users — so
+  # launching the desktop entry or `zennotes` fails with "command not found"
+  # or "not executable" (issues #70, #74). Force every directory and
+  # already-executable file world-traversable and everything world-readable.
+  # (chmod -R skips symlinks during recursion, so AppRun's real target is
+  # fixed via the regular file it points to.)
+  chmod -R a+rX "${pkgdir}/opt/${pkgname}"
+
+  # `a+rX` only PRESERVES an existing execute bit — it won't restore one the
+  # source mode dropped during extraction/cp, so on some build hosts the
+  # Electron launcher lands non-executable and `/usr/bin/zennotes` reports
+  # "exists but is not an executable file" (#92). Force it on the launcher
+  # entry points; chmod follows the AppRun symlink to its real target.
+  for _exe in "${_appname}" AppRun chrome_crashpad_handler; do
+    if [ -e "${pkgdir}/opt/${pkgname}/${_exe}" ]; then
+      chmod a+x "${pkgdir}/opt/${pkgname}/${_exe}"
+    fi
+  done
+
+  # The Chromium sandbox helper must be setuid-root to work without
+  # --no-sandbox. Keep this AFTER the chmod -R above so the setuid bit stands.
   if [ -f "${pkgdir}/opt/${pkgname}/chrome-sandbox" ]; then
     chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
   fi
