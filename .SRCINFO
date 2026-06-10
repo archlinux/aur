@@ -13,8 +13,8 @@ pkgbase = anitui-bin
 	optdepends = haruna: media player for streaming
 	source_x86_64 = anitui-bin-0.2.2-linux-amd64.tar.gz::https://github.com/typechecks/anitui/releases/download/v0.2.2/anitui_linux_amd64.tar.gz
 	source_aarch64 = anitui-bin-0.2.2-linux-arm64.tar.gz::https://github.com/typechecks/anitui/releases/download/v0.2.2/anitui_linux_arm64.tar.gz
-	sha256sums_x86_64 = acf78c1936b7e5413e1adfcb71ab28b93174bf73169dd84178ea7b9a7cd773d9
-	sha256sums_aarch64 = 80b6f286495fff6063e80bf3cbc48b7fb5a07ba8ea0416538d0cfeec138537df
+	sha256sums_x86_64 = 6f395eac98300c91b3646c7b651d6d7654e7f2e79f3d1183fa84b8c0f533979e
+	sha256sums_aarch64 = 5035cf52d198c6063ae888cfd55845ce95ca873994b8c2c6dd2cf8f26d0c9eb2
 
 pkgname = anitui-bin
 	pkgdesc = a tui for browsing and streaming anime (prebuilt binary)
