@@ -1,0 +1,5 @@
+[bttf-bin]
+source = "github"
+github = "BurntSushi/bttf"
+use_latest_release = true
+prefix = ""
