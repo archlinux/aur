@@ -1,6 +1,6 @@
 pkgbase = blackbox-terminal
-	pkgdesc = A beautiful GTK 4 terminal
-	pkgver = 0.15.1
+	pkgdesc = A beautiful terminal for GNOME
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/raggesilver/blackbox
 	arch = x86_64
@@ -15,7 +15,8 @@ pkgbase = blackbox-terminal
 	depends = libxml2
 	depends = pcre2
 	depends = vte4
-	source = blackbox-terminal-0.15.1.tar.gz::https://gitlab.gnome.org/raggesilver/blackbox/-/archive/v0.15.1/blackbox-v0.15.1.tar.gz
-	sha256sums = 14346fced7fef73239c53d4fbe02e8bfcd685370708bad69960f994f438b252e
+	optdepends = nautilus-python: Nautilus extension
+	source = blackbox-terminal-0.15.2.tar.gz::https://gitlab.gnome.org/raggesilver/blackbox/-/archive/v0.15.2/blackbox-v0.15.2.tar.gz
+	sha256sums = 219f77be88859fb069d667e5bd4a664d1c0ee3ddd68f94872f2c9d28fc521183
 
 pkgname = blackbox-terminal
