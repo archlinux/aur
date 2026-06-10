@@ -1,7 +1,7 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep
 pkgver=2.6.4
-pkgrel=1.314
+pkgrel=2.314
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
@@ -24,7 +24,9 @@ _fullsrcdir() {
 
 prepare() {
     cd "$(_fullsrcdir)"
-    sed --in-place 's/uv run //g' Makefile
+    sed --in-place Makefile \
+        --expression 's/uv run //g' \
+        --expression 's/uv version --short/grep --only-matching --perl-regexp "(?<=version\\s=\\s\\").*(?=\\")" pyproject.toml/g'
 }
 
 check() {
