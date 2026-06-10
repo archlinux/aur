@@ -3,7 +3,7 @@
 
 pkgname=goose-desktop-bin
 pkgver=1.37.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Goose Desktop (prebuilt .deb repack) — an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64')
 url="https://github.com/aaif-goose/goose"
