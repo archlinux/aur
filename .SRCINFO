@@ -1,6 +1,6 @@
 pkgbase = kosmos-bin
 	pkgdesc = A modern code editor.
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://github.com/etchebarne/kosmos
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = kosmos-bin
 	depends = wayland
 	provides = kosmos
 	conflicts = kosmos
-	source = kosmos-linux-x86_64-0.4.8.tar.gz::https://github.com/etchebarne/kosmos/releases/download/v0.4.8/kosmos-linux-x86_64.tar.gz
-	sha256sums = f85bb4ce393bd6b760f87ad30ab7e71520cb04ede9d85122026ddf52fc9c7457
+	source = kosmos-linux-x86_64-0.4.9.tar.gz::https://github.com/etchebarne/kosmos/releases/download/v0.4.9/kosmos-linux-x86_64.tar.gz
+	sha256sums = b5def23889df43b158cf114760e1acb4852a1d8698673a4a28e8121876aca175
 
 pkgname = kosmos-bin
