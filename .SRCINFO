@@ -1,15 +1,15 @@
 pkgbase = zejtron-bin
-	pkgdesc = Unified Linux introspection toolkit for paths, ports, processes, files, services, and diagnostics
-	pkgver = 3.0.0
-	pkgrel = 1
-	url = https://github.com/oxyzenQ/zejtron
-	arch = x86_64
-	arch = aarch64
-	license = MIT
-	depends = glibc
-	depends = gcc-libs
-	provides = zejtron
-	conflicts = zejtron
-	options = !strip
+        pkgdesc = Unified Linux introspection toolkit for paths, ports, processes, files, services, and diagnostics
+        pkgver = 5.0.0
+        pkgrel = 1
+        url = https://github.com/oxyzenQ/zejtron
+        arch = x86_64
+        arch = aarch64
+        license = MIT
+        depends = glibc
+        depends = gcc-libs
+        provides = zejtron
+        conflicts = zejtron
+        options = !strip
 
 pkgname = zejtron-bin
