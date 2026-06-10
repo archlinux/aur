@@ -3,7 +3,7 @@
 
 pkgname=deepseek-tui-git
 _pkgname=deepseek-tui
-pkgver=0.8.53.r0.g8dff2f75
+pkgver=0.8.57.r0.gb23067ba
 pkgrel=1
 pkgdesc="Terminal coding agent for DeepSeek models - git version"
 arch=('x86_64' 'aarch64')
