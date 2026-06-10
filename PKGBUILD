@@ -4,9 +4,9 @@
 
 pkgname=(cuda-pascal cuda-pascal-tools)
 pkgbase=cuda-pascal
-pkgver=12.9.1
+pkgver=12.9.2
 _driverver=575.57.08
-pkgrel=4
+pkgrel=1
 # Pascal boundary: CUDA 13.0 removed Maxwell/Pascal/Volta support; the 12.x
 # series is the final Pascal-capable line and remains supported for these GPUs
 # (CUDA 13.0 release notes). On pkgver bump, sync _driverver with the bundled
@@ -54,7 +54,7 @@ source=(https://developer.download.nvidia.com/compute/cuda/${pkgver}/local_insta
         nvjpeg.pc
         nvrtc.pc
         nvToolsExt.pc)
-sha512sums=('fc29c5fc1121fb6634f1fe396abe7f34d351686454516269e9143e678ea178f906a35b916b8bb2d96ecfcfc705dda7d0f4547f7e7f00d36e392d981a766b6a56'
+sha512sums=('89166ab4aa84e9575deed7ebbddc822e8fdac99e5977ac5e05ec70b1cb06b92275a63f825cbf26a8518b641e3b17ef5a8425a0b6972f5b142260a31ce9487fb9'
             '35f1f56411eecb2d978553f5606a0d6e70ad363cfaa9f37b9e6f12a799b041caa4aeca183341055d4789425dc4d62bee0aac68cc9d864155084b1ea571ee998f'
             '714d973bc79446f73bebe85306b3566fe25b554bcbcba2fcbe76709a3eca71fb5d183ab4da2d3b5e9326cb9cd8d13a93f6d4a005ea5a41f7ef8e6c6e81e06b5e'
             'a4b3b03682801a98a1d8c1d14c084fd35efd384d92d497e230e3a28e0bd97b1fa48a93ccb2150f892f0b4154ca4ea2d66f5484a6a59b5c9b49963de42ecf1736'
