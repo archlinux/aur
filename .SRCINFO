@@ -16,7 +16,5 @@ pkgbase = arch-update-vai
 	optdepends = python: checar pacotes pip
 	optdepends = python-pip: checar pacotes pip
 	optdepends = konsole: abrir pelo atalho KDE
-	source = git+https://codeberg.org/CapivaraVai/arch-update-vai.git
-	sha256sums = SKIP
 
 pkgname = arch-update-vai

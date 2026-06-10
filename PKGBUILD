@@ -20,14 +20,9 @@ optdepends=(
   'konsole: abrir pelo atalho KDE'
 )
 
-source=("git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
-sha256sums=('SKIP')
-
 pkgver() {
-  cd "$srcdir/arch-update-script-vai"
-  git describe --long --tags --abbrev=7 2>/dev/null \
-    | sed 's/^v//; s/-/.r/; s/-/./' \
-    || printf "0.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    cd "$srcdir/${pkgname}"
+    git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
 package() {
