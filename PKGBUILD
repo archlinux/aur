@@ -1,4 +1,4 @@
-# Maintainer: Micah <anthropic@dv8.one>
+# Maintainer: madhat2r
 #
 # AUR-compliant pinned binary package for Gas City (`gc`).
 # Reproducible: fixed pkgver + real checksums. Bump pkgver and refresh sums
