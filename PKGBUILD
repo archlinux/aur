@@ -2,8 +2,6 @@
 # Maintainer: Diego Ernani (CapivaraVai) <dernani@gmail.com>
 #
 #
-# Maintainer: Diego Ernani (CapivaraVai) <dernani@gmail.com>
-#
 pkgname=arch-update-vai-bin
 pkgver=0.7.1
 pkgrel=1
@@ -23,24 +21,16 @@ optdepends=(
   'python-pip: checar pacotes pip'
 )
 
-source=("arch-update-vai::git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
+source=("arch-update-vai-bin::git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/arch-update-vai"
-  echo "0.7.1.r$(git rev-list --count HEAD)"
-}
-
-
-source=("arch-update-vai::git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
-
-pkgver() {
-  cd "$srcdir/arch-update-vai"
+  cd "$srcdir/arch-update-vai-bin"
   echo "0.7.1.r$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd "$srcdir/arch-update-vai"
+  cd "$srcdir/arch-update-vai-bin"
 
   # binário
   install -Dm755 update-vai.sh "$pkgdir/usr/bin/arch-update-vai"
@@ -60,6 +50,3 @@ package() {
   install -Dm644 packaging/update-vai.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/arch-update-vai.svg"
 }
-
-
-
