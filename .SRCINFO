@@ -1,6 +1,6 @@
 pkgbase = openssh-gui-bin
 	pkgdesc = A GUI for OpenSSH configuration and management (Binary version)
-	pkgver = 3.0.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/frequency403/OpenSSH-GUI
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = openssh-gui-bin
 	conflicts = openssh-gui-git
 	conflicts = openssh-gui-nightly
 	options = !strip
-	source = openssh-gui-bin-3.0.1::https://github.com/frequency403/OpenSSH-GUI/releases/download/v3.0.1/OpenSSH-GUI-linux-x64
-	source = openssh-gui-bin-icon-3.0.1.png::https://github.com/frequency403/OpenSSH-GUI/raw/v3.0.1/OpenSSH_GUI/Assets/appicon.png
-	source = openssh-gui-bin-desktop-3.0.1.desktop::https://github.com/frequency403/OpenSSH-GUI/raw/v3.0.1/io.github.frequency403.openssh_gui.desktop
-	source = openssh-gui-bin-license-3.0.1::https://github.com/frequency403/OpenSSH-GUI/raw/v3.0.1/LICENSE
-	sha256sums = bdee745a6e2f21714c6dfa33e953c8ee92273a1275af98f587051ebedfc66a9a
-	sha256sums = de5104be112173655a8a5950a4b129e0f28d94e29b80239bf7c82360c524bf9c
+	source = openssh-gui-bin-3.1.2::https://github.com/frequency403/OpenSSH-GUI/releases/download/v3.1.2/OpenSSH-GUI-linux-x64
+	source = openssh-gui-bin-icon-3.1.2.png::https://github.com/frequency403/OpenSSH-GUI/releases/download/v3.1.2/appicon.png
+	source = openssh-gui-bin-desktop-3.1.2.desktop::https://github.com/frequency403/OpenSSH-GUI/releases/download/v3.1.2/io.github.frequency403.openssh_gui.desktop
+	source = openssh-gui-bin-license-3.1.2::https://raw.githubusercontent.com/frequency403/OpenSSH-GUI/v3.1.2/LICENSE
+	sha256sums = b6b3d5100ef8e6092ef5b99a1628ed0cf78bfeef7c4fa940815e63877fe55d31
+	sha256sums = 19d7c119dcd8aaf1b2bac47325ebf73ac4b32bb3f757e62276a154845be49774
 	sha256sums = 0f53f092ae5b6a8547d016d3c4130c9352fe4af688e0eaaee7c94efdadb78470
 	sha256sums = 04765b5ced4962532281a4c40754d25380df5e89e49bf3f0ea9054f05a6ee34a
 
