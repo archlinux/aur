@@ -1,0 +1,22 @@
+pkgbase = castbridge
+	pkgdesc = Native Chromecast backend for the Cast browser extension (openscreen Cast Streaming)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/gianlucamazza/cast
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = python
+	depends = ffmpeg
+	depends = libva
+	depends = libvpx
+	depends = opus
+	depends = curl
+	depends = gcc-libs
+	optdepends = hyprland: window mirroring (screen mirroring works on any Wayland compositor)
+	options = !lto
+	options = !strip
+	source = castbridge::git+https://github.com/gianlucamazza/cast.git#tag=v0.3.0
+	sha256sums = SKIP
+
+pkgname = castbridge
