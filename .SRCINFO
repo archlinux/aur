@@ -1,6 +1,6 @@
 pkgbase = linux-cachyos-cjktty
 	pkgdesc = CachyOS Linux kernel with cjktty patches
-	pkgver = 7.0.11
+	pkgver = 7.0.12
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -30,15 +30,15 @@ pkgbase = linux-cachyos-cjktty
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.11-1/cachyos-7.0.11-1.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.12-1/cachyos-7.0.12-1.tar.gz
 	source = config
 	source = https://raw.githubusercontent.com/Capricornus007/cjktty-patches/master/v7.x/cjktty-7.0.8.patch
 	source = https://raw.githubusercontent.com/Capricornus007/cjktty-patches/master/cjktty-add-cjk32x32-font-data.patch
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/misc/dkms-clang.patch
-	b2sums = e37b762176e39b36bb607bd34817ed1579055c4c59edfabd377064ac8321503d0cdad6777aead4eb93f390561ab02a55da02d812a8a42f4785a5061fd1e38fc8
+	b2sums = d3aa0ac4d37e3f8f2f888fc07db7f07b4d6b10b389ab7f75a59d7eada9656e9ef078668d76f9db528c6086b9ab53cd80ad95d36bdbfa5ca1c76c3cd7c452713c
 	b2sums = 884b9a1d8400821568732d5e567c691145200b5bc6fb5c731c4267dfa9c007c0cfc7921b1c972fcddfb5a2132e222b85f06804f434446319cef51714a2664500
 	b2sums = 1126d744a95275b147927eded508150212f03e32b65433c0981b85411342cb4becb814f00871c6d8e6ec1f710acc17dbcb50e9a4bcd6e7f2cc75a6cde06bf78c
-	b2sums = 101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678
+	b2sums = 0fc62c36be0f2cfa9e0c8c716b6e9dc94fd79a228eeae82211c0ceda9344595af13ebe54cfbefb01e5037f428eb193bf4d7d650ee8ac1b8602f12bf30699e6e6
 	b2sums = c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e
 
 pkgname = linux-cachyos-cjktty
@@ -57,7 +57,7 @@ pkgname = linux-cachyos-cjktty
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
-	provides = linux-cachyos-cjktty-lto=7.0.11-1
+	provides = linux-cachyos-cjktty-lto=7.0.12-1
 	replaces = linux-cachyos-cjktty-lto
 
 pkgname = linux-cachyos-cjktty-headers
@@ -76,5 +76,5 @@ pkgname = linux-cachyos-cjktty-headers
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
-	provides = linux-cachyos-cjktty-lto-headers=7.0.11-1
+	provides = linux-cachyos-cjktty-lto-headers=7.0.12-1
 	replaces = linux-cachyos-cjktty-lto-headers
