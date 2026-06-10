@@ -1,6 +1,6 @@
 pkgbase = lemonade-server
 	pkgdesc = Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)
-	pkgver = 10.6.0
+	pkgver = 10.7.0
 	pkgrel = 1
 	url = https://github.com/lemonade-sdk/lemonade/
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = lemonade-server
 	depends = libwebsockets
 	provides = lemonade-server
 	backup = etc/lemonade/conf.d/zz-secrets.conf
-	source = lemonade-server-10.6.0.tar.gz::https://github.com/lemonade-sdk/lemonade/archive/refs/tags/v10.6.0.tar.gz
-	source = httplib-0.45.0.tar.gz::https://github.com/yhirose/cpp-httplib/archive/refs/tags/v0.45.0.tar.gz
+	source = lemonade-server-10.7.0.tar.gz::https://github.com/lemonade-sdk/lemonade/archive/refs/tags/v10.7.0.tar.gz
+	source = httplib-0.47.0.tar.gz::https://github.com/yhirose/cpp-httplib/archive/refs/tags/v0.47.0.tar.gz
 	source = tmpfiles.conf
-	sha256sums = 552d4585044e482b017a2cd6522731cef42d5984673db2daf43056065643060e
-	sha256sums = 03121ca28d210ac8014021c2f2deda4a181f215b1638c493c40a4c7e6056495f
+	sha256sums = 7102a7dbcfede2a406df12490624a234a18f89576d6b2ca5a84de120a2c4c787
+	sha256sums = f6676dd6539c1d05978aa8ecfae86d71e73c46f48c7766a04b991aa545c2f065
 	sha256sums = 757132b8ebf0847798765b911a4226100e102ac32531cdcf91dbc9436e52a011
 
 pkgname = lemonade-server
