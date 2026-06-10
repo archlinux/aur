@@ -27,7 +27,7 @@ pkgver() {
     git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
-source=("git+https://codeberg.org/CapivaraVai/${pkgname}.git")
+source=("${pkgname}::git+https://codeberg.org/CapivaraVai/${pkgname}.git")
 sha256sums=('SKIP')
 
 package() {
