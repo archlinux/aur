@@ -2,7 +2,7 @@
 
 pkgname=goose-desktop
 pkgver=1.37.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
 url="https://github.com/aaif-goose/goose"
@@ -17,7 +17,7 @@ makedepends=(
   "pnpm"
   "just"
   "vulkan-headers"
-  "glslc"
+  "shaderc"
 )
 
 # LTO breaks sqlx/sqlite linkage
