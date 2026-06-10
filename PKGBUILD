@@ -1,7 +1,7 @@
 # Maintainer: Meredith V. <delightful.device@pm.me>
 
 pkgname=world-radio-league-desktop-bin
-pkgver=0.0.7
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="World Radio League desktop application"
 arch=('x86_64')
@@ -19,6 +19,9 @@ depends=(
   'libsecret'
   'make'
   'alsa-lib'
+  'libusb'
+  'lib32-gcc-libs'
+  'java-runtime'
 )
 
 provides=('world-radio-league-desktop')
