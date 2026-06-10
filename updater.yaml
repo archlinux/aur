@@ -1,0 +1,9 @@
+source: github_release
+repo: M0n7y5/pipeasio
+prefix: v
+allow_prerelease: true
+verify_commands:
+  - command -v pipeasio-register
+  - command -v pipeasio-settings
+  - test -f /usr/lib/wine/x86_64-windows/pipeasio64.dll
+  - test -L /usr/lib/wine/x86_64-unix/pipeasio.dll.so
