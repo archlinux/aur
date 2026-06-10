@@ -1,6 +1,6 @@
 # Maintainer: britors <rodrigo@w3ti.com.br>
 pkgname=draco-db
-pkgver=11.1.4
+pkgver=11.1.5
 pkgrel=1
 pkgdesc="Multi-database desktop client — explorer, query editor, table creator/editor, ERD, and more"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!debug' '!strip')
 source=("https://github.com/britors/Draco/releases/download/v${pkgver}/draco_${pkgver}_amd64.deb"
         "https://raw.githubusercontent.com/britors/Draco/main/logo.svg")
 sha256sums=('SKIP'
-            'b22695b2f97a91e4995fe11fd5cd60a63522818fa49af063cfa300a75a6b3ba6')
+            '73f6718f092d586ba67f80e239c11eed91d8059feb9e151030d48d1ff8ce02dc')
 
 prepare() {
     ar x "draco_${pkgver}_amd64.deb"
