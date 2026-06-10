@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=PipeASIO Settings
+GenericName=ASIO Driver Settings
+Comment=Configure the PipeASIO Wine ASIO driver
+Exec=pipeasio-settings
+Icon=pipeasio
+Terminal=false
+Categories=AudioVideo;Audio;Qt;
+Keywords=ASIO;Wine;PipeWire;audio;latency;buffer;

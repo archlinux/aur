@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="PipeASIO">
+  <defs>
+    <linearGradient id="paWave" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d8470f"/>
+      <stop offset=".55" stop-color="#ff6a1f"/>
+      <stop offset="1" stop-color="#ff9352"/>
+    </linearGradient>
+    <linearGradient id="paTile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#242428"/>
+      <stop offset="1" stop-color="#16161a"/>
+    </linearGradient>
+  </defs>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="15" fill="url(#paTile)" stroke="#ff6a1f" stroke-opacity=".28"/>
+  <rect x="6.5" y="25" width="12" height="14" rx="4" fill="#6e6e7a"/>
+  <rect x="45.5" y="25" width="12" height="14" rx="4" fill="#ff6a1f"/>
+  <path d="M18.5 32 C22.5 16 28.5 16 32 32 C35.5 48 41.5 48 45.5 32" fill="none" stroke="url(#paWave)" stroke-width="5.5" stroke-linecap="round"/>
+</svg>

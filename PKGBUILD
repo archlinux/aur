@@ -3,20 +3,27 @@
 
 pkgname=pipeasio
 pkgver=1.0.0_rc1
-pkgrel=1
+pkgrel=2
 # Upstream tags use semver prerelease hyphens (v1.0.0-rc1); pkgver maps '-' to '_'.
 _pkgtag="v${pkgver//_/-}"
 pkgdesc="ASIO driver for Wine that talks directly to PipeWire (no libjack dependency)"
 arch=('x86_64')
 url="https://github.com/M0n7y5/pipeasio"
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
-depends=(wine pipewire qt6-base)
+depends=(wine pipewire qt6-base hicolor-icon-theme)
 makedepends=(cmake ninja)
 # !lto: winebuild reads symbols from the .o files; LTO bytecode objects break it.
 options=('!strip' '!debug' '!lto')
 _pkgsrc="${pkgname}-${_pkgtag#v}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${_pkgtag}.tar.gz")
-b2sums=('cff1a68105d255718b1a0c5567d970af5b07eda0946eb49cdf0fffca1421993cbbf8e5ae02b3faba34e6716e21485bfef32b4f6443a178856f1d62df5a4a7820')
+# Desktop entry + icon are local sources until the next upstream release;
+# master installs them via CMake (gui/pipeasio-settings.desktop, docs/icon.svg)
+# so they can be dropped from here at the next pkgver bump.
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${_pkgtag}.tar.gz"
+        "pipeasio-settings.desktop"
+        "pipeasio.svg")
+b2sums=('cff1a68105d255718b1a0c5567d970af5b07eda0946eb49cdf0fffca1421993cbbf8e5ae02b3faba34e6716e21485bfef32b4f6443a178856f1d62df5a4a7820'
+        'f39b3eaaaf0dadb3920fb3133fcd6936ced4fa42a14962e32b3acf1c2f7fde61f1321bab86b1ff21595152c9369e5393c60f82e1a3b445fc7c20a1de47d08757'
+        'ca65da2d37c6a301e651b2acdf227afb549a13c1decc335c7dfd1103272824f4a87a50af736c2d94db2603bee86523ba5fcb2688e32f0a8d559fda30d023bee1')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
@@ -38,6 +45,9 @@ package() {
 
   install -Dm755 pipeasio-register -t "${pkgdir}/usr/bin"
   install -Dm755 build/gui/pipeasio-settings -t "${pkgdir}/usr/bin"
+
+  install -Dm644 "${srcdir}/pipeasio-settings.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm644 "${srcdir}/pipeasio.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pipeasio.svg"
 
   # rc1 ships COPYING.LIB/COPYING.GUI; master relicensed to GPL-3.0-or-later
   # with a single COPYING. Install whichever exist so version bumps don't break.

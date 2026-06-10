@@ -1,7 +1,7 @@
 pkgbase = pipeasio
 	pkgdesc = ASIO driver for Wine that talks directly to PipeWire (no libjack dependency)
 	pkgver = 1.0.0_rc1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/M0n7y5/pipeasio
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -11,10 +11,15 @@ pkgbase = pipeasio
 	depends = wine
 	depends = pipewire
 	depends = qt6-base
+	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
 	options = !lto
 	source = pipeasio-1.0.0-rc1.tar.gz::https://github.com/M0n7y5/pipeasio/archive/refs/tags/v1.0.0-rc1.tar.gz
+	source = pipeasio-settings.desktop
+	source = pipeasio.svg
 	b2sums = cff1a68105d255718b1a0c5567d970af5b07eda0946eb49cdf0fffca1421993cbbf8e5ae02b3faba34e6716e21485bfef32b4f6443a178856f1d62df5a4a7820
+	b2sums = f39b3eaaaf0dadb3920fb3133fcd6936ced4fa42a14962e32b3acf1c2f7fde61f1321bab86b1ff21595152c9369e5393c60f82e1a3b445fc7c20a1de47d08757
+	b2sums = ca65da2d37c6a301e651b2acdf227afb549a13c1decc335c7dfd1103272824f4a87a50af736c2d94db2603bee86523ba5fcb2688e32f0a8d559fda30d023bee1
 
 pkgname = pipeasio
