@@ -2,7 +2,7 @@
 # Maintainer: bethropolis <bethropolis at gmail dot com>
 
 pkgname='podbox-bin'
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Podman-native container environment manager'
 url='https://github.com/bethropolis/podbox'
@@ -14,10 +14,10 @@ depends=('podman')
 optdepends=('fish: default shell in prebuilt images' 'openssh: for SSH agent forwarding')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bethropolis/podbox/releases/download/v${pkgver}/podbox-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('d2f57ab9cbaab42db8eaf28b7b612f4e01a02fd57723a97b3706794d96bb3c4f')
+sha256sums_aarch64=('c030aca06ca850aa7caa6d21de6b69041252a9fad575f0c2e1cf5396a11d2a63')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bethropolis/podbox/releases/download/v${pkgver}/podbox-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('f8aeb3d60f8a6557f083984c963b104bccc0909a62f7b4a62a4cb218583329db')
+sha256sums_x86_64=('306247641614f3a395d865e95212a854a49cc085006232a26ac4499ec530592f')
 
 package() {
   install -Dm755 "./podbox" "${pkgdir}/usr/bin/podbox"
