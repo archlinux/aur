@@ -1,7 +1,7 @@
 # Maintainer: Zmole Cristian <tragdate@gmail.com>
 pkgname=rustgraph
-pkgver=0.7.12
-pkgrel=2
+pkgver=0.7.13
+pkgrel=1
 pkgdesc="Rust code navigation built for AiDX — AST-aware, MCP-native, token-efficient."
 arch=('x86_64')
 url="https://github.com/ZmoleCristian/rustgraph"
@@ -10,33 +10,36 @@ depends=('gcc-libs')
 makedepends=('cargo')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ZmoleCristian/rustgraph/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4f3d40a647610553fbdf8c06faa585b9488c9e5623907ceabef641e5cb14c351')
+sha256sums=('4183a467db30c899d4234eabf74f068d7d340c1743785dd057887912681e9733')
 
-# Hermetic CARGO_HOME: the build runs RUSTUP_TOOLCHAIN=stable, so nightly-only
-# rustflags/profiles in the user's own cargo config would break it.
+# Hermetic cargo: the build runs RUSTUP_TOOLCHAIN=stable, so nightly-only
+# rustflags/profiles in the user's cargo configs would break it. Isolate
+# CARGO_HOME, pin RUSTFLAGS, pass --target-dir on the CLI (beats env overrides
+# from cargo wrapper scripts), and run cargo from a neutral cwd outside $HOME —
+# cargo discovers .cargo/config.toml in every ancestor of the cwd, so building
+# under ~/.cache/paru would otherwise still read the user's ~/.cargo config.
 _cargo_env() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_HOME="$srcdir/cargo-home"
     export RUSTFLAGS="${RUSTFLAGS:-}"
+    _manifest="$srcdir/$pkgname-$pkgver/Cargo.toml"
+    _target="$srcdir/$pkgname-$pkgver/target"
+    cd /
 }
 
 prepare() {
-    cd "$pkgname-$pkgver"
     _cargo_env
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --manifest-path "$_manifest" --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
     _cargo_env
-    # --target-dir beats CARGO_TARGET_DIR overrides from cargo wrappers/env
-    cargo build --frozen --release --target-dir target
+    cargo build --frozen --release --manifest-path "$_manifest" --target-dir "$_target"
 }
 
 check() {
-    cd "$pkgname-$pkgver"
     _cargo_env
-    cargo test --frozen --release --target-dir target
+    cargo test --frozen --release --manifest-path "$_manifest" --target-dir "$_target"
 }
 
 package() {
