@@ -3,7 +3,7 @@
 # Upstream: Fender Musical Instruments Corporation
 
 pkgname='fender-studio-pro-8'
-pkgver='8.0.3.111164'
+pkgver='8.1.0.112630'
 pkgrel='1'
 pkgdesc='Digital audio workstation (DAW), used to create, record, mix and master music'
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('studio-one-7')
 options=(!strip)
 # Note: Please download "Installer for Linux (deb)" (studiopro8-x86_64.deb) manually from https://my.fender.com/products/detail/1781
 source=("studiopro8-x86_64.deb::local://studiopro8-x86_64.deb")
-sha256sums=('6f78b974934f0bbb0ee5c09b789b394c89da7dbce099e2ba81ae8bdd898e4aa2')
+sha256sums=('35c23cdb20150bc21bc1637a051935fb72f0faeb0ca003baa50691bd490df697')
 
 package() {
   # Unpack package contents
