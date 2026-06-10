@@ -1,0 +1,17 @@
+pkgbase = partydeck-bin
+	pkgdesc = A split-screen game launcher for Linux/SteamOS. Pre-compiled.
+	pkgver = 0.8.6
+	pkgrel = 1
+	url = https://github.com/partydeck/partydeck
+	arch = x86_64
+	license = MIT
+	depends = umu-launcher
+	depends = bubblewrap
+	optdepends = fuse-overlayfs
+	optdepends = gamescope
+	provides = partydeck
+	conflicts = partydeck
+	source = https://github.com/partydeck/partydeck/releases/download/v0.8.6/partydeck-v0.8.6-linux-x86_64.tar.gz
+	sha256sums = 111f45f7cba813755c5c48ca073dd217e869b0a57ebcd89c756c20ea79ad4c73
+
+pkgname = partydeck-bin
