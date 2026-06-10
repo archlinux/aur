@@ -4,7 +4,7 @@
 : ${_build_debug_enabled:=false}
 
 pkgname=cloud-sql-proxy
-pkgver=2.21.3
+pkgver=2.22.1
 pkgrel=1
 pkgdesc='Cloud SQL Auth Proxy'
 arch=(x86_64)
@@ -19,12 +19,17 @@ if [[ ${_build_debug_enabled} == false ]]; then
   options+=(!debug)
 fi
 source=(${pkgname}::git+${url}.git#tag=v${pkgver})
-b2sums=('2feea18739cadf413a196386108f298985b3b08bd37d6b5f234839d19386c64f63b98d0974d7c630c3fdcf728e81af563823bcd81db7f0c3fcf0992e24ea4499')
+b2sums=('ae39f46c5bf33cee35bb3ca07d36745b598409f0c64f534c41be11629d154e8a20515edfca1e35b4e223085edc1b9b5a032aa8cb91d89d7c2d699cec27ee8156')
 
 prepare() {
   cd ${pkgname}
 
-  export GOFLAGS='-mod=readonly'
+  local -a _goflags
+  _goflags=(
+    -mod=readonly
+  )
+
+  export GOFLAGS="${_goflags[*]}"
 
   rm -rf out
 
@@ -38,30 +43,39 @@ prepare() {
 build() {
   cd ${pkgname}
 
+  local -a _goflags
+  _goflags=(
+    -buildmode=pie
+    -mod=vendor
+    -modcacherw
+  )
+
   local -a _ldflags
   _ldflags=(
     -X=main.versionString=v${pkgver}
     -linkmode=external
   )
 
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOPATH="${srcdir}"
-  export GOFLAGS='-buildmode=pie -mod=vendor -modcacherw'
-
   if [[ ${_build_debug_enabled} == false ]]; then
+    _goflags+=(
+      -trimpath
+    )
     _ldflags+=(
       -s
       -w
     )
-    export GOFLAGS+=' -trimpath'
   else
     _ldflags+=(
       -compressdwarf=false
     )
   fi
+
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOPATH="${srcdir}"
+  export GOFLAGS="${_goflags[*]}"
 
   go build \
     -v \
