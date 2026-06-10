@@ -1,7 +1,7 @@
 pkgbase = retorrent-bin
 	pkgdesc = A BitTorrent client with an alpha/test UI, built in Rust
 	pkgver = 0.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mlm-games/retorrent
 	arch = x86_64
 	arch = aarch64
