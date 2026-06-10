@@ -25,12 +25,11 @@ depends=(
   'wireguard-tools'
 )
 makedepends=(
-  'rust'
+  'cargo'
+  'cmake'
+  'git'
   'go'
   'ninja'
-  'python-click'
-  'python-jinja'
-  'python-jsonschema'
   'python-yaml'
   'qt6-tools'
 )
