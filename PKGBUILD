@@ -45,12 +45,10 @@ package() {
   [[ -f README.md ]] && install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   [[ -f CHANGELOG.md ]] && install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 
-  # arquivo .desktop
-  install -Dm644 update-vai.desktop \
+install -Dm644 packaging/update-vai.desktop \
     "$pkgdir/usr/share/applications/update-vai.desktop"
-
-  # ícone SVG
-  install -Dm644 update-vai.svg \
+install -Dm644 packaging/update-vai.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/update-vai.svg"
+
 }
 
