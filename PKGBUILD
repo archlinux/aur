@@ -1,7 +1,7 @@
 # =============================================================================
 # cosmostrix-bin — AUR binary package
 # =============================================================================
-# Maintainer  : rezky_nightky <rezky2399@proton.me>
+# Maintainer  : rezky_nightky <with dot rezky at gmail dot com>
 # Upstream    : https://github.com/oxyzenQ/cosmostrix
 # GPG         : 0D431313D6916DC76DB3AE6182FB5CCEFF501BCC
 #
@@ -12,7 +12,7 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=4.0.0
+pkgver=4.0.1
 _tag=
 pkgrel=1
 
