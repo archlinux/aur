@@ -37,11 +37,7 @@ prepare() {
     cd "$pkgname"
     git submodule update --init --recursive
 
-    # Upstream bug: these connect() overloads return void and manage their
-    # own connection lifetime, but the result is assigned to a
-    # boost::signals2::scoped_connection member, which fails to compile.
-    # Drop the assignment; if upstream fixes this, the pattern won't match
-    # and this becomes a no-op.
+    # Fix upstream build error: connect() returns void, can't be assigned to scoped_connection (no-op once fixed upstream)
     sed -i -E '/this->(transmitPresenceConnection_|activityHeartbeatConnection_|heartbeatAccountConnection_) =$/d' \
         src/providers/moltorino/MoltorinoPresence.cpp
 }
