@@ -1,6 +1,6 @@
 pkgbase = ghost-chat
 	pkgdesc = A Standalone chat overlay for Twitch, Kick, YouTube and other streaming platforms.
-	pkgver = 4.1.1
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/Enubia/ghost-chat
 	arch = any
@@ -12,12 +12,12 @@ pkgbase = ghost-chat
 	makedepends = nvm
 	makedepends = curl
 	makedepends = git
-	depends = webkit2gtk-4.1
+	depends = webkitgtk-6.0
 	depends = gtk3
 	conflicts = ghost-chat
-	source = ghost-chat-4.1.1::git+https://github.com/Enubia/ghost-chat#tag=v4.1.1
+	source = ghost-chat-4.2.0::git+https://github.com/Enubia/ghost-chat#tag=v4.2.0
 	source = modifiers_linux.go
-	sha256sums = 893c94dc1162485cec538b642b42aa0ac3d731547aeb4143416115809f62fc5c
+	sha256sums = f68d7295f5f87c93bc2a8151a92a0edc9b6fb77b3b14baade774a8970a7af8ee
 	sha256sums = 131035c2816a154359af542ff002e53f48419311e6ab083eb9f944a5e2f0d24c
 
 pkgname = ghost-chat

@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=4.1.1
+pkgver=4.2.0
 _nodeversion=24
 pkgrel=1
 pkgdesc="A Standalone chat overlay for Twitch, Kick, YouTube and other streaming platforms."
@@ -10,7 +10,7 @@ url="https://github.com/Enubia/ghost-chat"
 license=('LicenseRef-DBAD')
 conflicts=("${pkgname}")
 depends=(
-    'webkit2gtk-4.1'
+    'webkitgtk-6.0'
     'gtk3'
 )
 makedepends=(
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "modifiers_linux.go"
 )
-sha256sums=('893c94dc1162485cec538b642b42aa0ac3d731547aeb4143416115809f62fc5c'
+sha256sums=('f68d7295f5f87c93bc2a8151a92a0edc9b6fb77b3b14baade774a8970a7af8ee'
             '131035c2816a154359af542ff002e53f48419311e6ab083eb9f944a5e2f0d24c')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
