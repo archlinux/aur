@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Zurvival Remastered
+Comment=Game about Zombie Apocalypse
+Exec=/usr/bin/zurvivalremastered
+Icon=zurvivalremastered
+Terminal=false
+Categories=Game;

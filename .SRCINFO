@@ -1,0 +1,21 @@
+pkgbase = zurvivalremastered-bin
+	pkgdesc = Zurvival Remastered - Game about a survival in a zombie apocalypse.
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/klodskateam/zurvival-remastered
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = unzip
+	depends = glibc
+	depends = libx11
+	depends = libxext
+	depends = libxrender
+	depends = libxrandr
+	depends = libxi
+	depends = vulkan-driver
+	source = https://github.com/klodskateam/zurvival-remastered/releases/download/v2.0.5-Demo-prerelease01/zurvivalremastered_prerelease_288_linux.zip
+	source = zurvivalremastered.desktop
+	sha256sums = b3797dda400a5a95839634909c440f562603c96914d6659f5d3830bcf15df261
+	sha256sums = 1bd745bd204f667f366cea4de270a612b460ee8858aaf895a9d811414ef6dc11
+
+pkgname = zurvivalremastered-bin
