@@ -2,7 +2,7 @@
 # Contributor: spider-mario <spidermario@free.fr>
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 pkgname=nqp
-pkgver=2026.04
+pkgver=2026.05
 pkgrel=1
 pkgdesc="Lightweight Raku-like environment for virtual machines (MoarVM backend)"
 arch=(i686 x86_64 aarch64)
@@ -19,8 +19,8 @@ source=(
     "https://github.com/Raku/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-    f3ba05cb0b99848ff19994485dc6d57c47659a3a57637a169477eae6beb9737d
-    983b7e86b87a346a394589adbf93fffa4428ef15c94980f4b98ac4d3b8a16be1
+    f43085635bcda97c6e4163e827bcca34e46840f72316126246b94bc04ab58ebf
+    1421735b26387df8fe9d35dc055e566f86cf07341684a6eb31063c15b73525fc
 )
 
 build() {
