@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=opencode-desktop-bin
-pkgver=1.16.2
+pkgver=1.17.3
 pkgrel=1
 pkgdesc="OpenCode desktop client"
 arch=('x86_64')
@@ -22,7 +22,7 @@ latestver() {
 source=("LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver}/LICENSE")
 source_x86_64=("opencode-desktop-${pkgver}-linux-amd64.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-amd64.deb")
 sha256sums=('625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
-sha256sums_x86_64=('f1b832133fb12a9be43416eb35586963d680738977a8a95d1da0802a36e4d5de')
+sha256sums_x86_64=('a66a9eca2c571225061905ff0a4e3dbae0112ef78fdb08cb5b1844e27d33f74e')
 
 package() {
   bsdtar -xf "${srcdir}/opencode-desktop-${pkgver}-linux-amd64.deb" data.tar.xz
@@ -35,6 +35,7 @@ package() {
 
   # Prune musl native modules (useless on glibc Arch)
   find "${pkgdir}/opt/OpenCode" -name '*.musl.node' -delete
+  find "${pkgdir}/opt/OpenCode" -depth -type d -name '*-musl' -exec rm -rf {} +
 
   # Launcher script (supports user flags and Wayland)
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/opencode-desktop" <<'EOF'
@@ -43,22 +44,12 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 if [[ -f "$XDG_CONFIG_HOME/opencode-desktop-flags.conf" ]]; then
   OPENCODE_USER_FLAGS="$(grep -v '^#' "$XDG_CONFIG_HOME/opencode-desktop-flags.conf")"
 fi
-exec /opt/OpenCode/@opencode-aidesktop $OPENCODE_USER_FLAGS "$@"
+exec /opt/OpenCode/ai.opencode.desktop $OPENCODE_USER_FLAGS "$@"
 EOF
 
-  # Desktop file: fix Exec/Icon, rename to a sane filename
-  local desktop="${pkgdir}/usr/share/applications/@opencode-aidesktop.desktop"
-  sed -i \
-    -e 's|Exec="/opt/OpenCode/@opencode-aidesktop"|Exec=opencode-desktop|' \
-    -e 's|Icon=@opencode-aidesktop|Icon=opencode-desktop|' \
-    "$desktop"
-  mv "$desktop" "${pkgdir}/usr/share/applications/opencode-desktop.desktop"
-
-  # Rename icons to match Icon= field
-  for dir in "${pkgdir}"/usr/share/icons/hicolor/*/apps; do
-    [ -f "${dir}/@opencode-aidesktop.png" ] || continue
-    mv "${dir}/@opencode-aidesktop.png" "${dir}/opencode-desktop.png"
-  done
+  # Point desktop files at the wrapper (icons/StartupWMClass already match upstream names)
+  sed -i 's|Exec=/opt/OpenCode/ai\.opencode\.desktop|Exec=opencode-desktop|' \
+    "${pkgdir}"/usr/share/applications/*.desktop
 
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
