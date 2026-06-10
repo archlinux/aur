@@ -15,8 +15,18 @@ prepare() {
     cd "$srcdir/Observer-$pkgver/app"
     # Disable updater artifacts for AUR build to avoid signing errors
     sed -i 's/"createUpdaterArtifacts": true/"createUpdaterArtifacts": false/' desktop/tauri.conf.json
-    # pnpm v11 uses allowBuilds in pnpm-workspace.yaml; approve all required build scripts
-    sed -i 's/: set this to true or false/: true/g' pnpm-workspace.yaml
+    # pnpm v11 requires allowBuilds in pnpm-workspace.yaml; create it since it's not in the tarball
+    cat > pnpm-workspace.yaml << 'EOF'
+allowBuilds:
+  browser-tabs-lock: true
+  esbuild: true
+  onnxruntime-node: true
+  protobufjs: true
+  sharp: true
+  tesseract.js: true
+onlyBuiltDependencies:
+  - onnxruntime-node
+EOF
     pnpm install
 }
 
