@@ -1,6 +1,6 @@
 pkgbase = gitflow
 	pkgdesc = A high-performance, type-safe implementation of the Gitflow AVH branching model in Rust.
-	pkgver = 1.0.0_beta.2
+	pkgver = 1.0.0_beta.3
 	pkgrel = 1
 	url = https://github.com/ImKairat-Rust-Lab/gitflow
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gitflow
 	provides = gitflow
 	conflicts = gitflow
 	options = !lto
-	source = git+https://github.com/ImKairat-Rust-Lab/gitflow.git#tag=v1.0.0-beta.2
+	source = git+https://github.com/ImKairat-Rust-Lab/gitflow.git#tag=v1.0.0-beta.3
 	sha256sums = SKIP
 
 pkgname = gitflow
