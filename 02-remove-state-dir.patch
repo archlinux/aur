@@ -1,0 +1,16 @@
+--- a/dist/debian/networking	2025-10-04 00:01:46.104929050 +0200
++++ b/dist/debian/networking	2025-10-04 00:02:13.562179568 +0200
+@@ -6,13 +6,6 @@
+ #  -- Maximilian Wilhelm <max@sdn.clinic>
+ #
+ 
+-STATE_DIR="/run/ifstate"
+-
+-# Make sure the state dir is present
+-if [ ! -d "${STATE_DIR}" ]; then
+-	mkdir "${STATE_DIR}"
+-fi
+-
+ # Check for require binaries
+ if [ ! -x /sbin/ifup -o ! -x /sbin/ifdown ]; then
+ 	echo "ifup and/or ifdown not found!" >&2

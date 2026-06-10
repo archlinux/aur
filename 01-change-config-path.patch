@@ -1,0 +1,23 @@
+diff --git a/dist/debian/networking b/dist/debian/networking
+index 327e08d..8f67026 100644
+--- a/dist/debian/networking
++++ b/dist/debian/networking
+@@ -22,8 +22,8 @@ fi
+ # Apply defaults if present (verbose mode, kill switch, etc.)
+ CONFIGURE_INTERFACES=yes
+ 
+-if [ -f /etc/default/networking ]; then
+-	. /etc/default/networking
++if [ -f /etc/default/ifupdown-ng ]; then
++	. /etc/default/ifupdown-ng
+ fi
+ 
+ ARGS=""
+@@ -35,7 +35,7 @@ fi
+ case "$1" in
+ 	start)
+ 		if [ "${CONFIGURE_INTERFACES}" = no ]; then
+-			echo "Not configuring network interfaces, see /etc/default/networking"
++			echo "Not configuring network interfaces, see /etc/default/ifupdown-ng"
+ 			exit 0
+ 		fi

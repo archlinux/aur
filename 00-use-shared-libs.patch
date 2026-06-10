@@ -1,0 +1,23 @@
+--- a/Makefile	2026-05-10 07:08:40.000000000 +0200
++++ b/Makefile	2026-06-10 06:27:48.340668831 +0200
+@@ -1,7 +1,7 @@
+ LAYOUT ?= linux
+ SCDOC := scdoc
+-LIBMNL_CFLAGS ?= $(shell pkg-config --cflags --static libmnl)
+-LIBMNL_LIBS ?= $(shell pkg-config --libs --static libmnl)
++LIBMNL_CFLAGS ?= $(shell pkg-config --cflags libmnl)
++LIBMNL_LIBS ?= $(shell pkg-config --libs libmnl)
+ LIBBSD_CFLAGS =
+ LIBBSD_LIBS =
+ 
+@@ -155,8 +155,8 @@
+ TARGET_LIBS_PREFIXED = $(addprefix ${BUILDDIR_},${TARGET_LIBS})
+ TARGET_EXECUTOR_LIBS = ${LIBIFUPDOWN_EXECUTOR_LIB} ${LIBIFUPDOWN_LIB}
+ TARGET_EXECUTOR_LIBS_PREFIXED = $(addprefix ${BUILDDIR_},${TARGET_EXECUTOR_LIBS})
+-LIBS += -static ${TARGET_LIBS_PREFIXED} ${LIBBSD_LIBS}
+-EXECUTOR_LIBS += -static ${TARGET_EXECUTOR_LIBS_PREFIXED} ${LIBBSD_LIBS} ${LIBMNL_LIBS}
++LIBS += ${TARGET_LIBS_PREFIXED} ${LIBBSD_LIBS}
++EXECUTOR_LIBS += ${TARGET_EXECUTOR_LIBS_PREFIXED} ${LIBBSD_LIBS} ${LIBMNL_LIBS}
+ 
+ EXECUTOR_SCRIPTS_NATIVE_STATIC_SRC = \
+ 	executors/linux-native/static.c

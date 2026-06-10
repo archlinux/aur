@@ -1,8 +1,8 @@
 # Maintainer: lpt <aur AT lucapetrucci DOT net>
 
 pkgname=ifupdown-ng
-pkgver=0.12.1
-pkgrel=3
+pkgver=0.13.0
+pkgrel=1
 pkgdesc='Flexible ifup/ifdown implementation'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/ifupdown-ng/ifupdown-ng'
@@ -22,17 +22,16 @@ optdepends=(
 )
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgname-$pkgver.tar.gz"
-	"00-ifupdown-use-ldflags.patch::$url/commit/b7909e0c681e8ddefbac97f1bc9d70324e2f637a.patch"
-	"01-fix-systemd-unit.patch::$url/commit/53eaf760462204c39b5352ade160dca97961e22c.patch"
-	"02-fix-config-path.patch"
-	"03-remove-state-dir.patch"
+	"00-use-shared-libs.patch"
+	"01-change-config-path.patch"
+	"02-remove-state-dir.patch"
 )
+
 sha256sums=(
-	'd42c8c18222efbce0087b92a14ea206de4e865d5c9dde6c0864dcbb2b45f2d85'
-	'4322c8578793aacad7ca32b45b5074dc03915fa9f3663983f15b11e1e2b4dd5a'
-	'a6db3043ee3df57b1abb242e0e11507dc7f5f01d5cfbd22c82e97e51dc506065'
+	'9efc4c47d0baa9611fccfc428862d7da94a96ac7769efc4a7935a106ac5d3896'
+	'20f4a97b0a750d9913679b536b3d3b2c5425317cb1410f9cb1126d02cdf2230e'
 	'cca44ecf38c72afcdc38d9e4a879b07a3f34ec4fc7f0f7f00169afd8e1d439cb'
-	'fe578cef61a2c95f4054e34570b9a3f6364ac3d9d5734b9535ed05895da0ecfb'
+	'5adea46e5bbb71845696b3f79eec8ec2d84ef72ce7b13b3f7f302f0a396bcaed'
 )
 
 prepare() {
