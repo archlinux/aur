@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-tui
 	pkgdesc = A terminal-based user interface for monitoring and managing qBittorrent.
-	pkgver = 0.1.3
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/nickvanw/qbittorrent-tui
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = qbittorrent-tui
 	makedepends = make
 	makedepends = go
 	provides = qbittorrent-tui
-	source = https://github.com/nickvanw/qbittorrent-tui/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = 5a2a616be4afef6c8633e272da55bfde925b719bbd97e0f325b2d8f340f9b1b7
+	source = https://github.com/nickvanw/qbittorrent-tui/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 1e8716c987ebb250dc04bfb86346ddc42207d25d1b0d7172c69c51b769c15aa1
 
 pkgname = qbittorrent-tui
