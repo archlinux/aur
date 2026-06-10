@@ -1,13 +1,12 @@
 # Maintainer: Clarence <chengruichen3@gmail.com>
 pkgname=aerc-digestion-git
-pkgver=r10.db7d0c4
+pkgver=r13.67b7cdd
 pkgrel=1
 pkgdesc="Aerc mail filter for plain text digests (Mailman) "
 arch=('x86_64')
-url="https://git.dominic-ricottone.com/~dricottone/digestion"
-license=('custom')
-groups=()
-depends=()
+url="https://github.com/dricottone/digestion"
+license=('0BSD')
+depends=('aerc')
 makedepends=('git' 'go') # 'bzr', 'git', 'mercurial' or 'subversion'
 source=("git+${url}")
 sha256sums=("SKIP")

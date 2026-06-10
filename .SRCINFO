@@ -1,13 +1,14 @@
 pkgbase = aerc-digestion-git
 	pkgdesc = Aerc mail filter for plain text digests (Mailman)
-	pkgver = r10.db7d0c4
+	pkgver = r13.67b7cdd
 	pkgrel = 1
-	url = https://git.dominic-ricottone.com/~dricottone/digestion
+	url = https://github.com/dricottone/digestion
 	arch = x86_64
-	license = custom
+	license = 0BSD
 	makedepends = git
 	makedepends = go
-	source = git+https://git.dominic-ricottone.com/~dricottone/digestion
+	depends = aerc
+	source = git+https://github.com/dricottone/digestion
 	sha256sums = SKIP
 
 pkgname = aerc-digestion-git
