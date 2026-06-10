@@ -22,8 +22,11 @@ optdepends=(
   'konsole: abrir pelo atalho KDE'
 )
 
-source=("arch-update-vai::git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
+#source=("arch-update-vai::git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
+#sha256sums=('SKIP')
+source=("git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
 sha256sums=('SKIP')
+
 
 pkgver() {
   cd "$srcdir/arch-update-vai"
