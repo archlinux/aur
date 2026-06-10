@@ -1,7 +1,7 @@
 pkgbase = lug-wine-tkg-experimental-git
 	pkgdesc = Wine runner based on TKG builds + experimental patches for Star Citizen
 	pkgver = 11.10
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/starcitizen-lug/lug-wine-experimental
 	arch = x86_64
 	license = LGPL
@@ -24,12 +24,7 @@ pkgbase = lug-wine-tkg-experimental-git
 	depends = libpcap
 	depends = lib32-libpcap
 	depends = desktop-file-utils
-	provides = wine=11.10
-	provides = wine-staging=11.10
 	provides = lug-wine-tkg-experimental
-	conflicts = wine
-	conflicts = wine-staging
-	conflicts = wine-cachyos
 	conflicts = lug-wine-tkg-experimental
 	conflicts = lug-wine-tkg-staging-experimental-git
 	conflicts = lug-wine-tkg-staging-experimental-wayland-git
