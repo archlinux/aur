@@ -1,0 +1,24 @@
+pkgbase = tablecruncher
+	pkgdesc = Lightweight, powerful CSV editor with built-in JavaScript macros
+	pkgver = 1.8
+	pkgrel = 2
+	url = https://tablecruncher.com
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = alsa-lib
+	makedepends = cmake
+	makedepends = doxygen
+	depends = glu
+	depends = hicolor-icon-theme
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libxft
+	depends = libxcursor
+	depends = libxfixes
+	depends = libxinerama
+	source = tablecruncher-1.8.tar.gz::https://github.com/Tablecruncher/tablecruncher/archive/refs/tags/v1.8.tar.gz
+	source = fltk-1.4.3-source.tar.gz::https://github.com/fltk/fltk/releases/download/release-1.4.3/fltk-1.4.3-source.tar.gz
+	sha256sums = 3fba78ad71b005b3cb082537fa42ecf003fcb566f60d65b1140d32e9e794dd73
+	sha256sums = 19725f687146610976a1a43ef448feeba212a7eca88ad5897d22f6adaf3af45b
+
+pkgname = tablecruncher
