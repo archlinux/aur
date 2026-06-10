@@ -1,5 +1,5 @@
 pkgname=enumctl-bin
-pkgver=2026.06.2
+pkgver=2026.06.3
 pkgrel=1
 pkgdesc="CLI tool for enum"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ depends=('glibc')
 source_x86_64=("enumctl-x86_64::https://dl.enum.co/enumctl/${pkgver}/enumctl-linux-amd64")
 source_aarch64=("enumctl-aarch64::https://dl.enum.co/enumctl/${pkgver}/enumctl-linux-arm64")
 
-sha256sums_x86_64=('3901d05b5fb07ccada2f5cfd362fb8aafdc3f473a1c061cef1da0f1b574cf8f4')
-sha256sums_aarch64=('d8f0ac5c2e00e6889b70e8f2442d44d0d5d95f57b93ecc2f17bebd30381119ce')
+sha256sums_x86_64=('cce63e87d6f42c5bb86f6db5d67c5f1eef38cc0b9b2567bbf236fd495268db06')
+sha256sums_aarch64=('dd10af443448f6e012efbf999510f21a158720d52c8f06ac02e4d452201d5fd9')
 
 package() {
   install -Dm755 enumctl-$CARCH "$pkgdir/usr/bin/enumctl"
