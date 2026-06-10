@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgname=aquacontrol
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Suite di controllo per Aquaero 6 LT"
 arch=('any')
@@ -28,7 +28,7 @@ conflicts=('openaquaero')
 replaces=('openaquaero')
 install="aquacontrol.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/raffaele-90/aquacontrol/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('aa6971ecb3dc6c0615f542905813c6490c5774dbfdbd97421e7d52d5e19ad489')
 
 package() {
     cd "$pkgname-$pkgver"
