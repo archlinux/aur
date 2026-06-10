@@ -1,4 +1,6 @@
+#
 # Maintainer: Diego Ernani (CapivaraVai) <dernani@gmail.com>
+#
 
 pkgname=arch-update-vai
 pkgver=0.7.1
@@ -24,6 +26,9 @@ pkgver() {
     cd "$srcdir/${pkgname}"
     git describe --tags --long | sed 's/^v//;s/-/./g'
 }
+
+source=("git+https://codeberg.org/CapivaraVai/${pkgname}.git")
+sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/${pkgname}"
