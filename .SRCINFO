@@ -1,13 +1,13 @@
 pkgbase = mdbook-footnote
 	pkgdesc = A preprocessor for mdbook to support the inclusion of footnotes
-	pkgver = 0.1.1
-	pkgrel = 3
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/daviddrysdale/mdbook-footnote
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
 	depends = mdbook
-	source = https://github.com/daviddrysdale/mdbook-footnote/archive/v0.1.1.tar.gz
-	sha256sums = c5a76a6dbb4a27bff9dfae4398c32497206c3667d70aa7ec8f32a7d98ab11a83
+	source = https://github.com/daviddrysdale/mdbook-footnote/archive/v0.2.0.tar.gz
+	sha256sums = f814ea4195734e59701565bb008f0f432628806d28e580af1038774448cbffeb
 
 pkgname = mdbook-footnote

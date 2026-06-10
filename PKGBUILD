@@ -1,8 +1,8 @@
 # Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
 pkgname=mdbook-footnote
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A preprocessor for mdbook to support the inclusion of footnotes"
 url="https://github.com/daviddrysdale/mdbook-footnote"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   'mdbook'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c5a76a6dbb4a27bff9dfae4398c32497206c3667d70aa7ec8f32a7d98ab11a83')
+sha256sums=('f814ea4195734e59701565bb008f0f432628806d28e580af1038774448cbffeb')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
