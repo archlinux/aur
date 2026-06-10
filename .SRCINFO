@@ -1,17 +1,15 @@
 pkgbase = msmtpq-systemd
 	pkgdesc = Systemd unit for queuing and sending mail
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
+	url = https://codeberg.org/VannTen/msmtpq-systemd
 	arch = any
-	license = GPL
+	license = MIT
 	depends = msmtp
-	source = msmtp-flush-mail
-	source = msmtp.path
-	source = msmtpq-systemd
-	source = msmtp.service
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	depends = bash
+	provides = smtp-forwarder
+	conflicts = smtp-forwarder
+	source = https://codeberg.org/VannTen/msmtpq-systemd/releases/download/1.1.0/msmtpq-systemd-1.1.0.tar.gz
+	sha512sums = 1695dad93c4b88731904156e0548c1ed4311754bc61a5e99318c1c71d62d2ff47090ec84795cadabdbaad32761c648fab1c544cf819f92611ef1b2f3b7aef282
 
 pkgname = msmtpq-systemd

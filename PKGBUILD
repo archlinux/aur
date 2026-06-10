@@ -6,20 +6,13 @@ pkgrel=1
 pkgdesc="Systemd unit for queuing and sending mail"
 arch=(any)
 license=('MIT')
-groups=()
+provides=('smtp-forwarder')
+conflicts=('smtp-forwarder')
 depends=(msmtp bash)
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/msmtpq-systemd-$pkgver.tar.gz"
-    "$pkgname-$pkgver.sshsig::$url/releases/download/$pkgver/msmtpq-systemd-$pkgver.tar.gz.sshsig"
-    "ALLOWED_SIGNERS"
-    )
-sha512sums=('SKIP' 'SKIP' 'SKIP')
-
-verify() {
-    ssh-keygen -Y verify -n tarball@max.gautier.name -I $(ssh-keygen -Y find-principals -s $pkgname-$pkgver.sshsig -f ALLOWED_SIGNERS) -f ALLOWED_SIGNERS -s $pkgname-$pkgver.sshsig < $pkgname-$pkgver.tar.gz
-}
+source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('1695dad93c4b88731904156e0548c1ed4311754bc61a5e99318c1c71d62d2ff47090ec84795cadabdbaad32761c648fab1c544cf819f92611ef1b2f3b7aef282')
 
 package() {
-
-    make -C "$pkgname-$pkgver" DESTDIR=$pkgdir install
-    install -Dm 644 "$pkgname-$pkgver"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    make DESTDIR="$pkgdir" install
+    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
