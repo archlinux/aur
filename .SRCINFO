@@ -1,6 +1,6 @@
 pkgbase = dirplot
 	pkgdesc = Nested treemap visualizations for directory trees and archives
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/deeplook/dirplot
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = dirplot
 	depends = python-drawsvg
 	provides = dirplot
 	conflicts = python-dirplot
-	source = https://files.pythonhosted.org/packages/source/d/dirplot/dirplot-0.5.1.tar.gz
-	sha256sums = c96aa54aa6d1a0371f3c141659e124139bbbf75908ef0646b875751a8530d590
+	source = https://files.pythonhosted.org/packages/source/d/dirplot/dirplot-0.6.0.tar.gz
+	sha256sums = f211482ae0cb3e88c1578f9c7fb10af3ecb521d76e1c04f6a6f5f73c46e45c08
 
 pkgname = dirplot

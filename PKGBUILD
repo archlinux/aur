@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="dirplot"
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Nested treemap visualizations for directory trees and archives"
 
@@ -23,7 +23,7 @@ depends=('python' 'python-py7zr' 'python-botocore' 'python-typer' 'python-parami
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c96aa54aa6d1a0371f3c141659e124139bbbf75908ef0646b875751a8530d590')
+sha256sums=('f211482ae0cb3e88c1578f9c7fb10af3ecb521d76e1c04f6a6f5f73c46e45c08')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/" || exit
