@@ -1,7 +1,7 @@
 # Maintainer: William Varmus <0@willvar.tw>
 
 pkgname=ossfs-bin
-pkgver=1.91.8
+pkgver=1.91.10
 pkgrel=1
 pkgdesc='FUSE-based file system backed by Alibaba Cloud OSS'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('fuse2' 'curl' 'libxml2-legacy' 'openssl')
 provides=('ossfs')
 conflicts=('ossfs' 'ossfs-git')
 source=("ossfs_${pkgver}_rockylinux9_x86_64.rpm::https://gosspublic.alicdn.com/ossfs/ossfs_${pkgver}_rockylinux9_x86_64.rpm")
-sha256sums=('55a52852bc33026bab3a713fa6e227e489fb647fa1316a41373a08751d05b1e7')
+sha256sums=('4c0f08ccac03b590239872527fa26ef8067e623c2d4a2dc5d8e593144dac894c')
 
 prepare() {
   cd "${srcdir}"
