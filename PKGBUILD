@@ -7,7 +7,15 @@ pkgbase=cuda-pascal
 pkgver=12.9.1
 _driverver=575.57.08
 pkgrel=4
-# manual-hint: compatibility-pinned to latest CUDA/driver pair verified to support Pascal GPUs; do not blindly follow newest CUDA.
+# Pascal boundary: CUDA 13.0 removed Maxwell/Pascal/Volta support; the 12.x
+# series is the final Pascal-capable line and remains supported for these GPUs
+# (CUDA 13.0 release notes). On pkgver bump, sync _driverver with the bundled
+# driver from compute/cuda/redist/redistrib_<ver>.json (.nvidia_driver.version).
+latestver() {
+  curl -fsSL 'https://developer.download.nvidia.com/compute/cuda/redist/' |
+    grep -aoE 'redistrib_12\.[0-9]+\.[0-9]+\.json' |
+    grep -oE '12\.[0-9]+\.[0-9]+' | sort -uV | tail -1
+}
 pkgdesc="NVIDIA CUDA toolkit for Pascal GPUs (latest CUDA version still supporting Pascal)"
 arch=('x86_64')
 url="https://developer.nvidia.com/cuda-zone"
