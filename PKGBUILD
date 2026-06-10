@@ -15,6 +15,6 @@ sha256sums=('35b1d387874e1dc490e679f2385b970250f82ce824db4956337c8ddc31cfa03c')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 papt "$pkgdir/usr/bin/papt2"
+    install -Dm755 papt "$pkgdir/usr/bin/papt"
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
