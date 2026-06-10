@@ -21,6 +21,6 @@ pkgbase = xfce4-meowmenu-plugin
 	depends = xfce4-panel
 	depends = xfconf
 	source = xfce4-meowmenu-plugin-0.6.4.tar.gz::https://github.com/matteobonanomi/xfce4-meowmenu-plugin/archive/refs/tags/v0.6.4.tar.gz
-	sha256sums = 9852a86a4d457ae2e8cc679a3acfd1779953f56ffe5f558cef78eb6e765490e2
+	sha256sums = ce3d2bc083e80fe4b6df349e4ed542ad974404198b3219f8c8da244e60699998
 
 pkgname = xfce4-meowmenu-plugin

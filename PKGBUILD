@@ -16,7 +16,7 @@ depends=('accountsservice' 'exo' 'garcon' 'glib2' 'gtk-layer-shell' 'gtk3'
 # listed here. meson/ninja are real build inputs not guaranteed by base-devel.
 makedepends=('gettext' 'git' 'meson' 'ninja' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9852a86a4d457ae2e8cc679a3acfd1779953f56ffe5f558cef78eb6e765490e2')
+sha256sums=('ce3d2bc083e80fe4b6df349e4ed542ad974404198b3219f8c8da244e60699998')
 
 build() {
   cd "${srcdir}"
