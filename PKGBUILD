@@ -1,5 +1,5 @@
 pkgname=puny-manager
-pkgver=1.6.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Minimal, local CLI password manager with encrypted vault"
 arch=('any')
