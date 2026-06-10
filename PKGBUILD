@@ -1,17 +1,17 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 # Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
-_watch=('https://www.realvnc.com/en/connect/download/viewer/linux/' 'VNC-Viewer-(\d[\d.]*\d+)-Linux-x64\.deb')
+_watch=('https://www.realvnc.com/en/connect/download/viewer/linux/' 'body' 'regex' 'VNC-Viewer-(\d[\d.]*\d+)-Linux-x64\.deb' 'pkgver')
 
 pkgname=realvnc-vnc-viewer
 pkgver=7.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc='VNC remote desktop client software by RealVNC'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.realvnc.com/'
 license=('custom')
 depends=('libsm' 'libxext')
-conflicts=('tigervnc')
+conflicts=('tightvnc' 'tigervnc' 'turbovnc')
 
 source_x86_64=("https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-${pkgver}-Linux-x64.deb")
 source_armv7h=("https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-${pkgver}-Linux-ARM.deb")
