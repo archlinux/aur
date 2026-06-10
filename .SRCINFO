@@ -1,5 +1,5 @@
 pkgbase = anitui
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	pkgdesc = a tui for browsing and streaming anime
 	url = https://github.com/typechecks/anitui
@@ -7,7 +7,7 @@ pkgbase = anitui
 	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = go
-	source = anitui-0.2.1.tar.gz::https://github.com/typechecks/anitui/archive/v0.2.1.tar.gz
+	source = anitui-0.2.2.tar.gz::https://github.com/typechecks/anitui/archive/v0.2.2.tar.gz
 	sha256sums = SKIP
 	optdepends = mpv: media player for streaming
 	optdepends = vlc: media player for streaming
