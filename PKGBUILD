@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 build () {
 	cd pluto-git/src
-	make -j PLAT=linux-readline
+	make -j PLAT=linux
 }
 
 package () {
