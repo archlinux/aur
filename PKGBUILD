@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=spinframework-cli
 _realname=spin
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='an open source framework for building and running fast, secure, and composable cloud microservices with WebAssembly'
 arch=('x86_64')
@@ -35,4 +35,4 @@ package() {
   install -Dm0755 $_realname-$pkgver/target/$CARCH-unknown-linux-gnu/release/spin "$pkgdir"/usr/bin/spin-cli
 }
 
-sha256sums=('9eb218e2d20d50fe723c9afb03bc2033af8e9d06fea44eb0bf7ee00ef6a68a39')
+sha256sums=('c27b9ae1e9b6c3723d0d417d9ef5927661312b363c8b84458ace4568d41132cf')
