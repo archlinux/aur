@@ -2,7 +2,7 @@
 
 pkgname=finkeeper24-bin
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="FinKeeper24 - менеджер личных финансов (Personal Finance Manager)"
 arch=('x86_64')
 url="https://finkeeper24.ru"
@@ -22,8 +22,8 @@ sha256sums=('2b441f7cc1b487aa596e6553b56f3ecdfd56495b862acd500fd17c1ee5217820'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
-	# Содержимое .deb (makepkg уже распаковал data.tar.zst в srcdir)
-	bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}/"
+	# Содержимое .deb (makepkg уже распаковал data.tar.* (любое сжатие: zst/xz/gz) в srcdir)
+	bsdtar -xf "${srcdir}"/data.tar.* -C "${pkgdir}/"
 
 	# Ярлык в меню (свой, с нормальной категорией — в апстримном стоит Unknown)
 	install -d "${pkgdir}/usr/share/applications"
