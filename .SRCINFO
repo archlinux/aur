@@ -1,7 +1,7 @@
 pkgbase = singcast-cli
 	pkgdesc = A clash core based on sing-box
 	pkgver = 1.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mapleafgo/singcast-cli
 	arch = x86_64
 	arch = aarch64
