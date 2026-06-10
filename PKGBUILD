@@ -1,7 +1,7 @@
 # Maintainer: Rongbo Wu <wurongbo2012@hotmail.com>
 
 _pkgname=eden
-_pkgver=0.2.0
+_pkgver=0.2.1
 pkgname="eden-opt"
 pkgver=${_pkgver//-/.}
 pkgrel=1.1
@@ -9,13 +9,14 @@ pkgdesc="The Eden Nintendo Switch emulator Clang PGO version (for Zen2 +)."
 arch=('x86_64' 'aarch64')
 url="https://git.eden-emu.dev/eden-emu/eden"
 license=('GPL-3.0-only')
-depends=('zlib' 'enet'
+depends=('enet'
     'qt6-base'
     'qt6-charts'
     'opus'
     'spirv-tools'
     'libfmt.so=12-64'
     'libusb'
+    'libva'
 )
 makedepends=(patchelf)
 optdepends=(
@@ -29,8 +30,8 @@ source_x86_64=("${_appimage}-x86_64::https://stable.eden-emu.dev/v${_pkgver}/Ede
 source_aarch64=("${_appimage}-aarch64::https://stable.eden-emu.dev/v${_pkgver}/Eden-Linux-v${_pkgver}-aarch64-clang-pgo.AppImage")
 b2sums=('93ff8f217b74b140b27aba5c740e945bef37b5528ce865a4c83de7a0cbebc133d923633a7ef93fb24a696caa4003d55315f54a8ebfcd246dd4eebd306e7c7943'
 )
-sha256sums_x86_64=('82af3016918c29518117433617c9d790e84cd928c59ba7828b169ba890e14ed0')
-sha256sums_aarch64=('43855be376f2f42d13f61c3bfc5b2126ddd32e49f78b5c03bea7758cefbbbe04')
+sha256sums_x86_64=('5cc5b358ac6449b40021b20ba2430b4d12302737db15c8cbe5b46ce9aab85ce5')
+sha256sums_aarch64=('b64f926cbf74fd870a39b144971084323d895d51919b91e906328e7f81bea087')
 
 prepare() {
     chmod +x "${_appimage}-$CARCH"
