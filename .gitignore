@@ -1,0 +1,17 @@
+# Build directories and outputs (never committed to the AUR repo).
+/src/
+/pkg/
+/*.pkg.tar.*
+/*.log
+
+# Upstream sources fetched by makepkg from source=().
+/linux-*.tar.xz
+/linux-*.tar.sign
+/linux-*.patch.zst
+/linux-*.patch.zst.sig
+/lnl-fix-v2.patch
+
+# makepkg / patch leftovers.
+/*.old
+/*.orig
+/*.rej
