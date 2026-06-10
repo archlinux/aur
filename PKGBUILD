@@ -1,6 +1,6 @@
 # Maintainer: britors <rodrigo@w3ti.com.br>
 pkgname=draco-db
-pkgver=11.1.2
+pkgver=11.1.4
 pkgrel=1
 pkgdesc="Multi-database desktop client — explorer, query editor, table creator/editor, ERD, and more"
 arch=('x86_64')
