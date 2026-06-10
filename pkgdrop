@@ -14,6 +14,30 @@ info()  { echo "[INFO] $*" ;}
 warn()  { echo "[WARN] $*" >&2;}
 fail()  { echo "[ERROR] $*" >&2; exit 1;}
 
+show_help() {
+cat << 'EOF'
+pkgdrop - Universal package installer for Arch Linux
+
+Usage: pkgdrop <file>
+
+Examples:
+  pkgdrop app.tar.xz        # Install tar.xz portable
+  pkgdrop app.deb           # Install debian package  
+  pkgdrop app.AppImage      # Install AppImage
+  pkgdrop app.pkg.tar.zst   # Install pacman package
+
+Environment Variables:
+  DEBUG=1        Show debug information
+  ASK_DEPENDENCIES=0  Skip dependency prompts
+  
+Supported Formats:
+  *.pkg.tar.*    → pacman (requires sudo)
+  *.tar.xz       → tarportable (extraction + symlink)
+  *.deb          → debtap (optional)
+  *.AppImage     → AppImage (copy to bin)
+EOF
+}
+
 check_command() {
     command -v "$1" &>/dev/null
 }
@@ -162,6 +186,12 @@ show_summary() {
 
 main() {
     local file="${1:-}"
+    
+    if [[ "$file" == "-h" ]] || [[ "$file" == "--help" ]]; then
+        show_help
+        exit 0
+    fi
+    
     [[ -z "$file" ]] && fail "Usage: pkgdrop <file>\nTry: pkgdrop zen.linux-x86_64.tar.xz"
     [[ -f "$file" ]] || fail "File not found: $file"
     
