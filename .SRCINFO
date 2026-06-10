@@ -1,0 +1,15 @@
+pkgbase = arch-health
+	pkgdesc = Modular system health checker for Arch Linux — battery, temps, memory, disk and more
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Techyiola/arch-health
+	arch = any
+	license = Apache-2.0
+	depends = lm_sensors
+	depends = smartmontools
+	depends = upower
+	depends = pacman-contrib
+	source = arch-health-1.0.0.tar.gz::https://github.com/Techyiola/arch-health/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = arch-health
