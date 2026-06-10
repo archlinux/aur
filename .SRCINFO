@@ -1,6 +1,6 @@
 pkgbase = lib32-pcsclite
 	pkgdesc = PC/SC Architecture smartcard middleware library (32-bit)
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://pcsclite.apdu.fr/
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = lib32-pcsclite
 	provides = libpcsclite.so
 	provides = libpcsclite_real.so
 	provides = libpcscspy.so
-	source = git+https://github.com/LudovicRousseau/PCSC.git?signed#tag=2.5.0
+	source = git+https://github.com/LudovicRousseau/PCSC.git?signed#tag=2.5.1
 	source = program-suffix.patch
 	source = systemd-unit-conflicts.diff
 	source = 0001-Allow-to-run-32-bit-pcscd-on-64-bit-systems.patch
 	validpgpkeys = F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E
-	sha256sums = ab0abdbb1ae253b2cb070c039cbe198effaab0d509e0c5ad5b99d3c2f793a48e
+	sha256sums = fb396681125b89569e3513e80b11f8636dba144dae6b49d480fe292cbb759b1d
 	sha256sums = 782db4be00202c5a8ea305bfbf6c8a6da17ccdbf370b3b79bb0c0eea3f4c6bf1
 	sha256sums = 207a2109c954ae75ba31e607f8da587f7053c6fe2f9e3ae17090acfb0c680b36
 	sha256sums = 6623cfd64ce75c3c8a4274210a437f3d192908bd3b5505f5c529c2aebd581581
