@@ -1,0 +1,26 @@
+pkgbase = moltorino-git
+	pkgdesc = A fork of Chatterino7 with pinned messages, polls, predictions, and more
+	pkgver = r2.911a2b4
+	pkgrel = 1
+	url = https://codeberg.org/MoltoBenne/Moltorino
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = qt6-tools
+	makedepends = pkgconf
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-imageformats
+	depends = boost-libs
+	depends = openssl
+	depends = libnotify
+	depends = hunspell
+	optdepends = qt6-wayland: Wayland support
+	provides = moltorino
+	conflicts = moltorino
+	source = moltorino-git::git+https://codeberg.org/MoltoBenne/Moltorino.git
+	sha256sums = SKIP
+
+pkgname = moltorino-git
