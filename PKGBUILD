@@ -33,7 +33,7 @@ build() {
     cargo build --workspace --release --locked
 
     # Copy Rust library into Flutter linux/lib
-    install -Dm755 target/release/liblumen_core.so ../ui/linux/lib/liblumen_core.so
+    install -Dm755 target/release/liblumen_core.so ui/linux/lib/liblumen_core.so
 
     # Build Flutter UI
     cd ui
