@@ -4,7 +4,7 @@ post_install() {
     chmod u+s /usr/bin/swhkd || true
     echo "==> Configured swhkd for native Wayland hotkeys."
   else
-    echo "==> Install swhkd-bin or swhkd-git from the AUR for native Wayland hotkeys."
+    echo "==> Install swhkd-git from the AUR or use Linux Soundboard's Install swhkd button for native Wayland hotkeys."
   fi
 
   if [ -f /usr/bin/swhks ]; then

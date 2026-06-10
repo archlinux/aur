@@ -2,7 +2,7 @@
 
 pkgname=linux-soundboard-git
 _pkgname=linux-soundboard
-pkgver=2.0.1.r16.g1247a32
+pkgver=2.0.2.r21.g6ec67bb
 pkgrel=1
 pkgdesc="Native Linux soundboard with full Wayland/X11 support and virtual microphone support"
 arch=('x86_64')
@@ -29,8 +29,7 @@ makedepends=(
   'pkgconf'
 )
 optdepends=(
-  'swhkd-bin: native Wayland global hotkeys from the AUR'
-  'swhkd-git: development build of the native Wayland hotkey daemon'
+  'swhkd-git: native Wayland hotkey daemon from upstream source'
   'xorg-xwayland: enables the native X11 backend inside Wayland sessions'
 )
 provides=('linux-soundboard')
