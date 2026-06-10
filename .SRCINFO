@@ -1,5 +1,5 @@
 pkgbase = anitui-bin
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	pkgdesc = a tui for browsing and streaming anime (prebuilt binary)
 	url = https://github.com/typechecks/anitui
@@ -11,10 +11,10 @@ pkgbase = anitui-bin
 	optdepends = mpv: media player for streaming
 	optdepends = vlc: media player for streaming
 	optdepends = haruna: media player for streaming
-	source_x86_64 = anitui-bin-0.2.0-linux-amd64.tar.gz::https://github.com/typechecks/anitui/releases/download/v0.2.0/anitui_linux_amd64.tar.gz
-	source_aarch64 = anitui-bin-0.2.0-linux-arm64.tar.gz::https://github.com/typechecks/anitui/releases/download/v0.2.0/anitui_linux_arm64.tar.gz
-	sha256sums_x86_64 = 970ebbfabead39e3f91f30d5cf4035b2dcbfe2dfd4d3416de95d6b2212f125db
-	sha256sums_aarch64 = 9c7173da0858645267a51b1ecdad5780eb0009ea586cf5eb876cb9807e9223f0
+	source_x86_64 = anitui-bin-0.2.1-linux-amd64.tar.gz::https://github.com/typechecks/anitui/releases/download/v0.2.1/anitui_linux_amd64.tar.gz
+	source_aarch64 = anitui-bin-0.2.1-linux-arm64.tar.gz::https://github.com/typechecks/anitui/releases/download/v0.2.1/anitui_linux_arm64.tar.gz
+	sha256sums_x86_64 = 99270add1b3bc9a26860aac67b4ae43a426d30657955e14d179ddd1672eaaa3b
+	sha256sums_aarch64 = cdc4c7ef5bb3fb1e23b84e628f12e36a2e530b0b85d330b3b9685c2b82fc844b
 
 pkgname = anitui-bin
 	pkgdesc = a tui for browsing and streaming anime (prebuilt binary)
