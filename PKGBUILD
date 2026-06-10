@@ -15,12 +15,12 @@ sha256sums=('SKIP')
 
 build() {
     cd "$pkgname"
-    gcc -O2 -Wall -o vtlock vtlock.c
+    make
 }
 
 package() {
     cd "$pkgname"
-    install -Dm 755 vtlock "$pkgdir/usr/bin/vtlock"
+    make DESTDIR="$pkgdir" PREFIX=/usr install
     install -Dm 644 README.md "$pkgdir/usr/share/doc/vtlock/README.md"
     install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/vtlock/LICENSE"
 }
