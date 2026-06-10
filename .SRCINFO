@@ -1,0 +1,15 @@
+pkgbase = rustlens
+	pkgdesc = Blazing-fast Rust Code Inspector for the Terminal
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/yashksaini-coder/Rustlens
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	source = rustlens-0.2.1.tar.gz::https://github.com/yashksaini-coder/Rustlens/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 3c5729600ad797b1e9e69cae57ba3b60a617bec3f30c27c975ef9d32b70052e1
+
+pkgname = rustlens
