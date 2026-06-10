@@ -1,0 +1,18 @@
+pkgbase = genesis-r14-touchpad-toggle
+	pkgdesc = Touchpad toggle key fix for Machcreator Genesis R14
+	pkgver = 2.0.1
+	pkgrel = 1
+	install = touchpad-toggle.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-evdev
+	depends = python-dbus
+	provides = touchpad-toggle
+	conflicts = touchpad-toggle
+	conflicts = touchpad-toggle-xinput
+	backup = etc/touchpad-toggle.conf
+	source = genesis-r14-touchpad-toggle-2.0.1.tar.gz::https://github.com/Labaman/genesis-r14-touchpad-toggle/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 17379b0ef458e4a2f7ffd8ed4297eda26d28fd9d11bc3b77f4a715e061e3793c
+
+pkgname = genesis-r14-touchpad-toggle

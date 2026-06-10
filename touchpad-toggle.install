@@ -1,0 +1,18 @@
+post_install() {
+    echo "==> Edit /etc/touchpad-toggle.conf to set your device IDs:"
+    echo ""
+    echo "    KEYBOARD_EVENT — find with:"
+    echo "      cat /proc/bus/input/devices | grep -E 'Name|Handlers'"
+    echo "      For a stable path: ls /dev/input/by-path/ | grep kbd"
+    echo ""
+    echo "    TOGGLE_KEY — find with:"
+    echo "      sudo evtest /dev/input/eventN"
+    echo "      (press the touchpad toggle key, look for the EV_KEY line)"
+    echo ""
+    echo "==> Then enable the service:"
+    echo "      systemctl enable --now touchpad-toggle.service"
+}
+
+post_upgrade() {
+    echo "==> Check /etc/touchpad-toggle.conf — a .pacnew may have been created."
+}
