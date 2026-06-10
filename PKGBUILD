@@ -5,8 +5,8 @@
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.2.0.r59.gbd2d344
-pkgrel=2
+pkgver=0.2.0.r89.g5219b9f
+pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
@@ -16,7 +16,7 @@ conflicts=('eden' 'eden-beta' 'eden-bin' 'eden-preview-bin')
 depends=('libusb' 'libva' 'qt6-webengine' 'brotli' 'qt6-charts' 'hicolor-icon-theme'
 	'qt6-base' 'sdl3' 'quazip-qt6' 'qt6-multimedia' 'fmt' 'boost-libs' 'opus' 'libdrm'
 	'enet' 'cubeb' 'game-devices-udev' 'zlib' 'openssl' 'libx11' 'libgcc'
-	'libstdc++' 'lz4' 'glibc' 'zstd'
+	'libstdc++' 'lz4' 'glibc' 'zstd' 'cpp-httplib' 'cpp-jwt'
 )
 makedepends=('git' 'cmake' 'catch2' 'boost' 'spirv-headers' 'vulkan-headers'
 	     'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode'
