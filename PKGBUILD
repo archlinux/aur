@@ -1,18 +1,25 @@
 # Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname=canoe
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Stacking window manager for River inspired by Windows 3.x"
 arch=('x86_64')
 url="https://github.com/roblillack/canoe"
 license=('MIT')
 depends=('river' 'freetype2' 'libgcc' 'libxkbcommon' 'glibc' 'fontconfig')
+optdepends=(
+  'fuzzel: Default launcher'
+  'foot: Default terminal emulator'
+  'swaylock: Default screen locker'
+)
+# It seems unable to strip debug symbols and it just leads to an empty debug package as well
+options=('!debug' '!strip')
 makedepends=('cargo-nightly')
 install=canoe.install
 source=(
   canoe-$pkgver::https://github.com/roblillack/canoe/archive/refs/tags/v"$pkgver".tar.gz
 )
-sha256sums=('0fce7ff6638b82cb2a21a2ace92bc0078debd06bf7c3a07fdfc22d3089ae75e5')
+sha256sums=('88d9aa20d6e663b6d6efe8e51c575e3dfbbfca47f39e5553239d2a777b4fb460')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"

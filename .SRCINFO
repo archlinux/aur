@@ -1,6 +1,6 @@
 pkgbase = canoe
 	pkgdesc = Stacking window manager for River inspired by Windows 3.x
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/roblillack/canoe
 	install = canoe.install
@@ -13,7 +13,12 @@ pkgbase = canoe
 	depends = libxkbcommon
 	depends = glibc
 	depends = fontconfig
-	source = canoe-0.5.0::https://github.com/roblillack/canoe/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 0fce7ff6638b82cb2a21a2ace92bc0078debd06bf7c3a07fdfc22d3089ae75e5
+	optdepends = fuzzel: Default launcher
+	optdepends = foot: Default terminal emulator
+	optdepends = swaylock: Default screen locker
+	options = !debug
+	options = !strip
+	source = canoe-0.5.1::https://github.com/roblillack/canoe/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 88d9aa20d6e663b6d6efe8e51c575e3dfbbfca47f39e5553239d2a777b4fb460
 
 pkgname = canoe
