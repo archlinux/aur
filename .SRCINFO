@@ -1,6 +1,6 @@
 pkgbase = cmus-rpc-py
 	pkgdesc = Discord rich presence integration for cmus music player
-	pkgver = 0.1.2.r3.g77a1e2f
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/sparklost/cmus-rpc-py
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = cmus-rpc-py
 	makedepends = python>=3.12
 	makedepends = uv
 	makedepends = git
+	makedepends = clang
+	makedepends = patchelf
 	depends = cmus
 	source = git+https://github.com/sparklost/cmus-rpc-py.git
 	sha256sums = SKIP

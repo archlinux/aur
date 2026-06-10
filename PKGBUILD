@@ -1,13 +1,13 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=cmus-rpc-py
-pkgver=0.1.2.r3.g77a1e2f
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Discord rich presence integration for cmus music player"
 arch=('any')
 url="https://github.com/sparklost/$pkgname"
 license=('GPL-3.0-only')
 depends=('cmus')
-makedepends=('python>=3.12' 'uv' 'git')
+makedepends=('python>=3.12' 'uv' 'git' 'clang' 'patchelf')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
