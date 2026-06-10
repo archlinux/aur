@@ -1,9 +1,9 @@
 # $Id$
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
-pkgname=(zoho-cliq zoho-cliq-upstream-electron)
-pkgver=1.8.1
-pkgrel=4
+pkgname=(zoho-cliq zoho-cliq-electron)
+pkgver=1.8.2
+pkgrel=1
 pkgdesc='Zoho Cliq communication software'
 arch=('x86_64')
 url="https://www.zoho.com/cliq/desktop/linux.html"
@@ -11,14 +11,14 @@ license=('Proprietary')
 provides=('zoho-cliq')
 depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss' 'xdg-utils')
 optdepends=('libappindicator-gtk3: Systray indicator support'
-            'org.freedesktop.secrets: Keyring password store support')
+    'org.freedesktop.secrets: Keyring password store support')
 source=(
     "https://downloads.zohocdn.com/chat-desktop/linux/cliq_${pkgver}_amd64.deb"
 )
-sha256sums=('1b6c171a9fafcea38d22692ad3b1e883be0659787a3ee12062175ec1cfe7a553')
+sha256sums=('d854c4a4bb073046109c538f4b8deea79a6d7d00847de2553757599224581bd8')
 
 package_zoho-cliq() {
-    conflicts=('zoho-cliq-upstream-electron')
+    conflicts=('zoho-cliq-electron' 'zoho-cliq-upstream-electron')
     install -d "${pkgdir}/opt/Cliq"
     install -d "${pkgdir}/usr/share"
     cd "${srcdir}"
@@ -27,12 +27,13 @@ package_zoho-cliq() {
     cp -r usr/share/* "${pkgdir}/usr/share/"
 }
 
-package_zoho-cliq-upstream-electron() {
+package_zoho-cliq-electron() {
     # The only difference is that this package copies over only the resources/ folder
     # and creates a launcher wrapper.
     electron_ver='electron39'
     depends+=($electron_ver)
     conflicts=('zoho-cliq')
+    provides=('zoho-cliq' 'zoho-cliq-upstream-electron')
     pkgdesc='Zoho Cliq running on upstream Electron (experimental)'
 
     install -d "${pkgdir}/opt/Cliq"
@@ -42,6 +43,6 @@ package_zoho-cliq-upstream-electron() {
     cp -r opt/Cliq/resources/* "${pkgdir}/opt/Cliq/"
     cp -r usr/share/* "${pkgdir}/usr/share/"
 
-    echo -e "#!/bin/sh\n\nexec /usr/bin/$electron_ver /opt/Cliq/app.asar" > "${pkgdir}/opt/Cliq/cliq"
+    echo -e "#!/bin/sh\n\nexec /usr/bin/$electron_ver /opt/Cliq/app.asar" >"${pkgdir}/opt/Cliq/cliq"
     chmod +x "${pkgdir}/opt/Cliq/cliq"
 }
