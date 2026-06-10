@@ -1,7 +1,7 @@
 pkgbase = emeditor-wine
 	pkgdesc = EmEditor text editor running through Wine
 	pkgver = 26.1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/duanluan/emeditor-linux
 	arch = x86_64
 	license = MIT
@@ -16,9 +16,9 @@ pkgbase = emeditor-wine
 	depends = xorg-xrdb
 	optdepends = winetricks: optional Wine prefix tuning
 	options = !strip
-	source = emeditor-linux-d57f159bc4fcf6962795743854e6ba98f543e3e0.tar.gz::https://github.com/duanluan/emeditor-linux/archive/d57f159bc4fcf6962795743854e6ba98f543e3e0.tar.gz
+	source = emeditor-linux-3b24fedf63951c3aa8557b0212e6f9c08cc0fc8a.tar.gz::https://github.com/duanluan/emeditor-linux/archive/3b24fedf63951c3aa8557b0212e6f9c08cc0fc8a.tar.gz
 	source = emed64_26.1.1.msi::https://download.emeditor.com/emed64_26.1.1.msi
-	sha256sums = c4fe4ef95bacf2cdb84767ffc95cea66879f5286da8d4786024e3116213514d8
+	sha256sums = 271b05fbfae55372d7a4df1ac2a966c6bc19d38c99cc14fdf4e8f2bad1f84621
 	sha256sums = bc54ae3700a657c159f176b8f5ad646a4cfef3090d8097ff8dfa99067340f5b5
 
 pkgname = emeditor-wine

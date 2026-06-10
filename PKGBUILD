@@ -2,7 +2,7 @@
 
 pkgname=emeditor-wine
 pkgver=26.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc='EmEditor text editor running through Wine'
 arch=('x86_64')
 url='https://github.com/duanluan/emeditor-linux'
@@ -23,15 +23,17 @@ optdepends=(
   'winetricks: optional Wine prefix tuning'
 )
 options=('!strip')
-_commit='d57f159bc4fcf6962795743854e6ba98f543e3e0'
+_commit='3b24fedf63951c3aa8557b0212e6f9c08cc0fc8a'
 _upstream="emeditor-linux-${_commit}"
 _msi="emed64_${pkgver}.msi"
 source=(
   "${_upstream}.tar.gz::https://github.com/duanluan/emeditor-linux/archive/${_commit}.tar.gz"
   "${_msi}::https://download.emeditor.com/${_msi}"
 )
-sha256sums=('c4fe4ef95bacf2cdb84767ffc95cea66879f5286da8d4786024e3116213514d8'
-            'bc54ae3700a657c159f176b8f5ad646a4cfef3090d8097ff8dfa99067340f5b5')
+sha256sums=(
+  '271b05fbfae55372d7a4df1ac2a966c6bc19d38c99cc14fdf4e8f2bad1f84621'
+  'bc54ae3700a657c159f176b8f5ad646a4cfef3090d8097ff8dfa99067340f5b5'
+)
 
 package() {
   local upstream_dir="${srcdir}/${_upstream}"
