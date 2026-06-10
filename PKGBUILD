@@ -1,6 +1,6 @@
 # Maintainer: wanger <310779211wym@gmail.com>
 pkgname=mineral
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A multi-source TUI music player in Rust — ratatui frontend, pluggable channel backends, real streaming playback with lyrics & spectrum."
 arch=('x86_64')
@@ -10,7 +10,7 @@ options=(!lto !debug)
 depends=('alsa-lib' 'openssl' 'zlib' 'gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5d28f2ebc5d65b8ddf2a445d58c4c21bf55e7f0750a0f670453f32040e1be54a')
+sha256sums=('b6919a0e0ed9ae22a12803716e22bb67d7641bf9f144a3342ed77f9048ebeab9')
 
 prepare() {
     cd "Mineral-$pkgver"
