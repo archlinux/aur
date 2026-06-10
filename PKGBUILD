@@ -35,9 +35,6 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname}"
   install -Dm755 update-vai.sh "$pkgdir/usr/bin/update-vai"
-  # resto...
-}
-
 
   # docs/licença
   [[ -f README.md ]] && install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
