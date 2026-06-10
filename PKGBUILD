@@ -6,7 +6,7 @@ pkgname=(
 	lib32-wivrn-server
 	wivrn-dashboard
 )
-pkgver=26.2.3
+pkgver=26.6
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
@@ -14,11 +14,12 @@ url="https://github.com/WiVRn/WiVRn"
 license=("GPL-3.0-or-later")
 
 _depends_server=(
-	"glibc"
 	"avahi"
+	"boost-libs"
 	"cairo"
 	"ffmpeg"
 	"glib2"
+	"glibc"
 	"libarchive"
 	"libbsd"
 	"libgcc"
@@ -39,15 +40,16 @@ _depends_server=(
 _depends_lib32_server=(
 	"lib32-gcc-libs"
 	"lib32-glibc"
-	"lib32-vulkan-icd-loader"
 	"lib32-libglvnd"
+	"lib32-vulkan-icd-loader"
 )
 
 _depends_dashboard=(
+	"boost-libs"
 	"glibc"
 	"hicolor-icon-theme"
-	"ki18n"
 	"kcoreaddons"
+	"ki18n"
 	"kiconthemes"
 	"kirigami"
 	"kirigami-addons"
@@ -84,13 +86,14 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7d6eb388d7176263f4ceb6335541d62a2038bd9c4a991e70e6049fb3726fe104')
+sha256sums=('49673aa14042a396ecff49f4aaf5e32aeea0caa761c724edfcc3fec9b32fd805')
 
 build() {
 	cd "WiVRn-$pkgver"
 	cmake -B build-server . \
 	-G Ninja \
 	-DGIT_DESC=v${pkgver} \
+	-DGIT_COMMIT=v${pkgver} \
 	-DWIVRN_BUILD_SERVER=ON \
 	-DWIVRN_BUILD_WIVRNCTL=ON \
 	-DWIVRN_BUILD_CLIENT=OFF \
@@ -110,6 +113,7 @@ build() {
 	PKG_CONFIG_PATH="/usr/lib32/pkgconfig" cmake -B build-server-32 -S . \
 	-G Ninja \
 	-DGIT_DESC=v${pkgver} \
+	-DGIT_COMMIT=v${pkgver} \
 	-DCMAKE_C_FLAGS="-m32" \
 	-DCMAKE_CXX_FLAGS="-m32" \
 	-DWIVRN_BUILD_CLIENT=OFF \
@@ -129,6 +133,7 @@ build() {
 	cmake -B build-dashboard . \
 	-G Ninja \
 	-DGIT_DESC=v${pkgver} \
+	-DGIT_COMMIT=v${pkgver} \
 	-DWIVRN_BUILD_CLIENT=OFF \
 	-DWIVRN_BUILD_SERVER=OFF \
 	-DWIVRN_BUILD_WIVRNCTL=OFF \
@@ -151,7 +156,6 @@ package_wivrn-server() {
 		"opencomposite: OpenVR to OpenXR translation layer"
 		"xrizer: Another OpenVR to OpenXR translation layer"
 	)
-	install=$pkgname.install
 
 	cd "WiVRn-$pkgver"
 	DESTDIR="$pkgdir" cmake --install build-server
