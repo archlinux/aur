@@ -1,6 +1,6 @@
 # Maintainer: Alex Oleshkevich <alex.oleshkevich@gmail.com>
 pkgname=niri-autolabel
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Labels niri workspaces from their window contents via OpenRouter"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('niri')
 makedepends=('go')
 _upstream=niri-autolabel
 source=("$_upstream-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('565e0520b1635e9dff3df76d43c7508bf136dd4346b9b9607b46e06f07755913')
+sha256sums=('86475ec10a013905af9f3ac91a519f50f61fa065e1803219ad7c11f2f68f8950')
 
 build() {
   cd "$_upstream-$pkgver"
