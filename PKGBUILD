@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=vacask
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
 	'x86_64'
@@ -34,18 +34,8 @@ optdepends=(
 	'python-matplotlib: For plotting the individual tests'
 )
 options=()
-source=(
-    "${pkgname}::git+${url}#tag=_${pkgver}"
-)
-b2sums=('a35e391017923a0c0b9c406df723674154bd3a4d433d8b8d40a143589efa7d6a8eb1a56b82758a16747e79380151fbbe156743b57d6195ed25fc90f038e5edf2')
-
-prepare() {
-    cd "${pkgname}"
-
-    # For Boost v1.89 support
-    # See upstream: https://codeberg.org/arpadbuermen/VACASK/pulls/35
-    git cherry-pick -n a4d787993a39b005ddd3024fb84d3467b8ba3f15^..4300e5a3f36b8d567ce38445e377e82d6d422a4e
-}
+source=("${pkgname}::git+${url}#tag=_${pkgver}")
+b2sums=('3f8552e2714b535f5a08d2a95960c602909ae28d33723f3dc06f1bb9e82e8e5eeadd832b805901df6cdac728d9a82009088c9491c37cda650194a4dc74694a5c')
 
 build() {
     local cmake_options=(
