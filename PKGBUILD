@@ -2,24 +2,38 @@
 
 _pkgname="dbxcli"
 pkgname="${_pkgname}-bin"
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="A command line client for Dropbox built using the Go SDK"
-arch=('armv7h' 'x86_64')
+arch=(
+  'aarch64'
+  'x86_64'
+)
 url="https://github.com/dropbox/${_pkgname}"
-license=('Apache-2.0')
-depends=('glibc')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-_pkgsrc="${_pkgname}-${pkgver}"
-source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
-        "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
-source_armv7h=("${_pkgsrc}-armv7h::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm")
-source_x86_64=("${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64")
-sha256sums=('a6352344b8f07d4504b3c750adfe3c1e1ed07b1a351362e80d0cd6761782f4c0'
+license=(
+  'Apache-2.0'
+)
+provides=(
+  "${_pkgname}"
+)
+conflicts=(
+  "${_pkgname}"
+)
+_pkgsrc="${url##*/}-${pkgver}"
+source=(
+  "${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
+  "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
+)
+source_aarch64=(
+  "${_pkgsrc}-aarch64::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64"
+)
+source_x86_64=(
+  "${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64"
+)
+sha256sums=('48b06c47c9bfd23c496f847ec03f2a31e626a8b24a048c637a2583caca2269ef'
             '0d70849e238c190dfcfac96d23d9808c2336cb1ba0550182311d7a496a9c313d')
-sha256sums_armv7h=('806584e4758e59d753c1d7ed0fe97a7ae43fec0240c3bf4d388360bb51daf346')
-sha256sums_x86_64=('3ff6e29675095063a5ba7101115cf7f809f3deddf14998ac61bf7a0330d736cb')
+sha256sums_aarch64=('1ea0750be17fdf87ef60ce8c5da711b60e8a44867ff778b3a0c02d41f0108b9f')
+sha256sums_x86_64=('7b9e3b35a23c8c1259862ba28c24468d203690c689226afc4fa5b7cb4e1c7b7a')
 
 package() {
   cd "${srcdir}"
