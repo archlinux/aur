@@ -1,13 +1,15 @@
 pkgbase = cmus-auto-lyrics
 	pkgdesc = Curses based lyrics display and fetcher for cmus music player
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/sparklost/cmus-auto-lyrics
 	arch = any
 	license = GPL-3.0-only
-	makedepends = python>=3.11
-	makedepends = python-pipenv
+	makedepends = python>=3.12
+	makedepends = uv
 	makedepends = git
+	makedepends = clang
+	makedepends = patchelf
 	depends = cmus
 	source = git+https://github.com/sparklost/cmus-auto-lyrics.git
 	sha256sums = SKIP

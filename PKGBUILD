@@ -1,13 +1,13 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=cmus-auto-lyrics
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Curses based lyrics display and fetcher for cmus music player"
 arch=('any')
 url="https://github.com/sparklost/$pkgname"
 license=('GPL-3.0-only')
 depends=('cmus')
-makedepends=('python>=3.11' 'python-pipenv' 'git')
+makedepends=('python>=3.12' 'uv' 'git' 'clang' 'patchelf')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -18,14 +18,28 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
-	export PIPENV_VENV_IN_PROJECT=1
-	pipenv install
+	export UV_NO_CACHE=1
+	
+	# setup python 3.14
+	if uv python list --only-installed | grep -q '3.14'; then
+        echo "Python 3.14 is already installed"
+        PY_ALREADY_INSTALLED=true
+    else
+        uv python install 3.14
+        PY_ALREADY_INSTALLED=false
+    fi
+    
+	uv sync --all-groups
 }
 
 build() {
 	cd "$pkgname"
-	export PIPENV_VENV_IN_PROJECT=1
-	pipenv run python -m PyInstaller --noconfirm --onefile --windowed --clean --name "$pkgname" "main.py"
+	uv run build.py --nuitka
+	
+	# remove python 3.14
+	if [ "$PY_ALREADY_INSTALLED" != "true" ]; then
+        uv python uninstall 3.14  # Or exact version from 'uv python list'
+    fi
 }
 
 package() {
