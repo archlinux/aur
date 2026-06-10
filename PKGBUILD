@@ -28,8 +28,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
-  git describe --tags --long | sed 's/^v//;s/-/./g'
+  echo "0.7.1.r$(git rev-list --count HEAD)"
 }
+
 
 package() {
   cd "$srcdir/${pkgname}"
