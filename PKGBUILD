@@ -1,7 +1,7 @@
 # Maintainer: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=music21
 pkgname=python-$_pkgname
-pkgver=9.9.1
+pkgver=10.3.0
 pkgrel=1
 pkgdesc="A toolkit for computer-aided musical analysis"
 arch=('any')
@@ -30,10 +30,10 @@ makedepends=(
     'python-wheel'
 )
 source=("https://github.com/cuthbertLab/music21/archive/v${pkgver}.tar.gz")
-sha256sums=('32e07715cf2ff87562355b61e217d17573831f111c5322c201b53bfe86e528c2')
+sha256sums=('e2ba9c5bb724dc328517cc87bd8deff74feda824c832d1a542d1f951ca0e05a2')
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir/$_pkgname-$pkgver"
     python -m build --wheel --no-isolation
 }
 

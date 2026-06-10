@@ -1,6 +1,6 @@
 pkgbase = python-music21
 	pkgdesc = A toolkit for computer-aided musical analysis
-	pkgver = 9.9.1
+	pkgver = 10.3.0
 	pkgrel = 1
 	url = https://music21.org/music21docs
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-music21
 	optdepends = python-pyaudio: allows recording with music21.audioSearch
 	optdepends = python-pygame: allows realtime MIDI performance with music21.midi
 	optdepends = python-scipy: faster FFT for music21.audioSearch
-	source = https://github.com/cuthbertLab/music21/archive/v9.9.1.tar.gz
-	sha256sums = 32e07715cf2ff87562355b61e217d17573831f111c5322c201b53bfe86e528c2
+	source = https://github.com/cuthbertLab/music21/archive/v10.3.0.tar.gz
+	sha256sums = e2ba9c5bb724dc328517cc87bd8deff74feda824c832d1a542d1f951ca0e05a2
 
 pkgname = python-music21
