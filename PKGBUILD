@@ -2,7 +2,7 @@
 
 pkgname='yamagi-quake2-ref_gl4'
 pkgdesc='OpenGL 4.6 renderer for yamagi-quake2'
-pkgver='1.09'
+pkgver='1.10'
 pkgrel='1'
 url='https://github.com/yquake2/ref_gl4'
 arch=('x86_64')
@@ -10,10 +10,10 @@ license=('GPL-2.0-only' 'LicenseRef-custom')
 depends=('glibc' 'glu' 'sdl3' 'yamagi-quake2')
 _refgl4="ref_gl4-${pkgver}"
 source=("${_refgl4}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('d2406d83a86c7ae0ae0fd97c58cd2129279fc93260c63896082d19be7d8c39bd5a01d7255a65d4b81687b6945f189330aba0aa917e72acfcef338410fd912783')
+b2sums=('12da532a282ec38b7a9162fb92442c259b224ef8487314eb7ab4b8c4fb0b4c56d7a65602d9c1d38451e48ff12148f9fb29387421d88b2bc7a9d3c4e6478ee3ce')
 
 build() {
-	env CFLAGS="$(sed -r 's/[[:space:]]?-Wp,-D_FORTIFY_SOURCE=[[:digit:]]+//' <<<"$CFLAGS")" make -C "${srcdir}/${_refgl4}" WITH_SDL3=YES
+	make -C "${srcdir}/${_refgl4}"
 }
 
 package() {
