@@ -4,7 +4,7 @@ pkgname='sing-box-windows-bin'
 _pkgname='sing-box-windows'
 pkgver='2.3.0'
 pkgrel='1'
-pkgdesc='GUI for SingBox'
+pkgdesc='🚀 现代化 sing-box 跨平台桌面客户端｜订阅导入・代理模式切换・运行态监控｜🪟 Windows / 🐧 Linux / 🍎 macOS。 Modern sing-box desktop client for subscriptions, proxy switching, and runtime monitoring.'
 arch=('x86_64')
 
 license=('MIT')
