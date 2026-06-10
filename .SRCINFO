@@ -1,6 +1,6 @@
 pkgbase = palemoon
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 34.3.0
+	pkgver = 34.3.0.1
 	pkgrel = 1
 	epoch = 1
 	url = https://www.palemoon.org/
@@ -37,14 +37,14 @@ pkgbase = palemoon
 	depends = pango
 	optdepends = libpulse: PulseAudio audio driver
 	optdepends = ffmpeg: various video and audio support
-	source = git+https://repo.palemoon.org/MoonchildProductions/Pale-Moon?signed#commit=835dcd0243
+	source = git+https://repo.palemoon.org/MoonchildProductions/Pale-Moon?signed#commit=973993c59c
 	source = git+https://repo.palemoon.org/MoonchildProductions/UXP
 	source = mozconfig.in
 	validpgpkeys = 3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC
-	sha1sums = fe1db1cc8bf0b9508f9a49dbafe5b3aaddec5d1e
+	sha1sums = aab88a7a027ddde10b3c9a67967cbb799ad4c6f5
 	sha1sums = SKIP
 	sha1sums = a45ac7de3b664dcadb0917a975ee0b859385b719
-	sha256sums = 762a57bb208db9be70c84edf84f37fa38cac8780a7563619b91c46a2cc07b334
+	sha256sums = 94474c1f64830270782e37694ca694be5f180a2bf5bc0402ec47ac152152aa43
 	sha256sums = SKIP
 	sha256sums = d74ba2d07f5ddb9a8268c64745995a310f5aa2033ca3c8634a22e0cbcf0fa3c2
 
