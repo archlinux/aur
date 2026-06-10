@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/mikelexp/Fila"
 depends=('mpv' 'ffmpeg' 'xdg-utils')
 source=("https://github.com/mikelexp/Fila/releases/download/v0.2.1/fila-0.2.1-linux-x86_64.tar.gz")
-sha256sums=('4f37b2f482f5006798df6b6071f86ea83681b64d9a82baff5917be259429252e')
+sha256sums=('92d9fcd6b4705f54d7e44a238a9236b869abca0b0fd179c8d712183c99ccf56b')
 
 package() {
   cd "$srcdir"
