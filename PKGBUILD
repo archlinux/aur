@@ -12,5 +12,5 @@ source=()
 sha256sums=()
 
 package() {
-  echo "Placeholder - GoReleaser will auto-populate this file on release"
+  echo "Placeholder - GoReleaser will auto-populate on release"
 }

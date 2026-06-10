@@ -1,0 +1,12 @@
+pkgbase = unirtm-bin
+    pkgver = 0.0.0
+    pkgrel = 1
+    pkgdesc = UniRTM (Uni Runtime and Tools Manager) is a cross-platform developer toolchain manager.
+    url = https://github.com/snowdreamtech/UniRTM
+    arch = x86_64
+    arch = aarch64
+    license = MIT
+    provides = unirtm
+    conflicts = unirtm
+
+pkgname = unirtm-bin
