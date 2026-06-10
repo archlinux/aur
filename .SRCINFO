@@ -1,0 +1,21 @@
+pkgbase = fungen-bin
+	pkgdesc = AI-powered funscript generator
+	pkgver = 2.1.0beta
+	pkgrel = 1
+	url = https://github.com/ack00gar/FunGen
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = glibc
+	depends = gcc-libs
+	depends = ffmpeg4.4
+	optdepends = ffmpeg: video/audio processing tools
+	provides = fungen
+	conflicts = fungen
+	options = !strip
+	source_x86_64 = fungen-2.1.0-beta-linux-x86_64.tar.gz::https://github.com/ack00gar/FunGen/releases/download/v2.1.0-beta/fungen-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c95237d08a741d0ed5b74c8f55bb45b5cee3e4aa5f980f7747dfd2c83f2af001
+	source_aarch64 = fungen-2.1.0-beta-linux-aarch64.tar.gz::https://github.com/ack00gar/FunGen/releases/download/v2.1.0-beta/fungen-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 5f0f0beb796544efe32ffc4f98e6f6ceb471970e7d3e6016e923383db8ab33fd
+
+pkgname = fungen-bin
