@@ -1,6 +1,6 @@
 pkgbase = kde-webapp-manager-git
 	pkgdesc = A native Qt6 utility to easily generate and manage custom browser webapps on KDE Plasma
-	pkgver = r0.g0000000
+	pkgver = r9.ge0f97a9
 	pkgrel = 1
 	url = https://github.com/satodu/kde-webapp-gen
 	arch = any

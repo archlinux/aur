@@ -1,7 +1,7 @@
 # Maintainer: Panda <satodu>
 _pkgname=kde-webapp-manager
 pkgname=${_pkgname}-git
-pkgver=r5.g09766d7
+pkgver=r9.ge0f97a9
 pkgrel=1
 pkgdesc="A native Qt6 utility to easily generate and manage custom browser webapps on KDE Plasma"
 arch=('any')

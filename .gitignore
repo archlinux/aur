@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/kde-webapp-manager/
+*.pkg.tar.zst
