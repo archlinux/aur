@@ -1,26 +1,26 @@
 pkgbase = python-lxst
 	pkgdesc = Lightweight Extensible Signal Transport for Reticulum
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://pypi.org/project/lxst
 	arch = aarch64
 	arch = x86_64
 	license = CC-BY-NC-ND-4.0
 	makedepends = python-installer
-	depends = glibc
-	depends = i2c-tools
 	depends = python>=3.13
-	depends = python-audioop-lts>=0.2.1
+	depends = python-rns>=1.2.0
 	depends = python-numpy>=2.3.4
 	depends = python-pycodec2>=4.1.0
-	depends = python-rns>=1.0.4
+	depends = python-audioop-lts>=0.2.1
+	depends = glibc
+	depends = i2c-tools
 	optdepends = python-simpleaudio: for playing AudioSegments (first preference)
 	optdepends = python-pyaudio: for playing AudioSegments (second preference)
 	optdepends = python-ffpyplayer: for playing AudioSegments (third preference)
 	optdepends = python-scipy: SciPy versions of high_pass_filter, low_pass_filter, and band_pass_filter
 	optdepends = python-cffi>=2.0.0: filter acceleration
-	noextract = lxst-0.4.6-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/l/lxst/lxst-0.4.6-py3-none-any.whl
-	sha256sums = 49b3c03e93c18e13c83ad04c39fba386da174ac649b91124c695a4cafaf78f58
+	noextract = lxst-0.4.7-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/l/lxst/lxst-0.4.7-py3-none-any.whl
+	sha256sums = a582378b56a2762f530eb28308523cfa5d6b6b83227b03d3c0f8c4f9ba084ea6
 
 pkgname = python-lxst
