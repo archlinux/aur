@@ -1,0 +1,13 @@
+pkgbase = niri-autolabel
+	pkgdesc = Labels niri workspaces from their window contents via OpenRouter
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/alex-oleshkevich/autolabel
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = niri
+	source = autolabel-0.1.1.tar.gz::https://github.com/alex-oleshkevich/autolabel/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = cc3352b4cacb28fe737e1f3536855d2e2f529101c89987ff5772303f9e1c0bd4
+
+pkgname = niri-autolabel
