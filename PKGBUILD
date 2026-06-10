@@ -22,7 +22,7 @@ optdepends=(
   'hyprland: tested wlroots compositor environment'
   'sway: alternative wlroots compositor environment'
 )
-_commit='64b73227857fe796f0dba778de5fd656a634986c'
+_commit='c7af032bb35129d9ccbf1514887235a5070d564f'
 _github_url='https://github.com/xander-lin/screenshot.git'
 _gitee_url='https://gitee.com/xander-lin/screenshot.git'
 source=()
