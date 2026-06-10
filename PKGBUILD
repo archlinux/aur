@@ -2,7 +2,7 @@
 pkgname=voix
 _pkgname=Voix # The case-sensitive name of the repository from git
 pkgver=4.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
 provides=('sudo' 'doas')
 conflicts=('sudo' 'doas')
