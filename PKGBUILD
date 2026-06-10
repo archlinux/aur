@@ -5,7 +5,7 @@ pkgdesc="Encrypted journal app built with Rust and Flutter"
 arch=('x86_64')
 url="https://github.com/crazygiscool/lumen"
 license=('custom')
-depends=('glibc' 'gcc-libs' 'gtk3')
+depends=('glibc' 'gcc-libs' 'gtk3' 'sqlite')
 makedepends=('git' 'cargo' 'flutter' 'cmake' 'ninja' 'pkg-config')
 
 source=("$pkgname::git+https://github.com/crazygiscool/Lumen.git#tag=v$pkgver"
@@ -29,8 +29,8 @@ sha256sums=('SKIP'
 build() {
     cd "$srcdir/$pkgname"
 
-    # Build Rust core and TUI via workspace
-    cargo build --release --locked
+    # Ensure we are at the workspace root and build everything
+    cargo build --workspace --release --locked
 
     # Copy Rust library into Flutter linux/lib
     install -Dm755 target/release/liblumen_core.so ../ui/linux/lib/liblumen_core.so
