@@ -1,5 +1,5 @@
 # **Rclone-WIZ**
-### Version: 1.4.1 HOTFIX
+### Version: 1.4.2 HOTFIX
 
 **Rclone-WIZ is an independent project and is not affiliated with, endorsed by, or sponsored by the rclone team / contributors.**
 

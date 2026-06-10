@@ -38,3 +38,8 @@ Added comments in the generated script to explain the purpose of each rclone opt
 
 Added
 Updated the "About" section in the UI to reflect the new version number.
+
+[1.4.2] - 2026-06-10
+
+Update version to 1.4.2 and enhance caching parameters for improved performance
+

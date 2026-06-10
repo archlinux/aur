@@ -241,7 +241,7 @@ class RcloneKdeApp(QMainWindow):
         
         about_html = """
         <div style="font-family: sans-serif;">
-            <h2 style="color: #3daee9;">Rclone-WIZ 1.4.1</h2>
+            <h2 style="color: #3daee9;">Rclone-WIZ 1.4.2</h2>
             <p>A simple and easy-to-use tool to configure, script, and mount cloud drives using rclone.</p>
             <hr>
             <p><b>Created by:</b> Miran Kljun<br>
@@ -372,18 +372,19 @@ class RcloneKdeApp(QMainWindow):
                 "echo \"Creating mount directory if it doesn't exist...\"\n"
                 "mkdir -p \"$MOUNT_PATH\"\n\n"
                 "echo \"Mounting $REMOTE to $MOUNT_PATH...\"\n"
-                "# Execute rclone mount with optimized VFS caching and buffer limits for stream performance\n"
+                "# Execute rclone mount with optimized VFS caching and dynamic chunking\n"
                 "rclone mount \"$REMOTE\" \"$MOUNT_PATH\" \\\n"
                 "  --vfs-cache-mode full \\\n"
-                "  --vfs-cache-max-size 50G \\\n"    # Cap the disk usage to 50GB (adjust to your disk)
-                "  --vfs-cache-max-age 24h \\\n"    # Remove cache files older than 24 hours
-                "  --dir-cache-time 72h \\\n"       # Keep directory metadata in RAM longer
-                "  --buffer-size 64M \\\n"          # Lower individual buffer to save total RAM
-                "  --vfs-read-ahead 128M \\\n"      # Pre-fetch data for smoother reading
-                "  --attr-timeout 1h \\\n"          # Cache file attributes longer
-                "  --fast-list \\\n"                # Speeds up directory listing
-                "  --poll-interval 1m \\\n"         # Sync changes from cloud every minute
-                "  --daemon"                        # Run in background
+                "  --vfs-cache-max-size 50G \\\n"        # Cap the disk usage to 50GB (adjust to your disk)
+                "  --vfs-cache-max-age 24h \\\n"         # Remove cache files older than 24 hours
+                "  --dir-cache-time 72h \\\n"            # Keep directory metadata in RAM longer
+                "  --buffer-size 32M \\\n"               # Reduced slightly to save RAM across multiple files
+                "  --vfs-read-chunk-size 32M \\\n"       # FIX: Starts downloading in small chunks for instant open times
+                "  --vfs-read-chunk-size-limit 2G \\\n"  # FIX: Gradually increases chunk size for smooth sustained reads
+                "  --vfs-read-ahead 128M \\\n"           # Pre-fetch data for smooth streaming
+                "  --attr-timeout 1h \\\n"
+                "  --poll-interval 1m \\\n"
+                "  --daemon"                             # Run in background
                 #"  --vfs-read-chunk-size-limit off\n"
             )
             self.text_script.setPlainText(script_content)
