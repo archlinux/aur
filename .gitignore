@@ -1,0 +1,15 @@
+# makepkg output
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+
+# downloaded sources
+src/
+
+# build output
+pkg/
+
+# logs
+*.log
+
+# checksums/temp
+*.tar.gz
