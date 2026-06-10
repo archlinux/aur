@@ -2,6 +2,7 @@
 Description=ChatLab HTTP API Service (user)
 Documentation=https://chatlab.fun
 After=network.target
+Conflicts=chatlab-web.service
 
 [Service]
 Type=simple
