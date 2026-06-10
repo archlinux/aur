@@ -1,0 +1,11 @@
+[Unit]
+Description=Meowl desktop pet
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/meowl-pet
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

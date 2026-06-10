@@ -1,0 +1,12 @@
+post_install() {
+    echo ""
+    echo "==> meowl-pet requires your user to be in the 'input' group to read keyboard events."
+    echo "==> Run the following command, then log out and back in:"
+    echo ""
+    echo "      sudo usermod -aG input \$USER"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
