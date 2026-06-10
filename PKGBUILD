@@ -3,7 +3,7 @@
 
 pkgname=aionui-bin
 _pkgname=aionui
-pkgver=2.1.15
+pkgver=2.1.16
 pkgrel=2
 pkgdesc="Transform your command-line experience into a modern, efficient AI Chat interface."
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}_${pkgver}_linux_amd64.deb::${url}/releases/download/v${pkgver}/AionUi-${pkgver}-linux-amd64.deb")
 
-sha256sums_x86_64=('465270a16686dabeea78e22ff9ebe73b71151c7280ea9eceddbbc12fb75bbe25')
+sha256sums_x86_64=('1bb5197baf338ab209b1392d026c15623daba25f43015c7b27926e6f4c3cc19e')
 
 package() {
   # .deb 包本质是一个 ar 归档文件，先用 ar 命令解开
