@@ -1,6 +1,6 @@
 pkgbase = quick-visor
 	pkgdesc = Quickshell-based display manager overlay for Hyprland
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/AlexMacocian/quick-visor
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = quick-visor
 	depends = qt6-declarative
 	depends = hyprland
 	depends = inotify-tools
-	source = quick-visor-0.0.3.tar.gz::https://github.com/AlexMacocian/quick-visor/archive/v0.0.3.tar.gz
-	sha256sums = fa66be73f82c747181b2f9a01e355ecabcc0fbec03ba8166dc95c185dc5f3c84
+	source = quick-visor-0.0.4.tar.gz::https://github.com/AlexMacocian/quick-visor/archive/v0.0.4.tar.gz
+	sha256sums = 3079b2b04c93fb0bc1773dac09e327d032ad25cf8515323caf96409c41b5aab3
 
 pkgname = quick-visor
