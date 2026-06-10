@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Name=ZapZapNoGpu
+Comment[pt_BR]=WhatsApp Desktop para Linux NoGpu
+Comment=WhatsApp Desktop for Linux NoGpu
+Exec=env -u http_proxy -u https_proxy -u HTTP_PROXY -u HTTPS_PROXY -u all_proxy -u ALL_PROXY -u FONTCONFIG_FILE -u FONTCONFIG_PATH QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu --disable-gpu-compositing --disable-vulkan --disable-features=Vulkan,VulkanFromANGLE --no-proxy-server" zapzap %u
+Icon=com.rtosta.zapzap
+Type=Application
+Categories=Chat;Network;InstantMessaging;Qt;
+Keywords=WhatsApp;Chat;ZapZap;
+StartupWMClass=zapzap
+MimeType=x-scheme-handler/whatsapp
+Terminal=false
+SingleMainWindow=true
+X-GNOME-UsesNotifications=true
+X-GNOME-SingleWindow=true
