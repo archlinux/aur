@@ -37,7 +37,7 @@ then
 	# startup memory
 	for i in Xmx Xms; do
 		j=$(grep javastart_$i DATA/SETTINGS/yacy.conf | sed 's/^[^=]*=//')
-		if [ -n $j ]; then JAVA_ARGS="-$j $JAVA_ARGS"
+		if [ -n "$j" ]; then JAVA_ARGS="-$i$j $JAVA_ARGS"
 		fi
 	done
 
@@ -46,7 +46,7 @@ then
 
 	if [ ! -z "$j" ];
 	then
-		if [ -n $j ]
+		if [ -n "$j" ]
 		then NICE_VAL=$j
 		fi
 	fi

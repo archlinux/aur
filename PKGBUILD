@@ -20,7 +20,7 @@ source=("https://download.yacy.net/yacy_v${pkgver}_${_pkgextraver}.tar.gz"
         'yacy.service')
 options=(!emptydirs)
 sha512sums=('21f63250a9634a7ed41940c6acaf7feb677012b9344b7e56d173849981232bc4ed56e2f66565dbdacf6034d37de99bbbf228ec1cb6c7848b2a0843020f6e57aa'
-            'd6aeed6a12589e60d9d3632931672f1ea05f1387184d5bd59c08cab225e8104e4519489135175e4f58cd00a5a3341c229f38eabeb7ff1d68b6b786881631bc34'
+            '61dc598b975afdbbb1cab1f3aff304747cc3544f0f35d5f6a26d80aa71fcfb9f013f8f1054410eae9870c1472b4aacbef4b28ad9400b9591263c9f6adaa0971d'
             '754b6224ef2a640cbfb50a3d46e92c04955dac3e683239872d2a5c9ba92016a1511c6049903322dd8a21e6d2cc51e2f4e9bd3339b4ef4aada68ae20b3acc189b')
 
 package() {
