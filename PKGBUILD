@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat-git
 _pkgname=GhostChat
-pkgver=4.0.1.r0.g492767d
+pkgver=4.2.0.r0.gfa250c6
 _nodeversion=24
 pkgrel=1
 pkgdesc="A Standalone chat overlay for Twitch, Kick, YouTube and other streaming platforms."
@@ -11,7 +11,7 @@ license=('LicenseRef-DBAD')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
-    'webkit2gtk-4.1'
+    'webkitgtk-6.0'
     'gtk3'
 )
 makedepends=(
