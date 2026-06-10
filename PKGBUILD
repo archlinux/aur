@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chaterm-bin
 _pkgname=Chaterm
-pkgver=0.11.0
+pkgver=0.11.3
 _electronversion=41
 pkgrel=1
 pkgdesc="A terminal tool with AI Agent, makes you no need to learn complicated regular expressions, Perl and Python, switches and Linux commands, SQL syntax can easily manage thousands of devices!(Prebuilt version,use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c73537267c29cb761ad890c0f099b406890e69fe6493db31fd6836b3fb7e5ca1'
+sha256sums=('ae37aa27aa9af5af5a19115ec1fcde268cd592331d8b3ebe4fbbc19ddacb7e8f'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -50,7 +50,6 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
@@ -72,7 +71,10 @@ prepare() {
         \) -o \
         \( -type f \
             \( -name "apparmor-profile" -o \
-                -name "package-type" \
+                -name "package-type" -o \
+                -name "*-arm64*" -o \
+                -name "*-darwin-*" -o \
+                -name "*-win32-*" \
             \) \
         \) \
         -exec rm -rf {} +
