@@ -5,7 +5,7 @@
 
 pkgname=simplex-desktop-bin
 pkgver=6.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='SimpleX Chat, the first messaging network operating without user identifiers of any kind (pre-compiled)'
 arch=('x86_64')
 provides=('simplex-desktop')
@@ -15,6 +15,35 @@ license=('AGPL-3.0-or-later')
 source=("$pkgname-$pkgver.deb::https://github.com/simplex-chat/simplex-chat/releases/download/v$pkgver/simplex-desktop-ubuntu-22_04-x86_64.deb")
 # SHA512 digest taken from release page on Microsoft GitHub
 sha512sums=('c703b083a240d4d803f4bb2d38ef2ab5ceef087cbf26105d3871fd00cb815faa068b3d8783ff85bb81d02cd07d0f4a87472dc21aed7bbd6af29b0625f43b00c1')
+
+depends=(
+    'alsa-lib'
+    'e2fsprogs'
+    'fontconfig'
+    'freetype2'
+    'fribidi'
+    'gmp'
+    'harfbuzz'
+    'jack2'
+    'java-runtime'
+    'libdrm'
+    'libglvnd'
+    'libgpg-error'
+    'libusb'
+    'libx11'
+    'libxcb'
+    'libxext'
+    'libxi'
+    'libxrender'
+    'libxtst'
+    'openssl'
+    'xdg-utils'
+    'zlib'
+)
+
+
+options=('!debug' '!strip')
+
 
 package() {
     cd "$srcdir"
