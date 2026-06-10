@@ -1,7 +1,7 @@
 # Maintainer: Zmole Cristian <tragdate@gmail.com>
 pkgname=rustgraph
 pkgver=0.7.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust code navigation built for AiDX — AST-aware, MCP-native, token-efficient."
 arch=('x86_64')
 url="https://github.com/ZmoleCristian/rustgraph"
@@ -12,23 +12,31 @@ install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ZmoleCristian/rustgraph/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('4f3d40a647610553fbdf8c06faa585b9488c9e5623907ceabef641e5cb14c351')
 
+# Hermetic CARGO_HOME: the build runs RUSTUP_TOOLCHAIN=stable, so nightly-only
+# rustflags/profiles in the user's own cargo config would break it.
+_cargo_env() {
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_HOME="$srcdir/cargo-home"
+    export RUSTFLAGS="${RUSTFLAGS:-}"
+}
+
 prepare() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
+    _cargo_env
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    _cargo_env
+    # --target-dir beats CARGO_TARGET_DIR overrides from cargo wrappers/env
+    cargo build --frozen --release --target-dir target
 }
 
 check() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --release
+    _cargo_env
+    cargo test --frozen --release --target-dir target
 }
 
 package() {
