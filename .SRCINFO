@@ -23,6 +23,6 @@ pkgbase = zapzap
 	source = git+https://github.com/rafatosta/zapzap#tag=6.5.1
 	source = com.rtosta.zapzap.nogpu.desktop
 	b2sums = f88e0def6eda501a9ab46e73ccb41bc7b569e87658c0ebdc0f457af8f48fd8f4e9bb219bd10ad91f79c4292931d4d862938855c8779dc56c631eed8f21a3b9f8
-	b2sums = 13fcf2f9c80d39a0a9e9d7bc62473542861216d202f8fc255a97aa7371cc1b7994be8370032f89e372ff6f317cd1c63b07cc52844f6e0e3c70eebba375633fe4
+	b2sums = 35b0bad1219847bfc5a346e4d5006888d25dbeeef6c87c0c644d4b5db411a4137c3473d173409122802f5986ccbbd342e7180c487bf065f772c4773c4da7efea
 
 pkgname = zapzap
