@@ -1,6 +1,6 @@
 pkgbase = mullvad-socks5-proxy
 	pkgdesc = SOCKS5 Proxy with WireGuard using Mullvad VPN
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/dcelasun/mullvad-socks5-proxy
 	install = mullvad-socks5-proxy.install
@@ -10,7 +10,7 @@ pkgbase = mullvad-socks5-proxy
 	depends = socat
 	depends = iproute2
 	depends = python
-	source = mullvad-socks5-proxy-0.0.3.tar.gz::https://github.com/dcelasun/mullvad-socks5-proxy/archive/refs/tags/v0.0.3.tar.gz
-	sha256sums = e5ed01636d7851e8564cd3bdcef921182ae3c56fc750d35ad3e74cd72a503d84
+	source = mullvad-socks5-proxy-0.0.4.tar.gz::https://github.com/dcelasun/mullvad-socks5-proxy/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = 0c3f42ab464da428af91eb80f8cdee626d6ad74e9a713ff4666e7447b9c267af
 
 pkgname = mullvad-socks5-proxy
