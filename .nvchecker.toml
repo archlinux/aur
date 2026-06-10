@@ -1,0 +1,5 @@
+[kairo-task-manager-bin]
+source = "github"
+github = "programmersd21/kairo"
+use_latest_release = true
+prefix = ""
