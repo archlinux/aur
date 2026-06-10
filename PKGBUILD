@@ -1,6 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-# https://github.com///releases/download/v1.3.5/pixelterm-amd64-linux.tar.gz
 _pkgauthor=zouyonghe
 _pkgname=PixelTerm-C
 _appname=pixelterm
