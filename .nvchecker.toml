@@ -1,0 +1,4 @@
+[azion-cli]
+source = "github"
+github = "aziontech/azion"
+use_latest_release = true
