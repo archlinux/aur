@@ -1,10 +1,11 @@
 pkgbase = parsec-sdk-bin
 	pkgdesc = Parsec SDK to build interactive and low-latency peer-to-peer connections for game streaming
 	pkgver = 6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://parsec.app/
 	arch = x86_64
 	license = custom
+	depends = openssl-1.1
 	options = !strip
 	source = https://github.com/mbroemme/parsec-sdk/archive/6.0.tar.gz
 	sha256sums = 2cfb06ab4c38b2dd02baa4b5b335bbf182268891606fb61fc97105c95ee67ea0
