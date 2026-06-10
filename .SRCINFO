@@ -1,6 +1,6 @@
 pkgbase = seanime-bin
 	pkgdesc = A self-hosted media server for anime with anilist integration (pre-compiled binary)
-	pkgver = 3.8.5
+	pkgver = 3.8.6
 	pkgrel = 1
 	url = https://github.com/5rahim/seanime
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = seanime-bin
 	depends = systemd
 	provides = seanime
 	conflicts = seanime
-	source = https://github.com/5rahim/seanime/releases/download/v3.8.5/seanime-3.8.5_Linux_x86_64.tar.gz
-	sha256sums = 9fd8af1c0ca2165ea3b70bad7e6f180ee440ae1c21e8db44c0cb7e7c36028bdb
+	source = https://github.com/5rahim/seanime/releases/download/v3.8.6/seanime-3.8.6_Linux_x86_64.tar.gz
+	sha256sums = e6c9ff2eba6f001da5c78867106c08eb12fb24e2ec2eb344d4c3203b46981421
 
 pkgname = seanime-bin
