@@ -41,13 +41,13 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-	go build -o ${pkgname} "./cmd/${pkgname}"
+	go build -o ${_appname} "./cmd/${_appname}"
 }
 
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
 
-	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
