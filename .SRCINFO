@@ -1,0 +1,16 @@
+pkgbase = stuart
+	pkgdesc = A serial terminal TUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mroetsc/stuart
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cargo
+	depends = gcc-libs
+	provides = stuart
+	conflicts = stuart-bin
+	options = !debug
+	source = stuart-0.1.0.tar.gz::https://github.com/mroetsc/stuart/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = a580b72640b1558751dc67b551a60320f47b786b91beb69de0f6b66815d9eb92
+
+pkgname = stuart
