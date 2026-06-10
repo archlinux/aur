@@ -1,6 +1,6 @@
 pkgbase = arch-update-vai
 	pkgdesc = Script interativo para atualizar Arch Linux (pacman, AUR, Flatpak, Snap, fwupd) - git
-	pkgver = 0.7.0.r0.gf051ada
+	pkgver = 0.7.0.r1.gbafd124
 	pkgrel = 1
 	url = https://github.com/CapivaraVai/arch-update-script-vai
 	arch = any
