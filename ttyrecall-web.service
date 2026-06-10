@@ -5,10 +5,34 @@ After=network.target
 
 [Service]
 Type=simple
+User=ttyrecall
+Group=ttyrecall
+SupplementaryGroups=ttyrecall
+WorkingDirectory=/var/lib/ttyrecall
 ExecStart=/usr/bin/ttyrecall web-service --config /etc/ttyrecall/config.toml
 Restart=on-failure
 RestartSec=30
 TimeoutStopSec=10
+UMask=0007
+
+AmbientCapabilities=
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=strict
+ReadOnlyPaths=/etc/ttyrecall /usr/share/ttyrecall
+ReadWritePaths=/var/lib/ttyrecall -/run/faillock -/var/log/faillock -/var/run/faillock
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
 
 [Install]
 WantedBy=multi-user.target

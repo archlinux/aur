@@ -4,10 +4,32 @@ Documentation=https://github.com/kxxt/ttyrecall
 
 [Service]
 Type=simple
+WorkingDirectory=/var/lib/ttyrecall
 ExecStart=/usr/bin/ttyrecall daemon --config /etc/ttyrecall/config.toml
 Restart=on-failure
 RestartSec=30
 TimeoutStopSec=10
+UMask=0007
+
+AmbientCapabilities=CAP_BPF CAP_PERFMON CAP_SYS_ADMIN CAP_SYS_RESOURCE CAP_CHOWN CAP_FOWNER CAP_DAC_OVERRIDE
+CapabilityBoundingSet=CAP_BPF CAP_PERFMON CAP_SYS_ADMIN CAP_SYS_RESOURCE CAP_CHOWN CAP_FOWNER CAP_DAC_OVERRIDE
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=read-only
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=strict
+ReadOnlyPaths=/etc/ttyrecall
+ReadWritePaths=/var/lib/ttyrecall
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+RestrictNamespaces=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
 
 [Install]
 WantedBy=multi-user.target

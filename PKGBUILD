@@ -13,10 +13,14 @@ makedepends=('bpf' 'cargo' 'clang' 'git' 'npm' 'pkgconf' 'ripgrep')
 optdepends=('ripgrep: full-text search in the web UI and TUI')
 source=("$_pkgname::git+https://github.com/kxxt/ttyrecall.git"
         "ttyrecalld.service"
-        "ttyrecall-web.service")
+        "ttyrecall-web.service"
+        "ttyrecall.sysusers"
+        "ttyrecall.tmpfiles")
 b2sums=('SKIP'
-        '8323fb059dcc4b2471be17193e37498158d697af09c359988fde6dd7aaac88203d5c0f4bcc68e49bbf6ea9f24fe4e64abf9e5c951a8f1b2ac1738d54646f1e0f'
-        '1b2652950f47ceff9ab78e95be83c57cc932869f7d4a8bef45a17e70ee29155bee3e4e8356ee79e7789725aff01a5e42a4054b60858194ead0f5da9b34061df6')
+        '557f4a71f91d45c78a710c75d7806db751a0a15125966c8f51a0b901ef0d1f8988df5c15a0d74b6ade381bf5744c42cbdfb44c93e5ed2d5117fa835d54e4bf23'
+        '1a994cb2aa0806cbff8089d34e32a34736f04ce3a2712efafd68ebf36b3954463bdc40e550bd8294ea1e397bf2ba639ce07e264c6426cc8cda100bc250c2b7eb'
+        '669c8b9c38f078cd0fcac52f5a2beee7a70878a591faef2904fac8b2ff505374bedd7e6dcd80cc8509b7ce63e4879ea718b9a67c2e803d4c846be7e02b87d7a8'
+        'c76f2629694f7d9ad4d1fb07615f7e30032227dceb7e26522a1805702fc6cb6a4d12dc3561a172b1930d6f74ab8725733635c1e9ae2992a2d2a2b36a7402410d')
 provides=($_pkgname)
 conflicts=($_pkgname $_pkgname-bin)
 backup=('etc/ttyrecall/config.toml')
@@ -60,6 +64,8 @@ package() {
   # Service
   install -vDm644 "$srcdir/ttyrecalld.service" "$pkgdir/usr/lib/systemd/system/ttyrecalld.service"
   install -vDm644 "$srcdir/ttyrecall-web.service" "$pkgdir/usr/lib/systemd/system/ttyrecall-web.service"
+  install -vDm644 "$srcdir/ttyrecall.sysusers" "$pkgdir/usr/lib/sysusers.d/ttyrecall.conf"
+  install -vDm644 "$srcdir/ttyrecall.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/ttyrecall.conf"
   # Web frontend
   install -dm755 "$pkgdir/usr/share/ttyrecall/web"
   cp -a frontend/dist/. "$pkgdir/usr/share/ttyrecall/web/"
