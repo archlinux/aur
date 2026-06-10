@@ -1,0 +1,20 @@
+pkgbase = archcalc
+	pkgdesc = Built with precision. The definitive workspace and dev tools platform.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/murtazapatel89100/ArchCalc
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = cairo
+	depends = pango
+	depends = glib2
+	depends = openssl
+	depends = libayatana-appindicator
+	provides = archcalc
+	conflicts = archcalc
+	source = archcalc-0.4.1.deb::https://github.com/murtazapatel89100/ArchCalc/releases/download/v0.4.1/archcalc_0.4.1_amd64.deb
+	sha256sums = $SHA256
+
+pkgname = archcalc
