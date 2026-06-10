@@ -30,10 +30,21 @@ build() {
     cd "$srcdir/$pkgname"
 
     # Ensure we are at the workspace root and build everything
+    # We use -p lumen to explicitly build the cdylib
     cargo build --workspace --release --locked
 
+    # Find the compiled library and binary (robust against different target locations)
+    LIB_PATH=$(find target -name "liblumen_core.so" | grep -v "deps" | head -n 1)
+    TUI_PATH=$(find target -name "lumen" | grep -v "deps" | head -n 1)
+
+    if [ -z "$LIB_PATH" ]; then
+        echo "Error: liblumen_core.so not found in target directory"
+        ls -R target/release
+        exit 1
+    fi
+
     # Copy Rust library into Flutter linux/lib
-    install -Dm755 target/release/liblumen_core.so ui/linux/lib/liblumen_core.so
+    install -Dm755 "$LIB_PATH" ui/linux/lib/liblumen_core.so
 
     # Build Flutter UI
     cd ui
@@ -43,8 +54,11 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
 
+    # Find binaries again for packaging
+    TUI_PATH=$(find target -name "lumen" | grep -v "deps" | head -n 1)
+
     # Install TUI binary
-    install -Dm755 target/release/lumen "$pkgdir/usr/bin/lumen-cli"
+    install -Dm755 "$TUI_PATH" "$pkgdir/usr/bin/lumen-cli"
 
     cd ui/build/linux/x64/release/bundle
 

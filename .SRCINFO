@@ -14,6 +14,7 @@ pkgbase = lumen-journal
 	depends = glibc
 	depends = gcc-libs
 	depends = gtk3
+	depends = sqlite
 	source = lumen-journal::git+https://github.com/crazygiscool/Lumen.git#tag=v2.2.3
 	source = lumen-journal.desktop
 	source = lumen-journal.png
