@@ -1,0 +1,4 @@
+[sshpilot-bin]
+source = "git"
+git = "https://github.com/mfat/sshpilot.git"
+prefix = "v"
