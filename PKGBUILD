@@ -12,7 +12,7 @@ optdepends=('python-pipx: for Material You color generation support'
             'kvantum: for Kvantum theme support'
             'klassy: for window decoration preset switching support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ce6bc1c7788dee3582e1e7cd3909a07e5bc14ace5ad9156769dfb4a06c7f689d')
+sha256sums=('9c6382ac13fe0e8a538d901cbb22d795ca5ed1c3a42d448903be7fe7c5494b6c')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
