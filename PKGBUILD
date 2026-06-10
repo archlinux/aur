@@ -3,14 +3,14 @@
 _extname=jsonpath
 pkgname=php-$_extname
 pkgdesc='Extract data using JSONPath notation for PHP'
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/supermetrics-public/pecl-jsonpath'
 license=('PHP-3.01')
 depends=('php>=8.0')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
-sha256sums=('198ae484102b4404d94e2ad0b38d1dbf78ec55067f0b92f0dfaa2afcad906268')
+sha256sums=('e15d3ea5e252be660e64a10e77a3ffc1455ff26c0da32392fdfb765dce0123c0')
 
 prepare() {
   cd "${srcdir}/${_extname}-${pkgver}"
