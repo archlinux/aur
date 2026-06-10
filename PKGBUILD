@@ -32,28 +32,34 @@ pkgver() {
 }
 
 
+source=("arch-update-vai::git+https://codeberg.org/CapivaraVai/arch-update-vai.git")
+
+pkgver() {
+  cd "$srcdir/arch-update-vai"
+  echo "0.7.1.r$(git rev-list --count HEAD)"
+}
+
 package() {
   cd "$srcdir/arch-update-vai"
 
-  # programa principal
-  # install -Dm755 update-vai.sh "$pkgdir/usr/bin/update-vai"
+  # binário
   install -Dm755 update-vai.sh "$pkgdir/usr/bin/arch-update-vai"
-
 
   # licença
   [[ -f LICENSE ]] && install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # documentação opcional
+  # docs
   [[ -f README.md ]] && install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   [[ -f CHANGELOG.md ]] && install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 
-  # arquivo .desktop
+  # desktop entry
   install -Dm644 packaging/update-vai.desktop \
-    "$pkgdir/usr/share/applications/update-vai.desktop"
+    "$pkgdir/usr/share/applications/arch-update-vai.desktop"
 
-  # ícone SVG
+  # ícone
   install -Dm644 packaging/update-vai.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/update-vai.svg"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/arch-update-vai.svg"
 }
+
 
 
