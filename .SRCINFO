@@ -1,7 +1,7 @@
 pkgbase = azion-cli
 	pkgdesc = Efficient creation and management of applications on Azion Edge Platform
 	pkgver = 4.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aziontech/azion
 	arch = x86_64
 	arch = aarch64
