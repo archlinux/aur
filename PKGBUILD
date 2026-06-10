@@ -2,7 +2,7 @@
 # Automatically updated by CI — do not edit pkgver/sha256sums manually.
 _pkgbase=warp-terminal-oss
 pkgname=warp-terminal-oss-bin
-pkgver=r985.4b5c94d
+pkgver=r1018.e1ae7cb
 pkgrel=1
 pkgdesc="Warp, the Rust-based terminal for developers and teams (OSS build, prebuilt binary)"
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
 )
 options=('!strip')
 source=("${_pkgbase}-${pkgver}-x86_64.tar.gz::https://github.com/leozeli/warp-terminal-oss-aur/releases/download/${pkgver}/${_pkgbase}-x86_64.tar.gz")
-sha256sums=('ae8f240d6b54fa24cb72450ede3d4b9aadf5e926fbfc174145cfc4df668dc519')
+sha256sums=('f1a95ea491479568310b459f20afb171cb5a938c82bee6bc79b99352f73930ba')
 
 package() {
 	# The tarball contains opt/ and usr/share/ directory trees ready to install.
