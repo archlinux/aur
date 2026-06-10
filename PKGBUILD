@@ -4,7 +4,7 @@ _pkgname=console-clock
 pkgname=${_pkgname}-git
 pkgver=r10.8d3784b
 pkgver() {
-    cd "$srcdir/console-clock"
+    cd "$srcdir/$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgrel=1
