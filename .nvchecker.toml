@@ -1,0 +1,5 @@
+[go-solar-system-bin]
+source = "github"
+github = "furan917/go-solar-system"
+use_latest_release = true
+prefix = "v"
