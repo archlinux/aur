@@ -1,6 +1,6 @@
 pkgbase = kosmos
 	pkgdesc = A modern code editor.
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://github.com/etchebarne/kosmos
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = kosmos
 	depends = zlib
 	provides = kosmos
 	conflicts = kosmos-bin
-	source = kosmos-0.4.8.tar.gz::https://github.com/etchebarne/kosmos/archive/refs/tags/v0.4.8.tar.gz
+	source = kosmos-0.4.9.tar.gz::https://github.com/etchebarne/kosmos/archive/refs/tags/v0.4.9.tar.gz
 	sha256sums = SKIP
 
 pkgname = kosmos
