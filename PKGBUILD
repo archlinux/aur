@@ -1,14 +1,14 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=opencode-desktop
-pkgver=1.16.2
+pkgver=1.17.1
 pkgrel=1
-pkgdesc='OpenCode desktop app (built from source, runs on system electron41)'
+pkgdesc='OpenCode desktop app (built from source, runs on system electron42)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/anomalyco/opencode'
 license=('MIT')
 depends=(
-  'electron41'
+  'electron42'
   'hicolor-icon-theme'
 )
 makedepends=(
@@ -76,7 +76,7 @@ build() {
   sed -i 's/app\.isPackaged/true/g' packages/desktop/out/main/index.js
 
   local sysver
-  sysver=$(< /usr/lib/electron41/version)
+  sysver=$(< /usr/lib/electron42/version)
 
   # Build with --linux pacman: this produces both the unpacked app/ directory
   # (we ship that) AND a .pacman archive which embeds the .desktop file and
@@ -88,7 +88,7 @@ build() {
   ( cd packages/desktop && bun run package -- \
       --linux pacman \
       -c.asar=false \
-      -c.electronDist=/usr/lib/electron41 \
+      -c.electronDist=/usr/lib/electron42 \
       -c.electronVersion="$sysver" \
       --publish=never )
 }

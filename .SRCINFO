@@ -1,6 +1,6 @@
 pkgbase = opencode-desktop
-	pkgdesc = OpenCode desktop app (built from source, runs on system electron41)
-	pkgver = 1.16.2
+	pkgdesc = OpenCode desktop app (built from source, runs on system electron42)
+	pkgver = 1.17.1
 	pkgrel = 1
 	url = https://github.com/anomalyco/opencode
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = opencode-desktop
 	makedepends = bun
 	makedepends = git
 	makedepends = libxcrypt-compat
-	depends = electron41
+	depends = electron42
 	depends = hicolor-icon-theme
 	optdepends = opencode: standalone terminal CLI (independent of the desktop app, which embeds its own server)
 	optdepends = nodejs: needed only when invoking npm CLI helpers shipped inside bundled node_modules (marked, js-yaml, semver, ...) — the desktop app itself runs entirely under electron
@@ -19,7 +19,7 @@ pkgbase = opencode-desktop
 	replaces = opencode-desktop-electron
 	options = !strip
 	options = !debug
-	source = opencode-desktop::git+https://github.com/anomalyco/opencode.git#tag=v1.16.2
+	source = opencode-desktop::git+https://github.com/anomalyco/opencode.git#tag=v1.17.1
 	source = opencode-desktop.sh
 	source = relax-bun-version.patch
 	source = set-desktop-name.patch
