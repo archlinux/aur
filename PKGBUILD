@@ -1,4 +1,8 @@
+##
+##
 # Maintainer: Diego Ernani (CapivaraVai) <dernani@gmail.com>
+##
+##
 
 pkgname=arch-update-vai-bin
 pkgver=0.7.1
