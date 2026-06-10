@@ -2,7 +2,7 @@
 # Contributor: Volt Contributors
 
 pkgname=volt-llm
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 pkgdesc="Volt — vLLM desktop manager: one-click model download, vLLM launcher, API key management"
 arch=('any')
