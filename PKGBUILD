@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/MarkGMX8X/papt/archive/refs
 sha256sums=('0bfb95cd4c8ec794f0c09ba1101808f2d25c432924f0bbf33e9628b68c800339')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$papt-Papt_0xx"
     install -Dm755 papt "$pkgdir/usr/bin/papt"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
