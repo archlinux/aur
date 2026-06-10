@@ -1,8 +1,8 @@
 #Maintainer: Rongbo Wu <wurongbo2012@hotmail.com>
 
 pkgname=fbgemm
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Facebook General Matrix-Matrix Multiplication (CPU-Only)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pytorch/FBGEMM"
@@ -19,7 +19,7 @@ makedepends=('git'
 optdepends=(
 'intel-mkl'
 )
-source=("${url}/archive/refs/tags/v${pkgver}.zip"
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 "asmjit-v1.17.tar.gz::https://github.com/asmjit/asmjit/archive/a3199e8857792cd10b7589ff5d58343d2c9008ea.tar.gz"
 git+https://github.com/pytorch/cpuinfo.git
 )
@@ -45,7 +45,7 @@ build_args=(
 
 build() {
 	cd FBGEMM-${pkgver}
-	cmake --build build
+	cmake --build build -j
 }
 
 check() {
