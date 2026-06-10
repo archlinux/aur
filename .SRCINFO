@@ -1,7 +1,7 @@
 pkgbase = fila-bin
 	pkgdesc = Browse folders, filter media, generate playlists, and play files
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikelexp/Fila
 	arch = x86_64
 	depends = mpv

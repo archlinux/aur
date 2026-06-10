@@ -2,7 +2,7 @@
 
 pkgname=fila-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Browse folders, filter media, generate playlists, and play files"
 arch=('x86_64')
 url="https://github.com/mikelexp/Fila"
