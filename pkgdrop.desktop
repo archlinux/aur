@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Install Package
+Comment=Install any supported package format
+Exec=pkgdrop %f
+Icon=application-x-executable
+Terminal=true
+Type=Application
+MimeType=application/x-tar;application/x-xz;application/x-appimage;
+Categories=System;Utilities;

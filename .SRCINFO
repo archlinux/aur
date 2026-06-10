@@ -1,0 +1,14 @@
+pkgbase = pkgdrop
+	pkgdesc = Universal package installer for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/theyonecodes/pkgdrop
+	arch = any
+	license = MIT
+	depends = bash
+	optdepends = pacman: for .pkg.tar.* packages
+	optdepends = debtap: for .deb packages
+	source = pkgdrop::https://raw.githubusercontent.com/theyonecodes/pkgdrop/main/src/pkgdrop
+	sha256sums = SKIP
+
+pkgname = pkgdrop
