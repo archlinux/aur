@@ -36,7 +36,9 @@ package() {
   cd "$srcdir/arch-update-vai"
 
   # programa principal
-  install -Dm755 update-vai.sh "$pkgdir/usr/bin/update-vai"
+  # install -Dm755 update-vai.sh "$pkgdir/usr/bin/update-vai"
+  install -Dm755 update-vai.sh "$pkgdir/usr/bin/arch-update-vai"
+
 
   # licença
   [[ -f LICENSE ]] && install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
