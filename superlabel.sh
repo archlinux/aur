@@ -7,4 +7,4 @@ if [ -n "${SUPERLABEL_FORCE_X11:-}" ] || \
   export GDK_BACKEND="${GDK_BACKEND:-x11}"
 fi
 
-exec /opt/superlabel/superlabel.AppImage "$@"
+exec /opt/superlabel/superlabel "$@"
