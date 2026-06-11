@@ -1,0 +1,21 @@
+pkgbase = petiglyph-bin
+	pkgdesc = A TUI and CLI tool for turning images and videos into custom font glyphs
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/petipoua/petiglyph
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = ffmpeg
+	depends = fontconfig
+	provides = petiglyph
+	conflicts = petiglyph
+	options = !strip
+	source_x86_64 = petiglyph-x86_64-0.1.5.tgz::https://github.com/petipoua/petiglyph/releases/download/v0.1.5/petiglyph-v0.1.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4c2337dc719ce9639eec1ca0e66f9910efda1fd9f6752fcd0d4b7c0536c7d193
+	source_aarch64 = petiglyph-aarch64-0.1.5.tgz::https://github.com/petipoua/petiglyph/releases/download/v0.1.5/petiglyph-v0.1.5-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e40988573f7086a56ce83f3ae3310df32f09674b301a6bb20b11d0c175f4ed71
+
+pkgname = petiglyph-bin

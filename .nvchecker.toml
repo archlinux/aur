@@ -1,0 +1,5 @@
+[petiglyph-bin]
+source = "github"
+github = "petipoua/petiglyph"
+use_latest_release = true
+prefix = "v"
