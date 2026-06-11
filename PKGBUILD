@@ -10,16 +10,16 @@ license=("GPL")
 depends=("ncurses" "readline")
 makedepends=("bison" "flex" "gcc" "make")
 # Use the GitHub release archive for source retrieval
-source=("https://github.com/ProphetPX/opencomal/releases/download/v0.2.6/opencomal-0.2.6.tar.gz")
+source=("opencomal-${pkgver}.tar.gz::https://github.com")
 sha256sums=('de251ef4a917d55c7fb1257df894043044661179aec1aa771407631bbbf9da87')
 
 build() {
-    cd "$srcdir/opencomal-0.2.6/src"
+    cd "${srcdir}/opencomal-packaging"
     make
 }
 
 package() {
-    cd "$srcdir/opencomal-0.2.6"
+    cd "$srcdir/opencomal-packaging"
     install -d "$pkgdir/usr/bin"
     install -Dm755 "bin/opencomal" "$pkgdir/usr/bin/opencomal"
     install -Dm755 "bin/opencomalrun" "$pkgdir/usr/bin/opencomalrun"

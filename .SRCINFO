@@ -11,7 +11,7 @@ pkgbase = opencomal
 	makedepends = make
 	depends = ncurses
 	depends = readline
-	source = https://github.com/ProphetPX/opencomal/releases/download/v0.2.6/opencomal-0.2.6.tar.gz
+	source = opencomal-0.2.6.tar.gz::https://github.com
 	sha256sums = de251ef4a917d55c7fb1257df894043044661179aec1aa771407631bbbf9da87
 
 pkgname = opencomal
