@@ -1,0 +1,21 @@
+pkgbase = take7leds
+	pkgdesc = Desktop GUI for Tuxedo-compatible RGB keyboard backlights
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/glum403/take7leds
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = gcc
+	depends = python
+	depends = pyside6
+	depends = polkit
+	depends = hicolor-icon-theme
+	source = take7leds::git+https://gitlab.com/glum403/take7leds.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = take7leds
