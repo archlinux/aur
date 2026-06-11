@@ -1,21 +1,20 @@
 pkgbase = sonic-frameworks-keybind
-	pkgdesc = sonic-frameworks-keybind allows to have global accelerators that are independent of the focused window
+	pkgdesc = Add support for global workspace shortcuts
 	pkgver = 6.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sonic-DE/sonic-frameworks-keybind
 	arch = x86_64
 	groups = sonicde-frameworks
 	license = LGPL-2.0-only
 	license = LGPL-3.0-only
 	makedepends = doxygen
-	makedepends = extra-cmake-modules
 	makedepends = qt6-tools
-	depends = gcc-libs
+	makedepends = sonic-frameworks-cmake-modules
+	depends = libstdc++
 	depends = glibc
 	depends = qt6-base
 	provides = kglobalaccel
 	conflicts = kglobalaccel
-	replaces = kglobalaccel
 	source = sonic-frameworks-keybind-6.26.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-keybind/archive/refs/tags/6.26.0.tar.gz
 	sha256sums = 4c38636274cf99a068fc240082ecb0158b3b31545616267e85fefee1fc8e2f52
 
