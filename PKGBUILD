@@ -1,5 +1,5 @@
 pkgname=openssh-gui-bin
-pkgver=3.1.3
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="A GUI for OpenSSH configuration and management (Binary version)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
   "${pkgname}-license-${pkgver}::${_rawurl}/LICENSE"
 )
 
-sha256sums=('ef527ea4543e351c5d4b29e753eac3572cca24ac7cf21f4e6634364e641cb834' '19d7c119dcd8aaf1b2bac47325ebf73ac4b32bb3f757e62276a154845be49774' '0f53f092ae5b6a8547d016d3c4130c9352fe4af688e0eaaee7c94efdadb78470' '04765b5ced4962532281a4c40754d25380df5e89e49bf3f0ea9054f05a6ee34a')
+sha256sums=('427f4218143c39155345a9f33292099e3288d44008078fd8463f35ee13bf807b' '19d7c119dcd8aaf1b2bac47325ebf73ac4b32bb3f757e62276a154845be49774' '0f53f092ae5b6a8547d016d3c4130c9352fe4af688e0eaaee7c94efdadb78470' '04765b5ced4962532281a4c40754d25380df5e89e49bf3f0ea9054f05a6ee34a')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}" \
