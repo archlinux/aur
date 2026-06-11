@@ -1,6 +1,6 @@
 pkgbase = python-torchrl
 	pkgdesc = A modular, primitive-first, python-first PyTorch library for Reinforcement Learning.
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/pytorch/rl
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = python-torchrl
 	depends = python-tensordict
 	depends = python-numpy
 	depends = python-packaging
-	source = https://github.com/pytorch/rl/archive/refs/tags/v0.13.0.tar.gz
+	source = https://github.com/pytorch/rl/archive/refs/tags/v0.13.1.tar.gz
 	source = setup.patch
 	source = cuda-flags.patch
-	sha256sums = 5f6fe32178f30a37880eae9ba689b9f9e59fdd79bdf482b02981c61794284b81
+	sha256sums = 6b52114ac84bdae89a0e10c9e48a259de14b27a2efde93341847ded00fbaa3bf
 	sha256sums = 3916428ad174568ea43162a133ac5588f135a6a242cfcd6e8e2c0eca7bfb80c3
 	sha256sums = 21c2864cb9a7de0faaa600bf266ab05c1e6bd3d3e879c2ac5697f74e0732e0f5
 
