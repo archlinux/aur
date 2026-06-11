@@ -1,6 +1,6 @@
 pkgbase = filebot
 	pkgdesc = The ultimate TV and Movie Renamer
-	pkgver = 5.2.1
+	pkgver = 5.2.3
 	pkgrel = 1
 	url = https://www.filebot.net/
 	install = filebot.install
@@ -19,12 +19,12 @@ pkgbase = filebot
 	provides = filebot
 	conflicts = filebot47
 	conflicts = filebot-git
-	source = https://get.filebot.net/filebot/FileBot_5.2.1/FileBot_5.2.1-aur.tar.xz
-	source = https://get.filebot.net/filebot/FileBot_5.2.1/FileBot_5.2.1-aur.tar.xz.asc
+	source = https://get.filebot.net/filebot/FileBot_5.2.3/FileBot_5.2.3-aur.tar.xz
+	source = https://get.filebot.net/filebot/FileBot_5.2.3/FileBot_5.2.3-aur.tar.xz.asc
 	source = filebot.sh
 	validpgpkeys = B0976E51E5C047AD0FD051294E402EBF7C3C6A71
-	sha256sums = da5bd7f4025033a485adbcfcaa12fc8250ccb25b027c78ea051e18601f569b05
-	sha256sums = SKIP
-	sha256sums = 0a13948f208302a24101002cd794c0e1884724675f79970ee81bccb19bb5b8f9
+	b2sums = ffa89dbb30d3435f28ba0ff9ee8a76805b37eb7cfa75642f81091fad269e09db86d6ca8c9f052ef4fd3d1cf95a4bad2d469d46863f9b1d2947ec0272ba76ca1d
+	b2sums = SKIP
+	b2sums = ef7d2169f2a71925835678a481b1a063f4d11a49ce741affd70d59dd1ef940f17090dd60383de2da4008e08823117796dc3b4c7e4805dd4de2a89d4c4805f66f
 
 pkgname = filebot

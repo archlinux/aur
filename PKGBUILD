@@ -8,7 +8,7 @@
 # Contributor: mithrial <mithrial@mailbox.org>
 
 pkgname=filebot
-pkgver=5.2.1
+pkgver=5.2.3
 pkgrel=1
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
@@ -30,9 +30,9 @@ source=("https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur
         "https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur.tar.xz.asc"
         "filebot.sh")
 
-sha256sums=('da5bd7f4025033a485adbcfcaa12fc8250ccb25b027c78ea051e18601f569b05'
-            'SKIP'
-            '0a13948f208302a24101002cd794c0e1884724675f79970ee81bccb19bb5b8f9')
+b2sums=('ffa89dbb30d3435f28ba0ff9ee8a76805b37eb7cfa75642f81091fad269e09db86d6ca8c9f052ef4fd3d1cf95a4bad2d469d46863f9b1d2947ec0272ba76ca1d'
+        'SKIP'
+        'ef7d2169f2a71925835678a481b1a063f4d11a49ce741affd70d59dd1ef940f17090dd60383de2da4008e08823117796dc3b4c7e4805dd4de2a89d4c4805f66f')
 validpgpkeys=('B0976E51E5C047AD0FD051294E402EBF7C3C6A71')
 
 package() {
