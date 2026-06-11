@@ -5,7 +5,8 @@ pkgver=0.4.0
 pkgrel=1
 pkgdesc="Desktop focus and note-taking app (Electron + Vue)"
 arch=('x86_64')
-url="https://github.com/Juraci/FlowState"
+# Public binary releases (the FlowState source repo itself is private).
+url="https://github.com/Juraci/flowstate-releases"
 license=('LicenseRef-proprietary')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt'
          'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify'
