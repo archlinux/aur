@@ -29,7 +29,7 @@ sha256sums=('3d2a050db9289f26aa9bfc548c65cce8362af942329af072e5c2d27e7570c2b2')
 
 build(){
   cd "${pkgname}-${pkgver}"
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package(){
