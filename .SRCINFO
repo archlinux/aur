@@ -1,0 +1,26 @@
+pkgbase = lyar-git
+	pkgdesc = memory-safe tui display manager — rust rewrite of ly
+	pkgver = r1.bd49956
+	pkgrel = 1
+	url = https://gitlab.com/5unekku/lyar
+	install = lyar.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	license = MIT-0
+	makedepends = git
+	makedepends = rust
+	depends = pam
+	depends = gcc-libs
+	depends = glibc
+	optdepends = xorg-xinit: xinitrc session support
+	optdepends = xorg-server: x11 session support
+	provides = lyar
+	backup = etc/lyar/config.ini
+	backup = etc/pam.d/lyar
+	backup = etc/pam.d/lyar-autologin
+	source = lyar-git::git+https://gitlab.com/5unekku/lyar.git
+	sha256sums = SKIP
+
+pkgname = lyar-git
