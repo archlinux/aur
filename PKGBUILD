@@ -1,32 +1,33 @@
 # Maintainer: stef204 < base64 -d c3RlZjIwNEB5YW5kZXguY29tCg== >
 
 pkgname=vtlock
-pkgver=1.0.0
+pkgver=1.0
 pkgrel=1
-pkgdesc="Block VT switching while X11/Wayland screen lockers are active"
+pkgdesc="Kernel-level VT switch lock for standalone screen lockers"
 arch=('x86_64')
 url="https://hub.darcs.net/stef204/vtlock"
 license=('MIT')
 depends=('glibc')
-makedepends=('gcc' 'unzip')
-source=("$pkgname::https://hub.darcs.net/stef204/vtlock/dist")
+makedepends=('gcc')
+source=("$pkgname-$pkgver.tar.gz::https://hub.darcs.net/stef204/vtlock/raw/releases/$pkgname-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://hub.darcs.net/stef204/vtlock/raw/releases/$pkgname-$pkgver.tar.gz.asc")
 install=vtlock.install
-sha256sums=('SKIP')
+validpgpkeys=('E0844009CF213E78ECD348795A6792BF5ECC3AC6')
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
     # Normalize file timestamps to prevent make clock skew warnings
-    # caused by zip extraction preserving server timestamps
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     touch *
 }
 
 build() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     make
 }
 
 package() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir" PREFIX=/usr install
     install -Dm 644 README.md "$pkgdir/usr/share/doc/vtlock/README.md"
     install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/vtlock/LICENSE"

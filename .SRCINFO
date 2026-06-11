@@ -1,15 +1,17 @@
 pkgbase = vtlock
-	pkgdesc = Block VT switching while X11/Wayland screen lockers are active
-	pkgver = 1.0.0
+	pkgdesc = Kernel-level VT switch lock for standalone screen lockers
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://hub.darcs.net/stef204/vtlock
 	install = vtlock.install
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
-	makedepends = unzip
 	depends = glibc
-	source = vtlock::https://hub.darcs.net/stef204/vtlock/dist
+	source = vtlock-1.0.tar.gz::https://hub.darcs.net/stef204/vtlock/raw/releases/vtlock-1.0.tar.gz
+	source = vtlock-1.0.tar.gz.asc::https://hub.darcs.net/stef204/vtlock/raw/releases/vtlock-1.0.tar.gz.asc
+	validpgpkeys = E0844009CF213E78ECD348795A6792BF5ECC3AC6
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = vtlock
