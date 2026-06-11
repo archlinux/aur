@@ -1,6 +1,6 @@
 pkgbase = slack-export-viewer
 	pkgdesc = A Slack Export archive viewer
-	pkgver = 3.5.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/hfaran/slack-export-viewer
 	arch = any
@@ -8,14 +8,15 @@ pkgbase = slack-export-viewer
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python-click
 	depends = python-emoji
 	depends = python-flask
+	depends = python-frozen-flask
 	depends = python-markdown2
+	depends = python-werkzeug
 	optdepends = python-frozen-flask: support static HTML output
-	source = slack-export-viewer-3.5.0.tar.gz::https://github.com/hfaran/slack-export-viewer/archive/refs/tags/3.5.0.tar.gz
-	b2sums = 18d4e856a6e73939a1ca2e39b809eb4e81db7b70964c0d4267bec344d86c26f1af202d7859966e4152f019a4cda9659b8c33ef1ab3ee0ddfabaad3efd1d1a8ba
+	source = slack-export-viewer-4.0.0.tar.gz::https://github.com/hfaran/slack-export-viewer/archive/refs/tags/4.0.0.tar.gz
+	b2sums = 79b0413cf137463a1c247c11c23518bef3137fad3a68da89c3ccc732cfe3d61f2abd3d8cf422e4fa8ea7e0f1e71d6d053c712811d89bc5fdb173920ef18a8c48
 
 pkgname = slack-export-viewer
