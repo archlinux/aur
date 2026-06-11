@@ -10,9 +10,9 @@ depends=(
     'python'
     'python-beautifulsoup4'
     'python-decorator'
-    'python-kitchen'
     'python-requests'
     'python-standard-mailcap'
+    'python-wcwidth'
 )
 makedepends=(
     'git'
