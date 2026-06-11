@@ -1,0 +1,5 @@
+[replay-sh]
+source = "github"
+github = "Ra77a3l3-jar/replaySh"
+use_latest_release = true
+prefix = "v"
