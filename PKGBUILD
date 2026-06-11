@@ -2,7 +2,7 @@
 
 pkgname=llama.cpp-gfx1152
 _pkgname=${pkgname%%-gfx1152}
-pkgver=b9292
+pkgver=b9592
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1152 (Krackan), ROCm + Vulkan)"
 arch=(x86_64 armv7h aarch64)
@@ -14,7 +14,7 @@ depends=(
   glibc
   python
   openmp
-  rocm-nightly-gfx1152-bin
+  rocm-gfx1152-bin
   vulkan-icd-loader
 )
 makedepends=(
@@ -45,7 +45,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('cff8ab2d7eeba945a725a59ed67b20971f8bc69fc24c1a5ac77901b3fae56950'
+sha256sums=('e1b0185afcae8ba4b94b28d4b271018afbbcdfa6b26b6fad5f5176d5f1b351c5'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
