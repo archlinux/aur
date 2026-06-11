@@ -1,6 +1,6 @@
 pkgbase = sd-boot
 	pkgdesc = Tools to install linux kernels via kernel-install from systemd
-	pkgver = 5.8.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = https://github.com/gene-git/sd-boot
 	changelog = Changelog
@@ -34,7 +34,7 @@ pkgbase = sd-boot
 	backup = etc/kernel/install.conf
 	backup = etc/kernel/ukify.conf
 	backup = etc/dracut.conf.d/010-dracut.conf
-	source = git+https://github.com/gene-git/sd-boot#tag=5.8.0
+	source = git+https://github.com/gene-git/sd-boot#tag=5.8.1
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 

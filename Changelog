@@ -1,9 +1,19 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 5.4.1 ➙ 5.8.0
-              : 2026-06-03 ➙ 2026-06-09
+ Tags         : 5.6.0 ➙ 5.8.1
+              : 2026-06-04 ➙ 2026-06-11
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-06-11   : 5.8.1
+              - **5.8.1**
+            
+                * Man page update.
+                  Update sd-boot-find-boot-mounts man page with additional information about
+                  multiple ESP partitions and possible mismatch of nvram with current ESP as observed
+                  on some machines.
+ 2026-06-09   ⋯
+              - update Changelog
 
  2026-06-09   : 5.8.0
               - **5.8.0**
@@ -44,7 +54,7 @@
                 * Tune sd-boot-find-mounts
                   Skip working on any non-block filesystems while looping over scanned mounts.
 
- 2026-06-08   : 5.7.1, origin/master
+ 2026-06-08   : 5.7.1
               - update Changelog
               - **5.7.1**
             
@@ -105,10 +115,4 @@
                 * Package dependencies updated.
                 * Some code tidy up. Simplify style used to check for nullptr.
  2026-06-03   ⋯
-              - update Changelog
-
- 2026-06-03   : 5.4.1
-              - **5.4.1**
-            
-                * Some code clean ups
               - update Changelog
