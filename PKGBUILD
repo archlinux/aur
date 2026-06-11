@@ -2,7 +2,7 @@
 pkgname=prismlauncher-fixes-additions-bin
 _pkgname=PrismLauncher
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Prism Launcher with custom fixes and offline-mode bypass (Precompiled-bin)"
 arch=('x86_64')
 url="https://github.com/Makar986/PrismLauncher-Fixes-Additions"
@@ -32,24 +32,17 @@ source=("https://github.com/Makar986/PrismLauncher-Fixes-Additions/releases/down
 sha256sums=('79ca4b959de82228f0b8a9f272f297edcb8c3ac4a0b38a33255cccc06f265cec')
 
 package() {
-    install -d "${pkgdir}/usr/bin"
-    install -d "${pkgdir}/usr/lib"
-    install -d "${pkgdir}/usr/share/applications"
-    install -d "${pkgdir}/usr/share/icons"
+    # Если внутри архива файлы лежат в папке usr/ (твой случай)
+    if [ -d "${srcdir}/usr" ]; then
+        cp -r "${srcdir}/usr/"* "${pkgdir}/usr/"
+    # Если файлы распаковались сразу в корень
+    else
+        install -d "${pkgdir}/usr/bin"
+        install -d "${pkgdir}/usr/lib"
+        install -d "${pkgdir}/usr/share"
 
-    if [ -d "${srcdir}/usr/bin" ]; then
-        cp -r "${srcdir}/usr/bin/." "${pkgdir}/usr/bin/"
-    fi
-
-    if [ -d "${srcdir}/usr/lib" ]; then
-        cp -r "${srcdir}/usr/lib/." "${pkgdir}/usr/lib/"
-    fi
-
-    if [ -d "${srcdir}/usr/share/icons" ]; then
-        cp -r "${srcdir}/usr/share/icons/." "${pkgdir}/usr/share/icons/"
-    fi
-
-    if [ -d "${srcdir}/usr/share/applications" ]; then
-        cp -r "${srcdir}/usr/share/applications/." "${pkgdir}/usr/share/applications/"
+        [ -d "${srcdir}/bin" ] && cp -r "${srcdir}/bin/." "${pkgdir}/usr/bin/"
+        [ -d "${srcdir}/lib" ] && cp -r "${srcdir}/lib/." "${pkgdir}/usr/lib/"
+        [ -d "${srcdir}/share" ] && cp -r "${srcdir}/share/." "${pkgdir}/usr/share/"
     fi
 }
