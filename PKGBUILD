@@ -82,7 +82,7 @@ package(){
   install -Dm644 ${pkgname}.hook -t "$pkgdir"/usr/share/libalpm/hooks
   # Block DL binary
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
-  touch "$pkgdir"/opt/vivaldi{,-snapshot}/${_so}.{7.7,7.8,7.9,8.0,8.1,8.2,8.3,8.4,8.5,8.6,8.7}
+  touch "$pkgdir"/opt/vivaldi{,-snapshot}/${_so}.{8.0,8.1,8.2,8.3,8.4,8.5,8.6,8.7,8.8,8.9,9.0}
 
   for _n in {37..50} ; do
     install -d "${pkgdir}"/usr/lib/electron${_n}/glibc-hwcaps/x86-64-v2

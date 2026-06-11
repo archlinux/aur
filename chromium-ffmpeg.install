@@ -1,3 +1,3 @@
 post_remove() {
-  chmod a+r /usr/lib/opera-{stable,developer}/libffmpeg.so /opt/{vivaldi,vivaldi-snapshot,nwjs}/lib/libffmpeg.so 2>/dev/null||:
+  chmod a+r /usr/lib/opera-{stable,developer,gx}/libffmpeg.so /opt/{vivaldi,vivaldi-snapshot,nwjs}/lib/libffmpeg.so 2>/dev/null||:
 }

@@ -9,7 +9,8 @@ Target=vivaldi
 Target=vivaldi-snapshot
 Target=opera
 Target=opera-developer
+Target=opera-gx
 
 [Action]
 When=PostTransaction
-Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera-{stable,developer}/libffmpeg.so /opt/{vivaldi,vivaldi-snapshot,nwjs}/lib/libffmpeg.so 2>/dev/null||:'
+Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera-{stable,developer,gx}/libffmpeg.so /opt/{vivaldi,vivaldi-snapshot,nwjs}/lib/libffmpeg.so 2>/dev/null||:'
