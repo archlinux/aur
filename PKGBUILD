@@ -2,7 +2,7 @@
 
 pkgname=mangowm-git
 pkgver=r1351.94380a3
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/mangowm/mango"
 arch=("x86_64")
@@ -29,7 +29,7 @@ makedepends=(
 )
 
 provides=(mangowm wayland-compositor)
-conflicts=(mangowm mangowm-wlonly-git)
+conflicts=(mangowm mangowm-wlonly-git mangowc mangowc-git mangowc-wllonly-git)
 source=("$pkgname::git+https://github.com/mangowm/mango.git")
 md5sums=('SKIP')
 options=('!strip' '!lto')
