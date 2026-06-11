@@ -1,6 +1,6 @@
 # Maintainer : Michael Herstine <sp1ff at pobox dot com>
 pkgname=mpdpopm-git
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='Maintain ratings & playcounts for your mpd server (git version)'
 arch=('x86_64')
