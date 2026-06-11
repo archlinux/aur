@@ -171,7 +171,7 @@ _languages=(
 )
 
 prepare() {
-  _lw_srcdir=$srcdir/src/librewolf-$_ffsrcver-$_lwrelver
+  _lw_srcdir=$srcdir/src/source-$_ffsrcver
   ## <srcprep>
   cp -p *.desktop *.png src/
 
@@ -179,8 +179,8 @@ prepare() {
   mkdir -p mozbuild
   echo "${_lwrelver}" > release
   git submodule update --init --recursive
-  rm -rf "${_lw_srcdir}"
-  mv "${srcdir}/firefox-${_ffsrcver}" "$_lw_srcdir"
+  rm -rf "${_lw_srcdir}/"* "${_lw_srcdir}/".* || true
+  mv "${srcdir}/firefox-${_ffsrcver%b*}"/* "${srcdir}/firefox-${_ffsrcver%b*}"/.* "${_lw_srcdir}/"
   mkdir -p "${_lw_srcdir}/lw"
   mv "../firefox-l10n-${_l10n_commit}" "${_lw_srcdir}/lw/l10n"
 
@@ -189,7 +189,7 @@ prepare() {
   ## </srcprep>
 
   cd $_lw_srcdir
-  mv mozconfig ../mozconfig || true
+  mv -b mozconfig ../mozconfig || true
 
   cat >>../mozconfig <<END
 ac_add_options --disable-install-strip
@@ -268,7 +268,7 @@ fi
 
 
 build() {
-  _lw_srcdir=$srcdir/src/librewolf-$_ffsrcver-$_lwrelver
+  _lw_srcdir=$srcdir/src/source-$_ffsrcver
   cd "${_lw_srcdir}"
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
@@ -395,7 +395,7 @@ END
 }
 
 package() {
-  _lw_srcdir=$srcdir/src/librewolf-$_ffsrcver-$_lwrelver
+  _lw_srcdir=$srcdir/src/source-$_ffsrcver
   cd "${_lw_srcdir}"
   if [[ "${_package_multilocale}" == "true" ]]; then
     MOZ_PKG_FORMAT=tar ./mach package-multi-locale --locales ${_languages[@]}
