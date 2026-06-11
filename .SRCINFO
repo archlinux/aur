@@ -1,6 +1,6 @@
 pkgbase = kirigami-addons-git
 	pkgdesc = Add-ons for the Kirigami framework (Git version)
-	pkgver = 1.12.1.r14.g3d453af
+	pkgver = 1.12.1.r16.g9964c8f
 	pkgrel = 1
 	url = https://invent.kde.org/libraries/kirigami-addons
 	arch = any
