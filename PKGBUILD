@@ -3,7 +3,7 @@
 _pkgname=dusklight
 pkgname=${_pkgname}-git
 pkgver=1.3.1.r76.g7c5ed6a
-pkgrel=4
+pkgrel=5
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
@@ -61,6 +61,7 @@ package() {
 
   install -Dm 755 "${srcdir}/dusklight/build/dusklight" "${pkgdir}/opt/${_pkgname}/dusklight"
   install -Dm 755 "${srcdir}/dusklight/build/libs/freeverb/libfreeverb.so" "${pkgdir}/opt/${_pkgname}/libfreeverb.so"
+  install -Dm 755 "${srcdir}/dusklight/build/librmlui.so" "${pkgdir}/opt/${_pkgname}/librmlui.so"
 
   install -dm 755 "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/dusklight/res" "${pkgdir}/usr/share/${_pkgname}/res"
