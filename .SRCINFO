@@ -1,0 +1,13 @@
+pkgbase = my-little-helper
+	pkgdesc = An interactive post-install script for Arch Linux to easily select and batch-install gaming apps, launchers, and browsers.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/akiltixhaj1230/my-little-helper
+	arch = any
+	license = GPL2
+	depends = bash
+	depends = libnewt
+	source = my-little-helper-1.0.0::https://raw.githubusercontent.com/akiltixhaj1230/my-little-helper/main/helper
+	sha256sums = c8a2dc74410ee08f201a139adfb05ded9bd210a0c219499f05906b5b9173403f
+
+pkgname = my-little-helper
