@@ -1,6 +1,6 @@
 pkgbase = boxd-cli-bin
 	pkgdesc = External CLI for managing boxd cloud VMs
-	pkgver = 0.1.9
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://boxd.sh/
 	install = boxd-cli-bin.install
@@ -17,9 +17,9 @@ pkgbase = boxd-cli-bin
 	options = !strip
 	source = LICENSE
 	sha256sums = 7f5da622099b2595235408e5130e231f74b8a4d6972fd0d5234be963f5baa247
-	source_x86_64 = boxd-cli-bin-0.1.9-x86_64::https://boxd.sh/downloads/cli/boxd-linux-amd64
-	sha256sums_x86_64 = 363988af1382bdcf9ff42553774aad2b286462805922f159344bc4a0348ef015
-	source_aarch64 = boxd-cli-bin-0.1.9-aarch64::https://boxd.sh/downloads/cli/boxd-linux-arm64
-	sha256sums_aarch64 = 153ab56d491c9feb44a0f295b6c940d8ff071f87870eaead9aee12434289ab22
+	source_x86_64 = boxd-cli-bin-0.1.11-x86_64::https://boxd.sh/downloads/cli/boxd-linux-amd64
+	sha256sums_x86_64 = e6745189f5bd19c310ef74581b030e47af62cd3ed4a6d2f28d593d59b62517cf
+	source_aarch64 = boxd-cli-bin-0.1.11-aarch64::https://boxd.sh/downloads/cli/boxd-linux-arm64
+	sha256sums_aarch64 = 27c12bee0816243c2e3b2d30c1a6cfd3ae291f07f23377e25ba51c3b382487b7
 
 pkgname = boxd-cli-bin
