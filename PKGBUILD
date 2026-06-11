@@ -22,6 +22,10 @@ sha256sums=('SKIP'
             '3bf049a9b66d1a355338d46940fe502b9206ff02a4fa89d5034991b8259104b4')
 
 package() {
+  cd "${srcdir}"
+  
+  # Extract deb package
+  bsdtar -x -f "${srcdir}/superlabel-${pkgver}.deb"
   bsdtar -x -f "${srcdir}/data.tar.xz" -C "${pkgdir}"
   
   install -Dm755 "superlabel.sh" "${pkgdir}/usr/bin/superlabel"
