@@ -3,7 +3,7 @@
 # License: MIT
 
 pkgname=stasis-git
-pkgver=1.1.0.r9.g1375c3a
+pkgver=1.3.0.r0.gb43675d
 pkgrel=1
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness (git version)"
 arch=('x86_64')
@@ -40,6 +40,10 @@ package() {
 
   # Binary
   install -Dm755 "target/release/stasis" "$pkgdir/usr/bin/stasis"
+
+  # Icon
+  install -Dm644  "assets/stasis.png" \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/stasis.png"
 
   # License
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
