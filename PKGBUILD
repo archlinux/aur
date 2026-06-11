@@ -2,7 +2,7 @@
 
 _pkgname=openjph
 pkgname=mingw-w64-${_pkgname}
-pkgver=0.28.0
+pkgver=0.28.1
 pkgrel=1
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (mingw-w64)'
 url='https://github.com/aous72/OpenJPH'
@@ -17,7 +17,7 @@ source=(
 	'62450e6cc3110731bee703719145f852610ce632.patch'
 	'77f287df698ecddcfa44c5080ed7ed2069714ec4.patch'
 )
-sha256sums=('55a6d8dc78a9f122b8a96d9a7a382175124d37928c16472c068b83a6476daf0d'
+sha256sums=('89629a3c0f61d474073076bb6195e9bb1d63fafb2e1c57ab46aee53a62f21819'
             '1542ae0f12957dd20dc81b26197be2d1fab1a251493be3c64888d7a034c78ec7'
             'a7c57736232b778f77564862495d46be5a7349f379b2330d0342efe7ca7ffdb3')
 
