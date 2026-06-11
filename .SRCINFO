@@ -1,13 +1,14 @@
 pkgbase = python-yakh
 	pkgdesc = Yet Another Keypress Handler
 	pkgver = 0.4.1
-	pkgrel = 1
-	url = https://github.com/petereon/python-yakh
+	pkgrel = 2
+	url = https://github.com/petereon/yakh
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python
 	source = https://files.pythonhosted.org/packages/d2/77/bbff0a1e6fb03b8cc2cc373a44cfbbb4fd22863c657f8630f4a0f5eb207c/python_yakh-0.4.1.tar.gz
 	sha256sums = da03e800b4f2f5d85344f1668e852687c12dc1a99a03c65cf3dc13a3680da49d
