@@ -3,7 +3,7 @@
 _pkgname=gdspy
 pkgname=python-${_pkgname}
 pkgver=1.6.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Gdspy is a Python module for creating GDSII stream files, usually CAD layouts."
 url="https://github.com/heitzmann/gdspy"
 arch=('x86_64' 'i686')
@@ -12,7 +12,8 @@ depends=(
   'python'
   'python-numpy'
   'glibc'
-  'gcc-libs'
+  'libstdc++'
+  'libgcc'
 )
 makedepends=(
   'git'
