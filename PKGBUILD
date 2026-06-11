@@ -1,0 +1,49 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
+_pkgauthor=OscarPastry
+_pkgname=trapsh
+_appname=${_pkgname}
+pkgname=${_pkgname}
+pkgdesc="Record your shell session and replay it as a clean bash script"
+
+pkgver=0.1.0
+pkgrel=1
+_pkgvername=v${pkgver}
+
+arch=('x86_64' 'aarch64')
+
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+
+license=('Unlicense')
+
+makedepends=('rust' 'cargo')
+depends=('glibc' 'libgcc')
+
+provides=("${_appname}")
+
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_pkgvername}.tar.gz")
+sha256sums=('83cd5b63b4ef6fb486ba5ca440e49641cfb850a020b924dfed908694d82c51b4')
+
+
+prepare() {
+	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
+
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --release --frozen
+}
+
+package() {
+	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
+
+	install -Dm755 "target/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}

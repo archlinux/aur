@@ -1,0 +1,5 @@
+[trapsh]
+source = "github"
+github = "OscarPastry/trapsh"
+use_max_tag = true
+prefix = "v"
