@@ -1,7 +1,7 @@
 # Maintainer: ZXY595 <3303057136@qq.com>
 _pkgname=vtcode
 pkgname=$_pkgname-bin
-pkgver=0.123.10
+pkgver=0.125.0
 pkgrel=1
 pkgdesc="An open-source coding agent with LLM-native code understanding and robust shell safety."
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 )
 conflicts=("$_pkgname")
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-$arch-unknown-linux-gnu.tar.gz")
-sha256sums=('0937f8cf09d77b41eb3a67e18487b34210dfedd3745a59cb4cd55fc21843c969')
+sha256sums=('5afb14714cf743dca0dcf87650cf7c693c07e814c551b0dddcb0fb18b22da95e')
 
 package() {
   install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin"
