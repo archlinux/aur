@@ -1,7 +1,7 @@
 pkgbase = darling-bin
 	pkgdesc = Darwin/macOS emulation layer for Linux
 	pkgver = 0.1.20260608
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/darlinghq/darling
 	install = darling-bin.install
 	arch = x86_64
