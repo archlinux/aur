@@ -1,7 +1,7 @@
 # Maintainer: Vaishnav-Sabari-Girish <vaishnav.sabari.girish@gmail.com>
 # https://github.com/orhun/pkgbuilds
 
-pkgname=comchan
+pkgname=comchan-ratty
 _pkgname=ComChan
 pkgver=0.9.1
 pkgrel=1
