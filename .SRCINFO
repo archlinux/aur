@@ -1,21 +1,24 @@
 pkgbase = dotnet-core-preview-bin
-	pkgver = 11.0.0.sdk100preview4.26230.115
-	pkgrel = 2
+	pkgver = 11.0.0.sdk100preview5.26302.115
+	pkgrel = 1
 	epoch = 1
 	url = https://dotnet.microsoft.com
 	arch = aarch64
 	arch = x86_64
 	arch = armv7h
 	license = MIT
+	noextract = dotnet-sdk-11.0.100-preview.5.26302.115-linux-arm64.tar.gz
+	noextract = dotnet-sdk-11.0.100-preview.5.26302.115-linux-x64.tar.gz
+	noextract = dotnet-sdk-11.0.100-preview.5.26302.115-linux-arm.tar.gz
 	options = staticlibs
 	source = dotnet.sh
 	sha512sums = 768151c7179fb6a126b3de9cae01e363e8894f6fab384b1e2c5066c2adca4578638983b1b62aea10dd18045e6d6e8f8ea13280481134de94f004a118919b2c06
-	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.4.26230.115/dotnet-sdk-11.0.100-preview.4.26230.115-linux-arm64.tar.gz
-	sha512sums_aarch64 = f0488bfd17cc9dbb53cf4390505ffde58efd286af8d9599f53b6c652990c726dcf7bba0499982aa9e2d9fe2208f43166d145ec80ac26397047ae178f28d0e2f3
-	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.4.26230.115/dotnet-sdk-11.0.100-preview.4.26230.115-linux-x64.tar.gz
-	sha512sums_x86_64 = f4c74518bc9c8b92b18fbae299c7916b16d8ffad0f3e1768fb76f8c3b7b4ad3875bb8718ae2311083324fa8d58d6adcfcc3e4aed177f269432b72e7b3a9dd8ae
-	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.4.26230.115/dotnet-sdk-11.0.100-preview.4.26230.115-linux-arm.tar.gz
-	sha512sums_armv7h = 005eac84e3e16aaeeb4377e3b882ab9ce3af076735ca5aae7230c4f61c185365438d05e4f05945c8d5c31ceed356e184b55e8feb046b01dcad651e85fe0913c8
+	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.5.26302.115/dotnet-sdk-11.0.100-preview.5.26302.115-linux-arm64.tar.gz
+	sha512sums_aarch64 = 7fc730dc59926517ecc4aa76866e7c62f50fc7331f0b127c9d77893a71691dbe576265df5f84208a4cf78e6c6d1775cd092dbe05c9e9c50af017bb3dc9472dd0
+	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.5.26302.115/dotnet-sdk-11.0.100-preview.5.26302.115-linux-x64.tar.gz
+	sha512sums_x86_64 = 9c89340398858e6e35bdb1377a0f5c4d88141a9dad37303683c77f6fd0498b6a4b435a34875afaa0212983622ec937b23b8b17e3538401fbdbf234d22f89e917
+	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.5.26302.115/dotnet-sdk-11.0.100-preview.5.26302.115-linux-arm.tar.gz
+	sha512sums_armv7h = 0cc07182bfcd59ca27782289cbf56f9c2edf01a0d9a5c57a27503427840290ec2b3554a1a177e314ec68ef1ba9e033d3b67491109addbc798460cc3da98ae6fc
 
 pkgname = dotnet-host-preview-bin
 	pkgdesc = A generic driver for the .NET Core Command Line Interface
@@ -23,13 +26,13 @@ pkgname = dotnet-host-preview-bin
 	depends = libgcc
 	depends = libstdc++
 	depends = sh
-	provides = dotnet-host-preview=11.0.0.sdk100preview4.26230.115
-	provides = dotnet-host=11.0.0.sdk100preview4.26230.115
+	provides = dotnet-host-preview=11.0.0.sdk100preview5.26302.115
+	provides = dotnet-host=11.0.0.sdk100preview5.26302.115
 	conflicts = dotnet-host
 
 pkgname = dotnet-runtime-preview-bin
 	pkgdesc = The .NET Core runtime
-	depends = dotnet-host>=11.0.0.sdk100preview4.26230.115
+	depends = dotnet-host>=11.0.0.sdk100preview5.26302.115
 	depends = glibc
 	depends = icu
 	depends = krb5
@@ -39,40 +42,40 @@ pkgname = dotnet-runtime-preview-bin
 	depends = openssl
 	depends = zlib
 	optdepends = lttng-ust2.12: CoreCLR tracing
-	provides = dotnet-runtime-preview=11.0.0.sdk100preview4.26230.115
-	provides = dotnet-runtime-11.0=11.0.0.sdk100preview4.26230.115
+	provides = dotnet-runtime-preview=11.0.0.sdk100preview5.26302.115
+	provides = dotnet-runtime-11.0=11.0.0.sdk100preview5.26302.115
 	conflicts = dotnet-runtime-preview
 	conflicts = dotnet-runtime-11.0
 
 pkgname = aspnet-runtime-preview-bin
 	pkgdesc = The ASP.NET Core runtime
-	depends = dotnet-runtime-preview-bin>=1:11.0.0.sdk100preview4.26230.115-2
-	provides = aspnet-runtime-preview=11.0.0.sdk100preview4.26230.115
-	provides = aspnet-runtime-11.0=11.0.0.sdk100preview4.26230.115
+	depends = dotnet-runtime-preview-bin>=1:11.0.0.sdk100preview5.26302.115-1
+	provides = aspnet-runtime-preview=11.0.0.sdk100preview5.26302.115
+	provides = aspnet-runtime-11.0=11.0.0.sdk100preview5.26302.115
 	conflicts = aspnet-runtime-preview
 	conflicts = aspnet-runtime-11.0
 
 pkgname = dotnet-targeting-pack-preview-bin
 	pkgdesc = The .NET Core targeting pack
-	provides = dotnet-targeting-pack-preview=11.0.0.sdk100preview4.26230.115
-	provides = dotnet-targeting-pack-11.0=11.0.0.sdk100preview4.26230.115
+	provides = dotnet-targeting-pack-preview=11.0.0.sdk100preview5.26302.115
+	provides = dotnet-targeting-pack-11.0=11.0.0.sdk100preview5.26302.115
 	conflicts = dotnet-targeting-pack-preview
 	conflicts = dotnet-targeting-pack-11.0
 
 pkgname = aspnet-targeting-pack-preview-bin
 	pkgdesc = The ASP.NET Core targeting pack
-	depends = dotnet-targeting-pack-preview-bin>=1:11.0.0.sdk100preview4.26230.115-2
-	provides = aspnet-targeting-pack-preview=11.0.0.sdk100preview4.26230.115
-	provides = aspnet-targeting-pack-11.0=11.0.0.sdk100preview4.26230.115
+	depends = dotnet-targeting-pack-preview-bin>=1:11.0.0.sdk100preview5.26302.115-1
+	provides = aspnet-targeting-pack-preview=11.0.0.sdk100preview5.26302.115
+	provides = aspnet-targeting-pack-11.0=11.0.0.sdk100preview5.26302.115
 	conflicts = aspnet-targeting-pack-preview
 	conflicts = aspnet-targeting-pack-11.0
 
 pkgname = dotnet-sdk-preview-bin
 	pkgdesc = The .NET Core SDK
-	depends = dotnet-runtime-preview-bin>=1:11.0.0.sdk100preview4.26230.115-2
-	depends = dotnet-targeting-pack-preview-bin>=1:11.0.0.sdk100preview4.26230.115-2
+	depends = dotnet-runtime-preview-bin>=1:11.0.0.sdk100preview5.26302.115-1
+	depends = dotnet-targeting-pack-preview-bin>=1:11.0.0.sdk100preview5.26302.115-1
 	optdepends = aspnet-targeting-pack-preview-bin: Build ASP.NET Core applications
-	provides = dotnet-sdk-preview=11.0.0.sdk100preview4.26230.115
-	provides = dotnet-sdk-11.0=11.0.0.sdk100preview4.26230.115
+	provides = dotnet-sdk-preview=11.0.0.sdk100preview5.26302.115
+	provides = dotnet-sdk-11.0=11.0.0.sdk100preview5.26302.115
 	conflicts = dotnet-sdk-preview
 	conflicts = dotnet-sdk-11.0
