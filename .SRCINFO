@@ -1,6 +1,6 @@
 pkgbase = jellyfin-desktop-git-bin
 	pkgdesc = A desktop client for Jellyfin (Nightly AppImage)
-	pkgver = 0.r991.814e79c
+	pkgver = 0.r1008.72867f3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/jellyfin/jellyfin-desktop
