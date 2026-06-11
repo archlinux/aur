@@ -1,10 +1,9 @@
 # Maintainer: Vaishnav-Sabari-Girish <vaishnav.sabari.girish@gmail.com>
-# https://github.com/orhun/pkgbuilds
 
 pkgname=comchan-ratty
 _pkgname=ComChan
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A blazingly fast minimal serial monitor with plotter TUI and more"
 arch=(
   'x86_64'
