@@ -1,13 +1,13 @@
 pkgbase = forgejo-mcp-bin
 	pkgdesc = MCP server for Forgejo integration with AI assistants like Claude, the binary package
-	pkgver = 2.28.0
+	pkgver = 2.29.0
 	pkgrel = 1
 	url = https://codeberg.org/goern/forgejo-mcp
 	arch = x86_64
 	license = MIT
 	provides = forgejo-mcp
 	conflicts = forgejo-mcp
-	source = forgejo-mcp-bin-2.28.0.tar.gz::https://codeberg.org/goern/forgejo-mcp/releases/download/v2.28.0/forgejo-mcp_2.28.0_linux_amd64.tar.gz
-	sha256sums = a2d44b06f8bee1f70d79ec9950286e95868a3db07ca4fc66ae78645e1e29f819
+	source = forgejo-mcp-bin-2.29.0.tar.gz::https://codeberg.org/goern/forgejo-mcp/releases/download/v2.29.0/forgejo-mcp_2.29.0_linux_amd64.tar.gz
+	sha256sums = b7bfe43cbddacd2e9dc3ad07f2ad03b8c5218286bbd3a9e5320b8cbacbfef428
 
 pkgname = forgejo-mcp-bin
