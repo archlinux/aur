@@ -1,6 +1,6 @@
 pkgbase = ttl-bin
 	pkgdesc = Fast, modern traceroute with real-time TUI, per-hop stats, ASN/geo lookup, ECMP detection, and MPLS label parsing
-	pkgver = 0.19.1
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/lance0/ttl
 	install = ttl-bin.install
@@ -10,9 +10,9 @@ pkgbase = ttl-bin
 	license = MIT
 	provides = ttl
 	conflicts = ttl
-	source_x86_64 = ttl-bin-0.19.1-x86_64.tar.gz::https://github.com/lance0/ttl/releases/download/v0.19.1/ttl-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = b70826648abc612850edbbad26060d789d46601a33fdc8e495f51377a70574b8
-	source_aarch64 = ttl-bin-0.19.1-aarch64.tar.gz::https://github.com/lance0/ttl/releases/download/v0.19.1/ttl-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = aa849098d66ebc23aa3b7e8573cadbe2ff4a698e0a646154218e683dfc8f0927
+	source_x86_64 = ttl-bin-0.20.0-x86_64.tar.gz::https://github.com/lance0/ttl/releases/download/v0.20.0/ttl-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 19cd0f6fe198c431030fe621982602e4dd4a6dd7fbd3b98b6435205d0296af84
+	source_aarch64 = ttl-bin-0.20.0-aarch64.tar.gz::https://github.com/lance0/ttl/releases/download/v0.20.0/ttl-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = fb70687da5385a3a61f87782e3dbfc4450bae0ea87bf6615c9ac75a8daa1443f
 
 pkgname = ttl-bin
