@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
-pkgver=2.3.2.2.r3.gc51c21f5
+pkgver=2.3.2.3
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
@@ -27,7 +27,6 @@ depends=(
 )
 optdepends=(
     'flatpak: For supporting flatpak implementation.'
-    'archlinux-appstream-data: package icons and metadata'
     'fish: Fish shell completions'
 )
 makedepends=('dotnet-sdk-10.0' 'git' 'clang' 'gettext')
@@ -200,3 +199,5 @@ update-desktop-database "$LOCAL_APPS_DIR" 2>/dev/null || true
 echo "Flatpak desktop entries patched with Shelly integration."
 SCRIPT
 }
+sha256sums=('SKIP')
+sha256sums=('SKIP')
