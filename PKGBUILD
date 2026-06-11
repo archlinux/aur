@@ -1,6 +1,6 @@
 pkgname=omniglyph
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Emoji and Unicode symbol picker"
 arch=('x86_64')
 url="https://github.com/pshycodr/omniglyph"

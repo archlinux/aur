@@ -1,7 +1,7 @@
 pkgbase = omniglyph
 	pkgdesc = Emoji and Unicode symbol picker
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pshycodr/omniglyph
 	arch = x86_64
 	license = GPL-3.0-only
