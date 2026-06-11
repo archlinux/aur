@@ -4,7 +4,7 @@
 # Installs the prebuilt AppImage from GitHub Releases.
 
 pkgname=ardali-bin
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="ArDali WebMedia multimedia ecosystem for Linux (prebuilt AppImage)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   "com.ardali.mediaplayer.png::https://raw.githubusercontent.com/${_owner}/${_repo}/main/public/icons/app/ardali_256.png"
 )
 
-sha256sums=('7a28ebf026b571a71fd6a71190a858116a1a6a37e5dd3056f219b8eb2bda51e0'
+sha256sums=('703a6b636d331e49a6f1bb1376a30bc515bf32800fe4c7c16b8ab81a568824f2'
             '4d12f075da1921ae0117b6d5a0f36dee83b1df177fe41670414d5badd498f67a')
 
 package() {
