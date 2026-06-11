@@ -12,7 +12,6 @@ pkgbase = mayaflux-dev-bin
 	depends = clang
 	depends = cmake
 	depends = pkg-config
-	depends = glfw
 	depends = glm
 	depends = eigen
 	depends = spirv-headers

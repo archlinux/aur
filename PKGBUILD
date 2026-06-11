@@ -15,7 +15,6 @@ depends=(
     'clang'
     'cmake'
     'pkg-config'
-    'glfw'
     'glm'
     'eigen'
     'spirv-headers'
