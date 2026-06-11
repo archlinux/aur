@@ -1,12 +1,16 @@
 pkgbase = proton-drive-cli-bin
 	pkgdesc = Official Proton Drive command-line client (precompiled binary)
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://proton.me/download/drive/cli/index.html
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-proprietary
-	provides = proton-drive-cli
+	depends = libsecret
+	optdepends = gnome-keyring: Secret Service backend for credential storage
+	optdepends = kwallet: KDE Secret Service backend
+	optdepends = keepassxc: Secret Service backend
+	provides = proton-drive-cli=0.4.3
 	provides = proton-drive
 	conflicts = proton-drive-cli
 	options = !strip
