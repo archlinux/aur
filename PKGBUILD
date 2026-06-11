@@ -412,6 +412,15 @@ build() {
   ninja -C out/Release cronet_package
 }
 
+check() {
+  cd "chromium-${pkgver}"
+
+  # cronet_tests isn't linked against the shared object.
+  ninja -C out/Release cronet_sample
+
+  ./out/Release/cronet_sample
+}
+
 package() {
   depends=(
     "${_depends[@]}"
