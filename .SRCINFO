@@ -1,7 +1,7 @@
 pkgbase = dotty
 	pkgdesc = Dotfiles and config manager with profiles, written in C++
 	pkgver = 0.4.9
-	pkgrel = 5
+	pkgrel = 7
 	url = https://github.com/Monjaris/dotty
 	arch = x86_64
 	license = GPL-3.0-or-later
