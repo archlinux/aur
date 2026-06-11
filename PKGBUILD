@@ -1,6 +1,6 @@
 # Maintainer: Andy Jeffries <andy@andyjeffries.co.uk>
 pkgname=nzbgrab
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Fast parallel NZB downloader with PAR2 and extraction"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/andyjeffries/nzbgrab/archive/v$pkgver.tar.gz")
-sha256sums=('82a9d2f7f443e80204f86940a300bf26c4971deddae750abeee6b3133d2ab488')
+sha256sums=('c96ebdbab168f1ac62bf3776891b6fc88f6cf161f8edbf9e3c61ab2e5be6c365')
 
 build() {
     cd "$pkgname-$pkgver"

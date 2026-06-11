@@ -1,6 +1,6 @@
 pkgbase = nzbgrab
 	pkgdesc = Fast parallel NZB downloader with PAR2 and extraction
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/andyjeffries/nzbgrab
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = nzbgrab
 	optdepends = unrar: RAR extraction
 	optdepends = p7zip: 7z extraction
 	optdepends = unzip: ZIP extraction
-	source = nzbgrab-0.1.1.tar.gz::https://github.com/andyjeffries/nzbgrab/archive/v0.1.1.tar.gz
-	sha256sums = 82a9d2f7f443e80204f86940a300bf26c4971deddae750abeee6b3133d2ab488
+	source = nzbgrab-0.2.0.tar.gz::https://github.com/andyjeffries/nzbgrab/archive/v0.2.0.tar.gz
+	sha256sums = c96ebdbab168f1ac62bf3776891b6fc88f6cf161f8edbf9e3c61ab2e5be6c365
 
 pkgname = nzbgrab
