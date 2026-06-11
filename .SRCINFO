@@ -1,6 +1,6 @@
 pkgbase = lazyjira-git
 	pkgdesc = Terminal UI for Jira (builds from git source)
-	pkgver = 2.16.0
+	pkgver = 2.16.1
 	pkgrel = 1
 	url = https://github.com/textfuel/lazyjira
 	arch = x86_64
