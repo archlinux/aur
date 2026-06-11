@@ -1,7 +1,7 @@
 pkgbase = yggoverlay
 	pkgdesc = CNI plugin for containerd to manage yggdrasil overlay network for VPN connection between containers
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Neboer/yggoverlay-cni-plugin
 	install = yggoverlay.install
 	arch = any

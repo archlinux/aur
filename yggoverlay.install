@@ -1,3 +1,14 @@
+has_global_ipv6() {
+    local ip
+    if ip=$(curl -6 -s --max-time 3 https://ipv6.icanhazip.com) && [[ -n "$ip" ]]; then
+        echo "ipv6 connection check passed."
+        return 0
+    else
+        echo "ipv6 connection check failed."
+        return 1
+    fi
+}
+
 remove_old_configs() {
     # remove old version outdated configs to avoid conflicts with new ones
     for f in /etc/cni/net.d/30-man8br0-ygg.conflist \
@@ -12,19 +23,18 @@ remove_old_configs() {
 select_cni_config() {
     local cni_dir="/etc/cni/net.d"
     local share_dir="/usr/share/yggoverlay"
+    local v6_conf="30-man8br0-ygg-v6.conflist"
+    local v4_conf="30-man8br0-ygg-v4only.conflist"
 
     mkdir -p "$cni_dir"
 
-    if ip -6 addr show scope global up \
-        | grep -oP '(?<=inet6 )([0-9a-f:]+)' \
-        | grep -qiE '^[23][0-9a-f]'; then
-
-        install -m644 "$share_dir/30-man8br0-ygg-v6.conflist" \
-            "$cni_dir/30-man8br0-ygg-v6.conflist"
+    if has_global_ipv6; then
+        rm -f "$cni_dir/$v4_conf"
+        install -m644 "$share_dir/$v6_conf" "$cni_dir/$v6_conf"
         echo "yggoverlay: global IPv6 detected, enabling IPv6 config"
     else
-        install -m644 "$share_dir/30-man8br0-ygg-v4only.conflist" \
-            "$cni_dir/30-man8br0-ygg-v4only.conflist"
+        rm -f "$cni_dir/$v6_conf"
+        install -m644 "$share_dir/$v4_conf" "$cni_dir/$v4_conf"
         echo "yggoverlay: no global IPv6 detected, enabling IPv4-only config"
     fi
 }

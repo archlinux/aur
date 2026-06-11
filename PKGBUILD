@@ -6,7 +6,7 @@ _pkgname=yggoverlay-cni-plugin
 pkgname=yggoverlay
 pkgver=0.3
 
-pkgrel=1
+pkgrel=2
 pkgdesc='CNI plugin for containerd to manage yggdrasil overlay network for VPN connection between containers'
 
 arch=('any')
