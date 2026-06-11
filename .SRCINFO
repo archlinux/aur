@@ -1,6 +1,6 @@
 pkgbase = python-adaptive
 	pkgdesc = Parallel active learning of mathematical functions
-	pkgver = 1.4.2
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/python-adaptive/adaptive
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-adaptive
 	depends = python-scipy
 	depends = python-sortedcollections
 	depends = python-versioningit
-	source = adaptive-1.4.2.tar.gz::https://github.com/python-adaptive/adaptive/archive/v1.4.2.tar.gz
-	sha512sums = 882b47c5111442b0fd4f548fedd48480ae2669c0698776547e2debfa18babb4d090feb356abc94e0bfac633fcd47afc82fa134d1860f33b0bde5e9cd71fc3348
+	source = adaptive-1.5.2.tar.gz::https://github.com/python-adaptive/adaptive/archive/v1.5.2.tar.gz
+	sha512sums = 9b67316050f686fce55901421c468c358af69403d6d156ac4e529b3dc3c796a166a872b8508b796560837e922c39a730bbb64d118db4260ef1e62c30ac0807e9
 
 pkgname = python-adaptive
