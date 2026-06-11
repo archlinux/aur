@@ -4,29 +4,29 @@
 # Installs the prebuilt AppImage from GitHub Releases.
 
 pkgname=ardali-bin
-pkgver=3.2.4
+pkgver=4.1.0
 pkgrel=1
-pkgdesc="ArDali multimedia ecosystem for Linux (prebuilt AppImage)"
+pkgdesc="ArDali WebMedia multimedia ecosystem for Linux (prebuilt AppImage)"
 arch=('x86_64')
 url="https://ardali.app"
-license=('GPL-3.0-only')
+license=('MIT')
 depends=('fuse2' 'glibc' 'zlib' 'ffmpeg')
 provides=('ardali')
 conflicts=('ardali' 'aurivo-bin')
 options=(!strip !debug)
 
 _owner="Muhammed-Dali"
-_repo="ArDali-WebMedia"
+_repo="ArDali"
 _tag="v${pkgver}"
-_appimage="ArDali-${pkgver}-linux-x86_64.AppImage"
+_appimage="ArDali.WebMedia_${pkgver}_amd64.AppImage"
 
 source=(
   "${_appimage}::https://github.com/${_owner}/${_repo}/releases/download/${_tag}/${_appimage}"
-  "com.ardali.mediaplayer.png::https://raw.githubusercontent.com/${_owner}/${_repo}/main/icons/app/ardali_512.png"
+  "com.ardali.mediaplayer.png::https://raw.githubusercontent.com/${_owner}/${_repo}/main/public/icons/app/ardali_256.png"
 )
 
-sha256sums=('71a578f7883ceabe4d4d4d509b2462343c92426222f57c049285aabb28327e2e'
-            'da02e29b849870a9852e9020c0df9532a84ae81c53d3f073fa633d679d80b43f')
+sha256sums=('d176ca56dfcd819da2cb378c35c39453859d26fd435606b1954e136ee8ae4d0d'
+            '4d12f075da1921ae0117b6d5a0f36dee83b1df177fe41670414d5badd498f67a')
 
 package() {
   install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/ardali/ardali.AppImage"
@@ -45,7 +45,7 @@ EOF
 Type=Application
 Version=1.5
 Name=ArDali
-Comment=Open-source Linux media player for music and video
+Comment=ArDali WebMedia player for music, video, web platforms and DSP
 Exec=ardali %U
 Icon=com.ardali.mediaplayer
 Terminal=false
@@ -62,13 +62,13 @@ EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>com.ardali.mediaplayer</id>
-  <name>ArDali Media Player</name>
-  <summary>Open-source Linux media player for music and video</summary>
+  <name>ArDali WebMedia</name>
+  <summary>Media player, web platform manager and DSP engine</summary>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-3.0-only</project_license>
+  <project_license>MIT</project_license>
   <url type="homepage">https://ardali.app</url>
   <description>
-    <p>ArDali Media Player for Linux.</p>
+    <p>ArDali WebMedia for Linux.</p>
   </description>
 </component>
 EOF
