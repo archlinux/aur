@@ -1,6 +1,6 @@
 pkgbase = moshpits
 	pkgdesc = moshpits server — SSH and Mosh inspired remote terminal server written in Rust
-	pkgver = 0.8.20
+	pkgver = 0.8.21
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	install = moshpits.install
@@ -11,9 +11,9 @@ pkgbase = moshpits
 	makedepends = cmake
 	makedepends = gcc
 	depends = moshpit-keygen
-	source = moshpits-0.8.20.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.20.tar.gz
+	source = moshpits-0.8.21.tar.gz::https://github.com/rustyhorde/moshpit/archive/v0.8.21.tar.gz
 	source = mps.service
-	sha256sums = 7252155af6b64ffeba1c111a6f98cfef42bdc5a4de50e9aead1cd8acda3479a0
-	sha256sums = 7252155af6b64ffeba1c111a6f98cfef42bdc5a4de50e9aead1cd8acda3479a0
+	sha256sums = f84335cebd8b8ecb6e8d8bb3031daa46a6fbbf4f2e80deef286d070ed1aeaefe
+	sha256sums = f84335cebd8b8ecb6e8d8bb3031daa46a6fbbf4f2e80deef286d070ed1aeaefe
 
 pkgname = moshpits
