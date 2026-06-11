@@ -65,8 +65,8 @@ package() {
         "${pkgdir}/etc/pam.d/lyar-autologin"
 
     # systemd
-    install -Dm644 contrib/lyar@.service \
-        "${pkgdir}/usr/lib/systemd/system/lyar@.service"
+    install -Dm644 contrib/lyar.service \
+        "${pkgdir}/usr/lib/systemd/system/lyar.service"
 
     # openrc
     install -Dm755 contrib/lyar-openrc \

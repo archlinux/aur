@@ -2,7 +2,7 @@ post_install() {
     echo "lyar installed."
     echo ""
     echo "to enable lyar as your display manager:"
-    echo "  systemd:  systemctl enable lyar@tty2"
+    echo "  systemd:  systemctl enable lyar"
     echo "  openrc:   rc-update add lyar default"
     echo "  dinit:    dinitctl enable lyar"
     echo "  runit:    ln -s /usr/lib/runit/sv/lyar /run/runit/service/"
