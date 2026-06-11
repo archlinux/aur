@@ -1,16 +1,16 @@
 pkgbase = ruby-rex-text
 	pkgdesc = This Gem contains all of the Ruby Exploitation(Rex) methods for text manipulation and generation
-	pkgver = 0.2.37
+	pkgver = 0.2.64
 	pkgrel = 2
 	url = https://github.com/rapid7/rex-text
 	arch = any
 	license = BSD
 	depends = ruby
-	noextract = rex-text-0.2.37.gem
+	noextract = rex-text-0.2.64.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rex-text-0.2.37.gem
+	source = https://rubygems.org/downloads/rex-text-0.2.64.gem
 	source = https://raw.githubusercontent.com/rapid7/rex-text/master/LICENSE
-	sha256sums = 3e148fc60709ae1f11b33f3492abd6a68ec2ee71a986e831425065ba0caafe77
+	sha256sums = 45815f8f3266106e1905889c5d932cb4d2d9607afec77b533a7ee3bc74b77939
 	sha256sums = 22a0624299df52a759730e5e3c56bee73812e1760b4cd4382c29346058df4297
 
 pkgname = ruby-rex-text
