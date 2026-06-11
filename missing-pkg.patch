@@ -1,0 +1,16 @@
+--- python/nvforest/CMakeLists.txt	2026-06-04 11:13:18.000000000 +0800
++++ python/nvforest/CMakeLists.txt.new	2026-06-05 15:59:19.147418674 +0800
+@@ -51,7 +51,12 @@
+ 
+ set(NVFOREST_EXCLUDE_TREELITE_FROM_ALL ON)
+ 
+-include(${NVFOREST_CPP_SRC}/cmake/thirdparty/get_treelite.cmake)
++find_package(rapids_logger REQUIRED)
++find_package(CCCL REQUIRED)
++find_package(nvtx3 REQUIRED)
++find_package(rmm REQUIRED)
++find_package(raft REQUIRED)
++find_package(Treelite REQUIRED)
+ 
+ # --- libnvforest --- #
+ find_package(nvforest "${RAPIDS_VERSION}" REQUIRED)

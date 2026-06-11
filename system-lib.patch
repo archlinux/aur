@@ -1,0 +1,28 @@
+--- cpp/CMakeLists.txt	2026-06-04 11:13:18.000000000 +0800
++++ cpp/CMakeLists.txt.new	2026-06-05 15:57:09.871495826 +0800
+@@ -173,8 +173,7 @@
+ rapids_cpm_init()
+ rapids_cmake_install_lib_dir(lib_dir)
+ 
+-include(${rapids-cmake-dir}/cpm/rapids_logger.cmake)
+-rapids_cpm_rapids_logger(BUILD_EXPORT_SET nvforest-exports INSTALL_EXPORT_SET nvforest-exports)
++find_package(rapids_logger REQUIRED)
+ create_logger_macros(NVFOREST "nvforest::default_logger()" include/nvforest/common)
+ 
+ if(BUILD_NVFOREST_TESTS)
+@@ -182,10 +181,11 @@
+ endif()
+ 
+ # CCCL before RMM, and RMM before RAFT
+-include(cmake/thirdparty/get_cccl.cmake)
+-include(cmake/thirdparty/get_rmm.cmake)
+-include(cmake/thirdparty/get_raft.cmake)
+-include(cmake/thirdparty/get_treelite.cmake)
++find_package(CCCL REQUIRED)
++find_package(nvtx3 REQUIRED)
++find_package(rmm REQUIRED)
++find_package(raft REQUIRED)
++find_package(Treelite REQUIRED)
+ 
+ if(BUILD_NVFOREST_TESTS)
+   include(${rapids-cmake-dir}/cpm/gtest.cmake)
