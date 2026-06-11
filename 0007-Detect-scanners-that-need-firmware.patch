@@ -1,21 +1,10 @@
---- epsonscan2.orig/src/Controller/Src/Finder/UsbFinder.cpp	2025-10-20 21:59:55.000000000 -0300
-+++ epsonscan2.new/src/Controller/Src/Finder/UsbFinder.cpp	2026-05-03 20:18:43.819643125 -0300
-@@ -142,6 +142,36 @@
+diff -ura epsonscan2.orig/src/Controller/Src/Finder/UsbFinder.cpp epsonscan2.new/src/Controller/Src/Finder/UsbFinder.cpp
+--- epsonscan2.orig/src/Controller/Src/Finder/UsbFinder.cpp	2026-02-20 05:52:24.000000000 -0300
++++ epsonscan2.new/src/Controller/Src/Finder/UsbFinder.cpp	2026-06-11 04:39:18.311624653 -0300
+@@ -142,6 +142,24 @@
                                      isValidDeviceInfo = true;
                                      
                                  }
-+                                else if (dd.idProduct == 0x130)
-+                                {
-+                                    sprintf(const_cast<char*>(devInfo.displayName), "%s", "Perfection V500/GT-X770");
-+                                    isValidDeviceInfo = true;
-+                                    
-+                                }
-+                                else if (dd.idProduct == 0x133)
-+                                {
-+                                    sprintf(const_cast<char*>(devInfo.displayName), "%s", "GT-D1000/1500");
-+                                    isValidDeviceInfo = true;
-+                                    
-+                                }
 +                                else if (dd.idProduct == 0x13E)
 +                                {
 +                                    sprintf(const_cast<char*>(devInfo.displayName), "%s", "Perfection V19II");
