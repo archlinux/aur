@@ -1,0 +1,19 @@
+pkgbase = alchitry-labs-beta-bin
+	pkgdesc = Alchitry Labs - The Easiest Way to Program FPGAs
+	pkgver = 2.0.53
+	pkgrel = 1
+	url = https://alchitry.com/alchitry-labs
+	arch = x86_64
+	license = custom: commercial
+	depends = gmp
+	depends = alsa-lib
+	depends = glibc
+	depends = libxi
+	depends = libxtst
+	provides = alchitry-labs
+	conflicts = alchitry-labs
+	options = !strip
+	source = alchitry-labs-beta-bin-2.0.53.tar.gz::https://github.com/alchitry/Alchitry-Labs-V2-Beta/releases/download/2.0.53/alchitry-labs-beta-2.0.53-linux-amd64.tar.gz
+	sha256sums = e0abef8ea590b4bac7411235a0440d8ec637b0aa36e0ae4767123e5b425f0261
+
+pkgname = alchitry-labs-beta-bin
