@@ -1,14 +1,14 @@
 pkgbase = oxiclean
 	pkgdesc = Fast Cross-Distribution Linux System Cleaner written in Rust
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/croaky-fx/oxiclean
 	arch = x86_64
 	license = MIT
-	makedepends = rust
 	makedepends = cargo
+	makedepends = git
 	depends = gcc-libs
-	source = git+https://github.com/croaky-fx/oxiclean.git#tag=v1.3.0
-	sha256sums = SKIP
+	source = oxiclean::git+https://github.com/croaky-fx/oxiclean#tag=v1.3.0
+	sha256sums = b469f92c517294e9520bd57329977981b2ca73032e40002714bd96d286d7f7a9
 
 pkgname = oxiclean
