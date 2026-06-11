@@ -8,14 +8,15 @@
 
 pkgname=icaclient
 pkgver=26.01.0.150
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)"
 arch=(x86_64 aarch64)
 url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
 license=(LicenseRef-Citrix)
 depends=(alsa-lib curl gst-plugins-base-libs libc++ libc++abi
          libsecret libsoup libvorbis libxaw libxml2-legacy libxp
-         openssl speex webkit2gtk)
+         openssl speex)
+optdepends=('webkit2gtk: needed for Citrix Workspace (selfservice)')
 conflicts=('bin32-citrix-client' 'citrix-client')
 options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
