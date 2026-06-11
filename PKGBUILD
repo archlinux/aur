@@ -3,10 +3,10 @@
 
 pkgname='libyang'
 pkgver='5.4.9'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A YANG data modelling language parser and toolkit written (and providing API) in C'
 _uri="github.com/CESNET/${pkgname}"
-url="https://${uri}"
+url="https://${_uri}"
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('BSD')
 depends=('pcre2' 'xxhash')
@@ -18,8 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/tar.gz/refs/tags/
 sha256sums=('f36372e1b1b8835e8aec86f44c766b65158cc6aefb5f9352ddbc0fe2c558000a')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  mkdir build
+  mkdir "${pkgname}-${pkgver}/build"
 }
 
 build() {
