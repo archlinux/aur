@@ -1,5 +1,5 @@
-# Maintainer: Eisuke Kawashima <e DOT kawaschima+arch AT gmail DOT com>
-# Maintainer: Sebastian Ehlert  <awvwgk at gmail dot com>
+# Maintainer: Eisuke Kawashima <e DOT kawaschima+archlinux AT gmail DOT com>
+# Contributor: Sebastian Ehlert  <awvwgk at gmail dot com>
 
 pkgname=dftd4
 pkgver=4.2.0
