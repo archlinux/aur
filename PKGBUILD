@@ -27,6 +27,13 @@ source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_p
 # source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9f1d4d1bbc7ee91d17b95592298560df0a774c33db43e8b9f874f72c3f42c5ef')
 
+
+prepare() {
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
+
+    sed -i -e 's|requires = \[.*\]|requires = \[\"flit_core\"]|g' "./pyproject.toml"
+}
+
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
