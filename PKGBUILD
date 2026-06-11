@@ -12,10 +12,8 @@ makedepends=(chrpath)
 provides=(madbfs)
 conflicts=(madbfs)
 source=("$url/releases/download/v$pkgver/madbfs.tar.gz"
-"https://raw.githubusercontent.com/mrizaln/madbfs/refs/heads/main/LICENSE"
 "https://raw.githubusercontent.com/mrizaln/madbfs/refs/heads/main/README.md")
 sha256sums=('edbb40dd0c4f16edc26fe1141e44a3233238730937f16fb14bb1d7b4cbf4ae6f'
-'d68068da79f0c8225b909483230ec9b5bf79b50cef70fc5720509d60ec9d3cc1'    
 '8c415279df95517f4660721d7a667bda7fc6e8823c67792f34f6edc00092224a')
 
 package(){
