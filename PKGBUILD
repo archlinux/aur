@@ -3,7 +3,7 @@
 pkgname=comchan-ratty
 _pkgname=ComChan
 pkgver=0.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A blazingly fast minimal serial monitor with plotter TUI and more"
 arch=(
   'x86_64'
@@ -34,7 +34,7 @@ check() {
 
 package() {
   cd "$_pkgname-$pkgver"
-  install -Dm 755 "target/release/comchan" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 755 "target/release/comchan" "$pkgdir/usr/bin/comchan"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

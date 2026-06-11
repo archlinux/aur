@@ -1,7 +1,7 @@
 pkgbase = comchan-ratty
 	pkgdesc = A blazingly fast minimal serial monitor with plotter TUI and more
 	pkgver = 0.9.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Vaishnav-Sabari-Girish/ComChan
 	arch = x86_64
 	arch = aarch64
