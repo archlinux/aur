@@ -1,0 +1,17 @@
+pkgbase = roost
+	pkgdesc = A TUI-first, Rust-based dotfiles manager with git-sync
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/mt-22/roost
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = roost
+	conflicts = roost
+	options = !strip
+	source = roost-0.2.5.crate::https://crates.io/api/v1/crates/roost-dot/0.2.5/download
+	sha256sums = 6e59cdfbcb77fcd5b960db59bafff9591d5cb8873b4a86be2c6c63892f552c64
+
+pkgname = roost
