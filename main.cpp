@@ -36,7 +36,7 @@ protected:
 
 int main(int argc, char *argv[]) {
     qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "9222");
-    qputenv("QT_QPA_PLATFORM", "xcb");
+    
 
     QApplication app(argc, argv);
 
