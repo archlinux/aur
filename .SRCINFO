@@ -1,6 +1,6 @@
 pkgbase = open-design
 	pkgdesc = Local-first design product: design skills and design systems with your code-agent CLI; daemon and static web UI (CLI: open-design).
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 7
 	url = https://github.com/nexu-io/open-design
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = open-design
 	makedepends = gcc
 	depends = nodejs
 	options = !strip
-	source = https://github.com/nexu-io/open-design/archive/refs/tags/open-design-v0.9.0.tar.gz
+	source = https://github.com/nexu-io/open-design/archive/refs/tags/open-design-v0.10.0.tar.gz
 	source = open-design
-	sha256sums = d6df78ddd614de87dceb85c2a8cb1b94e76223a7c84b20415918ef71c6e01006
+	sha256sums = 888f9adbfd1967c77448fcae72d4f2a1a5f86f71bfcbc78853b736ad3bb286b2
 	sha256sums = f8fde1bc96045529c0d45a2fd6bcd47fc4f63fe7c07624292113b9e8ff55717c
 
 pkgname = open-design
