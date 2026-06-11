@@ -23,9 +23,9 @@ url=${_ghurl}
 
 license=('MIT')
 
-provides=("${_appname}")
-conflicts=("${_appname}")
+makedepends=('rust' 'cargo')
 depends=('glibc' 'libgcc')
+provides=("${_appname}")
 
 options=(!strip)
 
