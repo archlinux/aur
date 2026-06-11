@@ -1,0 +1,20 @@
+pkgbase = filestr-git
+	pkgdesc = Friend-to-friend file sharing over iroh (DC++-style social model); daemon + CLI, built without the nostr chat plane
+	pkgver = r39.6fc553f
+	pkgrel = 1
+	url = https://github.com/futpib/filestr
+	install = filestr-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = filestr
+	provides = filestrd
+	provides = filestrctl
+	conflicts = filestr
+	options = !lto
+	source = git+https://github.com/futpib/filestr.git
+	sha256sums = SKIP
+
+pkgname = filestr-git

@@ -1,0 +1,19 @@
+post_install() {
+    cat <<'EOF'
+filestr runs as a per-user service. Start it for your user with:
+
+    systemctl --user enable --now filestrd
+
+Control it with `filestrctl` (status, invite, peer, browse, search, get).
+Config (optional) lives at ~/.config/filestr/config.toml; shares and the
+blob store live under your XDG data/cache dirs. This build has no chat/nostr.
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+filestr upgraded. Restart your user service to pick up the new binary:
+
+    systemctl --user restart filestrd
+EOF
+}
