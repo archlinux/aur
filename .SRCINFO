@@ -1,13 +1,16 @@
 pkgbase = papt
 	pkgdesc = A wrapper for pacman with apt-like syntax. Simple package management for Arch Linux.
-	pkgver = 0.9.6
+	pkgver = 0.9.6.1
 	pkgrel = 1
 	url = https://github.com/MarkGMX8X/papt
 	arch = any
 	license = GPL-3.0-only
 	depends = python
 	depends = pacman
-	source = papt-0.9.6.tar.gz::https://github.com/MarkGMX8X/papt/archive/refs/tags/0.9.6.tar.gz
+	provides = papt
+	conflicts = papt2
+	conflicts = papt3
+	source = papt-0.9.6.1.tar.gz::https://github.com/MarkGMX8X/papt/archive/refs/tags/0.9.6.1.tar.gz
 	sha256sums = 516c9d2e21a9ed47f12d2a9ab4c92ad5287c8eca5621e1813d96f8678be27064
 
 pkgname = papt
