@@ -4,7 +4,7 @@ pkgname='shim-fedora'
 _pkgname='shim'
 _vendor='arch'
 pkgver='16.1'
-_upstream_pkgrel='5'
+_upstream_pkgrel='8'
 _downstream_pkgrel='1'
 pkgrel="${_upstream_pkgrel}.${_downstream_pkgrel}"
 pkgdesc='Initial UEFI bootloader that handles chaining to a trusted full bootloader under secure boot environments (prebuilt x64 binaries from Fedora). Target directory structure matches bootupd expectations.'
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 provides=("shim=$pkgver")
 optdepends=('mokutil: Manage Machine Owner Keys (MOK)')
 source=("https://kojipkgs.fedoraproject.org/packages/${_pkgname}/${pkgver}/${_upstream_pkgrel}/x86_64/${_pkgname}-x64-${pkgver}-${_upstream_pkgrel}.x86_64.rpm")
-sha256sums=('cb0289fb3d8356fe30dbf2a5a8c0cd9ba618df5ff54cf49887f75f2feb3f61c7')
+sha256sums=('ee8787bb9fbd13fcce73de0501938075c24efd78bc1a590826f0c01c7a10986b')
 
 package() {
     local verdir="${pkgver}-${_upstream_pkgrel}"

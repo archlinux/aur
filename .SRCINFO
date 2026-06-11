@@ -1,7 +1,7 @@
 pkgbase = shim-fedora
 	pkgdesc = Initial UEFI bootloader that handles chaining to a trusted full bootloader under secure boot environments (prebuilt x64 binaries from Fedora). Target directory structure matches bootupd expectations.
 	pkgver = 16.1
-	pkgrel = 5.1
+	pkgrel = 8.1
 	url = https://packages.fedoraproject.org/pkgs/shim/shim-x64
 	arch = x86_64
 	license = BSD-3-Clause
@@ -9,7 +9,7 @@ pkgbase = shim-fedora
 	provides = shim=16.1
 	options = !strip
 	options = !debug
-	source = https://kojipkgs.fedoraproject.org/packages/shim/16.1/5/x86_64/shim-x64-16.1-5.x86_64.rpm
-	sha256sums = cb0289fb3d8356fe30dbf2a5a8c0cd9ba618df5ff54cf49887f75f2feb3f61c7
+	source = https://kojipkgs.fedoraproject.org/packages/shim/16.1/8/x86_64/shim-x64-16.1-8.x86_64.rpm
+	sha256sums = ee8787bb9fbd13fcce73de0501938075c24efd78bc1a590826f0c01c7a10986b
 
 pkgname = shim-fedora
