@@ -21,7 +21,7 @@ license=('MIT' 'Apache-2.0')
 
 depends=('ffmpeg')
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${_appname}" "${pkgname%%-bin}")
 
 options=(!strip)
 

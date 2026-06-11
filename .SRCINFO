@@ -10,6 +10,7 @@ pkgbase = ffpb-rs-bin
 	depends = ffmpeg
 	provides = ffpb
 	conflicts = ffpb
+	conflicts = ffpb-rs
 	options = !strip
 	source = README-0.2.1.md::https://raw.githubusercontent.com/clitic/ffpb-rs/0.2.1/README.md
 	source = LICENSE-MIT-0.2.1::https://raw.githubusercontent.com/clitic/ffpb-rs/0.2.1/LICENSE-MIT
