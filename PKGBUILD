@@ -3,7 +3,7 @@
 pkgname=markit-git
 pkgver=r32.e96f632
 pkgrel=1
-pkgdesc="Un formato simile a markdown progettato per creare pdf con degli stili predefiniti."
+pkgdesc="A Markdown-like format designed to create PDFs with predefined styles."
 arch=('any')
 url="https://github.com/Fr4z49/Mark-it"
 license=('GPL3')
