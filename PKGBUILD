@@ -87,6 +87,14 @@ build() {
   # Build the sticker creator
   pnpm -C ./sticker-creator/ run build
 
+  case "${CARCH}" in
+    "aarch64") electron_arch="arm64" ;;
+    *) electron_arch="x64" ;;
+  esac
+
+  # Configure electron-builder's Linux target for the current Arch architecture.
+  node scripts/prepare_linux_build.mjs deb "${electron_arch}"
+
   # Build Signal Desktop Beta
   pnpm run generate
   pnpm run prepare-beta-build
