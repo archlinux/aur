@@ -1,14 +1,14 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=river-bsp-layout
 pkgver=2.1.1
-pkgrel=1
-pkgdesc="Binary space partitioned layout for the tiling Wayland compositor River"
+pkgrel=2
+pkgdesc="Binary space partitioned layout for the tiling Wayland compositor River (classic only)"
 arch=('x86_64')
 url="https://github.com/areif-dev/river-bsp-layout"
 license=('GPL-3.0-only')
 depends=(
   'glibc'
-  'gcc-libs'
+  'libgcc'
 )
 makedepends=(
   'cargo'
