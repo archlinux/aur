@@ -1,10 +1,10 @@
 pkgbase = amspirit-lite-qt
 	pkgdesc = An accurate Amstrad emulator - Qt version (AppImage)
 	pkgver = 1.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://amspirit.fr/
 	arch = x86_64
-	license = freeware closed source
+	license = CC-BY-NC-ND-4.0
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
