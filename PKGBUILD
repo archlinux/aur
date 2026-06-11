@@ -1,10 +1,11 @@
 # Maintainer: clove3am (aka: Caltlgin) <clove.dev.mailbox.org>
 
 _model='HLL1230W'
+_release='2'
 
 pkgname=brother-hl-l1230w
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='LPR and CUPS driver for the Brother HL-L1230W'
 arch=('x86_64')
 url='https://support.brother.com/g/b/producttop.aspx?c=as_ot&lang=en&prod=hll1230w_eu_as'
@@ -13,8 +14,8 @@ depends=(
   'cups'
   'ghostscript'
 )
-source=("https://download.brother.com/welcome/dlf106421/hll1230wpdrv-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('ae0ef9f1f720f7822b377b1a9b9677c840db54c98329f744756d49a4a4f461ad')
+source=("https://download.brother.com/welcome/dlf106421/hll1230wpdrv-${pkgver}-${_release}.${CARCH}.rpm")
+sha256sums=('b771c7555d88f35dc735daf158473656138a963cc09d504c50e80a2aed497dd2')
 
 package() {
   # Use "/usr/share" instead of "/opt"
