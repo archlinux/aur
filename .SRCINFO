@@ -1,6 +1,6 @@
 pkgbase = opera-proxy-git
 	pkgdesc = Standalone Opera VPN client as http-proxy backend only
-	pkgver = 1.17.0.r0.g8952eae
+	pkgver = 1.23.0.r0.g3499431
 	pkgrel = 1
 	url = https://github.com/Alexey71/opera-proxy
 	arch = i686

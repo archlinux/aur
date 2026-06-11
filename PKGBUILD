@@ -3,7 +3,7 @@
 # Contributor: Alley_Cat <read_only@gmx.us>
 _pkgname="opera-proxy"
 pkgname="opera-proxy-git"
-pkgver=1.17.0.r0.g8952eae
+pkgver=1.23.0.r0.g3499431
 pkgrel=1
 pkgdesc="Standalone Opera VPN client as http-proxy backend only"
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64')
