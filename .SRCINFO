@@ -1,7 +1,7 @@
 pkgbase = brother-mfc-j5340dw
 	pkgdesc = LPR driver and CUPS wrapper for Brother MFC-J5340DW
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brother.co.uk/support/mfc-j5340dw/downloads
 	install = brother-mfc-j5340dw.install
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = brother-mfc-j5340dw
 	depends = perl
 	depends = cups
 	optdepends = brscan5
-	source = https://download.brother.com/welcome/dlf105470/mfcj5340dwpdrv-3.5.0-1.i386.rpm
-	sha256sums = 159e6e8d1697a72bcd9aab84160ddf133f104239a3a991f8bfcec27e817333d4
+	source = https://download.brother.com/welcome/dlf105470/mfcj5340dwpdrv-3.5.0-2.i386.rpm
+	sha256sums = 2ab8390f6bada16dd8ed31c516d4ac7001994d7fe78163bdf51e8ffa49fdbce8
 	depends_x86_64 = lib32-glibc
 
 pkgname = brother-mfc-j5340dw
