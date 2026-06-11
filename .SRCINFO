@@ -1,7 +1,7 @@
 pkgbase = hpmicro-manufacturing-tool-bin
 	pkgdesc = HPMicro Manufacturing Tool 是 HPMicro 公司推出的配置及批量烧写工具，旨在帮助企业用户快速批量的对 HPMicro 公司推出的芯片进行镜像配置及烧写。
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/hpmicro/hpm_manufacturing_tool
 	arch = x86_64
 	license = LGPL-3.0-only
@@ -20,9 +20,9 @@ pkgbase = hpmicro-manufacturing-tool-bin
 	options = !strip
 	options = !debug
 	options = !lto
-	source = HPMicro_Manufacturing_Tool_v0.5.0.tar.gz::https://github.com/hpmicro/hpm_manufacturing_tool/releases/download/v0.5.0/HPMicro_Manufacturing_Tool_v0.5.0.tar.gz
+	source = HPMicro_Manufacturing_Tool_v0.6.0.tar.gz::https://github.com/hpmicro/hpm_manufacturing_tool/releases/download/v0.6.0/HPMicro_Manufacturing_Tool_v0.6.0.tar.gz
 	source = hpmicro.png
-	sha256sums = 8a4bea2589138e5b473db1ff3853afb49c9867583f4382cd21472b24f0018f81
+	sha256sums = d2ba9a90dbc147822518554e1d27c27f995eba413b2ba3e47fafc6da39e7edaa
 	sha256sums = 07d6adc954e732986889ddbc8e972a69404b0097be541f61f0e23e0521a79e7f
 
 pkgname = hpmicro-manufacturing-tool-bin
