@@ -20,6 +20,7 @@ license=('MIT' 'Apache-2.0')
 
 depends=('glibc' 'libgcc' 'ffmpeg')
 provides=("${_appname}")
+conflicts=("${_appname}")
 
 options=(!strip)
 

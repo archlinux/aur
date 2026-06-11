@@ -11,6 +11,7 @@ pkgbase = ffpb-rs
 	depends = libgcc
 	depends = ffmpeg
 	provides = ffpb
+	conflicts = ffpb
 	options = !strip
 	source = ffpb-0.2.1.tgz::https://github.com/clitic/ffpb-rs/archive/0.2.1.tar.gz
 	sha256sums = fe34e270e543abecbc94b7fe18476ffade05cfa271d322929003c1cca18cd1a9
