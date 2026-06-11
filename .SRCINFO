@@ -1,13 +1,13 @@
 pkgbase = aion-bin
 	pkgdesc = A keyboard-first terminal UI for Google Calendar
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/brandonpollack23/aion
 	arch = x86_64
 	license = MIT
 	provides = aion-calendar
 	conflicts = aion-calendar
-	source_x86_64 = aion-bin-0.2.3-x86_64.tar.zst::https://github.com/brandonpollack23/aion/releases/download/v0.2.3/aion-calendar-x86_64-unknown-linux-gnu.tar.zst
-	sha256sums_x86_64 = 4300d511346666bfcb979647a7324adfd011dd7842d1dd1d6971628642acc2f6
+	source_x86_64 = aion-bin-0.2.4-x86_64.tar.zst::https://github.com/brandonpollack23/aion/releases/download/v0.2.4/aion-calendar-x86_64-unknown-linux-gnu.tar.zst
+	sha256sums_x86_64 = a9c492ff55fb859c030399cb56125d3ee6499dd3b0b99c80e7f47217101e238e
 
 pkgname = aion-bin
