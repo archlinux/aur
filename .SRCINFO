@@ -1,0 +1,22 @@
+pkgbase = devo-bin
+	pkgdesc = Open-source, provider-agnostic coding agent that lives in your terminal
+	pkgver = 0.1.14
+	pkgrel = 1
+	url = https://github.com/7df-lab/devo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = bash
+	depends = ripgrep
+	optdepends = git: inspect and work with Git repositories
+	optdepends = github-cli: interact with GitHub
+	optdepends = glab: interact with GitLab
+	provides = devo
+	conflicts = devo
+	options = !strip
+	source_x86_64 = devo-bin-0.1.14-x86_64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.1.14/devo-v0.1.14-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 64856ecf6d6c357fd982685c813193e1906cf4a5a5c2d1c1de9b07780e01c076
+	source_aarch64 = devo-bin-0.1.14-aarch64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.1.14/devo-v0.1.14-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 1030ab22ea4cb38c6c94cede0c610760099df032c8082f7ea687f8a12b17a52d
+
+pkgname = devo-bin
