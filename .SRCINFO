@@ -1,0 +1,19 @@
+pkgbase = pastemax
+	pkgdesc = A simple tool to select files from a repository to copy/paste into an LLM
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/kleneway/pastemax
+	arch = x86_64
+	license = MIT
+	makedepends = dpkg
+	depends = alsa-lib
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	depends = libnotify
+	depends = xdg-utils
+	options = !strip
+	source = pastemax_1.1.1-stable_amd64.deb::https://github.com/kleneway/pastemax/releases/download/v1.1.1-stable/pastemax_1.1.1-stable_amd64.deb
+	sha256sums = a85a694a903733ccbd5f591b27994eaf9573603c341a827929e96333d8911c5e
+
+pkgname = pastemax
