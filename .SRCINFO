@@ -4,6 +4,7 @@ pkgbase = bestfetch
 	pkgrel = 1
 	url = https://gitlab.com/Maxb0tbeep/bestfetch
 	arch = x86_64
+	arch = aarch64
 	license = GPLv3
 	makedepends = nim
 	makedepends = git
