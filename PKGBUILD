@@ -3,7 +3,7 @@
 _pkgname=celestia
 pkgname=$_pkgname-bin
 pkgver=1.7.0
-pkgrel=12
+pkgrel=13
 pkgdesc="Real-time space simulation"
 arch=('x86_64')
 url="https://celestiaproject.space/"
@@ -22,7 +22,7 @@ source=(
 	"$_download_url/$_target"
 	"$_pkgname.bash"
 )
-sha256sums=('f04c2a7c0c23f0458974b378153b809db2083ab3d35f0543b48dae7434f4018c'
+sha256sums=('acb80f58047d02a8cb2501b25d4ea0a3d1e566ffa5983aa60703649e037d7227'
             '58672bcc02b5f50eb5dee22264b4ddb629a3927779941e359257927261021830')
 
 _squashfs_root="squashfs-root"
