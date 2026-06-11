@@ -8,8 +8,8 @@
 # $ curl -sL $(curl -s https://github.com/RafaUC/Allusion/releases | sed -n -e "s/^.*\(\/allusion-app\/Allusion\/releases\/download\/.*\/latest-linux.yml\)\".*/https:\/\/github.com\1/p" | head -n1)
 
 pkgname=allusion-appimage-rafauc
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.12.0
+pkgrel=1
 pkgdesc="Allusion is a tool built for artists, aimed to help you organize your Visual Library – A single place that contains your entire collection of references, inspiration and any other kinds of images."
 arch=('x86_64')
 url='https://github.com/RafaUC/Allusion'
@@ -18,15 +18,15 @@ makedepends=('curl' 'sed')
 conflicts=('allusion-appimage')
 depends=('glibc' 'zlib' 'fuse2')
 options=(!strip)
-gittag=$(curl -s https://github.com/RafaUC/Allusion/releases | sed -n -e "s/^.*releases\/download\/v${pkgver}\(.*\)\/.*.AppImage\".*/\1/p" | head -n1)
+gittag=$(curl -s https://github.com/RafaUC/Allusion/releases | sed -n -e "s/^.*releases\/download\/v${pkgver}-ruc\(.*\)\/.*.AppImage\".*/\1/p" | head -n1)
 gitver="${pkgver}${gittag}"
-source_x86_64=("Allusion-${gitver}.AppImage::https://github.com/RafaUC/Allusion/releases/download/v${gitver}/Allusion-${gitver}.AppImage"
+source_x86_64=("Allusion-${gitver}-ruc.AppImage::https://github.com/RafaUC/Allusion/releases/download/v${gitver}-ruc/Allusion-${gitver}-ruc.AppImage"
                "Allusion.desktop"
 	       "Allusion.svg::https://raw.githubusercontent.com/RafaUC/Allusion/refs/heads/master/resources/logo/svg/full-color/allusion-logomark-fc.svg"
                "LICENSE::https://raw.githubusercontent.com/RafaUC/Allusion/refs/heads/master/LICENSE"
                )
 noextract=("Allusion-${gitver}.AppImage")
-sha256sums_x86_64=('b1f61702dab9c83d99374d782c1c597f95d95ec916a70344b67f8fe92af22a6c'
+sha256sums_x86_64=('0b9c84ab0e9f0f7de0fc7cb365f586d21acb9928a19fe5dc734ab367ab198e1c'
                    'df1225b564f5301ce2a092e63856012db0370861c317bfa65586e06a842f2438'
                    'fdaccc7f6521f98b22b31b5996f65929b33068b86aaacd6ec00727b1a5fee2fa'
                    '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
@@ -34,7 +34,7 @@ sha256sums_x86_64=('b1f61702dab9c83d99374d782c1c597f95d95ec916a70344b67f8fe92af2
 package() {
 
     # Install AppImage
-    install -Dm755 "${srcdir}/Allusion-${gitver}.AppImage" "${pkgdir}/opt/${pkgname}/Allusion-${pkgver}.AppImage"
+    install -Dm755 "${srcdir}/Allusion-${gitver}-ruc.AppImage" "${pkgdir}/opt/${pkgname}/Allusion-${pkgver}-ruc.AppImage"
 
     # Install the icon and desktop file
     install -D -m644 "Allusion.svg"  "${pkgdir}/usr/share/pixmaps/Allusion.svg"
