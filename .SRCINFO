@@ -1,6 +1,6 @@
 pkgbase = papt2
 	pkgdesc = pacman and yay wrapper with apt-like syntax for Arch Linux
-	pkgver = 0.9.6
+	pkgver = 0.9.6.1
 	pkgrel = 1
 	url = https://github.com/MarkGMX8X/papt2
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = papt2
 	provides = papt
 	conflicts = papt
 	conflicts = papt3
-	source = papt2-0.9.6.tar.gz::https://github.com/MarkGMX8X/papt2/archive/refs/tags/0.9.6.tar.gz
+	source = papt2-0.9.6.1.tar.gz::https://github.com/MarkGMX8X/papt2/archive/refs/tags/0.9.6.1.tar.gz
 	sha256sums = 35b1d387874e1dc490e679f2385b970250f82ce824db4956337c8ddc31cfa03c
 
 pkgname = papt2
