@@ -1,9 +1,10 @@
 post_install() {
     cat <<'EOF'
-==> Optional: run the Paseo daemon persistently (desktop app and CLI
-    will connect to it instead of spawning their own):
+==> Optional: run the Paseo daemon for your graphical session (desktop app
+    and CLI will connect to it instead of spawning their own):
         systemctl --user enable --now paseo.service
-    To keep it running while logged out:
-        sudo loginctl enable-linger $USER
+    It is bound to graphical-session.target: it starts on login and stops on
+    logout, so it inherits DISPLAY/WAYLAND_DISPLAY and agents can launch GUIs.
+    Do NOT enable-linger for this; GUI agents need an active session.
 EOF
 }

@@ -1,6 +1,14 @@
 [Unit]
 Description=Paseo Daemon
 Documentation=https://paseo.sh
+# Bind to the graphical session: start only after the user has logged into a
+# graphical session (so the daemon inherits DISPLAY/WAYLAND_DISPLAY/XAUTHORITY
+# that the session imports into the systemd --user manager — GUI apps spawned by
+# agents need them), and stop when the session ends. Without this the daemon can
+# start at login before those vars exist and GUI apps fail with "could not
+# connect to display".
+After=graphical-session.target
+PartOf=graphical-session.target
 
 [Service]
 Type=simple
@@ -18,4 +26,4 @@ Restart=on-failure
 RestartSec=5
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target
