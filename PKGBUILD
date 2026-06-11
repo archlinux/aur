@@ -1,5 +1,5 @@
 pkgname=startwine
-pkgver=422
+pkgver=423
 pkgrel=1
 pkgdesc="Is a Windows application launcher for GNU/Linux operating systems. Includes many features, extensions, and fixes to improve performance, visuals, and usability."
 arch=('x86_64')
