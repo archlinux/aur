@@ -1,0 +1,14 @@
+post_install() {
+  echo ':: CodeContext AI installed successfully.'
+  echo '   Run "codecontext" from terminal or launch from desktop menu.'
+  echo '   For CLI mode: codecontext --cli --path /path/to/project'
+  echo '   Documentation: https://github.com/NIKIRIKI7/CodeContext'
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  echo ':: Removing CodeContext AI...'
+}
