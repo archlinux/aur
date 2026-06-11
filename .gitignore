@@ -2,3 +2,6 @@ pkg/
 src/
 yukigram-rua/
 telegram-tdlib/
+
+*.tar.gz
+*.zst
