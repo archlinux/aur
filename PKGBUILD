@@ -1,6 +1,6 @@
 # Maintainer: Orion-zhen <https://github.com/Orion-zhen>
 pkgname=llama-benchy
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="A simple CLI tool for benchmarking llama.cpp and other LLM inference engines"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'python-tabulate' 'python-aiohttp' 'python-requests' 'python-p
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling' 'python-hatch-vcs')
 provides=("llama-benchy")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eugr/llama-benchy/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3d75fb0f45791217e3eb34b5f596c5f93d553b3a61e16fe80d947e13b058df2e')
+sha256sums=('5bd1510b175ae59976164114344ffbb711aa6ced8a83ad921964e09933812bc7')
 
 prepare() {
   ln -sf "${pkgname}-${pkgver}" "${pkgname}"
