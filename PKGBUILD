@@ -1,4 +1,4 @@
-# Maintainer: mcniki <gor_niki at vk dot com>
+# Maintainer: mcniki <sawwa.cwer13 at gmail dot com>
 
 pkgname=codecontext-ai
 pkgver=1.14.0
