@@ -1,0 +1,20 @@
+pkgbase = sshelf-bin
+	pkgdesc = Fast terminal UI for managing and connecting to SSH hosts
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/max-rh/sshelf
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = sshelf
+	conflicts = sshelf
+	options = !strip
+	source_x86_64 = sshelf-x86_64-0.2.0.txz::https://github.com/max-rh/sshelf/releases/download/v0.2.0/sshelf-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = ca001272b3a5a21644a8e398938becf0fd30f3cd8b822005acdcf0734d0ef90d
+	source_aarch64 = sshelf-aarch64-0.2.0.txz::https://github.com/max-rh/sshelf/releases/download/v0.2.0/sshelf-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = e6dc7c4c97b359754a3ff40c197e946e1425b0b6d653c1536f12903eeb86e47e
+
+pkgname = sshelf-bin

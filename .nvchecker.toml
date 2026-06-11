@@ -1,0 +1,5 @@
+[sshelf-bin]
+source = "github"
+github = "max-rh/sshelf"
+use_latest_release = true
+prefix = "v"
