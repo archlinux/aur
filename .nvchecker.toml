@@ -1,0 +1,4 @@
+[jellex]
+source = "git"
+git = "https://github.com/kellyjonbrazil/jellex.git"
+prefix = "v"
