@@ -1,11 +1,11 @@
 # Maintainer: Luke Simpson <luke@s4solutions.ai>
 pkgname=nexis
-pkgver=2.3.13
+pkgver=2.3.14
 pkgrel=1
 pkgdesc="Linux system optimizer and monitoring tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/s4solutionsllc/Nexis"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=('qt6-base' 'qt6-charts' 'qt6-svg')
 makedepends=('cmake' 'gcc' 'make' 'qt6-tools')
 # GH#82: '!lto' stops makepkg injecting -flto. On distros that enable LTO by
@@ -15,7 +15,7 @@ makedepends=('cmake' 'gcc' 'make' 'qt6-tools')
 # build using plain objects that any linker handles.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/s4solutionsllc/Nexis/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6a3872a4619ee2bc791c6abc663ca9b247c8086bf2937dff8a9c12cf150c22d4')
+sha256sums=('07da2c95b342519791e1d918dae9fef6c08d126724ec98e358427873c0a16f4f')
 
 build() {
     # GH#82: CXXBASICS_USE_FASTER_LINKERS=OFF disables the in-tree auto-selection
