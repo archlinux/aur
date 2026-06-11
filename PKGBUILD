@@ -29,7 +29,7 @@ provides=('prismlauncher')
 conflicts=('prismlauncher' 'prismlauncher-git' 'prismlauncher-qt5-bin')
 
 source=("https://github.com/Makar986/PrismLauncher-Fixes-Additions/releases/download/v${pkgver}/PrismLauncher-Linux-Qt6-Portable-v${pkgver}.tar.gz")
-sha256sums=('f0c5e21815634258b88ab2ba8df2bee47028c48bc57c330ff27a026c46eddc19')
+sha256sums=('79ca4b959de82228f0b8a9f272f297edcb8c3ac4a0b38a33255cccc06f265cec')
 
 package() {
     install -d "${pkgdir}/usr/bin"
