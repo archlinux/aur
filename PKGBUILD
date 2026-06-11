@@ -7,7 +7,7 @@
 pkgname=priestess-arknights
 _pkgreal=priestess-arknights
 _upstream_url=https://github.com/SVAH-X/claude-code-but-priestess
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="桌面伴侣普瑞赛斯 (Priestess) — 基于 Claude Code / Codex CLI 后端的 Electron 托盘应用"
 arch=('x86_64')
