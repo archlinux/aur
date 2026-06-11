@@ -1,5 +1,5 @@
 pkgname=openssh-gui-nightly
-pkgver=3.1.3.20260610.1180366
+pkgver=3.1.3.20260611.237e273
 pkgrel=1
 pkgdesc="A GUI for OpenSSH configuration and management (Nightly build)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}::${_relurl}/OpenSSH-GUI-nightly-linux-x64"
         "${pkgname}-icon-${pkgver}.png::${_relurl}/appicon.png"
         "${pkgname}-desktop-${pkgver}.desktop::${_relurl}/io.github.frequency403.openssh_gui.desktop"
         "${pkgname}-license-${pkgver}::${_relurl}/LICENSE")
-sha256sums=('17e713b3e16894708193c30466251c378cd189d23a8dd24c1c27b050e93308b1' '19d7c119dcd8aaf1b2bac47325ebf73ac4b32bb3f757e62276a154845be49774' '0f53f092ae5b6a8547d016d3c4130c9352fe4af688e0eaaee7c94efdadb78470' '04765b5ced4962532281a4c40754d25380df5e89e49bf3f0ea9054f05a6ee34a')
+sha256sums=('48cf0688171fb6e7a9c693ee59d3036352d671c0e3de6f9d3eb89792230c4e82' '19d7c119dcd8aaf1b2bac47325ebf73ac4b32bb3f757e62276a154845be49774' '0f53f092ae5b6a8547d016d3c4130c9352fe4af688e0eaaee7c94efdadb78470' '04765b5ced4962532281a4c40754d25380df5e89e49bf3f0ea9054f05a6ee34a')
 
 package() {
   install -Dm755 "${pkgname}-${pkgver}"                 "${pkgdir}/usr/bin/openssh-gui"
