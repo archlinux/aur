@@ -2,7 +2,7 @@
 
 pkgbase=python-cudf
 pkgname=(python-cudf python-dask-cudf python-cudf-polars)
-pkgver=26.04.00
+pkgver=26.06.01
 pkgrel=1
 pkgdesc="cuDF - GPU DataFrame Library"
 url="https://github.com/rapidsai/cudf"
@@ -23,7 +23,7 @@ depends=(
 makedepends=(cuda gcc python-setuptools cmake python-scikit-build-core python-rapids-build-backend ninja cython)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz" "missing-pkg.patch" "system-cccl.patch")
 sha256sums=(
-    'c59d3c28f147e7f6b9e3050790b06a41e966eafd046cce55534a2135baf235af'
+    'f22f06286d9a332bc7b4e399bbd2b105471240c95297ad21daee17255bc2f0f6'
     '72618631b71f51c4d0773f6964bb9bfe3a92ba0ebe5351fd7baedb56f833fcfa'
     '1d05ed0fdd36bbf5d45017cab988dc43fd1016547c13948205d99d9f456aef03'
 )
