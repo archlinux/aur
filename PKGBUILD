@@ -2,7 +2,7 @@
 
 pkgbase=libcudf
 pkgname=(libcudf python-pylibcudf)
-pkgver=26.04.00
+pkgver=26.06.01
 pkgrel=1
 pkgdesc="cuDF - GPU DataFrame Library"
 url="https://github.com/rapidsai/cudf"
@@ -18,16 +18,16 @@ source=(
     "missing-include.patch"
 )
 sha256sums=(
-    'c59d3c28f147e7f6b9e3050790b06a41e966eafd046cce55534a2135baf235af'
+    'f22f06286d9a332bc7b4e399bbd2b105471240c95297ad21daee17255bc2f0f6'
     '565ea2d0c080a97e990091ef3d695d7e8a16d041cb8475a43a6aa7f6e346738b'
-    'cbe0e91241bb6394b1f45218c048833d67d5d4d2c875c2ae894c0f48a56ee9e7'
+    'a4e305ca3c946240c215f7191134301a592af98c6d0fec70cd6a7d211fa1528c'
     '496341c903486a9fef4fcd52ebbd0cbf33b5e1d6113279cdbc22771cfbcd91ea'
     '9c5c21ce596e3ec7dc0831ae2c5ab71d733f4ddcb917ea8c4d55e7c02dd40baa'
 )
 
 prepare() {
     cd "$srcdir/cudf-$pkgver"
-    patch -p1 "cpp/cmake/Modules/ConfigureCUDA.cmake" < "$srcdir/cuda-flags.patch"
+    #patch -p1 "cpp/cmake/Modules/ConfigureCUDA.cmake" < "$srcdir/cuda-flags.patch"
     patch -p1 "cpp/CMakeLists.txt" < "$srcdir/system-lib.patch"
     patch -p1 "python/pylibcudf/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
     patch -p1 "cpp/src/jit/row_ir.hpp" < "$srcdir/missing-include.patch"
@@ -36,6 +36,8 @@ prepare() {
 
 build() {
     cd "$srcdir/cudf-$pkgver"
+    export CXXFLAGS="$CXXFLAGS -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER"
+    export CUDAFLAGS="$CUDAFLAGS -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER"
     cmake -B build -S cpp \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -59,21 +61,10 @@ package_libcudf() {
 
     cd "$srcdir/cudf-$pkgver"
     DESTDIR="$pkgdir" cmake --install build
-    rm "$pkgdir/usr/lib/pkgconfig" -r
-    rm "$pkgdir/usr/lib/cmake/zstd" -r
-    rm "$pkgdir/usr/lib/libzstd.a"
-    rm "$pkgdir/usr/include/zstd.h"
-    rm "$pkgdir/usr/include/zstd_errors.h"
-    rm "$pkgdir/usr/include/zdict.h"
-    rm "$pkgdir/usr/lib/libroaring.a"
-    rm "$pkgdir/usr/include/roaring" -r
-    rm "$pkgdir/usr/lib/cmake/roaring" -r
 }
 
 package_python-pylibcudf() {
     depends+=('libcudf' 'python' 'python-rmm')
     cd "$srcdir/cudf-$pkgver/python/pylibcudf"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    rm "$pkgdir/usr/lib/python3.14/site-packages/include" -rf
-    rm "$pkgdir/usr/lib/python3.14/site-packages/lib" -rf
 }

@@ -1,6 +1,6 @@
 pkgbase = libcudf
 	pkgdesc = cuDF - GPU DataFrame Library
-	pkgver = 26.04.00
+	pkgver = 26.06.01
 	pkgrel = 1
 	url = https://github.com/rapidsai/cudf
 	arch = x86_64
@@ -21,14 +21,14 @@ pkgbase = libcudf
 	depends = zstd
 	depends = rapids-logger
 	depends = nvcomp
-	source = https://github.com/rapidsai/cudf/archive/refs/tags/v26.04.00.tar.gz
+	source = https://github.com/rapidsai/cudf/archive/refs/tags/v26.06.01.tar.gz
 	source = cuda-flags.patch
 	source = system-lib.patch
 	source = missing-pkg.patch
 	source = missing-include.patch
-	sha256sums = c59d3c28f147e7f6b9e3050790b06a41e966eafd046cce55534a2135baf235af
+	sha256sums = f22f06286d9a332bc7b4e399bbd2b105471240c95297ad21daee17255bc2f0f6
 	sha256sums = 565ea2d0c080a97e990091ef3d695d7e8a16d041cb8475a43a6aa7f6e346738b
-	sha256sums = cbe0e91241bb6394b1f45218c048833d67d5d4d2c875c2ae894c0f48a56ee9e7
+	sha256sums = a4e305ca3c946240c215f7191134301a592af98c6d0fec70cd6a7d211fa1528c
 	sha256sums = 496341c903486a9fef4fcd52ebbd0cbf33b5e1d6113279cdbc22771cfbcd91ea
 	sha256sums = 9c5c21ce596e3ec7dc0831ae2c5ab71d733f4ddcb917ea8c4d55e7c02dd40baa
 
