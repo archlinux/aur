@@ -1,0 +1,16 @@
+pkgbase = 8bitdo-pro2-a-mode-hid-daemon
+	pkgdesc = 8BitDo Pro 2 A-mode Bluetooth HID to uinput daemon
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sidevesh/8bitdo-pro2-a-mode-hid-daemon
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = systemd
+	provides = 8bitdo-pro2-a-mode-hid-daemon
+	conflicts = 8bitdo-pro2-a-mode-hid-daemon
+	source = 8bitdo-pro2-a-mode-hid-daemon-0.1.0::git+https://github.com/sidevesh/8bitdo-pro2-a-mode-hid-daemon.git#tag=0.1.0
+	sha256sums = SKIP
+
+pkgname = 8bitdo-pro2-a-mode-hid-daemon
