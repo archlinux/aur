@@ -1,5 +1,5 @@
 pkgname=yasos-git
-pkgver=20260318
+pkgver=r131.ed98fbf
 pkgrel=1
 pkgdesc="Compiler for the Yasos programming language (git version)"
 arch=('x86_64')
@@ -15,10 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/yasos"
-  printf "%s.r%s.g%s" \
-    "$(git log -1 --format=%cd --date=format:%Y%m%d)" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -45,5 +42,8 @@ package() {
   install -Dm755 modules/libys.so "$pkgdir/usr/lib/yslib/libys.so"
 
   install -d "$pkgdir/usr/include/ysinclude"
-  install -Dm644 modules/headers/* "$pkgdir/usr/include/ysinclude/"
+  install -Dm644 modules/headers/*.ys "$pkgdir/usr/include/ysinclude/"
+
+  install -d "$pkgdir/usr/include/ysinclude/c"
+  install -m644 modules/headers/c/* "$pkgdir/usr/include/ysinclude/c"
 }

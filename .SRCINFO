@@ -1,6 +1,6 @@
 pkgbase = yasos-git
 	pkgdesc = Compiler for the Yasos programming language (git version)
-	pkgver = 20260318
+	pkgver = r131.ed98fbf
 	pkgrel = 1
 	url = https://github.com/DameChocolateYa/yasos
 	arch = x86_64
