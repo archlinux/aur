@@ -1,6 +1,6 @@
 # Maintainer : Michael Herstine <sp1ff at pobox dot com>
 pkgname=mpdpopm-bin
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='Maintain ratings & playcounts for your mpd server (pre-compiled)'
 url=https://github.com/sp1ff/mpdpopm
@@ -10,7 +10,7 @@ depends=("gcc-libs" "glibc")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/sp1ff/mpdpopm/releases/download/$pkgver/mpdpopm-$pkgver-x86_64-unknown-linux.tar.gz")
-sha256sums=('163aa1fc4ee1921592aaeff29a81f6bcdaaad245a40e8141021b36ca9e0c9d1e')
+sha256sums=('dd8c7c7d40ba8c930776d878964a870dc54facf8db263cf80068e38c9ca0926e')
 
 package() {
     _output="${srcdir}/${pkgname/-bin/}-$pkgver-x86_64-unknown-linux"

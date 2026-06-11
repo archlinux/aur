@@ -1,6 +1,6 @@
 pkgbase = mpdpopm-bin
 	pkgdesc = Maintain ratings & playcounts for your mpd server (pre-compiled)
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/sp1ff/mpdpopm
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mpdpopm-bin
 	depends = glibc
 	provides = mpdpopm
 	conflicts = mpdpopm
-	source = https://github.com/sp1ff/mpdpopm/releases/download/0.3.5/mpdpopm-0.3.5-x86_64-unknown-linux.tar.gz
-	sha256sums = 163aa1fc4ee1921592aaeff29a81f6bcdaaad245a40e8141021b36ca9e0c9d1e
+	source = https://github.com/sp1ff/mpdpopm/releases/download/0.3.6/mpdpopm-0.3.6-x86_64-unknown-linux.tar.gz
+	sha256sums = dd8c7c7d40ba8c930776d878964a870dc54facf8db263cf80068e38c9ca0926e
 
 pkgname = mpdpopm-bin
