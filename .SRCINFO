@@ -1,0 +1,24 @@
+pkgbase = sonic-frameworks-auth
+	pkgdesc = Abstraction to system policy and authentication features
+	pkgver = 6.26.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-auth
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libstdc++
+	depends = polkit-qt6
+	depends = qt6-base
+	depends = sonic-frameworks-core-addons
+	depends = sonic-frameworks-windowsystem
+	provides = kauth
+	conflicts = kauth
+	source = sonic-frameworks-auth-6.26.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-auth/archive/refs/tags/6.26.0.tar.gz
+	sha256sums = 3db9cd8091f7855a4b65332fdbb7adf7c6cfe17416ecf91443db2720fb94bd1a
+
+pkgname = sonic-frameworks-auth
