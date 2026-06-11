@@ -1,0 +1,15 @@
+pkgbase = pkgit-git
+	pkgdesc = Universal system-agnostic package manager
+	pkgver = 0.1.1.2.g5484ced
+	pkgrel = 1
+	url = https://git.symlinx.net/pkgit
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = glibc
+	provides = pkgit
+	conflicts = pkgit
+	source = pkgit-git::git+https://git.symlinx.net/pkgit
+	md5sums = SKIP
+
+pkgname = pkgit-git
