@@ -1,6 +1,6 @@
 pkgbase = tdns-bin
 	pkgdesc = A powerful, lightweight CLI to manage Technitium DNS server via HTTP API endpoint
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/mbevc1/tdns
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = tdns-bin
 	makedepends = upx
 	provides = tdns
 	conflicts = tdns
-	source = https://github.com/mbevc1/tdns/releases/download/v0.6.1/tdns_0.6.1_linux_amd64.tar.gz
-	source = tdns-LICENSE::https://raw.githubusercontent.com/mbevc1/tdns/refs/tags/v0.6.1/LICENSE
-	sha256sums = 3c308aa35984fed2abad9b7286406483e2e5b6651ae803265b7660f766e1995f
+	source = https://github.com/mbevc1/tdns/releases/download/v0.6.2/tdns_0.6.2_linux_amd64.tar.gz
+	source = tdns-LICENSE::https://raw.githubusercontent.com/mbevc1/tdns/refs/tags/v0.6.2/LICENSE
+	sha256sums = e4c72167427bc00bd66d53c42c4e7f051ca09c561e9cf37f265d884c36cd075c
 	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
 
 pkgname = tdns-bin
