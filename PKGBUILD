@@ -2,14 +2,20 @@
 
 pkgname=wireforge
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Braille Wireframe Viewer"
-arch=('x86_64')
+arch=(
+  'x86_64'
+  'aarch64'
+  'riscv64'
+)
 url="https://github.com/Vaishnav-Sabari-Girish/wireforge"
 license=('MIT')
 
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=(
+  'cargo'
+)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
