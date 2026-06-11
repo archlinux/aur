@@ -1,6 +1,6 @@
 pkgbase = agent-browser-bin
 	pkgdesc = Fast browser automation CLI for AI agents (native binary)
-	pkgver = 0.27.1
+	pkgver = 0.27.2
 	pkgrel = 1
 	url = https://github.com/vercel-labs/agent-browser
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = agent-browser-bin
 	optdepends = appium: For iOS Simulator support (--provider ios)
 	provides = agent-browser
 	conflicts = agent-browser
-	source = agent-browser-0.27.1.tar.gz::https://github.com/vercel-labs/agent-browser/archive/refs/tags/v0.27.1.tar.gz
-	sha256sums = e8d8ad21dd3252984e8a41659fa772631b19bd81c58b7220c1086484d6162a33
-	source_x86_64 = agent-browser-bin-0.27.1-x86_64::https://github.com/vercel-labs/agent-browser/releases/download/v0.27.1/agent-browser-linux-x64
-	sha256sums_x86_64 = 95ff8224a971698d9df8add26f1f571027c35f9003e3067c53e54d154b5b1ea1
-	source_aarch64 = agent-browser-bin-0.27.1-aarch64::https://github.com/vercel-labs/agent-browser/releases/download/v0.27.1/agent-browser-linux-arm64
-	sha256sums_aarch64 = ab93f04ca217e6ff73832c900a43c4b88f14239d6bf11fb8ba90478d99b84b3d
+	source = agent-browser-0.27.2.tar.gz::https://github.com/vercel-labs/agent-browser/archive/refs/tags/v0.27.2.tar.gz
+	sha256sums = d2462a95626a2b5ec191a4c28ca68883aa91c7aa181730905ad4eb62ee0aae30
+	source_x86_64 = agent-browser-bin-0.27.2-x86_64::https://github.com/vercel-labs/agent-browser/releases/download/v0.27.2/agent-browser-linux-x64
+	sha256sums_x86_64 = cfc158bf92ea92780c67909777739ed47c25d8ad2f0161de5ef85e0d545d92fc
+	source_aarch64 = agent-browser-bin-0.27.2-aarch64::https://github.com/vercel-labs/agent-browser/releases/download/v0.27.2/agent-browser-linux-arm64
+	sha256sums_aarch64 = 3350efa628cd24b6a93228269daf71acd23c355ee04373c5c13d372ae0d5a936
 
 pkgname = agent-browser-bin
