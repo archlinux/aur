@@ -1,7 +1,7 @@
 # Maintainer: Zmole Cristian <tragdate@gmail.com>
 pkgname=rustgraph-bin
 _realname=rustgraph
-pkgver=0.7.13
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Rust code navigation built for AiDX — AST-aware, MCP-native, token-efficient. (prebuilt)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("$_realname=$pkgver")
 conflicts=("$_realname")
 install="$_realname.install"
 source=("$_realname-$pkgver-${CARCH}.tar.gz::https://github.com/ZmoleCristian/rustgraph/releases/download/v$pkgver/rustgraph-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums=('5eb1fd4d842b406c6bed28d07885426a0f69ab623561c076d35fb1662e66c1ea')
+sha256sums=('5731f88411fb21670ac2e64922d1357316772c9d37b9885d0978a519e3f9bfb2')
 
 package() {
     cd "rustgraph-${CARCH}-unknown-linux-gnu"
