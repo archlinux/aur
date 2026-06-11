@@ -1,0 +1,7 @@
+post_install() {
+  cat <<'EOF'
+==> XClaudeUsage installs per-user, interactive setup is a separate step.
+==> Run 'xclaudeusage install' to add the statusline and hooks to
+==> ~/.claude/settings.json (non-destructive merge, with a backup).
+EOF
+}

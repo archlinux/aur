@@ -1,8 +1,9 @@
 pkgbase = xclaudeusage-bin
 	pkgdesc = Claude Code statusline + per-turn token recorder with optional multi-device sync (prebuilt binary)
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SrDarf/XClaudeUsage
+	install = xclaudeusage-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
