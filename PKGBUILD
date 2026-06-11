@@ -1,7 +1,7 @@
 # Maintainer: Joao Costa <arch@joaocosta.dev>
 pkgname=tasks-org-bin
 _pkgname=tasks-org
-pkgver=15.6.0
+pkgver=15.7.1
 pkgrel=1
 pkgdesc="Bringing Astrid Tasks back from the dead"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('hicolor-icon-theme' 'libx11' 'libxext' 'libxrender' 'libxtst' 'freetyp
 options=('!debug')
 provides=('tasks-org')
 conflicts=('tasks-org')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/tasks/tasks/releases/download/15.6/tasks-org-15.6.0-linux-amd64.tar.gz")
-sha256sums=('c2b2b38003a0b10c6c23578dc3ab1938d97566af3f23adeeb8b95f11e63f896c')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/tasks/tasks/releases/download/15.7.1/tasks-org-15.7.1-linux-amd64.tar.gz")
+sha256sums=('2fb582ee8d9d4d81b7d592b255170ac16160e2c8612b84990c213b9c60721837')
 
 package() {
   install -dm755 "$pkgdir/usr/lib/tasksorg-llc/tasks-org"
