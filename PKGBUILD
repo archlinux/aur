@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=4.2.1
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('x86_64')
@@ -47,9 +47,9 @@ depends=(
   'xdg-desktop-portal'
 )
 makedepends=(
- # 'cargo'
- # 'clang'
- # 'git'
+  'cargo'
+  'clang'
+  'git'
   'python-build'
   'python-installer'
   'python-setuptools'
@@ -67,23 +67,15 @@ optdepends=(
   'spectacle: Screenshot support on KDE Plasma'
   'wl-clipboard: Clipboard support on Wayland'
 )
-_commit=fdeecb3c57206374e6c8ce321c7d7c085a4029fb
+_commit=0e99b02e33a51f411e8e2f444f365ab1b51868a9
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
-        # "git+https://github.com/BYTEDz/FerrumCast.git#commit=${_commit}"
-        "https://github.com/BYTEDz/PCLink/releases/download/v$pkgver/${pkgname}_${pkgver}_amd64.deb")
-noextract=("${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('627ecc4aa9351b0509dc208bccf01df9f7cf825b389d22a6c7cff7e3361d7bdc'
-            '4c8b6b6eef3105f427b61a70be113fce0911cd24fcbfac957691bb0fb3a7d9b5')
+        "git+https://github.com/BYTEDz/FerrumCast.git#commit=${_commit}")
+sha256sums=('3b1ff6b238a03cc36a732c62d96848ced206826f39fd978bebaf1c80df9295b5'
+            '72343ed67edb6ecc9cee8b71a6e0a812b135a7322c90f2ce62700d604b0fc0ee')
 
 prepare() {
-  # export RUSTUP_TOOLCHAIN=stable
-  # cargo fetch --manifest-path=FerrumCast/Cargo.toml --locked --target host-tuple
-
-  # Use ferrumcast binary from .deb release until it can be built from source
-  mkdir -p deb/whl
-  bsdtar xf "${pkgname}_${pkgver}_amd64.deb" -C deb/
-  bsdtar xf deb/data.tar.gz -C "$srcdir/deb/"
-  bsdtar xf "deb/usr/lib/$pkgname/$pkgname-$pkgver-py3-none-any.whl" -C "$srcdir/deb/whl/"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --manifest-path=FerrumCast/Cargo.toml --locked --target host-tuple
 
   cd "PCLink-$pkgver"
 
@@ -97,13 +89,13 @@ prepare() {
 }
 
 build() {
-  # pushd FerrumCast
-  # export RUSTUP_TOOLCHAIN=stable
-  # export CARGO_TARGET_DIR=target
-  # cargo build --frozen --release
-  # popd
+  pushd FerrumCast
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
+  popd
 
-  cd "$PCLink-$pkgver"
+  cd "PCLink-$pkgver"
   python -m build --wheel --no-isolation
 }
 
@@ -117,8 +109,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  # install -Dm755 "$srcdir/FerrumCast/target/release/ferrumcast" -t \
-  install -Dm755 "$srcdir/deb/whl/$pkgname/assets/bin/ferrumcast" -t \
+  install -Dm755 "$srcdir/FerrumCast/target/release/ferrumcast" -t \
     "${pkgdir}${site_packages}/$pkgname/assets/bin/"
 
   install -Dm755 "scripts/linux/$pkgname-power-wrapper" -t "$pkgdir/usr/bin/"

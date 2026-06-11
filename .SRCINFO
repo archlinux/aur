@@ -1,10 +1,13 @@
 pkgbase = pclink
 	pkgdesc = Desktop app for secure remote PC control and management
-	pkgver = 4.2.1
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://bytedz.com/products/pclink
 	arch = x86_64
 	license = AGPL-3.0-or-later AND LicenseRef-custom
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -56,10 +59,9 @@ pkgbase = pclink
 	optdepends = python-pystray: Fallback for system tray
 	optdepends = spectacle: Screenshot support on KDE Plasma
 	optdepends = wl-clipboard: Clipboard support on Wayland
-	noextract = pclink_4.2.1_amd64.deb
-	source = PCLink-4.2.1.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v4.2.1.tar.gz
-	source = https://github.com/BYTEDz/PCLink/releases/download/v4.2.1/pclink_4.2.1_amd64.deb
-	sha256sums = 627ecc4aa9351b0509dc208bccf01df9f7cf825b389d22a6c7cff7e3361d7bdc
-	sha256sums = 4c8b6b6eef3105f427b61a70be113fce0911cd24fcbfac957691bb0fb3a7d9b5
+	source = PCLink-4.3.0.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v4.3.0.tar.gz
+	source = git+https://github.com/BYTEDz/FerrumCast.git#commit=0e99b02e33a51f411e8e2f444f365ab1b51868a9
+	sha256sums = 3b1ff6b238a03cc36a732c62d96848ced206826f39fd978bebaf1c80df9295b5
+	sha256sums = 72343ed67edb6ecc9cee8b71a6e0a812b135a7322c90f2ce62700d604b0fc0ee
 
 pkgname = pclink
