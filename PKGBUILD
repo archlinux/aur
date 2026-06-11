@@ -2,7 +2,7 @@
 
 pkgbase=cuvs
 pkgname=(libcuvs python-cuvs)
-pkgver=26.04.00
+pkgver=26.06.00
 pkgrel=1
 pkgdesc="cuVS - a library for vector search and clustering on the GPU"
 url="https://github.com/rapidsai/cuvs"
@@ -20,7 +20,7 @@ source=(
     "fix-compile.patch"
 )
 sha256sums=(
-    '34b8328d11a1359cb1c958804edb7c1ab84913f8b72607165c4b4b7a9df2d1f3'
+    'a5573690415f8ead4ff7bc10b42a1057ece4dd70f9bb5a22d271ebc757efe361'
     'd18e7391dfd2a7c4231b65d1fc89ece90d9c5f49e21bcb480cf6166f265b3541'
     '08089b4409698b5aeab59a248b7de325b9e8b9d788e2dcab7e22b88ec5194b0d'
     '4391f34eab05396af8a6c6dac3cf918ae4fe0200c7a302052225be22950d820b'
