@@ -1,12 +1,12 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=blender-mcp-git
-pkgver=r153.e91dd42
+pkgver=r154.c2dc3d2
 pkgrel=1
 pkgdesc="Connect Blender to Claude AI via Model Context Protocol for prompt-assisted 3D modeling"
 arch=('any')
 url="https://github.com/ahujasid/blender-mcp"
 license=('MIT')
-depends=('python' 'python-requests' 'python-tomli')
+depends=('python' 'python-requests' 'python-tomli' 'python-httpx')
 optdepends=('blender: Blender (bpy, mathutils)' 'python-fastmcp: MCP server support' 'python-supabase: supabase client')
 makedepends=('git' 'python-pip')
 provides=('blender-mcp')
