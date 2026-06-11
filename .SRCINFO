@@ -1,11 +1,21 @@
 pkgbase = ttf-pt-public-pack
 	pkgver = 2024.09.02
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = https://www.paratype.ru
+	url = https://www.paratype.com
 	arch = any
 	license = custom:OFL
-	source = PT-Public-Pack.ottt.zip::https://api.paratype.com/api/editions/ofl/download/59384
+	source = ttf-pt-astra-sans.zip::https://api.paratype.com/api/download/ofl/pack/3759
+	source = ttf-pt-astra-serif.zip::https://api.paratype.com/api/download/ofl/pack/3760
+	source = ttf-pt-mono.zip::https://api.paratype.com/api/download/ofl/pack/3763
+	source = ttf-pt-root_ui.zip::https://api.paratype.com/api/download/ofl/pack/3758
+	source = ttf-pt-sans.zip::https://api.paratype.com/api/download/ofl/pack/3762
+	source = ttf-pt-serif.zip::https://api.paratype.com/api/download/ofl/pack/3761
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ttf-pt-astra-sans
@@ -24,6 +34,7 @@ pkgname = ttf-pt-astra-serif
 
 pkgname = ttf-pt-mono
 	pkgdesc = A monospace font for use in forms, tables, worksheets and other scenarios where equal character widths are advantageous
+	optdepends = ttf-ptcode: Ligatures font for PT Mono
 	provides = ttf-font
 	provides = ttf-pt-mono
 	conflicts = ttf-pt-mono
