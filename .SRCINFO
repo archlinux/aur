@@ -11,8 +11,8 @@ pkgbase = curd-polland-git
 	depends = mpv
 	depends = rofi
 	depends = ueberzugpp
-	provides = curd-polland
-	conflicts = curd-polland
+	provides = curd
+	conflicts = curd
 	source = git+https://github.com/Pol-Jak-295/curd-polland.git
 	sha256sums = SKIP
 

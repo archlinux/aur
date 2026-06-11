@@ -9,8 +9,8 @@ url="https://github.com/Pol-Jak-295/curd-polland"
 license=('GPL3')
 depends=('mpv' 'rofi' 'ueberzugpp')
 makedepends=('git' 'go>=1.21')
-provides=('curd-polland')
-conflicts=('curd-polland')
+provides=('curd')
+conflicts=('curd')
 source=("git+https://github.com/Pol-Jak-295/curd-polland.git")
 sha256sums=('SKIP')
 
