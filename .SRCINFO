@@ -1,0 +1,25 @@
+pkgbase = sonic-frameworks-quick-ui
+	pkgdesc = A QtQuick based components set
+	pkgver = 6.26.0
+	pkgrel = 2
+	url = https://github.com/Sonic-DE/sonic-frameworks-quick-ui
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-shadertools
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = libgomp
+	depends = libstdc++
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	provides = kirigami
+	conflicts = kirigami
+	source = sonic-frameworks-quick-ui-6.26.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-quick-ui/archive/refs/tags/6.26.0.tar.gz
+	sha256sums = 6026b9bcc9a09541602b481fdb8d23bdb26a12448ab7b79d66297f89b98f2c7c
+
+pkgname = sonic-frameworks-quick-ui
