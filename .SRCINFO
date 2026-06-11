@@ -1,6 +1,6 @@
 pkgbase = f2p-evo-bin
 	pkgdesc = F2P Evo - unofficial Hytale launcher (Rust + Tauri 2 + Vue 3) with multiplayer, mods, chat, and auto-updates (binary version)
-	pkgver = 0.3.37
+	pkgver = 0.3.39
 	pkgrel = 1
 	url = https://git.sanhost.net/sanasol/f2p-evo
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = f2p-evo-bin
 	provides = f2p-evo
 	conflicts = f2p-evo
 	conflicts = f2p-evo-git
-	source = f2p-evo-0.3.37.deb::https://git.sanhost.net/sanasol/f2p-evo/releases/download/v0.3.37/F2P%20Evo_0.3.37_amd64.deb
+	source = f2p-evo-0.3.39.deb::https://git.sanhost.net/sanasol/f2p-evo/releases/download/v0.3.39/F2P%20Evo_0.3.39_amd64.deb
 	source = f2p-evo.desktop
-	sha256sums = a595da775048bba6dfdb6a07028a7b5e2171bfc7f7fab7cfdd0fe91e2019ee0a
+	sha256sums = 9b1e6a7b7d5e5694c10fe558c1e9471592569b23e2c5125ece2cb8ab681d6702
 	sha256sums = 0afc72abdbdfeb59919ff3b18bb3b7933d6c86b0f416cb3e610753b6fce38199
 
 pkgname = f2p-evo-bin
