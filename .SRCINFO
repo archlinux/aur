@@ -5,7 +5,7 @@ pkgbase = blackarch-wallpapers
 	url = https://github.com/BlackArch/blackarch-artwork
 	install = blackarch-wallpapers.install
 	arch = any
-	license = cutsom:uknown
+	license = cutsom:unknown
 	source = https://github.com/BlackArch/blackarch-artwork/archive/refs/heads/master.tar.gz
 	sha256sums = SKIP
 
