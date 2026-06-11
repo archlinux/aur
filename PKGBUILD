@@ -2,7 +2,7 @@
 # Contributor: Lahfa Samy (AkechiShiro) <'akechishiro-aur' at the domain 'lahfa.xyz'>
 # Contributor: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 pkgname=python-pwntools-git
-pkgver=4.15.0.r124.gee49a2be
+pkgver=4.15.0.r144.g4c39ca92
 pkgrel=1
 pkgdesc='A CTF framework and exploit development library'
 url='https://github.com/Gallopsled/pwntools'
@@ -66,10 +66,6 @@ package() {
   find "${pkgdir}/usr/bin" -type f ! -name pwn -delete
 
   install -Dm 644 LICENSE-pwntools.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
-  # https://github.com/Gallopsled/pwntools/issues/2150
-  install -d "${pkgdir}/usr/share/doc/"
-  mv -v "${pkgdir}/usr/pwntools-doc" "${pkgdir}/usr/share/doc/"
 
   install -Dm 644 extra/bash_completion.d/pwn -t  "${pkgdir}/usr/share/bash-completion/completions/"
   install -Dm 644 extra/zsh_completion/_pwn -t "${pkgdir}/usr/share/zsh/site-functions/"
