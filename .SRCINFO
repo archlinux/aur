@@ -1,6 +1,6 @@
 pkgbase = python-cappa
 	pkgdesc = Declarative CLI argument parser
-	pkgver = 0.32.0
+	pkgver = 0.32.1
 	pkgrel = 1
 	url = https://github.com/DanCardin/cappa
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-cappa
 	depends = python-typing_extensions>=4.8.0
 	depends = python-type-lens>=0.2.5
 	optdepends = python-docstring-parser
-	source = git+https://github.com/DanCardin/cappa#tag=v0.32.0
-	sha256sums = 4f681a3cb487af2369c5135fe04ac675d00bd3c044d39246bbc01700c0f791e2
+	source = git+https://github.com/DanCardin/cappa#tag=v0.32.1
+	sha256sums = 2c8d77183c553ce77f343c833925c02d5b8ef7f3ddb34a98ad563807129e35a2
 
 pkgname = python-cappa
