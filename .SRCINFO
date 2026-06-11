@@ -1,6 +1,6 @@
 pkgbase = stochos
 	pkgdesc = Keyboard-driven mouse control overlay for Wayland and X11
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/museslabs/stochos
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = stochos
 	depends = libx11
 	depends = libxtst
 	depends = wayland
-	source = stochos-0.6.0.tar.gz::https://github.com/museslabs/stochos/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = a93c6e9e1116b11a1abc43addbfb65f77781ef9efe044c7e754cf6a665a1a67d
+	source = stochos-0.6.2.tar.gz::https://github.com/museslabs/stochos/archive/refs/tags/v0.6.2.tar.gz
+	sha256sums = d38bce49cbb127b900e84d5e3e38117cdc3e28ce6470d1fe3396695d5adf01be
 
 pkgname = stochos
