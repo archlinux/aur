@@ -110,7 +110,7 @@ init)
         exit 1
     }
     venv_astrbot="$(venv_dir)/bin/astrbot"
-    printf 'Y\nY\n' | run_astrbot_env_cmd "$venv_astrbot" init
+    run_astrbot_env_cmd bash -c 'printf "Y\nY\n" | "$1" init' bash "$venv_astrbot"
     if [ -n "$backup_file" ]; then
         run_astrbot_env_cmd "$venv_astrbot" bk import -y "$backup_file"
     fi
