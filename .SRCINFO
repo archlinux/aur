@@ -8,6 +8,7 @@ pkgbase = merlin-commit
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
+	depends = git
 	provides = merlin-commit
 	provides = merlin
 	noextract = merlin-commit-1.0.0.tgz

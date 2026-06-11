@@ -12,7 +12,7 @@ _urlraw="https://raw.githubusercontent.com/mBukator/merlin-commit/v${pkgver}"
 _npmname=${pkgname}
 _npmver=${pkgver}
 
-depends=("nodejs")
+depends=("nodejs" "git")
 makedepends=("npm" "jq")
 provides=("${_npmname}" "${_npmname%%-commit}")
 
