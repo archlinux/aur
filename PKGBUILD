@@ -1,6 +1,6 @@
 # Maintainer: Wenyin Root <wenyin.community@outlook.com>
 pkgname=zedg
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Zed editor with globalization support (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!debug')
 source_x86_64=("https://github.com/WenYin-Community/zed-globalization/releases/download/v${pkgver}/zedg-zh-cn-linux-x86_64-v${pkgver}.tar.gz")
 source_aarch64=("https://github.com/WenYin-Community/zed-globalization/releases/download/v${pkgver}/zedg-zh-cn-linux-aarch64-v${pkgver}.tar.gz")
 
-sha256sums_x86_64=('170f36c16ab3c0047196d53ac06d3596e983d57ea3f2156445c220dd0485efd0')
-sha256sums_aarch64=('7d32efedd673fa3d81f16d4d8f97d09e6fac1b1afba6a9b9fcd1383a8ea9fb4f')
+sha256sums_x86_64=('7f93d48361984923154ad37822185aab7945812e28022815b31c306bcaec9270')
+sha256sums_aarch64=('e32f0ed8018203afa72ed55b03a04b3a850b5c23e26db5f82654b6c3362dd4ba')
 
 package() {
   cp -r "${srcdir}/usr" "${pkgdir}/"
