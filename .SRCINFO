@@ -1,6 +1,6 @@
 pkgbase = sisiya-client
 	pkgdesc = The SisIYA client. This package is installed on every server that is going to be monitored by SisIYA.
-	pkgver = 1.0.87
+	pkgver = 1.0.88
 	pkgrel = 1
 	url = https://sisiya.de
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = sisiya-client
 	depends = python3
 	depends = sysstat
 	backup = etc/sisiya-client/config.json
-	source = https://gitlab.com/api/v4/projects/70802198/packages/generic/sisiya-client/1.0.87/sisiya-client-1.0.87.tar.gz
-	md5sums = 87ce7bcb7f16e3b7a6f4160b276d0a39
+	source = https://gitlab.com/api/v4/projects/70802198/packages/generic/sisiya-client/1.0.88/sisiya-client-1.0.88.tar.gz
+	md5sums = 1d8bd38b07da910f7a2706289e4b9204
 
 pkgname = sisiya-client
