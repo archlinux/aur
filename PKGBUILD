@@ -1,43 +1,19 @@
 # Maintainer: sandwichfarm <sandwich.farm@protonmail.com>
 
 pkgname=nsyte
-pkgver=0.27.0
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="Publish your site to nostr and blossom servers"
 arch=('x86_64')
 url="https://github.com/sandwichfarm/nsyte"
 license=('MIT')
 makedepends=('deno')
+conflicts=('nsyte-bin' 'nsite-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4827db7f6697daee6f05329df5399bf35237a2ca1f047296e757fe031c927452')
-
-_check_deno() {
-  if ! command -v deno >/dev/null 2>&1; then
-    cat >&2 <<'EOF'
-ERROR: deno is required to build nsyte from source.
-
-Install Deno on Arch Linux, then rerun makepkg:
-  sudo pacman -S deno
-  makepkg -si
-
-You can also let makepkg resolve declared dependencies automatically:
-  makepkg -si
-
-If makepkg still reports a missing deno dependency, refresh package databases:
-  sudo pacman -Syu deno
-EOF
-    return 1
-  fi
-}
-
-prepare() {
-  _check_deno
-  deno --version
-}
+sha256sums=('fbaf6813a4dbfd46373edd1bf9e202c86d14ee871b7e2b72aef3021b150be14c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  _check_deno
   deno compile --no-check \
     --allow-run \
     --allow-read \
@@ -45,7 +21,7 @@ build() {
     --allow-net \
     --allow-env \
     --allow-sys \
-    --target x86_64-unknown-linux-gnu \
+    --target "${CARCH}-unknown-linux-gnu" \
     --output dist/nsyte \
     src/cli.ts
 }
