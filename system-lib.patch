@@ -1,14 +1,5 @@
 --- cpp/CMakeLists.txt	2026-02-05 05:49:40.000000000 +0800
 +++ cpp/CMakeLists.txt.new	2026-03-11 22:22:53.815616471 +0800
-@@ -72,7 +72,7 @@
- set(CUGRAPH_CUDA_FLAGS "")
- 
- if(CMAKE_COMPILER_IS_GNUCXX)
--    list(APPEND CUGRAPH_CXX_FLAGS -Werror -Wno-error=deprecated-declarations -Wno-deprecated-declarations -DRAFT_HIDE_DEPRECATION_WARNINGS)
-+    list(APPEND CUGRAPH_CXX_FLAGS -Wno-error=deprecated-declarations -Wno-deprecated-declarations -DRAFT_HIDE_DEPRECATION_WARNINGS)
- endif(CMAKE_COMPILER_IS_GNUCXX)
- 
- 
 @@ -117,12 +117,11 @@
  
  # Need CCCL, then rmm, then cuCollections, then RAFT.

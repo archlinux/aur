@@ -2,7 +2,7 @@
 
 pkgbase=cugraph
 pkgname=(cugraph python-pylibcugraph python-cugraph)
-pkgver=26.04.00
+pkgver=26.06.00
 pkgrel=1
 pkgdesc="cuGraph - RAPIDS Graph Analytics Library"
 url="https://github.com/rapidsai/cugraph"
@@ -17,8 +17,8 @@ source=(
     "missing-pkg.patch"
 )
 sha256sums=(
-    '9310b697e03f2f397860934bee6da23e8daaeac7d73356d39c9c3443b6639b11'
-    '2cbe2f24dd6056fad0fa1861b69b25cf6502dd248602319aa687b7e7fd7ce2ea'
+    '82e5d7f1f1a09e6860560e4d0b18802eed8d66f3ca311b696c87c00cf5389c38'
+    '70b1699c7439a9aca6b5987e1f5191ea09f2c202d34315c3004aa27d95678352'
     'cf9d3bbb9ac0a12c4883059ce23531c3f10886f65c8d2b4559fd7c5193d3940c'
     '25da2d862c4ceb202e45e5a36d2ce4fa977e45d91757160407c808ac5b6b8054'
 )
@@ -34,6 +34,8 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgbase-$pkgver"
+    export CXXFLAGS="$CXXFLAGS -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER"
+    export CUDAFLAGS="$CUDAFLAGS -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER"
     cmake -B build -S cpp \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
