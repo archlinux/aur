@@ -15,12 +15,6 @@ install=vtlock.install
 validpgpkeys=('E0844009CF213E78ECD348795A6792BF5ECC3AC6')
 sha256sums=('SKIP' 'SKIP')
 
-prepare() {
-    # Normalize file timestamps to prevent make clock skew warnings
-    cd "$pkgname-$pkgver"
-    touch *
-}
-
 build() {
     cd "$pkgname-$pkgver"
     make
