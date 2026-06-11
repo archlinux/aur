@@ -1,6 +1,6 @@
 pkgbase = cockpit-pacman-git
 	pkgdesc = Cockpit plugin for Arch Linux package management using alpm.rs
-	pkgver = 0.3.6.r21.g3e95285
+	pkgver = 0.3.6.r23.gb087177
 	pkgrel = 1
 	url = https://github.com/pfeifferj/cockpit-pacman
 	arch = x86_64
