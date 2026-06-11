@@ -1,28 +1,27 @@
---- cpp/CMakeLists.txt	2026-04-10 04:42:11.000000000 +0800
-+++ cpp/CMakeLists.txt.new	2026-04-10 16:30:34.549921110 +0800
-@@ -75,7 +75,7 @@
+--- cpp/CMakeLists.txt	2026-06-10 06:05:39.000000000 +0800
++++ cpp/CMakeLists.txt.new	2026-06-10 15:53:05.220378652 +0800
+@@ -80,7 +80,7 @@
  set(CUOPT_CUDA_FLAGS "")
  
- if(CMAKE_COMPILER_IS_GNUCXX)
--  list(APPEND CUOPT_CXX_FLAGS -Werror -Wno-error=deprecated-declarations)
-+  list(APPEND CUOPT_CXX_FLAGS -Wno-error=deprecated-declarations)
- endif(CMAKE_COMPILER_IS_GNUCXX)
+ if (CMAKE_COMPILER_IS_GNUCXX)
+-    list(APPEND CUOPT_CXX_FLAGS -Werror -Wno-error=deprecated-declarations)
++    list(APPEND CUOPT_CXX_FLAGS -Wno-error=deprecated-declarations)
+ endif (CMAKE_COMPILER_IS_GNUCXX)
  
  # Papilo pulls in Boost.Multiprecision float128 support, which expects quadmath.h from the GCC
-@@ -234,7 +234,9 @@
-     set_target_properties(rmm PROPERTIES CXX_VISIBILITY_PRESET default)
-   endif()
- else()
--  find_package(CCCL REQUIRED)
-+  find_package(nvtx3 REQUIRED)
-+  find_package(rapids_logger REQUIRED)
-+  find_package(cuco REQUIRED)
-   find_package(RMM REQUIRED)
-   find_package(RAFT REQUIRED)
- endif()
-@@ -279,9 +281,7 @@
- set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS_SAVED})
- 
+@@ -249,6 +249,9 @@
+     endif ()
+ else ()
+     find_package(CCCL REQUIRED)
++    find_package(nvtx3 REQUIRED)
++    find_package(rapids_logger REQUIRED)
++    find_package(cuco REQUIRED)
+     find_package(RMM REQUIRED)
+     find_package(RAFT REQUIRED)
+ endif ()
+@@ -307,9 +310,7 @@
+ FetchContent_MakeAvailable(dejavu)
+ message(STATUS "dejavu (graph automorphism): ${dejavu_SOURCE_DIR}")
  
 -include(${rapids-cmake-dir}/cpm/rapids_logger.cmake)
  # generate logging macros
@@ -30,19 +29,19 @@
  create_logger_macros(CUOPT "cuopt::default_logger()" include/cuopt)
  
  find_package(CUDSS REQUIRED)
-@@ -310,13 +310,13 @@
- if(TARGET protobuf::protoc)
-   get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION_RELEASE)
-   if(NOT _PROTOBUF_PROTOC)
--    get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION)
-+	  get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION_NONE)
-   endif()
- else()
-   find_package(protobuf CONFIG REQUIRED)
-   get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION_RELEASE)
-   if(NOT _PROTOBUF_PROTOC)
--    get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION)
-+	  get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION_NONE)
-   endif()
- endif()
+@@ -346,13 +347,13 @@
+     if (TARGET protobuf::protoc)
+         get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION_RELEASE)
+         if (NOT _PROTOBUF_PROTOC)
+-            get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION)
++	    get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION_NONE)
+         endif ()
+     else ()
+         find_package(protobuf CONFIG REQUIRED)
+         get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION_RELEASE)
+         if (NOT _PROTOBUF_PROTOC)
+-            get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION)
++	     get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION_NONE)
+         endif ()
+     endif ()
  

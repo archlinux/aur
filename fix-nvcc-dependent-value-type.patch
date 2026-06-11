@@ -1,0 +1,41 @@
+--- a/cpp/src/routing/ges/lexicographic_search/brute_force_lexico.cu
++++ b/cpp/src/routing/ges/lexicographic_search/brute_force_lexico.cu
+@@ -10,6 +10,7 @@
+ #include "lexicographic_search.cuh"
+ 
+ #include <algorithm>
++#include <type_traits>
+ 
+ namespace cuopt {
+ namespace routing {
+@@ -184,7 +185,8 @@ std::vector<i_t> guided_ejection_search_t<i_t, f_t, REQUEST>::brute_force_lexico
+   auto stream          = sol.sol_handle->get_stream();
+   i_t TPB              = 32;
+   const i_t zero       = 0;
+-  const auto value_max = std::numeric_limits<typename decltype(global_min_p_)::value_type>::max();
++  using global_min_value_t = typename std::decay_t<decltype(global_min_p_)>::value_type;
++  const auto value_max     = std::numeric_limits<global_min_value_t>::max();
+   sol.d_lock.set_value_async(zero, stream);
+   rmm::device_uvector<i_t> global_sequence(2 * b_k_max + lexico_result_buffer_size, stream);
+   rmm::device_scalar<uint32_t> global_min_p(value_max, stream);
+--- a/cpp/src/routing/ges/lexicographic_search/lexicographic_search.cu
++++ b/cpp/src/routing/ges/lexicographic_search/lexicographic_search.cu
+@@ -16,6 +16,8 @@
+ #include "raft/core/span.hpp"
+ #include "raft/random/device/sample.cuh"
+ 
++#include <type_traits>
++
+ namespace cuopt {
+ namespace routing {
+ namespace detail {
+@@ -707,7 +709,8 @@ bool guided_ejection_search_t<i_t, f_t, REQUEST>::run_lexicographic_search(
+   }
+ 
+   // Init global min before call to lexicographic
+-  const auto max = std::numeric_limits<typename decltype(global_min_p_)::value_type>::max();
++  using global_min_value_t = typename std::decay_t<decltype(global_min_p_)>::value_type;
++  const auto max           = std::numeric_limits<global_min_value_t>::max();
+   const i_t zero = 0;
+   global_min_p_.set_value_async(max, stream);
+   solution_ptr->d_lock.set_value_async(zero, stream);

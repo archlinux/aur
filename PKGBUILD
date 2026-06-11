@@ -2,7 +2,7 @@
 
 pkgbase=cuopt
 pkgname=(cuopt python-cuopt)
-pkgver=26.04.00
+pkgver=26.06.00
 pkgrel=1
 pkgdesc="NVIDIA cuOpt is an open-source GPU-accelerated optimization engine delivering near real-time solutions for complex decision-making challenges."
 url="https://github.com/NVIDIA/cuopt"
@@ -14,17 +14,20 @@ source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
     "system-lib.patch"
     "missing-pkg.patch"
+    "fix-nvcc-dependent-value-type.patch"
 )
 sha256sums=(
-    '135ec7765e8cccacb13194447ae3bba02abfd8ace86c688eede418ec05d4ef44'
-    'cd09e2c36a87ce8a92860fc0b5f3d0820873776f1cd1f87523223db3e10cc386'
-    '0d7efedb556324377fd1f5a6d8508ae1a168e67139fcc4c8af91f2af1aedb93b'
+    '52687d3f8e662fe8ab26677cc057ffa7b444d1c8a6434f4bd74ed171590d0024'
+    '6cdead3b18e784c5b8654239be1bdb02862d4c37d5d4c2798f6d111c8ccb7829'
+    '162f42f35f0727f68f3890f454749e04f129b023c06e0fdf99122b1d4de3ca0c'
+    'cdc0181943c79531760ec98346b86b75e90ae2332d821bc4d7187ae8dd3fb77a'
 )
 
 prepare() {
     cd "$srcdir/$pkgbase-$pkgver"
     patch -p1 "cpp/CMakeLists.txt" < "$srcdir/system-lib.patch"
     patch -p1 "python/cuopt/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
+    patch -p1 < "$srcdir/fix-nvcc-dependent-value-type.patch"
 }
 
 
@@ -43,13 +46,8 @@ build() {
         -G Ninja
     cmake --build build
 
-    rm "$srcdir/$pkgbase-$pkgver/python/cuopt/cuopt/linear_programming/build" -rf
-
     cd "$srcdir/$pkgbase-$pkgver/python/cuopt"
     export cuopt_DIR="$srcdir/$pkgbase-$pkgver/build"
-    python -m build --wheel --no-isolation --skip-dependency-check
-
-    cd "$srcdir/$pkgbase-$pkgver/python/cuopt/cuopt/linear_programming"
     python -m build --wheel --no-isolation --skip-dependency-check
 }
 
@@ -57,16 +55,13 @@ package_cuopt() {
     cd "$srcdir/$pkgbase-$pkgver"
     DESTDIR="$pkgdir" cmake --install build
     
-    rm "$pkgdir/usr/lib/cmake/papilo" -rf
-    rm "$pkgdir/usr/include/papilo" -rf
-    rm "$pkgdir/usr/lib/libpapilo-core.a" -rf
+    #rm "$pkgdir/usr/lib/cmake/papilo" -rf
+    #rm "$pkgdir/usr/include/papilo" -rf
+    #rm "$pkgdir/usr/lib/libpapilo-core.a" -rf
 }
 
 package_python-cuopt() {
     depends+=('python' 'python-cupy' 'python-cudf' 'python-numpy' 'python-rmm' 'python-raft-dask' 'cuopt')
     cd "$srcdir/$pkgbase-$pkgver/python/cuopt"
-    python -m installer --destdir="$pkgdir" dist/*.whl
-
-    cd "$srcdir/$pkgbase-$pkgver/python/cuopt/cuopt/linear_programming"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
