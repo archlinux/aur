@@ -1,6 +1,6 @@
 pkgbase = libindi-beefocus
 	pkgdesc = INDI driver for products manufactured by indi-beefocus
-	pkgver = 2.2.1.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = libindi-beefocus
 	license = LGPL-2.1-or-later
 	makedepends = cmake
 	depends = glibc
-	depends = libindi=2.2.1.1
-	source = https://github.com/indilib/indi-3rdparty/archive/v2.2.1.1.tar.gz
-	sha256sums = b336df05a4e4313b02264e6cd59ecc78f0b37ac68eb895ffb617ae553a7db12a
+	depends = libindi=2.2.2
+	source = https://github.com/indilib/indi-3rdparty/archive/v2.2.2.tar.gz
+	sha256sums = ea4e90f3549cb28860d0d2a5820734579d4aa5b8c04ba202bc413ce5ffdb0377
 
 pkgname = libindi-beefocus
