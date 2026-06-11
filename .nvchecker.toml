@@ -1,0 +1,5 @@
+[fli]
+source = "github"
+github = "tracyspacy/fli"
+use_max_tag = true
+prefix = ""
