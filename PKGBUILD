@@ -1,5 +1,5 @@
 pkgname=ldash
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Terminal dashboard TUI for hledger — crypto portfolio, net worth, monthly income/expenses"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ conflicts=('ldash-bin')
 provides=('ldash')
 
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/md-weber/ldash/archive/v$pkgver.tar.gz")
-sha256sums=('76f98eb42b2728432485bb9b2a78e23a3f60e2660292d913a1cc534e3f0e97e0')
+sha256sums=('672c84392930c3bf5ef77a9f6b072858f861e2ad71b990553270fe9610e71861')
 
 build() {
   cd "$srcdir/ldash"
