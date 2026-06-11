@@ -1,8 +1,8 @@
-# Maintainer: W3TI SERVIÇOS DE INFORMÁTICA LTDA <contato@w3ti.com.br>
+# Maintainer: Rodrigo Brito <rodrigo@w3ti.com.br>
 pkgname=prosa
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Editor de texto moderno, open source e em modo escuro — suíte W3TI"
+pkgdesc="Editor de texto moderno, open source e em modo escuro — suíte Rodrigo Brito"
 arch=('x86_64')
 url="https://github.com/britors/Prosa"
 license=('GPL-3.0-or-later')
