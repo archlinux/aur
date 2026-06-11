@@ -1,7 +1,7 @@
 pkgbase = musescore-bin
 	pkgdesc = Create, play and print beautiful sheet music / AppImage version
-	pkgver = 4.7.2
-	pkgrel = 4
+	pkgver = 4.7.3
+	pkgrel = 1
 	url = https://musescore.org/
 	arch = x86_64
 	groups = pro-audio
@@ -12,12 +12,12 @@ pkgbase = musescore-bin
 	provides = musescore
 	conflicts = musescore
 	conflicts = musescore-git
-	noextract = MuseScore-Studio-4.7.2.260525085-x86_64.AppImage
+	noextract = MuseScore-Studio-4.7.3.260608135-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source = MuseScore-Studio-4.7.2.260525085-x86_64.AppImage::https://github.com/musescore/MuseScore/releases/download/v4.7.2/MuseScore-Studio-4.7.2.260525085-x86_64.AppImage
+	source = MuseScore-Studio-4.7.3.260608135-x86_64.AppImage::https://github.com/musescore/MuseScore/releases/download/v4.7.3/MuseScore-Studio-4.7.3.260608135-x86_64.AppImage
 	source = mscore.sh
-	sha256sums = 9c1c2c2db1a7dc830b1bccf530f392de9bff47022826596b3b2117fc19cd73f5
+	sha256sums = 81248da5cee796a99c74cbadf29005433cd851798b95a362d19864003dc7b292
 	sha256sums = d9bb8cf15e9bea1533461ab094f29029ffbe21e820accd205f9552c3545057bc
 
 pkgname = musescore-bin
