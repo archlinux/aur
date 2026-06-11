@@ -1,6 +1,6 @@
 pkgbase = discord-ptb
 	pkgdesc = All-in-one voice and text chat for gamers - public test build
-	pkgver = 1.0.194
+	pkgver = 1.0.195
 	pkgrel = 1
 	url = https://discord.com
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = discord-ptb
 	optdepends = xdg-utils: For opening URLs and files
 	options = !debug
 	options = !strip
-	source = https://dl-ptb.discordapp.net/apps/linux/1.0.194/discord-ptb-1.0.194.tar.gz
-	source = LICENSE-1.0.194.html::https://discordapp.com/terms
-	source = OSS-LICENSES-1.0.194.html::https://discordapp.com/licenses
-	sha512sums = 5bccbf2d2fb876372613ecc21827cf2281bdd448ba36f94fb76fe431e58b894aa8495ea3f680a94a40c5a189217e01da4e4b09e615ab3a99912bf70e973f9e59
+	source = https://dl-ptb.discordapp.net/apps/linux/1.0.195/discord-ptb-1.0.195.tar.gz
+	source = LICENSE-1.0.195.html::https://discordapp.com/terms
+	source = OSS-LICENSES-1.0.195.html::https://discordapp.com/licenses
+	sha512sums = f088b63e045067aee7fd0eede165a004aed2161c333934e8cc97ab87fc77618a869e94c74fd16626b3a82fc3004fac50fe6618384446c2623f538757727eb99a
 	sha512sums = SKIP
 	sha512sums = SKIP
 
