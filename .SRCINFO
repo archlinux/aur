@@ -1,7 +1,7 @@
 pkgbase = mboxshell-git
 	pkgdesc = Fast terminal viewer for MBOX files of any size without loading them into memory
 	pkgver = 0.4.7.r0.g68a4d1e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dcarrero/mboxshell
 	arch = i686
 	arch = pentium4
