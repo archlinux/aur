@@ -2,7 +2,7 @@
 
 _zig=0.15
 pkgname="zigdown"
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Parse and render Markdown-like content to the terminal, to HTML, or inside Neovim"
 arch=(
@@ -17,7 +17,7 @@ depends=(
   'glibc'
 )
 makedepends=(
-  "zig>=${_zig}"
+  "zig${_zig}"
 )
 _zigdepends=(
   # zigdown
@@ -54,7 +54,7 @@ source=(
 noextract=(
   "${_zigdepends[@]%%::*}"
 )
-b2sums=('b63dc453754ce24677a010b395419887caa09ec698fe7b0f150375c984bb70953ab4d27e539ad01fdfbda845ad3ae7b25a4834be20e74b423ad62dd3eb7ab076'
+b2sums=('b5330ccb43b2d4ba0d37467a6d42bdf83e9e34af44bfac1a41071f004f4119ac595c06b2c20bd3fbdba5fc2d21892296a3f98b88b893fe0ee804ffa51d5b44ec'
         'e284162579422c325cc118a086c710da09966042157bdcc9205218386c17ea73dcc715177edd84ff8c817129d1114c584b967a8f834a115602ca2c771313f2c6'
         '20789d0ef34be86a9f6dcff82daa7f54d4aeabce275c259164f4df00606f3e2121b5efdad120fef686536343ebf3030d60238607a0ebea3948db45f60b601b73'
         'd144d903717301988b0bd20b98b35578e2354195972a1bbe30ac3d717b2a939e6c664dfc19fda769f2a96337d20d3e3a39bfa6a7cc57e4895b7547cc0594d1b2'
@@ -78,9 +78,9 @@ b2sums=('b63dc453754ce24677a010b395419887caa09ec698fe7b0f150375c984bb70953ab4d27
         '970338647ace38cf89aede91f0e07caab5f43461de5c3d451ac47588ad122826f99440696fe1ea4564440c12196f5a7f552ef7ad0d8b1d63b4f63b49f7310e2e')
 
 prepare() {
-  cd "${srcdir}"
+  cd "${srcdir}/${_pkgsrc}"
   for _zigdepend in "${_zigdepends[@]}"; do
-    zig fetch --global-cache-dir "zig-global-cache" "${_zigdepend%%::*}"
+    "zig-${_zig}" fetch --global-cache-dir "${srcdir}/zig-global-cache" "${srcdir}/${_zigdepend%%::*}"
   done
 }
 
@@ -98,7 +98,7 @@ build() {
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  DESTDIR="build" zig build "${zig_options[@]}"
+  DESTDIR="build" "zig-${_zig}" build "${zig_options[@]}"
   find "build" -type f -name '*.wasm' -delete
 }
 
@@ -116,7 +116,7 @@ check() {
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  DESTDIR="check" zig build test "${zig_options[@]}"
+  DESTDIR="check" "zig-${_zig}" build test "${zig_options[@]}"
 }
 
 package() {
