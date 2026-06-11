@@ -1,6 +1,6 @@
 pkgbase = msgvault-bin
 	pkgdesc = Archive a lifetime of email and chat. Offline search, analytics, and AI query over your full message history. Powered by DuckDB.
-	pkgver = 0.15.1
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://github.com/wesm/msgvault
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = msgvault-bin
 	depends = libstdc++
 	provides = msgvault
 	conflicts = msgvault
-	source = README-0.15.1.md::https://raw.githubusercontent.com/wesm/msgvault/v0.15.1/README.md
-	source = LICENSE-0.15.1::https://raw.githubusercontent.com/wesm/msgvault/v0.15.1/LICENSE
+	source = README-0.15.2.md::https://raw.githubusercontent.com/wesm/msgvault/v0.15.2/README.md
+	source = LICENSE-0.15.2::https://raw.githubusercontent.com/wesm/msgvault/v0.15.2/LICENSE
 	sha256sums = e38d1744c8b7d2053b4a42dbaa926a37c720f675cee23eb85e8be33ccf12bea8
 	sha256sums = 6c53c20cce3570ab804556dc5ae92ca9a0dcc429b41b28c5fd0c3cc1910fe3be
-	source_x86_64 = msgvault-x86_64-0.15.1.tgz::https://github.com/wesm/msgvault/releases/download/v0.15.1/msgvault_0.15.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8be94ff0728850c80115e61db63bd4f027f9349e5d76d2d61ebfab806a20eabe
-	source_aarch64 = msgvault-aarch64-0.15.1.tgz::https://github.com/wesm/msgvault/releases/download/v0.15.1/msgvault_0.15.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 77e7070e0ee8ae0c82f4d1b6c6d3d290a8f57cae9bc7b997b247194b854600b5
+	source_x86_64 = msgvault-x86_64-0.15.2.tgz::https://github.com/wesm/msgvault/releases/download/v0.15.2/msgvault_0.15.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = eb6e6fda02c7ad412054adb48fdb33567c8e5bc2f989e0db34655128944f50e6
+	source_aarch64 = msgvault-aarch64-0.15.2.tgz::https://github.com/wesm/msgvault/releases/download/v0.15.2/msgvault_0.15.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = e80825e53450790358afe4456b8f84ec69f6ddc2aaece32c990f2315d4a06c52
 
 pkgname = msgvault-bin
