@@ -11,7 +11,7 @@ depends=("ncurses" "readline")
 makedepends=("bison" "flex" "gcc" "make")
 # Use the GitHub release archive for source retrieval
 source=("https://github.com/ProphetPX/opencomal/releases/download/v0.2.6/opencomal-0.2.6.tar.gz")
-sha256sums=('967592e1dfe04366555fbde5df987de4e4b3234f72abc526492607fb7aa179c6')
+sha256sums=('de251ef4a917d55c7fb1257df894043044661179aec1aa771407631bbbf9da87')
 
 build() {
     cd "$srcdir/opencomal-0.2.6/src"
