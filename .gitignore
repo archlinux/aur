@@ -1,0 +1,9 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!granola.in
+!granola-wine.desktop
+!granola-wine.install
+!LICENSE
+!README.md

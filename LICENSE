@@ -1,0 +1,5 @@
+Granola is proprietary software distributed by Granola Labs Ltd / Granola, Inc.
+
+This Arch package downloads the upstream Windows installer and installs the
+application files locally for use with Wine. It does not grant additional
+rights beyond the upstream Granola terms and license.

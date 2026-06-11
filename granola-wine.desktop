@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Granola
+Comment=Granola AI Notepad via Wine
+Exec=granola %u
+Icon=granola-wine
+Terminal=false
+Categories=Office;
+MimeType=x-scheme-handler/granola;
+StartupNotify=true
+StartupWMClass=Granola.exe

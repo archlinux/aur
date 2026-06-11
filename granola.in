@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+pkgver="@PKGVER@"
+export WINEPREFIX="${GRANOLA_WINEPREFIX:-${HOME}/.wine-prefixes/granola}"
+
+app_src="/opt/granola-wine/app"
+wine_user="${WINEUSER:-$(id -un)}"
+app_dst="${WINEPREFIX}/drive_c/users/${wine_user}/AppData/Local/Programs/@granolaelectron"
+log_dir="${XDG_DATA_HOME:-${HOME}/.local/share}/granola-wine"
+log_file="${log_dir}/granola.log"
+exe_path="C:\\users\\${wine_user}\\AppData\\Local\\Programs\\@granolaelectron\\Granola.exe"
+
+mkdir -p "$log_dir" "$WINEPREFIX"
+
+if [[ ! -e "${WINEPREFIX}/system.reg" ]]; then
+  WINEPREFIX="$WINEPREFIX" wineboot -u < /dev/null >> "$log_file" 2>&1 || true
+fi
+
+if [[ ! -f "${WINEPREFIX}/.granola-wine-x11-decorations-configured" ]]; then
+  WINEPREFIX="$WINEPREFIX" wine reg add 'HKCU\Software\Wine\X11 Driver' /v Decorated /t REG_SZ /d N /f \
+    < /dev/null >> "$log_file" 2>&1 || true
+  WINEPREFIX="$WINEPREFIX" wine reg add 'HKCU\Software\Wine\X11 Driver' /v Managed /t REG_SZ /d Y /f \
+    < /dev/null >> "$log_file" 2>&1 || true
+  touch "${WINEPREFIX}/.granola-wine-x11-decorations-configured"
+fi
+
+if [[ ! -x "${app_dst}/Granola.exe" ]] || [[ ! -f "${app_dst}/.granola-wine-pkgver" ]] || [[ "$(cat "${app_dst}/.granola-wine-pkgver" 2>/dev/null)" != "$pkgver" ]]; then
+  rm -rf "$app_dst"
+  mkdir -p "$(dirname "$app_dst")"
+  cp -a "$app_src" "$app_dst"
+  printf '%s\n' "$pkgver" > "${app_dst}/.granola-wine-pkgver"
+fi
+
+exec wine "$exe_path" "$@" < /dev/null >> "$log_file" 2>&1
