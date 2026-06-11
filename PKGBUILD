@@ -34,7 +34,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname}"
     local _ver
-    _ver=$(grep -m1 '__version__' rtv/__version__.py | cut -d'"' -f2)
+    _ver=$(grep -m1 '__version__' rtv/__version__.py | sed -E "s/.*['\"]([^'\"]+)['\"].*/\1/")
     printf "%s.r%s.g%s" "${_ver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
