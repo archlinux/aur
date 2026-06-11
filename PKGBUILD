@@ -1,10 +1,7 @@
-# Maintainer: brent s. <bts[at]square-r00t[dot]net>
-# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
-# News updates for packages can be followed at https://devblog.square-r00t.net
-validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
-# Thanks to Slash's ioquake3-git package (https://aur.archlinux.org/packages/ioquake3-git)
-# for install files and desktop icon, and general (indirect) guidance (I owe you a beer!).
-# Also thanks to the creator, Zack Middleton, who provided a lot of good input on packaging. I owe you a case!
+# Maintainer: zturtleman <zturtleman[at]gmail[dot]com>
+# Contributors: sanerb (AUR)
+# Thanks to ioquake3-git package contributors (https://aur.archlinux.org/packages/ioquake3-git)
+# for general (indirect) guidance.
 
 pkgname=spearmint
 pkgver=1.0.3
@@ -89,7 +86,7 @@ package() {
   install -d -m 755 ${pkgdir}/usr/share/${pkgname}
   install -d -m 750 ${pkgdir}/opt/${pkgname}
 
-  # stuff i wrote
+  # launch scripts for this package
   install -m 750 ${srcdir}/${pkgname}.launcher ${pkgdir}/opt/${pkgname}/
   install -m 750 ${srcdir}/${pkgname}-server.launcher ${pkgdir}/opt/${pkgname}/
 
