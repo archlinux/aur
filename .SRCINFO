@@ -1,6 +1,6 @@
 pkgbase = bdsh
 	pkgdesc = Better Distributed Shell - run commands on multiple hosts with consensus view
-	pkgver = 0.2.17
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/brianm/bdsh
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bdsh
 	license = Apache-2.0
 	makedepends = cargo
 	depends = tmux
-	source = bdsh-0.2.17.tar.gz::https://github.com/brianm/bdsh/archive/v0.2.17.tar.gz
+	source = bdsh-0.3.0.tar.gz::https://github.com/brianm/bdsh/archive/v0.3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = bdsh
