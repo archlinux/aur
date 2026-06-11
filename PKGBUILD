@@ -1,19 +1,20 @@
+# Maintainer: jswysnemc <snemc@qq.com>
 pkgname=mark-shot
-pkgver=0.1.26
+pkgver=0.1.27
 pkgrel=1
-_commit=7240aaffda050f47f602bf293ea7b11b892a9c0c
 pkgdesc='Qt 6 Wayland screenshot selection and annotation tool'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jswysnemc/mark-shot'
 license=('MIT')
-depends=('qt6-base' 'qt6-wayland' 'layer-shell-qt' 'pipewire' 'grim' 'wl-clipboard')
+depends=('qt6-base' 'qt6-wayland' 'layer-shell-qt' 'pipewire' 'grim' 'wl-clipboard' 'hicolor-icon-theme' 'python')
 makedepends=('cmake' 'ninja' 'pkgconf' 'git')
 optdepends=(
-    'python: pinned-window OCR and LLM translation helpers'
+    'xdg-desktop-portal: portal-based screenshot and screencast backend'
+    'xclip: X11 clipboard backend'
     'tesseract: fallback OCR backend'
     'tesseract-data-chi_sim: simplified Chinese OCR data for tesseract'
 )
-source=("${pkgname}-${pkgver}::git+${url}.git#commit=${_commit}")
+source=("${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
