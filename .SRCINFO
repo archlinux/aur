@@ -1,7 +1,7 @@
 pkgbase = comchan-ratty
 	pkgdesc = A blazingly fast minimal serial monitor with plotter TUI and more
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Vaishnav-Sabari-Girish/ComChan
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = comchan-ratty
 	depends = gcc-libs
 	depends = libudev.so
 	depends = fontconfig
-	source = comchan-ratty-0.9.1.tar.gz::https://github.com/Vaishnav-Sabari-Girish/ComChan/archive/v0.9.1.tar.gz
+	source = ComChan-0.9.1.tar.gz::https://github.com/Vaishnav-Sabari-Girish/ComChan/archive/v0.9.1.tar.gz
 	sha256sums = cbcab095907c6a1a026bcc4e9c0d2c9ad43213d13461450370629ec1e873d73f
 
 pkgname = comchan-ratty
