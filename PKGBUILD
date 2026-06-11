@@ -4,13 +4,24 @@
 # Installs the prebuilt AppImage from GitHub Releases.
 
 pkgname=ardali-bin
-pkgver=4.1.5
+pkgver=4.1.6
 pkgrel=1
 pkgdesc="ArDali WebMedia multimedia ecosystem for Linux (prebuilt AppImage)"
 arch=('x86_64')
 url="https://ardali.app"
 license=('MIT')
-depends=('fuse2' 'glibc' 'zlib' 'ffmpeg')
+depends=(
+  'fuse2'
+  'glibc'
+  'zlib'
+  'ffmpeg'
+  'gst-libav'
+  'gst-plugins-good'
+  'gst-plugins-bad'
+  'gst-plugins-ugly'
+  'gst-plugin-pipewire'
+  'xorg-xwayland'
+)
 provides=('ardali')
 conflicts=('ardali' 'aurivo-bin')
 options=(!strip !debug)
@@ -25,7 +36,7 @@ source=(
   "com.ardali.mediaplayer.png::https://raw.githubusercontent.com/${_owner}/${_repo}/main/public/icons/app/ardali_256.png"
 )
 
-sha256sums=('91878e81ca2f051fec17c40fcdccb7446f79fc2e28f50fc0af3351651fb54927'
+sha256sums=('6951f849a48b5d02e8c434cae28e4b84e767eb1bdd2212e16db63a8aa7c4a4b6'
             '4d12f075da1921ae0117b6d5a0f36dee83b1df177fe41670414d5badd498f67a')
 
 package() {
@@ -34,6 +45,8 @@ package() {
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/ardali" <<'EOF'
 #!/usr/bin/env bash
 export CHROME_DESKTOP="com.ardali.mediaplayer.desktop"
+export GST_PLUGIN_SYSTEM_PATH_1_0="${GST_PLUGIN_SYSTEM_PATH_1_0:-/usr/lib/gstreamer-1.0:/usr/lib64/gstreamer-1.0}"
+export GST_PLUGIN_PATH_1_0="${GST_PLUGIN_PATH_1_0:-/usr/lib/gstreamer-1.0:/usr/lib64/gstreamer-1.0}"
 if [ ! -e /dev/fuse ]; then
   export APPIMAGE_EXTRACT_AND_RUN=1
 fi
