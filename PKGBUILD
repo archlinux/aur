@@ -2,8 +2,8 @@
 
 pkgname=fungen-bin
 _pkgname=fungen
-pkgver=2.1.1beta 
-_upstream_ver=2.1.1-beta 
+pkgver=2.1.2beta
+_upstream_ver=2.1.2-beta
 pkgrel=1
 pkgdesc="AI-powered funscript generator"
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,6 @@ source_aarch64=(
   "${_pkgname}-${_upstream_ver}-linux-aarch64.tar.gz::${url}/releases/download/v${_upstream_ver}/fungen-linux-aarch64.tar.gz"
 )
 
-
 package() {
   local appdir="${pkgdir}/opt/fungen"
 
@@ -47,8 +46,8 @@ package() {
   local exe
   exe="$(
     find "${appdir}" -maxdepth 3 -type f -perm -111 \
-      \( -iname 'fungen' -o -iname 'FunGen' -o -iname 'fungen-bin' \) \
-      | head -n1
+      \( -iname 'fungen' -o -iname 'FunGen' -o -iname 'fungen-bin' \) |
+      head -n1
   )"
 
   if [[ -z "${exe}" ]]; then
@@ -61,7 +60,7 @@ package() {
   chmod +x "${exe}"
 
   # Wrapper keeps cwd near the bundled files, which many binary GUI apps expect.
-  cat > "${pkgdir}/usr/bin/fungen" <<EOF
+  cat >"${pkgdir}/usr/bin/fungen" <<EOF
 #!/usr/bin/env bash
 cd "/opt/fungen"
 exec "${exe#${pkgdir}}" "\$@"
@@ -69,7 +68,7 @@ EOF
   chmod 755 "${pkgdir}/usr/bin/fungen"
 
   # Desktop entry.
-  cat > "${pkgdir}/usr/share/applications/fungen.desktop" <<'EOF'
+  cat >"${pkgdir}/usr/share/applications/fungen.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=FunGen
@@ -85,13 +84,13 @@ EOF
   local icon
   icon="$(
     find "${appdir}" -maxdepth 4 -type f \
-      \( -iname 'fungen.png' -o -iname 'icon.png' -o -iname '*.png' \) \
-      | head -n1
+      \( -iname 'fungen.png' -o -iname 'icon.png' -o -iname '*.png' \) |
+      head -n1
   )"
 
   if [[ -n "${icon}" ]]; then
     install -Dm644 "${icon}" "${pkgdir}/usr/share/pixmaps/fungen.png"
   fi
 }
-sha256sums_x86_64=('3c2c93a651f32ed5e5ddfaebc96491fced7fa0d09b5890342df8b4643168c528')
-sha256sums_aarch64=('ae67dc3c72883a8555d95c6f6d88ded6ee8491e28a195808173223af7c2d2e35')
+sha256sums_x86_64=('cd1f8e4998454149f074b946519478143d4ea870d506cab1488bf8ead8f782db')
+sha256sums_aarch64=('685c39aa7768dbbefede56386b669b64ac1cc23fcf9d69bf506b6e226a59fb7a')
