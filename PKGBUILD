@@ -1,7 +1,7 @@
 # Maintainer: Julian Houba <info at craftingdragon dot ch>
 _pkgsrc=caqtdm
 pkgname='caqtdm-git'
-pkgver=4.6.1.r5761.g3a331b7
+pkgver=4.6.1.r6014.g3aa30cf
 pkgrel=1
 pkgdesc='caQtDM is a popular Epics framework for developing panels'
 arch=('x86_64')
@@ -151,7 +151,7 @@ EOF
     install -Dm644 -t "$pkgdir/usr/include/caqtdm/plugins/" \
         "$srcdir/$_pkgsrc/caQtDM_QtControls/plugins/"*.h
     install -Dm644 -t "$pkgdir/usr/include/caqtdm/caQtDM_Plugins/" \
-        "$srcdir/$_pkgsrc/caQtDM_Lib/caQtDM_Plugins/"*.h
+        "$srcdir/$_pkgsrc/caQtDM_Plugins/"*.h
 
     # Install extension-less convenience headers (Qt-style includes)
     find "$srcdir/$_pkgsrc/caQtDM_QtControls/src" -maxdepth 1 \
@@ -164,4 +164,10 @@ EOF
         "$srcdir/$_pkgsrc/caQtDM_QtControls/doc/"*.qch \
         "$srcdir/$_pkgsrc/caQtDM_QtControls/doc/"*.html \
         "$srcdir/$_pkgsrc/caQtDM_QtControls/doc/"*.css
+}
+
+check() {
+    cd "$srcdir/$_pkgsrc"
+    export LD_LIBRARY_PATH="$srcdir/binaries:$LD_LIBRARY_PATH"
+    make -C caQtDM_UnitTests check
 }
