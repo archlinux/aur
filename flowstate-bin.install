@@ -1,0 +1,19 @@
+_sandbox_perms() {
+    # Electron's chrome-sandbox needs SUID root only when the kernel does not
+    # offer working unprivileged user namespaces (Arch enables them by default,
+    # so the common case is plain 0755). Desktop/mime/icon caches are refreshed
+    # automatically by pacman hooks, so they are intentionally not touched here.
+    if [[ -L /proc/self/ns/user ]] && unshare --user true 2>/dev/null; then
+        chmod 0755 /opt/FlowState/chrome-sandbox || true
+    else
+        chmod 4755 /opt/FlowState/chrome-sandbox || true
+    fi
+}
+
+post_install() {
+    _sandbox_perms
+}
+
+post_upgrade() {
+    _sandbox_perms
+}
