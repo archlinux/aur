@@ -6,7 +6,7 @@
 # Contributor: Justin Coffman <jcoffman at datasecu dot red>
 
 pkgname=byobu
-pkgver=7.10
+pkgver=7.11
 pkgrel=1
 pkgdesc='Enhanced tmux'
 arch=(any)
@@ -15,7 +15,7 @@ license=(GPL-3.0-only)
 depends=(libnewt python tmux)
 makedepends=(gettext git setconf)
 source=("git+https://github.com/dustinkirkland/byobu#tag=$pkgver")
-b2sums=('08ac96029c396ba419ceb6f1526f3ff9241c37edca9d39d2969981e33e225379b29dd0fd125a51838f30375d69f168ccb48459c5e3a9ceaf4a5749bdb8e9ac42')
+b2sums=('e7d8b461e0c8c5f39527205088f1c539f0e1aee9c15057cacc738cb894dc2539f1f0efdf471f5fd5eb48592a3bac74c8a285aa205225a9370927a50074631fb6')
 
 prepare() {
   cd $pkgname
