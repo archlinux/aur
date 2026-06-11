@@ -6,9 +6,9 @@ _pkgname=tedit
 pkgname=${_pkgname}-bin
 pkgdesc="A command-line text editor inspired by ed/ex"
 
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
-_pkgvername=version-${pkgver}
+_pkgvername=v${pkgver}
 
 arch=('x86_64')
 
@@ -21,14 +21,14 @@ provides=("${_appname}")
 conflicts=("${_pkgname}")
 depends=('glibc' 'libgcc' 'libstdc++')
 
-source=("MANPAGE-${pkgver}.1::${_urlraw}/${_appname}.1"
+source=("MANPAGE-${pkgver}.1::${_urlraw}/mandoc/${_appname}.1"
 		"README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}")
-sha256sums=('1db6be1a8a6336ae117a127378264ab7f6518e9190c7901c5af2353af9ac05ad'
-            '8341a709fa75ec734ae8e3973d9c16a33d756950eab2223f7595ecfdd6da0293'
+sha256sums=('7decb4299bcde5dc8e2af8e67833225a666e5784dfd8a53212c5d645e6133327'
+            'e3e267e8c6ba331c9b85688e1c6782b7c8ea9b51b606b14e0c95a395d042b1df'
             'e765681d9c8c02828c6e27356b9579fea63c562c8d8afc3dd0671429821efcd0')
-sha256sums_x86_64=('2f344b9d6f80ccf96cf9a1c7e6fcb8f7c5e979f34e5f170ded03b09aa36ec969')
+sha256sums_x86_64=('e30d81b72f200517f68ddcf20e20950048a965a589b962a099f13a2a3826a5cf')
 
 
 package() {
