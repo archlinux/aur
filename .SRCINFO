@@ -1,6 +1,6 @@
 pkgbase = ch34x-mphsi-master-git
 	pkgdesc = CH341A/B/C/F/H/T | CH347F/T | CH339W Linux USB to SPI/I2C/GPIO Controller Driver
-	pkgver = r15.da22601
+	pkgver = r17.f33863f
 	pkgrel = 1
 	url = https://github.com/WCHSoftGroup/ch34x_mphsi_master_linux
 	arch = any

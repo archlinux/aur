@@ -2,7 +2,7 @@
 
 pkgbase=ch34x-mphsi-master-git
 pkgname=(ch34x-mphsi-master-dkms-git)
-pkgver=r15.da22601
+pkgver=r17.f33863f
 pkgrel=1
 pkgdesc="CH341A/B/C/F/H/T | CH347F/T | CH339W Linux USB to SPI/I2C/GPIO Controller Driver"
 arch=('any')
@@ -57,12 +57,12 @@ endif
 clean:
 	\$(MAKE) -C \$(KERNELDIR) M=\$(PWD) clean
 EOF
-    install -dm755 "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/"
+    install -dm755 "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver}/"
     for i in "${srcdir}/${pkgbase}/driver/"{Makefile,*.c,*.h}; do
-        install -D -m644 "${i}" "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/"
+        install -D -m644 "${i}" "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver}/"
     done
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver#r}/dkms.conf" <<EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver}/dkms.conf" <<EOF
 PACKAGE_NAME="ch34x_mphsi_master"
 PACKAGE_VERSION="${pkgver}"
 MAKE[0]="make"
@@ -75,4 +75,6 @@ EOF
     install -Dm644 /dev/stdin "${pkgdir}/etc/modules-load.d/ch34x_mphsi_master.conf" <<EOF
 ch34x_mphsi_master
 EOF
+
+    install -Dm644 ../README.md "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver}/README.md"
 }
