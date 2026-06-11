@@ -2,8 +2,8 @@
 ##If you spot any issues, please don't hesitate to email me.
 ##Email: pony at just-a-pony dot net
 pkgname=yukigram-desktop
-pkgver=6.8.2
-pkgrel=3
+pkgver=6.9.1
+pkgrel=0
 pkgdesc='A patch-based Telegram Desktop fork,with features from 64Gram'
 arch=('x86_64')
 url="https://github.com/yukigram/yukigram"
@@ -48,6 +48,7 @@ makedepends=(
   'git'
   'glib2-devel'
   'gobject-introspection'
+  'qt6-shadertools'
   'gperf'
   'libtg_owt'
   'microsoft-gsl'
@@ -63,34 +64,34 @@ optdepends=(
   'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)'
   'xdg-desktop-portal: desktop integration'
 )
-
+install="yukigram-desktop.install"
 
 _td_commit=49b3bcbb6bfebf2ed44dd9f25102d2e1a94a58c4
 source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
-  tdesktop-fix-minizip-includes.patch
   "https://github.com/yukigram/yukigram/archive/refs/tags/v${pkgver}.${pkgrel}.tar.gz"
+  "0000-Fix-Pony-fix-lang-res-file-loc.patch"
 )
 
 sha512sums=(
-  'a733992a12268ee4d429ed383f63182c12e3a5d61d78e0f31cbfc705a5a36cb872a2f2dfb6c76d50a22ed46d141b9c13f80da4ab94286fe35b339ca685d954e3'
+  'e9f7d4d0db3ea11a34595afd37c3a17dced20c37c5ce0f37ed9996f053cbbfa183245f09c6e7980255a0961394f3e6e198b1f06eb74ef1ce4561c22aa1fb4ed8'
   SKIP
-  'd9765588e92f154d83b95dc2840207bf22b26b6ca37b4d5cdfdb5e27a00c9e1ebcc9cd475a96bbcc5b02c24f6892320e009f843aa6b172a1820814b952a772eb'
-  'b8c6d2b83961bf721782fbbef32e991575ce602eafc948ee6a50f40948f261edfb47ca8009e6873d17c9ddd748fc43fd0dc2fcb4073e67658fa38e6a7fc67e27'
+  'a7b70cac362353053de18f45737f51da340b37222aebf289cc2339df46f0b90b12cf3454e77014eabc2984c1229071d802127abfe18f0656b178016f5de541b0'
+  '392c4ca2a7b6dc276a49f5281949ec4f96707c881113441c1c717e5fd6cc689a85634a49bbd6f55150d09340be298cb25bf2b5d54b1a2fe87b5baa87f1c0ea72'
 )
 
 
 prepare() {
   cd tdesktop-$pkgver-full/
-  patch -Np1 -d Telegram/lib_base -i "$srcdir"/tdesktop-fix-minizip-includes.patch
-
   for p in "$srcdir"/yukigram-${pkgver}.${pkgrel}/tdesktop/cur/*.patch;do
     patch -Np1 <"$p"
   done
+  patch -Np1 < "$srcdir"/0000-Fix-Pony-fix-lang-res-file-loc.patch
 }
 
 build() {
+  echo $PWD
   export CMAKE_BUILD_PARALLEL_LEVEL=${MAKEFLAGS#-j}
   cmake -S td -B td/build \
     -DCMAKE_BUILD_TYPE=None \
@@ -113,4 +114,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  ln -s "$pkgdir"/usr/bin/io.github.yukigram "$pkgdir"/usr/bin/yukigram
 }

@@ -1,0 +1,40 @@
+From 07ca36fc51d561ee1b85662f13069eaf0905e696 Mon Sep 17 00:00:00 2001
+From: Just_A_Pony <pony@just-a-pony.net>
+Date: Thu, 11 Jun 2026 14:26:39 +0800
+Subject: [PATCH] [Fix] (Pony) fix lang res file loc
+
+---
+ Telegram/CMakeLists.txt                      | 2 ++
+ Telegram/Resources/qrc/telegram/yukigram.qrc | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Telegram/CMakeLists.txt b/Telegram/CMakeLists.txt
+index ac755c55..91e28d1c 100644
+--- a/Telegram/CMakeLists.txt
++++ b/Telegram/CMakeLists.txt
+@@ -1983,6 +1983,8 @@ else()
+ endif()
+ configure_file("${src_loc}/yukigram/appid.cpp.in" "${CMAKE_CURRENT_BINARY_DIR}/yukigram-appid.cpp" @ONLY)
+ configure_file("${res_loc}/qrc/telegram/yukigram.qrc" "${CMAKE_CURRENT_BINARY_DIR}/yukigram.qrc" @ONLY)
++configure_file("${res_loc}/langs/yukigram/en.json" "${CMAKE_CURRENT_BINARY_DIR}/en.json" @ONLY)
++configure_file("${res_loc}/langs/yukigram/ru.json" "${CMAKE_CURRENT_BINARY_DIR}/ru.json" @ONLY)
+ nice_target_sources(Telegram ${CMAKE_CURRENT_BINARY_DIR}
+ PRIVATE
+     yukigram-appid.cpp
+diff --git a/Telegram/Resources/qrc/telegram/yukigram.qrc b/Telegram/Resources/qrc/telegram/yukigram.qrc
+index f625d561..0aa82e1d 100644
+--- a/Telegram/Resources/qrc/telegram/yukigram.qrc
++++ b/Telegram/Resources/qrc/telegram/yukigram.qrc
+@@ -1,7 +1,7 @@
+ <RCC>
+   <qresource prefix="/yukigram_lang">
+-    <file alias="en.json">../../Telegram/Resources/langs/yukigram/en.json</file>
+-    <file alias="ru.json">../../Telegram/Resources/langs/yukigram/ru.json</file>
++    <file alias="en.json">@CMAKE_CURRENT_BINARY_DIR@/en.json</file>
++    <file alias="ru.json">@CMAKE_CURRENT_BINARY_DIR@/ru.json</file>
+   </qresource>
+   <qresource prefix="/misc">
+     <file alias="io.github.yukigram.desktop">@CMAKE_CURRENT_BINARY_DIR@/@YUKIGRAM_APP_ID@.desktop</file>
+-- 
+2.54.0
+

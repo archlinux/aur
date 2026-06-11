@@ -1,0 +1,4 @@
+post_upgrade() {
+  echo -e "\033[0;31mThe binary and class name has changed to io.github.yukigram\nPlease run mv $HOME/.local/share/Yukigram/ $HOME/.local/share/io.github.yukigram to migrate from old data directory"
+}
+
