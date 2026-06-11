@@ -28,6 +28,7 @@ prepare() {
 package() {
   install -d "${pkgdir}/usr/lib"
   cp -a "${srcdir}/openchrom" "${pkgdir}/usr/lib/"
+  sed -i 's;-Dopenchrom.update=true;-Dopenchrom.update=false;' "${pkgdir}/usr/lib/openchrom/openchrom.ini"
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/openchrom/openchrom" "${pkgdir}/usr/bin/openchrom"
 
