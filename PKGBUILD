@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=ch34x-mphsi-master-git
-pkgname=(ch34x-mphsi-master-dkms-git)
+pkgname=(ch34x-mphsi-master-git)
 pkgver=r17.f33863f
-pkgrel=1
+pkgrel=4
 pkgdesc="CH341A/B/C/F/H/T | CH347F/T | CH339W Linux USB to SPI/I2C/GPIO Controller Driver"
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch34x_mphsi_master_linux"

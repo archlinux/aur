@@ -1,18 +1,18 @@
 pkgbase = ch34x-mphsi-master-git
 	pkgdesc = CH341A/B/C/F/H/T | CH347F/T | CH339W Linux USB to SPI/I2C/GPIO Controller Driver
 	pkgver = r17.f33863f
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/WCHSoftGroup/ch34x_mphsi_master_linux
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
 	depends = dkms
 	optdepends = i2c-tools: Heterogeneous set of I2C tools for Linux that used to be part of lm-sensors
-	provides = ch34x-mphsi-master-dkms
-	conflicts = ch34x-mphsi-master-dkms
+	provides = ch34x-mphsi-master
+	conflicts = ch34x-mphsi-master
 	options = !strip
 	options = !debug
 	source = ch34x-mphsi-master-git::git+https://github.com/WCHSoftGroup/ch34x_mphsi_master_linux.git
 	sha256sums = SKIP
 
-pkgname = ch34x-mphsi-master-dkms-git
+pkgname = ch34x-mphsi-master-git
