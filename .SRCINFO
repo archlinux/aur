@@ -1,0 +1,22 @@
+pkgbase = virtualhere-client-bin
+	pkgdesc = VirtualHere USB Client - share USB devices over the network
+	pkgver = 5.9.9
+	pkgrel = 1
+	url = https://www.virtualhere.com/usb_server_software
+	install = virtualhere-client-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	optdepends = avahi: for mDNS/Bonjour discovery
+	provides = virtualhereclient
+	provides = virtualhere-client
+	conflicts = virtualhereclient
+	conflicts = virtualhere-client
+	source = virtualhereclient.service::https://www.virtualhere.com/sites/default/files/usbclient/scripts/virtualhereclient.service
+	sha256sums = dd944c84eedac4587f3ee3f37542391a59c17f9be71f5f523edb48170f312935
+	source_x86_64 = vhclient-5.9.9-amd64::https://www.virtualhere.com/sites/default/files/usbclient/vhclientx86_64
+	sha256sums_x86_64 = fd132c8e400900996033cbd9c70276a4291985eb40ca687c7c33ca57e0b5e624
+	source_aarch64 = vhclient-5.9.9-arm64::https://www.virtualhere.com/sites/default/files/usbclient/vhuitarm64
+	sha256sums_aarch64 = e8e37e479dd1bf22ab6b7df3662c54d13f8a8ce23c3250b09a4fa75344dac6a6
+
+pkgname = virtualhere-client-bin

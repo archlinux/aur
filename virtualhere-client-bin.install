@@ -1,0 +1,25 @@
+post_install() {
+    echo ""
+    echo "========================================"
+    echo " VirtualHere Client installed!"
+    echo "========================================"
+    echo ""
+    echo "To enable and start the service:"
+    echo "  sudo systemctl daemon-reload"
+    echo "  sudo systemctl enable virtualhereclient.service"
+    echo "  sudo systemctl start virtualhereclient.service"
+    echo ""
+    echo "Or enable and start in one command:"
+    echo "  sudo systemctl enable --now virtualhereclient.service"
+    echo ""
+    echo "To check service status:"
+    echo "  systemctl status virtualhereclient.service"
+    echo ""
+    echo "For mDNS/Bonjour discovery, install avahi:"
+    echo "  sudo pacman -S avahi"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

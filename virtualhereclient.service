@@ -1,0 +1,11 @@
+# Contents of /etc/systemd/system/virtualhereclient.service
+[Unit]
+Description=VirtualHere Client 
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/vhclientx86_64 -n
+
+[Install]
+WantedBy=multi-user.target
