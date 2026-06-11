@@ -17,7 +17,7 @@ conflicts=('ostt' ostt-{cuda,vulkan} ostt-{cuda,vulkan}-bin 'ostt-cuda-bin-relea
 provides=('ostt' 'ostt-vulkan')
 options=('!strip')
 source=(
-  "${_pkgname}-vulkan.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu-vulkan.tar.gz"
+  "${_pkgname}-vulkan.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu-vulkan.tar.gz"
   "LICENSE::${url}/raw/v${pkgver}/LICENSE"
 )
 sha256sums=('SKIP' 'SKIP')
