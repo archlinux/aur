@@ -1,3 +1,4 @@
+# Maintainer: Samuel Mesa <https://github.com/samtux>
 # Maintainer: Orion-zhen <https://github.com/Orion-zhen>
 
 pkgname=llama.cpp-gfx1152
@@ -40,7 +41,7 @@ options=(lto !debug)
 backup=("etc/conf.d/llama.cpp")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
-  # 提升性能的妙妙工具
+  # Performance tuning goodies
   # "llama-gfx1152.patch::https://gist.githubusercontent.com/pedapudi/0da060d2a3b49a51155dbf00db61fea0/raw/aaaee0a96656ec0fc49bdfa76acd2b4edbfcbfb9/gistfile1.txt"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
@@ -69,14 +70,14 @@ build() {
   npm run build
   popd
 
-  # 配置环境
+  # Set up ROCm environment
   if [[ -z "${ROCM_PATH}" ]]; then
     source /etc/profile
   fi
   export HIP_PATH="$(hipconfig -R)"
   export HIPCXX="$(hipconfig -l)/amdclang"
   export HIP_PLATFORM=amd
-  # 清除核显上的函数调用开销
+  # Eliminate function call overhead on iGPUs
   export HIP_CLANG_FLAGS="--offload-arch=gfx1152 -mllvm -amdgpu-early-inline-all=true -mllvm -amdgpu-function-calls=false"
 
   local _cmake_options=(
@@ -95,52 +96,49 @@ build() {
     -DGGML_LTO=ON
     -DGGML_RPC=ON
     # ROCm part
-    # 偏向 512 宽度, 因为 zen5 原生支持 AVX-512
-    # 激进的内联程度, 因为 zen5 的宽流水线需要减少函数边界
-    # 更多的循环展开, 因为 zen5 的大型重排序缓冲区能够维持这些额外指令的在途执行
+    # Prefer 512-bit width, since Zen5 natively supports AVX-512
+    # Aggressive inlining, since Zen5's wide pipeline benefits from reduced function boundaries
+    # More loop unrolling, since Zen5's large reorder buffer can sustain these extra in-flight instructions
     -DCMAKE_HIP_FLAGS="-mprefer-vector-width=512 -famd-opt -mllvm -inline-threshold=600 -mllvm -unroll-threshold=150"
     -DGGML_HIP=ON
     -DGGML_HIP_GRAPHS=ON
-    -DGGML_HIP_NO_VMM=OFF # Strix Halo 支持 VMM, 可以开
-    -DGGML_CUDA_FORCE_MMQ=ON # 强制使用自定义乘法内核而非 fp16 cuBLAS. 可以加一点速并省一点显存
-    # -DGGML_HIP_ROCWMMA_FATTN=ON # 现阶段 rocWMMA 烂完了
-    -DHIP_PLATFORM=amd # 手动指定 AMD 平台, 防止因 rocm-nightly 禁用自动检测而报错
+    -DGGML_HIP_NO_VMM=OFF # Strix Halo supports VMM, enable it
+    -DGGML_CUDA_FORCE_MMQ=ON # Force custom mul kernels instead of fp16 cuBLAS. Slightly faster, saves VRAM
+    # -DGGML_HIP_ROCWMMA_FATTN=ON # rocWMMA is broken right now
+    -DHIP_PLATFORM=amd # Manually specify AMD platform, prevents errors when rocm-nightly disables auto-detection
     # Vulkan part
     -DGGML_VULKAN=ON
 
     -DGGML_CUDA_FA_ALL_QUANTS=ON
-    -DLLAMA_BUILD_NUMBER="${pkgver#b}" # 修正版本号
+    -DLLAMA_BUILD_NUMBER="${pkgver#b}" # Fix version number
     -Wno-dev
   )
 
-  # 检查是否在 CI 环境中构建
+  # Force AMDGPU target to gfx1152 (Krackan)
+  # Even if rocm_agent_enumerator doesn't detect gfx1152, compile the right kernels
+  _cmake_options+=(
+    -DAMDGPU_TARGETS="gfx1152"
+  )
+
+  # Check if building in CI environment
   if [ -n "$CI" ] && [ "$CI" != 0 ]; then
     msg2 "CI = $CI detected, building universal package"
-    # 启用通用构建
+    # Enable universal build
     _cmake_options+=(
       -DGGML_BACKEND_DL=ON
       -DGGML_CPU_ALL_VARIANTS=ON
       -DGGML_NATIVE=OFF
-      # -DGGML_HIP_EXPORT_METRICS=ON # 允许内核 perf metrics
-
-      # https://llvm.org/docs/AMDGPUUsage.html
-      # gfx906: MI 50/60, Radeon VII
-      # gfx101x: RX 5000 Series
-      # gfx103x: RX 6000 Series
-      # gfx110x: RX 7000 Series
-      # gfx1152: Krackan
-      # gfx120x: RX 9000 Series
-      -DAMDGPU_TARGETS="gfx1152"
+      # -DGGML_HIP_EXPORT_METRICS=ON # Enable kernel perf metrics
       # -DGGML_ZENDNN=ON
     )
   else
-    # 本地构建, 针对当前设备优化
+    # Local build, optimize for current device
     _cmake_options+=(
       -DGGML_NATIVE=ON
     )
   fi
 
-  # 允许用户自定义构建选项
+  # Allow user custom build options
   if [[ -n "$LLAMA_BUILD_EXTRA_ARGS" ]]; then
     msg2 "Applied custom CMake build args: $LLAMA_BUILD_EXTRA_ARGS"
     _cmake_options+=($LLAMA_BUILD_EXTRA_ARGS)
