@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Aburady <accounts@aburady.com>
 pkgname=plezy
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
-pkgdesc="A beautiful Plex media server client built with Flutter"
+pkgdesc="A modern Plex and Jellyfin client"
 arch=('x86_64' 'aarch64')
 url="https://plezy.app"
 license=('GPL-3.0-or-later')
@@ -27,7 +27,7 @@ makedepends=(
   'unzip'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/edde746/plezy/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('605e16b9e203dfb2904fd321d5bc6be40eb4d0bb58f5714debc175f4dc7fa08a')
+sha256sums=('8a227c54ccb01add875e0f36db42725920f1fafc847ec0c517feaeafbf4c5606')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -42,7 +42,7 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   export FVM_CACHE_PATH="$srcdir/fvm"
-  fvm flutter build linux --release
+  fvm flutter build linux --release --dart-define=ENABLE_UPDATE_CHECK=false
 
   # Generate icons
   for i in 16 32 48 64 128 256 512; do
