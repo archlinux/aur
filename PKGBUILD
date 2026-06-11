@@ -1,34 +1,30 @@
-# Maintainer: artist for Sonic-DE
+# Maintainer: callmetango
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-desktop-interface
 pkgver=6.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Sonic Desktop Interface'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-desktop-interface'
 license=(LGPL-2.0-or-later)
-depends=(attica
-         baloo
-         dbus
+depends=(baloo
          emoji-font # for clock and language KCMs
          gcc-libs
          glibc
-         kauth
          kbookmarks
          kcmutils
          kcodecs
          kcompletion
          kconfig
          kconfigwidgets
-         kcoreaddons
          kcrash
          kdbusaddons
          kdeclarative
-         kguiaddons
          ki18n
          kiconthemes
-         kio
-         kirigami
          kirigami-addons
          kitemmodels
          kitemviews
@@ -39,7 +35,6 @@ depends=(attica
          knotifyconfig
          kpackage
          kpipewire
-         krunner
          kservice
          ksvg
          kwidgetsaddons
@@ -52,7 +47,6 @@ depends=(attica
          libxi
          libxkbcommon
          libxkbfile
-         plasma-activities
          plasma-activities-stats
          plasma5support
          polkit-kde-agent
@@ -62,13 +56,22 @@ depends=(attica
          qt6-declarative
          sdl2
          solid
+         sonic-activities
+         sonic-frameworks-auth
+         sonic-frameworks-core-addons
+         sonic-frameworks-gui-addons
+         sonic-frameworks-io
          sonic-frameworks-keybind
+         sonic-frameworks-open-collab
+         sonic-frameworks-quick-ui
+         sonic-frameworks-runner
          sonic-frameworks-windowsystem
          sonic-interface-libraries
          sonic-sysguard-library
          sonic-win
          sonic-workspace
          sonnet
+         systemd-libs
          systemsettings
          xcb-util-keysyms
          xdg-user-dirs)
@@ -76,25 +79,26 @@ optdepends=('bluedevil: Bluetooth applet'
             'glib2: kimpanel IBUS support'
             'ibus: kimpanel IBUS support'
             'kaccounts-integration: OpenDesktop integration plugin'
-            'kscreen: screen management'
             'libaccounts-qt: OpenDesktop integration plugin'
             'packagekit-qt6: to install new krunner plugins'
-            'plasma-nm: Network manager applet'
-            'plasma-pa: Audio volume applet'
-            'scim: kimpanel SCIM support')
-makedepends=(extra-cmake-modules
-             intltool
+            'scim: kimpanel SCIM support'
+            'sonic-audio-applet-pulse: Audio volume applet'
+            'sonic-network-manager: Network manager applet'
+            'sonic-screen: screen management')
+makedepends=(intltool
              kaccounts-integration
-             kdoctools
              libibus
              packagekit-qt6
              scim
+             sonic-frameworks-cmake-modules
+             sonic-frameworks-doctools
              xf86-input-libinput
              xorg-server-devel)
-groups=(sonicde)
-conflicts=(plasma-desktop)
 provides=(plasma-desktop)
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+conflicts=(plasma-desktop)
+groups=(sonicde)
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('62eb3b7ae461fe1a6fea5535dd8fb574a80556229f83957aac29f2596cb575bc')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
@@ -106,5 +110,3 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 }
-
-sha256sums=('62eb3b7ae461fe1a6fea5535dd8fb574a80556229f83957aac29f2596cb575bc')
