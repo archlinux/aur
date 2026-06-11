@@ -2,7 +2,7 @@
 _pkgname=openvaf-reloaded
 pkgname=${_pkgname}-git
 pkgver=r817.2e06643
-pkgrel=2
+pkgrel=3
 pkgdesc="Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support"
 arch=(
   "x86_64"
@@ -15,8 +15,9 @@ url="https://github.com/arpadbuermen/OpenVAF"
 license=('GPL-3.0-or-later')
 depends=(
   "glibc"
-  "gcc-libs"
   "llvm-libs"
+  "libgcc"
+  "libstdc++"
 )
 makedepends=(
   "git"
@@ -30,12 +31,11 @@ provides=("openvaf-r")
 conflicts=("${_pkgname}")
 source=(
   "${_pkgname}::git+${url}"
-  "0001-feat-LLVM-support-v22.1.patch"
-  "vacask::git+https://codeberg.org/arpadbuermen/VACASK#tag=_0.3.2"
+  "vacask::git+https://codeberg.org/arpadbuermen/VACASK#tag=_0.3.3"
 )
 b2sums=('SKIP'
-        'c76c99ddd3df14f8deb6df93c097c5bbbfd2c455fce068df742b1f7e00c2db6b789b549647584e2e763dc00426e97bf896a03d986a425fd28ec9665551d51434'
-        'a35e391017923a0c0b9c406df723674154bd3a4d433d8b8d40a143589efa7d6a8eb1a56b82758a16747e79380151fbbe156743b57d6195ed25fc90f038e5edf2')
+        '3f8552e2714b535f5a08d2a95960c602909ae28d33723f3dc06f1bb9e82e8e5eeadd832b805901df6cdac728d9a82009088c9491c37cda650194a4dc74694a5c')
+
 # lld fails to link mimalloc when LTO is enabled...
 options=(!lto)
 
@@ -50,19 +50,23 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
 
+  # Patch for LLVM 22 support
+  # See upstream: https://github.com/arpadbuermen/OpenVAF/pull/76/
+  git cherry-pick -n 277e3aa4d07625ba3c5179bc353e781481564966
+
+  # Patch for submodule hash
+  # See upstream: https://github.com/arpadbuermen/OpenVAF/pull/77/
+  git cherry-pick -n bd95c9078313249141cd03d06ac1358e8f8caab8
+
   # Add the submodule(s)
   git submodule init
   # VACASK - for integration tests
   git config submodule."external/vacask".url "$srcdir/vacask"
   # Update submodule
-  git -c protocol.file.allow=always submodule update --remote
-
-  # Patch for LLVM 22.1
-  patch -Np1 < ../"0001-feat-LLVM-support-v22.1.patch"
+  git -c protocol.file.allow=always submodule update
 
   export RUSTUP_TOOLCHAIN=stable
-  # TODO: Removed --locked due to local patching atm
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = openvaf-reloaded-git
 	pkgdesc = Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support
 	pkgver = r817.2e06643
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/arpadbuermen/OpenVAF
 	arch = x86_64
 	arch = aarch64
@@ -13,16 +13,15 @@ pkgbase = openvaf-reloaded-git
 	makedepends = lld
 	makedepends = python
 	depends = glibc
-	depends = gcc-libs
 	depends = llvm-libs
+	depends = libgcc
+	depends = libstdc++
 	provides = openvaf-r
 	conflicts = openvaf-reloaded
 	options = !lto
 	source = openvaf-reloaded::git+https://github.com/arpadbuermen/OpenVAF
-	source = 0001-feat-LLVM-support-v22.1.patch
-	source = vacask::git+https://codeberg.org/arpadbuermen/VACASK#tag=_0.3.2
+	source = vacask::git+https://codeberg.org/arpadbuermen/VACASK#tag=_0.3.3
 	b2sums = SKIP
-	b2sums = c76c99ddd3df14f8deb6df93c097c5bbbfd2c455fce068df742b1f7e00c2db6b789b549647584e2e763dc00426e97bf896a03d986a425fd28ec9665551d51434
-	b2sums = a35e391017923a0c0b9c406df723674154bd3a4d433d8b8d40a143589efa7d6a8eb1a56b82758a16747e79380151fbbe156743b57d6195ed25fc90f038e5edf2
+	b2sums = 3f8552e2714b535f5a08d2a95960c602909ae28d33723f3dc06f1bb9e82e8e5eeadd832b805901df6cdac728d9a82009088c9491c37cda650194a4dc74694a5c
 
 pkgname = openvaf-reloaded-git
