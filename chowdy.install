@@ -43,8 +43,9 @@ post_install() {
          sudo systemctl enable --now chowdyd.socket
          systemctl status chowdyd
 
-    3. Энроллмент своего лица:
-         chowdy-cli enroll --label main
+    3. Энроллмент своего лица (sudo обязателен — добавление лица
+       это добавление учётного фактора):
+         sudo chowdy-cli enroll --label main
 
     4. Проверка:
          chowdy-cli auth-test
