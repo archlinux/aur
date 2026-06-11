@@ -1,7 +1,7 @@
 # Maintainer: Willem Mulder <14mRh4X0r@gmail.com>
 pkgname=ffmpegfs
 pkgver=2.18
-pkgrel=1
+pkgrel=2
 pkgdesc="FUSE-based transcoding filesystem with video support from many formats to MP4, WebM, OGG, MP3, OPUS, MOV, ProRes or WAV."
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64') # Not arch-specific, should work on all
 url="https://nschlia.github.io/ffmpegfs/"
@@ -13,6 +13,7 @@ sha384sums=('2edcf9b8d9629d5572f545136ffc63490c38203afa6adabe6af5d65393636ab3663
 
 build() {
     cd "$pkgname-$pkgver"
+    autoreconf
     ./configure --prefix=/usr
     make
 }

@@ -1,7 +1,7 @@
 pkgbase = ffmpegfs
 	pkgdesc = FUSE-based transcoding filesystem with video support from many formats to MP4, WebM, OGG, MP3, OPUS, MOV, ProRes or WAV.
 	pkgver = 2.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nschlia.github.io/ffmpegfs/
 	arch = x86_64
 	arch = i686
