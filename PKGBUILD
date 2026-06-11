@@ -4,7 +4,7 @@
 pkgname=alchitry-labs-beta-bin
 _pkgname=alchitry-labs-beta
 pkgver=2.0.53
-pkgrel=1
+pkgrel=2
 pkgdesc='Alchitry Labs - The Easiest Way to Program FPGAs (Beta Binary Release)'
 arch=('x86_64')
 license=('custom: commercial')
