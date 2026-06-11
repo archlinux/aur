@@ -1,7 +1,7 @@
 # Maintainer: mcniki <sawwa.cwer13 at gmail dot com>
 
 pkgname=codecontext-ai
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc='AI-powered codebase analyzer — scans project structure, builds dependency graphs, generates LLM-optimized prompts with minification, skeleton mode, and JSON patching'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('python-pytest: run test suite'
 provides=('codecontext')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NIKIRIKI7/CodeContext/archive/refs/tags/v${pkgver}.tar.gz"
         'codecontext.desktop')
-sha256sums=('5aa75d4272d20453dcd62cac927c71866240095edfb75ac0d6e26c9fc06eb219'
+sha256sums=('4ca0896d1cd2b4a3ada50d944ebb60030b06807484b45698497e145f5b856daa'
             '4a43d3ba77f25fe40608c47aeeba3fca2008191c72900eafb70b1994b9e4d006')
 
 package() {
