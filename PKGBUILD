@@ -5,7 +5,7 @@ _pkgname=perry
 pkgname=${_pkgname}-bin
 pkgdesc="Native TypeScript compiler that compiles TypeScript to native executables"
 
-pkgver=0.5.1151
+pkgver=0.5.1159
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -31,11 +31,11 @@ source=("README-${pkgver}.md::${__ghurlraw}/README.md"
 		"tests.patch")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
-sha256sums=('9356ad3b1d634c61ceef7652f39779ab785286262a9ce4c1591c440e125be579'
+sha256sums=('3370f25eea850e5f819f7beae3675446e773b65f9450ccbed6870b6d77193cfa'
             'c871483477d7105432645affac5be5edbd92b41a6faedb4c692e0681e46ada09'
             'dfdebdfbae47153c486750ce859fe5b1b1fdab83a876feed07551ddf1502cb47')
-sha256sums_x86_64=('7ab87c62e1406b1798b2d9433d02db80bb4f73265f5ba319ea9979623e054f85')
-sha256sums_aarch64=('737aa018954428971acdcf6f4d262cc7625092a32daf090f56a90573cf3eea0e')
+sha256sums_x86_64=('2b0564b9c3d96152e3ec85f2269da04f39e7ec185968b761756b0d906f7e0f00')
+sha256sums_aarch64=('54522cb61bfcb6fcd272bc5e14de43c6713076f8fac7a1252cb912ee14e9e799')
 
 
 prepare() {
