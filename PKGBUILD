@@ -1,6 +1,6 @@
 # Maintainer: lucial <bordiyan20035@gmail.com>
 pkgname=steampipe-gui
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A PyQt6 GUI for managing and uploading builds via SteamPipe (steamcmd)"
 arch=('any')
