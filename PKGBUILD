@@ -1,6 +1,6 @@
 # Maintainer: Rodrigo Brito <rodrigo@w3ti.com.br>
 pkgname=prosa
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Editor de texto moderno, open source e em modo escuro — suíte Rodrigo Brito"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('xdg-utils: abrir links externos')
 options=('!strip' '!debug')
 source=("prosa-${pkgver}.deb::https://github.com/britors/Prosa/releases/download/v${pkgver}/prosa_${pkgver}_amd64.deb")
 noextract=("prosa-${pkgver}.deb")
-sha256sums=('805b2b4ba6eef5605af165b71a1f08216177b68c27a7298ac72f68a0615a2974')
+sha256sums=('SKIP')
 
 package() {
   cd "${srcdir}"
