@@ -1,8 +1,9 @@
-# Maintainer: myuki <mioki dot cinnamon650 at 8shield dot net> 
+# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com> 
+# Creator: myuki <mioki dot cinnamon650 at 8shield dot net> 
 
 pkgname=fastcat-git
 _pkgname=fastcat
-pkgver=r155.8febbf8
+pkgver=r8.e009084
 pkgrel=1
 pkgdesc="A FastFetch Theme Pack - git version"
 arch=('any')
@@ -12,7 +13,7 @@ depends=('fastfetch')
 optdepends=('ttf-font-nerd: Provides Nerd Font Symbols')
 provides=("${_pkgname%}")
 conflicts=("${_pkgname%}")
-source=("$_pkgname::git+https://github.com/m3tozz/FastCat.git")
+source=("$_pkgname::git+https://github.com/m3tozz-reborn/FastCat")
 sha256sums=('SKIP')
 
 pkgver() {
