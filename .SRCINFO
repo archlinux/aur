@@ -1,0 +1,14 @@
+pkgbase = sw-stopwatch
+	pkgdesc = A minimal terminal stopwatch written in pure C
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/chitvs/sw
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	depends = glibc
+	source = sw-stopwatch-1.0.0.tar.gz::https://github.com/chitvs/sw/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 4409ac30052853dba2fefd4c9149f80c9568ba7982fc292787bf00d274057e02
+
+pkgname = sw-stopwatch
