@@ -1,19 +1,19 @@
 pkgbase = nurproxy-agent-bin
 	pkgdesc = NurProxy agent — manages a local reverse proxy on an edge server
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/NurRobin/NurProxy
 	license = MIT
 	conflicts = nurproxy-agent
 	provides = nurproxy-agent
 	arch = aarch64
-	source_aarch64 = https://github.com/NurRobin/NurProxy/releases/download/v0.2.1/nurproxy-agent_0.2.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 939c482485614f7c39b26a888193791ef3b879e25f541762fe76effaa1afb6e2
+	source_aarch64 = https://github.com/NurRobin/NurProxy/releases/download/v0.3.0/nurproxy-agent_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a538474269ef520e6f5fc03ff3e060c0ba24f2aba5178b6366f850cef39cd799
 	arch = armv7h
-	source_armv7h = https://github.com/NurRobin/NurProxy/releases/download/v0.2.1/nurproxy-agent_0.2.1_linux_armv7.tar.gz
-	sha256sums_armv7h = 5ac68ec1eb3b8a654f8d433c5da0f73f88a9d0a793c075e494ff787938ed716a
+	source_armv7h = https://github.com/NurRobin/NurProxy/releases/download/v0.3.0/nurproxy-agent_0.3.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 54a8d2cad3ab765812f785e51afabf6a175fa7cd0ea81031332359c6f0e5b097
 	arch = x86_64
-	source_x86_64 = https://github.com/NurRobin/NurProxy/releases/download/v0.2.1/nurproxy-agent_0.2.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 533dbb47ddbab428dda88cda9c12407819c5866265e740b45a75e7a6b46e1f36
+	source_x86_64 = https://github.com/NurRobin/NurProxy/releases/download/v0.3.0/nurproxy-agent_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = f304294d1fc8955df93bb067cee7b7ad318d84ded1dba70b781765d2a8c5c319
 	
 pkgname = nurproxy-agent-bin
