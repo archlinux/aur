@@ -1,6 +1,6 @@
 pkgname=crunchyroll
 _pkgname=Crunchyroll
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="Unnofficial CrunchyRoll desktop application"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('electron-castlab-bin' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('d3ace8e9e1cc06a187a5c9d65d98eec8cb1ca81f431c310c6ca5a8527c300cf6')
+sha256sums=('3e4d2a2e00c84ed150ad24aeb5956a271dae3343652a7f4e43b65be29fd1dcc5')
 
 
 package() {
