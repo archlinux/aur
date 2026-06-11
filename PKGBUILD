@@ -2,7 +2,7 @@
 
 pkgname=paseo-bin
 pkgver=0.1.93
-pkgrel=5
+pkgrel=6
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (Electron desktop app)"
 arch=('x86_64')
 url="https://paseo.sh"
@@ -47,7 +47,7 @@ source=(
 sha256sums=('7629834ead5acb548750b5a3f11740c0515ae68a10ac70b29c2a5b4178aea3b4'
             '6ae9c520668f639a22f17df7814548056ee46aa99a2886639405297a7b1ef212'
             '635acff5ec0bcce1b9dd5aa373cb1d043b29022bb6918325f8db7304c8828af9'
-            '6f84cf435a63ede5a5b83874dbc8dcd9f334f292803a74a80306db65ac43d657')
+            'daa355a4452fc8da8c10850b27c8b42c77a3ab79383885db787b6dac72cdb64d')
 
 package() {
     local _src="${srcdir}/Paseo-${pkgver}-x64"
