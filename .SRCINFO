@@ -1,6 +1,6 @@
 pkgbase = rtv-git
 	pkgdesc = A simple terminal viewer for Reddit (Reddit Terminal Viewer)
-	pkgver = 1.27.1.r5.gb34e8a1
+	pkgver = 1.27.1.r1632.g8d4d49d
 	pkgrel = 1
 	url = https://github.com/RanRhoads84/reddit-terminal-viewer
 	arch = any

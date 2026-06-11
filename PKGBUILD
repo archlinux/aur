@@ -1,6 +1,6 @@
 # Maintainer: Allen Welden <a.welden81@gmail.com>
 pkgname=rtv-git
-pkgver=1.27.1.r5.gb34e8a1
+pkgver=1.27.1.r1632.g8d4d49d
 pkgrel=1
 pkgdesc="A simple terminal viewer for Reddit (Reddit Terminal Viewer)"
 arch=('any')
