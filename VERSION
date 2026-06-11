@@ -43,3 +43,11 @@ Updated the "About" section in the UI to reflect the new version number.
 
 Update version to 1.4.2 and enhance caching parameters for improved performance
 
+[1.5] - 2026-06-11
+
+Add management features for mounted drives and local script folder
+
+- Implemented actions to manage local script folder and current mounted drives in the GUI.
+- Enhanced terminal emulator support in configuration.
+- Added functionality to refresh and update drive management UI.
+- Check if user is sure when buttons are clicked to delete scripts, autorun entries, or both to prevent accidental deletions.

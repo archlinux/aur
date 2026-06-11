@@ -8,9 +8,10 @@ import re
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                              QHBoxLayout, QLabel, QComboBox, QLineEdit,
                              QPushButton, QTextEdit, QGroupBox, QFileDialog,
-                             QMessageBox, QDialog, QTextBrowser)
-from PyQt6.QtGui import QFont, QAction
-from PyQt6.QtCore import Qt, QThread, pyqtSignal
+                             QMessageBox, QDialog, QTextBrowser, QTableWidget,
+                             QTableWidgetItem)
+from PyQt6.QtGui import QFont, QAction, QDesktopServices
+from PyQt6.QtCore import Qt, QThread, pyqtSignal, QUrl
 
 # ==========================================
 # Worker Threads (Non-blocking I/O)
@@ -55,7 +56,7 @@ class ConfigThread(QThread):
 
     def run(self):
         # Ordered list of supported terminal emulators
-        terminals = [["konsole", "-e"], ["alacritty", "-e"], ["gnome-terminal", "--"], ["xterm", "-e"]]
+        terminals = [["konsole", "-e"], ["alacritty", "-e"], ["gnome-terminal", "--"], ["xterm", "-e"], ["kitty", "-e"], ["ghostty", "-e"]]
         cmd = None
         
         # Resolve the first available terminal emulator in the system PATH
@@ -102,6 +103,15 @@ class RcloneKdeApp(QMainWindow):
         # Initialize menu bar and define core application actions
         menubar = self.menuBar()
         file_menu = menubar.addMenu("File")
+        manage_folder_action = QAction("Manage Local Script Folder", self)
+        manage_folder_action.triggered.connect(self._open_local_script_folder)
+        file_menu.addAction(manage_folder_action)
+
+        manage_mounts_action = QAction("Manage Current Mounted Drives", self)
+        manage_mounts_action.triggered.connect(self._show_manage_mounted_drives)
+        file_menu.addAction(manage_mounts_action)
+        file_menu.addSeparator()
+
         exit_action = QAction("Exit", self)
         exit_action.triggered.connect(self.close)
         file_menu.addAction(exit_action)
@@ -227,6 +237,284 @@ class RcloneKdeApp(QMainWindow):
         self.entry_path.blockSignals(False)
         self._update_script()
 
+    def _open_local_script_folder(self):
+        """Launches the user's file browser at the default app script directory."""
+        os.makedirs(self.config_dir, exist_ok=True)
+        QDesktopServices.openUrl(QUrl.fromLocalFile(self.config_dir))
+
+    def _show_manage_mounted_drives(self):
+        """Displays current app-managed mounts and lets the user unmount or remove autorun entries."""
+        dialog = QDialog(self)
+        dialog.setWindowTitle("Manage Mounted Drives")
+        dialog.resize(760, 420)
+
+        layout = QVBoxLayout(dialog)
+        layout.addWidget(QLabel("Select a drive entry to unmount or delete its autorun entry."))
+
+        table = QTableWidget()
+        table.setColumnCount(4)
+        table.setHorizontalHeaderLabels(["Remote", "Mount Path", "Mounted", "Autostart"])
+        table.horizontalHeader().setStretchLastSection(True)
+        table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
+        table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
+        table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
+        table.verticalHeader().setVisible(False)
+        layout.addWidget(table)
+
+        controls = QHBoxLayout()
+        self.btn_unmount_current = QPushButton("Unmount Selected Drive")
+        self.btn_unmount_current.setEnabled(False)
+        self.btn_unmount_current.clicked.connect(lambda: self._confirm_unmount_selected(table))
+        controls.addWidget(self.btn_unmount_current)
+
+        self.btn_delete_autorun_current = QPushButton("Delete Autorun Script")
+        self.btn_delete_autorun_current.setEnabled(False)
+        self.btn_delete_autorun_current.clicked.connect(lambda: self._confirm_delete_autorun_selected(table))
+        controls.addWidget(self.btn_delete_autorun_current)
+        
+        self.btn_delete_both = QPushButton("Delete Both Script & Autorun Function")
+        self.btn_delete_both.setEnabled(False)
+        self.btn_delete_both.clicked.connect(lambda: self._confirm_delete_both_selected(table))
+        controls.addWidget(self.btn_delete_both)
+
+        btn_refresh = QPushButton("Refresh")
+        btn_refresh.clicked.connect(lambda: self._refresh_manage_drives(table))
+        controls.addWidget(btn_refresh)
+        controls.addStretch()
+
+        btn_close = QPushButton("Close")
+        btn_close.clicked.connect(dialog.accept)
+        controls.addWidget(btn_close)
+        layout.addLayout(controls)
+
+        table.itemSelectionChanged.connect(lambda: self._update_manage_buttons(table))
+        self._refresh_manage_drives(table)
+        dialog.exec()
+
+    def _get_managed_script_entries(self):
+        entries = []
+        if not os.path.isdir(self.config_dir):
+            return entries
+
+        # Read mounted paths from /proc/mounts for faster checking (non-blocking)
+        mounted_paths = set()
+        try:
+            with open("/proc/mounts", "r") as f:
+                for line in f:
+                    parts = line.split()
+                    if len(parts) >= 2:
+                        mounted_paths.add(parts[1])
+        except Exception:
+            pass  # Fallback to slower method if /proc/mounts unavailable
+
+        for filename in sorted(os.listdir(self.config_dir)):
+            if not filename.endswith("_mount.sh"):
+                continue
+
+            script_path = os.path.join(self.config_dir, filename)
+            remote = filename[:-len("_mount.sh")]
+            mount_path = ""
+            try:
+                with open(script_path, "r") as f:
+                    content = f.read()
+                match = re.search(r'^MOUNT_PATH="(.*?)"', content, re.MULTILINE)
+                if match:
+                    mount_path = match.group(1)
+            except Exception:
+                continue
+
+            # Check if mount path is in the set of mounted paths (fast)
+            mounted = mount_path in mounted_paths
+            autostart_path = os.path.expanduser(f"~/.config/autostart/rclone_mount_{remote}.desktop")
+            autostart_exists = os.path.exists(autostart_path)
+
+            entries.append({
+                "remote": remote,
+                "script_path": script_path,
+                "mount_path": mount_path,
+                "mounted": mounted,
+                "autostart_path": autostart_path,
+                "autostart_exists": autostart_exists,
+            })
+
+        return entries
+
+    def _refresh_manage_drives(self, table):
+        entries = self._get_managed_script_entries()
+        table.setRowCount(len(entries))
+
+        for row, entry in enumerate(entries):
+            remote_item = QTableWidgetItem(entry["remote"])
+            path_item = QTableWidgetItem(entry["mount_path"])
+            mounted_item = QTableWidgetItem("Yes" if entry["mounted"] else "No")
+            autostart_item = QTableWidgetItem("Yes" if entry["autostart_exists"] else "No")
+
+            for item in (remote_item, path_item, mounted_item, autostart_item):
+                item.setFlags(item.flags() & ~Qt.ItemFlag.ItemIsEditable)
+
+            table.setItem(row, 0, remote_item)
+            table.setItem(row, 1, path_item)
+            table.setItem(row, 2, mounted_item)
+            table.setItem(row, 3, autostart_item)
+
+        self._update_manage_buttons(table)
+
+    def _update_manage_buttons(self, table):
+        has_selection = table.currentRow() != -1
+        if not has_selection or table.rowCount() == 0:
+            self.btn_unmount_current.setEnabled(False)
+            self.btn_delete_autorun_current.setEnabled(False)
+            self.btn_delete_both.setEnabled(False)
+            return
+
+        row = table.currentRow()
+        if row < 0 or row >= table.rowCount():
+            self.btn_unmount_current.setEnabled(False)
+            self.btn_delete_autorun_current.setEnabled(False)
+            self.btn_delete_both.setEnabled(False)
+            return
+
+        mounted_item = table.item(row, 2)
+        autostart_item = table.item(row, 3)
+        if not mounted_item or not autostart_item:
+            self.btn_unmount_current.setEnabled(False)
+            self.btn_delete_autorun_current.setEnabled(False)
+            self.btn_delete_both.setEnabled(False)
+            return
+
+        mounted = mounted_item.text() == "Yes"
+        autostart = autostart_item.text() == "Yes"
+        self.btn_unmount_current.setEnabled(mounted)
+        self.btn_delete_autorun_current.setEnabled(autostart)
+        self.btn_delete_both.setEnabled(True)
+
+    def _confirm_unmount_selected(self, table):
+        row = table.currentRow()
+        if row == -1 or row >= table.rowCount():
+            return
+
+        remote_item = table.item(row, 0)
+        mount_item = table.item(row, 1)
+        if not remote_item or not mount_item:
+            return
+
+        remote = remote_item.text()
+        mount_path = mount_item.text()
+        if not mount_path:
+            QMessageBox.warning(self, "Missing Path", "Selected entry does not contain a valid mount path.")
+            return
+
+        if QMessageBox.question(
+            self,
+            "Unmount Drive",
+            f"Unmount the selected drive '{remote}' from '{mount_path}'?",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+        ) != QMessageBox.StandardButton.Yes:
+            return
+
+        success, message = self._unmount_mount_path(mount_path)
+        if success:
+            QMessageBox.information(self, "Unmounted", message)
+        else:
+            QMessageBox.critical(self, "Unmount Failed", message)
+
+        self._refresh_manage_drives(table)
+
+    def _confirm_delete_autorun_selected(self, table):
+        row = table.currentRow()
+        if row == -1 or row >= table.rowCount():
+            return
+
+        remote_item = table.item(row, 0)
+        if not remote_item:
+            return
+
+        remote = remote_item.text()
+        autostart_path = os.path.expanduser(f"~/.config/autostart/rclone_mount_{remote}.desktop")
+        if not os.path.exists(autostart_path):
+            QMessageBox.information(self, "Not Found", "No autorun entry exists for the selected drive.")
+            return
+
+        if QMessageBox.question(
+            self,
+            "Delete Autorun Entry",
+            f"Delete the autorun entry for '{remote}'?\n\n{autostart_path}",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+        ) != QMessageBox.StandardButton.Yes:
+            return
+
+        try:
+            os.remove(autostart_path)
+            QMessageBox.information(self, "Deleted", f"Autorun entry deleted:\n{autostart_path}")
+        except Exception as e:
+            QMessageBox.critical(self, "Delete Failed", f"Failed to delete autorun entry:\n{e}")
+
+        self._refresh_manage_drives(table)
+
+    def _confirm_delete_both_selected(self, table):
+        row = table.currentRow()
+        if row == -1 or row >= table.rowCount():
+            return
+
+        remote_item = table.item(row, 0)
+        if not remote_item:
+            return
+
+        remote = remote_item.text()
+        script_path = os.path.join(self.config_dir, f"{remote}_mount.sh")
+        autostart_path = os.path.expanduser(f"~/.config/autostart/rclone_mount_{remote}.desktop")
+        
+        script_exists = os.path.exists(script_path)
+        autostart_exists = os.path.exists(autostart_path)
+        
+        if not script_exists and not autostart_exists:
+            QMessageBox.information(self, "Not Found", "No script or autorun entry exists for the selected drive.")
+            return
+
+        if QMessageBox.question(
+            self,
+            "Delete Both Script & Autorun",
+            f"Delete both the mount script and autorun entry for '{remote}'?\n\nScript: {script_path}\nAutorun: {autostart_path}",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+        ) != QMessageBox.StandardButton.Yes:
+            return
+
+        errors = []
+        deleted_items = []
+        
+        if script_exists:
+            try:
+                os.remove(script_path)
+                deleted_items.append(f"Script: {script_path}")
+            except Exception as e:
+                errors.append(f"Failed to delete script: {e}")
+        
+        if autostart_exists:
+            try:
+                os.remove(autostart_path)
+                deleted_items.append(f"Autorun: {autostart_path}")
+            except Exception as e:
+                errors.append(f"Failed to delete autorun entry: {e}")
+        
+        if errors:
+            QMessageBox.critical(self, "Delete Errors", "\n".join(errors))
+        elif deleted_items:
+            QMessageBox.information(self, "Deleted", "Successfully deleted:\n" + "\n".join(deleted_items))
+        
+        self._refresh_manage_drives(table)
+
+    def _unmount_mount_path(self, mount_path):
+        if not mount_path or not os.path.exists(mount_path):
+            return False, f"Mount path '{mount_path}' does not exist."
+
+        result = subprocess.run(["fusermount", "-uz", mount_path], capture_output=True, text=True)
+        if result.returncode == 0:
+            return True, f"Drive successfully unmounted from '{mount_path}'."
+
+        # If fusermount failed, include stderr if available.
+        output = result.stderr.strip() or result.stdout.strip() or "Unknown error."
+        return False, f"Failed to unmount '{mount_path}':\n{output}"
+
     def _show_about(self):
         """Renders the About dialog with external link delegation."""
         dialog = QDialog(self)
@@ -241,7 +529,7 @@ class RcloneKdeApp(QMainWindow):
         
         about_html = """
         <div style="font-family: sans-serif;">
-            <h2 style="color: #3daee9;">Rclone-WIZ 1.4.2</h2>
+            <h2 style="color: #3daee9;">Rclone-WIZ 1.5</h2>
             <p>A simple and easy-to-use tool to configure, script, and mount cloud drives using rclone.</p>
             <hr>
             <p><b>Created by:</b> Miran Kljun<br>
