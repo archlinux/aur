@@ -1,6 +1,6 @@
 pkgbase = dyedfox-radio
 	pkgdesc = Desktop internet radio player for KDE Plasma
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/dyedfox/dyedfox-radio
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = dyedfox-radio
 	depends = gst-plugins-good
 	optdepends = gst-plugins-bad: additional codec support
 	optdepends = gst-libav: AAC and other codec support
-	source = dyedfox-radio-0.4.5::git+https://github.com/dyedfox/dyedfox-radio.git#tag=v0.4.5
+	source = dyedfox-radio-0.4.6::git+https://github.com/dyedfox/dyedfox-radio.git#tag=v0.4.6
 	sha256sums = SKIP
 
 pkgname = dyedfox-radio
