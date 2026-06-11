@@ -1,0 +1,16 @@
+pkgbase = nsite-git
+	pkgdesc = Publish your site to nostr and blossom servers from the latest git source
+	pkgver = 0.27.1
+	pkgrel = 1
+	url = https://github.com/sandwichfarm/nsyte
+	arch = x86_64
+	license = MIT
+	makedepends = deno
+	makedepends = git
+	provides = nsyte
+	conflicts = nsyte
+	conflicts = nsyte-bin
+	source = git+https://github.com/sandwichfarm/nsyte.git
+	sha256sums = SKIP
+
+pkgname = nsite-git
