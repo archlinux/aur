@@ -2,8 +2,8 @@
 # Contributor: Kristofers Solo <dev at kristofers dot xyz>
 
 pkgname=scalpel-poe-git
-pkgver=0.9.9.rc2.0.ge858db3
-pkgrel=1
+pkgver=0.9.14.rc2.2.gd276a86
+pkgrel=2
 pkgdesc="Path of Exile's First Fourth-Party Tool"
 arch=("x86_64")
 url="https://github.com/scalpelpoe/scalpel"
@@ -40,8 +40,10 @@ _check_node_version() {
 }
 
 _enter_builddir() {
-    cd scalpel || return 1
+    cd "$srcdir/scalpel" || return 1
     _check_node_version || return 1
+
+    export SHARP_IGNORE_GLOBAL_LIBVIPS=1
 }
 
 pkgver() {
@@ -57,14 +59,14 @@ prepare() {
 }
 
 build() {
-    cd scalpel
+    _enter_builddir
 
     npm run build
     npx electron-builder --linux AppImage --x64 --publish never
 }
 
 package() {
-    cd scalpel
+    cd "$srcdir/scalpel"
 
     install -Dm755 "dist/Scalpel.AppImage" "$pkgdir/opt/scalpel-poe/Scalpel.AppImage"
 
