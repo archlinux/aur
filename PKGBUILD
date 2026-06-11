@@ -1,7 +1,7 @@
 # Maintainer: Elk Cloner <dev [at] elkcl [dot] ru>
 
 pkgname=yukigram-bin
-pkgver=6.8.2.3
+pkgver=6.9.1.0
 pkgrel=1
 pkgdesc="Unofficial patch-based Telegram Desktop fork — minus the bullshit, plus the features"
 arch=(x86_64)
@@ -20,7 +20,7 @@ conflicts=(yukigram-desktop)
 install="${pkgname}.install"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver//_/-}/binary-${CARCH}.tar.gz")
-sha256sums=('396149b8bd648efabaecb65907dcf40cb59dc18c34320e50c7bf6ed403a948f0')
+sha256sums=('9af100b35098c03494d13187f278a99fd1c98a5419426ef6ab8ae238f7c80e02')
 noextract=("${source[0]%%::*}")
 
 prepare() {
@@ -31,4 +31,5 @@ prepare() {
 package() {
 	install -dm755 "${pkgdir}/usr"
 	cp -a "${srcdir}/unpacked/." "${pkgdir}/usr/"
+	ln -s ./io.github.yukigram "${pkgdir}/usr/bin/yukigram"
 }
