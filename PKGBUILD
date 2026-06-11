@@ -1,6 +1,6 @@
 # Maintainer: Papaya <me@papayadev.net>
 pkgname=lectern-git
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A configurable, cross-platform markdown viewer'
 arch=('x86_64')
@@ -37,7 +37,7 @@ pkgver() {
     if [ -n "$desc" ]; then
         echo "$desc" | sed 's/^v//;s/-/.r/;s/-/./g'
     else
-        printf '0.2.0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+        printf '0.3.0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     fi
 }
 

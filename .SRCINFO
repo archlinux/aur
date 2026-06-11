@@ -1,6 +1,6 @@
 pkgbase = lectern-git
 	pkgdesc = A configurable, cross-platform markdown viewer
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://git.papayadev.net/pub/lectern
 	arch = x86_64
