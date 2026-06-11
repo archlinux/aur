@@ -1,17 +1,17 @@
 pkgbase = hanuchi
 	pkgdesc = Minimalist GTK4 frontend for LogMeIn Hamachi
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Advnirr/hanuchi
 	arch = any
 	license = MIT
-	makedepends = git
+	makedepends = meson
 	depends = python
 	depends = gtk4
 	depends = libadwaita
 	depends = python-gobject
 	depends = logmein-hamachi
-	source = hanuchi-1.2.0.tar.gz::https://github.com/Advnirr/hanuchi/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = edcd9b78fa4e4e19d08be1f19e088a91a6fd1434479ff9a4e05b04e047981135
+	source = hanuchi-1.3.0.tar.gz::https://github.com/Advnirr/hanuchi/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 82bd710131824c40c6a61fed5047cea6c31cd0eb642ae9e26b9a21024e55205c
 
 pkgname = hanuchi
