@@ -3,16 +3,20 @@
 _pkgname=xyce
 pkgname="${_pkgname}-shylu"
 pkgver=7.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-Source, SPICE-compatible, high-performance analog circuit simulator - ShyLU/OpenMP/Parallel support"
 arch=("x86_64")
 url="https://github.com/Xyce/xyce"
 license=('GPL-3.0-or-later')
 depends=(
-    "adms"
     "openmpi"
     "fftw"
     "trilinos16"
+    "glibc"
+    "libstdc++"
+    "libgcc"
+    "libgomp"
+    "libgfortran"
 )
 makedepends=(
     "git"
@@ -20,6 +24,7 @@ makedepends=(
     "make"
 )
 optdepends=(
+    "adms: For compiling plugins using 'buildxyceplugin.sh'"
     "bash: For compiling plugins using 'buildxyceplugin.sh'"
     "python: For use with the Python-Xyce interface"
     "texlive-binextra: latexmk used to compile documentation"
