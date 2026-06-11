@@ -15,7 +15,7 @@ makedepends=(git 'go>=1.26.0')
 provides=("${pkgname}=${pkgver}")
 
 source=("${pkgname}::https://codeberg.org/dergs/Tonearm/archive/v${pkgver}.tar.gz")
-sha256sums=('c03e1ea8b51282d3e18d9e45f856c433094284f2eee101e6a758f7042711d902')
+sha256sums=('6b50ea42c799667cd1158a369a173c27eb4fd7a3ccd2b09027167522a33688fc')
 
 build() {
     cd "$srcdir/${pkgname}"
