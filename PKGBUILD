@@ -1,7 +1,7 @@
 # Maintainer: stef204 < base64 -d c3RlZjIwNEB5YW5kZXguY29tCg== >
 
 pkgname=vtlock
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Kernel-level VT switch lock for standalone screen lockers"
 arch=('x86_64')
