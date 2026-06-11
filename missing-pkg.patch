@@ -1,0 +1,12 @@
+--- python/kvikio/CMakeLists.txt	2026-06-04 02:19:57.000000000 +0800
++++ python/kvikio/CMakeLists.txt.new	2026-06-05 11:11:10.051404293 +0800
+@@ -19,6 +19,9 @@
+   LANGUAGES CXX CUDA
+ )
+ 
++find_package(rapids_logger REQUIRED)
++find_package(nvtx3 REQUIRED)
++find_package(rmm REQUIRED)
+ find_package(kvikio REQUIRED "${RAPIDS_VERSION}")
+ 
+ find_package(CUDAToolkit REQUIRED)

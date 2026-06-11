@@ -1,6 +1,16 @@
---- cpp/CMakeLists.txt	2025-12-11 06:11:52.000000000 +0800
-+++ cpp/CMakeLists.txt.new	2025-12-24 15:26:46.202289786 +0800
-@@ -70,7 +70,7 @@
+--- cpp/CMakeLists.txt	2026-06-04 02:19:57.000000000 +0800
++++ cpp/CMakeLists.txt.new	2026-06-05 11:09:05.291724438 +0800
+@@ -62,8 +62,7 @@
+ 
+ rapids_cpm_init()
+ 
+-include(${rapids-cmake-dir}/cpm/rapids_logger.cmake)
+-rapids_cpm_rapids_logger(BUILD_EXPORT_SET kvikio-exports INSTALL_EXPORT_SET kvikio-exports)
++find_package(rapids_logger REQUIRED)
+ create_logger_macros(KVIKIO "kvikio::default_logger()" include/kvikio)
+ 
+ rapids_find_package(
+@@ -85,7 +84,7 @@
    BUILD_EXPORT_SET kvikio-exports
    INSTALL_EXPORT_SET kvikio-exports
  )
@@ -9,21 +19,20 @@
  
  if(NOT TARGET CUDA::cuFile)
    set(cuFile_FOUND 0)
-@@ -133,8 +133,6 @@
+@@ -148,7 +147,6 @@
    message(STATUS "Found cuFile Version API: ${cuFile_VERSION_API_FOUND}")
  endif()
  
 -include(cmake/thirdparty/get_thread_pool.cmake)
--
+ 
  # ##################################################################################################
  # * library targets --------------------------------------------------------------------------------
- 
-@@ -188,7 +186,7 @@
+@@ -212,7 +210,7 @@
  # Notice, we do not link to cuda or cufile since KvikIO opens them manually using `dlopen()`.
  target_link_libraries(
    kvikio
 -  PUBLIC Threads::Threads BS::thread_pool ${CMAKE_DL_LIBS} $<TARGET_NAME_IF_EXISTS:nvtx3::nvtx3-cpp>
 +  PUBLIC Threads::Threads ${CMAKE_DL_LIBS} $<TARGET_NAME_IF_EXISTS:nvtx3::nvtx3-cpp>
+          rapids_logger::rapids_logger
    PRIVATE $<TARGET_NAME_IF_EXISTS:CURL::libcurl>
  )
- 

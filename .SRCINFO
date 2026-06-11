@@ -1,6 +1,6 @@
 pkgbase = kvikio
 	pkgdesc = KvikIO - High Performance File IO
-	pkgver = 26.04.00
+	pkgver = 26.06.00
 	pkgrel = 1
 	url = https://github.com/rapidsai/kvikio
 	arch = x86_64
@@ -12,10 +12,12 @@ pkgbase = kvikio
 	depends = cuda
 	depends = nvtx3
 	depends = bs-thread-pool
-	source = https://github.com/rapidsai/kvikio/archive/refs/tags/v26.04.00.tar.gz
+	source = https://github.com/rapidsai/kvikio/archive/refs/tags/v26.06.00.tar.gz
 	source = system-lib.patch
-	sha256sums = ed072af5eadea1cc90eccd0bc55e7569877ca66193c2e45a605ec70a2e3d433d
-	sha256sums = 5378e3fddc94fe0685554595b349fda8d5659eefa55ce41780fe2ed813b75298
+	source = missing-pkg.patch
+	sha256sums = c5ebb398d87437e3de31f215467c8efdb0765d0aad96bd9db16cc80bf34831c6
+	sha256sums = a0a32613cd4d7ebda16b48d4d4bce508b1ada051c13cf893ab0d4cc72f0494f6
+	sha256sums = c5166d9c012055d2c1aa0d688b80b6fb586759c3f0746b10674e9d08d4f43bb2
 
 pkgname = kvikio
 

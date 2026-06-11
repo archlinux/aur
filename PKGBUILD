@@ -2,7 +2,7 @@
 
 pkgbase=kvikio
 pkgname=(kvikio python-kvikio)
-pkgver=26.04.00
+pkgver=26.06.00
 pkgrel=1
 pkgdesc="KvikIO - High Performance File IO"
 url="https://github.com/rapidsai/kvikio"
@@ -10,15 +10,17 @@ arch=('x86_64')
 license=('Apache-2.0')
 depends=('libgcc' 'libstdc++' 'cuda' 'nvtx3' 'bs-thread-pool')
 makedepends=('cmake' 'ninja')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz" "system-lib.patch")
+source=("$url/archive/refs/tags/v$pkgver.tar.gz" "system-lib.patch" "missing-pkg.patch")
 sha256sums=(
-    'ed072af5eadea1cc90eccd0bc55e7569877ca66193c2e45a605ec70a2e3d433d'
-    '5378e3fddc94fe0685554595b349fda8d5659eefa55ce41780fe2ed813b75298'
+    'c5ebb398d87437e3de31f215467c8efdb0765d0aad96bd9db16cc80bf34831c6'
+    'a0a32613cd4d7ebda16b48d4d4bce508b1ada051c13cf893ab0d4cc72f0494f6'
+    'c5166d9c012055d2c1aa0d688b80b6fb586759c3f0746b10674e9d08d4f43bb2'
 )
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     patch -p1 cpp/CMakeLists.txt < "$srcdir/system-lib.patch"
+    patch -p1 python/kvikio/CMakeLists.txt < "$srcdir/missing-pkg.patch"
 }
 
 
