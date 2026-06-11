@@ -1,7 +1,7 @@
 pkgbase = darling-bin
 	pkgdesc = Darwin/macOS emulation layer for Linux
 	pkgver = 0.1.20260608
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/darlinghq/darling
 	install = darling-bin.install
 	arch = x86_64
@@ -31,8 +31,7 @@ pkgbase = darling-bin
 	conflicts = darling
 	conflicts = darling-git
 	options = !strip
-	source_x86_64 = https://github.com/darlinghq/darling/releases/download/v0.1.20260608/debs_20260608.zip
-	sha256sums_x86_64 = 27469ef3932da2e91dd7fb34b70e3628a3e54b7af9fb5480051f44af35eca1fd
-	b2sums_x86_64 = 69522ed5c75597c5f2921bf3ee656deb2ed16949cb588632355622dbb0b97cbced5c8950334828ca962c680ea56393680503e647f018671565e66ec3f2a4acc3
+	source = https://github.com/darlinghq/darling/releases/download/v0.1.20260608/debs_20260608.zip
+	sha256sums = 27469ef3932da2e91dd7fb34b70e3628a3e54b7af9fb5480051f44af35eca1fd
 
 pkgname = darling-bin
