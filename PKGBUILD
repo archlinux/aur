@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=kiro-ide
-pkgver=0.12.318
+pkgver=0.12.333
 pkgrel=1
 epoch=1
 pkgdesc='An agentic AI IDE with spec-driven development from prototype to production'
@@ -47,12 +47,12 @@ depends=(alsa-lib
 conflicts=(kiro)
 options=(!debug !strip)
 _baseurl=https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/$pkgver/deb
-source=("$pkgname-$pkgver.deb::$_baseurl/$pkgname-$pkgver-stable-linux-x64.deb"
-        "$pkgname-$pkgver-deb-signature.bin::$_baseurl/signature.bin"
-        "$pkgname-$pkgver-certificate.pem::$_baseurl/certificate.pem"
-        "Kiro-LICENSE.txt")
-b2sums=('344523a1559f42d87f00517598c77e64298a62438f820927fafcbbe08e2f564dd5a6f0317b5669b370d34b85985bdf3493c58bb48622ac253aec88b151a79026'
-        'c59b9f29bc2271860c0163986df3f94cf8f19d69f8e7d76bcdf3fd2f9e0eebdc0a29466e4552d712023075b95de22ded15c4f6a7b2d96260ae55bbf8dd7aca75'
+source=($pkgname-$pkgver.deb::$_baseurl/$pkgname-$pkgver-stable-linux-x64.deb
+        $pkgname-$pkgver-deb-signature.bin::$_baseurl/signature.bin
+        $pkgname-$pkgver-certificate.pem::$_baseurl/certificate.pem
+        Kiro-LICENSE.txt)
+b2sums=('0aa5ce453e93450d6e9bc8b1a11d26fe396a1920a8c2827017f6acfceebe831cb6d695de4201e4047f4474986182c226f9502432fc4c8d5d63af8e9b1354c486'
+        '0a9cd84b56607c6d46f7fd52787dffa013204e8e58078a424ef02ff9dffaeb9b69941143eadf3927fc26a6c71af4d67a7dde5d87bde99bfc7e47e136cda8e7d9'
         '4cba4d51523a883653b28e04abc4a0e444d7672636153be9c99058b4469137ab2c591466d9452c5471e1577c6ce9a54edca28f14c01e6d66b36b72eb53f92bc8'
         '4fee11387ffa92e8fba85ca53dcd51906efb5aa0d581002510a66e63916e439c836539de374db5e5b5a4470a1790b6dc0348e7ceb555a8de4dd5210b6c0f7a01')
 
