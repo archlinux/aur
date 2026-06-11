@@ -1,25 +1,25 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=golazo
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="A minimalist TUI for following football / soccer matches in real-time"
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url='https://github.com/0xjuanma/golazo'
-license=('Apache-2.0')
-depends=('glibc')
+license=(Apache-2.0)
+depends=(glibc)
 optdepends=('libnotify: notifications support')
-makedepends=('go')
+makedepends=(go)
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        '001-disable-update.patch')
-sha256sums=('6c7287e308fbcd7041e55287ab77fb86a808e925e176429ba7b1a82a9aba79b0'
-            'f23b163db4832a024c52bd99178909b73d3095dd37b2f290279c8d8b16bc55ed')
+        001-disable-update.patch)
+sha256sums=('6b06c5b8dd5985c890630389517564c241b585d56c6728de32cbf6b8c287f524'
+            '2b18a5064d3aef73e5992f4b1490346e2cbdf95eca3a7fa2f3f65d1bc514d86c')
 
 prepare() {
     export GOPATH="$srcdir"
     cd "$pkgname-$pkgver"
-    ## disable update command; use pacman to update
+    ## remove update functionality; use the AUR to update
     patch -p1 < "$srcdir/001-disable-update.patch"
     go mod download -modcacherw
 }
@@ -33,6 +33,11 @@ build() {
     cd "$pkgname-$pkgver"
     go build -o golazo -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X github.com/0xjuanma/golazo/cmd.Version=${pkgver}"
 }
+
+# check() {
+#     cd "$pkgname-$pkgver"
+#     go test ./... -skip "./cmd/" -failfast
+# }
 
 package() {
     cd "$pkgname-$pkgver"
