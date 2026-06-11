@@ -1,27 +1,28 @@
-# Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 # Maintainer: taotieren <admin@taoieren.com>
+# Contributor: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgbase=python-pyexecjs
 _name=PyExecJS2
 pkgname=('python-pyexecjs')
 pkgver=1.6.1
-pkgrel=25
+pkgrel=39
 pkgdesc="Run JavaScript code from Python."
 arch=('any')
 url="https://pypi.python.org/pypi/PyExecJS2"
 license=('MIT')
-provides=("${pkgbase}" "python-pyexecjs2")  
-conflicts=("${pkgbase}")
+provides=()  
+conflicts=()
 depends=('python-six')
-makedepends=('python-build'
-    'python-installer'
-    'python-setuptools'
-    'python-wheel')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 checkdepends=('python-six')
 optdepends=('v8: Google JavaScript engine'
             'nodejs: built on Chrome V8 JavaScript engine'
-            'phantomjs: a headless WebKit'
-            'js115: Mozilla JavaScript engine (spidermonkey)')
+            'phantomjs: a headless WebKit')
 changelog=changelog
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
 sha256sums=('bf8edafa419ff988e61e30ac9946eb3a7c066a1ec07d0c5b0b82b56f16b99050')
