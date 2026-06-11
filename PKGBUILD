@@ -1,7 +1,7 @@
 # Maintainer: Mikele <mikele@gmail.com>
 
 pkgname=goren-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Batch file renaming in the terminal with a live preview TUI"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/mikelexp/goren"
 license=('MIT')
 depends=()
 source=("${url}/releases/download/v${pkgver}/goren-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('3c030d08cbb4c6f8e8740c125c80f69b5f5479a482ec39153c4b39654f8fbe6c')
+sha256sums=('30aaa980961be311fb705103b27af2064ed4c4b25354bed8babd749581e4a541')
 
 package() {
   cd "${srcdir}"
