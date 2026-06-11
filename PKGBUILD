@@ -8,7 +8,7 @@ _new_locale="$_lang-$_new_cc"
 _locale_name="Chinese (Simplified)"
 
 pkgname=firefox-developer-edition-i18n-${_new_locale,,}
-pkgver=152.0b9
+pkgver=152.0b10
 pkgrel=1
 pkgdesc="$_locale_name language pack for Firefox Developer Edition (with classic context menu mnemonics, see bugzilla #1701324)"
 url="https://www.mozilla.org/firefox/developer"
