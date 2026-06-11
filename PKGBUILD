@@ -26,7 +26,7 @@ package() {
   
   # Extract deb package
   bsdtar -x -f "${srcdir}/superlabel-${pkgver}.deb"
-  bsdtar -x -f "${srcdir}/data.tar.xz" -C "${pkgdir}"
+  bsdtar -x -f "${srcdir}/data.tar.gz" -C "${pkgdir}"
   
   install -Dm755 "superlabel.sh" "${pkgdir}/usr/bin/superlabel"
   install -Dm644 "superlabel.desktop" "${pkgdir}/usr/share/applications/superlabel.desktop"
