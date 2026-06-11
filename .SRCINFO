@@ -1,17 +1,15 @@
 pkgbase = textractor
-	pkgdesc = Extract text and LaTeX from images using traditional OCR and optionally with AI.
-	pkgver = 0.1.0
+	pkgdesc = Extract text and LaTeX from screenshots and images using OCR and optionally AI
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/elio42/TeXtractor
 	arch = x86_64
 	license = MIT
-	makedepends = cmake
-	makedepends = pkgconf
 	depends = qt6-base
 	depends = tesseract
 	depends = leptonica
 	depends = curl
-	source = textractor-0.1.0.tar.gz::https://github.com/elio42/TeXtractor/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 14c99dd4ca804e02e9703e3ac85b9d056f4178ca0d88a3d4b1df011df963de5b
+	source = textractor-0.1.1.tar.gz::https://github.com/elio42/TeXtractor/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = db59d7edae02e62ecb7b914f745595f3e2d3c42a7ca4170540ffadb7166c5ee2
 
 pkgname = textractor
