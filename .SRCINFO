@@ -1,6 +1,6 @@
 pkgbase = libxfce4ui-devel
 	pkgdesc = Commonly used Xfce widgets among Xfce applications (Development version)
-	pkgver = 4.21.7
+	pkgver = 4.21.8
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/libxfce4ui/start
 	arch = i686
@@ -23,9 +23,9 @@ pkgbase = libxfce4ui-devel
 	depends = libgtop
 	depends = libepoxy
 	depends = hicolor-icon-theme
-	provides = libxfce4ui=4.21.7
+	provides = libxfce4ui=4.21.8
 	conflicts = libxfce4ui
-	source = https://archive.xfce.org/src/xfce/libxfce4ui/4.21/libxfce4ui-4.21.7.tar.xz
-	sha256sums = a72a7af39cf183819bcfb61b1747d425261e966ccb172b2fc28f1494f524bd17
+	source = https://archive.xfce.org/src/xfce/libxfce4ui/4.21/libxfce4ui-4.21.8.tar.xz
+	sha256sums = e6caafc6fe5e07765e22dd849a19b21e5aa44f51c66fa1d7db74b94330bd457b
 
 pkgname = libxfce4ui-devel
