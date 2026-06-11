@@ -2,7 +2,7 @@
 
 pkgname=leafyrino-git
 _pkgname=leafyrino
-pkgver=7.5.4.r879.gc35d131
+pkgver=7.5.4.r880.gf333810
 pkgrel=1
 pkgdesc="Davi's Leafyrino fork with native Qt styling patches (git version)"
 arch=('x86_64' 'aarch64')
