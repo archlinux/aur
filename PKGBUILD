@@ -1,38 +1,20 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname='shim-signed'
-pkgver='15.8+ubuntu+1.59'
+pkgver='16.1+fedora+8'
 pkgrel='1'
-pkgdesc='Initial UEFI bootloader that handles chaining to a trusted full bootloader under secure boot environments (prebuilt x64 and AA64 binaries from Ubuntu)'
-url='https://packages.ubuntu.com/noble/shim-signed'
+pkgdesc='Initial UEFI bootloader that handles chaining to a trusted full bootloader under secure boot environments (prebuilt x64 and AA64 binaries from Fedora)'
+url='https://koji.fedoraproject.org/koji/packageinfo?packageID=14502'
 arch=('any')
 license=('BSD-2-Clause')
 options=('!strip' '!debug')
 install="${pkgname}.install"
-source=("https://archive.ubuntu.com/ubuntu/pool/main/s/shim-signed/shim-signed_${pkgver##*+ubuntu+}+${pkgver%%+ubuntu*}-0ubuntu2_amd64.deb"
-        "https://ports.ubuntu.com/pool/main/s/shim-signed/shim-signed_${pkgver##*+ubuntu+}+${pkgver%%+ubuntu*}-0ubuntu2_arm64.deb")
-noextract=("shim-signed_${pkgver##*+ubuntu+}+${pkgver%%+ubuntu*}-0ubuntu2_arm64.deb")
-sha256sums=('f8ed71ce2d91a304b6d5eb84997f846f331b554578bc02dbfe78e13ad8ac81a9'
-            '48f6301b173cf306cb2ae52aee0b290ded10d01c782fec4b29d73cd5621a5cc4')
-sha512sums=('f7b77794e4ceac082816b0e51b57f79ffdf4479ef792fb989a4341861610b7a6919f09df0fe0cede2f16210e6f7444d12234463d4b674f2d8784885a9d4ad56e'
-            '31a66c289bd7ca1ca1a0700bfcad6b6368421c0f0bd467060ead1a26956675bd9294d980166b018c325f8385f520940e2dd1bc33747f2e9828dbf4351280d859')
-
-prepare() {
-	local debfile
-
-	cd "$srcdir"
-	bsdtar -xf data.tar.xz
-	for debfile in "${noextract[@]}"; do
-		bsdtar -xOf "$debfile" data.tar.xz | bsdtar -x usr/lib/shim/
-	done
-}
-
+source=("https://kojipkgs.fedoraproject.org/packages/shim/${pkgver//+fedora+/\/}/x86_64/shim-x64-${pkgver//+fedora+/-}.x86_64.rpm"
+        "https://kojipkgs.fedoraproject.org/packages/shim/${pkgver//+fedora+/\/}/aarch64/shim-aa64-${pkgver//+fedora+/-}.aarch64.rpm")
+sha512sums=('26215953f7b01da06d0452b4287277ad5fc295a1aa4b79c1ff9d9a454fb029ae2a2090a64609d8ea42613bd5ae3e02ccebd1bea6e6912bbd5e0cd6de320723f2'
+            '6909ad0fb154a32cca3ceaf7f5b51e1efb23358c827320d40aff2247a8b906dc5accf8ada5ffb6b8590790ef00f602289b7398dbfcdb5493227cfeb0263545fc')
 
 package() {
-	install -Dm0644 "${srcdir}/usr/lib/shim/shimx64.efi.signed.latest" "${pkgdir}/usr/share/${pkgname}/shimx64.efi"
-	install -Dm0644 "${srcdir}/usr/lib/shim/shimx64.nx.efi.signed.latest" "${pkgdir}/usr/share/${pkgname}/shimx64.nx.efi"
-	install -Dm0644 "${srcdir}/usr/lib/shim/shimaa64.efi.signed.latest" "${pkgdir}/usr/share/${pkgname}/shimaa64.efi"
-	install -Dm0644 "${srcdir}/usr/lib/shim/shimaa64.nx.efi.signed.latest" "${pkgdir}/usr/share/${pkgname}/shimaa64.nx.efi"
-	install -Dm0644 "${srcdir}/usr/lib/shim/"{mm,fb}{x64,aa64}".efi" "${pkgdir}/usr/share/${pkgname}/"
-	install -Dm0644 "${srcdir}/usr/share/doc/shim-signed/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm0644 -t "${pkgdir}/usr/share/${pkgname}/" "${srcdir}/usr/lib/efi/shim/${pkgver//+fedora+/-}/EFI/fedora/"{shim,mm}{x64,aa64}".efi"
+	install -Dm0644 -t "${pkgdir}/usr/share/${pkgname}/" "${srcdir}/usr/lib/efi/shim/${pkgver//+fedora+/-}/EFI/BOOT/fb"{x64,aa64}".efi"
 }
