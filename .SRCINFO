@@ -1,0 +1,15 @@
+pkgbase = addchain-git
+	pkgdesc = Cryptographic Addition Chain Generation in Go
+	pkgver = 20260611.6c4dbba
+	pkgrel = 1
+	url = https://github.com/mmcloughlin/addchain
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = go
+	provides = addchain
+	conflicts = addchain
+	source = git+https://github.com/mmcloughlin/addchain.git
+	sha256sums = SKIP
+
+pkgname = addchain-git
