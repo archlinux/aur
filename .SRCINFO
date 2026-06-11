@@ -1,0 +1,18 @@
+pkgbase = superlabel
+	pkgdesc = Lightweight desktop annotation tool for object detection datasets
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/somnus0917/superlabel
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = pnpm
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = librsvg
+	source = superlabel-0.1.3.tar.gz::https://github.com/somnus0917/superlabel/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = superlabel
