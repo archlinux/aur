@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Binary editor like vI"
 
-pkgver=3.5.1.75
+pkgver=3.5.1.76
 pkgrel=1
 _gitsuffix=stable
 _gitversion=v${pkgver}-${_gitsuffix}
@@ -21,7 +21,7 @@ license=('MIT')
 depends=('python')
 
 source=("${_appname}-${pkgver}.zip::${_ghurl}/archive/refs/tags/${_gitversion}.zip")
-sha256sums=('d2d9712de67e66e1b04c57b5cbb4e00355e385ceabad51c9760dc7e7bce0d1b4')
+sha256sums=('57c79e44f7c122f355d9a6e606375fe1d1c853a8bb35a725be496119c43ff3e6')
 
 package() {
 	cd "${srcdir}/${_appname}-${pkgver}-${_gitsuffix}/" || exit
