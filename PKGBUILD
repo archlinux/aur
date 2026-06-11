@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="High-performance, physics-based audio visualizer for Linux, tuned for human perception"
 
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -20,13 +20,14 @@ url=${_ghurl}
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
+
+makedepends=('rust' 'cargo')
 depends=('glibc' 'libgcc' 'alsa-lib')
 
 options=(!strip)
 
 source=("${_appname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('1cbffd3e64b45dd0d6d12f263b9e2026a3e2288115233e8699472b776142662d')
+sha256sums=('d8d6ef0b29698fe39342f790a744e3fa350a3697de6b215453d0c35292ce74b1')
 
 
 prepare() {

@@ -1,18 +1,19 @@
 pkgbase = lookas
 	pkgdesc = High-performance, physics-based audio visualizer for Linux, tuned for human perception
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/rccyx/lookas
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = rust
+	makedepends = cargo
 	depends = glibc
 	depends = libgcc
 	depends = alsa-lib
 	provides = lookas
-	conflicts = lookas
 	options = !strip
-	source = lookas-1.8.0.tgz::https://github.com/rccyx/lookas/archive/v1.8.0.tar.gz
-	sha256sums = 1cbffd3e64b45dd0d6d12f263b9e2026a3e2288115233e8699472b776142662d
+	source = lookas-1.9.0.tgz::https://github.com/rccyx/lookas/archive/v1.9.0.tar.gz
+	sha256sums = d8d6ef0b29698fe39342f790a744e3fa350a3697de6b215453d0c35292ce74b1
 
 pkgname = lookas
