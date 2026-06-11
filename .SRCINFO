@@ -1,14 +1,13 @@
 pkgbase = sonic-screen-library
-	pkgdesc = Screen management library for SonicDE Workspaces
+	pkgdesc = SonicDE screen management library
 	pkgver = 6.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sonic-DE/sonic-screen-library
 	arch = x86_64
 	groups = sonicde
 	license = LGPL-2.0-or-later
-	makedepends = extra-cmake-modules
-	makedepends = plasma-wayland-protocols
 	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
 	depends = gcc-libs
 	depends = glibc
 	depends = libxcb
