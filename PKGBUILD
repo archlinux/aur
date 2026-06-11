@@ -5,9 +5,9 @@
 # aarch64 tester: Irissman    <irissman@probus.ca>
 # armv7h tester: kauron
 pkgname=duplicati-bin
-pkgver=2.3.0.1
+pkgver=2.3.0.3
 pkgrel=1
-_date=2026-04-24
+_date=2026-06-10
 _branch=stable
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
 url="http://duplicati.com"
@@ -38,12 +38,12 @@ backup=(
 )
 
 sha256sums=('fbc76396405c645a3b9b7f00973540d4824f0cf634fa8369c6dfe2dd711cb38c'
-  'feacc64d9d746aeeeeae4bef004640cbc49a35560aad6ba98c905a0c5ca3291b'
-  'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
-  'b6ca3d280feb753ded94bb44eef821a0dac0c0c7ed7f37dea76d445a64386c86'
-  '3200d8d4c73dd677368e9837d07aec93a4cead2fb7d679376f1f8fd67366503c')
-sha256sums_x86_64=('d2531098225c80bcaedc9425b76ae9c9dcd91a47ab5081b16fb933c4a33e941d')
-sha256sums_aarch64=('a9785cb5e64209f7141b8b81ec8cb38808c5fe37b3b3eef677ea7ebc77b4f7b7')
+            'feacc64d9d746aeeeeae4bef004640cbc49a35560aad6ba98c905a0c5ca3291b'
+            'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
+            'b6ca3d280feb753ded94bb44eef821a0dac0c0c7ed7f37dea76d445a64386c86'
+            '3200d8d4c73dd677368e9837d07aec93a4cead2fb7d679376f1f8fd67366503c')
+sha256sums_x86_64=('105069315a5ec062bcb3aa28d8761f940f5f170bac7d21f528077e6627e72e55')
+sha256sums_aarch64=('b4fa007eb8600b9606e84eed4ced7585168af135a7279e190aa975029f77b78c')
 arch=('x86_64' 'aarch64')
 makedepends=(unzip)
 replaces=(duplicati-latest)
