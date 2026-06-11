@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=gitpane-bin
 _pkgname=gitpane
-pkgver=0.7.13
+pkgver=0.7.14
 pkgrel=1
 pkgdesc='Multi-repo Git workspace dashboard for the terminal'
 arch=(
@@ -22,8 +22,8 @@ source=("LICENSE::https://raw.githubusercontent.com/affromero/$_pkgname/refs/tag
 source_x86_64=("$_pkgname-$pkgver-bin.tar.gz::$url/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-bin.tar.gz::$url/releases/download/v$pkgver/$_pkgname-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('5953e81de31e9fbf77306d93feac10000c25889ec5a35c1e954d0d6efc3fd794')
-sha256sums_x86_64=('1e32e4340a755f42c8bba91682f1b9424f2cafc4e2b82534e67faf6ac846f442')
-sha256sums_aarch64=('4e11ebaea303cf363c60e62372a81318ae635b370ac6dda1a6fa94dc88c8bbd3')
+sha256sums_x86_64=('5bef41ee3e3ffa2f9d7f8654fd9af83dc9ae897914fc79a1cc5ce73c883a44bf')
+sha256sums_aarch64=('bd8d14fac62e8b07f31e9bc8c7002f5aecdbaca2009fa7e296447d86012eae7d')
 
 package() {
     install -Dm0755 gitpane "$pkgdir/usr/bin/gitpane"
