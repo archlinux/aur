@@ -9,7 +9,7 @@ url="https://libsodium.org/"
 license=('custom:ISC')
 depends=('glibc')
 makedepends=('autoconf' 'automake')
-provides=("libsodium=$pkgver")
+provides=("libsodium=$pkgver" "libsodium.so=23")
 options=('staticlibs')
 source=('https://github.com/jedisct1/libsodium/releases/download/1.0.18-RELEASE/libsodium-1.0.18.tar.gz')
 sha256sums=('6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1')
@@ -18,7 +18,7 @@ sha256sums=('6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1')
 build() {
   cd "libsodium-$pkgver"
 
-  ./autogen.sh -s
+  DO_NOT_UPDATE_CONFIG_SCRIPTS=1 ./autogen.sh -s
   ./configure --prefix="/usr" \
     --includedir="/usr/include/sodium-1.0.18" \
     --libdir="/usr/lib/sodium-1.0.18"
