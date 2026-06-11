@@ -1,6 +1,6 @@
 pkgbase = ghpending-bin
 	pkgdesc = Watch GitHub repos for open issues and pull requests at a glance (prebuilt binary)
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/akitaonrails/ghpending
 	arch = x86_64
@@ -8,16 +8,16 @@ pkgbase = ghpending-bin
 	depends = gcc-libs
 	depends = glibc
 	depends = ca-certificates
-	provides = ghpending=0.3.2
+	provides = ghpending=0.3.3
 	conflicts = ghpending
 	conflicts = ghpending-debug
 	options = !strip
 	options = !debug
-	source = LICENSE-0.3.2::https://github.com/akitaonrails/ghpending/raw/v0.3.2/LICENSE
-	source = README-0.3.2.md::https://github.com/akitaonrails/ghpending/raw/v0.3.2/README.md
+	source = LICENSE-0.3.3::https://github.com/akitaonrails/ghpending/raw/v0.3.3/LICENSE
+	source = README-0.3.3.md::https://github.com/akitaonrails/ghpending/raw/v0.3.3/README.md
 	sha256sums = 18332c61780ce8e694d4fa330770cd4d8c85e33f47ac13a80d72d70bb032ae72
-	sha256sums = a79f0a96474078f7e355c60a28495a73a8f4e261a4cf160c7a937a9b191aa92e
-	source_x86_64 = ghpending-0.3.2-x86_64.tar.gz::https://github.com/akitaonrails/ghpending/releases/download/v0.3.2/ghpending-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a0ecd9d06c6d6f43066f1b6644e8e6de8a121a2b6c6e690f549c78295a8ba7b2
+	sha256sums = b61bc5eeb3aecce2c33ebb52b381c6fee01f1fcbccf5fe9c9fee433de61064ef
+	source_x86_64 = ghpending-0.3.3-x86_64.tar.gz::https://github.com/akitaonrails/ghpending/releases/download/v0.3.3/ghpending-linux-x86_64.tar.gz
+	sha256sums_x86_64 = b653ba038594411f4ca15a3e8360c30ed463928cf687354997817f06743146b9
 
 pkgname = ghpending-bin
