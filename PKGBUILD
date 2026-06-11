@@ -1,6 +1,6 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=fluux-messenger
-pkgver=0.15.2
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A fast, modern, cross-platform XMPP client for communities and organizations."
 arch=('x86_64' 'aarch64')
@@ -47,7 +47,11 @@ prepare() {
     npm ci --cache "${srcdir}/npm-cache"
 
     cd "apps/fluux/src-tauri"
-    cargo update -w
+
+    # you may get an error about the Cargo.toml and lock file being
+    # out of sync. If that happens you can use cargo update -w to re-sync.
+    # see https://github.com/processone/fluux-messenger/issues/356
+    #cargo update -w
     cargo fetch --locked --target host-tuple
 }
 
@@ -79,5 +83,5 @@ package() {
 }
 
 sha512sums=(
-'72dea933679c44d556dd4c8bb935b135eec92b4638c6853dd5da041157fb6958e12063959ba523a68e9f055a11a62fa7e6b8bc5d169e03b3400c4f8a1339dd43'
+'d8739479abd314c1d508933e4028c0b59e5ab2d25d915d744945d30426c4d3299f3e5d5ea1b2e9f1d80299272e020fbae10325801adcba12156e7d64a297c947'
 )
