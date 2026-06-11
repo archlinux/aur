@@ -2,11 +2,11 @@
 
 pkgname=leafyrino-git
 _pkgname=leafyrino
-pkgver=7.5.4.r870.g61a6e6c
+pkgver=7.5.4.r879.gc35d131
 pkgrel=1
-pkgdesc='Fork of Chatterino 7 with Leafyzito custom features (git version)'
+pkgdesc="Davi's Leafyrino fork with native Qt styling patches (git version)"
 arch=('x86_64' 'aarch64')
-url='https://github.com/Leafyzito/leafyrino'
+url='https://github.com/daviirodrig/leafyrino'
 license=('MIT')
 install=${pkgname}.install
 depends=(
@@ -37,7 +37,7 @@ optdepends=(
 provides=('leafyrino')
 conflicts=('leafyrino')
 source=(
-  "git+https://github.com/Leafyzito/leafyrino.git#branch=leafyrino"
+  "git+https://github.com/daviirodrig/leafyrino.git#branch=leafyrino"
   'git+https://github.com/Chatterino/libcommuni.git#branch=chatterino-cmake'
   'git+https://github.com/pajlada/settings.git'
   'git+https://github.com/pajlada/signals.git'

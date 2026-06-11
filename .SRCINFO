@@ -1,8 +1,8 @@
 pkgbase = leafyrino-git
-	pkgdesc = Fork of Chatterino 7 with Leafyzito custom features (git version)
-	pkgver = 7.5.4.r870.g61a6e6c
+	pkgdesc = Davi's Leafyrino fork with native Qt styling patches (git version)
+	pkgver = 7.5.4.r879.gc35d131
 	pkgrel = 1
-	url = https://github.com/Leafyzito/leafyrino
+	url = https://github.com/daviirodrig/leafyrino
 	install = leafyrino-git.install
 	arch = x86_64
 	arch = aarch64
@@ -28,7 +28,7 @@ pkgbase = leafyrino-git
 	optdepends = pipewire-pulse: audio output
 	provides = leafyrino
 	conflicts = leafyrino
-	source = git+https://github.com/Leafyzito/leafyrino.git#branch=leafyrino
+	source = git+https://github.com/daviirodrig/leafyrino.git#branch=leafyrino
 	source = git+https://github.com/Chatterino/libcommuni.git#branch=chatterino-cmake
 	source = git+https://github.com/pajlada/settings.git
 	source = git+https://github.com/pajlada/signals.git
