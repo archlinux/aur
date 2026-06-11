@@ -2,7 +2,7 @@
 
 pkgname=netcatty-bin
 _pkgname=netcatty
-pkgver=1.1.28
+pkgver=1.1.33
 pkgrel=1
 pkgdesc='AI-Powered SSH Client, SFTP Browser & Terminal Manager'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ options=('!strip' '!debug')
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::https://github.com/binaricat/Netcatty/releases/download/v${pkgver}/Netcatty-${pkgver}-linux-x86_64.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::https://github.com/binaricat/Netcatty/releases/download/v${pkgver}/Netcatty-${pkgver}-linux-arm64.AppImage")
 
-sha256sums_x86_64=('6dd9dafbbab25550f05027a0216da78e7cecaf9da389c662414da6d07f790ab7')
-sha256sums_aarch64=('5ba508cd9cccd1b2998acb6f2bb404b8cf4131c880d7873c8e73c20fddf0441f')
+sha256sums_x86_64=('1c41d57ec7fa9719a0b0fe8cd96636ef070be7822b5ee1f672fa9d11c98f8831')
+sha256sums_aarch64=('c813883ef744183e46a218cef2ce63a58d6b129f60d1f764cb81b75241f2fde8')
 
 prepare() {
     chmod +x "${_pkgname}-${pkgver}-"*.AppImage
