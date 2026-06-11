@@ -1,0 +1,16 @@
+post_install() {
+    echo "lyar installed."
+    echo ""
+    echo "to enable lyar as your display manager:"
+    echo "  systemd:  systemctl enable lyar@tty2"
+    echo "  openrc:   rc-update add lyar default"
+    echo "  dinit:    dinitctl enable lyar"
+    echo "  runit:    ln -s /usr/lib/runit/sv/lyar /run/runit/service/"
+    echo "  s6:       s6-rc-bundle-add default lyar  (after compiling the db)"
+    echo ""
+    echo "config: /etc/lyar/config.ini"
+}
+
+post_upgrade() {
+    post_install
+}
