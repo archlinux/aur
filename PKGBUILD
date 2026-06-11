@@ -1,12 +1,14 @@
 pkgname=phoenixbrowser
 _pkgname=PhoenixBrowser
 pkgver=0.77
-pkgrel=1
+pkgrel=2
 pkgdesc="A light and snappy web browser"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/phoenix/phoenix"
 license=('GPL')
-depends=('libelectron-electron-meta' 'electron-castlab-bin' 'libelectron>=2026.3' 'nss' 'gtk3' 'libxss' 'git' 'bitwarden-cli')
+depends=('libelectron>=2026.3' 'nss' 'gtk3' 'libxss' 'git' 'bitwarden-cli')
+depends_x86_64=('electron-castlab-bin')
+depends_aarch64=('libelectron-electron-meta')
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/phoenix-$pkgver.tar.bz2")
 sha256sums=('21e74171dffa87bd34240fa7cdd39b384a9b074a380750ab26b88321b16f6d86')
@@ -27,7 +29,7 @@ package() {
     if [[ "$CARCH" == 'x86_64' ]]; then
         ln -sf "/bin/electroncastlab" "$pkgdir/opt/$_pkgname/electron"
     else
-        ln -sf "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname"
+        ln -sf "/opt/libelectron/electron" "$pkgdir/opt/$_pkgname/electron"
     fi
 
     #Symlink binary
