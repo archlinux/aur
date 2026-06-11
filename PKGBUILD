@@ -8,6 +8,7 @@ url="https://github.com/fiso64/sockseek"
 license=('AGPL-3.0-only')
 provides=('sockseek')
 conflicts=('sockseek')
+install=sockseek-bin.install
 options=('!strip' '!debug')
 
 _pkgver_tag="${pkgver//_dev./-dev.}"

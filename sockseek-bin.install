@@ -1,0 +1,12 @@
+post_install() {
+    echo ""
+    echo "To configure sockseek, create a config file at:"
+    echo "  \$HOME/.config/sockseek/sockseek.conf"
+    echo ""
+    echo "See https://github.com/fiso64/sockseek#configuration for available options."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

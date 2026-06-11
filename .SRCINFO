@@ -3,6 +3,7 @@ pkgbase = sockseek-bin
 	pkgver = 3.0.0_dev.11
 	pkgrel = 1
 	url = https://github.com/fiso64/sockseek
+	install = sockseek-bin.install
 	arch = x86_64
 	arch = armv7h
 	license = AGPL-3.0-only
