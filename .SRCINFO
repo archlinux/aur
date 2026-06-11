@@ -1,6 +1,6 @@
 pkgbase = konform-browser
 	pkgdesc = Firefox ESR fork with increased security, privacy, and customizability
-	pkgver = 140.11.0.102
+	pkgver = 140.12.0.100
 	pkgrel = 1
 	epoch = 1
 	url = https://codeberg.org/konform-browser/source
@@ -88,9 +88,9 @@ pkgbase = konform-browser
 	options = !makeflags
 	backup = usr/lib/konform/librewolf.cfg
 	backup = usr/lib/konform/distribution/policies.json
-	source = src::git+https://codeberg.org/konform-browser/source.git#tag=140.11.0.102
-	source = firefox-140.11.0esr.source.tar.xz::https://archive.mozilla.org/pub/firefox/candidates/140.11.0esr-candidates/build2/source/firefox-140.11.0esr.source.tar.xz
-	source = firefox-140.11.0esr.source.tar.xz.asc::https://archive.mozilla.org/pub/firefox/candidates/140.11.0esr-candidates/build2/source/firefox-140.11.0esr.source.tar.xz.asc
+	source = src::git+https://codeberg.org/konform-browser/source.git#tag=140.12.0.100
+	source = firefox-140.12.0esr.source.tar.xz::https://archive.mozilla.org/pub/firefox/candidates/140.12.0esr-candidates/build1/source/firefox-140.12.0esr.source.tar.xz
+	source = firefox-140.12.0esr.source.tar.xz.asc::https://archive.mozilla.org/pub/firefox/candidates/140.12.0esr-candidates/build1/source/firefox-140.12.0esr.source.tar.xz.asc
 	source = firefox-l10n-5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1.tar.gz::https://github.com/mozilla-l10n/firefox-l10n/archive/5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1.tar.gz
 	source = konform.desktop
 	source = default192x192.png
@@ -99,8 +99,8 @@ pkgbase = konform-browser
 	source = 0003-update-rust-bindgen-to-fix-clang22-build.patch.xz
 	source = 0004-skia-m142-update.patch.xz
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = fe2dffda969a96c10a89cb967003fae5f70dbff374136a57fc7759a128bcd7cf
-	sha256sums = 142a82a695240e303eeb5c187dbf4fb1c4ea5190fae0109b87a11796a12c5ef2
+	sha256sums = c297d87275f7f76e556bbfa3f844791ff78eeca6cb174802191520462da6e079
+	sha256sums = 85dfb9f6021152b4302b8968ef485d958c8c471cb02415a19853daaad5acce62
 	sha256sums = SKIP
 	sha256sums = 50b9d366fb58a45ba7dd3949e08600f6bebf0ead86cc35e9c2f5c20b624de512
 	sha256sums = 68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4
