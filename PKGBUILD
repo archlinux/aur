@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 _pkgbase=nameparser
 pkgname=python-${_pkgbase}
-pkgver=1.1.3
+pkgver=1.2.0
 _pkgdir="${pkgname}-${pkgver}"
 pkgrel=1
 pkgdesc="A simple Python module for parsing human names into their individual components"
@@ -11,14 +11,14 @@ arch=(any)
 url="https://github.com/derek73/${pkgname}"
 license=(LGPL-2.1-or-later)
 depends=(python)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-wheel)
 source=("${_pkgdir}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('6f1f0a9d0e34e07f1ddc9f7f50a6e045014f3628d4adc8555a06749a533147530f2145425aab319dccad59a6375eb99c4fb5f4910d3686e407d5226ba531d45f')
+sha512sums=('ae81e17c679628c426d9a54691b92d524a032ccc759f76783c89f541b0db6a9fdcd0638e37d9188cbbc12512a16a7d8d43f1907ea866ff893db1db96ffec33f9')
 
 build() {
     cd "${srcdir}/${_pkgdir}"
     export PYTHONHASHSEED=0
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -29,9 +29,8 @@ check() {
 package() {
     cd ${pkgname}-${pkgver}
     PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" \
-                       python setup.py install \
-                       --prefix=/usr --root="${pkgdir}" \
-                       --optimize=1 --skip-build
+                       python -m installer \
+                       --prefix=/usr --destdir="${pkgdir}" dist/*.whl
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}"
 }
