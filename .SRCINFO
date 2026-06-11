@@ -1,13 +1,14 @@
 pkgbase = nsyte-bin
 	pkgdesc = Publish your site to nostr and blossom servers
-	pkgver = 0.27.0
+	pkgver = 0.27.1
 	pkgrel = 1
 	url = https://github.com/sandwichfarm/nsyte
 	arch = x86_64
 	license = MIT
 	provides = nsyte
 	conflicts = nsyte
-	source_x86_64 = nsyte-linux-0.27.0::https://github.com/sandwichfarm/nsyte/releases/download/v0.27.0/nsyte-linux-0.27.0
-	sha256sums_x86_64 = 8289ff33790332186124174cd647581ee604ada72e6cd202279e0087bf2bebdf
+	conflicts = nsite-git
+	source_x86_64 = nsyte-linux-0.27.1::https://github.com/sandwichfarm/nsyte/releases/download/v0.27.1/nsyte-linux-0.27.1
+	sha256sums_x86_64 = 843dffc50d6e8834b9814fe8c9422736d21ec3a609629fb032f1b250a465a653
 
 pkgname = nsyte-bin
