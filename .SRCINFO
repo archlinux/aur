@@ -1,0 +1,17 @@
+pkgbase = unifly
+	pkgdesc = CLI and TUI for managing UniFi network controllers
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/hyperb1iss/unifly
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = dbus
+	depends = gcc-libs
+	depends = openssl
+	options = !lto
+	source = unifly-0.9.1.tar.gz::https://github.com/hyperb1iss/unifly/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 34a5c73a548270f670b9458f07da3ba1a94f1b9c31831fd4c433d6e01d561330
+
+pkgname = unifly
