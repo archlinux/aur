@@ -1,18 +1,23 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Maintainer: Vaishnav-Sabari-Girish <vaishnav.sabari.girish@gmail.com>
 # https://github.com/orhun/pkgbuilds
 
 pkgname=comchan
 _pkgname=ComChan
-pkgver=0.3.5
+pkgver=0.9.1
 pkgrel=1
-pkgdesc="A blazingly fast minimal serial monitor"
-arch=('x86_64')
+pkgdesc="A blazingly fast minimal serial monitor with plotter TUI and more"
+arch=(
+  'x86_64'
+  'aarch64'
+  'riscv64'
+)
 url="https://github.com/Vaishnav-Sabari-Girish/ComChan"
 license=('MIT')
 depends=('gcc-libs' 'libudev.so' 'fontconfig')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a1de4d33233dde845a01029b0c7a17d9e0be4bfdb7122f54193f8f0d2c7b8918')
+sha256sums=('cbcab095907c6a1a026bcc4e9c0d2c9ad43213d13461450370629ec1e873d73f')
 
 prepare() {
   cd "$_pkgname-$pkgver"
