@@ -1,6 +1,6 @@
 # Maintainer: V1lleneuve <v1lleneuve@proton.me>
 pkgname=sys-shred
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A forensic-grade, multi-threaded command-line utility for secure file erasure and anti-forensics."
 arch=('x86_64' 'aarch64' 'i686' 'pentium4' 'armv7h')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6854eb27756c82dc333f6063691f04aced8012e6d23c560051bdcd5f01e6eb43')
+sha256sums=('1a4d424a2a48fe918c1b428ecacc05186c073ff500adb734b079da6cfd10f450')
 
 build() {
   cd "$pkgname-$pkgver"
