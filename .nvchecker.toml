@@ -1,0 +1,5 @@
+[layerx-bin]
+source = "github"
+github = "deveshctl/layerx"
+use_latest_release = true
+prefix = "v"

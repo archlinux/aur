@@ -1,0 +1,17 @@
+pkgbase = layerx-bin
+	pkgdesc = Terminal-based Docker image layer inspector
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/deveshctl/layerx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = layerx
+	conflicts = layerx
+	options = !strip
+	source_x86_64 = layerx-x86_64-1.4.0.tgz::https://github.com/deveshctl/layerx/releases/download/v1.4.0/layerx_linux_amd64.tar.gz
+	sha256sums_x86_64 = fc4388186d934198fb6c10387df44bfa6a19b4f9035f9a757b175424b3624523
+	source_aarch64 = layerx-aarch64-1.4.0.tgz::https://github.com/deveshctl/layerx/releases/download/v1.4.0/layerx_linux_arm64.tar.gz
+	sha256sums_aarch64 = 456aba0b0066e044aa447fcc3c60e97e81465c8588ce46927e689b6e70400242
+
+pkgname = layerx-bin
