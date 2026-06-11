@@ -43,7 +43,6 @@ build() {
     -D CMAKE_C_COMPILER=clang
     -D CMAKE_CXX_COMPILER=clang++
     -D BUILD_SHARED_LIBS=OFF
-    -D LLVM_BUILD_TESTS=ON
     -D LLVM_LINK_LLVM_DYLIB=OFF
     -D LLVM_EXTERNAL_LIT='/usr/bin/lit'
     -D LLVM_ENABLE_PROJECTS='bolt'
