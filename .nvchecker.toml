@@ -1,0 +1,5 @@
+[python-meshpy]
+source = "github"
+github = "inducer/meshpy"
+use_latest_release = "true"
+prefix = "v"
