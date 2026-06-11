@@ -41,14 +41,12 @@ options=(lto !debug)
 backup=("etc/conf.d/llama.cpp")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
-  # Performance tuning goodies
-  # "llama-gfx1152.patch::https://gist.githubusercontent.com/pedapudi/0da060d2a3b49a51155dbf00db61fea0/raw/aaaee0a96656ec0fc49bdfa76acd2b4edbfcbfb9/gistfile1.txt"
-  "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
-  "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
+  "llama.cpp.conf"
+  "llama.cpp.service"
 )
 sha256sums=('e1b0185afcae8ba4b94b28d4b271018afbbcdfa6b26b6fad5f5176d5f1b351c5'
-            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
-            'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
+            '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
+            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
 prepare() {
   ln -sf "${_pkgname}-${pkgver}" llama.cpp
