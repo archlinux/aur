@@ -24,6 +24,7 @@ pkgbase = shelly-git
 	depends = gnupg
 	depends = zstd
 	optdepends = flatpak: For supporting flatpak implementation.
+	optdepends = archlinux-appstream-data: package icons and metadata
 	optdepends = fish: Fish shell completions
 	provides = shelly
 	conflicts = shelly

@@ -27,6 +27,7 @@ depends=(
 )
 optdepends=(
     'flatpak: For supporting flatpak implementation.'
+    'archlinux-appstream-data: package icons and metadata'
     'fish: Fish shell completions'
 )
 makedepends=('dotnet-sdk-10.0' 'git' 'clang' 'gettext')
