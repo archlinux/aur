@@ -5,9 +5,9 @@
 # Do not edit aur-llamastash/PKGBUILD by hand -- it is overwritten on
 # every stable tag.
 pkgname=llamastash
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
-pkgdesc='Fast, keyboard-driven TUI for launching local llama.cpp models'
+pkgdesc='Zero-overhead, terminal-native local-LLM launcher'
 arch=('x86_64' 'aarch64')
 url='https://github.com/llamastash/llamastash'
 license=('MIT')
@@ -20,7 +20,7 @@ conflicts=('llamastash-bin' 'llamastash-git')
 # RUSTFLAGS=-Clto=on injection so we don't double-link.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ca87b8a7bbedf96828ed9f9d4587eaa13f3d69687c1429265df32536dc9eddc1')
+sha256sums=('8b304293b6d5db97375821deac824dbfd9444076a4599a7293b9e7546eaeabed')
 
 prepare() {
   cd "$pkgname-$pkgver"
