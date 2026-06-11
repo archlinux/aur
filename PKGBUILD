@@ -1,70 +1,66 @@
-# Maintainer: artist for Sonic-DE
+# Maintainer: callmetango
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonicde-meta
 pkgver=6.6
-pkgrel=5
-pkgdesc='Meta package to install the Sonic Desktop Environment which aims for keeping and improving the X11-specific ascpects of KDE'
-arch=(x86_64)
-license=('GPL-2.0-or-later')
-url="https://github.com/Sonic-DE"
+pkgrel=6
+pkgdesc='Meta package to install SonicDE, an X11-focused fork of KDE'
+arch=(any)
+license=(None)
+url='https://github.com/Sonic-DE'
 depends=(aurorae
          bluedevil
          breeze
          breeze-gtk
+         drkonqi
          flatpak-kcm
          kactivitymanagerd
          kde-cli-tools
          kde-gtk-config
-         kdecoration
-         kdeplasma-addons
+         kmenuedit
          knighttime
          kpipewire
          krdp
          ksshaskpass
          ksystemstats
          kwallet-pam
-         kwayland
          kwrited
          milou
          ocean-sound-theme
          oxygen
          oxygen-sounds
-         plasma-activities
          plasma-activities-stats
          plasma-browser-integration
          plasma-disks
          plasma-firewall
          plasma-integration
-         plasma-nm
-         plasma-pa
+         plasma-keyboard
          plasma-systemmonitor
          plasma-thunderbolt
          plasma-vault
          plasma-welcome
-         plasma-workspace-wallpapers
          polkit-kde-agent
          powerdevil
          print-manager
-         sddm-kcm
+         sonic-audio-applet-pulse
          sonic-desktop-interface
-         sonic-interface-libraries
-         sonic-keybind-daemon
+         sonic-login-manager
+         sonic-network-manager
          sonic-screen
-         sonic-screen-library
-         sonic-screenlocker
-         sonic-silver-sddm
          sonic-silver-theme
          sonic-system-info
-         sonic-win
-         sonic-workspace
+         sonic-workspace-addons
          sonic-x11-session
          spectacle
          systemsettings
-         xdg-desktop-portal-kde
-)
+         xdg-desktop-portal-kde)
 optdepends=('breeze-grub: Breeze theme for GRUB'
             'breeze-plymouth: Breeze theme for Plymouth'
             'kgamma: Adjust gamma settings on X'
-            'plymouth-kcm: Configure Plymouth from systemsettings'
             'plasma-sdk: Development tools'
-            'wacomtablet-xlibre: Drawing tablet settings on X')
+            'plasma-workspace-wallpapers: Additional wallpapers'
+            'plymouth-kcm: Configure Plymouth from systemsettings'
+            'sddm-kcm: SDDM configuration module'
+            'sonic-silver-sddm: SDDM silver theme'
+            'wacomtablet: Drawing tablet settings on X')
