@@ -2,7 +2,7 @@
 
 pkgname=oh-my-pi
 pkgver=15.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
@@ -81,11 +81,32 @@ build() {
     OMP_SKIP_NATIVE_EMBED=1 RELEASE_TARGETS='linux-x64' bun run ci:release:build-binaries
 }
 
+_install_completions() {
+    local _omp_bin="$1"
+    local _completion_dir="${srcdir}/completions"
+    local _runtime_dir="${srcdir}/completion-runtime"
+
+    rm -rf "${_completion_dir}" "${_runtime_dir}"
+    mkdir -p "${_completion_dir}" "${_runtime_dir}/home" "${_runtime_dir}/xdg"
+
+    env HOME="${_runtime_dir}/home" XDG_DATA_HOME="${_runtime_dir}/xdg" \
+        "${_omp_bin}" completions bash > "${_completion_dir}/omp.bash"
+    env HOME="${_runtime_dir}/home" XDG_DATA_HOME="${_runtime_dir}/xdg" \
+        "${_omp_bin}" completions zsh > "${_completion_dir}/_omp"
+    env HOME="${_runtime_dir}/home" XDG_DATA_HOME="${_runtime_dir}/xdg" \
+        "${_omp_bin}" completions fish > "${_completion_dir}/omp.fish"
+
+    install -Dm644 "${_completion_dir}/omp.bash" "${pkgdir}/usr/share/bash-completion/completions/omp"
+    install -Dm644 "${_completion_dir}/_omp" "${pkgdir}/usr/share/zsh/site-functions/_omp"
+    install -Dm644 "${_completion_dir}/omp.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/omp.fish"
+}
+
 package() {
     cd "${srcdir}/oh-my-pi-${pkgver}"
 
     install -Dm755 "packages/coding-agent/binaries/omp-linux-x64" "${pkgdir}/usr/bin/omp"
     install -Dm755 "packages/natives/native/pi_natives.linux-x64-baseline.node" "${pkgdir}/usr/bin/pi_natives.linux-x64-baseline.node"
     install -Dm755 "packages/natives/native/pi_natives.linux-x64-modern.node" "${pkgdir}/usr/bin/pi_natives.linux-x64-modern.node"
+    _install_completions "${pkgdir}/usr/bin/omp"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

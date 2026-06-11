@@ -1,7 +1,7 @@
 pkgbase = oh-my-pi
 	pkgdesc = AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more
 	pkgver = 15.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/can1357/oh-my-pi
 	arch = x86_64
 	license = MIT
