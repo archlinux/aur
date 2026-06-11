@@ -3,7 +3,7 @@
 
 _pkgname=iverilog
 pkgname=${_pkgname}-libvvp-git
-pkgver=12.0.r777.g15d6e83
+pkgver=13.0.r181.gde415b2
 pkgrel=1
 pkgdesc="Icarus Verilog simulation and synthesis tool - With VVP library support"
 arch=('i686' 'x86_64')
@@ -11,11 +11,13 @@ _url="https://github.com/steveicarus/iverilog"
 url="http://iverilog.icarus.com/"
 license=('GPL-2.0-or-later')
 depends=(
-  'gcc-libs'
   'bzip2'
   'bash'
   'zlib'
   'readline'
+  'glibc'
+  'libstdc++'
+  'libgcc'
 )
 makedepends=(
   'git'
