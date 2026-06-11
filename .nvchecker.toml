@@ -1,0 +1,4 @@
+[v2]
+source = "git"
+git = "https://github.com/oktana-coop/v2.git"
+prefix = "v"

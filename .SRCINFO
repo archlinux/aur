@@ -1,0 +1,31 @@
+pkgbase = v2
+	pkgdesc = A local-first rich text editor with Git-style version control
+	pkgver = 0.14.8
+	pkgrel = 1
+	url = https://v2editor.com
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = git-lfs
+	makedepends = gendesk
+	makedepends = jq
+	makedepends = moreutils
+	makedepends = node-gyp
+	makedepends = nodejs-lts-krypton
+	makedepends = npm
+	makedepends = pnpm
+	makedepends = sqlite3
+	makedepends = typescript
+	depends = electron38
+	depends = glibc
+	depends = libstdc++
+	depends = libstdc++.so
+	depends = libgcc
+	depends = libgcc_s.so
+	source = git+https://github.com/oktana-coop/v2.git#tag=v0.14.8
+	source = v2.sh.in
+	sha256sums = a24d0a18bb26402c8606caa401dff94c1c902b90b54617eafce2992464256e7b
+	sha256sums = 4426132f3455e44ae2698752dfd4d748a9bd831079f7fed038d18814dc5088f1
+
+pkgname = v2

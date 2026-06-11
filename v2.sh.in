@@ -1,0 +1,2 @@
+#!/bin/sh
+exec @ELECTRON@ /usr/lib/v2/app.asar --disable-dev-mode "$@"
