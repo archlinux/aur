@@ -1,7 +1,8 @@
 # Maintainer: mcniki <sawwa.cwer13 at gmail dot com>
 
 pkgname=codecontext-ai
-pkgver=1.18.0
+
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='AI-powered codebase analyzer — scans project structure, builds dependency graphs, generates LLM-optimized prompts with minification, skeleton mode, and JSON patching'
 arch=('any')
