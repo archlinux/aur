@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction
 pkgname=humen-mcp-git
-pkgver=0.1.5.r0.g0000000
+pkgver=0.1.5.r41.g26a150d
 pkgrel=1
 pkgdesc='Human-in-the-loop MCP server'
 arch=('x86_64')
