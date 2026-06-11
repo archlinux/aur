@@ -147,7 +147,8 @@ _pick() {
 }
 
 package_mutter-hdr-update() {
-  provides=(libmutter-18.so)
+  provides=(libmutter-18.so mutter)
+  conflicts=(mutter)
   optdepends=(
     'bash-completion: Bash completions for gdctl'
     'mutter-devkit: Mutter SDK, "MDK"'
@@ -166,6 +167,8 @@ package_mutter-hdr-update() {
 
 package_mutter-hdr-update-devkit() {
   pkgdesc="GNOME Mutter Development Kit"
+  provides=(mutter-devkit)
+  conflicts=(mutter-devkit)
   depends=(
     cairo
     glib2
@@ -185,6 +188,8 @@ package_mutter-hdr-update-devkit() {
 
 package_mutter-hdr-update-docs() {
   pkgdesc+=" (documentation)"
+  provides=(mutter-docs)
+  conflicts=(mutter-docs)
   depends=()
 
   mv docs/* "$pkgdir"

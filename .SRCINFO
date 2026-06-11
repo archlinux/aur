@@ -87,6 +87,8 @@ pkgname = mutter-hdr-update
 	optdepends = bash-completion: Bash completions for gdctl
 	optdepends = mutter-devkit: Mutter SDK, "MDK"
 	provides = libmutter-18.so
+	provides = mutter
+	conflicts = mutter
 
 pkgname = mutter-hdr-update-devkit
 	pkgdesc = GNOME Mutter Development Kit
@@ -101,7 +103,11 @@ pkgname = mutter-hdr-update-devkit
 	depends = libpipewire
 	depends = libxkbcommon
 	depends = mutter
+	provides = mutter-devkit
+	conflicts = mutter-devkit
 
 pkgname = mutter-hdr-update-docs
 	pkgdesc = Window manager and compositor for GNOME (with patches) (documentation)
 	depends = 
+	provides = mutter-docs
+	conflicts = mutter-docs
