@@ -1,21 +1,23 @@
 pkgbase = cava-bg
 	pkgdesc = Audio visualizer for Wayland — background layer with dynamic wallpaper colors
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/leriart/cava-bg
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = pkg-config
 	depends = cava
-	depends = wayland
 	depends = ffmpeg
+	depends = wayland
 	depends = libxkbcommon
+	depends = libegl
 	depends = libgl
 	depends = dbus
 	provides = cava-bg
 	conflicts = cava-bg
-	source = cava-bg-0.2.4.tar.gz::https://github.com/leriart/cava-bg/archive/refs/tags/0.2.4.tar.gz
-	sha256sums = 91994bc7b7f1b022418e3a2ee19b6deb1bcddfdb1936551166c60dbb8b346d0d
+	source = cava-bg-0.2.5.tar.gz::https://github.com/leriart/cava-bg/archive/refs/tags/0.2.5.tar.gz
+	sha256sums = 48270609f5e2a9909cff589d6806748bdb49e8a8232cc343ad143af3fb03bd90
 
 pkgname = cava-bg
