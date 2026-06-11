@@ -1,6 +1,6 @@
 pkgbase = ai-memory-bin
 	pkgdesc = Local-first long-term memory MCP server for AI coding agents (prebuilt binary)
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/akitaonrails/ai-memory
 	install = ai-memory.install
@@ -11,16 +11,16 @@ pkgbase = ai-memory-bin
 	depends = gcc-libs
 	depends = glibc
 	optdepends = systemd: run ai-memory as a system or user service
-	provides = ai-memory=0.13.0
+	provides = ai-memory=0.14.0
 	conflicts = ai-memory
 	conflicts = ai-memory-debug
 	options = !strip
 	options = !debug
 	backup = etc/ai-memory/config.toml
 	backup = etc/ai-memory/env
-	source_x86_64 = ai-memory-0.13.0-x86_64.tar.gz::https://github.com/akitaonrails/ai-memory/releases/download/v0.13.0/ai-memory-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 388840068f31d485dcc15db3cdb8ad30b291155cc0c2f0d66ec9e8eabb6098c4
-	source_aarch64 = ai-memory-0.13.0-aarch64.tar.gz::https://github.com/akitaonrails/ai-memory/releases/download/v0.13.0/ai-memory-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 336c921469a03a4947634fa3d46951a3f0d2b5808ad2088a88d7904d1909dc77
+	source_x86_64 = ai-memory-0.14.0-x86_64.tar.gz::https://github.com/akitaonrails/ai-memory/releases/download/v0.14.0/ai-memory-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 82e2e421eafa3dd63992620e1ba052ae26dfc5c56ff22d31cb7a1383b86b6316
+	source_aarch64 = ai-memory-0.14.0-aarch64.tar.gz::https://github.com/akitaonrails/ai-memory/releases/download/v0.14.0/ai-memory-linux-aarch64.tar.gz
+	sha256sums_aarch64 = ffc8e3cad47fc5e52c653bad6a581edd5bf28fd3972e4a74455d30345371605d
 
 pkgname = ai-memory-bin
