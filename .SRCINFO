@@ -1,6 +1,6 @@
 pkgbase = whisper-git
 	pkgdesc = GPU-accelerated Git client built in Rust with Vulkan
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/computer-whisperer/whisper-git
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = whisper-git
 	optdepends = kwallet: KDE backend for credential storage
 	optdepends = xorg-server-xwayland: run on X11 / XWayland
 	options = !lto
-	source = whisper-git-0.3.5.tar.gz::https://github.com/computer-whisperer/whisper-git/archive/v0.3.5.tar.gz
-	sha256sums = 6335dd0675ad8a66f3611583952c81b0cac6bec86a18d2c73cd90b3b340514fc
+	source = whisper-git-0.3.6.tar.gz::https://github.com/computer-whisperer/whisper-git/archive/v0.3.6.tar.gz
+	sha256sums = da662c09556bb2abca73e184d3acd03068e0ecd597bebad000c2a6716b485814
 
 pkgname = whisper-git

@@ -11,7 +11,7 @@
 #   6. Push to AUR (separate `aur:whisper-git` git remote).
 
 pkgname=whisper-git
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="GPU-accelerated Git client built in Rust with Vulkan"
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=('gnome-keyring: libsecret backend for credential storage'
             'xorg-server-xwayland: run on X11 / XWayland')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 # Refresh with `updpkgsums` whenever pkgver bumps.
-sha256sums=('6335dd0675ad8a66f3611583952c81b0cac6bec86a18d2c73cd90b3b340514fc')
+sha256sums=('da662c09556bb2abca73e184d3acd03068e0ecd597bebad000c2a6716b485814')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
