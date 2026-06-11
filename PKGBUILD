@@ -36,7 +36,7 @@ conflicts=(
     'shiori-ebook-bin'
 )
 source=("Shiori_${pkgver}_linux_amd64.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v${pkgver}/Shiori_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('e68314b45c099f7a69fb2267715e17d20c99c7d24042a45d761c4807aacd69e5')
+sha256sums=('dd01ffb7895fa6560b624aa3ceeb3998dcff35b0194fe86c72dc57877b723db3')
 
 package() {
     bsdtar -xpf "${srcdir}/Shiori_${pkgver}_linux_amd64.tar.gz" -C "${pkgdir}"
