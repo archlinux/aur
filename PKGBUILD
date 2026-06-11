@@ -1,6 +1,6 @@
 # Maintainer: Mattes Rötschke <dev at mattes-roetschke dot de>
 pkgname=stuart
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A serial terminal TUI"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/mroetsc/stuart/archive/refs/tags/${pkgver}.tar.gz"
 )
 
-sha256sums=('a580b72640b1558751dc67b551a60320f47b786b91beb69de0f6b66815d9eb92')
+sha256sums=('aad777fea8d9c868fbfe796cebc5d2a3b3359454233587e0866d402715040130')
 
 options=('!debug')
 
