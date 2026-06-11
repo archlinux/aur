@@ -1,16 +1,21 @@
 pkgbase = qdl
 	pkgdesc = Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code
-	pkgver = 2.6
-	pkgrel = 2
+	pkgver = 2.7
+	pkgrel = 1
 	url = https://github.com/linux-msm/qdl
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
+	checkdepends = zip
+	makedepends = cmocka
+	makedepends = git
 	makedepends = help2man
+	makedepends = meson>=1.1.0
 	depends = glibc
 	depends = libusb
 	depends = libxml2
-	source = https://github.com/linux-msm/qdl/archive/refs/tags/v2.6/qdl-2.6.tar.gz
-	b2sums = 5c4069086ba637f7c4c8da98a794e7e2fdc30c229c9e7cb35a8de1cd057a42acaec83477a9003f0a2b1f30f7107f7e99b7e49b10d29d3a353d114b5916e6cc2e
+	depends = libzip
+	source = qdl::git+https://github.com/linux-msm/qdl.git#tag=v2.7
+	b2sums = d76c6473d81c8e32aee2c14dc799069d208140d5e8bf1e1af8edb04b3fcf76ab73196f91670c3debd86924eac4dfc095512d8c1e17300d7666c6142fb78d32fe
 
 pkgname = qdl
