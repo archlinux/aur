@@ -1,6 +1,6 @@
 pkgbase = kcolorscheme-git
 	pkgdesc = Classes to read and interact with KColorScheme
-	pkgver = 6.27.0.rc1.r2.gee4af00
+	pkgver = 6.27.0.rc1.r3.gc6e7622
 	pkgrel = 1
 	url = https://invent.kde.org/frameworks/kcolorscheme
 	arch = any
