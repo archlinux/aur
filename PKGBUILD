@@ -11,7 +11,7 @@ depends=("ncurses" "readline")
 makedepends=("bison" "flex" "gcc" "make")
 # Use the GitHub release archive for source retrieval
 source=("opencomal-${pkgver}.tar.gz::https://github.com")
-sha256sums=('de251ef4a917d55c7fb1257df894043044661179aec1aa771407631bbbf9da87')
+sha256sums=('8ddf49e4266f07a8f8402d3fb0c73e0006eabd9e83fbc6931eabb7fc10c29fb8')
 
 build() {
     cd "${srcdir}/opencomal-packaging"
