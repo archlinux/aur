@@ -192,38 +192,13 @@ prepare() {
   mv mozconfig ../mozconfig || true
 
   cat >>../mozconfig <<END
-##### main archlinux-firefox 136
-ac_add_options --enable-hardening
 ac_add_options --disable-install-strip
-ac_add_options --allow-addon-sideload
 
-
-##### Kon
-export MOZ_REQUIRE_SIGNING=
-export MOZ_DATA_REPORTING=
-export MOZ_TELEMETRY_ON_BY_DEFAULT=
-
-mk_add_options MOZ_CRASHREPORTER=
-mk_add_options MOZ_DATA_REPORTING=
-mk_add_options MOZ_SERVICES_HEALTHREPORT=
-mk_add_options MOZ_TELEMETRY_REPORTING=
-mk_add_options MOZ_TELEMETRY_ON_BY_DEFAULT=
-
-mk_add_options MOZ_REQUIRE_SIGNING=
-
-#ac_add_options --enable-rust-simd
-ac_add_options --disable-tests
-ac_add_options --disable-crashreporter
-ac_add_options --disable-updater
 ac_add_options --enable-system-pixman
 ac_add_options --with-ccache=sccache
 
-##### /Kon
-
 ac_add_options --enable-linker=lld
-
 ac_add_options --prefix=/usr
-
 ac_add_options --disable-bootstrap
 
 export CC='clang'
