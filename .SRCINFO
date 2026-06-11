@@ -1,0 +1,7 @@
+pkgbase = visualstudio
+	pkgver = VERSION
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+
+pkgname = visualstudio
