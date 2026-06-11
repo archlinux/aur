@@ -2,7 +2,7 @@
 
 pkgname=lastlint
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linter for Evan Chen's LaTeX style guide"
 arch=(any)
 url=https://github.com/cjquines/lastlint
@@ -20,4 +20,4 @@ package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
-sha256sums=('fc71724ba07a151bf062d4895f83cc0090a7bf0863156f2ecaa866b13ac1e87f')
+b2sums=('398b579bcf7159a977d1ca993fcf2724a9a2bef8085ad8483d05c67c2b3bc69df6d7519a70e6c0b67ccf6b0d17197b15d07371a628a8aed63cd323d42d652103')
