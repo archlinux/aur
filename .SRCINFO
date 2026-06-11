@@ -1,6 +1,6 @@
 pkgbase = wispr-flow-appimage
 	pkgdesc = Wispr Flow voice dictation for Linux (unofficial AppImage build)
-	pkgver = 1.0.2+wispr1.5.751
+	pkgver = 1.0.3+wispr1.5.751
 	pkgrel = 1
 	url = https://github.com/wispr-flow-linux/wispr-flow-linux
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = wispr-flow-appimage
 	optdepends = wl-clipboard: clipboard paste-injection on Wayland
 	provides = wispr-flow
 	conflicts = wispr-flow
-	noextract = wispr-flow-1.5.751-1.0.2-x86_64.AppImage
+	noextract = wispr-flow-1.5.751-1.0.3-x86_64.AppImage
 	options = !strip
-	source = wispr-flow-1.5.751-1.0.2-x86_64.AppImage::https://github.com/wispr-flow-linux/wispr-flow-linux/releases/download/v1.0.2+wispr1.5.751/wispr-flow-1.5.751-1.0.2-x86_64.AppImage
-	sha256sums = a67edef15a60130290ad5b5751a689ece14364448a9add2ab7d487a512229c53
+	source = wispr-flow-1.5.751-1.0.3-x86_64.AppImage::https://github.com/wispr-flow-linux/wispr-flow-linux/releases/download/v1.0.3+wispr1.5.751/wispr-flow-1.5.751-1.0.3-x86_64.AppImage
+	sha256sums = 9e52a7bb9eb30f482ef32d435cab78cecd510a6cf42e0990faf2bba34110740a
 
 pkgname = wispr-flow-appimage
