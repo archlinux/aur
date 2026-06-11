@@ -1,0 +1,108 @@
+--- ./havoc/transform.cpp	2026-06-07 19:11:25.195432236 +0200
++++ ./havoc/transform.cpp	2026-06-10 20:19:27.943319021 +0200
+@@ -24,6 +24,7 @@
+ #include "transform.h"
+ #include "havoc_test.h"
+ #include "Jit.h"
++#include <limits>
+ #include <stdlib.h>
+ #include <string.h>
+
+--- ./turing/FixedPoint.h	2026-06-07 19:11:25.200432228 +0200
++++ ./turing/FixedPoint.h	2026-06-10 20:38:32.876052848 +0200
+@@ -25,7 +25,7 @@
+ 
+ #include <stdint.h>
+ #include <ostream>
+-
++#include <limits>
+ 
+ // Representation of fixed-point integers with parameters for base type and position of the radix point.
+ template <class U, int k>
+@@ -88,12 +88,18 @@
+ namespace std {
+ 
+     template <class U, int k>
+-    class numeric_limits < FixedPoint<U, k> >
++    struct numeric_limits<FixedPoint<U, k>> : numeric_limits<U>
+     {
+-    public:
+-        static FixedPoint<U, k> max()
++        static constexpr bool is_specialized = true;
++
++        static constexpr FixedPoint<U, k> max() noexcept
++        {
++            return FixedPoint<U, k>{ numeric_limits<U>::max() };
++        }
++
++        static constexpr FixedPoint<U, k> min() noexcept
+         {
+-            return FixedPoint<U, k> { std::numeric_limits<U>::max() };
++            return FixedPoint<U, k>{ numeric_limits<U>::min() };
+         }
+     };
+ 
+--- ./turing/Snake.h	2026-06-10 20:30:00.122170548 +0200
++++ ./turing/Snake.h	2026-06-10 20:30:30.933285733 +0200
+@@ -214,6 +214,8 @@
+         void forcePosition(When when, const Rectangle &rectangular) const { }
+ #endif
+ 
++        int log2Resolution = 0;
++
+         T *origin;
+ 
+         template <class Position>
+--- ./turing/Picture.h	2026-06-07 19:11:25.201432227 +0200
++++ ./turing/Picture.h	2026-06-10 20:32:40.765678083 +0200
+@@ -24,6 +24,7 @@
+ #include "MotionVector.h"
+ #include <iostream>
+ #include <stdint.h>
++#include <cstdint>
+ #include <cassert>
+ #include <memory>
+ 
+--- ./turing/Read.h	2026-06-07 19:11:25.203432224 +0200
++++ ./turing/Read.h	2026-06-10 20:33:44.431021506 +0200
+@@ -39,6 +39,7 @@
+ #include "StateSpatial.h"
+ #include "RangeLimits.h"
+ #include "Mvp.h"
++#include <boost/numeric/conversion/cast.hpp>
+ #include <fstream>
+ 
+ 
+--- ./turing/Search.hpp	2026-06-07 19:11:25.205432221 +0200
++++ ./turing/Search.hpp	2026-06-10 20:40:33.877183534 +0200
+@@ -33,6 +33,7 @@
+ #include "EstimateRate.h"
+ #include "havoc/sad.h"
+ #include "Aps.h"
++#include <boost/range/size.hpp>
+ 
+ 
+ // Finds the best value of IntraPredModeY for a single intra partition
+--- ./turing/ConformanceStreams.h	2026-06-07 19:11:25.199432230 +0200
++++ ./turing/ConformanceStreams.h	2026-06-10 20:42:05.569941418 +0200
+@@ -131,7 +131,7 @@
+                 {
+                     auto s = base;
+                     s.remove_filename();
+-                    s /= s.leaf().string() + "_yuv.md5";
++                    s /= s.filename().string() + "_yuv.md5";
+                     md5 = s.string();
+                 }
+                 if (!boost::filesystem::exists(md5))
+
+--- ./turing/CMakeLists.txt	2026-06-07 19:11:25.196712150 +0200
++++ ./turing/CMakeLists.txt	2026-06-10 20:47:50.688747790 +0200
+@@ -37,7 +37,7 @@
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBOOST_ALL_NO_LIB /bigobj /GS- /MP")
+ endif()
+ 
+-set(LINK_LIBRARIES boost_program_options boost_filesystem boost_system boost_timer boost_chrono)
++set(LINK_LIBRARIES boost_program_options boost_filesystem boost_timer boost_chrono)
+ 
+ if (CMAKE_COMPILER_IS_GNUCC)
+     add_compile_options(-fno-operator-names -pthread -std=c++1y)
