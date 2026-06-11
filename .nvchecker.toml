@@ -1,0 +1,5 @@
+[termrain-bin]
+source = "github"
+github = "iorinu/termrain"
+use_latest_release = true
+prefix = "v"
