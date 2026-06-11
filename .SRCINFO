@@ -1,6 +1,6 @@
 pkgbase = python-dask-cuda
 	pkgdesc = Utilities for Dask and CUDA interactions
-	pkgver = 26.04.00
+	pkgver = 26.06.00
 	pkgrel = 1
 	url = https://github.com/rapidsai/dask-cuda
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-dask-cuda
 	depends = python-pandas
 	depends = python-zict
 	depends = python-nvidia-ml-py
-	source = https://github.com/rapidsai/dask-cuda/archive/refs/tags/v26.04.00.tar.gz
-	sha256sums = 10b8d3031302611835b8869621ae83015185a69df183c5e5371a32a9376335fd
+	source = https://github.com/rapidsai/dask-cuda/archive/refs/tags/v26.06.00.tar.gz
+	sha256sums = a42d1d2895474e62d02fbcb3f5b41a9721dc69f595f1a79402cadbae8d46d0bc
 
 pkgname = python-dask-cuda
