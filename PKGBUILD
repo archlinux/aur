@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
-pkgver=2.3.2.3
+pkgver=2.3.2.2.r73.gcb720b97
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
@@ -199,5 +199,3 @@ update-desktop-database "$LOCAL_APPS_DIR" 2>/dev/null || true
 echo "Flatpak desktop entries patched with Shelly integration."
 SCRIPT
 }
-sha256sums=('SKIP')
-sha256sums=('SKIP')
