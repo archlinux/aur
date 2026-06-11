@@ -2,7 +2,7 @@
 
 pkgbase=rucio
 pkgname=('rucio' 'rucio-daemon' 'rucio-cli' 'rucio-bootstrap')
-pkgver=0.19.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='Decentralized peer-to-peer file sharing over libp2p, with eMule/Kad2 compatibility'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ source=("${pkgbase}-${pkgver}::git+https://github.com/ogarcia/rucio.git#tag=${pk
         "${pkgbase}-system.service"
         "${pkgbase}-user.service"
         "${pkgbase}-bootstrap.service")
-b2sums=('e593ff88ff53feee1554543e67064537e5956f817683afd61a3641c66d22e595fdac8084554245ddc436be55d142f8488cb4692a361e379aee17890849e28290'
+b2sums=('bb4e42bb76625d4e957e33b72f707624b439a22ec37f1e0b7366065d316c910ce13a340f3c37f1dbcfac4deaf98972554d88dd0e3ff8c90186d25838baa225e2'
         '7906f2c641558dea0d6314b4609943b41e9a9bf5d64e83de688b95e2610074e298e9b87b1421729924807bf317277f87c8ebf2a39268bfaa75568fd34606296d'
         'a3c04268a6909af624a572331b021cf1d83621ea2156379739a9c851e54d672a2280a73784e53830163a9aa7a7e4bad7995fb3328d1c41fc509cabede342ccff'
         'e12e4f4f91b5bf50669a83ff570796350b19c1c321ba13f0138b8fcbbfb3a92a6a17e31f65c439c34219dc80ee4b7e284a25a7d73bcd0ee7085c3716d4163086')
