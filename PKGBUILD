@@ -1,10 +1,10 @@
 # Maintainer: Orion-zhen <https://github.com/Orion-zhen>
 
-pkgname=llama.cpp-gfx1151
-_pkgname=${pkgname%%-gfx1151}
-pkgver=b9222
-pkgrel=3
-pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm + Vulkan)"
+pkgname=llama.cpp-gfx1152
+_pkgname=${pkgname%%-gfx1152}
+pkgver=b9292
+pkgrel=1
+pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1152 (Krackan), ROCm + Vulkan)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggml-org/llama.cpp'
 license=('MIT')
@@ -14,7 +14,7 @@ depends=(
   glibc
   python
   openmp
-  rocm-nightly-gfx1151-bin
+  rocm-nightly-gfx1152-bin
   vulkan-icd-loader
 )
 makedepends=(
@@ -41,11 +41,11 @@ backup=("etc/conf.d/llama.cpp")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
   # 提升性能的妙妙工具
-  # "llama-gfx1151.patch::https://gist.githubusercontent.com/pedapudi/0da060d2a3b49a51155dbf00db61fea0/raw/aaaee0a96656ec0fc49bdfa76acd2b4edbfcbfb9/gistfile1.txt"
+  # "llama-gfx1152.patch::https://gist.githubusercontent.com/pedapudi/0da060d2a3b49a51155dbf00db61fea0/raw/aaaee0a96656ec0fc49bdfa76acd2b4edbfcbfb9/gistfile1.txt"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('b49a83f3783d9386e01c182f31371ad12bf7320e62370885e14bdf863733683c'
+sha256sums=('cff8ab2d7eeba945a725a59ed67b20971f8bc69fc24c1a5ac77901b3fae56950'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
@@ -60,7 +60,7 @@ prepare() {
   # the extracted source tree stops the upward walk before that point.
   mkdir -p "${_pkgname}/.git"
 
-  # patch -d "${srcdir}/llama.cpp" -Np1 -i "${srcdir}/llama-gfx1151.patch"
+  # patch -d "${srcdir}/llama.cpp" -Np1 -i "${srcdir}/llama-gfx1152.patch"
 }
 
 build() {
@@ -77,7 +77,7 @@ build() {
   export HIPCXX="$(hipconfig -l)/amdclang"
   export HIP_PLATFORM=amd
   # 清除核显上的函数调用开销
-  export HIP_CLANG_FLAGS="--offload-arch=gfx1151 -mllvm -amdgpu-early-inline-all=true -mllvm -amdgpu-function-calls=false"
+  export HIP_CLANG_FLAGS="--offload-arch=gfx1152 -mllvm -amdgpu-early-inline-all=true -mllvm -amdgpu-function-calls=false"
 
   local _cmake_options=(
     -B build
@@ -128,9 +128,9 @@ build() {
       # gfx101x: RX 5000 Series
       # gfx103x: RX 6000 Series
       # gfx110x: RX 7000 Series
-      # gfx1151: Strix Halo
+      # gfx1152: Krackan
       # gfx120x: RX 9000 Series
-      -DAMDGPU_TARGETS="gfx1151"
+      -DAMDGPU_TARGETS="gfx1152"
       # -DGGML_ZENDNN=ON
     )
   else
