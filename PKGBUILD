@@ -3,7 +3,7 @@
 
 _pkgname="zigdown"
 pkgname="${_pkgname}-bin"
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Parse and render Markdown-like content to the terminal, to HTML, or inside Neovim"
 arch=(
@@ -34,10 +34,10 @@ source_aarch64=(
 source_x86_64=(
   "${_pkgsrc}-x86_64-linux-gnu.tar.gz::${url}/releases/download/v${pkgver}/x86_64-linux-gnu.tar.gz"
 )
-sha256sums=('53482fc32d9d0ab0dccb16eeb7b7f98bb804c2d946f8111b848298304ee815c2'
+sha256sums=('d6d25a7797873aee749bb870eb535398f6d4b15ed3b1275340f28bfa517ba5bf'
             '2c8f1ee2496954366f4b020a63e97732dc9a232d5eaa43acf626322cc298dc7a')
-sha256sums_aarch64=('b9b1b39575b74a952733bd76b1ac7258444f6448fa0a97810c460abad81dd06c')
-sha256sums_x86_64=('b9220cd8dcf9111be4fda7320241385f94e3ac77254317165035999029a4a8df')
+sha256sums_aarch64=('76a099197121a6984a304badd751cd171ecc233020c2718db28111a8d026dbaa')
+sha256sums_x86_64=('2bd1a3a8cf37aa9f235271ae9c892180008b948fed0e7be555352efe97fa97f3')
 
 package() {
   cd "${srcdir}"
