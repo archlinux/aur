@@ -1,7 +1,7 @@
 pkgbase = vacask
 	pkgdesc = Verilog-A Circuit Analysis Kernel is an analog circuit simulator
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/arpadbuermen/VACASK
 	arch = x86_64
 	arch = aarch64
@@ -20,7 +20,9 @@ pkgbase = vacask
 	depends = suitesparse
 	depends = boost-libs
 	depends = glibc
-	depends = gcc-libs
+	depends = libstdc++
+	depends = libgcc
+	depends = libgomp
 	optdepends = python-matplotlib: For plotting the individual tests
 	source = vacask::git+https://codeberg.org/arpadbuermen/VACASK#tag=_0.3.3
 	b2sums = 3f8552e2714b535f5a08d2a95960c602909ae28d33723f3dc06f1bb9e82e8e5eeadd832b805901df6cdac728d9a82009088c9491c37cda650194a4dc74694a5c

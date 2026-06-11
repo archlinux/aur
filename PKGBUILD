@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=vacask
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
 	'x86_64'
@@ -14,7 +14,9 @@ depends=(
     'suitesparse'
     'boost-libs'
     'glibc'
-    'gcc-libs'
+    'libstdc++'
+    'libgcc'
+    'libgomp'
 )
 makedepends=(
     'git'
