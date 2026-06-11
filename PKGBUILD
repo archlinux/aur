@@ -1,7 +1,7 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 
 pkgname=stasis
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 conflicts=('stasis-git')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dac54bf1777bc112e095c0336d0c3abceb029c0f6fe7928d50d9981e3d560995')
+sha256sums=('6492c8e1bfbf4413d13ef059ff9ce2fb24a786aa6778267449ea67cfd71cbf4e')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -29,6 +29,9 @@ package() {
 
     # Install binary
     install -Dm755 "target/release/stasis" "$pkgdir/usr/bin/stasis"
+
+    # Install icon
+    install -Dm644  "assets/stasis.png"  "$pkgdir/usr/share/icons/hicolor/256x256/apps/stasis.png"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
