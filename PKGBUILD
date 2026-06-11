@@ -5,9 +5,9 @@
 
 pkgname=rocmfp4-llama.cpp-git
 _pkgname=rocmfp4-llama
-pkgver=b9151.r82.e5e4b1b
+pkgver=b9151.r90.c4cd376
 pkgrel=1
-pkgdesc="Experimental llama.cpp fork with FP4 quantization support (with AMD ROCm optimizations)"
+pkgdesc="Experimental llama.cpp fork with AMD-focused ROCm FP4 quantization support"
 arch=(x86_64)
 url='https://github.com/charlie12345/rocmfp4-llama'
 license=('MIT')
@@ -27,6 +27,7 @@ makedepends=(
   nodejs
   npm
   rocm-hip-sdk
+  rocwmma
 )
 optdepends=(
   'python-numpy: needed for convert_hf_to_gguf.py'
@@ -101,6 +102,7 @@ build() {
     -DCMAKE_HIP_FLAGS="-mllvm --amdgpu-unroll-threshold-local=600"
     -DBUILD_SHARED_LIBS=ON
     -DLLAMA_BUILD_TESTS=OFF
+    -DLLAMA_BUILD_SERVER=ON
     -DLLAMA_USE_SYSTEM_GGML=OFF
     -DLLAMA_BUILD_WEBUI=ON
     -DGGML_ALL_WARNINGS=OFF
@@ -109,12 +111,16 @@ build() {
     -DGGML_BUILD_TESTS=OFF
     -DGGML_LTO=ON
     -DGGML_RPC=ON
+    -DGGML_CUDA=OFF
+    -DGGML_VULKAN=ON
     -DGGML_HIP=ON
     -DGGML_HIP_GRAPHS=OFF # ON breaks runtime
+    -DGGML_HIP_ROCWMMA_FATTN=ON
+    -DGGML_HIP_FORCE_MMQ=ON
     -DHIP_PLATFORM=amd
-    -DGGML_CUDA_FA_ALL_QUANTS=ON
     -DLLAMA_BUILD_NUMBER="${_build_num}"
     -Wno-dev
+    -DHIP_EXTRA_FLAGS="-I/opt/rocm/include/rocwmma/internal/"
   )
 
   if [ -n "$CI" ] && [ "$CI" != 0 ]; then

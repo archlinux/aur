@@ -1,6 +1,6 @@
 pkgbase = rocmfp4-llama.cpp-git
-	pkgdesc = Experimental llama.cpp fork with FP4 quantization support (with AMD ROCm optimizations)
-	pkgver = b9151.r82.e5e4b1b
+	pkgdesc = Experimental llama.cpp fork with AMD-focused ROCm FP4 quantization support
+	pkgver = b9151.r90.c4cd376
 	pkgrel = 1
 	url = https://github.com/charlie12345/rocmfp4-llama
 	install = llama.cpp.install
@@ -11,6 +11,7 @@ pkgbase = rocmfp4-llama.cpp-git
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = rocm-hip-sdk
+	makedepends = rocwmma
 	depends = curl
 	depends = gcc-libs
 	depends = glibc
