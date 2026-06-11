@@ -1,8 +1,8 @@
 # Maintainer: Masoud Yousefvand <yousefvand@gmail.com>
 
 pkgname=remidock
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc='Custom Qt/QML dock for KDE Plasma Wayland'
 arch=('x86_64')
 url='https://github.com/yousefvand/RemiDock'
@@ -21,8 +21,8 @@ makedepends=(
   'gcc'
   'extra-cmake-modules'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/yousefvand/RemiDock/archive/refs/tags/v0.3.1.tar.gz")
-sha256sums=('2614608a2bf87201ccaeba5b3f5d91f494114b7abb3a6e80d26d01646ccef646')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/yousefvand/RemiDock/archive/refs/tags/v0.3.2.tar.gz")
+sha256sums=('bc644f8af3f0e0736e9df86ecd85d44c37e0612d898c6ee255ac0b07ee21cf86')
 
 build() {
   cmake -S "RemiDock-${pkgver}" -B build -G Ninja \
@@ -38,5 +38,14 @@ package() {
 
   if [[ -f "$pkgdir/usr/share/applications/org.remisa.RemiDock.desktop" ]]; then
     sed -i 's/^Icon=.*/Icon=remidock/' "$pkgdir/usr/share/applications/org.remisa.RemiDock.desktop"
+  fi
+
+  # Install a global XDG autostart entry so RemiDock starts automatically
+  # for users on their next Plasma/KDE login after installing from AUR.
+  if [[ -f "RemiDock-${pkgver}/data/org.remisa.RemiDock.desktop" ]]; then
+    install -Dm644 "RemiDock-${pkgver}/data/org.remisa.RemiDock.desktop" "$pkgdir/etc/xdg/autostart/org.remisa.RemiDock.desktop"
+    sed -i 's/^Icon=.*/Icon=remidock/' "$pkgdir/etc/xdg/autostart/org.remisa.RemiDock.desktop"
+    grep -q '^X-GNOME-Autostart-enabled=' "$pkgdir/etc/xdg/autostart/org.remisa.RemiDock.desktop" ||       printf 'X-GNOME-Autostart-enabled=true\n' >> "$pkgdir/etc/xdg/autostart/org.remisa.RemiDock.desktop"
+    grep -q '^X-KDE-autostart-after=' "$pkgdir/etc/xdg/autostart/org.remisa.RemiDock.desktop" ||       printf 'X-KDE-autostart-after=panel\n' >> "$pkgdir/etc/xdg/autostart/org.remisa.RemiDock.desktop"
   fi
 }

@@ -1,7 +1,7 @@
 pkgbase = remidock
 	pkgdesc = Custom Qt/QML dock for KDE Plasma Wayland
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://github.com/yousefvand/RemiDock
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = remidock
 	depends = qt6-imageformats
 	depends = layer-shell-qt
 	depends = libpulse
-	source = remidock-0.3.1.tar.gz::https://github.com/yousefvand/RemiDock/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = 2614608a2bf87201ccaeba5b3f5d91f494114b7abb3a6e80d26d01646ccef646
+	source = remidock-0.3.2.tar.gz::https://github.com/yousefvand/RemiDock/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = bc644f8af3f0e0736e9df86ecd85d44c37e0612d898c6ee255ac0b07ee21cf86
 
 pkgname = remidock
