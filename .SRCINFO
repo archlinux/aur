@@ -1,6 +1,6 @@
 pkgbase = bzfs
 	pkgdesc = ZFS dataset replication tool.
-	pkgver = 1.21.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://github.com/whoschek/bzfs
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = bzfs
 	optdepends = pv: progress bars
 	optdepends = mbuffer: stream buffering
 	optdepends = python-tenacity: auxiliary test microbenchmark
-	source = https://files.pythonhosted.org/packages/source/b/bzfs/bzfs-1.21.0.tar.gz
-	sha256sums = 584441b8c29035fb9cc677e49472dade45c00541a52ea4ebaec83f8080ba3175
+	source = https://files.pythonhosted.org/packages/source/b/bzfs/bzfs-1.22.0.tar.gz
+	sha256sums = 3d2a050db9289f26aa9bfc548c65cce8362af942329af072e5c2d27e7570c2b2
 
 pkgname = bzfs
