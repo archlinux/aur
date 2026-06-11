@@ -32,13 +32,10 @@ source=("${pkgname}::git+https://github.com/RanRhoads84/reddit-terminal-viewer.g
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
-    # Use tag if available, otherwise fall back to version from source + commit count
-    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || \
-    printf "%s.r%s.g%s" \
-        "$(python -c "exec(open('rtv/__version__.py').read()); print(__version__)")" \
-        "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short=7 HEAD)"
+    cd "${srcdir}/${pkgname}"
+    local _ver
+    _ver=$(grep -m1 '__version__' rtv/__version__.py | cut -d'"' -f2)
+    printf "%s.r%s.g%s" "${_ver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
