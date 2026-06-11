@@ -1,11 +1,12 @@
-# Maintainer: tarball <bootctl@gmail.com>
+# Maintainer: none
+# Contributor: tarball <bootctl@gmail.com>
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 # Contributor: ny-a <nyaarch64@gmail..com>
 # Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: Sam Whited <sam@samwhited.com>
 
 pkgname=stripe-cli
-pkgver=1.42.10
+pkgver=1.42.11
 pkgrel=1
 pkgdesc='CLI for Stripe'
 arch=(i686 x86_64 aarch64)
@@ -14,7 +15,7 @@ license=(Apache-2.0)
 depends=(glibc)
 makedepends=(go git)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-b2sums=('194cb458c05c94ab00b2481ee317f857c67f061116f52ec957b8f80432b8195b812b2dc19fe4590cbd82fd1dde30f51d058ae5d42bb2dc277658c71fb01aadf9')
+b2sums=('c188748ddaae44b32a5f8a67f5b3597005373034f5c2a27c8726e2ce0586624ae2639e2449b13ac4de4f04dbd1253d9bbfd56f21f4178116fec56704eae96e9a')
 
 prepare() {
   cd $pkgname-$pkgver
