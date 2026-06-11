@@ -1,0 +1,26 @@
+pkgbase = prismlauncher-fixes-additions-bin
+	pkgdesc = Prism Launcher with custom fixes and offline-mode bypass (Precompiled-bin)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Makar986/PrismLauncher-Fixes-Additions
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-5compat
+	depends = qt6-imageformats
+	depends = cmark
+	depends = libarchive
+	depends = qrencode
+	depends = tomlplusplus
+	depends = zlib
+	depends = hicolor-icon-theme
+	optdepends = java-runtime>=17: Для запуска самого Minecraft (рекомендуется jre17-openjdk или jre21-openjdk)
+	provides = prismlauncher
+	conflicts = prismlauncher
+	conflicts = prismlauncher-git
+	conflicts = prismlauncher-qt5-bin
+	source = https://github.com/Makar986/PrismLauncher-Fixes-Additions/releases/download/v1.0.0/PrismLauncher-Linux-Qt6-Portable-v1.0.0.tar.gz
+	sha256sums = f0c5e21815634258b88ab2ba8df2bee47028c48bc57c330ff27a026c46eddc19
+
+pkgname = prismlauncher-fixes-additions-bin
