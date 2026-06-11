@@ -1,0 +1,53 @@
+From 5a1fafa19c24fede521f5fef13a5958ac441e501 Mon Sep 17 00:00:00 2001
+From: Rodney van den Velden <rodneymichael2002@gmail.com>
+Date: Wed, 10 Jun 2026 18:15:54 +0200
+Subject: [PATCH] Fixed using system fmt
+
+---
+ extern/CMakeLists.txt | 29 ++++++++++++++++-------------
+ 1 file changed, 16 insertions(+), 13 deletions(-)
+
+diff --git a/extern/CMakeLists.txt b/extern/CMakeLists.txt
+index 8603f5f..44d0959 100644
+--- a/extern/CMakeLists.txt
++++ b/extern/CMakeLists.txt
+@@ -90,20 +90,23 @@ else ()
+   message(STATUS "aurora: Using existing xxhash")
+ endif ()
+ 
+-if (NOT TARGET fmt)
+-  message(STATUS "aurora: Fetching fmt")
+-  FetchContent_Declare(fmt
+-    URL https://github.com/fmtlib/fmt/archive/refs/tags/11.1.4.tar.gz
+-    URL_HASH SHA256=ac366b7b4c2e9f0dde63a59b3feb5ee59b67974b14ee5dc9ea8ad78aa2c1ee1e
+-    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+-    EXCLUDE_FROM_ALL
+-  )
+-  FetchContent_MakeAvailable(fmt)
+-  if (NOT TARGET fmt)
+-    message(FATAL_ERROR "Failed to make fmt available")
++if (NOT TARGET fmt::fmt)
++  aurora_find_package_global(fmt QUIET)
++  if (NOT TARGET fmt::fmt)
++    message(STATUS "aurora: Fetching fmt")
++    FetchContent_Declare(fmt
++      URL https://github.com/fmtlib/fmt/archive/refs/tags/12.1.0.tar.gz
++      URL_HASH SHA256=ea7de4299689e12b6dddd392f9896f08fb0777ac7168897a244a6d6085043fea
++      DOWNLOAD_EXTRACT_TIMESTAMP TRUE
++      EXCLUDE_FROM_ALL
++    )
++    FetchContent_MakeAvailable(fmt::fmt)
++    if (NOT TARGET fmt::fmt)
++      message(FATAL_ERROR "Failed to make fmt available")
++    endif ()
++  else ()
++    message(STATUS "aurora: Using existing fmt")
+   endif ()
+-else ()
+-  message(STATUS "aurora: Using existing fmt")
+ endif ()
+ 
+ if (AURORA_ENABLE_GX)
+-- 
+2.54.0
+
