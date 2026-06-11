@@ -1,0 +1,16 @@
+pkgbase = croi-ng
+	pkgdesc = Network and IoT security scanner for red teamers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jasuasau/Croi-ng
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	makedepends = base-devel
+	depends = libpcap
+	depends = ncurses
+	depends = lua54
+	source = croi-ng-1.0.0.tar.gz::https://github.com/jasuasau/Croi-ng/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = croi-ng
