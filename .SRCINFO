@@ -1,0 +1,25 @@
+pkgbase = ffpb-rs-bin
+	pkgdesc = A modern, cli progress bar for ffmpeg
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/clitic/ffpb-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	depends = ffmpeg
+	provides = ffpb
+	conflicts = ffpb
+	options = !strip
+	source = README-0.2.1.md::https://raw.githubusercontent.com/clitic/ffpb-rs/0.2.1/README.md
+	source = LICENSE-MIT-0.2.1::https://raw.githubusercontent.com/clitic/ffpb-rs/0.2.1/LICENSE-MIT
+	source = LICENSE-APACHE-0.2.1::https://raw.githubusercontent.com/clitic/ffpb-rs/0.2.1/LICENSE-APACHE
+	sha256sums = 69d995b51c1c573279fd2fcff1dbbb4ba1f8a0148e4cfe62d215cce898a8afd0
+	sha256sums = 3b2582ab8cba78cef5e619034cafea64f544bbd1e2b88b64c0a9f001feb2c170
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = ffpb-x86_64-0.2.1.txz::https://github.com/clitic/ffpb-rs/releases/download/0.2.1/ffpb-0.2.1-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 6c0e9f7ebd34de3fdc1b75060c0ec5248d0d5aa75a750832ae730589d31d89ab
+	source_aarch64 = ffpb-aarch64-0.2.1.txz::https://github.com/clitic/ffpb-rs/releases/download/0.2.1/ffpb-0.2.1-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = 01744cf2b445c8855e993dcda9d1b5c76ef95756ed60162a0d508d3fe15fb0f6
+
+pkgname = ffpb-rs-bin

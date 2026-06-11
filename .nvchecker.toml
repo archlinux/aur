@@ -1,0 +1,5 @@
+[ffpb-rs-bin]
+source = "github"
+github = "clitic/ffpb-rs"
+use_latest_release = true
+prefix = ""
