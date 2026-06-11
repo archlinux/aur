@@ -1,0 +1,3 @@
+[merlin-commit]
+source = "npm"
+npm = "merlin-commit"

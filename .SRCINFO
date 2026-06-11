@@ -1,0 +1,21 @@
+pkgbase = merlin-commit
+	pkgdesc = 🧙‍♂️ Magical, interactive CLI for creating conventional commits
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mBukator/merlin-commit
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = merlin-commit
+	provides = merlin
+	noextract = merlin-commit-1.0.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = merlin-commit-1.0.0.tgz::https://registry.npmjs.org/merlin-commit/-/merlin-commit-1.0.0.tgz
+	b2sums = b51aea2b2c82614a08d628a17e600c20503218d81399684c9f4c1a7ecd3cde007404732765f4ce406571ca930c800d2c5c83980d2042d74e794e5546fdf1e816
+
+pkgname = merlin-commit
