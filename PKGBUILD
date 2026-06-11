@@ -6,9 +6,9 @@
 # on every stable tag.
 pkgname=llamastash-bin
 _pkgname=llamastash
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
-pkgdesc='Fast, keyboard-driven TUI for launching local llama.cpp models (prebuilt)'
+pkgdesc='Zero-overhead, terminal-native local-LLM launcher (prebuilt)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/llamastash/llamastash'
 license=('MIT')
@@ -20,8 +20,8 @@ conflicts=('llamastash' 'llamastash-git')
 _release="$url/releases/download/v$pkgver"
 source_x86_64=("$_release/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_release/$_pkgname-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('841c6db10812023267fa1cdc85a0f6e59246eb48a3c42310f8e352047ec28e6a')
-sha256sums_aarch64=('95efb433a815b8c8604673a784a73cbd7dfa1e1b1dba4789436097bceb886894')
+sha256sums_x86_64=('f1471a5b5dcbe5dda016ab90a916e147c972852afc262b845502c616dee5fe5a')
+sha256sums_aarch64=('50c06c89484bb5cd3a91f33215312fbb7adce043635b5931e3e7db4b0e77b380')
 
 package() {
   local _triple
