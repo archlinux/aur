@@ -3,7 +3,9 @@
 
 _pkgname=darling
 pkgname=$_pkgname-bin
-pkgver=0.1.20260222
+pkgver=0.1.20260608
+_pkgver=0.1.20260609
+_debs_name=debs_${pkgver#0.1.}
 pkgrel=1
 pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
@@ -34,14 +36,14 @@ depends=(
   libxrandr)
 optdepends=('libtiff5: Library for manipulation of TIFF images')
 source_x86_64=("${url}/releases/download/v${pkgver}/debs_${pkgver#0.1.}.zip")
-sha256sums_x86_64=('9bc64151f10b005d46af2565714d07f7f2ccdc95100ccf75b4b2f65ba94dc821')
-b2sums_x86_64=('b400e65778660ec55b449a6f77d36da77deca879c894eb74c8f194596d1fab87a03f7c26d5f2da533d871d29b7fe903e5d942c35e773a216198af77a2404bb86')
+sha256sums_x86_64=('27469ef3932da2e91dd7fb34b70e3628a3e54b7af9fb5480051f44af35eca1fd')
+b2sums_x86_64=('69522ed5c75597c5f2921bf3ee656deb2ed16949cb588632355622dbb0b97cbced5c8950334828ca962c680ea56393680503e647f018671565e66ec3f2a4acc3')
 options=('!strip')
 install=$pkgname.install
 
 package() {
   cd $srcdir
-  for deb in debs/*_${pkgver}~*.deb; do
+  for deb in debs_${_pkgver#0.1.}/*_${_pkgver}~*.deb; do
     rm -f data.tar.zst
     bsdtar xf "$deb"
     (cd "$pkgdir"
