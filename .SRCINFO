@@ -20,6 +20,8 @@ pkgbase = prismlauncher-fixes-additions-bin
 	conflicts = prismlauncher
 	conflicts = prismlauncher-git
 	conflicts = prismlauncher-qt5-bin
+	options = !strip
+	options = !debug
 	source = https://github.com/Makar986/PrismLauncher-Fixes-Additions/releases/download/v1.0.0/PrismLauncher-Linux-Qt6-Portable-v1.0.0.tar.gz
 	sha256sums = 79ca4b959de82228f0b8a9f272f297edcb8c3ac4a0b38a33255cccc06f265cec
 

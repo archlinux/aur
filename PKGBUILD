@@ -3,6 +3,7 @@ pkgname=prismlauncher-fixes-additions-bin
 _pkgname=PrismLauncher
 pkgver=1.0.0
 pkgrel=2
+options=('!strip' '!debug')
 pkgdesc="Prism Launcher with custom fixes and offline-mode bypass (Precompiled-bin)"
 arch=('x86_64')
 url="https://github.com/Makar986/PrismLauncher-Fixes-Additions"
