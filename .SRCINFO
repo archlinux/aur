@@ -1,15 +1,17 @@
 pkgbase = man-pages-ja
 	pkgdesc = Man pages for Japanese
-	pkgver = 20260115
+	pkgver = 20260515
 	pkgrel = 1
 	url = https://linuxjm.sourceforge.io
 	install = man-pages-ja.install
 	arch = any
-	license = custom
+	license = LicenseRef-man-pages-ja
 	makedepends = perl
 	optdepends = mandoc: makewhatis support
 	conflicts = man-pages-ja-git
-	source = https://github.com/linux-jm/manual/releases/download/v20260115/man-pages-ja-20260115.tar.gz
-	md5sums = 023f3e459d143f099da87fd9824ef631
+	source = https://github.com/linux-jm/manual/releases/download/v20260515/man-pages-ja-20260515.tar.gz
+	source = copyright.html::https://linuxjm.sourceforge.io/copyright.html
+	md5sums = 9c282cca5668310da47ead553b61fde2
+	md5sums = 00000e85f561ecaf82803009e4daaa2f
 
 pkgname = man-pages-ja
