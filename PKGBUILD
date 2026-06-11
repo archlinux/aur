@@ -2,7 +2,7 @@
 # Maintainer: NurRobin <grambrobin@gmail.com>
 
 pkgname='nurproxy-bin'
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='NurProxy orchestrator — reverse proxy and DNS management dashboard'
 url='https://github.com/NurRobin/NurProxy'
@@ -13,13 +13,13 @@ conflicts=('nurproxy')
 backup=('etc/nurproxy/nurproxy.env')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/NurRobin/NurProxy/releases/download/v${pkgver}/nurproxy_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('8e3bed21e5c6d1aae3c017e38b1c9bb1b8c9df76ac2dfd66c848743301566108')
+sha256sums_aarch64=('16e53fd86f9f4842256220cbabbf1ac0b31522d9d55e0d77d33c265d54179ba4')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/NurRobin/NurProxy/releases/download/v${pkgver}/nurproxy_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('6413dcf2abdc4f87b510b5b810e0a791565d6133875ef82739153105b87a6dc9')
+sha256sums_armv7h=('035d9c6203361825be44c7f3b595129bc5b69e31d9c8ed8aa59a51e6e93f8b82')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/NurRobin/NurProxy/releases/download/v${pkgver}/nurproxy_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('62bdb4580fe1cbc7f5f88b0b09f7be2abf7204d1aa1182b8e2484a6ddef68055')
+sha256sums_x86_64=('d8a8938a601ca6382a373c150cf391667e82f2e84c1818d5d05b4dd322ad43a3')
 
 package() {
   install -Dm755 "./nurproxy" "${pkgdir}/usr/bin/nurproxy"
