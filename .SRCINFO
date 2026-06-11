@@ -1,22 +1,27 @@
 pkgbase = rtv-git
-	pkgdesc = Browse Reddit from your terminal
-	pkgver = r1473.ae9f407
+	pkgdesc = A simple terminal viewer for Reddit (Reddit Terminal Viewer)
+	pkgver = 1.27.1.r5.gb34e8a1
 	pkgrel = 1
-	url = https://github.com/michael-lazar/rtv
+	url = https://github.com/RanRhoads84/reddit-terminal-viewer
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
 	depends = python-beautifulsoup4
 	depends = python-decorator
 	depends = python-kitchen
-	depends = ncurses
-	depends = python
-	depends = python-six
 	depends = python-requests
+	depends = python-standard-mailcap
+	optdepends = xsel: clipboard support on X11
+	optdepends = xclip: clipboard support on X11 (alternative)
+	optdepends = wl-clipboard: clipboard support on Wayland
+	provides = rtv
 	conflicts = rtv
-	source = git+https://github.com/michael-lazar/rtv.git
+	source = rtv-git::git+https://github.com/RanRhoads84/reddit-terminal-viewer.git
 	sha256sums = SKIP
 
 pkgname = rtv-git
-

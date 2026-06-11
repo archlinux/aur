@@ -1,27 +1,54 @@
-# Maintainer: John Jenkins twodopeshaggy@gmail.com
-
+# Maintainer: Allen Welden <a.welden81@gmail.com>
 pkgname=rtv-git
-pkgver=r1473.ae9f407
+pkgver=1.27.1.r5.gb34e8a1
 pkgrel=1
-pkgdesc="Browse Reddit from your terminal"
+pkgdesc="A simple terminal viewer for Reddit (Reddit Terminal Viewer)"
 arch=('any')
-url="https://github.com/michael-lazar/rtv"
+url="https://github.com/RanRhoads84/reddit-terminal-viewer"
 license=('MIT')
+depends=(
+    'python'
+    'python-beautifulsoup4'
+    'python-decorator'
+    'python-kitchen'
+    'python-requests'
+    'python-standard-mailcap'
+)
+makedepends=(
+    'git'
+    'python-setuptools'
+    'python-build'
+    'python-installer'
+    'python-wheel'
+)
+optdepends=(
+    'xsel: clipboard support on X11'
+    'xclip: clipboard support on X11 (alternative)'
+    'wl-clipboard: clipboard support on Wayland'
+)
+provides=('rtv')
 conflicts=('rtv')
-makedepends=('git' 'python-setuptools')
-depends=('python-beautifulsoup4' 'python-decorator' 'python-kitchen' 'ncurses'
-'python' 'python-six' 'python-requests')
-source=('git+https://github.com/michael-lazar/rtv.git')
+source=("${pkgname}::git+https://github.com/RanRhoads84/reddit-terminal-viewer.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/rtv"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${pkgname}"
+    # Use tag if available, otherwise fall back to version from source + commit count
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || \
+    printf "%s.r%s.g%s" \
+        "$(python -c "exec(open('rtv/__version__.py').read()); print(__version__)")" \
+        "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short=7 HEAD)"
+}
+
+build() {
+    cd "${pkgname}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-   cd "$srcdir/rtv"
-   python setup.py install --root="$pkgdir/" --optimize=1
-   mkdir -p $pkgdir/usr/share/licenses/$pkgname
-   install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
+    cd "${pkgname}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 rtv.1 "${pkgdir}/usr/share/man/man1/rtv.1"
 }
