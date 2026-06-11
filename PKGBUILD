@@ -16,12 +16,32 @@ license=('LGPL-2.1-only')
 
 makedepends=('python-pip' 'python-setuptools' 'python-wheel')
 depends=(
-  'python>=3.14' 'python-attrs' 'python-boltons' 'python-click' 'python-click-option-group'
-  'python-colorama' 'python-glom' 'python-jsonschema' 'python-packaging' 'python-peewee'
-  'python-lsp-jsonrpc' 'python-requests' 'python-rich'  'python-ruamel-yaml' 'python-tomli'
-  'python-typing_extensions' 'python-urllib3' 'python-wcmatch' 'python-pydantic' 'python-starlette'
-  'python-mcp' 'python-semantic-version' 'python-toml' 'python-opentelemetry-api' 'python-opentelemetry-sdk'
-  'python-opentelemetry-instrumentation-requests' 'python-opentelemetry-instrumentation-threading'
+  'python>=3.14'
+  'python-attrs'
+  'python-boltons'
+  'python-click'
+  'python-click-option-group'
+  'python-colorama'
+  'python-glom'
+  'python-jsonschema'
+  'python-packaging'
+  'python-peewee'
+  'python-requests'
+  'python-rich'
+  'python-ruamel-yaml'
+  'python-toml'
+  'python-tomli'
+  'python-typing_extensions'
+  'python-urllib3'
+  'python-wcmatch'
+  'python-pydantic'
+  'python-starlette'
+  'python-mcp'
+  'python-semantic-version'
+  'python-opentelemetry-api'
+  'python-opentelemetry-sdk'
+  'python-opentelemetry-instrumentation-requests'
+  'python-opentelemetry-instrumentation-threading'
 )
 optdepends=('jsonnet: experimental jsonnet support')
 provides=("${_name}")
