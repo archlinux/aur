@@ -1,6 +1,6 @@
 pkgname=openssh-gui-git
 _pkgname=OpenSSH-GUI
-pkgver=3.1.7.20260611.06d5265
+pkgver=3.2.0.20260611.6840076
 pkgrel=1
 pkgdesc="A GUI for OpenSSH configuration and management (Sourcepackage)"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/frequency403/OpenSSH-GUI"
 license=('MIT')
 
 depends=('dotnet-runtime-10.0')
-makedepends=('git' 'dotnet-sdk-10.0')
+makedepends=('git' 'dotnet-sdk-10.0' 'librsvg')
 
 provides=('openssh-gui')
 conflicts=('openssh-gui' 'openssh-gui-bin' 'openssh-gui-nightly')
@@ -38,6 +38,8 @@ build() {
     -p:PublishReadyToRun=true \
     -p:IncludeNativeLibrariesForSelfExtract=true \
     -p:SelfContained=false
+
+  rsvg-convert -w 256 -h 256 images/openssh-gui.svg -o appicon-256.png
 }
 
 package() {
@@ -46,8 +48,11 @@ package() {
   install -Dm755 "publish/OpenSSH_GUI" \
     "${pkgdir}/usr/bin/openssh-gui"
 
-  install -Dm644 "OpenSSH_GUI/Assets/appicon.png" \
+  install -Dm644 "appicon-256.png" \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/openssh-gui.png"
+    
+  install -Dm644 "images/openssh-gui.svg" \
+      "${pkgdir}/usr/share/icons/hicolor/scalable/apps/openssh-gui.svg"
 
   install -Dm644 "openssh-gui.desktop" \
     "${pkgdir}/usr/share/applications/openssh-gui.desktop"
