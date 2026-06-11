@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164  # var unused / var not assigned / cd without || exit
 _pkgname=ostt
 pkgname=ostt-vulkan-bin-release-git
-pkgver=0.0.21
+pkgver=0.0.25
 pkgrel=1
 pkgdesc='Terminal-native speech-to-text with Vulkan GPU acceleration (latest Git binary release)'
 arch=('x86_64')
@@ -17,8 +17,8 @@ conflicts=('ostt' ostt-{cuda,vulkan} ostt-{cuda,vulkan}-bin 'ostt-cuda-bin-relea
 provides=('ostt' 'ostt-vulkan')
 options=('!strip')
 source=(
-  "${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu-vulkan.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu-vulkan.tar.gz"
-  "${_pkgname}-${pkgver}-LICENSE::${url}/raw/v${pkgver}/LICENSE"
+  "${_pkgname}-vulkan.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu-vulkan.tar.gz"
+  "LICENSE::${url}/raw/v${pkgver}/LICENSE"
 )
 sha256sums=('SKIP' 'SKIP')
 
@@ -28,7 +28,7 @@ pkgver() {
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Generate and install shell completions
   for _shell in bash zsh fish; do

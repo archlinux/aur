@@ -1,6 +1,6 @@
 pkgbase = ostt-vulkan-bin-release-git
 	pkgdesc = Terminal-native speech-to-text with Vulkan GPU acceleration (latest Git binary release)
-	pkgver = 0.0.21
+	pkgver = 0.0.25
 	pkgrel = 1
 	url = https://github.com/kristoferlund/ostt
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = ostt-vulkan-bin-release-git
 	conflicts = ostt-vulkan-bin
 	conflicts = ostt-cuda-bin-release-git
 	options = !strip
-	source = ostt-0.0.21-x86_64-unknown-linux-gnu-vulkan.tar.gz::https://github.com/kristoferlund/ostt/releases/download/v0.0.21/ostt-x86_64-unknown-linux-gnu-vulkan.tar.gz
-	source = ostt-0.0.21-LICENSE::https://github.com/kristoferlund/ostt/raw/v0.0.21/LICENSE
+	source = ostt-vulkan.tar.gz::https://github.com/kristoferlund/ostt/releases/download/v0.0.25/ostt-x86_64-unknown-linux-gnu-vulkan.tar.gz
+	source = LICENSE::https://github.com/kristoferlund/ostt/raw/v0.0.25/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
