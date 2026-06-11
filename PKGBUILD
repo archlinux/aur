@@ -1,7 +1,7 @@
 # Maintainer: Jakov Petrina <jkv.petrina@gmail.com>
 
 pkgname=mboxshell
-pkgver=0.4.4
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Fast terminal viewer for MBOX files of any size without loading them into memory"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -9,8 +9,8 @@ url="https://github.com/dcarrero/mboxshell"
 license=(MIT)
 depends=()
 makedepends=('cargo')
-source=("https://github.com/dcarrero/mboxshell/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('63825e206c959c18a3d5b5ba7a1fd5a03f3f52a42e2188cfd8a6e0f086c5f4de')
+source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/dcarrero/mboxshell/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('3cdfbd2f0fd3cf5252342e87260e6446730ccda813d8f95db91191ffbfabddd8')
 
 build() {
   cd "${pkgname}-${pkgver}"
