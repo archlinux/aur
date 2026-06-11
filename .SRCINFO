@@ -1,6 +1,6 @@
 pkgbase = yaml-language-server-git
 	pkgdesc = YAML Language Server, git main build
-	pkgver = r1483.fcbcbf9e
+	pkgver = r1489.c22285fe
 	pkgrel = 1
 	url = https://github.com/redhat-developer/yaml-language-server
 	arch = any
@@ -13,8 +13,6 @@ pkgbase = yaml-language-server-git
 	options = !emptydirs
 	options = !strip
 	source = yaml-language-server-git::git+https://github.com/redhat-developer/yaml-language-server.git#branch=main
-	source = pin-langserver-types.patch
 	sha256sums = SKIP
-	sha256sums = 7f11a669b1e3e2de9e96ef3752b182aa4f2dee2ecfbdf87169752ba880736d36
 
 pkgname = yaml-language-server-git
