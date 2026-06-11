@@ -600,16 +600,24 @@ QObject::connect(pauseAction, &QAction::triggered, [browser]() {
 QObject::connect(trayMenu, &QMenu::aboutToShow, [browser, pauseAction]() {
     QString checkJs =
     "(function() {"
-    "  const pauseBtn = document.querySelector('[data-qa=\"pause_button\"]');"
-    "  // If the pause button exists and is visible, we are currently playing"
-    "  const isPlaying = pauseBtn && (pauseBtn.offsetParent !== null);"
-    "  return isPlaying ? 'PAUSE' : 'PLAY';"
+    "  if (document.querySelector('[data-qa=\"pause_button\"]'))"
+    "    return 'PAUSE';"
+    ""
+    "  if (document.querySelector('[data-qa=\"play_button\"]'))"
+    "    return 'PLAY';"
+    ""
+    "  return 'UNKNOWN';"
     "})();";
 
     browser->page()->runJavaScript(checkJs, [pauseAction](const QVariant &res) {
         QString state = res.toString();
-        pauseAction->setText(state == "PAUSE" ? "Pause" : "Play/Pause");
-        // You could also update an icon here if you use one
+
+        if (state == "PAUSE")
+            pauseAction->setText("Pause");
+        else if (state == "PLAY")
+            pauseAction->setText("Play");
+        else
+            pauseAction->setText("Play/Pause");
     });
 });
 
@@ -677,21 +685,32 @@ QObject::connect(thumbUpAction, &QAction::triggered, [browser]() {
     browser->page()->runJavaScript(thumbUpJs);
 });
 
-QObject::connect(trayMenu, &QMenu::aboutToShow, [browser, thumbUpAction]() {
+QObject::connect(trayMenu, &QMenu::aboutToShow,
+                 [browser, thumbUpAction]() {
+
     QString checkJs =
     "(function() {"
     "  const btn = document.querySelector('[data-qa=\"thumbs_up_button\"]');"
-    "  if (!btn) return false;"
-
-    "  const disabled = btn.disabled || btn.getAttribute('aria-disabled') === 'true';"
-    "  const checked = btn.getAttribute('aria-checked') === 'true';"
-
-    "  return !disabled && !checked;"
+    "  if (!btn) return 'UNKNOWN';"
+    ""
+    "  return btn.getAttribute('aria-checked') === 'true'"
+    "      ? 'ON'"
+    "      : 'OFF';"
     "})();";
 
-    browser->page()->runJavaScript(checkJs, [thumbUpAction](const QVariant &res) {
-        thumbUpAction->setVisible(res.toBool());
-    });
+    browser->page()->runJavaScript(
+        checkJs,
+        [thumbUpAction](const QVariant &res) {
+
+            QString state = res.toString();
+
+            if (state == "ON")
+                thumbUpAction->setText("Thumbs Up: On");
+            else if (state == "OFF")
+                thumbUpAction->setText("Thumbs Up: Off");
+            else
+                thumbUpAction->setText("Thumbs Up");
+        });
 });
 
 QAction *thumbDownAction = trayMenu->addAction("Thumbs Down");

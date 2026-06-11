@@ -1,6 +1,6 @@
 pkgname=lindora
-pkgver=1.0
-pkgrel=3
+pkgver=1.1
+pkgrel=0
 pkgdesc="An unofficial site-specific browser wrapper for the Pandora web service."
 arch=('x86_64')
 url=https://github.com/Logawinner/Lindora
