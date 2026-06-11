@@ -1,0 +1,21 @@
+pkgbase = lowfat-bin
+	pkgdesc = Lightweight CLI that filters verbose command output to cut AI agent token costs
+	pkgver = 0.6.10
+	pkgrel = 1
+	url = https://github.com/zdk/lowfat
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	provides = lowfat=0.6.10
+	conflicts = lowfat
+	options = !debug
+	source = LICENSE-0.6.10::https://raw.githubusercontent.com/zdk/lowfat/v0.6.10/LICENSE
+	sha256sums = b727674547d95907efffa3e2ca07531331e23cd6fb1cc5f9f8112ab1e129f1a1
+	source_x86_64 = lowfat-0.6.10-x86_64.tar.gz::https://github.com/zdk/lowfat/releases/download/v0.6.10/lowfat-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a4bab110f270af9b91249e1b30db9c339c4ddfbfcbff9a6c5bf4f6dc3b64b1b7
+	source_aarch64 = lowfat-0.6.10-aarch64.tar.gz::https://github.com/zdk/lowfat/releases/download/v0.6.10/lowfat-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4a933eaa80421a51308f5d975f02d28d767a313476de2e681e2593ec90cd3cdb
+
+pkgname = lowfat-bin
