@@ -1,6 +1,6 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgver=9.0.16.sdk314
+pkgver=9.0.17.sdk315
 _runtimever="${pkgver%.sdk*}"
 _dotnetver="${_runtimever%.*}"
 _sdkver="${_dotnetver}.${pkgver##"${_runtimever}.sdk"}"
@@ -33,11 +33,24 @@ for _carch in "${!_arch[@]}"; do
   eval "
 source_${_carch}=(
   'https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-${_arch[${_carch}]}.tar.gz'
+)
+noextract+=(
+  \"\${source_${_carch}[@]##*/}\"
 )"
 done
-sha512sums_aarch64=('0b97c29d256d21361fb2d6ffaed1a44ac37a468ce5cea0fa6f26d02a3898c4c466c6c44918d917d9971ef2698963c559efba6033d4eff8c072b750310a4bc17b')
-sha512sums_x86_64=('9cc8250b9e3bbc29b64e55866b1007d49a155e4a3790570e37315e4175fbfaea2e06ff38f6aabd89e35d943f9915b33b32d6aa33e8d419a8fb9d7188cec97a18')
-sha512sums_armv7h=('80d434dc680668ba647c3341e111982265e10da94240297148f68f2c9df88abb9a949f9b5b6a7c4e46e01291d329a9f707a2738439c24e3e829d3d7efff38c6e')
+sha512sums_aarch64=('4d8c9e5f95063095608f8775b729ef41d6dc910e14992ddb533eac38a44b157cdd67bc2446a362908eacf0453328001ce7161b3f0ceb4191a69c454f1f8cc169')
+sha512sums_x86_64=('1723a70563003566880600dc074f10366428bfb54db2a749b75c684f6dca0763d80a1cf9a2bfa014e5a41f7ab4e84f21d044e70152165a84ce86edbfa913afb1')
+sha512sums_armv7h=('ba4f048c9a69bc9c7f60201e243160c622eff58630465da179eadd79f547f2cfca567f73dd57a85e78aab2bf2c33441dda6795a86e655cd8b73b26612b3841c5')
+
+prepare() {
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
+  cd "${srcdir}"
+  mkdir -p "${source_artifact%.tar*}"
+  bsdtar -xzf "${source_artifact}" -C "${source_artifact%.tar*}" --strip-components 1
+}
 
 package_dotnet-runtime-9.0-bin() {
   pkgdesc="The .NET Core runtime"
@@ -62,12 +75,16 @@ package_dotnet-runtime-9.0-bin() {
     "${pkgname%-bin}"
   )
 
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
   install -vd "${pkgdir}/usr/share/dotnet" \
               "${pkgdir}/usr/share/licenses"
 
-  cd "${srcdir}"
+  cd "${srcdir}/${source_artifact%.tar*}"
   cp -a --parents --no-preserve=ownership -t "${pkgdir}/usr/share/dotnet" \
-    "shared/Microsoft.NETCore.App/${_runtimever}"
+    "shared/Microsoft.NETCore.App"
 
   ln -vsf "dotnet-host" "${pkgdir}/usr/share/licenses/${pkgname%-bin}"
 }
@@ -84,12 +101,16 @@ package_aspnet-runtime-9.0-bin() {
     "${pkgname%-bin}"
   )
 
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
   install -vd "${pkgdir}/usr/share/dotnet" \
               "${pkgdir}/usr/share/licenses"
 
-  cd "${srcdir}"
+  cd "${srcdir}/${source_artifact%.tar*}"
   cp -a --parents --no-preserve=ownership -t "${pkgdir}/usr/share/dotnet" \
-    "shared/Microsoft.AspNetCore.App/${_runtimever}"
+    "shared/Microsoft.AspNetCore.App"
 
   ln -vsf "dotnet-host" "${pkgdir}/usr/share/licenses/${pkgname%-bin}"
 }
@@ -106,13 +127,17 @@ package_dotnet-targeting-pack-9.0-bin() {
     "${pkgname%-bin}"
   )
 
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
   install -vd "${pkgdir}/usr/share/dotnet" \
               "${pkgdir}/usr/share/licenses"
 
-  cd "${srcdir}"
+  cd "${srcdir}/${source_artifact%.tar*}"
   cp -a --parents --no-preserve=ownership -t "${pkgdir}/usr/share/dotnet" \
-    "packs/Microsoft.NETCore.App.Host.linux-${_arch[${CARCH}]}/${_runtimever}" \
-    "packs/Microsoft.NETCore.App.Ref/${_runtimever}"
+    "packs/Microsoft.NETCore.App.Host.linux-${_arch[${CARCH}]}" \
+    "packs/Microsoft.NETCore.App.Ref"
 
   ln -vsf "dotnet-host" "${pkgdir}/usr/share/licenses/${pkgname%-bin}"
 }
@@ -129,12 +154,16 @@ package_aspnet-targeting-pack-9.0-bin() {
     "${pkgname%-bin}"
   )
 
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
   install -vd "${pkgdir}/usr/share/dotnet" \
               "${pkgdir}/usr/share/licenses"
 
-  cd "${srcdir}"
+  cd "${srcdir}/${source_artifact%.tar*}"
   cp -a --parents --no-preserve=ownership -t "${pkgdir}/usr/share/dotnet" \
-    "packs/Microsoft.AspNetCore.App.Ref/${_runtimever}"
+    "packs/Microsoft.AspNetCore.App.Ref"
 
   ln -vsf "dotnet-host" "${pkgdir}/usr/share/licenses/${pkgname%-bin}"
 }
@@ -155,14 +184,18 @@ package_dotnet-sdk-9.0-bin() {
     "${pkgname%-bin}"
   )
 
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
   install -vd "${pkgdir}/usr/share/dotnet" \
               "${pkgdir}/usr/share/licenses"
 
-  cd "${srcdir}"
+  cd "${srcdir}/${source_artifact%.tar*}"
   cp -a --parents --no-preserve=ownership -t "${pkgdir}/usr/share/dotnet" \
-    "sdk/${_sdkver}" \
+    "sdk" \
     "sdk-manifests" \
-    "templates/${_runtimever}"
+    "templates"
 
   ln -vsf "dotnet-host" "${pkgdir}/usr/share/licenses/${pkgname%-bin}"
 }
