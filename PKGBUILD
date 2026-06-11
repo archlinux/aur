@@ -4,7 +4,7 @@ pkgname=libsignal-client
 _pkgname=libsignal
 _libname=libsignal_jni
 _java_version=17
-pkgver=0.94.1
+pkgver=0.94.4
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${_pkgname}"
@@ -22,7 +22,7 @@ source=(
     #"boringssl::git+https://github.com/google/boringssl.git"
 )
 
-sha512sums=('7f4f236be55923feca09ee837473fcaf8c3fcea80a425899e60ad971466a2ce6b9f6a56f750f81636f5c95ffa818aac87e9e944c8a2e5730322e612b3a0a7bf4'
+sha512sums=('4f8bd9ae9b24b73f3664508dc155c583e6cbea633856e8e9db168dde46999ce76a8ced20444642c40bd18498d8f0c39ed8ed05430e8d40df5062cd70e171a5bc'
             'SKIP'
             'SKIP'
             'SKIP')
