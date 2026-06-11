@@ -20,8 +20,8 @@ url=${_ghurl}
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
 depends=('glibc' 'libgcc')
+conflicts=("${pkgname%%-bin}")
 
 options=(!strip)
 
