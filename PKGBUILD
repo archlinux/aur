@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=openvaf-reloaded
 pkgver=r747.d878f55
-pkgrel=3
+pkgrel=4
 pkgdesc="Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support"
 arch=(
 	"x86_64"
@@ -11,7 +11,7 @@ url="https://github.com/OpenVAF/OpenVAF-Reloaded"
 license=('GPL-3.0-or-later')
 depends=(
 	"glibc"
-	"gcc-libs"
+	"libgcc"
 	"llvm-libs"
 )
 makedepends=(
