@@ -1,0 +1,5 @@
+*.deb
+*.pkg.tar.zst
+src/
+pkg/
+CLAUDE.md
