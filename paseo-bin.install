@@ -1,0 +1,9 @@
+post_install() {
+    cat <<'EOF'
+==> Optional: run the Paseo daemon persistently (desktop app and CLI
+    will connect to it instead of spawning their own):
+        systemctl --user enable --now paseo.service
+    To keep it running while logged out:
+        sudo loginctl enable-linger $USER
+EOF
+}

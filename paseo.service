@@ -1,0 +1,12 @@
+[Unit]
+Description=Paseo Daemon
+Documentation=https://paseo.sh
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/paseo daemon start --foreground
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
