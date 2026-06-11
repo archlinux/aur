@@ -1,0 +1,22 @@
+pkgbase = ggml-cpu
+	pkgdesc = CPU backend for ggml
+	pkgver = 0.14.0.b9596
+	pkgrel = 1
+	url = https://github.com/ggml-org/ggml
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = ggml=0.14.0.b9596
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = ggml>=0.14.0.b9000
+	depends = ggml<0.14.1
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
+	depends = libgomp
+	options = lto
+	options = !debug
+
+pkgname = ggml-cpu
