@@ -1,0 +1,21 @@
+pkgbase = codecontext-ai
+	pkgdesc = AI-powered codebase analysis and prompt preparation tool for LLMs (ChatGPT, Claude, Cursor)
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://github.com/NIKIRIKI7/CodeContext
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pyside6
+	depends = python-tiktoken
+	depends = python-fpdf2
+	depends = python-pyperclip
+	depends = python-pathspec
+	depends = python-jinja
+	source = codecontext-ai-1.14.0.tar.gz::https://github.com/NIKIRIKI7/CodeContext/archive/refs/tags/v1.14.0.tar.gz
+	source = codecontext.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = codecontext-ai

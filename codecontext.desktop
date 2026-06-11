@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CodeContext AI
+Comment=AI-powered codebase analysis and prompt preparation tool for LLMs (ChatGPT, Claude, Cursor)
+Exec=codecontext
+Icon=codecontext-ai
+Terminal=false
+Type=Application
+Categories=Development;Utility;
+StartupNotify=true
