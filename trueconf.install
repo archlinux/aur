@@ -1,7 +1,6 @@
 post_install() {
     chmod a+x /opt/trueconf/client/trueconf
     chmod a+x /opt/trueconf/client/trueconf-autostart
-    chmod a+x /opt/trueconf/client/qt6/libexec/QtWebEngineProcess
 
     ln -f -s /opt/trueconf/client/trueconf /usr/bin/trueconf
 
@@ -10,19 +9,11 @@ post_install() {
     fi
     update-desktop-database > /dev/null 2>&1 || true
 
-    binpid=$(ps axco pid,command | awk '$2 == "TrueConf" {print $1; }')
-    if [ -n "$binpid" ]; then
-        for process in $binpid; do
-            kill -s 50 "$process" 
-        done
-    fi
-
-    startupbin=$(ps axco pid,command | awk '$2 == "trueconf" {print $1; }')
-    if [ -n "$startupbin" ]; then
-        for process in $startupbin; do
-            kill -s 50 "$process "
-        done
-    fi
+    for process_name in TrueConf trueconf; do
+        while IFS= read -r process; do
+            kill -s 50 "${process}"
+        done < <(pgrep -x "${process_name}" || true)
+    done
 }
 
 post_upgrade() {
@@ -30,17 +21,9 @@ post_upgrade() {
 }
 
 pre_remove() {
-    binpid=$(ps axco pid,command | awk '$2 == "TrueConf" {print $1; }')
-    if [ -n "$binpid" ]; then
-        for process in $binpid; do
-            kill "$process" 
-        done
-    fi
-
-    startupbin=$(ps axco pid,command | awk '$2 == "trueconf" {print $1; }')
-    if [ -n "$startupbin" ]; then
-        for process in $startupbin; do
-            kill "$process"
-        done
-    fi
+    for process_name in TrueConf trueconf; do
+        while IFS= read -r process; do
+            kill "${process}"
+        done < <(pgrep -x "${process_name}" || true)
+    done
 }
