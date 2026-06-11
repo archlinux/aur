@@ -1,12 +1,19 @@
 post_install() {
     cat <<'EOF'
-==> The Paseo desktop app already manages its own daemon (with your full
-    shell env and DISPLAY), so most users do NOT need the systemd service.
-    Only enable it if you want a persistent daemon for CLI/headless use:
-        systemctl --user enable --now paseo.service
-    Note: when started this way the daemon may lack DISPLAY/WAYLAND_DISPLAY,
-    so agents launched through it cannot open GUI apps — use the desktop app
-    for that. Do not enable-linger unless you really want it running while
-    logged out.
+==> The Paseo desktop app manages its own daemon (with your full shell env
+    and DISPLAY), so no setup is needed — just launch Paseo.
+    To run the daemon on graphical login without the app, add an XDG
+    autostart entry (~/.config/autostart) that runs:
+        /opt/Paseo/resources/bin/paseo daemon start --foreground
 EOF
+}
+
+post_upgrade() {
+    if [ -e "${HOME:-/root}/.config/systemd/user/default.target.wants/paseo.service" ]; then
+        cat <<'EOF'
+==> This version no longer ships a systemd user service. If you previously ran
+    `systemctl --user enable paseo.service`, clean up the stale symlink:
+        systemctl --user disable paseo.service
+EOF
+    fi
 }
