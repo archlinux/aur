@@ -2,7 +2,7 @@
 
 pkgname=granola-wine
 pkgver=7.309.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Granola AI Notepad for Windows packaged to run under Wine'
 arch=('x86_64')
 url='https://www.granola.ai/'
@@ -20,9 +20,9 @@ source=(
   'LICENSE'
 )
 sha256sums=('6854bcd0fe746ff547f5ea5414ae84cb8c4a06d50bc037a81da6e81ac57e1200'
-            'ab122136201634fd44c5cfc24e0e5d07175768e47139199e96eaadfae97f4e1e'
+            '16ff2404ec8b5a127dd501596e46b1d4fb63efdef32517bea6e94e7b4ec22808'
             'd3271d0a19cc761fdcdbd45f82670ff45f19362d9a26b6f457617032e6f86c62'
-            'cb5e32ee78624acfda8a45677e904ffea63957d7e7fd4869c7943a7e10f7b24d'
+            'cc7a58b2c1c5b971cbb85d1d4dd7d36604401c9efda164809f37527a7053bed2'
             'af454ff477d4c6608b755801ac954010a74ce37580b359e6404cfe8151eec8ba')
 
 prepare() {

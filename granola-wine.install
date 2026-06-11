@@ -8,9 +8,8 @@ Granola for Wine installed.
 First run:
   granola
 
-To make browser sign-in callbacks open Granola, run as your user:
-  xdg-mime default granola-wine.desktop x-scheme-handler/granola
-  xdg-settings set default-url-scheme-handler granola granola-wine.desktop
+The first launcher run creates the Wine prefix, copies the app payload, and
+registers the per-user granola:// URL handler where xdg-utils supports it.
 
 Runtime state is kept under:
   ~/.wine-prefixes/granola

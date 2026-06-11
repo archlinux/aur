@@ -30,7 +30,8 @@ makepkg -si
 
 ## First Run
 
-Launch Granola once to create the Wine prefix and copy the app payload:
+Launch Granola once to create the Wine prefix, copy the app payload, and
+register the per-user `granola://` URL handler:
 
 ```bash
 granola
@@ -60,7 +61,9 @@ MimeType=x-scheme-handler/granola;
 ```
 
 If your browser does not offer to open Granola after sign-in, register the
-handler manually as your normal user:
+handler manually as your normal user. This should normally be unnecessary after
+the first `granola` launch, but it is useful as a fallback on desktops with
+unusual MIME handling:
 
 ```bash
 xdg-mime default granola-wine.desktop x-scheme-handler/granola

@@ -13,6 +13,14 @@ exe_path="C:\\users\\${wine_user}\\AppData\\Local\\Programs\\@granolaelectron\\G
 
 mkdir -p "$log_dir" "$WINEPREFIX"
 
+if [[ ! -f "${WINEPREFIX}/.granola-wine-url-handler-configured" ]]; then
+  xdg-mime default granola-wine.desktop x-scheme-handler/granola \
+    < /dev/null >> "$log_file" 2>&1 || true
+  xdg-settings set default-url-scheme-handler granola granola-wine.desktop \
+    < /dev/null >> "$log_file" 2>&1 || true
+  touch "${WINEPREFIX}/.granola-wine-url-handler-configured"
+fi
+
 if [[ ! -e "${WINEPREFIX}/system.reg" ]]; then
   WINEPREFIX="$WINEPREFIX" wineboot -u < /dev/null >> "$log_file" 2>&1 || true
 fi
