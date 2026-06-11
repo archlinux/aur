@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpits-unstable-bin
-pkgver=0.8.20
+pkgver=0.8.21
 pkgrel=1
 pkgdesc="moshpits server with post-quantum support — SSH and Mosh inspired remote terminal server (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ source=("${_base}/dist-mps.tar.gz" "mps.service")
 source_x86_64=("mps-unstable-x86_64::${_base}/mps-unstable-x86_64-unknown-linux-musl")
 source_aarch64=("mps-unstable-aarch64::${_base}/mps-unstable-aarch64-unknown-linux-musl")
 # First entry is the release dist tarball; local sidecar file is intentionally SKIP.
-sha256sums=('4b459cffb7b32b12e6aaa8baf2f9b13f05fc971601c5d438a707e1f8a036f7bb' 'SKIP')
-sha256sums_x86_64=('b9f16ef124b976ac9f47d5dc7519faa7966a6592212908c21bc708ddb6e85234')
-sha256sums_aarch64=('9d79900c9474d5e73ff95aadaf48736fde73e37fb4c2ea53b629c8705231c7a2')
+sha256sums=('2879e5b8047a6d066b5bc60380986ccae1206771373f17ac543ee52f9c9ff758' 'SKIP')
+sha256sums_x86_64=('39817b5dac2a9bd5b66729deb96a43ca3cf3c0bc220584e8cbb2932c7be86a3c')
+sha256sums_aarch64=('ac493895bdfec961d5d891cb6f1864683bf18df4657c606fdbe2e8846f814fca')
 
 package() {
     install -Dm755 "mps-unstable-${CARCH}" "$pkgdir/usr/bin/mps"
