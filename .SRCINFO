@@ -1,0 +1,19 @@
+pkgbase = devprune-bin
+	pkgdesc = Cleaning up dev build artifacts to free up disk space
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kavehtehrani/devprune
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	depends = libgcc
+	provides = devprune
+	conflicts = devprune
+	options = !strip
+	source_x86_64 = devprune-x86_64-0.1.0.txz::https://github.com/kavehtehrani/devprune/releases/download/v0.1.0/devprune-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 558734d5c6f41d446cfcac89af32d7149a4d4e5c0e5fe8f63298fd2307391921
+	source_aarch64 = devprune-aarch64-0.1.0.txz::https://github.com/kavehtehrani/devprune/releases/download/v0.1.0/devprune-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = eff2ad3d18cc8f13c331bb588c198b5f010cf0a3daafac393fb672571e348a94
+
+pkgname = devprune-bin

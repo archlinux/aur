@@ -1,0 +1,5 @@
+[devprune-bin]
+source = "github"
+github = "kavehtehrani/devprune"
+use_latest_release = true
+prefix = "v"
