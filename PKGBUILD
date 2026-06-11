@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-systemd-creds
-pkgver=0.8.20
+pkgver=0.8.21
 pkgrel=1
 pkgdesc="Moshpit agent daemon — systemd credentials unlock backend"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('moshpit-agent' 'moshpit-agent-fido2' 'moshpit-agent-ssh-agent-piggyb
 depends=('systemd')
 makedepends=('cargo' 'cmake' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/moshpit/archive/v$pkgver.tar.gz")
-sha256sums=('7252155af6b64ffeba1c111a6f98cfef42bdc5a4de50e9aead1cd8acda3479a0')
+sha256sums=('f84335cebd8b8ecb6e8d8bb3031daa46a6fbbf4f2e80deef286d070ed1aeaefe')
 
 prepare() {
     cd "moshpit-$pkgver"
