@@ -45,5 +45,5 @@ package() {
 
     # Symlink executable
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/Allusion-${pkgver}.AppImage" "${pkgdir}/usr/bin/allusion"
+    ln -s "/opt/${pkgname}/Allusion-${pkgver}-ruc.AppImage" "${pkgdir}/usr/bin/allusion"
 }
