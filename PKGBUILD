@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64
-pkgver=1.1.22
+pkgver=1.1.24
 pkgrel=1
 pkgdesc='A Nintendo64 emulator'
 arch=('x86_64')
@@ -57,7 +57,7 @@ source=("git+https://github.com/gopher64/gopher64.git#tag=v${pkgver}"
         'git+https://github.com/Themaister/parallel-rdp-standalone.git'
         'git+https://github.com/RetroAchievements/rcheevos.git'
         'gopher64.desktop')
-sha256sums=('ac95f53ed7ca7e6b11339d860c6d30c549e4dfa2288a014b6ccf014463d6c2cc'
+sha256sums=('f8dc10c88deb68cb7d7fda470c76a69a1288f87560439ea4cb5657ba8c8807b2'
             'SKIP'
             'SKIP'
             '9a3c01d2064095b83261bf931aad101bddc94ae66d621e7233f7337d44a01f10')
@@ -78,6 +78,7 @@ build() {
     export AR='llvm-ar'
     export RANLIB='llvm-ranlib'
     export CFLAGS+=' -ffat-lto-objects'
+    export CMAKE_POLICY_VERSION_MINIMUM='3.5'
     export RUSTFLAGS+=' -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
     export CARGO_TARGET_DIR='target'
@@ -90,6 +91,7 @@ check() {
     export AR='llvm-ar'
     export RANLIB='llvm-ranlib'
     export CFLAGS+=' -ffat-lto-objects'
+    export CMAKE_POLICY_VERSION_MINIMUM='3.5'
     export RUSTFLAGS+=' -Clink-arg=-fuse-ld=lld'
     export RUSTUP_TOOLCHAIN='stable'
     export CARGO_TARGET_DIR='target'
