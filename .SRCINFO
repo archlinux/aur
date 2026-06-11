@@ -1,6 +1,6 @@
 pkgbase = openssh-gui-git
 	pkgdesc = A GUI for OpenSSH configuration and management (Sourcepackage)
-	pkgver = 3.1.6.20260611.a92207a
+	pkgver = 3.1.7.20260611.06d5265
 	pkgrel = 1
 	url = https://github.com/frequency403/OpenSSH-GUI
 	arch = x86_64
