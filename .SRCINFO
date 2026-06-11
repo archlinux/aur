@@ -1,0 +1,19 @@
+pkgbase = breezewiki-bin
+	pkgdesc = An alternative frontend for Fandom
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://breezewiki.com
+	arch = x86_64
+	license = AGPLv3
+	provides = breezewiki=1.0.0
+	options = !debug
+	source = https://docs.breezewiki.com/files/breezewiki-dist.tar.gz
+	source = breezewiki.service
+	source = breezewiki.sh
+	source = config.ini
+	sha256sums = a6a3c16bb3240f5a45e5617a497200fa74fd723f70bf00576f4cb9aeafde6f80
+	sha256sums = 8d45dc2f15933fad713351eb359f5927c9ff1752f248f6a79fd1697b693bc85d
+	sha256sums = 613d5fccd3fa60800b20f5c88c64ec6e3f1d714425b3c2355b8e113d5920b375
+	sha256sums = 4f1d1625c8fa4a41f8d73744288ac099dc90de08cd28386785e36588723dfa29
+
+pkgname = breezewiki-bin

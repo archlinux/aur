@@ -1,0 +1,12 @@
+[Unit]
+Description=BreezeWiki: An alternative frontend for Fandom
+Documentation=https://docs.breezewiki.com
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/breezewiki
+Environment=HOME=%h
+
+[Install]
+WantedBy=multi-user.target
+
