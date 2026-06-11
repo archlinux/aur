@@ -1,5 +1,5 @@
 pkgbase = llamastash-git
-	pkgdesc = Fast, keyboard-driven TUI for launching local llama.cpp models (git main)
+	pkgdesc = Zero-overhead, terminal-native local-LLM launcher (git main)
 	pkgver = 0.0.1.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/llamastash/llamastash
