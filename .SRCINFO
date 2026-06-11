@@ -1,14 +1,18 @@
 pkgbase = turingcodec-git
-	pkgdesc = Alternative HEVC codec developed by BBC R&D
-	pkgver = r77.f7138f9
-	pkgrel = 3
-	url = http://turingcodec.org/
-	arch = i686
+	pkgdesc = Turing HEVC codec by BBC (git version) with GCC16/Boost fixes
+	pkgver = 89.5d44bd7
+	pkgrel = 1
+	url = https://github.com/bbc/turingcodec
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	depends = boost
 	source = git+https://github.com/bbc/turingcodec.git
-	md5sums = SKIP
+	source = turingcodec-fixes.patch
+	sha256sums = SKIP
+	sha256sums = 09cedd1098863f19c37364c2180db0991b1c5ac00c6b5afdd506c9f6c4c05fbd
 
 pkgname = turingcodec-git
-
