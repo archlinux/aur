@@ -4,7 +4,7 @@
 pkgname=aionui-bin
 _pkgname=aionui
 pkgver=2.1.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Transform your command-line experience into a modern, efficient AI Chat interface."
 arch=('x86_64')
 url="https://github.com/iOfficeAI/AionUi" # <-- 示例网址，请替换为官方项目地址
