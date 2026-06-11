@@ -3,7 +3,7 @@
 _pkgauthor=jdx
 _pkgname=hk
 pkgname=${_pkgname}-bin
-pkgver=1.47.0
+pkgver=1.48.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Git hooks and project lints"
@@ -23,8 +23,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/downloa
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-gnu.tar.gz")
 sha256sums=('4580e1e27578e6fb28a76385413b4504b3b57d88b75f634a87d3b42c4eb6a459'
             '838c63247bda0761e7f0b2f670f2122b6f83dd07f9752201fb63892d9dfce29e')
-sha256sums_x86_64=('4b10b3f9ecf5b95035f96ce45fd58cab81b255b894c52c4651e444e2f7a261f6')
-sha256sums_aarch64=('61250d1d3505ca6814aadb7edcde69054a757cb04bd7d20ffd3a0103494e700a')
+sha256sums_x86_64=('6b7f9a28391a8b13b88208d723cbde7b945d095cbb03455c7dd5f8df551ed380')
+sha256sums_aarch64=('d72463103d9682094e9b1fb2f20ef8824d1ec7a9b23f79163921bac7785fcd51')
 
 
 package() {
