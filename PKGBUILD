@@ -1,6 +1,6 @@
 # Maintainer: Alex Macocian <amacocian@yahoo.com>
 pkgname=rainbeau
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Hyprland theme engine that generates desktop configs and animated wallpapers"
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
     'hyprpaper'
     'kitty'
     'libnotify'
+    'quickshell'
     'rlottie'
     'waybar'
 )
@@ -36,7 +37,7 @@ optdepends=(
     'nvidia-utils: NVIDIA GPU usage and temperature scripts'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AlexMacocian/rainbeau/archive/v${pkgver}.tar.gz")
-sha256sums=('e8fe98f510d7fe343eb4ff507e079003301b8239888aa6f07f489da96c3c3c01')
+sha256sums=('5a66bc03228d3502c2b20c6e7830768bb46319710d57ac161c4dc824b350eb5a')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
