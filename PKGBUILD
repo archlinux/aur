@@ -1,6 +1,6 @@
 # Maintainer: Zonda Yang <u226699@gmail.com>
 pkgname=magic-pack
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A CLI tool for compressing and decompressing files with multiple formats"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('zstd')
 makedepends=('rust' 'cargo' 'zstd')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zondatw/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a3e4f897603f61f77ccb7c95aee89127e294f2c4db7aaa8d1ccdc042e1839bb3')
+sha256sums=('c661860c8e0762c121833e5206a5586b50c1a0ed74bb4e1237b474effe807f72')
 
 prepare() {
     cd "$pkgname-$pkgver"

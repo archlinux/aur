@@ -1,6 +1,6 @@
 pkgbase = magic-pack
 	pkgdesc = A CLI tool for compressing and decompressing files with multiple formats
-	pkgver = 0.11.1
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/zondatw/magic-pack
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = magic-pack
 	makedepends = cargo
 	makedepends = zstd
 	depends = zstd
-	source = magic-pack-0.11.1.tar.gz::https://github.com/zondatw/magic-pack/archive/refs/tags/v0.11.1.tar.gz
-	sha256sums = a3e4f897603f61f77ccb7c95aee89127e294f2c4db7aaa8d1ccdc042e1839bb3
+	source = magic-pack-0.12.0.tar.gz::https://github.com/zondatw/magic-pack/archive/refs/tags/v0.12.0.tar.gz
+	sha256sums = c661860c8e0762c121833e5206a5586b50c1a0ed74bb4e1237b474effe807f72
 
 pkgname = magic-pack
