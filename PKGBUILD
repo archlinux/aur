@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=smolvm
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=(
@@ -25,128 +25,45 @@ makedepends=(
     'tar'
     'busybox'
     'alpine-sdk'
+    'cargo-make'
 )
 options=(!lto !debug)
 provides=('smolvm')
 conflicts=('smolvm-git' 'smolvm-bin')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-    'Cargo.lock'
+    "smolvm.sh"
 )
 sha256sums=(
-    '2192f54c53a8621ecd038a1bbdee1cc917e111abe3d935e81bdaee51daccc862'
-    '0d186818ef0d0f0abcaa5f793a8578af5ecadc205a10248d90cc3145da5d560a'
+    '12261eca490188182ddb20544c89ceb7633f98694f93853e4537607d2982d7dd'
+    'a938ec07ef7ac4719cf3c02f34ce5ddc92cdfd7028f31a6c1090bebe0b2c5f26'
 )
 
 prepare() {
     cd "$pkgname-$pkgver"
-    cp "../Cargo.lock" .
     export RUSTUP_TOOLCHAIN=stable
+    git submodule update --init --recursive --depth 1
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-
-    case "$CARCH" in
-        x86_64)
-            export ALPINE_ARCH="x86_64"
-            export CRANE_ARCH="x86_64"
-            ;;
-        aarch64)
-            export ALPINE_ARCH="aarch64"
-            export CRANE_ARCH="arm64"
-            ;;
-    esac
-
-    mkdir -p target/agent-rootfs
-
-    ALPINE_VERSION="3.19"
-    CRANE_VERSION="0.19.0"
-
-    ALPINE_MIRROR="https://dl-cdn.alpinelinux.org/alpine"
-    ALPINE_MINIROOTFS="alpine-minirootfs-${ALPINE_VERSION}.0-${ALPINE_ARCH}.tar.gz"
-    ALPINE_URL="${ALPINE_MIRROR}/v${ALPINE_VERSION}/releases/${ALPINE_ARCH}/${ALPINE_MINIROOTFS}"
-
-    CRANE_URL="https://github.com/google/go-containerregistry/releases/download/v${CRANE_VERSION}/go-containerregistry_Linux_${CRANE_ARCH}.tar.gz"
-
-    curl -fsSL "$ALPINE_URL" -o alpine-minirootfs.tar.gz
-    tar -xzf alpine-minirootfs.tar.gz -C target/agent-rootfs
-
-    curl -fsSL "$CRANE_URL" -o crane.tar.gz
-
-    mkdir -p target/agent-rootfs/usr/local/bin
-    tar -xzf crane.tar.gz -C target/agent-rootfs/usr/local/bin crane
-
-    mkdir -p target/agent-rootfs/etc/apk
-
-    cat > target/agent-rootfs/etc/apk/repositories << EOF
-https://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/main
-https://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/community
-EOF
-
-    apk \
-        --usermod \
-        --root target/agent-rootfs \
-        --initdb \
-        --no-cache \
-        --arch "$ALPINE_ARCH" \
-        add \
-        busybox \
-        jq \
-        e2fsprogs \
-        e2fsprogs-extra \
-        crun \
-        util-linux \
-        libcap \
-        seatd
-
-    mkdir -p \
-        target/agent-rootfs/storage \
-        target/agent-rootfs/etc/init.d \
-        target/agent-rootfs/run
-
-    echo "nameserver 1.1.1.1" > \
-        target/agent-rootfs/etc/resolv.conf
-
-    rm -f target/agent-rootfs/run/seatd.sock
 }
 
 build() {
     cd "$pkgname-$pkgver"
-
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-
-    cargo build --frozen --release --bin smolvm
-    cargo build \
-        --frozen \
-        --profile release-small \
-        -p smolvm-agent \
-
-    install -Dm755 \
-        "target/release-small/smolvm-agent" \
-        target/agent-rootfs/usr/local/bin/smolvm-agent
-
-    rm -f target/agent-rootfs/sbin/init
-
-    ln -sf \
-        /usr/local/bin/smolvm-agent \
-        target/agent-rootfs/sbin/init
-
-    truncate -s 512M storage-template.ext4
-    mkfs.ext4 -F -q -m 0 -L smolvm storage-template.ext4
-
-    truncate -s 512M overlay-template.ext4
-    mkfs.ext4 -F -q -m 0 -L smolvm-overlay overlay-template.ext4
+    cargo make build-agent
+    cargo make agent-rootfs
+    cargo make build
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 target/release/smolvm "$pkgdir/usr/bin/smolvm"
+    install -Dm755 target/release/smolvm "$pkgdir/usr/bin/smolvm-bin"
+    install -Dm755 ../smolvm.sh "$pkgdir/usr/bin/smolvm"
+    install -d "$pkgdir/usr/lib/smolvm/"
+    install -Dm755 target/init.krun "$pkgdir/usr/lib/smolvm/init.krun"
+    cp -a target/agent-rootfs/ "$pkgdir/usr/lib/smolvm/"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    mkdir -p "$pkgdir/usr/share/smolvm"
-    cp -a target/agent-rootfs "$pkgdir/usr/share/smolvm/"
-    install -Dm644 storage-template.ext4 "$pkgdir/usr/share/smolvm/storage-template.ext4"
-    install -Dm644 overlay-template.ext4 "$pkgdir/usr/share/smolvm/overlay-template.ext4"
-    # install -Dm755  "$pkgdir/usr/share/smolvm/init.krun" /usr/share/libkrun/init.krun
 }
 
 # vim: ts=4 sw=4 et:
