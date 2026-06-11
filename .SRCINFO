@@ -1,15 +1,18 @@
 pkgbase = vdi-stream-client
 	pkgdesc = A tiny and low latency desktop streaming client for remote Windows guests with GPU passthrough
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://libmpq.org/
 	arch = x86_64
 	license = GPL
+	depends = ffmpeg
+	depends = libdrm
+	depends = libplacebo
 	depends = sdl3
 	depends = sdl3_ttf
 	depends = usbredir
 	depends = parsec-sdk-bin
-	source = https://github.com/mbroemme/vdi-stream-client/releases/download/v0.3.1/vdi-stream-client-0.3.1.tar.gz
-	sha256sums = 5d45890245bef20f88aa389a1f09e98f60b0ec9c10ad7e36d3c64abb7bfdd22a
+	source = https://github.com/mbroemme/vdi-stream-client/releases/download/v0.4.0/vdi-stream-client-0.4.0.tar.gz
+	sha256sums = 3560db0bce4ca57d9d7ec002fa9a67bc19ffb093ba36529bb2d0b9a95f366d58
 
 pkgname = vdi-stream-client
