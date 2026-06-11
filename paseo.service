@@ -4,7 +4,11 @@ Documentation=https://paseo.sh
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/paseo daemon start --foreground
+# Launch through the user's login shell so the daemon (and every agent it
+# spawns) inherits the same PATH/env as an interactive terminal. Without this,
+# the systemd --user manager gives a minimal env and agents can't find git,
+# node, etc. The desktop app does the equivalent via inheritLoginShellEnv().
+ExecStart=/bin/sh -c 'exec "$$(getent passwd "$$(id -u)" | cut -d: -f7)" -ilc "exec /usr/bin/paseo daemon start --foreground"'
 Restart=on-failure
 RestartSec=5
 
