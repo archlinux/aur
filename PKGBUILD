@@ -2,7 +2,7 @@
 _base=tqdm
 pkgname=pypy3-${_base}
 pkgdesc="Fast, Extensible Progress Meter"
-pkgver=4.68.1
+pkgver=4.68.2
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base}/${_base}"
@@ -10,7 +10,7 @@ license=(MPL-2.0 MIT)
 depends=(pypy3)
 makedepends=(pypy3-build pypy3-installer pypy3-setuptools)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('7231840cb611fa924e683f313d4c4ead4cfe589efcf2fbe57d52d990d97e13843460a4a4f75d6347557aece1ee41aeed3d89ed6bd48000da0df5aaba35876923')
+sha512sums=('d5eac60eb7ee4e1df480f1e7004621436250e967c6f78bb1d5aa942d2860133e169b7cbec9355f77867c70bbab20c7ca4529efec814432986efc87247a6e90aa')
 
 build() {
   cd ${_base}-${pkgver}
