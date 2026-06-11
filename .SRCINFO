@@ -1,6 +1,6 @@
 pkgbase = file-manager-bin
 	pkgdesc = Linux desktop file manager written in Rust and Iced
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/nsjsv/File_Manager
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = file-manager-bin
 	optdepends = p7zip: 7z and rar archive preview support
 	provides = file-manager
 	conflicts = file-manager
-	source_x86_64 = https://github.com/nsjsv/File_Manager/releases/download/v0.0.5/file-manager-v0.0.5-x86_64.tar.gz
-	sha256sums_x86_64 = 33bd4c647272c892dc9c9f6eb6e59aa0f83c3a04d259e72d2ebd32d488a7bc86
+	source_x86_64 = https://github.com/nsjsv/File_Manager/releases/download/v0.0.6/file-manager-v0.0.6-x86_64.tar.gz
+	sha256sums_x86_64 = aeb26eca098b8e7d6f3288aedef7b79707b086203fd6337486f5c49321ae8505
 
 pkgname = file-manager-bin
