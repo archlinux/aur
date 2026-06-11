@@ -22,6 +22,7 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-setuptools'
+  'python-uv-build'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
 sha256sums=('3d2a050db9289f26aa9bfc548c65cce8362af942329af072e5c2d27e7570c2b2')

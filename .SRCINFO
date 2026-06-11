@@ -9,6 +9,7 @@ pkgbase = bzfs
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-uv-build
 	depends = python
 	optdepends = zstd: compression
 	optdepends = pv: progress bars
