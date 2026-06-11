@@ -30,7 +30,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kernalix7/winpodx/archive/v$pkgver.tar.gz")
-sha256sums=('7911e2757ef9eed83af3f8d5ad869d907b29a878571ee3e90edd669b52fc6413')
+sha256sums=('5c84c759a722c040bc159f5b1aa8debe32e53d3653964d9daa0cdd0b84181a88')
 install=winpodx.install
 
 build() {
