@@ -1,7 +1,7 @@
 pkgbase = mimo-code-bin
 	pkgdesc = Next-generation AI coding assistant for developers with unlimited context
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mimo.xiaomi.com/mimocode
 	arch = x86_64
 	arch = aarch64
