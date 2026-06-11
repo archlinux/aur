@@ -1,0 +1,16 @@
+# --- Arch/makepkg specific ---
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.log
+*.log.*
+
+# --- Rust/Cargo specific (if you build locally) ---
+target/
+Cargo.lock
+
+# --- OS/Editor specific ---
+.DS_Store
+*~
+*.swp

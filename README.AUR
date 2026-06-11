@@ -1,0 +1,24 @@
+hipfire - AUR Package README
+
+This package installs the hipfire inference framework.
+
+Configuration:
+--------------
+Upon the first execution, hipfire creates a directory at:
+    ~/.hipfire
+
+This directory is required for the operation of the framework. It will 
+automatically populate the following items:
+
+1. ~/.hipfire/config.json: 
+   Auto-detected hardware architecture (e.g., {"gpu_arch": "gfx1201"}).
+   This ensures optimal kernel execution for your specific AMD GPU.
+
+2. ~/.hipfire/models/: 
+   The storage location for your downloaded inference models.
+
+Performance Note:
+-----------------
+If ~/.hipfire/models resides on a Btrfs filesystem, the installation script 
+automatically attempts to disable Copy-on-Write (CoW) for this directory 
+to prevent significant performance degradation during large model reads.
