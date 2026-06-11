@@ -1,6 +1,6 @@
 # Maintainer: Simon Jackson <sizeak at gmail dot com>
 pkgname=claude-commander
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='A high-performance terminal UI for managing Claude coding sessions'
 arch=('x86_64' 'aarch64')
@@ -8,8 +8,12 @@ url='https://github.com/sizeak/claude-commander'
 license=('MIT')
 depends=('tmux' 'git')
 makedepends=('cargo')
+# claude-commander strips its own binary via [profile.release] (strip = true),
+# so opt out of makepkg's default debug-package split to avoid a broken/empty
+# claude-commander-debug package.
+options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sizeak/claude-commander/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5f70ed07b16d38bebd43599604f75054ee14801a1cf208fd70789460c05247ee')
+sha256sums=('43e7c9a770ddcb3cabb05489abcc0bf460be0f1efa396592b451b28d4f64a1eb')
 
 prepare() {
   cd "$pkgname-$pkgver"
