@@ -1,4 +1,5 @@
 [homebox-bin]
-source = "git"
-git = "https://github.com/sysadminsmedia/homebox.git"
+source = "github"
+github = "sysadminsmedia/homebox"
+use_latest_release = true
 prefix = "v"
