@@ -4,7 +4,7 @@ Wants=network-online.target
 After=network.target network-online.target
 
 [Service]
-ExecStart=/usr/bin/ds4-server --model /var/lib/ds4/ds4flash.gguf --ctx 200000 --kv-disk-dir /tmp/ds4-kv --kv-disk-space-mb 8192 --port 11435
+ExecStart=/usr/bin/ds4-server --model /var/lib/ds4/ds4flash.gguf --ctx 100000 --kv-disk-dir /tmp/ds4-kv --kv-disk-space-mb 8192 --port 11435
 WorkingDirectory=/var/lib/ds4
 User=ds4
 Group=ds4
@@ -15,6 +15,9 @@ Type=simple
 PrivateTmp=yes
 ProtectSystem=full
 ProtectHome=yes
+
+# memory protection
+OOMScoreAdjust=1000
 
 [Install]
 WantedBy=multi-user.target
