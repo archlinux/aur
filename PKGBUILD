@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=smolvm
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=(
@@ -35,7 +35,7 @@ source=(
     "smolvm.sh"
 )
 sha256sums=(
-    '12261eca490188182ddb20544c89ceb7633f98694f93853e4537607d2982d7dd'
+    '65aa38bec3f44a079599f67c3229722ed6d3cd99224c1ae0af6c7e4b4fa31d5d'
     'a938ec07ef7ac4719cf3c02f34ce5ddc92cdfd7028f31a6c1090bebe0b2c5f26'
 )
 
@@ -60,7 +60,6 @@ package() {
     install -Dm755 target/release/smolvm "$pkgdir/usr/bin/smolvm-bin"
     install -Dm755 ../smolvm.sh "$pkgdir/usr/bin/smolvm"
     install -d "$pkgdir/usr/lib/smolvm/"
-    install -Dm755 target/init.krun "$pkgdir/usr/lib/smolvm/init.krun"
     cp -a target/agent-rootfs/ "$pkgdir/usr/lib/smolvm/"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
