@@ -1,7 +1,7 @@
 # Maintainer: somnus0917 <somnus0917@gmail.com>
 pkgname=superlabel
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight desktop annotation tool for object detection datasets"
 arch=('x86_64')
 url="https://github.com/somnus0917/superlabel"
@@ -29,7 +29,7 @@ build() {
     cd "${pkgname}-${pkgver}"
     pnpm build
     cd src-tauri
-    cargo build --release --locked
+    cargo build --release
 }
 
 package() {
