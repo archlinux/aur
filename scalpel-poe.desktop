@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Scalpel
+Comment=Path of Exile's First Fourth-Party Tool
+Exec=scalpel-poe %U
+Terminal=false
+Type=Application
+Icon=scalpel-poe
+StartupWMClass=scalpel
+Categories=Game;

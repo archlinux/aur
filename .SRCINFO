@@ -1,0 +1,24 @@
+pkgbase = scalpel-poe-git
+	pkgdesc = Path of Exile's First Fourth-Party Tool
+	pkgver = 0.9.9.rc2.0.ge858db3
+	pkgrel = 1
+	url = https://github.com/scalpelpoe/scalpel
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = nodejs-lts-jod
+	makedepends = npm
+	makedepends = python
+	depends = fuse2
+	provides = scalpel-poe
+	conflicts = scalpel-poe
+	conflicts = scalpel-poe-bin
+	options = !strip
+	source = git+https://github.com/scalpelpoe/scalpel.git
+	source = scalpel-poe.sh
+	source = scalpel-poe.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = scalpel-poe-git
