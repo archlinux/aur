@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=wireview-linux-bin
-pkgver=1.1.0.0
+pkgver=1.1.0.1
 pkgrel=1
 pkgdesc="Unofficial Linux GUI for the Thermal Grizzly WireView Pro II (prebuilt binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/wireview-linux-$pkgver-linux-x64.tar.gz"
         "wireview-linux.desktop"
         "wireview-linux.png")
-sha256sums=('a0d818ef4233664a203fc52e10e67866afd3df5b9993db60ecbfe2fdc7a7bfe6'
+sha256sums=('39401bb3c6415fec0da4bbfc77b0f782bab3302816fb0d7d8dc64e6ecdc99b47'
             'a08180f8c00f0d8b4b8a6dc5cbf1644c5e25afb985e5bf3b7972ab33831e15e3'
             '5bdcde4399af5bd57824af8dcacdd05c6421eddbb18993210ddab805ef1aaff3')
 
