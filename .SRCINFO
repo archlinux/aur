@@ -1,0 +1,20 @@
+pkgbase = replay-sh-bin
+	pkgdesc = ⚡ Replay — Record once. Replay forever. — Stop writing shell scripts. Start recording workflows.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Ra77a3l3-jar/replaySh
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = replay
+	conflicts = replay
+	options = !strip
+	source = README-0.3.0.md::https://raw.githubusercontent.com/Ra77a3l3-jar/replaySh/v0.3.0/README.md
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/Ra77a3l3-jar/replaySh/v0.3.0/LICENSE
+	sha256sums = 3a6f89b7a62ebf24e9e0cf86cf889fb4ccd60a467827ff77327942a3eb4ab188
+	sha256sums = 3fe0dd18e800114c3ab4b6da948453320b9fdb95260c52d1fba4c87dda2fb583
+	source_x86_64 = replay-x86_64-0.3.0.tgz::https://github.com/Ra77a3l3-jar/replaySh/releases/download/v0.3.0/replay-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 93f3624601fe0b78cb084333d0f81921362fa53eb3b0da50610836007790bdff
+
+pkgname = replay-sh-bin
