@@ -7,7 +7,7 @@ pkgname=${_appname}-task-manager-bin
 pkgdesc="🤩 A fast, keyboard-first terminal task manager with offline-first SQLite, Git sync, fuzzy search & Lua plugins"
 
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 _gitversion=${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('c2ed36785d1f63095f7d2694054230a0dd29f461e844137b20078bdddd574184')
-sha256sums_aarch64=('57c9cf8cd493712e8ea57bc86557d6723505e438f845f3dd504ab9dffad3b390')
+sha256sums_x86_64=('20a3585c790fec8a96623ef92194b30af5b67520212c9bbd73a554ec44d8f036')
+sha256sums_aarch64=('8e8be3638ebf32cdcdbe4753b3114fa233d2c0d08be7f0658f2786ac42bacb21')
 
 
 package() {
