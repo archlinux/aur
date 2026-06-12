@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: loathingkernel <loathingkernel @at gmail .dot com>
 pkgname=d7vk
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc="Vulkan-based implementation of D3D7, 6, 5 and 3 for Linux / Wine, spun off from DXVK."
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ source=("git+$url.git#tag=v${pkgver}"
 	"setup_d7vk"
 	"setup_d7vk.sh"
 	)
-sha256sums=('65550f9619f387a76d7f9246b313c3796a16fb1a3e1be627f76ff5a8f6b56c04'
+sha256sums=('b3264d2e7e6052a8cbf0784b074b59d0c4539f6fc68873842191451d1b43e360'
             'SKIP'
             'SKIP'
             'SKIP'
