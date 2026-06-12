@@ -7,7 +7,7 @@ pkgbase=mini-eq
 _app_id="io.github.bhack.$pkgbase"
 _uuid=mini-eq@bhack.github.io
 pkgver=0.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Compact PipeWire system-wide parametric EQ"
 arch=('any')
 url="https://github.com/bhack/mini-eq"
@@ -59,6 +59,7 @@ check() {
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest
+  test-env/bin/python -m pytest --dead-fixtures
 
   appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
   desktop-file-validate "data/${_app_id}.desktop"

@@ -1,7 +1,7 @@
 pkgbase = mini-eq
 	pkgdesc = Compact PipeWire system-wide parametric EQ
 	pkgver = 0.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bhack/mini-eq
 	arch = any
 	license = GPL-3.0-or-later
