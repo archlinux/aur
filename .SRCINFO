@@ -1,6 +1,6 @@
 pkgbase = vimhjkl
 	pkgdesc = A terminal trainer that drills advanced Vim techniques in real vim/nvim and grades your keystrokes
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/S-Sigdel/vimhjkl
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = vimhjkl
 	depends = python
 	optdepends = neovim: preferred editor for drills
 	optdepends = vim: alternative editor for drills
-	source = vimhjkl-0.4.1.tar.gz::https://github.com/S-Sigdel/vimhjkl/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = b68cf08ae3f560e88ca208aff511b0f9fd64147b807c8a23e51ae0590533c9c6
+	source = vimhjkl-0.5.0.tar.gz::https://github.com/S-Sigdel/vimhjkl/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 49725dc3e0b59bb429558d4dbec820af4162cde19219a1ea6ee63d9827cbe146
 
 pkgname = vimhjkl
