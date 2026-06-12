@@ -1,6 +1,6 @@
 pkgbase = electronmail
 	pkgdesc = Unofficial ProtonMail Desktop App
-	pkgver = 5.3.6
+	pkgver = 5.3.7
 	pkgrel = 1
 	url = https://github.com/vladimiry/ElectronMail
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = electronmail
 	makedepends = pnpm
 	makedepends = python-setuptools
 	makedepends = yarn
-	depends = electron40
+	depends = electron42
 	depends = libsecret
 	optdepends = org.freedesktop.secrets: password storage backend
-	source = git+https://github.com/vladimiry/ElectronMail.git#tag=v5.3.6
+	source = git+https://github.com/vladimiry/ElectronMail.git#tag=v5.3.7
 	source = electronmail.desktop
 	source = electronmail.sh
-	sha256sums = 9eebc9210ea550bf8d6c8a9bc000d16b03073fe8c52f4411384e570767c15d49
+	sha256sums = 56ad0731a574d2558c468157a48f6a6f84d4eff5143e8124d1751f1629988235
 	sha256sums = c95c69f1d0db27180236ff063d9563da8750ecce81883adfb217b73ac3bb974e
 	sha256sums = e7e9dd6e065118ae5d9624c7c81328086719fab198d30a92b08979c29757a3b2
 

@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=electronmail
-pkgver=5.3.6
+pkgver=5.3.7
 pkgrel=1
 _nodeversion=24
-_electronversion=40
+_electronversion=42
 pkgdesc="Unofficial ProtonMail Desktop App"
 arch=('x86_64')
 url="https://github.com/vladimiry/ElectronMail"
@@ -26,7 +26,7 @@ optdepends=('org.freedesktop.secrets: password storage backend')
 source=("git+https://github.com/vladimiry/ElectronMail.git#tag=v$pkgver"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('9eebc9210ea550bf8d6c8a9bc000d16b03073fe8c52f4411384e570767c15d49'
+sha256sums=('56ad0731a574d2558c468157a48f6a6f84d4eff5143e8124d1751f1629988235'
             'c95c69f1d0db27180236ff063d9563da8750ecce81883adfb217b73ac3bb974e'
             'e7e9dd6e065118ae5d9624c7c81328086719fab198d30a92b08979c29757a3b2')
 
@@ -42,9 +42,12 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd ElectronMail
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+
+  cd ElectronMail
+  export PNPM_HOME="$srcdir/pnpm-home"
+  pnpm install --frozen-lockfile
 
   sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$pkgname.sh"
 }
@@ -59,7 +62,6 @@ build() {
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   _ensure_local_nvm
-  pnpm install --frozen-lockfile
   pnpm app:dist
   npm run electron-builder:shortcut -- --linux pacman \
     -c.electronDist=$electronDist -c.electronVersion=$electronVer
