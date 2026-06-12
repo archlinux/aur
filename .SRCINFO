@@ -1,8 +1,8 @@
 pkgbase = sleex-user-config-git
 	pkgdesc = User configuration for Sleex desktop environment (git version)
-	pkgver = 1.12.r646.0255311
+	pkgver = 1.12.r661.33b1e23
 	pkgrel = 1
-	url = https://gitlab.com/axos-project/sleex
+	url = https://github.com/axos-project/sleex
 	arch = x86_64
 	license = GPL3
 	optdepends = sleex-git: the desktop env that goes with it

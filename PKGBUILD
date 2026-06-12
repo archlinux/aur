@@ -1,11 +1,11 @@
 # Maintainer: Ardox <ardox@axos-project.com>
 pkgname=sleex-user-config-git
 _pkgname=sleex
-pkgver=1.12.r646.0255311
+pkgver=1.12.r661.33b1e23
 pkgrel=1
 pkgdesc="User configuration for Sleex desktop environment (git version)"
 arch=("x86_64")
-url="https://gitlab.com/axos-project/sleex"
+url="https://github.com/axos-project/sleex"
 license=('GPL3')
 optdepends=("sleex-git: the desktop env that goes with it")
 provides=("sleex-user-config" "axskel-hypr")
