@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mindwtr
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 _nodeversion=20
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
@@ -24,10 +24,10 @@ makedepends=(
   'nvm'
   'python'
 )
-source=("git+https://github.com/dongdongbh/Mindwtr.git#tag=v$pkgver"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dongdongbh/Mindwtr/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
 )
-sha256sums=('c918c31b96e843b48fa95c2621b99e9e8d020f2c20f0c55c08df4426aed6bb08'
+sha256sums=('09f7d9f2ca76b7caacd026151604a16b85b522273f9dcde6a659ca45fdcb1f7b'
             'c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c')
 
 _ensure_local_nvm() {
@@ -42,7 +42,7 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd Mindwtr
+  cd "$srcdir/Mindwtr-$pkgver"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
 
@@ -52,7 +52,7 @@ prepare() {
 }
 
 build() {
-  cd Mindwtr
+  cd "$srcdir/Mindwtr-$pkgver"
   CFLAGS+=" -ffat-lto-objects"
   CXXFLAGS+=" -ffat-lto-objects"
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
@@ -66,7 +66,7 @@ build() {
 }
 
 check() {
-  cd Mindwtr/apps/desktop
+  cd "$srcdir/Mindwtr-$pkgver/apps/desktop"
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
   
   # Run the desktop Vitest suite, but do not fail the package build on test failures.
@@ -74,7 +74,7 @@ check() {
 }
 
 package() {
-  cd Mindwtr/apps/desktop/src-tauri
+  cd "$srcdir/Mindwtr-$pkgver/apps/desktop/src-tauri"
   install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
   
   for i in 32x32 64x64 128x128 128x128@2x; do
