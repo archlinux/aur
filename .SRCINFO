@@ -1,0 +1,27 @@
+pkgbase = waystone
+	pkgdesc = Path of Exile 2 price-check overlay for Wayland (Hyprland)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kriskruse/waystone
+	arch = any
+	license = AGPL-3.0-or-later
+	license = MIT
+	makedepends = npm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = python-opencv
+	depends = python-numpy
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = xdg-desktop-portal-hyprland
+	depends = wl-clipboard
+	depends = xdotool
+	depends = nodejs
+	source = waystone-0.1.0.tar.gz::https://github.com/kriskruse/waystone/releases/download/v0.1.0/waystone-0.1.0.tar.gz
+	sha256sums = 837e6185c269f7e65ee7f20391857de1fe993af584a805d9ec499d1db0e05a21
+
+pkgname = waystone
