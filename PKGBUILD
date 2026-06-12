@@ -1,7 +1,7 @@
 # Maintainer: Codemorra <238960954+codemorra@users.noreply.github.com>
 
 pkgname=bulk-rename-py
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Graphical Python application for bulk file renaming"
 arch=('any')
@@ -17,18 +17,14 @@ depends=(
 
 source=(
   "https://github.com/codemorra/bulk-rename-py/archive/refs/tags/v${pkgver}.tar.gz"
-  "LICENSE"
-  "THIRD_PARTY_LICENSES.txt"
 )
 
-sha256sums=('f0112950e7675689208c2cef08e38d371ea0628994ba3461acd9f5d0fd6842a5'
-            '93b90151b604712de4bc0526b8193debaea462a9aac99303b8cd973aced3c969'
-            '5cfea4b932e8e753e3f664cadb7adc7924a1606d5160fc3c0c606b5325bac7be')
+sha256sums=('5d1f255bd2a53f77937083ec9cf7442570ed449ccb347de5329e5d068a22145a')
 
 package() {
     cd "$srcdir/bulk-rename-py-$pkgver"
 
-    # program files
+    # Program files
     install -d "$pkgdir/usr/lib/bulk-rename-py"
     cp -r src/* "$pkgdir/usr/lib/bulk-rename-py/"
 
@@ -47,9 +43,12 @@ package() {
     done
 
     # Licenses
+    install -d "$pkgdir/usr/lib/bulk-rename-py/licenses"
+
+    install -Dm644 LICENSE "$pkgdir/usr/lib/bulk-rename-py/licenses/LICENSE"
+    install -Dm644 THIRD_PARTY_LICENSES.txt "$pkgdir/usr/lib/bulk-rename-py/licenses/THIRD_PARTY_LICENSES.txt"
+
     install -d "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm644 LICENSE \
-      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 THIRD_PARTY_LICENSES.txt \
-      "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_LICENSES.txt"
+    ln -s "/usr/lib/bulk-rename-py/licenses/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    ln -s "/usr/lib/bulk-rename-py/licenses/THIRD_PARTY_LICENSES.txt" "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_LICENSES.txt"
 }

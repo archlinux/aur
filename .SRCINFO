@@ -1,6 +1,6 @@
 pkgbase = bulk-rename-py
 	pkgdesc = Graphical Python application for bulk file renaming
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/codemorra/bulk-rename-py
 	arch = any
@@ -9,11 +9,7 @@ pkgbase = bulk-rename-py
 	depends = pyside6
 	depends = shiboken6
 	depends = python-requests
-	source = https://github.com/codemorra/bulk-rename-py/archive/refs/tags/v1.0.1.tar.gz
-	source = LICENSE
-	source = THIRD_PARTY_LICENSES.txt
-	sha256sums = f0112950e7675689208c2cef08e38d371ea0628994ba3461acd9f5d0fd6842a5
-	sha256sums = 93b90151b604712de4bc0526b8193debaea462a9aac99303b8cd973aced3c969
-	sha256sums = 5cfea4b932e8e753e3f664cadb7adc7924a1606d5160fc3c0c606b5325bac7be
+	source = https://github.com/codemorra/bulk-rename-py/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 5d1f255bd2a53f77937083ec9cf7442570ed449ccb347de5329e5d068a22145a
 
 pkgname = bulk-rename-py
