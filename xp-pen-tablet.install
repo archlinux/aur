@@ -24,7 +24,6 @@ disable_user_service() {
 pre_install() {
 	AppName=PenTablet
 	pid=$(ps -e | grep $AppName)
-	appScript=$AppName".sh"
 	if [ -n "$pid" ]; then
 		echo $pid
 		arr=()
@@ -36,10 +35,7 @@ pre_install() {
 			name=$(echo $val | awk '{print $4}')
 			echo "ID:"$appid
 			echo "Name:"$name
-			if [ "$name" = "$appRunScript" ]; then
-				echo "close $appRunScript"
-				kill -15 $appid
-			elif [ "$name" = "$AppName" ]; then
+			if [ "$name" = "$AppName" ]; then
 				echo "close $AppName"
 				kill -15 $appid
 			fi
@@ -48,41 +44,8 @@ pre_install() {
 }
 
 post_install() {
-	appDir=/usr/lib/pentablet
-	confPath=$appDir/conf/xppen
-	libPath=$appDir/lib
-	platPath=$appDir/platforms
 	RuleDir="/usr/lib/udev/rules.d"
 	ruleName="10-xp-pen.rules"
-
-	chmod +0755 /usr/share/applications/xppentablet.desktop
-	chmod +0644 /usr/share/icons/hicolor/256x256/apps/xppentablet.png
-
-	chmod +0755 $appDir/PenTablet
-	chmod +0755 $appDir/PenTablet.sh
-	#chmod +0666 $appDir/resource.rcc #not exist in this version
-
-	# chmod +0777 $confPath #Move to package()
-	# chmod +0777 $libPath
-	# chmod +0777 $platPath
-
-	chmod +0666 $confPath/config.xml
-	chmod +0666 $confPath/language.ini
-	chmod +0666 $confPath/name_config.ini
-
-	chmod +0666 $libPath/libicudata.so.56
-	chmod +0666 $libPath/libicui18n.so.56
-	chmod +0666 $libPath/libicuuc.so.56
-	chmod +0666 $libPath/libQt5Core.so.5
-	chmod +0666 $libPath/libQt5DBus.so.5
-	chmod +0666 $libPath/libQt5Gui.so.5
-	chmod +0666 $libPath/libQt5Network.so.5
-	chmod +0666 $libPath/libQt5Widgets.so.5
-	chmod +0666 $libPath/libQt5X11Extras.so.5
-	chmod +0666 $libPath/libQt5XcbQpa.so.5
-	chmod +0666 $libPath/libQt5Xml.so.5
-
-	chmod +0666 $platPath/libqxcb.so
 
 	lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
 	touch $lockfile
@@ -105,7 +68,7 @@ post_install() {
 
 	cat <<EOF
 
-********************"
+********************
 installation successful!
 
 to restart the xp-pen driver, please run:
@@ -114,7 +77,11 @@ systemctl --user restart xppentablet.service
 if you want the driver to autostart, please run:
 systemctl --user enable xppentablet.service
 
-********************"
+note: if settings are not saved, ensure your user is in the 'users' group:
+  groups \$USER          # check current membership
+  sudo gpasswd -a \$USER users && newgrp users
+
+********************
 
 EOF
 }
@@ -128,7 +95,7 @@ post_upgrade() {
 pre_remove() {
 	pre_install
 	lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
-	rm $lockfile
+	rm -f $lockfile
 	#Remove service
 	disable_user_service
 }
