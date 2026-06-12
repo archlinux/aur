@@ -46,12 +46,12 @@ optdepends=(
   "nwg-displays: Display arrangement tool"
 )
 
-source=("git+https://gitlab.com/axos-project/sleex.git")
+source=("https://github.com/axos-project/sleex.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "1.28.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.32.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
