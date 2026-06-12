@@ -1,7 +1,7 @@
 # Maintainer: Scott Marshall <marshals@gmail.com>
 # Contributor: Catriel Müller <catriel at gmail dot com>
 pkgname=synergy1-bin
-pkgver=1.20.3
+pkgver=1.20.4
 pkgrel=1
 pkgdesc="Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux."
 arch=('x86_64')
