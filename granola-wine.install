@@ -10,6 +10,7 @@ First run:
 
 The first launcher run creates the Wine prefix, copies the app payload, and
 registers the per-user granola:// URL handler where xdg-utils supports it.
+In-app Windows updates are disabled; update this package through AUR.
 
 Runtime state is kept under:
   ~/.wine-prefixes/granola

@@ -4,9 +4,15 @@ set -euo pipefail
 pkgver="@PKGVER@"
 export WINEPREFIX="${GRANOLA_WINEPREFIX:-${HOME}/.wine-prefixes/granola}"
 
-app_src="/opt/granola-wine/app"
+if [[ "${GRANOLA_WINE_ENABLE_SELF_UPDATES:-0}" != "1" ]]; then
+  export GRANOLA_FEATURES='{"UPDATE_CHECKS":false}'
+fi
+
+app_src="${GRANOLA_WINE_APP_SRC:-/opt/granola-wine/app}"
 wine_user="${WINEUSER:-$(id -un)}"
 app_dst="${WINEPREFIX}/drive_c/users/${wine_user}/AppData/Local/Programs/@granolaelectron"
+updater_cache="${WINEPREFIX}/drive_c/users/${wine_user}/AppData/Local/@granolaelectron-updater"
+user_data="${WINEPREFIX}/drive_c/users/${wine_user}/AppData/Roaming/Granola"
 log_dir="${XDG_DATA_HOME:-${HOME}/.local/share}/granola-wine"
 log_file="${log_dir}/granola.log"
 exe_path="C:\\users\\${wine_user}\\AppData\\Local\\Programs\\@granolaelectron\\Granola.exe"
@@ -31,6 +37,11 @@ if [[ ! -f "${WINEPREFIX}/.granola-wine-x11-decorations-configured" ]]; then
   WINEPREFIX="$WINEPREFIX" wine reg add 'HKCU\Software\Wine\X11 Driver' /v Managed /t REG_SZ /d Y /f \
     < /dev/null >> "$log_file" 2>&1 || true
   touch "${WINEPREFIX}/.granola-wine-x11-decorations-configured"
+fi
+
+if [[ "${GRANOLA_WINE_ENABLE_SELF_UPDATES:-0}" != "1" ]]; then
+  rm -rf "${updater_cache}/pending"
+  rm -f "${user_data}/installing-update.txt"
 fi
 
 if [[ ! -x "${app_dst}/Granola.exe" ]] || [[ ! -f "${app_dst}/.granola-wine-pkgver" ]] || [[ "$(cat "${app_dst}/.granola-wine-pkgver" 2>/dev/null)" != "$pkgver" ]]; then

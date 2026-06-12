@@ -1,8 +1,8 @@
 # Maintainer: invt <invt@localhost>
 
 pkgname=granola-wine
-pkgver=7.309.0
-pkgrel=3
+pkgver=7.319.1
+pkgrel=1
 pkgdesc='Granola AI Notepad for Windows packaged to run under Wine'
 arch=('x86_64')
 url='https://www.granola.ai/'
@@ -19,10 +19,10 @@ source=(
   'granola-wine.install'
   'LICENSE'
 )
-sha256sums=('6854bcd0fe746ff547f5ea5414ae84cb8c4a06d50bc037a81da6e81ac57e1200'
-            '16ff2404ec8b5a127dd501596e46b1d4fb63efdef32517bea6e94e7b4ec22808'
+sha256sums=('4cdeabf87e9b72d23ef7e59896087a4d67481f50e74b58eac9c25ec1b4a61942'
+            'c92ef8f028398fe840f001dacd6b80e665914275c346e78fccaac89019b179c2'
             'd3271d0a19cc761fdcdbd45f82670ff45f19362d9a26b6f457617032e6f86c62'
-            'cc7a58b2c1c5b971cbb85d1d4dd7d36604401c9efda164809f37527a7053bed2'
+            '06c5b52f1f88887bf4e501d895c116bf351e46118b707d486ec6f0e0afeddc15'
             'af454ff477d4c6608b755801ac954010a74ce37580b359e6404cfe8151eec8ba')
 
 prepare() {

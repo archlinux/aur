@@ -50,6 +50,19 @@ The system package files remain under:
 /opt/granola-wine/app
 ```
 
+## Updates
+
+Use your AUR helper to update Granola:
+
+```bash
+paru -Syu granola-wine
+```
+
+Granola's Windows self-updater is disabled by default in the launcher. Under
+Wine, that updater downloads the NSIS installer and trips over Wine's
+PowerShell stubs, so package upgrades replace the extracted app payload instead.
+The launcher also removes stale pending updater files before startup.
+
 ## Browser Sign-In
 
 Granola uses the `granola://` URL scheme for browser sign-in callbacks. The
