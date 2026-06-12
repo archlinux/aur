@@ -1,0 +1,13 @@
+pkgbase = ttf-new-tegomin
+	pkgdesc = Japanese serif font with a hand-carved letterpress style
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://github.com/nagamaki008/NewTegomin
+	arch = any
+	license = OFL-1.1
+	source = NewTegomin-Regular.ttf::https://raw.githubusercontent.com/nagamaki008/NewTegomin/9d26cf25b8831ea3a600e740dd6ecafb89409159/fonts/ttf/NewTegomin-Regular.ttf
+	source = OFL.txt::https://raw.githubusercontent.com/nagamaki008/NewTegomin/9d26cf25b8831ea3a600e740dd6ecafb89409159/OFL.txt
+	sha256sums = cdf03ac7d8f2ee6f96f7547ce525db04257df574fb9b2e941c9b8d1c979cb027
+	sha256sums = 448df04b698cb1101857b61c7d1b4187beb59d3a0fb5edbd834d308758cda95e
+
+pkgname = ttf-new-tegomin
