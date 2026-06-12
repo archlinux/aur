@@ -4,7 +4,7 @@
 pkgname=nextcloud-app-maps
 _name=maps
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenStreetMap layers including POIs"
 arch=('any')
 url="https://github.com/nextcloud/maps"
@@ -12,64 +12,13 @@ license=('GPL')
 depends=('nextcloud')
 makedepends=('ripgrep' 'yq' 'composer' 'npm')
 options=('!strip')
-#source=("https://github.com/nextcloud/maps/releases/download/v$pkgver/maps-$pkgver.tar.gz")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud/maps/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2d938b0ea166742fcda7b0543a1c3d40fffc961a51e30bbb030fdecc77b29be1')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud-releases/maps/releases/download/v$pkgver/maps-v$pkgver.tar.gz")
+sha256sums=('470b73a2ecf834415954ee95f18bc873d0b29ff28167e800632e427050ef46f7')
 
 _get_nextcloud_versions() {
   _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
   _app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
   _app_max_major_version=$(expr ${_app_max_major_version} + 1)
-}
-
-prepare() {
-  cd "${srcdir}"/maps
-
-  sed -i 's|composer bin all install --ansi|composer bin all install --ansi --ignore-platform-reqs -n|g' composer.json
-}
-
-build() {
-  cd "${srcdir}"/maps
-
-  composer install --ignore-platform-reqs -n
-  npm ci
-  npm run build
-
-  rm -rf \
-    .git \
-    build \
-    screenshots/addContacts.gif \
-    screenshots/addFavorites.gif \
-    screenshots/addPhotoFromFiles.gif \
-    screenshots/addPhotosFromMap.gif \
-    screenshots/addTracks.gif \
-    screenshots/old-contacts.png \
-    screenshots/old-start.png \
-    screenshots/photoAlbumOnMap.gif \
-    screenshots/shareMap.gif \
-    tests \
-    Makefile \
-    *.log \
-    phpunit*xml \
-    composer.* \
-    js/node_modules \
-    node_modules \
-    js/tests \
-    js/test \
-    js/*.log \
-    js/package.json \
-    js/bower.json \
-    js/karma.* \
-    js/protractor.* \
-    babel.config.js \
-    webpack.*.js \
-    package.json \
-    bower.json \
-    karma.* \
-    protractor\.* \
-    translationfiles \
-    .* \
-    js/.*
 }
 
 check() {
