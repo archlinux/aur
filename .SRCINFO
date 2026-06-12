@@ -1,0 +1,23 @@
+pkgbase = pgmodeler-1
+	pkgdesc = PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://pgmodeler.io
+	install = pgmodeler.install
+	arch = x86_64
+	license = GPL3
+	depends = qt6-svg
+	depends = postgresql-libs
+	depends = libxml2
+	conflicts = pgmodeler
+	options = emptydirs
+	source = pgmodeler-1.2.3.tar.gz::https://github.com/pgmodeler/pgmodeler/archive/v1.2.3.tar.gz
+	source = mimetype.xml
+	source = pgmodeler.install
+	source = patch_no_check_update.diff
+	sha256sums = 862a8caf8d3822b62bc584ed17ba53d1a61733b92d3d5ba29e1be47eadf8f061
+	sha256sums = 91c6ab0df840823a4de21a953592134fb7b4367565eebff8523dc08ea6c7cd36
+	sha256sums = fed8d615a3b732a83e1bd9c9562c81f3bfcb0ce5a4abba96191bca0d602bdd33
+	sha256sums = 648d6351e1e1d1ad559e1ddfc98aff158e91c040b65c8c4ea74232c2077e19d7
+
+pkgname = pgmodeler-1

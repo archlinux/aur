@@ -1,0 +1,65 @@
+# Maintainer: Marc Cousin (cousinmarc at gmail dot com)
+# Contributor: Severin Glöckner (severin.gloeckner@stud.htwk-leipzig.de)
+
+pkgname=pgmodeler-1
+pkgver=1.2.3
+pkgrel=1
+pkgdesc="PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases"
+url="https://pgmodeler.io"
+license=('GPL3')
+arch=('x86_64')
+depends=('qt6-svg' 'postgresql-libs' 'libxml2')
+conflicts=('pgmodeler')
+
+source=("pgmodeler-$pkgver.tar.gz::https://github.com/pgmodeler/pgmodeler/archive/v${pkgver//_/-}.tar.gz"
+        'mimetype.xml'
+        'pgmodeler.install'
+        'patch_no_check_update.diff')
+sha256sums=('862a8caf8d3822b62bc584ed17ba53d1a61733b92d3d5ba29e1be47eadf8f061'
+            '91c6ab0df840823a4de21a953592134fb7b4367565eebff8523dc08ea6c7cd36'
+            'fed8d615a3b732a83e1bd9c9562c81f3bfcb0ce5a4abba96191bca0d602bdd33'
+            '648d6351e1e1d1ad559e1ddfc98aff158e91c040b65c8c4ea74232c2077e19d7')
+
+options=('emptydirs')
+
+install=pgmodeler.install
+
+build() {
+    cd "$srcdir/pgmodeler-${pkgver//_/-}"
+    patch -p1 < ../patch_no_check_update.diff
+
+    # release is needed to get the full dummy and xml2object plugins (doesn't seem to work)
+    qmake6 CONFIG+=release \
+          PREFIX=/usr \
+          CONFDIR=/etc/pgmodeler \
+          PRIVATEBINDIR=/usr/bin \
+          DOCDIR=/usr/share/doc/pgmodeler \
+          SAMPLESDIR=/usr/share/doc/pgmodeler \
+          NO_UPDATE_CHECK=AURdoesthis \
+          QMAKE_CXXFLAGS_RELEASE+="${CXXFLAGS} ${CPPFLAGS}" \
+          pgmodeler.pro
+    make
+}
+
+package() {
+    cd "$srcdir/pgmodeler-${pkgver//_/-}"
+
+    make INSTALL_ROOT="${pkgdir}" install
+
+    install -Dm644 "assets/conf/pgmodeler_logo.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/pgmodeler.png"
+    install -Dm644 "assets/conf/pgmodeler_dbm.png" "$pkgdir/usr/share/icons/hicolor/64x64/mimetypes/pgmodeler-dbm.png"
+    install -Dm644 "assets/conf/pgmodeler_sch.png" "$pkgdir/usr/share/icons/hicolor/64x64/mimetypes/pgmodeler_sch.png"
+    install -Dm644 "pgmodeler.appdata.xml" "$pkgdir/usr/share/metainfo/pgmodeler.appdata.xml"
+    install -Dm644 "$srcdir/mimetype.xml" "$pkgdir/usr/share/mime/packages/pgmodeler.xml"
+
+    # Needs to be there, but belongs rather to doc
+    ln -s "/etc/pgmodeler/example.dbm" "$pkgdir/usr/share/doc/pgmodeler/example.dbm"
+
+    # Create an empty plugin directory to get rid of error when opening plugin directory
+    mkdir "$pkgdir/usr/lib/pgmodeler/plugins/"
+
+    # License file not needed for GPL, readme is for github
+    rm "$pkgdir/usr/share/doc/pgmodeler/"{LICENSE,README.md}
+}
+
+

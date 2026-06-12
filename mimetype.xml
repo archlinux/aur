@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-dbm">
+        <sub-class-of type="application/xml"/>
+        <comment>pgModeler database model</comment>
+        <comment xml:lang="de">pgModeler Datenbankmodell</comment>
+        <icon name="pgmodeler-dbm"/>
+        <glob pattern="*.dbm"/>
+    </mime-type>
+</mime-info>
+
