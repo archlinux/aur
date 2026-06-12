@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=NSUI
+GenericName=New Super Ultimate Injector for 3DS
+Comment=Create 3DS Virtual Console injects
+Exec=nsui
+Icon=nsui
+Terminal=false
+Categories=Game;Utility;
+Keywords=NSUI;nsui;New Super Ultimate Injector;3DS;CIA;Virtual Console;VC;Injector;Nintendo;
+StartupNotify=true

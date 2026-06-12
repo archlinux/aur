@@ -1,0 +1,23 @@
+pkgbase = nsui-beta28-bin
+	pkgdesc = New Super Ultimate Injector for 3DS packaged for Wine
+	pkgver = 28
+	pkgrel = 5
+	url = https://wiki.hacks.guide/wiki/3DS:New_Super_Ultimate_Injector
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = wine
+	optdepends = wine-mono: .NET compatibility if NSUI does not start with your Wine setup
+	provides = nsui
+	conflicts = nsui
+	options = !strip
+	source = Release_beta28_debug.zip::https://archive.org/download/thc-new-super-ultimate-injector-for-3ds/Release_beta28_debug.zip
+	source = nsui.sh
+	source = nsui.desktop
+	source = icon.png
+	sha256sums = 38e6c24901bb8c0d07b2380a0e0c88c6fe8e682c491eeba3706fe1315b5a9a8a
+	sha256sums = 9ad040cd9be41b0ff77172d2a8e4b4b8e306e86a916d30a5d8a051cd69dc06d0
+	sha256sums = c5bbf869d6721d72be6f0a77dae2983d0fb95b17ebeca372ac53e197cca0a7e2
+	sha256sums = 954c43acda131594a928aa9cf3b41b0e5b112572d1f64884ecaf61bb6ad235e8
+
+pkgname = nsui-beta28-bin
