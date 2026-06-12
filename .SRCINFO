@@ -1,12 +1,13 @@
 pkgbase = graphite-editor-git
 	pkgdesc = raster & vector editor with a modern node-based, non-destructive, procedural workflow
-	pkgver = r2430.d6c06da
+	pkgver = r2854.d90a49a
 	pkgrel = 1
 	url = https://github.com/GraphiteEditor/Graphite
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo-about
 	makedepends = git
+	makedepends = nodejs-lts-krypton
 	makedepends = npm
 	makedepends = rustup
 	makedepends = wasm-pack
@@ -20,7 +21,7 @@ pkgbase = graphite-editor-git
 	depends = mesa
 	depends = nss
 	depends = pango
-	provides = graphite-editor=r2430.d6c06da
+	provides = graphite-editor=r2854.d90a49a
 	conflicts = graphite-editor
 	source = graphite-editor-git::git+https://github.com/GraphiteEditor/Graphite.git
 	sha256sums = SKIP

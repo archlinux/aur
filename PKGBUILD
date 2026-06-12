@@ -3,7 +3,7 @@
 
 pkgname=graphite-editor-git
 _pkgname=Graphite
-pkgver=r2430.d6c06da
+pkgver=r2854.d90a49a
 pkgrel=1
 pkgdesc='raster & vector editor with a modern node-based, non-destructive, procedural workflow'
 arch=(x86_64)
@@ -21,6 +21,7 @@ depends=(alsa-lib
          pango)
 makedepends=(cargo-about
              git
+             nodejs-lts-krypton
              npm
              rustup
              wasm-pack)
@@ -33,15 +34,22 @@ _cef_path="/usr/lib/$pkgname"
 # toolchain is hard coded in pinned Git dependency, a stable one can be used to
 # build some parts of the system, but that just results in multiple toolchains
 # being downloaded and mix-'n-matched in the build
-_toolchain='nightly-2025-06-23'
+_toolchain='nightly-2026-04-11'
 
-prepare() {
+_srcenv() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN="$_toolchain"
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
+	unset CARGO_TARGET_DIR
+	CFLAGS+=' -ffat-lto-objects'
+	CXXFLAGS+=' -fno-lto'
+}
+
+prepare() {
+	_srcenv
+	sed -i -e 's/, "--frozen"//' tools/third-party-licenses/src/cargo.rs
+	cargo fetch --locked --target host-tuple
 	pushd frontend
 	npm run setup
-	cargo run --package third-party-licenses --features desktop
 }
 
 pkgver() {
@@ -52,18 +60,15 @@ pkgver() {
 }
 
 build() {
-	cd "$pkgname"
-	export RUSTUP_TOOLCHAIN="$_toolchain"
-	unset CARGO_TARGET_DIR
+	_srcenv
+	cargo run --package third-party-licenses --features desktop
 	(
 		pushd frontend
-		RUSTFLAGS+=" -C target-feature=+bulk-memory"
-		RUSTFLAGS+=" -C link-arg=--max-memory=4294967296"
-		RUSTFLAGS+=" --cfg=web_sys_unstable_apis"
+		RUSTFLAGS+=' --cfg=web_sys_unstable_apis'
+		RUSTFLAGS+=' -C target-feature=+bulk-memory'
+		RUSTFLAGS+=' -C link-arg=--max-memory=4294967296'
 		npm run build-native
 	)
-	CFLAGS+=' -ffat-lto-objects'
-	CXXFLAGS+=' -fno-lto'
 	RUSTFLAGS+=" -C link-arg=-Wl,-rpath=$_cef_path"
 	cargo build --release --frozen --package graphene-cli --package graphite-desktop
 }
