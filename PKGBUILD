@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=ente-auth-bin
 pkgver=4.4.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Ente two-factor authenticator."
 arch=('x86_64')
 url="https://ente.io/auth"
@@ -12,6 +12,7 @@ depends=(
 	'libsecret'
 	'org.freedesktop.secrets'
 	'xdg-user-dirs'
+	'polkit'
 )
 optdepends=(
 	# https://github.com/ente-io/ente/issues/4414
@@ -26,4 +27,7 @@ package() {
 	bsdtar -xf data.tar.zst -C "${pkgdir}/"
 	install -d "${pkgdir}/usr/bin"
 	ln -s /usr/share/enteauth/enteauth "${pkgdir}/usr/bin/enteauth"
+	install -d "${pkgdir}/usr/share/polkit-1/actions"
+  	ln -s /usr/share/enteauth/data/flutter_assets/assets/polkit/com.ente.auth.policy \
+    	"${pkgdir}/usr/share/polkit-1/actions/"
 }

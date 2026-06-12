@@ -1,7 +1,7 @@
 pkgbase = ente-auth-bin
 	pkgdesc = Ente two-factor authenticator.
 	pkgver = 4.4.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ente.io/auth
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -9,6 +9,7 @@ pkgbase = ente-auth-bin
 	depends = libsecret
 	depends = org.freedesktop.secrets
 	depends = xdg-user-dirs
+	depends = polkit
 	optdepends = zenity: Required for importing files
 	provides = ente-auth
 	conflicts = ente-auth
