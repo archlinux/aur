@@ -2,7 +2,7 @@
 # Contributor: eduardosm
 
 pkgname=subtitleedit
-pkgver=5.0.0rc3
+pkgver=5.0.0rc4
 pkgrel=1
 pkgdesc='An advanced subtitle editor and converter'
 arch=('any')
@@ -18,7 +18,7 @@ options=('!strip')
 source=("SubtitleEdit-Linux-x64-${pkgver}.tar.gz::https://github.com/SubtitleEdit/subtitleedit/releases/download/v${pkgver//rc/-rc}/SubtitleEdit-Linux-x64.tar.gz"
         'subtitleedit.desktop'
         'subtitleedit.png')
-b2sums=('7b194249a4edad6bba6c283618946f5011f61b8c6ccc65c27f14672b54749656dee7d6b2689c439eedbcf9c7722eb2d51a91ff4336bc24a579412de14616bcc5'
+b2sums=('a2c9d8f8d7baa22b5bf272c50ca3d715b6211492ee0a58b64acef15eddaf18b9a8a6ef9dc9f12a750a305f666a4aa498b673afb71c549b7d0850a3e62b347169'
         'bbeafd804a2d0ad6de03886771ecafbf3ebaa6ad86f449f2609c413114f898370102d1303135db0e21d04ca2612d40055c8f4de2458fc4a907f709e84940133b'
         'eefd5090791d860aa17f209ccf1d277b6e394af12bce07ecdebae5782b53cd9721c6d53e8034c038c0bdce5ffd09ba0c954aa90aa9cd9fbcffc1558d1010dc26')
 
