@@ -1,7 +1,7 @@
 pkgbase = prismterminal
 	pkgdesc = 棱镜终端 -- Meowpad 下一代配置器
 	pkgver = 1.1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kagamistudio.com/
 	install = udev.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = prismterminal
 	depends = hicolor-icon-theme
 	provides = prismterminal
 	options = !emptydirs
-	source = PrismTerminal_v1.1.9.deb::https://github.com/Kagami-Studio/PrismTerminal-Release/releases/download/v1.1.9/PrismTerminal-v1.1.9-linux64.deb
+	source = PrismTerminal_v1.1.9.deb::https://support.kagamistudio.com/uploads/downloads/PrismTerminal/PrismTerminal-v1.1.9-linux64-26a60d5c74a743fc979d3f6fe162e272.deb
 	source = 70-prismterminal-hid.rules
 	source = udev.install
 	sha256sums = eecd499ebe9295d963d4554d90b1a5ae8ebedec8b590656bf1edd308a0d6b750
