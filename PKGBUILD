@@ -1,7 +1,7 @@
 # Maintainer: Oliver Kahrmann <oliver.kahrmann@gmail.com>
 # Contributor: David Baum <david.baum@naraesk.eu>
 pkgname=eclipse-installer
-pkgver=2026.03
+pkgver=2026.06
 _pkgver=${pkgver/./-}
 pkgrel=1
 pkgdesc="Automates the installation and update of Eclipse development environments"
@@ -22,9 +22,9 @@ source_x86_64=(
 source_aarch64=(
     "https://download.eclipse.org/oomph/epp/$_pkgver/R/eclipse-inst-jre-linux-aarch64.tar.gz"
 )
-sha256sums=('bb24472355cdd2dff1d9af45190d5fadf989f071458ff33a19e723b66fe85d84')
-sha256sums_aarch64=('77c3cbda39eeb1164d3fb9c46760ed45c29751ab7abccefc5a4210c1aea80b22')
-sha256sums_x86_64=('2378eda6e0a278c53ca460b1ffd04ea1134ea9fb272be7de7bfc132efb8ba10c')
+sha256sums=('046474ca8f94e2229d7a81c4b5a6d965f5b5788beef2b8eede0faa49777a3f8c')
+sha256sums_aarch64=('70100294f335fb8759fbe58e9dfd321cdd5fe5262e9b9167cf26b34bc159716b')
+sha256sums_x86_64=('f89fe0c54312459b44dbe716fe494d17a5da829fd055cc1a67a45861153173ce')
 
 package() {
     install -d ${pkgdir}/opt/${pkgname}
