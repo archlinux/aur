@@ -1,6 +1,6 @@
 pkgbase = libinput-three-finger-drag
 	pkgdesc = Input device management and event handling library
-	pkgver = 1.30.1
+	pkgver = 1.31.3
 	pkgrel = 1
 	url = https://wayland.freedesktop.org/libinput/doc/latest/
 	arch = x86_64
@@ -26,15 +26,15 @@ pkgbase = libinput-three-finger-drag
 	depends = lua54
 	depends = mtdev
 	depends = systemd-libs
-	provides = libinput=1.30.1
-	provides = libinput-tools=1.30.1
+	provides = libinput=1.31.3
+	provides = libinput-tools=1.31.3
 	provides = libinput.so
 	conflicts = libinput
 	conflicts = libinput-tools
-	source = git+https://gitlab.freedesktop.org/libinput/libinput.git?signed#tag=1.30.1
-	source = 0001-enable-3fg-drag-by-default.patch
+	source = git+https://gitlab.freedesktop.org/libinput/libinput.git?signed#tag=1.31.3
+	source = 0001-meson-build-options-for-3-4-finger-dragging.patch
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
 	b2sums = SKIP
-	b2sums = a157ae31578c4d80a7fd817b9d29ae893901dea67df13a31988c727b6e0fda568478daa7f60fe5a4fee901ca56db917e07f7afb7d78a58ebd0ddb865728366b4
+	b2sums = 58ef451c3c28748b60a7ed928059b43c7b17df6e5fb6cf990d2d745e0fc3e3dd3ad9e0076007e83c0c491a9e12813f5eba49b1a9c390ec58cf0ca8206743e190
 
 pkgname = libinput-three-finger-drag

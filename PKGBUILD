@@ -3,7 +3,7 @@
 
 _pkgname=libinput
 pkgname=$_pkgname-three-finger-drag
-pkgver=1.30.1
+pkgver=1.31.3
 pkgrel=1
 pkgdesc="Input device management and event handling library"
 url="https://wayland.freedesktop.org/libinput/doc/latest/"
@@ -45,11 +45,11 @@ makedepends=(
 checkdepends=(python-pytest)
 source=(
   "git+https://gitlab.freedesktop.org/$_pkgname/$_pkgname.git?signed#tag=$pkgver"
-  0001-enable-3fg-drag-by-default.patch
+  0001-meson-build-options-for-3-4-finger-dragging.patch
 )
 b2sums=(
   'SKIP'
-  'a157ae31578c4d80a7fd817b9d29ae893901dea67df13a31988c727b6e0fda568478daa7f60fe5a4fee901ca56db917e07f7afb7d78a58ebd0ddb865728366b4'
+  '58ef451c3c28748b60a7ed928059b43c7b17df6e5fb6cf990d2d745e0fc3e3dd3ad9e0076007e83c0c491a9e12813f5eba49b1a9c390ec58cf0ca8206743e190'
 )
 validpgpkeys=(
   3C2C43D9447D5938EF4551EBE23B7E70B467F0BF # Peter Hutterer (Who-T) <office@who-t.net>
@@ -57,13 +57,17 @@ validpgpkeys=(
 
 prepare() {
   cd $_pkgname
-  patch -Np1 -i "$srcdir/0001-enable-3fg-drag-by-default.patch"
+  patch -Np1 -i "$srcdir/0001-meson-build-options-for-3-4-finger-dragging.patch"
 }
 
 build() {
   local meson_options=(
     # upstream recommends not building docs
     -D documentation=false
+    # ship 3-finger drag enabled by default
+    -D 3fg-drag-default=3fg
+    # always commit to a drag at the 80ms timeout, never to a 3fg swipe
+    -D 3fg-drag-always-drag=true
   )
 
   arch-meson $_pkgname build "${meson_options[@]}"

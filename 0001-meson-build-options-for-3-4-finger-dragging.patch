@@ -1,0 +1,115 @@
+From 981aec12f63eeb36d4a2617235538a6edefb6a54 Mon Sep 17 00:00:00 2001
+From: Jasper van Bourgognie <jasper@knoop.je>
+Date: Mon, 15 Sep 2025 07:42:51 +0200
+Subject: [PATCH] meson: build options for 3/4 finger dragging
+
+Add an option to set the default 3FG drag behaviour.
+
+Add an option no to disambiguate between swipe and drag in 3 finger
+mode, but always go to drag
+---
+ meson.build                      | 13 +++++++++++++
+ meson_options.txt                |  9 +++++++++
+ src/evdev-mt-touchpad-gestures.c | 12 +++++++++++-
+ 3 files changed, 33 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 85493425..165e1877 100644
+--- a/meson.build
++++ b/meson.build
+@@ -411,6 +411,19 @@ if get_option('internal-event-debugging')
+ 	config_h.set('EVENT_DEBUGGING', 1)
+ endif
+ 
++if get_option('3fg-drag-always-drag')
++	config_h.set('DRAG_3FG_ALWAYS_DRAG', 1)
++endif
++
++drag_3fg_default = get_option('3fg-drag-default')
++if drag_3fg_default == 'disabled'
++	config_h.set('DRAG_3FG_DEFAULT', 'LIBINPUT_CONFIG_3FG_DRAG_DISABLED')
++elif drag_3fg_default == '3fg'
++	config_h.set('DRAG_3FG_DEFAULT', 'LIBINPUT_CONFIG_3FG_DRAG_ENABLED_3FG')
++elif drag_3fg_default == '4fg'
++	config_h.set('DRAG_3FG_DEFAULT', 'LIBINPUT_CONFIG_3FG_DRAG_ENABLED_4FG')
++endif
++
+ config_h.set_quoted('LIBINPUT_PLUGIN_LIBDIR', dir_lib / 'libinput' / 'plugins')
+ config_h.set_quoted('LIBINPUT_PLUGIN_ETCDIR', dir_etc / 'libinput' / 'plugins')
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index 20d7e05e..4dc4f04e 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -50,3 +50,12 @@ option('lua-plugins',
+ 	type: 'feature',
+ 	value: 'auto',
+ 	description: 'Enable support for Lua plugins')
++option('3fg-drag-always-drag',
++	type: 'boolean',
++	value: false,
++	description: 'Skip the 3-finger drag-vs-swipe disambiguation timeout and always commit to a drag (default=false)')
++option('3fg-drag-default',
++	type: 'combo',
++	choices: ['disabled', '3fg', '4fg'],
++	value: '3fg',
++	description: 'Default value for the 3-finger drag config option (default=3fg)')
+diff --git a/src/evdev-mt-touchpad-gestures.c b/src/evdev-mt-touchpad-gestures.c
+index 03a081c0..3cce1ed9 100644
+--- a/src/evdev-mt-touchpad-gestures.c
++++ b/src/evdev-mt-touchpad-gestures.c
+@@ -42,7 +42,9 @@ enum gesture_cancelled {
+ 
+ #define HOLD_AND_MOTION_THRESHOLD 0.5 /* mm */
+ #define PINCH_DISAMBIGUATION_MOVE_THRESHOLD 1.5 /* mm */
++#ifndef DRAG_3FG_ALWAYS_DRAG
+ #define DRAG_3FG_OR_SWIPE_MOVE_THRESHOLD 5 /* mm */
++#endif
+ 
+ enum gesture_event {
+ 	GESTURE_EVENT_RESET,
+@@ -1053,10 +1055,12 @@ tp_gesture_handle_event_on_state_3fg_drag_or_swipe(struct tp_dispatch *tp,
+ 						   enum gesture_event event,
+ 						   usec_t time)
+ {
++#ifndef DRAG_3FG_ALWAYS_DRAG
+ 	struct tp_touch *first = tp->gesture.touches[0],
+ 			*second = tp->gesture.touches[1];
+ 	struct phys_coords first_moved, second_moved;
+ 	double first_mm, second_mm;
++#endif
+ 
+ 	switch (event) {
+ 	case GESTURE_EVENT_RESET:
+@@ -1090,6 +1094,11 @@ tp_gesture_handle_event_on_state_3fg_drag_or_swipe(struct tp_dispatch *tp,
+ 	case GESTURE_EVENT_3FG_DRAG_OR_SWIPE_TIMEOUT:
+ 		libinput_timer_cancel(&tp->gesture.drag_3fg_or_swipe_timer);
+ 
++#ifdef DRAG_3FG_ALWAYS_DRAG
++		/* Cancel the swipe */
++		tp_gesture_cancel(tp, time);
++		tp->gesture.state = GESTURE_STATE_3FG_DRAG_START;
++#else
+ 		first_moved = tp_gesture_mm_moved(tp, first);
+ 		second_moved = tp_gesture_mm_moved(tp, second);
+ 		first_mm = hypot(first_moved.x, first_moved.y);
+@@ -1101,6 +1110,7 @@ tp_gesture_handle_event_on_state_3fg_drag_or_swipe(struct tp_dispatch *tp,
+ 			tp_gesture_cancel(tp, time);
+ 			tp->gesture.state = GESTURE_STATE_3FG_DRAG_START;
+ 		}
++#endif
+ 		break;
+ 	}
+ }
+@@ -2347,7 +2357,7 @@ tp_3fg_drag_get_enabled(struct libinput_device *device)
+ static enum libinput_config_3fg_drag_state
+ tp_3fg_drag_default(struct tp_dispatch *tp)
+ {
+-	return LIBINPUT_CONFIG_3FG_DRAG_DISABLED;
++	return DRAG_3FG_DEFAULT;
+ }
+ 
+ static enum libinput_config_3fg_drag_state
+-- 
+2.54.0
+
