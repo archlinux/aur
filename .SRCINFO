@@ -1,23 +1,31 @@
 pkgbase = videoduplicatefinder-git
-	pkgdesc = Video Duplicate Finder is a cross-platform software to find duplicated video (and image) files on hard disk based on similiarity
-	pkgver = 3.0.x.r327.g553013a
+	pkgver = 4.0.x.r3.g9c53bca
 	pkgrel = 1
 	url = https://github.com/0x90d/videoduplicatefinder
-	install = videoduplicatefinder-git.install
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = git
-	makedepends = dotnet-sdk-9.0
-	depends = dotnet-runtime-9.0
+	makedepends = aspnet-targeting-pack-10.0
+	makedepends = dotnet-sdk-10.0
 	depends = ffmpeg
-	provides = videoduplicatefinder
-	conflicts = videoduplicatefinder
-	conflicts = videoduplicatefinder-bin
+	depends = dotnet-runtime-10.0
 	source = git+https://github.com/0x90d/videoduplicatefinder.git
-	source = videoduplicatefinder.desktop
-	source = videoduplicatefinder.in
 	sha256sums = SKIP
-	sha256sums = c0e14e0349207eee2c40b9e0d576128cf7d773ef4a487500c8b558095ef5f675
-	sha256sums = 1d7e95bd69a6e0579293c20e458c9145cb993b0b379d771e05d3fa8383675edc
 
 pkgname = videoduplicatefinder-git
+	pkgdesc = Video Duplicate Finder is a cross-platform software to find duplicated video (and image) files on hard disk based on similiarity
+	provides = videoduplicatefinder
+	conflicts = videoduplicatefinder
+
+pkgname = videoduplicatefinder-cli-git
+	pkgdesc = Video Duplicate Finder is a cross-platform software to find duplicated video (and image) files on hard disk based on similiarity (CLI)
+	provides = videoduplicatefinder-cli
+	conflicts = videoduplicatefinder-cli
+
+pkgname = videoduplicatefinder-webui-git
+	pkgdesc = Video Duplicate Finder is a cross-platform software to find duplicated video (and image) files on hard disk based on similiarity (WebUI)
+	depends = ffmpeg
+	depends = dotnet-runtime-10.0
+	depends = aspnet-runtime-10.0
+	provides = videoduplicatefinder-webui
+	conflicts = videoduplicatefinder-webui

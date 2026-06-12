@@ -1,55 +1,116 @@
 # Maintainer: TheBill2001 <tuantran1632001 at gmail dot com>
 
-_pkgname=videoduplicatefinder
-pkgname=${_pkgname}-git
-provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${_pkgname}-bin")
-pkgver=3.0.x.r327.g553013a
+pkgbase=videoduplicatefinder-git
+pkgname=("videoduplicatefinder-git" "videoduplicatefinder-cli-git" "videoduplicatefinder-webui-git")
+pkgver=4.0.x.r3.g9c53bca
 pkgrel=1
-pkgdesc="Video Duplicate Finder is a cross-platform software to find duplicated video (and image) files on hard disk based on similiarity"
+_pkgdesc="Video Duplicate Finder is a cross-platform software to find duplicated video (and image) files on hard disk based on similiarity"
 arch=('x86_64')
 url="https://github.com/0x90d/videoduplicatefinder"
 license=('AGPL-3.0-or-later')
-depends=(
-    'dotnet-runtime-9.0'
+_dotnetver='10.0'
+_depends=(
     'ffmpeg'
+    "dotnet-runtime-${_dotnetver}"
+)
+depends=(
+    "${_depends[@]}"
 )
 makedepends=(
     'git'
-    'dotnet-sdk-9.0'
+    "aspnet-targeting-pack-${_dotnetver}"
+    "dotnet-sdk-${_dotnetver}"
 )
-source=(
-    "git+${url}.git"
-    'videoduplicatefinder.desktop'
-    'videoduplicatefinder.in'
-)
-sha256sums=('SKIP'
-            'c0e14e0349207eee2c40b9e0d576128cf7d773ef4a487500c8b558095ef5f675'
-            '1d7e95bd69a6e0579293c20e458c9145cb993b0b379d771e05d3fa8383675edc')
-install="${pkgname}.install"
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 _sed_escape() {
     echo "${1}" | sed 's/[]\/&.*$^[]/\\&/g'
 }
 
 pkgver() {
-    cd "${_pkgname}"
+    cd "videoduplicatefinder"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${_pkgname}"
-    dotnet publish ./VDF.GUI/VDF.GUI.csproj -c Release -v q --self-contained -r "linux-x64" -o "outputFolder"
+    cd "videoduplicatefinder"
+
+    # Build GUI
+    dotnet publish ./VDF.GUI/VDF.GUI.csproj -c Release -v q -r linux-x64 -o outputGUI
+    # Build CLI
+    dotnet publish ./VDF.CLI/VDF.CLI.csproj -c Release -v q -r linux-x64 -o outputCLI
+    # Build Web
+    dotnet publish ./VDF.Web/VDF.Web.csproj -c Release -v q -r linux-x64 -o outputWeb
 }
 
-package() {
-    install -d "${pkgdir}/usr/share/${_pkgname}"
-    mv "${_pkgname}/outputFolder"/* "${pkgdir}/usr/share/${_pkgname}"
+package_videoduplicatefinder-git() {
+    pkgdesc="${_pkgdesc}"
+    provides=("videoduplicatefinder")
+    conflicts=("videoduplicatefinder")
 
-    install -d "${pkgdir}/usr/bin"
-    sed "s/@PACKAGE_VERSION@/$(_sed_escape "${pkgver}")/g" "${_pkgname}.in" > "${pkgdir}/usr/bin/$_pkgname"
-    chmod +x "${pkgdir}/usr/bin/$_pkgname"
+    install -d -m 755 "${pkgdir}/usr/bin"
+    ln -s "/opt/videoduplicatefinder/VDF.GUI" "${pkgdir}/usr/bin/VDF.GUI"
 
-    install -d "$pkgdir/usr/share/applications"
-    install -Dm755 videoduplicatefinder.desktop "$pkgdir/usr/share/applications"
+    cd "videoduplicatefinder"
+
+    install -d -m 755 "${pkgdir}/usr/share/applications"
+    install -m 644 "VDF.GUI/Assets/Linux/videoduplicatefinder.desktop" "${pkgdir}/usr/share/applications"
+
+    install -d -m 755 "${pkgdir}/opt/videoduplicatefinder"
+    install -m 644 "VDF.GUI/Assets/Linux/icon.png" "${pkgdir}/opt/videoduplicatefinder"
+
+    install -d -m 755 "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+    ln -s "/opt/videoduplicatefinder/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/videoduplicatefinder.png"
+
+    cd "outputGUI"
+
+    find . -type d -exec install -d -m 755 {} "${pkgdir}/opt/videoduplicatefinder/{}" \;
+    find . -type f -exec install -m 644 {} "${pkgdir}/opt/videoduplicatefinder/{}" \;
+
+    chmod +x "${pkgdir}/opt/videoduplicatefinder/VDF.GUI"
+}
+
+package_videoduplicatefinder-cli-git() {
+    cd "videoduplicatefinder/outputCLI"
+
+    pkgdesc="${_pkgdesc} (CLI)"
+    provides=("videoduplicatefinder-cli")
+    conflicts=("videoduplicatefinder-cli")
+
+    find . -type d -exec install -d -m 755 {} "${pkgdir}/opt/videoduplicatefinder-cli/{}" \;
+    find . -type f -exec install -m 644 {} "${pkgdir}/opt/videoduplicatefinder-cli/{}" \;
+
+    chmod +x "${pkgdir}/opt/videoduplicatefinder-cli/vdf-cli"
+
+    install -d -m 755 "${pkgdir}/usr/bin"
+
+    ln -s "/opt/videoduplicatefinder-cli/vdf-cli" "${pkgdir}/usr/bin/vdf-cli"
+}
+
+package_videoduplicatefinder-webui-git() {
+    cd "videoduplicatefinder/outputWeb"
+
+    pkgdesc="${_pkgdesc} (WebUI)"
+    provides=("videoduplicatefinder-webui")
+    conflicts=("videoduplicatefinder-webui")
+
+    depends=(
+        "${_depends[@]}"
+        "aspnet-runtime-${_dotnetver}"
+    )
+
+    find . -type d -exec install -d -m 755 {} "${pkgdir}/opt/videoduplicatefinder-webui/{}" \;
+    find . -type f -exec install -m 644 {} "${pkgdir}/opt/videoduplicatefinder-webui/{}" \;
+
+    chmod +x "${pkgdir}/opt/videoduplicatefinder-webui/VDF.Web"
+
+    install -d -m 755 "${pkgdir}/usr/bin"
+
+    # Need to cd to /opt/videoduplicatefinder-webui, won't run otherwise.
+    echo "#!/usr/bin/env bash" > "${pkgdir}/usr/bin/VDF.Web"
+    echo "trap 'popd > /dev/null 2>&1' EXIT" >> "${pkgdir}/usr/bin/VDF.Web"
+    echo "pushd /opt/videoduplicatefinder-webui > /dev/null 2>&1" >> "${pkgdir}/usr/bin/VDF.Web"
+    echo "./VDF.Web" >> "${pkgdir}/usr/bin/VDF.Web"
+    chmod +x "${pkgdir}/usr/bin/VDF.Web"
 }
