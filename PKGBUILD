@@ -21,7 +21,7 @@ license=('GPL-3.0')
 
 provides=("${_appname}")
 conflicts=("${_appname}")
-depends=('glibc' 'libgcc' 'xz' 'yt-dlp' 'ffmpeg')
+depends=('glibc' 'libgcc' 'xz')
 
 options=(!strip)
 
