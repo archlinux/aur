@@ -1,7 +1,7 @@
 # Maintainer: Francois LaBerge fgcrclaberge@gmail.com
 pkgname="docs"
-pkgver="0.0.1"
-pkgrel=1
+pkgver="0.0.2"
+pkgrel=2
 # epoch=
 pkgdesc="search your man pages with fzf"
 arch=("any")
@@ -10,6 +10,7 @@ license=('unkown')
 groups=()
 depends=(
 	'fzf'
+	'tldr'
 )
 makedepends=(
 	'rustup'
@@ -25,7 +26,7 @@ options=()
 # changelog=
 source=("https://github.com/FGRCL/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha256sums=('96146ef6644375194146ab7f458a41fe63043217330570b1d296ad8b6e8729ad')
+sha256sums=('fb6ef71ce007ff9d4259a5100897f348d34b782e92c9f9f4885fdd9f70f05563')
 validpgpkeys=()
 
 # prepare() {
@@ -34,7 +35,6 @@ validpgpkeys=()
 build() {
 	cd "$pkgname-$pkgver"
 	cargo build --release
-	chmod +x docs.sh
 }
 
 # check() {
@@ -43,6 +43,6 @@ build() {
 package() {
 	mkdir "$pkgdir/usr"
 	mkdir "$pkgdir/usr/bin/"
-	cp "$pkgname-$pkgver/target/release/docs-parse" "$pkgdir/usr/bin/docs-parse"
-	cp "$pkgname-$pkgver/docs.sh" "$pkgdir/usr/bin/docs"
+	cp "$pkgname-$pkgver/target/release/docs" "$pkgdir/usr/bin/docs"
+	cp "$pkgname-$pkgver/target/release/tldocs" "$pkgdir/usr/bin/tldocs"
 }
