@@ -1,5 +1,5 @@
 [models-bin]
 source = "github"
-github = "arimxyer/models"
+github = "reyamira/models"
 use_latest_release = true
 prefix = "v"
