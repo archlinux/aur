@@ -6,7 +6,6 @@ pkgbase = gocron-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	conflicts = gocron
 	source_x86_64 = gocron-x86_64-1.6.3.tgz::https://github.com/gocronx-team/gocron/releases/download/v1.6.3/gocron-1.6.3-linux-amd64.tar.gz
 	source_x86_64 = gocron-node-x86_64-1.6.3.tgz::https://github.com/gocronx-team/gocron/releases/download/v1.6.3/gocron-node-linux-amd64.tar.gz
 	sha256sums_x86_64 = fabe18f225da094b184e039c1ca86934df703a589d47f1e50f479f99d85a334b
