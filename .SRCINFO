@@ -2,10 +2,10 @@ pkgbase = sleex-artworks-git
 	pkgdesc = Icons and wallpapers for Sleex desktop environment
 	pkgver = 1.0.r5.cb4a05e
 	pkgrel = 1
-	url = https://gitlab.com/axos-project/sleex-artworks
+	url = https://github.com/axos-project/sleex-artworks
 	arch = any
 	license = GPL3
-	source = git+https://gitlab.com/axos-project/sleex-artworks.git
+	source = https://github.com/axos-project/sleex-artworks.git
 	sha256sums = SKIP
 
 pkgname = sleex-artworks-git

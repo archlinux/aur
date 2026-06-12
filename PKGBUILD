@@ -7,8 +7,8 @@ pkgdesc="Icons and wallpapers for Sleex desktop environment"
 arch=("any")
 license=('GPL3')
 arch=("any")
-url="https://gitlab.com/axos-project/sleex-artworks"
-source=("git+https://gitlab.com/axos-project/sleex-artworks.git")
+url="https://github.com/axos-project/sleex-artworks"
+source=("https://github.com/axos-project/sleex-artworks.git")
 sha256sums=('SKIP')
 
 pkgver() {
