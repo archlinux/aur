@@ -4,3 +4,7 @@
 src/
 pkg/
 *.log
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.zip
