@@ -72,8 +72,14 @@ EOF
 
   # 5. Install Desktop file and fix Exec and Categories
   install -dm755 "${pkgdir}/usr/share/applications"
-  install -m644 "usr/share/applications/ArDali WebMedia.desktop" "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
-  sed -i 's/^Categories=.*/Categories=AudioVideo;Audio;Video;Network;Player;/' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
+  install -Dm644 "usr/share/applications/ArDali WebMedia.desktop" "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
+  
+  # Change desktop category to Internet only
+  sed -i 's/Categories=.*/Categories=Network;WebBrowser;/' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
+
+  # Replace Exec and Icon in desktop file
+  sed -i 's|^Exec=.*|Exec=/usr/bin/ardali-webmedia|' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
+  sed -i 's/^Icon=.*/Icon=ardali-webmedia/' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
 
   # 6. Copy icons
   cp -r usr/share/icons "${pkgdir}/usr/share/"
