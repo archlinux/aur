@@ -1,5 +1,5 @@
 [pass-cli-bin]
 source = "github"
-github = "arimxyer/pass-cli"
+github = "reyamira/pass-cli"
 use_latest_release = true
 prefix = "v"
