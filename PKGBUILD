@@ -14,7 +14,7 @@ makedepends=('cmake')
 source=(
     "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('4a5039fbf7fd4cbd73f575fe148e4da9f8ed704016154c402f01e2c227038216')
+sha256sums=('601b6d6d71e2f134c50743d30f2b4a5fe25e9d130ab4ee25056bd94c95dafc93')
 
 build() {
     cd "$srcdir/attack-shark-x11-linux-$pkgver"
