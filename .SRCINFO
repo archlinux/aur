@@ -1,6 +1,6 @@
 pkgbase = python-langchain-protocol
 	pkgdesc = Python bindings for the LangChain agent streaming protocol.
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/langchain-ai/agent-protocol/tree/main/streaming/py
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-langchain-protocol
 	makedepends = python-wheel
 	depends = python
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/l/langchain-protocol/langchain_protocol-0.0.16.tar.gz
-	sha256sums = 806c7cdd951b1c4f692fa40fce60821ff0f221d4360e27673ddf2c2b99c2b7ff
+	source = https://files.pythonhosted.org/packages/source/l/langchain-protocol/langchain_protocol-0.0.17.tar.gz
+	sha256sums = e7cbe58c205df4b4fd87dc6d5bb23f10e13b236d0e2e1b0b9d05bc2b648f3eea
 
 pkgname = python-langchain-protocol
