@@ -2,7 +2,7 @@
 
 pkgname=mkcd-fish
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 
 pkgdesk="Fish function that creates directory and change into it"
 url="https://github.com/egevtech/mkcd"
