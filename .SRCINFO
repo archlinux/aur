@@ -1,0 +1,19 @@
+pkgbase = python-wgmesh
+	pkgdesc = WireGuard mesh topology generator
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/bravebug/wgmesh
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	depends = python-jinja
+	depends = wireguard-tools
+	source = wgmesh-1.0.1.tar.gz::https://github.com/bravebug/wgmesh/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = e6bf9944fcd0191d08d9709c0c4435dd7daf13933e70e3eb947bd35073c69bbe
+
+pkgname = python-wgmesh
