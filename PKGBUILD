@@ -1,16 +1,21 @@
+# Maintainer: Henrique Custódio <henriqueffc at tutanota dot com>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 # Contributor: Robson R S Peixoto <robsonpeixoto@gmail.com>
-# Maintainer: Davi da Silva Böger <dsboger@gmail.com>
+# Contributor: Davi da Silva Böger <dsboger@gmail.com>
 
 pkgname=hyphen-pt-br
-pkgver=213
-pkgrel=3
+pkgver=320
+pkgrel=1
 pkgdesc="Portuguese (Brazil) hyphenation rules"
 arch=('any')
-url="http://pt-br.libreoffice.org/projetos/projeto-vero-verificador-ortografico/"
+url="https://extensions.libreoffice.org/en/extensions/show/vero-verificador-ortografico-e-hifenizador-em-portugues"
+
 license=('LGPL-2.1')
 depends=('hyphen')
-source=(http://pt-br.libreoffice.org/assets/Uploads/PT-BR-Documents/VERO/hyphptBR-${pkgver}.zip)
-md5sums=('498a4ec7976a814f7411f5540cbedece')
+
+source=('https://extensions.libreoffice.org/assets/downloads/z/veroptbrv320aoc.oxt')
+
+md5sums=('9a9ac174c401406604bfcf101de2a7ba')
 
 package() {
   cd ${srcdir}
