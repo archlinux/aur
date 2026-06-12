@@ -2,7 +2,7 @@
 
 pkgname=hyprland-nox
 pkgver=0.55.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
 url='https://github.com/hyprwm/Hyprland'
@@ -72,7 +72,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  cmake --no-warn-unused-cli -B build -G Ninja -D CMAKE_SKIP_RPATH=ON -D CMAKE_BUILD_TYPE=Release -D NO_XWAYLAND=ON -D BUILD_TESTING=OFF
+  cmake --no-warn-unused-cli -B build -G Ninja -D CMAKE_SKIP_RPATH=ON -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D NO_XWAYLAND=ON -D BUILD_TESTING=OFF
   cmake --build build
 }
 
