@@ -1,6 +1,6 @@
 # Submitter: Eric Rodrigues Pires <archlinux@ericpires.com.br>
 pkgname='sandhole'
-pkgver='0.9.5'
+pkgver='0.10.0'
 pkgrel=1
 pkgdesc='Expose HTTP/SSH/TCP services through SSH port forwarding'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ checkdepends=('cargo-nextest')
 provides=('sandhole')
 conflicts=('sandhole-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/EpicEric/sandhole/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('77c5214f1acf4c4a1af721f48dc15eaf630f03e8ed4be8985bb3235c7cf6ec39')
+sha256sums=('c12fc42a917e63ca63bb1c04eec66ab6ca6880518c7b04e16541ef56efad37ea')
 
 prepare() {
     cd "$pkgname-$pkgver"
