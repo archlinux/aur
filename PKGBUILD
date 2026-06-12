@@ -24,7 +24,7 @@ makedepends=('git'
 conflicts=("$pkgname")
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e96194a736ab2ebb1a923813dbf764a8fa4ed8d4e1b48bfdc63736117f7d46fa')
+sha256sums=('998370b379e8d4916b16470865dd7c0eb0e084a0307fb105e4b7df280ef4b6e8')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" -G Ninja
