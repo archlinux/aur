@@ -1,6 +1,6 @@
 pkgbase = yukigram-desktop
 	pkgdesc = A patch-based Telegram Desktop fork,with features from 64Gram
-	pkgver = 6.9.1
+	pkgver = 6.9.2
 	pkgrel = 0
 	url = https://github.com/yukigram/yukigram
 	install = yukigram-desktop.install
@@ -56,13 +56,13 @@ pkgbase = yukigram-desktop
 	optdepends = webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1
 	optdepends = webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)
 	optdepends = xdg-desktop-portal: desktop integration
-	source = https://github.com/telegramdesktop/tdesktop/releases/download/v6.9.1/tdesktop-6.9.1-full.tar.gz
+	source = https://github.com/telegramdesktop/tdesktop/releases/download/v6.9.2/tdesktop-6.9.2-full.tar.gz
 	source = git+https://github.com/tdlib/td.git#tag=49b3bcbb6bfebf2ed44dd9f25102d2e1a94a58c4
-	source = https://github.com/yukigram/yukigram/archive/refs/tags/v6.9.1.0.tar.gz
+	source = https://github.com/yukigram/yukigram/archive/refs/tags/v6.9.2.0.tar.gz
 	source = 0000-Fix-Pony-fix-lang-res-file-loc.patch
-	sha512sums = e9f7d4d0db3ea11a34595afd37c3a17dced20c37c5ce0f37ed9996f053cbbfa183245f09c6e7980255a0961394f3e6e198b1f06eb74ef1ce4561c22aa1fb4ed8
+	sha512sums = c68b7eec78c2d2b8a995dcfb76d2c676cf19394fd6feac1eff110fb17986d9918967239c87f6ee2dd4a8b7788f915414305f55ccbb48fdfca5f9806939a9b4dd
 	sha512sums = SKIP
-	sha512sums = a7b70cac362353053de18f45737f51da340b37222aebf289cc2339df46f0b90b12cf3454e77014eabc2984c1229071d802127abfe18f0656b178016f5de541b0
+	sha512sums = 44a6beb83b05386758d4912e2f7558bbd724d9571b3e9df789a7a1e95b44257b24d5ceda6c7e2721bc98ba38a678a17f16866c28f695bfcd0d850bc03b16cf78
 	sha512sums = 392c4ca2a7b6dc276a49f5281949ec4f96707c881113441c1c717e5fd6cc689a85634a49bbd6f55150d09340be298cb25bf2b5d54b1a2fe87b5baa87f1c0ea72
 
 pkgname = yukigram-desktop
