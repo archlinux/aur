@@ -18,25 +18,13 @@ depends=(
   'zlib'
   'openssl'
 )
-makedepends=('github-cli')
+makedepends=()
 optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=()
-sha256sums=()
+source=("${url}/releases/download/v${pkgver}-${_pkgtag}/capi-desktop-linux-x86_64.tar.gz")
+sha256sums=('54887d09724d7db9be8bcecbe34f18ef1ca597340e2629bb781fbe203175c22e')
 noextract=()
-
-_sha256='54887d09724d7db9be8bcecbe34f18ef1ca597340e2629bb781fbe203175c22e'
-
-prepare() {
-  gh release download "v${pkgver}-${_pkgtag}" \
-    --repo "${url}" \
-    --pattern "capi-desktop-linux-x86_64.tar.gz" \
-    --output "capi-desktop-linux-x86_64.tar.gz" \
-    --clobber
-  sha256sum -c <<< "${_sha256}  capi-desktop-linux-x86_64.tar.gz"
-  bsdtar xzf "capi-desktop-linux-x86_64.tar.gz" -C "${srcdir}"
-}
 
 package() {
   cd "${srcdir}"
