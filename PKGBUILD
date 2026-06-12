@@ -1,7 +1,7 @@
 # Maintainer: Sergey Kanafyev <sergeykanafyev@gmail.com>
 
 pkgname=claurst
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Agentic Coding for Builders who Ship"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 conflicts=('claurst-bin' 'claurst-git')
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kuberwastaken/claurst/archive/v${pkgver}.tar.gz")
-sha256sums=('3a1e8bdc935f43ab3c64c08e6e0ae6485412f41a4e9bed09910ed464c60aee18')
+sha256sums=('b75f053436f09007af59ab050cb96d7bc144c15b8281fd66f364e2b14c7114ea')
 
 prepare() {
     cd "${pkgname}-${pkgver}/src-rust"

@@ -1,6 +1,6 @@
 pkgbase = claurst
 	pkgdesc = Agentic Coding for Builders who Ship
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/kuberwastaken/claurst
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = claurst
 	conflicts = claurst-git
 	options = !lto
 	options = !debug
-	source = claurst-0.1.4.tar.gz::https://github.com/kuberwastaken/claurst/archive/v0.1.4.tar.gz
-	sha256sums = 3a1e8bdc935f43ab3c64c08e6e0ae6485412f41a4e9bed09910ed464c60aee18
+	source = claurst-0.1.5.tar.gz::https://github.com/kuberwastaken/claurst/archive/v0.1.5.tar.gz
+	sha256sums = b75f053436f09007af59ab050cb96d7bc144c15b8281fd66f364e2b14c7114ea
 
 pkgname = claurst
