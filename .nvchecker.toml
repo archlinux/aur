@@ -1,13 +1,5 @@
 [qdl-bin]
 source = "github"
-github = "arduino/qdl-packing"
+github = "linux-msm/qdl"
 use_latest_release = true
-include_prereleases = true
 prefix = "v"
-from_pattern = '-'
-to_pattern = '_'
-
-# source = "github"
-# github = "linux-msm/qdl"
-# use_latest_release = true
-# prefix = "v"
