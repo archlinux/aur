@@ -1,6 +1,6 @@
 pkgbase = stremio-web-desktop-bin
 	pkgdesc = Stremio Web as Electron Desktop App. Latest Stremio Web v5 and Server bundled as electron app.Not affiliated with Stremio in any way.(Prebuilt version.Use system-wide electron)
-	pkgver = 563
+	pkgver = 572
 	pkgrel = 1
 	url = https://github.com/Zaarrg/stremio-web-desktop
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = stremio-web-desktop-bin
 	license = MIT
 	depends = electron33
 	depends = ffmpeg
-	provides = stremio-web-desktop=563
+	provides = stremio-web-desktop=572
 	conflicts = stremio-web-desktop
 	options = !emptydirs
-	source = stremio-web-desktop-563.rpm::https://github.com/Zaarrg/stremio-web-desktop/releases/download/v563/stremio-web-desktop-1.0.0-1.x86_64.rpm
+	source = stremio-web-desktop-572.rpm::https://github.com/Zaarrg/stremio-web-desktop/releases/download/v572/stremio-web-desktop-1.0.0-1.x86_64.rpm
 	source = stremio-web-desktop.sh
-	sha256sums = 61e5b1fec4da4046b2dd13455266c79154542d4add6a3510b382f3aba4943cc7
+	sha256sums = fa87ec3689ca0bb934454b1b5d52fd12cae0ec2c08552924f66eee44d48e2bb5
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = stremio-web-desktop-bin
