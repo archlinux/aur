@@ -1,40 +1,25 @@
-# Maintainer: Fr4z49 <kekko.mar08@gmail.com>
-
-pkgname=markit-git
-pkgver=r32.e96f632
+pkgname=markit
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="A Markdown-like format designed to create PDFs with predefined styles."
+pkgdesc="Mark-it CLI tool"
 arch=('any')
 url="https://github.com/Fr4z49/Mark-it"
-license=('GPL3')
+license=('MIT')
 
-depends=('python' 'python-reportlab')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=('python')
 
-provides=('mark-it')
-conflicts=('mark-it')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 
-source=("git+${url}.git#branch=beta")
+source=("git+$url.git#branch=beta")
+
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/Mark-it"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
-  cd "$srcdir/Mark-it"
-  python -m build --wheel --no-isolation
+    cd "$srcdir/Mark-it"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/Mark-it"
-
-  python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -Dm644 Style.json \
-    "$pkgdir/usr/share/mark-it/Style.json"
-
-  install -Dm644 LICENSE \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir/Mark-it"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
