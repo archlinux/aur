@@ -1,11 +1,12 @@
 pkgbase = pragtical
 	pkgdesc = The practical and pragmatic code editor.
 	pkgver = 3.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pragtical/pragtical
 	arch = x86_64
 	license = MIT
 	makedepends = meson>=0.63
+	makedepends = git
 	depends = luajit
 	depends = sdl3
 	depends = sdl3_image
