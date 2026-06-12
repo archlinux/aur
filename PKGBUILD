@@ -5,10 +5,10 @@ _pkgname='beeper'
 _install_path='opt'
 
 pkgname='beeper-bin'
-pkgver=4.2.918
-pkgrel=2
+pkgver=4.2.922
+pkgrel=3
 pkgdesc='The ultimate messaging app'
-depends=('libappindicator-gtk3' 'libnotify' 'libsecret' 'hicolor-icon-theme')
+depends=('libappindicator' 'libnotify' 'libsecret' 'hicolor-icon-theme')
 url='https://www.beeper.com/beta'
 license=('LicenseRef-beeper')
 arch=('x86_64')
@@ -16,8 +16,8 @@ options=('!strip' '!debug')
 conflicts=('beeper' 'beeper-v4-bin')
 provides=('beeper')
 
-source=('Beeper-4.2.918-x86_64.AppImage::https://beeper-desktop.download.beeper.com/builds/Beeper-Nightly-4.2.918-x86_64.AppImage')
-sha256sums=('778ba6efc71c66ad472e5f422993a27b7a2bf7ca88ca896ab36555122c3ec696')
+source=('Beeper-4.2.922-x86_64.AppImage::https://beeper-desktop.download.beeper.com/builds/Beeper-Nightly-4.2.922-x86_64.AppImage')
+sha256sums=('5a5fcc115d18db4b9a551d7fadceee62b0285471de5bbaa149b5b733548c5d64')
 
 build() {
   local _filename="Beeper-${pkgver}-x86_64.AppImage"
@@ -68,8 +68,6 @@ _package_beeper() {
 }
 
 package() {
-  depends+=('hicolor-icon-theme')
-
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/beeper.desktop" << END
 [Desktop Entry]
 Type=Application
