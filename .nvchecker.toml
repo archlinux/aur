@@ -1,5 +1,5 @@
 [aic-bin]
 source = "github"
-github = "arimxyer/aic"
+github = "reyamira/aic"
 use_latest_release = true
 prefix = "v"

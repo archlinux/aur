@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_pkgauthor=arimxyer
+_pkgauthor=reyamira
 _pkgname=aic
 _appname=${_pkgname}
 pkgname=${_pkgname}-bin
