@@ -1,5 +1,5 @@
 pkgname=pomoru-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Minimal TUI Pomodoro timer with task list (prebuilt binary)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('pomoru')
 conflicts=('pomoru')
 
 source=("pomoru-$pkgver-x86_64.tar.gz::https://github.com/RanXom/pomoru/releases/download/v$pkgver/pomoru-$pkgver-x86_64.tar.gz")
-sha256sums=('a0636b2eaed3c16f528924196d8cf0c53a0ab72457f9d20685284587f338a8e9')
+sha256sums=('edc6d87f0b52a2d7bceeaf6910ee38be04f55c7342a07963bbb06ae25716af18')
 
 package() {
   cd "pomoru-$pkgver-x86_64"
