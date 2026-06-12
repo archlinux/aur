@@ -1,0 +1,4 @@
+[quake3-cpma]
+source = "regex"
+url = "https://playmorepromode.com/downloads"
+regex = 'CPMA (\d.\d+)'
