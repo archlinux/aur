@@ -11,10 +11,12 @@ arch=('i686' 'x86_64')
 url='https://www.gnu.org/software/commoncpp/'
 license=('LGPL-3.0-or-later')
 depends=('gcc-libs' 'openssl' 'bash')
-makedepends=('cmake')
+makedepends=('git' 'cmake')
 #source=("https://ftp.gnu.org/gnu/commoncpp/$pkgname-$pkgver.tar.gz"{,.sig})
-source=("https://git.savannah.gnu.org/cgit/commoncpp.git/snapshot/commoncpp-$pkgver.tar.gz")
-sha256sums=('99fd0e2c69f24e4ca93d01a14bc3fc4e40d69576f235f80f7a8ab37c16951f3e')
+#source=("https://git.savannah.gnu.org/cgit/commoncpp.git/snapshot/commoncpp-$pkgver.tar.gz")
+source=("commoncpp-${pkgver}::git+https://https.git.savannah.gnu.org/git/commoncpp.git#tag=v${pkgver}")
+#sha256sums=('99fd0e2c69f24e4ca93d01a14bc3fc4e40d69576f235f80f7a8ab37c16951f3e')
+sha256sums=('SKIP')
 #validpgpkeys=('5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA')
 
 build() {
