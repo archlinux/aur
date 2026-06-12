@@ -1,15 +1,20 @@
 # Maintainer: Haseeb Khalid <haseebkhalid1507@gmail.com>
 pkgname=synaps
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Terminal-native AI agent runtime built in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/HaseebKhalid1507/SynapsCLI"
 license=('Apache-2.0')
-depends=('gcc-libs' 'oniguruma' 'openssl')
+depends=('gcc-libs' 'oniguruma')
 makedepends=('cargo' 'oniguruma')
+# ring's C/asm objects are GCC-LTO-incompatible with rust-lld:
+# makepkg's -flto=auto produces bitcode rust-lld can't read ->
+# undefined ring_core_* symbols at link. Standard fix for
+# ring-dependent Rust packages.
+options=(!lto)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4324bdfdce0c775e07f1538daa3131a80316f60d6a3b36c58882e5068040d8b4')
+sha256sums=('74ab8d738cc9eadb6de1ef361fc8e148d93b11528c76c904686b5055e9e8ef24')
 
 prepare() {
   cd "SynapsCLI-$pkgver"
