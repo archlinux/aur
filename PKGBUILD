@@ -26,6 +26,15 @@ latestver() {
     tmp=$(mktemp) || return 1
     trap 'rm -f "$tmp"' RETURN
     curl -fsSL 'https://unmined.net/download/unmined-gui-linuxdeb-x64-dev/' -o "$tmp" || return 1
+
+    # tmstv is a page cache-buster that can move without a new build (observed
+    # 2026-06: flipped forward then back over an identical artifact, causing a
+    # phantom bump to .20260610). Anchor to content: unchanged deb == packaged version.
+    if [[ $(sha256sum "$tmp" | cut -d' ' -f1) == "${sha256sums[0]}" ]]; then
+        printf '%s\n' "$pkgver"
+        return 0
+    fi
+
     ver=$(bsdtar -xOf "$tmp" control.tar.zst | tar --zstd -xOf - ./control |
         sed -nE 's/^Version: ([0-9.]+)-dev$/\1/p')
     [[ -n ${ver} ]] || return 1
