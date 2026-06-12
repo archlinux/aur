@@ -2,17 +2,17 @@
 # Maintainer: Douglas de Moura <douglas at demoura dot dev>
 
 pkgname='chroncal'
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Terminal-first calendar, todo, and journal manager'
 url='https://github.com/DouglasdeMoura/chroncal'
-arch=('aarch64' 'x86_64')
+arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('MIT')
 provides=('chroncal')
 conflicts=('chroncal')
 makedepends=('go')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/DouglasdeMoura/chroncal/releases/download/v${pkgver}/chroncal-${pkgver}.tar.gz")
-sha256sums=('e0d2a78a33f43434ce8918f58cbf46dd932f9dad48b890b8111c60ac4abe9a25')
+sha256sums=('4bd74f7d5cf35c711873d2f538e862bcbe8bb70ec86216a25bf5b0bf104b39c0')
 prepare() {
   cd "${pkgname}-${pkgver}"
   go mod download
@@ -23,7 +23,7 @@ build() {
   export GOPATH="${srcdir}/gopath"
   export GOCACHE="${srcdir}/gocache"
   export GOFLAGS="-trimpath -mod=readonly -modcacherw"
-  go build -ldflags "-s -w -X main.version=${pkgver} -X main.commit=675fa96 -X main.date=2026-06-11T20:28:33Z" -o chroncal ./cmd/chroncal
+  go build -ldflags "-s -w -X main.version=${pkgver} -X main.commit=8221428 -X main.date=2026-06-12T15:26:31Z" -o chroncal ./cmd/chroncal
 }
 package() {
   cd "${pkgname}-${pkgver}"
