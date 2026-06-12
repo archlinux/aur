@@ -1,6 +1,6 @@
 pkgbase = unbill-daemon-nightly-bin
 	pkgdesc = Background daemon for unbill (nightly)
-	pkgver = nightly.20260612.005924
+	pkgver = nightly.20260612.024929
 	pkgrel = 1
 	url = https://github.com/unbill-project/unbill
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = unbill-daemon-nightly-bin
 	provides = unbill-daemon-nightly
 	conflicts = unbill-daemon
 	conflicts = unbill-daemon-bin
-	source_x86_64 = unbill-daemon::https://github.com/unbill-project/unbill/releases/download/nightly-20260612-005924/unbill-daemon-linux-x86_64
+	source_x86_64 = unbill-daemon::https://github.com/unbill-project/unbill/releases/download/nightly-20260612-024929/unbill-daemon-linux-x86_64
 	sha256sums_x86_64 = SKIP
 
 pkgname = unbill-daemon-nightly-bin
