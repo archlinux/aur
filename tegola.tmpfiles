@@ -1,3 +1,4 @@
-d /etc/tegola 0750 tegola tegola -
+d /etc/tegola 0750 root tegola -
 d /var/lib/tegola 0750 tegola tegola -
 d /var/cache/tegola 0750 tegola tegola -
+z /etc/tegola/tegola.toml 0640 root tegola -
