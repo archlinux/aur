@@ -2,7 +2,7 @@
 
 pkgname=v2
 pkgver=0.14.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A local-first rich text editor with Git-style version control'
 arch=(x86_64 aarch64)
 url=https://v2editor.com
@@ -58,6 +58,8 @@ prepare(){
 
 build(){
 	cd "$pkgname"
+	# https://github.com/oktana-coop/v2/issues/357
+	export VITE_PROJECT_TYPE='MULTI_DOCUMENT_PROJECT'
 	pnpm run compile
 	pnpm run build
 	local _electronVersion="$(< "/usr/lib/$_electron/version")"

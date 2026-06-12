@@ -1,7 +1,7 @@
 pkgbase = v2
 	pkgdesc = A local-first rich text editor with Git-style version control
 	pkgver = 0.14.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://v2editor.com
 	arch = x86_64
 	arch = aarch64
