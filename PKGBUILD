@@ -3,7 +3,7 @@
 _pkgname=thorium-browser
 pkgname=thorium-browser-updated-bin
 pkgver=149.0.7827.114
-pkgrel=2
+pkgrel=3
 pkgdesc="Chromium fork focused on high performance and security, packaged from updated binaries"
 arch=('x86_64')
 url="https://github.com/brauliobo/thorium"
@@ -34,7 +34,7 @@ conflicts=('thorium-browser' 'thorium-browser-bin' 'thorium-browser-updated')
 options=('!emptydirs' '!strip' '!debug')
 install="${pkgname}.install"
 source=("https://github.com/brauliobo/thorium/releases/download/M${pkgver}-updated/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('366ccf0f5bdb3af5baad9d40fca55e8adad8a7e4ae9eca9ebeeffe2cd0191b02')
+sha256sums=('8f88ac725b32f16133fe66a978c34e5f25bff2a526e2746263442dfa15a005f0')
 noextract=("${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 
 package() {
@@ -47,6 +47,11 @@ package() {
     "$pkgdir/.PKGINFO"
 
   rm -f \
+    "$pkgdir/opt/thorium-browser/thorium_shell" \
+    "$pkgdir/opt/thorium-browser/thorium_shell.png" \
+    "$pkgdir/usr/bin/thorium-shell" \
+    "$pkgdir/usr/share/applications/thorium-shell.desktop" \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/thorium-shell.png" \
     "$pkgdir/usr/bin/thorium-browser-stable" \
     "$pkgdir/usr/share/man/man1/thorium-browser-stable.1" \
     "$pkgdir/usr/share/man/man1/thorium-browser-stable.1.gz"
