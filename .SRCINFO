@@ -1,12 +1,12 @@
 pkgbase = ttf-sawarabi-mincho
-	pkgdesc = A mincho font for Japanese
-	pkgver = 20220815
+	pkgdesc = Japanese Mincho typeface with braille glyphs
+	pkgver = 1.082
 	pkgrel = 1
-	url = http://sawarabi-fonts.osdn.jp/
+	epoch = 1
+	url = https://github.com/googlefonts/sawarabi-mincho
 	arch = any
-	license = Creative Commons Attribution 3.0
-	depends = fontconfig
-	source = http://jaist.dl.osdn.jp/sawarabi-fonts/77638/sawarabi-mincho-20220815.tar.xz
-	md5sums = 4c8a7e9c441186dc09d954730ddcf0d8
+	license = OFL-1.1
+	source = https://github.com/googlefonts/sawarabi-mincho/releases/download/v1.082/sawarabi-mincho-v1.082.zip
+	sha256sums = c2da6110a0c3f9265a2b1edd6f6757e40be480b5f5792002750fdf4e9ee5f89a
 
 pkgname = ttf-sawarabi-mincho

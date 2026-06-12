@@ -1,22 +1,21 @@
-# Maintainer: kusakata <shohei atmark kusakata period com>
+# Maintainer: kusanaginoturugi <kusanaginoturugi(at)gmail.com>
+# Contributor: kusakata <shohei atmark kusakata period com>
 
 pkgname=ttf-sawarabi-mincho
-pkgver=20220815
-_sfver=77638
+epoch=1
+pkgver=1.082
 pkgrel=1
-pkgdesc="A mincho font for Japanese"
-url="http://sawarabi-fonts.osdn.jp/"
-license=('Creative Commons Attribution 3.0')
+pkgdesc="Japanese Mincho typeface with braille glyphs"
+url="https://github.com/googlefonts/sawarabi-mincho"
+license=('OFL-1.1')
 arch=('any')
-depends=('fontconfig')
-_mirror="jaist" # "jaist" "iij" "osdn" "keihanna"
-source=(http://${_mirror}.dl.osdn.jp/sawarabi-fonts/${_sfver}/sawarabi-mincho-${pkgver}.tar.xz)
+source=("https://github.com/googlefonts/sawarabi-mincho/releases/download/v${pkgver}/sawarabi-mincho-v${pkgver}.zip")
+sha256sums=('c2da6110a0c3f9265a2b1edd6f6757e40be480b5f5792002750fdf4e9ee5f89a')
 
 package() {
-  cd "${srcdir}/sawarabi-mincho"
+  cd "sawarabi-mincho-v${pkgver}"
 
-  install -d "${pkgdir}/usr/share/fonts/TTF"
-  install -m644 *.ttf "${pkgdir}/usr/share/fonts/TTF"
+  install -Dm644 fonts/ttf/SawarabiMincho-Regular.ttf \
+    "${pkgdir}/usr/share/fonts/TTF/SawarabiMincho-Regular.ttf"
+  install -Dm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt"
 }
-
-md5sums=('4c8a7e9c441186dc09d954730ddcf0d8')
