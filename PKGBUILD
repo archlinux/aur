@@ -1,7 +1,7 @@
 # Maintainer: dllud <dllud riseup net>
 
 pkgname=grin-wallet
-pkgver=5.3.3
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="Reference implementation of Grin's wallet."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 optdepends=('tor: for immediate transactions through Tor anonymizing network')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mimblewimble/grin-wallet/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('6f619aecbc0035040e96cc22741079b2be3aa0298b60e6c3b1474979903470174dc1721ec86dd6e2c9cbe8565b9b01079f62927323f375c85c00f1caa3915064')
+b2sums=('571aa5c865a1d49262f528b1c7e9111c23f79c217298daa99c15ed7f9e6b0dea969f2d1683235021efa9d50cc12b0f17923ab6ca647f1bcda6ea764eb13e5ca2')
 options=(!lto)
 
 prepare() {
