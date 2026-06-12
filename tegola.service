@@ -1,0 +1,20 @@
+[Unit]
+Description=Tegola vector tile server
+Documentation=https://tegola.io/
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=tegola
+Group=tegola
+ExecStart=/usr/bin/tegola serve --config /etc/tegola/tegola.toml
+Restart=on-failure
+RestartSec=5s
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/var/cache/tegola /var/lib/tegola
+
+[Install]
+WantedBy=multi-user.target

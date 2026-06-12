@@ -1,0 +1,3 @@
+d /etc/tegola 0750 tegola tegola -
+d /var/lib/tegola 0750 tegola tegola -
+d /var/cache/tegola 0750 tegola tegola -

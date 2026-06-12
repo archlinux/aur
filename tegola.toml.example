@@ -1,0 +1,38 @@
+# Minimal Tegola configuration example.
+#
+# This example starts Tegola with no provider configured.
+# Add providers and maps according to the Tegola documentation:
+#
+#   https://tegola.io/documentation/
+
+[webserver]
+port = ":8080"
+
+# Example PostGIS provider skeleton:
+#
+# [[providers]]
+# name = "postgis"
+# type = "mvt_postgis"
+# uri = "postgres://user:password@localhost:5432/database?sslmode=disable"
+#
+#   [[providers.layers]]
+#   name = "example"
+#   geometry_fieldname = "geom"
+#   geometry_type = "Polygon"
+#   id_fieldname = "id"
+#   srid = 3857
+#   sql = """
+#     SELECT
+#       id,
+#       ST_AsMVTGeom(geom, !BBOX!) AS geom
+#     FROM public.example
+#     WHERE geom && !BBOX!
+#   """
+#
+# [[maps]]
+# name = "example"
+#
+#   [[maps.layers]]
+#   provider_layer = "postgis.example"
+#   min_zoom = 0
+#   max_zoom = 14

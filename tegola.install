@@ -1,0 +1,22 @@
+post_install() {
+  systemd-sysusers tegola.conf
+  systemd-tmpfiles --create tegola.conf
+
+  cat <<'MSG'
+Tegola has been installed.
+
+Edit the configuration file:
+
+  /etc/tegola/tegola.toml
+
+Then start and enable the service with:
+
+  systemctl enable --now tegola.service
+
+MSG
+}
+
+post_upgrade() {
+  systemd-sysusers tegola.conf
+  systemd-tmpfiles --create tegola.conf
+}
