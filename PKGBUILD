@@ -1,6 +1,7 @@
-# Maintainer: Alad Wenter <https://github.com/AladW>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Alad Wenter <https://github.com/AladW>
 pkgname=aurutils-git
-pkgver=20.5.3.r29.g5a07ad64
+pkgver=20.5.3.r64.g6f93aacf
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 url='https://github.com/AladW/aurutils'
@@ -12,7 +13,7 @@ changelog=aurutils.changelog
 sha256sums=('SKIP')
 conflicts=('aurutils')
 provides=("aurutils=${pkgver%%.r*}")
-depends=('git' 'pacutils' 'curl' 'bash' 'perl' 'perl-json-xs')
+depends=('git' 'pacutils' 'curl' 'bash' 'perl' 'perl-json-xs' 'gawk' 'python')
 makedepends=('git')
 optdepends=('bash-completion: bash completion'
             'zsh: zsh completion'
@@ -31,10 +32,10 @@ pkgver() {
 
 build() {
     cd aurutils
-    make
+    AURUTILS_VERSION="${pkgver}" make
 }
 
 package() {
     cd aurutils
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" AURUTILS_VERSION="${pkgver}" PREFIX=/usr ETCDIR=/etc install
 }

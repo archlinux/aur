@@ -1,6 +1,6 @@
 pkgbase = aurutils-git
 	pkgdesc = helper tools for the arch user repository
-	pkgver = 20.5.3.r29.g5a07ad64
+	pkgver = 20.5.3.r64.g6f93aacf
 	pkgrel = 1
 	url = https://github.com/AladW/aurutils
 	changelog = aurutils.changelog
@@ -13,6 +13,8 @@ pkgbase = aurutils-git
 	depends = bash
 	depends = perl
 	depends = perl-json-xs
+	depends = gawk
+	depends = python
 	optdepends = bash-completion: bash completion
 	optdepends = zsh: zsh completion
 	optdepends = devtools: aur-chroot
