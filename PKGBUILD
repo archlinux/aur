@@ -6,7 +6,7 @@ pkgname=(
 pkgbase=mini-eq
 _app_id="io.github.bhack.$pkgbase"
 _uuid=mini-eq@bhack.github.io
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Compact PipeWire system-wide parametric EQ"
 arch=('any')
@@ -34,9 +34,10 @@ makedepends=(
 checkdepends=(
   'git'
   'python-pytest'
+  'python-pytest-deadfixtures'
 )
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8e314df098e07d17c3bb3379886659a02fa76aab834f21278cdbcd9699b177ef')
+sha256sums=('7ea93ddd419c637922022557ff97d2e816ad9ed3ff13965c2a0c33a4e89bea7b')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -80,7 +81,7 @@ package_mini-eq() {
 
   # Remove duplicate icons & schema
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -r "${pkgdir}${site_packages}/mini_eq/assets/"
+  rm -rv "${pkgdir}${site_packages}/mini_eq/assets/"
 }
 
 package_gnome-shell-extension-mini-eq() {
