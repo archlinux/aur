@@ -1,58 +1,55 @@
 # Maintainer: RimuruTemp1421 <daser1421official@gmail.com>
 
-pkgname=anihot-app
-pkgver=6.1.0
+pkgname=anihot-app-bin
+pkgver=6.1.1
 pkgrel=1
 pkgdesc="Linux client for AniHot anime streaming app"
 arch=('x86_64')
 url="https://github.com/MrGlany/AniHotAppPC"
 license=('custom')
-depends=('glibc' 'gtk3' 'bash' 'sqlite3')
+depends=('glibc' 'gtk3' 'bash' 'sqlite')
+conflicts=('anihot-app')
+replaces=('anihot-app')
+install="${pkgname}.install"
 options=('!debug')
-source=("anihot-${pkgver}.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/${pkgver}r/${pkgver}-linux.zip")
-sha256sums=('d7856195101aa96168a162c799e760815ae1daef2b3c3cd4d0c713322989029e')
-
-# Функция, выполняемая перед удалением пакета (чистим остатки)
-pre_remove() {
-    rm -rf /usr/lib/anihot-app
-}
+source=("anihot-${pkgver}.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/${pkgver}r/${pkgver}-linux.zip"
+        "${pkgname}.install")
+sha256sums=('4b74204008c9b87ae984e56498b635690ad0d6690fae10c57563cf01a7e5a807'
+            '0e036796aa22e8b8c0f11112c454651edea24ab5e4aedcb81536cbde1540c763')
 
 package() {
     cd "$srcdir"
 
-    # Удаляем ненужный апдейтер
-    rm -f anihot_updater
+    # Remove built-in updater
+    rm -f "$srcdir/anihot_updater"
 
-    # Создаём структуру каталогов
+    # Create directory structure
     install -d "$pkgdir/usr/lib/$pkgname"
     install -d "$pkgdir/usr/bin"
     install -d "$pkgdir/usr/share/applications"
     install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
-    # Копируем файлы приложения
-    cp -r lib share data "$pkgdir/usr/lib/$pkgname/"
-    cp "AniHot App" "$pkgdir/usr/lib/$pkgname/"
+    # Copy application files (lib and data only, share is handled separately)
+    cp -r lib data "$pkgdir/usr/lib/$pkgname/"
+    cp "AniHot App" "$pkgdir/usr/lib/$pkgname/anihot-app"
 
-    # Переименовываем бинарник для удобства
-    mv "$pkgdir/usr/lib/$pkgname/AniHot App" "$pkgdir/usr/lib/$pkgname/anihot-app"
-
-    # Создаём скрипт для запуска из терминала (обёртка)
+    # Wrapper script
     cat > "$pkgdir/usr/bin/anihot" << 'EOF'
 #!/bin/bash
-cd /usr/lib/anihot-app
-export LD_LIBRARY_PATH="/usr/lib/anihot-app/lib:${LD_LIBRARY_PATH}"
+cd /usr/lib/anihot-app-bin
+export LD_LIBRARY_PATH="/usr/lib/anihot-app-bin/lib:${LD_LIBRARY_PATH}"
 exec ./anihot-app "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/anihot"
 
-    # Создаём новый .desktop файл, со старым не работало
+    # .desktop file
     cat > "$pkgdir/usr/share/applications/anihot.desktop" << 'EOF'
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=AniHot App
 Comment=AniHot App
-Exec=bash -c "cd /usr/lib/anihot-app && LD_LIBRARY_PATH=lib ./anihot-app"
+Exec=anihot
 Icon=com.anihot.anihot
 Terminal=false
 Categories=Video;AudioVideo;Player;
@@ -60,13 +57,17 @@ StartupNotify=true
 StartupWMClass=com.anihot.anihot
 EOF
 
-    # Копируем иконку из архива
-    # Если иконка лежит в share/icons/hicolor/256x256/apps/com.anihot.anihot.png
+    # Copy icon (exact path with fallback find)
     if [ -f "$srcdir/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" ]; then
         cp "$srcdir/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" \
            "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.anihot.anihot.png"
     else
-        # Если иконка в другом месте, ищем
-        find "$srcdir" -name "*.png" -path "*/256x256/apps/*" -exec cp {} "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" \;
+        find "$srcdir/share/icons/hicolor" -name "com.anihot.anihot.png" -exec cp {} "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" \;
+    fi
+
+    # Install license if present
+    if [ -f "$srcdir/LICENSE" ]; then
+        install -d "$pkgdir/usr/share/licenses/$pkgname"
+        cp "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
     fi
 }
