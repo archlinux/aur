@@ -1,0 +1,21 @@
+post_install() {
+  systemctl daemon-reload
+  cat <<'EOF'
+Enable the boot service with:
+  sudo systemctl enable --now samsung-galaxybook-audio.service
+
+Restart WirePlumber or reboot for the packaged WirePlumber rule to take effect.
+EOF
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+}
+
+pre_remove() {
+  systemctl disable --now samsung-galaxybook-audio.service >/dev/null 2>&1 || true
+}
+
+post_remove() {
+  systemctl daemon-reload
+}

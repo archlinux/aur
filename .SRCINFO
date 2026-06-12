@@ -1,0 +1,21 @@
+pkgbase = samsung-galaxybook-audio
+	pkgdesc = Samsung Galaxy Book Realtek ALC298 speaker amplifier initialization
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://github.com/mmorri/samsung-galaxybook-audio
+	install = samsung-galaxybook-audio.install
+	arch = any
+	license = MIT
+	depends = alsa-tools
+	depends = systemd
+	depends = wireplumber
+	source = samsung-galaxybook-audio-init
+	source = samsung-galaxybook-audio.service
+	source = samsung-galaxybook-audio-sleep
+	source = 51-samsung-galaxybook-audio.conf
+	sha256sums = c535979ebea898c47cfb373cfeb1b053ba056887fe6e1bf9ce139db1b8aa9c41
+	sha256sums = 3c690f91406a327f34bfc96d16c602eb4ed0c019ff5e87f8ff67686eb8a60658
+	sha256sums = de67af51dfcc4647eed418f2c78f0ac84529f2cfb6ca3a4375ce8c2137ae6f3e
+	sha256sums = 27025834d56c4c94acacfa3568e9595ce6aa665bf25e145bdfbae213d490d7e2
+
+pkgname = samsung-galaxybook-audio

@@ -1,0 +1,11 @@
+[Unit]
+Description=Samsung Galaxy Book audio amplifier init
+After=sound.target
+ConditionPathExists=/dev/snd/hwC0D0
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/samsung-galaxybook-audio-init
+
+[Install]
+WantedBy=multi-user.target
