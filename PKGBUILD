@@ -2,13 +2,13 @@
 
 pkgname=claurst
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Agentic Coding for Builders who Ship"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kuberwastaken/claurst"
 license=('GPL-3.0-only')
 depends=('gcc-libs' 'glibc' 'alsa-lib' 'libxcb' 'libxkbcommon' 'xdotool')
-makedepends=('cargo')
+makedepends=('cargo' 'cmake')
 conflicts=('claurst-bin' 'claurst-git')
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kuberwastaken/claurst/archive/v${pkgver}.tar.gz")
