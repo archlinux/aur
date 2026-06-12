@@ -3,8 +3,8 @@
 
 pkgname=nextcloud-app-maps
 _name=maps
-pkgver=1.6.0
-pkgrel=3
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="OpenStreetMap layers including POIs"
 arch=('any')
 url="https://github.com/nextcloud/maps"
@@ -12,9 +12,9 @@ license=('GPL')
 depends=('nextcloud')
 makedepends=('ripgrep' 'yq' 'composer' 'npm')
 options=('!strip')
-source=("https://github.com/nextcloud/maps/releases/download/v$pkgver/maps-$pkgver.tar.gz")
-#source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud/maps/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('22ea51ca68ecf79e53894badce84d331e11235f066029e7597ea01699c1f74dd')
+#source=("https://github.com/nextcloud/maps/releases/download/v$pkgver/maps-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud/maps/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2d938b0ea166742fcda7b0543a1c3d40fffc961a51e30bbb030fdecc77b29be1')
 
 _get_nextcloud_versions() {
   _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
@@ -24,14 +24,12 @@ _get_nextcloud_versions() {
 
 prepare() {
   cd "${srcdir}"/maps
-return
 
   sed -i 's|composer bin all install --ansi|composer bin all install --ansi --ignore-platform-reqs -n|g' composer.json
 }
 
 build() {
   cd "${srcdir}"/maps
-return
 
   composer install --ignore-platform-reqs -n
   npm ci
