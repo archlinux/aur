@@ -20,6 +20,7 @@ license=('MIT')
 
 provides=("${_appname}")
 conflicts=("${_appname}")
+makedepends=('rust' 'cargo')
 depends=('glibc' 'libgcc' 'xz' 'bzip2' 'openssl')
 
 options=(!strip)
