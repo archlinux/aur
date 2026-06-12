@@ -1,4 +1,8 @@
 [python-mkl-service-bin]
 source = "regex"
 url = "https://repo.anaconda.com/pkgs/main/linux-64/"
-regex = "mkl-service-([\\d.]+)-py314hacdc0fc_0.tar.bz2"
+regex = "mkl-service-([\\d.]+)-[^-]+\\.tar\\.bz2"
+
+# Uso:
+# 1. nvchecker -c .nvchecker.toml   -> detecta nueva versión (solo pkgver)
+# 2. bash update-pkgbuild.sh         -> actualiza pkgver, _build, sha256sums y .SRCINFO
