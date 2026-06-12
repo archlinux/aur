@@ -1,6 +1,6 @@
 pkgname=postsrsd
-pkgver=2.0.12
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix"
 arch=('i686' 'x86_64' 'armv7h')
 depends=('glibc' 'systemd')
@@ -12,7 +12,7 @@ install=$pkgname.install
 license=(GPL-3.0-only)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/roehling/$pkgname/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.install" "sysusers.d-$pkgname.conf" "tmpfiles.d-$pkgname.conf") # "FC_version_fixes.patch")
-sha256sums=('75bc949a0fd8b1646263278cb2100def54675968a393eff060496900f3f9bc4a'
+sha256sums=('58f6d193ba5390298bba6513428e5963e328cd5769a9bc90d93ec74fe83ad284'
             'f0e50360ee5761ab4ccd550e32a386d33fd07b30228b8450d199594e67bdf767'
             'f3d61362ed64e9ad33427b23b471c028b613b7eedd51dc01a203c8ba1c0e3427'
             '8613b3c1a6eec65d0137d97781c8919a84879c49be137b48f8bd29ee3b96cd08')
@@ -42,10 +42,6 @@ build() {
             -DWITH_MILTER=ON \
             -DWITH_SQLITE=ON \
             -DWITH_REDIS=ON
-  # fix for autoconf version mismatch, thanks to drzee for the solution
-  cd _deps/confuse-src/
-  autoreconf --force --install
-  cd ../..
   make all
 }
 
