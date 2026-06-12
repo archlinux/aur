@@ -2,8 +2,8 @@
 
 pkgname='veracrypt-inyourlanguage'
 _pkgname='VeraCrypt'
-pkgver=1.26.24
-pkgrel=2
+pkgver=1.26.29
+pkgrel=1
 pkgdesc='Disk encryption with strong security based on TrueCrypt 7.1a supporting 40+ languages.'
 url='https://www.veracrypt.jp'
 arch=('x86_64' 'i686' 'arm64' 'armhf' 'aarch64')
@@ -12,11 +12,9 @@ provides=('veracrypt')
 conflicts=('veracrypt' 'veracrypt-console-bin' 'veracrypt-git' 'veracrypt-trans')
 depends=('device-mapper' 'fuse2' 'sudo' 'wxwidgets-gtk3')
 makedepends=('pcsclite' 'yasm')
-source=(https://launchpad.net/veracrypt/trunk/${pkgver}/+download/${_pkgname}_${pkgver}_Source.tar.bz2
-        veracrypt.png)
+source=(https://launchpad.net/veracrypt/trunk/${pkgver}/+download/${_pkgname}_${pkgver}_Source.tar.bz2)
 
-sha512sums=('c2e42a77f6535e5958289bb85429f813ced3592c58409240d9c4411dfd18e2fae4b1fe62a9ed36da7577971259024b52da1eabebbe8e9cd17b13d64f194bbf29'
-            'SKIP')
+sha512sums=('A4A981DA258C5349AFD5BF55CA3863342FF4EBE6A0B8B1282C1D879F2EAAA2D040E55CAA7C159823C4C91AD45E507F852F39C302B713948019AFEBF86F2823EB')
 
 build() {
   cd src
@@ -30,8 +28,6 @@ package() {
   echo "Installing language files..."
   install -d "${pkgdir}/usr/share/veracrypt/languages"
   install -Dm 644 ../Translations/* "${pkgdir}/usr/share/veracrypt/languages/"
-  echo "Adding Desktop-Icon..."
-  install -Dm 644 "${srcdir}/veracrypt.png" -t "${pkgdir}/usr/share/pixmaps"
   rm -r "${pkgdir}/usr/sbin"
   rm -r "${pkgdir}/usr/share/doc"
 }
