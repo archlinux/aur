@@ -1,6 +1,6 @@
 pkgbase = zfs-dkms-staging-git
 	pkgdesc = Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel.
-	pkgver = 2.4.2.r0.g6330a45b06
+	pkgver = 2.4.3.r0.g83020cf825
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = zfs-dkms-staging-git
 	provides = zfs-dkms
 	provides = zfs
 	conflicts = zfs-dkms
-	source = zfs::git+https://github.com/openzfs/zfs.git#branch=zfs-2.4.3-staging
+	source = zfs::git+https://github.com/openzfs/zfs.git#branch=zfs-2.4.4-staging
 	source = 0001-only-build-the-module-in-dkms.conf.patch
 	source = 69-zfs-dkms-check.hook
 	source = zfs-dkms-check
@@ -22,6 +22,6 @@ pkgbase = zfs-dkms-staging-git
 	sha256sums = 59656435058e41620f15b5691ef1f753355fe81c01a562d92b7c8028aa527b1f
 
 pkgname = zfs-dkms-staging-git
-	depends = zfs-utils>=2.4.2
-	depends = zfs-utils<=2.4.3
+	depends = zfs-utils>=2.4.3
+	depends = zfs-utils<=2.4.4
 	depends = dkms
