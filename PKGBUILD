@@ -1,10 +1,12 @@
 # Maintainer: ArDali <support@ardali.app>
 # AUR package for Arch-based distros.
-# Installs the prebuilt native Linux binary from DEB to avoid AppImage library conflicts
+# We download the AppImage to extract the necessary bundled libraries (libbass, libprojectM)
+# but we DISCARD the old system libraries (like glib, gstreamer, wayland) to let the app
+# run on the native Arch Linux stack. This fixes YouTube and Vulkan/Wayland crashes.
 
 pkgname=ardali-bin
 pkgver=4.1.8
-pkgrel=3
+pkgrel=4
 pkgdesc="ArDali WebMedia multimedia ecosystem for Linux"
 arch=('x86_64')
 url="https://ardali.app"
@@ -24,17 +26,40 @@ options=(!strip !debug)
 _owner="Muhammed-Dali"
 _repo="ArDali"
 _tag="v${pkgver}"
-_deb="ArDali.WebMedia_${pkgver}_amd64.deb"
+_appimage="ArDali.WebMedia_${pkgver}_amd64.AppImage"
 
 source=(
-  "https://github.com/${_owner}/${_repo}/releases/download/${_tag}/${_deb}"
+  "https://github.com/${_owner}/${_repo}/releases/download/${_tag}/${_appimage}"
 )
-sha256sums=('1d524c0c994b0d63272f1e883c26f8961eee0fbf3e6974d9af2a7fe973c6cbb8')
+sha256sums=('ccaa8b7a4763c72ef82944c5f7770b6df81e99fb74553c16067f5b7eddc55a7a')
+
+build() {
+  cd "${srcdir}"
+  chmod +x "${_appimage}"
+  ./"${_appimage}" --appimage-extract
+}
 
 package() {
-  # The outer .deb is automatically extracted by makepkg into $srcdir, yielding data.tar.gz
-  tar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
+  cd "${srcdir}/squashfs-root"
 
-  # Provide a short alias 'ardali'
+  # 1. Install binary
+  install -Dm755 usr/bin/ardali-webmedia "${pkgdir}/usr/bin/ardali-webmedia"
   ln -s /usr/bin/ardali-webmedia "${pkgdir}/usr/bin/ardali"
+
+  # 2. Install ONLY the custom application libraries (libbass, libprojectM)
+  install -Dm755 usr/lib/libbass.so "${pkgdir}/usr/lib/libbass.so"
+  cp -a usr/lib/libprojectM*.so* "${pkgdir}/usr/lib/"
+
+  # 3. Copy visualizer resources
+  if [ -d "usr/lib/ardali-webmedia" ]; then
+    mkdir -p "${pkgdir}/usr/lib/ardali-webmedia"
+    cp -r usr/lib/ardali-webmedia/* "${pkgdir}/usr/lib/ardali-webmedia/"
+  fi
+
+  # 4. Install Desktop file and fix categories
+  install -Dm644 "usr/share/applications/ArDali WebMedia.desktop" "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
+  sed -i 's/^Categories=.*/Categories=AudioVideo;Audio;Video;Network;Player;/' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
+
+  # 5. Copy icons
+  cp -r usr/share/icons "${pkgdir}/usr/share/"
 }
