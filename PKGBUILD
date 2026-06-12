@@ -1,23 +1,24 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Auguste Pop <auguste [at] gmail [dot] com>
+# Contributor: tee < teeaur at duck dot com >
 
 pkgname=osdlyrics
-pkgver=0.5.15
-pkgrel=4
+pkgver=0.5.16
+pkgrel=1
 pkgdesc="A lyric show compatible with various media players"
 arch=('x86_64')
 url="https://github.com/osdlyrics/osdlyrics"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gtk2' 'dbus-glib' 'curl' 'libnotify' 'libmpd' 'xmms2'
-         'desktop-file-utils' 'hicolor-icon-theme' 'sqlite' 'python'
+         'glibc' 'hicolor-icon-theme' 'sqlite' 'pango' 'python'
          'python-pycurl' 'python-dbus' 'python-chardet'
-         'python-gobject' 'libappindicator-gtk2')
+         'python-gobject' 'python-mpd2' 'libappindicator')
 makedepends=('intltool')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('5948dc45fa2f01e9acfe3fb4144cd3acd2babb420c3d6f216b05597821bc316b')
+b2sums=('d9f38f12229b7b96abbe9b99ed464f8c3ad9a2b78439d46f79f70b52e74515d8f3ecdef371fea439981ed45aa499e5f0784edb715c32a0aa43866f5cb508569f')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   # -Werror is really quite annoying
   ## automake: warning: possible forward-incompatibility.
@@ -28,13 +29,13 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
