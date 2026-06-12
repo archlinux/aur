@@ -2,7 +2,7 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=3.12.1.1781136220
+pkgver=3.12.1.1781156302
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   # Plugin Manager Dependencies
   'lua' 'zlib' 'mbedtls' 'libgit2' 'libzip' 'xz'
 )
-makedepends=('meson>=0.58')
+makedepends=('meson>=0.58' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/pragtical/pragtical")
