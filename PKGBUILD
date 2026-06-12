@@ -5,7 +5,7 @@
 pkgname=forgit-git
 _pkgname=${pkgname%-git}
 pkgver=25.01.0.r2.gbb83b3c
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility tool powered by fzf for using git interactively"
 arch=('any')
 url="https://github.com/wfxr/forgit"
@@ -38,7 +38,7 @@ package() {
 	install -Dv bin/git-forgit -t "$pkgdir/usr/bin/"
 
 	# bash completions
-	install -Dvm644 completions/git-forgit.bash -t ~/.local/share/bash-completion/completions/
+	install -Dvm644 completions/git-forgit.bash -T "$pkgdir/usr/share/bash-completion/completions/git-forgit"
 
 	# zsh install
 	install -Dvm644 forgit.plugin.zsh -t "$pkgdir/usr/share/zsh/plugins/$pkgname/"
