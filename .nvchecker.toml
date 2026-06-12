@@ -1,0 +1,5 @@
+[aurelia-bin]
+source = "github"
+github = "Drackrath/Aurelia"
+use_latest_release = true
+prefix = "v"
