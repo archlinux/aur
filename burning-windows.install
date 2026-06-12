@@ -1,11 +1,104 @@
+_set_kwin_plugin_key() {
+  local config="$1"
+  local key="$2"
+  local value="$3"
+
+  mkdir -p "$(dirname "$config")"
+  touch "$config"
+
+  python - "$config" "$key" "$value" <<'PY'
+import sys
+from pathlib import Path
+
+path = Path(sys.argv[1])
+key = sys.argv[2]
+value = sys.argv[3]
+
+text = path.read_text(errors='ignore') if path.exists() else ''
+lines = text.splitlines()
+out = []
+in_plugins = False
+plugins_seen = False
+key_written = False
+
+for line in lines:
+    stripped = line.strip()
+    if stripped.startswith('[') and stripped.endswith(']'):
+        if in_plugins and not key_written:
+            out.append(f'{key}={value}')
+            key_written = True
+        in_plugins = stripped == '[Plugins]'
+        if in_plugins:
+            plugins_seen = True
+        out.append(line)
+        continue
+
+    if in_plugins and stripped.startswith(f'{key}='):
+        if not key_written:
+            out.append(f'{key}={value}')
+            key_written = True
+        continue
+
+    out.append(line)
+
+if not plugins_seen:
+    if out and out[-1] != '':
+        out.append('')
+    out.append('[Plugins]')
+    out.append(f'{key}={value}')
+elif in_plugins and not key_written:
+    out.append(f'{key}={value}')
+
+path.write_text('\n'.join(out) + '\n')
+PY
+}
+
+_configure_user() {
+  local user="$1"
+  local home="$2"
+  local config="$home/.config/kwinrc"
+
+  [ -d "$home" ] || return 0
+
+  _set_kwin_plugin_key "$config" remisa_burnEnabled true
+  _set_kwin_plugin_key "$config" burning_windowsEnabled true
+  _set_kwin_plugin_key "$config" fallapartEnabled false
+  _set_kwin_plugin_key "$config" glideEnabled false
+
+  chown "$user:$user" "$config" 2>/dev/null || true
+}
+
 post_install() {
   echo ""
   echo "Burning Windows has been installed."
   echo ""
-  echo "IMPORTANT: KDE's built-in 'Fall Apart' effect conflicts with Burning Windows."
-  echo "Disable 'Fall Apart' in System Settings > Window Management > Desktop Effects."
+  echo "The AUR package now applies the same essential KWin settings as install.sh:"
+  echo "  remisa_burnEnabled=true"
+  echo "  burning_windowsEnabled=true"
+  echo "  fallapartEnabled=false"
+  echo "  glideEnabled=false"
   echo ""
-  echo "Please REBOOT your system now. Do not only logout/login."
+
+  # yay/pacman normally runs this as root. Configure all normal /home users so
+  # the package works after reboot without requiring the user to run install.sh.
+  for home in /home/*; do
+    [ -d "$home" ] || continue
+    user="$(basename "$home")"
+    _configure_user "$user" "$home"
+  done
+
+  # Also handle the user that invoked sudo/pacman if HOME is not under /home.
+  if [ -n "${SUDO_USER:-}" ] && [ "$SUDO_USER" != "root" ]; then
+    sudo_home="$(getent passwd "$SUDO_USER" | cut -d: -f6)"
+    [ -n "$sudo_home" ] && _configure_user "$SUDO_USER" "$sudo_home"
+  fi
+
+  if command -v kbuildsycoca6 >/dev/null 2>&1; then
+    kbuildsycoca6 --noincremental >/dev/null 2>&1 || true
+  fi
+
+  echo "IMPORTANT: reboot now. Do not only logout/login."
+  echo "After reboot: System Settings > Desktop Effects > Burning Windows"
   echo ""
 }
 
