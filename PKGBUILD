@@ -1,7 +1,7 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=kcolorscheme-git
 _pkgname=kcolorscheme
-pkgver=6.27.0.rc1.r3.gc6e7622
+pkgver=6.27.0.r3.gc6e7622
 pkgrel=1
 pkgdesc='Classes to read and interact with KColorScheme'
 arch=(any)
