@@ -1,0 +1,5 @@
+[marqi-bin]
+source = "github"
+github = "i-Naji/Marqi"
+use_latest_release = true
+prefix = "v"
