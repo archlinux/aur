@@ -1,6 +1,6 @@
 # Maintainer: mc_klatz
 pkgname=sone
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Native Linux TIDAL client — lossless streaming with bit-perfect ALSA output"
 arch=('x86_64')
@@ -30,11 +30,11 @@ optdepends=(
     'alsa-plugins: exclusive ALSA output (bit-perfect mode)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lullabyX/sone/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('59fc500a44571399bd1ac30cf1ba8078e84f818f294d83337128bfacc1543464')
+sha256sums=('e10ac3b59a6bd58cc282693a6272a97c4ff6724a230ec2fa351d2abc6e4eca7e')
 
 prepare() {
     cd "$srcdir/sone-$pkgver"
-    pnpm install --frozen-lockfile
+    pnpm install --frozen-lockfile --config.manage-package-manager-versions=false
     sed -i 's/"active": true/"active": false/' src-tauri/tauri.conf.json
     sed -i 's/^Exec=.*/Exec=sone/' data/io.github.lullabyX.sone.desktop
 }
