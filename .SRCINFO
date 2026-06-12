@@ -1,14 +1,18 @@
 pkgbase = guile-dbd-postgresql
-	pkgdesc = guile-dbi database driver postgresql
-	pkgver = 2.1.9
-	pkgrel = 0
-	url = https://github.com/eestrada/guile-dbi/tree/master/guile-dbd-postgresql
+	pkgdesc = The dbd plugin connects to an actual PostgreSQL database server
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/opencog/guile-dbi
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	depends = guile-dbi>=2.1.2
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = libtool
+	depends = guile
+	depends = guile-dbi
 	depends = postgresql-libs
-	source = https://github.com/opencog/guile-dbi/archive/refs/tags/guile-dbi-2.1.9.tar.gz
-	md5sums = 6a9a37cf0836cbddf30dc7e1d945f6da
+	options = !strip
+	source = https://github.com/opencog/guile-dbi/archive/guile-dbi-3.1.1.tar.gz
+	sha256sums = 66bcb1544a8757d02b2b856694bc864646b99a52a4b65102b1d259ba47135ff5
 
 pkgname = guile-dbd-postgresql

@@ -1,23 +1,29 @@
 # Maintainer: Andrea Girotto <andrea (dot) girotto (at) gmail (dot) com>
-pkgname=guile-dbd-postgresql
-pkgver=2.1.9
-pkgrel=0
-pkgdesc='guile-dbi database driver postgresql'
-arch=(i686 x86_64)
-license=(GPL2)
-depends=('guile-dbi>=2.1.2' postgresql-libs)
-url=https://github.com/eestrada/guile-dbi/tree/master/guile-dbd-postgresql
-source=(https://github.com/opencog/guile-dbi/archive/refs/tags/guile-dbi-${pkgver}.tar.gz)
-md5sums=('6a9a37cf0836cbddf30dc7e1d945f6da')
 
-build(){
- cd ${srcdir}
- cd ${srcdir}/guile-dbi-guile-dbi-${pkgver}/${pkgname}
- ./autogen.sh --prefix=/usr || return 1
- make
+pkgname=guile-dbd-postgresql
+pkgver=3.1.1
+pkgrel=1
+pkgdesc='The dbd plugin connects to an actual PostgreSQL database server'
+arch=('i686' 'x86_64' 'aarch64')
+url='https://github.com/opencog/guile-dbi'
+license=('GPL-2.0-only')
+pkgdepend=guile-dbi
+depends=('guile' 'guile-dbi' 'postgresql-libs')
+makedepends=('libtool')
+source=("${url}/archive/${pkgdepend}-${pkgver}.tar.gz")
+sha256sums=('66bcb1544a8757d02b2b856694bc864646b99a52a4b65102b1d259ba47135ff5')
+options=(!strip)
+
+build () {
+  cd "${srcdir}/${pkgdepend}-${pkgdepend}-$pkgver/${pkgbase}"
+  ./autogen.sh --no-configure
+  mkdir build
+  cd build
+  ../configure --prefix=/usr
+  make
 }
 
-package() {
- cd ${srcdir}/guile-dbi-guile-dbi-${pkgver}/${pkgname}
- make DESTDIR=${pkgdir} install
+package () {
+  cd "${srcdir}/${pkgdepend}-${pkgdepend}-$pkgver/${pkgname}/build"
+  make DESTDIR="$pkgdir" install
 }
