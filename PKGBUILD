@@ -2,7 +2,7 @@
 
 pkgname=sigil-wad
 pkgver=1.23
-pkgrel=3
+pkgrel=4
 
 url="https://romero.com/sigil"
 pkgdesc="SIGIL, the unofficial 5th episode of the original 1993 DOOM by John Romero. Requires DOOM.WAD"
@@ -16,7 +16,7 @@ source=("https://romero.com/s/SIGIL_V1_23-8fh4.zip"
         "sigil_compat.desktop")
 
 sha256sums=('57c35a6bcd722433fc97344314e52c06c91fdfde33b18c6d1c14a4d29e229105'
-            '0e577afac4cd598a501e445d2abe58285b01f9f2c8fbdad99cb83ab880306c61'
+            '6edb842c592043cc3d3f3a8bb968e8c8392a9813f45510140f0e7d4f53c47e0a'
             '37ea66ee77f07b64ec8646ee6ca761be6c1d63719ec3e7106abc902c97391abd'
             '7d5c26f36b43a90abf76d22da762303aff166bd85d5e3d141dcaa09bbc348523')
 
