@@ -3,7 +3,7 @@ _pkgname=zalo
 pkgname=zalo-for-linux-bin
 provides=(zalo)
 conflicts=(zalo)
-pkgver=26.5.20
+pkgver=26.6.10
 _zadarkver=26.2
 _commithash=806dffa
 pkgrel=2
@@ -27,7 +27,7 @@ source=(
 )
 options=(!strip !debug)
 sha256sums=(
-    'f393d26688043e4012571579dab94260e299901b486a821e9869b913b68701b8'
+    '3ceaf0fa7cd3c9d1c8cfc6c9d0259da7bf3c6f6d1914c62bdad442a4a328574e'
     'b9478f6156fc65858971ca8fb0cc0b94d327ed34f704ce4c614b10e7510dbfe9'
     '54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445'
 )
