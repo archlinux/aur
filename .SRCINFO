@@ -1,0 +1,15 @@
+pkgbase = manglow
+	pkgdesc = Render man pages as Markdown with glow
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/kusanaginoturugi/manglow
+	arch = any
+	license = MIT
+	depends = fzf
+	depends = glow
+	depends = man-db
+	depends = pandoc-cli
+	source = manglow-0.2.0.tar.gz::https://github.com/kusanaginoturugi/manglow/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 84d5d241d9fd12a9b50f5421422c23763eaed9665420a05589208ee5fa99b7f0
+
+pkgname = manglow
