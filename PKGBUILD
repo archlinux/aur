@@ -1,6 +1,6 @@
 pkgname=soundcloud-bin
-pkgver=8.0.0
-pkgrel=2
+pkgver=8.1.0
+pkgrel=1
 pkgdesc="🎵🎵🎵 THE BEST SOUNDCLOUD DESKTOP APP FOR WINDOWS, LINUX & MACOS | AI WAVE | NO ADS | NO CAPTCHA | NO RESTRICTIONS"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zxcloli666/SoundCloud-Desktop"
@@ -15,10 +15,10 @@ sha256sums=('3bed3331b7048bac17cf50e249d560ccc9508c970da8d7b9283bf4f2e633a91d'
             '123e9a1e84eec9b29106ee83de9f5d24be17659468731babe22cf1faeb89bb3b')
 
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver}/soundcloud-desktop_${pkgver}_amd64.deb")
-sha256sums_x86_64=('cac2df74157cdd5b32f0d8279a032f83a358933b6f3e04c8dd9cf3e9fa828556')
+sha256sums_x86_64=('07c333e62ee1408a1f2cf2b0ae40eba3518df9923105d0c512e83aae5aa1adec')
 
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/soundcloud-desktop_${pkgver}_arm64.deb")
-sha256sums_aarch64=('8be9373c1e766421bcbd0c80eed4970745eec340962abc8774ace3e59d131499')
+sha256sums_aarch64=('26b8125574ff0a72643a571d465d93ee16c7b243b33831f1f79aa7890e61e981')
 
 build() {
   if [ "$CARCH" == "x86_64" ]; then

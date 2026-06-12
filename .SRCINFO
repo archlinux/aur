@@ -1,7 +1,7 @@
 pkgbase = soundcloud-bin
 	pkgdesc = 🎵🎵🎵 THE BEST SOUNDCLOUD DESKTOP APP FOR WINDOWS, LINUX & MACOS | AI WAVE | NO ADS | NO CAPTCHA | NO RESTRICTIONS
-	pkgver = 8.0.0
-	pkgrel = 2
+	pkgver = 8.1.0
+	pkgrel = 1
 	url = https://github.com/zxcloli666/SoundCloud-Desktop
 	arch = x86_64
 	arch = aarch64
@@ -15,9 +15,9 @@ pkgbase = soundcloud-bin
 	source = soundcloud-desktop.desktop
 	sha256sums = 3bed3331b7048bac17cf50e249d560ccc9508c970da8d7b9283bf4f2e633a91d
 	sha256sums = 123e9a1e84eec9b29106ee83de9f5d24be17659468731babe22cf1faeb89bb3b
-	source_x86_64 = soundcloud-8.0.0-x86_64.deb::https://github.com/zxcloli666/SoundCloud-Desktop/releases/download/8.0.0/soundcloud-desktop_8.0.0_amd64.deb
-	sha256sums_x86_64 = cac2df74157cdd5b32f0d8279a032f83a358933b6f3e04c8dd9cf3e9fa828556
-	source_aarch64 = soundcloud-8.0.0-aarch64.deb::https://github.com/zxcloli666/SoundCloud-Desktop/releases/download/8.0.0/soundcloud-desktop_8.0.0_arm64.deb
-	sha256sums_aarch64 = 8be9373c1e766421bcbd0c80eed4970745eec340962abc8774ace3e59d131499
+	source_x86_64 = soundcloud-8.1.0-x86_64.deb::https://github.com/zxcloli666/SoundCloud-Desktop/releases/download/8.1.0/soundcloud-desktop_8.1.0_amd64.deb
+	sha256sums_x86_64 = 07c333e62ee1408a1f2cf2b0ae40eba3518df9923105d0c512e83aae5aa1adec
+	source_aarch64 = soundcloud-8.1.0-aarch64.deb::https://github.com/zxcloli666/SoundCloud-Desktop/releases/download/8.1.0/soundcloud-desktop_8.1.0_arm64.deb
+	sha256sums_aarch64 = 26b8125574ff0a72643a571d465d93ee16c7b243b33831f1f79aa7890e61e981
 
 pkgname = soundcloud-bin
