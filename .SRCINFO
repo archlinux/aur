@@ -1,0 +1,22 @@
+pkgbase = killswitch-bin
+	pkgdesc = Linux eBPF network kill switch for vpn apps an beyond
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/asciimoth/killswitch
+	license = MIT OR GPL-3.0-or-later
+	depends = glibc
+	conflicts = killswitch
+	provides = killswitch
+	provides = killswitch-cli
+	provides = killswitch-user
+	arch = aarch64
+	source_aarch64 = https://github.com/asciimoth/killswitch/releases/download/v${pkgver}/killswitch_${pkgver}_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6058c77ffb36ccbe80a4df66010e1d337594d9c9be28bda699e1c8328623be20
+	arch = i686
+	source_i686 = https://github.com/asciimoth/killswitch/releases/download/v${pkgver}/killswitch_${pkgver}_linux_i686.tar.gz
+	sha256sums_i686 = 6959cad86bbf933e2d29f3ebac6ae7484cdf285c4749801717682f5ccb827366
+	arch = x86_64
+	source_x86_64 = https://github.com/asciimoth/killswitch/releases/download/v${pkgver}/killswitch_${pkgver}_linux_x86_64.tar.gz
+	sha256sums_x86_64 = e2c27cc3255b0218163bd72bf0fbfce2e9676ce16f18c3b14426f20c3b28a602
+	
+pkgname = killswitch-bin
