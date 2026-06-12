@@ -1,6 +1,6 @@
 # Maintainer: Rodrigo Brito <rodrigo@w3ti.com.br>
 pkgname=prosa
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Editor de texto moderno, open source e em modo escuro — suíte Rodrigo Brito"
 arch=('x86_64')
@@ -25,9 +25,11 @@ package() {
 
   # O .deb já instala os ícones hicolor 16→1024; acrescentamos só o fallback
   # legado em /usr/share/pixmaps, que alguns ambientes ainda consultam.
-  install -Dm644 \
-    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/prosa.png" \
-    "${pkgdir}/usr/share/pixmaps/prosa.png"
+  if [ -f "${pkgdir}/usr/share/icons/hicolor/256x256/apps/prosa.png" ]; then
+    install -Dm644 \
+      "${pkgdir}/usr/share/icons/hicolor/256x256/apps/prosa.png" \
+      "${pkgdir}/usr/share/pixmaps/prosa.png"
+  fi
 
   # O chrome-sandbox precisa de setuid root.
   if [ -f "${pkgdir}/opt/Prosa/chrome-sandbox" ]; then
