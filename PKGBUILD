@@ -3,11 +3,13 @@ pkgname=threema-desktop-beta
 pkgdesc="Threema Desktop 2.0 Beta."
 pkgver=2.0_beta61
 _pkgver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/threema-ch/threema-desktop"
 license=('AGPL-3.0-only')
 depends=(
+  # For the launcher script in /usr/bin
+  bash
   # Electron deps as reported by namcap
   alsa-lib
   at-spi2-core
