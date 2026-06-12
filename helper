@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+# Ensure whiptail is installed
+if ! command -v whiptail &> /dev/null; then
+    echo "Installing interface dependencies..."
+    sudo pacman -S libnewt --noconfirm --needed
+fi
+
+# Create a checklist menu using whiptail with the new branding
+CHOICES=$(whiptail --title "My Little Helper" \
+--checklist "Welcome! Select what you want to install using [Spacebar]:" 18 60 7 \
+"steam" "Steam (Gaming Platform)" OFF \
+"lutris" "Lutris (Silver/Gold Compatibility)" OFF \
+"heroic" "Heroic Games Launcher (Epic/GOG)" OFF \
+"discord" "Discord (Chat Application)" OFF \
+"chromium" "Chromium Web Browser" OFF \
+3>&1 1>&2 2>&3)
+
+# Exit gracefully if cancelled
+if [ -z "$CHOICES" ]; then
+    echo "My Little Helper: Installation cancelled."
+    exit 0
+fi
+
+# Setup Flatpak core backend if needed
+if [[ "$CHOICES" =~ "discord" || "$CHOICES" =~ "heroic" || "$CHOICES" =~ "lutris" ]]; then
+    if ! command -v flatpak &> /dev/null; then
+        echo "My Little Helper: Setting up Flatpak backend..."
+        sudo pacman -S flatpak --noconfirm --needed
+        flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    fi
+fi
+
+echo "My Little Helper: Working on your selections..."
+
+# Install Steam
+if [[ "$CHOICES" =~ "steam" ]]; then
+    echo -e "\n--> Installing Steam..."
+    sudo pacman -S steam --noconfirm --needed
+fi
+
+# Install Chromium
+if [[ "$CHOICES" =~ "chromium" ]]; then
+    echo -e "\n--> Installing Chromium..."
+    sudo pacman -S chromium --noconfirm --needed
+fi
+
+# Install Lutris
+if [[ "$CHOICES" =~ "lutris" ]]; then
+    echo -e "\n--> Installing Lutris via Flatpak..."
+    flatpak install flathub net.lutris.Lutris -y
+fi
+
+# Install Heroic
+if [[ "$CHOICES" =~ "heroic" ]]; then
+    echo -e "\n--> Installing Heroic Launcher via Flatpak..."
+    flatpak install flathub com.heroicgameslauncher.hgl -y
+fi
+
+# Install Discord
+if [[ "$CHOICES" =~ "discord" ]]; then
+    echo -e "\n--> Installing Discord via Flatpak..."
+    flatpak install flathub com.discordapp.Discord -y
+fi
+
+echo -e "\nMy Little Helper: All done! Enjoy your apps."
