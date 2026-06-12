@@ -1,15 +1,17 @@
 pkgbase = view64
 	pkgdesc = SDL image viewer for Commodore C64 image formats
-	pkgver = 1.60
+	pkgver = 1.61
 	pkgrel = 1
 	url = http://view64.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
+	depends = glibc
+	depends = glib2
 	depends = sdl2
 	depends = fltk
-	source = http://sourceforge.net/projects/view64/files/source/view64-1.60-src.zip
-	md5sums = 1376d6a170e75c0b3c772a08c7c52877
+	depends = libfltk.so
+	source = http://sourceforge.net/projects/view64/files/source/view64-1.61-src.zip
+	sha256sums = bb1320165a183e8b22b5a265623097e124a366234911237264b574e397d4c40b
 
 pkgname = view64
-
