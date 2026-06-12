@@ -10,7 +10,7 @@ provides=('labylauncher')
 depends=('gtk3' 'nss' 'alsa-lib')
 options=(!strip !debug)
 source=("${pkgname}-${pkgver}.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-3.0.9.AppImage")
-sha256sums=('b2eb28fac7280cd1e8f7193ac2cf33c43665c336ba1565ef857b977dec905874')
+sha256sums=('fdcfdd9f2566a7af099e2c7d263a96a760569ea88baf5f9e09831effef06de4a')
 
 package() {
     cd "${srcdir}"
