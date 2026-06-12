@@ -1,28 +1,35 @@
 pkgbase = synergy1-bin
 	pkgdesc = Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux.
-	pkgver = 1.14.6
-	pkgrel = 2
+	pkgver = 1.20.3
+	pkgrel = 1
 	url = https://symless.com/synergy
 	install = synergy1-bin.install
 	arch = x86_64
-	license = unknown
-	depends = avahi>=0.6.16
-	depends = gcc-libs>=5.2
-	depends = glibc>=2.14
-	depends = hicolor-icon-theme
-	depends = libcrypto.so
-	depends = libnotify>=0.8
-	depends = libssl.so
-	depends = libx11>=1.2.99.901
+	license = custom:Proprietary
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = libx11
+	depends = libxi
+	depends = libxkbfile
 	depends = libxext
-	depends = libxi>=1.2.99.4
-	depends = libxkbfile>=1.1.2
 	depends = libxtst
-	depends = qt5-base>=5.12.2
+	depends = libxinerama
+	depends = libxkbcommon-x11
+	depends = libnotify
+	depends = hicolor-icon-theme
+	depends = qt6-base
+	depends = qt6-tools
+	depends = libei
+	depends = libportal
 	conflicts = synergy
+	conflicts = synergy1-bin
+	conflicts = synergy-git
+	conflicts = synergy-1.6
+	conflicts = synergy2-bin
+	conflicts = synergy3-bin
+	conflicts = synergy3-beta-bin
 	options = !strip
 	options = !emptydirs
-	source = https://s3.us-east-1.amazonaws.com/binaries.symless.com/synergy/v1-core-standard/1.14.6-snapshot.88fdd263/synergy_1.14.6-snapshot.88fdd263_ubuntu20_amd64.deb
-	sha256sums = 557e6af94660e997edd704df88bb364db9dcd4be844855981fcc53f5497a5e6f
 
 pkgname = synergy1-bin

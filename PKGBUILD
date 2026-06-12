@@ -1,42 +1,42 @@
 # Maintainer: Scott Marshall <marshals@gmail.com>
 # Contributor: Catriel Müller <catriel at gmail dot com>
-_dlhash=88fdd263
 pkgname=synergy1-bin
-pkgver=1.14.6
-pkgrel=2
+pkgver=1.20.3
+pkgrel=1
 pkgdesc="Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux."
 arch=('x86_64')
 url="https://symless.com/synergy"
-license=('unknown')
-depends=(
-  'avahi>=0.6.16'
-  'gcc-libs>=5.2'
-  'glibc>=2.14'
-  'hicolor-icon-theme'
-  'libcrypto.so'
-  'libnotify>=0.8'
-  'libssl.so'
-  'libx11>=1.2.99.901'
-  'libxext'
-  'libxi>=1.2.99.4'
-  'libxkbfile>=1.1.2'
-  'libxtst'
-  'qt5-base>=5.12.2'
-)
-conflicts=('synergy')
+license=('custom:Proprietary')
+depends=('gcc-libs' 'glibc' 'openssl' 'libx11' 'libxi' 'libxkbfile' 'libxext' 'libxtst'
+         'libxinerama' 'libxkbcommon-x11' 'libnotify' 'hicolor-icon-theme' 'qt6-base'
+         'qt6-tools' 'libei' 'libportal')
+conflicts=('synergy' 'synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin' 'synergy3-bin' 'synergy3-beta-bin')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
+source=()
+sha256sums=()
 
-source=(
-  "https://s3.us-east-1.amazonaws.com/binaries.symless.com/synergy/v1-core-standard/${pkgver}-snapshot.${_dlhash}/synergy_${pkgver}-snapshot.${_dlhash}_ubuntu20_amd64.deb"
-)
+# Anonymous download permalink provided by Symless
+_permalink="https://email.mg.symless.com/c/eJxMjj1PwzAUAH-Ns1HZ7zn-GDw0gggJECBRqXSzXqw2JbEj2xTCr0d0Yry75QYHPgjTBCe0EdAqbXRzcgSDIkNGWC-EFzRwoFaRJm81tzo0owMOiisB3CJyvbHEEbHVEAhRKmSSz8dNWecplLKhNDeTO9W6FIZbBj2D_l-7Ugz5uDLo_TIy6If0Fafkhz9BFEph2Nf0ESLDW3l4PEO8ed6_bA_nRcLr2hHa9odqd6fu3_P-8-nte_fQiXbXZHcJMWWDRgKT3Gdf8xivQxcHvwEAAP__hk5M-A"
 
-sha256sums=(
-  '557e6af94660e997edd704df88bb364db9dcd4be844855981fcc53f5497a5e6f'
-)
+_pkgfile="synergy_${pkgver}_arch-linux_x86_64.pkg.tar.zst"
+
+prepare() {
+  curl -fsSL -c "${srcdir}/cookies.txt" -o /dev/null "$_permalink"
+  curl -fsSL -b "${srcdir}/cookies.txt" -o "${srcdir}/page.html" \
+    "https://symless.com/synergy/download/package/synergy-personal-v1/arch-linux/${_pkgfile}"
+
+  local token
+  token=$(grep -oP '(?<=\\"token\\":\\")[^\\"]+' "${srcdir}/page.html" | head -n1)
+  if [[ -z "$token" ]]; then
+    echo "Failed to obtain download token; the permalink may have expired."
+    return 1
+  fi
+
+  curl -fsSL -o "${srcdir}/${_pkgfile}" \
+    "https://symless.com/synergy/api/download/${_pkgfile}?token=${token}"
+}
 
 package() {
-  # Extract package data
-  tar xf data.tar.xz -C "${pkgdir}"
-  install -D -m644 "${pkgdir}/usr/share/doc/synergy/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  bsdtar -xpf "${srcdir}/${_pkgfile}" -C "${pkgdir}/" usr
 }
