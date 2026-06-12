@@ -1,0 +1,12 @@
+pkgbase = lsize
+	pkgdesc = A fast CLI tool to print file & DIR size in a Tree like output and more
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/thelearn-tech/lsize
+	arch = any
+	license = GPL-3.0
+	depends = python
+	source = lsize-f10106b309fd4e3943ab4b67a9fead73a8c521c6.tar.gz::https://github.com/thelearn-tech/lsize/archive/f10106b309fd4e3943ab4b67a9fead73a8c521c6.tar.gz
+	sha256sums = SKIP
+
+pkgname = lsize
