@@ -2,7 +2,7 @@
 
 pkgname=thorium-browser-updated
 pkgver=149.0.7827.114
-pkgrel=2
+pkgrel=3
 pkgdesc="Chromium fork focused on high performance and security, built from source"
 arch=('x86_64')
 url="https://github.com/brauliobo/thorium"
@@ -82,7 +82,7 @@ conflicts=('thorium-browser' 'thorium-browser-bin' 'thorium-browser-updated-bin'
 options=('!lto' '!strip' '!debug')
 install="${pkgname}.install"
 source=(
-  "thorium::git+https://github.com/brauliobo/thorium.git#commit=524693b961b632749e8efbdcedaa18e3caa93a32"
+  "thorium::git+https://github.com/brauliobo/thorium.git#commit=f8b287507af85b2e5590222d87540dbe3bbf4c0a"
   "depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
 )
 sha256sums=('SKIP' 'SKIP')
@@ -122,7 +122,6 @@ build() {
 
   cd "$CR_DIR"
   nice -n 10 ionice -c2 -n7 autoninja -C out/thorium \
-    thorium_shell \
     clear_key_cdm \
     chromedriver \
     chrome/installer/linux:strip_chrome_binary \
@@ -141,13 +140,10 @@ build() {
   patchelf --remove-rpath out/thorium/thorium.stripped 2>/dev/null || true
   patchelf --remove-rpath out/thorium/chrome_management_service.stripped 2>/dev/null || true
 
-  cp -f "$srcdir/thorium/thorium_shell/thorium_shell.png" out/thorium/thorium_shell.png
   cp -f "$srcdir/thorium/thorium_shell/thorium.svg" out/thorium/thorium.svg
-  cp -f "$srcdir/thorium/thorium_shell/thorium-shell.desktop" out/thorium/thorium-shell.desktop
-  cp -f "$srcdir/thorium/thorium_shell/thorium-shell" out/thorium/thorium-shell
   cp -f "$srcdir/thorium/pak_src/binaries/pak" out/thorium/pak
   cp -f "$srcdir/thorium/infra/initial_preferences" out/thorium/initial_preferences
-  chmod 755 out/thorium/thorium-shell out/thorium/pak
+  chmod 755 out/thorium/pak
 
   if [[ ! -x buildtools/third_party/eu-strip/bin/eu-strip ]] &&
      command -v eu-strip >/dev/null; then
@@ -183,9 +179,14 @@ package() {
     "$pkgdir/usr/share/menu"
 
   rm -f \
+    "$pkgdir/opt/thorium-browser/thorium_shell" \
+    "$pkgdir/opt/thorium-browser/thorium_shell.png" \
     "$pkgdir/usr/bin/thorium-browser" \
     "$pkgdir/usr/bin/thorium-browser-stable" \
+    "$pkgdir/usr/bin/thorium-shell" \
     "$pkgdir/usr/bin/pak" \
+    "$pkgdir/usr/share/applications/thorium-shell.desktop" \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/thorium-shell.png" \
     "$pkgdir/usr/share/man/man1/thorium-browser-stable.1" \
     "$pkgdir/usr/share/man/man1/thorium-browser-stable.1.gz"
 
@@ -214,11 +215,6 @@ END
   find "$pkgdir/usr/share/applications" -name '*.desktop' -type f -exec \
     sed -i 's@/usr/bin/thorium-browser-stable@/usr/bin/thorium-browser@g' {} +
 
-  if [[ -f "$pkgdir/usr/bin/thorium-shell" ]]; then
-    sed -E -i 's@/opt/chromium.org/thorium/@/opt/thorium-browser/@g' \
-      "$pkgdir/usr/bin/thorium-shell"
-  fi
-
   if [[ -f "$pkgdir/usr/share/gnome-control-center/default-apps/thorium-browser.xml" ]]; then
     sed -E -i 's@/opt/chromium.org/thorium/@/opt/thorium-browser/@g' \
       "$pkgdir/usr/share/gnome-control-center/default-apps/thorium-browser.xml"
@@ -230,10 +226,5 @@ END
     install -Dm644 "$pkgdir/opt/thorium-browser/product_logo_256.png" \
       "$pkgdir/usr/share/icons/hicolor/256x256/apps/thorium-browser.png"
   fi
-  if [[ -f "$pkgdir/opt/thorium-browser/thorium_shell.png" ]]; then
-    install -Dm644 "$pkgdir/opt/thorium-browser/thorium_shell.png" \
-      "$pkgdir/usr/share/icons/hicolor/256x256/apps/thorium-shell.png"
-  fi
-
   find "$pkgdir" -type d -exec chmod 755 {} +
 }
