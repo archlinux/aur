@@ -1,6 +1,6 @@
 # Maintainer: jakeb-grant
 pkgname=pane-fm-git
-pkgver=0.1.8.r3.gbdecfe6
+pkgver=0.1.9.r0.gcd5cda0
 pkgrel=1
 pkgdesc="A themeable file manager built with Tauri and Svelte"
 arch=('x86_64')
