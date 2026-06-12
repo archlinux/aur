@@ -65,6 +65,27 @@ export DESKTOP_STARTUP_ID=com.hypixel.HytaleLauncher
 LAUNCHER_DIR="${XDG_DATA_HOME}/hytale-launcher/bin"
 SOURCE_DIR="/opt/hytale-launcher-bin"
 BIN_NAME="hytale-launcher"
+EDITOR_BIN="${XDG_DATA_HOME}/Hytale/install/release/package/game/latest/Client/NodeEditor/NodeEditor"
+
+START_LAUNCHER=true
+START_EDITOR=false
+
+LAUNCHER_ARGS=()
+for arg in "$@"; do
+    case "$arg" in
+        --editor)
+            START_EDITOR=true
+            ;;
+        --onlyeditor)
+            START_EDITOR=true
+            START_LAUNCHER=false
+            ;;
+        *)
+            # Keep any other arguments to pass to the launcher
+            LAUNCHER_ARGS+=("$arg")
+            ;;
+    esac
+done
 
 # If the launcher isn't in the user's home yet, copy the files
 if [ ! -d "$LAUNCHER_DIR" ]; then
@@ -76,6 +97,21 @@ fi
 # Just wanna make sure these are exported.
 export HYTALE_HOME XDG_DATA_HOME XDG_CONFIG_HOME XDG_CACHE_HOME
 
-# Switch to the directory and run it
-cd "$LAUNCHER_DIR"
-exec "./$BIN_NAME" "$@"
+# Handle Editor execution
+if [ "$START_EDITOR" = true ]; then
+    if [ -f "$EDITOR_BIN" ]; then
+        echo "Starting Node Editor..."
+        "$EDITOR_BIN" &
+    else
+        echo "Error: Node Editor not found at $EDITOR_BIN" >&2
+        if [ "$START_LAUNCHER" = false ]; then
+            exit 1
+        fi
+    fi
+fi
+
+# Switch to the directory and run the launcher
+if [ "$START_LAUNCHER" = true ]; then
+    cd "$LAUNCHER_DIR" || exit 1
+    exec "./$BIN_NAME" "${LAUNCHER_ARGS[@]}"
+fi

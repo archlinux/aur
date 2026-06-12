@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Hytale Launcher (with NodeEditor)
+Comment=Hytale Launcher and the Node Editor
+Exec=/usr/bin/hytale-launcher --editor
+Icon=com.hypixel.HytaleLauncher
+Terminal=false
+Type=Application
+Categories=Game;
+StartupWMClass=com.hypixel.HytaleLauncher
