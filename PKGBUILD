@@ -24,7 +24,7 @@ sha256sums=('9af100b35098c03494d13187f278a99fd1c98a5419426ef6ab8ae238f7c80e02')
 noextract=("${source[0]%%::*}")
 
 prepare() {
-	mkdir unpacked
+	mkdir -p unpacked
 	bsdtar -C unpacked -xf "${source[0]%%::*}"
 }
 
