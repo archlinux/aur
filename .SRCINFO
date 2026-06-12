@@ -1,6 +1,6 @@
 pkgbase = libdecor-rs
 	pkgdesc = Client-side decorations for Wayland, in pure Rust without GTK/D-Bus dependencies
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/QaidVoid/libdecor-rs
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = libdecor-rs
 	provides = libdecor
 	provides = libdecor-0.so
 	conflicts = libdecor
-	source = libdecor-rs::git+https://github.com/QaidVoid/libdecor-rs#tag=0.1.0
+	source = libdecor-rs::git+https://github.com/QaidVoid/libdecor-rs#tag=0.1.1
 	sha256sums = SKIP
 
 pkgname = libdecor-rs

@@ -1,7 +1,7 @@
 # Maintainer: Samueru-sama xdglawyer@outlook.com
 
 pkgname=libdecor-rs
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Client-side decorations for Wayland, in pure Rust without GTK/D-Bus dependencies"
 arch=('x86_64' 'aarch64')
