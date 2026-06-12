@@ -19,8 +19,8 @@ pkgbase = melearner-bin
 	options = !debug
 	options = !lto
 	source_x86_64 = melearner-0.1.0.deb::https://github.com/WhiteHades/melearner/releases/download/v0.1.0/melearner_0.1.0_amd64.deb
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 48460b27116d6da78ac21365291abd643824868ebcd083925a46d005219a3243
 	source_aarch64 = melearner-0.1.0.deb::https://github.com/WhiteHades/melearner/releases/download/v0.1.0/melearner_0.1.0_arm64.deb
-	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = cbc0746c3710fb64e8b99b7c12b798ca264a8b12922c5d42056a2b27f6d69982
 
 pkgname = melearner-bin

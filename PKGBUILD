@@ -25,8 +25,8 @@ options=('!strip' '!debug' '!lto')
 source_x86_64=("${_pkgname}-${pkgver}.deb::https://github.com/WhiteHades/melearner/releases/download/v${pkgver}/melearner_${pkgver}_amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}.deb::https://github.com/WhiteHades/melearner/releases/download/v${pkgver}/melearner_${pkgver}_arm64.deb")
 
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+sha256sums_x86_64=('48460b27116d6da78ac21365291abd643824868ebcd083925a46d005219a3243')
+sha256sums_aarch64=('cbc0746c3710fb64e8b99b7c12b798ca264a8b12922c5d42056a2b27f6d69982')
 
 package() {
   cd "$srcdir"
