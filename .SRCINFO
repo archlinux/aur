@@ -1,6 +1,6 @@
 pkgbase = mgit-bin
 	pkgdesc = Manage multiple GitHub SSH profiles from one machine
-	pkgver = 1.0.1
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/protibimbok/mgit
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = mgit-bin
 	conflicts = mgit
 	provides = mgit
 	arch = aarch64
-	source_aarch64 = https://github.com/protibimbok/mgit/releases/download/v1.0.1/mgit_linux_arm64.tar.gz
-	sha256sums_aarch64 = e32517a12c385f62eeea8cf7a1a0dbd52b08cea90282e39b5170ac149c95fe06
+	source_aarch64 = https://github.com/protibimbok/mgit/releases/download/v1.0.3/mgit_linux_arm64.tar.gz
+	sha256sums_aarch64 = df9153e1842e952d065db27e2d6f1a5838ed5635f058a5e9eaca5fbe5dd978b4
 	arch = x86_64
-	source_x86_64 = https://github.com/protibimbok/mgit/releases/download/v1.0.1/mgit_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6a95235c36cd2c2930d4062b4d32a64f1f6082471faaccb5876b847a1c5bd8ec
+	source_x86_64 = https://github.com/protibimbok/mgit/releases/download/v1.0.3/mgit_linux_amd64.tar.gz
+	sha256sums_x86_64 = df7dc9fcb44da2dcb26b2d58c89d610a92fa4ae5e70f85ea16e6fd5fe631f938
 	
 pkgname = mgit-bin
