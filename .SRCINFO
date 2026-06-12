@@ -1,6 +1,6 @@
 pkgbase = sfp-ui-bin
 	pkgdesc = This utility is designed to allow you to apply skins to the modern Steam client
-	pkgver = 0.0.64
+	pkgver = 0.0.65
 	pkgrel = 1
 	url = https://github.com/PhantomGamers/sfp
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = sfp-ui-bin
 	conflicts = sfp-ui
 	options = !strip
 	options = !debug
-	source = sfp-ui-bin-0.0.64.tar.gz::https://github.com/PhantomGamers/sfp/releases/download/0.0.64/SFP_UI-linux-x64-SelfContained.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/PhantomGamers/SFP/0.0.64/LICENSE
-	sha512sums = 4a1de537702a45a6a334531c294349152bfa89db54434ee2ab89afc08280167ff2aceece0ea4e718a4925b48fa11b82115b18b68a76fc95adf694e5c337d9a49
+	source = sfp-ui-bin-0.0.65.tar.gz::https://github.com/PhantomGamers/sfp/releases/download/0.0.65/SFP_UI-linux-x64-SelfContained.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/PhantomGamers/SFP/0.0.65/LICENSE
+	sha512sums = 64c52207ed996b1f13ef8601fe03f914292fbdc3ab241b3ca7c200179adc99679b2cde0c1728180ebf6b05626d56b95d0c19d1d329c7260c291320cb992dee9f
 	sha512sums = ffe34abde4b646b64e5871867c106d29cad7987839b756a2a80d7cb8423e71b2f307214631637d96e702aa6fed0ebf755582fa2a96c77430acfe0f383e5f9840
 
 pkgname = sfp-ui-bin
