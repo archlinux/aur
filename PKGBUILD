@@ -1,7 +1,7 @@
 # Maintainer: Hédy Ache <ache@ache.one>
 
 pkgname=lolbin
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A cli tool for managing pastes on paste.lol"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-requests' 'python-humanize' 'python-tomli')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-hatch')
 source=("${pkgname}-${pkgver}.tar.gz::https://ache.one/dist/lolbin-${pkgver}.tar.gz")
-sha256sums=('1d9a5d056baf77834eecede703e69c5ca261d3b24a903aed4b83fe56e52baaa0')
+sha256sums=('0328da23e7ef3f24e85e563e06872bf2ba25e990178d5703d7f762806ffbdae1')
 
 build() {
     cd "lolbin-${pkgver}"
