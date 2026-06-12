@@ -1,8 +1,8 @@
 pkgbase = namebind-git
 	pkgdesc = Per-app network namespaces; reach host services by name, not port number (git version)
-	pkgver = 0.32.0.r1.g938a5c3
+	pkgver = 0.36.0.r1.g61ee948
 	pkgrel = 1
-	url = https://codeberg.org/0zitro-ffa/namebind
+	url = https://git.disroot.org/0zitro-public/namebind
 	install = namebind.install
 	arch = any
 	license = Elastic-2.0
@@ -26,9 +26,9 @@ pkgbase = namebind-git
 	optdepends = docker: join Docker containers to the fabric via the libnetwork driver (namebind-docker.service)
 	optdepends = iptables-nft: kernel host egress (egress "host" via="kernel") -- reads the FORWARD policy, inserts the DOCKER-USER accept
 	optdepends = iputils: arping for the managed-egress external-ip duplicate-address check (best-effort)
-	provides = namebind=0.32.0.r1.g938a5c3-1
+	provides = namebind=0.36.0.r1.g61ee948-1
 	conflicts = namebind
-	source = namebind::git+https://codeberg.org/0zitro-ffa/namebind.git?signed
+	source = namebind::git+https://git.disroot.org/0zitro-public/namebind.git?signed
 	validpgpkeys = E627ACE54546B9DA33F31C47EA82A8B4E968D242
 	sha256sums = SKIP
 
