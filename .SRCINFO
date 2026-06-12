@@ -9,7 +9,7 @@ pkgbase = mut
 	depends = texlive-core
 	depends = zathura
 	depends = zathura-pdf-poppler
-	source = mut-1.0.0.tar.gz::https://github.com/faris0x/muT/archive/v1.0.0.tar.gz
+	source = muT-1.0.0.tar.gz::https://github.com/faris0x/muT/archive/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = mut

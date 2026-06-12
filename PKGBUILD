@@ -14,21 +14,21 @@ depends=(
   'zathura-pdf-poppler'
 )
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/faris0x/muT/archive/v$pkgver.tar.gz")
+source=("muT-$pkgver.tar.gz::https://github.com/faris0x/muT/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/muT-$pkgver"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/muT-$pkgver"
   cargo build --release --frozen
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/muT-$pkgver"
 
   # Binary
   install -Dm755 target/release/muT "$pkgdir/usr/bin/muT"
