@@ -1,5 +1,5 @@
 pkgname=halley
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Spatial Wayland compositor built around infinite workspace navigation"
 arch=('x86_64')
@@ -28,14 +28,15 @@ optdepends=(
   'wezterm: terminal for the default open-terminal binding'
   'alacritty: terminal for the default open-terminal binding'
   'wireplumber: provides wpctl for default media-key bindings'
+  'gamescope: game launch wrapping through halleyctl gamescope'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/saltnpepper97/halley/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('810e4151e1c22804a0d5504fee626b8f0dc21b6a92657431247333fd2dfa6fdd')
+sha256sums=('55808ec46ae308755829451557406626f8a3c6d631ed300684d1e0424821f5a5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   export CARGO_TARGET_DIR=target
-  cargo build --release --locked -p halley -p halley-cli
+  cargo build --release --locked -p halley -p halley-cli -p halley-lens
 }
 
 check() {
@@ -51,6 +52,9 @@ package() {
 
   install -Dm755 "target/release/halleyctl" \
     "$pkgdir/usr/bin/halleyctl"
+
+  install -Dm755 "target/release/halley-lens" \
+    "$pkgdir/usr/bin/halley-lens"
 
   install -Dm755 "packaging/wayland-sessions/halley-session" \
     "$pkgdir/usr/bin/halley-session"
