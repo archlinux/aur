@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.16.0.r28.ge369d8f
+pkgver=0.16.0.r36.gb5b7cb5
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -27,6 +27,7 @@ makedepends=(
 	'libpng>=1.6'
 	'libstdc++'
 	'magic_enum>=0.9.7'
+	'miniupnpc>=2.3.3'
 	'nlohmann-json>=3.12'
 	'openal'
 	'openssl'
