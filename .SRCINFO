@@ -1,0 +1,7 @@
+pkgbase = exoduz
+	pkgver = 0.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+
+pkgname = exoduz
