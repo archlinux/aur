@@ -144,17 +144,65 @@ README.md
 
 ## Remotes
 
-This repository is maintained in Forgejo as a working repository.
+This repository is maintained in Forgejo as the working repository.
 
-A later AUR remote can be added separately:
+The package is also published to the Arch User Repository.
 
-```bash
-git remote add aur ssh://aur@aur.archlinux.org/tegola-headless.git
+```text
+origin  Forgejo working repository
+aur     Arch User Repository
 ```
 
 Typical workflow:
 
 ```bash
 git push origin main
-git push aur main
+git push aur main:master
+```
+
+The AUR remote is:
+
+```bash
+git remote add aur ssh://aur@aur.archlinux.org/tegola-headless.git
+```
+
+## AUR status
+
+The package has been published to the Arch User Repository as:
+
+```text
+tegola-headless
+```
+
+It has been tested successfully with `yay`:
+
+```bash
+yay -S tegola-headless
+```
+
+The full test path was:
+
+```text
+Forgejo
+  -> AUR
+  -> yay
+  -> makepkg
+  -> pacman
+  -> systemd
+  -> Tegola HTTP endpoint
+```
+
+The service was verified with:
+
+```bash
+sudo systemctl start tegola.service
+systemctl status tegola.service --no-pager
+curl -I http://127.0.0.1:8080/
+sudo systemctl stop tegola.service
+```
+
+Expected result:
+
+```text
+HTTP/1.1 200 OK
 ```
