@@ -1,7 +1,7 @@
 # Maintainer: Michael
 
 pkgname=harmonic
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Retro-inspired desktop audio visualizer"
 arch=('x86_64')
