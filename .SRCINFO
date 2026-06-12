@@ -1,10 +1,10 @@
-pkgbase = markit
+pkgbase = markit-git
 	pkgdesc = Mark-it CLI tool
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/Fr4z49/Mark-it
 	arch = any
-	license = MIT
+	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -13,4 +13,4 @@ pkgbase = markit
 	source = git+https://github.com/Fr4z49/Mark-it.git#branch=beta
 	sha256sums = SKIP
 
-pkgname = markit
+pkgname = markit-git
