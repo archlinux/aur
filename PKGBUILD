@@ -1,7 +1,7 @@
 # Maintainer: faris0x <farisalfarhan@icloud.com>
 # Contributor: faris0x <farisalfarhan@icloud.com>
 
-pkgname=muT
+pkgname=mut
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A terminal-based LaTeX editor (μT) — Micro-like editing, pdflatex build, Zathura preview"
