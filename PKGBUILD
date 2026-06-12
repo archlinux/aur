@@ -1,13 +1,13 @@
 # Maintainer: mateball9333-debug <mateball9333-debug@users.noreply.github.com>
 
 pkgname=qtiker-git
-pkgver=0.2.3.r0.g5fe3ece
+pkgver=0.9.0.r0.g0000000
 pkgrel=1
 pkgdesc='Small Qt clicker game for Linux'
 arch=('x86_64')
 url='https://github.com/mateball9333-debug/qtiker'
 license=('GPL-2.0-or-later' 'Apache-2.0' 'custom:Tux')
-depends=('qt6-base' 'qt6-svg' 'hicolor-icon-theme')
+depends=('qt6-base' 'qt6-svg' 'qt6-multimedia' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
 provides=('qtiker')
 conflicts=('qtiker')
