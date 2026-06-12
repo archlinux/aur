@@ -1,48 +1,28 @@
-# Maintainer: coffee <coffee@coffeecat.top>
+# Maintainer: jin <mail@nvimer.org>
 pkgname=deepseek-reasonix-tui
 _pkgname=reasonix
-pkgver=1.0.0
+pkgver=1.6.0
 pkgrel=1
-pkgdesc="Cache-first DeepSeek coding agent for the terminal."
-arch=('any')
+pkgdesc="Cache-first DeepSeek coding agent for the terminal"
+arch=('x86_64' 'aarch64')
 url="https://github.com/esengine/DeepSeek-Reasonix"
 license=('MIT')
-depends=('nodejs>=22' 'npm')
-makedepends=('jq')
+depends=()
+makedepends=('go')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
-sha256sums=('fbdc40d47cf8358bc68a60d55c3e11f465b2bb72cfa1d2a1d7b1144de4c727cd')
-
-prepare() {
-    cd "$srcdir"
-    if [[ -d package && ! -d "$_pkgname-$pkgver" ]]; then
-        mv package "$_pkgname-$pkgver"
-    fi
-}
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('644e4c7c4dbe3c048e627ef9180816de0be7117a1cd66923e2ee2ee5cafd1f02')
 
 build() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    # Published tarball has workspace:* devDeps that choke npm — strip them
-    jq 'del(.devDependencies) | .workspaces = []' package.json > package.json.clean
-    mv package.json.clean package.json
-    # Install production dependencies only
-    npm install --omit=dev
+    cd "DeepSeek-Reasonix-$pkgver"
+    export CGO_ENABLED=0
+    go build -trimpath -ldflags "-s -w -X main.version=v$pkgver" \
+        -o "$_pkgname" ./cmd/reasonix
 }
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver"
-
-    # Install to system node_modules path
-    local moddir="$pkgdir/usr/lib/node_modules/$_pkgname"
-    mkdir -p "$moddir"
-    cp -r . "$moddir"
-
-    # Clean up: remove npm-related artifacts that shouldn't ship
-    rm -rf "$moddir/node_modules/.cache"
-    chmod +x "$pkgdir/usr/lib/node_modules/reasonix/bin/reasonix.js"
-
-    # Create binary symlinks
-    mkdir -p "$pkgdir/usr/bin"
-    ln -sf "/usr/lib/node_modules/$_pkgname/bin/reasonix.js" "$pkgdir/usr/bin/deepseek-reasonix-tui"
+    cd "DeepSeek-Reasonix-$pkgver"
+    install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
