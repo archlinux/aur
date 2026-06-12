@@ -1,20 +1,19 @@
 # Contributor: Kyle Manna <kyle[at]kylemanna[d0t]com>
+# Maintainer: quietvoid <tcChlisop0@gmail.com>
+
 pkgname=python-class-registry
 _pkgname=class-registry
-pkgver=5.1.1
+pkgver=5.2.2
 pkgrel=1
 pkgdesc='The intersection of the Registry and Factory patterns'
 url='https://github.com/todofixthis/class-registry'
 depends=('python')
-makedepends=('python-build'
-             'python-installer'
-             'python-poetry-core'
-            )
+makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=()
 license=('MIT')
 arch=('any')
 source=("https://github.com/todofixthis/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('1e4983d19bbcbfd75bab08d754dad362cc3fb9eb24507c0db5db7c664f89c26f1115b5255bc1687846b27677735a60b2385b2b212e0bf529dbd06bfbd6bc611f')
+b2sums=('26cd4baf25afe60219c8d76e80bad059f63a652d104e56a159540f19c1abf51b4e76bc3db978db150802e430745336b2f606c9f7b53c49f7009cdfd0f265627c')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
