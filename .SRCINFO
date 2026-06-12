@@ -1,7 +1,7 @@
 pkgbase = thorium-browser-updated
 	pkgdesc = Chromium fork focused on high performance and security, built from source
-	pkgver = 148.0.7778.215
-	pkgrel = 7
+	pkgver = 149.0.7827.114
+	pkgrel = 1
 	url = https://github.com/brauliobo/thorium
 	install = thorium-browser-updated.install
 	arch = x86_64
@@ -77,7 +77,7 @@ pkgbase = thorium-browser-updated
 	options = !lto
 	options = !strip
 	options = !debug
-	source = thorium::git+https://github.com/brauliobo/thorium.git#commit=db265b119313f88b1c2513c0c2ca16945803012e
+	source = thorium::git+https://github.com/brauliobo/thorium.git#commit=a18a221cbb9db9e4f5f032051b3ba24b9bfa7ff3
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	sha256sums = SKIP
 	sha256sums = SKIP

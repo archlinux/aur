@@ -1,8 +1,8 @@
 # Maintainer: Braulio Oliveira <brauliobo@gmail.com>
 
 pkgname=thorium-browser-updated
-pkgver=148.0.7778.215
-pkgrel=7
+pkgver=149.0.7827.114
+pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security, built from source"
 arch=('x86_64')
 url="https://github.com/brauliobo/thorium"
@@ -82,7 +82,7 @@ conflicts=('thorium-browser' 'thorium-browser-bin' 'thorium-browser-updated-bin'
 options=('!lto' '!strip' '!debug')
 install="${pkgname}.install"
 source=(
-  "thorium::git+https://github.com/brauliobo/thorium.git#commit=db265b119313f88b1c2513c0c2ca16945803012e"
+  "thorium::git+https://github.com/brauliobo/thorium.git#commit=a18a221cbb9db9e4f5f032051b3ba24b9bfa7ff3"
   "depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
 )
 sha256sums=('SKIP' 'SKIP')
@@ -122,15 +122,38 @@ build() {
 
   cd "$CR_DIR"
   nice -n 10 ionice -c2 -n7 autoninja -C out/thorium \
+    thorium_shell \
+    clear_key_cdm \
+    chromedriver \
     chrome/installer/linux:strip_chrome_binary \
     chrome/installer/linux:strip_chrome_sandbox \
     chrome/installer/linux:strip_chrome_management_service \
     -j"$_jobs"
 
-  ln -f out/thorium/chrome.stripped out/thorium/thorium.stripped
+  if [[ -f out/thorium/chrome.stripped ]]; then
+    ln -f out/thorium/chrome.stripped out/thorium/thorium.stripped
+  elif [[ ! -f out/thorium/thorium.stripped ]]; then
+    echo "Missing stripped browser binary." >&2
+    return 1
+  fi
+
   ln -f out/thorium/chrome_sandbox.stripped out/thorium/thorium_sandbox.stripped
   patchelf --remove-rpath out/thorium/thorium.stripped 2>/dev/null || true
   patchelf --remove-rpath out/thorium/chrome_management_service.stripped 2>/dev/null || true
+
+  cp -f "$srcdir/thorium/thorium_shell/thorium_shell.png" out/thorium/thorium_shell.png
+  cp -f "$srcdir/thorium/thorium_shell/thorium.svg" out/thorium/thorium.svg
+  cp -f "$srcdir/thorium/thorium_shell/thorium-shell.desktop" out/thorium/thorium-shell.desktop
+  cp -f "$srcdir/thorium/thorium_shell/thorium-shell" out/thorium/thorium-shell
+  cp -f "$srcdir/thorium/pak_src/binaries/pak" out/thorium/pak
+  cp -f "$srcdir/thorium/infra/initial_preferences" out/thorium/initial_preferences
+  chmod 755 out/thorium/thorium-shell out/thorium/pak
+
+  if [[ ! -x buildtools/third_party/eu-strip/bin/eu-strip ]] &&
+     command -v eu-strip >/dev/null; then
+    mkdir -p buildtools/third_party/eu-strip/bin
+    ln -sf "$(command -v eu-strip)" buildtools/third_party/eu-strip/bin/eu-strip
+  fi
 
   nice -n 10 ionice -c2 -n7 autoninja -C out/thorium \
     chrome/installer/linux:stable_rpm \
@@ -139,8 +162,8 @@ build() {
 
 package() {
   local rpm
-  rpm="$(find "$srcdir/chromium/src/out/thorium" -name 'thorium-browser-stable-*.x86_64.rpm' -print -quit)"
-  [[ -n "$rpm" ]] || {
+  rpm="$srcdir/chromium/src/out/thorium/thorium-browser_${pkgver}_AVX.rpm"
+  [[ -f "$rpm" ]] || {
     echo "Unable to find built Thorium RPM" >&2
     return 1
   }
