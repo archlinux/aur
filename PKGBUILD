@@ -1,26 +1,37 @@
-# Maintainer: Remisa Phillips
-
+# Maintainer: Masoud Yousefvand <yousefvand@gmail.com>
 pkgname=burning-windows
 pkgver=0.1.0
-pkgrel=2
-pkgdesc='Burning window close animation for KDE Plasma 6 KWin Wayland'
+pkgrel=1
+pkgdesc='Burning Windows effect for KDE Plasma/KWin'
 arch=('x86_64')
-url='https://aur.archlinux.org/packages/burning-windows'
-license=('MIT')
-depends=('kwin' 'qt6-base' 'qt6-declarative' 'kcoreaddons' 'ki18n')
-makedepends=('cmake' 'extra-cmake-modules' 'qt6-tools')
-provides=('kwin6-effect-remisa-burn')
-conflicts=('kwin6-effect-remisa-burn')
+url='https://github.com/yousefvand/Burning-Windows'
+license=('GPL')
+depends=(
+  'kwin'
+  'kcoreaddons'
+  'kconfig'
+  'kconfigwidgets'
+  'ki18n'
+  'kcmutils'
+  'qt6-base'
+  'qt6-declarative'
+)
+makedepends=(
+  'git'
+  'cmake'
+  'extra-cmake-modules'
+  'ninja'
+  'gcc'
+)
 install='burning-windows.install'
-source=('burning-windows-0.1.0.tar.gz')
-sha256sums=('d62555eab68342f9299d6c87d7416a3b097c050caba0d7367004e5aedbf3ec0f')
+source=("burning-windows-0.1.0.tar.gz::https://github.com/yousefvand/Burning-Windows/archive/refs/tags/v0.1.0.tar.gz")
+sha256sums=('5ab4be06a5b5f70cc42ef63130593c6d0992fdd174102858de82e182284367c9')
 
 build() {
-    cmake -S "$srcdir/burning-windows-0.1.0" -B build         -DCMAKE_BUILD_TYPE=None         -DCMAKE_INSTALL_PREFIX=/usr         -Wno-dev
-    cmake --build build
+  cmake -S "$srcdir/Burning-Windows-0.1.0" -B build -G Ninja     -DCMAKE_BUILD_TYPE=Release     -DCMAKE_INSTALL_PREFIX=/usr     -DKDE_INSTALL_LIBDIR=lib     -DKDE_INSTALL_LIBEXECDIR=lib     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  cmake --build build
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
-    install -Dm644 "$srcdir/burning-windows-0.1.0/LICENSE"         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  DESTDIR="$pkgdir" cmake --install build
 }
