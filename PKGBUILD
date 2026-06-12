@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=tetris
-pkgver=7.1.0
+pkgver=7.9.0
 pkgrel=1
 pkgdesc="Linux port of the OpenBSD version"
 arch=(x86_64)
@@ -21,4 +21,4 @@ package() {
 }
 
 # sums
-sha256sums=('956ac2c613ec381f7a077f6b0897ec04465269644b8c338cce7e92fdc205071a')
+sha256sums=('dcf9b0b5c102aece28e509c393600f1f1d060b709069c3d8bf6baac443fc8f4e')
