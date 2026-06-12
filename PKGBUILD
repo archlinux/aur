@@ -13,7 +13,6 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
-options=('!debug' 'strip')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
