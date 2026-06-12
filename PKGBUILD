@@ -1,15 +1,15 @@
-# Maintainer : Cooper <cooptheloop8 at gmail dot com>
+# Maintainer : August <cooptheloop8 at gmail dot com>
 
 pkgname="wretch"
-pkgver="1.3.5"
+pkgver="1.4.1"
 pkgrel=1
 pkgdesc="A simple Fetch CLI program Built with Rust"
 arch=("x86_64")
-source=("$pkgname-v$pkgver.tar.gz::https://github.com/thesillyboi/wretch/archive/refs/tags/v$pkgver.tar.gz")
-url="https://github.com/thesillyboi/wretch"
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/addy10s/wretch/archive/refs/tags/v$pkgver.tar.gz")
+url="https://github.com/addy10s/wretch"
 makedepends=("rustup" "git")
 packagedepends=("gcc-libs" "glibc")
-sha512sums=('b828203e3c315791befb693febffb8319ebd471ac99c1f06e4d7b05232cfa59dfaeb436be6fa4852111b0c451577a54528f7d29d414f75ecfa298d929ccb58a9')
+sha512sums=('1cd0d6430df602ee3860ac967ec89fd7f8dce3bc1f51b2e07196c048618f9ff60564d4e6d7bfeb493d8fc938fe350c46ce0cf51bc7908207ee45e90fe5624574')
 license=("GPL-3.0-or-later")
 build() {
     cd "${srcdir}/$pkgname-$pkgver"
