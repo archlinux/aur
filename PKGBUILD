@@ -5,14 +5,14 @@ pkgver=1.0.0.r94.cd413f1
 pkgrel=1
 pkgdesc="A Wayland idle time based action daemon (git version)"
 arch=('x86_64')
-url="https://gitlab.com/axos-project/hypnos"
+url="https://github.com/axos-project/hypnos"
 license=('GPL')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('wayland-protocols' 'libnotify' 'systemd')
 makedepends=('git' 'cargo')
 install=hypnos-git.install
-source=("git+https://gitlab.com/axos-project/hypnos.git")
+source=("git+https://github.com/axos-project/hypnos.git")
 sha256sums=('SKIP')
 
 pkgver() {

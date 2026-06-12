@@ -2,7 +2,7 @@ pkgbase = hypnos-git
 	pkgdesc = A Wayland idle time based action daemon (git version)
 	pkgver = 1.0.0.r94.cd413f1
 	pkgrel = 1
-	url = https://gitlab.com/axos-project/hypnos
+	url = https://github.com/axos-project/hypnos
 	install = hypnos-git.install
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = hypnos-git
 	depends = systemd
 	provides = hypnos
 	conflicts = hypnos
-	source = git+https://gitlab.com/axos-project/hypnos.git
+	source = git+https://github.com/axos-project/hypnos.git
 	sha256sums = SKIP
 
 pkgname = hypnos-git
