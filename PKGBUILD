@@ -4,7 +4,7 @@
 
 pkgname=p4d
 _version=2026.1
-pkgver=2026.1.2951233
+pkgver=2026.1.2972966
 pkgrel=1
 pkgdesc="Minimal Perforce Helix Core Server"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${_filename}"::"https://cdist2.perforce.com/perforce/r${pkgver:2:4}/bin
 # Perforce Software (Package Signing) <support+packaging@perforce.com>
 validpgpkeys=('7123CB760FF18869'
               'E58131C0AEA7B082C6DC4C937123CB760FF18869')
-b2sums=('29f8ab99f52be965a76754cfc7708b8ddc33c72aec0a148d2d84488170634c4bafd5d3b4b72fad45d763769eda7ec6742e7613e156e059339485532cb573e0e8'
+b2sums=('805245e2d7861dcb31d34580c33ad6b1367d864abdf08d48003873e7b760723149d31b571c9c7d44b65330ea0b7035dde1fb55645cf459599f632801ddb740be'
         'dc0666cc96442b03f403991c20f2307114c750a99de48b116bf25e5c4cf8b89efd7ac693104d45600a453d4940debefe8b958254c8b00c5fc080a2cd2f07cc29'
         '4682a3f35e6053c1ffd53e5e49cd07d8d895db69fe66856d94a91670133070f216d754a70b56aa68e27c43dccff4ebac28ed8aa6cdb66eb3311eb59a89718703')
 
