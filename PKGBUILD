@@ -1,4 +1,5 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-xmind
 _name=${pkgname#python-}
@@ -22,6 +23,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('7524b447aa038e30c1b37b1a161494eb8af79b48629658493b4e0407dc50cc79')
 
 _archive="$_name-$pkgver"
+
+latestver() {
+  curl -fsSL "https://pypi.org/pypi/${_name}/json" |
+    python -c "import sys, json; print(json.load(sys.stdin)['info']['version'])"
+}
 
 build() {
   cd "$_archive"
