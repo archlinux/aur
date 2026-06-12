@@ -1,6 +1,6 @@
 pkgbase = waystone
 	pkgdesc = Path of Exile 2 price-check overlay for Wayland (Hyprland)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/kriskruse/waystone
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = waystone
 	depends = wl-clipboard
 	depends = xdotool
 	depends = nodejs
-	source = waystone-0.1.0.tar.gz::https://github.com/kriskruse/waystone/releases/download/v0.1.0/waystone-0.1.0.tar.gz
-	sha256sums = 837e6185c269f7e65ee7f20391857de1fe993af584a805d9ec499d1db0e05a21
+	source = waystone-0.1.1.tar.gz::https://github.com/kriskruse/waystone/releases/download/v0.1.1/waystone-0.1.1.tar.gz
+	sha256sums = d7c2a73a20db7d88fb4337264492dfad95867446428e1823bc5fbfcaa2dcd9b6
 
 pkgname = waystone

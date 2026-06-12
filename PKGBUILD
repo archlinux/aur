@@ -1,8 +1,8 @@
 # Maintainer: Kris Kruse <kriskruse@users.noreply.github.com>
-# Template rendered by .github/workflows/release.yml — 0.1.0 and
-# 837e6185c269f7e65ee7f20391857de1fe993af584a805d9ec499d1db0e05a21 are substituted from the tagged release.
+# Template rendered by .github/workflows/release.yml — 0.1.1 and
+# d7c2a73a20db7d88fb4337264492dfad95867446428e1823bc5fbfcaa2dcd9b6 are substituted from the tagged release.
 pkgname=waystone
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Path of Exile 2 price-check overlay for Wayland (Hyprland)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'python-gobject' 'python-opencv' 'python-numpy'
          'xdg-desktop-portal-hyprland' 'wl-clipboard' 'xdotool' 'nodejs')
 makedepends=('npm' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('837e6185c269f7e65ee7f20391857de1fe993af584a805d9ec499d1db0e05a21')
+sha256sums=('d7c2a73a20db7d88fb4337264492dfad95867446428e1823bc5fbfcaa2dcd9b6')
 
 build() {
   cd "$pkgname-$pkgver"/brain
