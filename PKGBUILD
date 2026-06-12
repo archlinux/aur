@@ -1,16 +1,15 @@
-# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
+# Maintainer: Jonathan Grotelüschen <tippfehlr@archlinux.org>
 
 pkgname=ttf-genei-koburi
-pkgver=20251013
+pkgver=20260612
 pkgrel=1
 pkgdesc='A free Japanese kanji font'
 arch=('any')
 url='https://fontmeme.com/fonts/genei-koburi-mincho-font/'
 license=('OFL-1.1')
-source=("https://www.freefontdownload.org/download-font/genei-koburi-mincho")
-sha512sums=('135ac2faea910fde01bf32733e9b21a022229caee5910acb6633434a768fd2e96ce165ea17a0857ab8cf4e0b86abe2b623d273d22d4df1c3ae996ea466d24e93')
+source=("genei-koburi-mincho.zip::https://www.freefontdownload.org/download-font/genei-koburi-mincho")
+sha512sums=('f7c78fcd62737921c87da37be8254d664711281037b89b6a7ceef26a922806e9cfee0b157277ddc4147b2095dcaceb66457487ab2f6f7d5e5ce3df6c1d693a8b')
 
 package() {
-	cd "$srcdir"
-	install -Dm644 genei-koburi-mincho.ttf "$pkgdir/usr/share/fonts/TTF/genei-koburi-mincho.ttf"
+	install -Dm644 genei-koburi-mincho/genei-koburi-mincho.ttf -t "$pkgdir/usr/share/fonts/TTF/"
 }
