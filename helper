@@ -14,7 +14,8 @@ CHOICES=$(whiptail --title "My Little Helper" \
 "heroic" "Heroic Games Launcher (Epic/GOG)" OFF \
 "discord" "Discord (Chat Application)" OFF \
 "chromium" "Chromium Web Browser" OFF \
-3>&1 1>&2 2>&3)
+3>&1 1>&2 2>&3)"spotify" "Spotify Music Player" OFF \
+"sober" "Sober (Roblox)" OFF \
 
 # Exit gracefully if cancelled
 if [ -z "$CHOICES" ]; then
