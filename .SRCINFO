@@ -1,7 +1,7 @@
 pkgbase = capi-desktop-bin
 	pkgdesc = Cliente gráfico para YouTube Music con soporte de descargas y Discord RPC
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jh2929/Capi
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,6 @@ pkgbase = capi-desktop-bin
 	provides = capi-desktop
 	conflicts = capi-desktop
 	source = https://github.com/jh2929/Capi/releases/download/v0.1.0-linux/capi-desktop-linux-x86_64.tar.gz
-	sha256sums = f00d8375748a1d559fe37bc97b56341ca8eded57310b53b23b07d119c1e3f316
+	sha256sums = 54887d09724d7db9be8bcecbe34f18ef1ca597340e2629bb781fbe203175c22e
 
 pkgname = capi-desktop-bin
