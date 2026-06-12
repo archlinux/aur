@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=15.12.0
+pkgver=15.12.1
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "tree-sitter-haskell-gcc-no-strict-aliasing.patch"
     "skip-native-embed-for-aur.patch"
 )
-sha256sums=('c71a26062d756d553ac1e632c5121bbfbc230efe10364a3b45dc5c76f4109b96'
+sha256sums=('9bc542f4683b054d4985f9ff68579e770cca713e3969ee5981d9ec06c3e0f472'
             '3eea6cd7fc2e5fa973b81cac109688231e40087f51c3ce4cf01e45e1b7893b17'
             'e5cc7751f95d279705d2060040017a0ca76d1e980f36c51e93016754746c2b99')
 
