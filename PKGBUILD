@@ -7,7 +7,6 @@ pkgdesc="Cache-first DeepSeek coding agent for the terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/esengine/DeepSeek-Reasonix"
 license=('MIT')
-depends=()
 makedepends=('go')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
