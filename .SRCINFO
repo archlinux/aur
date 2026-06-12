@@ -1,6 +1,6 @@
 pkgbase = headroom-bin
 	pkgdesc = Audio loudness analyzer and gain adjustment tool for mastering workflows
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/M-Igashi/headroom
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = headroom-bin
 	depends = mp3rgain
 	provides = headroom
 	conflicts = headroom
-	source = LICENSE-2.0.0::https://raw.githubusercontent.com/M-Igashi/headroom/v2.0.0/LICENSE
-	source = README-2.0.0.md::https://raw.githubusercontent.com/M-Igashi/headroom/v2.0.0/README.md
+	source = LICENSE-2.1.0::https://raw.githubusercontent.com/M-Igashi/headroom/v2.1.0/LICENSE
+	source = README-2.1.0.md::https://raw.githubusercontent.com/M-Igashi/headroom/v2.1.0/README.md
 	sha256sums = 45f62ea4b8704c36e13c62bdafb15076fc8bf618b9722496534193700a7f61bc
-	sha256sums = 91056a84230ca115426608529506f9a099b133aa02376455114dce6c79bfe29d
-	source_x86_64 = headroom-x86_64-2.0.0.tgz::https://github.com/M-Igashi/headroom/releases/download/v2.0.0/headroom-v2.0.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 06cb08c7f3ed8f3d3f0b9d6e92c909ee5ca4ea62d7c59594a81f2cbba574909b
+	sha256sums = 0a056feef50997e116bb8cd4000dee4ce093f2eb5ab828ebe9e270107f6be0d8
+	source_x86_64 = headroom-x86_64-2.1.0.tgz::https://github.com/M-Igashi/headroom/releases/download/v2.1.0/headroom-v2.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 739ef13dbb25e1d86c07df86b8fd9eb03e63f2b1355fa144b44e07ba677c9d9f
 
 pkgname = headroom-bin
