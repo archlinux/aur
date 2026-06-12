@@ -1,6 +1,6 @@
 pkgname=nextcloud-app-forms
 _name=forms
-pkgver=5.2.9
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="Forms app for Nextcloud"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('nextcloud' 'php-legacy' 'ripgrep' 'yq')
 groups=('nextcloud-apps')
 #source=("forms-${pkgver}.tar.gz::https://github.com/nextcloud/forms/releases/download/v$pkgver/forms.tar.gz")
 source=("forms-${pkgver}.tar.gz::https://github.com/nextcloud-releases/forms/releases/download/v$pkgver/forms-v$pkgver.tar.gz")
-sha512sums=('30850c486edf64ab0814554bff228de0a1ec09bcf5ad7b327c5d32e247f9614ab3306d07d3d349044b064f51b8e82c7cfb67ea0f3b61afa7ac76473d3dc922fd')
+sha512sums=('da42c279ecc989f2d3aa7021aa0ee5b5c2f4073d93e2096777208832658ba1bafeea15b964476c7fda15744d640afa514ea715376f362f986e6087b90341ed99')
 
 _get_nextcloud_versions() {
   _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"

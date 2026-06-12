@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-forms
 	pkgdesc = Forms app for Nextcloud
-	pkgver = 5.2.9
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = https://github.com/nextcloud/forms
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = nextcloud-app-forms
 	makedepends = ripgrep
 	makedepends = yq
 	depends = nextcloud
-	source = forms-5.2.9.tar.gz::https://github.com/nextcloud-releases/forms/releases/download/v5.2.9/forms-v5.2.9.tar.gz
-	sha512sums = 30850c486edf64ab0814554bff228de0a1ec09bcf5ad7b327c5d32e247f9614ab3306d07d3d349044b064f51b8e82c7cfb67ea0f3b61afa7ac76473d3dc922fd
+	source = forms-5.3.1.tar.gz::https://github.com/nextcloud-releases/forms/releases/download/v5.3.1/forms-v5.3.1.tar.gz
+	sha512sums = da42c279ecc989f2d3aa7021aa0ee5b5c2f4073d93e2096777208832658ba1bafeea15b964476c7fda15744d640afa514ea715376f362f986e6087b90341ed99
 
 pkgname = nextcloud-app-forms
 	depends = nextcloud>=
