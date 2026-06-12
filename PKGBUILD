@@ -90,8 +90,21 @@ package() {
 
     # Runtime closure by static module-graph tracing: upstream's daemon/CLI
     # trace plus our desktop-main trace, instead of the 2 GB node_modules.
-    node scripts/trace-daemon.mjs > "${srcdir}/runtime-files.txt"
-    node "${srcdir}/trace-desktop.mjs" >> "${srcdir}/runtime-files.txt"
+    node scripts/trace-daemon.mjs > "${srcdir}/runtime-files.txt" \
+        2> "${srcdir}/trace-stderr.log" \
+        || { cat "${srcdir}/trace-stderr.log" >&2; return 1; }
+    node "${srcdir}/trace-desktop.mjs" >> "${srcdir}/runtime-files.txt" \
+        2>> "${srcdir}/trace-stderr.log" \
+        || { cat "${srcdir}/trace-stderr.log" >&2; return 1; }
+
+    # Known-benign trace noise is dropped; anything unexpected still prints.
+    # ws/node-fetch probe optional native accelerators (bufferutil,
+    # utf-8-validate, encoding) that the lockfile never installs — pure-JS
+    # fallbacks are used. nft also tries to parse non-JS assets it carries
+    # (a stray src/*.ts, zsh shell-integration dotfiles) and logs the
+    # resulting token errors.
+    grep -vE "utf-8-validate|bufferutil|[\"']encoding[\"']|Failed to parse .*(packages/server/src/|shell-integration)|^Unexpected token" \
+        "${srcdir}/trace-stderr.log" >&2 || true
 
     local _libdir="${pkgdir}/usr/lib/paseo"
     install -d "${_libdir}"
