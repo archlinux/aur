@@ -2,7 +2,7 @@
 pkgname=pawtop
 _pkgname=Pawtop
 pkgdesc="A custom Discord desktop app with PawsomeVencord pre-installed"
-pkgver=3.2.0
+pkgver=3.2.1
 # Reminder for devs: don't forget to update the electron version on pawtop.sh
 pkgrel=1
 electron=electron40
@@ -21,7 +21,7 @@ conflicts=('pawtop-bin')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz"
         'pawtop.desktop'
         'pawtop.sh')
-sha256sums=('f08f7f0ec78f331fcd788bd0d574d650a0fb28cfc9d4f77be4b7da176e6aca75'
+sha256sums=('6bbfd3dd35bb9ec32faa4fd02112b5b2a61365769d9613eec99f0a852b78b630'
             'a95ff89d3fd1767cb9144ddebb90094bb3d2cdea2c9b0943514ec1cca8716fbf'
             'dda94a9d7934b7f146106521aa9117fa2357fc1cc22fa92b1d86a1aaf578ba04')
 

@@ -1,6 +1,6 @@
 pkgbase = pawtop
 	pkgdesc = A custom Discord desktop app with PawsomeVencord pre-installed
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/enzomtpYT/Pawtop
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = pawtop
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	conflicts = pawtop-bin
 	options = !strip
-	source = https://github.com/enzomtpYT/Pawtop/archive/refs/tags/v3.2.0.tar.gz
+	source = https://github.com/enzomtpYT/Pawtop/archive/refs/tags/v3.2.1.tar.gz
 	source = pawtop.desktop
 	source = pawtop.sh
-	sha256sums = f08f7f0ec78f331fcd788bd0d574d650a0fb28cfc9d4f77be4b7da176e6aca75
+	sha256sums = 6bbfd3dd35bb9ec32faa4fd02112b5b2a61365769d9613eec99f0a852b78b630
 	sha256sums = a95ff89d3fd1767cb9144ddebb90094bb3d2cdea2c9b0943514ec1cca8716fbf
 	sha256sums = dda94a9d7934b7f146106521aa9117fa2357fc1cc22fa92b1d86a1aaf578ba04
 
