@@ -51,16 +51,23 @@ package()
   make install PREFIX="${pkgdir}/usr"
 
   # mkdir
-  #install -d -m 755 "${pkgdir}/usr/bin/"
   install -d -m 755 "${pkgdir}/etc/"
+  install -d -m 755 "${pkgdir}/usr/bin/"
   install -d -m 755 "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -d -m 755 "${pkgdir}/usr/share/man/man1/${pkgname}/"
+  install -d -m 755 "${pkgdir}/usr/share/applications/${pkgname}/"
 
   # files
-  install -m 644 view64.conf "${pkgdir}/etc/"
-  install -m 644 magic "${pkgdir}/etc/magic.${pkgname}"
-  install -m 644 mailcap "${pkgdir}/etc/mailcap.${pkgname}"
-  install -m 644 README "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -m 644 README.html "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -D -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+  install -D -m644 "${pkgname}.1" "${pkgdir}/usr/share/man/man1/"
+  install -D -m644 "${pkgname}pnm.1" "${pkgdir}/usr/share/man/man1/"
+
+  install -D -m644 view64.ini "${pkgdir}/etc/"
+  install -D -m644 view64.conf "${pkgdir}/etc/"
+  install -D -m644 magic "${pkgdir}/etc/magic.${pkgname}"
+  install -D -m644 mailcap "${pkgdir}/etc/mailcap.${pkgname}"
+  install -D -m644 README "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -D -m644 README.html "${pkgdir}/usr/share/doc/${pkgname}/"
 }
 
 #
