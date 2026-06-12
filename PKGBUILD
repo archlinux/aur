@@ -12,7 +12,7 @@ makedepends=()
 provides=('lovr')
 conflicts=('lovr' 'lovr-git')
 source=("lovr"::https://github.com/bjornbytes/lovr/releases/download/v${pkgver}/lovr-v${pkgver}-x86_64.AppImage)
-sha256sums=('sha256:09ce6f13c90f19c9aa3e40c00e1321ec4b27e00ed2f15e5bb336e349629b5c14')
+sha256sums=('09ce6f13c90f19c9aa3e40c00e1321ec4b27e00ed2f15e5bb336e349629b5c14')
 
 package() {
 	_xdg_desktop_name=org.lovr.lovr
