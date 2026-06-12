@@ -1,7 +1,7 @@
 pkgbase = pv-static
 	pkgdesc = monitor progress of data through a pipeline
-	pkgver = 1.10.5
-	pkgrel = 2
+	pkgver = 1.11.0
+	pkgrel = 1
 	url = https://www.ivarch.com/programs/pv-static.shtml
 	arch = x86_64
 	arch = aarch64
@@ -11,12 +11,12 @@ pkgbase = pv-static
 	makedepends = make
 	provides = pv
 	conflicts = pv
-	source = https://www.ivarch.com/programs/sources/pv-1.10.5.tar.gz
-	source = pv-1.10.5.tar.gz.sig::https://www.ivarch.com/programs/sources/pv-1.10.5.tar.gz.txt
+	source = https://www.ivarch.com/programs/sources/pv-1.11.0.tar.gz
+	source = pv-1.11.0.tar.gz.sig::https://www.ivarch.com/programs/sources/pv-1.11.0.tar.gz.txt
 	validpgpkeys = D8FF44A79CC8A61EF694FA7EB883E01314DA8E84
 	validpgpkeys = 2189D5C29F041F2277AFD50AC1596BA33FC56F51
 	validpgpkeys = 4267B4F90F2678A112169BD61D1EF7581B45E9A0
-	sha256sums = ab21b4f8662280646b6a02e1b9f096790918f89c952bbe0d06fef75d3b52fb15
+	sha256sums = fc02c9fc2b82b20a92cc8d98f844be63f22abd98751a8e4abc875e1d803662eb
 	sha256sums = SKIP
 
 pkgname = pv-static

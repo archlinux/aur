@@ -2,11 +2,11 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: Aaron Schaefer <aaron@elasticdog.com>
-# AUR pv-static pkg: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
+# AUR static pkg: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
 
 pkgname=pv-static
-pkgver=1.10.5
-pkgrel=2
+pkgver=1.11.0
+pkgrel=1
 pkgdesc='monitor progress of data through a pipeline'
 arch=(x86_64 aarch64)
 url="https://www.ivarch.com/programs/$pkgname.shtml"
@@ -20,7 +20,7 @@ _archive="${pkgname%-*}-$pkgver"
 source=("${url%/*}/sources/$_archive.tar.gz"
         "$_archive.tar.gz.sig::${url%/*}/sources/$_archive.tar.gz.txt")
 # source=("$_url/releases/download/v$pkgver/$_archive.tar.gz")
-sha256sums=('ab21b4f8662280646b6a02e1b9f096790918f89c952bbe0d06fef75d3b52fb15'
+sha256sums=('fc02c9fc2b82b20a92cc8d98f844be63f22abd98751a8e4abc875e1d803662eb'
             'SKIP')
 validpgpkeys=(D8FF44A79CC8A61EF694FA7EB883E01314DA8E84  # https://ivarch.com/public-key.txt
               2189D5C29F041F2277AFD50AC1596BA33FC56F51  # andrew.wood@ivarch.com

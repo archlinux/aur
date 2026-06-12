@@ -2,3 +2,5 @@
 *.lz4
 *.xz
 *.sig
+pkg/
+src/
