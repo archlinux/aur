@@ -1,8 +1,8 @@
 # Maintainer: Koutheir Attouchi <koutheir at gmail dot com>
 _github_user_name='sevaa'
 pkgname=dwex
-pkgver=4.81
-pkgrel=2
+pkgver=4.85
+pkgrel=1
 pkgdesc='GUI viewer for DWARF debug information'
 arch=('any')
 url="https://github.com/${_github_user_name}/${pkgname}"
@@ -29,7 +29,7 @@ source=(
 noextract=()
 sha256sums=(
     '96ec745235ecae021cd0db62f896a21ecdd46495795fdb713fa714c6f9a508ac'
-    '1badec319e90a8dbeefec65abb7e2728f89a59ea7300513417ef05b6c510dd8e'
+    '43aba0ea0b92cadee5b100afd7c11052f2f5c7c1f6ce1e10a154ab8aa152a9b2'
     'd92d16891381310a4b18cc8ae59a1a0ac99a07ca80599a7e3c003970622ba03f'
     '155036828925419fe6ab40d600d5e5ada249e1b47095d17bddf7aa694a0cdb6d')
 validpgpkeys=()
