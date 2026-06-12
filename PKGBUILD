@@ -1,7 +1,7 @@
 # Maintainer: zeroclaw-labs <bot@zeroclaw.dev>
 pkgname=zeroclawlabs
 _reponame=zeroclaw
-pkgver=0.7.5
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Zero overhead. Zero compromise. 100% Rust. The fastest, smallest AI assistant."
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,10 @@ url="https://github.com/zeroclaw-labs/zeroclaw"
 license=('MIT' 'Apache-2.0')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'git' 'nodejs' 'npm')
-provides=('zeroclaw')
-conflicts=('zeroclaw')
+provides=('zeroclaw' 'zerocode')
+conflicts=('zeroclaw' 'zerocode')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('be2a66d84eebf28a80f788f38d55dde60833027bee9c092a6fe0ab080e381365')
+sha256sums=('201e25ac0cbc757d2176291182f3a9e228109c4f92b28ca90122b4beeb1ca826')
 
 prepare() {
   cd "${_reponame}-${pkgver}"
@@ -23,17 +23,21 @@ prepare() {
 build() {
   cd "${_reponame}-${pkgver}"
 
-  # Build web dashboard (served from filesystem at runtime)
-  cd web && npm ci && npm run build && cd ..
-
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --profile dist --features channel-matrix,channel-lark
+
+  # Build web dashboard (served from filesystem at runtime)
+  cd web && npm ci && cd ..
+  cargo web build
+
+  cargo build --frozen --profile dist --features channel-matrix,channel-lark
+  cargo build --frozen --profile dist -p zerocode
 }
 
 package() {
   cd "${_reponame}-${pkgver}"
   install -Dm0755 -t "${pkgdir}/usr/bin/" "target/dist/zeroclaw"
+  install -Dm0755 -t "${pkgdir}/usr/bin/" "target/dist/zerocode"
 
   # Install web dashboard assets (served from filesystem at runtime)
   install -dm0755 "${pkgdir}/usr/share/${pkgname}/web/dist"
