@@ -1,0 +1,16 @@
+pkgbase = vvc-vtm-git
+	pkgdesc = VVC Test Model (VTM) reference encoder/decoder - git version
+	pkgver = 8473
+	pkgrel = 1
+	url = https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	depends = gcc-libs
+	source = git+https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM.git
+	sha256sums = SKIP
+
+pkgname = vvc-vtm-git
