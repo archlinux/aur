@@ -12,17 +12,18 @@
 
 _pkgname=namebind
 pkgname="${_pkgname}-git"
-pkgver=0.24.0.r1.g1838094
+pkgver=0.36.0.r1.g61ee948
 pkgrel=1
 pkgdesc="Per-app network namespaces; reach host services by name, not port number (git version)"
 arch=('any')  # pure Python + console script + a systemd unit
 
-# Using the FFA because my profile is set to limited visibility,
-#   so anyone who is not on Codeberg cannot even read the repo
+# Using the public org because my profile is set to limited visibility,
+#   so anyone who is not on Disroot cannot even read the repo
 #   and this would also require you having SSH to your account configured for machine access.
-# I had set up a push mirror from my main account, `0zitro` to this "free for all" one,
-#   at the time of writing, for this one repo.
-_url="codeberg.org/0zitro-ffa/namebind"
+# I had set up a push mirror from my main account, `0zitro` to this public org so that
+#   this repo is accessible and buildable by anyone with a Git-capable machine, without
+#   needing to set up SSH keys or a Codeberg account.
+_url="git.disroot.org/0zitro-public/namebind"
 url="https://${_url}"
 license=('Elastic-2.0')   # Elastic License 2.0; not in `licenses`, shipped below
 
@@ -41,8 +42,9 @@ depends=(
   'passt'          # pasta: the default (userspace) host egress
   'sudo'           # the CLI elevates its one privileged call (systemd-run/podman)
 )
-# `nsenter` + `setpriv` (util-linux), `ip` (iproute2; also ipvlan/veth) and
-# `systemctl` + `systemd-run` (systemd) are part of `base` and assumed present.
+# `nsenter` + `setpriv` + `kill` (util-linux), `ip` (iproute2; also ipvlan/veth), `sleep`
+# (coreutils; the create-anchor's idle payload) and `systemctl` + `systemd-run` + `busctl`
+# (systemd; busctl creates the leash scope) are part of `base` and assumed present.
 optdepends=(
   'dnsmasq: resolve <svc>.<app>.<domain> names by watching /var/lib/namebind/hosts.d'
   'docker: join Docker containers to the fabric via the libnetwork driver (namebind-docker.service)'
