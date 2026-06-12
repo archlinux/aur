@@ -26,9 +26,9 @@ sha256sums=('a828ee277711a6b376c8cf4c9a1f73458ca39ef262dd9d2a726f63111ff19e09'
             '927315d96d5681a1c019de450b2bb4de3d0e56e6db4fd619dc13c925b37e5405'
             '77d1b5fbcfe27e3effbe382c574f3bde140ca4eb18fab76faa31e147f74b7f71'
             '44f3e5d85740b26c9f4d5cbbddfced42fce98bdf6fd8d28e1480b93c9edf18d6')
-sha256sums_x86_64=('d7d35b806db72ecfb3021a2148ab72f03e8af0baa5067a85d5573888574fd890')
-sha256sums_armv7h=('bc267458391df9260e7d90f9aee8ff04a86d5039a870fdb853e3eef03bec96fc')
-sha256sums_aarch64=('6c464f835f136d140d7dcae0a9641ab7a38fbc3e59a2d8860644d11af4d4d6a1')
+sha256sums_x86_64=('bb99cabf47694625db421ee17898f36cdc1f9c2cb5decf65b12bac8d8437e842')
+sha256sums_armv7h=('3df25c595c8a669fb27d6ffae844dbe8bc049d11b181ae39cffc6e3b0a6b0e9f')
+sha256sums_aarch64=('d7fab87b921933eb281d8ee7bd5377cdd8228089f1f7c807c9363a6a2329286c')
 
 package() {
     install -Dm644 sing-box.service -t "$pkgdir/usr/lib/systemd/system"
