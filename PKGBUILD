@@ -1,13 +1,13 @@
 pkgname=openssh-gui-git
 _pkgname=OpenSSH-GUI
-pkgver=3.2.0.20260611.6840076
+pkgver=3.2.0.20260612.8cfa26a
 pkgrel=1
 pkgdesc="A GUI for OpenSSH configuration and management (Sourcepackage)"
 arch=('x86_64')
 url="https://github.com/frequency403/OpenSSH-GUI"
 license=('MIT')
 
-depends=('dotnet-runtime-10.0')
+depends=('icu' 'openssl' 'zlib' 'krb5' 'libx11')
 makedepends=('git' 'dotnet-sdk-10.0' 'librsvg')
 
 provides=('openssh-gui')
@@ -31,13 +31,13 @@ build() {
   cd "${srcdir}/${_pkgname}"
 
   dotnet publish OpenSSH_GUI/OpenSSH_GUI.csproj \
-    --configuration Release \
-    --runtime linux-x64 \
-    --output publish \
-    -p:PublishSingleFile=true \
-    -p:PublishReadyToRun=true \
-    -p:IncludeNativeLibrariesForSelfExtract=true \
-    -p:SelfContained=false
+      --configuration Release \
+      --runtime linux-x64 \
+      --output publish \
+      -p:SelfCcontained=true \
+      -p:PublishSingleFile=true \
+      -p:PublishReadyToRun=false \
+      -p:IncludeNativeLibrariesForSelfExtract=true
 
   rsvg-convert -w 256 -h 256 images/openssh-gui.svg -o appicon-256.png
 }
