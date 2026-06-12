@@ -3,8 +3,8 @@
 pkgbase=libethercat
 pkgname=(libethercat{,-tools})
 _tagname=0.8.0-rev1
-pkgver="${_tagname//-/_}"
-pkgrel=4
+pkgver="${_tagname//-/+}"
+pkgrel=5
 pkgdesc="EtherCAT master library. This library is used to build a deterministic fieldbus network with EtherCAT components."
 arch=($CARCH)
 url="https://github.com/robert-burger/libethercat"
@@ -21,9 +21,16 @@ makedepends=(
 )
 checkdepends=()
 optdepends=()
-source=("${pkgbase}::git+${url}.git#tag=${_tagname}")
-sha256sums=('387ac111ee15b08d65097610d49c1e2e036e02bf1fec686a79b8b65302d51719')
+source=("${pkgbase}::git+${url}.git#tag=${_tagname}"
+        "add-missing-sources.patch")
+sha256sums=('387ac111ee15b08d65097610d49c1e2e036e02bf1fec686a79b8b65302d51719'
+            'bc22832d79963c734f96cb30469c7300b35f160bdfa9270600034828f1cd53d6')
 options=()
+
+prepare() {
+    cd "${srcdir}/${pkgbase}"
+    patch -Np1 -i "${srcdir}/add-missing-sources.patch"
+}
 
 build() {
     cd "${srcdir}/${pkgbase}/"
@@ -34,7 +41,7 @@ build() {
     cmake -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \
-        -DECAT_DEVICE="sock_raw+sock_raw_mmaped" \
+        -DECAT_DEVICE="sock_raw+sock_raw_mmaped+veth" \
         -Wno-dev \
         -B build
 

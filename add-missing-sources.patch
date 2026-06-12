@@ -1,0 +1,49 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -60,6 +60,7 @@ check_include_files("memory.h" LIBETHERCAT_HAVE_MEMORY_H)
+ check_symbol_exists("memset" "string.h" LIBETHERCAT_HAVE_MALLOC)
+ check_include_files("net/bpf.h" LIBETHERCAT_HAVE_NET_BPF_H)
+ check_include_files("net/if.h" LIBETHERCAT_HAVE_NET_IF_H)
++check_include_files("netinet/udp.h" LIBETHERCAT_HAVE_NETINET_UDP_H)
+ check_include_files("netinet/in.h" LIBETHERCAT_HAVE_NETINET_IN_H)
+ check_include_files("pthread.h" LIBETHERCAT_HAVE_PTHREAD)
+ list(APPEND CMAKE_REQUIRED_DEFINITIONS -D_GNU_SOURCE)
+@@ -99,6 +100,7 @@ set(SRC_ETHERCAT
+     src/hw.c
+     src/idx.c
+     src/mbx.c
++    src/mbx_gateway.c
+     src/mii.c
+     src/pool.c
+     src/slave.c
+@@ -106,6 +108,7 @@ set(SRC_ETHERCAT
+ 
+ list(FIND ECAT_DEVICE "sock_raw" HAS_SOCK_RAW)
+ list(FIND ECAT_DEVICE "sock_raw_mmaped" HAS_SOCK_RAW_MMAPED)
++list(FIND ECAT_DEVICE "veth" HAS_SOCK_VETH)
+ list(FIND ECAT_DEVICE "file" HAS_SOCK_FILE)
+ list(FIND ECAT_DEVICE "pikeos" HAS_SOCK_PIKEOS)
+ list(FIND ECAT_DEVICE "bpf" HAS_SOCK_BPF)
+@@ -120,6 +123,11 @@ if (${HAS_SOCK_RAW_MMAPED} GREATER -1)
+     list(APPEND SRC_HW_LAYER src/hw_sock_raw_mmaped.c)
+     set(LIBETHERCAT_BUILD_DEVICE_SOCK_RAW_MMAPED 1)
+ endif()
++if (${HAS_SOCK_VETH} GREATER -1)
++    message("Include device veth")
++    list(APPEND SRC_HW_LAYER src/veth.c)
++    set(LIBETHERCAT_BUILD_DEVICE_VETH 1)
++endif()
+ if (${HAS_SOCK_FILE} GREATER -1)
+     message("Include device file")
+     list(APPEND SRC_HW_LAYER src/hw_file.c)
+--- a/cmake/cmake_config.h.in
++++ b/cmake/cmake_config.h.in
+@@ -41,6 +41,9 @@
+ /* Define to 1 if you have the <netinet/in.h> header file. */
+ #cmakedefine LIBETHERCAT_HAVE_NETINET_IN_H ${LIBETHERCAT_HAVE_NETINET_IN_H}
+ 
++/* Define to 1 if you have the <netinet/udp.h> header file. */
++#cmakedefine LIBETHERCAT_HAVE_NETINET_UDP_H ${LIBETHERCAT_HAVE_NETINET_UDP_H}
++
+ /* Define if you have POSIX threads libraries and header files. */
+ #cmakedefine LIBETHERCAT_HAVE_PTHREAD ${LIBETHERCAT_HAVE_PTHREAD}
