@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=yt-dvr
 epoch=
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A service to automatically record livestreams from various platforms, backed by yt-dlp'
 arch=('any')
@@ -13,15 +13,16 @@ url=https://pypi.org/project/yt-dvr/
 license=('AGPL')
 depends=('python' 'python-pathvalidate' 'python-dateutil' 'python-quart' 'python-typed-ffmpeg' 'yt-dlp' 'ffmpeg')
 makedepends=('python-pip')
+optdepends=('python-curl_cffi: Support for websites that require impersonation (Rumble and others)' 'kickpython: Kick chat support' 'pytchat: YouTube chat support' 'launchdarkly-eventsource: Rumble chat support')
 checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/ab/0b/960428062474cdab97bc5c9e5b0251bebd9d340825b9423dd5d55ae851b5/yt_dvr-0.2.1-py3-none-any.whl)
-md5sums+=(e9ecebe4c08d952d9b03dcc94fdd52d8)
-noextract+=(yt_dvr-0.2.1-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/ed/56/4c76ee0a8a982fbde627f931a31cbf50170e085193d939b421b2f68bde65/yt_dvr-0.3.0-py3-none-any.whl)
+md5sums+=(1ca60fd18cccbc198e5c53fc763bae99)
+noextract+=(yt_dvr-0.3.0-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(ed23444cac663d14a07faeec0fcf63f5)
 
