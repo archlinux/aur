@@ -1,0 +1,15 @@
+pkgbase = hproc
+	pkgdesc = A lightweight cross-platform process monitor for Windows, Linux, and macOS.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/person134/hproc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = hproc::git+https://github.com/person134/hproc.git
+	sha256sums = SKIP
+
+pkgname = hproc
