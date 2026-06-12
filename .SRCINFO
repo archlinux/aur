@@ -1,14 +1,14 @@
 pkgbase = darklua
 	pkgdesc = Transform Lua 5.1 and Roblox Luau code using configurable rules.
-	pkgver = 0.18.0
-	pkgrel = 2
+	pkgver = 0.19.0
+	pkgrel = 1
 	url = https://github.com/seaofvoices/darklua
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = darklua-0.18.0.tar.gz::https://github.com/seaofvoices/darklua/archive/refs/tags/v0.18.0.tar.gz
-	sha256sums = 3d2813da25c40cca8c65ac493261af233d90b7f8dc5bb592b34b8a97d527df27
+	source = darklua-0.19.0.tar.gz::https://github.com/seaofvoices/darklua/archive/refs/tags/v0.19.0.tar.gz
+	sha256sums = 6f2ce6d6f29aa256ca1ec47e33a25937a6964b1ada1083d427ebcc6a7d4ab43f
 
 pkgname = darklua
