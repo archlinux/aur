@@ -1,6 +1,6 @@
 pkgbase = attackshark-x11
 	pkgdesc = Attack Shark mouse configuration utility for Linux X11
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/iago-fragnan/attack-shark-x11-linux
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = attackshark-x11
 	depends = qt6-base
 	depends = systemd
 	depends = libusb
-	source = attackshark-x11-1.0.1.tar.gz::https://github.com/iago-fragnan/attack-shark-x11-linux/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 567674f9fd4a25090cb389af7c25dcbea3c5f563d9697cd3a7932c771b6a98a5
+	source = attackshark-x11-1.0.2.tar.gz::https://github.com/iago-fragnan/attack-shark-x11-linux/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 4a5039fbf7fd4cbd73f575fe148e4da9f8ed704016154c402f01e2c227038216
 
 pkgname = attackshark-x11
