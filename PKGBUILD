@@ -3,7 +3,7 @@
 _pkgauthor=jdx
 _pkgname=fnox
 pkgname=${_pkgname}-bin
-pkgver=1.25.1
+pkgver=1.26.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Fort Knox for your secrets"
@@ -22,9 +22,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-gnu.tar.gz")
 sha256sums=('a978dbd843845fb958044bc384c1826bd9cb5e64ea540c392fa410a288de9df4'
-            'c304d560b42c7fa390e6494a4157eeeaf6f751c27ebd1795563922312676a876')
-sha256sums_x86_64=('157a3ade234eec5b8a57dfc2ae5e3ac40f1871a5fd8affac94131d91ca60023b')
-sha256sums_aarch64=('fc37354b449e93cf6a15a18c15b58b27f4304ac532559b447e88b7f4e03eea83')
+            '89b8a1ad371f4d15eeee9c11be06411a5607dd271108f501184a9e70a34432f8')
+sha256sums_x86_64=('6e2a359357223d83f235523eb21e7402c5a84b5471aeff6d4d0ea6cb4bc6abc2')
+sha256sums_aarch64=('25f2628f54113685338322fc6c485d3f899ce0e1a926046c641a323a81806879')
 
 
 package() {
