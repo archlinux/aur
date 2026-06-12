@@ -1,7 +1,7 @@
 # Maintainer: Anton Reshetov
 pkgname=masscode-bin
 _pkgname=massCode
-pkgver=5.5.0
+pkgver=5.6.0
 _electronversion=34
 pkgrel=1
 pkgdesc="A free and open source code snippets manager for developers.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('38e288af1f70cfdb1adcd32d23807540e268c1211c1a0b7cb3d6bf449e85dc8c'
+sha256sums=('2ae9d453107f1bc6d1995f10a2c64cbeb16f3058adf1412d824c36e9b4ce01ae'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
