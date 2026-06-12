@@ -2,7 +2,7 @@
 
 _pkgname=sfp
 pkgname="${_pkgname}-ui-bin"
-pkgver=0.0.65
+pkgver=0.0.66
 pkgrel=1
 pkgdesc="This utility is designed to allow you to apply skins to the modern Steam client"
 arch=("x86_64")
@@ -17,7 +17,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_asset}"
   "LICENSE::https://raw.githubusercontent.com/PhantomGamers/SFP/${pkgver}/LICENSE"
 )
-sha512sums=('64c52207ed996b1f13ef8601fe03f914292fbdc3ab241b3ca7c200179adc99679b2cde0c1728180ebf6b05626d56b95d0c19d1d329c7260c291320cb992dee9f'
+sha512sums=('2ff4a7188a33426be791aa043d6cc01ee2f9f2f8cfd2269f583395bbdaa83d194e74b1bbaf704527a912d7bcc647420d7c0b7b21e5873830da19172cdb64bb89'
             'ffe34abde4b646b64e5871867c106d29cad7987839b756a2a80d7cb8423e71b2f307214631637d96e702aa6fed0ebf755582fa2a96c77430acfe0f383e5f9840')
 
 latestver() {
