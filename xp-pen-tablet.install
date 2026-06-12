@@ -47,10 +47,6 @@ post_install() {
 	RuleDir="/usr/lib/udev/rules.d"
 	ruleName="10-xp-pen.rules"
 
-	lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
-	touch $lockfile
-	chmod +0666 $lockfile
-
 	# Checking and applying the udev rule
 	if [ -f "$RuleDir/$ruleName" ]; then
 		udevadm control --reload-rules && udevadm trigger
@@ -94,8 +90,6 @@ post_upgrade() {
 }
 pre_remove() {
 	pre_install
-	lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
-	rm -f $lockfile
 	#Remove service
 	disable_user_service
 }

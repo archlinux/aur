@@ -6,13 +6,13 @@
 
 pkgname=xp-pen-tablet
 pkgver=4.0.15
-pkgrel=260422
-epoch=0
+_vendor_rel=260422
+pkgrel=${_vendor_rel}.1
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
 url='https://www.xp-pen.com/download/index.html'
 license=('custom')
-source=("XPPenLinux${pkgver}-${pkgrel}.deb::https://download01.xp-pen.com/file/2026/04/XPPenLinux${pkgver}-${pkgrel}.deb")
+source=("XPPenLinux${pkgver}-${_vendor_rel}.deb::https://download01.xp-pen.com/file/2026/04/XPPenLinux${pkgver}-${_vendor_rel}.deb")
 install=${pkgname}.install
 
 sha512sums=('ebaabc40973fa466b99af4e5b8158053bae07e13cdb009421df31b0b67c8479ad8c4dad0213061fa413f3c57011fd3940ef516d7bc0034796a152dc1c116c348')
@@ -54,6 +54,7 @@ Requires=xdg-desktop-autostart.target
 After=xdg-desktop-autostart.target
 
 [Service]
+Environment=QT_QPA_PLATFORM=xcb
 ExecStart=/usr/lib/pentablet/PenTablet.sh /mini
 
 [Install]
