@@ -1,0 +1,26 @@
+pkgbase = melearner-bin
+	pkgdesc = A native desktop app for learning from your local course library
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/WhiteHades/melearner
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = pipewire: audio backend
+	optdepends = pulseaudio: audio backend
+	optdepends = alsa-lib: audio backend
+	provides = melearner
+	conflicts = melearner
+	options = !strip
+	options = !debug
+	options = !lto
+	source_x86_64 = melearner-0.1.0.deb::https://github.com/WhiteHades/melearner/releases/download/v0.1.0/melearner_0.1.0_amd64.deb
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = melearner-0.1.0.deb::https://github.com/WhiteHades/melearner/releases/download/v0.1.0/melearner_0.1.0_arm64.deb
+	sha256sums_aarch64 = SKIP
+
+pkgname = melearner-bin
