@@ -4,7 +4,7 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=kbld
-pkgver=0.48.1
+pkgver=0.49.0
 pkgrel=1
 pkgdesc='kbld seamlessly incorporates image building and image pushing into your development and deployment workflows'
 url='https://carvel.dev/kbld'
@@ -13,7 +13,7 @@ license=(apache-2.0)
 install=''
 makedepends=(bash go)
 provides=(kbld)
-source=(kbld-0.48.1::https://github.com/carvel-dev/kbld/archive/v0.48.1.tar.gz)
+source=(kbld-0.49.0::https://github.com/carvel-dev/kbld/archive/v0.49.0.tar.gz)
 prepare () 
 { 
     set -eo pipefail;
@@ -39,4 +39,4 @@ package ()
     BIN=$pkgname;
     install -Dm755 $BIN -t "$pkgdir/usr/bin"
 }
-sha256sums=('8589e54dfe3c6c6b25067d8f0715efde0c290766e4d9bf5a114dd3d97f36319d')
+sha256sums=('5126535768a5e2f614f2d87fac0e9a0b1d8874ceaf09b3ddf074a270390028de')
