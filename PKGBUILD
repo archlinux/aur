@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal-based note-taking app built around the idea of buffers and blocks."
 
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('e4d252281a1fd67239950a40a90b07e506152464cd8377132b00ab78de1ea2e5')
-sha256sums_aarch64=('36865efd8122ce4e6649fc4a1a51870a989d1aa12bf108f5dbb546705e565562')
+sha256sums_x86_64=('74dfd5ef49b255ce29c4e015fd9d9a4f7c4ce1e3c4e51cba06bbb6ef1676b16b')
+sha256sums_aarch64=('ee6fc3394759dd5da5017424b8ecefbe0f8d60d8fbeba492dbad1abbae9c6989')
 
 case ${CARCH} in
   ${arch[0]})
