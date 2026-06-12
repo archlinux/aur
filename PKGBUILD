@@ -10,7 +10,7 @@ pkgname=ccrtp
 pkgver=2.1.2
 pkgrel=4
 pkgdesc="An implementation of RTP, the real-time transport protocol from the IETF"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://www.gnu.org/software/ccrtp/"
 license=('GPL' 'custom')
 depends=('ucommon>=6.2.2' 'libgcrypt')
