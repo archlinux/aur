@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://github.com/abdurehmanimran/pacx"
 license=('GPL-2.0')
 makedeps=('base-devel')
+depends=('pacman' 'aria2')
 provides=('pacx')
 source=(git+'https://github.com/abdurehmanimran/pacx.git')
 md5sums=('SKIP')
