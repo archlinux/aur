@@ -2,7 +2,7 @@
 
 pkgname=gh-aw-bin
 pkgdesc="GitHub Agentic Workflows"
-pkgver=0.79.4 # renovate: datasource=github-tags depName=github/gh-aw
+pkgver=0.79.6 # renovate: datasource=github-tags depName=github/gh-aw
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/github/gh-aw"
@@ -14,8 +14,8 @@ source_x86_64=("gh-aw::${_url_base}/linux-amd64")
 source_aarch64=("gh-aw::${_url_base}/linux-arm64")
 source=("LICENSE::https://raw.githubusercontent.com/github/gh-aw/v${pkgver}/LICENSE")
 sha256sums=('2510b446bc1f0cf9702453075d20cd88631e20e5642658edb7325d9c1eb534f7')
-sha256sums_x86_64=('90ed21b131d270cd5c9c2c79eb3ee07b5ae780e954431b8716384b8948abfe0f')
-sha256sums_aarch64=('90ed21b131d270cd5c9c2c79eb3ee07b5ae780e954431b8716384b8948abfe0f')
+sha256sums_x86_64=('77e69ddcda854560f827045ae59f87fdf6a07f07d5ab37a750317b3368eb6c2e')
+sha256sums_aarch64=('77e69ddcda854560f827045ae59f87fdf6a07f07d5ab37a750317b3368eb6c2e')
 noextract=('gh-aw')
 
 package() {
