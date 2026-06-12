@@ -1,7 +1,7 @@
 pkgbase = gopher64
 	pkgdesc = A Nintendo64 emulator
 	pkgver = 1.1.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gopher64/gopher64/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -43,12 +43,12 @@ pkgbase = gopher64
 	makedepends = vulkan-headers
 	makedepends = wayland-protocols
 	depends = fontconfig
-	depends = freetype2
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = libstdc++
 	depends = vulkan-icd-loader
+	depends = wayland
 	source = git+https://github.com/gopher64/gopher64.git#tag=v1.1.24
 	source = git+https://github.com/Themaister/parallel-rdp-standalone.git
 	source = git+https://github.com/RetroAchievements/rcheevos.git
