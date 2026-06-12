@@ -1,6 +1,6 @@
 # Maintainer: John Crenshaw <john@vintagetechie.com>
 pkgname=cosmic-ext-applet-tempest
-pkgver=2.9.2
+pkgver=2.9.4
 pkgrel=1
 pkgdesc="Weather applet for COSMIC Desktop with automatic location detection"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('wayland' 'libxkbcommon' 'openssl')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('f28a53f6ef81017c3199ee06aa7a2dc6a19c88d8407cd49124488f1c54272368')
+sha256sums=('0748e0765e2af76c295103f622ef8e3daf2d3c557f01dcdb09d81d410b81eb32')
 options=(!lto)
 
 _srcdir="$pkgname-v$pkgver"
