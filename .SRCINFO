@@ -1,6 +1,6 @@
 pkgbase = unbill-bin
 	pkgdesc = Desktop app for unbill
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/unbill-project/unbill
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = unbill-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/unbill-project/unbill/releases/download/v0.0.4/unbill-linux-x86_64.deb
+	source_x86_64 = https://github.com/unbill-project/unbill/releases/download/v0.0.5/unbill-linux-x86_64.deb
 	sha256sums_x86_64 = SKIP
 
 pkgname = unbill-bin
