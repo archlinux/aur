@@ -1,0 +1,7 @@
+pkgbase = plex-media-player-custom
+	pkgver = 0.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+
+pkgname = plex-media-player-custom
