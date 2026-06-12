@@ -12,6 +12,6 @@ pkgbase = labymodlauncher-bin
 	depends = nss
 	depends = alsa-lib
 	source = labymodlauncher-bin-3.0.9.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-3.0.9.AppImage
-	sha256sums = fdcfdd9f2566a7af099e2c7d263a96a760569ea88baf5f9e09831effef06de4a
+	sha256sums = add223b9ef53749af5668aee5a62e4d236fc51db4ea86b446ad54589b2622ff3
 
 pkgname = labymodlauncher-bin
