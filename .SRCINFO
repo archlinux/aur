@@ -1,6 +1,6 @@
 pkgbase = sdbusplus-git
 	pkgdesc = C++ bindings for systemd dbus APIs
-	pkgver = r905.a74f63b
+	pkgver = r911.1066415
 	pkgrel = 1
 	url = https://github.com/openbmc/sdbusplus
 	arch = x86_64

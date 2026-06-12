@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=sdbusplus-git
-pkgver=r905.a74f63b
+pkgver=r911.1066415
 pkgrel=1
 pkgdesc="C++ bindings for systemd dbus APIs"
 url="https://github.com/openbmc/sdbusplus"
@@ -49,7 +49,8 @@ pkgver() {
 }
 
 build() {
-    arch-meson ${pkgname} build
+    arch-meson ${pkgname} build \
+        -D examples=disabled
     meson compile -C build
 
     # Python tools
