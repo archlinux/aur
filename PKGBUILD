@@ -3,7 +3,7 @@
 
 pkgname=snipaste
 pkgver=2.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Snip & Paste!"
 arch=('x86_64')
 url="https://www.snipaste.com"
@@ -11,9 +11,13 @@ license=('custom')
 options=(!strip)
 depends=()
 makedepends=()
+source=(
+	"Snipaste"
+)
 source_x86_64=(
 	"$pkgname-$pkgver.AppImage::https://download.snipaste.com/archives/Snipaste-$pkgver-x86_64.AppImage"
 )
+sha256sums=('adfc8826b0c88f8bf98287f658cac544de54f79748aa23ade651b44ef8cabf44')
 sha256sums_x86_64=('e8046ff2045b668ba5fac6d773d83731313a4f00ba171147c6fa1a1385240334')
 
 noextract=("$pkgname-$pkgver.AppImage")
@@ -31,7 +35,7 @@ package() {
 	chmod 755 "$pkgdir/opt/$pkgname/bin/wlhelper"
 
 	install -d "$pkgdir"/usr/bin
-	ln -s "/opt/$pkgname/bin/Snipaste" "$pkgdir"/usr/bin/Snipaste
+	install -Dm755 ./Snipaste "$pkgdir"/usr/bin/Snipaste
 	ln -s "/opt/$pkgname/bin/wlhelper" "$pkgdir"/usr/bin/wlhelper
 
 	install -d "$pkgdir/usr/share/applications"

@@ -1,12 +1,14 @@
 pkgbase = snipaste
 	pkgdesc = Snip & Paste!
 	pkgver = 2.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.snipaste.com
 	arch = x86_64
 	license = custom
 	noextract = snipaste-2.11.3.AppImage
 	options = !strip
+	source = Snipaste
+	sha256sums = adfc8826b0c88f8bf98287f658cac544de54f79748aa23ade651b44ef8cabf44
 	source_x86_64 = snipaste-2.11.3.AppImage::https://download.snipaste.com/archives/Snipaste-2.11.3-x86_64.AppImage
 	sha256sums_x86_64 = e8046ff2045b668ba5fac6d773d83731313a4f00ba171147c6fa1a1385240334
 

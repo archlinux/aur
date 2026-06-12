@@ -1,0 +1,3 @@
+#!/bin/sh
+export APPIMAGE="/usr/bin/Snipaste"
+exec /opt/snipaste/bin/Snipaste "$@"
