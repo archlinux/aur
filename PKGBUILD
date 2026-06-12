@@ -30,7 +30,7 @@ else
 fi
 
 pkgname=${_pkgname}-utils-staging-git
-pkgver=2.4.2.r0.g6330a45b06
+pkgver=2.4.3.r0.g83020cf825
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
@@ -110,7 +110,6 @@ package() {
 
     # Remove uneeded files
     rm -r "${pkgdir}"/etc/init.d
-    rm -r "${pkgdir}"/etc/sudoers.d #???
     # We're experimenting with dracut in [extra], so start installing this.
     #rm -r "${pkgdir}"/usr/lib/dracut
     rm -r "${pkgdir}"/usr/lib/modules-load.d
