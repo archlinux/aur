@@ -1,6 +1,6 @@
 # Maintainer: Xavier Olive <git@xoolive.org>
 pkgname=fmradio-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="An FM radio demodulator and RDS decoder in pure Rust"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('fmradio')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/fmradio-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("${url}/releases/download/v${pkgver}/fmradio-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('285034c8c03d0095fb9343937348b90151ca00c012375808926c9884fc485b9a')
-sha256sums_aarch64=('8042b6f03c235da099702829d88f4151a90fc81b3c314c8e7d2ba735ed9ebb3d')
+sha256sums_x86_64=('2b8ba2ab63779a7e450a64e1d087c8e95f4d534966f6e6d92ea02539d6e1e6a3')
+sha256sums_aarch64=('cc3247b48746ac4ed73642cfee49176f51d90c304c8be55c369ace75a2d32fa8')
 
 package() {
     cd "fmradio-${CARCH}-unknown-linux-gnu"
