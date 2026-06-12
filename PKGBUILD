@@ -2,7 +2,7 @@
 
 pkgname=marktext-deb
 _pkgname=marktext
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc=" A simple and elegant open-source markdown editor that focused on speed and usability."
 arch=("x86_64")
@@ -13,7 +13,7 @@ conflicts=("$_pkgname")
 depends=('gtk3'  'libsecret'  'libxkbfile'  'libxss'  'nss')
 source=(
   "$url/releases/download/v$pkgver/$_pkgname-linux-$pkgver.deb")
-sha256sums=('60eb7f15920f8a6b3be0d3363c9447dafa7379935b1537ffe442e562083b70a3')
+sha256sums=('e0eaa1967d6cd82e6f96a44766886c79b122a961709b1f1d26c1276b046c84d1')
 
 build() {
   mkdir -p "${srcdir}/dpkgdir"
