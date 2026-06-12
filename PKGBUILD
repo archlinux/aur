@@ -35,7 +35,7 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   "config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${pkgver}-${pkgrel}/config.x86_64"   # the main kernel config file
-  "0001-cjktty.patch::https://github.com/Capricornus007/cjktty-patches/raw/master/v7.x/cjktty-7.0.8.patch"
+  "0001-cjktty.patch::https://raw.githubusercontent.com/bigshans/cjktty-patches/refs/heads/master/v7.x/cjktty-7.0.11.patch"
   "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
 validpgpkeys=(
