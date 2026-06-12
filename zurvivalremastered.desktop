@@ -1,7 +1,8 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Type=Application
 Name=Zurvival Remastered
-Comment=Game about Zombie Apocalypse
+Comment=Game about a survival in zombie apocalypse
 Exec=/usr/bin/zurvivalremastered
 Icon=zurvivalremastered
 Terminal=false
