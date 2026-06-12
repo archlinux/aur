@@ -36,7 +36,7 @@ package() {
 
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/ansilove/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/ansilove/README.md"
-  install -Dm644 "Changelog" "${pkgdir}/usr/share/doc/ansilove/Changelog"
+  install -Dm644 "ChangeLog" "${pkgdir}/usr/share/doc/ansilove/Changelog"
   cp -r examples "${pkgdir}/usr/share/doc/ansilove/examples/"
 }
 
