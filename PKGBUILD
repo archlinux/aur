@@ -145,7 +145,7 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=6.18
-_minor=32
+_minor=35
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -156,7 +156,7 @@ _stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srctag=cachyos-${_major}.${_minor}-${_tagrel}
 _srcname=${_srctag}
-pkgdesc='Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service'
+pkgdesc='Linux EEVDF + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service'
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
@@ -186,12 +186,17 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=595.71.05
+_nv_ver=610.43.02
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
-    "https://github.com/CachyOS/linux/releases/download/${_srctag}/${_srctag}.tar.gz"
-    "config")
+    "https://github.com/CachyOS/linux/releases/download/${_srctag}/${_srctag}.tar.gz"{,.asc}
+    "config"
+)
+validpgpkeys=(
+  E18447AC260021D31F3FF6C4C8A2A4774B8B63C4  # Eric Naim <dnaim@cachyos.org>
+  E8B9AA39F054E30E8290D492C3C4820857F654FE  # Peter Jung <admin@ptr1337.dev>
+)
 
 # LLVM makedepends
 if _is_lto_kernel; then
@@ -218,8 +223,7 @@ fi
 
 
 if [ "$_build_nvidia_open" = "yes" ]; then
-    source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
-             "${_patchsource}/misc/nvidia/0002-Add-IBT-support.patch")
+    source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz")
 fi
 
 if [ "$_build_r8125" = "yes" ]; then
@@ -746,5 +750,6 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('47b923f0fe7a2c4a580828f12cf1dcca366322112fe8ea1d4e218d89212c2deab398ee3bd454659e5065fccf44537126ddb0d40094dc7b06358f101f097aa110'
+b2sums=('36fdcbeba2f6dd10bbf33837c9962851d057cdadd667894cfd7ca53bce2746add96aa8e7c5ce46880df34bedcf52e15ee8522ff0b4085caa23b7f1a6fa1a897a'
+        'SKIP'
         '81fafd3adcaf3b690d8d4791693e68c7ae921d103ebfd70e8d0ae15cd05ecde5e6672ae43c3a7875686d883c1f5b82d2c8b37b40aee8dcb0563913f9dd6469b6')
