@@ -2,8 +2,8 @@
 
 pkgname=viewmailattachments
 # _rev manually incremented, based on https://github.com/akkana/scripts/commits/master/viewmailattachments.py
-_rev=13
-_git_SHA=daa54bdbde809ed3ed0a423b50901b8df181a8a3
+_rev=14
+_git_SHA=e9608e8d96417c8e163d3a688edbf47899c211fd
 pkgver=r${_rev}.$(grep -o '^.\{7\}' <<<${_git_SHA})
 pkgrel=1
 pkgdesc='Show HTML messages in an external browser, including embedded images'
@@ -14,7 +14,7 @@ depends=('python')
 
 source=(${pkgname}.py-${pkgver}::"https://raw.githubusercontent.com/akkana/scripts/${_git_SHA}/${pkgname}.py"
         ${pkgname}_no_private_tab_firefox.r11.patch)
-sha256sums=('2be42094316e866d1b6a3aff2f5c1e8a48cff9f9b36b873b993027698f9c94ee'
+sha256sums=('6982ffb45da1ae69a6bdea73078b94af9702f4fc7950d33bcf193fceb6287132'
             'a9b9be2d477e94d6592d2a5245adc1353a44713dd394474e2965478d817f8155')
 
 prepare() {
