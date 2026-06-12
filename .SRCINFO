@@ -1,5 +1,6 @@
-﻿pkgbase = codecontext-ai
+pkgbase = codecontext-ai
 	pkgdesc = AI-powered codebase analyzer — scans project structure, builds dependency graphs, generates LLM-optimized prompts with minification, skeleton mode, and JSON patching
+	
 	
 	pkgver = 1.24.2
 	pkgrel = 1
