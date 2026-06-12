@@ -2,17 +2,20 @@
 
 pkgname=paseo
 pkgver=0.1.95
-pkgrel=1
+pkgrel=2
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (built from source, runs on system Electron)"
 arch=('x86_64')
 url="https://paseo.sh"
 _github_url="https://github.com/getpaseo/paseo"
+# Keep in sync with packages/desktop/package.json devDependencies.electron —
+# prepare() fails the build when the majors drift apart.
+_electron_pkg=electron41
 license=('AGPL-3.0-or-later')
-depends=('electron41' 'gcc-libs' 'glibc' 'hicolor-icon-theme')
+depends=("${_electron_pkg}" 'gcc-libs' 'glibc' 'hicolor-icon-theme')
 makedepends=('nodejs' 'npm' 'python' 'git')
 optdepends=('git: agent worktree management')
 conflicts=('paseo-bin' 'paseo-desktop-bin' 'paseo-appimage')
-options=('!strip' '!debug')
+options=('!debug')
 install=paseo.install
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_github_url}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -32,6 +35,17 @@ sha256sums=('d32caf9b1495757e422d234fccb5a3c10f96170f2d2f0a5198b65f13361fb007'
 prepare() {
     cd "${pkgname}-${pkgver}"
 
+    # Refuse to build against the wrong Electron major: the app would compile
+    # fine but hit runtime API drift. Bump _electron_pkg= (and pkgrel) when
+    # upstream moves on.
+    local _upstream_electron
+    _upstream_electron="$(node -p "require('./packages/desktop/package.json').devDependencies.electron.match(/\d+/)[0]")"
+    if [[ "electron${_upstream_electron}" != "${_electron_pkg}" ]]; then
+        printf 'ERROR: upstream now pins electron %s but this package uses %s; update _electron_pkg= in the PKGBUILD\n' \
+            "${_upstream_electron}" "${_electron_pkg}" >&2
+        return 1
+    fi
+
     # Arch's system electron reports app.isPackaged=true, so the app takes
     # its packaged code paths; point the electron-builder resource lookups
     # (process.resourcesPath / app.asar*) at /usr/lib/paseo instead, and
@@ -41,7 +55,8 @@ prepare() {
     # Keep npm state inside $srcdir; skip lifecycle scripts (no electron /
     # onnxruntime binary downloads — mirrors upstream nix/desktop-package.nix).
     export npm_config_cache="${srcdir}/npm-cache"
-    npm ci --ignore-scripts
+    export npm_config_update_notifier=false
+    npm ci --ignore-scripts --no-audit --no-fund
 
     # Root postinstall applies patches/ via patch-package.
     npm run postinstall
@@ -51,6 +66,7 @@ build() {
     cd "${pkgname}-${pkgver}"
 
     export npm_config_cache="${srcdir}/npm-cache"
+    export npm_config_update_notifier=false
     export EXPO_NO_TELEMETRY=1
     export CI=1
 
@@ -101,7 +117,10 @@ package() {
         cp -a "$f" "${_libdir}/$f"
     done
 
-    install -Dm755 "${srcdir}/paseo.sh" "${pkgdir}/usr/bin/paseo"
+    # Launcher tracks _electron_pkg so an Electron bump is a one-line change.
+    install -d "${pkgdir}/usr/bin"
+    sed "s/electron41/${_electron_pkg}/g" "${srcdir}/paseo.sh" > "${pkgdir}/usr/bin/paseo"
+    chmod 755 "${pkgdir}/usr/bin/paseo"
 
     install -Dm644 "${srcdir}/paseo.desktop" \
         "${pkgdir}/usr/share/applications/paseo.desktop"
@@ -115,4 +134,31 @@ package() {
         "${pkgdir}/usr/share/icons/hicolor/512x512/apps/paseo.png"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # Guard against trace regressions: every path here is load-bearing for
+    # the CLI, the daemon spawn chain, or the renderer. A miss fails the
+    # build instead of surfacing as a runtime error after install.
+    local _required=(
+        usr/bin/paseo
+        usr/lib/paseo/package.json
+        usr/lib/paseo/packages/desktop/dist/main.js
+        usr/lib/paseo/packages/desktop/dist/preload.js
+        usr/lib/paseo/packages/desktop/dist/daemon/node-entrypoint-runner.js
+        usr/lib/paseo/packages/desktop/package.json
+        usr/lib/paseo/packages/cli/dist/index.js
+        usr/lib/paseo/packages/cli/dist/run.js
+        usr/lib/paseo/packages/server/dist/scripts/supervisor-entrypoint.js
+        usr/lib/paseo/node_modules/@getpaseo/cli
+        usr/lib/paseo/node_modules/@getpaseo/server
+        usr/lib/paseo/node_modules/node-pty/build/Release/pty.node
+        usr/lib/paseo/packages/app/dist/index.html
+        usr/lib/paseo/skills
+    )
+    local _f
+    for _f in "${_required[@]}"; do
+        if [[ ! -e "${pkgdir}/${_f}" ]]; then
+            printf 'ERROR: runtime closure check failed: missing %s\n' "${_f}" >&2
+            return 1
+        fi
+    done
 }
