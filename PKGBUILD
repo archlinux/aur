@@ -20,7 +20,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 
 license=('GPL-3.0')
 
-conflicts=("${_pkgname}")
+conflicts=("${_pkgbase}")
 depends=('glibc' 'libgcc')
 
 source=("COMPLETIONS-${pkgver}.bash::${_urlraw}/completions/bash/${_appname}.bash"
