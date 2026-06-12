@@ -2,7 +2,7 @@
 # Contributor: David Parrish <daveparrish@tutanota.com>
 
 pkgname='lnd'
-pkgver=0.20.1_beta
+pkgver=0.21.0_beta
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
@@ -14,7 +14,7 @@ makedepends=('go')
 provides=('lnd' 'lncli')
 conflicts=('lnd-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lightningnetwork/lnd/archive/v${_pkgver}.tar.gz")
-sha512sums=('b617e42ee645796e00698b672231d6bb862c5e88f6cab06e9475b7e0585e8c92f5c2e8458aff7e9104b91a6f5ef4493ac62a778fc738035997c91537ab1c6b37')
+sha512sums=('445ae2d7ca97071b134f2fbc937c9545b4e006d85ab7e649bae44da467eb24e2c32af79f7f09920650eddd492d12050a983ca0b9f71238488e4039cea44a5341')
 
 prepare() {
   cd "$pkgname-$_pkgver"
