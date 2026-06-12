@@ -1,6 +1,6 @@
 # Maintainer: Patrick Li <aur@patrickli.one>
 pkgname=unbill-nightly-bin
-pkgver=nightly.20260612.005924
+pkgver=nightly.20260612.024929
 pkgrel=1
 pkgdesc="Desktop app for unbill (nightly)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('unbill-daemon-nightly' 'cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'gli
 options=('!strip' '!debug')
 provides=('unbill')
 conflicts=('unbill-bin')
-_tag=nightly-20260612-005924
+_tag=nightly-20260612-024929
 source_x86_64=("https://github.com/unbill-project/unbill/releases/download/${_tag}/unbill-linux-x86_64.deb")
 sha256sums_x86_64=('SKIP')
 
