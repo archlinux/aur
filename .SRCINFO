@@ -1,7 +1,7 @@
 pkgbase = cmake-init
 	pkgdesc = The missing CMake project initializer
 	pkgver = 0.41.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/friendlyanon/cmake-init
 	arch = any
 	license = GPL3
