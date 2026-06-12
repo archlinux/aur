@@ -15,6 +15,7 @@ pkgbase = kcolorscheme-git
 	depends = kguiaddons-git
 	depends = ki18n-git
 	conflicts = kcolorscheme
+	provides = kcolorsheme
 	source = git+https://invent.kde.org/frameworks/kcolorscheme.git
 	sha256sums = SKIP
 
