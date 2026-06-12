@@ -1,7 +1,7 @@
 pkgbase = ggml-cuda
 	pkgdesc = CUDA backend for ggml
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = ggml-cuda
 	makedepends = ninja
 	makedepends = git
 	makedepends = cudnn
-	makedepends = nccl
 	depends = ggml=0.15.1
 	depends = nvidia-utils
 	depends = cuda
+	depends = nccl
 	depends = glibc
 	depends = libstdc++
 	depends = libgcc
