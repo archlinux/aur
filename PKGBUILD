@@ -6,20 +6,15 @@ pkgrel=1
 pkgdesc="A cross-platform Bible study app using Flutter and the 1769 King James Version"
 arch=('x86_64')
 url="https://github.com/toazd/selah"
-license=('unlicense')
+license=('Unlicense')
 depends=('gtk3' 'glib2' 'gcc-libs' 'glibc')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${pkgname}-${pkgver}.pkg.tar.zst::https://github.com/toazd/selah/releases/download/v0.7.6-build.103/selah-0.7.6-1-x86_64.pkg.tar.zst")
-sha256sums=('020bbf70258515f03c485d0f494f8a8e903a3220243c85bc809f0c2b15b82c64')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("${pkgname}-${pkgver}.deb::https://github.com/toazd/selah/releases/download/v0.7.6-build.103/selah_0.7.6_amd64.deb")
+sha256sums=('57f6f8a1834dc8b62598d4847660cd7b2366870f6144a540514b4612a5f313b1')
 
 package() {
-    # Extract package hierarchy directly to destination root
-    if [ -d "${srcdir}/usr" ]; then
-        cp -r "${srcdir}/usr" "${pkgdir}/"
-    fi
+    cd "$pkgdir"
 
-    if [ -d "${srcdir}/opt" ]; then
-        cp -r "${srcdir}/opt" "${pkgdir}/"
-    fi
+    ar p "${srcdir}/${pkgname}-${pkgver}.deb" data.tar.gz | bsdtar -xzf -
 }
