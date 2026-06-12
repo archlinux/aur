@@ -1,6 +1,6 @@
 pkgbase = ship162-bin
 	pkgdesc = Decode and demodulate AIS data in Rust
-	pkgver = 0.1.3
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/xoolive/ship162
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = ship162-bin
 	license = MIT
 	provides = ship162
 	conflicts = ship162
-	source_x86_64 = https://github.com/xoolive/ship162/releases/download/v0.1.3/ship162-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 2e08b587daa40aed36ba742446fab41b3fe8c1230c17c6eeba36ef43aaf5d805
-	source_aarch64 = https://github.com/xoolive/ship162/releases/download/v0.1.3/ship162-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 03a24a3ac71bb31ef317a02ba0c5acfe3f6b2e4333293bc8f6b3e1982bab4d0e
+	source_x86_64 = https://github.com/xoolive/ship162/releases/download/v0.1.5/ship162-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 40691937754c84e61fa76fef45c5468276baf1cae25dfb5b295dad0bbd22ab2c
+	source_aarch64 = https://github.com/xoolive/ship162/releases/download/v0.1.5/ship162-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 870ce7184848b441b4dcb08a056a3e2a22c40061bbf59e4ca158dc6b50d870d6
 
 pkgname = ship162-bin
