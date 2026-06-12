@@ -1,7 +1,7 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=howdy-next-git
-pkgver=3.0.1.r190.g3b06be9
+pkgver=3.1.0.r248.g84c37f6
 pkgrel=1
 pkgdesc="A modernized fork of original Howdy, Facial recognition authentication for Linux"
 arch=('x86_64')
