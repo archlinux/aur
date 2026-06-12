@@ -2,7 +2,7 @@
 
 pkgname=edirstat-git
 _pkgname=edirstat
-pkgver=1.1.0.r23.g33f7d83
+pkgver=1.1.0.r100.g9655c52
 pkgrel=1
 pkgdesc="A fast, cross-platform disk usage analyzer with work-stealing multithreading, zero-copy snapshots, deduplication, and an interactive treemap GUI. (Development Git Version)"
 arch=('x86_64')
@@ -10,7 +10,23 @@ url="https://github.com/Xangelix/edirstat"
 license=('MIT')
 provides=('edirstat')
 conflicts=('edirstat')
-makedepends=('cargo-nightly' 'rust-nightly' 'git')
+
+depends=('glibc' 'gcc-libs' 'libxkbcommon' 'fontconfig' 'hicolor-icon-theme')
+
+optdepends=(
+  'wayland: For running natively on Wayland compositors'
+  'libx11: For running on traditional X11/Xorg desktops'
+)
+
+# 'cmake' is required by aws-lc-sys to compile its underlying C/Assembly modules
+makedepends=('cargo-nightly' 'rust-nightly' 'git' 'cmake')
+
+# Disables makepkg's system-level C-LTO (which injects -flto into CFLAGS). 
+# This prevents compiler mismatches (e.g. GCC GIMPLE vs LLVM Bitcode) when linking 
+# compiled C dependencies like blake3 and aws-lc-sys. 
+# This option does NOT affect the Rust-level ThinLTO defined in Cargo.toml.
+options=(!lto)
+
 source=(
   "${_pkgname}::git+${url}.git"
   "${_pkgname}.desktop"
@@ -20,46 +36,56 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  # Generates a version string based on tags, commits since tag, and current hash.
-  # Strips any leading 'v' to match Arch versioning standards.
+  # Generates a standard Arch VCS version string based on tags and commit distance
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$srcdir/$_pkgname"
+  # Dynamically queries the host system's target tuple to fetch exactly what is required,
+  # keeping the build locked to the lockfile's definitions.
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
   cd "$srcdir/$_pkgname"
+  # Explicitly defining the target directory prevents Cargo from utilizing any
+  # globally configured CARGO_TARGET_DIR environment overrides.
+  export CARGO_TARGET_DIR=target
   cargo build --release --frozen
 }
 
 check() {
   cd "$srcdir/$_pkgname"
-  cargo test --release --locked
+  export CARGO_TARGET_DIR=target
+  # Running tests without --release ensures assertions, integer overflow checks, 
+  # and debug_assert!() macro evaluations are fully active during the verification.
+  cargo test --frozen
 }
 
 package() {
   cd "$srcdir/$_pkgname"
 
-  # Install the binary
+  # Install the compiled binary
   install -Dm 755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
 
-  # Install the documentation
+  # Install the license file
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+
+  # Install documentation
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 
-  # Install the raster PNG icons for standard desktop sizes
+  # Install raster PNG icons across standard sizes for fallback compatibility
   local size
   for size in 16 32 48 64 128 256 512; do
     install -Dm 644 "assets/img/icon_${size}x.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$_pkgname.png"
   done
 
-  # Install the scalable SVG vector icon as a high-DPI fallback
+  # Install the scalable SVG icon as a modern High-DPI/scalable option
   install -Dm 644 "assets/img/icon-transparent.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 
-  # Install the .desktop file
+  # Install the standard desktop launcher
   install -Dm 644 "$srcdir/$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 }
