@@ -3,11 +3,11 @@
 # Author: Vladimir Yakovlev <desktop-app@protonmail.ch>
 
 _binaryname=electron-mail
-_electronversion=40
+_electronversion=42
 
 pkgname=electronmail-bin
-pkgver=5.3.6
-pkgrel=5
+pkgver=5.3.7
+pkgrel=1
 pkgdesc="Unofficial ProtonMail Desktop App"
 arch=('x86_64')
 url="https://github.com/vladimiry/ElectronMail"
@@ -23,7 +23,7 @@ source=("https://github.com/vladimiry/ElectronMail/releases/download/v${pkgver}/
         "${pkgname}.install"
         "${pkgname}.sh"
         "LICENSE")
-sha256sums=('7577977173316d9afcd38e0262d65a572e6fa2c85fffd9b8f096bcc8479fd588'
+sha256sums=('e1778b1980ecb6a8bcd18ff234f08cfdc2417c4eb37b0af419ee2ffc3f1aa8df'
             'a008441fe5eb1095cd657f5eca4ae517c48493a7389e3183131d5f299458843b'
             'aa18e228207e5c6a474fe46de191fceff349283d557174e57ccb451d1318851f'
             '1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68')
