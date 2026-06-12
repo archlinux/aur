@@ -210,3 +210,12 @@ Expected result:
 ```text
 HTTP/1.1 200 OK
 ```
+
+## ArchWiki
+
+A general ArchWiki page for Tegola is available at:
+
+```text
+https://wiki.archlinux.org/title/Tegola
+```
+
