@@ -88,10 +88,12 @@ source=(
   $_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
   fix-wasm32-wasi-target.patch
   0023-bgo-969412-glibc-2.43.patch
+  fix-webrender-cbindgen.patch
 )
 sha256sums=('155ade042f703cedf1e1ff0ec194032755cdee055d3baa81115e676d4be37b16'
             'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124'
-            '25e8f2e706aa837f5b6e3c003a6c7f42b07f0a7366d10f9e0d5ad38053767aae')
+            '25e8f2e706aa837f5b6e3c003a6c7f42b07f0a7366d10f9e0d5ad38053767aae'
+            '9a8caaa44784ee7e487cb3dc2d5cc53c0ee49958d27c22baf93c509d9209c18d')
 
 prepare() {
   mkdir -p mozbuild
@@ -99,6 +101,8 @@ prepare() {
 
   patch -Nsp1 -i "$srcdir"/fix-wasm32-wasi-target.patch
   patch -Nsp1 -i "$srcdir"/0023-bgo-969412-glibc-2.43.patch
+  patch -Nsp1 -i "$srcdir"/fix-webrender-cbindgen.patch
+
   sed -i -e 's/\("files":{\)[^}]*/\1/' third_party/rust/glslopt/.cargo-checksum.json
 
   cd browser/$_pkgname
