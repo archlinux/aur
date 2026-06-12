@@ -1,7 +1,7 @@
 # Maintainer:  Jason Kercher <jkercher 43 at gmail dot com>
 
 pkgname=linuxcnc-git
-pkgver=2.9.8.r4741.g963f2f8734
+pkgver=2.9.8.r4743.g5daf12cf98
 pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=($CARCH)
@@ -38,8 +38,6 @@ depends=(
   libxinerama
   libxmu
   libxss
-  #   readline
-  #   editline
   systemd-libs
   pango
   python
@@ -52,20 +50,13 @@ depends=(
   python-opengl
   python-numpy
   python-matplotlib
-  #   python-poppler-qt5
-  #   python-psycopg
-  #   python-pillow
   python-pyqt5
   python-pyserial
   python-pyzmq
   python-xlib
-  #   python-validate-pyproject
   tk
   tcl
   zlib
-  #   gtksourceview2
-  #   python-pyodbc
-  # python-espeak
 )
 makedepends=(
   asciidoc
@@ -91,7 +82,6 @@ makedepends=(
   #AUR
   # bwidget
   python-yapps2
-  #   tclx
   linkchecker
   termcap
 )
