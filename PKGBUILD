@@ -9,7 +9,7 @@ pkgdesc="Open source 3D universe simulator for desktop and VR with support for m
 arch=(x86_64)
 url="https://gaiasky.space"
 license=('MPL')
-depends=('java-runtime>=25' 'xorg-xrandr')
+depends=('java-runtime>=26' 'xorg-xrandr')
 changelog=releasenotes.txt
 source=("https://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/${_versionstr//_/-}/$pkgname-${_versionstr//_/-}.tar.gz")
 noextract=()
