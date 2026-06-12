@@ -1,7 +1,7 @@
 # Maintainer: Dylan Delgado <dylan1496@live.com>
 # Contributor: ml <ml@visu.li>
 pkgname=spruce
-pkgver=1.31.0
+pkgver=1.35.7
 pkgrel=1
 pkgdesc='General purpose YAML/JSON merging tool'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('39278f423c979688b14817fe48fc80fb7bd828fd864ded50edede302342aab60')
+sha256sums=('bb4c27d680d16c8eb2066cd8a7f0d264414914319037086485fc8c15fe2007f3')
 
 build() {
   cd "$pkgname-$pkgver"
