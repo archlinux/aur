@@ -3,13 +3,15 @@ pkgname=bb_launcher-bin
 pkgver=15.07
 _pkgname=bb_launcher
 _pkgid=BB_Launcher
-pkgrel=1
+_pkgdate=2026-06-09
+_pkgcommit=aebcb7a
+pkgrel=2
 pkgdesc="shadPS4 Launcher for Bloodborne (bin version)"
 arch=('x86_64')
 license=('GPL-3.0-only')
 url="https://github.com/rainmakerv3/${_pkgname}"
 depends=(
-        'glibc'
+        'glibc' 
         'libgcc' 
         'libgpg-error' 
         'gmp' 
@@ -25,15 +27,11 @@ conflicts=("${_pkgname}")
 options=('!strip' '!zipman' '!emptydirs' '!debug')
 _appimage=${_pkgid}-qt.AppImage
 noextract=("${_appimage}")
-_url=$(curl -s "https://api.github.com/repos/rainmakerv3/BB_Launcher/releases/latest" | \
-        awk -F'"' '/browser_download_url.*BB_Launcher-linux-qt-downloader.*zip/ {print $4}')
-_zip=${_pkgid}-${pkgver}.zip
-source=(${_pkgid}-${pkgver}::${_url})
-sha256sums=('5b9d1afad3f5b09116cd7858c5f2b0ec701e5905d30e3200364b46ab6904c4f2')
+_zip=${_pkgid}-linux-qt-downloader-${_pkgdate}-${_pkgcommit}.zip
+source=(https://github.com/rainmakerv3/BB_Launcher/releases/download/Release${pkgver}/${_zip})
+sha256sums=('5ea39bd1cf2fbe2b01bbbf6132a61eca250bb15da4fb944e12e5c1c4e90276f8')
 
 prepare() {
-    msg2 "Downloading the zip..."
-    curl -L "$_url" -o "${srcdir}/${_zip}"
     unzip -o "${_zip}"
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract

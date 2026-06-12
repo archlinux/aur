@@ -1,7 +1,7 @@
 pkgbase = bb_launcher-bin
 	pkgdesc = shadPS4 Launcher for Bloodborne (bin version)
 	pkgver = 15.07
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rainmakerv3/bb_launcher
 	arch = x86_64
 	license = GPL-3.0-only
@@ -23,7 +23,7 @@ pkgbase = bb_launcher-bin
 	options = !zipman
 	options = !emptydirs
 	options = !debug
-	source = BB_Launcher-15.07::https://github.com/rainmakerv3/BB_Launcher/releases/download/Pre-release-BBLauncher-2026-06-09-aebcb7a/BB_Launcher-linux-qt-downloader-2026-06-09-aebcb7a.zip
-	sha256sums = 5b9d1afad3f5b09116cd7858c5f2b0ec701e5905d30e3200364b46ab6904c4f2
+	source = https://github.com/rainmakerv3/BB_Launcher/releases/download/Release15.07/BB_Launcher-linux-qt-downloader-2026-06-09-aebcb7a.zip
+	sha256sums = 5ea39bd1cf2fbe2b01bbbf6132a61eca250bb15da4fb944e12e5c1c4e90276f8
 
 pkgname = bb_launcher-bin
