@@ -2,7 +2,7 @@
 
 pkgname=fauxdacious-git
 _pkgname=${pkgname%-git}
-pkgver=4.6.r709
+pkgver=4.6.r722
 pkgrel=1
 pkgdesc="Audacious Audioplayer fork, adds DVD & video play, and much more (git version)"
 arch=('x86_64')
@@ -49,7 +49,6 @@ package() {
 	
 	cd "${pkgname}"
 	make DESTDIR=${pkgdir} install
-	install -Dm644 ./contrib/fauxdacious.appdata.xml -t "$pkgdir/usr/share/metainfo"
 	install -Dm644 ./COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
 
 	msg "NOTE: Do not forget to also install 'fauxdacious-plugins[-git]', else fauxdacious will not work!"
