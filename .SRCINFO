@@ -1,7 +1,7 @@
 pkgbase = thorium-browser-updated-bin
 	pkgdesc = Chromium fork focused on high performance and security, packaged from updated binaries
-	pkgver = 148.0.7778.215
-	pkgrel = 10
+	pkgver = 149.0.7827.114
+	pkgrel = 1
 	url = https://github.com/brauliobo/thorium
 	install = thorium-browser-updated-bin.install
 	arch = x86_64
@@ -27,11 +27,11 @@ pkgbase = thorium-browser-updated-bin
 	conflicts = thorium-browser
 	conflicts = thorium-browser-bin
 	conflicts = thorium-browser-updated
-	noextract = thorium-browser-updated-bin-148.0.7778.215-10-x86_64.pkg.tar.zst
+	noextract = thorium-browser-updated-bin-149.0.7827.114-1-x86_64.pkg.tar.zst
 	options = !emptydirs
 	options = !strip
 	options = !debug
-	source = https://github.com/brauliobo/thorium/releases/download/M148.0.7778.215-updated/thorium-browser-updated-bin-148.0.7778.215-10-x86_64.pkg.tar.zst
-	sha256sums = 1cb9d4ba285043e85a434130124eeb3025197c2d18676510d48f5eaad749c058
+	source = https://github.com/brauliobo/thorium/releases/download/M149.0.7827.114-updated/thorium-browser-updated-bin-149.0.7827.114-1-x86_64.pkg.tar.zst
+	sha256sums = 2f68b4fc6d5ad40cd86574e9ab0c2ead4e10ea7c98aef5a947ed601fe0d0c798
 
 pkgname = thorium-browser-updated-bin
