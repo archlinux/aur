@@ -1,7 +1,7 @@
 pkgbase = prismterminal
 	pkgdesc = 棱镜终端 -- Meowpad 下一代配置器
 	pkgver = 1.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kagamistudio.com/
 	install = udev.install
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
 pkgname="prismterminal"
 pkgver=1.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="棱镜终端 -- Meowpad 下一代配置器"
 arch=('x86_64')
 license=('unknown')
