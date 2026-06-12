@@ -1,6 +1,6 @@
 # Maintainer: Patrick Li <aur@patrickli.one>
 pkgname=unbill-daemon-bin
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Background daemon for unbill"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/unbill-project/unbill"
 license=('MIT' 'Apache-2.0')
 provides=('unbill-daemon')
 conflicts=('unbill-daemon')
-_tag=v0.0.4
+_tag=v0.0.5
 source_x86_64=("unbill-daemon::https://github.com/unbill-project/unbill/releases/download/${_tag}/unbill-daemon-linux-x86_64")
 sha256sums_x86_64=('SKIP')
 
