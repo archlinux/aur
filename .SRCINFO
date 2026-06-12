@@ -1,6 +1,6 @@
 pkgbase = ttmt-beta
 	pkgdesc = ToonTown MultiTool BETA, pre-release smoke-test channel. Expect bugs. For stable use, install toontown-multitool instead.
-	pkgver = 0.7.0alpha.3
+	pkgver = 0.7.0alpha.4
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/flossbud/ToonTown-MultiTool
@@ -21,7 +21,7 @@ pkgbase = ttmt-beta
 	depends = python-psutil
 	depends = python-yaml
 	depends = xdotool
-	source = git+https://github.com/flossbud/ToonTown-MultiTool.git#tag=v0.7.0-alpha.3
+	source = git+https://github.com/flossbud/ToonTown-MultiTool.git#tag=v0.7.0-alpha.4
 	sha256sums = SKIP
 
 pkgname = ttmt-beta
