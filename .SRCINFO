@@ -1,6 +1,6 @@
 pkgbase = csharp-ls
 	pkgdesc = Roslyn-based LSP language server for C#
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/razzmatazz/csharp-language-server
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = csharp-ls
 	makedepends = dotnet-targeting-pack-10.0
 	depends = dotnet-sdk-10.0
 	depends = dotnet-runtime-10.0
-	source = csharp-ls-0.24.0.tar.gz::https://github.com/razzmatazz/csharp-language-server/archive/refs/tags/0.24.0.tar.gz
-	sha256sums = 66d8ddcc7f19368fe35ff768b4dcf7ff972e45fe7908bb2352f7bca80385aa19
+	source = csharp-ls-0.25.0.tar.gz::https://github.com/razzmatazz/csharp-language-server/archive/refs/tags/0.25.0.tar.gz
+	sha256sums = 9c9b84ae2917ea8177834d0192039ddf2e2f28ef716cd9b3e9b77938bf4e8720
 
 pkgname = csharp-ls

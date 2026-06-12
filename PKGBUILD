@@ -1,6 +1,6 @@
 _dotnet_version=10.0
 pkgname="csharp-ls"
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Roslyn-based LSP language server for C#"
 arch=("x86_64")
@@ -9,13 +9,14 @@ license=("MIT")
 depends=("dotnet-sdk-$_dotnet_version" "dotnet-runtime-$_dotnet_version")
 makedepends=("dotnet-targeting-pack-$_dotnet_version")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('66d8ddcc7f19368fe35ff768b4dcf7ff972e45fe7908bb2352f7bca80385aa19')
+sha256sums=('9c9b84ae2917ea8177834d0192039ddf2e2f28ef716cd9b3e9b77938bf4e8720')
 
 prepare() {
     dotnet --info | grep RID | cut -d : -f 2 | sed 's/arch/linux/' | xargs > _runtime
     local _runtime
     _runtime="$(< _runtime)"
     cd "$srcdir/csharp-language-server-$pkgver"
+    sed -i '/<MSBuildTreatWarningsAsErrors>/ s/true/false/' ./src/CSharpLanguageServer/CSharpLanguageServer.fsproj
 
     # Most of the time our dotnet version is lower than global.json
     rm global.json
@@ -32,8 +33,7 @@ build(){
         --self-contained false \
         --no-restore \
         --framework "net$_dotnet_version" \
-        --runtime "$_runtime" \
-        -p:NoWarn=FS3397
+        --runtime "$_runtime"
 }
 package(){
     local _runtime
