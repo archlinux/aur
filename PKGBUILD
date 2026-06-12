@@ -1,7 +1,7 @@
 # Maintainers: arraen, thadah
 # Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 pkgname="synergy3-bin"
-pkgver="3.6.2"
+pkgver="3.6.3"
 pkgrel="1"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
