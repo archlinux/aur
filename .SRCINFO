@@ -1,6 +1,6 @@
 pkgbase = humen-mcp-git
 	pkgdesc = Human-in-the-loop MCP server
-	pkgver = 0.1.9.r48.g9b84f18
+	pkgver = 0.1.10.r49.g5b2ec89
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/humen-mcp
 	install = humen-mcp.install
