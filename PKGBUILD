@@ -52,9 +52,12 @@ package() {
   install -Dm755 usr/lib/libbass.so "${pkgdir}/opt/ardali-webmedia/lib/libbass.so"
   cp -a usr/lib/libprojectM*.so* "${pkgdir}/opt/ardali-webmedia/lib/"
 
-  # 3. Copy visualizer resources
+  # 3. Copy visualizer resources and binary
   if [ -d "usr/lib/ardali-webmedia" ]; then
     cp -r usr/lib/ardali-webmedia/* "${pkgdir}/opt/ardali-webmedia/"
+  fi
+  if [ -d "usr/lib/ArDali WebMedia" ]; then
+    cp -r "usr/lib/ArDali WebMedia"/* "${pkgdir}/opt/ardali-webmedia/"
   fi
 
   # 4. Create a wrapper script in /usr/bin to set LD_LIBRARY_PATH
