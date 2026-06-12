@@ -1,6 +1,6 @@
 pkgbase = dearsql-bin
 	pkgdesc = A simple, cross-platform database client built with Dear ImGui
-	pkgver = 0.4.9
+	pkgver = 0.4.10
 	pkgrel = 1
 	url = https://dearsql.dev
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = dearsql-bin
 	provides = dearsql
 	conflicts = dearsql
 	options = !strip
-	source = DearSQL-0.4.9-x86_64.AppImage::https://github.com/dunkbing/dearsql/releases/download/v0.4.9/DearSQL-x86_64.AppImage
-	source = https://github.com/dunkbing/dearsql/raw/v0.4.9/packaging/io.gitlab.dunkbing.dearsql.desktop
-	source = dearsql.png::https://github.com/dunkbing/dearsql/raw/v0.4.9/assets/appicon.png
-	sha256sums = 29e80faca9b7979fe45a953af84dae00aa6182e0ab36d369dc8159ef54c98b90
+	source = DearSQL-0.4.10-x86_64.AppImage::https://github.com/dunkbing/dearsql/releases/download/v0.4.10/DearSQL-x86_64.AppImage
+	source = https://github.com/dunkbing/dearsql/raw/v0.4.10/packaging/io.gitlab.dunkbing.dearsql.desktop
+	source = dearsql.png::https://github.com/dunkbing/dearsql/raw/v0.4.10/assets/appicon.png
+	sha256sums = 83a673164da28e80e3d3ded2b8ea7946902a733f41759338e0f33d713b040ea8
 	sha256sums = 8d1eb52592409db0b26abb3def7be743c926ceb4212fddffdfb13d4a5f72420c
 	sha256sums = 03e01e1fe765e93f167d0870e010cd43d4fcb24fe103f7fadf50a6f540828167
 
