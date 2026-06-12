@@ -1,0 +1,18 @@
+pkgbase = ncipher-git
+	pkgdesc = A custom cipher algorithm that encodes to special characters
+	pkgver = 1.0.0.r2.46c6230
+	pkgrel = 1
+	url = https://github.com/mrgamernavshorts/ncipher
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = clang
+	depends = glibc
+	provides = ncipher
+	conflicts = ncipher
+	source = ncipher-git::git+https://github.com/mrgamernavshorts/ncipher.git
+	sha256sums = SKIP
+
+pkgname = ncipher-git
