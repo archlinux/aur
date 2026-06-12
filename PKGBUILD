@@ -1,7 +1,7 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=howdy-next
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A modernized fork of original Howdy, Facial recognition authentication for Linux"
 arch=('x86_64')
@@ -21,8 +21,8 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/${_tag}.tar.gz"
 	"polkit-agent-helper-howdy.conf"
 )
-b2sums=('6170b7b591ef014279e1da605d2beee96080cdb69d4293d4186378ccda34a5c2ab0484c1cc917f5d75525272e26b681e04a71d0a3cb0df935e4b32fc64300ec1'
-        'ac6c1a82d6b4a00e4d518ad49592d5eb0aa4590e6c584328230fe875af0604b56861235cfbf9cd8a93bc9f1130eafb02392705cfa3a247770eb013da8576922b')
+b2sums=('9d675670bfc474e5b257abcb374123cb4775114251d2efd7b6da842e66586e91a850977023cbd8ef7866bc005d8e3b7c593c5749cb581c200acbaca7f40a43ba'
+		'ac6c1a82d6b4a00e4d518ad49592d5eb0aa4590e6c584328230fe875af0604b56861235cfbf9cd8a93bc9f1130eafb02392705cfa3a247770eb013da8576922b')
 
 build() {
 	arch-meson "$srcdir/howdy-next" "$srcdir/build" \
