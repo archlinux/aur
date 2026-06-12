@@ -3,22 +3,17 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=qstat
-pkgver=2.17
-pkgrel=3
+pkgver=2.18
+pkgrel=1
 pkgdesc="A command-line program that displays information about Internet game servers."
-url="https://github.com/Unity-Technologies/qstat"
+url="https://github.com/rocketsciencegg/qstat"
 arch=('i686' 'x86_64')
 license=('Artistic-2.0')
 depends=('glibc')
 conflicts=('qstat-cvs' 'qstat-svn' 'qstat-git')
 backup=('etc/qstat.cfg')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Unity-Technologies/qstat/archive/refs/tags/v${pkgver}.tar.gz" "${pkgname}-${pkgver}-remove-unneeded-cast.patch")
-b2sums=('e66aad52931443183ad91b19d5ed775c78babb0a5bd679c57fdf4c0ef604aab4e071bd16f97d151b84eb0b9b9814da271342a3494ec4123c5cf0ca10a8786341'
-        'f1c4eeef81acf65678dc06e6a2fd2eade06156112c14e557443141a8662efb56ef1241e7b7ce7e16c0e02725643366d13d6cb5c78d9ea35de7e13ee8b9b7428b')
-
-prepare() {
-    patch -d "${pkgname}-${pkgver}" -Np1 -i "../${pkgname}-${pkgver}-remove-unneeded-cast.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Unity-Technologies/qstat/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('95fecb97572d4f68f30689e74e71f3b105f0f4465ca58e21957a10ccf655d4e88537354a0a0e4d5695b1c75094a8d351453a6d7262e0f1063717df7ff5d8e426')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

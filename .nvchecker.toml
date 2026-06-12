@@ -1,0 +1,5 @@
+[qstat]
+source = "github"
+github = "rocketsciencegg/qstat"
+use_latest_release = true
+prefix = "v"
