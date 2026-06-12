@@ -9,6 +9,7 @@ pkgbase = aurelia-bin
 	depends = glibc
 	depends = libgcc
 	depends = xz
+	depends = bzip2
 	depends = openssl
 	provides = aurelia
 	conflicts = aurelia
