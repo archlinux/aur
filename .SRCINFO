@@ -1,14 +1,17 @@
 pkgbase = python-pytest-deadfixtures
 	pkgdesc = Pytest plugin to list unused fixtures in tests
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://github.com/jllorencetti/pytest-deadfixtures
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-pytest
-	source = python-pytest-deadfixtures-2.2.1.tar.gz::https://github.com/jllorencetti/pytest-deadfixtures/archive/2.2.1.tar.gz
-	b2sums = f4bf0495c3136e0b1af37c9a6c2e459bf924a8eee8650c9bca48c0b6112ff82d8454dc1d1ca4f7364e030fe7c9157b249b5f64bf2307a44477341dd29fad9b6c
+	source = pytest-deadfixtures-3.1.0.tar.gz::https://github.com/jllorencetti/pytest-deadfixtures/archive/3.1.0.tar.gz
+	sha256sums = 921bc4def8641c650e6ac7cd8ce5f35d8df445b783c46618115f246e50726230
 
 pkgname = python-pytest-deadfixtures

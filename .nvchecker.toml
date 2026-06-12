@@ -1,0 +1,3 @@
+[python-pytest-deadfixtures]
+source = "git"
+git = "https://github.com/jllorencetti/pytest-deadfixtures.git"

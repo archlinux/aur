@@ -1,26 +1,41 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 pkgname=python-pytest-deadfixtures
-_pkgname="${pkgname#python-}"
-pkgver=2.2.1
-pkgrel=2
+_name="${pkgname#python-}"
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Pytest plugin to list unused fixtures in tests"
 arch=('any')
 url="https://github.com/jllorencetti/pytest-deadfixtures"
 license=('MIT')
-depends=('python' 'python-pytest')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('f4bf0495c3136e0b1af37c9a6c2e459bf924a8eee8650c9bca48c0b6112ff82d8454dc1d1ca4f7364e030fe7c9157b249b5f64bf2307a44477341dd29fad9b6c')
+depends=(
+  'python'
+  'python-pytest'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+source=("$_name-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('921bc4def8641c650e6ac7cd8ce5f35d8df445b783c46618115f246e50726230')
 
 build() {
-  cd "$_pkgname-$pkgver"
-  python setup.py build
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_name-$pkgver"
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
