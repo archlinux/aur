@@ -1,7 +1,7 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 _pkgname=kuserfeedback
 pkgname=kuserfeedback-git
-pkgver=6.27.0.rc1.r2.g0ae6f79
+pkgver=6.27.0.r2.g0ae6f79
 pkgrel=1
 pkgdesc="Framework for collecting user feedback for applications via telemetry and surveys (Git version)"
 arch=(any)
