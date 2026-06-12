@@ -3,7 +3,7 @@
 
 pkgname=rtrlib
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="RPKI-RTR client library"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/rtrlib/rtrlib"
@@ -12,11 +12,15 @@ depends=('libssh')
 makedepends=('cmake')
 checkdepends=('cmocka')
 options=('strip')
-source=("rtrlib-$pkgver.tar.gz::https://github.com/rtrlib/rtrlib/archive/v$pkgver.tar.gz")
-md5sums=('e6237318b51ea1162d9ae7b296f966c8')
+source=(
+    "rtrlib-$pkgver.tar.gz::https://github.com/rtrlib/rtrlib/archive/v$pkgver.tar.gz" 
+    "fix-remote-tests.patch"
+)
+md5sums=('e6237318b51ea1162d9ae7b296f966c8' '8531c7cd3e7f07198075f7fcae40e641')
 
 prepare() {
     cd ${srcdir}/${pkgname}-${pkgver}
+    patch -p1 < "$srcdir/fix-remote-tests.patch"
     cmake \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \

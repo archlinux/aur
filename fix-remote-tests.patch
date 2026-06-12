@@ -1,0 +1,30 @@
+diff --git a/tests/test_dynamic_groups.c b/tests/test_dynamic_groups.c
+index 51d042c..c67bb35 100644
+--- a/tests/test_dynamic_groups.c
++++ b/tests/test_dynamic_groups.c
+@@ -24,8 +24,8 @@ int main(void)
+ 	//create a TCP transport socket
+ 	int retval = 0;
+ 	struct tr_socket tr_tcp;
+-	char tcp_host[] = "rpki-validator.realmv6.org";
+-	char tcp_port[] = "8283";
++	char tcp_host[] = "rpki-cache.netd.cs.tu-dresden.de";
++	char tcp_port[] = "3323";
+ 
+ 	struct tr_tcp_config tcp_config = {
+ 		tcp_host, //IP
+diff --git a/tests/test_live_validation.c b/tests/test_live_validation.c
+index 73c8575..1d3b564 100644
+--- a/tests/test_live_validation.c
++++ b/tests/test_live_validation.c
+@@ -57,8 +57,8 @@ int main(void)
+ 	/* These variables are not in the global scope
+ 	 * because it would cause warnings about discarding constness
+ 	 */
+-	char RPKI_CACHE_HOST[] = "rpki-validator.realmv6.org";
+-	char RPKI_CACHE_POST[] = "8283";
++	char RPKI_CACHE_HOST[] = "rpki-cache.netd.cs.tu-dresden.de";
++	char RPKI_CACHE_POST[] = "3323";
+ 
+ 	/* create a TCP transport socket */
+ 	struct tr_socket tr_tcp;
