@@ -3,7 +3,7 @@
 pkgname=mold-ai-bin
 _pkgname=mold-ai
 _binname=mold
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Local AI image generation CLI — FLUX, SD3.5, SD 1.5, SDXL, Z-Image, Flux.2, Qwen-Image, Wuerstchen, LTX Video, & LTX-2 diffusion models on your GPU (prebuilt binary, CUDA sm_89 / Ada Lovelace; pulls in extra/cuda ~5 GB)"
 arch=('x86_64')
@@ -52,7 +52,7 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_binname}-x86_64-unknown-l
 
 # Rewritten by scripts/aur/update-pkgbuild.sh on every release.
 sha256sums=('cd904e73d29dc7d62178ebc6def9e500c6b176e8e4c40f58e4b0b5f008380311')
-sha256sums_x86_64=('53647824935f8d33026a208a22c6df7318f3279f2b195b430202552eece0bef8')
+sha256sums_x86_64=('727748447a3ff42a201ae5a6c79f541232f4ccf60ba1aa4b3d887e16f4c130ad')
 
 package() {
   install -Dm755 "${srcdir}/${_binname}" "${pkgdir}/usr/bin/${_binname}"
