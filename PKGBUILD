@@ -1,7 +1,7 @@
 # Maintainer: Coffee Bean <beanc904@gmail.com>
 pkgname=musicxx-bin
 _pkgname=musicxx
-pkgver=0.86.1
+pkgver=0.86.3
 pkgrel=1.0
 provides=('musicxx')
 conflicts=('musicxx')
@@ -16,7 +16,7 @@ options=('!strip')
 # install=.install
 # source=("$_pkgname-$pkgver.appimage")
 source=("${_pkgname}-${pkgver}.appimage::${_url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.appimage")
-sha256sums=('09414ef805bc321b1073979ba065ef903ed7a8a07b76affaade0f162b3962403')
+sha256sums=('bc5d8320e1d8f0749170df555c59538babfb5ad9bdf6bdf282ca810b59a9952b')
 
 prepare () {
   chmod +x "${_pkgname}-${pkgver}.appimage"
