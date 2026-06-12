@@ -1,7 +1,7 @@
 # Maintainer: Danilo <aur ät dbrgn döt ch>
 pkgname=threema-desktop-beta
 pkgdesc="Threema Desktop 2.0 Beta."
-pkgver=2.0_beta60
+pkgver=2.0_beta61
 _pkgver=${pkgver//_/-}
 pkgrel=1
 arch=('x86_64')
@@ -35,8 +35,10 @@ depends=(
   systemd-libs
 )
 makedepends=(
+  # For fetching git dependencies (e.g. node-argon2 fork) during pnpm deploy
+  git
   # JS
-  npm nvm
+  nvm
   # node-gyp
   python python-setuptools
   # For building Rust code in general
@@ -45,8 +47,8 @@ makedepends=(
   wasm-bindgen binaryen protobuf
 )
 #options=('strip')
-source=("https://releases.threema.ch/desktop/${_pkgver}/threema-desktop-v${_pkgver}-source.7z")
-b2sums=('e1a050d99f361b81601bbadf89a2a7f98f077cf2eb044bbc2c43d498621d974df203efcfc89c23fcd598a5effe9c811dcdfb40f55eab3d540d918b0c234429cf') # Use get-checksum.sh to update
+source=("threema-desktop-v${_pkgver}::https://github.com/threema-ch/threema-desktop/archive/refs/tags/v${_pkgver}.tar.gz")
+b2sums=('8eabcd436008bc70261876f9a7771ec68a59c699853468fcbfb54ef8acd26b6c7b5a3152aa151448cd67935700eda45d8cacd283f2b0c164f7033c68a28e994f')
 
 # See https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
@@ -61,10 +63,10 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd "${srcdir}/threema-desktop-v${_pkgver}"
+  cd "${srcdir}/threema-desktop-${_pkgver}"
 
   # Patch version to indicate this is an AUR package
-  sed -i -s 's/"version": "'${_pkgver}'"/"version": "'${_pkgver}-aur'"/' package.json
+  sed -i -s 's/"version": "'${_pkgver}'"/"version": "'${_pkgver}-aur'"/' apps/desktop/package.json
 
   # Right now the used version of wasm-bindgen in libthreema and the installed
   # version of wasm-bindgen-cli on the system need to match. Otherwise, you get
@@ -80,17 +82,33 @@ prepare() {
   # For now, the first approach is chosen (even though this might break things
   # when wasm-bindgen does an incompatible upgrade).
   BINDGEN_VERSION=$(wasm-bindgen --version | awk '{ print $NF }')
-  cd libs/libthreema/lib/
-  sed -i '/^wasm-bindgen[ =]/s/version = "=.*"/version = "='$BINDGEN_VERSION'"/' Cargo.toml
-  cargo fetch
+  (
+    cd packages/libthreema-wasm/libs/libthreema/lib/
+    sed -i '/^wasm-bindgen[ =]/s/version = "=.*"/version = "='$BINDGEN_VERSION'"/' Cargo.toml
+    cargo fetch
+  )
+
+  # Use a shared pnpm store for *all* pnpm invocations, including the
+  # `pnpm deploy` spawned internally by `tools/dist-electron.mjs`. That deploy
+  # runs with `--prod`, which breaks the on-the-fly preparation of git-hosted
+  # dependencies (e.g. the node-argon2 fork: its `prepare` script needs
+  # devDependencies, which `--prod` skips). With a shared store, the package
+  # already prepared during `pnpm install` is reused instead of re-built.
+  echo "store-dir=${srcdir}/pnpm-store" >> .npmrc
 }
 
 build() {
-  cd "${srcdir}/threema-desktop-v${_pkgver}"
+  cd "${srcdir}/threema-desktop-${_pkgver}"
 
   # Ensure correct NodeJS version for building
   _ensure_local_nvm
   nvm install
+
+  # Enable corepack-managed pnpm. Corepack reads the `packageManager` field
+  # from package.json and installs that version on first use. The shim is
+  # created inside the active Node's bin directory.
+  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+  corepack enable pnpm
 
   # Note: Overriding flags as a workaround for https://github.com/ranisalt/node-argon2/issues/454
   export CFLAGS=${CFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}
@@ -98,22 +116,24 @@ build() {
   export CXXFLAGS=${CXXFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}
 
   # Install dependencies
-  npm install --cache "${srcdir}/npm-cache" --no-audit --no-fund
+  pnpm install --frozen-lockfile
 
   # Install Rust WASM toolchain
-  cd libs/libthreema/
-  rustup target add wasm32-unknown-unknown
+  (
+    cd packages/libthreema-wasm/libs/libthreema/
+    rustup target add wasm32-unknown-unknown
+  )
 
   # Build libthreema
   export CARGO_TARGET_DIR=target
-  npm run libthreema:build
+  pnpm run build:packages:libthreema-wasm
 
   # Build application
-  npm run dist:consumer-live
+  pnpm run dist:desktop:consumer-live
 }
 
 package() {
-  cd "${srcdir}/threema-desktop-v${_pkgver}"
+  cd "${srcdir}/threema-desktop-${_pkgver}"
   export rdn=ch.threema.threema-desktop
 
   # Note: We cannot easily launch Threema through system electron, because
@@ -126,18 +146,20 @@ package() {
   # just bundle everything. This way, we can also be sure that a well-tested
   # version of Electron is used for Threema.
 
+  local _packaged="build/apps/desktop/packaged/Threema Beta-linux-x64"
+
   # Remove files not needed on Linux
-  rm "build/electron/packaged/Threema Beta-linux-x64/resources/"Square*Logo*.png
-  rm "build/electron/packaged/Threema Beta-linux-x64/resources/StoreLogo.png"
+  rm "${_packaged}/resources/"Square*Logo*.png
+  rm "${_packaged}/resources/StoreLogo.png"
 
   # Copy application
   mkdir -p "${pkgdir}/opt/"
-  cp -r "build/electron/packaged/Threema Beta-linux-x64/" "${pkgdir}/opt/${pkgname}/"
+  cp -r "${_packaged}/" "${pkgdir}/opt/${pkgname}/"
   chmod 755 "${pkgdir}/opt/${pkgname}/"
 
   # Copy icons
   for i in 64 128 180 192 256 512; do
-    install -Dm 644 "build/electron/app/res/icons/consumer-live/icon-${i}.png" \
+    install -Dm 644 "apps/desktop/src/public/res/icons/consumer-live/icon-${i}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${rdn}.png"
   done
 
@@ -155,7 +177,7 @@ package() {
   chmod +x "${pkgdir}/usr/bin/threema-beta"
 
   # Copy desktop file
-  install -D "packaging/metadata/${rdn}.desktop" "${pkgdir}/usr/share/applications/${rdn}.desktop"
+  install -D "apps/desktop/packaging/metadata/${rdn}.desktop" "${pkgdir}/usr/share/applications/${rdn}.desktop"
   sed -i -s "s/=Threema/=Threema Beta/" "${pkgdir}/usr/share/applications/${rdn}.desktop"
   sed -i -s "s/Exec=/Exec=\/usr\/bin\/threema-beta/" "${pkgdir}/usr/share/applications/${rdn}.desktop"
 }
