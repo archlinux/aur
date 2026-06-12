@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction
 pkgname=humen-mcp-bin
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc='Human-in-the-loop MCP server'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('humen-mcp' 'humen-mcp-git')
 backup=('etc/humen-mcp.env')
 install=humen-mcp.install
 source=("https://github.com/LIghtJUNction/humen-mcp/releases/download/v${pkgver}/humen-mcp-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('ccf929a4ec6a24aaad98a9a0036a43f8da96f2a402b5d0f70a94e13ec87aacc1')
+sha256sums=('e173c372cb8c0e10575fbc15ee36dc33839af854c6d498254fbe560e620f4fbd')
 
 package() {
   cd "humen-mcp-${pkgver}-x86_64-unknown-linux-gnu"
