@@ -1,6 +1,6 @@
 pkgbase = sigma-file-manager
 	pkgdesc = "Sigma File Manager" is a free, open-source, quickly evolving, modern file manager (explorer / finder) app for Windows and Linux.
-	pkgver = 2.1.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/aleksey-hoffman/sigma-file-manager
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = sigma-file-manager
 	provides = sigma-file-manager
 	conflicts = sigma-file-manager
 	conflicts = sigma-file-manager-git
-	noextract = sigma-file-manager-2.1.1.tar.gz
+	noextract = sigma-file-manager-2.1.0.tar.gz
 	options = !strip
 	options = !debug
-	source = sigma-file-manager::git+https://github.com/aleksey-hoffman/sigma-file-manager.git#tag=v2.1.1
-	sha256sums = 646979575a6327168458d812f8047054977bc015f22d43a8c922b5d1d67b34ff
+	source = sigma-file-manager::git+https://github.com/aleksey-hoffman/sigma-file-manager.git#tag=v2.1.0
+	sha256sums = 6647899578dee80ff8a60a2bcacd1bc7e3e7ed3bacc84d90a0fcd7803b28e0e4
 
 pkgname = sigma-file-manager
