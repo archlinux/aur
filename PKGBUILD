@@ -2,7 +2,7 @@
 
 pkgname=ansilove
 pkgver=4.2.2
-pkgrel=2
+pkgrel=3
 libver=1.4.2
 pkgdesc='A program to convert ANSI and artscene related file formats into PNG images'
 url='https://ansilove.org/'
@@ -36,6 +36,7 @@ package() {
 
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/ansilove/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/ansilove/README.md"
+  install -Dm644 "Changelog" "${pkgdir}/usr/share/doc/ansilove/Changelog"
   cp -r examples "${pkgdir}/usr/share/doc/ansilove/examples/"
 }
 
