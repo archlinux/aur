@@ -1,6 +1,6 @@
 # Maintainer: Zmole Cristian <tragdate@gmail.com>
 pkgname=rustgraph
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Rust code navigation built for AiDX — AST-aware, MCP-native, token-efficient."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ZmoleCristian/rustgraph/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f91abf60b35abdce558d7e7d12c149476b2ea58eb291c8aa8ad5936c706fd177')
+sha256sums=('62d1ffcde95f6c8131f871996ca448092f7704b8a651097d72fcc2bdcad8b756')
 
 # Hermetic cargo: the build runs RUSTUP_TOOLCHAIN=stable, so nightly-only
 # rustflags/profiles in the user's cargo configs would break it. Isolate
