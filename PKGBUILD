@@ -1,5 +1,5 @@
 pkgname=mingw-w64-sdl2_net
-pkgver=2.2.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A simple, cross-platform wrapper over TCP/IP sockets. (Version 2) (mingw-w64)"
 arch=('any')
