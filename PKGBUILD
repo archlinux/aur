@@ -2,7 +2,7 @@
 
 _realname=rift
 pkgname=${_realname}-bin
-pkgver=5.24.0
+pkgver=5.24.1
 pkgrel=1
 pkgdesc="The RIFT Intel Fusion Tool, for Eve Online"
 arch=('x86_64')
@@ -35,7 +35,7 @@ conflicts=("${_realname}")
 
 source=("https://riftforeve.online/download/debian/${_realname}_${pkgver}_amd64.deb")
 
-sha256sums=('38d47d85979d13a91f8de5e433b009762f71cb43484bc203131cc88362336544')
+sha256sums=('e39b00929342ca42cd520a26c3504c0af3a7126361d05680b028da9773311bc5')
 
 prepare() {
   bsdtar -x -f data.tar.xz || bsdtar -x -f data.tar.gz || bsdtar -x -f data.tar.zst || true
