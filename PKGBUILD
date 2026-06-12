@@ -1,11 +1,12 @@
 pkgname=openssh-gui-git
 _pkgname=OpenSSH-GUI
-pkgver=3.2.0.20260612.8cfa26a
+pkgver=3.2.0.20260612.782152e
 pkgrel=1
 pkgdesc="A GUI for OpenSSH configuration and management (Sourcepackage)"
 arch=('x86_64')
 url="https://github.com/frequency403/OpenSSH-GUI"
 license=('MIT')
+options=('!strip')
 
 depends=('icu' 'openssl' 'zlib' 'krb5' 'libx11')
 makedepends=('git' 'dotnet-sdk-10.0' 'librsvg')
@@ -16,17 +17,6 @@ conflicts=('openssh-gui' 'openssh-gui-bin' 'openssh-gui-nightly')
 source=("git+${url}.git#branch=development")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/${_pkgname}"
-
-  local base count hash
-  base=$(grep -oP '(?<=<BaseVersion>)[^<]+' Directory.Build.props)
-  count=$(git rev-list --count HEAD)
-  hash=$(git rev-parse --short HEAD)
-
-  printf "%s.r%s.g%s\n" "$base" "$count" "$hash"
-}
-
 build() {
   cd "${srcdir}/${_pkgname}"
 
@@ -34,10 +24,11 @@ build() {
       --configuration Release \
       --runtime linux-x64 \
       --output publish \
-      -p:SelfCcontained=true \
+      -p:SelfContained=true \
       -p:PublishSingleFile=true \
       -p:PublishReadyToRun=false \
-      -p:IncludeNativeLibrariesForSelfExtract=true
+      -p:IncludeNativeLibrariesForSelfExtract=true \
+      -p:InformationalVersion="${pkgver}"
 
   rsvg-convert -w 256 -h 256 images/openssh-gui.svg -o appicon-256.png
 }
@@ -50,7 +41,7 @@ package() {
 
   install -Dm644 "appicon-256.png" \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/openssh-gui.png"
-    
+
   install -Dm644 "images/openssh-gui.svg" \
       "${pkgdir}/usr/share/icons/hicolor/scalable/apps/openssh-gui.svg"
 
