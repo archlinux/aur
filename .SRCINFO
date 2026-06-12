@@ -1,0 +1,15 @@
+pkgbase = hibrid
+	pkgdesc = A lightweight cross-platform package manager wrapper for Windows, Linux, and macOS.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/person134/hibrid
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = hibrid::git+https://github.com/person134/hibrid.git
+	sha256sums = SKIP
+
+pkgname = hibrid
