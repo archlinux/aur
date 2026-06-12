@@ -1,0 +1,21 @@
+pkgbase = rimgo-bin
+	pkgdesc = An alternative frontend for Imgur (binary version)
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://codeberg.org/rimgo/rimgo
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	provides = rimgo
+	options = !lto
+	backup = etc/rimgo.conf
+	source = rimgo.service
+	source = rimgo.conf
+	sha256sums = 2fa11fe14e1536f63f678f3334d33910c38cd67c28a4a6c94fcab9ca908197d6
+	sha256sums = 145cd73c55a7bc133db7e981c1485d614fadb96a49680e0bd1320f25dc28fd93
+	source_x86_64 = rimgo-bin-1.4.2-x86_64.tar.gz::https://codeberg.org/rimgo/rimgo/releases/download/v1.4.2/rimgo-linux-amd64.tar.gz
+	sha256sums_x86_64 = 08e95e1fb80ba556f4f5212326f98f324971a85b90853f50154c186cf90778e5
+	source_aarch64 = rimgo-bin-1.4.2-aarch64.tar.gz::https://codeberg.org/rimgo/rimgo/releases/download/v1.4.2/rimgo-linux-arm64.tar.gz
+	sha256sums_aarch64 = 24a205871bafe7e36ae6d01d0884695f745408d23a3e70ef95376c25b79a6f7e
+
+pkgname = rimgo-bin

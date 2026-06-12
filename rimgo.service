@@ -1,0 +1,36 @@
+[Unit]
+Description=rimgo daemon
+After=network.service
+
+[Service]
+DynamicUser=yes
+EnvironmentFile=-/etc/rimgo.conf
+ExecStart=/usr/bin/rimgo
+
+# Hardening
+DeviceAllow=
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+PrivateDevices=yes
+ProcSubset=pid
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@resources @privileged
+UMask=0077
+CapabilityBoundingSet=
+PrivateUsers=true
+
+[Install]
+WantedBy=default.target
