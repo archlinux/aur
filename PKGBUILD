@@ -19,7 +19,6 @@ url=${_ghurl}
 license=('GPL-3.0')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
 makedepends=('rust' 'cargo')
 depends=('glibc' 'libgcc' 'xz')
 
@@ -42,6 +41,15 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --release --frozen
+}
+
+check() {
+	cd ${srcdir}/${_gitname}-${pkgver} || exit 1
+
+	# export MANGOFETCH_OFFLINE=1
+	# cargo test -p mangofetch-core
+
+	./target/release/${_appname} about
 }
 
 package() {

@@ -12,7 +12,6 @@ pkgbase = mangofetch
 	depends = libgcc
 	depends = xz
 	provides = mangofetch
-	conflicts = mangofetch
 	options = !strip
 	source = mangofetch-0.7.3.tgz::https://github.com/julesklord/mangofetch/archive/refs/tags/v0.7.3.tar.gz
 	sha256sums = 83c4220ccb8966c10e238317fe107f2cc2af8b3c6c8bd59c9e9d4b088b805ef1
