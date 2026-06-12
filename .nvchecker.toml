@@ -1,0 +1,5 @@
+[xqf]
+source = "github"
+github = "XQF/xqf"
+use_latest_tag = true
+prefix = "xqf-"
