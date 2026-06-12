@@ -1,0 +1,14 @@
+# Ignore everything by default
+*
+
+# Whitelist the essentials
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+
+# Whitelist auxiliary files
+!*.env
+!*.service
+!*.sysusers
+!*.tmpfiles
+!LICENSE
