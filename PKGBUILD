@@ -1,4 +1,5 @@
-# Maintainer: Kimiblock Moe
+# Maintainer: 27Onion Nebell <zzy20080201@gmail.com>
+# Contributor: Kimiblock Moe
 pkgname=clash-nyanpasu-git
 _pkgname=clash-nyanpasu
 _pkgver=2.0.0
