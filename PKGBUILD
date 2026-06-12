@@ -1,5 +1,5 @@
 pkgname=attackshark-x11
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Attack Shark mouse configuration utility for Linux X11"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cmake')
 source=(
     "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('567674f9fd4a25090cb389af7c25dcbea3c5f563d9697cd3a7932c771b6a98a5')
+sha256sums=('a5f2a5a6d46e272da05c259be549b2ec04224bd63a7778fcfb1f945788c813a8')
 
 build() {
     cd "$srcdir/attack-shark-x11-linux-$pkgver"
