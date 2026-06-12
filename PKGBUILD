@@ -2,7 +2,7 @@
 
 pkgname=gitmsg
 pkgauthor=razakadam74
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 
 _npmname=${pkgname}
@@ -24,7 +24,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('1d7c773cf7118460feec0f6b82dc3b99c5076852da1293f468d28152e4faef6a8e6597c476afe08ff142f04e138ca68b5a2c0e8a2fa74daed4fb76d2a5038bb6')
+b2sums=('7015a10954cc8de5f5339ecf570cb346c526aeeb99e7cbd93cafeccd660b3b55737ce446e195920068adfd3a8058375ef147e16ace042b770312f275261352b9')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
