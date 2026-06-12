@@ -1,10 +1,9 @@
 # Maintainer: NewYearPrism
 
-_llama_cpp_version=9596
-_ggml_version=0.14.0
-_llama_cpp_sha256sum=c80caadf88a211c6d6e7820ded7258a6c2c0a476926a04dd7e8708ba3e552c93
+_ggml_version=0.15.1
+_ggml_sha256sum=b2fd615a552c0aeba35be361fd7e59c55623c94bffe5ca1acc5162e5d98e15ec
 pkgname=ggml
-pkgver=${_ggml_version}.b${_llama_cpp_version}
+pkgver=${_ggml_version}
 pkgrel=1
 pkgdesc='Tensor library for machine learning (API library)'
 arch=(x86_64 aarch64)
@@ -25,33 +24,28 @@ makedepends=(
     patch
 )
 provides=(
-    libggml
-    ggml
+    "libggml=${pkgver}"
+    "ggml-src=${pkgver}"
 )
 conflicts=(
     libggml
-    ggml
 )
 options=(
     lto
     !debug
 )
 source=(
-    "llama.cpp-b${_llama_cpp_version}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b${_llama_cpp_version}.tar.gz"
-    ggml.pc.in
+    "ggml-${pkgver}.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v${pkgver}.tar.gz"
     ggml-h-ggml-max-name-128.patch
 )
 sha256sums=(
-    ${_llama_cpp_sha256sum}
-    4df038e6d2f345fb8a930cb76014fd6a9fdeb793a6fa3593f436fc29e0589eee
+    ${_ggml_sha256sum}
     b3be0f6368ca8344e52e044f60dc81efb98e646e93ce3fe690f8d8b4750eb27a
 )
 
 prepare() {
-  ln -sf "llama.cpp-b${_llama_cpp_version}" llama.cpp
-  mkdir -p llama.cpp/.git
-  cp -f ggml.pc.in llama.cpp/ggml/
-  patch -Np1 -d llama.cpp/ggml -i $srcdir/ggml-h-ggml-max-name-128.patch
+  ln -sf "ggml-${pkgver}" ggml
+  patch -Np1 -d ggml -i $srcdir/ggml-h-ggml-max-name-128.patch
 }
 
 build() {
@@ -60,7 +54,7 @@ build() {
   CXXFLAGS+=" ${_prefix_map}"
 
   local _cmake_options=(
-    -S "llama.cpp/ggml"
+    -S ggml
     -B build
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
@@ -100,8 +94,7 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
 
-  install -Dm644 llama.cpp/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ggml/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -dm755 "${pkgdir}/usr/src/"
-  cp -r llama.cpp/ggml "${pkgdir}/usr/src/ggml-${pkgver}"
-  ln -s "ggml-${pkgver}" "${pkgdir}/usr/src/ggml"
+  cp -r "ggml-${pkgver}" "${pkgdir}/usr/src/ggml-${pkgver}"
 }

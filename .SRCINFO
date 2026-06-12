@@ -1,6 +1,6 @@
 pkgbase = ggml
 	pkgdesc = Tensor library for machine learning (API library)
-	pkgver = 0.14.0.b9596
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
@@ -16,17 +16,14 @@ pkgbase = ggml
 	depends = libgomp
 	depends = python
 	depends = python-yaml
-	provides = libggml
-	provides = ggml
+	provides = libggml=0.15.1
+	provides = ggml-src=0.15.1
 	conflicts = libggml
-	conflicts = ggml
 	options = lto
 	options = !debug
-	source = llama.cpp-b9596.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b9596.tar.gz
-	source = ggml.pc.in
+	source = ggml-0.15.1.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.15.1.tar.gz
 	source = ggml-h-ggml-max-name-128.patch
-	sha256sums = c80caadf88a211c6d6e7820ded7258a6c2c0a476926a04dd7e8708ba3e552c93
-	sha256sums = 4df038e6d2f345fb8a930cb76014fd6a9fdeb793a6fa3593f436fc29e0589eee
+	sha256sums = b2fd615a552c0aeba35be361fd7e59c55623c94bffe5ca1acc5162e5d98e15ec
 	sha256sums = b3be0f6368ca8344e52e044f60dc81efb98e646e93ce3fe690f8d8b4750eb27a
 
 pkgname = ggml
