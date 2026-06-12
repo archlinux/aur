@@ -1,6 +1,6 @@
 # Maintainer: Rafael Medeiros <rafamedeiros0@gmail.com>
 pkgname=perssua-bin
-pkgver=0.23.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="Your AI companion for LeetCode - because sometimes we all feel stupid"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' '!emptydirs')
 install="${pkgname}.install"
 source=("https://downloads.perssua.com/Perssua-${pkgver}-amd64.deb"
         "hyprland-perssua.conf")
-sha256sums=('b04a3cdb4808167a6a78eab8e9f079cadf49af5c428522566f820f26d381e74a'
+sha256sums=('2c8a91645fb0fc0abd4b2312677bb0d70e0bd1b523e94ef896fc1a4ec514480c'
             'SKIP')
 
 package() {
