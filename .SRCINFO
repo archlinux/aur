@@ -1,6 +1,6 @@
 pkgbase = micromamba
 	pkgdesc = The fast cross-platform package manager
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/mamba-org/mamba
 	arch = i686
@@ -23,13 +23,13 @@ pkgbase = micromamba
 	depends = yaml-cpp
 	depends = simdjson
 	depends = msgpack-c
-	provides = libmamba=2.8.0
-	provides = python-libmambapy=2.8.0
+	provides = libmamba=2.8.1
+	provides = python-libmambapy=2.8.1
 	conflicts = micromamba-bin
-	source = micromamba-2.8.0.tar.gz::https://github.com/mamba-org/mamba/archive/2.8.0.tar.gz
+	source = micromamba-2.8.1.tar.gz::https://github.com/mamba-org/mamba/archive/2.8.1.tar.gz
 	source = etc-install.patch::https://github.com/mamba-org/mamba/commit/3dec9c0bc0e424749c649eae96de92c323e3b3d3.patch
 	source = static-off.patch
-	sha512sums = 1d46fab323f98c85c41ea51f2ba480ec68a55d333fd464d3ca65ca5197cc9126e9ee98a400b2abab4291171d60065c903b1443c1515ea428b05521b6d567199b
+	sha512sums = ba2949c32506bcf355d549f01e5a309a862ca5618bc618d1a6b8e74d8413dbd8abaa4f2b9aec39faa593627b05ca1c6a2835e4800d646fd9c8d3a73a3801e89a
 	sha512sums = 2fcbaf269412225fdf5e3afc9e5d8c8122b24ad9e576cb9ba8fdb6050c1d4ac61aa0dbc38f482b41b9c586a3a25ad773e141e302a50e25dacda00fa85ca15212
 	sha512sums = 36c1ff684597251aba0de64cfee372212cdfe51890e584c15798b37bd41c02ed929596368b2c743934cfab89ce31bf9ac6ba9ee7f17ab038feb87fdecbadf1d8
 
