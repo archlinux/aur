@@ -1,6 +1,6 @@
 # Maintainer: Xavier Olive <git@xoolive.org>
 pkgname=dabradio-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A DAB/DAB+ digital radio decoder"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('dabradio')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/dabradio-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("${url}/releases/download/v${pkgver}/dabradio-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('87e1cb28d82b3acaf704b50096ca2ba65cbc56a1b878a00190bb919d93bc6505')
-sha256sums_aarch64=('aec0c0d69ef193d225c0676fff19db1a5633de96072fc1886de536c2d46210a6')
+sha256sums_x86_64=('ca224a2c762934a26555ad354ea83c8ec2163c45cb2adb65663da8f8d4a6f66c')
+sha256sums_aarch64=('767e9d41adb218b7b807945b3a769b2322447aec4f1ee6d41c8fbf5ea669ac43')
 
 package() {
     cd "dabradio-${CARCH}-unknown-linux-gnu"
