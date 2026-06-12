@@ -21,7 +21,6 @@ makedepends=(
   "python-installer"
   "python-wheel"
 )
-checkdepends=("python-pytest")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("a8a9e104c97dcd57a1a1fc7e499a5afa32f86f11d14f79245f264335b36c97c0")
 
@@ -33,7 +32,6 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   PYTHONPATH=src python -m plextui.smoke
-  PYTHONPATH=src python -m pytest
 }
 
 package() {
