@@ -1,6 +1,8 @@
 pkgbase = lovr-bin
     pkgdesc = An open source Lua framework for building 3D games and VR experiences
     pkgver = 0.19.0
+    pkgrel = 1
+    url = https://lovr.org
     arch = x86_64
     license = MIT
     source = https://github.com/bjornbytes/lovr/releases/download/v0.19.0/lovr-v0.19.0-x86_64.AppImage
