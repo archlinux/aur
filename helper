@@ -60,7 +60,17 @@ fi
 # Install Discord
 if [[ "$CHOICES" =~ "discord" ]]; then
     echo -e "\n--> Installing Discord via Flatpak..."
-    flatpak install flathub com.discordapp.Discord -y
+    flatpak install flathub com.discordapp.Discord
+if
+
+# Install Spotify
+if [[ "$CHOICES" =~ "spotify" ]]; then
+    echo -e "\n--> Installing Spotify via Flatpak..."
+    flatpak install -y flathub com.spotify.Client
 fi
 
-echo -e "\nMy Little Helper: All done! Enjoy your apps."
+# Install Sober
+if [[ "$CHOICES" =~ "sober" ]]; then
+    echo -e "\n--> Installing Sober via Flatpak..."
+    flatpak install -y flathub org.vinegarhq.Sober
+fi
