@@ -1,7 +1,7 @@
 # Maintainers: arraen, thadah
 # Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 pkgname="synergy3-bin"
-pkgver="3.6.1"
+pkgver="3.6.2"
 pkgrel="1"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
@@ -10,68 +10,51 @@ arch=("x86_64")
 source=()
 sha256sums=()
 conflicts=('synergy' 'synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin' 'synergy3-bin' 'synergy3-beta-bin')
-depends=('openssl' 'alsa-lib' 'libei' 'libnotify' 'nss' 'qt6-base' 'libxkbfile' 'libappindicator-gtk3' 'libayatana-appindicator')
+depends=('openssl' 'alsa-lib' 'libei' 'libnotify' 'nss' 'qt6-base' 'libxkbfile' 'libxtst' 'libappindicator-gtk3' 'libayatana-appindicator')
 optdepends=('pugixml')
 options=("!strip")
+install="${pkgname}.install"
 
-# Since Synergy API now requires a token, we need to enter the landing page and scrape it to download the deb file
+# Anonymous download permalink provided by Symless
+_permalink="https://email.mg.symless.com/c/eJxMjj1PwzAUAH-Ns1HZ7zn-GDw0gggJECBRqXSzXqw2JbEj2xTCr0d0Yry75QYHPgjTBCe0EdAqbXRzcgSDIkNGWC-EFzRwoFaRJm81tzo0owMOiisB3CJyvbHEEbHVEAhRKmSSz8dNWecplLKhNDeTO9W6FIZbBj2D_l-7Ugz5uDLo_TIy6If0Fafkhz9BFEph2Nf0ESLDW3l4PEO8ed6_bA_nRcLr2hHa9odqd6fu3_P-8-nte_fQiXbXZHcJMWWDRgKT3Gdf8xivQxcHvwEAAP__hk5M-A"
+
+_pkgfile="synergy-${pkgver}-linux-noble-x86_64.pkg.tar.zst"
+
 prepare() {
-  local html_file="${srcdir}/landing.html"
+  curl -fsSL -c "${srcdir}/cookies.txt" -o /dev/null "$_permalink"
+  curl -fsSL -b "${srcdir}/cookies.txt" -o "${srcdir}/page.html" \
+    "https://symless.com/synergy/download/package/synergy-personal-v3/arch-linux/${_pkgfile}"
 
-  # Download landing page
-  curl -L -s -o "$html_file" "https://symless.com/synergy/download/package/synergy-personal-v3/ubuntu-24.04/synergy-${pkgver}-linux-noble-x86_64.deb"
   local token
-  token=$(grep -oP '(?<=\\"token\\":\\")[^\\"]+' "$html_file" | head -n1)
-
+  token=$(grep -oP '(?<=\\"token\\":\\")[^\\"]+' "${srcdir}/page.html" | head -n1)
   if [[ -z "$token" ]]; then
-    echo "Failed to extract token from landing page"
-    exit 1
+    echo "Failed to get download token."
+    return 1
   fi
 
-  rm -f "$html_file"
-
-  local download_url="https://symless.com/synergy/api/download/synergy-${pkgver}-linux-noble-x86_64.deb?token=${token}"
-
-  echo "Downloading .deb file with landing token..."
-  curl -L -s -o "${srcdir}/synergy-${pkgver}-linux-noble-x86_64.deb" "$download_url"
+  echo "Downloading .pkg.tar.zst file with permalink token..."
+  curl -fsSL -o "${srcdir}/${_pkgfile}" "https://symless.com/synergy/api/download/${_pkgfile}?token=${token}"
 }
 
 package() {
-  bsdtar -xf "${srcdir}/synergy-${pkgver}-linux-noble-x86_64.deb" -C "${srcdir}/"
-  bsdtar -xf "${srcdir}/data.tar.bz2" -C "${pkgdir}/"
+  # Extract the .tar.zst file keeping permissions
+  bsdtar -xpf "${srcdir}/${_pkgfile}" -C "${pkgdir}/" opt usr
 
-  # Install binaries and create symlinks
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s /opt/Synergy/synergys "${pkgdir}/usr/bin/synergys"
-  ln -s /opt/Synergy/synergyc "${pkgdir}/usr/bin/synergyc"
+  install -d "${pkgdir}/usr/bin"
+  ln -s /opt/Synergy/synergy "${pkgdir}/usr/bin/synergy"
   ln -s /opt/Synergy/synergy-core "${pkgdir}/usr/bin/synergy-core"
 
   # Install the user service and enable it.
-  mkdir -p "${pkgdir}/etc/systemd/user/graphical-session.target.wants"
-  cp "${pkgdir}/opt/Synergy/resources/services/global/synergy.service" "${pkgdir}/etc/systemd/user/"
+  install -Dm644 "${pkgdir}/opt/Synergy/resources/services/global/synergy.service" "${pkgdir}/etc/systemd/user/synergy.service"
+  install -d "${pkgdir}/etc/systemd/user/graphical-session.target.wants"
   ln -s /etc/systemd/user/synergy.service "${pkgdir}/etc/systemd/user/graphical-session.target.wants/synergy.service"
 
   # Install the login service into the system unit directory (disabled).
-  mkdir -p "${pkgdir}/usr/lib/systemd/system"
-  cp "${pkgdir}/opt/Synergy/resources/services/system/synergy.service" "${pkgdir}/usr/lib/systemd/system/"
+  install -Dm644 "${pkgdir}/opt/Synergy/resources/services/system/synergy.service" "${pkgdir}/usr/lib/systemd/system/synergy.service"
 
   # Add the loginInfo file
-  mkdir -p "${pkgdir}/etc/Synergy"
-  touch "${pkgdir}/etc/Synergy/loginInfo"
-  chmod 755 "${pkgdir}/etc/Synergy/loginInfo"
+  install -d "${pkgdir}/etc/Synergy"
+  install -m666 /dev/null "${pkgdir}/etc/Synergy/loginInfo"
 
   chmod 4755 "${pkgdir}/opt/Synergy/chrome-sandbox" || true
-}
-
-post_install() {
-  update-mime-database /usr/share/mime || true
-  update-desktop-database /usr/share/applications || true
-}
-
-post_remove() {
-  rm -f '/usr/bin/synergys'
-  rm -f '/usr/bin/synergyc'
-  rm -f '/usr/bin/synergy-core'
-  rm -f '/etc/systemd/user/synergy.service'
-  rm -f '/usr/lib/systemd/system/synergy.service'
 }

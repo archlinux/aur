@@ -1,8 +1,9 @@
 pkgbase = synergy3-bin
 	pkgdesc = Share a single mouse and keyboard between multiple computers
-	pkgver = 3.6.1
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = https://symless.com/synergy
+	install = synergy3-bin.install
 	arch = x86_64
 	license = unknown
 	depends = openssl
@@ -12,6 +13,7 @@ pkgbase = synergy3-bin
 	depends = nss
 	depends = qt6-base
 	depends = libxkbfile
+	depends = libxtst
 	depends = libappindicator-gtk3
 	depends = libayatana-appindicator
 	optdepends = pugixml
@@ -23,7 +25,7 @@ pkgbase = synergy3-bin
 	conflicts = synergy3-bin
 	conflicts = synergy3-beta-bin
 	options = !strip
-	source=("landing.html::https://symless.com/synergy/download/package/synergy-personal-v3/ubuntu-24.04/synergy-${pkgver}-linux-noble-x64.deb")
+	source=("page.html::https://email.mg.symless.com/c/eJxMjj1PwzAUAH-Ns1HZ7zn-GDw0gggJECBRqXSzXqw2JbEj2xTCr0d0Yry75QYHPgjTBCe0EdAqbXRzcgSDIkNGWC-EFzRwoFaRJm81tzo0owMOiisB3CJyvbHEEbHVEAhRKmSSz8dNWecplLKhNDeTO9W6FIZbBj2D_l-7Ugz5uDLo_TIy6If0Fafkhz9BFEph2Nf0ESLDW3l4PEO8ed6_bA_nRcLr2hHa9odqd6fu3_P-8-nte_fQiXbXZHcJMWWDRgKT3Gdf8xivQxcHvwEAAP__hk5M-A")
 	sha256sums=('SKIP')
 
 pkgname = synergy3-bin
