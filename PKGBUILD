@@ -1,19 +1,20 @@
 # Maintainer: Zeus-Deus <codemux at codemux dot org>
 pkgname=codemux-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="The Agentic Development Environment for Builders"
 arch=('x86_64')
 url="https://github.com/Zeus-Deus/codemux"
 license=('custom:Elastic-2.0')
-depends=('webkit2gtk-4.1' 'gtk3' 'glib2' 'openssl' 'git' 'ydotool' 'xdg-utils' 'ripgrep' 'fd' 'github-cli')
+depends=('webkit2gtk-4.1' 'gtk3' 'glib2' 'openssl' 'git' 'ydotool' 'xdg-utils' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk' 'ripgrep' 'fd' 'github-cli')
 optdepends=(
     'chromium: browser panes (or google-chrome, brave)'
+    'zenity: file picker fallback when no desktop portal backend is running'
 )
 provides=('codemux')
 conflicts=('codemux')
 source=("https://github.com/Zeus-Deus/codemux/releases/download/v${pkgver}/codemux_${pkgver}_amd64.AppImage")
-sha256sums=('925a4f32b002c02460d94d9948bd302d4a7ada4df225192d677b96528e5ebd65')
+sha256sums=('ba22924cd5969ae86438d499db13b50df4031f09a1dd6001d9025fa090b0ea3e')
 options=('!strip')
 
 prepare() {
