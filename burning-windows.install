@@ -3,12 +3,13 @@ post_install() {
 
 Burning Windows has been installed.
 
-For first use, log out and log back in, or reboot once.
+For first use, reboot once.
 Then enable/disable it from:
 
-  System Settings -> Desktop Effects -> Burning Windows
+  Disable Fall Apart from System Settings -> Desktop Effects if enabled
+  Enable System Settings -> Desktop Effects -> Burning Windows
 
-No restart is needed for normal enable/disable after the first login/reboot.
+No restart is needed for normal enable/disable after the first reboot.
 
 MSG
 }
@@ -21,7 +22,7 @@ post_remove() {
     cat <<'MSG'
 
 Burning Windows has been removed.
-Log out/in or reboot if KWin still has the old plugin loaded in this session.
+Reboot if KWin still has the old plugin loaded in this session.
 
 MSG
 }

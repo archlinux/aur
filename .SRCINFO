@@ -1,7 +1,7 @@
 pkgbase = burning-windows
 	pkgdesc = Burning window close animation for KDE Plasma 6 KWin Wayland
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/burning-windows
 	install = burning-windows.install
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = burning-windows
 	provides = kwin6-effect-remisa-burn
 	conflicts = kwin6-effect-remisa-burn
 	source = burning-windows-0.1.0.tar.gz
-	sha256sums = 593dacbd3d09c770fa0fc4271cfff36eae0bec359dc2045d560183df8483f052
+	sha256sums = d62555eab68342f9299d6c87d7416a3b097c050caba0d7367004e5aedbf3ec0f
 
 pkgname = burning-windows
