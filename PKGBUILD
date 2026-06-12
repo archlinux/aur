@@ -3,12 +3,12 @@
 pkgname=eclipse-installer
 pkgver=2026.06
 _pkgver=${pkgver/./-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Automates the installation and update of Eclipse development environments"
 arch=('aarch64' 'x86_64')
 url="https://wiki.eclipse.org/Eclipse_Installer"
 license=("EPL")
-depends=("unzip" "webkit2gtk")
+depends=("webkit2gtk-4.1")
 optdepends=(
     "java-runtime: Can optionally be used when installing Eclipse packages"
 )
