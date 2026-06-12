@@ -12,7 +12,7 @@ pkgrel=4
 pkgdesc="An implementation of RTP, the real-time transport protocol from the IETF"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://www.gnu.org/software/ccrtp/"
-license=('GPL' 'custom')
+license=('GPL-2.0-only' 'custom')
 depends=('ucommon>=6.2.2' 'libgcrypt')
 optdepends=("texinfo: handle and view info files")
 source=("https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz"{,.sig})

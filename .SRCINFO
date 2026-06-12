@@ -6,7 +6,7 @@ pkgbase = ccrtp
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = GPL
+	license = GPL-2.0-only
 	license = custom
 	depends = ucommon>=6.2.2
 	depends = libgcrypt
