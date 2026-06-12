@@ -1,0 +1,19 @@
+pkgbase = i-ching-diviner
+	pkgdesc = I Ching oracle with AI interpretations of hexagrams.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/alamahant/IChingDiviner
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-svg
+	source = i-ching-diviner-1.0.3.tar.gz::https://github.com/alamahant/IChingDiviner/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 428ed9a3267e4781409b151a5a1a517ede77bc44c51c9066ec885e1d1a5612d7
+
+pkgname = i-ching-diviner
