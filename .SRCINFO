@@ -1,6 +1,6 @@
 pkgbase = tensaku-git
 	pkgdesc = Modern screenshot annotation tool for Wayland (latest main)
-	pkgver = 0.26.4
+	pkgver = 0.26.5
 	pkgrel = 1
 	url = https://github.com/jondkinney/tensaku
 	install = tensaku.install
@@ -13,7 +13,7 @@ pkgbase = tensaku-git
 	depends = libadwaita
 	depends = libepoxy
 	depends = fontconfig
-	provides = tensaku=0.26.4
+	provides = tensaku=0.26.5
 	conflicts = tensaku
 	conflicts = tensaku-bin
 	source = tensaku::git+https://github.com/jondkinney/tensaku.git
