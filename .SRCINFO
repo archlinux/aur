@@ -1,13 +1,13 @@
 pkgbase = hp-omen-gaming-wmi-dkms
 	pkgdesc = HP WMI driver for OMEN Gaming laptops (unlocked TGP and board 8E35 support)
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/nevetscar/hp-omen-gaming-wmi-dkms
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = dkms
-	source = git+https://github.com/nevetscar/hp-omen-gaming-wmi-dkms.git#tag=v1.0.9
+	source = git+https://github.com/nevetscar/hp-omen-gaming-wmi-dkms.git#tag=v1.0.10
 	sha256sums = SKIP
 
 pkgname = hp-omen-gaming-wmi-dkms
