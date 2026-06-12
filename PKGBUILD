@@ -1,7 +1,7 @@
 # Maintainer: ProfP303 prof.p@gmx.net
 pkgname=youplaytx
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="A full-screen, dual-pane YouTube audio player for the terminal"
 arch=('any')
 url="https://codeberg.org/ProfP303/youplaytx"
@@ -24,7 +24,7 @@ makedepends=(
     'python-setuptools-scm'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9f49517bcab4bbbd862f4b4cb1f39405a235d6a00c1c4ad42f9d34d57e99709f')
+sha256sums=('21b66bd0c4c59620a4a9a7aa8ae6bd89dc7461657eb12e2d7ae415d7a6574b40')
 
 build() {
     cd "$srcdir/$pkgname"
