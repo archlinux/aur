@@ -1,7 +1,7 @@
 pkgbase = constrict
 	pkgdesc = Compress videos to target sizes
 	pkgver = 26.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/Constrict
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,6 +9,7 @@ pkgbase = constrict
 	makedepends = meson
 	makedepends = blueprint-compiler
 	depends = python
+	depends = python-cairo
 	depends = python-gobject
 	depends = gtk4
 	depends = glycin-gtk4
