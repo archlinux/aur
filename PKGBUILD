@@ -2,7 +2,7 @@
 
 pkgname=remoteterm-meshcore
 # pkgver is rewritten by .github/workflows/publish-aur.yml on each release.
-pkgver=3.14.1
+pkgver=3.15.0
 pkgrel=1
 pkgdesc='Web interface for MeshCore mesh radio networks'
 arch=(x86_64 aarch64)
@@ -29,7 +29,7 @@ source=(
 # sha256sums are recomputed by `updpkgsums` in the publish workflow before
 # the PKGBUILD is pushed to AUR. The committed values are intentionally SKIP
 # so the file is honest about not tracking real hashes in this repo.
-sha256sums=('b20becfa17fbb114602c2548af445b7279d7caa2b5011db6b28da2ab49fe0934'
+sha256sums=('3e4a30ae5dadd49bf7f7d8d5fd1c6365da8f01b89bbaf28c455921ee37cdd3a3'
             'd65dc4d60776ecf3798591c44d8ead1e8da81ae947a99dfac2893d9b6ffac794'
             '8f325dc1b5b0eec76762dcd8e168e10975c60b0e4688346bf18aa15af3e704e7'
             '00660554138d26f2a362b8b3a7c091e61ed9b27f5118eed009c1176c9b1dc0c2'
