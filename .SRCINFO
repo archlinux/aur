@@ -11,6 +11,7 @@ pkgbase = tegola-headless
 	depends = glibc
 	provides = tegola
 	conflicts = tegola
+	conflicts = tegola-debug
 	backup = etc/tegola/tegola.toml
 	source = tegola-0.21.0.tar.gz::https://github.com/go-spatial/tegola/archive/refs/tags/v0.21.0.tar.gz
 	source = tegola.service
