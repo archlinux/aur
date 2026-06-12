@@ -1,15 +1,15 @@
 # Maintainer: Helloagain <nospamming11+arch at gmail dot com>
 
 pkgname=fakturama
-pkgver=2.1.3.c
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Creates invoices with ZUGFeRD / XRechnung support"
 arch=('x86_64')
 url="https://www.fakturama.info"
 license=('EPL')
 groups=()
 depends=(
-	'java-runtime>=11'
+	'java-runtime>=17'
 	'webkit2gtk'
 )
 makedepends=()
@@ -25,14 +25,14 @@ options=()
 install=$pkgname.install
 changelog=
 source=(
-	"$pkgname-$pkgver.tar.gz::https://files.fakturama.info/release/v2.1.3/Installer_Fakturama_linux_x64_2.1.3c.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://files.fakturama.info/release/v2.2.0/Installer_Fakturama_linux-x86_64_2.2.0.tar.gz"
 	"fakturama2.desktop"
 	"fakturama2-clean.desktop" # version with "-clean" flag
 	"startup_script"
 )
 noextract=()
 sha256sums=(
-	"fad86a0a3f5f2b62b646129b6648c6b9097fb83a010e967ad3fed9c7d60ed38c"
+	"8630cc972b9514bbe034000bf8af1c7b4a63583fda9037bc4b2d2a1f3ba66fcc"
 	"ad52a6adf49602c7a1ed0d7e90c142fe7d4c802ff223ac2de33ef5521feae795"
 	"2a2c3fda3a2c4275e112bf6c6963d76d26bcf99c75f21028ac8d7d2b012c4dd7"
 	"d39c1a14e9399070b51569f43063716dd3ef166ca946c0e6a3af47b1dde44504"
@@ -77,7 +77,7 @@ package() {
 	install -Dm 644 "$srcdir/fakturama2.desktop" "$pkgdir/usr/share/applications/fakturama2.desktop"
 	install -Dm 644 "$srcdir/fakturama2-clean.desktop" "$pkgdir/usr/share/applications/fakturama2-clean.desktop"
 
-	# create symlink for binar
+	# create symlink for binary
   mkdir -p "$_bin_dir"
 	ln -s "$_rooted_application/Fakturama" "$_bin_dir"
 }
