@@ -2,7 +2,7 @@
 # Contributor: faris0x <farisalfarhan@icloud.com>
 
 pkgname=mut
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A terminal-based LaTeX editor (μT) — Micro-like editing, pdflatex build, Zathura preview"
 arch=('x86_64')
