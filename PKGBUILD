@@ -1,9 +1,18 @@
 # Maintainer: Tristan <https://github.com/techtoboggan>
+#
+# This is the AUR-published PKGBUILD (claude-desktop-hardened-bin). Unlike
+# packaging/arch/PKGBUILD.in — which our CI uses to BUILD the package from a
+# locally-staged tree — this one is self-contained: it downloads the prebuilt
+# Arch package from the GitHub release and installs its payload. That makes
+# `makepkg`/`yay` work standalone for end users (see issue #5).
+#
+# 1.12603.1, pkgrel, and 32bb6d783882d03a200582d2333a7e016a14e64da9ab9898f9309614e032b1ac are substituted by the publish-aur
+# CI step before this is pushed to the AUR.
 pkgname=claude-desktop-hardened-bin
 pkgver=1.12603.1
-pkgrel=3
+pkgrel=5
 pkgdesc="Claude Desktop for Linux (hardened) — bubblewrap sandboxing, credential redaction"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/techtoboggan/claude-desktop-hardened-linux"
 license=('custom:Proprietary')
 depends=('nodejs' 'npm' 'electron' 'p7zip' 'icoutils' 'imagemagick' 'xdg-utils' 'bubblewrap')
@@ -21,15 +30,32 @@ optdepends=(            'socat: IPC support'
             'wlr-randr: Wayland display info for Computer Use')
 provides=('claude-desktop' 'claude-desktop-hardened')
 conflicts=('claude-desktop' 'claude-desktop-bin' 'claude-desktop-hardened')
+# Don't strip or compress — the payload is already a built, signed-sandbox
+# Electron tree; touching it would break chrome-sandbox.
+options=('!strip' '!debug')
 
-# This PKGBUILD operates on a pre-built staging directory.
-# Run the build pipeline first, then makepkg from the staging dir.
+# The release asset IS a prebuilt Arch package. We fetch it and unpack only
+# its payload (usr/) in package(); noextract stops makepkg from auto-unpacking
+# it (which would also dump .PKGINFO/.MTREE into srcdir).
+#
+# claude-desktop-hardened-bin-1.12603.1-1-x86_64.pkg.tar.zst (the exact asset filename) and v1.12603.1-5 (the release tag) are
+# substituted by publish-aur from the actual release — NOT reconstructed
+# from pkgver/pkgrel. They diverge: the AUR pkgrel tracks the release build
+# number (e.g. 4), but the artifact's own filename carries the CI-internal
+# pkgrel which is always 1 (claude-desktop-hardened-bin-<ver>-1-x86_64...),
+# and the download path uses the release tag (v<ver>-4). Discovering both
+# avoids guessing.
+_pkgfile="claude-desktop-hardened-bin-1.12603.1-1-x86_64.pkg.tar.zst"
+source=("${_pkgfile}::${url}/releases/download/v1.12603.1-5/${_pkgfile}")
+noextract=("${_pkgfile}")
+sha256sums=('32bb6d783882d03a200582d2333a7e016a14e64da9ab9898f9309614e032b1ac')
 
 package() {
-    # Copy from the staging area prepared by the build pipeline
-    cp -r "${srcdir}/staged/usr" "${pkgdir}/usr"
+    # Extract just the filesystem payload from the prebuilt package.
+    bsdtar -xf "${srcdir}/${_pkgfile}" -C "${pkgdir}" usr
 
-    # Fix chrome-sandbox permissions
+    # Ensure chrome-sandbox keeps its setuid bit (extraction preserves mode,
+    # but re-assert it defensively).
     local sandbox="${pkgdir}/usr/lib/claude-desktop-hardened/app.asar.unpacked/node_modules/electron/dist/chrome-sandbox"
     if [ -f "$sandbox" ]; then
         chmod 4755 "$sandbox"
