@@ -1,5 +1,5 @@
 pkgname=tapauth
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Local smartphone-based authentication framework engine"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('cargo' 'rust' 'protobuf' 'clang')
 backup=('etc/tapauth/config.toml')
 install=tapauth.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lolle2000la/tapauth/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('31f2e4c698506482d4519ff08a04cb78d226847237bfc136bfea303f2a5f0b56')
+sha256sums=('706f6c9d0079fbf2f47ad9ede39c17f0c26578064115ab1bc6912603b9891e6e')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
