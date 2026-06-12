@@ -1,26 +1,22 @@
 # Maintainer: NewYearPrism
 
-_llama_cpp_version=9596
-_ggml_version=0.14.0
-_ggml_next_version=0.14.1
-_llama_cpp_sha256sum=c80caadf88a211c6d6e7820ded7258a6c2c0a476926a04dd7e8708ba3e552c93
+_ggml_version=0.15.1
 pkgname=ggml-vulkan
-pkgver=${_ggml_version}.b${_llama_cpp_version}
+pkgver=${_ggml_version}
 pkgrel=1
 pkgdesc='Vulkan backend for ggml'
 arch=(x86_64 aarch64)
 url='https://github.com/ggml-org/ggml'
 license=('MIT')
 depends=(
-    "ggml>=${_ggml_version}.b9000"
-    "ggml<${_ggml_next_version}"
+    "ggml=${pkgver}"
     glibc
     libstdc++
     libgcc
     vulkan-icd-loader
 )
 makedepends=(
-    "ggml=${pkgver}"
+    "ggml-src=${pkgver}"
     cmake
     ninja
     git
@@ -39,7 +35,7 @@ build() {
   CXXFLAGS+=" ${_prefix_map}"
 
   local _cmake_options=(
-    -S /usr/src/ggml
+    -S /usr/src/ggml-${pkgver}
     -B build
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
