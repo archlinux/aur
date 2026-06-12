@@ -6,7 +6,7 @@
 pkgname=lidarr
 _pkgname=Lidarr
 pkgver=3.1.0.4875
-pkgrel=1
+pkgrel=2
 pkgdesc='Music collection manager for newsgroup and torrent users.'
 arch=(x86_64 aarch64 armv7h)
 url='https://lidarr.audio'
@@ -65,6 +65,9 @@ _branch='master'
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
+
+  # Fix  CVE-2026-41319
+  sed 's/MailKit" Version="4\.14\.0"/MailKit" Version="4\.16\.0"/' -i src/NzbDrone.Core/Lidarr.Core.csproj
 
   # Remove upstream dotnet version
   rm global.json
