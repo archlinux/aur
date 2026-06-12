@@ -6,7 +6,7 @@
 # pushes to the AUR. Edit depends / package() etc. here — never in the
 # AUR repo directly.
 pkgname=tensaku
-pkgver=0.26.3
+pkgver=0.26.4
 pkgrel=1
 pkgdesc='Modern screenshot annotation tool for Wayland'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('gtk4' 'gtk4-layer-shell' 'libadwaita' 'libepoxy' 'fontconfig')
 makedepends=('rust')
 install=tensaku.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ca5ade6ba0e47938186e4487dea57735258a6732a2bb25565fa8a9d99c2f30cc')
+sha256sums=('3519152fb1fe1462c3b8333b6b9a75409bf8ea2a00e492862630c4035866b0a8')
 
 prepare() {
   cd "$pkgname-$pkgver"
