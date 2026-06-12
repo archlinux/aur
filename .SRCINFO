@@ -1,0 +1,18 @@
+pkgbase = powerguard
+	pkgdesc = Power button confirmation dialog — prevents accidental shutdowns on Hyprland/Wayland/X11
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/gudhalarya/powerguard
+	arch = any
+	license = MIT
+	depends = bash
+	depends = systemd
+	depends = acpid
+	optdepends = wofi: dialog for Hyprland/Wayland (recommended)
+	optdepends = rofi: alternative dialog for Wayland/X11
+	optdepends = zenity: GTK dialog fallback
+	optdepends = whiptail: terminal fallback
+	source = powerguard::https://raw.githubusercontent.com/gudhalarya/powerguard/main/powerguard
+	sha256sums = 95c77d72f85df3d44fcc54f6c80a0345e32190b75a9daacf36f1fd94f67191f0
+
+pkgname = powerguard
