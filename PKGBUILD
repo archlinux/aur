@@ -1,12 +1,12 @@
 # Maintainer: Jason Scurtu <code@xarbit.dev>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 #
-# Development AUR package — builds the latest `main`. CI renders 1.10.0.r622.gc0ee1dc
+# Development AUR package — builds the latest `main`. CI renders 1.10.0.r623.g79b8c9e
 # with the current VCS version (base.r<count>.g<sha>) so the AUR page
 # shows a live version; pkgver() recomputes it at build time. CI keeps
 # this in sync — edit this template, not the AUR repo.
 pkgname=plasma6-applets-appgrid-git
-pkgver=1.10.0.r622.gc0ee1dc
+pkgver=1.10.0.r623.g79b8c9e
 pkgrel=1
 pkgdesc="A modern application launcher for KDE Plasma (development build)"
 arch=('x86_64')
