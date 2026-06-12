@@ -1,6 +1,6 @@
 pkgbase = hipfire-git
 	pkgdesc = High-performance AMD GPU inference runtime framework (VCS version)
-	pkgver = 0.2.1.r5
+	pkgver = 0.2.1.r12
 	pkgrel = 1
 	url = https://github.com/Kaden-Schutt/hipfire
 	arch = x86_64
@@ -16,8 +16,6 @@ pkgbase = hipfire-git
 	depends = rocm-opencl-sdk
 	provides = hipfire
 	conflicts = hipfire
-	options = !debug
-	options = strip
 	source = git+https://github.com/Kaden-Schutt/hipfire.git
 	sha256sums = SKIP
 

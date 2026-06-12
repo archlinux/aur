@@ -1,7 +1,7 @@
 # Maintainer: Garrett Goebel <garrett.goebel@gmail.com>
 _pkgname=hipfire
 pkgname=hipfire-git
-pkgver=0.2.1.r5
+pkgver=0.2.1.r12
 pkgrel=1
 pkgdesc="High-performance AMD GPU inference runtime framework (VCS version)"
 arch=('x86_64')
