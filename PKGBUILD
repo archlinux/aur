@@ -13,8 +13,8 @@
 
 pkgbase=rxvt-unicode-cvs
 pkgname=('rxvt-unicode-cvs' 'rxvt-unicode-terminfo-cvs')
-pkgver=9.31.r20240204164417
-pkgrel=2
+pkgver=9.31.r20260514202148.2
+pkgrel=1
 epoch=2
 arch=('x86_64')
 url='https://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -81,6 +81,8 @@ build() {
   # do not specify --disable-frills (FS#77474)
   # workaround ncurses --disable-root-access (FS#79143)
   export TIC="/usr/bin/tic -o${srcdir}/terminfo"
+  export CXXFLAGS+=" -std=gnu++17"
+
   ./configure \
     --prefix=/usr \
     --enable-256-color \
