@@ -1,6 +1,6 @@
 # Maintainer: Luke Simpson <luke@s4solutions.ai>
 pkgname=nexis
-pkgver=2.3.14
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Linux system optimizer and monitoring tool"
 arch=('x86_64' 'aarch64')
@@ -15,20 +15,18 @@ makedepends=('cmake' 'gcc' 'make' 'qt6-tools')
 # build using plain objects that any linker handles.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/s4solutionsllc/Nexis/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('07da2c95b342519791e1d918dae9fef6c08d126724ec98e358427873c0a16f4f')
+sha256sums=('688a58f90a609f277eed460bc69ce82ce28241822f213c378bc80410b68b5d7b')
 
 build() {
-    # GH#82: CXXBASICS_USE_FASTER_LINKERS=OFF disables the in-tree auto-selection
-    # of LLD (UseFasterLinkers.cmake). A distro package should link with the
-    # system default linker (BFD), which understands GCC's LTO plugin, rather
-    # than force-selecting LLD. Combined with options=('!lto') this makes the
-    # packaged build a reproducible default-toolchain build.
+    # GH#82: in-tree LLD auto-selection is now OFF by default (see
+    # shared/cmake/cxxbasics/accelerators/UseFasterLinkers.cmake), so we no
+    # longer need to pass -DCXXBASICS_USE_FASTER_LINKERS=OFF here. Combined with
+    # options=('!lto') this remains a reproducible default-toolchain build.
     cmake -B build -S "Nexis-$pkgver" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DAPP_VERSION_OVERRIDE="$pkgver" \
         -DBUILD_TESTING=OFF \
-        -DCXXBASICS_USE_FASTER_LINKERS=OFF \
         -Wno-dev
     cmake --build build -j$(nproc)
 }
