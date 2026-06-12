@@ -1,6 +1,6 @@
 pkgbase = virtual-surround-manager
 	pkgdesc = Enable virtual 7.1 surround sound for your headphones with just one click.
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Berny23/virtual-surround-manager
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = virtual-surround-manager
     makedepends = qt6-declarative
     makedepends = qqc2-desktop-style
     provides = virtual-surround-manager
-	source = virtual-surround-manager-1.0.0.tar.gz::https://github.com/Berny23/virtual-surround-manager/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = e96194a736ab2ebb1a923813dbf764a8fa4ed8d4e1b48bfdc63736117f7d46fa
+	source = virtual-surround-manager-1.1.0.tar.gz::https://github.com/Berny23/virtual-surround-manager/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 998370b379e8d4916b16470865dd7c0eb0e084a0307fb105e4b7df280ef4b6e8
 
 pkgname = virtual-surround-manager
