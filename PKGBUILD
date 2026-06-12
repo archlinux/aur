@@ -1,6 +1,6 @@
 # Maintainer: Dish <needed@tutamail.com>
 pkgname=dish
-pkgver=0.6.6
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="It shell"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     "$CARCH-linux-musl-cross.tgz::https://musl.cc/$CARCH-linux-musl-cross.tgz"
 )
 sha256sums=(
-    '3683b064a2501cec10c4d98c3c73fe57275df3816730012a13e86daa4778fc65'
+    '527d38fe1dfa4710316b1be753ee3966c6aede7f1ffc6829e7d5f796eeafa607'
     'c5d410d9f82a4f24c549fe5d24f988f85b2679b452413a9f7e5f7b956f2fe7ea'
 )
 noextract=('$CARCH-linux-musl-cross.tgz')

@@ -1,6 +1,6 @@
 pkgbase = dish
 	pkgdesc = It shell
-	pkgver = 0.6.6
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://codeberg.org/D1SH/Dish
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = dish
 	makedepends = tar
 	makedepends = binutils
 	noextract = $CARCH-linux-musl-cross.tgz
-	source = dish-0.6.6.tar.gz::https://codeberg.org/D1SH/Dish/archive/0.6.6.tar.gz
+	source = dish-0.6.8.tar.gz::https://codeberg.org/D1SH/Dish/archive/0.6.8.tar.gz
 	source = x86_64-linux-musl-cross.tgz::https://musl.cc/x86_64-linux-musl-cross.tgz
-	sha256sums = 3683b064a2501cec10c4d98c3c73fe57275df3816730012a13e86daa4778fc65
+	sha256sums = 527d38fe1dfa4710316b1be753ee3966c6aede7f1ffc6829e7d5f796eeafa607
 	sha256sums = c5d410d9f82a4f24c549fe5d24f988f85b2679b452413a9f7e5f7b956f2fe7ea
 
 pkgname = dish
