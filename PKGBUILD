@@ -118,7 +118,7 @@ export DLAGENTS="shallowclone::$(realpath "./DLAGENTS") %u %o"
 sha256sums=('SKIP')
 
 package() {
-	local TARGET=$(realpath $pkgdir)/opt/android-sdk/vndk
+	local TARGET=$(realpath $pkgdir)/opt/android-sdk/vndk/v$pkgver
 	mkdir -p "$TARGET"
 
 	cd "$srcdir"
