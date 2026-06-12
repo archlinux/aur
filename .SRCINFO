@@ -1,0 +1,13 @@
+pkgbase = unirun-git
+	pkgdesc = An intelligent abstraction runtime orchestration layer for cross-platform apps
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/KasishStar/UniRun
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	source = unirun-git-0.3.tar.gz::https://github.com/KasishStar/UniRun/archive/refs/tags/v0.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = unirun-git
