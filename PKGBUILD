@@ -1,88 +1,40 @@
 # Maintainer: ArDali <support@ardali.app>
-#
 # AUR package for Arch-based distros.
-# Installs the prebuilt AppImage from GitHub Releases.
+# Installs the prebuilt native Linux binary from DEB to avoid AppImage library conflicts
 
 pkgname=ardali-bin
 pkgver=4.1.8
-pkgrel=1
-pkgdesc="ArDali WebMedia multimedia ecosystem for Linux (prebuilt AppImage)"
+pkgrel=3
+pkgdesc="ArDali WebMedia multimedia ecosystem for Linux"
 arch=('x86_64')
 url="https://ardali.app"
 license=('MIT')
 depends=(
-  'fuse2'
-  'glibc'
-  'zlib'
-  'ffmpeg'
+  'webkit2gtk-4.1'
+  'glib-networking'
   'gst-libav'
   'gst-plugins-good'
   'gst-plugins-bad'
   'gst-plugins-ugly'
-  'gst-plugin-pipewire'
-  'xorg-xwayland'
 )
-provides=('ardali')
+provides=('ardali' 'ardali-webmedia')
 conflicts=('ardali' 'aurivo-bin')
 options=(!strip !debug)
 
 _owner="Muhammed-Dali"
 _repo="ArDali"
 _tag="v${pkgver}"
-_appimage="ArDali.WebMedia_${pkgver}_amd64.AppImage"
+_deb="ArDali.WebMedia_${pkgver}_amd64.deb"
 
 source=(
-  "${_appimage}::https://github.com/${_owner}/${_repo}/releases/download/${_tag}/${_appimage}"
-  "com.ardali.mediaplayer.png::https://raw.githubusercontent.com/${_owner}/${_repo}/main/public/icons/app/ardali_256.png"
+  "https://github.com/${_owner}/${_repo}/releases/download/${_tag}/${_deb}"
 )
-
-sha256sums=('ccaa8b7a4763c72ef82944c5f7770b6df81e99fb74553c16067f5b7eddc55a7a'
-            '4d12f075da1921ae0117b6d5a0f36dee83b1df177fe41670414d5badd498f67a')
+sha256sums=('1d524c0c994b0d63272f1e883c26f8961eee0fbf3e6974d9af2a7fe973c6cbb8')
 
 package() {
-  install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/ardali/ardali.AppImage"
+  # The outer .deb is automatically extracted by makepkg into $srcdir, yielding data.tar.gz
+  tar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
 
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/ardali" <<'EOF'
-#!/usr/bin/env bash
-export CHROME_DESKTOP="com.ardali.mediaplayer.desktop"
-export GST_PLUGIN_SYSTEM_PATH_1_0="${GST_PLUGIN_SYSTEM_PATH_1_0:-/usr/lib/gstreamer-1.0:/usr/lib64/gstreamer-1.0}"
-export GST_PLUGIN_PATH_1_0="${GST_PLUGIN_PATH_1_0:-/usr/lib/gstreamer-1.0:/usr/lib64/gstreamer-1.0}"
-if [ ! -e /dev/fuse ]; then
-  export APPIMAGE_EXTRACT_AND_RUN=1
-fi
-exec /opt/ardali/ardali.AppImage "$@"
-EOF
-
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/com.ardali.mediaplayer.desktop" <<'EOF'
-[Desktop Entry]
-Type=Application
-Version=1.5
-Name=ArDali
-Comment=ArDali WebMedia player for music, video, web platforms and DSP
-Exec=ardali %U
-Icon=com.ardali.mediaplayer
-Terminal=false
-Categories=AudioVideo;Player;
-StartupWMClass=ardali
-MimeType=audio/mpeg;audio/wav;audio/flac;audio/aac;audio/ogg;audio/mp4;audio/x-m4a;audio/opus;audio/aiff;audio/x-ms-wma;video/mp4;video/x-matroska;video/x-msvideo;video/quicktime;video/x-ms-wmv;video/webm;video/x-m4v;
-Keywords=Music;Audio;Video;Media;Player;Linux;AppImage;Equalizer;DSP;ArDali;
-StartupNotify=true
-EOF
-  install -Dm644 "${srcdir}/com.ardali.mediaplayer.png" \
-    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/com.ardali.mediaplayer.png"
-
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/metainfo/com.ardali.mediaplayer.metainfo.xml" <<'EOF'
-<?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop-application">
-  <id>com.ardali.mediaplayer</id>
-  <name>ArDali WebMedia</name>
-  <summary>Media player, web platform manager and DSP engine</summary>
-  <metadata_license>CC0-1.0</metadata_license>
-  <project_license>MIT</project_license>
-  <url type="homepage">https://ardali.app</url>
-  <description>
-    <p>ArDali WebMedia for Linux.</p>
-  </description>
-</component>
-EOF
+  # Provide a short alias 'ardali'
+  ln -s /usr/bin/ardali-webmedia "${pkgdir}/usr/bin/ardali"
 }
