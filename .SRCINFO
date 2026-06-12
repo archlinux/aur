@@ -1,10 +1,10 @@
 pkgbase = humanity-icon-theme
 	pkgdesc = Humanity icons from Ubuntu without modification
 	pkgver = 0.6.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/humanity
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	conflicts = humanity-icons
 	options = !emptydirs
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/humanity-icon-theme_0.6.16.tar.xz
@@ -12,4 +12,3 @@ pkgbase = humanity-icon-theme
 	sha512sums = a2a5dd4b03a3f81ae1f42aaaba76e1982978ec9a936fb61b38a53e20dfe5298bd47bac29b6ea4fbeb73fa878d48fe68b414d4179615526c81a8fbc7a5535d017
 
 pkgname = humanity-icon-theme
-
