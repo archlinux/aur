@@ -1,7 +1,7 @@
 pkgbase = ardali-bin
 	pkgdesc = ArDali WebMedia multimedia ecosystem for Linux
-	pkgver = 4.1.8
-	pkgrel = 5
+	pkgver = 4.1.9
+	pkgrel = 1
 	url = https://ardali.app
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = ardali-bin
 	conflicts = aurivo-bin
 	options = !strip
 	options = !debug
-	source = https://github.com/Muhammed-Dali/ArDali/releases/download/v4.1.8/ArDali.WebMedia_4.1.8_amd64.AppImage
-	sha256sums = ccaa8b7a4763c72ef82944c5f7770b6df81e99fb74553c16067f5b7eddc55a7a
+	source = https://github.com/Muhammed-Dali/ArDali/releases/download/v4.1.9/ArDali.WebMedia_4.1.9_amd64.AppImage
+	sha256sums = b621e0652c6a0961e1afe8786aee84367ad4173205d9fbeb22568bd7565c2f63
 
 pkgname = ardali-bin
