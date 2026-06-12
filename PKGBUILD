@@ -3,7 +3,7 @@
 pkgname=edirstat-git
 _pkgname=edirstat
 pkgver=1.1.0.r100.g9655c52
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, cross-platform disk usage analyzer with work-stealing multithreading, zero-copy snapshots, deduplication, and an interactive treemap GUI. (Development Git Version)"
 arch=('x86_64')
 url="https://github.com/Xangelix/edirstat"
@@ -18,14 +18,7 @@ optdepends=(
   'libx11: For running on traditional X11/Xorg desktops'
 )
 
-# 'cmake' is required by aws-lc-sys to compile its underlying C/Assembly modules
-makedepends=('cargo-nightly' 'rust-nightly' 'git' 'cmake')
-
-# Disables makepkg's system-level C-LTO (which injects -flto into CFLAGS). 
-# This prevents compiler mismatches (e.g. GCC GIMPLE vs LLVM Bitcode) when linking 
-# compiled C dependencies like blake3 and aws-lc-sys. 
-# This option does NOT affect the Rust-level ThinLTO defined in Cargo.toml.
-options=(!lto)
+makedepends=('cargo-nightly' 'rust-nightly' 'git')
 
 source=(
   "${_pkgname}::git+${url}.git"
@@ -52,7 +45,8 @@ build() {
   # Explicitly defining the target directory prevents Cargo from utilizing any
   # globally configured CARGO_TARGET_DIR environment overrides.
   export CARGO_TARGET_DIR=target
-  cargo build --release --frozen
+  # Compiles without the default 'online' feature to remove networked dependencies (reqwest/semver)
+  cargo build --release --frozen --no-default-features
 }
 
 check() {
@@ -86,6 +80,6 @@ package() {
   install -Dm 644 "assets/img/icon-transparent.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 
-  # Install the standard desktop launcher
+  # Install the .desktop file
   install -Dm 644 "$srcdir/$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 }
