@@ -46,7 +46,7 @@ optdepends=(
   "nwg-displays: Display arrangement tool"
 )
 
-source=("https://github.com/axos-project/sleex.git")
+source=("git+https://github.com/axos-project/sleex.git")
 sha256sums=('SKIP')
 
 pkgver() {

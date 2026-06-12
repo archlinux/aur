@@ -144,7 +144,7 @@ pkgbase = sleex-git
 	optdepends = nwg-displays: Display arrangement tool
 	provides = sleex
 	conflicts = sleex
-	source = https://github.com/axos-project/sleex.git
+	source = git+https://github.com/axos-project/sleex.git
 	sha256sums = SKIP
 
 pkgname = sleex-git
