@@ -1,0 +1,5 @@
+*.pkg.tar.*
+*.log
+mimic-*.tar.gz
+src/
+pkg/
