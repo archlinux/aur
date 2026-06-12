@@ -1,6 +1,6 @@
 # Maintainer: S-Sigdel <sakshyamsigdel1@gmail.com>
 pkgname=vimhjkl
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A terminal trainer that drills advanced Vim techniques in real vim/nvim and grades your keystrokes"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('uv' 'python-installer')
 optdepends=('neovim: preferred editor for drills'
             'vim: alternative editor for drills')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('49725dc3e0b59bb429558d4dbec820af4162cde19219a1ea6ee63d9827cbe146')
+sha256sums=('50952f9ee7256335b6b575381307d05832511d80a63f42061cf60fb214d65d6c')
 
 build() {
   cd "$pkgname-$pkgver"
