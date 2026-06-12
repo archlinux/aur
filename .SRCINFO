@@ -1,6 +1,6 @@
 pkgbase = hyprland-plugins
 	pkgdesc = Official plugins for Hyprland
-	pkgver = 0.55.3
+	pkgver = 0.55.4
 	pkgrel = 1
 	url = https://github.com/hyprwm/hyprland-plugins
 	arch = x86_64
