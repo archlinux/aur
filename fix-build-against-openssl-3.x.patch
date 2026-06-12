@@ -1,0 +1,58 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index f07d1e3..c21cb87 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -23,7 +23,7 @@ lib_LTLIBRARIES = libccrtp.la
+ 
+ if SRTP_OPENSSL
+ srtp_src_o =    ccrtp/crypto/openssl/hmac.cpp \
+-        ccrtp/crypto/openssl/SrtpSymCrypto.cpp
++        ccrtp/crypto/openssl/SrtpSymCrypto.cpp ccrtp/crypto/twofish.c
+ endif
+ 
+ if SRTP_GCRYPT
+diff --git a/src/ccrtp/crypto/openssl/hmac.cpp b/src/ccrtp/crypto/openssl/hmac.cpp
+index 88d33a1..c58448a 100644
+--- a/src/ccrtp/crypto/openssl/hmac.cpp
++++ b/src/ccrtp/crypto/openssl/hmac.cpp
+@@ -52,23 +52,21 @@ void hmac_sha1( uint8_t* key, int32_t key_length,
+                 const uint8_t* data_chunks[],
+                 uint32_t data_chunck_length[],
+                 uint8_t* mac, int32_t* mac_length ) {
+-    HMAC_CTX ctx;
+-    HMAC_CTX_init(&ctx);
+-    HMAC_Init_ex(&ctx, key, key_length, EVP_sha1(), NULL);
++    HMAC_CTX* ctx = HMAC_CTX_new();
++    HMAC_Init_ex(ctx, key, key_length, EVP_sha1(), NULL);
+     while (*data_chunks) {
+-        HMAC_Update(&ctx, *data_chunks, *data_chunck_length);
++        HMAC_Update(ctx, *data_chunks, *data_chunck_length);
+         data_chunks ++;
+         data_chunck_length ++;
+     }
+-    HMAC_Final(&ctx, mac, reinterpret_cast<uint32_t*>(mac_length));
+-    HMAC_CTX_cleanup(&ctx);
++    HMAC_Final(ctx, mac, reinterpret_cast<uint32_t*>(mac_length));
++    HMAC_CTX_free(ctx);
+ }
+ 
+ void* createSha1HmacContext(uint8_t* key, int32_t key_length)
+ {
+-    HMAC_CTX* ctx = (HMAC_CTX*)malloc(sizeof(HMAC_CTX));
++    HMAC_CTX* ctx = HMAC_CTX_new();
+     
+-    HMAC_CTX_init(ctx);
+     HMAC_Init_ex(ctx, key, key_length, EVP_sha1(), NULL);
+     return ctx;
+ }
+@@ -100,7 +98,6 @@ void hmacSha1Ctx(void* ctx, const uint8_t* data[], uint32_t data_length[],
+ void freeSha1HmacContext(void* ctx)
+ {
+     if (ctx) {
+-        HMAC_CTX_cleanup((HMAC_CTX*)ctx);
+-        free(ctx);
++        HMAC_CTX_free((HMAC_CTX*)ctx);
+     }
+-}
+\ No newline at end of file
++}

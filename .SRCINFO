@@ -1,7 +1,7 @@
 pkgbase = ccrtp
 	pkgdesc = An implementation of RTP, the real-time transport protocol from the IETF
 	pkgver = 2.1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.gnu.org/software/ccrtp/
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,10 @@ pkgbase = ccrtp
 	optdepends = texinfo: handle and view info files
 	source = https://ftp.gnu.org/gnu/ccrtp/ccrtp-2.1.2.tar.gz
 	source = https://ftp.gnu.org/gnu/ccrtp/ccrtp-2.1.2.tar.gz.sig
+	source = fix-build-against-openssl-3.x.patch
 	validpgpkeys = 5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA
 	sha256sums = f035ca0e1b5d37b78e358f07a25b05c5cdaf2c85c4b31cf29f6be17f288a349e
 	sha256sums = SKIP
+	sha256sums = e1488762bd489141c560bbde1961ce75271361a1e98457a1a08d50d04ebea407
 
 pkgname = ccrtp
