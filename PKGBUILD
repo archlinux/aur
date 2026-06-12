@@ -3,7 +3,7 @@
 # (.github/workflows/release.yml, aur-publish job) overwrites them per release.
 pkgname=grimoire-bin
 _pkgname=grimoire
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Mod manager and companion tool for Deadlock (GameBanana browser, hero locker, crosshair designer)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug' '!emptydirs')
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/grimoire_${pkgver}_amd64.deb")
-sha256sums=('b9039552bff56c14b58c3b1e320096afef222a408794eefad69b9db846e13d0a')
+sha256sums=('a8ae79f1d464e8cfb260b0edac5c9094dbf973e85ca8bac1e50bac978d59c8d1')
 
 package() {
     cd "${srcdir}"
