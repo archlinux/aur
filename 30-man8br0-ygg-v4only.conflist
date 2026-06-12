@@ -11,7 +11,7 @@
       "ipam": {
         "type": "host-local",
         "routes": [{ "dst": "0.0.0.0/0" }],
-        "ranges": [[{ "subnet": "10.4.0.0/24" }]]
+        "ranges": [[{ "subnet": "10.10.2.0/24" }]]
       }
     },
     {
