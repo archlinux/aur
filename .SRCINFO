@@ -1,17 +1,17 @@
 pkgbase = stable-diffusion.cpp-ggml
 	pkgdesc = Diffusion model(SD,Flux,Wan,...) inference in pure C/C++ (use system ggml)
 	pkgver = 0.0.0.685
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leejet/stable-diffusion.cpp
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = ggml-src=0.15.1
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
 	makedepends = pnpm
-	depends = ggml>=0.14.0.b9000
-	depends = ggml<0.14.1
+	depends = ggml=0.15.1
 	depends = glibc
 	depends = libstdc++
 	depends = libgcc

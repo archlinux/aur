@@ -3,28 +3,26 @@
 _stable_diffusion_cpp_tag=master-685-19bdfe2
 _stable_diffusion_cpp_version=685
 _stable_diffusion_cpp_commit=${_stable_diffusion_cpp_tag##*-}
-_llama_cpp_version=9596
-_ggml_version=0.14.0
-_ggml_next_version=0.14.1
+_ggml_version=0.15.1
 _stable_diffusion_cpp_sha256sum=ea507d48eb3e1f88aab691e408438c4d9df5e229167d6726ee16b4b7e15b804d
 _sdcpp_webui_commit=797ccf80825cc035508ba9b599b2a21953e7f835
 _sdcpp_webui_sha256sum=a053b9b606a44bc07e555e23d04fc5e834b78cb267d3e0fdf640ff66f131e8c9
 pkgname=stable-diffusion.cpp-ggml
 pkgver=0.0.0.${_stable_diffusion_cpp_version}
-pkgrel=1
+pkgrel=2
 pkgdesc='Diffusion model(SD,Flux,Wan,...) inference in pure C/C++ (use system ggml)'
 arch=(x86_64 aarch64)
 url='https://github.com/leejet/stable-diffusion.cpp'
 license=('MIT')
 depends=(
-    "ggml>=${_ggml_version}.b9000"
-    "ggml<${_ggml_next_version}"
+    "ggml=${_ggml_version}"
     glibc
     libstdc++
     libgcc
     libwebp
 )
 makedepends=(
+    "ggml-src=${_ggml_version}"
     cmake
     ninja
     git
@@ -61,7 +59,7 @@ prepare() {
   ln -sf "sdcpp-webui-${_sdcpp_webui_commit}" sdcpp-webui
   mkdir -p "stable-diffusion.cpp/.git"
   rm -rf stable-diffusion.cpp/ggml
-  ln -sf /usr/src/ggml stable-diffusion.cpp/ggml
+  ln -sf /usr/src/ggml-${_ggml_version} stable-diffusion.cpp/ggml
   rm -rf stable-diffusion.cpp/examples/server/frontend
   ln -sf "../../../sdcpp-webui" stable-diffusion.cpp/examples/server/frontend
 }
