@@ -1,12 +1,12 @@
 pkgbase = krathalans-apparmor-profiles-git
-	pkgdesc = Krathalan's apparmor profiles for desktop and server software (Firefox, nginx, postfix, and more)
-	pkgver = r701.91207c1
+	pkgdesc = Krathalan's apparmor profiles for server software
+	pkgver = r715.977186a
 	pkgrel = 1
-	url = https://github.com/krathalan/apparmor-profiles
+	url = https://codeberg.org/krathalan/apparmor-profiles
 	arch = any
 	license = GPL3
 	makedepends = git
-	source = krathalans-apparmor-profiles-git::git+https://github.com/krathalan/apparmor-profiles?signed
+	source = krathalans-apparmor-profiles-git::git+https://codeberg.org/krathalan/apparmor-profiles?signed
 	source = 99-apparmor-profiles.hook
 	validpgpkeys = 0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
