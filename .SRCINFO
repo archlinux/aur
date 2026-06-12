@@ -1,6 +1,6 @@
 pkgbase = simplenote-electron-bin
 	pkgdesc = The simplest way to keep notes
-	pkgver = 2.26.0
+	pkgver = 2.26.1
 	pkgrel = 1
 	url = https://github.com/Automattic/simplenote-electron
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = simplenote-electron-bin
 	depends = gtk3
 	depends = libxss
 	provides = simplenote
-	source_x86_64 = https://github.com/Automattic/simplenote-electron/releases/download/v2.26.0/Simplenote-linux-2.26.0-amd64.deb
-	sha256sums_x86_64 = 1a7d527736f71647bc285e0ce26ffc10342818c22d7fda3557c5268d0a2256bc
-	source_aarch64 = https://github.com/Automattic/simplenote-electron/releases/download/v2.26.0/Simplenote-linux-2.26.0-arm64.deb
-	sha256sums_aarch64 = 41f21ac8de86fd9856ba59d0d9f903dc7e272ec1393d90d4211f3031bdff2592
+	source_x86_64 = https://github.com/Automattic/simplenote-electron/releases/download/v2.26.1/Simplenote-linux-2.26.1-amd64.deb
+	sha256sums_x86_64 = 6296cd6f73e3d570524a3329641fb09a3b1ff5758d9f9296d501ccceba0a55c6
+	source_aarch64 = https://github.com/Automattic/simplenote-electron/releases/download/v2.26.1/Simplenote-linux-2.26.1-arm64.deb
+	sha256sums_aarch64 = a6d19d5998751aa8797e0fcfa6625cb6afded3ebebec44b8d099de97bf9fcd77
 
 pkgname = simplenote-electron-bin
