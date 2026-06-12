@@ -1,6 +1,6 @@
 # Maintainer: Berny23 <webmaster@berny23.de>
 pkgname=virtual-surround-manager
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Enable virtual 7.1 surround sound for your headphones with just one click"
 arch=('x86_64')
