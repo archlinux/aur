@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoa@t1c.dev>
 _pkgname="letta-code"
 pkgname="$_pkgname"
-pkgver=0.27.8
+pkgver=0.27.9
 pkgrel=1
 pkgdesc="The memory-first coding agent"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ source=(
 )
 noextract=()
 options=(!strip)
-sha256sums=('482dc7ea43f1f5a1df59e466f2d0ddc4ebd400bc6aac51ebf768fdb8f30916cd'
+sha256sums=('43d996c4384318a9892f632f6180a9f7d5436a2d9166b8f06d10ab02f66fa1f9'
             'c9350b744337f0a0b0c51e1a8661e8c7bc757fcc753bddaef872b0ef626228e8')
 
 build() {
