@@ -22,7 +22,7 @@ optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${url}/releases/download/v${pkgver}/capi-desktop-linux-x86_64.tar.gz")
-sha256sums=('46502b9fe73635719225ec5694a14ee564f49985562846d89216a9ab9cfc165b')
+sha256sums=('f00d8375748a1d559fe37bc97b56341ca8eded57310b53b23b07d119c1e3f316')
 noextract=()
 
 package() {
