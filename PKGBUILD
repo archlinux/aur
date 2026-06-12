@@ -1,31 +1,27 @@
 # Maintainer: kusanaginoturugi <kusanaginoturugi at gmail dot com>
+
 pkgname=man-pages-postgresql-ja
-pkgver=15.4
+pkgver=18.3
 pkgrel=1
 pkgdesc="Japanese man pages for PostgreSQL"
-arch=("any")
+arch=('any')
 url="https://pgsql-jp.github.io/"
-license=("custom")
-source=("${url}jpug-doc/${pkgver}/man.tar.gz")
-md5sums=('43a4d2049c28c4e038670b798f9fecef')
+license=('PostgreSQL')
+source=(
+  "man-${pkgver}.tar.gz::${url}jpug-doc/${pkgver}/man.tar.gz"
+  "legalnotice-${pkgver}.html::${url}jpug-doc/${pkgver}/html/legalnotice.html"
+)
+sha256sums=('f854b7189199e2a71de2bd0591ae48ceecdb15bc4c9bd1d037125ae4afcd0527'
+            '2b8aeb6af136569e61d2705e731a2f9d3afe0838967ebeee23a64c3b7d772bb8')
 
 package() {
-  _license_url="https://www.postgresql.jp/document/15/html/legalnotice.html"
-  _destdir="${pkgdir}/usr/share/licenses/${pkgname}"
-  install -d "${_destdir}"
-  curl -Ls "${_license_url}" -o "${_destdir}/legalnotice.html"
+  local section
 
-  cd ${srcdir}
-  for i in 1 3 7; do
-    if [ ! -e "${pkgdir}/usr/share/man/ja/man${i}/" ]; then
-      install -d "${pkgdir}/usr/share/man/ja/man${i}/"
-
-      # To copy a noexistent man only.
-      for f in man${i}/*.${i} ; do
-      	  if [ ! -e "/usr/share/man/ja/${f}" ]; then
-      	  install -D -m644 ${f} "${pkgdir}/usr/share/man/ja/${f}"
-	  fi
-      done
-    fi
+  for section in 1 3 7; do
+    install -Dm644 -t "${pkgdir}/usr/share/man/ja/man${section}" \
+      "man${section}"/*."${section}"
   done
+
+  install -Dm644 "legalnotice-${pkgver}.html" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/legalnotice.html"
 }
