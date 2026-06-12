@@ -5,9 +5,9 @@
 
 pkgname=ucommon
 pkgver=7.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A class framework that was specifically designed for telephony applications'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='https://www.gnu.org/software/commoncpp/'
 license=('LGPL-3.0-or-later')
 depends=('gcc-libs' 'openssl' 'bash')
