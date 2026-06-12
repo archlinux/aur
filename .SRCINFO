@@ -1,6 +1,6 @@
 pkgbase = python-filewrap
 	pkgdesc = Python file wrappers.
-	pkgver = 0.2.9.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://pypi.org/project/python-filewrap
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-filewrap
 	conflicts = python-filewrap
 	options = !strip
 	options = !debug
-	source = python_filewrap-0.2.9.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_filewrap/python_filewrap-0.2.9.1.tar.gz
-	sha256sums = c3ce7a7533535a4c7de687e25ebf2f5bc5bc692fe8a349392929b0bdf991e400
+	source = python_filewrap-0.3.0.tar.gz::https://files.pythonhosted.org/packages/source/p/python_filewrap/python_filewrap-0.3.0.tar.gz
+	sha256sums = 0d190b9c5c98e4c97d7d24baec0f8ccc5e222e60183caa35e1dc8085908f9a8f
 
 pkgname = python-filewrap
