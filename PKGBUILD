@@ -1,4 +1,5 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: devome <evinedeng@hotmail.com>
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Andrew Steinke <rkcf@rkcf.me>
@@ -18,6 +19,11 @@ optdepends=('python-fonttools>=4: TTF support')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz")
 sha256sums=('cff356dd4001851c464cda3f840ed4713c6b53ee1c0a19b79bad12b508e06cda')
+
+latestver() {
+  curl -fsSL "https://pypi.org/pypi/${_name}/json" |
+    python -c "import sys, json; print(json.load(sys.stdin)['info']['version'])"
+}
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
