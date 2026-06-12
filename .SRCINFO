@@ -1,6 +1,6 @@
 pkgbase = scrcpy-mask-bin
 	pkgdesc = Control Android devices via customizable mouse/keyboard mappings using scrcpy protocol
-	pkgver = 0.7.3
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/AkiChase/scrcpy-mask
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = scrcpy-mask-bin
 	provides = scrcpy-mask
 	conflicts = scrcpy-mask
 	options = !debug
-	source = scrcpy-mask-bin-0.7.3.zip::https://github.com/AkiChase/scrcpy-mask/releases/download/v0.7.3/scrcpy-mask-linux-x64.zip
-	source = scrcpy-mask-bin-0.7.3-icon.png::https://raw.githubusercontent.com/AkiChase/scrcpy-mask/v0.7.3/icons/128x128.png
-	sha256sums = 6d4159605389368967ccdabdaac220a2dd271ba1594312499c00529b81f16920
+	source = scrcpy-mask-bin-0.8.1.zip::https://github.com/AkiChase/scrcpy-mask/releases/download/v0.8.1/scrcpy-mask-linux-x64.zip
+	source = scrcpy-mask-bin-0.8.1-icon.png::https://raw.githubusercontent.com/AkiChase/scrcpy-mask/v0.8.1/icons/128x128.png
+	sha256sums = 846088e65465b5a519fa82ceac3978d74ae2f4c90dda9533dad168335b5d542e
 	sha256sums = cf45e9c198648bea6eb041e696f468a985b5b6401cc5e1f2706ada5c5993ab03
 
 pkgname = scrcpy-mask-bin
