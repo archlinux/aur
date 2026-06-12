@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="python-diwire"
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A lightweight, type-safe dependency injection container with automatic wiring, scoped lifetimes, and zero dependencies"
 
@@ -16,7 +16,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 depends=('python' 'python-pydantic' 'python-pydantic-settings' 'python-fastapi' 'python-typing_extensions' 'python-pytest')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
-sha256sums=('bd3019548125524d752d2f51cf67512a5873095d9e495301c52e0c8678bb97c4')
+sha256sums=('093306d1db39286ea23685f42c6248c9aae15de16af1f69589c7f00629603217')
 
 
 build() {
