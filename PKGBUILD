@@ -2,14 +2,14 @@
 # Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 pkgname="synergy3-bin"
 pkgver="3.6.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('custom:Proprietary')
 arch=("x86_64")
 source=()
 sha256sums=()
-conflicts=('synergy' 'synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin' 'synergy3-bin' 'synergy3-beta-bin')
+conflicts=('synergy' 'synergy2-bin' 'synergy3-bin' 'synergy3-beta-bin')
 depends=('openssl' 'alsa-lib' 'libei' 'libnotify' 'nss' 'qt6-base' 'libxkbfile' 'libxtst' 'libappindicator-gtk3' 'libayatana-appindicator')
 optdepends=('pugixml')
 options=("!strip")
