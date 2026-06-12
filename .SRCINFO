@@ -1,0 +1,17 @@
+pkgbase = muon-pdf
+	pkgdesc = Touchscreen-first lightweight PDF reader for music sheets and books
+	pkgver = 1.0.7.r1.g55611cc
+	pkgrel = 1
+	url = https://github.com/Boteium/muon-pdf
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = zig
+	depends = gtk4
+	depends = mupdf
+	options = !debug
+	source = git+https://github.com/Boteium/muon-pdf.git#branch=zig0.16
+	sha256sums = SKIP
+
+pkgname = muon-pdf
