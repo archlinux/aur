@@ -3,13 +3,14 @@
 _pkgname=rimgo
 pkgname=${_pkgname}-bin
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An alternative frontend for Imgur (binary version)"
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/rimgo/rimgo"
 options=(!lto)
 license=('AGPL3')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 backup=('etc/rimgo.conf')
 
 source=("rimgo.service" "rimgo.conf")
