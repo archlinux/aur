@@ -1,13 +1,14 @@
 pkgbase = lightningcss-cli-bin
 	pkgdesc = Extremely fast CSS parser, transformer, and minifier
 	pkgver = 1.32.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lightningcss.dev/
 	arch = x86_64
 	arch = aarch64
 	license = MPL-2.0
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
+	depends = libgcc_s.so
 	provides = lightningcss
 	provides = lightningcss-cli
 	conflicts = lightningcss

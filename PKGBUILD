@@ -3,7 +3,7 @@
 pkgname=lightningcss-cli-bin
 _pkgname=${pkgname%-bin}
 pkgver=1.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Extremely fast CSS parser, transformer, and minifier'
 license=(MPL-2.0)
 
@@ -14,7 +14,7 @@ sha256sums_x86_64=('4f821eb5ea1078b8fd10adbe4efd06978edee236f8e6f7f84a3c5d87b74b
 sha256sums_aarch64=('4f821eb5ea1078b8fd10adbe4efd06978edee236f8e6f7f84a3c5d87b74b5505')
 
 arch=(x86_64 aarch64)
-depends=(glibc gcc-libs)
+depends=(glibc libgcc libgcc_s.so)
 conflicts=(lightningcss lightningcss-cli)
 provides=(lightningcss lightningcss-cli)
 options=('!strip' '!debug')
