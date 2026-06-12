@@ -1,4 +1,4 @@
-pkgname=lindora-git
+pkgname=lindora
 pkgver=1.1
 pkgrel=0
 pkgdesc="An unofficial site-specific browser wrapper for the Pandora web service."

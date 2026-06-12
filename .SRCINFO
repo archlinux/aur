@@ -1,4 +1,4 @@
-pkgbase = lindora-git
+pkgbase = lindora
 	pkgdesc = An unofficial site-specific browser wrapper for the Pandora web service.
 	pkgver = 1.1
 	pkgrel = 0
@@ -13,4 +13,4 @@ pkgbase = lindora-git
 	source = git+https://github.com/Logawinner/Lindora.git
 	sha256sums = SKIP
 
-pkgname = lindora-git
+pkgname = lindora
