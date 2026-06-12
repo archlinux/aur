@@ -13,7 +13,7 @@ depends=(
   'zathura'
   'zathura-pdf-poppler'
 )
-makedepends=('cargo')
+makedepends=('cargo' 'gcc')
 source=("muT-$pkgver.tar.gz::https://github.com/faris0x/muT/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 validpgpkeys=()
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd "$srcdir/muT-$pkgver"
-  cargo build --release --frozen
+  cargo build --release
 }
 
 package() {

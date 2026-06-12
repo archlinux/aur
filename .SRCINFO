@@ -6,6 +6,7 @@ pkgbase = mut
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = gcc
 	depends = texlive-core
 	depends = zathura
 	depends = zathura-pdf-poppler
