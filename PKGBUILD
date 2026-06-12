@@ -1,11 +1,11 @@
 # Maintainer: Ardox <ardox@axos-project.com>
 pkgname=sleex-git
 _pkgname=sleex
-pkgver=1.28.r646.0255311
+pkgver=1.32.r661.33b1e23
 pkgrel=1
 pkgdesc="Desktop environment focused on aesthetics and performance (git version)"
 arch=("x86_64")
-url="https://gitlab.com/axos-project/sleex"
+url="https://github.com/axos-project/sleex"
 license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
