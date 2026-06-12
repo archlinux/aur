@@ -1,7 +1,7 @@
 # Maintainer: Homer Xing <homer dot hsing @t gmail dot com>
 
 pkgname=xiangqilab
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 epoch=
 pkgdesc="A fully local Xiangqi desktop app"
@@ -26,7 +26,7 @@ changelog=
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/xiangqilab/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 noextract=()
 validpgpkeys=()
-sha256sums=("57e12a53f5e6c6f1513d367749dda09e35653220822e8a9cad079b3a290895bc")
+sha256sums=("fb04ecdf9910b1158e97309c073b7529b576112cc14efe6ca4cdd4bafef453f4")
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
@@ -37,6 +37,6 @@ package() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
   python3 -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 src/xiangqilab/app_icon/app_icon.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
+  install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
