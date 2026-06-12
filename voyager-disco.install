@@ -1,0 +1,11 @@
+post_install() {
+  udevadm control --reload-rules 2>/dev/null || true
+  udevadm trigger --attr-match=idVendor=3297 2>/dev/null || true
+
+  echo "To sync LEDs with your Omarchy theme, run as your user:"
+  echo "  voyager-disco omarchy install"
+}
+
+post_upgrade() {
+  udevadm control --reload-rules 2>/dev/null || true
+}

@@ -1,0 +1,1 @@
+ATTRS{idVendor}=="3297", TAG+="uaccess"
