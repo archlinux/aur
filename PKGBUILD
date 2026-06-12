@@ -1,6 +1,6 @@
 # Maintainer: Jesse Pinkman <M-Igashi@users.noreply.github.com>
 pkgname=mp3rgui
-pkgver=2.7.3
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='GUI application for mp3rgain - lossless MP3 volume adjustment'
 arch=('x86_64' 'aarch64')
