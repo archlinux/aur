@@ -26,17 +26,15 @@ sha256sums=('SKIP')
 build() {
 cd "${srcdir}/Lindora"
 
-```
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build
-```
 
 }
 
 package() {
 cd "${srcdir}/Lindora"
 
-```
+
 install -Dm755 build/lindora-native \
     "${pkgdir}/usr/bin/lindora-native"
 
@@ -45,6 +43,6 @@ install -Dm644 Lindora.svg \
 
 install -Dm644 lindora-native.desktop \
     "${pkgdir}/usr/share/applications/lindora-native.desktop"
-```
+
 
 }
