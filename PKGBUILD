@@ -1,8 +1,8 @@
 # Maintainer: Dylan Delgado <dylan1496 at live dot com>
 pkgname=inky-bin
 pkgname2=inky
-pkgver=0.15.1
-pkgrel=2
+pkgver=0.15.2
+pkgrel=1
 pkgdesc="Editor for ink: inkle's narrative scripting language - precompiled binary"
 arch=('x86_64')
 url="http://www.inklestudios.com/ink"
@@ -15,8 +15,8 @@ optdepends=('mono: for exporting to web and JSON')
 source=("${pkgname}-${pkgver}.zip::https://github.com/inkle/inky/releases/download/${pkgver}/Inky_linux.zip"
         "${pkgname}-${pkgver}.png::https://github.com/inkle/inky/raw/${pkgver}/resources/Icon1024.png"
         "${pkgname2}.desktop")
-sha512sums=('738b734aa1fa24d9ba09361c7ab5ca8b08a0e910724ef115d4c3d1d7a75f87c501d978da6830e617b961d7566b95d3b7bf358fc6e1b06dc3246a12e5deb96531'
-            '4f465c45c1c61ede58db0a36682f575b7d755c9c28b0261a7892045813986d12f77d3d5c8881d9c476e07ca5169ed163c89f56a8a4049c6f0337db6cab3275e5'
+sha512sums=('ff4a2cfcaea6a469aad926756b55e16afc02de27145ff6a41ab4b2e6a4680d212bf3bd5a21acc2065b9255c0926b1e48daf6b57f445c39cc899e69b1f0ff8da2'
+            '9b88362b61635a2328bd2439aaeca7b26875e158b3c15f7317d0f0f26306891f48d147cd1d63602e36ee249880c0b500397a20cdff14e090a699925f37e18ef9'
             '84fd0f87bfdf5e1fd6df5f9e253e3aa71373b9ad28a1d027522eceb6cf94a9a370ef239bfe0738ce64efabb3685945fc40c054265418b0a639e26e4213211481')
 
 package() {
