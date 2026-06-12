@@ -4,7 +4,7 @@
 pkgname=voyager-disco-bin
 _binname=voyager-disco
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Control RGB LEDs on ZSA keyboards (Voyager, Moonlander, ErgoDox EZ) without Keymapp (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/monorkin/voyager-disco"
@@ -12,6 +12,7 @@ license=('MIT')
 depends=('glibc' 'systemd-libs')
 provides=('voyager-disco')
 conflicts=('voyager-disco')
+options=('!debug')
 install=voyager-disco.install
 source=('50-zsa.rules'
         'LICENSE')
