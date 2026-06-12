@@ -1,8 +1,8 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=gh-eco
-pkgver=0.1.5
-pkgrel=3
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="🦎 gh cli extension to explore the ecosystem"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jrnxf/gh-eco"
