@@ -1,6 +1,6 @@
 pkgbase = cardmirror-bin
 	pkgdesc = ProseMirror-based debate evidence editor; round-trips Verbatim docx
-	pkgver = 0.1.0_alpha.10
+	pkgver = 0.1.0_alpha.11
 	pkgrel = 1
 	url = https://github.com/ant981228/cardmirror
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = cardmirror-bin
 	conflicts = cardmirror-git
 	conflicts = CardMirror
 	options = !strip
-	source = https://github.com/ant981228/cardmirror/releases/download/v0.1.0-alpha.10/cardmirror-0.1.0-alpha.10.pacman
+	source = https://github.com/ant981228/cardmirror/releases/download/v0.1.0-alpha.11/cardmirror-0.1.0-alpha.11.pacman
 	sha256sums = SKIP
 
 pkgname = cardmirror-bin
