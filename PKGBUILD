@@ -1,8 +1,9 @@
 # Maintainer: emixdy <emixdy@github>
 _pkgname=capi-desktop
+_pkgtag=linux
 pkgname="${_pkgname}-bin"
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cliente gráfico para YouTube Music con soporte de descargas y Discord RPC"
 arch=('x86_64')
 url="https://github.com/jh2929/Capi"
@@ -21,7 +22,7 @@ makedepends=()
 optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${url}/releases/download/v${pkgver}/capi-desktop-linux-x86_64.tar.gz")
+source=("${url}/releases/download/v${pkgver}-${_pkgtag}/capi-desktop-linux-x86_64.tar.gz")
 sha256sums=('f00d8375748a1d559fe37bc97b56341ca8eded57310b53b23b07d119c1e3f316')
 noextract=()
 
