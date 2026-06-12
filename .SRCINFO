@@ -1,6 +1,6 @@
 pkgbase = openclaw
 	pkgdesc = Multi-channel AI gateway with extensible messaging integrations
-	pkgver = 2026.6.5
+	pkgver = 2026.6.6
 	pkgrel = 1
 	url = https://github.com/openclaw/openclaw
 	install = openclaw.install
@@ -9,10 +9,10 @@ pkgbase = openclaw
 	license = MIT
 	makedepends = npm
 	depends = nodejs>=22
-	noextract = openclaw-2026.6.5.tgz
+	noextract = openclaw-2026.6.6.tgz
 	options = !debug
 	options = !strip
-	source = https://registry.npmjs.org/openclaw/-/openclaw-2026.6.5.tgz
-	sha256sums = 95efb5ed8a177068324c1ed83f891df446c936637096b89f32a496cc7e411540
+	source = https://registry.npmjs.org/openclaw/-/openclaw-2026.6.6.tgz
+	sha256sums = dc869bb0486abd9b5e215caaba8c1bea0fb4507660b1dcf9b287e36b1f60bdbb
 
 pkgname = openclaw
