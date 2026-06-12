@@ -10,7 +10,7 @@ pkgbase = sleex-user-config-git
 	provides = axskel-hypr
 	conflicts = sleex-user-config
 	conflicts = axskel-hypr
-	source = git+https://gitlab.com/axos-project/sleex.git
+	source = https://github.com/axos-project/sleex.git
 	sha256sums = SKIP
 
 pkgname = sleex-user-config-git

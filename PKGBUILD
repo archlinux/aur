@@ -10,7 +10,7 @@ license=('GPL3')
 optdepends=("sleex-git: the desktop env that goes with it")
 provides=("sleex-user-config" "axskel-hypr")
 conflicts=("sleex-user-config" "axskel-hypr")
-source=("git+https://gitlab.com/axos-project/sleex.git")
+source=("https://github.com/axos-project/sleex.git")
 sha256sums=('SKIP')
 
 pkgver() {
