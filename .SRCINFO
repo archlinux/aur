@@ -1,6 +1,6 @@
 pkgbase = bestfetch
 	pkgdesc = a customizable, beautiful, and blazing fast system fetch, powered by nim
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://gitlab.com/Maxb0tbeep/bestfetch
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = bestfetch
 	makedepends = git
 	provides = bestfetch
 	conflicts = bestfetch-git
-	source = https://gitlab.com/Maxb0tbeep/bestfetch/-/archive/1.7.0/bestfetch-1.7.0.tar.gz
+	source = https://gitlab.com/Maxb0tbeep/bestfetch/-/archive/1.8.0/bestfetch-1.8.0.tar.gz
 	md5sums = SKIP
 
 pkgname = bestfetch
