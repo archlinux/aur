@@ -1,6 +1,6 @@
 pkgbase = pixieditor-bin
 	pkgdesc = Universal 2D Graphics Editor
-	pkgver = 2.1.0.22
+	pkgver = 2.1.1.5
 	pkgrel = 1
 	url = https://pixieditor.net
 	arch = x86_64
@@ -12,7 +12,12 @@ pkgbase = pixieditor-bin
 	depends = zlib
 	provides = pixieditor
 	conflicts = pixieditor
-	source = https://github.com/PixiEditor/PixiEditor/releases/download/2.1.0.22/PixiEditor-2.1.0.22-amd64-linux.tar.gz
-	sha256sums = 747d92a02d6056db76c7be66215c0f1cee543686e8571cb47bdad1b27de267f9
+	noextract = pixieditor-bin-2.1.1.5.tar.gz
+	source = pixieditor-bin-2.1.1.5.tar.gz::https://github.com/PixiEditor/PixiEditor/releases/download/2.1.1.5/PixiEditor-2.1.1.5-amd64-linux.tar.gz
+	source = PixiEditor.desktop
+	source = pixieditor.sh
+	sha256sums = 4fedf0fac5d55d967be3c25dad5b8894472e3ccc8ee110ded2d9d808a6c361e8
+	sha256sums = 9d434d1b1541b73159cdbdec282f6e8cf98d7f5630313f8c08b7b9b9bb62a289
+	sha256sums = 8ff9b2644b6705fcb3c1f0b581cdc4c82c4d657c58ee7e9e039335d97ebef1ac
 
 pkgname = pixieditor-bin
