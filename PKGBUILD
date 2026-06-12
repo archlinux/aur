@@ -1,5 +1,5 @@
 pkgname=attackshark-x11
-pkgver=1.0.2.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Attack Shark mouse configuration utility for Linux X11"
 arch=('x86_64')
