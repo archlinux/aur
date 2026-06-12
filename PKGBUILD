@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=wmii-git
-pkgver=r2832.26848c93
-pkgrel=2
+pkgver=r2877.4d779605
+pkgrel=1
 pkgdesc='A dynamic window manager for X11.'
 arch=('i686' 'x86_64')
 url='https://github.com/0intro/wmii'
@@ -13,8 +13,6 @@ optdepends=(
 	'libxft: for anti-aliased font support'
 	'xorg-xmessage: for use of the default wmiirc configs'
 	'plan9port: for use of the alternative plan9port wmiirc'
-	'python2: for use of the alternative Python wmiirc'
-	'ruby-rumai: for use of the alternative Ruby wmiirc'
 )
 conflicts=("${pkgname%-*}" "${pkgname%-*}-hg")
 source=("$pkgname::git+$url")
