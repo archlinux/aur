@@ -7,7 +7,7 @@
 
 pkgname=go-configure-sw-hub
 _pkgver_major=6.54
-_pkgver_minor=001
+_pkgver_minor=002
 pkgver=$_pkgver_major.$_pkgver_minor
 
 pkgrel=1
@@ -60,7 +60,7 @@ replaces=('greenpak-designer-dev' 'greenpak-designer')
 options=('!strip' '!debug')
 
 source=("https://renesasweb-greenpak.s3.us-west-2.amazonaws.com/v${_pkgver_major}/go-configure-sw-hub-v${pkgver}-debian-13-amd64.deb")
-b2sums=('658cdc5bff65264b83782840255a44ba86843ef829434c7d0fd6fa75192a19af3d95ae0c2e62c802aaa8d1fcc2e7723a92c7facc3bfa59be0edd28a51686a647')
+b2sums=('1e17c8842bc93af575393cde8fac8966637551045056867df94ce6fb5d58d9e7dd03712dde1feb5b28eea2cd40b890b926bec8089ad5d464bbfaef29bf3556fb')
 
 package() {
     # Extract the package data
