@@ -2,7 +2,7 @@
 
 pkgname=tarotcaster
 _pkgname=TarotCaster
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 pkgdesc='Tarot Casting Application with AI Interpretation of Spreads'
 arch=('i686' 'x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'ninja' 'qt6-tools')
 #conflicts=('')
 #provides=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('29ed4eddf8216f5725f3e38ccfabbd4d7c9e7a38090c9ae313ff199f5f24596d')
+sha256sums=('2d99171763ca8dc16798e783b9a7a3df4616f091a89e5c841dbbce1705c2f117')
 
 
 build(){
