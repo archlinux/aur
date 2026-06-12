@@ -1,6 +1,6 @@
 pkgbase = git-archaeologist
 	pkgdesc = Find the most dangerous files in any git repo — curse scores, bus factor, hidden coupling. Used to analyze 26 major OSS projects.
-	pkgver = 1.9.3
+	pkgver = 1.9.5
 	pkgrel = 1
 	url = https://github.com/SushantVerma7969/git-archaeologist
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = git-archaeologist
 	depends = nodejs
 	depends = git
 	provides = git-arch
-	noextract = git-archaeologist-1.9.3.tgz
+	noextract = git-archaeologist-1.9.5.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = git-archaeologist-1.9.3.tgz::https://registry.npmjs.org/git-archaeologist/-/git-archaeologist-1.9.3.tgz
-	b2sums = a272054af5fd27bd039080a083e6731e8cd1def51b1eae327c01da80dece51a46d29db5f6d39f21f7d173b80a5bbfcd7a6635132fc4ef3a4015a60c527afee33
+	source = git-archaeologist-1.9.5.tgz::https://registry.npmjs.org/git-archaeologist/-/git-archaeologist-1.9.5.tgz
+	b2sums = 4387c40d58335e5778494389561ac1e3c4d28b2a1bbe25a3b2aebe3640f7b4bf7339fc2aa0f0f82a1f152f843884bfa18c36c77e2f3800cb6db8037a055adc1c
 
 pkgname = git-archaeologist
