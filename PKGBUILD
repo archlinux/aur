@@ -3,7 +3,7 @@
 # @PLACEHOLDER@ values and pushes the result to the AUR.
 pkgname=voyager-disco
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Control RGB LEDs on ZSA keyboards (Voyager, Moonlander, ErgoDox EZ) without Keymapp"
 arch=('x86_64' 'aarch64')
 url="https://github.com/monorkin/voyager-disco"
@@ -12,7 +12,7 @@ depends=('systemd-libs')
 makedepends=('cargo')
 # makepkg's -flto=auto in CFLAGS produces GCC-LTO objects for the bundled
 # hidapi C library, which Rust's lld linker can't read.
-options=('!lto')
+options=('!lto' '!debug')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         '50-zsa.rules')
