@@ -1,7 +1,7 @@
 pkgbase = cangaroo
 	pkgdesc = Open source can bus analyzer software - with support for CANable / CANable2, CANFD, and other new features
 	pkgver = 0.2.2.r64.gca7f907
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/normaldotcom/cangaroo
 	arch = x86_64
 	license = GPL-2.0-only

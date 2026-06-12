@@ -2,7 +2,7 @@
 
 pkgname=cangaroo
 pkgver=0.2.2.r64.gca7f907
-pkgrel=10
+pkgrel=11
 pkgdesc="Open source can bus analyzer software - with support for CANable / CANable2, CANFD, and other new features"
 arch=($CARCH)
 license=('GPL-2.0-only')
@@ -36,20 +36,20 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}/${pkgname}"
 	qmake-qt5
 	make
-	cd canifconfig
+	cd "${srcdir}/${pkgname}"/canifconfig
 	qmake-qt5
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "${srcdir}/${pkgname}"
 	# 	make install DESTDIR=${pkgdir} prefix=/usr
-	install -Dm755 "$srcdir/$pkgname/bin/cangaroo" -t "$pkgdir/usr/bin"
-	install -Dm755 "$srcdir/$pkgname/src/scripts/setup_vcan.sh" "$pkgdir/usr/bin/cangaroo-setup-vcan"
-	install -Dm755 "$srcdir/$pkgname/canifconfig/canifconfig" -t "$pkgdir/usr/bin"
-	install -Dm644 "$srcdir/$pkgname/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
-	install -Dm644 "$srcdir/$pkgname/src/assets/cangaroo.png" -t "$pkgdir/usr/share/pixmaps"
+	install -Dm755 "bin/cangaroo" -t "$pkgdir/usr/bin"
+	install -Dm755 "src/scripts/setup_vcan.sh" "$pkgdir/usr/bin/cangaroo-setup-vcan"
+	install -Dm755 "canifconfig/canifconfig" -t "$pkgdir/usr/bin"
+	install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm644 "src/assets/cangaroo.png" -t "$pkgdir/usr/share/pixmaps"
 }
