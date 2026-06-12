@@ -1,0 +1,12 @@
+pkgbase = pacx
+	pkgdesc = A Simple Pacman Wrapper inspired by Powerpill and Nala
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/abdurehmanimran/pacx
+	arch = x86_64
+	license = GPL-2.0
+	provides = pacx
+	source = git+https://github.com/abdurehmanimran/pacx.git
+	md5sums = SKIP
+
+pkgname = pacx
