@@ -2,7 +2,7 @@
 
 pkgbase=bcu-git
 pkgname=bcu-git
-pkgver=1.1.100.r5.ga3efbea
+pkgver=1.1.129.r0.g5342999
 pkgrel=1
 epoch=
 pkgdesc="bcu (Board Control Utilities)"
@@ -47,6 +47,8 @@ prepare() {
     sed -i 's|${LIBFTDI_LIBRARY_DIRS}|${LIBFTDI_LIBRARY_DIRS} ${LIBCURL_LIBRARY_DIRS}|g' CMakeLists.txt
     sed -i 's|${PROJECT_SOURCE_DIR}/libcurl/build.bcu/lib/libcurl.a|${LIBCURL_LIBRARY_DIRS}/libcurl.so|g' CMakeLists.txt
     sed -i 's|COMMAND ${PROJECT_SOURCE_DIR}/build_libs.sh ${PROJECT_SOURCE_DIR})|)|g' CMakeLists.txt
+    # Fix passing struct eeprom_device* to function expecting struct device*
+    sed -i 's/free_device_linkedlist_backward(end_point);$/free_device_linkedlist_backward((struct device*)end_point);/' bcu.c
 }
 
 build() {
