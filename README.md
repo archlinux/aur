@@ -144,12 +144,16 @@ README.md
 
 ## Remotes
 
-This repository is maintained in Forgejo as the working repository.
+## Remotes
+
+## Remotes
+
+This repository is maintained in an internal Forgejo instance as the working repository.
 
 The package is also published to the Arch User Repository.
 
 ```text
-origin  Forgejo working repository
+origin  internal Forgejo working repository
 aur     Arch User Repository
 ```
 
