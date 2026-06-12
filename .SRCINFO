@@ -1,6 +1,6 @@
 pkgbase = humen-mcp-bin
 	pkgdesc = Human-in-the-loop MCP server
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/humen-mcp
 	install = humen-mcp.install
@@ -13,7 +13,7 @@ pkgbase = humen-mcp-bin
 	conflicts = humen-mcp
 	conflicts = humen-mcp-git
 	backup = etc/humen-mcp.env
-	source = https://github.com/LIghtJUNction/humen-mcp/releases/download/v0.1.8/humen-mcp-0.1.8-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 90122ed9a03e70d93ed52e5bd692fe64e1172569e273c5ba8b4d94fb4c73c836
+	source = https://github.com/LIghtJUNction/humen-mcp/releases/download/v0.1.9/humen-mcp-0.1.9-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 30492d4ee27e638610afbbd90e1d9a0fd764b82dda95de956679977ce9547b16
 
 pkgname = humen-mcp-bin
