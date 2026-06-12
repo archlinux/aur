@@ -1,10 +1,10 @@
-pkgname=markit
+pkgname=markit-git
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Mark-it CLI tool"
 arch=('any')
 url="https://github.com/Fr4z49/Mark-it"
-license=('MIT')
+license=('GPL3')
 
 depends=('python')
 
