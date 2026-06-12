@@ -1,6 +1,6 @@
 pkgbase = forgejo-mcp
 	pkgdesc = Model Context Protocol (MCP) server for interacting with Forgejo REST API
-	pkgver = 2.10.1
+	pkgver = 2.29.0
 	pkgrel = 1
 	url = https://codeberg.org/goern/forgejo-mcp
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = forgejo-mcp
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = https://codeberg.org/goern/forgejo-mcp/archive/v2.10.1.tar.gz
-	sha256sums = 44770fca7634a48663e36d55668796163c5b4b380ef4de1747263e13733f56b0
+	source = https://codeberg.org/goern/forgejo-mcp/archive/v2.29.0.tar.gz
+	sha256sums = e3afa053a38b6448b1fa0ba58ca626aae7a5e4bfa9176f78e969b9ed4fdc9a25
 
 pkgname = forgejo-mcp

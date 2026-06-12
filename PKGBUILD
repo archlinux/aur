@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=forgejo-mcp
-pkgver=2.10.1 # renovate: datasource=forgejo-releases depName=goern/forgejo-mcp registryUrl=https://codeberg.org
+pkgver=2.29.0 # renovate: datasource=forgejo-releases depName=goern/forgejo-mcp registryUrl=https://codeberg.org
 pkgrel=1
 pkgdesc="Model Context Protocol (MCP) server for interacting with Forgejo REST API"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("https://codeberg.org/goern/forgejo-mcp/archive/v${pkgver}.tar.gz")
-sha256sums=('44770fca7634a48663e36d55668796163c5b4b380ef4de1747263e13733f56b0')
+sha256sums=('e3afa053a38b6448b1fa0ba58ca626aae7a5e4bfa9176f78e969b9ed4fdc9a25')
 
 prepare() {
   cd "${pkgname}"
@@ -40,6 +40,4 @@ package() {
 
   # Install sample configuration files
   install -Dm644 .env.sample "${pkgdir}/usr/share/doc/${pkgname}/.env.sample"
-  install -Dm644 mcp-settings-sample.json "${pkgdir}/usr/share/doc/${pkgname}/mcp-settings-sample.json"
-  install -Dm644 config.json "${pkgdir}/usr/share/doc/${pkgname}/config.json"
 }
