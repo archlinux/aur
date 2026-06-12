@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-sdl2_net
 	pkgdesc = A simple, cross-platform wrapper over TCP/IP sockets. (Version 2) (mingw-w64)
-	pkgver = 2.2.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://libsdl.org
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-sdl2_net
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://www.libsdl.org/projects/SDL_net/release/SDL2_net-2.2.0.tar.gz
+	source = http://www.libsdl.org/projects/SDL_net/release/SDL2_net-2.4.0.tar.gz
 	sha256sums = 4e4a891988316271974ff4e9585ed1ef729a123d22c08bd473129179dc857feb
 
 pkgname = mingw-w64-sdl2_net
