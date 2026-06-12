@@ -1,6 +1,6 @@
 # Maintainer: Cenk Kılıç <cenk1cenk2cenk3@gmail.com>
 pkgname=hyprpilot-bin
-pkgver=2.4.0 # x-release-please-version
+pkgver=2.4.1 # x-release-please-version
 pkgrel=1
 pkgdesc="Tauri overlay daemon for agent-driven workflows on Hyprland (prebuilt binary)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=("$pkgname-$pkgver.tar.zst::https://github.com/hyprpilot/hyprpilot/releas
 # always carries real checksums against the freshly-uploaded
 # tarball). Local-build path: run `updpkgsums` manually after a
 # pkgver edit.
-b2sums=('ac510477d0464bdeb45cbcfcae930fe7c724616125d06b7d1d1783767988846baf9a8b93228e059d1e04e42510fc347d0b200782fcba6c3062a5770630990425')
+b2sums=('09251a2199c12c4453b00f8566a6e33c75e8c3767696158f5223883984dcc295da1ebded7258ede3dbc2c3735f6c6c6a36992b90f738ab8169d40c21a73366b4')
 
 package() {
   cd "$srcdir/hyprpilot"
