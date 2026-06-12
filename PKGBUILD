@@ -37,6 +37,7 @@ build() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	RUSTC_WRAPPER=sccache
 	cargo build --frozen --release --features video-textures
 }
 
