@@ -1,6 +1,6 @@
 pkgbase = openmodelica-omc
 	pkgdesc = The Open Source Modelica Suite - OpenModelica Compiler
-	pkgver = 1.26.8
+	pkgver = 1.26.9
 	pkgrel = 1
 	url = https://openmodelica.org
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = openmodelica-omc
 	depends = java-environment
 	conflicts = openmodelica
 	options = !lto
-	source = https://github.com/OpenModelica/OpenModelica/releases/download/v1.26.8/OpenModelica-v1.26.8-src-with-submodules.zip
-	sha256sums = 8dce70c01a414d86146c4fd5ee721af88705c7b11eefb34d0a04a7b8f1d238ae
+	source = https://github.com/OpenModelica/OpenModelica/releases/download/v1.26.9/OpenModelica-v1.26.9-src-with-submodules.zip
+	sha256sums = 9891ba8233af63b3b503cb0362785089d64402b7894928f5e056521569a2aadc
 
 pkgname = openmodelica-omc
