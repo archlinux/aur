@@ -6,7 +6,7 @@ arch=('any')
 url="https://github.com/Fr4z49/Mark-it"
 license=('GPL3')
 
-depends=('python')
+depends=('python' 'python-reportlab')
 
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 

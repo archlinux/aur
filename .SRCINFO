@@ -10,6 +10,7 @@ pkgbase = markit-git
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
+	depends = python-reportlab
 	source = git+https://github.com/Fr4z49/Mark-it.git#branch=beta
 	sha256sums = SKIP
 
