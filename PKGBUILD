@@ -7,8 +7,8 @@ pkgname=otf-ibm-plex
 epoch=2
 # Currently IBM Plex doesn't have a consistent version scheme across all fonts
 # so just use date of last commit and change pkgrel if needed.
-pkgver=2026.02.12
-pkgrel=2
+pkgver=2026.04.21
+pkgrel=1
 pkgdesc="IBM Plex typefaces in otf format"
 url="https://github.com/IBM/plex"
 arch=("any")
@@ -16,7 +16,7 @@ license=('custom:OFL')
 source=(
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans@1.1.0/ibm-plex-sans.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-serif@2.0.0/ibm-plex-serif.zip"
-	"https://github.com/IBM/plex/releases/download/@ibm/plex-mono@1.1.0/ibm-plex-mono.zip"
+	"https://github.com/IBM/plex/releases/download/@ibm/plex-mono@2.5.0/ibm-plex-mono.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-math@1.1.0/ibm-plex-math.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-arabic@1.1.0/ibm-plex-sans-arabic.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-condensed@2.0.0/ibm-plex-sans-condensed.zip"
@@ -31,7 +31,7 @@ source=(
 )
 sha256sums=('fb365d910566e6d199cc2c15579a7dd9a267128e18431a394ed81f1970c69200'
             'c006b095c47b919c6c8d78319e9e628745033f5db94507c1c9dfe4b35dd51f1e'
-            '4bfc936d0e1fd19db6327a3786eabdbc3dc0d464500576f6458f6706df68d26c'
+            '6d23f01257663d8cc49a0d64c22ced630b79e0e2a0ac08a0da86e9a38bbc481c'
             'd85ed404394ced3a79a519af24611acdee9cc0483363c07cd5ac0656c06db42a'
             'f03915581aea37d82792c188b08064023a73494d679b8e19f85f5971db714013'
             'f86ba73abbeed7cf7690ead863192a87211dfc2b0cef0ac6bf4700533ec5ab9e'
