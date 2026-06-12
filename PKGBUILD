@@ -1,7 +1,7 @@
 # Maintainer: SwitchBros <switchbros@proton.me>
 pkgname=easy-scsmodmanager
 _app_id=io.github.switch_bros.EasySCSModManager
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Mod and profile manager for Euro Truck Simulator 2 and American Truck Simulator"
 arch=('any')
@@ -28,7 +28,7 @@ checkdepends=(
     'python-pytest-qt'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0010d7936ab7cfb7d3bf90ca111855313dad836fc7119d89f77114a73510d774')
+sha256sums=('5ad0c664cbcab9b74537c081fba608bf6faaf8217d6eef2d3ed1b774fd94648d')
 
 build() {
     cd "easy-scsmodmanager-$pkgver"

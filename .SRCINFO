@@ -1,6 +1,6 @@
 pkgbase = easy-scsmodmanager
 	pkgdesc = Mod and profile manager for Euro Truck Simulator 2 and American Truck Simulator
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/Switch-Bros/easy-scsmodmanager
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = easy-scsmodmanager
 	depends = python-httpx
 	depends = python-pillow
 	depends = qt6-base
-	source = easy-scsmodmanager-1.5.2.tar.gz::https://github.com/Switch-Bros/easy-scsmodmanager/archive/v1.5.2.tar.gz
-	sha256sums = 0010d7936ab7cfb7d3bf90ca111855313dad836fc7119d89f77114a73510d774
+	source = easy-scsmodmanager-1.5.3.tar.gz::https://github.com/Switch-Bros/easy-scsmodmanager/archive/v1.5.3.tar.gz
+	sha256sums = 5ad0c664cbcab9b74537c081fba608bf6faaf8217d6eef2d3ed1b774fd94648d
 
 pkgname = easy-scsmodmanager
