@@ -1,7 +1,7 @@
 pkgbase = tarotcaster
 	pkgdesc = Tarot Casting Application with AI Interpretation of Spreads
 	pkgver = 1.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alamahant/TarotCaster
 	arch = i686
 	arch = x86_64
