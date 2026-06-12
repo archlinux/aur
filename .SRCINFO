@@ -1,0 +1,25 @@
+pkgbase = gocron-bin
+	pkgdesc = Distributed Scheduled Task Scheduler
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/gocronx-team/gocron
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	conflicts = gocron
+	source_x86_64 = gocron-x86_64-1.6.3.tgz::https://github.com/gocronx-team/gocron/releases/download/v1.6.3/gocron-1.6.3-linux-amd64.tar.gz
+	source_x86_64 = gocron-node-x86_64-1.6.3.tgz::https://github.com/gocronx-team/gocron/releases/download/v1.6.3/gocron-node-linux-amd64.tar.gz
+	sha256sums_x86_64 = fabe18f225da094b184e039c1ca86934df703a589d47f1e50f479f99d85a334b
+	sha256sums_x86_64 = a5f1e890871f3c3b42ae96a2a68dbc58e0fd28774085f84c77dda670a012baf4
+	source_aarch64 = gocron-aarch64-1.6.3.tgz::https://github.com/gocronx-team/gocron/releases/download/v1.6.3/gocron-1.6.3-linux-arm64.tar.gz
+	source_aarch64 = gocron-node-aarch64-1.6.3.tgz::https://github.com/gocronx-team/gocron/releases/download/v1.6.3/gocron-node-linux-arm64.tar.gz
+	sha256sums_aarch64 = 5575dbb5a785ac5b8760f174941157c4a116ef34d2d8f775a8e1508c40b390b7
+	sha256sums_aarch64 = 1d3e3bc5e47c51d11f0a133b2a941acbffcbc3a032f0f4e47238e4cbfb2cfad9
+
+pkgname = gocron-bin
+	optdepends = gocron-node
+	provides = gocron
+
+pkgname = gocron-node-bin
+	optdepends = gocron
+	provides = gocron-node
