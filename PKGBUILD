@@ -1,6 +1,6 @@
 # Maintainer: RimuruTemp1421 <daser1421official@gmail.com>
 
-pkgname=anihot-app-bin
+pkgname=anihot-app
 pkgver=6.1.1
 pkgrel=1
 pkgdesc="Linux client for AniHot anime streaming app"
@@ -8,8 +8,6 @@ arch=('x86_64')
 url="https://github.com/MrGlany/AniHotAppPC"
 license=('custom')
 depends=('glibc' 'gtk3' 'bash' 'sqlite')
-conflicts=('anihot-app')
-replaces=('anihot-app')
 install="${pkgname}.install"
 options=('!debug')
 source=("anihot-${pkgver}.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/${pkgver}r/${pkgver}-linux.zip"
@@ -36,8 +34,8 @@ package() {
     # Wrapper script
     cat > "$pkgdir/usr/bin/anihot" << 'EOF'
 #!/bin/bash
-cd /usr/lib/anihot-app-bin
-export LD_LIBRARY_PATH="/usr/lib/anihot-app-bin/lib:${LD_LIBRARY_PATH}"
+cd /usr/lib/anihot-app
+export LD_LIBRARY_PATH="/usr/lib/anihot-app/lib:${LD_LIBRARY_PATH}"
 exec ./anihot-app "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/anihot"

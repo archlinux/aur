@@ -1,21 +1,19 @@
-pkgbase = anihot-app-bin
+pkgbase = anihot-app
 	pkgdesc = Linux client for AniHot anime streaming app
 	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://github.com/MrGlany/AniHotAppPC
-	install = anihot-app-bin.install
+	install = anihot-app.install
 	arch = x86_64
 	license = custom
 	depends = glibc
 	depends = gtk3
 	depends = bash
 	depends = sqlite
-	conflicts = anihot-app
-	replaces = anihot-app
 	options = !debug
 	source = anihot-6.1.1.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/6.1.1r/6.1.1-linux.zip
-	source = anihot-app-bin.install
+	source = anihot-app.install
 	sha256sums = 4b74204008c9b87ae984e56498b635690ad0d6690fae10c57563cf01a7e5a807
 	sha256sums = 0e036796aa22e8b8c0f11112c454651edea24ab5e4aedcb81536cbde1540c763
 
-pkgname = anihot-app-bin
+pkgname = anihot-app
