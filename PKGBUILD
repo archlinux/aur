@@ -34,15 +34,16 @@ cmake --build build
 package() {
 cd "${srcdir}/Lindora"
 
-
-install -Dm755 build/lindora-native \
-    "${pkgdir}/usr/bin/lindora-native"
+```
+# Install using CMake's own install rules (cleanest)
+DESTDIR="${pkgdir}" cmake --install build
 
 install -Dm644 Lindora.svg \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/lindora.svg"
 
 install -Dm644 lindora-native.desktop \
     "${pkgdir}/usr/share/applications/lindora-native.desktop"
-
+```
 
 }
+
