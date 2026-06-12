@@ -1,0 +1,16 @@
+pkgbase = revka
+	pkgdesc = Zero overhead. Zero compromise. 100% Rust. The fastest, smallest AI assistant.
+	pkgver = 2026.6.11
+	pkgrel = 1
+	url = https://github.com/KumihoIO/Revka
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	source = revka-2026.6.11.tar.gz::https://github.com/KumihoIO/Revka/archive/refs/tags/v2026.6.11.tar.gz
+	sha256sums = 8e806873163a053a20dd410f7045d3c907f5dfffb25a518cff0b2a3e13b9bac1
+
+pkgname = revka
