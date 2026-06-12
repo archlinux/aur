@@ -1,12 +1,13 @@
 pkgbase = ccid-git
 	pkgdesc = A generic USB Chip/Smart Card Interface Devices driver (git version)
-	pkgver = 1.4.29.r13.g85d33a8
+	pkgver = 1.8.1.r2.ge4e49c8
 	pkgrel = 1
 	url = https://ccid.apdu.fr/
 	arch = x86_64
 	license = LGPL
 	license = GPL
 	makedepends = git
+	makedepends = meson
 	depends = pcsclite
 	depends = libusb
 	depends = flex
@@ -16,10 +17,8 @@ pkgbase = ccid-git
 	source = git+https://salsa.debian.org/rousseau/CCID.git
 	source = git+https://salsa.debian.org/rousseau/PCSC.git
 	source = git+https://salsa.debian.org/rousseau/PCSC-contrib.git
-	validpgpkeys = F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ccid-git
-
