@@ -1,25 +1,25 @@
 # Maintainer: Ismael Gutiérrez González <frodo_gv@hotmail.com>
 pkgname=('rpfm-bin')
-pkgver=4.7.4
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A modding tool for modern (since Empire) Total War games. Precompiled version."
 arch=('x86_64')
 url="https://github.com/Frodo45127/rpfm"
 license=('MIT')
-depends=('libgit2' 'xz' 'p7zip' 'qt5-base' 'qt5-imageformats' 'kcompletion5' 'kiconthemes5'  'ktexteditor5' 'kxmlgui5' 'kwidgetsaddons5' 'breeze-icons')
+depends=('libgit2' 'xz' 'p7zip' 'qt6-base' 'qt6-imageformats' 'kcompletion' 'kiconthemes'  'ktexteditor' 'kxmlgui' 'kwidgetsaddons' 'breeze-icons')
 provides=('rpfm')
 conflicts=('rpfm-git')
 _programname=('rpfm')
 
 source_x86_64=("$url/releases/download/v${pkgver}/rpfm-v${pkgver}-x86_64-unknown-linux-gnu.tar.zst")
-sha256sums_x86_64=('1b3c8685922a316067c4ce76b4d5d17a1aaabda1c24feb25281fd15ea297edd8')
+sha256sums_x86_64=('9457b3587fb5c650270e22ed5bd2d5e29f10363a9ca0390374f1584c96f5ba96')
 
 package() {
 
     # All files should already follow the proper structure inside the tar.gz
     # That means we just need to install the executables with different permissions.
+    install -D -m755 "$srcdir/usr/bin/rpfm_server" "$pkgdir/usr/bin/rpfm_server"
     install -D -m755 "$srcdir/usr/bin/rpfm_ui" "$pkgdir/usr/bin/rpfm_ui"
-    install -D -m755 "$srcdir/usr/bin/rpfm_cli" "$pkgdir/usr/bin/rpfm_cli"
 
     # The icons.
     cd "$srcdir/usr/share/$_programname/icons/"
@@ -45,4 +45,3 @@ package() {
     # License.
     install -D -m644 "$srcdir/usr/share/licenses/$_programname/LICENSE" "$pkgdir/usr/share/licenses/$_programname/LICENSE"
 }
-
