@@ -1,4 +1,4 @@
-# Maintainer: Giovanni Santini <giovannisantini93@yahoo.it>
+# Maintainer: MojArch
 pkgbase=git-credential-manager
 pkgname=("$pkgbase"
          "${pkgbase}-extras")
@@ -8,8 +8,8 @@ pkgdesc="A secure Git credential helper built on .NET that runs on Windows, macO
 arch=(i686 x86_64)
 url="https://github.com/git-ecosystem/git-credential-manager"
 license=('MIT')
-makedepends=(dotnet-sdk-8.0 dpkg fontconfig krb5 zlib)
-checkdepends=(dotnet-runtime-8.0 git)
+makedepends=(dotnet-sdk-10.0 dpkg fontconfig krb5 zlib)
+checkdepends=(dotnet-sdk-10.0 git)
 options=(!strip !debug)
 install="$pkgname.install"
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -29,12 +29,35 @@ sha512sums=('8853975f1d1591c8c252b23d80a22a9813d1cec16acc5f15104d4bd9d22e04171e5
 
 build() {
     cd "${pkgbase}-${pkgver}"
-    dotnet build --configuration LinuxRelease
+
+    # Map Arch architecture to standard .NET Runtime Identifier (RID)
+    local _rid="linux-x64"
+    if [ "$CARCH" = "i686" ]; then
+        _rid="linux-x86"
+    fi
+
+    # -p:ImportByWildcardBeforeSolution=false bypasses NETSDK1134 safely,
+    # letting us build the entire solution for our targeted architecture.
+    dotnet build Git-Credential-Manager.sln \
+        --configuration LinuxRelease \
+        --runtime $_rid \
+        -p:ImportByWildcardBeforeSolution=false \
+        -p:NuGetAudit=false
 }
 
 check() {
     cd "${pkgbase}-${pkgver}"
-    LANG=C dotnet test --configuration LinuxRelease || echo "Seems some tests fail. Please report them upstream."
+
+    local _rid="linux-x64"
+    if [ "$CARCH" = "i686" ]; then
+        _rid="linux-x86"
+    fi
+
+    LANG=C dotnet test Git-Credential-Manager.sln \
+        --configuration LinuxRelease \
+        --runtime $_rid \
+        -p:ImportByWildcardBeforeSolution=false \
+        -p:NuGetAudit=false
 }
 
 package_git-credential-manager() {
