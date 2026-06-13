@@ -1,8 +1,8 @@
 # Maintainer: Sumer Jakhar <sumer.jakhar@emoha.com>
 pkgname=hyprpilot-mcp
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Programmatic control of Hyprland for AI agents and humans: typed IPC client, daemon with undo/snapshots, CLI, MCP server, input synthesis, and screen capture + OCR"
+pkgdesc="Programmatic control of Hyprland for AI agents and humans: typed IPC client, daemon with undo/snapshots, CLI, MCP server, input synthesis, screen capture + OCR, and accessibility (AT-SPI) reading"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sumerchoudhary78/HyprPilot"
 license=('MIT OR Apache-2.0')
@@ -13,9 +13,10 @@ optdepends=('grim: screen capture for the Vision tools'
             'tesseract: OCR for the Vision tools'
             'tesseract-data-eng: English language data for OCR'
             'wtype: text and key-chord input synthesis'
-            'ydotool: input-synthesis fallback that drives Hyprland keybinds')
+            'ydotool: input-synthesis fallback that drives Hyprland keybinds'
+            'at-spi2-core: accessibility (AT-SPI) bus for the a11y tools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1b308d0fb6d2ada3dc3de96df99c8a613ee2a75fe18921ef1e79b116b9eb307e')
+sha256sums=('1333f5143f58dbf06485cf01fbd258bd85b393d95e5ca9df5562f22538bca2de')
 
 prepare() {
     cd "HyprPilot-$pkgver"

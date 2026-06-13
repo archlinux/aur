@@ -1,6 +1,6 @@
 pkgbase = hyprpilot-mcp
-	pkgdesc = Programmatic control of Hyprland for AI agents and humans: typed IPC client, daemon with undo/snapshots, CLI, MCP server, input synthesis, and screen capture + OCR
-	pkgver = 1.0.0
+	pkgdesc = Programmatic control of Hyprland for AI agents and humans: typed IPC client, daemon with undo/snapshots, CLI, MCP server, input synthesis, screen capture + OCR, and accessibility (AT-SPI) reading
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/sumerchoudhary78/HyprPilot
 	arch = x86_64
@@ -16,7 +16,8 @@ pkgbase = hyprpilot-mcp
 	optdepends = tesseract-data-eng: English language data for OCR
 	optdepends = wtype: text and key-chord input synthesis
 	optdepends = ydotool: input-synthesis fallback that drives Hyprland keybinds
-	source = hyprpilot-mcp-1.0.0.tar.gz::https://github.com/sumerchoudhary78/HyprPilot/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 1b308d0fb6d2ada3dc3de96df99c8a613ee2a75fe18921ef1e79b116b9eb307e
+	optdepends = at-spi2-core: accessibility (AT-SPI) bus for the a11y tools
+	source = hyprpilot-mcp-1.1.0.tar.gz::https://github.com/sumerchoudhary78/HyprPilot/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 1333f5143f58dbf06485cf01fbd258bd85b393d95e5ca9df5562f22538bca2de
 
 pkgname = hyprpilot-mcp
