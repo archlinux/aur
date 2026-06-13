@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=starfish
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Starfish: Arch Depdency Viewer"
 arch=('x86_64')
@@ -21,11 +21,12 @@ makedepends=('dotnet-sdk-10.0' 'clang')
 # Source tarball from GitHub release
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Starfish/archive/v${pkgver}.tar.gz")
 
-sha256sums=('c5e658b40ae150e73ddd4f4104c1da8f1b3bef0272d83b7e5010d9cf0bad783a')
+sha256sums=('8b3acc13a4fc7315a3a694126da25635f173fff2e880c905759261c8afda01c3')
 
 build() {
   cd "$srcdir/Starfish-${pkgver}"
 
+  # Build the main executable
   dotnet publish Starfish/Starfish.csproj -c Release -r linux-x64 -o out --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
 }
 
@@ -50,3 +51,6 @@ EOF
   # Install icon
   install -Dm644 Starfish/Assets/starfish.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/starfish.png"
 }
+sha256sums=('35694517c72883e2427aad44ddffb237431f87a3a7de899d1e1bd5ff5eac44d1')
+sha256sums=('35694517c72883e2427aad44ddffb237431f87a3a7de899d1e1bd5ff5eac44d1')
+sha256sums=('35694517c72883e2427aad44ddffb237431f87a3a7de899d1e1bd5ff5eac44d1')
