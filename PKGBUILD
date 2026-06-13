@@ -1,12 +1,12 @@
 pkgname=wlvncc-git
 _pkgname=wlvncc
-pkgver=r149.860232f
+pkgver=r150.cc0abf8
 pkgrel=1
 pkgdesc='Wayland native VNC client'
 arch=(x86_64)
 url=https://github.com/any1/wlvncc
 license=(custom:ISC)
-depends=(aml1 libvncserver libxkbcommon libdrm ffmpeg mesa pixman wayland)
+depends=(aml libvncserver libxkbcommon libdrm ffmpeg mesa pixman wayland)
 makedepends=(git meson wayland-protocols)
 source=("git+$url")
 sha512sums=('SKIP')
