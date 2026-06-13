@@ -1,6 +1,6 @@
 pkgbase = pxview-git
 	pkgdesc = GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.
-	pkgver = 1.4.9.r2.g5d91251
+	pkgver = 1.5.0.r16.5d91251
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/PXLogic/PXView
@@ -31,6 +31,8 @@ pkgbase = pxview-git
 	depends = qt6-base
 	depends = qt6-websockets
 	source = pxview-git::git+https://github.com/PXLogic/PXView.git
+	source = 0001-install-libsigrokdecode-under-PXView-prefix.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pxview-git

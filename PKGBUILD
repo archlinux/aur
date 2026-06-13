@@ -6,7 +6,7 @@
 # Origin Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=pxview-git
-pkgver=1.4.9.r2.g5d91251
+pkgver=1.5.0.r16.5d91251
 pkgrel=1
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
@@ -41,15 +41,16 @@ makedepends=(
   pkgconf
   vulkan-headers
 )
-source=("${pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+source=("${pkgname}::git+${url}.git"
+    "0001-install-libsigrokdecode-under-PXView-prefix.patch")
+sha256sums=('SKIP'
+    'SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  ( set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^PXView_v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+  px_version="$(grep -oP 'DS_VERSION_MAJOR \K[0-9]+' CMakeLists.txt).$(grep -oP 'DS_VERSION_MINOR \K[0-9]+' CMakeLists.txt).$(grep -oP 'DS_VERSION_MICRO \K[0-9]+' CMakeLists.txt)"
+
+  printf "%s.r%s.%s" "${px_version}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -57,6 +58,11 @@ prepare() {
   cd "${srcdir}"/${pkgname}/
 
   sed -i 's#MODE="0666"#TAG+="uaccess"#' PXView/px.rules
+  # temporary fix icon display
+  rsvg-convert -w 256 -h 256 -f png -o PXView/icons/logo.png PXView/icons/logo.svg
+  
+  # parch
+  git apply ${srcdir}/0001-install-libsigrokdecode-under-PXView-prefix.patch
 }
  
 build() {
@@ -82,6 +88,10 @@ package() {
   cd "${srcdir}"/${pkgname}/
 
   DESTDIR="${pkgdir}" ninja -C build install
+  # temporary fix icon display
+  rm -rf ${pkgdir}/usr/share/pixmaps/pxview.svg \
+        ${pkgdir}/usr/share/icons/
+  install -Dm644 PXView/icons/logo.png ${pkgdir}/usr/share/pixmaps/pxview.png
 }
 
 # vim: set sw=2 ts=2 et:
