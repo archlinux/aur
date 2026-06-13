@@ -1,0 +1,21 @@
+pkgbase = python-id2dirnode
+	pkgdesc = Implementation of id_to_dirnode.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/id2dirnode
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-id2dirnode
+	conflicts = python-id2dirnode
+	options = !strip
+	options = !debug
+	source = id2dirnode-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/i/id2dirnode/id2dirnode-0.0.1.tar.gz
+	sha256sums = 956c72156d1b27e6c46557189ce99465bcc580e09d3e5163df54e13908c586f4
+
+pkgname = python-id2dirnode
