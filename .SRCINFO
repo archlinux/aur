@@ -1,6 +1,6 @@
 pkgbase = mimic-bpf-git
 	pkgdesc = eBPF UDP -> TCP obfuscator
-	pkgver = 0.7.1.r2.59950b3
+	pkgver = 0.7.1.r6.5df4c27
 	pkgrel = 1
 	url = https://github.com/hack3ric/mimic
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgname = mimic-bpf-git
 	depends = libgcc
 	depends = libbpf
 	depends = libffi
-	depends = mimic-bpf-modules=0.7.1.r2.59950b3
+	depends = mimic-bpf-modules=0.7.1.r6.5df4c27
 	optdepends = libxdp: Load multiple XDP programs on one network interface
 	provides = mimic-bpf
 	conflicts = mimic-bpf
@@ -31,7 +31,7 @@ pkgname = mimic-bpf-dkms-git
 	pkgdesc = eBPF UDP -> TCP obfuscator - DKMS module
 	arch = any
 	depends = dkms
-	provides = mimic-bpf-modules=0.7.1.r2.59950b3
+	provides = mimic-bpf-modules=0.7.1.r6.5df4c27
 	provides = mimic-bpf-dkms
-	conflicts = mimic-bpf-modules=0.7.1.r2.59950b3
+	conflicts = mimic-bpf-modules=0.7.1.r6.5df4c27
 	conflicts = mimic-bpf-dkms
