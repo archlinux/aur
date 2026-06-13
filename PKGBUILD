@@ -1,6 +1,6 @@
 # Submitter: Eric Rodrigues Pires <archlinux@ericpires.com.br>
 pkgname='sandhole-bin'
-pkgver='0.10.0'
+pkgver='0.10.1'
 pkgrel=1
 pkgdesc='Expose HTTP/SSH/TCP services through SSH port forwarding (binary release)'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/EpicEric/sandhole/re
 source_x86_64=("$pkgname-$pkgver-x86_64::https://github.com/EpicEric/sandhole/releases/download/v$pkgver/sandhole-linux-amd64")
 source_aarch64=("$pkgname-$pkgver-aarch64::https://github.com/EpicEric/sandhole/releases/download/v$pkgver/sandhole-linux-arm64")
 sha256sums=('SKIP')
-sha256sums_x86_64=('3fd7edf43d930af501e3615462fd434386980f1926c992577c4e25f185331976')
-sha256sums_aarch64=('10749d13eab101432a0915cffa15176df9a87b8ed89aac4f1915e5bafb9276e4')
+sha256sums_x86_64=('ad76cfab73779a7f024fc50ffb1febe2550075dc671a47b1a255249a68e17f50')
+sha256sums_aarch64=('d43bc221b4ee92783a27b1729b79bdb12509a6b3a915fce088f56630e38a3544')
 
 package() {
     if [ "$CARCH" = "x86_64" ]; then

@@ -1,6 +1,6 @@
 pkgbase = sandhole-bin
 	pkgdesc = Expose HTTP/SSH/TCP services through SSH port forwarding (binary release)
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://sandhole.com.br
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = sandhole-bin
 	license = MIT
 	provides = sandhole
 	conflicts = sandhole
-	source = LICENSE-0.10.0::https://raw.githubusercontent.com/EpicEric/sandhole/refs/tags/v0.10.0/LICENSE
+	source = LICENSE-0.10.1::https://raw.githubusercontent.com/EpicEric/sandhole/refs/tags/v0.10.1/LICENSE
 	sha256sums = SKIP
-	source_x86_64 = sandhole-bin-0.10.0-x86_64::https://github.com/EpicEric/sandhole/releases/download/v0.10.0/sandhole-linux-amd64
-	sha256sums_x86_64 = 3fd7edf43d930af501e3615462fd434386980f1926c992577c4e25f185331976
-	source_aarch64 = sandhole-bin-0.10.0-aarch64::https://github.com/EpicEric/sandhole/releases/download/v0.10.0/sandhole-linux-arm64
-	sha256sums_aarch64 = 10749d13eab101432a0915cffa15176df9a87b8ed89aac4f1915e5bafb9276e4
+	source_x86_64 = sandhole-bin-0.10.1-x86_64::https://github.com/EpicEric/sandhole/releases/download/v0.10.1/sandhole-linux-amd64
+	sha256sums_x86_64 = ad76cfab73779a7f024fc50ffb1febe2550075dc671a47b1a255249a68e17f50
+	source_aarch64 = sandhole-bin-0.10.1-aarch64::https://github.com/EpicEric/sandhole/releases/download/v0.10.1/sandhole-linux-arm64
+	sha256sums_aarch64 = d43bc221b4ee92783a27b1729b79bdb12509a6b3a915fce088f56630e38a3544
 
 pkgname = sandhole-bin
