@@ -1,7 +1,7 @@
 # Maintainer: Yarok
 # contributor: dmitrysvd
 pkgname=yandex-music-beta
-pkgver=5.105.3
+pkgver=5.106.2
 pkgrel=1
 pkgdesc="Official Yandex Music App for Linux (beta release)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
 )
 options=('!strip')
 source=("https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_amd64_${pkgver}.deb")
-sha256sums=('d2ebc8c5460a1d98d13302a655076678453831105ea992c72094b9f6a84441b6')
+sha256sums=('fadbbdc81dca1aecf1cef3b332060dac06fc17833d74be273e7b59b9f746d980')
 
 package() {
     tar -xf data.tar.xz --directory "${pkgdir}"
