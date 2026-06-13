@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=rufin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Native GTK4 Jellyfin/Subsonic Client in Rust'
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ optdepends=(
 conflicts=('rufin-git')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/screwys/Rufin/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('48cec07aaf0fb1952ee587d00da115587ff745af8be35625b69e9cf58fda5a20')
+sha256sums=('27a58392507b92c2db87c6f2c1d3103664c5b52d79f77e3cf9bd5a583e179dde')
 
 prepare() {
   cd "Rufin-${pkgver}" || return
@@ -48,7 +48,7 @@ build() {
   cd "Rufin-${pkgver}" || return
 
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release -p rufin-app
+  cargo build --frozen --release -p rufin
 }
 
 package() {
