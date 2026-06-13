@@ -1,6 +1,6 @@
 # Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=fastflowlm-gtk
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="A minimalist, modern desktop interface for FastFlowLM, built with GTK 4 and Libadwaita."
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 install="fastflowlm-gtk.install"
 depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'libsoup3' 'gtksourceview5' 'python-psutil' 'fastflowlm' 'xrt-plugin-amdxdna')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marleylinux/FastFlowLM-gtk/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=(a50980fa0e0c65c39952f04695ff41670e0f7654745faebb802df9e52a517f4d)
+sha256sums=('a01774677cfa0283ffd55a2174fb45d3a9b6bad18a777b88d329c4cae830e365')
 
 package() {
   cd "$srcdir/FastFlowLM-"*
@@ -21,11 +21,7 @@ package() {
 
   # Install custom model avatars
   install -d "$pkgdir/usr/share/fastflowlm-gtk/assets"
-  for avatar in llama qwen gemini mistral phi deepseek liquid whisper nanbeige gpt_oss; do
-    if [ -f "src/assets/$avatar.png" ]; then
-      install -m644 "src/assets/$avatar.png" "$pkgdir/usr/share/fastflowlm-gtk/assets/$avatar.png"
-    fi
-  done
+  install -m644 src/assets/*.png "$pkgdir/usr/share/fastflowlm-gtk/assets/"
 
   # Install Icon
   install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
@@ -33,6 +29,9 @@ package() {
 
   # Install Desktop file
   install -Dm644 "com.marley.FastFlowLM-gtk.desktop" "$pkgdir/usr/share/applications/com.marley.FastFlowLM-gtk.desktop"
+
+  # Install License
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/fastflowlm-gtk/LICENSE"
 
   # Install memlock limits config
   install -d "$pkgdir/etc/security/limits.d"
