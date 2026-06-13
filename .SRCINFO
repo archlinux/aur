@@ -1,6 +1,6 @@
 pkgbase = simplesinewavegenerator-git
 	pkgdesc = Simple sine wave generator with GTK3 GUI and logarithmic frequency sweep
-	pkgver = dbe7f87
+	pkgver = 39ed081
 	pkgrel = 1
 	url = https://github.com/ixnewton/simpleSineWaveGenerator
 	arch = x86_64
