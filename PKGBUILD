@@ -29,7 +29,7 @@ conflicts=('pineapple-notepad')
 source=(
     "${pkgname}-${pkgver}-deepin.deb::https://github.com/BLumia/pineapple-notepad/releases/download/${pkgver}-freeware/pineapple-notepad-deepin-crimson-x86_64-${pkgver}.deb"
     "${pkgname}-${pkgver}-debian.deb::https://github.com/BLumia/pineapple-notepad/releases/download/${pkgver}-freeware/pineapple-notepad-debian-trixie-x86_64-${pkgver}.deb"
-    "LICENSE::https://raw.githubusercontent.com/BLumia/pineapple-notepad/master/LICENSE"
+    "EULA::https://raw.githubusercontent.com/BLumia/pineapple-notepad/master/LICENSE"
 )
 sha256sums=(
     'd11bcd168fe51690999bb8ce998fa777bfacccefbbd2d68dac2378a06985d1d8'
@@ -73,5 +73,5 @@ package() {
             "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/pineapple-notepad.mo"
     done
 
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/EULA" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

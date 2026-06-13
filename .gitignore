@@ -2,4 +2,4 @@ src/
 pkg/
 *.pkg.tar.*
 *.deb
-LICENSE
+EULA
