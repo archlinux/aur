@@ -1,0 +1,15 @@
+pkgbase = imap-upload-git
+	pkgdesc = Python script for uploading a local mbox file to IMAP4 server.
+	pkgver = r63.9578cb5
+	pkgrel = 1
+	url = https://github.com/rgladwell/imap-upload
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python>=3.5.0
+	depends = python-imapclient
+	provides = imap-upload
+	source = git+https://github.com/rgladwell/imap-upload.git#branch=master
+	sha256sums = SKIP
+
+pkgname = imap-upload-git
