@@ -1,7 +1,7 @@
-# Maintainer: fk29g <fk29g.uphill912@slmails.com>
+# Maintainer: nicknb <nicknb at posteo dot com>
 _projectname=codegrab
 pkgname=$_projectname-git
-pkgrel=2
+pkgrel=3
 pkgver=r68.39cea2c
 pkgdesc="CLI and TUI for selecting and bundling code into a single, LLM-ready output file"
 arch=("x86_64")
