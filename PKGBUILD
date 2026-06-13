@@ -31,8 +31,28 @@ build() {
     -DENABLE_SPLIT_PARALLELISM=ON \
     -DSET_ENABLE_WPP_PARALLELISM=ON \
     -DENABLE_WPP_PARALLELISM=ON \
-    -DCMAKE_C_FLAGS="-Wno-unused-variable -Wno-unused-but-set-variable -Wno-maybe-uninitialized" \
-    -DCMAKE_CXX_FLAGS="-Wno-unused-variable -Wno-unused-but-set-variable -Wno-maybe-uninitialized"
+    -DCMAKE_C_FLAGS="-O3 -march=native -mtune=native \
+                            -fno-plt -fomit-frame-pointer \
+                            -fno-semantic-interposition \
+                            -falign-functions=32 \
+                            -falign-loops=32 \
+                            -funroll-loops \
+                            -fno-math-errno \
+                            -fno-trapping-math \
+                            -flto \
+                            -Wno-unused-variable -Wno-unused-but-set-variable -Wno-maybe-uninitialized" \
+    -DCMAKE_CXX_FLAGS="-O3 -march=native -mtune=native \
+                                -fno-plt -fomit-frame-pointer \
+                                -fno-semantic-interposition \
+                                -falign-functions=32 \
+                                -falign-loops=32 \
+                                -funroll-loops \
+                                -fno-math-errno \
+                                -fno-trapping-math \
+                                -flto \
+                                -Wno-unused-variable -Wno-unused-but-set-variable -Wno-maybe-uninitialized" \
+    -DCMAKE_EXE_LINKER_FLAGS="-flto" \
+    -DCMAKE_SHARED_LINKER_FLAGS="-flto" \
 
   make -j"$(nproc)"
 }
