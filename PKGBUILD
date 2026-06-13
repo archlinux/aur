@@ -5,7 +5,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-nightly
-pkgver=1780254271.bd2d344040
+pkgver=1781122546.5219b9f3d2
 pkgrel=1
 pkgdesc="Nightly release of the Eden Nintendo Switch emulator (built from source)"
 arch=('x86_64' 'aarch64')
@@ -17,9 +17,9 @@ depends=('libusb' 'libva' 'qt6-webengine' 'qt6-charts' 'brotli' 'hicolor-icon-th
 makedepends=('git' 'cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'enet' 'gamemode' 'renderdoc' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen' 'cpp-jwt')
 optdepends=('gamemode: Gamemoded support')
 options=('lto' '!debug')
-_commit=bd2d34404063f51c7eb7970fd4d5591a7788774c
+_commit=5219b9f3d2b92802352dda16273d520abbe179b4
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git#commit=${_commit}")
-sha256sums=('aa9ed27c9cb0269a6ef66ac25ac1e29570ccb87ea9db35a9261711d2fbed6981')
+sha256sums=('2e8de83218ab406fc721f867bf214e348d5192ccf31a0105945cfb522e0f6595')
 pkgver() {
 	cd "$_pkgname"
 	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/.git//'
