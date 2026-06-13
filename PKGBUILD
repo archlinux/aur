@@ -3,7 +3,7 @@
 pkgname=python-p115client
 _name=${pkgname#python-}
 pkgver=0.0.8.6.5
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Python 115 webdisk client."
 arch=('any')
@@ -20,26 +20,36 @@ depends=(
     #AUR
     python-argtools
     python-asynctools
+    python-cachedict
+    python-concurrenttools
     python-cookietools
     python-dictattr
     python-dicttools
+    python-download
     python-ed2k
     python-encode-uri
     python-ensure
+    python-errno2
     python-filewrap
     python-hashtools
     python-httpfile
     python-http-response
     python-http-request
+    python-id2dirnode
     python-integer-tool
+    python-iterdir
     python-iterutils
     python-iter-collect
+    python-sqlitetools
     python-startfile
     python-p115cipher
+    python-p115pickcode
     python-p115oss
     python-property
     python-posixpatht
+    python-temporary
     python-undefined
+    python-urllib3-request
 )
 makedepends=(
     python-poetry
