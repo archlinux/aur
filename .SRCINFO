@@ -1,7 +1,7 @@
 pkgbase = scolorpicker
 	pkgdesc = skowriii's color picker
 	pkgver = 2.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.github.com/skowriii/scolorpicker
 	arch = x86_64
 	license = 0BSD
@@ -23,9 +23,9 @@ pkgbase = scolorpicker
 	optdepends = xdg-desktop-portal-kde: taking screenshots on KDE Plasma
 	optdepends = xdg-desktop-portal-wlr: taking screenshots on wlroots-based compositors
 	optdepends = xdg-desktop-portal-xapp: taking screenshots on Cinnamon
-	conflicts = scolorpicker-legacy
+	replaces = scolorpicker-legacy
 	options = !debug
-	source = https://github.com/smooll-d/scolorpicker/releases/download/v2.5.2/scolorpicker-2.5.2.tar.gz
+	source = https://github.com/skowriii/scolorpicker/releases/download/v2.5.2/scolorpicker-2.5.2.tar.gz
 	sha256sums = e7040bbe7b7df33606588b6cb4abad0d963f9e193998f57966d5422d0863fc12
 
 pkgname = scolorpicker

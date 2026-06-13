@@ -1,16 +1,13 @@
-# Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
+# Maintainer: Jakub Skowron <jakubskowron766@proton.me>
 pkgname=scolorpicker
 pkgver=2.5.2
-pkgrel=2
-epoch=
+pkgrel=3
 pkgdesc="skowriii's color picker"
 arch=("x86_64")
 url="https://www.github.com/skowriii/scolorpicker"
 license=("0BSD")
-groups=()
 depends=("sdl3")
 makedepends=("cmake" "base-devel")
-checkdepends=()
 optdepends=("libx11: X11 support"
             "libxcb: X11 support"
             "xcb-util-image: taking screenshots on X11"
@@ -26,17 +23,10 @@ optdepends=("libx11: X11 support"
             "xdg-desktop-portal-kde: taking screenshots on KDE Plasma"
             "xdg-desktop-portal-wlr: taking screenshots on wlroots-based compositors"
             "xdg-desktop-portal-xapp: taking screenshots on Cinnamon")
-provides=()
-conflicts=("scolorpicker-legacy")
-replaces=()
-backup=()
+replaces=("scolorpicker-legacy")
 options=(!debug)
-install=
-changelog=
-source=("https://github.com/smooll-d/scolorpicker/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-noextract=()
+source=("https://github.com/skowriii/scolorpicker/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=("e7040bbe7b7df33606588b6cb4abad0d963f9e193998f57966d5422d0863fc12")
-validpgpkeys=()
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build \
