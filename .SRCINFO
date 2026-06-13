@@ -1,6 +1,6 @@
 pkgbase = python-asyncprawcore
 	pkgdesc = Low-level asynchronous communication layer for Async PRAW
-	pkgver = 3.1.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/praw-dev/asyncprawcore
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = python-asyncprawcore
 	makedepends = python-flit-core
 	depends = python
 	options = !emptydirs
-	source = python-asyncprawcore-3.1.0.tar.gz::https://github.com/praw-dev/asyncprawcore/archive/refs/tags/v3.1.0.tar.gz
-	sha256sums = b4fd8c0886e79fe4e4247bf9499643b9047f5ca67019d734a786e353838333b9
+	source = python-asyncprawcore-4.0.0.tar.gz::https://github.com/praw-dev/asyncprawcore/archive/refs/tags/v4.0.0.tar.gz
+	sha256sums = ab070f5d921b7896d5b6a2610f2575814f8b6c6d4041d8a3537e3eaadf3f220e
 
 pkgname = python-asyncprawcore
 	depends = python
