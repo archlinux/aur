@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=watchman-bin
-pkgver=2026.05.11.00
+pkgver=2026.06.08.00
 pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
@@ -27,7 +27,7 @@ source=(
   "https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip"
   "watchman-v$pkgver-LICENSE::https://github.com/facebook/watchman/raw/v$pkgver/LICENSE"
 )
-b2sums=('38956157b976a5651bd0cef992d0c0a3e4197e1e623a97de4e04ff4809409c959ef5902335f3a691250a78df93e500a72301da5986a08b97b8bc40890b901037'
+b2sums=('ad067e1a4afd03bbe144948aacda2218097cc1c06c812f5c2d5c7baaaebd82bf29e25d6fafea6c7dcaba81d1640b16c11dd1c7c5daa01a0f349f4c30bf0d94ca'
         'b9c1c046dc0cd3c6bbf977f3e6d3f448a5fa26ac4d27aa3e2bf1c1a2f6bf97484a79f76c19bf5d5b3cf92400f951015a5036dfd8e183a2fdb0634ce992b12469')
 
 prepare() {
@@ -49,8 +49,8 @@ Path("bin/watchman").write_bytes(data)
 END
 
   patchelf \
-    --replace-needed {/usr/local/lib/,}libgflags.so.2.2 \
-    --replace-needed {/usr/local/lib/,}libglog.so.0 \
+    --replace-needed {/usr/local/lib/,}libgflags.so.2.3 \
+    --replace-needed {/usr/local/lib/,}libglog.so.1 \
     --replace-needed {/usr/local/lib/,}libsnappy.so.1 \
     bin/* lib/*
 

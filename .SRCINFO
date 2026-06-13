@@ -1,6 +1,6 @@
 pkgbase = watchman-bin
 	pkgdesc = An inotify-based file watching and job triggering command line utility
-	pkgver = 2026.05.11.00
+	pkgver = 2026.06.08.00
 	pkgrel = 1
 	url = https://facebook.github.io/watchman/
 	install = watchman.install
@@ -12,12 +12,12 @@ pkgbase = watchman-bin
 	depends = libgcc
 	depends = libstdc++
 	depends = openssl
-	provides = watchman=2026.05.11.00
+	provides = watchman=2026.06.08.00
 	conflicts = watchman
 	options = !strip
-	source = https://github.com/facebook/watchman/releases/download/v2026.05.11.00/watchman-v2026.05.11.00-linux.zip
-	source = watchman-v2026.05.11.00-LICENSE::https://github.com/facebook/watchman/raw/v2026.05.11.00/LICENSE
-	b2sums = 38956157b976a5651bd0cef992d0c0a3e4197e1e623a97de4e04ff4809409c959ef5902335f3a691250a78df93e500a72301da5986a08b97b8bc40890b901037
+	source = https://github.com/facebook/watchman/releases/download/v2026.06.08.00/watchman-v2026.06.08.00-linux.zip
+	source = watchman-v2026.06.08.00-LICENSE::https://github.com/facebook/watchman/raw/v2026.06.08.00/LICENSE
+	b2sums = ad067e1a4afd03bbe144948aacda2218097cc1c06c812f5c2d5c7baaaebd82bf29e25d6fafea6c7dcaba81d1640b16c11dd1c7c5daa01a0f349f4c30bf0d94ca
 	b2sums = b9c1c046dc0cd3c6bbf977f3e6d3f448a5fa26ac4d27aa3e2bf1c1a2f6bf97484a79f76c19bf5d5b3cf92400f951015a5036dfd8e183a2fdb0634ce992b12469
 
 pkgname = watchman-bin
