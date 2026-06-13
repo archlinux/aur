@@ -1,6 +1,6 @@
 pkgbase = snapdog-client
 	pkgdesc = SnapDog multiroom audio client with F32+LZ4 codec, parametric EQ, and encryption
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/metaneutrons/snapdog
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = snapdog-client
 	depends = alsa-lib
 	depends = avahi
 	backup = etc/default/snapdog-client
-	source = snapdog-0.17.0.tar.gz::https://github.com/metaneutrons/snapdog/archive/refs/tags/v0.17.0.tar.gz
+	source = snapdog-0.18.0.tar.gz::https://github.com/metaneutrons/snapdog/archive/refs/tags/v0.18.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = snapdog-client
