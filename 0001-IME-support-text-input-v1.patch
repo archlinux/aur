@@ -1,4 +1,4 @@
-From cb394701aa8a6bac03342573cff3bcf8e7eb984e Mon Sep 17 00:00:00 2001
+From 93fa26b9ef842fd53a0219ebe34fc56494164cdd Mon Sep 17 00:00:00 2001
 From: tokyo4j <hrak1529@gmail.com>
 Date: Fri, 23 Feb 2024 03:57:01 +0900
 Subject: [PATCH] IME: support text-input-v1
@@ -6,8 +6,8 @@ Subject: [PATCH] IME: support text-input-v1
 ---
  include/input/ime.h   |   1 +
  protocols/meson.build |   1 +
- src/input/ime.c       | 342 +++++++++++++++++++++++++++++++++++++++++-
- 3 files changed, 343 insertions(+), 1 deletion(-)
+ src/input/ime.c       | 341 +++++++++++++++++++++++++++++++++++++++++-
+ 3 files changed, 342 insertions(+), 1 deletion(-)
 
 diff --git a/include/input/ime.h b/include/input/ime.h
 index 046e0926..cce3d68f 100644
@@ -22,22 +22,22 @@ index 046e0926..cce3d68f 100644
  
  	struct wl_listener enable;
 diff --git a/protocols/meson.build b/protocols/meson.build
-index 80269bec..97ae7a5f 100644
+index 928bd601..5c706cd9 100644
 --- a/protocols/meson.build
 +++ b/protocols/meson.build
-@@ -25,6 +25,7 @@ server_protocols = [
- 	wl_protocol_dir / 'staging/ext-workspace/ext-workspace-v1.xml',
- 	wl_protocol_dir / 'staging/ext-image-capture-source/ext-image-capture-source-v1.xml',
- 	wl_protocol_dir / 'staging/ext-image-copy-capture/ext-image-copy-capture-v1.xml',
+@@ -14,6 +14,7 @@ wayland_scanner_server = generator(
+ )
+ 
+ server_protocols = [
 +	wl_protocol_dir / 'unstable/text-input/text-input-unstable-v1.xml',
- 	'cosmic-workspace-unstable-v1.xml',
  	'wlr-layer-shell-unstable-v1.xml',
- 	'wlr-input-inhibitor-unstable-v1.xml',
+ 	'wlr-output-power-management-unstable-v1.xml',
+ ]
 diff --git a/src/input/ime.c b/src/input/ime.c
-index 92d88ffe..6c5e7793 100644
+index 1758d1c0..c148a0fe 100644
 --- a/src/input/ime.c
 +++ b/src/input/ime.c
-@@ -16,6 +16,7 @@
+@@ -17,6 +17,7 @@
  #include "labwc.h"
  #include "node.h"
  #include "output.h"
@@ -45,7 +45,7 @@ index 92d88ffe..6c5e7793 100644
  
  #define SAME_CLIENT(wlr_obj1, wlr_obj2) \
  	(wl_resource_get_client((wlr_obj1)->resource) \
-@@ -35,6 +36,276 @@ is_keyboard_emulated_by_input_method(struct wlr_keyboard *keyboard,
+@@ -36,6 +37,276 @@ is_keyboard_emulated_by_input_method(struct wlr_keyboard *keyboard,
  	return virtual_keyboard && SAME_CLIENT(virtual_keyboard, input_method);
  }
  
@@ -257,7 +257,7 @@ index 92d88ffe..6c5e7793 100644
 +
 +	wl_list_insert(&wlr_manager_v3->text_inputs, &text_input->link);
 +
-+	wl_signal_emit_mutable(&wlr_manager_v3->events.text_input, text_input);
++	wl_signal_emit_mutable(&wlr_manager_v3->events.new_text_input, text_input);
 +}
 +
 +static const struct zwp_text_input_manager_v1_interface text_input_manager_v1_impl = {
@@ -322,7 +322,7 @@ index 92d88ffe..6c5e7793 100644
  /*
   * Get keyboard grab of the seat from keyboard if we should forward events
   * to it.
-@@ -166,9 +437,16 @@ update_text_inputs_focused_surface(struct input_method_relay *relay)
+@@ -167,9 +438,16 @@ update_text_inputs_focused_surface(struct input_method_relay *relay)
  			continue;
  		}
  		if (input->focused_surface) {
@@ -402,14 +402,14 @@ index 92d88ffe..6c5e7793 100644
  	if (input_method->current.preedit.text) {
  		wlr_text_input_v3_send_preedit_string(
  			text_input->input,
-@@ -534,11 +868,14 @@ handle_new_text_input(struct wl_listener *listener, void *data)
+@@ -537,11 +871,14 @@ handle_new_text_input(struct wl_listener *listener, void *data)
  	struct input_method_relay *relay =
  		wl_container_of(listener, relay, new_text_input);
  	struct wlr_text_input_v3 *wlr_text_input = data;
--	if (relay->seat->seat != wlr_text_input->seat) {
+-	if (relay->seat->wlr_seat != wlr_text_input->seat) {
 +	bool is_v1 = !strcmp("zwp_text_input_v1",
 +		wl_resource_get_class(wlr_text_input->resource));
-+	if (!is_v1 && relay->seat->seat != wlr_text_input->seat) {
++	if (!is_v1 && relay->seat->wlr_seat != wlr_text_input->seat) {
  		return;
  	}
  
@@ -418,16 +418,15 @@ index 92d88ffe..6c5e7793 100644
  	text_input->input = wlr_text_input;
  	text_input->relay = relay;
  	wl_list_insert(&relay->text_inputs, &text_input->link);
-@@ -592,6 +929,9 @@ input_method_relay_create(struct seat *seat)
+@@ -595,6 +932,8 @@ input_method_relay_create(struct seat *seat)
  
  	relay->focused_surface_destroy.notify = handle_focused_surface_destroy;
  
-+	text_input_manager_v1_init(seat->server->wl_display,
-+		seat->server->text_input_manager);
++	text_input_manager_v1_init(server.wl_display, server.text_input_manager);
 +
  	return relay;
  }
  
 -- 
-2.51.0
+2.53.0
 
