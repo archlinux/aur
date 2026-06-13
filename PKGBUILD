@@ -1,7 +1,7 @@
 # Maintainer: fk29g <fk29g.uphill912@slmails.com>
 _projectname=codegrab
 pkgname=$_projectname-git
-pkgrel=1
+pkgrel=2
 pkgver=r68.39cea2c
 pkgdesc="CLI and TUI for selecting and bundling code into a single, LLM-ready output file"
 arch=("x86_64")
@@ -26,6 +26,6 @@ build() {
 package() {
     cd $_projectname
     install -Dm 755 grab "$pkgdir/usr/bin/grab"
-    install -Dm 644 LICENSE "$pkgdir/usr/share/licences/$_projectname/LICENSE"
-    install -Dm 644 README.md "$pkgdir/usr/share/doc/$_projectname/README.md"
+    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
