@@ -1,10 +1,13 @@
 # makepkg files
-pkg/
-src/
+/pkg/
+/src/
+*.tar
 *.xz
 *.zst
+/QCEngine/
 
 # makechrootpkg files
+*-namcap.log
 *-build.log
 *-check.log
 *-package.log

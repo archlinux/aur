@@ -1,4 +1,4 @@
-# Maintainer: Eisuke Kawashima <e DOT kawaschima+arch AT gmail DOT com>
+# Maintainer: Eisuke Kawashima <e DOT kawaschima+archlinux AT gmail DOT com>
 # Contributor: Eric Berquist <eric dot berquist at gmail dot com>
 
 _name="QCEngine"

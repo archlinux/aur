@@ -1,0 +1,4 @@
+[python-qcengine]
+source = "git"
+git = "https://github.com/MolSSI/QCEngine.git"
+prefix = "v"
