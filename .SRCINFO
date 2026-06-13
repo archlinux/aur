@@ -1,6 +1,6 @@
 pkgbase = jit-cli
 	pkgdesc = A CLI for fetching JIRA issue summaries, details, and current sprint tickets
-	pkgver = 0.7.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/cesarferreira/jit
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = jit-cli
 	depends = gcc-libs
 	provides = jit
 	conflicts = jit
-	source = jit-0.7.0.crate::https://crates.io/api/v1/crates/jit-cli/0.7.0/download
-	sha256sums = fa06fe110cfa69f5c4ad9413cae622acac2d0cbcd3fc38e147e30182356a4a6b
+	source = jit-0.9.0.crate::https://crates.io/api/v1/crates/jit-cli/0.9.0/download
+	sha256sums = 23d874bed920964f6a23b78ad6a6859e61ec0ae1891ac0aa58de3127920be426
 
 pkgname = jit-cli
