@@ -1,0 +1,17 @@
+pkgbase = gtk-sine-generator-git
+	pkgdesc = Simple sine wave generator with GTK3 GUI and logarithmic frequency sweep
+	pkgver = v0.0.3.r3.g417fdac
+	pkgrel = 1
+	url = https://github.com/ixnewton/simpleSineWaveGenerator
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = libpulse
+	depends = gtk3
+	optdepends = pulseaudio: PulseAudio backend (or pipewire-pulse)
+	source = git+https://github.com/ixnewton/simpleSineWaveGenerator.git#branch=Sweep-Generator-aur
+	sha256sums = SKIP
+
+pkgname = gtk-sine-generator-git
