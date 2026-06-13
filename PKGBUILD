@@ -14,8 +14,8 @@ options=('!strip')
 
 _relurl="https://github.com/esengine/DeepSeek-Reasonix/releases/download/v${pkgver}"
 
-source=("LICENSE::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/main-v2/LICENSE")
-sha256sums=('SKIP')
+source=()
+sha256sums=()
 sha256sums_x86_64=('738bf49892a95eee52803b420c7f3861ff35e01fd8ff52cf8cab694b21464204')
 sha256sums_aarch64=('1661fad97c0dbd88d9142ac21e57ad486fb8ae1bd396d2bf0c5faaa99cc5016e')
 
@@ -47,6 +47,4 @@ package() {
         fi
     fi
 
-    install -Dm644 "${srcdir}/LICENSE" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
