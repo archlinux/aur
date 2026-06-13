@@ -1,6 +1,6 @@
 # Maintainer: fk29g <fk29g.uphill912@slmails.com>
 pkgname=enola
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="CLI tool to hunt down social media accounts by username across social networks"
 arch=("x86_64")
@@ -10,7 +10,7 @@ makedepends=("go")
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("3d1e08662a2a535773379b24d40c542fac406318c8ea6db6d6c191dfd0f2f703")
+sha256sums=('31bb37586a4175e2b8142bbf106ddc8038d25a3b9cb6c1e19f6c71762cec18b3')
 
 build() {
     cd "$pkgname-$pkgver"
