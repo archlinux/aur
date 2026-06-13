@@ -1,6 +1,6 @@
 pkgbase = pkgdrop
 	pkgdesc = Universal package installer for Arch Linux
-	pkgver = 1.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/theyonecodes/pkgdrop
 	arch = any

@@ -1,18 +1,421 @@
 #!/bin/bash
 # pkgdrop - Universal package installer for Arch Linux
 # Does the heavy lifting so you don't have to
+# shellcheck shell=bash disable=SC2015
 
 set -euo pipefail
 
-VERSION="1.1.0"
+VERSION="3.0.0"
 DEBUG="${DEBUG:-0}"
-INSTALL_DIR="$HOME/.local/opt"
+VERBOSE="${VERBOSE:-0}"
+DRY_RUN="${DRY_RUN:-0}"
+AUTO_YES="${AUTO_YES:-0}"
+FORCE="${FORCE:-0}"
+SYSTEM_WIDE="${SYSTEM_WIDE:-0}"
+INSTALL_DIR="${PKGDROP_DIR:-$HOME/.local/opt}"
 ASK_DEPENDENCIES="${ASK_DEPENDENCIES:-1}"
+MAX_FILE_SIZE="${PKGDROP_MAX_SIZE:-1073741824}"
+LOG_FILE="${PKGDROP_LOG:-$HOME/.local/share/pkgdrop/install.log}"
+LOCK_FILE="/tmp/pkgdrop.lock"
+CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/pkgdrop/config"
+REGISTRY_FILE="${XDG_DATA_HOME:-$HOME/.local/share}/pkgdrop/registry.json"
+HOOKS_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/pkgdrop/hooks"
+SANDBOX_ENABLED="${PKGDROP_SANDBOX:-1}"
 
-log()   { [[ "$DEBUG" == "1" ]] && echo "[DEBUG] $*" >&2 || true; }
-info()  { echo "[INFO] $*"; }
-warn()  { echo "[WARN] $*" >&2; }
-fail()  { echo "[ERROR] $*" >&2; exit 1; }
+# Colors
+if [[ -t 1 ]]; then
+  RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'
+  BLUE='\033[0;34m'; CYAN='\033[0;36m'; NC='\033[0m'
+else
+  RED=''; GREEN=''; YELLOW=''; BLUE=''; CYAN=''; NC=''
+fi
+
+# --- Logging ---
+
+log()   { if [[ "$DEBUG" == "1" ]]; then echo -e "${BLUE}[DEBUG]${NC} $*" >&2; _log_file "DEBUG: $*"; fi; }
+info()  { echo -e "${GREEN}[INFO]${NC} $*"; _log_file "INFO: $*"; }
+warn()  { echo -e "${YELLOW}[WARN]${NC} $*" >&2; _log_file "WARN: $*"; }
+fail()  { echo -e "${RED}[ERROR]${NC} $*" >&2; _log_file "ERROR: $*"; exit 1; }
+verb()  { if [[ "$VERBOSE" == "1" ]]; then echo -e "${CYAN}[----]${NC} $*"; fi; _log_file "VERB: $*"; }
+
+_log_file() {
+    if [[ -n "$LOG_FILE" ]]; then
+        mkdir -p "$(dirname "$LOG_FILE")" 2>/dev/null || true
+        echo "$(date '+%Y-%m-%d %H:%M:%S') $*" >> "$LOG_FILE" 2>/dev/null || true
+    fi
+}
+
+# --- Config ---
+
+load_config() {
+    if [[ -f "$CONFIG_FILE" ]]; then
+        log "Loading config from $CONFIG_FILE"
+        # shellcheck source=/dev/null
+        source "$CONFIG_FILE"
+    fi
+}
+
+save_config() {
+    mkdir -p "$(dirname "$CONFIG_FILE")"
+    cat > "$CONFIG_FILE" << EOF
+# pkgdrop configuration
+# PKGDROP_DIR="$INSTALL_DIR"
+# ASK_DEPENDENCIES=$ASK_DEPENDENCIES
+# PKGDROP_MAX_SIZE=$MAX_FILE_SIZE
+# PKGDROP_LOG="$LOG_FILE"
+EOF
+    info "Config saved to $CONFIG_FILE"
+}
+
+# --- Locking ---
+
+acquire_lock() {
+    local timeout=10
+    local elapsed=0
+    while ! mkdir "$LOCK_FILE" 2>/dev/null; do
+        if [[ ! -f "$LOCK_FILE/pid" ]] || ! kill -0 "$(cat "$LOCK_FILE/pid")" 2>/dev/null; then
+            rm -rf "$LOCK_FILE"
+            continue
+        fi
+        if [[ "$elapsed" -ge "$timeout" ]]; then
+            fail "Timeout waiting for lock. Another pkgdrop instance running?"
+        fi
+        sleep 1
+        ((elapsed++))
+    done
+    echo $$ > "$LOCK_FILE/pid"
+}
+
+release_lock() {
+    rm -rf "$LOCK_FILE"
+}
+
+# --- Cleanup ---
+
+_cleanup_target=""
+
+cleanup() {
+    local exit_code=$?
+    if [[ -n "${_cleanup_target:-}" ]] && [[ -d "$_cleanup_target" ]]; then
+        warn "Interrupted. Cleaning up..."
+        rm -rf "$_cleanup_target"
+    fi
+    release_lock
+    exit "$exit_code"
+}
+trap cleanup EXIT INT TERM
+
+# --- Progress Bar ---
+
+show_progress() {
+    local current="$1"
+    local total="$2"
+    local label="${3:-Progress}"
+    local width=40
+    local percent=0
+    if [[ "$total" -gt 0 ]]; then
+        percent=$(( current * 100 / total ))
+    fi
+    local filled=$(( current * width / total ))
+    local empty=$(( width - filled ))
+    printf "\r${label}: ["
+    printf "%${filled}s" | tr ' ' '#'
+    printf "%${empty}s" | tr ' ' '-'
+    printf "] %3d%%" "$percent"
+    [[ "$current" -eq "$total" ]] && echo ""
+}
+
+# --- Package Registry (JSON) ---
+
+registry_init() {
+    mkdir -p "$(dirname "$REGISTRY_FILE")"
+    if [[ ! -f "$REGISTRY_FILE" ]]; then
+        echo '{}' > "$REGISTRY_FILE"
+    fi
+}
+
+registry_add() {
+    local name="$1" version="$2" pkgtype="$3" files="$4"
+    registry_init
+    local tmp
+    tmp=$(mktemp)
+    if command -v jq &>/dev/null; then
+        local timestamp
+        timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+        jq --arg n "$name" --arg v "$version" --arg t "$pkgtype" \
+           --arg f "$files" --arg ts "$timestamp" \
+           '.[$n] = {"version":$v,"type":$t,"files":($f|split("\n")|map(select(.!=""))),"installed_at":$ts}' \
+           "$REGISTRY_FILE" > "$tmp" && mv "$tmp" "$REGISTRY_FILE"
+    else
+        warn "jq not found, registry not updated"
+        rm -f "$tmp"
+    fi
+}
+
+registry_remove() {
+    local name="$1"
+    registry_init
+    local tmp
+    tmp=$(mktemp)
+    if command -v jq &>/dev/null; then
+        jq --arg n "$name" 'del(.[$n])' "$REGISTRY_FILE" > "$tmp" && mv "$tmp" "$REGISTRY_FILE"
+    else
+        rm -f "$tmp"
+    fi
+}
+
+registry_get_version() {
+    local name="$1"
+    registry_init
+    if command -v jq &>/dev/null; then
+        jq -r --arg n "$name" '.[$n].version // empty' "$REGISTRY_FILE" 2>/dev/null
+    fi
+}
+
+registry_get_files() {
+    local name="$1"
+    registry_init
+    if command -v jq &>/dev/null; then
+        jq -r --arg n "$name" '.[$n].files[] // empty' "$REGISTRY_FILE" 2>/dev/null
+    fi
+}
+
+registry_list() {
+    registry_init
+    if command -v jq &>/dev/null; then
+        jq -r 'to_entries[] | "\(.key) v\(.value.version) (\(.value.type))"' "$REGISTRY_FILE" 2>/dev/null
+    fi
+}
+
+# --- Version Comparison ---
+
+version_compare() {
+    local v1="$1" v2="$2"
+    if [[ "$v1" == "$v2" ]]; then
+        echo "0"
+        return
+    fi
+    local IFS=.
+    local i v1_parts=($v1) v2_parts=($v2)
+    for ((i=0; i<${#v1_parts[@]} || i<${#v2_parts[@]}; i++)); do
+        local p1="${v1_parts[i]:-0}"
+        local p2="${v2_parts[i]:-0}"
+        if ((p1 > p2)); then
+            echo "1"
+            return
+        fi
+        if ((p1 < p2)); then
+            echo "-1"
+            return
+        fi
+    done
+    echo "0"
+}
+
+extract_version_from_file() {
+    local file="$1"
+    local version=""
+    case "$file" in
+        *.AppImage)
+            version=$(strings "$file" 2>/dev/null | grep -oP 'version["\s:=]+\K[0-9]+\.[0-9]+[0-9.]*' | head -1 || true)
+            if [[ -z "$version" ]]; then
+                version=$(echo "$file" | grep -oP '[0-9]+\.[0-9]+[0-9.]*' | head -1 || true)
+            fi
+            ;;
+        *.tar.xz|*.tar.gz)
+            version=$(echo "$file" | grep -oP '[0-9]+\.[0-9]+[0-9.]*' | head -1 || true)
+            ;;
+        *.deb)
+            version=$(dpkg-deb -f "$file" Version 2>/dev/null || true)
+            ;;
+        *.pkg.tar.*)
+            version=$(echo "$file" | grep -oP '[0-9]+\.[0-9]+[0-9.]*' | head -1 || true)
+            ;;
+    esac
+    echo "${version:-0.0.0}"
+}
+
+# --- Conflict Detection ---
+
+check_conflicts() {
+    local name="$1"
+    local target_dir="$2"
+
+    if command -v jq &>/dev/null && [[ -f "$REGISTRY_FILE" ]]; then
+        local conflict
+        conflict=$(jq -r --arg n "$name" 'keys[] | select(. == $n)' "$REGISTRY_FILE" 2>/dev/null || true)
+        if [[ -n "$conflict" ]] && [[ "$name" == "$conflict" ]]; then
+            local installed_ver
+            installed_ver=$(registry_get_version "$name")
+            warn "Package '$name' is already registered (v${installed_ver})"
+            if [[ "$FORCE" == "0" ]]; then
+                if ! confirm "Overwrite existing installation?"; then
+                    fail "Aborted by user"
+                fi
+            fi
+        fi
+    fi
+
+    if [[ -d "$target_dir" ]]; then
+        warn "Directory already exists: $target_dir"
+        if [[ "$FORCE" == "0" ]]; then
+            if ! confirm "Remove existing and reinstall?"; then
+                fail "Aborted by user"
+            fi
+        fi
+    fi
+
+    if [[ -f "$HOME/.local/bin/$name" ]] && [[ ! -L "$HOME/.local/bin/$name" ]]; then
+        warn "A file (not a symlink) already exists at $HOME/.local/bin/$name"
+        if [[ "$FORCE" == "0" ]]; then
+            if ! confirm "Replace it?"; then
+                fail "Aborted by user"
+            fi
+        fi
+    fi
+
+    local existing_owner
+    existing_owner=$(jq -r --arg f "$HOME/.local/bin/$name" 'to_entries[] | select(.value.files[] == $f) | .key' "$REGISTRY_FILE" 2>/dev/null || true)
+    if [[ -n "$existing_owner" ]] && [[ "$existing_owner" != "$name" ]]; then
+        warn "File $HOME/.local/bin/$name is owned by package: $existing_owner"
+        if [[ "$FORCE" == "0" ]]; then
+            if ! confirm "Take ownership from $existing_owner?"; then
+                fail "Aborted by user"
+            fi
+        fi
+        registry_remove "$existing_owner"
+    fi
+}
+
+# --- Signature Verification ---
+
+verify_signature() {
+    local file="$1"
+    local sig_file="${file}.sig"
+    local asc_file="${file}.asc"
+
+    if [[ -f "$sig_file" ]]; then
+        if ! command -v gpg &>/dev/null; then
+            warn "gpg not found, skipping signature verification"
+            return 0
+        fi
+        verb "Verifying signature: $sig_file"
+        if gpg --verify "$sig_file" "$file" 2>/dev/null; then
+            info "Signature verified"
+            return 0
+        else
+            fail "Signature verification FAILED for $file"
+        fi
+    elif [[ -f "$asc_file" ]]; then
+        if ! command -v gpg &>/dev/null; then
+            warn "gpg not found, skipping signature verification"
+            return 0
+        fi
+        verb "Verifying signature: $asc_file"
+        if gpg --verify "$asc_file" "$file" 2>/dev/null; then
+            info "Signature verified"
+            return 0
+        else
+            fail "Signature verification FAILED for $file"
+        fi
+    else
+        verb "No signature file found for $file"
+    fi
+    return 0
+}
+
+verify_checksum() {
+    local file="$1"
+    local sha256_file="${file}.sha256"
+    local sha512_file="${file}.sha512"
+    local md5_file="${file}.md5"
+
+    local checksum_file=""
+    if [[ -f "$sha256_file" ]]; then
+        checksum_file="$sha256_file"
+    elif [[ -f "$sha512_file" ]]; then
+        checksum_file="$sha512_file"
+    elif [[ -f "$md5_file" ]]; then
+        checksum_file="$md5_file"
+    fi
+
+    if [[ -n "$checksum_file" ]]; then
+        verb "Verifying checksum: $checksum_file"
+        if cd "$(dirname "$file")" && sha256sum -c "$checksum_file" 2>/dev/null || sha512sum -c "$checksum_file" 2>/dev/null || md5sum -c "$checksum_file" 2>/dev/null; then
+            info "Checksum verified"
+            cd - >/dev/null
+            return 0
+        else
+            cd - >/dev/null
+            fail "Checksum verification FAILED for $file"
+        fi
+    fi
+    return 0
+}
+
+# --- Hook System ---
+
+run_hook() {
+    local hook_name="$1"
+    local pkg_name="${2:-}"
+    local pkg_type="${3:-}"
+    local pkg_version="${4:-}"
+
+    local global_hooks="/usr/share/pkgdrop/hooks"
+    local user_hooks="$HOOKS_DIR"
+
+    for hooks_dir in "$global_hooks" "$user_hooks"; do
+        if [[ -d "$hooks_dir" ]]; then
+            for hook in "$hooks_dir/${hook_name}"*; do
+                [[ -f "$hook" ]] || continue
+                [[ -x "$hook" ]] || continue
+                verb "Running hook: $(basename "$hook")"
+                PKGDROP_PKG_NAME="$pkg_name" \
+                PKGDROP_PKG_TYPE="$pkg_type" \
+                PKGDROP_PKG_VERSION="$pkg_version" \
+                PKGDROP_INSTALL_DIR="$INSTALL_DIR" \
+                "$hook" 2>&1 | while IFS= read -r line; do
+                    verb "[hook] $line"
+                done || warn "Hook failed: $(basename "$hook")"
+            done
+        fi
+    done
+}
+
+# --- Security: Sandbox ---
+
+sandbox_extract() {
+    local file="$1"
+    local dest="$2"
+
+    if [[ "$SANDBOX_ENABLED" == "1" ]] && command -v bubblewrap &>/dev/null; then
+        verb "Using bubblewrap sandbox for extraction"
+        bubblewrap --ro-bind / / --dev /dev --tmpfs /tmp \
+            --bind "$dest" "$dest" --tmpfs "$dest" \
+            --die-with-parent \
+            --unshare-all \
+            tar -xf "$file" -C "$dest" 2>/dev/null
+        return $?
+    fi
+
+    if [[ "$SANDBOX_ENABLED" == "1" ]] && command -v firejail &>/dev/null; then
+        verb "Using firejail sandbox for extraction"
+        firejail --noprofile --private --net=none \
+            tar -xf "$file" -C "$dest" 2>/dev/null
+        return $?
+    fi
+
+    tar -xf "$file" -C "$dest" 2>/dev/null
+    return $?
+}
+
+drop_privileges() {
+    if [[ "$EUID" -eq 0 ]] && [[ -n "${SUDO_USER:-}" ]]; then
+        exec sudo -u "$SUDO_USER" "$@"
+    fi
+}
+
+# --- Help ---
 
 show_help() {
 cat << 'EOF'
@@ -21,25 +424,47 @@ pkgdrop - Universal package installer for Arch Linux
 Usage: pkgdrop [OPTIONS] <file>
 
 Options:
-  -h, --help      Show this help message
-  -v, --version   Show version
-  -l, --list      List installed packages
+  -h, --help          Show this help message
+  -v, --version       Show version
+  -l, --list          List installed packages
+  -u, --uninstall     Uninstall a package
+  -U, --upgrade       Upgrade a package (reinstall if newer)
+  -i, --info          Show package info
+  -o, --owns <file>   Show which package owns a file
+  -c, --clean         Remove broken symlinks
+  -f, --force         Force install (skip confirmations)
+  -S, --system        Install system-wide (requires root)
+  -n, --dry-run       Preview installation without changes
+  -V, --verbose       Show detailed output
+  -y, --yes           Skip confirmation prompts
 
 Examples:
   pkgdrop app.tar.xz        # Install tar.xz portable
   pkgdrop app.deb           # Install debian package
   pkgdrop app.AppImage      # Install AppImage
   pkgdrop app.pkg.tar.zst   # Install pacman package
+  pkgdrop -n app.tar.xz     # Preview what would be installed
+  pkgdrop -u app            # Uninstall package named 'app'
+  pkgdrop -U app.AppImage   # Upgrade package if newer version
+  pkgdrop -i app            # Show info about installed package
+  pkgdrop -o /usr/bin/foo   # Show which package owns /usr/bin/foo
+  pkgdrop -f app.tar.xz     # Force install (skip prompts)
 
 Environment Variables:
   DEBUG=1                  Show debug information
+  VERBOSE=1                Show detailed output
   ASK_DEPENDENCIES=0       Skip dependency prompts
+  PKGDROP_DIR=~/.local/opt Override install directory
+  PKGDROP_MAX_SIZE=1073741824 Max file size in bytes
+  PKGDROP_LOG=~/.local/share/pkgdrop/install.log
+  PKGDROP_SANDBOX=1        Enable sandbox extraction
 
 Supported Formats:
   *.pkg.tar.*    → pacman (requires sudo)
   *.tar.xz       → tarportable (extraction + symlink)
   *.deb          → debtap (optional)
   *.AppImage     → AppImage (copy to bin)
+  *.rpm          → alien + pacman (optional)
 EOF
 }
 
@@ -47,30 +472,275 @@ show_version() {
     echo "pkgdrop $VERSION"
 }
 
-list_installed() {
-    if [[ -d "$INSTALL_DIR" ]]; then
-        echo "Installed packages in $INSTALL_DIR:"
-        ls -1 "$INSTALL_DIR" 2>/dev/null || echo "  (none)"
-    else
-        echo "No packages installed yet."
+# --- Confirmation ---
+
+confirm() {
+    local prompt="$1"
+    if [[ "$AUTO_YES" == "1" ]] || [[ "$DRY_RUN" == "1" ]]; then
+        return 0
     fi
-    
-    echo ""
-    echo "Symlinks in ~/.local/bin:"
-    if [[ -d "$HOME/.local/bin" ]]; then
-        ls -1 "$HOME/.local/bin" 2>/dev/null || echo "  (none)"
+    read -p "$prompt [y/N] " -n 1 -r
+    echo
+    [[ $REPLY =~ ^[Yy]$ ]]
+}
+
+# --- Size Estimation ---
+
+humanize_size() {
+    local size="$1"
+    if [[ "$size" -lt 1024 ]]; then
+        echo "${size}B"
+    elif [[ "$size" -lt 1048576 ]]; then
+        echo "$(( size / 1024 ))KB"
+    elif [[ "$size" -lt 1073741824 ]]; then
+        echo "$(( size / 1048576 ))MB"
     else
-        echo "  (none)"
+        echo "$(( size / 1073741824 ))GB"
     fi
 }
+
+estimate_size() {
+    local file="$1"
+    local size
+    size=$(stat -c%s "$file" 2>/dev/null || stat -f%z "$file" 2>/dev/null || echo 0)
+
+    local human_size
+    human_size=$(humanize_size "$size")
+
+    local avail
+    avail=$(df -B1 "$HOME" 2>/dev/null | awk 'NR==2{print $4}' || echo 0)
+
+    echo "  Size: $human_size (disk available: $(( avail / 1048576 ))MB)"
+}
+
+# --- Commands ---
+
+list_installed() {
+    local found=0
+    if [[ -d "$INSTALL_DIR" ]]; then
+        echo "Installed packages (registry):"
+        registry_list 2>/dev/null || true
+        echo ""
+        echo "Installed packages (filesystem):"
+        for dir in "$INSTALL_DIR"/*/; do
+            [[ -d "$dir" ]] || continue
+            local name="${dir%/}"
+            name="${name##*/}"
+            if [[ -L "$HOME/.local/bin/$name" ]] || [[ -f "$HOME/.local/bin/$name" ]]; then
+                local size=0
+                size=$(du -sh "$dir" 2>/dev/null | awk '{print $1}' || echo "?")
+                local ver=""
+                ver=$(registry_get_version "$name")
+                ver="${ver:+ v$ver}"
+                echo "  $name$ver ($size)"
+                found=1
+            fi
+        done
+    fi
+    if [[ -d "$HOME/.local/bin" ]]; then
+        for link in "$HOME/.local/bin"/*; do
+            [[ -e "$link" ]] || continue
+            local name="${link##*/}"
+            if [[ -L "$link" ]] && [[ -d "$INSTALL_DIR/$name" ]]; then
+                continue
+            fi
+            if [[ -L "$link" ]] && [[ "$link" == *.AppImage ]]; then
+                local size
+                size=$(du -sh "$link" 2>/dev/null | awk '{print $1}' || echo "?")
+                echo "  $name ($size)"
+                found=1
+            fi
+        done
+    fi
+    [[ "$found" -eq 0 ]] && echo "No packages installed."
+    return 0
+}
+
+show_info() {
+    local name="$1"
+    local ver=""
+    ver=$(registry_get_version "$name")
+    if [[ -n "$ver" ]]; then
+        echo "Package: $name"
+        echo "Version: $ver"
+        echo "Installed: $(jq -r --arg n "$name" '.[$n].installed_at // "unknown"' "$REGISTRY_FILE" 2>/dev/null)"
+        echo "Type: $(jq -r --arg n "$name" '.[$n].type // "unknown"' "$REGISTRY_FILE" 2>/dev/null)"
+        echo ""
+        echo "Files:"
+        registry_get_files "$name" 2>/dev/null | while IFS= read -r f; do
+            [[ -n "$f" ]] && echo "  $f"
+        done
+    else
+        if [[ -L "$HOME/.local/bin/$name" ]]; then
+            echo "Package: $name"
+            echo "Binary: $(readlink -f "$HOME/.local/bin/$name")"
+            echo "Version: unknown (not in registry)"
+        else
+            warn "Package not found: $name"
+        fi
+    fi
+}
+
+owns_file() {
+    local file="$1"
+    local owner
+    owner=$(jq -r --arg f "$file" 'to_entries[] | select(.value.files[] == $f) | .key' "$REGISTRY_FILE" 2>/dev/null || true)
+    if [[ -n "$owner" ]]; then
+        echo "$owner"
+    else
+        echo "No package owns: $file"
+    fi
+}
+
+upgrade_package() {
+    local name="$1"
+    local installed_ver
+    installed_ver=$(registry_get_version "$name")
+
+    if [[ -z "$installed_ver" ]]; then
+        warn "Package '$name' is not installed or not in registry"
+        info "Use 'pkgdrop <file>' to install"
+        return 1
+    fi
+
+    if [[ -z "${2:-}" ]]; then
+        info "Package '$name' v$installed_ver is installed"
+        info "Provide a file to upgrade: pkgdrop -U <file>"
+        return 0
+    fi
+
+    local file="$2"
+    local candidate_ver
+    candidate_ver=$(extract_version_from_file "$file")
+
+    info "Installed: v$installed_ver | Candidate: v$candidate_ver"
+
+    local cmp
+    cmp=$(version_compare "$candidate_ver" "$installed_ver")
+    if [[ "$cmp" -le 0 ]] && [[ "$FORCE" == "0" ]]; then
+        info "Already up to date (or candidate is older)"
+        if ! confirm "Force reinstall anyway?"; then
+            return 0
+        fi
+    fi
+
+    info "Upgrading $name from v$installed_ver to v$candidate_ver..."
+    uninstall_package "$name" --force
+    acquire_lock
+    validate_file "$file"
+    ensure_dependencies
+
+    local pkgtype
+    pkgtype=$(detect_type "$file")
+    local handler="install_$pkgtype"
+    declare -F "$handler" >/dev/null || fail "No handler for: $pkgtype"
+    "$handler" "$file"
+    info "Upgrade complete: $name v$candidate_ver"
+}
+
+uninstall_package() {
+    local name="$1"
+    local force_flag="${2:-}"
+    local removed=0
+
+    if [[ -d "$INSTALL_DIR/$name" ]]; then
+        if [[ "$force_flag" != "--force" ]]; then
+            if ! confirm "Remove $INSTALL_DIR/$name?"; then
+                [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would remove $INSTALL_DIR/$name"; return 0; }
+            fi
+        fi
+        [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would remove $INSTALL_DIR/$name"; return 0; }
+
+        run_hook "pre-remove" "$name" "$(registry_get_version "$name")" 2>/dev/null || true
+
+        rm -rf "${INSTALL_DIR:?}/$name"
+        info "Removed $INSTALL_DIR/$name"
+        removed=1
+    fi
+
+    if [[ -L "$HOME/.local/bin/$name" ]]; then
+        rm -f "$HOME/.local/bin/$name"
+        info "Removed symlink $HOME/.local/bin/$name"
+        removed=1
+    fi
+
+    if [[ -f "$HOME/.local/bin/$name" ]]; then
+        if [[ "$force_flag" != "--force" ]]; then
+            if ! confirm "Remove $HOME/.local/bin/$name?"; then
+                [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would remove $HOME/.local/bin/$name"; return 0; }
+            fi
+        fi
+        [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would remove $HOME/.local/bin/$name"; return 0; }
+        rm -f "$HOME/.local/bin/$name"
+        info "Removed $HOME/.local/bin/$name"
+        removed=1
+    fi
+
+    cleanup_desktop "$name"
+    refresh_desktop
+    verb "Cleaned up desktop entry for $name"
+
+    registry_remove "$name"
+    run_hook "post-remove" "$name" 2>/dev/null || true
+    verb "Cleaned up registry entry for $name"
+
+    [[ "$removed" -eq 0 ]] && warn "Package not found: $name"
+    return 0
+}
+
+clean_broken() {
+    local count=0
+    if [[ -d "$HOME/.local/bin" ]]; then
+        for link in "$HOME/.local/bin"/*; do
+            [[ -L "$link" ]] || continue
+            if [[ ! -e "$link" ]]; then
+                [[ "$DRY_RUN" == "1" ]] && { echo "[DRY RUN] Would remove: $link"; count=$((count + 1)); continue; }
+                rm -f "$link"
+                echo "Removed broken: $link"
+                count=$((count + 1))
+            fi
+        done
+    fi
+    if [[ -d "$INSTALL_DIR" ]]; then
+        for dir in "$INSTALL_DIR"/*/; do
+            [[ -d "$dir" ]] || continue
+            local name="${dir%/}"
+            name="${name##*/}"
+            if [[ ! -L "$HOME/.local/bin/$name" ]] && [[ ! -f "$HOME/.local/bin/$name" ]]; then
+                echo "Orphaned: $dir"
+                count=$((count + 1))
+            fi
+        done
+    fi
+    echo "$count items found."
+    return 0
+}
+
+# --- Helpers ---
 
 check_command() {
     command -v "$1" &>/dev/null
 }
 
+sudo_warn() {
+    local reason="$1"
+    if [[ "$DRY_RUN" == "1" ]]; then
+        info "[DRY RUN] Would use sudo for: $reason"
+        return 0
+    fi
+    warn "This requires sudo privileges ($reason)"
+    if confirm "Allow sudo?"; then
+        return 0
+    else
+        fail "Aborted. Sudo required for: $reason"
+    fi
+}
+
 install_helper() {
     local helper="$1"
+    [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would install $helper"; return 0; }
     info "Installing $helper..."
+    sudo_warn "install $helper"
 
     if check_command yay; then
         yay -S --noconfirm --needed "$helper"
@@ -84,7 +754,7 @@ install_helper() {
 ensure_dependencies() {
     local missing=()
 
-    for cmd in tar find mkdir chmod ln rm echo grep head; do
+    for cmd in tar find mkdir chmod ln rm head; do
         check_command "$cmd" || missing+=("$cmd")
     done
 
@@ -95,9 +765,7 @@ ensure_dependencies() {
     if [[ ${#missing[@]} -gt 0 ]]; then
         warn "Missing required packages: ${missing[*]}"
         if [[ "$ASK_DEPENDENCIES" == "1" ]]; then
-            read -p "Install missing packages? [Y/n] " -n 1 -r
-            echo
-            [[ $REPLY =~ ^[Nn]$ ]] || install_helper "base"
+            install_helper "base"
         else
             fail "Missing dependencies. Install manually or run with ASK_DEPENDENCIES=1"
         fi
@@ -106,7 +774,9 @@ ensure_dependencies() {
 
 install_optional_helper() {
     local helper="$1"
+    [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would install $helper"; return 0; }
     info "Installing optional dependency: $helper"
+    sudo_warn "install $helper"
 
     if check_command yay; then
         yay -S --noconfirm --needed "$helper" 2>/dev/null || return 1
@@ -118,6 +788,8 @@ install_optional_helper() {
     return 0
 }
 
+# --- Detection ---
+
 detect_type() {
     local file="$1"
     case "$file" in
@@ -125,90 +797,557 @@ detect_type() {
         *.tar.xz)                                 echo "tarportable" ;;
         *.deb)                                    echo "debtap" ;;
         *.AppImage)                               echo "appimage" ;;
+        *.rpm)                                    echo "alien" ;;
         *) fail "Unknown format: $file" ;;
     esac
 }
 
+validate_file() {
+    local file="$1"
+    [[ -f "$file" ]] || fail "File not found: $file"
+    [[ -s "$file" ]] || fail "File is empty: $file"
+
+    local size
+    size=$(stat -c%s "$file" 2>/dev/null || stat -f%z "$file" 2>/dev/null || echo 0)
+    if [[ "$size" -gt "$MAX_FILE_SIZE" ]]; then
+        fail "File too large: $(( size / 1048576 ))MB (max $(( MAX_FILE_SIZE / 1048576 ))MB)"
+    fi
+
+    if [[ "$file" == *.AppImage ]]; then
+        local magic
+        magic=$(head -c 4 "$file" 2>/dev/null | od -An -tx1 | tr -d ' ')
+        if [[ "$magic" != "7f454c46" ]]; then
+            fail "Invalid AppImage: not an ELF binary"
+        fi
+    fi
+
+    if [[ "$file" == *.tar.xz ]] || [[ "$file" == *.tar.gz ]]; then
+        if ! tar -tf "$file" >/dev/null 2>&1; then
+            warn "Archive may be corrupted (tar validation failed)"
+            if ! confirm "Continue anyway?"; then
+                fail "Aborted"
+            fi
+        fi
+    fi
+}
+
+validate_symlinks() {
+    local dir="$1"
+    local suspicious=0
+    while IFS= read -r -d '' link; do
+        local target
+        target=$(readlink -f "$link" 2>/dev/null || echo "")
+        if [[ -n "$target" ]] && [[ "$target" != "$dir"/* ]]; then
+            warn "Suspicious symlink: $link -> $target"
+            rm -f "$link"
+            suspicious=1
+        fi
+    done < <(find "$dir" -type l -print0 2>/dev/null)
+    return "$suspicious"
+}
+
+quarantine_file() {
+    local file="$1"
+    local qdir="$HOME/.local/share/pkgdrop/quarantine"
+    mkdir -p "$qdir"
+    local name
+    name=$(basename "$file")
+    local dest
+    dest="$qdir/$(date +%s)_$name"
+    mv "$file" "$dest"
+    warn "Quarantined: $file -> $dest"
+    info "Inspect manually, then delete or restore"
+}
+
+sanitize_name() {
+    local name="$1"
+    name="${name%.tar.xz}"
+    name="${name%.tar.gz}"
+    name="${name%.deb}"
+    name="${name%.rpm}"
+    name="${name%.AppImage}"
+    name=$(echo "$name" | sed -E 's/[._-]*(x86_64|i686|i386|aarch64|armv7hl|linux|macos|win(dows)?)$//')
+    name=$(echo "$name" | sed -E 's/[._-]*(x86_64|i686|i386|aarch64|armv7hl|linux|macos|win(dows)?)$//')
+    [[ -z "$name" ]] && name="unknown"
+    echo "$name"
+}
+
+# --- Desktop Integration ---
+
+find_icon() {
+    local dir="$1"
+    local name="$2"
+    local icon=""
+    icon=$(find "$dir" -maxdepth 4 -type f \( -name "${name}.png" -o -name "${name}.svg" \) 2>/dev/null | head -1)
+    [[ -z "$icon" ]] && icon=$(find "$dir" -maxdepth 4 -type f \( -name "logo.png" -o -name "logo.svg" -o -name "icon.png" -o -name "icon.svg" -o -name "app.png" -o -name "app.svg" \) 2>/dev/null | head -1)
+    [[ -z "$icon" ]] && icon=$(find "$dir" -maxdepth 4 -type f -name "*.png" ! -path "*/changelog*" ! -path "*/README*" ! -path "*/LICENSE*" 2>/dev/null | head -1)
+    [[ -z "$icon" ]] && icon=$(find "$dir" -maxdepth 4 -type f -name "*.svg" 2>/dev/null | head -1)
+    echo "$icon"
+}
+
+detect_category_from_archive() {
+    local dir="$1"
+    local desktop_file
+    desktop_file=$(find "$dir" -maxdepth 3 -name "*.desktop" -type f ! -path "*/share/doc/*" ! -path "*/README*" 2>/dev/null | head -1)
+    
+    if [[ -n "$desktop_file" ]] && [[ -f "$desktop_file" ]]; then
+        local categories
+        categories=$(grep -E "^Categories=" "$desktop_file" 2>/dev/null | head -1 | sed 's/^Categories=//' | sed 's/;$//')
+        if [[ -n "$categories" ]]; then
+            categories="${categories%%;*}"
+            verb "Detected category from .desktop: $categories"
+            echo "$categories"
+            return 0
+        fi
+        local mimetype
+        mimetype=$(grep -E "^MimeType=" "$desktop_file" 2>/dev/null | head -1 | sed 's/^MimeType=//')
+        if [[ "$mimetype" == *"text/html"* ]] || [[ "$mimetype" == *"x-scheme-handler/http"* ]]; then
+            verb "Detected browser from MimeType"
+            echo "Network"
+            return 0
+        fi
+    fi
+    echo "Utility"
+}
+
+humanize_name() {
+    local name="$1"
+    echo "$name" | sed 's/[-_.]/ /g' | sed 's/\b\(.\)/\u\1/g'
+}
+
+create_desktop_entry() {
+    local name="$1"
+    local bin="$2"
+    local icon="$3"
+    local category="${4:-Utility}"
+
+    local desktop_dir="$HOME/.local/share/applications"
+    mkdir -p "$desktop_dir"
+
+    local desktop_file="$desktop_dir/pkgdrop-${name}.desktop"
+    local icon_name="pkgdrop-${name}"
+
+    if [[ -n "$icon" ]] && [[ -f "$icon" ]]; then
+        local ext="${icon##*.}"
+        local icon_dir="$HOME/.local/share/icons/hicolor/128x128/apps"
+        mkdir -p "$icon_dir"
+        cp "$icon" "$icon_dir/${icon_name}.${ext}"
+        verb "Installed icon: $icon_dir/${icon_name}.${ext}"
+    fi
+
+    local display_name
+    display_name=$(humanize_name "$name")
+
+    cat > "$desktop_file" << DESKTOP
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=${display_name}
+Exec=${bin} %u
+Icon=${icon_name}
+Terminal=false
+StartupWMClass=${name}
+Categories=${category};
+MimeType=text/html;text/plain;application/xhtml+xml;
+StartupNotify=true
+DESKTOP
+
+    verb "Created: $desktop_file"
+}
+
+refresh_desktop() {
+    update-desktop-database "$HOME/.local/share/applications" 2>/dev/null || true
+    gtk-update-icon-cache -f -t "$HOME/.local/share/icons/hicolor" 2>/dev/null || true
+    kbuildsycoca5 2>/dev/null || true
+}
+
+cleanup_desktop() {
+    local name="$1"
+    rm -f "$HOME/.local/share/applications/pkgdrop-${name}.desktop"
+    rm -f "$HOME/.local/share/icons/hicolor/128x128/apps/pkgdrop-${name}.png"
+    rm -f "$HOME/.local/share/icons/hicolor/128x128/apps/pkgdrop-${name}.svg"
+    rm -f "$HOME/.local/share/icons/hicolor/scalable/apps/pkgdrop-${name}.svg"
+}
+
+# --- Atomic Install Helpers ---
+
+atomic_prepare() {
+    local stage_dir="$1"
+    mkdir -p "$stage_dir" || fail "Cannot create staging directory: $stage_dir"
+    _cleanup_target="$stage_dir"
+}
+
+atomic_commit() {
+    local stage_dir="$1"
+    local final_dir="$2"
+    local name="$3"
+
+    verb "Atomic commit: $stage_dir -> $final_dir"
+
+    if [[ -d "$final_dir" ]]; then
+        backup_dir="${final_dir}.bak.$(date +%s)"
+        verb "Backing up existing: $final_dir -> $backup_dir"
+        mv "$final_dir" "$backup_dir" || fail "Failed to backup existing installation"
+    fi
+
+    mv "$stage_dir" "$final_dir" || {
+        if [[ -n "${backup_dir:-}" ]] && [[ -d "$backup_dir" ]]; then
+            mv "$backup_dir" "$final_dir"
+            fail "Atomic commit failed, restored backup"
+        fi
+        fail "Atomic commit failed: cannot move $stage_dir to $final_dir"
+    }
+
+    [[ -n "${backup_dir:-}" ]] && rm -rf "$backup_dir"
+    _cleanup_target=""
+    verb "Atomic commit complete"
+}
+
+atomic_rollback() {
+    local backup_dir="$1"
+    local final_dir="$2"
+    if [[ -n "$backup_dir" ]] && [[ -d "$backup_dir" ]]; then
+        warn "Rolling back: $backup_dir -> $final_dir"
+        rm -rf "$final_dir"
+        mv "$backup_dir" "$final_dir"
+        info "Rollback complete"
+    fi
+}
+
+# --- Install Handlers ---
+
 install_pacman() {
-    log "Installing pacman package: $1"
+    verb "Installing pacman package: $(basename "$1")"
     if ! check_command pacman; then
         fail "pacman not found. Install base packages."
     fi
-    sudo pacman -U --noconfirm "$1"
+    [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would run: sudo pacman -U $1"; return 0; }
+    sudo_warn "install pacman package"
+    sudo pacman -U --noconfirm -- "$1"
 }
 
 install_tarportable() {
     local file="$1"
     local basename="${file##*/}"
     local name="${basename%.tar.xz}"
-    name="${name%%[-_]*linux*}"
+    name=$(sanitize_name "$name")
 
-    log "Installing tarportable: $name"
+    verb "Installing tarportable: $name"
 
-    [[ -d "$INSTALL_DIR" ]] || mkdir -p "$INSTALL_DIR"
+    [[ -d "$INSTALL_DIR" ]] || mkdir -p "$INSTALL_DIR" || fail "Cannot create $INSTALL_DIR"
 
     local target="$INSTALL_DIR/$name"
-    [[ -d "$target" ]] && rm -rf "$target"
+    local candidate_ver
+    candidate_ver=$(extract_version_from_file "$file")
+    local installed_ver
+    installed_ver=$(registry_get_version "$name")
 
-    mkdir -p "$target"
-    tar -xf "$file" -C "$target"
+    [[ -z "$installed_ver" ]] && installed_ver="0.0.0"
 
+    check_conflicts "$name" "$target"
+
+    if [[ -d "$target" ]]; then
+        warn "Already installed: $name v$installed_ver"
+        if [[ "$FORCE" == "0" ]] && [[ "$installed_ver" == "$candidate_ver" ]]; then
+            if ! confirm "Same version. Reinstall anyway?"; then
+                exit 0
+            fi
+        fi
+        [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would remove existing $target"; return 0; }
+        cleanup_desktop "$name"
+        rm -rf "$target"
+    fi
+
+    if [[ "$DRY_RUN" == "1" ]]; then
+        info "[DRY RUN] Would extract $file to $target"
+        estimate_size "$file"
+        return 0
+    fi
+
+    run_hook "pre-install" "$name" "tarportable" "$candidate_ver"
+
+    local stage_dir="${target}.stage.$(date +%s)"
+    atomic_prepare "$stage_dir"
+
+    mkdir -p "$stage_dir" || fail "Cannot create $stage_dir"
+    verb "Created staging directory: $stage_dir"
+
+    local file_size
+    file_size=$(stat -c%s "$file" 2>/dev/null || stat -f%z "$file" 2>/dev/null || echo 0)
+    verb "Archive size: $(humanize_size "$file_size")"
+
+    verb "Extracting archive..."
+    if [[ "$file_size" -gt 10485760 ]]; then
+        local total_files
+        total_files=$(tar -tf "$file" 2>/dev/null | wc -l)
+        if [[ "$total_files" -gt 0 ]]; then
+            info "Extracting $total_files files from $(humanize_size "$file_size") archive..."
+        fi
+    fi
+    
+    if ! sandbox_extract "$file" "$stage_dir"; then
+        rm -rf "$stage_dir"
+        fail "Failed to extract archive (corrupted or invalid)"
+    fi
+    verb "Extraction complete"
+
+    local inner_count
+    inner_count=$(find "$stage_dir" -maxdepth 1 -type d | wc -l)
+    if [[ "$inner_count" -eq 2 ]]; then
+        local inner_dir
+        inner_dir=$(find "$stage_dir" -maxdepth 1 -type d ! -path "$stage_dir" | head -1)
+        if [[ -n "$inner_dir" ]]; then
+            local inner_archive
+            inner_archive=$(find "$inner_dir" -maxdepth 1 -type f \( -name "*.tar.xz" -o -name "*.tar.gz" -o -name "*.tar.zst" \) 2>/dev/null | head -1)
+            if [[ -n "$inner_archive" ]]; then
+                verb "Found nested archive: $(basename "$inner_archive")"
+                info "Extracting nested archive..."
+                mkdir -p "$stage_dir/tmp_extract"
+                if sandbox_extract "$inner_archive" "$stage_dir/tmp_extract" 2>/dev/null; then
+                    rm -rf "$inner_dir"
+                    mv "$stage_dir/tmp_extract/"* "$stage_dir/" 2>/dev/null
+                    mv "$stage_dir/tmp_extract/".* "$stage_dir/" 2>/dev/null
+                    rm -rf "$stage_dir/tmp_extract"
+                    verb "Flattened nested archive structure"
+                else
+                    rm -rf "$stage_dir/tmp_extract"
+                    warn "Failed to extract nested archive, keeping original structure"
+                fi
+            fi
+        fi
+    fi
+
+    validate_symlinks "$stage_dir" || warn "Suspicious symlinks found and removed"
+    find "$stage_dir" -type f \( -perm -4000 -o -perm -2000 \) -exec chmod ug-s {} + 2>/dev/null || true
+    verb "Stripped setuid/setgid bits"
+
+    atomic_commit "$stage_dir" "$target" "$name"
+
+    verb "Searching for binary..."
     local bin=""
-    bin=$(find "$target" -maxdepth 2 -type f -executable -name "$name" ! -name "*.so*" ! -name "*.dylib" ! -name "*-bin" 2>/dev/null | head -1)
-    [[ -z "$bin" ]] && bin=$(find "$target" -maxdepth 2 -type f -executable ! -name "*.so*" ! -name "*.dylib" ! -name "updater" ! -name "*test" ! -name "*sender" ! -name "*-bin" 2>/dev/null | head -1)
+    bin=$(find "$target" -maxdepth 3 -type f -executable -name "$name" ! -name "*.so*" ! -name "*.dylib" ! -name "*-bin" 2>/dev/null | head -1)
+    [[ -z "$bin" ]] && bin=$(find "$target" -maxdepth 3 -type f -executable ! -name "*.so*" ! -name "*.dylib" ! -name "updater" ! -name "*test" ! -name "*sender" ! -name "*-bin" ! -name "*.png" ! -name "*.svg" ! -name "*.xpm" 2>/dev/null | head -1)
+    [[ -n "$bin" ]] && verb "Found binary: $bin"
 
+    mkdir -p "$HOME/.local/bin" || fail "Cannot create $HOME/.local/bin"
     if [[ -n "$bin" ]]; then
-        mkdir -p "$HOME/.local/bin"
-        ln -sf "$bin" "$HOME/.local/bin/$name"
-        info "Symlinked: $HOME/.local/bin/$name -> $bin"
+        ln -sf "$bin" "$HOME/.local/bin/$name" || fail "Failed to create symlink"
+        info "Binary: $name → $HOME/.local/bin/$name"
     else
         warn "No binary found. Files installed to: $target"
-        info "Add $target to your PATH if needed"
     fi
+
+    local icon
+    icon=$(find_icon "$target" "$name")
+    [[ -n "$icon" ]] && verb "Found icon: $icon"
+
+    local category
+    category=$(detect_category_from_archive "$target")
+    verb "Using category: $category"
+
+    verb "Creating desktop entry..."
+    create_desktop_entry "$name" "$HOME/.local/bin/$name" "$icon" "$category"
+    refresh_desktop
+
+    local file_list=""
+    file_list=$(find "$target" -type f 2>/dev/null | tr '\n' '\n')
+    registry_add "$name" "$candidate_ver" "tarportable" "$file_list"
+
+    run_hook "post-install" "$name" "tarportable" "$candidate_ver"
+
+    info "Desktop entry created"
 }
 
 install_debtap() {
-    log "Installing .deb via debtap: $1"
+    verb "Installing .deb via debtap: $(basename "$1")"
     if ! check_command debtap; then
         warn "debtap not found."
         if [[ "$ASK_DEPENDENCIES" == "1" ]]; then
-            read -p "Install debtap? [Y/n] " -n 1 -r
-            echo
             install_optional_helper "debtap" || fail "Cannot install .deb without debtap"
         else
             fail "Install debtap: yay -S debtap"
         fi
     fi
-    debtap "$1"
+    [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would convert and install .deb"; return 0; }
+    sudo_warn "install .deb package"
+
+    local name
+    name=$(basename "$1")
+    name="${name%.deb}"
+    name=$(sanitize_name "$name")
+
+    local candidate_ver
+    candidate_ver=$(dpkg-deb -f "$1" Version 2>/dev/null || extract_version_from_file "$1")
+
+    run_hook "pre-install" "$name" "debtap" "$candidate_ver"
+
+    local output
+    output=$(debtap "$1" 2>&1)
+    local pkg
+    pkg=$(echo "$output" | grep -o '[^ ]*\.pkg\.tar\.[^ ]*' | tail -1)
+    if [[ -n "$pkg" ]] && [[ -f "$pkg" ]]; then
+        sudo pacman -U --noconfirm -- "$pkg"
+        local file_list=""
+        file_list=$(pacman -Ql "$name" 2>/dev/null | awk '{print $2}' | tr '\n' '\n' || true)
+        registry_add "$name" "$candidate_ver" "debtap" "$file_list"
+        run_hook "post-install" "$name" "debtap" "$candidate_ver"
+        rm -f "$pkg"
+    else
+        warn "debtap conversion failed. Output:"
+        echo "$output" | tail -5
+        fail "Could not convert .deb package"
+    fi
 }
 
 install_appimage() {
     local file="$1"
     local name="${file##*/}"
     name="${name%.AppImage}"
+    name=$(sanitize_name "$name")
 
-    log "Installing AppImage: $name"
+    verb "Installing AppImage: $name"
 
-    mkdir -p "$HOME/.local/bin"
-    cp "$file" "$HOME/.local/bin/$name"
-    chmod +x "$HOME/.local/bin/$name"
+    local candidate_ver
+    candidate_ver=$(extract_version_from_file "$file")
+    local installed_ver
+    installed_ver=$(registry_get_version "$name")
+    [[ -z "$installed_ver" ]] && installed_ver="0.0.0"
+
+    check_conflicts "$name" ""
+
+    if [[ -d "$INSTALL_DIR/$name" ]] || [[ -f "$HOME/.local/bin/$name" ]]; then
+        if [[ "$FORCE" == "0" ]] && [[ "$installed_ver" == "$candidate_ver" ]]; then
+            warn "Already installed: $name v$installed_ver"
+            if ! confirm "Reinstall anyway?"; then
+                exit 0
+            fi
+        fi
+    fi
+
+    if [[ "$DRY_RUN" == "1" ]]; then
+        info "[DRY RUN] Would copy $file to $HOME/.local/bin/$name"
+        estimate_size "$file"
+        return 0
+    fi
+
+    verify_signature "$file"
+    verify_checksum "$file"
+
+    run_hook "pre-install" "$name" "appimage" "$candidate_ver"
+
+    mkdir -p "$HOME/.local/bin" || fail "Cannot create $HOME/.local/bin"
+
+    local stage_file="${HOME}/.local/bin/${name}.stage"
+    cp "$file" "$stage_file" || fail "Failed to copy AppImage to staging location"
+    chmod +x "$stage_file" || fail "Failed to set permissions"
+
+    if [[ -f "$HOME/.local/bin/$name" ]]; then
+        rm -f "$HOME/.local/bin/$name"
+    fi
+    mv "$stage_file" "$HOME/.local/bin/$name" || fail "Failed to commit AppImage"
+
+    local icon=""
+    local category="Utility"
+    local tmpdir
+    tmpdir=$(mktemp -d)
+    cd "$tmpdir"
+    if "$file" --appimage-extract ./*.png >/dev/null 2>&1; then
+        icon=$(find . -maxdepth 1 -name "*.png" -type f 2>/dev/null | head -1)
+        [[ -n "$icon" ]] && icon="$(pwd)/$icon"
+    fi
+    if "$file" --appimage-extract ./*.svg >/dev/null 2>&1; then
+        local svg
+        svg=$(find . -maxdepth 1 -name "*.svg" -type f 2>/dev/null | head -1)
+        [[ -n "$svg" ]] && icon="$(pwd)/$svg"
+    fi
+    if "$file" --appimage-extract ./*.desktop >/dev/null 2>&1; then
+        category=$(detect_category_from_archive "$tmpdir")
+    fi
+    cd /tmp && rm -rf "$tmpdir"
+
+    create_desktop_entry "$name" "$HOME/.local/bin/$name" "$icon" "$category"
+    refresh_desktop
+
+    registry_add "$name" "$candidate_ver" "appimage" "$HOME/.local/bin/$name"
+
+    run_hook "post-install" "$name" "appimage" "$candidate_ver"
+
     info "Installed: $HOME/.local/bin/$name"
+    info "Desktop entry created"
+}
+
+install_alien() {
+    local file="$1"
+    verb "Installing .rpm via alien: $(basename "$1")"
+    if ! check_command alien; then
+        warn "alien not found."
+        if [[ "$ASK_DEPENDENCIES" == "1" ]]; then
+            install_optional_helper "alien" || fail "Cannot install .rpm without alien"
+        else
+            fail "Install alien: yay -S alien"
+        fi
+    fi
+    [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would convert and install .rpm"; return 0; }
+    sudo_warn "install .rpm package"
+
+    local name
+    name=$(basename "$1")
+    name="${name%.rpm}"
+    name=$(sanitize_name "$name")
+
+    local candidate_ver
+    candidate_ver=$(extract_version_from_file "$1")
+
+    run_hook "pre-install" "$name" "alien" "$candidate_ver"
+
+    local pkg
+    pkg=$(alien -dc "$1" 2>/dev/null | grep -o '[^ ]*\.pkg\.tar\.[^ ]*' | tail -1)
+    if [[ -n "$pkg" ]] && [[ -f "$pkg" ]]; then
+        sudo pacman -U --noconfirm -- "$pkg"
+        local file_list=""
+        file_list=$(pacman -Ql "$name" 2>/dev/null | awk '{print $2}' | tr '\n' '\n' || true)
+        registry_add "$name" "$candidate_ver" "alien" "$file_list"
+        run_hook "post-install" "$name" "alien" "$candidate_ver"
+        rm -f "$pkg"
+    else
+        fail "Could not convert .rpm package"
+    fi
 }
 
 show_summary() {
+    local name="${1:-}"
+    if [[ "$DRY_RUN" == "1" ]]; then
+        info "[DRY RUN] No changes made"
+        return 0
+    fi
+
     echo ""
     info "================================"
-    info "pkgdrop $VERSION - Installation Summary"
+    info "pkgdrop $VERSION - Installed"
     info "================================"
-    info "Installed to: ~/.local/opt/"
-    info "Binaries in:  ~/.local/bin/"
-    info ""
-    info "Add ~/.local/bin to PATH if not already:"
-    info "  echo 'export PATH=\"\$HOME/.local/bin:\$PATH\"' >> ~/.bashrc"
+
+    if [[ -n "$name" ]]; then
+        local ver
+        ver=$(registry_get_version "$name")
+        [[ -n "$ver" ]] && info "Version:       $ver"
+        [[ -d "$INSTALL_DIR/$name" ]] && info "Installed to: $INSTALL_DIR/$name/"
+        [[ -L "$HOME/.local/bin/$name" ]] && info "Binary:        $HOME/.local/bin/$name"
+        [[ -f "$HOME/.local/share/applications/pkgdrop-${name}.desktop" ]] && info "Desktop entry: Yes"
+    fi
+
+    if ! echo ":$PATH:" | grep -q ":$HOME/.local/bin:"; then
+        info ""
+        info "Add to PATH:"
+        info "  echo 'export PATH=\"\$HOME/.local/bin:\$PATH\"' >> ~/.bashrc"
+    fi
 }
+
+# --- Main ---
 
 main() {
     local file="${1:-}"
+    load_config
+    registry_init
 
     if [[ "$file" == "-h" ]] || [[ "$file" == "--help" ]]; then
         show_help
@@ -225,22 +1364,79 @@ main() {
         exit 0
     fi
 
+    while true; do
+        case "$file" in
+            -n|--dry-run)  DRY_RUN=1; shift; file="${1:-}" ;;
+            -V|--verbose)  VERBOSE=1; shift; file="${1:-}" ;;
+            -y|--yes)      AUTO_YES=1; shift; file="${1:-}" ;;
+            -f|--force)    FORCE=1; shift; file="${1:-}" ;;
+            -S|--system)   SYSTEM_WIDE=1; shift; file="${1:-}" ;;
+            DEBUG=1)       DEBUG=1; shift; file="${1:-}" ;;
+            *) break ;;
+        esac
+    done
+
+    if [[ "$file" == "-u" ]] || [[ "$file" == "--uninstall" ]]; then
+        local pkg="${2:-}"
+        [[ -z "$pkg" ]] && fail "Usage: pkgdrop --uninstall <package-name>"
+        acquire_lock
+        uninstall_package "$pkg"
+        exit 0
+    fi
+
+    if [[ "$file" == "-U" ]] || [[ "$file" == "--upgrade" ]]; then
+        local pkg="${2:-}"
+        local pkgfile="${3:-}"
+        [[ -z "$pkg" ]] && fail "Usage: pkgdrop --upgrade <package-name> [file]"
+        upgrade_package "$pkg" "$pkgfile"
+        exit 0
+    fi
+
+    if [[ "$file" == "-i" ]] || [[ "$file" == "--info" ]]; then
+        local pkg="${2:-}"
+        [[ -z "$pkg" ]] && fail "Usage: pkgdrop --info <package-name>"
+        show_info "$pkg"
+        exit 0
+    fi
+
+    if [[ "$file" == "-o" ]] || [[ "$file" == "--owns" ]]; then
+        local target="${2:-}"
+        [[ -z "$target" ]] && fail "Usage: pkgdrop --owns <file>"
+        owns_file "$target"
+        exit 0
+    fi
+
+    if [[ "$file" == "-c" ]] || [[ "$file" == "--clean" ]]; then
+        clean_broken
+        exit 0
+    fi
+
     [[ -z "$file" ]] && { show_help; exit 1; }
     [[ -f "$file" ]] || fail "File not found: $file"
 
+    acquire_lock
+    validate_file "$file"
     ensure_dependencies
 
-    local type
-    type=$(detect_type "$file")
-    log "Detected type: $type"
+    local pkgtype
+    pkgtype=$(detect_type "$file")
+    log "Detected type: $pkgtype"
 
-    local handler="install_$type"
-    declare -F "$handler" >/dev/null || fail "No handler for: $type"
+    local handler="install_$pkgtype"
+    declare -F "$handler" >/dev/null || fail "No handler for: $pkgtype"
 
-    info "Installing: $file"
+    local pkgname="${file##*/}"
+    case "$pkgtype" in
+        tarportable) pkgname="${pkgname%.tar.xz}"; pkgname=$(sanitize_name "$pkgname") ;;
+        appimage)    pkgname="${pkgname%.AppImage}"; pkgname=$(sanitize_name "$pkgname") ;;
+        *)           pkgname="${pkgname%%.*}" ;;
+    esac
+
+    info "Installing: $(basename "$file")"
+    estimate_size "$file" 2>/dev/null || true
     "$handler" "$file"
-    info "[OK] Installation complete"
-    show_summary
+    info "Done"
+    show_summary "$pkgname"
 }
 
 main "$@"
