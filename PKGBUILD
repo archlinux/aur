@@ -2,7 +2,7 @@
 # Contributor: Arthur Stuhl <ArturKauffmann@proton.me>
 
 pkgname=socialstreamninja
-pkgver=v0.3.125
+pkgver=v0.3.113
 pkgrel=1
 pkgdesc="Standalone version of Social Stream Ninja - Electron-based application for capturing social media streams"
 arch=('x86_64')
