@@ -2,7 +2,7 @@
 
 pkgname=vtlock
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel-level VT switch lock for standalone screen lockers"
 arch=('x86_64')
 url="https://hub.darcs.net/stef204/vtlock"
