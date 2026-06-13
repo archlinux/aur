@@ -67,8 +67,6 @@ prepare() {
     git checkout -f "tags/$_flutter_ver" || git checkout -f "$_flutter_ver"
     popd >/dev/null
   fi
-
-  cd "$srcdir/$_reponame"
 }
 
 build() {
