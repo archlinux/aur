@@ -1,0 +1,30 @@
+pkgbase = libfprint-fpc-10a5-9924-git
+	pkgdesc = Patched libfprint with experimental Fingerprint Cards 10a5:9924 support
+	pkgver = 1.94.10.r45.g0dc384b
+	pkgrel = 1
+	url = https://github.com/Terrydaktal/libfprint-fpc-10a5-9924
+	arch = x86_64
+	groups = fprint
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = meson
+	makedepends = systemd
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = libgudev
+	depends = libgusb
+	depends = openssl
+	depends = pixman
+	optdepends = fprintd: D-Bus service and command-line tools for fingerprint enrollment and verification
+	provides = libfprint=1.94.10.r45.g0dc384b
+	provides = libfprint-2.so=2-64
+	conflicts = libfprint
+	conflicts = libfprint-git
+	source = libfprint::git+https://gitlab.freedesktop.org/libfprint/libfprint.git
+	source = libfprint-fpc-10a5-9924-git-patches::git+https://github.com/Terrydaktal/libfprint-fpc-10a5-9924.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libfprint-fpc-10a5-9924-git
