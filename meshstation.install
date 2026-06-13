@@ -1,0 +1,9 @@
+post_install() {
+	getent group meshstation &> /dev/null || groupadd meshstation
+	chgrp meshstation /opt/MeshStation/data /opt/MeshStation/engine/os/linux_x86_64/runtime/.conda_unpacked_ok
+	echo -e "\e[1;33m" # yellow
+	echo 'To use MeshStation, you must be a member of the meshstation group.'
+	echo "Run \`usermod $(logname) -a -G meshstation\` to add your user to the group,"
+	echo 'then log out and log back in.'
+	echo -e "\e[1;0m" # default
+}

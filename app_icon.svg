@@ -1,0 +1,14 @@
+
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Envelope Body -->
+  <rect x="10" y="35" width="80" height="50" rx="5" fill="#4CAF50" />
+  <!-- Envelope Flap -->
+  <path d="M 10 35 L 50 65 L 90 35" stroke="white" stroke-width="4" fill="none" />
+  <!-- Antenna Pole -->
+  <line x1="75" y1="35" x2="75" y2="10" stroke="#4CAF50" stroke-width="4" />
+  <!-- Antenna Tip -->
+  <circle cx="75" cy="10" r="3" fill="#4CAF50" />
+  <!-- Radio Waves -->
+  <path d="M 65 15 Q 55 10 65 5" stroke="#4CAF50" stroke-width="2" fill="none" />
+  <path d="M 85 15 Q 95 10 85 5" stroke="#4CAF50" stroke-width="2" fill="none" />
+</svg>

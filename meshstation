@@ -1,0 +1,2 @@
+#!/bin/sh
+QT_API=pyqt6 python /opt/MeshStation/MeshStation.py

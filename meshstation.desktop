@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=MeshStation
+Type=Application
+Exec=/usr/bin/meshstation
+Icon=/opt/MeshStation/app_icon.svg
+Categories=Science
