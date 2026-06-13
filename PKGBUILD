@@ -3,7 +3,7 @@
 
 pkgname=graphite-editor-git
 _pkgname=Graphite
-pkgver=r2854.d90a49a
+pkgver=r2855.cde8dd7
 pkgrel=1
 pkgdesc='raster & vector editor with a modern node-based, non-destructive, procedural workflow'
 arch=(x86_64)
@@ -46,8 +46,10 @@ _srcenv() {
 
 prepare() {
 	_srcenv
-	sed -i -e 's/, "--frozen"//' tools/third-party-licenses/src/cargo.rs
-	cargo fetch --locked --target host-tuple
+	# Note we can't limit this fetch to the target platform because the build
+	# time call to bundle licenses in the about box does so for *all* targets.
+	# c.f. https://github.com/GraphiteEditor/Graphite/issues/4230
+	cargo fetch --locked
 	pushd frontend
 	npm run setup
 }
