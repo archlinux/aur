@@ -3,7 +3,7 @@
 pkgname=aqueous-git
 pkgbase=aqueous
 pkgver=0.1.0 # Will be updated by pkgver()
-pkgrel=6
+pkgrel=7
 pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
@@ -170,6 +170,15 @@ package() {
     # protocol.
     install -Dm644 "$srcdir/aqueous/packaging/aqueous-outputd.service" \
         "$pkgdir/usr/lib/systemd/user/aqueous-outputd.service"
+
+    # Session wrapper target. graphical-session.target is static
+    # (RefuseManualStart) and xdg-desktop-portal.service has
+    # Requisite=graphical-session.target, so the portal cannot start until the
+    # target is active. aqueous-init starts this wrapper (which Requires/BindsTo
+    # graphical-session.target) to activate it legitimately and tear it down on
+    # logout — making the portal (and flameshot/screencast) work out of the box.
+    install -Dm644 "$srcdir/aqueous/packaging/aqueous-session.target" \
+        "$pkgdir/usr/lib/systemd/user/aqueous-session.target"
 
     # tmpfiles snippet: materialises per-user state/cache/config dirs at
     # login via systemd-tmpfiles --user.
