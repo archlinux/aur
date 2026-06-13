@@ -1,6 +1,6 @@
 # Maintainer: Kief Studio <packages@kief.studio>
 pkgname=aur-scanner
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Security scanner for Arch Linux AUR packages - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'clang')
 provides=('aur-scan')
 conflicts=('aur-scanner-git' 'ks-aur-scanner')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KiefStudioMA/ks-aur-scanner/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4cd4b8bd19a7ee8067da4630bbf67cabc8836bd8cf1e83af0d98c0c937f4d8d1')
+sha256sums=('aeb5c0f9e35a2d4ef5ae12e096ff503747d65f3b717db43a8efcf9285cfffb74')
 
 prepare() {
     cd "ks-aur-scanner-$pkgver"
