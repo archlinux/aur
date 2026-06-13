@@ -3,7 +3,7 @@ pkgver=0.1.0.r39.g020407f
 pkgrel=1
 pkgdesc="Howdy + gesture authentication layer (TFG)"
 arch=('x86_64')
-url="https://github.com/Palm-Pass/tfg"
+url="https://github.com/Palm-Pass/PalmPass"
 
 license=('MIT')
 install="${pkgname}.install"
@@ -24,27 +24,27 @@ makedepends=(
   'gobject-introspection'
 )
 source=(
-  "tfg::git+https://github.com/Palm-Pass/tfg.git#branch=main"
+  "PalmPass::git+https://github.com/Palm-Pass/PalmPass.git#branch=main"
 )
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/tfg"
+  cd "${srcdir}/PalmPass"
   printf '0.1.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/tfg"
+  cd "${srcdir}/PalmPass"
 }
 
 build() {
-  cd "${srcdir}/tfg"
+  cd "${srcdir}/PalmPass"
   gcc -fPIC -fno-stack-protector -Wall -c src/pam_gesture.c -o "${srcdir}/pam_gesture.o"
   ld -x --shared -o "${srcdir}/pam_gesture.so" "${srcdir}/pam_gesture.o" -lpam
 }
 
 package() {
-  local repo="${srcdir}/tfg"
+  local repo="${srcdir}/PalmPass"
   local root="${pkgdir}/usr/lib/howdy"
 
   install -d "${root}/models"
