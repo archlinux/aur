@@ -2,17 +2,17 @@
 # Contributor: Ciappi <marco.scopesi@gmail.com>
 pkgname=lfortran
 pkgver=0.63.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern interactive LLVM-based Fortran compiler"
 arch=(x86_64)
 url="https://${pkgname}.org"
 license=(BSD-3-Clause)
 depends=(clang kokkos zlib ncurses xeus-zmq)
-makedepends=(llvm cmake cppzmq zstd)
+makedepends=(llvm cmake cppzmq zstd libunwind pandoc-cli re2c)
 checkdepends=()
 optdepends=()
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz)
-sha512sums=('5cb2a4ec2f3474d38fc7c4bccfa407d6141da690bc70a823644309fc4ad54677fb2b5071cffbbef07e056776b6298eefefa869e6528a0ef34155adef6c227add')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('317cca18dcc98287b750095f8c2bee6150b85e5d792c48804f6da441c7a48fb0dfda61bbb48b61187234b995f574f2c1e5dcd9657d84e04ae3ad10dfaed88400')
 
 build() {
   cmake \
@@ -27,7 +27,9 @@ build() {
     -DWITH_XEUS=yes \
     -DWITH_KOKKOS=yes \
     -DWITH_ZLIB=yes \
-    -DWITH_ZSTD=yes
+    -DWITH_ZSTD=yes \
+    -DUSE_DYNAMIC_ZSTD=yes \
+    -Wno-dev
 
   cmake --build build --target all
 }
