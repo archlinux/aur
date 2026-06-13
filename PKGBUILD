@@ -3,7 +3,7 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 pkgname=amiberry
 pkgver=8.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Optimized Amiga emulator"
 arch=('x86_64')
 url="https://github.com/BlitterStudio/amiberry"
@@ -27,7 +27,8 @@ build() {
   -DCMAKE_BUILD_TYPE=None \
   -G Ninja \
   -DCMAKE_INSTALL_PREFIX=/usr \
-  && cmake --build build
+  -DUSE_PPC=ON -DUSE_QEMU_PPC=ON
+  cmake --build build
 }
 
 package() {

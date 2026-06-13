@@ -1,7 +1,7 @@
 pkgbase = amiberry
 	pkgdesc = Optimized Amiga emulator
 	pkgver = 8.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/BlitterStudio/amiberry
 	arch = x86_64
 	license = GPL-3.0-only
