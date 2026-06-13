@@ -1,0 +1,76 @@
+#!/bin/bash
+set -euo pipefail
+
+notify() {
+  notify-send "5G Modem" "$1" -i "${2:-network-cellular}" 2>/dev/null || true
+}
+
+modem=$(mmcli -L 2>/dev/null | grep -oE '/Modem/[0-9]+' | head -n1 | awk -F/ '{print $NF}')
+
+if [[ -z "${modem:-}" ]]; then
+  notify "No modem found" network-cellular-offline
+  exit 1
+fi
+
+status=$(mmcli -m "$modem" 2>/dev/null | sed 's/\x1b\[[0-9;]*m//g' || true)
+state=$(grep -E '^[[:space:]]+\|[[:space:]]+state:' <<<"$status" | sed -E 's/.*state:[[:space:]]*([^[:space:]]+).*/\1/' | head -n1 || true)
+signal=$(grep -oE 'signal quality:[[:space:]]*[0-9]+' <<<"$status" | grep -oE '[0-9]+' | head -n1 || true)
+operator=$(sed -nE 's/.*operator name:[[:space:]]*(.*)$/\1/p' <<<"$status" | head -n1 || true)
+access=$(sed -nE 's/.*access tech:[[:space:]]*(.*)$/\1/p' <<<"$status" | head -n1 || true)
+
+state=${state:-unknown}
+signal=${signal:-0}
+operator=${operator:-Unknown carrier}
+access=${access:-unknown}
+apn=${SAMSUNG_GALAXYBOOK_5G_APN:-fast.t-mobile.com}
+
+case "$state" in
+  connected)
+    menu="󰀂  Disconnect\n󰑓  Refresh Status"
+    prompt="5G Connected - $operator ($access) $signal%"
+    ;;
+  registered)
+    menu="󰀂  Connect ($apn)\n󱐥  Enable FCC Unlock\n󰑓  Refresh Status"
+    prompt="5G Ready - $operator ($access) $signal%"
+    ;;
+  disabled)
+    menu="󱐥  Enable Modem\n󱐥  Enable FCC Unlock\n󰑓  Refresh Status"
+    prompt="5G Modem Disabled"
+    ;;
+  *)
+    menu="󱐥  Enable Modem\n󰀂  Connect ($apn)\n󱐥  Enable FCC Unlock\n󰑓  Refresh Status"
+    prompt="5G: $state"
+    ;;
+esac
+
+choice=$(printf '%b\n' "$menu" | fuzzel --dmenu --prompt "$prompt > " --width 48 --lines 4)
+
+case "$choice" in
+  *"Disconnect"*)
+    notify "Disconnecting..." network-cellular
+    pkexec /usr/bin/samsung-galaxybook-5gctl disconnect "$modem"
+    notify "Disconnected" network-cellular-offline
+    ;;
+  *"Connect"*)
+    notify "Connecting to $operator using APN $apn..." network-cellular-acquiring
+    if pkexec /usr/bin/samsung-galaxybook-5gctl connect "$modem" "$apn"; then
+      notify "Connected" network-cellular-connected
+    else
+      notify "Connection failed" network-cellular-offline
+      exit 1
+    fi
+    ;;
+  *"Enable Modem"*)
+    notify "Enabling modem..." network-cellular-acquiring
+    pkexec /usr/bin/samsung-galaxybook-5gctl enable "$modem"
+    notify "Modem enabled" network-cellular
+    ;;
+  *"Enable FCC Unlock"*)
+    notify "Enabling FCC unlock..." network-cellular-acquiring
+    pkexec /usr/bin/samsung-galaxybook-5gctl fcc-unlock
+    notify "FCC unlock enabled. Restarting ModemManager..." network-cellular
+    ;;
+  *"Refresh"*)
+    pkill -RTMIN+10 waybar 2>/dev/null || true
+    ;;
+esac

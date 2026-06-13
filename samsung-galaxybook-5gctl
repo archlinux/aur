@@ -1,0 +1,90 @@
+#!/bin/bash
+set -euo pipefail
+
+if [[ $EUID -ne 0 ]]; then
+  echo "samsung-galaxybook-5gctl must run as root" >&2
+  exit 1
+fi
+
+usage() {
+  echo "Usage: samsung-galaxybook-5gctl {enable MODEM|connect MODEM APN|disconnect MODEM|fcc-unlock}" >&2
+  exit 2
+}
+
+first_wwan_interface() {
+  ip -o link show | awk -F': ' '$2 ~ /^(wwan|wwp)/ { print $2; exit }'
+}
+
+bearer_field() {
+  local bearer=$1 field=$2
+  mmcli -b "$bearer" 2>/dev/null | sed 's/\x1b\[[0-9;]*m//g' | sed -nE "s/.*$field:[[:space:]]*([^[:space:]]+).*/\\1/p" | head -n1
+}
+
+enable_fcc_unlock() {
+  install -d /etc/ModemManager/fcc-unlock.d
+
+  for unlock in 14c3:4d75 105b; do
+    if [[ -e "/usr/share/ModemManager/fcc-unlock.available.d/$unlock" ]]; then
+      ln -sfn "/usr/share/ModemManager/fcc-unlock.available.d/$unlock" "/etc/ModemManager/fcc-unlock.d/$unlock"
+    fi
+  done
+
+  systemctl restart ModemManager.service
+}
+
+action=${1:-}
+shift || true
+
+case "$action" in
+  enable)
+    modem=${1:-}
+    [[ -n "$modem" ]] || usage
+    mmcli -m "$modem" --enable
+    ;;
+  connect)
+    modem=${1:-}
+    apn=${2:-}
+    [[ -n "$modem" && -n "$apn" ]] || usage
+    mmcli -m "$modem" --enable || true
+    mmcli -m "$modem" --simple-connect="apn=$apn"
+    sleep 2
+
+    status=$(mmcli -m "$modem" 2>/dev/null | sed 's/\x1b\[[0-9;]*m//g')
+    bearer=$(grep -oE 'Bearer/[0-9]+' <<<"$status" | awk -F/ '{print $NF}' | tail -n1)
+    [[ -n "${bearer:-}" ]] || { echo "No bearer found after connect" >&2; exit 1; }
+
+    address=$(bearer_field "$bearer" address)
+    prefix=$(bearer_field "$bearer" prefix)
+    gateway=$(bearer_field "$bearer" gateway)
+    mtu=$(bearer_field "$bearer" mtu)
+    iface=$(bearer_field "$bearer" interface)
+    iface=${iface:-$(first_wwan_interface)}
+
+    [[ -n "$address" && -n "$prefix" && -n "$gateway" && -n "$iface" ]] || {
+      echo "Bearer did not expose complete IPv4 settings" >&2
+      exit 1
+    }
+
+    ip addr flush dev "$iface" 2>/dev/null || true
+    ip addr add "$address/$prefix" dev "$iface"
+    [[ -n "$mtu" ]] && ip link set "$iface" mtu "$mtu"
+    ip link set "$iface" up
+    ip route replace default via "$gateway" dev "$iface" metric 700
+    ;;
+  disconnect)
+    modem=${1:-}
+    [[ -n "$modem" ]] || usage
+    mmcli -m "$modem" --simple-disconnect || true
+    iface=$(first_wwan_interface)
+    if [[ -n "${iface:-}" ]]; then
+      ip addr flush dev "$iface" 2>/dev/null || true
+      ip route del default dev "$iface" 2>/dev/null || true
+    fi
+    ;;
+  fcc-unlock)
+    enable_fcc_unlock
+    ;;
+  *)
+    usage
+    ;;
+esac

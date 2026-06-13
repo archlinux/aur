@@ -1,0 +1,38 @@
+#!/bin/bash
+set -euo pipefail
+
+config=${1:-$HOME/.config/waybar/config.jsonc}
+style=${2:-$HOME/.config/waybar/style.css}
+
+if [[ ! -f "$config" ]]; then
+  echo "Waybar config not found: $config" >&2
+  exit 1
+fi
+
+if [[ ! -f "$style" ]]; then
+  echo "Waybar style not found: $style" >&2
+  exit 1
+fi
+
+if ! grep -q '"custom/5g"' "$config"; then
+  sed -i '/"bluetooth",/a\    "custom/5g",' "$config"
+  sed -i '/"battery": {/i\  "custom/5g": {\n    "exec": "samsung-galaxybook-5g-status",\n    "return-type": "json",\n    "interval": 5,\n    "on-click": "samsung-galaxybook-5g",\n    "tooltip": true\n  },' "$config"
+fi
+
+if ! grep -q '#custom-5g' "$style"; then
+  cat >> "$style" <<'EOF'
+
+#custom-5g {
+  min-width: 12px;
+  margin: 0 10px;
+}
+
+#custom-5g.hidden {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+EOF
+fi
+
+pkill -RTMIN+10 waybar 2>/dev/null || true

@@ -1,0 +1,66 @@
+#!/bin/bash
+set -euo pipefail
+
+modem=$(mmcli -L 2>/dev/null | grep -oE '/Modem/[0-9]+' | head -n1 | awk -F/ '{print $NF}')
+
+if [[ -z "${modem:-}" ]]; then
+  jq -cn '{text: "", tooltip: "No modem found", class: "hidden"}'
+  exit 0
+fi
+
+status=$(mmcli -m "$modem" 2>/dev/null | sed 's/\x1b\[[0-9;]*m//g' || true)
+state=$(grep -E '^[[:space:]]+\|[[:space:]]+state:' <<<"$status" | sed -E 's/.*state:[[:space:]]*([^[:space:]]+).*/\1/' | head -n1 || true)
+signal=$(grep -oE 'signal quality:[[:space:]]*[0-9]+' <<<"$status" | grep -oE '[0-9]+' | head -n1 || true)
+operator=$(sed -nE 's/.*operator name:[[:space:]]*(.*)$/\1/p' <<<"$status" | head -n1 || true)
+access=$(sed -nE 's/.*access tech:[[:space:]]*(.*)$/\1/p' <<<"$status" | head -n1 || true)
+bearer=$(grep -oE 'Bearer/[0-9]+' <<<"$status" | awk -F/ '{print $NF}' | tail -n1 || true)
+ip_address=""
+
+if [[ -n "${bearer:-}" ]]; then
+  ip_address=$(mmcli -b "$bearer" 2>/dev/null | sed 's/\x1b\[[0-9;]*m//g' | sed -nE 's/.*address:[[:space:]]*([0-9.]+).*/\1/p' | head -n1 || true)
+fi
+
+signal=${signal:-0}
+operator=${operator:-Unknown carrier}
+access=${access:-unknown}
+state=${state:-unknown}
+
+case "$state" in
+  connected)
+    if (( signal >= 80 )); then icon="󰀳"
+    elif (( signal >= 60 )); then icon="󰀵"
+    elif (( signal >= 40 )); then icon="󰀷"
+    elif (( signal >= 20 )); then icon="󰀹"
+    else icon="󰀻"
+    fi
+    class="connected"
+    tooltip="$operator ($access)\nSignal: $signal%\nIP: ${ip_address:-unknown}\nClick to manage"
+    ;;
+  registered)
+    icon="󰀽"
+    class="registered"
+    tooltip="$operator ($access)\nSignal: $signal%\nClick to connect"
+    ;;
+  disabled)
+    icon="󰀿"
+    class="disabled"
+    tooltip="5G modem disabled\nClick to enable"
+    ;;
+  enabling)
+    icon="󰀿"
+    class="enabling"
+    tooltip="5G modem enabling\nClick to manage"
+    ;;
+  *)
+    icon="󰀿"
+    class="disconnected"
+    tooltip="5G modem: $state\nClick to manage"
+    ;;
+esac
+
+jq -cn \
+  --arg text "$icon" \
+  --arg tooltip "$tooltip" \
+  --arg class "$class" \
+  --argjson percentage "$signal" \
+  '{text: $text, tooltip: $tooltip, class: $class, percentage: $percentage}'

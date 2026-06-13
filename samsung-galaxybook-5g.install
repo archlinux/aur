@@ -1,0 +1,20 @@
+post_install() {
+  systemctl daemon-reload
+  cat <<'EOF'
+FCC unlock links for common Samsung Galaxy Book modems were installed under:
+  /etc/ModemManager/fcc-unlock.d/
+
+Restart ModemManager once after install:
+  sudo systemctl restart ModemManager
+
+To add the Waybar module to Omarchy's user config:
+  samsung-galaxybook-5g-setup-omarchy
+
+Set a custom APN before launching the UI with:
+  export SAMSUNG_GALAXYBOOK_5G_APN=your.apn
+EOF
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+}

@@ -1,0 +1,25 @@
+pkgbase = samsung-galaxybook-5g
+	pkgdesc = Samsung Galaxy Book 5G/LTE modem helpers and Omarchy Waybar UI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mmorri/samsung-galaxybook-5g
+	install = samsung-galaxybook-5g.install
+	arch = any
+	license = MIT
+	depends = fuzzel
+	depends = iproute2
+	depends = jq
+	depends = libnotify
+	depends = modemmanager
+	depends = polkit
+	depends = systemd
+	source = samsung-galaxybook-5g
+	source = samsung-galaxybook-5g-status
+	source = samsung-galaxybook-5gctl
+	source = samsung-galaxybook-5g-setup-omarchy
+	sha256sums = 643baca3951f793b87da253392a4b253605fa9293669cae8856525ad7899d588
+	sha256sums = f80f53459e73ce1aef7f52baa5c4b7ef9bab4461f4edf70700a5e7f2595c4456
+	sha256sums = 5b8d1447801d2349d641ff97ae814c23454e5caa7ed50223ed88896d53160a06
+	sha256sums = 795006edc9dfb9678b11b2631e6d7a8122fc187f7ff8d9134de76a32f757b193
+
+pkgname = samsung-galaxybook-5g
