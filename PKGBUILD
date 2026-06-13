@@ -1,6 +1,6 @@
 # Maintainer: M1829 <m1829js@gmail.com>
 pkgname=mxset
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc='An optimized hashset in C89, yielding maximum compatibility and great performance.'
 arch=('x86_64' 'i686' 'aarch64')
