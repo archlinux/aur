@@ -1,6 +1,6 @@
 pkgbase = llama-launcher
 	pkgdesc = Helper scripts for building llama.cpp and running llama-server with per-model configs, launch history, benchmarking, and SSH tunneling
-	pkgver = 1.0.13
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://codeberg.org/LuminaNAO/llama-launcher
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = llama-launcher
 	optdepends = cuda: NVIDIA GPU acceleration (build with LLAMA_HDD_BACKEND=cuda)
 	optdepends = rocm-hip-sdk: AMD GPU acceleration (build with LLAMA_HDD_BACKEND=rocm)
 	optdepends = vulkan-icd-loader: Vulkan GPU acceleration (build with LLAMA_HDD_BACKEND=vulkan)
-	source = git+https://codeberg.org/LuminaNAO/llama-launcher.git#tag=v1.0.13
+	source = git+https://codeberg.org/LuminaNAO/llama-launcher.git#tag=v1.1.1
 	sha256sums = SKIP
 
 pkgname = llama-launcher
