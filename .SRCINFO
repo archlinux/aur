@@ -1,7 +1,7 @@
 pkgbase = mxset-cpp
-	pkgdesc = MXSet is an optimized hashset library in GNU C89, yielding maximum compatibility and great performance, these are C++ bindings for that library.
+	pkgdesc = MXSet is an optimized hashset library in GNU C89, these are C++ bindings for that library.
 	pkgver = 1.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Muhamix/mxset
 	arch = x86_64
 	arch = i686

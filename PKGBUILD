@@ -1,8 +1,8 @@
 # Maintainer: M1829 <m1829js@gmail.com>
 pkgname=mxset-cpp
 pkgver=1.7.4
-pkgrel=1
-pkgdesc='MXSet is an optimized hashset library in GNU C89, yielding maximum compatibility and great performance, these are C++ bindings for that library.'
+pkgrel=2
+pkgdesc='MXSet is an optimized hashset library in GNU C89, these are C++ bindings for that library.'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://codeberg.org/Muhamix/mxset'
 license=('LGPL-3.0-or-later')
