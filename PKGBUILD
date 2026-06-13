@@ -12,8 +12,8 @@ provides=('oxicord')
 conflicts=('oxicord')
 source_x86_64=("oxicord-$pkgver-x86_64::https://github.com/linuxmobile/oxicord/releases/download/v$pkgver/oxicord-x86_64-unknown-linux-gnu")
 source_aarch64=("oxicord-$pkgver-aarch64::https://github.com/linuxmobile/oxicord/releases/download/v$pkgver/oxicord-aarch64-unknown-linux-gnu")
-sha256sums_x86_64=('ce0ab0085a897d08eaf0ce0e71e679e1544b91e227efdd64ac922520699adfd2')
-sha256sums_aarch64=('6d34867a0de22eda904edf196ff7da0162d557a86f1ff2c9503f4b2dd228acaf')
+sha256sums_aarch64=('ce0ab0085a897d08eaf0ce0e71e679e1544b91e227efdd64ac922520699adfd2')
+sha256sums_x86_64=('6d34867a0de22eda904edf196ff7da0162d557a86f1ff2c9503f4b2dd228acaf')
 
 prepare() {
     # Rename files for easier handling
