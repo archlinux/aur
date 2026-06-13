@@ -15,6 +15,7 @@ pkgbase = python-vllm-rocm
 	depends = amdsmi
 	depends = numactl
 	depends = python-aiohttp
+	depends = python-av
 	depends = python-blake3
 	depends = python-cachetools
 	depends = python-cbor2

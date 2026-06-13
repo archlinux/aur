@@ -10,6 +10,7 @@ depends=(
   amdsmi
   numactl
   python-aiohttp
+  python-av
   python-blake3
   python-cachetools
   python-cbor2
