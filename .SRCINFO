@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 27 Early-Access Build
-	pkgver = 27b25
+	pkgver = 27b26
 	pkgrel = 1
 	url = https://jdk.java.net/27
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=27
 	provides = java-runtime-headless=27
 	provides = java-runtime-headless-openjdk=27
-	source = https://download.java.net/java/early_access/jdk27/25/GPL/openjdk-27-ea+25_linux-x64_bin.tar.gz
-	sha256sums = 6287dc1b8b810fc6fb0ecf2ff0f15464e7bbd5b44c45008588224072bbfbaa87
+	source = https://download.java.net/java/early_access/jdk27/26/GPL/openjdk-27-ea+26_linux-x64_bin.tar.gz
+	sha256sums = 8b55960efe73b9eb24c424f6d7dd1dae088eb2571c81dacfa76d05a2b9e24523
 
 pkgname = java-openjdk-ea-bin
