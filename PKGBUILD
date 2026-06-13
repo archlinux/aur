@@ -2,7 +2,7 @@
 
 pkgname=paseo
 pkgver=0.1.96
-pkgrel=3
+pkgrel=4
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (built from source, runs on system Electron)"
 arch=('x86_64')
 url="https://paseo.sh"
@@ -22,13 +22,15 @@ source=(
     'paseo.sh'
     'paseo.desktop'
     'paseo.service'
+    'paseo-daemon-session.sh'
     'trace-desktop.mjs'
     'system-electron-paths.patch'
 )
 sha256sums=('77dfeb6866a430f9f19437d507b722ed9e5dfd863c06b17dd25520dace1721e3'
             '5f744a24a3605f78ee30348e1d705f47d803f915e58e076ea6e11f151d678407'
             '6ae9c520668f639a22f17df7814548056ee46aa99a2886639405297a7b1ef212'
-            '2f6c6150888597966eeaf15726bbffce1e45fa3aa4a34104f3b109e1b916569b'
+            'df0d01b98ac405c5c25edbb91d61bb9e05355a57e0e652e00823d6331618d686'
+            '0bd531415e7504c4bbff0ce137a5541a4ba7d0c29281139b29d94ee537fde307'
             '6be3fbd2634a77faa21fed02abe3d486680cdb880db97f5c1a9fe948a99e1865'
             '437a8ef0ad31411c6c96dc361718d6de32bb286cc1e0ed1d25c932080290c7d6')
 
@@ -153,6 +155,12 @@ package() {
     install -Dm644 "${srcdir}/paseo.desktop" \
         "${pkgdir}/usr/share/applications/paseo.desktop"
 
+    # Session-scoped daemon launcher (node CLI entry, full login-shell env) and
+    # the static user unit that runs it. Started via XDG autostart, not enabled
+    # — see paseo.install.
+    install -Dm755 "${srcdir}/paseo-daemon-session.sh" \
+        "${pkgdir}/usr/bin/paseo-daemon-session"
+
     install -Dm644 "${srcdir}/paseo.service" \
         "${pkgdir}/usr/lib/systemd/user/paseo.service"
 
@@ -168,7 +176,9 @@ package() {
     # build instead of surfacing as a runtime error after install.
     local _required=(
         usr/bin/paseo
+        usr/bin/paseo-daemon-session
         usr/lib/paseo/package.json
+        usr/lib/paseo/packages/cli/bin/paseo
         usr/lib/paseo/packages/desktop/dist/main.js
         usr/lib/paseo/packages/desktop/dist/preload.js
         usr/lib/paseo/packages/desktop/dist/daemon/node-entrypoint-runner.js
