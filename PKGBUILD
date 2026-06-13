@@ -1,14 +1,31 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
+format_version() {
+    local input="$1"
+
+    # Counts how many dots are in the string
+    local dot_count="${input//[^.]/}"
+
+    # If there are 3 dots (a.b.c.d), apply the post transformation
+    if [ "${#dot_count}" -ge 3 ]; then
+        local prefix="${input%.*}"
+        local suffix="${input##*.}"
+        echo "${prefix}.post${suffix}"
+    else
+        # Otherwise (like a.b.c), return the input unchanged
+        echo "${input}"
+    fi
+}
+
 _gitauthor=NSPC911
 _gitname=rovr
 _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A post-modern terminal file explorer"
 
-pkgver=0.9.1
+pkgver=0.9.1.1
 pkgrel=1
-_gitversion=v${pkgver}
+_gitversion=v$(format_version "${pkgver}")
 
 arch=('x86_64' 'aarch64')
 _barch=('linux-x64-nuitka' 'linux-arm64-nuitka')
@@ -33,8 +50,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.zip")
 sha256sums=('e21fdf3cc5b3ba6ac08610ef916e66ef3acde41d44d2a89391204c3765e7ede6'
             'b1f7cd544c998e25bcc990abc8c1f7c46d01b3a2ec61efb454ea932cbcc69445')
-sha256sums_x86_64=('708b155b8583c92fd7e224e1797bdad18beea074fed60a7e6d6f7bdd0ef8caf3')
-sha256sums_aarch64=('da76fdc9935569713c92e4231ffdaed3eeee563a01b76b1801c6626f68524556')
+sha256sums_x86_64=('0c42e5c089e05c714d9448db8b3946b3bf68aa5b0613b09b7f72b5dbfc8efacc')
+sha256sums_aarch64=('8e8887f940d00f3a2f056c796ace8d4ad044fd178926cd518a5186cd2ba73292')
 
 noextract=("${source_x86_64[@]%%::*}" "${source_i686[@]%%::*}" "${source_aarch64[@]%%::*}")
 
