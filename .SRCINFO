@@ -1,7 +1,7 @@
 pkgbase = eclipse-jee-bin
 	pkgdesc = Highly extensible IDE (Enterprise Java and Web version)
-	pkgver = 4.39
-	pkgrel = 3
+	pkgver = 4.40
+	pkgrel = 1
 	epoch = 2
 	url = https://www.eclipse.org/
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = eclipse-jee-bin
 	depends = java-runtime>=21
 	depends = webkit2gtk-4.1
 	depends = unzip
-	provides = eclipse=4.39-3
+	provides = eclipse=4.40-1
 	conflicts = eclipse
 	options = !strip
 	source = eclipse.desktop
 	sha512sums = 9da29da1fe9e4ac4b8f1a4faef158155399574752a317addf90f6a068019ad62906f8ce1db11e543c7fee7dbf3dd8273aa34fc86ff2354420371cdf9b017cdf3
-	source_x86_64 = eclipse-jee-2026-03-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2026-03/R/eclipse-jee-2026-03-R-linux-gtk-x86_64.tar.gz&r=1
-	sha512sums_x86_64 = 2fd59ada93f8e4aa38feb3ef6dfc82165e8be7f5b5c86140d5426264246f185a0cc48e80fc06b7c4ef7a356a56ece91a2a7df859f545ce9d2bb2f1337986581d
-	source_aarch64 = eclipse-jee-2026-03-R-linux-gtk-aarch64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2026-03/R/eclipse-jee-2026-03-R-linux-gtk-aarch64.tar.gz&r=1
-	sha512sums_aarch64 = 47f62331cb6a2e3443b91a02cee08b3191e6ea988811bf2ef66c5e446b1fb4eb2ee9e253db5e2bbdf18363676c4e39be223b05751c6c7147375e51f7fbb35f9e
+	source_x86_64 = eclipse-jee-2026-06-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2026-06/R/eclipse-jee-2026-06-R-linux-gtk-x86_64.tar.gz&r=1
+	sha512sums_x86_64 = 65457ef8d0d7bf17b40bbd9cc954b6ede7a4eb8983c9cfda842c31493402762f19a3ff8004a45180d5f74e78527639a88084c222384c4c20d3ae5aeb5d5934be
+	source_aarch64 = eclipse-jee-2026-06-R-linux-gtk-aarch64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2026-06/R/eclipse-jee-2026-06-R-linux-gtk-aarch64.tar.gz&r=1
+	sha512sums_aarch64 = 4f2c144444d1717c7b2b67fddc9a006236432337595833424527f551e0bfe35ef347500597b2ed9a8c37300100c26042317572e6424b099f993192c9c7affdf2
 
 pkgname = eclipse-jee-bin
