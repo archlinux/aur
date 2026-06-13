@@ -6,7 +6,6 @@ pkgbase = froststrap
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	license = MIT
-	license = Unlicense
 	makedepends = dotnet-sdk-10.0
 	makedepends = git
 	depends = dotnet-runtime-10.0

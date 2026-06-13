@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="A fork of Fishstrap/Bloxstrap, focused on performance and customization"
 arch=('x86_64')
 url="https://github.com/Froststrap/Froststrap"
-license=('AGPL-3.0-or-later' 'MIT' 'Unlicense')
+license=('AGPL-3.0-or-later' 'MIT')
 depends=('dotnet-runtime-10.0' 'icu' 'fontconfig' 'hicolor-icon-theme')
 makedepends=('dotnet-sdk-10.0' 'git')
 source=("git+${url}.git#tag=${_tag}"
@@ -63,5 +63,4 @@ EOF
     # Install licenses
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/AGPL-3.0"
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/MIT" 2>/dev/null || true
-    install -Dm644 LICENSE-UNLICENSE "$pkgdir/usr/share/licenses/$pkgname/Unlicense" 2>/dev/null || true
 }
