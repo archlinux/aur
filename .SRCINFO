@@ -1,6 +1,6 @@
 pkgbase = longbridge-pro-appimage
 	pkgdesc = A professional trading platform tailored to your needs
-	pkgver = 0.15.1
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://longbridge.com/desktop/
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = longbridge-pro-appimage
 	depends = zlib
 	depends = hicolor-icon-theme
 	conflicts = longbridge-pro
-	noextract = longbridge-pro-appimage-0.15.1.AppImage
+	noextract = longbridge-pro-appimage-0.17.1.AppImage
 	options = !strip
-	source_x86_64 = longbridge-pro-appimage-0.15.1.AppImage::https://assets.lbctrl.com/github/release/longbridge-desktop/stable/longbridge-v0.15.1-linux-x86_64.AppImage
+	source_x86_64 = longbridge-pro-appimage-0.17.1.AppImage::https://assets.lbctrl.com/github/release/longbridge-desktop/stable/longbridge-v0.17.1-linux-x86_64.AppImage
 	source_x86_64 = LICENSE.pdf::https://pub.lbkrs.com/static/offline/202508/FN9DnQt1WuLR5Wmz/LBPL_Platform_TnCs_3_December_2024.pdf
-	sha256sums_x86_64 = 4c57f8f8141542ea470e49394ddd108cdd1841ff37d016d70182c6ab0fe541db
+	sha256sums_x86_64 = 722cd714b13582bbbceb8e78ee38ecebcd789c91434f603cae28f5e56dabd042
 	sha256sums_x86_64 = c7ed0deafa4570da6fd7d173f8be759645673ee55d3a41ef9473e0d6658ad231
 
 pkgname = longbridge-pro-appimage
