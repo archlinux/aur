@@ -1,0 +1,29 @@
+pkgbase = jdk25-jetbrains-bin
+	pkgdesc = Java Development Kit by Jetbrains
+	pkgver = 25.0.3b508.4
+	pkgrel = 1
+	url = https://github.com/JetBrains/JetBrainsRuntime
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = java-environment-common
+	provides = jdk25-jetbrains
+	provides = java-environment=25
+	provides = java-environment-jetbrains=25
+	provides = java-runtime=25
+	provides = java-runtime-jetbrains=25
+	provides = jre25-jetbrains=25.0.3b508.4-1
+	provides = java-runtime-headless=25
+	provides = java-runtime-headless-jetbrains=25
+	provides = jre25-jetbrains-headless=25.0.3b508.4-1
+	conflicts = jdk25-jetbrains
+	conflicts = jre25-jetbrains
+	conflicts = jre25-jetbrains-headless
+	source_x86_64 = jdk25-jetbrains-bin-25.0.3b508.4.tar.gz::https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-25.0.3-linux-x64-b508.4.tar.gz
+	sha512sums_x86_64 = 3c9cf4b5904530cb602888eea1425d726f7b1c506ab5de0fae238ec1f3355ae020b67ef91b3f478352f19e778ab8e451c28360fc2fdc788bed9340531dd00f58
+	source_aarch64 = jdk25-jetbrains-bin-25.0.3b508.4.tar.gz::https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-25.0.3-linux-aarch64-b508.4.tar.gz
+	sha512sums_aarch64 = 5b2a34bc4054d86e4f5c2ca89db1ea89b5ca0dae41152db9f8dafe0d6cab07dcb29a3f750b5c3927ec2d7b2f0a007797c8f237dd0b6ae709a34ef362e5f052ad
+
+pkgname = jdk25-jetbrains-bin
