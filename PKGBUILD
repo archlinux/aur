@@ -19,7 +19,7 @@ source=(
 
 noextract=("feishin.tar.xz")
 
-sha256sums=()
+sha256sums=('PLACEHOLDER')
 
 package() {
   mkdir -p "$pkgdir/opt/feishin"
