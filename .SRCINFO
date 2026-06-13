@@ -1,6 +1,6 @@
 pkgbase = yukigram-rua-bin
 	pkgdesc = Yet another unofficial tdesktop client, but forked from yukigram
-	pkgver = 6.9.2
+	pkgver = 6.9.3
 	pkgrel = 1
 	url = https://github.com/Revincx/Yukigram
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = yukigram-rua-bin
 	provides = yukigram-rua
 	conflicts = yukigram-desktop
 	conflicts = yukigram-rua
-	source = yukigram-rua-6.9.2-1-x86_64.tar.gz::https://github.com/Revincx/Yukigram/releases/download/6.9.2-1/yukigram-rua-6.9.2-1-x86_64.tar.gz
-	sha256sums = 65fae01336b7b82580b59993d26f935662afa84d89ddd202f9964fa3a67639d4
+	source = yukigram-rua-6.9.3-1-x86_64.tar.gz::https://github.com/Revincx/Yukigram/releases/download/6.9.3-1/yukigram-rua-6.9.3-1-x86_64.tar.gz
+	sha256sums = 19fe75512df910cf99b3e859ea75079bd129e2e7ba3c239dafe6add122e02c2f
 
 pkgname = yukigram-rua-bin
