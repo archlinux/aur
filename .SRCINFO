@@ -1,6 +1,6 @@
 pkgbase = jwt-term-bin
 	pkgdesc = A blazing-fast, secure, and offline-first CLI for inspecting, validating, and manipulating JWTs
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/felipemorandini/jwt-term
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = jwt-term-bin
 	license = MIT
 	provides = jwt-term
 	conflicts = jwt-term
-	source_x86_64 = https://github.com/felipemorandini/jwt-term/releases/download/v1.1.4/jwt-term-x86_64-unknown-linux-musl.tar.gz
-	source_x86_64 = https://github.com/felipemorandini/jwt-term/raw/v1.1.4/LICENSE
-	sha256sums_x86_64 = 016dde36fb480d8333d2355efc3881e3597249f0edb530cd41a6b57b75a42da9
+	source_x86_64 = https://github.com/felipemorandini/jwt-term/releases/download/v1.1.5/jwt-term-x86_64-unknown-linux-musl.tar.gz
+	source_x86_64 = https://github.com/felipemorandini/jwt-term/raw/v1.1.5/LICENSE
+	sha256sums_x86_64 = f969004010c12a863ecb610e1cff8c47dc5e332c9aeb562dc8ca3b76d05ad0d4
 	sha256sums_x86_64 = ef8af8e1acd4a78f0cc359dacd727fd7ce494f5590d9d527d4c06ea1e816f0b7
-	source_aarch64 = https://github.com/felipemorandini/jwt-term/releases/download/v1.1.4/jwt-term-aarch64-unknown-linux-musl.tar.gz
-	source_aarch64 = https://github.com/felipemorandini/jwt-term/raw/v1.1.4/LICENSE
-	sha256sums_aarch64 = 53b0cee4df90f89efdf356dbee4c044c8ae8a0d781c79c86fbefd409c2f904a8
+	source_aarch64 = https://github.com/felipemorandini/jwt-term/releases/download/v1.1.5/jwt-term-aarch64-unknown-linux-musl.tar.gz
+	source_aarch64 = https://github.com/felipemorandini/jwt-term/raw/v1.1.5/LICENSE
+	sha256sums_aarch64 = b466a20e1b5f532e785c24f3bb764a576d261cc0266187f1fa29a1bfd571222f
 	sha256sums_aarch64 = ef8af8e1acd4a78f0cc359dacd727fd7ce494f5590d9d527d4c06ea1e816f0b7
 
 pkgname = jwt-term-bin
