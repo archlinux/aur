@@ -2,7 +2,7 @@
 
 pkgname=oh-my-pi
 pkgver=15.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
@@ -17,10 +17,9 @@ source=(
 )
 sha256sums=('SKIP'
             '3eea6cd7fc2e5fa973b81cac109688231e40087f51c3ce4cf01e45e1b7893b17'
-            'e5cc7751f95d279705d2060040017a0ca76d1e980f36c51e93016754746c2b99')
+            '45cee585735b74da7e369da7f177a792e88fac8069774a952f32fc2212c66cc0')
 
-# Patch to fix tree-sitter-haskell crash.
-# See:
+# Patch to fix tree-sitter-haskell crash. See:
 # https://github.com/tree-sitter/tree-sitter-haskell/pull/157
 # https://github.com/tree-sitter/tree-sitter-haskell/issues/144
 _patch_tree_sitter_haskell_gcc_workaround() {
@@ -104,9 +103,14 @@ _install_completions() {
 package() {
     cd "${srcdir}/${pkgname}"
 
-    install -Dm755 "packages/coding-agent/binaries/omp-linux-x64" "${pkgdir}/usr/bin/omp"
-    install -Dm755 "packages/natives/native/pi_natives.linux-x64-baseline.node" "${pkgdir}/usr/bin/pi_natives.linux-x64-baseline.node"
-    install -Dm755 "packages/natives/native/pi_natives.linux-x64-modern.node" "${pkgdir}/usr/bin/pi_natives.linux-x64-modern.node"
+    install -Dm755 "packages/coding-agent/binaries/omp-linux-x64" \
+        "${pkgdir}/usr/lib/${pkgname}/omp"
+    install -Dm755 "packages/natives/native/pi_natives.linux-x64-baseline.node" \
+        "${pkgdir}/usr/lib/${pkgname}/pi_natives.linux-x64-baseline.node"
+    install -Dm755 "packages/natives/native/pi_natives.linux-x64-modern.node" \
+        "${pkgdir}/usr/lib/${pkgname}/pi_natives.linux-x64-modern.node"
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "../lib/${pkgname}/omp" "${pkgdir}/usr/bin/omp"
     _install_completions "${pkgdir}/usr/bin/omp"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

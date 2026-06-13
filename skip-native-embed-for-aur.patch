@@ -1,14 +1,14 @@
 --- a/scripts/ci-release-build-binaries.ts
 +++ b/scripts/ci-release-build-binaries.ts
-@@ -30,6 +30,7 @@
- 	"./packages/coding-agent/src/tiny/worker.ts",
- ];
+@@ -19,6 +19,7 @@ const entrypoint = "./packages/coding-agent/src/cli.ts";
+ // paths. Worker threads spawn `new Worker(Bun.main, { argv })` — they re-enter
+ // the binary's own entry module — so no separate worker modules are compiled.
  const isDryRun = process.argv.includes("--dry-run");
 +const skipNativeEmbed = Bun.env.OMP_SKIP_NATIVE_EMBED === "1";
  const targets: BinaryTarget[] = [
  	{
  		id: "darwin-arm64",
-@@ -105,6 +106,20 @@
+@@ -94,6 +95,20 @@ async function runCommand(command: string[], cwd: string, env: NodeJS.ProcessEnv
  }
  
  async function embedNative(target: BinaryTarget): Promise<void> {
