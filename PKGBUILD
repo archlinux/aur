@@ -4,7 +4,7 @@
 # Contributor: Brian Maloney
 
 pkgname=fluent-bit
-pkgver=5.0.6
+pkgver=5.0.7
 pkgrel=1
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations'
 arch=(x86_64 aarch64 armv7h)
@@ -16,8 +16,8 @@ conflicts=('fluent-bit-git')
 backup=('etc/fluent-bit/fluent-bit.conf'
         'etc/fluent-bit/parsers.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fluent/fluent-bit/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('9c516da52b91a6e0e15b3e2df0864559')
-sha256sums=('bffe424e9010e89f412fbc0bbd054040aa4f447b9f2f20ffd5b42110db9b2fa3')
+md5sums=('f8b8795e505c46e3aaeae90132677647')
+sha256sums=('a760cdce272d6025100346d27315cc03a9b3466e5a8a24aaae6f2ad6a9cda29f')
 
 build() {
     cmake \
@@ -33,8 +33,9 @@ build() {
         -DCMAKE_RANLIB=/usr/bin/ranlib \
         ;
 
+    cmake --build "$srcdir/$pkgname-$pkgver-build" || true
+    # ranlib to index libbacktrace
     find "$srcdir/$pkgname-$pkgver-build" -name "*.a" -exec ranlib {} \;
-
     cmake --build "$srcdir/$pkgname-$pkgver-build"
 }
 
