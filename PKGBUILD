@@ -10,7 +10,7 @@ depends=('bash')
 optdepends=('pacman: for .pkg.tar.* packages'
             'debtap: for .deb packages')
 source=("pkgdrop::https://raw.githubusercontent.com/theyonecodes/pkgdrop/main/src/pkgdrop")
-sha256sums=('bbb23d324cea4cd6d7e98ff679932ab0b316776a8bf84807d98acef0bee3c24c')
+sha256sums=('265c3dd87b17d86c3025f935382c2c6bb428b9845424bf416076987b4648bc03')
 
 package() {
     install -Dm755 "$srcdir/pkgdrop" "$pkgdir/usr/bin/pkgdrop"

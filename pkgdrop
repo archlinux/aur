@@ -912,7 +912,10 @@ detect_category_from_archive() {
 
 humanize_name() {
     local name="$1"
-    echo "$name" | sed 's/[-_.]/ /g' | sed 's/\b\(.\)/\u\1/g'
+    name=$(echo "$name" | sed -E 's/[-_]?[0-9]+(\.[0-9]+)*([-_](x86_64|i686|i386|aarch64|armv7hl|amd64|linux|macos|win(dows)?))?$//gi')
+    name=$(echo "$name" | sed 's/[-_.]/ /g' | sed 's/\b\(.\)/\u\1/g' | sed 's/  */ /g' | sed 's/^ //;s/ $//')
+    [[ -z "$name" ]] && name="$1"
+    echo "$name"
 }
 
 create_desktop_entry() {
@@ -1251,17 +1254,25 @@ install_appimage() {
     local tmpdir
     tmpdir=$(mktemp -d)
     cd "$tmpdir"
-    if "$file" --appimage-extract ./*.png >/dev/null 2>&1; then
-        icon=$(find . -maxdepth 1 -name "*.png" -type f 2>/dev/null | head -1)
-        [[ -n "$icon" ]] && icon="$(pwd)/$icon"
-    fi
-    if "$file" --appimage-extract ./*.svg >/dev/null 2>&1; then
-        local svg
-        svg=$(find . -maxdepth 1 -name "*.svg" -type f 2>/dev/null | head -1)
-        [[ -n "$svg" ]] && icon="$(pwd)/$svg"
-    fi
-    if "$file" --appimage-extract ./*.desktop >/dev/null 2>&1; then
-        category=$(detect_category_from_archive "$tmpdir")
+    "$file" --appimage-extract >/dev/null 2>&1 || true
+    if [[ -d squashfs-root ]]; then
+        local icon_path=""
+        icon_path=$(find squashfs-root -path "*/icons/*" -name "*.png" -type f 2>/dev/null | sort -V | tail -1)
+        [[ -z "$icon_path" ]] && icon_path=$(find squashfs-root -path "*/icons/*" -name "*.svg" -type f 2>/dev/null | head -1)
+        [[ -z "$icon_path" ]] && icon_path=$(find squashfs-root -path "*/pixmaps/*" -name "*.png" -type f 2>/dev/null | head -1)
+        if [[ -n "$icon_path" ]]; then
+            local safe_icon="$HOME/.local/share/pkgdrop/icons"
+            mkdir -p "$safe_icon"
+            local ext="${icon_path##*.}"
+            cp "$icon_path" "$safe_icon/pkgdrop-${name}.${ext}"
+            icon="$safe_icon/pkgdrop-${name}.${ext}"
+        fi
+        local desktop_file
+        desktop_file=$(find squashfs-root -maxdepth 4 -name "*.desktop" -type f 2>/dev/null | head -1)
+        if [[ -n "$desktop_file" ]] && [[ -f "$desktop_file" ]]; then
+            category=$(detect_category_from_archive "squashfs-root")
+        fi
+        rm -rf squashfs-root
     fi
     cd /tmp && rm -rf "$tmpdir"
 
