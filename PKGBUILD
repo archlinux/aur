@@ -2,28 +2,27 @@
 
 pkgname=8fetch
 pkgver=2
-pkgrel=1
-pkgdesc="A minimal system information fetch tool"
+pkgrel=2
+pkgdesc="Blazing fast system fetch tool — Rust port, 8x faster than fastfetch"
 arch=('x86_64' 'aarch64')
-url="https://github.com/quinnyfoco-design/8fetch"
-license=('AGPL-3.0-or-later')
-depends=('bash')
-makedepends=('git' 'gcc')
+url="https://github.com/germanphoneguy/eightfetch"
+license=('MIT')
+makedepends=('cargo' 'git')
 
-source=("git+https://github.com/quinnyfoco-design/${pkgname}.git")
+source=("git+https://github.com/germanphoneguy/eightfetch.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/eightfetch"
     git rev-list --count HEAD
 }
 
 build() {
-    cd "$srcdir/$pkgname"
-    gcc -O2 -o 8fetch myfetch.c
+    cd "$srcdir/eightfetch"
+    cargo build --release --locked
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -Dm755 8fetch "$pkgdir/usr/bin/8fetch"
+    cd "$srcdir/eightfetch"
+    install -Dm755 target/release/8fetch "$pkgdir/usr/bin/8fetch"
 }

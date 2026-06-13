@@ -1,15 +1,14 @@
 pkgbase = 8fetch
-	pkgdesc = A minimal system information fetch tool
+	pkgdesc = Blazing fast system fetch tool — Rust port, 8x faster than fastfetch
 	pkgver = 2
-	pkgrel = 1
-	url = https://github.com/quinnyfoco-design/8fetch
+	pkgrel = 2
+	url = https://github.com/germanphoneguy/eightfetch
 	arch = x86_64
 	arch = aarch64
-	license = AGPL-3.0-or-later
+	license = MIT
+	makedepends = cargo
 	makedepends = git
-	makedepends = gcc
-	depends = bash
-	source = git+https://github.com/quinnyfoco-design/8fetch.git
+	source = git+https://github.com/germanphoneguy/eightfetch.git
 	sha256sums = SKIP
 
 pkgname = 8fetch
