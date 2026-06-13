@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian-git
-pkgver=r2253.def861e9
+pkgver=r2618.21ce6b8b
 pkgrel=1
 pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
@@ -48,7 +48,7 @@ options=('!debug')
 
 _binname="island"
 
-_flutter_ver=3.41.2
+_flutter_ver=3.44.1
 _flutter_repo=https://github.com/flutter/flutter.git
 
 pkgver() {
@@ -69,10 +69,6 @@ prepare() {
   fi
 
   cd "$srcdir/$_reponame"
-  cat > pubspec_overrides.yaml <<'YAML'
-dependency_overrides:
-  vector_math: ^2.2.0
-YAML
 }
 
 build() {
@@ -86,6 +82,7 @@ build() {
 
   flutter precache --linux
   flutter pub get
+  dart run build_runner build --delete-conflicting-outputs
   flutter build linux --no-pub --release
 }
 

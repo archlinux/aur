@@ -1,6 +1,6 @@
 pkgbase = solian-git
 	pkgdesc = Next Generation Network Center (unstable)
-	pkgver = r2253.def861e9
+	pkgver = r2618.21ce6b8b
 	pkgrel = 1
 	url = https://solsynth.dev
 	arch = x86_64
@@ -29,6 +29,6 @@ pkgbase = solian-git
 	source = git+https://github.com/Solsynth/Solian.git
 	source = icon-padded.png
 	sha256sums = SKIP
-	sha256sums = 0d626d7bdd047c94e8e283c1e6e3a395761fb478af0f9c8d4587362a8166adcc
+	sha256sums = 448670e6164b577892733ebdd267830e21509136175df35abb87717d14a63a05
 
 pkgname = solian-git
