@@ -11,8 +11,8 @@ conflicts=('zlang' 'zlang-git')
 options=('!strip')
 source_x86_64=("zlang-x86_64.AppImage::https://github.com/zlangdevs/zlang/releases/download/v$pkgver/zlang-x86_64.AppImage")
 source_aarch64=("zlang-aarch64.AppImage::https://github.com/zlangdevs/zlang/releases/download/v$pkgver/zlang-aarch64.AppImage")
-sha256sums_x86_64=('5b7b0a181b1264a07cee368060fc2e5942bc430097aeea7f43662304889470e8')
-sha256sums_aarch64=('3cf2fc8c64f9a31a106372a07e1ba8be47124609f7fa5a830fc07783271cea98')
+sha256sums_x86_64=('f4add23b7a5f5b6c74a8f3676e7da902571a0fe96705a86b73fdeaff28875af6')
+sha256sums_aarch64=('6db145b0ad1c6f012ced64431ee37712c84be9a7549e50243976b27fbca4171a')
 
 package() {
     install -Dm755 "zlang-$CARCH.AppImage" "$pkgdir/usr/lib/zlang-bin/zlang.AppImage"
