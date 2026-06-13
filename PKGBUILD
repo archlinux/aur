@@ -1,6 +1,6 @@
 # Maintainer: Philipp <phil@syslinx.org>
 pkgname=potacat
-pkgver=1.8.4
+pkgver=1.8.12
 pkgrel=1
 pkgdesc="POTA/SOTA/DX spot hunter with 1-click CAT tuning (Electron)"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = potacat
 	pkgdesc = POTA/SOTA/DX spot hunter with 1-click CAT tuning (Electron)
-	pkgver = 1.8.4
+	pkgver = 1.8.12
 	pkgrel = 1
 	url = https://github.com/Waffleslop/POTACAT
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = potacat
 	depends = electron
 	depends = nodejs
 	optdepends = hamlib: system rigctld instead of bundled binary
-	source = potacat-1.8.4.tar.gz::https://github.com/Waffleslop/POTACAT/archive/refs/tags/v1.8.4.tar.gz
+	source = potacat-1.8.12.tar.gz::https://github.com/Waffleslop/POTACAT/archive/refs/tags/v1.8.12.tar.gz
 	source = potacat.desktop
 	source = potacat.sh
 	sha256sums = SKIP
