@@ -1,5 +1,5 @@
 pkgbase = dwl-git-azerty
-	pkgdesc = Simple, hackable dynamic tiling Wayland compositor (Custom Azerty/Havoc build)
+	pkgdesc = Simple, hackable dynamic tiling Wayland compositor (Custom Azerty/Havoc/Tearing build)
 	pkgver = 0.8.dev.r87.a2d03cf
 	pkgrel = 1
 	url = https://codeberg.org/dwl/dwl
@@ -10,6 +10,8 @@ pkgbase = dwl-git-azerty
 	makedepends = wayland-protocols
 	depends = wlroots-git
 	source = git+https://codeberg.org/dwl/dwl
+	source = tearing.patch::https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/tearing/tearing.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = dwl-git-azerty
