@@ -2,7 +2,7 @@
 AppName=PowerliminalsPlayer
 appid=powerliminalsplayer
 pkgname=${appid}-appimage
-pkgver=3.3.2
+pkgver=3.4
 pkgrel=1
 pkgdesc="Plays multiple audios simultaneously at varying speeds"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/mysteryx93/HanumanInstituteApps/releases/download/v${pkgver}/${AppName}-${pkgver}_Linux_x64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('6cc6b5164de9c5ed8740b3eff690247123b76f658fd2189939a7313dc9cfb2c0')
+sha256sums_x86_64=('6b9d15701398f99a9aec4e254e4b0f882792a4df323b98316aa6322c6f00ba6e')
 
 prepare() {
     chmod +x "${_appimage}"
