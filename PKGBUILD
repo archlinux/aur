@@ -2,7 +2,7 @@
 
 pkgname=apm-bin
 pkgdesc="Agent Package Manager by Microsoft"
-pkgver=0.19.0 # renovate: datasource=github-tags depName=microsoft/apm
+pkgver=0.20.0 # renovate: datasource=github-tags depName=microsoft/apm
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/microsoft/apm"
@@ -14,8 +14,8 @@ source_x86_64=("${_url_base}/apm-linux-x86_64.tar.gz")
 source_aarch64=("${_url_base}/apm-linux-arm64.tar.gz")
 source=("LICENSE::https://raw.githubusercontent.com/microsoft/apm/v${pkgver}/LICENSE")
 sha256sums=('7df20dcdf9197e9945c14858d41c60f11b52b93e5b69e2b63416b874d598d322')
-sha256sums_x86_64=('93c447da0857da55ff12e7071a5af974c0f85de9717155e7dc06682bc1afe362')
-sha256sums_aarch64=('1a381f030a475f806c38d51a33b9af5f6e2eaf51cf20fd629f7322da0ca3dd78')
+sha256sums_x86_64=('b993e3297b25034ebc30e41626d4ab1a91dbedf424f4d24a2e55824aa2cd9688')
+sha256sums_aarch64=('5cb6762ed291499920cea393e565b22e834c6b0218cc839f593937f2fc3a5509')
 
 package() {
     install -d "${pkgdir}/usr/lib/apm"
