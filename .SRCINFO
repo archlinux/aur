@@ -1,15 +1,10 @@
 pkgbase = python-gradio-client
 	pkgdesc = Python library for easily interacting with trained machine learning models.
-	pkgver = 2.0.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/gradio-app/gradio/tree/main/client/python
 	arch = any
 	license = Apache-2.0
-	checkdepends = python-pytest-asyncio
-	checkdepends = python-pytest
-	checkdepends = python-pytest-xdist
-	checkdepends = python-gradio
-	checkdepends = python-pydub
 	makedepends = python-hatchling
 	makedepends = python-hatch-requirements-txt
 	makedepends = python-hatch-fancy-pypi-readme
@@ -23,7 +18,7 @@ pkgbase = python-gradio-client
 	depends = python-packaging
 	depends = python-typing_extensions
 	optdepends = python-discord: Chat with discord bot
-	source = https://github.com/gradio-app/gradio/archive/refs/tags/@gradio/client@2.0.0.tar.gz
-	sha256sums = 2c2c88561bb94dff848b9997a77f1adbb7fc5d9f9ebf00d6eaa8d9a495089ba8
+	source = https://files.pythonhosted.org/packages/source/g/gradio-client/gradio_client-2.5.0.tar.gz
+	sha256sums = 4cde99bad62149595c30c90876ca2e405e3a13687ecf895474f3412cb476673d
 
 pkgname = python-gradio-client
