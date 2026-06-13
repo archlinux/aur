@@ -1,5 +1,5 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
-pkgname=simpleSineWaveGenerator-git
+pkgname=simplesinewavegenerator-git
 pkgver=df3fbb3
 pkgrel=1
 pkgdesc="Simple sine wave generator with GTK3 GUI and logarithmic frequency sweep"
@@ -13,17 +13,17 @@ source=("git+https://github.com/ixnewton/simpleSineWaveGenerator.git#branch=Swee
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/simpleSineWaveGenerator"
+  cd "$srcdir/simplesinewavegenerator"
   git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/simpleSineWaveGenerator"
+  cd "$srcdir/simplesinewavegenerator"
   make -f Makefile.gtk
 }
 
 package() {
-  cd "$srcdir/simpleSineWaveGenerator"
+  cd "$srcdir/simplesinewavegenerator"
   
   # Install binary
   install -Dm755 simpleSineWaveGenerator "$pkgdir/usr/bin/simpleSineWaveGenerator"
