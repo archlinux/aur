@@ -8,12 +8,13 @@
 
 pkgname='mlmmj'
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
-pkgver=2.0.1
-_pkgver=2_0_1
+pkgver=2.1.0
+_pkgver=2_1_0
 pkgrel=1
 _url='http://mlmmj.org/'
 url='https://codeberg.org/mlmmj/mlmmj'
 install="$pkgname.install"
+changelog="$pkgname.changelog"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('bash' 'glibc' 'smtp-server')
@@ -26,7 +27,7 @@ source=(
   'sysuser.conf' 'tmpfile.conf'
 )
 sha256sums=(
-  'ba3c37a69961f6e95a409e8819d39ecb26b75b6ae6f971a414ae7555772d9750'
+  '319bf4d4156efa8c938edc5ab15060ff7ad8c7d712e5f70cb5894b4db47f6659'
   '4bbc24fc73ecb2d8f509c47eacff290921bb70a24b2a87b19704336cb4c466f1'
   '1836f8ddb013f3762e79b2bbd9e81f850d976c984fa2e24bcc8f39072eeb0d37'
 )

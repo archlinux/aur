@@ -3,4 +3,4 @@ version = 1
 [[annotations]]
 SPDX-FileCopyrightText = 'Arch Linux contributors'
 SPDX-License-Identifier = '0BSD'
-path = ['PKGBUILD', '.SRCINFO', '.gitignore', '*.install', 'sysuser.conf', 'tmpfile.conf']
+path = ['PKGBUILD', '.SRCINFO', '.gitignore', '*.changelog', '*.install', 'sysuser.conf', 'tmpfile.conf']
