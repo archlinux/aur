@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2022-02-19 06:05:00.000000000 +0100
++++ b/CMakeLists.txt	2026-06-13 23:19:50.655406031 +0200
+@@ -1,6 +1,6 @@
+-project(twinkle)
++cmake_minimum_required(VERSION 2.8.10...3.22 FATAL_ERROR)
+ 
+-cmake_minimum_required(VERSION 2.6.0 FATAL_ERROR)
++project(twinkle)
+ 
+ set(PRODUCT_VERSION "1.10.3")
+ set(PRODUCT_DATE    "February 18, 2022")

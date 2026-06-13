@@ -8,7 +8,7 @@
 
 pkgname=twinkle
 pkgver=1.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Softphone for voice over IP and IM communication using SIP'
 arch=('x86_64' 'aarch64')
 url='http://twinkle.dolezel.info/'
@@ -16,15 +16,21 @@ license=('GPL-2.0-only')
 depends=('ucommon' 'ccrtp' 'libxml2' 'libsndfile' 'imagemagick' 'readline'
          'qt5-base' 'qt5-declarative' 'alsa-lib' 'libzrtpcpp'
          'bcg729' 'speex' 'speexdsp')
-makedepends=('cmake' 'bison' 'flex' 'qt5-tools')
+makedepends=('cmake' 'qt5-tools')
 source=("https://github.com/LubosD/twinkle/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
+        'cmake-compatibility.patch'
         'G729-API.patch')
 b2sums=('80b2e91923b2a95d1b727cda5f8ea68c0aac421ea347e7b899a28b9908c3c5c2806a3b11cec9d46002d08c8bcf89221b3fcd56408ec68e191c1f78b67b13bbc4'
+        'dbe7fa2f115540a9e2d7a4839c9f2eccd4f80de6a1204aa29358ac2a24df65f3bdecd261c5bbde2fbf8ed72bc8a0ed3489a7992456648eeeac2a9ee08cf9e9f4'
         'e86166cc48c46697f5b20bdc3fbd169dcb07214aa47d030d554fe7bd10e79748f88ca2a4a1ce359ba879c1edfe63ffed10cbba9c11b04f6171b491e14b67189c')
 
 prepare() {
     cd ${pkgname}-${pkgver}
-    patch -Np1 < "${srcdir}"/G729-API.patch
+    for p in "${srcdir}"/*.patch
+    do
+        echo "Applying patch $(basename "${srcdir}"/${p})"
+        patch -p1 -i "${p}"
+    done
 }
 
 build() {
@@ -33,7 +39,6 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_QT5=On \
-        -DWITH_DBUS=On \
         -DWITH_ALSA=On \
         -DWITH_ZRTP=On \
         -DWITH_G729=On \
