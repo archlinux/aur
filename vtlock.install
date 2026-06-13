@@ -5,3 +5,9 @@ post_install() {
     echo ">>> To verify future signed releases, import the maintainer's GPG key:"
     echo "    gpg --recv-keys E0844009CF213E78ECD348795A6792BF5ECC3AC6"
 }
+
+post_upgrade() {
+    echo ">>> vtlock: Re-set the setuid bit after upgrade:"
+    echo "    sudo chmod u+s /usr/bin/vtlock"
+}
+
