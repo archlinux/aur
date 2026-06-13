@@ -1,15 +1,12 @@
 # Maintainer: imnaK <yama@tyrem-envalura.de>
 pkgname=proton-drive-cli-bin
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Proton Drive command-line client (precompiled binary)"
 arch=('aarch64' 'x86_64')
 url="https://proton.me/download/drive/cli/index.html"
 license=('LicenseRef-proprietary')
-depends=('libsecret')
-optdepends=('gnome-keyring: Secret Service backend for credential storage'
-            'kwallet: KDE Secret Service backend'
-            'keepassxc: Secret Service backend')
+depends=('libsecret' 'org.freedesktop.secrets')
 provides=("proton-drive-cli=${pkgver}" 'proton-drive')
 conflicts=('proton-drive-cli')
 options=('!strip' '!debug' '!lto')
