@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=materialious
 _app_id=us.materialio.Materialious
-pkgver=1.16.30
+pkgver=1.16.31
 pkgrel=1
 _nodeversion=24
 _electronversion=42
@@ -18,7 +18,7 @@ makedepends=(
 checkdepends=('appstream')
 source=("Materialious-$pkgver.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('2ad0bca0c6be97bbcab7531f15e8bbf9bb379023d3db4912d2600200c0ff3f73'
+sha256sums=('f687b87264338e8c7ca9d87bf62567173bcb92ece7b900834e81388be8d38be0'
             'ae23af6865ab1638d46df5158fa09d41357f57068f1676af86e1a0e6e00459ed')
 
 _ensure_local_nvm() {
@@ -33,10 +33,10 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd "Materialious-$pkgver/$pkgname"
-  export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+
+  cd "Materialious-$pkgver/$pkgname"
 
   # Set desktop file Exec
   desktop-file-edit --set-key=Exec --set-value="$pkgname" "electron/$pkgname.desktop"
@@ -51,7 +51,7 @@ build() {
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
-   _ensure_local_nvm
+  _ensure_local_nvm
   npm ci
   npm run build
   npm prune --omit=dev
