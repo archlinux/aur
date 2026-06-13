@@ -1,6 +1,6 @@
 pkgbase = h2o-git
 	pkgdesc = Optimized HTTP server with support for HTTP/1.x and HTTP/2
-	pkgver = 2.2.0.r8596.g9e7f283
+	pkgver = 2.2.0.r8673.ged7899d
 	pkgrel = 1
 	url = https://github.com/h2o/h2o
 	arch = i686
@@ -32,12 +32,12 @@ pkgbase = h2o-git
 	conflicts = libh2o
 	options = lto
 	backup = etc/h2o.conf
-	source = git+https://github.com/h2o/h2o.git#commit=9e7f283e5801bd0707cc5d48d0188c4c162fe7b3?signed/
+	source = git+https://github.com/h2o/h2o.git#commit=ed7899d1c234fd15d272a0ac6404ffbd89a3c772?signed/
 	source = fix-openssl-deprecated-warn.patch
 	source = https://github.com/h2o/h2o/pull/3553.patch
 	source = https://github.com/h2o/h2o/pull/3551.patch
 	source = h2o.service
-	sha256sums = c3b88402c277336a88e1068f0b176b5377451f34344ad67c6acbbc54dd1fa655
+	sha256sums = 8d69a682942185d159cc66d115acb866055ba5a98689a1365544996331a844aa
 	sha256sums = 632f219cc21128810bba4de869de4961ebff9083af31231f721f451d2e58f7e1
 	sha256sums = 930bed0a8b6d75973e21cacb4cfda6bcacf08bc6d1b504b5cc36f56f9d6bfaf8
 	sha256sums = 99b8ae5a7e06af7a4308c60a204b903171bb357d61bf4ea8abb04b1bcc148174
