@@ -1,0 +1,38 @@
+diff -Naur frobtads-2.0/CMT3Compiler.cmake frobtads-2.0-aur/CMT3Compiler.cmake
+--- frobtads-2.0/CMT3Compiler.cmake	2021-05-09 01:48:44.000000000 -0700
++++ frobtads-2.0-aur/CMT3Compiler.cmake	2026-06-13 10:58:45.384935962 -0700
+@@ -15,7 +15,7 @@
+     tads3/tct3img.cpp
+     tads3/tct3prg.cpp
+     tads3/vmbifc.cpp
+-    tads3/vmbifreg.cpp
++    #tads3/vmbifreg.cpp
+     tads3/vmimgrb.cpp
+     tads3/vmpreini.cpp
+     tads3/vmwrtimg.cpp
+@@ -24,9 +24,24 @@
+     $<TARGET_OBJECTS:TADS3_RC_OBJECTS>
+     $<TARGET_OBJECTS:TADS3_RC_OBJECTS_ND>
+ )
++
+ if (ENABLE_TADSNET)
+     target_sources(t3make PUBLIC
+-        tads3/vmhttpdum.cpp
++        tads3/osifcnet.cpp
++        tads3/unix/osnetunix.cpp
++        tads3/vmbifnet.cpp
++        tads3/vmbifregn.cpp      # network registry
++        tads3/vmhttpreq.cpp
++        tads3/vmhttpsrv.cpp
++        tads3/vmnetcfg.cpp
++        tads3/vmnet.cpp
++        tads3/vmnetfil.cpp
++    )
++    target_include_directories(t3make PRIVATE ${CURL_INCLUDE_DIRS})
++    target_link_libraries(t3make PRIVATE ${CURL_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
++else()
++    target_sources(t3make PUBLIC
++        tads3/vmbifreg.cpp       # non-network registry
+     )
+ endif()
+ 

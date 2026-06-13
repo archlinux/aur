@@ -1,3 +1,4 @@
+# Maintainer: Beej <beej@beej.us>
 # Contributor: libele <libele@disroot.org>
 # Contributor: John Robinson <jbr100uk@googlemail>
 # Contributor: Rene Wiermer <rwiermer@googlemail>
@@ -5,19 +6,25 @@
 
 pkgname=frobtads
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Combined TADS 2 & 3 interpreter and compilers for playing and creating Interactive Fiction games"
 arch=('i686' 'x86_64')
 url="https://tads.org/frobtads.htm"
 license=('custom: freeware')
 depends=('ncurses' 'curl')
 makedepends=('cmake' 'git')
-source=("https://github.com/realnc/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2")
-md5sums=('5188944620298695508b9b41a2dba49c')
-
+source=(
+    "https://github.com/realnc/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2"
+    "frobtads-aur.patch"
+)
+sha256sums=('893bd3fd77dfdc8bfe8a96e8d7bfac693da0e4278871f10fe7faa59cc239a090'
+            '287ce3bb12ebe6925ce83fd94624f11ef2d434cdbc82bef7780a64d652655130')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  # Patch the CMakefile to get a working build
+  patch -Np1 < ${srcdir}/frobtads-aur.patch
 
   mkdir build
   cd build
