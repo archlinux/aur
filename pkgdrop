@@ -923,19 +923,20 @@ create_desktop_entry() {
     local bin="$2"
     local icon="$3"
     local category="${4:-Utility}"
+    local custom_icon_name="${5:-}"
 
     local desktop_dir="$HOME/.local/share/applications"
     mkdir -p "$desktop_dir"
 
     local desktop_file="$desktop_dir/pkgdrop-${name}.desktop"
-    local icon_name="pkgdrop-${name}"
+    local icon_label="${custom_icon_name:-pkgdrop-${name}}"
 
     if [[ -n "$icon" ]] && [[ -f "$icon" ]]; then
         local ext="${icon##*.}"
         local icon_dir="$HOME/.local/share/icons/hicolor/128x128/apps"
         mkdir -p "$icon_dir"
-        cp "$icon" "$icon_dir/${icon_name}.${ext}"
-        verb "Installed icon: $icon_dir/${icon_name}.${ext}"
+        cp "$icon" "$icon_dir/${icon_label}.${ext}"
+        verb "Installed icon: $icon_dir/${icon_label}.${ext}"
     fi
 
     local display_name
@@ -947,7 +948,7 @@ Version=1.0
 Type=Application
 Name=${display_name}
 Exec=${bin} %u
-Icon=${icon_name}
+Icon=${icon_label}
 Terminal=false
 StartupWMClass=${name}
 Categories=${category};
@@ -1250,12 +1251,19 @@ install_appimage() {
     mv "$stage_file" "$HOME/.local/bin/$name" || fail "Failed to commit AppImage"
 
     local icon=""
+    local icon_name=""
     local category="Utility"
     local tmpdir
     tmpdir=$(mktemp -d)
     cd "$tmpdir"
     "$file" --appimage-extract >/dev/null 2>&1 || true
     if [[ -d squashfs-root ]]; then
+        local desktop_file
+        desktop_file=$(find squashfs-root -maxdepth 4 -name "*.desktop" -type f 2>/dev/null | head -1)
+        if [[ -n "$desktop_file" ]] && [[ -f "$desktop_file" ]]; then
+            category=$(detect_category_from_archive "squashfs-root")
+            icon_name=$(grep -E "^Icon=" "$desktop_file" 2>/dev/null | head -1 | sed 's/^Icon=//' | sed 's/\.png$//' | sed 's/\.svg$//')
+        fi
         local icon_path=""
         icon_path=$(find squashfs-root -path "*/icons/*" -name "*.png" -type f 2>/dev/null | sort -V | tail -1)
         [[ -z "$icon_path" ]] && icon_path=$(find squashfs-root -path "*/icons/*" -name "*.svg" -type f 2>/dev/null | head -1)
@@ -1264,19 +1272,19 @@ install_appimage() {
             local safe_icon="$HOME/.local/share/pkgdrop/icons"
             mkdir -p "$safe_icon"
             local ext="${icon_path##*.}"
-            cp "$icon_path" "$safe_icon/pkgdrop-${name}.${ext}"
-            icon="$safe_icon/pkgdrop-${name}.${ext}"
-        fi
-        local desktop_file
-        desktop_file=$(find squashfs-root -maxdepth 4 -name "*.desktop" -type f 2>/dev/null | head -1)
-        if [[ -n "$desktop_file" ]] && [[ -f "$desktop_file" ]]; then
-            category=$(detect_category_from_archive "squashfs-root")
+            local use_name="${icon_name:-$name}"
+            cp "$icon_path" "$safe_icon/${use_name}.${ext}"
+            icon="$safe_icon/${use_name}.${ext}"
+            local hicolor_dir="$HOME/.local/share/icons/hicolor/128x128/apps"
+            mkdir -p "$hicolor_dir"
+            cp "$icon_path" "$hicolor_dir/${use_name}.${ext}"
+            icon_name="$use_name"
         fi
         rm -rf squashfs-root
     fi
     cd /tmp && rm -rf "$tmpdir"
 
-    create_desktop_entry "$name" "$HOME/.local/bin/$name" "$icon" "$category"
+    create_desktop_entry "$name" "$HOME/.local/bin/$name" "$icon" "$category" "$icon_name"
     refresh_desktop
 
     registry_add "$name" "$candidate_ver" "appimage" "$HOME/.local/bin/$name"
