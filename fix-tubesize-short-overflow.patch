@@ -1,0 +1,12 @@
+diff -upr ex-070224.orig/ex_vis.h ex-070224/ex_vis.h
+--- ex-070224.orig/ex_vis.h	2005-08-06 14:41:15.000000000 +0300
++++ ex-070224/ex_vis.h	2015-05-02 20:41:13.938665281 +0300
+@@ -104,7 +104,7 @@ var enum {
+  */
+ var	short	TUBELINES;
+ var	short	TUBECOLS;
+-var	short	TUBESIZE;
++var	int	TUBESIZE;
+ 
+ /*
+  * The screen in visual and crtopen is of varying size; the basic

@@ -1,0 +1,61 @@
+From 891c4022e24063608b554b6b3e4b5e2533e5443b Mon Sep 17 00:00:00 2001
+From: n-t-roff <troff@arcor.de>
+Date: Fri, 22 Apr 2016 19:08:05 +0200
+Subject: [PATCH] set nu bug fixed
+
+---
+ ex_put.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ex_put.c b/ex_put.c
+index fb7446e..0760747 100644
+--- a/ex_put.c
++++ b/ex_put.c
+@@ -298,7 +298,7 @@ normline(int unused, int max)
+ 
+ 	(void)unused;
+ 	if (max > 0)
+-		vcntcol = 0;
++		vcntcol = value(NUMBER) << 3;
+ 	if (shudclob)
+ 		slobber(linebuf[0]);
+ 	/* pdp-11 doprnt is not reentrant so can't use "printf" here
+
+From ad7f1e567324494021135bd2ec680b656a3f1cab Mon Sep 17 00:00:00 2001
+From: n-t-roff <troff@arcor.de>
+Date: Wed, 27 Jul 2016 18:58:47 +0200
+Subject: [PATCH] Number mode command line bugfix
+
+The prev. number mode bugfix did introduce a bug in the command line
+cursor position when using backspace in number mode.  Should be
+fixed now.
+---
+ ex_put.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/ex_put.c b/ex_put.c
+index 26236d4..09ad403 100644
+--- a/ex_put.c
++++ b/ex_put.c
+@@ -277,9 +277,12 @@ int
+ numbline(int i, int max)
+ {
+ 
++	extern short	vcntcol;
+ 	if (shudclob)
+ 		slobber(' ');
+ 	max -= printf("%6d  ", i);
++	if (max > 0)
++		vcntcol = value(NUMBER) << 3;
+ 	return normline(0, max);
+ }
+ 
+@@ -297,8 +300,6 @@ normline(int unused, int max)
+ 	int	c, n;
+ 	int	ret = 0;
+ 
+-	if (max > 0)
+-		vcntcol = value(NUMBER) << 3;
+ 	if (shudclob)
+ 		slobber(linebuf[0]);
+ 	/* pdp-11 doprnt is not reentrant so can't use "printf" here

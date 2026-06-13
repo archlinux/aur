@@ -1,0 +1,26 @@
+diff --git a/ex_unix.c b/ex_unix.c
+index 4ad17f9..80815d1 100644
+--- a/ex_unix.c
++++ b/ex_unix.c
+@@ -179,7 +179,7 @@ uexp:
+ 	if (warn && hush == 0 && chng && xchng != chng && value(WARN) && dol > zero) {
+ 		xchng = chng;
+ 		vnfl();
+-		printf(mesg(catgets(catd, 1, 197,
++		printf("%s", mesg(catgets(catd, 1, 197,
+ 				"[No write]|[No write since last change]")));
+ 		noonl();
+ 		flush();
+diff --git a/ex_vops2.c b/ex_vops2.c
+index 48050ff..e59727a 100644
+--- a/ex_vops2.c
++++ b/ex_vops2.c
+@@ -211,7 +211,7 @@ showmode(int mode)
+ 	if (value(TERSE))
+ 		putchar(str[0]);
+ 	else
+-		printf(&str[1]);
++		printf("%s", &str[1]);
+ 	vgoto(sdl, sdc);
+ 	cursor = ocurs;
+ 	splitw = 0;

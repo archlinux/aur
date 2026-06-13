@@ -1,0 +1,99 @@
+diff -Naur ex-050325.ori/ex.1 ex-050325/ex.1
+--- ex-050325.ori/ex.1	2005-02-17 07:39:36.000000000 -0500
++++ ex-050325/ex.1	2011-02-01 16:21:51.496666674 -0500
+@@ -1950,7 +1950,7 @@
+ .B /var/tmp/Rx\fInnnnnnnnnn\fP
+ named buffer temporary
+ .TP
+-.B /var/preserve
++.B /var/lib/ex
+ preservation directory
+ .SH DOCUMENTATION
+ The document
+diff -Naur ex-050325.ori/expreserve.c ex-050325/expreserve.c
+--- ex-050325.ori/expreserve.c	2005-03-04 07:44:46.000000000 -0500
++++ ex-050325/expreserve.c	2011-02-01 16:22:06.583333342 -0500
+@@ -272,7 +272,7 @@
+ #ifdef	notdef
+ char	pattern[] =	"/usr/preserve/Exaa`XXXXX";
+ #else
+-char	pattern[] =	"/var/preserve/Exa`XXXXXXXXXX";
++char	pattern[] =	"/var/lib/ex/Exa`XXXXXXXXXX";
+ #endif
+ 
+ /*
+@@ -296,7 +296,7 @@
+ 	timestamp = ctime(&time);
+ 	timestamp[16] = 0;	/* blast from seconds on */
+ 	putenv("MAILRC=/dev/null");
+-	sprintf(cmd, "/bin/mail %s", pp->pw_name);
++	sprintf(cmd, "/usr/bin/mail %s", pp->pw_name);
+ 	setuid(getuid());
+ 	mf = popen(cmd, "w");
+ 	if (mf == NULL)
+diff -Naur ex-050325.ori/exrecover.c ex-050325/exrecover.c
+--- ex-050325.ori/exrecover.c	2005-03-04 07:44:46.000000000 -0500
++++ ex-050325/exrecover.c	2011-02-01 16:21:51.496666674 -0500
+@@ -167,7 +167,7 @@
+ #ifdef	notdef
+ char	mydir[] =	"/usr/preserve";
+ #else
+-char	mydir[] =	"/var/preserve";
++char	mydir[] =	"/var/lib/ex";
+ #endif
+ 
+ /*
+diff -Naur ex-050325.ori/Makefile ex-050325/Makefile
+--- ex-050325.ori/Makefile	2005-03-24 18:50:09.000000000 -0500
++++ ex-050325/Makefile	2011-02-01 16:21:51.496666674 -0500
+@@ -83,7 +83,7 @@
+ BINDIR		= $(PREFIX)/bin
+ LIBEXECDIR	= $(PREFIX)/libexec
+ MANDIR		= $(PREFIX)/share/man
+-PRESERVEDIR	= /var/preserve
++PRESERVEDIR	= /var/lib/ex
+ 
+ #
+ # DESTDIR is prepended to the installation paths. It is mostly useful
+diff -Naur ex-050325.ori/vi.1 ex-050325/vi.1
+--- ex-050325.ori/vi.1	2005-02-17 07:39:36.000000000 -0500
++++ ex-050325/vi.1	2011-02-01 16:21:51.496666674 -0500
+@@ -979,7 +979,7 @@
+ .B /var/tmp/Rx\fInnnnnnnnnn\fP
+ named buffer temporary
+ .TP
+-.B /var/preserve
++.B /var/lib/ex
+ preservation directory
+ .SH SEE ALSO
+ ex(1),
+--- ex-050325.original/ex.1	2012-01-27 20:43:00.602119283 +0100
++++ ex-050325/ex.1	2012-01-27 20:47:24.535436516 +0100
+@@ -1932,10 +1932,10 @@
+ Determines the terminal type.
+ .SH FILES
+ .TP
+-.B /usr/libexec/expreserve
++.B /usr/lib/ex/expreserve
+ preserve command
+ .TP
+-.B /usr/libexec/exrecover
++.B /usr/lib/ex/exrecover
+ recover command
+ .TP
+ .B /etc/termcap
+--- ex-050325.original/vi.1	2012-01-27 20:43:00.602119283 +0100
++++ ex-050325/vi.1	2012-01-27 20:46:33.815439611 +0100
+@@ -961,10 +961,10 @@
+ Determines the terminal type.
+ .SH FILES
+ .TP
+-.B /usr/libexec/expreserve
++.B /usr/lib/ex/expreserve
+ preserve command
+ .TP
+-.B /usr/libexec/exrecover
++.B /usr/lib/ex/exrecover
+ recover command
+ .TP
+ .B /etc/termcap
