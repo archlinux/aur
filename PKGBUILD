@@ -1,7 +1,7 @@
 # Maintainer: Foma Shipilov <foma@shipilov.ru>
 
 pkgname=wlnfancurve
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A small script to control NVIDIA GPU fan speed on Wayland using pyNVML"
 arch=("any")
@@ -14,7 +14,7 @@ backup=('etc/wlnfancurve.conf')
 source=(
   "${pkgname}-${pkgver}::https://github.com/xiyori/${pkgname}/archive/v${pkgver}.tar.gz"
 )
-sha512sums=('7746504da4a67602652728290c106e575913346e8c53cb28f04256f5f35f536c7053ae740b812879e53fa50534391c5124bed43b30f9a1b68a639944d9c34063')
+sha512sums=('4e29080c7fde3b8e90165f09f4f245c7514b29ce2912860da0e70336a18e3ad63b804c5007d359fdec2a278a8f6fdd4e63bc7f860badc07d4a0cfd0bd2ad0830')
 
 package() {
     cd "${pkgname}-${pkgver}"
