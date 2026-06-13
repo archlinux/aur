@@ -2,7 +2,7 @@
 
 pkgname=thor-flash-utility
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for flashing firmware on Samsung devices, based on .NET 9 Native AOT"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Samsung-Loki/Thor"
@@ -13,18 +13,19 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Samsung-Loki/Thor/archi
         "NuGet.Config")
 sha256sums=('af1b55c9143b6001f07e537a58a2761911746419e4312d4fab239efee0200579'
             'b8ff5486232770da7b6bced4a4b829b7c9dc184961bad1c2b8c965f46f584b90')
-options=('!strip')
+options=('!strip' 'staticlibs' '!debug')
 
-prepare() {
-  cd "${srcdir}/Thor-${pkgver}"
-
-  # Dotnet environment for reproducibility
+_dotnet_env() {
   export DOTNET_CLI_HOME="${srcdir}/.dotnetcli"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export NUGET_PACKAGES="${srcdir}/nuget_packages"
   export HOME="${srcdir}/.dotnethome"
+}
 
-  # Restore dependencies with local NuGet.Config
+prepare() {
+  cd "${srcdir}/Thor-${pkgver}"
+  _dotnet_env
+
   dotnet restore TheAirBlow.Thor.Library/TheAirBlow.Thor.Library.csproj \
     --configfile "${srcdir}/NuGet.Config" --verbosity minimal
   dotnet restore TheAirBlow.Thor.Shell/TheAirBlow.Thor.Shell.csproj \
@@ -33,11 +34,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/Thor-${pkgver}"
-
-  export DOTNET_CLI_HOME="${srcdir}/.dotnetcli"
-  export DOTNET_CLI_TELEMETRY_OPTOUT=1
-  export NUGET_PACKAGES="${srcdir}/nuget_packages"
-  export HOME="${srcdir}/.dotnethome"
+  _dotnet_env
 
   if [[ "$CARCH" == "x86_64" ]]; then
     runtime="linux-x64"
