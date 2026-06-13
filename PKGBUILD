@@ -1,7 +1,7 @@
 # Maintainer: Fabian Hartmann <worldwidefab+arch gmail com>
 _pkgname='Ambermoon.net'
 pkgname=ambermoon-net
-pkgver=1.13.4
+pkgver=1.13.5
 pkgrel=1
 epoch=
 pkgdesc="C# rewrite of the 1993 Amiga RPG Ambermoon"
@@ -18,7 +18,7 @@ provides=("ambermoon-net=${pkgver}")
 conflicts=("ambermoon-net-bin")
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8bca7ec2bc92ae444945627c93e2c31be6cc49af219a086fe19c96ecae2708e1')
+sha256sums=('7fccd4b6e4b47d8558e813c81647c1c830c51a5ca8e85b6fe4ac2f46139f5a50')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
