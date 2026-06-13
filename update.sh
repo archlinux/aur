@@ -64,11 +64,12 @@ new_tmp_dir() {
 }
 
 extract_bun_depend() {
-    local source_archive=$1
-    local package_json_path=$2
+    local package_json_path=$1
     local requirement
 
-    requirement="$(cmd bsdtar -xOf "$source_archive" "$package_json_path" | awk -F'"' '
+    [[ -f $package_json_path ]] || return 1
+
+    requirement="$(awk -F'"' '
 BEGIN {
     in_engines = 0
 }
@@ -87,7 +88,7 @@ in_engines && $2 == "bun" {
 END {
     exit(found ? 0 : 1)
 }
-')" || return 1
+' "$package_json_path")" || return 1
 
     case "$requirement" in
         \>\=[0-9]*)
@@ -102,6 +103,30 @@ END {
     fi
 
     printf 'bun%s\n' "$requirement"
+}
+
+current_bun_makedepend() {
+    awk '
+/^makedepends=\(/ {
+    line = $0
+    sub(/^makedepends=\(/, "", line)
+    sub(/\)[[:space:]]*$/, "", line)
+
+    count = split(line, deps, /[[:space:]]+/)
+    for (i = 1; i <= count; i++) {
+        dep = deps[i]
+        gsub(/\047/, "", dep)
+        if (dep ~ /^bun($|[<>=])/) {
+            print dep
+            found = 1
+            exit
+        }
+    }
+}
+END {
+    exit(found ? 0 : 1)
+}
+' PKGBUILD
 }
 
 update_bun_makedepend() {
@@ -191,7 +216,6 @@ if [[ -z $pkgname ]]; then
     fail "unable to extract pkgname from PKGBUILD"
 fi
 
-
 if [[ $pkgver == "$latest_tag" ]]; then
     msg "PKGBUILD already tracks the latest release"
     exit 0
@@ -227,16 +251,15 @@ END {
 ' PKGBUILD >"$pkgbuild_tmp"  || fail "unable to update pkgver/pkgrel in PKGBUILD"
 cmd mv "$pkgbuild_tmp" PKGBUILD
 
-cmd updpkgsums || fail "failed to update checksums in PKGBUILD"
+cmd makepkg -f -o --noprepare || fail "failed to checkout sources"
 
-source_archive="${pkgname}-${latest_tag}.tar.gz"
-package_json_path="${pkgname}-${latest_tag}/packages/coding-agent/package.json"
+package_json_path="src/${pkgname}/packages/coding-agent/package.json"
 
-if [[ -f $source_archive ]] && bun_dep="$(extract_bun_depend "$source_archive" "$package_json_path")"; then
+if bun_dep="$(extract_bun_depend "$package_json_path")"; then
     msg "minimum bun make dependency: ${bun_dep}"
 else
-    warn "unable to extract bun engine requirement from ${package_json_path}; using unversioned bun makedepend"
-    bun_dep='bun'
+    warn "unable to extract bun engine requirement from ${package_json_path}; preserving existing bun makedepend"
+    bun_dep="$(current_bun_makedepend)" || bun_dep='bun'
 fi
 
 update_bun_makedepend "$bun_dep"

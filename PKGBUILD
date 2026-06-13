@@ -8,14 +8,14 @@ arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'icu' 'zlib')
-makedepends=('bun>=1.3.14' 'rustup')
+makedepends=('bun>=1.3.14' 'git' 'rustup')
 options=('!strip')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
     "tree-sitter-haskell-gcc-no-strict-aliasing.patch"
     "skip-native-embed-for-aur.patch"
 )
-sha256sums=('2e709ced399d4b92001c1320c3cc08eeaafd763fb5bca20bca9125af9163f51b'
+sha256sums=('SKIP'
             '3eea6cd7fc2e5fa973b81cac109688231e40087f51c3ce4cf01e45e1b7893b17'
             'e5cc7751f95d279705d2060040017a0ca76d1e980f36c51e93016754746c2b99')
 
@@ -47,13 +47,13 @@ _patch_tree_sitter_haskell_gcc_workaround() {
 }
 
 prepare() {
-    cd "${srcdir}/oh-my-pi-${pkgver}"
+    cd "${srcdir}/${pkgname}"
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
 }
 
 build() {
-    cd "${srcdir}/oh-my-pi-${pkgver}"
+    cd "${srcdir}/${pkgname}"
 
     local _toolchain
 
@@ -102,7 +102,7 @@ _install_completions() {
 }
 
 package() {
-    cd "${srcdir}/oh-my-pi-${pkgver}"
+    cd "${srcdir}/${pkgname}"
 
     install -Dm755 "packages/coding-agent/binaries/omp-linux-x64" "${pkgdir}/usr/bin/omp"
     install -Dm755 "packages/natives/native/pi_natives.linux-x64-baseline.node" "${pkgdir}/usr/bin/pi_natives.linux-x64-baseline.node"

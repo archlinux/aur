@@ -2,3 +2,4 @@
 /pkg
 *.pkg.tar*
 oh-my-pi-*.tar.gz
+/oh-my-pi

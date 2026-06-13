@@ -6,16 +6,17 @@ pkgbase = oh-my-pi
 	arch = x86_64
 	license = MIT
 	makedepends = bun>=1.3.14
+	makedepends = git
 	makedepends = rustup
 	depends = gcc-libs
 	depends = glibc
 	depends = icu
 	depends = zlib
 	options = !strip
-	source = oh-my-pi-15.12.3.tar.gz::https://github.com/can1357/oh-my-pi/archive/refs/tags/v15.12.3.tar.gz
+	source = oh-my-pi::git+https://github.com/can1357/oh-my-pi.git#tag=v15.12.3
 	source = tree-sitter-haskell-gcc-no-strict-aliasing.patch
 	source = skip-native-embed-for-aur.patch
-	sha256sums = 2e709ced399d4b92001c1320c3cc08eeaafd763fb5bca20bca9125af9163f51b
+	sha256sums = SKIP
 	sha256sums = 3eea6cd7fc2e5fa973b81cac109688231e40087f51c3ce4cf01e45e1b7893b17
 	sha256sums = e5cc7751f95d279705d2060040017a0ca76d1e980f36c51e93016754746c2b99
 
