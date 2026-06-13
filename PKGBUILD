@@ -5,13 +5,13 @@ _pkg_arch=armv7a-eabi
 _android_arch=armeabi-v7a
 _android_platform_arch=arch-arm
 _pkgname=openssl
-_pkgver=3.6.2
+_pkgver=3.6.3
 
 pkgname=android-$_pkg_arch-$_pkgname
 # use a pacman compatible version scheme
 pkgver=${_pkgver/[a-z]/.${_pkgver//[0-9.]/}}
 pkgrel=1
-pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (Android, $_pkg_arch)"
+pkgdesc="The Open Source toolkit for cryptography and Transport Layer Security (Android, $_pkg_arch)"
 arch=('any')
 url='https://www.openssl.org'
 license=('Apache-2.0')
@@ -21,7 +21,7 @@ makedepends=('android-environment' 'android-sdk-build-tools')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
 source=("https://github.com/openssl/openssl/releases/download/openssl-${pkgver}/openssl-${pkgver}.tar.gz"{,.asc})
-sha256sums=('aaf51a1fe064384f811daeaeb4ec4dce7340ec8bd893027eee676af31e83a04f'
+sha256sums=('243a86649cf6f23eeb6a2ff2456e09e5d77dd9018a54d3d96b0c6bdd6ba6c7f1'
             'SKIP')
 validpgpkeys=('EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
               'BA5473A2B0587B07FB27CF2D216094DFD0CB81EF')
