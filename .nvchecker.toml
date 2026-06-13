@@ -1,0 +1,4 @@
+[python-qcelemental]
+source = "git"
+git = "https://github.com/MolSSI/qcelemental.git"
+prefix = "v"

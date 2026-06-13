@@ -1,8 +1,10 @@
 # makepkg files
-pkg/
-src/
+/pkg/
+/src/
+*.tar
 *.xz
 *.zst
+/qcelemental/
 
 # mkarchchroot files
 *.log
