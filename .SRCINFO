@@ -1,0 +1,24 @@
+pkgbase = deterministic-zip-bin
+	pkgdesc = Simple (almost drop-in) replacement for zip that produces deterministic files
+	pkgver = 6.1.0
+	pkgrel = 1
+	url = https://github.com/timo-reymann/deterministic-zip
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL-3.0
+	provides = deterministic-zip
+	conflicts = deterministic-zip
+	options = !strip
+	source = README-6.1.0.md::https://raw.githubusercontent.com/timo-reymann/deterministic-zip/6.1.0/README.md
+	source = LICENSE-6.1.0::https://raw.githubusercontent.com/timo-reymann/deterministic-zip/6.1.0/LICENSE
+	sha256sums = f4085174547ed1b32e79d75d31a59ddca863c454b25d5b84ca8029cb24a29be4
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = deterministic-zip-x86_64-6.1.0::https://github.com/timo-reymann/deterministic-zip/releases/download/6.1.0/deterministic-zip_linux-amd64
+	sha256sums_x86_64 = 66bf821679076f47bf087a263b1b99662c0d3f2f6a47c2a8e16c6deb2be71d99
+	source_i686 = deterministic-zip-i686-6.1.0::https://github.com/timo-reymann/deterministic-zip/releases/download/6.1.0/deterministic-zip_linux-amd64
+	sha256sums_i686 = 66bf821679076f47bf087a263b1b99662c0d3f2f6a47c2a8e16c6deb2be71d99
+	source_aarch64 = deterministic-zip-aarch64-6.1.0::https://github.com/timo-reymann/deterministic-zip/releases/download/6.1.0/deterministic-zip_linux-amd64
+	sha256sums_aarch64 = 66bf821679076f47bf087a263b1b99662c0d3f2f6a47c2a8e16c6deb2be71d99
+
+pkgname = deterministic-zip-bin

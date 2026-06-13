@@ -1,0 +1,5 @@
+[deterministic-zip-bin]
+source = "github"
+github = "timo-reymann/deterministic-zip"
+use_latest_release = true
+prefix = ""
