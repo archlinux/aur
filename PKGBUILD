@@ -66,10 +66,7 @@ build() {
 	#   matches `makepkg`'s unconditional checkout of the main repo.
 	git submodule update
 
-	# `-Wp,-D_FORTIFY_SOURCE=3` currently clashes with the std.compat module:
-	#
-	# 	https://github.com/llvm/llvm-project/issues/121709
-	CFLAGS="${CFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}" LFLAGS=$LDFLAGS ./build_linux.sh "bin/GIAN07"
+	LFLAGS="$LDFLAGS" ./build_linux.sh "bin/GIAN07"
 }
 
 package() {
