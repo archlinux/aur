@@ -1,6 +1,6 @@
 # Maintainer: pyxyll <pyxyllv@gmail.com>
 pkgname=cosmic-control-center
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A modular, pluggable control center for the COSMIC desktop (editor + panel applet)"
 arch=('x86_64')
