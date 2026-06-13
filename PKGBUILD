@@ -2,7 +2,7 @@
 AppName=Player432Hz
 appid=player432hz
 pkgname=${appid}-appimage
-pkgver=3.3.2
+pkgver=3.4
 pkgrel=1
 pkgdesc="Plays music in 432hz"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/mysteryx93/HanumanInstituteApps/releases/download/v${pkgver}/${AppName}-${pkgver}_Linux_x64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('350823e3d702578a7659d1079e9e5d081977b96d17f545b0455b7365e80f299a')
+sha256sums_x86_64=('74d547386376189e4fcc7a83234fb9e81d50a6cd755fcdb7584a601c70506217')
 
 prepare() {
     chmod +x "${_appimage}"
