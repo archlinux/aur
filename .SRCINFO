@@ -1,0 +1,19 @@
+pkgbase = python-moocore
+	pkgdesc = Core Algorithms for Multi-Objective Optimization
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://multi-objective.github.io/moocore/python/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-cffi
+	depends = python-numpy
+	depends = python-platformdirs
+	source = https://files.pythonhosted.org/packages/source/m/moocore/moocore-0.3.1.tar.gz
+	sha256sums = a8f83cfbc0aa81c1c9dd33e473adbc9b638dc3b1a6943753f8146770bb76bae4
+
+pkgname = python-moocore
