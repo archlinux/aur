@@ -1,0 +1,18 @@
+pkgbase = nfactorial-git
+	pkgdesc = A factorial calculator i guess.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mrgamernavshorts/nfactorial
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = clang
+	depends = glibc
+	provides = nfactorial
+	conflicts = nfactorial
+	source = nfactorial-git::git+https://github.com/mrgamernavshorts/nfactorial.git
+	sha256sums = SKIP
+
+pkgname = nfactorial-git
