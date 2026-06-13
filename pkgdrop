@@ -138,14 +138,19 @@ registry_add() {
     local name="$1" version="$2" pkgtype="$3" files="$4"
     registry_init
     local tmp
-    tmp=$(mktemp)
+    tmp=$(mktemp "${REGISTRY_FILE}.XXXXXX")
     if command -v jq &>/dev/null; then
         local timestamp
         timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-        jq --arg n "$name" --arg v "$version" --arg t "$pkgtype" \
+        if jq --arg n "$name" --arg v "$version" --arg t "$pkgtype" \
            --arg f "$files" --arg ts "$timestamp" \
            '.[$n] = {"version":$v,"type":$t,"files":($f|split("\n")|map(select(.!=""))),"installed_at":$ts}' \
-           "$REGISTRY_FILE" > "$tmp" && mv "$tmp" "$REGISTRY_FILE"
+           "$REGISTRY_FILE" > "$tmp" 2>/dev/null; then
+            mv -f "$tmp" "$REGISTRY_FILE"
+        else
+            rm -f "$tmp"
+            warn "Failed to update registry"
+        fi
     else
         warn "jq not found, registry not updated"
         rm -f "$tmp"
@@ -156,9 +161,14 @@ registry_remove() {
     local name="$1"
     registry_init
     local tmp
-    tmp=$(mktemp)
+    tmp=$(mktemp "${REGISTRY_FILE}.XXXXXX")
     if command -v jq &>/dev/null; then
-        jq --arg n "$name" 'del(.[$n])' "$REGISTRY_FILE" > "$tmp" && mv "$tmp" "$REGISTRY_FILE"
+        if jq --arg n "$name" 'del(.[$n])' "$REGISTRY_FILE" > "$tmp" 2>/dev/null; then
+            mv -f "$tmp" "$REGISTRY_FILE"
+        else
+            rm -f "$tmp"
+            warn "Failed to update registry"
+        fi
     else
         rm -f "$tmp"
     fi
@@ -222,7 +232,7 @@ extract_version_from_file() {
                 version=$(echo "$file" | grep -oP '[0-9]+\.[0-9]+[0-9.]*' | head -1 || true)
             fi
             ;;
-        *.tar.xz|*.tar.gz)
+        *.tar.xz|*.tar.gz|*.tar.zst|*.tar.bz2)
             version=$(echo "$file" | grep -oP '[0-9]+\.[0-9]+[0-9.]*' | head -1 || true)
             ;;
         *.deb)
@@ -544,10 +554,15 @@ list_installed() {
             if [[ -L "$link" ]] && [[ -d "$INSTALL_DIR/$name" ]]; then
                 continue
             fi
-            if [[ -L "$link" ]] && [[ "$link" == *.AppImage ]]; then
+            local in_registry
+            in_registry=$(registry_get_version "$name" 2>/dev/null || true)
+            if [[ -n "$in_registry" ]] || [[ -L "$link" ]] || [[ -f "$link" ]]; then
                 local size
                 size=$(du -sh "$link" 2>/dev/null | awk '{print $1}' || echo "?")
-                echo "  $name ($size)"
+                local ver=""
+                ver=$(registry_get_version "$name" 2>/dev/null || true)
+                ver="${ver:+ v$ver}"
+                echo "  $name$ver ($size)"
                 found=1
             fi
         done
@@ -677,6 +692,8 @@ uninstall_package() {
     fi
 
     cleanup_desktop "$name"
+    rm -f "$HOME/.local/share/pkgdrop/icons/${name}.png"
+    rm -f "$HOME/.local/share/pkgdrop/icons/${name}.svg"
     refresh_desktop
     verb "Cleaned up desktop entry for $name"
 
@@ -794,7 +811,7 @@ detect_type() {
     local file="$1"
     case "$file" in
         *.pkg.tar.zst|*.pkg.tar.xz|*.pkg.tar.gz) echo "pacman" ;;
-        *.tar.xz)                                 echo "tarportable" ;;
+        *.tar.xz|*.tar.gz|*.tar.zst|*.tar.bz2)   echo "tarportable" ;;
         *.deb)                                    echo "debtap" ;;
         *.AppImage)                               echo "appimage" ;;
         *.rpm)                                    echo "alien" ;;
@@ -821,7 +838,7 @@ validate_file() {
         fi
     fi
 
-    if [[ "$file" == *.tar.xz ]] || [[ "$file" == *.tar.gz ]]; then
+    if [[ "$file" == *.tar.xz ]] || [[ "$file" == *.tar.gz ]] || [[ "$file" == *.tar.zst ]] || [[ "$file" == *.tar.bz2 ]]; then
         if ! tar -tf "$file" >/dev/null 2>&1; then
             warn "Archive may be corrupted (tar validation failed)"
             if ! confirm "Continue anyway?"; then
@@ -863,9 +880,14 @@ sanitize_name() {
     local name="$1"
     name="${name%.tar.xz}"
     name="${name%.tar.gz}"
+    name="${name%.tar.zst}"
+    name="${name%.tar.bz2}"
     name="${name%.deb}"
     name="${name%.rpm}"
     name="${name%.AppImage}"
+    name="${name%.pkg.tar.zst}"
+    name="${name%.pkg.tar.xz}"
+    name="${name%.pkg.tar.gz}"
     name=$(echo "$name" | sed -E 's/[._-]*(x86_64|i686|i386|aarch64|armv7hl|linux|macos|win(dows)?)$//')
     name=$(echo "$name" | sed -E 's/[._-]*(x86_64|i686|i386|aarch64|armv7hl|linux|macos|win(dows)?)$//')
     [[ -z "$name" ]] && name="unknown"
@@ -896,16 +918,19 @@ resolve_icon() {
     base="${base##*/}"
 
     local desktop_dir
-    desktop_dir=$(dirname "$(find "$dir" -maxdepth 3 -name "*.desktop" -type f 2>/dev/null | head -1)")
+    desktop_dir=$(dirname "$(find "$dir" -maxdepth 5 -name "*.desktop" \( -type f -o -type l \) 2>/dev/null | head -1)")
 
     local candidate
-    for candidate in "$raw_icon" "${base}.png" "${base}.svg" "${base}.ico"; do
+    for candidate in "$raw_icon" "${base}.png" "${base}.svg" "${base}.ico" "${base}.xpm"; do
+        if [[ "$candidate" == /* ]] && [[ -f "$candidate" ]]; then
+            echo "$candidate" && return 0
+        fi
         [[ -f "$dir/$candidate" ]] && echo "$(realpath "$dir/$candidate")" && return 0
         [[ -n "$desktop_dir" ]] && [[ -f "$desktop_dir/$candidate" ]] && echo "$(realpath "$desktop_dir/$candidate")" && return 0
     done
 
     local found
-    found=$(find "$dir" -maxdepth 8 -type f \( -name "${base}.png" -o -name "${base}.svg" \) 2>/dev/null | head -1)
+    found=$(find "$dir" -maxdepth 8 -type f \( -name "${base}.png" -o -name "${base}.svg" -o -name "${base}.ico" -o -name "${base}.xpm" \) 2>/dev/null | head -1)
     [[ -n "$found" ]] && echo "$(realpath "$found")" && return 0
 
     return 1
@@ -914,18 +939,20 @@ resolve_icon() {
 read_desktop_metadata() {
     local dir="$1"
     local desktop_file
-    desktop_file=$(find "$dir" -maxdepth 3 -name "*.desktop" \( -type f -o -type l \) ! -path "*/share/doc/*" ! -path "*/README*" 2>/dev/null | head -1)
+    desktop_file=$(find "$dir" -maxdepth 5 -name "*.desktop" \( -type f -o -type l \) ! -path "*/share/doc/*" ! -path "*/README*" 2>/dev/null | head -1)
 
     local icon_path=""
     local icon_name=""
     local category="Utility"
 
-    if [[ -n "$desktop_file" ]] && [[ -f "$desktop_file" ]]; then
+    if [[ -n "$desktop_file" ]] && [[ -e "$desktop_file" ]]; then
         local raw_icon
         raw_icon=$(grep -E "^Icon=" "$desktop_file" 2>/dev/null | head -1 | sed 's/^Icon=//')
         icon_name="${raw_icon##*/}"
         icon_name="${icon_name%.png}"
         icon_name="${icon_name%.svg}"
+        icon_name="${icon_name%.ico}"
+        icon_name="${icon_name%.xpm}"
 
         icon_path=$(resolve_icon "$dir" "$raw_icon") || true
 
@@ -1094,7 +1121,11 @@ install_pacman() {
 install_tarportable() {
     local file="$1"
     local basename="${file##*/}"
-    local name="${basename%.tar.xz}"
+    local name="$basename"
+    name="${name%.tar.xz}"
+    name="${name%.tar.gz}"
+    name="${name%.tar.zst}"
+    name="${name%.tar.bz2}"
     name=$(sanitize_name "$name")
 
     verb "Installing tarportable: $name"
@@ -1149,6 +1180,10 @@ install_tarportable() {
             info "Extracting $total_files files from $(humanize_size "$file_size") archive..."
         fi
     fi
+
+    if tar -tf "$file" 2>/dev/null | grep -qE '^\.\./|^\.\.[/]'; then
+        warn "Archive contains path traversal (../) — cleaning filenames"
+    fi
     
     if ! sandbox_extract "$file" "$stage_dir"; then
         rm -rf "$stage_dir"
@@ -1190,8 +1225,16 @@ install_tarportable() {
 
     verb "Searching for binary..."
     local bin=""
-    bin=$(find "$target" -maxdepth 3 -type f -executable -name "$name" ! -name "*.so*" ! -name "*.dylib" ! -name "*-bin" 2>/dev/null | head -1)
-    [[ -z "$bin" ]] && bin=$(find "$target" -maxdepth 3 -type f -executable ! -name "*.so*" ! -name "*.dylib" ! -name "updater" ! -name "*test" ! -name "*sender" ! -name "*-bin" ! -name "*.png" ! -name "*.svg" ! -name "*.xpm" 2>/dev/null | head -1)
+    bin=$(find "$target" -maxdepth 3 -type f -executable -name "$name" ! -name "*.so*" ! -name "*.dylib" ! -name "*-bin" 2>/dev/null | head -1 || true)
+    if [[ -z "$bin" ]]; then
+        for subdir in bin sbin usr/bin usr/local/bin opt/*/bin; do
+            [[ -d "$target/$subdir" ]] || continue
+            bin=$(find "$target/$subdir" -maxdepth 1 -type f -executable 2>/dev/null | head -1 || true)
+            [[ -n "$bin" ]] && break
+        done
+    fi
+    [[ -z "$bin" ]] && bin=$(find "$target" -maxdepth 3 -type f -executable -name "AppRun" 2>/dev/null | head -1 || true)
+    [[ -z "$bin" ]] && bin=$(find "$target" -maxdepth 3 -type f -executable ! -name "*.so*" ! -name "*.dylib" ! -name "updater" ! -name "*test" ! -name "*sender" ! -name "*-bin" ! -name "*.png" ! -name "*.svg" ! -name "*.xpm" ! -name "*.sh" ! -name "*.py" 2>/dev/null | head -1 || true)
     [[ -n "$bin" ]] && verb "Found binary: $bin"
 
     mkdir -p "$HOME/.local/bin" || fail "Cannot create $HOME/.local/bin"
@@ -1353,7 +1396,7 @@ install_appimage() {
         fi
         rm -rf squashfs-root
     fi
-    cd /tmp && rm -rf "$tmpdir"
+    cd / && rm -rf "$tmpdir"
 
     create_desktop_entry "$name" "$HOME/.local/bin/$name" "${final_icon_name:-pkgdrop-${name}}" "$category"
     refresh_desktop
@@ -1422,6 +1465,7 @@ show_summary() {
         [[ -n "$ver" ]] && info "Version:       $ver"
         [[ -d "$INSTALL_DIR/$name" ]] && info "Installed to: $INSTALL_DIR/$name/"
         [[ -L "$HOME/.local/bin/$name" ]] && info "Binary:        $HOME/.local/bin/$name"
+        [[ -f "$HOME/.local/bin/$name" ]] && [[ ! -L "$HOME/.local/bin/$name" ]] && info "Binary:        $HOME/.local/bin/$name"
         [[ -f "$HOME/.local/share/applications/pkgdrop-${name}.desktop" ]] && info "Desktop entry: Yes"
     fi
 
@@ -1517,7 +1561,13 @@ main() {
 
     local pkgname="${file##*/}"
     case "$pkgtype" in
-        tarportable) pkgname="${pkgname%.tar.xz}"; pkgname=$(sanitize_name "$pkgname") ;;
+        tarportable)
+            pkgname="${pkgname%.tar.xz}"
+            pkgname="${pkgname%.tar.gz}"
+            pkgname="${pkgname%.tar.zst}"
+            pkgname="${pkgname%.tar.bz2}"
+            pkgname=$(sanitize_name "$pkgname")
+            ;;
         appimage)    pkgname="${pkgname%.AppImage}"; pkgname=$(sanitize_name "$pkgname") ;;
         *)           pkgname="${pkgname%%.*}" ;;
     esac
