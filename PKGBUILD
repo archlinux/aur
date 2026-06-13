@@ -2,8 +2,8 @@
 
 pkgname=edirstat-git
 _pkgname=edirstat
-pkgver=1.1.0.r100.g9655c52
-pkgrel=2
+pkgver=1.1.0.r149.ge051df8
+pkgrel=1
 pkgdesc="A fast, cross-platform disk usage analyzer with work-stealing multithreading, zero-copy snapshots, deduplication, and an interactive treemap GUI. (Development Git Version)"
 arch=('x86_64')
 url="https://github.com/Xangelix/edirstat"
@@ -19,6 +19,12 @@ optdepends=(
 )
 
 makedepends=('cargo-nightly' 'rust-nightly' 'git')
+
+# Disables makepkg's system-level C-LTO (which injects -flto into CFLAGS). 
+# This prevents compiler mismatches (e.g. GCC GIMPLE vs LLVM Bitcode) when linking 
+# compiled C dependencies like blake3 and mimalloc.
+# This option does NOT affect the Rust-level ThinLTO defined in Cargo.toml.
+options=(!lto)
 
 source=(
   "${_pkgname}::git+${url}.git"
