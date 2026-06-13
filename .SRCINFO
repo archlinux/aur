@@ -1,7 +1,7 @@
 pkgbase = vi
 	pkgdesc = The original ex/vi text editor
 	pkgver = 070224
-	pkgrel = 6
+	pkgrel = 7
 	epoch = 1
 	url = https://ex-vi.sourceforge.net/
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = vi
 	license = Caldera-no-preamble
 	depends = ncurses
 	optdepends = s-nail: used by the preserve command for notification
+	provides = vi
+	conflicts = ex-vi-compat
 	source = https://sources.archlinux.org/other/vi/ex-070224.tar.xz
 	source = https://sources.archlinux.org/other/vi/ex-070224.tar.xz.sig
 	source = fix-tubesize-short-overflow.patch

@@ -1,9 +1,10 @@
-# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
+# Maintainer: libele <libele@disroot.org>
+# Contributor: Evangelos Foutras <foutrelis@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=vi
 pkgver=070224
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc="The original ex/vi text editor"
 arch=('x86_64')
@@ -14,6 +15,8 @@ license=(
 )
 depends=('ncurses')
 optdepends=('s-nail: used by the preserve command for notification')
+provides=('vi')
+conflicts=('ex-vi-compat')
 source=(https://sources.archlinux.org/other/$pkgname/ex-$pkgver.tar.xz{,.sig}
         fix-tubesize-short-overflow.patch
         navkeys.patch
@@ -31,8 +34,8 @@ validpgpkeys=('86CFFCA918CF3AF47147588051E8B148A9999C34')  # Evangelos Foutras <
 
 prepare() {
   # Extract specific license files.
-  sed -n '1,36p' $_name-$_version/LICENSE > BSD-4-Clause-UC.txt
-  sed -n '39,69p' $_name-$_version/LICENSE > Caldera-no-preamble.txt
+  sed -n '1,36p' ex-$pkgver/LICENSE > BSD-4-Clause-UC.txt
+  sed -n '39,69p' ex-$pkgver/LICENSE > Caldera-no-preamble.txt
 
   cd ex-$pkgver
 
@@ -52,8 +55,9 @@ prepare() {
 build() {
   cd ex-$pkgver
 
-  make PREFIX=/usr LIBEXECDIR=/usr/lib/ex PRESERVEDIR=/var/lib/ex \
-    TERMLIB=ncurses FEATURES="-DCHDIR -DFASTTAG -DUCVISUAL -DMB -DBIT8"
+  CFLAGS=-std=gnu90 make PREFIX=/usr \
+    LIBEXECDIR=/usr/lib/ex PRESERVEDIR=/var/lib/ex TERMLIB=ncurses \
+    FEATURES="-DCHDIR -DFASTTAG -DUCVISUAL -DMB -DBIT8"
 }
 
 package() {
@@ -63,5 +67,3 @@ package() {
     INSTALL=/usr/bin/install DESTDIR="$pkgdir" install
   install -vDm 644 ../*.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-# vim:set ts=2 sw=2 et:
