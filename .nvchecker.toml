@@ -1,3 +1,5 @@
 [rovr]
 source = "pypi"
 pypi = "rovr"
+from_pattern = '([0-9.]*)(post)?([0-9]*)'
+to_pattern = '\1\3'

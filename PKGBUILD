@@ -1,13 +1,30 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
+format_version() {
+    local input="$1"
+
+    # Counts how many dots are in the string
+    local dot_count="${input//[^.]/}"
+
+    # If there are 3 dots (a.b.c.d), apply the post transformation
+    if [ "${#dot_count}" -ge 3 ]; then
+        local prefix="${input%.*}"
+        local suffix="${input##*.}"
+        echo "${prefix}.post${suffix}"
+    else
+        # Otherwise (like a.b.c), return the input unchanged
+        echo "${input}"
+    fi
+}
+
 pkgauthor="NSPC911"
 pkgname="rovr"
-pkgver=0.9.1
+pkgver=0.9.1.1
 pkgrel=1
 pkgdesc="A post-modern terminal file explorer"
 
 _pypi_package=${pkgname}
-_pypi_version=${pkgver}
+_pypi_version=$(format_version "${pkgver}")
 
 license=('MIT')
 arch=('any')
@@ -24,7 +41,7 @@ depends=('python' 'python-textual-autocomplete' 'python-pygments' 'python-rich' 
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('5fd9ecb4c5a06c42288f380b62b5f605fbc8170b1ac4a6cbf49651adc003b3fa')
+sha256sums=('a2bd4f1d298e7b57523caf1626f1baf393d2c83af342b1e725453dff422247d2')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
