@@ -1,6 +1,6 @@
 pkgbase = dblab
 	pkgdesc = Interactive client for PostgreSQL, MySQL, SQLite3, Oracle and SQL Server
-	pkgver = 0.34.3
+	pkgver = 0.40.2
 	pkgrel = 1
 	url = https://github.com/danvergara/dblab
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dblab
 	makedepends = go
 	provides = dblab
 	conflicts = dblab
-	source = dblab-0.34.3.tar.gz::https://github.com/danvergara/dblab/archive/refs/tags/v0.34.3.tar.gz
-	sha256sums = 5f3bd74c54e98f43da6e93298b645593ea6c11a9581b89237d693d9238b98ecb
+	source = dblab-0.40.2.tar.gz::https://github.com/danvergara/dblab/archive/refs/tags/v0.40.2.tar.gz
+	sha256sums = 47319251e132bd400d2c1543fdd7d0129c935751ae86c5a8d9eca903a3d928d7
 
 pkgname = dblab
