@@ -24,7 +24,9 @@ pkgbase = pineapple-notepad-bin
 	conflicts = pineapple-notepad
 	source = pineapple-notepad-bin-0.7.0-deepin.deb::https://github.com/BLumia/pineapple-notepad/releases/download/0.7.0-freeware/pineapple-notepad-deepin-crimson-x86_64-0.7.0.deb
 	source = pineapple-notepad-bin-0.7.0-debian.deb::https://github.com/BLumia/pineapple-notepad/releases/download/0.7.0-freeware/pineapple-notepad-debian-trixie-x86_64-0.7.0.deb
+	source = LICENSE::https://raw.githubusercontent.com/BLumia/pineapple-notepad/master/LICENSE
 	sha256sums = d11bcd168fe51690999bb8ce998fa777bfacccefbbd2d68dac2378a06985d1d8
 	sha256sums = 31a6ca692d1ffb51bf6bf971665d61ea59cb979ec88d653c2cbacf974c77dbaa
+	sha256sums = SKIP
 
 pkgname = pineapple-notepad-bin

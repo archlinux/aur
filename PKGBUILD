@@ -29,10 +29,12 @@ conflicts=('pineapple-notepad')
 source=(
     "${pkgname}-${pkgver}-deepin.deb::https://github.com/BLumia/pineapple-notepad/releases/download/${pkgver}-freeware/pineapple-notepad-deepin-crimson-x86_64-${pkgver}.deb"
     "${pkgname}-${pkgver}-debian.deb::https://github.com/BLumia/pineapple-notepad/releases/download/${pkgver}-freeware/pineapple-notepad-debian-trixie-x86_64-${pkgver}.deb"
+    "LICENSE::https://raw.githubusercontent.com/BLumia/pineapple-notepad/master/LICENSE"
 )
 sha256sums=(
     'd11bcd168fe51690999bb8ce998fa777bfacccefbbd2d68dac2378a06985d1d8'
     '31a6ca692d1ffb51bf6bf971665d61ea59cb979ec88d653c2cbacf974c77dbaa'
+    'SKIP'
 )
 
 package() {
@@ -71,41 +73,5 @@ package() {
             "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/pineapple-notepad.mo"
     done
 
-    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    cat > "$pkgdir/usr/share/licenses/$pkgname/LICENSE" << 'LICENSE_EOF'
-Pineapple Notepad - End User License Agreement
-
-LICENSE GRANT
-
-Gary "BLumia" Wang ("Licensor") grants you ("Licensee") a non-exclusive, non-transferable,
-royalty-free license to install and use Pineapple Notepad ("Software") for both personal
-and commercial purposes. You may use this software within your business, for-profit projects,
-or professional services.
-
-RESTRICTIONS
-
-* No Resale: You may not sell, rent, lease, sublicense, or distribute the Software for money,
-  nor may you bundle the Software with other products or services for sale.
-* No Modification: You may not modify, reverse engineer, decompile, or disassemble the Software.
-* No Rebranding: You may not remove any copyright notices, branding, or logos from the Software.
-
-OWNERSHIP
-
-The Software is licensed, not sold. The Licensor retains all title, copyright, and other
-intellectual property rights in the Software.
-
-DISCLAIMER OF WARRANTY
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
-NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING
-FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-TERMINATION
-
-This license is effective until terminated. Your rights under this license will terminate
-automatically without notice from the Licensor if you fail to comply with any term(s) of
-this license.
-LICENSE_EOF
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
