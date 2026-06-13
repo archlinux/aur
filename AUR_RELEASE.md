@@ -77,6 +77,7 @@ Notes:
 - `--upload-version` defaults to `pkgver` from `PKGBUILD`.
 - If `--upload-file` is not set, it uploads the built pacman package.
 - If `--upload-signature` is not set, the script auto-generates `<upload-file>.sig` using `gpg`.
+- If `--upload-channel` is not set, the CrabNebula CLI uses the default release lookup.
 
 After success, the script prints:
 
@@ -127,7 +128,7 @@ Options:
 - `--upload-file X`: file path to upload (default built `.pkg.tar.zst`)
 - `--upload-signature X`: optional signature path passed to `--signature` (auto-generated if omitted)
 - `--upload-gpg-key X`: key ID/email for auto signature generation
-- `--upload-channel X`: release channel (default `beta`)
+- `--upload-channel X`: release channel (omit for the default release channel)
 - `--zst-url URL`: required in `finalize`
 - `--commit`: create a git commit for `PKGBUILD` + `.SRCINFO`
 - `--push`: push to `origin` (implies `--commit`)

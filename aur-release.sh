@@ -29,7 +29,7 @@ Options:
   --upload-gpg-key X
                    GPG key id/email to use when auto-generating signature.
   --upload-channel X
-                   Release channel for upload (default: beta).
+                   Release channel for upload (omit for default release channel).
   --zst-url URL    Hosted URL for built .pkg.tar.zst (required for finalize).
   --commit         Create a git commit for PKGBUILD/.SRCINFO changes.
   --push           Push commit to origin (implies --commit).
@@ -151,7 +151,7 @@ run_prepare() {
   local upload_file=""
   local upload_signature=""
   local upload_gpg_key=""
-  local upload_channel="beta"
+  local upload_channel=""
 
   while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -314,8 +314,10 @@ run_cn_upload() {
     --public-platform "$upload_platform"
     --file "$upload_file"
     --signature "$upload_signature"
-    --channel "$upload_channel"
   )
+  if [[ -n "$upload_channel" ]]; then
+    upload_cmd+=(--channel "$upload_channel")
+  fi
   "${upload_cmd[@]}"
 }
 
@@ -531,7 +533,7 @@ run_walkthrough() {
       if confirm "Is this a beta release channel?" "Y"; then
         upload_channel="beta"
       else
-        upload_channel="stable"
+        upload_channel=""
       fi
       upload_version="$(read_pkg_var pkgver)"
       read -r -p "Upload app slug [${upload_app}]: " input_upload_app
