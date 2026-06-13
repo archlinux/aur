@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname='luna-translator'
-pkgver='10.15.9.4'
+pkgver='10.15.9.10'
 pkgrel=1
 pkgdesc='Visual Novel Translator'
 arch=(x86_64)
@@ -21,7 +21,7 @@ source=(
     'LunaTranslator.png'
 )
 b2sums=(
-    '172ef185d1dd17469fdb8b1fc08d30c8e9b6b1907f716f7df0ffcbf22303b0052ac485dc19c8a833b8a85e2f14e5cb0db6fcfb69aaddf18a33113d6b308dd858'
+    '25e40e0df3ea3b9ea8b222e3b59f6a611f878004abfccd8abca8c8ae7ea49a84c6843a7ecdb8ca33fef624bae3cd2f8496fbc8030ed893b06e2f663bb539b110'
     '89bfdaec7169e8ad5d336ccb55a25d68f398a74509083ded1ed01ed8555128f48bcf5e927eaa4e8975d5f48e099bac6010cb4731eedc9fc7f6f5add62fbc313c'
     '96791975a8d6ff19e0de383f92bfeba3e805ef482c803c07801ea70a67c59c0b5ff056c3dac4b6a56a48811abea83bc28760259aad5ee7f02e7051996f5eb42b'
     '631ab7da2757459c7da9a1ac335cf9d9c920facb8fc589ab135ef762083df73b982a3c5bc3fbe56036ff0bb27303e0961196726ee503730aa9095bae5a957ab2'
