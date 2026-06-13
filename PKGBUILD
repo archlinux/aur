@@ -4,7 +4,7 @@
 _slug=dbRackModules
 _name=dbRackModules
 pkgname=vcvrack-dbrack-modules
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='dbRack VCV Rack modules'
 arch=(aarch64 x86_64)
@@ -14,7 +14,7 @@ groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(git simde zstd)
 source=("git+https://github.com/docb/$_name#tag=v$pkgver")
-sha256sums=('6f2bdb1f37ca3acffe0e356eed1c4563ffbffa60443a6665b8a360907cf29a1c')
+sha256sums=('774a9be79a6ce7902574b75e113562e7b8096207995d40b16f2b59fdab39f746')
 
 prepare() {
   cd $_name
