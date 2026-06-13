@@ -1,7 +1,7 @@
 # Maintainer: Kief Studio <packages@kief.studio>
 pkgname=aur-scanner-git
-pkgver=0.1.0.r4.e21ad7a
-pkgrel=1
+pkgver=1.0.1.r1.gfa4ad98
+pkgrel=2
 pkgdesc="Security scanner for Arch Linux AUR packages - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/KiefStudioMA/ks-aur-scanner"
@@ -46,23 +46,25 @@ check() {
 package() {
     cd ks-aur-scanner
 
-    # Install binaries
+    # Binaries
     install -Dm755 "target/release/aur-scan" "$pkgdir/usr/bin/aur-scan"
-    install -Dm755 "target/release/aur-scan-hook" "$pkgdir/usr/bin/aur-scan-hook"
     install -Dm755 "target/release/aur-scan-wrap" "$pkgdir/usr/bin/aur-scan-wrap"
+    install -Dm755 "target/release/aur-scan-hook" "$pkgdir/usr/bin/aur-scan-hook"
 
-    # Install pacman hook
-    install -Dm644 "install/aur-scan.hook" "$pkgdir/usr/share/libalpm/hooks/90-aur-scanner.hook"
+    # Shell integration -- the recommended gate. Source it from your shell rc to
+    # scan AUR packages BEFORE makepkg builds them.
+    install -Dm644 "install/integration.bash" "$pkgdir/usr/share/aur-scan/integration.bash"
+    install -Dm644 "install/integration.zsh" "$pkgdir/usr/share/aur-scan/integration.zsh"
 
-    # Install rules (if external rules exist)
-    if [[ -d rules && -n "$(ls -A rules/*.toml 2>/dev/null)" ]]; then
-        install -dm755 "$pkgdir/usr/share/aur-scanner/rules"
-        install -Dm644 rules/*.toml "$pkgdir/usr/share/aur-scanner/rules/"
-    fi
+    # Community rules example
+    install -Dm644 "install/rules.d/example.toml" "$pkgdir/usr/share/aur-scanner/rules.d/example.toml"
 
-    # Install license
+    # pacman hook, shipped as an opt-in example (NOT auto-enabled). It runs after
+    # makepkg has already built the package, so it only catches install-scriptlet
+    # payloads -- prefer the shell integration above.
+    install -Dm644 "install/aur-scan.hook" "$pkgdir/usr/share/aur-scan/aur-scan.hook.example"
+
+    # License + docs
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    # Install documentation
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
