@@ -1,17 +1,17 @@
 # Maintainer: Joakim Hulthe <joakim@hulthe.net>
 pkgname=digiflisp
-pkgver=2.07
+pkgver=2.08
 pkgrel=1
 pkgdesc="IDE for the FLIS processor and training computer"
 arch=('x86_64')
 url="https://www.gbgmv.se/studies.html"
-license=('Copyright 2012-2024, GMV')
+license=('Copyright 2012-2025, GMV')
 
 makedepends=('libarchive')
 
 source=(http://www.gbgmv.se/dl/linux/$pkgname\_$pkgver\_amd64.deb)
-md5sums=('b5fe3e044773175e4fc630973e7056f7')
-sha256sums=('1f9e6daa6427791e83457c26fa494931829acab5ace55b0c0e5b7d2dce1e66c3')
+md5sums=('513b51367522ac2e7c689fc88392d9bc')
+sha256sums=('5d9a9c90f4e872c6f85c1e90914164a1c6c695c0c01f977b872026848f88af1d')
 
 prepare() {
 	msg2 "Unpacking .deb/data.tar.xz"
