@@ -1,6 +1,6 @@
 pkgbase = meh2
 	pkgdesc = GTK4 Wayland widget system with Rhai scripting (default build: no systray)
-	pkgver = 0.1.0.r81.6e6b663
+	pkgver = 0.1.0.r88.e41e5cd
 	pkgrel = 1
 	url = https://github.com/sickhate/meh2
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = meh2
 	depends = pango
 	options = !debug
 	options = !lto
-	source = meh2-0.1.0.r81.6e6b663.tar.gz::https://github.com/sickhate/meh2/archive/6e6b6634a47c442703dc758d700d089d8611a525.tar.gz
-	sha256sums = be32e3ca0186f23d44ab1db0446f13acf17d694747b1a6e531142601405dff7b
+	source = meh2-0.1.0.r88.e41e5cd.tar.gz::https://github.com/sickhate/meh2/archive/e41e5cdb3f3cc1b7a884b8401d254fdd64ceb862.tar.gz
+	sha256sums = b877767d4caf6ec63f4b30fdc67ab2e59060a262dab9887ddc1e58b3fe5cffa8
 
 pkgname = meh2
