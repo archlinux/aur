@@ -6,7 +6,7 @@
 
 _pkgbase=sway
 pkgname=sway-hidecursor-leftbar
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
@@ -26,7 +26,7 @@ depends=(
   'pango'
   'pcre2'
   'ttf-font'
-  'wlroots0.19'
+  'wlroots0.20'
   'xcb-util-wm'
 )
 makedepends=(git meson ninja scdoc wayland-protocols)
@@ -59,7 +59,7 @@ source=("git+https://github.com/swaywm/sway.git#tag=$pkgver?signed"
         "hidecursor.patch"
         "leftbar.patch")
 install=sway.install
-sha512sums=('29e1eb9c4c5176c9e0ad10c27199f98b7356850090efbb85655c6f1569cce7173016b5a0482afc714e63a9da6cbf715652950b978a9e9363805e07ccb35d3f27'
+sha512sums=('03a71801d2345d98e8b7618356a8fb1259b7f5a3d98b22d4d97d7b5a8724e696a0596b311e4792772618296baa8e95cd6db5d4650b61fc3fb6d07e59e5ebbb57'
             'd5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e'
             '4f9576b7218aef8152eb60e646985e96b13540b7a4fd34ba68fdc490199cf7a7b46bbee85587e41bffe81fc730222cf408d5712e6251edc85a0a0b0408c1a2df'
             'c3a450d3411b5ec6d4bcb485744213a49ee95698d3237804a7bf93258e091753de4666a2245ffe74129151749ec296be4d7741814380133b673f3fd2ec71932b'
