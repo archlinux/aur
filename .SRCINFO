@@ -1,7 +1,7 @@
 pkgbase = psysonic-bin
 	pkgdesc = Desktop music player for Subsonic API-compatible servers (pre-built binary)
 	pkgver = 1.47.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Psychotoxical/psysonic
 	arch = x86_64
 	license = GPL-3.0-only

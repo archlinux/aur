@@ -1,7 +1,7 @@
 # Maintainer: itlxrd <ilyakm@icloud.com>
 pkgname=psysonic-bin
 pkgver=1.47.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop music player for Subsonic API-compatible servers (pre-built binary)"
 arch=('x86_64')
 url="https://github.com/Psychotoxical/psysonic"
