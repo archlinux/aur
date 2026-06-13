@@ -1,6 +1,6 @@
 # Maintainer: Ludovico Massaccesi <lmassach at gmail dot com>
 pkgname=cosmic-ext-connected-git
-pkgver=0.2.0.r2.g6ed71ef
+pkgver=0.5.2.r5.ge18b9f9
 pkgrel=1
 pkgdesc="Cosmic extension for KDEConnect support"
 arch=('x86_64')
@@ -14,10 +14,8 @@ makedepends=('git' 'rust' 'cmake' 'just' 'sed') # 'typescript' 'findutils'
 optdepends=()
 provides=()
 conflicts=()
-source=('git+https://github.com/nwxnw/cosmic-ext-connected.git#branch=main'
-        '00_iced_runtime.patch')
-sha256sums=('SKIP'
-            'facfda21e0030c7231f169d4aad209de0a444ee9b4369a6443d5ad1fe6fd7dac')
+source=('git+https://github.com/nwxnw/cosmic-ext-connected.git#branch=main')
+sha256sums=('SKIP')
 
 pkgver() {
   cd cosmic-ext-connected
@@ -26,7 +24,6 @@ pkgver() {
 
 prepare() {
   cd cosmic-ext-connected
-  patch -Np1 -i ../00_iced_runtime.patch
 }
 
 build() {

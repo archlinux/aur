@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-connected-git
 	pkgdesc = Cosmic extension for KDEConnect support
-	pkgver = 0.2.0.r2.g6ed71ef
+	pkgver = 0.5.2.r5.ge18b9f9
 	pkgrel = 1
 	url = https://github.com/nwxnw/cosmic-ext-connected
 	arch = x86_64
@@ -15,8 +15,6 @@ pkgbase = cosmic-ext-connected-git
 	depends = gtk3
 	depends = openssl
 	source = git+https://github.com/nwxnw/cosmic-ext-connected.git#branch=main
-	source = 00_iced_runtime.patch
 	sha256sums = SKIP
-	sha256sums = facfda21e0030c7231f169d4aad209de0a444ee9b4369a6443d5ad1fe6fd7dac
 
 pkgname = cosmic-ext-connected-git
