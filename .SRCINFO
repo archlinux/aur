@@ -1,7 +1,7 @@
 pkgbase = stable-diffusion.cpp-ggml
 	pkgdesc = Diffusion model(SD,Flux,Wan,...) inference in pure C/C++ (use system ggml)
-	pkgver = 0.0.0.685
-	pkgrel = 2
+	pkgver = 0.0.0.692
+	pkgrel = 1
 	url = https://github.com/leejet/stable-diffusion.cpp
 	arch = x86_64
 	arch = aarch64
@@ -25,9 +25,9 @@ pkgbase = stable-diffusion.cpp-ggml
 	conflicts = stable-diffusion.cpp
 	options = lto
 	options = !debug
-	source = stable-diffusion.cpp-master-685-19bdfe2.tar.gz::https://github.com/leejet/stable-diffusion.cpp/archive/refs/tags/master-685-19bdfe2.tar.gz
+	source = stable-diffusion.cpp-master-692-9b0fceb.tar.gz::https://github.com/leejet/stable-diffusion.cpp/archive/refs/tags/master-692-9b0fceb.tar.gz
 	source = sdcpp-webui-797ccf80825cc035508ba9b599b2a21953e7f835.tar.gz::https://github.com/leejet/sdcpp-webui/archive/797ccf80825cc035508ba9b599b2a21953e7f835.tar.gz
-	sha256sums = ea507d48eb3e1f88aab691e408438c4d9df5e229167d6726ee16b4b7e15b804d
+	sha256sums = ce8ba0c5ce4c4499541b0998361ec619c0aeb540d818e86e5e99401e22ab2400
 	sha256sums = a053b9b606a44bc07e555e23d04fc5e834b78cb267d3e0fdf640ff66f131e8c9
 
 pkgname = stable-diffusion.cpp-ggml
