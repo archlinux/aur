@@ -1,6 +1,6 @@
 pkgbase = fastflowlm-gtk
 	pkgdesc = A minimalist, modern desktop interface for FastFlowLM, built with GTK 4 and Libadwaita.
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/marleylinux/FastFlowLM-gtk
 	install = fastflowlm-gtk.install
@@ -15,7 +15,7 @@ pkgbase = fastflowlm-gtk
 	depends = python-psutil
 	depends = fastflowlm
 	depends = xrt-plugin-amdxdna
-	source = fastflowlm-gtk-2.5.1.tar.gz::https://github.com/marleylinux/FastFlowLM-gtk/archive/refs/tags/v2.5.1.tar.gz
+	source = fastflowlm-gtk-2.5.2.tar.gz::https://github.com/marleylinux/FastFlowLM-gtk/archive/refs/tags/v2.5.2.tar.gz
 	sha256sums = a01774677cfa0283ffd55a2174fb45d3a9b6bad18a777b88d329c4cae830e365
 
 pkgname = fastflowlm-gtk
