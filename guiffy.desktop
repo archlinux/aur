@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Guiffy
+Type=Application
+Exec=/opt/guiffy/guiffy
+Icon=/usr/share/icons/hicolor/32x32/apps/guiffy.png
+Categories=Development
