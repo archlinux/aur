@@ -1,6 +1,6 @@
 pkgbase = ewwii
 	pkgdesc = Eww fork with focus on extensibility, flexibility, and power.
-	pkgver = 0.8.3
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/Ewwii-sh/ewwii
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ewwii
 	provides = ewwii
 	conflicts = ewwii-bin
 	conflicts = ewwii-git
-	source = https://github.com/Ewwii-sh/ewwii/archive/refs/tags/v0.8.3.tar.gz
-	sha256sums = 9c612b24618e4d9b7c1d963a4a3dcf66c069f581291b3a3a421d3cf07030539a
+	source = https://github.com/Ewwii-sh/ewwii/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = a1c3d21c2824bf2c1eb13232f0932f6c0242dbca2236bdbef8420f9575ca5764
 
 pkgname = ewwii
