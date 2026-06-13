@@ -53,3 +53,28 @@ package() {
   mkdir -p "$pkgdir/usr/lib/chromium/"
   cp -r "$srcdir/chrome_extract/opt/google/chrome/WidevineCdm" "$pkgdir/usr/lib/chromium/"
 }
+
+check() {
+  local widevine_dir="$srcdir/chrome_extract/opt/google/chrome/WidevineCdm"
+  local widevine_so="$widevine_dir/_platform_specific/linux_x64/libwidevinecdm.so"
+  local manifest="$widevine_dir/manifest.json"
+
+  echo "Checking Widevine files exist..."
+  if [[ ! -f "$widevine_so" ]]; then
+    echo "ERROR: libwidevinecdm.so not found!"
+    return 1
+  fi
+  if [[ ! -f "$manifest" ]]; then
+    echo "ERROR: manifest.json not found!"
+    return 1
+  fi
+
+  echo "Checking system dependencies for libwidevinecdm.so..."
+  if ldd "$widevine_so" 2>/dev/null | grep -q "not found"; then
+    echo "ERROR: Missing dependencies for Widevine!"
+    ldd "$widevine_so" 2>/dev/null | grep "not found"
+    return 1
+  fi
+
+  echo "Widevine sanity checks passed."
+}
