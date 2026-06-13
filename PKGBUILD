@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=ensu-bin
 _pkgname=ensu
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="Ente's local LLM app - private, offline AI chat (Tauri)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
   'gtk3'
 )
 source=("${_pkgname}_${pkgver}_amd64.deb::${_url}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('4f81d04c028f9b8d58ac375e5ddd0107e56584285071c237b2c311215ef330ca')
+sha256sums=('013527161bbcb1477d5ca954a1583947f2cc21e0f3ad78cb65bd9e04d7d45e85')
 
 package() {
   bsdtar -xf data.tar.gz -C "${pkgdir}/"
