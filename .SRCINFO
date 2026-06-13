@@ -1,0 +1,13 @@
+pkgbase = fbstatus-cli
+	pkgdesc = This is a terminal tool to interact and display the Core Flowbased status page at https://status.coreflowbased.eu/
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/AmunAnalytics/flowbased-status-cli
+	arch = x86_64
+	license = GPLv3.0
+	options = !strip
+	options = !debug
+	source = fbstatus-cli-1.1.zip::https://github.com/AmunAnalytics/flowbased-status-cli/releases/download/V1.1/fbstatus-V1.1-linux.zip
+	sha256sums = d32060a2c99eacd6ac6800a0150004f755934f13c02ca0b0aa1218d5e91f4bc0
+
+pkgname = fbstatus-cli
