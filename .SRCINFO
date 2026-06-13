@@ -1,0 +1,27 @@
+pkgbase = bforartists-bin
+	pkgdesc = A fork of the popular 3D software Blender, with a focus on UI/UX improvements (Pre-compiled Binary)
+	pkgver = 5.1.2
+	pkgrel = 1
+	url = https://www.bforartists.de/
+	arch = x86_64
+	license = GPL3
+	depends = libx11
+	depends = libxi
+	depends = libxxf86vm
+	depends = libxrender
+	depends = libgl
+	depends = openal
+	depends = libsndfile
+	depends = zlib
+	depends = ffmpeg
+	depends = libxkbcommon
+	depends = wayland
+	optdepends = cuda: Support fast render by GPU NVIDIA CUDA
+	optdepends = optix: Support fast ray tracing render by NVIDIA OptiX
+	provides = bforartists
+	conflicts = bforartists
+	options = !strip
+	source = https://github.com/Bforartists/Bforartists/releases/download/v5.1.2/Bforartists-5.1.2-Linux.tar.xz
+	sha256sums = 86609a252610ec1959fa5fde2b6b2def848cee9805ca325c2c63cc13e82c106d
+
+pkgname = bforartists-bin
