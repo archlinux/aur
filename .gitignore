@@ -1,2 +1,10 @@
 build.sh
+node_modules/
 src/
+state.json
+playlist/
+package/melody-player-*.pkg.tar.zst
+package/melody-player-*.tar.gz
+package/pkg/
+dist/
+package/src/
