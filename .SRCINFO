@@ -1,13 +1,13 @@
 pkgbase = smithery-cli
 	pkgdesc = Registry installer and manager for Model Context Protocol (MCP) servers
-	pkgver = 4.11.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://smithery.ai/
 	arch = any
 	license = AGPL-3.0-or-later
 	makedepends = pnpm
 	depends = nodejs>=20
-	source = smithery-cli-4.11.1.tar.gz::https://github.com/smithery-ai/cli/archive/refs/tags/v4.11.1.tar.gz
-	sha256sums = 4fad3e5d4c222c61081085ef73c6498f6729c4adf8287b3416120ea9b57d6b1f
+	source = smithery-cli-1.2.0.tar.gz::https://github.com/smithery-ai/cli/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 3fd343d142da238a061f52c2e012b07b8c87d32a2eb9d1dce7beac39d3d20adb
 
 pkgname = smithery-cli

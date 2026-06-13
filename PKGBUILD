@@ -1,6 +1,6 @@
 # Maintainer: Nihal Kumar <2tv8xupqg at mozmail dot com>
 pkgname=smithery-cli
-pkgver=4.11.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Registry installer and manager for Model Context Protocol (MCP) servers"
 arch=('any')
@@ -9,7 +9,7 @@ license=('AGPL-3.0-or-later')
 depends=('nodejs>=20')
 makedepends=('pnpm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/smithery-ai/cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4fad3e5d4c222c61081085ef73c6498f6729c4adf8287b3416120ea9b57d6b1f')
+sha256sums=('3fd343d142da238a061f52c2e012b07b8c87d32a2eb9d1dce7beac39d3d20adb')
 
 build() {
   cd "$srcdir/cli-$pkgver"
