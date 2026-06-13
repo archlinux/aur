@@ -2,7 +2,7 @@
 
 pkgname=libsodium-1.0.18
 pkgver=1.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, portable, easy to use crypto library for libsodium.so.23"
 arch=('i686' 'x86_64')
 url="https://libsodium.org/"
