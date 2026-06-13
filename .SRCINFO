@@ -1,0 +1,12 @@
+pkgbase = clipboard-sanitizer-git
+	pkgdesc = Clipboard monitor that strips tracking parameters from URLs
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/3ventic/clipboard-sanitizer
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = rust
+	source = git+https://github.com/3ventic/clipboard-sanitizer.git#branch=main
+	sha512sums = SKIP
+
+pkgname = clipboard-sanitizer-git
