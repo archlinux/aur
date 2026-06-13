@@ -1,15 +1,17 @@
 # Maintainer: nicknb <nicknb at posteo dot com>
-_projectname=exdupe
-pkgname=$_projectname-bin
-pkgver=3.0.1
-pkgrel=2
+_name=exdupe
+pkgname=$_name-bin
+pkgver=4.0.0
+pkgrel=1
 arch=("x86_64")
 pkgdesc="Fast file archiver that supports data deduplication and differential backups"
-url="https://github.com/rrrlasse/$_projectname"
+url="https://github.com/rrrlasse/$_name"
 license=("GPL-2.0-or-later")
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/${_projectname}_${pkgver}_linux_amd64.tar.gz")
-b2sums=('6e2ac6b3a9e5364268cdd3462e20011d15db4384974abcea18bbac0cc0c59be78c28b11e6e934efcbbf848b067e75aa80fd00aa7311e66334ae71fb3f88f3429')
+source=("$_name::$url/releases/download/v${pkgver}/${_name}_${pkgver}_linux_amd64")
+noextract=("$_name")
+sha256sums=("54fe20712daaed7047d2a84b03ec1308d70da78c2dafe24a8e1e4a1846b6d2d4")
+options=("!strip")
 
 package() {
-    install -Dm 0755 exdupe "$pkgdir/usr/bin/exdupe"
+    install -Dm 0755 $_name "$pkgdir/usr/bin/$_name"
 }
