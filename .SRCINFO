@@ -1,6 +1,6 @@
 pkgbase = ryzenadj-gtk
 	pkgdesc = A modern, polished GTK4/Libadwaita graphical wrapper for ryzenadj (AMD power management adjustment tool).
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/marleylinux/Ryzenadj-gtk
 	install = ryzenadj-gtk.install
@@ -12,7 +12,7 @@ pkgbase = ryzenadj-gtk
 	depends = libadwaita
 	depends = ryzenadj
 	optdepends = ryzen_smu-dkms-git: enhanced hardware monitoring and control
-	source = ryzenadj-gtk-1.8.1.tar.gz::https://github.com/marleylinux/Ryzenadj-gtk/archive/refs/tags/v1.8.1.tar.gz
-	sha256sums = 0ee0e85f69c95bbb5c8317775cc16da45f822cfbc3f9d1da6bc9fc237d9eca92
+	source = ryzenadj-gtk-1.8.2.tar.gz::https://github.com/marleylinux/Ryzenadj-gtk/archive/refs/tags/v1.8.2.tar.gz
+	sha256sums = 7003c4873d21869c0eaf675c0ef757632c6b57bc10322482d8167766acb5b8e0
 
 pkgname = ryzenadj-gtk
