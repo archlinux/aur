@@ -1,6 +1,6 @@
 pkgbase = tmux-sessionizer-bin
 	pkgdesc = A tool for opening git repositories as tmux sessions
-	pkgver = 0.5.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/jrmoulton/tmux-sessionizer
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tmux-sessionizer-bin
 	depends = tmux
 	provides = tmux-sessionizer
 	conflicts = tmux-sessionizer
-	source = tmux-sessionizer-bin-0.5.0.tar.gz::https://github.com/jrmoulton/tmux-sessionizer/releases/download/v0.5.0/tmux-sessionizer-x86_64-unknown-linux-gnu.tar.xz
-	b2sums = 647699c2369f2e739eda610e41013da0b87af9421f8393d7982e630efc2094a0910ca4e33c491af49b116171e18ae5b20d2a2caa76c2eb5349de64bdb427cabd
+	source = tmux-sessionizer-bin-0.6.1.tar.gz::https://github.com/jrmoulton/tmux-sessionizer/releases/download/v0.6.1/tmux-sessionizer-x86_64-unknown-linux-gnu.tar.xz
+	b2sums = ed11b0e159d70a55ce1dfb67177facbcdf253e2015b0f4ab903c9ab3f56b2088fac3227c1cc560a932333e001b10e1b7732adb4dcabd68a01e17ba918bb64be7
 
 pkgname = tmux-sessionizer-bin
