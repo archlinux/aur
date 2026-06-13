@@ -1,6 +1,6 @@
 pkgbase = officecli
 	pkgdesc = The first and best Office suite designed for AI agents
-	pkgver = 1.0.111
+	pkgver = 1.0.112
 	pkgrel = 1
 	url = https://github.com/iOfficeAI/OfficeCLI
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = officecli
 	options = !strip
 	options = !debug
 	options = !lto
-	source = officecli::git+https://github.com/iOfficeAI/OfficeCLI.git#tag=v1.0.111
-	sha256sums = ec4936fada7bab87be3f7d167b7453eaed65382792f8e77b5c696ffcb1551418
+	source = officecli::git+https://github.com/iOfficeAI/OfficeCLI.git#tag=v1.0.112
+	sha256sums = 01c355cff9d77fd84140981ff4ce864e9aedce73cac4e0fbec75218a5cea617a
 
 pkgname = officecli
