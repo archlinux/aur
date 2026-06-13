@@ -1,7 +1,7 @@
 # Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=fetch-gtk
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, polished GTK4/Libadwaita graphical interface similar to fastfetch."
 arch=('any')
 url="https://github.com/marleylinux/fetch-gtk"
@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/marleylinux/fetch-gtk/archi
 sha256sums=('816660f6824ab55b073ca771077757da7f00d005defadbc6dd928009983e09d7')
 
 package() {
-  cd "$srcdir/fetch-gtk-"*
+  cd "$srcdir/$pkgname-$pkgver"
 
   # copy our python code files to the system share folder
   install -d "$pkgdir/usr/share/fetch-gtk"

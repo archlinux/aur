@@ -1,7 +1,7 @@
 pkgbase = fetch-gtk
 	pkgdesc = A modern, polished GTK4/Libadwaita graphical interface similar to fastfetch.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marleylinux/fetch-gtk
 	arch = any
 	license = GPL-3.0-only
