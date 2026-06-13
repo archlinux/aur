@@ -1,10 +1,8 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+#Maintainer: atvknox <atvknox at gmail dot com>
+#Ex-Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='2.4.0'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
+_upstreamver='2.4.2'
 _pypi_package='fts-tool'
-
 
 pkgname="${_pypi_package%%-tool}"
 pkgver="${_upstreamver}"
@@ -14,32 +12,33 @@ pkgdesc="A lightweight CLI tool and TUI application for fast local-network file 
 license=('MIT')
 arch=('any')
 
-_url_pypi='https://pypi.org/project/fts-tool/'
 _url_github='https://github.com/Terabase-Studios/fts'
 url="${_url_github}"
 
 provides=("${_pypi_package}")
+# idk if someone would have previously installed 'python-fts' so:
 replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-depends=('python' 'python-textual' 'python-tqdm' 'python-psutil' 'python-cryptography' 'python-filelock' 'python-pycrdt')
 
-# source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+depends=('python' 'python-textual' 'python-tqdm' 'python-psutil' 'python-cryptography' 'python-filelock' 'python-pycrdt' 'python-rich')
+
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b2d3c7f92d2d1012e8b0cf3e805135aa592154ca6ee96aabd1723c5bb1eacb7d')
+sha256sums=('c4b3e831e7bbd41d19434ef19c25aede336b9a21eaacee223be6d5ba6ab8b1c8')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
-
+    local _builddir="${srcdir}/${pkgname}-${pkgver}"
+    cd "$_builddir"
+    
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
+    local _builddir="${srcdir}/${pkgname}-${pkgver}"
+    cd "$_builddir"
 
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

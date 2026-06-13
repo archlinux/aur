@@ -1,6 +1,6 @@
 pkgbase = fts
 	pkgdesc = A lightweight CLI tool and TUI application for fast local-network file transfers and communication
-	pkgver = 2.4.0
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/Terabase-Studios/fts
 	arch = any
@@ -16,10 +16,11 @@ pkgbase = fts
 	depends = python-cryptography
 	depends = python-filelock
 	depends = python-pycrdt
+	depends = python-rich
 	provides = fts-tool
 	conflicts = python-fts
 	replaces = python-fts
-	source = fts-tool-2.4.0.tar.gz::https://github.com/Terabase-Studios/fts/archive/refs/tags/2.4.0.tar.gz
-	sha256sums = b2d3c7f92d2d1012e8b0cf3e805135aa592154ca6ee96aabd1723c5bb1eacb7d
+	source = fts-tool-2.4.2.tar.gz::https://github.com/Terabase-Studios/fts/archive/refs/tags/2.4.2.tar.gz
+	sha256sums = c4b3e831e7bbd41d19434ef19c25aede336b9a21eaacee223be6d5ba6ab8b1c8
 
 pkgname = fts
