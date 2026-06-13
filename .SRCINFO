@@ -1,6 +1,6 @@
 pkgbase = qtile-git
 	pkgdesc = A full-featured, pure-Python tiling window manager
-	pkgver = 0.33.0.r282.gc3d4510
+	pkgver = 0.36.0.r10.ga62caf9
 	pkgrel = 1
 	url = https://github.com/qtile/qtile
 	install = qtile.install
@@ -31,7 +31,7 @@ pkgbase = qtile-git
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
-	makedepends = wlroots0.19
+	makedepends = wlroots0.20
 	makedepends = wayland
 	makedepends = wayland-protocols
 	makedepends = xorg-xwayland
@@ -64,7 +64,7 @@ pkgbase = qtile-git
 	optdepends = python-setproctitle: change process name to qtile
 	optdepends = python-xdg: launchbar widget
 	optdepends = xorg-xwayland: for XWayland support
-	provides = qtile=0.33.0.r282.gc3d4510
+	provides = qtile=0.36.0.r10.ga62caf9
 	conflicts = qtile
 	source = qtile::git+https://github.com/qtile/qtile.git
 	sha256sums = SKIP

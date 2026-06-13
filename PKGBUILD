@@ -7,11 +7,11 @@
 # https://github.com/qtile/qtile
 
 ## options
-: ${_wlrver=0.19}
+: ${_wlrver=0.20}
 
 _pkgname="qtile"
 pkgname="$_pkgname-git"
-pkgver=0.33.0.r282.gc3d4510
+pkgver=0.36.0.r10.ga62caf9
 pkgrel=1
 pkgdesc="A full-featured, pure-Python tiling window manager"
 url="https://github.com/qtile/qtile"
