@@ -1,7 +1,7 @@
 # Maintainer: Kavy-Codes <kavyatiwari.dev@gmail.com>
 pkgname=audion-bin
 _pkgname=audion
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="A modern, local music player with a Spotify-inspired interface featuring synced lyrics (Pre-compiled Binary)"
 arch=('x86_64')
