@@ -27,5 +27,4 @@ package() {
         "$pkgdir/usr/share/applications/$_pkgname.desktop"
     install -Dm644 desktop/build/appicon.png \
         "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
