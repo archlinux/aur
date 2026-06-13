@@ -14,8 +14,8 @@ pkgbase = oxicord-bin
 	provides = oxicord
 	conflicts = oxicord
 	source_x86_64 = oxicord-0.1.9-x86_64::https://github.com/linuxmobile/oxicord/releases/download/v0.1.9/oxicord-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 6d34867a0de22eda904edf196ff7da0162d557a86f1ff2c9503f4b2dd228acaf
+	sha256sums_x86_64 = ce0ab0085a897d08eaf0ce0e71e679e1544b91e227efdd64ac922520699adfd2
 	source_aarch64 = oxicord-0.1.9-aarch64::https://github.com/linuxmobile/oxicord/releases/download/v0.1.9/oxicord-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = ce0ab0085a897d08eaf0ce0e71e679e1544b91e227efdd64ac922520699adfd2
+	sha256sums_aarch64 = 6d34867a0de22eda904edf196ff7da0162d557a86f1ff2c9503f4b2dd228acaf
 
 pkgname = oxicord-bin
