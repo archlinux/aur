@@ -63,114 +63,6 @@ new_tmp_dir() {
     printf '%s\n' "$tmp"
 }
 
-extract_bun_depend() {
-    local package_json_path=$1
-    local requirement
-
-    [[ -f $package_json_path ]] || return 1
-
-    requirement="$(awk -F'"' '
-BEGIN {
-    in_engines = 0
-}
-/^[[:space:]]*"engines"[[:space:]]*:/ {
-    in_engines = 1
-    next
-}
-in_engines && /^[[:space:]]*}/ {
-    in_engines = 0
-}
-in_engines && $2 == "bun" {
-    print $4
-    found = 1
-    exit
-}
-END {
-    exit(found ? 0 : 1)
-}
-' "$package_json_path")" || return 1
-
-    case "$requirement" in
-        \>\=[0-9]*)
-            ;;
-        *)
-            return 1
-            ;;
-    esac
-
-    if [[ $requirement == *[[:space:]]* ]]; then
-        return 1
-    fi
-
-    printf 'bun%s\n' "$requirement"
-}
-
-current_bun_makedepend() {
-    awk '
-/^makedepends=\(/ {
-    line = $0
-    sub(/^makedepends=\(/, "", line)
-    sub(/\)[[:space:]]*$/, "", line)
-
-    count = split(line, deps, /[[:space:]]+/)
-    for (i = 1; i <= count; i++) {
-        dep = deps[i]
-        gsub(/\047/, "", dep)
-        if (dep ~ /^bun($|[<>=])/) {
-            print dep
-            found = 1
-            exit
-        }
-    }
-}
-END {
-    exit(found ? 0 : 1)
-}
-' PKGBUILD
-}
-
-update_bun_makedepend() {
-    local bun_dep=$1
-    local pkgbuild_tmp
-
-    pkgbuild_tmp="$(new_tmp)"
-    awk -v bun_dep="$bun_dep" '
-function emit_dependency(dep) {
-    if (dep == "" || dep ~ /^bun($|[<>=])/) {
-        return
-    }
-
-    printf " \047%s\047", dep
-}
-BEGIN {
-    updated = 0
-}
-/^makedepends=\(/ && !updated {
-    line = $0
-    sub(/^makedepends=\(/, "", line)
-    sub(/\)[[:space:]]*$/, "", line)
-
-    printf "makedepends=(\047%s\047", bun_dep
-    count = split(line, deps, /[[:space:]]+/)
-    for (i = 1; i <= count; i++) {
-        dep = deps[i]
-        gsub(/\047/, "", dep)
-        emit_dependency(dep)
-    }
-    print ")"
-
-    updated = 1
-    next
-}
-{
-    print
-}
-END {
-    exit(updated ? 0 : 1)
-}
-' PKGBUILD >"$pkgbuild_tmp" || fail "unable to update bun make dependency in PKGBUILD"
-    cmd mv "$pkgbuild_tmp" PKGBUILD
-}
 
 trap cleanup EXIT
 
@@ -251,18 +143,6 @@ END {
 ' PKGBUILD >"$pkgbuild_tmp"  || fail "unable to update pkgver/pkgrel in PKGBUILD"
 cmd mv "$pkgbuild_tmp" PKGBUILD
 
-cmd makepkg -f -o --noprepare || fail "failed to checkout sources"
-
-package_json_path="src/${pkgname}/packages/coding-agent/package.json"
-
-if bun_dep="$(extract_bun_depend "$package_json_path")"; then
-    msg "minimum bun make dependency: ${bun_dep}"
-else
-    warn "unable to extract bun engine requirement from ${package_json_path}; preserving existing bun makedepend"
-    bun_dep="$(current_bun_makedepend)" || bun_dep='bun'
-fi
-
-update_bun_makedepend "$bun_dep"
 
 cmd makepkg || fail "makepkg failed"
 cmd makepkg --printsrcinfo >.SRCINFO  || fail "failed to regenerate .SRCINFO"
