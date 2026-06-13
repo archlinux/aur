@@ -2,7 +2,7 @@
 # Maintainer: lazynop
 
 pkgname='lazyenv-bin'
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='TUI for managing .env files'
 url='https://lazynop.github.io/lazyenv/'
@@ -12,13 +12,13 @@ provides=('lazyenv')
 conflicts=('lazyenv')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/lazynop/lazyenv/releases/download/v${pkgver}/lazyenv_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('9dfc5f2706fdfd364b857ad661b6e7134ecb51e9ec25aceb772df4344634e7be')
+sha256sums_aarch64=('4a85eec015317702bc6d3d5ed860f9b01c2c490f67b556a76abc4a62badfb0f2')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/lazynop/lazyenv/releases/download/v${pkgver}/lazyenv_${pkgver}_linux_arm.tar.gz")
-sha256sums_armv7h=('b671ed2d386e229f81b9dadd47b2b5bd538a6fe860ee1e0fcddc9d1c532691aa')
+sha256sums_armv7h=('36a7f0849bf6b5452b057db97229eb8f9487b6e7804a6a42e11d2d7b0f93268e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/lazynop/lazyenv/releases/download/v${pkgver}/lazyenv_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('72884ed044f84b7ecfbb12abe25339e8e464a865a4675c8c9a4a632da18dc1c9')
+sha256sums_x86_64=('d94c5c13f8f3f686911c77e23f8afcf2f4c136fbf1285c95c8b4c22f24ef8fb8')
 
 package() {
   install -Dm755 "./lazyenv" "${pkgdir}/usr/bin/lazyenv"
