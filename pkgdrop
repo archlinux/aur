@@ -878,41 +878,103 @@ find_icon() {
     local dir="$1"
     local name="$2"
     local icon=""
-    icon=$(find "$dir" -maxdepth 4 -type f \( -name "${name}.png" -o -name "${name}.svg" \) 2>/dev/null | head -1)
-    [[ -z "$icon" ]] && icon=$(find "$dir" -maxdepth 4 -type f \( -name "logo.png" -o -name "logo.svg" -o -name "icon.png" -o -name "icon.svg" -o -name "app.png" -o -name "app.svg" \) 2>/dev/null | head -1)
-    [[ -z "$icon" ]] && icon=$(find "$dir" -maxdepth 4 -type f -name "*.png" ! -path "*/changelog*" ! -path "*/README*" ! -path "*/LICENSE*" 2>/dev/null | head -1)
-    [[ -z "$icon" ]] && icon=$(find "$dir" -maxdepth 4 -type f -name "*.svg" 2>/dev/null | head -1)
+    icon=$(find "$dir" -maxdepth 8 -type f \( -name "${name}.png" -o -name "${name}.svg" \) 2>/dev/null | head -1)
+    [[ -z "$icon" ]] && icon=$(find "$dir" -maxdepth 8 -type f \( -name "logo.png" -o -name "logo.svg" -o -name "icon.png" -o -name "icon.svg" -o -name "app.png" -o -name "app.svg" \) 2>/dev/null | head -1)
+    [[ -z "$icon" ]] && icon=$(find "$dir" -maxdepth 8 -type f -name "*.png" ! -path "*/changelog*" ! -path "*/README*" ! -path "*/LICENSE*" ! -path "*/tray_*" 2>/dev/null | head -1)
+    [[ -z "$icon" ]] && icon=$(find "$dir" -maxdepth 8 -type f -name "*.svg" 2>/dev/null | head -1)
     echo "$icon"
 }
 
-detect_category_from_archive() {
+resolve_icon() {
+    local dir="$1"
+    local raw_icon="$2"
+
+    [[ -z "$raw_icon" ]] && return 1
+
+    local base="${raw_icon%.png}"
+    base="${base%.svg}"
+    base="${base##*/}"
+
+    local desktop_dir
+    desktop_dir=$(dirname "$(find "$dir" -maxdepth 3 -name "*.desktop" -type f 2>/dev/null | head -1)")
+
+    local candidate
+    for candidate in "$raw_icon" "${base}.png" "${base}.svg" "${base}.ico"; do
+        [[ -f "$dir/$candidate" ]] && echo "$(realpath "$dir/$candidate")" && return 0
+        [[ -n "$desktop_dir" ]] && [[ -f "$desktop_dir/$candidate" ]] && echo "$(realpath "$desktop_dir/$candidate")" && return 0
+    done
+
+    local found
+    found=$(find "$dir" -maxdepth 8 -type f \( -name "${base}.png" -o -name "${base}.svg" \) 2>/dev/null | head -1)
+    [[ -n "$found" ]] && echo "$(realpath "$found")" && return 0
+
+    return 1
+}
+
+read_desktop_metadata() {
     local dir="$1"
     local desktop_file
-    desktop_file=$(find "$dir" -maxdepth 3 -name "*.desktop" -type f ! -path "*/share/doc/*" ! -path "*/README*" 2>/dev/null | head -1)
-    
+    desktop_file=$(find "$dir" -maxdepth 3 -name "*.desktop" \( -type f -o -type l \) ! -path "*/share/doc/*" ! -path "*/README*" 2>/dev/null | head -1)
+
+    local icon_path=""
+    local icon_name=""
+    local category="Utility"
+
     if [[ -n "$desktop_file" ]] && [[ -f "$desktop_file" ]]; then
-        local categories
-        categories=$(grep -E "^Categories=" "$desktop_file" 2>/dev/null | head -1 | sed 's/^Categories=//' | sed 's/;$//')
-        if [[ -n "$categories" ]]; then
-            categories="${categories%%;*}"
-            verb "Detected category from .desktop: $categories"
-            echo "$categories"
-            return 0
-        fi
-        local mimetype
-        mimetype=$(grep -E "^MimeType=" "$desktop_file" 2>/dev/null | head -1 | sed 's/^MimeType=//')
-        if [[ "$mimetype" == *"text/html"* ]] || [[ "$mimetype" == *"x-scheme-handler/http"* ]]; then
-            verb "Detected browser from MimeType"
-            echo "Network"
-            return 0
+        local raw_icon
+        raw_icon=$(grep -E "^Icon=" "$desktop_file" 2>/dev/null | head -1 | sed 's/^Icon=//')
+        icon_name="${raw_icon##*/}"
+        icon_name="${icon_name%.png}"
+        icon_name="${icon_name%.svg}"
+
+        icon_path=$(resolve_icon "$dir" "$raw_icon") || true
+
+        local cats
+        cats=$(grep -E "^Categories=" "$desktop_file" 2>/dev/null | head -1 | sed 's/^Categories=//' | sed 's/;$//')
+        if [[ -n "$cats" ]]; then
+            category="${cats%%;*}"
+        else
+            local mimetype
+            mimetype=$(grep -E "^MimeType=" "$desktop_file" 2>/dev/null | head -1 | sed 's/^MimeType=//')
+            if [[ "$mimetype" == *"text/html"* ]] || [[ "$mimetype" == *"x-scheme-handler/http"* ]]; then
+                category="Network"
+            fi
         fi
     fi
-    echo "Utility"
+
+    echo "$icon_path|$icon_name|$category"
+}
+
+install_icon() {
+    local icon_path="$1"
+    local icon_name="$2"
+    local fallback_name="$3"
+
+    [[ -z "$icon_path" ]] || [[ ! -f "$icon_path" ]] && return 1
+
+    local ext="${icon_path##*.}"
+    local use_name="${icon_name:-$fallback_name}"
+    local target="$HOME/.local/share/icons/hicolor/128x128/apps/${use_name}.${ext}"
+
+    mkdir -p "$(dirname "$target")"
+
+    if [[ "$(realpath "$icon_path" 2>/dev/null)" != "$(realpath "$target" 2>/dev/null)" ]]; then
+        cp "$icon_path" "$target" 2>/dev/null || return 1
+    fi
+
+    local safe_dir="$HOME/.local/share/pkgdrop/icons"
+    mkdir -p "$safe_dir"
+    if [[ "$(realpath "$icon_path" 2>/dev/null)" != "$(realpath "$safe_dir/${use_name}.${ext}" 2>/dev/null)" ]]; then
+        cp "$icon_path" "$safe_dir/${use_name}.${ext}" 2>/dev/null || true
+    fi
+
+    verb "Installed icon: $target"
+    echo "$target|$use_name"
 }
 
 humanize_name() {
     local name="$1"
-    name=$(echo "$name" | sed -E 's/[-_]?[0-9]+(\.[0-9]+)*([-_](x86_64|i686|i386|aarch64|armv7hl|amd64|linux|macos|win(dows)?))?$//gi')
+    name=$(echo "$name" | sed -E 's/[-_]v?[0-9]+(\.[0-9]+)*([-_](x86_64|i686|i386|aarch64|armv7hl|amd64|linux|macos|win(dows)?))?$//gi')
     name=$(echo "$name" | sed 's/[-_.]/ /g' | sed 's/\b\(.\)/\u\1/g' | sed 's/  */ /g' | sed 's/^ //;s/ $//')
     [[ -z "$name" ]] && name="$1"
     echo "$name"
@@ -921,23 +983,14 @@ humanize_name() {
 create_desktop_entry() {
     local name="$1"
     local bin="$2"
-    local icon="$3"
+    local icon_label="$3"
     local category="${4:-Utility}"
-    local custom_icon_name="${5:-}"
 
     local desktop_dir="$HOME/.local/share/applications"
     mkdir -p "$desktop_dir"
 
     local desktop_file="$desktop_dir/pkgdrop-${name}.desktop"
-    local icon_label="${custom_icon_name:-pkgdrop-${name}}"
-
-    if [[ -n "$icon" ]] && [[ -f "$icon" ]]; then
-        local ext="${icon##*.}"
-        local icon_dir="$HOME/.local/share/icons/hicolor/128x128/apps"
-        mkdir -p "$icon_dir"
-        cp "$icon" "$icon_dir/${icon_label}.${ext}"
-        verb "Installed icon: $icon_dir/${icon_label}.${ext}"
-    fi
+    [[ -z "$icon_label" ]] && icon_label="pkgdrop-${name}"
 
     local display_name
     display_name=$(humanize_name "$name")
@@ -971,6 +1024,14 @@ cleanup_desktop() {
     rm -f "$HOME/.local/share/icons/hicolor/128x128/apps/pkgdrop-${name}.png"
     rm -f "$HOME/.local/share/icons/hicolor/128x128/apps/pkgdrop-${name}.svg"
     rm -f "$HOME/.local/share/icons/hicolor/scalable/apps/pkgdrop-${name}.svg"
+    rm -f "$HOME/.local/share/pkgdrop/icons/${name}.png"
+    rm -f "$HOME/.local/share/pkgdrop/icons/${name}.svg"
+    local safe_name="${name// /-}"
+    if [[ "$safe_name" != "$name" ]]; then
+        rm -f "$HOME/.local/share/icons/hicolor/128x128/apps/pkgdrop-${safe_name}.png"
+        rm -f "$HOME/.local/share/icons/hicolor/128x128/apps/pkgdrop-${safe_name}.svg"
+        rm -f "$HOME/.local/share/icons/hicolor/scalable/apps/pkgdrop-${safe_name}.svg"
+    fi
 }
 
 # --- Atomic Install Helpers ---
@@ -1141,16 +1202,33 @@ install_tarportable() {
         warn "No binary found. Files installed to: $target"
     fi
 
-    local icon
-    icon=$(find_icon "$target" "$name")
-    [[ -n "$icon" ]] && verb "Found icon: $icon"
+    local meta
+    meta=$(read_desktop_metadata "$target")
+    local icon_path="${meta%%|*}"
+    local rest="${meta#*|}"
+    local icon_label="${rest%%|*}"
+    local category="${rest#*|}"
 
-    local category
-    category=$(detect_category_from_archive "$target")
+    local final_icon_name=""
+    local installed_icon=""
+    if [[ -n "$icon_path" ]]; then
+        installed_icon=$(install_icon "$icon_path" "$icon_label" "$name") || true
+    fi
+    if [[ -z "$installed_icon" ]]; then
+        local fallback_icon
+        fallback_icon=$(find_icon "$target" "$name")
+        [[ -n "$fallback_icon" ]] && installed_icon=$(install_icon "$fallback_icon" "" "$name") || true
+    fi
+    if [[ -n "$installed_icon" ]]; then
+        final_icon_name="${installed_icon#*|}"
+        installed_icon="${installed_icon%%|*}"
+        verb "Installed icon: $installed_icon"
+    fi
+
     verb "Using category: $category"
 
     verb "Creating desktop entry..."
-    create_desktop_entry "$name" "$HOME/.local/bin/$name" "$icon" "$category"
+    create_desktop_entry "$name" "$HOME/.local/bin/$name" "${final_icon_name:-pkgdrop-${name}}" "$category"
     refresh_desktop
 
     local file_list=""
@@ -1250,41 +1328,34 @@ install_appimage() {
     fi
     mv "$stage_file" "$HOME/.local/bin/$name" || fail "Failed to commit AppImage"
 
-    local icon=""
-    local icon_name=""
+    local final_icon_name=""
     local category="Utility"
     local tmpdir
     tmpdir=$(mktemp -d)
     cd "$tmpdir"
     "$file" --appimage-extract >/dev/null 2>&1 || true
     if [[ -d squashfs-root ]]; then
-        local desktop_file
-        desktop_file=$(find squashfs-root -maxdepth 4 -name "*.desktop" -type f 2>/dev/null | head -1)
-        if [[ -n "$desktop_file" ]] && [[ -f "$desktop_file" ]]; then
-            category=$(detect_category_from_archive "squashfs-root")
-            icon_name=$(grep -E "^Icon=" "$desktop_file" 2>/dev/null | head -1 | sed 's/^Icon=//' | sed 's/\.png$//' | sed 's/\.svg$//')
-        fi
-        local icon_path=""
-        icon_path=$(find squashfs-root -path "*/icons/*" -name "*.png" -type f 2>/dev/null | sort -V | tail -1)
-        [[ -z "$icon_path" ]] && icon_path=$(find squashfs-root -path "*/icons/*" -name "*.svg" -type f 2>/dev/null | head -1)
-        [[ -z "$icon_path" ]] && icon_path=$(find squashfs-root -path "*/pixmaps/*" -name "*.png" -type f 2>/dev/null | head -1)
-        if [[ -n "$icon_path" ]]; then
-            local safe_icon="$HOME/.local/share/pkgdrop/icons"
-            mkdir -p "$safe_icon"
-            local ext="${icon_path##*.}"
-            local use_name="${icon_name:-$name}"
-            cp "$icon_path" "$safe_icon/${use_name}.${ext}"
-            icon="$safe_icon/${use_name}.${ext}"
-            local hicolor_dir="$HOME/.local/share/icons/hicolor/128x128/apps"
-            mkdir -p "$hicolor_dir"
-            cp "$icon_path" "$hicolor_dir/${use_name}.${ext}"
-            icon_name="$use_name"
+        local meta
+        meta=$(read_desktop_metadata "squashfs-root")
+        local raw_icon_path="${meta%%|*}"
+        local rest="${meta#*|}"
+        local icon_name="${rest%%|*}"
+        category="${rest#*|}"
+
+        if [[ -n "$raw_icon_path" ]]; then
+            local installed_icon
+            installed_icon=$(install_icon "$raw_icon_path" "$icon_name" "$name") || true
+            if [[ -n "$installed_icon" ]]; then
+                final_icon_name="${installed_icon#*|}"
+                installed_icon="${installed_icon%%|*}"
+                verb "Installed icon: $installed_icon"
+            fi
         fi
         rm -rf squashfs-root
     fi
     cd /tmp && rm -rf "$tmpdir"
 
-    create_desktop_entry "$name" "$HOME/.local/bin/$name" "$icon" "$category" "$icon_name"
+    create_desktop_entry "$name" "$HOME/.local/bin/$name" "${final_icon_name:-pkgdrop-${name}}" "$category"
     refresh_desktop
 
     registry_add "$name" "$candidate_ver" "appimage" "$HOME/.local/bin/$name"
