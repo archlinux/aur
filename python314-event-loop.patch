@@ -1,0 +1,12 @@
+--- a/pytest_asyncio_concurrent/plugin.py
++++ b/pytest_asyncio_concurrent/plugin.py
+@@ -211,7 +211,8 @@
+         )
+ 
+     item_passed_setup: List[AsyncioConcurrentGroupMember] = []
+-    loop = asyncio.get_event_loop()
++    loop = asyncio.new_event_loop()
++    asyncio.set_event_loop(loop)
+ 
+     for childFunc in group.children:
+         childFunc.ihook.pytest_runtest_logstart(

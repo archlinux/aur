@@ -1,0 +1,21 @@
+pkgbase = python-pytest-asyncio-concurrent
+	pkgdesc = Pytest plugin to execute python async tests concurrently.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/czl9707/pytest-asyncio-concurrent
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytest
+	source = https://github.com/czl9707/pytest-asyncio-concurrent/archive/refs/tags/0.5.2.tar.gz
+	source = python314-event-loop.patch
+	sha256sums = 63ee2f8313e3cb6e7421221a6acc06b33fe2f597c192ca2d49fb586f36ab9278
+	sha256sums = dc481f6b4da3aad4a07317846e08beb3263f600f17f38d94d762d30b16f9d15a
+
+pkgname = python-pytest-asyncio-concurrent
