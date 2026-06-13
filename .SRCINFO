@@ -25,7 +25,7 @@ pkgbase = scolorpicker
 	optdepends = xdg-desktop-portal-xapp: taking screenshots on Cinnamon
 	replaces = scolorpicker-legacy
 	options = !debug
-	source = https://github.com/skowriii/scolorpicker/releases/download/v2.5.2/scolorpicker-2.5.2.tar.gz
+	source = https://github.com/skowriii/scolorpicker/archive/refs/tags/v2.5.2.tar.gz
 	sha256sums = e7040bbe7b7df33606588b6cb4abad0d963f9e193998f57966d5422d0863fc12
 
 pkgname = scolorpicker

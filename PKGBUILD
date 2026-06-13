@@ -25,7 +25,7 @@ optdepends=("libx11: X11 support"
             "xdg-desktop-portal-xapp: taking screenshots on Cinnamon")
 replaces=("scolorpicker-legacy")
 options=(!debug)
-source=("https://github.com/skowriii/scolorpicker/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/skowriii/scolorpicker/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("e7040bbe7b7df33606588b6cb4abad0d963f9e193998f57966d5422d0863fc12")
 
 build() {
