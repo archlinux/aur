@@ -1,6 +1,6 @@
 # Maintainer: hedgeg0d <werstak192@gmail.com>
 pkgname=zlang-git
-pkgver=0.1.0.r7.gdece4f3
+pkgver=r521.g2307bc5
 pkgrel=1
 pkgdesc="ZLang programming language compiler with LLVM backend"
 arch=('x86_64' 'aarch64')
