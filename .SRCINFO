@@ -1,0 +1,25 @@
+pkgbase = pycroscope
+	pkgdesc = A Python type checker
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://pycroscope.readthedocs.io/
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-annotated-types
+	checkdepends = python-attrs
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-mypy_extensions
+	depends = python-pydantic
+	depends = python-typing_extensions
+	depends = python-typeshed_client
+	optdepends = python-ast_decompiler: [full]
+	optdepends = python-asynq: [asynq]
+	optdepends = python-qcore: [asynq]
+	source = pycroscope-0.4.0.tar.gz::https://github.com/JelleZijlstra/pycroscope/archive/refs/tags/0.4.0.tar.gz
+	b2sums = 13a9906a8b8d1ef8e47c6098f47a0ffb6efd697c8999806387e3e9daccf2e69adec5533eac258cadd5c7439ecbcf8f301ca0f718dc6370b66f7d61d99388f2c9
+
+pkgname = pycroscope

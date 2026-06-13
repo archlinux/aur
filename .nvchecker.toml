@@ -1,0 +1,3 @@
+[pycroscope]
+source = "git"
+git = "https://github.com/JelleZijlstra/pycroscope.git"
