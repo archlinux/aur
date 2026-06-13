@@ -1,6 +1,6 @@
 # Maintainer: Nihal Kumar <2tv8xupqg at mozmail dot com>
 pkgname=onionspray
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A tool to setup Onion Services for existing websites. Requires sudo to run."
 arch=('any')
