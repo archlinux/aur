@@ -1,0 +1,14 @@
+pkgbase = dwn-bin
+	pkgdesc = A Flutter-based image view and editor app for linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mirarr-app/dwn
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	provides = dwn
+	conflicts = dwn
+	source = dwn-bin-1.0.0.tar.gz::https://github.com/mirarr-app/dwn/releases/download/1.0.0/dwn.tar.gz
+	sha256sums = SKIP
+
+pkgname = dwn-bin
