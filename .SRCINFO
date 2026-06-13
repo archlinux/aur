@@ -1,0 +1,18 @@
+pkgbase = checktestdata-git
+	pkgdesc = DOMJudge checktestdata tool
+	pkgver = r293.g5f981cd
+	pkgrel = 1
+	url = https://github.com/DOMjudge/checktestdata
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = gcc
+	makedepends = flexc++
+	makedepends = bisonc++
+	makedepends = git
+	makedepends = automake
+	depends = boost
+	depends = gmp
+	source = checktestdata-git::git+https://github.com/DOMjudge/checktestdata.git
+	md5sums = SKIP
+
+pkgname = checktestdata-git
