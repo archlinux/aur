@@ -2,7 +2,7 @@
 # Maintainer: j4y <j4y_w4lk3r@pobox.com>
 
 pkgname='rui-bin'
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Terminal UI for managing home routers (Orange Livebox/Funbox today; Play/Fritz on the roadmap)'
 url='https://github.com/j4y-w4lk3r/rui'
@@ -14,13 +14,13 @@ depends=('glibc')
 optdepends=('chromium: --capture mode (records router web UI traffic) needs a Chrome/Chromium binary' 'xdg-utils: ergonomic clipboard support for `y`/`Y` device-copy keys')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v${pkgver}/rui_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('247fb5a1f209788945395f00c4706838702ae5d5a05917d82193002478da5a51')
+sha256sums_aarch64=('f09416e2f3af69ac65f9afebcf09122ae7be83725b63518d56ea65c58b5c159c')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v${pkgver}/rui_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('76e4ff7b98d75c5d795e4150311490c9e6b7dd93aab4dd82647c3a0c649a48bf')
+sha256sums_armv7h=('b51aa86754f7f1f563fc237aaa2f960636f83445ec516f5d895beb80f5dd11f1')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/j4y-w4lk3r/rui/releases/download/v${pkgver}/rui_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('8074e1465f86001e4bd3e0698b551eacce4d1a6fbbaa1133c6472744dc297e11')
+sha256sums_x86_64=('9d7376c7bc46c966292b91de1ea87d28b2cece7f9d69a537adabee7f17ff856a')
 
 package() {
   install -Dm755 "./rui" "${pkgdir}/usr/bin/rui"
