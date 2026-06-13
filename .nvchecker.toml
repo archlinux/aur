@@ -1,0 +1,4 @@
+[python-asynq]
+source = "git"
+git = "https://github.com/quora/asynq.git"
+prefix = "v"

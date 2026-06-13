@@ -1,0 +1,21 @@
+pkgbase = python-asynq
+	pkgdesc = a library for asynchronous programming in Python with a focus on batching requests to external services
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/quora/asynq
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = glibc
+	depends = ipython
+	depends = python
+	depends = python-pygments
+	depends = python-qcore
+	source = asynq-1.6.0.tar.gz::https://github.com/quora/asynq/archive/refs/tags/v1.6.0.tar.gz
+	b2sums = 0cd3dd216b3e7fa89e1a34c9b363e7a7444d265700128611cb643ab8244e2e6618ea149be4ce0a9eef6536f919019a2546617a8043290046b836ded67a46d816
+
+pkgname = python-asynq
