@@ -2,8 +2,8 @@
 # Contributor: Saulius Lukauskas <luksaulius@gmail.com>
 # Contributor: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 pkgname=salmon
-pkgver=1.11.4
-pkgrel=3
+pkgver=1.12.0
+pkgrel=1
 pkgdesc="Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments"
 arch=('x86_64')
 url="https://combine-lab.github.io/$pkgname/"
@@ -23,7 +23,7 @@ source=("$pkgname-$pkgver.tar.gz"::"https://github.com/COMBINE-lab/$pkgname/arch
     "xxHash::git+https://github.com/Cyan4973/xxHash.git#commit=d4ad85e4afaad5c780f54db1dc967fff5a869ffd"
     "FQFeeder::git+https://github.com/rob-p/FQFeeder.git#commit=f5b08d1002351c192b69048ac9f6cf4c7c116265"
     )
-sha256sums=('9410904fa787f1f9aca635626fcdca08f3af9b02f820963f9439e80fb56d23b8'
+sha256sums=('acef41e166ee60697f7199f9fd28c63f835f188638629795d2509e9a56bfced4'
             '96c9f9d339a3ede0f33006a153994e2ed25ab4aa94a3384c8d08f2e6e17f340c'
             '9e87ba229be12cd5832298fd3da0333e5706ab8ca996a01323fcc65d28dcd121'
             '02964606fba93939b3783a36f5bb8d7fbd45445187b1efecc3451bdd4b8e196d'

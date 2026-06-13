@@ -1,7 +1,7 @@
 pkgbase = salmon
 	pkgdesc = Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments
-	pkgver = 1.11.4
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://combine-lab.github.io/salmon/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -30,7 +30,7 @@ pkgbase = salmon
 	depends = glibc
 	depends = libgff
 	options = !emptydirs
-	source = salmon-1.11.4.tar.gz::https://github.com/COMBINE-lab/salmon/archive/v1.11.4.tar.gz
+	source = salmon-1.12.0.tar.gz::https://github.com/COMBINE-lab/salmon/archive/v1.12.0.tar.gz
 	source = pufferfish::git+https://github.com/COMBINE-lab/pufferfish.git#commit=ace68c1c022816ba8c50a1a07c5d08f2abd597d6
 	source = sshash::git+https://github.com/rob-p/sshash.git#commit=c11d0f03fa33880bc152df64d528f1896601502b
 	source = pthash::git+https://github.com/jermp/pthash.git#commit=e04a1920ffeae9e7d876acd0362cab79605f7af3
@@ -41,7 +41,7 @@ pkgbase = salmon
 	source = mm_file::git+https://github.com/jermp/mm_file.git#commit=5b5291360488095ce3617c48af0f5145fdf9e710
 	source = xxHash::git+https://github.com/Cyan4973/xxHash.git#commit=d4ad85e4afaad5c780f54db1dc967fff5a869ffd
 	source = FQFeeder::git+https://github.com/rob-p/FQFeeder.git#commit=f5b08d1002351c192b69048ac9f6cf4c7c116265
-	sha256sums = 9410904fa787f1f9aca635626fcdca08f3af9b02f820963f9439e80fb56d23b8
+	sha256sums = acef41e166ee60697f7199f9fd28c63f835f188638629795d2509e9a56bfced4
 	sha256sums = 96c9f9d339a3ede0f33006a153994e2ed25ab4aa94a3384c8d08f2e6e17f340c
 	sha256sums = 9e87ba229be12cd5832298fd3da0333e5706ab8ca996a01323fcc65d28dcd121
 	sha256sums = 02964606fba93939b3783a36f5bb8d7fbd45445187b1efecc3451bdd4b8e196d
