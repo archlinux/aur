@@ -1,0 +1,23 @@
+pkgbase = bibavpn-desktop
+	pkgdesc = BibaVPN desktop GUI (Tauri): DPI-resistant SOCKS5/HTTP tunnel over TLS+WebSocket
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/Eljaja/BibaVPN
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = npm
+	makedepends = cmake
+	makedepends = clang
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = gcc-libs
+	options = !lto
+	source = bibavpn-desktop-1.2.4.tar.gz::https://github.com/Eljaja/BibaVPN/archive/refs/tags/v1.2.4.tar.gz
+	source = bibavpn-desktop.desktop
+	sha256sums = 28b5be4a5f4ed4bc84790b8e94a04ccb2cf1242fe78b8244daa30aca24e0a632
+	sha256sums = 9206b96bb3ead05c48b6f28da7a4931f4a6a6b7f3cebd809006d5b6f4bd73171
+
+pkgname = bibavpn-desktop

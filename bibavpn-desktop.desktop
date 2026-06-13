@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=BibaVPN
+Comment=DPI-resistant SOCKS5/HTTP tunnel over TLS+WebSocket
+Exec=bibavpn-desktop
+Icon=bibavpn-desktop
+Terminal=false
+Categories=Network;Security;
+StartupWMClass=BibaVPN
