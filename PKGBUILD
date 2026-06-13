@@ -4,13 +4,13 @@
 # Contributor: Filip Brcic < brcha at gna dot org >
 # Contributor: Martchus < martchus at gmx dot net >
 
-_pkgver=3.6.2
+_pkgver=3.6.3
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl
 pkgver=${_pkgver/[a-z]/.${_pkgver//[0-9.]/}}
-pkgrel=2
-pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)"
+pkgrel=1
+pkgdesc="The Open Source toolkit for cryptography and Transport Layer Security (mingw-w64)"
 arch=('any')
 url='https://www.openssl.org'
 license=('Apache-2.0')
@@ -20,7 +20,7 @@ makedepends=('mingw-w64-gcc'
              'perl')
 options=('!strip' 'staticlibs' '!buildflags' '!lto')
 source=("https://github.com/openssl/openssl/releases/download/openssl-${pkgver}/openssl-${pkgver}.tar.gz"{,.asc})
-sha256sums=('aaf51a1fe064384f811daeaeb4ec4dce7340ec8bd893027eee676af31e83a04f'
+sha256sums=('243a86649cf6f23eeb6a2ff2456e09e5d77dd9018a54d3d96b0c6bdd6ba6c7f1'
             'SKIP')
 validpgpkeys=('EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
               'BA5473A2B0587B07FB27CF2D216094DFD0CB81EF')
