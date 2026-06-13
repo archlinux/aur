@@ -1,5 +1,5 @@
 pkgname=birdnet-rs
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Self-hosted realtime soundscape analyzer: identifies bird species with the BirdNET neural network and serves a live web dashboard (Rust/Leptos + ONNX)"
 arch=('x86_64' 'aarch64')          # upstream supports 64-bit targets only
@@ -33,7 +33,7 @@ optdepends=(
 options=('!lto')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0df3b399af7695a318f0d8cab97c56c9ddb8bf4651d46e5136f327441d7ab6a6')
+sha256sums=('344df81dbff0d8007fb8b9d95668d7e3c015d1ec99ee1da48b93498d680a8288')
 
 prepare() {
   cd "$pkgname-$pkgver"
