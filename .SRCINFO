@@ -1,0 +1,18 @@
+pkgbase = seclists-git
+	pkgdesc = Collection of multiple types of lists used during security assessments
+	pkgver = 2026.1.r6641.g21a949d
+	pkgrel = 1
+	url = https://github.com/danielmiessler/seclists
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = python
+	depends = perl
+	provides = seclists
+	conflicts = seclists
+	options = !debug
+	source = git+https://github.com/danielmiessler/seclists
+	b2sums = SKIP
+
+pkgname = seclists-git
