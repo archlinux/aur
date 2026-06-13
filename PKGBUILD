@@ -2,7 +2,7 @@
 AppName=Converter432Hz
 appid=converter432hz
 pkgname=${appid}-appimage
-pkgver=3.3.2
+pkgver=3.4
 pkgrel=1
 pkgdesc="Converts and re-encodes music to 432Hz"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/mysteryx93/HanumanInstituteApps/releases/download/v${pkgver}/${AppName}-${pkgver}_Linux_x64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('0c634f6446679fe6017ca5b06b71c0d4fd9713692303fdcabd7860c35ceeff65')
+sha256sums_x86_64=('e4d25ee87d7b989980aed223f9af3df6d657bb2f4fa8f91cbee217d71a5b2fcd')
 
 prepare() {
     chmod +x "${_appimage}"
