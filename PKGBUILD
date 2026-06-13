@@ -1,5 +1,5 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
-pkgname=simplesinewavegenerator-git
+pkgname=simpleSineWaveGenerator-git
 pkgver=df3fbb3
 pkgrel=1
 pkgdesc="Simple sine wave generator with GTK3 GUI and logarithmic frequency sweep"
@@ -27,12 +27,6 @@ package() {
   
   # Install binary
   install -Dm755 simpleSineWaveGenerator "$pkgdir/usr/bin/simpleSineWaveGenerator"
-  
-  # Install desktop file
-  install -Dm644 simplesinewavegenerator.desktop "$pkgdir/usr/share/applications/simplesinewavegenerator.desktop"
-  
-  # Install icon
-  install -Dm644 simplesinewavegenerator.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/simplesinewavegenerator.svg"
   
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
