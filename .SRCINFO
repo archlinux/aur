@@ -1,7 +1,7 @@
 pkgbase = eclipse-java-bin
 	pkgdesc = Highly extensible IDE (Java version)
-	pkgver = 4.39
-	pkgrel = 3
+	pkgver = 4.40
+	pkgrel = 1
 	epoch = 2
 	url = https://www.eclipse.org/
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = eclipse-java-bin
 	depends = java-environment>=21
 	depends = unzip
 	depends = webkit2gtk-4.1
-	provides = eclipse=4.39-3
+	provides = eclipse=4.40-1
 	conflicts = eclipse
 	options = !strip
 	source = eclipse.desktop
 	sha512sums = 676d79e18ef847fc27efc68d85e5f3c3af3eaaa9946acc98161998a3a0771d2a72c7197bdb6d8c180e1b59c2a0bb591150d15114b416c1a0a0f5dbdb06bdb13e
-	source_x86_64 = eclipse-java-2026-03-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2026-03/R/eclipse-java-2026-03-R-linux-gtk-x86_64.tar.gz&r=1
-	sha512sums_x86_64 = 8769589e4867f7a347b25c3e930178a000ed1003f9cefa05755e60d77be777f21d1ae50dbec5611c2c781a091eb77d0ce42b8bf8ca19cd7efc9b55e56c8285d0
-	source_aarch64 = eclipse-java-2026-03-R-linux-gtk-aarch64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2026-03/R/eclipse-java-2026-03-R-linux-gtk-aarch64.tar.gz&r=1
-	sha512sums_aarch64 = 26b680ee0d6229361b1459db81b1aae17959cab4666714be71790897f8ffc80d052ae61f21520ebf7a2d425cc62698329e29ed35242dd7d96440c90a32e21383
+	source_x86_64 = eclipse-java-2026-06-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2026-06/R/eclipse-java-2026-06-R-linux-gtk-x86_64.tar.gz&r=1
+	sha512sums_x86_64 = 7e30aeaf1227068d00deabe45f397a9cb82a251f77c4df760e471f0811b9de4d5b5fcdfbe2ab750f0c9db68d3de763e32ae739ef4dc03617f7892f2accd3f344
+	source_aarch64 = eclipse-java-2026-06-R-linux-gtk-aarch64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2026-06/R/eclipse-java-2026-06-R-linux-gtk-aarch64.tar.gz&r=1
+	sha512sums_aarch64 = ccf67449a6647adf5df9231406e6b4c906fbe875423864768ef4c9e6fc47e90802dc7918aaca10a16f9d1a48d90d6419a070b89a118b3c12daedabdcce4e2c04
 
 pkgname = eclipse-java-bin
