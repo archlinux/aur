@@ -2,7 +2,7 @@
 
 pkgname=mihomo-tui-bin
 _pkgname=mihomo-tui
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A TUI for Mihomo (Clash.Meta) - binary version"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ optdepends=('mihomo: Another Clash Kernel by MetaCubeX')
 options=('!debug')
 source=("LICENSE::https://github.com/potoo0/mihomo-tui/raw/main/LICENSE")
 sha256sums=('0eff19db888c403ba4f5a035dbf50a64604110fe94d5b4b5365768af73bf2f0d')
-sha256sums_x86_64=('450ac87620aa36a038fb7a91844069e200fe7ccfc7e4785130733218854324ba')
-sha256sums_aarch64=('2cacae224b59ad7ff47c4d35bf7e268faec75aa05b11bc3df363358eb0bf272c')
+sha256sums_x86_64=('2a29d7b5d476d4e96ceca78bf4d33c0b46a1d8d081a92227ba1ce5c5d107aa16')
+sha256sums_aarch64=('1ec135e19b0c761384d40adaf29ce49e8e5efb73dd7eaded676069d6241c806d')
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/potoo0/mihomo-tui/releases/download/v${pkgver}/mihomo-tui-Linux-gnu-x86_64.tar.gz")
 
