@@ -1,8 +1,8 @@
 # Maintainer: thongor77 <magetriste@proton.me>
 pkgname=nmlinux
-pkgver=1.3.5
+pkgver=1.3.8
 pkgrel=1
-pkgdesc="A free Linux adaptation of NETworkManager — network GUI for KDE/Linux"
+pkgdesc="Unified network toolkit for Linux — 27 modules, SSH terminal, topology, export"
 arch=('any')
 url="https://github.com/thongor77/nmlinux"
 license=('GPL2')
@@ -26,10 +26,11 @@ optdepends=(
     'samba: SMB/NFS browser — SMB share listing (smbclient)'
     'nfs-utils: SMB/NFS browser — NFS export listing (showmount)'
     'openssl: TLS Inspector certificate chain'
+    'avahi: Topology — mDNS device type detection (printers, phones, NAS…)'
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://github.com/thongor77/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('db3f450e3ed95cdcf20ce979669a0a01a00bf6147da245d2b8b60d2765661ab6')
+sha256sums=('21349c74f2b7133fe70680425be1a1559efabd53e811e1d56614c47c4f2ac02d')
 
 build() {
     cd "${pkgname}-${pkgver}"
