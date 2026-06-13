@@ -1,7 +1,7 @@
 # Maintainer: Kief Studio <packages@kief.studio>
 pkgname=aur-scanner
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Security scanner for Arch Linux AUR packages - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/KiefStudioMA/ks-aur-scanner"
@@ -35,21 +35,24 @@ check() {
 package() {
     cd "ks-aur-scanner-$pkgver"
 
-    # Install binaries
+    # Binaries
     install -Dm755 "target/release/aur-scan" "$pkgdir/usr/bin/aur-scan"
-    install -Dm755 "target/release/aur-scan-hook" "$pkgdir/usr/bin/aur-scan-hook"
     install -Dm755 "target/release/aur-scan-wrap" "$pkgdir/usr/bin/aur-scan-wrap"
+    install -Dm755 "target/release/aur-scan-hook" "$pkgdir/usr/bin/aur-scan-hook"
 
-    # Install shell integration
-    install -Dm644 "install/integration.bash" "$pkgdir/usr/share/aur-scanner/integration.bash"
-    install -Dm644 "install/integration.zsh" "$pkgdir/usr/share/aur-scanner/integration.zsh"
+    # Shell integration -- the recommended gate. Source it from your shell rc to
+    # scan AUR packages BEFORE makepkg builds them.
+    install -Dm644 "install/integration.bash" "$pkgdir/usr/share/aur-scan/integration.bash"
+    install -Dm644 "install/integration.zsh" "$pkgdir/usr/share/aur-scan/integration.zsh"
 
-    # Install pacman hook
-    install -Dm644 "install/aur-scan.hook" "$pkgdir/usr/share/libalpm/hooks/90-aur-scanner.hook"
+    # Community rules example
+    install -Dm644 "install/rules.d/example.toml" "$pkgdir/usr/share/aur-scanner/rules.d/example.toml"
 
-    # Install license
+    # pacman hook, shipped as an opt-in example (NOT auto-enabled). It runs after
+    # makepkg has already built the package -- prefer the shell integration above.
+    install -Dm644 "install/aur-scan.hook" "$pkgdir/usr/share/aur-scan/aur-scan.hook.example"
+
+    # License + docs
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    # Install documentation
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
