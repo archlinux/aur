@@ -19,18 +19,20 @@ build() {
 }
 
 package() {
-    # electron-builder outputs a .pacman file — install it into the package
+    # electron-builder pacman target already produced a valid .pkg.tar.zst —
+    # install it into $pkgdir so makepkg can pick it up, then extract it.
     install -Dm644 "$srcdir/dist/Melody-$pkgver-x64.pacman" \
         "$pkgdir/melody-player-$pkgver-x64.pacman"
 
-    # Also install the unpacked files directly for a proper system install
-    mkdir -p "$pkgdir/opt"
+    # Install unpacked files into /opt/Melody
+    mkdir -p "$pkgdir/opt/Melody"
     cp -r "$srcdir/dist/linux-unpacked/"* "$pkgdir/opt/Melody/"
 
+    # Launcher script
     mkdir -p "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/$pkgname" << 'EOF'
 #!/bin/bash
-exec /opt/Melody/Melody "$@"
+exec /opt/Melody/melody-player "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/$pkgname"
 
@@ -40,7 +42,7 @@ EOF
 [Desktop Entry]
 Name=Melody
 Comment=Modern Spotify-inspired music player
-Exec=/opt/Melody/Melody %U
+Exec=/opt/Melody/melody-player %U
 Icon=$pkgname
 Terminal=false
 Type=Application
