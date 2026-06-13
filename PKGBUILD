@@ -43,8 +43,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm755 fzfx "${pkgdir}/usr/bin/fzfx"
-  install -vDm 644 ignore "${pkgdir}/usr/share/${_pkgname}/ignore"
-  install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
