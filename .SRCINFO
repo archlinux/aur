@@ -1,6 +1,6 @@
 pkgbase = front-porch-ai-beta-bin
 	pkgdesc = A chilled out frontend for KoboldCPP (beta/pre-release + Rawhide nightlies)
-	pkgver = rawhide.20260612.914d3d2
+	pkgver = rawhide.20260613.b2f7512
 	pkgrel = 1
 	url = https://github.com/linux4life1/front-porch-AI
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = front-porch-ai-beta-bin
 	conflicts = front-porch-ai-bin
 	options = !strip
 	options = !debug
-	source = Front_Porch_AI_Nightly-Linux.AppImage::https://github.com/linux4life1/front-porch-AI/releases/download/nightly-rawhide.20260612.914d3d2/Front_Porch_AI_Nightly-Linux.AppImage
+	source = Front_Porch_AI_Nightly-Linux.AppImage::https://github.com/linux4life1/front-porch-AI/releases/download/nightly-rawhide.20260613.b2f7512/Front_Porch_AI_Nightly-Linux.AppImage
 	source = front-porch-ai.desktop
 	source = front-porch-ai.png
 	sha256sums = SKIP
