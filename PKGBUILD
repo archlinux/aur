@@ -1,6 +1,6 @@
 # Maintainer: ltdk <usr@ltdk.xyz>
 pkgname=ai-robots-txt
-pkgver=1.45
+pkgver=1.46
 pkgrel=1
 pkgdesc='List of AI crawler user agents.'
 arch=(any)
@@ -11,7 +11,7 @@ optdepends=('nginx: nginx blocker config'
             'apache: htaccess blocker config'
             'caddy: caddy blocker config')
 source=("https://github.com/ai-robots-txt/ai.robots.txt/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b4ffb58dbd89c0f1affa3ce20f3db679517c8bd4b59a5c3c06a4d2f62932dd37')
+sha256sums=('f4024344146fc00ef641fdab28ba6a91c6bb765586725e521c375f0336989253')
 
 package() {
   install -m644 -D "$srcdir"/ai.robots.txt/robots.txt -T "$pkgdir"/usr/share/ai-robots-txt/robots.txt
