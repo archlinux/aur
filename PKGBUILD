@@ -2,7 +2,7 @@
 # https://github.com/SimonSchubert/Braincup
 
 pkgname=braincup-bin
-pkgver=2.19.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc='Train your math skills, memory and focus'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('braincup')
 options=('!strip')
 
 source=("Braincup-${pkgver}-linux-x86_64.tar.gz::https://github.com/SimonSchubert/Braincup/releases/download/v${pkgver}/Braincup-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('3b663da7a1301c80702367ee7af7374cf493385151224c2c4f7022a57f92b884')
+sha256sums=('dfd15d0d67ea2e3baa5e576f0e4e9a4000b7d43435d4569f048ea0c80df185a0')
 
 package() {
     # Install application files
@@ -42,13 +42,10 @@ StartupWMClass=compose-window
 Terminal=false
 EOF
 
-    # Install icon
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/icons/hicolor/scalable/apps/braincup.svg" << 'EOF'
-<svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
-   <circle cx="45" cy="45" r="40" fill="#6200ee" />
-   <text x="45" y="60" text-anchor="middle" font-size="48" font-family="sans-serif" font-weight="bold" fill="#ffffff">B</text>
-</svg>
-EOF
+    # Install icon (real app icon shipped inside the jpackage app-image)
+    install -Dm644 "${srcdir}/Braincup/lib/Braincup.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/braincup.png" 2>/dev/null || \
+    install -Dm644 /dev/null "${pkgdir}/usr/share/icons/hicolor/512x512/apps/braincup.png"
 
     # Install license
     install -Dm644 "${srcdir}/Braincup/lib/Braincup.copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 2>/dev/null ||
