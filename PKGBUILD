@@ -9,11 +9,9 @@
 # Cloning specific tags:
 #   source=("git+https://github.com/libretro/RetroArch.git#tag=v${pkgver}")
 #
-# Optional build dependency:
-#   libsmb2-git: enables support for built-in SMB
 
 pkgname=retroarch-git
-pkgver=1.22.2.r1980.05c5852a70
+pkgver=1.22.2.r2002.4c2c1776cf
 pkgrel=1
 pkgdesc='Reference frontend for the libretro API (Git-latest)'
 arch=('i686' 'x86_64')
@@ -93,7 +91,9 @@ build() {
     --disable-cg \
     --disable-jack \
     --disable-oss \
-    --enable-dbus
+    --enable-dbus \
+    --enable-builtinsmbclient \
+    --disable-smbclient
 
   make
   make -C libretro-common/audio/dsp_filters
