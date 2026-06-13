@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian
-pkgver=3.8.0+211
+pkgver=3.9.0+229
 pkgrel=1
 pkgdesc="Next Generation Network Center"
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=(
     "icon-padded.png"
 )
 sha256sums=(
-    'a88e76a430914e40f25e8d3692fdd8d669523c13abd69454a0213e3f82289f84'
+    '5ad0f4180f199f03ceab76a5f5af6e45bed39f9297851f06857a0f8638691771'
     '448670e6164b577892733ebdd267830e21509136175df35abb87717d14a63a05'
 )
 
@@ -48,7 +48,7 @@ _binname="island"
 _pkgver_fixed="${pkgver//+/-}"
 _srcdir="$_reponame-$_pkgver_fixed"
 
-_flutter_ver=3.41.2
+_flutter_ver=3.44.1
 _flutter_repo=https://github.com/flutter/flutter.git
 
 prepare() {
@@ -62,14 +62,6 @@ prepare() {
     git checkout -f "tags/$_flutter_ver" || git checkout -f "$_flutter_ver"
     popd >/dev/null
   fi
-
-  export PUB_CACHE="$srcdir/.pub_cache"
-
-  cd "$srcdir/$_srcdir"
-  cat > pubspec_overrides.yaml <<'YAML'
-dependency_overrides:
-  vector_math: ^2.2.0
-YAML
 }
 
 
@@ -83,8 +75,8 @@ build() {
   cd "$srcdir/$_srcdir"
 
   flutter precache --linux
-  flutter pub upgrade --major-versions
   flutter pub get --enforce-lockfile
+  dart run build_runner build --delete-conflicting-outputs
   flutter build linux --no-pub --release
 }
 
