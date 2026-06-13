@@ -1,6 +1,6 @@
 pkgbase = sddm-conf
 	pkgdesc = Configuration editor for SDDM similar to sddm-config-editor, but written in C++
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/qtilities/sddm-conf
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sddm-conf
 	makedepends = qt5-tools
 	makedepends = qtilitools
 	depends = qt5-base
-	source = sddm-conf-0.4.0.tar.gz::https://github.com/qtilities/sddm-conf/archive/refs/tags/0.4.0.tar.gz
-	sha256sums = 7893f6998a2b64307d91db2e5f87628bd77999b729e5022b52fb5ccedd199535
+	source = sddm-conf-0.4.1.tar.gz::https://github.com/qtilities/sddm-conf/archive/refs/tags/0.4.1.tar.gz
+	sha256sums = 0e2af01bcbc92bee3514e4452547bd399cbe2bd02f8a4f9101ea02a15d098627
 
 pkgname = sddm-conf
