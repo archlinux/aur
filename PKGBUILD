@@ -1,15 +1,15 @@
 
 # Maintainer: SlotSun <slot_sun@outlook.com>
 pkgname=slive
-pkgver=1.8.7
-pkgrel=2
-pkgdesc="基于Flutter的聚合直播软件，支持多平台直播源聚合与观看。"
+pkgver=1.8.9
+pkgrel=1
+pkgdesc="基于Flutter的聚合直播软件，支持多平台直播源聚合与观看"
 arch=('x86_64')
 url="https://github.com/SlotSun/dart_simple_live"
 license=('GPL-3.0-or-later')
 depends=('gtk3' 'libvdpau' 'libpulse' 'libxss' 'libarchive' 'alsa-lib' 'libva' 'libxv' 'patchelf')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'rustup')
-source=("v1.8.7.tar.gz::https://github.com/SlotSun/dart_simple_live/archive/refs/tags/v1.8.7.tar.gz")
+source=("v1.8.9.tar.gz::https://github.com/SlotSun/dart_simple_live/releases/download/v1.8.9/aur-v1.8.9.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
