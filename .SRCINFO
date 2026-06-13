@@ -1,6 +1,6 @@
 pkgbase = python-bithuman
 	pkgdesc = bitHuman Python SDK — libessence-backed avatar runtime.
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://github.com/bithuman-product/bithuman-sdk-public/tree/main/python
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-bithuman
 	depends = libstdc++
 	depends = glibc
 	depends = libgcc
-	noextract = bithuman-2.3.3-cp314-cp314-manylinux_2_28_x86_64.whl
-	noextract = bithuman-2.3.3-cp314-cp314-manylinux_2_28_aarch64.whl
+	noextract = bithuman-2.3.4-cp314-cp314-manylinux_2_28_x86_64.whl
+	noextract = bithuman-2.3.4-cp314-cp314-manylinux_2_28_aarch64.whl
 
 pkgname = python-bithuman
