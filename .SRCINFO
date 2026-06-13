@@ -1,0 +1,19 @@
+pkgbase = varlock-bin
+	pkgdesc = Load and validate environment variables from .env files with schema and encryption
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://varlock.dev
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = varlock
+	conflicts = varlock
+	options = !strip
+	source = LICENSE-1.6.1::https://raw.githubusercontent.com/dmno-dev/varlock/varlock@1.6.1/LICENSE
+	sha256sums = 90c34fcc1c80e7cd811652e54ed411597cdbc1bc2a22efb7d6acb133f24a7942
+	source_x86_64 = varlock-bin-1.6.1-x86_64.tar.gz::https://github.com/dmno-dev/varlock/releases/download/varlock@1.6.1/varlock-linux-x64.tar.gz
+	sha256sums_x86_64 = ff31bfeec91532a2445142e59607a6bd6c3cd08a551e14f918826f18b83eb683
+	source_aarch64 = varlock-bin-1.6.1-aarch64.tar.gz::https://github.com/dmno-dev/varlock/releases/download/varlock@1.6.1/varlock-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7b191f1bf225fb95a7217daad1853b966e6310b3541aa98d8a3bc5634ccfc446
+
+pkgname = varlock-bin
