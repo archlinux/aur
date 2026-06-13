@@ -1,6 +1,6 @@
 pkgbase = extera-next-bin
 pkgdesc = A feature-rich Matrix client made with Flutter
-pkgver = 26.2.83
+pkgver = 26.2.9
 pkgrel = 1
 url = https://github.com/ExteraApp/Extera
 arch = x86_64
