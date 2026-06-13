@@ -5,7 +5,7 @@ pkgbase = sleex-artworks-git
 	url = https://github.com/axos-project/sleex-artworks
 	arch = any
 	license = GPL3
-	source = https://github.com/axos-project/sleex-artworks.git
+	source = git+https://github.com/axos-project/sleex-artworks.git
 	sha256sums = SKIP
 
 pkgname = sleex-artworks-git

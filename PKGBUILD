@@ -8,7 +8,7 @@ arch=("any")
 license=('GPL3')
 arch=("any")
 url="https://github.com/axos-project/sleex-artworks"
-source=("https://github.com/axos-project/sleex-artworks.git")
+source=("git+https://github.com/axos-project/sleex-artworks.git")
 sha256sums=('SKIP')
 
 pkgver() {
