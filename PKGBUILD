@@ -28,6 +28,12 @@ package() {
   # Install binary
   install -Dm755 simpleSineWaveGenerator "$pkgdir/usr/bin/simpleSineWaveGenerator"
   
+  # Install desktop file
+  install -Dm644 simplesinewavegenerator.desktop "$pkgdir/usr/share/applications/simplesinewavegenerator.desktop"
+  
+  # Install icon
+  install -Dm644 simplesinewavegenerator.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/simplesinewavegenerator.svg"
+  
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   
