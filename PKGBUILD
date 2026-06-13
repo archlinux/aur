@@ -13,7 +13,8 @@ source=("$pkgname-$pkgver.tar.gz::https://hub.darcs.net/stef204/vtlock/raw/relea
         "$pkgname-$pkgver.tar.gz.asc::https://hub.darcs.net/stef204/vtlock/raw/releases/$pkgname-$pkgver.tar.gz.asc")
 install=vtlock.install
 validpgpkeys=('E0844009CF213E78ECD348795A6792BF5ECC3AC6')
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('c60ac184eb101e28575e01007182009fe2702e86778319f4eb0d4fd491f645c4'
+            'SKIP')
 
 build() {
     cd "$pkgname-$pkgver"
