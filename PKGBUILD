@@ -9,7 +9,7 @@ pkgname=(
   # Embedded - Standalone binary with embedded web dashboard and all assets
   $pkgbase
 )
-pkgver=3.1.28
+pkgver=3.1.29
 pkgrel=1
 pkgdesc='Replication Manager for MySQL / MariaDB / Percona Server'
 arch=('x86_64' 'aarch64')
@@ -34,12 +34,12 @@ source_aarch64=(
   "${pkgbase%-*}-$pkgver-arm64.tar.gz::$url/releases/download/v$pkgver/${pkgbase%-*}-linux-arm64.tar.gz"
 )
 
-sha256sums_x86_64=('ea7a85419791dec72d5d23b8345481c5391644bfebb992c50c096b977296f698'
-                   'bcb74fc34a68ab8d8da06639887e8c8426da25b6b86dc928ae1a4e9a4afc5be8'
-                   '7c1835f22b0cf68461675578c3186823c5fe5901bdf0c93ad927d4c3c7e7c6f9')
-sha256sums_aarch64=('631c3c19a5f063e20a14b35d3225a2308cd8722d6b81d0055e6945b165cbbd3c'
-                    'b1f5928a479464bbe8333f0b5a3bc1443315f441e8d47f2b1db51fb8a4bd0c09'
-                    '2561f682be8c53b117a3f86b1a4289b06849455486001808cf38157692c43b57')
+sha256sums_x86_64=('eacac49c65ae291b9e4eb533d295e32cdf288a6ad367c618e4f88dfc06230dd3'
+                   'c904ab83b831902e32f547522362d34d5c486ef4646118f3286c8233540ac886'
+                   '504537032652b7dcda69c2120fc66d91eec82e0629db322b03cd37c808855530')
+sha256sums_aarch64=('ae2f24d73c00ad3cc500c794eae646b1eade4e3e5fdae611a7f3fb6606fa4764'
+                    '1bed8c209c1656968209e859798f2ab105ea69f92870113fed92e224bc9fabb2'
+                    'a8b4f29d0e620b849055892eb6f0048261f69d52f71a6141497e9eb0e85acfd0')
 
 package_replication-manager-bin-cli() {
   pkgdesc='Replication Manager for MySQL / MariaDB / Percona Server - CLI client only'
