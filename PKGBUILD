@@ -1,7 +1,7 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=supportboi
-pkgver=4.0.1
-pkgrel=3
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="A support ticket Discord bot with automated interviews and rendered HTML transcripts"
 arch=("x86_64")
 url="https://github.com/KarlOfDuty/SupportBoi"
