@@ -2,7 +2,7 @@
 
 pkgname=appflowy
 pkgver=0.12.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Open-source alternative to Notion – you own your data and customizations"
 arch=('x86_64')
 url="https://appflowy.com"
@@ -52,6 +52,9 @@ prepare() {
     export PATH="${srcdir}/flutter/bin:${PATH}"
 
     cd "AppFlowy-${pkgver}/frontend"
+
+    # Upstream sets the real version at release time; the tag still carries a stale one
+    sed -i "s/^APPFLOWY_VERSION = .*/APPFLOWY_VERSION = \"${pkgver}\"/" Makefile.toml
 
     # Install the Rust toolchain declared in rust-toolchain.toml (channel = "1.85")
     rustup toolchain install --no-self-update
