@@ -1,0 +1,18 @@
+pkgbase = zlang-bin
+	pkgdesc = ZLang programming language compiler (pre-built AppImage)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/zlangdevs/zlang
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = zlang
+	conflicts = zlang
+	conflicts = zlang-git
+	options = !strip
+	source_x86_64 = zlang-x86_64.AppImage::https://github.com/zlangdevs/zlang/releases/download/v0.1.1/zlang-x86_64.AppImage
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = zlang-aarch64.AppImage::https://github.com/zlangdevs/zlang/releases/download/v0.1.1/zlang-aarch64.AppImage
+	sha256sums_aarch64 = SKIP
+
+pkgname = zlang-bin
