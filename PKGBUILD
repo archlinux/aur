@@ -8,7 +8,7 @@ _electronversion=41
 pkgdesc="Glassy Music is extension for music player "
 arch=('x86_64')
 url="https://github.com/NanKillBro/glassy-music-nankill"
-license=('MIT')
+license=('GPL-3.0-or-later ')
 depends=(
   "electron${_electronversion}"
   'libsecret'
