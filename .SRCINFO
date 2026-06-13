@@ -1,6 +1,6 @@
 pkgbase = unbill-nightly-bin
 	pkgdesc = Desktop app for unbill (nightly)
-	pkgver = nightly.20260612.024929
+	pkgver = nightly.20260613.024210
 	pkgrel = 1
 	url = https://github.com/unbill-project/unbill
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = unbill-nightly-bin
 	conflicts = unbill-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/unbill-project/unbill/releases/download/nightly-20260612-024929/unbill-linux-x86_64.deb
+	source_x86_64 = https://github.com/unbill-project/unbill/releases/download/nightly-20260613-024210/unbill-linux-x86_64.deb
 	sha256sums_x86_64 = SKIP
 
 pkgname = unbill-nightly-bin
