@@ -1,23 +1,21 @@
 pkgbase = rocket-editor-git
 	pkgdesc = GNU Rocket OpenGL editor
-	pkgver = 0.8.r538.g21da23b
+	pkgver = 1.3.0.r4.g68a18d8
 	pkgrel = 1
 	url = https://github.com/emoon/rocket
 	arch = i686
 	arch = x86_64
-	license = zlib
+	license = Zlib
 	makedepends = cmake
 	makedepends = git
 	depends = gtk3
-	depends = libbass
-	depends = sdl
+	depends = sdl2-compat
 	provides = rocket-editor
 	source = rocket-editor::git+https://github.com/emoon/rocket.git
 	source = git+https://github.com/rocket/rocket.git
-	source = system-libbass.patch
+	source = tinycthread.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = e1f0504529d70c3aa95543bf9881e69f4d7606e2da4e70426e0a98e743cb42f3
+	sha256sums = ea00c21bffbce0f16de3aa1b9b6fb7a51c38a3ac4f4e16e01a29a3adc7373f4b
 
 pkgname = rocket-editor-git
-

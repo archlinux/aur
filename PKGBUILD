@@ -1,25 +1,25 @@
-# Maintainer: Jimmy Bergström <thekwarf@gmail.com>
+# Maintainer: Jimmy Bergström <me@kwarf.com>
 _pkgname=rocket-editor
 pkgname=${_pkgname}-git
-pkgver=0.8.r538.g21da23b
+pkgver=1.3.0.r4.g68a18d8
 pkgrel=1
 pkgdesc="GNU Rocket OpenGL editor"
 arch=('i686' 'x86_64')
 url="https://github.com/emoon/rocket"
-license=('zlib')
-depends=(gtk3 libbass sdl)
+license=('Zlib')
+depends=(gtk3 sdl2-compat)
 makedepends=(cmake git)
 provides=(${_pkgname})
 source=("${_pkgname}::git+https://github.com/emoon/rocket.git"
         "git+https://github.com/rocket/rocket.git"
-        "system-libbass.patch")
+        "tinycthread.patch")
 sha256sums=('SKIP'
             'SKIP'
-            'e1f0504529d70c3aa95543bf9881e69f4d7606e2da4e70426e0a98e743cb42f3')
+            'ea00c21bffbce0f16de3aa1b9b6fb7a51c38a3ac4f4e16e01a29a3adc7373f4b')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -27,17 +27,17 @@ prepare() {
 
   git submodule init
   git config submodule.external/rocket.url "$srcdir/rocket"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
-  patch --strip=1 < "${srcdir}/system-libbass.patch"
+  patch --strip=1 < "${srcdir}/tinycthread.patch"
 
   mkdir -p "$srcdir/${_pkgname}/build"
 }
 
 build() {
   cd "$srcdir/${_pkgname}/build"
-  cmake -DCMAKE_C_FLAGS="$(CMAKE_C_FLAGS) -Wno-error=maybe-uninitialized" -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake --build .
 }
 
 package() {
