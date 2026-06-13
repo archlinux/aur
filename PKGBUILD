@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Tool for fetch everythin' in internet"
 
-pkgver=0.7.2
+pkgver=0.7.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-cli-${_barch[0]}")
-sha256sums=('9a0f637eb62bd44bde0f9efa7afbf0f4b26da046d6b0a673dafda02a755c78f1'
-            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('432820ee5d950e2233fba043ef57a26b62fa88f4056ea717d8f9428f2bb03cf6')
+sha256sums=('3a4e01fd98cfbcaf7cda0d33069788b3d36bb37af68c95c208ff89588ddc8a33'
+            '230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809')
+sha256sums_x86_64=('ca6f8b230072f924e6873778ad4fe66723b54940733506aff4c044c84ec9f86d')
 
 
 package() {
