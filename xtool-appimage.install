@@ -3,8 +3,8 @@ post_install() {
     echo ">>>   Run 'xtool setup'"
     echo ">>>   to configure the application."
     echo ">>>"
-    echo ">>>   Downloading Xcode.xip from"
-    echo ">>>   https://developer.apple.com/services-account/download?path=/Developer_Tools/Xcode_16.3/Xcode_16.3.xip"
+    echo ">>>   Downloading Xcode from"
+    echo ">>>   https://developer.apple.com/download/all/?q=Xcode"
     echo ">>>   is required to complete the setup."
     echo ">>>"
 }

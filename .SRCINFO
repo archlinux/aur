@@ -1,7 +1,7 @@
 pkgbase = xtool-appimage
 	pkgdesc = Cross-platform Xcode replacement
-	pkgver = 1.16.1
-	pkgrel = 2
+	pkgver = 1.17.0
+	pkgrel = 1
 	url = https://github.com/xtool-org/xtool
 	install = xtool-appimage.install
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = xtool-appimage
 	conflicts = xtool
 	noextract = xtool.AppImage
 	options = !strip
-	source = xtool.AppImage::https://github.com/xtool-org/xtool/releases/download/1.16.1/xtool-x86_64.AppImage
-	source = xtool-LICENSE::https://raw.githubusercontent.com/xtool-org/xtool/refs/tags/1.16.1/LICENSE.md
-	source = xtool-README::https://raw.githubusercontent.com/xtool-org/xtool/refs/tags/1.16.1/README.md
-	b2sums = 49356049814101ecf9fbcce0cf1dba3ee4c01aed70bd4fc9c4a55589bd7fe467c242b77d9e36c4d52da9c74562b095a3514cc76c121359e16f9031174c7934d0
+	source = xtool.AppImage::https://github.com/xtool-org/xtool/releases/download/1.17.0/xtool-x86_64.AppImage
+	source = xtool-LICENSE::https://raw.githubusercontent.com/xtool-org/xtool/refs/tags/1.17.0/LICENSE.md
+	source = xtool-README::https://raw.githubusercontent.com/xtool-org/xtool/refs/tags/1.17.0/README.md
+	b2sums = 2d14957ddc668e6ac74c8db5251a9ccc59f75d693442c8a8f64e32237175c09451368a4b47dac421a7c40da7630312e6c938ed62a0c1a4af8b7bec62e9a3820d
 	b2sums = 7b9908cb9a09c9c46a6451879f40f94be28f699ffba00c3dd71f7496adb2fede6bbfd857eb4bb3f59c8464afa748f6da5a9fac0918a3b21fa579661ad0ab5d2b
 	b2sums = fe84d6d7ab47bbdb61c92499296edf996a0807a33c3a2b7b8410eabbc44049f3485a93568551633cf39246c577bc1a2a312886bacff974fcd2149255ba21d68e
 
