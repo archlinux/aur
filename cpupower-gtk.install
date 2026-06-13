@@ -1,0 +1,25 @@
+pre_remove() {
+    # clean up the old standalone service if it's still running
+    if systemctl is-enabled cpupower-gtk-apply.service >/dev/null 2>&1; then
+        echo "  -> Disabling legacy cpupower-gtk-apply.service..."
+        systemctl disable --now cpupower-gtk-apply.service >/dev/null 2>&1 || true
+    fi
+}
+
+post_remove() {
+    # remove the systemd drop-in for cpupower
+    if [ -f /usr/lib/systemd/system/cpupower.service.d/cpupower-gtk.conf ]; then
+        echo "  -> Removing cpupower service drop-in..."
+        rm -f /usr/lib/systemd/system/cpupower.service.d/cpupower-gtk.conf
+        rmdir /usr/lib/systemd/system/cpupower.service.d 2>/dev/null || true
+    fi
+
+    # clean up the old passwordless sudo file if it exists
+    if [ -f /etc/sudoers.d/cpupower-gtk ]; then
+        echo "  -> Removing legacy sudoers drop-in..."
+        rm -f /etc/sudoers.d/cpupower-gtk
+    fi
+
+    echo "  -> Reloading systemd daemon..."
+    systemctl daemon-reload >/dev/null 2>&1 || true
+}
