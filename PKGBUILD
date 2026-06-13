@@ -1,6 +1,6 @@
 pkgname=rustpos-bin
 _pkgname=rustpos
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A modern, touch-friendly point of sale system built with Rust (binary repackage of upstream .deb)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -17,9 +17,9 @@ source_x86_64=("${_url_base}/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_url_base}/${_pkgname}_${pkgver}_arm64.deb")
 source_armv7h=("${_url_base}/${_pkgname}_${pkgver}_armhf.deb")
 
-sha256sums_x86_64=('ca0fca6a0578c788b77150e49b97426bcad7e6c173c9bec0388b34240c7e924f')
-sha256sums_aarch64=('b12f5360afa4117f1fc82f5c9c77f60d8d6b47b197e040d378717b56446cefe7')
-sha256sums_armv7h=('6c1e488e15cf621d667452b976d7a57ab5fd8892a9d51d907d1cbf8867a3e106')
+sha256sums_x86_64=('dde513bee2233b71e3633e3940190c21def33afb583239c8341e58878db8e070')
+sha256sums_aarch64=('4b8004d5d135ce755f062349776a735b20b54a04889a99c3095433232cd36993')
+sha256sums_armv7h=('1fde7c3a5d0bb2bd9af7b6b853ab139fc0c1c9638f9def223e3969cd0b2ae0df')
 
 package() {
     cd "${srcdir}"
