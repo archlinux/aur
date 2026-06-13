@@ -3,7 +3,7 @@
 pkgname="astra-music-git"
 pkgdesc="Audiophile music player with advanced visualization"
 pkgrel=1
-pkgver="v0.6.0_beta_18_g85efb13"
+pkgver="v0.6.0_beta_27_g322e5b4"
 
 url="https://github.com/Boof2015/astra"
 arch=('x86_64')
