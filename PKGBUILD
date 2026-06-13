@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A simple game server browser and an administrative tool"
 url="https://github.com/lxndr/gswatcher"
 arch=(x86_64)
-license=(GPL2)
+license=(AGPL-3.0-or-later)
 depends=("libgee" "gtk4>=4.6.1" "libadwaita>=1:1.3.0" "lua>=5.4.6" "geoip" "geoip-database-extra" "iso-flag-png")
 makedepends=("meson" "ninja" "vala>=0.56.13")
 
