@@ -1,0 +1,10 @@
+--- joy2key-1.6.3/joy2key.c	2026-06-13 12:16:57.218874701 -0700
++++ joy2key-1.6.3-aur/joy2key.c	2026-06-13 12:20:24.549372516 -0700
+@@ -43,6 +43,7 @@
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+ #include <sys/time.h>
++#include <arpa/inet.h>
+ #include <linux/joystick.h>
+ 
+ #ifdef ENABLE_X
