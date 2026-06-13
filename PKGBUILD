@@ -3,7 +3,7 @@
 pkgbase=td-system-tools
 pkgname=td-system-tools
 pkgver=2.7.4
-pkgrel=1
+pkgrel=3
 groups=()
 pkgdesc="Tools for Basic System Management"
 arch=($CARCH)
@@ -14,6 +14,8 @@ conflicts=(${pkgname} ${pkgname#td-})
 depends=(
     bash
     glibc
+    python
+    python-netifaces
 )
 makedepends=(
     gettext
@@ -23,8 +25,7 @@ makedepends=(
     ninja
     pkgconf
 )
-checkdepends=(
-)
+checkdepends=()
 optdepends=()
 options=('!debug')
 source=("${pkgname}::git+${url}.git#tag=${pkgname}-${pkgver}")

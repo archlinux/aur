@@ -1,7 +1,7 @@
 pkgbase = td-system-tools
 	pkgdesc = Tools for Basic System Management
 	pkgver = 2.7.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/dreibh/system-tools
 	arch = x86_64
 	license = GPL-3.0-only
@@ -13,6 +13,8 @@ pkgbase = td-system-tools
 	makedepends = pkgconf
 	depends = bash
 	depends = glibc
+	depends = python
+	depends = python-netifaces
 	provides = td-system-tools
 	provides = system-tools
 	conflicts = td-system-tools
