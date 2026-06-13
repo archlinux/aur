@@ -6,14 +6,15 @@
 pkgname=sddm-idle
 _pkgname=sddm
 pkgver=0.21.0
-pkgrel=6.2
+pkgrel=7
 pkgdesc='QML based X11 and Wayland display manager'
 arch=(x86_64)
 url='https://github.com/sddm/sddm'
 license=(GPL-2.0-or-later)
 depends=(bash
-         gcc-libs
          glibc
+         libgcc
+         libstdc++
          libxau
          libxcb
          pam
