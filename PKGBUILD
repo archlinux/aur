@@ -1,5 +1,5 @@
 pkgname=typhoon
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="A stylish weather app based on Stormcloud"
 arch=('any')
