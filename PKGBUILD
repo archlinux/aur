@@ -26,30 +26,48 @@ makedepends=('patchelf')
 optdepends=('breeze: Breeze widget style for Qt (recommended for best experience)')
 provides=('pineapple-notepad')
 conflicts=('pineapple-notepad')
-source=("${pkgname}-${pkgver}.deb::https://github.com/BLumia/pineapple-notepad/releases/download/${pkgver}-freeware/pineapple-notepad-debian-trixie-x86_64-${pkgver}.deb")
-sha256sums=('31a6ca692d1ffb51bf6bf971665d61ea59cb979ec88d653c2cbacf974c77dbaa')
+source=(
+    "${pkgname}-${pkgver}-deepin.deb::https://github.com/BLumia/pineapple-notepad/releases/download/${pkgver}-freeware/pineapple-notepad-deepin-crimson-x86_64-${pkgver}.deb"
+    "${pkgname}-${pkgver}-debian.deb::https://github.com/BLumia/pineapple-notepad/releases/download/${pkgver}-freeware/pineapple-notepad-debian-trixie-x86_64-${pkgver}.deb"
+)
+sha256sums=(
+    'd11bcd168fe51690999bb8ce998fa777bfacccefbbd2d68dac2378a06985d1d8'
+    '31a6ca692d1ffb51bf6bf971665d61ea59cb979ec88d653c2cbacf974c77dbaa'
+)
 
 package() {
     cd "$srcdir"
 
-    ar x "${pkgname}-${pkgver}.deb"
+    # Extract deepin .deb for main binary and common files
+    mkdir deepin && cd deepin
+    ar x "$srcdir/${pkgname}-${pkgver}-deepin.deb"
     tar xzf data.tar.gz
+    cd "$srcdir"
 
-    install -Dm755 usr/bin/pnotepad "$pkgdir/usr/bin/pnotepad"
+    # Extract debian .deb for bundled libs (compatible with Arch Qt6)
+    mkdir debian && cd debian
+    ar x "$srcdir/${pkgname}-${pkgver}-debian.deb"
+    tar xzf data.tar.gz
+    cd "$srcdir"
 
+    # Use deepin binary (no copy relocations)
+    install -Dm755 deepin/usr/bin/pnotepad "$pkgdir/usr/bin/pnotepad"
+
+    # Use debian bundled libs (resolve on Arch Qt6)
     install -dm755 "$pkgdir/usr/lib/pineapple-notepad"
-    install -m755 usr/lib/x86_64-linux-gnu/liblexilla.so "$pkgdir/usr/lib/pineapple-notepad/liblexilla.so"
-    install -m755 usr/lib/x86_64-linux-gnu/libscintilla-qt.so "$pkgdir/usr/lib/pineapple-notepad/libscintilla-qt.so"
+    install -m755 debian/usr/lib/x86_64-linux-gnu/liblexilla.so "$pkgdir/usr/lib/pineapple-notepad/liblexilla.so"
+    install -m755 debian/usr/lib/x86_64-linux-gnu/libscintilla-qt.so "$pkgdir/usr/lib/pineapple-notepad/libscintilla-qt.so"
 
     patchelf --set-rpath '$ORIGIN/../lib/pineapple-notepad' "$pkgdir/usr/bin/pnotepad"
 
-    install -Dm644 usr/share/applications/net.blumia.pineapple-notepad.desktop "$pkgdir/usr/share/applications/net.blumia.pineapple-notepad.desktop"
-    install -Dm644 usr/share/icons/hicolor/scalable/apps/net.blumia.pineapple-notepad.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/net.blumia.pineapple-notepad.svg"
-    install -Dm644 usr/share/metainfo/net.blumia.pineapple-notepad.metainfo.xml "$pkgdir/usr/share/metainfo/net.blumia.pineapple-notepad.metainfo.xml"
+    # Common files from deepin
+    install -Dm644 deepin/usr/share/applications/net.blumia.pineapple-notepad.desktop "$pkgdir/usr/share/applications/net.blumia.pineapple-notepad.desktop"
+    install -Dm644 deepin/usr/share/icons/hicolor/scalable/apps/net.blumia.pineapple-notepad.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/net.blumia.pineapple-notepad.svg"
+    install -Dm644 deepin/usr/share/metainfo/net.blumia.pineapple-notepad.metainfo.xml "$pkgdir/usr/share/metainfo/net.blumia.pineapple-notepad.metainfo.xml"
 
-    for lang_dir in usr/share/locale/*/; do
+    for lang_dir in deepin/usr/share/locale/*/; do
         lang=$(basename "$lang_dir")
-        install -Dm644 "usr/share/locale/${lang}/LC_MESSAGES/pineapple-notepad.mo" \
+        install -Dm644 "deepin/usr/share/locale/${lang}/LC_MESSAGES/pineapple-notepad.mo" \
             "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/pineapple-notepad.mo"
     done
 
