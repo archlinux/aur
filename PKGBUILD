@@ -2,7 +2,7 @@
 
 pkgname=yukigram-rua-bin
 _pkgname=yukigram-rua
-pkgver=6.9.1
+pkgver=6.9.2
 pkgrel=1
 pkgdesc='Yet another unofficial tdesktop client, but forked from yukigram'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('geoclue: geoinformation support'
 
 source=("$_pkgname-$pkgver-$pkgrel-x86_64.tar.gz::${url}/releases/download/$pkgver-$pkgrel/$_pkgname-$pkgver-$pkgrel-x86_64.tar.gz")
 
-sha256sums=('37973367ed1e3c658a52e423dc5746e10d0be9fd0ca23b03ccc36cab0715291f')
+sha256sums=('65fae01336b7b82580b59993d26f935662afa84d89ddd202f9964fa3a67639d4')
 
 package() {
 
