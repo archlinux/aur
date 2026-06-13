@@ -1,6 +1,6 @@
 pkgbase = nu_plugin_desktop_notifications
 	pkgdesc = A nushell plugin to send desktop notifications using notify-rust
-	pkgver = 0.112.2
+	pkgver = 0.113.1
 	pkgrel = 1
 	url = https://github.com/fmotalleb/nu_plugin_desktop_notifications
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = nu_plugin_desktop_notifications
 	makedepends = git
 	depends = libnotify
 	depends = dbus
-	source = nu_plugin_desktop_notifications-0.112.2.tar.gz::https://github.com/fmotalleb/nu_plugin_desktop_notifications/archive/refs/tags/v0.112.2.tar.gz
-	sha256sums = SKIP
+	source = nu_plugin_desktop_notifications-0.113.1.tar.gz::https://github.com/fmotalleb/nu_plugin_desktop_notifications/archive/refs/tags/v0.113.1.tar.gz
+	sha256sums = ac7ec09fe2950f76d2d7763894c034cde4919f2a282d7db267b8ba3b907e594c
 
 pkgname = nu_plugin_desktop_notifications
