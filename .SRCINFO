@@ -1,16 +1,16 @@
 pkgbase = plasmasafe
-	pkgdesc = KDE Plasma configuration backup and restore tool
+	pkgdesc = KDE Plasma configuration backup and restore command-line tool
 	pkgver = 0.1.0.0
 	pkgrel = 1
 	url = https://github.com/yousefvand/plasmasafe
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = ghc
-	makedepends = cabal-install
-	depends = gmp
-	depends = libffi
-	source = plasmasafe::git+https://github.com/yousefvand/plasmasafe.git#tag=v0.1.0.0
-	sha256sums = SKIP
+	depends = ghc-libs
+	depends = haskell-aeson
+	depends = haskell-aeson-pretty
+	depends = haskell-optparse-applicative
+	source = plasmasafe-0.1.0.0.tar.gz::https://github.com/yousefvand/plasmasafe/archive/refs/tags/v0.1.0.0.tar.gz
+	sha256sums = 0dd8593c4c62bd753d53e02486c7ed006cd6acfe4ad08d912eae06941b399721
 
 pkgname = plasmasafe
