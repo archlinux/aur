@@ -1,6 +1,6 @@
 # Maintainer: Jorge Pizarro-Callejas (jorgicio) <jpizarrocallejas@gmail.com>
 pkgname=dnslookup
-pkgver=1.11.2
+pkgver=1.12.0
 pkgrel=2
 pkgdesc="Simple command line utility to make DNS lookups to the specified server"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=()
 makedepends=('go>=1.23')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ameshkov/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0f4b74a4ac8c967b089eebc62fbf65334e76d42da4c4524e8182bb8400aa119d')
+sha256sums=('de4b851a21556811f26739b480fedd2c9e4fd0b238f4a4e20143e1f64b42474f')
 conflicts=('dnslookup-git' 'dnslookup-bin')
 
 prepare() {
