@@ -1,0 +1,29 @@
+--- pxview-git/CMakeLists.txt	2026-06-13 12:02:14.078472747 +0800
++++ pxview-git-new/CMakeLists.txt	2026-06-13 12:11:02.625466336 +0800
+@@ -1048,11 +1048,11 @@
+ 
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/ DESTINATION ${MAC_RES_PREFIX}share/PXView)
+ 
+-install(DIRECTORY libsigrokdecode/decoders DESTINATION ${MAC_RES_PREFIX}share/libsigrokdecode)
++install(DIRECTORY libsigrokdecode/decoders DESTINATION ${MAC_RES_PREFIX}share/PXView/libsigrokdecode)
+ 
+ foreach(dec ${C_DECODERS})
+ 	install(TARGETS decoder_${dec}
+-		DESTINATION ${MAC_RES_PREFIX}share/libsigrokdecode/c_decoders
++		DESTINATION ${MAC_RES_PREFIX}share/PXView/libsigrokdecode/c_decoders
+ 	)
+ endforeach()
+ 
+--- pxview-git/PXView/pv/config/appconfig.cpp	2026-06-13 12:02:14.179769546 +0800
++++ pxview-git-new/PXView/pv/config/appconfig.cpp	2026-06-13 12:30:36.605169664 +0800
+@@ -797,8 +797,8 @@
+ #elif defined(Q_OS_UNIX)
+     QDir dir(QCoreApplication::applicationDirPath());
+     // ../share/PXView/libsigrokdecode/decoders
+-    //if (dir.cd("..") && dir.cd("share")&& dir.cd("PXView")  && dir.cd("libsigrokdecode") && dir.cd("decoders"))
+-    if (dir.cd("..") && dir.cd("share") && dir.cd("libsigrokdecode") && dir.cd("decoders"))
++    if (dir.cd("..") && dir.cd("share")&& dir.cd("PXView")  && dir.cd("libsigrokdecode") && dir.cd("decoders"))
++    // if (dir.cd("..") && dir.cd("share") && dir.cd("libsigrokdecode") && dir.cd("decoders"))
+     {
+         return dir.absolutePath();
+     }

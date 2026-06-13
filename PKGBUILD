@@ -6,47 +6,40 @@
 # Origin Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=pxview-git
-pkgver=1.4.9.r14.11ea4f8
-pkgrel=2
+pkgver=1.5.0.r16.5d91251
+pkgrel=1
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
 arch=(i686 x86_64)
 url='https://github.com/PXLogic/PXView'
 license=(GPL-3.0-or-later)
 # Upstream added VCS dependency to libsigrokdecode :/
-depends=(hicolor-icon-theme glib2 python fftw
-        libusb zlib qt5-base qt5-svg boost-libs)
-makedepends=("boost" "cmake" "git" "librsvg" "qt5-svg")
+depends=(glibc libgcc libstdc++ hicolor-icon-theme
+         glib2 python fftw libusb zlib
+         qt6-base qt6-svg qt6-websockets
+         nlohmann-json boost-libs)
+makedepends=("boost" "cmake" "git" "qt6-svg")
 source=("${pkgname}::git+${url}.git"
-        "0001-make-glibc-happy.patch"
-        "0002-simplify-qt-version-detection.patch")
+        "0001-install-libsigrokdecode-under-PXView-prefix.patch")
 sha1sums=('SKIP'
-          '8ad9e29163c60579a668c424f47a82c0c0275182'
-          'e41decc1160dd42d86ee26c81a458fd93b8aa6a8')
+          'd27bc293735e0397c13fe03929e8c3a11e2b42ca')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  px_version="$(grep -oP 'PX_VERSION_MAJOR \K[0-9]+' CMakeLists.txt).$(grep -oP 'PX_VERSION_MINOR \K[0-9]+' CMakeLists.txt).$(grep -oP 'PX_VERSION_MICRO \K[0-9]+' CMakeLists.txt)"
+  px_version="$(grep -oP 'DS_VERSION_MAJOR \K[0-9]+' CMakeLists.txt).$(grep -oP 'DS_VERSION_MINOR \K[0-9]+' CMakeLists.txt).$(grep -oP 'DS_VERSION_MICRO \K[0-9]+' CMakeLists.txt)"
   
   printf "%s.r%s.%s" "${px_version}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-  git -C "${srcdir}/${pkgname}" clean -dfx
+  # git -C "${srcdir}/${pkgname}" clean -dfx
   cd "${srcdir}"/${pkgname}/
-
-  sed -i 's#MODE="0666"#TAG+="uaccess"#' PXView/px.rules
 
   # temporary fix icon display
   rsvg-convert -w 256 -h 256 -f png -o PXView/icons/logo.png PXView/icons/logo.svg
   
-  # https://github.com/PXLogic/PXView/pull/1
-  # fix archlinux gcc 14 build failure issue
-  git cherry-pick --no-commit ba80efab017d71647b1f4027a8b1fa
-
   # patch
-  git apply ${srcdir}/0001-make-glibc-happy.patch
-  git apply ${srcdir}/0002-simplify-qt-version-detection.patch
+  git apply ${srcdir}/0001-install-libsigrokdecode-under-PXView-prefix.patch
 }
  
 build() {
