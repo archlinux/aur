@@ -1,14 +1,14 @@
 # Maintainer: kausban <mail at kausban com>
 pkgname=openaudible-bin
-pkgver=4.8.2
+pkgver=4.8.3
 pkgrel=1
 pkgdesc="a cross-platform audiobook manager designed for Audible users. Manage all your audiobooks with this easy-to-use desktop application"
 arch=('x86_64')
 url="https://openaudible.org"
 license=('Apache')
 depends=("desktop-file-utils" "webkit2gtk")
-source=("https://github.com/openaudible/openaudible/releases/download/v4.8.2/OpenAudible_4.8.2_x86_64.deb")
-sha512sums=('58b1a1083495f7324fdf76b90520009db16c6085f7e3de3de3c898a4254dde0fc4f1021b924280c930452d8bee8076e11d6bd24b7061d74b8e8316446f376b55')
+source=("https://github.com/openaudible/openaudible/releases/download/v4.8.3/OpenAudible_4.8.3_x86_64.deb")
+sha512sums=('ee8fb7698d700439a56691aa3d4a005c612f24d633791e651cde2cf91c128f37f569e3d8048a9a9dcd7fae25c1317f855c3ccc473c4ab13436430f6be9ff4fd6')
 
 package(){
     # Extract package data
