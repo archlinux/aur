@@ -1,3 +1,4 @@
 [kwin-zones]
 source = "git"
 git = "https://invent.kde.org/automotive/kwin-zones.git"
+prefix = 'v'
