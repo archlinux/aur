@@ -1,6 +1,6 @@
 pkgbase = python-id2dirnode
 	pkgdesc = Implementation of id_to_dirnode.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://pypi.org/project/id2dirnode
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-id2dirnode
 	conflicts = python-id2dirnode
 	options = !strip
 	options = !debug
-	source = id2dirnode-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/i/id2dirnode/id2dirnode-0.0.1.tar.gz
-	sha256sums = 956c72156d1b27e6c46557189ce99465bcc580e09d3e5163df54e13908c586f4
+	source = id2dirnode-0.0.2.tar.gz::https://files.pythonhosted.org/packages/source/i/id2dirnode/id2dirnode-0.0.2.tar.gz
+	sha256sums = 42ce0cc57976ce06654e9f87c72f76ba5679afdb85889de95e36762e93e11f14
 
 pkgname = python-id2dirnode
