@@ -20,7 +20,7 @@ pkgbase = retro68-git
 	options = !debug
 	options = !lto
 	source = git+https://github.com/autc04/Retro68#commit=HEAD
-	source = MPW_fully_updated.sit
+	source = local://MPW_fully_updated.sit
 	source = retro68.sh
 	md5sums = SKIP
 	md5sums = 3f32f16d1e3b972e4a8b91ff6fd1406f

@@ -14,7 +14,7 @@ provides=("${_pkgname}")
 license=('GPLv3')
 # You can get the MPW archive from https://macintoshgarden.org/apps/macintosh-programmers-workshop
 source=("git+$url#commit=$_commit"
-        "MPW_fully_updated.sit"
+        "local://MPW_fully_updated.sit"
         "retro68.sh")
 
 md5sums=('SKIP'
