@@ -1,0 +1,27 @@
+# Compiled Binaries
+src/lssecret/lssecret
+*.o
+*.out
+*.exe
+
+# Build artifacts
+pkg/
+build/
+dist/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Git internal/mirrors (based on directory structure)
+lssecret/
+
+# Package manager/Build system files
+.SRCINFO
+*.pkg.tar.zst

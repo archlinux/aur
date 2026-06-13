@@ -4,7 +4,7 @@
 _pkgname=lssecret
 pkgname=${_pkgname}-git
 pkgver=r10.20fd771
-pkgrel=4
+pkgrel=5
 pkgdesc="utility to list all secret items in a secret service using libsecret"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/GrantMoyer/lssecret"
