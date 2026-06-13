@@ -1,7 +1,7 @@
 pkgbase = optiscaler-client-bin
 	pkgdesc = Modern desktop client for installing, updating and configuring OptiScaler across game libraries
 	pkgver = 1.0.5
-	pkgrel = 13
+	pkgrel = 1
 	url = https://github.com/Agustinm28/Optiscaler-Client
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = optiscaler-client-bin
 	source = optiscaler-icon-256.png::https://raw.githubusercontent.com/NasirA1991/aur-optiscaler-client/main/icon256.png
 	source = optiscaler-icon-128.png::https://raw.githubusercontent.com/NasirA1991/aur-optiscaler-client/main/icon128.png
 	source = optiscaler-client.desktop
-	sha256sums = SKIP
+	sha256sums = PLACEHOLDER
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -2,7 +2,7 @@
 
 pkgname=optiscaler-client-bin
 pkgver=1.0.5
-pkgrel=13
+pkgrel=1
 pkgdesc="Modern desktop client for installing, updating and configuring OptiScaler across game libraries"
 arch=('x86_64')
 url="https://github.com/Agustinm28/Optiscaler-Client"
@@ -22,7 +22,7 @@ source=(
   "optiscaler-client.desktop"
 )
 
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('PLACEHOLDER' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   mkdir -p "$pkgdir/opt/optiscaler-client"
