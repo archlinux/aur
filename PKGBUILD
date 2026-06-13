@@ -2,7 +2,7 @@
 
 pkgname=harmonic
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Retro-inspired desktop audio visualizer"
 arch=('x86_64')
 url="https://github.com/encor1/harmonic"
