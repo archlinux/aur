@@ -1,0 +1,11 @@
+# makepkg build artifacts
+/pkg/
+/src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.rpm
+*.log
+
+# extracted package contents
+/opt/
+/usr/

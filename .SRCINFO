@@ -1,0 +1,12 @@
+pkgbase = genesis-rpg-bin
+	pkgdesc = An RPG character management software with support for Splittermond, Space 1889, and other characters.
+	pkgver = 7.0.5
+	pkgrel = 1
+	url = https://www.rpgframework.de
+	arch = x86_64
+	license = custom
+	makedepends = libarchive
+	source = https://www.rpgframework.de/downloads/linux/genesis-7.0.5-1.x86_64.rpm
+	sha256sums = 70d9dbc224e8ebf647b41ad186bca7fb0efa9ab99ec3b07401bf886c9ab0bec1
+
+pkgname = genesis-rpg-bin
