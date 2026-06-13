@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Glassy Music
+Exec=glassy-music-nankill
+Terminal=false
+Type=Application
+Icon=glassy-music-nankill-mod
+StartupWMClass=nankill.xyz.glassymusic.mod
+Comment=Glassy Music is extension for music player 
+Categories=AudioVideo;

@@ -1,0 +1,22 @@
+pkgbase = glassy-music-nankill-git
+	pkgdesc = Glassy Music is extension for music player
+	pkgver = 3.12.8.beta.r12.gb25146f
+	pkgrel = 1
+	url = https://github.com/NanKillBro/glassy-music-nankill
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nvm
+	makedepends = pnpm
+	depends = electron41
+	depends = libsecret
+	provides = glassy-music-nankill
+	conflicts = glassy-music-nankill
+	source = git+https://github.com/NanKillBro/glassy-music-nankill.git
+	source = glassy-music-nankill.sh
+	source = glassy-music-nankill-mod.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = glassy-music-nankill-git
