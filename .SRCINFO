@@ -1,6 +1,6 @@
 pkgbase = octa
 	pkgdesc = Multi-format data viewer/editor supporting parquet, csv, json, avro, xlsx and more
-	pkgver = 0.11.5
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/thorstenfoltz/octa
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = octa
 	depends = mujs
 	conflicts = octa-bin
 	options = !lto
-	source = octa-0.11.5.tar.gz::https://github.com/thorstenfoltz/octa/archive/0.11.5.tar.gz
-	sha256sums = eb213c8a456ab9205e911d3a44b64343b0df50a8839a124f913380b1a006bfd1
+	source = octa-0.12.0.tar.gz::https://github.com/thorstenfoltz/octa/archive/0.12.0.tar.gz
+	sha256sums = 57df2ce365c639d9f8fadcbfa1ae2a3ed0778a68d68e76c45025aaaee7528c46
 
 pkgname = octa
