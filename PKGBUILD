@@ -5,7 +5,7 @@ _commit=HEAD
 _pkgname=Retro68
 pkgname=${_pkgname,,}-git
 pkgver=r1182.335fa54f6d
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform classic Macintosh 68k and PowerPC toolchain"
 arch=('x86_64')
 url="https://github.com/autc04/${_pkgname}"
@@ -47,5 +47,6 @@ package() {
   cd "${srcdir}/${_pkgname}-build"
   mkdir -p "${pkgdir}/opt"
   mv toolchain "${pkgdir}/opt/retro68"
+  mv "${srcdir}/${_pkgname}/Samples" "${pkgdir}/opt/retro68/examples"
   install -m 755 "${srcdir}/retro68.sh" "${pkgdir}/opt/retro68/retro68.sh"
 }
