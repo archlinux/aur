@@ -14,4 +14,4 @@ pkgbase = simplesinewavegenerator-git
 	source = git+https://github.com/ixnewton/simpleSineWaveGenerator.git#branch=Sweep-Generator-aur
 	sha256sums = SKIP
 
-pkgname = gtk-sine-generator-git
+pkgname = simplesinewavegenerator-git
