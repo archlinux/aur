@@ -63,7 +63,6 @@ new_tmp_dir() {
     printf '%s\n' "$tmp"
 }
 
-
 trap cleanup EXIT
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
@@ -142,7 +141,6 @@ END {
 }
 ' PKGBUILD >"$pkgbuild_tmp"  || fail "unable to update pkgver/pkgrel in PKGBUILD"
 cmd mv "$pkgbuild_tmp" PKGBUILD
-
 
 cmd makepkg || fail "makepkg failed"
 cmd makepkg --printsrcinfo >.SRCINFO  || fail "failed to regenerate .SRCINFO"

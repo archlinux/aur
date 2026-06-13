@@ -34,7 +34,7 @@ _patch_tree_sitter_haskell_gcc_workaround() {
     shopt -s nullglob
     _tsh_dirs=("${CARGO_HOME}"/registry/src/*/tree-sitter-haskell-*)
     shopt -u nullglob
-    if (( ${#_tsh_dirs[@]} != 1 )); then
+    if ((${#_tsh_dirs[@]} != 1)); then
         msg2 "Expected exactly one fetched tree-sitter-haskell source directory, found ${#_tsh_dirs[@]}"
         return 1
     fi
@@ -58,7 +58,7 @@ build() {
     local _toolchain
 
     _toolchain="$(awk -F'\"' '/^channel = / { print $2; exit }' rust-toolchain.toml)"
-    if [[ -z "${_toolchain}" ]]; then
+    if [[ -z ${_toolchain}   ]]; then
         msg2 "Unable to determine rustup toolchain from rust-toolchain.toml"
         return 1
     fi
@@ -90,11 +90,11 @@ _install_completions() {
     mkdir -p "${_completion_dir}" "${_runtime_dir}/home" "${_runtime_dir}/xdg"
 
     env HOME="${_runtime_dir}/home" XDG_DATA_HOME="${_runtime_dir}/xdg" \
-        "${_omp_bin}" completions bash > "${_completion_dir}/omp.bash"
+        "${_omp_bin}" completions bash >"${_completion_dir}/omp.bash"
     env HOME="${_runtime_dir}/home" XDG_DATA_HOME="${_runtime_dir}/xdg" \
-        "${_omp_bin}" completions zsh > "${_completion_dir}/_omp"
+        "${_omp_bin}" completions zsh >"${_completion_dir}/_omp"
     env HOME="${_runtime_dir}/home" XDG_DATA_HOME="${_runtime_dir}/xdg" \
-        "${_omp_bin}" completions fish > "${_completion_dir}/omp.fish"
+        "${_omp_bin}" completions fish >"${_completion_dir}/omp.fish"
 
     install -Dm644 "${_completion_dir}/omp.bash" "${pkgdir}/usr/share/bash-completion/completions/omp"
     install -Dm644 "${_completion_dir}/_omp" "${pkgdir}/usr/share/zsh/site-functions/_omp"
