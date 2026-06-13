@@ -3,13 +3,13 @@
 
 _pkgname=rectangle-packer
 pkgname=python-${_pkgname}-git
-pkgver=2.0.2.r16.g46fa636
+pkgver=2.1.0.r0.gf035ad0
 pkgrel=1
 pkgdesc="Pack a set of rectangles into a bounding box with minimum area"
 arch=('i686' 'pentium4' 'x86_64')
 url="https://github.com/Penlect/rectangle-packer"
 license=('MIT')
-depends=('python')
+depends=('python' 'python-matplotlib')
 makedepends=('git' 'cython' 'python-build' 'python-installer' 'python-setuptools')
 provides=('python-rectangle-packer')
 conflicts=('python-rectangle-packer')
