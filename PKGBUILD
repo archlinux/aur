@@ -3,7 +3,7 @@
 # Contributor: Dagmawi Ali <xdagiz at protonmail dot com>
 
 pkgname='xytz'
-pkgver=0.8.9
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='a beautiful TUI YouTube Downloader'
 url='https://github.com/xdagiz/xytz'
@@ -15,7 +15,7 @@ depends=('yt-dlp' 'ffmpeg')
 makedepends=('go' 'git')
 optdepends=('mpv: for playing videos')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/xdagiz/xytz/releases/download/v${pkgver}/xytz_${pkgver}.tar.gz")
-sha256sums=('caee0b6a8a1cf426fab7f28636eb2c017b0334687420bba2f1486c23a6f9ee7a')
+sha256sums=('b6bca62f2044bb38e163c724ff7fe82a94bdc07998c09602e0313b3ebce8ebc2')
 build() {
   cd "${pkgname}_${pkgver}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
