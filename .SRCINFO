@@ -1,7 +1,7 @@
 pkgbase = libmedium-git
 	pkgdesc = An Alternative Medium Frontend
 	pkgver = r188.c715480
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.batsense.net/realaravinth/libmedium
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,9 @@ pkgbase = libmedium-git
 	backup = etc/libmedium/config.toml
 	source = libmedium-git::git+https://git.batsense.net/realaravinth/libmedium
 	source = libmedium.service
+	source = 0001-modify-cache-dir.patch
 	sha256sums = SKIP
-	sha256sums = a4c2b3cea4c21a35168a443e7a6429dec268255dd06be55ff66fd9f462de15f9
+	sha256sums = d03c68462809945609446bcb6cdd8d87b6abc1fc1d03b17f1cbc15fd7f6e8ed9
+	sha256sums = bccd90af43ea14de9cb0976cd2872cc89898c14dbf5289702d30989597adcb10
 
 pkgname = libmedium-git

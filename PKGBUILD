@@ -3,7 +3,7 @@
 _pkgname=libmedium
 pkgname="${_pkgname}-git"
 pkgver=r188.c715480
-pkgrel=1
+pkgrel=2
 pkgdesc="An Alternative Medium Frontend"
 url="https://git.batsense.net/realaravinth/libmedium"
 license=('AGPL-3.0')
@@ -13,9 +13,15 @@ depends=('zstd' 'oniguruma')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=("etc/${_pkgname}/config.toml")
-source=("${pkgname}::git+${url}" "libmedium.service")
+
+source=(
+	"${pkgname}::git+${url}"
+	"libmedium.service"
+	"0001-modify-cache-dir.patch"
+)
 sha256sums=('SKIP'
-            'a4c2b3cea4c21a35168a443e7a6429dec268255dd06be55ff66fd9f462de15f9')
+            'd03c68462809945609446bcb6cdd8d87b6abc1fc1d03b17f1cbc15fd7f6e8ed9'
+            'bccd90af43ea14de9cb0976cd2872cc89898c14dbf5289702d30989597adcb10')
 
 # https://wiki.archlinux.org/title/VCS_package_guidelines#Git
 pkgver() {
@@ -25,6 +31,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
+	patch -p1 -i ../0001-modify-cache-dir.patch
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }

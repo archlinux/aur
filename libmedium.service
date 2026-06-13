@@ -6,6 +6,7 @@ After=network.service
 DynamicUser=yes
 ExecStart=/usr/bin/libmedium
 ConfigurationDirectory=libmedium
+CacheDirectory=libmedium
 
 # Hardening
 DeviceAllow=

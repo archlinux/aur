@@ -1,0 +1,15 @@
+diff --git a/config/default.toml b/config/default.toml
+index 70d3797..78889cd 100644
+--- a/config/default.toml
++++ b/config/default.toml
+@@ -1,6 +1,9 @@
+ debug = true
+ source_code = "https://git.batsense.net/realaravinth/libmedium"
+-#cache = "/var/lib/libmedium"
++
++# under the default systemd configuration,
++# this path should *not* be changed unless you know what you're doing
++cache = "/var/cache/libmedium"
+ 
+ [server]
+ # The port at which you want authentication to listen to
