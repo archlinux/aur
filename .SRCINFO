@@ -1,7 +1,7 @@
 pkgbase = unused-pkg-remover
 	pkgdesc = GUI tool to find and remove unused Arch Linux packages — orphans, pacman cache, Flatpak runtimes, broken packages, AUR build deps, Steam/Proton junk, and more
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dressedinblack5/unused-pkg-remover
 	arch = any
 	license = MIT
@@ -23,7 +23,7 @@ pkgbase = unused-pkg-remover
 	optdepends = bottles: Stale launcher runner cleaning
 	source = unused-pkg-remover-1.2.0.tar.gz::https://github.com/dressedinblack5/unused-pkg-remover/archive/main.tar.gz
 	source = unused-pkg-remover.desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 6ec196f88a0961de21385b20dc9f1012786e01365992a65f5aecc2d7f305dc85
+	sha256sums = bd62afefea6bd0fa7b89ff4a1878097b59eb0bc272d89d11000887af02a313c7
 
 pkgname = unused-pkg-remover
