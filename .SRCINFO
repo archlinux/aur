@@ -1,6 +1,6 @@
 pkgbase = gale-bin
 	pkgdesc = Lightweight Thunderstore client
-	pkgver = 1.13.4
+	pkgver = 1.13.5
 	pkgrel = 1
 	url = https://github.com/Kesomannen/gale
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = gale-bin
 	depends = xdg-utils
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/Kesomannen/gale/releases/download/1.13.4/gale_1.13.4_amd64.deb
+	source_x86_64 = https://github.com/Kesomannen/gale/releases/download/1.13.5/gale_1.13.5_amd64.deb
 	source_x86_64 = webkit-disable-compositing.patch
-	sha256sums_x86_64 = 62f1b5f56ef1495b5942c7d94780b8d7de6abc9ffc331f7e9f1d70826644f8f1
+	sha256sums_x86_64 = b42050ad2af54b14dccd3d77d932e04de53b6eba1a5d8df036e74d3e59980bad
 	sha256sums_x86_64 = SKIP
 
 pkgname = gale-bin
