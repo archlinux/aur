@@ -1,6 +1,6 @@
-pkgbase = kalico-git
+pkgbase = kalico-venv-git
 	pkgdesc = Klipper, but Limitless
-	pkgver = r5899.f26c79c77
+	pkgver = r5917.a7e74c5c1
 	pkgrel = 1
 	url = https://kalico.gg
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = kalico-git
 	optdepends = stm32flash: for flashing firmware on STM MCU
 	provides = kalico
 	conflicts = kalico
+	conflicts = kalico-git
 	source = kalico::git+https://github.com/KalicoCrew/kalico
 	source = kalico.service
 	source = sysusers.d-kalico.conf
@@ -34,4 +35,4 @@ pkgbase = kalico-git
 	optdepends_x86_64 = arm-none-eabi-gcc: for ARM MCU firmware compilation
 	optdepends_x86_64 = arm-none-eabi-newlib: for ARM MCU firmware compilation
 
-pkgname = kalico-git
+pkgname = kalico-venv-git

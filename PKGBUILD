@@ -4,9 +4,9 @@
 # Contributor: loredan13
 # Contributor: lf <packages at lfcode dot ca>
 
-pkgname=kalico-git
+pkgname=kalico-venv-git
 _pkgname=kalico
-pkgver=r5899.f26c79c77
+pkgver=r5917.a7e74c5c1
 pkgrel=1
 pkgdesc="Klipper, but Limitless"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -29,7 +29,7 @@ optdepends_x86_64=(
 )
 makedepends=('git')
 provides=('kalico')
-conflicts=('kalico')
+conflicts=('kalico' 'kalico-git')
 source=(
   "$_pkgname::git+https://github.com/KalicoCrew/kalico"
   'kalico.service'
