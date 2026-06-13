@@ -1,11 +1,11 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="smooll's Color Picker"
+pkgdesc="skowriii's color picker"
 arch=("x86_64")
-url="https://www.github.com/smooll-d/scolorpicker"
+url="https://www.github.com/skowriii/scolorpicker"
 license=("0BSD")
 groups=()
 depends=("sdl3")
