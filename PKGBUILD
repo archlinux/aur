@@ -1,10 +1,10 @@
 # Maintainer: Erich Eckner <arch at eckner dot net>
 
-_nginxver=1.30.0
+_nginxver=1.30.2
 
 pkgname=nginx-mod-ipscrub
 pkgver=1.0.1
-pkgrel=32
+pkgrel=33
 pkgdesc='IP address anonymizer for nginx log files'
 
 arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h')
@@ -23,7 +23,7 @@ validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8'  # Maxim Dounin <mdouni
               '43387825DDB1BB97EC36BA5D007C8D7C15D87369'  # Roman Arutyunyan <r.arutyunyan@f5.com>
               'D6786CE303D9A9022998DC6CC8464D549AF75C0A'  # Sergey Kandaurov <s.kandaurov@f5.com>
               '13C82A63B603576156E30A4EA0EA981B66B0D967') # Konstantin Pavlov <thresh@nginx.com>
-sha512sums=('9df502279583ea305e2d7a4cbe67c54cbcdb880f1caf010d582eea8839bda3bc6dd5e244bb79e848a70ad0c9fda9927cb8d9d8c5fc1bc49acc2da9e734543d7c'
+sha512sums=('dbba779a15595a77f340795c3a06bf5f846f351a14738f36085b3251f053c6b2946f112640754b8470b541ca45319fb599111cffc06e5cf2ac2384e64d16348c'
             'SKIP'
             '71d376c8d26d1f697ded361675186a2bd44b56afbfe6a2db3bee82d83402876e7ac685bd1e1318d9b2143ee9f85196e60c828af62b2685e8b1165dcaa025d196')
 
