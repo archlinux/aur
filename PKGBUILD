@@ -1,7 +1,7 @@
 # Maintainer: Jotalea <main@jotalea.com.ar>
 pkgname=oxicord-bin
 pkgver=0.1.9
-pkgrel=1
+pkgrel=4
 pkgdesc="Vim-native Discord TUI for terminal enthusiasts. Instant navigation (jk/gG), smart follow mode, infinite history scrolling, and image support."
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxmobile/oxicord"

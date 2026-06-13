@@ -1,7 +1,7 @@
 pkgbase = oxicord-bin
 	pkgdesc = Vim-native Discord TUI for terminal enthusiasts. Instant navigation (jk/gG), smart follow mode, infinite history scrolling, and image support.
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/linuxmobile/oxicord
 	arch = x86_64
 	arch = aarch64
