@@ -3,7 +3,7 @@
 
 pkgname=yabsnap
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
 url="https://github.com/hirak99/$pkgname"
@@ -12,7 +12,7 @@ depends=('bash' 'btrfs-progs' 'python')
 optdepends=('rsync: rsync based snapshot support' 'python-textual: for the TUI interface')
 makedepends=('tar')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('8127ea44e7e0562ade00f0fc4cbbb21b')
+sha256sums=('d4c577bf5be7a431b62e4c0c6ac79505a184c4e58827986c26ea1785943c243e')
 install="$pkgname".install
 
 build() {

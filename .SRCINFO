@@ -13,6 +13,6 @@ pkgbase = yabsnap
 	optdepends = rsync: rsync based snapshot support
 	optdepends = python-textual: for the TUI interface
 	source = yabsnap-2.4.0.tar.gz::https://github.com/hirak99/yabsnap/archive/refs/tags/v2.4.0.tar.gz
-	md5sums = 8127ea44e7e0562ade00f0fc4cbbb21b
+	sha256sums = d4c577bf5be7a431b62e4c0c6ac79505a184c4e58827986c26ea1785943c243e
 
 pkgname = yabsnap
