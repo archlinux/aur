@@ -43,12 +43,10 @@ source=(
     "Reasonix-${pkgver}-linux-amd64.tar.gz::${_relurl}/Reasonix-linux-amd64.tar.gz"
     'reasonix-desktop.sh'
     'reasonix-desktop.desktop'
-    "LICENSE::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/main-v2/LICENSE"
     "appicon.png::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/main-v2/desktop/build/appicon.png"
 )
 sha256sums=(
     '617d7da59cbb071f2e5e6e6b2799c96bce8325603f87af970dc3b77dd1e402fb'
-    'SKIP'
     'SKIP'
     'SKIP'
     '6778d9b903b3ff5ea8873f9f284be79f8a1d13ddfc3bbd1296bebc09d5d58116'
@@ -88,7 +86,4 @@ package() {
     install -Dm644 "${srcdir}/appicon.png" \
         "${pkgdir}/usr/share/pixmaps/reasonix-desktop.png"
 
-    # Install license
-    install -Dm644 "${srcdir}/LICENSE" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
