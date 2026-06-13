@@ -1,47 +1,62 @@
 # Maintainer:  yjun <jerrysteve1101 at gmail dot com>
-
+# Maintainer: taotieren <admin@taotieren.com>
 # based on the PKGBUILD of dsview
 # Origin Contributor: Anatol Pomozov
 # Origin Contributor: Abdelhak Bougouffa <abougouffa@fedoraproject.org>
 # Origin Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=pxview-git
-pkgver=1.5.0.r16.5d91251
-pkgrel=2
+pkgver=1.4.9.r2.g5d91251
+pkgrel=1
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
-arch=(i686 x86_64)
+arch=($CARCH)
 url='https://github.com/PXLogic/PXView'
 license=(GPL-3.0-or-later)
-# Upstream added VCS dependency to libsigrokdecode :/
-depends=(glibc libgcc libstdc++ hicolor-icon-theme
-         glib2 python fftw libusb zlib
-         qt6-base qt6-svg qt6-websockets
-         nlohmann-json boost-libs)
-makedepends=("boost" "cmake" "git" "qt6-svg"
-             "librsvg" # convert svg to png
-            )
-source=("${pkgname}::git+${url}.git"
-        "0001-install-libsigrokdecode-under-PXView-prefix.patch")
-sha1sums=('SKIP'
-          'd27bc293735e0397c13fe03929e8c3a11e2b42ca')
+depends=(
+  hicolor-icon-theme 
+  glib2
+  glibc
+  python 
+  fftw
+  libgcc
+  libstdc++
+  libusb 
+  zlib 
+  qt6-base 
+  qt6-websockets
+)
+makedepends=(
+  boost
+  boost-libs
+  cmake
+  ninja
+  npm
+  git
+  librsvg
+  nlohmann-json
+  minizip
+  qt6-svg 
+  qt6-tools
+  pkgconf
+  vulkan-headers
+)
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  px_version="$(grep -oP 'DS_VERSION_MAJOR \K[0-9]+' CMakeLists.txt).$(grep -oP 'DS_VERSION_MINOR \K[0-9]+' CMakeLists.txt).$(grep -oP 'DS_VERSION_MICRO \K[0-9]+' CMakeLists.txt)"
-  
-  printf "%s.r%s.%s" "${px_version}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^PXView_v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 prepare() {
-  # git -C "${srcdir}/${pkgname}" clean -dfx
+  git -C "${srcdir}/${pkgname}" clean -dfx
   cd "${srcdir}"/${pkgname}/
 
-  # temporary fix icon display
-  rsvg-convert -w 256 -h 256 -f png -o PXView/icons/logo.png PXView/icons/logo.svg
-  
-  # patch
-  git apply ${srcdir}/0001-install-libsigrokdecode-under-PXView-prefix.patch
+  sed -i 's#MODE="0666"#TAG+="uaccess"#' PXView/px.rules
 }
  
 build() {
@@ -51,8 +66,11 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev \
-    -B build
-  cmake --build build
+    -B build \
+    -G Ninja
+
+  ninja -C build
+  ninja -C build webui
 }
 
 check() {
@@ -63,12 +81,7 @@ check() {
 package() {
   cd "${srcdir}"/${pkgname}/
 
-  DESTDIR="${pkgdir}" cmake --install build
-
-  # temporary fix icon display
-  rm -rf ${pkgdir}/usr/share/pixmaps/pxview.svg \
-        ${pkgdir}/usr/share/icons/
-  install -Dm644 PXView/icons/logo.png ${pkgdir}/usr/share/pixmaps/pxview.png
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: set sw=2 ts=2 et:
