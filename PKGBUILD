@@ -8,7 +8,12 @@ pkgrel=1
 pkgdesc='The intersection of the Registry and Factory patterns'
 url='https://github.com/todofixthis/class-registry'
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-hatchling'
+)
 optdepends=()
 license=('MIT')
 arch=('any')

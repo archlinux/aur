@@ -8,6 +8,7 @@ pkgbase = python-class-registry
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python
 	source = https://github.com/todofixthis/class-registry/archive/5.2.2.tar.gz
 	b2sums = 26cd4baf25afe60219c8d76e80bad059f63a652d104e56a159540f19c1abf51b4e76bc3db978db150802e430745336b2f606c9f7b53c49f7009cdfd0f265627c
