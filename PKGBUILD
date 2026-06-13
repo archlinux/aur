@@ -3,7 +3,7 @@
 pkgbase=python-reproject
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Python-based Astronomical image reprojection"
 arch=('i686' 'x86_64')
@@ -11,18 +11,18 @@ url="http://reproject.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('cython>=3.1'
              'python-setuptools-scm'
-             'python-extension-helpers'
+             'python-extension-helpers>=1.4'
              'python-build'
              'python-installer'
 #            'python-tomli'
              'python-numpy>=2'
              'python-sphinx-astropy'
-             'python-matplotlib'
+             'python-sphinx-copybutton'
+#            'python-matplotlib'
              'python-astropy-healpix'
              'python-dask-image'
-             'python-scipy'
              'python-pyavm'
-             'python-pyvo')  # wheel required by new setuptools
+             'python-pyvo')  # scipy <- dask-image; wheel required by new setuptools
 #            'python-mimeparse')    # numpy for package itself
 #checkdepends=('python-pytest-arraydiff'
 #              'python-pytest-astropy-header'
@@ -35,7 +35,7 @@ makedepends=('cython>=3.1'
 #              'python-shapely'
 #              'python-zarr')     # astropy-healpix dask scipy already in makedep
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a9310bfe79f819d89a90ad88a7658622')
+md5sums=('23cf16c0edc85b26f9168eac2b285a44')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -56,6 +56,7 @@ build() {
     msg "Building Docs"
     ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
         build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
+#   PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make SPHINXOPTS="-D disable_intersphinx=1" -C docs html
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
