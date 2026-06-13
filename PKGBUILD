@@ -2,7 +2,7 @@
 
 pkgname='zoi'
 _tag="Prod-Release-$pkgver"
-pkgver=1.18.3
+pkgver=1.18.4
 pkgrel=1
 pkgdesc="Advanced Package Manager & Environment Orchestrator"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
 
 source=("$url/-/archive/$_tag/Zoi-Prod-Release-$pkgver.tar.gz"
   "LICENSE::$url/-/raw/main/LICENSE")
-sha512sums=('6146a35f3b5c2023acbb257f6182abd2a9dea68223430725d3a1ef9a7b95dbb319012c0747d6e315156884a408c9a209eb65241e6bfb9d4f4ff64d7da73059fd'
+sha512sums=('89a96a181abb167b261af445b8e8e8da5ff3a8de307ea3fc0ba111a8f629bdb2b5ad5bb8313e7bb8f9254b7ca6880f6a21ffb5bfef4205e3a8636e3ff98e41cd'
   'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
 
 build() {
