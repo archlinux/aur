@@ -2,7 +2,7 @@
 
 pkgname=feishin-bin
 pkgver=1.13.0
-pkgrel=5
+pkgrel=1
 pkgdesc="Modern web-based music player (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/jeffvli/feishin"
@@ -18,7 +18,8 @@ source=(
 )
 
 noextract=("feishin.tar.xz")
-sha256sums=('SKIP')
+
+sha256sums=()
 
 package() {
   mkdir -p "$pkgdir/opt/feishin"
@@ -26,10 +27,8 @@ package() {
   mkdir -p "$pkgdir/usr/share/applications"
   mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps"
 
-  # Extract app
   bsdtar -xf feishin.tar.xz -C "$pkgdir/opt/feishin"
 
-  # Launcher
   cat > "$pkgdir/usr/bin/feishin" << 'EOF'
 #!/bin/bash
 exec /opt/feishin/Feishin-linux-x64/feishin "$@"
@@ -37,7 +36,6 @@ EOF
 
   chmod +x "$pkgdir/usr/bin/feishin"
 
-  # Desktop file
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/feishin.desktop" << 'EOF'
 [Desktop Entry]
 Name=Feishin
@@ -53,7 +51,6 @@ Keywords=Navidrome;Jellyfin;Subsonic;OpenSubsonic
 Comment=A player for your self-hosted music server
 EOF
 
-  # Icon
   install -Dm644 \
     "$pkgdir/opt/feishin/Feishin-linux-x64/resources/assets/icons/512x512.png" \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/feishin.png"
