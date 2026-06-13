@@ -1,0 +1,4 @@
+[python-ast_decompiler]
+source = "git"
+git = "https://github.com/JelleZijlstra/ast_decompiler.git"
+prefix = "v"

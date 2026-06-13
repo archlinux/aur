@@ -1,0 +1,16 @@
+pkgbase = python-ast_decompiler
+	pkgdesc = Python module to decompile AST to Python code
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/JelleZijlstra/ast_decompiler
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-installer
+	depends = python
+	source = ast_decompiler-0.8.0.tar.gz::https://github.com/JelleZijlstra/ast_decompiler/archive/refs/tags/v0.8.0.tar.gz
+	b2sums = c220b1384e616f1d0f553e5e9a49d0afe2dc8a30c1b934724f70662876b3e56594b1391343d67cb041da97f890a0fd2c40aa3d553ba667050d0457131526d8c1
+
+pkgname = python-ast_decompiler
