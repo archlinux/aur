@@ -1,6 +1,6 @@
 pkgbase = raid-util-bin
 	pkgdesc = A simple and modern GUI for managing RAID.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/mijocecr/raid-util
 	arch = x86_64
