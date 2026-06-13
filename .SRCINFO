@@ -1,7 +1,7 @@
 pkgbase = git-credential-manager
         pkgdesc = A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux
         pkgver = 2.8.0
-        pkgrel = 1
+        pkgrel = 2
         url = https://github.com/git-ecosystem/git-credential-manager
         install = git-credential-manager.install
         arch = i686
