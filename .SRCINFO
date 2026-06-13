@@ -1,6 +1,6 @@
 pkgbase = unbill-cli-nightly-bin
 	pkgdesc = Command-line interface for unbill (nightly)
-	pkgver = nightly.20260612.024929
+	pkgver = nightly.20260613.024210
 	pkgrel = 1
 	url = https://github.com/unbill-project/unbill
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = unbill-cli-nightly-bin
 	provides = unbill-cli
 	conflicts = unbill-cli
 	conflicts = unbill-cli-bin
-	source_x86_64 = unbill-cli::https://github.com/unbill-project/unbill/releases/download/nightly-20260612-024929/unbill-cli-linux-x86_64
+	source_x86_64 = unbill-cli::https://github.com/unbill-project/unbill/releases/download/nightly-20260613-024210/unbill-cli-linux-x86_64
 	sha256sums_x86_64 = SKIP
 
 pkgname = unbill-cli-nightly-bin
