@@ -1,6 +1,6 @@
 pkgbase = unbill-tui-nightly-bin
 	pkgdesc = Terminal UI for unbill (nightly)
-	pkgver = nightly.20260612.024929
+	pkgver = nightly.20260613.024210
 	pkgrel = 1
 	url = https://github.com/unbill-project/unbill
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = unbill-tui-nightly-bin
 	provides = unbill-tui
 	conflicts = unbill-tui
 	conflicts = unbill-tui-bin
-	source_x86_64 = unbill-tui::https://github.com/unbill-project/unbill/releases/download/nightly-20260612-024929/unbill-tui-linux-x86_64
+	source_x86_64 = unbill-tui::https://github.com/unbill-project/unbill/releases/download/nightly-20260613-024210/unbill-tui-linux-x86_64
 	sha256sums_x86_64 = SKIP
 
 pkgname = unbill-tui-nightly-bin
