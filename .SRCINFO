@@ -1,6 +1,6 @@
 pkgbase = revpdf-bin
 	pkgdesc = The Best Free Offline PDF Editor
-	pkgver = 4.0.0
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://github.com/Pawandeep-prog/revpdf-release
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = revpdf-bin
 	depends = fuse2
 	provides = revpdf
 	conflicts = revpdf
-	source_x86_64 = revpdf_editor-4.0.0-x86_64.AppImage::https://github.com/Pawandeep-prog/revpdf-release/releases/download/v4.0.0/revpdf_editor-x86_64.AppImage
-	sha256sums_x86_64 = 5093767a07dea94d661baa8d1c9344850c83bc6b871f178fcff6a2968ac92145
-	source_aarch64 = revpdf_editor-4.0.0-aarch64.AppImage::https://github.com/Pawandeep-prog/revpdf-release/releases/download/v4.0.0/revpdf_editor-aarch64.AppImage
-	sha256sums_aarch64 = 9646de92631ae98146b9f215e4c481afc5789592a50c83d6289eee2f718380df
+	source_x86_64 = revpdf_editor-4.5.0-x86_64.AppImage::https://github.com/Pawandeep-prog/revpdf-release/releases/download/v4.5.0/revpdf_editor-x86_64.AppImage
+	sha256sums_x86_64 = 264cdd3ed551193ff53e5e3cd5565c79c1e4630fda2895183f2a06e1ca984644
+	source_aarch64 = revpdf_editor-4.5.0-aarch64.AppImage::https://github.com/Pawandeep-prog/revpdf-release/releases/download/v4.5.0/revpdf_editor-aarch64.AppImage
+	sha256sums_aarch64 = ee4d5ed073b811ffbd51233d5c79ac3d41516d78d84d6db766bf14e29b1b22bf
 
 pkgname = revpdf-bin
