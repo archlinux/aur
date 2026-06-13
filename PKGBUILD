@@ -2,7 +2,7 @@
 
 pkgname=paseo
 pkgver=0.1.96
-pkgrel=2
+pkgrel=3
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (built from source, runs on system Electron)"
 arch=('x86_64')
 url="https://paseo.sh"
@@ -129,6 +129,21 @@ package() {
         install -d "${_libdir}/$(dirname "$f")"
         cp -a "$f" "${_libdir}/$f"
     done
+
+    # Under `electron <dir>` (default_app), Electron derives the Wayland app_id
+    # from the loaded package.json "name" *before* main.js runs, so the in-app
+    # app.setName("Paseo") is too late and the window reports "getpaseo-desktop"
+    # (sanitised @getpaseo/desktop) — GNOME then can't match it to paseo.desktop
+    # and shows no icon. Rename the installed manifest so the app_id is "Paseo",
+    # matching StartupWMClass= (and paseo-bin). Runtime module resolution is
+    # path-based via the node_modules/@getpaseo/* symlinks, so the name field is
+    # never read at runtime; npm tooling that does isn't present post-install.
+    local _desktop_manifest="${_libdir}/packages/desktop/package.json"
+    sed -i 's#"name": "@getpaseo/desktop"#"name": "Paseo"#' "${_desktop_manifest}"
+    if grep -q '"name": "@getpaseo/desktop"' "${_desktop_manifest}"; then
+        printf 'ERROR: failed to rewrite desktop package.json name for the Wayland app_id\n' >&2
+        return 1
+    fi
 
     # Launcher tracks _electron_pkg so an Electron bump is a one-line change.
     install -d "${pkgdir}/usr/bin"
