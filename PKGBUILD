@@ -55,6 +55,7 @@ package() {
     # scan AUR packages BEFORE makepkg builds them.
     install -Dm644 "install/integration.bash" "$pkgdir/usr/share/aur-scan/integration.bash"
     install -Dm644 "install/integration.zsh" "$pkgdir/usr/share/aur-scan/integration.zsh"
+    install -Dm644 "install/integration.fish" "$pkgdir/usr/share/aur-scan/integration.fish"
 
     # Community rules example
     install -Dm644 "install/rules.d/example.toml" "$pkgdir/usr/share/aur-scanner/rules.d/example.toml"
