@@ -33,6 +33,7 @@ depends=(
 makedepends=(
   "java-environment=${_ver_jdk:?}"
   "lld${_ver_clang:-}"
+  "llvm${_ver_clang:-}"
 
   'boost'
   'cmake'
