@@ -6,7 +6,6 @@ pkgbase = froststrap-bin
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	license = MIT
-	license = Unlicense
 	depends = fontconfig
 	depends = hicolor-icon-theme
 	depends = gcc-libs
