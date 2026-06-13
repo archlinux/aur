@@ -8,8 +8,7 @@ Wants=network-online.target
 DynamicUser=yes
 User=alps
 Group=alps
-EnvironmentFile=/etc/alps.conf
-ExecStart=/usr/bin/alps $ALPS_OPTIONS $ALPS_SERVERS
+ExecStart=/usr/bin/alps -config /etc/alps.toml
 Restart=on-failure
 
 [Install]

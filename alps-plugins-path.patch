@@ -1,7 +1,7 @@
---- a/plugin.go	2022-04-18 08:26:37.395274661 +0200
-+++ b/plugin.go	2022-04-18 08:28:09.476688414 +0200
-@@ -7,7 +7,7 @@
- )
+--- a/plugin.go	2026-06-09 09:49:37.000000000 +0200
++++ b/plugin.go	2026-06-13 13:50:59.394133704 +0200
+@@ -3,7 +3,7 @@
+ import ()
  
  // PluginDir is the path to the plugins directory.
 -const PluginDir = "plugins"

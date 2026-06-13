@@ -5,8 +5,7 @@ After=network.target
 Wants=network-online.target
 
 [Service]
-EnvironmentFile=%E/alps/alps.conf
-ExecStart=/usr/bin/alps $ALPS_OPTIONS $ALPS_SERVERS
+ExecStart=/usr/bin/alps -config %E/alps/alps.toml
 Restart=on-failure
 
 [Install]

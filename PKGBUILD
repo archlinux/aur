@@ -1,8 +1,8 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-_commit='bd6a860d88e9ee02fc051f8596b042e7381b38fa'
+_commit='9bfa8832fc100e70199513bab4b64212396ae490'
 pkgname=alps
-pkgver=2025.11.25
+pkgver=2026.06.09
 pkgrel=1
 pkgdesc='A simple and extensible webmail'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,23 +11,18 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 options=('!lto')
-backup=("etc/${pkgname}.conf")
+backup=("etc/${pkgname}.toml")
 source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~migadu/${pkgname}/archive/${_commit}.tar.gz"
-        "${pkgname}.conf"
         "${pkgname}-system.service"
         "${pkgname}-user.service"
-        "${pkgname}-plugins-path.patch"
-        "${pkgname}-themes-path.patch")
-b2sums=('733d294720772113ed480d631e6e582a936a0f8a9000c818250080832c28ec4827f886a37102e607395a37e46a11664dd3e6ee74f867562b1b9548dc2a7f5319'
-        '8c9109649da6b030cd1c7ff32a5db1034391a8858593b649e953bd074b7329181c52575403d22b59113760423d15e0fb3cb3e8cdf5feb8415efe5aba936ae0c5'
-        '56f6f6439e537901c953a840ff08c70c9acf63b029e3298e612fb75c152d198f4d1535327b911790c01ca74b5ef5bba2a98c2fb4f14180727a457ea5b846a74e'
-        'a9ef4a29b26f950f3a1bd9f262a3c23bb731b79d15ff0cee979692b0b99cb0b678ed54da7fe36449ca146aa7e1da7ba7302fb7afc4620ef1a07a119ba789464c'
-        'b3bc983fa8350e36ff176e882bf7b67cb5ba4c0863e70c9cb5c2bd78a0ee12504ae997dec44cb008e68ead14d08dd30ea33719f0a107b170d6906ee4d69f8e5d'
-        'f34d00a82db978ade7c92ca13109e73be25fdff5046e2e9f279c09733a7ce7a5e11b368ddd76234d154b9af0fd917901fda2c2b33d3f41342b3a5f6d8e6afb21')
+        "${pkgname}-plugins-path.patch")
+b2sums=('d184a4f091229a27ae48843d1a9c9000e575680c19f28d6c837e6549d607fc5f431c297076800ba16d082c428dbd2987acf05758ce45e7b6a8658bf2036a8807'
+        'f8a965be3570f8094d76b8d4617d8d985cd6f6eef76ac35f8b5603d6af39f5e326afb51d507cd5b459d80ca20154df4fe1bb4aba18a7004bda1e0f6bccb719d5'
+        'f8b109b613bac65e8c707c94c2bd6e259e13cfb9e833c401a8546a0cb4507b9dc9a8d89091c3793ce602a280e22f5ae3dd66accf589710aaab388aa4546d0ff5'
+        '3560f4d24a8aff7e2b7b1c225e3df47b922ba370b7c1f492a5a41f28338860dbaa87a4c81ce8aebb90ae76da8702b5eee919083b4e05c571fab2521fc6aa6477')
 
 prepare(){
   patch -d "${pkgname}-${_commit}" -p1 <"${pkgname}-plugins-path".patch
-  patch -d "${pkgname}-${_commit}" -p1 <"${pkgname}-themes-path".patch
 }
 
 build() {
@@ -41,8 +36,6 @@ build() {
 }
 
 package() {
-  # config
-  install -D -m644 ${pkgname}.conf "${pkgdir}/etc/${pkgname}.conf"
   # services
   install -D -m644 ${pkgname}-system.service \
     "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
@@ -60,8 +53,8 @@ package() {
       cp -a "${plugin}/public" \
         "${pkgdir}/usr/lib/${pkgname}/${plugin}"
   done
-  # themes
-  cp -a themes "${pkgdir}/usr/lib/${pkgname}"
+  # config
+  install -D -m644 config.example.toml "${pkgdir}/etc/${pkgname}.toml"
   # docs
   install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   cp -a docs "${pkgdir}/usr/share/doc/${pkgname}"
