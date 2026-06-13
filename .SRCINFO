@@ -1,0 +1,21 @@
+pkgbase = libmedium-git
+	pkgdesc = An Alternative Medium Frontend
+	pkgver = r188.c715480
+	pkgrel = 1
+	url = https://git.batsense.net/realaravinth/libmedium
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	makedepends = cargo
+	makedepends = git
+	depends = zstd
+	depends = oniguruma
+	provides = libmedium
+	conflicts = libmedium
+	backup = etc/libmedium/config.toml
+	source = libmedium-git::git+https://git.batsense.net/realaravinth/libmedium
+	source = libmedium.service
+	sha256sums = SKIP
+	sha256sums = a4c2b3cea4c21a35168a443e7a6429dec268255dd06be55ff66fd9f462de15f9
+
+pkgname = libmedium-git
