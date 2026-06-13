@@ -1,4 +1,4 @@
-pkgbase = gtk-sine-generator-git
+pkgbase = simplesinewavegenerator-git
 	pkgdesc = Simple sine wave generator with GTK3 GUI and logarithmic frequency sweep
 	pkgver = v0.0.3.r3.g417fdac
 	pkgrel = 1
