@@ -1,6 +1,6 @@
 # Maintainer: Crazy <axelvasquez582@gmail.com>
 pkgname=gdiff
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="CLI tool to copy git staged diffs along with a set of rules to the clipboard"
 arch=('any')
