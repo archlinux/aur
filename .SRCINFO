@@ -1,6 +1,6 @@
 pkgbase = markit-git
 	pkgdesc = Mark-it CLI tool
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Fr4z49/Mark-it
 	arch = any
