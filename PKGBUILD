@@ -1,5 +1,5 @@
 pkgname=laravel-bin
-pkgver=5.23.2
+pkgver=5.28.1
 pkgrel=1
 pkgdesc="Laravel installation based on the official herd lite installer (https://php.new/install/linux/8.4). Only includes the laravel executable"
 arch=('x86_64')
