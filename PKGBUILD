@@ -1,17 +1,17 @@
-# Maintainer: Eisuke Kawashima <e DOT kawaschima+arch AT gmail DOT com>
+# Maintainer: Eisuke Kawashima <e DOT kawaschima+archlinux AT gmail DOT com>
 
 _pkgname=typeshed_client
 pkgname="python-${_pkgname}"
 pkgdesc='Retrieve information from typeshed and other typing stubs'
-pkgver='2.12.0'
+pkgver=2.13.0
 pkgrel=1
 url='https://github.com/JelleZijlstra/typeshed_client'
 arch=(any)
 license=(MIT)
 makedepends=(python-build python-installer python-setuptools)
-depends=(python python-importlib_resources python-typing_extensions)
+depends=(python python-typing_extensions)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/JelleZijlstra/typeshed_client/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=(d24a5fc0e35ae035ccb6d5b9228f3945fe5cd46c12329b38b515aba90451bf2ad128608df07020460d9cb8866471f346cc99e3cff27ea566ab26c084fa39c26a)
+b2sums=('7d4cd0c53bad04d6f64cb692a045bb59191b1f842c4941efee79ce1948e83b7182ae2095ff74269ef32dbb6b296e2d1deab1b94a561e97616ac50966181a1a73')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -20,7 +20,9 @@ build() {
 
 check() {
   cd "${_pkgname}-${pkgver}"
-  python tests/test.py
+  python -m venv --clear --system-site-packages venv
+  ./venv/bin/python -m installer dist/*.whl
+  ./venv/bin/python -P tests/test.py
 }
 
 package() {
