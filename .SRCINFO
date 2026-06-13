@@ -1,7 +1,7 @@
-pkgbase = orca-slicer-bin
+pkgbase = orca-slicer-beta-bin
 	pkgdesc = G-code generator for 3D printers
-	pkgver = 2.3.2
-	pkgrel = 3
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://github.com/SoftFever/OrcaSlicer
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -17,10 +17,11 @@ pkgbase = orca-slicer-bin
 	depends = libsm
 	provides = orca-slicer
 	conflicts = orca-slicer
+	conflicts = orca-slicer-bin
 	options = !strip
 	options = !zipman
 	options = !debug
-	source = https://github.com/SoftFever/OrcaSlicer/releases/download/v2.3.2/OrcaSlicer_Linux_AppImage_Ubuntu2404_V2.3.2.AppImage
-	sha512sums = e4e6ae7d829e39747d0f00079c6af157eada0a0d35845d6087324b99af5ab913f350b6e7c4d5e4769a4303472a7bb305a80590374c2c49be08cc040f8b2a91da
+	source = https://github.com/SoftFever/OrcaSlicer/releases/download/v2.4.0-beta/OrcaSlicer_Linux_AppImage_Ubuntu2404_V2.4.0-beta.AppImage
+	sha512sums = 8982c3de81e06b69d7843b269fbac93c8b68398b53479eb421fd21f772dc54873520cb134d64bf12cf9d87caec5caa70a0ebe76c60d0ad67a59b3cf400a5053b
 
-pkgname = orca-slicer-bin
+pkgname = orca-slicer-beta-bin
