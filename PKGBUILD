@@ -1,7 +1,7 @@
 # Maintainer: Lumina Nao <luminanao@duck.com>
 
 pkgname=llama-hdd
-pkgver=b9274.hdd
+pkgver=b9554.hdd
 pkgrel=1
 pkgdesc="LLM inference in C/C++ with disk-backed prompt-checkpoint persistence (llama.cpp soft-fork)"
 arch=('x86_64' 'aarch64')
