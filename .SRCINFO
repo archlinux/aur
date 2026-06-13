@@ -1,6 +1,6 @@
 pkgbase = helium-browser
 	pkgdesc = Private, fast, and honest web browser based on - Ungoogled - Chromium
-	pkgver = 0.13.2.1
+	pkgver = 0.13.3.1
 	pkgrel = 1
 	url = https://github.com/imputnet/helium
 	arch = x86_64
@@ -35,11 +35,11 @@ pkgbase = helium-browser
 	provides = chromium
 	conflicts = chromium
 	options = !lto
-	source = https://github.com/imputnet/helium/archive/refs/tags/0.13.2.tar.gz
-	source = https://github.com/imputnet/helium-linux/archive/refs/tags/0.13.2.1.tar.gz
+	source = https://github.com/imputnet/helium/archive/refs/tags/0.13.3.tar.gz
+	source = https://github.com/imputnet/helium-linux/archive/refs/tags/0.13.3.1.tar.gz
 	source = helium-browser.desktop
-	sha256sums = 0976fc5aa7d22c0d9d55b9967ed1135f59107828f44caba8c68f21e6aa719a21
-	sha256sums = f890ac2ef166a723062136cf38d1c983ddf13becfced68a38e50f432dd0f9efb
+	sha256sums = 0dca5dc76d287420b966767a7ee761dc0da6e155a5278f9542907a6e94b12d78
+	sha256sums = 678bcfa2baab10054cf91ba3bfec310d7ed808349728eb10a1b9959bbe7d408f
 	sha256sums = 934b84f8f55e8461c3e47651c632d5e8e2d23ec1d71113dd7384d845ffa16a27
 
 pkgname = helium-browser
