@@ -4,6 +4,8 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A Flutter-based image view and editor app for linux"
 arch=('x86_64')
+
+options=(!debug)
 url="https://github.com/mirarr-app/dwn"
 license=('MIT')
 depends=('gtk3')
