@@ -1,0 +1,15 @@
+pkgbase = bibavpn
+	pkgdesc = DPI-resistant SOCKS5/HTTP tunnel over TLS+WebSocket (server, client, invite minter)
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/Eljaja/BibaVPN
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	options = !lto
+	source = bibavpn-1.2.4.tar.gz::https://github.com/Eljaja/BibaVPN/archive/refs/tags/v1.2.4.tar.gz
+	sha256sums = 28b5be4a5f4ed4bc84790b8e94a04ccb2cf1242fe78b8244daa30aca24e0a632
+
+pkgname = bibavpn
