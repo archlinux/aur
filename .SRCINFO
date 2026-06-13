@@ -1,0 +1,17 @@
+pkgbase = toppy
+	pkgdesc = A colorful htop/btop-style system monitor TUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/toppy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = toppy
+	conflicts = toppy
+	source = toppy-0.1.0.crate::https://crates.io/api/v1/crates/toppy/0.1.0/download
+	sha256sums = e74a7d6c20135e93b4a0aa1216d078463b15b3b6cbc2befe362fb2682244bfdc
+
+pkgname = toppy
