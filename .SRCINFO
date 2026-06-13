@@ -1,0 +1,18 @@
+pkgbase = dorker
+	pkgdesc = Docker for headless Android emulator environments
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/cesarferreira/dorker
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	depends = android-tools
+	provides = dorker
+	conflicts = dorker
+	source = dorker-0.1.7.crate::https://crates.io/api/v1/crates/dorker/0.1.7/download
+	sha256sums = 81120ea53f49cebbd0487273d8cdd777d340ea418ac1c98829e128529052a0a0
+
+pkgname = dorker
