@@ -1,7 +1,7 @@
 # Maintainer: sickhate <archate@gmail.com>
 pkgname=meh2
-_commit=6e6b6634a47c442703dc758d700d089d8611a525
-pkgver=0.1.0.r81.6e6b663
+_commit=e41e5cdb3f3cc1b7a884b8401d254fdd64ceb862
+pkgver=0.1.0.r88.e41e5cd
 pkgrel=1
 pkgdesc="GTK4 Wayland widget system with Rhai scripting (default build: no systray)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 makedepends=('rust' 'cargo')
 options=('!debug' '!lto')
 source=("meh2-$pkgver.tar.gz::https://github.com/sickhate/meh2/archive/$_commit.tar.gz")
-sha256sums=('be32e3ca0186f23d44ab1db0446f13acf17d694747b1a6e531142601405dff7b')
+sha256sums=('b877767d4caf6ec63f4b30fdc67ab2e59060a262dab9887ddc1e58b3fe5cffa8')
 
 prepare() {
     cd "$srcdir/meh2-$_commit"
