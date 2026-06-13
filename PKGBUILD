@@ -1,7 +1,7 @@
 # Maintainer: Stanley Chan <johnsmith874436@gmail.com>
 pkgname=melody-player
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern Spotify-inspired desktop music player"
 arch=('x86_64')
 url="https://github.com/johnsmith8736/melody-player"
