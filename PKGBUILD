@@ -21,7 +21,7 @@ source=(
 	"${_pkgname}.service"
 )
 sha256sums=('SKIP'
-            '00902ae9e92f980a7a97112e569ccb487c50cdc580205053bca7e358664a7b10')
+            '1ef0f968ca5ff706ffc0c834b33b3d826f52e37d828d57b4254686e1c930d744')
 
 options+=(!lto)
 

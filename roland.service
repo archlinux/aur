@@ -3,7 +3,6 @@ ExecStart=/usr/bin/roland --config %h/.config/roland/config.toml
 
 [Unit]
 Description=Touch Gesture Daemon
-PartOf=niri.service
 After=niri.service
 ConditionEnvironment=WAYLAND_DISPLAY
 
