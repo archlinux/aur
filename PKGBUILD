@@ -7,7 +7,7 @@
 
 pkgname=pxview-git
 pkgver=1.5.0.r16.5d91251
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
 arch=(i686 x86_64)
@@ -18,7 +18,9 @@ depends=(glibc libgcc libstdc++ hicolor-icon-theme
          glib2 python fftw libusb zlib
          qt6-base qt6-svg qt6-websockets
          nlohmann-json boost-libs)
-makedepends=("boost" "cmake" "git" "qt6-svg")
+makedepends=("boost" "cmake" "git" "qt6-svg"
+             "librsvg" # convert svg to png
+            )
 source=("${pkgname}::git+${url}.git"
         "0001-install-libsigrokdecode-under-PXView-prefix.patch")
 sha1sums=('SKIP'
