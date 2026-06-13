@@ -7,7 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.20.0] - 2026-06-11
+## [2.20.2] - 2026-06-13
+
+### Added
+- Unit Creation Wizard time validators [Issue 44](https://github.com/plrigaux/sysd-manager/issues/44)
+          
+## [2.20.1] - 2026-06-11
 
 ### Added
 - Create Unit Wizard new options [Issue 44](https://github.com/plrigaux/sysd-manager/issues/44)
