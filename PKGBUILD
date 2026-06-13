@@ -7,14 +7,14 @@
 _name="arabic-reshaper"
 pkgname="python-${_name}"
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Reconstruct Arabic sentences to be used in applications that do not support Arabic"
 arch=('any')
 url="https://github.com/mpcabd/${pkgname}"
 license=('MIT')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pytest')
+makedepends=('python-build' 'python-installer' 'python-hatchling')
+checkdepends=('python-pytest' 'python-pytest-cov')
 optdepends=('python-fonttools>=4: TTF support')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz")
@@ -36,16 +36,11 @@ check() {
 }
 
 package() {
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  cd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vs "${site_packages}/${_name//-/_}-${pkgver}.dist-info/LICENSE" "LICENSE"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
