@@ -1,6 +1,6 @@
 # Maintainer: linux4life <age3dude@gmail.com>
 pkgname=front-porch-ai-bin
-pkgver=0.9.8.1
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="A chilled out frontend for KoboldCPP"
 arch=('x86_64')
