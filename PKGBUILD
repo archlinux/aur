@@ -1,6 +1,6 @@
 # Maintainer: Majd Bnat <magame2tec@gmail.com>
 pkgname=aegis-pentest
-pkgver=0.2.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="AI-driven web penetration testing orchestrator (PTES + OWASP WSTG)"
 arch=('any')
@@ -44,14 +44,23 @@ optdepends=(
   'arjun: HTTP parameter discovery (pipx)'
   'droopescan: Drupal scanner (pipx)'
   'wappalyzer-cli: tech detection (npm)'
-  'rtk: token compressor for LLM prompts (cargo install --git https://github.com/rtk-ai/rtk)'
+  'impacket: Active Directory tooling (pipx)'
+  'kerbrute: AD pre-auth user enum (go install)'
+  'bloodhound-python: AD path collector (pipx)'
+  'certipy: AD CS ESC1..ESC11 enum (pipx)'
+  'scoutsuite: multi-cloud config audit (pipx)'
+  'cloudsplaining: AWS IAM analysis (pipx)'
+  'kube-bench: CIS Kubernetes Benchmark'
+  'kube-hunter: K8s vulnerability scan (pipx)'
 )
 makedepends=(
   'python-build'
+  'python-installer'
   'python-hatchling'
+  'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('875a231deeb7ea091142961eebfbe494e37667a472a27281fbe51596d7aa0dc4')
+sha256sums=('8245bb2aa98301ab00e9d1e45afd68de5581cd9135f7cc0213300a7fa7daeae4')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -60,8 +69,7 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  pip install --root="$pkgdir/" --prefix=/usr --no-warn-script-location --no-deps dist/*.whl
-  pip install --root="$pkgdir/" --prefix=/usr --no-warn-script-location anthropic fastmcp
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   if [ -f LICENSE ]; then
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

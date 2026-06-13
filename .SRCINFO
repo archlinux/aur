@@ -1,12 +1,14 @@
 pkgbase = aegis-pentest
 	pkgdesc = AI-driven web penetration testing orchestrator (PTES + OWASP WSTG)
-	pkgver = 0.2.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/glorybnat/aegis-pentest
 	arch = any
 	license = MIT
 	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-hatchling
+	makedepends = python-wheel
 	depends = python>=3.12
 	depends = python-pip
 	depends = python-typer
@@ -42,8 +44,15 @@ pkgbase = aegis-pentest
 	optdepends = arjun: HTTP parameter discovery (pipx)
 	optdepends = droopescan: Drupal scanner (pipx)
 	optdepends = wappalyzer-cli: tech detection (npm)
-	optdepends = rtk: token compressor for LLM prompts (cargo install --git https://github.com/rtk-ai/rtk)
-	source = aegis-pentest-0.2.0.tar.gz::https://github.com/glorybnat/aegis-pentest/archive/v0.2.0.tar.gz
-	sha256sums = 875a231deeb7ea091142961eebfbe494e37667a472a27281fbe51596d7aa0dc4
+	optdepends = impacket: Active Directory tooling (pipx)
+	optdepends = kerbrute: AD pre-auth user enum (go install)
+	optdepends = bloodhound-python: AD path collector (pipx)
+	optdepends = certipy: AD CS ESC1..ESC11 enum (pipx)
+	optdepends = scoutsuite: multi-cloud config audit (pipx)
+	optdepends = cloudsplaining: AWS IAM analysis (pipx)
+	optdepends = kube-bench: CIS Kubernetes Benchmark
+	optdepends = kube-hunter: K8s vulnerability scan (pipx)
+	source = aegis-pentest-0.10.0.tar.gz::https://github.com/glorybnat/aegis-pentest/archive/v0.10.0.tar.gz
+	sha256sums = 8245bb2aa98301ab00e9d1e45afd68de5581cd9135f7cc0213300a7fa7daeae4
 
 pkgname = aegis-pentest
