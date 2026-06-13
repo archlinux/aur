@@ -1,4 +1,4 @@
-pkgbase = wireforge
+pkgbase = wireforge-ratty
 	pkgdesc = Braille Wireframe Viewer
 	pkgver = 0.6.0
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = wireforge
 	source = wireforge-0.6.0.tar.gz::https://github.com/Vaishnav-Sabari-Girish/wireforge/archive/v0.6.0.tar.gz
 	sha256sums = eb247e7d721d53757cbd2c6f9c62593209d171481f47750835a3c2ca8cd371a5
 
-pkgname = wireforge
+pkgname = wireforge-ratty
