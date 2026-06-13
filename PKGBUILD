@@ -1,8 +1,8 @@
 # Maintainer: Michael
 
 pkgname=harmonic
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Retro-inspired desktop audio visualizer"
 arch=('x86_64')
 url="https://github.com/encor1/harmonic"
@@ -18,11 +18,9 @@ depends=(
 
 install="${pkgname}.install"
 
-source=(
-  "${url}/releases/download/v${pkgver}/harmonic-linux-x86_64.tar.gz"
-)
+source=("https://github.com/encor1/harmonic/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
 
-sha256sums=('0fab780aed1ac23c29aebc5b364ca126aea3fa8f7748d0776f45f758f168ec5b')
+sha256sums=('3f7fea790451eff8529e9bf106c55b590d7e98358bea548e2ac0cbe8e9cc86fc')
 
 package() {
   install -Dm755 harmonic \
