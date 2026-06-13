@@ -1,3 +1,5 @@
+# Maintainer: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
+
 pkgname=wlvncc-git
 _pkgname=wlvncc
 pkgver=r150.cc0abf8
