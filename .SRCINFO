@@ -1,7 +1,7 @@
 pkgbase = paseo-bin
 	pkgdesc = One interface for all your Claude Code, Codex and OpenCode agents (Electron desktop app)
 	pkgver = 0.1.96
-	pkgrel = 1
+	pkgrel = 2
 	url = https://paseo.sh
 	install = paseo-bin.install
 	arch = x86_64
@@ -39,8 +39,12 @@ pkgbase = paseo-bin
 	source = paseo-bin-0.1.96.tar.gz::https://github.com/getpaseo/paseo/releases/download/v0.1.96/Paseo-0.1.96-x64.tar.gz
 	source = paseo.desktop
 	source = paseo.sh
+	source = paseo.service
+	source = paseo-daemon-session.sh
 	sha256sums = 6fc69a5d2f84016d38ccb88ffc724df93357380fb8f1a59be330c3f0f1442cc6
 	sha256sums = 6ae9c520668f639a22f17df7814548056ee46aa99a2886639405297a7b1ef212
 	sha256sums = 635acff5ec0bcce1b9dd5aa373cb1d043b29022bb6918325f8db7304c8828af9
+	sha256sums = df0d01b98ac405c5c25edbb91d61bb9e05355a57e0e652e00823d6331618d686
+	sha256sums = cdd7d12b02880dfec1ff8d3f29848088940caa617de7b20fbde43cfa3f2ccb60
 
 pkgname = paseo-bin
