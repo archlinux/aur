@@ -57,15 +57,19 @@ EOF
     install -Dm644 opt/genesis/lib/Genesis.png "$pkgdir/usr/share/pixmaps/genesis.png"
 
     # Genesis ist proprietär und liefert keine eigene Lizenzdatei mit -> den
-    # vom Autor bestätigten "No License"-Status als Lizenzhinweis dokumentieren.
+    # vom Autor bestätigten Status samt Repackaging-Erlaubnis dokumentieren.
     install -d "$pkgdir/usr/share/licenses/$pkgname"
     cat > "$pkgdir/usr/share/licenses/$pkgname/LICENSE" <<EOF
 Genesis – RPG Framework
 https://www.rpgframework.de
 
-Proprietäre Freeware, bewusst ohne Open-Source- oder Creative-Commons-Lizenz
-("No License", Auskunft des Autors). Genesis enthält Daten, deren Rechte nicht
-weitergegeben werden dürfen; alle Rechte vorbehalten. Bezug und Weitergabe
-ausschließlich über die offizielle Website.
+Proprietäre Freeware ohne formales Lizenzmodell ("No License", Auskunft des
+Autors). Genesis enthält Daten, deren Rechte nicht weitergegeben werden dürfen;
+alle Rechte vorbehalten. Bezug ausschließlich über die offizielle Website.
+
+Der Autor (Stefan, rpgframework.de) hat dem Umpaketieren des offiziellen
+Linux-RPM in ein Arch-Linux-/AUR-Paket ausdrücklich zugestimmt. Dieses Paket
+lädt das unveränderte RPM von der offiziellen Website und packt es lokal um;
+es verbreitet die Genesis-Daten nicht selbst weiter.
 EOF
 }
