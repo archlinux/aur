@@ -1,4 +1,4 @@
-# Maintainer: Eisuke Kawashima <e DOT kawaschima+arch AT gmail DOT com>
+# Maintainer: Eisuke Kawashima <e DOT kawaschima+archlinux AT gmail DOT com>
 # Contributor: Wu Junyu <wu DOT junyu DOT aur AT outlook DOT com>
 
 pkgname=mopac
