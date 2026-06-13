@@ -1,8 +1,8 @@
 # Maintainer: M1829 <m1829js@gmail.com>
 pkgname=mxset
 pkgver=1.7.5
-pkgrel=1
-pkgdesc='An optimized hashset in C89, yielding maximum compatibility and great performance.'
+pkgrel=2
+pkgdesc='An optimized hashset in GNU C89, using a SwissTable style open-addressing architecture.'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://codeberg.org/Muhamix/mxset'
 license=('LGPL-3.0-or-later')
