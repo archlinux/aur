@@ -1,7 +1,7 @@
 pkgbase = mxset-cpp
 	pkgdesc = MXSet is an optimized hashset library in GNU C89, these are C++ bindings for that library.
-	pkgver = 1.7.4
-	pkgrel = 2
+	pkgver = 1.7.6
+	pkgrel = 1
 	url = https://codeberg.org/Muhamix/mxset
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = mxset-cpp
 	license = LGPL-3.0-or-later
 	conflicts = mxset
 	options = staticlibs
-	source = mxset-cpp-1.7.4::https://codeberg.org/Muhamix/mxset/archive/v1.7.4.tar.gz
-	sha256sums = 6277750d3d9cd29096eaa70f9b411880cf8d65644f18c8af29511a8575245c91
+	source = mxset-cpp-1.7.6::https://codeberg.org/Muhamix/mxset/archive/v1.7.6.tar.gz
+	sha256sums = a7fe66bf964b88e57f5a3deb7a2b2eae9d43d0683b8ce09c28e171f053c7b623
 
 pkgname = mxset-cpp
