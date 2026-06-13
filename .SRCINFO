@@ -1,4 +1,4 @@
-pkgbase = gtk-sine-generator-git
+pkgbase = simpleSineWaveGenerator-git
 	pkgdesc = Simple sine wave generator with GTK3 GUI and logarithmic frequency sweep
 	pkgver = v0.0.3.r3.g417fdac
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = gtk-sine-generator-git
 	source = git+https://github.com/ixnewton/simpleSineWaveGenerator.git#branch=Sweep-Generator-aur
 	sha256sums = SKIP
 
-pkgname = gtk-sine-generator-git
+pkgname = simpleSineWaveGenerator-git
