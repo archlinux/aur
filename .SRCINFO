@@ -1,6 +1,6 @@
 pkgbase = zlang-git
 	pkgdesc = ZLang programming language compiler with LLVM backend
-	pkgver = r521.g2307bc5
+	pkgver = 0.1.1.r0.g616c01b
 	pkgrel = 1
 	url = https://github.com/zlangdevs/zlang
 	arch = x86_64

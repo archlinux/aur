@@ -1,6 +1,6 @@
 # Maintainer: hedgeg0d <werstak192@gmail.com>
 pkgname=zlang-git
-pkgver=r521.g2307bc5
+pkgver=0.1.1.r0.g616c01b
 pkgrel=1
 pkgdesc="ZLang programming language compiler with LLVM backend"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
