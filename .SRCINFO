@@ -1,9 +1,14 @@
 pkgbase = opentubex
 	pkgdesc = A fork of the open source desktop YouTube player FreeTube with additional features
 	pkgver = 0.25.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenTubeX/OpenTubeX
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = npm
