@@ -1,4 +1,4 @@
-pkgbase = starfish-so
+pkgbase = lib-starfish
 	pkgdesc = Starfish graph visualization shared library
 	pkgver = 0.0.4
 	pkgrel = 1
