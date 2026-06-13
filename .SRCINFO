@@ -1,6 +1,6 @@
 pkgbase = kaichat
 	pkgdesc = Chat interface for AI models such as ollama
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://apps.kde.org/kaichat/
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = kaichat
 	depends = purpose
 	depends = sonnet
 	depends = qt6-base
-	source = https://download.kde.org/stable/kaichat/kaichat-0.6.0.tar.xz
-	sha256sums = 9af0c4552ff191befcd12b2cd2101acf4bdc42c22a39336a41236cdab1df21c7
+	source = https://download.kde.org/stable/kaichat/kaichat-0.7.0.tar.xz
+	sha256sums = 0cd3891fb6d4aa6a41c3f417e38141c3d1a6cf2b09aaccef8cff0c11fdcb0a2e
 
 pkgname = kaichat
