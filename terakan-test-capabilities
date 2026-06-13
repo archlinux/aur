@@ -1,0 +1,35 @@
+#!/bin/bash
+# Safe Terakan capability probe — short timeouts, no heavy apps (no STK).
+set -euo pipefail
+
+if [[ -f /usr/share/vulkan/icd.d/terascale_icd.x86_64.json ]]; then
+  export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/terascale_icd.x86_64.json
+else
+  echo "ERROR: Terakan ICD not found."
+  exit 1
+fi
+
+export DISPLAY="${DISPLAY:-:0}"
+export XAUTHORITY="${XAUTHORITY:-$HOME/.Xauthority}"
+
+run() {
+  local t=$1
+  shift
+  echo "=== $* (timeout ${t}s) ==="
+  timeout "$t" "$@" || echo "(exit $?)"
+  echo
+}
+
+echo "Terakan capability probe"
+echo "ICD: $VK_ICD_FILENAMES"
+echo
+
+run 8 vkgears
+run 6 vkcube
+
+echo "--- Device features (grep) ---"
+timeout 25 vulkaninfo 2>/dev/null | grep -E \
+  'deviceName|apiVersion|multiDrawIndirect|shaderDraw|shaderSampledImageArrayDynamicIndexing|shaderStorageBufferArrayDynamicIndexing|maxPerStageDescriptorSamplers|maxPerStageDescriptorSampledImages' \
+  | head -20 || true
+
+echo "Done."

@@ -1,0 +1,27 @@
+#!/bin/bash
+# Prefer /usr/lib ICD (WSI-enabled build). Fallback: gallium copy in /usr/local.
+if [[ -f /usr/share/vulkan/icd.d/terascale_icd.x86_64.json ]]; then
+  export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/terascale_icd.x86_64.json
+elif [[ -f /usr/local/share/vulkan/icd.d/terascale_icd.x86_64.json ]]; then
+  export VK_ICD_FILENAMES=/usr/local/share/vulkan/icd.d/terascale_icd.x86_64.json
+else
+  echo "ERROR: Terakan ICD not found. Install vulkan-terakan."
+  exit 1
+fi
+
+export AMD_DEBUG=nohyperz,nofastcolor
+export R600_DEBUG=vs,ps,gs,tex,nohyperz
+export MESA_EXTENSION_OVERRIDE=+GL_ARB_gpu_shader_fp64
+
+if [[ ! -f /usr/lib/libvulkan_terascale.so && ! -f /usr/local/lib/libvulkan_terascale.so ]]; then
+  echo "ERROR: Terakan driver not found. Install vulkan-terakan."
+  exit 1
+fi
+
+if (($# == 0)); then
+  echo "Usage: terakan-vulkan-setup <command> [args...]"
+  echo "Example: terakan-vulkan-setup vkcube"
+  exit 1
+fi
+
+exec "$@"

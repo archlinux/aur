@@ -1,0 +1,43 @@
+diff --git a/src/c11/impl/threads_posix.c b/src/c11/impl/threads_posix.c
+index 3b8692482bbe..a1b2c3d4e5f6 100644
+--- a/src/c11/impl/threads_posix.c
++++ b/src/c11/impl/threads_posix.c
+@@ -46,11 +46,13 @@ impl_thrd_routine(void *p)
+ 
+ /*--------------- 7.25.2 Initialization functions ---------------*/
+ // 7.25.2.1
++#ifndef __once_flag_defined
+ void
+ call_once(once_flag *flag, void (*func)(void))
+ {
+     pthread_once(flag, func);
+ }
++#endif
+ 
+ /*------------- 7.25.3 Condition variable functions -------------*/
+ // 7.25.3.1
+diff --git a/src/c11/threads.h b/src/c11/threads.h
+index dbcb3459a9b2..f6e5d4c3b2a1 100644
+--- a/src/c11/threads.h
++++ b/src/c11/threads.h
+@@ -118,8 +118,10 @@ typedef pthread_cond_t  cnd_t;
+ typedef pthread_t       thrd_t;
+ typedef pthread_key_t   tss_t;
+ typedef pthread_mutex_t mtx_t;
++#ifndef __once_flag_defined
+ typedef pthread_once_t  once_flag;
+ #  define ONCE_FLAG_INIT PTHREAD_ONCE_INIT
++#endif
+ #  ifdef PTHREAD_DESTRUCTOR_ITERATIONS
+ #    define TSS_DTOR_ITERATIONS PTHREAD_DESTRUCTOR_ITERATIONS
+ #  else
+@@ -148,7 +150,9 @@ enum
+ 
+ /*-------------------------- functions --------------------------*/
+ 
++#ifndef __once_flag_defined
+ void call_once(once_flag *, void (*)(void));
++#endif
+ int cnd_broadcast(cnd_t *);
+ void cnd_destroy(cnd_t *);
+ int cnd_init(cnd_t *);

@@ -1,0 +1,46 @@
+diff --git a/src/c11/impl/threads_posix.c b/src/c11/impl/threads_posix.c
+index a1b2c3d4e5f6..b2c3d4e5f6a7 100644
+--- a/src/c11/impl/threads_posix.c
++++ b/src/c11/impl/threads_posix.c
+@@ -98,7 +98,7 @@ cnd_timedwait(cnd_t *cond, mtx_t *mtx, const struct timespec *abs_time)
+     assert(cond != NULL);
+     assert(abs_time != NULL);
+ 
+-    rt = pthread_cond_timedwait(cond, mtx, abs_time);
++    rt = pthread_cond_timedwait(cond, (pthread_mutex_t *)mtx, abs_time);
+     if (rt == ETIMEDOUT)
+         return thrd_timedout;
+     return (rt == 0) ? thrd_success : thrd_error;
+@@ -110,7 +110,7 @@ cnd_wait(cnd_t *cond, mtx_t *mtx)
+ {
+     assert(mtx != NULL);
+     assert(cond != NULL);
+-    return (pthread_cond_wait(cond, mtx) == 0) ? thrd_success : thrd_error;
++    return (pthread_cond_wait(cond, (pthread_mutex_t *)mtx) == 0) ? thrd_success : thrd_error;
+ }
+ 
+ 
+diff --git a/src/util/cnd_monotonic.c b/src/util/cnd_monotonic.c
+index c3d4e5f6a7b8..d4e5f6a7b8c9 100644
+--- a/src/util/cnd_monotonic.c
++++ b/src/util/cnd_monotonic.c
+@@ -130,9 +130,9 @@ u_cnd_monotonic_timedwait(struct u_cnd_monotonic *cond, mtx_t *mtx,
+    timespec_get(&now_time, TIME_MONOTONIC);
+    struct timespec rel_time;
+    timespec_sub_saturate(&rel_time, abs_time, &now_time);
+-   int rt = pthread_cond_timedwait_relative_np(&cond->cond, mtx, &rel_time);
++   int rt = pthread_cond_timedwait_relative_np(&cond->cond, (pthread_mutex_t *)mtx, &rel_time);
+ #else
+-   int rt = pthread_cond_timedwait(&cond->cond, mtx, abs_time);
++   int rt = pthread_cond_timedwait(&cond->cond, (pthread_mutex_t *)mtx, abs_time);
+ #endif
+    if (rt == ETIMEDOUT)
+       return thrd_timedout;
+@@ -151,6 +151,6 @@ u_cnd_monotonic_wait(struct u_cnd_monotonic *cond, mtx_t *mtx)
+                             (PCRITICAL_SECTION)mtx, INFINITE);
+    return thrd_success;
+ #else
+-   return (pthread_cond_wait(&cond->cond, mtx) == 0) ? thrd_success : thrd_error;
++   return (pthread_cond_wait(&cond->cond, (pthread_mutex_t *)mtx) == 0) ? thrd_success : thrd_error;
+ #endif
+ }

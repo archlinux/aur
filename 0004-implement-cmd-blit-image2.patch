@@ -1,0 +1,99 @@
+diff --git a/src/amd/terascale/vulkan/meta/terakan_meta_copy_image.c b/src/amd/terascale/vulkan/meta/terakan_meta_copy_image.c
+index 58868a8..281819e 100644
+--- a/src/amd/terascale/vulkan/meta/terakan_meta_copy_image.c
++++ b/src/amd/terascale/vulkan/meta/terakan_meta_copy_image.c
+@@ -373,3 +373,94 @@ terakan_CmdCopyImage2(VkCommandBuffer const commandBuffer,
+       }
+    }
+ }
++
++static bool
++terakan_meta_blit_region_to_copy(VkImageBlit2 const * const blit,
++                                 VkImageCopy2 * const copy_out)
++{
++   int32_t const src_x0 = blit->srcOffsets[0].x;
++   int32_t const src_x1 = blit->srcOffsets[1].x;
++   int32_t const src_y0 = blit->srcOffsets[0].y;
++   int32_t const src_y1 = blit->srcOffsets[1].y;
++   int32_t const src_z0 = blit->srcOffsets[0].z;
++   int32_t const src_z1 = blit->srcOffsets[1].z;
++
++   int32_t const dst_x0 = blit->dstOffsets[0].x;
++   int32_t const dst_x1 = blit->dstOffsets[1].x;
++   int32_t const dst_y0 = blit->dstOffsets[0].y;
++   int32_t const dst_y1 = blit->dstOffsets[1].y;
++   int32_t const dst_z0 = blit->dstOffsets[0].z;
++   int32_t const dst_z1 = blit->dstOffsets[1].z;
++
++   uint32_t const src_width = (uint32_t)abs(src_x1 - src_x0);
++   uint32_t const src_height = (uint32_t)abs(src_y1 - src_y0);
++   uint32_t const dst_width = (uint32_t)abs(dst_x1 - dst_x0);
++   uint32_t const dst_height = (uint32_t)abs(dst_y1 - dst_y0);
++   uint32_t const src_depth = (uint32_t)abs(src_z1 - src_z0);
++   uint32_t const dst_depth = (uint32_t)abs(dst_z1 - dst_z0);
++
++   if (src_width == 0 || src_height == 0 || dst_width == 0 || dst_height == 0 ||
++       src_depth == 0 || dst_depth == 0) {
++      return false;
++   }
++
++   if (src_width != dst_width || src_height != dst_height || src_depth != dst_depth) {
++      return false;
++   }
++
++   *copy_out = (VkImageCopy2){
++      .sType = VK_STRUCTURE_TYPE_IMAGE_COPY_2,
++      .srcSubresource = blit->srcSubresource,
++      .dstSubresource = blit->dstSubresource,
++      .srcOffset =
++         {
++            .x = MIN2(src_x0, src_x1),
++            .y = MIN2(src_y0, src_y1),
++            .z = MIN2(src_z0, src_z1),
++         },
++      .dstOffset =
++         {
++            .x = MIN2(dst_x0, dst_x1),
++            .y = MIN2(dst_y0, dst_y1),
++            .z = MIN2(dst_z0, dst_z1),
++         },
++      .extent =
++         {
++            .width = src_width,
++            .height = src_height,
++            .depth = src_depth,
++         },
++   };
++
++   return true;
++}
++
++VKAPI_ATTR void VKAPI_CALL
++terakan_CmdBlitImage2(VkCommandBuffer const commandBuffer,
++                      VkBlitImageInfo2 const * const pBlitImageInfo)
++{
++   STACK_ARRAY(VkImageCopy2, copies, pBlitImageInfo->regionCount);
++   uint32_t copy_count = 0;
++
++   for (uint32_t region_index = 0; region_index < pBlitImageInfo->regionCount; ++region_index) {
++      if (terakan_meta_blit_region_to_copy(&pBlitImageInfo->pRegions[region_index],
++                                             &copies[copy_count])) {
++         copy_count++;
++      }
++   }
++
++   if (copy_count > 0) {
++      VkCopyImageInfo2 const copy_info = {
++         .sType = VK_STRUCTURE_TYPE_COPY_IMAGE_INFO_2,
++         .srcImage = pBlitImageInfo->srcImage,
++         .srcImageLayout = pBlitImageInfo->srcImageLayout,
++         .dstImage = pBlitImageInfo->dstImage,
++         .dstImageLayout = pBlitImageInfo->dstImageLayout,
++         .regionCount = copy_count,
++         .pRegions = copies,
++      };
++      terakan_CmdCopyImage2(commandBuffer, &copy_info);
++   }
++
++   STACK_ARRAY_FINISH(copies);
++}

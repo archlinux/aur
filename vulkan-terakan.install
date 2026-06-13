@@ -1,0 +1,38 @@
+post_install() {
+  ldconfig
+
+  echo ""
+  echo "+---------------------------------------------------------------+"
+  echo "| Terakan Vulkan Driver Installation Complete                   |"
+  echo "+---------------------------------------------------------------+"
+  echo "| Required steps:                                               |"
+  echo "| 1. Rebuild initramfs: sudo mkinitcpio -P                      |"
+  echo "| 2. Reboot your system                                         |"
+  echo "| 3. Vulkan: terakan-vulkan-setup your-application             |"
+  echo "| 4. DirectX/Wine: terakan-dx-setup your-application            |"
+  echo "| 5. 32-bit Wine: terakan-vulkan32-setup your-application       |"
+  echo "+---------------------------------------------------------------+"
+
+  if ! lspci | grep -i vga | grep -i -E "AMD|ATI" > /dev/null; then
+    echo "WARNING: No AMD GPU detected. This driver is intended for AMD Terascale GPUs."
+  fi
+
+  if ! pacman -Q vulkan-icd-loader &>/dev/null; then
+    echo "WARNING: vulkan-icd-loader is not installed."
+  fi
+}
+
+post_upgrade() {
+  ldconfig
+  echo ""
+  echo "Terakan updated. Recommended: sudo mkinitcpio -P && reboot"
+}
+
+post_remove() {
+  rm -f /etc/profile.d/vulkan-terakan.sh
+  ldconfig
+  echo ""
+  echo "Removed Terakan. To restore defaults:"
+  echo "  sudo rm -f /etc/modprobe.d/terakan.conf"
+  echo "  sudo mkinitcpio -P && reboot"
+}

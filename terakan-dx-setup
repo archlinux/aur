@@ -1,0 +1,17 @@
+#!/bin/bash
+export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/terascale_icd.x86_64.json
+export PROTON_USE_WINED3D=1
+export PROTON_NO_GLSL=1
+export PROTON_NO_D3D11=0
+export PROTON_NO_D3D10=0
+export PROTON_NO_ESYNC=1
+export R600_DEBUG=nohyperz
+export WINEDLLOVERRIDES="d3d10,d3d11,dxgi=n"
+
+if [[ ! -f /usr/lib/libvulkan_terascale.so ]]; then
+  echo "ERROR: Terakan driver not found. Install vulkan-terakan."
+  exit 1
+fi
+
+echo "Terakan DirectX/Wine environment ready."
+exec "$@"

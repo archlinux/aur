@@ -1,0 +1,13 @@
+#!/bin/bash
+export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/terascale_icd.i686.json
+export AMD_DEBUG=nohyperz,nofastcolor
+export R600_DEBUG=vs,ps,gs,tex,nohyperz
+export MESA_EXTENSION_OVERRIDE=+GL_ARB_gpu_shader_fp64
+
+if [[ ! -f /usr/lib32/libvulkan_terascale.so ]]; then
+  echo "ERROR: 32-bit Terakan driver not found. Install lib32-vulkan-terakan."
+  exit 1
+fi
+
+echo "Terakan Vulkan 32-bit environment ready."
+exec "$@"

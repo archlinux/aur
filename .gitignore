@@ -1,0 +1,12 @@
+# Build artifacts
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+src/
+pkg/
+
+# Upstream clone (fetch via makepkg / manual clone)
+mesa/
+
+# Editor
+*~
+*.swp
