@@ -1,7 +1,7 @@
 pkgbase = melody-player
 	pkgdesc = Modern Spotify-inspired desktop music player
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/johnsmith8736/melody-player
 	arch = x86_64
 	license = MIT
