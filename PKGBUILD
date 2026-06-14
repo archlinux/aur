@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="radiogogo"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Go-powered CLI to surf global radio waves via a sleek TUI"
 arch=(
@@ -25,7 +25,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('c68f9826242b07fa13d86f009e8e615e4d1ce696b525c9225f7f5dbca6a1edf669d8fc32f5caa2b8191c16f566e49ffd9b692f40623650cb8a02e0134900ea83')
+b2sums=('69e0fc5a2e5372c9d7619f768f9e7c93b7cdff22e4e7b58ee98ab50a7b3a7f0891c71d3e51596760975bade63bfb7fab49f8a9001fc6aaaea33971e92cb0760a')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
@@ -45,7 +45,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${srcdir}/${_pkgsrc}"
-  go build -v -o "build/${_binname}" -ldflags "\
+  go build -v -o "build/${pkgname}" -ldflags "\
     -X github.com/zi0p4tch0/radiogogo/data.Version=v${pkgver}" \
     .
 }
