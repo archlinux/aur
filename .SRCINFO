@@ -12,6 +12,6 @@ pkgbase = sshfsm
 	depends = fuse2
 	optdepends = openssh: for SSH connections
 	source = sshfsm-2.4.0.tar.gz::https://github.com/skint007/sshfsm/archive/refs/tags/v2.4.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 0c8aa2a1e9a4fa733c1f9a9f15fd06700921a7979a781b567271f977bf635c0d
 
 pkgname = sshfsm

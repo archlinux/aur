@@ -10,7 +10,7 @@ depends=('bash' 'sshfs' 'jq' 'fuse2')
 optdepends=('openssh: for SSH connections')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('0c8aa2a1e9a4fa733c1f9a9f15fd06700921a7979a781b567271f977bf635c0d')
 # 'SKIP' is replaced with a real checksum by the CI workflow (updpkgsums) on
 # release. To set it manually, run `updpkgsums` in this directory after tagging.
 
