@@ -2,7 +2,6 @@ pkgbase = gitm8
 	pkgdesc = Git TUI for the masses!!
 	pkgver = 1.0.0
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/b404dev/gitm8
 	arch = x86_64
 	license = MIT

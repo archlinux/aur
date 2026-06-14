@@ -8,7 +8,6 @@ pkgdesc="Git TUI for the masses!!"
 
 pkgver=1.0.0
 pkgrel=1
-epoch=1
 _gitversion=v${pkgver}
 
 arch=('x86_64')
