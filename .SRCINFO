@@ -1,6 +1,6 @@
 pkgbase = pirate-radio-labs
   pkgdesc = A file explorer and mod creator for Knockout City's Private Server Edition
-  pkgver = 0.4.0
+  pkgver = 0.4.1
   pkgrel = 1
   url = https://github.com/KnockoutCity-Pirate-Radio/PirateRadio-Artifacts
   install = pirate-radio-labs.install
@@ -17,7 +17,7 @@ pkgbase = pirate-radio-labs
   depends = webkit2gtk-4.1
   options = !strip
   options = !debug
-  source_x86_64 = https://github.com/KnockoutCity-Pirate-Radio/PirateRadio-Artifacts/releases/download/labs-v0.4.0/Pirate.Radio.Labs_0.4.0_amd64.deb
-  sha256sums_x86_64 = 030abb0a97a7df58e157ad3af0ee6a81c367a17870db813c705ee310b5a3b2f1
+  source_x86_64 = https://github.com/KnockoutCity-Pirate-Radio/PirateRadio-Artifacts/releases/download/labs-v0.4.1/Pirate.Radio.Labs_0.4.1_amd64.deb
+  sha256sums_x86_64 = 2da55237e1381fc6b5ba34e70d4426d7c391996ff546205ffe061adfca6177dd
 
 pkgname = pirate-radio-labs
