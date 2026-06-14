@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledI18N"
 
 pkgname=untitled-i18n
-pkgver=1.6.0.0
+pkgver=1.6.1.0
 pkgrel=1
 pkgdesc="Next generation C/C++ internationalisation library"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -13,7 +13,7 @@ depends=("gcc-libs" "glibc" "pkgconf")
 provides=("lib${PKG_REAL_NAME}.so")
 makedepends=("cmake" "make" "pkgconf")
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('dbfe5869b5922f42e8f76a6d26537ef1054865d93ef02a8a54342e7c8f0e2f37')
+sha256sums=('65067590df825e8be96dee9f7512cb3250217681f337d569b14f6e7290588d32')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver/ || exit
