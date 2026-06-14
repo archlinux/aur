@@ -5,7 +5,7 @@
 # GitHub release is published. Named manifold-steam (NOT manifold) to avoid the
 # extra/manifold geometry library.
 pkgname=manifold-steam
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Bulk-manage Steam launch options and Proton compatibility"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
 makedepends=('rust' 'cargo' 'nodejs' 'npm')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b92618948de4dc879642201305108928395cb196dc02c00e2252da362948a86e')
+sha256sums=('fd354ab7ddbb881a892d94bba3bb8e5369e04830394f0d75309c8a8816243b0a')
 
 build() {
   cd "manifold-${pkgver}"
