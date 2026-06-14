@@ -1,7 +1,7 @@
 # Maintainer: Emil Velikov <emil.l.velikov@gmail.com>
 
 pkgname=mingw-w64-waffle
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='a library for choosing window system and OpenGL API at runtime (mingw-w64)'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-meson' 'cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://waffle.freedesktop.org/files/release/waffle-${pkgver}/waffle-${pkgver}.tar.xz{,.asc})
-sha256sums=('f616c0ca6072d36bf81fb79a3695799973a978775e0213744bf0a39be6367425'
+sha256sums=('1254afcddc7e2971fd1f8a543c7d0882d254a09d154fab00fe9fb5f4037b9f1c'
             'SKIP')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D')
 

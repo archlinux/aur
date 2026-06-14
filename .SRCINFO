@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-waffle
 	pkgdesc = a library for choosing window system and OpenGL API at runtime (mingw-w64)
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://waffle.freedesktop.org
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = mingw-w64-waffle
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://waffle.freedesktop.org/files/release/waffle-1.8.1/waffle-1.8.1.tar.xz
-	source = https://waffle.freedesktop.org/files/release/waffle-1.8.1/waffle-1.8.1.tar.xz.asc
+	source = https://waffle.freedesktop.org/files/release/waffle-1.8.2/waffle-1.8.2.tar.xz
+	source = https://waffle.freedesktop.org/files/release/waffle-1.8.2/waffle-1.8.2.tar.xz.asc
 	validpgpkeys = 8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D
-	sha256sums = f616c0ca6072d36bf81fb79a3695799973a978775e0213744bf0a39be6367425
+	sha256sums = 1254afcddc7e2971fd1f8a543c7d0882d254a09d154fab00fe9fb5f4037b9f1c
 	sha256sums = SKIP
 
 pkgname = mingw-w64-waffle
