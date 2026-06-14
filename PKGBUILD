@@ -1,6 +1,6 @@
 # Maintainer: dressedinblack5 <dressedinblack5@proton.me>
 pkgname=attack-shark-x11-electron
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="Cross-platform driver for the Attack Shark X11 gaming mouse with Electron GUI"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('electron' 'libusb')
 makedepends=('bun')
 options=('!strip')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('bfe0e207ee02b1b3439741c652968b3b6ad32108644ab587446bc04e28485ef0')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
