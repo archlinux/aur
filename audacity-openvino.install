@@ -1,7 +1,19 @@
 post_install() {
     /usr/share/audacity-openvino/elf_fix.py
+
+    # Create user models directory if it doesn't exist
+    if [ ! -L "/usr/share/audacity/openvino-models/user-models" ]; then
+        mkdir -p /usr/share/audacity/openvino-models/user-models
+        chmod a+w /usr/share/audacity/openvino-models/user-models
+    fi
 }
 
 post_upgrade() {
     /usr/share/audacity-openvino/elf_fix.py
+
+    # Ensure user models directory exists
+    if [ ! -L "/usr/share/audacity/openvino-models/user-models" ]; then
+        mkdir -p /usr/share/audacity/openvino-models/user-models
+        chmod a+w /usr/share/audacity/openvino-models/user-models
+    fi
 }

@@ -4,7 +4,7 @@
 
 pkgname=audacity-openvino
 pkgver=3.7.7
-pkgrel=8
+pkgrel=9
 
 # Auto-track latest 3.7.x release tag; override with explicit pkgver if needed
 _audacity_tag_prefix=Audacity-3.7
@@ -16,10 +16,10 @@ install=audacity-openvino.install
 depends=(
   libtorch whisper.cpp-openvino
   glibc
-  libid3tag libmad libsbsms libsndfile libsoxr
+  libid3tag libmad libsndfile libsoxr
   lilv opusfile portaudio portmidi portsmf
-  vamp-plugin-sdk wavpack openvino-models
-  python soundtouch sqlite suil twolame wxwidgets-gtk3
+  soundtouch sqlite openvino-models wxwidgets-gtk3
+  vamp-plugin-sdk wavpack suil twolame
 )
 optdepends=(
   'intel-compute-runtime: Intel GPU acceleration for OpenVINO'
@@ -37,7 +37,7 @@ provides=(
 	audacity
 )
 makedepends=(
-  git cmake chrpath ffmpeg rapidjson wxwidgets-gtk3 vst3sdk opencl-clhpp python
+  git cmake chrpath ffmpeg rapidjson vst3sdk opencl-clhpp
 )
 source=(
    "git+https://github.com/audacity/audacity.git"
@@ -207,4 +207,10 @@ package() {
   # Install ELF alignment fix script and pacman hook
   install -Dm755 "$srcdir/elf_fix.py" "${pkgdir}/usr/share/audacity-openvino/elf_fix.py"
   install -Dm644 "$srcdir/audacity-openvino-elf-fix.hook" "${pkgdir}/usr/share/libalpm/hooks/audacity-openvino-elf-fix.hook"
+
+  # Create user models directory (world-writable for Audacity)
+  mkdir -p "${pkgdir}/usr/share/audacity/openvino-models/user-models"
+  chmod a+w "${pkgdir}/usr/share/audacity/openvino-models/user-models"
+
+  
 }

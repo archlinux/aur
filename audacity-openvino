@@ -17,4 +17,25 @@ elif [ -d "$libtorch_cpu" ]; then
 	export LD_LIBRARY_PATH="/opt/libtorch-cpu/lib:/usr/lib"
 fi
 
+# Automatically create user models symlink if it doesn't exist
+default_user_dir="$HOME/.local/share/audacity-openvino/models"
+if [ ! -L "/usr/share/audacity/openvino-models/user-models" ]; then
+    echo "Setting up user models directory..."
+    if [ ! -d "$default_user_dir" ]; then
+        mkdir -p "$default_user_dir"
+        echo "Created user models directory: $default_user_dir"
+    fi
+    
+    if sudo ln -sfn "$default_user_dir" /usr/share/audacity/openvino-models/user-models 2>/dev/null; then
+        echo "Created symlink: /usr/share/audacity/openvino-models/user-models -> $default_user_dir"
+        if sudo chmod a+w /usr/share/audacity/openvino-models/user-models 2>/dev/null; then
+            echo "Made symlink writable for Audacity cache files"
+        fi
+    else
+        echo "Note: Could not create symlink automatically. You may need to run:"
+        echo "  sudo ln -sfn $default_user_dir /usr/share/audacity/openvino-models/user-models"
+        echo "  sudo chmod a+w /usr/share/audacity/openvino-models/user-models"
+    fi
+fi
+
 audacity "$@"
