@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname="ddnss"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Update DynDNS hosts registered at ddnss.de'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 options=(!lto)
 makedepends=('cargo' 'git')
 source=("${pkgname}-${pkgver}::git+${url}.git#tag=${pkgver}")
-md5sums=('f4cd94c0bb01367f7954f96bc14db5f8')
+md5sums=('bdab635560ab5d67fd68b51dccc35aea')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
