@@ -1,0 +1,17 @@
+pkgbase = sshfsm
+	pkgdesc = SSH File System Mount Manager - simplified bash script for mounting remote servers using sshfs
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/skint007/sshfsm
+	install = sshfsm.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = sshfs
+	depends = jq
+	depends = fuse2
+	optdepends = openssh: for SSH connections
+	source = sshfsm-2.4.0.tar.gz::https://github.com/skint007/sshfsm/archive/refs/tags/v2.4.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = sshfsm
