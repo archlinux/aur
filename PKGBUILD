@@ -12,5 +12,6 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 sha256sums=('SKIP')
 
 package() {
+  cd "$srcdir/liteparse-paddle-$pkgver"
   install -Dm755 bin/lp-paddle "${pkgdir}/usr/bin/lp-paddle"
 }
