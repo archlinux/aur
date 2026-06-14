@@ -2,9 +2,10 @@
 Version=1.0
 Type=Application
 Name=DBC Editor
-Comment=A pixel-art themed CAN Database Viewer and Editor
-Exec=dbc-editor
+Comment=A CAN Database Viewer and Editor
+Exec=dbc-editor %f
 Icon=dbc-editor
 Terminal=false
-Categories=Development;Utility;
+Categories=Development;Utility;Can;
 StartupNotify=true
+MimeType=text/plain;application/octet-stream;

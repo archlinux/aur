@@ -1,8 +1,8 @@
 pkgbase = dbc-editor-git
-	pkgdesc = A cute pixel-art themed CAN Database (DBC) Viewer and Editor
-	pkgver = 1.0.0
+	pkgdesc = A CAN Database (DBC) Viewer and Editor
+	pkgver = r46.3321861
 	pkgrel = 1
-	url = https://gitlab.com/livcl/dbc-viewer
+	url = https://gitlab.com/livcl1/dbc-editor
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -11,9 +11,9 @@ pkgbase = dbc-editor-git
 	depends = python-cantools
 	provides = dbc-editor
 	conflicts = dbc-editor
-	source = git+https://gitlab.com/livcl/dbc-viewer.git
+	source = git+https://gitlab.com/livcl1/dbc-editor
 	source = dbc-editor.desktop
 	sha256sums = SKIP
-	sha256sums = 689a71256985ef8c7ec103b35db14b7fe1839a1b044a27440d80c03f7570993a
+	sha256sums = 5051da91d9cae8585acf58acfc191b4e0114b0afc917f2191c08048d085ba510
 
 pkgname = dbc-editor-git

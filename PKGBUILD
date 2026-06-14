@@ -1,42 +1,48 @@
 # Maintainer: Liv - liv.cl321@gmail.com 
 pkgname=dbc-editor-git
-pkgver="1.0.0"
+pkgver=r46.3321861
 pkgrel=1
-pkgdesc="A cute pixel-art themed CAN Database (DBC) Viewer and Editor"
+pkgdesc="A CAN Database (DBC) Viewer and Editor"
 arch=('any')
-url="https://gitlab.com/livcl/dbc-viewer"
+url="https://gitlab.com/livcl1/dbc-editor"
 license=('GPL3')
 depends=('python' 'python-pyqt6' 'python-cantools')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://gitlab.com/livcl/dbc-viewer.git"
+source=("git+https://gitlab.com/livcl1/dbc-editor"
         "dbc-editor.desktop")
 sha256sums=('SKIP'
-            '689a71256985ef8c7ec103b35db14b7fe1839a1b044a27440d80c03f7570993a')
+            '5051da91d9cae8585acf58acfc191b4e0114b0afc917f2191c08048d085ba510')
 
-# This automatically updates the version number based on your git commits
 pkgver() {
-  cd "$srcdir/dbc-viewer"
+  cd "$srcdir/dbc-editor"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/dbc-viewer"
+  cd "$srcdir/dbc-editor"
 
-  # 1. Install the main script and logo to a shared system directory
-  install -Dm755 can_editor.py "$pkgdir/usr/share/dbc-editor/can_editor.py"
-  install -Dm644 logo.png "$pkgdir/usr/share/dbc-editor/logo.png"
-
-  # 2. Create a global terminal command to launch it
-  install -d "$pkgdir/usr/bin"
-  echo '#!/bin/bash' > "$pkgdir/usr/bin/dbc-editor"
-  echo 'exec python /usr/share/dbc-editor/can_editor.py "$@"' >> "$pkgdir/usr/bin/dbc-editor"
-  chmod +x "$pkgdir/usr/bin/dbc-editor"
-
-  # 3. Install the .desktop launcher
+  # Install source files and docs to /usr/share/dbc-editor
+  install -dm755 "$pkgdir/usr/share/dbc-editor"
+  cp -dr --no-preserve=ownership src docs "$pkgdir/usr/share/dbc-editor/"
+  
+  # Install system icon
+  install -Dm644 docs/logo.png "$pkgdir/usr/share/pixmaps/dbc-editor.png"
+  
+  # Install desktop file
   install -Dm644 "$srcdir/dbc-editor.desktop" "$pkgdir/usr/share/applications/dbc-editor.desktop"
 
-  # 4. Install the icon to the standard Linux icon directory
-  install -Dm644 logo.png "$pkgdir/usr/share/pixmaps/dbc-editor.png"
+  # Create a wrapper script in /usr/bin
+  install -dm755 "$pkgdir/usr/bin"
+  cat <<EOF > "$pkgdir/usr/bin/dbc-editor"
+#!/bin/sh
+cd /usr/share/dbc-editor
+exec python src/main.py "\$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/dbc-editor"
+
+  # Verify logo path resolution logic
+  echo "Verifying logo path resolution..."
+  python3 -c "import os; basedir = '/usr/share/dbc-editor/src/'.rstrip('/').rsplit('src', 1)[0]; icon_path = os.path.join(basedir, 'docs/logo.png'); print(f'Resolved logo path: {icon_path}'); assert icon_path == '/usr/share/dbc-editor/docs/logo.png'"
 }
