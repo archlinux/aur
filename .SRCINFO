@@ -1,11 +1,12 @@
 pkgbase = quickdashboard-git
 	pkgdesc = Configurable Quickshell dashboard for Wayland
-	pkgver = r0.0.0
+	pkgver = 0.0.2.r0.ga506b4f
 	pkgrel = 1
 	url = https://github.com/chpock/quickdashboard
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
+	depends = bash
 	depends = quickshell
 	depends = qt6-graphs
 	depends = dgop
@@ -15,7 +16,7 @@ pkgbase = quickdashboard-git
 	optdepends = khal: calendar events widget
 	optdepends = vdirsyncer: calendar sync and refresh integration
 	optdepends = openusage-cli: AI usage limits widget
-	provides = quickdashboard=r0.0.0
+	provides = quickdashboard=0.0.2.r0.ga506b4f
 	conflicts = quickdashboard
 	source = git+https://github.com/chpock/quickdashboard.git
 	sha256sums = SKIP
