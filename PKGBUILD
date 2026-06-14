@@ -30,6 +30,7 @@ depends=(
     'zlib'
     'mariadb-libs'
     'ncurses'
+    'patch'
     'uchardet'
     'hunspell'
     'glibc'
@@ -82,13 +83,17 @@ BUILD_DIR="_build.out"
 #
 #
 #
-
-pkgver() {
+pkgver()
+{
   cd "${srcdir}/${_gitname}"
   git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
+#
+#
+#
+prepare()
+{
   #cd "${srcdir}"
   #git clone -b master --single-branch --depth 1 --recursive --shallow-submodules https://github.com/eranif/codelite.git ${_gitname};
 
@@ -104,6 +109,7 @@ prepare() {
   git submodule --quiet deinit submodules/hunspell;  # MacOS only
   git submodule --quiet deinit submodules/libssh;  # MacOS only
   git submodule --quiet deinit submodules/openssl-cmake;  # MacOS only
+  git submodule --quiet deinit submodules/wx-config-msys2;  # MacOS only
   git submodule --quiet deinit submodules/zlib;  # MacOS only
 
   git submodule update;
@@ -120,7 +126,12 @@ prepare() {
 
 }
 
-build() {
+
+#
+#
+#
+build()
+{
   cd "${srcdir}/${_gitname}"
 
   mkdir -p "${BUILD_DIR}"
@@ -129,9 +140,12 @@ build() {
   export CXXFLAGS
 
   #WX_CONFIG="/usr/bin/wx-config-gtk3"
+  #WX_CONFIG="/usr/bin/wx-config"
   #WX_CONFIG="wx-config"
   #WX_CONFIG="wx-config-3.3.2"
   WX_CONFIG=$(command -v wx-config-3.3.2 wx-config-3.3.1 wx-config-3.3.0 wx-config-3.3 wx-config-3.2 wx-config | head -1);
+  #WX_CONFIG="wx-config"
+
   echo;
   echo "WX_CONFIG: ${WX_CONFIG}";
   echo;
@@ -160,7 +174,11 @@ build() {
   cmake --build "${BUILD_DIR}"
 }
 
-package() {
+#
+#
+#
+package()
+{
   cd "${srcdir}/${_gitname}"
 
   DESTDIR="${pkgdir}" cmake --install "${BUILD_DIR}"
