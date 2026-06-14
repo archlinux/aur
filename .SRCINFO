@@ -1,0 +1,16 @@
+pkgbase = boo-bin
+	pkgdesc = A GNU screen style terminal multiplexer built on libghostty
+	pkgver = 0.5.18
+	pkgrel = 1
+	url = https://github.com/coder/boo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = boo
+	conflicts = boo
+	source_x86_64 = boo-bin-amd64-0.5.18.tar.gz::https://github.com/coder/boo/releases/download/v0.5.18/boo-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 7c5e4024879ae851d641bc6ea12d7a19a2642131da610ed0e238395889d7630d
+	source_aarch64 = boo-bin-arm64-0.5.18.tar.gz::https://github.com/coder/boo/releases/download/v0.5.18/boo-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 99f04690a3b90d9845d98c5904f1b2f774f5f9de6074e657812f9caa4209abd3
+
+pkgname = boo-bin
