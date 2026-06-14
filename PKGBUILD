@@ -2,11 +2,13 @@
 pkgname=vendi-git
 _pkgname=vendi
 # vendiOS uses Minecraft-style snapshot versions: YYwWW<letter>
-#   26w24c = 2026, ISO week 24, snapshot c   (preview, pre-v0.1.1)
+#   26w24d = 2026, ISO week 24, snapshot d   (preview, pre-v0.1.1)
 # Bump this by hand each snapshot (a → b → c …, then next week 26w25a).
 # Stable releases will drop the snapshot scheme for plain semver (0.1.1, …).
 #   26w24c: touchscreen (wl_touch), blur toggle, per-window opacity
-pkgver=26w24c
+#   26w24d: real output-scale rendering, wp_fractional_scale_v1, layer
+#           re-arrange on live scale change, vendi display CLI
+pkgver=26w24d
 pkgrel=1
 pkgdesc="vendiOS preview snapshot — compositor, bar, lock, installer, CLI (pre-v0.1.1)"
 arch=('x86_64')
