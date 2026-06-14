@@ -2,7 +2,7 @@
 
 _pkgname=carton
 pkgname="${_pkgname}-bin"
-pkgver=0.4.1 # renovate: datasource=github-releases depName=821869798/carton
+pkgver=0.4.2 # renovate: datasource=github-releases depName=821869798/carton
 pkgrel=1
 pkgdesc="A Windows and Linux GUI client for sing-box.(主打高性能和易用性，非electron tauri等web套皮)"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_aarch64=("${_pkgname}-v${pkgver}-arm64-portable.tar.gz::https://github.co
 
 sha256sums=('d0f7cd798fd03274d6742245e320bbd2133dfdb7161c4470df4ea862b4fa57dd'
             'ddcf47960f17c5652904b24ad99a4a92af03dab850b8f29e50401d2a4a038138')
-sha256sums_x86_64=('731f3667ad7599199f062b605e45e4cfc1924958ce63da1e0b26ce4001e7e886')
-sha256sums_aarch64=('66c8f4945413eba335b9a3cb7d89a6d8f33b4a3506b120484af7d8de9777cd53')
+sha256sums_x86_64=('3a0d1d8578f0d7b12f2ec33a28351e352b2d53c55c0d31ab2f7564602e4a0faf')
+sha256sums_aarch64=('22145cdb1fef09f3d5cb1f731fe7bd9aac40ee0572499d1a1caaee2fc9f3f7a3')
 
 package() {
     install -dm755 "${pkgdir}/opt/${_pkgname}"
