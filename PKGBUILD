@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio-git
 pkgver=0.5.2.r2.g85efbd07
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
 url="https://github.com/MrNeRF/LichtFeld-Studio"
@@ -141,8 +141,22 @@ build() {
     local _nanobind_dir
     _nanobind_dir=$(dirname "$(readlink -f /usr/lib/cmake/nanobind/nanobind-config.cmake)")
 
+    # nvcc needs a host compiler within CUDA's supported range. Arch's cuda package
+    # strips the gcc-version guard from host_config.h, so on a current system nvcc
+    # silently uses the system gcc (16), which CUDA <= 13.3 rejects (host_config.h
+    # caps at gcc 15) -> deep, non-obvious compile failures. Pin the CUDA host
+    # compiler to the exact gcc the installed cuda depends on (gcc15 for cuda 13.3,
+    # gcc14 for cuda-pascal). Non-CUDA C++ is unaffected and keeps the system compiler.
+    local _cuda_pkg _cuda_gcc _cuda_host_cxx
+    _cuda_pkg=$(pacman -Qoq /opt/cuda/bin/nvcc)
+    _cuda_gcc=$(pacman -Qi "$_cuda_pkg" | grep -oP '\bgcc\K[0-9]+' | head -1)
+    _cuda_host_cxx="/usr/bin/g++-${_cuda_gcc}"
+    [[ -x "$_cuda_host_cxx" ]] || _cuda_host_cxx="/opt/cuda/bin/g++"
+    echo "==> CUDA host compiler: $_cuda_host_cxx (from $_cuda_pkg -> gcc$_cuda_gcc)"
+
     cmake -B build \
         -DCUDAToolkit_ROOT=/opt/cuda \
+        -DCMAKE_CUDA_HOST_COMPILER="${_cuda_host_cxx}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_RPATH=/usr/lib \
