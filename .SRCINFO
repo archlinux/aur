@@ -1,7 +1,7 @@
 pkgbase = mangofetch-bin
 	pkgdesc = Tool for fetch everythin' in internet
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/julesklord/mangofetch
 	arch = x86_64
 	license = GPL-3.0
@@ -11,11 +11,17 @@ pkgbase = mangofetch-bin
 	provides = mangofetch
 	conflicts = mangofetch
 	options = !strip
+	source = ICON-0.7.4.svg::https://raw.githubusercontent.com/julesklord/mangofetch/v0.7.4/docs/assets/logo.svg
 	source = README-0.7.4.md::https://raw.githubusercontent.com/julesklord/mangofetch/v0.7.4/README.md
 	source = LICENSE-0.7.4::https://raw.githubusercontent.com/julesklord/mangofetch/v0.7.4/LICENSE
+	source = mangofetch.desktop
+	sha256sums = c51ee75957efd5604dce49c014c86bf0ec40770f48461b7f447a922ae8cef3c8
 	sha256sums = 3a4e01fd98cfbcaf7cda0d33069788b3d36bb37af68c95c208ff89588ddc8a33
 	sha256sums = 230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809
-	source_x86_64 = mangofetch-x86_64-0.7.4::https://github.com/julesklord/mangofetch/releases/download/v0.7.4/mangofetch-cli-x86_64-unknown-linux-gnu
+	sha256sums = ae922cb150cbec60cebb3b46423396d452e02f62dfafb88952fe19aaf0381bc7
+	source_x86_64 = mangofetch-cli-x86_64-0.7.4::https://github.com/julesklord/mangofetch/releases/download/v0.7.4/mangofetch-cli-x86_64-unknown-linux-gnu
+	source_x86_64 = mangofetch-gui-x86_64-0.7.4::https://github.com/julesklord/mangofetch/releases/download/v0.7.4/mangofetch-gui-x86_64-unknown-linux-gnu
 	sha256sums_x86_64 = ca6f8b230072f924e6873778ad4fe66723b54940733506aff4c044c84ec9f86d
+	sha256sums_x86_64 = f477bbc857b12c3b9e23196d4efd5827ffb7108613a031b11f634efe3a1003a5
 
 pkgname = mangofetch-bin
