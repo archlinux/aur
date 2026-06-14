@@ -18,12 +18,12 @@ sha256sums=('SKIP'
 'SKIP')
 
 pkgver() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cmake -B build -S "$pkgname" -G Ninja \
+	cmake -B build -S "$_pkgname" -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release
 
