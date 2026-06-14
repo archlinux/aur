@@ -1,14 +1,13 @@
-# Maintainer: EarthMind <linux @AT adres .DOT maskmy .DOT id>
-
+# Maintainer: @aardbol
 pkgname=q-dns-bin
 pkgdesc='A tiny command line DNS client with support for UDP, DoT, DoH, DoQ and ODoH.'
 arch=('x86_64' 'aarch64')
 pkgver='0.19.12'
-pkgrel=1
+pkgrel=2
 license=('GPL-3.0')
 url='https://github.com/natesales/q'
 provides=('q-dns')
-conflicts=('q-dns-git')
+conflicts=('q-dns' 'q-dns-git')
 
 source_x86_64=("https://github.com/natesales/q/releases/download/v${pkgver}/q_${pkgver}_linux_amd64.deb")
 source_aarch64=("https://github.com/natesales/q/releases/download/v${pkgver}/q_${pkgver}_linux_arm64.deb")
