@@ -1,11 +1,11 @@
 pkgbase = astra-luajit-bin
 	pkgdesc = Blazingly Fast 🔥 web server runtime for Lua/Luau/Luajit with sqlite support
-	pkgver = 0.49.0
+	pkgver = 0.50.0
 	pkgrel = 1
 	url = https://github.com/ArkForgeLabs/Astra
 	arch = x86_64
 	license = custom AND Apache-2.0
-	source_x86_64 = astra-luajit-bin-0.49.0::https://github.com/ArkForgeLabs/Astra/releases/download/v0.49.0/astra-luajit-linux-amd64
-	sha256sums_x86_64 = 53cfaa751e8ca3cd71463e2117409e392f5b386c0bad85e78ce4fce7935da710
+	source_x86_64 = astra-luajit-bin-0.50.0::https://github.com/ArkForgeLabs/Astra/releases/download/v0.50.0/astra-luajit-linux-amd64
+	sha256sums_x86_64 = 4ed531b5188a2600b860365314110a0c8294347cf04b5cd8e30fa51bb12a1a65
 
 pkgname = astra-luajit-bin
