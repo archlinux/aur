@@ -1,6 +1,6 @@
 pkgbase = chiri-bin
 	pkgdesc = A cross-platform CalDAV task management app. Currently in very early alpha! (binary release)
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/chiriapp/chiri
 	install = chiri-bin.install
@@ -24,13 +24,13 @@ pkgbase = chiri-bin
 	replaces = caldav-tasks
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/chiriapp/chiri/releases/download/app-v0.9.1/Chiri_0.9.1_amd64.deb
+	source_x86_64 = https://github.com/chiriapp/chiri/releases/download/app-v0.9.2/Chiri_0.9.2_amd64.deb
 	source_x86_64 = chiri.desktop
-	sha256sums_x86_64 = 452d250b6c3ffcb51f36f3c1b8f2e3af4e0f8bdcfb941cf1b8e891191b4740f7
+	sha256sums_x86_64 = 7fa307fc3f1f11148e3fdd944327ea4a787cadc55ef40e8ea02f828dc303cdcf
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/chiriapp/chiri/releases/download/app-v0.9.1/Chiri_0.9.1_arm64.deb
+	source_aarch64 = https://github.com/chiriapp/chiri/releases/download/app-v0.9.2/Chiri_0.9.2_arm64.deb
 	source_aarch64 = chiri.desktop
-	sha256sums_aarch64 = 544438eac6fa7ca14176b14a19dbb6ca85316e3900e93bb8a06cc346c9d3b258
+	sha256sums_aarch64 = 73c1e53aa4779fd6352ab8b760979fcd615fdcab70f074fcba11b1e42878869d
 	sha256sums_aarch64 = SKIP
 
 pkgname = chiri-bin
