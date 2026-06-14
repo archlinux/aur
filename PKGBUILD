@@ -1,7 +1,7 @@
 # Maintainer: Li Productions
 pkgname=pytop
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful, modern htop clone written in Python using Rich."
 arch=('any')
 url="https://github.com/goldstac/pytop"
