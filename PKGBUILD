@@ -17,7 +17,7 @@ source=(
     "isocmd::https://github.com/siyia2/iso-commander/releases/download/v${pkgver}/isocmd"
     "isocmd.1::https://raw.githubusercontent.com/siyia2/iso-commander/refs/tags/v${pkgver}/man/isocmd.1"
 )
-md5sums=('0d0f7288b199616501d52b97aac7dbe9'
+md5sums=('68ab1aaef9d45d29d44ade66c94a2155'
          '2de5732c7ae2d0d92756b12cdf00c514')
 package() {
     install -Dm755 "${srcdir}/isocmd" "${pkgdir}/usr/bin/isocmd"
