@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="hack-browser-data"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Extract and decrypt browser data, supporting multiple data types"
 arch=(
@@ -25,7 +25,7 @@ _pkgsrc="${url##*/}"
 source=(
   "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
 )
-b2sums=('d21ceab975d5c7f1746779b6d83da92eeb7e49d59b2a5a99f5758cc829dd79b6d87bb3930d361f3917458b16503f9904c6e8a4d7c17366bdaf10ba6aa8e11b30')
+b2sums=('6a038417beafd709ef72b201f91c5a4497baf3538fc337c9abec52ec4b4b26c0c2b94ed848d24ea1506866ffdde6047e4f8a1e4215ebab8086ae5cc61eba8b6f')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
