@@ -9,7 +9,7 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=2.2.14
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Small but very powerful text-based mail client - slang version"
 arch=(x86_64)
@@ -47,8 +47,8 @@ optdepends=(
 backup=(etc/${_pkgbase}/Muttrc)
 install=${_pkgbase}.install
 source=("git+https://gitlab.com/muttmua/mutt.git#tag=mutt-${pkgver//./-}-rel?signed")
-sha512sums=('e83e8beff1994d1f371a95ca15106060212f6a6e260544a4ef5314532aaac24178250e29f5c6ba220104af1b9c45c2b21bcfee28d946e38b7918bb241e578023')
-b2sums=('628142f0a41a3eb217a0a4c6c1e2ace4682481488fef6f080becbaa8c4c851796c6efa38459ec174ce3033fec07c6d9277553b56a83316addaae10ee5e3c2e22')
+sha512sums=('690103869fe9c89b192b160eb64fc4eb6133539fcabfa83a69b6206ed261a6f0ae058bfda46958aa5aa60a364411d571e1c33fad4e00cf9f888c09f31ff86ae2')
+b2sums=('3b6dd82b4eb1cdf1bc944899c2c1ee801a80d8ef915108defa6fdb0669acb478f9905659bfe6a58243e2298328c7db046979bc61a055cc8ef725cbb1fd1f7a9f')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA') # Kevin J. McCarthy <kevin@8t8.us>
 
 prepare() {
