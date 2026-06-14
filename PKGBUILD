@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=local-ai
-pkgver=4.4.2 # renovate: datasource=github-tags depName=mudler/LocalAI
+pkgver=4.4.3 # renovate: datasource=github-tags depName=mudler/LocalAI
 pkgrel=2
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first"
 arch=('x86_64')
@@ -50,7 +50,7 @@ package() {
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
 
-sha256sums=('2a8091deca76f8380034f860021bd585ff7823d1a8b78a47745822bb619a3484'
+sha256sums=('cdba00f3dd4ef5a21e3fbcc71ba5d4c97c52c247e0ccfd00ff8fc46bf7aa24c3'
             '9d22535eaf1f2f9d3c65c4afcda492f5f3c69d04098344ec6e32b67077791321'
             'd7e620a65a98e6341c1e16e731ebd1aec636b229e81e043d44caf6607cba0147'
             '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
