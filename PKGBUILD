@@ -2,7 +2,7 @@
 
 _pkgname=pystring
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.1.5
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='C++ functions matching the interface and behavior of python string methods with std::string (mingw-w64)'
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-cmake')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/imageworks/pystring/archive/v${pkgver}.tar.gz")
-sha256sums=('63c30c251b8017c897bd923826f400aee1d6e4f1c22ffbbd2104f150522a2040')
+sha256sums=('020a603a757ba1e429f4b1ea6feb3afbe0fb34bcafa355032e1f1b8a0019d198')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
