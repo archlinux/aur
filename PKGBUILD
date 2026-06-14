@@ -36,7 +36,7 @@ sha256sums=(
 )
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
