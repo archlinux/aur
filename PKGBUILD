@@ -3,7 +3,7 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
-pkgver=4.25.5.r22.g3ca6f241a
+pkgver=4.25.5.r27.g2eee83383
 pkgrel=1
 
 pkgver() {
