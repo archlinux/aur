@@ -1,0 +1,7 @@
+[Unit]
+Description=DBus saver for Polonium
+
+[Service]
+Type=dbus
+ExecStart=polonium-saver
+BusName=xyz.vaughanm.polonium
