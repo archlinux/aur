@@ -9,7 +9,7 @@ url="https://github.com/coNQP/${pkgname}"
 license=('MIT')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}::git+${url}.git#tag=${pkgver}")
-md5sums=('SKIP')
+md5sums=('21ff67fd9d2c947d3db1b02d1b0bdb1c')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
