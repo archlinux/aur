@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-bn
 	pkgdesc = Bengali language pack for Firefox Nightly
-	pkgver = 153.0a1.20260613.205837
+	pkgver = 153.0a1.20260614.093100
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-bn
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-bn-153.0a1.20260613.205837.xpi
-	source = firefox-nightly-i18n-bn-153.0a1.20260613.205837.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-153.0a1.bn.langpack.xpi
-	sha256sums = 4ca35b32780a69632756a5594f930712535747c3db2eece9238fa11ab4604fae
+	noextract = firefox-nightly-i18n-bn-153.0a1.20260614.093100.xpi
+	source = firefox-nightly-i18n-bn-153.0a1.20260614.093100.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-153.0a1.bn.langpack.xpi
+	sha256sums = 991d3b7cb75ac1e3e7f3c95b8d08e3c360c71a92b045e02b94436026521a19b5
 
 pkgname = firefox-nightly-i18n-bn
