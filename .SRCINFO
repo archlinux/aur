@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-abseil-cpp
 	pkgdesc = Collection of C++ library code designed to augment the C++ standard library (mingw-w64)
-	pkgver = 20260107.1
+	pkgver = 20260526.0
 	pkgrel = 2
 	url = https://abseil.io
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-abseil-cpp
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/abseil/abseil-cpp/archive/20260107.1/abseil-cpp-20260107.1.tar.gz
-	sha256sums = 4314e2a7cbac89cac25a2f2322870f343d81579756ceff7f431803c2c9090195
+	source = https://github.com/abseil/abseil-cpp/archive/20260526.0/abseil-cpp-20260526.0.tar.gz
+	sha256sums = 6e1aee535473414164bf83e4ebc40240dec71a4701f8a642d906e95bea1aea0c
 
 pkgname = mingw-w64-abseil-cpp
