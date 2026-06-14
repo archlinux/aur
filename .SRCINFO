@@ -1,0 +1,19 @@
+pkgbase = comchan-bin
+	pkgdesc = A blazingly fast minimal serial monitor with plotter TUI and more
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/Vaishnav-Sabari-Girish/ComChan
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = libudev.so
+	depends = fontconfig
+	provides = comchan
+	conflicts = comchan
+	source_x86_64 = comchan-bin-0.10.1-x86_64.tar.xz::https://github.com/Vaishnav-Sabari-Girish/ComChan/releases/download/v0.10.1/comchan-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 827e57ce1076ee4a4c290def1e672140ed1c8116692cd91898296b0d37ee71f9
+	source_aarch64 = comchan-bin-0.10.1-aarch64.tar.xz::https://github.com/Vaishnav-Sabari-Girish/ComChan/releases/download/v0.10.1/comchan-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = b655b45583a3c39eae73519140d24b3473455537c365c0480042c6bb6897e36a
+
+pkgname = comchan-bin
