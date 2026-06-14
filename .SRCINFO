@@ -1,0 +1,18 @@
+pkgbase = cosmic-monitor-git
+	pkgdesc = WIP COSMIC System Monitor
+	pkgver = r81.b377a20
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-monitor
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	makedepends = mold
+	provides = cosmic-monitor
+	conflicts = cosmic-monitor
+	source = git+https://github.com/pop-os/cosmic-monitor.git
+	sha256sums = SKIP
+
+pkgname = cosmic-monitor-git
