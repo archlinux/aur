@@ -1,6 +1,6 @@
 # Maintainer: Kreuder <mk@singular.de>
 pkgname=edith
-pkgver=0.4.15
+pkgver=0.4.16
 pkgrel=1
 pkgdesc="GTK4 native SFTP client for live remote file editing"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=('meson' 'npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mkay/edith/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('29dbf7d42c99f66fa30da9c56f2ae0f58b4f75c32aff1436eb3ec29f7aad88c4')
+sha256sums=('cf13f88b54a5ef50b44f2703fcd9b62bec65f9560190f088f8803825497247f2')
 
 build() {
   cd "$pkgname-$pkgver"
