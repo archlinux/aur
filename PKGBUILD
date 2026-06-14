@@ -43,7 +43,7 @@ build() {
 check() {
 	cd ${srcdir}/${_pkgname}-${pkgver} || exit 1
 
-	./target/release/${_appname} --help
+	./target/release/${_appname} --version
 }
 
 package() {
