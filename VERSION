@@ -51,3 +51,8 @@ Add management features for mounted drives and local script folder
 - Enhanced terminal emulator support in configuration.
 - Added functionality to refresh and update drive management UI.
 - Check if user is sure when buttons are clicked to delete scripts, autorun entries, or both to prevent accidental deletions.
+
+[1.5.1] - 2026-06-14
+
+- Minor fixes and updades.
+- Hopefully works as intended now.

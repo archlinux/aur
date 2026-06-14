@@ -76,6 +76,20 @@ class ConfigThread(QThread):
         self.finished_signal.emit()
 
 
+class ListRemotesThread(QThread):
+    """Executes rclone listremotes in a background thread."""
+    finished_signal = pyqtSignal(list)
+    error_signal = pyqtSignal(str)
+
+    def run(self):
+        try:
+            result = subprocess.run(["rclone", "listremotes"], capture_output=True, text=True, check=True)
+            remotes = [r.strip(':') for r in result.stdout.strip().split('\n') if r]
+            self.finished_signal.emit(remotes)
+        except Exception as e:
+            self.error_signal.emit(str(e))
+
+
 # ==========================================
 # Main GUI Controller (View/ViewModel)
 # ==========================================
@@ -95,6 +109,7 @@ class RcloneKdeApp(QMainWindow):
         self.legacy_script_path = os.path.expanduser("~/rclone_mount_script.sh") # Fallback for v1.0 users
         self.mount_thread = None
         self.config_thread = None
+        self.list_remotes_thread = None
         
         self._build_ui()
         self._populate_remotes()
@@ -303,7 +318,11 @@ class RcloneKdeApp(QMainWindow):
                 for line in f:
                     parts = line.split()
                     if len(parts) >= 2:
-                        mounted_paths.add(parts[1])
+                        try:
+                            decoded_path = bytes(parts[1], "ascii").decode("unicode_escape")
+                            mounted_paths.add(decoded_path)
+                        except Exception:
+                            mounted_paths.add(parts[1])
         except Exception:
             pass  # Fallback to slower method if /proc/mounts unavailable
 
@@ -316,10 +335,10 @@ class RcloneKdeApp(QMainWindow):
             mount_path = ""
             try:
                 with open(script_path, "r") as f:
-                    content = f.read()
-                match = re.search(r'^MOUNT_PATH="(.*?)"', content, re.MULTILINE)
-                if match:
-                    mount_path = match.group(1)
+                    for line in f:
+                        if line.startswith('MOUNT_PATH="'):
+                            mount_path = line.split('"')[1]
+                            break
             except Exception:
                 continue
 
@@ -529,7 +548,7 @@ class RcloneKdeApp(QMainWindow):
         
         about_html = """
         <div style="font-family: sans-serif;">
-            <h2 style="color: #3daee9;">Rclone-WIZ 1.5</h2>
+            <h2 style="color: #3daee9;">Rclone-WIZ 1.5.1</h2>
             <p>A simple and easy-to-use tool to configure, script, and mount cloud drives using rclone.</p>
             <hr>
             <p><b>Created by:</b> Miran Kljun<br>
@@ -615,17 +634,29 @@ class RcloneKdeApp(QMainWindow):
         self._populate_remotes()
 
     def _populate_remotes(self):
-        """Executes 'rclone listremotes' and parses standard output to populate UI."""
+        """Executes 'rclone listremotes' via background thread to populate UI."""
         self.combo_remote.clear()
-        try:
-            result = subprocess.run(["rclone", "listremotes"], capture_output=True, text=True, check=True)
-            remotes = [r.strip(':') for r in result.stdout.strip().split('\n') if r]
-            if remotes:
-                self.combo_remote.addItems(remotes)
-            else:
-                self.combo_remote.addItem("No remotes found!")
-        except Exception:
-            self.combo_remote.addItem("Error: Rclone missing")
+        self.combo_remote.addItem("Loading...")
+        self.combo_remote.setEnabled(False)
+        
+        self.list_remotes_thread = ListRemotesThread()
+        self.list_remotes_thread.finished_signal.connect(self._on_remotes_loaded)
+        self.list_remotes_thread.error_signal.connect(self._on_remotes_error)
+        self.list_remotes_thread.start()
+
+    def _on_remotes_loaded(self, remotes):
+        self.combo_remote.clear()
+        self.combo_remote.setEnabled(True)
+        if remotes:
+            self.combo_remote.addItems(remotes)
+        else:
+            self.combo_remote.addItem("No remotes found!")
+        self._update_script()
+
+    def _on_remotes_error(self, err):
+        self.combo_remote.clear()
+        self.combo_remote.setEnabled(True)
+        self.combo_remote.addItem("Error: Rclone missing")
         self._update_script()
 
     def _browse(self):
@@ -721,10 +752,14 @@ class RcloneKdeApp(QMainWindow):
                 
                 self.text_script.setPlainText(content)
                 
-                # Extract MOUNT_PATH variable via regex to ensure GUI synchronization
-                match = re.search(r'^MOUNT_PATH="(.*?)"', content, re.MULTILINE)
-                if match:
-                    saved_path = match.group(1)
+                # Extract MOUNT_PATH variable efficiently to ensure GUI synchronization
+                saved_path = None
+                for line in content.splitlines():
+                    if line.startswith('MOUNT_PATH="'):
+                        saved_path = line.split('"')[1]
+                        break
+                
+                if saved_path is not None:
                     
                     # Suppress signal emission to prevent recursive calls to _update_script()
                     self.entry_path.blockSignals(True)
