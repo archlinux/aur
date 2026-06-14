@@ -1,0 +1,18 @@
+diff --git a/plug-ins/pdf/pdf-import.cpp b/plug-ins/pdf/pdf-import.cpp
+index 3af268646..8e0743d86 100644
+--- a/plug-ins/pdf/pdf-import.cpp
++++ b/plug-ins/pdf/pdf-import.cpp
+@@ -93,8 +93,13 @@ public :
+                       (Annot *annot, void *user_data) G_GNUC_UNUSED,
+                   void   *annotDisplayDecideCbkData   G_GNUC_UNUSED)
+   {
++#if (POPPLER_VERSION_MAJOR > 26) || (POPPLER_VERSION_MAJOR == 26 && POPPLER_VERSION_MINOR >= 6)
++    const PDFRectangle *mediaBox = &(page->getMediaBox());
++    const PDFRectangle *clipBox = &(page->getCropBox ());
++#else
+     const PDFRectangle *mediaBox = page->getMediaBox();
+     const PDFRectangle *clipBox = page->getCropBox ();
++#endif
+ 
+     if (page->isOk()) {
+       real w1 = (clipBox->x2 - clipBox->x1);
