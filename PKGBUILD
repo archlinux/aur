@@ -3,7 +3,7 @@
 _pkgname=Amethyst-Mod-Manager
 pkgname=amethyst-mod-manager
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A Linux native mod manager for a variety of games'
 arch=('any')
 url='https://github.com/ChrisDKN/Amethyst-Mod-Manager'
@@ -41,6 +41,8 @@ depends=(
 
     # Modding tools
     'python-libloot'
+
+    'python-bsdiff4'
 )
 optdepends=(
     'zenity: native dialog'
