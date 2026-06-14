@@ -19,7 +19,7 @@ format_version() {
 
 pkgauthor="NSPC911"
 pkgname="rovr"
-pkgver=0.9.1.1
+pkgver=0.9.1.2
 pkgrel=1
 pkgdesc="A post-modern terminal file explorer"
 
@@ -41,7 +41,7 @@ depends=('python' 'python-textual-autocomplete' 'python-pygments' 'python-rich' 
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('a2bd4f1d298e7b57523caf1626f1baf393d2c83af342b1e725453dff422247d2')
+sha256sums=('f330e5f37de65cbedcd4bb6bed66cd1c784ff6c83c8cec41a41cb89aa8088611')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
