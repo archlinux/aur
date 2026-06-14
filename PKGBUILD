@@ -1,13 +1,13 @@
 # Maintainer:
 
 ## options
-: ${_electron_version=}
+: ${_electron_version=41}
 : ${_nodeversion=}
 : ${_install_path:=usr/lib}
 
 _pkgname="trilium"
 pkgname="$_pkgname-next"
-pkgver=0.102.2
+pkgver=0.103.0
 pkgrel=1
 pkgdesc="A hierarchical note taking application"
 url="https://github.com/TriliumNext/Trilium"
@@ -30,16 +30,15 @@ conflicts=("$_pkgname")
 _pkgsrc="${_pkgname^}-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('478e75d85f98a53ee648c14011df0553e55648c6dffb27aa665d09acd08d9ed1')
+sha256sums=('94463c47f322141cf4a8026de135a4855b2fbb7c704798e1f846ccef8c583ee0')
 
 _nvm_env() {
-  export HOME="$SRCDEST/node-home"
   export NVM_DIR="$SRCDEST/node-nvm"
 
   # set up nvm
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-  nvm install ${_nodeversion:-node}
-  nvm use ${_nodeversion:-node}
+  nvm install ${_nodeversion:-}
+  nvm use ${_nodeversion:-}
 }
 
 _electron_env() {
@@ -69,15 +68,13 @@ prepare() {
 }
 
 build() {
+  cd "$_pkgsrc"
+
   _nvm_env
   _electron_env
 
-  local _builder_options=(
-    -c.electronDist="'/usr/lib/electron${ELECTRON_VERSION:-}'"
-    -c.electronVersion=${SYSTEM_ELECTRON_VERSION}
-  )
+  pnpm config set cache-dir "$SRCDEST/pnpm-cache"
 
-  cd "$_pkgsrc"
   pnpm install
   pnpm run chore:update-version
   pnpm run --filter desktop electron-forge:package
