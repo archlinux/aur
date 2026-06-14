@@ -1,16 +1,16 @@
 pkgbase = nudelta-appimage
 	pkgdesc = Open source NuPhy Console alternative
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/donn/nudelta
 	arch = x86_64
 	license = GPL3
 	conflicts = nudelta
 	options = !strip
-	source = nudelta-amd64.AppImage::https://github.com/donn/nudelta/releases/download/0.9.0/nudelta-amd64.AppImage
+	source = nudelta-amd64.AppImage::https://github.com/donn/nudelta/releases/download/0.10.0/nudelta-amd64.AppImage
 	source = nudelta.desktop
 	source = nudelta.png
-	sha256sums = acb1bbd70a19fb33657162bd27dc9e5ea96eeab502ea165006ad959178141782
+	sha256sums = d0071f19168413482f174501a9f49aadf86f244833955c9ca36e25499856bfe8
 	sha256sums = 80653fd97e843177280d0e5faee874ba5c68f5889c9be3e3d627de2c1a244473
 	sha256sums = ea340cb8cb63bb24fba13eaf9c7466a62826e1abd1e50f04c5710718455f85f6
 
