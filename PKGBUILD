@@ -11,14 +11,14 @@ options=("!debug")
 depends=("python" "python-docs")
 package() {
     mkdir -pm0755 "${pkgdir}/usr/lib/systemd/system"
-    cat << EOF > "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    cat << EOF > "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service"
 [Unit]
 Description=HTTP server providing HTML documentation for Python
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python -m http.server 7401 -d /usr/share/doc/python/html
+ExecStart=/usr/bin/python -m http.server %i -d /usr/share/doc/python/html
 Restart=always
 RestartSec=5
 
