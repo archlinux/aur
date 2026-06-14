@@ -12,8 +12,8 @@
 _pkgname="libadwaita"
 pkgbase=libadwaita-git
 pkgname=(libadwaita-git libadwaita-docs-git libadwaita-demos-git)
-pkgver=1.6.rc.r16.g6e98d61
-pkgrel=2
+pkgver=1.9.0.r93.gdc468f0
+pkgrel=1
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/libadwaita"
 arch=(x86_64 i686 pentium4 aarch64 armv7h)
@@ -26,6 +26,7 @@ depends=(
   graphene
   gtk4-git
   pango
+    ministream
 )
 makedepends=(
   gi-docgen
@@ -43,7 +44,6 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd "libadwaita"
-  #git describe --tags | sed 's/-/+/g'
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
