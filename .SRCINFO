@@ -1,0 +1,27 @@
+pkgbase = modde-git
+	pkgdesc = Cross-platform game mod manager
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://codeberg.org/caniko/rs-modde
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = rust
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = libxkbcommon
+	depends = openssl
+	depends = sqlite
+	depends = vulkan-icd-loader
+	depends = wayland
+	provides = modde
+	conflicts = modde
+	conflicts = modde-bin
+	source = git+https://codeberg.org/caniko/rs-modde.git
+	sha256sums = SKIP
+
+pkgname = modde-git
