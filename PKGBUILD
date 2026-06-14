@@ -4,15 +4,16 @@
 pkgname=p4
 _version=2026.1
 pkgver=2026.1.2972966
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Perforce's Helix command-line client"
 arch=('x86_64')
 depends=('glibc')
 url="https://www.perforce.com"
 license=('custom:p4')
+options=('!debug')
 
-_url="https://cdist2.perforce.com/perforce"
+_url="https://filehost.perforce.com/perforce"
 _filename="${pkgname}-${pkgver}.tgz"
 
 source=(LICENSE
