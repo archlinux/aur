@@ -1,7 +1,7 @@
 pkgbase = lichtfeld-studio
 	pkgdesc = Real-time 3D Gaussian Splatting studio for point cloud visualization and editing
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MrNeRF/LichtFeld-Studio
 	arch = x86_64
 	license = GPL-3.0-only
