@@ -14,7 +14,7 @@ Last-Update: 2024-02-15
 This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 --- a/doc/CMakeLists.txt
 +++ b/doc/CMakeLists.txt
-@@ -19,9 +19,18 @@
+@@ -69,9 +69,15 @@
  configure_file(Doxyfile.in Doxyfile @ONLY)
  
  # note the option ALL which allows to build the docs together with the application
@@ -28,9 +28,6 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 +
 +if(FTXUI_ENABLE_INSTALL)
 +  install(DIRECTORY ${PROJECT_BINARY_DIR}/doc/doxygen/html
-+          DESTINATION ${CMAKE_INSTALL_DOCDIR}
-+          COMPONENT doc)
-+  install(DIRECTORY ${PROJECT_BINARY_DIR}/doc/doxygen/xml
 +          DESTINATION ${CMAKE_INSTALL_DOCDIR}
 +          COMPONENT doc)
 +endif()

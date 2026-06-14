@@ -1,6 +1,6 @@
 pkgbase = ftxui
 	pkgdesc = A C++ Functional Terminal User Interface
-	pkgver = 6.1.9
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://github.com/ArthurSonzogni/FTXUI
 	arch = i686
@@ -11,11 +11,11 @@ pkgbase = ftxui
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = gtest>=1.10
-	source = FTXUI-6.1.9.tar.gz::https://github.com/ArthurSonzogni/FTXUI/archive/refs/tags/v6.1.9.tar.gz
+	source = https://github.com/ArthurSonzogni/FTXUI/archive/refs/tags/v7.0.0/FTXUI-7.0.0.tar.gz
 	source = ftxui_build_docs_target_all.patch
 	source = ftxui_make_examples_installable.patch
-	b2sums = d4cd7f37bbf3f6bb538fc217bc0b20f0672b389e1805390845a5c778ca4e3ac38c75a790f1a8e364e346f8a322355729ded10ff25a44c934db7f8dc5e9a7b470
-	b2sums = 6e06886a3d23764715d3c6e63d94a32c4474dc83387954c622380d268e4a63416b78258ad94da69863160bb0fc0ab9822848177f5a1df0239436ea142b76bbf0
+	b2sums = 73bcba72f3ad52818d8a6d1647b7e8bff4259fbd5713db409c147f0d8f44b1895727d27389b3db797dda78a4a61271bb19396c7c108bf0fd7a56b68eae306151
+	b2sums = bf9e78066ff1721f857350f9dcce6fa8ac17cfc2bb726afc6c7f75cc372832f7212cc4ad7eccefe6aa9eee72fff46958c63f485452f45dcd7b1b77b1c2b408fe
 	b2sums = c7e9e43b5d9b7f3ad825a150afa3976743f4d22fb0a443da8ed636b2323dc70137ac471ec24127dfbfa1556646967687cb9890e893c9aa3315ff7c365715f596
 
 pkgname = ftxui
@@ -26,5 +26,6 @@ pkgname = ftxui-docs
 
 pkgname = ftxui-examples
 	pkgdesc = A C++ Functional Terminal User Interface (examples)
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
