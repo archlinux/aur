@@ -7,6 +7,7 @@ pkgdesc='Update DynDNS hosts registered at ddnss.de'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
 license=('MIT')
+options=(!lto)
 makedepends=('cargo' 'git')
 source=("${pkgname}-${pkgver}::git+${url}.git#tag=${pkgver}")
 md5sums=('21ff67fd9d2c947d3db1b02d1b0bdb1c')
