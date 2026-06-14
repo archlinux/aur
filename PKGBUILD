@@ -1,12 +1,12 @@
 # Maintainer: Tanay Pant <tanaypant@protonmail.com>
 pkgname=tokyo-notes-git
-pkgver=r139.g9e7f057
+pkgver=r149.gca7a3a5
 pkgrel=1
 pkgdesc="A minimal GTK4 Markdown note-taking app"
 arch=('any')
 url="https://github.com/tanay1337/tokyo-notes"
 license=('MIT')
-depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'cairo' 'python-cairo' 'python-cryptography' 'python-gitpython' 'python-pyspellchecker')
+depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'cairo' 'python-cairo' 'python-cryptography' 'python-gitpython' 'python-pyspellchecker' 'portaudio')
 makedepends=('git')
 provides=('tokyo-notes')
 conflicts=('tokyo-notes')

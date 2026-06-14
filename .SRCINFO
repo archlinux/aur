@@ -1,6 +1,6 @@
 pkgbase = tokyo-notes-git
 	pkgdesc = A minimal GTK4 Markdown note-taking app
-	pkgver = r139.g9e7f057
+	pkgver = r149.gca7a3a5
 	pkgrel = 1
 	url = https://github.com/tanay1337/tokyo-notes
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = tokyo-notes-git
 	depends = python-cryptography
 	depends = python-gitpython
 	depends = python-pyspellchecker
+	depends = portaudio
 	provides = tokyo-notes
 	conflicts = tokyo-notes
 	source = tokyo-notes-git::git+https://github.com/tanay1337/tokyo-notes.git
