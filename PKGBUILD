@@ -50,7 +50,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.39.0_13_g2c5928e518
+pkgver=0.41.0_747_g7d245fd100
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -122,7 +122,7 @@ done
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --always --tags --dirty | sed -e 's/^v//' -e 's/-/_/g'
+  git describe --always --tags --dirty --match 'v[0-9]*' | sed -e 's/^v//' -e 's/-/_/g'
 }
 
 build() {
