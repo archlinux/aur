@@ -1,15 +1,14 @@
-# Maintainer: KevinCrrl
+# Maintainer: KevinCrrl <kevincrrl@tuta.io>
 
 pkgname=kpa
-pkgver=2.3.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="KevinCrrl Python AUR Helper"
 arch=('any')
 url="https://github.com/KevinCrrl/kpa"
-license=('GPL3-or-later')
+license=('GPL-3.0-or-later')
 source=("${url}/archive/refs/tags/${pkgver}/${pkgver}.tar.gz")
-sha512sums=("cc95061886b0c02857a960c8a71a4592d0674108eeeb57abae22f2e3ab82fb918c665bf2d1095f179e5fe5843e06478e00ebbf95be95c3671598c55f92ffee20")
-conflicts=('kpa-bin')
+sha512sums=('8b1e9296993c493a1a8e2193e9451fd36af4b75ae840496ffa585b3e6eb2d0eda5d916f23e56833041461002773fc1981156a585e74ddbfa1351985a50d06b56')
 depends=(
     'python'
     'python-pyxdg'
@@ -17,6 +16,7 @@ depends=(
     'python-pkgbuild-parser'
     'python-requests'
     'python-typer'
+    'python-rich'
     'git'
     'base-devel'
 )
