@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=UniBackpack
+Comment=A Qt6 downloader for software used by Greek universities
+Exec=unibackpack
+Icon=system-software-install
+Terminal=false
+Categories=Utility;Education;

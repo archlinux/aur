@@ -11,8 +11,9 @@ depends=('qt6-base' 'gcc-libs' 'glibc' 'polkit' 'base-devel')
 makedepends=('git' 'cmake' 'ninja')
 provides=('unibackpack')
 conflicts=('unibackpack')
-source=("${pkgname}::git+https://github.com/open-source-uom/UniBackpack.git")
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://github.com/open-source-uom/UniBackpack.git""unibackpack.desktop")
+sha256sums=('SKIP'
+'SKIP')
 
 pkgver() {
 	cd "$pkgname"
@@ -29,4 +30,7 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
+
+    #Installing desktop file
+    install -Dm644 unibackpack.desktop "$pkgdir/usr/share/applications/unibackpack.desktop"
 }

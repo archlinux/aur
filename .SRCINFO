@@ -15,7 +15,8 @@ pkgbase = unibackpack-git
 	depends = base-devel
 	provides = unibackpack
 	conflicts = unibackpack
-	source = unibackpack-git::git+https://github.com/open-source-uom/UniBackpack.git
+	source = unibackpack-git::git+https://github.com/open-source-uom/UniBackpack.gitunibackpack.desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = unibackpack-git
