@@ -1,0 +1,19 @@
+pkgbase = precice-fenicsxprecice
+	pkgdesc = Adapter for the open source computing platform FEniCSx
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/precice/fenicsx-adapter
+	arch = any
+	license = LGPL-3.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-git-versioning
+	makedepends = git
+	depends = python-pyprecice
+	depends = python-scipy
+	depends = precice-adapter-schema
+	depends = python-fenics
+	source = git+https://github.com/precice/fenicsx-adapter.git#tag=v1.0.1
+	sha512sums = 4e323a81eece9b3a4583199ff194f186c75256e8eaed9af245550b005861a9281269d2e840edd6ef0efe3e00955f5262c1408d3ce7782e21b467e8508c7b998f
+
+pkgname = precice-fenicsxprecice

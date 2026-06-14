@@ -1,0 +1,5 @@
+[python-fenicsxprecice]
+source = "github"
+github = "precice/fenicsx-adapter"
+use_max_tag = "true"
+prefix = "v"
