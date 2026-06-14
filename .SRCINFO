@@ -1,7 +1,7 @@
 pkgbase = jdk25-jetbrains-bin
 	pkgdesc = Java Development Kit by Jetbrains
 	pkgver = 25.0.3b508.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JetBrains/JetBrainsRuntime
 	arch = x86_64
 	arch = aarch64
@@ -14,10 +14,10 @@ pkgbase = jdk25-jetbrains-bin
 	provides = java-environment-jetbrains=25
 	provides = java-runtime=25
 	provides = java-runtime-jetbrains=25
-	provides = jre25-jetbrains=25.0.3b508.4-1
+	provides = jre25-jetbrains=25.0.3b508.4-2
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-jetbrains=25
-	provides = jre25-jetbrains-headless=25.0.3b508.4-1
+	provides = jre25-jetbrains-headless=25.0.3b508.4-2
 	conflicts = jdk25-jetbrains
 	conflicts = jre25-jetbrains
 	conflicts = jre25-jetbrains-headless

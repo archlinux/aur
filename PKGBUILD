@@ -8,7 +8,7 @@ _javadir="/usr/lib/jvm/java-$_major-jetbrains"
 
 pkgname=jdk$_major-jetbrains-bin
 pkgver="$_major.${_minor}b$_build"
-pkgrel=1
+pkgrel=2
 pkgdesc="Java Development Kit by Jetbrains"
 arch=('x86_64' 'aarch64')
 url="https://github.com/JetBrains/JetBrainsRuntime"
@@ -49,6 +49,10 @@ package() {
     cp -a bin include jmods lib release "$pkgdir$_javadir"
 
     install -dm 755 "$pkgdir/usr/share/licenses"
-    cp -r legal "$pkgdir/usr/share/licenses/$pkgname"
+    cp -ar legal "$pkgdir/usr/share/licenses/$pkgname"
     ln -s "/usr/share/licenses/$pkgname" "$pkgdir$_javadir/legal"
+
+    install -dm 755 "$pkgdir/etc"
+    cp -ar conf "$pkgdir/etc/$pkgname"
+    ln -s "/etc/$pkgname" "$pkgdir$_javadir/conf"
 }
