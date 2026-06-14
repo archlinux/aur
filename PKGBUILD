@@ -1,6 +1,6 @@
 # Maintainer: FXS <admin@fxs.life>
 pkgname=rustle-bin
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="A modern music player built with Rust and iced, supporting NetEase Cloud Music (prebuilt binary)"
 arch=('x86_64')
