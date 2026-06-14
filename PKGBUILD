@@ -1,7 +1,7 @@
 # Maintainer: adogecheems <adogecheems at outlook dot com>
 pkgname=monika-after-story-tr-cn
-pkgver=0.12.17.0
-pkgrel=1
+pkgver=0.12.17.3
+pkgrel=0
 pkgdesc="A third-party Chinese language patch for the Monika After Story."
 arch=(
     'any'

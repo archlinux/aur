@@ -1,13 +1,13 @@
 pkgbase = monika-after-story-tr-cn
 	pkgdesc = A third-party Chinese language patch for the Monika After Story.
-	pkgver = 0.12.17.0
-	pkgrel = 1
+	pkgver = 0.12.17.3
+	pkgrel = 0
 	url = https://github.com/Mon1-innovation/MAS-Simplified-Chinese-Patch
 	arch = any
 	license = custom
 	depends = ddlc-mas
-	source = https://github.com/Mon1-innovation/MAS-Simplified-Chinese-Patch/releases/download/0.12.17.0/chs.rpa
-	source = https://github.com/Mon1-innovation/MAS-Simplified-Chinese-Patch/releases/download/0.12.17.0/chs_gui.rpa
+	source = https://github.com/Mon1-innovation/MAS-Simplified-Chinese-Patch/releases/download/0.12.17.3/chs.rpa
+	source = https://github.com/Mon1-innovation/MAS-Simplified-Chinese-Patch/releases/download/0.12.17.3/chs_gui.rpa
 	sha256sums = 680da91bc6246feb36dad12c18e999c07ebc068a1cb5cdc5b4f4b9e492d820b8
 	sha256sums = d5c09635c0d7dc8e0444fa754eb37ba699856b6b47cf5af51bd2c5201181942f
 
