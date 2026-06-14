@@ -1,6 +1,6 @@
 # Maintainer: isra <israelzermeno82@gmail.com>
 pkgname=dmgr-desktop
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Modern device manager for Linux — Tauri + React (devices, drivers, audio, Bluetooth, kernel modules)"
 arch=('x86_64')
