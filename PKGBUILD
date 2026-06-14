@@ -1,8 +1,8 @@
 # Maintainer: Qi Meng <qi_meng0206@outlook.com>
 pkgname=7zip-zstd
-pkgver=25.01
+pkgver=26.01
 pkgrel=1
-_pkgver=1.5.7-R4
+_pkgver=1.5.7-R1
 _srcname="7-Zip-zstd-${pkgver}-v${_pkgver}"
 pkgdesc="File archiver for extremely high compression (With Zstandard support)"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ provides=('p7zip' '7zip')
 conflicts=('p7zip' '7zip')
 replaces=('p7zip')
 source=("${url}/archive/refs/tags/v${pkgver}-v${_pkgver}.tar.gz")
-sha256sums=('60ac3ebb8502f422f916419ba9b168cd38faef6dccaf0a36aa505d71e1fb17ed')
+sha256sums=('9be0a1c58e493571f4bf99911feb53d3a557b147fb93f84621785a33e6eda5e3')
 
 prepare() {
   cd "$_srcname"
