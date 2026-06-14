@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 #
 # Based on https://github.com/lubo/archlinux-chromium.
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
@@ -50,7 +50,7 @@ makedepends=(
   rust-bindgen
 )
 options=('!lto') # Chromium adds its own flags for ThinLTO
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
+source=("https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz"
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         abseil-fix-missing-algorithm.patch
@@ -137,6 +137,7 @@ if [[ "${_system_stdlib}" != libstdc++ ]]; then
   _system_abseil=0
 fi
 if (( _system_abseil )); then
+  # shellcheck disable=SC2192
   _system_libs+=(
     [absl_algorithm]=
     [absl_base]="abseil-cpp>=20240722.0"
@@ -222,6 +223,7 @@ libstdc++)
   ;;
 esac
 
+# shellcheck disable=SC2206
 _depends+=(${_system_libs[@]})
 makedepends+=("${_system_make_libs[@]}")
 
@@ -286,7 +288,7 @@ prepare() {
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries
   local _lib
-  for _lib in ${_unwanted_bundled_libs[@]}; do
+  for _lib in "${_unwanted_bundled_libs[@]}"; do
     find "$_lib" -type f \
       \! -path "$_lib/chromium/*" \
       \! -path "$_lib/google/*" \
@@ -333,7 +335,8 @@ build() {
   fi
 
   if (( _system_clang )); then
-     local _clang_version=$(
+    local _clang_version
+    _clang_version=$(
        clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
 
     _flags+=(
@@ -426,6 +429,8 @@ package() {
     "${_depends[@]}"
   )
 
+  : "${pkgdir:?}"
+
   cd chromium-$pkgver/out/Release/cronet
 
   install -D "libcronet.${pkgver}.so" "${pkgdir}/usr/lib/libcronet.${pkgver}.so"
@@ -435,5 +440,17 @@ package() {
 
   install -Dvm644 LICENSE "${pkgdir}/usr/share/licenses/cronet/LICENSE"
 }
+
+: "${arch[@]}"
+: "${depends[@]}"
+: "${epoch}"
+: "${license[@]}"
+: "${options[@]}"
+: "${sha256sums[@]}"
+: "${source[@]}"
+: "${pkgdesc}"
+: "${pkgname}"
+: "${pkgrel}"
+: "${url}"
 
 # vim:set ts=2 sw=2 et:
