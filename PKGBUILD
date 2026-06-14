@@ -1,7 +1,7 @@
 # Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=cpupower-gtk
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, polished GTK4/Libadwaita graphical interface for cpupower CPU power management."
 arch=('any')
 url="https://github.com/marleylinux/cpupower-gtk"
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 install=cpupower-gtk.install
 depends=('python>=3.11' 'python-gobject' 'gtk4' 'libadwaita' 'cpupower')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/marleylinux/cpupower-gtk/archive/refs/tags/v${pkgver}-${pkgrel}.tar.gz")
-sha256sums=('c2f7f9400740d72a90461e209dad6c3b8167de227be5c10e95f5f9fd6ebc2c41')
+sha256sums=('148a8897648eebd4fa67883429a188049a66bdb997605540d8da272501e4f5a5')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver-$pkgrel"
