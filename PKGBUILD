@@ -1,7 +1,7 @@
 # Maintainer: @aardbol
 pkgname=picocrypt-ng-bin
 pkgver=2.14
-pkgrel=3
+pkgrel=4
 pkgdesc="A very small, very simple, yet very secure encryption tool. (GUI)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Picocrypt-NG/Picocrypt-NG"
@@ -9,6 +9,7 @@ license=('GPL3')
 provides=('picocrypt-ng')
 conflicts=('picocrypt-ng-git')
 depends=(gtk3)
+options=('!strip' '!debug')
 source_x86_64=(
   "${url}/releases/download/${pkgver}/Picocrypt-NG"
   "picocrypt.desktop"
