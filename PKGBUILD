@@ -2,7 +2,7 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend penpot-mcp)
-pkgver=2.15.4
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  '32bc7589e55bd7666d5f1bc6ed7e47ad34842cf175614e38444aaa9ef00041b7'
+  '474280d0ad248df718fd7799a0642eeb89126d9c4703dfc12610d527ea479629'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'

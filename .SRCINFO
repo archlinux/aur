@@ -1,6 +1,6 @@
 pkgbase = penpot
 	pkgdesc = The open-source design tool for design and code collaboration
-	pkgver = 2.15.4
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://penpot.app
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = penpot
 	makedepends = jq
 	makedepends = java-environment>=26
 	makedepends = java-environment<=26
-	noextract = penpot-2.15.4.tgz
-	source = https://github.com/penpot/penpot/archive/refs/tags/2.15.4.tar.gz
+	noextract = penpot-2.16.0.tgz
+	source = https://github.com/penpot/penpot/archive/refs/tags/2.16.0.tar.gz
 	source = sysusers.conf
 	source = penpot.conf.d
 	source = penpot-exporter.conf.d
@@ -29,7 +29,7 @@ pkgbase = penpot
 	source = penpot.tmpfiles.d
 	source = penpot-update-flags.sh
 	source = nginx.conf
-	sha256sums = 32bc7589e55bd7666d5f1bc6ed7e47ad34842cf175614e38444aaa9ef00041b7
+	sha256sums = 474280d0ad248df718fd7799a0642eeb89126d9c4703dfc12610d527ea479629
 	sha256sums = 4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c
 	sha256sums = bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523
 	sha256sums = 828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb
