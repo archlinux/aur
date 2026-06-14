@@ -1,6 +1,6 @@
 pkgbase = t3code-git
 	pkgdesc = T3 Code desktop app (git version, built from source)
-	pkgver = 0.0.28.nightly.20260612.535.r0.gd25090c
+	pkgver = 0.0.28.nightly.20260614.552.r0.g3a0623f
 	pkgrel = 3
 	url = https://t3.codes
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = t3code-git
 	depends = systemd-libs
 	depends = xdg-utils
 	optdepends = openai-codex: use the system-installed Codex CLI
-	provides = t3code=0.0.28.nightly.20260612.535.r0.gd25090c
+	provides = t3code=0.0.28.nightly.20260614.552.r0.g3a0623f
 	conflicts = t3code
 	conflicts = t3code-bin
 	options = !debug
