@@ -1,0 +1,17 @@
+pkgbase = picocrypt-ng-cli-bin
+	pkgdesc = A very small, very simple, yet very secure encryption tool. (CLI)
+	pkgver = 2.14
+	pkgrel = 1
+	url = https://github.com/Picocrypt-NG/Picocrypt-NG
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	provides = Picocrypt-NG-cli
+	conflicts = Picocrypt-NG-cli
+	conflicts = Picocrypt-NG-cli-git
+	source_x86_64 = https://github.com/Picocrypt-NG/Picocrypt-NG/releases/download/2.14/Picocrypt-NG-cli
+	sha256sums_x86_64 = a0d30fcff565cefff116c0246c30afbe0f04e8858db9bc3e251da5dc5218200b
+	source_aarch64 = https://github.com/Picocrypt-NG/Picocrypt-NG/releases/download/2.14/Picocrypt-NG-cli-arm64
+	sha256sums_aarch64 = a570ad6cc4321557653633c914b0cea4d70d953fbb587aa130a384a8af034832
+
+pkgname = picocrypt-ng-cli-bin
