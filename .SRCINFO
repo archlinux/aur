@@ -1,6 +1,6 @@
 pkgbase = swpui-bin
 	pkgdesc = Search and replace, TUI style.
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/beeb/swpui
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = swpui-bin
 	conflicts = swpui-git
 	conflicts = swpui
 	options = !debug
-	source_x86_64 = swpui-bin-0.8.0-bin.tar.xz::https://github.com/beeb/swpui/releases/download/v0.8.0/swpui-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = ea9a26ca02587f2c0cb8f734abfba0301499224c5c5b564fddbe98a4e4104705
-	source_aarch64 = swpui-bin-0.8.0-bin.tar.xz::https://github.com/beeb/swpui/releases/download/v0.8.0/swpui-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 7f52d726a7989ff2330913ca4f0a87dfd5f768a486b82f1de2a49ee4e7c5ae46
+	source_x86_64 = swpui-bin-0.9.0-bin.tar.xz::https://github.com/beeb/swpui/releases/download/v0.9.0/swpui-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 32ca309200241df91da669f8940a7886d6e55117b3a776e5ae2ce90e9ca0e8ce
+	source_aarch64 = swpui-bin-0.9.0-bin.tar.xz::https://github.com/beeb/swpui/releases/download/v0.9.0/swpui-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = b3b9d7acc90ae9ffb63b31faa8b99c7608a739019aaf4587e8397bf4f1d1a690
 
 pkgname = swpui-bin
