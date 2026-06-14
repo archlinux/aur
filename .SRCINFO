@@ -1,6 +1,6 @@
 pkgbase = ledspicer
 	pkgdesc = LED controller daemon for arcade cabinets and RGB lighting
-	pkgver = 0.7.4.1
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://github.com/meduzapat/LEDSpicer
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ledspicer
 	makedepends = libusb>=1.0.22
 	makedepends = libpulse>=0.9
 	makedepends = alsa-lib>=0.2
-	source = ledspicer-0.7.4.1.tar.gz::https://github.com/meduzapat/LEDSpicer/archive/refs/tags/0.7.4.1.tar.gz
+	source = ledspicer-0.7.6.tar.gz::https://github.com/meduzapat/LEDSpicer/archive/refs/tags/0.7.6.tar.gz
 	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
 
 pkgname = ledspicer
