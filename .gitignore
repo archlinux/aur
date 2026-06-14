@@ -1,0 +1,4 @@
+/gitea-mcp/
+*.pkg.tar.zst
+/pkg
+/src
