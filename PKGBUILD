@@ -1,5 +1,5 @@
 pkgname=agent-deck-bin
-pkgver=1.9.58
+pkgver=1.9.59
 pkgrel=1
 pkgdesc="Terminal session manager for AI coding agents"
 arch=(x86_64 aarch64)
@@ -11,8 +11,8 @@ options=(!strip !debug)
 conflicts=("agent-deck")
 provides=(agent-deck)
 
-source=("https://github.com/asheshgoplani/agent-deck/releases/download/v1.9.58/agent-deck_1.9.58_linux_amd64.tar.gz")
-sha256sums=('b5865d8aec7f4a5331899da9a73a7192e6fb8071e24c62d5ded01cdec84359a7')
+source=("https://github.com/asheshgoplani/agent-deck/releases/download/v1.9.59/agent-deck_1.9.59_linux_amd64.tar.gz")
+sha256sums=('edf90f5702c585e1dea7f4180fd9d9255352da7ab9be1cbb1cb41f63faf269ba')
 
 prepare() {
     tar -xf "${srcdir}/$(basename "${source}")"
