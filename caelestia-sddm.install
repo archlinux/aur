@@ -25,7 +25,7 @@ _rmdir_if_empty() {
   [ -d "$1" ] && [ -z "$(ls -A "$1")" ] && rmdir "$1"
 }
 
-# Removes theme files, config drop-in, caches, and the sync systemd service
+# Removes theme files, config drop-in, caches, and the legacy systemd service
 _cleanup_all() {
   local real_user real_home
 
@@ -67,21 +67,22 @@ _print_posthook_instructions() {
   local real_user="$2"
 
   echo ""
-  echo "==> To sync manually at any time, run:"
+  echo "==> IMPORTANT: The theme is not synced yet. Run your first sync:"
   echo "==>   sudo $theme_dir/scripts/sync.sh"
   echo ""
-  echo "==> To sync automatically on wallpaper change, set up the posthook:"
-  echo "==>   1) Add to ~/.config/caelestia/cli.json under \"wallpaper\":"
+  echo "==> To sync automatically on every wallpaper/theme change, set up the posthook:"
+  echo "==>   1) Add to ~/.config/caelestia/cli.json under \"wallpaper\" and \"theme\":"
   echo "==>        \"postHook\": \"sudo $theme_dir/scripts/sync.sh --posthook\""
-  echo "==>   2) Enable passwordless sudo for the script:"
+  echo "==>   2) Allow passwordless sudo for this one command:"
   echo "==>        echo \"$real_user ALL=(root) NOPASSWD: $theme_dir/scripts/sync.sh\" | sudo tee /etc/sudoers.d/caelestia-sddm-sync"
   echo "==>   3) Verify it works:"
   echo "==>        sudo $theme_dir/scripts/sync.sh"
   echo ""
   echo "==> Full posthook guide: https://github.com/ItsABigIgloo/caelestia-sddm/blob/main/.github/POSTHOOK.md"
+  echo ""
 }
 
-# Copy template, run initial sync, fix ownership, print posthook instructions
+# Copy template, fix ownership, print posthook instructions
 post_install() {
   local theme_dir="/usr/share/sddm/themes/caelestia"
   local real_user
@@ -100,16 +101,14 @@ post_install() {
   if [ -f "$theme_dir/theme.conf.template" ]; then
     if [ ! -f "$real_home/.config/caelestia/templates/sddm-theme.conf" ]; then
       sudo -u "$real_user" cp "$theme_dir/theme.conf.template" \
-         "$real_home/.config/caelestia/templates/sddm-theme.conf"
+        "$real_home/.config/caelestia/templates/sddm-theme.conf"
       echo "==> Template copied to $real_home/.config/caelestia/templates/sddm-theme.conf"
     else
       echo "==> Existing template found at $real_home/.config/caelestia/templates/sddm-theme.conf, skipping copy."
     fi
   fi
 
-  echo "==> Running initial sync..."
-  HOME="$real_home" SUDO_USER="$real_user" "$theme_dir/scripts/sync.sh"
-  echo "==> Initial sync complete"
+  echo "==> Theme setup complete."
 
   for dir in \
     "$real_home/.config/caelestia" \

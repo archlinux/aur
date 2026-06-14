@@ -9,7 +9,7 @@ pkgname=(
   caelestia-sddm-minimalist-git     # Minimalist variant with gradient background
   caelestia-sddm-minimalistv2-git   # Minimalist variant with improved fonts and UI
 )
-pkgver=r156.398abf7
+pkgver=r168.f064389
 pkgrel=1
 arch=('any')
 url='https://github.com/ItsABigIgloo/caelestia-sddm'
