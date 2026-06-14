@@ -2,8 +2,8 @@
 
 pkgname=python-p115qrcode
 _name=${pkgname#python-}
-pkgver=0.0.5.1
-pkgrel=3
+pkgver=0.0.5.2
+pkgrel=1
 epoch=
 pkgdesc="115 网盘二维码扫码登录."
 arch=('any')
@@ -34,7 +34,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('51de59cc9966f2cd5a3b0b885e0e9e0f239569995f891174578cddb4aa759e6e')
+sha256sums=('84e759253148b190c804ddf006c35cf6fd7448e5d900ee15fc9aa1c0ad4b5c20')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
