@@ -1,0 +1,35 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 595689f8..ac82b806 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 3.11)
+ 
+-project(litehtml LANGUAGES C CXX)
++project(litehtml0.9 LANGUAGES C CXX)
+ 
+ 
+ option(LITEHTML_BUILD_TESTING "enable testing for litehtml" ON)
+@@ -174,7 +174,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
+     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+     $<INSTALL_INTERFACE:include/${PROJECT_NAME}>)
+-target_include_directories(${PROJECT_NAME} PRIVATE include/${PROJECT_NAME})
++target_include_directories(${PROJECT_NAME} PRIVATE include/litehtml)
+ 
+ # Gumbo
+ target_link_libraries(${PROJECT_NAME} PUBLIC gumbo)
+@@ -185,10 +185,10 @@ install(TARGETS ${PROJECT_NAME}
+     RUNTIME DESTINATION bin COMPONENT libraries
+     ARCHIVE DESTINATION lib${LIB_SUFFIX} COMPONENT libraries
+     LIBRARY DESTINATION lib${LIB_SUFFIX} COMPONENT libraries
+-    PUBLIC_HEADER DESTINATION include/litehtml
++    PUBLIC_HEADER DESTINATION include/litehtml0.9
+ )
+-install(FILES cmake/litehtmlConfig.cmake DESTINATION lib${LIB_SUFFIX}/cmake/litehtml)
+-install(EXPORT litehtmlTargets FILE litehtmlTargets.cmake DESTINATION lib${LIB_SUFFIX}/cmake/litehtml)
++install(FILES cmake/litehtmlConfig.cmake DESTINATION lib${LIB_SUFFIX}/cmake/litehtml0.9)
++install(EXPORT litehtmlTargets FILE litehtmlTargets.cmake DESTINATION lib${LIB_SUFFIX}/cmake/litehtml0.9)
+ 
+ # Tests
+ 

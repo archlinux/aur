@@ -1,0 +1,6 @@
+["litehtml0.9"]
+source = 'git'
+git = 'https://github.com/litehtml/litehtml'
+use_max_tag = true
+prefix = 'v'
+include_regex = 'v0.9.*'
