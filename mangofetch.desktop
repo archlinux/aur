@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=The graphical desktop client frontend of the mangoSuite.
+Exec=mangofetch-gui
+StartupWMClass=mangofetch-gui
+Icon=mangofetch
+Name=MangoFetch
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/mangofetch

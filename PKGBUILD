@@ -7,7 +7,7 @@ pkgname=${_appname}
 pkgdesc="Tool for fetch everythin' in internet"
 
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,10 @@ depends=('glibc' 'libgcc' 'xz')
 
 options=(!strip)
 
-source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_gitversion}.tar.gz")
-sha256sums=('bb0a5f32eb71712909781bbefbc2a4601e724a06038707be783c30a0ffcb72f4')
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_gitversion}.tar.gz"
+		"${_appname}.desktop")
+sha256sums=('bb0a5f32eb71712909781bbefbc2a4601e724a06038707be783c30a0ffcb72f4'
+            'ae922cb150cbec60cebb3b46423396d452e02f62dfafb88952fe19aaf0381bc7')
 
 
 prepare() {
@@ -40,7 +42,12 @@ build() {
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --release --frozen
+
+	msg2 "Building CLI"
+	cargo build --release -p "${_appname}-cli"
+
+	msg2 "Building GUI"
+	cargo build --release -p "${_appname}-gui"
 }
 
 check() {
@@ -56,6 +63,11 @@ package() {
 	cd ${srcdir}/${_gitname}-${pkgver} || exit 1
 
 	install -Dm755 "target/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "target/release/${_appname}-gui" "${pkgdir}/usr/bin/${_appname}-gui"
+
+	install -Dm644 "../${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
+
+	install -Dm644 "docs/assets/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_appname}.svg"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 

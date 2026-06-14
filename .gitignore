@@ -1,5 +1,6 @@
 *
 !.nvchecker.toml
 !.gitignore
+!*.desktop
 !PKGBUILD
 !.SRCINFO
