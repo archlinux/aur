@@ -1,6 +1,6 @@
 pkgbase = dmgr-desktop
 	pkgdesc = Modern device manager for Linux — Tauri + React (devices, drivers, audio, Bluetooth, kernel modules)
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/Khinmmad/dmgr
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = dmgr-desktop
 	optdepends = alsa-utils: audio device listing fallback
 	optdepends = bluez-utils: Bluetooth device management
 	provides = dmgr-desktop
-	source = dmgr-desktop-2.1.1.tar.gz::https://github.com/Khinmmad/dmgr/archive/refs/tags/v2.1.1.tar.gz
+	source = dmgr-desktop-2.1.2.tar.gz::https://github.com/Khinmmad/dmgr/archive/refs/tags/v2.1.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = dmgr-desktop
