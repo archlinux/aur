@@ -3,7 +3,8 @@
 
 _pyname=pyroma
 pkgname=python-${_pyname}
-pkgver=5.0.1
+pkgver=5.1.0.b.1
+_pkgver=${pkgver/.0.b.1/b1}
 pkgrel=1
 pkgdesc="Test your project's packaging friendliness"
 arch=('any')
@@ -13,10 +14,10 @@ depends=('python-setuptools' 'python-build')
 makedepends=('python-installer' 'python-wheel')
 #checkdepends=('python-pytest' 'python-docutils' 'python-requests' 'python-pygments' 'python-trove-classifiers' 'python-packaging')
 options=(!emptydirs)
-source=("${_pyname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('286dd60702394f77f3cb4a0f2c2a2cb343b9aa0fa098d03eee2ed18192b35590')
+source=("${_pyname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
+sha256sums=('e9fda3fe05f43d68781f8580d927f49bed0c988551cf56f80b1745f128f78b61')
 
-_srcdir="${_pyname}-${pkgver}"
+_srcdir="${_pyname}-${_pkgver}"
 
 build() {
 	cd "$_srcdir"
