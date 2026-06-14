@@ -1,5 +1,5 @@
 pkgbase = kpa
-	pkgdesc = KevinCrrl Python AUR Helper
+	pkgdesc = KevinCrrl Python AUR Helper: Creado para automatizar de manera segura.
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/KevinCrrl/kpa

@@ -3,7 +3,7 @@
 pkgname=kpa
 pkgver=3.0.0
 pkgrel=1
-pkgdesc="KevinCrrl Python AUR Helper"
+pkgdesc="KevinCrrl Python AUR Helper: Creado para automatizar de manera segura."
 arch=('any')
 url="https://github.com/KevinCrrl/kpa"
 license=('GPL-3.0-or-later')
