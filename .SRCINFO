@@ -1,7 +1,7 @@
 pkgbase = fastercap
 	pkgdesc = Three- and two-dimensional capacitance extraction
 	pkgver = 6.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fastfieldsolvers.com/fastercap.htm
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -10,7 +10,10 @@ pkgbase = fastercap
 	makedepends = pkg-config
 	makedepends = wxwidgets-gtk3
 	depends = blas
-	depends = gcc-libs
+	depends = libstdc++
+	depends = libgomp
+	depends = libgcc
+	depends = libgfortran
 	depends = glibc
 	depends = wxwidgets-common
 	source = fastercap::git+https://github.com/martinjankoehler/FasterCap#tag=v6.0.9
@@ -20,6 +23,6 @@ pkgbase = fastercap
 	b2sums = bc13206a3f3051eb2694be1db6abc3df2889fc63eb924353d5a4a0ab86f56b49385a3533257e21b1f4f978cbedb69fe4ca489f60440124e9d5c38bc7814f834e
 	b2sums = a3b8ce40ea54e1f9e4e6e3a761580255257318c29cf6c167f1dea8c68a4b4aebcfc6d6f2a689404a1e9698b0f0c25f553c4a7b9a14515793c5e31ab02f29dd47
 	b2sums = 569da9e446152eddb6fc414848aee074b386d089ee11cf33e681faa385c5e388d64be43e7d5892320b7d342210472e83acb068f98e9a4e2786737fcea4f722cc
-	b2sums = 9e7b99a1a2b3efd30a53f575b3a1290c087c336d0bd64d0f7c9afa6d97560faee999174db38ad3174ab3ff5b48c01ca224ff71a835e84061a294fc802867fe5c
+	b2sums = 864a261c8249bb5c7f984b07708ccad87aa779a6a5060880259b64879a87cbed41a5edd9b562bbfb0bb373973ce4de559442f4758fafb1f6a9d8cd7fbb79793e
 
 pkgname = fastercap

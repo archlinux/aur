@@ -22,7 +22,7 @@ index b9ab939..1b89246 100644
 -endif()
 -message(STATUS "BLAS found, Includes: ${BLAS_INCLUDE_DIRS}")
 +find_package(PkgConfig REQUIRED)
-+pkg_check_modules(BLAS REQUIRED blas)
++pkg_check_modules(BLAS REQUIRED blas cblas)
  include_directories(${BLAS_INCLUDE_DIRS})
  set(EXTRA_LIBS ${EXTRA_LIBS} ${BLAS_LIBRARIES})
  
