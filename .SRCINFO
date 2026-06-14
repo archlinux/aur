@@ -1,6 +1,6 @@
 pkgbase = nitrocid-28-lite
 	pkgdesc = Simulates our future-planned kernel
-	pkgver = 4.0.28.59+0.2.0.10
+	pkgver = 4.0.28.60+0.2.0.11
 	pkgrel = 1
 	url = https://aptivi.github.io
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = nitrocid-28-lite
 	conflicts = nitrocid-28
 	conflicts = nitrocid-28-git
 	options = !strip
-	source = nitrocid-28-lite::git+https://github.com/Aptivi/Nitrocid#tag=v0.2.0.10
+	source = nitrocid-28-lite::git+https://github.com/Aptivi/Nitrocid#tag=v0.2.0.11
 	sha256sums = SKIP
 
 pkgname = nitrocid-28-lite
