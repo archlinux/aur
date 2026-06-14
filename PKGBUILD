@@ -1,7 +1,7 @@
 # Maintainer: Ripose <ripose@protonmail.com>
 pkgname=memento
 pkgver=2.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="An mpv-based video player for studying Japanese."
 arch=('x86_64' 'aarch64')
 url="https://ripose-jp.github.io/Memento/"
@@ -34,6 +34,7 @@ build() {
     cmake -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr \
           -DCMAKE_BUILD_TYPE=Release \
           -DMEMENTO_RELEASE_BUILD=ON \
+          -DMEMENTO_QAPPLICATION=ON \
           -DMEMENTO_SYSTEM_QCORO=ON \
           -DMEMENTO_MECAB_SUPPORT=ON \
           "${srcdir}/Memento-${pkgver}"
