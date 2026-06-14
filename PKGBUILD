@@ -1,7 +1,7 @@
 # Maintainer: Hunter Davenport <mallow.boxes6w@icloud.com>
 _pkgname=boxunbox
 pkgname="${_pkgname}-git"
-pkgver=0.2.5.r10.g32ab434
+pkgver=0.2.6.r6.gdca2196
 pkgrel=1
 pkgdesc='A Rust-based alternative to GNU stow'
 url="https://github.com/dablenparty/$_pkgname"
@@ -55,22 +55,27 @@ check() {
   cd "$srcdir/$pkgname" || exit 1
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --release --workspace --frozen --all-features
+  # test in debug. this means it has to compile twice, but it's more robust like this
+  cargo test --workspace --frozen --all-features
 }
 
 package() {
   cd "$srcdir/$pkgname" || exit 1
 
-  local binname="unbox"
-  install -Dm755 "target/release/$binname" "$pkgdir/usr/bin/$binname"
+  local binnames=(boxup unbox)
 
-  # shell completions
-  install -Dm644 "target/release/completions/$binname.bash" "$pkgdir/usr/share/bash-completion/completions/$binname"
-  install -Dm644 "target/release/completions/$binname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$binname"
-  install -Dm644 "target/release/completions/$binname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$binname.fish"
+  for binname in "${binnames[@]}"; do
+    install -Dm755 "target/release/$binname" "$pkgdir/usr/bin/$binname"
 
-  # docs
-  install -Dm644 "target/release/man/boxunbox-mangen.1" "$pkgdir/usr/share/man/man1/$binname.1"
+    # shell completions
+    install -Dm644 "target/release/completions/$binname.bash" "$pkgdir/usr/share/bash-completion/completions/$binname"
+    install -Dm644 "target/release/completions/$binname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$binname"
+    install -Dm644 "target/release/completions/$binname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$binname.fish"
+
+    # docs
+    install -Dm644 "target/release/man/$binname.1" "$pkgdir/usr/share/man/man1/$binname.1"
+  done
+
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "CHANGELOG.md" "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
