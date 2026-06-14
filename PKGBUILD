@@ -2,8 +2,8 @@
 
 pkgname="cutefetch-git"
 pkgdesc="A little fetch utility made with bare c and nice performance"
-pkgver=29ad20b
-pkgrel=4
+pkgver=r68.29ad20b
+pkgrel=1
 arch=("any")
 url="https://github.com/alphatechnolog/cutefetch"
 source=("git+$url.git")
@@ -16,7 +16,7 @@ conflicts=("cutefetch")
 
 pkgver() {
     cd cutefetch
-    printf "%s" "$(git rev-parse --short=7 HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
