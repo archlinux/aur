@@ -8,7 +8,7 @@ license=('AGPL-3.0-only')
 depends=('alsa-lib' 'atk' 'cairo' 'dbus' 'expat' 'fontconfig' 'freetype2' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libcups' 'libarchive' 'libsecret' 'libx11' 'libxcomposite' 'libxdamage' 'libxext' 'libxi' 'libxrandr' 'libxrender' 'libxtst' 'nss' 'pango' 'zlib')
 provides=('episteme-oss')
 conflicts=('episteme-oss')
-source=('episteme-oss-1.0.1-linux-x64.tar.gz::https://github.com/Aryan-Raj3112/episteme/releases/download/v1.0.1/episteme-oss-1.0.1-linux-x64.tar.gz')
+source=('episteme-oss-1.0.1-linux-x64.tar.gz::https://github.com/Aryan-Raj3112/episteme/releases/download/desktop-v1.0.1/episteme-oss-1.0.1-linux-x64.tar.gz')
 sha256sums=('57f7e8f235af5ad0631741906cec99f48c668a152c3a8c81ebab62c61ab84f21')
 options=('!debug')
 
