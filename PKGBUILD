@@ -4,10 +4,10 @@
 
 pkgname=vi
 pkgver=070224
-pkgrel=7
+pkgrel=8
 epoch=1
 pkgdesc="The original ex/vi text editor"
-arch=('x86_64')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://ex-vi.sourceforge.net/"
 license=(
   BSD-4-Clause-UC
@@ -16,7 +16,7 @@ license=(
 depends=('ncurses')
 optdepends=('s-nail: used by the preserve command for notification')
 provides=('vi')
-conflicts=('ex-vi-compat')
+conflicts=('ex-vi-compat' 'heirloom-ex-vi')
 source=(https://sources.archlinux.org/other/$pkgname/ex-$pkgver.tar.xz{,.sig}
         fix-tubesize-short-overflow.patch
         navkeys.patch
@@ -55,9 +55,9 @@ prepare() {
 build() {
   cd ex-$pkgver
 
-  CFLAGS=-std=gnu90 make PREFIX=/usr \
-    LIBEXECDIR=/usr/lib/ex PRESERVEDIR=/var/lib/ex TERMLIB=ncurses \
-    FEATURES="-DCHDIR -DFASTTAG -DUCVISUAL -DMB -DBIT8"
+  export CFLAGS=-std=gnu90
+  make PREFIX=/usr LIBEXECDIR=/usr/lib/ex PRESERVEDIR=/var/lib/ex \
+    TERMLIB=ncurses FEATURES="-DCHDIR -DFASTTAG -DUCVISUAL -DMB -DBIT8"
 }
 
 package() {
