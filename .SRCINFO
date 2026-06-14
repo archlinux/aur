@@ -1,7 +1,7 @@
 pkgbase = pianoteq
 	pkgdesc = Physical modelling piano instrument standalone program, VST3 and LV2 plugin. STANDARD version
-	pkgver = 9.1.2
-	pkgrel = 2
+	pkgver = 9.2.1
+	pkgrel = 1
 	url = https://www.modartt.com/pianoteq
 	arch = aarch64
 	arch = armv7h
@@ -23,9 +23,9 @@ pkgbase = pianoteq
 	optdepends = vst3-host: for loading the VST3 plugin
 	conflicts = pianoteq-stage
 	conflicts = pianoteq-trial-bin
-	source = local://pianoteq_setup_v912.tar.xz
+	source = local://pianoteq_setup_v921.tar.xz
 	source = https://www.pianoteq.com/images/logo/pianoteq_icon_128.png
-	sha256sums = 26f9bf021070823e48356f14e3cac98e00c1ee3fd9d559d829ccefb6ba65fc06
+	sha256sums = 888298997cbb77998690e354a91f75423a3b20818913d781378a42af4f83ee7a
 	sha256sums = 94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3
 
 pkgname = pianoteq
