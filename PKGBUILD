@@ -3,7 +3,7 @@
 pkgname=comchan-ratty
 _pkgname=ComChan
 pkgver=0.10.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A blazingly fast minimal serial monitor with plotter TUI and more (With 3D support)"
 arch=(
   'x86_64'
