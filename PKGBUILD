@@ -26,10 +26,10 @@ package() {
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     install "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 
-    mkdir -p "/usr/lib/systemd/system"
-    install "ddnss.service" "/usr/lib/systemd/system"
-    install "ddnss.timer" "/usr/lib/systemd/system"
+    mkdir -p "${pkgdir}/usr/lib/systemd/system"
+    install "ddnss.service" "${pkgdir}/usr/lib/systemd/system"
+    install "ddnss.timer" "${pkgdir}/usr/lib/systemd/system"
 
-    mkdir -p "/usr/lib/sysusers.d"
-    install "ddnss.conf" "/usr/lib/sysusers.d"
+    mkdir -p "${pkgdir}/usr/lib/sysusers.d"
+    install "ddnss.conf" "${pkgdir}/usr/lib/sysusers.d"
 }
