@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=fastcap2
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Capacitance Solver for 3D conductive geometries - including Python module"
 arch=('x86_64')
 _git_url="https://github.com/klayoutmatthias/FastCap2"
@@ -10,7 +10,8 @@ license=('LicenseRef-Custom')
 depends=(
     'python'
     'glibc'
-    'gcc-libs'
+    'libstdc++'
+    'libgcc'
 )
 makedepends=(
     'git'
@@ -28,6 +29,9 @@ source=("${pkgname}::git+${_git_url}#tag=v${pkgver}")
 b2sums=('cd4c1da8590ad2fccabbb9eddaeb6b2a844946674beb26b2de8ff947db7bf8547383279dd4e92b7e9c85b64bc6fbbbb3abc8df0f0394ca7c40865edbf1270c23')
 
 build() {
+    # locally set C++11
+    CXXFLAGS="$CXXFLAGS --std=c++11"
+
     # Compile FastCap
     local cmake_options=(
         -B build
