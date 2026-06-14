@@ -2,7 +2,7 @@
 
 pkgname=litehtml0.9
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast and lightweight HTML/CSS rendering engine'
 url='http://www.litehtml.com/'
 arch=(x86_64)
@@ -37,4 +37,8 @@ package() {
   install -Dm644 litehtml/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 # Don't search for non-existant gumbo cmake config
   sed -e '/gumbo/d' -i "$pkgdir"/usr/lib/cmake/litehtml0.9/litehtmlConfig.cmake
+# Add compatibility cmake target
+  echo "add_library(litehtml ALIAS litehtml0.9)" >> "$pkgdir"/usr/lib/cmake/litehtml0.9/litehtmlTargets.cmake
+# Fix include dir
+  sed -e 's|litehtml/|litehtml0.9/|g' -i "$pkgdir"/usr/include/litehtml0.9/litehtml.h
 }
