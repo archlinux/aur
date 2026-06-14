@@ -10,10 +10,10 @@ arch=('x86_64')
 url="https://github.com/Veridian-Zenith/Voix"
 license=('OSL-3.0')
 depends=('pam' 'libcap' 'libseccomp' 'yaml-cpp' 'ccache' 'llvm' 'clang' 'mold' 'audit')
-makedepends=('cmake>=3.18' 'clang' 'llvm' 'ninja' 'pkgconf' 'git' 'ccache' 'mold')
+makedepends=('cmake>=3.18' 'clang' 'llvm' 'ninja' 'pkgconf' 'git' 'ccache' 'mold' 'audit')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
 source=("https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f58bbcb40f52d716ed90c09fed279f144332433a1f95b790bd3f9f5657d0efe9')
+sha256sums=('ca16031b50371279c5b10c2695e75e7ad6b4932086b070910c6c6bd8f20ee599')
 
 build() {
     cd "$_pkgname-$pkgver"

@@ -13,6 +13,7 @@ pkgbase = voix
 	makedepends = git
 	makedepends = ccache
 	makedepends = mold
+	makedepends = audit
 	depends = pam
 	depends = libcap
 	depends = libseccomp
@@ -29,6 +30,6 @@ pkgbase = voix
 	backup = etc/pam.d/voix
 	backup = etc/voix.conf
 	source = https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v4.3.1.tar.gz
-	sha256sums = f58bbcb40f52d716ed90c09fed279f144332433a1f95b790bd3f9f5657d0efe9
+	sha256sums = ca16031b50371279c5b10c2695e75e7ad6b4932086b070910c6c6bd8f20ee599
 
 pkgname = voix
