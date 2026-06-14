@@ -3,7 +3,7 @@
 _appauthor=takashialpha
 _appname=audium
 pkgname=${_appname}
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A keyboard-driven music app for people who live in the terminal."
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('glibc' 'libgcc' 'alsa-lib')
 makedepends=('rust' 'cargo')
 
 source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums_x86_64=('c5a1bde012e705be4a44a0d4a191f9875429b35d5d4f3a2ba0f2f67ec1d15649')
+sha256sums_x86_64=('58bb2e257dd5220a8297c113fbfa9cbacf0ee444df9e7923647433a271471a61')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}" || exit
