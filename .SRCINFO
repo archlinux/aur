@@ -1,0 +1,25 @@
+pkgbase = sshman
+	pkgdesc = A modern, interactive TUI SSH connection manager built with Node.js.
+	pkgver = 0.1.20
+	pkgrel = 1
+	url = https://github.com/eightshone/sshman
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = bash
+	depends = libx11
+	depends = nodejs
+	provides = sshman
+	noextract = sshman-0.1.20.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = sshman-0.1.20.tgz::https://registry.npmjs.org/@eightshone/sshman/-/sshman-0.1.20.tgz
+	b2sums = 565580c1ad4411fa4b8608412a332b2ddd21f89c87c4f898d8d1be56d7adaad225548cd918fa068001308383b601cc642ff558274fd3b7dc8814a99c832bb809
+
+pkgname = sshman

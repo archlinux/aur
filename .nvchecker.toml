@@ -1,0 +1,3 @@
+[sshman]
+source = "npm"
+npm = "@eightshone/sshman"
