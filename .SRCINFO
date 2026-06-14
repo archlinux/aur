@@ -1,7 +1,7 @@
 pkgbase = xppenlinux-v3
 	pkgdesc = XP-Pen (Official) Linux utility for legacy XPPen Tablets
 	pkgver = 3.4.9
-	pkgrel = 240607.1
+	pkgrel = 240607.2
 	url = https://www.xp-pen.com/download/index.html
 	install = xppenlinux-v3.install
 	arch = x86_64
