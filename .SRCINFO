@@ -1,6 +1,6 @@
 pkgbase = vendi-git
 	pkgdesc = vendiOS preview snapshot — compositor, bar, lock, installer, CLI (pre-v0.1.1)
-	pkgver = 26w24b
+	pkgver = 26w24c
 	pkgrel = 1
 	url = https://github.com/VendavalSC/vendiOS
 	arch = x86_64
