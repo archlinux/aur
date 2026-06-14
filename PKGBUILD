@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}
 pkgdesc="Record your shell session and replay it as a clean bash script"
 
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,7 +22,7 @@ depends=('glibc' 'libgcc')
 provides=("${_appname}")
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_pkgvername}.tar.gz")
-sha256sums=('83cd5b63b4ef6fb486ba5ca440e49641cfb850a020b924dfed908694d82c51b4')
+sha256sums=('4d4ec508ebdc4db42f704d2c9f3c589b3adfe6e1b0c76725d4dbdff2f2424451')
 
 
 prepare() {
