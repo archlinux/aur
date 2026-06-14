@@ -5,7 +5,7 @@
 
 pkgname=charasay
 pkgver=3.3.1
-pkgrel=2
+pkgrel=1
 pkgdesc="The future of cowsay 🐮! Colorful characters saying something 🗨️."
 arch=("any")
 url="https://github.com/latipun7/charasay"
