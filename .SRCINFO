@@ -1,4 +1,4 @@
-pkgbase = UniBackpack-bin
+pkgbase = unibackpack-bin
 	pkgdesc = A Qt6 downloader for software used by greek universities
 	pkgver = 1.1.0
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = UniBackpack-bin
 	source = https://github.com/open-source-uom/UniBackpack/releases/download/v1.1.0/unibackpack_1.0_amd64.deb
 	sha256sums = aa86e04ea6ee6a9f713fbd630611706bf0e24e828175d50feb19527f025ded48
 
-pkgname = UniBackpack-bin
+pkgname = unibackpack-bin

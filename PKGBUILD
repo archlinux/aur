@@ -1,5 +1,5 @@
 #Maintainer: Antonios Rainakis <antonyrai26@gmail.com>
-pkgname=UniBackpack-bin
+pkgname=unibackpack-bin
 _pkgname=UniBackpack
 pkgver=1.1.0
 pkgrel=1
