@@ -1,21 +1,19 @@
 pkgbase = git-guitar
 	pkgdesc = A terminal based git client with fast topological & chronological graph rendering
-	pkgver = 0.1.45
+	pkgver = 0.1.52
 	pkgrel = 1
 	url = https://github.com/asinglebit/guitar
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0
+	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = git
 	provides = guitar
 	conflicts = git-guitar-git
 	conflicts = git-guitar-bin
 	options = !lto
-	source = guitar-0.1.45.tar.gz::https://github.com/asinglebit/guitar/archive/refs/tags/v0.1.45.tar.gz
-	source = guitar-0.1.45.tar.gz.asc
-	validpgpkeys = EF4B4CB5DFB8822216A473B1597AB12E66262898
-	sha256sums = 87fc963b5c5426c11c27832a7d19245b6df89e16346e1e97aa40aa259b9f35db
-	sha256sums = SKIP
+	options = !debug
+	source = guitar-0.1.52.tar.gz::https://github.com/asinglebit/guitar/archive/refs/tags/v0.1.52.tar.gz
+	sha256sums = dafaa34c457f58b225c7affccaadd79095414854cf22c9d31b1946a163c988fc
 
 pkgname = git-guitar
