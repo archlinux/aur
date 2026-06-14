@@ -1,7 +1,7 @@
 pkgbase = cef-vaapi
 	pkgdesc = Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)
-	pkgver = 148.0.8
-	pkgrel = 2
+	pkgver = 148.0.10
+	pkgrel = 1
 	url = https://chromiumembedded.github.io/cef
 	arch = x86_64
 	license = BSD-3-Clause
@@ -56,11 +56,11 @@ pkgbase = cef-vaapi
 	optdepends = libva-mesa-driver: VAAPI driver for AMD GPUs
 	optdepends = intel-media-driver: VAAPI driver for modern Intel GPUs
 	optdepends = libva-utils: VAAPI diagnostics such as vainfo
-	provides = cef=148.0.8
+	provides = cef=148.0.10
 	conflicts = cef
 	options = !lto
-	source = chromium-148.0.7778.96-lite.tar.xz::https://commondatastorage.googleapis.com/chromium-browser-official/chromium-148.0.7778.96-lite.tar.xz
-	source = cef::git+https://github.com/chromiumembedded/cef.git#commit=18e00ea6d6e4567ab4031efaf04c50e5b2709c29
+	source = chromium-148.0.7778.218-lite.tar.xz::https://commondatastorage.googleapis.com/chromium-browser-official/chromium-148.0.7778.218-lite.tar.xz
+	source = cef::git+https://github.com/chromiumembedded/cef.git#commit=7ee53f518427a047f3c385446e3f92797e6b8cae
 	source = chromium-138-nodejs-version-check.patch
 	source = chromium-145-fix-SYS_SECCOMP.patch
 	source = chromium-146-drop-unknown-clang-flag.patch
@@ -76,8 +76,8 @@ pkgbase = cef-vaapi
 	source = cef-no-libxml-visibility-patch.patch
 	source = chromium-disable-font-tests.patch
 	source = FindCEF.cmake
-	sha256sums = 694d4e0269e11056c6dff748da7e8354bfbf90da7ce8f7467a0acfe2994a8688
-	sha256sums = 011c62db2fcfb6e7e1def597b07986ad91836a94577a1f680b336085f7bf6b81
+	sha256sums = 9ef5529ee99461ec74fca7582fbd9db81e88d702ff6c3d19d0db12944c0c0b35
+	sha256sums = 1380e4202251657030fa630b284097eab1bbc190168f148085dd80b9acb5c613
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
 	sha256sums = 4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e
 	sha256sums = 24535c314c7e70c52bcf409aaf604728bfc5b5c97e60087e630e1f7233b9e12d
