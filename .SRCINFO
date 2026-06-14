@@ -1,10 +1,11 @@
 pkgbase = tiri
 	pkgdesc = A tiling Wayland compositor derived from niri
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pablocpas/tiri
 	arch = x86_64
 	license = GPL-3.0-or-later
+	options = !lto
 	makedepends = clang
 	makedepends = rust
 	source = tiri-0.1.3.tar.gz::https://github.com/pablocpas/tiri/releases/download/tiri-v0.1.3/tiri-0.1.3.tar.gz

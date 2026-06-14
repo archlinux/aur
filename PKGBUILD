@@ -2,11 +2,12 @@
 
 pkgname=tiri
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A tiling Wayland compositor derived from niri'
 arch=('x86_64')
 url='https://github.com/pablocpas/tiri'
 license=('GPL-3.0-or-later')
+options=('!lto')
 depends=(
   'cairo'
   'glib2'
