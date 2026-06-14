@@ -1,0 +1,15 @@
+pkgbase = task-automation
+	pkgdesc = KDE Plasma Wayland task recorder and player for keyboard, mouse, wheel, and timing automation
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yousefvand/Task-Automation
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = qt6-base
+	depends = kpackage
+	depends = kconfig
+	source = Task-Automation-0.1.0.tar.gz::https://github.com/yousefvand/Task-Automation/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 3c50b745552675fafeac69041a880b136e8ff1016d0fcfb70646e502fd99641a
+
+pkgname = task-automation
