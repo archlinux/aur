@@ -2,7 +2,7 @@
 
 pkgname=unused-pkg-remover
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="GUI tool to find and remove unused Arch Linux packages — orphans, pacman cache, Flatpak runtimes, broken packages, AUR build deps, Steam/Proton junk, and more"
 arch=('any')
 url="https://github.com/dressedinblack5/unused-pkg-remover"
@@ -22,6 +22,7 @@ makedepends=(
 )
 optdepends=(
   'flatpak: Flatpak runtime cleaning'
+  'ollama: Ollama model listing and removal'
   'yay: AUR cache cleaning and orphan removal'
   'paru: AUR cache cleaning and orphan removal'
   'steam: Steam/Proton cleaning'

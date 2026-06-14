@@ -1,7 +1,7 @@
 pkgbase = unused-pkg-remover
 	pkgdesc = GUI tool to find and remove unused Arch Linux packages — orphans, pacman cache, Flatpak runtimes, broken packages, AUR build deps, Steam/Proton junk, and more
 	pkgver = 1.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dressedinblack5/unused-pkg-remover
 	arch = any
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = unused-pkg-remover
 	depends = expac
 	depends = polkit
 	optdepends = flatpak: Flatpak runtime cleaning
+	optdepends = ollama: Ollama model listing and removal
 	optdepends = yay: AUR cache cleaning and orphan removal
 	optdepends = paru: AUR cache cleaning and orphan removal
 	optdepends = steam: Steam/Proton cleaning
