@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PomChat
+GenericName=即时通讯聊天视频渲染工具
+Comment=通过本地音频 + ASS字幕实现即时通讯聊天渲染并导出视频的桌面工具
+Exec=/usr/bin/pomchat
+Icon=pomchat
+Terminal=false
+StartupNotify=true
+Encoding=UTF-8
+Categories=AudioVideo
+MimeType=application/json
