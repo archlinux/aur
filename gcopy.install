@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+post_install() {
+    echo "NOTE: Starting with v2.0.2, Gcopy no longer separates the frontend and backend components."
+    echo "      It have been consolidated into a single service, gcopy.service, and therefore gcopy-web.service has been removed."
+    echo "      This release introduces significant changes. For details, please refer to: https://github.com/llaoj/gcopy/releases/tag/v2.0.2"
+    echo "      The only configuration file now is /etc/conf.d/gcopy. If you are upgrading from an earlier version, you will need to reconfigure."
+}
+
+post_upgrade() {
+    post_install
+}

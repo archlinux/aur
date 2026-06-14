@@ -1,14 +1,27 @@
 [Unit]
-Description=Gcopy backend
+Description=Gcopy Service
 Wants=network-online.target
 After=network-online.target
 
 [Service]
-User=gcopy
 Restart=on-failure
-EnvironmentFile=-/etc/gcopy/gcopy.env
-ExecStart=/usr/bin/gcopy $APPEND_ARGS
+EnvironmentFile=/etc/conf.d/gcopy
+ExecStart=/usr/bin/gcopy
 TimeoutStopSec=5
+DynamicUser=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+NoNewPrivileges=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+ProtectProc=invisible
+MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=multi-user.target
