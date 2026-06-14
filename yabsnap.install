@@ -1,5 +1,4 @@
 post_install() {
-  systemctl --quiet daemon-reload
   # If SELINUX environment, enable execution of the binary.
   $(which selinuxenabled 2>/dev/null) && restorecon -R src/ /usr/share/yabsnap
 
@@ -21,18 +20,12 @@ EOF
 }
 
 post_upgrade() {
-  systemctl --quiet daemon-reload
   # Starting 2.2.10, we switched to .opt-1.pyc and own them.
   # Drop all .pyc, but not .opt-1.pyc.
   find /usr/share/yabsnap -type f -name "*.pyc" ! -name "*.opt-1.pyc" -exec rm -f {} +
 }
 
-pre_remove() {
-  systemctl --quiet --no-reload disable --now yabsnap.timer
-}
-
 post_remove() {
-  systemctl --quiet daemon-reload
   # Since .pycache files may be created here, which won't be removed by pacman.
   rm -fr /usr/share/yabsnap
 }
