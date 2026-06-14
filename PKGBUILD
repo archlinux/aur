@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=codegraph-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Pre-indexed code knowledge graph for AI coding assistants — fewer tokens, fewer tool calls, 100% local"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/colbymchenry/codeg
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_urlbase}/codegraph-linux-x64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_urlbase}/codegraph-linux-arm64.tar.gz")
 sha256sums=('e6d98f98c666bebe065ac2492a0a19232cc318d4d67bac3ca42ffb77bacc8809')
-sha256sums_x86_64=('56cce751fe97d5464147e97f9679cc0d4de2ecccb696d579dd271cf6f551c976')
-sha256sums_aarch64=('bfa23de555ab67bb2a6380a089b9f38a07388598f15d610276190de56292211a')
+sha256sums_x86_64=('d45a068f44596a85c7ba7d0ef924eaf7103fbbf3cafbeb668127daff60a52228')
+sha256sums_aarch64=('e16f612bc96c2ebccd04574cbed500c9939147c80666ad6bb024398dff7992ae')
 
 latestver() {
     curl -fsSL "https://api.github.com/repos/colbymchenry/codegraph/releases/latest" |

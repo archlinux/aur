@@ -1,6 +1,6 @@
 pkgbase = codegraph-bin
 	pkgdesc = Pre-indexed code knowledge graph for AI coding assistants — fewer tokens, fewer tool calls, 100% local
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/colbymchenry/codegraph
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = codegraph-bin
 	provides = codegraph
 	conflicts = codegraph
 	options = !debug
-	source = LICENSE-1.0.0::https://raw.githubusercontent.com/colbymchenry/codegraph/v1.0.0/LICENSE
+	source = LICENSE-1.0.1::https://raw.githubusercontent.com/colbymchenry/codegraph/v1.0.1/LICENSE
 	sha256sums = e6d98f98c666bebe065ac2492a0a19232cc318d4d67bac3ca42ffb77bacc8809
-	source_x86_64 = codegraph-bin-1.0.0-x86_64.tar.gz::https://github.com/colbymchenry/codegraph/releases/download/v1.0.0/codegraph-linux-x64.tar.gz
-	sha256sums_x86_64 = 56cce751fe97d5464147e97f9679cc0d4de2ecccb696d579dd271cf6f551c976
-	source_aarch64 = codegraph-bin-1.0.0-aarch64.tar.gz::https://github.com/colbymchenry/codegraph/releases/download/v1.0.0/codegraph-linux-arm64.tar.gz
-	sha256sums_aarch64 = bfa23de555ab67bb2a6380a089b9f38a07388598f15d610276190de56292211a
+	source_x86_64 = codegraph-bin-1.0.1-x86_64.tar.gz::https://github.com/colbymchenry/codegraph/releases/download/v1.0.1/codegraph-linux-x64.tar.gz
+	sha256sums_x86_64 = d45a068f44596a85c7ba7d0ef924eaf7103fbbf3cafbeb668127daff60a52228
+	source_aarch64 = codegraph-bin-1.0.1-aarch64.tar.gz::https://github.com/colbymchenry/codegraph/releases/download/v1.0.1/codegraph-linux-arm64.tar.gz
+	sha256sums_aarch64 = e16f612bc96c2ebccd04574cbed500c9939147c80666ad6bb024398dff7992ae
 
 pkgname = codegraph-bin
