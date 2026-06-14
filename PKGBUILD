@@ -4,12 +4,12 @@ _base=case-generate
 pkgname=precice-${_base}
 pkgdesc="Generates File and Folder Structure, including all of the necessary files to quickly kickstart a simulation"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/precice/${_base}"
 license=(MIT)
-depends=(python-attrs python-jsonschema python-jsonschema-specifications python-lxml
-  python-ruamel-yaml python-referencing python-rpds-py python-termcolor python-typing_extensions)
+depends=(precice-config-graph precice-adapter-schema python-ruamel-yaml
+  python-jsonschema python-colored)
 makedepends=(python-build python-installer python-setuptools-git-versioning git)
 # checkdepends=(python-pytest precice-config-check)
 source=(git+${url}.git#tag=v${pkgver})

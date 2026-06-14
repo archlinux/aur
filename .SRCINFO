@@ -1,7 +1,7 @@
 pkgbase = precice-case-generate
 	pkgdesc = Generates File and Folder Structure, including all of the necessary files to quickly kickstart a simulation
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/precice/case-generate
 	arch = any
 	license = MIT
@@ -9,15 +9,11 @@ pkgbase = precice-case-generate
 	makedepends = python-installer
 	makedepends = python-setuptools-git-versioning
 	makedepends = git
-	depends = python-attrs
-	depends = python-jsonschema
-	depends = python-jsonschema-specifications
-	depends = python-lxml
+	depends = precice-config-graph
+	depends = precice-adapter-schema
 	depends = python-ruamel-yaml
-	depends = python-referencing
-	depends = python-rpds-py
-	depends = python-termcolor
-	depends = python-typing_extensions
+	depends = python-jsonschema
+	depends = python-colored
 	source = git+https://github.com/precice/case-generate.git#tag=v1.0.0
 	sha512sums = b1f45fe60f6b7300c0ab9e69c2080713cd9d485f955fa4db83a10d46e6a721be337e6def15592aec999a19beacf6fb68981f8e5101fa2ff56978fff2ee8c494a
 
