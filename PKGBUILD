@@ -110,6 +110,19 @@ with open(config_file, 'w') as f:
 #!/bin/bash
 export GI_TYPELIB_PATH=/usr/lib/x86_64-linux-gnu/girepository-1.0:/usr/local/lib/x86_64-linux-gnu/girepository-1.0
 export LD_LIBRARY_PATH=/usr/local/lib/x86_64-linux-gnu
+
+# Create user models directory and symlink to system directory
+USER_MODELS_DIR="$HOME/.local/share/gimp-openvino/models"
+SYSTEM_MODELS_DIR="/usr/share/gimp-openvino/user-models"
+
+mkdir -p "$USER_MODELS_DIR"
+
+if [ ! -L "$SYSTEM_MODELS_DIR" ]; then
+    ln -sfn "$USER_MODELS_DIR" "$SYSTEM_MODELS_DIR"
+fi
+
+chmod a+w "$SYSTEM_MODELS_DIR"
+
 exec gimp-3 "$@"
 EOF
   chmod +x "$pkgdir/usr/bin/openvino-ai-gimp"
