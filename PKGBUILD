@@ -1,5 +1,5 @@
 pkgname=pam_pinlock
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Secure, feature-rich PIN-based PAM module for Linux"
 arch=('x86_64')
@@ -10,7 +10,7 @@ options=('!debug')
 backup=('etc/pinlock.conf')
 makedepends=('git' 'make' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/saltnpepper97/pam_pinlock/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('74678c4863f21a3795631badfc4957fe83d74b3a2d15b835e697f4f558ef4122')
+sha256sums=('802c810892d011b7eef7e6393687b2e4ea9356a20d5a728667324bc1aa495dab')
 
 build() {
     cd "$pkgname-$pkgver"
