@@ -30,7 +30,7 @@ source=("ICON-${pkgver}.svg::${_ghurlraw}/docs/assets/logo.svg"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"${_appname}.desktop")
 source_x86_64=("${_appname}-cli-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-cli-${_barch[0]}"
-               "${_appname}-gui-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-gui-${_barch[0]}")
+			   "${_appname}-gui-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-gui-${_barch[0]}")
 sha256sums=('c51ee75957efd5604dce49c014c86bf0ec40770f48461b7f447a922ae8cef3c8'
             '3a4e01fd98cfbcaf7cda0d33069788b3d36bb37af68c95c208ff89588ddc8a33'
             '230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809'
