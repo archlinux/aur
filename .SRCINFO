@@ -1,0 +1,22 @@
+pkgbase = reverbic-bin
+	pkgdesc = All-in-one terminal player — Radio, Spotify & YouTube.
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = https://github.com/sewandev/Reverbic
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	depends = alsa-lib
+	provides = reverbic
+	conflicts = reverbic
+	options = !strip
+	source = README-1.5.4.md::https://raw.githubusercontent.com/sewandev/Reverbic/v1.5.4/README.md
+	source = LICENSE-1.5.4::https://raw.githubusercontent.com/sewandev/Reverbic/v1.5.4/LICENSE
+	sha256sums = 731449cd1541cd76a575f3b6865bcbbf028090c3cde50f2f474651e456392a29
+	sha256sums = 746e5a753e38e8188a5839559aca0bd9a4c3b4b698138e7597b71b0ac39a16d3
+	source_x86_64 = reverbic-x86_64-1.5.4.tgz::https://github.com/sewandev/Reverbic/releases/download/v1.5.4/Reverbic-v1.5.4-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 886e839b5f31d11175a108f5e038e5bb46a0d96ad50fd8534f19cb8b0eff9987
+
+pkgname = reverbic-bin

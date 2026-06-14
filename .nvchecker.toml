@@ -1,0 +1,5 @@
+[reverbic-bin]
+source = "github"
+github = "sewandev/Reverbic"
+use_latest_release = true
+prefix = "v"
