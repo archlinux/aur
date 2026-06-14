@@ -1,6 +1,6 @@
 # Maintainer: thongor77 <magetriste@proton.me>
 pkgname=nmlinux
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Unified network toolkit for Linux — 27 modules, SSH terminal, topology, export"
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://github.com/thongor77/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ea913af810524f88048bb0d30378166598c9574aa9ed63ef69f2167ff82fe010')
+sha256sums=('fbb79ca351895578111fd9888c36bca69738466231731f62a6767b75e78f154a')
 
 build() {
     cd "${pkgname}-${pkgver}"
