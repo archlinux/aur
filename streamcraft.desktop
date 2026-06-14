@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=StreamCraft
+Comment=StreamCraft Minecraft launcher
+Comment[ru]=Лаунчер StreamCraft для Minecraft
+Exec=streamcraft
+Icon=streamcraft
+Terminal=false
+Categories=Game;

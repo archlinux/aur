@@ -1,0 +1,20 @@
+pkgbase = streamcraft
+	pkgdesc = Proprietary Minecraft launcher (Linux bootstrap)
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://streamcraft.net
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = java-runtime>=8
+	depends = gtk2
+	depends = hicolor-icon-theme
+	noextract = streamcraft-bootstrap-2.0.1.jar
+	options = !debug
+	source = streamcraft-bootstrap-2.0.1.jar::https://s3.streamcraft.net/uploads/launcher-download/streamcraft-bootstrap-2.0.1-all.jar
+	source = streamcraft.sh
+	source = streamcraft.desktop
+	sha256sums = 62aa9ff211577d278ebb696e523c247e3e877bfecb47b1dee15dab50180a7b0c
+	sha256sums = 4541ed1ffd1bed4f0ac74b3c240bf0daf76429c4d8d1b15271d3d686f265f556
+	sha256sums = e842335b2abfc3cee9f7765d36a219446348ce1b653958b8048d7b3bb9ea1e86
+
+pkgname = streamcraft
