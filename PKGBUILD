@@ -8,7 +8,7 @@ pkgrel=1
 arch=(any)
 url="https://github.com/precice/fenicsx-adapter"
 license=(LGPL-3.0)
-depends=(python-pyprecice python-scipy precice-adapter-schema python-fenics)
+depends=(python-pyprecice python-scipy precice-adapter-schema python-fenics-dolfinx)
 makedepends=(python-build python-installer python-setuptools-git-versioning git)
 # checkdepends=(python-pytest python-sympy)
 source=(git+${url}.git#tag=v${pkgver})
