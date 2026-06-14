@@ -23,6 +23,6 @@ package(){
 	echo -e "#!/bin/sh\n/usr/bin/madbfs-bin --no-cache \$@" > "${srcdir}/madbfs/madbfs-wrapper-script"
 	install -Dm755 "${srcdir}/madbfs/madbfs" "${pkgdir}/usr/bin/madbfs-bin"
 	install -Dm755 "${srcdir}/madbfs/madbfs-wrapper-script" "${pkgdir}/usr/bin/madbfs"
-	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/madbfs-bin/MIT.txt"
+	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/madbfs/MIT.txt"
 	install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/madbfs/README.md"
 }
