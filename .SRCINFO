@@ -1,6 +1,6 @@
 pkgbase = pianod
 	pkgdesc = Pandora Client Daemon
-	pkgver = 175
+	pkgver = 420
 	pkgrel = 1
 	url = http://deviousfish.com/pianod/
 	arch = x86_64
@@ -15,8 +15,7 @@ pkgbase = pianod
 	depends = libmad
 	backup = etc/pianod.startscript
 	backup = etc/pianod.env
-	source = http://deviousfish.com/Downloads/pianod/pianod-175.tar.gz
-	md5sums = 6d0e460b3dcb0bbc68bdd58631f02afa
+	source = http://deviousfish.com/Downloads/pianod2/pianod2-420.tar.gz
+	sha256sums = 9fa739cf28d5f554d982acecb94857b9fe0d0fd839d238dfca90f143c9fab216
 
 pkgname = pianod
-

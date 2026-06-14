@@ -1,33 +1,34 @@
-# Maintainer: Ian D. Scott <ian@perebruin.com>
+# Maintainer: FredBezies <fredbezies at gmail dot com>
+# Contributor: Ian D. Scott <ian@perebruin.com>
 pkgname=pianod
-pkgver=175
+_pkgname=pianod2
+pkgver=420
 pkgrel=1
 pkgdesc="Pandora Client Daemon"
 url="http://deviousfish.com/pianod/"
 arch=('x86_64' 'i686')
 license=('mit')
 depends=('mksh' 'libao' 'libgcrypt' 'gnutls' 'json-c' 'faad2' 'libmad')
-source=("http://deviousfish.com/Downloads/pianod/${pkgname}-${pkgver}.tar.gz" )
-md5sums=('6d0e460b3dcb0bbc68bdd58631f02afa')
+source=("http://deviousfish.com/Downloads/pianod2/${_pkgname}-${pkgver}.tar.gz" )
 backup=('etc/pianod.startscript' 'etc/pianod.env')
+sha256sums=('9fa739cf28d5f554d982acecb94857b9fe0d0fd839d238dfca90f143c9fab216')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}/contrib"
+  cd "${srcdir}/${_pkgname}-${pkgver}/contrib"
   sed -i 's|/bin/ksh|/bin/mksh|' piano runmix
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 contrib/pianod.service "$pkgdir/usr/lib/systemd/system/pianod.service"
-  install -Dm644 contrib/pianod.env "$pkgdir/etc/pianod.env"
   install -Dm644 contrib/startscript-example "$pkgdir/etc/pianod.startscript"
 }
 
