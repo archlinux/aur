@@ -2,7 +2,7 @@
 
 _pkgname="radiogogo"
 pkgname="${_pkgname}-bin"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Go-powered CLI to surf global radio waves via a sleek TUI"
 arch=(
@@ -22,7 +22,7 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-_pkgsrc="${_pkgname}-${pkgver}"
+_pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
   "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
@@ -42,13 +42,13 @@ source_i686=(
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip"
 )
-sha256sums=('1f0822bd042789976313ee09b475e0799ac8d2f9402aa193c10fb5b31cfd5ceb'
+sha256sums=('f72bb27168b92cc356541010e84204df6e7e60bbab45814069f8ac1db80d9b95'
             '133e7fe753e0ab27fa19a01aa7710821442c19e80024642b190adbdd2d9c97d2')
-sha256sums_aarch64=('a98155c82e813d74e3df4bdeabe753db884f9de298f9e5fcfd426d467bebeba5')
-sha256sums_armv6h=('25e56890d5f3a9e1623bc79a17ddbb7a2eb468508014a5aca20c0c257018f7ff')
-sha256sums_armv7h=('38b0978a12d52ef0efcdfe8928ce1a1e15d230b8c7b76e3eeac986f884b9bdc7')
-sha256sums_i686=('880e48c9f0ab3ebcd0a543c9b6aa3be5096548a9f7da2ad5b9dab0153d27723d')
-sha256sums_x86_64=('4676c40ad109a6c18a93296aca64c54ebeb96f0dbec6bba5803a28db68b15add')
+sha256sums_aarch64=('ef7f7da3b4e1d9199f0b4cef0e3531dc319f3971881da4581bae57651f9d3bbf')
+sha256sums_armv6h=('b58f064adc1f1cc946fd363484b814ac27f37941211b545e70abf974dcc6173f')
+sha256sums_armv7h=('e5e2e8cfed099e8c4c1b7ffefb4d53e5087a9798664255ed49c18ec75446b4f8')
+sha256sums_i686=('e1cdda5bd6c5e8562f303163c1b948af326d9a11f0aa2017e8bd536a6895e325')
+sha256sums_x86_64=('a9fe2e3e743f4bb74ce32939a84698d066457b5bfe3e63a54af98b0f96c35f30')
 
 package() {
   cd "${srcdir}"
