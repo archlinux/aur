@@ -1,12 +1,8 @@
-# Maintainer: illusory <your-email-at-sign>
-# Contributor: AlphaJack <alphajack at tuta dot io>
-# Contributor: Antonio Voza <vozaanthony at gmail dot com>
-# Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
-# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: illusory <becomeillusory AT gmail DOT com>
 
 _pkgname=WhiteSur-gtk-theme
 _pkgver=2025-07-24
-pkgname="whitesur-gtk-theme"
+pkgname="whitesur-gtk-theme-custom"
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc='A macOS BigSur-like theme for your GTK apps.'
@@ -20,7 +16,7 @@ optdepends=(
   'whitesur-icon-theme: matching icon theme'
   'whitesur-cursor-theme: matching cursor theme'
 )
-conflicts=("${pkgname}-git")
+conflicts=('whitesur-gtk-theme' "${pkgname}-git")
 source=(
   "${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
 )
