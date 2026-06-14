@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/coNQP/${pkgname}"
 license=('MIT')
 makedepends=('cargo' 'git')
+options=(!lto)
 source=("${pkgname}-${pkgver}::git+${url}.git#tag=${pkgver}")
 md5sums=('167130f057357b0bcce071bc4c6be850')
 

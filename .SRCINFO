@@ -7,6 +7,7 @@ pkgbase = ddnss
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	options = !lto
 	source = ddnss-0.2.0::git+https://github.com/coNQP/ddnss.git#tag=0.2.0
 	md5sums = 167130f057357b0bcce071bc4c6be850
 
