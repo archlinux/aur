@@ -54,7 +54,7 @@ package() {
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 "CONTEXT.md" "${pkgdir}/usr/share/doc/${pkgname}/CONTEXT.md"
 	install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-	install -Dm644 "docs/use-cases.md" "${pkgdir}/usr/share/doc/${pkgname}/USE_CASES.md"
+	install -Dm644 "docs/use-cases.md" "${pkgdir}/usr/share/doc/${pkgname}/USE-CASES.md"
 
 	install -Dm644 "LICENSE-MIT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
 	install -Dm644 "LICENSE-APACHE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
