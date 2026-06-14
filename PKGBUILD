@@ -1,7 +1,7 @@
 # Maintainer: SonOfMithras <ammar.alriyamy@gmail.com>
 pkgname=plasma-theme-master
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon and GUI to generate/synchronize and control theme dynamically across KDE Plasma and universal applications"
 arch=('x86_64')
 url="https://github.com/SonOfMithras/plasma-theme-master"
