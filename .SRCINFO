@@ -1,0 +1,18 @@
+pkgbase = whitesur-gtk-theme
+	pkgdesc = A macOS BigSur-like theme for your GTK apps.
+	pkgver = 2025.07.24
+	pkgrel = 1
+	url = https://github.com/vinceliuice/WhiteSur-gtk-theme
+	arch = any
+	license = MIT
+	makedepends = sassc
+	makedepends = which
+	optdepends = gtk-engine-murrine: GTK2 theme support
+	optdepends = gtk-engines: GTK2 theme support
+	optdepends = whitesur-icon-theme: matching icon theme
+	optdepends = whitesur-cursor-theme: matching cursor theme
+	conflicts = whitesur-gtk-theme-git
+	source = whitesur-gtk-theme-2025-07-24.tar.gz::https://github.com/vinceliuice/WhiteSur-gtk-theme/archive/refs/tags/2025-07-24.tar.gz
+	b2sums = 7d64e51eff9b76b7ceb07b379e43229e0285dff77c17d261ad95df3254fd178544dc831ce0b7e4d4e9db229ade502592451a39e855cdf6985def4a0ef3485e68
+
+pkgname = whitesur-gtk-theme
