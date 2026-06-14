@@ -1,5 +1,5 @@
 # Maintainer: Jotalea <main@jotalea.com.ar>
-pkgname=xs-lang-bin
+pkgname=xslang-bin
 pkgver=1.2.32
 pkgrel=1
 pkgdesc="The XS programming language"
