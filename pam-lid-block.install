@@ -1,0 +1,7 @@
+post_install() {
+	echo "PAM integration requires manual configuration - check the man page for details."
+}
+
+post_upgrade() {
+	post_install
+}

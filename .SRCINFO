@@ -1,0 +1,17 @@
+pkgbase = pam-lid-block
+	pkgdesc = A PAM helper to skip fingerprint authentication when the laptop lid is closed
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/shini4i/pam-lid-block
+	install = pam-lid-block.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL-3.0-only
+	makedepends = systemd
+	depends = systemd-libs
+	source = pam-lid-block-0.1.0.tar.gz::https://github.com/shini4i/pam-lid-block/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = b2ef04430425c1864f48f08f215488ee0aa8876f017aeff56d21d66c4233b6b945bdde03ce363a21a1d2c7bec62870265caf7fbd6495657bb8ca4956136e567e
+
+pkgname = pam-lid-block
