@@ -2,7 +2,7 @@
 
 pkgname=zcurl
 pkgauthor=12britz
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 
 _npmname=${pkgname}
@@ -13,7 +13,7 @@ pkgdesc="A beautifully colored curl alternative with stunning box-style output. 
 pkgver=${_npmver}
 pkgrel=1
 arch=("x86_64")
-url="https://github.com/12britz/sysview"
+url="https://github.com/${pkgauthor}/${pkgname}"
 license=("MIT")
 
 depends=("nodejs")
@@ -24,7 +24,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('d36bdd2851941f5d117d207931642d369a6e52b36b5081fa983e22bd808be43a70aa514bd8a61ad71276890fb55f73c4fb2d345ddda49bdeee3756b2199b34e1')
+b2sums=('71bb5a5fda6c321ae2dd90f25b970618176a5e4c5a581f5a68c39aca36ed7df572b3bccd25d4747836d72276f8096290a0a8881bb7fd8f576a5e6c3294b72626')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
