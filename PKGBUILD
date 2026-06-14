@@ -1,7 +1,7 @@
 # Maintainer: isra <israelzermeno82@gmail.com>
 pkgname=dmgr-desktop
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern device manager for Linux — Tauri + React (devices, drivers, audio, Bluetooth, kernel modules)"
 arch=('x86_64')
 url="https://github.com/Khinmmad/dmgr"
@@ -24,7 +24,11 @@ build() {
     cd "$srcdir/dmgr-$pkgver/desktop"
     npm install
     npm run build
-    cargo build --release --manifest-path src-tauri/Cargo.toml
+    # `custom-protocol` is REQUIRED for production: without it the binary builds
+    # in Tauri dev mode and tries to load http://localhost:1420 at runtime
+    # ("localhost failed"). The Tauri CLI sets this automatically; plain
+    # `cargo build` does not, so we pass it explicitly.
+    cargo build --release --features custom-protocol --manifest-path src-tauri/Cargo.toml
 
     # Privileged helper from the root workspace.
     cd "$srcdir/dmgr-$pkgver"
