@@ -9,7 +9,7 @@ url='https://zeroxoneafour.github.io/polonium/'
 license=('MIT')
 
 depends=('kwin')
-makedepends=('git' 'npm' 'typescript')
+makedepends=('cargo' 'git' 'npm' 'typescript')
 conflicts=('kwin-polonium')
 provides=('kwin-polonium')
 
@@ -28,18 +28,31 @@ prepare() {
     git submodule init
     git config submodule.kwin-api.url "$srcdir/kwin-api"
     git -c protocol.file.allow=always submodule update
+
+    cd dbus-saver
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
     cd polonium
     [[ -d pkg ]] && make clean
     make src res
+
+    cd dbus-saver
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
 }
 
 package() {
     cd polonium
     install -D -o root -m 755 -d "$pkgdir/usr/share/kwin/scripts"
     cp -r pkg "$pkgdir/usr/share/kwin/scripts/polonium"
+
+    install -D -o root -m 755 -t "$pkgdir/usr/bin" dbus-saver/target/release/polonium-saver
+    install -D -o root -m 644 -t "$pkgdir/usr/lib/systemd/user" dbus-saver/polonium-saver.service
+    install -D -o root -m 644 -t "$pkgdir/usr/share/dbus-1/services" dbus-saver/xyz.vaughanm.polonium.service
 
     install -D -o root -m 644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
