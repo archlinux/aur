@@ -36,12 +36,12 @@ sha256sums=('3f31cddbad9e8bc81996f2f14e7a1ac184caf1451922c7453f11470f62f5a0e3'
             'bd62afefea6bd0fa7b89ff4a1878097b59eb0bc272d89d11000887af02a313c7')
 
 build() {
-  cd "$srcdir/$pkgname-main"
+  cd "$srcdir/$pkgname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname-main"
+  cd "$srcdir/$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 assets/unused-pkg-remover.png \
