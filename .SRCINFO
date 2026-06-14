@@ -1,0 +1,16 @@
+pkgbase = python-rectpack
+	pkgdesc = 2D Rectangle packing library
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/secnot/rectpack/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/rectpack/rectpack-0.2.2.tar.gz
+	sha256sums = 15e383505fdfbaeb55ec640a5825d9ca2ce89019a6cdd552d6e57ec36c68ba2a
+
+pkgname = python-rectpack
