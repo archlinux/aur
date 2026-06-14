@@ -1,8 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="thokr"
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A sleek typing TUI with visualized results and historical logging"
 arch=(
   'x86_64'
@@ -22,7 +22,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('8ab9ebe95e2087eb8bf843c775e9d468daa14da031a72c90f799ade5cde9faa6')
+sha256sums=('8276dd099e54f3aa1da4c46f6c21c28375e3c8b8e8cc81193f016527c6a426f2')
 
 _source() {
   export CARGO_HOME="${srcdir}/.cargo"
@@ -52,8 +52,10 @@ check() {
 }
 
 package() {
+  _source
+
   cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm755 "${CARGO_TARGET_DIR}/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -vDm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -vDm644 "LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
