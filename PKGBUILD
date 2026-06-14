@@ -1,13 +1,15 @@
 # Maintainer: HAHWUL <hahwul@gmail.com>
 pkgname=dalfox
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Powerful open-source XSS scanner and utility focused on automation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hahwul/dalfox"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
+# Disable LTO: makepkg's -flto leaks into ring's `cc` build, producing objects
+# that fail to link with lld (undefined `ring_core_*` symbols). See #1061.
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hahwul/dalfox/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
