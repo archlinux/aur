@@ -1,0 +1,18 @@
+post_install() {
+  cat <<'MSG'
+==> RemotePower agent installed. Enroll this host with your server:
+      remotepower-agent enroll --server https://<your-server> --pin <PIN>
+    For a self-signed-CA server, add: --ca-fingerprint <sha256>
+      (see https://github.com/tyxak/remotepower/blob/main/docs/tls-selfsigned.md)
+    Then start + enable it:
+      systemctl enable --now remotepower-agent
+    Follow its logs:
+      journalctl -u remotepower-agent -f
+==> Install 'python-psutil' for full CPU/memory/disk/network metrics.
+    Credentials live in /etc/remotepower/ and are kept on upgrade/removal.
+MSG
+}
+
+post_upgrade() {
+  echo '==> RemotePower agent upgraded. Restart it: systemctl restart remotepower-agent'
+}
