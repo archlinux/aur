@@ -1,7 +1,7 @@
 # Maintainer: Gerasimos Chourdakis <chourdak at in dot tum dot de>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=fenicsxprecice
-pkgname=precice-${_base}
+pkgname=python-${_base}
 pkgdesc="Adapter for the open source computing platform FEniCSx"
 pkgver=1.0.1
 pkgrel=1
