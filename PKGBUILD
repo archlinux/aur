@@ -12,7 +12,7 @@ depends=('gtk3' 'webkit2gtk-4.1')
 provides=('reasonix-desktop')
 conflicts=('reasonix-desktop' 'deepseek-reasonix-desktop' 'deepseek-reasonix-desktop-bin')
 options=('!strip')
-source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/esengine/DeepSeek-Reasonix/releases/download/desktop-v1.7.0/Reasonix-linux-amd64.deb")
+source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/esengine/DeepSeek-Reasonix/releases/download/desktop-v${pkgver}/Reasonix-linux-amd64.deb")
 sha256sums=('94d9d44ae73974eac31648d9b925599520b75eaea7a95d157e176448b212bb87')
 
 package() {
@@ -24,9 +24,13 @@ package() {
   bsdtar -C "${_extractdir}" -xf "${_extractdir}/data.tar.gz"
 
   # Install the real binary under /opt/reasonix-desktop
-  install -Dm755 "${_extractdir}/usr/bin/reasonix-desktop"     "${pkgdir}/opt/reasonix-desktop/reasonix-desktop"
+  install -Dm755 "${_extractdir}/usr/bin/reasonix-desktop" \
+    "${pkgdir}/opt/reasonix-desktop/reasonix-desktop"
 
   # Wrapper script — mirrors Wails' own Linux initialisation logic
+  # GDK_BACKEND: only force x11 when not on Wayland (Wails does this internally too)
+  # WEBKIT_DISABLE_DMABUF_RENDERER: avoids KMS/GBM failures on NVIDIA/mesa combos
+  # WEBKIT_DISABLE_COMPOSITING_MODE: forces software compositing (fixes blank webview)
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/reasonix-desktop" <<'SCRIPT'
 #!/bin/sh
 if [ -z "${GDK_BACKEND:-}" ]; then
@@ -41,9 +45,15 @@ exec /opt/reasonix-desktop/reasonix-desktop "$@"
 SCRIPT
 
   # Desktop entry
-  install -Dm644 "${_extractdir}/usr/share/applications/reasonix.desktop"     "${pkgdir}/usr/share/applications/reasonix.desktop"
-  sed -i     -e 's/^Name=.*/Name=Reasonix/'     -e 's/^Comment=.*/Comment=Terminal-native AI coding agent with DeepSeek API/'     -e 's/^Categories=.*/Categories=Development;Utility;/'     "${pkgdir}/usr/share/applications/reasonix.desktop"
+  install -Dm644 "${_extractdir}/usr/share/applications/reasonix.desktop" \
+    "${pkgdir}/usr/share/applications/reasonix.desktop"
+  sed -i \
+    -e 's/^Name=.*/Name=Reasonix/' \
+    -e 's/^Comment=.*/Comment=Terminal-native AI coding agent with DeepSeek API/' \
+    -e 's/^Categories=.*/Categories=Development;Utility;/' \
+    "${pkgdir}/usr/share/applications/reasonix.desktop"
 
   # Icon
-  install -Dm644 "${_extractdir}/usr/share/pixmaps/reasonix-desktop.png"     "${pkgdir}/usr/share/pixmaps/reasonix-desktop.png"
+  install -Dm644 "${_extractdir}/usr/share/pixmaps/reasonix-desktop.png" \
+    "${pkgdir}/usr/share/pixmaps/reasonix-desktop.png"
 }
