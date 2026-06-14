@@ -1,6 +1,6 @@
 pkgbase = aegis-pentest
 	pkgdesc = AI-driven web penetration testing orchestrator (PTES + OWASP WSTG)
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/glorybnat/aegis-pentest
 	arch = any
@@ -52,7 +52,7 @@ pkgbase = aegis-pentest
 	optdepends = cloudsplaining: AWS IAM analysis (pipx)
 	optdepends = kube-bench: CIS Kubernetes Benchmark
 	optdepends = kube-hunter: K8s vulnerability scan (pipx)
-	source = aegis-pentest-0.10.0.tar.gz::https://github.com/glorybnat/aegis-pentest/archive/v0.10.0.tar.gz
-	sha256sums = 8245bb2aa98301ab00e9d1e45afd68de5581cd9135f7cc0213300a7fa7daeae4
+	source = aegis-pentest-0.11.0.tar.gz::https://github.com/glorybnat/aegis-pentest/archive/v0.11.0.tar.gz
+	sha256sums = 127e09b7476ac80f229330aeb5a30993658bd1d09e5c8869b899baf9c8fd724a
 
 pkgname = aegis-pentest
