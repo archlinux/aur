@@ -27,8 +27,8 @@ package() {
     install "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 
     mkdir -p "/usr/lib/systemd/system"
-    install "ddnss@.service" "/usr/lib/systemd/system"
-    install "ddnss@.timer" "/usr/lib/systemd/system"
+    install "ddnss.service" "/usr/lib/systemd/system"
+    install "ddnss.timer" "/usr/lib/systemd/system"
 
     mkdir -p "/usr/lib/sysusers.d"
     install "ddnss.conf" "/usr/lib/sysusers.d"
