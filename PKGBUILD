@@ -6,8 +6,8 @@
 ###
 
 pkgname=recoil-engine-rc
-pkgver=VERSION
-pkgrel=2
+pkgver=2026.06.08
+pkgrel=3
 pkgdesc="A powerful free cross-platform RTS game engine. (GitHub — latest Release Candidate tag). \
 This version is used for public engine testing in BAR — Join the Discord if you want to help"
 arch=('x86_64')
@@ -31,7 +31,6 @@ makedepends=('git' 'curl' 'jq'
 optdepends=('bar-lobby' 'bar-lobby-git')
 #install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${_ghurl}.git${_tag}${_git_commit}"
-#        "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP')
 
@@ -45,17 +44,16 @@ pkgver() {
   # The 'latest_tag' variable will hold the version string.
   local latest_tag
 
-  # --- MODIFIED API CALL AND JQ FILTER ---
   # Filters for the first entry where "prerelease" is true and extracts the tag_name.
   latest_tag=$(curl -s "https://api.github.com/repos/${owner}/${repo}/releases" | \
     jq -r 'map(select(.prerelease == true)) | .[0].tag_name' 2>/dev/null)
-  # ---------------------------------------
 
   if [[ -n "$latest_tag" && "$latest_tag" != "null" ]]; then
     # Clean the version number for PKGBUILD standard (replaces hyphens with underscores)
     printf "%s" "${latest_tag//-/_}"
   else
     # Fail loud and hard in case we can't get a tag to checkout
+    echo "FATAL: could not get a tag to checkout, something went horribly wrong!"
     exit 1
   fi
 }
@@ -124,8 +122,13 @@ build() {
     cd "${srcdir}/${pkgname%-git}"
     git checkout  "${_tag}"
     git submodule update --init --recursive
+
+    # Fix 1: Missing <cstdint> for UINT8_MAX
+    sed -i '/#include <string>/i #include <cstdint>' rts/Game/ChatMessage.h
+    # === FIX 2: Missing header for Linux SYSCALL's===
+    sed -i '1i #include <unistd.h>' test/other/testMutex.cpp
     cd "${srcdir}"
-    
+
 
 ### use the AUR package instead
 ##  pip install compdb
@@ -162,10 +165,10 @@ package() {
     _get_pkgver ### Get short pkgver to name engine properly.
 
     ### The Lobby only recognizes engines following the official versioning scheme!
-    ### adding .local to the end of the name allows us to name it however we want!
+    ### adding .local to the end of the name allows us to name it however we want.
     mkdir -p "${pkgdir}/usr/share/recoil-engine"
 
-    ### Check if if folder already exists and if so delete it — this is needed for dirty rebuilds
+    ### Check if the folder already exists and if so delete it — this is needed for dirty rebuilds
     if [ -d "${srcdir}/systemwide_managed_by_pkgmngr-${_pkgver}-RC.local" ]; then
         rm -rd "${srcdir}/systemwide_managed_by_pkgmngr-${_pkgver}-RC.local"
     fi
