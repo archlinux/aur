@@ -1,6 +1,6 @@
 pkgbase = squish
 	pkgdesc = A fast, lightweight Unix shell written in Cpp
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://gitlab.com/cpp4692517/shell
 	arch = x86_64
