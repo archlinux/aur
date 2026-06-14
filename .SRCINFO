@@ -1,6 +1,6 @@
 pkgbase = ionwl-git
 	pkgdesc = Manual tiling Wayland compositor.
-	pkgver = 0.1.0.r1.gcb2735b
+	pkgver = 0.1.0.r818.ge8c9d3c
 	pkgrel = 1
 	url = https://codeberg.org/ideasman42/ionwl
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = ionwl-git
 	makedepends = git
 	makedepends = python-sphinx
 	makedepends = weston
-	depends = freetype2
 	depends = fontconfig
 	depends = libinput
 	depends = seatd

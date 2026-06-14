@@ -1,7 +1,7 @@
 # Maintainer: Campbell Barton <ideasman42@gmail.com>
 _pkgname=ionwl
 _version=git
-pkgver=0.1.0.r1.gcb2735b
+pkgver=0.1.0.r818.ge8c9d3c
 pkgname=${_pkgname}-${_version}
 pkgrel=1
 pkgdesc="Manual tiling Wayland compositor."
@@ -9,7 +9,6 @@ arch=('x86_64')
 url="https://codeberg.org/ideasman42/${_pkgname}"
 license=('GPL-3.0-or-later')
 depends=(
-    'freetype2'
     'fontconfig'
     'libinput'
     'seatd'
