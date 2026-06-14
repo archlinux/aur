@@ -3,6 +3,7 @@ pkgbase = plasma-theme-master
 	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/SonOfMithras/plasma-theme-master
+	install = plasma-theme-master.install
 	arch = x86_64
 	license = MIT
 	makedepends = cmake

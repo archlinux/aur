@@ -1,0 +1,17 @@
+post_install() {
+    echo "========================================================================="
+    echo "To start the plasma-theme-master daemon, run:"
+    echo "  systemctl --user enable --now plasma-theme-master.service"
+    echo ""
+    echo "Before first use, copy the default configuration:"
+    echo "  mkdir -p ~/.config/plasma-theme-master"
+    echo "  cp /usr/share/plasma-theme-master/config.toml.default ~/.config/plasma-theme-master/config.toml"
+    echo "========================================================================="
+}
+
+post_upgrade() {
+    echo "========================================================================="
+    echo "To restart the plasma-theme-master daemon after an upgrade, run:"
+    echo "  systemctl --user restart plasma-theme-master.service"
+    echo "========================================================================="
+}
