@@ -1,0 +1,15 @@
+pkgbase = gitm8
+	pkgdesc = Git TUI for the masses!!
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/b404dev/gitm8
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = gitm8
+	source = gitm8-1.0.0.tgz::https://github.com/b404dev/gitm8/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 064e89c87b51c3ed0d00ca959fd52ecfcaad81b0db2127f4b1a91bd053d87408
+
+pkgname = gitm8

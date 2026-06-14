@@ -1,0 +1,5 @@
+[gitm8]
+source = "github"
+github = "b404dev/gitm8"
+use_latest_release = true
+prefix = "v"
