@@ -1,6 +1,6 @@
 pkgbase = codiff-bin
 	pkgdesc = A beautiful, minimal, local diff viewer for reviewing staged and unstaged Git changes before committing
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/nkzw-tech/codiff
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = codiff-bin
 	depends = libxrandr
 	provides = codiff
 	conflicts = codiff
-	source_x86_64 = codiff_1.2.0_amd64.deb::https://github.com/nkzw-tech/codiff/releases/download/v1.2.0/codiff_1.2.0_amd64.deb
-	sha256sums_x86_64 = 48eaf2af984a94e6c8ec9930ec7405e41171459b3ecd88bf6b516db8640ead98
+	source_x86_64 = codiff_1.3.0_amd64.deb::https://github.com/nkzw-tech/codiff/releases/download/v1.3.0/codiff_1.3.0_amd64.deb
+	sha256sums_x86_64 = 6a7c2fdf55762a69ddb6e9801653671a50938e90978248c82ad9446d1183cdfb
 
 pkgname = codiff-bin
