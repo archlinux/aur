@@ -1,0 +1,17 @@
+# Post-upgrade notice. AppGrid is a compiled Plasma applet (a C++ plugin
+# loaded into plasmashell), so replacing it under a running session cannot
+# hot-swap — Plasma must be restarted to pick up the new build, otherwise
+# the live shell can freeze or misbehave until it is.
+
+_restart_notice() {
+    cat <<'MSG'
+==> AppGrid is a compiled Plasma applet. Restart Plasma to load the new
+==> version; the running session can freeze until you do:
+==>   Wayland:  systemctl --user restart plasma-plasmashell.service
+==>   X11:      kquitapp6 plasmashell && kstart plasmashell
+MSG
+}
+
+post_upgrade() {
+    _restart_notice
+}
