@@ -1,0 +1,27 @@
+post_install() {
+  systemctl daemon-reload
+  systemctl enable --now 8bitdo-pro2-a-mode-hid-daemon.service
+  echo ''
+  echo '==> 8BitDo Pro 2 A-mode HID daemon has been installed and started.'
+  echo ''
+  echo '==> To stop the daemon:'
+  echo '      systemctl stop 8bitdo-pro2-a-mode-hid-daemon.service'
+  echo ''
+  echo '==> To start the daemon:'
+  echo '      systemctl start 8bitdo-pro2-a-mode-hid-daemon.service'
+  echo ''
+  echo '==> To disable automatic start on boot:'
+  echo '      systemctl disable 8bitdo-pro2-a-mode-hid-daemon.service'
+  echo ''
+  echo '==> To view logs:'
+  echo '      journalctl -u 8bitdo-pro2-a-mode-hid-daemon.service -f'
+  echo ''
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  if systemctl is-active --quiet 8bitdo-pro2-a-mode-hid-daemon.service; then
+    systemctl restart 8bitdo-pro2-a-mode-hid-daemon.service
+    echo '==> 8BitDo Pro 2 A-mode HID daemon restarted after upgrade.'
+  fi
+}
