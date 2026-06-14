@@ -1,0 +1,233 @@
+pkgbase="wuffs"
+
+pkgname=(
+	"wuffs-lib"
+	#"wuffs-examples"
+	"wuffs-fuzzers"
+	"wuffs-lang"
+	"wuffs-docs"
+	"wuffs-license"
+)
+
+pkgdesc="A memory-safe programming language, and a standard library, for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives."
+
+pkgver=0.3.4
+pkgrel=1
+
+arch=(
+	'x86_64'
+)
+url="https://github.com/google/wuffs"
+license=(
+	"MIT"
+	"Apache-2.0"
+)
+makedepends=(
+	'gcc'
+	'gcc-libs'
+	'glibc'
+	'git'
+	'go'
+	"libxcb"
+	"lz4"
+	"sdl2"
+	"sdl2_image"
+	"xcb-util-image"
+	"xcb-util-renderutil"
+	"zlib"
+	"zstd"
+	"clang"
+)
+
+checkdepends=()
+
+source=(
+	"source::git+${url}.git#tag=v${pkgver}"
+)
+sha256sums=(
+	'SKIP'
+)
+
+build() {
+	cd source
+	export GOPATH="${srcdir}/go"
+	export GOBIN="${GOPATH}/bin"
+	export PATH="/usr/bin:${GOPATH}/bin"
+	sed -i 's|go test|#go test|g' ./build-all.sh
+	sed -i 's|wuffs bench|#wuffs bench|g' ./build-all.sh
+	#./build-all.sh
+
+	CC=${CC:-gcc}
+	CXX=${CXX:-g++}
+	go install github.com/google/wuffs/cmd/...
+	wuffs gen
+	WARNING_FLAGS="-Wall -Werror -Wpedantic -Wcast-qual -Wcast-align -Wpointer-arith -Wfloat-equal -Wundef -Wvla -Wconversion -Wshadow -Wredundant-decls -Wunused-const-variable"
+	C_WARNING_FLAGS="$WARNING_FLAGS -Wstrict-prototypes -Wold-style-definition"
+	CXX_WARNING_FLAGS="$WARNING_FLAGS"
+	wuffs genlib -skipgen
+	wuffs test   -skipgen -mimic
+	./build-fuzz.sh
+}
+
+package_wuffs-lib() {
+	cd source
+	pkgdesc='A memory-safe standard library for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.'
+	depends=(
+		"glibc"
+		"wuffs-license"
+	)
+	provides=(
+		"libwuffs.so"
+		"libwuffs.a"
+	)
+	optdepends=(
+		"python-pywuffs: Python bindings"
+		"wuffs-docs: Docs"
+	)
+	install -vDm644 \
+		-t "${pkgdir}/usr/include" \
+		release/c/*.c gen/c/*.c
+	install -vDm755 \
+		-t "${pkgdir}/usr/lib" \
+		gen/lib/c/gcc-dynamic/libwuffs.so
+	install -vDm644 -t \
+		"${pkgdir}/usr/lib" \
+		gen/lib/c/gcc-static/libwuffs.a
+	install -vDm644 -t \
+		"${pkgdir}/usr/share/doc/wuffs-lib" \
+		release/c/README.md
+	install -vdm644 "${pkgdir}/usr/share/licenses"
+	ln -srf \
+		"${pkgdir}/usr/share/licenses/wuffs" \
+		"${pkgdir}/usr/share/licenses"/wuffs-lib
+}
+
+package_wuffs-examples() {
+	pkgdesc='Example programmes for wuffs, a memory-safe programming language and standard library for Wrangling Untrusted File Formats Safely.'
+	depends=(
+		"gcc-libs"
+		"glibc"
+		"sdl2"
+		"sdl2_image"
+		"xcb-util-image"
+		"xcb-util-renderutil"
+		"wuffs-license"
+	)
+	cd source
+	declare _bins
+	_bins=`ls -1 gen/bin/example-*`
+	for _bin in ${_bins}; do
+		_name="$(basename "${_bin}" | sed -E -e 's|^example-||')"
+		install -vDm755 \
+			"${_bin}" \
+			"${pkgdir}/usr/bin"/wuffs-"${_name}"
+	done
+	install -vDm644 -t \
+		"${pkgdir}/usr/share/doc/wuffs-examples" \
+		example/README.md
+	install -vdm644 "${pkgdir}/usr/share/licenses"
+	ln -srf \
+		"${pkgdir}/usr/share/licenses/wuffs" \
+		"${pkgdir}/usr/share/licenses"/wuffs-examples
+}
+
+package_wuffs-fuzzers() {
+	pkgdesc='Fuzzer programmes for wuffs, a memory-safe programming language and standard library for Wrangling Untrusted File Formats Safely.'
+	depends=(
+		"gcc-libs"
+		"glibc"
+		"wuffs-license"
+	)
+
+	cd source
+	declare _bins
+	_bins=`ls -1 gen/bin/fuzz-*`
+	for _bin in ${_bins}; do
+		_name="$(basename "${_bin}")"
+		install -vDm755 \
+			"${_bin}" \
+			"${pkgdir}/usr/bin"/wuffs-"${_name}"
+	done
+
+	install -vDm644 \
+		-t "${pkgdir}/usr/share/doc/wuffs-fuzzers" \
+		fuzz/c/std/README.md
+
+	install -vdm644 "${pkgdir}/usr/share/licenses"
+	ln -srf \
+		"${pkgdir}/usr/share/licenses/wuffs" \
+		"${pkgdir}/usr/share/licenses"/wuffs-fuzzers
+}
+
+package_wuffs-lang() {
+	pkgdesc='A memory-safe programming language for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.'
+	depends=(
+		"wuffs-license"
+
+		# ractool deps
+		glibc
+		liblz4.so
+		libz.so
+		libzstd.so
+	)
+	provides=(
+		"dumbindent=${pkgver}"
+		#"handsum=${pkgver}"
+		"ractool=${pkgver}"
+		"wuffs=${pkgver}"
+		"wuffs-c=${pkgver}"
+		"wuffsfmt=${pkgver}"
+	)
+	optdepends=(
+		"wuffs-docs: Docs"
+	)
+
+	cd source
+	export GOPATH="${srcdir}/go"
+	export GOBIN="${GOPATH}/bin"
+	install -Dvm755 \
+		-t "${pkgdir}/usr/bin" \
+		"${GOBIN}"/{dumbindent,ractool,wuffs,wuffs-c,wuffsfmt}
+	install -vdm644 \
+		"${pkgdir}/usr/share/licenses"
+	ln -srf \
+		"${pkgdir}/usr/share/licenses/wuffs" \
+		"${pkgdir}/usr/share/licenses"/wuffs-lang
+}
+
+package_wuffs-docs() {
+	pkgdesc='Documentation for "Wuffs the Library" and "Wuffs the Language", as well as the corresponding example binaries.'
+	depends=("wuffs-license")
+	arch=('any')
+
+	cd source
+	install -Dvm644 \
+		-t "${pkgdir}/usr/share/doc/wuffs" \
+		AUTHORS \
+		*.md \
+		CONTRIBUTORS
+	cp -r \
+		doc \
+		"${pkgdir}/usr/share/doc/wuffs"/
+	install -vdm644 \
+		"${pkgdir}/usr/share/licenses"
+	ln -srf \
+		"${pkgdir}/usr/share/licenses/wuffs" \
+		"${pkgdir}/usr/share/licenses"/wuffs-docs
+}
+
+package_wuffs-license() {
+	pkgdesc='Common license for "Wuffs the Library" and "Wuffs the Language", as well as the corresponding example binaries.'
+	depends=()
+	arch=('any')
+	cd source
+	install -vDm644 \
+		-t "${pkgdir}/usr/share/licenses/wuffs" \
+		LICENSE*
+	ln -srf \
+		"${pkgdir}/usr/share/licenses/wuffs" \
+		"${pkgdir}/usr/share/licenses"/wuffs-license
+	ln -srf \
+		"${pkgdir}/usr/share/licenses/wuffs" \
+		"${pkgdir}/usr/share/licenses"/wuffs-license
+}

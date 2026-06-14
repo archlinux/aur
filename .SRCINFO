@@ -1,0 +1,63 @@
+pkgbase = wuffs
+	pkgdesc = A memory-safe programming language, and a standard library, for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/google/wuffs
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = gcc
+	makedepends = gcc-libs
+	makedepends = glibc
+	makedepends = git
+	makedepends = go
+	makedepends = libxcb
+	makedepends = lz4
+	makedepends = sdl2
+	makedepends = sdl2_image
+	makedepends = xcb-util-image
+	makedepends = xcb-util-renderutil
+	makedepends = zlib
+	makedepends = zstd
+	makedepends = clang
+	source = source::git+https://github.com/google/wuffs.git#tag=v0.3.4
+	sha256sums = SKIP
+
+pkgname = wuffs-lib
+	pkgdesc = A memory-safe standard library for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.
+	depends = glibc
+	depends = wuffs-license
+	optdepends = python-pywuffs: Python bindings
+	optdepends = wuffs-docs: Docs
+	provides = libwuffs.so
+	provides = libwuffs.a
+
+pkgname = wuffs-fuzzers
+	pkgdesc = Fuzzer programmes for wuffs, a memory-safe programming language and standard library for Wrangling Untrusted File Formats Safely.
+	depends = gcc-libs
+	depends = glibc
+	depends = wuffs-license
+
+pkgname = wuffs-lang
+	pkgdesc = A memory-safe programming language for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.
+	depends = wuffs-license
+	depends = glibc
+	depends = liblz4.so
+	depends = libz.so
+	depends = libzstd.so
+	optdepends = wuffs-docs: Docs
+	provides = dumbindent=0.3.4
+	provides = ractool=0.3.4
+	provides = wuffs=0.3.4
+	provides = wuffs-c=0.3.4
+	provides = wuffsfmt=0.3.4
+
+pkgname = wuffs-docs
+	pkgdesc = Documentation for "Wuffs the Library" and "Wuffs the Language", as well as the corresponding example binaries.
+	arch = any
+	depends = wuffs-license
+
+pkgname = wuffs-license
+	pkgdesc = Common license for "Wuffs the Library" and "Wuffs the Language", as well as the corresponding example binaries.
+	arch = any
+	depends = 
