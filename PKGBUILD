@@ -1,5 +1,5 @@
 pkgname=markit-git
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Mark-it CLI tool"
 arch=('any')
