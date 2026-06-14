@@ -2,7 +2,7 @@
 
 pkgname=python-nativeres
 _origpkgname=nativeres
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Descale analysis tools for VapourSynth"
 arch=("x86_64")
@@ -27,7 +27,7 @@ makedepends=(
 	"python-versioningit"
 )
 source=("https://files.pythonhosted.org/packages/source/n/${_origpkgname}/${_origpkgname}-${pkgver}.tar.gz")
-sha256sums=('9b67b73443a86be612319f33dc89d6e2f182db9e37eb31b15e57626171fa8cfd')
+sha256sums=('e1c47b9375e6e75eadb2ffeb246b3e156e61aeaa70c5a9d2c1a818bd2debac62')
 
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
