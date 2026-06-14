@@ -1,6 +1,6 @@
 pkgbase = untitled-xdg-basedir
 	pkgdesc = C/C++ implementation of the XDG basedir specification
-	pkgver = 5.0.0.1
+	pkgver = 5.2.0.0
 	pkgrel = 1
 	url = https://github.com/MadLadSquad/UntitledXDGBasedir
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = untitled-xdg-basedir
 	depends = glibc
 	depends = pkgconf
 	provides = libUntitledXDGBasedir.so
-	source = https://github.com/MadLadSquad/UntitledXDGBasedir/releases/download/v5.0.0.1/untitled-xdg-basedir-5.0.0.1.tar.xz
-	sha256sums = fd33e6f00a0a39c6adb4d0429bbd550e581b71157493371b24eac0fc8ea799e5
+	source = https://github.com/MadLadSquad/UntitledXDGBasedir/releases/download/v5.2.0.0/untitled-xdg-basedir-5.2.0.0.tar.xz
+	sha256sums = 120c9b5d51ef85ff9c6429ea0f993a558fcf755fd543d465dd635c27abe97bf2
 
 pkgname = untitled-xdg-basedir
