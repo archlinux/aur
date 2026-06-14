@@ -1,12 +1,13 @@
 # Maintainer: Kostiantyn Kushnir <chpock@gmail.com>
 pkgname=quickdashboard
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Configurable Quickshell dashboard for Wayland"
 arch=('any')
 url="https://github.com/chpock/quickdashboard"
 license=('GPL-3.0-or-later')
 depends=(
+    'bash'
     'quickshell'
     'qt6-graphs'
     'dgop'
@@ -22,10 +23,12 @@ optdepends=(
 provides=("$pkgname=$pkgver")
 conflicts=('quickdashboard-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chpock/quickdashboard/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('be0b29bd91476080434d178d8df103924f1091648a1d850d7585c8d77e78ad6b')
+sha256sums=('f674725ac8493ba940a04592f9128137242ed7f9755427622655befc319a61b3')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
+
+    sed -i "s/^VERSION=.*/VERSION=$pkgver/" "bin/quickdashboard"
 
     install -Dm755 "bin/quickdashboard" "$pkgdir/usr/bin/quickdashboard"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
