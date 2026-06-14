@@ -1,6 +1,6 @@
 pkgbase = splashboard
 	pkgdesc = A customizable terminal splash screen with plugin-based data sources
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/unhappychoice/splashboard
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = splashboard
 	conflicts = splashboard-bin
 	options = !lto
 	options = !debug
-	source = splashboard-2.8.0.tar.gz::https://github.com/unhappychoice/splashboard/archive/refs/tags/v2.8.0.tar.gz
-	sha256sums = 4a7f332d2afa8eb5fe962915cd9d052b72f6865bf80ae4c686f2a8a00024fabb
+	source = splashboard-2.9.0.tar.gz::https://github.com/unhappychoice/splashboard/archive/refs/tags/v2.9.0.tar.gz
+	sha256sums = e87940109c0880cba5c248eebf6a0e038b9f72c2ad20acf4bc843c02e29eb14d
 
 pkgname = splashboard
