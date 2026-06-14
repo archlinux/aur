@@ -4,7 +4,7 @@
 _pkgname=recaf
 _jdkver=25
 pkgname=${_pkgname}-git
-pkgver=r5244.6023a2055
+pkgver=r5296.ee4707a49
 pkgrel=1
 pkgdesc="The modern Java bytecode editor"
 arch=("any")
@@ -15,8 +15,14 @@ makedepends=("git" "java-environment>=$_jdkver")
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
 replaces=("recaf")
-source=("recaf::git+https://github.com/Col-E/Recaf#branch=master")
-sha256sums=("SKIP")
+source=(
+    "recaf::git+https://github.com/Col-E/Recaf#branch=master"
+    "./remove_jetbrains_annotations.patch"
+)
+sha256sums=(
+    "SKIP"
+    "ac6c4a2128628aa398898fcdc1b68020c2d6b719a0695fee436b60dd313738e8"
+)
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
