@@ -2,7 +2,7 @@
 
 pkgname=gogcli
 _pkgbin=gog
-pkgver=0.26.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Google Suite CLI: Gmail, GCal, GDrive, GContacts."
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('go' 'make')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('929783261c500c5c3eeecec47397e6bd276c816ace255e89e8885800cae7499c')
+sha256sums=('4779d1a093005a7881b6e157c3d270bbb60debe715e7dfb6a53442776aa295c9')
 
 build() {
     cd "$pkgname-$pkgver"
