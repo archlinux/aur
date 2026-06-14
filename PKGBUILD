@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.15
+_pkgver=13.0.0-rc.16
 _branding=dr460nized
 
 __pkgname=$_pkgname
@@ -90,7 +90,7 @@ source=(
   0023-bgo-969412-glibc-2.43.patch
   fix-webrender-cbindgen.patch
 )
-sha256sums=('155ade042f703cedf1e1ff0ec194032755cdee055d3baa81115e676d4be37b16'
+sha256sums=('959314f51b7a64f2d34ce6e4ac2e50029034a3b8e1c3ba3f6f2d916db0b99264'
             'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124'
             '25e8f2e706aa837f5b6e3c003a6c7f42b07f0a7366d10f9e0d5ad38053767aae'
             '9a8caaa44784ee7e487cb3dc2d5cc53c0ee49958d27c22baf93c509d9209c18d')
