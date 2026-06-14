@@ -1,13 +1,14 @@
 pkgbase = p4d
 	pkgdesc = Minimal Perforce Helix Core Server
 	pkgver = 2026.1.2972966
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.perforce.com
 	install = p4d.install
 	arch = x86_64
 	license = custom:p4d
+	options = !debug
 	backup = etc/p4d.conf
-	source = p4d-2026.1.2972966.tgz::https://cdist2.perforce.com/perforce/r26.1/bin.linux26x86_64/helix-core-server.tgz
+	source = p4d-2026.1.2972966-2.tgz::https://filehost.perforce.com/perforce/r26.1/bin.linux26x86_64/helix-core-server.tgz
 	source = p4d.service
 	source = p4d.conf
 	validpgpkeys = 7123CB760FF18869
