@@ -5,18 +5,18 @@ _shortpkgname=meowfetch
 pkgdesc=' minimal, fast and customizable system information program written in go.'
 arch=('x86_64')
 url='https://github.com/Itsnexn/meowfetch'
-pkgrel=5
+pkgrel=1
 license=('MIT')
 makedepends=('go' 'git')
 source=('git+https://github.com/Itsnexn/meowfetch')
 md5sums=('SKIP')
 provides=($_shortpkgname)
 conflicts=($_shortpkgname)
-pkgver=1.0.1.e5424be
+pkgver=r31.e5424be
 
 pkgver() {
 	cd meowfetch
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)//;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 
