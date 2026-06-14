@@ -1,7 +1,7 @@
 pkgbase = pytop
 	pkgdesc = A beautiful, modern htop clone written in Python using Rich.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/goldstac/pytop
 	arch = any
 	license = MIT
