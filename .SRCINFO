@@ -1,0 +1,12 @@
+pkgbase = ddnss
+	pkgdesc = Update DynDNS hosts registered at ddnss.de
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/coNQP/ddnss
+	arch = any
+	license = MIT
+	makedepends = cargo
+	source = ddnss-0.1.0::git+https://github.com/coNQP/ddnss.git#tag=0.1.0
+	md5sums = SKIP
+
+pkgname = ddnss
