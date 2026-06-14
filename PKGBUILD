@@ -1,6 +1,6 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 pkgname=codeberg-cli-git
-pkgver=0.5.4.a9c1208
+pkgver=r338.f9906e0
 pkgrel=1
 pkgdesc='CLI Tool for Codeberg similar to gh and glab.'
 arch=(x86_64)
@@ -18,7 +18,7 @@ install=codeberg-cli.install
 
 pkgver() {
     	cd "$provides"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)//;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
