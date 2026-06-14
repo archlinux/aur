@@ -1,6 +1,6 @@
 # Maintainer: Thomas (jfx) <me@jfx.ac>
 pkgname=sway-alttab-gui-bin
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Windows-style Alt+Tab window switcher for Sway (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('sway-alttab-gui')
 conflicts=('sway-alttab-gui')
 source_x86_64=("$pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/sway-alttab-gui-linux-amd64")
 source_aarch64=("$pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/sway-alttab-gui-linux-arm64")
-sha256sums_x86_64=('f2edae61d133dfb8594257ae29e1d6f4b2555668e74fb79840251c2e7c6b5faf')
-sha256sums_aarch64=('60bf527870498b26836beceecd5dd02daba30db87aeb6f742803abd5df3c6824')
+sha256sums_x86_64=('baa7d6a0ddcf806679565f5b48d4283ecec2ba880abed5bc54f0dbae9d6ad0ec')
+sha256sums_aarch64=('70981560030283b4871dbb5c41efb6f92a9e4bd93eb12fcb040801fb141194a5')
 
 package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/sway-alttab-gui"
