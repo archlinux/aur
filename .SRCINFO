@@ -1,7 +1,7 @@
 pkgbase = vkmark-git
 	pkgdesc = Vulkan benchmark
-	pkgver = r133.30d2cd3
-	pkgrel = 2
+	pkgver = 2025.01.r13.g83a128d
+	pkgrel = 1
 	url = https://github.com/vkmark/vkmark
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,6 @@ pkgbase = vkmark-git
 	provides = vkmark
 	conflicts = vkmark
 	source = git+https://github.com/vkmark/vkmark.git
-	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = vkmark-git
