@@ -1,7 +1,7 @@
 pkgbase = fconvert
 	pkgdesc = A fast, intentional CLI file converter for images, audio, video, documents.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Eraldo-Bako/fconvert
 	arch = x86_64
 	license = MIT

@@ -2,7 +2,7 @@
 # Maintainer: Eraldo Bako <eraldobako@gmail.com>
 pkgname=fconvert
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, intentional CLI file converter for images, audio, video, documents."
 arch=('x86_64')
 url="https://github.com/Eraldo-Bako/fconvert"
@@ -23,7 +23,7 @@ build() {
   cd "$pkgname"
 
   echo "fconvert==> Attempting compilation via CMake..."
-  if cmake -B build -S "$pkgname" -DCMAKE_BUILD_TYPE=Release -DCMAKE_STRIP=ON -DWITH_LIBRAW=ON && cmake --build build; then
+  if cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_STRIP=ON -DWITH_LIBRAW=ON && cmake --build build; then
     echo "fconvert==> CMake build successful!"
     cp build/fconvert .
   else
