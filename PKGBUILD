@@ -1,6 +1,6 @@
 # Maintainer: Psychotoxic <psychotoxic@gmx.de>
 pkgname=psysonic
-pkgver=1.47.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc="Desktop music player for Subsonic API-compatible servers (Navidrome, Gonic, etc.)"
 arch=('x86_64')
@@ -53,12 +53,9 @@ package() {
   # Binary (in /usr/lib to make room for the wrapper)
   install -Dm755 "src-tauri/target/release/psysonic" "$pkgdir/usr/lib/psysonic/psysonic"
 
-  # Wrapper script that sets necessary env vars for WebKitGTK on Wayland
+  # Wrapper: thin exec (path hygiene only); GDK/session + WebKit mitigations come from main.rs / quirk (no GDK pin).
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/psysonic" <<EOF
 #!/bin/sh
-export GDK_BACKEND=x11
-export WEBKIT_DISABLE_COMPOSITING_MODE=1
-export WEBKIT_DISABLE_DMABUF_RENDERER=1
 exec /usr/lib/psysonic/psysonic "\$@"
 EOF
 
