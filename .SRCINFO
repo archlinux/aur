@@ -1,6 +1,6 @@
 pkgbase = portkill
 	pkgdesc = Advanced port management and network analysis tool with performance benchmarking
-	pkgver = 3.1.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/mr-tanta/portkill
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = portkill
 	optdepends = net-tools: for netstat fallback process detection
 	optdepends = docker: for Docker container management
 	backup = etc/portkill/portkill.conf
-	source = portkill-3.1.1.tar.gz::https://github.com/mr-tanta/portkill/archive/v3.1.1.tar.gz
-	sha256sums = 4be05f61748ad93db87640183013dca7825f07cfabb125a6d654074b4d67ee80
+	source = portkill-3.2.0.tar.gz::https://github.com/mr-tanta/portkill/archive/v3.2.0.tar.gz
+	sha256sums = bcdba82153275c02a65177442f92285d64de2e48ca44697c29485e0949145525
 
 pkgname = portkill
