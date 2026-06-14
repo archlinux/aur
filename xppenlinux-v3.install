@@ -1,7 +1,24 @@
 #!/bin/bash
+get_valid_users() {
+	_l="/etc/login.defs"
+	_p="/etc/passwd"
+	l=$(grep "^UID_MIN" "$_l")
+	l1=$(grep "^UID_MAX" "$_l")
+	awk -F':' -v "min=${l##UID_MIN}" -v "max=${l1##UID_MAX}" '{
+        if ($3 >= min && $3 <= max && $7 != "/sbin/nologin") print $0
+    }' "$_p" | cut -d: -f1
+}
+
+disable_user_service() {
+	users=$(get_valid_users)
+	for i in $users; do
+		echo "Disabling xppentablet.service for user '$i'"
+		sudo systemctl --machine "$i"@ disable --now --user xppentablet.service
+	done
+}
+
 pre_install()  {
 AppName=PenTablet
-AppDir=pentablet
 pid=`ps -e|grep $AppName`
 appScript=$AppName".sh"
 if [ -n "$pid" ]; then
@@ -16,8 +33,8 @@ if [ -n "$pid" ]; then
 	   	name=`echo $val | awk '{print $4}'`
 	   	echo "ID:"$appid
 		echo "Name:"$name
-		if [ "$name" = "$appRunScript" ]; then
-			echo "close $appRunScript"
+		if [ "$name" = "$appScript" ]; then
+			echo "close $appScript"
 			kill -15 $appid
 		elif [ "$name" = "$AppName" ]; then
 			echo "close $AppName"
@@ -28,66 +45,31 @@ fi
 }
 
 post_install() {
-appDir=/usr/lib/pentablet
-confPath=$appDir/conf/xppen
-libPath=$appDir/lib
-platPath=$appDir/platforms
-AppName=PenTablet
-exeShell="PenTablet.sh"
 RuleDir="/usr/lib/udev/rules.d"
 ruleName="10-xp-pen.rules"
-DesktopDir=/usr/share/applications
-AppIconDir=/usr/share/icons/hicolor/256x256/apps
 AutoStartDir=/etc/xdg/autostart
 appDesktopName=xppentablet.desktop
-appIconName=xppentablet.png
 
-chmod +0755 $DesktopDir/$appDesktopName
-chmod +0644 $AppIconDir/$appIconName
-chmod +0755 $appDir/$AppName
-chmod +0755 $appDir/$exeShell
-chmod +0666 $appDir/resource.rcc
-chmod +0666 $confPath/config.xml
-chmod +0666 $confPath/language.ini
-chmod +0666 $confPath/name_config.ini
-
-chmod +0666 $libPath/libicudata.so.56
-chmod +0666 $libPath/libicui18n.so.56
-chmod +0666 $libPath/libicuuc.so.56
-chmod +0666 $libPath/libQt5Core.so.5
-chmod +0666 $libPath/libQt5DBus.so.5
-chmod +0666 $libPath/libQt5Gui.so.5
-chmod +0666 $libPath/libQt5Network.so.5
-chmod +0666 $libPath/libQt5Widgets.so.5
-chmod +0666 $libPath/libQt5X11Extras.so.5
-chmod +0666 $libPath/libQt5XcbQpa.so.5
-chmod +0666 $libPath/libQt5Xml.so.5
-
-chmod +0666 $platPath/libqxcb.so
-
-# Checking and applying the udev rule 
+# Checking and applying the udev rule
 if [ -f "$RuleDir/$ruleName" ]; then
 	udevadm control --reload-rules && udevadm trigger
 fi
 
-# Add locfile
-lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
-touch $lockfile
-chmod +0666 $lockfile
+systemd-tmpfiles --create /usr/lib/tmpfiles.d/xppenlinux-v3.conf
 
 #Removing autostart scripts as the systemd service is now used.
 if [ -f "$AutoStartDir/pentablet.desktop" ] || [ -f "$AutoStartDir/$appDesktopName" ]; then
-	rm -f /etc/xdg/autostart/ugee-pentablet.desktop;
-	rm -f /etc/xdg/autostart/pentablet.desktop;
-	rm -f /etc/xdg/autostart/xppentablet.desktop
+	rm -f "$AutoStartDir/ugee-pentablet.desktop"
+	rm -f "$AutoStartDir/pentablet.desktop"
+	rm -f "$AutoStartDir/xppentablet.desktop"
 fi
 
 #Reload daemon
-systemctl daemon-reload 
+systemctl daemon-reload
 
 cat <<EOF
 
-********************"
+********************
 installation successful!
 
 to restart the xp-pen driver, please run:
@@ -96,7 +78,7 @@ systemctl --user restart xppentablet.service
 if you want the driver to autostart, please run:
 systemctl --user enable xppentablet.service
 
-********************"
+********************
 
 EOF
 
@@ -108,13 +90,9 @@ post_upgrade() {
 post_install
 }
 pre_remove () {
- pre_install
-#Remove lockfile
- lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
- rm $lockfile
- #Remove service
- systemctl --global disable xppentablet.service
- }
- post_remove(){
- echo "Uninstall succeeded."
- }
+	pre_install
+	disable_user_service
+}
+post_remove() {
+	echo "Uninstall succeeded."
+}
