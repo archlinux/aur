@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-gsconnect
 	pkgdesc = KDE Connect implementation with GNOME Shell integration
 	pkgver = 72
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/GSConnect/gnome-shell-extension-gsconnect
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = gnome-shell-extension-gsconnect
 	makedepends = flake8
 	makedepends = python-black
 	depends = gnome-shell
-	optdepends = evolution-data-server: Contacts integration (Evolution)
-	optdepends = libgdata: Contacts integration (GNOME Online Accounts)
-	optdepends = gsound: Themed sound effects
-	optdepends = python-nautilus: Nautilus integration
+	optdepends = evolution-data-server: Contacts integration
+	optdepends = gsound: Sound Effects
+	optdepends = libcanberra: Sound Effects (alt)
+	optdepends = python-nautilus: File Manager Integration
 	source = https://github.com/GSConnect/gnome-shell-extension-gsconnect/archive/v72.tar.gz
 	b2sums = 8d83a2f4624f0db3da25ba7e625f110a1a8142370a2ebe96dac51d59762067147c27de125a62163e1ed545bb04f75607b36896214dc43ad78177441171e97673
 
