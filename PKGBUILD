@@ -8,7 +8,7 @@ pkgver=7.12.0
 _bettersqlite3ver=12.9.0
 _bufferutilver=4.0.9
 _elecronver=143 # whenever update the bettersqlite, update this one by one to try the proper version.
-pkgrel=1
+pkgrel=2
 pkgdesc="Your connected workspace for wiki, docs & projects"
 arch=(x86_64)
 url=https://www.notion.so/desktop
@@ -18,7 +18,7 @@ depends=(
 	gcc-libs
 	glibc
 	hicolor-icon-theme
-	electron40-bin
+	electron40
 )
 makedepends=(
 	p7zip
