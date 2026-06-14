@@ -7,7 +7,7 @@ pkgver=0.5.0
 pkgrel=1
 pkgdesc="An unintrusive environment manager"
 
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 license=('MIT')
 
 _cburl="https://codeberg.org/${_pkgauthor}/${_pkgname}"

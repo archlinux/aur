@@ -4,7 +4,6 @@ pkgbase = quickenv-bin
 	pkgrel = 1
 	url = https://codeberg.org/untitaker/quickenv
 	arch = x86_64
-	arch = aarch64
 	license = MIT
 	depends = glibc
 	provides = quickenv
