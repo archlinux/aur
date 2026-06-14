@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 _pkgname=eidklient
@@ -75,10 +75,14 @@ conflicts=(
 : "${conflicts[@]}"
 
 prepare() {
-    rm -rf squashfs-root
+    rm -rf "eID_klient_${pkgver}"
 
     chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+
+    mkdir "eID_klient_${pkgver}"
+    cd "eID_klient_${pkgver}"
+
+    ../"${_appimage}" --appimage-extract
 }
 
 package() {
@@ -106,13 +110,15 @@ package() {
     : "${pkgdir:?}"
     : "${srcdir:?}"
 
+    cd "eID_klient_${pkgver}"
+
     # App
     mkdir "${pkgdir}/opt"
-    cp -r "${srcdir}/squashfs-root" "${pkgdir}/opt/${_pkgname}"
+    cp -r squashfs-root "${pkgdir}/opt/${_pkgname}"
 
     # With QT_PLUGIN_PATH and QT_QPA_PLATFORM_PLUGIN_PATH, some bundled plugins
     # were still used.
-    cp qt6.conf "${pkgdir}/opt/${_pkgname}"
+    cp "${srcdir}/qt6.conf" "${pkgdir}/opt/${_pkgname}"
 
     # Patched Qt 6 libraries are required, otherwise the app crashes on launch with
     # `error due to GNU_PROPERTY_1_NEEDED_INDIRECT_EXTERN_ACCESS`.
@@ -131,11 +137,11 @@ package() {
     install -dm755 "${pkgdir}/usr/lib/eID_klient"
     ln -s /usr/bin/eID_Client "${pkgdir}/usr/lib/eID_klient/VirtualKeyboard"
 
-    for lib in "${srcdir}"/squashfs-root/lib/lib{CardAPI,botan,pkcs11_}*; do
+    for lib in squashfs-root/lib/lib{CardAPI,botan,pkcs11_}*; do
         ln -s "/opt/${_pkgname}/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
     done
 
-    for lib in "${srcdir}"/squashfs-root/lib/lib{crypto,ssl}*; do
+    for lib in squashfs-root/lib/lib{crypto,ssl}*; do
         ln -s "/usr/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
     done
 
@@ -143,7 +149,7 @@ package() {
     tar \
         --directory "${pkgdir}/usr" \
         --extract \
-        --file "${srcdir}/squashfs-root/share.tar" \
+        --file squashfs-root/share.tar \
         --no-same-owner
 
     mkdir -p "${pkgdir}/usr/share/licenses"
