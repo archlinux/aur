@@ -1,7 +1,7 @@
 # Maintainer: Haotian Li <lilinzta@gmail.com>
 pkgname=anich-bin
 pkgdesc="一个支持超分辨率的在线动漫弹幕APP。多平台，多番剧源，多弹幕，高清无广告。追番看番必备软件。"
-pkgver=1.5.16
+pkgver=1.5.17
 pkgrel=1
 arch=('x86_64')
 options=(!debug)

@@ -1,13 +1,13 @@
 pkgbase = anich-bin
 	pkgdesc = 一个支持超分辨率的在线动漫弹幕APP。多平台，多番剧源，多弹幕，高清无广告。追番看番必备软件。
-	pkgver = 1.5.16
+	pkgver = 1.5.17
 	pkgrel = 1
 	url = https://github.com/Sle2p/AniCh
 	arch = x86_64
 	license = unknown
 	conflicts = anich
 	options = !debug
-	source = https://github.com/Sle2p/AniCh/releases/download/1.5.16/anich-linux-1.5.16.deb
+	source = https://github.com/Sle2p/AniCh/releases/download/1.5.17/anich-linux-1.5.17.deb
 	sha256sums = SKIP
 
 pkgname = anich-bin
