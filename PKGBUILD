@@ -6,12 +6,12 @@ _appname=${_gitname%%-rs}
 pkgname=${_gitname}-bin
 pkgdesc="Encrypted terminal note-taking app"
 
-pkgver=0.5.2
+pkgver=0.8.7
 pkgrel=1
 _gitversion=v${pkgver}
 
-arch=('x86_64' 'aarch64')
-_barch=('x86_64-unknown-linux-gnu' 'aarch64-unknown-linux-gnu')
+arch=('x86_64')
+_barch=('x86_64-unknown-linux-gnu')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -28,25 +28,19 @@ optdepends=("graf")
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}.tar.xz")
-source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('acf324cca7cbacc805d3346ef35450795e620b3b40e01d7bd896effabb68829b')
-sha256sums_aarch64=('979902430facf120a7e5c1c1dfd88b8b1e66a92fbf3a376c08bd4709ae525117')
+sha256sums_x86_64=('6d53f152157320f95b542f8d1d2a0023e6f5af07c71f50b78d8bfc0ac04283e3')
 
 
 case ${CARCH} in
   ${arch[0]})
     _CARCH=${_barch[0]}
     ;;
-
-  ${arch[1]})
-    _CARCH=${_barch[1]}
-    ;;
 esac
 
 package() {
-	cd "${srcdir}/${_gitname}-${_CARCH}/" || exit
+	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_gitname}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
