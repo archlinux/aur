@@ -1,6 +1,6 @@
 pkgbase = cmdchamp
 	pkgdesc = CLI trainer — 30 levels from ls to privilege escalation
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/mellen9999/cmdchamp
 	arch = any
@@ -8,6 +8,6 @@ pkgbase = cmdchamp
 	depends = bash>=4.3
 	optdepends = bubblewrap: sandbox mode for real command execution
 	source = cmdchamp-1.2.1.tar.gz::https://github.com/mellen9999/cmdchamp/archive/v1.2.1.tar.gz
-	sha256sums = 098c398375a03c8fee50b793ced14f8da6c45bbdb218d3e38efdda0e6b829b2a
+	sha256sums = 96ea8712cb59b5930837eba551ad86b99bd4934d783fd39727223020ecad8776
 
 pkgname = cmdchamp
