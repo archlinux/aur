@@ -1,6 +1,6 @@
-pkgbase = wlgrid-git
+pkgbase = wlgrid
 	pkgdesc = Wayland layer-shell grid launcher
-	pkgver = r73.59b404e
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/whymusticode/wlgrid
 	arch = x86_64
@@ -12,9 +12,7 @@ pkgbase = wlgrid-git
 	depends = libxkbcommon
 	depends = wayland
 	depends = libglvnd
-	provides = wlgrid
-	conflicts = wlgrid
-	source = wlgrid-git::git+https://github.com/whymusticode/wlgrid.git
+	source = wlgrid-1.0.tar.gz::https://github.com/whymusticode/wlgrid/archive/refs/tags/v1.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = wlgrid-git
+pkgname = wlgrid
