@@ -1,6 +1,6 @@
 pkgbase = typhoon-bin
 	pkgdesc = A stylish weather app based on Stormcloud
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/archisman-panigrahi/typhoon
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = typhoon-bin
 	depends = python-cairosvg
 	provides = typhoon
 	conflicts = typhoon
-	source = https://github.com/archisman-panigrahi/typhoon/releases/download/v1.7.2/typhoon_1.7.2_all.deb
-	sha256sums = b68c46513752ec57a3ef83cdd63b588547f65a784c22bdfe1477f13042919e17
+	source = https://github.com/archisman-panigrahi/typhoon/releases/download/v1.7.3/typhoon_1.7.3_all.deb
+	sha256sums = 2108539de27dac448719ce01c31009850ff453c72dba86c18179d978e777e967
 
 pkgname = typhoon-bin
