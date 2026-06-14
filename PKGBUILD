@@ -1,16 +1,25 @@
+# shellcheck disable=SC2034,SC2086,SC2128,SC2148,SC2154,SC2164,SC2291
+# Maintainer: Toria <ninetailedtori@uwu.gal>
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
 
 pkgname=llvm-libunwind
-pkgver=21.1.8
+pkgver=$(curl -s https://gitlab.archlinux.org/archlinux/packaging/packages/llvm/-/raw/main/PKGBUILD | grep -oP "^pkgver=\K.*" | head -1)
 pkgrel=1
 pkgdesc='LLVM'\''s libunwind library'
 url='https://github.com/llvm/llvm-project/tree/main/libunwind'
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-project-$pkgver.src.tar.xz")
 arch=('x86_64')
-makedepends=('clang' 'cmake' 'ninja' 'python')
+makedepends=(
+  'clang'
+  'cmake'
+  'ninja'
+  'python'
+  'curl'
+  'grep'
+)
 options=('!lto')
 license=('custom:Apache 2.0 with LLVM Exception')
-sha256sums=('4633a23617fa31a3ea51242586ea7fb1da7140e426bd62fc164261fe036aa142')
+sha256sums=('dcc22709ff65301cc6c723859ab0d4b3ba0e3f98162e6cae3f90d9501422c690')
 
 build() {
   cd "$srcdir/llvm-project-$pkgver.src"
