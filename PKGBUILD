@@ -2,7 +2,7 @@
 # Maintainer: Joël Grimberg <joelgrimberg@gmail.com>
 
 pkgname='timesheetz-bin'
-pkgver=1.40.1
+pkgver=1.41.0
 pkgrel=1
 pkgdesc='Timesheet tracking TUI and REST API for freelancers'
 url='https://github.com/joelgrimberg/timesheetz'
@@ -12,10 +12,10 @@ provides=('timesheetz')
 conflicts=('timesheetz')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/joelgrimberg/timesheetz/releases/download/v${pkgver}/timesheetz_Linux_arm64.tar.gz")
-sha256sums_aarch64=('bde8de7dba9b702b5af2042df787cc75cb3f3c38837f283cf8e6abca0267b360')
+sha256sums_aarch64=('1d84d17b5dadda35aef182739e4d6e26bfbf3a6769d32681977815a16c1a769d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/joelgrimberg/timesheetz/releases/download/v${pkgver}/timesheetz_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('98bcc12297e497425f8a9389cff823a5de905ec5688c1c0e38e6d9027f669cf9')
+sha256sums_x86_64=('31f77e69cf9112c27e6ce5fed377c743bf2aabd151853ab753a915099fcdd5fa')
 
 package() {
   install -Dm755 "./timesheet" "${pkgdir}/usr/bin/timesheetz"
