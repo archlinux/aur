@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=cowbird
+Comment=A password manager that uses HashiCorp Vault as its backend, with no server of its own. 
+TryExec=/usr/bin/cowbird
+Exec=/usr/bin/cowbird
+Icon=co.avitac.cowbird
+Categories=PasswordManager;Secrets
+Keywords=password;manager;vault;secrets
+StartupWMClass=cowbird
+
