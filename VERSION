@@ -1,58 +1,57 @@
-VESION FILE - RCLONE-WIZ
+# Changelog
 
+All notable changes to this project will be documented in this file.
 
-All notable changes to this project will be documented in this file from now on.
+## [1.6] - 2026-06-15
+### Major
+- **UI Overhaul:** Massive interface redesign to an modern look with clean layouts.
+- **Guided Remote Configuration:** Added a GUI-guided, step-by-step rclone remote creator but retained the terminal configuration option for advanced users.
 
-[1.3] - 2026-06-07
+### Minor
+- **About Section:** Updated to recognize "Authors & Contributors".
+- **Script Customization:** The generated mount script is now editable before execution via an advanced pop-up, giving more control to the user.
+- **App Icon: Removed white backgound.
 
-Added
-Dynamic Script Management: Introduced a dedicated ~/.config/rclone-wiz/ directory, allowing users to save and manage individual mount scripts for multiple cloud remotes simultaneously.
+### Fixed
+- **Window Resizing Bug:** Fixed an issue where exceptionally long provider names would aggressively stretch the 'Add Remote' window. The wizard now enforces strict max widths and truncates long labels.
+- **Dropdown Visibility:** Fixed a contrasting bug that caused dropdown lists to display unreadable white text on white backgrounds.
+- **General Fixes:** Various minor improvements and headache-lowering fixes.
 
-Legacy Migration Support: Implemented an automatic detection system to identify and migrate legacy scripts from ~/rclone_mount_script.sh to the new configuration directory upon saving.
+## [1.5.1] - 2026-06-14
+### Changed
+- Minor fixes and updates to ensure everything works as intended.
 
-Added os.path.ismount() checks to prevent FUSE errors when attempting to mount over existing active mount points.
+## [1.5] - 2026-06-11
+### Added
+- **Mounted Drives Management:** Implemented actions to manage local script folders and current mounted drives directly from the GUI.
+- **Terminal Emulator Support:** Enhanced terminal emulator fallback support during configuration.
+- **UI Refresh:** Added functionality to refresh and update the drive management interface.
+- **Safety Checks:** Implemented confirmation dialogs before deleting scripts or autorun entries to prevent accidental data loss.
 
-Added a "Load Existing Script" button to auto-populate fields based on existing configuration files.
+## [1.4.2] - 2026-06-10
+### Changed
+- Updated version to 1.4.2 and enhanced VFS caching parameters for improved performance.
 
-Added informative status hints to the UI to notify users when a drive is already mounted.
+## [1.4.1] - 2026-06-08
+### Changed
+- Updated the "About" section in the UI to reflect the new version number.
 
-State Synchronization: Implemented signal blocking for input fields to prevent recursive triggers and UI conflicts when loading existing scripts.
+## [1.4] - 2026-06-08
+### Added
+- **Enhanced VFS Caching:** Updated the generated mount script to include optimized VFS caching parameters (`--vfs-cache-max-size`, `--vfs-cache-max-age`, and `--buffer-size`) to massively improve media streaming performance.
+- **Faster Polling:** Added `--fast-list` and `--poll-interval` options to the mount script for faster directory listing and more responsive cloud storage updates.
+- **Educational Scripts:** Added inline comments in the generated script to explain the purpose of each rclone option.
 
-UX Refinements: Standardized the GUI layout with improved spacing and visual indicators for load/migration states.
+## [1.3] - 2026-06-07
+### Added
+- **Dynamic Script Management:** Introduced a dedicated `~/.config/rclone-wiz/` directory, allowing users to save and manage individual mount scripts for multiple cloud remotes simultaneously.
+- **Legacy Migration Support:** Automatic detection and migration of legacy scripts from `~/rclone_mount_script.sh` to the new configuration directory upon saving.
+- **FUSE Protections:** Added `os.path.ismount()` checks to prevent FUSE errors when attempting to mount over existing active mount points.
+- **Quick Loading:** Added a "Load Existing Script" button to auto-populate fields based on existing configuration files.
+- **Status Indicators:** Informative UI hints to notify users when a drive is already mounted.
 
-Fixed
-FUSE Overlap Prevention: Implemented automatic clearing of the "Mount Path" field when switching between different remotes to ensure users do not accidentally target an incorrect or currently mounted directory.
-
-Concurrency Handling: Refined background worker thread logic to ensure cleaner process termination and unmount sequences.
-
-
-[1.4] - 2026-06-08
-
-Added
-Enhanced VFS Caching: Updated the generated mount script to include optimized VFS caching parameters, such as --vfs-cache-max-size, --vfs-cache-max-age, and --buffer-size, to improve performance when streaming media files from cloud storage.
-Added --fast-list and --poll-interval options to the mount script for faster directory listing and more responsive updates when changes occur in the cloud storage.
-Added comments in the generated script to explain the purpose of each rclone option for better user understanding
-
-[1.4.1] - 2026-06-08
-
-
-Added
-Updated the "About" section in the UI to reflect the new version number.
-
-[1.4.2] - 2026-06-10
-
-Update version to 1.4.2 and enhance caching parameters for improved performance
-
-[1.5] - 2026-06-11
-
-Add management features for mounted drives and local script folder
-
-- Implemented actions to manage local script folder and current mounted drives in the GUI.
-- Enhanced terminal emulator support in configuration.
-- Added functionality to refresh and update drive management UI.
-- Check if user is sure when buttons are clicked to delete scripts, autorun entries, or both to prevent accidental deletions.
-
-[1.5.1] - 2026-06-14
-
-- Minor fixes and updades.
-- Hopefully works as intended now.
+### Fixed
+- **State Synchronization:** Implemented signal blocking for input fields to prevent recursive triggers and UI conflicts when loading existing scripts.
+- **UX Refinements:** Standardized the GUI layout with improved spacing and visual indicators for load/migration states.
+- **FUSE Overlap Prevention:** Automatic clearing of the "Mount Path" field when switching between remotes to ensure users do not target an incorrect or currently mounted directory.
+- **Concurrency Handling:** Refined background worker thread logic to ensure cleaner process termination and unmount sequences.
