@@ -11,11 +11,11 @@ depends=('hicolor-icon-theme')
 provides=('keyguard')
 conflicts=('keyguard')
 options=('!strip')
-_releaseTag='r20260606.1'
+_releaseTag='r20260614'
 source_x86_64=("https://github.com/AChep/keyguard-app/releases/download/${_releaseTag}/Keyguard-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("https://github.com/AChep/keyguard-app/releases/download/${_releaseTag}/Keyguard-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('345f9916d10b7ca443e0894a9fa6cb4ad47a28ab762bf3fca5472403c42179de')
-sha256sums_aarch64=('5c3cd3857dbeb515d3f047bb34a2e407d7f4574dd2afd1d43d5bd363929a01dd')
+sha256sums_x86_64=('4082a2760acdb1750e13cfca5d38581d467c8bff444819b75aa796130ae932a8')
+sha256sums_aarch64=('4e9d735d890d01348910a29da68faa0ffbc07d705b93e33e9156aa5b90719482')
 
 package() {
     cd Keyguard
