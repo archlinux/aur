@@ -1,16 +1,16 @@
 pkgbase = timesheetz-bin
 	pkgdesc = Timesheet tracking TUI and REST API for freelancers
-	pkgver = 1.41.0
+	pkgver = 1.41.1
 	pkgrel = 1
 	url = https://github.com/joelgrimberg/timesheetz
 	license = MIT
 	conflicts = timesheetz
 	provides = timesheetz
 	arch = aarch64
-	source_aarch64 = https://github.com/joelgrimberg/timesheetz/releases/download/v1.41.0/timesheetz_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 1d84d17b5dadda35aef182739e4d6e26bfbf3a6769d32681977815a16c1a769d
+	source_aarch64 = https://github.com/joelgrimberg/timesheetz/releases/download/v1.41.1/timesheetz_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d7bf9ee4fdca4659be610ab52634c6f007824a89de50c2c267340411b9237085
 	arch = x86_64
-	source_x86_64 = https://github.com/joelgrimberg/timesheetz/releases/download/v1.41.0/timesheetz_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 31f77e69cf9112c27e6ce5fed377c743bf2aabd151853ab753a915099fcdd5fa
+	source_x86_64 = https://github.com/joelgrimberg/timesheetz/releases/download/v1.41.1/timesheetz_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b68e4b4e7cead2d476c6551ea7ca11824954db2e75028295ef003a5e4b1ba58c
 	
 pkgname = timesheetz-bin
