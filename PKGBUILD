@@ -1,3 +1,4 @@
+#!/bin/bash -e
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 # Contributor: Fedor Piecka <teplavoda at gmail dot com>
 
@@ -14,6 +15,17 @@ source_i686=("https://download.disigcdn.sk/cdn/products/websigner2/disig-web-sig
 sha256sums_i686=('82cd99ddbbaff71ee3f6cc1f45ca506253a1a56e4d522d915b405add3643c3a4')
 sha256sums_x86_64=('f96101ddb9ffbb39810466d71c1196b416b29b221b65334aef66d9280fe7e521')
 options=("!debug" "!strip")
+
+: "${arch[@]}"
+: "${license[@]}"
+: "${options[@]}"
+: "${pkgdesc}"
+: "${pkgrel}"
+: "${sha256sums_i686[@]}"
+: "${sha256sums_x86_64[@]}"
+: "${source_i686[@]}"
+: "${source_x86_64[@]}"
+: "${url}"
 
 # Upstream uses Debian architecture naming convention. Let's prepare a variable for that.
 _upstream_arch=
@@ -34,6 +46,11 @@ package() {
 	optdepends=(
 		"gnome-shell-extension-appindicator: for system tray icon on GNOME"
 	)
+
+	: "${depends[@]}"
+	: "${optdepends[@]}"
+	: "${pkgdir:?}"
+	: "${srcdir:?}"
 
 	ar p "${srcdir}/disig-web-signer_${pkgver}-${_upstream_pkgrel}_${_upstream_arch}.deb" data.tar.xz | tar -xJ -C "${pkgdir}"
 
