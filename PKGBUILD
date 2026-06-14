@@ -1,10 +1,10 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="083d69962084a1515b357009bd26407a9c47b67c"
+_commit="e8dd046c423f85df266c23bcc3d7033bfee81255"
 _ssh_agent_rs_commit="802b94ccf2e00ac33a3863300d0769f02b62d807"
 pkgname="pam_rssh"
-pkgver="1.2.0"
+pkgver="1.2.1"
 pkgrel="1"
 pkgdesc="A PAM module that provides ssh-agent based authentication"
 url="https://github.com/z4yx/pam_rssh"
@@ -31,7 +31,7 @@ prepare() {
   cd "${srcdir}/${pkgname}"
   git submodule init
   git config submodule.dep/ssh-agent.rs.url "${srcdir}/ssh-agent.rs"
-  git -c protocol.file.allow=always submodule update
+  git -c protocol.allow=never -c protocol.file.allow=always submodule update
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
