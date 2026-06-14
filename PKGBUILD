@@ -18,7 +18,7 @@ esac
 pkgbase=notepadpp
 pkgname=notepad++
 _pkgname=notepad-plus-plus
-pkgver=8.9.4
+pkgver=8.9.6.4
 pkgrel=1
 pkgdesc="A free source code editor for Windows"
 url="https://${_pkgname}.org/"
@@ -36,9 +36,9 @@ source=(notepad++
 sha256sums=('643713113d26d32b2e6d861e9cd6db8153a3359f3784dbd1710f12e89468654a'
             '98693e0f57a9fab55dd31dfaf9b3a13234f14e1b193b56ac52eff33c987d4354'
             '04c8ad254a41350078bba4d56ad54f7b4c0df125029aee021ea0ac632971ebad'
-	    '820272b38b52f89c9de55d5029a578bc7b178a7b06d36341bcf04404dbaf0bbb'
+	    '93f19ca5a5f2b857dd9397d080b5bfc3552e72bea26e4beb701efea2101f3ac0'
 	    'SKIP'
-	    '1b336227c9384b42d1f287fa53965166cd1abaf7ccb82dd178ee5e9b3138b505'
+	    '7b3618195757eed0d47debc28661fe998e68d3822a06a3621ee669ee358fc952'
             'SKIP')
 
 noextract=("npp.${pkgver}.portable.zip"
