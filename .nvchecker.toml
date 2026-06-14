@@ -1,0 +1,6 @@
+[quickenv-bin]
+source = "gitea"
+host = "codeberg.org"
+gitea = "untitaker/quickenv"
+use_latest_release = true
+prefix = ""
