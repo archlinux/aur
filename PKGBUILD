@@ -397,7 +397,7 @@ pkgname=(
   "${pkgbase}-gcc"
   "${pkgbase}-gcc-fortran"
 )
-pkgver=R2026a+26.1.0.3203278
+pkgver=R2026a+26.1.0.3251617
 _release="${pkgver%+*}"
 _version="${pkgver##*+}"
 pkgrel=1
@@ -414,6 +414,7 @@ makedepends=(
   'gendesk'
   'inotify-tools'
   'matlab-mpm'
+  'patchelf'
 )
 options=(
   '!strip'
@@ -550,6 +551,14 @@ build() {
         -e "s|g++|g++-${pkgbase}|g" \
         -e "s|gfortran|gfortran-${pkgbase}|g" \
         -i "{}" +
+
+  # https://bbs.archlinux.org/viewtopic.php?id=313512
+  # https://aur.archlinux.org/pkgbase/matlab#comment-1075246
+  echo "  -> Patching MathWorksProductAuthorizer for GnuTLS compatibility..."
+  local mode="$(stat -c '%a' 'bin/glnxa64/MathWorksProductAuthorizer')"
+  chmod u+w 'bin/glnxa64/MathWorksProductAuthorizer'
+  patchelf --add-needed 'libleancrypto.so.1' 'bin/glnxa64/MathWorksProductAuthorizer'
+  chmod "${mode}" 'bin/glnxa64/MathWorksProductAuthorizer'
 }
 
 package_matlab() {
