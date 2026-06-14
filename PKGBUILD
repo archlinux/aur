@@ -2,7 +2,7 @@
 
 _pkgname=cutechess
 pkgname=$_pkgname-bin
-pkgver=1.4.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Tools for working with chess engines"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("${url}/releases/download/v${pkgver}/Cute_Chess-${pkgver}-${arch[0]}.App
         "$_pkgname.bash"
 )
 
-sha256sums=('aa09da9f0371e1934e1df4d7a73c50c75cc30d871b7582685ccb3b7acf097e03'
+sha256sums=('d9448693e45bd57f1aeb32c46e94466894cd7cc5b6937effd285a02e871387b5'
             'b3bae5b6db820193f69fafd20515ef239166998ed5bf209b57cccb498731b95b')
 
 _squashfs_root="squashfs-root"
