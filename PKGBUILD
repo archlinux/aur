@@ -1,5 +1,6 @@
 # Maintainer: Antonios Rainakis <antonyrai26@gmail.com>
 
+_pkgname=UniBackpack
 pkgname=unibackpack-git
 pkgver=r103.d1d12a7
 pkgrel=1
@@ -11,7 +12,8 @@ depends=('qt6-base' 'gcc-libs' 'glibc' 'polkit' 'base-devel')
 makedepends=('git' 'cmake' 'ninja')
 provides=('unibackpack')
 conflicts=('unibackpack')
-source=("${pkgname}::git+https://github.com/open-source-uom/UniBackpack.git""unibackpack.desktop")
+source=("${_pkgname}::git+https://github.com/open-source-uom/UniBackpack.git"
+"unibackpack.desktop")
 sha256sums=('SKIP'
 'SKIP')
 
