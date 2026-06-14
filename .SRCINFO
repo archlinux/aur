@@ -1,0 +1,18 @@
+pkgbase = tems-git
+	pkgdesc = Terminal ElectroMagnetic Spectrum reference
+	pkgver = r1.a248415
+	pkgrel = 1
+	url = https://github.com/banana-bred/tems
+	arch = x86_64
+	license = MIT
+	makedepends = gcc-fortran
+	makedepends = git
+	depends = libgfortran
+	depends = libgcc
+	depends = glibc
+	provides = tems
+	conflicts = tems
+	source = git+https://github.com/banana-bred/tems.git
+	sha256sums = SKIP
+
+pkgname = tems-git
