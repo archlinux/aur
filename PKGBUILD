@@ -2,18 +2,18 @@
 
 pkgname=factorio-yafc-ce-git
 pkgdesc="Yet Another Factorio Calculator (Community Edition): Powerful calculator/analyser that works with mods"
-pkgver=v2.15.0.0.gfcb32ce
+pkgver=v2.19.0.14.g8506d457
 pkgrel=1
 arch=(x86_64)
-url=https://github.com/have-fun-was-taken/yafc-ce
+url=https://github.com/Yafc-CE/yafc-ce
 license=(GPL)
-depends=(sdl2 sdl2_ttf sdl2_image dotnet-runtime-8.0)
-makedepends=(git dotnet-sdk-8.0)
+depends=(sdl2 sdl2_ttf sdl2_image lua52 dotnet-runtime-10.0)
+makedepends=(git dotnet-sdk-10.0)
 optdepends=()
 provides=()
 conflicts=()
 options=()
-source=($pkgname::git+https://github.com/have-fun-was-taken/yafc-ce.git
+source=($pkgname::git+https://github.com/Yafc-CE/yafc-ce.git
     factorio-yafc-ce.desktop factorio-yafc-ce icon.png)
 sha256sums=('SKIP'
             'c6d364d63a902899367a46a91f353c57e19819c91173a6d9c685c2248f65131b'
@@ -27,13 +27,17 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$pkgname/Yafc"
-    DOTNET_CLI_TELEMETRY_OPTOUT=1 MSBUILDTERMINALLOGGER=off dotnet restore
+
+    # remove pre-compiled binaries provided in the git repo, we already have lua at home
+    rm -rf lib
+
+    DOTNET_CLI_TELEMETRY_OPTOUT=1 MSBUILDTERMINALLOGGER=off dotnet restore --locked-mode --use-current-runtime
 }
 
 build() {
     cd "$srcdir/$pkgname/Yafc"
 
-    DOTNET_CLI_TELEMETRY_OPTOUT=1 MSBUILDTERMINALLOGGER=off dotnet publish --self-contained false -o "../publish"
+    DOTNET_CLI_TELEMETRY_OPTOUT=1 MSBUILDTERMINALLOGGER=off dotnet publish --no-self-contained --use-current-runtime -o "../publish"
 }
 
 package() {
