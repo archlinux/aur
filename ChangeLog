@@ -1,12 +1,9 @@
-## Fixes
-* **goreleaser**: stamp `github.com/grafana/pyroscope/v2/pkg/util/build` in build ldflags so `pyroscope -version` and the `pyroscope_build_info` metric report `Version`, `Branch`, `Revision`, and `BuildDate` correctly. Restores the v2.0.0 regression where those fields were empty ([#5084](https://github.com/grafana/pyroscope/pull/5084))
-
-## Documentation
-* Add v2.0 release notes page ([#5083](https://github.com/grafana/pyroscope/pull/5083))
-
 ## Changelog
-* cd861ccc13e2266a0f68682bf0f384b3ca45e9fe docs: add v2.0 release notes (#5083) (#5085)
-* 025f2c7a7dcdf741330e92b9eb8390c230241fc8 fix(goreleaser): stamp v2 module path in build ldflags (#5084) (#5086)
+* 3715b1a4d334c8e9f14623a2c8e839e3894ed9c8 Add release notes for v2.0.2 (#5127) (#5128)
+* 189eaceb765b525eda7925cbef4dbfdf29b58d7a Security bumps and fixes for v2.0.3 (#5231)
+* 4415924a04f816767b70136de6c666c99297af6d ci(release/v2.0): align CI pipeline to main (GATB + GAR) (#5234)
+* a62c208abb299ee91d5d16f99c0b7cc7e59c6cf1 docs: add v2.0.3 release notes (#5235) (#5236)
+* 3b2704f7043faa4f43fe6edd5c94eb685e8a8c6b docs: fix broken Grafana Cloud Profiles link in SDK guides (#5132) (#5133)
 
 As always, feedback is more than welcome, feel free to open issues/discussions.
 You can reach out to the team using:
@@ -21,7 +18,7 @@ You can reach out to the team using:
 - [grafana/pyroscope](https://hub.docker.com/r/grafana/pyroscope/tags)
 
 ```bash
-  docker pull docker.io/grafana/pyroscope:2.0.1
+  docker pull grafana/pyroscope:2.0.3
 ```
 
 
