@@ -1,7 +1,7 @@
 pkgbase = appflowy
 	pkgdesc = Open-source alternative to Notion – you own your data and customizations
 	pkgver = 0.12.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://appflowy.com
 	arch = x86_64
 	license = AGPL-3.0-or-later
