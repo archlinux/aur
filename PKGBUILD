@@ -1,7 +1,7 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 
 pkgname=md2term-git
-pkgver=md2term.0.0.7.ff9578c
+pkgver=r32.ff9578c
 pkgrel=1
 pkgdesc='Markdown parser for the terminal, based on bash and pandoc'
 arch=(any)
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$provides"
-  	git describe --long --tags | sed 's/^v//;s/.alpha//;s/\([^-]*-g\)//;s/-/./g'
+  	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
