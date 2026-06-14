@@ -4,16 +4,21 @@
 pkgname='vkmark-git'
 pkgdesc='Vulkan benchmark'
 pkgver=2025.01.r13.g83a128d
-pkgrel=1
+pkgrel=2
 url='https://github.com/vkmark/vkmark'
 arch=('i686' 'x86_64')
 provides=('vkmark')
 conflicts=('vkmark')
-license=('LGPL2.1')
-depends=('vulkan-icd-loader' 'assimp')
-makedepends=('git' 'vulkan-headers' 'meson' 'ninja' 'glm' 'wayland-protocols' 'xorgproto' 'xcb-util-wm' 'wayland')
-optdepends=('xcb-util-wm: for X11 support'
-            'wayland: for Wayland support')
+license=('LGPL-2.1-or-later')
+depends=('vulkan-icd-loader' 'assimp' 'glibc' 'libgcc' 'libstdc++')
+makedepends=('git' 'vulkan-headers' 'meson' 'glm' 'wayland-protocols' 'xorgproto' 'xcb-util-wm' 'wayland')
+optdepends=(
+  'xcb-util-wm: for X11 support'
+  'libxcb: for X11 support'
+  'libdrm: for KMS support'
+  'mesa: for KMS support'
+  'wayland: for Wayland support'
+)
 source=('git+https://github.com/vkmark/vkmark.git')
 sha256sums=('SKIP')
 
