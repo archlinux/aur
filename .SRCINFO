@@ -1,13 +1,13 @@
 pkgbase = lib_users
 	pkgdesc = Checks /proc for libraries being mapped but marked as deleted
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
-	url = https://github.com/klausman/lib_users/
+	url = https://www.schwarzvogel.de/software/lib_users/
 	arch = any
 	license = GPL2
+	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/klausman/lib_users/archive/refs/tags/v0.14.tar.gz
-	md5sums = 264f8a76451174691767ca23d352e3cf
+	source = https://www.schwarzvogel.de/pkgs/lib_users-0.15.tar.gz
+	sha256sums = 3862f66ff15d74b5875503c99b18e2c0aff908e0bb2dcf611363eef800e1de8b
 
 pkgname = lib_users
-
