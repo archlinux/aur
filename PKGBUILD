@@ -6,7 +6,7 @@
 pkgname=duckstation-qt-bin
 _pkgname="${pkgname%-bin}"
 _fullname=org.duckstation.DuckStation
-pkgver=0.1.r11295
+pkgver=0.1.r11391
 pkgrel=1
 pkgdesc="Fast PlayStation 1 emulator for PC and Android"
 arch=('x86_64')
@@ -18,8 +18,8 @@ depends=('hicolor-icon-theme' 'mesa' 'glibc' 'libstdc++' 'libgcc' 'fontconfig' '
 options=('!strip')
 source=("${_pkgname}-${pkgver}-x64.AppImage::https://github.com/stenzek/duckstation/releases/download/v${pkgver/.r/-}/DuckStation-x64.AppImage"
 	"${_pkgname}-${pkgver}-x64-SSE2.AppImage::$url/releases/download/v${pkgver/.r/-}/Duckstation-x64-SSE2.AppImage")
-sha256sums=('b35fc76bb3cace5278aff1993593eed3cef21c960c33a5d95aee5251126e87e1'
-            '62c14ebf1b83e469925d9b9524ec63c73cf32d156beb6adf90e0e157ef46083b')
+sha256sums=('a70ee184a2e37085611d24c996969d14ea257fe658f005dd7feab8955cc23026'
+            '93d1ca604f8f04ec5bc816ffdd2ebf6fcf54210d41ce36eea319c7d130842730')
 
 package() {
 	cd "$srcdir"
