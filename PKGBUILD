@@ -1,6 +1,6 @@
 pkgname=7zip-zstd-bin
-pkgver=25.01
-_pkgver=1.5.7-R4
+pkgver=26.01
+_pkgver=1.5.7-R1
 pkgrel=1
 pkgdesc="File archiver for extremely high compression (With Zstandard support)"
 arch=('x86_64' 'aarch64')
@@ -15,10 +15,10 @@ source_aarch64=("${url}/releases/download/v${pkgver}-v${_pkgver}/linux-gcc-arm64
 source=("License.txt::${url}/raw/master/DOC/License.txt"
         "unRarLicense.txt::${url}/raw/master/DOC/unRarLicense.txt")
 
-sha256sums=('5be3ae4796171027f3a2a631a22ed6333c4ebae38de47851b2fc3f24baa0fcd0'
+sha256sums=('5b565f1591a5872cb163a17a06725c4ec010f60401c9068d1b5e1e8c89517f39'
             '17bd9fa4399092c777536fff045b41df76ec9d2ac4c9b8e7345d3b8b6ccc7976')
-sha256sums_x86_64=('b7526802535bf98d6268ce1960de7e36cf8ed6b4004c9ba3ac09db9e14d9a20d')
-sha256sums_aarch64=('fd8adcc02f17a6a4af861aed59a2c7faba4349dbfcb70844f777e803fb246edb')
+sha256sums_x86_64=('3cfca42ab44519822d5299cb92f823633209dd762d903ade3fde19585c56915a')
+sha256sums_aarch64=('b0fe7971ac821524b68cdf6821357a36a978a80495d054b76a42fe3aa2dc290c')
 
 
 package() {

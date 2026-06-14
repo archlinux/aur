@@ -1,6 +1,6 @@
 pkgbase = 7zip-zstd-bin
 	pkgdesc = File archiver for extremely high compression (With Zstandard support)
-	pkgver = 25.01
+	pkgver = 26.01
 	pkgrel = 1
 	url = https://github.com/mcmilk/7-Zip-zstd
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = 7zip-zstd-bin
 	conflicts = 7zip-zstd
 	source = License.txt::https://github.com/mcmilk/7-Zip-zstd/raw/master/DOC/License.txt
 	source = unRarLicense.txt::https://github.com/mcmilk/7-Zip-zstd/raw/master/DOC/unRarLicense.txt
-	sha256sums = 5be3ae4796171027f3a2a631a22ed6333c4ebae38de47851b2fc3f24baa0fcd0
+	sha256sums = 5b565f1591a5872cb163a17a06725c4ec010f60401c9068d1b5e1e8c89517f39
 	sha256sums = 17bd9fa4399092c777536fff045b41df76ec9d2ac4c9b8e7345d3b8b6ccc7976
-	source_x86_64 = https://github.com/mcmilk/7-Zip-zstd/releases/download/v25.01-v1.5.7-R4/linux-gcc-x64.zip
-	sha256sums_x86_64 = b7526802535bf98d6268ce1960de7e36cf8ed6b4004c9ba3ac09db9e14d9a20d
-	source_aarch64 = https://github.com/mcmilk/7-Zip-zstd/releases/download/v25.01-v1.5.7-R4/linux-gcc-arm64.zip
-	sha256sums_aarch64 = fd8adcc02f17a6a4af861aed59a2c7faba4349dbfcb70844f777e803fb246edb
+	source_x86_64 = https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.01-v1.5.7-R1/linux-gcc-x64.zip
+	sha256sums_x86_64 = 3cfca42ab44519822d5299cb92f823633209dd762d903ade3fde19585c56915a
+	source_aarch64 = https://github.com/mcmilk/7-Zip-zstd/releases/download/v26.01-v1.5.7-R1/linux-gcc-arm64.zip
+	sha256sums_aarch64 = b0fe7971ac821524b68cdf6821357a36a978a80495d054b76a42fe3aa2dc290c
 
 pkgname = 7zip-zstd-bin
