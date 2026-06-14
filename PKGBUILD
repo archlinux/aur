@@ -1,7 +1,7 @@
 # Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=fastflowlm-gtk
-pkgver=2.5.2
-pkgrel=7
+pkgver=2.5.3
+pkgrel=1
 pkgdesc="A minimalist, modern desktop interface for FastFlowLM, built with GTK 4 and Libadwaita."
 arch=('any')
 url="https://github.com/marleylinux/FastFlowLM-gtk"
@@ -9,7 +9,7 @@ license=('MIT')
 install="fastflowlm-gtk.install"
 depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'libsoup3' 'gtksourceview5' 'python-psutil' 'fastflowlm' 'xrt-plugin-amdxdna')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/marleylinux/FastFlowLM-gtk/archive/refs/tags/v${pkgver}-${pkgrel}.tar.gz")
-sha256sums=('1c2c01a327c0ca7d47f0f40a383116006a49e9cef30f4977d4cd4f6a1f4cac3c')
+sha256sums=('bfeacf2cdd8d59579b47fe03070124c7022e2a192043be2db23a0348ea0e5392')
 
 package() {
   cd "$srcdir/FastFlowLM-"*
