@@ -1,6 +1,6 @@
 # Maintainer: Patrick Li <aur@patrickli.one>
 pkgname=unbill-cli-nightly-bin
-pkgver=nightly.20260613.024210
+pkgver=nightly.20260614.025329
 pkgrel=1
 pkgdesc="Command-line interface for unbill (nightly)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT' 'Apache-2.0')
 depends=('unbill-daemon-nightly')
 provides=('unbill-cli')
 conflicts=('unbill-cli' 'unbill-cli-bin')
-_tag=nightly-20260613-024210
+_tag=nightly-20260614-025329
 source_x86_64=("unbill-cli::https://github.com/unbill-project/unbill/releases/download/${_tag}/unbill-cli-linux-x86_64")
 sha256sums_x86_64=('SKIP')
 
