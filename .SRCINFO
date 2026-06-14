@@ -1,7 +1,7 @@
 pkgbase = wacki
 	pkgdesc = Faithful SDL2 port of Wacki: Kosmiczna rozgrywka
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mszula/wacki
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -13,7 +13,7 @@ pkgbase = wacki
 	optdepends = kdialog: KDE folder picker fallback when WACKI_PATH is unset
 	noextract = wacki-data.tar.gz
 	source = wacki-1.0.4.tar.gz::https://github.com/mszula/wacki/archive/refs/tags/v1.0.4.tar.gz
-	source = wacki-data.tar.gz
+	source = wacki-data.tar.gz::manual://wacki-data.tar.gz
 	source = wacki.sh
 	source = wacki.desktop
 	source = README.arch
@@ -22,7 +22,7 @@ pkgbase = wacki
 	sha256sums = SKIP
 	sha256sums = 1af86f9ae352bcb84359a412d95d30bb8da28ad207e6bfcdd20e164bfe8e07bb
 	sha256sums = 8a1afc87fa6d0aea08178c31dc416d04ed6f3baa02cbfd3f060685b002cd7485
-	sha256sums = 9d98a3f8ee5f2fc46c8399f58e2bfaa10fd6d1e92185b8397887ee7db0766cb1
+	sha256sums = 40b29dee2acb9a3483e4b078e68583184f28aa9a9fb6f4beb0a0501a9ac398bf
 	sha256sums = 63acf803af9a76da64c1a09123cc3651a04c5fa6355e3ad2a05cef7660cff32f
 
 pkgname = wacki

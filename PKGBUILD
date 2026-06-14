@@ -1,7 +1,7 @@
 # Maintainer: Michal Walenciak <kicer86@gmail.com>
 pkgname=wacki
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Faithful SDL2 port of Wacki: Kosmiczna rozgrywka'
 arch=('x86_64')
 url='https://github.com/mszula/wacki'
@@ -14,7 +14,7 @@ _pkgsrc="${pkgname}-${pkgver}"
 _data_archive='wacki-data.tar.gz'
 source=(
     "${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-    "${_data_archive}"
+    "${_data_archive}::manual://${_data_archive}"
     'wacki.sh'
     'wacki.desktop'
     'README.arch'
@@ -25,7 +25,7 @@ sha256sums=('915b3e827de74e5bec1a8e0edcc4156969521241faff52640d860c96ce1eb1ea'
             'SKIP'
             '1af86f9ae352bcb84359a412d95d30bb8da28ad207e6bfcdd20e164bfe8e07bb'
             '8a1afc87fa6d0aea08178c31dc416d04ed6f3baa02cbfd3f060685b002cd7485'
-            '9d98a3f8ee5f2fc46c8399f58e2bfaa10fd6d1e92185b8397887ee7db0766cb1'
+            '40b29dee2acb9a3483e4b078e68583184f28aa9a9fb6f4beb0a0501a9ac398bf'
             '63acf803af9a76da64c1a09123cc3651a04c5fa6355e3ad2a05cef7660cff32f')
 
 prepare() {

@@ -20,8 +20,10 @@ makepkg -si
 ```
 
 The fixed archive name is deliberate: makepkg source files must be URLs or
-files available in the PKGBUILD directory, and one local archive avoids fragile
-`dane_*.dta` glob handling in package metadata.
+files available in the PKGBUILD directory. The PKGBUILD declares this archive
+as a `manual://` source so the AUR accepts the package without redistributing
+private game data. Its checksum is intentionally set to `SKIP` because every
+user builds the archive from their own original media.
 
 The built package embeds the required sections from `WACKI.EXE` into the engine
 binary and installs the data files as canonical `Dane_NN.dta` names under
