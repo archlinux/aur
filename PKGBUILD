@@ -1,6 +1,6 @@
 # Maintainer: AstralDesigns <ianomiruka@gmail.com>
 pkgname=hyprcandy-plus
-pkgver=1.1.20
+pkgver=1.1.21
 pkgrel=1
 pkgdesc="HyprCandy+ installer — a cohesive Hyprland desktop experience"
 arch=('any')
