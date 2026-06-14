@@ -13,7 +13,7 @@ pkgdesc="A beautiful CLI tool for system monitoring - ports, network, memory, CP
 pkgver=${_npmver}
 pkgrel=1
 arch=("x86_64")
-url="https://github.com/12britz/sysview"
+url="https://github.com/${pkgauthor}/${pkgname}"
 license=("MIT")
 
 depends=("nodejs")
