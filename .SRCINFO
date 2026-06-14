@@ -1,8 +1,8 @@
 pkgbase = epub-tools
 	pkgdesc = Command line utilities for working with epub files
-	pkgver = 3.2
+	pkgver = 4.0
 	pkgrel = 1
-	url = https://github.com/dino-/epub-tools
+	url = https://codeberg.org/dinofp/epub-tools
 	arch = x86_64
 	license = ISC
 	makedepends = stack
@@ -11,7 +11,7 @@ pkgbase = epub-tools
 	depends = zlib
 	provides = epub-tools
 	conflicts = epub-tools
-	source = epub-tools-3.2.tar.gz::https://github.com/dino-/epub-tools/archive/refs/tags/3.2.tar.gz
-	sha256sums = 4a7c055d447c4e86b16f3d6ab916d89fbfcd04be52a3bb4e9c6aca768c56486a
+	source = epub-tools-4.0.tar.gz::https://codeberg.org/dinofp/epub-tools/archive/4.0.tar.gz
+	sha256sums = 210791e8837287f889ff7eaf6426925760aeac17c02459810001441f0ff5e845
 
 pkgname = epub-tools
