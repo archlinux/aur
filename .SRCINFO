@@ -1,0 +1,18 @@
+pkgbase = ministream
+	pkgdesc = Minimal (subset) appstream metadata parser
+	pkgver = 0.99.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/sp1rit/ministream
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = appstream
+	depends = glib2
+	depends = glibc
+	depends = gobject-introspection
+	source = git+https://gitlab.gnome.org/sp1rit/ministream.git#tag=0.99.0
+	sha256sums = e8e195504603631ce189b0d6800e156ae92aac9c10a2a758ee52c7df551f01c0
+
+pkgname = ministream
