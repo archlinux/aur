@@ -3,8 +3,8 @@
 
 _pyname=pyroma
 pkgname=python-${_pyname}
-pkgver=5.1.0.b.1
-_pkgver=${pkgver/.0.b.1/b1}
+pkgver=5.1.0.b.2
+_pkgver=${pkgver/.0.b.2/b2}
 pkgrel=1
 pkgdesc="Test your project's packaging friendliness"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-installer' 'python-wheel')
 #checkdepends=('python-pytest' 'python-docutils' 'python-requests' 'python-pygments' 'python-trove-classifiers' 'python-packaging')
 options=(!emptydirs)
 source=("${_pyname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
-sha256sums=('e9fda3fe05f43d68781f8580d927f49bed0c988551cf56f80b1745f128f78b61')
+sha256sums=('54d7a38d257b89264e20f014fbff8d92527f549da6e608acdfb4c66be2f8b884')
 
 _srcdir="${_pyname}-${_pkgver}"
 

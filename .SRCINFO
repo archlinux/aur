@@ -1,6 +1,6 @@
 pkgbase = python-pyroma
 	pkgdesc = Test your project's packaging friendliness
-	pkgver = 5.1.0.b.1
+	pkgver = 5.1.0.b.2
 	pkgrel = 1
 	url = https://github.com/regebro/pyroma
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-pyroma
 	depends = python-setuptools
 	depends = python-build
 	options = !emptydirs
-	source = pyroma-5.1.0.b.1.tar.gz::https://github.com/regebro/pyroma/archive/refs/tags/5.1b1.tar.gz
-	sha256sums = e9fda3fe05f43d68781f8580d927f49bed0c988551cf56f80b1745f128f78b61
+	source = pyroma-5.1.0.b.2.tar.gz::https://github.com/regebro/pyroma/archive/refs/tags/5.1b2.tar.gz
+	sha256sums = 54d7a38d257b89264e20f014fbff8d92527f549da6e608acdfb4c66be2f8b884
 
 pkgname = python-pyroma
 	depends = python-setuptools
