@@ -12,11 +12,11 @@ source=('git+https://github.com/natesales/q')
 md5sums=('SKIP')
 provides=($_shortpkgname)
 conflicts=($_shortpkgname)
-pkgver=0.19.12.628e9a3
+pkgver=r552.628e9a3
 
 pkgver() {
 	cd q
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)//;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 
