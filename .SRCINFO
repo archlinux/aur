@@ -1,7 +1,7 @@
 pkgbase = salmon
 	pkgdesc = Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://combine-lab.github.io/salmon/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -29,6 +29,7 @@ pkgbase = salmon
 	depends = zlib-ng
 	depends = glibc
 	depends = libgff
+	provides = salmon-cpp
 	options = !emptydirs
 	source = salmon-1.12.0.tar.gz::https://github.com/COMBINE-lab/salmon/archive/v1.12.0.tar.gz
 	source = pufferfish::git+https://github.com/COMBINE-lab/pufferfish.git#commit=ace68c1c022816ba8c50a1a07c5d08f2abd597d6
