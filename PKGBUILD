@@ -1,5 +1,5 @@
 pkgname=orbolay-bin
-pkgver=1.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Quick, small, native Discord overlay alternative for modded clients"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
     orbolay.desktop
     )
 sha256sums=(
-    '799d4007e0267d3a21d608ee5aee9df96633c4180468269114757313bb0f8aa2'
+    'de59967c2baf2d70b1cf12a3a4cb0e272d3d8229358f393ae26f4dab990e9e6a'
     'cc5613c5d0da99342e8ffb87d9949180b0feeac81bc1550ca6bae1bc10598f4b'
     )
 
