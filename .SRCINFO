@@ -1,6 +1,6 @@
 pkgbase = python-graspologic-native
 	pkgdesc = Python native companion module to the graspologic library
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/graspologic-org/graspologic-native
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-graspologic-native
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
-	source = python-graspologic-native-1.3.0.tar.gz::https://files.pythonhosted.org/packages/source/g/graspologic-native/graspologic_native-1.3.0.tar.gz
-	sha256sums = 27301d885c0f47be0ed6496420de444a6f2c2032b0d19cfcc6869471ca654875
+	source = python-graspologic-native-1.3.1.tar.gz::https://files.pythonhosted.org/packages/source/g/graspologic-native/graspologic_native-1.3.1.tar.gz
+	sha256sums = fa6be9c292508b8a876d45ac98ee550534d9e33fcf7129a6df8a95573101be4c
 
 pkgname = python-graspologic-native

@@ -2,7 +2,7 @@
 
 _name=graspologic-native
 pkgname=python-graspologic-native
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Python native companion module to the graspologic library"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ makedepends=(
     'rust'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('27301d885c0f47be0ed6496420de444a6f2c2032b0d19cfcc6869471ca654875')
+sha256sums=('fa6be9c292508b8a876d45ac98ee550534d9e33fcf7129a6df8a95573101be4c')
 
 build() {
     cd "${_name//-/_}-${pkgver}"
