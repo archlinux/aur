@@ -1,7 +1,7 @@
 pkgbase = lovr
 	pkgdesc = Lua Virtual Reality Framework, a VR game engine
-	pkgver = 0.18.0
-	pkgrel = 3
+	pkgver = 0.19.0
+	pkgrel = 1
 	url = https://lovr.org/
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = lovr
 	depends = glfw
 	depends = luajit
 	depends = openxr
-	source = git+https://github.com/bjornbytes/lovr.git#tag=v0.18.0
+	source = git+https://github.com/bjornbytes/lovr.git#tag=v0.19.0
 	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers
 	source = joltc::git+https://github.com/amerkoleci/joltc
 	source = lovr-http::git+https://github.com/bjornbytes/lovr-http
