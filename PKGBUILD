@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="All-in-one terminal player — Radio, Spotify & YouTube."
 
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums=('731449cd1541cd76a575f3b6865bcbbf028090c3cde50f2f474651e456392a29'
+sha256sums=('135debdd1fed3f4926d080280cd9d3dc756ca31de0af71b4248e8d2f9e0ac1f8'
             '746e5a753e38e8188a5839559aca0bd9a4c3b4b698138e7597b71b0ac39a16d3')
-sha256sums_x86_64=('886e839b5f31d11175a108f5e038e5bb46a0d96ad50fd8534f19cb8b0eff9987')
+sha256sums_x86_64=('5e1f9aaf6471241b7756e9100edaecc7965cd9f90c55aa69f4466d721e988d03')
 
 
 package() {
