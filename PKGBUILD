@@ -1,0 +1,86 @@
+# Maintainer: Jakob Munch Overgaard <jmo@tvipper.com>
+pkgname=remotepower-server
+pkgver=4.6.0
+pkgrel=1
+pkgdesc='Self-hosted fleet-management server for RemotePower (nginx + Python CGI): dashboards, CVE/drift/compliance, monitoring, AI'
+arch=('any')
+url='https://github.com/tyxak/remotepower'
+license=('MIT')
+# Hard deps are all in the official repos. The two AUR-only Python libs
+# (webauthn, pysaml2) are optdepends so they never block a plain install.
+depends=('nginx' 'fcgiwrap' 'python' 'python-bcrypt' 'python-cryptography' 'python-dnspython')
+optdepends=(
+  'python-reportlab: PDF report export'
+  'python-webauthn: passkey / WebAuthn MFA (AUR)'
+  'python-pysaml2: SAML SSO (AUR)'
+  'xmlsec: SAML signature verification (pairs with python-pysaml2)'
+)
+backup=('etc/nginx/snippets/remotepower-locations.conf')
+install="$pkgname.install"
+# Built from the signed GitHub release tarball, PGP-verified against the
+# maintainer key (the .asc that `make release` produces).
+source=(
+  "remotepower-$pkgver.tar.gz::$url/releases/download/v$pkgver/remotepower-$pkgver.tar.gz"
+  "remotepower-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/remotepower-$pkgver.tar.gz.asc"
+)
+sha256sums=(
+  '275b0fed90dcd9aa2b6a77545e80658fd85dcb8c4f218455b209471774a2338c'
+  'SKIP'
+)
+validpgpkeys=('E7B5AD456728B8462A8B54BFD488AF115D2CCDBF')  # Jakob Munch Overgaard <jmo@tvipper.com>
+
+package() {
+  cd "remotepower-$pkgver"
+  local web="$pkgdir/var/www/remotepower"
+  install -dm755 "$web/cgi-bin" "$web/agent" "$web/static" "$web/docs"
+
+  # ── Backend: cgi-bin Python. Only api.py is a CGI entry point (executed via
+  #    fcgiwrap; SCRIPT_FILENAME=api.py); the siblings are imported modules. ──
+  local f n
+  for f in server/cgi-bin/*.py; do
+    n=$(basename "$f")
+    if [ "$n" = 'api.py' ]; then
+      install -m755 "$f" "$web/cgi-bin/$n"
+    else
+      install -m644 "$f" "$web/cgi-bin/$n"
+    fi
+  done
+  [ -f server/cgi-bin/remotepower-tls-check ] && \
+    install -m755 server/cgi-bin/remotepower-tls-check "$web/cgi-bin/remotepower-tls-check"
+
+  # Admin/user management tool + a convenience wrapper on PATH.
+  install -m755 server/remotepower-passwd "$web/cgi-bin/remotepower-passwd"
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s /var/www/remotepower/cgi-bin/remotepower-passwd "$pkgdir/usr/bin/remotepower-passwd"
+
+  # ── Frontend: html, PWA assets, static, docs, manual ──
+  install -m644 server/html/*.html "$web/"
+  for f in server/html/favicon.* server/html/robots.txt server/html/manifest.json server/html/sw.js; do
+    [ -f "$f" ] && install -m644 "$f" "$web/$(basename "$f")"
+  done
+  cp -r server/html/static/. "$web/static/"
+  find "$web/static" -type d -exec chmod 755 {} +
+  find "$web/static" -type f -exec chmod 644 {} +
+  [ -f docs/Manual.html ] && install -m644 docs/Manual.html "$web/Manual.html"
+  install -m644 docs/*.md   "$web/docs/" 2>/dev/null || true
+  install -m644 docs/*.html "$web/docs/" 2>/dev/null || true
+
+  # Agent binary, served read-only for agent self-update (/api/agent/download).
+  install -m755 client/remotepower-agent "$web/agent/remotepower-agent"
+
+  # ── nginx: shared locations snippet (works as-is with /var/www/remotepower). ──
+  install -Dm644 server/conf/remotepower-locations.conf \
+    "$pkgdir/etc/nginx/snippets/remotepower-locations.conf"
+  # Sample vhost + optional SCGI-worker unit → docs (user sets server_name/TLS).
+  install -Dm644 server/conf/remotepower.conf \
+    "$pkgdir/usr/share/doc/$pkgname/remotepower.conf.sample"
+  install -Dm644 server/conf/remotepower-api.service \
+    "$pkgdir/usr/share/doc/$pkgname/remotepower-api.service"
+
+  # ── Data dir, created + owned by the nginx user (http) at install/boot. ──
+  install -dm755 "$pkgdir/usr/lib/tmpfiles.d"
+  printf 'd /var/lib/remotepower 0700 http http -\n' \
+    > "$pkgdir/usr/lib/tmpfiles.d/remotepower.conf"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

@@ -1,0 +1,26 @@
+pkgbase = remotepower-server
+	pkgdesc = Self-hosted fleet-management server for RemotePower (nginx + Python CGI): dashboards, CVE/drift/compliance, monitoring, AI
+	pkgver = 4.6.0
+	pkgrel = 1
+	url = https://github.com/tyxak/remotepower
+	install = remotepower-server.install
+	arch = any
+	license = MIT
+	depends = nginx
+	depends = fcgiwrap
+	depends = python
+	depends = python-bcrypt
+	depends = python-cryptography
+	depends = python-dnspython
+	optdepends = python-reportlab: PDF report export
+	optdepends = python-webauthn: passkey / WebAuthn MFA (AUR)
+	optdepends = python-pysaml2: SAML SSO (AUR)
+	optdepends = xmlsec: SAML signature verification (pairs with python-pysaml2)
+	backup = etc/nginx/snippets/remotepower-locations.conf
+	source = remotepower-4.6.0.tar.gz::https://github.com/tyxak/remotepower/releases/download/v4.6.0/remotepower-4.6.0.tar.gz
+	source = remotepower-4.6.0.tar.gz.asc::https://github.com/tyxak/remotepower/releases/download/v4.6.0/remotepower-4.6.0.tar.gz.asc
+	validpgpkeys = E7B5AD456728B8462A8B54BFD488AF115D2CCDBF
+	sha256sums = 275b0fed90dcd9aa2b6a77545e80658fd85dcb8c4f218455b209471774a2338c
+	sha256sums = SKIP
+
+pkgname = remotepower-server

@@ -1,0 +1,36 @@
+_setup_msg() {
+  cat <<'MSG'
+==> RemotePower server installed.
+      code → /var/www/remotepower      data → /var/lib/remotepower (owned by http)
+
+    Finish setup (one-time):
+      1) Enable the CGI socket:
+           systemctl enable --now fcgiwrap.socket
+      2) Configure nginx — copy the sample vhost and set your server_name (+ TLS):
+           cp /usr/share/doc/remotepower-server/remotepower.conf.sample \
+              /etc/nginx/conf.d/remotepower.conf
+           # edit server_name (and TLS); it includes the already-installed
+           # /etc/nginx/snippets/remotepower-locations.conf
+           nginx -t && systemctl reload nginx
+      3) Create the first admin user:
+           remotepower-passwd
+      4) Browse to your server and log in.
+
+    Optional features: install python-reportlab (PDF), python-webauthn (passkeys,
+    AUR), python-pysaml2 + xmlsec (SAML, AUR).
+    Faster backend (optional): the persistent SCGI worker —
+      /usr/share/doc/remotepower-server/remotepower-api.service
+    For TLS-from-scratch (self-signed CA) see the project's tls-selfsigned docs.
+MSG
+}
+
+post_install() {
+  systemd-tmpfiles --create remotepower.conf >/dev/null 2>&1 || true
+  _setup_msg
+}
+
+post_upgrade() {
+  systemd-tmpfiles --create remotepower.conf >/dev/null 2>&1 || true
+  echo '==> RemotePower server upgraded. Reload services if running:'
+  echo '      systemctl reload nginx   (and: systemctl restart remotepower-api  if you use the SCGI worker)'
+}
