@@ -1,7 +1,7 @@
 # Maintainer: isra <israelzermeno82@gmail.com>
 pkgname=dmgr-desktop
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern device manager for Linux — Tauri + React (devices, drivers, audio, Bluetooth, kernel modules)"
 arch=('x86_64')
 url="https://github.com/Khinmmad/dmgr"
@@ -18,6 +18,21 @@ makedepends=('rust' 'cargo' 'nodejs' 'npm' 'pkg-config')
 provides=('dmgr-desktop')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/dmgr-$pkgver"
+
+    # The v2.1.0 tag was published BEFORE the `custom-protocol` feature was
+    # added to desktop/src-tauri/Cargo.toml, so the release tarball doesn't
+    # declare it. Without the feature, Tauri builds in dev mode and the binary
+    # tries to load http://localhost:1420 at runtime ("localhost failed").
+    # We inject a [features] block so the build flag below resolves.
+    sed -i '/^path = "src\/main\.rs"$/a\
+\
+[features]\
+custom-protocol = ["tauri/custom-protocol"]' \
+        desktop/src-tauri/Cargo.toml
+}
 
 build() {
     # Frontend + Tauri backend (nested workspace under desktop/).

@@ -1,7 +1,7 @@
 pkgbase = dmgr-desktop
 	pkgdesc = Modern device manager for Linux — Tauri + React (devices, drivers, audio, Bluetooth, kernel modules)
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Khinmmad/dmgr
 	arch = x86_64
 	license = MIT
