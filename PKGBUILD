@@ -1,9 +1,9 @@
 # Maintainer: Leo LI <i@hardrain980.com>
-_raw_pkgver=02.06.00.51
+_raw_pkgver=02.07.01.57
 
 pkgname=bambu-studio
-pkgver=2.6.0
-pkgrel=2
+pkgver=2.7.1
+pkgrel=1
 pkgdesc="PC Software for BambuLab and other 3D printers"
 arch=('x86_64')
 url="https://github.com/bambulab/BambuStudio"
@@ -24,13 +24,11 @@ source=(
 	"BambuStudio-$_raw_pkgver.tar.gz::https://github.com/bambulab/BambuStudio/archive/refs/tags/v$_raw_pkgver.tar.gz"
 	'BambuStudio.desktop'
 	'0001-src-slic3r-CMakeLists.txt-avoid-linking-to-the-depre.patch'
-	'0002-fix-incorrectly-included-usr-local-include-in-Boost-.patch'
 )
-sha256sums=('ae5d461167641b78d07f73a37ac95d4b9deb1970abc29e3cfafdc23ab7e6a2a5' SKIP SKIP SKIP)
+sha256sums=('a058813a1fc623a5357dc9291b34318df21345683374ce3ea87b843cb1c0559a' SKIP SKIP)
 
 prepare() {
 	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/0001-src-slic3r-CMakeLists.txt-avoid-linking-to-the-depre.patch
-	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/0002-fix-incorrectly-included-usr-local-include-in-Boost-.patch
 	mkdir -p \
 		$srcdir/BambuStudio_deps \
 		$srcdir/BambuStudio-$_raw_pkgver/build \
