@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Picocrypt-NG
+Exec=picocrypt-ng
+Icon=picocrypt
+Categories=Security;Encryption;GTK;
+StartupNotify=true
