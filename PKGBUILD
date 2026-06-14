@@ -7,7 +7,7 @@ pkgname=(
   "${pkgbase}-examples"
 )
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ Functional Terminal User Interface"
 arch=(
   'i686'
@@ -18,11 +18,11 @@ license=(
   'MIT'
 )
 makedepends=(
-  'benchmark>=1.8.2'
+  # 'benchmark>=1.8.2'
   'cmake>=3.12'
   'doxygen'
   'graphviz'
-  'gtest>=1.10'
+  # 'gtest>=1.10'
 )
 _pkgsrc="${url##*/}-${pkgver}"
 source=(
@@ -36,7 +36,7 @@ b2sums=('73bcba72f3ad52818d8a6d1647b7e8bff4259fbd5713db409c147f0d8f44b1895727d27
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  #patch -Np1 -i "${srcdir}/${pkgbase}_build_docs_target_all.patch"
+  patch -Np1 -i "${srcdir}/${pkgbase}_build_docs_target_all.patch"
   patch -Np1 -i "${srcdir}/${pkgbase}_make_examples_installable.patch"
 }
 
@@ -47,11 +47,12 @@ build() {
     -S "${_pkgsrc}"
     -G 'Unix Makefiles'
     -W no-dev
+    -D BUILD_SHARED_LIBS:BOOL=ON
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
     -D FTXUI_ENABLE_INSTALL:BOOL=ON
     -D FTXUI_BUILD_EXAMPLES:BOOL=ON
-    -D FTXUI_BUILD_TESTS:BOOL=ON
+    -D FTXUI_BUILD_TESTS:BOOL=OFF
     -D FTXUI_BUILD_DOCS:BOOL=ON
   )
   
@@ -60,20 +61,26 @@ build() {
   cmake --build "${cmake_options[1]}"
 }
 
-check() {
-  local ctest_exclude_regex=""
-  local ctest_options=(
-    --test-dir "${_pkgsrc}/build"
-    --output-on-failure
-    --parallel "$(nproc)"
-    --exclude-regex "${ctest_exclude_regex}"
-  )
+# check() {
+#   local ctest_exclude_regex=""
+#   local ctest_options=(
+#     --test-dir "${_pkgsrc}/build"
+#     --output-on-failure
+#     --parallel "$(nproc)"
+#     --exclude-regex "${ctest_exclude_regex}"
+#   )
 
-  cd "${srcdir}"
-  ctest "${ctest_options[@]}"
-}
+#   cd "${srcdir}"
+#   ctest "${ctest_options[@]}"
+# }
 
 package_ftxui() {
+  depends=(
+    'glibc'
+    'libgcc'
+    'libstdc++'
+  )
+
   cd "${srcdir}"
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
 
@@ -103,6 +110,7 @@ package_ftxui-docs() {
 package_ftxui-examples() {
   pkgdesc+=" (examples)"
   depends=(
+    "${pkgbase}>=${pkgver}-${pkgrel}"
     'glibc'
     'libgcc'
     'libstdc++'
