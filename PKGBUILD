@@ -1,8 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="code2prompt"
-pkgver=4.2.0
-pkgrel=2
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="CLI tool to convert your codebase into a single LLM prompt"
 arch=(
   'x86_64'
@@ -25,7 +25,7 @@ source=(
   # "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
   "https://static.crates.io/crates/${pkgname}/${_pkgsrc}.crate"
 )
-sha256sums=('e6b5b194027bfc72f356ecb5d80773bfbe558e5e786384123cf5bf12388cadd5')
+sha256sums=('990ebe1d34dec07580dd23e4097423989f0bd6c8d4f4de9d47c0ae77a0c2c732')
 
 _source() {
   export CARGO_HOME="${srcdir}/.cargo"
@@ -56,8 +56,10 @@ check() {
 }
 
 package() {
+  _source
+
   cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm755 "${CARGO_TARGET_DIR}/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   # install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
