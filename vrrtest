@@ -1,0 +1,3 @@
+#!/bin/bash
+
+love /usr/share/vrrtest/vrrtest.love "$@"
