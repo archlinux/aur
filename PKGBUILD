@@ -50,7 +50,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   DESTDIR="${pkgdir}" cmake --install "src/build"
-#  install -Dm644 "src/holyc-lib/tos.a" "${pkgdir}/usr/lib/libtos.a"
+  install -Dm644 "src/holyc-lib/tos.a" "${pkgdir}/usr/lib/libtos.a"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "COPYING"   "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
