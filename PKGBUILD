@@ -13,7 +13,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=18.4.0.r0.g22f05f09e
+pkgver=18.4.0.r1.g3ac65ceba
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
@@ -148,6 +148,10 @@ build()
 
   echo;
   echo "WX_CONFIG: ${WX_CONFIG}";
+  echo;
+  ${WX_CONFIG} --version;
+  echo;
+  ${WX_CONFIG} --version-full;
   echo;
 
   # generate
