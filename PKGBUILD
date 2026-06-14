@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=opencode-quota
 _npmname=@slkiser/opencode-quota
-pkgver=3.8.7
+pkgver=3.8.8
 pkgrel=1
 pkgdesc="OpenCode plugin for quota & token usage tracking with zero context window pollution"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!debug')
 install=$pkgname.install
 
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$pkgname-$pkgver.tgz")
-sha256sums=('4bce7e4beab2545a62d197241ac7ad25d9e611f6beaa16220cb82e34f2248584')
+sha256sums=('9bd379068d89576d2f61d3a84a7abc6a8090be57bece289d09e476994ef37908')
 
 latestver() {
     curl -fsSL "https://registry.npmjs.org/$_npmname/latest" | jq -r '.version'
@@ -22,7 +22,7 @@ latestver() {
 package() {
     cd "$srcdir/package"
 
-    npm install --omit=dev --omit=peer --ignore-scripts
+    npm install --omit=dev --omit=peer --ignore-scripts --legacy-peer-deps
 
     mapfile -t _peerdeps < <(node -e '
       const pkg = require("./package.json");
@@ -31,7 +31,7 @@ package() {
     ')
     if ((${#_peerdeps[@]})); then
         rm -rf "$srcdir/peer-root"
-        npm install --prefix "$srcdir/peer-root" --omit=dev --ignore-scripts "${_peerdeps[@]}"
+        npm install --prefix "$srcdir/peer-root" --omit=dev --ignore-scripts --legacy-peer-deps "${_peerdeps[@]}"
         cp -a "$srcdir/peer-root/node_modules/." node_modules/
     fi
 
@@ -39,6 +39,7 @@ package() {
     rm -rf node_modules/typescript node_modules/.bin
     rm -f node_modules/@msgpackr-extract/msgpackr-extract-linux-x64/*.musl.node
     rm -rf node_modules/@opentui/core/lib/tree-sitter/assets
+    rm -f node_modules/@opentui/core/lib/tree-sitter/update-assets.js node_modules/@opentui/core/lib/tree-sitter/update-assets.d.ts
     rm -rf node_modules/jsesc/man node_modules/marked/man
 
     install -d "$pkgdir/usr/lib/opencode/plugins/$pkgname"
