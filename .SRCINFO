@@ -1,6 +1,6 @@
 pkgbase = swpui
 	pkgdesc = Search and replace, TUI style.
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/beeb/swpui
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = swpui
 	provides = swp
 	conflicts = swpui-git
 	conflicts = swpui-bin
-	source = swpui-0.8.0.tar.gz::https://github.com/beeb/swpui/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = 0aa42e8d549de40477441ab8fa47f64cbe7933c90157ab7460c1bd22e78dc5e7
+	source = swpui-0.9.0.tar.gz::https://github.com/beeb/swpui/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = d4deeb4060bf3bd3a35b616ecce404e6eb2a666b6a51e3863721f995e0f3c6ac
 
 pkgname = swpui
