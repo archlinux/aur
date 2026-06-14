@@ -1,7 +1,7 @@
 # Maintainer: Joaquim Monteiro <joaquim.monteiro@protonmail.com>
 
 pkgname=kwin-polonium-git
-pkgver=1.0b1.r2.g60dc024
+pkgver=1.0rc.r79.g8c7e279
 pkgrel=1
 pkgdesc='A tiling window manager for KWin 5.27 and up (Git version)'
 arch=('any')
@@ -13,12 +13,21 @@ makedepends=('git' 'npm' 'typescript')
 conflicts=('kwin-polonium')
 provides=('kwin-polonium')
 
-source=("git+https://github.com/zeroxoneafour/polonium")
-sha1sums=('SKIP')
+source=('git+https://github.com/zeroxoneafour/polonium.git'
+        'git+https://github.com/zeroxoneafour/kwin-api.git')
+sha1sums=('SKIP'
+          'SKIP')
 
 pkgver() {
   cd polonium
   git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd polonium
+    git submodule init
+    git config submodule.kwin-api.url "$srcdir/kwin-api"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
