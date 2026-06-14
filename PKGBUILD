@@ -2,7 +2,7 @@
 # Contributor: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=python-copier
-pkgver=9.15.1
+pkgver=9.15.2
 pkgrel=1
 pkgdesc='Library and command-line utility for rendering projects templates'
 arch=('any')
@@ -45,12 +45,12 @@ optdepends=(
   'git: VCS support'
 )
 
-_commit=c35042b
+_commit=a90729e
 source=(
   "git+https://github.com/copier-org/copier.git#commit=$_commit"
 )
 sha256sums=(
-  'f7415f3b840e2de18a61df9748598fde8d40245c0e461d85eab726447c791f89'
+  '11d9359b74de4c7bee5ebb8452463b8a2e9bbacbdbbc695785ca7d1055f7e478'
 )
 
 build() {
@@ -63,7 +63,11 @@ check() {
   rm -rf test-env
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer "dist/copier-$pkgver-"*.whl
-  LC_ALL=C test-env/bin/python -m pytest -k 'not test_types and not test_commit_hooks_respected'
+
+  # Skip the help tests for now as they check the output of the --help command.
+  # They expect a --completions switch which requires plumbum v2 which is not
+  # yet present in extra.
+  LC_ALL=C test-env/bin/python -m pytest -k 'not test_types and not test_commit_hooks_respected and not test_check_update_help and not test_update_help and not test_copy_help'
 }
 
 package() {
