@@ -1,15 +1,12 @@
 pkgbase = eidklient-native
 	pkgdesc = Slovak eID Client - uses system-provided libraries, supports Wayland, …
 	pkgver = 5.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.slovensko.sk/
-	install = eidklient.install
 	arch = i686
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = fuse2
-	provides = eidklient
-	conflicts = eidklient
 	options = !debug
 	options = !strip
 	source = eidklient
@@ -26,6 +23,7 @@ pkgbase = eidklient-native
 	sha256sums_x86_64 = 5b2c322abe65839e33da7903559a24c47a958a2a474698fb08e6d6b4e097f06f
 
 pkgname = eidklient-native
+	install = eidklient.install
 	depends = bash
 	depends = binutils
 	depends = glibc
@@ -37,6 +35,13 @@ pkgname = eidklient-native
 	depends = libstdc++.so
 	depends = qt6-base
 	depends = xdg-utils
+	depends = eidklient-native-unused-libs
 	optdepends = ccid: Generic USB Smart Card reader support
 	optdepends = disig-web-signer: online certificates update support
 	optdepends = gnome-shell-extension-appindicator: for system tray icons on GNOME
+	provides = eidklient
+	conflicts = eidklient
+
+pkgname = eidklient-native-unused-libs
+	pkgdesc = eidklient-native libraries required only for integrity checks
+	depends = eidklient-native=5.3-6

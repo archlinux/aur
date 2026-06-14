@@ -1,10 +1,15 @@
 #!/bin/bash -e
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
-_pkgname=eidklient
-pkgname="${_pkgname}-native"
+_pkgbase=eidklient
+pkgbase="${_pkgbase}-native"
+# Splitting the packages enables accurate linting of the dependencies.
+pkgname=(
+    "${pkgbase}"
+    "${pkgbase}-unused-libs"
+)
 pkgver=5.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, …"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
@@ -44,18 +49,11 @@ options=(
     !debug
     !strip
 )
-install=eidklient.install
 makedepends=(
     fuse2
 )
-provides=(
-    "${_pkgname}"
-)
-conflicts=(
-    "${_pkgname}"
-)
 
-: "${pkgname}"
+: "${pkgname[@]}"
 : "${pkgver}"
 : "${pkgrel}"
 : "${pkgdesc}"
@@ -69,10 +67,7 @@ conflicts=(
 : "${sha256sums_i686[@]}"
 : "${sha256sums_x86_64[@]}"
 : "${options[@]}"
-: "${install}"
 : "${makedepends[@]}"
-: "${provides[@]}"
-: "${conflicts[@]}"
 
 prepare() {
     rm -rf "eID_klient_${pkgver}"
@@ -83,9 +78,39 @@ prepare() {
     cd "eID_klient_${pkgver}"
 
     ../"${_appimage}" --appimage-extract
+
+    mv squashfs-root/Licenses .
+    mkdir -p {squashfs-root,unused-libs}/Licenses
+    for _license in \
+        Botan_License.txt \
+        eID-klient-licencne-podmienky.rtf \
+        eID_Klient_License.rtf \
+        nlohmann_json_License.txt \
+        ; do
+        mv {.,squashfs-root}/Licenses/"${_license}"
+    done
+    for _license in \
+        OpenJPEG_License.txt \
+        OpenSSL_License.txt \
+        Qt_License.txt \
+        ; do
+        mv {.,unused-libs}/Licenses/"${_license}"
+    done
+    rmdir Licenses
+
+    mv squashfs-root/{doc,lib,plugins} unused-libs
+    mkdir squashfs-root/lib
+    for _lib in \
+        VirtualKeyboard \
+        libCardAPI.so \
+        libbotan-2.so.18 \
+        libpkcs11_x64.so \
+        ; do
+        mv {unused-libs,squashfs-root}/lib/"${_lib}"
+    done
 }
 
-package() {
+package_eidklient-native() {
     depends=(
         bash
         binutils
@@ -98,34 +123,50 @@ package() {
         libstdc++.so
         qt6-base
         xdg-utils
+        "${pkgbase}-unused-libs"
     )
     optdepends=(
         "ccid: Generic USB Smart Card reader support"
         "disig-web-signer: online certificates update support"
         "gnome-shell-extension-appindicator: for system tray icons on GNOME"
     )
+    install=eidklient.install
+    provides=(
+        "${_pkgbase}"
+    )
+    conflicts=(
+        "${_pkgbase}"
+    )
 
+    : "${conflicts[@]}"
     : "${depends[@]}"
+    : "${install}"
     : "${optdepends[@]}"
-    : "${pkgdir:?}"
-    : "${srcdir:?}"
+    # shellcheck disable=SC2154
+    : "${pkgdir}"
+    : "${provides[@]}"
+    # shellcheck disable=SC2154
+    : "${srcdir}"
+
+    # shellcheck disable=SC2128
+    local _pkgname="${pkgname}"
 
     cd "eID_klient_${pkgver}"
 
     # App
     mkdir "${pkgdir}/opt"
-    cp -r squashfs-root "${pkgdir}/opt/${_pkgname}"
+    cp -r squashfs-root "${pkgdir}/opt/${_pkgbase}"
 
     # With QT_PLUGIN_PATH and QT_QPA_PLATFORM_PLUGIN_PATH, some bundled plugins
     # were still used.
-    cp "${srcdir}/qt6.conf" "${pkgdir}/opt/${_pkgname}"
+    cp "${srcdir}/qt6.conf" "${pkgdir}/opt/${_pkgbase}"
 
     # Patched Qt 6 libraries are required, otherwise the app crashes on launch with
     # `error due to GNU_PROPERTY_1_NEEDED_INDIRECT_EXTERN_ACCESS`.
     # https://gitlab.archlinux.org/archlinux/packaging/packages/qt6-base/-/issues/21
-    mkdir "${pkgdir}/opt/${_pkgname}/lib/patched"
-    install -Dm755 "${srcdir}/patch-qt" "${pkgdir}/opt/${_pkgname}"
-    install -Dm644 "${srcdir}/qt.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}-qt.hook"
+    mkdir "${pkgdir}/opt/${_pkgbase}/lib/patched"
+    install -Dm755 "${srcdir}/patch-qt" "${pkgdir}/opt/${_pkgbase}"
+    install -Dm644 "${srcdir}/qt.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgbase}-qt.hook"
 
     # Custom wrapper
     install -Dm755 "${srcdir}/eidklient" "${pkgdir}/usr/bin/eID_Client"
@@ -138,10 +179,10 @@ package() {
     ln -s /usr/bin/eID_Client "${pkgdir}/usr/lib/eID_klient/VirtualKeyboard"
 
     for lib in squashfs-root/lib/lib{CardAPI,botan,pkcs11_}*; do
-        ln -s "/opt/${_pkgname}/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
+        ln -s "/opt/${_pkgbase}/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
     done
 
-    for lib in squashfs-root/lib/lib{crypto,ssl}*; do
+    for lib in unused-libs/lib/lib{crypto,ssl}*; do
         ln -s "/usr/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
     done
 
@@ -153,5 +194,23 @@ package() {
         --no-same-owner
 
     mkdir -p "${pkgdir}/usr/share/licenses"
-    ln -s /opt/eidklient/Licenses "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s /opt/eidklient/Licenses "${pkgdir}/usr/share/licenses/${_pkgname}"
+}
+
+package_eidklient-native-unused-libs() {
+    pkgdesc="${pkgbase} libraries required only for integrity checks"
+    depends=(
+        "${pkgbase}=${pkgver}-${pkgrel}"
+    )
+
+    # shellcheck disable=SC2128
+    local _pkgname="${pkgname}"
+
+    cd "eID_klient_${pkgver}"
+
+    mkdir "${pkgdir}/opt"
+    cp -r unused-libs "${pkgdir}/opt/${_pkgbase}"
+
+    mkdir -p "${pkgdir}/usr/share/licenses"
+    ln -s /opt/eidklient/Licenses "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
