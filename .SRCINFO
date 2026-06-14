@@ -1,0 +1,17 @@
+pkgbase = omnipackage
+	pkgdesc = Build and distribute RPM, DEB & Arch packages easily
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://omnipackage.org/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	depends = gnupg
+	depends = podman
+	optdepends = docker: alternative container runtime (instead of podman)
+	options = !lto
+	source = omnipackage-0.1.13.tar.gz::https://github.com/omnipackage/omnipackage-rs/archive/refs/tags/v0.1.13.tar.gz
+	sha256sums = 36969886daa6fed9046ae1e498b9c9699573a43601ee38f77df75c94de8cb6d9
+
+pkgname = omnipackage
