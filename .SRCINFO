@@ -1,6 +1,6 @@
 pkgbase = rustfs-bin
 	pkgdesc = 🚀 High-performance distributed object storage for MinIO alternative.
-	pkgver = 1.0.0_beta.7
+	pkgver = 1.0.0_beta.8
 	pkgrel = 1
 	url = https://github.com/rustfs/rustfs
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = rustfs-bin
 	source = rustfs.env
 	sha256sums = 9e05f7cf55881318759f3850b6a9202fd8f89cb589f9973598ea1377836b4303
 	sha256sums = a8fbeca6f2bd3a54cba5c029804a6df8ccbaaadfc51e758266b7385db7b74eb5
-	source_x86_64 = rustfs-1.0.0-beta.7-x86_64.zip::https://github.com/rustfs/rustfs/releases/download/1.0.0-beta.7/rustfs-linux-x86_64-musl-v1.0.0-beta.7.zip
-	sha256sums_x86_64 = f13bc89efa7881a199bf286390a89c7320ee2e52d90c341affd41bc5e7ba2677
-	source_aarch64 = rustfs-1.0.0-beta.7-aarch64.zip::https://github.com/rustfs/rustfs/releases/download/1.0.0-beta.7/rustfs-linux-aarch64-musl-v1.0.0-beta.7.zip
-	sha256sums_aarch64 = 989552479bfb2cc8e1ffa3af9c95da072d082a2e7124f54a1af1b1dcb68264ce
+	source_x86_64 = rustfs-1.0.0-beta.8-x86_64.zip::https://github.com/rustfs/rustfs/releases/download/1.0.0-beta.8/rustfs-linux-x86_64-musl-v1.0.0-beta.8.zip
+	sha256sums_x86_64 = 8175fc82f23ec4ae42bc285c321f87f3fe1763d201c01537cb8e80acfa72aeaf
+	source_aarch64 = rustfs-1.0.0-beta.8-aarch64.zip::https://github.com/rustfs/rustfs/releases/download/1.0.0-beta.8/rustfs-linux-aarch64-musl-v1.0.0-beta.8.zip
+	sha256sums_aarch64 = 7003f45070ec634f85c21e3c46dcff4d25de22dd3af3f3a4a1ddbd1cea89502b
 
 pkgname = rustfs-bin
