@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Wacki
+GenericName=Adventure Game
+Comment=Play Wacki: Kosmiczna rozgrywka
+Exec=wacki
+Icon=wacki
+Terminal=false
+Categories=Game;AdventureGame;

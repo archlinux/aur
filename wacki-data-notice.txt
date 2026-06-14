@@ -1,0 +1,8 @@
+Original Wacki: Kosmiczna rozgrywka game data files are not part of the
+upstream GPL-3.0-or-later engine license and are not redistributed by this
+PKGBUILD.
+
+The package builder must provide those files locally from an original copy of
+the game. The resulting local package embeds sections from WACKI.EXE and may
+include Dane_*.dta files. Redistribution of the built package may be restricted
+by the original game's license.

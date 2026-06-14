@@ -1,0 +1,35 @@
+# Wacki Arch Package
+
+This PKGBUILD intentionally does not download or redistribute original
+Wacki: Kosmiczna rozgrywka game files. Upstream ships GPL engine code only.
+
+Before running `makepkg`, create a local source archive named
+`wacki-data.tar.gz` next to this PKGBUILD. The archive must contain:
+
+- `WACKI.EXE`
+- `dane_*.dta`
+
+Recommended command:
+
+```sh
+mkdir -p wacki-data
+cp /path/to/original-disc/WACKI.EXE wacki-data/
+cp /path/to/original-disc/dane_*.dta wacki-data/
+bsdtar -czf wacki-data.tar.gz -C wacki-data .
+makepkg -si
+```
+
+The fixed archive name is deliberate: makepkg source files must be URLs or
+files available in the PKGBUILD directory, and one local archive avoids fragile
+`dane_*.dta` glob handling in package metadata.
+
+The built package embeds the required sections from `WACKI.EXE` into the engine
+binary and installs the data files as canonical `Dane_NN.dta` names under
+`/usr/share/wacki/data`. This works around upstream v1.0.4 not probing fully
+lowercase `dane_*.dta` on case-sensitive filesystems. Do not redistribute the
+built package unless your original game license permits that.
+
+The `/usr/bin/wacki` launcher stores `Wacki.sav`, `wacki.cfg`, logs, and
+screenshots under `${XDG_DATA_HOME:-~/.local/share}/wacki`. It sets
+`WACKI_PATH=/usr/share/wacki/data` unless you already provided `WACKI_PATH`.
+Set `WACKI_USER_DIR` to use a different writable directory.
