@@ -1,6 +1,6 @@
 pkgbase = hstry
 	pkgdesc = Universal AI chat history database with full-text search
-	pkgver = 0.5.19
+	pkgver = 0.5.20
 	pkgrel = 1
 	url = https://github.com/byteowlz/hstry
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = hstry
 	depends = sqlite
 	optdepends = bash: for shell completions
 	optdepends = zsh: for shell completions
-	source_x86_64 = hstry-0.5.19.tar.gz::https://github.com/byteowlz/hstry/releases/download/v0.5.19/hstry-v0.5.19-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = f45856639e88d560052a1eec9f2c658335696bdead8a4537a3d07c93afbabd28
-	source_aarch64 = hstry-0.5.19.tar.gz::https://github.com/byteowlz/hstry/releases/download/v0.5.19/hstry-v0.5.19-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 82fdf14ce1c3094f6a47285be95bacb981f901a5397dd97ef5328d4ac9c57260
+	source_x86_64 = hstry-0.5.20.tar.gz::https://github.com/byteowlz/hstry/releases/download/v0.5.20/hstry-v0.5.20-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 77cb4ed23dec1979c782a19e1c77a427576579f7857f0b349bb3982ce2de45b3
+	source_aarch64 = hstry-0.5.20.tar.gz::https://github.com/byteowlz/hstry/releases/download/v0.5.20/hstry-v0.5.20-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6909cade997b7c19f091502135296d1727fd0a632fc3a95b3fcf247caf7aeb72
 
 pkgname = hstry
