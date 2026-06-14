@@ -1,7 +1,7 @@
 # Maintainer: @aardbol
 pkgname=picocrypt-ng-bin
 pkgver=2.14
-pkgrel=2
+pkgrel=3
 pkgdesc="A very small, very simple, yet very secure encryption tool. (GUI)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Picocrypt-NG/Picocrypt-NG"
@@ -19,11 +19,11 @@ source_aarch64=(
 )
 sha256sums_x86_64=(
   'a67519e14987ccd474c8f2cc9615860849feac8ff984565b9884681f5faad035'
-  '2ae09e4e9d6a6c32f882dcbd2e339a85f9d53adc7fa8050fdeb1b45ab47ede34'
+  'd06954953bafc0fd9bb5edf609dff65ec0f0d95d971d096df7d72abe6e830e99'
 )
 sha256sums_aarch64=(
   '6bd678bb2ebb57e6cd4985f56f57f623065b4397efe2b13bce57ee7f948f3620'
-  '2ae09e4e9d6a6c32f882dcbd2e339a85f9d53adc7fa8050fdeb1b45ab47ede34'
+  'd06954953bafc0fd9bb5edf609dff65ec0f0d95d971d096df7d72abe6e830e99'
 )
 
 package() {
