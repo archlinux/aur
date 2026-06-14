@@ -1,0 +1,38 @@
+From 9eb38be2181c002b42030092de2ef8177f3d4b71 Mon Sep 17 00:00:00 2001
+From: Toria <ninetailedtori@uwu.gal>
+Date: Sun, 14 Jun 2026 06:52:22 +0100
+Subject: [PATCH] Add arch to distro matrix.
+
+Signed-off-by: Toria <ninetailedtori@uwu.gal>
+---
+ .github/workflows/global-vars.yml | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/.github/workflows/global-vars.yml b/.github/workflows/global-vars.yml
+index 51dfbe346..aaff28b9b 100644
+--- a/.github/workflows/global-vars.yml
++++ b/.github/workflows/global-vars.yml
+@@ -75,7 +75,7 @@ jobs:
+           echo "userspace-artifact-name=$USERSPACE_ARTIFACT_NAME" >> $GITHUB_OUTPUT
+           echo "setools-artifact-name=$SETOOLS_ARTIFACT_NAME" >> $GITHUB_OUTPUT
+           build_matrix='{
+-            "distro": ["redhat", "debian", "gentoo"],
++            "distro": ["redhat", "debian", "gentoo", "arch"],
+             "type": ["standard", "mcs", "mls"],
+             "monolithic": ["y", "n"],
+             "systemd": ["y", "n"],
+@@ -87,7 +87,10 @@ jobs:
+               {"distro": "debian", "systemd": "n"},
+               {"distro": "debian", "direct_initrc": "y"},
+               {"type": "mls", "apps-off": ""},
+-              {"systemd": "y", "direct_initrc": "y"}
++              {"systemd": "y", "direct_initrc": "y"},
++              {"distro": "arch", "systemd": "n"},
++              {"distro": "arch", "direct_initrc": "y"},
++              {"distro": "arch", "apps-off": "unconfined"}
+             ]
+           }'
+           echo "build-matrix=$(echo $build_matrix | jq -c .)" >> $GITHUB_OUTPUT
+-- 
+2.54.0
+
