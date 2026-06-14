@@ -3,8 +3,8 @@
 pkgname=pilauncher-bin
 _pkgname=pilauncher
 _appname=PiLauncher
-pkgver=0.1.32
-pkgrel=2
+pkgver=0.1.41
+pkgrel=1
 pkgdesc='Modern gamepad-friendly Minecraft launcher built with Tauri (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/MrShellad/pilauncher'
@@ -14,12 +14,12 @@ provides=('pilauncher')
 conflicts=('pilauncher')
 options=('!strip')
 source=(
-  "${_appname}_${pkgver}_amd64.AppImage::https://github.com/MrShellad/pilauncher/releases/download/v0.1.32/PiLauncher_0.1.32_amd64.AppImage"
+  "${_appname}_${pkgver}_amd64.AppImage::https://github.com/MrShellad/pilauncher/releases/download/v0.1.41/PiLauncher_0.1.41_amd64.AppImage"
   'LICENSE'
 )
 noextract=("${_appname}_${pkgver}_amd64.AppImage")
 sha256sums=(
-  '4f1abd397d322749a266d493a6bd09562fb557c52a137e2ebfbe05ba77080a7d'
+  'e350add69ec7a558202db5f249a136619ed2a8f8377d56ac675cba4fafbf1225'
   '7157f59f7e954221b7d3d5754c2f963881620ec0490152720493133ea0afb6f8'
 )
 
@@ -66,7 +66,7 @@ StartupNotify=true
 StartupWMClass=PiLauncher
 Categories=Game;
 Keywords=Minecraft;Launcher;PiLauncher;
-X-AppImage-Version=0.1.32
+X-AppImage-Version=0.1.41
 DESKTOP
 
   while IFS= read -r icon_source; do

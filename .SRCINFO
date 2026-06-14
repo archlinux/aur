@@ -1,7 +1,7 @@
 pkgbase = pilauncher-bin
 	pkgdesc = Modern gamepad-friendly Minecraft launcher built with Tauri (prebuilt binary)
-	pkgver = 0.1.32
-	pkgrel = 2
+	pkgver = 0.1.41
+	pkgrel = 1
 	url = https://github.com/MrShellad/pilauncher
 	arch = x86_64
 	license = custom
@@ -15,11 +15,11 @@ pkgbase = pilauncher-bin
 	depends = webkit2gtk-4.1
 	provides = pilauncher
 	conflicts = pilauncher
-	noextract = PiLauncher_0.1.32_amd64.AppImage
+	noextract = PiLauncher_0.1.41_amd64.AppImage
 	options = !strip
-	source = PiLauncher_0.1.32_amd64.AppImage::https://github.com/MrShellad/pilauncher/releases/download/v0.1.32/PiLauncher_0.1.32_amd64.AppImage
+	source = PiLauncher_0.1.41_amd64.AppImage::https://github.com/MrShellad/pilauncher/releases/download/v0.1.41/PiLauncher_0.1.41_amd64.AppImage
 	source = LICENSE
-	sha256sums = 4f1abd397d322749a266d493a6bd09562fb557c52a137e2ebfbe05ba77080a7d
+	sha256sums = e350add69ec7a558202db5f249a136619ed2a8f8377d56ac675cba4fafbf1225
 	sha256sums = 7157f59f7e954221b7d3d5754c2f963881620ec0490152720493133ea0afb6f8
 
 pkgname = pilauncher-bin
