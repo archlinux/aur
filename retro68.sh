@@ -1,2 +1,3 @@
 #!/bin/sh
-export PATH="$PATH:/opt/retro68/bin"
+export RETRO68_ROOT="/opt/retro68"
+export PATH="$PATH:$RETRO68_ROOT/bin"

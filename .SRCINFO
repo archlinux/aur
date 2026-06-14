@@ -1,7 +1,7 @@
 pkgbase = retro68-git
 	pkgdesc = Cross-platform classic Macintosh 68k and PowerPC toolchain
 	pkgver = r1182.335fa54f6d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/autc04/Retro68
 	arch = x86_64
 	license = GPLv3
@@ -24,6 +24,6 @@ pkgbase = retro68-git
 	source = retro68.sh
 	md5sums = SKIP
 	md5sums = 3f32f16d1e3b972e4a8b91ff6fd1406f
-	md5sums = 2a9b1aa4c7f3f30d42bc7587ab75824c
+	md5sums = 1b2aa328b29c63cb7376c5fb136b7153
 
 pkgname = retro68-git

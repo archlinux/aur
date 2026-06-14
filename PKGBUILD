@@ -5,7 +5,7 @@ _commit=HEAD
 _pkgname=Retro68
 pkgname=${_pkgname,,}-git
 pkgver=r1182.335fa54f6d
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform classic Macintosh 68k and PowerPC toolchain"
 arch=('x86_64')
 url="https://github.com/autc04/${_pkgname}"
@@ -19,7 +19,7 @@ source=("git+$url#commit=$_commit"
 
 md5sums=('SKIP'
          '3f32f16d1e3b972e4a8b91ff6fd1406f'
-         '2a9b1aa4c7f3f30d42bc7587ab75824c')
+         '1b2aa328b29c63cb7376c5fb136b7153')
 options=('!strip' '!debug' '!lto')
 
 pkgver() {
@@ -49,4 +49,13 @@ package() {
   mv toolchain "${pkgdir}/opt/retro68"
   mv "${srcdir}/${_pkgname}/Samples" "${pkgdir}/opt/retro68/examples"
   install -m 755 "${srcdir}/retro68.sh" "${pkgdir}/opt/retro68/retro68.sh"
+
+  local build_prefix="${srcdir}/${_pkgname}-build/toolchain"
+  local target_prefix="/opt/retro68"
+  local install_root="${pkgdir}${target_prefix}"
+  local f
+
+  while IFS= read -r -d '' f; do
+    sed -i "s|${build_prefix}|${target_prefix}|g" "$f"
+  done < <(grep -rlZ --binary-files=without-match -- "${build_prefix}" "${install_root}")
 }
