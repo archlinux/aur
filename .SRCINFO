@@ -1,6 +1,6 @@
 pkgbase = python-gemmi
 	pkgdesc = macromolecular crystallography library (Python bindings)
-	pkgver = 0.7.3
+	pkgver = 0.7.5
 	pkgrel = 2
 	url = https://gemmi.readthedocs.io/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-gemmi
 	makedepends = python-wheel
 	depends = python
 	depends = python-numpy
-	source = https://github.com/project-gemmi/gemmi/archive/refs/tags/v0.7.3.tar.gz
-	sha256sums = ed5e1d0665f27d623d877fa36f6c99a5de21310cc8715337ff9f6b545bd2e9d3
+	source = https://github.com/project-gemmi/gemmi/archive/refs/tags/v0.7.5.tar.gz
+	sha256sums = 9e2a8a51e62c69bf43f62aadf527ca4312860de8a36c12a8747d3e8ae556f0b3
 
 pkgname = python-gemmi

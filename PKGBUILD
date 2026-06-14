@@ -1,7 +1,7 @@
 # Maintainer: Standa Lukeš <archpkg@exyi.cz>
 _pyname="gemmi"
 pkgname="python-${_pyname}"
-pkgver=0.7.3
+pkgver=0.7.5
 pkgrel=2
 pkgdesc="macromolecular crystallography library (Python bindings)"
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=(nanobind cmake python-scikit-build-core python-build python-install
 depends=(python python-numpy)
 checkdepends=()
 source=("https://github.com/project-gemmi/${_pyname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ed5e1d0665f27d623d877fa36f6c99a5de21310cc8715337ff9f6b545bd2e9d3')
+sha256sums=('9e2a8a51e62c69bf43f62aadf527ca4312860de8a36c12a8747d3e8ae556f0b3')
 
 build() {
     cd "${_pyname}-${pkgver}"
