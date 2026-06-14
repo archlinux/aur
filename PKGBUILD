@@ -1,9 +1,5 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Noah Heller <softwareenginer@pm.me>
+# Maintainer: manganeese <mangoiscute95@gmail.com>
+# Contributor: Noah Heller <softwareenginer@pm.me>
 _emsdk=4.0.12
 pkgname=advantagescope-git
 pkgver=26.0.2.r60.gc550d0de
