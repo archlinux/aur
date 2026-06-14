@@ -21,7 +21,7 @@
 # meta-package so that it would render *any* text at all.
 
 pkgname=seihou-shuusou-gyoku
-pkgver=P0326
+pkgver=P0341
 pkgrel=1
 pkgdesc='First game of the Seihou project; ReC98 source port, engine only'
 arch=('x86_64' 'i686')
@@ -48,7 +48,7 @@ optdepends=(
 	"ttf-ipa-mona: Free Japanese bitmap font, metric-compatible with the original game's MS Gothic"
 	"ttf-ms-win11-auto-japanese: Extracts MS Gothic from a Windows 11 ISO"
 )
-source=("git+https://github.com/nmlgc/ssg.git#tag=P0326")
+source=("git+https://github.com/nmlgc/ssg.git#tag=P0341")
 b2sums=('SKIP')
 _skel=/usr/share/$pkgname/skel
 
@@ -66,7 +66,7 @@ build() {
 	#   matches `makepkg`'s unconditional checkout of the main repo.
 	git submodule update
 
-	LFLAGS="$LDFLAGS" ./build_linux.sh "bin/GIAN07"
+	./build_linux.sh "bin/GIAN07" "bin/ssg_cli"
 }
 
 package() {
