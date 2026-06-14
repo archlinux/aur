@@ -1,6 +1,6 @@
 # Maintainer: Kostiantyn Kushnir <chpock@gmail.com>
 pkgname=gen-commit-msg-git
-pkgver=0.0.2.r145.g0cd2d69
+pkgver=0.0.3.r150.g1ebcb85
 pkgrel=1
 pkgdesc="Generate git commit message candidates from staged changes (git version)"
 arch=('x86_64' 'aarch64')
@@ -32,6 +32,13 @@ pkgver() {
 build() {
     cd "gen-commit-msg"
     local tag commits hash build_version
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
     tag=$(git describe --tags --abbrev=0 2>/dev/null || true)
     commits=$(git rev-list --count HEAD)
     hash=$(git rev-parse --short HEAD)
@@ -42,7 +49,7 @@ build() {
         build_version="0.0.0+${commits}.g${hash}"
     fi
 
-    go build -ldflags "-X main.version=${build_version}" -o gen-commit-msg ./cmd/gen-commit-msg
+    go build -ldflags "-linkmode=external -X main.version=${build_version}" -o gen-commit-msg ./cmd/gen-commit-msg
 }
 
 package() {
