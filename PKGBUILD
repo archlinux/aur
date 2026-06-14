@@ -1,7 +1,7 @@
 pkgname=azsh
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="Access Azure Cloud Shell directly from your terminal"
+pkgdesc="A CLI client for Azure Cloud Shell."
 arch=('x86_64')
 url="https://github.com/ayanrajpoot10/azsh"
 license=('MIT')
@@ -12,7 +12,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('e299a5a000438739f934e3fcac70f00ae03843e905450dd0855b320869d949ca')
+sha256sums=('6c5ae84a3f4727b8703f5d6cd58b4355abc554a15684d6a5b3e4e8aa0ec20838')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
