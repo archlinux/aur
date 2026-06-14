@@ -1,7 +1,7 @@
 # Maintainer: PenguinBurner contributors
 
 pkgname=penguin-burner
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc='NVIDIA GPU automatic undervolting and fine tuning tool'
 arch=('x86_64')
