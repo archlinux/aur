@@ -1,5 +1,5 @@
 pkgname=8bitdo-pro2-a-mode-hid-daemon
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='8BitDo Pro 2 A-mode Bluetooth HID to uinput daemon'
 arch=('any')
