@@ -1,7 +1,7 @@
 pkgbase = roland-git
 	pkgdesc = A simple touch gesture recognizer for Linux, built on top of the input crate.
 	pkgver = 0.1.0.r14.g78351b9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oknozor/roland
 	arch = x86_64
 	arch = aarch64
