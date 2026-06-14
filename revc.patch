@@ -1,0 +1,65 @@
+--- src/bin/io/demuxer/y4m.rs	2026-06-14 20:01:02.582987979 +0200
++++ src/bin/io/demuxer/y4m.rs	2026-06-14 20:15:36.938083251 +0200
+@@ -78,11 +78,9 @@
+     use crate::ChromaSampling::*;
+     use y4m::Colorspace::*;
+     match color_space {
+-        Cmono => Cs400,
+-        C420jpeg | C420paldv => Cs420,
+-        C420mpeg2 => Cs420,
+-        C420 | C420p10 | C420p12 => Cs420,
++        C420 | C420jpeg | C420p10 | C420p12 => Cs420,
+         C422 | C422p10 | C422p12 => Cs422,
+         C444 | C444p10 | C444p12 => Cs444,
++        _ => Cs444,
+     }
+ }
+--- src/enc/mod.rs	2026-06-14 20:01:02.583834690 +0200
++++ src/enc/mod.rs	2026-06-14 20:12:33.852301656 +0200
+@@ -32,7 +32,7 @@
+ use crate::tracer::{Tracer, OPEN_TRACE};
+ use std::cell::RefCell;
+ use std::rc::Rc;
+-use thiserror::private::DisplayAsDisplay;
++//use thiserror::private::DisplayAsDisplay;
+ 
+ /* support RDOQ */
+ pub(crate) const SCALE_BITS: usize = 15; /* Inherited from TMuC, pressumably for fractional bit estimates in RDOQ */
+--- Cargo.toml	2026-06-14 20:01:02.546375482 +0200
++++ Cargo.toml	2026-06-14 20:14:03.308109815 +0200
+@@ -26,22 +26,22 @@
+ [dependencies]
+ log = "0.4"
+ num-traits = "0.2"
+-num-derive = "0.3"
+-lazy_static = "1.4.0"
+-thiserror = "1.0"
+-cfg-if = "0.1"
++num-derive = "0.4"
++lazy_static = "1.5.0"
++thiserror = "2.0"
++cfg-if = "1.0"
+ #noop_proc_macro = "0.3.0"
+-clap = { version = "2", optional = true, default-features = false }
+-y4m = { version = "0.6", optional = true }
++clap = { version = "2.33", optional = true, default-features = false }
++y4m = { version = "0.8", optional = true }
+ 
+ [dev-dependencies]
+-assert_cmd = "1.0"
+-criterion = "0.3"
+-pretty_assertions = "0.6"
+-interpolate_name = "0.2.2"
+-rand = "0.7"
+-rand_chacha = "0.2"
+-semver = "0.10"
++assert_cmd = "2.2"
++criterion = "0.8"
++pretty_assertions = "1.4"
++interpolate_name = "0.2"
++rand = "0.10"
++rand_chacha = "0.10"
++semver = "1.0"
+ 
+ [[bin]]
+ name = "revcd"

@@ -1,0 +1,16 @@
+pkgbase = revc-encoder-git
+	pkgdesc = Rust EVC (MPEG-5) encoder/decoder
+	pkgver = 0.2.0.r93.gee865ee
+	pkgrel = 1
+	url = https://github.com/revcx/revc.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	source = git+https://github.com/revcx/revc.git
+	source = revc.patch
+	sha256sums = SKIP
+	sha256sums = 19473672871409428dc080890f703e19ba737c4b0e7815059f9361ee3a0eb2f2
+
+pkgname = revc-encoder-git
