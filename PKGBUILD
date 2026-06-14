@@ -1,6 +1,6 @@
 # Maintainer: metaneutrons
 pkgname=snapdog-client
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="SnapDog multiroom audio client with F32+LZ4 codec, parametric EQ, and encryption"
 arch=('x86_64' 'aarch64')
