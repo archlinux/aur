@@ -2,7 +2,7 @@
 
 pkgname=unused-pkg-remover
 pkgver=1.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="GUI tool to find and remove unused Arch Linux packages — orphans, pacman cache, Flatpak runtimes, broken packages, AUR build deps, Steam/Proton junk, and more"
 arch=('any')
 url="https://github.com/dressedinblack5/unused-pkg-remover"
