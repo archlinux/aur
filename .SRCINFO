@@ -19,4 +19,3 @@ pkgbase = fastflowlm-gtk
 	sha256sums = 8c8647d0aee53599e7c6848bc2f1ecc0104796dfd2784c801de72923f61f4cbb
 
 pkgname = fastflowlm-gtk
-
