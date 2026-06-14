@@ -2,8 +2,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=oxiclean
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Fast Cross-Distribution Linux System Cleaner written in Rust"
 arch=('x86_64')
 url="https://github.com/croaky-fx/oxiclean"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha256sums=('b469f92c517294e9520bd57329977981b2ca73032e40002714bd96d286d7f7a9')
+sha256sums=('SKIP')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
