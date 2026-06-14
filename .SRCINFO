@@ -1,0 +1,23 @@
+pkgbase = bigtube-bin
+	pkgdesc = Universal Multimedia Downloader (GTK4/libadwaita + GStreamer)
+	pkgver = 2.0.66
+	pkgrel = 1
+	url = https://github.com/eltonfabricio10/python-bigtube
+	arch = x86_64
+	license = MIT
+	depends = gtk4
+	depends = libadwaita
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugin-gtk4
+	depends = yt-dlp
+	optdepends = ffmpeg: audio extraction and media conversion
+	provides = bigtube
+	conflicts = bigtube
+	conflicts = bigtube-rs
+	source = bigtube-2.0.66-x86_64.tar.gz::https://github.com/eltonfabricio10/python-bigtube/releases/download/v2.0.66/bigtube-2.0.66-x86_64.tar.gz
+	sha256sums = c812a2f4f2f1776497d92cfdf2012de65b9945608f338ac58d6122f2ddff1a4a
+
+pkgname = bigtube-bin
