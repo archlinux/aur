@@ -1,6 +1,6 @@
 pkgbase = concord-bin
 	pkgdesc = A feature-rich TUI client for Discord
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/chojs23/concord
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = concord-bin
 	provides = concord
 	conflicts = concord
 	options = !strip
-	source_x86_64 = concord-x86_64-2.2.1.txz::https://github.com/chojs23/concord/releases/download/v2.2.1/concord-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 5babb296e5eadd2c5ef23ce08b3e41353aeafddeb98d3e8df1698f7dc41fcbde
-	source_aarch64 = concord-aarch64-2.2.1.txz::https://github.com/chojs23/concord/releases/download/v2.2.1/concord-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = b0e76eeb9df5056a34b43628a85106ba018e90dfadf5944fca84de251efe5b57
+	source_x86_64 = concord-x86_64-2.2.2.txz::https://github.com/chojs23/concord/releases/download/v2.2.2/concord-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 2bdb3782a65178a07fa8289a693e9f3638842ede2be1e5f33f04df65ba15f93b
+	source_aarch64 = concord-aarch64-2.2.2.txz::https://github.com/chojs23/concord/releases/download/v2.2.2/concord-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 69b0e4cf59f47f30f72d6e242c00f450a422ef9084844cfa3b45976ce33d74c4
 
 pkgname = concord-bin
