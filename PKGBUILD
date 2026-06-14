@@ -8,10 +8,10 @@ pkgdesc='A small Python library created to help developers protect their applica
 arch=('any')
 url='https://github.com/gradio-app/groovy'
 license=('Apache-2.0')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('25c1dc09b3f9d7e292458aa762c6beb96ea037071bf5e917fc81fb78d2231083')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('25c1dc09b3f9d7e292458aa762c6beb96ea037071bf5e917fc81fb78d2231083')
 
 build() {
   cd "${srcdir}"/$_name-$pkgver
