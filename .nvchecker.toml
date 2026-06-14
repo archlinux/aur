@@ -1,0 +1,5 @@
+[precice-adapter-schema]
+source = "github"
+github = "precice/adapter-schema"
+use_max_tag = "true"
+prefix = "v"

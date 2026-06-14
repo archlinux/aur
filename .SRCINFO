@@ -1,0 +1,17 @@
+pkgbase = precice-adapter-schema
+	pkgdesc = Validation utility for preCICE adapter configurations
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/precice/adapter-schema
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-git-versioning
+	makedepends = git
+	depends = python-jsonschema
+	source = git+https://github.com/precice/adapter-schema.git#tag=v0.4.1
+	sha512sums = 4e323a81eece9b3a4583199ff194f186c75256e8eaed9af245550b005861a9281269d2e840edd6ef0efe3e00955f5262c1408d3ce7782e21b467e8508c7b998f
+
+pkgname = precice-adapter-schema
