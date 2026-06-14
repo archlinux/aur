@@ -1,15 +1,15 @@
 # Maintainer: Carl Klemm <carl@uvos.xyz>
 
 pkgname=lovr
-pkgver=0.18.0
-pkgrel=3
+pkgver=0.19.0
+pkgrel=1
 pkgdesc='Lua Virtual Reality Framework, a VR game engine'
 arch=('x86_64')
 url='https://lovr.org/'
 license=('MIT')
 depends=('glibc' 'libgcc' 'libx11' 'libstdc++' 'glfw' 'luajit' 'openxr')
 makedepends=('git' 'cmake' 'glslang')
-source=("git+https://github.com/bjornbytes/lovr.git#tag=v0.18.0"
+source=("git+https://github.com/bjornbytes/lovr.git#tag=v0.19.0"
         "Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers"
         "joltc::git+https://github.com/amerkoleci/joltc"
         "lovr-http::git+https://github.com/bjornbytes/lovr-http"
