@@ -10,7 +10,7 @@ license=('MIT')
 options=(!lto)
 makedepends=('cargo' 'git')
 source=("${pkgname}-${pkgver}::git+${url}.git#tag=${pkgver}")
-md5sums=('21ff67fd9d2c947d3db1b02d1b0bdb1c')
+md5sums=('f4cd94c0bb01367f7954f96bc14db5f8')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
