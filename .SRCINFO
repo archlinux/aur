@@ -1,15 +1,16 @@
 pkgbase = betterleaks
 	pkgdesc = Go-based secret scanner offering CEL rule evaluation and Gitleaks compatibility
-	pkgver = 1.3.0
+	pkgver = VERSION
 	pkgrel = 2
 	url = https://github.com/betterleaks/betterleaks
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = go
 	makedepends = git
+	makedepends = go
+	makedepends = jq
 	depends = glibc
-	source = git+https://github.com/betterleaks/betterleaks.git#tag=v1.3.0
+	source = git+https://github.com/betterleaks/betterleaks.git
 	sha256sums = SKIP
 
 pkgname = betterleaks

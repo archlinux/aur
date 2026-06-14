@@ -1,34 +1,62 @@
 # Maintainer: Wabuo <Spam [.] Wabuo [at] GoogleMail [.] Com>
 
 pkgname=betterleaks
-pkgver=1.3.0
+pkgver=VERSION # This will be automatically updated by makepkg via pkgver()
 pkgrel=2
 pkgdesc="Go-based secret scanner offering CEL rule evaluation and Gitleaks compatibility"
 arch=('x86_64' 'aarch64')
 url="https://github.com/betterleaks/betterleaks"
 license=('MIT')
 depends=('glibc')
-makedepends=('go' 'git')
-source=("git+$url.git#tag=v$pkgver")
+makedepends=('git' 'go' 'jq')
+# Pull the repository head directly so pkgver() can run against the latest state
+source=("git+$url.git")
 sha256sums=('SKIP')
 
-prepare() {
-  cd "$pkgname"
-  export GOPATH="${srcdir}/gopath"
-  go mod download
+pkgver() {
+  local owner="betterleaks"
+  local repo="betterleaks"
+  local latest_tag
+
+  # Filters for the first entry where "prerelease" is false and "draft" is false
+  latest_tag=$(curl -s "https://api.github.com/repos/${owner}/${repo}/releases" | \
+    jq -r 'map(select(.prerelease == false and .draft == false)) | .[0].tag_name' 2>/dev/null)
+
+  if [[ -n "$latest_tag" && "$latest_tag" != "null" ]]; then
+    # Strip leading 'v' if present to follow Arch versioning guidelines
+    latest_tag="${latest_tag#v}"
+    # Clean the version number for PKGBUILD standard (replaces hyphens with underscores)
+    printf "%s" "${latest_tag//-/_}"
+  else
+    # Fail loud and hard if the API call fails or returns nothing
+    echo "Error: Could not fetch the latest stable release tag from GitHub API." >&2
+    echo "FATAL: Something went horribly wrong!"
+    exit 1
+  fi
 }
+
+#prepare() {
+#  cd "$pkgname"
+#
+#  # Checkout the exact tag we just discovered in pkgver()
+#  # We re-prepend 'v' here since the actual git tags on GitHub use the 'v' prefix
+#  git checkout "v$pkgver"
+#
+#  export GOPATH="${srcdir}/gopath"
+#  go mod download
+#}
 
 build() {
   cd "$pkgname"
 
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOPATH="${srcdir}/gopath"
-  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
+# --------- This should be in prepare() but prepare runns before pkgver so it wont work -------
+  # Checkout the exact tag we just discovered in pkgver()
+  # We re-prepend 'v' here since the actual git tags on GitHub use the 'v' prefix
+  git checkout "v$pkgver"
+echo "after git checkout"
+# --------------------
 
-  go build -ldflags "-compressdwarf=false -linkmode external" -o "$pkgname" .
+make build
 }
 
 package() {
