@@ -1,7 +1,7 @@
 # Maintainer: Pablo Pascual <pablocpascual@gmail.com>
 
 pkgname=tiri
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A tiling Wayland compositor derived from niri'
 arch=('x86_64')
@@ -46,8 +46,8 @@ source=(
   "${pkgname}-${pkgver}-vendored-dependencies.tar.xz::${url}/releases/download/${pkgname}-v${pkgver}/${pkgname}-${pkgver}-vendored-dependencies.tar.xz"
 )
 b2sums=(
-  'f04dc92b75bb15de26f841e1b26d73a853c5bfc7a9defdddc461adea1ee2e7accc761f7423562d80c72fbfad85306fe257bbb31ab70bf7e13fd5cd25b571283d'
-  'e89bf8271e68c84a33ab633e2a6aba5c43c7ba76393e77935cbc893ad34750fe5042b0c1b7c99bb5098b3d883cf1ad859b3054c81ff728473e978eeb0442a377'
+  'e8c2c2c5a0d6bb47d1a653b5eed61ac79d39eaa76427af84b8fa2ea98bd0bf3dc375df3a54c775bab641e035d44aa8de7b3f09451678888c64555762bb095511'
+  '318f39b2d5a0158e576c443f3b38149c1e59207a4dbe697c841b1e2e0784b5dc59e40b9613ab5023fcd09d8336ea69df25fa3b23861045fdc104fa7dea054f27'
 )
 
 prepare() {
