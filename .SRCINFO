@@ -1,6 +1,6 @@
 pkgbase = vopono-gui-bin
 	pkgdesc = Graphical frontend for vopono
-	pkgver = 0.10.17
+	pkgver = 0.10.18
 	pkgrel = 1
 	url = https://github.com/jamesmcm/vopono
 	arch = x86_64
@@ -12,8 +12,12 @@ pkgbase = vopono-gui-bin
 	depends = xdotool
 	provides = vopono-gui
 	conflicts = vopono-gui
-	noextract = vopono-gui-0.10.17
-	source_x86_64 = vopono-gui-0.10.17::https://github.com/jamesmcm/vopono/releases/download/0.10.17/vopono-gui_0.10.17_linux_x86-64_gcc
-	sha256sums_x86_64 = 30406e6f1e9b06a74cc50df4a19b5586f827ef634e404dd117fc31e6a38cafa6
+	noextract = vopono-gui-0.10.18
+	source = vopono-gui.desktop::https://github.com/jamesmcm/vopono/raw/0.10.18/vopono-gui/vopono-gui.desktop
+	source = vopono-gui.png::https://github.com/jamesmcm/vopono/raw/0.10.18/vopono-gui/logos/badge.png
+	sha256sums = 1d3abd9b82e6f787878ab55a853b14ae55ecdeafb517c76ea1dff46700bb92dd
+	sha256sums = 53e20a4e1c3a3f1486cc05ae9cd19cbe1d9d3f92ed1e0445b4dfd45f7844d137
+	source_x86_64 = vopono-gui-0.10.18::https://github.com/jamesmcm/vopono/releases/download/0.10.18/vopono-gui_0.10.18_linux_x86-64_gcc
+	sha256sums_x86_64 = eb96a1a9df90458d8b4d12c116f18a2b729f147d2e7697e26748331a67af398e
 
 pkgname = vopono-gui-bin
