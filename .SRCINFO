@@ -1,0 +1,16 @@
+pkgbase = datalink-bin
+	pkgdesc = Decode aviation datalink traffic from payloads, SDR, files, and Airframes.io
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/xoolive/datalink
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = datalink
+	conflicts = datalink
+	source_x86_64 = datalink-0.2.0-x86_64-unknown-linux-gnu.tar.xz::https://github.com/xoolive/datalink/releases/download/datalink-v0.2.0/datalink-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 815f6f58748c5a2f0d6dc18b982bd4577de258104a1ebd537019329480bced37
+	source_aarch64 = datalink-0.2.0-aarch64-unknown-linux-gnu.tar.xz::https://github.com/xoolive/datalink/releases/download/datalink-v0.2.0/datalink-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 9b8164e72800de4611fa0e41ef02cc207d23adf82456cd3b57f3f1c7c609cc3e
+
+pkgname = datalink-bin
