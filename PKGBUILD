@@ -3,8 +3,8 @@
 
 pkgname=astromenace-git
 _pkgname=astromenace
-pkgver=v1.4.1.r23.g647f9017
-pkgrel=2
+pkgver=v1.4.3.r5.g0cfdad36
+pkgrel=1
 pkgdesc="The latest version of hardcore 3D space shooter with spaceship upgrade possibilities - git version"
 arch=('x86_64')
 url="http://www.viewizard.com/astromenace/index_linux.php"
