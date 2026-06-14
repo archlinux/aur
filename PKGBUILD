@@ -7,7 +7,7 @@
 pkgname=xp-pen-tablet
 pkgver=4.0.15
 _vendor_rel=260422
-pkgrel=${_vendor_rel}.1
+pkgrel=${_vendor_rel}.2
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
 url='https://www.xp-pen.com/download/index.html'
@@ -23,6 +23,10 @@ prepare() {
 
 package() {
        cp -dr --no-preserve=ownership usr  ${pkgdir}/
+       # per-user tempdir for manual launches (.desktop -> PenTablet.sh): keep Qt's
+       # single-instance socket+lockfile in /run/user/UID so parallel logins don't collide
+       # on a shared /tmp lockfile. The systemd service sets TMPDIR=%t; ${TMPDIR:-...} respects it.
+       sed -i '/export LD_LIBRARY_PATH/a if [ -n "$XDG_RUNTIME_DIR" ]; then export TMPDIR="${TMPDIR:-$XDG_RUNTIME_DIR}"; fi' "${pkgdir}/usr/lib/pentablet/PenTablet.sh"
        # conf files: set ownership and permissions for pre-existing files at install time.
        # new files created by the app at runtime inherit group via setgid on the directory (see tmpfiles.d below).
        chown root:users "${pkgdir}"/usr/lib/pentablet/conf/xppen/*
@@ -55,6 +59,9 @@ After=xdg-desktop-autostart.target
 
 [Service]
 Environment=QT_QPA_PLATFORM=xcb
+# per-user tempdir (/run/user/UID): QtSingleApplication keeps its socket+lockfile here,
+# so parallel logins don't collide on a shared /tmp lockfile (see qtsingleapp-* handling)
+Environment=TMPDIR=%t
 ExecStart=/usr/lib/pentablet/PenTablet.sh /mini
 
 [Install]

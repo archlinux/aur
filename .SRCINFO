@@ -1,7 +1,7 @@
 pkgbase = xp-pen-tablet
 	pkgdesc = XP-Pen (Official) Linux utility (New UI driver)
 	pkgver = 4.0.15
-	pkgrel = 260422.1
+	pkgrel = 260422.2
 	url = https://www.xp-pen.com/download/index.html
 	install = xp-pen-tablet.install
 	arch = x86_64
