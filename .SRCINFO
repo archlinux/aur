@@ -1,0 +1,18 @@
+pkgbase = python-hf-gradio
+	pkgdesc = An extension of the Hugging Face CLI for interacting with Gradio Spaces and Apps.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/gradio-app/hf-gradio
+	arch = any
+	license = Apache-2.0
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-typer
+	depends = python-gradio-client
+	source = https://files.pythonhosted.org/packages/source/h/hf-gradio/hf_gradio-0.4.1.tar.gz
+	sha256sums = a017d942618f0d495a58ee4563047fa04bef614c00e0cb789a9a6d0633cffa7b
+
+pkgname = python-hf-gradio
