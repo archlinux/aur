@@ -1,0 +1,16 @@
+pkgbase = grit-cli
+	pkgdesc = LLM coded port of git to Rust
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://grit-scm.com
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	conflicts = grit
+	options = !lto
+	source = grit-0.4.7.tar.gz::https://github.com/gitbutlerapp/grit/archive/v0.4.7.tar.gz
+	sha256sums = 2064ce95e3e824f632ac210dc8f4dfc0315eeadf99f8e77134515b30c31c868f
+
+pkgname = grit-cli
