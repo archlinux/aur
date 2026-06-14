@@ -1,7 +1,7 @@
 pkgbase = matlab-support
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = R2026a+26.1.9.9999999
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://www.mathworks.com/products/matlab.html
 	arch = any
@@ -10,12 +10,14 @@ pkgbase = matlab-support
 
 pkgname = matlab-support
 	pkgdesc = A high-level language for numerical computation and visualization (support)
+	install = matlab-support.install
 	depends = matlab-meta>=R2026a
 	depends = matlab-jre-common>=R2026a
 	optdepends = matlab-meta-all: all runtime dependencies
 	optdepends = matlab-jre-meta: JRE runtime dependency
 	optdepends = matlab-gcc-support: GCC runtime dependency
 	optdepends = matlab-gcc-fortran-support: GCC Fortran runtime dependency
+	optdepends = patchelf: fix a segfault during activation and/or offline usage
 	provides = matlab=R2026a+26.1.9.9999999
 	provides = matlab-release=R2026a
 	provides = matlab-version=26.1.9.9999999
@@ -31,7 +33,7 @@ pkgname = matlab-support
 
 pkgname = matlab-gcc-support
 	pkgdesc = A high-level language for numerical computation and visualization (GCC, support)
-	depends = matlab-support>=1:R2026a+26.1.9.9999999-2
+	depends = matlab-support>=1:R2026a+26.1.9.9999999-3
 	depends = matlab-gcc-meta>=R2026a
 	provides = matlab-gcc=R2026a+26.1.9.9999999
 	provides = matlab-gcc-release=R2026a
@@ -42,7 +44,7 @@ pkgname = matlab-gcc-support
 
 pkgname = matlab-gcc-fortran-support
 	pkgdesc = A high-level language for numerical computation and visualization (GCC Fortran, support)
-	depends = matlab-support>=1:R2026a+26.1.9.9999999-2
+	depends = matlab-support>=1:R2026a+26.1.9.9999999-3
 	depends = matlab-gcc-fortran-meta>=R2026a
 	provides = matlab-gcc-fortran=R2026a+26.1.9.9999999
 	provides = matlab-gcc-fortran-release=R2026a

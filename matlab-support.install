@@ -1,0 +1,14 @@
+post_install() {
+  # https://bbs.archlinux.org/viewtopic.php?id=313512
+  # https://aur.archlinux.org/pkgbase/matlab#comment-1075246
+  echo "  -> To fix a segfault during activation and/or offline usage, execute manually:"
+  echo "     # patchelf --add-needed libleancrypto.so.1 \"\$(which MathWorksProductAuthorizer)\""
+
+  # https://bbs.archlinux.org/viewtopic.php?pid=2244314#p2244314
+  echo "  -> To start using MATLAB, you might need to activate it first, if you haven't already:"
+  echo "     \$ MathWorksProductAuthorizer"
+}
+
+post_upgrade() {
+  post_install
+}

@@ -399,7 +399,7 @@ pkgname=(
 pkgver=R2026a+26.1.9.9999999
 _release="${pkgver%+*}"
 _version="${pkgver##*+}"
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=(
@@ -462,6 +462,8 @@ package_matlab-support() {
     "${_name}-jre-meta: JRE runtime dependency"
     "${_name}-gcc${_suffix}: GCC runtime dependency"
     "${_name}-gcc-fortran${_suffix}: GCC Fortran runtime dependency"
+
+    'patchelf: fix a segfault during activation and/or offline usage'
   )
   provides+=(
     "${_name}=${pkgver}"
@@ -481,6 +483,7 @@ package_matlab-support() {
     "java-${_name}"
     "java-${_name}-${_release,,}"
   )
+  install="${pkgname}.install"
 
   cd "${srcdir}"
   echo "  -> Installing MATLAB root directory..."
