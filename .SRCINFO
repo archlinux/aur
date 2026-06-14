@@ -1,6 +1,6 @@
 pkgbase = ddnss
 	pkgdesc = Update DynDNS hosts registered at ddnss.de
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/coNQP/ddnss
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ddnss
 	makedepends = cargo
 	makedepends = git
 	options = !lto
-	source = ddnss-0.1.1::git+https://github.com/coNQP/ddnss.git#tag=0.1.1
-	md5sums = bdab635560ab5d67fd68b51dccc35aea
+	source = ddnss-0.1.2::git+https://github.com/coNQP/ddnss.git#tag=0.1.2
+	md5sums = 5b7791e537d5cd37ad0eacb5e47a1435
 
 pkgname = ddnss
