@@ -15,6 +15,6 @@ pkgbase = imagecompare-bin
 	conflicts = imagecompare
 	noextract = imagecompare-bin-1.1.4-x86_64.zip
 	source = imagecompare-bin-1.1.4-x86_64.zip::https://github.com/gimletlove/imagecompare/releases/download/v1.1.4/imagecompare-1.1.4-linux-x86_64.zip
-	sha256sums = 205e0376c9e5054050e84abf5b7d6e42450617ec0f15bfe6c2321cfee8f487ce
+	sha256sums = fed5264135b859f50b11001353f3e2359c0b179d37a3cfe0a037f1246a720f43
 
 pkgname = imagecompare-bin
