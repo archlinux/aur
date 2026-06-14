@@ -28,6 +28,7 @@ depends=(
   sqlitecpp
   qt6-interfaceframework
   zlib-ng
+  openimageio
 )
 makedepends=(
   git
