@@ -1,0 +1,5 @@
+[livediff]
+source = "github"
+github = "SoCkEt7/Livediff"
+use_max_tag = true
+prefix = "v"
