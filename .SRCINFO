@@ -1,6 +1,6 @@
 pkgbase = gen-commit-msg
 	pkgdesc = Generate git commit message candidates from staged changes
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/chpock/gen-commit-msg
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = gen-commit-msg
 	depends = glibc
 	optdepends = git: collect staged change context
 	optdepends = opencode: generate commit messages
-	provides = gen-commit-msg=0.0.2
+	provides = gen-commit-msg=0.0.3
 	conflicts = gen-commit-msg-git
-	source = gen-commit-msg-0.0.2.tar.gz::https://github.com/chpock/gen-commit-msg/archive/refs/tags/v0.0.2.tar.gz
-	sha256sums = 98c35c2bedf139fa83ed18e6113acaa2ff83565a718d8cac2f7958e422daf9b1
+	source = gen-commit-msg-0.0.3.tar.gz::https://github.com/chpock/gen-commit-msg/archive/refs/tags/v0.0.3.tar.gz
+	sha256sums = 6ac4e9eca4b4e4e44d7212bda489bc82e3b770401da6ef94a689634020b310fe
 
 pkgname = gen-commit-msg
