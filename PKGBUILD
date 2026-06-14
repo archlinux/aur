@@ -13,13 +13,20 @@ url="http://sumo.dlr.de"
 license=('EPL-2.0')
 depends=('openscenegraph' 'proj' 'fox' 'xerces-c' 'gdal' 'gl2ps' 'flake8' 'autopep8' 'python-pyproj' 'python-pandas' 'python-scipy' 'ffmpeg' 'python-matplotlib')
 makedepends=('cmake' 'help2man' 'swig' 'gtest' 'gmock' 'python-setuptools' 'python-build' 'eigen' 'jdk-openjdk' 'maven' 'git' 'python-pip')
-source=("https://sumo.dlr.de/releases/${pkgver}/sumo-src-${pkgver}.tar.gz")
+source=("https://sumo.dlr.de/releases/${pkgver}/sumo-src-${pkgver}.tar.gz"
+        "0001-fix-arrow-cpp20.patch::https://github.com/eclipse-sumo/sumo/commit/d88e2a935fc4c1ece19b0decc8c17444c6796d5e.patch")
 
-sha256sums=('8befa700b6b0a02c79733e15ad5c891be421a1649ab973d266d2556c9f6f79ff')
+sha256sums=('8befa700b6b0a02c79733e15ad5c891be421a1649ab973d266d2556c9f6f79ff'
+            'SKIP')
 
 prepare() {
     # example tests still fails
     sed -i '/exampletest/d' "$pkgname-$pkgver"/CMakeLists.txt
+    # Backport C++20/Arrow>=24 compatibility fix
+    # https://github.com/eclipse-sumo/sumo/commit/d88e2a935fc4c1ece19b0decc8c17444c6796d5e
+    # Upstream patch does not apply cleanly to 1.26.0 (hunk 3 references ENABLE_PARQUET),
+    # so apply with fuzz and skip the incompatible hunk
+    patch -Np1 -d "$pkgname-$pkgver" --fuzz=5 --reject-file=- -i "$srcdir/0001-fix-arrow-cpp20.patch" || true
     cmake -B build -S "$pkgname-$pkgver" \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -48,6 +55,9 @@ package_sumo() {
 }
 
 package_sumo-doc() {
+    arch=('any')
+    depends=()
+
     cd ${pkgbase}-${pkgver}
 
     install -d ${pkgdir}/usr/share/doc/${pkgbase}
