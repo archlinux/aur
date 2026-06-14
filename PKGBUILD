@@ -1,6 +1,6 @@
 # Maintainer: Woro <woro@tanieddosy.pl>
 pkgname=simplevoice
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Simplevoice — fast speech-to-text transcription (Tauri)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ conflicts=('simplevoice-bin')
 options=('!lto')
 install=simplevoice.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bd2184ae3c6d8c1756adec1505a2ae6e0edc863f2a4925083dcba9bd5b94bae5')
+sha256sums=('01bfd0268825c3ccd2e1dd5d0f094000d83d2a58e59a781701360f5638718181')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
