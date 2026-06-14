@@ -1,0 +1,29 @@
+post_install() {
+  cat << EOF
+==> NVIDIA Broadcast (nvbroadcast) installed
+
+  v4l2loopback is configured for auto-load at boot
+  (/usr/lib/modprobe.d/nvbroadcast.conf, /usr/lib/modules-load.d/nvbroadcast.conf).
+
+  To load now without rebooting:
+    sudo modprobe v4l2loopback devices=1 video_nr=10 \
+      card_label="NVIDIA Broadcast" exclusive_caps=1 max_buffers=4
+
+  To override the v4l2loopback options, copy the config to /etc/modprobe.d/
+  and edit:
+    sudo cp /usr/lib/modprobe.d/nvbroadcast.conf /etc/modprobe.d/
+
+  Headless virtual-camera service (per-user):
+    systemctl --user enable --now nvbroadcast-vcam.service
+
+  Launch: nvbroadcast
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  :
+}
