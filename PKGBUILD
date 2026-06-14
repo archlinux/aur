@@ -3,41 +3,66 @@
 # Contributor: Wouter Wijsman <wwijsman@live.nl>
 
 pkgname=minigalaxy-git
-pkgver=1.1.0.r91.g3882973
-pkgrel=1
+pkgver=1.4.1.r72.g1127c95
+pkgrel=2
 pkgdesc="A simple GOG client for Linux"
 arch=(any)
 url="https://github.com/sharkwouter/minigalaxy"
-license=(GPL3 'CCPL:cc-by-sa-3.0')
-depends=(python python-requests python-gobject gtk3 webkit2gtk)
-makedepends=(python-setuptools git)
-checkdepends=(python-pytest python-simplejson)
-optdepends=('dosbox: Use the system DOSBox installation'
-            'innoextract: Extract Windows installers'
-            'scummvm: Use the system ScummVM installation'
-            'wine: Install Windows games')
+license=('GPL-3.0-or-later AND CC-BY-3.0')
+depends=(
+    gdk-pixbuf2
+    glib2
+    gtk3
+    hicolor-icon-theme
+    python
+    python-gobject
+    python-requests
+    webkit2gtk-4.1
+    )
+makedepends=(
+    git
+    python-build
+    python-installer
+    python-setuptools
+    python-wheel
+    )
+checkdepends=(
+    dosbox
+    innoextract
+    python-coverage
+    python-simplejson
+    scummvm
+    )
+optdepends=(
+    'dosbox: Use the system DOSBox installation'
+    'innoextract: Extract Windows installers'
+    'scummvm: Use the system ScummVM installation'
+    'wine: Install Windows games'
+    )
 provides=(minigalaxy)
 conflicts=(minigalaxy)
 source=("git+https://github.com/sharkwouter/minigalaxy.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  git -C minigalaxy describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^wine.//;s/^v//;s/\.rc/rc/'
+  cd "minigalaxy"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^wine.//;s/^v//;s/\.rc/rc/'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  python setup.py build
+  cd "minigalaxy"
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$srcdir/${pkgname%-git}"
-  pytest -v
+  cd "minigalaxy"
+  LANG=C.UTF-8 python -m coverage run --source minigalaxy -m unittest discover -v tests
+  LANG=C.UTF-8 python -m coverage report -m
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  python setup.py install --root="$pkgdir" --prefix=/usr --skip-build
+  cd "minigalaxy"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 THIRD-PARTY-LICENSES.md "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-LICENSES.md"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
