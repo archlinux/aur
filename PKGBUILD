@@ -2,7 +2,7 @@
 
 _pkgname="gopher64"
 pkgname="${_pkgname}-bin"
-pkgver=1.1.24
+pkgver=1.1.26
 pkgrel=1
 pkgdesc="N64 emulator written in Rust"
 arch=(
@@ -47,8 +47,8 @@ sha256sums=('9feb2734c053767ca20349a67720a06e603cbc32839f66510b3dbccb6e6e86ee'
             'c5b7d0fc27c4a838b174b6b2f3357d66b888b97cd9b5acd5460d1d102c7a8597'
             '886c63542d29a20804de8c3555a9abb2dac635b55b521ecffb067ec484780d67'
             '589dbc308e9910010fa0cbfdfa895dbc7dc895876ad3fda882008c59d7db3d22')
-sha256sums_aarch64=('ed5dfe7cd66b52c4538793c88b630182d23a401caf66d6967ab387a16443738b')
-sha256sums_x86_64=('6b1af1f21cdb731e6f8ccda1a24b307e5dba99eb7be15e7436d78df8e67d2c04')
+sha256sums_aarch64=('913cb20027c04811eacd35fed9cc28897f7022edd9a8e46e1e6ae6e2f3dc9cfe')
+sha256sums_x86_64=('a753a97846a59316fd9c7b44444246b17c5b30e234843b4ded6c2e93e7380c24')
 
 for _size in 128 256 512; do
   source+=(
