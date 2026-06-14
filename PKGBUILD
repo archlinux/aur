@@ -28,4 +28,7 @@ sha256sums_x86_64=('73e136df463eff19f73ccedad10c4d9b810d91c234fd1ebca66cf34a3389
 
 package() {
     bsdtar -xf ${srcdir}/data.tar.gz -C ${pkgdir}/
+
+    echo "NoDisplay=true" >> ${pkgdir}/usr/share/applications/codelite-url-handler.desktop
+    echo "StartupNotify=true" >> ${pkgdir}/usr/share/applications/codelite-url-handler.desktop
 }
