@@ -101,7 +101,7 @@ build() {
         }
 
         END {
-            if (name != "") {ab133b1568637c2a2adbd97eb1322678492fa9a69b6ac186a26df29010078a72
+            if (name != "") {
                 print_comment_and_var()
             }
         }
