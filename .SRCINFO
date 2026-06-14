@@ -1,6 +1,6 @@
 pkgbase = darktable-git
 	pkgdesc = A virtual lighttable and darkroom for photographers
-	pkgver = 5.5.0.r805.gab1fee449f
+	pkgver = 5.5.0.r1641.gcb0eb56851
 	pkgrel = 1
 	url = http://www.darktable.org/
 	install = darktable.install
@@ -29,7 +29,7 @@ pkgbase = darktable-git
 	depends = exiv2
 	depends = openjpeg2
 	depends = graphicsmagick
-	depends = lua
+	depends = lua54
 	depends = osm-gps-map
 	depends = libsecret
 	depends = openmp

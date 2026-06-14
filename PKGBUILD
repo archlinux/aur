@@ -7,7 +7,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=5.5.0.r805.gab1fee449f
+pkgver=5.5.0.r1641.gcb0eb56851
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ url=http://www.darktable.org/
 license=('GPL3')
 depends=(
   pugixml libjpeg-turbo colord-gtk libgphoto2 openexr lensfun iso-codes zlib
-  exiv2 openjpeg2 graphicsmagick lua osm-gps-map libsecret openmp gmic libavif
+  exiv2 openjpeg2 graphicsmagick lua54 osm-gps-map libsecret openmp gmic libavif
   jasper libjxl potrace
 )
 optdepends=(
@@ -84,7 +84,8 @@ build() {
     -DUSE_COLORD=ON \
     -DBUILD_CURVE_TOOLS=ON \
     -DBUILD_NOISE_TOOLS=ON \
-    -DRAWSPEED_ENABLE_LTO=ON
+    -DRAWSPEED_ENABLE_LTO=ON \
+    -DUSE_AI=ON
   make -C build
 
 }
