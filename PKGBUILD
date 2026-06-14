@@ -3,7 +3,7 @@
 _pkgname=polonium
 pkgname=kwin-polonium
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A tiling window manager for KWin 5.27 and up'
 arch=('any')
 url='https://zeroxoneafour.github.io/polonium/'
@@ -13,13 +13,9 @@ depends=('kwin')
 makedepends=('cargo' 'git' 'npm' 'typescript')
 
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/zeroxoneafour/polonium/archive/refs/tags/v$pkgver.tar.gz"
-        'kwin-api::git+https://github.com/zeroxoneafour/kwin-api.git#commit=8fc04bd086a1445ea67783eaa33517b70e01c063'
-        'polonium-saver.service'
-        'xyz.vaughanm.polonium.service')
-sha1sums=('333c52d47b7e7ec9f7fcc5b0c9ca0024d7a9eeb7'
-          'b85280ef82a0b6291cffa03468c7efa2bf633f0d'
-          '9e3e25fa913eab3b393dfa4f7b7f669c4c054cdf'
-          '0110e41de165b5484bf13151abb2f3685c53b964')
+        'kwin-api::git+https://github.com/zeroxoneafour/kwin-api.git#commit=8fc04bd086a1445ea67783eaa33517b70e01c063')
+sha1sums=('9eab9b75a2399ab7ceeb74fcedb91d6383eb144a'
+          'b85280ef82a0b6291cffa03468c7efa2bf633f0d')
 
 prepare() {
     cd "$_pkgname-$pkgver"
@@ -48,8 +44,8 @@ package() {
     cp -r pkg "$pkgdir/usr/share/kwin/scripts/polonium"
 
     install -D -o root -m 755 -t "$pkgdir/usr/bin" dbus-saver/target/release/polonium-saver
-    install -D -o root -m 644 -t "$pkgdir/usr/lib/systemd/user" "$srcdir/polonium-saver.service"
-    install -D -o root -m 644 -t "$pkgdir/usr/share/dbus-1/services" "$srcdir/xyz.vaughanm.polonium.service"
+    install -D -o root -m 644 -t "$pkgdir/usr/lib/systemd/user" dbus-saver/polonium-saver.service
+    install -D -o root -m 644 -t "$pkgdir/usr/share/dbus-1/services" dbus-saver/xyz.vaughanm.polonium.service
 
     install -D -o root -m 644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

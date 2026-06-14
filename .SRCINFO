@@ -1,7 +1,7 @@
 pkgbase = kwin-polonium
 	pkgdesc = A tiling window manager for KWin 5.27 and up
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zeroxoneafour.github.io/polonium/
 	arch = any
 	license = MIT
@@ -12,11 +12,7 @@ pkgbase = kwin-polonium
 	depends = kwin
 	source = polonium-1.1.tar.gz::https://github.com/zeroxoneafour/polonium/archive/refs/tags/v1.1.tar.gz
 	source = kwin-api::git+https://github.com/zeroxoneafour/kwin-api.git#commit=8fc04bd086a1445ea67783eaa33517b70e01c063
-	source = polonium-saver.service
-	source = xyz.vaughanm.polonium.service
-	sha1sums = 333c52d47b7e7ec9f7fcc5b0c9ca0024d7a9eeb7
+	sha1sums = 9eab9b75a2399ab7ceeb74fcedb91d6383eb144a
 	sha1sums = b85280ef82a0b6291cffa03468c7efa2bf633f0d
-	sha1sums = 9e3e25fa913eab3b393dfa4f7b7f669c4c054cdf
-	sha1sums = 0110e41de165b5484bf13151abb2f3685c53b964
 
 pkgname = kwin-polonium
