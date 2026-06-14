@@ -1,12 +1,13 @@
 pkgbase = q-dns-bin
 	pkgdesc = A tiny command line DNS client with support for UDP, DoT, DoH, DoQ and ODoH.
 	pkgver = 0.19.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/natesales/q
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0
 	provides = q-dns
+	conflicts = q-dns
 	conflicts = q-dns-git
 	source_x86_64 = https://github.com/natesales/q/releases/download/v0.19.12/q_0.19.12_linux_amd64.deb
 	sha256sums_x86_64 = da9deee4f97eba5287876d6fb62b1b607b6474b308eec22c6332b3b5965124c5
