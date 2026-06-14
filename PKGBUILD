@@ -5,7 +5,7 @@
 # For a build-from-source VCS package, see tutabridge-git.
 
 pkgname=tutabridge-bin
-pkgver=0.1.0rc3
+pkgver=0.1.0rc4
 pkgrel=1
 pkgdesc="Local IMAP/SMTP bridge for Tuta encrypted email (prebuilt headless CLI/daemon)"
 arch=('x86_64')
@@ -16,11 +16,11 @@ optdepends=('gnome-keyring: persist the Tuta session across reboots (Secret Serv
             'kwallet: alternative Secret Service provider')
 provides=('tutabridge')
 conflicts=('tutabridge')
-_tag=v0.1.0-rc.3
+_tag=v0.1.0-rc.4
 source=("tutabridge-$pkgver::$url/releases/download/$_tag/tutabridge-linux-x86_64"
         "tutabridge.service::https://raw.githubusercontent.com/spartanz51/tutabridge/$_tag/packaging/systemd/tutabridge.service"
         "LICENSE::https://raw.githubusercontent.com/spartanz51/tutabridge/$_tag/LICENSE")
-sha256sums=('76c611051c66dff6ce8c5011b6d11b5a7d9aed2dc095c727340bea6a04203eb0'
+sha256sums=('1a84dc3cf735e4a77e4d1ca476859dd5d1282b4e8b7b60cbc410b35db60d57c4'
             '9c398acf860036a8912a3f0686cfd6dc55cb714fc3ddbff68c21755777cd439f'
             '947215ddc328843b76022d5b77e1ca3b1152301778d33e24491e5064e92fc6cf')
 
