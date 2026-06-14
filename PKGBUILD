@@ -13,7 +13,7 @@ optdepends=('rsync: rsync based snapshot support' 'python-textual: for the TUI i
 makedepends=('tar')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('d4c577bf5be7a431b62e4c0c6ac79505a184c4e58827986c26ea1785943c243e')
-install="$pkgname".install
+install="$pkgname.install"
 
 build() {
   cd "$pkgname"-"$pkgver"/artifacts
