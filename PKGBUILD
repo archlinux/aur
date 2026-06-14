@@ -5,7 +5,7 @@ _gitauthor="danisztls"
 _gitbranch="main"
 
 pkgname="${_pkgname}-git"
-pkgver=v1.3.2.r6.gc5b5787
+pkgver=v1.5.0.r0.g9fdd5c5
 pkgrel=1
 pkgdesc="Opinionated wrapper that extends FZF."
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = fzfx-git
 	pkgdesc = Opinionated wrapper that extends FZF.
-	pkgver = v1.3.2.r6.gc5b5787
+	pkgver = v1.5.0.r0.g9fdd5c5
 	pkgrel = 1
 	url = https://github.com/danisztls/fzfx
 	arch = any
