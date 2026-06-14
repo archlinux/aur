@@ -8,7 +8,9 @@ _pkgname=vendi
 #   26w24c: touchscreen (wl_touch), blur toggle, per-window opacity
 #   26w24d: real output-scale rendering, wp_fractional_scale_v1, layer
 #           re-arrange on live scale change, vendi display CLI
-pkgver=26w24d
+#   26w24e: both bars tint with the theme (Pro panel accent-tint, classic
+#           bar CSS generated per theme)
+pkgver=26w24e
 pkgrel=1
 pkgdesc="vendiOS preview snapshot — compositor, bar, lock, installer, CLI (pre-v0.1.1)"
 arch=('x86_64')
