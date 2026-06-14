@@ -1,0 +1,17 @@
+pkgbase = webscript-git
+	pkgdesc = A high-performance reverse proxy and web server language
+	pkgver = r9.5582503
+	pkgrel = 1
+	url = https://github.com/LukasYTTT/webscript
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = webscript
+	provides = wbs
+	conflicts = webscript
+	source = git+https://github.com/LukasYTTT/webscript.git
+	sha256sums = SKIP
+
+pkgname = webscript-git
