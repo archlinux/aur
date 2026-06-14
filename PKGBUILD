@@ -2,8 +2,8 @@
 
 _pkgname=dusklight
 pkgname=${_pkgname}-git
-pkgver=1.3.1.r76.g7c5ed6a
-pkgrel=5
+pkgver=1.3.1.r78.gcacb768
+pkgrel=1
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
@@ -15,12 +15,10 @@ conflicts=(dusklight dusklight-bin)
 source=(
   "git+$url"
   "git+https://github.com/encounter/aurora.git"
-  "0001-Fixed-using-system-fmt.patch"
 )
 
 sha256sums=('SKIP'
-            'SKIP'
-            'bc762592c46d0b6dd41aa2c8d4beff2626246d2e600698c8a45997ed7f54aead')
+            'SKIP')
 
 pkgver() {
 	cd "${srcdir}/dusklight"
@@ -33,9 +31,6 @@ prepare() {
   git submodule init
   git config submodule.extern/aurora.url "${srcdir}/aurora"
   git -c protocol.file.allow=always submodule update
-
-  cd "extern/aurora"
-  git apply "${srcdir}/0001-Fixed-using-system-fmt.patch"
 }
 
 build() {
