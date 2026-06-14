@@ -15,7 +15,9 @@ pkgname=aur-scanner-rc
 # becomes '1.1.0rc1' here; the upstream git tag keeps the canonical hyphen.
 pkgver=1.1.0rc1
 _tag=v1.1.0-rc1
-pkgrel=1
+# pkgrel 2: the v1.1.0-rc1 tag was refreshed to carry the four-channel AUR docs
+# (README), so the built package content changed without a pkgver change.
+pkgrel=2
 pkgdesc="Security scanner for Arch Linux AUR packages (release candidate) - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/KiefStudioMA/ks-aur-scanner"
