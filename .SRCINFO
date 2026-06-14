@@ -1,0 +1,16 @@
+pkgbase = xs-lang-bin
+	pkgdesc = The XS programming language
+	pkgver = 1.2.32
+	pkgrel = 1
+	url = https://xslang.org/
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	provides = xs
+	conflicts = xs
+	options = !strip
+	options = !debug
+	source = xs::https://github.com/xs-lang0/xs/releases/download/v1.2.32/xs-linux-x86_64
+	sha256sums = 260e9afe92c9f4e36e1cb0cb80a2e5ead8d8101a3e974b48036ede5df6d7c9f5
+
+pkgname = xs-lang-bin
