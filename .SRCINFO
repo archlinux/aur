@@ -1,22 +1,20 @@
 pkgbase = bleachbit-cli
 	pkgdesc = Deletes unneeded files to free disk space and maintain privacy. CLI version/no GUI.
-	pkgver = 6.0.0
-	pkgrel = 2
+	pkgver = 6.0.1
+	pkgrel = 1
 	url = https://www.bleachbit.org/
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	depends = python-gobject
-	depends = python-psutil
 	depends = python-chardet
 	depends = python-gobject
 	depends = python-psutil
 	depends = python-requests
 	depends = python-urllib3
-	provides = bleachbit=6.0.0
+	provides = bleachbit=6.0.1
 	conflicts = bleachbit
-	source = git+https://github.com/bleachbit/bleachbit.git#tag=v6.0.0?signed
+	source = git+https://github.com/bleachbit/bleachbit.git#tag=v6.0.1?signed
 	validpgpkeys = A9E582E4054A159315EDC943D6D447B02B4D4C9D
-	sha256sums = a58a03708669f20c6b0066321352d641f04ca8388345ff0b535cceed29a87b06
+	sha256sums = 37286e4bfd5876df87ddfe044ea73c13f7056dac6998db953147b91eaeddf01e
 
 pkgname = bleachbit-cli
