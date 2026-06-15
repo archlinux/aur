@@ -1,7 +1,7 @@
 # Maintainer: Vasiliy Stelmachenok <ventureo@yandex.ru>
 # Maintainer: so5iso4ka <so5iso4ka@icloud.com>
 pkgname=freesmlauncher
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Minecraft launcher with offline accounts support"
 arch=(x86_64)
@@ -35,7 +35,7 @@ optdepends=(
   'flite: minecraft voice narration'
 )
 source=("$pkgname::git+https://github.com/FreesmTeam/FreesmLauncher#tag=$pkgver")
-sha256sums=('5248ef6f5a9db5bdcfa2d600b3040a67717cb446026f00fdce1d3af32c24759f')
+sha256sums=('528e4209bc6c0b8aa2968c13fb856ddd5703fae906f1e4411cdb0c0128b10386')
 
 prepare() {
   cd "$pkgname"
@@ -53,6 +53,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLauncher_QT_VERSION_MAJOR="6" \
     -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
+    -DLauncher_DISABLE_WERROR=ON \
     -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
     -Bbuild -S.
