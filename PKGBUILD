@@ -13,7 +13,7 @@ _npmname=${pkgname}
 _npmver=${pkgver}
 
 replaces=("nodejs-${_npmname}")
-depends=("glibc" "gcc-libs" "bash" "nodejs" "python")
+depends=("glibc" "libgcc" "libstdc++" "nodejs" "python")
 makedepends=("npm" "jq")
 provides=("${_npmname}")
 
