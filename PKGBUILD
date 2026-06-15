@@ -4,8 +4,8 @@
 
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=6.8.2
-_td_commit=49b3bcbb6bfebf2ed44dd9f25102d2e1a94a58c4
+pkgver=6.9.3
+_td_commit=51743dfd01dff6179e2d8f7095729caa4e2222e9
 pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
@@ -25,7 +25,6 @@ depends=(
   'hunspell'
   'kcoreaddons'
   'libavif'
-  'libdispatch'
   'libgcc'
   'libheif'
   'libjpeg-turbo'
@@ -62,6 +61,7 @@ makedepends=(
   'git'
   'glib2-devel'
   'gobject-introspection'
+  'qt6-shadertools'
   'gperf'
   'libtg_owt'
   'microsoft-gsl'
@@ -80,18 +80,15 @@ optdepends=(
 source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
-  tdesktop-fix-minizip-includes.patch
   0001-kde-theme-injection-fix.patch
 )
-sha512sums=('a733992a12268ee4d429ed383f63182c12e3a5d61d78e0f31cbfc705a5a36cb872a2f2dfb6c76d50a22ed46d141b9c13f80da4ab94286fe35b339ca685d954e3'
-            'f8f98b02b1c7d1ca9162c4867461605fa7a5ab449ac53701877f49ba393ff4a495a58984538fe3960c7090ab5b3749666b4d169058f5e40f8d35ea4c15aea8d5'
-            'd9765588e92f154d83b95dc2840207bf22b26b6ca37b4d5cdfdb5e27a00c9e1ebcc9cd475a96bbcc5b02c24f6892320e009f843aa6b172a1820814b952a772eb'
+sha512sums=('b3a570cc997c479cd746188f79749f1a163109b5bfe9eac372e295c837619bc2baba2b371581892830b8f60f901b0ed9d2473c5014697b332c12562dc6e1ea0c'
+            'd622b8f3580ee49415546d025c4ba45f5b2de50b315fc379dc57c0427c5f815c7cc3820cca937c12182ee461641bb61f87ebc99b6c74a1a666cea9a08f0f41a0'
             '6544086fd4946384509c053edd447a59e9ae405af65f9a7fa632ae5734099ef57b7211b7dbebf7a0c38665e05dd7c4d2414fa5d2cb5c6ee718cc5e824f5f509a')
 
 prepare() {
   # Fix tray unread counter in KDE
   patch -d "tdesktop-$pkgver-full" -Np1 -i ../0001-kde-theme-injection-fix.patch
-  patch -Np1 -d tdesktop-$pkgver-full/Telegram/lib_base -i "$srcdir"/tdesktop-fix-minizip-includes.patch
 }
 
 build() {
