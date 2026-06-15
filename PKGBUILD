@@ -8,7 +8,7 @@ _desktopid=com.danklinux.dankcalendar
 
 pkgname=dankcalendar-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Local, Google, Microsoft, and CalDAV calendars for the dank desktop (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
@@ -16,13 +16,8 @@ url="https://github.com/${_pkgauthor}/${_repo}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_repo}/v${pkgver}"
 _urlrel="${url}/releases/download/v${pkgver}"
 license=('MIT')
-depends=('quickshell')
-optdepends=(
-    'dankmaterialshell-git: companion Material 3 desktop shell'
-    'ttf-material-symbols-variable-git: UI glyphs used by the shell'
-    'inter-font: default UI font'
-    'matugen-bin: dynamic wallpaper-based theming'
-)
+depends=('quickshell' 'qt6-declarative')
+optdepends=('dms-shell: dynamic theming via DankMaterialShell colors')
 provides=("${_binname}" "${_repo}")
 conflicts=("${_binname}" "${_repo}" 'dankcalendar-git')
 
