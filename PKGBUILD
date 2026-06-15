@@ -7,13 +7,13 @@ pkgname=(
 )
 pkgbase=mullvad-vpn-beta
 _pkgver=2026.3
-_channel=beta
-_rel=3
-pkgver=${_pkgver}.${_channel}${_rel}  # beta
-#pkgver=${_pkgver}.${_channel}  # stable
+_channel=stable
+_rel=1
+#pkgver=${_pkgver}.${_channel}${_rel}  # beta
+pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=24
-pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
+pkgdesc="The Mullvad VPN client app for desktop - beta channel"
 arch=('x86_64')
 url="https://www.mullvad.net"
 license=('GPL-3.0-or-later')
@@ -34,14 +34,14 @@ makedepends=(
   'typescript'
 )
 source=(
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgbase%-beta}.sh"
 )
-sha256sums=('73c9ac143d2125bb09c147956179094850542829db7dd3a88b5f110018125b7b'
+sha256sums=('6c93c3ad7e7e1695da7e8c374bbe451f525fd5e02bc680c30f4c47976de0cf2e'
             'SKIP'
             'f3976a76352b09677487569a8538819fd393dbd6c8dbc6345f3022a08054faa9'
             '0cd7bccb05af010cc26cb0a0bb91cb68f279c4d64d7ace35e1902f020bf50311'
