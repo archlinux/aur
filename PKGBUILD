@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=deepseek-reasonix-desktop-bin
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="DeepSeek-Reasonix Desktop - Electron-based desktop client for DeepSeek models"
 arch=('x86_64')
@@ -46,7 +46,7 @@ source=(
     "appicon.png::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/main-v2/desktop/build/appicon.png"
 )
 sha256sums=(
-    '0782b03b30f420589a83015e4119fe61cb16a299a9a9efe0ba7a248a7a3bc48a'
+    'bd711d49a51a6389141cb524895f2915635154d4c06547344b23dcacb0ab0536'
     'SKIP'
     'SKIP'
     '6778d9b903b3ff5ea8873f9f284be79f8a1d13ddfc3bbd1296bebc09d5d58116'
