@@ -1,7 +1,7 @@
 pkgbase = input-remapper-bin
 	pkgdesc = A tool to change and program the mapping of your input device buttons.(Prebuilt version)
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sezanzeb/input-remapper/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -15,6 +15,7 @@ pkgbase = input-remapper-bin
 	depends = python-cairo
 	depends = python-packaging
 	depends = python-psutil
+	depends = python-dbus
 	optdepends = xorg-xmodmap: symbol names matching the keyboard layout
 	provides = input-remapper=2.2.1
 	conflicts = input-remapper
