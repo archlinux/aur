@@ -1,6 +1,6 @@
 pkgbase = pat-aur-git
 	pkgdesc = AUR helper and tool to build Arch Linux packages in clean containers.
-	pkgver = r558.ff0dbf6
+	pkgver = r596.c86beaa
 	pkgrel = 1
 	url = https://gitlab.com/patlefort/pat-aur
 	arch = x86_64
@@ -14,6 +14,12 @@ pkgbase = pat-aur-git
 	makedepends = boost-libs
 	makedepends = flatpak
 	source = git+https://gitlab.com/patlefort/pat-aur.git
+	source = https://github.com/zzamboni/elvish-themes.git
+	source = https://github.com/zzamboni/elvish-modules.git
+	source = https://github.com/href/elvish-gitstatus.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pat-aur-client-git
