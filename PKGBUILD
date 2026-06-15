@@ -1,9 +1,9 @@
 # Maintainer: Ronak Mehta <ronakrm@gmail.com>
 pkgname=talkat
-pkgver=0.2.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Voice-to-text dictation system for Wayland Linux compositors"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/ronakrm/talkat"
 license=('MIT')
 depends=(
@@ -23,7 +23,7 @@ makedepends=(
 )
 install=talkat.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('84d8982721c18f5b1794a9ecb40ba6a46db0eccb94e0aba27e34f5cb47b23f06')
+sha256sums=('b14731726f71d6c9c5cc66318148ed18d1bdd9152ad535017c9966bd28cbeb91')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -38,11 +38,17 @@ package() {
     # Create virtual environment at its final location
     # This ensures all shebangs and paths are correct
     install -dm755 "$pkgdir/usr/lib/$pkgname"
-    uv venv "$pkgdir/usr/lib/$pkgname/.venv"
 
-    # Install the package into the venv using uv pip
-    # Use --python to target the specific venv we just created
-    uv pip install --python "$pkgdir/usr/lib/$pkgname/.venv/bin/python" .
+    # Sync against the committed uv.lock for a reproducible build.
+    # UV_PROJECT_ENVIRONMENT redirects the venv creation to the final pkg path.
+    # --python forces Arch's system interpreter so the venv symlinks to a path
+    # that exists on every user's machine (overrides upstream's .python-version,
+    # which would otherwise pull uv-managed Python into the build host's homedir).
+    UV_PROJECT_ENVIRONMENT="$pkgdir/usr/lib/$pkgname/.venv" \
+        uv sync --frozen --no-dev --no-editable --python /usr/bin/python
+
+    # uv leaves a world-writable .lock in the venv; not needed at runtime.
+    rm -f "$pkgdir/usr/lib/$pkgname/.venv/.lock"
 
     # Create wrapper script in /usr/bin that uses the venv
     # Use python -m to avoid relying on entry point scripts with hardcoded shebangs
@@ -81,4 +87,9 @@ EOF
 
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+    # Smoke-test the built venv. The /usr/bin wrapper hard-codes
+    # /usr/lib/talkat/.venv which doesn't exist on the build host, so invoke
+    # the staged venv's python directly. A broken install fails makepkg here.
+    "$pkgdir/usr/lib/$pkgname/.venv/bin/python" -m talkat.cli --help >/dev/null
 }
