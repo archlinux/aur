@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=hrbrthemes
-_pkgver=0.8.7
+_pkgver=0.9.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,8 +10,6 @@ arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
-  r-extrafont
-  r-gdtools
   r-ggplot2
   r-magrittr
   r-scales
@@ -34,8 +32,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2c239ee48ed2bf410b7e99f8c746c7ef')
-b2sums=('375f8330c487c7cc7099519f725ef6f8c5f7c1bda3fc089c05147f1d0b68524ca1219a327a0a217e638c7c8a0e3a6d7ba10604305b85bce9a55c47a930a17eeb')
+md5sums=('33ca2f26236bfb7f9b02e72a33937bd6')
+b2sums=('1afc02f6c7c511cc84ebacbbb60fc83dbebd4db73fb52cbae1c4cddc3188e0f8c78c4a8f7cef1323f33fc99785c36f39248b53d78109b5c1e2cd0813e3f19764')
 
 prepare() {
   # skip test since importing fonts with r-extrafont doesn't work
