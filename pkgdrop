@@ -1294,7 +1294,6 @@ install_debtap() {
         fi
     fi
     [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would convert and install .deb"; return 0; }
-    sudo_warn "install .deb package"
 
     local name
     name=$(basename "$1")
@@ -1307,16 +1306,83 @@ install_debtap() {
     run_hook "pre-install" "$name" "debtap" "$candidate_ver"
 
     local output
-    output=$(debtap "$1" 2>&1)
+    local tmpdir
+    tmpdir=$(mktemp -d)
+    output=$(debtap -Q -o "$tmpdir" "$1" 2>&1)
     local pkg
-    pkg=$(echo "$output" | grep -o '[^ ]*\.pkg\.tar\.[^ ]*' | tail -1)
+    pkg=$(find "$tmpdir" -name "*.pkg.tar.*" -type f 2>/dev/null | head -1)
     if [[ -n "$pkg" ]] && [[ -f "$pkg" ]]; then
-        sudo pacman -U --noconfirm -- "$pkg"
+        [[ -d "$INSTALL_DIR" ]] || mkdir -p "$INSTALL_DIR" || fail "Cannot create $INSTALL_DIR"
+        local target="$INSTALL_DIR/$name"
+        local stage_dir="${target}.stage.$(date +%s)"
+        atomic_prepare "$stage_dir"
+        mkdir -p "$stage_dir"
+        verb "Extracting converted package to $stage_dir"
+        if ! sandbox_extract "$pkg" "$stage_dir"; then
+            rm -rf "$stage_dir"
+            fail "Failed to extract converted package"
+        fi
+        atomic_commit "$stage_dir" "$target" "$name"
         local file_list=""
-        file_list=$(pacman -Ql "$name" 2>/dev/null | awk '{print $2}' | tr '\n' '\n' || true)
+        file_list=$(find "$target" -type f 2>/dev/null | tr '\n' '\n')
         registry_add "$name" "$candidate_ver" "debtap" "$file_list"
         run_hook "post-install" "$name" "debtap" "$candidate_ver"
         rm -f "$pkg"
+        rm -rf "$tmpdir"
+        info "Extracted to: $INSTALL_DIR/$name/"
+
+        verb "Searching for binary..."
+        local bin=""
+        bin=$(find "$target" -maxdepth 3 -type f -executable -name "$name" ! -name "*.so*" ! -name "*.dylib" ! -name "*-bin" 2>/dev/null | head -1 || true)
+        if [[ -z "$bin" ]]; then
+            for subdir in bin sbin usr/bin usr/local/bin opt/*/bin; do
+                [[ -d "$target/$subdir" ]] || continue
+                bin=$(find "$target/$subdir" -maxdepth 1 -type f -executable 2>/dev/null | head -1 || true)
+                [[ -n "$bin" ]] && break
+            done
+        fi
+        [[ -z "$bin" ]] && bin=$(find "$target" -maxdepth 3 -type f -executable -name "AppRun" 2>/dev/null | head -1 || true)
+        [[ -z "$bin" ]] && bin=$(find "$target" -maxdepth 3 -type f -executable ! -name "*.so*" ! -name "*.dylib" ! -name "updater" ! -name "*test" ! -name "*sender" ! -name "*-bin" ! -name "*.png" ! -name "*.svg" ! -name "*.xpm" ! -name "*.sh" ! -name "*.py" 2>/dev/null | head -1 || true)
+        [[ -n "$bin" ]] && verb "Found binary: $bin"
+
+        mkdir -p "$HOME/.local/bin" || fail "Cannot create $HOME/.local/bin"
+        if [[ -n "$bin" ]]; then
+            ln -sf "$bin" "$HOME/.local/bin/$name" || fail "Failed to create symlink"
+            info "Binary: $name → $HOME/.local/bin/$name"
+        else
+            warn "No binary found. Files installed to: $target"
+        fi
+
+        local meta
+        meta=$(read_desktop_metadata "$target")
+        local icon_path="${meta%%|*}"
+        local rest="${meta#*|}"
+        local icon_label="${rest%%|*}"
+        local category="${rest#*|}"
+
+        local final_icon_name=""
+        local installed_icon=""
+        if [[ -n "$icon_path" ]]; then
+            installed_icon=$(install_icon "$icon_path" "$icon_label" "$name") || true
+        fi
+        if [[ -z "$installed_icon" ]]; then
+            local fallback_icon
+            fallback_icon=$(find_icon "$target" "$name")
+            [[ -n "$fallback_icon" ]] && installed_icon=$(install_icon "$fallback_icon" "" "$name") || true
+        fi
+        if [[ -n "$installed_icon" ]]; then
+            final_icon_name="${installed_icon#*|}"
+            installed_icon="${installed_icon%%|*}"
+            verb "Installed icon: $installed_icon"
+        fi
+
+        verb "Using category: $category"
+
+        verb "Creating desktop entry..."
+        create_desktop_entry "$name" "${HOME}/.local/bin/$name" "${final_icon_name:-pkgdrop-${name}}" "$category"
+        refresh_desktop
+
+        info "Desktop entry created"
     else
         warn "debtap conversion failed. Output:"
         echo "$output" | tail -5
