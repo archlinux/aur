@@ -1,12 +1,14 @@
 _pkgname=roam-research
 pkgname=roam-research
 pkgver=0.0.37
-pkgrel=1
+pkgrel=2
 pkgdesc="A note-taking tool for networked thought"
 arch=('any')
 url="https://roamresearch.com/"
 license=('custom')
 depends=()
+# Prebuilt, already-stripped Electron binary — skip debug-symbol packaging and stripping.
+options=(!debug !strip)
 source=(
 	"$_pkgname-$pkgver.tgz::https://roam-electron-deploy.s3.us-east-2.amazonaws.com/${_pkgname}_${pkgver}_amd64.deb"
 	"LICENSE"
