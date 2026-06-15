@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-git
-pkgver=1.12.3.r45.c99f0a4
-pkgrel=3
+pkgver=1.12.3.r50.528dfab
+pkgrel=1
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
 url='https://github.com/OpenAtom-Linyaps/linyaps'
@@ -38,7 +38,6 @@ depends=(
 makedepends=(
   cli11
   cmake
-  fmt
   git
   gtest
   libseccomp
