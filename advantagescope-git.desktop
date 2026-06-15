@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=AdvantageScope
+Exec=/usr/bin/advantagescope %U
+env ELECTRON_OZONE_PLATFORM_HINT=auto
+Terminal=false
+Type=Application
+Icon=advantagescope
+StartupWMClass=AdvantageScope
+Comment=Robot telemetry application for FRC
+MimeType=application/x-wpilog;application/x-rlog;application/x-dslog;application/x-dsevents;application/x-hoot;
+Categories=Utility;
