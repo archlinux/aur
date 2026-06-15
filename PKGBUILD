@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=igb
-pkgver=5.20.23
+pkgver=5.20.28
 pkgrel=1
 pkgdesc="Driver for Intel ethernet network connection"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL-2.0-or-later')
 depends=('linux')
 makedepends=('linux-headers' 'zstd')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/intel/ethernet-linux-igb/releases/download/v$pkgver/igb-$pkgver.tar.gz")
-sha256sums=('b05498ac729edb0960f2056ba8de942c0abb6583ed6187fc214c6b2f8497d13d')
+sha256sums=('b8ae91346053b7310f95ad7a030449cbc28ddd7904a43d1853e6253ab8755c4d')
 
 
 build() {

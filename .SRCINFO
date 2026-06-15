@@ -1,6 +1,6 @@
 pkgbase = igb
 	pkgdesc = Driver for Intel ethernet network connection
-	pkgver = 5.20.23
+	pkgver = 5.20.28
 	pkgrel = 1
 	url = https://github.com/intel/ethernet-linux-igb
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = igb
 	makedepends = linux-headers
 	makedepends = zstd
 	depends = linux
-	source = igb-5.20.23-src.tar.gz::https://github.com/intel/ethernet-linux-igb/releases/download/v5.20.23/igb-5.20.23.tar.gz
-	sha256sums = b05498ac729edb0960f2056ba8de942c0abb6583ed6187fc214c6b2f8497d13d
+	source = igb-5.20.28-src.tar.gz::https://github.com/intel/ethernet-linux-igb/releases/download/v5.20.28/igb-5.20.28.tar.gz
+	sha256sums = b8ae91346053b7310f95ad7a030449cbc28ddd7904a43d1853e6253ab8755c4d
 
 pkgname = igb
