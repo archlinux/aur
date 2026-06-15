@@ -1,15 +1,14 @@
 pkgbase = nodejs-resume-cli
 	pkgdesc = The command line tool for JSON Resume
-	pkgver = 3.0.8
+	pkgver = 3.7.1
 	pkgrel = 1
-	url = https://github.com/jsonresume/resume-cli
+	url = https://github.com/jsonresume/jsonresume.org/tree/master/packages/cli
 	arch = any
 	license = MIT
 	makedepends = npm
-	makedepends = jq
 	depends = nodejs
-	noextract = nodejs-resume-cli-3.0.8.tgz
-	source = nodejs-resume-cli-3.0.8.tgz::https://registry.npmjs.org/resume-cli/-/resume-cli-3.0.8.tgz
-	sha512sums = e036f284b413c7f7f64bcdd437b289b114afe1c0517c78c618898063e2c134aa034de3e0d53abebf9651a31a50ad71e812941d77ffc1ca476e22cff26f58ccbd
+	noextract = nodejs-resume-cli-3.7.1.tgz
+	source = nodejs-resume-cli-3.7.1.tgz::https://registry.npmjs.org/resume-cli/-/resume-cli-3.7.1.tgz
+	sha512sums = f37c0f9c55a2e34c0fe860362bbff75ec7f859a23656dc27b48ec72694a77644aeb3078ae781c58951192b0bd64be0cdd146ffbddd864eab21512777d8e852e1
 
 pkgname = nodejs-resume-cli
