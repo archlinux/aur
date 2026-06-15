@@ -5,7 +5,7 @@
 # Contributor: Roman Perepelitsa <roman.perepelitsa@gmail.com>
 pkgname=zsh-theme-powerlevel10k
 # Whenever pkgver is updated, _libgit2ver below must also be updated.
-pkgver=1.20.16  ## see P9K_VERSION in internal/p10k.zsh
+pkgver=1.20.17  ## see P9K_VERSION in internal/p10k.zsh
 _libgit2ver="tag-2ecf33948a4df9ef45a66c68b8ef24a5e60eaac6"
 pkgrel=1
 epoch=1
@@ -13,13 +13,13 @@ pkgdesc="Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and 
 arch=('x86_64' 'aarch64')
 url='https://github.com/romkatv/powerlevel10k'
 license=('MIT')
-makedepends=(
-  'git'
-  'cmake'
-)
 depends=(
   'glibc'
   'zsh'
+)
+makedepends=(
+  'git'
+  'cmake'
 )
 optdepends=(
   # It works well with Nerd Fonts, Source Code Pro, Font Awesome, Powerline,
@@ -30,7 +30,7 @@ optdepends=(
   'ttf-font-nerd: full choice of style options'
 )
 replaces=('zsh-theme-powerlevel9k')
-_commit=a0c9dbe80be404ff58e3ce5d7cf312582e370635
+_commit=9253fb1c5034410c43a0c681ff8294181c54016c
 
 # _libgit2ver depends on pkgver. They must be updated together. See libgit2_version in:
 # https://raw.githubusercontent.com/romkatv/powerlevel10k/v${pkgver}/gitstatus/build.info
@@ -39,7 +39,7 @@ source=(
 #  "powerlevel10k-${pkgver}.tar.gz::https://github.com/romkatv/powerlevel10k/archive/v${pkgver}.tar.gz"
 #  "https://github.com/romkatv/powerlevel10k/releases/download/v$pkgver/powerlevel10k-$pkgver.tar.gz.asc"
   "libgit2-${_libgit2ver}.tar.gz::https://github.com/romkatv/libgit2/archive/${_libgit2ver}.tar.gz")
-sha256sums=('302d402882541bdad329462d4932a5fac4e4e432083e9f494778d0283fe1d0b5'
+sha256sums=('f0edc2cc5bfcdfcf3b94f10597c252873567a990e651d04059c887046fba6701'
             '4ce11d71ee576dbbc410b9fa33a9642809cc1fa687b315f7c23eeb825b251e93')
 #validpgpkeys=('8B060F8B9EB395614A669F2A90ACE942EB90C3DD') # Roman Perepelitsa <roman.perepelitsa@gmail.com>
 
