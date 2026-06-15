@@ -2,7 +2,7 @@
 
 _pkgname="hack-browser-data"
 pkgname="${_pkgname}-bin"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Extract and decrypt browser data, supporting multiple data types"
 arch=(
@@ -33,15 +33,15 @@ source_i686=(
 source_x86_64=(
   "${_pkgname}-${pkgver}-linux-64bit.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-64bit.tar.gz"
 )
-sha256sums_aarch64=('40a7bb408f28727bd5b30574d071ea9ceee15a75c82a13b16a5c90c1cdc9d4bd')
-sha256sums_armv7h=('e0d0c25bc5b476b3826a45232a058bc34363b13a043539f7eb0ac3be6b7a836e')
-sha256sums_i686=('f5fe3ebcdfdd0493288ce83794baf2ef9d7bf614eae82c8d0f6d777c606d227f')
-sha256sums_x86_64=('9d75108d774675195f35a58ee9072b0a0fd8311cfb159fe08e241e647a27cb06')
+sha256sums_aarch64=('d1e01923eb5861bbd16211353c496dda17843d0e5ba5886f561e27969de0ffc9')
+sha256sums_armv7h=('c8d0dfe22999f7e021038bc45319b1933622fbc4eacd3adf07fab9b24f0adb2c')
+sha256sums_i686=('789408f448cc22f6255fff560c15fede43be04678a6e0763a74a17db39c8f3cc')
+sha256sums_x86_64=('7fed7b243494bf64e81a63df9510c474c95cefd3e1d025ce7dba16fe2c04c594')
 
 package() {
   cd "${srcdir}"
   install -vDm755 "${_pkgname}"    "${pkgdir}/usr/bin/${_pkgname}"
   install -vDm644 "README.md"      "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  # install -vDm644 "README_ZH.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  # install -vDm644 "README_ZH.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README_ZH.md"
   install -vDm644 "LICENSE"        "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
