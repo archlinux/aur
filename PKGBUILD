@@ -180,7 +180,7 @@ _minor=11
 #_rcver=rc8
 pkgver=${_major}.${_minor}
 _tagrel=1
-pkgrel=2
+pkgrel=3
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements.'
 _kernver="$pkgver-$pkgrel"
@@ -851,8 +851,10 @@ source+=(
     0016-cleanup-controls.patch
     0017-ASoC-rt721-sdca-enable-jack-detect-irq-on-AMD-ACP70.patch
     0018-async-codec-resume.patch
+    0019-drm-amdgpu-vpe-increase-VPE_IDLE_TIMEOUT-for-strix-halo.patch
 )
 b2sums+=(
     SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
     SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+    SKIP
 )
