@@ -1,6 +1,6 @@
 # Maintainer: Aixiao <aixiaoo@outlook.com>
 pkgname=rssh-bin
-pkgver=0.1.16
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="SSH connection manager with desktop GUI, terminal, SFTP, and port forwarding"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('rssh')
 provides=('rssh')
 source=("$pkgname-$pkgver.deb::https://github.com/shihuili1218/rssh/releases/download/v$pkgver/rssh-$pkgver-linux-x86_64.deb"
         "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/shihuili1218/rssh/main/LICENSE")
-sha256sums=('ae989b35e29d6c99aed9afd1d89842686b49c98ff2109aa311ba87dc9325867d'
+sha256sums=('5f01fc336252b5ce63ba5730b889a2398f37234671cf73d1e8e771a287f0870b'
             '5ddb2b27c0605dc4c5b71c0766ed702c8a083dacd4868f329f6a9d2a4a1eeec8')
 options=('!debug')
 
