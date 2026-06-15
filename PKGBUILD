@@ -4,8 +4,8 @@
 
 _appname=oxfmt
 pkgname=${_appname}-bin
-pkgver=0.54.0
-oxlint_pkgver=1.69.0
+pkgver=0.55.0
+oxlint_pkgver=1.70.0
 pkgrel=1
 pkgdesc="Oxfmt is a high-performance formatter for the JavaScript ecosystem"
 
@@ -32,8 +32,8 @@ source_aarch64=("${_binary_aarch64}-$pkgver.tar.gz::${_github_url}/${_binary_aar
 
 sha256sums=('be81179a34098b624f4b538da1e5b9a34a03ea6725d4002106b7d95a157985aa'
             '95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3')
-sha256sums_x86_64=('778c8ea0b15832763c71ffc03601994e97138ecb3df487755b93b0cf834a665f')
-sha256sums_aarch64=('61f8942d52469dc7683e1bcd7a4a1acda2b79db91b2dda2fc30ea5cbb63d2cef')
+sha256sums_x86_64=('a8d52f1d30fe5df28bf9004d2ff05a5d6a6e293687f8c2a664d81e40452b1cfa')
+sha256sums_aarch64=('7a2c6eb585beb99f8ed762c4aecd5930aaf8033c78425974fc9b6b3371615c2f')
 
 package() {
     local _binary_var="_binary_${CARCH}"
