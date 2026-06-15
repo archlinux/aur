@@ -6,14 +6,17 @@
 pkgname='pulse-autoconf'
 _pkgverUpstream="1.10.2"
 pkgver="${_pkgverUpstream//-/.}"
-pkgrel=2
+pkgrel=3
 pkgdesc="PulseAudio server dynamic configuration daemon"
 arch=('any')
 url='https://www.eomanis.dedyn.io/permshare/pulse-autoconf/'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('bash' 'bc' 'coreutils' 'findutils' 'grep' 'libpulse' 'sed' 'util-linux')
-source=("https://www.eomanis.dedyn.io/permshare/pulse-autoconf/pulse-autoconf-${_pkgverUpstream}.tar.gz")
-sha384sums=('35447acbedb2b0d41646f222cd3c4fe340eef484920e01ba89195fcf0ffdb9f7979f77b3990c39c526d27a5326a07f19')
+source=("https://www.eomanis.dedyn.io/permshare/pulse-autoconf/pulse-autoconf-${_pkgverUpstream}.tar.gz"
+        "https://www.eomanis.dedyn.io/permshare/pulse-autoconf/pulse-autoconf-${_pkgverUpstream}.tar.gz.asc")
+sha384sums=('35447acbedb2b0d41646f222cd3c4fe340eef484920e01ba89195fcf0ffdb9f7979f77b3990c39c526d27a5326a07f19'
+            'SKIP')
+validpgpkeys=('F57637E9E5C28F91EE64277B603EEF8FE0A99498') # eomanis <eomanis at web dot de>
 
 package () {
     local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
