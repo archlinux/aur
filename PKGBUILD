@@ -2,13 +2,15 @@
 _pkgname="mozlz4"
 pkgname="${_pkgname}-git"
 pkgdesc="Decompress / compress mozlz4 files"
-pkgver=v0.1.0.r10.gd003163
+pkgver=v0.1.0.r14.ge66f879
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/jusw85/mozlz4"
 license=("MIT")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 makedepends=("git" "cargo")
-source=("git+https://github.com/jusw85/mozlz4.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 options=('!lto')
 
@@ -20,7 +22,7 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target host-tuple
 }
 
 build(){
@@ -33,10 +35,11 @@ build(){
 check(){
   cd "${_pkgname}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  export CFLAGS="${CFLAGS} -fno-lto"
+  cargo test --frozen --release --all-features
 }
 
 package() {
   cd "${_pkgname}"
-  install -D -m755 "target/release/mozlz4" "$pkgdir/usr/bin/mozlz4"
+  install -Dm0755 target/release/mozlz4-bin "$pkgdir/usr/bin/mozlz4"
 }
