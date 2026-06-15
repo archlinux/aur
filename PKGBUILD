@@ -1,7 +1,7 @@
 # Maintainer: Microck <contact@micr.dev>
 
 pkgname=kagi-cli
-pkgver=0.9.3
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="Agent-native CLI for Kagi subscribers with JSON-first search output"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,14 @@ makedepends=('cargo')
 provides=('kagi')
 conflicts=('kagi')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('59ecee9e804587106fcc910f486aa54f8f4720b7d976f1834b2946cc979de76e')
+sha256sums=('d3893bd7423b2b99100b2fbbf1503cb775cd0df75399d44dee7da46c52d1d884')
+
+_set_arch_lto_compatible_cflags() {
+  # Arch makepkg can add -flto through CFLAGS. ring's C/assembly static objects
+  # need fat LTO objects so the final Rust binary can link under those flags.
+  CFLAGS+=" -ffat-lto-objects"
+  export CFLAGS
+}
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -21,6 +28,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  _set_arch_lto_compatible_cflags
   cargo build --frozen --release
 
   # Generate shell completions
@@ -31,6 +39,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
+  _set_arch_lto_compatible_cflags
   cargo test --frozen --release
 }
 
