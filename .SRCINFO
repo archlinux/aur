@@ -1,6 +1,6 @@
 pkgbase = btrfs-progs-experimental-git
 	pkgdesc = Btrfs filesystem utilities with experimental and unstable features enabled
-	pkgver = 7857_7.0_r5_gce18c3a1
+	pkgver = 7892_7.0_r40_gb5bf609c
 	pkgrel = 1
 	url = https://btrfs.wiki.kernel.org/index.php/Main_Page
 	install = btrfs-progs-experimental-git.install
