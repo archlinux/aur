@@ -1,0 +1,15 @@
+pkgbase = pktstat-bin
+	pkgdesc = Lightweight Ethernet interface traffic monitor and reporter
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/dkorunic/pktstat
+	install = pktstat.install
+	arch = x86_64
+	license = MIT
+	provides = pktstat
+	conflicts = pktstat
+	options = !strip
+	source_x86_64 = pktstat-x86_64-0.5.0.tgz::https://github.com/dkorunic/pktstat/releases/download/v0.5.0/pktstat_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 2b95203eb0acf20b35b349a4e23ddbd67434cd8babe4575fd89ad531476036f8
+
+pkgname = pktstat-bin

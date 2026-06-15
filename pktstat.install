@@ -1,0 +1,10 @@
+post_install() {
+    echo "Setting CAP_NET_RAW & CAP_NET_ADMIN capabilities on /usr/bin/pktstat..."
+    setcap 'cap_net_raw,cap_net_admin=eip' usr/bin/pktstat
+}
+
+post_upgrade() {
+    post_install "$1"
+}
+
+# vim:set ts=2 sw=2 et:

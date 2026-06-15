@@ -1,0 +1,5 @@
+[pktstat-bin]
+source = "github"
+github = "dkorunic/pktstat"
+use_latest_release = true
+prefix = "v"
