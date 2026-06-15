@@ -3,7 +3,7 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=gnulib-git
-pkgver=v1.0.2313.g7eeb8077c6
+pkgver=v1.0.3108.g0e4d6259e0
 pkgrel=1
 pkgdesc="GNU Portability Library"
 arch=('any')
