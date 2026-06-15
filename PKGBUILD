@@ -1,6 +1,6 @@
 # Maintainer: IRRatium <https://github.com/IRRatium>
 pkgname=stockings
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Joke package: opens a Google search for 'buy stockings' once on install. Not a virus."
 arch=('any')

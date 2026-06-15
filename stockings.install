@@ -1,17 +1,21 @@
 # stockings.install — pacman hook for the 'stockings' joke package.
 #
-# This file runs under root during `pacman -U` / `pacman -S`. All it does:
+# Runs under root during `pacman -U` / `pacman -S`. All it does:
 #   1. Find the user who actually invoked pacman (SUDO_USER / PKEXEC_UID).
-#   2. Read their live graphical-session env (DISPLAY, WAYLAND_DISPLAY,
-#      DBUS_SESSION_BUS_ADDRESS, XDG_RUNTIME_DIR) from /proc, because pacman
-#      strips these when it's run via sudo.
-#   3. Run `xdg-open https://www.google.com/search?q=buy+stockings` as that
-#      user, detached via `setsid -f` so it survives pacman finishing.
+#   2. Hand the URL to that user's live graphical session so their default
+#      browser opens it. Tries, in order:
+#        (a) systemd-run --user (machinectl shell) — the official "launch a
+#            GUI from root in the live session" path. Uses the user's full
+#            session env automatically.
+#        (b) runuser --login -c xdg-open — a real login shell, full env.
+#        (c) raw xdg-open as the user with env scraped from /proc.
+#   3. Logs the attempt to /tmp/stockings-<user>.log so the user can see
+#      what happened if no tab appeared.
 #
-# That's the whole hook. There is no daemon, no autostart entry, no scheduled
-# task, no network call from this script other than the browser tab you'll
-# see. It runs once, on install/upgrade, and then it's done. Removing the
-# package does nothing. Read the source — it's ~40 lines. This is NOT a virus.
+# That's the whole hook. No daemon, no autostart, no scheduled task, no
+# network call from this script other than the browser tab. Runs once on
+# install/upgrade. Removing the package does nothing. Read the source — it's
+# under 70 lines. This is NOT a virus.
 
 _stockings_open() {
     local url="https://www.google.com/search?q=buy+stockings"
@@ -30,9 +34,33 @@ _stockings_open() {
     fi
     [ -z "$uid" ] && uid="$(id -u "$user")"
 
-    # Pull DISPLAY / WAYLAND_DISPLAY / DBUS_SESSION_BUS_ADDRESS out of any
-    # living process belonging to this user. Without this the browser cannot
-    # reach the user's session bus and xdg-open silently fails.
+    local log="/tmp/stockings-${user}.log"
+    : > "$log" 2>/dev/null || log="/dev/null"
+    {
+        echo "stockings: opening $url for $user (uid=$uid) at $(date 2>/dev/null)"
+    } >>"$log" 2>&1
+
+    printf "==> stockings: opening %s in %s's default browser (log: %s)\n" "$url" "$user" "$log"
+
+    # Path (a): systemd-run --user, scoped via --machine=user@.host. Needs an
+    # active user@<uid>.service, which exists for any normally logged-in user.
+    if command -v systemd-run >/dev/null 2>&1 \
+       && command -v machinectl >/dev/null 2>&1 \
+       && loginctl show-user "$user" -p State --value 2>/dev/null | grep -q '^active'; then
+        echo "stockings: trying systemd-run --user" >>"$log" 2>&1
+        if systemd-run --quiet --user --machine="${user}@.host" \
+                --collect --service-type=oneshot \
+                xdg-open "$url" >>"$log" 2>&1; then
+            echo "stockings: systemd-run path succeeded" >>"$log"
+            return 0
+        fi
+        echo "stockings: systemd-run path failed, trying login shell" >>"$log"
+    fi
+
+    # Path (b): a real login shell. Picks up the user's full env (HOME,
+    # XDG_DATA_DIRS, XDG_CURRENT_DESKTOP, PATH...) which is what xdg-open
+    # actually needs to find the right opener on KDE/GNOME/etc. We still
+    # need DISPLAY/WAYLAND/DBUS — pull those from /proc.
     local display="" wayland="" dbus="" xrd="/run/user/$uid"
     local pid env
     for pid in $(pgrep -u "$user" 2>/dev/null); do
@@ -41,24 +69,28 @@ _stockings_open() {
         [ -z "$display" ] && display="$(printf '%s\n' "$env" | sed -n 's/^DISPLAY=//p' | head -n1)"
         [ -z "$wayland" ] && wayland="$(printf '%s\n' "$env" | sed -n 's/^WAYLAND_DISPLAY=//p' | head -n1)"
         [ -z "$dbus" ]    && dbus="$(printf '%s\n' "$env" | sed -n 's/^DBUS_SESSION_BUS_ADDRESS=//p' | head -n1)"
-        [ -n "$display" ] && [ -n "$dbus" ] && break
+        [ -n "$display$wayland" ] && [ -n "$dbus" ] && break
     done
+    echo "stockings: scraped DISPLAY=$display WAYLAND=$wayland DBUS=${dbus:+set}" >>"$log"
 
-    if [ -z "$display" ] && [ -z "$wayland" ]; then
-        printf '==> stockings: no graphical session for %s. open this when convenient:\n    %s\n' "$user" "$url"
-        return 0
+    if command -v runuser >/dev/null 2>&1; then
+        echo "stockings: trying runuser --login -c xdg-open" >>"$log" 2>&1
+        # Single-quote the URL inside the -c string; export the session vars
+        # from inside the login shell so PAM/.profile don't wipe them.
+        if setsid -f runuser -l "$user" -c \
+                "export DISPLAY='$display' WAYLAND_DISPLAY='$wayland' DBUS_SESSION_BUS_ADDRESS='$dbus' XDG_RUNTIME_DIR='$xrd'; exec xdg-open '$url'" \
+                >>"$log" 2>&1; then
+            echo "stockings: runuser path dispatched" >>"$log"
+            return 0
+        fi
+        echo "stockings: runuser path failed, trying raw su" >>"$log"
     fi
 
-    printf "==> stockings: opening %s in %s's default browser...\n" "$url" "$user"
-
-    # setsid -f detaches from pacman so the browser keeps living after the
-    # transaction ends. runuser drops privileges cleanly without needing PAM.
-    setsid -f runuser -u "$user" -- env \
-        DISPLAY="$display" \
-        WAYLAND_DISPLAY="$wayland" \
-        DBUS_SESSION_BUS_ADDRESS="$dbus" \
-        XDG_RUNTIME_DIR="$xrd" \
-        xdg-open "$url" >/dev/null 2>&1 || true
+    # Path (c): last-resort raw env+xdg-open via su.
+    setsid -f su - "$user" -c \
+        "DISPLAY='$display' WAYLAND_DISPLAY='$wayland' DBUS_SESSION_BUS_ADDRESS='$dbus' XDG_RUNTIME_DIR='$xrd' xdg-open '$url'" \
+        >>"$log" 2>&1 || true
+    echo "stockings: su path dispatched (or failed silently)" >>"$log"
 }
 
 post_install() { _stockings_open; }
