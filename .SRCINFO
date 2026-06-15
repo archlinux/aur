@@ -1,13 +1,13 @@
 pkgbase = cppfetch
 	pkgdesc = A system fetch tool made in cpp
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 0
 	url = https://github.com/oxodx/cppfetch
 	arch = x86_64
 	license = MIT
 	makedepends = glibc
 	makedepends = make
-	source = cppfetch-0.1.3.tar.gz::https://github.com/oxodx/cppfetch/archive/0.1.3.tar.gz
+	source = cppfetch-0.1.4.tar.gz::https://github.com/oxodx/cppfetch/archive/0.1.4.tar.gz
 	source = https://raw.githubusercontent.com/oxodx/cppfetch/main/LICENSE.md
 	sha1sums = SKIP
 	sha1sums = SKIP
