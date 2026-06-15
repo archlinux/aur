@@ -1,6 +1,6 @@
 pkgbase = nvenc
 	pkgdesc = NVIDIA Video Codec based command line encoder
-	pkgver = 9.18
+	pkgver = 9.19
 	pkgrel = 1
 	url = https://github.com/rigaya/NVEnc
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = nvenc
 	depends = libass
 	depends = vapoursynth
 	depends = libdovi
-	source = git+https://github.com/rigaya/NVEnc.git#tag=9.18
-	sha256sums = 515c420af9cfb9b2641eb8ac6ce02badd5f791522302ceae5ed309662385398d
+	source = git+https://github.com/rigaya/NVEnc.git#tag=9.19
+	sha256sums = 2375324feace87072edade9b766435839dbfa0eed4b702880fef58f5b5784c72
 
 pkgname = nvenc
