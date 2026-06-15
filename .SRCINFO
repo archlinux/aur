@@ -1,7 +1,7 @@
 pkgbase = lektra-bin
 	pkgdesc = High-performance Document and Image viewer that prioritizes screen space and control
-	pkgver = 0.7.3
-	pkgrel = 1
+	pkgver = 0.7.4
+	pkgrel = 0
 	url = https://codeberg.org/lektra/lektra
 	arch = x86_64
 	license = AGPL-3.0
@@ -12,7 +12,7 @@ pkgbase = lektra-bin
 	provides = lektra
 	conflicts = lektra
 	conflicts = lektra-git
-	source = lektra-0.7.3-x86_64.tar.gz::https://codeberg.org/lektra/lektra/releases/download/v0.7.3/lektra-0.7.3-x86_64.tar.gz
-	sha256sums = 2fef1af55be72940b20943c265b138b4cc90a776ae433cff3ea29ef6700f56d3
+	source = lektra-0.7.4-x86_64.tar.gz::https://codeberg.org/lektra/lektra/releases/download/v0.7.4/lektra-0.7.4-x86_64.tar.gz
+	sha256sums = b766ab6b8b19f40dc8e9e4080a2c9cbcdde184c99658bdb2f3a4e721c8604c28
 
 pkgname = lektra-bin
