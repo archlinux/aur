@@ -1,16 +1,16 @@
 # Maintainer: lizapropanol <lizapropanol@github.com>
 pkgname=morph
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Modern music player with dynamic UI and QML theme support"
 arch=('x86_64')
 url="https://github.com/lizapropanol/morph"
 license=('GPL3')
 depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-svg' 'qt6-5compat' 
-         'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'hicolor-icon-theme' 'yt-dlp' 'ffmpeg')
+         'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'hicolor-icon-theme' 'yt-dlp' 'ffmpeg' 'openssl')
 makedepends=('cmake' 'gcc')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('89d72271e9899744021d6c37cc7ee2cac32f19f267005a986d4e3bb3df80b9dd')
+sha256sums=('865d6ab682bb277996baeb1c1ce7af81890a9e16b1ee7700b8d658d665c18cef')
 
 build() {
   cmake -B build -S "${pkgname}-${pkgver}" \
