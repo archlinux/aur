@@ -3,7 +3,7 @@
 _pkgauthor=blob42
 _pkgname=aichat-ng
 pkgname=${_pkgname}-bin
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="OpenAI, ChatGPT, Gemini, Claude, Mistral, Ollama and more in your terminal. Fork with advanced features."
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -22,7 +22,7 @@ source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.tar.gz::${url}/releases/downloa
 source_i686=("${_pkgname}-${pkgver}-${arch[1]}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${_barch[1]}-unknown-linux-musl.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[2]}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${_barch[2]}-unknown-linux-musl.tar.gz")
 sha256sums=('57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
-            'dc608c82d5312242ad1de6f495bd89529ce2e1d88488b7eb5c2b42b1870eddba'
+            '104e58fe2929a528e06fedcae7cb165cc0501f5336bdb552ca76a604c1b0b9de'
             'c67c49d96021acf610f51452cae6b926c00e0650f6e61a7670b0107b09eb2913'
             '205e6acb87cf92cdef2bf57471d955b867cadaeca31f93a44b35362ab5646425'
             '98ff3dc671f31e464c712b06572a7047d97ab88a1385221141a4419bc1fbb986'
@@ -33,9 +33,9 @@ sha256sums=('57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
             'fb6404c76434a7d6c220e0060fda89cdb0627ebcf55dc2d7db428f0ccf2a3f6f'
             '44f96ee416d97fcd670e879246f7a26af7e5003252ce5977f237ee22dd71608c'
             '6661e14c7fc7c543c911a44a884400634c1ce71218c7770b638334af468d58a9')
-sha256sums_x86_64=('01610052364b08076d49575e3e811262d447c3066f06bbbc3d7edd6bc582b784')
-sha256sums_i686=('08f4fedf9802d3e5d2686d7cbd2aa1f7123cc4ca9438dc1b25b13868918c84d2')
-sha256sums_aarch64=('22f7c3dd05120c93ccc870e640c2b624696526d0b7c1da747ed2230de35a0af3')
+sha256sums_x86_64=('1158a532b57d12a381b21deef77d0d56c7671a266633fd6f005deb0526446790')
+sha256sums_i686=('304b5ad74142dbfc8fc4979c6e969bcd2a0d24fb1710f4a1aac95db0e3793152')
+sha256sums_aarch64=('1c2bf3b7968bb46d457d72d85f97465d81b57e834c690b4428ab5e7f6112fd82')
 
 prepare() {
   cd "${srcdir}/" || exit
