@@ -1,8 +1,8 @@
 pkgname=twintaillauncher-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="A multi-platform launcher for your anime games"
+pkgdesc="Your anime games, one launcher"
 arch=('x86_64' 'aarch64')
 url="https://github.com/TwintailTeam/TwintailLauncher"
 license=('GPL-3.0-only')
@@ -13,8 +13,8 @@ provides=("twintaillauncher")
 conflicts=("twintaillauncher-git" "twintaillauncher")
 source_x86_64=("${_pkgname}-${pkgver}-amd64.deb::${url}/releases/download/ttl-v${pkgver}/twintaillauncher_${pkgver}_amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-arm64.deb::${url}/releases/download/ttl-v${pkgver}/twintaillauncher_${pkgver}_arm64.deb")
-sha256sums_x86_64=('a2e269667db4d6bd08ab5cee143dd3e20d944a1a78f9c8fc5933cd6dd07f1aaa')
-sha256sums_aarch64=('793ef1e6fffdd2bdb9161118d54ef857ddb84d09e5522e1fc2a2d39ddb524371')
+sha256sums_x86_64=('82c10ed5d06c481b6c2f444e7795f088afb8a71469032a380f18593cca428858')
+sha256sums_aarch64=('08f550a7aa766021372cb5db8cbc2f32bb6f05c2fd395d991c18e8a45ade94fc')
 
 build() {
   bsdtar -x -f data.tar.gz

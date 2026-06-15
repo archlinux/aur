@@ -1,6 +1,6 @@
 pkgbase = twintaillauncher-bin
-	pkgdesc = A multi-platform launcher for your anime games
-	pkgver = 2.2.1
+	pkgdesc = Your anime games, one launcher
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/TwintailTeam/TwintailLauncher
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = twintaillauncher-bin
 	conflicts = twintaillauncher-git
 	conflicts = twintaillauncher
 	options = !debug
-	source_x86_64 = twintaillauncher-2.2.1-amd64.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v2.2.1/twintaillauncher_2.2.1_amd64.deb
-	sha256sums_x86_64 = a2e269667db4d6bd08ab5cee143dd3e20d944a1a78f9c8fc5933cd6dd07f1aaa
-	source_aarch64 = twintaillauncher-2.2.1-arm64.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v2.2.1/twintaillauncher_2.2.1_arm64.deb
-	sha256sums_aarch64 = 793ef1e6fffdd2bdb9161118d54ef857ddb84d09e5522e1fc2a2d39ddb524371
+	source_x86_64 = twintaillauncher-2.3.0-amd64.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v2.3.0/twintaillauncher_2.3.0_amd64.deb
+	sha256sums_x86_64 = 82c10ed5d06c481b6c2f444e7795f088afb8a71469032a380f18593cca428858
+	source_aarch64 = twintaillauncher-2.3.0-arm64.deb::https://github.com/TwintailTeam/TwintailLauncher/releases/download/ttl-v2.3.0/twintaillauncher_2.3.0_arm64.deb
+	sha256sums_aarch64 = 08f550a7aa766021372cb5db8cbc2f32bb6f05c2fd395d991c18e8a45ade94fc
 
 pkgname = twintaillauncher-bin
