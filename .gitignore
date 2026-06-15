@@ -1,0 +1,9 @@
+# makepkg build artifacts
+/pkg/
+/src/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.tar.gz
+*.gz
+# git VCS source checkout
+/dankcalendar-git/
