@@ -20,6 +20,7 @@ depends=(
 optdepends=(
     'librsvg: render PNG icon sizes at install time'
     'libreoffice: convert PPTX files to PDF'
+    'jq: recent-files menu for the walker launcher'
 )
 source=("sidemark::git+https://github.com/brokkoli71/sidemark.git")
 sha256sums=('SKIP')
@@ -47,6 +48,10 @@ EOF
     # Desktop entry
     install -Dm644 de.hspitz.sidemark.desktop \
         "$pkgdir/usr/share/applications/de.hspitz.sidemark.desktop"
+
+    # Walker/elephant menu (copy to ~/.config/elephant/menus/ to enable)
+    install -Dm644 extras/sidemark_recent.lua \
+        "$pkgdir/usr/share/sidemark/extras/sidemark_recent.lua"
 
     # SVG icon (always)
     install -Dm644 icon.svg \

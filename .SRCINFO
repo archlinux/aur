@@ -16,6 +16,7 @@ pkgbase = sidemark-git
 	depends = adwaita-icon-theme
 	optdepends = librsvg: render PNG icon sizes at install time
 	optdepends = libreoffice: convert PPTX files to PDF
+	optdepends = jq: recent-files menu for the walker launcher
 	source = sidemark::git+https://github.com/brokkoli71/sidemark.git
 	sha256sums = SKIP
 
