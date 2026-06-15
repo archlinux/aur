@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-bin
 _pkgname=Mailspring
-pkgver=1.21.1
+pkgver=1.22.0
 _electronversion=41
 pkgrel=1
 pkgdesc="A beautiful, fast and fully open source mail client.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-0.1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ce531f9023215957735d49f6b73adc91914f7533dd11ad198dfaf0f40d32d8c3'
+sha256sums=('733010db4d3bb62547203531831bd9c0237de60583ab43ff5ac8962c1f1ef378'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
