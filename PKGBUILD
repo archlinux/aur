@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=go-automate-git
-pkgver=0.1.0.r62.g04d6d37
+pkgver=0.1.0.r67.g6730ed7
 pkgrel=1
 pkgdesc="CLI utility to trigger Home Assistant automations via keyboard shortcuts (git version)"
 arch=('x86_64' 'aarch64')
