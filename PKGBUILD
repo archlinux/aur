@@ -10,7 +10,7 @@
 
 pkgname=nautilus-dropbox
 pkgdesc="Dropbox Nautilus Extension"
-pkgver=2025.05.20
+pkgver=2026.05.06
 pkgrel=1
 arch=(x86_64)
 url="https://www.dropbox.com/"
@@ -18,8 +18,8 @@ license=('custom:CC-BY-ND-3' 'GPL')
 depends=(nautilus libnautilus-extension dropbox)
 makedepends=(python python-docutils python-gobject gnome-common)
 options=('!libtool' '!emptydirs')
-source=('https://github.com/dropbox/nautilus-dropbox/archive/refs/tags/v2025.05.20.tar.gz')
-sha512sums=('057fc46885c817a627cafa8a67f324be294ee858bdcf142b9e8fce9533bd3d8644e25b73316a9c2709e77967eff4d936e4bd2a55cecfe44604ba27d5b5c64613')
+source=('https://github.com/dropbox/nautilus-dropbox/archive/refs/tags/v2026.05.06.tar.gz')
+sha512sums=('64c9e02ddacb30ada8ac803a3f888494be91a7d56e83942fc4b0a96b9abc7a39023b689011d782fdcbb64ce481a4fc93ffd2fa1190a9731af2b1f432f25a6f3f')
 
 build() {
     cd nautilus-dropbox-${pkgver}
