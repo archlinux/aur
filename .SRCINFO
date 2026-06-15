@@ -1,6 +1,6 @@
 pkgbase = extera-next-bin
 pkgdesc = A feature-rich Matrix client made with Flutter
-pkgver = 26.2.9
+pkgver = 26.3.0
 pkgrel = 1
 url = https://github.com/ExteraApp/Extera
 arch = x86_64
@@ -12,6 +12,8 @@ depends = libkeybinder3
 depends = openssl
 depends = webkit2gtk-4.1
 depends = xdg-user-dirs
+depends = ttf-roboto
+depends = ttf-roboto-mono
 provides = extera-next-bin
 ; provides = exteranext-git
 conflicts = extera-next-bin

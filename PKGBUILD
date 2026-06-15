@@ -1,5 +1,5 @@
 pkgname=extera-next-bin
-pkgver=26.2.9
+pkgver=26.3.0
 pkgrel=1
 pkgdesc="A feature-rich Matrix client made in Flutter"
 arch=('x86_64')
@@ -14,6 +14,8 @@ depends=(
   'openssl'
   'webkit2gtk-4.1'
   'xdg-user-dirs'
+  'ttf-roboto'
+  'ttf-roboto-mono'
 )
 makedepends=('curl')
 source=(
