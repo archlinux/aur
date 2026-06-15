@@ -1,11 +1,11 @@
 pkgbase = keychron-k10-he-udev
 	pkgdesc = udev rule for the Keychron K10 HE wireless keyboard
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	arch = any
 	license = 0BSD
 	depends = keychron-link-udev
 	source = 70-keychron-k10-he.rules
-	sha256sums = fe710afd9bc6047867f34991d81b659f4dd3799a4c9842fd5943b3608ab561b3
+	sha256sums = 5effec4fa947e732f66ab33c397755a5b20626b0fae401df35fefc3031adccd6
 
 pkgname = keychron-k10-he-udev
