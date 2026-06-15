@@ -4,7 +4,7 @@
 # (`makepkg --printsrcinfo > .SRCINFO`), and push to the AUR git remote.
 pkgname=cortex-bin
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Local-first, open-source NotebookLM alternative — a desktop study OS"
 arch=('x86_64')
 url="https://github.com/PndaMan/cortex"
@@ -16,6 +16,9 @@ optdepends=(
   'libreoffice-fresh: rendered PPTX/DOCX slide previews (text ingest works without it)'
   'poppler: faster, cleaner PDF text extraction'
   'ollama: local, keyless LLM + embeddings'
+  'yt-dlp: YouTube / web audio + video ingest'
+  'rclone: encrypted cloud backup'
+  'age: backup encryption'
 )
 provides=('cortex')
 conflicts=('cortex')
@@ -27,4 +30,10 @@ package() {
   cd "$srcdir"
   bsdtar -xf "Cortex_${pkgver}_amd64.deb"
   bsdtar -xf data.tar.* -C "$pkgdir"
+
+  # The .deb bundles the Tauri sidecars age/rclone/yt-dlp into /usr/bin, which
+  # collides with the system 'rclone'/'yt-dlp'/'age' packages and makes pacman
+  # abort with "exists in filesystem". Drop them — Cortex resolves these tools
+  # bundled-sidecar → PATH → download at runtime, so the optdepends copies work.
+  rm -f "$pkgdir/usr/bin/age" "$pkgdir/usr/bin/rclone" "$pkgdir/usr/bin/yt-dlp"
 }
