@@ -10,7 +10,7 @@ depends=('pacman' 'git')
 conflicts=('rauri')
 provides=('rauri')
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/ognrdrch/rauri/releases/download/v${pkgver}/rauri-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('e73c65d2f169b2d8bf8f4b0fe742c88d6a83cdc999f84c6b0ba8c6f66e88f2bd')
+sha256sums_x86_64=('c670b40456e1afc994902d60749af3adc7cf8368a51f6080ef1f262079077a1a')
 
 package() {
   cd "$srcdir"
