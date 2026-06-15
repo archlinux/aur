@@ -6,12 +6,13 @@ pkgver=26.0.2.r66.g93cbdb70
 pkgrel=1
 epoch=
 pkgdesc="robot diagnostics, log review/analysis, and data visualization application tool"
-arch=(x86_64)
+arch=(i686 x86_64)
 url="https://github.com/Mechanical-Advantage/AdvantageScope.git"
 license=("LicenseRef-BSD-3.0-Clause-Noninfringement")
 groups=()
-depends=(nspr libxdamage dbus nss libxcb libxext glib2 libxrandr mesa libxfixes alsa-lib alsa-lib glibc gcc-libs libcups libxkbcommon cairo at-spi2-core pango expat libx11 gtk3 libdrm libxcomposite hicolor-icon-theme)
-makedepends=(jq curl git npm tar python libcrypt.so=1)
+_electron=electron34
+depends=("$_electron" at-spi2-core bash glibc gtk3 hicolor-icon-theme libgcc libnotify libsecret libstdc++ libxss libxtst nss python3 xdg-utils)
+makedepends=(emscripten git npm)
 checkdepends=()
 optdepends=()
 provides=()
@@ -21,37 +22,62 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+$url" "emsdk-$pkgver.tar.gz::https://github.com/emscripten-core/emsdk/archive/refs/tags/$_emsdk.tar.gz")
+source=("git+$url")
 noextract=()
-sha256sums=('SKIP' 'd972bf0909718f155aeb5627429230471c94b2a8a3047ee696e2690ec73961cb')
+sha256sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-  cd emsdk-$_emsdk
-  ./emsdk install latest
+  _ver="$(</usr/lib/${_electron}/version)"
+  cd AdvantageScope
+  npm pkg set homepage "https://github.com/Mechanical-Advantage/AdvantageScope"
+  npm pkg set version "${pkgver/.r/+r}"
+  # apply all patches
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="$Psrc$$@/}"
+    [[ $src = *.patch ]] || continue
+    echo "Apply patch $src..."
+    patch -Np1 < "../$src"
+  done
+  npm ci
 }
 
 pkgver() {
   cd "AdvantageScope"
   printf "%s" "$(git describe --tags | cut -c2- | sed 's+-+.r+' | tr - .)"
 }
+
 build() {
   cd AdvantageScope
-  "$srcdir"/emsdk-$_emsdk/emsdk activate latest
-  source "$srcdir"/emsdk-$_emsdk/emsdk_env.sh
-  npm install
-  jq '. + { homepage: "https://github.com/Mechanical-Advantage/AdvantageScope", version: "'"${pkgver/.r/+r}"'" }' package.json >temp.json && mv temp.json package.json
-  npm run build -- --linux --config.linux.target=pacman
-  cd dist
-  tar xvf advantagescope-${pkgver%.r*}.pacman
+  local i686=ia32 x86_64=x64
+  npm run compile
+  npm run wasm:compile
+  npm run docs:build-embed
+  export NODE_OPTIONS="--max-old-space-size=4096"
+  npx electron-builder build --linux --"${!CARCH}" --dir $dist \
+    -c.electronDist=/usr/lib/"$_electron" \
+    -c.electronVersion="$_ver"
 }
 
 package() {
+  local i686=linux-ia32-unpacked x86_64=linux-unpacked
+  install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
+#! /usr/bin/sh
+exec $_electron "/usr/lib/${pkgname}/app.asar" "\$@"
+EOF
   cd AdvantageScope
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-  cd dist
-  cp -rf opt "$pkgdir"
-  cp -rf usr "$pkgdir"
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s "/opt/AdvantageScope/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -d "${pkgdir}/usr/lib/${pkgname}/"
+  cp -r dist/${!CARCH}/resources/* "${pkgdir}/usr/lib/${pkgname}"
+  cd icons/app/app-icons-linux
+  for i in *x*.png; do
+    local dir=${i%.png}
+    dir=${dir#icon_}
+    install -Dm6444 "$i" "${pkgdir}/usr/share/icons/hicolor/${dir}/apps/advantagescope.png"
+  done
 }
+
+# vim:set ts=2 sw=2 et:
