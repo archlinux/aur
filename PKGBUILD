@@ -11,8 +11,8 @@ depends=('python')
 makedepends=(python-build python-installer python-setuptools python-wheel)
 license=('MIT')
 arch=('any')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ffbfee59e6c214e3479ebeb8c055aa0785f89970c78b81bbeaa9477d2bc3706f')
+source=("https://files.pythonhosted.org/packages/source/c/crccheck/crccheck-${pkgver}.tar.gz")
+sha256sums=('1544c0110bf0a697d875d4f29dc40d7079f9d4d402a9317383f55f90ca72563a')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"

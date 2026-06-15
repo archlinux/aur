@@ -10,7 +10,7 @@ pkgbase = python-crccheck
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/MartinScharrer/crccheck/archive/refs/tags/v1.3.1.tar.gz
-	sha256sums = ffbfee59e6c214e3479ebeb8c055aa0785f89970c78b81bbeaa9477d2bc3706f
+	source= https://files.pythonhosted.org/packages/source/c/crccheck/crccheck-1.3.1.tar.gz
+	sha256sums = 1544c0110bf0a697d875d4f29dc40d7079f9d4d402a9317383f55f90ca72563a
 
 pkgname = python-crccheck
