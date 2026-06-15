@@ -1,7 +1,7 @@
 # Maintainer: Mikhail <efklid@gmail.com>
 # shellcheck disable=SC2034,SC2154
 pkgname=refractum
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="GUI tool for ranking pacman mirrors on Arch Linux and Arch-based distributions"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
     'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Labaman/refractum/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('32f798da35ddea7c3898b5d7adfa10e404fa0457181ef14df6a702741cf47c10')
+sha256sums=('ec7751222d9a5cad3d03dae661066830f3f7ca46f3462c0db7e0bb0c0077cfe9')
 install=refractum.install
 
 build() {
