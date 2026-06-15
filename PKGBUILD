@@ -1,14 +1,14 @@
 # Maintainer: simonlinuxcraft <simonlinuxcraft at users dot noreply dot github dot com>
 pkgname=kyber-launcher-inofficial-appimage
 _pkgname=KyberLinuxPort
-_appver=0.1.0-beta.6.3
-pkgver=0.1.0_beta.6.3
+_appver=0.1.0-beta.6.4.5
+pkgver=0.1.0_beta.6.4.5
 pkgrel=1
 pkgdesc="Inofficial Linux build of the Kyber mod launcher for Star Wars: Battlefront II (2017). Not endorsed by the Kyber team."
 arch=('x86_64')
 url="https://github.com/simonlinuxcraft/kyber-linuxport-unofficial"
 license=('GPL-3.0-only')
-depends=('fuse2' 'libnotify' 'gtk3' 'librsvg' 'webkit2gtk-4.1')
+depends=('fuse2' 'libnotify' 'gtk3' 'librsvg' 'nettle3')
 optdepends=('zenity: first-start self-install dialog (alternative to kdialog)'
             'kdialog: first-start self-install dialog (alternative to zenity)'
             'gst-plugins-bad: needed for the Origin login splash video in BF2'
@@ -19,7 +19,7 @@ optdepends=('zenity: first-start self-install dialog (alternative to kdialog)'
 provides=('kyber-launcher')
 options=('!strip')
 source=("${_pkgname}-${_appver}-x86_64.AppImage::${url}/releases/download/v${_appver}/${_pkgname}-x86_64.AppImage")
-sha256sums=('55e1494899573abeadede05dccec9b684a9c563a7b930650af747b6754ef3f00')
+sha256sums=('b253529cb7e181f4cd758d8ec5ef7fc845816b3b0767f68db8a06b70f4d807e9')
 noextract=("${_pkgname}-${_appver}-x86_64.AppImage")
 
 package() {
@@ -49,6 +49,6 @@ Terminal=false
 Type=Application
 Categories=Game;
 MimeType=x-scheme-handler/qrc;x-scheme-handler/nxm;
-StartupWMClass=kyber_launcher
+StartupWMClass=kyber-linux
 EOF
 }
