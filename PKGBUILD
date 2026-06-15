@@ -1,8 +1,8 @@
 pkgname=twintaillauncher
-pkgver=2.2.1
-pkgrel=3
+pkgver=2.3.0
+pkgrel=1
 _dirname="TwintailLauncher-ttl-v${pkgver}"
-pkgdesc='A multi-platform launcher for your anime games'
+pkgdesc='Your anime games, one launcher'
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-only')
 url=https://github.com/TwintailTeam/TwintailLauncher
@@ -17,7 +17,6 @@ options=('!lto' '!debug')
 
 prepare() {
   cd $_dirname
-  echo -e "allowBuilds:\n  esbuild: true" > pnpm-workspace.yaml
   pnpm i
 }
 
