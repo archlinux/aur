@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=JISOCreator
+Comment=Herramienta de creación de ISOs
+Exec=jisocreator
+Icon=jisocreator
+Terminal=false
+Type=Application
+Categories=Utility;System;
