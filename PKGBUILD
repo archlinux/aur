@@ -4,7 +4,7 @@ pkgbase=libopenshot-audio-git
 pkgname=(
     'libopenshot-audio-git'
     'libopenshot-audio-docs-git')
-pkgver=0.4.0.r12.g5bd5f2d
+pkgver=0.6.0.r1.g48516e0
 pkgrel=1
 pkgdesc='A high-quality audio editing and playback library used by libopenshot (git version)'
 arch=('x86_64')
@@ -37,8 +37,9 @@ build() {
 package_libopenshot-audio-git() {
     depends=(
         'alsa-lib'
-        'gcc-libs'
         'glibc'
+        'libgcc'
+        'libstdc++'
         'zlib')
     provides=('libopenshot-audio' 'libopenshot-audio.so')
     conflicts=('libopenshot-audio')
