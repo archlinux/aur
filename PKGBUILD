@@ -1,7 +1,7 @@
 # Maintainer: Douglas Creager <dcreager at dcreager dot net>
 
 pkgname=pi-coding-agent
-pkgver=0.79.1
+pkgver=0.79.3
 pkgrel=1
 pkgdesc='A terminal-based coding agent with multi-model support, mid-session model switching, and a simple CLI for headless coding tasks'
 arch=('x86_64' 'aarch64')
@@ -10,9 +10,9 @@ license=('MIT')
 options=(!debug !strip)
 
 source_x86_64=("pi-linux-$pkgver.tar.gz::https://github.com/earendil-works/pi/releases/download/v$pkgver/pi-linux-x64.tar.gz")
-sha256sums_x86_64=("dc19d2b24d15c76951fe440a47a8212cedb437a25696ebf27a55481156de9e86")
+sha256sums_x86_64=("631c8920eb72ff207a9f12a4d1bab39bc0fb2ac50a10ece45898b83bdd9e7f1e")
 source_aarch64=("pi-linux-$pkgver.tar.gz::https://github.com/earendil-works/pi/releases/download/v$pkgver/pi-linux-arm64.tar.gz")
-sha256sums_aarch64=("a191a0c8d57abf1424c560f53981c2a070f74d2863a47a7958eb16c556c4bc04")
+sha256sums_aarch64=("ffc50632a036e3845a950b96e2335db8c175ff0ccfb58899fc4cb9b486966b89")
 noextract=("pi-linux-$pkgver.tar.gz")
 
 makedepends=("tar")
