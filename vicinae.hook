@@ -1,9 +1,9 @@
 [Trigger]
 Operation = Upgrade
 Type = Package
-Target = vicinae
+Target = vicinae-bin
 
 [Action]
 Description = Restarting vicinae.service as a user unit if enabled/active...
 When = PostTransaction
-Exec = /usr/bin/bash -c '/usr/bin/loginctl list-users --no-legend | /usr/bin/awk "{print \$2}" | /usr/bin/xargs -I {} /usr/bin/bash -c "/usr/bin/systemctl --machine={}@.host --user is-enabled vicinae.service && /usr/bin/systemctl --machine={}@.host --user restart vicinae.service"' || true
+Exec = /usr/bin/bash -c '/usr/bin/loginctl list-users --no-legend | /usr/bin/awk "{print \$2}" | while read -r user; do if /usr/bin/systemctl --machine="${user}@.host" --user is-enabled vicinae.service &>/dev/null; then /usr/bin/systemctl --machine="${user}@.host" --user restart vicinae.service; fi; done'
