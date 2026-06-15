@@ -9,7 +9,7 @@ depends=('fuse2')
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/broisnischal/stroke/releases/download/v${pkgver}/Stroke_${pkgver}_amd64.AppImage")
-sha256sums=('0afe45214f7a8bfba026cb2b5783adb8f5b2feadea1d5b1ce818dc8a483edfc7')
+sha256sums=('dee0443d9a31c679d71513e985b3fae269cad225749fe0a1ff73103cfafbc683')
 
 prepare() {
   chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
