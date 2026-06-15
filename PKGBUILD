@@ -1,7 +1,7 @@
 # Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=fetch-gtk
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="A modern, polished GTK4/Libadwaita graphical interface similar to fastfetch."
 arch=('any')
 url="https://github.com/marleylinux/fetch-gtk"
@@ -10,7 +10,7 @@ depends=('python>=3.11' 'python-gobject' 'gtk4' 'libadwaita')
 conflicts=('gtkfetch')
 replaces=('gtkfetch')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marleylinux/fetch-gtk/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('816660f6824ab55b073ca771077757da7f00d005defadbc6dd928009983e09d7')
+sha256sums=('797628e9ec1ed2771f221b6dee2440759a606be6aa04630a484f536bb29a8ba9')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
