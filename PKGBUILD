@@ -6,8 +6,8 @@ _duckstation_srcdir="duckstation-${_upstream_commit}"
 _builder_tag=v0.6.3
 _builder_raw="https://codeberg.org/hueponik/goosestation-builder/raw/tag/${_builder_tag}"
 pkgname=${_pkgname}
-pkgver=0+git.${_upstream_commit:0:9}
-pkgrel=3
+pkgver=${_builder_tag#v}
+pkgrel=1
 pkgdesc='Sony PlayStation libretro core based on goosified DuckStation'
 arch=('x86_64' 'aarch64')
 url='https://codeberg.org/hueponik/goosestation-builder'
@@ -32,8 +32,6 @@ makedepends=(
   'vulkan-headers'
 )
 
-provides=('goosestation-libretro')
-conflicts=('goosestation-libretro')
 source=(
   "duckstation-${_upstream_commit}.tar.gz::https://github.com/stenzek/duckstation/archive/${_upstream_commit}.tar.gz"
   "goosify.sh::${_builder_raw}/goosify.sh"
@@ -58,7 +56,8 @@ build() {
     -DCMAKE_DISABLE_PRECOMPILE_HEADERS=OFF \
     -DCMAKE_MODULE_PATH="${srcdir}/${_duckstation_srcdir}/cmake" \
     -DCMAKE_PREFIX_PATH="${srcdir}/${_duckstation_srcdir}/cmake" \
-    -DCMAKE_CXX_FLAGS="-Wno-invalid-offsetof" \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -Wno-invalid-offsetof" \
+    -DGOOSE_UPSTREAM_ID="${_upstream_commit:0:7}" \
     -Wno-dev
 
   cmake --build build --parallel --target goosestation_libretro
