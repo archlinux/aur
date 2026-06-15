@@ -1,1 +1,1 @@
-- Fix NullPointer introduced in v23.5 for some SSH connections
+- Fix services with undefined type throwing errors about illegal URL formatting
