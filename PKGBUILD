@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-launch8
-pkgver=8.0.2
+pkgver=8.0.3
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -34,7 +34,7 @@ optdepends=(
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
         "https://github.com/gazebosim/${_pkgbase}/pull/295.patch")
-sha256sums=('c386a8e650fb224cb6a18416b9d05fbfddde02c4543f5341946433ff327c993d'
+sha256sums=('f6482638112d60dd42bc049d1aea927d2166e3a355f1c7f50932b95a9183cb5e'
             '37069d666f130bc75339bb3568ae9668debac3997bd6857773087b888f049d7a')
 
 prepare() {
