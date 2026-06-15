@@ -1,0 +1,19 @@
+pkgbase = amplify
+	pkgdesc = Sound Effects Soundboard with PipeWire/PulseAudio virtual mic routing
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/Sage563/Amplify
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.10
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = pipewire
+	depends = pipewire-pulse
+	optdepends = pulseaudio-utils: alternative to pipewire-pulse for paplay/pactl
+	source = amplify-1.2.4.tar.gz::https://github.com/Sage563/Amplify/archive/v1.2.4.tar.gz
+	sha256sums = 6cb4be29c1b668deb9f5b82a8d71195a3d2b10858e2692e9515f8bc10d329063
+
+pkgname = amplify
