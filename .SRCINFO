@@ -1,6 +1,6 @@
 pkgbase = sonic-desktop-interface
 	pkgdesc = Sonic Desktop Interface
-	pkgver = 6.6.5.1
+	pkgver = 6.6.5.2
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-desktop-interface
 	arch = x86_64
@@ -92,7 +92,7 @@ pkgbase = sonic-desktop-interface
 	optdepends = sonic-screen: screen management
 	provides = plasma-desktop
 	conflicts = plasma-desktop
-	source = sonic-desktop-interface-6.6.5.1.tar.gz::https://github.com/Sonic-DE/sonic-desktop-interface/archive/refs/tags/6.6.5.1.tar.gz
-	sha256sums = 140935af3786de1e10b3f4dd7f6f39181cc347f2f52ed03800d27a2bc9631983
+	source = sonic-desktop-interface-6.6.5.2.tar.gz::https://github.com/Sonic-DE/sonic-desktop-interface/archive/refs/tags/6.6.5.2.tar.gz
+	sha256sums = 9c1b363ea939d0bb2ee081d9b6481b338508db0df8b253a98ddc2214d3ee6dba
 
 pkgname = sonic-desktop-interface
