@@ -1,4 +1,9 @@
 post_install() {
+    setcap cap_net_admin,cap_net_raw,cap_setpcap=+ep /usr/bin/whoisthat-core 2>/dev/null || {
+        echo ":: WARNING: Could not set capabilities on whoisthat-core."
+        echo "   TUN mode requires: sudo setcap cap_net_admin,cap_net_raw,cap_setpcap=+ep /usr/bin/whoisthat-core"
+    }
+
     if ! command -v tun2socks &>/dev/null; then
         echo ":: WARNING: tun2socks binary not found."
         echo "   Install 'tun2socks' or 'tun2socks-bin' for TUN mode VPN support."
