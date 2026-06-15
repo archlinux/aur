@@ -1,0 +1,4 @@
+[qiniu-qshell-bin]
+source = "git"
+git = "https://github.com/qiniu/qshell.git"
+prefix = "v"
