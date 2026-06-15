@@ -1,6 +1,6 @@
 # Maintainer: elbachir-one <bachiralfa@gmail.com>
 pkgname=urusai
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Go implementation of noisy HTTP/DNS traffic generator"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go>=1.22')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/calpa/urusai/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ef10d71fef3bc3ee85613cacdbb748f29e0f800f920225ecb062ca28182dccc8')
+sha256sums=('4459beee58296f8f42ad0bdb7defb28bac7629f350f1b8c27e9b25cf15711c3e')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
