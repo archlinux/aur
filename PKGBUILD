@@ -1,7 +1,7 @@
 # Maintainer: dressedinblack5 <dressedinblack5@proton.me>
 
 pkgname=unused-pkg-remover
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="GUI tool to find and remove unused Arch Linux packages — orphans, pacman cache, Flatpak runtimes, broken packages, AUR build deps, Steam/Proton junk, and more"
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dressedinblack5/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "unused-pkg-remover.desktop")
-sha256sums=('7dc270e9dcc3fb79444525a10afccc7959e4e83c5f7bea3002ff7dfe4e62079f'
+sha256sums=('8373fe924fbadf5e5fec36556dadcb99ffaea0ad1afc3e9037a28620d6e031ef'
             'bd62afefea6bd0fa7b89ff4a1878097b59eb0bc272d89d11000887af02a313c7')
 
 build() {
