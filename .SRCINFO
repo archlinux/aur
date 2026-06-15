@@ -1,6 +1,6 @@
 pkgbase = maestro-bin
 	pkgdesc = Mobile UI testing framework (binary release)
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://maestro.dev
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = maestro-bin
 	provides = maestro
 	conflicts = maestro
 	conflicts = maestro-dev
-	source = maestro-2.6.0.zip::https://github.com/mobile-dev-inc/maestro/releases/download/cli-2.6.0/maestro.zip
-	sha256sums = 80185105a5d7e227e3b3fbcf225f45b312508ea676a9fc8e1b1aa1cac8b9ff6e
+	source = maestro-2.6.1.zip::https://github.com/mobile-dev-inc/maestro/releases/download/cli-2.6.1/maestro.zip
+	sha256sums = 3440825f514f537c6a96bcf5de995780c2a4a7f83a43208fdc95d4f1fecfad3b
 
 pkgname = maestro-bin
