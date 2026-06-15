@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=autofilm-git
-pkgver=1.5.1.r38.g2917380
+pkgver=1.5.1.r141.gef93942
 pkgrel=1
 pkgdesc="A small project to provide Strm direct-link playback for Emby and Jellyfin servers, recommended for use with MediaWarp."
 arch=($CARCH)
@@ -12,35 +12,19 @@ conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=(
     glibc
-    sh
-    zlib
+    libgcc
 )
-# _makepydeps=(
-#     pyyaml
-#     click
-#     feedparser
-#     apscheduler
-#     aiofile
-#     httpx
-#     pydantic
-# )
 makedepends=(
     git
-    python-build
-    python-installer
-    python-wheel
-    python-setuptools
-    python
-    pyinstaller
-    #     "${_makepydeps[@]/#/python-}"
+    rust
 )
 optdepends=(
     'alist: File list program that supports multiple storage'
     'mediawarp: EmbyServer API Optimization: Optimize playback of Strm files, customize the front-end style, customize the allowed access to the client, embedded scripts, work with Alist to realize Emby playback of web resources, recommended to use with AutoFilm.'
     'emby-server: Bring together your videos, music, photos, and live television'
     'jellyfin-server: Jellyfin server backend')
-backup=(usr/share/${pkgname%-git}/config/config.yaml)
-options=('!strip' '!debug')
+backup=(etc/${pkgname%-git}/config.yaml)
+options=('!strip' '!debug' '!lto')
 # install=${pkgname}.install
 source=(
     "${pkgname}::git+${url}.git"
@@ -49,7 +33,7 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            '244dab4d8afffd786c394570bddf8c1e1d8313dd64f8f05977e06c70da9b2c39')
+            'SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -66,24 +50,27 @@ prepare() {
     git submodule init
     git config submodule.alist-client-rs.url "$srcdir/alist-client-rs"
     git -c protocol.file.allow=always submodule update
+  
+    cargo fetch --locked --target host-tuple
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+
     cd "${srcdir}/${pkgname}"
-    pyinstaller --onefil app/main.py
+
+    cargo build  --release --all-features
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-    install -Dm755 dist/main ${pkgdir}/usr/share/${pkgname%-git}/${pkgname%-git}
-
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" <<EOF
-#!/bin/sh
-cd /usr/share/${pkgname%-git}/
-exec ${pkgname%-git} "\$@"
-EOF
-    install -Dm0644 "${srcdir}/${pkgname}"/config/config.example.yaml "${pkgdir}/etc/${pkgname%-git}/config.yaml"
-    install -Dm0644 "${srcdir}/${pkgname}"/config/config.example.old.yaml "${pkgdir}/etc/${pkgname%-git}/config..old.yaml"
-    install -dm0644 "${pkgdir}/usr/share/${pkgname%-git}/logs"
-    install -Dvm644 "${srcdir}/${pkgname%-git}.service" -t "${pkgdir}/usr/lib/systemd/system/"
+   
+    install -vDm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin/"
+    install -vDm644 "config/config.example.yaml" "${pkgdir}/etc/${pkgname%-git}/config.yaml"
+    install -vDm644 fonts/ch.ttf -t ${pkgdir}/usr/share/fonts/TTF/
+    install -vDm644 fonts/en.otf -t ${pkgdir}/usr/share/fonts/OTF/
+    install -vDm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm644 "${srcdir}/${pkgname%-git}.service" -t "${pkgdir}/usr/lib/systemd/system/"
 }
