@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawd-on-desk-bin
 _pkgname='Clawd on Desk'
-pkgver=0.9.0
+pkgver=0.10.0
 _electronversion=41
 pkgrel=1
 pkgdesc="A desktop pet that reacts to your Claude Code sessions in real-time — thinking, typing, juggling, sleeping, and more.(Prebuilt version.Use system-wide electron)"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('92741a2d488c5d72f0b92ab2bf6385069efdc5fbcf1f81a1734704b5be8e8f7a'
+sha256sums=('6ff20badb0904e3b90ca56b0dcf77161a42a7d7c4560fd73e92d5999300f5cd9'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
