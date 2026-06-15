@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Meleshko <dmytro dot meleshko at gmail dot com>
 _pkgname=cc-map-editor
 pkgname="${_pkgname}-bin"
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Map Editor for the game CrossCode"
 arch=('any')
