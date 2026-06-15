@@ -5,7 +5,7 @@ _pkgname=thelounge
 pkgname=thelounge-beta
 _pkgver=4.5.1-pre.1
 pkgver=${_pkgver/-/}
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern self-hosted web IRC client (Latest release/pre-release)'
 url='https://thelounge.chat/'
 arch=('any')
@@ -20,6 +20,7 @@ source=(
     "https://registry.npmjs.org/$_pkgname/-/$_pkgname-$_pkgver.tgz"
     "https://raw.githubusercontent.com/thelounge/thelounge/v${_pkgver}/yarn.lock"
     "https://raw.githubusercontent.com/thelounge/thelounge/v${_pkgver}/package.json"
+    "https://raw.githubusercontent.com/thelounge/thelounge/v${_pkgver}/scripts/version.js"
     'system.service'
     'user.service'
     'sysusers.d'
@@ -29,6 +30,7 @@ noextract=("$_pkgname-$_pkgver.tgz")
 sha256sums=('dedbe34bdedf45ffd9e7846435c8fc45f969041445512608334d15b8e1df1007'
             '0527fbb21ba57e633076376ab9f5a98c89c0f4301e6589c9d8e2d6f2a5ea84ef'
             '0629aa2c9ee3f1f234b7821c31c6803ab5d09764b26a8a66e4002c0730502465'
+            '66fa540d0d6bf20875e0497903241097648a2ee848dd131e44b4c7afda520134'
             'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
             'c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0'
             '30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5'
@@ -66,6 +68,9 @@ package() {
     chown -R root:root "${pkgdir}"
 
     echo /etc/thelounge > "$pkgdir/usr/lib/thelounge/node_modules/thelounge/.thelounge_home"
+
+    # The npm tarball references scripts/version.js at runtime but does not ship it.
+    install -Dm644 "$srcdir/version.js" "$pkgdir/usr/lib/thelounge/node_modules/thelounge/scripts/version.js"
 
     # add default config
     install -Dm 644 "$pkgdir/usr/lib/thelounge/node_modules/thelounge/dist/defaults/config.js" "$pkgdir/etc/thelounge/config.js"
