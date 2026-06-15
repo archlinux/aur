@@ -1,0 +1,13 @@
+pkgbase = stockings
+	pkgdesc = A harmless joke package: opens your browser to search Google for 'buy stockings' once, on install
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/IRRatium/stockings-aur
+	install = stockings.install
+	arch = any
+	license = MIT
+	depends = xdg-utils
+	source = stockings-1.0.0.tar.gz::https://github.com/IRRatium/stockings-aur/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = stockings

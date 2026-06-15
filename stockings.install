@@ -1,0 +1,51 @@
+# stockings.install — pacman hook for the 'stockings' joke package.
+#
+# What this does on install:
+#   1. Detects the user who ran `pacman` (via SUDO_USER / PKEXEC_UID).
+#   2. As that user, runs `xdg-open` on a single Google search URL:
+#        https://www.google.com/search?q=buy+stockings
+#   3. Exits. Nothing is started in the background, nothing is scheduled,
+#      no files are written outside what pacman itself installed.
+#
+# That's it. There is no daemon, no autostart entry, no network call other
+# than the browser tab you'll see. Removing the package does nothing extra.
+
+_open_url() {
+    local url="https://www.google.com/search?q=buy+stockings"
+    local user="" uid=""
+
+    if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
+        user="$SUDO_USER"
+    elif [ -n "$PKEXEC_UID" ]; then
+        user="$(getent passwd "$PKEXEC_UID" | cut -d: -f1)"
+        uid="$PKEXEC_UID"
+    fi
+
+    if [ -z "$user" ]; then
+        cat <<EOF
+==> stockings: could not detect a desktop user (running as plain root?).
+    No browser will be opened. If you want, visit this link manually:
+      $url
+EOF
+        return 0
+    fi
+
+    [ -z "$uid" ] && uid="$(id -u "$user")"
+
+    echo "==> stockings: opening $url in ${user}'s default browser..."
+    su - "$user" -c \
+        "DISPLAY=\${DISPLAY:-:0} XDG_RUNTIME_DIR=/run/user/$uid xdg-open '$url'" \
+        >/dev/null 2>&1 || true
+}
+
+post_install() {
+    _open_url
+}
+
+post_upgrade() {
+    _open_url
+}
+
+post_remove() {
+    echo "==> stockings: uninstalled. Hope you found a nice pair."
+}
