@@ -3,7 +3,7 @@
 
 pkgname=simpleini
 pkgver=4.26 # renovate: datasource=github-tags depName=brofield/simpleini
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform C++ library providing a simple API to read and write INI-style configuration files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/brofield/simpleini"
@@ -25,11 +25,6 @@ package() {
 
   DESTDIR="${pkgdir}" \
     cmake --install build
-
-  install -D -m644 ConvertUTF.c \
-    "${pkgdir}"/usr/include/SimpleIni"/ConvertUTF.c"
-  install -D -m644 ConvertUTF.h \
-    "${pkgdir}"/usr/include/SimpleIni"/ConvertUTF.h"
 
   install -D -m644 LICENCE.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}"/LICENSE.txt"
