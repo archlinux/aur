@@ -1,7 +1,7 @@
 pkgbase = grit-cli
 	pkgdesc = LLM coded port of git to Rust
 	pkgver = 0.4.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://grit-scm.com
 	arch = x86_64
 	license = GPL-2.0-only

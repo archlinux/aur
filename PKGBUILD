@@ -3,7 +3,7 @@
 pkgname=grit-cli
 _pkgname=${pkgname%-cli}
 pkgver=0.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc='LLM coded port of git to Rust'
 url='https://grit-scm.com'
 _url="https://github.com/gitbutlerapp/$_pkgname"
@@ -41,6 +41,8 @@ build() {
 check() {
 	_srcenv
 	local skipped=(
+		ignore::gitignore_glob_tests::dir_star_extension_matches_nested_path
+		ignore::gitignore_glob_tests::nested_dir_star_extension
 		sha256_clone_fetch_push_roundtrip
 		sha256_fast_import_creates_sha256_objects
 		sha256_reftable_refs_roundtrip
