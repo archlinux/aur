@@ -1,6 +1,6 @@
 pkgbase = rackpeek
 	pkgdesc = CLI tool to discover, manage, and document your IT infrastructure and home lab.
-	pkgver = 1.4.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Timmoth/RackPeek
 	install = rackpeek.install
@@ -13,8 +13,8 @@ pkgbase = rackpeek
 	depends = libstdc++
 	options = !strip
 	source = rackpeek.install
-	source = rackpeek-1.4.0.tar.gz::https://github.com/Timmoth/RackPeek/archive/RackPeek-1.4.0.tar.gz
+	source = rackpeek-2.0.0.tar.gz::https://github.com/Timmoth/RackPeek/archive/RackPeek-2.0.0.tar.gz
 	sha256sums = 14cd89ed266911aff4d52d76bb976a4cb3ad602cbbc939785a72fd3e45cd4c01
-	sha256sums = fdee43496c11085934b812dfadf9d45ea083d54cbc4c8f0642ba14e3f4cde9ec
+	sha256sums = 28324c4768aec7ee7083b30fccb76ba80dfb2854d53576f0bad27e9af9deb885
 
 pkgname = rackpeek
