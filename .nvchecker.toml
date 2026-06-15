@@ -1,0 +1,5 @@
+[vapoursynth-plugin-zsmooth-bin]
+source = "github"
+github = "adworacz/zsmooth"
+use_latest_release = true
+prefix = "v"

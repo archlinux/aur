@@ -1,0 +1,22 @@
+pkgbase = vapoursynth-plugin-zsmooth-bin
+	pkgdesc = Zsmooth plugin for VapourSynth
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/adworacz/zsmooth
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = vapoursynth
+	provides = vapoursynth-plugin-zsmooth
+	conflicts = vapoursynth-plugin-zsmooth
+	source = vapoursynth-plugin-zsmooth-bin-0.16.0-README.md::https://github.com/adworacz/zsmooth/raw/refs/tags/0.16.0/README.md
+	source = vapoursynth-plugin-zsmooth-bin-0.16.0-LICENSE::https://github.com/adworacz/zsmooth/raw/refs/tags/0.16.0/LICENSE
+	sha256sums = 54a78e01eff9300a7adb5b370f3c60afbe601c03cb4ed61aac94a5e335e22b61
+	sha256sums = 4e8049adeaf266a580ff8738729a568465fded9a1bdf25396f234d2b8b07552f
+	source_aarch64 = vapoursynth-plugin-zsmooth-bin-0.16.0-aarch64-linux-gnu.zip::https://github.com/adworacz/zsmooth/releases/download/0.16.0/zsmooth-aarch64-linux-gnu.zip
+	sha256sums_aarch64 = 9d9fe5bb7869cef8edbe1f53e9277b47efbef4af6f1ac3bd07861e9676f7bbee
+	source_x86_64 = vapoursynth-plugin-zsmooth-bin-0.16.0-x86_64-linux-gnu.zip::https://github.com/adworacz/zsmooth/releases/download/0.16.0/zsmooth-x86_64-linux-gnu.zip
+	sha256sums_x86_64 = 09a9edd166c1458685b87939348ca4b60ace25f698315109ec2d95b92c8e1b0b
+
+pkgname = vapoursynth-plugin-zsmooth-bin
