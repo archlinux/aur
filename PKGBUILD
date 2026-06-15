@@ -1,10 +1,10 @@
 # Maintainer: NewYearPrism
 
-_stable_diffusion_cpp_tag=master-700-c2df4e1
-_stable_diffusion_cpp_version=700
+_stable_diffusion_cpp_tag=master-703-bb90bfa
+_stable_diffusion_cpp_version=703
 _stable_diffusion_cpp_commit=${_stable_diffusion_cpp_tag##*-}
 _ggml_version=0.15.1
-_stable_diffusion_cpp_sha256sum=7b859e9d5cb5f84b86dcb8e2dd4badf49d8e53a9743f2d1551a9fbae8f011d83
+_stable_diffusion_cpp_sha256sum=9da87530990168338e8500bddd1e6bbd165d5252f7020df6ae4088d47b34a1ca
 _sdcpp_webui_commit=797ccf80825cc035508ba9b599b2a21953e7f835
 _sdcpp_webui_sha256sum=a053b9b606a44bc07e555e23d04fc5e834b78cb267d3e0fdf640ff66f131e8c9
 pkgname=stable-diffusion.cpp-ggml
