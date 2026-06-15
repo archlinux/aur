@@ -1,12 +1,12 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='mirador'
 pkgname="$_pkgname-git"
-pkgver='r18.g5cbf315'
+pkgver='r31.g2b50652'
 pkgrel='1'
 pkgdesc='CLI to watch mailbox changes'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/pimalaya/$_pkgname"
-license=('MIT')
+license=('AGPL-3.0-only')
 depends=('dbus>=1.16.0' 'libgit2' 'zlib')
 makedepends=('cargo' 'git')
 provides=("$_pkgname")
@@ -20,8 +20,7 @@ _sourcedirectory="$pkgname"
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	export RUSTUP_TOOLCHAIN='stable'
-	_cargotarget="$(rustc -vV | sed -n 's/host: //p')"
-	cargo fetch --locked --target "$_cargotarget"
+	cargo fetch --locked --target host-tuple
 }
 
 pkgver() {
@@ -33,15 +32,13 @@ build() {
 	cd "$srcdir/$_sourcedirectory/"
 	export RUSTUP_TOOLCHAIN='stable'
 	export CARGO_TARGET_DIR='target'
-	_cargotarget="$(rustc -vV | sed -n 's/host: //p')"
-	cargo build --frozen --release --target "$_cargotarget" --all-features
+	cargo build --frozen --release --all-features
 }
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
 	_commit="$(git rev-parse HEAD)"
-	_cargotarget="$(rustc -vV | sed -n 's/host: //p')"
-	_checkoutput="$("$srcdir/$_sourcedirectory/target/$_cargotarget/release/$_pkgname" --version)"
+	_checkoutput="$("$srcdir/$_sourcedirectory/target/release/$_pkgname" --version)"
 	printf '%s\n' "$_checkoutput"
 	printf '%s\n' "$_checkoutput" | grep -q "rev $_commit$"
 }
@@ -50,32 +47,28 @@ package() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Install binary
-	_cargotarget="$(rustc -vV | sed -n 's/host: //p')"
-	install -Dm755 "target/$_cargotarget/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
 	# Generate man pages
-	"$pkgdir/usr/bin/$_pkgname" manual "$pkgdir/usr/share/man/man1/"
+	"$pkgdir/usr/bin/$_pkgname" manuals "$pkgdir/usr/share/man/man1/"
 
 	# Generate shell completion files
 	install -dm755 "$pkgdir/usr/share/bash-completion/completions/"
-	"$pkgdir/usr/bin/$_pkgname" completion bash > "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+	"$pkgdir/usr/bin/$_pkgname" completions bash --dir "$pkgdir/usr/share/bash-completion/completions/"
 
 	install -dm755 "$pkgdir/usr/share/elvish/lib/"
-	"$pkgdir/usr/bin/$_pkgname" completion elvish > "$pkgdir/usr/share/elvish/lib/$_pkgname.elv"
+	"$pkgdir/usr/bin/$_pkgname" completions elvish --dir "$pkgdir/usr/share/elvish/lib/"
 
 	install -dm755 "$pkgdir/usr/share/fish/vendor_completions.d/"
-	"$pkgdir/usr/bin/$_pkgname" completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
+	"$pkgdir/usr/bin/$_pkgname" completions fish --dir "$pkgdir/usr/share/fish/vendor_completions.d/"
 
 	install -dm755 "$pkgdir/usr/share/powershell/completions/"
-	"$pkgdir/usr/bin/$_pkgname" completion powershell > "$pkgdir/usr/share/powershell/completions/$_pkgname.ps1"
+	"$pkgdir/usr/bin/$_pkgname" completions powershell --dir "$pkgdir/usr/share/powershell/completions/"
 
 	install -dm755 "$pkgdir/usr/share/zsh/site-functions/"
-	"$pkgdir/usr/bin/$_pkgname" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+	"$pkgdir/usr/bin/$_pkgname" completions zsh --dir "$pkgdir/usr/share/zsh/site-functions/"
 
 	# Install service file
 	install -Dm644 "assets/$_pkgname@.service" "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
 	sed -i 's|%install_dir%|/usr/bin|g' "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
-
-	# Install license
-	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
