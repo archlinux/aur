@@ -1,9 +1,9 @@
-# Maintainer: Andy Kluger <AndyKluger@gmail.com>
+# Maintainer: Andy Kluger <AndyKluger@mailfence.com>
 # Contributor: redtide <redtid3@gmail.com>
 
 _name=Arqiver
 pkgname=arqiver
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Simple Qt archive manager based on libarchive"
 arch=(x86_64)
@@ -20,7 +20,7 @@ makedepends=(
   qt6-tools
 )
 source=($url/releases/download/V$pkgver/$_name-$pkgver.tar.xz)
-sha512sums=('384fbacfd37ae8b9b313ab5bfc539c2569f1d213d574f855379176dda9557198d3467d41adf58eaeb15dcb15a88a44be962dc152607ad832717ae17f86d9d436')
+sha512sums=('a7873bffcbfdd9f119e6245df5922ef06566ff03840834fac8e67e23cbf4f04487a3761c784994a2a2ff1995b4d83ebcc4593065a1877c1c10848135120e25db')
 
 build() {
   cd "$_name-$pkgver"
