@@ -29,16 +29,16 @@ build() {
 
 package() {
   cd "$srcdir/gnulib"
-  mkdir -p $pkgdir/usr/share/gnulib-git
-  cp -r * $pkgdir/usr/share/gnulib-git
-  cp .gnulib-tool.py $pkgdir/usr/share/gnulib-git
+  mkdir -p "$pkgdir/usr/share/gnulib-git"
+  cp -r ./* "$pkgdir/usr/share/gnulib-git"
+  cp .gnulib-tool.py "$pkgdir/usr/share/gnulib-git"
 
-  install -dm755 $pkgdir/usr/bin
-  ln -s /usr/share/gnulib-git/gnulib-tool $pkgdir/usr/bin/
-  ln -s /usr/share/gnulib-git/gnulib-tool.sh $pkgdir/usr/bin
-  ln -s /usr/share/gnulib-git/gnulib-tool.py $pkgdir/usr/bin
-  ln -s /usr/share/gnulib-git/check-module $pkgdir/usr/bin/
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s /usr/share/gnulib-git/gnulib-tool "$pkgdir/usr/bin/"
+  ln -s /usr/share/gnulib-git/gnulib-tool.sh "$pkgdir/usr/bin"
+  ln -s /usr/share/gnulib-git/gnulib-tool.py "$pkgdir/usr/bin"
+  ln -s /usr/share/gnulib-git/check-module "$pkgdir/usr/bin/"
 
-  install -Dm644 doc/gnulib.info $pkgdir/usr/share/info/gnulib.info
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/${pkgname}/COPYING
+  install -Dm644 doc/gnulib.info "$pkgdir/usr/share/info/gnulib.info"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
 }
