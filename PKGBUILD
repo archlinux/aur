@@ -1,3 +1,4 @@
+#!/bin/bash -e
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
@@ -97,6 +98,8 @@ validpgpkeys=(
 )
 
 prepare() {
+	: "${srcdir:?}"
+
 	cd "$srcdir/$_pkgname-$_ver"
 
 	# Files created by the patches
@@ -171,6 +174,8 @@ check() {
 }
 
 package() {
+	: "${pkgdir:?}"
+
 	cd "$srcdir/$_pkgname-$_ver"
 
 	make DESTDIR="$pkgdir" install_sw
@@ -187,7 +192,20 @@ package() {
 	# Update includedir in .pc files
 	sed -e 's|/include$|/include/openssl-1.1|' -i "$pkgdir"/usr/lib/openssl-1.1/pkgconfig/*.pc
 
-	rm -rf "$pkgdir"/{etc,usr/bin/c_rehash}
+	rm -rf "${pkgdir:?}"/{etc,usr/bin/c_rehash}
 
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+: "${arch[@]}"
+: "${depends[@]}"
+: "${license[@]}"
+: "${makedepends[@]}"
+: "${pkgdesc}"
+: "${pkgrel}"
+: "${pkgver}"
+: "${provides[@]}"
+: "${source[@]}"
+: "${sha256sums[@]}"
+: "${url}"
+: "${validpgpkeys[@]}"
