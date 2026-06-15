@@ -1,6 +1,6 @@
 pkgbase = justevery-code
 	pkgdesc = Community-driven fork of the Codex CLI for local terminal coding assistance
-	pkgver = 0.6.114
+	pkgver = 0.6.116
 	pkgrel = 1
 	url = https://github.com/just-every/code
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = justevery-code
 	optdepends = gemini-cli: connect to the Google Gemini terminal client
 	optdepends = codanna: share context with the Codanna code-awareness agent
 	options = !lto
-	source = justevery-code-0.6.114.tar.gz::https://github.com/just-every/code/archive/refs/tags/v0.6.114.tar.gz
-	b2sums = 410106d6044d95a3c807abd13428bcfb491d5083e587b3ae0e7737dd04516b9942299307ad0c305afd598a21037f821a551f757953489cac147291c2d1633e0e
+	source = justevery-code-0.6.116.tar.gz::https://github.com/just-every/code/archive/refs/tags/v0.6.116.tar.gz
+	b2sums = 2daa6d09092440222846773e634e635d5f83986da817c343d65c3c37d943ae27c0819cef95f11c7363f28564f44a1d698e5968a2bab33e27e511875bc8fca782
 
 pkgname = justevery-code
