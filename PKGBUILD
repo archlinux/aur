@@ -1,7 +1,7 @@
 # Maintainer: take7leds maintainers
 pkgname=take7leds
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Desktop GUI for Tuxedo-compatible RGB keyboard backlights"
 arch=('x86_64')
 url="https://gitlab.com/glum403/take7leds"
@@ -24,6 +24,8 @@ package() {
 
   install -Dm755 helper/take7leds-helper "$pkgdir/usr/lib/take7leds/take7leds-helper"
   install -Dm644 helper/org.take7leds.helper.policy "$pkgdir/usr/share/polkit-1/actions/org.take7leds.helper.policy"
+  install -Dm644 packaging/linux/take7leds-restore.service "$pkgdir/usr/lib/systemd/system/take7leds-restore.service"
+  install -dm755 "$pkgdir/var/lib/take7leds"
   install -Dm644 packaging/linux/take7leds.desktop "$pkgdir/usr/share/applications/take7leds.desktop"
   for size in 16 22 24 32 48 64 128 256 512; do
     install -Dm644 "src/take7leds/resources/icons/hicolor/${size}x${size}/apps/take7leds.png" \
