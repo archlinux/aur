@@ -6,7 +6,7 @@ pkgname=(
     python-libnmstate
 )
 pkgver=2.2.60
-pkgrel=1
+pkgrel=2
 pkgdesc='Declarative network manager API for Linux hosts'
 arch=('x86_64')
 url='https://nmstate.io'
@@ -42,23 +42,28 @@ _pick() {
 prepare() {
     cd "$pkgbase-$pkgver"
 
-    # Set up vendored Rust dependencies
+    # Set up vendored Rust dependencies. The config must sit in $srcdir so
+    # cargo finds it walking up from the build cwd ($pkgbase-$pkgver); a config
+    # under rust/.cargo is never read because build() runs cargo from the
+    # project root via --manifest-path, so it would silently hit crates.io.
     mv "$srcdir/vendor" rust/vendor
-    mkdir -p rust/.cargo
-    cat >> rust/.cargo/config.toml <<'EOF'
+    mkdir -p "$srcdir/.cargo"
+    cat > "$srcdir/.cargo/config.toml" <<EOF
 [source.crates-io]
 replace-with = "vendored-sources"
 
 [source.vendored-sources]
-directory = "vendor"
+directory = "$srcdir/$pkgbase-$pkgver/rust/vendor"
 EOF
 }
 
 build() {
     cd "$pkgbase-$pkgver"
 
-    # Build Rust components (CLI + C library)
-    cargo build --release --workspace --manifest-path rust/Cargo.toml
+    # Build Rust components (CLI + C library). --offline forces use of the
+    # vendored sources and fails loudly if vendoring breaks, rather than
+    # silently resolving "latest compatible" crates from crates.io.
+    cargo build --offline --release --workspace --manifest-path rust/Cargo.toml
 
     # Generate man pages and C header/pkg-config from .in templates
     make manpage clib
