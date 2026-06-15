@@ -1,6 +1,6 @@
 pkgbase = rsclip-bin
 	pkgdesc = Wayland clipboard manager with GTK UI and background daemon
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/jR4dh3y/rsclip
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = rsclip-bin
 	optdepends = wtype: auto-paste into the focused window
 	provides = rsclip
 	conflicts = rsclip
-	source = rsclip-bin-0.1.10.tar.zst::https://github.com/jR4dh3y/rsclip/releases/download/v0.1.10/rsclip-0.1.10-x86_64.tar.zst
-	sha256sums = 22cbfaf906c51d1508974c29e89f6281337430e4c831daab856fa9db5463e90a
+	source = rsclip-bin-0.1.11.tar.zst::https://github.com/jR4dh3y/rsclip/releases/download/v0.1.11/rsclip-0.1.11-x86_64.tar.zst
+	sha256sums = c014ea719b81411b70b9d641b4d0c9117d98fa3ca0a0adbcd65ae12b44e3a063
 
 pkgname = rsclip-bin
