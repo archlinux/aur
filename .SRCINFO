@@ -1,0 +1,13 @@
+pkgbase = hmp3-git
+	pkgdesc = Helix MP3 encoder
+	pkgver = 7f7dfc7
+	pkgrel = 1
+	url = https://github.com/maikmerten/hmp3
+	arch = x86_64
+	license = RCSL
+	makedepends = git
+	makedepends = make
+	source = git+https://github.com/maikmerten/hmp3.git
+	md5sums = SKIP
+
+pkgname = hmp3-git
