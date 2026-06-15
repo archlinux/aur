@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-launch7
-pkgver=7.1.1
-pkgrel=3
+pkgver=7.1.2
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Run and manage programs and plugins."
@@ -34,7 +34,7 @@ optdepends=(
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
         "https://github.com/gazebosim/${_pkgbase}/pull/295.patch")
-sha256sums=('dba949260bf399514aaaff12e98806edeb18f89e11643e12b221caa06a7dc1e0'
+sha256sums=('96d581242af6cb9e000f17bd0348ff522d8347f37ef94a5de9939e6feebc76af'
             '37069d666f130bc75339bb3568ae9668debac3997bd6857773087b888f049d7a')
 
 prepare() {
