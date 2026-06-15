@@ -2,15 +2,15 @@
 
 pkgname=comchan-bin
 _pkgname=comchan
-pkgver=0.10.1
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="A blazingly fast minimal serial monitor with plotter TUI and more"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vaishnav-Sabari-Girish/ComChan"
 license=('MIT')
 
 # Same runtime dependencies as the source package
-depends=('gcc-libs' 'libudev.so' 'fontconfig')
+depends=('gcc-libs' 'libudev.so' 'fontconfig' 'dbus')
 
 # Ensure pacman knows this replaces the source-built version
 provides=("$_pkgname")
@@ -20,9 +20,9 @@ conflicts=("$_pkgname")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.tar.xz")
 
-# Final verification checksums
-sha256sums_x86_64=('827e57ce1076ee4a4c290def1e672140ed1c8116692cd91898296b0d37ee71f9')
-sha256sums_aarch64=('b655b45583a3c39eae73519140d24b3473455537c365c0480042c6bb6897e36a')
+# SHA256sum
+sha256sums_x86_64=('ed28393af1883c8bcf32a9a67ea96e7e6bb7b581d75549e75136eb9fcfec61eb')
+sha256sums_aarch64=('9740f5aacabcb98893cdd9bd8d88439893213df642b34d14dd2cae401b9642d4')
 
 package() {
   # cargo-dist extracts into a directory named after the target tuple
