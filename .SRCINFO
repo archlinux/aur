@@ -1,0 +1,17 @@
+pkgbase = broadcom-cv3plus-nfc
+	pkgdesc = Proprietary NFC daemon for the Dell ControlVault3 Plus
+	pkgver = 6.4.23
+	pkgrel = 1
+	url = https://packages.broadcom.com/artifactory/dell-controlvault-drivers/
+	arch = x86_64
+	groups = fprint
+	license = custom
+	depends = systemd
+	depends = libusb
+	provides = broadcom-cv3plus-nfc=6.4.23
+	conflicts = broadcom-cv3plus-nfc
+	options = !strip
+	source = https://packages.broadcom.com/artifactory/dell-controlvault-drivers/brcm_linux_nfc_6.4.23.tgz
+	sha256sums = SKIP
+
+pkgname = broadcom-cv3plus-nfc
