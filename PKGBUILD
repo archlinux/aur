@@ -6,7 +6,7 @@
 pkgname=python-requests-pkcs12
 _pkg=requests_pkcs12
 pkgver=1.27
-pkgrel=1
+pkgrel=2
 pkgdesc='Adds PKCS#12 support to python-requests'
 arch=('any')
 license=('ISC')
@@ -27,5 +27,5 @@ package() {
 	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/licenses/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
