@@ -1,7 +1,7 @@
 # Maintainer: Kief Studio <packages@kief.studio>
 pkgname=ks-aur-scanner
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Security scanner for Arch Linux AUR packages - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/KiefStudioMA/ks-aur-scanner"
@@ -10,6 +10,7 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'clang' 'git')
 provides=('aur-scanner' 'aur-scan')
 conflicts=('aur-scanner-git' 'aur-scanner')
+options=('!debug')
 # Source is the GPG-signed release tag, verified against our signing key.
 # Integrity comes from git + the tag signature (validpgpkeys), which is stronger
 # than hashing a GitHub-generated tarball -- so sha256sums is intentionally SKIP.
@@ -22,20 +23,20 @@ sha256sums=('SKIP')
 prepare() {
     cd "ks-aur-scanner"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "ks-aur-scanner"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --release --all
+    cargo build --release --all --locked
 }
 
 check() {
     cd "ks-aur-scanner"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --release --all
+    cargo test --release --all --locked
 }
 
 package() {
