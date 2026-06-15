@@ -1,5 +1,5 @@
 pkgname=vigaphone-bin
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 options=('!strip' '!debug')
 groups=('pro-audio','vst3-plugins')
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone"
 license=('custom')
 source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux_amd64.tar.gz")
-sha256sums=('ad9d646fea4f98618ebdc2aabda3402a681c9e7fc7c8d7f14873df09c46a0794')
+sha256sums=('b51ec7f03298d09b2b7847a1f759dc0edc4ae14bc2f80bb051c8a426dc1bdd9b')
 
 depends=(
     'alsa-lib'
@@ -39,6 +39,7 @@ package() {
     install -pDm644 installOnLinuxUser/org.vigaworld.vigaphone.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/vigaphone.png"
 
     # Icône package manager
+	install -pDm644 installOnLinuxUser/org.vigaworld.vigaphone.png "$pkgdir/usr/share/icons/hicolor/256x256/mimetypes/application-x-vigaphone-tsv.png"
     install -pDm644 installOnLinuxUser/org.vigaworld.vigaphone.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.vigaworld.vigaphone.svg"
 
     # MIME type
