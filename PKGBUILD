@@ -3,12 +3,13 @@
 # Contributor: Frédéric Mangano <fmang+aur mg0 fr>
 pkgname=kanatest
 pkgver=0.4.10
-pkgrel=10
+pkgrel=11
 pkgdesc="A simple Hiragana and Katakana drill tool"
 arch=('i686' 'x86_64')
 url="http://www.clayo.org/kanatest/"
 license=('GPL')
 depends=('gtk2' 'libxml2')
+makedepends=('git')
 optdepends=('ttf-freefont: for using FreeSerif or FreeSans fonts'
             'ttf-arphic-uming: for using AR PL ShanHeiSun Uni font'
             'ttf-arphic-ukai: for using AR PL ZenKai Uni font')

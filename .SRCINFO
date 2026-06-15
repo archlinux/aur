@@ -1,12 +1,13 @@
 pkgbase = kanatest
 	pkgdesc = A simple Hiragana and Katakana drill tool
 	pkgver = 0.4.10
-	pkgrel = 10
+	pkgrel = 11
 	url = http://www.clayo.org/kanatest/
 	install = kanatest.install
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = gtk2
 	depends = libxml2
 	optdepends = ttf-freefont: for using FreeSerif or FreeSans fonts
@@ -16,4 +17,3 @@ pkgbase = kanatest
 	sha256sums = SKIP
 
 pkgname = kanatest
-
