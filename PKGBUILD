@@ -3,7 +3,7 @@
 pkgname=comchan-bin
 _pkgname=comchan
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A blazingly fast minimal serial monitor with plotter TUI and more"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vaishnav-Sabari-Girish/ComChan"
@@ -31,5 +31,6 @@ package() {
 
   install -Dm 755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 CHANGELOG.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
