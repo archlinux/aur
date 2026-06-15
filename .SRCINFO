@@ -1,0 +1,21 @@
+pkgbase = cortex-bin
+	pkgdesc = Local-first, open-source NotebookLM alternative — a desktop study OS
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/PndaMan/cortex
+	arch = x86_64
+	license = Apache-2.0
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	optdepends = mpv: background study music
+	optdepends = ffmpeg: audio processing for recordings
+	optdepends = libreoffice-fresh: rendered PPTX/DOCX slide previews (text ingest works without it)
+	optdepends = poppler: faster, cleaner PDF text extraction
+	optdepends = ollama: local, keyless LLM + embeddings
+	provides = cortex
+	conflicts = cortex
+	source = https://github.com/PndaMan/cortex/releases/download/v1.0.2/Cortex_1.0.2_amd64.deb
+	sha256sums = 43bc76fdf46be3060979ed696cc4f8d3e514d6f35ce484aae20a07d267003d61
+
+pkgname = cortex-bin
