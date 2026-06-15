@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requesto-bin
 _pkgname=Requesto
-pkgver=1.5.15
+pkgver=1.5.16
 _electronversion=42
 pkgrel=1
 pkgdesc="A modern, lightweight, self-hostable API client. No accounts, no cloud, no telemetry.(Prebuilt version.Use system-wide electron)"
@@ -17,6 +17,7 @@ provides=(
 )
 depends=(
     "electron${_electronversion}"
+    'nodejs'
 )
 options=(
     '!emptydirs'
@@ -27,7 +28,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/t3rr11/Requesto/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0c95ef3b7c2fa1e29181929949e2e23cef7024d6853c3962989aa51e95c0d9b0'
+sha256sums=('e961efc8802d37bfbedc748c7705a58dc9e4de14631218b8b97966633705b8cd'
             'baa265fc2389eb1ac3a489bd8fdb9255614a801f0b1624faf107c5a0d0c1bd66'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
