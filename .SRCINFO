@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-applet-sysinfo-git
 	pkgdesc = Sysinfo for the COSMIC™ desktop
-	pkgver = r8.aad0afc
+	pkgver = r91.681dfcf
 	pkgrel = 1
 	url = https://github.com/cosmic-utils/cosmic-ext-applet-sysinfo
 	arch = x86_64
@@ -8,10 +8,13 @@ pkgbase = cosmic-ext-applet-sysinfo-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = just
+	makedepends = cmake
+	makedepends = clang
 	depends = cosmic-applets
 	depends = libxkbcommon
 	provides = cosmic-ext-applet-sysinfo
 	conflicts = cosmic-ext-applet-sysinfo
+	options = !lto
 	source = git+https://github.com/cosmic-utils/cosmic-ext-applet-sysinfo.git
 	sha256sums = SKIP
 
