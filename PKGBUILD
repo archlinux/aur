@@ -11,14 +11,11 @@
 # instead of proceeding. Review the 1.1.0-rc1 CHANGELOG before driving it from
 # scripts/CI.
 pkgname=aur-scanner-rc
-# AUR pkgver may not contain a hyphen, so the semver pre-release '1.1.0-rc1'
-# becomes '1.1.0rc1' here; the upstream git tag keeps the canonical hyphen.
-pkgver=1.1.0rc1
-_tag=v1.1.0-rc1
-# pkgrel 3: options=('!debug') — the release binaries carry no DWARF, so the
-# split -debug package was empty and gdb-add-index errored during build. Disable
-# it (keeps stripping; just no useless -debug package and no noise).
-pkgrel=3
+# AUR pkgver may not contain a hyphen, so the semver pre-release '1.1.0-rc2'
+# becomes '1.1.0rc2' here; the upstream git tag keeps the canonical hyphen.
+pkgver=1.1.0rc2
+_tag=v1.1.0-rc2
+pkgrel=1
 pkgdesc="Security scanner for Arch Linux AUR packages (release candidate) - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/KiefStudioMA/ks-aur-scanner"
@@ -27,7 +24,7 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'clang' 'git')
 provides=('aur-scan')
 conflicts=('aur-scanner' 'aur-scanner-git' 'ks-aur-scanner')
-options=('!debug')
+options=('!debug' '!strip')
 # Source is the GPG-signed pre-release tag, verified against our signing key.
 # Integrity comes from git + the tag signature (validpgpkeys), which is stronger
 # than hashing a GitHub-generated tarball -- so sha256sums is intentionally SKIP.
