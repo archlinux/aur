@@ -1,0 +1,5 @@
+[minifind-bin]
+source = "github"
+github = "dkorunic/minifind"
+use_latest_release = true
+prefix = ""

@@ -1,0 +1,19 @@
+pkgbase = minifind-bin
+	pkgdesc = Minimal find reimplementation with the emphasis on speed
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/dkorunic/minifind
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = minifind
+	conflicts = minifind
+	options = !strip
+	source_x86_64 = minifind-x86_64-0.8.1.txz::https://github.com/dkorunic/minifind/releases/download/0.8.1/minifind-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 2723a6c2705a332a487ab8433ec779eb21baaee702930aa54cc8a4a1a0a88ac7
+	source_aarch64 = minifind-aarch64-0.8.1.txz::https://github.com/dkorunic/minifind/releases/download/0.8.1/minifind-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 9f502295cf6e2bfcc3a1ac5b71bff671da173b95bcb39a7d3e54f12bf6591594
+
+pkgname = minifind-bin
