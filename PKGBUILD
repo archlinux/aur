@@ -1,15 +1,9 @@
-# Maintainer: Christian Heusel <christian@heusel.eu>
-# Contributor: Knut Ahlers <knut at ahlers dot me>
-# Contributor: Det <nimetonmaili g-mail>
-# Contributor: t3ddy, Lex Rivera aka x-demon, ruario, Abdullah
+# Maintainer: Sprungles <natalie@acreetionos.org>
 
-# Check for new Linux releases in: http://googlechromereleases.blogspot.com/search/label/Stable%20updates
-# or use: $ curl -sSf https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages | grep -A1 "Package: google-chrome-stable" | awk '/Version/{print $2}' | cut -d '-' -f1
-
-pkgname=google-chrome
+pkgname=google-chrome-current
 pkgver=149.0.7827.114
 pkgrel=1
-pkgdesc="The popular web browser by Google (Stable Channel)"
+pkgdesc="The popular web browser by Google (Stable Channel). Maintained fork — the original google-chrome package has not been kept up to date."
 arch=('x86_64')
 url="https://www.google.com/chrome"
 license=('custom:chrome')
