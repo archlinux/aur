@@ -14,8 +14,8 @@ optdepends=(
   'wget: alternative downloader'
 )
 makedepends=('git')
-provides=('shorin-proton')
-conflicts=('shorin-proton')
+provides=('shorin-proton-wrapper')
+conflicts=('shorin-proton-wrapper')
 source=("git+$url.git")
 md5sums=('SKIP')
 
@@ -27,8 +27,9 @@ pkgver() {
 package() {
   cd "$srcdir/proton-wrapper"
 
-  install -Dm755 shorin-proton "$pkgdir/usr/bin/shorin-proton"
-  install -Dm755 shorin-proton-select-prefix "$pkgdir/usr/bin/shorin-proton-select-prefix"
-  install -Dm644 shorin-proton.desktop "$pkgdir/usr/share/applications/shorin-proton.desktop"
+  install -Dm755 shorin-proton-wrapper "$pkgdir/usr/bin/shorin-proton-wrapper"
+  install -Dm755 shorin-proton-wrapper-select "$pkgdir/usr/bin/shorin-proton-wrapper-select"
+  install -Dm644 shorin-proton-wrapper-run-windows-program.desktop "$pkgdir/usr/share/applications/shorin-proton-wrapper-run-windows-program.desktop"
+  install -Dm644 shorin-proton-wrapper-run-windows-program-select.desktop "$pkgdir/usr/share/applications/shorin-proton-wrapper-run-windows-program-select.desktop"
   install -Dm644 icons/shorin-proton.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/shorin-proton.svg"
 }
