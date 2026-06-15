@@ -1,0 +1,5 @@
+[findlargedir-bin]
+source = "github"
+github = "dkorunic/findlargedir"
+use_latest_release = true
+prefix = ""
