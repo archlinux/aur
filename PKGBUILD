@@ -5,7 +5,7 @@ pkgname=(
   solarus-launcher
   solarus-editor
 )
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A lightweight, free and open-source 2D game engine for Action-RPGs"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ makedepends=(
   "zip"
 )
 source=("https://gitlab.com/solarus-games/$pkgbase/-/archive/v$pkgver/$pkgbase-v$pkgver.tar.gz")
-sha256sums=('f80a7eb258da355ec5c29780e2813bd4026d1dcdded8a511aef482d29363f98b')
+sha256sums=('714f1d9db56f62059ec4ac58ba803985492ea62fdf6b005e8a5136a34b9b0107')
 _rootdir=$pkgname-v$pkgver
 
 prepare() {
