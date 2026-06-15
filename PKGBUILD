@@ -3,7 +3,7 @@ pkgname=kando-bin
 _pkgname=Kando
 pkgver=2.3.1
 _electronversion=41
-pkgrel=1
+pkgrel=2
 pkgdesc="A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -68,6 +68,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
+    find "${srcdir}/usr/lib/${pkgname%-bin}/resources/app/.webpack" -type f -exec sed -i "s/menu.${pkgname%-bin}.${_pkgname}/${pkgname%-bin}/g" {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
