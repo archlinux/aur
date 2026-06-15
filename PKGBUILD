@@ -1,6 +1,6 @@
 # Maintainer: David Jetelina <sour.soap5197@jtl.email>
 pkgname=cheznav
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="TUI for chezmoi"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
   'python-wheel'
 )
 source=("cheznav-$pkgver.tar.gz::https://github.com/djetelina/cheznav/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b6978e23e84956cb69a18f24654b7b048ac92a252a4807ae2b31dfc71692f60f')
+sha256sums=('cfcd913dda70464e52e4ee88088d2183d7e720ee24b926201c36fe568373e22e')
 
 build() {
   cd "cheznav-$pkgver"
