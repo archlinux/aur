@@ -1,14 +1,15 @@
 pkgbase = gnulib-git
 	pkgdesc = GNU Portability Library
-	pkgver = v1.0.2313.g7eeb8077c6
+	pkgver = v1.0.3108.g0e4d6259e0
 	pkgrel = 1
 	url = http://www.gnu.org/software/gnulib
 	arch = any
 	license = custom
 	makedepends = git
-	provides = gnulib=v1.0.2313.g7eeb8077c6
+	makedepends = texinfo
+	provides = gnulib=v1.0.3108.g0e4d6259e0
 	conflicts = gnulib
-	replaces = gnulib<=v1.0.2313.g7eeb8077c6
+	replaces = gnulib<=v1.0.3108.g0e4d6259e0
 	source = git+https://github.com/coreutils/gnulib
 	md5sums = SKIP
 
