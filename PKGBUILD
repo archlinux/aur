@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=4.2.0
+pkgver=4.3.0
 _nodeversion=24
 pkgrel=1
 pkgdesc="A Standalone chat overlay for Twitch, Kick, YouTube and other streaming platforms."
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "modifiers_linux.go"
 )
-sha256sums=('f68d7295f5f87c93bc2a8151a92a0edc9b6fb77b3b14baade774a8970a7af8ee'
+sha256sums=('ff15dddd2cbd111fd73281dccd80ce6dab221d4eeebaef78d2d496688905a8c6'
             '131035c2816a154359af542ff002e53f48419311e6ab083eb9f944a5e2f0d24c')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
