@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=piclist-bin
 _pkgname=PicList
-pkgver=3.4.0
+pkgver=3.5.0
 _electronversion=39
 pkgrel=1
 pkgdesc="A cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.(Prebuilt version.Use system-wide electron)一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发."
@@ -22,10 +22,10 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
-sha256sums=('cddebc59798c76d191fc65eb4176d960e4e157177c9d81db80eaff8d84d86a1c'
+sha256sums=('e0fd688f9f2597479e9c9e7c052886f0018c37460b8e21d706f3fd375d3cbed3'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('eb5ae597aac6542284fea0ac1b26b58221209aff16d63fe0b648e953b6ee6764')
-sha256sums_x86_64=('8dc17d90cf1cbcd5bc0e7a5b7fc6d65dce96eb709c81a265278e4979ad006e46')
+sha256sums_aarch64=('200ce1520b0a41d4f50e087d70aa97ad083da729c8469e91884a22eea7279386')
+sha256sums_x86_64=('4ecd952a10583bb7b4403b5d33adfc90003627f7ad891be73152587469a9a22f')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
