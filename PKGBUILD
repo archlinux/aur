@@ -1,6 +1,6 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-ch>
 pkgname=androguard
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 pkgdesc="Reverse engineering, Malware and goodware analysis of Android applications and more."
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=('python-pyperclip: GUI'
 provides=('python-androguard')
 conflicts=('python-androguard' 'python-androguard-git')
 source=("https://github.com/androguard/androguard/archive/v$pkgver.tar.gz")
-sha512sums=('a01c0f31d18704e9bfab036185b9d3318c33c963f7dde66a9b53326325a5833f5248047b521b9d71a4cada68b27c2b6f9b3055aeac49a3bbea67b8e0829cc1ab')
+sha512sums=('cf8edaab34d3896c56ef1805a17594573a200b009e50e494fe1e9e016f0c462bea90a8de77b9c29576380777fbae5b6db27917a9d09d8b5db6e4de7bdbf9d36c')
 
 # https://wiki.archlinux.org/title/Python_package_guidelines
 build() {
