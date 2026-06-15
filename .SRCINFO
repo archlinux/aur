@@ -1,6 +1,6 @@
 pkgbase = try-rs
 	pkgdesc = A blazing fast, Rust-based workspace manager for your temporary experiments
-	pkgver = 1.7.10
+	pkgver = 1.7.11
 	pkgrel = 1
 	url = https://github.com/tassiovirginio/try-rs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = try-rs
 	checkdepends = git
 	makedepends = cargo
 	depends = libgcc
-	source = try-rs-1.7.10.tar.gz::https://github.com/tassiovirginio/try-rs/archive/v1.7.10.tar.gz
-	sha256sums = f7080db6ffa9d84f222ea45e9e9327742605eb21dcdbc6349e564a165a5a0844
+	source = try-rs-1.7.11.tar.gz::https://github.com/tassiovirginio/try-rs/archive/v1.7.11.tar.gz
+	sha256sums = 39c9c5dbc2eb9153048e7801d756bdf1d38fc2a0d32bff8e52eb05ef342fac10
 
 pkgname = try-rs
