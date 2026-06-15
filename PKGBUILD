@@ -5,7 +5,7 @@ _mainver=1.9
 _subver=43
 pkgver="${_mainver}.${_subver}"
 _electronversion=42
-pkgrel=1
+pkgrel=2
 pkgdesc="Shows fully customisable notifications when you unlock any achievement on Steam!(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/SteamAchievementNotifier/SteamAchievementNotifier"
@@ -68,8 +68,12 @@ prepare() {
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${srcdir}/squashfs-root/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} \;
+    rm -rf "${srcdir}/app.asar.unpacked/node_modules/steamworks.js/_previous"
+    rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/steamworks.js/_previous"
+    rm -rf "${srcdir}/app.asar.unpacked/node_modules/steamworks.js/dist/win64"
+    rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/steamworks.js/dist/win64"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/squashfs-root/resources/app.asar"
-    find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
+    find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

@@ -1,7 +1,7 @@
 pkgbase = steamachievementnotifier-bin
 	pkgdesc = Shows fully customisable notifications when you unlock any achievement on Steam!(Prebuilt version.Use system-wide electron)
 	pkgver = 1.9.43
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SteamAchievementNotifier/SteamAchievementNotifier
 	arch = x86_64
 	license = LicenseRef-unknown
