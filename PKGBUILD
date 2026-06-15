@@ -12,7 +12,7 @@ makedepends=('cmake' 'gcc')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/qqlsdev/lpbooster/archive/refs/tags/lpb1.6.8.tar.gz")
 
-sha256sums=('aaf45cce53fc7dabe1e2f99e3ae8a4bd008be99c3e44ee061e9d70798df1d5c5')
+sha256sums=('b599c0e9d2935916c603dec44744f159cb2be0d9a2856de57f8a515058fbaa76')
 
 build() {
     # Папка внутри архива теперь называется lpbooster-lpb
