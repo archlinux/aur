@@ -1,6 +1,6 @@
 pkgbase = wezterm-nightly-bin
 	pkgdesc = A GPU-accelerated cross-platform terminal emulator and multiplexer (nightly build)
-	pkgver = 20260615
+	pkgver = nightly
 	pkgrel = 1
 	url = https://github.com/wezterm/wezterm
 	arch = x86_64

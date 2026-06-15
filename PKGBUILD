@@ -5,7 +5,7 @@
 # SHA256 is set to SKIP because the file content changes daily while the URL remains the same.
 #
 pkgname=wezterm-nightly-bin
-pkgver=20260615
+pkgver=nightly
 pkgrel=1
 pkgdesc="A GPU-accelerated cross-platform terminal emulator and multiplexer (nightly build)"
 arch=('x86_64')
