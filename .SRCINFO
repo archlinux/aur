@@ -1,6 +1,6 @@
 pkgbase = simpleini
 	pkgdesc = Cross-platform C++ library providing a simple API to read and write INI-style configuration files
-	pkgver = 4.25
+	pkgver = 4.26
 	pkgrel = 2
 	url = https://github.com/brofield/simpleini
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = simpleini
 	license = MIT
 	makedepends = cmake
 	makedepends = gtest
-	source = https://github.com/brofield/simpleini/archive/refs/tags/v4.25.tar.gz
-	sha256sums = 10001ee1486ae55259a5408786262bc0f72d699bc9637d536ebc62765d3ecd3b
+	source = https://github.com/brofield/simpleini/archive/refs/tags/v4.26.tar.gz
+	sha256sums = cfb27ba82570d73ce89d956f15c558d4a79c7ce2ad667a104be2d2f0f12be0cb
 
 pkgname = simpleini
