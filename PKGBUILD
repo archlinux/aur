@@ -3,14 +3,14 @@
 
 pkgname=vice-sdl2-svn
 _pkgname=vice-svn
-pkgver=r46106
+pkgver=r46146
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - SDL2 development version"
 arch=('i686' 'x86_64')
 url="http://vice-emu.sourceforge.net"
 license=('GPL-2.0-or-later')
 depends=(alsa-lib libpulse sdl2_image portaudio pciutils curl mpg123)
-makedepends=(dos2unix libpcap libxaw texlive-bin  texlive-plaingeneric xa xorg-bdftopcf xorg-mkfontdir svn)
+makedepends=(dos2unix libpcap libxaw texlive-bin  texlive-plaingeneric xa xorg-bdftopcf xorg-mkfontdir subversion)
 provides=('vice')
 replaces=('vice')
 conflicts=('vice' 'vice-svn')
