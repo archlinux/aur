@@ -1,4 +1,4 @@
-# Maintainer: Méven Car <meven@kde.org>
+# Maintainer: Vítor Vasconcellos <vitor.vasconcellos at proton dot me>
  
 pkgname=keychron-k10-he-udev
 pkgver=1.0.3
