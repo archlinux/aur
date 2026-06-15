@@ -12,6 +12,8 @@ pkgbase = vibe-bin
 	depends = gtk3
 	depends = xdotool
 	source = https://github.com/thewh1teagle/vibe/releases/download/v3.0.19/vibe_3.0.19_amd64.deb
+	source = LICENSE-MIT::https://raw.githubusercontent.com/thewh1teagle/vibe/main/LICENSE
 	sha256sums = f09780b705f594708b99a661fb2b64c2e7eb94c80b775f9906eb359ddc3a52a9
+	sha256sums = 30d26b5b70187611accccc4afddb8eb13ee32d85cdc85b4f77103b86a2dfc056
 
 pkgname = vibe-bin
