@@ -12,7 +12,7 @@ pkgname=(
 pkgdesc="A memory-safe programming language, and a standard library, for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives."
 
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 
 arch=(
 	'x86_64'
@@ -84,6 +84,9 @@ package_wuffs-lib() {
 	)
 	install -vDm644 \
 		-t "${pkgdir}/usr/include" \
+		release/c/*.c gen/c/*.c
+	install -vDm644 \
+		-t "${pkgdir}/usr/include/wuffs" \
 		release/c/*.c gen/c/*.c
 	install -vDm755 \
 		-t "${pkgdir}/usr/lib" \
