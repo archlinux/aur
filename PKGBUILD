@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=officecli
-pkgver=1.0.112
+pkgver=1.0.113
 pkgrel=1
 pkgdesc="The first and best Office suite designed for AI agents"
 arch=($CARCH)
@@ -30,7 +30,7 @@ optdepends=()
 backup=()
 options=('!strip' '!debug' '!lto')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('01c355cff9d77fd84140981ff4ce864e9aedce73cac4e0fbec75218a5cea617a')
+sha256sums=('308b1fc09adb41de05da3a41e31738b4f3f9d4442698d780ffc6ab94cebc7e05')
 noextract=()
 
 prepare() {
