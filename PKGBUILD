@@ -2,11 +2,11 @@
 # Maintainer: Arjix <me@arjix.dev>
 # Maintainer: Aurelle <gh@aurelle.dev>
 
-# shellcheck disable=SC2034,SC2154,SC2128,SC2128,SC2164
+# shellcheck disable=SC2034,SC2154,SC2128,SC2164
 
 pkgname=vicinae-bin
 pkgver=0.21.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Raycast like FOSS app on Linux"
 arch=('x86_64')
 url="https://github.com/vicinaehq/vicinae"
@@ -23,6 +23,7 @@ depends=(
   minizip
   syntax-highlighting
 )
+makedepends=("sed")
 install=vicinae-bin.install
 provides=("vicinae")
 conflicts=("vicinae")
