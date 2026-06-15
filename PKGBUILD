@@ -2,7 +2,7 @@
 
 pkgname="v2rayn-bin"
 pkgver=7.22.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI client for Windows and Linux, support Xray core and others"
 arch=("x86_64" "arm64")
 license=('GPL3')
@@ -24,8 +24,21 @@ package() {
 
   install -Dm644 "${srcdir}/v2rayN.png" -t "${pkgdir}/usr/share/pixmaps"
   install -Dm644 "${srcdir}/v2rayN-bin.desktop" -t "${pkgdir}/usr/share/applications"
-  mkdir -p "${pkgdir}/opt/$_app_name"
+  install -dm755 "${pkgdir}/opt/$_app_name"
   find . -name "v2rayN-linux-*" -type d -exec sh -c 'mv "$1"/* "$2/opt/$3/"' _ {} $pkgdir $_app_name \;
-  chmod -R 0777 ${pkgdir}/opt/$_app_name
+
+  # Set least-privilege permissions: directories 0755, files 0644.
+  # NOTE: do NOT use 0777 — a world-writable /opt app dir lets any local user
+  # replace the binaries, which is a privilege-escalation risk. The upstream
+  # archive also ships inconsistent executable bits across releases, so set
+  # them explicitly below.
+  find "${pkgdir}/opt/$_app_name" -type d -exec chmod 0755 {} +
+  find "${pkgdir}/opt/$_app_name" -type f -exec chmod 0644 {} +
+
+  # Restore 0755 for the application and its bundled proxy cores.
+  find "${pkgdir}/opt/$_app_name" -type f \( \
+    -name 'v2rayN' -o -name 'AmazTool' -o \
+    -name 'mihomo' -o -name 'sing-box' -o -name 'xray' \
+  \) -exec chmod 0755 {} +
 
 }
