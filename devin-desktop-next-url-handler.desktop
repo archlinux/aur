@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Devin - Next - URL Handler
+Comment=Tomorrow's Editor, Today.
+GenericName=Text Editor
+Exec=/opt/devin-desktop-next/devin-desktop-next --open-url %U
+Icon=devin-desktop-next
+Type=Application
+NoDisplay=true
+StartupNotify=true
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=x-scheme-handler/devin-next;x-scheme-handler/windsurf-next;
+Keywords=vscode;

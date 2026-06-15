@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Devin - Next
+Comment=Tomorrow's Editor, Today.
+GenericName=Text Editor
+Exec=/opt/devin-desktop-next/devin-desktop-next %F
+Icon=devin-desktop-next
+Type=Application
+StartupNotify=false
+StartupWMClass=Devin - Next
+Categories=TextEditor;Development;IDE;
+MimeType=application/x-devin-desktop-next-workspace;
+Actions=new-empty-window;
+Keywords=vscode;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=/opt/devin-desktop-next/devin-desktop-next --new-window %F
+Icon=devin-desktop-next
