@@ -7,7 +7,7 @@
 
 pkgname=btrfs-progs-experimental-git
 _gitname=btrfs-progs
-pkgver=7857_7.0_r5_gce18c3a1
+pkgver=7892_7.0_r40_gb5bf609c
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities with experimental and unstable features enabled"
 arch=("i686" "x86_64")
@@ -69,7 +69,7 @@ package() {
 
   cd ${_gitname}
   make DESTDIR="${pkgdir}" install
-  
+
   # install bash completion
   install -Dm644 btrfs-completion "${pkgdir}/usr/share/bash-completion/completions/btrfs"
 
