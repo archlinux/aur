@@ -5,7 +5,7 @@ pkgname=(
     libnmstate
     python-libnmstate
 )
-pkgver=2.2.59
+pkgver=2.2.60
 pkgrel=1
 pkgdesc='Declarative network manager API for Linux hosts'
 arch=('x86_64')
@@ -25,8 +25,8 @@ source=(
     "$pkgbase-vendor-$pkgver.tar.xz::https://github.com/nmstate/nmstate/releases/download/v$pkgver/$pkgbase-vendor-$pkgver.tar.xz"
 )
 sha256sums=(
-    '16ebda604f576c1cb9344dae46045048613339e88af99ae7b49e48237938ea4a'
-    '69495b049ae7e88ec04375a557e47c9883b49f6309ec91c95c71ea26e5e296f4'
+            '93c157c27b922968dfc6e8f649bacb00287303e0fd83b13cf1ff15a98fb3599c'
+            'f0dc405f798f677cf7bbabd4fdd740a2d5e680b7cb091c2e91ce89dc5cf184a6'
 )
 
 _pick() {
