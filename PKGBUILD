@@ -1,13 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-cn-bin
 _pkgname=QoderCN
-pkgver=1.1.2
+pkgver=1.2.0
 _electronversion=37
 pkgrel=1
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://qoder.com.cn"
-_ghurl="https://github.com/QoderAI/changelog-zh_CN"
 license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -30,7 +29,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('20f550d3a451d11f0b0d9b75ad0773e014e12cf6534b47ff92dfd60db1c46ade'
+sha256sums=('SKIP'
             '64a79bddff14167a290d3547d7b4bd00cf693be6d11fb6b7018bca9d9d778ab4'
             '5956a85ba4da0a580d2e93197fd5de03eee3be3d541aab68562435a09a3e94fe'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
