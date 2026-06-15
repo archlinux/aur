@@ -3,7 +3,7 @@
 
 pkgname=python-schwifty
 _name=${pkgname#python-}
-pkgver=2025.9.0
+pkgver=2026.3.0
 pkgrel=1
 pkgdesc="Validate/generate IBANS and BICS"
 arch=('any')
@@ -11,9 +11,9 @@ url="http://github.com/mdomke/schwifty"
 license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling' 'python-hatch-vcs')
 optdepends=('python-pydantic>=2.0: data validation')
-depends=('python>=3.9' 'python-iso3166' 'python-pycountry' 'python-rstr')
+depends=('python>3.9' 'python-pycountry' 'python-rstr')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
-b2sums=('36299baa9b6422038a2fe8b2d9db0a92686e7ddcba331b299c5993384936560382044a59f476c20d50d52d95c8588cc30f1a9edeb6cb8552bf456a2e4b8ffb08')
+b2sums=('5c668c25fe464e4bce651c3dc134172421601772d535198a4cab26219fe245d23e1ca43c9598820fd63ab433fb554fc98e2ef18503e8fddc929243d0382f6009')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
