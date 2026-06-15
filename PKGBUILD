@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
@@ -17,6 +17,7 @@ makedepends=(
   npm
 )
 optdepends=(
+  '3x-ui-mtg-core: MTproto support'
   'acme.sh: Certificate Management'
   'fail2ban: IP Limit Management'
   'openldap: LDAP integration'
@@ -29,7 +30,7 @@ source=(
   $url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
   ${pkgname:1}-updategeo.{service,timer}
 )
-b2sums=('1a8ddf2df3fef4a7e9604fe4a71eccfcf6fafb445ed02d7662417c854de7c84089a8cb5e75ed4b3500c8569ba1aef131507499f77e5b2fb61d8924c4d273e678'
+b2sums=('6629026a61f5f8342c475c6eed8304830967cb05d5f1b485a2fed1ad7878c02b66abb6cee72893f7c4c18c0f6736c91fe59e8f94615cf9338db8188b9cf76ac4'
         'a6f4eba028beba4f94d78ce40080e531939f98c9fa265c7a27d6ea17777cb549cd65be0193e390850fc418457e204f478c36f87b66844cb0abc69c893192e970'
         'da9c55306c37438f79adfb550d1d0003f14c4d597b170e4424428fc07040391fd904d63f738c46ac92ba13d8c8577b3e4a74bfe119d0f7b914d3e7839c4a0336')
 
@@ -46,7 +47,7 @@ prepare() {
 
   cd frontend
   npm ci
-  npm run build -- --outDir ../web/dist --emptyOutDir
+  npm run build -- --outDir ../internal/web/dist --emptyOutDir
 }
 
 build() {
