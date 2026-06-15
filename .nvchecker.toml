@@ -1,0 +1,4 @@
+[dumpvdl2]
+source = "git"
+git = "https://github.com/szpajder/dumpvdl2.git"
+prefix = "v"
