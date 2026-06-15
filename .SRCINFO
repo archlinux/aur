@@ -1,0 +1,15 @@
+pkgbase = sunshine-virt-display-git
+	pkgdesc = A script to dynamically create virtual displays for Sunshine game streaming on Linux using EDID overrides.
+	pkgver = r71.03de048
+	pkgrel = 1
+	url = https://github.com/frostplexx/sunshine_virt_display
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rsync
+	depends = python
+	depends = python-jeepney
+	source = sunshine_virt_display::git+https://github.com/frostplexx/sunshine_virt_display.git
+	sha256sums = SKIP
+
+pkgname = sunshine-virt-display-git
