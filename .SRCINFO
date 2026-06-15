@@ -1,6 +1,6 @@
 pkgbase = defuddle
 	pkgdesc = Extract article content and metadata from web pages
-	pkgver = 0.14.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/kepano/defuddle
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = defuddle
 	optdepends = mathml-to-latex: for math conversion
 	optdepends = temml: for math conversion
 	optdepends = turndown: for markdown output
-	source = defuddle-0.14.0.tar.gz::https://github.com/kepano/defuddle/archive/0.14.0.tar.gz
-	sha256sums = 69dd7ef65a2c7cf2b99388f720cac39bfc258277c96ce5f17985ee19d545f241
+	source = defuddle-0.18.1.tar.gz::https://github.com/kepano/defuddle/archive/0.18.1.tar.gz
+	sha256sums = 613c5149fb9758a870db5de26f354a43d271e3366dc111da4431bd750bd68313
 
 pkgname = defuddle

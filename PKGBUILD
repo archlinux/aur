@@ -1,7 +1,7 @@
 # Maintainer: dmitrysvd
 # This PKGBUILD was generated with the assistance of AI.
 pkgname=defuddle
-pkgver=0.14.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="Extract article content and metadata from web pages"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('linkedom: for node/cli support'
             'temml: for math conversion'
             'turndown: for markdown output')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('69dd7ef65a2c7cf2b99388f720cac39bfc258277c96ce5f17985ee19d545f241')
+sha256sums=('613c5149fb9758a870db5de26f354a43d271e3366dc111da4431bd750bd68313')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
