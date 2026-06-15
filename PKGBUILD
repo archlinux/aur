@@ -7,7 +7,7 @@ _pkgname=openssl
 _ver=1.1.1w
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=10
+pkgrel=11
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('aarch64' 'x86_64')
 url='https://www.openssl.org'
@@ -39,6 +39,10 @@ source=(
 	CVE-2025-69418.patch
 	CVE-2025-69420.patch
 	CVE-2025-69421.patch
+	CVE-2026-7383.patch
+	CVE-2026-9076-1.patch
+	CVE-2026-9076-2.patch
+	CVE-2026-9076.tar
 	CVE-2026-22795_CVE-2026-22796.patch
 	CVE-2026-28387.patch
 	CVE-2026-28388-1.patch
@@ -50,6 +54,12 @@ source=(
 	CVE-2026-28390-2.patch
 	CVE-2026-28390-3.patch
 	CVE-2026-28390-4.patch
+	CVE-2026-34180.patch
+	CVE-2026-42766-1.patch
+	CVE-2026-42766-2.patch
+	CVE-2026-42766.tar
+	CVE-2026-45447-1.patch
+	CVE-2026-45447-2.patch
 	# https://git.almalinux.org/rpms/openssl/src/branch/c8s
 	CVE-2025-69419-1.patch
 	CVE-2025-69419-2.patch
@@ -77,6 +87,10 @@ sha256sums=('cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8'
             '1bb720f06bfc27216e2ac339cd13d94a1269db3e97c80e734e649ed4e8245473'
             'a8872bd2e35b9e98f609280425a8f0c2aefdb53bf8e82867801dc1bd4929442a'
             'abbac0667f15870da50e19601bec90b4a3323e38e8d99bc2340037dff5091658'
+            'e666a38218cbde067ecf9b8c6525ac40bee0b7aaca1a313f231abdfb5c80718d'
+            '4d8b43bfd7045c953680c00dbf960309aa39669460865f884a3ffd22b0a2fdce'
+            '5e978c392007f8f72e4a3ce2d5132ebd40f0d13d8703d8567daff8e4d5ac163c'
+            '3c97cc109178e3be699816b30c4a89e9cc1513ade2113f4b36cbe6a097a50389'
             '5ae30f0101c5ce031c2a22531b099e16b1796bca1ef640dde087f0caaf34265d'
             'eb815e57a59646b185576b6a04ba9803fcf2f77a41f4a611a39f1c8223177270'
             '662786ba0e229616f0dde5c08b550e2ea4b81d6c51babe97db7aadf1438259f4'
@@ -88,6 +102,12 @@ sha256sums=('cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8'
             'd1bd3facfc13838171aa6ad353f7f1844d803d77f9c32b900c943c07c99476fc'
             'c93a91e411c35eef8620927804ea4f4228063f503ae8ccc9adb4c248a57d3f6d'
             'dd5c12716c5b558de8284689ce6feb7ee68f26cc8312be6380db96ddd9ea5a42'
+            '40f41bd595ada9072ed4afe534b7bf78b44c39c1241cab7152139a7c9a39de7d'
+            '095c04743b42745669feb252e2ccff4677bed6f1d7aae76e008071c66bb941a6'
+            'a7048bb026d5ae889804229d4e395f4574f5c63c5258130470a4f05dc706581e'
+            'b03d53705375794da859dbd1287b9356a750fd3f669b74403d3f4619d494eab8'
+            'f5689d1652045fe14c70e6eb68b080b1a26ad1c49d5308cd7212b417e10f2afc'
+            '4fe62fbbce088325f5b62fab3edfe59d4d9a8108ddfd06cf2a53fa1bd758c5b3'
             'd89423836be0cb5ca076e173ea373c4deeef3d6ffa17085ca8a0850b364d7d3b'
             '933c61f15a81ac9c50f66f8c6c059d09f94a116d7b4c4d534a41b1c8f0140160')
 validpgpkeys=(
@@ -97,7 +117,9 @@ validpgpkeys=(
 	'EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
 )
 noextract=(
+	CVE-2026-9076.tar
 	CVE-2026-28389.tar
+	CVE-2026-42766.tar
 )
 
 prepare() {
@@ -112,6 +134,7 @@ prepare() {
 		test/certs/cve-2026-28388-ca.pem \
 		test/certs/cve-2026-28388-crls.pem \
 		test/certs/cve-2026-28388-leaf.pem \
+		test/cms-msg/make_missing_kdf_der.py \
 		test/recipes/70-test_npn.t \
 		test/recipes/80-test_cms_data/dh-cert.pem \
 		test/recipes/80-test_cms_data/dh-key.pem \
@@ -119,6 +142,7 @@ prepare() {
 		test/recipes/80-test_cms_data/ecdh-key.pem \
 		test/recipes/80-test_pkcs12_data/bad{1,2,3}.p12 \
 		test/smime-certs/smrsa3-cert.pem \
+		test/smime-eml/pkcs7-empty-digest-set.eml \
 		util/perl/TLSProxy/NextProto.pm \
 		;
 
@@ -149,6 +173,9 @@ prepare() {
 		CVE-2025-69419-2 \
 		CVE-2025-69420 \
 		CVE-2025-69421 \
+		CVE-2026-7383 \
+		CVE-2026-9076-1 \
+		CVE-2026-9076-2 \
 		CVE-2026-22795_CVE-2026-22796 \
 		CVE-2026-28387 \
 		CVE-2026-28388-1 \
@@ -159,14 +186,20 @@ prepare() {
 		CVE-2026-28390-2 \
 		CVE-2026-28390-3 \
 		CVE-2026-28390-4 \
+		CVE-2026-34180 \
+		CVE-2026-42766-1 \
+		CVE-2026-42766-2 \
+		CVE-2026-45447-1 \
+		CVE-2026-45447-2 \
 		; do
 		patch -p1 -i "${srcdir}/${patch}.patch"
 	done
 
 	local tarball
-	# shellcheck disable=SC2043
 	for tarball in \
+		CVE-2026-9076 \
 		CVE-2026-28389 \
+		CVE-2026-42766 \
 		; do
 		tar xvf "${srcdir}/${tarball}.tar"
 	done
