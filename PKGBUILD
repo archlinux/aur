@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=fortio-bin
-pkgver=1.75.1
+pkgver=1.75.2
 pkgrel=1
 pkgdesc='Fortio load testing library, command line tool, advanced echo server and web UI in go (golang). Allows to specify a set query-per-second load and record latency histograms and other useful stats.(Prebuilt version)'
 arch=(
@@ -16,8 +16,8 @@ conflicts=("${pkgname%-bin}")
 depends=()
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('a81909c10f15c418cc4532beb0a88e997dc098a7cca7b65baabd9ee6586e4734')
-sha256sums_x86_64=('5b04650e735081a2bf58bdee0145513073e931195a09fb7327596729b6daf7a4')
+sha256sums_aarch64=('894fe973a7bd8285dd45da0e3e895356b8c912e122e6d2671740bbeae719452e')
+sha256sums_x86_64=('412591c05d2f131b71934be5c66ef54da2ce089c67abb1aa366eca22a8acfa1e')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/share/man/man1/${pkgname%-bin}.1" -t "${pkgdir}/usr/share/man/man1"
