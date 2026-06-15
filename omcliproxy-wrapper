@@ -1,0 +1,5 @@
+#!/bin/sh
+# Forces OMSA's vendored 2016-era libs (isolated in omsa-compat) for the CLI,
+# without exposing them to the rest of the system.
+export LD_LIBRARY_PATH="/opt/dell/srvadmin/omsa-compat:/opt/dell/srvadmin/lib64:/opt/dell/srvadmin/lib64/openmanage${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+exec /opt/dell/srvadmin/sbin/omcliproxy.bin "$@"

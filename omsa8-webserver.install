@@ -1,0 +1,24 @@
+post_install() {
+    ldconfig >/dev/null 2>&1 || true
+
+    cat <<'MSG'
+==> Dell OMSA web GUI installed.
+    Enable it (also start the data engine if you have not):
+        sudo systemctl enable --now dell-openmanage.service
+        sudo systemctl enable --now dell-openmanage-web.service
+    Then browse to:
+        https://<this-host>:1311        (self-signed cert - accept the warning)
+    Log in with YOUR OWN Linux user and password (e.g. your sudo account),
+    NOT root - unless root actually has a password set.
+    Administrator/PowerUser/User roles are mapped in:
+        /opt/dell/srvadmin/etc/omarolemap
+MSG
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    systemctl disable --now dell-openmanage-web.service >/dev/null 2>&1 || true
+}

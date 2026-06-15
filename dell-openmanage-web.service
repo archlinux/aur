@@ -1,0 +1,15 @@
+[Unit]
+Description=Dell OpenManage Server Administrator Web GUI (DSM SA Connection Service, :1311)
+After=dell-openmanage.service network-online.target
+Wants=network-online.target
+Requires=dell-openmanage.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+Environment=LD_LIBRARY_PATH=/opt/dell/srvadmin/omsa-compat:/opt/dell/srvadmin/lib64:/opt/dell/srvadmin/lib64/openmanage
+ExecStart=/etc/init.d/dsm_om_connsvc start
+ExecStop=/etc/init.d/dsm_om_connsvc stop
+
+[Install]
+WantedBy=multi-user.target

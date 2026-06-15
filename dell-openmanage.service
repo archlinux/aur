@@ -1,0 +1,15 @@
+[Unit]
+Description=Dell OpenManage Server Administrator (instrumentation/data engine)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+Environment=LD_LIBRARY_PATH=/opt/dell/srvadmin/omsa-compat:/opt/dell/srvadmin/lib64:/opt/dell/srvadmin/lib64/openmanage
+ExecStart=/opt/dell/srvadmin/sbin/dsm_sa_datamgrd
+ExecStart=/opt/dell/srvadmin/sbin/dsm_sa_eventmgrd
+# systemd terminates the daemonized processes in the service cgroup on stop.
+
+[Install]
+WantedBy=multi-user.target

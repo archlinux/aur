@@ -1,0 +1,38 @@
+post_install() {
+    # Replicate the Debian postinst registration (build omreg.cfg, register
+    # the data engine / storage providers, create runtime symlinks) and refresh
+    # the linker cache.
+    if [ -x /opt/dell/srvadmin/sbin/omsa-arch-setup.sh ]; then
+        /opt/dell/srvadmin/sbin/omsa-arch-setup.sh >/dev/null 2>&1 || true
+    fi
+    ldconfig >/dev/null 2>&1 || true
+
+    cat <<'MSG'
+==> Dell OMSA instrumentation installed.
+    Enable the data engine:
+        sudo systemctl enable --now dell-openmanage.service
+    Query hardware from the CLI (full path; sudo's PATH excludes it):
+        sudo /opt/dell/srvadmin/bin/omreport storage controller
+        sudo /opt/dell/srvadmin/bin/omreport chassis
+    For the web GUI, install the optional 'omsa8-webserver' package.
+    Note: requires the mainline kernel's dcdbas + IPMI modules (standard on Arch).
+MSG
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    systemctl disable --now dell-openmanage.service >/dev/null 2>&1 || true
+}
+
+post_remove() {
+    # Remove files generated at runtime by the registration step and by the
+    # running services (omreg.cfg, register output, IPC locks, logs) that pacman
+    # cannot track. /opt/dell/srvadmin is owned exclusively by these packages.
+    rm -rf /opt/dell/srvadmin /opt/lsi
+    rmdir /opt/dell 2>/dev/null || true
+    rm -f /etc/omreg.cfg
+    ldconfig >/dev/null 2>&1 || true
+}

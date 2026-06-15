@@ -1,0 +1,73 @@
+# Minimal LSB init-functions shim for Arch Linux.
+# Dell OMSA SysV init scripts source /lib/lsb/init-functions for log_* helpers.
+# We deliberately do NOT define the RHEL-style `daemon` function: that makes
+# OMSA's dataeng script take its portable "launch the binary directly" path.
+
+log_use_fancy_output() { return 1; }
+log_success_msg() { echo " * $*"; return 0; }
+log_failure_msg() { echo " * $*" >&2; return 0; }
+log_warning_msg() { echo " * $*" >&2; return 0; }
+log_daemon_msg()  { echo " * $*"; return 0; }
+log_begin_msg()   { echo " * $*"; return 0; }
+log_progress_msg(){ printf ' %s' "$*"; return 0; }
+log_end_msg()     { return "${1:-0}"; }
+log_action_msg()  { echo " * $*"; return 0; }
+log_action_begin_msg() { echo " * $*"; return 0; }
+log_action_end_msg()   { return "${1:-0}"; }
+
+pidofproc() {
+    local pidfile="" name=""
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            -p) pidfile="$2"; shift 2;;
+            *)  name="$1"; shift;;
+        esac
+    done
+    if [ -n "$pidfile" ] && [ -r "$pidfile" ]; then
+        cat "$pidfile" 2>/dev/null; return 0
+    fi
+    pidof -o %PPID -x "$name" 2>/dev/null
+}
+
+killproc() {
+    local pidfile="" sig="" name=""
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            -p) pidfile="$2"; shift 2;;
+            -[0-9]*|-[A-Z]*) sig="$1"; shift;;
+            *) name="$1"; shift;;
+        esac
+    done
+    local pids; pids=$(pidofproc ${pidfile:+-p "$pidfile"} "$name")
+    [ -n "$pids" ] && kill ${sig:--TERM} $pids 2>/dev/null
+    return 0
+}
+
+status_of_proc() {
+    local pidfile="" name=""
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            -p) pidfile="$2"; shift 2;;
+            -*) shift;;
+            *) name="$1"; shift;;
+        esac
+    done
+    local pids; pids=$(pidofproc ${pidfile:+-p "$pidfile"} "$name")
+    if [ -n "$pids" ]; then echo "$name running ($pids)"; return 0
+    else echo "$name stopped"; return 3; fi
+}
+
+start_daemon() {
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            -p) shift 2;;
+            -n) shift 2;;
+            -f) shift;;
+            --) shift; break;;
+            -*) shift;;
+            *) break;;
+        esac
+    done
+    "$@" &
+    return 0
+}
