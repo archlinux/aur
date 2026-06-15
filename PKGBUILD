@@ -3,9 +3,9 @@
 # Contributor: Maxime Poulin <maxpoulin64@gmail.com>
 _pkgname=thelounge
 pkgname=thelounge-beta
-_pkgver=4.5.0
+_pkgver=4.5.1-pre.1
 pkgver=${_pkgver/-/}
-pkgrel=2
+pkgrel=1
 pkgdesc='Modern self-hosted web IRC client (Latest release/pre-release)'
 url='https://thelounge.chat/'
 arch=('any')
@@ -26,9 +26,9 @@ source=(
     'tmpfiles.d'
 )
 noextract=("$_pkgname-$_pkgver.tgz")
-sha256sums=('11a2a5b8e49d722a1c1240e0e5ee68317017d4c9f984ea557e82b31bc769ff71'
-            'ed84ecb09ed8aa357dceb5062b0c7751d809652bf7fdfe48354852f172b496cb'
-            '3e3319e694cd3e55d895f04d81f42cc708f2c41caf1961cc9733150ccb80c61e'
+sha256sums=('dedbe34bdedf45ffd9e7846435c8fc45f969041445512608334d15b8e1df1007'
+            '0527fbb21ba57e633076376ab9f5a98c89c0f4301e6589c9d8e2d6f2a5ea84ef'
+            '0629aa2c9ee3f1f234b7821c31c6803ab5d09764b26a8a66e4002c0730502465'
             'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
             'c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0'
             '30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5'
