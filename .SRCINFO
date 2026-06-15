@@ -1,0 +1,17 @@
+pkgbase = diffler-bin
+	pkgdesc = Terminal code review for AI coding agents
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/matheusfillipe/diffler
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	provides = diffler
+	conflicts = diffler
+	source_x86_64 = diffler-0.1.8-x86_64.tar.gz::https://github.com/matheusfillipe/diffler/releases/download/v0.1.8/diffler-v0.1.8-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 112488dbb2d95cfe04064d9882f893916f3aa9ab2c7f802ded472317cf3d964c
+	source_aarch64 = diffler-0.1.8-aarch64.tar.gz::https://github.com/matheusfillipe/diffler/releases/download/v0.1.8/diffler-v0.1.8-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 1ef980a888374c88431673c4921a2941bb77fe89799d08eb0d24e41c4bf26775
+
+pkgname = diffler-bin
