@@ -6,7 +6,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-libtiff
 pkgver=4.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for manipulation of TIFF images (mingw-w64)"
 arch=('any')
 url="https://libtiff.gitlab.io/libtiff/"
@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=(
   'git'
-  'mingw-w64-configure'
+  'mingw-w64-cmake'
   'python-sphinx'
 )
 options=('!strip' 'staticlibs' '!buildflags')
@@ -31,7 +31,6 @@ validpgpkeys=(
 
 prepare() {
   cd "${srcdir}/libtiff"
-  autoreconf -fiv
 } 
 
 build() {
@@ -39,21 +38,33 @@ build() {
   export CXXFLAGS="-fno-strict-aliasing"
   cd "${srcdir}/libtiff"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
-      --disable-jbig \
-      --without-x
-    make
-    popd
+    # shared
+    ${_arch}-cmake \
+      -DBUILD_SHARED_LIBS:BOOL=ON \
+      -Dtiff-contrib:BOOL=OFF \
+      -Dtiff-docs:BOOL=OFF \
+      -Dtiff-tests:BOOL=OFF \
+      -Dtiff-tools:BOOL=OFF \
+      -B build-${_arch}-shared -S .
+    make -C build-${_arch}-shared
+    # static
+    ${_arch}-cmake \
+      -DBUILD_SHARED_LIBS:BOOL=OFF \
+      -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static" \
+      -Dtiff-contrib:BOOL=OFF \
+      -Dtiff-docs:BOOL=OFF \
+      -Dtiff-tests:BOOL=OFF \
+      -Dtiff-tools:BOOL=OFF \
+      -B build-${_arch}-static -S .
+    make -C build-${_arch}-static
   done
 }
 
 package() {
+  cd "${srcdir}/libtiff"
   for _arch in ${_architectures}; do
-    cd "${srcdir}/libtiff/build-${_arch}"
-    make DESTDIR="${pkgdir}" install
-    cp "${srcdir}/libtiff/libtiff/"{tiffiop,tif_dir}.h "${pkgdir}/usr/${_arch}/include/"
-    cp libtiff/tif_config.h "${pkgdir}/usr/${_arch}/include/"
+    make DESTDIR=${pkgdir} install -C build-${_arch}-static
+    make DESTDIR=${pkgdir} install -C build-${_arch}-shared
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec rm {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
