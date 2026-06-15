@@ -1,7 +1,7 @@
 # Maintainer: dmitrysvd
 
 pkgname=yandex-music
-pkgver=5.104.2
+pkgver=5.106.2
 pkgrel=1
 pkgdesc="Official Yandex Music App for Linux"
 arch=('x86_64')
@@ -24,13 +24,18 @@ optdepends=(
 )
 options=('!strip' '!debug')
 source=("https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_amd64_${pkgver}.deb")
-sha256sums=('82f7cbb337692a08d66e5623a63d4d45653b14e7f933c62b7b14859e6b0b475e')
+sha256sums=('fadbbdc81dca1aecf1cef3b332060dac06fc17833d74be273e7b59b9f746d980')
 
 package() {
-    tar -xf data.tar.xz --directory "${pkgdir}"
+    bsdtar -xf data.tar.* --directory "${pkgdir}"
 
     # Remove Cyrillic from the path
     mv "${pkgdir}/opt/Яндекс Музыка" "${pkgdir}/opt/yandex-music"
+
+    # Disable auto-updates
+    rm "${pkgdir}/opt/yandex-music/resources/app-update.yml"
+
+    # Fix desktop file
     sed -i 's|/opt/Яндекс Музыка|/opt/yandex-music|g' "${pkgdir}/usr/share/applications/yandexmusic.desktop"
 
     # Localize Cyrillic name

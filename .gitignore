@@ -1,3 +1,6 @@
 *.deb
 *.pkg.tar.zst
 .githooks/
+pkg/
+src/
+test_extract/
