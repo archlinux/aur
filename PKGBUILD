@@ -1,17 +1,20 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Karl Ludwig Brennan <karlludwigbrennan@outlook.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Daniel Bermond <danielbermond@yahoo.com>
 
-pkgname=ffnvcodec-headers
-pkgver=13.0.19.0
+pkgname=ffnvcodec-headers12.0
+pkgver=12.0.16.1
 pkgrel=1
-pkgdesc='FFmpeg version of headers required to interface with Nvidias codec APIs'
+pkgdesc='FFmpeg version of headers required to interface with Nvidias codec APIs (version 12.0)'
 arch=(any)
 url=https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git
 license=(MIT)
 makedepends=(git)
-_tag=e844e5b26f46bb77479f063029595293aa8f812d
+conflicts=('ffnvcodec-headers')
+provides=('ffnvcodec-headers')
+_tag=451da99614412a7f9526ef301a5ee0c7a6f9ad76
 source=(git+https://git.videolan.org/git/ffmpeg/nv-codec-headers.git#tag=${_tag})
-sha256sums=('1b6190ddb4b36356ab3d4c2d53ed613aec077748a28c3ef7fff53047662b245b')
+sha256sums=('71cec387fe1d2aabb246519ca09cbe600915dde437708835957e2219d991c645')
 
 pkgver() {
   cd nv-codec-headers
@@ -27,7 +30,7 @@ build() {
 
 package() {
   make PREFIX=/usr DESTDIR="${pkgdir}" -C nv-codec-headers install
-  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/ffnvcodec-headers/
+  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/ffnvcodec-headers12.0/
 }
 
 # vim: ts=2 sw=2 et:
