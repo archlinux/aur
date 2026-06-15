@@ -1,6 +1,6 @@
 pkgbase = libretro-ardens-git
 	pkgdesc = Arduboy FX core
-	pkgver = v0.21.2.r138.8237fb9
+	pkgver = 0.21.2.r138.8237fb9
 	pkgrel = 1
 	url = https://github.com/tiberiusbrown/Ardens
 	arch = x86_64

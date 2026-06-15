@@ -1,6 +1,6 @@
 # Maintainer: Engdyn <aur cat engdyn dog de>
 pkgname=libretro-ardens-git
-pkgver=v0.21.2.r138.8237fb9
+pkgver=0.21.2.r138.8237fb9
 pkgrel=1
 pkgdesc="Arduboy FX core"
 arch=(x86_64)
@@ -28,7 +28,7 @@ sha256sums=(
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long | sed 's/v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
