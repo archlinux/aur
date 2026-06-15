@@ -1,9 +1,9 @@
-# Maintainer: TheBill2001 <tuantran1632001 at gmail dot com>
+# Maintainer: TheBill2001 <billtran1632001 at gmail dot com>
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo)
 
 pkgname=koboldcpp-hipblas-portable
-pkgver=1.115
+pkgver=1.115.1
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM, portable build for old CPUs)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=(
     'koboldcpp.png'
 )
 sha256sums=(
-    '8894fe11ef17c5716b36a543d2c2f00d133d39d72d1313a24707b51d64d6014e'
+    '6a38e9f198c798d6f4879abf0bef1d51f7cd2a4533bd04fa8524ae386bc9bb45'
     '2f2f45a745b30392d01472c1f5e68f82e5e7d7353a4615cf94b9f0cd4fd0505b'
     'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
