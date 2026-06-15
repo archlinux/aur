@@ -3,7 +3,7 @@
 # GitHub below is the upstream-maintained mirror used for clickable links and source clones.
 pkgname=nostr-vpn-git
 _pkgname=nostr-vpn
-pkgver=4.0.73.r0.ge16e3ae
+pkgver=4.0.74.r0.gb5fbcc3
 pkgrel=1
 pkgdesc='GTK4/libadwaita desktop client for Nostr VPN, a Tailscale-style private mesh VPN (git master)'
 arch=('x86_64' 'aarch64')
