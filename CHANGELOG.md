@@ -8,6 +8,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **AFC Champions League Two** - Added the AFC Champions League Two (FotMob ID 9469) to the supported leagues list under the Asia region.
+
+### Changed
+- **Reddit goal-link retrieval** — improved coverage for World Cup and national-team matches, with looser team and scorer name matching across spellings, diacritics, and common r/soccer title formats.
+- **UI Refinements** — minor visual tweaks improving focus indicators and overall consistency.
+
+### Fixed
+
+## [0.27.1] - 2026-06-12
+
+### Added
+
+### Changed
+
+### Fixed
+- **World Cup Grid Alignment** - Reworked the World Cup grid to render consistently across terminals and cleared stale content when navigating between sub-views.
+
+## [0.27.0] - 2026-06-12
+
+### Added
+- **Agentic CLI Mode** - Golazo is now usable by agentic dev tools (Claude Code, Codex, etc). Adds JSON subcommands (`live`, `finished`, `match`, `leagues`, `capabilities`) with a stable envelope, typed error codes and self-describing contract. TUI behavior is unchanged. See [docs/CLI.md](docs/CLI.md).
+
+### Changed
+
+### Fixed
+- **World Cup Flags** - Fixed ambiguous FotMob short codes (e.g. South Africa/South Korea both `SOU`) and missing 2026 qualifier flags causing teams to render with the wrong code or no flag.
+
+## [0.26.0] - 2026-06-10
+
+### Added
+- **World Cup View** - New top-level view for the FIFA World Cup with a group-grid overview as the default sub-view, scrollable groups list (`t`), per-group detail, knockout bracket (`b`), and upcoming matches for the next 4 days (`u`). Flag emojis prefix team names across the grid, group detail, and upcoming views.
+
+### Changed
+
+### Fixed
+- **World Cup Team Labels** - All World Cup views now render teams as `<flag> <3-letter code>` (e.g. `🇦🇷 ARG`), with a local name-to-code map for teams missing a `shortName` from FotMob.
+- **Update Noop** - `golazo --update` now skips the Homebrew/install-script call when the running binary is already on the latest GitHub release (or is a dev build), printing an informative message instead of reinstalling. Network failures while checking the latest version still fall through to today's install behavior.
+- **Debug Log Hint** - The `--debug` banner and `--debug` flag help now display the platform-correct log path (`~/.config/golazo/golazo_debug.log` on Linux per XDG, `~/.golazo/golazo_debug.log` on macOS/Windows) instead of a hardcoded macOS path.
+- **World Cup Hints** - Removed a redundant tab hint above the groups list so each sub-view shows a single, accurate help line.
+
+## [0.25.0] - 2026-05-31
+
+### Added
 - **Aggregate Score** - Finished knockout matches (Champions League, Europa League, etc.) now display the aggregate score and eliminated team below the match score in the details panel
 
 ### Changed
