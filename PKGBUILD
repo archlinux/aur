@@ -1,6 +1,6 @@
 # Maintainer: Kitty Dae Elliott <kdelliott@pm.me>
 pkgname=ruffle-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A Flash Player emulator written in Rust"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=(ruffle)
 conflicts=(ruffle)
 source_x86_64=("ruffle-${pkgver}-linux-x86_64.tgz::https://github.com/ruffle-rs/ruffle/releases/download/v${pkgver}/ruffle-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("ruffle-${pkgver}-linux-aarch64.tgz::https://github.com/ruffle-rs/ruffle/releases/download/v${pkgver}/ruffle-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('15ae2fd6c69728b861a2f62c6c88fa6d556ff529993aeb2064cf993e2c99237e')
-sha256sums_aarch64=('f090fb756b7e6528314979464ae89eec90196cfa763b47ed043227d3eeff08f1')
+sha256sums_x86_64=('a07978cc86ea33f745682201c6240d27bc51944a2732e09a973f2179581999a0')
+sha256sums_aarch64=('e03923eeeeec5deb19f427b4b4c58d4b2b6039f77ea36470bff8de829470928f')
 
 package() {
 	cd "$srcdir/"
