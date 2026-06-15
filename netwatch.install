@@ -1,5 +1,5 @@
 post_install() {
-    echo "Setting CAP_NET_RAW capability on /usr/bin/netwatch..."
+    echo "Setting CAP_NET_RAW & CAP_BPF & CAP_PERFMON capabilities on /usr/bin/netwatch..."
     setcap 'cap_net_raw,cap_bpf,cap_perfmon+eip' usr/bin/netwatch
 }
 
