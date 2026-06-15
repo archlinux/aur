@@ -1,0 +1,21 @@
+pkgbase = libretro-ardens-git
+	pkgdesc = Arduboy FX core
+	pkgver = v0.21.2.r138.8237fb9
+	pkgrel = 1
+	url = https://github.com/tiberiusbrown/Ardens
+	arch = x86_64
+	groups = libretro
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = libretro-core-info
+	depends = libgcc
+	depends = libstdc++
+	options = !debug
+	options = !lto
+	source = libretro-ardens::git+https://github.com/tiberiusbrown/Ardens.git
+	source = git+https://github.com/richgel999/miniz.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libretro-ardens-git
