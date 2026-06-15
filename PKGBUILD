@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libopenshot-git
-pkgver=0.4.0.r140.g7b4e9992
+pkgver=0.7.0.r111.g8f1f091c
 pkgrel=1
 pkgdesc='A high quality, open-source video editing, animation, and playback library for C++, Python, and Ruby (git version)'
 arch=('x86_64')
@@ -10,11 +10,12 @@ license=('LGPL-3.0-or-later')
 depends=(
     'babl'
     'ffmpeg4.4'
-    'gcc-libs'
     'glibc'
     'jsoncpp'
+    'libgcc'
     'libmagick'
     'libopenshot-audio-git'
+    'libstdc++'
     'opencv'
     'protobuf'
     'python'
