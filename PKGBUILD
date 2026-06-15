@@ -3,12 +3,12 @@
 pkgname=shorin-contrib-git
 _pkgname=shorin-contrib
 pkgver=r68.7602feb
-pkgrel=1
+pkgrel=2
 pkgdesc="Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-contrib"
 license=('GPL3')
-depends=('bash' 'fzf')
+depends=('bash' 'fzf' 'pacman-contrib')
 makedepends=('git')
 install='shorin-contrib.install'
 
