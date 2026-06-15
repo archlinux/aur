@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pupu-bin
 _pkgname=PuPu
-pkgver=0.1.6
+pkgver=0.1.7
 _electronversion=40
 pkgrel=1
 pkgdesc="A simple and easy to use UI for the Ollama.(Use system-wide electron)"
@@ -31,7 +31,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/haoxiang-xu/PuPu/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2cfa86625a06bdb679dd181d32ac59666f831c3dfbbf87e2fb5ab0286b4e6a7a'
+sha256sums=('e864f0a235a53153c53be296add912fd1e1a5038230a2de3e06f0bed5157dd12'
             '2191d05c6ee7c145480916b745bd020484adb61653be943c43cff10bc22927a1'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
