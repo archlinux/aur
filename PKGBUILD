@@ -3,7 +3,7 @@
 pkgname=llama.cpp-gfx1151
 _pkgname=${pkgname%%-gfx1151}
 pkgver=b9641
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm + Vulkan)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggml-org/llama.cpp'
@@ -104,7 +104,7 @@ build() {
     -DCMAKE_HIP_FLAGS="-mprefer-vector-width=512 -famd-opt -mllvm -inline-threshold=600 -mllvm -unroll-threshold=150"
     -DGGML_HIP=ON
     -DGGML_HIP_GRAPHS=ON
-    -DGGML_HIP_NO_VMM=OFF # Strix Halo 支持 VMM, 可以开
+    # -DGGML_HIP_NO_VMM=OFF # Strix Halo 支持 VMM, 但 arch 官方的 ROCm 包似乎有点问题
     -DGGML_CUDA_FORCE_MMQ=ON # 强制使用自定义乘法内核而非 fp16 cuBLAS. 可以加一点速并省一点显存
     # -DGGML_HIP_ROCWMMA_FATTN=ON # 现阶段 rocWMMA 烂完了
     -DHIP_PLATFORM=amd # 手动指定 AMD 平台, 防止因 rocm-nightly 禁用自动检测而报错
