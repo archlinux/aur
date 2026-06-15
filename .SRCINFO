@@ -14,7 +14,7 @@ pkgbase = nautilus-dropbox
 	depends = dropbox
 	options = !libtool
 	options = !emptydirs
-	source = https://github.com/dropbox/nautilus-dropbox/archive/refs/tags/v2026.05.06.tar.gz
+	source = nautilus-dropbox-2026.05.06.tar.gz::https://github.com/dropbox/nautilus-dropbox/archive/refs/tags/v2026.05.06.tar.gz
 	sha512sums = 64c9e02ddacb30ada8ac803a3f888494be91a7d56e83942fc4b0a96b9abc7a39023b689011d782fdcbb64ce481a4fc93ffd2fa1190a9731af2b1f432f25a6f3f
 
 pkgname = nautilus-dropbox

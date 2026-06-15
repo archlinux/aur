@@ -18,7 +18,7 @@ license=('CC-BY-ND-3.0 AND GPL-3.0-or-later')
 depends=(nautilus libnautilus-extension dropbox)
 makedepends=(python python-docutils python-gobject gnome-common)
 options=('!libtool' '!emptydirs')
-source=('https://github.com/dropbox/nautilus-dropbox/archive/refs/tags/v2026.05.06.tar.gz')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dropbox/nautilus-dropbox/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('64c9e02ddacb30ada8ac803a3f888494be91a7d56e83942fc4b0a96b9abc7a39023b689011d782fdcbb64ce481a4fc93ffd2fa1190a9731af2b1f432f25a6f3f')
 
 build() {
