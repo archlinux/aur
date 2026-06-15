@@ -1,6 +1,6 @@
 pkgname=zed-sdk-bin
 pkgver=5.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Stereolabs advanced scalable and customizable AI Vision framework"
 arch=('x86_64')
 url="https://www.stereolabs.com/developers/release"
@@ -79,15 +79,11 @@ package() {
     find "${pkgdir}/opt/zed/tools" -type f -exec chmod 755 {} \;
     find "${pkgdir}/opt/zed" -name "*.sh" -exec chmod 755 {} \;
 
-    # setgid video: lets users write AI model files and calibration data
-    chown root:video "${pkgdir}/opt/zed/resources"
-    chmod 2775 "${pkgdir}/opt/zed/resources"
-    chgrp -R video "${pkgdir}/opt/zed/resources"
-    chmod -R g+w "${pkgdir}/opt/zed/resources"
+    # Relax permissions so ZED tools can pull and install models and configs.
+    chmod 0777 "${pkgdir}/opt/zed/resources"
+    chmod -R a+rX "${pkgdir}/opt/zed/resources"
 
-    mkdir -p "${pkgdir}/opt/zed/settings"
-    chown root:video "${pkgdir}/opt/zed/settings"
-    chmod 2775 "${pkgdir}/opt/zed/settings"
+    install -dm777 "${pkgdir}/opt/zed/settings"
 
     # Fix RUNPATH for all binaries to point to correct library paths
     for bin in "${pkgdir}/opt/zed/tools/"*; do

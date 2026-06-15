@@ -40,16 +40,14 @@ EOF
 
 post_upgrade() {
     post_install
-    # Update permissions for existing installations
+    # Update permissions for existing installations.
+    # Relax permissions so ZED tools can pull and install models and configs.
     if [ -d /opt/zed/resources ]; then
-        chown root:video /opt/zed/resources
-        chmod 2775 /opt/zed/resources
-        chgrp -R video /opt/zed/resources
-        chmod -R g+w /opt/zed/resources
+        chmod 0777 /opt/zed/resources
+        chmod -R a+rX /opt/zed/resources
     fi
     if [ -d /opt/zed/settings ]; then
-        chown root:video /opt/zed/settings
-        chmod 2775 /opt/zed/settings
+        chmod 0777 /opt/zed/settings
     fi
 }
 
