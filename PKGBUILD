@@ -1,7 +1,16 @@
 # Maintainer: Kief Studio <packages@kief.studio>
+#
+# Rolling build from the latest commit on the default branch. SKIP is mandatory
+# for a VCS source, so provenance comes from verifying the HEAD commit's GPG
+# signature against our key (validpgpkeys + `git verify-commit` in prepare()).
+# The repo's branch ruleset requires signed commits, so HEAD should always
+# verify; if it does not, the build aborts. NOTE: this is a WEAKER guarantee
+# than the tagged packages (aur-scanner / ks-aur-scanner), which verify a signed
+# release tag pinned to a reviewed version. Prefer the tagged packages on
+# production systems.
 pkgname=aur-scanner-git
 pkgver=1.0.3.r0.g7aae5c0
-pkgrel=1
+pkgrel=2
 pkgdesc="Security scanner for Arch Linux AUR packages - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/KiefStudioMA/ks-aur-scanner"
@@ -10,7 +19,10 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'git' 'clang')
 provides=('aur-scanner' 'aur-scan')
 conflicts=('aur-scanner' 'ks-aur-scanner')
+options=('!debug')
+# Import the signing key first:  gpg --recv-keys 25631EAE3F43999050B7D7021132BF893C33FB51
 source=("git+https://github.com/KiefStudioMA/ks-aur-scanner.git")
+validpgpkeys=('25631EAE3F43999050B7D7021132BF893C33FB51') # gitleaks:allow (public GPG key fingerprint, not a secret)
 sha256sums=('SKIP')
 
 pkgver() {
@@ -26,21 +38,29 @@ pkgver() {
 
 prepare() {
     cd ks-aur-scanner
+    # Verify the checked-out commit is signed by our key before building any of
+    # its code. The branch ruleset requires signed commits; a failure here means
+    # an unsigned/untrusted commit reached HEAD -- abort rather than build it.
+    if ! git verify-commit HEAD; then
+        echo "ERROR: HEAD commit is not signed by a trusted key (validpgpkeys)." >&2
+        echo "       Import it:  gpg --recv-keys 25631EAE3F43999050B7D7021132BF893C33FB51" >&2
+        return 1
+    fi
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd ks-aur-scanner
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --release --all
+    cargo build --release --all --locked
 }
 
 check() {
     cd ks-aur-scanner
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --release --all
+    cargo test --release --all --locked
 }
 
 package() {
