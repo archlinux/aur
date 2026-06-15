@@ -1,8 +1,8 @@
 # Maintainer: Anthony Vitacco <avitacco@protonmail.com>
 
 pkgname=cowbird
-pkgver=0.5.0
-pkgrel=5
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='A password manager that uses HashiCorp Vault as its backend'
 arch=('x86_64' 'aarch64')
 url='https://github.com/avitacco/cowbird'
@@ -13,9 +13,9 @@ options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "co.avitac.cowbird.desktop"
         "co.avitac.cowbird.svg")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('e6456511b4d523e40ddacd6ec4099658e584de137f4a14f7758b19b23c63e3ec'
+            '609df1245b01bf12c3d1a26ca601f78b4d9786b4876f1662b31645402ea9c465'
+            '0232008204af9a35532a89dbfcd3b7092193b971b8cb2f942276635267de44be')
 prepare() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir"
