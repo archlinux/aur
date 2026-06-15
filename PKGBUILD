@@ -2,8 +2,8 @@
 # Huge thanks to github.com/nebulosa2007 for this version of the PKGBUILD.
 
 pkgname=yabsnap
-pkgver=2.4.0
-pkgrel=3
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
 url="https://github.com/hirak99/$pkgname"
@@ -12,7 +12,7 @@ depends=('bash' 'btrfs-progs' 'python')
 optdepends=('rsync: rsync based snapshot support' 'python-textual: for the TUI interface')
 makedepends=('tar')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d4c577bf5be7a431b62e4c0c6ac79505a184c4e58827986c26ea1785943c243e')
+sha256sums=('10ae7c2011c57557b848a9e60eddc487985878a644857751c546183339b68d44')
 install="$pkgname.install"
 
 build() {
@@ -47,7 +47,8 @@ package() {
   # Note: The -O compiles to .opt-1.pyc. Starting with v2.2.10, we use -O, and
   # we own the files.
   # See point 2 in https://aur.archlinux.org/packages/yabsnap#comment-1034857
-  python -O -m compileall -d /usr/share/"$pkgname" "$DEST"
+  # Note: Starting with 2.4.1, we dropped the -O.
+  python -m compileall -d /usr/share/"$pkgname" "$DEST"
   install -d "$pkgdir"/usr/bin
   ln -s /usr/share/"$pkgname"/"$pkgname".sh "$pkgdir"/usr/bin/"$pkgname"
 }
