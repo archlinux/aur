@@ -1,0 +1,10 @@
+post_install() {
+    echo "Setting CAP_NET_ADMIN & CAP_SYS_ADMIN & CAP_BPF capabilities on /usr/bin/pktstat-bpf..."
+    setcap 'cap_net_admin,cap_sys_admin,cap_bpf=eip' usr/bin/pktstat-bpf
+}
+
+post_upgrade() {
+    post_install "$1"
+}
+
+# vim:set ts=2 sw=2 et:

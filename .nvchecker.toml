@@ -1,0 +1,5 @@
+[pktstat-bpf-bin]
+source = "github"
+github = "dkorunic/pktstat-bpf"
+use_latest_release = true
+prefix = "v"
