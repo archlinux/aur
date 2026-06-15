@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 Type=simple
-User=ttyrecall
+User=root
 Group=ttyrecall
 SupplementaryGroups=ttyrecall
 WorkingDirectory=/var/lib/ttyrecall

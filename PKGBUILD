@@ -2,7 +2,7 @@
 
 _pkgname=ttyrecall
 pkgname=$_pkgname-git
-pkgver=0.0.1.r59.g32949e4
+pkgver=0.0.1.r70.g75e100e
 pkgrel=1
 pkgdesc="Recall, but for terminals"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -18,7 +18,7 @@ source=("$_pkgname::git+https://github.com/kxxt/ttyrecall.git"
         "ttyrecall.tmpfiles")
 b2sums=('SKIP'
         '557f4a71f91d45c78a710c75d7806db751a0a15125966c8f51a0b901ef0d1f8988df5c15a0d74b6ade381bf5744c42cbdfb44c93e5ed2d5117fa835d54e4bf23'
-        '1a994cb2aa0806cbff8089d34e32a34736f04ce3a2712efafd68ebf36b3954463bdc40e550bd8294ea1e397bf2ba639ce07e264c6426cc8cda100bc250c2b7eb'
+        '0f2c8ad53b7f4f6a8f15ad97bcf37a4ca6d796b043c7f8cefe2a073dc4f809ed3d6b279d9876f625b46ab4b2b79a4ab712d8bb69d2ad36bbfbffb0aa1134b415'
         '669c8b9c38f078cd0fcac52f5a2beee7a70878a591faef2904fac8b2ff505374bedd7e6dcd80cc8509b7ce63e4879ea718b9a67c2e803d4c846be7e02b87d7a8'
         'c76f2629694f7d9ad4d1fb07615f7e30032227dceb7e26522a1805702fc6cb6a4d12dc3561a172b1930d6f74ab8725733635c1e9ae2992a2d2a2b36a7402410d')
 provides=($_pkgname)
