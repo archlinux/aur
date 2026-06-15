@@ -8,7 +8,7 @@ url="https://github.com/saber-notes/saber"
 license=('GPL-3.0')
 depends=(
   'gtk3' 'libx11' 'libxcomposite' 'libxrandr' 'libxdamage' 'libxext' 'libxfixes'
-  'glib2' 'pango' 'cairo' 'fontconfig' 'freetype2' 'wmctrl' 'webkit2gtk-4.1'
+  'glib2' 'pango' 'cairo' 'fontconfig' 'freetype2' 'wmctrl' 'webkit2gtk-4.1' 'libjxl'
 )
 makedepends=(
   'git' 'flutter' 'svgo' 'oxipng'
