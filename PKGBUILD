@@ -1,15 +1,17 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=pc-nrfconnect-programmer
-pkgver=4.7.4
+pkgver=4.7.5
 pkgrel=1
 epoch=
 pkgdesc="Programmer app for nRF Connect for Desktop"
 arch=('any')
 url="https://github.com/NordicSemiconductor/pc-nrfconnect-programmer"
-license=('Nordic-4-Clause')
+license=('LicenseRef-Nordic-4-Clause')
 groups=()
-depends=()
+depends=(
+    sh
+)
 makedepends=('npm')
 checkdepends=()
 optdepends=("nrf-udev: udev rules for nRF (Nordic Semiconductor) development kits"
@@ -23,7 +25,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('77994786953371072cbf994e37716acd8c73957bf0c38fa51f520c7b86d6868b')
+sha256sums=('bf1fd24d0d0da4f4d1a68acc52ac62474fbaac320b3ae43bf2d673f5edd680e9')
 #validpgpkeys=()
 
 package() {
