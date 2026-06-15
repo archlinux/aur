@@ -3,7 +3,7 @@
 pkgname=vim-jsx-pretty-git
 _pkgname=vim-jsx-pretty
 pkgver=3.0.0.r16.g6989f16
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim syntax highlighting for React JSX and TSX"
 arch=('any')
 url="https://github.com/MaxMEllon/vim-jsx-pretty"
@@ -24,6 +24,7 @@ package() {
   cd $pkgname
   install -d "$pkgdir/usr/share/vim/vimfiles"
   cp -r after autoload doc "$pkgdir/usr/share/vim/vimfiles/"
+  rm -f "$pkgdir/usr/share/vim/vimfiles/doc/tags"
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   install -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/"
 }
