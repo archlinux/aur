@@ -1,8 +1,8 @@
 # Maintainer: Dmitriy Q krotesk <at> mail <dot> ru
 pkgname=meshapp-bin
 fullpkgname=meshapp-MeshApp
-pkgver=2.1.10
-pkgrel=1
+pkgver=2.2.2
+pkgrel=2
 pkgdesc="A full-featured desktop client for managing devices and communication in the Meshtastic mesh network."
 arch=('any')
 url="https://git.privatepractice.app/covox/meshapp"
@@ -13,9 +13,9 @@ depends=('alsa-lib' 'brotli' 'libbsd' 'bzip2' 'glibc' 'libcap' 'freetype2' 'libg
          'libxi' 'libxrender' 'libxtst' 'zstd' 'xdg-utils' 'zlib')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-#source=("${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-source=("${url}/releases/download/v${pkgver}/MeshApp-v${pkgver}-x86_64.flatpak")
-sha256sums=('84bbb1c2a9fdf79a13b81525ec864fc93e1daf2d042c6a3731189a73b0ee9840')
+source=("${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+#source=("${url}/releases/download/v${pkgver}/MeshApp-v${pkgver}-x86_64.flatpak")
+sha256sums=('9abf9ec5a4f5e0d472eaefd6ccad6d7526b2b3e9994fb989738943def2a16223')
 
 prepare(){
     bsdtar xzf data.tar.zst -C "${pkgdir}"
