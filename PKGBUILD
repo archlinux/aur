@@ -5,11 +5,11 @@
 # SHA256 is set to SKIP because the file content changes daily while the URL remains the same.
 #
 pkgname=wezterm-nightly-bin
-pkgver=nightly
+pkgver=20260615
 pkgrel=1
 pkgdesc="A GPU-accelerated cross-platform terminal emulator and multiplexer (nightly build)"
 arch=('x86_64')
-url="https://github.com/wez/wezterm"
+url="https://github.com/wezterm/wezterm"
 license=('MIT')
 depends=('fontconfig' 'hicolor-icon-theme' 'libxkbcommon' 'libxkbcommon-x11' 'ttf-font' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-wm')
 optdepends=('python-nautilus: for Nautilus integration')
