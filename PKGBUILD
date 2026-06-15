@@ -5,8 +5,8 @@
 
 _pkgname='headsetcontrol'
 pkgname="${_pkgname}-git"
-pkgver=3.1.0.r55.g6611933
-pkgrel=2
+pkgver=3.1.0.r87.gda4477e
+pkgrel=1
 pkgdesc='Sidetone and Battery status for Logitech G930, G533, G633, G933 SteelSeries Arctis 7/PRO 2019 and Corsair VOID (Pro) in Linux and MacOSX'
 arch=('x86_64')
 url='https://github.com/Sapd/HeadsetControl'
