@@ -12,7 +12,7 @@ license=('custom')
 provides=("gnulib=${pkgver}")
 replaces=("gnulib<=${pkgver}")
 conflicts=('gnulib')
-makedepends=('git')
+makedepends=('git' 'texinfo')
 source=('git+https://github.com/coreutils/gnulib')
 md5sums=('SKIP')
 
