@@ -35,6 +35,15 @@ build() {
 check() {
 	cd "$_binname"
 	bun test
+	# Guard: a corrupt/miscompiled standalone binary falls back to bun's OWN CLI, so saur's
+	# `install`/`update` subcommands would run `bun install`/`bun update` (this shipped in the
+	# v1.0.0 saur-bin). A good build answers `--version` with `saur <ver>`; anything else means
+	# bun couldn't find the embedded app — fail the build rather than install a hijacked binary.
+	./"$_binname" --version | grep -q '^saur ' || {
+		echo "saur: compiled binary is hijacked by the bun runtime (embedded app not found);" >&2
+		echo "      this build is corrupt. Try a different bun version and rebuild." >&2
+		return 1
+	}
 }
 
 package() {
