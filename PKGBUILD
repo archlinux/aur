@@ -5,7 +5,7 @@
 pkgname=codelldb
 _pkgname="$pkgname"
 pkgver=1.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=(x86_64 arm7h aarch64)
 url="https://github.com/vadimcn/codelldb"
@@ -30,6 +30,12 @@ prepare() {
   local _pat='${CMAKE_COMMAND} \(${CMAKE_SOURCE_DIR}\|--build ${CMAKE_CURRENT_BINARY_DIR}\)\/debuggee'
   local _rep='${CMAKE_COMMAND} -E env --unset=CFLAGS --unset=CXXFLAGS --unset=RUSTFLAGS --unset=LDFLAGS &'
   sed -i "s/$_pat/$_rep/g" ./CMakeLists.txt
+
+  if [[ "$(cargo build --help)" == *--artifact-dir* ]]; then
+    # The `--out-dir` option was renamed to `--artifact-dir` in 1.81.0 and the old name was
+    # deleted entirely in 1.95.0.
+    sed -i 's/--out-dir/--artifact-dir/g' ./debuggee/CMakeLists.txt
+  fi
 
   # This change is necessary for building the package with Clang >= 20. However, it breaks
   # compatibility of the package with LLDB < 18. This shouldn't be a problem since it is linked
