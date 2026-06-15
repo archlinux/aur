@@ -2,7 +2,7 @@
 
 pkgname=bifrost
 pkgauthor=maximhq
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 
 _npmname=${pkgname}
@@ -25,8 +25,8 @@ source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${_n
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 noextract=("${_npmname}-${_npmver}.tgz")
 
-b2sums=('e8f5b0f1cdc8d268ca5268d3b51b6e00659967eeda51ebeaa6072536acd24ba4acaf02cd1927a7ac1158ea7c89c5f0af0da0b7d0b8698455fc0db462269cffa2'
-        '58ef87e18a448fb415c7dc45c278b0000b42ac897efd16abf5e659f8f75bb58f39cca6698fb030bd7db647acae7ab7376f8b59ba74ab061ba155b814ceea7ab3'
+b2sums=('acb12136b36e79fa1b75f22eff2c6104a4e661d46e21b8883bdf65a5d78510ae8fa9fe4752feff88ffb91517842eea15d8098ffc6f96f99866ea5ca65c0fe13f'
+        'aa492b35e945b7792a3e3837a74e4a13b8ec0c1d26c08747d060f89d4861e23195638cf60abffab018b71558e3dc6e5aee3715e1dc93a307b696b1620459a98e'
         'fa356314d0a2e4fa028b5980c1b64295a17524ee8fea5b8f4dfa40eedeb59637b3ad99d5a647c9d7a8e284ff9344b29a0a45764156381c0b68d9cb9bc6556068')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
