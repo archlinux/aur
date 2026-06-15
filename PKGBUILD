@@ -2,7 +2,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=ctl
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="The Color Transformation Language"
 arch=('x86_64')
@@ -32,4 +32,4 @@ package() {
   # Remove docs
   rm -rf "${pkgdir}/usr/doc"
 }
-sha256sums=('fb84925320d053827fce965d7aeea5bb8690d7093bb083c8e3915d7a600e25fc')
+sha256sums=('b6a36ac31e0a79224216e4fc41b56982939cec7a1afd4e80165cec3f1c37d265')
