@@ -2,7 +2,7 @@
 
 _name=langchain-openai
 pkgname=python-$_name
-pkgver=1.1.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="An integration package connecting OpenAI and LangChain."
 arch=('any')
@@ -11,7 +11,7 @@ license=("MIT")
 depends=('python' 'python-langchain-core' 'python-openai' 'python-tiktoken')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('9a33280c2e8315d013d64e6b15e583be347beb0d0f281755c335ae504ad0c184')
+sha256sums=('240917ae88d754b389a6f2ae06fa262c50c094eb4f576c27d560dff6b86c2f62')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
