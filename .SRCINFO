@@ -1,6 +1,6 @@
 pkgbase = perl-test-simple
 	pkgdesc = Backend for building test libraries
-	pkgver = 1.302219
+	pkgver = 1.302221
 	pkgrel = 1
 	url = https://metacpan.org/dist/Test-Simple
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = perl-test-simple
 	makedepends = perl-extutils-makemaker
 	depends = perl
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-Simple-1.302219.tar.gz
-	sha256sums = 420600911230de768427f6646758d89b6c07977b565e5b40118e5b8440dbb30b
+	source = https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-Simple-1.302221.tar.gz
+	sha256sums = 4323c4f07c069ec75930fcf426a2b3b7ba692c595686ca950e9e4855b24d997c
 
 pkgname = perl-test-simple
