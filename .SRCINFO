@@ -1,6 +1,6 @@
 pkgbase = agent-deck-bin
 	pkgdesc = Terminal session manager for AI coding agents
-	pkgver = 1.9.63
+	pkgver = 1.9.65
 	pkgrel = 1
 	url = https://github.com/asheshgoplani/agent-deck
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = agent-deck-bin
 	conflicts = agent-deck
 	options = !strip
 	options = !debug
-	source = https://github.com/asheshgoplani/agent-deck/releases/download/v1.9.63/agent-deck_1.9.63_linux_amd64.tar.gz
-	sha256sums = 6a30595c71a26fbc05f7eafa940b1adc9fe8ec513fb18cbc1e7d2c91c1ae307e
+	source = https://github.com/asheshgoplani/agent-deck/releases/download/v1.9.65/agent-deck_1.9.65_linux_amd64.tar.gz
+	sha256sums = e1aaf66adccf904fe446358142dc330c0f34eaf5a72fa82d84aa66ed877e949a
 
 pkgname = agent-deck-bin
