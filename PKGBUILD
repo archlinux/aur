@@ -2,14 +2,14 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r46106
+pkgver=r46146
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - Development version"
 arch=('i686' 'x86_64')
 url="http://vice-emu.sourceforge.net"
 license=('GPL-2.0-or-later')
 depends=(libevdev glew gtk3 portaudio libpulse pciutils curl mpg123)
-makedepends=(dos2unix libpcap libxaw xa texlive-basic texlive-bin texlive-plaingeneric xorg-bdftopcf xorg-mkfontdir svn glib2-devel)  
+makedepends=(dos2unix libpcap libxaw xa texlive-basic texlive-bin texlive-plaingeneric xorg-bdftopcf xorg-mkfontdir subversion glib2-devel)  
 provides=('vice')
 replaces=('vice')
 conflicts=('vice' 'vice-sdl2' 'vice-sdl2-svn')
